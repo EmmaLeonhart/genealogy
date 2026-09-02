@@ -25501,3 +25501,29 @@ assume it was the first.
 
 Nothing was wired. A label that names somebody by their given name alone is the *"an incorrect name
 is not acceptable"* case, and 2,431 of them would have gone out in one commit.
+
+## 2026-09-02 — the romaniser and the classifier disagreed about the same token
+
+**One file, two contradictory readings, 350 lines apart.** `SURNAME_CULTURE` is keyed on
+`_t[-1]` — the culture step treats the trailing Han token as the **surname**, derived from
+surnames carried by 10+ settled records agreeing 95% of the time. The romanisation loop below it
+calls the same token a **courtesy name** and drops it. That is why 2,431 people were being
+romanised to a given name alone: `經 謝` → `Jing`.
+
+**Fixed by using the script's own evidence rather than a rule invented for it**: a trailing token
+the surname consensus knows is a surname; anything else is still a courtesy name (`鯤 幼輿` is Kun,
+courtesy Youyu) and is still dropped. **4,655 rows now carry it**, surname first —
+`經 謝` → `Xie Jing`, `恕 陳` → `Chen Shu` — which is the order every Wikidata label for these
+people uses.
+
+**The first attempt over-composed and the sample caught it.** Membership in `SURNAME_CULTURE`
+alone gave `幹 清河東武城` → `Qing He Tou Wu Cheng Gan`: a five-character commandery read out as a
+surname, because that map is keyed on the trailing token whatever it is, seats included. The guard
+is the split measured yesterday — 1–2 characters is a surname, 3+ is a seat — so the 6,705
+clan-seat drops stay dropped and compound surnames like 歐陽 survive.
+
+**And the `en` step is still blocked, by something else.** `幸豊 青山` → `Qing Shan Heng Li`,
+`忠貫 酒井` → `Jiu Jing Zhong Guan`: Aoyama and Sakai, Japanese houses, read in Mandarin because
+the walk filed them under `zh`. Composition made those strings longer, not wronger — they were
+already wrong — but wiring `romanised` into `label_en` would publish them. The queue item now says
+to measure the Japanese-in-`zh` rate first.

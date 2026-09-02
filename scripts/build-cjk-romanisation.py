@@ -810,10 +810,31 @@ def main() -> int:
         if not tokens:
             done["no Han token, or seat only" if seat else "no usable Han token"] += 1
             continue
-        # **Only the first token.** After the seat, what is left is the given name and
-        # then the courtesy name (字) -- 鯤 幼輿 is Kun, courtesy Youyu. A courtesy name
-        # is not what a person is catalogued under, so it does not go in the label.
+        # **The first token is the given name; the trailing token may be a SURNAME, and
+        # dropping it was emitting given names alone.** Measured 2026-09-02: of 12,276
+        # multi-token names, 2,431 lost a 1-2 character trailing token that is the surname --
+        # `經 謝` came out `Jing`, losing Xie. The other 3,917 lost a 3+ character clan seat,
+        # which is correct and handled above.
+        #
+        # **The discriminator is this script's own evidence, not a length rule.**
+        # `SURNAME_CULTURE` is keyed on `_t[-1]` -- the culture step already treats the
+        # trailing token as the surname, derived from surnames carried by 10+ settled records
+        # agreeing 95% of the time. So the two halves of this file disagreed about the same
+        # token: the classifier called it a surname and the romaniser called it a courtesy
+        # name. A trailing token the consensus knows as a surname is one; anything else is
+        # still a courtesy name (字) -- 鯤 幼輿 is Kun, courtesy Youyu -- and is still dropped,
+        # because a courtesy name is not what a person is catalogued under.
         name = tokens[0]
+        # **A surname is one or two characters. `SURNAME_CULTURE` is not enough on its own**
+        # because it is keyed on the trailing token whatever that token is, so clan seats are in
+        # it: composing on membership alone gave `幹 清河東武城` -> `Qing He Tou Wu Cheng Gan`,
+        # which is a man's given name behind the five-character name of a commandery. The length
+        # split is measured, not assumed -- of 6,348 dropped trailing tokens, the 3+ character
+        # ones are seats (`陳郡陽夏`, 3,917 of them) and the 1-2 character ones are surnames
+        # (`謝`, 2,431). Compound surnames like 歐陽 and 司馬 are two characters and survive it.
+        surname = (tokens[-1] if (len(tokens) > 1 and len(tokens[-1]) <= 2
+                                  and tokens[-1] not in SEATS
+                                  and tokens[-1] in SURNAME_CULTURE) else None)
         # Not a name at all -- a marker or a description of a relationship. Counted and
         # skipped rather than romanised, because a reading of `氏` is `Shi`, which reads
         # as a man's name and is a false statement about a woman recorded only as a
@@ -875,8 +896,21 @@ def main() -> int:
         chars = [c for c in name if HAN.match(c)]
         parts = [table[code].get(c) for c in chars]
         if parts and all(parts):
-            rows.append((g, cjk, code, " ".join(parts), why.get(g, ""),
-                         name, seat or ""))
+            given = " ".join(parts)
+            # **Surname first.** Chinese, Japanese and Korean all put it there, and so does
+            # every Wikidata label for these people -- 織田信長 is *Oda Nobunaga*, not
+            # *Nobunaga Oda*. If the surname does not compose, the given name still ships:
+            # a name missing its surname is worse than one missing nothing, but it is far
+            # better than no label, and the row records what was used.
+            full = given
+            if surname:
+                sparts = [table[code].get(c) for c in surname if HAN.match(c)]
+                if sparts and all(sparts):
+                    full = " ".join(sparts) + " " + given
+                    done[f"{code} romanised with surname"] += 1
+                else:
+                    done[f"{code} romanised, surname would not compose"] += 1
+            rows.append((g, cjk, code, full, why.get(g, ""), name, seat or ""))
             done[f"{code} romanised"] += 1
         else:
             done[f"{code} incomplete"] += 1

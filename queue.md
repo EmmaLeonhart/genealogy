@@ -236,29 +236,26 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   exports they came from"*, never the name. 806 Han-only among the structural
   placeholders alone; the corpus figure is larger and is what this step must count.
 
-- **The romanisations exist and CANNOT be used as `en` yet — 2,431 of them lose the surname.**
-  Measured 2026-09-02, and this is the blocker on the `en` step rather than the transcription
-  being unwritten. `reports/cjk-romanisation.csv` holds **13,638** romanisations, and **7,892**
-  belong to people whose `label_en` still has no Latin in it at all — so the obvious move is to
-  wire the column straight into `label_en`. **Do not.**
+- **The surname is composed in now — but the `en` step still cannot consume the column, for a
+  different reason.** Fixed 2026-09-02: the romaniser dropped the trailing token as a courtesy
+  name (字) while the *classifier in the same file* keyed `SURNAME_CULTURE` on that very token as
+  the surname. Two contradictory readings, 350 lines apart. **4,655 rows now carry the surname**
+  — `經 謝` → `Xie Jing`, `恕 陳` → `Chen Shu`, surname first as every Wikidata label for these
+  people has it. 731 still lose it, where the surname has no reading in the name-item table.
 
-  Of 12,276 multi-token names, **6,348 romanise fewer tokens than the source has**, and the split
-  is clean once measured:
+  The clan-seat case is untouched and correct: **6,705** rows drop a 3+ character tail like
+  `陳郡陽夏`, which is a *place* in the surname field.
 
-  | dropped trailing token | count | verdict |
-  | --- | ---: | --- |
-  | **3+ characters** — `陳郡陽夏` | 3,917 | **correct.** A clan seat is a *place*, and `CLAUDE.md` § *`SURN` is not reliably a surname* names this exact one |
-  | **1–2 characters** — `謝` | **2,431** | **wrong.** That is the surname. `經 謝` → `Jing` loses Xie |
+  **What still blocks the `en` step is the CULTURE, not the composition.** `幸豊 青山` comes out
+  `Qing Shan Heng Li` and `忠貫 酒井` `Jiu Jing Zhong Guan` — those are Aoyama and Sakai, Japanese
+  samurai houses, being read in Mandarin because the walk put them in `zh`. Composition made them
+  longer, not wronger; they were already wrong. **Do not wire `romanised` into `label_en` until the
+  Japanese-in-`zh` rate is measured** — a wrong reading of a real name is the one thing her rules
+  forbid outright.
 
-  So wiring it would give 2,431 people a given name and no surname — *"an incorrect name is not
-  acceptable"*. **The fix is composition, not another engine**: romanise the surname too and emit
-  it in the right order, `謝經` → `Xie Jing`, since Geni stores the tokens as `<given> <surname>`
-  and Chinese reads surname-first. The romaniser already knows both characters; nothing new has to
-  be learnt, the output just has to stop discarding half of it.
-
-  **And a caution for whoever does it:** `11 謝` → `Xie` shows the script does not always drop the
-  tail — where the given name is junk it romanises the surname instead. So the composition has to
-  read what was romanised, not assume which token it was.
+  Two smaller residues visible in the same pass: `大唐帝國 謝氏` → `Da Tang Di Guo` is not a name at
+  all, and `母 陳` → `Chen Mu` romanises 母 *(mother)* as a given name, so `CJK_MARKERS` is missing
+  entries.
 
 - **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
   Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
