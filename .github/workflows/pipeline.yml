@@ -218,3 +218,22 @@ jobs:
               assignees: [context.repo.owner],
             });
             core.info(`opened #${issue.data.number}: ${issue.data.html_url}`);
+
+  # **The third deliverable, from the same dispatch.** Her framing is one run producing the
+  # archive, the site and the QuickStatements -- the archive is already inside `--compose`
+  # (STEP 0b runs `full_entities` over the ledger), the QuickStatements are the job above, and
+  # this is the site.
+  #
+  # `needs: pipeline` rather than `needs: gate`, deliberately: if she has not edited, the gate
+  # skips the pipeline and the site is not rebuilt either. Nothing has changed, so there is
+  # nothing to publish, and a run that publishes an identical page is the kind of noise the
+  # gate exists to prevent.
+  #
+  # A called workflow does not inherit job-level permissions, so Pages needs its own here.
+  site:
+    needs: pipeline
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

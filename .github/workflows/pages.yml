@@ -16,6 +16,12 @@ name: Pages
 
 on:
   workflow_dispatch:
+  # **Callable, so ONE dispatch of the pipeline produces all three.** Emma, 2026-09-01:
+  # *"the ci/cd run will make the archive (committed) and the pages and the
+  # quickstatements for me to run later"* -- "the ci/cd run", singular. `pipeline.yml`
+  # calls this after its own job, so the site is rebuilt from the same commit that just
+  # produced the batch rather than from whatever the last schedule happened to see.
+  workflow_call:
   schedule:
     # 06:23 UTC daily. Off the hour on purpose: :00 is when every scheduled workflow on GitHub
     # fires at once and the queue is worst.
