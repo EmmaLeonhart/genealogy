@@ -47,23 +47,25 @@ Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
 #   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
 
-# Tormodsdatter -- patronymic, 4 bearer(s) in the batches
+# Pedersdatter -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Tormodsdatter"
-LAST	Len	"Tormodsdatter"
-#   set the mul label to "Tormodsdatter"
-LAST	Lmul	"Tormodsdatter"
+#   the item just created: set the en label to "Pedersdatter"
+LAST	Len	"Pedersdatter"
+#   set the mul label to "Pedersdatter"
+LAST	Lmul	"Pedersdatter"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141224345 Signy Tormodsdatter Rossavik: P5056 patronym or matronym = the item just created
-Q141224345	P5056	LAST	S2600	"6000000003095080099"
-#   Q141205898 Anna Tormodsdatter Mele: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198507 Tormod Bjørnson Mele
-Q141205898	P5056	LAST	P144	Q141198507	S2600	"6000000005609232777"
+#   Q141242500 Gunnhild Pedersdatter Skårland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141249719
+Q141242500	P5056	LAST	P144	Q141249719	S2600	"6000000005609534687"
+#   Q141223947 Sissel Tomine Pedersdatter Nyvold: P5056 patronym or matronym = the item just created
+Q141223947	P5056	LAST	S2600	"6000000021198413026"
+#   Q141206058 Bertha Bakke: P5056 patronym or matronym = the item just created
+Q141206058	P5056	LAST	S2600	"6000000053155539975"
 
-# 327 more name items are needed and wait for a later
+# 330 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
 #   Garfve (family), 3 bearer(s)
 #   Hakunge (family), 3 bearer(s)
@@ -76,6 +78,6 @@ Q141205898	P5056	LAST	P144	Q141198507	S2600	"6000000005609232777"
 #   Knutsdatter (patronymic), 3 bearer(s)
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Magnusson (patronymic), 3 bearer(s)
-#   Olson (patronymic), 3 bearer(s)
-#   ... and 315 more
+#   Røyneberg (family), 3 bearer(s)
+#   ... and 318 more
 

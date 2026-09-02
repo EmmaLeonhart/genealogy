@@ -25851,3 +25851,20 @@ Verified: `--help` runs, and `test_garborg_day_batch` + `test_p2600_batches` are
 **Still to do from the same rulings:** build the Pages site *"now, generated from the repo"*,
 build the merges HTML page from `out/parent-review.template.html`, and emit the CJK aliases for
 the 5,621 people who already have items. The 35 `P1814` variant readings were printed for her.
+
+## 2026-09-02 — the daily QuickStatements, and a fix to my own spine removal
+
+`reports/wikidata-garborg-day.qs` — **23 `CREATE` blocks, 467 statement lines, 62 KB**, built by
+`build-daily-batch.py --refresh-ledger` (the ledger refresh is part of the run, never separate).
+
+Composition: 9/10 children, 1 spouse where the marriage had no child left, 10/10 parents, and 60
+free parents of 110 eligible. 80 people composed, of which 40 were dropped because Wikidata
+already carries a `P2600` for them and 14 because the correspondence already identifies them. The
+duplicate guard held 5 more. 33 statements added to existing items; 994 dropped as already held.
+1,176 carried forward to a later day.
+
+**A defect I introduced an hour earlier and caught here.** The spine removal cut a region that
+also contained `from qscomment import annotate`, so `--compose` died at
+`NameError: name 'annotate' is not defined` after doing all of its work. `--help` and the two test
+modules had passed, because neither reaches the annotation stage — a reminder that *parses* and
+*imports* are not *runs*. Restored, and the fuller `BUREUS_QID` note that went with it.

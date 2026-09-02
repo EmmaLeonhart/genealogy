@@ -1334,11 +1334,16 @@ def free_parent_budget(eligible):
         FREE_PARENTS_FREE + (eligible - FREE_PARENTS_FREE) // 2)
 
 
+from qscomment import annotate  # noqa: E402
+
+
 #: The two roots of the Wikidata subgraph the ring grows from. These are NOT spine
 #: machinery -- they survived the 2026-09-02 spine removal because `subgraph_roots()`
 #: needs them: `CLAUDE.md` § *The seed set is the WIKIDATA SUBGRAPH from Arne*.
 ARNE_QID = "Q11959067"      # Arne Olaus Fjortoft Garborg
-BUREUS_QID = "Q633094"      # Johannes Bureus
+#: **Johannes Bureus -- the second root.** Emma, 2026-08-28: *"it is supposed to do this
+#: from Johannes Bureus and Arne Garborg, subgraphs coming from both of them."*
+BUREUS_QID = "Q633094"
 
 
 def subgraph_roots():
