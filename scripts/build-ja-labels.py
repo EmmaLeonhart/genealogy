@@ -63,6 +63,7 @@ import labels as L  # noqa: E402
 TAB = chr(9)
 DERIVED = ROOT / "reports" / "derived-labels.csv"
 NAME_ITEMS = ROOT / "out" / "wikidata" / "name-items-in-store.tsv"
+FETCHED = ROOT / "reports" / "katakana-name-items.tsv"
 OUT = ROOT / "reports" / "label-ja.tsv"
 
 #: Katakana, the長音符 and the middle dot. A label made only of these is a Japanese rendering
@@ -98,7 +99,20 @@ def main() -> int:
         print("no %s" % DERIVED.relative_to(ROOT), file=sys.stderr)
         return 1
     table = katakana_table()
-    print("%s Latin tokens carry a sourced katakana form" % format(len(table), ","))
+    n_store = len(table)
+    # **The fetched table, from `scripts/fetch-katakana-name-items.py`.** Our slice of Wikidata
+    # was downloaded for a different purpose and simply lacks name items for ordinary given
+    # names -- `Carl`, `John`, `Anders` -- so the commonest blockers were absent for no reason
+    # of language. These come from the same place (Wikidata's own name items), by SPARQL rather
+    # than from the local file. An ambiguous token is recorded there and NOT used, so anything
+    # in the `katakana` column here is a single unambiguous form.
+    if FETCHED.exists():
+        with io.open(FETCHED, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter=TAB):
+                if r.get("state") == "single" and r.get("katakana"):
+                    table.setdefault(r["token"].casefold(), r["katakana"])
+    print("%s Latin tokens carry a sourced katakana form (%s from the store, %s fetched)"
+          % (format(len(table), ","), format(n_store, ","), format(len(table) - n_store, ",")))
     if not table:
         print("no name-item table; nothing can be rendered", file=sys.stderr)
         return 1
@@ -130,9 +144,14 @@ def main() -> int:
 
             out = []
             for t in toks:
-                ja, _zh = L.transliterate_token(t.casefold(), pairs)
+                # **The RAW token first, casefolded only as a fallback.** `transliterate_token`
+                # keeps a middle initial as its Latin letter and never changes case -- Emma's
+                # 2026-08-27 ruling, ジョン・F・スミス. Casefolding before the call defeated that:
+                # `Susannah H. Bates` came out `スザンナ・h・ベイツ`, a lowercase initial nobody
+                # writes. The table is keyed casefolded, so the fallback still finds names.
+                ja, _zh = L.transliterate_token(t, pairs)
                 if ja is None:
-                    ja, _zh = L.transliterate_token(t, pairs)
+                    ja, _zh = L.transliterate_token(t.casefold(), pairs)
                 out.append(ja)
             if all(out):
                 tally["rendered in katakana"] += 1

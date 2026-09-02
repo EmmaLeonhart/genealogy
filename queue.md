@@ -198,3 +198,22 @@ Placed at the tail on her instruction. Nothing investigated; this is the item, n
 **Related, so it is not solved twice:** `reports/geni-merged-away.tsv` and
 `scripts/post-merge-coverage.py` do the same thing one layer down for **Geni** profiles Geni has
 merged away, added 2026-09-02. This item is the **Wikidata** side of the same shape.
+
+## Patronymics are not getting the name they come FROM
+
+**Emma, 2026-09-02:** *"Patronymics are not getting the names they come from in the logic lol
+that's actually essential to the real specified algorithm."*
+
+A `P5056` *patronym or matronym* statement must carry **`P144` *based on*, pointing at the PERSON
+that link names** — the father, then the grandfather for a chained patronymic — and `P1545`
+*series ordinal* numbering the links outward from the bearer. `name modelling.txt` is the
+authority and her worked example is there:
+
+    P5056 ben Phinhas    P144 Phinhas ben Yittzhaq ben Shalma   P1545 1
+    P5056 ben Yittzhaq   P144 Yittzhaq ben Shalma               P1545 2
+    P5056 ben Shalma     P144 Shalma                            P1545 3
+
+Her Vladimir Putin example is the same shape: `P5056 Vladimirovich` carries `P144` → `Q19300851`,
+**his father**, not a name item.
+
+Written at the tail on her instruction; nothing investigated.
