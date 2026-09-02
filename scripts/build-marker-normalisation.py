@@ -109,6 +109,14 @@ def main() -> int:
         if rest == label:
             dropped["no change"] += 1
             continue
+        # **The marker surviving is proof the strip did not work.** `[59] NN (Bhre Jagaraga bin
+        # NN (Bhre Wengker)` arrives already malformed -- two opening brackets, one closing -- and
+        # removing one bracketed phrase leaves `[59] NN`, which is not a name and still carries the
+        # marker. Two rows. Refuse rather than emit a normalisation that normalised nothing.
+        if re.search(r"(?<![^\W\d_])" + re.escape(r.get("marker") or "x") + r"(?![^\W\d_])",
+                     rest, re.I):
+            dropped["marker survived the strip, refused"] += 1
+            continue
         # A name with a dangling bracket is a broken name. If the phrase-drop above did not
         # balance it, this row is not mechanical and is left for a human.
         for a, b in (("(", ")"), ("[", "]"), ("（", "）")):
