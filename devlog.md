@@ -25265,3 +25265,29 @@ those are `zipper`-only.** That is a lead rather than a verdict — a woman reco
 and as `於久の方` is one person under a Buddhist name and shares nothing by design. But it is a cheap
 falsification test on a join the zipper already made, which is what `CLAUDE.md` permits: *labels
 confirm a position; they never choose one.* They belong in her deck.
+
+## 2026-09-02 — the kana extractor: three more shapes, and one where flattening was WRONG
+
+**Re-run: 355 readings, 1 from a kana title, 35 variants, 6 refused**, over the same 397.
+
+**The six refusals from the first run turned out to be three different shapes**, and only two of
+them were safe to handle:
+
+* **the title is already kana** — `おふう`. The title *is* the reading; the lead opens with a kanji
+  form the article does not use. Handled.
+* **a kanji restatement before the reading** — `眞龍院、しんりゅういん、…`. The reading is the second
+  comma-element, and it is accepted **only when every earlier element is made of characters the
+  title already contains**. That guard is what stops the 平滋子 fall-through returning. It does not
+  fire on 真竜院 itself, because the lead uses kyūjitai 眞龍 against a shinjitai title — so that row
+  still refuses, correctly.
+* **a nested parenthesis — REFUSED, and this is the finding.** I first flattened it into `variants`
+  and it produced two names nobody has: `あがた（の）いぬかい の おおとも` became
+  `あがたいぬかい の おおとも／の`, and `きし（ひろこ）じょおう` became `きしじょおう／ひろこ`. The
+  form is genuinely ambiguous — an **optional infix** (あがたのいぬかい) in one case, **two whole
+  alternative readings** (きしじょおう / ひろこじょおう) in the other — and nothing in the syntax
+  distinguishes them.
+
+**Marking a mangled reading `variants` is worse than refusing it**, because `variants` says *pick
+one of these two* and both were wrong. Four refusals beat two mangled rows presented as answerable.
+The `／` case still works and is still `variants`: 平滋子 gives `たいら の じし／しげこ`, which is what
+the article actually offers.

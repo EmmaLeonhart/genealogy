@@ -64,30 +64,97 @@ TAB = chr(9)
 #: and katakana in that slot is usually a foreign name rather than a yomi.
 KANA = r"[ぁ-ゖー・／/\s]"
 
-#: Only ever the FIRST parenthetical. See the module docstring: searching further is how a
-#: posthumous title gets emitted as somebody's name.
-FIRST_PAREN = re.compile(r"[（(]([^）)]*)[）)]")
+#: Only ever the FIRST parenthetical, and balanced so a nested one does not truncate it. See
+#: the module docstring: searching further is how a posthumous title gets emitted as a name.
+def _first_paren(text):
+    """The contents of the first balanced `（…）`, or `""`."""
+    start = -1
+    depth = 0
+    for i, ch in enumerate(text):
+        if ch in "（(":
+            if depth == 0:
+                start = i + 1
+            depth += 1
+        elif ch in "）)":
+            depth -= 1
+            if depth == 0 and start >= 0:
+                return text[start:i]
+            if depth < 0:
+                return ""
+    return ""
 
 
-def reading_of(extract):
+def _strip_inner(s):
+    """`("あがた（の）いぬかい", ["の"])` — the text outside nested parens, and what was inside."""
+    out, inner, buf, depth = [], [], [], 0
+    for ch in s:
+        if ch in "（(":
+            depth += 1
+            if depth == 1:
+                buf = []
+                continue
+        if ch in "）)":
+            depth -= 1
+            if depth == 0:
+                inner.append("".join(buf))
+                continue
+        (buf if depth else out).append(ch)
+    return "".join(out), inner
+
+
+def reading_of(extract, title=""):
     """`(reading, state)` for one lead sentence.
 
     `state` is `reading` for a single unambiguous yomi, `variants` where the lead offers more
-    than one, and `needs a human` when the first parenthetical is not a reading at all.
+    than one, and `needs a human` when nothing in the first parenthetical is a reading.
+
+    **Three shapes the six 2026-09-02 refusals turned out to be**, each handled explicitly rather
+    than by widening the pattern until something matches:
+
+    * **the title is already kana** — `おふう`. Then the title IS the reading and there is nothing
+      to parse. The lead for these opens with a kanji form the article does not use as its name.
+    * **a nested parenthesis** — REFUSED, because the form is ambiguous and does not say which
+      it is. `あがた（の）いぬかい` is an optional infix, あがたのいぬかい; `きし（ひろこ）じょおう`
+      is two whole readings, きしじょおう and ひろこじょおう. Flattening produced
+      `あがたいぬかい の おおとも／の` and `きしじょおう／ひろこ`, names nobody has, and marking
+      them `variants` made them look answerable when they were mangled.
+    * **a kanji restatement first** — `眞龍院、しんりゅういん、…`. The reading is the second
+      comma-element. It is only accepted when every element before it is made of characters the
+      TITLE already contains: that is what makes it a restatement rather than a different person's
+      name, and it is the guard that stops the 平滋子 fall-through coming back.
     """
-    text = (extract or "").replace("\n", " ")
-    m = FIRST_PAREN.search(text)
-    if not m:
+    if title and all("぀" <= c <= "ヿ" or c in "・ー" for c in title):
+        return title, "reading from the title, which is already kana"
+    text = (extract or "").replace(chr(10), " ")
+    inner_p = _first_paren(text)
+    if not inner_p:
         return "", "needs a human: no parenthetical in the lead"
-    inner = m.group(1).strip()
-    # The lead routinely continues `（よみ、生年 - 没年）`; the reading is the part before the
-    # first comma. Everything after it is dates and prose.
-    head = re.split(r"[、,]", inner)[0].strip()
-    if not head or not re.fullmatch(KANA + "+", head):
-        return "", "needs a human: first parenthetical is %r" % inner[:40]
-    if "／" in head or "/" in head:
-        return head, "variants"
-    return head, "reading"
+    title_chars = set(title)
+    for n, element in enumerate(re.split(r"[、,]", inner_p)):
+        element = element.strip()
+        if not element:
+            continue
+        outside, inside = _strip_inner(element)
+        outside = outside.strip()
+        if not re.fullmatch(KANA + "+", outside or "x"):
+            # Only a restatement of the title may be skipped over. Anything else and we stop:
+            # a later parenthetical belonging to somebody else is how a wrong name gets emitted.
+            if n == 0 and outside and set(outside) <= title_chars:
+                continue
+            return "", "needs a human: first parenthetical is %r" % inner_p[:40]
+        # **A nested parenthesis is REFUSED, not flattened.** `（…）` inside the reading means two
+        # different things and the form does not say which: `あがた（の）いぬかい` is an OPTIONAL
+        # INFIX — あがたのいぬかい — while `きし（ひろこ）じょおう` is two whole alternative readings,
+        # きしじょおう and ひろこじょおう. Flattening gave `あがたいぬかい の おおとも／の` and
+        # `きしじょおう／ひろこ`, both of which are names nobody has. Three rows refused beats two
+        # rows mangled, and a mangled reading marked `variants` looks answerable when it is not.
+        if any(x.strip() for x in inside):
+            return "", ("needs a human: nested parenthesis, %r — optional infix or two whole "
+                        "readings?" % element[:40])
+        if "／" in outside or "/" in outside:
+            return outside, "variants"
+        return outside, "reading"
+    return "", "needs a human: nothing in the first parenthetical parsed as kana"
 
 
 def fetch(titles):
@@ -133,7 +200,7 @@ def main() -> int:
 
     out, tally = [], {}
     for title in titles:
-        reading, state = reading_of(got.get(title, ""))
+        reading, state = reading_of(got.get(title, ""), title)
         if title not in got:
             reading, state = "", "needs a human: no article returned"
         tally[state.split(":")[0]] = tally.get(state.split(":")[0], 0) + len(by_title[title])
