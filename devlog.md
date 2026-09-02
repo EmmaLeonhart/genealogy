@@ -25868,3 +25868,32 @@ also contained `from qscomment import annotate`, so `--compose` died at
 `NameError: name 'annotate' is not defined` after doing all of its work. `--help` and the two test
 modules had passed, because neither reaches the annotation stage — a reminder that *parses* and
 *imports* are not *runs*. Restored, and the fuller `BUREUS_QID` note that went with it.
+
+## 2026-09-02 — the merges page
+
+`scripts/build-merges-page.py` → `out/merges.html`. Emma, asked whether to build it:
+*"Build it from the template"*.
+
+**171 cards over four sections, 33 already merged.** The justification is measured, not assumed:
+she cleared **207 pairs in one sitting** off the parent-adjudication deck and **none** off the
+equivalent TSV.
+
+- **Built FROM `out/parent-review.template.html`**, which is hers and hand-approved — its palette,
+  three-state theme handling, IBM Plex / Newsreader pairing, keyboard flow and `localStorage`
+  pattern are reused rather than reinvented. Rebuilding from scratch is the mistake she named on
+  2026-09-01.
+- **Each card carries what decides the merge** — her verdict on the first deck was *"it didn't
+  give that good feedback"*, so both sides show label, description, sitelink count, statement
+  count, property count and `P2600`, with the Geni tree's sex and birth–death above them.
+- **A pair she has already merged is detected and greyed out.** `wbgetentities` resolves a
+  redirect to its target, so an id that comes back under a different id is done — 33 of 171. That
+  is live state, which matters because she merges continuously.
+- **Nothing performs a merge.** The action is a prefilled `Special:MergeItems` link in the
+  direction `Help:Merge` wants, plus `d`/`s` to record a decision locally.
+
+**Wired into `build-merges-to-do.py`** so the page regenerates with the markdown in one step, as
+the queue item required — the page can never be staler than the file it is built from.
+
+**Honest coverage note:** 128 of the 171 pairs carry a Geni id (section 5 is 43 *name* items,
+which have none by nature), and 53 of those resolve to sex and dates in our tree. The rest are
+people the corpus does not hold — section 2 is explicitly duplicates *outside* the ledger.

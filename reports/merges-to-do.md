@@ -31,7 +31,7 @@ One Geni profile carrying two Wikidata items, where the ledger tracks that perso
     - merge **Q141225714** into **Q141225713** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225714&to=Q141225713
 - **Jacob Knutson Skiftun** - Geni `6000000177945982827`
     - merge **Q141225730** into **Q141225729** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225730&to=Q141225729
-- **Jakob Chydenius** - Geni `6000000000583631058`
+- **Jaakko Chydenius** - Geni `6000000000583631058`
     - merge **Q141225741** into **Q141225740** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225741&to=Q141225740
 - **Jon Pedersen Trevland** - Geni `6000000001770193504`
     - merge **Q141225750** into **Q141225749** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225750&to=Q141225749
@@ -320,7 +320,7 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 **Creating then merging is not a defect here.** `CLAUDE.md` § *Her own duplicates are DELIBERATE* records that a creation followed by a merge leaves the edit trail she wants, and she raised this as something to do *at some point* rather than something to prevent.
 
 
-## 8. An item you created beside an older one nobody joined by Geni id - 40
+## 8. An item you created beside an older one nobody joined by Geni id - 41
 
 **The shape section 1 cannot see.** That section needs BOTH items to carry a `P2600`. These are the opposite: the older item carries **no Geni id at all**, so no `P2600` join reaches it and a `P2600` search afterwards returns only the one we made. `Q550343` *Welf I, Duke of Bavaria* - 27 sitelinks - was created again as `Q141249742` for exactly this reason on 2026-09-01, along with three others you merged by hand.
 
@@ -332,9 +332,9 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
     - also **Q110303131** _(structural;zipper)_ - merge **Q141249609** into **Q110303131** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249609&to=Q110303131
 - **Hans Olofsson Törne** - Geni `6000000000410600770` - you created Q141249606
     - also **Q6025581** _(structural;zipper)_ - merge **Q141249606** into **Q6025581** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249606&to=Q6025581
-- **Jakob Chydenius** - Geni `6000000000583631058` - you created Q141225740
-    - also **Q109852817** _(zipper)_ - merge **Q141225740** into **Q109852817** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225740&to=Q109852817
-    - also **Q141225741** _(wikidata-p2600)_ - merge **Q141225741** into **Q141225740** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225741&to=Q141225740
+- **Jakob Chydenius** - Geni `6000000000583631058` - you created Q109852817
+    - also **Q141225740** _(wikidata-p2600)_ - merge **Q141225740** into **Q109852817** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225740&to=Q109852817
+    - also **Q141225741** _(wikidata-p2600)_ - merge **Q141225741** into **Q109852817** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225741&to=Q109852817
 - **Anna Elisabet Charlotta Andersdotter Rehbinder** - Geni `6000000000909142439` - you created Q141244082
     - also **Q124477457** _(zipper)_ - merge **Q141244082** into **Q124477457** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141244082&to=Q124477457
 - **6000000001744821812** - Geni `6000000001744821812` - you created Q75933086
@@ -365,8 +365,8 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
     - also **Q126373437** _(zipper)_ - merge **Q141224002** into **Q126373437** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224002&to=Q126373437
 - **Bertrand Olav Olsen Vigdel** - Geni `6000000006146870818` - you created Q138687615
     - also **Q141205900** _(wikidata-p2600)_ - merge **Q141205900** into **Q138687615** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141205900&to=Q138687615
-- **Hedvig Swedenborg** - Geni `6000000006782610675` - you created Q141223425
-    - also **Q140191768** _(zipper)_ - merge **Q141223425** into **Q140191768** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223425&to=Q140191768
+- **Hedvig Swedenborg** - Geni `6000000006782610675` - you created Q140191768
+    - also **Q141223425** _(wikidata-p2600)_ - merge **Q141223425** into **Q140191768** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223425&to=Q140191768
 - **Johan Börgesson Carlberg** - Geni `6000000006897169084` - you created Q141249728
     - also **Q5602483** _(structural;zipper)_ - merge **Q141249728** into **Q5602483** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249728&to=Q5602483
 - **Kristina Olofsdotter Spaak** - Geni `6000000006897337018` - you created Q141249729
@@ -395,6 +395,8 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
     - also **Q64711801** _(zipper)_ - merge **Q141217383** into **Q64711801** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141217383&to=Q64711801
 - **Louise Helmine Jenssen** - Geni `6000000014196858070` - you created Q141225804
     - also **Q141225805** _(wikidata-p2600)_ - merge **Q141225805** into **Q141225804** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225805&to=Q141225804
+- **Kristian Monsen Stangeland** - Geni `6000000018935761194` - you created Q138473856
+    - also **Q141216393** _(wikidata-p2600)_ - merge **Q141216393** into **Q138473856** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141216393&to=Q138473856
 - **Laurentius Andreae Andreae Alstrinius** - Geni `6000000025011507008` - you created Q141225793
     - also **Q141225794** _(wikidata-p2600)_ - merge **Q141225794** into **Q141225793** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225794&to=Q141225793
 - **Kristina Eriksdotter Ångerman** - Geni `6000000038458498753` - you created Q141225779

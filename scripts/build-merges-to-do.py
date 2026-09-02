@@ -24,6 +24,8 @@ import collections
 import csv
 import io
 import pathlib
+import subprocess
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 P2600 = ROOT / "out" / "wikidata" / "p2600-all.tsv"
@@ -341,6 +343,16 @@ def main():
     print("wrote {}".format(OUT))
     print("  wikidata duplicates: {} yours, {} other".format(len(hers), len(theirs)))
     print("  created beside an older item: {}".format(len(rivals)))
+
+    # **The page is regenerated with the file, in the same step.** The queue item asks for this
+    # explicitly so the page is never staler than the markdown it is built from. It is a
+    # subprocess rather than an import because the generator has a hyphen in its name.
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build-merges-page.py")],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if r.returncode:
+        print("  merges page FAILED: " + ((r.stderr or r.stdout or "").strip()[-300:]))
+    else:
+        print("  " + (r.stdout or "").strip().splitlines()[-5].strip())
 
 
 if __name__ == "__main__":

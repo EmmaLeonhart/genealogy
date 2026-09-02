@@ -105,40 +105,6 @@ gitignored and `sqlite3.connect` **creates an empty database** rather than raisi
 same shape: **a file the runner cannot have, reached by code that assumed it could.** Anything else
 added to this workflow should be checked against `.gitignore` first.
 
-## The merges, with an HTML page to work them from
-
-**Emma, 2026-09-01:** *"merges put them at the end of the queue with an html page for them"*.
-
-Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
-duplicates and all the other things we went over that's a file I'll use tomorrow to do merges
-manually on my own with the quickstatements session."*
-
-`python scripts/build-merges-to-do.py` rebuilds it. Regenerate it when
-`out/wikidata/p2600-all.tsv` or `reports/garborg-qids.tsv` is refreshed, so the duplicate
-counts are not stale when she next sits down to it.
-
-**The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
-three are cleared and the browser pass is closed.
-
-**The page is the new half.** `reports/merges-to-do.md` is 8 sections of markdown and she works
-through it by hand; the adjudication deck showed what a page buys instead — she cleared **207
-pairs in one sitting** off a page and had answered none off the equivalent TSV.
-
-- **Build it from `out/parent-review.template.html`'s design**, not from scratch. That template is
-  hers, hand-approved, and rebuilding it from scratch on 2026-09-01 was a mistake she named:
-  *"did you regenerate it from scratch instead of using the template you used yesterday lol"*.
-  Same fonts, same keyboard flow, same `localStorage`.
-- **One card per merge**, showing both items side by side with the evidence that decides it:
-  label, sex, born–died, property count, sitelink count, and which sources found the pair. The
-  deck's lesson applies exactly — *"the problem with that html is it didn't give that good
-  feedback"* — so a card without sex and dates is not worth building.
-- **The prefilled `Special:MergeItems` link is the action**, in the direction `Help:Merge` wants,
-  with a one-key way to mark a card done. It never performs a merge.
-- **Section 8 is the one that needs eyes most**: those pairs come from the zipper, which carries a
-  measured 2.8–4.8% error, and § 1's pairs are already spot-checked.
-- Regenerate it with the file, in the same pipeline step, so the page is never staler than the
-  markdown.
-
 ## Promote one reading to `mul`, and roster the rest
 
 **The readings themselves are DONE** — `reports/cjk-reading-aliases.tsv`, 40,125 people: `ko`
