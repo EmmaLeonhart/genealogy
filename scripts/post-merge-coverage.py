@@ -46,6 +46,7 @@ FAMILY = ROOT / "reports" / "derived-family.csv"
 LABELS = ROOT / "reports" / "derived-labels.csv"
 POST_MERGE = ROOT / "exports" / "post-merge"
 OUT = ROOT / "reports" / "post-merge-coverage.tsv"
+MERGED_AWAY = ROOT / "reports" / "geni-merged-away.tsv"
 
 #: `derived-family.csv` separates multi-valued cells with ` | `. `CLAUDE.md` records what
 #: splitting on the wrong thing cost: 379,251 people arrived childless because a consumer
@@ -66,6 +67,31 @@ def ids_in_post_merge():
     return found
 
 
+def merged_away():
+    """`{stale id: survivor id}` for profiles Geni has merged out of existence.
+
+    **A merged-away relative can NEVER appear in an export**, so the stopping rule cannot be
+    satisfied for it however many exports run. Both of the last two open survivors were this:
+    Jingū-kōgō was short `6000000179131744821`, a second Ōjin profile now redirecting to
+    `6000000001829492981`; Obito Haji-no-muraji was short `6000000001893090174`, which redirects
+    to `6000000012789981728` Eguni Haji-no-muraji. In both cases the SURVIVOR is present.
+
+    Our tree keeps both ids because the merge unions relationships and never drops one, which is
+    exactly the behaviour `CLAUDE.md` records. So the relative is covered when its survivor is.
+
+    Observed by following the profile URL, not looked up: `reports/geni-stale-duplicates.tsv`
+    carries neither pair.
+    """
+    out = {}
+    if not MERGED_AWAY.exists():
+        return out
+    with io.open(MERGED_AWAY, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter=TAB):
+            if r.get("stale_id") and r.get("survivor_id"):
+                out[r["stale_id"].strip()] = r["survivor_id"].strip()
+    return out
+
+
 def cell(row, key):
     return [x.strip() for x in (row.get(key) or "").split(SEP) if x.strip()]
 
@@ -80,6 +106,9 @@ def main() -> int:
     print("%d stale duplicates, %d distinct survivors" % (len(dupes), len(survivors)))
 
     have = ids_in_post_merge()
+    gone = merged_away()
+    if gone:
+        print("%d merged-away ids resolved to their survivor" % len(gone))
     print("%s carries %s distinct people" % (POST_MERGE.name, format(len(have), ",")))
 
     # First-degree relatives, from the merged tree.
@@ -102,7 +131,9 @@ def main() -> int:
     rows, need, tally = [], [], collections.Counter()
     for g, r in sorted(survivors.items()):
         relatives = kin.get(g, [])
-        missing = [x for x in relatives if x not in have]
+        # A relative Geni has merged away is covered by its survivor -- see `merged_away`.
+        missing = [x for x in relatives
+                   if x not in have and gone.get(x) not in have]
         covered = g in have and not missing
         state = ("no relatives recorded" if not relatives
                  else "covered" if covered

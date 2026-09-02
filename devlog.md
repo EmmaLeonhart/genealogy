@@ -25778,3 +25778,39 @@ Nothing else in the file is dead. Re-checked the six I checked last sweep and th
 the ledger-archive job (artifact still 14 items from 2026-08-24, no workflow builds it), the Pages
 site, the merges HTML page, the spine removal (`SPINE_PATHS` still present), and § LABELS, whose
 `zh` bullet is open — `scripts/build-zh-labels.py` is committed but **has never been run**.
+
+## 2026-09-02 — `exports/post-merge/` is COMPLETE, 27 of 27
+
+Her stopping rule was *"export until every first-degree relative of every merged individual is
+present"*. It now reads **27 of 27 covered, 0 survivors needing an export**, and the queue section
+is deleted.
+
+**Two exports closed it, both seeded the documented way** — on a placeholder at the highest tier
+the tree page offered, never on the target, because Ōjin Tennō, Jingū-kōgō and 土師兎 all answer
+*"You are not allowed to export that profile."*
+
+| seed | for | people |
+| --- | --- | ---: |
+| `NN` `6000000227558482822` (mother of Harima no Inabi no Ōiratsume) | Jingū-kōgō | 5,000 |
+| `NN` `6000000227558664902` (mother of Obito Haji-no-muraji) | Obito | 5,000 |
+
+`exports/post-merge/` 23,374 → **24,633** distinct people over eight `Forest` balls. Each export
+took about six minutes.
+
+**But the last two rows were never an export problem at all.** Both "missing relatives" are ids
+Geni has **merged out of existence**, and following the profile URL proves it:
+
+    6000000179131744821  ->  6000000001829492981   (a second Ōjin; Geni offers a pending
+                                                    merge-conflict page for the pair)
+    6000000001893090174  ->  6000000012789981728   (土師兎 -> Eguni Haji-no-muraji)
+
+Both survivors are present. Our tree keeps both ids because the merge unions relationships and
+never drops one — the documented behaviour that makes a stale twin survive forever. So the rule
+could never be satisfied literally, however many exports ran.
+
+`reports/geni-merged-away.tsv` records the two pairs and `post-merge-coverage.py` now resolves a
+merged-away relative to its survivor. Neither pair is in `reports/geni-stale-duplicates.tsv`, so
+both were **observed** rather than looked up.
+
+**Left untouched deliberately:** the pending merge-conflict page on Ōjin asks which values to keep
+(Created On, Manager, First/Last Name, Birth Date). That is Emma's decision.
