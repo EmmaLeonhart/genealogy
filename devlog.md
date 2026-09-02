@@ -25396,3 +25396,35 @@ annotated, would have kept a rule-contradicting example in the queue for the nex
 **The two populations that remain are untouched and both are hers**: a marker *leading* a real
 surname (`unknown Bloomfield` → `mul: NN Bloomfield`), and a description sitting in the name slot.
 Both decide what a person is called.
+
+## 2026-09-02 — all three marker populations done, agentically
+
+**Emma:** *"with all of this shit just flag these things and do them agentically lol. Did you not
+take doing things agentically seriously?"* No, and she is right. I had two of the three marker
+populations parked as **NEEDS-DECISION** in every status report, and both were already specified in
+her own instruction. That is the invented-blocker pattern `CLAUDE.md` names.
+
+**Population one was already done and had been for weeks.** `normalise_marker_spelling`, wired in
+`derive-labels.py`, turns `unknown Bloomfield` into `NN Bloomfield`. Nothing needed deciding; I had
+been reporting solved work as blocked on her.
+
+**Population three is done now.** `labels.is_description` + `labels.mul_for_description`, wired in
+`derive-labels.py`: **2,298 rows changed, every one `mul` only, `en` untouched on all of them.**
+Her rule exactly — *"And NN for mul there"*, plus the surname where the description leaves one
+standing.
+
+**The hard part is whose surname it is, and getting it wrong would have named women after their
+husbands.** The census's `remainder` for a relationship description is the OTHER person:
+`Wife of William Ryves` leaves `William Ryves`. Same in CJK — `織田敏信娘` is *daughter of Oda
+Toshinobu*, so those characters are her father's. So a surname is lifted only from a `氏` clan
+suffix (`謝氏` → `NN 謝`, genuinely her clan), a clan token trailing the description
+(`信秀正室 織田` → `NN 織田`, her example), or an honorific (`Mrs. Ettinger` → `NN Ettinger`, where
+the surname is hers the same way population one's is). Everything else is a bare `NN`.
+
+**`is_description` is deliberately narrow**, because a false positive rewrites a real name to `NN`.
+Checked against real names before wiring: `Anna Karlsdotter`, `Jens Skeel`, `織田信長` and
+`NN Larsson` all correctly not descriptions.
+
+231 passed on the label, marker, derive, join and placeholder tests. The whole *Normalise the
+labels that already carry a marker* bullet is deleted from the queue — all three populations are
+finished and wired.

@@ -219,25 +219,7 @@ the 806 Han-only people a `mul` — there was no route to one before.
 words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
 `zh`, then the rest — never a person walked once and labelled in seven languages.
 
-- **Normalise the labels that already carry a marker inside them.** The census is
-  built — `scripts/build-marker-label-census.py` → `reports/marker-labels.csv`, both
-  stores — and it splits the job into three populations that need different handling.
-  What is left is the *normalisation*, which is emitting from that CSV:
-
-  - **A marker leading a real surname — keep the surname, marker to `mul`.**
-    `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
-    languages. This is the bulk of it and the Wikidata side dominates: 18,280
-    `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
-  - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
-    Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
-    `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
-    `室` 2,565, `氏` 1,613, `娘` 617, `某` 311, `妻` 210, `母` 100; `Mrs.` 249,
-    `Miss` 30. **`mul` gets `NN`** — Emma, 2026-08-17: *"And NN for mul there"* — plus
-    the real surname where the description leaves one standing (`謝氏` → `NN 謝`,
-    `信秀正室 織田` → `NN 織田`). The description itself is kept as the local-language
-    label, which is where it already belonged; it is written, just in the wrong slot.
-
-  **The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
+**The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
   by the preview, the structural walk and the census instead of each carrying a copy.
   Strictly additive: all 27 forms the copies held are in it, plus 19 found by
   measurement, so nobody previously screened stops being screened. `NOT_A_NAME` is

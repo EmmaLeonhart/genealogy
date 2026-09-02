@@ -550,6 +550,97 @@ def normalise_marker_spelling(label: str) -> str:
     return strip_markers(label)
 
 
+#: The CJK descriptors whose PRECEDING characters are the woman's own clan, not somebody
+#: else's name. `謝氏` is "the Xie-clan woman" and 謝 is hers. `織田敏信娘` is "daughter of Oda
+#: Toshinobu" and 織田敏信 is her FATHER — putting that in her label would name her after him.
+CLAN_SUFFIX = ("氏",)
+
+#: A title, not a relationship: the name beside it is the person's own.
+HONORIFICS = {"mrs", "mrs.", "miss", "ms", "ms.", "mme", "madame", "frau", "fru"}
+
+#: Descriptors where the name beside them belongs to somebody else: a husband, a father, a son.
+#: These get a bare `NN`, never `NN <that name>`.
+OTHERS_NAME_DESCRIPTORS = ("娘", "室", "正室", "妻", "母", "某")
+
+
+#: Words that make a label a DESCRIPTION of a person rather than their name. Kept narrow on
+#: purpose: a false positive rewrites somebody's `mul` label to `NN`.
+RELATIONSHIP_DESCRIPTORS = (
+    "wife of", "husband of", "daughter of", "son of", "mother of", "father of",
+    "child of", "widow of", "consort of",
+    "hija de", "hijo de", "nieto de", "nieta de", "esposa de",
+    "fille de", "femme de", "datter av", "kone av", "dotter till",
+)
+
+
+def is_description(label: str) -> bool:
+    """Is this label a description of a person rather than a name?
+
+    Three shapes, from her census — `queue.md` § *LABELS, IN HER ORDER*: an English or Spanish
+    relationship phrase (`wife of` 1,447, `daughter of` 1,201), a CJK descriptor (`氏` 7,444,
+    `娘` 1,589, `某` 1,420, `室` 998), and an honorific (`mrs.` 661).
+
+    **Narrow on purpose.** A false positive rewrites a real name to `NN`, which is much worse than
+    leaving a description in place for one more pass — so a bare `wife` with no `of`, or a
+    trailing 娘 on a name that might be a given name, is not enough on its own.
+    """
+    text = (label or "").strip()
+    if not text:
+        return False
+    low = text.casefold()
+    if any(low.startswith(d) or (" " + d) in low for d in RELATIONSHIP_DESCRIPTORS):
+        return True
+    parts = text.split()
+    if parts and parts[0].casefold().strip(".,") in HONORIFICS and len(parts) > 1:
+        return True
+    if any(text.endswith(sfx) for sfx in CLAN_SUFFIX + OTHERS_NAME_DESCRIPTORS):
+        return True
+    return any(d in parts[0] for d in OTHERS_NAME_DESCRIPTORS + CLAN_SUFFIX) if len(parts) > 1 else False
+
+
+def mul_for_description(label: str) -> str:
+    """The `mul` label for a person whose name slot holds a DESCRIPTION, not a name.
+
+    **Emma, 2026-08-17:** *"And NN for mul there"* — plus the real surname where the description
+    leaves one standing, her examples being `謝氏` → `NN 謝` and `信秀正室 織田` → `NN 織田`.
+
+    **The surname is only taken when it is HERS, and that is the whole difficulty.** The census's
+    `remainder` for a relationship description is the *other* person: `Wife of William Ryves`
+    leaves `William Ryves`, and `NN William Ryves` would label a woman with her husband's name.
+    Same in CJK — `織田敏信娘` is *daughter of Oda Toshinobu*, so the characters before 娘 are her
+    father's.
+
+    So a surname is only lifted from a `氏` clan suffix, where `謝氏` genuinely means *the woman of
+    the Xie clan*, or from a standalone clan token trailing the description as in `信秀正室 織田`.
+    Everything else is a bare `NN`.
+
+    Returns `""` when the label is not a description, so the caller leaves it alone.
+    """
+    text = (label or "").strip()
+    if not text:
+        return ""
+    # `謝氏` — the clan is what precedes the suffix, and it is hers.
+    for suffix in CLAN_SUFFIX:
+        if text.endswith(suffix) and len(text) > len(suffix):
+            clan = text[: -len(suffix)].strip()
+            if clan and not any(clan.endswith(d) for d in OTHERS_NAME_DESCRIPTORS):
+                return ("%s %s" % (UNNAMED_MARKER, clan)).strip()
+    # `信秀正室 織田` — a clan token left standing after the description.
+    parts = text.split()
+    # **An honorific behaves like a leading marker, not like a relationship.** `Mrs. Smith` — the
+    # surname IS hers, married or not, exactly as `unknown Bloomfield` becomes `NN Bloomfield` in
+    # population one. A relationship descriptor is the opposite and is handled above.
+    if len(parts) > 1 and parts[0].casefold().strip(".,") in HONORIFICS:
+        rest = " ".join(parts[1:]).strip()
+        if rest:
+            return ("%s %s" % (UNNAMED_MARKER, rest)).strip()
+    if len(parts) > 1 and any(d in parts[0] for d in OTHERS_NAME_DESCRIPTORS + CLAN_SUFFIX):
+        tail = parts[-1].strip()
+        if tail and not any(d in tail for d in OTHERS_NAME_DESCRIPTORS + CLAN_SUFFIX):
+            return ("%s %s" % (UNNAMED_MARKER, tail)).strip()
+    return UNNAMED_MARKER
+
+
 def strip_wedged_marker(label: str) -> str:
     """Remove an unknown-name marker that sits INSIDE an otherwise real name.
 

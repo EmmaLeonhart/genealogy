@@ -46,7 +46,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import without_nickname  # noqa: E402
 from labels import (  # noqa: E402
-    drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker)
+    drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker,
+    is_description, mul_for_description)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -295,12 +296,21 @@ def main() -> int:
             primary = married
             alias_out = ([birth] if birth else []) + aliases[1:]
 
+        # **A description is not a name, so `mul` gets `NN` and the description stays in `en`.**
+        # Emma, 2026-08-17: *"And NN for mul there"* — plus the real surname where the description
+        # leaves one standing, `謝氏` → `NN 謝`, `信秀正室 織田` → `NN 織田`.
+        #
+        # **The surname is only taken when it is HERS.** `Wife of William Ryves` gets a bare `NN`,
+        # because `William Ryves` is her husband; `織田敏信娘` likewise, because those characters
+        # are her father. `labels.mul_for_description` is the one place that knows the difference.
+        mul_label = mul_for_description(primary) if is_description(primary) else primary
+
         rows.append([
             geni_id,
             qid,
-            # en and mul are the same string: the married form where there is one.
+            # en keeps the description — it is real information and already in the right slot.
             primary,
-            primary,
+            mul_label,
             " | ".join(latin[1:]),
             " | ".join(cjk),
             " | ".join(other + mixed),
