@@ -165,6 +165,26 @@ def ledger():
 def main():
     ids = people_in_batches()
     have = ledger()
+
+    # **The father for a patronymic's `P144` comes from a WIDER map than the ledger.**
+    # Emma, 2026-09-02: *"Patronymics are not getting the names they come from in the logic lol
+    # that's actually essential to the real specified algorithm."* The ledger is ~1,179 rows;
+    # 518,855 Geni ids carry a `P2600` on Wikidata. Looking only in the ledger meant `P144`
+    # fired only where she had made the father herself.
+    #
+    # The correspondence union is deliberately NOT consulted: it is 568,535 wide and includes
+    # zipper-inferred pairs measured at 2.8-4.8% error, and a wrong `P144` asserts that this
+    # patronymic derives from THAT man -- a false claim about a named person, not a mis-ranking.
+    any_item = {}
+    _p2600 = ROOT / "out" / "wikidata" / "p2600-all.tsv"
+    if _p2600.exists():
+        with open(_p2600, encoding="utf-8") as _f:
+            for _row in csv.reader(_f, delimiter="	"):
+                if len(_row) >= 2 and _row[0].startswith("Q") and _row[1].strip().isdigit():
+                    any_item.setdefault(_row[1].strip(), _row[0])
+
+    def father_item(dad):
+        return (have.get(dad) or any_item.get(dad)) if dad else None
     print(f"{len(ids)} people across {len(BATCHES)} Garborg batches, "
           f"{len(have)} already holding a QID")
     # The token scan covers BOTH populations: the people being created (so the item
@@ -345,7 +365,7 @@ def main():
             try:
                 sts, _notes = statements_for(
                     labels_of.get(geni_id, ""), local, geni_id,
-                    father_qid=have.get(dad) if dad else None,
+                    father_qid=father_item(dad),
                     fields=person, sex=sex_of.get(geni_id, ""),
                     father_name=person.get("father_name", ""))
             except Exception as exc:                                   # noqa: BLE001

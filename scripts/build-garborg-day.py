@@ -4700,6 +4700,29 @@ def main():
         print("WARNING: out/wikidata/p2600-all.tsv missing - a person whose item nobody here "
               "made is invisible and could be created twice")
 
+    def father_item(dad):
+        """The QID for a patronymic's `P144` *based on*, or `None`.
+
+        **Emma, 2026-09-02:** *"Patronymics are not getting the names they come from in the
+        logic lol that's actually essential to the real specified algorithm."* She is right and
+        the cause was scope, not a missing feature: `namemodel.statements_for` has taken a
+        `father_qid` since it was written, and both call sites passed one -- but they looked the
+        father up in `our_items`, **the 1,179-row ledger**, when 518,855 Geni ids carry a
+        `P2600` on Wikidata. So `P144` fired only when she happened to have made the father
+        herself. Measured before the change: 6 `P5056` statements, 2 with `P144`.
+
+        **The ledger first, then any `P2600` -- and the correspondence union NOT at all.** Those
+        first two are direct statements of identity: one she made, one Wikidata already holds.
+        `known_pair` is 568,535 wide and includes zipper-inferred pairs, which
+        `reports/zipper-reliability.md` measures at 2.8-4.8% error. A wrong `P144` does not
+        merely mis-rank something -- it asserts this patronymic derives from THAT man, which is
+        a false claim about a named person. `CLAUDE.md`: labels confirm a position, they never
+        choose one, and the same caution applies to a father.
+        """
+        if not dad:
+            return None
+        return our_items.get(dad) or any_wikidata_item.get(dad)
+
     # **A P2600 is not the only way we know somebody already has an item -- and on 2026-09-01 it
     # let a duplicate through.** Emma, on `Q550343` *Welf I, Duke of Bavaria*, an item with 27
     # sitelinks that a batch re-created as `Q141249742`: *"this one was made as a new individual
@@ -5404,7 +5427,7 @@ def main():
             # The father's NAME, not just his QID: Emma's test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
             for line in name_lines(labels.get(g, ""), plan, g,
-                                   our_items.get(dad) if dad else None,
+                                   father_item(dad),
                                    father_name=labels.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
@@ -5797,7 +5820,7 @@ def main():
         if not redacted and _has_given_name(fields.get(g)):
             dad = father.get(g)
             name_statements, unresolved = name_lines(
-                labels[g], plan, g, our_items.get(dad) if dad else None,
+                labels[g], plan, g, father_item(dad),
                 fields=fields.get(g), sex=f["sex"],
                 father_name=labels.get(dad, "") if dad else "")
             lines.extend(name_statements)

@@ -26069,3 +26069,27 @@ times a day. `workflow_dispatch` and a 06:23 schedule, off the hour.
 
 The build step fails if the page is empty or missing its own headings — a site that deploys to
 nothing looks like a working deploy, which is a failure mode this repo has hit elsewhere.
+
+## 2026-09-02 — patronymics now carry the name they come from
+
+Emma: *"Patronymics are not getting the names they come from in the logic lol that's actually
+essential to the real specified algorithm."*
+
+**The cause was scope, not a missing feature.** `namemodel.statements_for` has taken a
+`father_qid` and emitted `P144` *based on* since it was written, and both call sites passed one —
+but they looked the father up in `our_items`, **the 1,179-row ledger**, while **518,855 Geni ids
+carry a `P2600` on Wikidata**. So `P144` fired only where she happened to have created the father
+herself.
+
+`father_item()` in `build-garborg-day.py` and in `build-garborg-name-items.py` now tries the
+ledger, then any `P2600`. Measured over the batch: **`P144` on 2 of 5 person-level patronymics
+before, 4 of 5 after.**
+
+**The correspondence union is deliberately NOT consulted**, though it is 568,535 wide and would
+raise the number further. It includes zipper-inferred pairs, measured at 2.8–4.8% error in
+`reports/zipper-reliability.md`, and a wrong `P144` is not a mis-ranking — it asserts that this
+patronymic derives from THAT man, a false claim about a named person.
+
+**The remaining gap is real, not a miss.** `Q141224345` *Signy Tormodsdatter Rossavik* has a
+father in the tree, `6000000005606886646`, who carries no `P2600` anywhere — so there is nothing
+to point at and the absent qualifier is correct.
