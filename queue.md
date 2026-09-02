@@ -27,9 +27,23 @@ settles it via neighbours and which exports they came from, never the name.
 
 So the dependency is the **culture classifier**, not a creation count.
 
-**And the classifier's problem is SCOPE, measured 2026-09-01.** It covers **13,638** people —
-13,416 `zh`, 222 `ja` — while **47,296** distinct people carry Han in a name. **33,658 Han-named
-people are never classified at all**, so the `P1814` population is unknown rather than small.
+**And the classifier's problem is SCOPE, measured 2026-09-01. Nothing about the classification
+is hard** — her question, and she is right. The algorithm works; it is aimed at the population that
+needs **romanising**, which `build-cjk-romanisation.py` defines from the **label**: a CJK label with
+no Latin one. Correct for romanisation, wrong for `P1814`.
+
+| | |
+| --- | ---: |
+| Han in **any** name record | **47,296** |
+| Han in their derived **label** | 14,111 |
+| covered by the classifier | **13,638** |
+| **Han name record, Latin primary label** | **33,197** |
+
+Those 33,197 read as `Robert Kanō` in Latin and carry `加納 郁夫` in a second `NAME` record, so their
+Han name is never put to the classifier at all. **The step is to run the same algorithm over
+everyone with a Han name record**, writing a culture verdict without touching the romanisation
+scope — the label batches consume `cjk-romanisation.csv` and must not start receiving people who
+already have a Latin form.
 
 **Do not cap the walk on the evidence currently in `reports/culture-classifier-check.md`.** That
 report inferred the walk was unsafe past two hops from **two** misclassified people. Measured over

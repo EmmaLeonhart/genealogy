@@ -91,11 +91,28 @@ heterogeneous."* Measured over the whole output of `reports/cjk-romanisation.csv
 answer a defect seen twice. `MAX_HOPS` is **14**, not the eight this report said, and a comment
 beside it still says "six-hop"; both were stale.
 
-**The real finding is scope, not hops.** The classifier covers **13,638** people while **47,296**
-distinct people carry Han in a name — so **33,658 Han-named people are never classified at all**.
-For `P1814` that matters more than the misclassification rate: the property's population is not
-"the 226 once they are created", it is however many of those 47,296 turn out Japanese, and most of
-them have never been put to the classifier.
+**The real finding is scope, not hops — and the mechanism is not what I first wrote.** Emma,
+2026-09-01: *"Why can't we just do our cultural clarification algorithm from earlier? What's so
+hard about the classification?"* Nothing is hard. The algorithm — clan seat, place, name form, then
+the graph walk — works. It is pointed at the population that needs **romanising**, and that
+population is defined by the **label**:
+
+| | |
+| --- | ---: |
+| Han in **any** name record | **47,296** |
+| Han in their derived **label** | 14,111 |
+| covered by the classifier | **13,638** |
+| **Han name record, Latin primary label** | **33,197** |
+
+`build-cjk-romanisation.py` reads `reports/derived-labels.csv` and keeps whoever has a CJK label
+and no Latin one — correct for romanisation, because somebody already reading `Robert Kanō` needs
+no English form invented. But their Han name still exists, in a second `NAME` record, and `P1814`
+is a reading of exactly that. **33,197 people have a Han-written name the classifier never sees.**
+
+An earlier version of this correction said those people were skipped by *the Latin-label filter*.
+That had the right order of magnitude and the wrong mechanism: the filter accounts for a few
+thousand, and the 33,197 are missed because the classifier reads **labels** rather than **name
+records**.
 
 **Nothing is changed in the classifier on this evidence.** A hop cap needs a measured error rate by
 hop distance, which needs more than two checkable people; that is the experiment to run, not a
