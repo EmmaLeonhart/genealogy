@@ -25375,3 +25375,24 @@ those are Wikidata-side labels this file does not touch, and the rest collapse b
 `NARROW_MARKERS`. `strip_markers` unions both and so does this.
 
 223 passed on the label, marker, derive and join tests.
+
+## 2026-09-02 — dead-queue sweep: the mechanical marker bullet deleted, it is finished
+
+**10 sections before, 10 after.** No whole item died; the bullet inside § *LABELS, IN HER ORDER*
+that was cut back last sweep is now **deleted**, because it is done on both halves.
+
+**Built** (`f64fe8c5`, `3e85242c`): `scripts/build-marker-normalisation.py` →
+`reports/marker-label-normalisation.tsv`, 1,568 normalisations, 0 markers surviving as a token,
+0 unbalanced brackets. **Wired** (`5d9c5bb3`): `labels.strip_wedged_marker` runs inside
+`derive-labels.py`, and the re-derive changed **243 labels**. Last sweep it stayed because nothing
+read the file; that is no longer true, so it goes.
+
+**What its deletion also removes is a wrong example**, which is the better reason to delete rather
+than annotate. The bullet cited `Nechama (?) Heller` → `Nechama Heller` as this population, and
+`CLAUDE.md` § *An obvious unknown-word marker* says the opposite: *"words yes, punctuation no —
+`Nechama (?) Heller` is a name with a bracketed hole, not a marker."* Leaving the bullet in place,
+annotated, would have kept a rule-contradicting example in the queue for the next reader.
+
+**The two populations that remain are untouched and both are hers**: a marker *leading* a real
+surname (`unknown Bloomfield` → `mul: NN Bloomfield`), and a description sitting in the name slot.
+Both decide what a person is called.

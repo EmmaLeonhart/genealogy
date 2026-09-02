@@ -228,19 +228,6 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
     `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
     languages. This is the bulk of it and the Wikidata side dominates: 18,280
     `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
-  - ~~A real name with a marker wedged inside it~~ — **DONE 2026-09-02**, and the only part of
-    this bullet that is. `scripts/build-marker-normalisation.py` →
-    `reports/marker-label-normalisation.tsv`, **1,568 normalisations** (867 Wikidata-side, 701
-    Geni-side): `Hadaburg NN Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`, `Viki (Unknown)`
-    → `Viki`. **Wired 2026-09-02** — `labels.strip_wedged_marker` runs in `derive-labels.py` straight after
-    `normalise_marker_spelling`, so it is in the pipeline rather than in a file nobody reads.
-    **243 labels changed** on the re-derive: `Anna NN Duchess of Pomerania` → `Anna Duchess of
-    Pomerania`, `Jens NN Skeel` → `Jens Skeel`.
-
-    **`Nechama (?) Heller` is NOT in this population**, and the example above is wrong.
-    `CLAUDE.md` § *An obvious unknown-word marker* rules: *"words yes, punctuation no —
-    `Nechama (?) Heller` is a name with a bracketed hole, not a marker."* The authority file wins
-    over the example; `(?)` is left where it is.
   - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
     Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
     `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
