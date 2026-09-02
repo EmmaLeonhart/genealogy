@@ -569,6 +569,34 @@ readings, none obviously right:
 renaming an assertion about a real file; the cost of the same mistake across 586 path files is
 much larger.
 
+## Promote one reading to `mul`, and roster the rest
+
+**The readings themselves are DONE** — `reports/cjk-reading-aliases.tsv`, 40,125 people: `ko`
+40,125, `zh` 40,109, `ko_variants` 6,654, sourced `ja` 391. All of them are `Amul` aliases, so
+nothing here is blocked on a culture verdict.
+
+**What is left is the promotion**, which is Emma's *"just a matter of which one is chosen at the
+top"*:
+
+- **Emit the aliases.** 5,621 of the 40,125 already have a Wikidata item, so those are addable
+  with no creation at all. `Amul` per reading, no `Aen` ever — § *The MARRIED name is the real
+  name* — and no descriptions.
+- **Promote per culture** where the classifier is confident: `ko` for Korean people, `zh` for
+  Chinese, sourced `ja` for Japanese. A wrong promotion is a reordering, not a wrong name.
+- **Roster the unsure**, gated the way unsure parents are. **1,274 of 38,469** carry no verdict,
+  893 of them because there was no evidence within 14 hops. That is the manual/agentic deck, and
+  it shrinks on its own as confirmations propagate by network proximity.
+- **`build-cjk-romanisation.py`'s docstring is stale** — it says no `hanja` and no `pykakasi` is
+  installed. Both are, and both are now used.
+
+**Do not reopen the classifier to improve it.** Emma, 2026-09-02: *"this isn't something to waste
+forty eight hours on... a very ill scoped problem that got a massive scope creep."*
+
+**One free discriminator was found and is NOT to be chased now**, only recorded: `pykakasi`
+resolving a surname to a kun'yomi reading (青山 → あおやま) means its dictionary knows the token as
+Japanese, where a Chinese surname falls back to on'yomi (謝 → しゃ). That would settle the
+Japanese-in-`zh` misclassification cheaply. It is a promotion-order fix, not a gate.
+
 ## `P1814` *name in kana* — AT THE END, her call 2026-09-02
 
 **Emma:** *"Put this culture identification thing at the end and work on everything else."* Four ticks went into it and it emitted **zero statements**; the readings are found and waiting, so it costs nothing to leave here.

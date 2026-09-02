@@ -25527,3 +25527,29 @@ clan-seat drops stay dropped and compound surnames like 歐陽 survive.
 the walk filed them under `zh`. Composition made those strings longer, not wronger — they were
 already wrong — but wiring `romanised` into `label_en` would publish them. The queue item now says
 to measure the Japanese-in-`zh` rate first.
+
+## 2026-09-02 — all three readings produced; culture demoted to a promotion order
+
+Emma reframed the culture work: *"the kana name plus the Korean name plus the Mandarin
+pronunciation of every single arbitrary character thing is something that is actually
+produced... It's just a matter of which one is chosen at the top."* All three readings go on
+as `Amul` aliases, so the classifier no longer gates whether a person is labelled — only which
+alias is promoted to `mul`, which is movable per person afterwards.
+
+- `scripts/build-han-readings.py` → `reports/han-readings.tsv`, 4,688 characters over 41,154
+  people. `ko` 4,688, `zh` 4,682, `ja` candidate-only.
+- `scripts/import-unihan.py` → `reports/unihan-corpus-readings.tsv`. Emma authorised the Unihan
+  download over a `pypinyin` dependency, so stdlib-only stands.
+- `scripts/build-cjk-reading-labels.py` → `reports/cjk-reading-aliases.tsv`, 40,125 people;
+  5,621 already have an item, so those aliases need no creation.
+
+Two defects found by reading output, both wrong names rather than missing ones:
+
+- **金 read as 금 not 김.** `hanja` returns one reading where Unihan lists several, so 金庾信 came
+  out 금유신 for **김유신, Kim Yu-sin**. Both sources are now merged and every reading kept;
+  6,654 people gain a surname alternate.
+- **A Han regex that swallowed Hangul.** The range boundary was U+8C48, not U+F900 — identical
+  glyphs, and NFC maps one to the other — so the class became U+8C48–U+FAFF and contained the
+  Hangul Syllables block. 5,338 Korean people whose names are already Hangul were dropped as
+  unreadable; skips went 5,350 → 12. Ranges are now ASCII `\u` escapes. The three pre-existing
+  copies were checked by codepoint and are correct.

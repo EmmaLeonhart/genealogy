@@ -551,6 +551,59 @@ So, everywhere:
 present?"* records that kana and Hangul settle which culture a CJK name is where bare Han does
 not. Those people were being used to disambiguate and then not labelled in their own language.
 
+### ALL THREE readings are produced for everyone. Culture only picks which goes on top
+
+**Emma, 2026-09-02, and it dissolves the culture problem rather than solving it:** *"the kana name
+plus the Korean name plus the Mandarin pronunciation of every single arbitrary character thing is
+something that is actually produced... we'd even essentially have all of the labels the thing
+would ever possibly have in the `mul` label. It's just a matter of which one is chosen at the
+top."* And on the shape: *"there would be `Amul` labels for the rest — for the other two, or even
+`Amul` for all of them — and the `mul` one is set later."*
+
+**So the culture classifier is OFF the critical path.** It no longer decides whether a person gets
+a label; it decides which alias is promoted to `mul`. That is one line, per person, movable
+afterwards — so a wrong verdict costs a reordering, not a wrong name and not a missing one. The
+people the walk cannot classify stop being blocked and become a roster.
+
+**This is why the classifier must not be perfected.** Emma, same message, naming what went wrong:
+*"this isn't something to waste forty eight hours on... this is just a very ill scoped problem
+that got a massive scope creep."* The gate and the roster are the deliverable. Confirmed cultures
+propagate by network proximity, so the roster shrinks as people are settled.
+
+**The character table is the unit, not the person.** `reports/han-readings.tsv` is 4,688 rows for
+41,154 people, reusable by every emitter: `ko` 4,688, `zh` 4,682, `ja` candidate-only.
+`scripts/import-unihan.py` builds it from Unicode's Unihan — **a data file, not a dependency**, so
+§ *Stdlib only* is intact; Emma chose it over `pip install pypinyin` on 2026-09-02.
+
+**`ko` needs TWO sources and neither alone is right.** `hanja` returns one reading; Unihan's
+`kHangul` lists several. 金 is `금 김`, and taking the first gave 金庾信 as 금유신 when the man is
+**김유신, Kim Yu-sin** — the commonest surname in Korea read as the wrong word. 沈 is 심/침 and the
+surname is 심. Measured over all 4,688: the two agree 3,543 times and differ 100, and almost every
+difference is **두음법칙**, the initial-sound rule — `hanja` gives the word-initial form (隴 농,
+礼 예) and Unihan the base reading (롱, 례). Neither is wrong. Coverage is complementary, ~1,000
+characters each way, so both are merged and **every reading is kept** — § *One name item per
+USAGE*, where a token in two roles is not an ambiguity to resolve.
+
+**Alternates vary the SURNAME TOKEN ONLY** — Geni writes given names first, so that is the last
+token. That is where the alternation changes a name; varying every position on a four-character
+name yields sixteen aliases nobody searches for.
+
+**`ja` is the one that stays research.** `pykakasi` reads *surnames* correctly out of its
+dictionary — 青山 あおやま, 酒井 さかい, 藤原 ふじわら — and falls back to on'yomi on *given*
+names, where Japanese personal readings are irregular: 幸豊 → こうほう for **Yukitoyo**. So it is
+a candidate column, never an emitted one, and `scripts/fetch-kana-readings.py` remains the sourced
+answer. That measurement is what *"a kana reading is not derivable by rule"* looks like in data.
+
+**A Han range written with LITERAL boundary characters is a bug waiting to happen.** U+F900 CJK
+COMPATIBILITY IDEOGRAPH and U+8C48 render identically, and NFC normalisation maps the first to the
+second — so `豈-﫿` silently becomes U+8C48–U+FAFF, which contains the whole Hangul Syllables
+block. It cost **5,338 Korean people**, whose names are already Hangul, being counted as Han,
+found unreadable and dropped; skips went 5,350 → 12 on the fix. The tell was that only 2
+characters in the corpus lacked a reading, which cannot explain 13% of the population failing.
+**Write the range as ASCII `\uXXXX` escapes** — the literal form did not survive one edit
+round-trip here. The pre-existing copies in `classify-name-ambiguity.py`, `profilenames.py` and
+`build-cjk-clan-labels.py` were each checked by codepoint and are correct.
+
 ### A middle initial keeps its Latin letter in every language
 
 **Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was
