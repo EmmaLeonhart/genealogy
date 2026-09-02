@@ -84,7 +84,30 @@ def existing_state(qids):
     what it holds is whatever our own batch wrote, which is knowable from the batch
     rather than from here. Callers must not read absence as "the item is empty".
     """
+    # **The store index is gitignored, so a CI runner does not have it.** `CLAUDE.md` lists
+    # `out/wikidata/store-index.sqlite3` among the files GitHub physically refuses, and
+    # `sqlite3.connect` on a missing path silently CREATES an empty database rather than
+    # raising — so the failure surfaced four steps later as `no such table: items` and killed
+    # the 2026-09-01 21:50 pipeline run *after* it had already built the batch.
+    #
+    # **Returning `{}` is this function's own documented contract, not new behaviour.** The
+    # docstring above says a QID absent from the result is one the store has never seen, and
+    # both callers already handle exactly that: `absent()` returns True and emits a statement
+    # QuickStatements merges away if redundant, and the label site reads `langs` from
+    # `reports/garborg-live-labels.tsv` because the store predates every item Emma has made.
+    # An offline enrichment that is unavailable must not fail a run that has its answer.
+    if not INDEX.exists():
+        print(f"WARNING: {INDEX} is absent — every item reads as 'not in the store', which is "
+              "this function's documented unknown. Statements are emitted and merged; labels "
+              "come from the live fetch.", file=sys.stderr)
+        return {}
     con = sqlite3.connect(str(INDEX))
+    try:
+        con.execute("SELECT 1 FROM items LIMIT 1")
+    except sqlite3.OperationalError as exc:
+        print(f"WARNING: {INDEX} has no `items` table ({exc}) — treating the store as unseen.",
+              file=sys.stderr)
+        return {}
     out = {}
     for qid in qids:
         item = load_item(qid, con)
@@ -94,6 +117,15 @@ def existing_state(qids):
 
 
 def main():
+    # Run directly, this script IS the report and the store is its whole point — so unlike
+    # `existing_state`, which is an optional enrichment inside a larger run, there is nothing
+    # to degrade to. Say so and stop, rather than emitting a report of empty rows.
+    if not INDEX.exists():
+        print(f"{INDEX} is absent; this report reads the offline store and has nothing to say "
+              "without it. Rebuild it with `genimerge.wikistore.build_index(STORE, INDEX)` — "
+              "`scripts/import-item.py` calls it that way.",
+              file=sys.stderr)
+        return 1
     con = sqlite3.connect(str(INDEX))
     ledger = list(csv.DictReader(open(ROOT / "reports" / "garborg-qids.tsv",
                                       encoding="utf-8"), delimiter="\t"))
