@@ -25454,3 +25454,20 @@ applies. One token honestly absent beats widening a Norwegian reader to a script
 626 tokens needed, 3 missing, 2 added, 1 unreadable. 213 passed on the translit, label, marker and
 join tests. The standalone tail item is deleted; what remains lives in the `en` step where it
 belongs.
+
+## 2026-09-02 — sweep: the last unreadable-token bullet deleted, it is a closed record
+
+**9 sections before, 9 after.** No whole item died; the residual bullet inside § *LABELS, IN HER
+ORDER* went.
+
+**Deleted: the `Карлов` bullet.** It was not a step — it stated that the correct outcome is to
+leave the token refused, and a bullet whose content is *"this is right as it is"* is a record, not
+work. Verified before deleting: the funnel reports **1 missing** of 626, which is that token, and
+the governing rule survives in `CLAUDE.md` — *a token it cannot read is left out and reported*.
+
+Keeping it would have been the annotate-in-place failure the sweep exists against: a reader would
+see an open bullet and re-open a question that has an answer.
+
+**Everything else verified open, not assumed:** 0 Pages workflows, 0 workflows calling
+`full_entities`, no `out/merges*.html`, `SPINE_PATHS` at 5 references, 0 batches emitting `P1814`,
+and 2 survivors still short of the `exports/post-merge/` stopping rule.

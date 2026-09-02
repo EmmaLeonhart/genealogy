@@ -236,21 +236,6 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   exports they came from"*, never the name. 806 Han-only among the structural
   placeholders alone; the corpus figure is larger and is what this step must count.
 
-- **1 token the funnel cannot read: `Карлов`**, of 626 needed. It was 8, and six of those were
-  never unreadable names — they were names wearing punctuation. `""Inge""`, `"Ingebret`,
-  `Garborg"`, `Talgje,`, `Törnstjerna,` reached the engine with quote marks and commas attached,
-  and it correctly refused them; the fault was in the tokeniser and had been filed as a fault in
-  the reader. `clean_token` strips leading and trailing punctuation at every producer — and only
-  leading and trailing, because `Låge-Håland` and `O'Brien` are single tokens whose hyphen and
-  apostrophe are part of the name. `Queen` was the seventh and is a **title**, now in `TITLES`
-  beside `SKIP`: a katakana rendering of the English word *Queen* is the exact failure that list
-  exists to prevent.
-
-  **`Карлов` stays refused and that is correct.** It is Cyrillic, in
-  `Carl Emil Knut Карлов Stjernvall-Walleen`, and `translit_no` is a Norwegian orthography reader.
-  `translit_scripts` transliterates *into* `ru`/`el`/`hi`/`ar` rather than out of them, so it does
-  not help either. One token, honestly absent, is what `CLAUDE.md` asks for.
-
 - **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
   Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
   `reports/derived-family.csv`, and **none of them reaches
