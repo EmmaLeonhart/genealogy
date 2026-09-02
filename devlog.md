@@ -25212,3 +25212,24 @@ items` because `out/wikidata/store-index.sqlite3` is gitignored and `sqlite3.con
 empty database rather than raising. Both are **a file the runner cannot have, reached by code that
 assumed it could** — so anything added to this workflow gets checked against `.gitignore` first.
 That warning is now in the item.
+
+## 2026-09-02 — `P1814` has a worklist, and its datatype in `CLAUDE.md` was wrong
+
+**`reports/p1814-worklist.tsv`**, over the 1,036 people the classifier calls Japanese and the
+correspondence gives an item: **381 already carry `P1814`**, 397 have a `jawiki` article whose lead
+sentence holds the reading, 16 have kana on the item already, 242 have no source yet.
+
+So the property is not empty and never was — 37% of our own population is already done on
+Wikidata, and another 413 readings are **findable rather than generatable**, which is the
+distinction the item always drew.
+
+**And the property table in `CLAUDE.md` had the wrong datatype.** It said `P1814` is *monolingual
+text*; `wbgetentities` says **string**, while `P1477` and `P1559` really are `monolingualtext`.
+The error was harmless while nothing emitted it — and it stopped being harmless the moment
+something *read* it: a survey demanded a `{text, language}` dict and reported **0 of 151** items
+carrying `P1814` when 45 do. Two runs of the same script disagreed, which is what forced the check.
+
+`CLAUDE.md` § *Names* now records the datatype, the evidence, and the shape of the QuickStatements
+line — a bare quoted string with **no** language prefix. `tests/test_wikidata_ids_documented.py`
+passes; that test only checks an ID is *documented*, never that it is correct, which is exactly the
+gap this fell into and the reason `wbgetentities` remains the only thing that catches it.

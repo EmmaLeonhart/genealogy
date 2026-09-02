@@ -2,37 +2,31 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## `P1814` *name in kana* — 1,036 people are ready for it TODAY
+## `P1814` *name in kana* — 413 readings are findable, 381 are already done
 
-**Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and
-name in kana properties"*. The Korean half is done — `translit_ko.py`, `translit_ko_latin.py`,
-`build-ko-label-batch.py`, plus 81,741 in the placeholder batch. What is left is the kana.
+**`reports/p1814-worklist.tsv` is the worklist**, built 2026-09-02 over the 1,036 people the
+classifier calls Japanese *and* the correspondence gives an item. Every row carries the state, the
+reading or where to find it, and how strong the Japanese verdict is.
 
-**Its population was reported as empty and that was reading the wrong file.**
-`reports/cjk-romanisation.csv` holds only the people whose romanisation succeeded — 13,638, of
-whom 222 are Japanese. **`reports/cjk-culture.csv` is the classifier's real output: 38,458 rows,
-of which 16,139 are `ja`.** Both are written by the same run of
-`scripts/build-cjk-romanisation.py`; the culture file is the full population and the romanisation
-file is a subset. Three separate conclusions were drawn from the subset on 2026-09-01 before
-anyone opened the other file.
-
-**`P1814` attaches to an item, so the population is the Japanese people who have one: 1,036**,
-per `reports/synoptic-correspondence.tsv` (50 of them by `P2600` alone). Not "empty until the 226
-are created".
-
-**Take them in evidence order, because the walk is the open question:**
-
-| evidence | people | |
+| state | people | |
 | --- | ---: | --- |
-| **name form or kokuji** — ends in 子, 郎, 助, 丸, or carries a Japanese-only character | **151** | strongest; the name itself settles it |
-| graph walk, 1–2 hops | 626 | |
-| graph walk, 3+ hops | 259 | weakest; `MAX_HOPS` is 14 |
+| **already has `P1814`** | **381** | nothing to do — 37% of the population |
+| **a `jawiki` article** | **397** | the reading is in its lead sentence |
+| kana already on the item | 16 | an alias or the `ja` label is kana |
+| no source yet | 242 | needs research beyond Wikidata |
 
-**A kana reading is not derivable by rule** — the same characters take different readings per
-person, which is why `P1814` exists as a property rather than being computed. `pykakasi` scored
-**6 of 10** on names whose readings are not in doubt, and every failure was a classical `の` name
-of exactly the kind this corpus holds. So: **find the readings, do not generate them**, and start
-with the 151 whose Japaneseness the name itself establishes.
+**Do the 16 first, then the 397.** The 16 need no fetch at all. The 397 need one lead sentence
+each from `ja.wikipedia.org`, which is *finding* the reading rather than generating it — the
+distinction `CLAUDE.md` draws, and the reason `pykakasi` is not the answer (**6 of 10** on names
+whose readings are not in doubt, failing on exactly the classical `の` names this corpus holds).
+
+**Order by `evidence_strength` within that.** `name form` means the name itself settles the
+Japaneseness — ends in 子, 郎, 助, 丸, or carries a Japanese-only character. The rest come from the
+graph walk, whose per-hop error rate is still unmeasured.
+
+**`P1814` is a STRING, not monolingual text** — corrected in `CLAUDE.md` on 2026-09-02 after a
+survey read 0 items carrying it when 381 do. A QuickStatements line is
+`Q635214⇥P1814⇥"おいちのかた"`, with **no language prefix**.
 
 **`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** Take
 material from it — reading tables, transliteration data — and add no runtime dependency, no shared
