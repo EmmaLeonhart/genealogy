@@ -25714,3 +25714,42 @@ two findings that should not be re-litigated (key a name item by its first Latin
 it); the Pages site (no workflow); the merges HTML page (no such file); the spine removal
 (`SPINE_PATHS` still in `build-garborg-day.py`); `exports/post-merge/` (blocked on Geni's export
 outage, not finished).
+
+## 2026-09-02 — the post-merge export finally ran, and the stopping rule turns out unsatisfiable for Jingū
+
+**The whole "Geni's export service is down" story was wrong.** Tested directly: the export form
+loads normally for an ordinary profile (`6000000226977233850`). What is true is narrower — Ōjin
+Tennō, **Jingū-kōgō (the account owner's own profile)** and 土師兎 all answer *"You are not
+allowed to export that profile."* That is the same wall `CLAUDE.md` records for the Bureus spine,
+and it is permanent rather than an outage.
+
+**And `docs/export-seed-rules.md` exists for exactly this**, which I had ignored for hours: you do
+not export from the person you want, you create a placeholder at an open slot and export from
+that. Emma: *"Bruh you cunt did you forget the rules"*.
+
+- The Chrome extension had **zero browsers paired**; killing and relaunching Chrome fixed it.
+- Tier 3 slot taken (the highest the page offered): Harima no Inabi no Ōiratsume has a father
+  (Prince Wakatakehiko) and no mother. Created `NN`, no surname, *Suggest surnames* unchecked so
+  Geni could not invent one → **`6000000227558482822`**.
+- `Forest`, 5000 → `exports/post-merge/export-Forest-6000000227558482822.ged`, **5,000 people**,
+  in about six minutes.
+
+**It contains Ōjin-tenno `6000000001829492981` and Jingū-kōgō `6000000001846508982`.**
+
+**But coverage still reads 25 of 27, and the reason is structural.** Jingū's one missing relative
+is `6000000179131744821` — a *second* Ōjin profile that Geni has since **merged away**. Visiting
+it redirects to `6000000001829492981` and Geni offers a pending merge-conflict page for the pair.
+That profile no longer exists, so it can never appear in any future export: **the stopping rule as
+written cannot be satisfied for this survivor, and no number of exports will change that.**
+
+That is the campaign's own premise turned on itself — we hold stale twins Geni has merged, and
+requiring the twin to appear in a fresh export is requiring Geni to un-merge it. The fix belongs
+in the measurement (resolve a merged-away relative to its survivor), not in more exports.
+`reports/geni-stale-duplicates.tsv` does **not** carry this pair, so the mapping is a new
+observation rather than a lookup.
+
+**Still genuinely outstanding:** Obito Haji-no-muraji is missing 土師兎 `6000000001893090174`,
+a real profile, needing its own placeholder-seeded export.
+
+**Left untouched deliberately:** the pending merge-conflict page on Ōjin asks which values to keep
+(Created On, Manager, First/Last Name, Birth Date). That is Emma's decision, not this loop's.
