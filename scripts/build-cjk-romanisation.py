@@ -206,11 +206,49 @@ def cjk_of(row: dict) -> str:
     return (row.get("cjk_names") or "").split(" | ")[0].strip()
 
 
+def _write_culture(need, culture, why, unsettled_why):
+    """`reports/cjk-culture.csv` — the classifier's real output, one row per record judged.
+
+    **This is the file to read, not `cjk-romanisation.csv`.** That one holds only the people whose
+    romanisation succeeded; this one holds everyone the classifier looked at. Three conclusions
+    were drawn from the subset on 2026-09-01 before anybody opened this file.
+    """
+    out = REPO / "reports" / "cjk-culture.csv"
+    with out.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["geni_id", "cjk", "culture", "evidence"])
+        for g in sorted(need):
+            w.writerow([g, need[g], culture.get(g, ""),
+                        why.get(g, "") or unsettled_why.get(g, "")])
+    _c = collections.Counter(culture.get(g, "(none)") for g in need)
+    print("")
+    print(f"  culture for all {len(need):,} records -> {out.relative_to(REPO)}")
+    print("   " + ", ".join(f"{k2} {v2:,}" for k2, v2 in _c.most_common()))
+    return out
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     limit = None
     if "--limit" in sys.argv:
         limit = int(sys.argv[sys.argv.index("--limit") + 1])
+
+    # **`--all-han` classifies EVERYONE with a Han name record, not just those needing
+    # romanisation.** Emma, 2026-09-02: *"Why can't we just do our cultural clarification
+    # algorithm from earlier? What's so hard about the classification?"* Nothing is. The algorithm
+    # — clan seat, place, name form, then the graph walk — was simply aimed at a different
+    # population: the default `need` is built from `derived-labels.csv` and keeps whoever has a
+    # CJK **label** and no Latin one, because its job is to romanise people with no English form.
+    #
+    # That is right for romanisation and wrong for the culture question. **47,296 distinct people
+    # carry Han in a name record while only 14,111 carry it in their label** — the rest read as
+    # `Robert Kanō` in Latin and hold `加納 郁夫` in a second `NAME` record, so their Han name never
+    # reaches the classifier at all.
+    #
+    # The romanisation output is untouched by this: with `--all-han` only `cjk-culture.csv` is
+    # written, because `build-en-label-batch.py` consumes `cjk-romanisation.csv` and must not
+    # start receiving people who already have a Latin form.
+    all_han = "--all-han" in sys.argv
 
     # ---- who needs romanising ------------------------------------------------
     need = {}
@@ -230,6 +268,18 @@ def main() -> int:
             en_ = (r.get("label_en") or "").strip()
             if not re.search(r"[A-Za-z]", en_) and HAN.search(cjk):
                 need[r["geni_id"]] = cjk
+    if all_han:
+        # Every distinct person with Han in ANY name record, from the per-record file.
+        names = REPO / "reports" / "display-names.csv"
+        extra = 0
+        with io.open(names, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                g, disp = r.get("geni_id"), (r.get("display_name") or "")
+                if g and g not in need and HAN.search(disp):
+                    need[g] = disp
+                    scripts.setdefault(g, disp)
+                    extra += 1
+        print(f"--all-han: {extra:,} more people with a Han name record, {len(need):,} total")
     print(f"people with a CJK name and no Latin label: {len(need):,}")
 
     # The clan seats are needed as CULTURE evidence below, so they are computed here
@@ -833,6 +883,12 @@ def main() -> int:
     print()
     for k, v in done.most_common():
         print(f"  {k:24} {v:,}")
+
+    if all_han:
+        # Culture only. See the note on `--all-han` above: the romanisation file
+        # feeds the `en` batch and its scope must not widen.
+        _write_culture(need, culture, why, unsettled_why)
+        return 0
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", encoding="utf-8", newline="") as fh:
