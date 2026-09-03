@@ -1366,6 +1366,25 @@ def subgraph_roots():
     Read from `reports/bureatten.csv`, the sv.wikipedia Category:Bureätten listing, taking only
     rows that carry a Geni id -- the same 251 the coverage campaign used. Reading the file rather
     than pasting the ids keeps one list of these people in the repo.
+
+    **ARNE IS THE ONE EXCEPTION, and that is the design.** Checked 2026-09-03: of the 252 roots
+    before the drip-in, **251 are Bure** -- Johannes Bureus is himself in `bureatten.csv` -- and
+    Arne is the only one who is not. Emma: *"Almost all of them are Bure people… Arne Garborg is
+    the one exception."*
+
+    **Why the two sides differ, in her words:** *"the family of Arne were precreated by me and are
+    generally pretty well connected to each other. Whereas this other family is in the interesting
+    situation where… a massive amount of them had Wikidata items because of having Swedish
+    Wikipedia articles, but nobody actually did genealogical work on Wikidata. So them as entry
+    points means they have a high level of activity in connecting to each other, whereas the
+    [Arne] people have been in large part added exclusively by me, and there's about the same
+    amount of them, probably a bit less surface area. And the [Arne] people primarily connect to
+    other groups."*
+
+    So the imbalance is not lopsidedness to correct: an item that exists and states no
+    relationships is the highest-yield entry point there is, which is exactly what a sv.wikipedia
+    article with no genealogical work leaves behind. The roster stays at **about 250** -- her
+    instruction, same day -- so `reports/entry-points.tsv` is a trickle, not a second campaign.
     """
     roots = [ARNE_QID, BUREUS_QID]
     roster = ROOT / "reports" / "bureatten.csv"
@@ -1374,7 +1393,265 @@ def subgraph_roots():
             for row in csv.DictReader(f):
                 if (row.get("geni_ids") or "").strip() and row.get("qid"):
                     roots.append(row["qid"])
+    roots.extend(q for q, _ in active_entry_points())
+    roots.extend(active_group_qids())
     return tuple(dict.fromkeys(roots))
+
+
+#: Where the dripped-in entry points live. One row per person, with the date they switch on.
+ENTRY_POINTS = ROOT / "reports" / "entry-points.tsv"
+
+
+def entry_points():
+    """Every row of `reports/entry-points.tsv`, as `(qid, geni_id, label, active_from, note)`.
+
+    **Emma, 2026-09-03, asking for this on a clock:** *"for entry points into the graph: I
+    actually want this as a timer: on October 1 George RR Martin is added as an entry point, and
+    Robert Ettinger is added as an entry point right now! I think there probably are other people
+    worthy of dripping in as entry points. But I'm not sure who."*
+
+    **The timer is a DATE COLUMN, not a scheduler**, and that is deliberate. A cron here is
+    session-local and dies with the session --- `CLAUDE.md` § *A cron only fires while the session
+    is idle* is the record of one starving for four hours, and every cron died in the 2026-08-28
+    crash. An `active_from` date cannot be lost, needs nothing running on the day, and makes the
+    switch-on a property of the repo rather than of whoever happened to be at a terminal. Adding
+    the next person she thinks of is one line in a TSV.
+
+    **The two she named, resolved from our own tree rather than guessed** --- `CLAUDE.md` § *Do
+    not guess these* --- by joining `reports/derived-labels.csv` on the label and reading the qid
+    column, since neither Wikidata nor Geni is reachable from a remote session:
+
+    * `Q714044` **Robert Chester Wilson Ettinger**, Geni `6000000003022010249`, live now.
+    * `Q181677` **George R.R. Martin**, Geni `6000000081001962237`, live 2026-10-01.
+
+    **Both are textbook service areas by her own specification.** Neither states a single `P22`,
+    `P25`, `P40` or `P26` on Wikidata, so each reaches exactly itself there --- and § *THE EDIT
+    ALGORITHM* wants precisely that: *"something that has a GeniID but is otherwise isolated."*
+    In our Geni tree both are richly attached (Ettinger: parents, 2 spouses, 2 children; Martin:
+    parents, 2 spouses) and both sit in the main 1,446,089-person component, so the ring has
+    somewhere to go from the first day each switches on.
+    """
+    if not ENTRY_POINTS.exists():
+        return []
+    rows = []
+    with open(ENTRY_POINTS, encoding="utf-8") as f:
+        rows = [r for r in csv.DictReader(f, delimiter="\t") if r.get("geni_id")]
+
+    # **A row may name a person we hold no QID for, and that is not a reason to refuse it.**
+    # The Chinese legendary lineage rows are exactly that: they are the far edge of our tree and
+    # our data records no Wikidata correspondence for them. Whether Wikidata *has* items for
+    # 少昊 or 顓頊 is a different question our store cannot answer --- `CLAUDE.md` § *"Is X
+    # present?"* --- so a blank qid means "we do not hold the link", never "no item exists".
+    #
+    # Resolve blanks from `derived-labels.csv` at load, so an entry point switches on by itself
+    # the moment the correspondence lands, with no edit here. The file is 1.45M rows, so it is
+    # read only when a blank actually needs it: this function runs at import.
+    if any(not (r.get("qid") or "").strip() for r in rows):
+        want = {r["geni_id"] for r in rows if not (r.get("qid") or "").strip()}
+        for gid, qid in _qids_for(want).items():
+            for r in rows:
+                if r["geni_id"] == gid and not (r.get("qid") or "").strip():
+                    r["qid"] = qid
+
+    # Sorted on the geni id, which is unique and present on every row ---
+    # `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC* wants a total key, and a blank qid is not one.
+    return sorted(rows, key=lambda r: r["geni_id"])
+
+
+def _qids_for(geni_ids):
+    """Geni id -> QID out of `derived-labels.csv`, for the handful that need it."""
+    import gzip
+
+    plain = ROOT / "reports" / "derived-labels.csv"
+    packed = ROOT / "reports" / "derived-labels.csv.gz"
+    if plain.exists():
+        handle = open(plain, encoding="utf-8")
+    elif packed.exists():
+        handle = gzip.open(packed, "rt", encoding="utf-8")
+    else:
+        return {}
+    found = {}
+    with handle as fh:
+        for row in csv.DictReader(fh):
+            if row["geni_id"] in geni_ids and row.get("qid"):
+                found[row["geni_id"]] = row["qid"]
+                if len(found) == len(geni_ids):
+                    break
+    return found
+
+
+#: Whole populations that become entry points on a date, named by the roster file that lists
+#: them rather than pasted in person by person.
+ENTRY_POINT_GROUPS = ROOT / "reports" / "entry-point-groups.tsv"
+
+
+def entry_point_groups():
+    """Every row of `reports/entry-point-groups.tsv`, sorted by group name.
+
+    **Emma, 2026-09-03, naming whole blocs at once:** *"Ancient Chinese bloc / All Samaritan high
+    priests / All Ethiopian Emperors / All Japanese Emperors / All Tanba people / All
+    Izumo/Senge/Kitajima people / All people with special geni gedcom recognition become entry
+    people."*
+
+    **A group is a REFERENCE TO A ROSTER, not hundreds of pasted ids.** `subgraph_roots()` already
+    reads `reports/bureatten.csv` for exactly this reason --- *"Reading the file rather than
+    pasting the ids keeps one list of these people in the repo"* --- and the same holds here:
+    these rosters are maintained by their own scripts, so a copy would go stale silently.
+
+    **Why this is not as reckless as it sounds, in her words:** *"the invariant graph structure
+    will probably mean they are cumulatively at most a quarter of edits. 1->251 got the 250 giving
+    ~50%."* That is the measured precedent: going from 2 roots to 252 took the subgraph 316 -> 565,
+    so 250 extra roots bought ~249 people. Roots have sharply diminishing returns because a root
+    only seeds what the Wikidata subgraph already connects. Her quarter is a **prediction**, and
+    the honest test is running it --- not arguing about it here.
+
+    **A row with no `source` is a placeholder for a group we cannot yet build**, and it stays
+    visible rather than being dropped: two of the seven have no roster in this repo at all, and
+    one is awaiting her definition. `CLAUDE.md` § *Code that is WRITTEN but never CALLED* is the
+    same failure with a data file.
+    """
+    if not ENTRY_POINT_GROUPS.exists():
+        return []
+    with open(ENTRY_POINT_GROUPS, encoding="utf-8") as f:
+        rows = [r for r in csv.DictReader(f, delimiter="\t") if r.get("group")]
+    return sorted(rows, key=lambda r: r["group"])
+
+
+def group_qids(row):
+    """The QIDs a group row resolves to, or `[]` if it has no usable roster."""
+    # Distinct, because `group_pairs` dedupes on the PAIR: one QID can appear both with and
+    # without a Geni id when a group names two rosters of different shapes.
+    return sorted(dict.fromkeys(q for q, _ in group_pairs(row)))
+
+
+def group_pairs(row):
+    """`(qid, geni_id)` per roster row --- the Geni id blank when the roster does not carry one.
+
+    **The roster's own `geni_ids` column is the right source and beats a lookup.** The ledger is
+    keyed on the Geni id, so an entry point with no Geni id cannot become a ledger row at all.
+    Resolving the 321 QIDs through `derived-labels.csv` found only **14**, because that file's
+    `qid` column is populated from a different source than these curated pair files ---
+    `izumo-p2600-pairs.tsv` and `tanba-p2600-pairs.tsv` each carry the correspondence directly.
+    Reading it here rather than re-deriving it is the same rule as reading `bureatten.csv`.
+    """
+    src = (row.get("source") or "").strip()
+    if not src:
+        return []
+    # **A group may name SEVERAL rosters, comma-separated.** The Samaritan priests are the reason:
+    # `samaritan-succession-list.tsv` is the authoritative list of who they are and carries a qid
+    # on only 14 of its 132 rows, while `samaritan-priest-links.csv` carries qid/geni pairs for a
+    # different, overlapping handful. Neither is the group; the union is closer.
+    column = (row.get("qid_column") or "qid").strip()
+    out = []
+    for part in src.split(","):
+        path = ROOT / part.strip()
+        if not part.strip() or not path.exists():
+            continue
+        if path.suffix == ".ged":
+            # **The "special geni gedcom recognition" group is a GEDCOM, not a table.** Emma,
+            # 2026-09-03: *"There's a specific gedcom that just links geni profiles to wikidata.
+            # It carries no relationship data just ids and bios with wikidata links in it."* That
+            # is `exports/post-merge/wikidata-qid-links.ged`: `INDI` records holding nothing but a
+            # `NOTE` with a Wikidata URL.
+            import re
+
+            text = path.read_text(encoding="utf-8")
+            current = ""
+            for line in text.splitlines():
+                ref = re.match(r"0 @I(\d+)@ INDI", line)
+                if ref:
+                    current = ref.group(1)
+                hit = re.search(r"wikidata\.org/wiki/(Q\d+)", line)
+                if hit:
+                    out.append((hit.group(1), current))
+            continue
+        delimiter = "\t" if path.suffix == ".tsv" else ","
+        geni_col = (row.get("geni_column") or "geni_ids").strip()
+        with open(path, encoding="utf-8") as f:
+            for r in csv.DictReader(f, delimiter=delimiter):
+                q = (r.get(column) or "").strip()
+                if not q.startswith("Q"):
+                    continue
+                raw = (r.get(geni_col) or "").replace(";", " ").replace(",", " ").replace("|", " ")
+                ids = [g for g in raw.split() if g.isdigit()]
+                out.append((q, ids[0] if ids else ""))
+    # Deterministic and deduped on the pair, so a QID appearing with and without a Geni id keeps
+    # both rather than depending on which file was read first.
+    return sorted(dict.fromkeys(out))
+
+
+def active_group_qids(today=None):
+    """Every QID from every group whose date has arrived."""
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    out = []
+    for row in entry_point_groups():
+        if (row.get("active_from") or "").strip() <= today:
+            out.extend(group_qids(row))
+    return sorted(dict.fromkeys(out))
+
+
+def group_status(today=None):
+    """`(group, active_from, qids, state)` per group --- what each one currently contributes."""
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    out = []
+    for row in entry_point_groups():
+        when = (row.get("active_from") or "").strip()
+        n = len(group_qids(row))
+        if not (row.get("source") or "").strip():
+            state = "NO ROSTER"
+        elif n == 0:
+            state = "ROSTER EMPTY OR MISSING"
+        elif when <= today:
+            state = "LIVE"
+        else:
+            state = "PENDING"
+        out.append((row["group"], when, n, state))
+    return out
+
+
+def unresolved_entry_points():
+    """Rows that name a person we hold no QID for --- they cannot be roots until one lands.
+
+    Reported rather than dropped silently: a roster row that does nothing and says nothing is
+    the § *Code that is WRITTEN but never CALLED* failure with a data file instead of a function.
+    """
+    return [
+        (r["geni_id"], r.get("label", ""), r.get("active_from", ""))
+        for r in entry_points()
+        if not (r.get("qid") or "").strip()
+    ]
+
+
+def active_entry_points(today=None):
+    """The entry points switched on as of `today`, as `(qid, label)`.
+
+    A run is a function of its inputs **and the date**, which is what a timer means. `today` is
+    injectable so a run can be reproduced for a past date rather than only for now.
+    """
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    return [
+        (r["qid"], r.get("label", ""))
+        for r in entry_points()
+        if (r.get("qid") or "").strip() and (r.get("active_from") or "").strip() <= today
+    ]
+
+
+def pending_entry_points(today=None):
+    """The ones still waiting for their date --- reported so a timer is never silent."""
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    return [
+        (r.get("qid") or r["geni_id"], r.get("label", ""), r.get("active_from", ""))
+        for r in entry_points()
+        if (r.get("active_from") or "").strip() > today
+    ]
 
 
 SUBGRAPH_ROOTS = subgraph_roots()
@@ -4859,6 +5136,15 @@ def main():
         ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}
         print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through her own "
               f"items: {len(our_wikidata_subgraph)} items; {len(ring_seeds)} of {len(our_items)} ledger people seed")
+        # **A timer that fires silently is a timer nobody can check.** Both lists print every
+        # run, so the day one switches on is visible in the output rather than inferred.
+        for qid, label in active_entry_points():
+            print(f"  entry point LIVE  {qid} {label}")
+        for qid, label, when in pending_entry_points():
+            print(f"  entry point PENDING {qid} {label} — switches on {when}")
+        for gid, label, when in unresolved_entry_points():
+            print(f"  entry point UNRESOLVED geni:{gid} {label} — dated {when}, but we hold no "
+                  f"QID for them, so they cannot be a root until the correspondence lands")
         if not ring_seeds:
             sys.exit(f"no ledger person is in the group reachable from {ARNE_QID}/{BUREUS_QID} "
                      f"— that is a broken join over relations.tsv/garborg-live-values.tsv, not "

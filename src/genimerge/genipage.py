@@ -24,7 +24,13 @@ from dataclasses import dataclass
 from html.parser import HTMLParser
 from pathlib import Path
 
-__all__ = ["PathLink", "parse_relationship_path", "read_relationship_path", "to_tsv"]
+__all__ = [
+    "PathLink",
+    "parse_relationship_path",
+    "read_relationship_path",
+    "relation_description",
+    "to_tsv",
+]
 
 
 @dataclass(frozen=True)
@@ -116,6 +122,55 @@ def parse_relationship_path(html: str) -> list[PathLink]:
     parser.feed(html)
     parser.close()
     return parser.links
+
+
+def relation_description(html: str) -> str:
+    """Geni's own prose summary of the path --- the RESIDUAL the step parser drops.
+
+    **Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit
+    happens we need to grab residuals all the time."* This is the first of those residuals, and
+    it is not decoration: the per-step `span.segment` words flatten distinctions the prose keeps.
+
+    Measured over 30,329 steps in 696 path files, the step words never say *half* --- only
+    `his brother` / `her sister`. The prose does. One in-law page reads *"…partner's son's wife's
+    ex-husband's half sister's ex-husband's second cousin twice removed's wife's father."*
+    `Half brother` / `Half sister` occurs 325 times across the saved pages, all of it outside the
+    segments. Ex-spouses survive both ways (`her ex-husband` is a step word too); half-siblings
+    survive only here.
+
+    Two shapes share the id: a short verdict (*"X is your 28th cousin once removed"*) and the
+    long possessive chain. Both are returned as-is --- **this is a residual, not a parse.** It is
+    kept beside the path so nothing that was on the page is lost, and aligning it against the
+    steps is a separate job that nothing does yet: the in-law prose is a possessive chain that
+    does not map one-to-one onto segments.
+    """
+    import re
+
+    out: list[str] = []
+    for m in re.finditer(r'<div[^>]*(?:id|class)="relation_description"[^>]*>', html):
+        # **The block must be found by BALANCING `<div>`, not by the first `</div>`.** Its first
+        # child is an expand/collapse image wrapper, so a non-greedy `.*?</div>` stops there and
+        # returns whitespace --- which reads as "the page has no description" on every page. It
+        # measured 0 of 200 before this was fixed, the same shape of silent narrowing as the date
+        # parser and the ` | ` separator in `CLAUDE.md`.
+        depth, i = 0, m.start()
+        for tag in re.finditer(r"</?div\b", html[m.start():]):
+            depth += 1 if tag.group(0) == "<div" else -1
+            if depth == 0:
+                # `tag.start()`, not `tag.end()`: the pattern matches `</div` without its `>`,
+                # so ending at `end()` leaves a dangling `</div` that the tag-stripper cannot
+                # remove and that lands in the text.
+                i = m.start() + tag.start()
+                break
+        else:
+            continue
+        text = re.sub(r"<[^>]+>", " ", html[m.end():i])
+        text = re.sub(r"\s+", " ", text).strip()
+        # "Generate Diagram" is a button label that sits inside the same block.
+        text = text.replace("Generate Diagram", "").strip()
+        if text and text not in out:
+            out.append(text)
+    return " | ".join(out)
 
 
 def html_of_saved_page(raw: str) -> str:

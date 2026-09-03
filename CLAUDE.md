@@ -1353,6 +1353,75 @@ the same mechanism the daily cadence already uses.
 **Nothing else is capped.** `P22` *father*, `P25` *mother*, `P40` *child* and `P26` *spouse* are
 uncapped — they are few per person and each one is structurally load-bearing.
 
+### A sibling step gets a PLACEHOLDER PARENT in our tree and NEVER on Wikidata
+
+**Emma, 2026-09-03:** *"Brother and sister here becomes kinda weird and imo actually wikidata
+modelling of them shouldn't use placeholder parents. Because we can on wikidata represent these
+people just with the sibling property. Instead of risking it with inventing placeholder parents.
+But I'm interested in them having placeholder profiles in our synoptic tree so I can look at
+their network positions."*
+
+**The two stores get different answers, and that is the whole ruling:**
+
+| store | a sibling step becomes |
+| --- | --- |
+| **Wikidata** | `P3373` *sibling*, directly between the two people. **No parent item is invented.** |
+| **the synoptic tree** (the Geni union) | a **placeholder parent profile**, because that is how she reads network positions |
+
+**Why the split is not an inconsistency.** Geni records no sibling edge — `CLAUDE.md` § *A
+sibling step is the worked example* — so two siblings are joined only through a shared parent,
+and GEDCOM has no way to say *sibling* without one. Our tree therefore needs the placeholder to
+express the fact at all. Wikidata has `P3373` and needs no such prop, so inventing a parent item
+there is a claim about a person nobody has evidence for, in the one store § *The purpose is to
+ADD to Wikidata* makes hardest to undo. Her word for it is **"risking it"**.
+
+**This is the same shape as § *Redacted people go in*:** the structure is what is informative,
+and you assert only the part the data supports. A placeholder parent in our tree is scaffolding
+we control and can re-derive from the exports; a placeholder parent item on Wikidata is a person
+asserted to have existed.
+
+**Scale, measured 2026-09-03: 2,125 sibling steps of 30,329, 7.0%, across 662 of 696 path
+files.** So this governs nearly every path rather than an edge case. Note the interaction with
+the section above: routing all of it through `P3373` puts it under the **10-a-day cap**, which
+is a pacing limit and not a reason to reach for parents instead.
+
+**The parent-adding campaign comes LATER and is hers to start.** *"In the future after we've
+sufficiently gathered all the placeholder parents and added a bunch to wikidata we can do a
+parent-adding campaign, especially if we use forest exports in closely related eccentric graph
+points on geni."* So the placeholders accumulate in our tree first; the campaign that turns them
+into real people is gated on that, and on `Forest` exports seeded at eccentric points — the same
+instrument § *"Not related to" does NOT mean not related* uses for eccentric targets.
+
+### Grab the RESIDUALS. The structured parse is not everything on the page
+
+**Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit
+happens we need to grab residuals all the time."*
+
+**The worked case, and it is why this is a rule.** `genimerge.genipage` parses a path as the
+anchors inside `span.segment > span.name`, which is correct and is what makes the join exact.
+But over **30,329 steps in 696 path files** those step words never say *half* — only
+`his brother` / `her sister`. Geni does say it, in two elements the parser walks past: the
+immediate-family block (*"Half brother of …"*, 325 occurrences across the saved pages) and the
+prose `relation_description`, which reads *"…partner's son's wife's ex-husband's half sister's
+ex-husband's second cousin twice removed's wife's father."*
+
+So the page held a distinction our extraction destroyed, and nothing recorded that it had.
+`genipage.relation_description()` now keeps it — present on **664 of 664** saved pages, 15
+mentioning *half* and 112 *ex-* — written into every generated path file's header and into
+`reports/isolate-path-pilot-results.tsv`. It is stored **as-is and not parsed**: the in-law
+prose is a possessive chain that does not map one-to-one onto the segments, and aligning them is
+a separate job nothing does yet.
+
+**The rule: when an extraction narrows a page to a structure, keep what it dropped.** A residual
+costs a column; recovering a distinction after the pages are gone costs a re-fetch of everything.
+This is the § *check the separator before believing a distribution* family — an instrument that
+quietly narrows its input and reports a clean number about itself.
+
+**And the residual extractor had that exact bug on its first run.** A non-greedy `.*?</div>`
+stopped at the block's first child, an expand/collapse image wrapper, so it returned whitespace
+and measured **0 of 200 pages** as having a description. Balancing `<div>` depth instead gives
+664 of 664. A terminator that is not the right terminator reads as absence.
+
 ### Always write the English label next to a property or item ID
 
 **Emma, 2026-08-15:** *"I have no fucking clue what any property or Q ID property
@@ -2607,6 +2676,186 @@ either to Arne.
 her immediate ring cut a batch from ~30 people to **7** because the caps stopped binding — 2 of
 10 children, 0 of 10 parents. And *ordering the ring by closeness to Arne*, which `11295af7`
 did over **our Geni tree**; that is the closest thing that ever existed, and it is not this.
+
+### Entry points DRIP IN on a date. `reports/entry-points.tsv` is the timer
+
+**Emma, 2026-09-03:** *"for entry points into the graph: I actually want this as a timer: on
+October 1 George RR Martin is added as an entry point, and Robert Ettinger is added as an entry
+point right now! I think there probably are other people worthy of dripping in as entry points.
+But I'm not sure who."*
+
+**The timer is a DATE COLUMN, never a cron.** `reports/entry-points.tsv` carries
+`qid, geni_id, label, active_from, note`, and `subgraph_roots()` includes a row once
+`active_from <= today`. A cron here is session-local and dies with the session — § *A cron only
+fires while the session is idle* records one starving for four hours, and every cron died in the
+2026-08-28 crash. A date in a tracked file cannot be lost, needs nothing running on the day, and
+makes switching someone on a property of the repo. Adding the next person is one line.
+
+**Resolve an entry point's QID from OUR OWN DATA. Do not reach for Wikidata.** Emma,
+2026-09-03: *"Idk why you queried wikidata over this."* `reports/derived-labels.csv` already
+carries the qid beside the Geni id for everyone in the tree, so a `wbsearchentities` call for a
+person we hold is a request that answers nothing a local join does not. § *Querying Wikidata is
+ALLOWED* permits it and § *the offline store is the right first place to look* still decides
+where to start; the network is for what the store cannot answer.
+
+**The two she named, resolved that way** — § *Do not guess these*, joined on the label in
+`reports/derived-labels.csv`:
+
+| | QID | Geni | live from |
+| --- | --- | --- | --- |
+| **Robert Chester Wilson Ettinger** | `Q714044` | `6000000003022010249` | **now** |
+| **George R.R. Martin** | `Q181677` | `6000000081001962237` | **2026-10-01** |
+
+**Both are textbook service areas by her own specification, measured.** Neither states a single
+`P22`, `P25`, `P40` or `P26` on Wikidata, so each reaches exactly itself there — and § *THE EDIT
+ALGORITHM* wants exactly that: *"something that has a GeniID but is otherwise isolated."* In our
+Geni tree both are richly attached — Ettinger has parents, 2 spouses and 2 children, Martin has
+parents and 2 spouses — and both sit in the main **1,446,089**-person component, so each has a
+ring from its first day.
+
+**The run prints LIVE and PENDING every time.** A timer nobody can see is a timer nobody can
+check, so the day one switches on shows in the output rather than being inferred.
+
+**Who else drips in is HERS.** She said she is not sure who, and that is an open question rather
+than a brief to go ranking candidates — § *No unprompted reports* governs. Roots are cheap and
+reversible; the constraint is which people she wants the graph grown from.
+
+**And the roster stays at ABOUT 250.** Emma, 2026-09-03: *"leave it with about two hundred and
+fifty entry points or something like that."* Dripping in is a trickle, not a campaign — the
+count is a property of the design, not a number to grow.
+
+**The two she named were named for DIFFERENT reasons, and the `note` column records which.**
+Ettinger: *"important enough that he's worthy of being an entry point of his own"* — standing in
+his own right. Martin: *"interesting due to his eccentricity"* — a position on the graph. So
+there is no single criterion to generalise into a filter, and inventing one is what § *Do not
+grab the first artifact that vaguely matches* warns against.
+
+**Eccentricity is measured now: `reports/eccentricity.md` and `tree-eccentricity.csv`**, all
+1,451,964 people. The headline matters for reading the word: **Martin is at the 80th percentile
+of distance from Charlemagne, not the edge** — 40 hops against a median of 34 and a maximum of
+183. His eccentricity is a property of **Geni's** World Tree, where the query has to cross the
+sparse part and times out; our corpus is a sample of Geni, so someone we sampled well looks
+central here. § *Presence measures our sampling, never Geni's content* is why the two cannot be
+substituted. The far edge of our own tree is the Chinese legendary lineage (少昊 Shaohao at 183)
+and, among people carrying a QID, the Samaritan high priests at 131–134.
+
+**Eccentricity is PARTLY A RECENCY MEASURE.** Emma, 2026-09-03, on why Ettinger scores high:
+*"I only recently added him, basically."* Measured over the 602 exports: **Ettinger is in 4,
+Shaohao in 1**. A person one export reached sits wherever that export left them, and expanding
+around them pulls them inward — so a high score can mean *we have not sampled here yet* rather
+than *this person is structurally peripheral*. Two people is not a correlation and is not offered
+as one; the full version is a `genimerge.density` presence count against the file, unrun.
+
+### The Chinese legendary lineage are entry points from 2027-01-01
+
+**Emma, 2026-09-03**, on the six the eccentricity report surfaced: *"those few people that you
+listed should be considered as entry points starting on January first of twenty twenty seven,
+because they are eccentric enough that I'm gonna probably want a large amount of history before I
+actually run stuff. But they're also, like, very clustered with each other."*
+
+少昊 Shaohao, 顓頊 Zhuanxu, 女修 Nüxiu, 大業 Daye, 皋陶 Gaoyao, 伯益 Bo Yi — 178 to 183 hops from
+Charlemagne, the far edge of the tree, and a **consecutive descent**, which is her "clustered with
+each other". Six roots on one chain buy far less than six independent ones; the date is a year out
+for exactly that reason, and the count is hers.
+
+**None of the six carries a QID in our data, so none can be a root yet**, and the roster holds
+them anyway with the qid blank. `entry_points()` resolves a blank from `derived-labels.csv` at
+load, so each switches on by itself the moment the correspondence lands; until then the run prints
+an **UNRESOLVED** line naming it. A blank qid means *we hold no link* and never *no item exists* —
+§ *"Is X present?"*: whether Wikidata has an item for 少昊 is a question our store cannot answer.
+
+### The entry points are the BURE CLAN, and Arne Garborg is the ONE exception
+
+**Composition, checked 2026-09-03: 253 roots = 251 Bure + Arne + Ettinger.** Johannes Bureus is
+himself in `reports/bureatten.csv`, so of the 252 that existed before the drip-in, **251 are
+Bure and exactly one is not**. Emma: *"Almost all of them are Bure people… Arne Garborg is the
+one exception."*
+
+**Her reason for the asymmetry, and it is about SURFACE AREA rather than about importance:**
+
+> *"the family of Arne were precreated by me and are generally pretty well connected to each
+> other. Whereas this other family is in the interesting situation where… a massive amount of
+> them had Wikidata items because of having Swedish Wikipedia articles, but nobody actually did
+> genealogical work on Wikidata. So them as entry points means they have a high level of
+> activity in connecting to each other, whereas the [Arne] people have been in large part added
+> exclusively by me, and there's about the same amount of them, probably a bit less surface
+> area. And the [Arne] people primarily connect to other groups."*
+
+| | how the items got there | what they connect to |
+| --- | --- | --- |
+| **Bure**, ~251 | sv.wikipedia articles, **no genealogical work** | **each other** — the whole point |
+| **Arne's family**, about the same number | created by Emma, already well linked | **other groups** |
+
+So the two sides are doing different jobs, and the Bure count is not lopsidedness to correct.
+An item that exists but states no relationships is the highest-yield entry point there is —
+§ *THE EDIT ALGORITHM*: *"The most ideal situation for lots of people being added is a bunch of
+individuals that are not linked to each other and are relatively close to each other."* The Bure
+people are that population, and they are why the roots look the way they do.
+
+**`out/wikidata/relations.tsv` cannot test this claim and must not be quoted as if it does.**
+It is a download snapshot: **767 of the 928 non-Bure ledger items are absent from it entirely**,
+having been created after the download, so it says nothing about Arne's side. The Bure rows in it
+are also post-campaign rather than pre-campaign, so a relationship count there may be measuring
+her own work. § *Emma edits the tree and the items BY HAND, continuously* is the governing rule.
+
+### Whole BLOCS become entry points on 2027-01-01 — and a root outside the ledger does nothing yet
+
+**Emma, 2026-09-03:** *"Ancient Chinese bloc / All Samaritan high priests / All Ethiopian
+Emperors / All Japanese Emperors / All Tanba people / All Izumo/Senge/Kitajima people / All
+people with special geni gedcom recognition become entry people."* Plus *"Ethiopian emperors as
+much as they can be entry points. Imo on Jan 1."*
+
+**Her reason it is not reckless, and it is a prediction rather than a claim:** *"the invariant
+graph structure will probably mean they are cumulatively at most a quarter of edits. 1->251 got
+the 250 giving ~50%."* The precedent is real — 2 roots to 252 took the subgraph 316 → 565, so 250
+extra roots bought ~249 people, because a root only seeds what the subgraph already connects.
+
+**`reports/entry-point-groups.tsv` holds a group as a REFERENCE TO A ROSTER**, never as pasted
+ids — the same reason `subgraph_roots()` reads `bureatten.csv` rather than inlining 251 QIDs.
+State as of 2026-09-03:
+
+| group | QIDs | state |
+| --- | ---: | --- |
+| tanba | 179 | roster found |
+| izumo-senge-kitajima | 111 | roster found |
+| samaritan-high-priests | 25 | roster thin — 14 of 132 succession rows carry a QID, plus 21 pairs |
+| ancient-chinese-bloc | 6 | held as individuals; **none carries a QID in our data** |
+| ethiopian-emperors | 0 | **NO ROSTER EXISTS** |
+| japanese-emperors | 0 | **NO ROSTER EXISTS** |
+| special-geni-gedcom-recognition | 0 | **awaiting her definition** |
+
+**⛔ MEASURED, AND IT IS THE THING TO KNOW: a root that is not in the ledger contributes
+NOTHING as `compose()` is wired.** `ring_seeds = {g for g, q in our_items.items() if q in
+our_wikidata_subgraph}` draws from `our_items`, which is the ledger. **All 251 Bure roots are in
+the ledger; none of the 315 group QIDs is, and neither is Ettinger or Martin.** Adding the 315 as
+roots grows the subgraph by exactly 315 — themselves — and pulls in **0** further ledger people
+and **0** further ring seeds.
+
+**Her answer, 2026-09-03, and her diagnosis was right before the code was checked:** *"I think
+the Bure people were somehow manually added to the universe or ledger too somehow. My guess is
+this was done manually in an unscalable manner possibly with errors. Every entry point should be
+automatically in the ledger once it is an established entry point."*
+
+That is exactly what `refresh-garborg-ledger.py` does — the Bure people are a hand-wired
+**second source**, and 113 ledger rows carry the note `Category:Bureätten (bureatten.csv)`. So an
+entry point being in the ledger was never a property of the algorithm; it was a property of one
+roster having been wired in by hand. **Entry points are now a third source**, active ones only,
+so the roster feeds the ledger automatically and a root that is walked from also seeds.
+
+**The Geni id comes from the group's OWN roster, not from a lookup.** The ledger is keyed on the
+Geni id, so an entry point without one cannot become a row. Resolving the QIDs through
+`derived-labels.csv` found **14 of 321**; reading `geni_ids` off the curated pair files
+(`izumo-p2600-pairs.tsv`, `tanba-p2600-pairs.tsv`) gives **316 of 330**. Same rule as reading
+`bureatten.csv` rather than re-deriving it.
+
+**`special-geni-gedcom-recognition` is `exports/post-merge/wikidata-qid-links.ged`** — her words:
+*"There's a specific gedcom that just links geni profiles to wikidata. It carries no relationship
+data just ids and bios with wikidata links in it."* Five `INDI` records, each an id and a `NOTE`
+with a Wikidata URL, four distinct QIDs. Its own docstring says *"Do not let it become an
+architecture"*, which is worth knowing before it is grown. The other reading of her sentence is
+`reports/bio-qids.tsv` — 155 profiles whose Geni *About Me* carries a link, read back out of the
+corpus — and it is recorded in the group's `note` rather than silently dropped, because her words
+name a specific gedcom.
 
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
