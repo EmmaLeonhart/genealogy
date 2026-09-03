@@ -13,26 +13,6 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Kristiansen -- patronymic, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kristiansen"
-LAST	Len	"Kristiansen"
-#   set the mul label to "Kristiansen"
-LAST	Lmul	"Kristiansen"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141189067 Helmik Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141189067	P5056	LAST	P144	Q141189076	S2600	"6000000221449620901"
-#   Q141189078 Lars Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141189078	P5056	LAST	P144	Q141189076	S2600	"6000000224702528843"
-#   Q141268096 Ole Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141268096	P5056	LAST	P144	Q141189076	S2600	"6000000224702600859"
-#   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
-
 # Bjørnson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -49,28 +29,44 @@ Q141244226	P5056	LAST	P144	Q141244210	S2600	"6000000002277957043"
 #   Q141198507 Tormod Bjørnson Mele: P5056 patronym or matronym = the item just created, qualified P144 based on Q141250216 Bjørn Gunnarson Mele
 Q141198507	P5056	LAST	P144	Q141250216	S2600	"6000000007980617631"
 
-# Garfve -- family, 3 bearer(s) in the batches
+# Hakunge -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Garfve"
-LAST	Len	"Garfve"
-#   set the mul label to "Garfve"
-LAST	Lmul	"Garfve"
+#   the item just created: set the en label to "Hakunge"
+LAST	Len	"Hakunge"
+#   set the mul label to "Hakunge"
+LAST	Lmul	"Hakunge"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q141224010 Harlan Roger Garfve: P734 family name = the item just created
-Q141224010	P734	LAST	S2600	"6000000019472886300"
-#   Q141189056 Bella Jeanette Garfve: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141189056	P734	LAST	P3831	Q28418670	S2600	"6000000039507887815"
-#   Q141224188 Hjalmer Morris Garfve: P734 family name = the item just created
-Q141224188	P734	LAST	S2600	"6000000039508406904"
+#   Q141219054 Carl Emil Cronhielm af Hakunge: P734 family name = the item just created
+Q141219054	P734	LAST	S2600	"6000000008178453589"
+#   Q110304582 Gustava Magdalena Cronhielm af Hakunge: P734 family name = the item just created
+Q110304582	P734	LAST	S2600	"6000000012959992080"
+#   Q4938400 Christina Charlotta Cronhielm af Hakunge: P734 family name = the item just created
+Q4938400	P734	LAST	S2600	"6000000020584191181"
 
-# 344 more name items are needed and wait for a later
+# Hansen -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Hansen"
+LAST	Len	"Hansen"
+#   set the mul label to "Hansen"
+LAST	Lmul	"Hansen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141223961 Syvert Kristian Hansen Nyvold: P5056 patronym or matronym = the item just created
+Q141223961	P5056	LAST	S2600	"6000000021198171670"
+#   Q141250244 Rasmus Hansen Nord-Varhaug: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
+Q141250244	P5056	LAST	P144	Q141216381	S2600	"6000000087451690855"
+#   Q141200127 Ådne Hansen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216607 Hans Erikson Øvre Håland
+Q141200127	P5056	LAST	P144	Q141216607	S2600	"6000000225229617898"
+
+# 342 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Hakunge (family), 3 bearer(s)
-#   Hansen (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
@@ -81,7 +77,9 @@ Q141224188	P734	LAST	S2600	"6000000039508406904"
 #   Magnusson (patronymic), 3 bearer(s)
 #   Nord-Varhaug (family), 3 bearer(s)
 #   Olson (patronymic), 3 bearer(s)
-#   ... and 332 more
+#   Rudén (family), 3 bearer(s)
+#   Røyneberg (family), 3 bearer(s)
+#   ... and 330 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -93,38 +91,38 @@ Q141224188	P734	LAST	S2600	"6000000039508406904"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2597 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2582 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141152523 Ane Oline Jonsdatter Raugstad: set the ko label to "아네 오리네 존스다테르 라욱스타드"
-Q141152523	Lko	"아네 오리네 존스다테르 라욱스타드"
-#   set the ko label to "조흐느 조나센 헤그레"
-Q141189070	Lko	"조흐느 조나센 헤그레"
-#   Q141189098 Rakel Jonasdatter Heigre: set the ko label to "라켈 조나스다테르 헤이그레"
-Q141189098	Lko	"라켈 조나스다테르 헤이그레"
-#   set the ko label to "마르타 에이빈드스다테르 헤이그레"
-Q141216635	Lko	"마르타 에이빈드스다테르 헤이그레"
-#   Q141216643 Ragna Enevaldsdatter Heigre: set the ko label to "락나 에네발드스다테르 헤이그레"
-Q141216643	Lko	"락나 에네발드스다테르 헤이그레"
-#   Q141216622 Kristine Jonsdatter Malmeim: set the ko label to "크리스티네 존스다테르 말메임"
-Q141216622	Lko	"크리스티네 존스다테르 말메임"
-#   Q141169046 Samuel Jonson: set the ko label to "사뭴 존손"
-Q141169046	Lko	"사뭴 존손"
-#   Q141178381 Marta Jonsdatter Li: set the ko label to "마르타 존스다테르 리"
-Q141178381	Lko	"마르타 존스다테르 리"
-#   Q141178380 Samuel Jonson Raustad: set the ko label to "사뭴 존손 라우스타드"
-Q141178380	Lko	"사뭴 존손 라우스타드"
-#   Q141206082 Jon Olson Raustad: set the ko label to "존 올손 라우스타드"
-Q141206082	Lko	"존 올손 라우스타드"
-#   set the ko label to "키르스텐 가브리엘스다테르 아우스트로트"
-Q141216390	Lko	"키르스텐 가브리엘스다테르 아우스트로트"
-#   set the ko label to "마리아 존스다테르 루라"
-Q141205921	Lko	"마리아 존스다테르 루라"
-#   set the ko label to "퇸네스 에밀 에노크손 론네베르그"
-Q141198510	Lko	"퇸네스 에밀 에노크손 론네베르그"
-#   set the ko label to "오레 조한네스 조흐느센 노르콜네스"
-Q141224287	Lko	"오레 조한네스 조흐느센 노르콜네스"
-#   Q141223997 Ane Kristine Olsdatter Nor-Kolnes: set the ko label to "아네 크리스티네 올스다테르 노르콜네스"
-Q141223997	Lko	"아네 크리스티네 올스다테르 노르콜네스"
+#   set the ko label to "아네 마리아 올스다테르 베스트레 스타아란드"
+Q141216594	Lko	"아네 마리아 올스다테르 베스트레 스타아란드"
+#   Q141223834 Erik Monsen Bjorland: set the ko label to "에리크 몬센 브조르란드"
+Q141223834	Lko	"에리크 몬센 브조르란드"
+#   Q141152512 Eivind Aadnesson Garborg: set the ko label to "에이빈드 아아드네손 가르보르그"
+Q141152512	Lko	"에이빈드 아아드네손 가르보르그"
+#   set the ko label to "스테나 에이빈드스다테르 가르보르그"
+Q141152600	Lko	"스테나 에이빈드스다테르 가르보르그"
+#   set the ko label to "존 에이빈드손 가르보르그"
+Q141152614	Lko	"존 에이빈드손 가르보르그"
+#   set the ko label to "사뭴 에이빈드센 가르보르그"
+Q141162040	Lko	"사뭴 에이빈드센 가르보르그"
+#   Q141162041 Even Eivindson Garborg: set the ko label to "에벤 에이빈드손 가르보르그"
+Q141162041	Lko	"에벤 에이빈드손 가르보르그"
+#   set the ko label to "아벨 에이빈드센 가르보르그"
+Q141162044	Lko	"아벨 에이빈드센 가르보르그"
+#   Q141162045 Ole Eivindsen Garborg: set the ko label to "오레 에이빈드센 가르보르그"
+Q141162045	Lko	"오레 에이빈드센 가르보르그"
+#   set the ko label to "오드네 올센 가르보르그"
+Q141169072	Lko	"오드네 올센 가르보르그"
+#   Q141178202 Stine Persdatter Øksnevad: set the ko label to "스티네 페르스다테르 외크스네바드"
+Q141178202	Lko	"스티네 페르스다테르 외크스네바드"
+#   set the ko label to "이에보르그 구리에 오드네스다테르 가르보르그"
+Q141168833	Lko	"이에보르그 구리에 오드네스다테르 가르보르그"
+#   set the ko label to "헬게 라스무손 뵈"
+Q141189066	Lko	"헬게 라스무손 뵈"
+#   set the ko label to "마레나 라르스다테르 오프스타드"
+Q141223539	Lko	"마레나 라르스다테르 오프스타드"
+#   set the ko label to "토르켈 토르브죄르느손 회이란드"
+Q141216407	Lko	"토르켈 토르브죄르느손 회이란드"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
