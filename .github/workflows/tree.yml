@@ -11,11 +11,13 @@ name: Rebuild the synoptic tree
 # extract committed so the daily pipeline could avoid the tree entirely. Both are workarounds
 # around a limit that was never tested.
 #
-# **So this workflow is the test as much as the deliverable.** If it completes, her machine stops
-# being required for anything but Geni, and the five derived tables stop being a photograph dated
-# whenever she last rebuilt locally. If it is killed, the log says where, and the shrinking work
-# she has already specified -- notes and media are ~67% of corpus bytes, measured -- becomes the
-# plan rather than a note for later.
+# **It was tried, it was killed, and the fix is her rule.** Run 33808839371 died at 15,921 MB with
+# 67 MB free after seven minutes pinned at the ceiling. Emma: *"realistically anything that doesn't
+# go into the editing pipeline isn't needed in the synoptic tree."* `genimerge.slim` is that rule,
+# and it is the whole difference: 8.79 GB and 7.7 minutes, same tree.
+#
+# So her machine is no longer required for anything but Geni, and the five derived tables stop
+# being a photograph dated whenever she last rebuilt locally.
 #
 # **It rebuilds everything downstream, not just the merge.** `rebuild-everything.py` runs eight
 # steps whose order matters and fails silently when wrong; running the merge alone would leave
@@ -94,10 +96,14 @@ jobs:
             done ) &
           SAMPLER=$!
           set +e
+          # **`--slim` is why this can run here at all.** Without it the merge peaks at
+          # 13.30 GB locally and was KILLED on this runner at 15,921 MB with 67 MB free
+          # (run 33808839371). With it: 8.79 GB in 7.7 min, for the same 1,451,993 people
+          # and 630,053 families, verified identical on INDI/FAM/CHIL/FAMC/NAME counts.
           if [ "${{ inputs.skip_merge }}" = "true" ]; then
             python scripts/rebuild-everything.py --skip-merge
           else
-            python scripts/rebuild-everything.py
+            python scripts/rebuild-everything.py --slim
           fi
           STATUS=$?
           set -e

@@ -76,6 +76,10 @@ STEPS = [
     # `reports/merge.md` stale, which is what
     # `test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
     # was failing on in the 2026-08-31 slow lane.
+    # `--slim` is appended by `main()` when asked for. It drops what the editing pipeline never
+    # reads: measured 2026-09-03, peak RSS 13.30 GB and KILLED without it against 8.79 GB in
+    # 7.7 min with it, for the same 1,451,993 people and 630,053 families. It is what lets this
+    # script run on a GitHub runner at all -- see `genimerge.slim`.
     ("merge the corpus", [sys.executable, "-m", "genimerge", "merge"]),
     # **The four family maps, so the scheduled pipeline can run without the GEDCOM.**
     # `build-garborg-day.read_tree` needs them and `out/merged.ged` is 409 MB and
@@ -128,6 +132,8 @@ STEPS = [
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--slim", action="store_true",
+                    help="merge only what the editing pipeline reads: 8.79 GB peak instead of 13.30 GB and killed. Required on a GitHub runner.")
     ap.add_argument("--skip-merge", action="store_true",
                     help="reuse the existing out/merged.ged; only the derived layer is rebuilt.")
     args = ap.parse_args()
@@ -137,6 +143,9 @@ def main():
         [os.path.join(ROOT, "src"), os.path.join(ROOT, "scripts"), env.get("PYTHONPATH", "")])
 
     steps = STEPS[1:] if args.skip_merge else STEPS
+    if args.slim and not args.skip_merge:
+        steps = [(label, argv + ["--slim"]) if label == "merge the corpus" else (label, argv)
+                 for label, argv in steps]
     if args.skip_merge:
         merged = os.path.join(ROOT, "out", "merged.ged")
         if not os.path.exists(merged) or os.path.getsize(merged) == 0:

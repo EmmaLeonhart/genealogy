@@ -26999,3 +26999,41 @@ number.
 So the claim that had never been tested is now tested and is true as the corpus stands — but it is
 a **number**, not a property, and the input is ours. Target: ~16 GB down to comfortably under 14.
 Her levers, measured: notes and media are ~67% of corpus bytes against ~6% for names.
+
+## 2026-09-03 — her rule fixed the merge: the synoptic tree builds in Actions
+
+Emma: *"realistically anything that doesn't go into the editing pipeline isn't needed in the
+synoptic tree."* Then: *"Great run it!"*
+
+    full corpus   peak RSS 13.30 GB  KILLED at 13.3 min   (runner: 15.92 GB, killed at 21.6 min)
+    slimmed       peak RSS  8.79 GB  done in 7.7 min
+    same tree     1,451,993 people · 630,053 families
+
+**Roughly 7 GB of headroom on a 16 GB runner, where the full merge died with 67 MB free.**
+
+**Why it was expensive, so nobody re-derives it.** `Merger.records` holds the whole tree as Python
+objects at once — it must, because merging is keyed on the xref and any of the 607 exports can add
+to any record, so nothing is releasable until the last file is read. A tree of small Python
+objects costs 20-40x its source text: 409 MB of GEDCOM against a 13-16 GB peak. Not a leak, and no
+tuning of the merge touches it. **The input was the only lever, and the input is ours.**
+
+**Verified identical rather than assumed.** Over twelve exports, with and without the filter:
+61,813 INDI · 37,512 FAM · 61,291 CHIL · 34,142 FAMC · 78,517 NAME — the same on every count. It
+drops prose and keeps the genealogy exactly.
+
+**`genimerge.slim` is the one definition** and `KEEP_TAGS` is the union of the four derive
+scripts' own tag lists, read out of them rather than guessed. It is a whitelist on purpose: a tag
+nobody named is dropped with its subtree, so a Geni tag added next month is excluded loudly by
+omission instead of silently swelling the merge again. `scripts/slim-corpus.py` imports those sets
+rather than restating them — two copies of a whitelist is how they drift.
+
+**OPT-IN, and that reading was taken rather than asked.** `genimerge merge --slim`,
+`rebuild-everything.py --slim`, and `tree.yml` uses it; a plain `genimerge merge` still produces
+the complete tree. `prepare-cases.py` and `samaritan_spine.py` read `NOTE` out of the merged tree,
+and a default that silently removed it would break them for a benefit only CI needs. What would
+falsify the reading: those two moving off the merged tree, after which the flag becomes the
+default.
+
+**Bio QIDs survive and `exports/` is untouched**, both checked: `extract-bio-qids.py` reads
+`find_exports()` — the raw corpus — not the merged tree, and no step of `rebuild-everything.py`
+reads `NOTE`.

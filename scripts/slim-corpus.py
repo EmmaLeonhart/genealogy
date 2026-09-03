@@ -1,5 +1,10 @@
 """Write a slimmed copy of every export, carrying only what the editing pipeline reads.
 
+**The tag rules live in `genimerge.slim`, not here.** This is the standalone
+corpus-copier used for measuring; `genimerge merge --slim` applies the same sets at
+stream time and is what the pipeline actually runs. Two copies of a whitelist is how
+they drift.
+
     python scripts/slim-corpus.py -o /tmp/slim
 
 **Emma, 2026-09-03:** *"realistically anything that doesn't go into the editing pipeline isn't
@@ -49,37 +54,11 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
+from genimerge.slim import KEEP_RECORDS, KEEP_TAGS, DROP_INSIDE  # noqa: E402
 from genimerge.sources import find_exports  # noqa: E402
 
-#: Top-level records to keep. `NOTE` and `SOUR` records are dropped whole.
-KEEP_RECORDS = {"HEAD", "INDI", "FAM", "SUBM", "TRLR"}
 
-#: Tags kept inside a kept record, from the four derive scripts' own tag lists.
-KEEP_TAGS = {
-    # names -- build-display-names.py
-    "NAME", "GIVN", "SURN", "_MARNM", "NICK", "NPFX", "NSFX", "SPFX",
-    # identity and sex
-    "SEX", "RFN", "REFN",
-    # events and their dates -- derive-facts.py
-    "BIRT", "DEAT", "BURI", "CHR", "CREM", "MARR", "DIV", "DATE",
-    # places -- derive-facts.py reads every one of these
-    "PLAC", "ADDR", "ADR1", "ADR2", "ADR3", "CITY", "CTRY", "POST", "STAE",
-    # attributes the Wikidata model emits: P106 occupation, P97 noble title
-    "OCCU", "TITL",
-    # relationships -- derive-family.py
-    "FAMC", "FAMS", "HUSB", "WIFE", "CHIL",
-    # CLAUDE.md "Later sources win": INDI.CHAN.DATE is the tiebreaker
-    "CHAN",
-    # continuations of a KEPT value only; a dropped node takes its children
-    "CONT", "CONC",
-    # header fields the parser expects
-    "SOUR", "VERS", "GEDC", "FORM", "CHAR", "LANG", "DEST", "FILE",
-}
 
-#: Inside a record, these are dropped with everything nested under them.
-#: `SOUR`/`FILE` are kept at HEAD level and dropped inside INDI/FAM, which the
-#: depth check below distinguishes.
-DROP_INSIDE_RECORDS = {"NOTE", "SOUR", "OBJE", "FILE", "TEXT", "REPO", "PAGE", "DATA"}
 
 
 def slim(text: str) -> tuple[str, int, int]:
@@ -111,7 +90,7 @@ def slim(text: str) -> tuple[str, int, int]:
             if tag not in KEEP_RECORDS:
                 skip_depth = 0
                 continue
-        elif in_record and tag in DROP_INSIDE_RECORDS:
+        elif in_record and tag in DROP_INSIDE:
             skip_depth = level
             continue
         elif tag not in KEEP_TAGS:
