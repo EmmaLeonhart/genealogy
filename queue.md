@@ -26,9 +26,14 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   *"Actually just this pastebin it"* — **<https://pastebin.com/v4UcMx36>**, which is the material
   to work from. Nothing has been fetched or looked at; `CLAUDE.md` § *"Add it to the end of the
   queue" means WRITE IT DOWN AND STOP* governs.
+  **A second case, 2026-09-03:** *"a few ones like https://www.wikidata.org/wiki/Q29246906 and
+  https://www.wikidata.org/wiki/Q138582215 appear to have not had geni ids added on wikidata
+  despite having been edited and I am not sure what is going on with it"*. So it is a class
+  rather than one item, and the question is what edited them without adding a `P2600`. Still
+  not looked at.
   The URL is transcribed from a photo of her screen, so check it resolves before relying on it.
 
-- **Investigate `Q138582215` — no Geni link and no `mul` label.** Emma, 2026-09-03:
+- **Investigate items edited but never given a Geni id — `Q138582215` and `Q29246906`.** Emma, 2026-09-03:
   *"https://www.wikidata.org/wiki/Q138582215 idk how this was edited but no geni link or mul
   label add investigation to queue at end do not focus on it now just put at the end"*.
   So the question is **how the item came to be edited in that state** — carrying neither a
