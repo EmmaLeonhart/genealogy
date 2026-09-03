@@ -56,7 +56,7 @@ def main() -> int:
 
     tpl = PAGE.read_text(encoding="utf-8")
     page = tpl % ("The daily batch", "The daily batch",
-                  "%s creations · %s statement lines" % (creates, format(stmts, ",")),
+                  "%s creations · %s" % (creates, format(stmts, ",")),
                   datetime.date.today().isoformat(), esc(text))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
