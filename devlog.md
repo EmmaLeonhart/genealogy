@@ -26340,3 +26340,47 @@ The code was already right — the roster builder sets the anchor for what it fe
 nothing existing — but the prose in `geni-paths/README.md` and the script docstring said the 663
 Emma-anchored paths *"answer a different question"*, which reads as retiring them. They are live
 work and get filled in as they always were. Wording fixed in both places; no behaviour changed.
+
+## 2026-09-03 — sibling steps: placeholder parents in our tree, `P3373` on Wikidata
+
+**Emma:** *"wikidata modelling of them shouldn't use placeholder parents. Because we can on
+wikidata represent these people just with the sibling property. Instead of risking it with
+inventing placeholder parents. But I'm interested in them having placeholder profiles in our
+synoptic tree so I can look at their network positions."*
+
+The two stores get different answers. Wikidata gets `P3373` *sibling* directly and **no invented
+parent item**; the synoptic tree gets the placeholder parent, because GEDCOM has no sibling edge
+and because she reads network positions off it. Recorded in `CLAUDE.md` beside the `P3373` cap,
+which is the interaction worth knowing: routing all sibling steps through `P3373` puts them under
+the 10-a-day pacing limit.
+
+**Measured for the record: 2,125 sibling steps of 30,329 (7.0%), across 662 of 696 path files.**
+Nearly every path has one, so this is not an edge case.
+
+The queue item asking her about this is deleted — she ruled before it was put. Replaced at the
+tail with the parent-adding campaign she described, gated on the placeholders being gathered
+first, with `Forest` exports at eccentric points as the instrument.
+
+## 2026-09-03 — residuals: `relation_description` is now kept
+
+**Emma:** *"our parser I think was weird because structurally so much weird shit happens we need
+to grab residuals all the time."*
+
+`genipage.parse_relationship_path` takes the anchors inside `span.segment > span.name`, which is
+right and is what makes the join exact — and it walked past the element carrying the half-sibling
+distinction. `genipage.relation_description()` keeps it: present on **664 of 664** saved pages,
+15 mentioning *half*, 112 *ex-*. Written into every generated path file's header and into
+`reports/isolate-path-pilot-results.tsv` as `blood_description` / `inlaw_description`. Stored
+as-is, not parsed — the in-law prose is a possessive chain that does not map onto the segments.
+
+**The extractor shipped the bug it exists against, and the first run caught it.** A non-greedy
+`.*?</div>` stopped at the block's first child — an expand/collapse image wrapper — so it
+returned whitespace and measured **0 of 200** pages as having a description. Balancing `<div>`
+depth gives 664 of 664. A second, smaller version of the same: ending the slice at the closing
+tag's `end()` left a dangling `</div` in the text, since the pattern matches `</div` without its
+`>`; `start()` fixes it. Caught by reading the output, which is the only thing that would have.
+
+End-to-end run with two real saved pages standing in as the two chains for one target: blood 59
+steps, inlaw 27, `people_union` 85, `inlaw_only_people` 26, and the inlaw description landing in
+the row as *"…ex-husband's half sister's ex-husband's second cousin twice removed's wife's
+father."*

@@ -13,16 +13,10 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   runs — her own batches were 34–39% for occupation-filtered academics and 92% for Nordic ones.
   A blank chain is `chain_found=0`, never *unrelated*. `geni-paths/README.md` is the method.
 
-- **AskUserQuestion: placeholder relationships for the siblings in these chains.** The paths
-  produce dummy placeholders for siblings on the path, and Emma's view, 2026-09-03, is that
-  *"we still do this thing"* and it is *"mostly unchanged"* — annoying, and possibly workable
-  around depending on the scale and difficulty of scraping the parents. Put the question to her
-  with `AskUserQuestion`. **Do not pre-investigate it**; `CLAUDE.md` § *"Add it to the end of
-  the queue" means WRITE IT DOWN AND STOP* governs.
-
-  Carry the measured answer to her own question into the options, because it bounds what a
-  placeholder can say: over 30,329 path steps in 696 files, **ex-spouses are discriminated**
-  (`her ex-husband` 52, `his ex-wife` 42, `her ex-partner` 42, `his ex-partner` 28, against
-  `her husband` 934 / `his wife` 908) and **half-siblings are not** — `his brother`/`her sister`
-  and no `half` anywhere, though Geni writes *"Half brother of"* in the immediate-family panel
-  and in the prose `relation_description` sentence on the same page.
+- **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
+  sufficiently gathered in the synoptic tree and a bunch are on Wikidata. Emma, 2026-09-03:
+  *"In the future after we've sufficiently gathered all the placeholder parents and added a
+  bunch to wikidata we can do a parent-adding campaign, especially if we use forest exports in
+  closely related eccentric graph points on geni."* The instrument is `Forest` exports seeded at
+  eccentric points, the same one § *"Not related to" does NOT mean not related* uses. Do not
+  start it early and do not invent the gate's threshold — that is hers.

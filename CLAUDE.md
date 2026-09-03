@@ -1353,6 +1353,75 @@ the same mechanism the daily cadence already uses.
 **Nothing else is capped.** `P22` *father*, `P25` *mother*, `P40` *child* and `P26` *spouse* are
 uncapped — they are few per person and each one is structurally load-bearing.
 
+### A sibling step gets a PLACEHOLDER PARENT in our tree and NEVER on Wikidata
+
+**Emma, 2026-09-03:** *"Brother and sister here becomes kinda weird and imo actually wikidata
+modelling of them shouldn't use placeholder parents. Because we can on wikidata represent these
+people just with the sibling property. Instead of risking it with inventing placeholder parents.
+But I'm interested in them having placeholder profiles in our synoptic tree so I can look at
+their network positions."*
+
+**The two stores get different answers, and that is the whole ruling:**
+
+| store | a sibling step becomes |
+| --- | --- |
+| **Wikidata** | `P3373` *sibling*, directly between the two people. **No parent item is invented.** |
+| **the synoptic tree** (the Geni union) | a **placeholder parent profile**, because that is how she reads network positions |
+
+**Why the split is not an inconsistency.** Geni records no sibling edge — `CLAUDE.md` § *A
+sibling step is the worked example* — so two siblings are joined only through a shared parent,
+and GEDCOM has no way to say *sibling* without one. Our tree therefore needs the placeholder to
+express the fact at all. Wikidata has `P3373` and needs no such prop, so inventing a parent item
+there is a claim about a person nobody has evidence for, in the one store § *The purpose is to
+ADD to Wikidata* makes hardest to undo. Her word for it is **"risking it"**.
+
+**This is the same shape as § *Redacted people go in*:** the structure is what is informative,
+and you assert only the part the data supports. A placeholder parent in our tree is scaffolding
+we control and can re-derive from the exports; a placeholder parent item on Wikidata is a person
+asserted to have existed.
+
+**Scale, measured 2026-09-03: 2,125 sibling steps of 30,329, 7.0%, across 662 of 696 path
+files.** So this governs nearly every path rather than an edge case. Note the interaction with
+the section above: routing all of it through `P3373` puts it under the **10-a-day cap**, which
+is a pacing limit and not a reason to reach for parents instead.
+
+**The parent-adding campaign comes LATER and is hers to start.** *"In the future after we've
+sufficiently gathered all the placeholder parents and added a bunch to wikidata we can do a
+parent-adding campaign, especially if we use forest exports in closely related eccentric graph
+points on geni."* So the placeholders accumulate in our tree first; the campaign that turns them
+into real people is gated on that, and on `Forest` exports seeded at eccentric points — the same
+instrument § *"Not related to" does NOT mean not related* uses for eccentric targets.
+
+### Grab the RESIDUALS. The structured parse is not everything on the page
+
+**Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit
+happens we need to grab residuals all the time."*
+
+**The worked case, and it is why this is a rule.** `genimerge.genipage` parses a path as the
+anchors inside `span.segment > span.name`, which is correct and is what makes the join exact.
+But over **30,329 steps in 696 path files** those step words never say *half* — only
+`his brother` / `her sister`. Geni does say it, in two elements the parser walks past: the
+immediate-family block (*"Half brother of …"*, 325 occurrences across the saved pages) and the
+prose `relation_description`, which reads *"…partner's son's wife's ex-husband's half sister's
+ex-husband's second cousin twice removed's wife's father."*
+
+So the page held a distinction our extraction destroyed, and nothing recorded that it had.
+`genipage.relation_description()` now keeps it — present on **664 of 664** saved pages, 15
+mentioning *half* and 112 *ex-* — written into every generated path file's header and into
+`reports/isolate-path-pilot-results.tsv`. It is stored **as-is and not parsed**: the in-law
+prose is a possessive chain that does not map one-to-one onto the segments, and aligning them is
+a separate job nothing does yet.
+
+**The rule: when an extraction narrows a page to a structure, keep what it dropped.** A residual
+costs a column; recovering a distinction after the pages are gone costs a re-fetch of everything.
+This is the § *check the separator before believing a distribution* family — an instrument that
+quietly narrows its input and reports a clean number about itself.
+
+**And the residual extractor had that exact bug on its first run.** A non-greedy `.*?</div>`
+stopped at the block's first child, an expand/collapse image wrapper, so it returned whitespace
+and measured **0 of 200 pages** as having a description. Balancing `<div>` depth instead gives
+664 of 664. A terminator that is not the right terminator reads as absence.
+
 ### Always write the English label next to a property or item ID
 
 **Emma, 2026-08-15:** *"I have no fucking clue what any property or Q ID property
