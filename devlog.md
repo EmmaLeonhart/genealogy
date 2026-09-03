@@ -26251,3 +26251,34 @@ her logged-in profile anyway. A harvest run reporting 0 steps on every page mean
 differs, not that nothing is connected.
 
 Not run: no Geni request was made. `geni-paths/README.md` carries the method and the rate rule.
+
+## 2026-09-03 — the pilot measures PEOPLE, not reachability
+
+**Emma:** *"Both helps as it gives a more diverse set of connections. More places to add more
+people onto."*
+
+That is a different measurement from the one `harvest-isolate-paths.py` was built to take. It
+counted targets **reached** — a target the blood and inlaw paths both connect scored 1 either
+way, so the second chain was worth zero to the report. Under her reasoning the second chain is
+the point: it runs through different people, and each of those is another place to hang a
+creation on.
+
+Three people-columns added beside the per-type step counts:
+
+* `people_union` — distinct people the pair of chains names
+* `inlaw_only_people` — what the second fetch buys that the first did not
+* `people_new` — those in neither the merged tree nor any path already held, which is the sinew
+
+The held set comes from `build-isolate-path-targets.tree_members()` and `already_pathed()`
+rather than being rebuilt, so the roster and the harvest cannot disagree about what is held.
+
+**If `inlaw_only_people` runs near zero the campaign halves its fetches.** That is now what the
+pilot settles, and it is not the hit rate.
+
+**Exercised on real saved pages** (two isolate pages standing in as the two chains for one
+target, `--pages`/`--roster`/`--results` into the scratchpad): blood 59 steps, inlaw 50,
+`people_union` **102**, `inlaw_only_people` **43**, `people_new` **0** — 0 being correct, since
+every person on two already-harvested paths is held. `--roster` and `--results` were added to
+make that runnable without touching the committed roster.
+
+Still not run against a real `/path/` page: Geni is unreachable from this session.

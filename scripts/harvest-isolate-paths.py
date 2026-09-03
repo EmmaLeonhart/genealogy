@@ -14,10 +14,20 @@ miss rather than a one-step path, because the `from` profile alone is a segment 
 academics filtered by occupation and **92%** for Nordic academics, so where the general
 population lands decides whether a 185,327-target campaign is worth its request budget.
 
-**Both path types, always --- Emma, 2026-09-02.** A target counts as reached if *either*
-type came back. `blood` follows descent only; `inlaw` allows marriage steps and reaches
-people no blood path can, so the per-type columns are worth reading separately --- if
-`inlaw` adds little, the campaign halves its fetches.
+**Both path types, always --- Emma, 2026-09-02.** `blood` follows descent only; `inlaw`
+allows marriage steps and reaches people no blood path can.
+
+**And the quantity is PEOPLE, not reachability --- Emma, 2026-09-03:** *"Both helps as it
+gives a more diverse set of connections. More places to add more people onto."* So a target
+the two types both reach is **not** a duplicate fetch: the second chain runs through
+different people, and every one of them is another place to hang a creation on. Counting
+targets reached would score that second chain at zero.
+
+Hence three people-columns beside the per-type step counts: `people_union` (distinct people
+the pair names), `inlaw_only_people` (what the second fetch buys that the first did not), and
+`people_new` --- those in neither the merged tree nor any path already held, which is the
+sinew proper. If `inlaw_only_people` runs near zero the campaign can halve its fetches; that
+is the thing the pilot settles, and it is not the hit rate.
 
 **Page naming.** `<geni_id>-<blood|inlaw>.html`, the same blob-of-`outerHTML` capture
 `scripts/sweep-scraped-pages.sh` already files, with the type appended so the two do not
@@ -45,7 +55,13 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
 
+sys.path.insert(0, str(REPO / "scripts"))
+
+import importlib  # noqa: E402
+
 from genimerge import genipage  # noqa: E402
+
+targets_mod = importlib.import_module("build-isolate-path-targets")
 
 csv.field_size_limit(10_000_000)
 
@@ -67,15 +83,23 @@ def read_page(p: Path) -> list:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pages", default=str(PAGES), help="directory of saved path pages")
+    ap.add_argument("--roster", default=str(PILOT), help="target roster TSV")
+    ap.add_argument("--results", default=str(RESULTS), help="where to write the results TSV")
     ap.add_argument("--write-paths", action="store_true", help="also write paths/*.tsv for hits")
     args = ap.parse_args()
 
     pages = Path(args.pages)
-    if not PILOT.exists():
-        print(f"no {PILOT.relative_to(REPO)} --- run build-isolate-path-targets.py", file=sys.stderr)
+    pilot, results = Path(args.roster), Path(args.results)
+    if not pilot.exists():
+        print(f"no {pilot} --- run build-isolate-path-targets.py", file=sys.stderr)
         return 1
 
-    targets = list(csv.DictReader(open(PILOT, encoding="utf-8"), delimiter="\t"))
+    # The two "do we already have this person?" sets come from the roster builder rather than
+    # being rebuilt here, so the harvest and the roster can never disagree about what is held.
+    held = targets_mod.tree_members() | targets_mod.already_pathed()
+    new_people: set[str] = set()
+
+    targets = list(csv.DictReader(open(pilot, encoding="utf-8"), delimiter="\t"))
     rows = []
     for t in targets:
         gid, qid = t["geni_id"], t["qid"]
@@ -85,6 +109,7 @@ def main() -> int:
             "label": t["label"],
             "in_nordic_roster": t["in_nordic_roster"],
         }
+        walked: dict[str, set[str]] = {}
         for kind in PATH_TYPES:
             candidates = [pages / f"{gid}-{kind}.html"]
             if kind == "blood":
@@ -95,6 +120,8 @@ def main() -> int:
                 continue
             links = read_page(page)
             row[f"{kind}_steps"] = len(links)
+            if len(links) >= MIN_STEPS:
+                walked[kind] = {l.geni_id for l in links if l.geni_id}
             if args.write_paths and len(links) >= MIN_STEPS:
                 out = REPO / "paths" / f"isolate-{qid.lower()}-{kind}.tsv"
                 header = (
@@ -104,6 +131,19 @@ def main() -> int:
                     f"# Do not hand-edit: re-run the command instead.\n"
                 )
                 out.write_text(genipage.to_tsv(links, header=header), encoding="utf-8")
+
+        # **The union is the quantity, not reachability --- Emma, 2026-09-03:** *"Both helps as
+        # it gives a more diverse set of connections. More places to add more people onto."* So a
+        # target reached by both types is not a duplicate: the second chain is more surface to
+        # hang people on, and `inlaw_only_people` is what the second fetch actually buys.
+        blood, inlaw = walked.get("blood", set()), walked.get("inlaw", set())
+        union = blood | inlaw
+        row["people_union"] = len(union) if union else ""
+        row["inlaw_only_people"] = len(inlaw - blood) if union else ""
+        # Everyone the pair names who is in neither the tree nor any path we already hold. This
+        # is the sinew proper --- the people the campaign exists to reach.
+        row["people_new"] = len(union - held) if union else ""
+        new_people.update(union - held)
         rows.append(row)
 
     fetched = [r for r in rows if r["blood_steps"] != "" or r["inlaw_steps"] != ""]
@@ -115,15 +155,19 @@ def main() -> int:
     for r in rows:
         r["reached"] = "1" if (hit(r, "blood") or hit(r, "inlaw")) else "0"
 
-    RESULTS.parent.mkdir(parents=True, exist_ok=True)
-    tmp = RESULTS.with_suffix(".tsv.tmp")
-    cols = ["qid", "geni_id", "label", "in_nordic_roster", "blood_steps", "inlaw_steps", "reached"]
+    results.parent.mkdir(parents=True, exist_ok=True)
+    tmp = results.with_suffix(".tsv.tmp")
+    cols = [
+        "qid", "geni_id", "label", "in_nordic_roster",
+        "blood_steps", "inlaw_steps", "reached",
+        "people_union", "inlaw_only_people", "people_new",
+    ]
     with open(tmp, "w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=cols, delimiter="\t", lineterminator="\n")
         w.writeheader()
         for r in sorted(rows, key=lambda r: r["qid"]):
             w.writerow(r)
-    tmp.replace(RESULTS)
+    tmp.replace(results)
 
     print(f"targets in roster : {len(rows)}", file=sys.stderr)
     print(f"pages fetched     : {len(fetched)}", file=sys.stderr)
@@ -140,10 +184,22 @@ def main() -> int:
             print(f"  {kind:<6}          : {h}/{len(tried)} = {h / len(tried):.0%}", file=sys.stderr)
     only_inlaw = sum(1 for r in fetched if hit(r, "inlaw") and not hit(r, "blood"))
     print(f"  reached ONLY by inlaw: {only_inlaw}", file=sys.stderr)
+
+    # What the campaign is actually buying. Reachability counts targets; this counts people, and
+    # people are the places to add more people onto.
+    print(f"NEW people (not in tree, not on any held path): {len(new_people)}", file=sys.stderr)
+    both = [r for r in fetched if hit(r, "blood") and hit(r, "inlaw")]
+    if both:
+        extra = sum(r["inlaw_only_people"] for r in both)
+        print(
+            f"  targets reached by BOTH: {len(both)}; people the inlaw chain adds "
+            f"beyond the blood one: {extra} ({extra / len(both):.1f} per target)",
+            file=sys.stderr,
+        )
     steps = [r["blood_steps"] for r in fetched if hit(r, "blood")]
     if steps:
         print(f"  blood steps: median {sorted(steps)[len(steps) // 2]}, max {max(steps)}", file=sys.stderr)
-    print(f"wrote {RESULTS.relative_to(REPO)}", file=sys.stderr)
+    print(f"wrote {results}", file=sys.stderr)
     return 0
 
 
