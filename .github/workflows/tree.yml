@@ -1,0 +1,150 @@
+name: Rebuild the synoptic tree
+
+# **Emma, 2026-09-03:** *"I am going to want you to set it up to be built with actions and commit
+# and push to main."*
+#
+# **This is the thing that was never actually attempted.** `CLAUDE.md` said for weeks that the
+# merge could not run on a runner -- 409 MB output, a peak near 17 GB, against a 16 GB runner --
+# and that claim came from a measurement taken on HER machine on 2026-08-27 at 546 exports. Nobody
+# ever ran it here. What shipped instead was `filter: blob:none` plus a sparse checkout, which
+# scopes the CHECKOUT and shrinks the repo by not one byte, and `out/family-structure.tsv`, an
+# extract committed so the daily pipeline could avoid the tree entirely. Both are workarounds
+# around a limit that was never tested.
+#
+# **So this workflow is the test as much as the deliverable.** If it completes, her machine stops
+# being required for anything but Geni, and the five derived tables stop being a photograph dated
+# whenever she last rebuilt locally. If it is killed, the log says where, and the shrinking work
+# she has already specified -- notes and media are ~67% of corpus bytes, measured -- becomes the
+# plan rather than a note for later.
+#
+# **It rebuilds everything downstream, not just the merge.** `rebuild-everything.py` runs eight
+# steps whose order matters and fails silently when wrong; running the merge alone would leave
+# `derived-labels.csv` a generation stale, which is a defect this repo has already paid for.
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_merge:
+        description: "Reuse an existing out/merged.ged and rebuild only the derived layer"
+        type: boolean
+        default: false
+  # A new export is exactly when the tree is stale, and nothing else makes it stale. Scoped to
+  # `exports/**` so the many other commits a day do not queue 20-minute rebuilds behind each other.
+  push:
+    branches: [main]
+    paths:
+      - "exports/**"
+
+permissions:
+  contents: write
+
+# One rebuild at a time, and never cancel one mid-push: a half-written derived layer is worse
+# than a stale one, which is the failure `rebuild-everything.py`'s docstring is written against.
+concurrency:
+  group: tree
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      # `exports/` is the corpus and is the whole input. `wikidata/` (4.3 GB) and
+      # `paths_for_wikidata_isolates/` (2.7 GB) are not read by any step here and would not fit
+      # beside a 409 MB merge on ~14 GB of runner disk.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/wikidata
+            !/paths_for_wikidata_isolates
+            !/geni-scraping
+            !/geni_pages
+            !/orderlife
+            !/chats
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Room to work
+        run: |
+          echo "MEMORY"; free -m
+          echo "DISK";   df -h / | tail -1
+          echo "CORPUS"; find exports -name '*.ged' | wc -l
+          echo "corpus bytes: $(du -sh exports | cut -f1)"
+
+      - name: Unpack the derived CSVs
+        run: python scripts/pack-derived.py --unpack || echo "nothing to unpack; a full rebuild writes them"
+
+      # **Sampled every 30s so a kill is diagnosable.** A runner that runs out of memory reports
+      # `The runner has received a shutdown signal` and nothing else; the sampler is what turns
+      # that into a number. `rebuild-everything.py` stops at the first failing step by design.
+      - name: Rebuild
+        id: rebuild
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: |
+          ( while true; do
+              echo "MEM $(date -u +%H:%M:%S) $(free -m | awk '/^Mem:/{print "used="$3"MB avail="$7"MB"}') DISK=$(df -m / | awk 'NR==2{print $4"MB free"}')"
+              sleep 30
+            done ) &
+          SAMPLER=$!
+          set +e
+          if [ "${{ inputs.skip_merge }}" = "true" ]; then
+            python scripts/rebuild-everything.py --skip-merge
+          else
+            python scripts/rebuild-everything.py
+          fi
+          STATUS=$?
+          set -e
+          kill $SAMPLER 2>/dev/null || true
+          echo "peak-rss-note: see the MEM lines above for the high-water mark"
+          exit $STATUS
+
+      - name: What the rebuild produced
+        run: |
+          ls -la out/merged.ged 2>/dev/null || echo "no merged.ged"
+          for f in reports/display-names.csv reports/derived-labels.csv \
+                   reports/derived-family.csv reports/derived-facts.csv \
+                   out/family-structure.tsv; do
+            [ -f "$f" ] && printf '%-40s %s\n' "$f" "$(wc -c < "$f")"
+          done
+
+      # `pack-derived.py` gzips the four CSVs that exceed GitHub's 100 MiB limit; the plain files
+      # are gitignored and the `.gz` are what is tracked. `out/merged.ged` is never committed.
+      - name: Commit the rebuilt tree
+        run: |
+          python scripts/pack-derived.py
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing changed; not committing"
+            exit 0
+          fi
+          printf '%s\n' \
+            'rebuild the synoptic tree in Actions' \
+            '' \
+            'Full rebuild-everything.py run on a GitHub runner: the merge over every .ged' \
+            'under exports/, then the derived layer in its required order, then the batch.' \
+            '' \
+            'This is the rebuild that used to need her machine. out/merged.ged is not' \
+            'committed -- it is 409 MB and over the file limit -- but everything derived' \
+            'from it is, so the daily pipeline now reads a tree this run built rather than' \
+            'a photograph taken locally.' \
+            > /tmp/msg.txt
+          git commit -F /tmp/msg.txt
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Say what it cost
+        if: always()
+        run: |
+          echo "Rebuild step outcome: ${{ steps.rebuild.outcome }}"
+          echo "If this was killed, the MEM lines in the Rebuild log give the high-water mark."
+          echo "The shrinking levers, in measured order: notes+media are ~67% of corpus bytes"
+          echo "(CONT 31.8%, CONC 20.7%, FILE 7.3%, NOTE 4.5%, TEXT 1.5%); names ~6%."

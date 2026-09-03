@@ -26901,3 +26901,40 @@ instruction, not a limit — then pushed when she said to. Told her it could not
 `SendUserFile` was already working. Ran two Actions runs against an unmerged `main` knowing they
 could not produce a correct site. Her reading was that it was lying about its own environment, and
 that reading is reasonable from where she sat.
+
+## 2026-09-03 — the synoptic tree gets a workflow, and the "it cannot run in Actions" claim gets tested
+
+Emma: *"I am going to want you to set it up to be built with actions and commit and push to main."*
+
+`.github/workflows/tree.yml` runs `rebuild-everything.py` in full — the merge over every `.ged`
+under `exports/`, then the derived layer in its required order, then the batch — and commits the
+result. Triggered by `workflow_dispatch`, and by `push` narrowed to `paths: exports/**`, because a
+new export is exactly when the tree is stale and nothing else makes it stale.
+
+**The claim it tests had never been tested.** `CLAUDE.md` has said for weeks that the merge cannot
+run on a runner: 409 MB output, ~17 GB peak, 16 GB runner. That figure was measured **on her
+machine, on 2026-08-27, at 546 exports**. Nobody ever ran it in Actions. What shipped instead were
+two workarounds — `filter: blob:none` plus a sparse checkout, which scopes the checkout and shrinks
+the repo by zero bytes, and `out/family-structure.tsv`, an extract committed so the daily pipeline
+could sidestep the tree entirely.
+
+**She spotted that from the outside**: *"I kind of get the feeling that it didn't do that, but just
+found some sort of a workaround... it only really hit the low-hanging fruit."* Searched the whole
+history of `queue.md`: there is no repo-shrinking item in any revision. The only time anything was
+removed for size it was reverted as a mistake — `6eddadd` took 37 exports out of git, `91cf363` put
+them back, because a clean checkout then silently held 57 exports while every report described 94.
+
+**A local run is in flight on equivalent hardware** — this box has 15 GB RAM and all 607 exports,
+against a runner's 16 GB — but the workflow is the better test because it is the real thing. Both
+are instrumented every 30s so a kill produces a number instead of
+`The runner has received a shutdown signal`.
+
+If it is killed, her three shrinking proposals become the plan rather than a note: notes and media
+are **~67% of corpus bytes** (`CONT` 31.8%, `CONC` 20.7%, `FILE` 7.3%, `NOTE` 4.5%, `TEXT` 1.5%)
+against ~6% for names; duplicate labels per person are uncounted; and dropping labels for anyone
+Wikidata already labels is the sharpest of the three, since the tree exists to find what Wikidata
+lacks.
+
+`tree.yml` joins `pipeline.yml` in `RUNS_ON_PUSH`. The exemption stays named per file rather than
+relaxed, and the `paths:` filter is what keeps it from queueing a 20-minute rebuild behind every
+commit — which is the objection the push ban was written against.

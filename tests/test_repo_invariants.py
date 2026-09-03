@@ -60,9 +60,14 @@ AUTOMATIC_TRIGGERS = {"push", "pull_request_target"}
 # on the site."* It is the workflow whose whole job is to make a push produce a fresh batch and a
 # site carrying it, so a push is its correct trigger.
 #
+# `tree.yml` joins it on 2026-09-03: a new export under `exports/` is exactly when the synoptic
+# tree is stale and nothing else makes it stale, so its trigger is `push:` narrowed by
+# `paths: exports/**`. Without the paths filter it would queue a 20-minute rebuild behind every
+# commit, which is the objection the ban was written against in the first place.
+#
 # It is a NAMED exemption rather than a relaxed rule: every other workflow still fails this test
 # if it gains `push:`, which is what stops the ban eroding one file at a time.
-RUNS_ON_PUSH = {"pipeline.yml"}
+RUNS_ON_PUSH = {"pipeline.yml", "tree.yml"}
 
 
 def _triggers(text: str) -> set[str]:
