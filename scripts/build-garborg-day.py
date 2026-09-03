@@ -1394,6 +1394,7 @@ def subgraph_roots():
                 if (row.get("geni_ids") or "").strip() and row.get("qid"):
                     roots.append(row["qid"])
     roots.extend(q for q, _ in active_entry_points())
+    roots.extend(active_group_qids())
     return tuple(dict.fromkeys(roots))
 
 
@@ -1477,6 +1478,100 @@ def _qids_for(geni_ids):
                 if len(found) == len(geni_ids):
                     break
     return found
+
+
+#: Whole populations that become entry points on a date, named by the roster file that lists
+#: them rather than pasted in person by person.
+ENTRY_POINT_GROUPS = ROOT / "reports" / "entry-point-groups.tsv"
+
+
+def entry_point_groups():
+    """Every row of `reports/entry-point-groups.tsv`, sorted by group name.
+
+    **Emma, 2026-09-03, naming whole blocs at once:** *"Ancient Chinese bloc / All Samaritan high
+    priests / All Ethiopian Emperors / All Japanese Emperors / All Tanba people / All
+    Izumo/Senge/Kitajima people / All people with special geni gedcom recognition become entry
+    people."*
+
+    **A group is a REFERENCE TO A ROSTER, not hundreds of pasted ids.** `subgraph_roots()` already
+    reads `reports/bureatten.csv` for exactly this reason --- *"Reading the file rather than
+    pasting the ids keeps one list of these people in the repo"* --- and the same holds here:
+    these rosters are maintained by their own scripts, so a copy would go stale silently.
+
+    **Why this is not as reckless as it sounds, in her words:** *"the invariant graph structure
+    will probably mean they are cumulatively at most a quarter of edits. 1->251 got the 250 giving
+    ~50%."* That is the measured precedent: going from 2 roots to 252 took the subgraph 316 -> 565,
+    so 250 extra roots bought ~249 people. Roots have sharply diminishing returns because a root
+    only seeds what the Wikidata subgraph already connects. Her quarter is a **prediction**, and
+    the honest test is running it --- not arguing about it here.
+
+    **A row with no `source` is a placeholder for a group we cannot yet build**, and it stays
+    visible rather than being dropped: two of the seven have no roster in this repo at all, and
+    one is awaiting her definition. `CLAUDE.md` § *Code that is WRITTEN but never CALLED* is the
+    same failure with a data file.
+    """
+    if not ENTRY_POINT_GROUPS.exists():
+        return []
+    with open(ENTRY_POINT_GROUPS, encoding="utf-8") as f:
+        rows = [r for r in csv.DictReader(f, delimiter="\t") if r.get("group")]
+    return sorted(rows, key=lambda r: r["group"])
+
+
+def group_qids(row):
+    """The QIDs a group row resolves to, or `[]` if it has no usable roster."""
+    src = (row.get("source") or "").strip()
+    if not src:
+        return []
+    # **A group may name SEVERAL rosters, comma-separated.** The Samaritan priests are the reason:
+    # `samaritan-succession-list.tsv` is the authoritative list of who they are and carries a qid
+    # on only 14 of its 132 rows, while `samaritan-priest-links.csv` carries qid/geni pairs for a
+    # different, overlapping handful. Neither is the group; the union is closer.
+    column = (row.get("qid_column") or "qid").strip()
+    out = []
+    for part in src.split(","):
+        path = ROOT / part.strip()
+        if not part.strip() or not path.exists():
+            continue
+        delimiter = "\t" if path.suffix == ".tsv" else ","
+        with open(path, encoding="utf-8") as f:
+            for r in csv.DictReader(f, delimiter=delimiter):
+                q = (r.get(column) or "").strip()
+                if q.startswith("Q"):
+                    out.append(q)
+    return sorted(dict.fromkeys(out))
+
+
+def active_group_qids(today=None):
+    """Every QID from every group whose date has arrived."""
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    out = []
+    for row in entry_point_groups():
+        if (row.get("active_from") or "").strip() <= today:
+            out.extend(group_qids(row))
+    return sorted(dict.fromkeys(out))
+
+
+def group_status(today=None):
+    """`(group, active_from, qids, state)` per group --- what each one currently contributes."""
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    out = []
+    for row in entry_point_groups():
+        when = (row.get("active_from") or "").strip()
+        n = len(group_qids(row))
+        if not (row.get("source") or "").strip():
+            state = "NO ROSTER"
+        elif n == 0:
+            state = "ROSTER EMPTY OR MISSING"
+        elif when <= today:
+            state = "LIVE"
+        else:
+            state = "PENDING"
+        out.append((row["group"], when, n, state))
+    return out
 
 
 def unresolved_entry_points():

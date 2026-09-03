@@ -2798,6 +2798,46 @@ having been created after the download, so it says nothing about Arne's side. Th
 are also post-campaign rather than pre-campaign, so a relationship count there may be measuring
 her own work. § *Emma edits the tree and the items BY HAND, continuously* is the governing rule.
 
+### Whole BLOCS become entry points on 2027-01-01 — and a root outside the ledger does nothing yet
+
+**Emma, 2026-09-03:** *"Ancient Chinese bloc / All Samaritan high priests / All Ethiopian
+Emperors / All Japanese Emperors / All Tanba people / All Izumo/Senge/Kitajima people / All
+people with special geni gedcom recognition become entry people."* Plus *"Ethiopian emperors as
+much as they can be entry points. Imo on Jan 1."*
+
+**Her reason it is not reckless, and it is a prediction rather than a claim:** *"the invariant
+graph structure will probably mean they are cumulatively at most a quarter of edits. 1->251 got
+the 250 giving ~50%."* The precedent is real — 2 roots to 252 took the subgraph 316 → 565, so 250
+extra roots bought ~249 people, because a root only seeds what the subgraph already connects.
+
+**`reports/entry-point-groups.tsv` holds a group as a REFERENCE TO A ROSTER**, never as pasted
+ids — the same reason `subgraph_roots()` reads `bureatten.csv` rather than inlining 251 QIDs.
+State as of 2026-09-03:
+
+| group | QIDs | state |
+| --- | ---: | --- |
+| tanba | 179 | roster found |
+| izumo-senge-kitajima | 111 | roster found |
+| samaritan-high-priests | 25 | roster thin — 14 of 132 succession rows carry a QID, plus 21 pairs |
+| ancient-chinese-bloc | 6 | held as individuals; **none carries a QID in our data** |
+| ethiopian-emperors | 0 | **NO ROSTER EXISTS** |
+| japanese-emperors | 0 | **NO ROSTER EXISTS** |
+| special-geni-gedcom-recognition | 0 | **awaiting her definition** |
+
+**⛔ MEASURED, AND IT IS THE THING TO KNOW: a root that is not in the ledger contributes
+NOTHING as `compose()` is wired.** `ring_seeds = {g for g, q in our_items.items() if q in
+our_wikidata_subgraph}` draws from `our_items`, which is the ledger. **All 251 Bure roots are in
+the ledger; none of the 315 group QIDs is, and neither is Ettinger or Martin.** Adding the 315 as
+roots grows the subgraph by exactly 315 — themselves — and pulls in **0** further ledger people
+and **0** further ring seeds.
+
+**Do not read that as "her idea does not work".** It is a wiring fact about where the seed pool
+comes from, and the ledger on disk is a day old and cannot be refreshed from a remote session
+(Wikidata is blocked), so an item she has edited since may already be in it. What it means is
+that *entry point* currently denotes "may be walked from", not "seeds a ring" — and those come
+apart precisely for a person whose item she did not create. Put to her rather than fixed by
+guess, because widening the seed pool changes her algorithm.
+
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
 **Emma, 2026-08-28**, shown that the batch had added `P26` *spouse* and `P40` *child* statements

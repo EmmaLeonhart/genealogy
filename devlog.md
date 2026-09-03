@@ -26510,3 +26510,45 @@ a high score can mean we have not sampled there yet rather than that the person 
 peripheral. Written into `reports/eccentricity.md` as a section, with the explicit note that two
 people is not a correlation: the real version is a `genimerge.density` presence count against the
 file, which has not been run.
+
+## 2026-09-03 — whole blocs as entry points, and a root outside the ledger does nothing
+
+**Emma:** *"Ancient Chinese bloc / All Samaritan high priests / All Ethiopian Emperors / All
+Japanese Emperors / All Tanba people / All Izumo/Senge/Kitajima people / All people with special
+geni gedcom recognition become entry people."*
+
+`reports/entry-point-groups.tsv` holds each as a **reference to a roster file** rather than
+pasted ids — the reason `subgraph_roots()` already reads `bureatten.csv` instead of inlining 251
+QIDs. `entry_point_groups()`, `group_qids()` (comma-separated sources), `active_group_qids()` and
+`group_status()` do the reading; `subgraph_roots()` unions them in.
+
+| group | QIDs | state |
+| --- | ---: | --- |
+| tanba | 179 | `reports/tanba-p2600-pairs.tsv` |
+| izumo-senge-kitajima | 111 | `reports/izumo-p2600-pairs.tsv` |
+| samaritan-high-priests | 25 | succession list ∪ priest-links; only 14 of 132 succession rows carry a QID |
+| ancient-chinese-bloc | 6 | individuals, none with a QID in our data |
+| ethiopian-emperors | 0 | no roster in the repo |
+| japanese-emperors | 0 | no roster in the repo |
+| special-geni-gedcom-recognition | 0 | her definition needed |
+
+Ethiopian emperors have nothing to build from: the 52 tree labels matching Ethiopia/Negus are the
+**surname Neguse**. Japanese emperors are in the tree but nothing enumerates them, and picking
+them out by label is the name matching this repo refuses. `samaritan-people.csv` has an
+`occupation` column that is empty on all 412 rows, so it cannot isolate the priests either.
+
+**The measurement, and it is the finding.** Her justification was that the graph structure caps
+the effect — *"cumulatively at most a quarter of edits. 1->251 got the 250 giving ~50%"*. Run
+against the ledger as universe, the way `compose()` does it: adding the 315 group QIDs as roots
+takes the subgraph 1,134 → 1,449, which is **+315, exactly the roots themselves**, pulling in
+**0** further ledger people and **0** further ring seeds.
+
+**Because `compose()` draws ring seeds from the ledger only** —
+`ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}`. All 251 Bure roots
+are in the ledger; **none of the 315 is, and neither is Ettinger or Martin**. So *entry point*
+currently means "may be walked from", not "seeds a ring", and the two come apart exactly for a
+person whose item she did not create.
+
+Not fixed here: widening the seed pool changes her algorithm, and the ledger on disk is a day old
+and unrefreshable from a remote session with Wikidata blocked, so an item she edited since may
+already be in it. Put to her.
