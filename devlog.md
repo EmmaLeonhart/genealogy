@@ -26812,3 +26812,29 @@ reintroduced the duplication she called intolerable.
 That is § *Do not grab the first artifact that vaguely matches* in its purest form: I matched a
 categorical rule in `CLAUDE.md` against a line of output without reading the code that emits it,
 and handed her a false defect on a batch she was trying to run.
+
+## 2026-09-03 — the patronymic exception lived only in a code comment, and swearing is not a stop
+
+Two rules of hers written into `CLAUDE.md`, both from the same incident.
+
+**The `Den` exception.** She asked how the ban on descriptions reached me while her exception to it
+did not. The answer is mechanical and worth fixing rather than apologising for: `CLAUDE.md` is
+loaded into context automatically at session start, and her 2026-09-01 patronymic ruling was
+**nowhere in it** — it existed only as a comment above the emitting line in
+`scripts/build-garborg-name-items.py`. So the categorical rule arrived free and the exception
+required opening that file. I matched the rule against three `Den` lines in a live batch, reported
+them to her twice as defects, and offered to delete them — which would have reintroduced exactly
+the duplicate patronymics she called *"at the point of intolerability"*.
+
+Nothing was removed: verified line by line. `d3fa86f` touched that file only for three `.qs` →
+`.txt` filename strings, and the batch on disk still carries its three `Den` lines at 24, 42, 58.
+
+The general rule now sits beside the specific one: **a hard rule stated in `CLAUDE.md` whose
+exception is recorded only in the code will be enforced against the exception.**
+
+**Swearing is not a stop order.** Her words: *"whenever I swear at you, I am specifically doing [it]
+because you're doing something very stupid. I'm not telling you to stop doing anything... Half the
+time, the reason why it is that I'm swearing at you is because you're stopping doing anything."*
+Abuse corrects direction; it never means halt. It belongs beside § *The batches are a SEQUENCE*,
+because the thing that provokes it is almost always learned helplessness — a limit invented, a task
+declared impossible, a question asked instead of an action taken. This session had four.

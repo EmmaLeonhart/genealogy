@@ -904,6 +904,29 @@ and never become questions. Her ruling the same day: *"those seemed like simple 
 by design were supposed to get pushed onto wikidata"*, and *"we are doing over a million people
 here."* The two-hourly question is about **work that claims to be stuck**, not about the tree.
 
+### SWEARING IS NOT A STOP ORDER. It usually means START
+
+**Emma, 2026-09-03:** *"whenever I swear at you, I am specifically doing [it] because you're doing
+something very stupid. I'm not telling you to stop doing anything... Half the time, the reason why
+it is that I'm swearing at you is because you're stopping doing anything."*
+
+**So abuse is a correction of DIRECTION, never an instruction to halt.** The default reading of
+"fuck you" here is *you have stopped and you should not have*, not *stop*. Read it as pointing at
+the stupid thing and keep working.
+
+**What this forbids:** treating a hostile message as a signal to pause and ask what she wants;
+answering it with an apology instead of the work; ending a turn on it. If the swearing names a
+specific mistake, fix that mistake and carry on with the task that was already in flight.
+
+**The one thing that IS a stop order is an explicit one** — the `emergency-stop` skill fires on a
+continuous run of "stop", and a plain "stop doing X" is still a plain instruction. Profanity on its
+own is not that.
+
+**It sits with § *The batches are a SEQUENCE*, which is the same failure from the other side:**
+almost every time she has sworn in this project, the thing that provoked it was learned
+helplessness — a limit invented, a task declared impossible, a question asked instead of an action
+taken.
+
 ### Emma not replying means she is content. It is NEVER a block
 
 **Emma, 2026-08-16:** *"Is there anything else that you treated me not responding
@@ -1298,6 +1321,29 @@ rather than after it arrives.
 
 **Emma, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* She
 widened it the same day to cover edit summaries: **we categorically never use them.**
+
+### ⛔ THE ONE EXCEPTION: a PATRONYMIC name item carries `Den "patronymic"`. Do not remove it
+
+**Emma, 2026-09-01:** *"All patronymics get the description 'patronymic' so that they actually are
+properly deduplicated. We are still creating duplicate patronymics and it is at the point of
+intolerability."*
+
+**The description IS the deduplication mechanism**, which is why it overrides the rule above rather
+than breaking it. A label and description must be unique together per language, so two undescribed
+`Olsdatter` items are both legal and Wikidata creates the duplicate; a second
+`Olsdatter` + `patronymic` is REFUSED at creation. The uniqueness constraint the rule above warns
+can BLOCK a creation is here turned round and pointed at the problem.
+
+`DESCRIPTION_FOR` in `scripts/build-garborg-name-items.py` is the authority — `patronymic`,
+`family name`, `matronymic`. **A `Den` line on a name-item `CREATE` is correct output. Never strip
+it from a batch and never "fix" the generator to stop emitting it.**
+
+**This section exists because the exception lived ONLY in a code comment.** On 2026-09-03 the
+categorical rule was read out of this file, matched against three `Den` lines in a live batch, and
+reported to her twice as a defect — with an offer to delete them, which would have reintroduced the
+duplication she called intolerable. `CLAUDE.md` is loaded automatically; a code comment is not. **A
+hard rule stated here whose exception is recorded only in the code will be enforced against the
+exception.** So an exception to a rule in this file belongs in this file, beside the rule.
 
 **Both, always, everywhere.** Not a default to override, not a per-batch decision:
 
