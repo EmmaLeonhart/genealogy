@@ -13,87 +13,73 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Voster -- family, 6 bearer(s) in the batches
+# Bjørnson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Voster"
-LAST	Len	"Voster"
-#   set the mul label to "Voster"
-LAST	Lmul	"Voster"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141205913 Ingebret Pederson Voster: P734 family name = the item just created
-Q141205913	P734	LAST	S2600	"6000000007980389582"
-#   Q141242562 Peder Jonsen Voster: P734 family name = the item just created
-Q141242562	P734	LAST	S2600	"6000000007980605161"
-#   Q141198755 Anna Ingebretsdatter Voster: P734 family name = the item just created
-Q141198755	P734	LAST	S2600	"6000000007980728952"
-#   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
-Q141223551	P734	LAST	S2600	"6000000007980728958"
-#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
-Q141244126	P734	LAST	S2600	"6000000007980728964"
-#   Q141244116 NN Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141244116	P734	LAST	P3831	Q28418670	S2600	"6000000015302207141"
-
-# Rasmussen -- patronymic, 5 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Rasmussen"
-LAST	Len	"Rasmussen"
-#   set the mul label to "Rasmussen"
-LAST	Lmul	"Rasmussen"
+#   the item just created: set the en label to "Bjørnson"
+LAST	Len	"Bjørnson"
+#   set the mul label to "Bjørnson"
+LAST	Lmul	"Bjørnson"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141216381 Hans Rasmussen Låge-Håland: P5056 patronym or matronym = the item just created
-Q141216381	P5056	LAST	S2600	"6000000009127934231"
-#   Q141257264 Lydik Rasmussen Amdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141257299 Rasmus Lydikson Amdal
-Q141257264	P5056	LAST	P144	Q141257299	S2600	"6000000023605569477"
-#   Q141223738 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200074 Rasmus Olsen Bø
-Q141223738	P5056	LAST	P144	Q141200074	S2600	"6000000196541254827"
-#   Q141242406 Hans Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
-Q141242406	P5056	LAST	P144	Q141189099	S2600	"6000000225376735889"
-#   Q141242555 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
-Q141242555	P5056	LAST	P144	Q141189099	S2600	"6000000225376871825"
+#   Q141244226 Knut Bjørnson Bjørheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244210 Bjørn Lauritsen Bjørheim
+Q141244226	P5056	LAST	P144	Q141244210	S2600	"6000000002277957043"
+#   Q141198507 Tormod Bjørnson Mele: P5056 patronym or matronym = the item just created, qualified P144 based on Q141250216 Bjørn Gunnarson Mele
+Q141198507	P5056	LAST	P144	Q141250216	S2600	"6000000007980617631"
 
-# Ekebyholm -- family, 4 bearer(s) in the batches
+# Hakunge -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ekebyholm"
-LAST	Len	"Ekebyholm"
-#   set the mul label to "Ekebyholm"
-LAST	Lmul	"Ekebyholm"
+#   the item just created: set the en label to "Hakunge"
+LAST	Len	"Hakunge"
+#   set the mul label to "Hakunge"
+LAST	Lmul	"Hakunge"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P734 family name = the item just created
-Q109296398	P734	LAST	S2600	"6000000006127496847"
-#   Q5813616 Adam Horn af Ekebyholm till Ekebyholm: P734 family name = the item just created
-Q5813616	P734	LAST	S2600	"6000000007285499105"
-#   Q19678400 Eva Horn af Ekebyholm: P734 family name = the item just created
-Q19678400	P734	LAST	S2600	"6000000007286110282"
-#   Q717179 Arvid Bernhard Horn af Ekebyholm: P734 family name = the item just created
-Q717179	P734	LAST	S2600	"6000000011637024489"
+#   Q141219054 Carl Emil Cronhielm af Hakunge: P734 family name = the item just created
+Q141219054	P734	LAST	S2600	"6000000008178453589"
+#   Q110304582 Gustava Magdalena Cronhielm af Hakunge: P734 family name = the item just created
+Q110304582	P734	LAST	S2600	"6000000012959992080"
+#   Q4938400 Christina Charlotta Cronhielm af Hakunge: P734 family name = the item just created
+Q4938400	P734	LAST	S2600	"6000000020584191181"
 
-# 345 more name items are needed and wait for a later
+# Hansen -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Hansen"
+LAST	Len	"Hansen"
+#   set the mul label to "Hansen"
+LAST	Lmul	"Hansen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141223961 Syvert Kristian Hansen Nyvold: P5056 patronym or matronym = the item just created
+Q141223961	P5056	LAST	S2600	"6000000021198171670"
+#   Q141250244 Rasmus Hansen Nord-Varhaug: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
+Q141250244	P5056	LAST	P144	Q141216381	S2600	"6000000087451690855"
+#   Q141200127 Ådne Hansen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216607 Hans Erikson Øvre Håland
+Q141200127	P5056	LAST	P144	Q141216607	S2600	"6000000225229617898"
+
+# 342 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Kristiansen (patronymic), 4 bearer(s)
-#   Låge-Håland (family), 4 bearer(s)
-#   Asbjørnsdatter (patronymic), 3 bearer(s)
-#   Frondin (family), 3 bearer(s)
-#   Garfve (family), 3 bearer(s)
-#   Hakunge (family), 3 bearer(s)
-#   Hansen (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
-#   ... and 333 more
+#   Knutsdatter (patronymic), 3 bearer(s)
+#   Larsson (patronymic), 3 bearer(s)
+#   Magnusson (patronymic), 3 bearer(s)
+#   Nord-Varhaug (family), 3 bearer(s)
+#   Olson (patronymic), 3 bearer(s)
+#   Rudén (family), 3 bearer(s)
+#   Røyneberg (family), 3 bearer(s)
+#   ... and 330 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -105,39 +91,38 @@ Q717179	P734	LAST	S2600	"6000000011637024489"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2627 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2612 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q5984640: holds 'Johan von Mentzer'; ours is 'Johan Falkenberg af Trystorp'
-#   Q5984640: keep the outgoing label as an alias before it is replaced
-Q5984640	Amul	"Johan von Mentzer"
-#   Q5984640: set the mul label to 'Johan Falkenberg af Trystorp'
-Q5984640	Lmul	"Johan Falkenberg af Trystorp"
-#   Q5984640: set the en label to 'Johan Falkenberg af Trystorp'
-Q5984640	Len	"Johan Falkenberg af Trystorp"
-#   Q5984640: set the ja label
-Q5984640	Lja	"ヨハン・ファルケンベルグ・アフ・トリストルプ"
-#   Q5984640: set the zh label
-Q5984640	Lzh	"约翰·法尔肯贝尔格·阿夫·特里斯托尔普"
-#   Q5984640: set the ko label
-Q5984640	Lko	"조한 팔켄베르그 아프 트리스토르프"
-#   Q29246906 Eleonora Juliana Wiggman: add a mul alias "Eleonora Juliana Wiggman"
-Q29246906	Amul	"Eleonora Juliana Wiggman"
-#   add a mul alias "Robert Chester Wilson Ettinger"
-Q714044	Amul	"Robert Chester Wilson Ettinger"
-#   set the ja label to "ロバート・エッティンガー"
-Q714044	Lja	"ロバート・エッティンガー"
-#   set the zh label to "罗伯特·埃廷盖尔"
-Q714044	Lzh	"罗伯特·埃廷盖尔"
-#   set the ko label to "로베르트 에티에르"
-Q714044	Lko	"로베르트 에티에르"
-#   Q141244232 Ramfrid Gustavsdotter Lejon: set the ko label to "람프리드 구스탑스도테르 레존"
-Q141244232	Lko	"람프리드 구스탑스도테르 레존"
-#   set the ko label to "구스탑 페테르손 레존"
-Q141223837	Lko	"구스탑 페테르손 레존"
-#   set the ja label to "スヴァンテポルク・オフ・ヴィービー"
-Q6197518	Lja	"スヴァンテポルク・オフ・ヴィービー"
-#   set the zh label to "斯万特波尔克·奥夫·维比"
-Q6197518	Lzh	"斯万特波尔克·奥夫·维比"
+#   set the ko label to "스반테폴크 오프 비비"
+Q6197518	Lko	"스반테폴크 오프 비비"
+#   Q141216489 Laurits Leivson Bjørheim: set the ko label to "라우리츠 레입손 브죄르헤임"
+Q141216489	Lko	"라우리츠 레입손 브죄르헤임"
+#   set the ko label to "오라욱 존스다테르 헤이그레"
+Q141216638	Lko	"오라욱 존스다테르 헤이그레"
+#   Q141219299 Per Asbjørnson Stokka: set the ko label to "페르 아스브죄르느손 스토카"
+Q141219299	Lko	"페르 아스브죄르느손 스토카"
+#   Q141244209 Berta Asbjørnsdotter Røyneberg: add a mul alias "Berta Asbjørnsdotter Stokka"
+Q141244209	Amul	"Berta Asbjørnsdotter Stokka"
+#   set the ko label to "베르타 아스브죄르느스도테르 뢰이네베르그"
+Q141244209	Lko	"베르타 아스브죄르느스도테르 뢰이네베르그"
+#   Q141216637 Ola Person Persson Heigre: set the ko label to "오라 페르손 페르손 헤이그레"
+Q141216637	Lko	"오라 페르손 페르손 헤이그레"
+#   Q141219227 Gitlaug Knutsdatter Garborg: set the ko label to "기트라욱 크누츠다테르 가르보르그"
+Q141219227	Lko	"기트라욱 크누츠다테르 가르보르그"
+#   set the ko label to "이에르 오스문드스다테르 리사"
+Q141205914	Lko	"이에르 오스문드스다테르 리사"
+#   set the ko label to "조한네스 스벤센 옵레스타드"
+Q141216387	Lko	"조한네스 스벤센 옵레스타드"
+#   set the ko label to "존 올센 헤이그레"
+Q141199892	Lko	"존 올센 헤이그레"
+#   set the ko label to "라켈 존스다테르 존스도테르 바트네"
+Q141200054	Lko	"라켈 존스다테르 존스도테르 바트네"
+#   Q141216365 Berte Karine Jonsdatter Stokka: set the ko label to "베르테 카리네 존스다테르 스토카"
+Q141216365	Lko	"베르테 카리네 존스다테르 스토카"
+#   Q141216510 Torger Torgerson Stokka: set the ko label to "토르게르 토르게르손 스토카"
+Q141216510	Lko	"토르게르 토르게르손 스토카"
+#   set the ko label to "에리사베트 키르스티네 에리크스다테르 스타에란드"
+Q141178196	Lko	"에리사베트 키르스티네 에리크스다테르 스타에란드"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
