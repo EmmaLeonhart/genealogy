@@ -75,6 +75,10 @@ jobs:
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    # The commit this job PUSHES, so the site job can build from it. Empty when nothing
+    # changed, and the site then falls back to github.sha.
+    outputs:
+      sha: ${{ steps.commit.outputs.sha }}
     steps:
       # `out/` is needed for the name-item store the live reuse check reads, `reports/` for the
       # derived CSVs compose reads. `exports/` is NOT needed: nothing here touches the corpus,
@@ -148,6 +152,7 @@ jobs:
 
       # Repack before committing: the plain CSVs are gitignored and the `.gz` are what is tracked.
       - name: Commit the rebuilt batch
+        id: commit
         run: |
           python scripts/pack-derived.py
           git config user.name  "github-actions[bot]"
@@ -170,6 +175,9 @@ jobs:
           git commit -F /tmp/msg.txt
           git pull --rebase origin main
           git push origin HEAD:main
+          # AFTER the rebase and push: this is the sha now on main, and the one the site
+          # must be built from. Without it the site publishes this commit's parent.
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -237,3 +245,8 @@ jobs:
       pages: write
       id-token: write
     uses: ./.github/workflows/pages.yml
+    # `needs:` orders the jobs; it does NOT move github.sha, which stays the commit that
+    # triggered the run. Passing the pushed sha explicitly is what makes the published page
+    # carry the batch this run just built rather than the previous one's.
+    with:
+      ref: ${{ needs.pipeline.outputs.sha }}

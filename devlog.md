@@ -26653,3 +26653,38 @@ is **not established**, and guessing further at Geni's URL scheme is where the r
 says to stop. Put to her.
 
 **Nothing was fetched in bulk.** The pilot queue item stays; only its method is now corrected.
+
+## 2026-09-03 — the Pages site was always one run behind: `needs:` does not move the sha
+
+She noticed it herself: *"the pipeline does not update github pages lol"*. She is right, and it
+is measurable rather than a matter of reading the YAML.
+
+`pipeline.yml` calls `pages.yml` with `uses:` and orders it `needs: pipeline`. A reusable
+workflow called that way runs at the **caller's** `github.sha`, and `actions/checkout` with no
+`ref` takes that sha. So `needs:` sequenced the site after the rebuild and left it checking out
+the tree as it stood **before** the rebuild — the pipeline job's own commit is pushed after the
+sha was fixed, and the site never saw it.
+
+Measured on run 33687514166, the last run where the pipeline actually committed:
+
+    pipeline      head_sha 8dcf42f6   pushed 4111f4d at 22:02:19
+    site / build  head_sha 8dcf42f6   checked out at 22:02:32, 13 seconds later
+
+`build-pages-site.py:46` publishes `reports/wikidata-garborg-day.qs` on the page, so every site
+build has served the **previous** batch. It has never once shown the batch from its own run.
+
+**The comment sitting in `pages.yml` asserted the opposite** — *"the site is rebuilt from the
+same commit that just produced the batch"* — which is why this went unnoticed for a day of runs.
+It has been replaced with the measurement above. A comment claiming a property nobody checked is
+worse than no comment, because it answers the question for the next reader.
+
+The fix: the `pipeline` job outputs the sha it pushed (`git rev-parse HEAD` after the rebase and
+push), `pages.yml` takes a `ref` input on `workflow_call`, and the `site` job passes it. Empty
+falls back to `github.sha`, which covers both the schedule and the nothing-changed path.
+
+**This is a second, independent route to the same stale file**, alongside the one found earlier
+today: `daily-batch-email.yml` rebuilds nothing and stamps *today's* date on whatever `.qs` is
+committed, so issues #14 and #16 both re-delivered the batch built on 2026-09-02 at 22:02 under
+a `2026-09-03` title. That one is not fixed here.
+
+Not verified end to end: the fix lands on a branch, so the next run on `main` is what proves it.

@@ -18,10 +18,25 @@ on:
   workflow_dispatch:
   # **Callable, so ONE dispatch of the pipeline produces all three.** Emma, 2026-09-01:
   # *"the ci/cd run will make the archive (committed) and the pages and the
-  # quickstatements for me to run later"* -- "the ci/cd run", singular. `pipeline.yml`
-  # calls this after its own job, so the site is rebuilt from the same commit that just
-  # produced the batch rather than from whatever the last schedule happened to see.
+  # quickstatements for me to run later"* -- "the ci/cd run", singular.
+  #
+  # **`ref` EXISTS BECAUSE `needs:` DOES NOT MOVE THE SHA.** A reusable workflow called with
+  # `uses:` runs at the CALLER's `github.sha`, and `actions/checkout` with no `ref` takes that
+  # sha -- so ordering this after the pipeline job sequenced it but published the tree as it
+  # stood BEFORE the rebuild. The pipeline commits and pushes a new commit; without this input
+  # the site was built from its parent.
+  #
+  # Measured on run 33687514166 (2026-09-02): the `pipeline` job pushed 4111f4d at 22:02:19 and
+  # `site / build` checked out 8dcf42f6 thirteen seconds later. Since the page publishes
+  # `reports/wikidata-garborg-day.qs`, every site build served the PREVIOUS day's batch. The
+  # comment that used to sit here claimed the opposite, which is why it went unnoticed.
   workflow_call:
+    inputs:
+      ref:
+        description: "Commit to build from. Empty falls back to the sha that triggered the run."
+        type: string
+        required: false
+        default: ""
   schedule:
     # 06:23 UTC daily. Off the hour on purpose: :00 is when every scheduled workflow on GitHub
     # fires at once and the queue is worst.
@@ -44,6 +59,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # `inputs` is null on the schedule, so this falls back to github.sha there.
+          ref: ${{ inputs.ref || github.sha }}
           filter: blob:none
           sparse-checkout: |
             /CLAUDE.md
