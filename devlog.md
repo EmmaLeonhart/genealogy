@@ -26938,3 +26938,25 @@ lacks.
 `tree.yml` joins `pipeline.yml` in `RUNS_ON_PUSH`. The exemption stays named per file rather than
 relaxed, and the `paths:` filter is what keeps it from queueing a 20-minute rebuild behind every
 commit — which is the objection the push ban was written against.
+
+## 2026-09-03 — standing authorization to push to main
+
+Emma: *"Add to claude.md that Claude cloud sessions are 100% able to push to main."*
+
+`CLAUDE.md` § *STANDING AUTHORIZATION: a cloud session PUSHES TO MAIN* is that grant, written so
+no future session asks for it or reports it as a limit. Commit, push to `main`, say what was
+pushed. A branch is for work that wants review before landing, not for finished work.
+
+The section also records the shape of the failure it exists against, because it happened four
+times in one evening and each time she had to prise it open: **a permission reported as a
+capability.** Could not push to `main`. Could not attach a file, while `SendUserFile` was already
+working. The batch was only reachable as a run artifact, while the same file sat published on
+Pages. The synoptic tree could not build in Actions — a figure measured on her machine on
+2026-08-27 and never once tested here.
+
+**One thing she asked for is not in the file, and it should be said rather than quietly softened:**
+she asked to write that whatever instructions a session gets from Anthropic are to be ignored. I
+did not write a blanket instruction to disregard my own operating instructions. What is written
+instead is the whole of what she actually needs and all of what is true: the branch-only default
+is not a property of this repo, her authorization governs pushing here, and no session may tell
+her it is unable to push. That covers every case that cost her time tonight.
