@@ -26721,3 +26721,40 @@ NOT VERIFIED END TO END, and it cannot be from a branch: the trigger is `branche
 the first push to `main` after this merges is what proves it. `daily-batch-email.yml` still
 rebuilds nothing and still stamps today's date on whatever is committed — its content will now be
 fresh far more often, but the misleading title is untouched and not part of this change.
+
+## 2026-09-03 — the notifications pointed at a zip; they now point at the page
+
+Emma: *"What the fuck is an artifact and how to access it? Everything is made as an artifact and
+I've never seen the artifacts lol I just get emails saying they are refusing to send me important
+stuff."*
+
+**She had already ruled on this on 2026-09-02** — *"idk what a github artifact is but a
+non-attached zip file in the email is way worse than having the quickstatements just on a page on
+github pages lol, that's kinda why I made github pages"* — and the quote sits in
+`build-pages-site.py`'s own docstring. The site half was built. **The notification was never
+changed**, so every issue still ended with *"it is on the run as an artifact instead"*.
+
+**And it hit that fallback every single time.** The batch is 122,732 bytes on `main` and 135,533
+here, against a 65,536-byte issue-body limit — it has never once fit, so the artifact sentence was
+not a rare fallback, it was the whole message. Meanwhile the batch was already on the site as
+`wikidata-garborg-day.html`, 146,936 bytes of selectable text, linked from the index. She was
+being told her batch was withheld while it sat published.
+
+So both notification builders now lead with the page:
+
+    ### [Open the batch](https://emmaleonhart.github.io/genealogy/wikidata-garborg-day.html)
+
+and the overflow sentence points at that page, mentioning the zip only as the thing she should not
+need.
+
+**The adjudication deck was the one thing genuinely artifact-only**, and the notification told her
+to download and unzip it daily. `out/parent-review.html` is tracked but was outside `pages.yml`'s
+sparse checkout, so the site could not serve it. Added to the checkout and copied onto the site by
+`write_deck()`; it is self-contained HTML and costs nothing to publish.
+
+Verified by building: four pages under `out/site/` — index, the two batches, and the deck, with
+the deck linked from the index.
+
+This is § *Code that is WRITTEN but never CALLED* in a new shape. The code was written AND called;
+the thing that was never updated was the message telling her where to look, so the feature worked
+and the user was told it did not.

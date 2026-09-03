@@ -222,22 +222,35 @@ jobs:
             const when = new Date().toISOString().slice(0, 16).replace('T', ' ');
             const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
                         `/actions/runs/${context.runId}`;
+            // **The PAGE is the hand-off, never the artifact.** Emma, 2026-09-02: *"idk what
+            // a github artifact is but a non-attached zip file in the email is way worse than
+            // having the quickstatements just on a page on github pages lol, that's kinda why I
+            // made github pages."* The batch is ~130 KB against a 65,536-byte issue-body limit,
+            // so it ALWAYS overflows -- every notification hit the old artifact fallback, which
+            // is why she kept being told her batch was being withheld.
+            const site = 'https://emmaleonhart.github.io/genealogy';
             const head = [
               `**${process.env.CREATES} creations - ${process.env.LINES} statement lines - ` +
               `${process.env.CARRIED} carried forward**`,
               '',
+              `### [Open the batch](${site}/wikidata-garborg-day.html)`,
+              '',
+              `Select-and-copy text, straight into QuickStatements. Also: ` +
+              `[name items](${site}/wikidata-garborg-name-items.html) &middot; ` +
+              `[adjudication deck](${site}/parent-review.html) &middot; ` +
+              `[site](${site}/).`,
+              '',
               'Rebuilt because you edited Wikidata in the last six hours. The ledger was',
               'refreshed; the synoptic tree was not.',
-              '',
-              `The adjudication deck is in the artifact on [the run](${run}), as ` +
-              `parent-review.html — download it and open it in a browser.`,
               '',
             ].join('\n');
             const wrapped = head + '```\n' + batch + '\n```\n';
             const body = wrapped.length <= LIMIT
               ? wrapped
               : head + `The batch is ${process.env.BYTES} bytes, past the ${LIMIT}-byte ` +
-                       `issue-body limit, so it is on [the run](${run}) as an artifact instead.\n`;
+                       `issue-body limit to inline it here — read it on ` +
+                       `[the page](${site}/wikidata-garborg-day.html) above. ` +
+                       `(A zip of it is also on [the run](${run}), which you should not need.)\n`;
             const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,

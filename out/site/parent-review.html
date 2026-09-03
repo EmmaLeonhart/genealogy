@@ -1,0 +1,351 @@
+<title>Parent Adjudication</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --raise:#eef1f5; --ink:#141820; --muted:#5f6875;
+  --line:#dce1e8; --accent:#2f4f8f; --accent-soft:#e3ebf9;
+  --yes:#166b4d; --yes-soft:#ddefe7; --no:#a3352b; --no-soft:#fbe3e0;
+  --skip:#7a6524; --skip-soft:#f5edd4;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116; --surface:#161a21; --raise:#1d222b; --ink:#e7eaf0; --muted:#98a1b0;
+  --line:#262d38; --accent:#8aa9e8; --accent-soft:#1c2536;
+  --yes:#57c396; --yes-soft:#12281f; --no:#e58076; --no-soft:#2c1815;
+  --skip:#cdb268; --skip-soft:#2a2415;
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1116; --surface:#161a21; --raise:#1d222b; --ink:#e7eaf0; --muted:#98a1b0;
+  --line:#262d38; --accent:#8aa9e8; --accent-soft:#1c2536;
+  --yes:#57c396; --yes-soft:#12281f; --no:#e58076; --no-soft:#2c1815;
+  --skip:#cdb268; --skip-soft:#2a2415;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif;
+  margin:0;padding:22px 20px 92px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+h1{font:600 21px/1.2 "IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13px}
+.bar{height:4px;background:var(--raise);border-radius:99px;overflow:hidden;margin:14px 0 20px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cardtop{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;
+  justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.name{font:600 26px/1.15 Newsreader,Georgia,serif;letter-spacing:-.01em;text-wrap:balance}
+.trigger{font-size:12.5px;color:var(--muted);max-width:42ch}
+.trigger b{color:var(--ink);font-weight:500}
+.cols{display:grid;grid-template-columns:1fr 1fr}
+.col{padding:16px 20px 22px;min-width:0}
+.col+.col{border-left:1px solid var(--line)}
+@media (max-width:720px){
+  .cols{grid-template-columns:1fr}
+  .col+.col{border-left:0;border-top:1px solid var(--line)}
+  body{padding:16px 14px 20px}
+  .name{font-size:21px}
+  .col{padding:14px 16px 18px}
+  .cardtop{padding:14px 16px}
+  .trigger{max-width:none}
+  .acts{padding:9px 12px}
+  .actrow{gap:7px}
+  button{padding:8px 12px;font-size:13.5px}
+  kbd{display:none}
+  .tally{width:100%;order:9;font-size:12px}
+  .spacer{display:none}
+}
+.eyebrow{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin-bottom:9px}
+.who{font:600 17px/1.3 Newsreader,Georgia,serif;margin-bottom:3px}
+.id{font:400 11.5px/1.4 "IBM Plex Mono",monospace;color:var(--muted);word-break:break-all}
+.id a{color:var(--accent);text-decoration:none}
+.id a:hover,.id a:focus-visible{text-decoration:underline}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 2px}
+.chip{font:500 11.5px/1 "IBM Plex Mono",monospace;padding:4px 8px;border-radius:99px;
+  background:var(--raise);color:var(--muted);border:1px solid var(--line);white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600}
+.chip.bad{background:var(--no-soft);border-color:transparent;color:var(--no)}
+.chip.bad b{color:var(--no)}
+.warn{padding:10px 20px;background:var(--no-soft);color:var(--no);font-size:13px;
+  border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.warn b{font-weight:600}
+@media (max-width:720px){.warn{padding:10px 16px}}
+.field{margin-top:14px}
+.flabel{font-size:11px;color:var(--muted);margin-bottom:4px}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+li{font-size:13.5px}
+mark{background:var(--accent-soft);color:inherit;border-radius:3px;padding:0 3px}
+.none{color:var(--muted);font-style:italic;font-size:13px}
+.acts{position:fixed;left:0;right:0;bottom:0;background:var(--surface);
+  border-top:1px solid var(--line);padding:12px 20px}
+.actrow{max-width:1080px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{font:500 14px "IBM Plex Sans",sans-serif;padding:9px 16px;border-radius:7px;
+  border:1px solid var(--line);background:var(--raise);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.y{background:var(--yes-soft);border-color:transparent;color:var(--yes);font-weight:600}
+.n{background:var(--no-soft);border-color:transparent;color:var(--no);font-weight:600}
+.s{background:var(--skip-soft);border-color:transparent;color:var(--skip);font-weight:600}
+kbd{font:500 11px "IBM Plex Mono",monospace;opacity:.6;margin-left:6px}
+.spacer{flex:1}
+.tally{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tally b{color:var(--ink)}
+.done{text-align:center;padding:44px 20px}
+.done h2{font:600 24px Newsreader,Georgia,serif;margin:0 0 8px}
+textarea{width:100%;height:220px;margin-top:16px;font:400 12px/1.5 "IBM Plex Mono",monospace;
+  background:var(--raise);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Parent Adjudication</h1>
+    <span class="sub">Is our Geni person the same as the parent their child already names on Wikidata?</span>
+  </header>
+  <div class="bar"><i id="bar"></i></div>
+  <div id="stage"></div>
+</div>
+
+<div class="acts">
+  <div class="actrow">
+    <button class="y" id="by">Same person<kbd>Y</kbd></button>
+    <button class="n" id="bn">Different<kbd>N</kbd></button>
+    <button class="s" id="bs">Skip<kbd>S</kbd></button>
+    <button id="bb">Back<kbd>&larr;</kbd></button>
+    <span class="spacer"></span>
+    <span class="tally" id="tally"></span>
+    <button id="bexport">Copy decisions</button>
+  </div>
+</div>
+
+<script id="cases" type="application/json">[{"our": "Maclean", "geni": "6000000006454368499", "qid": "Q75772676", "cand": "Q75772676", "our_sp": ["Lachlan Mor Maclean"], "our_kids": ["6000000174135517846 | 6000000006263794363 | 6000000105769274866 | 6000000023386288413 | 6000000176099378054 | 6000000176099378059 | 6000000176099378064 | 6000000176099378085 | 6000000176099378091 | 6000000176099378096"], "cand_sp": ["Q7528231"], "cand_kids": ["Q76064197", "Q7527084", "Q6468468", "Q76064415"], "via": "Hector Óg Maclean", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["1560", "1604"], "cand_life": ["1563", "1604"]}, {"our": "", "geni": "6000000002933557025", "qid": "Q11368515", "cand": "Q11368515", "our_sp": ["6000000001772616109 | 6000000002934660014 | 6000000008141389488"], "our_kids": ["6000000001809638693 | 6000000002933445764 | 6000000008141407248"], "cand_sp": ["Q2823877"], "cand_kids": ["Q2823876", "Q11451531", "Q3482119"], "via": "", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}, {"our": "Papia Poppée Poppa de Enver Concubine", "geni": "6000000000424732334", "qid": "Q4971843", "cand": "Q4971843", "our_sp": ["Richard 'Sans-Peur’"], "our_kids": ["Papia de Normandie"], "cand_sp": ["Q312613"], "cand_kids": ["Q718270", "Q717571", "Q75384680"], "via": "Papia de Normandie", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["935", "1031"], "cand_life": ["10c", "11c"]}, {"our": "鴻智 裴", "geni": "6000000057602803872", "qid": "Q45461100", "cand": "Q45461100", "our_sp": [], "our_kids": ["6000000075378647831 | 6000000057602545999 | 6000000057602082285"], "cand_sp": [], "cand_kids": ["Q45422269", "Q45426923", "Q45461163"], "via": "師道 裴", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}, {"our": "", "geni": "4259064 | 9995000000000000074 | 9995000000000102196", "qid": "Q5290415", "cand": "Q5290415", "our_sp": [], "our_kids": [], "cand_sp": [], "cand_kids": ["Q18156578", "Q160369", "Q104519750"], "via": "Isabel de Borja y Llançol", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "", "cand_sex": "M", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}, {"our": "", "geni": "6000000001062599699 | 9995000000000000075 | 9995000000000102197", "qid": "Q97783170", "cand": "Q97783170", "our_sp": [], "our_kids": [], "cand_sp": [], "cand_kids": ["Q18156578", "Q160369", "Q104519750"], "via": "Isabel de Borja y Llançol", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "", "cand_sex": "F", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}, {"our": "", "geni": "6000000002934660014", "qid": "Q11492951", "cand": "Q11492951", "our_sp": [""], "our_kids": [""], "cand_sp": ["Q111366618"], "cand_kids": ["Q3482119", "Q11163129"], "via": "", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["", ""], "cand_life": ["1132", "1189"]}, {"our": "Ture Ollonberg", "geni": "6000000008269934190", "qid": "Q50347265", "cand": "Q50347265", "our_sp": ["Christina Maria Silfverskiöld"], "our_kids": ["6000000013289190946 | 6000000005909245974 | 6000000003326389690 | 6000000127661408821 | 6000000019067472749 | 6000000127662003862"], "cand_sp": [], "cand_kids": ["Q64685136", "Q6025424"], "via": "Christina Maria Ollonberg", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["1704", "1761"], "cand_life": ["1704", "1761"]}, {"our": "宣度 崔", "geni": "6000000055814444128", "qid": "Q45501618", "cand": "Q45501618", "our_sp": [], "our_kids": ["6000000055814667016 | 6000000055814222309 | 6000000075344182016"], "cand_sp": [], "cand_kids": ["Q45419403", "Q20063239"], "via": "公業 崔", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["", ""], "cand_life": ["", "561"]}, {"our": "Walram d'Arlon II", "geni": "6000000008575245445", "qid": "Q125989", "cand": "Q125989", "our_sp": ["Jutta von Arlon Gräfin von Arlon und Limburg"], "our_kids": ["6000000012164988972 | 6000000001531202519"], "cand_sp": ["Q76207648"], "cand_kids": ["Q113025"], "via": "Hendrik Conde von Limbourg Hertog van Limburg and Arlon (Duke of lower Lotharingia)", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["1008", "1082"], "cand_life": ["11c", "1082"]}, {"our": "NN Woman de Caen Concubine #1 of Henry I of England", "geni": "6000000008481458843", "qid": "Q117303291", "cand": "Q117303291", "our_sp": ["Henry I \"Beauclerc\", King of England"], "our_kids": ["Robert de Caen 1st Earl of Gloucester"], "cand_sp": [], "cand_kids": ["Q462997"], "via": "Robert de Caen 1st Earl of Gloucester", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["1070", "1130"], "cand_life": ["", ""]}, {"our": "", "geni": "6000000000139648597 | 9995000000000000795 | 9995000000000100069", "qid": "Q98697745", "cand": "Q98697745", "our_sp": [], "our_kids": [], "cand_sp": ["Q6175684"], "cand_kids": ["Q61982215", "Q127270832"], "via": "Ulfhild Sigtryggsdotter Boberg", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "", "cand_sex": "F", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}, {"our": "Elisabet Olofsdotter Luth", "geni": "6000000008847604706", "qid": "Q116779751", "cand": "Q116779751", "our_sp": ["Jonas Petri Gothus"], "our_kids": ["Margareta Jönsdotter Gothus"], "cand_sp": [], "cand_kids": ["Q104550303"], "via": "Margareta Jönsdotter Gothus", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["1598", "1622"], "cand_life": ["1600", ""]}, {"our": "Thukra", "geni": "6000000012565017393", "qid": "Q116474334", "cand": "Q116474334", "our_sp": [], "our_kids": ["Otanes of Persia"], "cand_sp": [], "cand_kids": ["Q19513557"], "via": "Otanes of Persia", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}, {"our": "Margarethe von Lode", "geni": "6000000003295664915", "qid": "Q136383955", "cand": "Q136383955", "our_sp": ["6000000008844852323 | 6000000008933436648"], "our_kids": ["6000000024422079375 | 6000000022361161364 | 6000000010114003807"], "cand_sp": ["Q61109159"], "cand_kids": ["Q136383953"], "via": "Beata Gertrud von Ulrich", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["", "1698"], "cand_life": ["", ""]}, {"our": "Hedvig Hindrichdotter Wegelin", "geni": "6000000013175410922", "qid": "Q135480148", "cand": "Q135480148", "our_sp": ["Johan Wegelin"], "our_kids": ["6000000009685102742 | 6000000013175423350 | 6000000169820541828 | 6000000170851353851 | 6000000170850579821"], "cand_sp": [], "cand_kids": ["Q78289463"], "via": "Hedvig Wegelin", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "F", "cand_sex": "F", "gone": false, "our_life": ["1737", "1794"], "cand_life": ["", ""]}, {"our": "", "geni": "6000000002187888470 | 9995000000000100567", "qid": "Q103563066", "cand": "Q103563066", "our_sp": [], "our_kids": [], "cand_sp": [], "cand_kids": ["Q2315828"], "via": "Adela of Nordgau", "shared_kid_words": [], "shared_spouse_words": [], "our_sex": "", "cand_sex": "F", "gone": false, "our_life": ["", ""], "cand_life": ["", ""]}]</script>
+<script>
+var CASES = JSON.parse(document.getElementById("cases").textContent);
+var KEY = "parent-adjudication-v1";
+var decisions = {};
+var db = null;
+var i = 0;
+
+try { decisions = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { decisions = {}; }
+
+function el(id) { return document.getElementById(id); }
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+
+// The overlap between the two sides IS the evidence, so make it visible rather than
+// something to find by reading two lists in parallel.
+// **Whole tokens only.** A substring pass marked "Grubb" inside "Grubbe" and rendered it as
+// "Grubb e" -- the highlight visibly broke the very name it was meant to point at. Tokenise,
+// compare the folded whole word, and either wrap the token or leave it alone.
+function fold(w) {
+  return w.toLowerCase()
+    .replace(/[æäå]/g, "a")
+    .replace(/[öø]/g, "o")
+    .replace(/é/g, "e")
+    .replace(/ü/g, "u")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function hl(text, words) {
+  var set = {};
+  for (var k = 0; k < words.length; k++) {
+    if (words[k] && words[k].length > 2) set[words[k]] = 1;
+  }
+  return String(text == null ? "" : text).split(/(\s+)/).map(function (tok) {
+    if (!tok || /^\s+$/.test(tok)) return tok;
+    var f = fold(tok);
+    return (f.length > 2 && set[f]) ? "<mark>" + esc(tok) + "</mark>" : esc(tok);
+  }).join("");
+}
+
+function list(items, words) {
+  if (!items || !items.length) return '<div class="none">none recorded</div>';
+  return "<ul>" + items.map(function (x) { return "<li>" + hl(x, words) + "</li>"; }).join("") + "</ul>";
+}
+
+// Sex and life years, the two things that discriminate people whose names legitimately
+// differ. `chips` renders them; `warnings` says when the two sides disagree.
+//
+// **A coarse date never argues.** The builder hands back "17c" or "1720s" for a century- or
+// decade-precision P569, and only a plain year is compared -- reading +1650-00-00 as the year
+// 1650 is how a clean pair gets flagged.
+var SEXWORD = { M: "male", F: "female" };
+function lifespan(pair) {
+  if (!pair) return "";
+  var b = pair[0] || "", d = pair[1] || "";
+  if (!b && !d) return "";
+  return (b || "?") + "–" + (d || "?");
+}
+function plainYear(v) {
+  return /^-?[0-9]+$/.test(String(v || "")) ? parseInt(v, 10) : null;
+}
+function chips(sex, life, otherSex, otherLife) {
+  var out = [];
+  if (sex) {
+    var clash = otherSex && otherSex !== sex;
+    out.push('<span class="chip' + (clash ? " bad" : "") + '">' +
+             (clash ? "&#9888; " : "") + "<b>" + esc(SEXWORD[sex] || sex) + "</b></span>");
+  }
+  var ls = lifespan(life);
+  if (ls) {
+    var a = plainYear(life[0]), b = otherLife && plainYear(otherLife[0]);
+    var far = a !== null && b !== null && Math.abs(a - b) > 15;
+    out.push('<span class="chip' + (far ? " bad" : "") + '">born&ndash;died <b>' +
+             esc(ls) + "</b></span>");
+  }
+  if (!out.length) out.push('<span class="chip">no sex or dates recorded</span>');
+  return '<div class="chips">' + out.join("") + "</div>";
+}
+function warnings(c) {
+  var w = [];
+  if (c.gone) {
+    w.push("<b>This item no longer exists on Wikidata.</b> It was deleted, or merged with no " +
+           "redirect left behind — there is nothing here to say Same or Different to. Skip it.");
+  }
+  if (c.our_sex && c.cand_sex && c.our_sex !== c.cand_sex) {
+    w.push("<b>Different sex.</b> Ours is " + esc(SEXWORD[c.our_sex] || c.our_sex) +
+           ", the item is " + esc(SEXWORD[c.cand_sex] || c.cand_sex) +
+           " — on the Engeström card this meant the item was the spouse, not the person.");
+  }
+  var a = c.our_life && plainYear(c.our_life[0]);
+  var b = c.cand_life && plainYear(c.cand_life[0]);
+  if (a !== null && b !== null && Math.abs(a - b) > 15) {
+    w.push("<b>Born " + Math.abs(a - b) + " years apart.</b> " + a + " against " + b + ".");
+  }
+  if (c.also_offered) {
+    w.push("<b>This item is also offered</b> against " + esc(c.also_offered) +
+           " — only one of you can be it.");
+  }
+  return w.length ? '<div class="warn">' + w.join("") + "</div>" : "";
+}
+
+function firstUndecided() {
+  for (var k = 0; k < CASES.length; k++) if (!decisions[CASES[k].qid]) return k;
+  return CASES.length;
+}
+
+function tsv() {
+  return CASES.filter(function (c) { return decisions[c.qid]; })
+    .map(function (c) {
+      return [c.geni, c.our, c.qid, c.cand, decisions[c.qid]].join("\t");
+    }).join("\n");
+}
+
+function render() {
+  var total = CASES.length;
+  var n = Object.keys(decisions).length;
+  el("bar").style.width = (total ? (n / total) * 100 : 0) + "%";
+  var vals = Object.keys(decisions).map(function (k) { return decisions[k]; });
+  var yes = vals.filter(function (d) { return d === "SAME"; }).length;
+  var no = vals.filter(function (d) { return d === "DIFFERENT"; }).length;
+  var sk = vals.filter(function (d) { return d === "UNSURE"; }).length;
+  el("tally").innerHTML = "<b>" + n + "</b> of " + total + " &middot; " + yes +
+    " same &middot; " + no + " different &middot; " + sk + " skipped";
+
+  if (i >= CASES.length) {
+    el("stage").innerHTML = '<div class="card"><div class="done"><h2>All ' + total +
+      ' reviewed</h2><p class="sub">Press <b>Copy decisions</b> and paste them back to Claude.</p>' +
+      '<textarea readonly>' + esc(tsv()) + "</textarea></div></div>";
+    return;
+  }
+
+  var c = CASES[i];
+  var kw = c.shared_kid_words || [];
+  var sw = c.shared_spouse_words || [];
+  el("stage").innerHTML =
+    '<div class="card"><div class="cardtop">' +
+      '<div class="name">' + esc(c.our) + "</div>" +
+      '<div class="trigger">held because their child <b>' + esc(c.via) +
+        "</b> already names a parent item on Wikidata</div>" +
+    "</div>" + warnings(c) + '<div class="cols">' +
+      '<div class="col"><div class="eyebrow">Ours &middot; Geni</div>' +
+        '<div class="who">' + esc(c.our) + "</div>" +
+        '<div class="id"><a href="https://www.geni.com/people/x/' + esc(c.geni) +
+          '" target="_blank" rel="noopener">' + esc(c.geni) + "</a></div>" +
+        chips(c.our_sex, c.our_life, c.cand_sex, c.cand_life) +
+        '<div class="field"><div class="flabel">Spouse</div>' + list(c.our_sp, sw) + "</div>" +
+        '<div class="field"><div class="flabel">Children</div>' + list(c.our_kids, kw) + "</div>" +
+      "</div>" +
+      '<div class="col"><div class="eyebrow">Candidate &middot; Wikidata</div>' +
+        '<div class="who">' + esc(c.cand) + "</div>" +
+        '<div class="id"><a href="https://www.wikidata.org/wiki/' + esc(c.qid) +
+          '" target="_blank" rel="noopener">' + esc(c.qid) + "</a></div>" +
+        chips(c.cand_sex, c.cand_life, c.our_sex, c.our_life) +
+        '<div class="field"><div class="flabel">Spouse</div>' + list(c.cand_sp, sw) + "</div>" +
+        '<div class="field"><div class="flabel">Children</div>' + list(c.cand_kids, kw) + "</div>" +
+      "</div>" +
+    "</div></div>";
+}
+
+function persist() {
+  try { localStorage.setItem(KEY, JSON.stringify(decisions)); } catch (e) { /* private window */ }
+  if (db) {
+    db.doc("decisions/all").set({ decisions: decisions, at: Date.now() })
+      .catch(function () { /* offline; localStorage still holds it */ });
+  }
+}
+
+function decide(v) {
+  if (i >= CASES.length) return;
+  decisions[CASES[i].qid] = v;
+  i++;
+  persist();
+  render();
+  padForBar();
+}
+
+el("by").onclick = function () { decide("SAME"); };
+el("bn").onclick = function () { decide("DIFFERENT"); };
+el("bs").onclick = function () { decide("UNSURE"); };
+el("bb").onclick = function () { if (i > 0) { i--; render(); } };
+el("bexport").onclick = function () {
+  var t = tsv();
+  var btn = el("bexport");
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(t).then(function () { btn.textContent = "Copied"; },
+      function () { btn.textContent = "Copy failed"; });
+  } else {
+    btn.textContent = "Copy failed";
+  }
+  setTimeout(function () { btn.textContent = "Copy decisions"; }, 1800);
+};
+
+addEventListener("keydown", function (e) {
+  if (e.target && e.target.tagName === "TEXTAREA") return;
+  var k = e.key.toLowerCase();
+  if (k === "y") decide("SAME");
+  else if (k === "n") decide("DIFFERENT");
+  else if (k === "s") decide("UNSURE");
+  else if (e.key === "ArrowLeft" && i > 0) { i--; render(); }
+});
+
+// **The action bar is fixed, so the page must be padded past its MEASURED height.**
+// A guessed padding was wrong on mobile, where the buttons wrap to two rows and the tally to a
+// third: the candidate's children sat underneath the bar with no way to scroll to them. Measure
+// it, and measure again whenever it could have rewrapped.
+function padForBar() {
+  var bar = document.querySelector(".acts");
+  if (bar) document.body.style.paddingBottom = (bar.offsetHeight + 26) + "px";
+}
+addEventListener("resize", padForBar);
+
+i = firstUndecided();
+render();
+padForBar();
+
+// Shared storage when the viewer can reach it. The page is fully usable without it:
+// localStorage already holds every decision and the export button is the path back.
+claude.use("db").then(function (d) {
+  if (!d) return;
+  db = d;
+  return db.doc("decisions/all").get().then(function (snap) {
+    var saved = snap && snap.data && snap.data.decisions;
+    if (saved && Object.keys(saved).length > Object.keys(decisions).length) {
+      decisions = saved;
+      i = firstUndecided();
+      render();
+    }
+  });
+}).catch(function () { /* nothing stored yet */ });
+</script>

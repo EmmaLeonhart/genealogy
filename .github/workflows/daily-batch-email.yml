@@ -73,9 +73,13 @@ jobs:
             const today = new Date().toISOString().slice(0, 10);
             const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
                         `/actions/runs/${context.runId}`;
+            // Same rule as pipeline.yml: the PAGE is the hand-off, never the artifact.
+            const site = 'https://emmaleonhart.github.io/genealogy';
             const head = [
               `**${process.env.CREATES} creations - ${process.env.LINES} statement lines - ` +
               `${process.env.CARRIED} carried forward**`,
+              '',
+              `### [Open the batch](${site}/wikidata-garborg-day.html)`,
               '',
               "Name items come first, then the day's people, so it runs top to bottom as one paste.",
               '',
@@ -86,8 +90,9 @@ jobs:
             const body = wrapped.length <= LIMIT
               ? wrapped
               : head + `The batch is ${process.env.BYTES} bytes, past the ${LIMIT}-byte issue-body ` +
-                       `limit, so it is on [the run](${run}) as the \`wikidata-garborg-day\` ` +
-                       `artifact instead.\n`;
+                       `limit to inline it here — read it on ` +
+                       `[the page](${site}/wikidata-garborg-day.html) above. ` +
+                       `(A zip is also on [the run](${run}), which you should not need.)\n`;
             const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,

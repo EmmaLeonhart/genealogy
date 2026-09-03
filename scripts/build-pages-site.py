@@ -235,9 +235,27 @@ def batch_pages():
     return made
 
 
+#: The adjudication deck, published rather than zipped -- same rule as the batches above.
+#: It was reachable ONLY as a run artifact until 2026-09-03, so the notification told her to
+#: "download it and open it in a browser" every day. It is a self-contained HTML page; copying
+#: it onto the site costs nothing and removes the last thing an artifact was needed for.
+DECK = ROOT / "out" / "parent-review.html"
+
+
+def write_deck():
+    """Copy the deck onto the site. `None` when the run did not produce one."""
+    if not DECK.exists():
+        return None
+    name = DECK.name
+    io.open(OUT.parent / name, "w", encoding="utf-8", newline="").write(
+        DECK.read_text(encoding="utf-8", errors="replace"))
+    return name
+
+
 def main() -> int:
     f = facts()
     batches = batch_pages()
+    deck = write_deck()
     secs = claude_sections()
     batch_html = "".join(
         '<article><h3><a href="%s">%s</a></h3><p>%s statement lines, ready to paste '
@@ -246,6 +264,12 @@ def main() -> int:
         % (esc(name), esc(title), n(stmts), esc(rel))
         for title, rel, stmts, name in batches) or (
         '<article><p>No batch has been generated yet.</p></article>')
+    if deck:
+        batch_html += (
+            '<article><h3><a href="%s">Adjudication deck</a></h3>'
+            '<p>The parent candidates to rule on, in the browser &mdash; on the page, '
+            'not in a zip.</p><p class="src"><code>out/parent-review.html</code></p></article>'
+            % esc(deck))
     print("%d rule sections read from CLAUDE.md" % len(secs))
 
     rows = "".join(
