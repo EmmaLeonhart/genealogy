@@ -183,8 +183,20 @@ csv file... no judgment you just store the returned numbers for everyone... you 
 numbers even before a path is found or not, but you always stay on the page and request the
 path"*, with `path_found` added afterwards once it resolves.
 
-    geni_id, qid, label, family_tree, blood_relatives, ancestors, followers, requested_at,
-    path_found        <- filled in LATER: yes / no / (blank while running)
+    geni_id, label, family_tree, blood_relatives, ancestors, descendants, followers,
+    requested_at, path_found      <- filled in LATER: yes / no / (blank while running)
+
+**No `qid` column.** Emma, 2026-09-03: *"there should be no qid line since the qid line is just
+completely prone to fabrication lol"* --- and she was right about the specific risk, because a
+QID was typed from memory twice in one sitting while a roster file with the real value sat
+unread. Every column here is read off the page.
+
+**`descendants` is in the block and was missed on the first pass.** The extractor looked for four
+labels and Geni prints five. **The zeros in the first six rows are her shortcut, not
+measurements** --- *"just list everyone except for anna rood as being 0 descendants, since that
+is easier than you looking at each page lol"* --- and at least Ole Klemet Sara and Moshe Bar
+Nissim visibly have children. Do not read those zeros as data; re-read the block for anyone
+whose descendants matter.
 
 **No judgment at collection time.** The numbers go in as returned; reading them is a separate
 step.
