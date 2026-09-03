@@ -1374,7 +1374,80 @@ def subgraph_roots():
             for row in csv.DictReader(f):
                 if (row.get("geni_ids") or "").strip() and row.get("qid"):
                     roots.append(row["qid"])
+    roots.extend(q for q, _ in active_entry_points())
     return tuple(dict.fromkeys(roots))
+
+
+#: Where the dripped-in entry points live. One row per person, with the date they switch on.
+ENTRY_POINTS = ROOT / "reports" / "entry-points.tsv"
+
+
+def entry_points():
+    """Every row of `reports/entry-points.tsv`, as `(qid, geni_id, label, active_from, note)`.
+
+    **Emma, 2026-09-03, asking for this on a clock:** *"for entry points into the graph: I
+    actually want this as a timer: on October 1 George RR Martin is added as an entry point, and
+    Robert Ettinger is added as an entry point right now! I think there probably are other people
+    worthy of dripping in as entry points. But I'm not sure who."*
+
+    **The timer is a DATE COLUMN, not a scheduler**, and that is deliberate. A cron here is
+    session-local and dies with the session --- `CLAUDE.md` § *A cron only fires while the session
+    is idle* is the record of one starving for four hours, and every cron died in the 2026-08-28
+    crash. An `active_from` date cannot be lost, needs nothing running on the day, and makes the
+    switch-on a property of the repo rather than of whoever happened to be at a terminal. Adding
+    the next person she thinks of is one line in a TSV.
+
+    **The two she named, resolved from our own tree rather than guessed** --- `CLAUDE.md` § *Do
+    not guess these* --- by joining `reports/derived-labels.csv` on the label and reading the qid
+    column, since neither Wikidata nor Geni is reachable from a remote session:
+
+    * `Q714044` **Robert Chester Wilson Ettinger**, Geni `6000000003022010249`, live now.
+    * `Q181677` **George R.R. Martin**, Geni `6000000081001962237`, live 2026-10-01.
+
+    **Both are textbook service areas by her own specification.** Neither states a single `P22`,
+    `P25`, `P40` or `P26` on Wikidata, so each reaches exactly itself there --- and § *THE EDIT
+    ALGORITHM* wants precisely that: *"something that has a GeniID but is otherwise isolated."*
+    In our Geni tree both are richly attached (Ettinger: parents, 2 spouses, 2 children; Martin:
+    parents, 2 spouses) and both sit in the main 1,446,089-person component, so the ring has
+    somewhere to go from the first day each switches on.
+    """
+    if not ENTRY_POINTS.exists():
+        return []
+    out = []
+    with open(ENTRY_POINTS, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            if row.get("qid"):
+                out.append(row)
+    # Sorted on the qid, which is unique --- `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*.
+    return sorted(out, key=lambda r: r["qid"])
+
+
+def active_entry_points(today=None):
+    """The entry points switched on as of `today`, as `(qid, label)`.
+
+    A run is a function of its inputs **and the date**, which is what a timer means. `today` is
+    injectable so a run can be reproduced for a past date rather than only for now.
+    """
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    return [
+        (r["qid"], r.get("label", ""))
+        for r in entry_points()
+        if (r.get("active_from") or "").strip() <= today
+    ]
+
+
+def pending_entry_points(today=None):
+    """The ones still waiting for their date --- reported so a timer is never silent."""
+    import datetime
+
+    today = today or datetime.date.today().isoformat()
+    return [
+        (r["qid"], r.get("label", ""), r.get("active_from", ""))
+        for r in entry_points()
+        if (r.get("active_from") or "").strip() > today
+    ]
 
 
 SUBGRAPH_ROOTS = subgraph_roots()
@@ -4859,6 +4932,12 @@ def main():
         ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}
         print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through her own "
               f"items: {len(our_wikidata_subgraph)} items; {len(ring_seeds)} of {len(our_items)} ledger people seed")
+        # **A timer that fires silently is a timer nobody can check.** Both lists print every
+        # run, so the day one switches on is visible in the output rather than inferred.
+        for qid, label in active_entry_points():
+            print(f"  entry point LIVE  {qid} {label}")
+        for qid, label, when in pending_entry_points():
+            print(f"  entry point PENDING {qid} {label} — switches on {when}")
         if not ring_seeds:
             sys.exit(f"no ledger person is in the group reachable from {ARNE_QID}/{BUREUS_QID} "
                      f"— that is a broken join over relations.tsv/garborg-live-values.tsv, not "

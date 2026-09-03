@@ -2677,6 +2677,43 @@ her immediate ring cut a batch from ~30 people to **7** because the caps stopped
 10 children, 0 of 10 parents. And *ordering the ring by closeness to Arne*, which `11295af7`
 did over **our Geni tree**; that is the closest thing that ever existed, and it is not this.
 
+### Entry points DRIP IN on a date. `reports/entry-points.tsv` is the timer
+
+**Emma, 2026-09-03:** *"for entry points into the graph: I actually want this as a timer: on
+October 1 George RR Martin is added as an entry point, and Robert Ettinger is added as an entry
+point right now! I think there probably are other people worthy of dripping in as entry points.
+But I'm not sure who."*
+
+**The timer is a DATE COLUMN, never a cron.** `reports/entry-points.tsv` carries
+`qid, geni_id, label, active_from, note`, and `subgraph_roots()` includes a row once
+`active_from <= today`. A cron here is session-local and dies with the session — § *A cron only
+fires while the session is idle* records one starving for four hours, and every cron died in the
+2026-08-28 crash. A date in a tracked file cannot be lost, needs nothing running on the day, and
+makes switching someone on a property of the repo. Adding the next person is one line.
+
+**The two she named, resolved from our own tree and not guessed** — § *Do not guess these* —
+by joining `reports/derived-labels.csv` on the label, because neither Wikidata nor Geni is
+reachable from a remote session:
+
+| | QID | Geni | live from |
+| --- | --- | --- | --- |
+| **Robert Chester Wilson Ettinger** | `Q714044` | `6000000003022010249` | **now** |
+| **George R.R. Martin** | `Q181677` | `6000000081001962237` | **2026-10-01** |
+
+**Both are textbook service areas by her own specification, measured.** Neither states a single
+`P22`, `P25`, `P40` or `P26` on Wikidata, so each reaches exactly itself there — and § *THE EDIT
+ALGORITHM* wants exactly that: *"something that has a GeniID but is otherwise isolated."* In our
+Geni tree both are richly attached — Ettinger has parents, 2 spouses and 2 children, Martin has
+parents and 2 spouses — and both sit in the main **1,446,089**-person component, so each has a
+ring from its first day.
+
+**The run prints LIVE and PENDING every time.** A timer nobody can see is a timer nobody can
+check, so the day one switches on shows in the output rather than being inferred.
+
+**Who else drips in is HERS.** She said she is not sure who, and that is an open question rather
+than a brief to go ranking candidates — § *No unprompted reports* governs. Roots are cheap and
+reversible; the constraint is which people she wants the graph grown from.
+
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
 **Emma, 2026-08-28**, shown that the batch had added `P26` *spouse* and `P40` *child* statements

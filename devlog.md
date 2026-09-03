@@ -26384,3 +26384,32 @@ End-to-end run with two real saved pages standing in as the two chains for one t
 steps, inlaw 27, `people_union` 85, `inlaw_only_people` 26, and the inlaw description landing in
 the row as *"…ex-husband's half sister's ex-husband's second cousin twice removed's wife's
 father."*
+
+## 2026-09-03 — entry points drip in on a date
+
+**Emma:** *"for entry points into the graph: I actually want this as a timer: on October 1
+George RR Martin is added as an entry point, and Robert Ettinger is added as an entry point
+right now!"*
+
+`reports/entry-points.tsv` — `qid, geni_id, label, active_from, note` — and `subgraph_roots()`
+includes a row once `active_from <= today`. **A date column rather than a cron**: a cron here is
+session-local and dies with the session, and every one died in the 2026-08-28 crash. A date in a
+tracked file needs nothing running on the day.
+
+**Both QIDs resolved from our own tree, not guessed**, since Wikidata and Geni are both blocked
+by this session's egress proxy — joined `reports/derived-labels.csv` on the label:
+
+* `Q714044` **Robert Chester Wilson Ettinger**, Geni `6000000003022010249`, live now
+* `Q181677` **George R.R. Martin**, Geni `6000000081001962237`, live 2026-10-01
+
+**Both are service areas by her own edit-algorithm spec, measured rather than assumed.** Neither
+states a `P22`, `P25`, `P40` or `P26` on Wikidata — each reaches exactly itself there, which is
+the *"has a GeniID but is otherwise isolated"* case that spec wants. In our Geni tree both are
+richly attached (Ettinger: parents, 2 spouses, 2 children; Martin: parents, 2 spouses) and both
+sit in the main 1,446,089-person component.
+
+Verified by date injection: `SUBGRAPH_ROOTS` is **253** today with Ettinger in and Martin out;
+`active_entry_points('2026-09-30')` returns Ettinger alone and `('2026-10-01')` returns both. The
+run prints LIVE and PENDING lines every time, so the switch-on is visible rather than inferred.
+
+Who else drips in is hers — she said she is not sure who, and nothing was ranked.
