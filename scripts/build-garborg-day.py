@@ -486,7 +486,20 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 MANUAL_P2600_PER_RUN = 10
 
 
-def manual_p2600_lines():
+def manual_p2600_lines(priority_qids=()):
+    """PRIORITY: items this run is about to touch come first and are NOT capped.
+
+    **The ordering defect, found 2026-09-03.** This picked the first ten missing pairs in file
+    order and had no idea which items the run was about to label. So `Q138582215` and
+    `Q29246906` -- both identified by Emma herself -- received `P735`, `P5056` and `ja`/`zh`/`ko`
+    labels from the daily batch while their Geni id waited behind 7,000 others, and
+    `Q138582215` had no `P2600` line generated anywhere at all.
+
+    That inverts `CLAUDE.md` § *An item with no relationships is not a missing item*: *"The
+    Geni ID needs to be present before any properties derived from Geni can be taken from it."*
+    We were publishing Geni-derived names onto items while withholding the statement saying
+    where they came from.
+    """
     """Up to ten `Q… P2600 "geni"` lines for identifications Wikidata does not yet hold.
 
     **The candidates come from `reports/manual-identifications.csv`** -- her hand verdicts,
@@ -539,8 +552,13 @@ def manual_p2600_lines():
                 if isinstance(v, str):
                     held.add((qid, v))
     missing = [(q, g, n) for q, g, n in want if (q, g) not in held]
+    # Anything this run touches leads, and is exempt from the cap: the cap is a pacing rule for
+    # speculative identifications, never a reason to label an item whose id we are withholding.
+    pri = set(priority_qids or ())
+    lead = [t for t in missing if t[0] in pri]
+    rest = [t for t in missing if t[0] not in pri]
     lines = []
-    for q, g, n in missing[:MANUAL_P2600_PER_RUN]:
+    for q, g, n in lead + rest[:MANUAL_P2600_PER_RUN]:
         if n:
             lines.append(f"#   {q} {n}: P2600 from her own identification")
         lines.append(f'{q}\tP2600\t"{g}"')
@@ -6438,7 +6456,10 @@ def main():
     # beginning of each generation."* A `P2600` on an existing item needs nothing created, so
     # it can lead; and putting it first means the ledger is truest at the moment the rest runs.
     head = []
-    man_lines, man_total, man_held = manual_p2600_lines()
+    # Every QID this run emits anything for -- so its Geni id leads the file.
+    _touched = {ln.split("	", 1)[0] for ln in lines
+                if ln[:1] == "Q" and "	" in ln}
+    man_lines, man_total, man_held = manual_p2600_lines(_touched)
     if man_lines:
         head += ["# " + "=" * 72,
                  "# HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
