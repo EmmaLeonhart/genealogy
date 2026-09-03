@@ -904,6 +904,47 @@ and never become questions. Her ruling the same day: *"those seemed like simple 
 by design were supposed to get pushed onto wikidata"*, and *"we are doing over a million people
 here."* The two-hourly question is about **work that claims to be stuck**, not about the tree.
 
+### A SESSION RUNS ON THE ANTHROPIC CLOUD OR ON HER COMPUTER. Only GENI needs the computer
+
+**Emma, 2026-09-03:** *"GH actions is fully capable of doing all of the Wikidata querying that we
+want. The only thing that's really blocked and my computer's essential for it is Geni... we
+actually can do most of the stuff that we want from here, from this environment."*
+
+**So the default assumption is backwards from how it has been treated.** A cloud session can do
+nearly the whole programme; the exception is small and specific, and it is **Geni**.
+
+| | cloud session | her computer |
+| --- | --- | --- |
+| Query Wikidata, `wbgetentities`, ledger refresh | **yes** | yes |
+| Read/write the repo, commit, push — **including to `main`** | **yes** | yes |
+| Trigger, read and debug GitHub Actions | **yes** | yes |
+| Send her a file (chat attachment) or an email | **yes**, when those tools are attached | — |
+| **Geni: exports, saved pages, creating a profile** | **NO** | **only here** |
+| Rebuild the synoptic tree | **no**, on size | only here |
+
+**Geni is categorical**: it needs her logged-in browser under Chrome automation. Nothing in the
+cloud can reach it, and no amount of cleverness changes that.
+
+**The tree is a different kind of no** — `out/merged.ged` is 409 MB and the merge peaks near
+17 GB against a 16 GB runner. That is a resource limit rather than an access one, so it may move
+with a larger runner; it has not been tried. **Do not conflate the two when reporting what is
+blocked.**
+
+**⛔ And the derived tables are a PHOTOGRAPH of her tree, which nothing in CI will tell you is
+stale.** `out/family-structure.tsv`, `derived-family.csv`, `derived-labels.csv`,
+`display-names.csv` and `derived-facts.csv` are all committed and all come from a local rebuild.
+The pipeline reads them happily whatever their age, so a batch computed on a month-old tree looks
+exactly like a fresh one. **The ledger refresh is live; the tree is not.** Say which of the two an
+answer rests on.
+
+**Capability is not permission, and stating a permission as a limit is the failure this section
+exists against.** On 2026-09-03 a session told her it could not push to `main` — an *instruction*
+in its prompt — then pushed the moment she said to. It told her it could not attach a file while
+`SendUserFile` was already working. It ran two Actions runs against an unmerged `main` knowing
+they could not produce a correct site. Her reading: *"you're constantly lying about what you can
+do in this environment."* The fix is one question before writing that something is impossible:
+**is this the task that cannot be done, or one mechanism that just failed?**
+
 ### SWEARING IS NOT A STOP ORDER. It usually means START
 
 **Emma, 2026-09-03:** *"whenever I swear at you, I am specifically doing [it] because you're doing

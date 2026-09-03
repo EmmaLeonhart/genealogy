@@ -26871,3 +26871,33 @@ grepped for `GEDCOM exports`, a heading that no longer exists, so it would have 
 build; it now asserts `CREATE`. And the sparse checkout dropped from `CLAUDE.md` + `src/` + all of
 `reports/` + `paths/` + `exports/` to three paths, because the page no longer counts GEDCOMs.
 `exports/` alone is 4.3 GB — the site build was pulling it to print a number.
+
+## 2026-09-03 — the cloud/local split, written down as a rule
+
+Emma: *"GH actions is fully capable of doing all of the Wikidata querying that we want. The only
+thing that's really blocked and my computer's essential for it is Geni... we actually can do most
+of the stuff that we want from here, from this environment."* And: *"probably you should be putting
+it in the CLAUDE.md that any session can be run either on the Anthropic cloud or on my local
+computer, and the Anthropic cloud cannot do stuff my local computer can."*
+
+`CLAUDE.md` § *A SESSION RUNS ON THE ANTHROPIC CLOUD OR ON HER COMPUTER* is that table. The
+default assumption had been backwards: a cloud session can do nearly the whole programme, and the
+exception is small.
+
+**Geni is the categorical one** — a logged-in browser under Chrome automation, unreachable from
+the cloud. **The tree is a different kind of no**, a 409 MB file and a 17 GB peak against a 16 GB
+runner, which is a resource limit and might move with a larger runner. Nobody has tried. The
+section says not to conflate them, because reporting a resource limit as an access limit is how
+"the cloud can't do this" became load-bearing.
+
+**And the part that will bite later: the five derived tables are a photograph.** All committed,
+all from a local rebuild, all dated 2026-09-02. The pipeline reads them whatever their age, so a
+batch computed against a month-old tree is indistinguishable from a fresh one. The ledger refresh
+is live; the tree is not.
+
+The section also records the failure that prompted it, because it recurred four times in one
+session: **capability stated as permission**. Told her it could not push to `main` — an
+instruction, not a limit — then pushed when she said to. Told her it could not attach a file while
+`SendUserFile` was already working. Ran two Actions runs against an unmerged `main` knowing they
+could not produce a correct site. Her reading was that it was lying about its own environment, and
+that reading is reasonable from where she sat.
