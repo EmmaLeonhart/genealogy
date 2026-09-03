@@ -2831,12 +2831,31 @@ the ledger; none of the 315 group QIDs is, and neither is Ettinger or Martin.** 
 roots grows the subgraph by exactly 315 — themselves — and pulls in **0** further ledger people
 and **0** further ring seeds.
 
-**Do not read that as "her idea does not work".** It is a wiring fact about where the seed pool
-comes from, and the ledger on disk is a day old and cannot be refreshed from a remote session
-(Wikidata is blocked), so an item she has edited since may already be in it. What it means is
-that *entry point* currently denotes "may be walked from", not "seeds a ring" — and those come
-apart precisely for a person whose item she did not create. Put to her rather than fixed by
-guess, because widening the seed pool changes her algorithm.
+**Her answer, 2026-09-03, and her diagnosis was right before the code was checked:** *"I think
+the Bure people were somehow manually added to the universe or ledger too somehow. My guess is
+this was done manually in an unscalable manner possibly with errors. Every entry point should be
+automatically in the ledger once it is an established entry point."*
+
+That is exactly what `refresh-garborg-ledger.py` does — the Bure people are a hand-wired
+**second source**, and 113 ledger rows carry the note `Category:Bureätten (bureatten.csv)`. So an
+entry point being in the ledger was never a property of the algorithm; it was a property of one
+roster having been wired in by hand. **Entry points are now a third source**, active ones only,
+so the roster feeds the ledger automatically and a root that is walked from also seeds.
+
+**The Geni id comes from the group's OWN roster, not from a lookup.** The ledger is keyed on the
+Geni id, so an entry point without one cannot become a row. Resolving the QIDs through
+`derived-labels.csv` found **14 of 321**; reading `geni_ids` off the curated pair files
+(`izumo-p2600-pairs.tsv`, `tanba-p2600-pairs.tsv`) gives **316 of 330**. Same rule as reading
+`bureatten.csv` rather than re-deriving it.
+
+**`special-geni-gedcom-recognition` is `exports/post-merge/wikidata-qid-links.ged`** — her words:
+*"There's a specific gedcom that just links geni profiles to wikidata. It carries no relationship
+data just ids and bios with wikidata links in it."* Five `INDI` records, each an id and a `NOTE`
+with a Wikidata URL, four distinct QIDs. Its own docstring says *"Do not let it become an
+architecture"*, which is worth knowing before it is grown. The other reading of her sentence is
+`reports/bio-qids.tsv` — 155 profiles whose Geni *About Me* carries a link, read back out of the
+corpus — and it is recorded in the group's `note` rather than silently dropped, because her words
+name a specific gedcom.
 
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 

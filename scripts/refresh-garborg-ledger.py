@@ -60,6 +60,35 @@ ACCOUNT = "日巫女"
 LEDGER = ROOT / "reports" / "garborg-qids.tsv"
 
 
+def _geni_for_qids(qids):
+    """QID -> Geni id out of `derived-labels.csv`, for the entry points that need one.
+
+    An exact join on this repo's primary key, never a name match. Returns only what it finds: a
+    QID with no Geni id in our tree cannot become a ledger row, since the ledger is keyed on the
+    Geni id.
+    """
+    import gzip
+
+    plain = ROOT / "reports" / "derived-labels.csv"
+    packed = ROOT / "reports" / "derived-labels.csv.gz"
+    if plain.exists():
+        handle = open(plain, encoding="utf-8")
+    elif packed.exists():
+        handle = gzip.open(packed, "rt", encoding="utf-8")
+    else:
+        return {}
+    wanted, found = set(qids), {}
+    csv.field_size_limit(10_000_000)
+    with handle as fh:
+        for row in csv.DictReader(fh):
+            q = (row.get("qid") or "").strip()
+            if q in wanted and q not in found:
+                found[q] = row["geni_id"]
+                if len(found) == len(wanted):
+                    break
+    return found
+
+
 def agent():
     contact = _bot_agent()
     if not contact:
@@ -172,6 +201,61 @@ def main():
                                    "created": "", "note": "Category:Bureätten (bureatten.csv)"}
                         n_bure += 1
     print(f"{n_bure} Bureätten people added as the second source")
+
+    # **Source three: the entry points.** Emma, 2026-09-03, when shown that adding 315 group QIDs
+    # as roots produced **0** new ring seeds: *"I think the Bure people were somehow manually
+    # added to the universe or ledger too somehow. My guess is this was done manually in an
+    # unscalable manner possibly with errors. Every entry point should be automatically in the
+    # ledger once it is an established entry point."*
+    #
+    # Her guess is right and the code above is the evidence: the Bure people ARE a hand-added
+    # second source, and 113 ledger rows carry that note. So an entry point being in the ledger
+    # was never a property of the algorithm --- it was a property of one roster having been wired
+    # in by hand. This makes it general instead.
+    #
+    # **Why it is load-bearing.** `compose()` draws ring seeds from the ledger
+    # (`ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}`), so a root
+    # outside it can be walked through and still seed nothing. Measured 2026-09-03: all 251 Bure
+    # roots were in the ledger, none of the 315 group QIDs was, and neither was Ettinger or
+    # Martin. Adding them as roots moved the subgraph by exactly their own count and produced no
+    # new seeds at all --- `CLAUDE.md` § *Code that is WRITTEN but never CALLED* with a roster
+    # instead of a function.
+    #
+    # **Only ACTIVE entry points**, since a date that has not arrived is not yet an entry point.
+    n_entry = 0
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import importlib
+
+        day = importlib.import_module("build-garborg-day")
+        geni_of = {}
+        for row in day.entry_points():
+            q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
+            if q and g:
+                geni_of[q] = g
+        # **A group roster carries its own Geni id and that is the right source.** These are
+        # curated pair files -- `izumo-p2600-pairs.tsv`, `tanba-p2600-pairs.tsv` -- so the
+        # correspondence is already in them. Going to `derived-labels.csv` instead resolved only
+        # 14 of 321, because that file's `qid` column comes from a different source.
+        today = None
+        for row in day.entry_point_groups():
+            if (row.get("active_from") or "").strip() <= (today or __import__("datetime").date.today().isoformat()):
+                for q, g in day.group_pairs(row):
+                    if g and q not in geni_of:
+                        geni_of[q] = g
+        wanted = ({q for q, _ in day.active_entry_points()} | set(day.active_group_qids()))
+        need = wanted - set(geni_of)
+        if need:
+            geni_of.update(_geni_for_qids(need))
+        for q in sorted(wanted):
+            g = geni_of.get(q)
+            if g and g not in rows:
+                rows[g] = {"geni_id": g, "qid": q, "label": "", "created": "",
+                           "note": "entry point (entry-points.tsv / entry-point-groups.tsv)"}
+                n_entry += 1
+    except Exception as exc:  # a broken roster must not take the whole refresh down
+        print(f"entry-point source skipped: {type(exc).__name__}: {exc}")
+    print(f"{n_entry} entry-point people added as the third source")
 
     dropped = sorted(set(previous) - set(rows))
     if dropped:

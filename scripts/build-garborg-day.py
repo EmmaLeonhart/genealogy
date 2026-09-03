@@ -1519,6 +1519,21 @@ def entry_point_groups():
 
 def group_qids(row):
     """The QIDs a group row resolves to, or `[]` if it has no usable roster."""
+    # Distinct, because `group_pairs` dedupes on the PAIR: one QID can appear both with and
+    # without a Geni id when a group names two rosters of different shapes.
+    return sorted(dict.fromkeys(q for q, _ in group_pairs(row)))
+
+
+def group_pairs(row):
+    """`(qid, geni_id)` per roster row --- the Geni id blank when the roster does not carry one.
+
+    **The roster's own `geni_ids` column is the right source and beats a lookup.** The ledger is
+    keyed on the Geni id, so an entry point with no Geni id cannot become a ledger row at all.
+    Resolving the 321 QIDs through `derived-labels.csv` found only **14**, because that file's
+    `qid` column is populated from a different source than these curated pair files ---
+    `izumo-p2600-pairs.tsv` and `tanba-p2600-pairs.tsv` each carry the correspondence directly.
+    Reading it here rather than re-deriving it is the same rule as reading `bureatten.csv`.
+    """
     src = (row.get("source") or "").strip()
     if not src:
         return []
@@ -1532,12 +1547,36 @@ def group_qids(row):
         path = ROOT / part.strip()
         if not part.strip() or not path.exists():
             continue
+        if path.suffix == ".ged":
+            # **The "special geni gedcom recognition" group is a GEDCOM, not a table.** Emma,
+            # 2026-09-03: *"There's a specific gedcom that just links geni profiles to wikidata.
+            # It carries no relationship data just ids and bios with wikidata links in it."* That
+            # is `exports/post-merge/wikidata-qid-links.ged`: `INDI` records holding nothing but a
+            # `NOTE` with a Wikidata URL.
+            import re
+
+            text = path.read_text(encoding="utf-8")
+            current = ""
+            for line in text.splitlines():
+                ref = re.match(r"0 @I(\d+)@ INDI", line)
+                if ref:
+                    current = ref.group(1)
+                hit = re.search(r"wikidata\.org/wiki/(Q\d+)", line)
+                if hit:
+                    out.append((hit.group(1), current))
+            continue
         delimiter = "\t" if path.suffix == ".tsv" else ","
+        geni_col = (row.get("geni_column") or "geni_ids").strip()
         with open(path, encoding="utf-8") as f:
             for r in csv.DictReader(f, delimiter=delimiter):
                 q = (r.get(column) or "").strip()
-                if q.startswith("Q"):
-                    out.append(q)
+                if not q.startswith("Q"):
+                    continue
+                raw = (r.get(geni_col) or "").replace(";", " ").replace(",", " ").replace("|", " ")
+                ids = [g for g in raw.split() if g.isdigit()]
+                out.append((q, ids[0] if ids else ""))
+    # Deterministic and deduped on the pair, so a QID appearing with and without a Geni id keeps
+    # both rather than depending on which file was read first.
     return sorted(dict.fromkeys(out))
 
 

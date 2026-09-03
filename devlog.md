@@ -26552,3 +26552,38 @@ person whose item she did not create.
 Not fixed here: widening the seed pool changes her algorithm, and the ledger on disk is a day old
 and unrefreshable from a remote session with Wikidata blocked, so an item she edited since may
 already be in it. Put to her.
+
+## 2026-09-03 — entry points feed the ledger; the special GEDCOM identified
+
+**Her three answers, and the first one was a correct diagnosis of code she had not read:**
+
+*"I think the Bure people were somehow manually added to the universe or ledger too somehow. My
+guess is this was done manually in an unscalable manner possibly with errors. Every entry point
+should be automatically in the ledger once it is an established entry point."*
+
+Checked: `refresh-garborg-ledger.py` adds the Bure people as an explicit **second source**, and
+113 ledger rows carry `Category:Bureätten (bureatten.csv)`. So an entry point being in the ledger
+was never a property of the algorithm — it was one roster wired in by hand. **Entry points are a
+third source now**, active ones only, which closes the 0-new-ring-seeds finding from earlier
+today.
+
+**The Geni id comes from the group's own roster.** The ledger is keyed on the Geni id, so an
+entry point without one cannot become a row. Through `derived-labels.csv`: **14 of 321**. Reading
+`geni_ids` off the curated pair files instead: **316 of 330**. `group_pairs()` does it, and
+`group_qids()` dedupes on the QID because a group naming two rosters of different shapes yields
+the same QID with and without a Geni id.
+
+**`special-geni-gedcom-recognition` = `exports/post-merge/wikidata-qid-links.ged`.** Her
+description — *"a specific gedcom that just links geni profiles to wikidata. It carries no
+relationship data just ids and bios with wikidata links in it"* — matches it exactly: 5 `INDI`
+records, each an id plus a `NOTE` with a Wikidata URL, 4 distinct QIDs. The group reader parses
+`.ged` for that shape. Its own docstring warns *"Do not let it become an architecture"*, noted
+before anyone grows it. The alternative reading, `reports/bio-qids.tsv` (155 profiles whose Geni
+About Me carries a link), is recorded in the group's note rather than silently dropped.
+
+**Emperors: *"Build from Wikidata later."*** Queued. Both groups sit at 0 and stay dated
+2027-01-01; picking either list out by label is forbidden, since the 52 Ethiopia/Negus tree labels
+are the surname *Neguse*.
+
+Group state: tanba 179, izumo-senge-kitajima 111, samaritan-high-priests 25,
+special-geni-gedcom-recognition 4, and three at 0 — 319 distinct QIDs live on 2027-01-01.
