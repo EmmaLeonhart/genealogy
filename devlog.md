@@ -26838,3 +26838,36 @@ time, the reason why it is that I'm swearing at you is because you're stopping d
 Abuse corrects direction; it never means halt. It belongs beside § *The batches are a SEQUENCE*,
 because the thing that provokes it is almost always learned helplessness — a limit invented, a task
 declared impossible, a question asked instead of an action taken. This session had four.
+
+## 2026-09-03 — the Pages site is the daily batch and nothing else
+
+Emma: *"The home page has a bunch of bullshit on it that should not be there. A bunch of random
+rules from CLAUDE.md that might also even be stale... who the fuck cares what these rules are? The
+only purpose of the GitHub pages is to give the daily batch... all that should be present is very
+simply the daily batch."*
+
+`index.html` **is** the batch now. `build-pages-site.py` went 389 lines to 78. Deleted: the
+statistics block, the data-modelling section, the algorithm summaries lifted from docstrings, and
+the rules digest.
+
+**The rules digest was the worst of it, and she was right to suspect staleness by construction.**
+It read sections out of `CLAUDE.md` and republished them, so a rule superseded in that file went on
+being displayed on the site as current. A generated page that restates rules is a second, staler
+copy of them.
+
+**Name items need no page**: they have been inside the daily batch since 2026-08-30, one file, her
+instruction. `out/parent-review.html` is still copied across so the adjudication deck keeps a
+no-login URL, deliberately unlinked.
+
+**AND THE COPY BUTTON HAD NEVER WORKED.** The template's script contained
+`t.split("` + a literal newline + `")` — an unterminated string literal, a JavaScript SyntaxError
+that kills the whole inline `<script>`. So on the one page she uses, the button did nothing, every
+time, since the page was written. Found by reading the emitted HTML rather than the generator,
+which is § *"Analyse this" means build a CSV* applied to a page: the defect is invisible in the
+Python and obvious in the output. Now `t.split("\n")`, and the script parses.
+
+Two consequences in the workflow, both required rather than tidying: `pages.yml`'s emptiness check
+grepped for `GEDCOM exports`, a heading that no longer exists, so it would have passed a broken
+build; it now asserts `CREATE`. And the sparse checkout dropped from `CLAUDE.md` + `src/` + all of
+`reports/` + `paths/` + `exports/` to three paths, because the page no longer counts GEDCOMs.
+`exports/` alone is 4.3 GB — the site build was pulling it to print a number.

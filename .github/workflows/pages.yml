@@ -62,15 +62,13 @@ jobs:
           # `inputs` is null on the schedule, so this falls back to github.sha there.
           ref: ${{ inputs.ref || github.sha }}
           filter: blob:none
+          # The site is one file now, so the checkout is two paths plus the builder.
+          # It used to pull CLAUDE.md, src/, all of reports/, paths/ and exports/ because the
+          # page counted GEDCOMs and republished rules; none of that is on the page any more.
           sparse-checkout: |
-            /CLAUDE.md
             /scripts
-            /src
-            /reports
-            /out/wikidata
+            /reports/wikidata-garborg-day.txt
             /out/parent-review.html
-            /paths
-            /exports
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
@@ -92,7 +90,9 @@ jobs:
       - name: Check the page is not empty
         run: |
           test -s out/site/index.html
-          grep -q "GEDCOM exports" out/site/index.html
+          # The page IS the batch, so this is the thing to assert -- the old check looked for
+          # a heading from the landing page that no longer exists.
+          grep -q "CREATE" out/site/index.html
           wc -c out/site/index.html
 
       - uses: actions/upload-pages-artifact@v3

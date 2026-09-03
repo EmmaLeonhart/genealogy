@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>%s — QuickStatements</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f4f6f8;--surface:#fff;--ink:#141820;--muted:#5f6875;--line:#dce1e8;--accent:#2f4f8f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116;--surface:#161a21;--ink:#e7eaf0;--muted:#98a1b0;--line:#262d38;--accent:#8aa9e8}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:24px 20px 60px;
+  font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font:600 22px/1.2 "IBM Plex Sans",sans-serif;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+.bar{display:flex;gap:9px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+button,a.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 15px;
+  font:500 13.5px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;
+  overflow:auto;max-height:74vh;font:400 12.5px/1.5 "IBM Plex Mono",monospace;
+  white-space:pre;tab-size:8}
+a{color:var(--accent)}
+</style></head><body><div class="wrap">
+<h1>%s</h1>
+<p class="sub">%s statement lines · generated %s · paste into
+<a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
+(version 1 syntax, tab-separated)</p>
+<div class="bar">
+  <button id="copy">Copy all</button>
+  <span class="sub" id="said"></span>
+</div>
+<pre id="qs">%s</pre>
+<script>
+document.getElementById("copy").addEventListener("click", function () {
+  var t = document.getElementById("qs").textContent;
+  navigator.clipboard.writeText(t).then(function () {
+    document.getElementById("said").textContent = "copied " + t.split("\n").length + " lines";
+  }, function () {
+    document.getElementById("said").textContent = "could not copy - select the text instead";
+  });
+});
+</script>
+</div></body></html>
