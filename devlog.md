@@ -26758,3 +26758,33 @@ the deck linked from the index.
 This is § *Code that is WRITTEN but never CALLED* in a new shape. The code was written AND called;
 the thing that was never updated was the message telling her where to look, so the feature worked
 and the user was told it did not.
+
+## 2026-09-03 — artifacts deleted outright: inaccessible to her, and obsolete
+
+Emma: *"Github actions artifacts are both inaccessible to me (github pages is best since I don't
+need to sign in) and the generated artifacts are completely obsolete too."*
+
+Both halves are true, so the uploads are gone rather than improved.
+
+**Inaccessible.** A run artifact is a zip behind a login, at the bottom of a run page, expiring in
+30 days. Pages on a public repo needs no account. She built Pages for this and said so on
+2026-09-02.
+
+**Obsolete, and this is the measured half.** `daily-batch-email.yml` rebuilds nothing — it uploads
+whatever `.qs` is committed, so its artifact is as old as the last commit. Issues #14 and #16
+re-delivered the 2026-09-02 batch under a `2026-09-03` title for exactly that reason.
+
+**And the SITE is currently stale too**, which is worth recording because it makes her point
+sharper rather than answering it: both Pages deploys today built from `dac5985`, the pre-rebuild
+sha, while the pipeline pushed the new batch at 20:34. The site published at 20:29 from the commit
+before it. That is the `needs:`-does-not-move-the-sha bug fixed earlier today and not yet merged,
+so until this branch lands, page and artifact are stale in the same way.
+
+`actions/upload-artifact` is deleted from `pipeline.yml` and `daily-batch-email.yml`, and the
+overflow sentence no longer mentions a zip at all. `upload-pages-artifact` in `pages.yml` stays —
+it is how Pages ships a build to the deploy job, not something anybody downloads.
+
+NOT DONE, and it is a judgement I am not making alone: `daily-batch-email.yml` now does nothing
+the pipeline's own issue does not do better, and it is the workflow that sent the stale batch. It
+is a candidate for deletion under § *LEGACY CODE IS DELETED*, but deleting a whole workflow of
+hers is her call. NEEDS-DECISION — Emma, whether that workflow survives.

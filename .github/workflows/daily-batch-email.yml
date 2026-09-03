@@ -51,13 +51,6 @@ jobs:
           echo "bytes=$(wc -c < "$FILE")" >> "$GITHUB_OUTPUT"
           echo "carried=$(( $(wc -l < reports/garborg-carry-forward.tsv) - 1 ))" >> "$GITHUB_OUTPUT"
 
-      # The file, for anything that wants a file rather than text.
-      - uses: actions/upload-artifact@v4
-        with:
-          name: wikidata-garborg-day
-          path: reports/wikidata-garborg-day.qs
-          retention-days: 30
-
       - name: Open the issue
         uses: actions/github-script@v7
         env:
@@ -91,8 +84,7 @@ jobs:
               ? wrapped
               : head + `The batch is ${process.env.BYTES} bytes, past the ${LIMIT}-byte issue-body ` +
                        `limit to inline it here — read it on ` +
-                       `[the page](${site}/wikidata-garborg-day.html) above. ` +
-                       `(A zip is also on [the run](${run}), which you should not need.)\n`;
+                       `[the page](${site}/wikidata-garborg-day.html) above.\n`;
             const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
