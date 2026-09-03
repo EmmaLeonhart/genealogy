@@ -604,6 +604,47 @@ characters in the corpus lacked a reading, which cannot explain 13% of the popul
 round-trip here. The pre-existing copies in `classify-name-ambiguity.py`, `profilenames.py` and
 `build-cjk-clan-labels.py` were each checked by codepoint and are correct.
 
+### A TITLE IS NOT A NAME, and Geni already said so — in `NSFX`
+
+**Emma, 2026-09-03, on `Q2183430` *Benedicta Ebbesdotter of Hvide*:** *"There was a bit of a
+disaster of her names in an earlier quickstatements batch where 'Queen' and 'Sweden' were treated
+as names."* It was live: `Q2183430 P735 Q20899047` — given name **Queen**, as middle name 3 — and
+`Q2183430 P734 Q37437749` for **Sweden**.
+
+**The GEDCOM was right the whole way.** Her record is
+`1 NAME Bengta Ebbesdotter /Ebbesdatter Galen/` with `2 NSFX Queen of Sweden` — the title in the
+name-**suffix** field, which is where it belongs. `build-display-names.py` concatenates every
+piece into `display_name`, `derive-labels.py` appends `nsfx` again when it builds the married-name
+alias, and the name model then parses that rendered string positionally. **A field whose entire
+purpose is *this part is not a name* became two name items.**
+
+**`NSFX` holds two different things, measured over 1,856,150 name records** — 86,947 carry one:
+
+| shape | count | examples |
+| --- | ---: | --- |
+| **single token** | 30,730 | `II` 2,224 · `I` 1,836 · `Jr.` 1,693 · `Sr.` 1,436 · `Graf` 464 · `Knight` 274 |
+| **multi-word with a connective** | **42,391** | `Pharaoh of Egypt` · `Queen of Egypt` · `King of Assyria` · `i København` · `til Gullaug` |
+| multi-word, no connective | 13,826 | `d. y.` · `Patrizio Napoletano` · `132, 91, 44, 9` |
+
+**Only the phrase form is dropped**, and the connective is doing the work rather than the word
+list. Over the 1,295,226 labelled people the rule truncates **10,619 and leaves 5,945 alone**, and
+reading the second list is what established it: `Sarah Bishop`, `Anne Greve`, `Anna King` and
+`Nicholas Henry Pope` are real surnames a bare word list would have destroyed. Truncation is at
+the **earliest** title word once any of them qualifies, so `Prins, Hertig av Västergötland` goes
+as one stack — **171 labels stack titles that way and every one is genuine**.
+`reports/title-tails-dropped.tsv` is the census: **18,165 people**, titles and territorials
+together.
+
+**`namemodel.drop_title_tail` is the one place**, called inside `statements_for` on the label and
+on `givn`/`surn`/`marnm` alike, because there are two emitters and they have disagreed before.
+**It does not touch the LABEL.** What a person's `mul` label should read is a separate question
+from what becomes a `P735`, and this changes only the second.
+
+**The single-token values are an EDGE CASE and are hers** — `name modelling.txt`: *"for the edge
+cases I am going to want you to tell me about the edge cases."* `II` and `I` are regnal ordinals
+that genuinely are part of the name and carry `P7338` *regnal ordinal*; `Graf`, `Knight`, `Donna`
+and `Kt.` are titles that are not. Nothing guesses between them.
+
 ### A middle initial keeps its Latin letter in every language
 
 **Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was

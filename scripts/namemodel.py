@@ -149,6 +149,101 @@ DESCRIPTION_MARKERS = {
 }
 
 
+#: **A TITLE IS NOT A NAME, and Geni already says so -- in `NSFX`.** Emma, 2026-09-03, on
+#: `Q2183430` *Benedicta Ebbesdotter of Hvide*: *"There was a bit of a disaster of her names in
+#: an earlier quickstatements batch where 'Queen' and 'Sweden' were treated as names."* She is
+#: right and it was live: the batch carried
+#: `Q2183430 P735 Q20899047` -- given name **Queen**, as middle name 3 -- and
+#: `Q2183430 P734 Q37437749` for **Sweden**.
+#:
+#: **The GEDCOM was correct the whole way.** Her record reads
+#: `1 NAME Bengta Ebbesdotter /Ebbesdatter Galen/` with `2 NSFX Queen of Sweden` -- the title
+#: in the name-SUFFIX field, exactly where it belongs. `build-display-names.py` concatenates
+#: every piece into `display_name`, `derive-labels.py` appends `nsfx` again building the
+#: married-name alias, and the name model then parses that rendered string positionally. So a
+#: field whose whole purpose is *this part is not a name* became two name items.
+#:
+#: **Measured over 1,856,150 name records: 86,947 carry an `NSFX`, and it holds two different
+#: things.** 30,730 are a single token -- `II` 2,224, `I` 1,836, `Jr.` 1,693, `Sr.` 1,436,
+#: `Graf` 464, `Knight` 274 -- where the regnal ordinals genuinely ARE part of the name
+#: (`CLAUDE.md`: `P7338` *regnal ordinal* is a qualifier on the given name). **42,391 are a
+#: multi-word phrase carrying a connective** -- `Pharaoh of Egypt` 107, `Queen of Egypt` 53,
+#: `King of Assyria` 30, `i København` 35, `til Gullaug` 22 -- and not one of those is a name.
+#:
+#: **So only the phrase form is dropped here**, which is total precision on the population it
+#: touches and leaves the single-token question where `name modelling.txt` puts it: *"for the
+#: edge cases I am going to want you to tell me about the edge cases."* The 13,826 multi-word
+#: values with no connective (`d. y.`, `Patrizio Napoletano`, `132, 91, 44, 9`) wait with them.
+#:
+#: This is the same mechanism as `DESCRIPTION_MARKERS` above and as
+#: `build-garborg-day._drop_territorial`, which does it for the transliterated label and now
+#: delegates here so the words live in one place.
+TITLE_WORDS = {
+    "queen", "king", "prince", "princess", "emperor", "empress", "duke", "duchess",
+    "earl", "count", "countess", "baron", "baroness", "lord", "lady", "dame", "sir",
+    "saint", "bishop", "archbishop", "pope", "tsar", "tsarina", "pharaoh", "consul",
+    "drottning", "drotting", "dronning", "kung", "konge", "kong", "konung",
+    "prins", "prinsessa", "prinsesse", "prinz", "prinzessin",
+    "hertig", "hertug", "hertiginna", "herzog", "herzogin",
+    "greve", "grevinna", "grevinde", "friherre", "friherrinna",
+    "kejsare", "kejsarinna", "biskop", "ärkebiskop", "erkebiskop",
+    "könig", "königin", "kaiser", "kaiserin", "graf", "gräfin", "markgraf", "markgräfin",
+    "fürst", "furst", "jarl", "reine", "roi", "duc", "duchesse", "comte", "comtesse",
+    "kuningas", "kuningatar", "maestre",
+}
+
+#: What turns a title word into a title PHRASE, and what opens a territorial tail on its own.
+#: `till Krageholm` is Swedish for *of Krageholm*, an estate -- `CLAUDE.md` records Emma
+#: catching `カール・フレドリク・パイパー・ティル・クラゲホルム` and correcting the item by hand.
+TITLE_CONNECTIVES = {"of", "von", "van", "de", "des", "der", "du", "di", "da",
+                     "af", "av", "zu", "the"}
+TERRITORIAL_OPENERS = {"till", "til", "i", "på", "paa"}
+
+
+def drop_title_tail(label: str) -> str:
+    """`label` with a trailing title or territorial phrase removed. See `TITLE_WORDS`.
+
+    A title word counts only when a connective follows it, which is what separates
+    `Óláfr Guðrøðarson king of Man` from `Sarah Bishop`, `Anne Greve` and `Anna King` --
+    real surnames that a bare word list would have destroyed. Measured over the 1,295,226
+    labelled people: **10,619 truncate and 5,945 are left alone**, and reading the second
+    list is what established that the connective is doing the work.
+
+    Truncation is at the EARLIEST title word once ANY of them qualifies, so a stack ending
+    in a qualifying phrase takes the whole stack -- `Prins, Hertig av Västergötland` goes as
+    one. That was checked rather than assumed: **171 labels stack titles that way and every
+    one is genuine**, with no `Anna King` among them.
+
+    `I` is never a territorial opener: it is the Roman numeral one, and Norwegian `i` means
+    *in*. Case decides, exactly as `build-garborg-day._drop_territorial` had it.
+    """
+    toks = (label or "").split()
+    idx = None
+    for i, t in enumerate(toks):
+        if not i:
+            continue
+        stripped = t.strip(",")
+        bare = _bare_word(t)
+        # A territorial opener needs something after it: a trailing `i` with nothing following
+        # is a name token that looks like the preposition, and truncating there deletes a real
+        # name. Case is what separates Norwegian `i` (*in*) from the regnal `I`, and is never
+        # folded -- `Reinoud I van Brederode` lost its whole name to that once.
+        if bare in TERRITORIAL_OPENERS and i + 1 < len(toks):
+            if stripped == "i" or (stripped != "I" and stripped.casefold() in TERRITORIAL_OPENERS):
+                idx = i if idx is None else min(idx, i)
+                break
+        if bare in TITLE_WORDS:
+            if idx is None:
+                idx = i
+            nxt = _bare_word(toks[i + 1]) if i + 1 < len(toks) else ""
+            if nxt in TITLE_CONNECTIVES:
+                break
+    else:
+        # No qualifying phrase: every title word seen was a bare one, so keep the name whole.
+        return label
+    return " ".join(toks[:idx]).strip() or label
+
+
 def _bare_word(token: str) -> str:
     """The token stripped of the punctuation Geni wraps these in.
 
@@ -681,7 +776,17 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     aliases = []
     given_count = 0
 
+    # **A title never reaches the plan, whichever path builds the tokens.** `Queen of Sweden`
+    # lives in Geni's `NSFX` and only becomes a name because the rendered label concatenates
+    # it; `surn` picks up its tail the same way. Trimming both here rather than at the callers
+    # is `CLAUDE.md` § *Code that is WRITTEN but never CALLED* -- there are two emitters and
+    # they have disagreed before.
+    label = drop_title_tail(label)
     if fields:
+        fields = dict(fields)
+        for _f in ("givn", "surn", "marnm"):
+            if fields.get(_f):
+                fields[_f] = drop_title_tail(fields[_f])
         # **`father_name` is what turns a `-sen` token into the right kind of statement.**
         # Emma's test: the same token as the father means an inherited surname (`P734`), a
         # stem matching the father's GIVEN name means a patronymic (`P5056`). Without it the
