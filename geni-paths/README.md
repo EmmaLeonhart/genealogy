@@ -139,6 +139,99 @@ target watched for 45 seconds had not finished — and the sentence promises a n
 the notification feed may be the cheaper collector than re-visiting 185,327 profiles. **Neither
 is established and this needs her.**
 
+## ⛔ THE STATISTICS BLOCK IS THE REAL INSTRUMENT. "No relationship found" is not a negative result
+
+**Emma, 2026-09-03**, on George Drouillard, whose path search resolved to *"No blood relationship
+was found. No in-law relationship was found."*:
+
+> *"Family Tree 10,575 / Blood Relatives 15,000 / Ancestors 61 / Followers 13 — this means that
+> it literally is pretty much impossible that he is not linked to charlemagne. 15,000 blood
+> relatives or really any of these numbers being high on this scale indicates that they are in
+> the world tree but it was a database failure."*
+
+**MEASURED, and she was right.** She ran a `Forest` export from a seed near him. It came back
+5,000 people, and:
+
+- Drouillard sits in a 1,174-person component of that export;
+- **7 of the 5,000 are already in our tree** — Pierre Billiau dit Morand Wyandot, and six
+  Lespérance/Morand people;
+- **all 7 are in the main component**, 1,450,615 people reachable from Charlemagne;
+- Drouillard reaches Charles Lespérance `6000000002076959885` in **4 hops** inside the export.
+
+So Geni reported no relationship for a man four steps from a family continuous with Charlemagne.
+
+**15,000 IS A CEILING, NOT A COUNT — her rule, same day:** *"keep in mind that 15,000 on any
+number there is a flag that the query number exceeded the maximum it can do. I do not believe
+there is any section of 15,000 connected people on geni that is not connected to the world tree
+either, or 5,000 for that matter. So anything at those numbers pretty much always will indicate
+connection to the world tree."*
+
+So a saturated figure means *at least* that many, and it is the **strongest** evidence of
+connection there is. A `no path found` sitting beside one is a database failure.
+
+**AND A MISSING ROW MEANS ZERO.** Dorothy Jeakins `6000000018119318134` reads
+`Family Tree 1,405 / Blood Relatives 1 / Followers 1` with **no Ancestors row at all** — Emma:
+*"ancestors are not mentioned at all because she has no ancestors and geni is weird and gives
+zero as not an option there"*. Record `0`, never blank: blank later reads as *we failed to
+scrape it*, which is the absent-versus-zero confusion that costs this repo real numbers
+elsewhere.
+
+### `reports/isolates.csv` — what to store, and when
+
+Her instruction: *"just list these numbers for all of the people for whom no path is found in a
+csv file... no judgment you just store the returned numbers for everyone... you store these
+numbers even before a path is found or not, but you always stay on the page and request the
+path"*, with `path_found` added afterwards once it resolves.
+
+    geni_id, qid, label, family_tree, blood_relatives, ancestors, followers, requested_at,
+    path_found        <- filled in LATER: yes / no / (blank while running)
+
+**No judgment at collection time.** The numbers go in as returned; reading them is a separate
+step.
+
+## ⛔ HOW THE PAGE IS ACTUALLY DRIVEN — three visible states, and a hidden template that lies
+
+**The state must be read off the RENDERED page, never off the DOM text.** The markup contains a
+**hidden** `Path search in progress` element — zero width, zero height, no `offsetParent` — that
+is present *before any request is made*. Reading `document.body.innerText` for it reports every
+untouched profile as "in progress". About 22 profiles were recorded that way on 2026-09-03 and
+**not one search had been requested**; the whole loop did nothing but load pages.
+
+| what is VISIBLE in the box | state | what to do |
+| --- | --- | --- |
+| a **"How are they related?"** button | not requested | click it |
+| a green **"Path search in progress. If we find a path, we will notify you."** bar | running | **leave the tab open** |
+| *"No blood relationship was found. No in-law relationship was found."* | resolved, no path | record `path_found=no` |
+| a chain of names | resolved, path | save the page |
+
+Check visibility with `offsetParent` and a non-zero `getBoundingClientRect()`, or read a
+screenshot. The button disappearing is the confirmation that the click took.
+
+### The rate is about ATTENTION, not about requests
+
+Emma, 2026-09-03: *"this takes about 10 seconds max of attention per profile, but each profile
+must be open for quite a while... it is still not done and might take 10 minutes."*
+
+So the shape is **many tabs open at once**, not one at a time:
+
+1. open a tab, read the Statistics block, click *"How are they related?"* — about 10 seconds;
+2. **leave it open** and move to the next;
+3. come back after minutes and read the resolved box.
+
+**Closing the tab breaks it.** Her words: *"If you do not leave the tabs open then it actually
+messes a bit with the data that is given"*, and *"if you request many profiles at once after
+closing the tabs then I think it actually drops its promise to notify you, or it only notifies
+you on the most recent one you requested."* It is **RAM intensive** on our side, so the batch
+size is bounded by the machine rather than by politeness.
+
+**The notifications are not the collector.** *"There are notifications but the notifications
+actively give a worse version of the data."* Read the page.
+
+**The pushpin is set ONCE, BY HER, and is not ours to touch.** Emma, 2026-09-03: *"You do not
+pin Charlemagne, it needs to be done exactly once and I did it."* Toggling it mid-run is how a
+batch of profiles came to be queued against *"You"* instead of Charlemagne. The box naming
+**Charlemagne** on both ends is the check that the anchor is right.
+
 ## How to save
 
 The blob capture `geni-scraping/README.md` describes — a download of the page's own
