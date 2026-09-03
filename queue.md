@@ -64,6 +64,9 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   `reports/derived-family.csv` reaches 1,450,615 of 1,451,964 people — so the script is that
   walk plus a roster and a random draw.
 
+* fix the daily batch quickstatements page since the copy button does not work
+* fix the branding of this project away from geni since although the main thing it does is geni derived exports to wikidata that is not the core of it and not what I want the branding to be
+
 ## ⛔ AT THE TAIL — mass export work on the paths for disconnected Wikidata individuals
 
 **Everything established on 2026-09-03, when Emma taught the task by hand after the automated
