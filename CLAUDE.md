@@ -972,10 +972,32 @@ nearly the whole programme; the exception is small and specific, and it is **Gen
 **Geni is categorical**: it needs her logged-in browser under Chrome automation. Nothing in the
 cloud can reach it, and no amount of cleverness changes that.
 
-**The tree is a different kind of no** — `out/merged.ged` is 409 MB and the merge peaks near
-17 GB against a 16 GB runner. That is a resource limit rather than an access one, so it may move
-with a larger runner; it has not been tried. **Do not conflate the two when reporting what is
-blocked.**
+**The tree is a different kind of no, and it has now BEEN TRIED — run 33808839371,
+2026-09-03.** It was killed. The memory curve is the whole diagnosis, sampled every 30s on a
+standard `ubuntu-latest` runner with all 607 exports:
+
+    21:44-21:48   ~1,035 MB          flat: reading the exports
+    21:48:39       1,636 MB          the merge starts holding the tree
+    21:53:39      11,549 MB
+    21:57:09      15,647 MB          341 MB free
+    21:57-22:04   ~15,800 MB         SEVEN MINUTES pinned, 67-350 MB free, thrashing
+    22:04:15      "The runner has received a shutdown signal"
+
+**DISK WAS NEVER THE CONSTRAINT and this file was wrong about it.** The log reads
+`DISK=79372MB free` on every single sample — **79 GB**, not the "roughly 14 GB of runner disk"
+recorded in § *The checkout has to be sparse*. Memory is the binding limit and disk is not close
+to binding; any sparse checkout justified on disk grounds was justified on a wrong number.
+
+**A local run on this sandbox agrees**: killed at 13.3 min, peak RSS **13.30 GB**, `EXIT -9`. The
+runner survived longer only because it has swap to thrash into.
+
+**So the tree does not build in Actions as the corpus stands, and the target is now a number.**
+Peak must come from ~16 GB to comfortably under ~14 GB. Her three shrinking levers, in measured
+order: **notes and media are ~67% of corpus bytes** (`CONT` 31.8%, `CONC` 20.7%, `FILE` 7.3%,
+`NOTE` 4.5%, `TEXT` 1.5%) against ~6% for names; duplicate labels per person are uncounted; and
+dropping labels for anyone Wikidata already labels is the sharpest, since the tree exists to find
+what Wikidata lacks. **Do not conflate this with Geni when reporting what is blocked** — Geni is
+categorical, this is a number that the input is under our control to move.
 
 **⛔ And the derived tables are a PHOTOGRAPH of her tree, which nothing in CI will tell you is
 stale.** `out/family-structure.tsv`, `derived-family.csv`, `derived-labels.csv`,

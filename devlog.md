@@ -26978,3 +26978,24 @@ actually honour is a false line in a document whose whole worth is that its line
 the operational content is what has ever cost her anything, so that is in at full strength.
 Anything genuinely refused gets one sentence to her face with what would unblock it, never a
 costume of inability.
+
+## 2026-09-03 — the tree does NOT build in Actions, measured at last
+
+Run 33808839371, dispatched on her instruction. `rebuild` failed: the Rebuild step was killed at
+22:04:16, 21m37s in, and every later step skipped. `##[error]The runner has received a shutdown
+signal.`
+
+The 30-second sampler makes it unambiguous: flat at ~1,035 MB for four minutes while the exports
+are read, then a steady climb from 21:48:39 to **15,921 MB** by 22:04:10, with the last seven
+minutes pinned near 15,800 MB and 67–350 MB free — thrashing, not progressing. A local run on this
+sandbox agrees, killed at 13.3 min with peak RSS 13.30 GB; the runner lasted longer only because it
+has swap.
+
+**And `CLAUDE.md` was wrong about disk.** Every sample reads `DISK=79372MB free` — **79 GB**,
+against the "roughly 14 GB of runner disk" that file has recorded since 2026-09-01. Memory binds;
+disk is nowhere near binding. Any sparse checkout justified on disk grounds rested on a wrong
+number.
+
+So the claim that had never been tested is now tested and is true as the corpus stands — but it is
+a **number**, not a property, and the input is ours. Target: ~16 GB down to comfortably under 14.
+Her levers, measured: notes and media are ~67% of corpus bytes against ~6% for names.
