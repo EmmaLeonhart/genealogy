@@ -1432,13 +1432,64 @@ def entry_points():
     """
     if not ENTRY_POINTS.exists():
         return []
-    out = []
+    rows = []
     with open(ENTRY_POINTS, encoding="utf-8") as f:
-        for row in csv.DictReader(f, delimiter="\t"):
-            if row.get("qid"):
-                out.append(row)
-    # Sorted on the qid, which is unique --- `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*.
-    return sorted(out, key=lambda r: r["qid"])
+        rows = [r for r in csv.DictReader(f, delimiter="\t") if r.get("geni_id")]
+
+    # **A row may name a person we hold no QID for, and that is not a reason to refuse it.**
+    # The Chinese legendary lineage rows are exactly that: they are the far edge of our tree and
+    # our data records no Wikidata correspondence for them. Whether Wikidata *has* items for
+    # 少昊 or 顓頊 is a different question our store cannot answer --- `CLAUDE.md` § *"Is X
+    # present?"* --- so a blank qid means "we do not hold the link", never "no item exists".
+    #
+    # Resolve blanks from `derived-labels.csv` at load, so an entry point switches on by itself
+    # the moment the correspondence lands, with no edit here. The file is 1.45M rows, so it is
+    # read only when a blank actually needs it: this function runs at import.
+    if any(not (r.get("qid") or "").strip() for r in rows):
+        want = {r["geni_id"] for r in rows if not (r.get("qid") or "").strip()}
+        for gid, qid in _qids_for(want).items():
+            for r in rows:
+                if r["geni_id"] == gid and not (r.get("qid") or "").strip():
+                    r["qid"] = qid
+
+    # Sorted on the geni id, which is unique and present on every row ---
+    # `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC* wants a total key, and a blank qid is not one.
+    return sorted(rows, key=lambda r: r["geni_id"])
+
+
+def _qids_for(geni_ids):
+    """Geni id -> QID out of `derived-labels.csv`, for the handful that need it."""
+    import gzip
+
+    plain = ROOT / "reports" / "derived-labels.csv"
+    packed = ROOT / "reports" / "derived-labels.csv.gz"
+    if plain.exists():
+        handle = open(plain, encoding="utf-8")
+    elif packed.exists():
+        handle = gzip.open(packed, "rt", encoding="utf-8")
+    else:
+        return {}
+    found = {}
+    with handle as fh:
+        for row in csv.DictReader(fh):
+            if row["geni_id"] in geni_ids and row.get("qid"):
+                found[row["geni_id"]] = row["qid"]
+                if len(found) == len(geni_ids):
+                    break
+    return found
+
+
+def unresolved_entry_points():
+    """Rows that name a person we hold no QID for --- they cannot be roots until one lands.
+
+    Reported rather than dropped silently: a roster row that does nothing and says nothing is
+    the § *Code that is WRITTEN but never CALLED* failure with a data file instead of a function.
+    """
+    return [
+        (r["geni_id"], r.get("label", ""), r.get("active_from", ""))
+        for r in entry_points()
+        if not (r.get("qid") or "").strip()
+    ]
 
 
 def active_entry_points(today=None):
@@ -1453,7 +1504,7 @@ def active_entry_points(today=None):
     return [
         (r["qid"], r.get("label", ""))
         for r in entry_points()
-        if (r.get("active_from") or "").strip() <= today
+        if (r.get("qid") or "").strip() and (r.get("active_from") or "").strip() <= today
     ]
 
 
@@ -1463,7 +1514,7 @@ def pending_entry_points(today=None):
 
     today = today or datetime.date.today().isoformat()
     return [
-        (r["qid"], r.get("label", ""), r.get("active_from", ""))
+        (r.get("qid") or r["geni_id"], r.get("label", ""), r.get("active_from", ""))
         for r in entry_points()
         if (r.get("active_from") or "").strip() > today
     ]
@@ -4957,6 +5008,9 @@ def main():
             print(f"  entry point LIVE  {qid} {label}")
         for qid, label, when in pending_entry_points():
             print(f"  entry point PENDING {qid} {label} — switches on {when}")
+        for gid, label, when in unresolved_entry_points():
+            print(f"  entry point UNRESOLVED geni:{gid} {label} — dated {when}, but we hold no "
+                  f"QID for them, so they cannot be a root until the correspondence lands")
         if not ring_seeds:
             sys.exit(f"no ledger person is in the group reachable from {ARNE_QID}/{BUREUS_QID} "
                      f"— that is a broken join over relations.tsv/garborg-live-values.tsv, not "

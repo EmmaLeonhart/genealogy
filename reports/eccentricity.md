@@ -83,6 +83,29 @@ a tree-side measure cannot be substituted for each other.
 centre of what we hold. The two questions coincide only where our sampling is even, and the
 Samaritan and Chinese results above are exactly where it is not.
 
+## Eccentricity is PARTLY A RECENCY MEASURE, and that qualifies everything above
+
+**Emma, 2026-09-03, on Ettinger:** *"I think Ettinger is high in eccentricity because of the fact
+that he… I only recently added him, basically."*
+
+She is right that this is the mechanism, and it is checkable. Over the **602** exports in the
+corpus:
+
+| person | exports containing them | hops from Charlemagne |
+| --- | ---: | ---: |
+| Robert Ettinger | **4** | 39 |
+| 少昊 Shaohao | **1** | 183 |
+
+A person reached by one export sits wherever that single export left them. Expanding around them
+pulls them inward, so a high score can mean *we have not sampled here yet* rather than *this
+person is structurally peripheral*. Two people is not a measurement of the correlation, and it is
+not offered as one — the full version is a presence count per person from `genimerge.density`
+against this file, which has not been run.
+
+**So the ranking answers "where has our sampling not reached", which is close to but not the same
+as "who is on the edge of the graph".** For the campaign that distinction mostly does not matter,
+since both point at the same next export. For calling someone eccentric it matters a lot.
+
 ## What is here to build on
 
 `dist_charlemagne` combined with `degree` is the closest thing in our own data to thin

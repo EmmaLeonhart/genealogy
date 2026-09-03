@@ -2739,6 +2739,31 @@ central here. § *Presence measures our sampling, never Geni's content* is why t
 substituted. The far edge of our own tree is the Chinese legendary lineage (少昊 Shaohao at 183)
 and, among people carrying a QID, the Samaritan high priests at 131–134.
 
+**Eccentricity is PARTLY A RECENCY MEASURE.** Emma, 2026-09-03, on why Ettinger scores high:
+*"I only recently added him, basically."* Measured over the 602 exports: **Ettinger is in 4,
+Shaohao in 1**. A person one export reached sits wherever that export left them, and expanding
+around them pulls them inward — so a high score can mean *we have not sampled here yet* rather
+than *this person is structurally peripheral*. Two people is not a correlation and is not offered
+as one; the full version is a `genimerge.density` presence count against the file, unrun.
+
+### The Chinese legendary lineage are entry points from 2027-01-01
+
+**Emma, 2026-09-03**, on the six the eccentricity report surfaced: *"those few people that you
+listed should be considered as entry points starting on January first of twenty twenty seven,
+because they are eccentric enough that I'm gonna probably want a large amount of history before I
+actually run stuff. But they're also, like, very clustered with each other."*
+
+少昊 Shaohao, 顓頊 Zhuanxu, 女修 Nüxiu, 大業 Daye, 皋陶 Gaoyao, 伯益 Bo Yi — 178 to 183 hops from
+Charlemagne, the far edge of the tree, and a **consecutive descent**, which is her "clustered with
+each other". Six roots on one chain buy far less than six independent ones; the date is a year out
+for exactly that reason, and the count is hers.
+
+**None of the six carries a QID in our data, so none can be a root yet**, and the roster holds
+them anyway with the qid blank. `entry_points()` resolves a blank from `derived-labels.csv` at
+load, so each switches on by itself the moment the correspondence lands; until then the run prints
+an **UNRESOLVED** line naming it. A blank qid means *we hold no link* and never *no item exists* —
+§ *"Is X present?"*: whether Wikidata has an item for 少昊 is a question our store cannot answer.
+
 ### The entry points are the BURE CLAN, and Arne Garborg is the ONE exception
 
 **Composition, checked 2026-09-03: 253 roots = 251 Bure + Arne + Ettinger.** Johannes Bureus is

@@ -26480,3 +26480,33 @@ children*: a distribution that is too clean is about the instrument.
 Also recorded: the two entry points were named for **different** reasons — Ettinger *"important
 enough… of his own"*, Martin *"interesting due to his eccentricity"* — so the `note` column
 carries each, and there is no single criterion to generalise into a filter.
+
+## 2026-09-03 — the Chinese lineage as 2027 entry points; eccentricity is partly recency
+
+**Emma, on the six the eccentricity report surfaced:** *"those few people that you listed should
+be considered as entry points starting on January first of twenty twenty seven, because they are
+eccentric enough that I'm gonna probably want a large amount of history before I actually run
+stuff. But they're also, like, very clustered with each other."*
+
+少昊 Shaohao, 顓頊 Zhuanxu, 女修 Nüxiu, 大業 Daye, 皋陶 Gaoyao, 伯益 Bo Yi added to
+`reports/entry-points.tsv` with `active_from` 2027-01-01. They are a consecutive descent —
+178-183 hops from Charlemagne — which is her "clustered with each other", and why six roots on
+one chain are worth less than six independent ones.
+
+**None of the six carries a QID in our data, so none can be a root yet.** Rather than refuse the
+rows, `entry_points()` now resolves a blank qid from `derived-labels.csv` at load, so each
+switches on by itself when the correspondence lands; until then the run prints an UNRESOLVED line
+naming it. The label lookup only reads the 1.45M-row file when a blank actually needs it, since
+this runs at import. A blank qid means *we hold no link*, never *no item exists* — whether
+Wikidata has an item for 少昊 is a question our store cannot answer.
+
+Verified: 8 roster rows, roots still 253 today, `active_entry_points('2027-01-01')` returns
+Ettinger and Martin only, and all six Chinese rows report as both PENDING and UNRESOLVED.
+
+**And her correction to the eccentricity reading, which qualifies the whole report.** On Ettinger:
+*"I only recently added him, basically."* Measured over the 602 exports in the corpus — **Ettinger
+appears in 4, Shaohao in 1**. A person one export reached sits wherever that export left them, so
+a high score can mean we have not sampled there yet rather than that the person is structurally
+peripheral. Written into `reports/eccentricity.md` as a section, with the explicit note that two
+people is not a correlation: the real version is a `genimerge.density` presence count against the
+file, which has not been run.
