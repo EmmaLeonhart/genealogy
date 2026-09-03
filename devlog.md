@@ -26413,3 +26413,32 @@ Verified by date injection: `SUBGRAPH_ROOTS` is **253** today with Ettinger in a
 run prints LIVE and PENDING lines every time, so the switch-on is visible rather than inferred.
 
 Who else drips in is hers — she said she is not sure who, and nothing was ranked.
+
+## 2026-09-03 — why the entry points are Bure, and one correction to me
+
+**Emma:** *"Idk why you queried wikidata over this."* Resolving the two new entry points' QIDs,
+I reached for `wbsearchentities` first. It was blocked by the proxy and the answer was in
+`reports/derived-labels.csv` the whole time — that file carries the qid beside the Geni id for
+everyone in the tree. Recorded in `CLAUDE.md`: resolve an entry point from our own data; the
+network is for what the store cannot answer.
+
+**Composition, checked: 253 roots = 251 Bure + Arne + Ettinger.** Johannes Bureus is himself in
+`bureatten.csv`, so of the 252 before the drip-in, 251 are Bure and exactly one is not. Her
+words: *"Almost all of them are Bure people… Arne Garborg is the one exception."*
+
+**Her reason, recorded in both `CLAUDE.md` and `subgraph_roots()`:** the Bure people got Wikidata
+items from Swedish Wikipedia articles and *"nobody actually did genealogical work on Wikidata"*,
+so as entry points they have high activity connecting **to each other**. Arne's family were
+precreated by her, are already well connected, have about the same headcount with *"probably a
+bit less surface area"*, and *"primarily connect to other groups"*. The imbalance is the design,
+not a defect — an item that exists and states no relationships is the highest-yield entry point
+there is, which § *THE EDIT ALGORITHM* already says in her own words.
+
+Also recorded: the roster stays at **about 250**, so the drip-in is a trickle rather than a
+second campaign.
+
+**And a measurement I did NOT stand behind.** `out/wikidata/relations.tsv` gives Bure 91% stating
+a relationship against 100% for the non-Bure ledger, which looks like it tests her claim and does
+not: **767 of the 928 non-Bure ledger items are absent from the snapshot entirely**, created
+after the download, and the Bure rows in it are post-campaign rather than pre-campaign. Noted in
+`CLAUDE.md` so the number is not quoted later as evidence.

@@ -1366,6 +1366,25 @@ def subgraph_roots():
     Read from `reports/bureatten.csv`, the sv.wikipedia Category:Bureätten listing, taking only
     rows that carry a Geni id -- the same 251 the coverage campaign used. Reading the file rather
     than pasting the ids keeps one list of these people in the repo.
+
+    **ARNE IS THE ONE EXCEPTION, and that is the design.** Checked 2026-09-03: of the 252 roots
+    before the drip-in, **251 are Bure** -- Johannes Bureus is himself in `bureatten.csv` -- and
+    Arne is the only one who is not. Emma: *"Almost all of them are Bure people… Arne Garborg is
+    the one exception."*
+
+    **Why the two sides differ, in her words:** *"the family of Arne were precreated by me and are
+    generally pretty well connected to each other. Whereas this other family is in the interesting
+    situation where… a massive amount of them had Wikidata items because of having Swedish
+    Wikipedia articles, but nobody actually did genealogical work on Wikidata. So them as entry
+    points means they have a high level of activity in connecting to each other, whereas the
+    [Arne] people have been in large part added exclusively by me, and there's about the same
+    amount of them, probably a bit less surface area. And the [Arne] people primarily connect to
+    other groups."*
+
+    So the imbalance is not lopsidedness to correct: an item that exists and states no
+    relationships is the highest-yield entry point there is, which is exactly what a sv.wikipedia
+    article with no genealogical work leaves behind. The roster stays at **about 250** -- her
+    instruction, same day -- so `reports/entry-points.tsv` is a trickle, not a second campaign.
     """
     roots = [ARNE_QID, BUREUS_QID]
     roster = ROOT / "reports" / "bureatten.csv"

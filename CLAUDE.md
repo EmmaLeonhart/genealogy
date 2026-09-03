@@ -2691,9 +2691,15 @@ fires while the session is idle* records one starving for four hours, and every 
 2026-08-28 crash. A date in a tracked file cannot be lost, needs nothing running on the day, and
 makes switching someone on a property of the repo. Adding the next person is one line.
 
-**The two she named, resolved from our own tree and not guessed** — § *Do not guess these* —
-by joining `reports/derived-labels.csv` on the label, because neither Wikidata nor Geni is
-reachable from a remote session:
+**Resolve an entry point's QID from OUR OWN DATA. Do not reach for Wikidata.** Emma,
+2026-09-03: *"Idk why you queried wikidata over this."* `reports/derived-labels.csv` already
+carries the qid beside the Geni id for everyone in the tree, so a `wbsearchentities` call for a
+person we hold is a request that answers nothing a local join does not. § *Querying Wikidata is
+ALLOWED* permits it and § *the offline store is the right first place to look* still decides
+where to start; the network is for what the store cannot answer.
+
+**The two she named, resolved that way** — § *Do not guess these*, joined on the label in
+`reports/derived-labels.csv`:
 
 | | QID | Geni | live from |
 | --- | --- | --- | --- |
@@ -2713,6 +2719,44 @@ check, so the day one switches on shows in the output rather than being inferred
 **Who else drips in is HERS.** She said she is not sure who, and that is an open question rather
 than a brief to go ranking candidates — § *No unprompted reports* governs. Roots are cheap and
 reversible; the constraint is which people she wants the graph grown from.
+
+**And the roster stays at ABOUT 250.** Emma, 2026-09-03: *"leave it with about two hundred and
+fifty entry points or something like that."* Dripping in is a trickle, not a campaign — the
+count is a property of the design, not a number to grow.
+
+### The entry points are the BURE CLAN, and Arne Garborg is the ONE exception
+
+**Composition, checked 2026-09-03: 253 roots = 251 Bure + Arne + Ettinger.** Johannes Bureus is
+himself in `reports/bureatten.csv`, so of the 252 that existed before the drip-in, **251 are
+Bure and exactly one is not**. Emma: *"Almost all of them are Bure people… Arne Garborg is the
+one exception."*
+
+**Her reason for the asymmetry, and it is about SURFACE AREA rather than about importance:**
+
+> *"the family of Arne were precreated by me and are generally pretty well connected to each
+> other. Whereas this other family is in the interesting situation where… a massive amount of
+> them had Wikidata items because of having Swedish Wikipedia articles, but nobody actually did
+> genealogical work on Wikidata. So them as entry points means they have a high level of
+> activity in connecting to each other, whereas the [Arne] people have been in large part added
+> exclusively by me, and there's about the same amount of them, probably a bit less surface
+> area. And the [Arne] people primarily connect to other groups."*
+
+| | how the items got there | what they connect to |
+| --- | --- | --- |
+| **Bure**, ~251 | sv.wikipedia articles, **no genealogical work** | **each other** — the whole point |
+| **Arne's family**, about the same number | created by Emma, already well linked | **other groups** |
+
+So the two sides are doing different jobs, and the Bure count is not lopsidedness to correct.
+An item that exists but states no relationships is the highest-yield entry point there is —
+§ *THE EDIT ALGORITHM*: *"The most ideal situation for lots of people being added is a bunch of
+individuals that are not linked to each other and are relatively close to each other."* The Bure
+people are that population, and they are why the roots look the way they do.
+
+**`out/wikidata/relations.tsv` cannot test this claim and must not be quoted as if it does.**
+It is a download snapshot: **767 of the 928 non-Bure ledger items are absent from it entirely**,
+having been created after the download, so it says nothing about Arne's side. The Bure rows in it
+are also post-campaign rather than pre-campaign, so a relationship count there may be measuring
+her own work. § *Emma edits the tree and the items BY HAND, continuously* is the governing rule.
 
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
