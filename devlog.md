@@ -26200,3 +26200,54 @@ Everything above it was finished first, in her order — queue order is sacred:
 - one dispatch producing all three, verified green on run `33666389729`
 
 The flush ran first and never gated the shutdown, as the item required.
+
+## 2026-09-02 — mass path export to the disconnected Wikidata people: the pilot roster
+
+**Emma's idea:** *"what if we mass exported the paths to the disconnected wikidata people
+on geni? … the mass export of the path lists might be feasible and help with getting
+wikidata generally connected even if we have a bunch of 'sinews' only linking people in."*
+
+**Target population, measured against the current tree: 185,327** — Wikidata items carrying
+a Geni ID, stating no `P22`/`P25`/`P40`/`P26`, whose Geni profile is not in the merged tree,
+and with no saved path. `out/wikidata/relations.tsv` has no `P3373` *sibling* column, so an
+item whose only stated relation is a sibling reads as isolated: this over-counts slightly.
+
+**The method is already proven at 663.** `paths/isolate-geni-*.tsv` is 26,762 steps naming
+**10,645 distinct people**, and every one of the 10,645 is now in the merged tree. The yield
+does not saturate — in random order, new people per path runs 20.7 over the first 100 and
+still **13.8** over paths 501–600.
+
+**The path is a URL, not a page save.** Off the saved pages themselves:
+`/path/x?from=<from>&path_type=blood|inlaw&to=<target>`, slug cosmetic. No profile load and
+no expand click — a blob-saved profile page carries 3 `span.segment` anchors (the collapsed
+*You → X*) against 118 on a saved path page, which is why the `geni-scraping/` capture cannot
+be reused as-is.
+
+**`from` is `6000000087535357291` Emma Himiko Leonhart (`Q140568870`)** — established as step
+1 "You" on 679 saved paths. `scripts/build-path-to-wikidata-report.py` carries
+`EMMA = "6000000001846508982"`, which is Empress Jingū and the wrong end for a path. Not
+changed here; noted where the new scripts use the right one.
+
+**Storage was 96% waste.** `paths_for_wikidata_isolates/` is 2.8 GB, of which 2.7 GB is
+`_files` asset directories. HTML alone is 113 MB over 663 pages; the extracted TSVs are ~4 KB
+each, so 185k paths is ~740 MB of TSV.
+
+**Her two decisions, 2026-09-02:** pilot 100 first, and **both** path types always.
+
+Built `scripts/build-isolate-path-targets.py` → `reports/isolate-path-pilot.tsv` (100 targets,
+4 of them on the Nordic roster) and `reports/isolate-path-pilot-urls.txt` (200 URLs). Sample is
+`random.Random(20260902).sample` over a qid-sorted population, so a rebuild is byte-identical —
+confirmed by md5 across two runs. `--all` writes the full 185,327-row roster instead.
+
+Built `scripts/harvest-isolate-paths.py` for the other half: reads the saved pages, counts
+steps, writes `reports/isolate-path-pilot-results.tsv` with per-type hit columns, and with
+`--write-paths` emits `paths/isolate-<qid>-<kind>.tsv` for every hit.
+
+**The parser half is verified, the page shape is not.** `genipage.parse_relationship_path`
+reproduces `paths/isolate-geni-ada-yonath-livshitz.tsv` exactly — 59 parsed against 59
+committed, same first and last person. But no bare `/path/` page has been fetched: Geni is
+not reachable from this session (the egress proxy refuses it), and the path is computed from
+her logged-in profile anyway. A harvest run reporting 0 steps on every page means the markup
+differs, not that nothing is connected.
+
+Not run: no Geni request was made. `geni-paths/README.md` carries the method and the rate rule.
