@@ -29,3 +29,10 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   `reports/ethiopian-emperors.tsv` and `reports/japanese-emperors.tsv` with `qid` and `geni_ids`
   columns, then point the two group rows at them. Do **not** pick either list out by label: the 52
   tree labels matching Ethiopia/Negus are the surname *Neguse*, which is what that would catch.
+
+- **Study the behaviour of the Wikidata user `Anvilaquarius`.** Emma, 2026-09-03: *"Anvilaquarius
+  is a user I want to study the behaviour of."* Then, pointing at a pastebin on her screen:
+  *"Actually just this pastebin it"* — **<https://pastebin.com/v4UcMx36>**, which is the material
+  to work from. Nothing has been fetched or looked at; `CLAUDE.md` § *"Add it to the end of the
+  queue" means WRITE IT DOWN AND STOP* governs.
+  The URL is transcribed from a photo of her screen, so check it resolves before relying on it.
