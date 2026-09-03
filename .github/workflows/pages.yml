@@ -28,7 +28,7 @@ on:
   #
   # Measured on run 33687514166 (2026-09-02): the `pipeline` job pushed 4111f4d at 22:02:19 and
   # `site / build` checked out 8dcf42f6 thirteen seconds later. Since the page publishes
-  # `reports/wikidata-garborg-day.qs`, every site build served the PREVIOUS day's batch. The
+  # `reports/wikidata-garborg-day.txt`, every site build served the PREVIOUS day's batch. The
   # comment that used to sit here claimed the opposite, which is why it went unnoticed.
   workflow_call:
     inputs:

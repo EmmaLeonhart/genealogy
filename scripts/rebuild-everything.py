@@ -156,7 +156,7 @@ def main():
         print(f"--- {label}: {time.time() - t0:.0f}s", flush=True)
 
     print(f"\nall {len(steps)} steps done in {(time.time() - started) / 60:.1f} min")
-    print("batch is at reports/wikidata-garborg-day.qs")
+    print("batch is at reports/wikidata-garborg-day.txt")
     return 0
 
 

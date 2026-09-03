@@ -541,7 +541,7 @@ def test_an_argument_free_day_build_is_refused():
     import subprocess
     import sys as _sys
 
-    batch = R / "wikidata-garborg-day.qs"
+    batch = R / "wikidata-garborg-day.txt"
     before = batch.read_bytes() if batch.exists() else None
     env = {**__import__("os").environ, "PYTHONPATH": str(ROOT / "src")}
     r = subprocess.run([_sys.executable, str(ROOT / "scripts" / "build-garborg-day.py")],
@@ -551,7 +551,7 @@ def test_an_argument_free_day_build_is_refused():
     assert "--compose" in (r.stdout + r.stderr), "the refusal must name the flag that is missing"
     if before is not None:
         assert batch.read_bytes() == before, (
-            "the refused run still touched reports/wikidata-garborg-day.qs")
+            "the refused run still touched reports/wikidata-garborg-day.txt")
 
 
 def test_the_ck_digraph_is_one_sound_not_two():

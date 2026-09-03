@@ -245,7 +245,7 @@ def test_every_created_person_carries_exactly_one_geni_id(name):
     """A created person with no `P2600` cannot be cited; with two it is a merge.
 
     **A created NAME is exempt, and the first version of this test was wrong about
-    that.** It failed `wikidata-garborg-name-items.qs`, where every block is a family
+    that.** It failed `wikidata-garborg-name-items.txt`, where every block is a family
     name, given name or patronymic — things that have no Geni profile because they are
     not people. `CLAUDE.md` § *One name item per USAGE* is the reason those items exist
     at all. The same distinction is `CREATIONS` in `tests/test_edit_graph.py`.
@@ -315,7 +315,7 @@ def test_no_creation_is_of_a_person_wikidata_already_links():
     worth. `scripts/refresh-p2600-all.py` rebuilt `out/wikidata/p2600-all.tsv` from live
     Wikidata; before that it was a 2026-08-09 offline rebuild, and this docstring rightly said
     the check *"would NOT have caught the Garborg duplicate, whose items were created after the
-    dump"*. It caught three on the first run against fresh data — `wikidata-garborg-day.qs` held
+    dump"*. It caught three on the first run against fresh data — `wikidata-garborg-day.txt` held
     `CREATE` blocks for Jacob Knutson Skiftun, Kristina Eriksdotter Ångerman and Louise Helmine
     Jenssen, each of whom **already had two items**, and none of whom was in the ledger, so the
     generator could not see them. Regenerating on the refreshed ledger dropped all three.
@@ -459,7 +459,7 @@ def test_the_sibling_cap_holds_across_every_live_batch():
     106, `wikidata-reciprocals-siblings-held.qs` 155, `wikidata-join-izumo.qs` 30,
     `wikidata-reciprocals.qs` 10.
     """
-    daily = {"wikidata-garborg-day.qs", "wikidata-garborg-name-items.qs"}
+    daily = {"wikidata-garborg-day.txt", "wikidata-garborg-name-items.txt"}
     total, per_file = 0, {}
     for path in BATCHES:
         if path.name not in daily:
@@ -486,7 +486,7 @@ def test_every_statement_has_a_comment_above_it(name):
     Only the files the daily run writes are checked: batches built before the format
     existed are history and are not rewritten to satisfy a rule made after them.
     """
-    if name not in {"wikidata-garborg-day.qs", "wikidata-garborg-name-items.qs"}:
+    if name not in {"wikidata-garborg-day.txt", "wikidata-garborg-name-items.txt"}:
         pytest.skip(f"{name} predates the commented format")
     path = REPORTS / name
     raw = path.read_text(encoding="utf-8").split("\n")
@@ -553,7 +553,7 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
     exist. Labels and aliases are exempt because they REPLACE rather than add.
     """
     values = REPORTS / "garborg-live-values.tsv"
-    batch = REPORTS / "wikidata-garborg-day.qs"
+    batch = REPORTS / "wikidata-garborg-day.txt"
     if not values.exists() or not batch.exists():
         pytest.skip("live values or the daily batch not built")
     live = {(r["qid"], r["property"], r["value"]) for r in

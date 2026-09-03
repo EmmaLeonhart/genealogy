@@ -43,8 +43,8 @@ CLAUDE = ROOT / "CLAUDE.md"
 #: `pipeline.yml` calls the Pages workflow AFTER `--compose`, so the page carries the batch
 #: that run just built rather than whatever the last schedule happened to see.
 BATCHES = [
-    ("The daily batch", "reports/wikidata-garborg-day.qs"),
-    ("Name items", "reports/wikidata-garborg-name-items.qs"),
+    ("The daily batch", "reports/wikidata-garborg-day.txt"),
+    ("Name items", "reports/wikidata-garborg-name-items.txt"),
 ]
 
 

@@ -168,7 +168,7 @@ def main():
     #
     # She is right that the machinery was already programmatic -- nothing was ever deleted,
     # `translit_no.py` has been here since 2026-08-25 -- but it was pointed at
-    # `wikidata-garborg-day.qs`, one day's 40 people. So the table grew 113 -> 218 and
+    # `wikidata-garborg-day.txt`, one day's 40 people. So the table grew 113 -> 218 and
     # stopped, and every ring further out lost its `ja`/`zh` silently.
     #
     # `--two-hops` is the scope she named: every person in the ledger, plus everyone within
@@ -197,7 +197,7 @@ def main():
 def _batch_tokens():
     """Every token today's batch and its carry-forward need. The original scope."""
     need = set()
-    for path in (ROOT / "reports" / "wikidata-garborg-day.qs",
+    for path in (ROOT / "reports" / "wikidata-garborg-day.txt",
                  ROOT / "reports" / "garborg-carry-forward.tsv"):
         if not path.exists():
             continue

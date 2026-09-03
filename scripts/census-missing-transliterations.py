@@ -102,7 +102,7 @@ def population():
         for row in csv.DictReader(f, delimiter="\t"):
             if (row.get("geni_id") or "").isdigit():
                 ids.add(row["geni_id"])
-    batch = ROOT / "reports" / "wikidata-garborg-day.qs"
+    batch = ROOT / "reports" / "wikidata-garborg-day.txt"
     if batch.exists():
         ids |= set(re.findall(r'P2600\t"(\d+)"', batch.read_text(encoding="utf-8")))
     return ids

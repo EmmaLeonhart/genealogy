@@ -17,9 +17,9 @@ themselves.
 
 | # | section | file |
 | --- | --- | --- |
-| 1 | **individuals** — 4 random parent pairs + 1 ancestral pair shuffled among them, 4 spouse-and-children fills, 5 couples with their entire children | `reports/wikidata-garborg-day.qs`, first section |
-| 2 | **names** — 10 name items, each linked to every bearer who already holds a QID | `reports/wikidata-garborg-name-items.qs` |
-| 3 | **relationships** — 10 `P3373` *sibling* pairs, every other relationship uncapped | `reports/wikidata-garborg-day.qs`, second section |
+| 1 | **individuals** — 4 random parent pairs + 1 ancestral pair shuffled among them, 4 spouse-and-children fills, 5 couples with their entire children | `reports/wikidata-garborg-day.txt`, first section |
+| 2 | **names** — 10 name items, each linked to every bearer who already holds a QID | `reports/wikidata-garborg-name-items.txt` |
+| 3 | **relationships** — 10 `P3373` *sibling* pairs, every other relationship uncapped | `reports/wikidata-garborg-day.txt`, second section |
 
 **Sections 1 and 3 share a file and that is deliberate.** `queue.md`: *"There is exactly ONE
 live batch file"*, because two files creating the same people is how somebody runs both and
@@ -74,11 +74,11 @@ LEDGER = ROOT / "reports" / "garborg-qids.tsv"
 #: The order is the whole point of this file. `(position, what, script, args, output)`.
 STEPS = (
     (1, "individuals", "build-garborg-day.py", ["--compose"],
-     "reports/wikidata-garborg-day.qs"),
+     "reports/wikidata-garborg-day.txt"),
     (2, "names", "build-garborg-name-items.py", [],
-     "reports/wikidata-garborg-name-items.qs"),
+     "reports/wikidata-garborg-name-items.txt"),
     (3, "relationships", None, [],
-     "reports/wikidata-garborg-day.qs"),
+     "reports/wikidata-garborg-day.txt"),
 )
 
 

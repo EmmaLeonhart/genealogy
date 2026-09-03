@@ -36,7 +36,7 @@ from pathlib import Path
 import pytest
 
 REPO = Path(__file__).resolve().parent.parent
-BATCH = REPO / "reports" / "wikidata-garborg-day.qs"
+BATCH = REPO / "reports" / "wikidata-garborg-day.txt"
 LEDGER = REPO / "reports" / "garborg-qids.tsv"
 
 pytestmark = pytest.mark.skipif(
@@ -156,7 +156,7 @@ def known_name_items():
     `Q30250555` *Garborg*, an item that has existed for years.
 
     Items the plan says to **create** are deliberately absent from this set: those
-    live in `reports/wikidata-garborg-name-items.qs` and must not be pointed at until
+    live in `reports/wikidata-garborg-name-items.txt` and must not be pointed at until
     that batch has run.
     """
     out = set()
@@ -626,7 +626,7 @@ def test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere():
         "a description names nobody — it should fall through to the next relative")
 
 
-NAME_ITEMS = REPO / "reports" / "wikidata-garborg-name-items.qs"
+NAME_ITEMS = REPO / "reports" / "wikidata-garborg-name-items.txt"
 
 
 def name_item_tokens():

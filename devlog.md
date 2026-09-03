@@ -26788,3 +26788,27 @@ NOT DONE, and it is a judgement I am not making alone: `daily-batch-email.yml` n
 the pipeline's own issue does not do better, and it is the workflow that sent the stale batch. It
 is a candidate for deletion under § *LEGACY CODE IS DELETED*, but deleting a whole workflow of
 hers is her call. NEEDS-DECISION — Emma, whether that workflow survives.
+
+## 2026-09-03 — the batches are `.txt`, not `.qs`
+
+Emma: *"Really just switch to .txt instead of .qs."* `.qs` opens nowhere by default; `.txt` opens
+in every browser and every editor, which is the whole point when the delivery channel is a link
+or an attachment.
+
+`reports/wikidata-garborg-day.txt` and `reports/wikidata-garborg-name-items.txt`, renamed with
+`git mv`, and all 46 references in `scripts/` and `.github/workflows/` follow. Zero `.qs`
+references remain in code or workflows.
+
+**And a correction I owe her: the three `Den` lines are NOT a rule violation.** I flagged them at
+her twice as breaking § *NO descriptions and NO edit summaries*. They are her own documented
+exception, 2026-09-01, and the reasoning is in `build-garborg-name-items.py` where I should have
+read it: *"All patronymics get the description 'patronymic' so that they actually are properly
+deduplicated. We are still creating duplicate patronymics and it is at the point of
+intolerability."* The description is what makes Wikidata refuse the duplicate — a label plus
+description must be unique per language, so two undescribed `Olsdatter` items are both legal and a
+second `Olsdatter` + `patronymic` is refused. Telling her to delete those lines would have
+reintroduced the duplication she called intolerable.
+
+That is § *Do not grab the first artifact that vaguely matches* in its purest form: I matched a
+categorical rule in `CLAUDE.md` against a line of output without reading the code that emits it,
+and handed her a false defect on a batch she was trying to run.

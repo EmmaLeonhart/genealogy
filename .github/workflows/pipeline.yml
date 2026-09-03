@@ -163,7 +163,7 @@ jobs:
       - name: What changed
         id: batch
         run: |
-          FILE=reports/wikidata-garborg-day.qs
+          FILE=reports/wikidata-garborg-day.txt
           echo "creates=$(grep -c '^CREATE' "$FILE" || true)" >> "$GITHUB_OUTPUT"
           echo "lines=$(grep -cve '^[[:space:]]*#' -e '^[[:space:]]*$' "$FILE" || true)" >> "$GITHUB_OUTPUT"
           echo "bytes=$(wc -c < "$FILE")" >> "$GITHUB_OUTPUT"
@@ -210,7 +210,7 @@ jobs:
           script: |
             const fs = require('fs');
             const LIMIT = 65536;
-            const batch = fs.readFileSync('reports/wikidata-garborg-day.qs', 'utf8');
+            const batch = fs.readFileSync('reports/wikidata-garborg-day.txt', 'utf8');
             const when = new Date().toISOString().slice(0, 16).replace('T', ' ');
             const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
                         `/actions/runs/${context.runId}`;

@@ -30,7 +30,7 @@ Labels come with `ja` and `zh` from `reports/garborg-name-transliterations.tsv`,
 Emma 2026-08-24: *"we should also be adding their names in languages that are not
 English, or at least in Japanese... and Chinese."*
 
-Writes `reports/wikidata-garborg-day.qs` and `reports/garborg-carry-forward.tsv`.
+Writes `reports/wikidata-garborg-day.txt` and `reports/garborg-carry-forward.tsv`.
 """
 from __future__ import annotations
 
@@ -167,7 +167,7 @@ def ledger():
     # On 2026-08-31 she judged 13 blocked creations to be the same person as an existing
     # Wikidata item, one `AskUserQuestion` each, and asked: *"these quickstatements are gonna be
     # permanent right? Like the geni things aren't a random thing you added that will disappear
-    # next run right"*. They were exactly that — appended to `reports/wikidata-garborg-day.qs`,
+    # next run right"*. They were exactly that — appended to `reports/wikidata-garborg-day.txt`,
     # which this script rewrites from scratch every run. The next regeneration would have
     # silently dropped all 13 and gone back to proposing the creations she had just ruled out.
     #
@@ -1169,7 +1169,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 
     **Only tokens whose item already exists.** A name item this run is creating
     cannot be pointed at, same single-run rule as everybody else, so the rest waits
-    for `reports/wikidata-garborg-name-items.qs` to have been run.
+    for `reports/wikidata-garborg-name-items.txt` to have been run.
 
     QuickStatements takes qualifiers exactly like references, property then value on
     the same line: `LAST<TAB>P735<TAB>Q629347<TAB>P1545<TAB>"1"<TAB>P7452<TAB>Q3409033`.
@@ -4911,7 +4911,7 @@ def main():
     # `FREE_PARENTS_FREE` and `SIBLING_CAP` all live -- it emits **34**. The bare path is not a
     # smaller daily algorithm; it skips the algorithm.
     #
-    # Both write `reports/wikidata-garborg-day.qs`, so a bare run silently replaces a batch Emma
+    # Both write `reports/wikidata-garborg-day.txt`, so a bare run silently replaces a batch Emma
     # may already have run, and `--compose` itself ADVANCES the sequence: it consumes and
     # rewrites `reports/garborg-carry-forward.tsv`, so re-running it on the same day produced a
     # batch differing by 19 people out and 17 in -- the next hop, not today's.
@@ -4921,7 +4921,7 @@ def main():
     if not args.compose and not args.roster:
         sys.exit(
             "refusing an argument-free run: it skips the daily caps (272 creations against 34) "
-            "and overwrites reports/wikidata-garborg-day.qs, which may be a day already run.\n"
+            "and overwrites reports/wikidata-garborg-day.txt, which may be a day already run.\n"
             "  the daily batch:  python scripts/build-daily-batch.py\n"
             "  this script only: --compose (the daily algorithm) or --roster FILE")
 
@@ -6107,7 +6107,7 @@ def main():
 
         # The name model. Emma, 2026-08-24: *"we should be modelling the names
         # properly, which he didn't do."* Only tokens whose item ALREADY exists --
-        # the ones still to be made are in reports/wikidata-garborg-name-items.qs and
+        # the ones still to be made are in reports/wikidata-garborg-name-items.txt and
         # join the batch the day after that runs, same single-run rule as everyone.
         # A redacted profile gets no name statements for the same reason it gets no
         # label: `<private>` is Geni withholding the name, not a name. Asking the plan
@@ -6176,7 +6176,7 @@ def main():
     # Her order, applied at the last moment so neither section's construction has to
     # care: preamble, then the INDIVIDUALS this run creates, then the RELATIONSHIPS
     # between items that already existed. Names are the middle step and live in
-    # `reports/wikidata-garborg-name-items.qs`, run between the two.
+    # `reports/wikidata-garborg-name-items.txt`, run between the two.
     lines = lines[:preamble] + lines[create_from:] + lines[rel_from:create_from]
 
     # **Drop every statement the item already holds, as a POST-PASS.** The check inside
@@ -6289,7 +6289,7 @@ def main():
 
     # ---- NEVER emit the same statement twice in one CREATE block ------------------------
     #
-    # **What produced it, seen 2026-08-30 in `wikidata-garborg-name-items.qs`:** the name-item
+    # **What produced it, seen 2026-08-30 in `wikidata-garborg-name-items.txt`:** the name-item
     # emitter writes one line per *bearer*, and a bearer is a Geni profile. Two Geni profiles
     # resolving to the same Wikidata item therefore write the same statement twice --
     # `Q141216607 P5056 LAST` under the `Erikson` block, whose third "bearer" had no name to
@@ -6434,10 +6434,10 @@ def main():
         lines, clan_block,
         _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table))
 
-    out = ROOT / "reports" / "wikidata-garborg-day.qs"
+    out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first.** Emma, 2026-08-30: *"One file, not two. Names first, then
-    # everything else. Today it is `wikidata-garborg-day.qs` plus
-    # `wikidata-garborg-name-items.qs` and a run order to remember."*
+    # everything else. Today it is `wikidata-garborg-day.txt` plus
+    # `wikidata-garborg-name-items.txt` and a run order to remember."*
     #
     # The two files are the same shape they always were; what changes is that the name items are
     # regenerated in this run and land at the TOP of the day file, so there is no order left to
@@ -6450,7 +6450,7 @@ def main():
     # items that ALREADY exist -- `LAST` names the most recent creation and nothing else, so a
     # person created here cannot reference a name item created here. The ordering is therefore
     # correct rather than load-bearing, and the day after, the link lands.
-    name_file = ROOT / "reports" / "wikidata-garborg-name-items.qs"
+    name_file = ROOT / "reports" / "wikidata-garborg-name-items.txt"
     # **Her identifications go FIRST, before the name items.** Emma, 2026-09-01: *"the
     # pipeline generates 10 quickstatements adding the geni id to the individuals at the
     # beginning of each generation."* A `P2600` on an existing item needs nothing created, so

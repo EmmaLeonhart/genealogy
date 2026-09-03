@@ -1,6 +1,6 @@
 """Would any CREATE in the batch be refused for sharing a label with an existing item?
 
-    python scripts/check-label-collisions.py [--batch reports/wikidata-garborg-day.qs]
+    python scripts/check-label-collisions.py [--batch reports/wikidata-garborg-day.txt]
 
 **Emma's rule, `queue.md` § *Wikidata person descriptions*:**
 
@@ -72,7 +72,7 @@ def creations(path):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--batch", default="reports/wikidata-garborg-day.qs")
+    ap.add_argument("--batch", default="reports/wikidata-garborg-day.txt")
     args = ap.parse_args()
 
     path = ROOT / args.batch

@@ -273,7 +273,7 @@ def main():
     )
     w.append(
         "- **Ulrika von Düben** — `Q130665779` (sv *svensk friherrinna*, b. 1749-01-26, "
-        "d. 1777-01-13) against the item `reports/wikidata-garborg-day.qs` creates for Geni "
+        "d. 1777-01-13) against the item `reports/wikidata-garborg-day.txt` creates for Geni "
         "`6000000009063273551`.\n"
         "    - merge the newly created item **into `Q130665779`** — it is the older and far "
         "better populated one, carrying `P22`, `P25`, `P26`, `P27`, `P40`×2, `P569`, `P570`, "

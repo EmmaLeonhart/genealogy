@@ -41,7 +41,7 @@ day batch is *creating* still cannot be linked here, because `LAST` would then n
 rather than the name item. Those wait for the next run, which is the ordinary carry-forward and
 not a gate.
 
-Writes `reports/wikidata-garborg-name-items.qs`.
+Writes `reports/wikidata-garborg-name-items.txt`.
 """
 from __future__ import annotations
 
@@ -138,7 +138,7 @@ DESCRIPTION_FOR = {
 #: on 2026-08-24: their creations are recorded in `reports/garborg-qids.tsv` and
 #: re-running them would mint duplicates, which
 #: `test_no_two_batches_create_the_same_person` caught.
-BATCHES = ["reports/wikidata-garborg-day.qs"]
+BATCHES = ["reports/wikidata-garborg-day.txt"]
 
 
 def people_in_batches():
@@ -460,7 +460,7 @@ def main():
     qid_to_geni = {q: g for g, q in have.items()}
     lines = annotate(lines, lambda t: labels_of.get(qid_to_geni.get(t, t), ""))
 
-    out = ROOT / "reports" / "wikidata-garborg-name-items.qs"
+    out = ROOT / "reports" / "wikidata-garborg-name-items.txt"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     print(f"\nwrote {out.relative_to(ROOT)}: {lines.count('CREATE')} name items "
           f"(cap {NAME_ITEMS_PER_RUN}, {len(held_back)} carried to a later run), "
