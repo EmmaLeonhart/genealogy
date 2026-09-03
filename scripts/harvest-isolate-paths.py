@@ -110,6 +110,28 @@ UNRESOLVED_RELATION = "relative?"
 #: so a page carrying it is a miss however many segments it has.
 NOT_FOUND_TEXT = "the relationship could not be found"
 
+#: **The THIRD state, and the one that makes this a two-pass campaign — found 2026-09-03.**
+#: Geni does not compute a path while you wait. On first visit the page renders two segments,
+#: `You` and the target marked `(your relative?)`, between them the sentence:
+#:
+#:     Path search in progress. If we find a path, we will notify you.
+#:
+#: The search is QUEUED SERVER-SIDE and the answer arrives later. So a page captured on the
+#: first visit says nothing about connectivity, and counting it as a miss measures our own
+#: impatience. Nine targets were probed this way and every one came back "0 steps" before this
+#: was spotted — a clean, plausible, meaningless zero, which is the
+#: `CLAUDE.md` § *check the separator before believing a distribution* family again.
+PENDING_TEXT = "path search in progress"
+
+
+def pending(html: str) -> bool:
+    """Has Geni queued this search rather than answered it?
+
+    A pending page is neither a hit nor a miss and must be **re-fetched**, not counted. Rolling
+    it into the miss column is what turns a two-pass campaign into a 0% reach rate.
+    """
+    return PENDING_TEXT in (html or "").lower()
+
 
 def chain_found(links, target_id: str, html: str = "") -> bool:
     """Is this page a real chain to `target_id`?
@@ -128,7 +150,7 @@ def chain_found(links, target_id: str, html: str = "") -> bool:
     """
     if len(links) < MIN_STEPS:
         return False
-    if html and NOT_FOUND_TEXT in html.lower():
+    if html and (NOT_FOUND_TEXT in html.lower() or pending(html)):
         return False
     if target_id and target_id not in {l.geni_id for l in links}:
         return False
@@ -192,8 +214,10 @@ def main() -> int:
                 continue
             links, prose, html = read_page(page)
             found = chain_found(links, gid, html)
+            is_pending = pending(html)
             row[f"{kind}_steps"] = len(links)
-            row[f"{kind}_chain"] = "1" if found else "0"
+            # PENDING is not a miss. It is a page to fetch again.
+            row[f"{kind}_chain"] = "1" if found else ("pending" if is_pending else "0")
             row[f"{kind}_description"] = prose
             if found:
                 walked[kind] = {l.geni_id for l in links if l.geni_id}
@@ -226,6 +250,8 @@ def main() -> int:
         rows.append(row)
 
     fetched = [r for r in rows if r["blood_steps"] != "" or r["inlaw_steps"] != ""]
+    still_pending = [r for r in rows
+                     if r.get("blood_chain") == "pending" or r.get("inlaw_chain") == "pending"]
 
     def hit(r, kind):
         # The verdict is `chain_found`'s, recorded when the page was read. Re-deriving it from
@@ -233,7 +259,12 @@ def main() -> int:
         return r.get(f"{kind}_chain") == "1"
 
     for r in rows:
-        r["chain_found"] = "1" if (hit(r, "blood") or hit(r, "inlaw")) else "0"
+        if hit(r, "blood") or hit(r, "inlaw"):
+            r["chain_found"] = "1"
+        elif r.get("blood_chain") == "pending" or r.get("inlaw_chain") == "pending":
+            r["chain_found"] = "pending"
+        else:
+            r["chain_found"] = "0"
 
     results.parent.mkdir(parents=True, exist_ok=True)
     tmp = results.with_suffix(".tsv.tmp")
@@ -252,15 +283,27 @@ def main() -> int:
 
     print(f"targets in roster : {len(rows)}", file=sys.stderr)
     print(f"pages fetched     : {len(fetched)}", file=sys.stderr)
+    if still_pending:
+        print(f"PENDING re-fetch  : {len(still_pending)}   <- Geni queued the search; NOT a miss",
+              file=sys.stderr)
     if not fetched:
         print("nothing fetched yet --- no hit rate to report", file=sys.stderr)
         return 0
 
-    found = sum(1 for r in fetched if r["chain_found"] == "1")
-    print(f"chain found (either): {found}/{len(fetched)} = {found / len(fetched):.0%}"
-          "   <- a miss is NO CHAIN RETURNED, never 'unrelated'", file=sys.stderr)
+    # **The denominator is RESOLVED pages, never fetched ones.** A page Geni has queued has not
+    # answered, so dividing by it reports our own impatience as a reach rate --- the first run
+    # of this said "0/5 = 0%" when four of the five were still searching.
+    resolved = [r for r in fetched if r["chain_found"] != "pending"]
+    if not resolved:
+        print("every page fetched is still PENDING --- no rate yet, re-fetch them", file=sys.stderr)
+        return 0
+
+    found = sum(1 for r in resolved if r["chain_found"] == "1")
+    print(f"chain found (either): {found}/{len(resolved)} = {found / len(resolved):.0%}"
+          "   <- of RESOLVED pages; a miss is NO CHAIN RETURNED, never 'unrelated'",
+          file=sys.stderr)
     for kind in PATH_TYPES:
-        tried = [r for r in fetched if r[f"{kind}_steps"] != ""]
+        tried = [r for r in resolved if r[f"{kind}_steps"] != ""]
         if tried:
             h = sum(1 for r in tried if hit(r, kind))
             print(f"  {kind:<6}          : {h}/{len(tried)} = {h / len(tried):.0%}", file=sys.stderr)

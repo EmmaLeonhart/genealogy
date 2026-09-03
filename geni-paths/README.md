@@ -104,6 +104,41 @@ selection. Read it as `chain_found=0` and never as *unrelated*, per the harveste
 the URL form that does not work; whichever chain the page opens with is what the capture holds,
 and the type must be recorded from the page rather than assumed from a URL.
 
+## ⛔ THE SEARCH IS ASYNCHRONOUS. This is a TWO-PASS campaign — found 2026-09-03
+
+**Geni does not compute the path while you wait.** On the first visit to a target the page
+renders two segments and this sentence between them:
+
+    You  →  Path search in progress. If we find a path, we will notify you.
+            Joseph-Massé Gravel dit Brindelière (your relative?)
+
+`(your relative?)` is not a relationship. It is the placeholder on a search that has been
+**queued server-side**, and the answer arrives later.
+
+**Nine targets were probed before this was spotted and every one returned "0 steps".** A clean,
+plausible, meaningless zero — the same shape as every other instrument in `CLAUDE.md`
+§ *check the separator before believing a distribution*. Clicking *"How are you related?"* and
+polling for 45 seconds did not resolve it either; the page still said *in progress*.
+
+**So a first-visit capture measures our own impatience, not connectivity**, and PENDING is a
+third state that must never be folded into the miss column:
+
+| page says | state | what to do |
+| --- | --- | --- |
+| a chain naming the target | **hit** | parse it |
+| *"the relationship could not be found"* | **miss** | record `chain_found=0` |
+| *"path search in progress"* | **pending** | **fetch it again later** |
+
+`harvest-isolate-paths.py` now carries `PENDING_TEXT` and a `pending()` test, reports a
+`PENDING re-fetch` count, and — the part that matters — **divides the reach rate by RESOLVED
+pages only**. Its first run said `0/5 = 0%` when four of the five were still searching.
+
+**What this does to the 185,327-target campaign**: it is two passes with a delay between them,
+not one. Pass one *requests* every search; pass two collects. The delay is unmeasured — the one
+target watched for 45 seconds had not finished — and the sentence promises a notification, so
+the notification feed may be the cheaper collector than re-visiting 185,327 profiles. **Neither
+is established and this needs her.**
+
 ## How to save
 
 The blob capture `geni-scraping/README.md` describes — a download of the page's own
