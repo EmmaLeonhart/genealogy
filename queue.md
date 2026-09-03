@@ -21,15 +21,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   eccentric points, the same one § *"Not related to" does NOT mean not related* uses. Do not
   start it early and do not invent the gate's threshold — that is hers.
 
-- **Build the Ethiopian and Japanese emperor rosters from Wikidata.** Her call, 2026-09-03, asked
-  how to source them: *"Build from Wikidata later."* Both are entry-point groups dated 2027-01-01
-  in `reports/entry-point-groups.tsv` and both currently resolve to **0** people, because nothing
-  in the repo enumerates either. Needs a session with network access — Wikidata is blocked from
-  the remote one. Query the holders of each position, join to Geni ids through `P2600`, write
-  `reports/ethiopian-emperors.tsv` and `reports/japanese-emperors.tsv` with `qid` and `geni_ids`
-  columns, then point the two group rows at them. Do **not** pick either list out by label: the 52
-  tree labels matching Ethiopia/Negus are the surname *Neguse*, which is what that would catch.
-
 - **Study the behaviour of the Wikidata user `Anvilaquarius`.** Emma, 2026-09-03: *"Anvilaquarius
   is a user I want to study the behaviour of."* Then, pointing at a pastebin on her screen:
   *"Actually just this pastebin it"* — **<https://pastebin.com/v4UcMx36>**, which is the material

@@ -26587,3 +26587,69 @@ are the surname *Neguse*.
 
 Group state: tanba 179, izumo-senge-kitajima 111, samaritan-high-priests 25,
 special-geni-gedcom-recognition 4, and three at 0 — 319 distinct QIDs live on 2027-01-01.
+
+## 2026-09-03 — the emperor rosters, and the path URL that scores every miss as a hit
+
+**Merged the remote session's branch as PR #15**, CI green on 3.10 and 3.13 (17m11s / 16m36s).
+Twelve commits: the sibling-step ruling, residual capture, entry points on an `active_from`
+date, the eccentricity measurement over all 1,451,964 people, and four new queue items. All
+seven open GitHub issues closed at her instruction — *"resolve all issues on github since they
+are all resolved at this point"*.
+
+**§ *Build the Ethiopian and Japanese emperor rosters from Wikidata* — DONE.** Her call when
+asked how to source them: *"Build from Wikidata later."* Both groups resolved to **0** because
+nothing in the repo enumerated either.
+
+`scripts/build-emperor-rosters.py` queries the holders of a **position**, never a label —
+`?p wdt:P39 wd:<position>`. The two positions were confirmed with `wbsearchentities` rather
+than guessed, per § *Do not guess these*:
+
+| position | label |
+| --- | --- |
+| `Q10962705` | *Emperor of Ethiopia* |
+| `Q208233` | *Emperor of Japan* |
+
+    ethiopian-emperors:  98 holders, 13 with a Geni id
+    japanese-emperors:  128 holders, 35 with a Geni id (34 live P2600, 1 from her Geni bio links)
+
+`reports/entry-point-groups.tsv` now points at both files, and `group_status()` reads 98 and 128
+where it read `NO ROSTER`. They stay `PENDING` — 2027-01-01 is her date.
+
+**A `store 0` that was a parse artifact, then wasn't.** `out/wikidata/p2600-all.tsv` has **no
+header** — its first line is data — and reading it with a header-consuming reader ate `Q1000005`
+and fell through to positional indices that happened to be right. Fixed, then measured properly:
+48 roster QIDs appear in the snapshot, all 48 already answered by the live query, and **0** of the
+178 blanks could be filled from it. So the zero is real. It printed the same number before and
+after the fix, which is exactly why the fix had to be measured rather than assumed.
+
+## 2026-09-03 — the `/path/` URL ignores `to=`, and the miss page looks like a hit
+
+**Fetched from her own logged-in Chrome. The URL form in `geni-paths/README.md` does not work.**
+
+    /path/x?from=6000000002457013227&path_type=blood&to=6000000004051490175
+      -> redirects to /people/Charlemagne/6000000002457013227
+      -> "The relationship could not be found."
+      -> #relation_description: "Charlemagne is your 35th great grandfather."
+
+The page that comes back is **Charlemagne's profile showing his relationship to the logged-in
+viewer**. The target is not on it. Four probes, two targets, both path types, all identical.
+
+**The dangerous part is that the miss page renders 38 `span.segment > span.name` anchors** —
+the viewer's own chain — and `harvest-isolate-paths.py` discriminates on parsed step count. Run
+as written the pilot would have reported a **100% reach rate** made of 100 identical copies of
+the Charlemagne→Emma path. The script's docstring anticipates the opposite failure, *"a run
+reporting 0 steps on every page means the markup differs"*; this one produces a plausible number
+instead of a zero, which is the § *check the separator before believing a distribution* family.
+
+Two guards are now written into the README as mandatory and are **not yet in the script**: the
+body must not say *"The relationship could not be found"*, and the target's own Geni id must
+appear among the parsed step ids (`targetPresent` was `false` on every probe).
+
+**What produced the 663 existing paths was a profile page, not a `/path/` URL** — `geni_pages/`
+holds `Geni - <Name>.html`. `toggleRelationshipAnchor('6000000002457013227')` exists on
+Charlemagne's page and raised no error, but the next target's profile then carried no
+`#relation_description` at all. Whether the anchor failed to set or that target computes nothing
+is **not established**, and guessing further at Geni's URL scheme is where the rabbit-hole rule
+says to stop. Put to her.
+
+**Nothing was fetched in bulk.** The pilot queue item stays; only its method is now corrected.

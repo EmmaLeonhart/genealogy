@@ -36,6 +36,45 @@ for paths fetched from here on, and nothing about it retires an existing one.
 `reports/isolate-path-pilot-urls.txt` is the fetch list; `reports/isolate-path-pilot.tsv`
 is the same thing with the qid and label beside it.
 
+## ⛔ THE `/path/` URL DOES NOT WORK AS WRITTEN ABOVE — measured 2026-09-03
+
+**The `to=` parameter is ignored.** Fetched from her own logged-in Chrome, all four probe
+requests behaved the same way:
+
+    https://www.geni.com/path/x?from=6000000002457013227&path_type=blood&to=6000000004051490175
+      -> redirects to https://www.geni.com/people/Charlemagne/6000000002457013227
+      -> body carries "The relationship could not be found."
+      -> and `#relation_description` reads "Charlemagne is your 35th great grandfather."
+
+So the page that comes back is **Charlemagne's profile showing his relationship to the
+logged-in viewer**, which is Emma. The requested target appears nowhere on it.
+
+**⚠ The dangerous part is that this page looks like a HIT.** It renders **38** anchors inside
+`span.segment > span.name` — the viewer's own 38-step chain to Charlemagne. `harvest-isolate-paths.py`
+discriminates on the parsed step count (`MIN_STEPS`), so it would score every miss as a hit and
+report a **100% reach rate** made of 100 identical copies of the Charlemagne→Emma path. Its
+docstring anticipates the opposite failure — *"a run reporting 0 steps on every page means the
+markup differs"* — and this is the one that produces a plausible number instead of a zero.
+`CLAUDE.md` § *check the separator before believing a distribution* is the family.
+
+**Two guards are therefore mandatory before any harvest of these pages**, and neither is in
+the script yet:
+
+- the body must not contain *"The relationship could not be found"*; and
+- the **target's own Geni id must appear among the parsed step ids**. On the probes the chain
+  ran `6000000087535357291 … 6000000002457013227` and `targetPresent` was `false`.
+
+**What produced the 663 existing paths was a PROFILE page, not a `/path/` URL.** `geni_pages/`
+holds `Geni - <Name>.html` — profile saves — which is what `CLAUDE.md` § *Relationship paths:
+save the page, never the pasted text* describes. The relationship panel lives on the profile.
+
+**The anchor route is UNRESOLVED and is the open question.** `toggleRelationshipAnchor('6000000002457013227')`
+does exist on Charlemagne's page and calling it raised no error, but the next target's profile
+(`6000000174444394081`, bishop Camillo Ballin) then carried **no `#relation_description` at all**
+and no occurrence of the word *relationship* anywhere in its text. Whether the anchor failed to
+set, needs a different call, or that target genuinely computes nothing is not established, and
+guessing further at Geni's URL scheme is what the rabbit-hole rule stops. **This needs her.**
+
 ## How to save
 
 The blob capture `geni-scraping/README.md` describes — a download of the page's own
