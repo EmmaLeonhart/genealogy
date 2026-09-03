@@ -6,7 +6,8 @@ browser fetches them; this one reads what came back.
 **A hit** renders the relationship pathway --- anchors inside ``span.segment > span.name``,
 which `genimerge.genipage` already parses and which `paths/isolate-geni-*.tsv` was built from.
 The discriminator is the parsed step count, and the threshold is deliberate: a page yielding
-fewer than `MIN_STEPS` rows carries no chain, because the `from` profile alone is a segment.
+fewer than `MIN_STEPS` rows carries no chain --- but the count alone is NOT the discriminator
+and scoring on it reported the first real page as a 100% hit. See `chain_found`.
 
 **A MISS IS NOT A STATEMENT THAT THE TWO ARE UNRELATED --- Emma, 2026-09-03:** *"not related
 to is not actually a statement that the person is not related. It superficially appears that
@@ -87,13 +88,54 @@ PILOT = REPO / "reports" / "isolate-path-pilot.tsv"
 RESULTS = REPO / "reports" / "isolate-path-pilot-results.tsv"
 PATH_TYPES = ("blood", "inlaw")
 
-# `from` and `to` are both segments on a rendered path, so two rows is the shortest real chain
-# and anything under that is Geni returning none. **Returning none is not the same as there
-# being none** --- see the docstring; a query timeout renders identically.
-MIN_STEPS = 2
+# **MEASURED 2026-09-03, and it was 2 until the first real page arrived.** The reasoning for 2
+# was that `from` and `to` are both segments, so two rows is the shortest real chain. Geni does
+# not behave that way: on a target it has NOT resolved it still renders both endpoints, with the
+# relation word `his relative?` between them. The first page fetched --- `2205409`, Raymond
+# Impanis --- came back exactly like that, and this script scored it **1/1 = 100%**.
+#
+#     PathLink(geni_id='6000000002457013227', name='Charlemagne', relation='')
+#     PathLink(geni_id='2205409',             name='Raymond Impanis', relation='his relative?')
+#
+# So two rows is the MISS shape, not the shortest hit. A real chain names somebody in between.
+MIN_STEPS = 3
+
+#: Geni's own marker for *I did not resolve this*. It appears as the relation word on the target
+#: segment of an unresolved page, so it is a positive signal of a miss rather than an inference
+#: from a count --- which is what makes it safe to trust over the step total.
+UNRESOLVED_RELATION = "relative?"
+
+#: The body text Geni writes when the pair does not resolve. `geni-paths/README.md` records the
+#: probe: the page still renders a full chain --- the VIEWER's own --- alongside this sentence,
+#: so a page carrying it is a miss however many segments it has.
+NOT_FOUND_TEXT = "the relationship could not be found"
 
 
-def read_page(p: Path) -> tuple[list, str]:
+def chain_found(links, target_id: str, html: str = "") -> bool:
+    """Is this page a real chain to `target_id`?
+
+    **Three guards, because the step count alone scored every miss as a hit.** Two of them
+    come from `geni-paths/README.md`, written after four probes from her own browser:
+
+    - the body must not carry `NOT_FOUND_TEXT`;
+    - the **target's own Geni id** must be among the parsed steps --- on the failing probes the
+      chain ran to `6000000002457013227` and the target appeared nowhere on it;
+    - no step may carry `UNRESOLVED_RELATION`, which is Geni saying it did not resolve.
+
+    `CLAUDE.md` § *check the separator before believing a distribution*: an instrument that
+    quietly narrows its input and reports a clean number about itself. A 100% reach rate made
+    of 100 copies of one path is exactly that number.
+    """
+    if len(links) < MIN_STEPS:
+        return False
+    if html and NOT_FOUND_TEXT in html.lower():
+        return False
+    if target_id and target_id not in {l.geni_id for l in links}:
+        return False
+    return not any(UNRESOLVED_RELATION in (l.relation or "").lower() for l in links)
+
+
+def read_page(p: Path) -> tuple[list, str, str]:
     """The parsed steps AND Geni's own prose summary --- the residual the steps drop.
 
     **Emma, 2026-09-03:** *"we need to grab residuals all the time."* The prose keeps
@@ -103,7 +145,9 @@ def read_page(p: Path) -> tuple[list, str]:
     """
     raw = p.read_text(encoding="utf-8", errors="replace")
     html = genipage.html_of_saved_page(raw)
-    return genipage.parse_relationship_path(html), genipage.relation_description(html)
+    # The HTML comes back too, because `chain_found` needs the body text: a page carrying
+    # "the relationship could not be found" is a miss whatever its segments say.
+    return genipage.parse_relationship_path(html), genipage.relation_description(html), html
 
 
 def main() -> int:
@@ -143,14 +187,17 @@ def main() -> int:
             page = next((c for c in candidates if c.exists()), None)
             if page is None:
                 row[f"{kind}_steps"] = ""
+                row[f"{kind}_chain"] = ""
                 row[f"{kind}_description"] = ""
                 continue
-            links, prose = read_page(page)
+            links, prose, html = read_page(page)
+            found = chain_found(links, gid, html)
             row[f"{kind}_steps"] = len(links)
+            row[f"{kind}_chain"] = "1" if found else "0"
             row[f"{kind}_description"] = prose
-            if len(links) >= MIN_STEPS:
+            if found:
                 walked[kind] = {l.geni_id for l in links if l.geni_id}
-            if args.write_paths and len(links) >= MIN_STEPS:
+            if args.write_paths and found:
                 out = REPO / "paths" / f"isolate-{qid.lower()}-{kind}.tsv"
                 header = (
                     f"# Geni relationship path to {t['label'] or qid} ({kind})\n"
@@ -181,8 +228,9 @@ def main() -> int:
     fetched = [r for r in rows if r["blood_steps"] != "" or r["inlaw_steps"] != ""]
 
     def hit(r, kind):
-        v = r[f"{kind}_steps"]
-        return v != "" and v >= MIN_STEPS
+        # The verdict is `chain_found`'s, recorded when the page was read. Re-deriving it from
+        # the step count here is what scored the first fetched page as a 100% hit.
+        return r.get(f"{kind}_chain") == "1"
 
     for r in rows:
         r["chain_found"] = "1" if (hit(r, "blood") or hit(r, "inlaw")) else "0"
@@ -191,7 +239,7 @@ def main() -> int:
     tmp = results.with_suffix(".tsv.tmp")
     cols = [
         "qid", "geni_id", "label", "in_nordic_roster",
-        "blood_steps", "inlaw_steps", "chain_found",
+        "blood_steps", "inlaw_steps", "blood_chain", "inlaw_chain", "chain_found",
         "people_union", "inlaw_only_people", "people_new",
         "blood_description", "inlaw_description",
     ]
