@@ -27,9 +27,11 @@ pinning is Geni's own pushpin — the saved pages carry
 `toggleRelationshipAnchor(<id>)` with the tooltip *"Click this push pin to find relationships
 from this profile to other profiles"* — and `from=` is how the anchor is expressed in the URL.
 
-The 663 existing paths in `paths/isolate-geni-*.tsv` are anchored on **Emma** instead, because
-they were saved from her own profile view. They stay as evidence of what Geni said; they
-answer a different question from the ones fetched under this anchor.
+**The anchor applies to NEW paths only.** Emma, 2026-09-03: *"a bunch of the paths are from an
+individual to me, and that's 100% fine and they are to be filled in I just mean new ones."* So
+the 663 Emma-anchored paths in `paths/isolate-geni-*.tsv` are **live work**, not a superseded
+dataset — they get filled in exactly as they always were. Charlemagne is where the anchor sits
+for paths fetched from here on, and nothing about it retires an existing one.
 
 `reports/isolate-path-pilot-urls.txt` is the fetch list; `reports/isolate-path-pilot.tsv`
 is the same thing with the qid and label beside it.

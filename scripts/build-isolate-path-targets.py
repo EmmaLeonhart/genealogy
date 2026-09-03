@@ -31,11 +31,11 @@ The slug between `/path/` and `?` is cosmetic. So no profile page load and no ex
 a blob-saved profile page carries only 3 `span.segment` anchors (the collapsed *You -> X*),
 against 118 on a saved path page, which is why the profile-page capture cannot be reused here.
 
-**`FROM` is Charlemagne, and the 663 existing paths do NOT follow this rule.** Every one of
-them is anchored on Emma (`6000000087535357291`, step 1 "You" on 679 saved paths) because they
-were saved from her own profile view. Her 2026-09-03 correction moves the anchor to Charlemagne
-for everything new. The old paths stay --- they are evidence of what Geni said --- but they
-answer a different question.
+**`FROM` is Charlemagne, and that governs NEW paths only.** The 663 existing paths are anchored
+on Emma (`6000000087535357291`, step 1 "You" on 679 saved paths) because they were saved from
+her own profile view, and they stay **live work**. Emma, 2026-09-03: *"a bunch of the paths are
+from an individual to me, and that's 100% fine and they are to be filled in I just mean new
+ones."* Nothing here retires an Emma-anchored path or changes how one is filled in.
 
 **Both path types, always --- Emma's call, 2026-09-02.** `blood` follows descent only;
 `inlaw` allows marriage steps and reaches people no blood path can. Two fetches per target.

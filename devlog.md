@@ -26330,3 +26330,13 @@ The structural fallback is our own tree: a half-sibling shares one parent and a 
 two, which `derived-family.csv` resolves — when both parents are held.
 
 Recorded on the sibling-placeholder queue item, since it bounds what a placeholder can assert.
+
+## 2026-09-03 — the Charlemagne anchor governs NEW paths only
+
+**Emma, correcting how the previous entry read:** *"a bunch of the paths are from an individual
+to me, and that's 100% fine and they are to be filled in I just mean new ones."*
+
+The code was already right — the roster builder sets the anchor for what it fetches and touches
+nothing existing — but the prose in `geni-paths/README.md` and the script docstring said the 663
+Emma-anchored paths *"answer a different question"*, which reads as retiring them. They are live
+work and get filled in as they always were. Wording fixed in both places; no behaviour changed.
