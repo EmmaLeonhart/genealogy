@@ -26282,3 +26282,51 @@ every person on two already-harvested paths is held. `--roster` and `--results` 
 make that runnable without touching the committed roster.
 
 Still not run against a real `/path/` page: Geni is unreachable from this session.
+
+## 2026-09-03 — anchor moved to Charlemagne; "not related to" is not a finding
+
+**Emma corrected the anchor:** *"you may have implied that it was relationships to me, but it
+shouldn't be relationships to me. I believe Charlemagne is the most central person in the Jenny
+graph, so it would be going through Charlemagne. We pin relationships to Charlemagne, and we go
+to each individual."*
+
+`FROM` in `build-isolate-path-targets.py` is now `6000000002457013227` — `Q3044` Charlemagne,
+and step 34 of `paths/charlemagne-to-arne-garborg.tsv`. The pinning is Geni's own pushpin: the
+saved pages carry `toggleRelationshipAnchor(<id>)` with the tooltip *"Click this push pin to
+find relationships from this profile to other profiles"*, and `from=` is that anchor in the URL.
+Roster regenerated; the 663 existing paths stay Emma-anchored and answer a different question.
+
+**And a correction with teeth: a blank path is not a statement of non-relationship.** Her
+words: *"not related to is not actually a statement that the person is not related… It
+sometimes gives a not related to from a query timeout."* The harvester said the opposite in
+prose and called the column `reached`. Renamed to `chain_found`, and the docstring now carries
+her reading — a timeout *"usually indicates that the person is very eccentric on the World Tree
+graph"*, and there are *"plenty of people that have verifiable relationships but which it does
+not show up for"*. The route for those, high-value targets only: seed individual from their
+ancestry, `Forest` export, and *"if the forest export returns five thousand people, then they
+generally are connected"* — in an odd cluster rather than off the graph.
+
+## 2026-09-03 — does the path vocabulary discriminate half-siblings and ex-spouses?
+
+Her question. Measured over **30,329 relation steps in 696 path files**, 38 distinct words.
+
+**Ex-spouses: yes, explicitly.** `her ex-husband` 52, `his ex-wife` 42, `her ex-partner` 42,
+`his ex-partner` 28 — against `her husband` 934, `his wife` 908, `her partner` 22, `his partner`
+21. Engagement too: `his fiancée` 14, `her fiancé` 7. Adoption and fostering as well:
+`her adoptive mother` 187, `her adopted son` 13, `his foster father` 2.
+
+**Half-siblings: no.** `her brother` 581, `her sister` 536, `his sister` 522, `his brother` 486,
+and **zero** occurrences of any `half` form in the relation column.
+
+**Geni has the word; the path panel does not use it.** `Half brother`/`Half sister` occurs 325
+times across the saved pages — in the **immediate-family** block (*"Half brother of <a…>"*),
+which is what `geni-scraping/` parses, and in the prose `relation_description` sentence: one
+in-law page reads *"…partner's son's wife's ex-husband's half sister's ex-husband's second
+cousin twice removed's wife's father."* So the distinction is on the page we already save, in an
+element `genimerge.genipage` drops, and the per-step `span.segment` word flattens it to
+`his brother`.
+
+The structural fallback is our own tree: a half-sibling shares one parent and a full sibling
+two, which `derived-family.csv` resolves — when both parents are held.
+
+Recorded on the sibling-placeholder queue item, since it bounds what a placeholder can assert.

@@ -14,13 +14,22 @@ its neighbourhood. That chain is the sinew.
 The path is a **URL**, not a page save with a click. Both types per target, her call:
 
 ```
-https://www.geni.com/path/x?from=6000000087535357291&path_type=blood&to=<geni id>
-https://www.geni.com/path/x?from=6000000087535357291&path_type=inlaw&to=<geni id>
+https://www.geni.com/path/x?from=6000000002457013227&path_type=blood&to=<geni id>
+https://www.geni.com/path/x?from=6000000002457013227&path_type=inlaw&to=<geni id>
 ```
 
-The slug between `/path/` and `?` is cosmetic. `from` is **Emma Himiko Leonhart**
-(`Q140568870`) — measured as step 1 "You" on 679 saved paths, not taken from a constant.
-`scripts/build-path-to-wikidata-report.py` carries a different id, and it is Empress Jingū.
+The slug between `/path/` and `?` is cosmetic.
+
+**`from` is CHARLEMAGNE** — `6000000002457013227`, `Q3044`. Emma, 2026-09-03: *"I believe
+Charlemagne is the most central person in the Jenny graph, so it would be going through
+Charlemagne. We pin relationships to Charlemagne, and we go to each individual."* That
+pinning is Geni's own pushpin — the saved pages carry
+`toggleRelationshipAnchor(<id>)` with the tooltip *"Click this push pin to find relationships
+from this profile to other profiles"* — and `from=` is how the anchor is expressed in the URL.
+
+The 663 existing paths in `paths/isolate-geni-*.tsv` are anchored on **Emma** instead, because
+they were saved from her own profile view. They stay as evidence of what Geni said; they
+answer a different question from the ones fetched under this anchor.
 
 `reports/isolate-path-pilot-urls.txt` is the fetch list; `reports/isolate-path-pilot.tsv`
 is the same thing with the qid and label beside it.
@@ -45,9 +54,36 @@ why the pilot runs first.
 python scripts/harvest-isolate-paths.py --write-paths
 ```
 
-→ `reports/isolate-path-pilot-results.tsv` and the hit rate. Her own batches ran **34–39%**
-for occupation-filtered academics and **92%** for Nordic ones; where a uniform sample lands
-decides whether the full campaign is worth its request budget.
+→ `reports/isolate-path-pilot-results.tsv`. Her own batches ran **34–39%** for
+occupation-filtered academics and **92%** for Nordic ones; where a uniform sample lands decides
+whether the full campaign is worth its request budget.
+
+## "Not related to" does NOT mean not related
+
+**Emma, 2026-09-03:** *"not related to is not actually a statement that the person is not
+related. It superficially appears that way, but it is not that way. It sometimes gives a not
+related to from a query timeout."*
+
+So the column is `chain_found`, never `reached` and never `related`. A blank chain measures
+Geni's query budget, not Geni's content — reading it otherwise is the `CLAUDE.md` § *"Is X
+present?"* failure in a new costume.
+
+**The timeout carries information the other way.** It *"usually indicates that the person is
+very eccentric on the World Tree graph"*, and there are *"plenty of people that have verifiable
+relationships but which it does not show up for."*
+
+**The route for those, for high-value targets only because it is slow.** Build a seed
+individual from the person's ancestry per `docs/export-seed-rules.md`, run a `Forest` export,
+read the size: *"if the forest export returns five thousand people, then they generally are
+connected"* — in an odd cluster rather than off the graph. Random `Forest` sampling on
+high-eccentricity individuals, biased toward earlier generations, then reliably joins them.
+
+## Blood vs in-law is non-intuitive
+
+Geni offers one type first and the option of the other, *"which I think sometimes it hears,
+sometimes doesn't"*, with a transaction timeout that behaves oddly. Both types are fetched per
+target regardless — her call, 2026-09-02 — so the control flow does not have to be got right
+to get the data.
 
 ## Not `geni_pages/`, not `geni-scraping/`
 

@@ -31,10 +31,11 @@ The slug between `/path/` and `?` is cosmetic. So no profile page load and no ex
 a blob-saved profile page carries only 3 `span.segment` anchors (the collapsed *You -> X*),
 against 118 on a saved path page, which is why the profile-page capture cannot be reused here.
 
-**`FROM` is measured, not taken from a constant.** `6000000087535357291` is Emma Himiko
-Leonhart (`Q140568870`) and is step 1 "You" on 679 of the saved paths.
-`scripts/build-path-to-wikidata-report.py` carries `EMMA = "6000000001846508982"`, which is
-**Empress Jingu** --- a different profile, and the wrong end for a relationship path.
+**`FROM` is Charlemagne, and the 663 existing paths do NOT follow this rule.** Every one of
+them is anchored on Emma (`6000000087535357291`, step 1 "You" on 679 saved paths) because they
+were saved from her own profile view. Her 2026-09-03 correction moves the anchor to Charlemagne
+for everything new. The old paths stay --- they are evidence of what Geni said --- but they
+answer a different question.
 
 **Both path types, always --- Emma's call, 2026-09-02.** `blood` follows descent only;
 `inlaw` allows marriage steps and reaches people no blood path can. Two fetches per target.
@@ -70,7 +71,15 @@ REPO = Path(__file__).resolve().parent.parent
 
 csv.field_size_limit(10_000_000)
 
-FROM = "6000000087535357291"
+# **The anchor is CHARLEMAGNE, not Emma --- her correction, 2026-09-03:** *"I believe
+# Charlemagne is the most central person in the Jenny graph, so it would be going through
+# Charlemagne. We pin relationships to Charlemagne, and we go to each individual."* An
+# Emma-anchored path measures distance from her; a Charlemagne-anchored one runs through the
+# densest part of the World Tree, which is where the surface area is.
+#
+# `6000000002457013227` is `Q3044` Charlemagne in `reports/derived-labels.csv`, and is step 34
+# --- the far end --- of `paths/charlemagne-to-arne-garborg.tsv`.
+FROM = "6000000002457013227"
 PATH_URL = "https://www.geni.com/path/x?from={frm}&path_type={kind}&to={to}"
 PATH_TYPES = ("blood", "inlaw")
 

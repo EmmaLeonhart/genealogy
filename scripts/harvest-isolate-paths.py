@@ -3,16 +3,33 @@
 The other half of `scripts/build-isolate-path-targets.py`. That one writes the URLs; the
 browser fetches them; this one reads what came back.
 
-**What a hit and a miss look like.** A hit renders the relationship pathway --- anchors
-inside ``span.segment > span.name``, which `genimerge.genipage` already parses and which
-`paths/isolate-geni-*.tsv` was built from. A miss is Geni saying the two profiles are not
-connected, and it carries **no segments at all**. So the discriminator is the parsed step
-count, and the threshold is deliberate: a page yielding fewer than `MIN_STEPS` rows is a
-miss rather than a one-step path, because the `from` profile alone is a segment on both.
+**A hit** renders the relationship pathway --- anchors inside ``span.segment > span.name``,
+which `genimerge.genipage` already parses and which `paths/isolate-geni-*.tsv` was built from.
+The discriminator is the parsed step count, and the threshold is deliberate: a page yielding
+fewer than `MIN_STEPS` rows carries no chain, because the `from` profile alone is a segment.
 
-**The hit rate is the whole point of the pilot.** Emma's own batches ran **34-39%** for
-academics filtered by occupation and **92%** for Nordic academics, so where the general
-population lands decides whether a 185,327-target campaign is worth its request budget.
+**A MISS IS NOT A STATEMENT THAT THE TWO ARE UNRELATED --- Emma, 2026-09-03:** *"not related
+to is not actually a statement that the person is not related. It superficially appears that
+way, but it is not that way. It sometimes gives a not related to from a query timeout."* So
+`no_chain` is what the column means and what it is named. Reading it as *unrelated* is a
+`CLAUDE.md` § *"Is X present?"* failure in a new costume: it measures Geni's query budget and
+reports it as Geni's content.
+
+**And the timeout is informative in the other direction.** Her reading: a timeout *"usually
+indicates that the person is very eccentric on the World Tree graph"* --- so a `no_chain` is
+weak evidence the target sits somewhere sparse, not evidence they are unreachable. There are
+*"plenty of people that have verifiable relationships but which it does not show up for."*
+
+**The route for those, and it is expensive so it is for high-value targets only.** Build a
+seed individual from the person's ancestry per `docs/export-seed-rules.md`, run a `Forest`
+export, and read the size: *"if the forest export returns five thousand people, then they
+generally are connected"* --- in an odd cluster rather than off the graph. Random `Forest`
+sampling on high-eccentricity individuals, biased toward earlier generations, then reliably
+joins them to the World Tree. Time-consuming, *"but it is very possible."*
+
+**The rate the pilot measures is therefore a REACH rate, not a connectivity rate.** Emma's own
+batches ran **34-39%** for academics filtered by occupation and **92%** for Nordic academics.
+What it decides is the request budget for a 185,327-target campaign, not who is related.
 
 **Both path types, always --- Emma, 2026-09-02.** `blood` follows descent only; `inlaw`
 allows marriage steps and reaches people no blood path can.
@@ -21,7 +38,7 @@ allows marriage steps and reaches people no blood path can.
 gives a more diverse set of connections. More places to add more people onto."* So a target
 the two types both reach is **not** a duplicate fetch: the second chain runs through
 different people, and every one of them is another place to hang a creation on. Counting
-targets reached would score that second chain at zero.
+targets with a chain would score that second chain at zero.
 
 Hence three people-columns beside the per-type step counts: `people_union` (distinct people
 the pair names), `inlaw_only_people` (what the second fetch buys that the first did not), and
@@ -70,8 +87,9 @@ PILOT = REPO / "reports" / "isolate-path-pilot.tsv"
 RESULTS = REPO / "reports" / "isolate-path-pilot-results.tsv"
 PATH_TYPES = ("blood", "inlaw")
 
-# `from` and `to` are both segments on a rendered path, so two rows is the shortest real
-# path and anything under that is Geni reporting no connection.
+# `from` and `to` are both segments on a rendered path, so two rows is the shortest real chain
+# and anything under that is Geni returning none. **Returning none is not the same as there
+# being none** --- see the docstring; a query timeout renders identically.
 MIN_STEPS = 2
 
 
@@ -134,7 +152,7 @@ def main() -> int:
 
         # **The union is the quantity, not reachability --- Emma, 2026-09-03:** *"Both helps as
         # it gives a more diverse set of connections. More places to add more people onto."* So a
-        # target reached by both types is not a duplicate: the second chain is more surface to
+        # target with a chain of both types is not a duplicate: the second chain is more surface to
         # hang people on, and `inlaw_only_people` is what the second fetch actually buys.
         blood, inlaw = walked.get("blood", set()), walked.get("inlaw", set())
         union = blood | inlaw
@@ -153,13 +171,13 @@ def main() -> int:
         return v != "" and v >= MIN_STEPS
 
     for r in rows:
-        r["reached"] = "1" if (hit(r, "blood") or hit(r, "inlaw")) else "0"
+        r["chain_found"] = "1" if (hit(r, "blood") or hit(r, "inlaw")) else "0"
 
     results.parent.mkdir(parents=True, exist_ok=True)
     tmp = results.with_suffix(".tsv.tmp")
     cols = [
         "qid", "geni_id", "label", "in_nordic_roster",
-        "blood_steps", "inlaw_steps", "reached",
+        "blood_steps", "inlaw_steps", "chain_found",
         "people_union", "inlaw_only_people", "people_new",
     ]
     with open(tmp, "w", encoding="utf-8", newline="") as fh:
@@ -175,15 +193,16 @@ def main() -> int:
         print("nothing fetched yet --- no hit rate to report", file=sys.stderr)
         return 0
 
-    reached = sum(1 for r in fetched if r["reached"] == "1")
-    print(f"reached (either)  : {reached}/{len(fetched)} = {reached / len(fetched):.0%}", file=sys.stderr)
+    found = sum(1 for r in fetched if r["chain_found"] == "1")
+    print(f"chain found (either): {found}/{len(fetched)} = {found / len(fetched):.0%}"
+          "   <- a miss is NO CHAIN RETURNED, never 'unrelated'", file=sys.stderr)
     for kind in PATH_TYPES:
         tried = [r for r in fetched if r[f"{kind}_steps"] != ""]
         if tried:
             h = sum(1 for r in tried if hit(r, kind))
             print(f"  {kind:<6}          : {h}/{len(tried)} = {h / len(tried):.0%}", file=sys.stderr)
     only_inlaw = sum(1 for r in fetched if hit(r, "inlaw") and not hit(r, "blood"))
-    print(f"  reached ONLY by inlaw: {only_inlaw}", file=sys.stderr)
+    print(f"  chain ONLY via inlaw: {only_inlaw}", file=sys.stderr)
 
     # What the campaign is actually buying. Reachability counts targets; this counts people, and
     # people are the places to add more people onto.
@@ -192,7 +211,7 @@ def main() -> int:
     if both:
         extra = sum(r["inlaw_only_people"] for r in both)
         print(
-            f"  targets reached by BOTH: {len(both)}; people the inlaw chain adds "
+            f"  targets with BOTH chains: {len(both)}; people the inlaw chain adds "
             f"beyond the blood one: {extra} ({extra / len(both):.1f} per target)",
             file=sys.stderr,
         )
