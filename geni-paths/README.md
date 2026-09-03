@@ -68,12 +68,41 @@ the script yet:
 holds `Geni - <Name>.html` — profile saves — which is what `CLAUDE.md` § *Relationship paths:
 save the page, never the pasted text* describes. The relationship panel lives on the profile.
 
-**The anchor route is UNRESOLVED and is the open question.** `toggleRelationshipAnchor('6000000002457013227')`
-does exist on Charlemagne's page and calling it raised no error, but the next target's profile
-(`6000000174444394081`, bishop Camillo Ballin) then carried **no `#relation_description` at all**
-and no occurrence of the word *relationship* anywhere in its text. Whether the anchor failed to
-set, needs a different call, or that target genuinely computes nothing is not established, and
-guessing further at Geni's URL scheme is what the rabbit-hole rule stops. **This needs her.**
+**THE ANCHOR ROUTE WORKS, and it is the method — established and validated 2026-09-03.**
+The pushpin is real: `toggleRelationshipAnchor('6000000002457013227')` on Charlemagne's profile
+pins him as the anchor for the account, and every profile visited afterwards reports its
+relationship **to him** rather than to the viewer. The tell is the sentence itself —
+*"Arne Garborg is Charlemagne's 31st great grandson"*, where before it read *"Charlemagne is
+your 35th great grandfather"*.
+
+**The chain is COLLAPSED until "Show short path" is clicked.** With the anchor set,
+`#relation_description` carries the summary sentence and **zero** `span.segment` anchors; the
+segments only exist after the click. A capture taken before it saves a page with no path on it
+— the same shape as § *Wait for `#family_profile_module` before saving* in
+`geni-scraping/README.md`, and it would look like a miss rather than an error.
+
+So the fetch is, per target:
+
+    navigate  https://www.geni.com/people/x/<geni id>
+    wait      for #relation_description
+    click     the "Show short path" link
+    wait      for span.segment > span.name a[data-profile-id]
+    save      the blob of document.documentElement.outerHTML
+
+**Validated against a path we already hold.** Target `6000000003492005116` Arne Garborg came
+back **34 steps, first `6000000002457013227` Charlemagne, last the target** — reproducing
+`paths/charlemagne-to-arne-garborg.tsv`, which is 34 steps, exactly. That is the check that the
+markup matches the parser, and it passes.
+
+**A missing panel is the `no_chain` outcome, not a broken fetch.** `6000000174444394081`
+(bishop Camillo Ballin) carries no `#relation_description` at all and no occurrence of the word
+*relationship* — which is what an isolate looks like, and these targets are isolates by
+selection. Read it as `chain_found=0` and never as *unrelated*, per the harvester's own docstring.
+
+**Blood against in-law is a control on the page, not a URL parameter.** The profile carries a
+**"Blood Relatives"** link beside "Show short path". The `path_type=` parameter above is part of
+the URL form that does not work; whichever chain the page opens with is what the capture holds,
+and the type must be recorded from the page rather than assumed from a URL.
 
 ## How to save
 
