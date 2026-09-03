@@ -77,8 +77,9 @@ Q141268096	P5056	LAST	P144	Q141189076	S2600	"6000000224702600859"
 #   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
 Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 
-# 345 more name items are needed and wait for a later
+# 346 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Låge-Håland (family), 4 bearer(s)
 #   Bjørnson (patronymic), 3 bearer(s)
 #   Hakunge (family), 3 bearer(s)
 #   Hansen (patronymic), 3 bearer(s)
@@ -90,8 +91,7 @@ Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 #   Knutsdatter (patronymic), 3 bearer(s)
 #   Larsson (patronymic), 3 bearer(s)
 #   Magnusson (patronymic), 3 bearer(s)
-#   Nord-Varhaug (family), 3 bearer(s)
-#   ... and 333 more
+#   ... and 334 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -103,38 +103,38 @@ Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2552 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2537 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the zh label to "爱德华·布鲁斯"
-Q75500962	Lzh	"爱德华·布鲁斯"
-#   set the ko label to "에드와르드 브루케"
-Q75500962	Lko	"에드와르드 브루케"
-#   set the ja label to "スクリ・トスティソン・コングスフォストレ"
-Q6180419	Lja	"スクリ・トスティソン・コングスフォストレ"
-#   set the zh label to "斯库利·托斯蒂松·孔斯福斯特雷"
-Q6180419	Lzh	"斯库利·托斯蒂松·孔斯福斯特雷"
-#   set the ko label to "스쿠리 토스티손 콩스포스트레"
-Q6180419	Lko	"스쿠리 토스티손 콩스포스트레"
-#   set the ja label to "ジェイコブ・ギルベルグ"
-Q5759363	Lja	"ジェイコブ・ギルベルグ"
-#   set the zh label to "雅各布·吉尔贝尔格"
-Q5759363	Lzh	"雅各布·吉尔贝尔格"
-#   set the ko label to "자콥 길르베르그"
-Q5759363	Lko	"자콥 길르베르그"
-#   set the ja label to "ファテル・オフ・インゲル・クリストッフェシュダッテル"
-Q141198370	Lja	"ファテル・オフ・インゲル・クリストッフェシュダッテル"
-#   set the zh label to "法特尔·奥夫·英格·克里斯托弗斯达特"
-Q141198370	Lzh	"法特尔·奥夫·英格·克里斯托弗斯达特"
-#   set the ko label to "파테르 오프 이에르 크리스토페르스다테르"
-Q141198370	Lko	"파테르 오프 이에르 크리스토페르스다테르"
-#   set the ko label to "아담 카르르 데 라 가르디에"
-Q5618759	Lko	"아담 카르르 데 라 가르디에"
-#   set the ko label to "케키리에 모르텐스다테르"
-Q141206060	Lko	"케키리에 모르텐스다테르"
-#   set the ko label to "아스트리 토르첼스다테르 욉레 티메"
-Q141198375	Lko	"아스트리 토르첼스다테르 욉레 티메"
-#   Q141216356: set the ja label to "ダウグテル・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"
-Q141216356	Lja	"ダウグテル・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"
+#   set the zh label to "达乌格特尔·奥夫·阿斯特丽·托尔凯尔斯达特·奥夫雷·蒂梅"
+Q141216356	Lzh	"达乌格特尔·奥夫·阿斯特丽·托尔凯尔斯达特·奥夫雷·蒂梅"
+#   set the ko label to "다욱테르 오프 아스트리 토르첼스다테르 욉레 티메"
+Q141216356	Lko	"다욱테르 오프 아스트리 토르첼스다테르 욉레 티메"
+#   Q141249589: add a mul alias "NN"
+Q141249589	Amul	"NN"
+#   set the mul label to "son of Astri Torchelsdatter Øvre Time"
+Q141249589	Lmul	"son of Astri Torchelsdatter Øvre Time"
+#   set the ja label to "ソン・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"
+Q141249589	Lja	"ソン・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"
+#   set the zh label to "松·奥夫·阿斯特丽·托尔凯尔斯达特·奥夫雷·蒂梅"
+Q141249589	Lzh	"松·奥夫·阿斯特丽·托尔凯尔斯达特·奥夫雷·蒂梅"
+#   set the ko label to "손 오프 아스트리 토르첼스다테르 욉레 티메"
+Q141249589	Lko	"손 오프 아스트리 토르첼스다테르 욉레 티메"
+#   set the ja label to "ブロテル・オフ・インゲル・クリストッフェシュダッテル"
+Q141225066	Lja	"ブロテル・オフ・インゲル・クリストッフェシュダッテル"
+#   set the zh label to "布罗特尔·奥夫·英格·克里斯托弗斯达特"
+Q141225066	Lzh	"布罗特尔·奥夫·英格·克里斯托弗斯达特"
+#   set the ko label to "브로테르 오프 이에르 크리스토페르스다테르"
+Q141225066	Lko	"브로테르 오프 이에르 크리스토페르스다테르"
+#   Q141168955 Jon Samuelsen Raustad: set the ko label to "존 사뭴센 라우스타드"
+Q141168955	Lko	"존 사뭴센 라우스타드"
+#   set the ko label to "아돌프 프레드리크 문크"
+Q2478781	Lko	"아돌프 프레드리크 문크"
+#   Q141244090 Catharina Kram: set the ko label to "카타리나 크람"
+Q141244090	Lko	"카타리나 크람"
+#   set the ko label to "라우렌튜스 조내 하레뉴스"
+Q5783620	Lko	"라우렌튜스 조내 하레뉴스"
+#   set the ko label to "에엘베르트 하레뉴스"
+Q5783613	Lko	"에엘베르트 하레뉴스"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
