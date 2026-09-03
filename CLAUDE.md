@@ -2077,18 +2077,64 @@ settles the patronymic question in one line; no assertion in the suite did.
 **The gate is the queue's own CI/CD item**, which is at the tail by her placement. Do not promote
 it on the strength of this rule -- note the dependency and leave the order as she set it.
 
-### The repo is PUBLIC as of 2026-09-01. CI runs, and `push:` is still wrong
+### The repo is PUBLIC as of 2026-09-01. CI runs — and `pipeline.yml` DOES run on push
 
 **Emma, 2026-09-01:** *"The repo is public now lol"*, after *"I want to make this a public repo so
 we don't need to waste your attention on the tests shit"*. Actions minutes are free on public
 repos, so the cost argument that made CI manual-only is gone and `.github/workflows/ci.yml` now
 carries `schedule:` (05:17 daily, off the hour) and `pull_request:` alongside `workflow_dispatch:`.
 
-**`push:` stays out for a different reason, and that reason survives the visibility change.** This
-repo commits large generated files many times a day — the 2026-09-01 label rebuild alone rewrote
-three million lines — so a run per push queues behind itself and tells nobody anything.
-`tests/test_repo_invariants.py::test_no_workflow_runs_automatically` now guards exactly that,
-`push` and `pull_request_target` only.
+**`push:` was banned outright until 2026-09-03, when Emma reversed it for ONE workflow:**
+*"pushes should trigger the pipeline to go all the way including up to getting a working qs file
+and having the daily batch on the site."*
+
+So `.github/workflows/pipeline.yml` carries `push: branches: [main]`, and **a push bypasses the
+six-hour gate**. That is the point rather than a side effect: the gate asks whether she has edited
+*Wikidata*, which cannot see that the *repo* changed. Gating pushes on her contributions would
+reproduce the failure this trigger exists to fix.
+
+**Everything else still fails the test if it gains `push:`.** The exemption is one trigger on one
+named file — `RUNS_ON_PUSH` in `tests/test_repo_invariants.py` — plus a second test asserting that
+file still exists and still uses it, so a stale exemption cannot quietly become a hole. The
+original reasoning stands for every other workflow: this repo commits large generated files many
+times a day, and a run per push queues behind itself for no signal.
+
+**It cannot loop, and that is a documented GitHub rule rather than a hope.** A push made with the
+repository's `GITHUB_TOKEN` does not create a new workflow run. The pipeline commits as
+`github-actions[bot]` through the token `actions/checkout` persists, so its own push to `main` is
+inert; only a push from a person or a Claude session starts a run.
+
+**A burst of pushes QUEUES.** `concurrency: pipeline` with `cancel-in-progress: false` is
+unchanged, so runs serialise rather than racing, and one that is mid-push is never cancelled. If
+the queue ever becomes the problem, the lever is a `paths-ignore:` on the trigger — not
+`cancel-in-progress`, which is the thing that would kill a run between its commit and its push.
+
+**What "all the way" means, checked end to end:** push → gate forced → ledger refresh and
+`--compose` → commit and push the batch → `site` job builds Pages **from the sha just pushed** →
+the daily batch appears on the site. That last hop needed its own fix the same day; see
+§ *The Pages site is built from the sha the pipeline PUSHED*.
+
+### The Pages site is built from the sha the pipeline PUSHED, not the one that triggered it
+
+**`needs:` orders jobs. It does NOT move `github.sha`.** A reusable workflow called with `uses:`
+runs at the *caller's* sha, and `actions/checkout` with no `ref` takes it — so `site: needs:
+pipeline` sequenced the site after the rebuild while still building the tree as it stood *before*
+it, because the pipeline pushes its commit after the sha is already fixed.
+
+**Measured on run 33687514166 (2026-09-02):** the `pipeline` job pushed `4111f4d` at 22:02:19 and
+`site / build` checked out `8dcf42f6` thirteen seconds later. Since `build-pages-site.py`
+publishes `reports/wikidata-garborg-day.qs` on the page, **every site build served the previous
+batch** — it had never once shown the batch from its own run. Emma found it: *"the pipeline does
+not update github pages lol."*
+
+**The fix is an explicit hand-off:** the `pipeline` job outputs `git rev-parse HEAD` after its
+rebase and push, `pages.yml` takes a `ref` input on `workflow_call`, and the `site` job passes it.
+Empty falls back to `github.sha`, which is right for the schedule and for the nothing-changed path.
+
+**The comment that used to sit in `pages.yml` claimed the opposite** — *"the site is rebuilt from
+the same commit that just produced the batch"* — which is why it survived a day of runs. A comment
+asserting a property nobody measured is worse than no comment: it answers the question for the
+next reader, wrongly. It now carries the measurement instead.
 
 **The checkout has to be sparse or it does not fit.** Measured 2026-09-01: **13.3 GB tracked** —
 `wikidata/` 4.3 GB, `exports/` 4.3 GB, `paths_for_wikidata_isolates/` 2.7 GB, `reports/` 1.1 GB —

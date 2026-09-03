@@ -26688,3 +26688,36 @@ committed, so issues #14 and #16 both re-delivered the batch built on 2026-09-02
 a `2026-09-03` title. That one is not fixed here.
 
 Not verified end to end: the fix lands on a branch, so the next run on `main` is what proves it.
+
+## 2026-09-03 — pushes now run the pipeline all the way, gate bypassed
+
+Emma: *"pushes should trigger the pipeline to go all the way including up to getting a working qs
+file and having the daily batch on the site."*
+
+`.github/workflows/pipeline.yml` gains `push: branches: [main]`, and **a push bypasses the
+six-hour gate**. The bypass is the substance, not a detail: the gate asks whether she has edited
+*Wikidata*, which cannot see that the *repo* changed. Without it a push would hit exactly the
+failure of earlier today — three scheduled runs skipped, every one green, the site serving the
+previous night's batch.
+
+**It cannot loop.** A push made with the repository's `GITHUB_TOKEN` does not create a workflow
+run; the pipeline commits as `github-actions[bot]` through the token `actions/checkout` persists,
+so its own push to `main` is inert. Only a human or session push starts one.
+
+**A burst of pushes queues.** `concurrency: pipeline` / `cancel-in-progress: false` is untouched,
+so runs serialise and one mid-push is never cancelled. The lever if the queue becomes a problem is
+`paths-ignore:`, never `cancel-in-progress`.
+
+**The ban survives for every other workflow.** `RUNS_ON_PUSH` in `tests/test_repo_invariants.py`
+is a named one-file exemption for `push` only — `pull_request_target` is still banned there too —
+and a second test asserts the exempted file exists and still uses the trigger, so a stale
+exemption cannot quietly become a hole. `CLAUDE.md` § *The repo is PUBLIC* is rewritten in this
+commit, as its own test message demands.
+
+Together with the sha fix earlier today the chain is: push → gate forced → ledger refresh and
+`--compose` → commit and push → site built **from the pushed sha** → the batch on the page.
+
+NOT VERIFIED END TO END, and it cannot be from a branch: the trigger is `branches: [main]`, so
+the first push to `main` after this merges is what proves it. `daily-batch-email.yml` still
+rebuilds nothing and still stamps today's date on whatever is committed — its content will now be
+fresh far more often, but the misleading title is untouched and not part of this change.

@@ -55,6 +55,15 @@ PACKAGE = REPO_ROOT / "src" / "genimerge"
 #: nobody anything. That is a signal argument, not a billing one.
 AUTOMATIC_TRIGGERS = {"push", "pull_request_target"}
 
+# **`pipeline.yml` runs on push BY DESIGN.** Emma, 2026-09-03: *"pushes should trigger the
+# pipeline to go all the way including up to getting a working qs file and having the daily batch
+# on the site."* It is the workflow whose whole job is to make a push produce a fresh batch and a
+# site carrying it, so a push is its correct trigger.
+#
+# It is a NAMED exemption rather than a relaxed rule: every other workflow still fails this test
+# if it gains `push:`, which is what stops the ban eroding one file at a time.
+RUNS_ON_PUSH = {"pipeline.yml"}
+
 
 def _triggers(text: str) -> set[str]:
     """The top-level keys under a workflow's `on:`.
@@ -114,7 +123,10 @@ def _imports(path: Path) -> set[tuple[int, str]]:
 def test_no_workflow_runs_automatically():
     offenders = {}
     for workflow in sorted(WORKFLOWS.glob("*.y*ml")):
-        automatic = _triggers(workflow.read_text(encoding="utf-8")) & AUTOMATIC_TRIGGERS
+        allowed = {"push"} if workflow.name in RUNS_ON_PUSH else set()
+        automatic = (
+            _triggers(workflow.read_text(encoding="utf-8")) & AUTOMATIC_TRIGGERS - allowed
+        )
         if automatic:
             offenders[workflow.name] = sorted(automatic)
 
@@ -134,6 +146,23 @@ def test_every_workflow_can_still_be_run_by_hand():
         assert "workflow_dispatch" in _triggers(workflow.read_text(encoding="utf-8")), (
             f"{workflow.name} has no trigger at all and can never run."
         )
+
+
+def test_the_push_exemption_names_a_workflow_that_exists_and_uses_it():
+    """An exemption for a deleted or changed file is a hole nobody would notice.
+
+    `pull_request_target` is deliberately NOT exempted for it either -- the exemption is one
+    trigger on one file, not a general opt-out.
+    """
+    for name in RUNS_ON_PUSH:
+        path = WORKFLOWS / name
+        assert path.exists(), f"{name} is exempted from the push ban but does not exist"
+        triggers = _triggers(path.read_text(encoding="utf-8"))
+        assert "push" in triggers, (
+            f"{name} is exempted from the push ban but no longer has push:. "
+            "Drop it from RUNS_ON_PUSH so the ban covers it again."
+        )
+        assert "pull_request_target" not in triggers
 
 
 def test_the_trigger_reader_ignores_prose_about_triggers():

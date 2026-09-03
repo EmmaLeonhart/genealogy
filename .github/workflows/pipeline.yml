@@ -21,6 +21,21 @@ name: Pipeline when she has been editing
 # with `The runner has received a shutdown signal` and nobody knowing why.
 
 on:
+  # **`push:` IS DELIBERATE HERE, and it is the one workflow that has it.** Emma, 2026-09-03:
+  # *"pushes should trigger the pipeline to go all the way including up to getting a working qs
+  # file and having the daily batch on the site."* This reverses CLAUDE.md's blanket ban, which
+  # is updated in the same commit; every other workflow stays manual-or-scheduled.
+  #
+  # **It cannot loop.** This job pushes its own commit to `main`, which would retrigger the
+  # workflow but for a documented GitHub rule: a push made with the repository's `GITHUB_TOKEN`
+  # does not create a new workflow run. `actions/checkout` persists that token and the commit is
+  # authored by `github-actions[bot]`, so the pipeline's own push is inert. A push from a person
+  # or a Claude session is what starts a run.
+  #
+  # `concurrency: pipeline` with `cancel-in-progress: false` still holds, so a burst of pushes
+  # QUEUES rather than running in parallel or cancelling a run that is mid-push.
+  push:
+    branches: [main]
   schedule:
     # Every six hours, off the hour: :23 rather than :00, where every scheduled workflow on
     # GitHub fires at once and the queue is worst.
@@ -57,10 +72,15 @@ jobs:
         with:
           python-version: "3.13"
 
+      # **A PUSH BYPASSES THE GATE, and that is the whole point of the trigger.** The gate asks
+      # whether she has edited Wikidata in six hours; a push means the REPO changed, which the
+      # gate cannot see. Gating pushes on her contributions would reproduce exactly the failure
+      # of 2026-09-03, where three scheduled runs skipped and the site served a batch from the
+      # night before while every run showed green. "All the way" means the gate does not stop it.
       - id: check
         run: |
-          if [ "${{ inputs.force }}" = "true" ]; then
-            echo "forced by hand"
+          if [ "${{ inputs.force }}" = "true" ] || [ "${{ github.event_name }}" = "push" ]; then
+            echo "forced: event=${{ github.event_name }} force=${{ inputs.force }}"
             echo "run=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
