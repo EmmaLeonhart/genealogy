@@ -242,6 +242,57 @@ def _words():
 WORDS = _words()
 
 
+def _relationship_prefixes():
+    """`{"son of ", "sønn av ", "filla de ", ...}` -- every opening a DESCRIPTION can have.
+
+    **A descriptive label is not a name, and the whole bug is that nothing said so.** The
+    `en` label of a redacted person is `son of Astri Torchelsdatter Øvre Time` by design --
+    `CLAUDE.md` § *The NN/Private label algorithm applies to EVERY unnamed person*. Two
+    places then treated that sentence as the person's name.
+
+    Built from `WORDS`, never restated: the table already holds the relationship word per sex
+    and the preposition per direction (`datter af` but `mor til`), so a language added there
+    is covered here with no second edit. Danish and Norwegian carry `of` as a dict keyed on
+    the group, which is exactly that direction rule, so both forms are generated.
+    """
+    out = set()
+    for words in WORDS.values():
+        joiner = words["of"]
+        for group, forms in words.items():
+            if group == "of" or not isinstance(forms, dict):
+                continue
+            j = joiner.get(group, joiner[""]) if isinstance(joiner, dict) else joiner
+            for word in forms.values():
+                if word:
+                    out.add(f"{word} {j} ".casefold())
+    return frozenset(out)
+
+
+RELATIONSHIP_PREFIXES = _relationship_prefixes()
+
+
+def is_relationship_description(text):
+    """True when `text` is one of our own descriptive labels rather than a name.
+
+    **What it cost, measured on the 2026-09-03 batch.** `Q141249589` went out as
+    `Amul "NN"` + `Lmul "son of Astri Torchelsdatter Øvre Time"` -- demoting the marker
+    `CLAUDE.md` § *`NN` is PRESERVED in `mul`* says is *"always preserved"* -- and then as
+    `Lja "ソン・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"`, which is the English words
+    *son* and *of* spelled out in katakana. `zh` and `ko` the same: `松·奥夫·`, `손 오프`.
+    Eight such labels in one batch, on a rolling window with 2,552 more behind it.
+
+    The correct CJK form is built by `describe_all`, which puts the native relationship word
+    after the name -- `…の息子`, `…之子`, `…의 아들`. Nothing here reconstructs it; this only
+    stops a description being fed to the name transliterator, and the description keeps
+    living in `en` and the other languages where it belongs.
+
+    A PREFIX test, and deliberately not a search: `Anne of Denmark` is a name, and only a
+    label that OPENS with a relationship word is one of ours.
+    """
+    low = (text or "").strip().casefold()
+    return any(low.startswith(p) for p in RELATIONSHIP_PREFIXES)
+
+
 def describe_all(geni_id, facts, father, mother, labels, table,
                  children=None, spouses=None, siblings=None):
     """`{lang: "daughter of Arne Olaus Fjørtoft Garborg"}` for a redacted person.
@@ -286,7 +337,14 @@ def describe_all(geni_id, facts, father, mother, labels, table,
         # (`name not known`, `no name`) as well as single words, so splitting on space
         # would miss exactly the longest and most obvious markers.
         markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {"nn", "unknown", "ukjent"}
-        return "" if any(low == w or low.startswith(w + " ") for w in markers) else n
+        if any(low == w or low.startswith(w + " ") for w in markers):
+            return ""
+        # **A relative whose own label is one of these descriptions names nobody either**, and
+        # it composes into nonsense rather than stopping: `daughter of father of`, and
+        # `wife of Son of Menon III Pharsalos`. 21 of those are sitting in
+        # `reports/wikidata-placeholder-labels.json`. Same fix as a marker -- fall through to
+        # the next relative, never reconstruct.
+        return "" if is_relationship_description(n) else n
 
     #: Which relative to describe by, nearest first, and the `WORDS` group naming the
     #: relationship FROM this person TO them.
@@ -1103,6 +1161,15 @@ def label_in(label, table):
     `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
     from labels import transliterate_token, transliterate_token_ko
+
+    # **A DESCRIPTION is not a name and never goes through here.** This is the choke point
+    # rather than the callers, because every CJK label in the batch comes out of this one
+    # function -- guarding it once covers the additions pass, the label corrections and the
+    # creations alike, and a caller added next month is covered without knowing about this.
+    # `describe_all` builds the right CJK form for these people (`…の息子`), so refusing here
+    # loses nothing and stops `son of X` becoming `ソン・オフ・X`.
+    if is_relationship_description(label):
+        return None, None, None
 
     # **A territorial designation is not part of the name, and transliterating it is how
     # `Q6161733` got `カール・フレドリク・パイパー・ティル・クラゲホルム`.** Emma spotted it and
@@ -5794,6 +5861,15 @@ def main():
         # as "it has no `mul`" rather than "we have not looked". Absence of evidence was being
         # treated as evidence of absence -- the same shape as every other bug today.
         mul = consensus_latin_label(mine) if mine else ""
+        # **`consensus_latin_label` reads `en` first, and for a redacted person `en` is our own
+        # descriptive sentence** -- `CLAUDE.md` § *The NN/Private label algorithm* puts it
+        # there on purpose. Promoting it to `mul` displaced the marker that
+        # § *`NN` is PRESERVED in `mul`* calls *"always preserved"*: `Q141249589` went out as
+        # `Amul "NN"` followed by `Lmul "son of Astri Torchelsdatter Øvre Time"`, which is the
+        # exact erasure that section was written against, in the one slot every language falls
+        # back to. Dropping it here leaves `mul` alone; the description keeps living in `en`.
+        if is_relationship_description(mul):
+            mul = ""
         source = mul or labels.get(g, "")
 
         if mul:

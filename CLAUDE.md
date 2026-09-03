@@ -802,6 +802,31 @@ The fix is two edits per item, the `mul` one declared as a dependency of the `en
 one, so the marker is written before the slot holding it is reused. An item whose
 `en` already says something real is left alone (36 of them).
 
+**And it went wrong AGAIN on 2026-09-03, in the other direction: the description was promoted
+INTO `mul` and then transliterated as a name.** `Q141249589` went out as `Amul "NN"` followed by
+`Lmul "son of Astri Torchelsdatter Øvre Time"` — the marker demoted to an alias and the English
+sentence made the language-neutral label — and then as
+`Lja "ソン・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"`, which is the English words *son* and *of*
+spelled out in katakana. `zh` and `ko` the same: `松·奥夫·`, `손 오프`. Eight labels in one batch,
+on a rolling window with 2,552 behind it. Emma spotted it on the site.
+
+**One cause, two symptoms.** `consensus_latin_label` reads the `en` label first — and for these
+people `en` is our own descriptive sentence, by design. Nothing anywhere said *a description is
+not a name*, so it became the `mul` label and then went through `label_in`, the name
+transliterator.
+
+**`build-garborg-day.is_relationship_description` is now that sentence, and `label_in` refuses
+one outright** — the choke point, so every caller is covered including ones written later. Its
+prefixes are derived from `build-nn-label-batch.WORDS`, never restated, so the direction rule
+(`datter af` but `mor til`) and any language added there come free. `describe_all` already built
+the right CJK form — `…の息子`, `…之子`, `…의 아들` — so refusing loses nothing. It is a PREFIX test:
+`Anne of Denmark` is a name.
+
+**A relative whose own label is a description names nobody either**, and it composed rather than
+stopping: `daughter of father of`, `wife of Son of Menon III Pharsalos`. 21 of those are sitting
+in `reports/wikidata-placeholder-labels.json`. Same fix as a marker — fall through to the next
+relative, never reconstruct.
+
 **`Private` and `NN` are the same population and get the same treatment.** Emma,
 same message: *"NN and private are the same thing here, because if there's a
 private individual whose name is not exported, it comes out as an NN."* The rule
@@ -967,7 +992,7 @@ nearly the whole programme; the exception is small and specific, and it is **Gen
 | Trigger, read and debug GitHub Actions | **yes** | yes |
 | Send her a file (chat attachment) or an email | **yes**, when those tools are attached | — |
 | **Geni: exports, saved pages, creating a profile** | **NO** | **only here** |
-| Rebuild the synoptic tree | **no**, on size | only here |
+| Rebuild the synoptic tree | **YES**, since 2026-09-03 | yes |
 
 **Geni is categorical**: it needs her logged-in browser under Chrome automation. Nothing in the
 cloud can reach it, and no amount of cleverness changes that.
@@ -991,16 +1016,36 @@ to binding; any sparse checkout justified on disk grounds was justified on a wro
 **A local run on this sandbox agrees**: killed at 13.3 min, peak RSS **13.30 GB**, `EXIT -9`. The
 runner survived longer only because it has swap to thrash into.
 
-**So the tree does not build in Actions as the corpus stands, and the target is now a number.**
-Peak must come from ~16 GB to comfortably under ~14 GB. Her three shrinking levers, in measured
-order: **notes and media are ~67% of corpus bytes** (`CONT` 31.8%, `CONC` 20.7%, `FILE` 7.3%,
-`NOTE` 4.5%, `TEXT` 1.5%) against ~6% for names; duplicate labels per person are uncounted; and
-dropping labels for anyone Wikidata already labels is the sharpest, since the tree exists to find
-what Wikidata lacks. **Do not conflate this with Geni when reporting what is blocked** — Geni is
-categorical, this is a number that the input is under our control to move.
+**⛔ AND THEN HER OWN LEVER FIXED IT, THE SAME EVENING. The tree BUILDS in Actions.** Emma:
+*"realistically anything that doesn't go into the editing pipeline isn't needed in the synoptic
+tree."* `genimerge.slim` is that rule as an input filter — `KEEP_TAGS` is the union of the four
+derive scripts' own tag lists, a whitelist, so a Geni tag nobody named is dropped loudly by
+omission. It was the first of her three levers; the other two are untouched and still hers to
+spend (duplicate labels per person, uncounted; dropping labels for anyone Wikidata already
+labels, the sharpest).
 
-**⛔ And the derived tables are a PHOTOGRAPH of her tree, which nothing in CI will tell you is
-stale.** `out/family-structure.tsv`, `derived-family.csv`, `derived-labels.csv`,
+    full corpus   peak 13.30 GB local, KILLED · 15.92 GB on the runner, KILLED at 21.6 min
+    slimmed       peak  8.79 GB local, 7.7 min · 11.16 GB on the runner, 963s, 4.83 GB free
+    same tree     1,451,993 people · 630,053 families, identical INDI/FAM/CHIL/FAMC/NAME counts
+
+**How much room that leaves is measured, not extrapolated** — four points, all slim: 373,756
+people 2.24 GB · 645,998 3.99 GB · 1,233,953 7.60 GB · 1,451,993 8.79 GB. That is linear through
+the origin at **6.07 GB per million people** (fitted intercept −0.03 GB). So the ceiling is
+**~2.3 M people at a comfortable 14 GB**, and **3 million does NOT fit** — it would want ~18.2 GB.
+One export is ~9 MB of that: the measured marginal yield over the last 152 exports is **1,434
+genuinely new people each**, so ~600 more exports fit before another lever is needed. No single
+export is near ending anything, and the 3 M figure needs one of the two remaining levers rather
+than optimism.
+
+**The store has to be checked out and indexed, and forgetting that is what killed the first slim
+run.** Five steps of `rebuild-everything.py` read `wikidata/items/` through
+`out/wikidata/store-index.sqlite3` — display names first. The 2,427 shards are tracked; the index
+is gitignored and derived, so `tree.yml` runs `genimerge wikidata-index` before the rebuild:
+**23 minutes, 142 MB, 2,426,152 items**. The exclusion that broke it was written on the wrong disk
+number above.
+
+**⛔ And the derived tables WERE a PHOTOGRAPH of her tree, which nothing in CI told you was
+stale — that is what `tree.yml` ends.** `out/family-structure.tsv`, `derived-family.csv`, `derived-labels.csv`,
 `display-names.csv` and `derived-facts.csv` are all committed and all come from a local rebuild.
 The pipeline reads them happily whatever their age, so a batch computed on a month-old tree looks
 exactly like a fresh one. **The ledger refresh is live; the tree is not.** Say which of the two an

@@ -77,6 +77,22 @@ HERS = {
 }
 
 
+#: Wikidata labels carry a bracketed disambiguator -- `グアイマル2世 (ポメラニア公)`, `石 (唐)` --
+#: and the harvester aligned it to a token as though it were that token's rendering. Three rows
+#: of 38,409 came out of it and all three were wrong: `II` -> `(ポメラニア公)` *(Duke of
+#: Pomerania)*, `Shi` and `Zhen` -> `(唐)` *(Tang)*. `Q2705969` *Guaimar II of Salerno Gybbosus*
+#: was carrying `グアイマル・(ポメラニア公)・オフ・サレルノ・ギボスス` into a live batch.
+#:
+#: **A bracket is the whole test, and it is measured rather than assumed:** exactly those three
+#: rows of the table contain one, so nothing legitimate is refused. A personal-name token's
+#: rendering is a name, and a name has no brackets in it.
+_BRACKETS = "()（）[]［］{}｛｝〔〕【】"
+
+
+def _is_disambiguator(value: str) -> bool:
+    return any(ch in value for ch in _BRACKETS)
+
+
 def main() -> int:
     # Both readers are closed before the atomic replace below: Windows refuses to rename over
     # a file it still has open, which is how os.replace first died with WinError 5.
@@ -101,6 +117,9 @@ def main() -> int:
         used = []
         for lang in ("ja", "zh"):
             new = mine.get(lang) or (a or {}).get(lang, "")
+            if new and _is_disambiguator(new):
+                n["refused -- attested value is a Wikidata disambiguator"] += 1
+                continue
             if new and new != r[lang]:
                 r[lang] = new
                 used.append(lang)

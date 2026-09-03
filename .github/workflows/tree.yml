@@ -51,15 +51,21 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
-      # `exports/` is the corpus and is the whole input. `wikidata/` (4.3 GB) and
-      # `paths_for_wikidata_isolates/` (2.7 GB) are not read by any step here and would not fit
-      # beside a 409 MB merge on ~14 GB of runner disk.
+      # **`wikidata/` STAYS IN, and the first run proved why.** It was excluded here on a
+      # wrong number -- "would not fit on ~14 GB of runner disk" -- and the runner's own log
+      # reads `DISK=79372MB free` on every sample. Disk was never the constraint; memory was.
+      # Step 3, display names, then died with
+      # `no store index at out/wikidata/store-index.sqlite3`, because it reads the store to
+      # label the 43,680 of our people who carry an item, and five later steps do the same.
+      #
+      # The 2,427 shards are tracked (4.3 GB); the index is derived and gitignored, so it is
+      # rebuilt below rather than committed. `paths_for_wikidata_isolates/` and the rest are
+      # genuinely unread here and stay out.
       - uses: actions/checkout@v4
         with:
           filter: blob:none
           sparse-checkout: |
             /*
-            !/wikidata
             !/paths_for_wikidata_isolates
             !/geni-scraping
             !/geni_pages
@@ -80,6 +86,17 @@ jobs:
 
       - name: Unpack the derived CSVs
         run: python scripts/pack-derived.py --unpack || echo "nothing to unpack; a full rebuild writes them"
+
+      # One streaming pass over the shards -> a sqlite index of QID -> shard and Geni ID -> QID.
+      # Offline; it talks to nothing. Measured here on 2026-09-03: **23 minutes, 142 MB, 2,426,152
+      # items over 2,427 shards**, of which 516,595 carry a P2600. It is not committed because
+      # the shards are the truth and a tracked index would be a second copy that can disagree --
+      # `genimerge wikidata-index`'s own docstring says so, and it is over GitHub's file limit
+      # besides.
+      - name: Index the Wikidata store
+        env:
+          PYTHONPATH: src
+        run: python -m genimerge wikidata-index
 
       # **Sampled every 30s so a kill is diagnosable.** A runner that runs out of memory reports
       # `The runner has received a shutdown signal` and nothing else; the sampler is what turns
