@@ -26442,3 +26442,41 @@ a relationship against 100% for the non-Bure ledger, which looks like it tests h
 not: **767 of the 928 non-Bure ledger items are absent from the snapshot entirely**, created
 after the download, and the Bure rows in it are post-campaign rather than pre-campaign. Noted in
 `CLAUDE.md` so the number is not quoted later as evidence.
+
+## 2026-09-03 — eccentricity measured across the whole tree
+
+**Emma:** *"George RR Martin is interesting due to his eccentricity… Might be worth measuring
+the most eccentric people in the synoptic tree."*
+
+`scripts/measure-eccentricity.py` → `reports/tree-eccentricity.csv`, one row per person, all
+**1,451,964**, plus `reports/eccentricity.md`. Graph is parent/child/spouse, undirected,
+**2,537,928 edges**; no sibling edges, because Geni records none.
+
+**Two numbers, because the word has been doing two jobs.** `dist_charlemagne` is distance from
+the centre — one BFS, and he reaches every one of the 1,450,615 people in the largest component.
+`ecc_lower_bound` is graph eccentricity proper, from 8 double-sweep landmarks. **Diameter is at
+least 318** and all eight landmarks agree on it.
+
+**547 components, largest 1,450,615 (99.91%)**, the other 1,349 people across 546 components.
+Distance from Charlemagne: median 34, p90 44, p99 63, max 183. Degree median 2, max 179;
+**163,594 people (11.3%) have exactly one recorded relationship**.
+
+**The far edge is the Chinese legendary lineage** — 少昊 Shaohao 183, 顓頊 Zhuanxu 182, 女修,
+大業, 皋陶 Gaoyao, 伯益 Bo Yi, a consecutive descent. Among the 43,667 QID-carrying people the
+most distant are the **Samaritan high priests** at 131–134, which is her own hand-built tree.
+
+**Martin is at p80, not the edge** — 40 hops, ecc 208; Ettinger 39 and 210 (p76/p89). That does
+not contradict her reading, it locates it: his eccentricity is a property of Geni's World Tree,
+where the query crosses the sparse part and times out, and our corpus is a sample of Geni, so
+someone we sampled well looks central here. Written up rather than smoothed over, because a
+tree-side measure and a Geni-side measure are not substitutes.
+
+**A defect caught in the first run.** `degree` came out doubled — every relationship is listed on
+both people's rows, so appending blindly counts each edge twice. Distances were unaffected, which
+is what made it easy to miss; the tell was **0 people with degree 1** in a tree of 1.45M, which
+cannot be true. Deduping gives 163,594. Same family as § *Our side could never have two
+children*: a distribution that is too clean is about the instrument.
+
+Also recorded: the two entry points were named for **different** reasons — Ettinger *"important
+enough… of his own"*, Martin *"interesting due to his eccentricity"* — so the `note` column
+carries each, and there is no single criterion to generalise into a filter.

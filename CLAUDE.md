@@ -2724,6 +2724,21 @@ reversible; the constraint is which people she wants the graph grown from.
 fifty entry points or something like that."* Dripping in is a trickle, not a campaign — the
 count is a property of the design, not a number to grow.
 
+**The two she named were named for DIFFERENT reasons, and the `note` column records which.**
+Ettinger: *"important enough that he's worthy of being an entry point of his own"* — standing in
+his own right. Martin: *"interesting due to his eccentricity"* — a position on the graph. So
+there is no single criterion to generalise into a filter, and inventing one is what § *Do not
+grab the first artifact that vaguely matches* warns against.
+
+**Eccentricity is measured now: `reports/eccentricity.md` and `tree-eccentricity.csv`**, all
+1,451,964 people. The headline matters for reading the word: **Martin is at the 80th percentile
+of distance from Charlemagne, not the edge** — 40 hops against a median of 34 and a maximum of
+183. His eccentricity is a property of **Geni's** World Tree, where the query has to cross the
+sparse part and times out; our corpus is a sample of Geni, so someone we sampled well looks
+central here. § *Presence measures our sampling, never Geni's content* is why the two cannot be
+substituted. The far edge of our own tree is the Chinese legendary lineage (少昊 Shaohao at 183)
+and, among people carrying a QID, the Samaritan high priests at 131–134.
+
 ### The entry points are the BURE CLAN, and Arne Garborg is the ONE exception
 
 **Composition, checked 2026-09-03: 253 roots = 251 Bure + Arne + Ettinger.** Johannes Bureus is
