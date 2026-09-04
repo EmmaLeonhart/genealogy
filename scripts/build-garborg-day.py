@@ -792,6 +792,57 @@ def _label_corrections(our_items, labels, table, state):
 LABEL_EDIT_CAP = 15
 
 
+#: **The order label edits go out in, by LANGUAGE. Emma, 2026-09-04:**
+#:
+#:     En / Mul / Ja / Zh / Ko
+#:     Then any ordering of our actively supported languages
+#:     Then any other language labels that might be changed for some reason
+#:
+#: She gave it when told that the 15-a-batch cap was being spent before `mul` was reached, so it
+#: is both an ordering and a priority: the tiers are taken in turn until the budget runs out, so
+#: an `en` edit displaces a `hi` one rather than merely printing above it.
+#:
+#: **The five are the creation gate.** § *The label gate* makes `ja` + `zh` + `ko` the condition
+#: for creating anybody, and § *The MARRIED name is the real name* shows the shape of an item as
+#: `en`, `mul`, `Amul`, `ja` — so these are the labels the programme is actually about, and the
+#: four scripts below are the ones it adds afterwards.
+#:
+#: **The actively supported set is `hi`, `ar`, `ru`, `el`** — `build-four-script-labels.CODES`,
+#: 151,320 labels, § *HER RULINGS, 2026-09-01* — read from that module rather than restated, so
+#: adding a language there moves it up this list for free.
+LABEL_LANGUAGE_ORDER = ("en", "mul", "ja", "zh", "ko")
+
+
+def _supported_languages():
+    """`hi`/`ar`/`ru`/`el`, read from the script that emits them rather than copied."""
+    try:
+        import importlib.util
+        path = ROOT / "scripts" / "build-four-script-labels.py"
+        spec = importlib.util.spec_from_file_location("four_script_labels", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return tuple(module.CODES)
+    except Exception:                                               # noqa: BLE001
+        # Never let the ordering break the batch: an unreadable list means those languages
+        # rank with "any other", which is one tier lower and nothing worse.
+        return ()
+
+
+def _label_tiers():
+    """The slot-name sets to take in turn, in her order.
+
+    A slot is `Lmul`, `Amul`, `Lja`… so the language is everything after the first character.
+    Both the label and the alias for one language sit in the same tier and keep the order they
+    were emitted in — which is what protects the `Amul` that preserves an outgoing `mul` label
+    from being separated from the `Lmul` that replaces it.
+    """
+    named = list(LABEL_LANGUAGE_ORDER)
+    supported = [c for c in _supported_languages() if c not in named]
+    return [{"L" + lang, "A" + lang, "D" + lang} for lang in named] + [
+        {"L" + lang for lang in supported} | {"A" + lang for lang in supported}
+        | {"D" + lang for lang in supported}]
+
+
 def _cap_label_edits(lines, clan_block, corrections):
     """Move label edits on existing items to the FRONT and cut them to `LABEL_EDIT_CAP`.
 
@@ -899,6 +950,7 @@ def _cap_label_edits(lines, clan_block, corrections):
         return rest
 
     budget, held, head = [LABEL_EDIT_CAP], [0], []
+    clan_lines = clan_block.splitlines()
     # **`mul` FIRST, ahead of everything, and it is her own priority rather than a new one.**
     #
     # Emma, 2026-09-04: *"I am noticing mul labels are not being assigned based on most commonly
@@ -924,13 +976,18 @@ def _cap_label_edits(lines, clan_block, corrections):
     # in that order in `lines`, so the alias claims its slot first and a budget that runs out
     # between them leaves the alias added and the label unchanged -- harmless, and repeated next
     # run.
-    MUL_FIRST = {"Amul", "Lmul"}
-    lines = take(lines, budget, head, held, slots=MUL_FIRST)
-    # Then corrections, then the clan block, then everything else the batch writes onto an
-    # existing item -- the additions pass writes `ja`/`zh` labels too, and capping only the two
-    # hard-coded blocks left 664 label edits in the file when the cap is 15.
+    # Her language order, tier by tier, across every source. Within a tier the corrections go
+    # before the clan block -- *"Fixing something wrong outranks adding something missing"* --
+    # and both before whatever the rest of the batch emits onto an existing item.
+    for tier in _label_tiers():
+        if not tier:
+            continue
+        corrections = take(corrections, budget, head, held, slots=tier)
+        clan_lines = take(clan_lines, budget, head, held, slots=tier)
+        lines = take(lines, budget, head, held, slots=tier)
+    # Then anything in a language she did not name, in the same source order.
     take(corrections, budget, head, held)
-    take(clan_block.splitlines(), budget, head, held)
+    take(clan_lines, budget, head, held)
     lines = take(lines, budget, head, held)
 
     if head:
@@ -941,6 +998,9 @@ def _cap_label_edits(lines, clan_block, corrections):
                 "#   batch and be limited to a count of 15 labels added per batch\". A label set",
                 "#   at CREATION time is neither counted nor capped -- \"a label added during item",
                 "#   creation is good\".",
+                "#   Order is hers, 2026-09-04: en, mul, ja, zh, ko, then the supported",
+                "#   languages, then anything else -- and it is a priority, not just a layout,",
+                "#   so an `en` edit displaces a `hi` one rather than printing above it.",
                 f"#   {held[0]} more are held for a later run; a repeat is a no-op, so nothing is lost.",
                 "# " + "-" * 72] + head + [""]
     if newly:

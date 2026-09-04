@@ -27651,3 +27651,34 @@ plain file, `indent=1`, sorted twice over: the top-level keys by qid and every n
 differ every run and the diff would be noise — § *SORTING MUST BE DETERMINISTIC*, whose worked
 example is 36,901 changed lines over zero content change. Checked: two different input orders
 produce byte-identical files, and qualifiers survive the roundtrip.
+
+## 2026-09-04 — the label cap goes out in her language order
+
+**Emma, asked what order the added languages should be in:**
+
+    En / Mul / Ja / Zh / Ko
+    Then any ordering of our actively supported languages
+    Then any other language labels that might be changed for some reason
+
+**It is a priority, not a layout.** She gave it in answer to the 15-a-batch cap being spent
+before `mul` was reached, so the tiers are taken in turn *until the budget runs out* — an `en`
+edit displaces a `hi` one rather than merely printing above it. My earlier fix put `mul` first
+and left everything behind it unordered; this replaces that with her full list.
+
+The five are the ones the programme is about: § *The label gate* makes `ja` + `zh` + `ko` the
+condition for creating anybody, and § *The MARRIED name is the real name* shows an item's shape
+as `en`, `mul`, `Amul`, `ja`. **The actively supported set is `hi`, `ar`, `ru`, `el`**, read from
+`build-four-script-labels.CODES` rather than restated, so adding a language there moves it up
+this list for free — and an unreadable list drops those languages one tier rather than breaking
+the batch.
+
+Within a tier the source order is unchanged and is hers: corrections, then the clan block, then
+whatever the rest of the batch emits — *"Fixing something wrong outranks adding something
+missing"*.
+
+**The `Amul` that preserves an outgoing `mul` label stays immediately above the `Lmul` that
+replaces it**, because both are in the `mul` tier and a tier keeps the order its lines were
+emitted in. Some of those aliases are her hand-edits and nothing else records them, so separating
+them would lose work. Checked against `_cap_label_edits` with four edits in each of eleven
+languages in scrambled order: the 15 came out `en` ×5, `mul` ×6 with the alias directly above its
+label, `ja` ×4, and relationships passed through uncapped.
