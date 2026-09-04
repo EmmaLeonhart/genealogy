@@ -33,15 +33,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   not looked at.
   The URL is transcribed from a photo of her screen, so check it resolves before relying on it.
 
-- **Investigate items edited but never given a Geni id — `Q138582215` and `Q29246906`.** Emma, 2026-09-03:
-  *"https://www.wikidata.org/wiki/Q138582215 idk how this was edited but no geni link or mul
-  label add investigation to queue at end do not focus on it now just put at the end"*.
-  So the question is **how the item came to be edited in that state** — carrying neither a
-  `P2600` *Geni.com profile ID* nor a `mul` label, both of which every batch this repo emits
-  puts on. Nothing has been fetched or looked at; `CLAUDE.md` § *"Add it to the end of the
-  queue" means WRITE IT DOWN AND STOP* governs.
-
-
 ## ⛔ AT THE TAIL — mass export work on the paths for disconnected Wikidata individuals
 
 **Everything established on 2026-09-03, when Emma taught the task by hand after the automated

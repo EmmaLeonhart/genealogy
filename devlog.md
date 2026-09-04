@@ -27428,3 +27428,33 @@ uncapped, the corrections held. At 15 a batch the 259 drain in about 18 runs ins
 **The local composes for this were diagnostic and their output was reverted.**
 `reports/label-edits-emitted.tsv` records what was EMITTED, so 15 rows from a run that reached no
 batch would have suppressed those edits from a real one.
+
+## 2026-09-04 — `Q138582215` and `Q29246906`: the mechanism written for them never emitted a line
+
+Emma, 2026-09-03: *"https://www.wikidata.org/wiki/Q138582215 idk how this was edited but no geni
+link or mul label add investigation to queue at end"*, and separately that both items *"appear to
+have not had geni ids added on wikidata despite having been edited"*.
+
+Both symptoms are the two defects fixed today, and the timeline is checkable rather than argued:
+
+- **Both were edited by our batch.** `reports/label-edits-emitted.tsv` records `Lja`, `Lzh` and
+  `Lko` on both, dated **2026-09-01** — CJK labels derived from Geni data.
+- **Neither ever received a `P2600` from us.** `manual_p2600_lines` was written on 2026-09-03 in
+  `6bfcc6e`, in response to her pointing at these two — and the **same commit** added the
+  name-items block whose `head = [...]` replaced the list it had just built. Checked: that
+  assignment did not exist before `6bfcc6e`. So the mechanism written *for* these two items
+  discarded its own output from its first run to tonight.
+- **`mul` likewise.** `Q29246906` received an `Amul` on 2026-09-03 and never an `Lmul`;
+  `Q138582215` received its three CJK labels and never an `Lmul`. That is the label-cap
+  starvation — `Lmul` came from `lines`, which the cap reached last.
+- **They carry their Geni ids today because she added them.** Live: `Q138582215 P2600 1415237`
+  and `Q29246906 P2600 342026151920011851`, and both ledger rows are annotated *"from 日巫女
+  contributions (P2600 added to an existing item)"*.
+
+So the answer to *"idk how this was edited"* is: the pipeline wrote their names and their CJK
+labels while the statement saying where those names came from was generated and thrown away on
+every run — which inverts § *An item with no relationships is not a missing item*, *"The Geni ID
+needs to be present before any properties derived from Geni can be taken from it."*
+
+Nothing further is needed on these two items themselves; the fix is the one above, and it is what
+stops the class.
