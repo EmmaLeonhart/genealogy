@@ -27300,3 +27300,14 @@ by hand. Her own rulings are untouched and were checked: `Aagot Nyvold` still fl
 
 One case worth knowing, one person: `Elizabeth /Ryves./` is recorded with a trailing full stop and
 `_MARNM Ryves` without, so the recorded-wins rule now keeps `Elizabeth Ryves.`
+
+**And her ruling on the rest of them, same day: `ジュニア` / `小` / `주니어`.** Nine tokens back in
+the table, so the 5,976 people are unblocked. `d.y.` is *den yngre* and `d.e.`/`d.ä.` *den äldre*
+— the Jr./Sr. relation in Swedish and Norwegian — so they take the same readings rather than the
+`弟`/`兄` the question's preview proposed: those mean younger and older **brother**, and these two
+people are namesakes a generation apart, not siblings.
+
+**One thing worth her eye and not worth another question: `zh` puts 小 in FRONT.** The convention
+is 小布什, a prefix, where this emits `安德斯·安德松·小`. Moving it would mean reordering the label
+rather than rendering a token, which is more than she sanctioned; `ja ・ジュニア` and `ko 주니어`
+are suffixes and read correctly as they stand.
