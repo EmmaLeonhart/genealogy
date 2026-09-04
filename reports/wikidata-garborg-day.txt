@@ -13,75 +13,83 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Hansson -- patronymic, 3 bearer(s) in the batches
+# Rasmussen -- patronymic, 5 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Hansson"
-LAST	Len	"Hansson"
-#   set the mul label to "Hansson"
-LAST	Lmul	"Hansson"
+#   the item just created: set the en label to "Rasmussen"
+LAST	Len	"Rasmussen"
+#   set the mul label to "Rasmussen"
+LAST	Lmul	"Rasmussen"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141244099 Hans Hansson Store Vatne: P5056 patronym or matronym = the item just created
-Q141244099	P5056	LAST	S2600	"6000000005608892535"
-#   Q5976894 Gabriel Hansson Marklin: P5056 patronym or matronym = the item just created
-Q5976894	P5056	LAST	S2600	"6000000044191693814"
-#   Q141216468 Erik Hansson Gausland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
-Q141216468	P5056	LAST	P144	Q141216381	S2600	"6000000053561772011"
+#   Q141216381 Hans Rasmussen Låge-Håland: P5056 patronym or matronym = the item just created
+Q141216381	P5056	LAST	S2600	"6000000009127934231"
+#   Q141257264 Lydik Rasmussen Amdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141257299 Rasmus Lydikson Amdal
+Q141257264	P5056	LAST	P144	Q141257299	S2600	"6000000023605569477"
+#   Q141223738 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200074 Rasmus Olsen Bø
+Q141223738	P5056	LAST	P144	Q141200074	S2600	"6000000196541254827"
+#   Q141242406 Hans Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
+Q141242406	P5056	LAST	P144	Q141189099	S2600	"6000000225376735889"
+#   Q141242555 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
+Q141242555	P5056	LAST	P144	Q141189099	S2600	"6000000225376871825"
 
-# Helgesen -- patronymic, 3 bearer(s) in the batches
+# Kristiansen -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Helgesen"
-LAST	Len	"Helgesen"
-#   set the mul label to "Helgesen"
-LAST	Lmul	"Helgesen"
+#   the item just created: set the en label to "Kristiansen"
+LAST	Len	"Kristiansen"
+#   set the mul label to "Kristiansen"
+LAST	Lmul	"Kristiansen"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141189099 Rasmus Helgesen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189066 Helge Rasmusson Bø
-Q141189099	P5056	LAST	P144	Q141189066	S2600	"6000000021133770643"
-#   Q141189113 Ådne Helgesen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189066 Helge Rasmusson Bø
-Q141189113	P5056	LAST	P144	Q141189066	S2600	"6000000196542455825"
-#   Q141206056 Asbjørn Helgesen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216382 Helge Asbjørnsen Bø
-Q141206056	P5056	LAST	P144	Q141216382	S2600	"6000000222520395904"
+#   Q141189067 Helmik Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
+Q141189067	P5056	LAST	P144	Q141189076	S2600	"6000000221449620901"
+#   Q141189078 Lars Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
+Q141189078	P5056	LAST	P144	Q141189076	S2600	"6000000224702528843"
+#   Q141268096 Ole Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
+Q141268096	P5056	LAST	P144	Q141189076	S2600	"6000000224702600859"
+#   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
+Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 
-# Høle -- family, 3 bearer(s) in the batches
+# Låge-Håland -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Høle"
-LAST	Len	"Høle"
-#   set the mul label to "Høle"
-LAST	Lmul	"Høle"
+#   the item just created: set the en label to "Låge-Håland"
+LAST	Len	"Låge-Håland"
+#   set the mul label to "Låge-Håland"
+LAST	Lmul	"Låge-Håland"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q141200067 Rasmus Kjetilson Høle: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141200067	P734	LAST	P3831	Q2507958	S2600	"6000000003095034915"
-#   P734 family name = the item just created
-Q141200067	P734	LAST	S2600	"6000000003095034915"
-#   Q141180412 Marta Rasmusdatter Li: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141180412	P734	LAST	P3831	Q2507958	S2600	"6000000005609534550"
+#   Q141216634 Marit Hansdatter Stavnheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141216634	P734	LAST	P3831	Q2507958	S2600	"6000000009127909254"
+#   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created
+Q141216381	P734	LAST	S2600	"6000000009127934231"
+#   Q141250244 Rasmus Hansen Nord-Varhaug: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
+#   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
 
-# 351 more name items are needed and wait for a later
+# 358 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Asbjørnsdatter (patronymic), 3 bearer(s)
+#   Frondin (family), 3 bearer(s)
+#   Garfve (family), 3 bearer(s)
+#   Hansen (patronymic), 3 bearer(s)
+#   Hansson (patronymic), 3 bearer(s)
+#   Helgesen (patronymic), 3 bearer(s)
+#   Høle (family), 3 bearer(s)
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
 #   Knutsdatter (patronymic), 3 bearer(s)
 #   Larsson (patronymic), 3 bearer(s)
 #   Magnusson (patronymic), 3 bearer(s)
-#   Nord-Varhaug (family), 3 bearer(s)
-#   Olson (patronymic), 3 bearer(s)
-#   Rudén (family), 3 bearer(s)
-#   Røyneberg (family), 3 bearer(s)
-#   Söfdeborg (family), 3 bearer(s)
-#   Tollefson (patronymic), 3 bearer(s)
-#   Ugla (family), 3 bearer(s)
-#   ... and 339 more
+#   ... and 346 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -93,38 +101,42 @@ Q141180412	P734	LAST	P3831	Q2507958	S2600	"6000000005609534550"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2439 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2448 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the ko label to "안데르스 부레"
-Q3655969	Lko	"안데르스 부레"
-#   set the ko label to "조나스 부레"
-Q5590143	Lko	"조나스 부레"
-#   set the ko label to "위르헬므 히시에르"
-Q900478	Lko	"위르헬므 히시에르"
-#   Q141200111 Sæbjørn Toresson Talgje: set the ko label to "샙죄르느 토레손 탈게"
-Q141200111	Lko	"샙죄르느 토레손 탈게"
-#   Q141217434 Sissel Sæbjørnsdatter Talgje: set the ko label to "시셀 샙죄르느스다테르 탈게"
-Q141217434	Lko	"시셀 샙죄르느스다테르 탈게"
-#   set the ko label to "프레드리크 리빙"
-Q6070068	Lko	"프레드리크 리빙"
-#   set the ko label to "안드레아스 오라이"
-Q141199704	Lko	"안드레아스 오라이"
-#   set the ko label to "토마스 마티애"
-Q141180413	Lko	"토마스 마티애"
-#   set the ko label to "페흐르 올손"
-Q141223938	Lko	"페흐르 올손"
-#   set the ko label to "라우렌튜스 오라이"
-Q141223844	Lko	"라우렌튜스 오라이"
-#   set the ja label to "ウィリアム・シンクレア"
-Q95972040	Lja	"ウィリアム・シンクレア"
-#   set the zh label to "威廉·辛克莱"
-Q95972040	Lzh	"威廉·辛克莱"
-#   set the ko label to "위르리암 신크라이르"
-Q95972040	Lko	"위르리암 신크라이르"
-#   set the ja label to "アウローラ・カラムジナ"
-Q2471654	Lja	"アウローラ・カラムジナ"
-#   set the zh label to "奥萝拉·卡拉姆吉纳"
-Q2471654	Lzh	"奥萝拉·卡拉姆吉纳"
+#   Q141205922: holds the abbreviated 'Marit Ormsd Byre'; the full form is 'Marit Ormsdatter Byre'
+#   Q141205922: keep the outgoing label as an alias before it is replaced
+Q141205922	Amul	"Marit Ormsd Byre"
+#   Q141205922: set the mul label to 'Marit Ormsdatter Byre'
+Q141205922	Lmul	"Marit Ormsdatter Byre"
+#   Q141205922: set the en label to 'Marit Ormsdatter Byre'
+Q141205922	Len	"Marit Ormsdatter Byre"
+#   Q141205938: holds the abbreviated 'Ranveig Olsd Trevland'; the full form is 'Ranveig Olsdatter Trevland'
+#   Q141205938: keep the outgoing label as an alias before it is replaced
+Q141205938	Amul	"Ranveig Olsd Trevland"
+#   Q141205938: set the mul label to 'Ranveig Olsdatter Trevland'
+Q141205938	Lmul	"Ranveig Olsdatter Trevland"
+#   Q141205938: set the en label to 'Ranveig Olsdatter Trevland'
+Q141205938	Len	"Ranveig Olsdatter Trevland"
+#   Q141205938: set the ko label
+Q141205938	Lko	"란베익 올스다테르 트레브란드"
+#   Q141216598: holds the abbreviated 'Anna Ivarsd Stokka'; the full form is 'Anna Ivarsdatter Stokka'
+#   Q141216598: keep the outgoing label as an alias before it is replaced
+Q141216598	Amul	"Anna Ivarsd Stokka"
+#   Q141216598: set the mul label to 'Anna Ivarsdatter Stokka'
+Q141216598	Lmul	"Anna Ivarsdatter Stokka"
+#   Q141216598: set the en label to 'Anna Ivarsdatter Stokka'
+Q141216598	Len	"Anna Ivarsdatter Stokka"
+#   Q141216598: set the ja label
+Q141216598	Lja	"アンナ・イーヴァシュダッテル・ストカ"
+#   Q141216598: set the zh label
+Q141216598	Lzh	"安娜·伊瓦斯达特·斯托卡"
+#   Q141216632: holds the abbreviated 'Magdalena Lauritsd Hogganvik'; the full form is 'Magdalena Lauritsdatter Hogganvik'
+#   Q141216632: keep the outgoing label as an alias before it is replaced
+Q141216632	Amul	"Magdalena Lauritsd Hogganvik"
+#   Q141216632: set the mul label to 'Magdalena Lauritsdatter Hogganvik'
+Q141216632	Lmul	"Magdalena Lauritsdatter Hogganvik"
+#   Q141216632: set the en label to 'Magdalena Lauritsdatter Hogganvik'
+Q141216632	Len	"Magdalena Lauritsdatter Hogganvik"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
