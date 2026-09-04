@@ -16,9 +16,10 @@ as current. A generated page that restates rules is a second, staler copy of the
 **Name items are already inside the daily batch** -- one file since 2026-08-30, her instruction --
 so there is no second page to publish and nothing to run in a particular order.
 
-`out/parent-review.html` is still copied across when a run produced one, so the adjudication deck
-keeps a no-login URL of its own. It is not linked from the batch page; nothing should compete with
-the batch.
+A short list of review pages is copied across beside it, so each keeps a **no-login URL** of its
+own -- Emma, 2026-09-04: *"github pages is best since I don't need to sign in"*, an artifact and an
+Actions artifact both being unreachable to her. None of them is linked from the batch page:
+nothing should compete with the batch, and a page she was handed a URL for does not need a link.
 """
 
 from __future__ import annotations
@@ -35,8 +36,13 @@ OUT = ROOT / "out" / "site" / "index.html"
 #: The one file the site exists to serve.
 BATCH = ROOT / "reports" / "wikidata-garborg-day.txt"
 
-#: Published beside it so the deck is not artifact-only, but deliberately unlinked.
-DECK = ROOT / "out" / "parent-review.html"
+#: Published beside it so a review page is never artifact-only, but deliberately unlinked.
+#: Add a path here and it gets a Pages URL; also add it to `pages.yml`'s sparse checkout, or
+#: the runner will not have the file and the copy silently does nothing.
+ALONGSIDE = (
+    ROOT / "out" / "parent-review.html",
+    ROOT / "out" / "patronymic-identifications.html",
+)
 
 PAGE = pathlib.Path(__file__).resolve().parent.parent / "scripts" / "_batch_page.html"
 
@@ -62,10 +68,13 @@ def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     io.open(OUT, "w", encoding="utf-8", newline="").write(page)
 
-    if DECK.exists():
-        io.open(OUT.parent / DECK.name, "w", encoding="utf-8", newline="").write(
-            DECK.read_text(encoding="utf-8", errors="replace"))
-        print("published the adjudication deck alongside (unlinked)")
+    for extra in ALONGSIDE:
+        if not extra.exists():
+            print("not published (absent here): %s" % extra.name)
+            continue
+        io.open(OUT.parent / extra.name, "w", encoding="utf-8", newline="").write(
+            extra.read_text(encoding="utf-8", errors="replace"))
+        print("published alongside, unlinked: %s" % extra.name)
 
     # Fail loudly rather than deploying a page with no batch on it: a site that builds to
     # nothing looks exactly like a working deploy.
