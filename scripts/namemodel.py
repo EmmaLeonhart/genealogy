@@ -197,7 +197,219 @@ TITLE_WORDS = {
 #: catching `カール・フレドリク・パイパー・ティル・クラゲホルム` and correcting the item by hand.
 TITLE_CONNECTIVES = {"of", "von", "van", "de", "des", "der", "du", "di", "da",
                      "af", "av", "zu", "the"}
-TERRITORIAL_OPENERS = {"till", "til", "i", "på", "paa"}
+#: **English `of` is one of these IN THE NAME MODEL, and only there.** Measured over the
+#: 1,295,226 labelled people: 16,165 carry a non-initial bare `of` with something after it,
+#: and the tails are places without exception — `of Egypt` 324, `of Axum` 126, `of Armenia` 83,
+#: `of Burgundy` 77, `of Denmark` 55, `of Sweden` 44, `of that Ilk` 58, `of Kinderton`,
+#: `of Swinton`. **No family name in this corpus is introduced by English `of`**, so
+#: `Guaimar II of Salerno` emitting `P734` *family name* `Salerno` is simply wrong.
+#:
+#: It stays out of `build-garborg-day._drop_territorial`, which trims the label before
+#: transliteration — whether `Anne of Denmark` should read `アン・オフ・ダンマーク` is a question
+#: about her LABEL and is hers. This is only about what becomes a name item.
+TERRITORIAL_OPENERS = {"till", "til", "i", "på", "paa", "of"}
+
+
+#: **A single-token `NSFX` is a TITLE or an ORDINAL, and only the titles are dropped.**
+#: Emma, 2026-09-04, choosing between four readings of the 30,730 single-token suffixes:
+#: *drop titles, keep ordinals*. So `Graf`, `Knight`, `Donna` and `Kt.` stop becoming `P735`
+#: *given name* and `P734` *family name* items, while `II`, `I`, `Jr.`, `Sr.`, `d.y.` and the
+#: CJK generation numerals stay in the name — the ordinals carry `P7338` *regnal ordinal* and
+#: are part of what the person is called.
+#:
+#: **Built by reading the values with their counts, not by reasoning about what a title is.**
+#: 5,204 distinct values; this list drops **7,917 occurrences, 25.8%**. What SURVIVES the
+#: filter is the whole test and was read by eye: `II` 2,224 · `I` 1,836 · `Jr.` 1,693 ·
+#: `Sr.` 1,436 · `III` 1,154 · 一 800 · `d.y.` 598 · `d.e.` 369 · `fils` 26 · `Filho` 17 ·
+#: `Junior` 17 · `Senior` 14 · `younger` 13 — and then Norwegian farm surnames, `Ytteren` 26,
+#: `Altermark` 26, `Skonseng` 17, `Sandnes` 16, `Sveen` 16, `Kjærulf` 15. **Those farms are
+#: why this is a list and not a rule:** they are ordinary surnames sitting in the suffix
+#: field, and anything that dropped what it did not recognise would have deleted them.
+#:
+#: **Two collisions were found by measuring and both would have been silent.** `i` casefolds
+#: together with the Roman numeral `I`, which is 1,836 people — the trap `_drop_territorial`
+#: already carries a comment about — so `i` is not on this list at all, for the 21 occurrences
+#: it would have bought. And matching on a dot-stripped form put `d.e.` (369, Swedish *den
+#: äldre*) onto the particle `de`. **Nothing is dot-stripped here**; every surface form the
+#: corpus actually holds is listed instead.
+#:
+#: A token carrying no letter and no digit is also not a name — `*` 66, `♊` 45 (the Gemini
+#: sign, a twin marker), `?` 22, `.` 19, `+` 18 — and `is_suffix_title` says so without
+#: needing them enumerated.
+
+#: nobility, rank and courtesy
+_NOBILITY = (
+    'baron', 'barone', 'barones', 'baronesa', 'baroness',
+    'baronesse', 'baronet', 'baronica', 'boyar', 'bsse',
+    'bsse.', 'bt.', 'burggraf', 'burggräfin', 'chevalier',
+    'comte', 'comtesse', 'conde', 'condesa', 'conte',
+    'contesa', 'count', 'countess', 'coya', 'dame',
+    'don', 'dona', 'donna', 'doña', 'duc',
+    'duca', 'duchess', 'duchesse', 'duke', 'duque',
+    'duquesa', 'elector', 'erbkurprinz', 'erbprinz', 'erzherzog',
+    'erzherzogin', 'exilarch', 'freifrau', 'freiherr', 'freiin',
+    'friherre', 'friherrinna', 'furst', 'fürst', 'graaf',
+    'graf', 'grafaitė', 'grafas', 'grafienė', 'grafin',
+    'gravin', 'greve', 'grevinde', 'grevinna', 'grevinne',
+    'grof', 'gräfin', 'gräfinne', 'gróf', 'herr',
+    'herrin', 'herzog', 'herzogin', 'hrabia', 'inca',
+    'infant', 'infanta', 'jarl', 'k.b.', 'kb',
+    'kg', 'khatun', 'king', 'királyné', 'knight',
+    'knt', 'knt.', 'knyaz', 'kníže', 'komtesse',
+    'konge', 'koning', 'královna', 'książę', 'kt',
+    'kt.', 'kung', 'kunigaikštienė', 'kunigaikštis', 'kunigaikštytė',
+    'kurfürst', 'lady', 'landgraf', 'landgräfin', 'lensgreve',
+    'lensgrevinde', 'lord', 'marchesa', 'marchese', 'markgraf',
+    'markgräfin', 'marquesa', 'marquis', 'miles', 'nasi',
+    'nobil', 'nobile', 'orkneyjarl', 'pangeran', 'pfalzgraf',
+    'pfalzgräfin', 'podestà', 'prince', 'princess', 'princesse',
+    'principessa', 'prins', 'prinsesse', 'prinz', 'prinzessin',
+    'procer', 'queen', 'reichsfreiherr', 'reichsgraf', 'ridder',
+    'ritter', 'seigneur', 'sir', 'княжна', 'князь',
+    '殿下', '親王', '陛下',
+)
+
+#: clerical and religious
+_CLERICAL = (
+    'abade', 'abbess', 'archbishop', 'badessa', 'bischof',
+    'bishop', 'biskop', 'canónigo', 'cardinal', 'cardinale',
+    'clerigo', 'clérigo', 'erzbischof', 'frade', 'franciscano',
+    'fray', 'frei', 'freira', 'hacohen', 'hakohen',
+    'halevi', 'halevy', 'hy"d', 'irmã', 'kanonik',
+    'kanoniker', 'katz', 'licenciado', 'monaca', 'monaco',
+    'monja', 'monje', 'nonne', 'nun', 'padre',
+    'pbro', 'pbro.', 'presbitero', 'presbítero', 'rabbi',
+    'religiosa', 'religioso', 'rev', 'rev.', 's.j.',
+    'sacerdote', 'saint', 'segal', 'sj', 'sogneprest',
+    'sognepræst', 'sor', 'vescovo', 'הי"ד', 'הי״ד',
+    'הכהן', 'הלוי', 'זצ"ל', 'ע"ה',
+)
+
+#: office, rank, profession and post-nominal
+_OFFICE = (
+    'alferez', 'alférez', 'bagermester', 'bonde', 'br',
+    'cap.', 'capitan', 'capitán', 'capitão-mor', 'capt',
+    'capt.', 'captain', 'conquistador', 'consul', 'csa',
+    'd.d.', 'dd', 'dds', 'diputado', 'dr',
+    'dr.', 'dup', 'eidsvollsmann', 'esq', 'esq.',
+    'esquire', 'farmer', 'frs', 'general', 'generalmajor',
+    'gent', 'gent.', 'godsejer', 'jp', 'kaptein',
+    'kjøpmann', 'lic.', 'm.d.', 'major', 'md',
+    'mp', 'mr', 'mr.', 'mrs', 'mrs.',
+    'nauta', 'obe', 'oberst', 'ph.d', 'ph.d.',
+    'phd', 'professor', 'ra', 'regidor', 'rno',
+    'rso', 'rvo', 'sargento', 'senator', 'skipper',
+    'statsminister', 'styrmann', 'usa',
+)
+
+#: a description of the person, never a name
+_DESCRIPTION = (
+    'b.l.', 'concubine', 'fictional', 'fictitious', 'heiress',
+    'infant', 'legendary', 'mistress', 'ogift', 'oä',
+    'solteira', 'stillborn', 'tv', 'tvill', 'tvill.',
+    'tvilling', 'twin', 'u.b.', 'ug', 'ug.',
+    'ugift', '殤',
+)
+
+#: a dynasty or clan tag
+_DYNASTY = (
+    'bagratids', 'bjälboätten', 'folkungaätten', 'riurikaitis', 'rurikid',
+    'rurykowicz', 'български', 'рюрикович', 'рюриковичи', 'чингизид',
+)
+
+#: a particle stranded in the suffix field
+_PARTICLE = (
+    'fon', 'og', 'pl.', 'v.', 'von',
+    'фон',
+)
+
+
+NAME_SUFFIX_TITLES = frozenset(
+    t.casefold() for group in (_NOBILITY, _CLERICAL, _OFFICE,
+                               _DESCRIPTION, _DYNASTY, _PARTICLE)
+    for t in group)
+
+#: **`_PARTICLE` is deliberately absent here.** `Graf von Maltzahn` must lose `Graf` and keep
+#: `von Maltzahn`: `von` is *"an integral part of what the people are called"* — Emma,
+#: 2026-08-26 — and `name_shape` already classifies it as a particle so it never becomes a
+#: `P734` *family name* of its own. Stripping it from the front would renumber the name
+#: instead of cleaning it.
+_LEADING_TITLES = frozenset(
+    t.casefold() for group in (_NOBILITY, _CLERICAL, _OFFICE, _DESCRIPTION, _DYNASTY)
+    for t in group)
+
+
+def is_suffix_title(token: str) -> bool:
+    """True when this `NSFX` token is a title rather than part of the name."""
+    if not token:
+        return False
+    if not any(ch.isalnum() for ch in token):
+        return True
+    low = token.casefold()
+    return low in NAME_SUFFIX_TITLES or token.strip("()[]{}").casefold() in NAME_SUFFIX_TITLES
+
+
+def drop_leading_title(field: str) -> str:
+    """A name field with its LEADING title tokens removed. `Graf von Maltzahn` -> `von Maltzahn`.
+
+    **The other end from `drop_title_tail`, and it needs its own rule.** `Q110410743` carries
+    `_MARNM` = `Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin`, so the title comes
+    FIRST and the name follows it; truncating from the title, as the tail rule does, would
+    have emptied the field. It emitted `P734` *family name* `Q1158367` **Graf**.
+
+    **Never to empty.** A field whose only token is a title keeps it — `Anna King` has `King`
+    as her whole surname, and 17 people carry `King` as a suffix while far more carry it as a
+    name. One token left is where this stops.
+    """
+    toks = (field or "").split()
+    while len(toks) > 1 and toks[0].strip("()[]{}").casefold() in _LEADING_TITLES:
+        toks.pop(0)
+    return " ".join(toks)
+
+
+def drop_leading_territorial(field: str) -> str:
+    """`""` when a name FIELD opens with a territorial word — the whole field is a place.
+
+    **A field may be emptied; a label may not.** `drop_title_tail` skips index 0 on purpose,
+    because truncating a whole label leaves a person with no name at all. A `SURN` or `_MARNM`
+    is different: `Q2705969` *Guaimar II of Salerno Gybbosus* carries `_MARNM` = `of Salerno`,
+    which is entirely a territorial designation, and skipping its first token let `Salerno`
+    through as a `P734` *family name*. Nobody's family name is `Salerno` here.
+
+    Case decides `i` from `I` exactly as everywhere else, and a lone opener with nothing after
+    it is a name token that happens to look like the preposition.
+    """
+    toks = (field or "").split()
+    if len(toks) < 2:
+        return field
+    first = toks[0].strip(",")
+    if first == "I":
+        return field
+    return "" if first.casefold() in TERRITORIAL_OPENERS else field
+
+
+def drop_title_suffix(label: str, nsfx: str) -> str:
+    """`label` with the TITLE part of its own `NSFX` removed, and nothing else.
+
+    **The exactness is the safety.** Only a trailing token that the person's OWN `NSFX` holds
+    is considered, so `Anna King` keeps her surname while
+    `Dániel IV Esterházy de Galántha Graf` loses the `Graf` Geni put in the suffix field. A
+    word list applied to any trailing token would have taken `King`: 17 people carry it as a
+    suffix and far more carry it as a surname.
+
+    An ordinal in the suffix stays where it is — `Robert VII` keeps its `VII` — which is the
+    half of her 2026-09-04 ruling that says *keep ordinals*.
+    """
+    if not label or not nsfx:
+        return label
+    toks = label.split()
+    suffix = nsfx.split()
+    while toks and suffix and toks[-1] == suffix[-1]:
+        if not is_suffix_title(toks[-1]):
+            break
+        toks.pop()
+        suffix.pop()
+    return " ".join(toks).strip() or label
 
 
 def drop_title_tail(label: str) -> str:
@@ -781,12 +993,21 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     # it; `surn` picks up its tail the same way. Trimming both here rather than at the callers
     # is `CLAUDE.md` § *Code that is WRITTEN but never CALLED* -- there are two emitters and
     # they have disagreed before.
+    # **The TITLE half of the suffix goes first, then the title PHRASE.** `NSFX` is where Geni
+    # puts a title, and `build-display-names.py` concatenates it into the rendered name, so a
+    # caller that has the field can say exactly which trailing token came from there.
+    # `drop_title_tail` cannot: it sees one string with no field boundaries.
+    if fields and fields.get("nsfx"):
+        label = drop_title_suffix(label, fields["nsfx"])
     label = drop_title_tail(label)
     if fields:
         fields = dict(fields)
         for _f in ("givn", "surn", "marnm"):
             if fields.get(_f):
-                fields[_f] = drop_title_tail(fields[_f])
+                if fields.get("nsfx"):
+                    fields[_f] = drop_title_suffix(fields[_f], fields["nsfx"])
+                fields[_f] = drop_leading_territorial(
+                    drop_leading_title(drop_title_tail(fields[_f])))
         # **`father_name` is what turns a `-sen` token into the right kind of statement.**
         # Emma's test: the same token as the father means an inherited surname (`P734`), a
         # stem matching the father's GIVEN name means a patronymic (`P5056`). Without it the

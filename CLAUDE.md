@@ -640,10 +640,58 @@ on `givn`/`surn`/`marnm` alike, because there are two emitters and they have dis
 **It does not touch the LABEL.** What a person's `mul` label should read is a separate question
 from what becomes a `P735`, and this changes only the second.
 
-**The single-token values are an EDGE CASE and are hers** — `name modelling.txt`: *"for the edge
-cases I am going to want you to tell me about the edge cases."* `II` and `I` are regnal ordinals
-that genuinely are part of the name and carry `P7338` *regnal ordinal*; `Graf`, `Knight`, `Donna`
-and `Kt.` are titles that are not. Nothing guesses between them.
+**She ruled on the single tokens the next day: DROP TITLES, KEEP ORDINALS.** Emma, 2026-09-04,
+choosing between four readings. So `Graf` 464, `Knight` 274, `Kt.` 400 and `Donna` 209 stop
+becoming name items, while `II` 2,224, `I` 1,836, `Jr.` 1,693, `Sr.` 1,436, `d.y.` 598, `d.e.`
+369 and the CJK generation numerals stay — the ordinals carry `P7338` *regnal ordinal* and are
+part of what the person is called. `namemodel.NAME_SUFFIX_TITLES` is the list, **297 tokens read
+off the values with their counts**, and it drops 7,917 of the 30,730 occurrences, 25.8%.
+
+**What SURVIVES the filter is the test, and it is why this is a list and not a rule.** Under the
+ordinals sit Norwegian farm surnames — `Ytteren` 26, `Altermark` 26, `Skonseng` 17, `Sandnes` 16,
+`Sveen` 16, `Kjærulf` 15 — ordinary names that happen to be in the suffix field. Anything that
+dropped what it did not recognise would have deleted them.
+
+**Two collisions were found by measuring and both would have been silent.** `i` casefolds
+together with the Roman numeral `I`, 1,836 people, so `i` is not on the list at all — the same
+trap `_drop_territorial` already carries a comment about. And matching on a dot-stripped form put
+`d.e.` (369, Swedish *den äldre*) onto the particle `de`. Nothing is dot-stripped; every surface
+form the corpus holds is listed instead.
+
+**`drop_title_suffix` matches the person's OWN `NSFX` exactly**, never a bare word list against a
+trailing token — `Anna King` keeps her surname while `Dániel IV Esterházy de Galántha Graf` loses
+the `Graf`. 17 people carry `King` as a suffix and far more as a name.
+
+### The same title, at the other two ends of a name field
+
+Wiring the suffix rule surfaced two more, both emitting a live statement, both fixed with the
+same list and neither reachable by the tail rule:
+
+- **A LEADING title.** `Q110410743` carries `_MARNM` = `Graf von Maltzahn, Freiherr zu
+  Wartenberg und Penzlin` and emitted `P734` *family name* `Q1158367` **Graf**.
+  `drop_leading_title` strips it and keeps `von Maltzahn` — **`_PARTICLE` is deliberately not in
+  that set**, because `von` is *"an integral part of what the people are called"* and
+  `name_shape` already stops it becoming an item. It never strips to empty: a field whose only
+  token is a title keeps it, which is what protects `King`.
+- **A WHOLLY TERRITORIAL field.** `Q2705969` *Guaimar II of Salerno Gybbosus* carries `_MARNM` =
+  `of Salerno` and emitted `P734` **Salerno**. `drop_title_tail` skips index 0 on purpose — a
+  label must never truncate to nothing — but a *field* may, and `drop_leading_territorial` empties
+  it. Nobody's family name is Salerno.
+
+**English `of` is a territorial opener IN THE NAME MODEL and only there.** Measured: 16,165
+labelled people carry a non-initial bare `of` with something after it, and the tails are places
+without exception — `of Egypt` 324, `of Axum` 126, `of Armenia` 83, `of Burgundy` 77,
+`of Denmark` 55, `of Sweden` 44, `of that Ilk` 58. No family name in this corpus is introduced by
+English `of`. It stays out of `build-garborg-day._drop_territorial`, which trims the label before
+transliteration: whether `Anne of Denmark` should read `アン・オフ・ダンマーク` is a question about
+her LABEL and is hers.
+
+**The additions pass was NOT passing `fields` at all, and that is the whole root cause.** Without
+them `statements_for` falls back to parsing the rendered label positionally, and the rendered
+label is `givn + surn + NSFX` run together. The creation path 400 lines below always passed them.
+Fixing it moved name statements **145 → 157** on the live batch — the titles and places out, and
+real surnames the positional parse had been missing in: `Fleming`, `Boije`, `Henckel`,
+`Donnersmarck`, `Oxenstierna`, `Munck`, `Olofsson`, `Eriksdotter`.
 
 ### A middle initial keeps its Latin letter in every language
 

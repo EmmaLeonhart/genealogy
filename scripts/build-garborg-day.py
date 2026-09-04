@@ -5378,8 +5378,13 @@ def main():
                 # *"I want us to have the property P1810 with the specific name geni gives
                 # them."* Taking it from the same first row is the point: `derived-labels.csv`
                 # holds our derived label, which is a different claim.
+                # **`nsfx` is read so the name model can REFUSE it.** Geni puts a title in the
+                # name-suffix field -- `Queen of Sweden`, `Graf`, `Knight` -- and
+                # `build-display-names.py` concatenates every piece into `display_name`, so
+                # without this column nothing downstream can tell a title from a surname.
                 fields[row["geni_id"]] = {k: row.get(k, "") for k in
-                                          ("givn", "surn", "nick", "marnm", "display_name")}
+                                          ("givn", "surn", "nick", "marnm", "nsfx",
+                                           "display_name")}
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -5797,8 +5802,15 @@ def main():
             dad = father.get(g)
             # The father's NAME, not just his QID: Emma's test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
+            # **`fields` was NOT passed here, and that is how `Queen` became a given name.**
+            # Without it `statements_for` falls back to parsing the rendered label
+            # positionally, and the rendered label is `givn + surn + NSFX` run together --
+            # so `Bengta Ebbesdotter Ebbesdatter Hvide Queen of Sweden` gave `P735` *given
+            # name* Queen and `P734` *family name* Sweden on `Q2183430`. The creation path
+            # 400 lines below always passed them; this one never did.
             for line in name_lines(labels.get(g, ""), plan, g,
                                    father_item(dad),
+                                   fields=fields.get(g),
                                    father_name=labels.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
