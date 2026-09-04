@@ -23,6 +23,10 @@ on:
         description: "Comma- or space-separated QIDs, e.g. Q136376387,Q141223436"
         required: true
         type: string
+      property:
+        description: "Optional. With a property id (P2600), print one compact line per item -- its values, or NONE -- and no labels or JSON. For asking one question of many items."
+        required: false
+        type: string
 
 concurrency:
   group: fetch-items
@@ -42,6 +46,7 @@ jobs:
       - name: Fetch
         env:
           QIDS: ${{ inputs.qids }}
+          PROP: ${{ inputs.property }}
         run: |
           python - <<'PY'
           import json, os, re, sys, time, urllib.parse, urllib.request
@@ -61,6 +66,24 @@ jobs:
               with urllib.request.urlopen(req, timeout=60) as fh:
                   entities.update(json.load(fh).get("entities", {}))
               time.sleep(1)
+
+          # **One property across many items, as a compact table.** Dumping full JSON for 161
+          # items answers the question and buries it. The values are printed verbatim so an
+          # absence is `NONE` rather than a blank line that could be anything.
+          prop = (os.environ.get("PROP") or "").strip()
+          if prop:
+              missing = 0
+              for qid in qids:
+                  ent = entities.get(qid) or {}
+                  vals = []
+                  for st in (ent.get("claims") or {}).get(prop, []):
+                      v = st.get("mainsnak", {}).get("datavalue", {}).get("value")
+                      vals.append(v if isinstance(v, str) else json.dumps(v, sort_keys=True))
+                  if not vals:
+                      missing += 1
+                  print(f"{qid}\t{prop}\t" + ("|".join(vals) if vals else "NONE"))
+              print(f"\n{len(qids)} asked, {missing} carry no {prop}")
+              raise SystemExit(0)
 
           for qid in qids:
               ent = entities.get(qid) or {}
