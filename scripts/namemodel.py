@@ -1297,15 +1297,46 @@ def aliases_for(fields, surn="", marnm=""):
     # somewhere still wants it appended in the ordinary position, and Emma's own case is
     # untouched -- `Sally` does not end with `Ekman`, so it still becomes `Sally Ekman`, which
     # is the whole point of the alias.
+    # **The `NICK` FIELD is not a nickname and never takes the surname.** Emma,
+    # 2026-09-04, on `Carolina Gustafsdotter Wittfooth`: *"This persons last name is
+    # re[pe]ated twice in a mul alias"* -- the item went out carrying
+    # `Amul "Wittfoth Wittfooth"`. Her record is `NICK Karolina`, `NICK Wittfoth`,
+    # `SURN Wittfooth`, `_MARNM Wittfooth`: the `NICK` holds an alternate SPELLING of the
+    # surname, so appending the surname spells it twice.
+    #
+    # `classify_fields` gives both sources the usage `nickname` and this function could
+    # not tell them apart. They are different things, and the census says so --
+    # 152,447 name records carry a `NICK` and the field is overwhelmingly Geni's *also
+    # known as*, an alternate NAME rather than a byname: `Sally Miller`,
+    # `Bethiah Lathrop`, `Rebecca Kaplan`, `Thorbjørn Lekve Magelssen`,
+    # `Ludvig II Änkyttäjä`, `Jägerhorn af Spurila`. Every one of those reads correctly
+    # on its own and badly with a surname stapled on.
+    #
+    # **Emma's own case is the OTHER source and is untouched.** `Q141189102` is
+    # `GIVN 'Sigrid "Sally" Manilva'`, `SURN Tunheim`, `_MARNM Ekman` -- and her `nick`
+    # column is EMPTY. `Sally` is a quoted token inside `GIVN`, which is a genuine byname
+    # and is not findable bare, so it still becomes `Sally Ekman`; that is what
+    # `CLAUDE.md` § *A nickname alias carries the SURNAME* is about and it still holds.
+    #
+    # The `endswith` guard stays on the quoted path. It was written for the doubling in
+    # the `NICK` field -- 18,759 of 139,080 nickname aliases, 13% -- and matching on the
+    # SOURCE rather than on the string catches the variant spellings it could not:
+    # `Eccleston` against `Eggleston`, `Monradi` against `Monrad`, `Slason` against
+    # `Slawson`. A similarity threshold would have been the other way to reach those, and
+    # this repo does not have one.
     surname = " ".join((marnm or surn or "").split())
+    quoted = {(m.group("token") or m.group("apos") or m.group("paren")).strip()
+              for m in QUOTED.finditer(fields.get("givn", "") or "")}
     for token, usage, _ordinal in tokens:
         if usage == "nickname":
             bare = token.strip()
-            if surname and bare.casefold().endswith(surname.casefold()):
+            if bare not in quoted:
+                full = bare
+            elif surname and bare.casefold().endswith(surname.casefold()):
                 full = bare
             else:
                 full = f"{bare} {surname}".strip()
-            if full not in out:
+            if full and full not in out:
                 out.append(full)
     married = " ".join((fields.get("marnm") or "").split())
     if married and married.casefold() != " ".join(

@@ -347,6 +347,42 @@ def test_aliases_cover_the_nickname_and_the_married_full_name():
     assert "Stena" not in got, f"the bare nickname is not an alias: {got}"
 
 
+def test_the_nick_field_never_takes_the_surname():
+    """Emma, 2026-09-04, on `Carolina Gustafsdotter Wittfooth`: *"This persons last name
+    is re[pe]ated twice in a mul alias"* — the created item carried
+    `Amul "Wittfoth Wittfooth"`.
+
+    Her record is `NICK Karolina`, `NICK Wittfoth`, `SURN Wittfooth`, `_MARNM Wittfooth`.
+    The `NICK` field holds an alternate SPELLING of the surname, so appending the surname
+    spells it twice — and the old `endswith` guard could not see it, because `Wittfoth`
+    does not end with `Wittfooth`.
+
+    The two sources of the usage `nickname` are different things and this pins both:
+    Geni's `NICK` field is an *also known as*, already a name, emitted as it stands; a
+    QUOTED token inside `GIVN` is a byname that is not findable bare, and still gains the
+    surname. The test above is the second half and Emma's own `Sally` case is that shape
+    — `Q141189102`'s `nick` column is empty.
+    """
+    got = aliases_for({"givn": "Carolina Gustafsdotter", "surn": "Wittfooth",
+                       "nick": "Wittfoth", "marnm": "Wittfooth"})
+    assert "Wittfoth" in got, f"the also-known-as was lost: {got}"
+    assert "Wittfoth Wittfooth" not in got, f"the surname is spelled twice: {got}"
+
+    # The variant spelling is not the only shape: `Eccleston` against `Eggleston`,
+    # `Monradi` against `Monrad`, `Slason` against `Slawson`. A similarity threshold is
+    # the other way to reach these and this repo does not have one.
+    got = aliases_for({"givn": "Ichabod", "surn": "Eggleston",
+                       "nick": "Eccleston", "marnm": "Eggleston"})
+    assert got == ["Eccleston"], got
+
+    # And the ordinary case, which is most of the 152,447 records carrying a `NICK`:
+    # the field holds a whole alternate name that reads correctly on its own.
+    got = aliases_for({"givn": "Sarah", "surn": "Miller",
+                       "nick": "Sally Miller", "marnm": "Gross"})
+    assert "Sally Miller" in got, got
+    assert "Sally Miller Gross" not in got, got
+
+
 def test_a_mans_marnm_family_name_carries_no_married_role():
     """Emma, 2026-08-24, on seeing a man with `Q28418670` *married name*.
 

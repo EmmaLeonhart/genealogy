@@ -27192,3 +27192,45 @@ including those bearer names.
 `DECK` became `ALONGSIDE`, a tuple. The comment on it says what is not otherwise discoverable: a
 page added there and **not** to `pages.yml`'s sparse checkout is silently not published, because
 the runner never checks the file out and the copy is a no-op on a file that does not exist.
+
+## 2026-09-04 — the `NICK` field is an also-known-as, and it never takes the surname
+
+Emma, on `Carolina Gustafsdotter Wittfooth`: *"This persons last name is re[pe]ated twice in a
+mul alias"*. The created item carried `Amul "Wittfoth Wittfooth"`.
+
+Her GEDCOM record is `GIVN Carolina Gustafsdotter`, `SURN Wittfooth`, `_MARNM Wittfooth`, and
+two `NICK` lines — `Karolina` and `Wittfoth`. The `NICK` holds an alternate **spelling** of the
+surname, so `aliases_for` appending the surname spelled it twice. The existing `endswith` guard
+could not catch it: `Wittfoth` does not end with `Wittfooth`.
+
+**One cause: `classify_fields` gives both sources of a nickname the same usage.** A quoted token
+inside `GIVN` and the `NICK` field both come back as `nickname`, so `aliases_for` could not tell
+them apart. They are different things:
+
+* a **quoted `GIVN` token** is a byname — `Sigrid "Sally" Manilva Tunheim`. Bare `Sally` finds
+  nobody, so it takes the surname. That is Emma's 2026-08-26 ruling and her `nick` column is
+  empty, so it was never the field.
+* the **`NICK` field** is Geni's *also known as*, and the census says it is overwhelmingly a
+  whole alternate name rather than a byname: `Sally Miller`, `Bethiah Lathrop`,
+  `Rebecca Kaplan`, `Thorbjørn Lekve Magelssen`, `Ludvig II Änkyttäjä`, `Jägerhorn af Spurila`.
+  Every one reads correctly alone and badly with a surname stapled on.
+
+**Measured over `reports/display-names.csv`: 152,447 name records carry a `NICK`, and 124,366 of
+them — 82% — produced a mashed alias.** `Eccleston Eggleston`, `Monradi Monrad`,
+`Nordenskjöld Nordenskiöld`, `Re galantuomo di Savoia`, `граф Монкалиери Bonaparte`,
+`King of the Isle of Man and of Dublin Haraldsson`. The variant spellings are why matching on the
+SOURCE beats matching on the string — a similarity threshold is the other way to reach them and
+this repo does not have one.
+
+**122 ledger people would have been emitted with a mashed alias.** How many carry it live is not
+established: the egress proxy in this session denies `www.wikidata.org` (403 on CONNECT), and the
+local store has no index here and predates most of these items anyway. Actions can reach Wikidata
+and is where that check belongs.
+
+**A separate defect found in the same record and NOT fixed: `build-display-names.py` keeps only
+the LAST `NICK` line.** `record[parts[0]] = parts[1]` overwrites, so Carolina's `Karolina` was
+dropped and only `Wittfoth` survived. Measured over 40 exports: **5,861 of 16,319 name records
+with a `NICK` carry more than one, 36%**, up to 18 lines on one record. They are distinct
+appellations rather than tokens of one name — `近衛前子`, `豊臣秀吉猶子`, `中和門院` — so each is
+its own alias and joining them would make a new mash. Fixing it changes `display-names.csv`, which
+only a tree rebuild regenerates.
