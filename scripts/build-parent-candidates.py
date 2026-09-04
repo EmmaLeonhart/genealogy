@@ -1,6 +1,31 @@
 """The parent identifications the duplicate guard is sitting on, as a file she can answer.
 
-    python scripts/build-parent-candidates.py
+THE RUNBOOK --- this is the deck Emma means by *"the artifact we used for identifying parents"*,
+and it is regenerated on demand rather than served from the last commit:
+
+    python scripts/pack-derived.py --unpack     # clean clone only; the derived CSVs are gitignored
+    PYTHONPATH=src python scripts/build-parent-candidates.py
+
+    -> reports/parent-candidates.tsv   one row per open case
+    -> out/gui-data.json               the deck
+    -> out/parent-review.html          the deck rendered, which is what she opens
+
+It is published, UNLINKED, at
+<https://emmaleonhart.github.io/genealogy/parent-review.html> --- `scripts/build-pages-site.py`
+copies the HTML into the site and `.github/workflows/pipeline.yml` runs this generator on every
+push to `main`, so **a push to `main` is the deploy**. There is no other step.
+
+Her verdicts come back in `reports/emma-judgments.tsv`. `SAME` and `DIFFERENT` retire a case; an
+`UNSURE` is *I cannot tell from this* and comes back on a later run with more evidence.
+
+**ALWAYS REGENERATE BEFORE HANDING IT OVER.** `CLAUDE.md` § *Emma edits the tree and the items BY
+HAND, continuously* --- the committed HTML is a photograph, and a card she has already answered
+costs her a turn.
+
+**The check that catches a broken build is not the count, it is the page.** Three separate bugs
+published a deck of cards that named nobody while this script printed a healthy
+`17 structural candidates` every time; `CLAUDE.md` § *THE PARENT DECK* has all three. If any card
+shows a bare QID or an empty name box, the deck is broken, whatever the count says.
 
 **Emma, 2026-08-31:** the generator should *"actively create merge candidates like our ones that
 are files for potential geni identifications related to parents"*.
@@ -56,7 +81,6 @@ OUT_HTML = ROOT / "out" / "parent-review.html"
 
 csv.field_size_limit(1 << 30)
 #: **The separator in `out/wikidata/relations.tsv` is a SEMICOLON.**
-
 STORE_INDEX = ROOT / "out" / "wikidata" / "store-index.sqlite3"
 STORE_ITEMS = ROOT / "wikidata" / "items"
 
@@ -161,6 +185,39 @@ def _fetch_claims(ids, depth=0):
     return a, am | bm
 
 
+def _fetch_labels(ids):
+    """`{qid: label}` from the live API, `en` first then `mul`, batched 50 at a time.
+
+    **`out/wikidata/labels.tsv` is GITIGNORED, so in Actions it does not exist** -- and the
+    pipeline rebuilds this deck on every push. Reading that file and nothing else meant every
+    PUBLISHED deck showed a bare `Q5290415` where the Wikidata name belongs, while a local run
+    with the 187 MB file present looked perfect. Emma judges a card by reading two names against
+    each other, so one of them being a number is the difference between an answerable case and a
+    riddle. The file stays the cheap path; this fills whatever it did not cover.
+    """
+    out, ids = {}, [q for q in ids if q]
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        url = WD_API + "?" + urllib.parse.urlencode({
+            "action": "wbgetentities", "ids": "|".join(chunk),
+            "props": "labels", "languages": "en|mul", "format": "json"})
+        req = urllib.request.Request(url, headers={"User-Agent": WD_AGENT})
+        try:
+            with urllib.request.urlopen(req, timeout=90) as fh:
+                data = json.loads(fh.read().decode("utf-8"))
+        except Exception as exc:                       # noqa: BLE001
+            sys.stderr.write("label fetch failed for %d ids: %s" % (len(chunk), exc) + chr(10))
+            continue
+        time.sleep(0.4)
+        for q, e in (data.get("entities") or {}).items():
+            labs = e.get("labels") or {}
+            for lang in ("en", "mul"):
+                if labs.get(lang, {}).get("value"):
+                    out[q] = labs[lang]["value"]
+                    break
+    return out
+
+
 def _first_id(claims, prop):
     """The item id of the first ``prop`` statement, or `""`."""
     for st in claims.get(prop, ()):
@@ -197,8 +254,22 @@ def _first_year(claims, prop):
     return ""
 
 
+#: **`reports/derived-family.csv` separates with ` | `, spaces included -- NOT with `SEP`.**
+#: The two files this script reads use two different separators, and `cell()` used the
+#: Wikidata one on the tree one. `derived-family.csv` contains **zero** semicolons, so no
+#: multi-valued cell had ever been split: a person with three recorded fathers arrived as the
+#: single token `4259064 | 9995000000000000074 | 9995000000000102196`, which is not an id,
+#: resolves to no label, and reached the deck as a card naming nobody -- 4 of 17. The evidence
+#: half is the worse half: `our_children` and `our_spouses` came back EMPTY for everyone with
+#: more than one, which is exactly what Emma said makes a card unanswerable (*"no relationships
+#: means I can't make a judgment"*). `CLAUDE.md` § *Our side could never have two children* is
+#: the same bug in `zipper-join.py`, and the `.strip()` matters as much as the `|`: splitting
+#: without it yields `"1050090 "`, which misses every index just as silently.
+FAMILY_SEP = "|"
+
+
 def cell(row, column):
-    return [x.strip() for x in (row.get(column) or "").split(SEP) if x.strip()]
+    return [x.strip() for x in (row.get(column) or "").split(FAMILY_SEP) if x.strip()]
 
 
 def fold(w):
@@ -286,7 +357,16 @@ def main():
     labels = {}
     with io.open(LABELS, encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
-            labels[row["geni_id"]] = row.get("label_en") or row.get("label_mul") or ""
+            # **A CJK-only person has NO `label_en` and NO `label_mul`** -- their name is in
+            # `cjk_names`, ` | `-separated. Reading the first two columns only left the card
+            # blank on our side, which is the one thing Emma says makes a case unanswerable:
+            # `Koremune no Hirokoto` and `Tango no Naishi` reached the deck as a Wikidata name
+            # facing an empty box. `CLAUDE.md` § *CJK INCLUDES KOREAN* -- these are not an edge
+            # case to skip, and the first form is the one Geni renders.
+            name = row.get("label_en") or row.get("label_mul") or ""
+            if not name:
+                name = (row.get("cjk_names") or "").split(FAMILY_SEP)[0].strip()
+            labels[row["geni_id"]] = name
 
     # ---- already answered, in either direction --------------------------------------
     answered, unsure = set(), 0
@@ -372,22 +452,25 @@ def main():
                 if parts[0] in wanted and len(parts) > 1:
                     wd_label.setdefault(parts[0], parts[1])
     if not wd_label:
-        # `out/wikidata/labels.tsv` is 187 MB and gitignored, so a fresh clone -- a cloud session,
-        # a CI runner -- simply does not have it, and the deck then renders every case as a bare
-        # QID. Emma has already ruled on what that is worth: *"Fuck you no relationships means I
-        # can't make a judgment."* A card nobody can answer is the same failure as a card nobody
-        # generates, so fall back rather than warn.
-        #
-        # **The STORE INDEX makes this cheap, and that is the thing to know.** It maps QID to
-        # shard, so 54 QIDs came out of 40 shards in seconds -- there is no need to stream all
-        # 2,427. Scanning the whole store instead took over twenty minutes and was abandoned.
+        # **The local store is the CHEAP path and runs offline** -- its index maps QID to shard,
+        # so 54 QIDs come out of 40 shards in seconds rather than a pass over 4.3 GB. It is
+        # absent from a sparse Actions checkout (both the index and `wikidata/items/` are
+        # gitignored or excluded), which is why the API fallback below exists beneath it rather
+        # than instead of it.
         wd_label.update(labels_from_store(wanted))
-    if not wd_label:
-        sys.stderr.write("WARNING: no Wikidata labels from out/wikidata/labels.tsv OR the store "
-                         "index -- the Wikidata side will show QIDs instead of names, which "
-                         "makes a case much harder to judge. Rebuild labels.tsv with "
-                         "scripts/extract-wikidata-labels.py, or the index with "
-                         "`python -m genimerge wikidata-index`.\n")
+    missing = sorted(q for q in wanted if q and not wd_label.get(q))
+    if missing:
+        if not LABELS_WD.exists():
+            sys.stderr.write(
+                "out/wikidata/labels.tsv absent (gitignored, so this is normal in Actions)"
+                " -- fetching %s names from the API instead%s"
+                % (format(len(missing), ","), chr(10)))
+        wd_label.update(_fetch_labels(missing))
+    still = sum(1 for q in wanted if q and not wd_label.get(q))
+    print("Wikidata names: %s of %s resolved%s"
+          % (format(len(wanted) - still, ","), format(len(wanted), ","),
+             ("; %s still a bare QID" % format(still, ",")) if still else ""),
+          file=sys.stderr)
 
     # ---- the discriminating evidence -----------------------------------------------
     # **Emma, 2026-09-01, after ruling 207 pairs off the TSV:** *"The problem with that html is it
@@ -446,13 +529,12 @@ def main():
         cand_sp = [wd_label.get(x, x) for x in sp_of.get(q, ())]
         cand_kids = [wd_label.get(x, x) for x in kids_of.get(q, ())]
         cases.append({
-            # `g` can be a MULTI-VALUED cell -- `4259064 | 9995000000000000074 | ...` -- because a
-            # merged person carries every id they were merged from, and `9995...` ids are our own
-            # structural placeholders. Looking the whole cell up as one key finds nothing and the
-            # card renders with no name at all: 6 of 17 on 2026-09-04. Take the first id that
-            # actually resolves.
+            # `g` can itself be a MULTI-VALUED cell -- a merged person carries every id they
+            # were merged from, and `9995...` ids are our own structural placeholders. `cell()`
+            # now splits the parent/child/spouse columns correctly, but the `geni_id` column is
+            # read raw, so take the first id that actually resolves rather than the whole cell.
             "our": labels.get(g) or next(
-                (labels[t] for t in (x.strip() for x in str(g).split("|"))
+                (labels[t] for t in (x.strip() for x in str(g).split(FAMILY_SEP))
                  if labels.get(t)), ""),
             "geni": g,
             "qid": q,
@@ -526,6 +608,24 @@ def main():
     print("%d in the deck -> %s, %s" % (len(deck), OUT_JSON.relative_to(ROOT),
                                         OUT_HTML.relative_to(ROOT)))
 
+    # **A CARD THAT NAMES NOBODY IS THE TELL, and a count never showed it.** Three separate
+    # bugs each published a deck whose cards were a name facing an empty box or a bare QID,
+    # while this script printed a healthy candidate count every run -- so the count was about
+    # the instrument and the page was about the data. Emma, 2026-09-04, on what reached the
+    # site: *"a weird-ass page ... in a way that made it useless"*. Fail loudly instead. The
+    # files are still written, so the breakage is inspectable rather than merely absent.
+    nameless = [c for c in deck
+                if not (c.get("our") or "").strip()
+                or not (c.get("cand") or "").strip()
+                or re.fullmatch(r"Q\d+", (c.get("cand") or "").strip())]
+    if nameless:
+        print("BROKEN DECK: %d of %d cards name nobody on one side -- e.g. %s. See CLAUDE.md"
+              " section THE PARENT DECK."
+              % (len(nameless), len(deck),
+                 ", ".join(sorted(c["qid"] for c in nameless)[:5])), file=sys.stderr)
+        return 1
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

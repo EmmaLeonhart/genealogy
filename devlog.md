@@ -23942,6 +23942,46 @@ screened normalisation is wired at source, 8,053 labels changed, the two live it
 correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differing.
 `reports/merges-to-do.md` refreshed on the rebuilt labels.
 
+## 2026-09-04 --- the parent deck named nobody, on the page she was told to open
+
+**Emma:** *"give me the artifact we used for identifying parents with each other in previous
+sessions I want a session of using the thing"*, then, on
+<https://emmaleonhart.github.io/genealogy/parent-review.html>: *"it tried to regenerate a
+weird-ass page and put it on github in a way that made it useless."*
+
+**Three bugs, each of which published a deck of unanswerable cards while the generator printed a
+healthy count.** All in `scripts/build-parent-candidates.py`.
+
+- **`cell()` split `reports/derived-family.csv` on `;`.** That file separates with ` | ` and holds
+  **zero** semicolons, so no multi-valued cell had ever been split. Four of seventeen cards were a
+  glued token --- `4259064 | 9995000000000000074 | 9995000000000102196` --- which is not an id and
+  resolves to no name. The evidence half was worse: `our_children` and `our_spouses` came back
+  **empty** for everyone with more than one, which is exactly the state Emma has already said
+  makes a card unanswerable. `CLAUDE.md` § *Our side could never have two children* is the same
+  bug in `zipper-join.py`; the generator reads two files with two separators through one helper.
+- **Wikidata names came only from `out/wikidata/labels.tsv`, which is gitignored** --- so absent in
+  Actions, and Actions is what publishes. Every deck that ever reached the site showed a bare
+  `Q5290415` where the name belongs, while a local run with the 187 MB file present looked
+  perfect. `_fetch_labels()` fills the gap from `wbgetentities`, 50 ids a request.
+- **A CJK-only person had no name on our side**: `label_en` and `label_mul` are both empty and the
+  name is in `cjk_names`, so `Koremune no Hirokoto` and `Tango no Naishi` faced an empty box.
+
+**Measured, hiding `labels.tsv` to reproduce the runner:** Wikidata names went **0 of 48 to 47 of
+48**, and the file path and the API path produce a byte-identical `parent-candidates.tsv`. Cards
+naming nobody went **6 of 17 to 0 of 15** --- the deck shrank because two of the ghosts were the
+same two people counted twice. Every card now carries both names, both spouse lists, both child
+lists, sex and life dates.
+
+**A `BROKEN DECK` guard now exits non-zero when any card has an empty name or a bare QID.** The
+tell in all three bugs was identical and no count showed it: § *the number was about the
+instrument*. The files are still written, so a bad deck is inspectable rather than absent.
+
+**Documented in two places, because a cloud session went looking and found neither** ---
+`CLAUDE.md` § *THE PARENT DECK* and a runbook at the top of the generator: the URL, the two
+commands, the three outputs, that a push to `main` is the deploy, that verdicts return in
+`reports/emma-judgments.tsv`, and that the committed HTML is a photograph to be regenerated before
+it is handed over.
+
 ## 2026-09-01 — dates carry their GEDCOM modifier at last
 
 Emma, 2026-08-29: *"we very much need to have those qualifiers, and I don't know why it is that

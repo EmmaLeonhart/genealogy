@@ -3449,6 +3449,58 @@ enough to auto-merge later.
   verdict including `UNSURE`, and `ledger()` folds only `SAME`. An `UNSURE` is a data point about
   where the evidence runs out, which is what tells us the auto-merge threshold.
 
+### THE PARENT DECK: `parent-review.html`. Regenerate it, never hand her the committed one
+
+**The artifact.** <https://emmaleonhart.github.io/genealogy/parent-review.html> --- the deck of
+parent identifications the duplicate guard is sitting on, one card per case, rendered for reading
+by eye. It is published on GitHub Pages **unlinked**, per § *A REVIEW PAGE GOES ON GITHUB PAGES*.
+When she asks for *"the artifact we used for identifying parents"*, that URL is the answer.
+
+**Emma, 2026-09-04, on the state a cloud session left it in:** *"it tried to regenerate a
+weird-ass page and put it on github in a way that made it useless"*, and *"I want you to make the
+documentation of it much more clear so future sessions always clearly regenerate it on demand."*
+
+**THE RUNBOOK, and it is one command:**
+
+    python scripts/pack-derived.py --unpack     # only on a clean clone; the CSVs are gitignored
+    PYTHONPATH=src python scripts/build-parent-candidates.py
+
+It writes three things and they are one artifact in three forms --- `reports/parent-candidates.tsv`
+(the row per case), `out/gui-data.json` (the deck), `out/parent-review.html` (the deck rendered).
+`scripts/build-pages-site.py` copies the HTML to the site; `pipeline.yml` runs the generator on
+**every push to `main`**, so a push is a republish and there is no separate deploy step.
+
+**REGENERATE BEFORE HANDING IT OVER. Always.** The committed HTML is a photograph of whenever it
+was last built, and § *Emma edits the tree and the items BY HAND, continuously* is why that goes
+stale in minutes: a card she has already answered is a card that wastes her turn. The verdicts go
+back to `reports/emma-judgments.tsv` --- `SAME`/`DIFFERENT` retires a case, `UNSURE` does not.
+
+**Three things made the published page useless, all fixed 2026-09-04, all worth knowing because
+each one produced a page that looked fine to whatever built it:**
+
+- **`cell()` split `reports/derived-family.csv` on `;`.** That file separates with ` | ` and holds
+  **zero** semicolons, so no multi-valued cell had ever been split. A person with three recorded
+  fathers arrived as the single token `4259064 | 9995000000000000074 | 9995000000000102196`,
+  which is not an id, resolves to no name, and reached the deck as a card naming nobody --- 4 of
+  17. Worse, `our_children` and `our_spouses` came back **empty** for everyone with more than one,
+  which is precisely what she says makes a card unanswerable: *"no relationships means I can't
+  make a judgment."* This is § *Our side could never have two children* recurring in a second
+  script; the two files this generator reads use two different separators and one helper served
+  both.
+- **The Wikidata names came only from `out/wikidata/labels.tsv`, which is GITIGNORED.** So it is
+  absent in Actions --- and Actions is what publishes. Every deck that ever reached the site
+  showed a bare `Q5290415` where the name belongs, while a local run with the 187 MB file present
+  looked perfect. `_fetch_labels()` now fills the gap from `wbgetentities`, batched 50 at a time:
+  **0 of 48 names resolved before, 47 of 48 after**, and the two paths produce a byte-identical
+  TSV.
+- **A CJK-only person had no name on our side at all.** `label_en` and `label_mul` are both empty
+  for them and the name lives in `cjk_names` --- so `Koremune no Hirokoto` and `Tango no Naishi`
+  faced an empty box. § *CJK INCLUDES KOREAN*: these are not an edge case to skip.
+
+**The tell in all three was the same and is the thing to check next time: a card that names
+nobody.** The generator reported `17 structural candidates` either way, and a count is what gets
+read in a log. Open the page.
+
 ### The purpose is to ADD to Wikidata, not to correct it
 
 **2026-08-10, Emma:** *"the entire purpose of this is to add it… Correcting
