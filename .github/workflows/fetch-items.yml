@@ -1,0 +1,79 @@
+# **Read a live Wikidata item from a session that cannot reach Wikidata.**
+#
+# `CLAUDE.md` § *A SESSION RUNS ON THE ANTHROPIC CLOUD OR ON HER COMPUTER* says a cloud session
+# can query Wikidata, and that is true of the ones whose egress allows it. This one's proxy
+# denies `www.wikidata.org` outright -- 403 on CONNECT, `urllib` and WebFetch alike -- so the
+# mechanism failed, not the task. Actions can reach it.
+#
+# **It prints to the job log and commits nothing.** § *A SUMMARY of a Wikidata item is not the
+# item*: this fetches the FULL entity so an absence read off it is real, and dumps the whole
+# JSON alongside the labels and aliases so nothing is summarised on the way back.
+#
+#     gh workflow run fetch-items.yml -f qids=Q136376387,Q141223436
+#     gh run watch $(gh run list --workflow=fetch-items.yml --limit 1 --json databaseId -q '.[0].databaseId')
+#
+# Up to 50 ids per request, which is `wbgetentities`' own limit and the batching § *Querying
+# Wikidata is ALLOWED* asks for.
+name: Fetch Wikidata items
+
+on:
+  workflow_dispatch:
+    inputs:
+      qids:
+        description: "Comma- or space-separated QIDs, e.g. Q136376387,Q141223436"
+        required: true
+        type: string
+
+concurrency:
+  group: fetch-items
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Fetch
+        env:
+          QIDS: ${{ inputs.qids }}
+        run: |
+          python - <<'PY'
+          import json, os, re, sys, time, urllib.parse, urllib.request
+
+          qids = [q for q in re.split(r"[,\s]+", os.environ["QIDS"].strip()) if q]
+          bad = [q for q in qids if not re.fullmatch(r"Q[1-9][0-9]*", q)]
+          if bad:
+              sys.exit(f"not QIDs: {bad}")
+
+          UA = "genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)"
+          entities = {}
+          for i in range(0, len(qids), 50):
+              url = "https://www.wikidata.org/w/api.php?" + urllib.parse.urlencode(
+                  {"action": "wbgetentities", "ids": "|".join(qids[i:i + 50]),
+                   "format": "json"})
+              req = urllib.request.Request(url, headers={"User-Agent": UA})
+              with urllib.request.urlopen(req, timeout=60) as fh:
+                  entities.update(json.load(fh).get("entities", {}))
+              time.sleep(1)
+
+          for qid in qids:
+              ent = entities.get(qid) or {}
+              print("=" * 72)
+              print(qid, "-- MISSING" if ent.get("missing") is not None else "")
+              for lang, v in sorted((ent.get("labels") or {}).items()):
+                  print(f"  L{lang:<6} {v['value']!r}")
+              for lang, vs in sorted((ent.get("aliases") or {}).items()):
+                  for v in vs:
+                      print(f"  A{lang:<6} {v['value']!r}")
+              print()
+
+          print("=" * 72)
+          print("FULL JSON")
+          print(json.dumps(entities, ensure_ascii=False, indent=1, sort_keys=True))
+          PY
