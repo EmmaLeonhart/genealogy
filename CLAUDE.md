@@ -693,6 +693,69 @@ Fixing it moved name statements **145 → 157** on the live batch — the titles
 real surnames the positional parse had been missing in: `Fleming`, `Boije`, `Henckel`,
 `Donnersmarck`, `Oxenstierna`, `Munck`, `Olofsson`, `Eriksdotter`.
 
+### PARSE PATRONYMICS BY FORM. Do not parse a name positionally
+
+**Emma, 2026-09-04, and it is the diagnosis of the whole class rather than of one bug:**
+*"the big thing that really really caused the issues with the data here, and I think was the
+ultimate cause of most of them, is the fact that there is no real standardized representation of
+[patronymics] in our data… so we needed to do some level of positional parsing… Names should not
+be positionally parsed lol, we should just be able to fix the patronymic issue by parsing
+patronymics lol. Patronymics are extremely simple but gedcom just sucks at representing them.
+'x-son' 'x-sen' 'bin_x' 'ap_x' 'ben_x' 'bar_x' 'fitz_x' 'ferch_x' — a bunch of patronymic forms
+exist. And they are numerous but extremely regular for the most part."*
+
+**And her rule for the suffix field, categorical:** *"the name suffix never is anything involved…
+there never should be anything that is ever translated within the name suffix. It is just it in
+terms of, like, the father name, the middle name, the first name, last name."* Those four are the
+components; `NSFX` is none of them, so `drop_name_suffix` removes the whole of it before any
+classification. That does not contradict her *keep ordinals* of the same day: an ordinal stays in
+the rendered label and stays available as `P7338` *regnal ordinal*, a **qualifier** on the given
+name. What it stops being is a `P735` or `P734` of its own, which `II` never should have been.
+
+**`PATRONYMIC` matched six endings and the corpus holds far more.** Measured over 5,416,925 name
+tokens: `-son` 187,432 · `-sen` 162,015 · `-dotter` 106,075 · `-datter` 105,351 · `-dtr` 15,849 ·
+`-søn` 2,072 · `-dóttir` 1,424 · `-ović` 961 · `-wicz` 873 · `-ovna/-evna` 198 ·
+`-ovich/-evich` 186 · `-sønn` 118. Plus the standalone particles, which had no handling at all:
+`ap` 6,702 · `verch` 1,881 · `ben` 1,558 · `bin` 1,477 · `ab` 1,261 · `ferch` 1,234 · `ibn` 865 ·
+`bint` 465 · `bat` 342 · `bar` 315.
+
+**`join_particles` makes `ben Phinhas` ONE token before anything classifies it**, so `classify`
+and `classify_fields` need no lookahead and cannot disagree. It also stops `ben` being thrown
+away: `ben` is in `PARTICLES`, so `name_shape` dropped it and left `Phinhas` to be read as an
+ordinary name. `CLAUDE.md` recorded that it *"must never become a `P734` family name of its own"*
+— true, and it was becoming nothing at all. Joined, `Abisha III ben Phinhas ben Yittzhaq ben
+Shalma` parses as three `P5056` links, which is exactly what `name modelling.txt` specifies and
+what nothing could emit before.
+
+**Scale: 32,558 name records carry a patronymic the old pattern missed** —
+`reports/patronymic-forms-newly-detected.tsv`, sorted on the Geni id. `dtr` 15,636 · `ap` 6,620 ·
+`søn` 1,983 · `verch` 1,863 · `ben` 1,505 · `ab` 1,258 · `ferch` 1,232 · `dóttir` 1,106 ·
+`ovich` 946 · `wicz` 873.
+
+**Four things were measured and REFUSED**, each of which would have put a `P5056` on somebody it
+does not belong to:
+
+- **`-es` 76,975 and `-ez` 29,929** — `Jones`, `Alcides`, `Ramirez`, `Perez`. Patronymic in
+  origin, inherited surnames by the time they reach us.
+- **`-ian` 9,800** — mostly `Christian` and `Sebastian`, which are given names.
+- **`Mac`, `Mc`, `Fitz`, `O'`, 9,670** — her message lists `fitz_x`, and in this corpus they are
+  **attached and inherited**: `MacKinnon`, `McIntosh`, `Fitzalan`, `O'Neill`. Not one occurs as a
+  separate token. A separate `Fitz` token would qualify and there is none.
+- **Unaccented `ni` and `ui`** — capitalised `Ni` heads `Ni Choon`, a Chinese name, as often as a
+  Gaelic one. The accented `ní`/`uí` are unambiguous; it costs 17 occurrences.
+
+**Case is NOT a discriminator for the Semitic particles**, checked rather than assumed:
+`Ben Alan`, `Ben Zev`, `Nethanel Ben Yehiel`, `Yitzhak Ben Shmuel` are all Hebrew *ben* — 168
+capitalised against 1,346 lower. `bar` has the one real residue, `van Bar Opper-Lotharingen`
+being a place in Lorraine, 10 of 185.
+
+**Two edge cases left alone, and they are hers** — `name modelling.txt` § *edge cases*:
+
+- **`bin Haji Muhammad`.** `Haji` is an honorific, so the patronymic is `bin Muhammad` and the
+  join produces `bin Haji`. ~157 occurrences.
+- **`Abisha III`.** The regnal ordinal sits in `GIVN`, not `NSFX`, so the suffix rule does not
+  reach it and it still reads as a second given name rather than a `P7338` qualifier.
+
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
 **Emma, 2026-09-04**, having hand-corrected `Q141271379` from `Anna Ormsd Byre`: *"I changed her

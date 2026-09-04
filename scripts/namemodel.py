@@ -91,7 +91,55 @@ MARRIED_NAME_ROLE = "Q28418670"  # married name
 #: been reading the same token two different ways. Found because `PATRONYMIC_PARTS` below
 #: included it and this did not, and the father test disagreed with itself on
 #: `Jakobsdotter`.
-PATRONYMIC = re.compile(r".+(sen|son|sson|datter|sdatter|dotter)$", re.I)
+#: **Emma, 2026-09-04, and it is the diagnosis of the whole class of defect:** *"there is no
+#: real standardized representation of [patronymics] in our data… so we needed to do some level
+#: of positional parsing… Names should not be positionally parsed lol, we should just be able to
+#: fix the patronymic issue by parsing patronymics lol. Patronymics are extremely simple but
+#: gedcom just sucks at representing them. 'x-son' 'x-sen' 'bin_x' 'ap_x' 'ben_x' 'bar_x'
+#: 'fitz_x' 'ferch_x' — a bunch of patronymic forms exist. And they are numerous but extremely
+#: regular for the most part."*
+#:
+#: **Measured over 5,416,925 name tokens**, which is what decides what is on this list:
+#: `-son` 187,432 · `-sen` 162,015 · `-dotter` 106,075 · `-datter` 105,351 · `-dtr` 15,849 ·
+#: `-søn` 2,072 · `-dóttir` 1,424 · `-ović` 961 · `-wicz` 873 · `-ovna/-evna` 198 ·
+#: `-ovich/-evich` 186 · `-sønn` 118.
+#:
+#: **Three the census caught and this refuses**, because they are inherited surnames here rather
+#: than live patronymics: `-es` 76,975 (`Jones`, `Alcides`), `-ez` 29,929 (`Ramirez`, `Perez`)
+#: and `-ian` 9,800, which is mostly `Christian` and `Sebastian` — given names.
+PATRONYMIC = re.compile(
+    r".+?("
+    r"sen|son|sson|søn|sønn|"                 # Scandinavian male
+    r"datter|sdatter|dotter|sdotter|"          # Scandinavian female
+    r"d[oó]ttir|"                              # Icelandic
+    r"s(?:dtr|d|dr|dt|dtt|dttr)|"              # the abbreviations, genitive kept
+    r"[oe]vich|[oe]vna|ovi[cć]|wicz"           # Slavic
+    r")\.?$", re.I)
+
+#: **A standalone token that makes the NEXT token a patronymic.** These are the forms her
+#: message names that carry no suffix at all — the name is the father's, and a particle in
+#: front says so. Measured: `ap` 6,702 · `verch` 1,881 · `ben` 1,558 · `bin` 1,477 · `ab` 1,261 ·
+#: `ferch` 1,234 · `ibn` 865 · `bint` 465 · `bat` 342 · `bar` 315 · `ua`/`uí`/`ní`/`nic` 161.
+#:
+#: **`Mac`, `Mc`, `Fitz` and `O'` are deliberately NOT here**, though her message lists `fitz_x`.
+#: In this corpus they are ATTACHED and inherited — `MacKinnon`, `McIntosh`, `Fitzalan`,
+#: `O'Neill`, 9,670 occurrences and not one of them a separate token. They are surnames by the
+#: time they reach us; treating them as live patronymics would put a `P5056` on people whose
+#: great-grandfather is the one it names. A separate `Fitz` token would qualify and none occurs.
+PATRONYMIC_PARTICLE = frozenset({
+    "ap", "ab", "ferch", "verch",              # Welsh
+    "ben", "bin", "ibn", "bint", "bar", "bat",  # Semitic
+    "ua", "uí", "ní", "nic",                   # Gaelic
+})
+#: **Unaccented `ni` and `ui` are NOT here, and the census is why.** Capitalised `Ni` heads
+#: `Ni Choon`, a Chinese name, as often as it heads a Gaelic one; the accented forms are
+#: unambiguous. It costs 17 occurrences and buys never renaming a Chinese person's father.
+#:
+#: **Case is NOT a discriminator for the Semitic particles**, which was checked rather than
+#: assumed: `Ben Alan`, `Ben Zev`, `Nethanel Ben Yehiel` and `Yitzhak Ben Shmuel` are all
+#: Hebrew *ben*, not the English given name — 168 capitalised against 1,346 lower, and reading
+#: them settles it. `Bar` is the one with a real residue: `van Bar Opper-Lotharingen` is a place
+#: in Lorraine, 10 occurrences of 185.
 
 #: A token wholly inside brackets, as Geni writes an alternative or a house:
 #: `Turesson (Bielke)`, `Weirman (Weyerman)`, `Levine (?)`.
@@ -388,6 +436,33 @@ def drop_leading_territorial(field: str) -> str:
     return "" if first.casefold() in TERRITORIAL_OPENERS else field
 
 
+def drop_name_suffix(label: str, nsfx: str) -> str:
+    """`label` with its whole `NSFX` removed. The suffix is never a name component.
+
+    **Emma, 2026-09-04:** *"our general thing should be basically the name suffix never is
+    anything involved… there never should be anything that is ever translated within the name
+    suffix. It is just it in terms of, like, the father name, the middle name, the first name,
+    last name."* Those four are the components; `NSFX` is none of them.
+
+    **This supersedes `drop_title_suffix`, which kept the ordinals in the name.** Her 09-04
+    ruling *drop titles, keep ordinals* is not contradicted: an ordinal stays available as
+    `P7338` *regnal ordinal*, a QUALIFIER on the given name, and stays in the rendered label.
+    What it stops being is a `P735` or `P734` of its own, which it never should have been —
+    `II` is not a name.
+
+    Removal is by exact trailing match against the person's own suffix, so nothing else can be
+    taken, and never to empty.
+    """
+    if not label or not nsfx:
+        return label
+    toks = label.split()
+    suffix = nsfx.split()
+    while len(toks) > 1 and suffix and toks[-1] == suffix[-1]:
+        toks.pop()
+        suffix.pop()
+    return " ".join(toks).strip() or label
+
+
 def drop_title_suffix(label: str, nsfx: str) -> str:
     """`label` with the TITLE part of its own `NSFX` removed, and nothing else.
 
@@ -454,6 +529,45 @@ def drop_title_tail(label: str) -> str:
         # No qualifying phrase: every title word seen was a bare one, so keep the name whole.
         return label
     return " ".join(toks[:idx]).strip() or label
+
+
+
+def is_patronymic(token: str) -> bool:
+    """True for a suffix form (`Jonsdatter`) or a joined particle form (`ben Phinhas`)."""
+    if not token:
+        return False
+    if " " in token:
+        return token.split(" ", 1)[0].casefold() in PATRONYMIC_PARTICLE
+    return bool(PATRONYMIC.match(token))
+
+
+def join_particles(tokens: list[str]) -> list[str]:
+    """`['ap', 'Thomas']` -> `['ap Thomas']`, so a particle patronymic is ONE token.
+
+    **Why joining rather than a per-loop special case.** The particle and the father's name are
+    one patronymic — `name modelling.txt` models `Abisha III ben Phinhas ben Yittzhaq` as one
+    `P5056` *patronym or matronym* per link — and every classifier here walks tokens one at a
+    time. Joining first means `classify` and `classify_fields` need no lookahead and cannot
+    disagree about it.
+
+    **It also stops `ben` being thrown away.** `ben` is in `PARTICLES`, so `name_shape` dropped
+    it and left `Phinhas` to be read as an ordinary name; `CLAUDE.md` records that it *"must
+    never become a `P734` family name of its own"*, which was true and left it as nothing at
+    all. Joined, the pair is the patronymic the model always specified.
+
+    A trailing particle with nothing after it is left alone — it names nobody.
+    """
+    out: list[str] = []
+    i = 0
+    while i < len(tokens):
+        t = tokens[i]
+        if t.strip(".,").casefold() in PATRONYMIC_PARTICLE and i + 1 < len(tokens):
+            out.append(f"{t} {tokens[i + 1]}")
+            i += 2
+            continue
+        out.append(t)
+        i += 1
+    return out
 
 
 def _bare_word(token: str) -> str:
@@ -763,7 +877,7 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
     if not father_name:
         return "patronymic"
     parts = [t for t in re.split(r"\s+", father_name.strip()) if t]
-    fathers_patronymics = {t.casefold() for t in parts if PATRONYMIC.match(t)}
+    fathers_patronymics = {t.casefold() for t in parts if is_patronymic(t)}
     if token.casefold() in fathers_patronymics:
         return "family"
     m = PATRONYMIC_PARTS.match(token)
@@ -771,7 +885,7 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
         return "patronymic"
     raw = m.group(1).casefold()
     stem = raw.rstrip("s")
-    givens = [t.casefold() for t in parts if not PATRONYMIC.match(t)]
+    givens = [t.casefold() for t in parts if not is_patronymic(t)]
     for given in givens:
         g = given.rstrip("s")
         # `_same_name` gets the RAW stem: the genitive `s` is the whole difference it is built to
@@ -868,7 +982,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # family name and an `NN` label and loses only the words that were never names.
     ordinal = 0
     for token in ([] if is_description(raw_givn)
-                  else [t for t in re.split(r"\s+", plain.strip()) if t]):
+                  else join_particles([t for t in re.split(r"\s+", plain.strip()) if t])):
         # **`name_shape` runs on `GIVN` too.** It did not until 2026-08-31, so every marker
         # already in `UNKNOWN_MARKERS` became a `given` name when it sat in the given-name
         # field: `NN`, `Unknown`, `okänd` and `anonyma` each produced a `P735` proposal.
@@ -877,7 +991,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         if shape:
             out.append((token, shape, 0))
             continue
-        if PATRONYMIC.match(token):
+        if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name), 0))
         else:
             ordinal += 1
@@ -886,12 +1000,12 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # `SURN` is data, not the last whitespace token of anything. It can still hold a
     # patronym -- `name modelling.txt`: *"We have to check in the given names and in
     # the surname whether it is a patronym"* -- so the same test runs on it.
-    for raw in [t for t in re.split(r"\s+", (surn or "").strip()) if t]:
+    for raw in join_particles([t for t in re.split(r"\s+", (surn or "").strip()) if t]):
         token, shape = name_shape(raw)
         if shape:
             out.append((token, shape, 0))
             continue
-        if PATRONYMIC.match(token):
+        if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name), 0))
         else:
             out.append((token, "family", 0))
@@ -934,7 +1048,7 @@ def classify(label: str) -> list[tuple[str, str, int]]:
     # formatting and the name inside it is real, so it is stripped and the token kept.
     # `CLAUDE.md` on Stena: Emma took the nickname, not the quotes.
     cleaned = re.sub(r'[\"“”()]', " ", label or "")
-    tokens = [t for t in re.split(r"\s+", cleaned.strip()) if t]
+    tokens = join_particles([t for t in re.split(r"\s+", cleaned.strip()) if t])
     if not tokens:
         return []
 
@@ -943,17 +1057,17 @@ def classify(label: str) -> list[tuple[str, str, int]]:
     # name in `P734` and leave the person with no `P735` at all. A family name needs
     # something in front of it to be the family name OF.
     if len(tokens) == 1:
-        return [(tokens[0], "patronymic" if PATRONYMIC.match(tokens[0]) else "given",
-                 0 if PATRONYMIC.match(tokens[0]) else 1)]
+        return [(tokens[0], "patronymic" if is_patronymic(tokens[0]) else "given",
+                 0 if is_patronymic(tokens[0]) else 1)]
 
     out: list[tuple[str, str, int]] = []
     last = tokens[-1]
-    family = last if not PATRONYMIC.match(last) else None
+    family = last if not is_patronymic(last) else None
     body = tokens[:-1] if family else tokens
 
     ordinal = 0
     for token in body:
-        if PATRONYMIC.match(token):
+        if is_patronymic(token):
             out.append((token, "patronymic", 0))
         else:
             ordinal += 1
@@ -998,14 +1112,14 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     # caller that has the field can say exactly which trailing token came from there.
     # `drop_title_tail` cannot: it sees one string with no field boundaries.
     if fields and fields.get("nsfx"):
-        label = drop_title_suffix(label, fields["nsfx"])
+        label = drop_name_suffix(label, fields["nsfx"])
     label = drop_title_tail(label)
     if fields:
         fields = dict(fields)
         for _f in ("givn", "surn", "marnm"):
             if fields.get(_f):
                 if fields.get("nsfx"):
-                    fields[_f] = drop_title_suffix(fields[_f], fields["nsfx"])
+                    fields[_f] = drop_name_suffix(fields[_f], fields["nsfx"])
                 fields[_f] = drop_leading_territorial(
                     drop_leading_title(drop_title_tail(fields[_f])))
         # **`father_name` is what turns a `-sen` token into the right kind of statement.**
