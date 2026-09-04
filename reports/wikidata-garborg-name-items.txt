@@ -9,6 +9,30 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Voster -- family, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Voster"
+LAST	Len	"Voster"
+#   set the mul label to "Voster"
+LAST	Lmul	"Voster"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141205913 Ingebret Pederson Voster: P734 family name = the item just created
+Q141205913	P734	LAST	S2600	"6000000007980389582"
+#   Q141242562 Peder Jonsen Voster: P734 family name = the item just created
+Q141242562	P734	LAST	S2600	"6000000007980605161"
+#   Q141198755 Anna Ingebretsdatter Voster: P734 family name = the item just created
+Q141198755	P734	LAST	S2600	"6000000007980728952"
+#   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
+Q141223551	P734	LAST	S2600	"6000000007980728958"
+#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
+Q141244126	P734	LAST	S2600	"6000000007980728964"
+#   Q141244116 NN Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141244116	P734	LAST	P3831	Q28418670	S2600	"6000000015302207141"
+
 # Rasmussen -- patronymic, 5 bearer(s) in the batches
 # create a new item
 CREATE
@@ -51,31 +75,13 @@ Q141268096	P5056	LAST	P144	Q141189076	S2600	"6000000224702600859"
 #   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
 Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 
-# Låge-Håland -- family, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Låge-Håland"
-LAST	Len	"Låge-Håland"
-#   set the mul label to "Låge-Håland"
-LAST	Lmul	"Låge-Håland"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141216634 Marit Hansdatter Stavnheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141216634	P734	LAST	P3831	Q2507958	S2600	"6000000009127909254"
-#   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created
-Q141216381	P734	LAST	S2600	"6000000009127934231"
-#   Q141250244 Rasmus Hansen Nord-Varhaug: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
-#   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
-
-# 358 more name items are needed and wait for a later
+# 360 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Låge-Håland (family), 4 bearer(s)
 #   Asbjørnsdatter (patronymic), 3 bearer(s)
 #   Frondin (family), 3 bearer(s)
 #   Garfve (family), 3 bearer(s)
+#   Hakunge (family), 3 bearer(s)
 #   Hansen (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
@@ -83,7 +89,5 @@ Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
 #   Knutsdatter (patronymic), 3 bearer(s)
-#   Larsson (patronymic), 3 bearer(s)
-#   Magnusson (patronymic), 3 bearer(s)
-#   ... and 346 more
+#   ... and 348 more
 

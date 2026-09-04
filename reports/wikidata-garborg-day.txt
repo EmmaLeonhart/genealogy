@@ -13,6 +13,30 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Voster -- family, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Voster"
+LAST	Len	"Voster"
+#   set the mul label to "Voster"
+LAST	Lmul	"Voster"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141205913 Ingebret Pederson Voster: P734 family name = the item just created
+Q141205913	P734	LAST	S2600	"6000000007980389582"
+#   Q141242562 Peder Jonsen Voster: P734 family name = the item just created
+Q141242562	P734	LAST	S2600	"6000000007980605161"
+#   Q141198755 Anna Ingebretsdatter Voster: P734 family name = the item just created
+Q141198755	P734	LAST	S2600	"6000000007980728952"
+#   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
+Q141223551	P734	LAST	S2600	"6000000007980728958"
+#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
+Q141244126	P734	LAST	S2600	"6000000007980728964"
+#   Q141244116 NN Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141244116	P734	LAST	P3831	Q28418670	S2600	"6000000015302207141"
+
 # Rasmussen -- patronymic, 5 bearer(s) in the batches
 # create a new item
 CREATE
@@ -55,31 +79,13 @@ Q141268096	P5056	LAST	P144	Q141189076	S2600	"6000000224702600859"
 #   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
 Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 
-# Låge-Håland -- family, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Låge-Håland"
-LAST	Len	"Låge-Håland"
-#   set the mul label to "Låge-Håland"
-LAST	Lmul	"Låge-Håland"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141216634 Marit Hansdatter Stavnheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141216634	P734	LAST	P3831	Q2507958	S2600	"6000000009127909254"
-#   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created
-Q141216381	P734	LAST	S2600	"6000000009127934231"
-#   Q141250244 Rasmus Hansen Nord-Varhaug: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
-#   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
-
-# 358 more name items are needed and wait for a later
+# 360 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Låge-Håland (family), 4 bearer(s)
 #   Asbjørnsdatter (patronymic), 3 bearer(s)
 #   Frondin (family), 3 bearer(s)
 #   Garfve (family), 3 bearer(s)
+#   Hakunge (family), 3 bearer(s)
 #   Hansen (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
@@ -87,9 +93,7 @@ Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
 #   Knutsdatter (patronymic), 3 bearer(s)
-#   Larsson (patronymic), 3 bearer(s)
-#   Magnusson (patronymic), 3 bearer(s)
-#   ... and 346 more
+#   ... and 348 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -101,42 +105,39 @@ Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2448 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2431 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141205922: holds the abbreviated 'Marit Ormsd Byre'; the full form is 'Marit Ormsdatter Byre'
-#   Q141205922: keep the outgoing label as an alias before it is replaced
-Q141205922	Amul	"Marit Ormsd Byre"
-#   Q141205922: set the mul label to 'Marit Ormsdatter Byre'
-Q141205922	Lmul	"Marit Ormsdatter Byre"
-#   Q141205922: set the en label to 'Marit Ormsdatter Byre'
-Q141205922	Len	"Marit Ormsdatter Byre"
-#   Q141205938: holds the abbreviated 'Ranveig Olsd Trevland'; the full form is 'Ranveig Olsdatter Trevland'
-#   Q141205938: keep the outgoing label as an alias before it is replaced
-Q141205938	Amul	"Ranveig Olsd Trevland"
-#   Q141205938: set the mul label to 'Ranveig Olsdatter Trevland'
-Q141205938	Lmul	"Ranveig Olsdatter Trevland"
-#   Q141205938: set the en label to 'Ranveig Olsdatter Trevland'
-Q141205938	Len	"Ranveig Olsdatter Trevland"
-#   Q141205938: set the ko label
-Q141205938	Lko	"란베익 올스다테르 트레브란드"
-#   Q141216598: holds the abbreviated 'Anna Ivarsd Stokka'; the full form is 'Anna Ivarsdatter Stokka'
-#   Q141216598: keep the outgoing label as an alias before it is replaced
-Q141216598	Amul	"Anna Ivarsd Stokka"
-#   Q141216598: set the mul label to 'Anna Ivarsdatter Stokka'
-Q141216598	Lmul	"Anna Ivarsdatter Stokka"
-#   Q141216598: set the en label to 'Anna Ivarsdatter Stokka'
-Q141216598	Len	"Anna Ivarsdatter Stokka"
-#   Q141216598: set the ja label
-Q141216598	Lja	"アンナ・イーヴァシュダッテル・ストカ"
-#   Q141216598: set the zh label
-Q141216598	Lzh	"安娜·伊瓦斯达特·斯托卡"
-#   Q141216632: holds the abbreviated 'Magdalena Lauritsd Hogganvik'; the full form is 'Magdalena Lauritsdatter Hogganvik'
-#   Q141216632: keep the outgoing label as an alias before it is replaced
-Q141216632	Amul	"Magdalena Lauritsd Hogganvik"
-#   Q141216632: set the mul label to 'Magdalena Lauritsdatter Hogganvik'
-Q141216632	Lmul	"Magdalena Lauritsdatter Hogganvik"
-#   Q141216632: set the en label to 'Magdalena Lauritsdatter Hogganvik'
-Q141216632	Len	"Magdalena Lauritsdatter Hogganvik"
+#   Q141216632: set the ja label
+Q141216632	Lja	"マグダレーナ・ラウリトスダッテル・ホガンヴィク"
+#   Q141216632: set the ko label
+Q141216632	Lko	"막다레나 라우리츠다테르 호간비크"
+#   Q141217369: holds the abbreviated 'Anna Osmundsd Stokka'; the full form is 'Anna Osmundsdatter Stokka'
+#   Q141217369: keep the outgoing label as an alias before it is replaced
+Q141217369	Amul	"Anna Osmundsd Stokka"
+#   Q141217369: set the mul label to 'Anna Osmundsdatter Stokka'
+Q141217369	Lmul	"Anna Osmundsdatter Stokka"
+#   Q141217369: set the en label to 'Anna Osmundsdatter Stokka'
+Q141217369	Len	"Anna Osmundsdatter Stokka"
+#   Q141217369: set the ko label
+Q141217369	Lko	"안나 오스문드스다테르 스토카"
+#   Q141223851: set the mul label to 'Ragnhild Østensdatter Stokka'
+Q141223851	Lmul	"Ragnhild Østensdatter Stokka"
+#   Q141223851: set the en label to 'Ragnhild Østensdatter Stokka'
+Q141223851	Len	"Ragnhild Østensdatter Stokka"
+#   Q141223851: set the ja label
+Q141223851	Lja	"ラグンヒル・オステンスダッテル・ストカ"
+#   Q141223851: set the zh label
+Q141223851	Lzh	"拉格希尔德·奥斯滕斯达特·斯托卡"
+#   set the ko label to "아우로라 카람지나"
+Q2471654	Lko	"아우로라 카람지나"
+#   Q141224279 Magdalena Wallwik: set the ja label to "マグダレーナ・ヴァルヴィク"
+Q141224279	Lja	"マグダレーナ・ヴァルヴィク"
+#   set the zh label to "马格达莱纳·瓦尔维克"
+Q141224279	Lzh	"马格达莱纳·瓦尔维克"
+#   set the ko label to "막다레나 와르르위크"
+Q141224279	Lko	"막다레나 와르르위크"
+#   add a mul alias "Torsten Håkansson Rudén"
+Q6082642	Amul	"Torsten Håkansson Rudén"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -652,8 +653,8 @@ Q75917080	P735	Q1127708	P1545	"2"	P3831	Q245025
 Q135441621	P735	Q2529610
 #   Q56403540 Daniel Lindh: P735 given name = Q53787734 Daniel
 Q56403540	P735	Q53787734
-#   Q110561236 Christina Fjodorovna Rosladin: P735 given name = Q1083457 Christina, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q110561236	P735	Q1083457	P1545	"1"	P7452	Q3409033
+#   Q110561236 Christina Fjodorovna Rosladin: P735 given name = Q1083457 Christina
+Q110561236	P735	Q1083457
 #   Q6371586 Carl August Ramsay: P735 given name = Q2529610 Carl, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q6371586	P735	Q2529610	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q370731 August, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1226,8 +1227,8 @@ Q4951688	P734	Q47456776
 Q109835643	P735	Q325872	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q17317997 Catharina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q109835643	P735	Q17317997	P1545	"2"	P3831	Q245025
-#   Q106072786 Johanna Andriesdr Heijmans: P735 given name = Q4120836 Johanna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q106072786	P735	Q4120836	P1545	"1"	P7452	Q3409033
+#   Q106072786 Johanna Andriesdr Heijmans: P735 given name = Q4120836 Johanna
+Q106072786	P735	Q4120836
 #   Q131726979 Vilhelmina Lovisa Fredrika Ulrika Iserhielm: P735 given name = Q15711317 Vilhelmina, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q131726979	P735	Q15711317	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q10570000 Lovisa, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
