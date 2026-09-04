@@ -38,6 +38,7 @@ import argparse
 import collections
 import datetime
 import csv
+import os
 import random
 import re
 import subprocess
@@ -817,9 +818,28 @@ def _cap_label_edits(lines, clan_block, corrections):
     # that it can limit it to 15 like this and same with other label edits."* Without this the
     # same first 15 lines are emitted every run and the remaining 2,177 never are.
     #
-    # Keyed on `(qid, slot)` -- `Q10864996` + `Lnb` -- not on the value, so a re-worded label for
-    # an item already done does not sneak past. `reports/label-edits-emitted.tsv` is tracked, one
-    # row per edit, with the date it first went out.
+    # **Keyed on `(qid, slot, VALUE)`, and it was `(qid, slot)` until 2026-09-04.** The old key
+    # meant "we have written to this slot", which froze it: a label rule fixed afterwards could
+    # never reach the items the broken rule had already labelled.
+    #
+    # Emma found three of them in one message -- `Q141224746` reading `…・ドエ` for `d.e.`,
+    # `Q141283784` reading `…・ドイ` for `d.y.`, `Q141216388` reading `…・スト` for `St.` --
+    # all rendered by rules corrected the same evening, all unreachable. **Measured over the
+    # 1,860 rows: 220 emitted CJK labels the current rules render differently**, including
+    # `Q141205942` reading `トレ・イイ・…` for the ordinal `II` and `Q5735890` still carrying
+    # `・ティル・クモ` for a territorial `till Kumo` that `_drop_territorial` has dropped since.
+    #
+    # The comment here used to justify the old key as stopping *"a re-worded label for an item
+    # already done"* from sneaking past. That is the wrong thing to stop. This set exists to
+    # avoid re-proposing **the same edit** while she has not run the batch yet; the additions
+    # pass already refuses to emit anything the LIVE label agrees with, so a value that differs
+    # is a genuine disagreement -- which is precisely what Emma asked to be emitted: *"Every
+    # single label gets redone and if they disagree then they go onto the quickstatements that
+    # are generated."*
+    #
+    # `reports/label-edits-emitted.tsv` is tracked, one row per edit, with the date it first
+    # went out. Rows written before this change carry their value already, so the widened key
+    # reads them without a migration.
     #
     # **It records what was EMITTED, not what Wikidata accepted.** If she does not run a batch,
     # those 15 do not come back on their own. That is the honest cost of a stateless cap becoming
@@ -828,7 +848,7 @@ def _cap_label_edits(lines, clan_block, corrections):
     done = set()
     if done_path.exists():
         for row in csv.DictReader(done_path.open(encoding="utf-8"), delimiter="	"):
-            done.add((row["qid"], row["slot"]))
+            done.add((row["qid"], row["slot"], row.get("value", "")))
     newly = []
 
     def is_label_edit(ln):
@@ -858,7 +878,8 @@ def _cap_label_edits(lines, clan_block, corrections):
                     rest.append(ln)
                     pending = []
                     continue
-                if (qid, slot) in done:
+                value = ln.split("	")[2].strip('"')
+                if (qid, slot, value) in done:
                     pending = []
                     continue
                 if budget[0] <= 0:
@@ -866,8 +887,8 @@ def _cap_label_edits(lines, clan_block, corrections):
                     pending = []
                     continue
                 budget[0] -= 1
-                done.add((qid, slot))
-                newly.append((qid, slot, ln.split("	")[2].strip('"')))
+                done.add((qid, slot, value))
+                newly.append((qid, slot, value))
                 head.extend(pending)
                 head.append(ln)
             else:
@@ -6737,10 +6758,38 @@ def main():
                 known = {r["token"] for r in csv.DictReader(fh, delimiter="\t")}
         fresh = {t: v for t, v in MINTED_TOKENS.items() if t not in known}
         if fresh:
-            with open(tpath, "a", encoding="utf-8", newline="") as fh:
-                w = csv.writer(fh, delimiter="\t", lineterminator="\n")
-                for t, (ja, zh, ko) in sorted(fresh.items()):
-                    w.writerow([t, ja, zh, ko, "by rule, minted during the run"])
+            # **Read, merge, sort, replace -- never append.** Appending broke the file's
+            # ordering, which `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC* is about, and it did
+            # worse than that on 2026-09-04: the loader keeps the LAST row for a token, so five
+            # rule-minted rows sitting past the end silently overrode the readings Emma had just
+            # chosen. `d.y.` went back to `ドイ` and `Jr.` to `イル` after both had been fixed,
+            # and the fix looked applied because the table's early rows said so.
+            #
+            # The `t not in known` guard was already there and is not enough on its own: a token
+            # deleted from the table and re-minted in the same session is legitimately "not
+            # known", and that is exactly how these five arrived. Rewriting the whole file with
+            # one row per token makes a duplicate impossible rather than unlikely.
+            rows = []
+            if tpath.exists():
+                with open(tpath, encoding="utf-8", newline="") as fh:
+                    reader = csv.DictReader(fh, delimiter="\t")
+                    fieldnames = reader.fieldnames
+                    rows = list(reader)
+            else:
+                fieldnames = ["token", "ja", "zh", "ko", "note"]
+            by_token = {r["token"]: r for r in rows}
+            for t, (ja, zh, ko) in fresh.items():
+                by_token[t] = {"token": t, "ja": ja, "zh": zh, "ko": ko,
+                               "note": "by rule, minted during the run"}
+            from translit_no import table_sort_key
+            ordered = sorted(by_token.values(), key=table_sort_key)
+            tmp = tpath.with_suffix(".tsv.tmp")
+            with open(tmp, "w", encoding="utf-8", newline="") as fh:
+                w = csv.DictWriter(fh, fieldnames=fieldnames, delimiter="\t",
+                                   lineterminator="\n")
+                w.writeheader()
+                w.writerows(ordered)
+            os.replace(tmp, tpath)
         print(f"funnel: {len(MINTED_TOKENS)} tokens rendered on the fly, "
               f"{len(fresh)} new to the table")
     for g, label, why in carried[:10]:

@@ -129,11 +129,49 @@ def main() -> int:
     # name in every GEDCOM already taken, and no amount of re-parsing fixes it —
     # only a correction recorded by hand can. Applying it here, at derivation,
     # leaves the exports untouched as the record of what Geni actually said.
-    corrected: dict[str, str] = {}
     # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
     # files should read it lol."* It was deleted in `12f3134a` and the readers were not;
     # every one of them either crashed or degraded silently, which `CLAUDE.md` § *Systematic
     # review for legacy code* names as the worse of the two.
+    #
+    # **But nothing replaced it, so a correction of hers had nowhere to go.** This dict sat
+    # empty from that deletion until 2026-09-04, when Emma said of `Q141283774`: *"Name should
+    # be … Jacobus Bothniensis"*. Geni records him as `Jakob` and no re-derivation can produce
+    # anything else; only a recorded correction can. `reports/label-corrections.tsv` is that
+    # file -- tracked, one row per person, carrying who said it and why.
+    #
+    # It is applied HERE, at derivation, so the exports stay the record of what Geni actually
+    # said and every one of the 48 readers of `label_en`/`label_mul` sees the corrected form.
+    # The superseded name is not erased: it stays visible in `further_latin_names`.
+    corrected: dict[str, str] = {}
+    corrections_path = REPO_ROOT / "reports" / "label-corrections.tsv"
+    if corrections_path.exists():
+        with open(corrections_path, encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle, delimiter="\t"):
+                gid, label = (row.get("geni_id") or "").strip(), (row.get("label") or "").strip()
+                if gid and label:
+                    corrected[gid] = label
+        print(f"{len(corrected):,} hand-recorded label corrections")
+
+    # **Farm-name abbreviations, expanded only where the corpus attests the full form.** Emma,
+    # 2026-09-04, on `Q141216388` *Jon Hansson St. Vatne*: *"I think in this one St. Stands for
+    # Store"*, and *"St. Gives a misinpression"* -- it reads as *Saint*. `Store Vatne` is written
+    # out 42 times in this tree, so the corpus settles it; `St. Laurent` and `St. Leger` are left
+    # alone because `Store Laurent` is attested nowhere. `scripts/build-farm-abbreviations.py`
+    # writes the table and carries the reasoning.
+    farm: dict[str, str] = {}
+    farm_path = REPO_ROOT / "reports" / "farm-abbreviations.tsv"
+    if farm_path.exists():
+        with open(farm_path, encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle, delimiter="\t"):
+                farm[row["abbreviated"]] = row["expanded"]
+        print(f"{len(farm):,} attested farm-name abbreviations")
+
+    def expand_farm(text: str) -> str:
+        for short, full in farm.items():
+            if short in text:
+                text = text.replace(short, full)
+        return text
     by_person: dict[str, list[dict]] = defaultdict(list)
     with open(SOURCE, encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
@@ -306,6 +344,12 @@ def main() -> int:
         # and it stays hers.
         latin = [drop_marker_surname(x) for x in latin if label_for(x)]
         aliases = [drop_marker_surname(x) for x in aliases if label_for(x)]
+
+        # The abbreviation is expanded last, so it applies to whatever survived the marker
+        # handling above and to the married-name aliases alike.
+        if farm:
+            latin = [expand_farm(x) for x in latin]
+            aliases = [expand_farm(x) for x in aliases]
 
         birth = latin[0] if latin else ""
         married = aliases[0] if aliases else ""

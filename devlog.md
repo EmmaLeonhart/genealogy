@@ -27498,3 +27498,61 @@ Measured over all **363,615** spouse pairs: 7,554 share a birth date, 4,062 a de
 share both**, and **24 of those at day precision**. So the shape is 0.09% of pairs and the
 unmistakable form is 24 pairs in the whole tree. Not systematic, nothing mechanical to fix — they
 found one of the 24 by eye.
+
+## 2026-09-04 — four items, and the thing that was silently undoing every label fix
+
+Emma, four in one message:
+
+| | what she said | what it was |
+| --- | --- | --- |
+| `Q141224746` | *"a suffix or something that's not properly processed and is transliterated"* | `d.e.` read as `ドエ` / `德埃` / `데` |
+| `Q141216388` | *"St. Stands for Store … St. Gives a misinpression"* | `St. Vatne` reading as *Saint*, and `スト` in `ja` |
+| `Q141283784` | *"other acronym abbreviation problem"* | `d.y.` read as `ドイ` / `德伊` / `디` |
+| `Q141283774` | *"Name should be … Jacobus Bothniensis"* | Geni records him only as `Jakob` |
+
+**⛔ Two mechanisms were quietly cancelling label fixes, and both are the real finding here.**
+
+**One: the emitted-labels set froze every corrected label.** `label-edits-emitted.tsv` was keyed
+on `(qid, slot)` — "we have written to this slot" — so once a broken rule had labelled an item,
+the corrected value could never be emitted. `Q141216388` got `…・スト` on 2026-08-30 and was
+sealed. **Measured over the 1,860 rows: 220 emitted CJK labels the current rules render
+differently**, including `Q141205942` still reading `トレ・イイ・…` for the ordinal `II` and
+`Q5735890` still carrying `・ティル・クモ` for a territorial dropped since. The key is now
+`(qid, slot, value)`: a repeat is still suppressed, a correction is not. The old comment
+justified the narrow key as stopping *"a re-worded label … sneaking past"*, which is the wrong
+thing to stop — her rule is *"Every single label gets redone and if they disagree then they go
+onto the quickstatements"*, and the additions pass already refuses anything the live label agrees
+with.
+
+**Two: the funnel APPENDED, so a rule-minted row silently overrode a curated one.** The token
+table keeps the last row for a token. Tonight's `d.y.`/`Jr.` readings were written near the top in
+sort order, then a compose minted the old spellings again and appended them past the end — so
+`d.y.` went back to `ドイ` and `Jr.` to `イル` **after** both had been fixed, and the fix looked
+applied because the early rows said so. Five duplicate rows, removed, curated winning. The append
+is now a read-merge-sort-replace, so one row per token is impossible to violate rather than merely
+unlikely. The existing `t not in known` guard could not catch it: a token deleted and re-minted in
+one session is legitimately "not known", which is exactly how these arrived.
+
+**`St.` → `Store`, decided by the corpus and not by a rule.** `St.` heads 358 labels and most are
+genuinely saints — `St. Laurent`, `St. Leger`, `St. Adelaide von Bourgogne`. So the discriminator
+is whether *this* place is attested in full: `Store Vatne` is written out **42 times**, and
+`Store Laurent` nowhere, so `St. Laurent` is left alone by construction.
+`scripts/build-farm-abbreviations.py` writes `reports/farm-abbreviations.tsv` — **21 pairs settled
+by exactly one attested expansion, covering 93 labels**: `Store`, `Øvre`, `Ytre`, one `Østre`.
+`Ø.` is `Øvre` or `Østre` and nothing in the abbreviation says which, so it is settled per
+place-name or skipped. That is § *An abbreviated patronymic is EXPANDED* and its refusal in the
+same breath — *"A new form with no corpus evidence is SKIPPED, not defaulted"* — cutting the other
+way.
+
+**A hand correction had nowhere to go.** `corrected` in `derive-labels.py` has been an empty dict
+since `entity_resolution.md` was deleted, so *"Name should be Jacobus Bothniensis"* could not be
+recorded anywhere. `reports/label-corrections.tsv` is that file now: tracked, one row per person,
+carrying who said it and why. Applied at derivation, so the exports stay the record of what Geni
+said and the superseded name stays visible in `further_latin_names`.
+
+All four verified against the rebuilt tables:
+
+    Q141224746  ベレスト・ベレストセン・ラウヴスネス・シニア   贝莱斯特…·大        …시니어
+    Q141216388  Jon Hansson Store Vatne  ジョン・ハンソン・ストレ・ヴァトネ
+    Q141283784  ラース・ヨンソン・ジュニア・スクルドランド
+    Q141283774  Jacobus Bothniensis  ヤコブス・ボトニエンシス  雅各布斯·博特尼恩西斯  자코부스 보트니엔시스
