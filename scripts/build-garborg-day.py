@@ -1190,38 +1190,55 @@ def _only_adds_a_title(current, proposed):
 
 
 def consensus_latin_label(labels):
-    """The Latin name an item is called by, across its own languages. `''` when there is none.
+    """The Latin name an item is called by, by a VOTE across its own languages. `''` when none.
 
-    **Emma's specification, 2026-08-30**, on `Q6161733` coming out
-    `カール・フレドリク・パイパー・ティル・クラゲホルム`:
+    **⛔ Emma's specification, 2026-09-04, correcting what was here:** *"in the event that just
+    the English exists as a Latin alphabet thing, the English name turns into the multi language
+    label. And if two or more Latin alphabet labels exist, then the Latin alphabet labels vote on
+    whichever one is going to be the multi language label. I guess in this sense you can say that
+    it even is the case if there's only English, because it's just, like, English ties or English
+    is a tiebreaker. So in that case there would just be a single Latin language one, and English
+    is just a single vote for that."*
 
-    > *"if the pipeline was working correctly, it would have observed the fact that the person
-    > has over two labels. It would have observed that the person either has an English-language
-    > label that is in Latin characters, or they have a consistent Latin label across two or
-    > more languages. It would have assigned that one, whichever one is the most common, as the
-    > multi-language label… The Chinese and Japanese would have been derived from the
-    > multi-language label."*
+    So it is one rule and not two, and English has **no special standing except as a tiebreaker**:
 
-    So there are two grounds and English is the first: an `en` label in Latin script is the
-    answer. Failing that, the Latin string that the most languages agree on, and **at least two
-    must agree** -- one language saying something is not a consensus, it is that language.
+    * every Latin-script label is a vote for its own string;
+    * the string with the most votes wins;
+    * a tie is broken by the English label, if English is one of the tied;
+    * **one vote is enough** — a lone Latin label is a majority of one.
 
-    `Q6161733` is the worked case: `en` and `sv` both read `Carl Fredrik Piper`, so that is the
-    `mul` label and what `ja`/`zh` are built from. Our own Geni string,
-    `Carl Fredrik Piper till Krageholm`, is not a candidate here at all -- it goes to `P1810`
-    *subject named as* and to an `Amul` alias, per her same message.
+    **Two things here were wrong and both changed the answer.** The old version returned the
+    `en` label immediately whenever it was Latin, so English did not vote, it decided — twelve
+    languages agreeing on `Fredrik Elof Gyllenkrok` would have lost to one `en` reading
+    `Baron Fredrik Elof Gyllenkrok`. And it required `n >= 2`, so an item whose only Latin label
+    was English got **no `mul` at all**, which is a large part of what she reported as *"many
+    people are just never given mul labels"*.
+
+    **`mul` itself does not vote**, and that is deliberate rather than an oversight in her
+    wording: `mul` is the output. Letting it vote for itself makes the rule self-reinforcing —
+    a wrong `mul` would defend its own position against a single correcting label — and no
+    correction could ever reach an item, which is the same shape as the emitted-labels set that
+    froze 220 CJK labels until 2026-09-04.
+
+    **A tie with English not among the tied is broken by sorting**, so the answer is a function
+    of the labels and not of dict order — `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*.
+
+    `Q6161733` remains the worked case for why this reads the item's own labels rather than our
+    Geni string: `en` and `sv` both say `Carl Fredrik Piper`, so that is the `mul` and what
+    `ja`/`zh` are built from, while our `Carl Fredrik Piper till Krageholm` goes to `P1810`
+    *subject named as* and to an `Amul` alias.
     """
-    en = (labels.get("en") or "").strip()
-    if en and _LATIN_LABEL.match(en):
-        return en
-    counts = collections.Counter(
+    votes = collections.Counter(
         value.strip() for lang, value in labels.items()
         if lang != "mul" and value and _LATIN_LABEL.match(value.strip()))
-    if not counts:
+    if not votes:
         return ""
-    value, n = counts.most_common(1)[0]
-    return value if n >= 2 else ""
-
+    best = max(votes.values())
+    tied = sorted(v for v, n in votes.items() if n == best)
+    if len(tied) == 1:
+        return tied[0]
+    english = (labels.get("en") or "").strip()
+    return english if english in tied else tied[0]
 
 
 def _label_collisions():

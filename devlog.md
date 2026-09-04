@@ -27727,3 +27727,47 @@ already settled it: the dates are identical in `derived-facts.csv` because Geni 
 way, so our snapshot is current and there is nothing to fix. The census has been removed from
 `reports/anvilaquarius.md` rather than left in — a measurement nobody will act on reads as open
 work to the next session. Her ruling is recorded there in its place.
+
+## 2026-09-04 — the `mul` consensus is a VOTE, and English was deciding instead of voting
+
+**Emma:** *"in the event that just the English exists as a Latin alphabet thing, the English name
+turns into the multi language label. And if two or more Latin alphabet labels exist, then the
+Latin alphabet labels vote on whichever one is going to be the multi language label… you can say
+that it even is the case if there's only English, because it's just, like, English ties or English
+is a tiebreaker. So in that case there would just be a single Latin language one, and English is
+just a single vote for that."*
+
+One rule, not two, and English has **no standing except as a tiebreaker**. What was there had two
+deviations, and both changed answers:
+
+- **English short-circuited.** `if en and _LATIN_LABEL.match(en): return en` — so English did not
+  vote, it decided. Twelve languages agreeing would have lost to one `en`.
+- **`n >= 2` was required**, so an item whose only Latin label was English got **no `mul` at
+  all**, which is part of what she reported as *"many people are just never given mul labels"*.
+
+Measured over the 1,293 ledger items with live labels: **35 produce a different consensus** now
+that English votes rather than decides, and **8 produce one where they produced none**. Pending
+`Lmul` edits go 259 → 262.
+
+**`mul` itself does not vote, and that is deliberate rather than a gap in her wording.** `mul` is
+the output; letting it vote for itself makes the rule self-reinforcing, so a wrong `mul` would
+defend its position against a single correcting label and no correction could reach the item —
+the same shape as the emitted-labels set that froze 220 CJK labels until today.
+
+**A tie with English not among the tied is broken by sorting**, so the answer is a function of the
+labels rather than of dict order.
+
+**Two things worth her eye, both measured, neither acted on beyond the literal reading.**
+
+- **Language VARIANTS each cast a vote.** `pt-br` appears on 164 ledger label rows, `en-us` 26,
+  `en-ca` 23, `en-gb` 16 — so English is often three votes and Portuguese two. Her words are *"the
+  Latin alphabet labels vote"* and `pt-br` is one, so every variant votes. Collapsing to one vote
+  per base language changes **4 items**: `Q378177` `Balduíno IV da Flandres` → `Baldwin IV`,
+  `Q314521` `Berengar II of Italy` → `Berengar II`, `Q919247`, `Q5585470`. Four items is not worth
+  a question; the numbers are here so overruling it costs one line.
+- **The vote does NOT fix `Q136376245`, which is the case that prompted this.** His only Latin
+  label is `en` = `Baron Fredrik Elof Gyllenkrok`, with `mul` = `Fredrik Elof Gyllenkrok`. A lone
+  vote wins under her rule, so the title still replaces the clean label. What protects him is
+  `_only_adds_a_title`, which refuses a replacement whose sole difference is title words on the
+  front. Stated once as a fact rather than argued: the vote and that guard are answering two
+  different questions.
