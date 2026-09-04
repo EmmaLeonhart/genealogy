@@ -162,6 +162,71 @@ def ledger():
     return out
 
 
+#: The property a name item of each usage hangs off the PERSON by.
+PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056"}
+
+
+def live_values():
+    """`(qid, property) -> {values}` from `reports/garborg-live-values.tsv`.
+
+    That file is a LIVE read of her items and is refreshed by the same run that builds the
+    batch, so it is the freshest thing on disk -- fresher than the offline store download and
+    fresher than `created-name-items.tsv`.
+    """
+    out = collections.defaultdict(set)
+    path = ROOT / "reports" / "garborg-live-values.tsv"
+    if not path.exists():
+        return out
+    with open(path, encoding="utf-8") as fh:
+        r = csv.reader(fh, delimiter="\t")
+        next(r, None)
+        for row in r:
+            if len(row) >= 3 and row[0].startswith("Q"):
+                out[(row[0], row[1])].add(row[2].strip())
+    return out
+
+
+def reuse_from_bearers(fields, have, live):
+    """`(token, usage) -> qid` the token's OWN bearers already point at on Wikidata.
+
+    **This is the source that catches what the other three miss, and the case that named it is
+    `Kristiansen`.** On 2026-09-04 the batch emitted a `CREATE` for it while THREE of its four
+    bearers already carried `P5056` -> `Q141267893`; QuickStatements refused the duplicate on the
+    `patronymic` description, exactly as Emma designed it to. But a refused `CREATE` is not free:
+    every following line in that block resolves `LAST`, so all four `P5056` statements, their
+    `P144` qualifiers and their `P2600` sources died with it -- "No last item available", six
+    rows lost per refusal.
+
+    The offline store is a download that predates the item, `created-name-items.tsv` is 19 rows,
+    and the live `wbsearchentities` needs a network the runner may not have. The bearers' own
+    statements need nothing: the answer was already sitting in a file this run had just written.
+
+    **Attribution has to be unambiguous or nothing is reused.** A person with two given names and
+    one `P735` cannot tell you WHICH token that item is, so a bearer counts only when they carry
+    exactly one token of the usage and exactly one value for its property. A chained patronymic
+    (three `P5056`) is therefore skipped rather than guessed, which is `CLAUDE.md`
+    § *One name item per USAGE* holding: an ambiguity is left, never resolved by a coin flip.
+    """
+    by_token = collections.defaultdict(list)
+    for geni_id, person in fields.items():
+        qid = have.get(geni_id)
+        if not qid:
+            continue
+        toks = [(t, "family" if u == "married" else u)
+                for t, u, _ in classify_fields(**person)]
+        counts = collections.Counter(u for _, u in toks)
+        for token, usage in toks:
+            if usage in PROP_FOR and counts[usage] == 1:
+                by_token[(token, usage)].append(qid)
+    out = {}
+    for (token, usage), qids in by_token.items():
+        prop = PROP_FOR[usage]
+        seen = [live[(q, prop)] for q in qids if len(live.get((q, prop)) or ()) == 1]
+        if seen and len(set.union(*seen)) == 1:
+            out[(token, usage)] = next(iter(seen[0]))
+    return out
+
+
 def main():
     ids = people_in_batches()
     have = ledger()
@@ -242,6 +307,10 @@ def main():
     ambiguous = collections.Counter()
     linked = collections.Counter()
     live_rescues = []
+    bearer_rescues = []
+    bearer_reuse = reuse_from_bearers(fields, have, live_values())
+    if bearer_reuse:
+        print(f"{len(bearer_reuse)} token(s) are already pointed at by their own bearers")
     for person in fields.values():
         for token, usage, _ordinal in classify_fields(**person):
             # A nickname is monolingual text on the person's own item, so it needs no
@@ -281,6 +350,14 @@ def main():
             #
             # Only an exact label match with the right `P31`, and SEVERAL qualifying items
             # means no answer -- that ambiguity is § *One name item per USAGE* and is hers.
+            # **Then the bearers' OWN statements, before any network call.** See
+            # `reuse_from_bearers`: this is the source that caught `Kristiansen`, and it costs
+            # nothing because the file it reads was refreshed by this same run.
+            if not qid:
+                qid = bearer_reuse.get((token, usage), "")
+                if qid:
+                    action = "link (the bearers already point at it)"
+                    bearer_rescues.append((token, usage, qid))
             if not qid:
                 qid = live_existing_item(token, usage)
                 if qid:
@@ -295,6 +372,11 @@ def main():
 
     print(f"{len(linked)} tokens already have an item and are linked, not created")
     print(f"{len(need)} need creating, {len(ambiguous)} are ambiguous and are not")
+    if bearer_rescues:
+        print(f"{len(bearer_rescues)} token(s) RESCUED by the bearers' own statements -- "
+              f"these would have been created a second time:")
+        for token, usage, q in sorted(set(bearer_rescues)):
+            print(f"   {token:<20} {usage:<12} {q}")
     if live_rescues:
         print(f"{len(live_rescues)} token(s) RESCUED by the live check -- these would "
               f"have been created a second time:")
