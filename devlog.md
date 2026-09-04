@@ -23942,6 +23942,46 @@ screened normalisation is wired at source, 8,053 labels changed, the two live it
 correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differing.
 `reports/merges-to-do.md` refreshed on the rebuilt labels.
 
+## 2026-09-04 --- the deck on demand: its own workflow, proven on a runner
+
+**Emma:** *"get the documentation and stuff working well for this to occur as a general part of
+the workflow and be easily given by any future claude cloud session (generation with github
+actions and committing into repo lol and claude.md well documenting this as a part of the
+workflow)."*
+
+**`.github/workflows/parent-deck.yml`, `workflow_dispatch` only.** Sparse checkout, unpack the
+derived CSVs, build, copy onto the site, commit and push to `main` --- which is itself what
+republishes Pages. One command from a session with no corpus on disk:
+`gh workflow run parent-deck.yml`.
+
+**It is separate from `pipeline.yml` because being downstream is what broke it.** The pipeline
+rebuilds the deck too, but after a ledger refresh and a QuickStatements compose, and it commits
+the batch in the same run. On run 33920471729 the deck rebuilt correctly, the *batch* commit hit
+a rebase conflict on `reports/wikidata-garborg-day.txt`, the `site` job was skipped, and Pages
+went on serving cards that named nobody. The push retries against the pipeline's own pushes
+rather than failing a run that has already produced the deck.
+
+**The `BROKEN DECK` guard fired on its first Actions run and was right.** `Q111366618` is
+藤原遠宗の娘 (惟宗広言の妻) --- a real name, in `ja`, with no `en` and no `mul` --- and
+`_fetch_labels()` was asking for `en|mul` only, so the card was a bare QID facing a Japanese name.
+The store fallback already walked a wider list; the API path now shares it as `LABEL_LANGS` and
+falls back to whatever label exists. **Run 33923842675: 13 of 13 names resolved from the API
+alone, no `labels.tsv`, no store, committed and pushed.** So the guard has now been seen to fail
+on a real defect and then pass, which is what `CLAUDE.md` asks of a guard.
+
+**Her verdicts, two blocks, 21 rows.** 15 then 6 (one duplicate): 15 SAME, 1 DIFFERENT, 5 UNSURE.
+`reports/emma-judgments.tsv` 313 -> 330 decided; the deck 15 -> 7 -> **5**. Four of the last seven
+came back `UNSURE`, which is the file working: an UNSURE is a data point about where the evidence
+runs out, and it comes back on a later run rather than being retired.
+
+**`CLAUDE.md` § *THE PARENT DECK* now carries the whole loop** --- which command with and without
+a local corpus, that a claude.ai artifact and a GitHub **Actions** artifact are different things
+and only the second is the one she cannot open, and how a pasted block of verdicts becomes rows.
+
+**All 19 open issues closed at her instruction.** Every one was an auto-created *Garborg batch*
+notification from the pipeline, 17 of them from the last two days --- the pipeline opens one per
+run, so they accumulate on their own.
+
 ## 2026-09-04 --- the parent deck named nobody, on the page she was told to open
 
 **Emma:** *"give me the artifact we used for identifying parents with each other in previous
