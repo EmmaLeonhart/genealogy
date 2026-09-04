@@ -43,6 +43,7 @@ ALONGSIDE = (
     ROOT / "out" / "parent-review.html",
     ROOT / "out" / "patronymic-identifications.html",
     ROOT / "out" / "duplicate-surnames.html",
+    ROOT / "out" / "duplicate-name-items-we-made.html",
 )
 
 PAGE = pathlib.Path(__file__).resolve().parent.parent / "scripts" / "_batch_page.html"
