@@ -13,6 +13,42 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Låge-Håland -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Låge-Håland"
+LAST	Len	"Låge-Håland"
+#   set the mul label to "Låge-Håland"
+LAST	Lmul	"Låge-Håland"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141216634 Marit Hansdatter Stavnheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141216634	P734	LAST	P3831	Q2507958	S2600	"6000000009127909254"
+#   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created
+Q141216381	P734	LAST	S2600	"6000000009127934231"
+#   Q141250244 Rasmus Hansen Nord-Varhaug: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
+#   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
+
+# Ebbesdatter -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ebbesdatter"
+LAST	Len	"Ebbesdatter"
+#   set the mul label to "Ebbesdatter"
+LAST	Lmul	"Ebbesdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q116150300 Cecilie Ebbesdatter Hvide: P5056 patronym or matronym = the item just created, qualified P144 based on Q16063657
+Q116150300	P5056	LAST	P144	Q16063657	S2600	"305332989800002467"
+#   Q2183430 Bengta Ebbesdotter Ebbesdatter Hvide Queen of Sweden: P5056 patronym or matronym = the item just created, qualified P144 based on Q16063657
+Q2183430	P5056	LAST	P144	Q16063657	S2600	"4947248545210089938"
+
 # Høle -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -31,45 +67,12 @@ Q141200067	P734	LAST	S2600	"6000000003095034915"
 #   Q141180412 Marta Rasmusdatter Li: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141180412	P734	LAST	P3831	Q2507958	S2600	"6000000005609534550"
 
-# Ingebretsdatter -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Ingebretsdatter"
-LAST	Len	"Ingebretsdatter"
-#   set the mul label to "Ingebretsdatter"
-LAST	Lmul	"Ingebretsdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141198755 Anna Ingebretsdatter Voster: P5056 patronym or matronym = the item just created, qualified P144 based on Q141205913 Ingebret Pederson Voster
-Q141198755	P5056	LAST	P144	Q141205913	S2600	"6000000007980728952"
-#   Q141223551 Ragnhild Ingebretsdatter Voster: P5056 patronym or matronym = the item just created, qualified P144 based on Q141205913 Ingebret Pederson Voster
-Q141223551	P5056	LAST	P144	Q141205913	S2600	"6000000007980728958"
-#   Q141244126 Valborg Ingebretsdatter Voster: P5056 patronym or matronym = the item just created, qualified P144 based on Q141205913 Ingebret Pederson Voster
-Q141244126	P5056	LAST	P144	Q141205913	S2600	"6000000007980728964"
-
-# Johansdotter -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Johansdotter"
-LAST	Len	"Johansdotter"
-#   set the mul label to "Johansdotter"
-LAST	Lmul	"Johansdotter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q73763413 Margareta Johansdotter Wallensteen: P5056 patronym or matronym = the item just created
-Q73763413	P5056	LAST	S2600	"6000000002255382033"
-#   Q130684369 Agneta Johansdotter Ållongren: P5056 patronym or matronym = the item just created
-Q130684369	P5056	LAST	S2600	"6000000006127651347"
-#   Q141206084 Margareta Burea: P5056 patronym or matronym = the item just created, qualified P144 based on Q633094 Johannes Thomæ Agrivillensis Bureus
-Q141206084	P5056	LAST	P144	Q633094	S2600	"6000000025579779586"
-
-# 354 more name items are needed and wait for a later
+# 358 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Ingebretsdatter (patronymic), 3 bearer(s)
+#   Johansdotter (patronymic), 3 bearer(s)
 #   Larsson (patronymic), 3 bearer(s)
+#   Mårtensdotter (patronymic), 3 bearer(s)
 #   Nord-Varhaug (family), 3 bearer(s)
 #   Rudén (family), 3 bearer(s)
 #   Røyneberg (family), 3 bearer(s)
@@ -78,10 +81,7 @@ Q141206084	P5056	LAST	P144	Q633094	S2600	"6000000025579779586"
 #   Torsteinson (patronymic), 3 bearer(s)
 #   Ugla (family), 3 bearer(s)
 #   Ådnesdatter (patronymic), 3 bearer(s)
-#   Årsvoll (family), 3 bearer(s)
-#   Andersdotter (patronymic), 2 bearer(s)
-#   Andersson (patronymic), 2 bearer(s)
-#   ... and 342 more
+#   ... and 346 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -93,38 +93,38 @@ Q141206084	P5056	LAST	P144	Q633094	S2600	"6000000025579779586"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2368 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2353 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141223436: set the mul label to 'Tore Underberge III'
-Q141223436	Lmul	"Tore Underberge III"
-#   Q141223436: set the en label to 'Tore Underberge III'
-Q141223436	Len	"Tore Underberge III"
-#   Q141223436: set the ja label
-Q141223436	Lja	"トーレ・ウンデルベルゲ・イイイ"
-#   Q141223436: set the zh label
-Q141223436	Lzh	"托雷·温德尔贝尔盖·伊伊伊"
-#   Q141283761 Gunnbjørg Arnbjørnsdatter Aukland: add a mul alias "Gunnbjørg Arnbjørnsdatter Mjølhus"
-Q141283761	Amul	"Gunnbjørg Arnbjørnsdatter Mjølhus"
-#   Q141223744 Rasmus Wibye Andersson Lea: set the zh label to "拉斯穆斯·维比埃·安德松·莉亚"
-Q141223744	Lzh	"拉斯穆斯·维比埃·安德松·莉亚"
-#   set the ko label to "라스무스 위볘 안데르손 레아"
-Q141223744	Lko	"라스무스 위볘 안데르손 레아"
-#   Q141223503 Anne Berta Osmundsdatter Nese: set the ko label to "안네 베르타 오스문드스다테르 네세"
-Q141223503	Lko	"안네 베르타 오스문드스다테르 네세"
-#   Q141244121 Ragnhild Jonsdatter Lea: set the ko label to "락느힐드 존스다테르 레아"
-Q141244121	Lko	"락느힐드 존스다테르 레아"
-#   set the ja label to "エリック・クヌードセン・オフ・ソンデルハランド"
-Q28467896	Lja	"エリック・クヌードセン・オフ・ソンデルハランド"
-#   set the zh label to "埃里克·克努森·奥夫·松德尔哈兰德"
-Q28467896	Lzh	"埃里克·克努森·奥夫·松德尔哈兰德"
-#   set the ko label to "에리크 크누드센 오프 쇤데르할란드"
-Q28467896	Lko	"에리크 크누드센 오프 쇤데르할란드"
-#   set the ko label to "마틸데 프레드리케 탐스"
-Q141205923	Lko	"마틸데 프레드리케 탐스"
-#   set the ja label to "アルゴット・ブリノルフソン"
-Q19842232	Lja	"アルゴット・ブリノルフソン"
-#   set the zh label to "阿尔戈特·布里诺尔夫松"
-Q19842232	Lzh	"阿尔戈特·布里诺尔夫松"
+#   set the ko label to "알고트 브리놀프손"
+Q19842232	Lko	"알고트 브리놀프손"
+#   Q141198381 Bengt Hafridsson Lejon: set the ko label to "벵트 하프리드손 레존"
+Q141198381	Lko	"벵트 하프리드손 레존"
+#   set the ja label to "ベレンガル2世・オフ・イタリ"
+Q314521	Lja	"ベレンガル2世・オフ・イタリ"
+#   set the zh label to "贝伦加尔二世·奥夫·伊塔利"
+Q314521	Lzh	"贝伦加尔二世·奥夫·伊塔利"
+#   set the ko label to "베레아르 2세 오프 이타리"
+Q314521	Lko	"베레아르 2세 오프 이타리"
+#   Q2624238 Wilhelm Mauritz Klingspor: set the ko label to "위르헬므 마우리트즈 크링스포르"
+Q2624238	Lko	"위르헬므 마우리트즈 크링스포르"
+#   Q5914181 Otto Reinhold Klingspor: set the ko label to "오토 레인홀드 크링스포르"
+Q5914181	Lko	"오토 레인홀드 크링스포르"
+#   Q5914160 Fredrik Filip Klingspor: set the ko label to "프레드리크 피리프 크링스포르"
+Q5914160	Lko	"프레드리크 피리프 크링스포르"
+#   set the ja label to "クリストフ・エルンスト・ヴォン・プラーテン"
+Q130564935	Lja	"クリストフ・エルンスト・ヴォン・プラーテン"
+#   set the zh label to "克里斯托夫·恩斯特·翁·普拉滕"
+Q130564935	Lzh	"克里斯托夫·恩斯特·翁·普拉滕"
+#   set the ko label to "크리스토프 에르느스트 본 프라텐"
+Q130564935	Lko	"크리스토프 에르느스트 본 프라텐"
+#   Q141225155 John David af Sandeberg: set the ja label to "ジョン・デイヴィッド・アフ・サンデベルグ"
+Q141225155	Lja	"ジョン・デイヴィッド・アフ・サンデベルグ"
+#   set the zh label to "约翰·大卫·阿夫·桑德贝尔格"
+Q141225155	Lzh	"约翰·大卫·阿夫·桑德贝尔格"
+#   set the ko label to "조흐느 다비드 아프 산데베르그"
+Q141225155	Lko	"조흐느 다비드 아프 산데베르그"
+#   Q141244236 Ture Turesson Bielke: set the ko label to "투레 투레손 비엘케"
+Q141244236	Lko	"투레 투레손 비엘케"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -818,7 +818,7 @@ Q5749466	P735	Q594279
 Q104383015	P735	Q13580919	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q11027623, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q104383015	P735	Q11027623	P1545	"2"	P3831	Q245025
-#   Q136376387 Ebba Kristina Carlsdotter: P735 given name = Q2242896 Ebba, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+#   Q136376387 Ebba Kristina Siöblad: P735 given name = Q2242896 Ebba, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q136376387	P735	Q2242896	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q19798802 Kristina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q136376387	P735	Q19798802	P1545	"2"	P3831	Q245025
