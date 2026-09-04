@@ -6580,17 +6580,22 @@ def main():
     # pipeline generates 10 quickstatements adding the geni id to the individuals at the
     # beginning of each generation."* A `P2600` on an existing item needs nothing created, so
     # it can lead; and putting it first means the ledger is truest at the moment the rest runs.
-    head = []
+    # **Two blocks lead the file and they are kept SEPARATE**, because they were not and one
+    # silently ate the other -- see the note at the name-items block below.
+    ident_block = []
     # Every QID this run emits anything for -- so its Geni id leads the file.
     _touched = {ln.split("	", 1)[0] for ln in lines
                 if ln[:1] == "Q" and "	" in ln}
     man_lines, man_total, man_held = manual_p2600_lines(_touched)
     if man_lines:
-        head += ["# " + "=" * 72,
-                 "# HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
-                 f"# {man_total} in reports/manual-identifications.csv, {man_held} already on "
-                 f"Wikidata, {MANUAL_P2600_PER_RUN} a run.",
-                 "# " + "=" * 72] + man_lines + [""]
+        ident_block = ["# " + "=" * 72,
+                       "# HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
+                       "# These lead the file: the Geni id is the FIRST edit on any individual,",
+                       "# and a name item is not an exception to that.",
+                       f"# {man_total} in reports/manual-identifications.csv, {man_held} already "
+                       f"on Wikidata, {MANUAL_P2600_PER_RUN} a run beyond the ones this run "
+                       f"touches.",
+                       "# " + "=" * 72] + man_lines + [""]
     print(f"manual identifications: {man_total} in the file, {man_held} already held, "
           f"{len([l for l in man_lines if not l.startswith('#')])} emitted")
     try:
@@ -6598,19 +6603,39 @@ def main():
                        check=True, cwd=str(ROOT), capture_output=True)
     except Exception as exc:                                        # noqa: BLE001
         print(f"WARNING: could not regenerate the name items ({exc}); using the file on disk")
+    # **This block used to ASSIGN `head`, and that discarded every `P2600` above it.** Emma,
+    # 2026-09-04: *"It seems it is still messing with people's names without doing geni
+    # identifications. Like the name objects are being linked on people without geni ids, this
+    # should be categorically not allowed as the geni id must be applied as the first edit on
+    # any individual… Idk why it thinks name objects are an exception when the name data even
+    # comes from geni"*.
+    #
+    # She is right and the cause was one character. `manual_p2600_lines` ran, found the ids,
+    # `head += …` collected them, `print` reported them as emitted -- and then `head = [ … ]`
+    # here replaced the list. **Measured on the batch of 2026-09-04: 161 existing items received
+    # `P735`/`P734`/`P5056`, and a live `wbgetentities` says 161 of 161 carry no `P2600`.** Every
+    # one is in `reports/manual-identifications.csv`, so the line that would have fixed it was
+    # generated on every run and thrown away on every run.
+    #
+    # That is `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* in its worst
+    # form: the code ran, and only its output was dropped, so the log said the opposite of what
+    # the file held.
+    name_block = []
     if name_file.exists():
         body = name_file.read_text(encoding="utf-8").strip()
         if body:
-            head = ["# " + "=" * 72,
-                    "# NAME ITEMS FIRST. One file, her instruction of 2026-08-30 -- there is no",
-                    "# longer a second batch to remember to run.",
-                    "# " + "=" * 72,
-                    body, "",
-                    "# " + "=" * 72,
-                    "# THE DAY'S PEOPLE",
-                    "# " + "=" * 72, ""]
+            name_block = ["# " + "=" * 72,
+                          "# NAME ITEMS. One file, her instruction of 2026-08-30 -- there is no",
+                          "# longer a second batch to remember to run. They follow the Geni ids",
+                          "# above, per her 2026-09-04 correction.",
+                          "# " + "=" * 72,
+                          body, "",
+                          "# " + "=" * 72,
+                          "# THE DAY'S PEOPLE",
+                          "# " + "=" * 72, ""]
             print(f"prepended {sum(1 for l in body.splitlines() if l.strip() and not l.startswith('#'))}"
                   f" name-item lines")
+    head = ident_block + name_block
     out.write_text(NEWLINE.join(head + lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 

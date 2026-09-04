@@ -27357,3 +27357,41 @@ invented, and it says nothing about any one source. **What would switch it: her 
 is two headings and a paragraph, so changing it costs one commit.
 
 The repo itself is already `genealogy` and was not the thing carrying the branding.
+
+## 2026-09-04 — the Geni id was generated on every run and thrown away on every run
+
+Emma, on the daily batch: *"It seems it is still messing with people's names without doing geni
+identifications. Like the name objects are being linked on people without geni ids, this should
+be categorically not allowed as the geni id must be applied as the first edit on any individual…
+Idk why it thinks name objects are an exception when the name data even comes from geni"*.
+
+She is right, and it was one character.
+
+`manual_p2600_lines` runs, finds the identifications Wikidata does not hold, and puts the items
+this run touches at the front **uncapped** — all of that was written on 2026-09-03 and works.
+`head += [...] + man_lines` collected them and the script printed how many it had emitted. Then
+the name-items block, thirty lines later, did `head = [...]` instead of `head +=` and replaced
+the list. Every `P2600` line went in the bin, every run, while the log said otherwise.
+
+**Measured, live, rather than off a file that could not answer:** 161 existing items receive a
+`P735`, `P734` or `P5056` in the batch of 2026-09-04, and `wbgetentities` says **161 of 161 carry
+no `P2600`**. Every one is in `reports/manual-identifications.csv`, so the line that would have
+fixed it was generated and discarded on every run since the priority mechanism was written.
+
+`reports/garborg-live-values.tsv` could not have established this and nearly did: it covers
+ledger items only, and none of the 161 is in the ledger, so its silence about them means *not
+asked*, not *not held*. That is § *CHECK before you alarm her* — the check that would falsify
+the claim had to be the live one.
+
+The two blocks are now separate lists concatenated in her order — identifications, then name
+items, then the day's people — so neither can overwrite the other. `CLAUDE.md` § *Code that is
+WRITTEN but never CALLED is not done*, in its worst form: the code ran and only its output was
+dropped, so the log said the opposite of what the file held.
+
+**The second deviation she named in the same message is NOT fixed yet** — *"mul labels are not
+being assigned based on most commonly agreed upon Latin alphabet label as I wanted on wikidata
+but instead many people are just never given mul labels"*. Measured so far: 236 of the 1,293
+ledger items in the live snapshot carry no `mul`, and `consensus_latin_label` supplies one for
+**235** of them, so the function is right and something downstream is not reaching them.
+Replaying the emit condition over the ledger says **259** `Lmul` lines should be emitted; the
+batch on disk has **1**. The cause is not established and is not guessed at here.
