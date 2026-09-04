@@ -41,29 +41,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   puts on. Nothing has been fetched or looked at; `CLAUDE.md` § *"Add it to the end of the
   queue" means WRITE IT DOWN AND STOP* governs.
 
-- **A script that hands back one random unconnected Wikidata isolate.** Emma, 2026-09-03, after
-  watching profile-picking take far too long: *"you probably should have a script that spits out
-  a random one whenever you need one."*
-
-  Her specification, in her words: *"my vision would be that you have some kind of a csv file
-  storing all of the wikidata isolates, and the script randomly selects one, checks if it is
-  connected into the synoptic tree (geni links in the big mass), and if it is not then it
-  returns it, and if it does not then it randomly selects another one and does the same, with a
-  later option to with the script to refresh things so that the isolates csv is updated in cases
-  where it is stale and a large portion of the unconnected people are skipped over, maybe even
-  actually just removing the one that was found to be connected as soon as it is skipped over,
-  making the script automatically heal it"*.
-
-  So: a roster CSV of every Wikidata isolate → pick at random → test membership of the big
-  connected mass of the synoptic tree → **return it if absent, drop it from the roster and
-  re-draw if present**. The dropping is the self-healing: the file gets more accurate every time
-  it is used, with no separate maintenance pass. A `--refresh` rebuilds the roster wholesale for
-  when staleness has made too many draws miss.
-
-  Note the connectivity test already exists in miniature — a BFS from Charlemagne over
-  `reports/derived-family.csv` reaches 1,450,615 of 1,451,964 people — so the script is that
-  walk plus a roster and a random draw.
-
 * fix the daily batch quickstatements page since the copy button does not work
 * fix the branding of this project away from geni since although the main thing it does is geni derived exports to wikidata that is not the core of it and not what I want the branding to be
 

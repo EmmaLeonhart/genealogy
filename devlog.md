@@ -23942,6 +23942,44 @@ screened normalisation is wired at source, 8,053 labels changed, the two live it
 correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differing.
 `reports/merges-to-do.md` refreshed on the rebuilt labels.
 
+## 2026-09-04 --- `pick-isolate.py`: one random unconnected Wikidata isolate, self-healing
+
+**Emma, 2026-09-03:** *"you probably should have a script that spits out a random one whenever
+you need one."* Built to her specification: a roster CSV of every Wikidata isolate, a random draw,
+a test of membership of the big connected mass, return if absent --- and **delete from the roster
+and re-draw if present**, which is the healing she asked for. `--refresh` rebuilds both files.
+
+**The two artifacts, and they go stale for different reasons.**
+`reports/wikidata-isolate-roster.csv` is **191,113** items carrying a `P2600` and stating no
+`P22`/`P25`/`P40`/`P26`, off `out/wikidata/relations.tsv` --- a download snapshot, so an item that
+gained a parent on Wikidata since still reads as isolated, and that is the staleness the healing
+erodes. `out/main-component.txt.gz` is the Geni ids reachable from Charlemagne, keyed on the size
+of `derived-family.csv` so a re-merged tree rebuilds it. Size and not mtime: a fresh clone stamps
+every file with the checkout time, which would report a rebuild nobody did.
+
+**The component walk is imported, not re-derived** --- `measure-eccentricity.load_graph` already
+knows the ` | ` separator and already dedupes the both-directions double count. Re-deriving
+adjacency is how this repo keeps collecting separator bugs, and one of them was fixed in
+`build-parent-candidates.py` earlier the same day.
+
+**Measured, and both numbers check against something independent.** The walk reaches **1,450,615**
+people, which is exactly the figure `queue.md` cited for it. Of the roster, **5,780 --- 3.02% ---
+are already in the big mass**, so a draw heals about one time in 33, and **185,333** are genuinely
+unconnected, against the 185,327 `build-isolate-path-targets.py` reports for the same population
+after its already-pathed filter.
+
+**The healing was verified rather than assumed:** a 50-draw run removed 2 rows, and both were
+independently confirmed to be in the component by re-reading the two files afterwards.
+
+Cold run 3 minutes; every run after that is **1.3 seconds** off the cache.
+
+**Two things stated rather than silently corrected.** `relations.tsv` carries no `P3373` column,
+so an item whose only stated relation is a sibling reads as isolated and the roster over-counts
+slightly --- the same caveat `build-isolate-path-targets.py` records for the same file. And
+connectivity needs no sibling handling despite `CLAUDE.md` § *A sibling step is the worked
+example*: that rule is about walking a path, and siblings reach each other through the shared
+parent either way, so component membership is unaffected.
+
 ## 2026-09-04 --- the deck on demand: its own workflow, proven on a runner
 
 **Emma:** *"get the documentation and stuff working well for this to occur as a general part of
