@@ -67,6 +67,31 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
 * fix the daily batch quickstatements page since the copy button does not work
 * fix the branding of this project away from geni since although the main thing it does is geni derived exports to wikidata that is not the core of it and not what I want the branding to be
 
+- **Two algorithmic deviations in the daily batch — the Geni id is not first, and `mul` is
+  often never assigned.** Emma, 2026-09-04, verbatim:
+
+  *"It seems it is still messing with people's names without doing geni identifications. Like the
+  name objects are being linked on people without geni ids, this should be categorically not
+  allowed as the geni id must be applied as the first edit on any individual. If linking another
+  relative, well in the create statements for the relative the geni id gets added before the
+  relationships lol. Idk why it thinks name objects are an exception when the name data even
+  comes from geni"*
+
+  *"Also I am noticing mul labels are not being assigned based on most commonly agrees upon Latin
+  alphabet label as I wanted on wikidata but instead many people are just never given mul labels.
+  So yeah some algorithmic deviations exist"*
+
+  So two separate deviations from her specification: a `P735`/`P734`/`P5056` name link emitted on
+  an individual carrying no `P2600`, when the Geni id is meant to be the **first** edit on anybody
+  and a name item is not an exception to that; and `mul` being left unset instead of taking the
+  most commonly agreed Latin-alphabet label.
+
+  Nothing has been looked at, measured or fetched — `CLAUDE.md` § *"Add it to the end of the
+  queue" means WRITE IT DOWN AND STOP* governs. Related and not to be solved twice: `CLAUDE.md`
+  § *An item with no relationships is not a missing item* is where the Geni-id-first order is
+  already written down in her words, and § *The MARRIED name is the real name* is where `mul`
+  is specified.
+
 ## ⛔ AT THE TAIL — mass export work on the paths for disconnected Wikidata individuals
 
 **Everything established on 2026-09-03, when Emma taught the task by hand after the automated
