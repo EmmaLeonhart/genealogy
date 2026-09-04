@@ -1,4 +1,4 @@
-# geni
+# Synoptic
 
 ## Skills
 

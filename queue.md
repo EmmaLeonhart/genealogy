@@ -41,7 +41,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   puts on. Nothing has been fetched or looked at; `CLAUDE.md` § *"Add it to the end of the
   queue" means WRITE IT DOWN AND STOP* governs.
 
-* fix the branding of this project away from geni since although the main thing it does is geni derived exports to wikidata that is not the core of it and not what I want the branding to be
 
 - **Two algorithmic deviations in the daily batch — the Geni id is not first, and `mul` is
   often never assigned.** Emma, 2026-09-04, verbatim:

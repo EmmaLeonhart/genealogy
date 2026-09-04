@@ -27336,3 +27336,24 @@ off-screen rather than `display:none`, which copies nothing.
 fixes the failure modes the code demonstrably has rather than one that was observed failing. If
 it still does nothing on her phone, the `Select all` button and the message text will now say
 which stage it reached, which the old version could not.
+
+## 2026-09-04 — the project is called Synoptic
+
+Emma: *"fix the branding of this project away from geni since although the main thing it does is
+geni derived exports to wikidata that is not the core of it and not what I want the branding to
+be"*.
+
+Asked which surface she meant, she chose **headings and description only** — so `README.md` and
+`CLAUDE.md` open as `# Synoptic` and the README leads with the genealogy and the Wikidata work
+rather than with Geni. The package stays `genimerge`; 399 references across 241 files was the
+other option and she did not take it.
+
+**The name is a guess and this records it, per § *Working the queue: GUESS. Do not ask*.** The
+option she picked was labelled *"you name it"*, which is ambiguous about who — she chose it and
+supplied no name, so I took the reading that it is mine to pick and used **her own word**.
+*Synoptic* is what she calls the central artefact throughout (`CLAUDE.md` § *"SYNOPTIC TREE"*
+distinguishes its two meanings), so it is vocabulary already in use rather than something
+invented, and it says nothing about any one source. **What would switch it: her saying so.** It
+is two headings and a paragraph, so changing it costs one commit.
+
+The repo itself is already `genealogy` and was not the thing carrying the branding.

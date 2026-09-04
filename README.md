@@ -1,7 +1,11 @@
-# geni
+# Synoptic
 
-Merge Geni.com genealogy exports into one canonical tree, then connect that tree
-to Wikidata.
+One genealogy assembled from many sources, reconciled against Wikidata, and used
+to create the people Wikidata is missing.
+
+Geni.com is the source it is furthest along with and not what it is *for*. The
+tree is the thing; Geni exports are how a large part of it currently arrives, and
+Wikidata is where the result goes.
 
 > Scaffolded with [cleanvibe](https://github.com/Immanuelle/cleanvibe).
 
