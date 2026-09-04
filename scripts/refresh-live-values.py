@@ -29,6 +29,8 @@ Writes `reports/garborg-live-values.tsv`.
 from __future__ import annotations
 
 import csv
+import gzip
+import json
 import os
 import pathlib
 import sys
@@ -55,6 +57,39 @@ OUT = ROOT / "reports" / "garborg-live-values.tsv"
 #: Same fetch, same items, no extra requests -- `full_entities` already returns labels and they
 #: were being thrown away.
 LABELS_OUT = ROOT / "reports" / "garborg-live-labels.tsv"
+
+#: **Every ledger item's WHOLE entity, as fetched, one JSON object per line sorted by qid.**
+#: See the block that writes it for why the two TSVs above are not a substitute.
+#: `read_live_items()` is the reader; `gzip -dc` and a grep also work.
+ITEMS_OUT = ROOT / "reports" / "garborg-live-items.jsonl.gz"
+
+
+def read_live_items(qids=None):
+    """`{qid: entity}` from `ITEMS_OUT`, or `{}` when the file is absent.
+
+    `qids` limits what is parsed, which matters: the file is every ledger item and a caller
+    usually wants one. A missing file returns empty rather than raising, so a fresh clone that
+    has not run the refresh degrades to today's behaviour instead of crashing — but callers
+    must treat empty as *we have not looked*, never as *the items hold nothing*, which is the
+    trap `CLAUDE.md` § *Our side could never have two children* is written against.
+    """
+    if not ITEMS_OUT.exists():
+        return {}
+    want = set(qids) if qids is not None else None
+    out = {}
+    with gzip.open(ITEMS_OUT, "rt", encoding="utf-8") as fh:
+        for line in fh:
+            if not line.strip():
+                continue
+            if want is not None:
+                # Cheap pre-filter: the id is the only place a `"id":"Q…"` pair appears at the
+                # top level, and parsing 1,464 whole items to find one is the thing to avoid.
+                if not any(f'"id":"{q}"' in line for q in want):
+                    continue
+            item = json.loads(line)
+            if want is None or item.get("id") in want:
+                out[item["id"]] = item
+    return out
 
 #: **EVERY language, not the ones we write.** Emma, 2026-08-30, specifying how `mul` should be
 #: chosen: *"they have a consistent Latin label across two or more languages… whichever one is
@@ -133,6 +168,40 @@ def main():
         w.writerows(label_rows)
     print(f"{len(label_rows):,} labels over {len(items)} items "
           f"-> {LABELS_OUT.resolve().relative_to(ROOT)}")
+
+    # **⛔ THE WHOLE ITEMS, COMMITTED. Emma, 2026-09-04:** *"Github actions is supposed to
+    # download jsons of the current revisions of the entire ledger all at once and commit them,
+    # so the information is supposed to always be present in the repository lol. My guess is you
+    # never actually added that functionality"*. Her guess was right.
+    #
+    # **The download was already happening and the JSON was being thrown away.** `full_entities`
+    # above fetches whole items for every ledger qid, on every pipeline run, and the two TSVs
+    # above are flattened summaries of them — `qid/property/value` and `qid/lang/label`. Neither
+    # carries qualifiers, references, ranks or sitelinks, and `CLAUDE.md` § *A SUMMARY of a
+    # Wikidata item is not the item* records three false findings published from exactly that
+    # gap, plus § *Reading a Wikidata statement: the value is not the statement*, where a
+    # marriage date and place lived in qualifiers a mainsnak-only reader reported as absent.
+    #
+    # **What it cost, the same evening this was written.** A session whose egress proxy denies
+    # `www.wikidata.org` had to dispatch a workflow to answer *"do these 161 items carry a
+    # `P2600`?"*, *"what does `Q136376387` hold in `mul`?"* and *"what do these four items
+    # read?"* — every one of which is a question about the ledger, whose answer had been fetched
+    # and discarded minutes earlier. With this file present those are a `zcat` and a grep.
+    #
+    # **JSONL sorted by qid**, so one item can be read without loading the lot, and gzipped with
+    # `mtime=0` so identical content produces identical bytes — a timestamp in the header would
+    # make the file differ on every run and the diff meaningless, which is
+    # § *SORTING MUST BE DETERMINISTIC* in its other clothes.
+    tmp = ITEMS_OUT.with_suffix(".jsonl.gz.tmp")
+    with open(tmp, "wb") as raw:
+        with gzip.GzipFile(fileobj=raw, mode="wb", mtime=0) as gz:
+            for qid, item in sorted(items.items()):
+                gz.write((json.dumps(item, ensure_ascii=False, sort_keys=True,
+                                     separators=(",", ":")) + "\n").encode("utf-8"))
+    os.replace(tmp, ITEMS_OUT)
+    size = ITEMS_OUT.stat().st_size
+    print(f"{len(items):,} whole items -> {ITEMS_OUT.resolve().relative_to(ROOT)} "
+          f"({size / 1024 / 1024:.1f} MB gzipped)")
 
 
 if __name__ == "__main__":

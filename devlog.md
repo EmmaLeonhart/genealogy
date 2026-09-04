@@ -27556,3 +27556,36 @@ All four verified against the rebuilt tables:
     Q141216388  Jon Hansson Store Vatne  ジョン・ハンソン・ストレ・ヴァトネ
     Q141283784  ラース・ヨンソン・ジュニア・スクルドランド
     Q141283774  Jacobus Bothniensis  ヤコブス・ボトニエンシス  雅各布斯·博特尼恩西斯  자코부스 보트니엔시스
+
+## 2026-09-04 — the whole items were downloaded every run and thrown away
+
+Emma: *"Github actions is supposed to download jsons of the current revisions of the entire ledger
+all at once and commit them, so the information is supposed to always be present in the repository
+lol. My guess is you never actually added that functionality"*.
+
+**Her guess was right, and the download was already happening.** `refresh-live-values.py` runs on
+every pipeline run — `build-garborg-day.py --compose` invokes it and exits if it fails — and it
+calls `full_entities` for all 1,464 ledger qids. It then writes two **flattened summaries**,
+`qid/property/value` and `qid/lang/label`, and discards the JSON.
+
+Neither TSV carries qualifiers, references, ranks or sitelinks. `CLAUDE.md` § *A SUMMARY of a
+Wikidata item is not the item* records three false findings published from exactly that gap, and
+§ *Reading a Wikidata statement: the value is not the statement* records a marriage date and place
+living in qualifiers that a mainsnak-only reader called absent.
+
+**What it cost tonight, four times.** This session's egress proxy denies `www.wikidata.org`, so
+answering *"do these 161 items carry a `P2600`?"*, *"what is `Q136376387`'s `mul`?"*, *"what do
+these four items read?"* and *"what is on those two talk pages?"* each meant adding and
+dispatching a workflow and reading a job log. Every one of the first three is a question about the
+ledger, whose answer had been fetched and dropped minutes earlier. With the file present they are
+a `zcat` and a grep.
+
+`reports/garborg-live-items.jsonl.gz` — one whole entity per line, sorted by qid, gzipped with
+`mtime=0` so identical content gives identical bytes rather than a new blob every run.
+`refresh_live_values.read_live_items(qids)` is the reader and pre-filters by id so one item does
+not cost parsing 1,464. Not gitignored, so the pipeline's `git add -A` commits it.
+
+**The reader returns `{}` for a missing file and callers must read that as *we have not looked*.**
+An empty result meaning "the items hold nothing" is the trap § *Our side could never have two
+children* is written against, and it is the same one that made `garborg-live-values.tsv` look
+tonight as though 161 items had no `P2600` when it simply does not cover them.
