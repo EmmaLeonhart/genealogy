@@ -189,6 +189,12 @@ def _fetch_claims(ids, depth=0):
     return a, am | bm
 
 
+#: The languages a name may be recorded in, best first. `labels_from_store()` already used this
+#: order; the API fetch asked for `en|mul` only and published a bare QID for anyone named solely
+#: in one of the others.
+LABEL_LANGS = ("en", "mul", "sv", "nb", "no", "da", "de", "fi", "fr", "zh", "ko", "ja")
+
+
 def _fetch_labels(ids):
     """`{qid: label}` from the live API, `en` first then `mul`, batched 50 at a time.
 
@@ -204,7 +210,13 @@ def _fetch_labels(ids):
         chunk = ids[i:i + 50]
         url = WD_API + "?" + urllib.parse.urlencode({
             "action": "wbgetentities", "ids": "|".join(chunk),
-            "props": "labels", "languages": "en|mul", "format": "json"})
+            # **`en|mul` alone is not enough and the guard caught it.** `Q111366618` is
+            # 藤原遠宗の娘 (惟宗広言の妻) -- a real name, in `ja`, with no `en` and no `mul` -- so
+            # the deck published a bare QID facing a Japanese name. The local store fallback
+            # already walked a wider list; this now asks for the same one, and a name in `ja` is
+            # a name. `CLAUDE.md` § *CJK INCLUDES KOREAN*.
+            "props": "labels",
+            "languages": "|".join(LABEL_LANGS), "format": "json"})
         req = urllib.request.Request(url, headers={"User-Agent": WD_AGENT})
         try:
             with urllib.request.urlopen(req, timeout=90) as fh:
@@ -215,10 +227,13 @@ def _fetch_labels(ids):
         time.sleep(0.4)
         for q, e in (data.get("entities") or {}).items():
             labs = e.get("labels") or {}
-            for lang in ("en", "mul"):
+            for lang in LABEL_LANGS:
                 if labs.get(lang, {}).get("value"):
                     out[q] = labs[lang]["value"]
                     break
+            else:
+                if labs:
+                    out[q] = next(iter(labs.values()))["value"]
     return out
 
 
