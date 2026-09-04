@@ -3490,16 +3490,29 @@ each one produced a page that looked fine to whatever built it:**
 - **The Wikidata names came only from `out/wikidata/labels.tsv`, which is GITIGNORED.** So it is
   absent in Actions --- and Actions is what publishes. Every deck that ever reached the site
   showed a bare `Q5290415` where the name belongs, while a local run with the 187 MB file present
-  looked perfect. `_fetch_labels()` now fills the gap from `wbgetentities`, batched 50 at a time:
-  **0 of 48 names resolved before, 47 of 48 after**, and the two paths produce a byte-identical
-  TSV.
+  looked perfect. **There are now three sources in order, and each covers a hole the one above it
+  leaves:** the 187 MB file where it exists; `labels_from_store()`, which reads the local Wikidata
+  store through `out/wikidata/store-index.sqlite3` --- 54 QIDs out of 40 shards in seconds, and
+  offline; then `_fetch_labels()` against `wbgetentities`, 50 ids a request, which is the only one
+  that works in a sparse Actions checkout, where the index and `wikidata/items/` are both absent.
+  Measured with the file hidden: **0 of 48 names resolved before, 47 of 48 after**, and the file
+  path and the API path produce a byte-identical TSV.
 - **A CJK-only person had no name on our side at all.** `label_en` and `label_mul` are both empty
   for them and the name lives in `cjk_names` --- so `Koremune no Hirokoto` and `Tango no Naishi`
   faced an empty box. § *CJK INCLUDES KOREAN*: these are not an edge case to skip.
 
 **The tell in all three was the same and is the thing to check next time: a card that names
 nobody.** The generator reported `17 structural candidates` either way, and a count is what gets
-read in a log. Open the page.
+read in a log. Open the page. `build-parent-candidates.py` now exits non-zero on any card with an
+empty name or a bare QID, so a broken deck says so.
+
+**Two sessions fixed this within the same hour and neither knew of the other** --- `5beafdcb` from
+a cloud session and this one, on the same file, resolved by keeping both rather than picking. The
+overlap is worth reading before assuming a fix is complete: the cloud session repaired the *name*
+on the card by splitting the glued id at display time, which is a real guard and is kept, but it
+left `cell()` alone --- so the spouse and child lists, which are the evidence half and the thing
+Emma actually judges on, stayed empty for everyone with more than one. A symptom can be fixed
+where it shows rather than where it starts.
 
 ### The purpose is to ADD to Wikidata, not to correct it
 

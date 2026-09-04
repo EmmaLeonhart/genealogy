@@ -23976,6 +23976,14 @@ lists, sex and life dates.
 tell in all three bugs was identical and no count showed it: § *the number was about the
 instrument*. The files are still written, so a bad deck is inspectable rather than absent.
 
+**A cloud session fixed two of these in the same hour, independently --- `5beafdcb`.** Merged
+rather than picked between: its `labels_from_store()` reads the local store through
+`out/wikidata/store-index.sqlite3` (54 QIDs from 40 shards, offline) and sits above the API
+fallback, which is the only one that works in a sparse Actions checkout. Its display-time split of
+the glued id is kept as a guard. What it did not do is fix `cell()` --- so the spouse and child
+lists, the evidence half, stayed empty for everyone with more than one parent, child or spouse,
+and the deck still could not be judged. A symptom fixed where it shows rather than where it starts.
+
 **Documented in two places, because a cloud session went looking and found neither** ---
 `CLAUDE.md` § *THE PARENT DECK* and a runbook at the top of the generator: the URL, the two
 commands, the three outputs, that a push to `main` is the deploy, that verdicts return in
