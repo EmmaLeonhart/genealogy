@@ -27037,3 +27037,32 @@ default.
 **Bio QIDs survive and `exports/` is untouched**, both checked: `extract-bio-qids.py` reads
 `find_exports()` — the raw corpus — not the merged tree, and no step of `rebuild-everything.py`
 reads `NOTE`.
+
+## 2026-09-04 — the patronymic identifications go on Pages, unlinked
+
+Emma: *"Can you give me the artifact for the identifications for me to go through?"*, then
+*"I meant the identification artifacr html thing"*. She had already ruled on the channel earlier
+the same day — *"Github actions artifacts are both inaccessible to me (github pages is best since
+I don't need to sign in)"* — and a claude.ai artifact fails that test the same way an Actions
+artifact does. So the page is a second **unlinked** page on GitHub Pages, the pattern
+`out/parent-review.html` already established.
+
+`scripts/build-patronymic-identifications-page.py` regenerates it from
+`reports/patronymic-identifications.tsv`, so it is a function of the census rather than a one-off
+that goes stale the next time the model widens. 599,825 identifications, 20,798 distinct tokens,
+36 forms, 1.59 MB self-contained — inline JSON, no libraries, both themes.
+
+**Picking the landing form was the one thing worth reading twice.** Ranking candidates by *has any
+new token* lands on `-sen`, which gained exactly seven: trailing-dot spellings like `Simonsen.`,
+which the widening's `\.?$` now accepts. That would have put **162,246** identifications she has
+had for months in front of her instead of the **15,636** the widening added. Ranked by new bearers
+it lands on `-sdtr`, 1,103 of 1,103 tokens new.
+
+Each row carries up to three example bearers. That is not decoration: spotting a wrong
+identification needs the person, which is why `Ni Choon` is in `CLAUDE.md` as the worked case —
+`Ni` alone says nothing about whether the name is Gaelic or Chinese. Search spans every form
+including those bearer names.
+
+`DECK` became `ALONGSIDE`, a tuple. The comment on it says what is not otherwise discoverable: a
+page added there and **not** to `pages.yml`'s sparse checkout is silently not published, because
+the runner never checks the file out and the copy is a no-op on a file that does not exist.

@@ -768,6 +768,20 @@ Geni id. The review page built from it is grouped by form, opens on the largest 
 added, and carries the example bearers, because spotting a `Ni Choon` needs the person rather than
 the token.
 
+**A REVIEW PAGE GOES ON GITHUB PAGES, unlinked. Not an artifact, not an Actions artifact.** Emma,
+2026-09-04, having been handed a claude.ai artifact she could not open: *"Github actions artifacts
+are both inaccessible to me (github pages is best since I don't need to sign in)."* So
+`scripts/build-pages-site.ALONGSIDE` is the list, `scripts/build-patronymic-identifications-page.py`
+is the generator, and the page lands at `/patronymic-identifications.html` beside the batch
+**without a link to it** — nothing competes with the daily batch, which is the whole of the site by
+her instruction. A page added to that tuple and **not** to `pages.yml`'s sparse checkout is silently
+not published: the runner never checks the file out and the copy is a no-op.
+
+**Rank the landing form by NEW BEARERS, never by whether any exist.** `-sen` gained seven tokens in
+the widening — trailing-dot spellings like `Simonsen.` — so "has a new token" landed the page on its
+**162,246** long-established identifications instead of the **15,636** nobody has read. `-sdtr` is
+1,103 of 1,103 tokens new and is what she should open on.
+
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
 **Emma, 2026-09-04**, having hand-corrected `Q141271379` from `Anna Ormsd Byre`: *"I changed her
