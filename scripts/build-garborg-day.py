@@ -1108,6 +1108,42 @@ def _drop_territorial(label):
 _LATIN_LABEL = re.compile(r"^[A-Za-zÀ-ÿĀ-ſĲ-ŉŊ-ž'’.,()\-\s]+$")
 
 
+#: Words that open a Wikidata label and are a TITLE rather than a name. Used for one narrow
+#: question only -- see `_only_adds_a_title`.
+_LEADING_TITLE = re.compile(
+    r"^(?:Baron|Baroness|Count|Countess|Duke|Duchess|Lord|Lady|Sir|Dame|King|Queen|Prince|"
+    r"Princess|Earl|Friherre|Friherrinna|Greve|Grevinna|Graf|Gr\u00e4fin|Freiherr|Freifrau|"
+    r"Hertig|Kung|Drottning)\s+", re.I)
+
+
+def _only_adds_a_title(current, proposed):
+    """True when `proposed` is `current` with nothing but title words stuck on the front.
+
+    **A label that already reads correctly is not improved by a title.** Found 2026-09-04, when
+    `mul` was given first claim on the label cap and the pending values were read: `Q136376245`
+    holds `Fredrik Elof Gyllenkrok` and the consensus proposed `Baron Fredrik Elof Gyllenkrok`.
+    That is a live label being made worse, at 15 a batch.
+
+    **It does NOT stop a titled label being ADDED**, which is the other 7 of the 8 titled values
+    pending: those items have no `mul` at all, and a label with a title on it is a label. Emma's
+    § *A TITLE IS NOT A NAME* is about what becomes a `P735`/`P734` and says in terms that it
+    *"does not touch the LABEL"* — so this stays as narrow as it can be and only refuses the
+    replacement.
+
+    Title-word matching is used rather than a general prefix test on purpose: `Anne` becoming
+    `Carl Anne` is somebody's given name being added and is not this.
+    """
+    if not current or not proposed or current == proposed:
+        return False
+    rest = proposed
+    while True:
+        stripped = _LEADING_TITLE.sub("", rest, count=1)
+        if stripped == rest:
+            break
+        rest = stripped
+    return rest != proposed and rest.strip() == current.strip()
+
+
 def consensus_latin_label(labels):
     """The Latin name an item is called by, across its own languages. `''` when there is none.
 
@@ -5957,6 +5993,12 @@ def main():
         if is_relationship_description(mul):
             mul = ""
         source = mul or labels.get(g, "")
+
+        # A live label that already reads correctly is not replaced by the same thing with a
+        # title on the front. See `_only_adds_a_title`.
+        if _only_adds_a_title(mine.get("mul"), mul):
+            mul = ""
+            source = labels.get(g, "")
 
         if mul:
             # A label REPLACES, so whatever `mul` currently reads goes out as an alias FIRST --

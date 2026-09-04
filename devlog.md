@@ -27458,3 +27458,43 @@ needs to be present before any properties derived from Geni can be taken from it
 
 Nothing further is needed on these two items themselves; the fix is the one above, and it is what
 stops the class.
+
+## 2026-09-04 — both fixes verified in a real batch, and one regression they introduced
+
+Run 33929641087's batch, built on `58d5147` with both fixes:
+
+- **171 `P2600` lines on existing items**, leading the file. It was **0**. Every one is an
+  identification whose Geni id the batch had been withholding while writing that person's names.
+- **The label block is now entirely `mul`** — `Lmul` and `Amul`, no CJK corrections — where it
+  previously held one `Lmul` in fifteen slots. Held went 2,358 → 2,338.
+
+**And reading the pending values found a regression my own change would have shipped.** Of the 259
+`Lmul` values waiting, 8 lead with a title, and one of them — `Q136376245` — would have replaced a
+live, correct `Fredrik Elof Gyllenkrok` with `Baron Fredrik Elof Gyllenkrok`. At 15 a batch that is
+a live label made worse, repeatedly.
+
+`_only_adds_a_title` refuses exactly that: a replacement whose sole difference is title words on
+the front. **It does not stop a titled label being added** — the other 7 have no `mul` at all and a
+label with a title is a label, and Emma's § *A TITLE IS NOT A NAME* says in terms that it *"does
+not touch the LABEL"*. Title words rather than a general prefix test, so `Anne` → `Carl Anne` is
+untouched: that is a given name being added, not a title.
+
+## 2026-09-04 — Anvilaquarius
+
+`reports/anvilaquarius.md`. The pastebin she named resolves and is a **watchlist dump** of other
+editors on our items, not a page about this user; Anvilaquarius is one of eight editors in it.
+
+Their three edits are a merge of a duplicate we created (`Q141198489` → `Q139651594` *Sigrid
+Garborg*) and **two talk-page threads reporting a data problem**, opened 2026-08-29 and still
+unanswered. **Nothing in this repo reads talk pages on the items it creates**, so a human who
+takes the trouble to write one is not heard. That is the finding; whether to monitor it is hers
+and nothing was built.
+
+Their report is right and the dates are Geni's, not ours: `Q141180409` and `Q141180413` are
+spouses carrying identical birth `29 JAN 1541` and death `27 SEP 1580` in `derived-facts.csv`,
+straight from the GEDCOM. § *The question is whether OUR TREE MATCHES GENI* — we are current.
+
+Measured over all **363,615** spouse pairs: 7,554 share a birth date, 4,062 a death date, **330
+share both**, and **24 of those at day precision**. So the shape is 0.09% of pairs and the
+unmistakable form is 24 pairs in the whole tree. Not systematic, nothing mechanical to fix — they
+found one of the 24 by eye.
