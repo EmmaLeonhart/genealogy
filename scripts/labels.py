@@ -470,6 +470,66 @@ def label_for(gedcom_name: str) -> str:
 #: reading the emitted batch, not by reasoning about the rule.
 INITIAL_RE = re.compile(r"^(?:[A-Z]|[A-Za-z]\.)$")
 
+#: A REGNAL ORDINAL, and only in its unambiguous multi-character form.
+#:
+#: **Emma fixed `Q141223436` by hand on 2026-09-04 and that edit is the specification.** She had
+#: said only *"This persons ordinals were totally fucked up"*; the item now reads
+#: `ja トーレ・ウンデルベルゲ3世`, `ko 토레 운데르베르게 3세`, `zh 托雷·温德尔贝尔盖三世`. Before it, the
+#: transliteration table carried `III` as a NAME and spelled the letters out phonetically --
+#: `イイイ`, `伊伊伊`, `이이이` -- because a rule-based pass had no notion of an ordinal and every
+#: token reaching it was a name. `II` was `イイ`, `IV` was `イヴ`, `Jr.` was `イル`.
+#:
+#: **Three separate conventions, all read off her edit rather than reasoned:** `ja` takes an
+#: ARABIC digit with 世, `zh` a HAN numeral with 世, `ko` an arabic digit with 세. And `ja`/`zh`
+#: attach it with **no separator** where every other token takes `・`/`·`; `ko` keeps its space,
+#: which is what it does between all words anyway.
+#:
+#: **Single letters are deliberately excluded** -- `I`, `V`, `X`, `L`, `C`, `D`, `M`. Measured over
+#: `derived-labels.csv`, `C` heads 944 labels and `L` 839, and they are middle initials
+#: (`John C. Smith`), not ordinals; `INITIAL_RE` already keeps a letter Latin in every script per
+#: Emma 2026-08-27, and that is the right answer for them. Nothing in a rendered label separates a
+#: bare `I` that is an ordinal from one that is an initial -- the discriminator is the `NSFX`
+#: field, which `label_in` does not have. So the multi-character forms are fixed and the
+#: one-letter residue is left where it was: **17,731 of the 23,814 people** carrying a Roman
+#: numeral are covered, and 6,643 `I` plus 1,273 `V` are not.
+ORDINAL_RE = re.compile(r"^(?=[IVXLCDM]{2,}$)M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$")
+
+#: Roman value per letter, for `ordinal_readings`. Not a general converter: the corpus tops out
+#: in the twenties (`XX` 20, `XVII` 17) and this is only ever asked about a name suffix.
+_ROMAN_VALUE = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+_HAN_DIGIT = "〇一二三四五六七八九"
+
+
+def _roman_to_int(token):
+    """`III` -> 3. Assumes `ORDINAL_RE` has already matched, so no validation here."""
+    total = 0
+    for i, ch in enumerate(token):
+        value = _ROMAN_VALUE[ch]
+        after = token[i + 1:]
+        total += -value if any(_ROMAN_VALUE[c] > value for c in after) else value
+    return total
+
+
+def _han_number(n):
+    """`3` -> `三`, `11` -> `十一`, `20` -> `二十`. The ordinary Chinese form, to 99."""
+    if n < 10:
+        return _HAN_DIGIT[n]
+    tens, units = divmod(n, 10)
+    return ("" if tens == 1 else _HAN_DIGIT[tens]) + "十" + (_HAN_DIGIT[units] if units else "")
+
+
+def ordinal_readings(token):
+    """`(ja, zh, ko)` for a regnal ordinal, or `(None, None, None)` if it is not one.
+
+    `III` -> `3世`, `三世`, `3세`. See `ORDINAL_RE` for where each convention comes from.
+    """
+    if not ORDINAL_RE.match(token or ""):
+        return None, None, None
+    n = _roman_to_int(token)
+    if not 1 <= n <= 99:
+        return None, None, None
+    return f"{n}\u4e16", f"{_han_number(n)}\u4e16", f"{n}\uc138"
+
 
 def transliterate_token_ko(token, table):
     """The Korean reading for one name token, or `None` if it cannot be rendered.
@@ -482,6 +542,12 @@ def transliterate_token_ko(token, table):
     Same middle-initial exception as `transliterate_token`, for the same reason: a letter is the
     same letter in every script, and 12,805 tokens sit in that position.
     """
+    # **An ordinal is read BEFORE the table**, because the table is where the wrong answer
+    # already lives: a rule-based pass minted `III` as `이이이` and it went out on a live item.
+    # Checking here means a stale copy of the table cannot reintroduce it.
+    _ja, _zh, ko = ordinal_readings(token)
+    if ko:
+        return ko
     row = table.get(token)
     if row and len(row) > 2 and row[2]:
         return row[2]
@@ -505,6 +571,11 @@ def transliterate_token(token, table):
     letter in every script. 12,805 tokens sit in the middle-initial position across the
     corpus, and every name containing one was getting no `ja`/`zh` label at all.
     """
+    # Same as `transliterate_token_ko`: the ordinal is read before the table, which holds the
+    # phonetic spellings this replaces -- `II` as `イイ`, `III` as `イイイ`, `IV` as `イヴ`.
+    ja, zh, _ko = ordinal_readings(token)
+    if ja:
+        return ja, zh
     pair = table.get(token)
     if pair:
         return pair[0], pair[1]

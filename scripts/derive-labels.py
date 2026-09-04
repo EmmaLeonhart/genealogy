@@ -39,12 +39,13 @@ Writes `reports/derived-labels.csv` (one row per person) and
 from __future__ import annotations
 
 import csv
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from namemodel import without_nickname  # noqa: E402
+from namemodel import married_name_of, without_nickname  # noqa: E402
 from labels import (  # noqa: E402
     drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker,
     is_description, mul_for_description)
@@ -86,6 +87,16 @@ def script_group(scripts: str) -> str:
     return "other"
 
 
+#: Everything that is not a letter, a digit or a space. Used only to ask whether two renderings
+#: of a name differ ONLY in punctuation; nothing is ever emitted through it.
+_PUNCT = re.compile(r"[^\w\s]", re.UNICODE)
+
+
+def _bare(text: str) -> str:
+    """The name with punctuation removed, case KEPT. See the note at its call site."""
+    return " ".join(_PUNCT.sub(" ", text or "").split())
+
+
 def clean(text: str) -> str:
     """Drop tokens that Geni uses to mean 'no value', per Emma's dot rule."""
     return " ".join(t for t in text.split() if t not in ABSENT)
@@ -101,6 +112,14 @@ def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
     **This reading is an interpretation of one sentence** and is flagged as such
     in `reports/labels.md` rather than presented as settled.
     """
+    # **A daughter-form `_MARNM` is the person's own patronymic, not a married name**, and
+    # flipping onto it replaces a real surname with a `-dotter` form. Emma pointed at
+    # `Q136376387`, whose `mul` she has as `Ebba Kristina Siöblad` where ours read
+    # `Ebba Kristina Carlsdotter`. `namemodel.DAUGHTER_PATRONYMIC` is the reasoning and the
+    # census: 2,483 people have a real `SURN` replaced this way.
+    marnm = married_name_of({"marnm": marnm})
+    if not marnm:
+        return ""
     parts = [clean(givn), clean(marnm), clean(nsfx)]
     return " ".join(p for p in parts if p)
 
@@ -290,6 +309,25 @@ def main() -> int:
 
         birth = latin[0] if latin else ""
         married = aliases[0] if aliases else ""
+
+        # **A RECONSTRUCTION never overrules a RECORDED rendering of the same name.** The
+        # married-name flip is built from `GIVN + _MARNM + NSFX`, so any punctuation Geni put
+        # in the `NAME` line is lost -- Emma, 2026-09-04: *"Idk why the comma was actively
+        # dropped before the ordinal"*. `Q141223436` is recorded
+        # `Tore Underberge, III` and went out as `Tore Underberge III`; she has since set both
+        # `en` and `mul` back to the comma form by hand, which is what fixes the reading.
+        #
+        # Where the flip and a recorded name are the same tokens differing only in
+        # punctuation, the recorded one is the evidence and wins. **2,254 people**, and the
+        # damage runs both ways: `Inger Marie Dyster-Aas` was losing its hyphen while
+        # `Alana Chinn fung` was gaining a slash the `NAME` line does not have.
+        #
+        # **Case is not punctuation and is not folded here.** Folding it would hand
+        # `Ethel Violet Gale` back as the recorded `Ethel violet gale`.
+        if married:
+            same = next((d for d in latin if _bare(d) == _bare(married) and d != married), None)
+            if same:
+                married = same
         if correction or not married:
             primary, alias_out = birth, list(aliases)
         else:

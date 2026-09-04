@@ -1185,7 +1185,7 @@ def label_in(label, table):
     Japanese label, it is a broken one. **A middle initial is the one exception** —
     `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
-    from labels import transliterate_token, transliterate_token_ko
+    from labels import ORDINAL_RE, transliterate_token, transliterate_token_ko
 
     # **A DESCRIPTION is not a name and never goes through here.** This is the choke point
     # rather than the callers, because every CJK label in the batch comes out of this one
@@ -1221,8 +1221,14 @@ def label_in(label, table):
     # Stripped for the LOOKUP only; the label itself is untouched, so a name that genuinely
     # carries punctuation still reads as it does.
     ja, zh, ko = [], [], []
+    # **An ordinal ATTACHES; every other token takes the separator.** Emma's hand-fix of
+    # `Q141223436` on 2026-09-04 reads `トーレ・ウンデルベルゲ3世` and `托雷·温德尔贝尔盖三世` -- the
+    # `・` and the `·` stop before the ordinal. `ko` is unaffected because it separates every
+    # word with a space anyway, and hers reads `토레 운데르베르게 3세`.
+    attached = []
     for token, _usage, _o in classify(label):
         clean = token.strip(",;:")
+        attached.append(bool(ORDINAL_RE.match(clean)))
         a, b = transliterate_token(clean, table)
         c = transliterate_token_ko(clean, table)
         if a is None or c is None:
@@ -1252,7 +1258,13 @@ def label_in(label, table):
     # **Korean separates the words of a personal name with a SPACE**, where `ja` takes the
     # middle dot and `zh` its own. Joining on nothing gave 안나츠리스티나프리가레 for
     # `Anna Christina Flygare` -- one unreadable run of fourteen syllables.
-    return "・".join(ja), "·".join(zh), " ".join(ko)
+    def joined(parts, sep):
+        out = ""
+        for i, part in enumerate(parts):
+            out += part if (i == 0 or attached[i]) else sep + part
+        return out
+
+    return joined(ja, "・"), joined(zh, "·"), " ".join(ko)
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",

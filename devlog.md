@@ -27234,3 +27234,69 @@ with a `NICK` carry more than one, 36%**, up to 18 lines on one record. They are
 appellations rather than tokens of one name — `近衛前子`, `豊臣秀吉猶子`, `中和門院` — so each is
 its own alias and joining them would make a new mash. Fixing it changes `display-names.csv`, which
 only a tree rebuild regenerates.
+
+## 2026-09-04 — the ordinals, and the two ways a label stopped being what Geni recorded
+
+Emma: *"This persons ordinals were totally fucked up https://www.wikidata.org/wiki/Q141223436 —
+Idk why the comma was actively dropped before the ordinal — Check this persons mul label for what
+I wanted https://www.wikidata.org/wiki/Q136376387"*.
+
+This session's egress proxy denies `www.wikidata.org` — 403 on CONNECT, `urllib` and WebFetch
+alike — so neither item could be read here. Actions reaches it;
+`.github/workflows/fetch-items.yml` is that, dispatch-only, printing full entities to the job log.
+**She had already fixed `Q141223436` by hand at 22:11**, and that edit is the specification:
+
+    en   Tore Underberge, III          ja  トーレ・ウンデルベルゲ3世
+    mul  Tore Underberge, III          ko  토레 운데르베르게 3세
+                                       zh  托雷·温德尔贝尔盖三世
+
+Three separate defects, each measured over the corpus and each now reproducing her values byte
+for byte.
+
+**An ordinal was being transliterated as a name.** `reports/garborg-name-transliterations.tsv`
+carried `III` as `イイイ` / `伊伊伊` / `이이이`, `II` as `イイ`, `IV` as `イヴ`, `Jr.` as `イル` — a
+rule-based pass with no notion of an ordinal spelling the letters out phonetically.
+`labels.ordinal_readings` replaces them: `ja` an arabic digit with 世, `zh` a Han numeral with 世,
+`ko` an arabic digit with 세, all read off her edit. It attaches with **no** separator in `ja`/`zh`
+where every other token takes `・`/`·`; `ko` keeps its space. 24 poisoned rows deleted, and the
+reader is consulted before the table so a stale copy cannot reintroduce them.
+
+**Only the multi-character forms.** `C` heads 944 labels and `L` 839, and they are middle
+initials, not ordinals; nothing in a rendered label separates a bare `I` that is an ordinal from
+one that is an initial, because the discriminator is `NSFX` and `label_in` does not have it. So
+17,731 of the 23,814 people carrying a Roman numeral are covered and 6,643 `I` plus 1,273 `V` are
+not. `CC`, `CXXVII`, `MC`, `MD` are out of the reader's 1–99 range and keep their old rows — `MD`
+is the medical suffix, not 1500.
+
+**`Jr.`, `Sr.`, `d.y.`, `d.e.` are dropped with nothing to replace them**, so those people now get
+no CJK label rather than a wrong one. `Jr` (no dot) had a correct `ja` `ジュニア` beside the
+invented `イル` on `Jr.`, and neither had a usable `zh` or `ko`. That is a question for Emma, not
+something to guess.
+
+**The comma: a RECONSTRUCTION was overruling a RECORDED rendering.** The primary label is the
+married-name flip, built from `GIVN + _MARNM + NSFX`, so any punctuation in the `NAME` line is
+lost. Where the flip and a recorded rendering are the same tokens differing only in punctuation,
+the recorded one is now the evidence and wins — **2,254 people**, and it ran both ways:
+`Inger Marie Dyster-Aas` was losing its hyphen while `Alana Chinn fung` was gaining a slash the
+`NAME` line does not have. Case is not folded, or `Ethel Violet Gale` would come back as the
+recorded `Ethel violet gale`.
+
+**`Q136376387`: a `_MARNM` that is a DAUGHTER patronymic is not a married name.** Her `mul` reads
+`Ebba Kristina Siöblad`; ours read `Ebba Kristina Carlsdotter`, because her record is
+`Ebba Kristina /Siöblad/` with `_MARNM Carlsdotter` and the flip put her own patronymic where her
+surname belongs — then `ja`/`zh`/`ko` were transliterated from it. A husband is never called
+`-dotter`, so the form settles it without a father lookup. **16,277 people carry one and on 2,483
+it replaces a real `SURN`**: `Anna Rehnberg` → `Anna Abrahamsdotter`, `Ranveg Lunde` →
+`Ranveg Mikkelsdatter`, `Brita Stina Johansson` → `Brita Stina Larsdotter`. The male forms stay
+ambiguous and are left to `patronymic_or_surname`, which has the father's name to go on.
+
+`classify_fields` was running `is_patronymic` on `GIVN` and `SURN` and **not** on `_MARNM`, so
+`Carlsdotter` was becoming a `P734` *family name* with the `Q28418670` *married name* role. It
+now classifies as a patronymic, which is what `name modelling.txt` asks for.
+
+**4,414 labels changed** on the re-derivation, and Emma's two items now read exactly what she set
+by hand. Her own rulings are untouched and were checked: `Aagot Nyvold` still flips to
+`Aagot Garborg`, and `Sigrid "Sally" Manilva Tunheim` still yields `Sally Ekman`.
+
+One case worth knowing, one person: `Elizabeth /Ryves./` is recorded with a trailing full stop and
+`_MARNM Ryves` without, so the recorded-wins rule now keeps `Elizabeth Ryves.`

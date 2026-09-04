@@ -126,6 +126,63 @@ PATRONYMIC = re.compile(
 #: `O'Neill`, 9,670 occurrences and not one of them a separate token. They are surnames by the
 #: time they reach us; treating them as live patronymics would put a `P5056` on people whose
 #: great-grandfather is the one it names. A separate `Fitz` token would qualify and none occurs.
+#: **The DAUGHTER forms alone**, which is a narrower question than `PATRONYMIC` and answers a
+#: different one: *can this token possibly be a married name?* It cannot. A woman takes her
+#: husband's name, and no husband is called `-dotter`.
+#:
+#: **Emma pointed at `Q136376387` on 2026-09-04 -- *"Check this persons mul label for what I
+#: wanted"* -- and her `mul` reads `Ebba Kristina Siöblad`.** Ours read
+#: `Ebba Kristina Carlsdotter`: her record is `Ebba Kristina /Siöblad/` with
+#: `_MARNM Carlsdotter`, and § *The MARRIED name is the real name* flipped the `_MARNM` into
+#: the primary label. But `Carlsdotter` is her PATRONYMIC -- her father is Carl -- mis-filed
+#: in the married-name field, so the flip replaced a real surname with a daughter-of form and
+#: then `ja`/`zh`/`ko` were transliterated from it.
+#:
+#: **`CLAUDE.md` already says the field cannot be trusted alone:** *"`_MARNM` is not reliably a
+#: married name… 43% are the only surname on the record because `SURN` is empty, and the 25%
+#: that differ are 53% male."* This is the part of that which is decidable by FORM, per
+#: § *PARSE PATRONYMICS BY FORM*, and nothing else about `_MARNM` is touched.
+#:
+#: **Measured over `reports/display-names.csv`: 16,277 people carry a daughter-form `_MARNM`,
+#: and on 2,483 of them it REPLACES a real `SURN` in the label** -- `Anna Rehnberg` becoming
+#: `Anna Abrahamsdotter`, `Ranveg Lunde` becoming `Ranveg Mikkelsdatter`, `Brita Stina
+#: Johansson` becoming `Brita Stina Larsdotter`. The other 13,794 have an empty `SURN`, so the
+#: flip changed nothing and they are unaffected either way.
+#:
+#: **The male forms are deliberately NOT here.** A Swedish woman marrying a man called
+#: `Petersson` does take `Petersson`, so `-son` in `_MARNM` is genuinely ambiguous and stays
+#: with `patronymic_or_surname`, which has the father's name to go on. Only the daughter forms
+#: are impossible.
+DAUGHTER_PATRONYMIC = re.compile(
+    r".+?s(?:datter|dotter|d[oó]ttir|dtr|dt|dtt|dttr|dr|d)\.?$", re.I)
+
+
+def is_daughter_patronymic(token: str) -> bool:
+    """True for `Carlsdotter`, `Ormsdatter`, `Vigfúsdóttir`, `Ljødelsdtr.`
+
+    The genitive `s` is required, and `CLAUDE.md` § *An abbreviated patronymic is EXPANDED*
+    records why: without it a bare `d` matches `Svend` 606, `Halvard` 322, `Hand` 92 and
+    `Old` 19, which are given names whose stem happens to be attested with `datter`.
+    """
+    return bool(DAUGHTER_PATRONYMIC.match(token or ""))
+
+
+def married_name_of(fields) -> str:
+    """The `_MARNM` where it really is a married name, else `""`.
+
+    A `_MARNM` every token of which is a daughter patronymic is the person's own patronymic in
+    the wrong field -- see `DAUGHTER_PATRONYMIC`. It must not become the primary label, must
+    not become a `P734` *family name* with the `Q28418670` *married name* role, and must not
+    make a "married full name" alias.
+    """
+    married = " ".join((fields.get("marnm") or "").split())
+    if not married:
+        return ""
+    if all(is_daughter_patronymic(t) for t in married.split()):
+        return ""
+    return married
+
+
 PATRONYMIC_PARTICLE = frozenset({
     "ap", "ab", "ferch", "verch",              # Welsh
     "ben", "bin", "ibn", "bint", "bar", "bat",  # Semitic
@@ -1023,6 +1080,16 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
         for raw in married.split():
             token, shape = name_shape(raw)
+            # **`_MARNM` gets the patronymic test too, and it did not until 2026-09-04.**
+            # `GIVN` and `SURN` both run `is_patronymic` above -- `name modelling.txt`:
+            # *"We have to check in the given names and in the surname whether it is a
+            # patronym"* -- and the married field was the one that did not, so
+            # `Carlsdotter` in `_MARNM` became a `P734` *family name* carrying the
+            # `Q28418670` *married name* role. Only the DAUGHTER forms, which cannot be a
+            # married name at all; see `DAUGHTER_PATRONYMIC`.
+            if not shape and is_daughter_patronymic(token):
+                out.append((token, "patronymic", 0))
+                continue
             out.append((token, shape or "married", 0))
 
     # A description yields no nickname either. `(--stillborn--)` occurs 11 times and the
@@ -1324,7 +1391,7 @@ def aliases_for(fields, surn="", marnm=""):
     # `Eccleston` against `Eggleston`, `Monradi` against `Monrad`, `Slason` against
     # `Slawson`. A similarity threshold would have been the other way to reach those, and
     # this repo does not have one.
-    surname = " ".join((marnm or surn or "").split())
+    surname = " ".join((married_name_of({"marnm": marnm}) or surn or "").split())
     quoted = {(m.group("token") or m.group("apos") or m.group("paren")).strip()
               for m in QUOTED.finditer(fields.get("givn", "") or "")}
     for token, usage, _ordinal in tokens:
@@ -1338,7 +1405,7 @@ def aliases_for(fields, surn="", marnm=""):
                 full = f"{bare} {surname}".strip()
             if full and full not in out:
                 out.append(full)
-    married = " ".join((fields.get("marnm") or "").split())
+    married = married_name_of(fields)
     if married and married.casefold() != " ".join(
             (fields.get("surn") or "").split()).casefold():
         if given:
