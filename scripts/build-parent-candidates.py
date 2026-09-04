@@ -56,6 +56,67 @@ OUT_HTML = ROOT / "out" / "parent-review.html"
 
 csv.field_size_limit(1 << 30)
 #: **The separator in `out/wikidata/relations.tsv` is a SEMICOLON.**
+
+STORE_INDEX = ROOT / "out" / "wikidata" / "store-index.sqlite3"
+STORE_ITEMS = ROOT / "wikidata" / "items"
+
+
+def labels_from_store(wanted):
+    """Labels for `wanted` read out of the local store, via the QID-to-shard index.
+
+    The fallback for a checkout with no `out/wikidata/labels.tsv`. It opens only the shards the
+    index names, which is what makes it seconds rather than a full pass over 4.3 GB.
+
+    **The store writes `"id": "Q123"` WITH A SPACE**, and a matcher looking for `'"id":"Q'` finds
+    nothing -- which reads as *these items are not in the store* when all of them are. That is
+    `CLAUDE.md` § *An empty or narrowed join is indistinguishable from an absence of data*, so the
+    id is taken from the parsed record and never from a substring guess.
+    """
+    if not (STORE_INDEX.exists() and STORE_ITEMS.is_dir()):
+        return {}
+    import collections
+    import gzip
+    import sqlite3
+
+    shards = collections.defaultdict(set)
+    try:
+        db = sqlite3.connect("file:%s?mode=ro" % STORE_INDEX, uri=True)
+        for q in wanted:
+            row = db.execute("SELECT shard FROM items WHERE qid=?", (q,)).fetchone()
+            if row:
+                shards[row[0]].add(q)
+        db.close()
+    except sqlite3.Error as exc:
+        sys.stderr.write("store index unreadable (%s)\n" % exc)
+        return {}
+
+    out = {}
+    for shard, qs in sorted(shards.items()):
+        path = STORE_ITEMS / ("items-%05d.jsonl.gz" % shard)
+        if not path.exists():
+            continue
+        with gzip.open(path, "rt", encoding="utf-8") as fh:
+            for line in fh:
+                if not any(q in line for q in qs):
+                    continue
+                rec = json.loads(line)
+                if rec.get("id") not in qs:
+                    continue
+                lab = rec.get("labels") or {}
+                for lng in ("en", "mul", "sv", "nb", "no", "da", "de", "fi", "fr",
+                            "zh", "ko", "ja"):
+                    if lng in lab:
+                        out[rec["id"]] = lab[lng]["value"]
+                        break
+                else:
+                    if lab:
+                        out[rec["id"]] = next(iter(lab.values()))["value"]
+    if out:
+        print("%s Wikidata labels read from the store index across %s shards"
+              % (format(len(out), ","), format(len(shards), ",")), file=sys.stderr)
+    return out
+
+
 #: `extract-wikidata-relations.py` writes `";".join(v)`, and this said `"|"` -- a
 #: character that appears in **zero** rows of that file, so no multi-valued cell has ever
 #: been split. An item with two fathers yielded the single token `Q45412871;Q45424860`,
@@ -310,10 +371,23 @@ def main():
                 parts = line.rstrip("\n").split("\t")
                 if parts[0] in wanted and len(parts) > 1:
                     wd_label.setdefault(parts[0], parts[1])
-    else:
-        sys.stderr.write("WARNING: out/wikidata/labels.tsv missing -- the Wikidata side will "
-                         "show QIDs instead of names, which makes a case much harder to judge. "
-                         "Rebuild with scripts/extract-wikidata-labels.py\n")
+    if not wd_label:
+        # `out/wikidata/labels.tsv` is 187 MB and gitignored, so a fresh clone -- a cloud session,
+        # a CI runner -- simply does not have it, and the deck then renders every case as a bare
+        # QID. Emma has already ruled on what that is worth: *"Fuck you no relationships means I
+        # can't make a judgment."* A card nobody can answer is the same failure as a card nobody
+        # generates, so fall back rather than warn.
+        #
+        # **The STORE INDEX makes this cheap, and that is the thing to know.** It maps QID to
+        # shard, so 54 QIDs came out of 40 shards in seconds -- there is no need to stream all
+        # 2,427. Scanning the whole store instead took over twenty minutes and was abandoned.
+        wd_label.update(labels_from_store(wanted))
+    if not wd_label:
+        sys.stderr.write("WARNING: no Wikidata labels from out/wikidata/labels.tsv OR the store "
+                         "index -- the Wikidata side will show QIDs instead of names, which "
+                         "makes a case much harder to judge. Rebuild labels.tsv with "
+                         "scripts/extract-wikidata-labels.py, or the index with "
+                         "`python -m genimerge wikidata-index`.\n")
 
     # ---- the discriminating evidence -----------------------------------------------
     # **Emma, 2026-09-01, after ruling 207 pairs off the TSV:** *"The problem with that html is it
@@ -372,7 +446,14 @@ def main():
         cand_sp = [wd_label.get(x, x) for x in sp_of.get(q, ())]
         cand_kids = [wd_label.get(x, x) for x in kids_of.get(q, ())]
         cases.append({
-            "our": labels.get(g, ""),
+            # `g` can be a MULTI-VALUED cell -- `4259064 | 9995000000000000074 | ...` -- because a
+            # merged person carries every id they were merged from, and `9995...` ids are our own
+            # structural placeholders. Looking the whole cell up as one key finds nothing and the
+            # card renders with no name at all: 6 of 17 on 2026-09-04. Take the first id that
+            # actually resolves.
+            "our": labels.get(g) or next(
+                (labels[t] for t in (x.strip() for x in str(g).split("|"))
+                 if labels.get(t)), ""),
             "geni": g,
             "qid": q,
             "cand": wd_label.get(q, q),
