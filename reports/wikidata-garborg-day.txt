@@ -13,87 +13,75 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Voster -- family, 6 bearer(s) in the batches
+# Hansson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Voster"
-LAST	Len	"Voster"
-#   set the mul label to "Voster"
-LAST	Lmul	"Voster"
+#   the item just created: set the en label to "Hansson"
+LAST	Len	"Hansson"
+#   set the mul label to "Hansson"
+LAST	Lmul	"Hansson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141244099 Hans Hansson Store Vatne: P5056 patronym or matronym = the item just created
+Q141244099	P5056	LAST	S2600	"6000000005608892535"
+#   Q5976894 Gabriel Hansson Marklin: P5056 patronym or matronym = the item just created
+Q5976894	P5056	LAST	S2600	"6000000044191693814"
+#   Q141216468 Erik Hansson Gausland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
+Q141216468	P5056	LAST	P144	Q141216381	S2600	"6000000053561772011"
+
+# Helgesen -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Helgesen"
+LAST	Len	"Helgesen"
+#   set the mul label to "Helgesen"
+LAST	Lmul	"Helgesen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141189099 Rasmus Helgesen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189066 Helge Rasmusson Bø
+Q141189099	P5056	LAST	P144	Q141189066	S2600	"6000000021133770643"
+#   Q141189113 Ådne Helgesen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189066 Helge Rasmusson Bø
+Q141189113	P5056	LAST	P144	Q141189066	S2600	"6000000196542455825"
+#   Q141206056 Asbjørn Helgesen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216382 Helge Asbjørnsen Bø
+Q141206056	P5056	LAST	P144	Q141216382	S2600	"6000000222520395904"
+
+# Høle -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Høle"
+LAST	Len	"Høle"
+#   set the mul label to "Høle"
+LAST	Lmul	"Høle"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q141205913 Ingebret Pederson Voster: P734 family name = the item just created
-Q141205913	P734	LAST	S2600	"6000000007980389582"
-#   Q141242562 Peder Jonsen Voster: P734 family name = the item just created
-Q141242562	P734	LAST	S2600	"6000000007980605161"
-#   Q141198755 Anna Ingebretsdatter Voster: P734 family name = the item just created
-Q141198755	P734	LAST	S2600	"6000000007980728952"
-#   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
-Q141223551	P734	LAST	S2600	"6000000007980728958"
-#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
-Q141244126	P734	LAST	S2600	"6000000007980728964"
-#   Q141244116 NN Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141244116	P734	LAST	P3831	Q28418670	S2600	"6000000015302207141"
+#   Q141200067 Rasmus Kjetilson Høle: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141200067	P734	LAST	P3831	Q2507958	S2600	"6000000003095034915"
+#   P734 family name = the item just created
+Q141200067	P734	LAST	S2600	"6000000003095034915"
+#   Q141180412 Marta Rasmusdatter Li: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141180412	P734	LAST	P3831	Q2507958	S2600	"6000000005609534550"
 
-# Rasmussen -- patronymic, 5 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Rasmussen"
-LAST	Len	"Rasmussen"
-#   set the mul label to "Rasmussen"
-LAST	Lmul	"Rasmussen"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141216381 Hans Rasmussen Låge-Håland: P5056 patronym or matronym = the item just created
-Q141216381	P5056	LAST	S2600	"6000000009127934231"
-#   Q141257264 Lydik Rasmussen Amdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141257299 Rasmus Lydikson Amdal
-Q141257264	P5056	LAST	P144	Q141257299	S2600	"6000000023605569477"
-#   Q141223738 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200074 Rasmus Olsen Bø
-Q141223738	P5056	LAST	P144	Q141200074	S2600	"6000000196541254827"
-#   Q141242406 Hans Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
-Q141242406	P5056	LAST	P144	Q141189099	S2600	"6000000225376735889"
-#   Q141242555 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
-Q141242555	P5056	LAST	P144	Q141189099	S2600	"6000000225376871825"
-
-# Kristiansen -- patronymic, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kristiansen"
-LAST	Len	"Kristiansen"
-#   set the mul label to "Kristiansen"
-LAST	Lmul	"Kristiansen"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141189067 Helmik Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141189067	P5056	LAST	P144	Q141189076	S2600	"6000000221449620901"
-#   Q141189078 Lars Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141189078	P5056	LAST	P144	Q141189076	S2600	"6000000224702528843"
-#   Q141268096 Ole Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141268096	P5056	LAST	P144	Q141189076	S2600	"6000000224702600859"
-#   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189076 Kristian Larsen Sør-Reime
-Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
-
-# 360 more name items are needed and wait for a later
+# 351 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Låge-Håland (family), 4 bearer(s)
-#   Asbjørnsdatter (patronymic), 3 bearer(s)
-#   Frondin (family), 3 bearer(s)
-#   Garfve (family), 3 bearer(s)
-#   Hakunge (family), 3 bearer(s)
-#   Hansen (patronymic), 3 bearer(s)
-#   Hansson (patronymic), 3 bearer(s)
-#   Helgesen (patronymic), 3 bearer(s)
-#   Høle (family), 3 bearer(s)
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
 #   Knutsdatter (patronymic), 3 bearer(s)
-#   ... and 348 more
+#   Larsson (patronymic), 3 bearer(s)
+#   Magnusson (patronymic), 3 bearer(s)
+#   Nord-Varhaug (family), 3 bearer(s)
+#   Olson (patronymic), 3 bearer(s)
+#   Rudén (family), 3 bearer(s)
+#   Røyneberg (family), 3 bearer(s)
+#   Söfdeborg (family), 3 bearer(s)
+#   Tollefson (patronymic), 3 bearer(s)
+#   Ugla (family), 3 bearer(s)
+#   ... and 339 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -105,39 +93,38 @@ Q141189077	P5056	LAST	P144	Q141189076	S2600	"6000000224702710821"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2431 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2418 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141216632: set the ja label
-Q141216632	Lja	"マグダレーナ・ラウリトスダッテル・ホガンヴィク"
-#   Q141216632: set the ko label
-Q141216632	Lko	"막다레나 라우리츠다테르 호간비크"
-#   Q141217369: holds the abbreviated 'Anna Osmundsd Stokka'; the full form is 'Anna Osmundsdatter Stokka'
-#   Q141217369: keep the outgoing label as an alias before it is replaced
-Q141217369	Amul	"Anna Osmundsd Stokka"
-#   Q141217369: set the mul label to 'Anna Osmundsdatter Stokka'
-Q141217369	Lmul	"Anna Osmundsdatter Stokka"
-#   Q141217369: set the en label to 'Anna Osmundsdatter Stokka'
-Q141217369	Len	"Anna Osmundsdatter Stokka"
-#   Q141217369: set the ko label
-Q141217369	Lko	"안나 오스문드스다테르 스토카"
-#   Q141223851: set the mul label to 'Ragnhild Østensdatter Stokka'
-Q141223851	Lmul	"Ragnhild Østensdatter Stokka"
-#   Q141223851: set the en label to 'Ragnhild Østensdatter Stokka'
-Q141223851	Len	"Ragnhild Østensdatter Stokka"
-#   Q141223851: set the ja label
-Q141223851	Lja	"ラグンヒル・オステンスダッテル・ストカ"
-#   Q141223851: set the zh label
-Q141223851	Lzh	"拉格希尔德·奥斯滕斯达特·斯托卡"
-#   set the ko label to "아우로라 카람지나"
-Q2471654	Lko	"아우로라 카람지나"
-#   Q141224279 Magdalena Wallwik: set the ja label to "マグダレーナ・ヴァルヴィク"
-Q141224279	Lja	"マグダレーナ・ヴァルヴィク"
-#   set the zh label to "马格达莱纳·瓦尔维克"
-Q141224279	Lzh	"马格达莱纳·瓦尔维克"
-#   set the ko label to "막다레나 와르르위크"
-Q141224279	Lko	"막다레나 와르르위크"
-#   add a mul alias "Torsten Håkansson Rudén"
-Q6082642	Amul	"Torsten Håkansson Rudén"
+#   set the ja label to "トルステン・ルデエン"
+Q6082642	Lja	"トルステン・ルデエン"
+#   set the zh label to "托尔斯滕·鲁德恩"
+Q6082642	Lzh	"托尔斯滕·鲁德恩"
+#   set the ko label to "토르스텐 루딘"
+Q6082642	Lko	"토르스텐 루딘"
+#   Q141242569 Åsa Gunnbjørnsdotter Stordrange: set the ko label to "오사 군느브죄르느스도테르 스토르드라에"
+Q141242569	Lko	"오사 군느브죄르느스도테르 스토르드라에"
+#   Q141250248 Signe Bjørnsdotter Kvavik: add a mul alias "Signe Bjørnsdotter Tengs?"
+Q141250248	Amul	"Signe Bjørnsdotter Tengs?"
+#   Q141242383 Bjørn Gunnbjørnsson Kvåvig: set the ko label to "브죄르느 군느브죄르느손 크보빅"
+Q141242383	Lko	"브죄르느 군느브죄르느손 크보빅"
+#   Q141257178 Gunhild Øysteinsdotter Kvavik: add a mul alias "Gunhild Øysteinsdotter Skofteland"
+Q141257178	Amul	"Gunhild Øysteinsdotter Skofteland"
+#   Q139997218 Albrecht Jonsson Behm: set the ja label to "アルブレヒト・ヨンソン・ベム"
+Q139997218	Lja	"アルブレヒト・ヨンソン・ベム"
+#   set the zh label to "阿爾布雷希特·永松·贝姆"
+Q139997218	Lzh	"阿爾布雷希特·永松·贝姆"
+#   set the ko label to "알브레츠트 존손 베흐므"
+Q139997218	Lko	"알브레츠트 존손 베흐므"
+#   Q140192133 Sara Albrektsdotter Swedberg: set the ja label to "サラ・アルブレクトスドッテル・スヴェドベルグ"
+Q140192133	Lja	"サラ・アルブレクトスドッテル・スヴェドベルグ"
+#   set the zh label to "萨拉·阿尔布雷克特斯多特·斯韦德贝尔格"
+Q140192133	Lzh	"萨拉·阿尔布雷克特斯多特·斯韦德贝尔格"
+#   set the ko label to "사라 알브레크츠도테르 스웨드베르그"
+Q140192133	Lko	"사라 알브레크츠도테르 스웨드베르그"
+#   set the ko label to "아르비드 닐스 스텐보크"
+Q6188777	Lko	"아르비드 닐스 스텐보크"
+#   Q141216495 NN: set the ja label to "ン"
+Q141216495	Lja	"ン"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -931,14 +918,10 @@ Q15069149	P734	Q1791084
 Q103773586	P735	Q666578
 #   P734 family name = Q16883357 Sinclair
 Q103773586	P734	Q16883357
-#   Q10418965 Arvid Sigismund Horn af Åminne: P735 given name = Q10667549 Sigismund, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q10418965	P735	Q10667549	P1545	"2"	P3831	Q245025
 #   Q109852820 Gustav Adolf Järnefelt: P735 given name = Q746076, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q109852820	P735	Q746076	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q18145837 Adolf, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q109852820	P735	Q18145837	P1545	"2"	P3831	Q245025
-#   Q6206425 Per Reinhold Tersmeden: P735 given name = Q18091397 Reinhold, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q6206425	P735	Q18091397	P1545	"2"	P3831	Q245025
 #   Q5754056 Peter Niklas von Gedda: P735 given name = Q2793400 Peter, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q5754056	P735	Q2793400	P1545	"1"	P7452	Q3409033
 #   Q5630706 Peter Ekman II: P735 given name = Q2793400 Peter
@@ -955,20 +938,10 @@ Q98545742	P735	Q18201520	P1545	"2"	P3831	Q245025
 Q98545742	P735	Q18924998	P1545	"3"	P3831	Q245025
 #   P735 given name = Q5044762 Carolina, qualified P1545 series ordinal 4, P3831 object of statement has role Q245025 middle name
 Q98545742	P735	Q5044762	P1545	"4"	P3831	Q245025
-#   Q6175942 David Wilhelm Silfverstolpe: P735 given name = Q29937870 David, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q6175942	P735	Q29937870	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q11027623, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q6175942	P735	Q11027623	P1545	"2"	P3831	Q245025
-#   Q5960165 Carolus Nicolai Lithman: P735 given name = Q1044619 Carolus, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q5960165	P735	Q1044619	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q19830590 Nicolai, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q5960165	P735	Q19830590	P1545	"2"	P3831	Q245025
 #   Q5931284 Olof Elias Lagerheim: P735 given name = Q18089653 Olof, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q5931284	P735	Q18089653	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q11878157 Elias, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q5931284	P735	Q11878157	P1545	"2"	P3831	Q245025
-#   Q16649517 Gerhard Jonæ: P735 given name = Q7996169 Gerhard
-Q16649517	P735	Q7996169
 #   Q5757435 Martinus Erici Gestrinius: P5056 patronym or matronym = Q130232913 Eriksson, qualified P144 based on Q141225111 Ericus Nicolai Gestrinius
 Q5757435	P5056	Q130232913	P144	Q141225111
 #   Q6177449 Johan Carlsson Siöblad: P735 given name = Q10989273 Johan
@@ -977,10 +950,6 @@ Q6177449	P735	Q10989273
 Q141271426	P26	Q141271408	S2600	"6000000007588356972"
 #   Q141271408 Catharina Löja: P26 spouse = Q141271426 Laurentius Beronis Burman
 Q141271408	P26	Q141271426	S2600	"6000000007588665344"
-#   Q12363134 Gustaf Adolf Strömfelt till Strömhult: P735 given name = Q15646212 Gustaf, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q12363134	P735	Q15646212	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q18145837 Adolf, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q12363134	P735	Q18145837	P1545	"2"	P3831	Q245025
 #   Q133283834 Nils Gabriel Danckwardt-Lillieström till Gälsebo: P735 given name = Q16423038 Nils, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q133283834	P735	Q16423038	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q4925914 Gabriel, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -989,48 +958,24 @@ Q133283834	P735	Q4925914	P1545	"2"	P3831	Q245025
 Q102121588	P735	Q17317997	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q102121588	P735	Q16423275	P1545	"2"	P3831	Q245025
-#   Q5626148 Carl Wilhelm von Düben: P735 given name = Q11027623, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q5626148	P735	Q11027623	P1545	"2"	P3831	Q245025
 #   Q141200074 Rasmus Olsen Bø: P734 family name = Q122836435, qualified P3831 object of statement has role Q2507958 birth name
 Q141200074	P734	Q122836435	P3831	Q2507958
-#   Q4944366 Charlotta Aurora De Geer af Finspång: P735 given name = Q1066178 Aurora, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q4944366	P735	Q1066178	P1545	"2"	P3831	Q245025
-#   P734 family name = Q28605695 Geer
+#   Q4944366 Charlotta Aurora De Geer af Finspång: P734 family name = Q28605695 Geer
 Q4944366	P734	Q28605695
-#   Q110548896 Ebba Lidman: P22 father = Q5950427 Sven Fredrik Lidman
-Q110548896	P22	Q5950427	S2600	"6000000007753308375"
-#   P2600 Geni.com profile ID = 6000000007753308375 Ebba Lidman, qualified P1810 subject named as Ebba Lidman
-Q110548896	P2600	"6000000007753308375"	P1810	"Ebba Lidman"
-#   P735 given name = Q2242896 Ebba
-Q110548896	P735	Q2242896
 #   Q135665878 Anna Christina Stålhammar: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q135665878	P735	Q666578	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q1083457 Christina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q135665878	P735	Q1083457	P1545	"2"	P3831	Q245025
-#   Q141224012 Hedvig Chydenius: P40 child = Q109852817 Jakob Chydenius
-Q141224012	P40	Q109852817	S2600	"6000000007774748338"
-#   Q19977201 Jakob Pedersson Törnsköld till Runstorp: P5056 patronym or matronym = Q130232998
-Q19977201	P5056	Q130232998
-#   Q6218068 Carl Peter Peter Törnebladh: P735 given name = Q2793400 Peter, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q6218068	P735	Q2793400	P1545	"2"	P3831	Q245025
-#   P735 given name = Q2793400 Peter, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
-Q6218068	P735	Q2793400	P1545	"3"	P3831	Q245025
 #   Q110457041 Anna Sofia Stålhammar: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q110457041	P735	Q666578	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q18201520 Sofia, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q110457041	P735	Q18201520	P1545	"2"	P3831	Q245025
 #   Q141199856 Guri Hansdatter Garborg: P734 family name = Q36931214, qualified P3831 object of statement has role Q2507958 birth name
 Q141199856	P734	Q36931214	P3831	Q2507958
-#   Q4355686 August Gustaf Nordenskjöld: P735 given name = Q15646212 Gustaf, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q4355686	P735	Q15646212	P1545	"2"	P3831	Q245025
-#   Q141257299 Rasmus Lydikson Amdal: P40 child = Q141257264 Lydik Rasmussen Amdal
-Q141257299	P40	Q141257264	S2600	"6000000007980728992"
 #   Q126217078 Elsa Christina Ehrenkrona: P735 given name = Q1077181 Elsa, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q126217078	P735	Q1077181	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q1083457 Christina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q126217078	P735	Q1083457	P1545	"2"	P3831	Q245025
-#   Q73763454 Sigfrid Porthan: P735 given name = Q329006 Sigfrid
-Q73763454	P735	Q329006
 #   Q141216470 Govert Jonson Årsvoll: P734 family name = Q117155474, qualified P3831 object of statement has role Q2507958 birth name
 Q141216470	P734	Q117155474	P3831	Q2507958
 #   Q5935475 Albrecht von Lantinghausen: P735 given name = Q18180401 Albrecht
