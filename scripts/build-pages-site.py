@@ -42,6 +42,7 @@ BATCH = ROOT / "reports" / "wikidata-garborg-day.txt"
 ALONGSIDE = (
     ROOT / "out" / "parent-review.html",
     ROOT / "out" / "patronymic-identifications.html",
+    ROOT / "out" / "duplicate-surnames.html",
 )
 
 PAGE = pathlib.Path(__file__).resolve().parent.parent / "scripts" / "_batch_page.html"

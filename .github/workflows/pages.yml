@@ -70,6 +70,7 @@ jobs:
             /reports/wikidata-garborg-day.txt
             /out/parent-review.html
             /out/patronymic-identifications.html
+            /out/duplicate-surnames.html
           sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
