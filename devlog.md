@@ -27682,3 +27682,48 @@ emitted in. Some of those aliases are her hand-edits and nothing else records th
 them would lose work. Checked against `_cap_label_edits` with four edits in each of eleven
 languages in scrambled order: the 15 came out `en` ×5, `mul` ×6 with the alias directly above its
 label, `ja` ×4, and relationships passed through uncapped.
+
+## 2026-09-04 — the cap counts PEOPLE, and the newest first on purpose
+
+**Emma:** *"we do all at once per qid (15 qids) in descending order of qids"*.
+
+It counted **lines** until now, which split a person across runs — an item could get its `mul`
+today and its `ja` a fortnight later and be wrong in between in a way that reads as carelessness
+rather than as a queue. It is 15 **people** now, all of one person's label edits together.
+
+**She pre-empted the objection and it is not to be re-litigated.** *"I am 100% aware that
+descending qids can cause an issue of a backlog theoretically never going away… I do not consider
+this to actually be a major concern"* — because *"making an item very recently that has an error
+in it looks worse than an item that I made a long time ago having an error in it"*, and because
+the real answer is upstream: *"my expectation is that we're going to ideally be never, ever, ever
+creating items with errors in them like this"*. Her words for the starvation are *"an intentional
+effect based off of live prioritization of different things"*, and she named the failure mode
+before I could reach it — *"Lemme guess safety thing you made up"*. **No fairness pass, no age
+bonus, no oldest-first sweep.**
+
+**This also corrects how I read her language order.** With every edit for a person going out
+together, `en / mul / ja / zh / ko / supported / rest` is a **layout within the person**, not a
+priority between people. I had implemented it as a priority, which was right only while the cap
+counted lines.
+
+Checked against `_cap_label_edits` with 20 people, five scrambled languages each, plus
+relationship lines: 15 people came out, descending numerically (`Q141283790` … `Q13`), each
+person's edits contiguous, languages in her order within each, the `Amul` still directly above its
+`Lmul`, relationships passed through uncapped, and 25 edits across 5 more people held.
+
+Batches get bigger as a result — the test run emitted 77 label lines where the old cap emitted 15.
+That is what *"all at once per qid"* means.
+
+## 2026-09-04 — the identical dates are none of our business
+
+Emma: *"Why the fuck are you working on that thing? … I formally place it in the category of none
+of my business … I am concerned with getting the data in more so than I am with the accuracy of
+it."* And on the shape of it: *"you're investigating the one part that you can of a thing that is
+impossible for you to investigate, and you're going to build some sort of report that is not
+useful."*
+
+Both true, and § *The question is whether OUR TREE MATCHES GENI — never whether Geni is right*
+already settled it: the dates are identical in `derived-facts.csv` because Geni records them that
+way, so our snapshot is current and there is nothing to fix. The census has been removed from
+`reports/anvilaquarius.md` rather than left in — a measurement nobody will act on reads as open
+work to the next session. Her ruling is recorded there in its place.

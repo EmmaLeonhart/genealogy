@@ -844,165 +844,128 @@ def _label_tiers():
 
 
 def _cap_label_edits(lines, clan_block, corrections):
-    """Move label edits on existing items to the FRONT and cut them to `LABEL_EDIT_CAP`.
+    """Move label edits on existing items to the FRONT, capped at `LABEL_EDIT_CAP` QIDS.
 
-    Both halves are hers. *"any label changes should occur at the beginning of the batch"* — so
-    they lead the file rather than trailing 5,000 lines below, where she was scrolling to find
-    them. *"limited to a count of 15 labels added per batch"* — so the rest wait for another day.
+    **⛔ The cap counts PEOPLE, not lines, and everything for one person goes at once.** Emma,
+    2026-09-04: *"we do all at once per qid (15 qids) in descending order of qids"*. It counted
+    lines until then, which split a person across runs — an item could get its `mul` today and
+    its `ja` in a fortnight, and be wrong in the meantime in a way that reads as carelessness
+    rather than as a queue.
 
-    **What this bites on, and the number is why it matters.** The batch was writing **2,192**
-    label and alias lines onto **508** existing items; 1,947 of them are `CJK_CLAN_BLOCK`, which
-    she hand-deleted from the last run in its entirety. At 15 a batch the clan block drains over
-    many runs instead of arriving as a wall — which is what she asked for, not a compromise on it.
+    **Descending QID: the newest items first, and she pre-empted the objection.** *"I am 100%
+    aware that descending qids can cause an issue of a backlog theoretically never going away
+    … I do not consider this to actually be a major concern"*, for two reasons she gave: *"making
+    an item very recently that has an error in it looks worse than an item that I made a long
+    time ago having an error in it"*, and the real answer is upstream — *"my expectation is that
+    we're going to ideally be never, ever, ever creating items with errors in them like this"*.
+    So the starvation is **intentional**, *"an intentional effect based off of live prioritization
+    of different things"*. Do not add a fairness pass, an age bonus or an oldest-first sweep: that
+    is the *"safety thing you made up"* she named in the same breath.
 
-    **The block stays in the source, in full.** She restored it herself on 2026-08-29 — *"What the
-    fuck the clan block is gone? Bring it the fuck back"* — after I deleted it by mistake. What is
-    capped is how much of it goes out per run, not whether it exists. A repeat is a no-op, so the
-    ones held back are simply emitted on a later day; nothing is lost and no state is needed.
+    **Within a person, her language order**, `LABEL_LANGUAGE_ORDER` then the supported set then
+    the rest — *"En / Mul / Ja / Zh / Ko / Then any ordering of our actively supported languages /
+    Then any other language labels that might be changed for some reason"*. With all of a QID's
+    edits going out together this is a LAYOUT within the person, not a priority between people;
+    it was read as a priority when the cap still counted lines, and this supersedes that.
 
-    **Corrections go first within the cap.** `_label_corrections` fixes items whose label is still
-    the birth name, which is a defect in what we already published; the clan block adds a label to
-    an item that has none. Fixing something wrong outranks adding something missing.
+    **The cap itself is hers and unchanged.** 2026-08-28: *"We are way too gung ho about adding
+    cjk labels to existing items… any label changes should occur at the beginning of the batch
+    and be limited to a count of 15 labels added per batch."* A label at CREATION time is neither
+    counted nor capped — *"a label added during item creation is good"* — so this only ever sees
+    `Q… L…`/`Q… A…`, never `LAST L…`.
+
+    **Corrections before the clan block, within a person.** *"Fixing something wrong outranks
+    adding something missing."*
+
+    **What has already gone out, so the cap DRAINS instead of repeating**, keyed on
+    `(qid, slot, value)` — see the note at `done` below.
     """
-    # **What has already gone out, so the cap DRAINS instead of repeating.** Emma, 2026-08-29:
-    # *"So I guess the clans thing will be saved and check which ones it was implemented on so
-    # that it can limit it to 15 like this and same with other label edits."* Without this the
-    # same first 15 lines are emitted every run and the remaining 2,177 never are.
-    #
-    # **Keyed on `(qid, slot, VALUE)`, and it was `(qid, slot)` until 2026-09-04.** The old key
-    # meant "we have written to this slot", which froze it: a label rule fixed afterwards could
-    # never reach the items the broken rule had already labelled.
-    #
-    # Emma found three of them in one message -- `Q141224746` reading `…・ドエ` for `d.e.`,
-    # `Q141283784` reading `…・ドイ` for `d.y.`, `Q141216388` reading `…・スト` for `St.` --
-    # all rendered by rules corrected the same evening, all unreachable. **Measured over the
-    # 1,860 rows: 220 emitted CJK labels the current rules render differently**, including
-    # `Q141205942` reading `トレ・イイ・…` for the ordinal `II` and `Q5735890` still carrying
-    # `・ティル・クモ` for a territorial `till Kumo` that `_drop_territorial` has dropped since.
-    #
-    # The comment here used to justify the old key as stopping *"a re-worded label for an item
-    # already done"* from sneaking past. That is the wrong thing to stop. This set exists to
-    # avoid re-proposing **the same edit** while she has not run the batch yet; the additions
-    # pass already refuses to emit anything the LIVE label agrees with, so a value that differs
-    # is a genuine disagreement -- which is precisely what Emma asked to be emitted: *"Every
-    # single label gets redone and if they disagree then they go onto the quickstatements that
-    # are generated."*
-    #
-    # `reports/label-edits-emitted.tsv` is tracked, one row per edit, with the date it first
-    # went out. Rows written before this change carry their value already, so the widened key
-    # reads them without a migration.
-    #
-    # **It records what was EMITTED, not what Wikidata accepted.** If she does not run a batch,
-    # those 15 do not come back on their own. That is the honest cost of a stateless cap becoming
-    # a stateful one, and the recovery is to delete their rows from the file.
+    # See the module note: keyed on the VALUE too, so a rule fixed after an item was labelled
+    # can still reach it. It was `(qid, slot)` until 2026-09-04 and that froze 220 of the 1,860
+    # emitted CJK labels against every later correction.
     done_path = ROOT / "reports" / "label-edits-emitted.tsv"
     done = set()
     if done_path.exists():
         for row in csv.DictReader(done_path.open(encoding="utf-8"), delimiter="	"):
             done.add((row["qid"], row["slot"], row.get("value", "")))
-    newly = []
 
     def is_label_edit(ln):
         return bool(re.match(r"^Q[1-9][0-9]*	[LAD][a-z-]+	", ln))
 
-    def take(source, budget, head, held, slots=None):
-        """Move this source's label edits into `head` while budget lasts; return what is left.
+    def split(source, rank):
+        """`(kept, edits)` — the non-label lines in order, and each edit with its comments.
 
-        Non-label lines pass through to `rest` untouched -- the additions pass emits `P22`,
-        `P40` and the like beside its labels, and those are relationships, not labels, and are
-        not capped by anything.
-
-        **`slots` takes a first pass at the budget and leaves the rest for a later call.** A
-        label edit whose slot is not in it is passed through to `rest` exactly as a relationship
-        line is: not counted, not marked done, not moved. So the same source can be walked twice
-        without reordering what it does not claim.
+        A `#` comment or blank line belongs to the edit below it, which is how the batch is
+        written; carrying them together is what keeps a regrouped file readable. `rank` orders
+        the sources within one person.
         """
-        rest, pending = [], []
+        kept, edits, pending = [], [], []
         for ln in source:
             if not ln.strip() or ln.lstrip().startswith("#"):
                 pending.append(ln)
                 continue
             if is_label_edit(ln):
                 qid, slot = ln.split("	")[0], ln.split("	")[1]
-                if slots is not None and slot not in slots:
-                    rest.extend(pending)
-                    rest.append(ln)
-                    pending = []
-                    continue
                 value = ln.split("	")[2].strip('"')
-                if (qid, slot, value) in done:
-                    pending = []
-                    continue
-                if budget[0] <= 0:
-                    held[0] += 1
-                    pending = []
-                    continue
-                budget[0] -= 1
-                done.add((qid, slot, value))
-                newly.append((qid, slot, value))
-                head.extend(pending)
-                head.append(ln)
-            else:
-                rest.extend(pending)
-                rest.append(ln)
+                edits.append({"qid": qid, "slot": slot, "value": value,
+                              "lines": pending + [ln], "rank": rank,
+                              "order": len(edits)})
+                pending = []
+                continue
+            kept.extend(pending)
+            kept.append(ln)
             pending = []
-        rest.extend(pending)
-        return rest
+        kept.extend(pending)
+        return kept, edits
 
-    budget, held, head = [LABEL_EDIT_CAP], [0], []
     clan_lines = clan_block.splitlines()
-    # **`mul` FIRST, ahead of everything, and it is her own priority rather than a new one.**
-    #
-    # Emma, 2026-09-04: *"I am noticing mul labels are not being assigned based on most commonly
-    # agreed upon Latin alphabet label as I wanted on wikidata but instead many people are just
-    # never given mul labels."* The cap is hers and is not the problem; the ORDER inside it was.
-    # `Lmul` is emitted by the additions pass, which is `lines`, which was taken LAST -- so the
-    # 15 slots were spent on corrections and the clan block and `mul` never drained.
-    #
-    # **Measured on the batch of 2026-09-04: 236 of the 1,293 ledger items in the live snapshot
-    # carry no `mul` at all, `consensus_latin_label` supplies one for 235 of them, and replaying
-    # the emit condition says 259 `Lmul` lines. One reached the file.** Behind 2,358 held edits
-    # at 15 a batch, "never" is the right word for it.
-    #
-    # Two of her rules make `mul` outrank the rest rather than this being a judgement call:
-    # § *The MARRIED name is the real name* -- *"`mul` is the real label"*, the language-neutral
-    # one every other language falls back to; and § *The label gate*, where `ja`/`zh`/`ko` are
-    # DERIVED from it. Writing a CJK label onto an item whose `mul` we have not set is step two
-    # before step one, which is the same shape as the Geni-id-first correction she made in the
-    # same message.
-    #
-    # `Amul` rides with it because it must: the outgoing label is preserved as an alias on the
-    # line above the `Lmul` that replaces it, and some of those are her own hand-edits. They are
-    # in that order in `lines`, so the alias claims its slot first and a budget that runs out
-    # between them leaves the alias added and the label unchanged -- harmless, and repeated next
-    # run.
-    # Her language order, tier by tier, across every source. Within a tier the corrections go
-    # before the clan block -- *"Fixing something wrong outranks adding something missing"* --
-    # and both before whatever the rest of the batch emits onto an existing item.
-    for tier in _label_tiers():
-        if not tier:
-            continue
-        corrections = take(corrections, budget, head, held, slots=tier)
-        clan_lines = take(clan_lines, budget, head, held, slots=tier)
-        lines = take(lines, budget, head, held, slots=tier)
-    # Then anything in a language she did not name, in the same source order.
-    take(corrections, budget, head, held)
-    take(clan_lines, budget, head, held)
-    lines = take(lines, budget, head, held)
+    _, correction_edits = split(corrections, 0)
+    _, clan_edits = split(clan_lines, 1)
+    lines, line_edits = split(lines, 2)
+    every = [e for e in correction_edits + clan_edits + line_edits
+             if (e["qid"], e["slot"], e["value"]) not in done]
+
+    #: Language rank inside a person. Anything she did not name sorts last, stably.
+    tiers = _label_tiers()
+    def language_rank(slot):
+        for i, tier in enumerate(tiers):
+            if slot in tier:
+                return i
+        return len(tiers)
+
+    by_qid = collections.defaultdict(list)
+    for edit in every:
+        by_qid[edit["qid"]].append(edit)
+
+    # Descending QID — numerically, because `Q9` is newer than `Q10000` as a string and older
+    # as an item.
+    chosen = sorted(by_qid, key=lambda q: -int(q[1:]))[:LABEL_EDIT_CAP]
+    held = sum(len(v) for q, v in by_qid.items() if q not in chosen)
+
+    head, newly = [], []
+    for qid in chosen:
+        for edit in sorted(by_qid[qid],
+                           key=lambda e: (language_rank(e["slot"]), e["rank"], e["order"])):
+            head.extend(edit["lines"])
+            newly.append((edit["qid"], edit["slot"], edit["value"]))
 
     if head:
         head = ["# " + "-" * 72,
                 "# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at "
-                f"{LABEL_EDIT_CAP}, both",
-                "#   her instruction: \"any label changes should occur at the beginning of the",
-                "#   batch and be limited to a count of 15 labels added per batch\". A label set",
-                "#   at CREATION time is neither counted nor capped -- \"a label added during item",
-                "#   creation is good\".",
-                "#   Order is hers, 2026-09-04: en, mul, ja, zh, ko, then the supported",
-                "#   languages, then anything else -- and it is a priority, not just a layout,",
-                "#   so an `en` edit displaces a `hi` one rather than printing above it.",
-                f"#   {held[0]} more are held for a later run; a repeat is a no-op, so nothing is lost.",
+                f"{LABEL_EDIT_CAP} PEOPLE,",
+                "#   both her instruction: \"any label changes should occur at the beginning of",
+                "#   the batch and be limited to a count of 15 labels added per batch\", and",
+                "#   \"we do all at once per qid (15 qids) in descending order of qids\". A label",
+                "#   set at CREATION time is neither counted nor capped -- \"a label added during",
+                "#   item creation is good\".",
+                "#   Newest items first, deliberately: a recent item with an error in it looks",
+                "#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported",
+                "#   languages, then the rest.",
+                f"#   {len(chosen)} people, {len(newly)} edits; {held} edits held for a later run",
+                "#   across " + str(len(by_qid) - len(chosen)) + " more people. A repeat is a "
+                "no-op, so nothing is lost.",
                 "# " + "-" * 72] + head + [""]
+
     if newly:
         today = datetime.date.today().isoformat()
         fresh = not done_path.exists()
@@ -1012,9 +975,10 @@ def _cap_label_edits(lines, clan_block, corrections):
                 w.writerow(["qid", "slot", "value", "first_emitted"])
             for qid, slot, value in newly:
                 w.writerow([qid, slot, value, today])
-    print(f"label edits on existing items: {LABEL_EDIT_CAP - budget[0]} emitted, {held[0]} held "
-          f"for a later batch (cap {LABEL_EDIT_CAP}); "
-          f"{len(done) - len(newly):,} already done in earlier batches")
+    print(f"label edits on existing items: {len(newly)} edits over {len(chosen)} people "
+          f"(cap {LABEL_EDIT_CAP} people); {held} edits held across "
+          f"{len(by_qid) - len(chosen)} more people; "
+          f"{len(done):,} already done in earlier batches")
     return head + lines
 
 

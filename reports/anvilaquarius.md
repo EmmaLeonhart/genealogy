@@ -34,30 +34,22 @@ They were opened on 2026-08-29 and were still unanswered when this was written s
 trouble to write one is not heard. That is the finding; whether to monitor it is Emma's call and
 nothing has been built for it.
 
-## Their report is correct, and the dates are GENI's
+## The identical dates are not our problem — her ruling
 
-`Q141180413` **Thomas Matthiæ** (`6000000004334768506`) and `Q141180409` **Magdalena
-Andersdotter** (`6000000006127859575`) both carry birth `29 JAN 1541` and death `27 SEP 1580` in
-`reports/derived-facts.csv` — which comes from the Geni GEDCOM. So this is not an emission bug
-putting one spouse's dates on the other; Geni records them identically and our snapshot matches.
+Emma, 2026-09-04, on being shown the analysis: *"Why the fuck are you working on that thing? …
+I formally place it in the category of none of my business … I am concerned with getting the data
+in more so than I am with the accuracy of it."*
 
-`CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI — never whether Geni is right*: we
-are current, and the correction belongs on Geni. § *The purpose is to ADD to Wikidata* keeps it
-out of her decision queue.
+And on the shape of the work itself: *"you're investigating the one part that you can of a thing
+that is impossible for you to investigate, and you're going to build some sort of report that is
+not useful."*
 
-## How common it is — measured over the whole corpus
+She is right on both counts. `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI — never
+whether Geni is right* already settles it: the two spouses carry identical dates in
+`derived-facts.csv` because Geni records them that way, so our snapshot is current and there is
+nothing here to fix. § *The purpose is to ADD to Wikidata* keeps it out of her decision queue.
 
-`363,615` distinct spouse pairs in `reports/derived-family.csv`:
-
-| | pairs |
-| --- | ---: |
-| both spouses have a birth date | 232,749 |
-| **identical birth dates** | 7,554 |
-| identical death dates | 4,062 |
-| **identical on BOTH** | **330** |
-| identical on both, at day precision | **24** |
-
-So the shape Anvilaquarius spotted is **0.09%** of pairs, and the day-precision form — the
-unmistakable one, where a copy-paste is the only plausible cause — is **24 pairs in the whole
-tree**. It is not systematic and there is nothing mechanical to fix. They found one of the 24 by
-eye.
+**So: nothing further on this, and no report.** The census that was here is removed rather than
+kept, because a measurement nobody will act on reads as open work to the next session — which is
+what § *LEGACY CODE IS DELETED* is about. What the thread itself established is above: there is a
+channel nobody reads.
