@@ -834,12 +834,17 @@ def _cap_label_edits(lines, clan_block, corrections):
     def is_label_edit(ln):
         return bool(re.match(r"^Q[1-9][0-9]*	[LAD][a-z-]+	", ln))
 
-    def take(source, budget, head, held):
+    def take(source, budget, head, held, slots=None):
         """Move this source's label edits into `head` while budget lasts; return what is left.
 
         Non-label lines pass through to `rest` untouched -- the additions pass emits `P22`,
         `P40` and the like beside its labels, and those are relationships, not labels, and are
         not capped by anything.
+
+        **`slots` takes a first pass at the budget and leaves the rest for a later call.** A
+        label edit whose slot is not in it is passed through to `rest` exactly as a relationship
+        line is: not counted, not marked done, not moved. So the same source can be walked twice
+        without reordering what it does not claim.
         """
         rest, pending = [], []
         for ln in source:
@@ -848,6 +853,11 @@ def _cap_label_edits(lines, clan_block, corrections):
                 continue
             if is_label_edit(ln):
                 qid, slot = ln.split("	")[0], ln.split("	")[1]
+                if slots is not None and slot not in slots:
+                    rest.extend(pending)
+                    rest.append(ln)
+                    pending = []
+                    continue
                 if (qid, slot) in done:
                     pending = []
                     continue
@@ -868,7 +878,34 @@ def _cap_label_edits(lines, clan_block, corrections):
         return rest
 
     budget, held, head = [LABEL_EDIT_CAP], [0], []
-    # Corrections first, then the clan block, then anything the rest of the batch emits onto an
+    # **`mul` FIRST, ahead of everything, and it is her own priority rather than a new one.**
+    #
+    # Emma, 2026-09-04: *"I am noticing mul labels are not being assigned based on most commonly
+    # agreed upon Latin alphabet label as I wanted on wikidata but instead many people are just
+    # never given mul labels."* The cap is hers and is not the problem; the ORDER inside it was.
+    # `Lmul` is emitted by the additions pass, which is `lines`, which was taken LAST -- so the
+    # 15 slots were spent on corrections and the clan block and `mul` never drained.
+    #
+    # **Measured on the batch of 2026-09-04: 236 of the 1,293 ledger items in the live snapshot
+    # carry no `mul` at all, `consensus_latin_label` supplies one for 235 of them, and replaying
+    # the emit condition says 259 `Lmul` lines. One reached the file.** Behind 2,358 held edits
+    # at 15 a batch, "never" is the right word for it.
+    #
+    # Two of her rules make `mul` outrank the rest rather than this being a judgement call:
+    # § *The MARRIED name is the real name* -- *"`mul` is the real label"*, the language-neutral
+    # one every other language falls back to; and § *The label gate*, where `ja`/`zh`/`ko` are
+    # DERIVED from it. Writing a CJK label onto an item whose `mul` we have not set is step two
+    # before step one, which is the same shape as the Geni-id-first correction she made in the
+    # same message.
+    #
+    # `Amul` rides with it because it must: the outgoing label is preserved as an alias on the
+    # line above the `Lmul` that replaces it, and some of those are her own hand-edits. They are
+    # in that order in `lines`, so the alias claims its slot first and a budget that runs out
+    # between them leaves the alias added and the label unchanged -- harmless, and repeated next
+    # run.
+    MUL_FIRST = {"Amul", "Lmul"}
+    lines = take(lines, budget, head, held, slots=MUL_FIRST)
+    # Then corrections, then the clan block, then everything else the batch writes onto an
     # existing item -- the additions pass writes `ja`/`zh` labels too, and capping only the two
     # hard-coded blocks left 664 label edits in the file when the cap is 15.
     take(corrections, budget, head, held)

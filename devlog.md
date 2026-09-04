@@ -27395,3 +27395,36 @@ ledger items in the live snapshot carry no `mul`, and `consensus_latin_label` su
 **235** of them, so the function is right and something downstream is not reaching them.
 Replaying the emit condition over the ledger says **259** `Lmul` lines should be emitted; the
 batch on disk has **1**. The cause is not established and is not guessed at here.
+
+**And the `mul` half, which is a QUEUE and not a bug.** Her second deviation: *"mul labels are
+not being assigned based on most commonly agreed upon Latin alphabet label as I wanted on
+wikidata but instead many people are just never given mul labels."*
+
+`consensus_latin_label` is correct and reachable — 236 of the 1,293 ledger items in the live
+snapshot carry no `mul`, and it supplies one for **235**. Replaying the emit condition over the
+ledger says **259** `Lmul` lines should go out. The batch had **one**.
+
+The cause is `LABEL_EDIT_CAP`, which is hers — *"limited to a count of 15 labels added per
+batch"* — and the cap is not the problem. The **order inside it** was: `_cap_label_edits` took
+`corrections`, then the clan block, then `lines`, and `Lmul` is emitted by the additions pass,
+which is `lines`. So the 15 slots were spent before `mul` was reached, every run, with **2,358
+held**. At that rate "never" is the accurate word.
+
+`mul` now takes a first pass at the budget. Two of her own rules put it there rather than my
+judgement: § *The MARRIED name is the real name* calls `mul` *"the real label"*, the
+language-neutral one every other language falls back to; and § *The label gate* derives
+`ja`/`zh`/`ko` **from** it, so writing a CJK label onto an item whose `mul` we have not set is
+step two before step one — the same shape as the Geni-id-first correction in the same message.
+
+`Amul` rides with it, because the outgoing label is preserved as an alias on the line above the
+`Lmul` that replaces it and some of those are her hand-edits. They are in that order, so the
+alias claims its slot first; a budget that runs out between them leaves the alias added and the
+label unchanged, which is harmless and repeats next run.
+
+Checked directly against `_cap_label_edits` with 20 CJK corrections and 10 mul edits: the 15 go
+**8 `Amul` + 7 `Lmul`**, each alias immediately above its label, relationships passing through
+uncapped, the corrections held. At 15 a batch the 259 drain in about 18 runs instead of never.
+
+**The local composes for this were diagnostic and their output was reverted.**
+`reports/label-edits-emitted.tsv` records what was EMITTED, so 15 rows from a run that reached no
+batch would have suppressed those edits from a real one.
