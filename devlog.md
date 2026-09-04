@@ -27311,3 +27311,28 @@ people are namesakes a generation apart, not siblings.
 is 小布什, a prefix, where this emits `安德斯·安德松·小`. Moving it would mean reordering the label
 rather than rendering a token, which is more than she sanctioned; `ja ・ジュニア` and `ko 주니어`
 are suffixes and read correctly as they stand.
+
+## 2026-09-04 — the copy button on the batch page
+
+Emma: *"fix the daily batch quickstatements page since the copy button does not work"*.
+
+The handler was one `navigator.clipboard.writeText(text).then(ok, fail)`, and it had three ways
+to fail her — her screenshots are from an iPhone, and iOS Safari is where each of them bites:
+
+- **Silent when `navigator.clipboard` is absent.** Reading `.writeText` off `undefined` throws
+  before either callback exists, so the button did nothing and said nothing. A button with no
+  feedback is indistinguishable from a broken page, which is exactly how it was reported.
+- **No fallback on a rejection.** It printed *"select the text instead"* and left her to do it
+  by hand over 93 KB.
+- **No way to select without copying.** On iOS a selection gives the native Copy menu, which
+  works when everything else refuses.
+
+Now: the async API, then `execCommand` over an off-screen textarea, then selecting the `<pre>`
+and saying so — and a `Select all` button that does that last step on demand. The textarea is
+plain rather than `readonly`, because iOS ignores `select()` on a readonly field, and it is moved
+off-screen rather than `display:none`, which copies nothing.
+
+**Not reproduced.** This session has no iOS Safari and the proxy blocks the Pages host, so this
+fixes the failure modes the code demonstrably has rather than one that was observed failing. If
+it still does nothing on her phone, the `Select all` button and the message text will now say
+which stage it reached, which the old version could not.

@@ -27,17 +27,91 @@ a{color:var(--accent)}
 (version 1 syntax, tab-separated)</p>
 <div class="bar">
   <button id="copy">Copy all</button>
+  <button id="select">Select all</button>
   <span class="sub" id="said"></span>
 </div>
 <pre id="qs">%s</pre>
 <script>
-document.getElementById("copy").addEventListener("click", function () {
-  var t = document.getElementById("qs").textContent;
-  navigator.clipboard.writeText(t).then(function () {
-    document.getElementById("said").textContent = "copied " + t.split("\n").length + " lines";
-  }, function () {
-    document.getElementById("said").textContent = "could not copy - select the text instead";
+/* **The copy button did not work and this is three fixes, not one.** Emma, 2026-09-04:
+   *"fix the daily batch quickstatements page since the copy button does not work"*. Her
+   screenshots come from an iPhone, and iOS Safari is where every one of these bites.
+
+   The old handler was one line of `navigator.clipboard.writeText(...).then(ok, fail)`:
+
+   1. **It went SILENT when `navigator.clipboard` was absent.** Reading `.writeText` off
+      `undefined` throws a TypeError before either callback exists, so the button did
+      nothing at all and said nothing either. A button with no feedback is
+      indistinguishable from a broken page.
+   2. **There was no fallback.** A rejected promise printed "select the text instead" and
+      left the reader to do it by hand on a 93 KB page.
+   3. **Nothing let her select the text without copying.** On iOS a selection gives the
+      native Copy menu, which works when everything else refuses.
+
+   So: try the async API, fall back to `execCommand` over a real textarea, and fall back
+   again to selecting the `<pre>` and saying so. `Select all` does that last step on
+   demand. iOS ignores `select()` on a `readonly` field, which is why the textarea is
+   plain and uses `setSelectionRange`. */
+(function () {
+  var said = document.getElementById("said");
+  var pre = document.getElementById("qs");
+
+  function report(msg) { said.textContent = msg; }
+  function lines(t) { return t.split("\n").length; }
+
+  function selectPre() {
+    var range = document.createRange();
+    range.selectNodeContents(pre);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  /* `execCommand` is deprecated and is still the only thing that works in an older
+     WebView. It needs a node that is in the document and visibly laid out, so the
+     textarea is moved off-screen rather than hidden -- `display:none` copies nothing. */
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("aria-hidden", "true");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    var ok = false;
+    try {
+      ta.focus();
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      ok = document.execCommand("copy");
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var text = pre.textContent;
+    var n = lines(text);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          report("copied " + n + " lines");
+        }, function () {
+          if (legacyCopy(text)) { report("copied " + n + " lines"); }
+          else { selectPre(); report("selected " + n + " lines - press Copy"); }
+        });
+        return;
+      }
+    } catch (e) { /* fall through to the same place a rejection goes */ }
+    if (legacyCopy(text)) { report("copied " + n + " lines"); }
+    else { selectPre(); report("selected " + n + " lines - press Copy"); }
   });
-});
+
+  document.getElementById("select").addEventListener("click", function () {
+    selectPre();
+    report("selected " + lines(pre.textContent) + " lines");
+  });
+})();
 </script>
 </div></body></html>
