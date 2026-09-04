@@ -711,9 +711,34 @@ def _label_corrections(our_items, labels, table, state):
 
     out = []
     for geni_id, qid in sorted(our_items.items(), key=lambda kv: kv[1]):
-        want = qs(labels.get(geni_id, ""))
+        # **The label we want is the EXPANDED one.** Emma, 2026-08-27: *"any abbreviations like
+        # -dtr … should be fixd since wikidata mul labels are supposed to have the full form.
+        # This is a part of the compliance stuff"*. `expand_abbreviations` ran only on the
+        # creation path, so an item created before the census covered its form keeps the
+        # abbreviation forever and nothing here ever noticed.
+        want = qs(expand_abbreviations(labels.get(geni_id, ""), geni_id))
         have = live.get(qid, "")
         if not want or not have or have == want:
+            continue
+        # **An abbreviation expansion is its own ground for a correction**, alongside the
+        # birth-name case below. It cannot rewrite anything else: the test is that the live
+        # label expands to exactly what we want, so the only difference between the two IS the
+        # abbreviation. Emma fixed `Q141271379` by hand on 2026-09-04 — *"I changed her name to
+        # correct the issue of an abbreviation of Ormsdatter"* — and an item she has already
+        # fixed simply matches `want` and is skipped by the line above.
+        if expand_abbreviations(have, geni_id) == want:
+            out.append(f"#   {qid}: holds the abbreviated {have!r}; the full form is {want!r}")
+            out.append(f"#   {qid}: keep the outgoing label as an alias before it is replaced")
+            out.append(f'{qid}\tAmul\t"{have}"')
+            out.append(f"#   {qid}: set the mul label to {want!r}")
+            out.append(f'{qid}\tLmul\t"{want}"')
+            out.append(f"#   {qid}: set the en label to {want!r}")
+            out.append(f'{qid}\tLen\t"{want}"')
+            ja, zh, ko = label_in(want, table)
+            if ja:
+                for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
+                    out.append(f"#   {qid}: set the {code} label")
+                    out.append(f'{qid}\tL{code}\t"{value}"')
             continue
         # **Only where the item literally holds the BIRTH name.** The first version corrected
         # every difference, and its own output showed why that is wrong: it offered to rewrite

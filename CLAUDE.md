@@ -693,6 +693,53 @@ Fixing it moved name statements **145 → 157** on the live batch — the titles
 real surnames the positional parse had been missing in: `Fleming`, `Boije`, `Henckel`,
 `Donnersmarck`, `Oxenstierna`, `Munck`, `Olofsson`, `Eriksdotter`.
 
+### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
+
+**Emma, 2026-09-04**, having hand-corrected `Q141271379` from `Anna Ormsd Byre`: *"I changed her
+name to correct the issue of an abbreviation of Ormsdatter."* Her standing instruction is
+2026-08-27: *"any abbreviations like -dtr … should be fixd since wikidata mul labels are supposed
+to have the full form. This is a part of the compliance stuff."*
+
+**The machinery all existed and the pattern matched one form.**
+`census-abbreviated-patronymics.py` carried `\b(\w+?)(dtr)\.?` — so `Ormsd`, `Johansdr`,
+`Olsdt.` matched nothing, nothing expanded them, and `expand_abbreviations` had no row to find.
+Widening to the genitive-preserving family took the census **11,187 → 11,803 rows**: `dr` 325,
+`d` 164, `dr.` 58, `d.` 54, `dt.` 33, `dt` 23, and 15 more `dtr`.
+
+**The `s` is load-bearing.** A patronymic always carries the genitive — `Orms` + `d`. Allowing a
+bare `d` matched `Svend` 606, `Halvard` 322, `Hand` 92 and `Old` 19, real given names whose stem
+happens to be attested with `datter`. Requiring the `s` removes every one and loses nothing.
+
+**Three things were measured and REFUSED, and each would have rewritten somebody's name:**
+
+- **The male side does not exist.** The same shape on `sen`/`son` stems matches `Foss` 762,
+  `Ross` 498, `Strauss` 324, `Hess` 241, `Moss` 199, `Voss` 139 — surnames, 3,704 occurrences of
+  them. There is no safe male pattern in this data.
+- **`(?![a-zø])` is not a letter test.** It let `Þorbjörg Ormsdóttir` match as `Ormsd` and offered
+  to "expand" it to `Ormsdatter` — an Icelandic name rewritten as a Norwegian one. `(?!\w)`
+  fixes it and removed **52 rows**.
+- **A new form with no corpus evidence is SKIPPED, not defaulted.** The `dr` family is largely
+  Dutch — `Willemsdr`, `Cornelisdr`, `Jansdr`, `Bruijstensdr` — where the full form is *dochter*,
+  and falling through to `datter` turns a Dutch woman into a Norwegian one. **433 of the first
+  run's 1,314 new rows landed there.** `dtr` keeps the old fallback, being Norwegian by
+  construction.
+
+**`expand_abbreviations` ran on the CREATION path only**, so an item created before the census
+covered its form kept the abbreviation forever and nothing noticed. `_label_corrections` now
+takes an expansion as its own ground for a correction, alongside the birth-name case — and the
+test is that **the live label expands to exactly what we want**, so the only difference between
+the two IS the abbreviation and nothing else can be rewritten. An item she has already fixed by
+hand simply matches and is skipped, which `Q141271379` demonstrates.
+
+**Four went out in the first batch** — `Marit Ormsd Byre`, `Ranveig Olsd Trevland`,
+`Anna Ivarsd Stokka`, `Magdalena Lauritsd Hogganvik` — and the rest drain under the 15-a-batch
+label cap.
+
+**One left alone and worth knowing:** `Rakel Marie Bertelsdt Bertelsdottir Idland` carries both
+the abbreviation and the full Icelandic form, and the corpus majority expands it to `Bertelsdatter`
+while her own record says `Bertelsdottir`. `FULL` reads `datter`/`dotter` and not `dóttir`, so her
+own evidence is invisible to it. One row; mapping Icelandic onto the Norwegian pair is a decision.
+
 ### A middle initial keeps its Latin letter in every language
 
 **Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was

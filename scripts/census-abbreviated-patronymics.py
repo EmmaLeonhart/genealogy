@@ -47,8 +47,34 @@ LABELS = ROOT / "reports" / "derived-labels.csv"
 NAMES = ROOT / "reports" / "display-names.csv"
 OUT = ROOT / "reports" / "abbreviated-patronymics.csv"
 
-#: `Rasmusdtr`, `Rasmusdtr.` — the stem plus the abbreviation, optionally a full stop.
-ABBREV = re.compile(r"\b(\w+?)(dtr)\.?", re.I)
+#: `Rasmusdtr`, `Rasmusdtr.`, `Ormsd`, `Johansdr`, `Olsdt.` — the stem plus the abbreviation,
+#: optionally a full stop.
+#:
+#: **`dtr` was the only form until 2026-09-04, and it is not the only form.** Emma corrected
+#: `Q141271379` by hand — *"I changed her name to correct the issue of an abbreviation of
+#: Ormsdatter"* — from `Anna Ormsd Byre`. `Ormsd` matched nothing here, so nothing expanded it
+#: and the batch went out with the abbreviation in the label. Widening to the genitive-preserving
+#: family adds **897 occurrences over 317 distinct tokens**: `dr` 382, `d` 317, `dr.` 71, `d.` 60,
+#: `dt.` 39, `dt` 28.
+#:
+#: **The `s` is load-bearing and is why this is safe.** A patronymic always carries the genitive,
+#: so `Orms` + `d`. Allowing a bare `d` instead matched `Svend` 606, `Halvard` 322, `Hand` 92 and
+#: `Old` 19 — real given names whose stem happens to be attested with `datter`. Requiring the
+#: `s` removes every one of them and loses nothing.
+#:
+#: **The male side was measured and is NOT here.** The same shape on `sen`/`son` stems matches
+#: `Foss` 762, `Ross` 498, `Strauss` 324, `Hess` 241, `Moss` 199, `Voss` 139 — surnames, not
+#: abbreviations, 3,704 occurrences of them. There is no safe male pattern in this data and
+#: guessing one would rewrite strangers' names.
+#: **The lookahead must exclude EVERY letter, not an ASCII range.** `(?![a-zø])` let
+#: `Þorbjörg Ormsdóttir` match as `Ormsd` — the Icelandic full form — and the census offered to
+#: "expand" it to `Ormsdatter`, rewriting an Icelandic name into a Norwegian one. `\w` with
+#: `re.UNICODE` covers `ó`, `ø`, `ä` and the rest.
+ABBREV = re.compile(r"\b(\w+?)(dtr|s(?:d|dr|dt|dtt|dttr))\.?(?!\w)", re.I)
+
+#: The forms added on 2026-09-04. They are held to a stricter standard than `dtr`: see the
+#: `no evidence` guard in `main`.
+NEW_FORMS = ("sd", "sdr", "sdt", "sdtt", "sdttr")
 #: `Rasmusdatter` / `Rasmusdotter`, for learning what a stem expands to.
 FULL = re.compile(r"\b(\w+?)(datter|dotter)\b", re.I)
 
@@ -76,6 +102,12 @@ def main():
             label = row.get("label_mul") or ""
             for m in ABBREV.finditer(label):
                 stem, token = m.group(1), m.group(0)
+                # **The genitive `s` belongs to the STEM, whichever form matched.** `FULL` reads
+                # `Ormsdatter` as stem `Orms`, so an `Ormsd` split as `Orm` + `sd` would look up
+                # a stem the corpus has never seen and fall through to the no-evidence branch.
+                # `Larsdtr` already carries its `s` in group 1; the `s…` family does not.
+                if m.group(2)[:1].lower() == "s":
+                    stem = stem + m.group(2)[0]
                 low = stem.lower()
                 # (1) this person's own records
                 mine = collections.Counter()
@@ -88,6 +120,14 @@ def main():
                 else:
                     d, o = stem_full.get((low, "datter"), 0), stem_full.get((low, "dotter"), 0)
                     if not d and not o:
+                        # **A NEW form with no evidence is skipped, not guessed.** The `dr`
+                        # family is largely DUTCH — `Willemsdr`, `Cornelisdr`, `Jansdr`,
+                        # `Bruijstensdr` — where the full form is `dochter`, and defaulting to
+                        # `datter` turns a Dutch woman into a Norwegian one. 433 of the 1,314
+                        # new rows landed here on the first run. `dtr` keeps the old fallback
+                        # because it predates this and is Norwegian by construction.
+                        if m.group(2).lower() in NEW_FORMS:
+                            continue
                         suffix, basis = "datter", "no evidence; her example"
                     else:
                         suffix, basis = ("datter" if d >= o else "dotter"), "corpus stem majority"
