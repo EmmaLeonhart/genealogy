@@ -562,8 +562,17 @@ def join_particles(tokens: list[str]) -> list[str]:
     while i < len(tokens):
         t = tokens[i]
         if t.strip(".,").casefold() in PATRONYMIC_PARTICLE and i + 1 < len(tokens):
-            out.append(f"{t} {tokens[i + 1]}")
-            i += 2
+            # **The particle takes everything up to the NEXT particle, not one token.**
+            # Emma, 2026-09-04: *"'bin Haji Muhammad' is a single patronymic."* `Haji` is an
+            # honorific and the father is `Haji Muhammad`, so stopping after one token names
+            # the wrong man. Stopping at the next particle is what keeps the chain intact:
+            # `ben Phinhas ben Yittzhaq ben Shalma` stays three links rather than collapsing
+            # into one, which is `name modelling.txt`'s worked example.
+            j = i + 1
+            while j < len(tokens) and tokens[j].strip(".,").casefold() not in PATRONYMIC_PARTICLE:
+                j += 1
+            out.append(" ".join(tokens[i:j]))
+            i = j
             continue
         out.append(t)
         i += 1

@@ -751,10 +751,22 @@ being a place in Lorraine, 10 of 185.
 
 **Two edge cases left alone, and they are hers** — `name modelling.txt` § *edge cases*:
 
-- **`bin Haji Muhammad`.** `Haji` is an honorific, so the patronymic is `bin Muhammad` and the
-  join produces `bin Haji`. ~157 occurrences.
 - **`Abisha III`.** The regnal ordinal sits in `GIVN`, not `NSFX`, so the suffix rule does not
-  reach it and it still reads as a second given name rather than a `P7338` qualifier.
+  reach it and it still reads as a second given name rather than a `P7338` *regnal ordinal*
+  qualifier.
+
+**A particle takes everything up to the NEXT particle.** Emma, 2026-09-04, on the one edge case
+that was put to her: *"'bin Haji Muhammad' is a single patronymic."* `Haji` is an honorific and
+the father is *Haji Muhammad*, so stopping after one token names the wrong man. Stopping at the
+next particle is what makes both readings hold at once — `bin Haji Putih` is one patronymic while
+`ben Phinhas ben Yittzhaq ben Shalma` stays three links rather than collapsing into one, which is
+`name modelling.txt`'s own worked example.
+
+**`reports/patronymic-identifications.tsv` is every identification**, one row per token per
+person: **599,825 over 1,856,150 name records, 20,798 distinct tokens, 36 forms.** Sorted on the
+Geni id. The review page built from it is grouped by form, opens on the largest form the widening
+added, and carries the example bearers, because spotting a `Ni Choon` needs the person rather than
+the token.
 
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
