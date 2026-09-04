@@ -52,7 +52,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
-    statements_for)
+    normalise_generation_suffix, statements_for)
 
 
 def _load_gaps():
@@ -1279,7 +1279,8 @@ def label_in(label, table):
     Japanese label, it is a broken one. **A middle initial is the one exception** —
     `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
-    from labels import ORDINAL_RE, transliterate_token, transliterate_token_ko
+    from labels import (ORDINAL_RE, FINAL_ORDINALS, transliterate_token,
+                        transliterate_token_ko)
 
     # **A DESCRIPTION is not a name and never goes through here.** This is the choke point
     # rather than the callers, because every CJK label in the batch comes out of this one
@@ -1320,11 +1321,16 @@ def label_in(label, table):
     # `・` and the `·` stop before the ordinal. `ko` is unaffected because it separates every
     # word with a space anyway, and hers reads `토레 운데르베르게 3세`.
     attached = []
-    for token, _usage, _o in classify(label):
+    tokens = list(classify(label))
+    for position, (token, _usage, _o) in enumerate(tokens):
         clean = token.strip(",;:")
-        attached.append(bool(ORDINAL_RE.match(clean)))
-        a, b = transliterate_token(clean, table)
-        c = transliterate_token_ko(clean, table)
+        # A single `I`/`V` is an ordinal only in the FINAL position; anywhere else it is a
+        # middle initial and keeps its letter. `labels.FINAL_ORDINALS` carries the census.
+        final = position == len(tokens) - 1 and len(tokens) > 1
+        attached.append(bool(ORDINAL_RE.match(clean))
+                        or (final and clean in FINAL_ORDINALS))
+        a, b = transliterate_token(clean, table, final=final)
+        c = transliterate_token_ko(clean, table, final=final)
         if a is None or c is None:
             # **THE FUNNEL, at the call rather than only in the pipeline.** Emma, 2026-08-29:
             # *"If anything even remotely wants to generate without having katakana or Chinese
@@ -6013,6 +6019,12 @@ def main():
         # back to. Dropping it here leaves `mul` alone; the description keeps living in `en`.
         if is_relationship_description(mul):
             mul = ""
+        # **The consensus label carries whatever language Wikidata wrote it in**, and for a
+        # generation suffix that is the wrong language for `mul`. `Q106206114` reads
+        # `Elias Lagerheim den yngre` in `sv` and in `en`, so the consensus is the Swedish
+        # phrase; Emma wants `Elias Lagerheim II` in `mul` and `Elias Lagerheim Jr.` in `en`.
+        # See `namemodel.GENERATION_SUFFIX`.
+        mul = normalise_generation_suffix(mul, "mul")
         source = mul or labels.get(g, "")
 
         # A live label that already reads correctly is not replaced by the same thing with a
@@ -6031,7 +6043,7 @@ def main():
             if current != mul:
                 lines.append(f'{q}\tLmul\t"{qs(mul)}"')
             if not mine.get("en"):
-                lines.append(f'{q}\tLen\t"{qs(mul)}"')
+                lines.append(f'{q}\tLen\t"{qs(normalise_generation_suffix(mul, "en"))}"')
             # The Geni rendering is an ALIAS on `mul`, never a label and never a CJK alias.
             # A redaction marker is not a name and does not become one here either.
             geni_name = (fields.get(g) or {}).get("display_name", "")

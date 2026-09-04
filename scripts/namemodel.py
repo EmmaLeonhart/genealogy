@@ -167,6 +167,110 @@ def is_daughter_patronymic(token: str) -> bool:
     return bool(DAUGHTER_PATRONYMIC.match(token or ""))
 
 
+#: **A GENERATION SUFFIX, and the two forms Emma wants it written in.** Her ruling, 2026-09-04,
+#: with `Q106206114` as the worked example — Wikidata has him as `Elias Lagerheim den yngre`:
+#:
+#:     Lmul  Elias Lagerheim II
+#:     Len   Elias Lagerheim Jr.
+#:
+#: *"d.y. I think is their version of Junior so in English it should be Jr."*, *"I think II and I
+#: might be better mul versions"*, and the load-bearing half: ***"the local language version
+#: should not be used"***. `d.y.` is Swedish, `den yngre` is Swedish, `nuorempi` is Finnish —
+#: none of them belongs in a language-neutral label or in an English one.
+#:
+#: **`mul` takes the Roman numeral because `mul` is language-neutral**, and the numeral says the
+#: same thing in every language: the junior is the SECOND of the name, so `Jr.` is `II` and `Sr.`
+#: is `I`. Her sentence listed the numerals and the abbreviations in the opposite order; the
+#: worked example is what settles it and it is unambiguous.
+#:
+#: **It also makes the CJK labels fall out for free.** `mul` reading `II` goes through
+#: `labels.ordinal_readings` and becomes `2世` / `二世` / `2세` — the convention she set by hand on
+#: `Q141223436` — rather than the `ジュニア` that a transliteration of the Swedish would give. That
+#: earlier answer of hers is superseded by this one, and the table rows are left in place only as
+#: a fallback for a label that still literally reads `Jr.`
+#:
+#: **Bare `de` is NOT here and never can be.** It is the particle, 102,336 occurrences, and
+#: `CLAUDE.md` § *A TITLE IS NOT A NAME* records `d.e.` being matched onto it once already:
+#: *"matching on a dot-stripped form put `d.e.` (369, Swedish den äldre) onto the particle de"*.
+#: Every surface form here carries a dot, a space, or a letter `de` does not have.
+#:
+#: Counts are over `reports/derived-labels.csv` and `reports/garborg-live-labels.tsv`.
+GENERATION_SUFFIX = {
+    # junior — 3,359 occurrences
+    "jr": ("II", "Jr."),          # 512 + 41
+    "jr.": ("II", "Jr."),         # 1,742 + 37
+    "d.y.": ("II", "Jr."),        # 643
+    "d.y": ("II", "Jr."),         # 203
+    "d. y.": ("II", "Jr."),       # 93
+    "d y": ("II", "Jr."),         # 26
+    "dy": ("II", "Jr."),          # 62
+    "den yngre": ("II", "Jr."),   # 22 ours + 8 on Wikidata
+    "the younger": ("II", "Jr."),  # 5 on Wikidata
+    "nuorempi": ("II", "Jr."),    # 11 on Wikidata, Finnish
+    # senior — 3,014 occurrences
+    "sr": ("I", "Sr."),           # 561
+    "sr.": ("I", "Sr."),          # 1,591 + 1
+    "d.e.": ("I", "Sr."),         # 445 + 2
+    "d.e": ("I", "Sr."),          # 181
+    "d. e.": ("I", "Sr."),        # 83
+    "d.ä.": ("I", "Sr."),         # 113 + 8
+    "d.ä": ("I", "Sr."),
+    "d. ä.": ("I", "Sr."),
+    "dä": ("I", "Sr."),           # 39
+    "den äldre": ("I", "Sr."),
+    "den eldre": ("I", "Sr."),
+    "the elder": ("I", "Sr."),
+    "vanhempi": ("I", "Sr."),     # 1 on Wikidata, Finnish
+}
+
+#: Longest first, so `d. y.` is matched before `d` could be, and `den yngre` before `den`.
+_SUFFIX_RE = re.compile(
+    r"(?<![\w.])(" + "|".join(
+        re.escape(k) for k in sorted(GENERATION_SUFFIX, key=len, reverse=True)
+    ) + r")(?![\w.])", re.I)
+
+
+def normalise_generation_suffix(label: str, style: str) -> str:
+    """Rewrite a generation suffix into its `mul` (Roman) or `en` (English) form.
+
+    `style` is `"mul"` or `"en"`. See `GENERATION_SUFFIX` for where both come from.
+
+    **A label that already carries the target numeral loses the suffix rather than repeating
+    it.** `Daniel Ström II, dy` is written with both, and turning the `dy` into a second `II`
+    would produce `Daniel Ström II, II`.
+
+    The comma before a trailing suffix goes with it — `Sogneprest Johan Andreas Welhaven, d.y.`
+    becomes `… Welhaven II`, not `… Welhaven, II`.
+    """
+    if not label:
+        return label
+    index = 0 if style == "mul" else 1
+
+    def replace(match):
+        return GENERATION_SUFFIX[match.group(1).casefold()][index]
+
+    out = _SUFFIX_RE.sub(replace, label)
+    if out == label:
+        return label
+    # Drop a duplicate the rewrite created, and the comma that introduced the suffix.
+    out = re.sub(r",\s+(?=(?:II|I|Jr\.|Sr\.)(?:\s|$))", " ", out)
+    tokens = out.split()
+    deduped, seen_suffix = [], False
+    # **Across BOTH styles, because `II` and `Jr.` say the same thing.** `Daniel Ström II, dy`
+    # carries the numeral and the abbreviation at once, and deduping only within one style left
+    # the `en` form reading `Daniel Ström II Jr.` The first one wins, so a numeral already in the
+    # label is kept and the converted suffix is dropped rather than stacked beside it.
+    targets = {v[0] for v in GENERATION_SUFFIX.values()} | {
+        v[1] for v in GENERATION_SUFFIX.values()}
+    for token in tokens:
+        if token in targets:
+            if seen_suffix:
+                continue
+            seen_suffix = True
+        deduped.append(token)
+    return " ".join(deduped)
+
+
 def married_name_of(fields) -> str:
     """The `_MARNM` where it really is a married name, else `""`.
 

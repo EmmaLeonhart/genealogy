@@ -45,7 +45,9 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from namemodel import married_name_of, without_nickname  # noqa: E402
+from namemodel import (  # noqa: E402
+    married_name_of, normalise_generation_suffix, without_nickname,
+)
 from labels import (  # noqa: E402
     drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker,
     is_description, mul_for_description)
@@ -386,6 +388,20 @@ def main() -> int:
         # because `William Ryves` is her husband; `織田敏信娘` likewise, because those characters
         # are her father. `labels.mul_for_description` is the one place that knows the difference.
         mul_label = mul_for_description(primary) if is_description(primary) else primary
+
+        # **`mul` takes the Roman numeral and `en` the English abbreviation.** Emma, 2026-09-04,
+        # on `Q106206114`, whose Wikidata label is `Elias Lagerheim den yngre`:
+        #
+        #     Lmul  Elias Lagerheim II
+        #     Len   Elias Lagerheim Jr.
+        #
+        # *"the local language version should not be used"* — `d.y.`, `den yngre` and `nuorempi`
+        # are Swedish and Finnish and belong in neither a language-neutral label nor an English
+        # one. `namemodel.GENERATION_SUFFIX` carries the forms and the reasoning.
+        #
+        # This is also why the two columns can now differ where they used to be the same string.
+        primary = normalise_generation_suffix(primary, "en")
+        mul_label = normalise_generation_suffix(mul_label, "mul")
 
         rows.append([
             geni_id,

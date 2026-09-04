@@ -27589,3 +27589,65 @@ not cost parsing 1,464. Not gitignored, so the pipeline's `git add -A` commits i
 An empty result meaning "the items hold nothing" is the trap § *Our side could never have two
 children* is written against, and it is the same one that made `garborg-live-values.tsv` look
 tonight as though 161 items had no `P2600` when it simply does not cover them.
+
+## 2026-09-04 — the generation suffix, in her two forms, and two rulings it restored
+
+**Emma's specification**, with `Q106206114` as the worked example — Wikidata has him as
+`Elias Lagerheim den yngre`:
+
+    Lmul  Elias Lagerheim II
+    Len   Elias Lagerheim Jr.
+
+*"d.y. I think is their version of Junior so in English it should be Jr."*, *"I think II and I
+might be better mul versions"*, and the load-bearing half: ***"the local language version should
+not be used"***. `d.y.` and `den yngre` are Swedish, `nuorempi` is Finnish; none belongs in a
+language-neutral label or an English one.
+
+**`mul` takes the numeral because `mul` is language-neutral** — the junior is the SECOND of the
+name, so `Jr.` is `II` and `Sr.` is `I`. Her sentence listed the numerals and the abbreviations in
+opposite order; the worked example settles it.
+
+**And it makes the CJK labels fall out for free.** `mul` reading `II` goes through
+`ordinal_readings` and becomes `2世` / `二世` / `2세` — the convention she set by hand on
+`Q141223436` — instead of the `ジュニア` a transliteration of the Swedish gives. **That supersedes
+her earlier answer of the same evening**; the table rows stay only as a fallback for a label that
+literally reads `Jr.`
+
+`namemodel.GENERATION_SUFFIX` is 23 surface forms — measured, with counts: `Jr.` 1,742, `Sr.`
+1,591, `d.y.` 643, `d.e.` 445, down to `nuorempi` 11 and `vanhempi` 1. About **6,400 labels**.
+**Bare `de` is not in it and never can be**: it is the particle, 102,336 occurrences, and
+`CLAUDE.md` records `d.e.` having been matched onto it once already. Every form here carries a
+dot, a space, or a letter `de` does not have.
+
+**Two things this turned up, both pre-existing, both breaking a ruling of hers.**
+
+- **A final bare `I` had no CJK reading.** `ORDINAL_RE` excludes single letters because a lone
+  letter mid-name is a middle initial — but `Sr. → I` now produces one, and
+  `Bellest Bellestsen Lauvsnes I` rendered with a Latin `I` sitting in a Japanese label. Measured:
+  a label of two or more tokens ends in a bare `I` **4,850** times and a bare `V` **239**, and
+  they are ordinals — `Norman Pomeroy I`, `John Harriman V`; the other five letters end a label
+  too and are junk (`Jens X`, `… 2 S., 2 D`). An initial is by definition a MIDDLE name, so
+  `FINAL_ORDINALS` reads a final `I`/`V` as one and the middle position keeps its letter —
+  `I` 4,088 and `V` 827 sit there.
+- **⛔ Her middle-initial ruling was being broken for every DOTTED initial.** `John F. Smith` came
+  out `ジョン・フ・スミス`. The table was consulted before `INITIAL_RE`, and a rule-based pass had
+  minted **30 dotted rows** — `F.` as `フ`, `J.` as `イ`, `A.` as `ア`, and `H.` with an empty `ja`
+  and `zh`, which kills a whole label. The bare form worked, because the table carries `F` as `F`
+  *attested on Wikidata*; the dotted form did not. **A ruling of hers must not be reachable only
+  when the table happens to lack a row**, so `INITIAL_RE` is now checked first and all 53
+  single-letter rows are gone. `John F. Smith` is `ジョン・F・スミス` again.
+
+## 2026-09-04 — the live items file, in the shape she specified
+
+*"Current revisions of all of them is intended as one json file that gets overwritten and as a
+result has clear diffs, everything sorted in it if that isn't a given to avoid garbage diffs from
+order changes"*.
+
+I wrote it gzipped JSONL first, which is **exactly wrong for what she wants it for**: a compressed
+file has no diff at all, and *"clear diffs"* is the point — the file is how anyone sees what
+changed on the ledger between one run and the next. `reports/garborg-live-items.json` is now one
+plain file, `indent=1`, sorted twice over: the top-level keys by qid and every nested object by
+`sort_keys`. Wikidata does not return claims in a stable order, so without both the file would
+differ every run and the diff would be noise — § *SORTING MUST BE DETERMINISTIC*, whose worked
+example is 36,901 changed lines over zero content change. Checked: two different input orders
+produce byte-identical files, and qualifiers survive the roundtrip.

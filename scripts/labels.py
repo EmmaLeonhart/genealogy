@@ -518,11 +518,30 @@ def _han_number(n):
     return ("" if tens == 1 else _HAN_DIGIT[tens]) + "十" + (_HAN_DIGIT[units] if units else "")
 
 
-def ordinal_readings(token):
+#: The two single letters a FINAL token may be and still be an ordinal. Measured over
+#: `reports/derived-labels.csv`: a label of two or more tokens ends in a bare `I` **4,850** times
+#: and a bare `V` **239**, and they are ordinals — `Norman Pomeroy I`, `John Harriman V`. The
+#: other five end a label too and are not: `Jens X` 65, `… 2 S., 2 D` 166, `… Freiin über Plauen
+#: und G` — truncations and stray letters. An initial is by definition a MIDDLE name, so nothing
+#: is lost by reading a final one as an ordinal, and the middle position keeps its Latin letter:
+#: `I` 4,088 and `V` 827 sit there.
+FINAL_ORDINALS = {"I": 1, "V": 5}
+
+
+def ordinal_readings(token, final=False):
     """`(ja, zh, ko)` for a regnal ordinal, or `(None, None, None)` if it is not one.
 
     `III` -> `3世`, `三世`, `3세`. See `ORDINAL_RE` for where each convention comes from.
+
+    **`final=True` also accepts a bare `I` or `V`**, which `ORDINAL_RE` excludes on purpose
+    because a single letter in the body of a name is a middle initial. It became necessary when
+    Emma's generation-suffix ruling of 2026-09-04 made `Sr.` into `I`: without it
+    `Bellest Bellestsen Lauvsnes I` rendered as `…・I`, a Latin letter left standing in a
+    Japanese label. See `FINAL_ORDINALS`.
     """
+    if final and (token or "") in FINAL_ORDINALS:
+        n = FINAL_ORDINALS[token]
+        return f"{n}\u4e16", f"{_han_number(n)}\u4e16", f"{n}\uc138"
     if not ORDINAL_RE.match(token or ""):
         return None, None, None
     n = _roman_to_int(token)
@@ -531,7 +550,7 @@ def ordinal_readings(token):
     return f"{n}\u4e16", f"{_han_number(n)}\u4e16", f"{n}\uc138"
 
 
-def transliterate_token_ko(token, table):
+def transliterate_token_ko(token, table, final=False):
     """The Korean reading for one name token, or `None` if it cannot be rendered.
 
     **`ko` is CJK.** Emma, 2026-09-01: *"korean is extremely important on par with Chinese and
@@ -545,19 +564,25 @@ def transliterate_token_ko(token, table):
     # **An ordinal is read BEFORE the table**, because the table is where the wrong answer
     # already lives: a rule-based pass minted `III` as `이이이` and it went out on a live item.
     # Checking here means a stale copy of the table cannot reintroduce it.
-    _ja, _zh, ko = ordinal_readings(token)
+    _ja, _zh, ko = ordinal_readings(token, final=final)
     if ko:
         return ko
+    # **The initial is decided BEFORE the table, and it was the other way round until
+    # 2026-09-04.** Emma's ruling of 2026-08-27 is that a letter is the same letter in every
+    # script -- `John F. Smith` is `ジョン・F・スミス` -- and it held for a bare `F`, which the
+    # table carries as `F` *attested on Wikidata*, while breaking for `F.`, which a rule-based
+    # pass had minted as `フ`. **30 dotted-initial rows were in the table like that**: `J.` as
+    # `イ`, `A.` as `ア`, and `H.` with an empty `ja` and `zh`, which kills a whole label. A
+    # ruling of hers must not be reachable only when the table happens to lack a row.
+    if INITIAL_RE.match(token or ""):
+        return token.rstrip(".")
     row = table.get(token)
     if row and len(row) > 2 and row[2]:
         return row[2]
-    if INITIAL_RE.match(token or ""):
-        letter = token.rstrip(".")
-        return letter
     return None
 
 
-def transliterate_token(token, table):
+def transliterate_token(token, table, final=False):
     """`(ja, zh)` for one name token, or `(None, None)` if it cannot be rendered.
 
     **An initial keeps its Latin letter in every language.** Emma, 2026-08-27, asked what
@@ -573,18 +598,19 @@ def transliterate_token(token, table):
     """
     # Same as `transliterate_token_ko`: the ordinal is read before the table, which holds the
     # phonetic spellings this replaces -- `II` as `イイ`, `III` as `イイイ`, `IV` as `イヴ`.
-    ja, zh, _ko = ordinal_readings(token)
+    ja, zh, _ko = ordinal_readings(token, final=final)
     if ja:
         return ja, zh
-    pair = table.get(token)
-    if pair:
-        return pair[0], pair[1]
+    # Before the table -- see `transliterate_token_ko` for why.
     if INITIAL_RE.match(token or ""):
         # **Never change case.** `.upper()` was here and it is what made Norwegian `i` read as
         # an initial `I`; an initial that is already capitalised needs no help, and one that is
         # not is not an initial.
         letter = token.rstrip(".")
         return letter, letter
+    pair = table.get(token)
+    if pair:
+        return pair[0], pair[1]
     return None, None
 
 

@@ -29,7 +29,6 @@ Writes `reports/garborg-live-values.tsv`.
 from __future__ import annotations
 
 import csv
-import gzip
 import json
 import os
 import pathlib
@@ -58,38 +57,42 @@ OUT = ROOT / "reports" / "garborg-live-values.tsv"
 #: were being thrown away.
 LABELS_OUT = ROOT / "reports" / "garborg-live-labels.tsv"
 
-#: **Every ledger item's WHOLE entity, as fetched, one JSON object per line sorted by qid.**
-#: See the block that writes it for why the two TSVs above are not a substitute.
-#: `read_live_items()` is the reader; `gzip -dc` and a grep also work.
-ITEMS_OUT = ROOT / "reports" / "garborg-live-items.jsonl.gz"
+#: **Every ledger item's WHOLE entity: ONE json file, overwritten, sorted, plain.**
+#:
+#: **Emma, 2026-09-04, specifying the shape:** *"Current revisions of all of them is intended as
+#: one json file that gets overwritten and as a result has clear diffs, everything sorted in it
+#: if that isn't a given to avoid garbage diffs from order changes"*.
+#:
+#: So: not gzipped, not sharded, not line-oriented. **Gzip was the first attempt here and it is
+#: exactly wrong for what she wants it for** — a compressed file has no diff at all, and *"clear
+#: diffs"* is the whole point: the file is how anyone sees what changed on the ledger between one
+#: run and the next.
+#:
+#: Sorted twice over, because either order alone would still churn: the top-level keys by qid,
+#: and every nested object's keys by `sort_keys`. Wikidata returns claims in an order that is not
+#: stable across requests, so without both the file would differ on every run and the diff would
+#: be noise — `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*, whose worked example is 36,901
+#: changed lines over zero content change.
+ITEMS_OUT = ROOT / "reports" / "garborg-live-items.json"
 
 
 def read_live_items(qids=None):
     """`{qid: entity}` from `ITEMS_OUT`, or `{}` when the file is absent.
 
-    `qids` limits what is parsed, which matters: the file is every ledger item and a caller
-    usually wants one. A missing file returns empty rather than raising, so a fresh clone that
-    has not run the refresh degrades to today's behaviour instead of crashing — but callers
-    must treat empty as *we have not looked*, never as *the items hold nothing*, which is the
-    trap `CLAUDE.md` § *Our side could never have two children* is written against.
+    `qids` limits what is returned. A missing file returns empty rather than raising, so a
+    fresh clone that has not run the refresh degrades instead of crashing — but callers must
+    treat empty as *we have not looked*, never as *the items hold nothing*, which is the trap
+    `CLAUDE.md` § *Our side could never have two children* is written against, and the one that
+    made `garborg-live-values.tsv` read on 2026-09-04 as though 161 items carried no `P2600`
+    when it simply does not cover them.
     """
     if not ITEMS_OUT.exists():
         return {}
-    want = set(qids) if qids is not None else None
-    out = {}
-    with gzip.open(ITEMS_OUT, "rt", encoding="utf-8") as fh:
-        for line in fh:
-            if not line.strip():
-                continue
-            if want is not None:
-                # Cheap pre-filter: the id is the only place a `"id":"Q…"` pair appears at the
-                # top level, and parsing 1,464 whole items to find one is the thing to avoid.
-                if not any(f'"id":"{q}"' in line for q in want):
-                    continue
-            item = json.loads(line)
-            if want is None or item.get("id") in want:
-                out[item["id"]] = item
-    return out
+    with open(ITEMS_OUT, encoding="utf-8") as fh:
+        items = json.load(fh)
+    if qids is None:
+        return items
+    return {q: items[q] for q in qids if q in items}
 
 #: **EVERY language, not the ones we write.** Emma, 2026-08-30, specifying how `mul` should be
 #: chosen: *"they have a consistent Latin label across two or more languages… whichever one is
@@ -188,20 +191,17 @@ def main():
     # read?"* — every one of which is a question about the ledger, whose answer had been fetched
     # and discarded minutes earlier. With this file present those are a `zcat` and a grep.
     #
-    # **JSONL sorted by qid**, so one item can be read without loading the lot, and gzipped with
-    # `mtime=0` so identical content produces identical bytes — a timestamp in the header would
-    # make the file differ on every run and the diff meaningless, which is
-    # § *SORTING MUST BE DETERMINISTIC* in its other clothes.
-    tmp = ITEMS_OUT.with_suffix(".jsonl.gz.tmp")
-    with open(tmp, "wb") as raw:
-        with gzip.GzipFile(fileobj=raw, mode="wb", mtime=0) as gz:
-            for qid, item in sorted(items.items()):
-                gz.write((json.dumps(item, ensure_ascii=False, sort_keys=True,
-                                     separators=(",", ":")) + "\n").encode("utf-8"))
+    # **One file, overwritten, sorted, plain — her shape.** See `ITEMS_OUT` for her words and
+    # for why gzip, which this wrote first, is the wrong answer to *"clear diffs"*.
+    tmp = ITEMS_OUT.with_suffix(".json.tmp")
+    with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
+        json.dump(dict(sorted(items.items())), fh, ensure_ascii=False,
+                  sort_keys=True, indent=1)
+        fh.write("\n")
     os.replace(tmp, ITEMS_OUT)
     size = ITEMS_OUT.stat().st_size
     print(f"{len(items):,} whole items -> {ITEMS_OUT.resolve().relative_to(ROOT)} "
-          f"({size / 1024 / 1024:.1f} MB gzipped)")
+          f"({size / 1024 / 1024:.1f} MB)")
 
 
 if __name__ == "__main__":
