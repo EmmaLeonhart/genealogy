@@ -12,8 +12,12 @@ and it is regenerated on demand rather than served from the last commit:
 
 It is published, UNLINKED, at
 <https://emmaleonhart.github.io/genealogy/parent-review.html> --- `scripts/build-pages-site.py`
-copies the HTML into the site and `.github/workflows/pipeline.yml` runs this generator on every
-push to `main`, so **a push to `main` is the deploy**. There is no other step.
+copies the HTML into the site.
+
+**A session with no corpus on disk does not run this by hand.** `gh workflow run parent-deck.yml`
+builds it on a runner and commits it to `main`, and that push republishes Pages.
+`.github/workflows/pipeline.yml` also rebuilds the deck on every push, but it does so downstream
+of a ledger refresh and a batch commit, either of which can fail and take the site job with it.
 
 Her verdicts come back in `reports/emma-judgments.tsv`. `SAME` and `DIFFERENT` retire a case; an
 `UNSURE` is *I cannot tell from this* and comes back on a later run with more evidence.

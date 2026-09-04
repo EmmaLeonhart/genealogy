@@ -3460,7 +3460,21 @@ When she asks for *"the artifact we used for identifying parents"*, that URL is 
 weird-ass page and put it on github in a way that made it useless"*, and *"I want you to make the
 documentation of it much more clear so future sessions always clearly regenerate it on demand."*
 
-**THE RUNBOOK, and it is one command:**
+**THE RUNBOOK. A cloud session with no corpus on disk uses the FIRST of these; nothing else
+is needed and nothing else should be improvised:**
+
+    gh workflow run parent-deck.yml            # builds it, commits it to `main`, republishes Pages
+    gh run watch $(gh run list --workflow=parent-deck.yml --limit 1 --json databaseId -q '.[0].databaseId')
+
+`.github/workflows/parent-deck.yml` is `workflow_dispatch` only and does the whole job on a
+runner: sparse checkout, unpack the derived CSVs, build, copy onto the site, commit and push to
+`main`. **It exists separately from `pipeline.yml` on purpose.** The pipeline rebuilds the deck
+too, but only after a ledger refresh and a QuickStatements compose, and it commits the batch in
+the same run --- so on 2026-09-04 the deck rebuilt perfectly, the *batch* commit hit a rebase
+conflict, the `site` job was skipped, and Pages went on serving cards that named nobody. The deck
+is what she asks for and must not be downstream of anything.
+
+**On a machine that has the tree, it is one command:**
 
     python scripts/pack-derived.py --unpack     # only on a clean clone; the CSVs are gitignored
     PYTHONPATH=src python scripts/build-parent-candidates.py
@@ -3470,10 +3484,27 @@ It writes three things and they are one artifact in three forms --- `reports/par
 `scripts/build-pages-site.py` copies the HTML to the site; `pipeline.yml` runs the generator on
 **every push to `main`**, so a push is a republish and there is no separate deploy step.
 
+**HOW TO HAND IT OVER, and both channels are right for different reasons.** Pages ---
+<https://emmaleonhart.github.io/genealogy/parent-review.html> --- needs no sign-in and survives
+the session, and is what § *A REVIEW PAGE GOES ON GITHUB PAGES* is about. A **claude.ai artifact**
+(`Artifact` on `out/parent-review.html`) is instant and does not wait on a workflow; Emma used one
+on 2026-09-04 and asked for it by name --- *"just give me the artifact"*. Her rule against
+artifacts is about **GitHub Actions artifacts**, the zip downloads that need a sign-in: *"Github
+actions artifacts are both inaccessible to me."* Those two things share a word and are not the
+same thing. **Publish the artifact first and let the workflow catch Pages up**, because the
+workflow takes minutes and she is waiting.
+
 **REGENERATE BEFORE HANDING IT OVER. Always.** The committed HTML is a photograph of whenever it
 was last built, and § *Emma edits the tree and the items BY HAND, continuously* is why that goes
 stale in minutes: a card she has already answered is a card that wastes her turn. The verdicts go
 back to `reports/emma-judgments.tsv` --- `SAME`/`DIFFERENT` retires a case, `UNSURE` does not.
+
+**Her verdicts arrive as a pasted block and go in by hand.** The page's *Copy decisions* button
+gives five tab-separated columns --- `geni_id, our_name, qid, their_name, verdict` --- and a row
+is appended as `date, batch, n, round, geni_id, our_name, qid, their_name, verdict, her_words`
+with `batch` = `parent-adjudication-gui` and the three middle columns empty. Then rebuild: the
+deck shrinks by what she answered, which is the check that it landed. On 2026-09-04 her 15 took
+the deck to **7** and the file to 328 decided pairs.
 
 **Three things made the published page useless, all fixed 2026-09-04, all worth knowing because
 each one produced a page that looked fine to whatever built it:**

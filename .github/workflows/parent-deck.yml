@@ -1,0 +1,105 @@
+# **The parent adjudication deck, on demand.** `CLAUDE.md` § *THE PARENT DECK* is the long form.
+#
+# **Why this exists as its own workflow rather than as a step of `pipeline.yml`.** The pipeline
+# rebuilds the deck already, but it does so *after* a ledger refresh and a QuickStatements
+# compose, and it commits the batch in the same run -- so asking for a deck means waiting ~15
+# minutes and inheriting every way that batch commit can fail. On 2026-09-04 it failed exactly
+# that way: the deck rebuilt correctly, the batch commit hit a rebase conflict on
+# `reports/wikidata-garborg-day.txt`, the `site` job was skipped, and Pages went on serving a
+# deck whose cards named nobody. The deck is what Emma asked for and it should not be downstream
+# of anything.
+#
+# **So a cloud session with no local corpus can produce the deck in one call:**
+#
+#     gh workflow run parent-deck.yml
+#     gh run watch $(gh run list --workflow=parent-deck.yml --limit 1 --json databaseId -q '.[0].databaseId')
+#
+# It commits `out/parent-review.html`, `out/gui-data.json` and `reports/parent-candidates.tsv`
+# straight to `main`, and that push is itself what republishes Pages.
+name: Parent deck
+
+on:
+  workflow_dispatch:
+  # **Not on push.** `tests/test_repo_invariants.py` allows `push:` on `pipeline.yml` alone, and
+  # the reasoning holds here: this repo commits large generated files many times a day and a run
+  # per push would queue behind itself. The pipeline already refreshes the deck on a push; this
+  # workflow is for when somebody wants one *now*.
+
+concurrency:
+  group: parent-deck
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # Same exclusions as the pipeline: nothing here reads the corpus or the Wikidata store,
+      # which is what keeps a 13 GB tree inside a 14 GB runner.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/wikidata
+            !/paths_for_wikidata_isolates
+            !/exports
+            !/geni-scraping
+            !/orderlife
+            !/geni_pages
+            !/chats
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Unpack the derived CSVs
+        run: python scripts/pack-derived.py --unpack
+
+      # **`out/wikidata/labels.tsv` is gitignored and the store is excluded above**, so the
+      # generator's third label source -- `wbgetentities` -- is the one that runs here. It is
+      # also the only one that ever worked in Actions, and the deck was published with bare QIDs
+      # for as long as nobody noticed. The step FAILS if a card names nobody: `build-parent-
+      # candidates.py` exits non-zero on an empty name or a bare QID, so a useless deck cannot
+      # reach the repo quietly. That is deliberate and must not become `continue-on-error`.
+      - name: Build the deck
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: python scripts/build-parent-candidates.py
+
+      - name: Copy it onto the site
+        run: python scripts/build-pages-site.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python scripts/pack-derived.py
+          git add out/parent-review.html out/gui-data.json out/site \
+                  reports/parent-candidates.tsv
+          if git diff --cached --quiet; then
+            echo "the deck is unchanged; nothing to commit"
+            exit 0
+          fi
+          git commit -m "rebuild the parent adjudication deck"
+          # The pipeline pushes on its own schedule, so losing this race is ordinary rather than
+          # an error. Rebase and retry instead of failing a run that has already built the deck.
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main \
+              && { echo "pushed on attempt $i"; exit 0; }
+            echo "attempt $i lost the race; retrying"
+            sleep 10
+          done
+          echo "could not push after five attempts" >&2
+          exit 1
+
+      - name: Where it is
+        run: |
+          echo "https://emmaleonhart.github.io/genealogy/parent-review.html"
+          head -1 reports/parent-candidates.tsv
+          echo "$(( $(wc -l < reports/parent-candidates.tsv) - 1 )) cases open"
