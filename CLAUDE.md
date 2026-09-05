@@ -4627,9 +4627,12 @@ covers lettering for the same reason it covers numbering, and she said so again 
   are simply completed."* They are **session-only**: they die when the session ends and must be
   recreated at the start of the next one. This is not theoretical — every cron died in the
   2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
-  2026-08-29. Live in the 2026-08-31 session as `76ec2c05`, `f4332b23`, `cedb7fc4`, `21245a1a`
-  — the ids recorded before (`82923e5b`, `0d208cfd`, `31df9ff8`) were a dead session's and are
-  the reason to check `CronList` rather than trust this line.
+  2026-08-29. Live in the 2026-09-05 session as `7c8cc0c6`, `7fb9d24f`, `9f3125b0`, `caf417ce`; the
+  2026-08-31 ids (`76ec2c05`, `f4332b23`, `cedb7fc4`, `21245a1a`) and the ones before them
+  are dead sessions', which is the reason to check `CronList` rather than trust this line.
+  **On 2026-09-05 the session ran for hours with ZERO crons and nobody noticed until she
+  asked** — *"is the work loop not working lol"*. Recreating them is the first thing a
+  session does, not something to get to.
 
   **The status-report cron carries no `AskUserQuestion`.** She barred it for eight hours from
   ~01:00 on 2026-08-31 — *"just move through the work and select the option that is consistent
