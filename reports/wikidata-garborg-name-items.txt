@@ -16,77 +16,550 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Torsteinson -- patronymic, 3 bearer(s) in the batches
+# Larsdatter -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Torsteinson"
-LAST	Len	"Torsteinson"
-#   set the mul label to "Torsteinson"
-LAST	Lmul	"Torsteinson"
+#   the item just created: set the en label to "Larsdatter"
+LAST	Len	"Larsdatter"
+#   set the mul label to "Larsdatter"
+LAST	Lmul	"Larsdatter"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q10993987 Torstein
-LAST	P144	Q10993987
-#   P144 based on = Q19688780 Torsten
-LAST	P144	Q19688780
-#   Q141283854 Tore Torsteinson Frafjord: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244234 Torstein Gunnarson Frafjord
-Q141283854	P5056	LAST	P144	Q141244234	S2600	"4627339"
-#   Q141224009 Gunnar Torsteinson Frafjord I: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244234 Torstein Gunnarson Frafjord
-Q141224009	P5056	LAST	P144	Q141244234	S2600	"6000000005609443665"
+#   P144 based on = Q15635262 Lars
+LAST	P144	Q15635262
+#   Q141223539 Malena Larsdatter Opstad: P5056 patronym or matronym = the item just created
+Q141223539	P5056	LAST	S2600	"6000000003492049563"
+#   Q141313946 Berta Larsdatter Kvam: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198751 Lars Person Nedre Rossavik
+Q141313946	P5056	LAST	P144	Q141198751	S2600	"6000000005607599048"
+#   Q141217372 Berta Larsdatter Stangeland: P5056 patronym or matronym = the item just created
+Q141217372	P5056	LAST	S2600	"6000000023500402302"
 
-# Ugla -- family, 3 bearer(s) in the batches
+# Svensdatter -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ugla"
-LAST	Len	"Ugla"
-#   set the mul label to "Ugla"
-LAST	Lmul	"Ugla"
+#   the item just created: set the en label to "Svensdatter"
+LAST	Len	"Svensdatter"
+#   set the mul label to "Svensdatter"
+LAST	Lmul	"Svensdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q2370957 Sven
+LAST	P144	Q2370957
+#   P144 based on = Q18953711 Svein
+LAST	P144	Q18953711
+#   Q141313959 Guri Svensdatter Hognestad: P5056 patronym or matronym = the item just created
+Q141313959	P5056	LAST	S2600	"6000000005607099245"
+#   Q141249721 Asseline Svensdatter Lende: P5056 patronym or matronym = the item just created
+Q141249721	P5056	LAST	S2600	"6000000013462214188"
+#   Q141216490 Malli Svensdatter Lura: P5056 patronym or matronym = the item just created
+Q141216490	P5056	LAST	S2600	"6000000014277480039"
+
+# Årsvoll -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Årsvoll"
+LAST	Len	"Årsvoll"
+#   set the mul label to "Årsvoll"
+LAST	Lmul	"Årsvoll"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q124608453 Petrus Ugla: P734 family name = the item just created
-Q124608453	P734	LAST	S2600	"6000000007473614567"
-#   Q3946660 Samuel af Ugglas: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q3946660	P734	LAST	P3831	Q2507958	S2600	"6000000013286633067"
-#   Q141249626 Samuel Ugla: P734 family name = the item just created
-Q141249626	P734	LAST	S2600	"6000000018089329158"
+#   Q141225244 Rakel Maria Govertsdatter Årsvoll: P734 family name = the item just created
+Q141225244	P734	LAST	S2600	"6000000002335691955"
+#   Q141216470 Govert Jonson Årsvoll: P734 family name = the item just created
+Q141216470	P734	LAST	S2600	"6000000008174080446"
+#   Q141216363 Anne Govertsdtr. Bratland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141216363	P734	LAST	P3831	Q2507958	S2600	"6000000169074443823"
 
-# Ådnesdatter -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Ådnesdatter"
-LAST	Len	"Ådnesdatter"
-#   set the mul label to "Ådnesdatter"
-LAST	Lmul	"Ådnesdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q12011446
-LAST	P144	Q12011446
-#   Q141168833 Ingeborg Gurie Ådnesdatter Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141169072 Ådne Olsen Garborg
-Q141168833	P5056	LAST	P144	Q141169072	S2600	"6000000003492005171"
-#   Q141168816 Elisabet Ådnesdatter Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141169072 Ådne Olsen Garborg
-Q141168816	P5056	LAST	P144	Q141169072	S2600	"6000000003492005176"
-#   Q141189069 Ingeborg Ådnesdatter Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200127 Ådne Hansen Grøtheim
-Q141189069	P5056	LAST	P144	Q141200127	S2600	"6000000008176802346"
-
-# 335 more name items are needed and wait for a later
+# 300 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Årsvoll (family), 3 bearer(s)
-#   Abrahamsson (patronymic), 2 bearer(s)
 #   Andersdotter (patronymic), 2 bearer(s)
+#   Andersson (patronymic), 2 bearer(s)
 #   Andreae (given), 2 bearer(s)
+#   Asbjørnsen (patronymic), 2 bearer(s)
 #   Asbjørnson (patronymic), 2 bearer(s)
 #   Austrått (family), 2 bearer(s)
 #   Bratt-Hetland (family), 2 bearer(s)
-#   Bureus (family), 2 bearer(s)
 #   Børildsdatter (patronymic), 2 bearer(s)
-#   Claesson (patronymic), 2 bearer(s)
-#   Garborg (given), 2 bearer(s)
-#   Gestrinius (family), 2 bearer(s)
-#   ... and 323 more
+#   Gitlaug (given), 2 bearer(s)
+#   Gunnbjørnsdatter (patronymic), 2 bearer(s)
+#   Gurie (given), 2 bearer(s)
+#   Johannessen (patronymic), 2 bearer(s)
+#   ... and 288 more
 
+
+# ======================================================================
+# DESCRIPTIONS on name items that already exist and have none.
+# Label + description must be unique per language, so this is what
+# makes Wikidata refuse a duplicate of a name item already in use.
+# Name items only -- never people.
+# ======================================================================
+#   Q100851898: set the en description to "family name"
+Q100851898	Den	"family name"
+#   Q100924890: set the en description to "family name"
+Q100924890	Den	"family name"
+#   Q105546523: set the en description to "family name"
+Q105546523	Den	"family name"
+#   Q108320932: set the en description to "patronymic"
+Q108320932	Den	"patronymic"
+#   Q109236610: set the en description to "family name"
+Q109236610	Den	"family name"
+#   Q110304265: set the en description to "patronymic"
+Q110304265	Den	"patronymic"
+#   Q112261760: set the en description to "family name"
+Q112261760	Den	"family name"
+#   Q122214367 Arianiti: set the en description to "family name"
+Q122214367	Den	"family name"
+#   Q122687985: set the en description to "family name"
+Q122687985	Den	"family name"
+#   Q124785549: set the en description to "family name"
+Q124785549	Den	"family name"
+#   Q130329629 Margaliot: set the en description to "family name"
+Q130329629	Den	"family name"
+#   Q131319910: set the en description to "family name"
+Q131319910	Den	"family name"
+#   Q131994301: set the en description to "family name"
+Q131994301	Den	"family name"
+#   Q132480542: set the en description to "family name"
+Q132480542	Den	"family name"
+#   Q132852621: set the en description to "family name"
+Q132852621	Den	"family name"
+#   Q133393065: set the en description to "family name"
+Q133393065	Den	"family name"
+#   Q137791383: set the en description to "family name"
+Q137791383	Den	"family name"
+#   Q138496949: set the en description to "family name"
+Q138496949	Den	"family name"
+#   Q138514549: set the en description to "family name"
+Q138514549	Den	"family name"
+#   Q138606500: set the en description to "family name"
+Q138606500	Den	"family name"
+#   Q139597560: set the en description to "family name"
+Q139597560	Den	"family name"
+#   Q139598563: set the en description to "family name"
+Q139598563	Den	"family name"
+#   Q139669797: set the en description to "family name"
+Q139669797	Den	"family name"
+#   Q139881423: set the en description to "family name"
+Q139881423	Den	"family name"
+#   Q140756491: set the en description to "family name"
+Q140756491	Den	"family name"
+#   Q140983505: set the en description to "family name"
+Q140983505	Den	"family name"
+#   Q141189030: set the en description to "patronymic"
+Q141189030	Den	"patronymic"
+#   Q141189036: set the en description to "patronymic"
+Q141189036	Den	"patronymic"
+#   Q141189042: set the en description to "patronymic"
+Q141189042	Den	"patronymic"
+#   Q141189045: set the en description to "patronymic"
+Q141189045	Den	"patronymic"
+#   Q141223473: set the en description to "patronymic"
+Q141223473	Den	"patronymic"
+#   Q141223475: set the en description to "patronymic"
+Q141223475	Den	"patronymic"
+#   Q141223482: set the en description to "patronymic"
+Q141223482	Den	"patronymic"
+#   Q141223487: set the en description to "patronymic"
+Q141223487	Den	"patronymic"
+#   Q141223748: set the en description to "patronymic"
+Q141223748	Den	"patronymic"
+#   Q141242306: set the en description to "patronymic"
+Q141242306	Den	"patronymic"
+#   Q141242342: set the en description to "patronymic"
+Q141242342	Den	"patronymic"
+#   Q141244186: set the en description to "patronymic"
+Q141244186	Den	"patronymic"
+#   Q141249587: set the en description to "patronymic"
+Q141249587	Den	"patronymic"
+#   Q141314124: set the en description to "patronymic"
+Q141314124	Den	"patronymic"
+#   Q65076682: set the en description to "family name"
+Q65076682	Den	"family name"
+#   Q69822132: set the en description to "patronymic"
+Q69822132	Den	"patronymic"
+#   Q69841190: set the en description to "patronymic"
+Q69841190	Den	"patronymic"
+#   Q69998240: set the en description to "patronymic"
+Q69998240	Den	"patronymic"
+#   Q98139923: set the en description to "family name"
+Q98139923	Den	"family name"
+
+# ======================================================================
+# P144 BASED ON, on patronymic items that already exist and lack it.
+# The given names each patronymic derives from, which is what her
+# resolution rule reads: a bearer gets P5056 when their father's
+# P735 item is among these values. Patronymics only -- never people.
+# ======================================================================
+#   Q108320932: P144 based on = Q2287061 Simen
+Q108320932	P144	Q2287061
+#   P144 based on = Q1557 Simeon
+Q108320932	P144	Q1557
+#   Q108828512: P144 based on = Q15731830
+Q108828512	P144	Q15731830
+#   P144 based on = Q2529610 Carl
+Q108828512	P144	Q2529610
+#   P144 based on = Q1044619 Carolus
+Q108828512	P144	Q1044619
+#   P144 based on = Q1719508 Kaarlo
+Q108828512	P144	Q1719508
+#   P144 based on = Q2958359 Charles
+Q108828512	P144	Q2958359
+#   P144 based on = Q4259083 Kaarle
+Q108828512	P144	Q4259083
+#   Q109482873 Jacobsdatter: P144 based on = Q25999604 Jacob
+Q109482873	P144	Q25999604
+#   P144 based on = Q16747395
+Q109482873	P144	Q16747395
+#   P144 based on = Q15921890 Jacobus
+Q109482873	P144	Q15921890
+#   Q122837798 Nilsdatter: P144 based on = Q16423038 Nils
+Q122837798	P144	Q16423038
+#   P144 based on = Q2001572 Niels
+Q122837798	P144	Q2001572
+#   Q130232912 Eriksdotter: P144 based on = Q12788459 Eric
+Q130232912	P144	Q12788459
+#   P144 based on = Q953931 Erkki
+Q130232912	P144	Q953931
+#   P144 based on = Q15277196 Erich
+Q130232912	P144	Q15277196
+#   P144 based on = Q19798835 Eirik
+Q130232912	P144	Q19798835
+#   P144 based on = Q15277207 Eerik
+Q130232912	P144	Q15277207
+#   P144 based on = Q19828986 Erick
+Q130232912	P144	Q19828986
+#   Q130232913 Eriksson: P144 based on = Q12788459 Eric
+Q130232913	P144	Q12788459
+#   P144 based on = Q953931 Erkki
+Q130232913	P144	Q953931
+#   P144 based on = Q15277196 Erich
+Q130232913	P144	Q15277196
+#   P144 based on = Q15277207 Eerik
+Q130232913	P144	Q15277207
+#   P144 based on = Q19798835 Eirik
+Q130232913	P144	Q19798835
+#   P144 based on = Q19828986 Erick
+Q130232913	P144	Q19828986
+#   Q130232969 Turesson: P144 based on = Q23089141 Thure
+Q130232969	P144	Q23089141
+#   Q130232998: P144 based on = Q15897708 Petrus
+Q130232998	P144	Q15897708
+#   P144 based on = Q15897204 Petter
+Q130232998	P144	Q15897204
+#   Q130233015 Nilsson: P144 based on = Q2001572 Niels
+Q130233015	P144	Q2001572
+#   P144 based on = Q16280122 Niilo
+Q130233015	P144	Q16280122
+#   Q130233025: P144 based on = Q15897204 Petter
+Q130233025	P144	Q15897204
+#   P144 based on = Q21148379
+Q130233025	P144	Q21148379
+#   P144 based on = Q15897708 Petrus
+Q130233025	P144	Q15897708
+#   Q130233041: P144 based on = Q1168432 Elisa
+Q130233041	P144	Q1168432
+#   Q140226461: P144 based on = Q14516546
+Q140226461	P144	Q14516546
+#   P144 based on = Q11896337 Taneli
+Q140226461	P144	Q11896337
+#   Q141189036: P144 based on = Q4925477 John
+Q141189036	P144	Q4925477
+#   P144 based on = Q11978684 Joen
+Q141189036	P144	Q11978684
+#   P144 based on = Q14436586 Jone
+Q141189036	P144	Q14436586
+#   P144 based on = Q2246251 Jens
+Q141189036	P144	Q2246251
+#   P144 based on = Q10989273 Johan
+Q141189036	P144	Q10989273
+#   P144 based on = Q2117521 Johannes
+Q141189036	P144	Q2117521
+#   P144 based on = Q47526977 Jöns
+Q141189036	P144	Q47526977
+#   Q141189042: P144 based on = Q3358418 Eivind
+Q141189042	P144	Q3358418
+#   P144 based on = Q1385925 Eyvind
+Q141189042	P144	Q1385925
+#   Q141189045: P144 based on = Q3358418 Eivind
+Q141189045	P144	Q3358418
+#   Q141223473: P144 based on = Q2097883 Ole
+Q141223473	P144	Q2097883
+#   P144 based on = Q10608165 Olaus
+Q141223473	P144	Q10608165
+#   P144 based on = Q19384399 Olai
+Q141223473	P144	Q19384399
+#   P144 based on = Q1647755 Olle
+Q141223473	P144	Q1647755
+#   P144 based on = Q18760926 Olli
+Q141223473	P144	Q18760926
+#   Q141223475: P144 based on = Q1785744 Rasmus
+Q141223475	P144	Q1785744
+#   Q141223482: P144 based on = Q632842
+Q141223482	P144	Q632842
+#   Q141223487: P144 based on = Q750186 Erik
+Q141223487	P144	Q750186
+#   P144 based on = Q15277196 Erich
+Q141223487	P144	Q15277196
+#   P144 based on = Q19798835 Eirik
+Q141223487	P144	Q19798835
+#   P144 based on = Q12788459 Eric
+Q141223487	P144	Q12788459
+#   Q141223748: P144 based on = Q989832 Gunder
+Q141223748	P144	Q989832
+#   Q141242306: P144 based on = Q10989273 Johan
+Q141242306	P144	Q10989273
+#   P144 based on = Q47526977 Jöns
+Q141242306	P144	Q47526977
+#   P144 based on = Q2117521 Johannes
+Q141242306	P144	Q2117521
+#   P144 based on = Q11978684 Joen
+Q141242306	P144	Q11978684
+#   P144 based on = Q4925477 John
+Q141242306	P144	Q4925477
+#   P144 based on = Q2246251 Jens
+Q141242306	P144	Q2246251
+#   P144 based on = Q14436586 Jone
+Q141242306	P144	Q14436586
+#   P144 based on = Q123820137
+Q141242306	P144	Q123820137
+#   P144 based on = Q1715043 Jón
+Q141242306	P144	Q1715043
+#   Q141242342: P144 based on = Q750186 Erik
+Q141242342	P144	Q750186
+#   P144 based on = Q15277196 Erich
+Q141242342	P144	Q15277196
+#   P144 based on = Q19798835 Eirik
+Q141242342	P144	Q19798835
+#   Q141244186: P144 based on = Q18089653 Olof
+Q141244186	P144	Q18089653
+#   P144 based on = Q2021323 Oluf
+Q141244186	P144	Q2021323
+#   P144 based on = Q3881452 Olaf
+Q141244186	P144	Q3881452
+#   Q141249587: P144 based on = Q4925477 John
+Q141249587	P144	Q4925477
+#   P144 based on = Q11978684 Joen
+Q141249587	P144	Q11978684
+#   P144 based on = Q14436586 Jone
+Q141249587	P144	Q14436586
+#   P144 based on = Q2246251 Jens
+Q141249587	P144	Q2246251
+#   P144 based on = Q10989273 Johan
+Q141249587	P144	Q10989273
+#   P144 based on = Q2117521 Johannes
+Q141249587	P144	Q2117521
+#   Q141249667: P144 based on = Q14436586 Jone
+Q141249667	P144	Q14436586
+#   P144 based on = Q4925477 John
+Q141249667	P144	Q4925477
+#   P144 based on = Q2117521 Johannes
+Q141249667	P144	Q2117521
+#   P144 based on = Q123820137
+Q141249667	P144	Q123820137
+#   Q141249669: P144 based on = Q1785744 Rasmus
+Q141249669	P144	Q1785744
+#   Q141249690: P144 based on = Q721398 Asbjørn
+Q141249690	P144	Q721398
+#   Q141250201: P144 based on = Q18089653 Olof
+Q141250201	P144	Q18089653
+#   P144 based on = Q2021323 Oluf
+Q141250201	P144	Q2021323
+#   P144 based on = Q3881452 Olaf
+Q141250201	P144	Q3881452
+#   Q141257126: P144 based on = Q120416 Gunnar
+Q141257126	P144	Q120416
+#   Q141257144: P144 based on = Q10622039 Peder
+Q141257144	P144	Q10622039
+#   P144 based on = Q15897204 Petter
+Q141257144	P144	Q15897204
+#   P144 based on = Q21148379
+Q141257144	P144	Q21148379
+#   Q141267893: P144 based on = Q12794332 Kristian
+Q141267893	P144	Q12794332
+#   P144 based on = Q11279730 Kristen
+Q141267893	P144	Q11279730
+#   Q141267899: P144 based on = Q7825922 Tormod
+Q141267899	P144	Q7825922
+#   P144 based on = Q30088066 Thormod
+Q141267899	P144	Q30088066
+#   Q141271270: P144 based on = Q18918288 Bjørn
+Q141271270	P144	Q18918288
+#   P144 based on = Q18918290
+Q141271270	P144	Q18918290
+#   P144 based on = Q8851571 Björn
+Q141271270	P144	Q8851571
+#   Q141271297: P144 based on = Q632842
+Q141271297	P144	Q632842
+#   Q141271452: P144 based on = Q5199298 Orm
+Q141271452	P144	Q5199298
+#   Q141283333: P144 based on = Q18918288 Bjørn
+Q141283333	P144	Q18918288
+#   P144 based on = Q8851571 Björn
+Q141283333	P144	Q8851571
+#   P144 based on = Q18918290
+Q141283333	P144	Q18918290
+#   Q141283474: P144 based on = Q943881 Knut
+Q141283474	P144	Q943881
+#   P144 based on = Q18565341 Knud
+Q141283474	P144	Q18565341
+#   Q141283477: P144 based on = Q18109457 Magnus
+Q141283477	P144	Q18109457
+#   Q141283709: P144 based on = Q2097883 Ole
+Q141283709	P144	Q2097883
+#   P144 based on = Q18760926 Olli
+Q141283709	P144	Q18760926
+#   Q141283710: P144 based on = Q632842
+Q141283710	P144	Q632842
+#   P144 based on = Q4413537 Hannu
+Q141283710	P144	Q4413537
+#   Q141283711: P144 based on = Q1602361 Helge
+Q141283711	P144	Q1602361
+#   Q141290187: P144 based on = Q30229695 Ingebret
+Q141290187	P144	Q30229695
+#   Q141290188: P144 based on = Q10989273 Johan
+Q141290188	P144	Q10989273
+#   P144 based on = Q2117521 Johannes
+Q141290188	P144	Q2117521
+#   P144 based on = Q11122389 Johann
+Q141290188	P144	Q11122389
+#   P144 based on = Q58785388
+Q141290188	P144	Q58785388
+#   P144 based on = Q47526977 Jöns
+Q141290188	P144	Q47526977
+#   P144 based on = Q4120836 Johanna
+Q141290188	P144	Q4120836
+#   Q141290425: P144 based on = Q15635262 Lars
+Q141290425	P144	Q15635262
+#   P144 based on = Q1303231 Lauri
+Q141290425	P144	Q1303231
+#   Q141290435: P144 based on = Q18964343 Mårten
+Q141290435	P144	Q18964343
+#   P144 based on = Q17520926 Martinus
+Q141290435	P144	Q17520926
+#   P144 based on = Q18002399 Martin
+Q141290435	P144	Q18002399
+#   P144 based on = Q1586063 Morten
+Q141290435	P144	Q1586063
+#   Q141312460: P144 based on = Q14436586 Jone
+Q141312460	P144	Q14436586
+#   P144 based on = Q2246251 Jens
+Q141312460	P144	Q2246251
+#   Q141312503: P144 based on = Q10622039 Peder
+Q141312503	P144	Q10622039
+#   P144 based on = Q15897204 Petter
+Q141312503	P144	Q15897204
+#   Q141313056: P144 based on = Q10608165 Olaus
+Q141313056	P144	Q10608165
+#   Q141313537: P144 based on = Q12788459 Eric
+Q141313537	P144	Q12788459
+#   Q141313547: P144 based on = Q750186 Erik
+Q141313547	P144	Q750186
+#   P144 based on = Q12788459 Eric
+Q141313547	P144	Q12788459
+#   P144 based on = Q953931 Erkki
+Q141313547	P144	Q953931
+#   P144 based on = Q15277196 Erich
+Q141313547	P144	Q15277196
+#   P144 based on = Q15277207 Eerik
+Q141313547	P144	Q15277207
+#   Q141314115: P144 based on = Q15897708 Petrus
+Q141314115	P144	Q15897708
+#   Q141314124: P144 based on = Q13582800 Per
+Q141314124	P144	Q13582800
+#   P144 based on = Q18606368 Pehr
+Q141314124	P144	Q18606368
+#   P144 based on = Q19869349 Pär
+Q141314124	P144	Q19869349
+#   Q21448180 Ragnarsson: P144 based on = Q2127308 Ragnar
+Q21448180	P144	Q2127308
+#   Q21506553 Sigurdsson: P144 based on = Q1315397 Sigurd
+Q21506553	P144	Q1315397
+#   Q38370471: P144 based on = Q16422277 Böðvar
+Q38370471	P144	Q16422277
+#   Q51885688 Olsdatter: P144 based on = Q2097883 Ole
+Q51885688	P144	Q2097883
+#   P144 based on = Q1647755 Olle
+Q51885688	P144	Q1647755
+#   P144 based on = Q18760926 Olli
+Q51885688	P144	Q18760926
+#   Q56245178 Haakonsson: P144 based on = Q15711061
+Q56245178	P144	Q15711061
+#   P144 based on = Q9383939 Haakon
+Q56245178	P144	Q9383939
+#   P144 based on = Q15711062 Hakon
+Q56245178	P144	Q15711062
+#   Q69822132: P144 based on = Q1715043 Jón
+Q69822132	P144	Q1715043
+#   Q69841190: P144 based on = Q18111651 Magnús
+Q69841190	P144	Q18111651
+#   Q69998240: P144 based on = Q18953711 Svein
+Q69998240	P144	Q18953711
+#   P144 based on = Q2604429 Sveinn
+Q69998240	P144	Q2604429
+#   P144 based on = Q2370957 Sven
+Q69998240	P144	Q2370957
+#   Q8079570 Þórarinsson: P144 based on = Q16421223 Þórarinn
+Q8079570	P144	Q16421223
+#   Q83359767: P144 based on = Q2117521 Johannes
+Q83359767	P144	Q2117521
+#   P144 based on = Q10989273 Johan
+Q83359767	P144	Q10989273
+#   Q83864944 Oddsdatter: P144 based on = Q1757370 Odd
+Q83864944	P144	Q1757370
+#   Q83866230 Alvsson: P144 based on = Q30131738 Alv
+Q83866230	P144	Q30131738
+#   Q83873546 Sigurdsdatter: P144 based on = Q1315397 Sigurd
+Q83873546	P144	Q1315397
+
+# ======================================================================
+# P460 SAID TO BE THE SAME AS, between spellings of one patronymic.
+# Both ways, as she wrote them by hand on Olofsson and Olai. Only
+# where the two items share a P144 source, a stem and a gendered
+# suffix -- a shared source alone matches Jonsdatter to Johansdotter.
+# ======================================================================
+#   Q130232912 Eriksdotter: P460 said to be the same as = Q141223487
+Q130232912	P460	Q141223487
+#   Q141223487: P460 said to be the same as = Q130232912 Eriksdotter
+Q141223487	P460	Q130232912
+#   Q130232913 Eriksson: P460 said to be the same as = Q141242342
+Q130232913	P460	Q141242342
+#   Q141242342: P460 said to be the same as = Q130232913 Eriksson
+Q141242342	P460	Q130232913
+#   Q130232998: P460 said to be the same as = Q141312503
+Q130232998	P460	Q141312503
+#   Q141312503: P460 said to be the same as = Q130232998
+Q141312503	P460	Q130232998
+#   Q130233025: P460 said to be the same as = Q141312503
+Q130233025	P460	Q141312503
+#   Q141312503: P460 said to be the same as = Q130233025
+Q141312503	P460	Q130233025
+#   Q141223473: P460 said to be the same as = Q141283709
+Q141223473	P460	Q141283709
+#   Q141283709: P460 said to be the same as = Q141223473
+Q141283709	P460	Q141223473
+#   Q141242306: P460 said to be the same as = Q141249587
+Q141242306	P460	Q141249587
+#   Q141249587: P460 said to be the same as = Q141242306
+Q141249587	P460	Q141242306
+#   Q141242306: P460 said to be the same as = Q141249667
+Q141242306	P460	Q141249667
+#   Q141249667: P460 said to be the same as = Q141242306
+Q141249667	P460	Q141242306
+#   Q141242306: P460 said to be the same as = Q69822132
+Q141242306	P460	Q69822132
+#   Q69822132: P460 said to be the same as = Q141242306
+Q69822132	P460	Q141242306
+#   Q141249587: P460 said to be the same as = Q141249667
+Q141249587	P460	Q141249667
+#   Q141249667: P460 said to be the same as = Q141249587
+Q141249667	P460	Q141249587
+#   Q141271297: P460 said to be the same as = Q141283710
+Q141271297	P460	Q141283710
+#   Q141283710: P460 said to be the same as = Q141271297
+Q141283710	P460	Q141271297
