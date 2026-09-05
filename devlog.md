@@ -27879,3 +27879,31 @@ rule, in the file the batch trusts most.
 
 `_every_item_the_batch_reasons_about()` now reads `ledger()` itself and falls back to the TSV if
 the builder cannot be imported. About four more requests.
+
+## 2026-09-05 — eccentric CLUSTERS, not an eccentric ranking
+
+Emma: *"You found a bunch of Chinese ancient people were most eccentric… I want to see
+other eccentric clusters"*.
+
+`reports/eccentricity.md` ranks **people**, and the top of a ranking cannot show a second
+group: the six highest are one descent, so the whole visible head is one lineage.
+`scripts/eccentric-clusters.py` cuts the tail at a distance from Charlemagne and takes the
+**connected components** of what is left, so a family that is far from the centre *together*
+surfaces as one row. The threshold is swept — 60, 70, 80, 90, 100, 120, 140 — rather than
+chosen, because one cut is a choice about the answer.
+
+At ≥100 hops, 2,931 people in 62 clusters, and they are eleven distinct populations rather
+than one: the Chinese legendary lineage (1,524), a **second** Chinese generational line
+(315, Wu/Jing/Cáng Huáng), **pre-dynastic Egypt** (295, Scorpion I, Khentneith, Pharaoh
+Crocodile), the **Samaritan Itamar line** (222), a block of Geni-**redacted** profiles (174),
+the **Axumite/Ethiopian** kings (61, Makeda → Menelik I), five Chinese surname lineages
+(赖 Lài, 林 Lín, 趙 Zhào, 黄 Huáng, 李 Lǐ, 20–50 each) and **Third Intermediate Period
+Egypt** (17, Scheschonq). At ≥140 a further one appears: 余 Yú, 62 people.
+
+**The Samaritan cluster is the only one carrying QIDs — 18 of 222. Every other cluster is 0.**
+
+`reports/eccentric-clusters.tsv` is every cluster at every cut, 1,507 rows;
+`reports/eccentric-clusters.md` names the largest 12 per cut. Labels fall back
+`label_en → label_mul → cjk_names → other_script_names`, and a Geni-redacted person is
+marked `(private)` rather than `(no label)` so the two are not confused — 571 of the 725
+unlabelled members are redactions, which is a fact about Geni rather than a gap in our data.
