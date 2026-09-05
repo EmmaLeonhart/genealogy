@@ -3333,6 +3333,80 @@ around them pulls them inward — so a high score can mean *we have not sampled 
 than *this person is structurally peripheral*. Two people is not a correlation and is not offered
 as one; the full version is a `genimerge.density` presence count against the file, unrun.
 
+### ⛔ WHAT `wikidata-qid-links.ged` IS FOR: people TOO FAR OUT to edit yet
+
+**Emma, 2026-09-05**, explaining the file rather than the mechanism:
+
+> *"it was originally recording very obscure random people that were obscure enough that I made
+> the judgment that actually doing the Wikidata edit would be perceived as too out of left field
+> … this file includes a bunch of Japanese entities that essentially act as entry points,
+> including being a place to start with adding the QID or adding the Geni ID … but I decided
+> that now, on January first of 2027, they just become regular entry points."*
+
+**So it is a HOLDING PLACE, and the holding is a judgement about perception, not about evidence.**
+The identification is sound; making the edit *now* would read as arriving from nowhere, because
+the person is nowhere near anything the account has been building. Recording the pair in the
+GEDCOM keeps it without spending it.
+
+**It is EXPANDING, and it now takes people who already have a proper QID.** Her words: *"we are
+expanding the file to basically include even items that do actually have the proper QID, but which
+are in this similar category."* The original rows were people needing a Geni ID added; that is no
+longer the qualification.
+
+**⛔ THE CATEGORY, in her words, is the thing to get right:** *"far off genealogical people who
+are too far away in the regular clusters to be ones to start with, because we're starting again.
+We started again with two Scandinavian families, and we're kind of expanding roughly around
+everybody."*
+
+So a row qualifies on **distance from the current base cluster**, not on obscurity, not on script,
+not on lacking an identifier. The 24 eccentric-cluster pairs added on 2026-09-05 — pre-dynastic
+and Third Intermediate Period Egypt, the Sixth Dynasty, the Axumite rope, Makeda — are exactly
+that population: 100–168 hops from Charlemagne, nothing near the Scandinavian ring.
+
+**And it is why the file is not two mechanisms.** Holding a far-off identification and minting an
+entry point on 2027-01-01 are the same act, because a person too far out to edit *today* is
+precisely a person worth growing a graph from *later*. § *THE STUPIDER AND MORE SPECIFIC* — her
+*"stupid spaghetti code at first glance… it reduces redundancy"* is this.
+
+### The 1,800-statement runs were SURFACE AREA, and it is temporary
+
+**Emma, 2026-09-05, explaining the outlier batches** — the same question as § *the range is the
+subject count draining*, answered from her side:
+
+> *"normally, we're adding people together, and there's an actual ring expanding. But this
+> particular group was defined by the fact they were all present, but weren't connected."*
+
+**The Bure family is the case.** A large number of them had Wikidata items already, from Swedish
+Wikipedia articles, and **nobody had done genealogical work on them** — so the items existed and
+the edges did not. That is a population where every statement is addable at once, which is what
+produced runs of a size the ordinary ring cannot reach. § *THE EDIT ALGORITHM* predicted it:
+*"the most ideal situation for lots of people being added is a bunch of individuals that are not
+linked to each other and are relatively close to each other."*
+
+**It is a stock, not a rate, and the stock is being spent.** Her words: *"this is very much a
+temporary thing"*, and the two families are now *"kinda connected to each other enough"*. So a
+falling batch size in that region is the campaign working, never a regression — do not treat it
+as one and do not go looking for a cause.
+
+**Her prediction, and it is a prediction rather than a plan:** *"when some of the Japanese blocs
+are introduced on Wikidata, we'll have a similar phenomenon, as well as generally with any kind
+of mass introduction of entry points."* The blocs dated 2027-01-01 are that introduction.
+
+**Her own position: getting MORE CENTRAL, and she is guessing.** *"my guess right now, or my hope
+at the very least, is that I am currently less on the high eccentricity of the graph than I used
+to be"* — because the Swedish and Norwegian families are now *"connected to each other through a
+shorter line that is not me."* Stated as a hope, so it is a measurement nobody has run.
+
+**But centrality is NOT the target and must not become a metric.** *"centrality isn't really that
+much of an issue. It's extension that's the issue."* § *The practical goal is EMMA densely linked*
+still governs what is optimised; her own eccentricity is an observation about the shape, not a
+number to move.
+
+**Where she thinks the two families stand:** the Swedish one is *"really connecting well with the
+rest of the tree"*; the Norwegian one less so, *"because it doesn't have as much documented
+connections elsewhere."* And on the whole programme: *"my general perception of all this stuff is
+pretty good. I think we're doing things well with this generally."*
+
 ### ⛔ A BLOC IS A ROSTER REFERENCE. Six people off a report is not the ancient Chinese bloc
 
 **Emma, 2026-09-05:** *"the Chinese people shouldn't be in the entry points thing lol, you
