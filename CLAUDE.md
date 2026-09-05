@@ -3315,6 +3315,18 @@ Hand-listing is the *intuitive* move — it is shorter, it is visible, and it lo
 and it produces a bloc defined by whatever report was open at the time rather than by what the
 bloc is.
 
+**The mechanism she meant is the GEDCOM, and it already existed.** Emma, 2026-09-05: *"it was
+supposed to be keyed on the entity resolution gedcom for the new ones lol. Again I was super clear
+it's stupid spaghetti code at first glance but it reduces redundancy."* A new entry point is added
+by putting its pair in `exports/post-merge/wikidata-qid-links.ged` — the `special-geni-gedcom-recognition`
+group reads it and switches on **2027-01-01**, the same date the bloc wanted. **One mechanism, two
+purposes**: the bio link does entity resolution inside the merged tree *and* makes the QID an entry
+point. Hand-listing six people duplicated a mechanism that was already there, which is the exact
+redundancy her design removes.
+
+**So `entry-points.tsv` is only for a person who needs their OWN date** — Ettinger 2026-09-03,
+Martin 2026-10-01. Anything landing on 2027-01-01 goes through the gedcom.
+
 **They are removed.** `entry-points.tsv` is back to the two people she named individually and gave
 individual reasons for, Ettinger and Martin. The `ancient-chinese-bloc` row stays in
 `entry-point-groups.tsv` and correctly reports **NO ROSTER**; building one to fill the gap would

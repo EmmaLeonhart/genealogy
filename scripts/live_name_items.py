@@ -80,6 +80,24 @@ CLASSES = {
 _CACHE: dict[tuple[str, str], str] = {}
 
 
+class LookupUnavailable(Exception):
+    """The question could not be ASKED. Distinct from asking and finding nothing.
+
+    **This exists because the two were the same value and the answer to both was "create it".**
+    Every request here was wrapped in `except Exception: return ""`, so a 429, a timeout, a
+    blocked proxy and a genuinely absent item were indistinguishable — and `""` means *no item
+    exists*, which sends the token straight to `CREATE`. A network blip therefore minted a
+    duplicate of something that was already on Wikidata, silently, on the one code path where
+    duplicates are the whole thing being guarded against.
+
+    `CLAUDE.md` § *Our side could never have two children*: an empty join is indistinguishable
+    from an absence of data, and absence is exactly what these checks exist to detect. So a
+    failed lookup raises, and the caller HOLDS the token — the carry-forward already exists for
+    "not today", and holding is free while a duplicate is permanent and gets merged away by
+    somebody else.
+    """
+
+
 def _get(params, agent):
     q = urllib.parse.urlencode(params)
     req = urllib.request.Request(API + "?" + q, headers={"User-Agent": agent})
@@ -92,6 +110,9 @@ def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing
 
     Returns `''` both when nothing exists and when SEVERAL qualifying items do — an ambiguity
     belongs on her deck, not in a guess made here.
+
+    **Raises `LookupUnavailable` when the question could not be asked at all**, which is a
+    different thing from either and must not reach the caller as `''`. See that class.
     """
     want = CLASSES.get(usage)
     if not want or not token:
@@ -103,8 +124,9 @@ def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing
     try:
         found = _get({"action": "wbsearchentities", "search": token, "language": "en",
                       "type": "item", "limit": "12", "format": "json"}, agent)
-    except Exception:                                               # noqa: BLE001
-        return ""
+    except Exception as exc:                                        # noqa: BLE001
+        del _CACHE[key]          # never cache a non-answer as "nothing exists"
+        raise LookupUnavailable(f"wbsearchentities {token!r}: {exc}") from exc
     ids = [h["id"] for h in found.get("search", [])
            if (h.get("label") or "").casefold() == token.casefold()]
     if not ids:
@@ -114,8 +136,9 @@ def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing
         ents = _get({"action": "wbgetentities", "ids": "|".join(ids[:12]),
                      "props": "claims|labels", "languages": "en|mul",
                      "format": "json"}, agent).get("entities", {})
-    except Exception:                                               # noqa: BLE001
-        return ""
+    except Exception as exc:                                        # noqa: BLE001
+        del _CACHE[key]
+        raise LookupUnavailable(f"wbgetentities {token!r}: {exc}") from exc
     ok = []
     for qid, e in ents.items():
         labels = {v.get("value", "").casefold() for v in (e.get("labels") or {}).values()}

@@ -6884,11 +6884,25 @@ def main():
                        "# " + "=" * 72] + man_lines + [""]
     print(f"manual identifications: {man_total} in the file, {man_held} already held, "
           f"{len([l for l in man_lines if not l.startswith('#')])} emitted")
-    try:
-        subprocess.run([sys.executable, str(ROOT / "scripts" / "build-garborg-name-items.py")],
-                       check=True, cwd=str(ROOT), capture_output=True)
-    except Exception as exc:                                        # noqa: BLE001
-        print(f"WARNING: could not regenerate the name items ({exc}); using the file on disk")
+    # **Its output is PRINTED, not swallowed.** This ran with `capture_output=True`, so the
+    # four-stage duplicate lookup reported its decisions -- how many tokens were linked rather
+    # than created, which were rescued live, which were held -- into a buffer that was thrown
+    # away. When `Låge-Håland` was proposed for a second time on 2026-09-05 the log that would
+    # have said why did not exist. A generator whose reasoning is invisible cannot be debugged
+    # from a run, only from a re-run on a different machine.
+    #
+    # And a FAILURE is loud. It printed one WARNING and fell back to the file on disk, so a
+    # crashed generator produced a batch built on a stale name-items file that looked exactly
+    # like a fresh one -- the same shape as § *the derived tables WERE a PHOTOGRAPH*.
+    r = subprocess.run([sys.executable, str(ROOT / "scripts" / "build-garborg-name-items.py")],
+                       cwd=str(ROOT), capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
+    for line in (r.stdout or "").splitlines():
+        print(f"    [name-items] {line}")
+    if r.returncode != 0:
+        sys.exit("the name-items generator failed, so the batch would be built on whatever "
+                 "reports/wikidata-garborg-name-items.txt happens to hold -- a stale file "
+                 "looks identical to a fresh one:\n" + (r.stderr or "")[-800:])
     # **This block used to ASSIGN `head`, and that discarded every `P2600` above it.** Emma,
     # 2026-09-04: *"It seems it is still messing with people's names without doing geni
     # identifications. Like the name objects are being linked on people without geni ids, this

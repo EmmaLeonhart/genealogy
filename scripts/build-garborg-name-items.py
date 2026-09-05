@@ -58,7 +58,8 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
     PATRONYMIC_CLASS, classify_fields, load_plan, statements_for, store_name_item)
-from live_name_items import existing_item as live_existing_item  # noqa: E402
+from live_name_items import (LookupUnavailable,                   # noqa: E402
+                              existing_item as live_existing_item)
 from qscomment import annotate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -308,6 +309,7 @@ def main():
     linked = collections.Counter()
     live_rescues = []
     bearer_rescues = []
+    unavailable = []
     bearer_reuse = reuse_from_bearers(fields, have, live_values())
     if bearer_reuse:
         print(f"{len(bearer_reuse)} token(s) are already pointed at by their own bearers")
@@ -359,7 +361,17 @@ def main():
                     action = "link (the bearers already point at it)"
                     bearer_rescues.append((token, usage, qid))
             if not qid:
-                qid = live_existing_item(token, usage)
+                # **A lookup that could not RUN holds the token; it never falls through to
+                # CREATE.** `live_existing_item` used to swallow every exception and return
+                # `""`, which is the same value as "nothing exists" and sends the token
+                # straight to creation -- so a 429, a timeout or a blocked proxy minted a
+                # duplicate of something already on Wikidata, on the one path whose entire
+                # job is to prevent that. Emma has had five merged away by another editor.
+                try:
+                    qid = live_existing_item(token, usage)
+                except LookupUnavailable as exc:
+                    unavailable.append((token, usage, str(exc)))
+                    continue
                 if qid:
                     action = "link (found live on Wikidata)"
                     live_rescues.append((token, usage, qid))
@@ -369,6 +381,14 @@ def main():
                 ambiguous[(token, usage)] += 1
             else:
                 need[(token, usage)] += 1
+
+    # **Held, not created**, and reported loudly: a silent hold looks like a token that had
+    # nothing to do, which is the failure this whole block exists against.
+    if unavailable:
+        print(f"⛔ {len(unavailable)} token(s) HELD -- the duplicate check could not run, so "
+              f"creating them would risk a duplicate. They go out on a later day.")
+        for token, usage, why in unavailable[:10]:
+            print(f"   {token:<20} {usage:<12} {why[:70]}")
 
     print(f"{len(linked)} tokens already have an item and are linked, not created")
     print(f"{len(need)} need creating, {len(ambiguous)} are ambiguous and are not")
