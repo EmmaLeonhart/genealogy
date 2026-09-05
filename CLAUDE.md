@@ -4195,6 +4195,17 @@ create that is skipped still has to answer the `LAST` pointing at it — and an 
 others: the pipeline commits it and publishes it on the site every day, so what runs is a file that
 has been readable for as long as it existed.
 
+**ONE BAD EDIT MUST NOT COST THE DAY.** The run records a refusal, skips whatever depended on it,
+and carries on; five failures in a row stop it, because that is a broken account or a changed API
+rather than a bad edit. Simulated against the real batch, one refused `CREATE` costs **2 edits of
+85** instead of all of them — and a label collision is the ordinary case, § *NO descriptions* having
+measured **3 of 22 creations** refused on a pair already taken.
+
+**Carrying on is safe HERE and is not safe in QuickStatements**, which is the whole difference: a
+dangling `LAST` refuses in `_datavalue` rather than resolving to the wrong item. QuickStatements'
+own mid-batch `CREATE` failure *"broke the four `LAST` lines after it"*. The run still exits
+non-zero, so it shows red and the failures are read rather than undone.
+
 **No `summary`, on this path as on every other** — § *NO descriptions and NO edit summaries* says
 *"No `summary=` on an API call"* in as many words. The absence in `Session.apply` is deliberate.
 

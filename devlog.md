@@ -28073,3 +28073,16 @@ workflow comment claiming `tests/test_repo_invariants.py` bans a `schedule:` was
 bans `push:`, and `schedule` has been allowed since the repo went public.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+**Later the same day — one bad edit no longer costs the day.** The live loop stopped on the first
+refusal, which for an unattended daily run means a label collision loses the other 84 edits. It now
+records the failure, skips what depended on it, and continues; five in a row stop it. Simulated
+against the real batch with one `CREATE` refused: **83 of 85 still went**, against 0 before.
+
+Stopping was reasoned from QuickStatements' behaviour and the reasoning did not transfer — QS
+continued past a failed `CREATE` and its `LAST` lines then attached to the wrong item. Here a
+dangling `LAST` refuses in `_datavalue`, so continuing cannot misattribute anything.
+
+**And the sparse checkout is measured, not assumed:** the first dispatched run spent minutes in
+`actions/checkout` pulling all 13 GB while every other step sat pending; with a sparse,
+`blob:none`, cone-mode-off checkout of four paths it is **2 seconds**.

@@ -462,22 +462,52 @@ def main() -> int:
     print(f"csrf token acquired; executing up to {limit} edits\n")
 
     done = 0
+    failed: dict = {}
+    consecutive = 0
     # Seeded from the receipt, so a create skipped as already-applied still answers
     # the LAST that points at it.
     for e in edits[:limit]:
+        # ONE BAD EDIT MUST NOT COST THE DAY. An unattended run that stopped on the
+        # first refusal would lose the rest of the batch to something as ordinary
+        # as a label collision — `CLAUDE.md` § *NO descriptions*: 3 of 22 creations
+        # on one live batch would have been refused on a label/description pair
+        # already taken. Carrying on is safe *here* specifically because a dangling
+        # `LAST` refuses in `_datavalue` rather than resolving to the wrong item,
+        # which is exactly what QuickStatements does not do: its own mid-batch
+        # CREATE failure "broke the four LAST lines after it".
+        blocked = [r for r in (e.get("requires") or []) if r in failed]
+        if blocked:
+            failed[e["id"]] = f"skipped: depends on {blocked[0]}, which failed"
+            print(f"       {e['id']}  {e['kind']:<9} SKIPPED (needs {blocked[0]})")
+            continue
         try:
             qid = session.apply(e, token, minted, delay=args.delay)
         except EditFailed as exc:
-            # Stop rather than carry on. A create that failed is a create whose
-            # LAST nothing can resolve, and the edits behind it in this run were
-            # ordered on the assumption that it landed.
-            print(f"\nSTOPPED after {done} edits: {exc}", file=sys.stderr)
-            return 1
+            failed[e["id"]] = str(exc)
+            consecutive += 1
+            print(f"       {e['id']}  {e['kind']:<9} FAILED: {exc}", file=sys.stderr)
+            # A run where everything fails is not a batch with a bad edit in it; it
+            # is a broken account, a changed API or a block. Grinding through the
+            # remaining edits would turn one problem into a hundred log lines.
+            if consecutive >= 5:
+                print(f"\nSTOPPED: {consecutive} failures in a row — this is not "
+                      "about the individual edits.", file=sys.stderr)
+                break
+            continue
+        consecutive = 0
         done += 1
         if receipt:
             append_receipt(receipt, e, qid)
         print(f"  {done:>3}  {e['id']}  {e['kind']:<9} {qid}")
+
     print(f"\n{done} edits executed")
+    if failed:
+        print(f"{len(failed)} did not go:", file=sys.stderr)
+        for eid, why in failed.items():
+            print(f"  {eid}: {why}", file=sys.stderr)
+        # Non-zero so the run shows red. What landed still landed, and the receipt
+        # already records it — a failure here is a thing to read, not to undo.
+        return 1
     return 0
 
 
