@@ -79,8 +79,20 @@ jobs:
             echo "go=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # Sparse, because this repo is 13+ GB tracked and this job reads four paths.
+      # A full checkout is minutes of runner time every morning for nothing, and
+      # `sparse-checkout-cone-mode: false` is what lets a single FILE be named
+      # rather than its whole directory -- reports/ alone is 1.1 GB.
       - uses: actions/checkout@v4
         if: steps.gate.outputs.go == 'true'
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts
+            /src
+            /reports/wikidata-garborg-day.txt
+            /reports/wikidata-edits-applied.tsv
 
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.go == 'true'
