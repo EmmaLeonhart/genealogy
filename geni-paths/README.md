@@ -252,6 +252,64 @@ types do not collide. No "complete webpage" saves: the `_files` asset directorie
 **96% of the 2.8 GB** in `paths_for_wikidata_isolates/` and carry nothing. The HTML alone is
 170 KB a page; the extracted TSV is ~4 KB.
 
+### ⛔ THE CALL THAT WORKS — copy it, do not re-derive it
+
+**Recorded 2026-09-05 because it was re-derived once already.** Everything above states the
+*steps*; none of it stated the *call*, so a later session read the prose, found that a plain
+`fetch()` returns zero `span.segment` anchors, and started building a local HTTP sink to POST
+captures to. Emma: *"did you either not document the original successful way you did it or
+decide to be creative here? Just do the successful way."* The steps are not the method — this
+is:
+
+    browser_batch [
+      navigate        https://www.geni.com/people/x/<ID>
+      javascript_tool <the block below>
+      tabs_close_mcp
+    ]
+
+```js
+const ID='<ID>';
+const t0=Date.now();
+while(!document.querySelector('#relation_description') && Date.now()-t0<20000){
+  await new Promise(r=>setTimeout(r,500));
+}
+const link=[...document.querySelectorAll('a')].find(x=>/show short path/i.test(x.textContent));
+if(link) link.click();
+const t1=Date.now();
+while(document.querySelectorAll('span.segment > span.name a[data-profile-id]').length===0
+      && Date.now()-t1<20000){
+  await new Promise(r=>setTimeout(r,500));
+}
+const ids=[...document.querySelectorAll('span.segment > span.name a[data-profile-id]')]
+  .map(x=>x.getAttribute('data-profile-id'));
+const b=new Blob([document.documentElement.outerHTML],{type:'text/html'});
+const dl=document.createElement('a');
+dl.href=URL.createObjectURL(b); dl.download=ID+'-blood.html';
+document.body.appendChild(dl); dl.click();
+({id:ID, rdPresent:!!document.querySelector('#relation_description'), clicked:!!link,
+  steps:ids.length, hasTarget:ids.includes(ID), bytes:document.documentElement.outerHTML.length})
+```
+
+Then the file lands in `~/Downloads` and is moved:
+
+    mv /c/Users/Emma/Downloads/<ID>-blood.html geni-paths/<ID>-blood.html
+
+**Three things about it that are not obvious and are why guessing fails.**
+
+- **A `fetch()` of the profile is not enough.** It returns 200 and the summary sentence in
+  `#relation_description`, and **zero** segments — the chain is written in by the page's own
+  JS. Measured 2026-09-05 on Arne Garborg: 92,891 bytes, `segs 0`. The capture has to come
+  from a rendered page, which is what the `navigate` is for.
+- **The last expression is the return value.** It is written `({...})` in parentheses, with
+  top-level `await` above it. Wrapping the whole thing in an `async` IIFE returns `{}` —
+  measured twice on 2026-09-05 before the shape was read off the transcript.
+- **The verdict comes back small.** `steps` and `hasTarget` are the two that matter and they
+  are exactly what `harvest-isolate-paths.chain_found` re-derives from the saved file, so a
+  batch that reports `hasTarget:false` is a miss you already know about before harvesting.
+
+**The transcript is `7a11670b-624d-43f7-ae9b-48665823b8e7.jsonl`** — see `CLAUDE.md`
+§ *The working Geni capture call lives in ONE transcript*.
+
 ## Rate
 
 One a minute, no concurrency, **bail immediately on anything suspicious** — the same rule as

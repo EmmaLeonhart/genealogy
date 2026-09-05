@@ -28121,3 +28121,62 @@ one path, and that number is what decides whether the 185,327-target campaign ru
 The sample is unchanged — same 100 qid/geni_id pairs, `SEED` untouched — so only the url column
 moved. The harvester reads `qid`, `geni_id`, `label` and `in_nordic_roster` and never the url
 columns, so nothing downstream depended on the old pair.
+
+## 2026-09-05 — the method was in a transcript and not in the repo, so it got rebuilt
+
+Emma, watching a local HTTP sink get built to POST page captures to: *"did you either not
+document the original successful way you did it or decide to be creative here? Just do the
+successful way. Look through transcripts lol"*, then *"Claude.md should specify this transcript
+tbh"*.
+
+She is right, and the diagnosis is narrow. `geni-paths/README.md` carried the **steps** —
+navigate, wait, click *"Show short path"*, wait, save — and never the **call**. Steps read as a
+description of something to build. The rebuild started from a correct measurement, too: a plain
+`fetch()` of a profile returns 200, the summary sentence, and **zero** `span.segment` anchors,
+because the chain is written in by the page's own JS. That finding is exactly what makes the
+recorded call necessary, and it is what made inventing a replacement feel warranted.
+
+The call is `7a11670b-624d-43f7-ae9b-48665823b8e7.jsonl` (2026-09-03) — the session that
+refuted the `/path/` URL, validated the pushpin, and ran the French-Canadian `Forest` export
+near George Drouillard. It is a `browser_batch` of navigate → a `javascript_tool` block that
+waits, clicks, waits and Blob-downloads `outerHTML` → `tabs_close_mcp`, with the file `mv`d out
+of `~/Downloads`. It is now written out in `geni-paths/README.md` § *THE CALL THAT WORKS* and
+the transcript is named in `CLAUDE.md`, so the provenance survives without being the only copy.
+
+## 2026-09-05 — `pending()` answered true for every page, so the reach rate could only be 100%
+
+Found while reading the first pilot capture. `harvest-isolate-paths.pending()` tested
+`"path search in progress" in html`. That sentence is on **every profile**, hidden:
+
+    <div draggable="false" id="path_search_response"
+         style="white-space:nowrap;display:none;">Path search in progress. ...
+
+Measured over the five saved captures: 4 of 5 carry it while the search had **never been
+requested** — each still showing its *"How are they related?"* button. `geni-paths/README.md`
+records this exact trap costing 22 profiles read as running, and the guard written against it
+went into the README and not into the module.
+
+The consequence is not a miscount. `main()` records a non-hit as `pending` whenever that
+returns true, and the reach rate **divides by resolved pages only** — so every genuine miss
+left the denominator and the rate could only ever come out 100%. That is the second instrument
+in two days whose clean number was about itself: the same shape as the `/path/` URL whose miss
+page renders a chain.
+
+The discriminator survives into the saved file, so it needs no capture-time bookkeeping: the
+element's own `display`. `pending()` now matches `id="path_search_response"` and asks whether
+it is being shown. A new `not_requested()` reads the *"How are they related?"* control, which
+is a **fourth** state — never asked, as against asked and still running. Both mean *come back
+later* and both stay out of the denominator; neither is a miss.
+
+Over the five real captures, before and after:
+
+    2205409             pending True  -> pending False, not_requested True
+    4927838703020075553 pending True  -> pending False, not_requested True
+    6000000000503303734 pending True  -> pending False, not_requested True
+    6000000001335702813 pending True  -> pending False, not_requested True
+    291026634180003195  pending False -> pending False, not_requested False
+
+**A literal backspace got compiled into the regex on the way**, from `\b` written into a
+non-raw generator string: the pattern read `<[^>]*\x08id=`, matched nothing, and fell through
+to the text test — so the fix printed exactly the same wrong answer as the bug. It was caught
+by re-running the measurement rather than by reading the patch.

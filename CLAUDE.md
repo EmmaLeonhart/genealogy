@@ -1898,6 +1898,38 @@ points on geni."* So the placeholders accumulate in our tree first; the campaign
 into real people is gated on that, and on `Forest` exports seeded at eccentric points — the same
 instrument § *"Not related to" does NOT mean not related* uses for eccentric targets.
 
+### The working Geni capture call lives in ONE transcript. Name it, do not re-derive it
+
+**Emma, 2026-09-05**, watching a session build a local HTTP sink to POST page captures to,
+having already been told the method existed: *"did you either not document the original
+successful way you did it or decide to be creative here? Just do the successful way. Look
+through transcripts lol"*, and then *"Claude.md should specify this transcript tbh"*.
+
+**The transcript is `7a11670b-624d-43f7-ae9b-48665823b8e7.jsonl`, 2026-09-03** — in
+`C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/`. It is the session that
+settled the whole isolate-path method: the `/path/` URL refuted, the pushpin anchor validated,
+and the French-Canadian `Forest` export near George Drouillard that proved a Geni *"no
+relationship found"* is a database failure rather than a negative result — 5,000 people, 7 of
+them already in our tree, all 7 in the main component, Drouillard four hops from Charles
+Lespérance.
+
+**The call itself is now written out in `geni-paths/README.md` § *THE CALL THAT WORKS***, so
+the transcript is the provenance rather than the only copy. It is a `browser_batch` of
+navigate → a `javascript_tool` block that waits, clicks *"Show short path"*, waits again and
+Blob-downloads `outerHTML` → `tabs_close_mcp`; the file lands in `~/Downloads` and is `mv`d
+into `geni-paths/`.
+
+**Why it got re-derived, because the shape recurs.** The README carried the *steps* —
+navigate, wait, click, wait, save — and no *call*. Steps read as a description of a thing
+someone would build; a call reads as a thing to copy. The session that reinvented it did so
+after correctly measuring that a plain `fetch()` returns zero `span.segment` anchors, which is
+true and is exactly the finding that makes the recorded call necessary. **A method documented
+as prose gets rebuilt; a method documented as the literal call gets reused.**
+
+This is the same family as § *Do not grab the first artifact that vaguely matches* and
+§ *Code that is WRITTEN but never CALLED is not done*: the gap is between what the repo says
+and what the repo lets you run.
+
 ### Grab the RESIDUALS. The structured parse is not everything on the page
 
 **Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit

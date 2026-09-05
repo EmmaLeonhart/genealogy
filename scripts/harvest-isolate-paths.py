@@ -67,6 +67,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -123,14 +124,54 @@ NOT_FOUND_TEXT = "the relationship could not be found"
 #: `CLAUDE.md` § *check the separator before believing a distribution* family again.
 PENDING_TEXT = "path search in progress"
 
+#: ⛔ **The sentence above is in EVERY page, hidden, and a substring test on it lies.**
+#: Measured 2026-09-05 over the saved captures: 4 of 5 carry
+#:
+#:     <span id="path_search_response" style="white-space:nowrap;display:none;">
+#:       Path search in progress. ...
+#:
+#: on a profile whose search had never been requested. `geni-paths/README.md` records the same
+#: trap costing 22 profiles read as running when not one had been asked for; the guard written
+#: against it went into the README and NOT into this module, so `pending()` shipped as a raw
+#: `in html` test and answered **true for every page**.
+#:
+#: What that does is not a small miscount. `main()` records a non-hit as `pending` whenever this
+#: returns true, and the reach rate divides by RESOLVED pages only --- so every genuine miss
+#: left the denominator and the rate could only ever come out **100%**. Same shape as the URL
+#: the fetch list used to carry: a plausible number about the instrument, not the data.
+#:
+#: So the discriminator is the element's own `display`, which survives into the saved file.
+PENDING_ID = "path_search_response"
+_PENDING_EL = re.compile(
+    "<[^>]*id=['\"]" + PENDING_ID + "['\"][^>]*>", re.I)
+
 
 def pending(html: str) -> bool:
-    """Has Geni queued this search rather than answered it?
+    """Is Geni ACTUALLY searching, as against carrying the hidden template that says so?
 
     A pending page is neither a hit nor a miss and must be **re-fetched**, not counted. Rolling
-    it into the miss column is what turns a two-pass campaign into a 0% reach rate.
+    it into the miss column turns a two-pass campaign into a 0% reach rate; rolling every page
+    into it, which is what the substring test did, turns the reach rate into 100%.
     """
-    return PENDING_TEXT in (html or "").lower()
+    h = html or ""
+    m = _PENDING_EL.search(h)
+    if m:
+        # The template is present on every profile. It is REAL only when it is being shown.
+        return "display:none" not in m.group(0).replace(" ", "").lower()
+    # No element at all: fall back to the text, which is what an older capture may be.
+    return PENDING_TEXT in h.lower()
+
+
+#: Geni's *"How are they related?"* control. Its presence means the search was **never
+#: requested** --- a first-visit capture, which is a page to come back to rather than a miss.
+#: It is a different state from `pending()` and lands in the same bucket for the same reason:
+#: neither says anything about connectivity.
+NOT_REQUESTED_TEXT = "how are they related"
+
+
+def not_requested(html: str) -> bool:
+    """Was the search never asked for on this capture?"""
+    return NOT_REQUESTED_TEXT in (html or "").lower()
 
 
 def chain_found(links, target_id: str, html: str = "") -> bool:
@@ -150,7 +191,7 @@ def chain_found(links, target_id: str, html: str = "") -> bool:
     """
     if len(links) < MIN_STEPS:
         return False
-    if html and (NOT_FOUND_TEXT in html.lower() or pending(html)):
+    if html and (NOT_FOUND_TEXT in html.lower() or pending(html) or not_requested(html)):
         return False
     if target_id and target_id not in {l.geni_id for l in links}:
         return False
@@ -214,7 +255,7 @@ def main() -> int:
                 continue
             links, prose, html = read_page(page)
             found = chain_found(links, gid, html)
-            is_pending = pending(html)
+            is_pending = pending(html) or not_requested(html)
             row[f"{kind}_steps"] = len(links)
             # PENDING is not a miss. It is a page to fetch again.
             row[f"{kind}_chain"] = "1" if found else ("pending" if is_pending else "0")
