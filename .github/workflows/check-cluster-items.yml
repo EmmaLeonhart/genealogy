@@ -19,6 +19,10 @@ on:
         description: "How many clusters to check (default 20)"
         required: false
         type: string
+      per_cluster:
+        description: "How many names per cluster (default 60)"
+        required: false
+        type: string
 
 concurrency:
   group: check-cluster-items
@@ -40,19 +44,23 @@ jobs:
           sparse-checkout: |
             scripts/
             reports/eccentric-cluster-members.tsv
-            reports/eccentric-cluster-wikidata-check.tsv
+            reports/eccentric-cluster-candidates.tsv
+            reports/derived-facts.csv.gz
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
+      - name: Unpack the derived CSVs
+        run: python scripts/pack-derived.py --unpack
       - name: Ask Wikidata
         env:
           CLUSTERS: ${{ inputs.clusters }}
+          PER_CLUSTER: ${{ inputs.per_cluster }}
         run: python scripts/check-cluster-items-on-wikidata.py
       - name: Commit
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/eccentric-cluster-wikidata-check.tsv
+          git add reports/eccentric-cluster-candidates.tsv
           if git diff --cached --quiet; then
             echo "nothing changed"
             exit 0

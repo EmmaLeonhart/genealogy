@@ -1,64 +1,55 @@
-"""Does Wikidata actually HOLD items for the eccentric clusters? Ask it.
+"""Does Wikidata hold items for the eccentric clusters, and which pairs are solid enough to keep?
 
 **Emma, 2026-09-05, on the first version of `reports/eccentric-clusters.md`:** *"your measurement
 of there being qids is a bit flawed. Both Chinese lines likely have wiki data items even if no
 connection. Pre dynastic Egypt definitely does… Axum certainly have qids lol… Third intermediate
-period def has qids lol"*. And: *"Idk if you even bothered cross-checking wikidata p2600
-properties linking to these lol"*.
+period def has qids lol"*. Then: *"write these ones into that identification gedcom thing that
+serves the dual purpose of entity resolution through adding dummy bios with the wikidata links"*.
 
-**The `P2600` count was right and the sentence attached to it was wrong.** `P2600` *Geni.com
-profile ID* counts a **link**: somebody having joined a Geni profile to a Wikidata item. A cluster
-reading `0` is unlinked, and the report said *"every other cluster is 0"* as though that settled
-whether Wikidata has the people. `CLAUDE.md` § *"Is X present?"* is the standing rule and this
-broke it: an absence has to name the store it is about, and ours is a Geni-shaped slice.
+**`P2600` counts a LINK, not an item.** That was the error in the first report: a cluster reading
+`0` means nobody has joined those Geni profiles to Wikidata, and the report said *"every other
+cluster is 0"* as though it were a fact about Wikidata's holdings. `CLAUDE.md` § *"Is X present?"*
+is the standing rule — an absence names the store it is about.
 
-**So this asks Wikidata itself**, by name, via `wbsearchentities`. Egress is blocked in the
-sandbox and ordinary in Actions, so it runs there — `.github/workflows/check-cluster-items.yml`.
+So this asks Wikidata itself, and then **verifies every hit against the full item** rather than
+trusting the search. Egress is blocked in the sandbox and ordinary in Actions, so it runs there:
+`.github/workflows/check-cluster-items.yml`.
 
-**⛔ A HIT IS A CANDIDATE, NEVER AN IDENTIFICATION, and this file must not become an input to a
-merge.** `CLAUDE.md` deleted the `reconcile` name matcher for searching Wikidata *for* a name, and
-that stays deleted. The difference is what the answer is used for: this one exists to replace the
-sentence *"Wikidata does not have these people"* with a measurement, and it is read by a human.
-Nothing joins on it. `Solomon King of Israel` matching `Q302` is a plausibility check on a
-cluster, not a claim about that Geni profile.
+## The search is weak in BOTH directions, which is why nothing here is a verdict
 
-**Only Latin-script labels are searched.** A Geni CJK label is usually a generational string —
-`禄 (入闽始祖晋安郡王) 林 第1世闽南林氏衍派` — that no Wikidata label resembles, so a miss would
-measure the label format rather than Wikidata's holdings. Those clusters get `not-searchable`,
-which is an honest third answer and not a zero.
+- **`wbsearchentities` is a PREFIX search over labels and aliases.** Geni writes `Makeda Queen of
+  Sheba`; Wikidata's label is `Queen of Sheba`, so the compound string matches nothing and the
+  Axumite cluster first read **0 of 12** — the query format, not Wikidata.
+  `namemodel.drop_title_tail` is the repo's own list, built for the `P735` emitters, and takes it
+  to `Makeda`. Both forms are searched and the matching one is recorded.
+- **A common name matches a living stranger.** The 李 Lee cluster first read *items exist* on
+  `Dave Lee -> Q1691840 (British DJ and house music producer)`, `Alice Chung -> Q98293885
+  (researcher)` and `Barbara Weil -> Q88846 Barbara Weiler (German politician)`, against
+  Geni-**redacted** people who share a surname.
+- **A hit can be a NAME ITEM rather than a person** — `Solomon -> Q18607853 (male given name)`.
+  This repo creates name items, so that is the expected shape rather than a coincidence.
 
-**⛔ THERE IS NO `verdict` COLUMN AND THERE MUST NOT BE ONE.** The first run had one, and it was
-wrong in *both* directions on the same table:
+**There is therefore no `verdict` column and there must not be one.** A word summarising the
+count asserted an identity in both directions at once. What is emitted is one row per candidate
+carrying the evidence to judge it — and `CLAUDE.md` § *"Analyse this" means build a CSV* is what
+that is: the census first, then a sample read by eye.
 
-- **False negative.** The Axumite cluster read `no hit by name`, 0 of 12 — see `forms()`. A
-  prefix search cannot match a compound Geni label.
-- **False positive.** The 李 Lee cluster read `items exist`, 6 of 12, on
-  `Alice Chung -> Q98293885 (researcher)`, `Dave Lee -> Q1691840 (British DJ and house music
-  producer)` and `Barbara Weil -> Q88846 Barbara Weiler (German politician)`. Those are living
-  strangers who share a common surname with Geni-redacted people. A word that summarised the
-  count asserted an identity nothing had established.
+## What the evidence columns are, and why dates carry it
 
-So the columns are `searched`, `with_hit` and `examples`, and the examples carry the hit's own
-**description** because that is what separates `Scorpion I -> Q318613 (predynastic Egypt
-pharaoh)` from `Dave Lee -> (British DJ)`. Reading them is the human's job, which is what
-`CLAUDE.md` § *"Analyse this" means build a CSV* asks for: the census, then a sample read by eye.
+`instance_of_human` kills the name items, the settlements (`Namlit -> Q6961940`, *human
+settlement in Myanmar*) and the genera (`Kapes -> Q6366576`, *genus of procolophonians*).
 
-**WHAT IS LEFT WRONG, recorded rather than tuned away.** Stripping the title took the Axumite
-cluster from 0 to 2 of 12 and got `Makeda Queen of Sheba -> Q159888 Queen of Sheba (biblical
-figure)`, which is right. Two residues remain and both are properties of Geni's labels rather
-than bugs to chase:
+**The birth and death years on both sides do the rest**, and that is not a preference:
+`reports/zipper-reliability.md` measures the `date` step at **0.0%** disagreement against
+`solo`'s 11.8% and `name`'s 9.2%. `CLAUDE.md` § *1600-1900 is the band where NAMES LIE and YEARS
+decide* is the same finding from the other side. Every cluster this touches is ancient, so a hit
+whose dates are modern is a stranger however well the string matches.
 
-- **Geni packs several regnal names into one label.** `Menelik I Dawit I King of Axum` strips to
-  `Menelik I Dawit I`, which is longer than Wikidata's `Menelik I`, so a prefix search still
-  misses. Nothing short of a real search API fixes that.
-- **A hit can be a NAME ITEM rather than a person.** `Solomon -> Q18607853 Solomon (male given
-  name)`. This repo creates name items, so that is the expected shape and not a coincidence.
+**Nothing here writes a pair anywhere.** `scripts/build-qid-links-gedcom.py` holds an explicit
+constant, by her design — *"Do not let it become an architecture"* — and its own docstring says
+widening it *"is a decision, not a default"*. This file is the evidence that decision is made on.
 
-So a low `with_hit` is **not** evidence that Wikidata lacks a cluster, and a high one is not
-evidence that it has it. This file narrows the question for a reader; it does not answer it, and
-tuning the query further would only move which way it is wrong.
-
-Writes `reports/eccentric-cluster-wikidata-check.tsv`.
+Writes `reports/eccentric-cluster-candidates.tsv`.
 """
 from __future__ import annotations
 
@@ -76,57 +67,42 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from namemodel import drop_title_tail                       # noqa: E402 - after sys.path
+
 MEMBERS = ROOT / "reports" / "eccentric-cluster-members.tsv"
-OUT = ROOT / "reports" / "eccentric-cluster-wikidata-check.tsv"
+FACTS = ROOT / "reports" / "derived-facts.csv"
+OUT = ROOT / "reports" / "eccentric-cluster-candidates.tsv"
 
 API = "https://www.wikidata.org/w/api.php"
-UA = ("genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)")
+UA = "genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)"
 
-#: The cut to check. 100 is where the report's distinct populations separate: below it the
-#: clusters merge back into the bulk, above it they only shrink.
+#: The cut to check. 100 is where the report's distinct populations separate.
 CUT = 100
 
-#: Names searched per cluster. A sample, not a census -- the question is whether the population
-#: is on Wikidata at all, and twelve settles that without asking for a thousand requests.
-SAMPLE = 12
-
 #: Seconds between requests. `CLAUDE.md` § *Querying Wikidata is ALLOWED* -- *"Be polite about
-#: the rate"*, and `wbsearchentities` takes one name per call, so the politeness is the gap.
+#: the rate"*. `wbsearchentities` takes one name per call, so the politeness is the gap;
+#: `wbgetentities` takes fifty ids, so the items cost a fraction of the searches.
 PAUSE = 0.25
 
-#: Geni's redaction markers and our own placeholder text: not names, so never searched.
-NOT_A_NAME = re.compile(r"^\(|^NN\b|^Private$", re.I)
+HUMAN = "Q5"
 
+NOT_A_NAME = re.compile(r"^\(|^NN\b|^Private$", re.I)
 LATIN = re.compile(r"^[\W\d_]*[A-Za-z]")
 
 
 def searchable(label: str) -> bool:
     """A label worth putting to `wbsearchentities`.
 
-    Latin script, not a redaction marker, and more than a bare initial. A Geni generational
-    string in Han characters is excluded on purpose: see the module docstring.
+    Latin script, not a redaction marker, four characters or more. A Geni CJK label is usually a
+    generational string -- `禄 (入闽始祖晋安郡王) 林 第1世闽南林氏衍派` -- that no Wikidata label
+    resembles, so a miss would measure the label format rather than Wikidata's holdings. Those
+    people are counted as `not-searchable`, which is an honest third answer and not a zero.
     """
     label = label.strip()
-    if not label or NOT_A_NAME.match(label) or not LATIN.match(label):
-        return False
-    return len(label) >= 4
+    return bool(label and not NOT_A_NAME.match(label) and LATIN.match(label) and len(label) >= 4)
 
 
 def forms(label: str):
-    """The strings worth putting to `wbsearchentities` for one person, best first.
-
-    **`wbsearchentities` is a PREFIX search over labels and aliases, not a fuzzy one**, and that
-    is what made the first run report `0 of 12` for the Axumite cluster — the one Emma had
-    already said *"Axum certainly have qids lol"* about. Geni writes `Makeda Queen of Sheba` and
-    `Solomon King of Israel`; Wikidata's labels are `Queen of Sheba` and `Solomon`, so the
-    compound string prefix-matches nothing and the miss measured the query format rather than
-    Wikidata's holdings. It is the § *check the separator before believing a distribution*
-    family: an instrument reporting a clean number about itself.
-
-    `namemodel.drop_title_tail` already knows this — it is the repo's own list, built for the
-    `P735` emitters, and it takes `Makeda Queen of Sheba` to `Makeda` and `Sahel IV King of
-    Axum` to `Sahel IV`. Importing it rather than restating it is § *One place*.
-    """
+    """The strings worth searching for one person, best first: the label, then title-stripped."""
     label = label.strip()
     out = [label]
     stripped = drop_title_tail(label).strip()
@@ -135,18 +111,78 @@ def forms(label: str):
     return out
 
 
-def search(term: str):
-    """Top `wbsearchentities` hits for one term, or `None` if the request failed."""
-    url = API + "?" + urllib.parse.urlencode({
-        "action": "wbsearchentities", "search": term, "language": "en",
-        "uselang": "en", "type": "item", "limit": "3", "format": "json"})
+def _get(params):
+    url = API + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     try:
-        with urllib.request.urlopen(req, timeout=30) as fh:
-            return json.loads(fh.read().decode("utf-8")).get("search", [])
+        with urllib.request.urlopen(req, timeout=45) as fh:
+            return json.loads(fh.read().decode("utf-8"))
     except Exception as exc:                       # noqa: BLE001 - reported, never swallowed
-        print(f"    ! {term!r}: {exc}", file=sys.stderr, flush=True)
+        print(f"    ! {params.get('search') or params.get('ids')}: {exc}",
+              file=sys.stderr, flush=True)
         return None
+
+
+def search(term: str):
+    got = _get({"action": "wbsearchentities", "search": term, "language": "en",
+                "uselang": "en", "type": "item", "limit": "3", "format": "json"})
+    return None if got is None else got.get("search", [])
+
+
+def _year(claims, prop):
+    """The year of the first `prop` time value, signed, or `''`.
+
+    Wikidata writes `+0332-01-01T00:00:00Z` and `-0500-00-00T00:00:00Z`; the leading sign is the
+    era and must survive, which is the same trap `genimerge.dates` records for Geni's `-73`.
+    """
+    for st in claims.get(prop, ()):
+        value = (st.get("mainsnak", {}).get("datavalue") or {}).get("value") or {}
+        t = value.get("time") or ""
+        m = re.match(r"([+-])0*(\d+)-", t)
+        if m:
+            return ("-" if m.group(1) == "-" else "") + m.group(2)
+    return ""
+
+
+def full_items(qids):
+    """`{qid: {...}}` for every id, fifty at a time -- `wbgetentities` batches, so use it."""
+    out = {}
+    qids = sorted(set(qids))
+    for i in range(0, len(qids), 50):
+        batch = qids[i:i + 50]
+        got = _get({"action": "wbgetentities", "ids": "|".join(batch),
+                    "props": "labels|descriptions|claims", "languages": "en", "format": "json"})
+        time.sleep(PAUSE)
+        if got is None:
+            continue
+        for qid, item in (got.get("entities") or {}).items():
+            claims = item.get("claims") or {}
+            types = [(st.get("mainsnak", {}).get("datavalue") or {}).get("value", {}).get("id")
+                     for st in claims.get("P31", ())]
+            out[qid] = {
+                "label": ((item.get("labels") or {}).get("en") or {}).get("value", ""),
+                "description": ((item.get("descriptions") or {}).get("en") or {}).get("value", ""),
+                "human": HUMAN in types,
+                "instance_of": " ".join(t for t in types if t),
+                "birth": _year(claims, "P569"),
+                "death": _year(claims, "P570"),
+                "p2600": " ".join(
+                    (st.get("mainsnak", {}).get("datavalue") or {}).get("value", "")
+                    for st in claims.get("P2600", ())),
+            }
+        print(f"  fetched {min(i + 50, len(qids))}/{len(qids)} items", flush=True)
+    return out
+
+
+def our_dates():
+    """`{geni_id: (birth_year, death_year)}` from the derived facts."""
+    out = {}
+    with open(FACTS, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            b, d = (row.get("birth_date_year") or "").strip(), (row.get("death_date_year") or "").strip()
+            if b or d:
+                out[row["geni_id"]] = (b, d)
+    return out
 
 
 def main() -> int:
@@ -159,60 +195,58 @@ def main() -> int:
             if int(row["cut"]) == CUT:
                 by_cluster[int(row["rank"])].append(row)
 
-    # `or "20"`, not a `get` default: an unset workflow input arrives as an EMPTY string,
-    # not as an absent variable, so the default never fired and `int("")` killed the run.
+    # `or "20"`, not a `get` default: an unset workflow input arrives as an EMPTY string, not as
+    # an absent variable, so the default never fired and `int("")` killed a run.
     limit = int((os.environ.get("CLUSTERS") or "20").strip())
+    per = int((os.environ.get("PER_CLUSTER") or "60").strip())
     ranks = sorted(by_cluster)[:limit]
-    print(f"cut {CUT}: checking {len(ranks)} clusters of {len(by_cluster)}", flush=True)
+    print(f"cut {CUT}: {len(ranks)} clusters of {len(by_cluster)}, up to {per} names each",
+          flush=True)
 
-    rows = []
+    dates = our_dates()
+    found = []
     for rank in ranks:
-        members = sorted(by_cluster[rank], key=lambda r: (-int(r["dist_charlemagne"]),
-                                                          r["geni_id"]))
-        pool = [m for m in members if searchable(m["label"])][:SAMPLE]
-        print(f"  cluster {rank}: {len(members):,} people, {len(pool)} searchable names",
-              flush=True)
-        if not pool:
-            rows.append({"cut": CUT, "rank": rank, "people": len(members),
-                         "searched": 0, "with_hit": 0, "examples": ""})
-            continue
-        hits, examples, failed = 0, [], 0
+        members = sorted(by_cluster[rank],
+                         key=lambda r: (-int(r["dist_charlemagne"]), r["geni_id"]))
+        pool = [m for m in members if searchable(m["label"])][:per]
+        print(f"  cluster {rank}: {len(members):,} people, {len(pool)} searchable", flush=True)
         for m in pool:
-            found, failure = None, False
             for term in forms(m["label"]):
                 got = search(term)
                 time.sleep(PAUSE)
                 if got is None:
-                    failure = True
                     break
                 if got:
-                    found = (term, got[0])
+                    b, d = dates.get(m["geni_id"], ("", ""))
+                    found.append({"cut": CUT, "rank": rank, "geni_id": m["geni_id"],
+                                  "our_label": m["label"], "our_birth": b, "our_death": d,
+                                  "dist": m["dist_charlemagne"], "searched": term,
+                                  "qid": got[0]["id"]})
                     break
-            if failure:
-                failed += 1
-                continue
-            if found:
-                hits += 1
-                term, top = found
-                via = "" if term == m["label"].strip() else f" [searched {term!r}]"
-                examples.append(f"{m['label']} -> {top['id']} {top.get('label', '')}"
-                                f" ({top.get('description', '')}){via}".strip())
-        searched = len(pool) - failed
-        print(f"    {hits}/{searched} names match an item", flush=True)
-        rows.append({"cut": CUT, "rank": rank, "people": len(members),
-                     "searched": searched, "with_hit": hits,
-                     # Sorted so the column is a pure function of its input.
-                     "examples": " | ".join(sorted(examples)[:5])})
 
-    fields = ["cut", "rank", "people", "searched", "with_hit", "examples"]
+    print(f"{len(found)} candidates; fetching the full items", flush=True)
+    items = full_items(r["qid"] for r in found)
+    for r in found:
+        it = items.get(r["qid"], {})
+        r.update({"wd_label": it.get("label", ""), "wd_description": it.get("description", ""),
+                  "instance_of_human": "yes" if it.get("human") else "no",
+                  "instance_of": it.get("instance_of", ""),
+                  "wd_birth": it.get("birth", ""), "wd_death": it.get("death", ""),
+                  "wd_p2600": it.get("p2600", "")})
+
+    fields = ["cut", "rank", "geni_id", "our_label", "our_birth", "our_death", "dist",
+              "searched", "qid", "wd_label", "wd_description", "instance_of_human",
+              "instance_of", "wd_birth", "wd_death", "wd_p2600"]
     tmp = OUT.with_suffix(".tsv.tmp")
     with open(tmp, "w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n")
+        w = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n",
+                           extrasaction="ignore")
         w.writeheader()
-        # Total sort key: (cut, rank) is unique per row.
-        w.writerows(sorted(rows, key=lambda r: (r["cut"], r["rank"])))
+        # Total sort key: a person can appear once per cut, and the Geni id is the primary key.
+        w.writerows(sorted(found, key=lambda r: (r["cut"], r["rank"], r["geni_id"])))
     os.replace(tmp, OUT)
-    print(f"wrote {OUT.relative_to(ROOT)}: {len(rows)} rows")
+    humans = sum(1 for r in found if r.get("instance_of_human") == "yes")
+    print(f"wrote {OUT.relative_to(ROOT)}: {len(found)} candidates, {humans} are humans")
     return 0
 
 

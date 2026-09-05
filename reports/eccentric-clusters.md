@@ -16,7 +16,7 @@
 
 **So a `0` here means UNLINKED, and nothing more.** `CLAUDE.md` § *"Is X present?"* is the standing rule: our Wikidata store is a Geni-shaped slice, so absent-from-it never means absent-from-Wikidata, and every absence has to carry the store it is about. The column is now named for what it measures.
 
-**What it is genuinely good for is the opposite reading.** An eccentric cluster with a high link count is one we have already reconciled; one at `0` is unreconciled, and whether that is because the items do not exist or because nobody joined them is the question a live check answers and this file cannot. `reports/eccentric-cluster-wikidata-check.tsv` is that check.
+**What it is genuinely good for is the opposite reading.** An eccentric cluster with a high link count is one we have already reconciled; one at `0` is unreconciled, and whether that is because the items do not exist or because nobody joined them is the question a live check answers and this file cannot. `reports/eccentric-cluster-candidates.tsv` is that check, one row per candidate with the evidence to judge it -- and a search hit is a CANDIDATE, never an identification.
 
 ## Rope or ball — `per hop` and `deg≤2` say which, and they are different findings
 
