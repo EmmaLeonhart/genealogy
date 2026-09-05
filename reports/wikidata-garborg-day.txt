@@ -363,6 +363,26 @@ Q58072966	P2600	"6000000000340523826"
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Ekebyholm -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ekebyholm"
+LAST	Len	"Ekebyholm"
+#   set the mul label to "Ekebyholm"
+LAST	Lmul	"Ekebyholm"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P734 family name = the item just created
+Q109296398	P734	LAST	S2600	"6000000006127496847"
+#   Q5813616 Adam Horn af Ekebyholm till Ekebyholm: P734 family name = the item just created
+Q5813616	P734	LAST	S2600	"6000000007285499105"
+#   Q19678400 Eva Horn af Ekebyholm: P734 family name = the item just created
+Q19678400	P734	LAST	S2600	"6000000007286110282"
+#   Q717179 Arvid Bernhard Horn af Ekebyholm: P734 family name = the item just created
+Q717179	P734	LAST	S2600	"6000000011637024489"
+
 # Johansdotter -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
@@ -401,24 +421,9 @@ Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
 #   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
 
-# Andersdotter -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Andersdotter"
-LAST	Len	"Andersdotter"
-#   set the mul label to "Andersdotter"
-LAST	Lmul	"Andersdotter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q124477457 Anna Elisabet Charlotta Andersdotter Rehbinder: P5056 patronym or matronym = the item just created, qualified P144 based on Q5795477
-Q124477457	P5056	LAST	P144	Q5795477	S2600	"6000000000909142439"
-#   Q141283499 Eva Lovisa Andersdotter Knös: P5056 patronym or matronym = the item just created, qualified P144 based on Q5916162 Anders Olofsson Knös
-Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
-
-# 422 more name items are needed and wait for a later
+# 423 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Andersdotter (patronymic), 3 bearer(s)
 #   Andersson (patronymic), 3 bearer(s)
 #   Carlsdotter (patronymic), 3 bearer(s)
 #   Carlsson (patronymic), 3 bearer(s)
@@ -430,51 +435,73 @@ Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
 #   Larsson (patronymic), 3 bearer(s)
 #   Margretelund (family), 3 bearer(s)
 #   Mårtensdotter (patronymic), 3 bearer(s)
-#   Nord-Varhaug (family), 3 bearer(s)
-#   ... and 410 more
+#   ... and 411 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
 # ========================================================================
 
 # ------------------------------------------------------------------------
-# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 15, both
-#   her instruction: "any label changes should occur at the beginning of the
-#   batch and be limited to a count of 15 labels added per batch". A label set
-#   at CREATION time is neither counted nor capped -- "a label added during item
-#   creation is good".
-#   2323 more are held for a later run; a repeat is a no-op, so nothing is lost.
+# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 15 PEOPLE,
+#   both her instruction: "any label changes should occur at the beginning of
+#   the batch and be limited to a count of 15 labels added per batch", and
+#   "we do all at once per qid (15 qids) in descending order of qids". A label
+#   set at CREATION time is neither counted nor capped -- "a label added during
+#   item creation is good".
+#   Newest items first, deliberately: a recent item with an error in it looks
+#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
+#   languages, then the rest.
+#   15 people, 24 edits; 2524 edits held for a later run
+#   across 922 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   add a mul alias "Sofie Marie Pedersen"
-Q63213906	Amul	"Sofie Marie Pedersen"
-#   Q140191768 Hedvig Swedenborg: add a mul alias "Hedvig Behm"
-Q140191768	Amul	"Hedvig Behm"
-#   Q141249728 Johan Börgesson Carlberg: add a mul alias "Johan Börjesson Carlberg"
-Q141249728	Amul	"Johan Börjesson Carlberg"
-#   Q141283103 Magnus Lagercrantz, till Näs: add a mul alias "Magnus Lagercrantz, till Näs"
-Q141283103	Amul	"Magnus Lagercrantz, till Näs"
-#   Q99460476 Carl Henrik Posse af Säby: add a mul alias "Carl Henrik Posse af Säby"
-Q99460476	Amul	"Carl Henrik Posse af Säby"
-#   set the mul label to "Carl Henrik Posse"
-Q99460476	Lmul	"Carl Henrik Posse"
-#   Q136028286 Margareta Charlotta Ihre: set the mul label to "Margaret Charlotta Ihre"
-Q136028286	Lmul	"Margaret Charlotta Ihre"
-#   add a mul alias "Margareta Charlotta Ihre"
-Q136028286	Amul	"Margareta Charlotta Ihre"
-#   Q4944366 Charlotta Aurora De Geer af Finspång: add a mul alias "Charlotta Aurora De Geer af Finspång"
-Q4944366	Amul	"Charlotta Aurora De Geer af Finspång"
-#   Q108615809 Margareta Jacobsdotter Jernstedt: add a mul alias "Margareta Jacobsdotter Jernstedt"
-Q108615809	Amul	"Margareta Jacobsdotter Jernstedt"
-#   Q4941089 Catharina Bröms: set the mul label to "Catharina Bröms"
-Q4941089	Lmul	"Catharina Bröms"
-#   Q104550167 Karin Mattsdotter Björnram: set the mul label to "Karin Mattsdotter Björnram"
-Q104550167	Lmul	"Karin Mattsdotter Björnram"
-#   Q19977201 Jakob Pedersson Törnsköld till Runstorp: set the mul label to "Jakob Törnsköld"
-Q19977201	Lmul	"Jakob Törnsköld"
-#   add a mul alias "Jakob Pedersson Törnsköld till Runstorp"
-Q19977201	Amul	"Jakob Pedersson Törnsköld till Runstorp"
-#   Q6218068 Carl Peter Peter Törnebladh: set the mul label to "Carl Petter Törnebladh"
-Q6218068	Lmul	"Carl Petter Törnebladh"
+#   Q141283795 Siri Einarsdatter Opstad: add a mul alias "Siri Einarsdatter Kvia"
+Q141283795	Amul	"Siri Einarsdatter Kvia"
+#   add a mul alias "Malena Halvardsdatter Hadland"
+Q141283789	Amul	"Malena Halvardsdatter Hadland"
+#   add a mul alias "Lars Jonson d.y. Skrudland"
+Q141283784	Amul	"Lars Jonson d.y. Skrudland"
+#   set the mul label to "Lars Jonson II Skrudland"
+Q141283784	Lmul	"Lars Jonson II Skrudland"
+#   add a mul alias "Lars Jonson d.y. Lende"
+Q141283784	Amul	"Lars Jonson d.y. Lende"
+#   set the ja label to "ラース・ヨンソン2世・スクルドランド"
+Q141283784	Lja	"ラース・ヨンソン2世・スクルドランド"
+#   set the zh label to "拉尔斯·永松二世·斯克鲁德兰德"
+Q141283784	Lzh	"拉尔斯·永松二世·斯克鲁德兰德"
+#   set the ko label to "라르스 존손 2세 스크루드란드"
+Q141283784	Lko	"라르스 존손 2세 스크루드란드"
+#   Q141283767 Hedvig Catharina Torin: add a mul alias "Hedvig Catharina Knös"
+Q141283767	Amul	"Hedvig Catharina Knös"
+#   set the ja label to "ン"
+Q141283512	Lja	"ン"
+#   set the zh label to "恩"
+Q141283512	Lzh	"恩"
+#   set the ko label to "느느"
+Q141283512	Lko	"느느"
+#   Q141283502 Helge Ånundsen Opstad: add a mul alias "Helge Ånundsen Vigre"
+Q141283502	Amul	"Helge Ånundsen Vigre"
+#   Q141283491 Berta Kristine Kristiansdatter Rangen: add a mul alias "Berta Kristine Kristiansdatter Sør-Reime"
+Q141283491	Amul	"Berta Kristine Kristiansdatter Sør-Reime"
+#   Q141283104 Marta Svensdotter Ueland: add a mul alias "Marta Svensdotter Ollestad"
+Q141283104	Amul	"Marta Svensdotter Ollestad"
+#   Q141283099 Karolina Charlotta Amnéus: add a mul alias "Karolina Charlotta Castegren"
+Q141283099	Amul	"Karolina Charlotta Castegren"
+#   Q141283095 Ida Klaris Tunheim: add a mul alias "Ida Klaris Olsen"
+Q141283095	Amul	"Ida Klaris Olsen"
+#   Q141283086 Anna Maria Sneckenberg: add a mul alias "Anna Maria Schnack"
+Q141283086	Amul	"Anna Maria Schnack"
+#   Q141271437 Omund Børildsen Ualand: add a mul alias "Omund Børildsen Børildson"
+Q141271437	Amul	"Omund Børildsen Børildson"
+#   Q141271433 Olav Lauritsen Bjørheim: add a mul alias "Olav Lauritsen Nesheim"
+Q141271433	Amul	"Olav Lauritsen Nesheim"
+#   Q141271431 NN: set the ja label to "ン"
+Q141271431	Lja	"ン"
+#   set the zh label to "恩"
+Q141271431	Lzh	"恩"
+#   set the ko label to "느느"
+Q141271431	Lko	"느느"
+#   Q141271420 Jakob Larsson Bratt-Hetland: add a mul alias "Jakob Larsson Bjørkhaug"
+Q141271420	Amul	"Jakob Larsson Bjørkhaug"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -1598,7 +1625,7 @@ Q110303080	P734	Q28605695
 Q110303124	P735	Q1035239
 #   P734 family name = Q45854140 Tott
 Q110303124	P734	Q45854140
-#   Q64829391 Abraham Johansson Fought dä: P735 given name = Q4055996 Abraham
+#   Q64829391 Abraham Johansson Fought Sr.: P735 given name = Q4055996 Abraham
 Q64829391	P735	Q4055996
 #   Q110558398 Helena von der Schulenburg: P735 given name = Q1035239 Helena
 Q110558398	P735	Q1035239
@@ -1666,7 +1693,7 @@ Q16466645	P735	Q7086343	P1545	"1"	P7452	Q3409033
 Q16466645	P735	Q644599	P1545	"2"	P3831	Q245025
 #   P735 given name = Q18192713 Teresia, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
 Q16466645	P735	Q18192713	P1545	"3"	P3831	Q245025
-#   Q141283784 Lars Jonson d.y. Skrudland: P26 spouse = Q141283789 Malena Halvardsdatter Skrudland
+#   Q141283784 Lars Jonson Jr. Skrudland: P26 spouse = Q141283789 Malena Halvardsdatter Skrudland
 Q141283784	P26	Q141283789	S2600	"6000000024762555454"
 #   Q94790988 Martin Törngren: P735 given name = Q18002399 Martin
 Q94790988	P735	Q18002399
@@ -1684,7 +1711,7 @@ Q16206992	P735	Q53787734	P1545	"1"	P7452	Q3409033
 Q16206992	P735	Q2793400	P1545	"2"	P3831	Q245025
 #   Q99207667 Judith Verplanck: P735 given name = Q5954149 Judith
 Q99207667	P735	Q5954149
-#   Q141283789 Malena Halvardsdatter Skrudland: P26 spouse = Q141283784 Lars Jonson d.y. Skrudland
+#   Q141283789 Malena Halvardsdatter Skrudland: P26 spouse = Q141283784 Lars Jonson Jr. Skrudland
 Q141283789	P26	Q141283784	S2600	"6000000025999391796"
 #   Q109807709 Dorothea von Schwerin: P735 given name = Q909253 Dorothea
 Q109807709	P735	Q909253
