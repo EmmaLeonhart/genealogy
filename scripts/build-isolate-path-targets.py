@@ -22,14 +22,29 @@ as isolated here.
 not saturate --- 20.7 new people per path over the first 100, still **13.8** over paths
 501-600, in random order.
 
-**The path is a URL, not a page save.** Taken off the saved pages themselves:
+**⛔ THE `/path/` URL DOES NOT WORK, AND IT FAILS AS A FALSE HIT --- measured 2026-09-03.**
+This module emitted that form until 2026-09-05, and `geni-paths/README.md` refutes it: the
+`to=` parameter is **ignored**. All four probes redirected to Charlemagne's own profile,
+carrying *"The relationship could not be found"* while `#relation_description` read
+*"Charlemagne is your 35th great grandfather."*
 
-    https://www.geni.com/path/x?from=<FROM>&path_type=blood&to=<target>
-    https://www.geni.com/path/x?from=<FROM>&path_type=inlaw&to=<target>
+The dangerous part is that the page **looks like a hit**. It renders 38 anchors inside
+`span.segment > span.name` --- the viewer's own chain to Charlemagne --- so a harvest
+discriminating on step count alone scores a **100% reach rate** made of 100 identical copies of
+one path. `CLAUDE.md` § *check the separator before believing a distribution* is the family,
+and this is the variant that returns a plausible number instead of a zero.
 
-The slug between `/path/` and `?` is cosmetic. So no profile page load and no expand click ---
-a blob-saved profile page carries only 3 `span.segment` anchors (the collapsed *You -> X*),
-against 118 on a saved path page, which is why the profile-page capture cannot be reused here.
+**The working method is the PROFILE page with her anchor set**, validated the same day against
+`6000000003492005116` Arne Garborg: 34 steps, first Charlemagne, last the target, reproducing
+`paths/charlemagne-to-arne-garborg.tsv` exactly.
+
+    navigate  https://www.geni.com/people/x/<geni id>
+    wait      for #relation_description
+    click     "Show short path"     <- the chain is not in the DOM before this click
+    wait      for span.segment > span.name a[data-profile-id]
+    save      document.documentElement.outerHTML
+
+So the roster carries **one url per target, not two**.
 
 **`FROM` is Charlemagne, and that governs NEW paths only.** The 663 existing paths are anchored
 on Emma (`6000000087535357291`, step 1 "You" on 679 saved paths) because they were saved from
@@ -38,7 +53,11 @@ from an individual to me, and that's 100% fine and they are to be filled in I ju
 ones."* Nothing here retires an Emma-anchored path or changes how one is filled in.
 
 **Both path types, always --- Emma's call, 2026-09-02.** `blood` follows descent only;
-`inlaw` allows marriage steps and reaches people no blood path can. Two fetches per target.
+`inlaw` allows marriage steps and reaches people no blood path can. That is two *captures* per
+target and still one url: **blood against in-law is a control on the page, not a URL
+parameter** --- the profile carries a "Blood Relatives" link beside "Show short path" --- so the
+type is read off the page rather than assumed from the url, and the two captures file as
+`geni-paths/<geni id>-<kind>.html`, which is what the harvester looks for.
 
 **This is a PILOT of 100, her call the same day.** The hit rate for the general population is
 the one thing not measured: her own batches ran **34-39%** for academics filtered by
@@ -80,8 +99,16 @@ csv.field_size_limit(10_000_000)
 # `6000000002457013227` is `Q3044` Charlemagne in `reports/derived-labels.csv`, and is step 34
 # --- the far end --- of `paths/charlemagne-to-arne-garborg.tsv`.
 FROM = "6000000002457013227"
-PATH_URL = "https://www.geni.com/path/x?from={frm}&path_type={kind}&to={to}"
-PATH_TYPES = ("blood", "inlaw")
+
+# The anchor is Geni's own pushpin on Charlemagne's profile, set once against her account ---
+# `toggleRelationshipAnchor('6000000002457013227')`. It is NOT a url parameter, and the
+# `/path/?from=&to=` form this module used to emit is refuted in the docstring above: `to=` is
+# ignored, and the miss comes back looking like a 38-step hit. So the fetch is the target's own
+# profile and the anchor comes from the account, not from anything interpolated here.
+#
+# `FROM` survives as the recorded value of that anchor --- what the pushpin is set to, checkable
+# against any capture --- and never as something written into a request.
+PROFILE_URL = "https://www.geni.com/people/x/{gid}"
 
 RELATIONS = REPO / "out" / "wikidata" / "relations.tsv"
 LABELS_GZ = REPO / "reports" / "derived-labels.csv.gz"
@@ -168,15 +195,14 @@ def write(rows, labels, nordic, dest: Path, urls: Path | None) -> None:
     tmp = dest.with_suffix(dest.suffix + ".tmp")
     with open(tmp, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t", lineterminator="\n")
-        w.writerow(["qid", "geni_id", "label", "in_nordic_roster", "blood_url", "inlaw_url"])
+        w.writerow(["qid", "geni_id", "label", "in_nordic_roster", "profile_url"])
         for qid, gid in rows:
             w.writerow([
                 qid,
                 gid,
                 labels.get(qid, ""),
                 "1" if qid in nordic else "0",
-                PATH_URL.format(frm=FROM, kind="blood", to=gid),
-                PATH_URL.format(frm=FROM, kind="inlaw", to=gid),
+                PROFILE_URL.format(gid=gid),
             ])
     tmp.replace(dest)
 
@@ -185,8 +211,7 @@ def write(rows, labels, nordic, dest: Path, urls: Path | None) -> None:
     tmp = urls.with_suffix(urls.suffix + ".tmp")
     with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
         for qid, gid in rows:
-            for kind in PATH_TYPES:
-                fh.write(PATH_URL.format(frm=FROM, kind=kind, to=gid) + "\n")
+            fh.write(PROFILE_URL.format(gid=gid) + "\n")
     tmp.replace(urls)
 
 
@@ -215,7 +240,8 @@ def main() -> int:
     write(sample, labels, nordic, OUT_TSV, OUT_URLS)
     in_nordic = sum(1 for qid, _ in sample if qid in nordic)
     print(
-        f"wrote {OUT_TSV.relative_to(REPO)} ({n} targets, {n * 2} URLs; "
+        f"wrote {OUT_TSV.relative_to(REPO)} ({n} targets, {n} profile urls, "
+        f"2 captures each; "
         f"{in_nordic} on the Nordic roster)",
         file=sys.stderr,
     )

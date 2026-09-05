@@ -28086,3 +28086,38 @@ dangling `LAST` refuses in `_datavalue`, so continuing cannot misattribute anyth
 **And the sparse checkout is measured, not assumed:** the first dispatched run spent minutes in
 `actions/checkout` pulling all 13 GB while every other step sat pending; with a sparse,
 `blob:none`, cone-mode-off checkout of four paths it is **2 seconds**.
+
+## 2026-09-05 — the pilot's fetch list pointed at a URL that cannot work
+
+`geni-paths/README.md` established on 2026-09-03 that the `/path/x?from=&path_type=&to=` form
+is dead: `to=` is **ignored**. `scripts/build-isolate-path-targets.py` went on emitting it
+anyway, and `reports/isolate-path-pilot-urls.txt` held 200 of them — so the repo carried two
+opposite answers and the queue's top item pointed at the refuted one.
+
+**Re-measured here rather than taken on trust**, from her own logged-in Chrome once she cleared
+the Imperva hCaptcha:
+
+    /path/x?from=6000000002457013227&path_type=blood&to=6000000004051490175
+      -> redirects to /people/Charlemagne/6000000002457013227
+      -> body carries "the relationship could not be found"
+      -> targetPresent false; the requested target is nowhere on the page
+
+    /people/x/6000000003492005116                     <- the profile route
+      -> "Arne Garborg is Charlemagne's 31st great grandson."
+      -> 34 segments, reproducing paths/charlemagne-to-arne-garborg.tsv exactly
+      -> controls present: "Show short path", "Blood Relatives"
+
+So her pushpin anchor is live and the profile route is the method. The generator now emits
+`https://www.geni.com/people/x/<geni id>`, **one url per target rather than two**: blood against
+in-law is a control on the page, not a URL parameter, so the type is read off the capture and
+the two still file as `geni-paths/<geni id>-<kind>.html` for the harvester.
+
+**Why this was worth catching before the fetch and not after.** The dead URL does not fail
+loudly — it returns Charlemagne's profile, which renders a chain. A harvest discriminating on
+step count scores it a hit, so 200 fetches would have reported a reach rate made of copies of
+one path, and that number is what decides whether the 185,327-target campaign runs.
+`CLAUDE.md` § *check the separator before believing a distribution* is the family.
+
+The sample is unchanged — same 100 qid/geni_id pairs, `SEED` untouched — so only the url column
+moved. The harvester reads `qid`, `geni_id`, `label` and `in_nordic_roster` and never the url
+columns, so nothing downstream depended on the old pair.
