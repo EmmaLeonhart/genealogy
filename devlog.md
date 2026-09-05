@@ -28379,3 +28379,50 @@ Decision 2 is reproduced across the corpus, the genitive-`s` trap included:
 
 **Nothing has been created on Geni.** The panel's *propose only* box is ticked by default, so
 the first run reports what it would make and creates nobody.
+
+## 2026-09-05 — P144 goes back onto the patronymic items we already made, and P460 links their spellings
+
+**Emma:** *"I want the based on name stuff on patronymics to come all the time and go back onto
+the old ones we made, and also this said to be the same as for many of these ones"* — after
+linking her own `Olofsson` `Q141244186` and `Olai` `Q141313056` with `P460` *said to be the same
+as*, both ways, by hand.
+
+**The backfill.** `build-garborg-name-items.py` gained `P144` on the items it CREATES this
+morning; every patronymic item minted before that has none, so the identity test her resolution
+algorithm runs — father's `P735` among the item's `P144` values — fails on all of them. The new
+pass reads two sources, because neither knows the other: the plan holds patronymic tokens whose
+item already existed on Wikidata, and `reports/created-name-items.tsv` holds the ones we made,
+which the plan cannot know about because it is built from a download that predates them. **63
+items, 158 `P144` statements** on today's data. It runs every day, so an item that gains an
+attesting father tomorrow gains the value the day after.
+
+**Nothing is emitted blind.** The pass reads each item's live claims first and proposes only
+what is missing; a chunk whose read fails holds those items and says so, rather than sending a
+statement that may already be there.
+
+**`P460`, and the pair has to be ATTESTED rather than spelled alike.** Two patronymic items are
+linked only where they share a `P144` source — the same given-name item, from the fathers in our
+own tree — **and** have the same stem **and** the same gendered suffix. **11 pairs, 22
+statements**, both directions as she wrote them: `Jonsson`/`Jonsen`/`Jonson`,
+`Pedersson`/`Pedersen`/`Pederson`, `Eriksson`/`Erikson`, `Eriksdotter`/`Eriksdatter`,
+`Olsen`/`Olson`, `Hansen`/`Hansson`.
+
+Shared source alone was measured first and proposed `Jonsdatter` <-> `Johansdotter`,
+`Jonsdatter` <-> `Jonasdatter` and `Jonsdatter` <-> `Johannesdotter` — different names that
+overlap because one father was recorded under both. The stem test removes all three. The gender
+test keeps `Eriksson` off `Eriksdotter`, which is `P5278` *surname for other gender* and a
+different claim. Diacritics fold in the stem test only, which buys `Jónsson` <-> `Jonsson` and
+nothing else; `CLAUDE.md` § *A diacritic makes a different name* is about not merging or
+creating a wrong item, and this creates nothing.
+
+**Her own pair cannot be derived and is hers alone.** `Olai` is the Latin genitive patronymic
+and our model does not recognise the form at all, so it holds no `P144`, no stem and no gendered
+suffix. That is the same gap flagged this morning: `Petri`, `Benedicti`, `Nicolai`, `Martini`
+are all patronymics we read as family names.
+
+**And the description pass has never once run.** It called `get(...)` with a `ua` defined
+nowhere in the file, so all 137 of its chunks died on a `NameError` while it printed *"0 of them
+have no English description; 6,801 already do"* — a number about itself. It now calls
+`live_name_items._get` with a `User-Agent` constant. Emma asked for those descriptions on
+2026-09-02; § *THE ONE EXCEPTION* is why they matter, being what makes Wikidata refuse a
+duplicate `Olsdatter`.

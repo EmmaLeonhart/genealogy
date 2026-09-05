@@ -62,9 +62,11 @@ from __future__ import annotations
 
 import collections
 import csv
+import itertools
 import re
 import sys
 import datetime
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -72,9 +74,11 @@ csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
-    PATRONYMIC_CLASS, classify_fields, load_plan, statements_for, store_name_item)
+    PATRONYMIC_CLASS, PATRONYMIC_PARTS, classify_fields, load_plan, statements_for,
+    store_name_item)
 from live_name_items import (LookupUnavailable,                   # noqa: E402
-                              existing_item as live_existing_item)
+                              existing_item as live_existing_item,
+                              _get as api_get)
 from qscomment import annotate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -185,6 +189,35 @@ PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056"}
 #: is a different claim from the `P144` on a PERSON's `P5056`, where it names the father.
 #: Both are correct and both are emitted by this file, in their own places.
 BASED_ON = "P144"
+
+#: The User-Agent every request from this file carries. Wikimedia answers an empty one with a
+#: bare 403, so it is a constant rather than an environment lookup that can be missing on a
+#: runner. Same shape as `live_name_items`' own default.
+AGENT = "genimerge name items (emma@topazcomputing.com)"
+
+#: `P460` *said to be the same as* — between two spellings of one patronymic.
+SAME_AS = "P460"
+
+#: The female patronymic endings, for telling `Eriksdotter` from `Eriksson`. A gendered pair is
+#: `P5278` *surname for other gender* and not this.
+FEMALE_SUFFIXES = ("datter", "dotter", "dottir", "dóttir", "dttr", "dtr")
+
+
+def _suffix_sex(token):
+    low = token.casefold()
+    return "F" if any(low.endswith(s) for s in FEMALE_SUFFIXES) else "M"
+
+
+def _stem_key(token):
+    """The patronymic's stem, folded for case, the genitive `s` and diacritics.
+
+    `Jonsson` and `Jónsson` are one stem; `Jonsdatter` and `Jonasdatter` are two, which is the
+    distinction this exists to keep.
+    """
+    m = PATRONYMIC_PARTS.match(token)
+    raw = (m.group(1) if m else token).casefold().rstrip("s")
+    return "".join(c for c in unicodedata.normalize("NFD", raw)
+                   if not unicodedata.combining(c))
 
 PATRONYMIC_PLAN = ROOT / "reports" / "patronymic-items-to-create.tsv"
 
@@ -621,9 +654,9 @@ def main():
         for k in range(0, len(ids), 50):
             chunk = ids[k:k + 50]
             try:
-                data = get({"action": "wbgetentities", "format": "json",
-                            "props": "descriptions", "languages": "en",
-                            "ids": "|".join(chunk)}, ua)
+                data = api_get({"action": "wbgetentities", "format": "json",
+                                "props": "descriptions", "languages": "en",
+                                "ids": "|".join(chunk)}, AGENT)
             except Exception as exc:                                   # noqa: BLE001
                 print(f"   chunk at {k} failed ({exc}); those items are left alone")
                 continue
@@ -646,6 +679,128 @@ def main():
             lines.extend(described)
         print(f"   {missing:,} of them have no English description; "
               f"{len(ids) - missing:,} already do")
+
+    # ---- P144 based on, on patronymic items that ALREADY EXIST ---------------------
+    #
+    # **Emma, 2026-09-05:** *"I want the based on name stuff on patronymics to come all the
+    # time and go back onto the old ones we made"*.
+    #
+    # The `CREATE` blocks above carry `P144` from today. Every patronymic item minted before
+    # 2026-09-05 has none -- including the 38 in `reports/created-name-items.tsv` -- so the
+    # identity test her resolution algorithm runs (father's `P735` among the item's `P144`
+    # values) fails on all of them. This is the backfill, and it runs every day, so an item
+    # that gains an attesting father tomorrow gains the value the day after.
+    #
+    # **Two sources, because neither knows the other.** The plan holds patronymic tokens whose
+    # item already existed on Wikidata; `created-name-items.tsv` holds the ones we made, which
+    # the plan cannot know about -- it is built from a download that predates them.
+    #
+    # **A value already on the item is not re-sent.** QuickStatements would treat it as the
+    # same statement, but a batch that says nothing is a batch she can read in seconds, and
+    # `CLAUDE.md` § *Duplication is deliberate here* means never proposing one by accident.
+    backfill = {}
+    for (token, usage), (existing, _action) in plan.items():
+        if usage == "patronymic" and (existing or "").strip().startswith("Q"):
+            targets = based_on.get(token.casefold())
+            if targets:
+                backfill.setdefault(existing.strip(), (token, targets))
+    created_file = ROOT / "reports" / "created-name-items.tsv"
+    if created_file.exists():
+        with open(created_file, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if row.get("kind") != "patronymic":
+                    continue
+                qid = (row.get("qid") or "").strip()
+                targets = based_on.get((row.get("label") or "").casefold())
+                if qid.startswith("Q") and targets:
+                    backfill.setdefault(qid, (row["label"], targets))
+    if backfill:
+        ids = sorted(backfill)
+        print("")
+        print(f"checking {len(ids):,} existing patronymic items for P144 based on and P460")
+        claims_of, held = {}, 0
+        for k in range(0, len(ids), 50):
+            chunk = ids[k:k + 50]
+            try:
+                data = api_get({"action": "wbgetentities", "format": "json",
+                                "props": "claims", "ids": "|".join(chunk)}, AGENT)
+            except Exception as exc:                                   # noqa: BLE001
+                # **Held, never emitted blind.** Without the live read there is no way to tell
+                # a value the item already carries from one it lacks, and the whole point of
+                # the check is not to propose what is already there.
+                held += len(chunk)
+                print(f"   chunk at {k} could not be read ({exc}); those items are held")
+                continue
+            for qid, ent in (data.get("entities") or {}).items():
+                if "missing" in ent or qid not in backfill:
+                    continue
+                claims = ent.get("claims") or {}
+                claims_of[qid] = {
+                    prop: {st["mainsnak"].get("datavalue", {}).get("value", {}).get("id")
+                           for st in claims.get(prop, [])}
+                    for prop in (BASED_ON, SAME_AS)}
+        added = [f"{qid}\t{BASED_ON}\t{target}"
+                 for qid in ids if qid in claims_of
+                 for target in backfill[qid][1]
+                 if target not in claims_of[qid][BASED_ON]]
+        if added:
+            lines.append("")
+            lines.append("# " + "=" * 70)
+            lines.append("# P144 BASED ON, on patronymic items that already exist and lack it.")
+            lines.append("# The given names each patronymic derives from, which is what her")
+            lines.append("# resolution rule reads: a bearer gets P5056 when their father's")
+            lines.append("# P735 item is among these values. Patronymics only -- never people.")
+            lines.append("# " + "=" * 70)
+            lines.extend(added)
+        print(f"   {len(added):,} P144 statement(s) to add"
+              + (f"; {held:,} item(s) held, the live read failed" if held else ""))
+
+        # ---- P460 said to be the same as -------------------------------------------
+        #
+        # **Emma, 2026-09-05**, having linked her own `Olofsson` `Q141244186` and `Olai`
+        # `Q141313056` by hand, both ways: *"also this said to be the same as for many of
+        # these ones"*. One patronymic is written several ways -- `Jonsen`, `Jonson`,
+        # `Jonsson`; `Pedersen`, `Pederson`, `Pedersson` -- and each spelling has its own item
+        # by § *One name item per USAGE*, so the items need saying to be the same.
+        #
+        # **The pair has to be ATTESTED, not spelled alike.** Two items are linked only when
+        # they share a `P144` source -- the same given-name item, from the fathers in our own
+        # tree -- AND have the same stem AND the same gendered suffix. Shared source alone
+        # proposed `Jonsdatter` <-> `Johansdotter` and `Jonsdatter` <-> `Jonasdatter`, which
+        # are different names that overlap because one father was recorded under both; the
+        # stem test removes all three. The gender test keeps `Eriksson` off `Eriksdotter`,
+        # which is `P5278` *surname for other gender* and a different claim.
+        #
+        # **Diacritics fold in the stem test only.** `Jónsson` <-> `Jonsson` is the pair it
+        # buys, and `CLAUDE.md` § *A diacritic makes a different name* is about not MERGING
+        # two name items or creating the wrong one -- this creates nothing and merges nothing,
+        # it says the two are said to be the same, which is what the property is for.
+        # Falsified if she says the Icelandic spelling should stand alone.
+        #
+        # An item created TODAY gets its P460 tomorrow, once the ledger refresh has seen it.
+        # That is the ordinary carry-forward, not a gap.
+        pairs = []
+        for a, b in itertools.combinations([q for q in ids if q in claims_of], 2):
+            ta, tb = backfill[a][0], backfill[b][0]
+            if _suffix_sex(ta) != _suffix_sex(tb):
+                continue
+            if _stem_key(ta) != _stem_key(tb):
+                continue
+            if not (set(backfill[a][1]) & set(backfill[b][1])):
+                continue
+            for x, y in ((a, b), (b, a)):
+                if y not in claims_of[x][SAME_AS]:
+                    pairs.append(f"{x}\t{SAME_AS}\t{y}")
+        if pairs:
+            lines.append("")
+            lines.append("# " + "=" * 70)
+            lines.append("# P460 SAID TO BE THE SAME AS, between spellings of one patronymic.")
+            lines.append("# Both ways, as she wrote them by hand on Olofsson and Olai. Only")
+            lines.append("# where the two items share a P144 source, a stem and a gendered")
+            lines.append("# suffix -- a shared source alone matches Jonsdatter to Johansdotter.")
+            lines.append("# " + "=" * 70)
+            lines.extend(pairs)
+        print(f"   {len(pairs):,} P460 statement(s) to add")
 
     qid_to_geni = {q: g for g, q in have.items()}
     lines = annotate(lines, lambda t: labels_of.get(qid_to_geni.get(t, t), ""))
