@@ -57,9 +57,11 @@ jobs:
             echo "nothing changed"
             exit 0
           fi
-          git commit -m "does Wikidata hold the eccentric clusters? measured
-
-The P2600 column counts a link, not an item. This asks Wikidata by name
-whether the people in each cluster have items at all."
+          # One line. A multi-line message here has to stay indented inside the block
+          # scalar, and unindenting it is what made GitHub fail to parse this file --
+          # a workflow it cannot parse is registered with no `workflow_dispatch`, so
+          # `run_workflow` answers "Workflow does not have 'workflow_dispatch' trigger"
+          # and the file looks fine on disk.
+          git commit -m "measured: does Wikidata hold the eccentric clusters?"
           git pull --rebase origin main
           git push origin HEAD:main
