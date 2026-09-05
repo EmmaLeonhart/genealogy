@@ -6289,18 +6289,37 @@ def main():
             # over -- it is not English, and `Help:Default values for labels and aliases`
             # says a name not in Latin script should not be a default label. `mul` is the
             # language-neutral slot and takes it.
+            # **A generation suffix is normalised HERE too, and it was not.** Emma,
+            # 2026-09-05, on `Q141283784` *Lars Jonson d.y. Skrudland*: *"this thing is a
+            # violation of the d.y. Rule"*. Her rule of the same day is `Lmul … II` and
+            # `Len … Jr.`, and `namemodel.normalise_generation_suffix` implements it — but
+            # it was wired into `derive-labels.py` and the corrections pass and **never into
+            # this block**, which is where a new item's labels are actually written. So every
+            # creation went out carrying the Norwegian abbreviation in every language, and
+            # `label_in` below then transliterated it as a name: `…・ドイ・…`, `…디…`.
+            #
+            # Her guess at the cause was the position — *"got through due to the letters not
+            # being at the end"* — and the position is fine: `_SUFFIX_RE` is unanchored and
+            # takes `Lars Jonson d.y. Skrudland` to `Lars Jonson II Skrudland`. Nothing here
+            # called it. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
+            mul_form = normalise_generation_suffix(primary, "mul")
+            en_form = normalise_generation_suffix(primary, "en")
             if re.search(r"[A-Za-z]", primary):
-                lines.append(f'LAST\tLen\t"{qs(primary)}"')
-            lines.append(f'LAST\tLmul\t"{qs(primary)}"')
+                lines.append(f'LAST\tLen\t"{qs(en_form)}"')
+            lines.append(f'LAST\tLmul\t"{qs(mul_form)}"')
             # **No `Aen`. Ever.** Emma, 2026-08-26: *"No aen are ever supposed to be
             # added lol only ones in non-latin scripts get aliases for their birth names
             # that are not in amul"*. The birth name is an `Amul` and nothing else; the
             # `Aja`/`Azh` below are the one exception, and only because a non-Latin form
             # cannot live in `mul`.
-            if birth and qs(birth) != qs(primary):
+            if birth and qs(birth) != qs(mul_form):
                 lines.append(f'LAST\tAmul\t"{qs(birth)}"')
 
-            ja, zh, ko = label_in(primary, table)
+            # The CJK labels transliterate the PRIMARY form, which is `mul` -- `CLAUDE.md`
+            # § *The MARRIED name is the real name*. So they follow the normalised label, not
+            # the raw Geni one, and a suffix reaches them as an ordinal rather than as a word
+            # to spell out.
+            ja, zh, ko = label_in(mul_form, table)
             if ja:
                 lines.append(f'LAST\tLja\t"{ja}"')
                 lines.append(f'LAST\tLzh\t"{zh}"')
