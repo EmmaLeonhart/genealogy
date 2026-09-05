@@ -16,85 +16,77 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Söfdeborg -- family, 3 bearer(s) in the batches
+# Torsteinson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Söfdeborg"
-LAST	Len	"Söfdeborg"
-#   set the mul label to "Söfdeborg"
-LAST	Lmul	"Söfdeborg"
+#   the item just created: set the en label to "Torsteinson"
+LAST	Len	"Torsteinson"
+#   set the mul label to "Torsteinson"
+LAST	Lmul	"Torsteinson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q10993987 Torstein
+LAST	P144	Q10993987
+#   P144 based on = Q19688780 Torsten
+LAST	P144	Q19688780
+#   Q141283854 Tore Torsteinson Frafjord: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244234 Torstein Gunnarson Frafjord
+Q141283854	P5056	LAST	P144	Q141244234	S2600	"4627339"
+#   Q141224009 Gunnar Torsteinson Frafjord I: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244234 Torstein Gunnarson Frafjord
+Q141224009	P5056	LAST	P144	Q141244234	S2600	"6000000005609443665"
+
+# Ugla -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ugla"
+LAST	Len	"Ugla"
+#   set the mul label to "Ugla"
+LAST	Lmul	"Ugla"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q116775360 Helena Mariana Sparre af Söfdeborg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q116775360	P734	LAST	P3831	Q28418670	S2600	"6000000000572198595"
-#   Q6184934 Erik Samuel Sparre af Söfdeborg: P734 family name = the item just created
-Q6184934	P734	LAST	S2600	"6000000006127346098"
-#   Q6184896 Grev Carl Georg Georg Sparre af Söfdeborg: P734 family name = the item just created
-Q6184896	P734	LAST	S2600	"6000000010894303789"
+#   Q124608453 Petrus Ugla: P734 family name = the item just created
+Q124608453	P734	LAST	S2600	"6000000007473614567"
+#   Q3946660 Samuel af Ugglas: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q3946660	P734	LAST	P3831	Q2507958	S2600	"6000000013286633067"
+#   Q141249626 Samuel Ugla: P734 family name = the item just created
+Q141249626	P734	LAST	S2600	"6000000018089329158"
 
-# Tollefson -- patronymic, 3 bearer(s) in the batches
+# Ådnesdatter -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Tollefson"
-LAST	Len	"Tollefson"
-#   set the mul label to "Tollefson"
-LAST	Lmul	"Tollefson"
+#   the item just created: set the en label to "Ådnesdatter"
+LAST	Len	"Ådnesdatter"
+#   set the mul label to "Ådnesdatter"
+LAST	Lmul	"Ådnesdatter"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q12006598 Tollef
-LAST	P144	Q12006598
-#   Q141205904 Erik Tollefson Foss-Eikeland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216647 Tollef Mattiasson Fotland
-Q141205904	P5056	LAST	P144	Q141216647	S2600	"6000000007977884350"
-#   Q141242415 Samuel Tollefson Tunheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200112 Tollef Pederson Tunheim
-Q141242415	P5056	LAST	P144	Q141200112	S2600	"6000000028541553897"
-#   Q141180396 Tollef Tollefson Tunheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200112 Tollef Pederson Tunheim
-Q141180396	P5056	LAST	P144	Q141200112	S2600	"6000000037737683245"
+#   P144 based on = Q12011446
+LAST	P144	Q12011446
+#   Q141168833 Ingeborg Gurie Ådnesdatter Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141169072 Ådne Olsen Garborg
+Q141168833	P5056	LAST	P144	Q141169072	S2600	"6000000003492005171"
+#   Q141168816 Elisabet Ådnesdatter Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141169072 Ådne Olsen Garborg
+Q141168816	P5056	LAST	P144	Q141169072	S2600	"6000000003492005176"
+#   Q141189069 Ingeborg Ådnesdatter Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200127 Ådne Hansen Grøtheim
+Q141189069	P5056	LAST	P144	Q141200127	S2600	"6000000008176802346"
 
-# Toresdatter -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Toresdatter"
-LAST	Len	"Toresdatter"
-#   set the mul label to "Toresdatter"
-LAST	Lmul	"Toresdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q1548096 Tore
-LAST	P144	Q1548096
-#   P144 based on = Q23047611 Thore
-LAST	P144	Q23047611
-#   P144 based on = Q19818192 Tor
-LAST	P144	Q19818192
-#   P144 based on = Q2460609 Ture
-LAST	P144	Q2460609
-#   P144 based on = Q2428812 Thor
-LAST	P144	Q2428812
-#   Q141189097 Ragnhild Toresdatter Håland i Gjesdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198503 Tore Erikson Håland
-Q141189097	P5056	LAST	P144	Q141198503	S2600	"6000000005609425396"
-#   Q141216507 Torborg Toresdatter Norheim: P5056 patronym or matronym = the item just created
-Q141216507	P5056	LAST	S2600	"6000000009152152523"
-#   Q141290190 Anna Toresdatter Grøtheim: P5056 patronym or matronym = the item just created
-Q141290190	P5056	LAST	S2600	"6000000171784301826"
-
-# 377 more name items are needed and wait for a later
+# 335 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Torsteinson (patronymic), 3 bearer(s)
-#   Ugla (family), 3 bearer(s)
-#   Ådnesdatter (patronymic), 3 bearer(s)
 #   Årsvoll (family), 3 bearer(s)
+#   Abrahamsson (patronymic), 2 bearer(s)
 #   Andersdotter (patronymic), 2 bearer(s)
 #   Andreae (given), 2 bearer(s)
-#   Asbjørnsen (patronymic), 2 bearer(s)
 #   Asbjørnson (patronymic), 2 bearer(s)
 #   Austrått (family), 2 bearer(s)
 #   Bratt-Hetland (family), 2 bearer(s)
 #   Bureus (family), 2 bearer(s)
 #   Børildsdatter (patronymic), 2 bearer(s)
-#   ... and 365 more
+#   Claesson (patronymic), 2 bearer(s)
+#   Garborg (given), 2 bearer(s)
+#   Gestrinius (family), 2 bearer(s)
+#   ... and 323 more
 
