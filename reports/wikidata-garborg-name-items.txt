@@ -9,6 +9,26 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Ekebyholm -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ekebyholm"
+LAST	Len	"Ekebyholm"
+#   set the mul label to "Ekebyholm"
+LAST	Lmul	"Ekebyholm"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P734 family name = the item just created
+Q109296398	P734	LAST	S2600	"6000000006127496847"
+#   Q5813616 Adam Horn af Ekebyholm till Ekebyholm: P734 family name = the item just created
+Q5813616	P734	LAST	S2600	"6000000007285499105"
+#   Q19678400 Eva Horn af Ekebyholm: P734 family name = the item just created
+Q19678400	P734	LAST	S2600	"6000000007286110282"
+#   Q717179 Arvid Bernhard Horn af Ekebyholm: P734 family name = the item just created
+Q717179	P734	LAST	S2600	"6000000011637024489"
+
 # Låge-Håland -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
@@ -45,26 +65,9 @@ Q116150300	P5056	LAST	P144	Q16063657	S2600	"305332989800002467"
 #   Q2183430 Bengta Ebbesdotter Ebbesdatter Hvide Queen of Sweden: P5056 patronym or matronym = the item just created, qualified P144 based on Q16063657
 Q2183430	P5056	LAST	P144	Q16063657	S2600	"4947248545210089938"
 
-# Hakunge -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Hakunge"
-LAST	Len	"Hakunge"
-#   set the mul label to "Hakunge"
-LAST	Lmul	"Hakunge"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141219054 Carl Emil Cronhielm af Hakunge: P734 family name = the item just created
-Q141219054	P734	LAST	S2600	"6000000008178453589"
-#   Q110304582 Gustava Magdalena Cronhielm af Hakunge: P734 family name = the item just created
-Q110304582	P734	LAST	S2600	"6000000012959992080"
-#   Q4938400 Christina Charlotta Cronhielm af Hakunge: P734 family name = the item just created
-Q4938400	P734	LAST	S2600	"6000000020584191181"
-
-# 364 more name items are needed and wait for a later
+# 365 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Hakunge (family), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
@@ -76,6 +79,5 @@ Q4938400	P734	LAST	S2600	"6000000020584191181"
 #   Söfdeborg (family), 3 bearer(s)
 #   Tollefson (patronymic), 3 bearer(s)
 #   Torsteinson (patronymic), 3 bearer(s)
-#   Ugla (family), 3 bearer(s)
-#   ... and 352 more
+#   ... and 353 more
 

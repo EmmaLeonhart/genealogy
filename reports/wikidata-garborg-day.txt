@@ -41,6 +41,26 @@ Q104383015	P2600	"6000000000274988385"
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Ekebyholm -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ekebyholm"
+LAST	Len	"Ekebyholm"
+#   set the mul label to "Ekebyholm"
+LAST	Lmul	"Ekebyholm"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P734 family name = the item just created
+Q109296398	P734	LAST	S2600	"6000000006127496847"
+#   Q5813616 Adam Horn af Ekebyholm till Ekebyholm: P734 family name = the item just created
+Q5813616	P734	LAST	S2600	"6000000007285499105"
+#   Q19678400 Eva Horn af Ekebyholm: P734 family name = the item just created
+Q19678400	P734	LAST	S2600	"6000000007286110282"
+#   Q717179 Arvid Bernhard Horn af Ekebyholm: P734 family name = the item just created
+Q717179	P734	LAST	S2600	"6000000011637024489"
+
 # Låge-Håland -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
@@ -77,26 +97,9 @@ Q116150300	P5056	LAST	P144	Q16063657	S2600	"305332989800002467"
 #   Q2183430 Bengta Ebbesdotter Ebbesdatter Hvide Queen of Sweden: P5056 patronym or matronym = the item just created, qualified P144 based on Q16063657
 Q2183430	P5056	LAST	P144	Q16063657	S2600	"4947248545210089938"
 
-# Hakunge -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Hakunge"
-LAST	Len	"Hakunge"
-#   set the mul label to "Hakunge"
-LAST	Lmul	"Hakunge"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141219054 Carl Emil Cronhielm af Hakunge: P734 family name = the item just created
-Q141219054	P734	LAST	S2600	"6000000008178453589"
-#   Q110304582 Gustava Magdalena Cronhielm af Hakunge: P734 family name = the item just created
-Q110304582	P734	LAST	S2600	"6000000012959992080"
-#   Q4938400 Christina Charlotta Cronhielm af Hakunge: P734 family name = the item just created
-Q4938400	P734	LAST	S2600	"6000000020584191181"
-
-# 364 more name items are needed and wait for a later
+# 365 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Hakunge (family), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
 #   Ingebretsdatter (patronymic), 3 bearer(s)
 #   Johansdotter (patronymic), 3 bearer(s)
@@ -108,8 +111,7 @@ Q4938400	P734	LAST	S2600	"6000000020584191181"
 #   Söfdeborg (family), 3 bearer(s)
 #   Tollefson (patronymic), 3 bearer(s)
 #   Torsteinson (patronymic), 3 bearer(s)
-#   Ugla (family), 3 bearer(s)
-#   ... and 352 more
+#   ... and 353 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -125,57 +127,73 @@ Q4938400	P734	LAST	S2600	"6000000020584191181"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   15 people, 24 edits; 2822 edits held for a later run
-#   across 927 more people. A repeat is a no-op, so nothing is lost.
+#   15 people, 32 edits; 2790 edits held for a later run
+#   across 912 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141244214 Dordi Marie Bratterud: add a mul alias "Dordi Marie Tverdahl"
-Q141244214	Amul	"Dordi Marie Tverdahl"
-#   set the ja label to "ドルディ・マリー・ブラテルド"
-Q141244214	Lja	"ドルディ・マリー・ブラテルド"
-#   set the zh label to "多尔迪·玛丽·布拉特鲁德"
-Q141244214	Lzh	"多尔迪·玛丽·布拉特鲁德"
-#   set the ko label to "도르디 마리에 브라테루드"
-Q141244214	Lko	"도르디 마리에 브라테루드"
-#   Q141244213 Catharina Nilsdotter: set the ko label to "카타리나 닐스도테르"
-Q141244213	Lko	"카타리나 닐스도테르"
-#   set the ja label to "カール・オーケ・ポッセ・アフ・セビ"
-Q141244212	Lja	"カール・オーケ・ポッセ・アフ・セビ"
-#   set the zh label to "卡尔·奥克·波塞·阿夫·塞比"
-Q141244212	Lzh	"卡尔·奥克·波塞·阿夫·塞比"
-#   set the ko label to "카르르 오케 포세 아프 세비"
-Q141244212	Lko	"카르르 오케 포세 아프 세비"
-#   Q141244211 Carl Magnus Lagerfelt: set the ko label to "카르르 막누스 라게르펠트"
-Q141244211	Lko	"카르르 막누스 라게르펠트"
-#   Q141244208 Beata Christina Hierta: set the ko label to "베아타 츠리스티나 히에르타"
-Q141244208	Lko	"베아타 츠리스티나 히에르타"
-#   Q141244207 Anna M. Ekman: set the ja label to "アンナ・M・エクマン"
-Q141244207	Lja	"アンナ・M・エクマン"
-#   set the zh label to "安娜·M·埃克曼"
-Q141244207	Lzh	"安娜·M·埃克曼"
-#   set the ko label to "안나 M 에크만"
-Q141244207	Lko	"안나 M 에크만"
-#   Q141244126 Valborg Ingebretsdatter Voster: set the ko label to "발보르그 이에브레츠다테르 보스테르"
-Q141244126	Lko	"발보르그 이에브레츠다테르 보스테르"
-#   Q141244124 Seth Mikael Franzén: set the ko label to "세트 미캘 프란젠"
-Q141244124	Lko	"세트 미캘 프란젠"
-#   Q141244122 Sara Lucia Indebetou: set the ko label to "사라 루키아 인데베투"
-Q141244122	Lko	"사라 루키아 인데베투"
-#   Q141244119 Nils Skytte: set the ko label to "닐스 스키테"
-Q141244119	Lko	"닐스 스키테"
-#   set the ko label to "닐스 닐손 미드트피스테르"
-Q141244118	Lko	"닐스 닐손 미드트피스테르"
-#   Q141244116 NN Voster: set the ja label to "ン・ヴォステル"
-Q141244116	Lja	"ン・ヴォステル"
-#   set the zh label to "恩·沃斯特尔"
-Q141244116	Lzh	"恩·沃斯特尔"
-#   set the ko label to "느느 보스테르"
-Q141244116	Lko	"느느 보스테르"
-#   Q141244115 Märta Elisabeth Bure: set the ko label to "메르타 에리사베트 부레"
-Q141244115	Lko	"메르타 에리사베트 부레"
-#   Q141244111 Maria Magdalena Lochner: set the ko label to "마리아 막다레나 로츠네르"
-Q141244111	Lko	"마리아 막다레나 로츠네르"
-#   Q141244108 Margareta Stecksenia: set the ko label to "마르가레타 스테크세니아"
-Q141244108	Lko	"마르가레타 스테크세니아"
+#   Q141244107 Margareta Kalsenia: set the ja label to "マルガレータ・カルセニア"
+Q141244107	Lja	"マルガレータ・カルセニア"
+#   set the zh label to "瑪格麗塔·卡尔塞尼阿"
+Q141244107	Lzh	"瑪格麗塔·卡尔塞尼阿"
+#   set the ko label to "마르가레타 칼세니아"
+Q141244107	Lko	"마르가레타 칼세니아"
+#   Q141244104 Magdalena Sofia Wrangel af Sauss: set the ja label to "マグダレーナ・ソフィア・ウランゲル・アフ・サウス"
+Q141244104	Lja	"マグダレーナ・ソフィア・ウランゲル・アフ・サウス"
+#   set the zh label to "马格达莱纳·索菲娅·弗兰格尔·阿夫·萨乌斯"
+Q141244104	Lzh	"马格达莱纳·索菲娅·弗兰格尔·阿夫·萨乌斯"
+#   set the ko label to "막다레나 소피아 우라엘 아프 사우스"
+Q141244104	Lko	"막다레나 소피아 우라엘 아프 사우스"
+#   Q141244098 Gunilla Rommel: set the ja label to "グニラ・ロンメル"
+Q141244098	Lja	"グニラ・ロンメル"
+#   set the zh label to "古尼拉·隆美尔"
+Q141244098	Lzh	"古尼拉·隆美尔"
+#   set the ko label to "구닐라 롬멜"
+Q141244098	Lko	"구닐라 롬멜"
+#   Q141244096 Gunilla Nilsdotter: set the ko label to "구닐라 닐스도테르"
+Q141244096	Lko	"구닐라 닐스도테르"
+#   Q141244094 Gunder Asbjørnsen Bøe: set the ko label to "군데르 아스브죄르느센 뵈에"
+Q141244094	Lko	"군데르 아스브죄르느센 뵈에"
+#   Q141244093 Christina Torstensdotter Falk: set the ja label to "クリスティーナ・トルステンスドッテル・ファルク"
+Q141244093	Lja	"クリスティーナ・トルステンスドッテル・ファルク"
+#   set the zh label to "克里斯蒂娜·托尔斯滕斯多特·福克"
+Q141244093	Lzh	"克里斯蒂娜·托尔斯滕斯多特·福克"
+#   set the ko label to "츠리스티나 토르스텐스도테르 팔크"
+Q141244093	Lko	"츠리스티나 토르스텐스도테르 팔크"
+#   Q141244092 Christina Olofsdotter Hammar: set the ja label to "クリスティーナ・オロフスドッテル・ハマル"
+Q141244092	Lja	"クリスティーナ・オロフスドッテル・ハマル"
+#   set the zh label to "克里斯蒂娜·奥洛夫斯多特·哈马尔"
+Q141244092	Lzh	"克里斯蒂娜·奥洛夫斯多特·哈马尔"
+#   set the ko label to "츠리스티나 오로프스도테르 함마르"
+Q141244092	Lko	"츠리스티나 오로프스도테르 함마르"
+#   Q141244091 Cecilia Olsdotter: set the ko label to "케키리아 올스도테르"
+Q141244091	Lko	"케키리아 올스도테르"
+#   Q141244086 Brita Andersdotter Grubb: set the ko label to "브리타 안데르스도테르 그룹"
+Q141244086	Lko	"브리타 안데르스도테르 그룹"
+#   Q141244085 Beata von Essen: set the ko label to "베아타 본 에센"
+Q141244085	Lko	"베아타 본 에센"
+#   Q141244083 Anna Helena Silvius: set the ja label to "アンナ・ヘレナ・シルウィウス"
+Q141244083	Lja	"アンナ・ヘレナ・シルウィウス"
+#   set the zh label to "安娜·海伦娜·西尔维乌斯"
+Q141244083	Lzh	"安娜·海伦娜·西尔维乌斯"
+#   set the ko label to "안나 헤레나 실뷰스"
+Q141244083	Lko	"안나 헤레나 실뷰스"
+#   Q141244081 Anders Alstrin: add a mul alias "Anders Björnsson"
+Q141244081	Amul	"Anders Björnsson"
+#   set the ja label to "アンデルス・アルストリン"
+Q141244081	Lja	"アンデルス・アルストリン"
+#   set the zh label to "安德斯·阿尔斯特林"
+Q141244081	Lzh	"安德斯·阿尔斯特林"
+#   set the ko label to "안데르스 알스트린"
+Q141244081	Lko	"안데르스 알스트린"
+#   Q141244080 Agnes Karolina Lindblom: set the ja label to "アグネス・カロリナ・リンドブロム"
+Q141244080	Lja	"アグネス・カロリナ・リンドブロム"
+#   set the zh label to "阿格内斯·卡罗利纳·林德布洛姆"
+Q141244080	Lzh	"阿格内斯·卡罗利纳·林德布洛姆"
+#   set the ko label to "악네스 카로리나 린드브롬"
+Q141244080	Lko	"악네스 카로리나 린드브롬"
+#   Q141242565 Per Andersson: set the ko label to "페르 안데르손"
+Q141242565	Lko	"페르 안데르손"
+#   Q141242562 Peder Jonsen Voster: set the ko label to "페데르 존센 보스테르"
+Q141242562	Lko	"페데르 존센 보스테르"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
