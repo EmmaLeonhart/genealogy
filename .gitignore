@@ -553,3 +553,7 @@ reports/wikidata-four-script-labels.json
 out/wikidata/edits.json
 # 155 MB; the .gz is committed. See scripts/pack-derived.py.
 out/family-structure.tsv
+
+# The extension signing key. NEVER commit this: the repo is public, and anyone holding
+# this key can sign an update that Chrome will accept as the same extension.
+geni-extension.pem
