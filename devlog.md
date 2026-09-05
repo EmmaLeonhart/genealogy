@@ -28576,3 +28576,30 @@ Both inventories regenerated and checked against what the assertions demanded: n
 The packed `.crx` is gitignored — it is a build artifact of `--pack-extension`, and the installed
 copy lives in `%LOCALAPPDATA%\geni-collector`. The `.pem` was already gitignored, and must stay
 so: this repo is public and that key signs updates Chrome accepts as this extension.
+
+## 2026-09-05 — the second CI pass: two definitions of one thing, twice
+
+The five failures from the `entity-resolution` deletion cleared. Two remained, and both are the
+same shape as everything else caught today — one fact with two implementations that drifted.
+
+**`build-name-item-batch.py` carried its own patronymic pattern.** It was
+`re.compile(r"(sen|son|sson)$")` while `namemodel.PATRONYMIC` had been widened to the
+abbreviated and Slavic forms. So the plan held `(Olsdtr., family)` with **no patronymic row**,
+`classify_fields` asked for one, the lookup missed, and those people got **no name statement at
+all** — 179 tokens over **2,429 bearers**: `sdtr` 149, plus `wicz` 12, `ović` 10, `søn` 7.
+
+That is the failure the block right above it already documents for `-sen`/`-son`, recurring
+because the fix was written as a private pattern rather than as the shared one. It now *is* the
+shared one: `PATRONYMIC_ALSO = PATRONYMIC`. Two definitions drift; one cannot.
+
+Measured after regenerating: patronymic rows **1,677 -> 1,882**, plan 23,196 rows, and the
+assertion's own query returns **0 missing over 0 bearers**.
+
+**`parse-wikidata-interaction-log.py` tripped the edit-summary ban by reading one.** The script
+parses her contributions log and recorded the edit comment as `"summary": summary`, which
+`test_no_descriptions_or_summaries.py` scans for because setting one is categorically forbidden
+— Emma, 2026-08-30. A parser recording what Wikidata already said is not setting one, but the
+rule is not the thing to weaken for it: the column is now `comment`, which is MediaWiki's own
+name for the field and more accurate anyway. The test is untouched.
+
+CI on `8e481d5e` was still red when these were found; whether it goes green is for the next run.

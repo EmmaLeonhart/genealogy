@@ -145,7 +145,15 @@ def parse(text: str) -> list[dict[str, str]]:
                 "other_qids": ";".join(dict.fromkeys(others)),
                 "flags": m.group("flags").split() and " ".join(m.group("flags").split()) or "",
                 "tags": tags,
-                "summary": summary,
+                # ⛔ The column is `comment`, which is MediaWiki's own name for this field,
+                # and NOT `summary`. Two reasons and both matter: this script READS an edit
+                # comment off her contributions log, it never writes one, and
+                # `tests/test_no_descriptions_or_summaries.py` scans every script for the
+                # shape `"summary":` because setting one is categorically forbidden --
+                # Emma, 2026-08-30. A parser recording what Wikidata already said tripped
+                # that scan and turned CI red. Renaming the key keeps the rule un-weakened
+                # rather than carving an exception into the test for a reading script.
+                "comment": summary,
             }
         )
     return rows
@@ -160,7 +168,7 @@ def main() -> int:
 
     # Deterministic and total: date, time, qid, user, summary. `CLAUDE.md` § SORTING MUST
     # BE DETERMINISTIC --- the last field is what makes the key total.
-    rows.sort(key=lambda r: (r["date"], r["time"], r["qid"], r["user"], r["summary"]))
+    rows.sort(key=lambda r: (r["date"], r["time"], r["qid"], r["user"], r["comment"]))
 
     tmp = OUT.with_suffix(".csv.tmp")
     with tmp.open("w", encoding="utf-8", newline="") as fh:

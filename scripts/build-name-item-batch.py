@@ -74,6 +74,8 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 CLASSES = REPO / "reports" / "name-classes.csv"
 RESOLUTION = REPO / "reports" / "name-resolution.csv"
 PATRONYMICS = REPO / "reports" / "patronymic-items.csv"
+
+from namemodel import PATRONYMIC                            # noqa: E402 - after sys.path
 JSON_OUT = REPO / "reports" / "wikidata-name-items.json"
 CSV_OUT = REPO / "reports" / "name-item-plan.csv"
 
@@ -88,7 +90,20 @@ INSTANCE_OF, BASED_ON = "P31", "P144"
 #: The suffixes that are patronymic on SOME bearers and an inherited surname on others, so
 #: the token needs both items. `RELIABLE_PATRONYMIC` below is the stricter set where the
 #: morphology alone settles it.
-PATRONYMIC_ALSO = re.compile(r"(sen|son|sson)$", re.I)
+#: ⛔ THIS IS `namemodel.PATRONYMIC`, NOT A SECOND COPY OF IT. It was
+#: `re.compile(r"(sen|son|sson)$")` until 2026-09-05, and by then the classifier had been
+#: widened to the abbreviated and Slavic forms while this had not -- so the plan held
+#: `(Olsdtr., family)` with no patronymic row, `classify_fields` asked for one, the lookup
+#: missed, and those people got no name statement. **179 tokens over 2,429 bearers**: `sdtr`
+#: 149, plus `wicz`, `ović` and `søn`.
+#:
+#: That is the same failure this very block already documents for `-sen`/`-son` -- a token the
+#: classifier calls a patronymic with no patronymic item to point at -- recurring because the
+#: fix was written as a private pattern instead of as the shared one. Two definitions of one
+#: thing will drift again; one cannot.
+#: `tests/test_namemodel.py::test_the_plan_covers_every_usage_the_classifier_asks_for` is the
+#: guard, and it caught this.
+PATRONYMIC_ALSO = PATRONYMIC
 
 RELIABLE_PATRONYMIC = ("sdottir", "sdóttir", "sdatter", "sdotter", "dottir",
                        "dóttir", "datter", "dotter", "ovich", "evich", "ovna",
