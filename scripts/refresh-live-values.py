@@ -106,14 +106,47 @@ LABEL_LANGS = None
 CHUNK = 40
 
 
+def _every_item_the_batch_reasons_about():
+    """Every QID `build-garborg-day.ledger()` returns, not just the rows of the ledger TSV.
+
+    **⛔ These are two different sets and the difference is 172 items.** `reports/garborg-qids.tsv`
+    is one source; `ledger()` folds in her `SAME` verdicts from `reports/emma-judgments.tsv`, the
+    entry-point roster and the correspondences. This script fetched the TSV, so **172 items the
+    batch labels, links and reasons about were never read live at all**, and every check that
+    consults the live files silently answered *not held* for them when it meant *not asked*.
+
+    **Measured 2026-09-05: all 161 items that received a `P735`/`P734`/`P5056` while carrying no
+    `P2600` were in that gap, and so was `Q136376387`** — so every question this session had to
+    answer by dispatching a workflow to Wikidata was about an item the refresh skips. That is the
+    trap `CLAUDE.md` § *Our side could never have two children* names, in the one file the batch
+    trusts most.
+
+    It costs about four more requests. Falls back to the TSV if the builder cannot be imported,
+    so this degrades to the old behaviour rather than fetching nothing.
+    """
+    try:
+        import importlib.util
+        path = ROOT / "scripts" / "build-garborg-day.py"
+        spec = importlib.util.spec_from_file_location("build_garborg_day", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        qids = {q for q in module.ledger().values() if str(q).startswith("Q")}
+        if qids:
+            return qids
+        print("WARNING: ledger() returned nothing; falling back to the TSV", file=sys.stderr)
+    except Exception as exc:                                        # noqa: BLE001
+        print(f"WARNING: could not read ledger() ({exc}); falling back to the TSV",
+              file=sys.stderr)
+    return {r["qid"] for r in csv.DictReader(open(LEDGER, encoding="utf-8"), delimiter="\t")
+            if (r.get("qid") or "").startswith("Q")}
+
+
 def main():
     if not _bot_agent():
         sys.exit("BOT_CONTACT is not set; Wikimedia answers an empty User-Agent with a 403")
     from genimerge.wikidata import WikidataClient
 
-    qids = sorted({r["qid"] for r in csv.DictReader(open(LEDGER, encoding="utf-8"),
-                                                    delimiter="\t")
-                   if (r.get("qid") or "").startswith("Q")})
+    qids = sorted(_every_item_the_batch_reasons_about())
     qids = sorted(set(qids))
     print(f"{len(qids)} items to read")
 

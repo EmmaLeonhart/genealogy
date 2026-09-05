@@ -27853,3 +27853,29 @@ the second half of yesterday's duplicate: the writer keeps one row per token, an
 longer lets a `by rule` row win a collision. Both halves are needed because only the `note`
 column separates a reading she chose from one a rule invented, and last-wins is not a rule about
 provenance.
+
+## 2026-09-05 — the download works; it was fetching 172 fewer items than the batch uses
+
+Emma, on the pipeline run: *"this appears to be working and actually the pipeline run downloading
+all of them is good news because it means the download can work it's just finnicky."*
+
+**It landed.** `reports/garborg-live-items.json`, committed by run `510de40`, **28.7 MB**, 1,293
+whole entities, keys sorted, qualifiers and references and sitelinks all intact. Every ledger-TSV
+qid is present — none dropped in the fetch.
+
+**But the ledger TSV is not what the batch uses, and that is a 172-item hole.**
+`refresh-live-values.py` read `reports/garborg-qids.tsv`; `build-garborg-day.ledger()` folds in
+her `SAME` verdicts from `reports/emma-judgments.tsv`, the entry-point roster and the
+correspondences, and returns **1,465**. So 172 items the batch labels, links and reasons about
+were **never read live at all** — and every check that consults the live files answered *not
+held* for them when it meant *not asked*.
+
+**That is exactly what cost this session four workflow dispatches.** Measured: **all 161 items
+that received a `P735`/`P734`/`P5056` while carrying no `P2600` are in that gap, and so is
+`Q136376387`.** So each Wikidata question I had to go out to Actions for was about an item the
+refresh skips — and `garborg-live-values.tsv` looking as though those 161 had no `P2600` was this
+hole, not a fact about the items. `CLAUDE.md` § *Our side could never have two children* is the
+rule, in the file the batch trusts most.
+
+`_every_item_the_batch_reasons_about()` now reads `ledger()` itself and falls back to the TSV if
+the builder cannot be imported. About four more requests.
