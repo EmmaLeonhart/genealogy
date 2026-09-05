@@ -1,0 +1,65 @@
+# **Ask Wikidata whether it holds items for the eccentric clusters.**
+#
+# `reports/eccentric-clusters.md` counts `P2600` *Geni.com profile ID* -- a **link** -- and the
+# first version of that report read a `0` as *"Wikidata does not have these people"*. Emma,
+# 2026-09-05: *"Pre dynastic Egypt definitely does… Axum certainly have qids lol"*. This runs the
+# check that settles it, because the sandbox has no web egress and Actions does.
+#
+#     gh workflow run check-cluster-items.yml
+#     gh run watch $(gh run list --workflow=check-cluster-items.yml --limit 1 --json databaseId -q '.[0].databaseId')
+#
+# It commits `reports/eccentric-cluster-wikidata-check.tsv` to `main`. A hit is a CANDIDATE and
+# never an identification -- see the script's docstring; nothing joins on this file.
+name: Check cluster items on Wikidata
+
+on:
+  workflow_dispatch:
+    inputs:
+      clusters:
+        description: "How many clusters to check (default 20)"
+        required: false
+        type: string
+
+concurrency:
+  group: check-cluster-items
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The members file is all this needs; a full checkout is 13 GB.
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/
+            reports/eccentric-cluster-members.tsv
+            reports/eccentric-cluster-wikidata-check.tsv
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Ask Wikidata
+        env:
+          CLUSTERS: ${{ inputs.clusters }}
+        run: python scripts/check-cluster-items-on-wikidata.py
+      - name: Commit
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/eccentric-cluster-wikidata-check.tsv
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git commit -m "does Wikidata hold the eccentric clusters? measured
+
+The P2600 column counts a link, not an item. This asks Wikidata by name
+whether the people in each cluster have items at all."
+          git pull --rebase origin main
+          git push origin HEAD:main
