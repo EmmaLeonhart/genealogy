@@ -231,44 +231,59 @@ _SUFFIX_RE = re.compile(
 
 
 def normalise_generation_suffix(label: str, style: str) -> str:
-    """Rewrite a generation suffix into its `mul` (Roman) or `en` (English) form.
+    """Move a generation suffix to the END of the label, in its `mul` or `en` form.
 
-    `style` is `"mul"` or `"en"`. See `GENERATION_SUFFIX` for where both come from.
+    `style` is `"mul"` or `"en"`. See `GENERATION_SUFFIX` for where both forms come from.
 
-    **A label that already carries the target numeral loses the suffix rather than repeating
-    it.** `Daniel Ström II, dy` is written with both, and turning the `dy` into a second `II`
-    would produce `Daniel Ström II, II`.
+    **THE SUFFIX GOES LAST. It is not rewritten where it stands.** Emma, 2026-09-05, on a first
+    version that substituted in place and produced `Lars Jonson II Skrudland`: *"Lars Jonson
+    Skrudland Jr. I didn't tell you to do that. Regnal numbers can come after the first name,
+    regular ones go Sr Jr III etc always as a suffix in English and in mul always as a suffix
+    I, II, III."*
 
-    The comma before a trailing suffix goes with it — `Sogneprest Johan Andreas Welhaven, d.y.`
-    becomes `… Welhaven II`, not `… Welhaven, II`.
+    So the two things are different and only one of them moves:
+
+    - **A generation suffix** -- `d.y.`, `d.e.`, `den yngre`, `Jr.`, `Sr.` -- is a suffix, and
+      belongs at the end whatever position Geni wrote it in. `Lars Jonson d.y. Skrudland`
+      becomes `Lars Jonson Skrudland II` in `mul` and `Lars Jonson Skrudland Jr.` in `en`.
+    - **A regnal ordinal** may sit after the given name and stays exactly where it is. Nothing
+      here touches one: `GENERATION_SUFFIX` holds no bare Roman numeral, so `Abisha III ben
+      Phinhas` is not a match and does not move. That is `name modelling.txt` § *edge cases*
+      and `P7338` *regnal ordinal*, which is a different property from this entirely.
+
+    **A label already carrying the target numeral does not gain a second one.** `Daniel Ström
+    II, dy` is written with both; the `dy` is removed and the existing `II` is left in place
+    rather than a second suffix being appended. The comma that introduced the suffix goes with
+    it, so nothing is left reading `Welhaven, II`.
     """
-    if not label:
+    if not label or not _SUFFIX_RE.search(label):
         return label
     index = 0 if style == "mul" else 1
 
-    def replace(match):
-        return GENERATION_SUFFIX[match.group(1).casefold()][index]
+    want = ""
 
-    out = _SUFFIX_RE.sub(replace, label)
-    if out == label:
+    def take(match):
+        nonlocal want
+        # The LAST one wins, which matters only for a label carrying two; they mean the same
+        # thing and one suffix is emitted either way.
+        want = GENERATION_SUFFIX[match.group(1).casefold()][index]
+        return " "
+
+    out = _SUFFIX_RE.sub(take, label)
+    # The comma that introduced the suffix goes with the suffix, not with the name before it.
+    out = re.sub(r"\s*,\s*(?=\s|$)", " ", out)
+    out = " ".join(out.split()).rstrip(",").strip()
+    if not out:
         return label
-    # Drop a duplicate the rewrite created, and the comma that introduced the suffix.
-    out = re.sub(r",\s+(?=(?:II|I|Jr\.|Sr\.)(?:\s|$))", " ", out)
-    tokens = out.split()
-    deduped, seen_suffix = [], False
-    # **Across BOTH styles, because `II` and `Jr.` say the same thing.** `Daniel Ström II, dy`
-    # carries the numeral and the abbreviation at once, and deduping only within one style left
-    # the `en` form reading `Daniel Ström II Jr.` The first one wins, so a numeral already in the
-    # label is kept and the converted suffix is dropped rather than stacked beside it.
+
+    # **Across BOTH styles, because `II` and `Jr.` say the same thing.** A numeral already in the
+    # label is what the person is called; the converted suffix is dropped rather than stacked
+    # beside it, which is what left the `en` form reading `Daniel Ström II Jr.`
     targets = {v[0] for v in GENERATION_SUFFIX.values()} | {
         v[1] for v in GENERATION_SUFFIX.values()}
-    for token in tokens:
-        if token in targets:
-            if seen_suffix:
-                continue
-            seen_suffix = True
-        deduped.append(token)
-    return " ".join(deduped)
+    if any(token in targets for token in out.split()):
+        return out
+    return f"{out} {want}".strip()
 
 
 def married_name_of(fields) -> str:
