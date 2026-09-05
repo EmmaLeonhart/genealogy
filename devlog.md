@@ -28231,3 +28231,46 @@ The mechanical half is automated; the naming stays a decision.
 `scripts/file-geni-downloads.py` moves captures to `geni-paths/`, parsed chains to `paths/` and
 the results TSV to `reports/`. It refuses to overwrite, and it names but never touches a `.ged`
 or a `.zip` — filing an export is hers and a batch goes together.
+
+## 2026-09-05 — the patronymic items it creates now carry their source names
+
+**Emma:** make the daily generator properly add the source names to the patronymic items it
+makes. It made none: every patronymic `CREATE` in `build-garborg-name-items.py` was labels,
+`Den "patronymic"` and `P31 Q110874` — the derivation was absent, and it is the one property on
+a patronymic item that is not decoration.
+
+Her own resolution algorithm reads exactly that property
+(`scripts/build-patronymic-items.py`): *"the patronymic resolves to a patronymic NAME ITEM /
+that item records the given names it derives from (its own P144 based on, MULTI-VALUED) / the
+parent carries a given name OBJECT / parent's P735 item among the P144 values? -> emit P5056"*.
+So every item this generator has ever minted is inert — nothing can resolve a bearer to it —
+and that is what *"it requires well developed patronymic objects we currently lack"* meant.
+
+The targets come from `reports/patronymic-items-to-create.tsv`, which already resolved them:
+**4,781 tokens of 6,752 have at least one**, made by the single string comparison her design
+allows — the token's stem against the given names of the fathers who actually bear it in our
+tree — with an ambiguous or item-less given name left out rather than guessed. Multi-valued,
+her ruling, so every attesting given-name item is emitted; `mattsson` carries twelve.
+
+Measured on the real batch, with the live duplicate check stubbed because this sandbox's proxy
+blocks `wbsearchentities` (460 tokens were HELD by that, which is the guard working):
+
+    Jonasdatter   patronymic   LAST P144 Q14436586 Jone · LAST P144 Q2246251 Jens
+    Pederson      patronymic   LAST P144 Q10622039 Peder · LAST P144 Q15897204 Petter
+    Nord-Varhaug  family       unchanged — this is patronymics only
+
+Those spellings are `namemodel._skeleton` folding as designed (*"Nielsdatter from Nils,
+Pettersdotter from Peter"*), not a miss. What the plan does drop is the ambiguous one:
+`Jonas(2)` is two items, so `Jonasdatter` gets `Jone` and `Jens` and not `Jonas`.
+
+A patronymic created with no resolved derivation is still created and is **named in the run
+output**, not silently minted: an inert item that looks like a done one is the failure this
+whole change is against.
+
+**Found while running it, not fixed here:** the block that adds descriptions to name items
+that already exist calls `get(...)` with a `ua` that is defined nowhere in the file, so every
+one of its 137 chunks dies on a `NameError` and it prints *"0 of them have no English
+description; 6,801 already do"* — an instrument reporting about itself. It has never run since
+it was written. NEEDS-DECISION: the fix is one line, and it turns on an uncapped emitter that
+would put a `Den` on every one of those 6,801 items that lacks one, in a batch whose creation
+cap is 3 a day. How many that is cannot be measured here — the proxy blocks Wikidata.

@@ -9,9 +9,24 @@ do."* `P735` given name, `P734` family name and `P5056` patronym all point at
 **A patronymic is its own item even when the spelling already exists.**
 `CLAUDE.md` § *One name item per USAGE*: `Eivindsen` has a Wikidata item as a given
 name, and the patronymic `Eivindsen` is *"a different object"*. Her own `Q141152710`
-*Aadnesson* is the pattern — labels, `P31` → `Q110874` *patronymic*, and nothing else.
-That minimalism is copied deliberately: the measurement in `CLAUDE.md` found `P1705`,
-`P282` and `P407` on most existing patronymic items and **she does not add them**.
+*Aadnesson* is the pattern — labels and `P31` → `Q110874` *patronymic*. That minimalism is
+copied deliberately: the measurement in `CLAUDE.md` found `P1705`, `P282` and `P407` on most
+existing patronymic items and **she does not add them**.
+
+**`P144` *based on* is the one thing that is NOT decoration, and it goes in.** Emma, 2026-09-05:
+add the source names to the patronymic items this file makes. It is the derivation — the
+given names the fathers who attest the token actually carry — and her own resolution algorithm
+is gated on it (`scripts/build-patronymic-items.py`): *"the patronymic resolves to a patronymic
+NAME ITEM / that item records the given names it derives from (its own P144 based on,
+MULTI-VALUED) / the parent carries a given name OBJECT / parent's P735 item among the P144
+values? -> emit P5056"*. Without it every item this file mints fails that identity test forever,
+which is what *"it requires well developed patronymic objects we currently lack"* means.
+
+The targets come from `reports/patronymic-items-to-create.tsv`, which resolves them ONCE against
+the fathers our own tree names — the single string comparison her design allows — and leaves an
+ambiguous or unattested given name out rather than guessing. **Multi-valued, her ruling:** every
+given-name item the attesting fathers carry is emitted, because keeping only the commonest would
+make the `Olsdatter`s whose father was `Ola` fail the identity test and get no `P5056` at all.
 
 **Ambiguous tokens are never created.** Where `reports/name-item-plan.csv` says a
 token already resolves to several items — `Marie`, `Olga`, `Anton` — creating one more
@@ -165,6 +180,43 @@ def ledger():
 
 #: The property a name item of each usage hangs off the PERSON by.
 PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056"}
+
+#: `P144` *based on* — on a NAME item it points at the name the patronymic derives from, which
+#: is a different claim from the `P144` on a PERSON's `P5056`, where it names the father.
+#: Both are correct and both are emitted by this file, in their own places.
+BASED_ON = "P144"
+
+PATRONYMIC_PLAN = ROOT / "reports" / "patronymic-items-to-create.tsv"
+
+
+def based_on_targets():
+    """`{folded token: [given-name item, ...]}` — the `P144` sources of each patronymic.
+
+    Read from `reports/patronymic-items-to-create.tsv`, which `scripts/build-patronymic-items.py`
+    writes. That file makes the one string comparison her design permits — the token's stem
+    against the given names of the fathers who actually bear it in our tree — and drops a name
+    whose label resolves to several items (`p144_ambiguous`) or to none (`p144_unknown`) instead
+    of picking. So everything here is already adjudicated; this is a lookup, not a decision.
+
+    **Missing is loud.** A patronymic created without its derivation is not a smaller item, it is
+    an item that can never resolve a bearer — so a plan file that is absent says so rather than
+    quietly minting bare items, which is exactly what happened for every patronymic this
+    generator made before 2026-09-05.
+    """
+    out = {}
+    if not PATRONYMIC_PLAN.exists():
+        print(f"⛔ {PATRONYMIC_PLAN.name} is missing -- created patronymics will carry no "
+              f"P144 based on, and nothing can then resolve a bearer to them")
+        return out
+    with open(PATRONYMIC_PLAN, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            token = (row.get("token") or "").strip()
+            # Space-separated in the plan, and de-duplicated here: the same statement twice in
+            # one CREATE block is what `tests/test_p2600_batches.py` calls a repeated statement.
+            qids = [q for q in (row.get("p144_targets") or "").split() if q.startswith("Q")]
+            if token and qids:
+                out[token.casefold()] = list(dict.fromkeys(qids))
+    return out
 
 
 def live_values():
@@ -413,12 +465,21 @@ def main():
         "#",
         "# A patronymic is its own item even where the spelling exists as a given",
         "# name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is",
-        "# the pattern -- labels, P31, nothing else.",
+        "# the pattern -- labels and P31.",
+        "#",
+        "# A created PATRONYMIC also carries P144 based on: the given names it derives",
+        "# from, one value for every such name the fathers who bear it actually carry.",
+        "# That is what her resolution algorithm reads -- a person gets P5056 when their",
+        "# father's P735 item is among these values -- so an item minted without them",
+        "# can never resolve anybody. reports/patronymic-items-to-create.tsv resolves",
+        "# them, and leaves out any given name whose label is ambiguous or has no item.",
         "",
     ]
     ranked = sorted(need.items(), key=lambda kv: (-kv[1], kv[0]))
     held_back = ranked[NAME_ITEMS_PER_RUN:]
     linked_now = 0
+    based_on = based_on_targets()
+    based_on_now, no_based_on = 0, []
     for (token, usage), bearers in ranked[:NAME_ITEMS_PER_RUN]:
         lines.append(f"# {token} -- {usage}, {bearers} bearer(s) in the batches")
         lines.append("CREATE")
@@ -441,6 +502,17 @@ def main():
         if usage in DESCRIPTION_FOR:
             lines.append(f'LAST\tDen\t"{DESCRIPTION_FOR[usage]}"')
         lines.append(f"LAST\t{INSTANCE_OF}\t{CLASS_FOR[usage]}")
+        # **The derivation, on the item itself.** Emma, 2026-09-05: add the source names to the
+        # patronymic items this file makes. `P144` *based on* here points at the GIVEN NAME the
+        # patronymic comes from -- every one the attesting fathers carry, multi-valued -- and it
+        # is what her resolution algorithm reads: a bearer resolves when their father's `P735`
+        # item is among these values. An item minted without them is inert forever.
+        if usage == "patronymic":
+            for target in based_on.get(token.casefold(), ()):
+                lines.append(f"LAST\t{BASED_ON}\t{target}")
+                based_on_now += 1
+            if not based_on.get(token.casefold()):
+                no_based_on.append(token)
         # **The statements that use it, in the same run.** The name model is run with
         # this ONE token pointed at `LAST` and every other token left at its real QID,
         # so only the statement about the item just created comes back carrying `LAST`,
@@ -567,6 +639,14 @@ def main():
     print(f"\nwrote {out.relative_to(ROOT)}: {lines.count('CREATE')} name items "
           f"(cap {NAME_ITEMS_PER_RUN}, {len(held_back)} carried to a later run), "
           f"{linked_now} statements linking an EXISTING person to one, in the same run")
+    print(f"{based_on_now} P144 based on statement(s) on the patronymics created, "
+          f"from {len(based_on):,} tokens with a resolved derivation")
+    if no_based_on:
+        # Loud, because a patronymic without its derivation is inert: nothing can ever
+        # resolve a bearer to it. It is still created -- the item is what her algorithm
+        # needs first -- but the gap is named rather than left to be inferred from a count.
+        print(f"   {len(no_based_on)} created WITHOUT a P144: "
+              + ", ".join(sorted(no_based_on)))
     for (token, usage), n in sorted(need.items(), key=lambda kv: (-kv[1], kv[0])):
         print(f"  create  {token:<20} {usage:<12} {n}")
     for (token, usage), n in sorted(ambiguous.items()):
