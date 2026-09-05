@@ -223,6 +223,49 @@ GENERATION_SUFFIX = {
     "vanhempi": ("I", "Sr."),     # 1 on Wikidata, Finnish
 }
 
+#: **Which languages a suffix form belongs to.** Emma, 2026-09-05: *"the dy will be present
+#: wherever for the languages that use it but the suffixes we have will be always at the end"*.
+#: So a `nb` label keeps `d.y.` where Norwegian puts it, and a language that does NOT use the
+#: form is one of the *"inappropriate languages"* she named on the same subject — those take the
+#: `mul` form, `Elias Lagerheim II`.
+#:
+#: **Keyed on the form, not on a flat list of languages**, because the two Scandinavian pairs
+#: differ by one letter and mean the same thing in different places: `d.ä.`/`den äldre` are
+#: Swedish and `d.e.`/`den eldre` are Norwegian and Danish. A single "Scandinavian keeps
+#: everything" rule would leave a Swedish `den eldre` and a Norwegian `d.ä.` in place, each of
+#: which is the other language's spelling.
+#:
+#: `nn` and `no` sit beside `nb` because Wikidata uses all three for Norwegian.
+SUFFIX_LANGUAGES = {
+    "d.y.": {"nb", "nn", "no", "da", "sv"}, "d.y": {"nb", "nn", "no", "da", "sv"},
+    "d. y.": {"nb", "nn", "no", "da", "sv"}, "d y": {"nb", "nn", "no", "da", "sv"},
+    "dy": {"nb", "nn", "no", "da", "sv"},
+    "den yngre": {"nb", "nn", "no", "da", "sv"},
+    "d.e.": {"nb", "nn", "no", "da"}, "d.e": {"nb", "nn", "no", "da"},
+    "d. e.": {"nb", "nn", "no", "da"}, "den eldre": {"nb", "nn", "no", "da"},
+    "d.ä.": {"sv"}, "d.ä": {"sv"}, "d. ä.": {"sv"}, "dä": {"sv"}, "den äldre": {"sv"},
+    "nuorempi": {"fi"}, "vanhempi": {"fi"},
+    "the younger": {"en"}, "the elder": {"en"},
+    "jr": {"en"}, "jr.": {"en"}, "sr": {"en"}, "sr.": {"en"},
+}
+
+
+def suffix_is_native(label: str, language: str) -> bool:
+    """Is every generation suffix in `label` one that `language` actually uses?
+
+    `True` when there is no suffix at all, so a label this does not govern is never touched.
+    """
+    found = _SUFFIX_RE.findall(label or "")
+    if not found:
+        return True
+    # **A region subtag inherits its base language.** Wikidata carries `en-ca` and `en-us`
+    # beside `en`, and `Jr.` is native English in all three -- without this the two variants
+    # were the only English labels being rewritten to `II`, which is the `mul` form and not
+    # what Emma asked English to read. Measured: 2 of the 60 rewrites, both of them wrong.
+    codes = {language, language.split("-")[0]}
+    return all(codes & SUFFIX_LANGUAGES.get(f.casefold(), frozenset()) for f in found)
+
+
 #: Longest first, so `d. y.` is matched before `d` could be, and `den yngre` before `den`.
 _SUFFIX_RE = re.compile(
     r"(?<![\w.])(" + "|".join(

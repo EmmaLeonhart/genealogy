@@ -52,7 +52,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
-    normalise_generation_suffix, statements_for)
+    normalise_generation_suffix, statements_for, suffix_is_native)
 
 
 def _load_gaps():
@@ -6149,6 +6149,30 @@ def main():
                     continue
                 if live != value:
                     lines.append(f'{q}\tL{code}\t"{value}"')
+
+        # **A generation suffix stays in the languages that USE it and is normalised in the
+        # rest.** Emma, 2026-09-05: *"the dy will be present wherever for the languages that use
+        # it but the suffixes we have will be always at the end"*, and on the same item earlier:
+        # *"the inappropriate languages it is on should go to 'Elias Lagerheim II'"*.
+        #
+        # `Q106206114` is the case: `den yngre` is Swedish, correct in `sv`, and wrong in every
+        # other language that inherited the string. So `sv` and the Norwegian and Danish codes
+        # keep their own form where their own grammar puts it, and a language that does not use
+        # that form takes the `mul` shape -- the suffix converted and moved to the end.
+        #
+        # **Each language is normalised from ITS OWN label, not overwritten with `mul`.** A
+        # French or German label may spell the name differently for good reason, and replacing
+        # the whole string to fix a suffix would throw that away; `CLAUDE.md` § *1600-1900 is the
+        # band where NAMES LIE* is the standing warning about treating a spelling difference as
+        # an error. Only the suffix moves.
+        for code, value in sorted(mine.items()):
+            if code in {"mul", "en", "ja", "zh", "ko"} or not value:
+                continue
+            if suffix_is_native(value, code):
+                continue
+            fixed = normalise_generation_suffix(value, "mul")
+            if fixed != value:
+                lines.append(f'{q}\tL{code}\t"{qs(fixed)}"')
     print(f"{len(seen)} statements added to existing items")
     lines.append("")
 
