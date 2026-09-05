@@ -38,6 +38,24 @@ case folding and **`P31` is the class this usage needs**. Nothing else is accept
   the existing ambiguous path, which holds it for her. Picking one would be the coin flip this
   repo refuses everywhere else.
 
+## ⛔ THIS CANNOT SEE AN ITEM CREATED MINUTES AGO, and those are the ones a daily batch duplicates
+
+`wbsearchentities` reads the **search index**, which Wikidata populates asynchronously. An item
+that exists is retrievable by `wbgetentities` immediately and may not be findable by search for
+some time after. So this check is blind in exactly the window that matters: the duplicate a daily
+cadence produces is one created by yesterday's batch or by an earlier run of today's.
+
+Emma, 2026-09-05: *"the quickstatements I most recently ran tried to make duplicate surnames
+again lol"* — `Låge-Håland`, refused because `Q141257135` already held that label and
+description. All four lookups missed it, each for its own reason: the offline store predates the
+item, the bearers do not point at it yet, `created-name-items.tsv` was never being refreshed, and
+this function could not see it.
+
+**`refresh-created-name-items.py` is the source with no lag**, because it reads her contributions
+rather than the index. It is now run as part of `build-garborg-day.py --compose`, beside the
+ledger refresh. This function stays as the last resort it always was — it catches items created
+by *other people*, which contributions cannot.
+
 **It is a small number of requests.** The batch creates a handful of tokens a day, so this is
 courteous by construction — `CLAUDE.md` § *Querying Wikidata is ALLOWED* asks for batching and
 for not fanning out, and this batches the entity reads.

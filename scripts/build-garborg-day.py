@@ -5256,6 +5256,38 @@ def main():
         print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
               "live values refreshed")
 
+        # **And the name items she has already created, which is the SAME BUG a third time.**
+        # Emma, 2026-09-05: *"the quickstatements I most recently ran tried to make duplicate
+        # surnames again lol"* -- `Låge-Håland`, refused by Wikidata because `Q141257135`
+        # already held that label and description, which then broke the four `LAST` lines
+        # after it.
+        #
+        # `refresh-created-name-items.py` was written on 2026-08-30 against exactly this and
+        # **nothing ever called it**, so `reports/created-name-items.tsv` sat at 18 rows from a
+        # hand-run while items kept being created. A name item has no `P2600`, so the ledger
+        # refresh above cannot see it; this reads her contributions for page creations whose
+        # `P31` is a name class, and follows redirects so a merged-away item resolves to its
+        # survivor.
+        #
+        # The other three lookups all failed on this token and each for its own reason: the
+        # offline store predates the item, the bearers do not point at it yet, and
+        # `wbsearchentities` is asynchronous -- an item created minutes ago is not in the
+        # search index, so the live check is exactly blind to the newest duplicates, which are
+        # the ones a daily batch makes. This source has no such lag.
+        #
+        # `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* -- the fifth in that
+        # table, and the second found today.
+        r = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "refresh-created-name-items.py")],
+            cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        if r.returncode != 0:
+            sys.exit("the created-name-items refresh failed, so the batch would re-propose "
+                     "name items that already exist and QuickStatements would refuse them "
+                     "mid-run, breaking every LAST line after:\n"
+                     + (r.stderr or r.stdout)[-800:])
+        print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
+              "created name items refreshed")
+
     our_items = ledger()
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
     #
