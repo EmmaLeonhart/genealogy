@@ -3,15 +3,35 @@
   "name": "geni collector",
   "version": "1.0.0",
   "description": "Drives the Geni side of this repo: relationship paths, profile saves, placeholder individuals and Forest exports.",
-  "permissions": ["tabs", "storage", "downloads", "alarms"],
-  "host_permissions": ["*://www.geni.com/*"],
-  "background": { "service_worker": "background.js" },
+  "permissions": [
+    "tabs",
+    "storage",
+    "downloads",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://www.geni.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
-      "matches": ["*://www.geni.com/*"],
-      "js": ["content/common.js", "content/path.js", "content/export.js", "content/router.js"],
+      "matches": [
+        "*://www.geni.com/*"
+      ],
+      "js": [
+        "content/common.js",
+        "content/path.js",
+        "content/export.js",
+        "content/seed.js",
+        "content/router.js"
+      ],
       "run_at": "document_idle"
     }
   ],
-  "action": { "default_popup": "popup.html", "default_title": "geni collector" }
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "geni collector"
+  }
 }

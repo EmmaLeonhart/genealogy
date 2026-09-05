@@ -24,8 +24,9 @@ button.ghost{background:transparent;color:var(--accent);border:1px solid var(--l
 .note{color:var(--muted);font-size:11.5px;margin-top:8px}
 </style>
 <h1>geni collector</h1>
-<p class="sub">One Geni id per line. Prefix <code>export </code> for a Forest export.</p>
-<textarea id="q" placeholder="6000000004051490175&#10;6000000174444394081&#10;export 6000000227036288825"></textarea>
+<p class="sub">One Geni id per line. Prefix <code>seed </code> to walk up adding missing parents,
+<code>export </code> for a Forest export.</p>
+<textarea id="q" placeholder="6000000004051490175&#10;seed 6000000003491986946&#10;export 6000000227036288825"></textarea>
 <div class="row">
   <button id="load" class="ghost">Load queue</button>
   <button id="start">Start</button>
@@ -36,8 +37,10 @@ button.ghost{background:transparent;color:var(--accent);border:1px solid var(--l
   <label>searches at once <input type="number" id="conc" min="1" max="24" value="6"></label>
   <label>seconds between opens <input type="number" id="stag" min="2" max="600" value="60"></label>
   <label>wait minutes <input type="number" id="wait" min="1" max="60" value="10"></label>
+  <label><input type="checkbox" id="dry" checked> propose only (untick to create)</label>
 </div>
 <div id="stat">idle</div>
-<p class="note">Exports always run one at a time — that is Geni's limit, not a setting. A
+<p class="note">Seed jobs create real people on Geni once <em>propose only</em> is unticked.
+Exports always run one at a time — that is Geni's limit, not a setting. A
 submitted export cannot be cancelled; Stop only stops opening new tabs.</p>
 <script src="popup.js"></script>

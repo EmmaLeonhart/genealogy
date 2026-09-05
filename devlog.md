@@ -28329,3 +28329,53 @@ patronymic *son of Olaus* and is still read as a family name, as are `Petri`, `B
 `Nicolai`, `Martini` and `Engelberti` on his relatives. That is a patronymic FORM the model
 does not know, per her 2026-09-04 rule, and it needs its own measurement rather than being
 folded into this one.
+
+## 2026-09-05 — the parent walk, and the extension gets the algorithm she dictated
+
+`docs/parent-walk-algorithm.md` is Emma's dictation, recorded before anything was built because
+the ordering is the specification: patronymic present overrides the default and checks the
+**father** first; otherwise the **mother** is checked first; whichever is absent is added; when
+both exist the walk adds neither and enqueues **mother then father** and carries on up. An add
+that fails takes the next person off the queue, and that is the whole master-profile handling —
+*"that's how we resolve master profiles."*
+
+**It needs no canvas and no eyes, which is why this route was taken.** The tree view draws its
+`+` affordances with no scene graph — `stage.current.find('Group')` returns 0, and the 8
+add-node DOM elements are invisible templates — so that route needs pixels. The **profile page**
+does not: `#family_profile_module` names the parents that exist, and the page's own **Add
+Family** link opens a dialog whose fields are ordinary DOM, with the same ids as the tree form
+(`page_profile_names_en-US_first_name`, `suggest_surnames`, `gender_m`/`gender_f`,
+`page_profile_is_alive_false`, `submit_ifs`). Relationship is **`parent`**; father against
+mother is the gender radio. Measured on the live dialog and closed unsaved.
+
+**Detection is exact, not inferred.** Ane Oline Jonsdatter Raugstad's block reads
+`husband, son, daughter, father` and no `mother` — she has a father and no mother, and a
+patronymic, so the algorithm checks the father first, finds him, falls through, and adds the
+mother. That is her ordering producing the right answer on a real person.
+
+**The naming was measured over 400,000 corpus names, not asserted** —
+`reports/seed-naming-sample.tsv`. 149,040 carry a patronymic (37.3%): norse 139,379, iberian
+4,238, particle 3,416, slavic 93, plus **1,914 unmapped Iberian endings that are skipped rather
+than guessed at**, because inventing a nominative from `-ez` alone names a man on the strength
+of a suffix. Father tiers: 93,922 tier 1, 52,743 tier 2, 2,375 skipped.
+
+Decision 2 is reproduced across the corpus, the genitive-`s` trap included:
+
+    Andersson -> Anders    Andersdotter -> Anders    Olsson -> Ole    Olsen  -> Ole
+    Larsson   -> Lars      Pedersen     -> Peder     Hansen -> Hans   Nilsdotter -> Nils
+
+**Three defects, named rather than papered over.**
+
+- **`Owain ap Cadwgan of Powys` named the father *Cadwgan of Powys*** — a man plus a kingdom.
+  Fixed: particle consumption stops at a territorial `of`, per `CLAUDE.md`'s measurement that a
+  non-initial bare English `of` is followed by a place without exception.
+- **Spanish two-surname names pick the wrong surname.** `Juan del Campo Lantadilla Ordóñez
+  General` yields `Ordoño /General/`. The last-token rule is right for Nordic farm names and
+  wrong here. Not fixed and not guessed at.
+- **A `-son` false positive on a surname**: `James Slason` yields `Sla`. Of 3,807 Norse rows,
+  523 resolve to a stem of three characters or fewer — but 353 of those are `Ole`, `Per` and
+  `Jon`, which are real, so the junk is roughly 170 and shows as `Gib` 23, `Jeb` 17, `Er` 15.
+  No threshold was invented to cut it.
+
+**Nothing has been created on Geni.** The panel's *propose only* box is ticked by default, so
+the first run reports what it would make and creates nobody.

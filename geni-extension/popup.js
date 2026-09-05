@@ -9,10 +9,10 @@ function parseQueue(text) {
   for (const raw of text.split("\n")) {
     const line = raw.trim();
     if (!line || line.startsWith("#")) continue;
-    const m = line.match(/^(export|path)?\s*([0-9]+)(?:\s+(blood|inlaw))?(?:\s+(.*))?$/i);
+    const m = line.match(/^(export|path|seed|walk)?\s*([0-9]+)(?:\s+(blood|inlaw))?(?:\s+(.*))?$/i);
     if (!m) continue;
     out.push({
-      job: (m[1] || "path").toLowerCase(),
+      job: ((m[1] || "path").toLowerCase() === "walk" ? "seed" : (m[1] || "path").toLowerCase()),
       geni_id: m[2],
       kind: (m[3] || "blood").toLowerCase(),
       label: (m[4] || "").trim()
@@ -40,7 +40,8 @@ $("load").onclick = async () => {
   await chrome.storage.local.set({
     concurrency: Math.max(1, +$("conc").value || 6),
     staggerMs: Math.max(2, +$("stag").value || 60) * 1000,
-    waitMs: Math.max(1, +$("wait").value || 10) * 60000
+    waitMs: Math.max(1, +$("wait").value || 10) * 60000,
+    dryRun: $("dry").checked
   });
   refresh();
 };
@@ -52,7 +53,8 @@ $("stop").onclick = async () => { await send({ type: "stop" }); refresh(); };
 $("save").onclick = async () => {
   const s = await send({ type: "status" });
   const cols = ["at", "job", "geni_id", "kind", "state", "steps", "hasTarget", "requested",
-                "first", "last", "saved", "family_tree", "blood_relatives", "ancestors",
+                "which", "tier", "first", "last", "why", "name", "reason", "pid",
+                "saved", "family_tree", "blood_relatives", "ancestors",
                 "descendants", "followers", "description", "url", "error"];
   const rows = [cols.join("\t")];
   for (const r of s.results || []) {

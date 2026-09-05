@@ -22,6 +22,7 @@ const DEFAULTS = {
   concurrency: 6,
   staggerMs: 60000,
   waitMs: 600000,
+  dryRun: true,
   queue: [],
   active: {},
   results: [],
@@ -51,7 +52,25 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       const active = Object.assign({}, s.active);
       delete active[String(tabId)];
       const results = s.results.concat([Object.assign({ at: new Date().toISOString() }, msg.result)]);
-      await put({ active, results });
+
+      /* ⛔ THE ALGORITHM'S QUEUE, not ours. `docs/parent-walk-algorithm.md`: when both parents
+       * already exist the walk adds neither and enqueues the MOTHER, then the FATHER, in that
+       * order, and carries on up. The content script returns them already ordered; appending
+       * keeps the walk breadth-first, which is what "going up going up" describes.
+       *
+       * Already-seen ids are dropped: pedigree collapse is dense in this tree, so the same
+       * ancestor is reached down several lines and would otherwise be walked repeatedly. */
+      let queue = s.queue;
+      const add = (msg.result && msg.result.enqueue) || [];
+      if (add.length) {
+        const seen = new Set(s.results.map((r) => String(r.geni_id))
+          .concat(s.queue.map((q) => String(q.geni_id)))
+          .concat([String(msg.result.geni_id)]));
+        const fresh = add.filter((p) => p && !seen.has(String(p)))
+                         .map((p) => ({ job: "seed", geni_id: String(p), kind: "seed", label: "" }));
+        queue = s.queue.concat(fresh);
+      }
+      await put({ active, results, queue });
       /* A resolved tab is closed. It is held open only WHILE the search runs, which is the
        * thing her rule protects; once the answer is on the page the tab costs RAM and buys
        * nothing. A still-running or never-asked target is closed too and goes to the next
@@ -106,7 +125,7 @@ async function pump() {
 
       const queue = s.queue.slice(1);
       const job = Object.assign({ jobId: next.geni_id + ":" + (next.kind || next.job),
-                                  waitMs: s.waitMs }, next);
+                                  waitMs: s.waitMs, dryRun: s.dryRun }, next);
       const url = next.job === "export"
         ? "https://www.geni.com/gedcom/export/" + next.geni_id
         : "https://www.geni.com/people/x/" + next.geni_id;

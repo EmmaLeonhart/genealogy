@@ -19,7 +19,9 @@
 
   let result;
   try {
-    result = job.job === "export" ? await GC.runExport(job) : await GC.runPath(job);
+    result = job.job === "export" ? await GC.runExport(job)
+           : job.job === "seed" ? await GC.runSeed(job)
+           : await GC.runPath(job);
   } catch (e) {
     result = { job: job.job, geni_id: job.geni_id, state: "error", error: String(e && e.message || e) };
   }
