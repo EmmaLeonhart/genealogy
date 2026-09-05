@@ -817,6 +817,33 @@ what nothing could emit before.
 `søn` 1,983 · `verch` 1,863 · `ben` 1,505 · `ab` 1,258 · `ferch` 1,232 · `dóttir` 1,106 ·
 `ovich` 946 · `wicz` 873.
 
+**The LATIN GENITIVE is a patronymic form too, and it was added 2026-09-05 on her instruction.**
+Emma, shown that `Q141312682` *Zacharias Olai Plantin* had `Olai` read as a family name: *"detect
+the form, then confirm it against the father's own given name so `Petri` on an Italian is not
+swept up."* Swedish and Finnish clergy of the 16th to 18th centuries are named this way as a
+matter of course — `Olaus Petri Niurenius`, `Nicolaus Olai Plantin`, `Johannes Benedicti`,
+`Petrus Martini`.
+
+**The shape alone decides nothing: 99,005 tokens match it and 1,544 survive the father test.**
+`namemodel.latin_patronymic` reconstructs the NOMINATIVE from the stem — `Olai` → `olaus`,
+`Johannis` → `johannes`, `Jonæ` → `jonas`, `Samuelis` → `samuel` — and compares it to the
+father's own **given** name as a string, folding case and diacritics and nothing else. That
+strictness is the whole discriminator: `_skeleton`, which `patronymic_or_surname` uses, confirmed
+`Morris` from a father `Meir`, `Zachris` from `Zacharias`, `Kylili` from `Kylilis` and `Maakebzgi`
+from `MAKebzgi`. Matching any token of the father's LABEL rather than his given name let a
+Cypriot `-is` surname confirm its own inherited form. A Roman numeral is excluded outright —
+`VIII` reduced to a stem `vi` and confirmed 29 times before that guard.
+
+**A token the father carries himself is inherited, not derived.** The son of `Olaus Petri` is
+`Olai`, never `Petri`, so a `Petri` whose father is also `Petri` is a family name that began as a
+patronymic generations back — the same rule, and the same reasoning, `patronymic_or_surname`
+applies to the `-son` forms.
+
+**Two forms of one patronymic can sit on one person and both are emitted.** *Zacharias Olai
+Plantin* carries `Olofsson` in `SURN` and `Olai` in `_MARNM`; both become `P5056` *patronym or
+matronym* with `P144` *based on* the father, and neither carries `P1545` — the ordinal would
+assert a generation chain that is not there.
+
 **Four things were measured and REFUSED**, each of which would have put a `P5056` on somebody it
 does not belong to:
 

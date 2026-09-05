@@ -1455,7 +1455,7 @@ def label_in(label, table):
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
-               father_name="", father_aka=""):
+               father_name="", father_aka="", father_given=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
     **Only tokens whose item already exists.** A name item this run is creating
@@ -1468,7 +1468,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
     out, notes = [], []
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
                                 fields=fields, sex=sex, father_name=father_name,
-                                father_aka=father_aka)
+                                father_aka=father_aka, father_given=father_given)
     for prop, value, quals in lines:
         # `P1449` *nickname* never arrives: `namemodel.statements_for` stops modelling it,
         # per Emma's 2026-08-29 ruling. The drop used to be here, and having it in the emitter
@@ -5563,6 +5563,10 @@ def main():
     #: `namemodel.patronymic_or_surname` has the measurement. It is never a label and never an
     #: alias we emit.
     aka = {}
+    #: The person's GIVEN name only -- the first token of each recorded form. The Latin
+    #: genitive test confirms against this and not against the whole label; see
+    #: `namemodel.latin_patronymic`.
+    given_name = {}
     #: How a person is named when SOMEBODY ELSE's label refers to them -- the married
     #: form where there is one. Separate from `labels` on purpose; see the comment at
     #: the assignment below.
@@ -5609,6 +5613,10 @@ def main():
                 aka[row["geni_id"]] = " ".join(
                     (row.get(c) or "").replace(" | ", " ")
                     for c in ("alias_names", "further_latin_names"))
+                firsts = [row.get("label_en") or "", row.get("label_mul") or ""]
+                firsts += (row.get("alias_names") or "").split(" | ")
+                given_name[row["geni_id"]] = " ".join(
+                    dict.fromkeys(w.split()[0] for w in firsts if w.split()))
                 # **How a person is named when somebody ELSE's label refers to them.**
                 #
                 # Emma, 2026-08-29, on `Q141205933`: *"it appears that it uses the birth name
@@ -5664,6 +5672,10 @@ def main():
                 aka[row["geni_id"]] = " ".join(
                     x for x in (aka.get(row["geni_id"], ""),
                                 row.get("givn", ""), row.get("nick", "")) if x)
+                given_name[row["geni_id"]] = " ".join(dict.fromkeys(
+                    given_name.get(row["geni_id"], "").split()
+                    + (row.get("givn") or "").split()
+                    + (row.get("nick") or "").split()[:1]))
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -6091,7 +6103,8 @@ def main():
                                    father_item(dad),
                                    fields=fields.get(g),
                                    father_name=labels.get(dad, "") if dad else "",
-                                   father_aka=aka.get(dad, "") if dad else "")[0]:
+                                   father_aka=aka.get(dad, "") if dad else "",
+                                   father_given=given_name.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
         # **Every CJK label is redone, and a DISAGREEMENT is emitted.** Emma, 2026-08-30:
@@ -6556,7 +6569,8 @@ def main():
                 labels[g], plan, g, father_item(dad),
                 fields=fields.get(g), sex=f["sex"],
                 father_name=labels.get(dad, "") if dad else "",
-                father_aka=aka.get(dad, "") if dad else "")
+                father_aka=aka.get(dad, "") if dad else "",
+                father_given=given_name.get(dad, "") if dad else "")
             lines.extend(name_statements)
             # Aliases: the nickname, and the full name under a married surname. Emma
             # asked for these alongside the second `P734` *family name*.

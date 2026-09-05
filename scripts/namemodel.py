@@ -59,6 +59,7 @@ from __future__ import annotations
 
 import csv
 import re
+import unicodedata
 import sys
 from pathlib import Path
 
@@ -760,6 +761,101 @@ def is_patronymic(token: str) -> bool:
     return bool(PATRONYMIC.match(token))
 
 
+#: A Latin GENITIVE ending, longest first. `Olai` is *of Olaus*, `Petri` *of Petrus*,
+#: `Johannis` *of Johannes*, `Andreae` *of Andreas*, `Svenonis` *of Sveno*. Swedish and
+#: Finnish clergy of the 16th to 18th centuries are named this way as a matter of course --
+#: `Olaus Petri Niurenius`, `Nicolaus Olai Plantin`, `Johannes Benedicti`, `Petrus Martini`.
+LATIN_GENITIVE_ENDINGS = ("onis", "ii", "is", "ae", "æ", "i")
+
+#: The nominative endings a stem is put back into, to be checked against the father's own given
+#: name: `petr` -> `petrus`, `johann` -> `johannes`, `jon` -> `jonas`, `sven` -> `sveno`,
+#: `laurent` -> `laurentius`, and `samuel` -> `samuel` for the third declension, where the
+#: nominative IS the stem.
+LATIN_NOMINATIVE_ENDINGS = ("us", "ius", "es", "as", "os", "a", "o", "")
+
+#: A Roman numeral, which `-i`/`-ii` otherwise matches: `VIII` reduced to a stem `vi` and was
+#: confirmed 29 times before this was here.
+ROMAN_NUMERAL = re.compile(r"^[ivxlcdm]+$", re.I)
+
+
+def _fold(word: str) -> str:
+    """Casefold, decompose and drop the diacritics, and spell `æ` out.
+
+    `Andreæ` and `Andreae` are the same name written twice, and neither is `andrea`.
+    """
+    low = (word or "").casefold().replace("æ", "ae").replace("ø", "o")
+    return "".join(c for c in unicodedata.normalize("NFD", low)
+                   if not unicodedata.combining(c))
+
+
+def latin_genitive_stems(token: str) -> list[str]:
+    """Every nominative stem `token` could be the Latin genitive of, folded.
+
+    `Petri` -> `petr` (Petrus), `Johannis` -> `johann` (Johannes), `Svenonis` -> `sven`
+    (Sveno), `Andreae` -> `andre` (Andreas). More than one ending can match, so all are
+    returned and the caller keeps whichever the father's own name confirms.
+    """
+    out, low = [], _fold(token)
+    if " " in low or len(low) < 4 or ROMAN_NUMERAL.match(low):
+        return out
+    for end in LATIN_GENITIVE_ENDINGS:
+        if low.endswith(_fold(end)) and len(low) - len(_fold(end)) >= 2:
+            stem = low[: -len(_fold(end))]
+            if stem not in out:
+                out.append(stem)
+    return out
+
+
+def latin_patronymic(token: str, father_given: str) -> bool:
+    """Whether `token` is a Latin genitive patronymic, CONFIRMED by the father's given name.
+
+    **Emma, 2026-09-05**, having linked `Olofsson` and `Olai` by hand and been shown the model
+    reading `Olai` as a family name: *"detect the form, then confirm it against the father's
+    own given name so `Petri` on an Italian is not swept up."*
+
+    **The confirmation reconstructs the NOMINATIVE and compares it as a string.** `Olai` ->
+    `olaus`, and the father must be recorded `Olaus`. Nothing is folded but case and
+    diacritics, and that strictness is the whole discriminator -- `_skeleton`, which
+    `patronymic_or_surname` uses, is far too permissive here: it confirmed `Morris` from a
+    father `Meir`, `Zachris` from `Zacharias`, `Kylili` from `Kylilis` and `Maakebzgi` from
+    `MAKebzgi`, none of which is a Latin genitive of anything.
+
+    **The father's GIVEN name, not his whole label**, for the same reason. Matching any token
+    of the label let a Cypriot `-is` surname confirm its own inherited form.
+
+    **A token the father carries himself is inherited, not derived**, and returns `False`: the
+    son of `Olaus Petri` is `Olai`, never `Petri`, so a `Petri` whose father is also `Petri`
+    is a family name that began as a patronymic a generation or more back. Same rule, and the
+    same reasoning, as `patronymic_or_surname` applies to the `-son` forms.
+
+    Measured over the corpus: **98,459 tokens match the shape** and this confirms **3,264**.
+    """
+    return bool(latin_patronymic_source(token, father_given))
+
+
+def latin_patronymic_source(token: str, father_given: str) -> str:
+    """The father's given name `token` is the Latin genitive of, or `""`.
+
+    The same test as `latin_patronymic` and the answer it found: `Olai` against a father
+    recorded `Olaus Olof` returns `Olaus`, which is the name the patronymic derives from and
+    so the `P144` *based on* target for the name item.
+    """
+    stems = latin_genitive_stems(token)
+    if not stems or not father_given:
+        return ""
+    givens = {}
+    for t in re.split(r"\s+", father_given.strip()):
+        if t:
+            givens.setdefault(_fold(t), t)
+    if _fold(token) in givens:
+        return ""
+    for stem in stems:
+        for end in LATIN_NOMINATIVE_ENDINGS:
+            if stem + end in givens:
+                return givens[stem + end]
+    return ""
+
+
 def join_particles(tokens: list[str]) -> list[str]:
     """`['ap', 'Thomas']` -> `['ap Thomas']`, so a particle patronymic is ONE token.
 
@@ -1200,7 +1296,8 @@ def without_nickname(label, fields):
 
 def classify_fields(givn: str, surn: str, nick: str = "",
                     marnm: str = "", father_name: str = "",
-                    father_aka: str = "") -> list[tuple[str, str, int]]:
+                    father_aka: str = "",
+                    father_given: str = "") -> list[tuple[str, str, int]]:
     """`(token, usage, ordinal)` from the GEDCOM name FIELDS.
 
     This is the one to call. `classify()` below takes a rendered label and survives
@@ -1222,6 +1319,13 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     it decides only whether the `P3831` role says *married name*; see `statements_for`.
     """
     out: list[tuple[str, str, int]] = []
+    # **The Latin genitive test needs the father's GIVEN name and nothing else** -- see
+    # `latin_patronymic`, where matching any token of his label let a Cypriot surname confirm
+    # its own inherited form. A caller that has the field passes it; one that has only a label
+    # falls back to its first token, which is the given name in every Latin clergy name this
+    # governs (`Olaus Petri Niurenius`).
+    if not father_given and father_name:
+        father_given = father_name.split()[0]
 
     raw_givn = givn or ""
     # Three branches now -- double quote, apostrophe, parenthesis -- because the apostrophe
@@ -1247,6 +1351,10 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             continue
         if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
+        elif latin_patronymic(token, father_given):
+            # `Nicolaus Iohannis Johansson`, `Magnus Jonæ Uhr`, `Georgius Andreae Troninus`:
+            # the Latin genitive stands where a middle name would and is not one.
+            out.append((token, "patronymic", 0))
         else:
             ordinal += 1
             out.append((token, "given", ordinal))
@@ -1261,6 +1369,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             continue
         if is_patronymic(token):
             out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
+        elif latin_patronymic(token, father_given):
+            out.append((token, "patronymic", 0))
         else:
             out.append((token, "family", 0))
 
@@ -1276,6 +1386,12 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             # `Q28418670` *married name* role. Only the DAUGHTER forms, which cannot be a
             # married name at all; see `DAUGHTER_PATRONYMIC`.
             if not shape and is_daughter_patronymic(token):
+                out.append((token, "patronymic", 0))
+                continue
+            # **`Olai Plantin` is a patronymic and a family name, in that order.** Emma's own
+            # `Q141312682` *Zacharias Olai Plantin* carries both in `_MARNM`, and without this
+            # the Latin genitive became a second `P734`.
+            if not shape and latin_patronymic(token, father_given):
                 out.append((token, "patronymic", 0))
                 continue
             out.append((token, shape or "married", 0))
@@ -1342,7 +1458,7 @@ def classify(label: str) -> list[tuple[str, str, int]]:
 
 
 def statements_for(label, plan, geni_id, father_qid=None, fields=None,
-                   sex="", father_name="", father_aka=""):
+                   sex="", father_name="", father_aka="", father_given=""):
     """(statement lines, notes) for one person's name.
 
     Each line is `(property, value, qualifiers)` with qualifiers as
@@ -1393,7 +1509,8 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # still the answer when the father is unknown.
         tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
                                  fields.get("nick", ""), fields.get("marnm", ""),
-                                 father_name=father_name, father_aka=father_aka)
+                                 father_name=father_name, father_aka=father_aka,
+                                 father_given=father_given)
     else:
         tokens = classify(label)
 

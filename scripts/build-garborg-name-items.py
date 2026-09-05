@@ -356,7 +356,7 @@ def main():
                 fields[row["geni_id"]] = {k: row.get(k, "") for k in
                                           ("givn", "surn", "nick", "marnm")}
 
-    labels_of, father_of, sex_of, aka_of = {}, {}, {}, {}
+    labels_of, father_of, sex_of, aka_of, given_of = {}, {}, {}, {}, {}
     # **The family pass runs FIRST so the father's LABEL can be loaded in the same
     # sweep as everyone else's.** `namemodel.patronymic_or_surname` needs the father's
     # NAME, not his QID: without it every `-sen`/`-son`/`-datter` token falls through
@@ -386,6 +386,15 @@ def main():
                 aka_of[row["geni_id"]] = " ".join(
                     (row.get(c) or "").replace(" | ", " ")
                     for c in ("alias_names", "further_latin_names"))
+                # **The GIVEN name alone, for the Latin genitive test.** The first token of
+                # each recorded form: `Olaus Petri Niurenius` gives `Olaus`, and his alias
+                # `Olaus Persson` and `nick` `Olof Persson` add nothing and `Olof`. Matching
+                # any token of the label instead let a Cypriot `-is` surname confirm itself --
+                # see `namemodel.latin_patronymic`.
+                firsts = [row.get("label_en") or "", row.get("label_mul") or ""]
+                firsts += (row.get("alias_names") or "").split(" | ")
+                given_of[row["geni_id"]] = " ".join(
+                    dict.fromkeys(w.split()[0] for w in firsts if w.split()))
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
@@ -402,6 +411,10 @@ def main():
         person["father_aka"] = " ".join(x for x in (
             aka_of.get(dad, "") if dad else "",
             dad_fields.get("givn", ""), dad_fields.get("nick", "")) if x)
+        person["father_given"] = " ".join(dict.fromkeys(
+            (given_of.get(dad, "") if dad else "").split()
+            + (dad_fields.get("givn", "") or "").split()
+            + (dad_fields.get("nick", "") or "").split()[:1]))
 
     plan = load_plan()
     need = collections.Counter()
@@ -590,7 +603,8 @@ def main():
                     father_qid=father_item(dad),
                     fields=person, sex=sex_of.get(geni_id, ""),
                     father_name=person.get("father_name", ""),
-                    father_aka=person.get("father_aka", ""))
+                    father_aka=person.get("father_aka", ""),
+                    father_given=person.get("father_given", ""))
             except Exception as exc:                                   # noqa: BLE001
                 lines.append(f"#   {qid}: the name model failed -- {exc}")
                 continue

@@ -28426,3 +28426,57 @@ have no English description; 6,801 already do"* — a number about itself. It no
 `live_name_items._get` with a `User-Agent` constant. Emma asked for those descriptions on
 2026-09-02; § *THE ONE EXCEPTION* is why they matter, being what makes Wikidata refuse a
 duplicate `Olsdatter`.
+
+## 2026-09-05 — the Latin genitive patronymic, detected by form and confirmed by the father
+
+**Emma said the word.** `Olai`, `Petri`, `Benedicti`, `Nicolai`, `Martini`, `Engelberti` are
+patronymics — the Latin genitive, *son of Olaus*, *son of Petrus* — and the model read every one
+of them as a family name. The whole Swedish and Finnish clergy line is named that way:
+`Olaus Petri Niurenius`, `Nicolaus Olai Plantin`, `Johannes Benedicti`, `Petrus Martini`.
+
+**Her specification, followed exactly:** *"detect the form, then confirm it against the father's
+own given name so `Petri` on an Italian is not swept up."*
+
+**The shape alone decides nothing — 99,005 tokens match it and 1,544 survive the father test.**
+`namemodel.latin_patronymic` reconstructs the nominative from the stem and compares it to the
+father's given name **as a string**, folding case and diacritics and nothing else:
+
+    Olai      -> olaus      father Olaus       Johannis  -> johannes   father Johannes
+    Petri     -> petrus     father Petrus      Jonæ      -> jonas      father Jonas
+    Laurentii -> laurentius father Laurentius  Samuelis  -> samuel     father Samuel
+    Svenonis  -> sveno      father Sveno       Andreæ    -> andreas    father Andreas
+
+**The strictness is the discriminator, and the loose version was written first and measured.**
+`_skeleton`, which `patronymic_or_surname` uses, confirmed `Morris` from a father `Meir`,
+`Zachris` from `Zacharias`, `Kylili` from `Kylilis`, `Maakebzgi` from `MAKebzgi` and `Nankervis`
+from nothing recognisable — 3,264 confirmations of which hundreds were junk. Matching any token
+of the father's LABEL rather than his given name is what let a Cypriot `-is` surname confirm its
+own inherited form. A Roman numeral is excluded outright: `VIII` reduces to a stem `vi` and was
+confirmed 29 times before that guard existed.
+
+**Confirmed forms, by count:** `Olai` 104, `Petri` 99, `Erici` 80, `Johannis` 77, `Nicolai` 56,
+`Jonæ` 48, `Laurentii` 41, `Jacobi` 34, `Andreæ` 33, `Henrici` 28, `Magni` 28, `Samuelis` 21,
+`Alberti` 15, `Danielis` 15, `Svenonis` 13, `Pauli` 10, `Benedicti` 10, `Michaelis` 9.
+
+**Not Latin and it confirms anyway: the Arabic nisba.** `Al-Husayni` 101, `Al-Hasani` 74,
+`Al-Abbasi` 24, `Al-Muttalibi` 17 — the token is the father's given name plus `-i`, so the test
+passes on its own terms. In every sampled case the father IS the named man (`Al-Hasan`), and the
+same-token rule stops it the moment the father carries the nisba himself, which is the second
+generation onward. Left in, flagged here: it is her call whether a nisba should carry `P5056`.
+
+**Both forms of one patronymic sit on one person and both go out.** *Zacharias Olai Plantin* has
+`Olofsson` in `SURN` and `Olai` in `_MARNM`; `classify_fields` now returns both as patronymics
+and `Plantin` as the married family name. Neither carries `P1545`, because the ordinal would
+assert a generation chain that is not there — patronymic statements have never carried one, which
+is why this needed no change.
+
+**`build-patronymic-items.py` learns the form too**, so the new items get their `P144` sources
+like every other patronymic: **6,752 -> 6,923 tokens, 4,781 -> 4,896 with a target**. `olai` ->
+`Q10608165` *Olaus*, `petri` -> `Q15897708` *Petrus*, `nicolai` -> *Nicolaus*, `laurentii` ->
+*Laurentius*, `andreæ` -> *Andreas*. `jonæ` is held: `Jonas` resolves to two items, and
+§ *One name item per USAGE* says an ambiguity is hers.
+
+**That script also stopped dying when the network is unreachable.** `given_kinds` raised on a
+blocked API and took the whole run with it, so the table could not be rebuilt at all — and the
+table is what the daily `P144` backfill reads. A label it cannot resolve now stays ambiguous,
+which is the answer the caller already handles.

@@ -115,11 +115,27 @@ def given_kinds(qids):
     cache = json.loads(KINDS_CACHE.read_text(encoding="utf-8")) if KINDS_CACHE.exists() else {}
     todo = sorted(q for q in qids if q not in cache)
     if todo:
-        ua = {"User-Agent": require_agent()}
+        # **A blocked network leaves the label AMBIGUOUS; it never guesses and never dies.**
+        # An unresolved plural label already has a safe answer here -- the caller drops it
+        # rather than picking, which is `CLAUDE.md` § *One name item per USAGE*. Killing the
+        # whole run instead meant the table could not be rebuilt at all anywhere the API is
+        # unreachable, and the table is what the daily `P144` backfill reads.
+        try:
+            ua = {"User-Agent": require_agent()}
+        except Exception as exc:                                       # noqa: BLE001
+            print(f"no User-Agent ({exc}); {len(todo):,} plural labels stay ambiguous",
+                  file=sys.stderr)
+            todo = []
         for k in range(0, len(todo), 50):
             url = ("https://www.wikidata.org/w/api.php?action=wbgetentities&format=json"
                    "&props=claims&ids=" + "|".join(todo[k:k + 50]))
-            for q, v in json.loads(_http_fetch(url, headers=ua)).get("entities", {}).items():
+            try:
+                fetched = json.loads(_http_fetch(url, headers=ua)).get("entities", {})
+            except Exception as exc:                                   # noqa: BLE001
+                print(f"chunk at {k} unreachable ({exc}); those labels stay ambiguous",
+                      file=sys.stderr)
+                continue
+            for q, v in fetched.items():
                 cl = v.get("claims", {}) or {}
                 got = []
                 for prop in ("P31", "P282"):
@@ -181,8 +197,20 @@ def main():
         dad = label.get(father.get(g, ""), "")
         if not dad:
             continue
+        # The father's GIVEN name, which for a label is its first token -- `Olaus Petri
+        # Niurenius` gives `Olaus`. The Latin genitive test confirms against that alone; see
+        # `namemodel.latin_patronymic`.
+        dad_given = dad.split()[0]
         for tok in lab.split():
+            # **The Latin genitive is a patronymic form too**, and it needs its own branch:
+            # `PATRONYMIC_PARTS` cannot split `Olai`, so the suffix machinery below would
+            # drop it. Emma, 2026-09-05, on `Olofsson` and `Olai` being one patronymic in two
+            # languages. The source is the father's own given name, exactly as above.
             if not nm.PATRONYMIC.match(tok):
+                src = nm.latin_patronymic_source(tok, dad_given)
+                if src:
+                    bearers[tok.casefold()] += 1
+                    sources[tok.casefold()][src] += 1
                 continue
             if nm.patronymic_or_surname(tok, dad) != "patronymic":
                 continue
