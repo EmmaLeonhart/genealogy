@@ -1956,8 +1956,15 @@ def pending_entry_points(today=None):
     import datetime
 
     today = today or datetime.date.today().isoformat()
+    # **A blank QID prints as `geni:<id>`, never as a bare number in the QID column.** The six
+    # Chinese legendary people carry no QID in our data -- that is the whole reason they also
+    # appear in `unresolved_entry_points` -- and falling back to the Geni id unlabelled printed
+    # `6000000130210607017 大業 Daye`, which reads as a QID nobody would recognise as absent.
+    # `CLAUDE.md` § *Always write the English label next to a property or item ID* is the same
+    # rule from the other side: an identifier a reader cannot place is not an identifier.
     return [
-        (r.get("qid") or r["geni_id"], r.get("label", ""), r.get("active_from", ""))
+        (r["qid"] if (r.get("qid") or "").strip() else f'geni:{r["geni_id"]} (no QID yet)',
+         r.get("label", ""), r.get("active_from", ""))
         for r in entry_points()
         if (r.get("active_from") or "").strip() > today
     ]
