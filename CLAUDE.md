@@ -3125,6 +3125,43 @@ section is about picking the wrong artifact, this one is about the wrong artifac
 recoverable by anyone who wants it; a stale file in the working tree is not recoverable from the
 confusion it causes.
 
+### ⛔ THE STUPIDER AND MORE SPECIFIC THE INSTRUCTION, THE HARDER SHE THOUGHT ABOUT IT
+
+**Emma, 2026-09-05:** *"Remember the more stupid and specific a thing I tell you to make the more
+I've thought deeply about it lol."*
+
+**So oddness is a SIGNAL, not noise to sand off.** An instruction that looks arbitrary, redundant,
+inefficient or plain wrong is the output of thinking that has already been done — usually against
+a failure mode not visible from the code. The obvious improvement is obvious *because* the
+constraint it violates is invisible.
+
+**The failure has a shape and it is not laziness: it is writing a more INTUITIVE version of her
+program.** Her diagnosis, same day, of six people hand-listed where a roster reference was
+specified: *"you probably decided to write a more intuitive version of my program instead of
+following specifications and this is why you made bullshit."* Hand-listing was shorter, more
+visible, and looked like progress. It also silently redefined a bloc as whatever report was open.
+
+**Worked examples, every one of which reads as a mistake until the reason lands:**
+
+| looks like | is |
+| --- | --- |
+| *"stupid spaghetti code at first glance"* — the identification GEDCOM doing entity resolution **and** minting entry points | one mechanism, two purposes, **and that is the point**: *"it reduces redundancy"*. A second roster would have been the redundancy |
+| a report file that **overwrites** every batch instead of accumulating | *"don't make it accumulate overwriting is the intended functionality lol"* — it is a handoff, not a history |
+| **no** already-opened filter on seed batches | *"I don't know what the already open filter is for… I feel like it might be overcomplicating things"* — the filter's bug once cut 778 candidates to 7. Re-opening a tab costs one glance |
+| a **description** on a name item, against a categorical no-descriptions rule | the description IS the deduplication: two undescribed `Olsdatter` items are both legal, a second described one is refused |
+| counting a descendant **twice** when two lines reach them | *"somebody reachable down two lines counts twice"* — the question is how many lines come down, and de-duplicating makes a wide intermarried descent look narrow |
+| label edits in **descending QID order**, newest first | she raised the backlog objection herself and dismissed it: *"making an item very recently that has an error in it looks worse than an item that I made a long time ago having an error in it"* |
+| a generation suffix moved to the **end** rather than fixed in place | *"regular ones go Sr Jr III etc always as a suffix"* — and a regnal ordinal, which looks identical, must **not** move |
+
+**Her tell for when this is happening:** *"Lemme guess safety thing you made up."* If a rule in the
+code has no sentence of hers behind it, that is what it is.
+
+**What to do instead of improving it.** Implement the odd thing exactly. If it genuinely cannot
+work, say which mechanism fails and why — § *NEVER SAY YOU CANNOT DO SOMETHING YOU HAVE NOT TRIED*.
+If two readings of her words are possible, that is `AskUserQuestion` — § *If you are not sure what
+she wants, ASK*. What is never right is quietly shipping the version that makes sense to me: she
+loses the property she designed for and finds out later, from the damage.
+
 ### Do not grab the first artifact that vaguely matches. That is how legacy becomes algorithm
 
 **Emma, 2026-08-27, naming the actual failure after I kept answering a different one:**
