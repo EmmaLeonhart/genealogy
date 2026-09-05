@@ -27,6 +27,22 @@ cluster, not a claim about that Geni profile.
 measure the label format rather than Wikidata's holdings. Those clusters get `not-searchable`,
 which is an honest third answer and not a zero.
 
+**⛔ THERE IS NO `verdict` COLUMN AND THERE MUST NOT BE ONE.** The first run had one, and it was
+wrong in *both* directions on the same table:
+
+- **False negative.** The Axumite cluster read `no hit by name`, 0 of 12 — see `forms()`. A
+  prefix search cannot match a compound Geni label.
+- **False positive.** The 李 Lee cluster read `items exist`, 6 of 12, on
+  `Alice Chung -> Q98293885 (researcher)`, `Dave Lee -> Q1691840 (British DJ and house music
+  producer)` and `Barbara Weil -> Q88846 Barbara Weiler (German politician)`. Those are living
+  strangers who share a common surname with Geni-redacted people. A word that summarised the
+  count asserted an identity nothing had established.
+
+So the columns are `searched`, `with_hit` and `examples`, and the examples carry the hit's own
+**description** because that is what separates `Scorpion I -> Q318613 (predynastic Egypt
+pharaoh)` from `Dave Lee -> (British DJ)`. Reading them is the human's job, which is what
+`CLAUDE.md` § *"Analyse this" means build a CSV* asks for: the census, then a sample read by eye.
+
 Writes `reports/eccentric-cluster-wikidata-check.tsv`.
 """
 from __future__ import annotations
@@ -43,6 +59,8 @@ import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from namemodel import drop_title_tail                       # noqa: E402 - after sys.path
 MEMBERS = ROOT / "reports" / "eccentric-cluster-members.tsv"
 OUT = ROOT / "reports" / "eccentric-cluster-wikidata-check.tsv"
 
@@ -77,6 +95,29 @@ def searchable(label: str) -> bool:
     if not label or NOT_A_NAME.match(label) or not LATIN.match(label):
         return False
     return len(label) >= 4
+
+
+def forms(label: str):
+    """The strings worth putting to `wbsearchentities` for one person, best first.
+
+    **`wbsearchentities` is a PREFIX search over labels and aliases, not a fuzzy one**, and that
+    is what made the first run report `0 of 12` for the Axumite cluster — the one Emma had
+    already said *"Axum certainly have qids lol"* about. Geni writes `Makeda Queen of Sheba` and
+    `Solomon King of Israel`; Wikidata's labels are `Queen of Sheba` and `Solomon`, so the
+    compound string prefix-matches nothing and the miss measured the query format rather than
+    Wikidata's holdings. It is the § *check the separator before believing a distribution*
+    family: an instrument reporting a clean number about itself.
+
+    `namemodel.drop_title_tail` already knows this — it is the repo's own list, built for the
+    `P735` emitters, and it takes `Makeda Queen of Sheba` to `Makeda` and `Sahel IV King of
+    Axum` to `Sahel IV`. Importing it rather than restating it is § *One place*.
+    """
+    label = label.strip()
+    out = [label]
+    stripped = drop_title_tail(label).strip()
+    if stripped and stripped != label:
+        out.append(stripped)
+    return out
 
 
 def search(term: str):
@@ -118,32 +159,37 @@ def main() -> int:
               flush=True)
         if not pool:
             rows.append({"cut": CUT, "rank": rank, "people": len(members),
-                         "searched": 0, "with_hit": 0, "verdict": "not-searchable",
-                         "examples": ""})
+                         "searched": 0, "with_hit": 0, "examples": ""})
             continue
         hits, examples, failed = 0, [], 0
         for m in pool:
-            found = search(m["label"])
-            time.sleep(PAUSE)
-            if found is None:
+            found, failure = None, False
+            for term in forms(m["label"]):
+                got = search(term)
+                time.sleep(PAUSE)
+                if got is None:
+                    failure = True
+                    break
+                if got:
+                    found = (term, got[0])
+                    break
+            if failure:
                 failed += 1
                 continue
             if found:
                 hits += 1
-                top = found[0]
+                term, top = found
+                via = "" if term == m["label"].strip() else f" [searched {term!r}]"
                 examples.append(f"{m['label']} -> {top['id']} {top.get('label', '')}"
-                                f" ({top.get('description', '')})".strip())
+                                f" ({top.get('description', '')}){via}".strip())
         searched = len(pool) - failed
-        verdict = ("request-failed" if searched == 0
-                   else "items exist" if hits * 2 >= searched
-                   else "some items" if hits else "no hit by name")
-        print(f"    {hits}/{searched} named members match an item -- {verdict}", flush=True)
+        print(f"    {hits}/{searched} names match an item", flush=True)
         rows.append({"cut": CUT, "rank": rank, "people": len(members),
-                     "searched": searched, "with_hit": hits, "verdict": verdict,
+                     "searched": searched, "with_hit": hits,
                      # Sorted so the column is a pure function of its input.
                      "examples": " | ".join(sorted(examples)[:5])})
 
-    fields = ["cut", "rank", "people", "searched", "with_hit", "verdict", "examples"]
+    fields = ["cut", "rank", "people", "searched", "with_hit", "examples"]
     tmp = OUT.with_suffix(".tsv.tmp")
     with open(tmp, "w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n")
