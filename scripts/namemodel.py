@@ -1073,7 +1073,7 @@ def _same_name(stem: str, given: str) -> bool:
     return a == b or a.rstrip("s") == b.rstrip("s")
 
 
-def patronymic_or_surname(token: str, father_name: str) -> str:
+def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "") -> str:
     """`"patronymic"` or `"family"` for a `-sen`/`-son` token, using the FATHER.
 
     **Emma's test, 2026-08-26:** *"If father has -son or -sen then it's a surname lol that's
@@ -1101,6 +1101,28 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
 
     Without a father this returns `"patronymic"`, which is the behaviour every existing caller
     already has.
+
+    **`also_known_as` is EVERY OTHER SPELLING the father is recorded under, and it feeds the
+    given-name half ONLY.** Emma, 2026-09-05, on `Q141312682` *Zacharias Olai Plantin*:
+    *"he got Olofsson as a fucking surname"*. His father is `Olaus Petri Niurenius` — the
+    Latin form Swedish clergy are recorded under — and `_skeleton("olof")` is `olf` against
+    `_skeleton("olaus")` `ols`, so the stem matched nothing and a textbook patronymic came out
+    as a `P734` *family name* with the *birth name* role. Geni held the answer the whole time:
+    the same father's record carries `Olaus Persson` as an alias and `Olof Persson` in `nick`.
+
+    **Only the given-name half, and the split is what makes it safe.** Run over the whole
+    corpus, feeding the extra spellings to *both* halves moved **1,430 tokens family ->
+    patronymic and 1,351 the other way**, and the second direction was wrong every time it was
+    read: the father's aliases can carry a patronymic of his own spelled differently
+    (`Ola Olsen Løland` also recorded `Olson`), and the *"father carries the same token, so it
+    is inherited"* test then fires on a spelling rather than on the name he went by. Feeding
+    them to the given-name test alone gives **1,480 family -> patronymic and 0 the other way**
+    — monotone, in the direction that can only recognise a patronymic it was missing.
+
+    The sample reads as one phenomenon, Latin and vernacular for one man: `Israel Olofsson` of
+    `Olaus Andreæ Angermannus` (also `Olof Andersson`), `Brita Nilsdotter Plantin` of
+    `Nicolaus Olai Plantin` (also `Nils`), `Kerstin Hansdotter Benedicti` of
+    `Johannes Benedicti` (also `Hans`), `Cnut Sweynsson` of `Svend Haraldssøn` (also `Sweyn`).
     """
     if not father_name:
         return "patronymic"
@@ -1113,6 +1135,9 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
         return "patronymic"
     raw = m.group(1).casefold()
     stem = raw.rstrip("s")
+    # The other spellings join the GIVEN names and nothing else -- see the docstring: they are
+    # evidence about which name the father bore, never about which token he was called by.
+    parts += [t for t in re.split(r"\s+", (also_known_as or "").strip()) if t]
     givens = [t.casefold() for t in parts if not is_patronymic(t)]
     for given in givens:
         g = given.rstrip("s")
@@ -1174,7 +1199,8 @@ def without_nickname(label, fields):
 
 
 def classify_fields(givn: str, surn: str, nick: str = "",
-                    marnm: str = "", father_name: str = "") -> list[tuple[str, str, int]]:
+                    marnm: str = "", father_name: str = "",
+                    father_aka: str = "") -> list[tuple[str, str, int]]:
     """`(token, usage, ordinal)` from the GEDCOM name FIELDS.
 
     This is the one to call. `classify()` below takes a rendered label and survives
@@ -1220,7 +1246,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             out.append((token, shape, 0))
             continue
         if is_patronymic(token):
-            out.append((token, patronymic_or_surname(token, father_name), 0))
+            out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
         else:
             ordinal += 1
             out.append((token, "given", ordinal))
@@ -1234,7 +1260,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             out.append((token, shape, 0))
             continue
         if is_patronymic(token):
-            out.append((token, patronymic_or_surname(token, father_name), 0))
+            out.append((token, patronymic_or_surname(token, father_name, father_aka), 0))
         else:
             out.append((token, "family", 0))
 
@@ -1316,7 +1342,7 @@ def classify(label: str) -> list[tuple[str, str, int]]:
 
 
 def statements_for(label, plan, geni_id, father_qid=None, fields=None,
-                   sex="", father_name=""):
+                   sex="", father_name="", father_aka=""):
     """(statement lines, notes) for one person's name.
 
     Each line is `(property, value, qualifiers)` with qualifiers as
@@ -1367,7 +1393,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # still the answer when the father is unknown.
         tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
                                  fields.get("nick", ""), fields.get("marnm", ""),
-                                 father_name=father_name)
+                                 father_name=father_name, father_aka=father_aka)
     else:
         tokens = classify(label)
 

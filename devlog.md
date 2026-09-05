@@ -28231,3 +28231,101 @@ The mechanical half is automated; the naming stays a decision.
 `scripts/file-geni-downloads.py` moves captures to `geni-paths/`, parsed chains to `paths/` and
 the results TSV to `reports/`. It refuses to overwrite, and it names but never touches a `.ged`
 or a `.zip` — filing an export is hers and a batch goes together.
+
+## 2026-09-05 — the patronymic items it creates now carry their source names
+
+**Emma:** make the daily generator properly add the source names to the patronymic items it
+makes. It made none: every patronymic `CREATE` in `build-garborg-name-items.py` was labels,
+`Den "patronymic"` and `P31 Q110874` — the derivation was absent, and it is the one property on
+a patronymic item that is not decoration.
+
+Her own resolution algorithm reads exactly that property
+(`scripts/build-patronymic-items.py`): *"the patronymic resolves to a patronymic NAME ITEM /
+that item records the given names it derives from (its own P144 based on, MULTI-VALUED) / the
+parent carries a given name OBJECT / parent's P735 item among the P144 values? -> emit P5056"*.
+So every item this generator has ever minted is inert — nothing can resolve a bearer to it —
+and that is what *"it requires well developed patronymic objects we currently lack"* meant.
+
+The targets come from `reports/patronymic-items-to-create.tsv`, which already resolved them:
+**4,781 tokens of 6,752 have at least one**, made by the single string comparison her design
+allows — the token's stem against the given names of the fathers who actually bear it in our
+tree — with an ambiguous or item-less given name left out rather than guessed. Multi-valued,
+her ruling, so every attesting given-name item is emitted; `mattsson` carries twelve.
+
+Measured on the real batch, with the live duplicate check stubbed because this sandbox's proxy
+blocks `wbsearchentities` (460 tokens were HELD by that, which is the guard working):
+
+    Jonasdatter   patronymic   LAST P144 Q14436586 Jone · LAST P144 Q2246251 Jens
+    Pederson      patronymic   LAST P144 Q10622039 Peder · LAST P144 Q15897204 Petter
+    Nord-Varhaug  family       unchanged — this is patronymics only
+
+Those spellings are `namemodel._skeleton` folding as designed (*"Nielsdatter from Nils,
+Pettersdotter from Peter"*), not a miss. What the plan does drop is the ambiguous one:
+`Jonas(2)` is two items, so `Jonasdatter` gets `Jone` and `Jens` and not `Jonas`.
+
+A patronymic created with no resolved derivation is still created and is **named in the run
+output**, not silently minted: an inert item that looks like a done one is the failure this
+whole change is against.
+
+**Found while running it, not fixed here:** the block that adds descriptions to name items
+that already exist calls `get(...)` with a `ua` that is defined nowhere in the file, so every
+one of its 137 chunks dies on a `NameError` and it prints *"0 of them have no English
+description; 6,801 already do"* — an instrument reporting about itself. It has never run since
+it was written. NEEDS-DECISION: the fix is one line, and it turns on an uncapped emitter that
+would put a `Den` on every one of those 6,801 items that lacks one, in a batch whose creation
+cap is 3 a day. How many that is cannot be measured here — the proxy blocks Wikidata.
+
+## 2026-09-05 — a Latinised father made his son's patronymic a surname
+
+**Emma, on `Q141312682` *Zacharias Olai Plantin*:** *"he got Olofsson as a fucking surname"* —
+`P734` *family name* `Olofsson`, qualified *birth name*. He is Zacharias, son of Olaus, and
+`Olofsson` is a patronymic.
+
+**The father is recorded in Latin and the son's patronymic in the vernacular.**
+`namemodel.patronymic_or_surname` asks whether the token's stem matches the father's given
+name; the father's label is `Olaus Petri Niurenius`, and `_skeleton("olof")` is `olf` against
+`_skeleton("olaus")` `ols`. No match, so the fallthrough called it an inherited surname —
+which is the branch added on 2026-08-31 for `Fersen`, doing exactly its job on a case it could
+not see. Swedish clergy of this period are all written this way: `Nicolaus Olai Plantin`,
+`Johannes Benedicti`, `Petrus Martini`, `Bartholdus Nicolai Duræus`.
+
+**Geni held the answer and nothing read it.** The same father's record carries `Olaus Persson`
+as an alias and **`Olof Persson` in `nick`** — the vernacular form, in our own corpus. The
+emitters passed one string, `label_en`, which for a man who already has an item is *Wikidata's*
+label, i.e. the Latin one.
+
+So `patronymic_or_surname` takes `also_known_as` — every other spelling the father is recorded
+under — and both emitters now assemble it from `alias_names`, `further_latin_names`, `givn` and
+`nick`. No Latin-to-vernacular table was written: the equivalence is in the data.
+
+**It feeds the GIVEN-NAME half only, and that split is the whole of the safety.** Measured over
+all 1,117,734 people with a recorded father:
+
+| | family -> patronymic | patronymic -> family |
+| --- | ---: | ---: |
+| extra spellings on both halves | 1,430 | **1,351** |
+| given-name half only | **1,480** | **0** |
+
+The second column is why. The father's aliases can carry a patronymic of his own spelled
+differently — `Ola Olsen Løland` is also recorded `Olson` — and Emma's *"father carries the
+same token, so it is inherited"* test then fires on a spelling rather than on what he was
+called. Restricted to the given-name half the change is monotone: it can only recognise a
+patronymic it was already missing.
+
+Reading the sample, every one is the same phenomenon: `Israel Olofsson` of
+`Olaus Andreæ Angermannus` (also `Olof Andersson`), `Brita Nilsdotter Plantin` of
+`Nicolaus Olai Plantin` (also `Nils`), `Kerstin Hansdotter Benedicti` of `Johannes Benedicti`
+(also `Hans`), `Cnut Sweynsson` of `Svend Haraldssøn` (also `Sweyn`), `Per Persson` of
+`Petrus Martin Martini Högström` (also `Per`).
+
+**A whitespace-only `also_known_as` is why the first measurement showed 1,351 the wrong way.**
+`patronymic_or_surname` returns `patronymic` for an empty father name and falls through to
+`family` for a non-empty one with no usable words, so a father with no name at all — joined
+into `"   "` — flipped from the safe default to `family` for 1,351 people. The words are
+collected before joining now, so nothing becomes a string of spaces.
+
+**Not fixed, and it is the same person's name:** `Olai` in his `_MARNM` is the Latin genitive
+patronymic *son of Olaus* and is still read as a family name, as are `Petri`, `Benedicti`,
+`Nicolai`, `Martini` and `Engelberti` on his relatives. That is a patronymic FORM the model
+does not know, per her 2026-09-04 rule, and it needs its own measurement rather than being
+folded into this one.
