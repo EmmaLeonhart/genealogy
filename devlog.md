@@ -27814,3 +27814,42 @@ themselves.
 `reports/user-turns.tsv`, which is her own words verbatim — § *Her quoted words are never
 rewritten*. And `tests/test_wikiancestors.py::test_a_parent_with_no_geni_id_is_an_entity_
 resolution_case`, where *entity resolution* is the ordinary activity and not the file.
+
+## 2026-09-05 — the funnel was minting readings for things that are not names
+
+Emma, on the description of it: *"What the fuck is this lol"*.
+
+**What it is.** When `label_in` meets a token with no reading, `_render_token` runs the
+rule-based transliterator on it, uses the result, **and writes it into
+`reports/garborg-name-transliterations.tsv`** — the same file as her chosen readings and the
+attested ones, distinguished only by a `note` column.
+
+**The funnel itself is hers**, and so is the standard: *"If anything even remotely wants to
+generate without having katakana or Chinese characters, it goes through this thing and then adds
+the token to the library, and then continues on"*, and *"Incorrect romanization or incorrect
+representations in katakana are totally acceptable. An incorrect name is not, because half these
+words, nobody knows how they're pronounced anyway."*
+
+**That standard is about NAMES, and the funnel was not checking that a token is one.** Measured
+over its 31,163 rule-minted rows: **30,615 are name-shaped and about 548 are not** — 306 dotted
+abbreviations (`A.B.D` as `アブド`, `a.d.H` as `アド`), 221 one- and two-letter fragments (`'A`,
+`'o`, `'s`, `AF`), 16 bare lowercase letters (`i` as `イ`, which is Norwegian for *in*), 4 Roman
+numerals, and one row of pure punctuation whose reading came out **empty**.
+
+So it is right about 98% of what it sees — and **every defect she reported yesterday lived in the
+other 2%**: `III` as `イイイ`, `d.e.` as `ドエ`, `d.y.` as `ドイ`, `Jr.` as `イル`, `Sr.` as
+`スル`, `St.` as `スト`, `F.` as `フ`, `J.` as `イ`. Each was fixed as its own case; this is the
+thing they were all cases of.
+
+`_render_token` now refuses a token containing a digit, one that is punctuation only, one whose
+rendering comes out empty in any of the three languages, and — belt and braces, because
+`label_in` already consults them first — anything `ORDINAL_RE` or `INITIAL_RE` claims. Dotted
+abbreviations are left alone deliberately: `A.B.D` is somebody's recorded name token, an
+approximate reading of it is what her standard permits, and refusing costs a real person their
+label.
+
+**And the loader now prefers a curated row over a minted one whatever the file order.** That is
+the second half of yesterday's duplicate: the writer keeps one row per token, and `translit()` no
+longer lets a `by rule` row win a collision. Both halves are needed because only the `note`
+column separates a reading she chose from one a rule invented, and last-wins is not a rule about
+provenance.

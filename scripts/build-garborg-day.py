@@ -207,14 +207,32 @@ def ledger():
 
 
 def translit():
-    out = {}
+    """The token table. **A CURATED row beats a rule-minted one, whatever the file order.**
+
+    The file holds two kinds of row and only the `note` column tells them apart: readings
+    somebody attested or Emma chose, and readings `_render_token` invented. This used to be a
+    plain last-wins read, so a rule-minted row sitting later in the file silently overrode a
+    curated one — which is exactly what happened on 2026-09-04, when `d.y.` reverted to `ドイ`
+    and `Jr.` to `イル` hours after she had chosen `ジュニア`. The writer now keeps one row per
+    token, and this is the second half of that: even a file that somehow carries both, the
+    curated one wins.
+    """
+    out, from_rule = {}, set()
     with open(ROOT / "reports" / "garborg-name-transliterations.tsv",
               encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
+            token = row["token"]
+            minted = (row.get("note") or "").startswith("by rule")
+            if token in out and from_rule.isdisjoint({token}) and minted:
+                continue
             # Three languages, not two. `ko` joined the table on 2026-09-01 and 96% of the
             # 18,536 tokens carry one; a row written before that has an empty `ko` and is
             # re-rendered by the funnel like any other gap.
-            out[row["token"]] = (row["ja"], row["zh"], row.get("ko", ""))
+            out[token] = (row["ja"], row["zh"], row.get("ko", ""))
+            if minted:
+                from_rule.add(token)
+            else:
+                from_rule.discard(token)
     return out
 
 
@@ -1287,7 +1305,36 @@ def _render_token(token):
     `translit_no` is the engine, the same one `extend-transliterations.py` uses, so a token
     rendered here and a token rendered by the batch step come out identical.
     """
+    # **⛔ The funnel mints readings for NAMES. It was minting them for anything.**
+    #
+    # Emma asked for the funnel and her standard is the docstring above: an approximate katakana
+    # spelling of a name nobody can pronounce is fine. That standard is about NAMES. Applied to
+    # a token that is not one it produces confident nonsense, and because the result is written
+    # into the shared table it becomes sticky — every defect she reported on 2026-09-04 came out
+    # of here: `III` as `イイイ`, `d.e.` as `ドエ`, `d.y.` as `ドイ`, `Jr.` as `イル`, `Sr.` as
+    # `スル`, `St.` as `スト`, `F.` as `フ`, `J.` as `イ`.
+    #
+    # Measured over the 31,163 rule-minted rows: **30,615 are name-shaped and about 548 are
+    # not** — 306 dotted abbreviations (`A.B.D` as `アブド`, `a.d.H` as `アド`), 221 one- and
+    # two-letter fragments (`'A`, `'o`, `'s`, `AF`), 16 bare lowercase letters (`i` as `イ`,
+    # which is Norwegian for *in*), 4 Roman numerals, and one row of pure punctuation whose
+    # reading came out EMPTY. So the funnel is right about 98% of what it sees and the other 2%
+    # is where every one of tonight's corrections lived.
+    #
+    # A refusal here costs the person their CJK label until somebody supplies a reading, which
+    # is § *partial is worse than absent* working as intended — a missing label is recoverable
+    # and a wrong one is live.
     if not token or not any(c.isalpha() for c in token):
+        return None, None, None
+    if any(c.isdigit() for c in token):
+        return None, None, None
+    # Belt and braces on the two classes that have a RULE. `label_in` consults
+    # `labels.ordinal_readings` and `INITIAL_RE` before it ever reaches the funnel, so these
+    # should not arrive -- but the funnel writes what it makes into the shared table, and a
+    # single caller that forgets the order would poison it permanently. `III` minted here as
+    # `イイイ` once already.
+    from labels import INITIAL_RE, ORDINAL_RE
+    if ORDINAL_RE.match(token) or INITIAL_RE.match(token):
         return None, None, None
     try:
         from translit_no import translit
@@ -1300,7 +1347,12 @@ def _render_token(token):
         ko = ko_han(token) or ko_latin(token)
     except Exception:                                               # noqa: BLE001
         return None, None, None
-    return (ja, zh, ko) if ja and zh and ko else (None, None, None)
+    # An empty rendering in any of the three is a failure, not a reading: the table already
+    # carries one row whose `ja` and `zh` are blank, and a blank reaching a label either kills
+    # it or leaves a hole in the middle of a name.
+    if not (ja and ja.strip() and zh and zh.strip() and ko and ko.strip()):
+        return None, None, None
+    return ja, zh, ko
 
 
 def label_in(label, table):
