@@ -28180,3 +28180,54 @@ Over the five real captures, before and after:
 non-raw generator string: the pattern read `<[^>]*\x08id=`, matched nothing, and fell through
 to the text test — so the fix printed exactly the same wrong answer as the bug. It was caught
 by re-running the measurement rather than by reading the patch.
+
+## 2026-09-05 — `geni-extension/`, because the agent is the wrong instrument for this
+
+**Emma's design:** *"I wish we could do this through playwright or some hybrid thing. Lets say
+agentically opening up the tabs and then running an extension that we build explicitly for this
+purpose. Can't be playwright proper but the extension can basically run almost all our
+algorithms"*, then *"And adding individuals to do a forest export"* and *"All geni stuff for
+our repo"*. Playwright proper is out for the reason she gave: Geni needs her logged-in Chrome,
+and the pushpin anchor is a property of that account.
+
+**It fixes the thing `geni-paths/README.md` already diagnosed** — *"an agent gets one sampled
+snapshot per tool call at 10-20 seconds each, so it substitutes cheap DOM reads, which is
+exactly the channel that lies here. So the design must minimise observations."* A
+`MutationObserver` does not sample: the mutation that resolves the search is the trigger. And a
+content script can ask the question the saved HTML cannot — `offsetParent` and a non-zero box —
+which is the only thing that separates the real progress bar from the `display:none` template
+sitting on every profile.
+
+    manifest.json        MV3, host-limited to *://www.geni.com/*
+    background.js        the queue, tab lifecycle, pacing, results
+    content/common.js    visibility, the four states, the statistics block, the Blob save
+    content/path.js      request -> wait -> capture -> parse
+    content/export.js    Forest 5000, submit, poll the PAGE, download
+    content/router.js    the tab claims its job on load
+    popup.html/js        paste ids, Load, Start, Stop, Save results
+
+**The parser is validated against a live page, not asserted.** Run in-page on Arne Garborg it
+returns **34 steps**, first `6000000002457013227` Charlemagne, last the target, second *Louis I,
+The Pious* — the same 34 as `paths/charlemagne-to-arne-garborg.tsv`, which is stored in the
+opposite direction because it was saved under a different anchor. Same length, same endpoints.
+`hiddenPending true / pendingVisible false` on the same page is the state reader working.
+
+**Two Geni limits are encoded as limits and not as settings.** Exports run one at a time
+(*"That isn't my decision thats geni"*) so `EXPORT_CONCURRENCY` is 1 and is absent from the
+panel; and a submitted export cannot be cancelled, so Stop stops opening tabs and says so. An
+option that cannot be carried out is worse than a missing one.
+
+**The stagger is an alarm, not a sleep.** An MV3 service worker is torn down when idle and a
+pending `setTimeout` dies with it — a 100-target run would stop somewhere in the middle and look
+exactly like a run that finished. `chrome.alarms` survives the teardown; the `setTimeout` stays
+for sub-30s staggers, since Chrome clamps alarms. Double firing is harmless.
+
+**What it deliberately does not do: create the placeholder individual.**
+`docs/export-seed-rules.md` is a five-tier preference order resting on whether a patronymic
+names a father and whether a Nordic farm name is a surname, with a *bail on anything weird*
+rule — because the wrong call creates a person on a live site carrying other people's trees.
+The mechanical half is automated; the naming stays a decision.
+
+`scripts/file-geni-downloads.py` moves captures to `geni-paths/`, parsed chains to `paths/` and
+the results TSV to `reports/`. It refuses to overwrite, and it names but never touches a `.ged`
+or a `.zip` — filing an export is hers and a batch goes together.
