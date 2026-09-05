@@ -21,6 +21,15 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   eccentric points, the same one § *"Not related to" does NOT mean not related* uses. Do not
   start it early and do not invent the gate's threshold — that is hers.
 
+- **Pack `geni-extension` as a `.crx` and install it by policy.** Emma, 2026-09-05, choosing the
+  relaunch now and this later: *"Relaunch and put at the end of the queue for it to be .crx and
+  policy"*. An unpacked extension needs `chrome://extensions` and Developer mode, which the
+  automation surface cannot reach, and a `--load-extension` relaunch has to be redone every time
+  Chrome cold-starts without it. A packed `.crx` registered under an `ExtensionInstallForcelist`
+  policy survives restarts, needs no Developer mode and no UI click. It wants admin rights on this
+  machine. Nothing has been investigated or attempted — `CLAUDE.md` § *"Add it to the end of the
+  queue" means WRITE IT DOWN AND STOP* governs.
+
 ## ⛔ AT THE TAIL — mass export work on the paths for disconnected Wikidata individuals
 
 **Everything established on 2026-09-03, when Emma taught the task by hand after the automated
