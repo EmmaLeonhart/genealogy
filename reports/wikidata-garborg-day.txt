@@ -66,26 +66,6 @@ Q141249620	P734	LAST	S2600	"6000000002801159071"
 #   Q141314156 Barbro Pedersdatter Kartevoll: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141314156	P734	LAST	P3831	Q28418670	S2600	"6000000006605769895"
 
-# Abrahamsson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Abrahamsson"
-LAST	Len	"Abrahamsson"
-#   set the mul label to "Abrahamsson"
-LAST	Lmul	"Abrahamsson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q17997608 Abraham
-LAST	P144	Q17997608
-#   P144 based on = Q323415 Abram
-LAST	P144	Q323415
-#   Q11858191 Erik Johan Abrahamsson af Palén: P5056 patronym or matronym = the item just created, qualified P144 based on Q97962547
-Q11858191	P5056	LAST	P144	Q97962547	S2600	"6000000007512032119"
-#   Q141313696 Jean Elias Abrahamsson Reinier: P5056 patronym or matronym = the item just created, qualified P144 based on Q141313669 Abraham Reinier
-Q141313696	P5056	LAST	P144	Q141313669	S2600	"6000000189240380827"
-
 # Andersdotter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -112,21 +92,41 @@ Q124477457	P5056	LAST	P144	Q5795477	S2600	"6000000000909142439"
 #   Q141283499 Eva Lovisa Andersdotter Knös: P5056 patronym or matronym = the item just created, qualified P144 based on Q5916162 Anders Olofsson Knös
 Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
 
-# 231 more name items are needed and wait for a later
+# Asbjørnson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Asbjørnson"
+LAST	Len	"Asbjørnson"
+#   set the mul label to "Asbjørnson"
+LAST	Lmul	"Asbjørnson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q721398 Asbjørn
+LAST	P144	Q721398
+#   P144 based on = Q15967275
+LAST	P144	Q15967275
+#   Q141216644 Rasmus Asbjørnson Nedre Rossavik: P5056 patronym or matronym = the item just created
+Q141216644	P5056	LAST	S2600	"6000000003192698959"
+#   Q141219299 Per Asbjørnson Stokka: P5056 patronym or matronym = the item just created
+Q141219299	P5056	LAST	S2600	"6000000003491933576"
+
+# 144 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Asbjørnsen (patronymic), 2 bearer(s)
-#   Asbjørnson (patronymic), 2 bearer(s)
 #   Austrått (family), 2 bearer(s)
-#   Bureus (family), 2 bearer(s)
-#   Børildsdatter (patronymic), 2 bearer(s)
-#   Claesson (patronymic), 2 bearer(s)
-#   Gestrinius (family), 2 bearer(s)
 #   Gitlaug (given), 2 bearer(s)
-#   Gunnbjørnsdatter (patronymic), 2 bearer(s)
 #   Gurie (given), 2 bearer(s)
-#   Hartmannsdorf (family), 2 bearer(s)
-#   Helgesdatter (patronymic), 2 bearer(s)
-#   ... and 219 more
+#   Jonsdotter (patronymic), 2 bearer(s)
+#   Jonæ (patronymic), 2 bearer(s)
+#   Königsson (patronymic), 2 bearer(s)
+#   Lauritsen (patronymic), 2 bearer(s)
+#   Malmeim (family), 2 bearer(s)
+#   Mattsson (patronymic), 2 bearer(s)
+#   Monsen (patronymic), 2 bearer(s)
+#   Nor-Kolnes (family), 2 bearer(s)
+#   Numers (family), 2 bearer(s)
+#   ... and 132 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -142,89 +142,71 @@ Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   15 people, 40 edits; 2376 edits held for a later run
-#   across 682 more people. A repeat is a no-op, so nothing is lost.
+#   15 people, 31 edits; 2345 edits held for a later run
+#   across 667 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141216490 Malli Svensdatter Lura: set the ja label to "マリ・スヴェンスダッテル・ルーラ"
-Q141216490	Lja	"マリ・スヴェンスダッテル・ルーラ"
-#   set the zh label to "马利·斯文斯达特·卢拉"
-Q141216490	Lzh	"马利·斯文斯达特·卢拉"
-#   set the ko label to "말리 스벤스다테르 루라"
-Q141216490	Lko	"말리 스벤스다테르 루라"
-#   Q141216483 Karen Malena Rasmusdatter Tjelta: add a mul alias "Karen Malena Rasmusdatter Pighaug"
-Q141216483	Amul	"Karen Malena Rasmusdatter Pighaug"
-#   set the ja label to "カレン・マレーナ・ラスムスダッテル・トイェルタ"
-Q141216483	Lja	"カレン・マレーナ・ラスムスダッテル・トイェルタ"
-#   set the zh label to "凯伦·马莱纳·拉斯穆斯达特·特耶尔塔"
-Q141216483	Lzh	"凯伦·马莱纳·拉斯穆斯达特·特耶尔塔"
-#   set the ko label to "카렌 마레나 라스무스다테르 첼타"
-Q141216483	Lko	"카렌 마레나 라스무스다테르 첼타"
-#   Q141216481 Jon Tørresson Soma: set the ja label to "ジョン・トレソン・ソマ"
-Q141216481	Lja	"ジョン・トレソン・ソマ"
-#   set the zh label to "乔恩·托雷松·索马"
-Q141216481	Lzh	"乔恩·托雷松·索马"
-#   set the ko label to "존 퇴르레손 소마"
-Q141216481	Lko	"존 퇴르레손 소마"
-#   Q141216476 Jon Jonsson Vatne: set the ja label to "ジョン・ヨンソン・ヴァトネ"
-Q141216476	Lja	"ジョン・ヨンソン・ヴァトネ"
-#   set the zh label to "乔恩·永松·瓦特内"
-Q141216476	Lzh	"乔恩·永松·瓦特内"
-#   set the ko label to "존 존손 바트네"
-Q141216476	Lko	"존 존손 바트네"
-#   Q141216470 Govert Jonson Årsvoll: add a mul alias "Govert Jonson Sveinsvoll"
-Q141216470	Amul	"Govert Jonson Sveinsvoll"
-#   set the ko label to "고베르트 존손 오르스볼르"
-Q141216470	Lko	"고베르트 존손 오르스볼르"
-#   Q141216468 Erik Hansson Gausland: set the ja label to "エリック・ハンソン・ガウスランド"
-Q141216468	Lja	"エリック・ハンソン・ガウスランド"
-#   set the zh label to "埃里克·汉松·加乌斯兰德"
-Q141216468	Lzh	"埃里克·汉松·加乌斯兰德"
-#   set the ko label to "에리크 한손 가우스란드"
-Q141216468	Lko	"에리크 한손 가우스란드"
-#   Q141216461 Daniel Andersson: set the ja label to "ダニエル・アンデション"
-Q141216461	Lja	"ダニエル・アンデション"
-#   set the zh label to "丹尼尔·安德松"
-Q141216461	Lzh	"丹尼尔·安德松"
-#   set the ko label to "다니엘 안데르손"
-Q141216461	Lko	"다니엘 안데르손"
-#   Q141216459 Astrid Grimelund Wendt: set the zh label to "阿斯特丽德·格里梅伦德·温特"
-Q141216459	Lzh	"阿斯特丽德·格里梅伦德·温特"
-#   set the ko label to "아스트리드 그리메룬드 웨느드트"
-Q141216459	Lko	"아스트리드 그리메룬드 웨느드트"
-#   Q141216458 Asbjørn Gunnarson Bø: set the zh label to "阿斯布约尔恩·古纳尔松·鲍伊"
-Q141216458	Lzh	"阿斯布约尔恩·古纳尔松·鲍伊"
-#   set the ko label to "아스브죄르느 군나르손 뵈"
-Q141216458	Lko	"아스브죄르느 군나르손 뵈"
-#   Q141216456 Anna Helgesdotter Opstad: set the ko label to "안나 헬게스도테르 오프스타드"
-Q141216456	Lko	"안나 헬게스도테르 오프스타드"
-#   Q141216455 Anders Persson: set the zh label to "安德斯·佩尔松"
-Q141216455	Lzh	"安德斯·佩尔松"
-#   Q141216454 Alice Lillian Tunheim Nelson: add a mul alias "Alice Lillian Horton"
-Q141216454	Amul	"Alice Lillian Horton"
-#   set the zh label to "爱丽丝·利利安·通海姆·纳尔逊"
-Q141216454	Lzh	"爱丽丝·利利安·通海姆·纳尔逊"
-#   set the ko label to "아리케 릴리안 툰헤임 넬손"
-Q141216454	Lko	"아리케 릴리안 툰헤임 넬손"
-#   Q141216453 Aagot Garborg Koloboff: add a mul alias "Aagot Engebretsen"
-Q141216453	Amul	"Aagot Engebretsen"
-#   set the ko label to "아아고트 가르보르그 코로보프"
-Q141216453	Lko	"아아고트 가르보르그 코로보프"
-#   Q141216408 Unn Mørck: add a mul alias "Unn (Bitten) Garborg"
-Q141216408	Amul	"Unn (Bitten) Garborg"
-#   set the ja label to "ウンン・モルク"
-Q141216408	Lja	"ウンン・モルク"
-#   set the zh label to "温·莫尔克"
-Q141216408	Lzh	"温·莫尔克"
-#   set the ko label to "운느 뫼르크"
-Q141216408	Lko	"운느 뫼르크"
-#   Q141216406 Tabitha Tollefsdatter Johnson: add a mul alias "Tabitha Tollefsdatter Tunheim"
-Q141216406	Amul	"Tabitha Tollefsdatter Tunheim"
-#   set the ja label to "タビサ・トレフスダッテル・ジョンソン"
-Q141216406	Lja	"タビサ・トレフスダッテル・ジョンソン"
-#   set the zh label to "塔比塔·托莱夫斯达特·约翰逊"
-Q141216406	Lzh	"塔比塔·托莱夫斯达特·约翰逊"
-#   set the ko label to "타비타 톨레프스다테르 조흐느손"
-Q141216406	Lko	"타비타 톨레프스다테르 조흐느손"
+#   Q141216405 Tabite Tollefsdotter Tunheim: set the ko label to "타비테 톨레프스도테르 툰헤임"
+Q141216405	Lko	"타비테 톨레프스도테르 툰헤임"
+#   Q141216404 Sigurd Sverre Ravn Talle: set the zh label to "西古德·斯韦雷·拉夫恩·塔勒"
+Q141216404	Lzh	"西古德·斯韦雷·拉夫恩·塔勒"
+#   set the ko label to "시구르드 스베르레 랍느 탈레"
+Q141216404	Lko	"시구르드 스베르레 랍느 탈레"
+#   Q141216401 Mariet Danielsdotter: set the ko label to "마리에트 다니엘스도테르"
+Q141216401	Lko	"마리에트 다니엘스도테르"
+#   Q141216400 Margreta Lauritsdatter Øvre Bjørheim: add a mul alias "Margreta Lauritsdatter Leivsen Øvre Bjørheim"
+Q141216400	Amul	"Margreta Lauritsdatter Leivsen Øvre Bjørheim"
+#   set the zh label to "马尔格雷塔·拉乌里特斯达特·奥夫雷·布约尔赫伊姆"
+Q141216400	Lzh	"马尔格雷塔·拉乌里特斯达特·奥夫雷·布约尔赫伊姆"
+#   set the ko label to "마르그레타 라우리츠다테르 욉레 브죄르헤임"
+Q141216400	Lko	"마르그레타 라우리츠다테르 욉레 브죄르헤임"
+#   Q141216399 Margareta Nilsdotter: set the zh label to "瑪格麗塔·尼尔斯多特"
+Q141216399	Lzh	"瑪格麗塔·尼尔斯多特"
+#   set the ko label to "마르가레타 닐스도테르"
+Q141216399	Lko	"마르가레타 닐스도테르"
+#   Q141216389 Jon Jonsson: set the ja label to "ジョン・ヨンソン"
+Q141216389	Lja	"ジョン・ヨンソン"
+#   set the zh label to "乔恩·永松"
+Q141216389	Lzh	"乔恩·永松"
+#   set the ko label to "존 존손"
+Q141216389	Lko	"존 존손"
+#   Q141216386 Jens Wilhelm Wendt: set the zh label to "延斯·威廉·温特"
+Q141216386	Lzh	"延斯·威廉·温特"
+#   set the ko label to "젠스 위르헬므 웨느드트"
+Q141216386	Lko	"젠스 위르헬므 웨느드트"
+#   Q141216383 Ingeborg Eriksdatter Bjorland: set the zh label to "英格堡·埃里克斯达特·布约尔兰德"
+Q141216383	Lzh	"英格堡·埃里克斯达特·布约尔兰德"
+#   set the ko label to "이에보르그 에리크스다테르 브조르란드"
+Q141216383	Lko	"이에보르그 에리크스다테르 브조르란드"
+#   Q141216382 Helge Asbjørnsen Bø: set the zh label to "黑尔格·阿斯布约尔恩森·鲍伊"
+Q141216382	Lzh	"黑尔格·阿斯布约尔恩森·鲍伊"
+#   set the ko label to "헬게 아스브죄르느센 뵈"
+Q141216382	Lko	"헬게 아스브죄르느센 뵈"
+#   Q141216381 Hans Rasmussen Låge-Håland: add a mul alias "Hans Rasmussen Tvihaug"
+Q141216381	Amul	"Hans Rasmussen Tvihaug"
+#   set the zh label to "汉斯·拉斯穆森·洛盖霍兰德"
+Q141216381	Lzh	"汉斯·拉斯穆森·洛盖霍兰德"
+#   set the ko label to "한스 라스무센 로게호란드"
+Q141216381	Lko	"한스 라스무센 로게호란드"
+#   Q141216380 Hans Olsen Grøtheim: set the ko label to "한스 올센 그뢰테임"
+Q141216380	Lko	"한스 올센 그뢰테임"
+#   Q141216379 Hans Halvardsen Grøtheim: set the ko label to "한스 할바르드센 그뢰테임"
+Q141216379	Lko	"한스 할바르드센 그뢰테임"
+#   Q141216374 Halvard Assersen Grøtheim: set the ko label to "할바르드 아세르센 그뢰테임"
+Q141216374	Lko	"할바르드 아세르센 그뢰테임"
+#   Q141216368 Donald V. Schantzen: set the ja label to "ドナルド・V・シャントゼン"
+Q141216368	Lja	"ドナルド・V・シャントゼン"
+#   set the zh label to "唐纳德·V·尚特曾"
+Q141216368	Lzh	"唐纳德·V·尚特曾"
+#   set the ko label to "도날드 V 산트젠"
+Q141216368	Lko	"도날드 V 산트젠"
+#   Q141216363 Anne Govertsdtr. Bratland: add a mul alias "Anne Govertsdtr. Årsvoll"
+Q141216363	Amul	"Anne Govertsdtr. Årsvoll"
+#   set the ja label to "アン・ゴヴェルトスダッテル・ブラトランド"
+Q141216363	Lja	"アン・ゴヴェルトスダッテル・ブラトランド"
+#   set the zh label to "安妮·戈韦尔特斯达特·布拉特兰德"
+Q141216363	Lzh	"安妮·戈韦尔特斯达特·布拉特兰德"
+#   set the ko label to "안네 고베르츠다테르 브라트란드"
+Q141216363	Lko	"안네 고베르츠다테르 브라트란드"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have

@@ -34,26 +34,6 @@ Q141249620	P734	LAST	S2600	"6000000002801159071"
 #   Q141314156 Barbro Pedersdatter Kartevoll: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141314156	P734	LAST	P3831	Q28418670	S2600	"6000000006605769895"
 
-# Abrahamsson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Abrahamsson"
-LAST	Len	"Abrahamsson"
-#   set the mul label to "Abrahamsson"
-LAST	Lmul	"Abrahamsson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q17997608 Abraham
-LAST	P144	Q17997608
-#   P144 based on = Q323415 Abram
-LAST	P144	Q323415
-#   Q11858191 Erik Johan Abrahamsson af Palén: P5056 patronym or matronym = the item just created, qualified P144 based on Q97962547
-Q11858191	P5056	LAST	P144	Q97962547	S2600	"6000000007512032119"
-#   Q141313696 Jean Elias Abrahamsson Reinier: P5056 patronym or matronym = the item just created, qualified P144 based on Q141313669 Abraham Reinier
-Q141313696	P5056	LAST	P144	Q141313669	S2600	"6000000189240380827"
-
 # Andersdotter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -80,19 +60,39 @@ Q124477457	P5056	LAST	P144	Q5795477	S2600	"6000000000909142439"
 #   Q141283499 Eva Lovisa Andersdotter Knös: P5056 patronym or matronym = the item just created, qualified P144 based on Q5916162 Anders Olofsson Knös
 Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
 
-# 231 more name items are needed and wait for a later
+# Asbjørnson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Asbjørnson"
+LAST	Len	"Asbjørnson"
+#   set the mul label to "Asbjørnson"
+LAST	Lmul	"Asbjørnson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q721398 Asbjørn
+LAST	P144	Q721398
+#   P144 based on = Q15967275
+LAST	P144	Q15967275
+#   Q141216644 Rasmus Asbjørnson Nedre Rossavik: P5056 patronym or matronym = the item just created
+Q141216644	P5056	LAST	S2600	"6000000003192698959"
+#   Q141219299 Per Asbjørnson Stokka: P5056 patronym or matronym = the item just created
+Q141219299	P5056	LAST	S2600	"6000000003491933576"
+
+# 144 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Asbjørnsen (patronymic), 2 bearer(s)
-#   Asbjørnson (patronymic), 2 bearer(s)
 #   Austrått (family), 2 bearer(s)
-#   Bureus (family), 2 bearer(s)
-#   Børildsdatter (patronymic), 2 bearer(s)
-#   Claesson (patronymic), 2 bearer(s)
-#   Gestrinius (family), 2 bearer(s)
 #   Gitlaug (given), 2 bearer(s)
-#   Gunnbjørnsdatter (patronymic), 2 bearer(s)
 #   Gurie (given), 2 bearer(s)
-#   Hartmannsdorf (family), 2 bearer(s)
-#   Helgesdatter (patronymic), 2 bearer(s)
-#   ... and 219 more
+#   Jonsdotter (patronymic), 2 bearer(s)
+#   Jonæ (patronymic), 2 bearer(s)
+#   Königsson (patronymic), 2 bearer(s)
+#   Lauritsen (patronymic), 2 bearer(s)
+#   Malmeim (family), 2 bearer(s)
+#   Mattsson (patronymic), 2 bearer(s)
+#   Monsen (patronymic), 2 bearer(s)
+#   Nor-Kolnes (family), 2 bearer(s)
+#   Numers (family), 2 bearer(s)
+#   ... and 132 more
 
