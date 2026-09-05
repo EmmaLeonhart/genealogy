@@ -3398,36 +3398,6 @@ high-eccentricity person or cluster is a problem to close, which is what § *THE
 service areas are for. Do not record this as *"centrality is not a metric"*; it was written that
 way once and is the opposite of what she said.
 
-**Two things she asked to be tested, and the answers are about the FAMILIES, which is what
-matters.** *"whether the swedish one is properly connected here and whether the Norwegian family
-is less connected."*
-
-- **The two families connect through a 20-hop line in the Geni tree** — Arne → Bureus. It runs
-  through neither the ledger's centre nor any single person: removing any one individual leaves
-  it at 20.
-- **The Swedish family is the better-connected one, and by more than she claimed.**
-
-| | Bureätten | Arne's side (ledger − Bure) |
-| --- | ---: | ---: |
-| in the tree | 251 / 251 | 1,118 / 1,122 |
-| **outward edges per person** | **6.5** | 4.6 |
-| people with **no** outward edge | **0** | **193** |
-| edges **within** the family | **60** | 1,416 |
-| median hops to Charlemagne | 29 | 31 |
-
-**The inward figure is the surface-area story in one number.** Bure has **60** internal edges
-across 251 people — present but barely joined to each other, which is the population that produced
-the outlier batches. Arne's side has **1,416** across 1,118 and is already a family. And her
-*"doesn't have as much documented connections elsewhere"* is 193 of 1,118 sitting on **no external
-edge at all**, against **0 of 251** on the Bure side.
-
-**THE CENTRE of the ledger graph is the Aukland–Tengs–Talgje cluster, not the Bure one.** Measured
-2026-09-05 over the 733-person component: the lowest eccentricity is **22**, Bergitte
-Gunnbjørnsdatter Tengs `Q141198835`, and **0 of the 20 most central people are Bure**. They are
-Aukland, Tengs, Talgje, Mjølhus, Rossavik — the medieval Norwegian middle the spine created.
-That is consistent with § *The entry points are the BURE CLAN*: the Bure people are entry points
-because they are **unconnected to each other**, which is the opposite of central.
-
 **And on the whole programme:** *"my general perception of all this stuff is pretty good. I think
 we're doing things well with this generally."*
 
