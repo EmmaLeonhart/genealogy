@@ -557,3 +557,7 @@ out/family-structure.tsv
 # The extension signing key. NEVER commit this: the repo is public, and anyone holding
 # this key can sign an update that Chrome will accept as the same extension.
 geni-extension.pem
+
+# Build artifact of `chrome.exe --pack-extension`; the installed copy lives in
+# %LOCALAPPDATA%\geni-collector. Regenerate it, never track it.
+geni-extension.crx

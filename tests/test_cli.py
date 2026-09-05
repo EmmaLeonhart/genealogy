@@ -99,7 +99,12 @@ COMMANDS = [
     "wikidata-ancestors",
     "name-links",
     "crosscheck",
-    "entity-resolution",
+    # `entity-resolution` was deleted with `genimerge.entities` when the correspondence
+    # moved into the synoptic tree build -- CLAUDE.md § *The Wikidata link goes in the bio
+    # during the SYNOPTIC TREE BUILD*, which retires `entity_resolution.md` as a mechanism.
+    # The command is gone from `cli.py`, so listing it here made this assertion demand a
+    # subcommand that cannot exist. The test still pins the set exactly; only the
+    # expectation was stale.
     "density",
     "descendants",
     "distant",

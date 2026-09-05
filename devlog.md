@@ -28542,3 +28542,37 @@ both prose blocks list two parents. The bug that cost one bad write would have c
 `reports/geni-created-placeholders.tsv` records every profile this repo creates on Geni,
 including the erroneous one, because a write to a live site is exactly the thing that should not
 live only in a transcript.
+
+## 2026-09-05 — CI had been red since 09-03, and all five failures were one deletion's wake
+
+Last green sha was `2ee37f15` on 2026-09-03; three runs failed after it, the most recent on
+`c6f0c2c1`. Every failure traced to `genimerge.entities` and the `entity-resolution` command
+being deleted — correctly, per § *The Wikidata link goes in the bio during the SYNOPTIC TREE
+BUILD*, which retires `entity_resolution.md` as a mechanism — plus one new script.
+
+    test_cli.py:127,142          COMMANDS still listed `entity-resolution`, gone from cli.py
+    test_generated_inventories   built-batches.tsv and repo-freshness.csv listed deleted files
+    test_bot_identity.py:126     check-cluster-items-on-wikidata.py hardcoded a github.com URL
+
+**The bot-identity one is the only one that was a real defect rather than a stale artifact.**
+`check-cluster-items-on-wikidata.py` carried
+
+    UA = "genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)"
+
+which is exactly what Emma's 2026-08-18 rule forbids — *"no fucking github links in it either"* —
+because a repository URL in a constant names her repositories to anyone reading the code, and a
+description of the project does the same. It now calls `genimerge.wikidata.require_agent()`,
+which is contact-only by construction, reads `BOT_CONTACT` or the gitignored `.bot-contact`, and
+fails with a clear message rather than sending an empty agent that Wikimedia answers with a 403.
+
+**Correcting the COMMANDS list is not loosening the test.** It still pins the subcommand set
+exactly; the expectation named a command that cannot exist. Measured rather than assumed by
+reading the list out of the test with `ast` and comparing it to the live parser: **21 against
+21, nothing on either side.**
+
+Both inventories regenerated and checked against what the assertions demanded: no row in
+`built-batches.tsv` or `repo-freshness.csv` points at a file that is gone.
+
+The packed `.crx` is gitignored — it is a build artifact of `--pack-extension`, and the installed
+copy lives in `%LOCALAPPDATA%\geni-collector`. The `.pem` was already gitignored, and must stay
+so: this repo is public and that key signs updates Chrome accepts as this extension.

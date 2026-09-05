@@ -67,13 +67,23 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from namemodel import drop_title_tail                       # noqa: E402 - after sys.path
+sys.path.insert(0, str(ROOT / "src"))
+from genimerge.wikidata import require_agent               # noqa: E402 - after sys.path
 
 MEMBERS = ROOT / "reports" / "eccentric-cluster-members.tsv"
 FACTS = ROOT / "reports" / "derived-facts.csv"
 OUT = ROOT / "reports" / "eccentric-cluster-candidates.tsv"
 
 API = "https://www.wikidata.org/w/api.php"
-UA = "genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)"
+#: ⛔ THE USER-AGENT IS THE CONTACT ADDRESS AND NOTHING ELSE, and it is never written here.
+#: Emma, 2026-08-18: *"no fucking github links in it either"* -- a repository URL in a constant
+#: names her repositories to anyone reading the code, and so does a description of what the
+#: project does. `tests/test_bot_identity.py::test_no_source_file_links_a_repository` scans every
+#: file under `scripts/` and `src/genimerge/` for the host and fails the suite; this script
+#: hardcoded one and is what turned CI red.
+#: `genimerge.wikidata.require_agent()` reads BOT_CONTACT, falls back to the gitignored
+#: `.bot-contact`, and fails with a clear message rather than sending an empty agent -- which
+#: Wikimedia answers with a bare 403.
 
 #: The cut to check. 100 is where the report's distinct populations separate.
 CUT = 100
@@ -113,7 +123,7 @@ def forms(label: str):
 
 def _get(params):
     url = API + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    req = urllib.request.Request(url, headers={"User-Agent": require_agent()})
     try:
         with urllib.request.urlopen(req, timeout=45) as fh:
             return json.loads(fh.read().decode("utf-8"))
