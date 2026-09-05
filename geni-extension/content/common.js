@@ -120,3 +120,16 @@ GC.saveBlob = function (name, text, mime) {
   a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 10000);
 };
+
+/* ⛔ A MARKER THE PAGE CAN SEE, so "is the extension loaded?" is answerable in one line.
+ *
+ * A content script runs in an ISOLATED world: nothing it defines -- `GC` included -- is visible
+ * to code running in the page, so there is no way to tell a loaded extension from an absent one
+ * by looking at `window`. Chrome's own `Preferences` file does not record a `--load-extension`
+ * extension either, and `chrome://extensions` is unreachable from the automation surface.
+ *
+ * That gap cost real time on 2026-09-05: the extension sat unloaded for a whole session while
+ * work was done agentically around it, and the question was answered by asking Emma rather than
+ * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
+ * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
+document.documentElement.setAttribute("data-geni-collector", "1.0.0");
