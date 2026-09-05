@@ -48,13 +48,26 @@ GC.runExport = async function (job) {
      * than by position: a form re-ordered upstream must fail loudly, not silently export a
      * different walk. `Forest` is what follows spouse links, which is why targeted exports
      * specify it -- an `Ancestors` or `BloodTree` walk goes straight past a partner step. */
-    const walk = document.querySelector("select[name*='walk' i], select#walk");
-    if (walk) {
-      const opt = [...walk.options].find((o) => /^forest$/i.test((o.value || o.text || "").trim()));
-      if (!opt) return report({ state: "no_forest_option" });
-      walk.value = opt.value;
-      walk.dispatchEvent(new Event("change", { bubbles: true }));
-    }
+    /* ⛔ THE WALK IS RADIO BUTTONS, not a select -- measured on the live form 2026-09-05, where
+     * this code would have selected nothing and silently exported the DEFAULT walk, which is
+     * `Blood Relatives`. A targeted export that quietly changes style is worse than one that
+     * fails: `CLAUDE.md` § *When an export is meant to close a specific path, read the relation
+     * column first and pick a style that follows those link types* -- an `Ancestors` or
+     * `BloodTree` walk goes straight past a partner step that `Forest` follows.
+     *
+     * The five options render as their own labels: Blood Relatives, DNA Relatives, Ancestors,
+     * Descendants, and *Forest including connected in-law trees*. */
+    const radios = [...document.querySelectorAll("input[type=radio]")];
+    const labelOf = (r) => {
+      const byFor = r.id && document.querySelector("label[for='" + r.id + "']");
+      const txt = (byFor && byFor.textContent) ||
+                  (r.closest("label") && r.closest("label").textContent) ||
+                  (r.parentElement && r.parentElement.textContent) || "";
+      return txt.replace(/\s+/g, " ").trim();
+    };
+    const forest = radios.find((r) => /^forest/i.test(labelOf(r)));
+    if (!forest) return report({ state: "no_forest_option" });
+    if (!forest.checked) forest.click();
 
     const size = document.querySelector("input[name*='size' i], select[name*='size' i], input#size");
     if (size) {
@@ -66,8 +79,6 @@ GC.runExport = async function (job) {
       }
       size.dispatchEvent(new Event("change", { bubbles: true }));
     }
-
-    if (!walk && !size) return report({ state: "no_export_form" });
 
     const submit = [...document.querySelectorAll("input[type=submit],button[type=submit],button")]
       .find((b) => GC.visible(b) && /export|submit|create/i.test(b.textContent || b.value || ""));
