@@ -3296,23 +3296,35 @@ around them pulls them inward — so a high score can mean *we have not sampled 
 than *this person is structurally peripheral*. Two people is not a correlation and is not offered
 as one; the full version is a `genimerge.density` presence count against the file, unrun.
 
-### The Chinese legendary lineage are entry points from 2027-01-01
+### ⛔ A BLOC IS A ROSTER REFERENCE. Six people off a report is not the ancient Chinese bloc
 
-**Emma, 2026-09-03**, on the six the eccentricity report surfaced: *"those few people that you
-listed should be considered as entry points starting on January first of twenty twenty seven,
-because they are eccentric enough that I'm gonna probably want a large amount of history before I
-actually run stuff. But they're also, like, very clustered with each other."*
+**Emma, 2026-09-05:** *"the Chinese people shouldn't be in the entry points thing lol, you
+probably decided to write a more intuitive version of my program instead of following
+specifications and this is why you made bullshit."*
 
-少昊 Shaohao, 顓頊 Zhuanxu, 女修 Nüxiu, 大業 Daye, 皋陶 Gaoyao, 伯益 Bo Yi — 178 to 183 hops from
-Charlemagne, the far edge of the tree, and a **consecutive descent**, which is her "clustered with
-each other". Six roots on one chain buy far less than six independent ones; the date is a year out
-for exactly that reason, and the count is hers.
+**What was done.** Her 2026-09-03 bloc list names *"Ancient Chinese bloc"* alongside the Samaritan
+high priests, the Ethiopian and Japanese Emperors, Tanba and Izumo. Instead of a roster, **six
+individuals were hand-listed in `reports/entry-points.tsv`** — 少昊 Shaohao, 顓頊 Zhuanxu, 女修
+Nüxiu, 大業 Daye, 皋陶 Gaoyao, 伯益 Bo Yi — the six an eccentricity report happened to surface,
+none of them carrying a QID in our data.
 
-**None of the six carries a QID in our data, so none can be a root yet**, and the roster holds
-them anyway with the qid blank. `entry_points()` resolves a blank from `derived-labels.csv` at
-load, so each switches on by itself the moment the correspondence lands; until then the run prints
-an **UNRESOLVED** line naming it. A blank qid means *we hold no link* and never *no item exists* —
-§ *"Is X present?"*: whether Wikidata has an item for 少昊 is a question our store cannot answer.
+**Why that is a specification violation and not a shortcut.** § *Whole BLOCS become entry points*
+says it in the file already: **a group is a REFERENCE TO A ROSTER, never pasted ids**, which is
+the same rule that makes `subgraph_roots()` read `bureatten.csv` rather than inlining 251 QIDs.
+Hand-listing is the *intuitive* move — it is shorter, it is visible, and it looks like progress —
+and it produces a bloc defined by whatever report was open at the time rather than by what the
+bloc is.
+
+**They are removed.** `entry-points.tsv` is back to the two people she named individually and gave
+individual reasons for, Ettinger and Martin. The `ancient-chinese-bloc` row stays in
+`entry-point-groups.tsv` and correctly reports **NO ROSTER**; building one to fill the gap would
+be the same mistake a second time, and the roster is hers to specify.
+
+**The tell was visible for two days and read as a feature.** All six printed in the UNRESOLVED
+list every run — the mechanism that exists so *"a roster row that does nothing and says nothing"*
+cannot hide. Six permanent UNRESOLVED lines were treated as the timer working rather than as six
+rows that should not have been there. `unresolved_entry_points()` is now empty, which is what it
+should read when nothing is wrong.
 
 ### The entry points are the BURE CLAN, and Arne Garborg is the ONE exception
 
