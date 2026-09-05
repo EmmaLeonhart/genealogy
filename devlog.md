@@ -28005,3 +28005,71 @@ workflow under its *path* rather than its name and `run_workflow` answers *"Work
 'workflow_dispatch' trigger"* while the file looks correct on disk. The other nine were checked and
 parse. And an unset workflow input arrives as an **empty string**, not as an absent variable, so
 `os.environ.get(name, "20")` returned `""` and `int("")` killed a run.
+
+## 2026-09-05 — the daily batch runs itself from the 15th, and the runner can finally send
+
+**Emma:** *"I want to on the 15th start all of this stuff automatically"*, and, put to her as an
+`AskUserQuestion`: **the daily Garborg batch**, through **the bot-password API, what exists**.
+
+**What "what exists" turned out to be.** `scripts/wikidata-edit-run.py` logs in, takes a CSRF
+token — and then raises. Its live loop had never sent an edit: *"the edit-object → API-call
+mapping is not written yet"*, held back since 2026-08-13 because the batch format was
+NEEDS-DECISION. Her choice of what runs settled the format, so the mapping is written:
+`entity_data()` builds the `wbeditentity` payload and `Session.apply()` is the one place that
+makes the call.
+
+**The join is `scripts/qs_v1.py`, and the whole difficulty is `LAST`.** The batch is
+QuickStatements V1; the runner takes edit objects with `requires`. `LAST` is positional and
+`genimerge.editorder` shuffles, so preserving order was not an option — the dependency is made
+explicit instead. A `CREATE` and its `LAST`-subject lines fuse into one object; a `Q… P… LAST`
+line becomes its own object with `requires`, resolved at send time from what the run minted.
+
+**Measured over the real file, 771 lines:** 322 commands and 21 `CREATE`s become **85 edit
+objects**, 31 carrying `requires`, ids unique, **322 of 322 commands re-emitted** — nothing
+dropped. `runnable_order` over five seeds: 85 ordered, **0 requires-violations**. All 85 API
+payloads build offline with zero failures, and a `LAST` resolves to the minted QID.
+
+**The grammar is the one the corpus uses**, censused first: 18 command shapes, all
+`subject / target / value` plus `P<n>` qualifier and `S<n>` reference pairs. Anything outside it
+**raises** — per § *GEDCOM dates have a specification*, a parser that silently drops what it does
+not understand is how 4,459 events lost their year.
+
+**Two things the census caught that reasoning would not have.**
+
+- **The file interleaves.** `LAST`-subject lines resume *after* a `Q… P… LAST` line **15 times**
+  in one day's batch. The one-pass reader written first closed the create on the first such line
+  and rejected the file it exists for. It is two passes now — group, then identify.
+- **`wbeditentity` REPLACES an alias list.** § *The MARRIED name is the real name* puts an `Amul`
+  above every `Lmul` precisely to preserve what the item already read, *"Some of those are her
+  hand-edits"* — so a plain alias write deletes the thing the line above exists to save. Aliases
+  carry `"add": ""`; labels and descriptions do not, because a label is a replacement by
+  definition.
+
+**Two dates, not one move.** `START_DATE` 2026-09-01 gates whether this repo may edit at all;
+`AUTOMATION_START_DATE` 2026-09-15 gates whether the *schedule* sends. Both stay true, and
+collapsing them would either back-date the automation or re-lock the manual path.
+`wikidata_lockout.automation_allowed()` is the second gate, fails closed like the first, and is
+pinned to the workflow copy by `tests/test_wikidata_start_date.py`.
+
+**The schedule runs before the 15th as a dry run**, so a break in the wiring shows up on an
+ordinary morning rather than on the day. 08:07 UTC, after `pipeline.yml`'s 07:23 rebuild has
+refreshed the ledger and pushed — an earlier slot would send a batch built seven hours stale.
+
+**The receipt, and it is the part that cannot be undone by running correctly next time.**
+`reports/wikidata-edits-applied.tsv` records every applied edit as it lands. Re-sending is the
+normal case — the file regenerates four times a day, the schedule reads what is committed — so
+the same `CREATE` recurs whenever the ledger has not caught up, and without a receipt the second
+run **mints the person again**. Ids are a hash of what the edit says, not the line number, so they
+survive regeneration; the QID is kept too, because a skipped create still has to answer the `LAST`
+pointing at it. An unresolvable `LAST` refuses rather than sending the literal string, and the
+run stops on any failed edit rather than carrying on past a create whose `LAST` nothing can meet.
+
+Checked while writing: the receipt's own header parsed as a data row and reported one applied
+edit too many. Fixed and re-measured.
+
+**Stale prose removed** — `docs/wikidata-bot.md` said the mapping was NEEDS-DECISION and that the
+`schedule:` costs billable minutes on a private repo; the repo went public on 2026-09-01. The
+workflow comment claiming `tests/test_repo_invariants.py` bans a `schedule:` was also wrong: it
+bans `push:`, and `schedule` has been allowed since the repo went public.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

@@ -4131,6 +4131,73 @@ her — `reports/wikidata-geni-qid-p2600.qs`, `reports/wikidata-garborg.qs` — 
 ever been attempted through the automated path. § *A start date is not a blocker* still
 governs: build, review and commit now.
 
+### ⛔ ON 2026-09-15 THE DAILY BATCH RUNS ITSELF. Two dates, not one
+
+**Emma, 2026-09-05:** *"I want to on the 15th start all of this stuff automatically"* — and, asked
+what starts and how: **the daily Garborg batch**, sent through **the bot-password API, what
+exists**.
+
+**There are TWO dates and both stay true.** They gate different things, so collapsing them would
+either back-date the automation or re-lock the manual path:
+
+| | date | gates |
+| --- | --- | --- |
+| `START_DATE` | **2026-09-01** | whether this repo may edit Wikidata **at all**. A dispatched live run has been allowed since. |
+| `AUTOMATION_START_DATE` | **2026-09-15** | whether the **schedule** sends anything. Before it the scheduled run is a dry run. |
+
+Each is written twice — `scripts/wikidata_lockout.py` and
+`.github/workflows/wikidata-edits.yml` — because the workflow compares dates in bash before the
+module could be imported. `tests/test_wikidata_start_date.py` fails if either pair drifts, which
+is the whole reason to write them twice.
+
+**The schedule runs BEFORE the 15th anyway, as a dry run.** A gate nobody has exercised is a gate
+whose state nobody knows; running it daily means a break shows up on an ordinary morning rather
+than on the day. It is at **08:07 UTC**, chosen rather than arbitrary: `pipeline.yml` runs at
+01:23/07:23/13:23/19:23, so this lands after the 07:23 rebuild has refreshed the ledger and pushed
+the batch. An earlier slot sends a batch built on a ledger seven hours stale — § *The ledger
+refresh is PART OF THE RUN*.
+
+**`scripts/qs_v1.py` is the join, and `LAST` is the whole difficulty.** The batch is
+QuickStatements V1; the runner takes edit objects with `requires`. `LAST` is **positional** — it
+means the item the `CREATE` above minted — and `genimerge.editorder` picks at random from whatever
+is ready, which is right for independent edits and fatal for `LAST`. So the dependency is made
+explicit instead of the order preserved:
+
+- a `CREATE` and every `LAST`-**subject** line under it fuse into **one** edit object, sent as one
+  `wbeditentity new=item`. They cannot be reordered because they are no longer separate things.
+- a line whose subject is a QID and whose **value** is `LAST` becomes its own object carrying
+  `requires`, and the QID is substituted at send time. § *THE THREE LINES*: `Q… P22 LAST` is
+  ordinary, and calling it impossible cost weeks of one-way links.
+
+**The file INTERLEAVES, so a one-pass reader is wrong.** Measured 2026-09-05 on one day's batch:
+`LAST`-subject lines resume after a `Q… P… LAST` line **15 times**. A reader that closed the create
+on the first such line would reject the batch it was written for. `qs_v1` is two passes — group,
+then identify.
+
+**Aliases carry `add`; labels and descriptions do not.** `wbeditentity` REPLACES a language's alias
+list when given one plainly, and § *The MARRIED name is the real name* has every `Lmul` preceded by
+an `Amul` preserving whatever the item already read — *"Some of those are her hand-edits"*. A
+replacing alias write deletes the thing the preceding line exists to save.
+
+**⛔ THE RECEIPT IS WHAT MAKES A RE-SEND SAFE, and re-sending is the NORMAL case.**
+`reports/wikidata-edits-applied.tsv` carries `date, edit_id, kind, qid`, written as each edit lands
+and committed after the run. The daily file is regenerated four times a day and the schedule reads
+whatever is committed, so the same `CREATE` appears in two runs whenever the ledger refresh has not
+caught up with what was made. **Without the receipt the second run mints the person again**, and
+that is the one failure here that running correctly next time does not undo.
+
+Edit ids are a **hash of what the edit says**, never the line number, so an id survives the batch
+regenerating with its lines somewhere else. The receipt keeps the QID as well as the id, because a
+create that is skipped still has to answer the `LAST` pointing at it — and an unresolvable `LAST`
+**refuses** rather than sending the literal string.
+
+**`reports/wikidata-garborg-day.txt` is now in `REVIEWED_BATCHES`**, on the same terms as the
+others: the pipeline commits it and publishes it on the site every day, so what runs is a file that
+has been readable for as long as it existed.
+
+**No `summary`, on this path as on every other** — § *NO descriptions and NO edit summaries* says
+*"No `summary=` on an API call"* in as many words. The absence in `Session.apply` is deliberate.
+
 ## Long command series run in strict order
 When the user gives a long series of commands, treat it as a long series of commands to be
 executed in relatively STRICT ORDER, one after another, EVEN IF the order seems not to make

@@ -83,3 +83,69 @@ def test_nothing_in_the_gate_reaches_the_network():
         assert banned not in body.split('"""')[-1], (
             f"the start-date gate reaches for {banned!r}; it must be local only"
         )
+
+
+# ---------------------------------------------------------------------------
+# THE SECOND DATE. Emma, 2026-09-05: "I want to on the 15th start all of this
+# stuff automatically" — the daily Garborg batch, through the bot-password API.
+#
+# It is written twice for exactly the reason the first one is: the workflow's
+# `Decide what this run does` step compares dates in bash, before the module
+# could be imported even if it wanted to. Two copies of a date is the shape that
+# produced the bug this file exists for, so it gets the same pin.
+# ---------------------------------------------------------------------------
+
+
+def workflow_automation_start_date():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    m = re.search(r'^\s*AUTOMATION_START_DATE:\s*"([0-9]{4}-[0-9]{2}-[0-9]{2})"\s*$',
+                  text, re.M)
+    assert m, "no AUTOMATION_START_DATE in wikidata-edits.yml"
+    return m.group(1)
+
+
+def test_the_two_copies_of_the_automation_date_agree():
+    assert (wikidata_lockout.AUTOMATION_START_DATE
+            == workflow_automation_start_date())
+
+
+def test_the_automation_date_is_a_real_date():
+    datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
+
+
+def test_the_automation_starts_no_earlier_than_editing_does():
+    """A schedule that went live before editing was allowed would be a gate that
+    opens a door behind a locked one. Ordering them is cheaper than reasoning
+    about which check fires first."""
+    assert (datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
+            >= datetime.date.fromisoformat(wikidata_lockout.START_DATE))
+
+
+def test_the_automation_is_locked_the_day_before_and_open_on_the_day():
+    start = datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
+    before, why = wikidata_lockout.automation_allowed(
+        start - datetime.timedelta(days=1))
+    assert not before, why
+    on, why = wikidata_lockout.automation_allowed(start)
+    assert on, why
+
+
+def test_the_automation_gate_also_fails_closed(monkeypatch):
+    monkeypatch.setenv("WIKIDATA_AUTOMATION_START_DATE", "the-fifteenth")
+    allowed, why = wikidata_lockout.automation_allowed(datetime.date(2099, 1, 1))
+    assert not allowed
+    assert "fail-closed" in why
+
+
+def test_the_scheduled_run_sends_the_daily_batch_and_a_receipt():
+    """The two things that make the schedule safe to leave alone.
+
+    The batch must be the daily file rather than whatever a dispatch defaults to,
+    and the receipt must be passed — without it a re-sent batch mints the same
+    people again, which is the one failure of this design that cannot be undone
+    by running it correctly next time.
+    """
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert 'DAILY_BATCH: reports/wikidata-garborg-day.txt' in text
+    assert "--receipt" in text
+    assert 'echo "batch=$DAILY_BATCH"' in text

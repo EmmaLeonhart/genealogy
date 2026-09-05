@@ -38,9 +38,11 @@ import argparse
 import json
 import os
 import sys
+import time
 import urllib.parse
 import urllib.request
 
+import qs_v1
 import wikidata_lockout
 from bot_identity import BOT_USER_AGENT
 from http.cookiejar import CookieJar
@@ -61,7 +63,16 @@ REVIEWED_BATCHES = {
     "out/wikidata/unlinked-items.json",
     "out/wikidata/priority-chain.json",
     "out/wikidata/edits.json",
+    # The daily Garborg batch. Emma, 2026-09-05, choosing what starts running by
+    # itself on the 15th: "The daily Garborg batch", sent through the bot-password
+    # API. It qualifies as reviewed on the same terms as the others -- it is
+    # committed to the repo by the pipeline and published on the site every day,
+    # so what runs is a file that has been readable for as long as it existed.
+    "reports/wikidata-garborg-day.txt",
 }
+
+#: The Gregorian calendar, which every date in this project's batches uses.
+GREGORIAN = "http://www.wikidata.org/entity/Q1985727"
 
 
 class Session:
@@ -103,8 +114,195 @@ class Session:
     def csrf(self) -> str:
         return self._call(action="query", meta="tokens")["query"]["tokens"]["csrftoken"]
 
+    def apply(self, edit: dict, token: str, minted: dict, *, delay: float) -> str:
+        """Send one edit object. Returns the QID it created or changed.
+
+        One `wbeditentity` call per object, which is what makes an object the unit
+        of atomicity: a create carries its labels, aliases, descriptions and claims
+        in a single request, so there is no state where the item exists unlabelled.
+
+        **No `summary`.** `CLAUDE.md` § *NO descriptions and NO edit summaries* is
+        categorical and covers the API path explicitly: *"No `summary=` on an API
+        call"*. The absence is deliberate; do not add one.
+        """
+        data = entity_data(edit, minted)
+        params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+                  "data": json.dumps(data, ensure_ascii=False)}
+        if edit["kind"] == "create":
+            params["new"] = "item"
+        else:
+            params["id"] = edit["qid"]
+
+        for attempt in range(4):
+            res = self._call(action="wbeditentity", _post=params)
+            err = res.get("error")
+            if not err:
+                break
+            # maxlag is the replication lag telling a bot to come back later. It is
+            # the one error worth retrying; everything else is about this edit.
+            if err.get("code") == "maxlag" and attempt < 3:
+                wait = float(err.get("lag") or 5) + 5
+                print(f"    maxlag {err.get('lag')}s -- waiting {wait:.0f}s")
+                time.sleep(wait)
+                continue
+            raise EditFailed(f"{edit['id']}: {err.get('code')}: {err.get('info')}")
+        else:
+            raise EditFailed(f"{edit['id']}: still lagged after 4 attempts")
+
+        qid = res.get("entity", {}).get("id")
+        if not qid:
+            raise EditFailed(f"{edit['id']}: no entity id came back: {res}")
+        if edit["kind"] == "create":
+            minted[edit["id"]] = qid
+        time.sleep(delay)
+        return qid
+
+
+class EditFailed(RuntimeError):
+    """One edit the API refused. Never swallowed — the run stops on it."""
+
+
+def read_receipt(path: Path) -> dict:
+    """What earlier live runs already applied: ``{edit id: qid}``.
+
+    **This is what makes the batch safe to re-send**, and re-sending is the normal
+    case rather than an accident: the daily file is regenerated four times a day
+    and the schedule reads whatever is committed, so the same `CREATE` can appear
+    in two consecutive runs whenever the ledger refresh has not yet caught up with
+    what was made. Without a receipt the second run mints the person again.
+
+    The QID is kept, not just the id, because a create that is skipped still has to
+    resolve: a statement `requires`-ing it needs the QID that create returned, and
+    guessing is exactly what `_datavalue` refuses to do.
+    """
+    if not path.exists():
+        return {}
+    applied = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.startswith("#"):
+            continue
+        parts = line.split("\t")
+        # The header is a row like any other to a naive split, and counting it made
+        # the run report one more applied edit than existed.
+        if len(parts) >= 4 and parts[1] != "edit_id":
+            applied[parts[1]] = parts[3]
+    return applied
+
+
+def append_receipt(path: Path, edit: dict, qid: str) -> None:
+    """One row per applied edit, written as it lands rather than at the end.
+
+    A run that dies halfway has still done what it did, and a receipt written only
+    on a clean exit would say it did nothing — which is the reading that re-sends.
+    """
+    import datetime
+    path.parent.mkdir(parents=True, exist_ok=True)
+    new = not path.exists()
+    with path.open("a", encoding="utf-8", newline="") as fh:
+        if new:
+            fh.write("date\tedit_id\tkind\tqid\n")
+        stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        fh.write(f"{stamp}\t{edit['id']}\t{edit['kind']}\t{qid}\n")
+
+
+def _datavalue(value: dict, minted: dict, edit: dict) -> dict:
+    """One typed QS value as a Wikibase datavalue.
+
+    ``LAST`` resolves here and nowhere else: the edit's own `requires` names the
+    create, and `minted` carries what that create actually returned. An edit whose
+    dependency has not run in this process has no QID to substitute and must fail
+    loudly rather than send `"LAST"` as a literal.
+    """
+    kind = value["type"]
+    if kind == "item":
+        qid = value["id"]
+        if qid == "LAST":
+            needs = edit.get("requires") or []
+            if len(needs) != 1:
+                raise EditFailed(
+                    f"{edit['id']}: LAST needs exactly one `requires` to resolve, "
+                    f"got {needs}")
+            qid = minted.get(needs[0])
+            if not qid:
+                raise EditFailed(
+                    f"{edit['id']}: LAST points at {needs[0]}, which this run has "
+                    "not created. Run it in the same batch, or the value is a guess.")
+        return {"type": "wikibase-entityid",
+                "value": {"entity-type": "item", "id": qid,
+                          "numeric-id": int(qid[1:])}}
+    if kind == "string":
+        return {"type": "string", "value": value["value"]}
+    if kind == "time":
+        return {"type": "time",
+                "value": {"time": value["time"], "timezone": 0, "before": 0,
+                          "after": 0, "precision": value["precision"],
+                          "calendarmodel": GREGORIAN}}
+    if kind == "monolingualtext":
+        return {"type": "monolingualtext",
+                "value": {"text": value["text"], "language": value["language"]}}
+    raise EditFailed(f"{edit['id']}: no datavalue mapping for {kind!r}")
+
+
+def _snak(prop: str, value: dict, minted: dict, edit: dict) -> dict:
+    return {"snaktype": "value", "property": prop,
+            "datavalue": _datavalue(value, minted, edit)}
+
+
+def entity_data(edit: dict, minted: dict) -> dict:
+    """The `data` payload of a `wbeditentity` call for one edit object.
+
+    **Aliases carry `add`, labels and descriptions do not**, and the asymmetry is
+    load-bearing rather than tidy. `wbeditentity` REPLACES a language's alias list
+    when given one plainly, and `CLAUDE.md` § *The MARRIED name is the real name*
+    has every `Lmul` preceded by an `Amul` preserving whatever the item already
+    read — *"Some of those are her hand-edits"*. A replacing alias write would
+    delete the thing the preceding line exists to save. A label is a replacement by
+    definition, which is what `Lmul` means.
+    """
+    data: dict = {}
+    for lang, text in (edit.get("labels") or {}).items():
+        data.setdefault("labels", {})[lang] = {"language": lang, "value": text}
+    for lang, text in (edit.get("descriptions") or {}).items():
+        data.setdefault("descriptions", {})[lang] = {"language": lang, "value": text}
+    for lang, texts in (edit.get("aliases") or {}).items():
+        data.setdefault("aliases", {})[lang] = [
+            {"language": lang, "value": t, "add": ""} for t in texts]
+
+    claims = []
+    for claim in edit.get("claims") or []:
+        prop = claim["property"]
+        out = {"type": "statement", "rank": "normal",
+               "mainsnak": _snak(prop, claim["value"], minted, edit)}
+        quals = claim.get("qualifiers") or []
+        if quals:
+            byprop: dict = {}
+            for q in quals:
+                byprop.setdefault(q["property"], []).append(
+                    _snak(q["property"], q["value"], minted, edit))
+            out["qualifiers"] = byprop
+        refs = claim.get("references") or []
+        if refs:
+            snaks: dict = {}
+            for r in refs:
+                snaks.setdefault(r["property"], []).append(
+                    _snak(r["property"], r["value"], minted, edit))
+            # QuickStatements puts every `S…` on one line into ONE reference block,
+            # which is what "cited to this Geni id" means as a single citation.
+            out["references"] = [{"snaks": snaks}]
+        claims.append(out)
+    if claims:
+        data["claims"] = claims
+    if not data:
+        raise EditFailed(f"{edit['id']}: nothing to send")
+    return data
+
 
 def load_batch(path: Path) -> list[dict]:
+    # A QuickStatements batch is read through `qs_v1`, which is the one place that
+    # knows QS syntax. Everything downstream sees ordinary edit objects, so the
+    # `requires` ordering and the dry run work identically either way.
+    if path.suffix in (".qs", ".txt"):
+        return qs_v1.edit_objects(qs_v1.parse(path.read_text(encoding="utf-8")))
     data = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(data, dict):
         for key in ("edits", "items", "objects"):
@@ -163,6 +361,14 @@ def main() -> int:
                                         "work that is genuinely done")
     ap.add_argument("--seed", type=int, default=None,
                     help="fix the random order, for a reproducible dry run")
+    ap.add_argument("--receipt", help="TSV of what previous live runs applied. Read "
+                                      "before the run and appended after each edit. "
+                                      "This is what stops a re-sent batch creating "
+                                      "the same people twice.")
+    ap.add_argument("--delay", type=float, default=2.0,
+                    help="seconds between edits. Courtesy to Wikidata, per "
+                         "CLAUDE.md: batch where you can, do not hammer to finish "
+                         "faster. maxlag is honoured separately.")
     mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--dry-run", action="store_true", default=True)
     mode.add_argument("--live", action="store_true")
@@ -177,11 +383,25 @@ def main() -> int:
     edits = load_batch(path)
     print(f"batch {rel}: {len(edits)} edit objects, limit {limit}")
 
-    satisfied = set()
+    # The receipt drops what earlier live runs already did, and carries their QIDs
+    # forward so a skipped create can still answer a LAST that points at it.
+    receipt = Path(args.receipt) if args.receipt else None
+    already = read_receipt(receipt) if receipt else {}
+    minted: dict = dict(already)
+    if already:
+        before = len(edits)
+        edits = [e for e in edits if e["id"] not in already]
+        print(f"receipt {receipt}: {len(already)} edits already applied, "
+              f"{before - len(edits)} of this batch skipped")
+
+    satisfied = set(already)
     if args.satisfied:
-        satisfied = {ln.strip() for ln
-                     in Path(args.satisfied).read_text(encoding="utf-8").splitlines()
-                     if ln.strip()}
+        # Union, never replace: the receipt is evidence of what this account did,
+        # and a hand-supplied list is an addition to it rather than a correction.
+        satisfied |= {ln.strip() for ln
+                      in Path(args.satisfied).read_text(encoding="utf-8").splitlines()
+                      if ln.strip()}
+    if satisfied:
         print(f"{len(satisfied)} ids treated as already applied")
 
     # Order before slicing. Taking the first N in FILE order ignores `requires`,
@@ -242,17 +462,22 @@ def main() -> int:
     print(f"csrf token acquired; executing up to {limit} edits\n")
 
     done = 0
+    # Seeded from the receipt, so a create skipped as already-applied still answers
+    # the LAST that points at it.
     for e in edits[:limit]:
-        # The per-object shape is whatever the batch generator emits; this is the
-        # single place that turns it into an API call, so it changes with the
-        # generator rather than being guessed here.
-        raise SystemExit(
-            "the edit-object → API-call mapping is not written yet. "
-            "The batch format is still NEEDS-DECISION (docs/wikidata-bot.md § "
-            "Next steps); wiring it before Emma approves the sequence would be "
-            "exactly the review step this script exists to enforce."
-        )
-    print(f"{done} edits executed")
+        try:
+            qid = session.apply(e, token, minted, delay=args.delay)
+        except EditFailed as exc:
+            # Stop rather than carry on. A create that failed is a create whose
+            # LAST nothing can resolve, and the edits behind it in this run were
+            # ordered on the assumption that it landed.
+            print(f"\nSTOPPED after {done} edits: {exc}", file=sys.stderr)
+            return 1
+        done += 1
+        if receipt:
+            append_receipt(receipt, e, qid)
+        print(f"  {done:>3}  {e['id']}  {e['kind']:<9} {qid}")
+    print(f"\n{done} edits executed")
     return 0
 
 

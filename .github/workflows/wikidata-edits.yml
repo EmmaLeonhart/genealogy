@@ -3,13 +3,22 @@ name: wikidata-edits
 # Executes a REVIEWED batch of Wikidata edits through the bot-password account.
 #
 # Triggers are workflow_dispatch and schedule ONLY. Never add push: or
-# pull_request: — this repo is private and Actions minutes are billable
-# (CLAUDE.md § "Cost: this repo is private, so CI is manual-only").
+# pull_request:. The old reason here was billing on a private repo; the repo went
+# public on 2026-09-01 so minutes are free, and the reason is now the one in
+# CLAUDE.md § "The repo is PUBLIC as of 2026-09-01" -- pipeline.yml is the single
+# exemption, and a workflow that SENDS EDITS is the last one that should fire on
+# every push.
 #
-# The scheduled run does nothing before START_DATE. Emma's instruction,
-# 2026-08-13: the actions start properly on 1 September 2026.
+# TWO DATES, and they gate different things.
+#   START_DATE            2026-09-01  may this repo edit Wikidata at all
+#   AUTOMATION_START_DATE 2026-09-15  may the SCHEDULE send them by itself
+# Emma, 2026-09-05: "I want to on the 15th start all of this stuff automatically",
+# and, asked what starts: the daily Garborg batch, through the bot-password API.
+# Before the 15th the schedule still runs -- as a DRY RUN, so the wiring is
+# exercised daily and a break shows up before the day rather than on it.
 #
-# Default is a DRY RUN. A live run requires dispatching with dry_run: false.
+# A dispatched run is unaffected by the second date: dry by default, live if
+# dispatched with dry_run: false, which has been allowed since 1 September.
 
 on:
   workflow_dispatch:
@@ -26,22 +35,33 @@ on:
         description: "Path to the reviewed batch file"
         type: string
         default: "out/wikidata/unlinked-items.json"
-  # No `schedule:` and no `push:`. `tests/test_repo_invariants.py` fails on any
-  # automatic trigger and CLAUDE.md § "Cost: this repo is private, so CI is
-  # manual-only" says why: Actions minutes are billable here. A daily cron was
-  # present and failing that test; removed 2026-08-14. Restoring it is one
-  # `- cron:` line, and needs the test and CLAUDE.md changed in the same commit.
+  # 08:07 UTC, and the time is chosen rather than arbitrary: pipeline.yml runs at
+  # 01:23/07:23/13:23/19:23, so this lands after the 07:23 rebuild has refreshed
+  # the ledger, regenerated the batch and pushed it. An earlier slot would send a
+  # batch built against a ledger seven hours stale, which is the shape CLAUDE.md
+  # § "The ledger refresh is PART OF THE RUN" is written against. Off the hour so
+  # it does not queue behind everything that fires at :00.
+  schedule:
+    - cron: "7 8 * * *"
 
 concurrency:
   group: wikidata-edits
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  # write, because a live run commits its receipt. Without that the next run reads
+  # an empty receipt and re-creates everything the last one made.
+  contents: write
 
 env:
   WIKIDATA_API: https://www.wikidata.org/w/api.php
   START_DATE: "2026-09-01"
+  AUTOMATION_START_DATE: "2026-09-15"
+  # The daily batch. Emma's choice, 2026-09-05, of what runs by itself.
+  DAILY_BATCH: reports/wikidata-garborg-day.txt
+  # What a live run has already applied, so a re-sent batch does not create the
+  # same people twice. Committed after every live run.
+  RECEIPT: reports/wikidata-edits-applied.tsv
 
 jobs:
   edit:
@@ -100,6 +120,32 @@ jobs:
           [[ "$missing" == 1 ]] && exit 1
           echo "all three secrets present"
 
+      # WHAT A SCHEDULED RUN DOES, and it is not what a dispatched one does.
+      # On the schedule the batch is the daily Garborg file and the run goes live
+      # only from AUTOMATION_START_DATE. Before that it is a dry run: the point of
+      # running it anyway is that a break in the wiring shows up on an ordinary
+      # morning rather than on the 15th.
+      - name: Decide what this run does
+        id: plan
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: |
+          today=$(date -u +%F)
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            echo "batch=$DAILY_BATCH" >> "$GITHUB_OUTPUT"
+            echo "limit=100" >> "$GITHUB_OUTPUT"
+            if [[ ! "$today" < "$AUTOMATION_START_DATE" ]]; then
+              echo "mode=--live" >> "$GITHUB_OUTPUT"
+              echo "::notice title=Automation live::$today is on or after $AUTOMATION_START_DATE"
+            else
+              echo "mode=--dry-run" >> "$GITHUB_OUTPUT"
+              echo "::notice title=Automation not yet::dry run until $AUTOMATION_START_DATE"
+            fi
+          else
+            echo "batch=${{ inputs.batch || 'out/wikidata/unlinked-items.json' }}" >> "$GITHUB_OUTPUT"
+            echo "limit=${{ inputs.limit || '10' }}" >> "$GITHUB_OUTPUT"
+            echo "mode=${{ (inputs.dry_run == false) && '--live' || '--dry-run' }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Run the batch
         if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
         env:
@@ -110,6 +156,27 @@ jobs:
           PYTHONPATH: src
         run: |
           python scripts/wikidata-edit-run.py \
-            --batch "${{ inputs.batch || 'out/wikidata/unlinked-items.json' }}" \
-            --limit "${{ inputs.limit || '10' }}" \
-            ${{ (inputs.dry_run == false) && '--live' || '--dry-run' }}
+            --batch "${{ steps.plan.outputs.batch }}" \
+            --limit "${{ steps.plan.outputs.limit }}" \
+            --receipt "$RECEIPT" \
+            ${{ steps.plan.outputs.mode }}
+
+      # The receipt is the run's only durable output and it is worthless uncommitted.
+      # `always()` because a run that died halfway still applied what it applied --
+      # writing the receipt only on success is the reading that re-sends.
+      - name: Commit the receipt
+        if: always() && steps.plan.outputs.mode == '--live'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -z "$(git status --porcelain "$RECEIPT")" ]]; then
+            echo "nothing applied; no receipt to commit"
+            exit 0
+          fi
+          git add "$RECEIPT"
+          git commit -m "wikidata-edits: receipt for $(date -u +%F)"
+          for i in 1 2 3 4; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((2 ** i))
+          done
+          exit 1

@@ -38,14 +38,31 @@ import sys
 #: fails if the two ever disagree, which is the whole reason to write it twice.
 START_DATE = "2026-09-01"
 
+#: The date the daily batch starts running BY ITSELF. Emma, 2026-09-05: *"I want to
+#: on the 15th start all of this stuff automatically"*, and asked what starts, "The
+#: daily Garborg batch", sent through the bot-password API.
+#:
+#: It is a second date rather than a move of the first, because they gate different
+#: things and both stay true. ``START_DATE`` is when this repo may edit Wikidata at
+#: all, and it has been in force since 2026-09-01 — a hand-dispatched live run is
+#: allowed today. This one is when the *schedule* stops being a dry run. Collapsing
+#: them into one would either back-date the automation or re-lock the manual path.
+#:
+#: Mirrored as ``AUTOMATION_START_DATE:`` in ``.github/workflows/wikidata-edits.yml``
+#: for the same reason as ``START_DATE``: the workflow gates before it checks the
+#: repo out and cannot import this module. `tests/test_wikidata_start_date.py` fails
+#: if the two disagree.
+AUTOMATION_START_DATE = "2026-09-15"
+
 #: Escape hatch for a dry run against a date that has not arrived. Never set in
 #: CI: the workflow gates on its own ``START_DATE`` before this module is reached.
 _OVERRIDE = "WIKIDATA_START_DATE"
 
+#: The same escape hatch for the automation date. Same rule: never set in CI.
+_AUTOMATION_OVERRIDE = "WIKIDATA_AUTOMATION_START_DATE"
 
-def editing_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
-    """(allowed, detail). Anything unreadable is LOCKED — see the module docstring."""
-    raw = os.environ.get(_OVERRIDE, "").strip() or START_DATE
+
+def _after(raw: str, today: datetime.date | None, what: str) -> tuple[bool, str]:
     try:
         start = datetime.date.fromisoformat(raw)
     except ValueError:
@@ -55,8 +72,24 @@ def editing_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
         today = datetime.datetime.now(datetime.timezone.utc).date()
 
     if today >= start:
-        return True, f"editing allowed - {today} is on or after {start}"
+        return True, f"{what} allowed - {today} is on or after {start}"
     return False, f"LOCKED until {start} - today is {today}"
+
+
+def editing_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
+    """(allowed, detail). Anything unreadable is LOCKED — see the module docstring."""
+    return _after(os.environ.get(_OVERRIDE, "").strip() or START_DATE,
+                  today, "editing")
+
+
+def automation_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
+    """(allowed, detail) for the SCHEDULED run, which starts later than the manual one.
+
+    A caller must pass both gates: this one says the schedule may go live, and
+    `editing_allowed` still says whether editing is permitted at all.
+    """
+    return _after(os.environ.get(_AUTOMATION_OVERRIDE, "").strip()
+                  or AUTOMATION_START_DATE, today, "automation")
 
 
 def main() -> int:
