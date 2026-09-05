@@ -103,7 +103,9 @@ def main() -> int:
             if int(row["cut"]) == CUT:
                 by_cluster[int(row["rank"])].append(row)
 
-    limit = int(os.environ.get("CLUSTERS", "20"))
+    # `or "20"`, not a `get` default: an unset workflow input arrives as an EMPTY string,
+    # not as an absent variable, so the default never fired and `int("")` killed the run.
+    limit = int((os.environ.get("CLUSTERS") or "20").strip())
     ranks = sorted(by_cluster)[:limit]
     print(f"cut {CUT}: checking {len(ranks)} clusters of {len(by_cluster)}", flush=True)
 

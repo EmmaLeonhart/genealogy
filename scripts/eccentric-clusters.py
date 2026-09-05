@@ -219,6 +219,12 @@ def main() -> int:
                 "max_dist": dists[-1],
                 "min_dist": dists[0],
                 "median_dist": dists[len(dists) // 2],
+                "span": dists[-1] - dists[0] + 1,
+                # People per hop of distance spanned, and how many are degree <= 2 in the
+                # WHOLE tree rather than in the induced subgraph. See `## Rope or ball` below.
+                "per_hop": round(len(group) / (dists[-1] - dists[0] + 1), 1),
+                "deg_le2_pct": sum(1 for n in group if len(neighbours[n]) <= 2)
+                * 100 // len(group),
                 "p2600_linked": sum(1 for n in group if rev[n] in p2600),
                 "common": describe(lab for _d, lab, _q, _g in named),
                 "farthest": " | ".join(f"{lab or '(no label)'}" for _d, lab, _q, _g in named[:5]),
@@ -257,8 +263,8 @@ def main() -> int:
                     shown.append("(private)" if g in private else "(no label)")
             r["farthest"] = " | ".join(shown)
 
-    fields = ["cut", "rank", "people", "max_dist", "min_dist", "median_dist", "p2600_linked",
-              "common", "farthest", "farthest_geni"]
+    fields = ["cut", "rank", "people", "max_dist", "min_dist", "median_dist", "span",
+              "per_hop", "deg_le2_pct", "p2600_linked", "common", "farthest", "farthest_geni"]
     tmp = OUT_TSV.with_suffix(".tsv.tmp")
     with open(tmp, "w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, delimiter="\t", lineterminator="\n")
@@ -317,7 +323,38 @@ def main() -> int:
         "**What it is genuinely good for is the opposite reading.** An eccentric cluster with a "
         "high link count is one we have already reconciled; one at `0` is unreconciled, and "
         "whether that is because the items do not exist or because nobody joined them is the "
-        "question a live check answers and this file cannot.",
+        "question a live check answers and this file cannot. "
+        "`reports/eccentric-cluster-wikidata-check.tsv` is that check.",
+        "",
+        "## Rope or ball — `per hop` and `deg≤2` say which, and they are different findings",
+        "",
+        "**Emma, 2026-09-05:** *\"there\'s a bit of fuckery that geni enforced with its bible ban "
+        "that we can undo, although the exact way isn\'t 100% clear\"*. Tracing one cluster shows "
+        "the shape of it, and the shape is measurable for all of them.",
+        "",
+        "**The 153 hops from Charlemagne to `Solomon King of Israel` "
+        "(`6000000210521125824`) are a ROPE.** The route runs Charlemagne → Louis the Pious → "
+        "the Italian and Byzantine houses → the Ethiopian royal line, and then **about 120 "
+        "consecutive Kings of Axum at degree 2** — each recorded only as the son of the last, no "
+        "siblings, no spouses, no branches. Every generation adds a hop because there is nothing "
+        "else to add.",
+        "",
+        "**So that cluster is not kinship-remote; it is a succession LIST entered as a chain.** "
+        "It spans 54 hops with 61 people — **1.1 people per hop, 80% of them degree ≤2**. "
+        "Compare cluster 1 at the same cut: 1,524 people over 84 hops, **18.1 per hop**, which "
+        "is a genuinely wide family that happens to sit a long way out.",
+        "",
+        "**And the bible ban is visible in where the rope does NOT attach.** `Solomon King of "
+        "Israel` exists **once** in the corpus, at 153. The medieval Jewish lines — "
+        "`Shlomo ben David Ibn Yahya`, `Shlomo Ha-Zaken ben Yosef`, dozens of them — sit at "
+        "**26–28** hops, and nothing in the corpus lies between 75 and 152. `CLAUDE.md` § *A "
+        "second Geni ID on one Wikidata item is NOT a conflict* records the mechanism: Geni "
+        "forbids connecting biblical people to living people, so users **create fresh biblical "
+        "profiles** and attach to those. The gap is what that rule does to the graph.",
+        "",
+        "**Two clusters with the same distance are therefore not the same finding**, and an "
+        "export or a reconciliation buys different things in each. A ball is a population; a "
+        "rope is one list, and closing it end to end changes one number.",
         "",
     ]
     by_cut = collections.defaultdict(list)
@@ -331,15 +368,16 @@ def main() -> int:
             "",
             f"**{total:,} people in {len(got):,} clusters.**",
             "",
-            "| # | people | dist (min–max) | P2600 linked | shared across the whole cluster "
-            "| the farthest members |",
-            "| ---: | ---: | --- | ---: | --- | --- |",
+            "| # | people | dist (min–max) | per hop | deg≤2 | P2600 linked "
+            "| shared across the whole cluster | the farthest members |",
+            "| ---: | ---: | --- | ---: | ---: | ---: | --- | --- |",
         ]
         for r in got[:SHOW]:
             lines.append(f"| {r['rank']} | {r['people']:,} | {r['min_dist']}–{r['max_dist']} "
-                         f"| {r['p2600_linked']} | {r['common']} | {r['farthest']} |")
+                         f"| {r['per_hop']} | {r['deg_le2_pct']}% | {r['p2600_linked']} "
+                         f"| {r['common']} | {r['farthest']} |")
         if len(got) > SHOW:
-            lines.append(f"| … | | | | | {len(got) - SHOW:,} more clusters in the TSV |")
+            lines.append(f"| … | | | | | | | {len(got) - SHOW:,} more clusters in the TSV |")
         lines.append("")
     OUT_MD.write_text("\n".join(lines), encoding="utf-8")
     print(f"wrote {OUT_MD.relative_to(ROOT)}")
