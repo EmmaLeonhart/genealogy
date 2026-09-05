@@ -41,6 +41,22 @@ Q110303080	P2600	"6000000013402027084"
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
+# Jonasdatter -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Jonasdatter"
+LAST	Len	"Jonasdatter"
+#   set the mul label to "Jonasdatter"
+LAST	Lmul	"Jonasdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141189098 Rakel Jonasdatter Heigre: P5056 patronym or matronym = the item just created, qualified P144 based on Q141168957 Jonas Jonson Heigre
+Q141189098	P5056	LAST	P144	Q141168957	S2600	"6000000003491986966"
+#   Q141189081 Lotte Birgithe Gustava Jonasdatter Lea: P5056 patronym or matronym = the item just created, qualified P144 based on Q141168957 Jonas Jonson Heigre
+Q141189081	P5056	LAST	P144	Q141168957	S2600	"6000000025793394310"
+
 # Pederson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -77,26 +93,9 @@ Q141224003	P734	LAST	P3831	Q2507958	S2600	"6000000007247778253"
 #   Q141271378 Anna Håkansdotter Rudén: P734 family name = the item just created
 Q141271378	P734	LAST	S2600	"6000000010429802814"
 
-# Røyneberg -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Røyneberg"
-LAST	Len	"Røyneberg"
-#   set the mul label to "Røyneberg"
-LAST	Lmul	"Røyneberg"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141216638 Olaug Jonsdatter Heigre: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141216638	P734	LAST	P3831	Q2507958	S2600	"6000000003491933401"
-#   Q141244209 Berta Asbjørnsdotter Røyneberg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141244209	P734	LAST	P3831	Q28418670	S2600	"6000000003491933642"
-#   Q141244102 Jon Torson Røyneberg: P734 family name = the item just created
-Q141244102	P734	LAST	S2600	"6000000005609102976"
-
-# 195 more name items are needed and wait for a later
+# 222 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
+#   Røyneberg (family), 3 bearer(s)
 #   Stangaland (family), 3 bearer(s)
 #   Söfdeborg (family), 3 bearer(s)
 #   Tollefson (patronymic), 3 bearer(s)
@@ -106,10 +105,9 @@ Q141244102	P734	LAST	S2600	"6000000005609102976"
 #   Ådnesdatter (patronymic), 3 bearer(s)
 #   Årsvoll (family), 3 bearer(s)
 #   Andersdotter (patronymic), 2 bearer(s)
+#   Asbjørnsen (patronymic), 2 bearer(s)
 #   Asbjørnson (patronymic), 2 bearer(s)
-#   Austrått (family), 2 bearer(s)
-#   Bureus (family), 2 bearer(s)
-#   ... and 183 more
+#   ... and 210 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -125,57 +123,57 @@ Q141244102	P734	LAST	S2600	"6000000005609102976"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   15 people, 24 edits; 2798 edits held for a later run
-#   across 884 more people. A repeat is a no-op, so nothing is lost.
+#   15 people, 24 edits; 2774 edits held for a later run
+#   across 869 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141290466 Mikael von Törne Jr.: add a mul alias "Mikael von Törne d.y."
-Q141290466	Amul	"Mikael von Törne d.y."
-#   Q141290463 Johanna Elisabeth de Laval: add a mul alias "Johanna Elisabeth Martin"
-Q141290463	Amul	"Johanna Elisabeth Martin"
-#   add a mul alias "Gunvor Mauritsdatter Stangeland"
-Q141290461	Amul	"Gunvor Mauritsdatter Stangeland"
-#   Q141290457 Catharina Margareta Cederström Bröms: add a mul alias "Catharina Margareta Helleday"
-Q141290457	Amul	"Catharina Margareta Helleday"
-#   add a mul alias "Anders Holgersson Panna"
-Q141290455	Amul	"Anders Holgersson Panna"
-#   Q141242379 Berte Karlsdatter Borsok: set the ja label to "ベルテ・カルルスダッテル・ボルソク"
-Q141242379	Lja	"ベルテ・カルルスダッテル・ボルソク"
-#   set the zh label to "贝尔特·卡尔尔斯达特·博尔索克"
-Q141242379	Lzh	"贝尔特·卡尔尔斯达特·博尔索克"
-#   set the ko label to "베르테 카르르스다테르 보르소크"
-Q141242379	Lko	"베르테 카르르스다테르 보르소크"
-#   Q141242371 Alfred Ingerman Hoknes: set the ja label to "アルフレッド・インゲルマン・ホクネス"
-Q141242371	Lja	"アルフレッド・インゲルマン・ホクネス"
-#   set the zh label to "阿尔弗雷德·因盖尔曼·霍克内斯"
-Q141242371	Lzh	"阿尔弗雷德·因盖尔曼·霍克内斯"
-#   set the ko label to "알프레드 이에르만 호크네스"
-Q141242371	Lko	"알프레드 이에르만 호크네스"
-#   Q141225804 Louise Helmine Jenssen: set the ko label to "루이세 헬미네 젠센"
-Q141225804	Lko	"루이세 헬미네 젠센"
-#   Q141225793 Laurentius Andreae Andreae Alstrinius: set the ja label to "ラウレンティウス・アンドレー・アンドレー・アルストリニウス"
-Q141225793	Lja	"ラウレンティウス・アンドレー・アンドレー・アルストリニウス"
-#   set the zh label to "拉乌伦蒂乌斯·安德雷阿埃·安德雷阿埃·阿尔斯特里尼乌斯"
-Q141225793	Lzh	"拉乌伦蒂乌斯·安德雷阿埃·安德雷阿埃·阿尔斯特里尼乌斯"
-#   set the ko label to "라우렌튜스 안드레아에 안드레아에 알스트리뉴스"
-Q141225793	Lko	"라우렌튜스 안드레아에 안드레아에 알스트리뉴스"
-#   Q141225787 Kristine: set the ja label to "クリスティン"
-Q141225787	Lja	"クリスティン"
-#   set the zh label to "克丽丝汀"
-Q141225787	Lzh	"克丽丝汀"
-#   set the ko label to "크리스티네"
-Q141225787	Lko	"크리스티네"
-#   Q141225779 Kristina Eriksdotter Ångerman: set the ko label to "크리스티나 에리크스도테르 오에르만"
-Q141225779	Lko	"크리스티나 에리크스도테르 오에르만"
-#   Q141225772 Katarina Johansdotter Ståhlbom: set the ko label to "카타리나 조한스도테르 스토흐르봄"
-Q141225772	Lko	"카타리나 조한스도테르 스토흐르봄"
-#   Q141225764 Karolina Andrietta Ström: set the ko label to "카로리나 안드리에타 스트룀"
-Q141225764	Lko	"카로리나 안드리에타 스트룀"
-#   Q141225729 Jacob Knutson Skiftun: add a mul alias "Jacob Knutson Koll"
-Q141225729	Amul	"Jacob Knutson Koll"
-#   set the ko label to "자콥 크누촌 스키프툰"
-Q141225729	Lko	"자콥 크누촌 스키프툰"
-#   Q141225708 Fru Tore: set the ko label to "프루 토레"
-Q141225708	Lko	"프루 토레"
+#   Q141225702 Erik Guttormsson: set the ko label to "에리크 구토르므손"
+Q141225702	Lko	"에리크 구토르므손"
+#   Q141225693 Carl Andersson: set the ko label to "카르르 안데르손"
+Q141225693	Lko	"카르르 안데르손"
+#   Q141225681 Anna Margareta von Walcker: set the ko label to "안나 마르가레타 본 와르케르"
+Q141225681	Lko	"안나 마르가레타 본 와르케르"
+#   Q141225265 Rudolph Ronneberg: set the ko label to "루돌프 론네베르그"
+Q141225265	Lko	"루돌프 론네베르그"
+#   Q141225236 Per Simensen: set the ko label to "페르 시멘센"
+Q141225236	Lko	"페르 시멘센"
+#   Q141225218 Olof Jonsson: set the ko label to "오로프 존손"
+Q141225218	Lko	"오로프 존손"
+#   Q141225209 Olea Gundersdatter Hibo: set the ja label to "オレア・グンデルスダッテル・ヒボ"
+Q141225209	Lja	"オレア・グンデルスダッテル・ヒボ"
+#   set the zh label to "奥莱阿·贡德尔斯达特·希博"
+Q141225209	Lzh	"奥莱阿·贡德尔斯达特·希博"
+#   set the ko label to "오레아 군데르스다테르 히보"
+Q141225209	Lko	"오레아 군데르스다테르 히보"
+#   Q141225200 Olaf Gunderson: set the ja label to "オラフ・グンデルソン"
+Q141225200	Lja	"オラフ・グンデルソン"
+#   set the zh label to "奥拉夫·贡德尔松"
+Q141225200	Lzh	"奥拉夫·贡德尔松"
+#   set the ko label to "오라프 군데르손"
+Q141225200	Lko	"오라프 군데르손"
+#   Q141225186 Ola Pedersen Trevland: set the ko label to "오라 페데르센 트레브란드"
+Q141225186	Lko	"오라 페데르센 트레브란드"
+#   Q141225175 Malene Larsdtr. Alvseike: add a mul alias "Malene Larsdtr. Alvseike"
+Q141225175	Amul	"Malene Larsdtr. Alvseike"
+#   set the ko label to "마레네 라르스다테르 알브세이케"
+Q141225175	Lko	"마레네 라르스다테르 알브세이케"
+#   Q141225138 Iver Emil Jenssen: set the ko label to "이베르 에밀 젠센"
+Q141225138	Lko	"이베르 에밀 젠센"
+#   Q141225124 Halvar Larsson Mossige: add a mul alias "Halvar Larsson Skrudland"
+Q141225124	Amul	"Halvar Larsson Skrudland"
+#   set the ko label to "할바르 라르손 모시게"
+Q141225124	Lko	"할바르 라르손 모시게"
+#   Q141225119 Göran Ehrenpreus: set the ko label to "괴란 에흐렌프류스"
+Q141225119	Lko	"괴란 에흐렌프류스"
+#   Q141225111 Ericus Nicolai Gestrinius: add a mul alias "Ericus Nilsson Gråå"
+Q141225111	Amul	"Ericus Nilsson Gråå"
+#   set the ko label to "에리쿠스 니코라이 게스트리뉴스"
+Q141225111	Lko	"에리쿠스 니코라이 게스트리뉴스"
+#   Q141225104 Engel Danckwardt: set the ja label to "エンゲル・ダンクヴァルドト"
+Q141225104	Lja	"エンゲル・ダンクヴァルドト"
+#   set the zh label to "恩盖尔·丹克瓦尔德特"
+Q141225104	Lzh	"恩盖尔·丹克瓦尔德特"
+#   set the ko label to "에엘 단크와르드트"
+Q141225104	Lko	"에엘 단크와르드트"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
