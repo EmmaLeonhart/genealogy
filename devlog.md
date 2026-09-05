@@ -28515,3 +28515,30 @@ the labelled block still reports `father` alone.
 **Suggest surnames is now ON.** Emma, 2026-09-05: *"Suggest surnames on is best tbh"*. That
 reverses `docs/export-seed-rules.md` tier 3, which had it off on the grounds that Geni would
 offer the child's surname *"which would be invented"*. Her later ruling wins.
+
+## 2026-09-05 — the walk ran up Emma's own line and made its first correct placeholder
+
+Seeded on **Ane Oline Jonsdatter Raugstad** and walked upward, mother first at each step per
+`docs/parent-walk-algorithm.md`:
+
+    Ane Oline Jonsdatter Raugstad   3 parents listed  -> add nothing, enqueue
+    Inger Kristoffersdatter          2 -> add nothing   (label block said `mother` alone)
+    Astri Torchelsdatter Øvre Time   2 -> add nothing   (label block was EMPTY)
+    Kari Olsdatter                   1 -> OPEN SLOT
+
+**`NN` (`6000000227610585972`) is now the mother of Kari Olsdatter** (`6000000005609534649`),
+who previously read *"Daughter of Ole father of Kari"* and now reads *"...and NN"*. Her one
+existing parent is itself a tier 2 placeholder from an earlier session, which is the loop
+compounding as intended.
+
+The dialog titled itself **"Add mother of Kari Olsdatter"** — Geni's own confirmation that
+`relationship=parent` plus the female radio resolves to *mother*, which is what makes the walk's
+father/mother distinction safe.
+
+**Two of the four people on that line would have been given a spurious parent by the old
+detector**: Inger's labelled block reports `mother` alone and Astri's reports **nothing**, while
+both prose blocks list two parents. The bug that cost one bad write would have cost three.
+
+`reports/geni-created-placeholders.tsv` records every profile this repo creates on Geni,
+including the erroneous one, because a write to a live site is exactly the thing that should not
+live only in a transcript.
