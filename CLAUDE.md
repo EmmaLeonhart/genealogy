@@ -3397,15 +3397,49 @@ at the very least, is that I am currently less on the high eccentricity of the g
 to be"* — because the Swedish and Norwegian families are now *"connected to each other through a
 shorter line that is not me."* Stated as a hope, so it is a measurement nobody has run.
 
-**But centrality is NOT the target and must not become a metric.** *"centrality isn't really that
-much of an issue. It's extension that's the issue."* § *The practical goal is EMMA densely linked*
-still governs what is optimised; her own eccentricity is an observation about the shape, not a
-number to move.
+**⛔ ECCENTRICITY IS THE ISSUE. CENTRALITY IS GOOD FOR HER.** Emma, 2026-09-05, correcting a
+paraphrase that had inverted her: *"Eccentricity is an issue, centrality is good for me."* So her
+becoming more central is a **goal being met**, not a neutral observation — and a high-eccentricity
+person or cluster is a problem to close, which is what § *THE EDIT ALGORITHM*'s service areas are
+for. Do not record this as *"centrality is not a metric"*; it was written that way once and is
+the opposite of what she said.
 
-**Where she thinks the two families stand:** the Swedish one is *"really connecting well with the
-rest of the tree"*; the Norwegian one less so, *"because it doesn't have as much documented
-connections elsewhere."* And on the whole programme: *"my general perception of all this stuff is
-pretty good. I think we're doing things well with this generally."*
+**MEASURED 2026-09-05, all three things she asked to be tested.** She asked directly rather than
+leaving them as hopes — *"you can just test my centrality changing to no longer be the most
+eccentric person and whether the swedish one is properly connected here and whether the Norwegian
+family is less connected."*
+
+- **She is NOT the most eccentric in the ledger.** `Emma Leonhart` `Q140568870` — eccentricity
+  **37, rank 128 of 733**, against a maximum of **44** held jointly by Charlemagne `Q3044`, Carl
+  Gustaf Wennerstedt `Q6235986` and Conrad von Braunjohan `Q141250225`.
+  `scripts/measure-ledger-eccentricity.py` re-runs it. **Her item is `Q140568870`; `Q232803` is
+  *Empress Jingū*, a different person**, and using it answers a different question badly — it has
+  0 edges and is outside the component.
+- **The two families connect through a line that is not her, and never did run through her.** In
+  the **Geni tree**: Arne → Bureus is **20 hops**, Arne → Emma 58, Emma → Bureus 48, so a route
+  through her is **106**. Removing her from the graph entirely leaves it at **20**.
+- **The Swedish family is the better-connected one, and by more than she claimed.**
+
+| | Bureätten | Arne's side (ledger − Bure) |
+| --- | ---: | ---: |
+| in the tree | 251 / 251 | 1,118 / 1,122 |
+| **outward edges per person** | **6.5** | 4.6 |
+| people with **no** outward edge | **0** | **193** |
+| edges **within** the family | **60** | 1,416 |
+| median hops to Charlemagne | 29 | 31 |
+
+**The inward figure is the surface-area story in one number.** Bure has **60** internal edges
+across 251 people — present but barely joined to each other, which is the population that produced
+the outlier batches. Arne's side has **1,416** across 1,118 and is already a family. And her
+*"doesn't have as much documented connections elsewhere"* is 193 of 1,118 sitting on **no external
+edge at all**, against **0 of 251** on the Bure side.
+
+**What is still unmeasured is the CHANGE.** *"Less eccentric than I used to be"* needs a *then*,
+and the only kept pre-batch tree is `out/merged-134.ged` — § *keep the pre-batch tree whenever a
+batch lands* exists for exactly this and is worth honouring next time.
+
+**And on the whole programme:** *"my general perception of all this stuff is pretty good. I think
+we're doing things well with this generally."*
 
 ### ⛔ A BLOC IS A ROSTER REFERENCE. Six people off a report is not the ancient Chinese bloc
 
