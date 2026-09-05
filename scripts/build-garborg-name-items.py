@@ -323,7 +323,7 @@ def main():
                 fields[row["geni_id"]] = {k: row.get(k, "") for k in
                                           ("givn", "surn", "nick", "marnm")}
 
-    labels_of, father_of, sex_of = {}, {}, {}
+    labels_of, father_of, sex_of, aka_of = {}, {}, {}, {}
     # **The family pass runs FIRST so the father's LABEL can be loaded in the same
     # sweep as everyone else's.** `namemodel.patronymic_or_surname` needs the father's
     # NAME, not his QID: without it every `-sen`/`-son`/`-datter` token falls through
@@ -345,15 +345,30 @@ def main():
         for row in csv.DictReader(f):
             if row["geni_id"] in wanted_labels:
                 labels_of[row["geni_id"]] = row.get("label_en") or row.get("label_mul") or ""
+                # **Every OTHER spelling the person is recorded under**, for the patronymic
+                # test only. A father is routinely written in Latin where his son's patronymic
+                # is vernacular -- `Olaus Petri Niurenius` against `Olofsson` -- and the
+                # vernacular form is sitting in his own aliases. See
+                # `namemodel.patronymic_or_surname`.
+                aka_of[row["geni_id"]] = " ".join(
+                    (row.get(c) or "").replace(" | ", " ")
+                    for c in ("alias_names", "further_latin_names"))
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
                 sex_of[row["geni_id"]] = row.get("sex", "")
 
-    # `classify_fields(**person)` reads `father_name`, so it has to be in the dict.
+    # `classify_fields(**person)` reads `father_name` and `father_aka`, so both have to be in
+    # the dict. The father's OWN `givn` and `nick` are the other half of `father_aka` and are
+    # only there when he is himself in the batch -- `nick` is where Geni keeps the vernacular
+    # form of a Latinised name, which is exactly what the test needs.
     for geni_id, person in fields.items():
         dad = father_of.get(geni_id)
         person["father_name"] = labels_of.get(dad, "") if dad else ""
+        dad_fields = fields.get(dad) or {} if dad else {}
+        person["father_aka"] = " ".join(x for x in (
+            aka_of.get(dad, "") if dad else "",
+            dad_fields.get("givn", ""), dad_fields.get("nick", "")) if x)
 
     plan = load_plan()
     need = collections.Counter()
@@ -541,7 +556,8 @@ def main():
                     labels_of.get(geni_id, ""), local, geni_id,
                     father_qid=father_item(dad),
                     fields=person, sex=sex_of.get(geni_id, ""),
-                    father_name=person.get("father_name", ""))
+                    father_name=person.get("father_name", ""),
+                    father_aka=person.get("father_aka", ""))
             except Exception as exc:                                   # noqa: BLE001
                 lines.append(f"#   {qid}: the name model failed -- {exc}")
                 continue

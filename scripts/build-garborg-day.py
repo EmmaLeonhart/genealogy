@@ -1455,7 +1455,7 @@ def label_in(label, table):
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
-               father_name=""):
+               father_name="", father_aka=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
     **Only tokens whose item already exists.** A name item this run is creating
@@ -1467,7 +1467,8 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
     """
     out, notes = [], []
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
-                                fields=fields, sex=sex, father_name=father_name)
+                                fields=fields, sex=sex, father_name=father_name,
+                                father_aka=father_aka)
     for prop, value, quals in lines:
         # `P1449` *nickname* never arrives: `namemodel.statements_for` stops modelling it,
         # per Emma's 2026-08-29 ruling. The drop used to be here, and having it in the emitter
@@ -5555,6 +5556,13 @@ def main():
 
     ids = set(to_create) | set(our_items)
     facts, labels = {}, {}
+    #: Every OTHER spelling a person is recorded under -- aliases, further Latin names, and
+    #: their own `givn`/`nick` from `display-names.csv`. Read for ONE purpose: deciding whether
+    #: a child's `-son`/`-sen` token is a patronymic, where the father is routinely written in
+    #: Latin (`Olaus Petri Niurenius`) while the child's token is vernacular (`Olofsson`).
+    #: `namemodel.patronymic_or_surname` has the measurement. It is never a label and never an
+    #: alias we emit.
+    aka = {}
     #: How a person is named when SOMEBODY ELSE's label refers to them -- the married
     #: form where there is one. Separate from `labels` on purpose; see the comment at
     #: the assignment below.
@@ -5598,6 +5606,9 @@ def main():
                 # formulaic descriptions. `strip_markers` belongs where a label is emitted
                 # for a person who is NOT redacted, which is the `Sara NN` case.
                 labels[row["geni_id"]] = raw_label
+                aka[row["geni_id"]] = " ".join(
+                    (row.get(c) or "").replace(" | ", " ")
+                    for c in ("alias_names", "further_latin_names"))
                 # **How a person is named when somebody ELSE's label refers to them.**
                 #
                 # Emma, 2026-08-29, on `Q141205933`: *"it appears that it uses the birth name
@@ -5647,6 +5658,12 @@ def main():
                 fields[row["geni_id"]] = {k: row.get(k, "") for k in
                                           ("givn", "surn", "nick", "marnm", "nsfx",
                                            "display_name")}
+                # `nick` is where Geni keeps the vernacular form of a Latinised name --
+                # `Olof Persson` on a man whose label is `Olaus Petri Niurenius` -- so it
+                # belongs in the spellings the patronymic test may read.
+                aka[row["geni_id"]] = " ".join(
+                    x for x in (aka.get(row["geni_id"], ""),
+                                row.get("givn", ""), row.get("nick", "")) if x)
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -6073,7 +6090,8 @@ def main():
             for line in name_lines(labels.get(g, ""), plan, g,
                                    father_item(dad),
                                    fields=fields.get(g),
-                                   father_name=labels.get(dad, "") if dad else "")[0]:
+                                   father_name=labels.get(dad, "") if dad else "",
+                                   father_aka=aka.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
         # **Every CJK label is redone, and a DISAGREEMENT is emitted.** Emma, 2026-08-30:
@@ -6537,7 +6555,8 @@ def main():
             name_statements, unresolved = name_lines(
                 labels[g], plan, g, father_item(dad),
                 fields=fields.get(g), sex=f["sex"],
-                father_name=labels.get(dad, "") if dad else "")
+                father_name=labels.get(dad, "") if dad else "",
+                father_aka=aka.get(dad, "") if dad else "")
             lines.extend(name_statements)
             # Aliases: the nickname, and the full name under a married surname. Emma
             # asked for these alongside the second `P734` *family name*.
