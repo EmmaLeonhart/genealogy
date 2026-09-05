@@ -28,20 +28,54 @@ GC.seed = {};
 
 /* ---------------------------------------------------------------- reading the person */
 
-/* Which parents exist, and who they are -- the pids are what gets enqueued. A missing label is a
- * missing parent: Geni prints `father` only when there is one. Measured on Ane Oline Jonsdatter
- * Raugstad, whose block carries `husband, son, daughter, father` and no `mother`. */
+/* Which parents exist. ⛔ THE LABELLED BLOCK IS NOT THE SOURCE OF TRUTH -- measured the hard
+ * way on 2026-09-05, by creating somebody who should never have been created.
+ *
+ * Ane Oline Jonsdatter Raugstad's labelled block reports **`father` only**. Her prose block
+ * reports *"Daughter of Jon Samuelsen Raustad; Inger Kristoffersdatter and NN"* -- she had a
+ * mother, `Inger Kristoffersdatter`, the whole time. Reading the labels said "no mother", the
+ * walk added one, and a live profile acquired a spurious third parent.
+ *
+ * That is `CLAUDE.md` § *check the separator before believing a distribution* in its most
+ * expensive form: an instrument reading a partial source and returning a confident wrong answer,
+ * where the cost is a write to somebody else's tree rather than a number in a report.
+ *
+ * So: the PROSE block is authoritative for how many parents exist, and the labelled block is
+ * used only to say WHICH one a lone parent is. Two or more parents listed means the slot is
+ * full, whatever any label says.
+ */
 GC.seed.family = function () {
+  const out = { parents: [], father: null, mother: null, found: false };
+
+  /* The prose: "Son of A" / "Daughter of A; B and C". Every anchor in it is a parent. */
+  const lead = [...document.querySelectorAll("*")]
+    .filter((e) => e.children.length === 0 && /^(son|daughter) of/i.test((e.textContent || "").trim()));
+  if (lead.length) {
+    const blk = lead[0].parentElement;
+    if (blk) {
+      out.found = true;
+      const seen = new Set();
+      for (const a of blk.querySelectorAll("a[data-profile-id]")) {
+        const pid = a.getAttribute("data-profile-id");
+        if (seen.has(pid)) continue;
+        seen.add(pid);
+        out.parents.push({ pid: pid, name: (a.textContent || "").trim() });
+      }
+    }
+  }
+
+  /* The labels, for which-one-is-it when exactly one parent exists. */
   const fam = document.querySelector("#family_profile_module, .immediate-family, #immediate_family");
-  const out = { father: null, mother: null, found: !!fam };
-  if (!fam) return out;
-  for (const lbl of fam.querySelectorAll("*")) {
-    if (lbl.children.length !== 0) continue;
-    const t = (lbl.textContent || "").trim().toLowerCase();
-    if (t !== "father" && t !== "mother") continue;
-    let n = lbl.parentElement, hop = 0, a = null;
-    while (n && hop < 4 && !a) { a = n.querySelector("a[data-profile-id]"); n = n.parentElement; hop++; }
-    if (a) out[t] = { pid: a.getAttribute("data-profile-id"), name: (a.textContent || "").trim() };
+  if (fam) {
+    out.found = true;
+    for (const lbl of fam.querySelectorAll("*")) {
+      if (lbl.children.length !== 0) continue;
+      const t = (lbl.textContent || "").trim().toLowerCase();
+      if (t !== "father" && t !== "mother") continue;
+      let n = lbl.parentElement, hop = 0, a = null;
+      while (n && hop < 4 && !a) { a = n.querySelector("a[data-profile-id]"); n = n.parentElement; hop++; }
+      if (a) out[t] = { pid: a.getAttribute("data-profile-id"), name: (a.textContent || "").trim() };
+    }
   }
   return out;
 };
@@ -228,10 +262,13 @@ GC.seed.addParent = async function (which, p) {
   if (!rel) return { state: "no_relationship_field" };
   set(rel, "parent");
 
-  /* ⛔ SUGGEST SURNAMES OFF. Left on, Geni offers the child's surname and a tier 3 `NN` acquires
-   * a family name nobody attested. The seed rules call this out by name. */
+  /* ⛔ SUGGEST SURNAMES **ON** -- Emma, 2026-09-05: *"Suggest surnames on is best tbh"*. This
+   * REVERSES `docs/export-seed-rules.md` tier 3, which said to leave it off because Geni would
+   * offer the child's surname *"which would be invented"*. Her later ruling wins, and the
+   * reasoning is hers to hold: a created parent carrying the child's surname is a better handle
+   * than a bare `NN`, and it is what the rest of the tree already looks like. */
   const sug = $("suggest_surnames");
-  if (sug && sug.checked) sug.click();
+  if (sug && !sug.checked) sug.click();
 
   set($("page_profile_names_en-US_first_name"), p.first);
   set($("page_profile_names_en-US_middle_name"), "");
@@ -271,30 +308,47 @@ GC.runSeed = async function (job) {
 
   const nm = GC.seed.name();
   const pat = GC.seed.patronymic(nm);
+  const n = fam.parents.length;
 
-  /* THE ORDER. A patronymic overrides the default and checks the father first, because the
-   * patronymic is what names him. Otherwise the mother is checked first. */
-  const order = pat && pat.father ? ["father", "mother"] : ["mother", "father"];
-
-  for (const which of order) {
-    if (fam[which]) continue;
-    const p = GC.seed.plan(nm, pat, which);
-    if (p.skip) return report({ state: "skipped", which: which, reason: p.skip,
-                                name: nm.display, enqueue: [] });
-    if (job.dryRun) {
-      return report({ state: "proposed", which: which, tier: p.tier, first: p.first,
-                      last: p.last, why: p.why, name: nm.display, enqueue: [] });
-    }
-    const r = await GC.seed.addParent(which, p);
-    /* An add that fails is a skip, not a stop: the walk takes the next person off the queue. */
-    return report(Object.assign({ which: which, tier: p.tier, first: p.first, last: p.last,
-                                  why: p.why, name: nm.display, enqueue: [] }, r));
+  /* ⛔ TWO PARENTS LISTED MEANS THE SLOT IS FULL. This is the guard whose absence put a spurious
+   * third parent on a live profile: add neither, enqueue the mother then the father, carry on up. */
+  if (n >= 2) {
+    const byPid = {};
+    fam.parents.forEach((p) => { byPid[p.pid] = p; });
+    const enqueue = [];
+    /* Her order: mother first, then father. Where the labels name them, that order is exact;
+     * where they do not, the listed order is kept rather than guessed at. */
+    if (fam.mother && byPid[fam.mother.pid]) enqueue.push(fam.mother.pid);
+    if (fam.father && byPid[fam.father.pid]) enqueue.push(fam.father.pid);
+    for (const p of fam.parents) if (enqueue.indexOf(p.pid) === -1) enqueue.push(p.pid);
+    return report({ state: "both_present", name: nm.display, parents: n,
+                    enqueue: enqueue,
+                    listed: fam.parents.map((p) => p.name).join(" | ") });
   }
 
-  /* Both parents present: add neither, and enqueue the MOTHER then the FATHER, in that order. */
-  const enqueue = [];
-  if (fam.mother) enqueue.push(fam.mother.pid);
-  if (fam.father) enqueue.push(fam.father.pid);
-  return report({ state: "both_present", name: nm.display, enqueue: enqueue,
-                  mother: fam.mother ? fam.mother.name : "", father: fam.father ? fam.father.name : "" });
+  /* Exactly one parent: which one is missing comes from the label. With no label there is no
+   * evidence of which, and § *Bail on anything weird* says skip rather than guess -- guessing
+   * here is exactly what creates a second father. */
+  let which;
+  if (n === 1) {
+    if (fam.father && !fam.mother) which = "mother";
+    else if (fam.mother && !fam.father) which = "father";
+    else return report({ state: "skipped", reason: "one parent listed and no label says which",
+                         name: nm.display, parents: n, enqueue: [] });
+  } else {
+    /* No parents at all. A patronymic overrides the default and takes the father first. */
+    which = pat && pat.father ? "father" : "mother";
+  }
+
+  const p = GC.seed.plan(nm, pat, which);
+  if (p.skip) return report({ state: "skipped", which: which, reason: p.skip,
+                              name: nm.display, parents: n, enqueue: [] });
+  if (job.dryRun) {
+    return report({ state: "proposed", which: which, tier: p.tier, first: p.first,
+                    last: p.last, why: p.why, name: nm.display, parents: n, enqueue: [] });
+  }
+  const r = await GC.seed.addParent(which, p);
+  /* An add that fails is a skip, not a stop: the walk takes the next person off the queue. */
+  return report(Object.assign({ which: which, tier: p.tier, first: p.first, last: p.last,
+                                why: p.why, name: nm.display, parents: n, enqueue: [] }, r));
 };

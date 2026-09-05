@@ -28480,3 +28480,38 @@ like every other patronymic: **6,752 -> 6,923 tokens, 4,781 -> 4,896 with a targ
 blocked API and took the whole run with it, so the table could not be rebuilt at all — and the
 table is what the daily `P144` backfill reads. A label it cannot resolve now stays ambiguous,
 which is the answer the caller already handles.
+
+## 2026-09-05 — I created a parent who should not exist, and the labelled block is why
+
+**First live creation, and it was wrong.** `NN` (`6000000227610618876`) was added as a parent of
+**Ane Oline Jonsdatter Raugstad** (`6000000003491986946`). She already had both parents. Her
+profile now reads *"Daughter of Jon Samuelsen Raustad; Inger Kristoffersdatter and NN"*.
+
+**The cause is a partial source read as a complete one.** Two places on that page state
+parentage and they disagree:
+
+    labelled block (#family_profile_module)   ->  father          <- what I read
+    prose block                               ->  Daughter of Jon Samuelsen Raustad;
+                                                  Inger Kristoffersdatter               <- the truth
+
+`Inger Kristoffersdatter` (`6000000005609534511`) was there the whole time. The labels carry a
+`father` row and no `mother` row, so "no mother" was a confident answer from an instrument that
+could not see her.
+
+This is `CLAUDE.md` § *check the separator before believing a distribution* in its most expensive
+form. Every previous instance cost a wrong number in a report; this one cost **a write to a live
+profile in somebody else's tree**. The guard that would have caught it is trivial and was not
+there: *how many parents are listed?*
+
+**The fix, and it is two rules rather than one.** The PROSE block is authoritative for how many
+parents exist; the labelled block is used only to say which one a lone parent is. **Two or more
+parents listed means the slot is full** — add neither, enqueue, walk up — whatever any label
+says. Where exactly one parent is listed and no label says which it is, the walk **skips**:
+guessing there is precisely what creates a second father.
+
+Verified against the page that produced the bug: 3 parents listed, verdict *add nothing*, while
+the labelled block still reports `father` alone.
+
+**Suggest surnames is now ON.** Emma, 2026-09-05: *"Suggest surnames on is best tbh"*. That
+reverses `docs/export-seed-rules.md` tier 3, which had it off on the grounds that Geni would
+offer the child's surname *"which would be invented"*. Her later ruling wins.
