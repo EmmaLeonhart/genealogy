@@ -25,24 +25,6 @@ Q141189098	P5056	LAST	P144	Q141168957	S2600	"6000000003491986966"
 #   Q141189081 Lotte Birgithe Gustava Jonasdatter Lea: P5056 patronym or matronym = the item just created, qualified P144 based on Q141168957 Jonas Jonson Heigre
 Q141189081	P5056	LAST	P144	Q141168957	S2600	"6000000025793394310"
 
-# Pederson -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Pederson"
-LAST	Len	"Pederson"
-#   set the mul label to "Pederson"
-LAST	Lmul	"Pederson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141205913 Ingebret Pederson Voster: P5056 patronym or matronym = the item just created, qualified P144 based on Q141242562 Peder Jonsen Voster
-Q141205913	P5056	LAST	P144	Q141242562	S2600	"6000000007980389582"
-#   Q141200112 Tollef Pederson Tunheim: P5056 patronym or matronym = the item just created
-Q141200112	P5056	LAST	S2600	"6000000029983078557"
-#   Q141290467 Nils Pederson Vestbø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141290468 Peder Nilsson Hidle
-Q141290467	P5056	LAST	P144	Q141290468	S2600	"6000000049439394974"
-
 # Rudén -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -61,19 +43,37 @@ Q141224003	P734	LAST	P3831	Q2507958	S2600	"6000000007247778253"
 #   Q141271378 Anna Håkansdotter Rudén: P734 family name = the item just created
 Q141271378	P734	LAST	S2600	"6000000010429802814"
 
-# 222 more name items are needed and wait for a later
+# Røyneberg -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Røyneberg"
+LAST	Len	"Røyneberg"
+#   set the mul label to "Røyneberg"
+LAST	Lmul	"Røyneberg"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141216638 Olaug Jonsdatter Heigre: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141216638	P734	LAST	P3831	Q2507958	S2600	"6000000003491933401"
+#   Q141244209 Berta Asbjørnsdotter Røyneberg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141244209	P734	LAST	P3831	Q28418670	S2600	"6000000003491933642"
+#   Q141244102 Jon Torson Røyneberg: P734 family name = the item just created
+Q141244102	P734	LAST	S2600	"6000000005609102976"
+
+# 144 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Røyneberg (family), 3 bearer(s)
 #   Stangaland (family), 3 bearer(s)
 #   Söfdeborg (family), 3 bearer(s)
-#   Tollefson (patronymic), 3 bearer(s)
 #   Toresdatter (patronymic), 3 bearer(s)
 #   Torsteinson (patronymic), 3 bearer(s)
-#   Ugla (family), 3 bearer(s)
 #   Ådnesdatter (patronymic), 3 bearer(s)
 #   Årsvoll (family), 3 bearer(s)
 #   Andersdotter (patronymic), 2 bearer(s)
-#   Asbjørnsen (patronymic), 2 bearer(s)
 #   Asbjørnson (patronymic), 2 bearer(s)
-#   ... and 210 more
+#   Austrått (family), 2 bearer(s)
+#   Børildsdatter (patronymic), 2 bearer(s)
+#   Gitlaug (given), 2 bearer(s)
+#   Gunnbjørnsdatter (patronymic), 2 bearer(s)
+#   ... and 132 more
 
