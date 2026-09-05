@@ -6142,6 +6142,11 @@ def main():
         # `Elias Lagerheim den yngre` in `sv` and in `en`, so the consensus is the Swedish
         # phrase; Emma wants `Elias Lagerheim II` in `mul` and `Elias Lagerheim Jr.` in `en`.
         # See `namemodel.GENERATION_SUFFIX`.
+        # **`en` is derived from the RAW consensus, never from the normalised `mul`.** Running
+        # the normaliser twice is a no-op by design -- `II` is already a target form, so the
+        # dedupe returns it untouched -- and the `en` line then came out `Lars Jonson Skrudland
+        # II` where Emma's ruling is `Jr.` Each style is computed from the same source string.
+        raw_consensus = mul
         mul = normalise_generation_suffix(mul, "mul")
         source = mul or labels.get(g, "")
 
@@ -6161,7 +6166,8 @@ def main():
             if current != mul:
                 lines.append(f'{q}\tLmul\t"{qs(mul)}"')
             if not mine.get("en"):
-                lines.append(f'{q}\tLen\t"{qs(normalise_generation_suffix(mul, "en"))}"')
+                lines.append(
+                    f'{q}\tLen\t"{qs(normalise_generation_suffix(raw_consensus, "en"))}"')
             # The Geni rendering is an ALIAS on `mul`, never a label and never a CJK alias.
             # A redaction marker is not a name and does not become one here either.
             geni_name = (fields.get(g) or {}).get("display_name", "")
