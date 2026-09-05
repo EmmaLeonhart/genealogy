@@ -27907,3 +27907,49 @@ Egypt** (17, Scheschonq). At ≥140 a further one appears: 余 Yú, 62 people.
 `label_en → label_mul → cjk_names → other_script_names`, and a Geni-redacted person is
 marked `(private)` rather than `(no label)` so the two are not confused — 571 of the 725
 unlabelled members are redactions, which is a fact about Geni rather than a gap in our data.
+
+## 2026-09-05 — the cluster report was wrong three ways, all of them hers to spot
+
+Emma, on the first version: *"your measurement of there being qids is a bit flawed… Pre dynastic
+Egypt definitely does… Axum certainly have qids lol"*, *"you said Samaritan itamar line but it's
+clearly everyone in the Samaritans cluster and you just bullshitted"*, and *"Idk if you even
+bothered cross-checking wikidata p2600 properties linking to these lol"*.
+
+**The description came off five labels.** The farthest five of the 222-person cluster were
+consecutive generations of one thread, so `Samaritan Itamar line` was true of the sample and
+false of the group — over every label, `Samaritan` 145, `Itamar` 111, `High Priest` 38,
+`Cohen` 35. `describe()` counts all members now and corrected three more on its first run: the
+1,524 are a **譚 Tan** lineage with the legendary five at the far end, cluster 2 is **鄫/姒
+Zeng-Si**, and the 174 "redacted profiles" are a **李 Lee family** who are largely redacted.
+`reports/eccentric-cluster-members.tsv` carries all 45,176 memberships so a description is
+checkable.
+
+**The P2600 cross-check had been done and that is why the claim was wrong.** The derived `qid`
+column *is* the P2600 join — 43,680 against p2600-all.tsv's 43,709 over the same 1.45M people,
+29 there only, 0 the other way — so the count was right and the sentence hung on it was not.
+`P2600` counts a **link**. Renamed `p2600_linked`; the report leads with what a `0` means.
+
+**Eccentric covers two different things.** Tracing Charlemagne → `Solomon King of Israel`: 153
+hops through the Carolingians, the Byzantine houses, the Ethiopian line, then ~120 consecutive
+**Kings of Axum at degree 2**. That cluster is 1.1 people per hop, 80% degree ≤2 — a succession
+list entered as a chain. Cluster 1 is 18.1 per hop, a genuinely wide family. `span`, `per_hop`
+and `deg_le2_pct` are columns now. Her bible-ban point is visible in the gap: `Solomon King of
+Israel` exists **once**, at 153, the medieval Jewish lines sit at 26–28, and nothing lies between
+75 and 152.
+
+**The live check was wrong in both directions and the verdict column is deleted.**
+`wbsearchentities` is a **prefix** search, so `Makeda Queen of Sheba` matched nothing and Axum
+read 0 of 12 — the query format, not Wikidata. `namemodel.drop_title_tail` fixes it to
+`Q159888 Queen of Sheba`. The opposite defect sat on the same table: the 李 Lee cluster read
+*items exist* on `Dave Lee -> Q1691840 (British DJ)` and `Barbara Weil -> Q88846 (German
+politician)` — living strangers sharing a surname with redacted people. A word summarising the
+count asserted an identity nothing established, so the column went rather than being repaired.
+What survives is `searched`, `with_hit` and each hit's own **description**, which is what
+separates `Scorpion I -> Q318613 (predynastic Egypt pharaoh)` from the DJ.
+
+**And a workflow GitHub cannot parse registers with no triggers.** A multi-line commit message
+unindented inside a `run: |` block ends the YAML block scalar; GitHub then lists the workflow
+under its *path* rather than its name and `run_workflow` answers *"Workflow does not have
+'workflow_dispatch' trigger"* while the file looks correct on disk. The other nine were checked
+and parse. Separately, an unset workflow input arrives as an **empty string**, not as an absent
+variable, so `os.environ.get(name, "20")` returned `""` and `int("")` killed a run.

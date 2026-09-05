@@ -43,6 +43,21 @@ So the columns are `searched`, `with_hit` and `examples`, and the examples carry
 pharaoh)` from `Dave Lee -> (British DJ)`. Reading them is the human's job, which is what
 `CLAUDE.md` § *"Analyse this" means build a CSV* asks for: the census, then a sample read by eye.
 
+**WHAT IS LEFT WRONG, recorded rather than tuned away.** Stripping the title took the Axumite
+cluster from 0 to 2 of 12 and got `Makeda Queen of Sheba -> Q159888 Queen of Sheba (biblical
+figure)`, which is right. Two residues remain and both are properties of Geni's labels rather
+than bugs to chase:
+
+- **Geni packs several regnal names into one label.** `Menelik I Dawit I King of Axum` strips to
+  `Menelik I Dawit I`, which is longer than Wikidata's `Menelik I`, so a prefix search still
+  misses. Nothing short of a real search API fixes that.
+- **A hit can be a NAME ITEM rather than a person.** `Solomon -> Q18607853 Solomon (male given
+  name)`. This repo creates name items, so that is the expected shape and not a coincidence.
+
+So a low `with_hit` is **not** evidence that Wikidata lacks a cluster, and a high one is not
+evidence that it has it. This file narrows the question for a reader; it does not answer it, and
+tuning the query further would only move which way it is wrong.
+
 Writes `reports/eccentric-cluster-wikidata-check.tsv`.
 """
 from __future__ import annotations
