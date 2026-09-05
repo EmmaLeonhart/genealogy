@@ -604,6 +604,91 @@ characters in the corpus lacked a reading, which cannot explain 13% of the popul
 round-trip here. The pre-existing copies in `classify-name-ambiguity.py`, `profilenames.py` and
 `build-cjk-clan-labels.py` were each checked by codepoint and are correct.
 
+### A GENERATION SUFFIX GOES LAST. A regnal ordinal stays where it is
+
+**Emma, 2026-09-05**, on a fix that turned `Lars Jonson d.y. Skrudland` into `Lars Jonson II
+Skrudland`: *"Lars Jonson Skrudland Jr. I didn't tell you to do that. Regnal numbers can come
+after the first name, regular ones go Sr Jr III etc always as a suffix in English and in mul
+always as a suffix I, II, III."*
+
+**Two things that look alike and are not:**
+
+| | where it goes | property |
+| --- | --- | --- |
+| **generation suffix** — `d.y.`, `d.e.`, `den yngre`, `Jr.`, `Sr.` | **the END of the label**, whatever position Geni wrote it in | — |
+| **regnal ordinal** — `Abisha III`, `Robert VII` | **stays put**, after the given name | `P7338` *regnal ordinal* |
+
+    Lars Jonson d.y. Skrudland  ->  mul  Lars Jonson Skrudland II
+                                    en   Lars Jonson Skrudland Jr.
+
+`namemodel.normalise_generation_suffix` removes the token and appends the converted form.
+`GENERATION_SUFFIX` holds **no bare Roman numeral**, so a regnal ordinal is never a match and
+cannot move — that is structural rather than a special case. A label already carrying the numeral
+does not gain a second one: `Daniel Ström II, dy` keeps its `II`, and the comma that introduced
+the suffix goes with the suffix.
+
+**A suffix STAYS in the languages that use it.** Emma, same day: *"the dy will be present
+wherever for the languages that use it but the suffixes we have will be always at the end"*, and
+earlier: *"the inappropriate languages it is on should go to 'Elias Lagerheim II'"*. So `nb`, `nn`,
+`no`, `da` and `sv` keep their own form where their own grammar puts it, `fi` keeps `nuorempi`,
+English keeps `Jr.`, and every other language takes the `mul` shape.
+
+**`namemodel.SUFFIX_LANGUAGES` keys on the FORM, never on a list of Scandinavian languages** —
+the two pairs differ by one letter and belong to different places: `d.ä.`/`den äldre` are Swedish,
+`d.e.`/`den eldre` are Norwegian and Danish. A "Scandinavian keeps everything" rule would leave a
+Swedish `den eldre` and a Norwegian `d.ä.` in place, each of which is the other language's
+spelling. **A region subtag inherits its base language**: `en-ca` and `en-us` were the only English
+labels being rewritten to `II` — 2 of the first run's 60, both wrong, and found by reading the
+sample rather than the count.
+
+Measured over the 11,827 live labels on 1,465 items: **19 kept native** (`sv` 7, `fi` 6, `nb` 2,
+`en-ca` 1, `en-us` 1, `nn` 1, `da` 1), **58 normalised** (`ast`, `nl`, `pap`, `sl`, `sq`, `ca`,
+`es`, `ga`, `fr`, `tr`). Each language is normalised **from its own label**, never overwritten
+with `mul` — a French or German label may spell the name differently for good reason.
+
+**The CJK labels follow the `mul` form**, per § *The MARRIED name is the real name*: they are the
+transliteration of the primary label. `ラース・ヨンソン・スクルドランド2世`.
+
+**And the rule existed for a day before anything called it.** `normalise_generation_suffix` was
+wired into `derive-labels.py` and the label-corrections pass, and **not** into the block that
+writes a new item's `Lmul`/`Len`/`Lja`/`Lzh`/`Lko` — so every creation carried the Norwegian
+abbreviation in all five languages and `label_in` transliterated it as a name: `…・ドイ・…`,
+`…디…`. Her guess at the cause was the position; `_SUFFIX_RE` is unanchored and the position was
+always fine. § *Code that is WRITTEN but never CALLED is not done*.
+
+### THE NAME-ITEM DUPLICATE GUARD NEEDS HER CONTRIBUTIONS, because search LAGS
+
+**Emma, 2026-09-05:** *"the quickstatements I most recently ran tried to make duplicate surnames
+again lol."* `Låge-Håland`, refused because `Q141257135` already held that label and description —
+and the refusal broke the **four `LAST` lines after it**, which is what a mid-batch `CREATE`
+failure costs.
+
+**The refusal is the guard working**; § *THE ONE EXCEPTION* is the rule that makes a name item's
+description refuse a duplicate. The generator should not have proposed it.
+
+**Four lookups, and all four missed — each for its own reason, so no single one is the fix:**
+
+| lookup | why it missed |
+| --- | --- |
+| `out/wikidata/name-items-in-store.tsv.gz` | the offline download predates the item |
+| the bearers' own `P734`/`P5056` | they do not point at it yet |
+| `reports/created-name-items.tsv` | **nothing ever refreshed it** |
+| live `wbsearchentities` | reads the **search index** |
+
+**⛔ `wbsearchentities` reads the SEARCH INDEX, which Wikidata populates asynchronously.** An item
+is retrievable by `wbgetentities` immediately and may not be findable by *search* for some time
+after. So the live check is blind in exactly the window a daily cadence duplicates in — an item
+created by yesterday's batch or by an earlier run of today's. It stays as the last resort, because
+it catches items created by **other people**, which contributions cannot.
+
+**`refresh-created-name-items.py` is the source with no lag** — it reads her contributions for page
+creations whose `P31` is a name class, and follows redirects so a merged-away item resolves to its
+survivor. It was written 2026-08-30 **against this exact bug** and nothing called it for six days,
+so the file sat at 18 rows from a hand-run. It now runs inside `build-garborg-day.py --compose`
+beside the ledger refresh, and **fails the run** for the same reason the ledger does: a stale file
+does not look like an error, it looks like work to do, and the work it invents is re-creating what
+exists.
+
 ### A TITLE IS NOT A NAME, and Geni already said so — in `NSFX`
 
 **Emma, 2026-09-03, on `Q2183430` *Benedicta Ebbesdotter of Hvide*:** *"There was a bit of a

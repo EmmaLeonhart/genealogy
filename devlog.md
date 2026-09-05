@@ -27953,3 +27953,55 @@ under its *path* rather than its name and `run_workflow` answers *"Workflow does
 'workflow_dispatch' trigger"* while the file looks correct on disk. The other nine were checked
 and parse. Separately, an unset workflow input arrives as an **empty string**, not as an absent
 variable, so `os.environ.get(name, "20")` returned `""` and `int("")` killed a run.
+
+## 2026-09-05 — the eccentric clusters into the identification gedcom, and three rules she had to state twice
+
+**The gedcom.** Emma: *"write these ones into that identification gedcom thing that serves the
+dual purpose of entity resolution through adding dummy bios with the wikidata links, which is
+scheduled to at Jan 1, 2027 become a thing that turns every qid there into an entry point for
+editing."* `exports/post-merge/wikidata-qid-links.ged` goes **5 records → 29, 28 distinct QIDs**,
+`PENDING` today and `LIVE` on 2027-01-01 — checked by running `group_status()` for both dates,
+because a roster that does nothing looks identical to one that works.
+
+24 pairs, each read by hand out of `reports/eccentric-cluster-candidates.tsv` against the item's
+own label, description, `P31` and dates: pre-dynastic and early dynastic Egypt 15, Sixth Dynasty
+4, Third Intermediate Period 4, the Axumite rope 1. **Not one carries a `P2600`**, which is the
+thing she corrected — those clusters read `p2600_linked = 0` and the first report called that
+Wikidata not having them.
+
+**The rejections are the evidence the filter works.** The 李 Lee cluster gave six humans and all
+six are living strangers sharing a surname with redacted people — a British DJ born 1964, a Hong
+Kong politician, a German politician. The 譚 Tan cluster gave seven, every one
+`Daughter -> Q308194 daughter (female offspring)` and one a 1996 film. **And the filter has a
+hole**: `Makeda Queen of Sheba -> Q159888` is right and `instance_of_human` reads *no*, because
+`Q159888` is `P31` `Q20643955` *human biblical figure*, not `Q5` *human*. A legendary person
+routinely is not `Q5`, and that is the whole population out here.
+
+**`d.y.` — twice wrong, both mine.** First the rule was never called on the creation path, so
+`Q141283784` went out as `Lars Jonson d.y. Skrudland` in all five languages with `d.y.`
+transliterated as `ドイ`. Then the fix converted it **in place**, and she rejected that too:
+*"Regnal numbers can come after the first name, regular ones go Sr Jr III etc always as a suffix."*
+A generation suffix now moves to the end; a regnal ordinal cannot move, because
+`GENERATION_SUFFIX` holds no bare Roman numeral.
+
+**And the other half of that ruling had been outstanding since her earlier message.** `nb`/`sv`/`da`
+were safe only by omission — the corrections pass emitted `mul`/`en`/`ja`/`zh`/`ko` and nothing
+else — while a Swedish `den yngre` sat in ten other languages untouched. `SUFFIX_LANGUAGES` keys on
+the form rather than listing Scandinavian languages, because `d.ä.` is Swedish and `d.e.` is
+Norwegian and a language list would leave each in the other's label. **19 kept native, 58
+normalised**, and the `en-ca`/`en-us` pair is why a region subtag inherits its base language — 2 of
+the first run's 60 rewrites, both wrong, found by reading the sample rather than the count.
+
+**The duplicate name item, and it is the same shape a third time.**
+`refresh-created-name-items.py` was written 2026-08-30 against exactly this bug and **nothing ever
+called it**, so `created-name-items.tsv` sat at 18 rows while `Låge-Håland` was created and then
+re-proposed. All four lookups missed it; the one worth writing down is that `wbsearchentities`
+reads the **search index**, which Wikidata populates asynchronously, so the live check is blind in
+precisely the window a daily cadence duplicates in. Wired into `--compose`, failing the run.
+
+**Also: a workflow GitHub cannot parse registers with no triggers at all.** A multi-line commit
+message unindented inside a `run: |` block ends the YAML block scalar; GitHub then lists the
+workflow under its *path* rather than its name and `run_workflow` answers *"Workflow does not have
+'workflow_dispatch' trigger"* while the file looks correct on disk. The other nine were checked and
+parse. And an unset workflow input arrives as an **empty string**, not as an absent variable, so
+`os.environ.get(name, "20")` returned `""` and `int("")` killed a run.
