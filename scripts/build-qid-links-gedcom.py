@@ -118,6 +118,62 @@ PAIRS = {
     # item rather than one being picked.
     "6000000001846508982": "Q232803",   # 神功皇后 Jingū-kōgō (Okinagatarashi-hime)
     "6000000045545840003": "Q232803",   # the same person, Geni's second profile
+
+    # **The eccentric clusters, added 2026-09-05 on her instruction:** *"write these ones into
+    # that identification gedcom thing that serves the dual purpose of entity resolution through
+    # adding dummy bios with the wikidata links, which is scheduled to at Jan 1, 2027 become a
+    # thing that turns every qid there into an entry point for editing"*.
+    #
+    # This is the widening the docstring above reserves for her word, and it is bounded: these
+    # are the pairs that survived `reports/eccentric-cluster-candidates.tsv`, not a rule. Every
+    # one was read by hand against the item's own label, description, `P31` and dates, which is
+    # § *How this project works now* -- records, then a decision.
+    #
+    # **Not one of them carries a `P2600`**, which is why the pairing exists nowhere else: the
+    # clusters they come from read `p2600_linked = 0` in `reports/eccentric-clusters.md`, and
+    # that is what Emma corrected -- *"Pre dynastic Egypt definitely does"* have items. It does;
+    # nobody had linked them.
+
+    # -- Cluster 3, PRE-DYNASTIC AND EARLY DYNASTIC EGYPT, 295 people at 100-129 hops.
+    "6000000209058145828": "Q318613",   # Scorpion I -- predynastic Egypt pharaoh
+    "6000000006743335611": "Q255585",   # Neithhotep -- Neithotep, ancient Egyptian queen consort
+    "6000000004869093655": "Q152375",   # Djer -- ancient Egyptian pharaoh of the First Dynasty
+    "6000000004869093676": "Q230548",   # Meryt-Neith -- Merneith, ancient Egyptian queen
+    "6000000004869093649": "Q453789",   # Khenthap -- ancient Egyptian queen consort
+    "6000000004869093727": "Q453508",   # Betrest -- ancient Egyptian queen consort
+    "6000000004869093733": "Q151819",   # Qa'a -- Egyptian ruler
+    "6000000005747697181": "Q151805",   # Semerkhet -- Egyptian pharaoh
+    "6000000005747697123": "Q1962794",  # Nakhtneith -- ancient Egyptian queen of the 1st Dynasty
+    "6000000006743369482": "Q453243",   # Herneith -- ancient Egyptian queen consort
+    "6000000005747697154": "Q2342780",  # Serethor -- Queen of Egypt
+    "6000000015211291801": "Q15639426", # Shesh I -- ancient Egyptian pharaoh
+    "6000000004869093838": "Q464248",   # Neferkasokar -- seventh pharaoh of the second dynasty
+    "6000000016659670347": "Q310878",   # Seth-Peribsen -- ancient Egyptian ruler
+    # `Nebre` against `Nebra` is the one label mismatch kept: the description settles it, being
+    # *"Horus name of the second early Egyptian king"*, which is this person's position exactly.
+    "6000000005747697264": "Q152751",   # Nebre -- Nebra
+
+    # -- Cluster 15, SIXTH DYNASTY, 10 people at 100-107 hops.
+    "6000000004869097266": "Q320908",   # Merenre Nemtyemsaf II -- Egyptian pharaoh
+    "6000000016328513720": "Q4766049",  # Ankhesenpepi III -- Egyptian queen, Sixth Dynasty
+    "6000000016328494813": "Q489064",   # Ankhesenpepi IV -- Anchenespepi IV., Sixth Dynasty
+    "6000000016662722475": "Q1052959",  # Nefer -- Egyptian pharaoh of the 6th Dynasty
+
+    # -- Cluster 12, THIRD INTERMEDIATE PERIOD, 17 people at 100-107 hops. **These four agree on
+    # the DEATH YEAR EXACTLY** -- Osorkon I -889, Takelot I -874, Shoshenq I -924 -- which is
+    # the `date` step `reports/zipper-reliability.md` measures at 0.0% disagreement.
+    "6000000042325392108": "Q311811",   # Scheschonq I -- Shoshenq I, Pharaoh of Egypt
+    "6000000042325255325": "Q515574",   # Osorkon I -- Egyptian pharaoh, c. 925-890 BC
+    "6000000042325032728": "Q548623",   # Takelot I -- Egyptian pharaoh
+    "6000000042324946693": "Q459153",   # Osorkon II -- Egyptian pharaoh
+
+    # -- Cluster 6, THE AXUMITE ROPE, 61 people at 100-153 hops. **Only one pair, and the
+    # `instance of` filter would have thrown it away**: `Q159888` is `P31` `Q20643955` *human
+    # biblical figure*, not `Q5` *human*, so `instance_of_human` reads `no` on a correct pair.
+    # Recorded because it is a general hole -- a legendary or biblical person is routinely not
+    # `Q5`, and every cluster out here is exactly that population. Our -1013 against the item's
+    # -1000 is what actually settles her.
+    "6000000210521076830": "Q159888",   # Makeda Queen of Sheba -- Queen of Sheba
 }
 ONLY = set(PAIRS)
 
