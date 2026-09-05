@@ -87,7 +87,7 @@ def _store_qids():
 
 
 def known_qids():
-    """Every item we can already point at -- the ledger PLUS `entity_resolution.md`.
+    """Every item we can already point at -- the ledger plus her hand identifications.
 
     **The two must agree with the builder or this test measures a different thing.**
     `scripts/build-garborg-day.py`'s `ledger()` folds in the hand-asserted
@@ -104,14 +104,8 @@ def known_qids():
         out |= {row["qid"] for row in csv.DictReader(f, delimiter="	")}
     import sys as _sys
     _sys.path.insert(0, str(REPO / "src"))
-    try:
-        from genimerge import entities
-        out |= {r.qid for r in
-                entities.read_file(REPO / "entity_resolution.md").resolutions if r.qid}
-    except Exception:                                               # noqa: BLE001
-        pass
 
-    # **The hardcoded spine anchors, for the same reason as `entity_resolution.md` above.**
+    # **The hardcoded spine anchors.**
     # `build-garborg-day.SPINE_ANCHORS` folds four items into `our_items` that carry a `P2600`
     # on Wikidata but appear in no ledger file — steps 7, 8, 15 and 16 of the Arne↔Bureus
     # spine. Emma, 2026-08-31: *"Add all of Q116760688, Q6014618, Q26239714, Q109265381 as both

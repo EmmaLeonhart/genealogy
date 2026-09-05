@@ -64,16 +64,17 @@ English regnal form, and a perfect oracle picking among a person's Latin names
 reaches only 26.8%. Deriving the label is easy; the derived label disagreeing
 with Wikidata's is the normal case, not the exception.
 
-## Name corrections applied — 1
+## Name corrections applied — 2
 
 A Geni export is a snapshot: a profile renamed afterwards keeps its old name
-in every GEDCOM already taken. `entity_resolution.md` records the current
+in every GEDCOM already taken. `reports/label-corrections.tsv` records the
 name by hand, and it is applied **here, at derivation** — the exports stay
 untouched as the record of what Geni actually said, and the superseded name
 stays visible in `further_latin_names` rather than being erased.
 
 | geni | corrected to |
 | --- | --- |
+| `6000000001902786893` | Mononobe no Futohime |
 | `6000000059561790841` | Jacobus Bothniensis |
 
 ## Not done here

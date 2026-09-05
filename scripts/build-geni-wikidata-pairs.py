@@ -3,7 +3,7 @@ Emma put in their Geni `about_me`, and emit the `add_geni_id` batch.
 
 **These pairs are hand-curated identity claims, not inference.** Somebody wrote
 the Wikidata URL onto the Geni profile. That is the same kind of evidence as
-`entity_resolution.md` and it is the only thing in this repo that can link an
+a hand-recorded identification, and that is the only thing in this repo that can link an
 item carrying no P2600 to a Geni profile.
 
 The QID is taken from the individual's own record, so the pairing is exact:

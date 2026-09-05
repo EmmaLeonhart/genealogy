@@ -66,7 +66,7 @@ Neither he (0 exports) nor his brother `6000000040951399522` (0) is in the corpu
 **Export GEDCOM is not offered** on either — Emma manages neither profile. Seeded instead, tier 3:
 `NN` **`6000000227468650841`**, his mother, at the open *Add mother* slot beside his father Olof.
 
-### 3. The eight `entity_resolution.md` people — `Forest` each
+### 3. The eight hand-resolved people — `Forest` each
 
 Everyone in that file **except Emma**. She withdrew the Geni-bio-editing half of this item on
 2026-08-27 — *"we don't actually need to edit your geni at all for this"* — so only the exports

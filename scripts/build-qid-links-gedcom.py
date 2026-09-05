@@ -23,7 +23,7 @@ this script emitted every pairing in `reports/synoptic-correspondence.tsv` that 
 in our tree -- **83,988 individuals**. That was a generalisation of a specific instruction and she
 never asked for it.
 
-The three are the residue of `entity_resolution.md`: identities she *"put a lot of effort into
+The three are the residue of a retired side file: identities she *"put a lot of effort into
 creating identification with"*, whose Wikidata items carry **no `P2600`**, so the pairing exists
 nowhere outside that scratchpad. Checked live 2026-08-29. The rest of the file's nine pairs are
 already handled and are deliberately absent here -- `Q11443857` Futohime is in `CJK_CLAN_BLOCK`,
@@ -54,14 +54,14 @@ and its `NOTE` joins theirs. `merge.ALWAYS_REPEATABLE` holds `NOTE`, so nothing 
 repeatable paths with a value are matched on that value, an identical line collapses, a different
 one is kept alongside. Re-generating and re-merging is therefore idempotent.
 
-## The source is `entity_resolution.md`, and the first attempt got that wrong too
+## The source is her hand identifications, and the first attempt got that wrong too
 
 Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
 which is not a bug, it is the point restated. That report joins five places a pairing can live
-and `entity_resolution.md` is not one of them, so these three are invisible to it. They exist in
+and that side file was not one of them, so these three are invisible to it. They exist in
 her scratchpad and nowhere else, which is exactly why writing them into the tree is worth doing.
 
-`genimerge.entities.read_file` parses it, and `tests/test_entities.py` already pins that the real
+The pairs are inlined below, because the parser that read them and the file it read are both
 file parses with zero unparsed entries.
 
 ## Every record must already exist in the tree
@@ -92,7 +92,7 @@ OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 #: item carries no `P2600`, and that is a live fact about Wikidata which will stop being true the
 #: moment these links are acted on -- so a rule that recomputed it would empty this file and look
 #: like success. An explicit list says what was decided and when.
-#: **The pairs themselves, since `entity_resolution.md` is gone.** It was deleted in `12f3134a`
+#: **The pairs themselves, since the side file is gone.** It was deleted in `12f3134a`
 #: and the deletion was right -- `CLAUDE.md` § *LEGACY CODE IS DELETED* -- but this script kept
 #: reading it and had no guard, so it crashed with `FileNotFoundError` and stayed crashed through
 #: four dead-item sweeps.

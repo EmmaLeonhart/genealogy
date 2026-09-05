@@ -48,7 +48,7 @@ Writes `reports/cjk-clan-labels.tsv`.
 
 `build-garborg-day.CJK_CLAN_BLOCK` is a pasted literal, and since 2026-08-29 it ends with a
 short section for **`Q11443857` Mononobe no Futohime** — a *named* woman of a named clan, which
-is a different case from the 177 unnamed ones here and comes from `entity_resolution.md` rather
+is a different case from the 177 unnamed ones here and comes from a hand identification rather
 than from any measurement. **Regenerating the block from this script's output and pasting over
 the literal would silently drop her.** Keep the tail.
 """

@@ -248,7 +248,7 @@ def main() -> int:
             # provenance is real, it just has to land second.
             # The id is `samaritan_priest_link:<q>`, which is what
             # `build-samaritan-priest-links.py` emits. It used to say
-            # `entity_resolution:<q>`, an id that exists for other people but for
+            # a hand-identification id, which exists for other people but for
             # **none of these nine** -- so the dependency was unsatisfiable, and
             # `scripts/audit-edit-graph.py` found it dangling on 2026-08-23.
             "requires": ([f"samaritan_priest_link:{q}"]

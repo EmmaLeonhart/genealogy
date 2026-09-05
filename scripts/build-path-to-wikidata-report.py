@@ -16,7 +16,7 @@ Four measures, because the first three each looked like the answer and were not:
 4. **Every ancestor carrying an item**, and how many of *their* descendants
    carry one — which is what actually identifies a hub.
 
-QIDs come from the P2600 map **and** from `entity_resolution.md`, because an item
+QIDs come from the P2600 map **and** from the hand-recorded identifications, because an item
 without `P2600` is invisible to the map and still a Wikidata item.
 
     py scripts/build-path-to-wikidata-report.py [geni_id]
@@ -32,7 +32,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from genimerge import entities, wikistore  # noqa: E402
+from genimerge import wikistore  # noqa: E402
 
 FAMILY = REPO_ROOT / "reports" / "derived-family.csv"
 LABELS = REPO_ROOT / "reports" / "derived-labels.csv"
@@ -53,9 +53,6 @@ def main() -> int:
     fac = {r["geni_id"]: r for r in csv.DictReader(open(FACTS, encoding="utf-8"))}
 
     qid = {g: r["qid"] for g, r in lab.items() if r["qid"]}
-    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
-    # files should read it lol."* Deleted in `12f3134a`; the readers were not, and each
-    # either crashed or degraded silently.
 
     kids: dict[str, list[str]] = {}
     for geni_id, row in fam.items():

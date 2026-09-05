@@ -169,8 +169,8 @@ def test_no_edit_requires_an_id_nothing_emits(edits):
     decides each person's kind up front and names the edit that will exist, and
     drops the entry entirely for a person who needs no edit, because depending on
     nothing is not a dependency. `build-samaritan-succession.py` and
-    `build-abram-father-fix.py` required `entity_resolution:<q>` for nine QIDs that
-    file covers **none** of -- the Geni ID for those priests is added by
+    `build-abram-father-fix.py` required a hand-identification id for nine QIDs that
+    source covers **none** of -- the Geni ID for those priests is added by
     `samaritan_priest_link:<q>`.
     """
     known = ids_of(edits)

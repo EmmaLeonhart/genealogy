@@ -23,7 +23,7 @@
 #                                    "Aadne Eivindson Garborg" -- the case
 #                                    CLAUDE.md names as the thing not to do --
 #                                    and Q12598947 "Buyeo Taebi", which is her
-#                                    OWN word ordering from entity_resolution.md.
+#                                    OWN word ordering, set by hand.
 #     9   mul already matches     -> setting it again is a no-op on Wikidata, so
 #                                    it makes no edit and no watchlist entry.
 #                                    Listed at the bottom as the ones this batch

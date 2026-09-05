@@ -34,7 +34,7 @@ exactly that condition and nothing else, so the guard was right and the populati
 | `Q12598947` | `Buyeo Taebi` | `Taebi Buyeo` |
 
 A disambiguator we would strip; a Latinised form she chose; a patronymic Wikidata omits by
-convention; and — `Q12598947` — **her own word ordering**, set through `entity_resolution.md`.
+convention; and — `Q12598947` — **her own word ordering**, set by hand.
 `CLAUDE.md` § *The purpose is to ADD to Wikidata, not to correct it* governs all of them, and it
 names the Ingegerd case specifically as the thing not to do.
 

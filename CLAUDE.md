@@ -1502,16 +1502,11 @@ to follow. An `Ancestors` or `BloodTree` export can hide wives; a `Forest` one
 cannot, and that asymmetry is what let the Hata question be settled rather than
 left open.
 
-**`entity_resolution.md` is Emma's scratchpad and must stay free-form.** It
-holds Geni-to-Wikidata identities she recognised by hand plus label corrections
-she wants — evidence no query in this repo can produce. `genimerge.entities`
-parses it; `python -m genimerge entity-resolution` writes
-`out/wikidata/entity-resolution.qs`. **Do not reformat the file to suit the
-parser.** When an entry is not understood the parser reports it and the fix is
-to teach the parser, which `tests/test_entities.py` pins by asserting the real
-file parses with zero unparsed entries. Entries are grouped by "one Geni profile
-and one Wikidata item, greedily" — *not* by blank lines, which was tried and
-split one of Emma's entries into two unparsable halves.
+**A hand-recorded identity or label correction goes in a TRACKED TSV.** Her
+Geni-to-Wikidata identities live in `reports/manual-identifications.csv`, and a
+label only she can supply — *"Name should be … Jacobus Bothniensis"* — in
+`reports/label-corrections.tsv`, which `derive-labels.py` applies at derivation
+so the exports stay the record of what Geni actually said.
 
 **`reconcile` is deleted, and name matching does not come back.** Emma ordered
 the name-search matcher removed on 2026-08-12 — *"no fucking clue why there's a
@@ -3031,11 +3026,10 @@ code should be removed from this repo because legacy code is all this random cra
 actually used in the pipeline. It is something that just comes up and causes you to get confused
 and confused and write in bullshit."*
 
-**The cost is not hypothetical and it is not tidiness.** `entity_resolution.md` was superseded the
-moment its three live pairings went into `exports/post-merge/wikidata-qid-links.ged` as bio links —
-and on 2026-08-29 I read the stale file, told her deleting it would lose those three, and put a
-question to her whose answer was a GEDCOM I had built four hours earlier. Her reply: *"Oh my god
-did we not put them in that gedcom?"* We had.
+**The cost is not hypothetical and it is not tidiness.** On 2026-09-04 a session spent four
+workflow dispatches asking Wikidata questions whose answers `refresh-live-values.py` had fetched
+and discarded minutes earlier, because a comment said the summary TSVs were what the pipeline
+kept. Stale prose about what a file is for is read as current, and then acted on.
 
 **So the test is "does the pipeline read this?", not "might this be useful?"** A file nothing runs
 against is not a record, it is a second answer waiting to be found by whoever looks first — which
@@ -3065,7 +3059,7 @@ parses — so it goes in, and nothing ever takes it out. Four in one evening:
 | "every Bure kinship person" | `reports/bure-roster.tsv`, and I invented a hop threshold on it | `reports/bureatten.csv` — the sv.wikipedia Category:Bureätten listing, 251 with a Geni id |
 | "no we are not making my father an item **right now**" | `MODERN_CUTOFF = 1880`, a demographic filter on everyone | that one person, that one day |
 | "nothing more than 1 hop away" | a distance-from-Arne radius on the seed pool, cutting a batch to 7 | the ring already is one hop; the seeds were wrong |
-| an early hand-resolution file | `entity_resolution.md` wired into `have` and left there | a fix for a problem that is now solved, and *"an active liability"* |
+| an early hand-resolution file | a superseded side file wired into `have` and left there | a fix for a problem that is now solved, and *"an active liability"* |
 
 **So: when she references an object, find the one she means before using one.** If two artifacts
 could be it, that is an `AskUserQuestion` — her instruction, same evening: *"If something is
@@ -3102,17 +3096,16 @@ change all of their bios to links to their qids so that the next step in with th
 *inside* the build, feeding the **Wikidata union**, which does not exist yet. It is not a Geni
 editing task that can be run early, and there is no export campaign attached to it.
 
-**This supersedes an earlier plan that is still in the transcripts**, which had the eight
-`entity_resolution.md` people getting their bios edited immediately and a `Forest` export each. A
+**This supersedes an earlier plan that is still in the transcripts**, which had eight
+hand-resolved people getting their bios edited immediately and a `Forest` export each. A
 cron carrying that plan died in the 2026-08-28 crash; it was recovered on 08-29 and handed back to
 her as live work, and her reply was *"No fuck you you didn't get the later discussion."*
 **A transcript is not the authority when this file holds a later ruling on the same thing** — the
 replacement was already written down two paragraphs up, and reading it would have been enough.
 
-**This retires `entity_resolution.md` as a mechanism.** It was the side file, and the tree is
-where the correspondence belongs. Do not act on that yet — she said *"this entity resolution
-stuff is important, but I think you may have been presenting it as being more important than it
-is. It's important, but just don't do stuff on it right now."*
+**So the correspondence belongs in the TREE, not in a side file.** Do not act on that yet — she
+said *"this entity resolution stuff is important, but I think you may have been presenting it as
+being more important than it is. It's important, but just don't do stuff on it right now."*
 
 ### The seed set is the WIKIDATA SUBGRAPH from Arne. Not the ledger, and never a hop count
 
@@ -3356,8 +3349,8 @@ who is **step 22 of `paths/charlemagne-to-arne-garborg.tsv`**. When the spine re
 **Why the exclusion list still exists — for HER, and not for the Kitajima family.** Emma:
 *"why are we even having exclusions? If you just followed the algorithm then exclusions wouldn't
 be needed."* True of **creations**: she is not in the subgraph, so she is never a seed. Not true
-of **additions**, which are ledger-wide — her `Q232803` reaches `have` through
-`entity_resolution.md`, so without the exclusion the fill-in pass would edit her item.
+of **additions**, which are ledger-wide — her `Q232803` reaches `have` through the ledger, so
+without the exclusion the fill-in pass would edit her item.
 
 **The Kitajima half of that was wrong and is corrected here.** Checked by id, 2026-08-28:
 **none of the 24 Kitajima/Kitashima people is in the ledger**, so neither the fill-in pass nor
@@ -3785,7 +3778,7 @@ later one did. `out/merged.ged` carries `1 NAME Emma Himiko /Leonhart/` as a sec
 
 **Checked 2026-08-16: nothing emits it.** No batch contains the string, and the
 only edit referencing `6000000001846508982` anywhere is the `P2600` *Geni.com
-profile ID* from her own `entity_resolution.md` entry — no label, no name, no sex.
+profile ID* from her own hand-recorded identification — no label, no name, no sex.
 The rule holds because the label emitters use `label_en`, which is the corrected
 single name, and never `further_latin_names`. It is written here rather than in the queue because
 it governs how the project works and has no step attached.
@@ -3816,8 +3809,10 @@ that quoted them. It was removed from all 223 of them on 2026-08-12.
 
 **The name that is gone does not get written down again** — not in a comment, not
 in a report, not as a "superseded name" column, not in a script that exists to
-remove it. `entity_resolution.md` records the correction in her words and
-`derive-labels.py` applies it at derivation; that is the whole mechanism.
+remove it. The exports themselves carry the corrected name, so nothing has to
+re-assert it; where a correction cannot come from an export,
+`reports/label-corrections.tsv` records it and `derive-labels.py` applies it at
+derivation.
 
 If a future export reintroduces it, correct the record and regenerate — do not
 add a note explaining what it used to say. An earlier commit kept it in a

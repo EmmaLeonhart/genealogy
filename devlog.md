@@ -27771,3 +27771,46 @@ labels rather than of dict order.
   `_only_adds_a_title`, which refuses a replacement whose sole difference is title words on the
   front. Stated once as a fact rather than argued: the vote and that guard are answering two
   different questions.
+
+## 2026-09-05 — the retired side file is scrubbed from the repo
+
+**Emma:** *"why the fuck is [it] needed lol? What the fuck is so important about that file that
+you constantly come back to it all the time for seemingly unrelated tasks? … should probably be
+completely scrubbed from all the docs because the only way I can remotely see you mentioning it so
+often is if the docs say it serves some kind of purpose"*.
+
+**Her diagnosis was exactly right and the culprit was one paragraph.** `CLAUDE.md` carried a live
+rule — *"is Emma's scratchpad and must stay free-form"*, with instructions on parsing it and not
+reformatting it — for a file **deleted on 2026-08-29**. Every session read that as current, went
+looking, found it gone, and wrote a comment explaining the absence. There were **seven** such
+comment blocks in `scripts/`, each one saying only *"it is gone and nothing may read it"*, and
+each one a fresh reason for the next session to mention it. Self-perpetuating.
+
+What was actually still live:
+
+- **`src/genimerge/entities.py`** (378 lines) parsing a file that does not exist, and
+  **`tests/test_entities.py`** (224) asserting *"the real file parses with zero unparsed
+  entries"*.
+- **`genimerge entity-resolution`**, a CLI command whose only behaviour was to print *"retired"*.
+- **Two dead imports**, in `build-edit-objects.py` and `build-path-to-wikidata-report.py`, which
+  imported the parser and never called it.
+- Two generated artefacts, `reports/entity-resolution.md` and
+  `reports/wikidata-entity-resolution.json`.
+
+All deleted. **One identification had to be rescued first**: of the seven QIDs in that JSON, six
+are recorded in `manual-identifications.csv`, the ledger or
+`exports/post-merge/wikidata-qid-links.ged` — and **`Q11443857` was in none of them**. It and her
+label correction for the same person (*"change her name to Mononobe no Futohime"*) are now rows in
+`reports/manual-identifications.csv` and `reports/label-corrections.tsv`.
+
+**Prose rewritten in 22 files** — `CLAUDE.md`, `docs/`, `reports/` and every script comment — to
+say what the thing was (*her hand identifications*, `reports/manual-identifications.csv`,
+`reports/label-corrections.tsv`) rather than to name a file nobody can read. Two `CLAUDE.md`
+statements were not merely stale but **wrong**: that `Q232803` reaches `have` through it, and that
+it is where the name correction on her own profile lives. The exports carry that corrected name
+themselves.
+
+**What is deliberately left.** `devlog.md`, which is a dated record of what happened, and
+`reports/user-turns.tsv`, which is her own words verbatim — § *Her quoted words are never
+rewritten*. And `tests/test_wikiancestors.py::test_a_parent_with_no_geni_id_is_an_entity_
+resolution_case`, where *entity resolution* is the ordinary activity and not the file.

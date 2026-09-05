@@ -96,7 +96,7 @@ def samaritan_people() -> dict[str, str]:
 #: is **not in any of the 203 exports** — she created it on Geni after the last
 #: Samaritan export ran — so the link is recorded here and the person arrives
 #: with her next export. Hand-given identity, same standing as
-#: `entity_resolution.md`.
+#: a hand-recorded identification.
 GIVEN_BY_EMMA = {
     "Q137394557": ("6000000227245553985", "Yitzhaq I ben Tsedaka"),
 }

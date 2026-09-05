@@ -19,7 +19,6 @@ from . import (
     density,
     descendants as descendants_mod,
     distant,
-    entities,
     frontier,
     gedcom,
     genipage,
@@ -689,61 +688,6 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
             f"{pick.paths} descent path(s) over {pick.depth} generation(s), "
             f"{pick.open_paths} open"
         )
-    return 0
-
-
-def _cmd_entity_resolution(args: argparse.Namespace) -> int:
-    ws = Workspace.from_args(args)
-    # **No default source any more.** `entity_resolution.md` was deleted in `12f3134a`
-    # and Emma, 2026-08-31: *"no files should read it lol."* The command survives because
-    # `genimerge.entities` parses her free-form format and she may hand it another file;
-    # what goes is the assumption that the retired one is still there. Without `--file`
-    # it now says so rather than reporting the file as missing, which read as an error
-    # in the tool rather than a retired mechanism.
-    if not args.file:
-        print("entity_resolution.md is retired -- pass --file to parse another",
-              file=sys.stderr)
-        return 1
-    source = args.file
-    if not source.exists():
-        print(f"no such file: {source}", file=sys.stderr)
-        return 1
-
-    parsed = entities.read_file(source)
-
-    # Corroboration only: a resolution for a profile we do not hold is still
-    # emitted, because the assertion is Emma's and does not depend on our
-    # coverage. Reading the tree is skipped when nothing would use it.
-    known: set[str] = set()
-    if parsed.resolutions:
-        try:
-            known = set(_load_tree(args.source, ws).people)
-        except Exception as exc:  # pragma: no cover - depends on the exports
-            print(f"could not load the tree to corroborate ({exc}); continuing", file=sys.stderr)
-
-    out_dir = ws.wikidata
-    report = args.output or (ws.reports / "entity-resolution.md")
-    _write(
-        report,
-        entities.render_markdown(
-            parsed, source=source.name, retrieved=args.retrieved, known=known
-        ),
-    )
-
-    missing = [r for r in parsed.resolutions if r.geni_id not in known]
-    print(
-        f"wrote {report}: "
-        f"{len(parsed.resolutions)} P2600 statements, {len(parsed.labels)} label edits"
-    )
-    if missing:
-        print(f"{len(missing)} name a Geni profile the merged tree does not hold")
-    if parsed.unparsed:
-        print(
-            f"{len(parsed.unparsed)} entries were NOT understood and are in no batch "
-            f"— see {report}",
-            file=sys.stderr,
-        )
-    print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
     return 0
 
 
@@ -1601,28 +1545,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_desc.set_defaults(func=_cmd_descendants)
 
-    p_er = sub.add_parser(
-        "entity-resolution",
-        help="turn the hand-written entity_resolution.md into a reviewable batch",
-        description=(
-            "Reads Emma's free-form Geni-to-Wikidata resolutions and label edits "
-            "and writes a QuickStatements batch. Entries it cannot parse are "
-            "reported, never dropped. Nothing is sent to Wikidata."
-        ),
-    )
-    p_er.add_argument(
-        "file", type=Path, nargs="?", default=None, help="default: entity_resolution.md at the repo root"
-    )
-    p_er.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_er.add_argument(
-        "-o", "--output", type=Path, default=None, help="report path (default: <reports>/entity-resolution.md)"
-    )
-    p_er.add_argument(
-        "--retrieved",
-        default=date.today().isoformat(),
-        help="date for the reference qualifier, YYYY-MM-DD (default: today)",
-    )
-    p_er.set_defaults(func=_cmd_entity_resolution)
 
     p_dl = sub.add_parser(
         "wikidata-download",

@@ -114,13 +114,6 @@ def main():
     qids = sorted({r["qid"] for r in csv.DictReader(open(LEDGER, encoding="utf-8"),
                                                     delimiter="\t")
                    if (r.get("qid") or "").startswith("Q")})
-    # **`entity_resolution.md` was deleted in `12f3134a` and its readers were not.**
-    # Emma, 2026-08-31: *"no files should read it lol."* The block that stood here
-    # folded that file's hand-asserted pairs into this lookup; the file has been gone
-    # since 2026-08-29, so the block contributed nothing and only reported its own
-    # absence. `CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule and § *Systematic
-    # review for legacy code* is the other half of it -- deleting the file is half the
-    # job, and a reader that degrades quietly is the worse half.
     qids = sorted(set(qids))
     print(f"{len(qids)} items to read")
 

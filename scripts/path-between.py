@@ -17,7 +17,7 @@ relation column reads *"her brother"*, *"his partner"*, *"her husband"*, and `CL
 an export style being chosen because a stretch of path crossed exactly those.
 
 **Every step reports whether that person holds a Wikidata item**, from the same ledger the daily
-batch uses — `reports/garborg-qids.tsv` plus the hand-asserted `entity_resolution.md` — because
+batch uses — `reports/garborg-qids.tsv` plus her hand-asserted identifications — because
 the question behind this is what would have to be *created* to make the line continuous.
 
 Writes a TSV in the shape `genimerge path` consumes, so a found path joins the same machinery as
@@ -52,13 +52,6 @@ def ledger():
         for row in csv.DictReader(f, delimiter="\t"):
             if row.get("qid"):
                 out[row["geni_id"]] = row["qid"]
-    # **`entity_resolution.md` was deleted in `12f3134a` and its readers were not.**
-    # Emma, 2026-08-31: *"no files should read it lol."* The block that stood here
-    # folded that file's hand-asserted pairs into this lookup; the file has been gone
-    # since 2026-08-29, so the block contributed nothing and only reported its own
-    # absence. `CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule and § *Systematic
-    # review for legacy code* is the other half of it -- deleting the file is half the
-    # job, and a reader that degrades quietly is the worse half.
     return out
 
 

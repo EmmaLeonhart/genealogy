@@ -149,14 +149,10 @@ def main() -> int:
     qid_of = {g: (r.get("qid") or "").strip() for g, r in fam.items() if (r.get("qid") or "").strip()}
 
     # **Anything Emma resolved by hand already exists and must not be created.**
-    # `entity_resolution.md` is her scratchpad of Geni-to-Wikidata identities;
+    # `reports/manual-identifications.csv` holds her Geni-to-Wikidata identities;
     # `Q232803` is her own item, which carries no `P2600` and is therefore
     # invisible to the `qid` column of `derived-family.csv`. The first run of this
     # script proposed creating her a second item.
-    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
-    # files should read it lol."* It was deleted in `12f3134a` and the readers were not;
-    # every one of them either crashed or degraded silently, which `CLAUDE.md` § *Systematic
-    # review for legacy code* names as the worse of the two.
     trunk = {g: n for g, n in trunk.items() if g not in qid_of}
     print(f"{len(trunk)} after removing people who already have an item")
 

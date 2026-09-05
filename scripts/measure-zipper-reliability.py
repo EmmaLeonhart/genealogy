@@ -22,7 +22,7 @@ without asking Wikidata anything:
   A floor on wrongness, not a measure of rightness: agreeing dates prove very little, and the
   `date` method selects on the year so its own column is circular by construction and is marked.
 * **independent corroboration** -- some source that is not the zipper puts the same pair together
-  (Emma's About Me links, `entity_resolution.md`, the structural walk, the Izumo and Tanba
+  (Emma's About Me links, her hand identifications, the structural walk, the Izumo and Tanba
   rosters, her hand verdicts in `reports/emma-judgments.tsv`).
 * **independent contradiction** -- such a source puts one of them with somebody else.
 

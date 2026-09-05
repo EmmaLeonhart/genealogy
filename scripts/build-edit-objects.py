@@ -33,7 +33,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from genimerge import entities, wikistore  # noqa: E402
+from genimerge import wikistore  # noqa: E402
 
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 import labels as _labels  # noqa: E402
@@ -147,7 +147,7 @@ def main() -> int:
     family = {r["geni_id"]: r for r in csv.DictReader(open(FAMILY, encoding="utf-8"))}
     linked = {g: r["qid"] for g, r in labels.items() if r["qid"]}
 
-    # Matches from entity_resolution.md. **Nothing about these is special.** They
+    # Matches she recorded by hand. **Nothing about these is special.** They
     # are Wikidata items that we have matched to a Geni profile and that do not
     # yet state the Geni ID — which is the ordinary output of a merge, and the
     # ordinary starting state for a person. Emma, 2026-08-12: "it's just a
@@ -158,9 +158,6 @@ def main() -> int:
     # path: add_geni_id first, because the Geni ID must exist before any claim
     # can be cited to it or any relationship added.
     hand: dict[str, str] = {}
-    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
-    # files should read it lol."* Deleted in `12f3134a`; the readers were not, and each
-    # either crashed or degraded silently.
     print(f"{len(linked):,} people carry an item "
           f"({len(hand):,} matched but not yet stating the Geni ID)", flush=True)
 

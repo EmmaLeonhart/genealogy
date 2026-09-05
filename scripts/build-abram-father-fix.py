@@ -68,7 +68,7 @@ def main() -> int:
             "subject": {"qid": ABRAM_QID, "geni_id": ABRAM_GENI},
             # Yitzhaq I must carry his Geni ID before a Geni-derived statement
             # points at him. The edit that adds it is
-            # `samaritan_priest_link:<qid>`; `entity_resolution:<qid>` was the wrong
+            # `samaritan_priest_link:<qid>`; the entity-resolution id was the wrong
             # prefix and named an id nothing emits for him.
             "requires": [f"samaritan_priest_link:{YITZHAQ_QID}"],
             "statements": [{

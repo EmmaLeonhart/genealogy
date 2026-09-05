@@ -131,10 +131,6 @@ def main() -> int:
     # name in every GEDCOM already taken, and no amount of re-parsing fixes it —
     # only a correction recorded by hand can. Applying it here, at derivation,
     # leaves the exports untouched as the record of what Geni actually said.
-    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
-    # files should read it lol."* It was deleted in `12f3134a` and the readers were not;
-    # every one of them either crashed or degraded silently, which `CLAUDE.md` § *Systematic
-    # review for legacy code* names as the worse of the two.
     #
     # **But nothing replaced it, so a correction of hers had nowhere to go.** This dict sat
     # empty from that deletion until 2026-09-04, when Emma said of `Q141283774`: *"Name should
@@ -265,7 +261,7 @@ def main() -> int:
         # rendered into Japanese and Chinese under her BIRTH name. Nothing about the
         # transliterator was wrong; it was handed the wrong string.
         #
-        # **A hand correction still outranks everything.** `entity_resolution.md` carries
+        # **A hand correction still outranks everything.** `reports/label-corrections.tsv` carries
         # names nothing here could reconstruct, and § *Emma edits the tree BY HAND* makes
         # those decisions rather than drift -- so a corrected name stays primary and the
         # married form, if any, stays an alias beside it.
@@ -497,7 +493,7 @@ def main() -> int:
         add(f"## Name corrections applied — {len(corrections_applied)}")
         add("")
         add("A Geni export is a snapshot: a profile renamed afterwards keeps its old name")
-        add("in every GEDCOM already taken. `entity_resolution.md` records the current")
+        add("in every GEDCOM already taken. `reports/label-corrections.tsv` records the")
         add("name by hand, and it is applied **here, at derivation** — the exports stay")
         add("untouched as the record of what Geni actually said, and the superseded name")
         add("stays visible in `further_latin_names` rather than being erased.")

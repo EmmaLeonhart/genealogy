@@ -143,9 +143,10 @@ def qs(text):
 def ledger():
     """Geni id -> QID for everybody we can already point at an item.
 
-    **`entity_resolution.md` is folded in, and it has to be.** That file is where a
-    correspondence recognised BY HAND lives, and it is the only place that knows about an
-    item carrying no `P2600` yet -- which is exactly the shape of Emma's own. Without it
+    **Her HAND identifications are folded in, and they have to be.**
+    `reports/manual-identifications.csv` is where a correspondence she recognised by hand lives,
+    and it is the only thing that knows about an item carrying no `P2600` yet -- which is
+    exactly the shape of Emma's own. Without it
     the spine walk reached step 1 of `paths/bergitte-to-emma.tsv`, which is HER, found her
     in neither `garborg-qids.tsv` nor `p2600-all.tsv`, and emitted a `CREATE` that would
     have minted her a SECOND item. `CLAUDE.md` says it plainly: she *"has her own item and
@@ -155,13 +156,6 @@ def ledger():
     with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             out[row["geni_id"]] = row["qid"]
-    # **`entity_resolution.md` was deleted in `12f3134a` and its readers were not.**
-    # Emma, 2026-08-31: *"no files should read it lol."* The block that stood here
-    # folded that file's hand-asserted pairs into this lookup; the file has been gone
-    # since 2026-08-29, so the block contributed nothing and only reported its own
-    # absence. `CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule and § *Systematic
-    # review for legacy code* is the other half of it -- deleting the file is half the
-    # job, and a reader that degrades quietly is the worse half.
 
     # **Emma's own identity confirmations, and they have to be READ, not appended once.**
     #
@@ -1937,16 +1931,15 @@ SUBGRAPH_ROOTS = subgraph_roots()
 #: not their seeding.
 KLUGE_UNIVERSE_BLOCK = ("Q19657284", "Q12598947", "Q141198548")
 
-#: **The Asian people from the deleted `entity_resolution.md`, plus Ame no Hohi.**
+#: **The Asian people she named on 2026-08-29, plus Ame no Hohi.**
 #:
-#: **Emma, 2026-08-29:** *"It's best to overinclude all the Asian people from the
-#: entity_resolution.md file that were discussed earlier... The main thing would be Ame no
-#: Houhi and some other stuff."* Her reason, in her words: *"the idea is nothing is supposed
+#: **Emma, 2026-08-29:** *"It's best to overinclude all the Asian people from the […] file
+#: that were discussed earlier... The main thing would be Ame no Houhi and some other stuff."* Her reason, in her words: *"the idea is nothing is supposed
 #: to even know that I exist, but I'm a bit concerned that the existence is going to be
 #: figured out by other things."*
 #:
-#: `entity_resolution.md` was deleted on 2026-08-29; this list was read back out of git
-#: (`12f3134a^`) rather than reconstructed from memory. It held nine Wikidata items. Four are
+#: The side file she was pointing at was deleted the same day; this list was read back out of
+#: git (`12f3134a^`) rather than reconstructed from memory. It held nine Wikidata items. Four are
 #: already blocked -- Buyeo Deokjang and Buyeo Taebi above, Kitajima no Tokitaka `Q135579474`
 #: and Kitajima no Yasutaka `Q135579480` through `NEVER_TOUCH_QID`. One is **her own item and
 #: is deliberately left out**, on her instruction *"except for me"*. These are the remaining
@@ -4956,11 +4949,11 @@ Q45700685	Lca	"home del clan Li, de Qinzhou Chengji"
 #
 # Emma, 2026-08-29: "Put Futohime in the queued up clan block and just make sure
 # we are implementing the idea in question". The idea is the clan prefix, and it
-# is already carried by every other CJK person in entity_resolution.md -- checked
+# is already carried by every other CJK person she named -- checked
 # live that day: Q24890131 reads "Mononobe no Ikofutsu", Q135579474 "Kitajima no
 # Tokitaka", Q135579480 "Kitajima no Yasutaka". Futohime is the one straggler.
 #
-# Her instruction in entity_resolution.md is older and unambiguous: "change her
+# Her instruction is older and unambiguous: "change her
 # name to 'Mononobe no Futohime'". Live 2026-08-29 the item read en "Futohime",
 # with mul, ja and zh all empty and no aliases.
 #

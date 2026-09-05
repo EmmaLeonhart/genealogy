@@ -84,7 +84,7 @@ scoping it to this run's children alone, which gave 5 and under-served the backl
 line down to her stayed at **0 of 16 steps** — the *"critical path going to me"* she doubted the
 last run produced. It had not.
 
-**`entity_resolution.md` is folded into the ledger**, because it is the only record of an item
+**Her hand identifications are folded into the ledger**, because they are the only record of an item
 that carries no `P2600` yet. Without it the spine walk hit step 1 of the Bergitte path — **Emma
 herself** — and emitted a `CREATE` that would have minted her a second item beside `Q232803`.
 

@@ -26,7 +26,7 @@ resolution that clearly contradicts it, this indicates a clear contradiction... 
 ways."*
 
 So every pair the zipper inferred is checked against every *independent* correspondence this repo
-holds -- Emma's About Me links, `entity_resolution.md`, the structural walk, the Izumo and Tanba
+holds -- Emma's About Me links, her hand identifications, the structural walk, the Izumo and Tanba
 rosters, and her hand verdicts. An independent source that **agrees** is corroboration; one that
 **disagrees** is a contradiction. Neither is applied only to the pair itself: both are pushed
 along the chain, because a chain is only as good as the step it rests on.
