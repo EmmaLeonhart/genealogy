@@ -66,26 +66,6 @@ Q141249620	P734	LAST	S2600	"6000000002801159071"
 #   Q141314156 Barbro Pedersdatter Kartevoll: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141314156	P734	LAST	P3831	Q28418670	S2600	"6000000006605769895"
 
-# Abrahamsson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Abrahamsson"
-LAST	Len	"Abrahamsson"
-#   set the mul label to "Abrahamsson"
-LAST	Lmul	"Abrahamsson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q17997608 Abraham
-LAST	P144	Q17997608
-#   P144 based on = Q323415 Abram
-LAST	P144	Q323415
-#   Q11858191 Erik Johan Abrahamsson af Palén: P5056 patronym or matronym = the item just created, qualified P144 based on Q97962547
-Q11858191	P5056	LAST	P144	Q97962547	S2600	"6000000007512032119"
-#   Q141313696 Jean Elias Abrahamsson Reinier: P5056 patronym or matronym = the item just created, qualified P144 based on Q141313669 Abraham Reinier
-Q141313696	P5056	LAST	P144	Q141313669	S2600	"6000000189240380827"
-
 # Andersdotter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -112,21 +92,41 @@ Q124477457	P5056	LAST	P144	Q5795477	S2600	"6000000000909142439"
 #   Q141283499 Eva Lovisa Andersdotter Knös: P5056 patronym or matronym = the item just created, qualified P144 based on Q5916162 Anders Olofsson Knös
 Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
 
-# 231 more name items are needed and wait for a later
+# Asbjørnson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Asbjørnson"
+LAST	Len	"Asbjørnson"
+#   set the mul label to "Asbjørnson"
+LAST	Lmul	"Asbjørnson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q721398 Asbjørn
+LAST	P144	Q721398
+#   P144 based on = Q15967275
+LAST	P144	Q15967275
+#   Q141216644 Rasmus Asbjørnson Nedre Rossavik: P5056 patronym or matronym = the item just created
+Q141216644	P5056	LAST	S2600	"6000000003192698959"
+#   Q141219299 Per Asbjørnson Stokka: P5056 patronym or matronym = the item just created
+Q141219299	P5056	LAST	S2600	"6000000003491933576"
+
+# 148 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Asbjørnsen (patronymic), 2 bearer(s)
-#   Asbjørnson (patronymic), 2 bearer(s)
 #   Austrått (family), 2 bearer(s)
-#   Bureus (family), 2 bearer(s)
-#   Børildsdatter (patronymic), 2 bearer(s)
-#   Claesson (patronymic), 2 bearer(s)
-#   Gestrinius (family), 2 bearer(s)
 #   Gitlaug (given), 2 bearer(s)
 #   Gunnbjørnsdatter (patronymic), 2 bearer(s)
 #   Gurie (given), 2 bearer(s)
-#   Hartmannsdorf (family), 2 bearer(s)
-#   Helgesdatter (patronymic), 2 bearer(s)
-#   ... and 219 more
+#   Jonsdotter (patronymic), 2 bearer(s)
+#   Jonæ (patronymic), 2 bearer(s)
+#   Königsson (patronymic), 2 bearer(s)
+#   Lauritsen (patronymic), 2 bearer(s)
+#   Malmeim (family), 2 bearer(s)
+#   Mattsson (patronymic), 2 bearer(s)
+#   Monsen (patronymic), 2 bearer(s)
+#   Nor-Kolnes (family), 2 bearer(s)
+#   ... and 136 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -142,73 +142,81 @@ Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   15 people, 32 edits; 2484 edits held for a later run
-#   across 727 more people. A repeat is a no-op, so nothing is lost.
+#   15 people, 36 edits; 2448 edits held for a later run
+#   across 712 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141314174 Svein Toreson Toresen: add a mul alias "Svein Toreson Bø"
-Q141314174	Amul	"Svein Toreson Bø"
-#   Q141314173 Ogmund Arnbjørnsson Aga: add a mul alias "Ogmund Arnbjørnsson Byre"
-Q141314173	Amul	"Ogmund Arnbjørnsson Byre"
-#   add a mul alias "Johanna Margareta Bogeman"
-Q141314168	Amul	"Johanna Margareta Bogeman"
-#   add a mul alias "Joakim Christoffer von Hartmansdorff"
-Q141314165	Amul	"Joakim Christoffer von Hartmansdorff"
-#   add a mul alias "Barbro Pedersdatter Pedersdtr."
-Q141314156	Amul	"Barbro Pedersdatter Pedersdtr."
-#   Q141217433 Per Persson Hagman: set the ja label to "ペール・パーソン・ハグマン"
-Q141217433	Lja	"ペール・パーソン・ハグマン"
-#   set the zh label to "佩尔·佩尔松·哈格曼"
-Q141217433	Lzh	"佩尔·佩尔松·哈格曼"
-#   set the ko label to "페르 페르손 학만"
-Q141217433	Lko	"페르 페르손 학만"
-#   Q141217431 Per Andersson Storskytt: set the ja label to "ペール・アンデション・ストルスキト"
-Q141217431	Lja	"ペール・アンデション・ストルスキト"
-#   set the zh label to "佩尔·安德松·斯托尔斯基特"
-Q141217431	Lzh	"佩尔·安德松·斯托尔斯基特"
-#   set the ko label to "페르 안데르손 스토르스키트"
-Q141217431	Lko	"페르 안데르손 스토르스키트"
-#   Q141217415 Ottiliana Vilhelmina Conradsdotter Transchiöld: set the ja label to "オティリアナ・ヴィルヘルミナ・コンラドスドッテル・トランシオルド"
-Q141217415	Lja	"オティリアナ・ヴィルヘルミナ・コンラドスドッテル・トランシオルド"
-#   set the zh label to "奥蒂利阿纳·维尔赫尔米纳·孔拉德斯多特·特兰西奥尔德"
-Q141217415	Lzh	"奥蒂利阿纳·维尔赫尔米纳·孔拉德斯多特·特兰西奥尔德"
-#   set the ko label to "오티리아나 빌헬미나 콘라드스도테르 트란시욀드"
-Q141217415	Lko	"오티리아나 빌헬미나 콘라드스도테르 트란시욀드"
-#   Q141217404 Osmund Larsen Raunes: set the ja label to "オスムンド・ラーセン・ラウネス"
-Q141217404	Lja	"オスムンド・ラーセン・ラウネス"
-#   set the zh label to "奥斯蒙德·拉森·拉乌内斯"
-Q141217404	Lzh	"奥斯蒙德·拉森·拉乌内斯"
-#   set the ko label to "오스문드 라르센 라우네스"
-Q141217404	Lko	"오스문드 라르센 라우네스"
-#   Q141217398 Måns Moge: set the ja label to "モンス・モゲ"
-Q141217398	Lja	"モンス・モゲ"
-#   set the zh label to "蒙斯·莫盖"
-Q141217398	Lzh	"蒙斯·莫盖"
-#   set the ko label to "몬스 모게"
-Q141217398	Lko	"몬스 모게"
-#   Q141217396 Maria No name: add a mul alias "Maria No name"
-Q141217396	Amul	"Maria No name"
-#   set the zh label to "玛丽亚"
-Q141217396	Lzh	"玛丽亚"
-#   set the ko label to "마리아"
-Q141217396	Lko	"마리아"
-#   Q141217394 Margareta Christina von Numers: set the ja label to "マルガレータ・クリスティーナ・ヴォン・ヌメルス"
-Q141217394	Lja	"マルガレータ・クリスティーナ・ヴォン・ヌメルス"
-#   set the zh label to "瑪格麗塔·克里斯蒂娜·翁·努梅尔斯"
-Q141217394	Lzh	"瑪格麗塔·克里斯蒂娜·翁·努梅尔斯"
-#   set the ko label to "마르가레타 츠리스티나 본 누메르스"
-Q141217394	Lko	"마르가레타 츠리스티나 본 누메르스"
-#   set the zh label to "马格达莱纳·翁·门特泽尔"
-Q141217393	Lzh	"马格达莱纳·翁·门特泽尔"
-#   set the ko label to "막다레나 본 멘트제르"
-Q141217393	Lko	"막다레나 본 멘트제르"
-#   Q141217392 Larine Eriksdatter Heigre: add a mul alias "Larine Eriksdatter Stangeland"
-Q141217392	Amul	"Larine Eriksdatter Stangeland"
-#   set the ko label to "라리네 에리크스다테르 헤이그레"
-Q141217392	Lko	"라리네 에리크스다테르 헤이그레"
-#   Q141217390 Johan Johannessen Obrestad: set the zh label to "约翰·约翰内森·奥布雷斯塔德"
-Q141217390	Lzh	"约翰·约翰内森·奥布雷斯塔德"
-#   set the ko label to "조한 조한네센 옵레스타드"
-Q141217390	Lko	"조한 조한네센 옵레스타드"
+#   Q141217387 Ivar Stokka: set the ja label to "イヴァル・ストカ"
+Q141217387	Lja	"イヴァル・ストカ"
+#   set the ko label to "이바르 스토카"
+Q141217387	Lko	"이바르 스토카"
+#   Q141217383 Charlotta Johanna Gerner: set the ja label to "カルロタ・ヨハンナ・ゲルネル"
+Q141217383	Lja	"カルロタ・ヨハンナ・ゲルネル"
+#   set the zh label to "卡尔洛塔·约翰娜·盖尔内尔"
+Q141217383	Lzh	"卡尔洛塔·约翰娜·盖尔内尔"
+#   set the ko label to "차르로타 조한나 게르네르"
+Q141217383	Lko	"차르로타 조한나 게르네르"
+#   Q141217381 Catharina Edenberg: add a mul alias "Catharina Edenberg nr 617"
+Q141217381	Amul	"Catharina Edenberg nr 617"
+#   set the ja label to "カタリーナ・エデンベルグ"
+Q141217381	Lja	"カタリーナ・エデンベルグ"
+#   set the zh label to "卡塔里娜·埃登贝尔格"
+Q141217381	Lzh	"卡塔里娜·埃登贝尔格"
+#   set the ko label to "카타리나 에덴베르그"
+Q141217381	Lko	"카타리나 에덴베르그"
+#   Q141217372 Berta Larsdatter Stangeland: add a mul alias "Berta Larsdatter Øksnevad"
+Q141217372	Amul	"Berta Larsdatter Øksnevad"
+#   set the ko label to "베르타 라르스다테르 스타에란드"
+Q141217372	Lko	"베르타 라르스다테르 스타에란드"
+#   set the ja label to "アンナ・オスムンドスダッテル・ストカ"
+Q141217369	Lja	"アンナ・オスムンドスダッテル・ストカ"
+#   set the zh label to "安娜·奥斯蒙德斯达特·斯托卡"
+Q141217369	Lzh	"安娜·奥斯蒙德斯达特·斯托卡"
+#   Q141217359 Anna Elisabet Angerstein: set the ja label to "アンナ・エリーザベト・アンゲルステイン"
+Q141217359	Lja	"アンナ・エリーザベト・アンゲルステイン"
+#   set the zh label to "安娜·伊丽莎白·安盖尔斯特因"
+Q141217359	Lzh	"安娜·伊丽莎白·安盖尔斯特因"
+#   set the ko label to "안나 에리사베트 아에르스테인"
+Q141217359	Lko	"안나 에리사베트 아에르스테인"
+#   Q141216647 Tollef Mattiasson Fotland: set the zh label to "托勒夫·马蒂阿松·福特兰德"
+Q141216647	Lzh	"托勒夫·马蒂阿松·福特兰德"
+#   set the ko label to "톨레프 마티아손 포트란드"
+Q141216647	Lko	"톨레프 마티아손 포트란드"
+#   Q141216640 Per Gustaf Ekman: set the ja label to "ペール・グスタフ・エクマン"
+Q141216640	Lja	"ペール・グスタフ・エクマン"
+#   set the zh label to "佩尔·古斯塔夫·埃克曼"
+Q141216640	Lzh	"佩尔·古斯塔夫·埃克曼"
+#   set the ko label to "페르 구스타프 에크만"
+Q141216640	Lko	"페르 구스타프 에크만"
+#   Q141216639 Olufine Bergithe Ekman: add a mul alias "Olufine Bergithe Jenssen"
+Q141216639	Amul	"Olufine Bergithe Jenssen"
+#   set the zh label to "奥卢菲内·贝尔吉特·埃克曼"
+Q141216639	Lzh	"奥卢菲内·贝尔吉特·埃克曼"
+#   set the ko label to "오루피네 베르기테 에크만"
+Q141216639	Lko	"오루피네 베르기테 에크만"
+#   Q141216634 Marit Hansdatter Stavnheim: add a mul alias "Marit Hansdatter Låge-Håland"
+Q141216634	Amul	"Marit Hansdatter Låge-Håland"
+#   set the ja label to "マリット・ハンスダッテル・スタヴンヘイム"
+Q141216634	Lja	"マリット・ハンスダッテル・スタヴンヘイム"
+#   set the ko label to "마리트 한스다테르 스탑느헤임"
+Q141216634	Lko	"마리트 한스다테르 스탑느헤임"
+#   Q141216633 Malin Jacobsdotter: set the zh label to "马林·雅科布斯多特"
+Q141216633	Lzh	"马林·雅科布斯多特"
+#   set the ko label to "마린 자콥스도테르"
+Q141216633	Lko	"마린 자콥스도테르"
+#   Q141216632 Magdalena Lauritsd Hogganvik: set the ja label to "マグダレーナ・ラウリトスド・ホガンヴィク"
+Q141216632	Lja	"マグダレーナ・ラウリトスド・ホガンヴィク"
+#   Q141216632: set the zh label
+Q141216632	Lzh	"马格达莱纳·拉乌里特斯达特·霍甘维克"
+#   set the ko label to "막다레나 라우리츠드 호간비크"
+Q141216632	Lko	"막다레나 라우리츠드 호간비크"
+#   Q141216618 Karin Olofsdotter: set the zh label to "卡琳·奥洛夫斯多特"
+Q141216618	Lzh	"卡琳·奥洛夫斯多特"
+#   Q141216608 Hans Ådnesen Grøtheim: set the ko label to "한스 오드네센 그뢰테임"
+Q141216608	Lko	"한스 오드네센 그뢰테임"
+#   Q141216607 Hans Erikson Øvre Håland: add a mul alias "Hans Erikson Erikson"
+Q141216607	Amul	"Hans Erikson Erikson"
+#   set the ko label to "한스 에리크손 욉레 호란드"
+Q141216607	Lko	"한스 에리크손 욉레 호란드"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
