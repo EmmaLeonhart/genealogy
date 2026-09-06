@@ -30115,3 +30115,53 @@ asking about the profile and Charlemagne rather than about the viewer.
 
 Natalia Krebs: Family Tree 396, Blood Relatives 2 — clears the floor on `family_tree` alone, a
 fourth person joined almost entirely through in-laws.
+
+## The scrape's real deliverable is a tiny GEDCOM, and the thing that was doing it invented 4,928 people
+
+**Emma, 2026-09-06:** *"Natalia Krebs (Salzmann) will produce a 3 person file ... with the geni
+ids set up so that they end up getting merged in. This is what is supposed to be the main result
+of the scrape."* And: *"for all intents and purposes the native format of this project is the
+gedcom now."*
+
+I had stopped at the TSV, which reaches nothing. `scripts/build-family-gedcoms.py` writes one
+`.ged` per scraped profile into `exports/family-scrapes/`, which `genimerge.sources` reads
+recursively — so they are in the synoptic tree with no wiring at all. Her worked case comes out
+exactly as she described it: three people, `HUSB` Max Krebs, `WIFE` Natalia Krebs, `CHIL` Susy
+Glaser, every xref a Geni id.
+
+**⛔ HER GUESS ABOUT THE OLD SCRIPT WAS WRONG IN THE ONE WAY THAT MADE IT WORSE.** She thought
+`build-scraped-gedcom.py` was *"effectively dead and not used by anything"* and did not wire into
+the tree. It was live and it was in the merge: `find_exports()` returned 605 files, `geni_exports()`
+603, and the two extra were its output. Measured over them:
+
+    4,928 invented `NN` people carrying non-Geni `9995...` ids
+    5,750 children with MORE THAN TWO parents
+    of those 5,750, EVERY ONE had at least two invented parents
+
+That is the origin of the `9995000000000000074` and `9995000000000102196` fathers `CLAUDE.md`
+already records as junk in the parent deck. It has been in every merge.
+
+**Deleted on her instruction** — *"just delete them"* — along with the script itself. Her aside is
+the part worth keeping: *"it's weird you are treating this thing as so sacrosanct."* I had just
+finished writing a `CLAUDE.md` rule about exactly that failure over the pushpin, and then did it
+again to a generated file, offering to keep it in the corpus pending a decision that was never
+hers to make.
+
+**The replacement invents nobody, and that is its whole point.** A GEDCOM `FAM` does not need both
+partners: a family with one known parent is written with one and the missing side stays absent.
+
+**Two properties measured rather than asserted:**
+
+* **Idempotent** — re-running changes not one byte. The family xref is a digest of its sorted
+  members, so it does not move.
+* **One family is one family across files** — the superseded script numbered families from a
+  counter in file order, so the same couple scraped twice merged as two families. Here Kann's
+  birth family hashes identically from her point of view and her sister's.
+
+**Current state: 13 tiny gedcoms, 93 INDI, 20 FAM, zero invented.** All 93 xrefs are real Geni
+ids — 92 nineteen-digit and one seven-digit, which is Pavel Ekstein's brother and a genuine short
+Geni id. The merge now reads 616 files: 603 Geni exports and 13 derived.
+
+`sources.DERIVED_DIR` points at the new directory, keeping the distinction the old one needed —
+`find_exports` returns these because the merge wants them, `geni_exports` excludes them so a
+generated file is never measured against `GENI_EXPORT_CAP` or read as a corpus statistic.

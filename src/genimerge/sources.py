@@ -75,23 +75,30 @@ EXPORTS_DIR = REPO_ROOT / "exports"
 #: fathers, one of them the other's father.
 EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 
-#: **`exports/0-scraped/` is corpus but is NOT a Geni export.** It is built by
-#: `scripts/build-scraped-gedcom.py` out of the saved profile pages and the relationship paths,
-#: so it belongs in the merge -- Emma asked for exactly that -- but it is not something Geni
-#: handed back and must not be measured as though it were.
+#: **`exports/family-scrapes/` is corpus but is NOT a Geni export.** One tiny GEDCOM per scraped
+#: profile, built by `scripts/build-family-gedcoms.py` -- Emma, 2026-09-06: *"this is what is
+#: supposed to be the main result of the scrape ... the geni ids set up so that they end up
+#: getting merged in"*. It belongs in the merge; it is not something Geni handed back, and must
+#: not be measured as though it were.
 #:
-#: Two tests caught this the day it landed, and both were RIGHT:
-#:   * `test_seeds.py::test_export_cap_is_at_least_the_largest_real_export` -- 14,121 individuals
-#:     against `GENI_EXPORT_CAP = 5000`. That constant means *the largest export Geni has ever
-#:     returned*; raising it for a file we generated would destroy its meaning.
-#:   * `test_profilenames.py::test_measure_runs_over_a_real_export_with_consistent_totals` --
-#:     `sex` on 2,284 of 12,463, because saved pages do not state sex and only the NN
-#:     placeholders have one.
+#: **It replaces `exports/0-scraped/`, which was DELETED on her instruction 2026-09-06** --
+#: *"just delete them"*. Those two files were built by `build-scraped-gedcom.py`, which minted a
+#: placeholder parent whenever a family wanted one, and they were in the merge the whole time:
 #:
-#: So the fix is a name for the distinction, not a looser assertion. `find_exports` still
-#: returns these (the merge wants them); `geni_exports` excludes them (corpus-shape checks
-#: want only real ones).
-DERIVED_DIR = EXPORTS_DIR / "0-scraped"
+#:   * **4,928 invented `NN` people** carrying non-Geni `9995...` ids;
+#:   * **5,750 children with more than two parents**, and every one of those 5,750 had at least
+#:     two INVENTED parents.
+#:
+#: That is the source of the `9995000000000000074` fathers `CLAUDE.md` records in the parent deck.
+#: The replacement invents nobody: every `INDI` it writes is a real Geni profile, and a family
+#: with one known parent is written with one rather than being completed with a fiction.
+#:
+#: The two tests that caught the old directory the day it landed were both RIGHT and both still
+#: apply to this one -- a generated file must not be measured against `GENI_EXPORT_CAP`, nor have
+#: its sex coverage read as a corpus statistic. So the fix remains a name for the distinction
+#: rather than a looser assertion: `find_exports` returns these (the merge wants them),
+#: `geni_exports` excludes them (corpus-shape checks want only real ones).
+DERIVED_DIR = EXPORTS_DIR / "family-scrapes"
 
 
 def _digest(path: Path) -> str:
