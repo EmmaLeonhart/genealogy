@@ -28803,3 +28803,39 @@ here:**
   `ROUND_CAP`/`MAX_ROUNDS`** are search depths, validity bounds, file-sharding and round counts.
   None is "how many things go out per run", and doubling `MAX_LIFESPAN` to 240 years would just
   break a consistency check.
+
+## 2026-09-05 — `link-bure-people.py` deleted, and 0 of 27 batches are produced by anything
+
+Doubling `BURE_PER_DAY` from 40 to 80 an hour earlier is what surfaced this. Emma: *"Uhh what's
+bure per day lol"*, then *"why are these segregated in code?"*
+
+**`BURE_PER_DAY` was a per-DAY cap on a script no schedule ran.** `link-bure-people.py` was
+referenced by nothing but its own output report; it wrote `reports/wikidata-bure-links.qs`, last
+written 2026-08-27, and nothing composed that into the daily batch. The cap had never paced
+anything, and I doubled it without noticing it was dead.
+
+That is her 2026-08-30 complaint recurring — *"name creations were always segregated into a
+different Quick Statements generation pipeline that was never run"* — so the script goes, per
+§ *LEGACY CODE IS DELETED*. Her call: *"Delete it as legacy"*. Removed with the three outputs
+nothing else reads; **`reports/bure-topology.md` is kept**, because the topology measurement it
+produced answers a question she asked and is not code.
+
+**Then the audit she asked for, and the number is the finding: 0 of 27.**
+
+    27 .qs files in reports/
+     0  produced by anything the pipeline runs
+     9  have a generator that exists but is not scheduled
+    18  have no generator in scripts/ at all
+
+`pipeline.yml` runs exactly one generator, `build-garborg-day.py --compose`, and it writes
+`reports/wikidata-garborg-day.txt` — a `.txt`. So **every `.qs` in `reports/` is a relic of a
+hand-run**, which is why none of them appeared in the scheduled column.
+
+`reports/qs-batch-audit.md` is the report and `scripts/audit-qs-generators.py` re-runs it.
+**Nothing was deleted from the audit** — her instruction was to check and report. The nine with
+unscheduled generators are the ones that matter; the eighteen without mostly look like records of
+one-off fixes aimed at a named item, and a record of what was sent is not what the legacy rule is
+about.
+
+Two of the nine carry `SIBLING_CAP`, doubled this evening, and so pace nothing today:
+`build-missing-reciprocals.py` and `build-from-diff.py`.
