@@ -16,7 +16,25 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Andersdotter -- patronymic, 3 bearer(s) in the batches
+# Kartevoll -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Kartevoll"
+LAST	Len	"Kartevoll"
+#   set the mul label to "Kartevoll"
+LAST	Lmul	"Kartevoll"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141314175 Tollak Tollakson Kartevoll II: P734 family name = the item just created
+Q141314175	P734	LAST	S2600	"6000000002763148549"
+#   Q141249620 Ola Kristoffersen Kartevoll: P734 family name = the item just created
+Q141249620	P734	LAST	S2600	"6000000002801159071"
+#   Q141314156 Barbro Pedersdatter Kartevoll: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141314156	P734	LAST	P3831	Q28418670	S2600	"6000000006605769895"
+
+# Andersdotter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Andersdotter"
@@ -41,24 +59,6 @@ LAST	P144	Q6298851
 Q124477457	P5056	LAST	P144	Q5795477	S2600	"6000000000909142439"
 #   Q141283499 Eva Lovisa Andersdotter Knös: P5056 patronym or matronym = the item just created, qualified P144 based on Q5916162 Anders Olofsson Knös
 Q141283499	P5056	LAST	P144	Q5916162	S2600	"6000000040218777103"
-
-# Kartevoll -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Kartevoll"
-LAST	Len	"Kartevoll"
-#   set the mul label to "Kartevoll"
-LAST	Lmul	"Kartevoll"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141314175 Tollak Tollakson Kartevoll II: P734 family name = the item just created
-Q141314175	P734	LAST	S2600	"6000000002763148549"
-#   Q141249620 Ola Kristoffersen Kartevoll: P734 family name = the item just created
-Q141249620	P734	LAST	S2600	"6000000002801159071"
-#   Q141314156 Barbro Pedersdatter Kartevoll: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141314156	P734	LAST	P3831	Q28418670	S2600	"6000000006605769895"
 
 # Asbjørnson -- patronymic, 2 bearer(s) in the batches
 # create a new item
@@ -96,6 +96,22 @@ Q141219291	P734	LAST	P3831	Q28418670	S2600	"6000000005607475201"
 #   Q141206057 Berte Tørresdotter Austrått: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141206057	P734	LAST	P3831	Q28418670	S2600	"6000000055365310131"
 
+# Bureus -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Bureus"
+LAST	Len	"Bureus"
+#   set the mul label to "Bureus"
+LAST	Lmul	"Bureus"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q5613434 Börje Cronberg: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q5613434	P734	LAST	P3831	Q2507958	S2600	"6000000007026278130"
+#   Q141283778 Johan Bureus: P734 family name = the item just created
+Q141283778	P734	LAST	S2600	"6000000025580230832"
+
 # Børildsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -110,36 +126,9 @@ LAST	P31	Q110874
 #   Q141289091 Åsa Børildsdatter Garborg: P5056 patronym or matronym = the item just created
 Q141289091	P5056	LAST	S2600	"6000000005609460067"
 
-# Claesson -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Claesson"
-LAST	Len	"Claesson"
-#   set the mul label to "Claesson"
-LAST	Lmul	"Claesson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q19818179 Claes
-LAST	P144	Q19818179
-#   P144 based on = Q16274791 Clas
-LAST	P144	Q16274791
-#   P144 based on = Q19818183 Klas
-LAST	P144	Q19818183
-#   P144 based on = Q18177178 Claus
-LAST	P144	Q18177178
-#   P144 based on = Q15635230 Klaus
-LAST	P144	Q15635230
-#   P144 based on = Q31522621 Claës
-LAST	P144	Q31522621
-#   Q5813639 Claes Fredrik Claesson Horn af Åminne: P5056 patronym or matronym = the item just created, qualified P144 based on Q3678958
-Q5813639	P5056	LAST	P144	Q3678958	S2600	"6000000006127657041"
-#   Q6166560 Åke Claesson Rålamb: P5056 patronym or matronym = the item just created
-Q6166560	P5056	LAST	S2600	"6000000009889929969"
-
-# 168 more name items are needed and wait for a later
+# 191 more name items are needed and wait for a later
 # run -- 6 a day is her cap, not a limit of the data:
+#   Claesson (patronymic), 2 bearer(s)
 #   Gitlaug (given), 2 bearer(s)
 #   Gunnbjørnsdatter (patronymic), 2 bearer(s)
 #   Gurie (given), 2 bearer(s)
@@ -151,6 +140,5 @@ Q6166560	P5056	LAST	S2600	"6000000009889929969"
 #   Mattsson (patronymic), 2 bearer(s)
 #   Monsen (patronymic), 2 bearer(s)
 #   Nilsdotter (patronymic), 2 bearer(s)
-#   Nor-Kolnes (family), 2 bearer(s)
-#   ... and 156 more
+#   ... and 179 more
 
