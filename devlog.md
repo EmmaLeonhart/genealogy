@@ -29621,3 +29621,39 @@ disk, and *9* an hour after being corrected to nine. `scripts/pilot-progress.py`
 the item now names the script instead of a number, which kills the class rather than the instance.
 Same reasoning as § *Emma edits the tree and the items BY HAND, continuously*: a photograph of a
 moving thing is stale on arrival, and refreshing it faster is not the fix.
+
+## CI was red on FOUR tests, all caused by this session, none by the collector
+
+CI last went green on `d1d1eff4` and failed on `b88949f7` on both 3.10 and 3.13. Every failure
+traces to a change made tonight at her instruction, and every one is a **generated file nobody
+re-ran** rather than anything wrong with the code:
+
+| test | cause |
+| --- | --- |
+| `test_the_batch_inventory_names_exactly_the_batches_on_disk` | `reports/wikidata-bure-links.qs` deleted with its generator; `built-batches.tsv` not re-run |
+| `test_the_freshness_report_names_no_file_that_has_been_deleted` | four dead paths — `bure-bridges.tsv`, `bure-links.tsv`, `wikidata-bure-links.qs`, and `bio-qids.tsv` from the retarget she approved |
+| `test_the_freshness_report_names_every_generator_that_still_exists` | five rows still naming `link-bure-people.py` and `build-qid-link-p2600.py`, both deleted at her instruction |
+| `test_the_name_item_cap_lifts_on_the_same_day_as_the_hold` | pinned `NAME_ITEMS_PER_RUN_HELD == 3` and `NORMAL == 10` |
+
+**The fourth one is mine and it is the one worth recording.** `978bc7fe` doubled every batch size
+on her instruction — *"Please update it to batches double the older size on all things"* — moved
+these two constants 3→6 and 10→20, and **left the test pinning the old numbers**. So CI went red
+on the doubling rather than on a defect, which is a test failing for being stale rather than for
+catching anything. The pins now read 6 and 20, and a `HELD < NORMAL` assertion sits beside them so
+the next doubling does not break it again — the ratio is what the test is really about, and it was
+the half that was never asserted. Nothing was loosened: the effective-cap check is unchanged and
+now reads through the constants instead of restating their values.
+
+**Verified by replicating each assertion over the real repo, not by a pass count** — the suite
+runs in CI or not at all. All four now read clean: `built-batches.tsv` has zero drift against the
+52 batch files on disk, `repo-freshness.csv` names no deleted file and no deleted generator across
+1,698 rows, and the two hold constants agree with their pins.
+
+**One thing about `repo-freshness.csv` worth knowing before anyone reads its diff.** Re-running it
+rewrote 3,395 lines of a 1,699-line file, which looks alarming and is not: `days_stale` is
+measured from today, so every row moved by one when the date rolled 09-05 → 09-06. The real
+content change is one row added (`derived-marriages.csv`), one gone
+(`relationship-label-preview.md`), the four dead paths, and `CLAUDE.md`'s byte count. It is a
+generated file that **cannot** be reviewed by diff, which is exactly the hazard § *SORTING MUST BE
+DETERMINISTIC* names — here it is inherent to the report rather than a sort bug, since staleness in
+days is what the file is for.

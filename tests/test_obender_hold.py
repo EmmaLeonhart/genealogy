@@ -94,8 +94,15 @@ def test_the_name_item_cap_lifts_on_the_same_day_as_the_hold():
     spec.loader.exec_module(names)
 
     assert names.NAME_ITEM_HOLD_EXPIRES == bgd.OBENDER_HOLD_EXPIRES
-    assert names.NAME_ITEMS_PER_RUN_HELD == 3
-    assert names.NAME_ITEMS_PER_RUN_NORMAL == 10
+    # 6 and 20 since 2026-09-05, when Emma doubled every batch size in the repo --
+    # *"Please update it to batches double the older size on all things"*. `978bc7fe` moved the
+    # constants and left this test pinning 3 and 10, so CI went red on the doubling rather than
+    # on anything wrong. The RATIO is what this test is really about: the held cap stays below
+    # the normal one, and the effective cap follows the hold.
+    assert names.NAME_ITEMS_PER_RUN_HELD == 6
+    assert names.NAME_ITEMS_PER_RUN_NORMAL == 20
+    assert names.NAME_ITEMS_PER_RUN_HELD < names.NAME_ITEMS_PER_RUN_NORMAL
     # While the hold runs, the effective cap is the reduced one.
     assert names.NAME_ITEMS_PER_RUN == (
-        3 if datetime.date.today() < names.NAME_ITEM_HOLD_EXPIRES else 10)
+        names.NAME_ITEMS_PER_RUN_HELD if datetime.date.today() < names.NAME_ITEM_HOLD_EXPIRES
+        else names.NAME_ITEMS_PER_RUN_NORMAL)
