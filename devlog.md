@@ -29100,3 +29100,43 @@ Nothing else went. The retarget below it is **gated on her confirming the rebuil
 `reports/bio-qids.tsv` is still tracked, which is the correct state for it. `addAncestor`'s
 termination is still unexercised, the two decisions are queued questions not yet asked, the pilot
 is at 5 of 100, and the rest are gated or at the tail by her placement.
+
+## 2026-09-05 — her Forest export collected, and the Ancestors export she asked for
+
+Emma: *"watch my email for another forest export. I did a merge on geni and a forest export
+around them... Make sure all of his ancestors are present by doing an ancestor export of
+[Alfred Ingerman Hoknes] after and this is the proper thing."*
+
+**Her Forest export, collected from the email link.** `export-geni.zip`, 599,345 bytes, **5,000
+individuals, 1,486 families**, seeded on `6000000227614275833` — `Hans /father of Anne Margrethe
+Kingo/`, a tier 2 placeholder, which matches the Kingo item in the screenshot she sent. Left in
+`~/Downloads`: § *Do not integrate as you go*, and where a `.ged` is filed is hers.
+
+**⛔ ALFRED HIMSELF CANNOT BE EXPORTED.** `6000000015117490925` is live, she manages it, and
+`/gedcom/export/` on it answers *"You are not allowed to export that profile."* — the exact
+refusal `CLAUDE.md` records from 2026-08-30, where the ruling was to stop asking rather than hunt
+a workaround. His father's export page loads normally, so the refusal is specific to him.
+
+**So the pair covers the same set**, exactly: Alfred's ancestors are his father's ancestors plus
+his mother's plus the two of them. Both run, one at a time:
+
+    Andreas Petrus Eliassen Hoknes  6000000177921459109  ancestors  ->  38 individuals, 22 families
+    Clara Amilia Hoknes             6000000177921459114  ancestors  ->  building, task …308878
+
+**38 is the finding.** Alfred's statistics block says **Ancestors 4,395**, and his father's whole
+recorded ancestry is 38 people — so essentially all of it comes through his mother. The father's
+export was worth a minute to learn that; Clara's is the one that answers her instruction.
+
+**Two defects in `content/export.js`, both selectors written from what the markup ought to be:**
+
+- **The walk was hardcoded to Forest.** It is now `job.walk`, defaulting to Forest, because she
+  asked for an Ancestors export by name. Her remark that ancestors walks are *"of questionable
+  use for this time"* was about what to spend an `addAncestor` result on, not a ban.
+- **The submit is an ANCHOR, not a button** — `<a class="super blue button
+  gedcom-export-form-sub">Export GEDCOM</a>`. The old selector asked for
+  `input[type=submit], button[type=submit], button`, found nothing, and returned `no_submit` on a
+  correctly-filled form: a real export silently never sent. Same shape as the walk being radios
+  rather than a select, which this file already carried a comment about.
+
+Both were caught by running a real export rather than by reading the file, which is the only
+thing that has caught anything today.

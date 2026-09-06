@@ -65,9 +65,20 @@ GC.runExport = async function (job) {
                   (r.parentElement && r.parentElement.textContent) || "";
       return txt.replace(/\s+/g, " ").trim();
     };
-    const forest = radios.find((r) => /^forest/i.test(labelOf(r)));
-    if (!forest) return report({ state: "no_forest_option" });
-    if (!forest.checked) forest.click();
+    /* The walk is the JOB'S, defaulting to Forest. It was hardcoded until 2026-09-05, when she
+     * asked for an **Ancestors** export of a specific person to check his ancestors were all
+     * present -- *"Make sure all of his ancestors are present by doing an ancestor export of
+     * [Alfred Ingerman Hoknes] after and this is the proper thing."*
+     *
+     * `docs/export-seed-rules.md` says `Forest`, size 5000, and that is still the default and
+     * still what a seed-driven export takes. This is the other case: a named person, a named
+     * walk, for a stated reason. Her 2026-09-05 remark that ancestors and blood-relatives walks
+     * are *"of questionable use for this time"* was about what to spend an `addAncestor` result
+     * on, not a ban -- and a later instruction naming one outranks it either way. */
+    const want = new RegExp("^" + (job.walk || "forest"), "i");
+    const walk = radios.find((r) => want.test(labelOf(r)));
+    if (!walk) return report({ state: "no_such_walk", walk: job.walk || "forest" });
+    if (!walk.checked) walk.click();
 
     const size = document.querySelector("input[name*='size' i], select[name*='size' i], input#size");
     if (size) {
@@ -80,8 +91,21 @@ GC.runExport = async function (job) {
       size.dispatchEvent(new Event("change", { bubbles: true }));
     }
 
-    const submit = [...document.querySelectorAll("input[type=submit],button[type=submit],button")]
-      .find((b) => GC.visible(b) && /export|submit|create/i.test(b.textContent || b.value || ""));
+    /* ⛔ THE SUBMIT IS AN ANCHOR, not a button or an input. Measured on the live form
+     * 2026-09-05, after this returned `no_submit` on a real export:
+     *
+     *     <a class="super blue button gedcom-export-form-sub">Export GEDCOM</a>
+     *
+     * The old selector asked for `input[type=submit], button[type=submit], button` and found
+     * nothing, so a correctly-filled form was simply never sent — the same shape as the walk
+     * being a radio rather than a select, which this file already carries a comment about.
+     * Both were selectors written from what the markup ought to be. The class is tried first
+     * because it is the page's own name for the control; the text match is the fallback. */
+    const submit =
+      [...document.querySelectorAll("a.gedcom-export-form-sub")].find(GC.visible) ||
+      [...document.querySelectorAll("a,button,input[type=submit],input[type=button]")]
+        .find((b) => GC.visible(b) &&
+                     /^export gedcom$/i.test(((b.textContent || b.value || "").trim())));
     if (!submit) return report({ state: "no_submit" });
     submit.click();
   }
