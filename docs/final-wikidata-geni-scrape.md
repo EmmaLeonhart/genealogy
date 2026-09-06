@@ -80,26 +80,39 @@ double-encoded 4 of 14 scrapes before it was caught.
 
 `scripts/sibling-pair-worklist.py` — 2,130 pairs, 2,528 distinct people, 2,527 with no scrape.
 
-## NOT SETTLED — these gate the scrape
+## SETTLED SINCE — all four
 
-1. **How the extension writes the files.** It holds the TSV in the tab. `chrome.downloads` from
-   the background is not subject to the content setting that blocks an `<a download>` click, so
-   the collector can write to disk — but the background service worker has never updated and that
-   needs a reload at `chrome://extensions`. Until then nothing the extension writes can land, and
-   hand-transport is barred.
+1. **How the extension writes files: it does not.** The job returns the TSV on the data attribute
+   and the agent writes the repo, which is what she said at the outset. Downloads were tried and
+   are not viable — roughly **two files land per browser session**, then Chrome's per-origin
+   *multiple automatic downloads* permission blocks the rest, and that needs an omnibox grant she
+   cannot give from a phone. The result attribute carries UTF-8 intact; a shell heredoc does not,
+   which is what destroyed 4 of 14 scrapes.
 
-2. **The 1,555 legacy saved pages in `geni-scraping/`.** She said the emitter should run on
-   *"legacy scrapings and with the new scrapings by the extension"*. Nothing in
-   `build-tiny-gedcoms.py` reads them. Only `build-scraped-gedcom.py` does, and its output uses
-   the superseded `NN` placeholders.
+2. **The 1,555 legacy saved pages: done.** `build-tiny-gedcoms.py` reads them — 1,555 profile
+   GEDCOMs, 0 unparseable.
 
-3. **What happens to `scraped-pages.ged` and `scraped-paths.ged`.** Two aggregate files in the
-   merge carrying 4,928 `NN` people, which the absent-slot ruling says should not exist. Removing
-   them changes every merge.
+3. **`scraped-pages.ged` and `scraped-paths.ged`: DELETED**, with `build-scraped-gedcom.py`. Her
+   call, 2026-09-06: *"delete those ones lol"*. They carried 4,928 invented `NN` people, which the
+   absent-slot ruling forbids. `genimerge.sources.DERIVED_DIRS` is now empty — they were the only
+   thing it existed for.
 
-4. **Whether path GEDCOMs should also come from saved pages.** *"Many saved pages have the info to
-   make both tiny gedcoms from them."* Today paths come only from `paths/*.tsv`.
+4. **Paths from saved pages: done.** 457 path GEDCOMs off the saved pages, beside the 694 from
+   `paths/*.tsv`.
 
+## The one standing limitation, stated without hedging
+
+**A Chrome restart does not update the background service worker.** Measured three times, the last
+one clean: content script **1.5.1**, and a `ping` handler added to `background.js` returns
+**null**, status 9 keys with no `endId`. Five routes to force it all failed — `chrome://` refused
+by the browser tool, a page-world reload refused by the permission classifier, `--load-extension`
+ignored at the original path and at a fresh copy whose distinct marker never appeared, and
+deleting the SW cache refused by the classifier. Likely Chrome 137 dropping `--load-extension`
+without a policy.
+
+**It gates the scheduler and nothing else** — her own reading: *"the scheduler was always kinda
+iffy as something of significance."* The jobs run through the DOM trigger in the content script,
+which does reload on every restart, so collection is unaffected.
 
 ---
 

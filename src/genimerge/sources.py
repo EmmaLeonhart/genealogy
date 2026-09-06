@@ -98,19 +98,21 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #: its sex coverage read as a corpus statistic. So the fix remains a name for the distinction
 #: rather than a looser assertion: `find_exports` returns these (the merge wants them),
 #: `geni_exports` excludes them (corpus-shape checks want only real ones).
-#: **The tiny GEDCOMs are NOT in here, and that is deliberate.** Emma, 2026-09-06:
-#: *"these are real gedcoms to go into the synoptic tree just tiny ones."* One `.ged` per scraped
-#: profile or per path is corpus in the ordinary way -- three to twenty people, a `NAME` and an
-#: `RFN` each, exactly the shape a Geni export has. Excluding them was a category I invented; a
-#: three-person file trips none of the checks this set exists for.
+#: **EMPTY, and that is the finished state.** Emma, 2026-09-06: *"delete those ones lol"* — the two
+#: aggregate files in `exports/0-scraped/` are gone, with the script that wrote them. They were the
+#: only reason this distinction existed: `scraped-pages.ged` held 14,121 individuals against a
+#: `GENI_EXPORT_CAP` of 5,000, and its sex coverage was 2,284 of 12,463 because only the invented
+#: placeholders carried one, so both had to be kept out of any corpus-shape check.
 #:
-#: What it exists for is one specific thing: `exports/0-scraped/` holds two AGGREGATE files, and
-#: `scraped-pages.ged` carries **14,121 individuals against `GENI_EXPORT_CAP = 5000`**. That
-#: constant means *the largest export Geni has ever returned*, so a generated file must not be
-#: measured against it. Same for its sex coverage, which is 2,284 of 12,463 because only the
-#: placeholders carry one.
-DERIVED_DIRS = (EXPORTS_DIR / "0-scraped",)
-DERIVED_DIR = DERIVED_DIRS[0]
+#: What replaced them is `exports/tiny-profiles/` and `exports/tiny-paths/` — thousands of small
+#: files, three to twenty people each, every `INDI` a real Geni profile. Those are corpus in the
+#: ordinary way and trip none of those checks; her words when I tried to exclude them: *"these are
+#: real gedcoms to go into the synoptic tree just tiny ones."*
+#:
+#: Kept as an empty tuple rather than deleted because `geni_exports()` and `__all__` name it, and
+#: a future generated aggregate would belong here.
+DERIVED_DIRS = ()
+DERIVED_DIR = EXPORTS_DIR / "0-scraped"
 
 
 def _digest(path: Path) -> str:
