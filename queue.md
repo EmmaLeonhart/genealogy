@@ -19,28 +19,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   has been measured, and the last real creation predates the change. Unblock signal is one walk
   from a real seed through to a single creation, with the queue observed to stop.
 
-- **NEEDS-DECISION — the six unruled `.qs` generators. PUT THIS TO HER AS AN `AskUserQuestion`.**
-  `reports/qs-batch-audit.md` measured **0 of 27** `.qs` files as produced by anything the pipeline
-  runs. Nine have generators; three are settled. These six are not, and each wants one ruling
-  — fold into the daily batch / give its own schedule / delete:
-
-  - `build-add-p2600-batch` — 7,166 `P2600` from parent-anchor proof
-  - `build-missing-reciprocals` — 6,770 statements, **no live check** by design; was folded in on a
-    wrong claim and taken back out
-  - `build-qid-link-p2600` — 354 statements; `CLAUDE.md` records her objecting to this file by name
-  - `build-label-corrections` — 148; **measured superseded** by `_label_corrections` +
-    `_cjk_follows_mul` in the daily batch
-  - `build-sibling-batch` — 420; its own docstring calls it a one-off that ignores `SIBLING_CAP`
-  - `build-from-diff` — 78 + 8; wired into `pipeline.yml` on a claim rather than a measurement,
-    which is why its review is also queued at the tail
-
-- **NEEDS-DECISION — the `.crx` + `ExtensionInstallForcelist` install. PUT THIS TO HER AS AN
-  `AskUserQuestion`.** The `.crx` is packed and `update.xml` staged in `%LOCALAPPDATA%\geni-collector`;
-  extension id `khcdcngbbjcdelkccmokkkbimjikfahl`. `HKCU\Software\Policies` is ACL-denied and the
-  harness blocks the non-policy registry write, so the remaining route needs an **elevated shell**
-  for `HKLM`. **Convenience only** — the extension is loaded and working via Load unpacked, and
-  survives restarts; this only removes Developer mode and the folder-must-not-move condition.
-
 - **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt` — **100
   profile URLs**, one per target, and `reports/isolate-path-pilot-queue.txt` is the same list in
   the collector's input format. Then `python scripts/harvest-isolate-paths.py --write-paths` for

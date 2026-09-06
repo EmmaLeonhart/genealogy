@@ -59,3 +59,27 @@ a different thing again.
 
 `scripts/audit-qs-generators.py`. A file counts as *produced* when some script under `scripts/`
 names it, and as *scheduled* when that script is named in `.github/workflows/*.yml`.
+
+## ⛔ SETTLED, 2026-09-06 — she ruled on all six
+
+Put to her as an `AskUserQuestion` after four status reports had listed them as a blocker without
+anyone asking. Her rulings:
+
+| generator | ruling |
+| --- | --- |
+| `build-missing-reciprocals` | **deleted** |
+| `build-qid-link-p2600` | **deleted** |
+| `build-label-corrections` | **deleted** |
+| `build-sibling-batch` | **deleted** |
+| `build-from-diff` | its own review item, already at the queue tail |
+| `build-add-p2600-batch` | **deferred to 2026-09-13** — *"I have so little context... I'm incapable of making a decision now"* |
+
+The deferral is a workflow, not a note: `.github/workflows/requeue-add-p2600.yml` appends the
+question back to `queue.md` on the date, once, guarded by a marker so a daily schedule cannot
+duplicate it.
+
+**Every reference to the four deleted scripts was prose in a comment**, checked before deleting —
+`pipeline.yml`, `build-garborg-day.py` and `tests/test_p2600_batches.py` mention them in
+explanations of past incidents, and nothing called them. Their `.qs` outputs are left in
+`reports/` as records of what was sent; they now join the eighteen files this audit already
+describes as having no generator.

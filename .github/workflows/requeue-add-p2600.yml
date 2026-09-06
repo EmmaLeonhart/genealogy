@@ -1,0 +1,55 @@
+# Re-ask her about `build-add-p2600-batch` on 2026-09-13.
+#
+# **Emma, 2026-09-06:** *"set up github actions to add asking this into the queue again a week
+# from now (appending it) because I'm incapable of making a decision now."*
+#
+# The deferral is a DATE IN A FILE, not a memory. Every session-local cron in this repo has died
+# at least once -- the 2026-08-28 crash took all of them, and on 2026-09-05 a session ran for
+# hours with none -- so a scheduled workflow plus `WHEN` in the script is what survives.
+#
+# It runs daily and does nothing until the date, then appends once. `scripts/requeue-add-p2600.py`
+# checks its own marker in `queue.md`, so a duplicate cannot accumulate.
+#
+# `workflow_dispatch` so the append can be forced, and `schedule` off the hour per CronCreate's
+# own advice about the fleet landing on :00.
+name: requeue add-p2600 decision
+
+on:
+  schedule:
+    - cron: "23 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  requeue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Only the two files the script touches, so this stays seconds rather than pulling
+          # the 13 GB the full tree weighs.
+          sparse-checkout: |
+            queue.md
+            scripts/requeue-add-p2600.py
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Append the decision if the date has arrived
+        run: python scripts/requeue-add-p2600.py
+
+      - name: Commit and push if anything changed
+        run: |
+          if git diff --quiet -- queue.md; then
+            echo "queue.md unchanged; nothing to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add queue.md
+          git commit -m "re-queue the build-add-p2600-batch decision she deferred on 2026-09-06"
+          git push
