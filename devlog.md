@@ -29087,3 +29087,16 @@ outputs rather than anything chosen here.
 
 **`bio-qids.tsv` stays tracked in this commit.** Removing it is the next item and a separate
 commit, which is the order she asked for: confirm the rebuild first.
+
+## 2026-09-05 — sweep: the synoptic rebuild item retired
+
+**Removed: BLOCKED-ON-EXTERNAL — the full synoptic rebuild.** Retired by
+`out/merged.ged` at 1,815,816,271 bytes dated Sep 5 21:15 (against 1,815,770,664 on Sep 1),
+`all 14 steps done in 32.8 min` in `out/rebuild-2026-09-05.log`, and commit `c5877990` carrying
+the 22 regenerated files, pushed. The item's own unblock signal was the process finishing and its
+follow-through was to commit and push; both happened.
+
+Nothing else went. The retarget below it is **gated on her confirming the rebuild is good** and
+`reports/bio-qids.tsv` is still tracked, which is the correct state for it. `addAncestor`'s
+termination is still unexercised, the two decisions are queued questions not yet asked, the pilot
+is at 5 of 100, and the rest are gated or at the tail by her placement.

@@ -2,15 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-- **BLOCKED-ON-EXTERNAL — the full synoptic rebuild.** Started 2026-09-05 at her instruction,
-  because three `.ged` files are newer than `out/merged.ged` (Sep 1): two `post-merge` Forest
-  exports and `wikidata-qid-links.ged`. **Run WITHOUT `--slim`** — slim drops `NOTE`, which is
-  where the bios and their QIDs live, so the slim tree is the wrong tree for this. Unblock signal
-  is the process finishing. It has been OOM-killed on this shape of machine at 13.3 min / 13.3 GB;
-  if that happens, report it rather than falling back to `--slim`.
-  **Then commit and push the regenerated artifacts** — her sequence: rebuild, regenerate, commit,
-  push, confirm good, and only then the retarget below.
-
 - **Retarget `bio-qids.tsv` to a gitignored path — AFTER the rebuild is confirmed good.** Emma,
   2026-09-05: *"it also shouldn't exist lol because it's just garbage for agents to get confused
   about"*, and on the two ways of doing it she chose **retarget**, not deletion of the script.
