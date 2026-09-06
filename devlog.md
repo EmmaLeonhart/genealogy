@@ -30621,3 +30621,31 @@ failure recorded here — a count that stays plausible while what it counts move
 Backfilled from the files' own `# statistics` headers rather than re-derived, so the two cannot
 disagree; `path_found` and `anchor` stay blank because neither is knowable from a file.
 **`isolates.csv` is 20 rows: 7 misses, 1 hit, 12 pending.**
+
+## Her run-loop spec, written down before anything else is built
+
+She dictated the whole of what the extension does per individual, and said **"there's no
+discretion on your part at all"** three times. `docs/collector-run-loop.md` is it, verbatim.
+
+    land on the profile          <- the agent's ONLY job
+    scrape the family            -> tiny profile GEDCOM, written immediately
+    request the Charlemagne path
+    WAIT on a watcher            <- not a timer
+    path found -> expand, grab the chain, append the TSV, tiny path GEDCOM in the OTHER directory
+    no path    -> read the statistics; below 300 stop; at or above it walk the tree, add the
+                  individual, run the Forest export, flag them in a ledger as an export target
+
+**This is a correction of how today actually went.** Every one of those steps exists — `runFamily`,
+`runPath`, `parsePath`, the path emitter, `runSeed`, `runExport`, the 300 threshold. What does not
+exist is the **sequencing**: they are five separate jobs that I dispatch by hand and reason about
+between, which is precisely the discretion she is removing. The gate in particular lives in
+`scripts/export_gate.py` and gets applied by me in prose, per person — a judgement the extension
+should be making identically 2,527 times.
+
+**And the reason it is agentic at all is the CAPTCHA, not a limitation.** *"By agentically going
+to the page and then running the extension, you are considered to be proper traffic."* The
+browser-driven navigation is the mechanism that keeps the traffic acceptable; a background fetch
+loop is the thing that gets blocked. Geni served an Incapsula CAPTCHA earlier today after roughly
+forty rapid loads.
+
+One thing genuinely missing rather than misplaced: **no export-target ledger exists.**
