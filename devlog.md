@@ -30531,3 +30531,25 @@ Geni itself serves.
 **Three scrapes were lost to this** — Constans Wilhelm Wenström (20 relatives), Karl Olofsson (10)
 and Fridtjof Aas (14) all reported `saved: true` and left nothing on disk. `saved` meant the click
 was awaited. They are re-takeable and cost only the page loads.
+
+## The working loop, no downloads: result attribute in, file tool out
+
+Her framing of where the work actually is: *"we're just trying to get the Charlemagne paths for
+the wikidata isolates that are not in the world tree, and we also save the tiny gedcoms for the
+individuals we collect the paths on because why not."*
+
+So per isolate: land on the profile, take the immediate family while there, and request the
+Charlemagne path. Both artifacts, nothing downloaded.
+
+**Valentine Eisner `6000000024848288348`** — 8 relatives, 0 unlinked, Family Tree 914. The scrape
+came back on the data attribute, was written with a file tool, and **`Jiří Eisner` survives
+intact**: no `\xc3\x83` anywhere, the `ř` still two bytes `c5 99`. That is the same name shape
+that got destroyed when the identical text went through a shell heredoc, which is the whole
+difference between the two transports and the reason four scrapes had to be deleted.
+
+Her path search is **in progress**, which is the ordinary asynchronous state rather than a
+failure — the tab has to stay open while Geni computes it, and it is collected on a second pass.
+
+**The loop is now:** navigate → `family` job → write the TSV → dispatch the `path` job → leave the
+tab open. `build-tiny-gedcoms.py` turns both into tiny GEDCOMs afterwards. No permission is
+needed at any point, which is what the download route could never say.
