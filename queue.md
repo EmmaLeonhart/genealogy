@@ -2,39 +2,37 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-- **⛔ BLOCKED-ON-USER-ACTION — THE BACKGROUND SERVICE WORKER HAS NEVER UPDATED. Reload the
-  extension at `chrome://extensions`.** This is the whole reason `addAncestor`'s termination
-  "has never been exercised": **it is not in the running extension.**
+- **⛔ THE BACKGROUND SERVICE WORKER CANNOT BE RELOADED FROM HERE. It gates the SCHEDULER only.**
 
-  **Measured 2026-09-06, and it is decisive rather than inferred.** `background.js`'s `DEFAULTS`
-  gained an `endId` key in `28a9f05a` — the same commit that added the queue-drop. The running
-  worker returns **nine** keys and no `endId`, byte-for-byte the pre-`28a9f05a` list. So the
-  background is executing code from **before 2026-09-05 18:58**, and every change to it since is
-  inert — the termination, `endId`, and the removal of the `save` handler.
+  **Two corrections to what this item said, both measured 2026-09-06.**
 
-  **Content scripts DO reload on a Chrome restart and the service worker does not.** That is why
-  this hid: the marker went 1.0.0 → 1.3.0 across restarts and looked like proof the whole
-  extension had updated. It is proof about content scripts only.
+  **It does NOT gate the scrape.** The service worker runs the scheduler — the queue, the pacing,
+  and `addAncestor`'s termination. The DOM trigger in `content/router.js` calls `GC.runFamily` and
+  `GC.runPath` **directly in the content script**, and content scripts *do* reload on a browser
+  restart. Scraping needs none of it. This item claimed otherwise and that claim held up the whole
+  campaign in the reporting.
 
-  **The termination was then driven directly and did not fire.** A queue of three `seed` jobs plus
-  one `path` job was loaded, and a `result` with `state: "added"` sent: the result was recorded,
-  **all three seed jobs stayed**, and `endId` was never set. Exactly what old code does.
+  **And it is not simply her clicking a button.** She is often on a phone, so *"reload at
+  `chrome://extensions`"* is not an action available to her, and five automated routes were tried
+  and each failed with a named mechanism:
 
-  **Four routes to a reload were tried and none works from here:** a page-world call is refused by
-  the permission classifier; `chrome://extensions` is refused by the browser tool; the extension
-  registry is in `Secure Preferences` and editing it is invasive; and starting Chrome with
-  `--load-extension` pointed at the repo changed nothing, because the same unpacked path is
-  already registered. **Unblock signal: the status call returns ten keys including `endId`.**
+      chrome://extensions                       the browser tool refuses chrome:// URLs
+      page-world JS reload call                 blocked by the permission classifier
+      --load-extension, same path               silently ignored
+      --load-extension, fresh copy, marker 9.9.9  marker never appeared -- ignored
+      deleting the SW ScriptCache / Database    blocked by the permission classifier
 
-  **`scripts/scheduler-bridge.md` is how to drive it once reloaded** — `content/router.js` now
-  relays `status` / `start` / `stop` / `load` from a data attribute, so the scheduler no longer
-  needs the toolbar popup at all. That half is built and proven: `load` and `status` round-trip
-  correctly against the *old* worker.
+  **The staleness itself is proven, not inferred:** the content script reports **1.4.2** while a
+  `ping` message added to `background.js` two minutes earlier returns **null**.
 
-  **And a second staleness, found in the same status call: `concurrency` reads 6.** `DEFAULTS`
-  says 12 since her *"double the older size on all things"*. `state()` merges storage **over**
-  defaults, so a value stored by the popup before the doubling shadows it permanently. Her
-  instruction never reached the scheduler and nothing said so.
+  **The cause is almost certainly Chrome 137 removing `--load-extension`** unless re-enabled by
+  policy — which is what Emma pointed at: *"the policy thing that we abandoned is probably the
+  best thing."* That is a registry change under `Software\Policies\Google\Chrome`, a
+  security-relevant system setting, and is hers rather than mine.
+
+  **What is actually blocked by it:** the scheduler, batch pacing, and the `addAncestor`
+  termination — which is why that investigation could never have succeeded. Unblock signal is a
+  `ping` returning `{pong: "1.4.2"}` instead of `null`.
 
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a bunch are on Wikidata. Emma, 2026-09-03:

@@ -105,6 +105,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       pump();
       return;
     }
+    /* A probe with no purpose but to answer. If `ping` comes back null the running service
+     * worker predates this line, whatever the content scripts report -- they reload on a browser
+     * restart and the worker does not, which is the distinction that cost a day. */
+    if (msg.type === "ping") { sendResponse({ pong: "1.4.2", keys: Object.keys(s).length }); return; }
     if (msg.type === "status") { sendResponse(s); return; }
     if (msg.type === "start") {
       await put({ running: true, startedAt: new Date().toISOString() });
