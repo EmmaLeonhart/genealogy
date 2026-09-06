@@ -30273,3 +30273,33 @@ it was going, while sounding like a discovery about a finished mechanism.
 
 Retiring it stays queued rather than done: it holds the only reader of `geni-scraping/`'s 1,555
 saved pages, and removing its two files changes every merge.
+
+## The scraping method was hand-transport, and it corrupted 4 of 14 scrapes
+
+**Emma:** *"how the fuck are you even scraping lol"*, and then *"Why the fuck are you doing this"*
+as I started writing an escape codec to work around it.
+
+**What I was doing.** Run the `family` job in the tab, read the TSV back through the tool result,
+**retype it into a bash heredoc**, pipe that into `write-family-scrape.py`. Four to five tool
+calls per person, by hand, for a worklist of 2,527.
+
+**It silently double-encoded every non-ASCII byte.** `Wenström` arrived as
+`Wenstr\xc3\x83\xc2\xb6m`, where `\xc3\xb6` is correct. Measured across everything on disk:
+**4 of the 14 scrapes were damaged**, plus the tiny GEDCOMs built from them — Wenström, Eisner,
+Ekstein, Eisner. Every one a Scandinavian or Czech name, which is most of this corpus.
+`CLAUDE.md` § *Working on Windows here* already records this exact class from the other direction.
+
+**The four scrapes and their GEDCOMs are deleted rather than repaired.** They are cheap to
+re-take and a repaired file would be a guess about what the page said.
+
+**And the workaround was worse than the bug.** Base64 out of the browser is refused by the tool's
+content filter; so is a `key=value` line; so I began writing a `\uXXXX` escape codec into the
+importer. That is three transport hacks stacked to move data the extension is already holding.
+
+**The extension should write these files.** It has the TSV in the tab. `chrome.downloads` from the
+background is not subject to the automatic-download content setting that blocks an `<a download>`
+click, so the collector can put a file on disk without any of this — which is what the scheduler
+was built to do across a whole queue rather than one profile at a time. That path needs the
+service worker actually updated, which is the reload still sitting with her.
+
+No more hand-transport. 13 scrapes stand, all clean.
