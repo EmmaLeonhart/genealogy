@@ -30598,3 +30598,26 @@ Pilot at **18 of 100**, 14 tiny profile GEDCOMs from extension scrapes, zero inv
 
 The loop that produced them needs no permission and no downloads: job returns the TSV on the data
 attribute, a file tool writes it, `build-tiny-gedcoms.py` turns it into a GEDCOM the merge reads.
+
+## Jakob Sichel banked, and the ledger had silently stopped tracking
+
+Isolate pilot, her current objective — *"get the Charlemagne paths for the wikidata isolates that
+are not in the world tree, and we also save the tiny gedcoms for the individuals we collect the
+paths on"*. **Jakob Sichel `6000000042112380373`**: 10 relatives, Family Tree 1,101, Blood
+Relatives 555, and **four half-siblings**, which the tiny GEDCOM deliberately does not join into a
+family — two half-siblings share one parent, so giving them both would assert a marriage that did
+not happen. His Charlemagne path is in progress.
+
+**⛔ AND WRITING FILES WITH A FILE TOOL BYPASSED THE LEDGER.** `write-family-scrape.py` writes the
+TSV *and* the `reports/isolates.csv` row in one pass, precisely so the two cannot drift. Switching
+the transport to a file tool — necessary, because the shell corrupts UTF-8 — quietly dropped the
+second half. **Three scrapes existed on disk with no ledger row**: David Johansen Monrad, Arne
+Garborg, Jakob Sichel.
+
+Nothing failed and nothing looked wrong: the files were correct, the GEDCOMs built from them were
+correct, and the ledger simply stopped growing. It is the same shape as every other instrument
+failure recorded here — a count that stays plausible while what it counts moves on without it.
+
+Backfilled from the files' own `# statistics` headers rather than re-derived, so the two cannot
+disagree; `path_found` and `anchor` stay blank because neither is knowable from a file.
+**`isolates.csv` is 20 rows: 7 misses, 1 hit, 12 pending.**
