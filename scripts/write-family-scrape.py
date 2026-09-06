@@ -34,15 +34,30 @@ ISOLATES = ROOT / "reports" / "isolates.csv"
 
 FIELDS = ["family_tree", "blood_relatives", "ancestors", "descendants", "followers"]
 
-#: What the profile's own banner says, mapped onto the three states. Order matters: the
-#: in-progress sentence is checked first because a page can carry both while it settles.
+#: ⛔ THE BANNER CAN ONLY EVER PROVE A MISS. It cannot prove a hit, and the first version of this
+#: function claimed otherwise: anything that was neither the pending sentence nor the miss
+#: sentence fell through to `"yes"`.
+#:
+#: **That is FOUR states collapsed into three, and the fourth is the dangerous one.**
+#: `geni-paths/README.md` records three — hit, miss, pending — and a fourth exists that the
+#: harvester already names, `not_requested()`: the profile shows a **"How are you related?"**
+#: button because no search has ever been asked for. Asser de Haan came back exactly that way and
+#: was written down as `path_found=yes`, a connected hit on a search nobody had run.
+#:
+#: The pilot's entire deliverable is a reach rate, so a not-requested profile scored as a hit
+#: inflates the one number the campaign produces — the same failure as the `/path/` URL, which
+#: rendered the viewer's own chain and would have reported 100%.
+#:
+#: **So the mapping is asymmetric on purpose.** A miss is stated on the page in words and is
+#: readable here. A HIT is not: it needs a parsed chain whose steps include the target, which is
+#: what the `path` job's `state == "resolved_path"` with `hasTarget` establishes. Anything this
+#: function does not positively recognise stays **blank** — come back later — because blank costs
+#: a revisit and `yes` costs the measurement.
 def path_state(banner: str) -> str:
     b = (banner or "").lower()
-    if "path search in progress" in b or "relative?" in b:
-        return ""          # pending -- come back, never a miss
-    if "no path found" in b or "could not be found" in b:
+    if "no path found" in b or "could not be found" in b or "no blood relationship" in b:
         return "no"
-    return "yes" if b else ""
+    return ""   # pending, not-requested, or unrecognised -- never inferred as a hit
 
 
 def parse_block(text: str) -> dict:
@@ -66,10 +81,20 @@ def parse_block(text: str) -> dict:
         if len(parts) == 4:
             rows.append(dict(zip(("relation", "phrase", "geni_id", "name"), parts)))
     stats = {"read": True}
-    for pair in meta.get("stats", "").split("	"):
-        k, _, v = pair.partition("=")
-        if k:
-            stats[k] = int(v or 0)
+    raw = meta.get("stats", "")
+    if "=" in raw:
+        for pair in raw.split("	"):
+            k, _, v = pair.partition("=")
+            if k:
+                stats[k] = int(v or 0)
+    else:
+        # POSITIONAL, in the order Geni prints the block. The `key=value` form is still accepted
+        # and is the readable one, but it cannot always be carried: the browser tool blocks a
+        # result line containing `k=v` as query-string data, so a scrape transported that way
+        # arrives empty. Positional survives the trip; `FIELDS` is the single definition of the
+        # order and both forms land in the same dict.
+        for field, value in zip(FIELDS, raw.split("	")):
+            stats[field] = int(value or 0)
     return {
         "ext": {"geni_id": meta.get("id", ""), "name": meta.get("name", ""), "stats": stats},
         "relatives": rows,

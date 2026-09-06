@@ -29771,3 +29771,40 @@ directly; the queue-drop lives in `background.js`'s `result` handler and only ex
 ever running — and the stale clause would have told the next session the opposite, that a new
 creation exercises it. A wrong reason under a right conclusion is worse than no reason, because
 it is the reason that gets acted on.
+
+## ⛔ `path_state` INFERRED A HIT FROM THE ABSENCE OF A MISS, and wrote one down
+
+Asser de Haan was scraped, his profile showing the **"How are you related?"** button — the state
+`harvest-isolate-paths.py` already names `not_requested()`, meaning no search has ever been asked
+for. He was recorded as **`path_found=yes`**: a connected hit on a search nobody ran.
+
+**The cause is four states collapsed into three.** `geni-paths/README.md` records hit / miss /
+pending, and `path_state()` was written to that table — pending sentence, miss sentence, and
+**everything else falls through to `yes`**. The fourth state has been documented since 2026-09-05
+and the mapping never had a branch for it.
+
+**Why it matters more than one row: the pilot's entire deliverable is a reach rate.** A profile
+nobody searched, scored as connected, inflates the one number the 185,327-target campaign is
+waiting on — which is exactly the `/path/` failure of 2026-09-05, where a miss page rendered the
+viewer's own chain and a step-count harvest would have reported 100%. Same shape, same file,
+three weeks apart.
+
+**The fix is asymmetric on purpose, and the asymmetry is the point.** A **miss** is stated on the
+page in words and can be read off the banner. A **hit** cannot: it needs a parsed chain whose
+steps include the target, which is what the `path` job's `resolved_path` + `hasTarget` gives. So
+`path_state` now returns `no` only on the miss wording and **blank for everything else** —
+pending, not-requested, unrecognised. Blank costs a revisit; `yes` costs the measurement.
+
+**Re-audited every row rather than fixing the one I noticed.** Each `yes` in
+`reports/isolates.csv` was checked against whether any file in `paths/` actually names that
+profile: **Rudolf Beck is backed by `isolate-geni-rudolf-beck-1919-c1941.tsv`; Asser de Haan was
+backed by nothing** and is corrected to pending. 7 misses / 1 hit / 6 pending.
+
+**Asser de Haan is banked as step 1 regardless** — 10 relatives, Family Tree and Blood Relatives
+both saturated at 15,000, Ancestors 120. He clears the export gate comfortably if his search ever
+resolves to a miss.
+
+**One transport change came with it.** The browser tool blocks a result line containing `k=v` as
+query-string data, so a scrape carried in the readable `@STATS family_tree=…` form arrives empty.
+`parse_block` now also accepts five positional numbers in the order Geni prints them, `FIELDS`
+being the single definition of that order; both forms land in the same dict.
