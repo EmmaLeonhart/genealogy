@@ -29596,3 +29596,28 @@ what the busy flag on the documentElement was built for.
 **Isidor Friedmann** — 9 relatives, Family Tree 206 / Blood Relatives 53 / Ancestors 8 /
 Descendants 2 / Followers 7. Nothing reaches 300, so no export if his search misses. Thirteen
 readings held; two skips, both plainly right.
+
+**Sweep: nothing removed, second time running, and each of the seven was checked against the repo
+rather than assumed.**
+
+- **`addAncestor`'s termination** — still unexercised. Four placeholder creations are on record in
+  `reports/geni-created-placeholders.tsv`, the last of them made unaided by the extension, but
+  every one was a single `seed` job fired by hand. The item's unblock signal is a **walk** —
+  a queue observed to stop when a result comes back `added` — and that lives in `background.js`,
+  which nothing has run. A creation is not the walk.
+- **The phase order** — a governing rule with no done state.
+- **The pilot** — 13 of 100, in progress.
+- **The parent-adding campaign** — gated by her, and the gate is hers to open.
+- **`build-from-diff`** — `reports/wikidata-from-diff.qs` and `-izumo.qs` exist, but those are its
+  *outputs*; the queued item is a **review** of why it was wired into the pipeline, and no review
+  exists. At the tail by her placement.
+- **The correspondence-GEDCOM experiment** — `docs/correspondence-merge-proposal.md` is the
+  proposal she asked for and is not the experiment; no GEDCOM is generated. At the tail.
+- **The tail export section** — hers.
+
+**What did change is the one thing a sweep is actually for: a dead fact.** The pilot's progress
+count sat in the item as prose and went stale twice in one night — *5 of 100* while nine were on
+disk, and *9* an hour after being corrected to nine. `scripts/pilot-progress.py` measures it and
+the item now names the script instead of a number, which kills the class rather than the instance.
+Same reasoning as § *Emma edits the tree and the items BY HAND, continuously*: a photograph of a
+moving thing is stale on arrival, and refreshing it faster is not the fix.

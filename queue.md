@@ -21,7 +21,12 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
 - **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt` — **100
   profile URLs**, one per target, and `reports/isolate-path-pilot-queue.txt` is the same list in
   the collector's input format. Then `python scripts/harvest-isolate-paths.py --write-paths` for
-  the hit rate. **9 of 100 touched** — 6 with a saved path capture, 3 with a family scrape.
+  the hit rate.
+
+  **Progress is MEASURED, never written here:** `python scripts/pilot-progress.py`. The count sat
+  in this item as prose and went stale twice in one night — *5 of 100* while nine were on disk,
+  then *9* an hour after it was corrected to nine. A number in a queue item is wrong from the
+  moment the next target lands.
 
   **⛔ EACH TARGET GETS THE PER-INDIVIDUAL LOOP, and step 1 is the family scrape.**
   `docs/per-individual-loop.md`: scrape and save the immediate family first, unconditionally,
