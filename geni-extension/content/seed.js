@@ -364,6 +364,22 @@ GC.seed.addParent = async function (which, p) {
     return { state: "would_have_saved", filled: filled };
   }
 
+  /* ⛔ LET THE FORM SETTLE BEFORE SAVING, and specifically let *Suggest surnames* run.
+   *
+   * This is the difference between a save that works and one that silently does nothing, found
+   * on 2026-09-06 by doing the same fill by hand: the manual run waited before clicking and
+   * created the person; the extension clicked immediately and created nobody, twice. A scripted
+   * `.click()` submits perfectly well -- `NN Himo` `6000000227615372858` was created by one --
+   * so the trusted-event theory that suggested itself here is wrong.
+   *
+   * The surname is Geni's to fill and it arrives asynchronously, which is why the wait is on the
+   * FIELD rather than on a clock: `GC.until` returns the moment the suggestion lands, and falls
+   * through after 6s for the cases where Geni declines to suggest at all -- a child whose only
+   * surname is a patronymic gets no suggestion, which is what `NN` mother of Kari Olsdatter
+   * looked like. */
+  await GC.until(() => ($("page_profile_names_en-US_last_name") || {}).value, 6000);
+  step("form-settled");
+
   step("clicking-save");
   $("submit_ifs").click();
   step("saved-clicked");

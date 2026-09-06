@@ -29269,3 +29269,37 @@ folder-must-not-move condition, at the cost of an elevated shell.
 do."* Four sweeps in a row declined to consider items by citing *"at the tail by her placement"*,
 which turned an ordinary position in a file into a protected class and let me report an empty
 sweep as if it were a finished one. Items at the end are items.
+
+## 2026-09-06 — the extension's save failed on TIMING, not on trusted events
+
+`addAncestor`'s last unverified step was whether the extension's own `$("submit_ifs").click()`
+submits. It does not fail because it is scripted, and the theory that it might was wrong twice
+over.
+
+**Measured on a fresh slot rather than by duplicating a mother.** The walk found
+`6000000178118920851` **Ingebrigt Himo** — zero parents, no patronymic — which is **tier 4** and
+the FATHER, per her 2026-09-05 ruling that the empty case follows the seed rules rather than the
+walk's mother-first order.
+
+    extension, filling and clicking Save itself   ->  nothing created, page reloaded
+    same fill by hand, 1.2s pause, SCRIPTED click ->  NN Himo 6000000227615372858 created
+
+So a scripted click submits perfectly well, and the trusted-event hypothesis is refuted — as is
+my earlier "refutation" of it, which was invalid for a different reason (wrong coordinates).
+**The difference is the pause.** The extension filled the form and clicked immediately, before
+Geni's *Suggest surnames* had populated the last-name field.
+
+`addParent` now waits for the surname to arrive rather than for a clock —
+`GC.until(() => last_name.value, 6000)` — so it proceeds the instant the suggestion lands and
+falls through after six seconds for the case where Geni declines to suggest at all. That case is
+real: a child whose only surname is a patronymic gets no suggestion, which is exactly what the
+`NN` mother of Kari Olsdatter looked like.
+
+**Two placeholders created this session, both at slots the algorithm found:**
+
+    NN Hoknes Himo  6000000227614959821  mother of Elias Kahrs Ingebrigtsen Hoknes Himo  tier 3
+    NN Himo         6000000227615372858  father of Ingebrigt Himo                        tier 4
+
+**Still not verified: the fix itself.** The settle-wait is written and the extension has not been
+reloaded or re-run against it, so it is code that has been read, which is the exact state this
+item exists to distrust. The next creation is the test.
