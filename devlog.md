@@ -28994,3 +28994,32 @@ with the two-file model and says so.
 
 So the whole line of enquiry ends where she guessed it would: built correctly, documented badly,
 and the documentation is now the thing that changed.
+
+## 2026-09-05 — the blockers became the first queue items, the decisions as queued questions
+
+Emma, shown the status report's blocker list: *"literally make these the first 4 queue items, the
+decisions being queued AskUserQuestions"*.
+
+So the top of `queue.md` is now the blocker list itself, in order, rather than a thing restated
+once an hour in a report she has to be reading at the time:
+
+    BLOCKED-ON-EXTERNAL   the full synoptic rebuild, running, no --slim
+    (its follow-on)       retarget bio-qids.tsv to out/, AFTER the rebuild is confirmed good
+    NEEDS-INVESTIGATION   addAncestor's termination, never exercised
+    NEEDS-DECISION        the six unruled .qs generators      -> AskUserQuestion
+    NEEDS-DECISION        the .crx + policy install           -> AskUserQuestion
+
+**The two decisions are written as questions to PUT to her, not as work to do.** That is the
+difference her instruction turns on: a `NEEDS-DECISION` item whose next action is "decide it" is
+one an agent will quietly resolve on its own judgement, which is how
+`build-missing-reciprocals` got folded into the pipeline on a wrong claim this evening. Written as
+a queued `AskUserQuestion`, the next action is to ask, and § *She answers `AskUserQuestion`* is
+why that is the channel rather than prose.
+
+Each carries what has already been measured, so the question can be asked without re-deriving it:
+the six generators with their statement counts and which are superseded, and the `.crx` with the
+routes already exhausted (`HKCU\Software\Policies` ACL-denied, the non-policy registry write
+blocked by the harness, `--load-extension` ignored by Chrome 152).
+
+**The old standalone `.crx` item at the tail was removed**, superseded by the new one, which
+carries the measured state. Two items describing one job is the duplication that started tonight.

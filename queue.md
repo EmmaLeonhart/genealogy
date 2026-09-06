@@ -2,6 +2,54 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
+- **BLOCKED-ON-EXTERNAL — the full synoptic rebuild.** Started 2026-09-05 at her instruction,
+  because three `.ged` files are newer than `out/merged.ged` (Sep 1): two `post-merge` Forest
+  exports and `wikidata-qid-links.ged`. **Run WITHOUT `--slim`** — slim drops `NOTE`, which is
+  where the bios and their QIDs live, so the slim tree is the wrong tree for this. Unblock signal
+  is the process finishing. It has been OOM-killed on this shape of machine at 13.3 min / 13.3 GB;
+  if that happens, report it rather than falling back to `--slim`.
+  **Then commit and push the regenerated artifacts** — her sequence: rebuild, regenerate, commit,
+  push, confirm good, and only then the retarget below.
+
+- **Retarget `bio-qids.tsv` to a gitignored path — AFTER the rebuild is confirmed good.** Emma,
+  2026-09-05: *"it also shouldn't exist lol because it's just garbage for agents to get confused
+  about"*, and on the two ways of doing it she chose **retarget**, not deletion of the script.
+  So: `extract-bio-qids.py` writes `out/bio-qids.tsv`; the three readers follow
+  (`build-emperor-rosters.py:77`, `build-merge-worklist.py:98`, `build-succession-roster.py:119`);
+  **one explicit `.gitignore` line** for it, per § *`out/` is NOT gitignored* — named files only;
+  `reports/bio-qids.tsv` deleted from tracking. **A separate commit and push from the rebuild**,
+  which is how she asked for it. `slim-corpus.py` and `src/genimerge/slim.py` mention the path only
+  in prose and need no change.
+
+- **NEEDS-INVESTIGATION — `addAncestor`'s termination has never been exercised.** `background.js`
+  drops the remaining seed queue when a result comes back `added`, which is her rule
+  (*"it adds an ancestor of `start_id` and returns the id of it as `end_id`"*), but no walk has run
+  through to a creation since that was written. It is code that has been read, not behaviour that
+  has been measured, and the last real creation predates the change. Unblock signal is one walk
+  from a real seed through to a single creation, with the queue observed to stop.
+
+- **NEEDS-DECISION — the six unruled `.qs` generators. PUT THIS TO HER AS AN `AskUserQuestion`.**
+  `reports/qs-batch-audit.md` measured **0 of 27** `.qs` files as produced by anything the pipeline
+  runs. Nine have generators; three are settled. These six are not, and each wants one ruling
+  — fold into the daily batch / give its own schedule / delete:
+
+  - `build-add-p2600-batch` — 7,166 `P2600` from parent-anchor proof
+  - `build-missing-reciprocals` — 6,770 statements, **no live check** by design; was folded in on a
+    wrong claim and taken back out
+  - `build-qid-link-p2600` — 354 statements; `CLAUDE.md` records her objecting to this file by name
+  - `build-label-corrections` — 148; **measured superseded** by `_label_corrections` +
+    `_cjk_follows_mul` in the daily batch
+  - `build-sibling-batch` — 420; its own docstring calls it a one-off that ignores `SIBLING_CAP`
+  - `build-from-diff` — 78 + 8; wired into `pipeline.yml` on a claim rather than a measurement,
+    which is why its review is also queued at the tail
+
+- **NEEDS-DECISION — the `.crx` + `ExtensionInstallForcelist` install. PUT THIS TO HER AS AN
+  `AskUserQuestion`.** The `.crx` is packed and `update.xml` staged in `%LOCALAPPDATA%\geni-collector`;
+  extension id `khcdcngbbjcdelkccmokkkbimjikfahl`. `HKCU\Software\Policies` is ACL-denied and the
+  harness blocks the non-policy registry write, so the remaining route needs an **elevated shell**
+  for `HKLM`. **Convenience only** — the extension is loaded and working via Load unpacked, and
+  survives restarts; this only removes Developer mode and the folder-must-not-move condition.
+
 - **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt` — **100
   profile URLs**, one per target, and `reports/isolate-path-pilot-queue.txt` is the same list in
   the collector's input format. Then `python scripts/harvest-isolate-paths.py --write-paths` for
@@ -35,15 +83,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   closely related eccentric graph points on geni."* The instrument is `Forest` exports seeded at
   eccentric points, the same one § *"Not related to" does NOT mean not related* uses. Do not
   start it early and do not invent the gate's threshold — that is hers.
-
-- **Pack `geni-extension` as a `.crx` and install it by policy.** Emma, 2026-09-05, choosing the
-  relaunch now and this later: *"Relaunch and put at the end of the queue for it to be .crx and
-  policy"*. An unpacked extension needs `chrome://extensions` and Developer mode, which the
-  automation surface cannot reach, and a `--load-extension` relaunch has to be redone every time
-  Chrome cold-starts without it. A packed `.crx` registered under an `ExtensionInstallForcelist`
-  policy survives restarts, needs no Developer mode and no UI click. It wants admin rights on this
-  machine. Nothing has been investigated or attempted — `CLAUDE.md` § *"Add it to the end of the
-  queue" means WRITE IT DOWN AND STOP* governs.
 
 - **Review `build-from-diff`.** Emma, 2026-09-05, on it being wired into `pipeline.yml`
   *"tolerantly, since it needs a diff to read and may have nothing to do"*: *"Put a review of
