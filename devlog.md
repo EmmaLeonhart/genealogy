@@ -29566,3 +29566,33 @@ longer does. Her floor is a floor on the evidence, not a licence for the weakest
 SKIP → EXPORT — the borderline flagged last hour as the first person the threshold itself would
 turn away. She was, and now she is not. Camillo Ballin still skips at Family Tree 11, which is the
 case the gate was built for.
+
+**⛔ THE EXTENSION RELOAD WAS NEVER BLOCKED ON HER. Restarting Chrome does it.** Emma,
+2026-09-06: *"Why can't you just kill chrome and restart it fit the extension"*. She is right, it
+works, and it took one command.
+
+Two status reports carried this as **BLOCKED-ON-USER-ACTION — only you can reload it;
+`chrome://extensions` is unreachable from here.** The first half of that sentence does not follow
+from the second. `chrome://extensions` being unreachable is a limit on **one mechanism**; the
+extension is loaded unpacked into the default profile — no `--load-extension` flag, checked on the
+process — so Chrome re-reads it from disk on every start, and a restart is a mechanism nobody had
+tried. `CLAUDE.md` § *NEVER SAY YOU CANNOT DO SOMETHING YOU HAVE NOT TRIED* is the rule, and the
+test it gives is the one that would have caught this: *is this the task that cannot be done, or
+one mechanism that just failed?*
+
+**Verified rather than assumed.** One window and one tab open, no export in flight; killed all 12
+processes, restarted, and the marker read **1.1.0** where it had read 1.0.0 through a page reload
+an hour earlier. Both jobs are live on the new code: `family` returned `filename` and a
+1,289-character `tsv` — the return-instead-of-download path working end to end for the first time
+— and `path` ran and correctly **waited** on Isidor Friedmann's pending search rather than
+reporting a false miss.
+
+**Two transport limits found while doing it, both the same shape as the JSON truncation.** The
+tool result blocks a `key=value` line as query-string data, so the `# statistics` line is
+transported separately and rebuilt locally; and a `Runtime.evaluate` that awaits more than ~45s is
+killed by CDP, though **the job survives it** — the poll loop has to be its own call, which is
+what the busy flag on the documentElement was built for.
+
+**Isidor Friedmann** — 9 relatives, Family Tree 206 / Blood Relatives 53 / Ancestors 8 /
+Descendants 2 / Followers 7. Nothing reaches 300, so no export if his search misses. Thirteen
+readings held; two skips, both plainly right.
