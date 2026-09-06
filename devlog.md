@@ -29714,3 +29714,41 @@ Recorded rather than fixed, and deliberately: the anchor is the pushpin, the pus
 is set exactly once, and the collector reads it and never sets it —
 `test_the_pushpin_is_never_toggled` fails any line that would. Whether the anchor is still set,
 and whether the pilot proceeds Emma-anchored or waits, is **NEEDS-DECISION, hers**.
+
+## The batch's ledger guard was missing a fourth carve-out, and it fails on a ROLLING WINDOW
+
+CI failed on `4db8dad3` with two tests neither of which is the four fixed an hour earlier — the
+failure sets are disjoint, so the inventory regeneration and the hold repin did land.
+
+**`test_every_explicit_subject_already_exists` — the real one.** The batch opens with a block
+whose own header reads *"HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet"*,
+emitting ten a run out of `reports/manual-identifications.csv`. Every one of those statements is
+*adding a Geni id to an item that does not have one* — so the subject **cannot** be in the ledger,
+which is built from `P2600` holders and her contributions. The guard was asking those lines to
+satisfy a condition the line itself creates.
+
+**Three carve-outs already existed for exactly this and each says so** — the spine block, the CJK
+clan block, and `_emma_confirmed_qids` off `emma-judgments.tsv`, whose docstring reads *"outside
+the ledger only because the `P2600` pairing is not on Wikidata yet — and adding it is exactly what
+the statement does."* The fourth source was simply never added.
+
+**⛔ WHY IT SURFACED TODAY ON AN OLD BLOCK: it is a ROLLING WINDOW, and that is the tell.** The
+file holds 314 rows and **250 of those QIDs are already ledger members**, so the ten the block
+picks are usually covered by accident. The five CI failed on at 11:20 and the ten in the batch an
+hour later are **disjoint** — the offenders change every rebuild. A test that fails on a rotating
+subset is not a test that started failing; it is a hole that was usually missed.
+
+**Measured on the real batch: 99 Q-subjects, 10 outside the ledger before, 0 after.** The
+carve-out is filtered on `verdict in (SAME, RIGHT)` — all 314 rows currently qualify, and
+`rejected-parents` turns out to be a batch *name* rather than a rejection, all 24 of its rows
+reading `SAME`. A `DIFFERENT` row added later stays outside the set and the guard still bites,
+which is why this reads the file rather than pattern-matching the QIDs. **Nothing was loosened:**
+one named, file-derived source was added beside three of the same kind.
+
+**The second failure was TRANSIENT and is recorded rather than fixed.**
+`test_a_label_language_the_item_already_has_is_not_emitted_again` failed on `Q3143008` `zh`; that
+item is no longer in the batch at all, and the assertion is clean on the current file. It is the
+same rolling-window mechanism, so it will return. Worth knowing when it does: the guard reads
+`reports/garborg-live-state.tsv`, which holds **14 rows** — so it can only catch an overwrite on
+fourteen items, and a clean run says very little. Not widened here; that is a measurement about
+which items the batch touches, not a fix to make in passing.

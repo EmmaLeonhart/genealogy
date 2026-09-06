@@ -276,6 +276,43 @@ def _emma_confirmed_qids():
     return out
 
 
+def _manual_identification_qids():
+    """Her hand-recorded identifications — the FOURTH carve-out, and the one that was missing.
+
+    **Same category as `_emma_confirmed_qids`, different file, and the block that emits them says
+    so in its own header:** *"HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it
+    yet."* An item receiving its first `P2600` cannot be in the ledger, because the ledger is
+    built from `P2600` holders and her contributions — so the guard was asking these statements
+    to satisfy a condition the statement itself creates.
+
+    **Why it surfaced only on 2026-09-06 when the block is old.** `build-garborg-day` emits
+    **ten a run** off a 314-row file, and 250 of those QIDs are already ledger members. So the
+    ten it picks are usually covered by accident, and the test fails only when the window lands
+    on ten that are not. The five QIDs CI failed on at 11:20 and the ten in the batch an hour
+    later are **disjoint sets** — which is the tell that this is a rolling window rather than a
+    defect that appeared.
+
+    **Filtered on the verdict, so it cannot quietly become a licence.** All 314 rows currently
+    read `SAME` or `RIGHT` — `rejected-parents` is a batch *name*, not a rejection, and every one
+    of its 24 rows is `SAME`. If a `DIFFERENT` row is ever added, it stays outside this set and
+    the guard bites on it, which is the whole point of reading the file rather than pattern-
+    matching the QIDs.
+
+    **⛔ This file is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES** — `CLAUDE.md` names the
+    vague title as the thing later agents abuse. It is used here for exactly what it records, a
+    Geni id against a QID, and for nothing else.
+    """
+    path = REPO / "reports" / "manual-identifications.csv"
+    if not path.exists():
+        return set()
+    out = set()
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            if row.get("verdict") in ("SAME", "RIGHT") and (row.get("qid") or "").startswith("Q"):
+                out.add(row["qid"])
+    return out
+
+
 def test_every_explicit_subject_already_exists():
     """A statement on `Q…` edits an existing item; on `LAST` it edits the new one.
 
@@ -286,7 +323,8 @@ def test_every_explicit_subject_already_exists():
     thing the block fixes. When the block is deleted this set goes with it, and if it is ever
     emptied the assertion tightens back to what it always was.
     """
-    known = known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids() | _emma_confirmed_qids()
+    known = (known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids()
+             | _emma_confirmed_qids() | _manual_identification_qids())
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"
