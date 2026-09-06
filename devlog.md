@@ -28839,3 +28839,40 @@ about.
 
 Two of the nine carry `SIBLING_CAP`, doubled this evening, and so pace nothing today:
 `build-missing-reciprocals.py` and `build-from-diff.py`.
+
+## 2026-09-05 — the reciprocals and regnal ordinals were never folded in, and she thought they were
+
+Going over the nine unscheduled `.qs` generators one by one, her answer to two of them was
+*"Uhh I thought it already was folded in lol"*, and to the other two *"both are highly important
+but I'm not sure where either one runs and the fact they are standalone is worrying"*.
+
+They were not folded in. `reports/qs-batch-audit.md` had already measured the general form of
+this: **0 of 27 `.qs` files are produced by anything the pipeline runs.**
+
+**Whether they were merely duplicates was settled by running them, not by reading them.** The
+live daily batch does emit these *kinds* of statement, which is why it looked folded in:
+
+    live daily batch          39 P40 · 16 P26 · 7 P3373 · 0 P7338 · 696 lines total
+    build-missing-reciprocals 1,247 P40 · 1,172 P26 · 20 P3373, and 2,656 siblings HELD
+    build-regnal-ordinals     6 P7338
+
+So the kind is covered and the population is not, by two orders of magnitude — and `P7338`
+*regnal ordinal* is not covered at all, though she asked for ordinals on names as qualifiers and
+*"not only the Samaritans"*.
+
+`pipeline.yml` now runs all three after the compose step. `build-from-diff.py` rides along
+tolerantly, since it needs a diff to read and may have nothing to do.
+
+**The caps are hers and were left exactly as designed.** `P22`/`P25`/`P40`/`P26` are uncapped on
+purpose — *"they are few per person and each one is structurally load-bearing"* — while `P3373`
+stays under `SIBLING_CAP`, now 20, which is what the held file exists for. Folding these in is
+what finally makes that cap pace something: it had been slicing a batch nothing generated.
+
+`continue-on-error`, for the reason the adjudication deck has it: the Garborg batch is the
+deliverable and must not be lost to a failure in something riding along.
+
+**Three of the nine are still undecided and she does not recognise them** — *"Uhh what the fuck
+are these"*: `build-qid-link-p2600` (the 354-statement file `CLAUDE.md` records her objecting to
+by name), `build-label-corrections` (whose job the daily batch's own `Lmul`/`Amul` emission
+appears to cover), and `build-sibling-batch` (which calls itself a one-off and deliberately
+ignores `SIBLING_CAP`). Nothing done to them.

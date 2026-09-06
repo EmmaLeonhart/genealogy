@@ -146,6 +146,37 @@ jobs:
           kill $SAMPLER 2>/dev/null || true
           exit $STATUS
 
+      # ⛔ **THE OTHER TWO GENERATORS THE BATCH NEEDS, which nothing ran until 2026-09-05.**
+      #
+      # Emma, shown that both were standalone: *"Uhh I thought it already was folded in lol"* and
+      # *"both are highly important but I'm not sure where either one runs and the fact they are
+      # standalone is worrying"*. They were not folded in, and the audit found the reason is
+      # general: `reports/qs-batch-audit.md` measured **0 of 27** `.qs` files as produced by
+      # anything this pipeline runs.
+      #
+      # Neither is duplicative, measured by running them fresh rather than by reading them:
+      #
+      #   build-missing-reciprocals   1,247 P40 + 1,172 P26 + 20 P3373, and 2,656 siblings held
+      #                               over the cap -- against 39 P40 and 16 P26 in the live batch
+      #   build-regnal-ordinals       6 P7338, against ZERO in the live batch
+      #
+      # P22/P25/P40/P26 are uncapped on purpose -- `CLAUDE.md`: *"they are few per person and
+      # each one is structurally load-bearing"* -- while `P3373` stays under `SIBLING_CAP`, which
+      # is what the held file is for. So folding these in respects the pacing she designed rather
+      # than working around it.
+      #
+      # `continue-on-error` for the same reason the deck has it: the Garborg batch is the
+      # deliverable and must not be lost to a failure in a batch that rides along.
+      - name: Build the reciprocal and regnal-ordinal batches
+        continue-on-error: true
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: |
+          python scripts/build-missing-reciprocals.py
+          python scripts/build-regnal-ordinals.py
+          python scripts/build-from-diff.py || echo "from-diff skipped: needs a diff to read"
+
       # **The adjudication deck, regenerated every run.** Emma, 2026-09-01: *"I told you to
       # regenerate the html every time with the pipeline."* Until now it refreshed only when
       # somebody ran `refresh-drift.py` by hand, so it rendered 0 cards while 709 candidates
