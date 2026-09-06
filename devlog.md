@@ -28970,3 +28970,27 @@ labelled parent block, the statistics sentinel, "five `INDI` records", "label co
 wired in", "184 correspondences reach nothing". Every one was resolved by measuring the artifact
 rather than reading about it, and in three of them the wrong reading had already been written
 down somewhere authoritative.
+
+## 2026-09-05 — the model, in her words: TWO disjoint correspondences, and their overlap is 0
+
+*"There are supposed to be two disjoint or nearly disjoint QID, geni id correspondences. With one
+of them being involved with my active entity resolution that I have been doing using artifacts —
+that is to say Claude artifacts, not GitHub artifacts... And another was built for the purpose of
+acting as an entity resolution and later access point thing for Jan 1."*
+
+    1  reports/manual-identifications.csv        her artifact-adjudicated resolution   314
+    2  exports/post-merge/wikidata-qid-links.ged resolution + access point for Jan 1    29
+       overlap                                                                          0
+
+Exactly disjoint, not approximately. And both halves of the second file's job are wired: the
+resolution half is the GEDCOM itself, which is corpus and reaches the tree through the merge, and
+the access-point half is `reports/entry-point-groups.tsv`, where `special-geni-gedcom-recognition`
+names that file as its source with **`active_from = 2027-01-01`**.
+
+**`bio-qids.tsv` is not one of the two.** Listing it beside them was the error the earlier page
+was written under: it is not a resolution she made but a machine extract of QID links already in
+Geni About Me text, read by the roster scripts. `reports/correspondence-sources.md` now leads
+with the two-file model and says so.
+
+So the whole line of enquiry ends where she guessed it would: built correctly, documented badly,
+and the documentation is now the thing that changed.

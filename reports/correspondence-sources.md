@@ -4,8 +4,37 @@
 be conflating two different entity resolution files with different functions — one gedcom and one
 that operates within manual identifications I made using an html artifact."*
 
-Measured rather than reasoned about. They are **three** sources, not two, and they are **almost
-entirely disjoint**.
+## ⛔ THERE ARE SUPPOSED TO BE **TWO**, AND THERE ARE. Her words, 2026-09-05
+
+> *"there are supposed to be two disjoint or nearly disjoint QID, geni id correspondences. With
+> one of them being involved with my active entity resolution that I have been doing using
+> artifacts — that is to say Claude artifacts, not GitHub artifacts, which are effectively
+> inaccessible and against our policy to use. And another was built for the purpose of acting as
+> an entity resolution and later access point thing for Jan 1."*
+
+| | file | what it is |
+| --- | --- | --- |
+| **1** | `reports/manual-identifications.csv` | her **active entity resolution**, adjudicated in a **Claude artifact**. 204 of its 314 rows carry `batch = emma-pasted-verdicts`, pasted out of that artifact, plus 46 from the parent deck |
+| **2** | `exports/post-merge/wikidata-qid-links.ged` | entity resolution **and a later access point for 2027-01-01** |
+
+**Measured: their overlap is 0.** The disjointness she describes is not approximate here, it is
+exact.
+
+**Both halves of file 2's job are wired.** The resolution half is the GEDCOM itself, which is
+corpus and so reaches the tree through the merge. The access-point half is
+`reports/entry-point-groups.tsv`, where `special-geni-gedcom-recognition` names that file as its
+source with **`active_from = 2027-01-01`** — so it switches on by date, with no cron to die and
+nothing to remember. `CLAUDE.md` § *Entry points DRIP IN on a date* is the mechanism.
+
+**`bio-qids.tsv` is NOT one of the two**, and putting it in the same table as them was the
+error this page was written under. It is not a resolution she made: it is a machine extract by
+`extract-bio-qids.py` of QID links already sitting in Geni **About Me** text, read by the roster
+scripts. A derived reading of the corpus, not an act of entity resolution.
+
+---
+
+Measured rather than reasoned about. The three files below are **almost entirely disjoint**, and
+the section above says which two of them are the intended pair.
 
 | source | pairs | origin | read by the daily batch? |
 | --- | ---: | --- | --- |
