@@ -29477,3 +29477,27 @@ connected through in-laws, and the blood-relative gate I first wrote would have 
 one export that could reach her. Over the eight readings we hold, Ballin is the only skip.
 
 The `downloads` permission went with the mechanism — the extension no longer needs it.
+
+**Phase 1 running: three targets collected, and the `family_tree` correction is already load-bearing.**
+Camillo Ballin, Rudolf Beck, Jakob Bettmann — family scraped and banked, statistics recorded,
+path state recorded three-valued (`yes`/`no`/blank-while-running) so a pending search is never
+folded into the miss column.
+
+| | family tree | blood rel | path | gate |
+| --- | ---: | ---: | --- | --- |
+| Camillo Ballin | 11 | 10 | **no path found** | **SKIP** — her ruling, and the only skip so far |
+| Rudolf Beck | 2,249 | 15,000 *(saturated)* | pending | export if it misses |
+| Jakob Bettmann | 1,655 | **8** | pending | export if it misses — **cleared by `family_tree` alone** |
+
+**Bettmann is the second Dorothy Jeakins.** Family Tree 1,655 against Blood Relatives 8 — a man
+connected almost entirely through in-laws. The blood-relative gate I wrote first would have
+skipped both of them, which is exactly what her *"why the fuck did you choose blood relatives"*
+caught. Two of the four readings taken since would have been thrown away.
+
+**Fetch-parsing was tried and does not work**, which is worth recording so it is not retried:
+Geni renders the immediate-family block and the statistics client-side, so a same-origin
+`fetch()` of a profile returns 82 KB carrying neither. The page has to actually load, which also
+keeps the pace at the one-a-minute the pilot asks for.
+
+`scripts/write-family-scrape.py` takes the collector's returned scrape and writes both the
+`geni-families/` TSV and the `reports/isolates.csv` row in one pass, so the two cannot drift.
