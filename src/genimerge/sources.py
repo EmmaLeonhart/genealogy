@@ -98,18 +98,18 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #: its sex coverage read as a corpus statistic. So the fix remains a name for the distinction
 #: rather than a looser assertion: `find_exports` returns these (the merge wants them),
 #: `geni_exports` excludes them (corpus-shape checks want only real ones).
-#: ⛔ THERE ARE SEVERAL DERIVED DIRECTORIES NOW, and a single one was silently wrong.
-#: `DERIVED_DIR` named one directory; the tiny GEDCOMs landed in two others, so on 2026-09-06
-#: `geni_exports()` returned **1,309 files against `find_exports()`'s 1,309** -- 708 generated
-#: files counted as things Geni handed back. That is the exact failure the distinction exists to
-#: prevent: a generated file measured against `GENI_EXPORT_CAP`, or its sex coverage read as a
-#: corpus statistic. `DERIVED_DIR` stays as the historical name; `DERIVED_DIRS` is the set every
-#: caller should use.
-DERIVED_DIRS = (
-    EXPORTS_DIR / "tiny-profiles",   # one .ged per scraped profile
-    EXPORTS_DIR / "tiny-paths",      # one .ged per relationship path
-    EXPORTS_DIR / "0-scraped",       # the earlier aggregate pair, still in the merge
-)
+#: **The tiny GEDCOMs are NOT in here, and that is deliberate.** Emma, 2026-09-06:
+#: *"these are real gedcoms to go into the synoptic tree just tiny ones."* One `.ged` per scraped
+#: profile or per path is corpus in the ordinary way -- three to twenty people, a `NAME` and an
+#: `RFN` each, exactly the shape a Geni export has. Excluding them was a category I invented; a
+#: three-person file trips none of the checks this set exists for.
+#:
+#: What it exists for is one specific thing: `exports/0-scraped/` holds two AGGREGATE files, and
+#: `scraped-pages.ged` carries **14,121 individuals against `GENI_EXPORT_CAP = 5000`**. That
+#: constant means *the largest export Geni has ever returned*, so a generated file must not be
+#: measured against it. Same for its sex coverage, which is 2,284 of 12,463 because only the
+#: placeholders carry one.
+DERIVED_DIRS = (EXPORTS_DIR / "0-scraped",)
 DERIVED_DIR = DERIVED_DIRS[0]
 
 

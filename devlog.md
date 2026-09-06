@@ -30381,3 +30381,13 @@ sex coverage read as a corpus statistic. `DERIVED_DIRS` now names all three and 
 against 603 today, and *"nothing starts before 1 September"* against a date that has passed. A
 table at the top gives the measured values; the 780 lines below are left as the audit they were,
 with item 3c the one current entry.
+
+**Reverted: the tiny GEDCOMs are corpus, not a category.** Emma: *"these are real gedcoms to go
+into the synoptic tree just tiny ones."* I had added `tiny-profiles/` and `tiny-paths/` to the
+derived-directory exclusion an hour after writing them, on the reasoning that a generated file
+must not be measured as a Geni export. That reasoning applies to the **aggregates** — 
+`scraped-pages.ged` is 14,121 individuals against a `GENI_EXPORT_CAP` of 5,000 — and not to a
+three-person file, which trips none of the checks the exclusion exists for.
+
+`DERIVED_DIRS` is back to the one directory that needs it. 1,309 files read by the merge, 1,307
+counted as exports, 2 aggregates excluded.
