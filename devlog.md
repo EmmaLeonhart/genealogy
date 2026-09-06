@@ -30649,3 +30649,34 @@ loop is the thing that gets blocked. Geni served an Incapsula CAPTCHA earlier to
 forty rapid loads.
 
 One thing genuinely missing rather than misplaced: **no export-target ledger exists.**
+
+## The run loop is one job now — `{job:"individual"}`
+
+Her spec, built: `geni-extension/content/individual.js`. The agent lands on the profile and calls
+one job; **every decision after that is the extension's**, which is what *"there's no discretion on
+your part at all"* means in code.
+
+    family (always, first)  ->  request path  ->  wait on the page  ->
+      resolved with a chain   : both artifacts, nothing more spent
+      still running / unasked : deferred, revisited -- a decayed search is not a miss
+      resolved with nothing   : the gate reads the statistics
+                                  below 300 -> stop
+                                  at or above -> walk the tree, add one ancestor, Forest export
+
+**What it replaces is me.** Every step already existed — `runFamily`, `runPath`, `runSeed`,
+`runExport` — and I dispatched them one at a time, reasoning about each result between calls. The
+threshold in particular lived in `scripts/export_gate.py` and I applied it in prose, per person.
+That reasoning was the discretion; it is now one rule, `GC.individual.gate`, applied identically.
+
+**Verified running rather than claimed:** version 1.6.0 loaded, and on Leopold Stiefel
+`6000000001826339630` the job completed the `family` step and moved itself to `path` with no
+instruction from me. The `steps` array and a `data-geni-collector-step` attribute make the
+sequence observable from outside while it runs.
+
+**The live-site writes are behind `job.create`.** Creating a person and spending an export are the
+two irreversible steps; they run when the caller asks, so the first one can be watched before
+2,527 are not. That is a start condition, not a judgement about any individual — the gate itself
+is unconditional.
+
+**And Hilde Kann was my test person**, which is why that profile kept being opened: a known-good
+page for checking the extension itself. Real targets from here.

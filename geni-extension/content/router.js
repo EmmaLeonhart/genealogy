@@ -21,6 +21,7 @@
   try {
     result = job.job === "export" ? await GC.runExport(job)
            : job.job === "seed" ? await GC.runSeed(job)
+           : job.job === "individual" ? await GC.runIndividual(job)
            : job.job === "family" ? await GC.runFamily(job)
            : await GC.runPath(job);
   } catch (e) {
@@ -66,6 +67,7 @@ document.addEventListener("geni-collector-run", async () => {
   try {
     result = job.job === "export" ? await GC.runExport(job)
            : job.job === "seed" ? await GC.runSeed(job)
+           : job.job === "individual" ? await GC.runIndividual(job)
            : job.job === "family" ? await GC.runFamily(job)
            : await GC.runPath(job);
   } catch (e) {
