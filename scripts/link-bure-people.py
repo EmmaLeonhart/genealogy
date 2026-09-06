@@ -73,7 +73,7 @@ MAX_BRIDGE = 4
 #: every statement already exist -- but Emma asked for it anyway, on the reasoning that capped
 #: `P3373` *sibling* at ten a day: volume arriving at once reads as noise on one batch.
 #: Forty is about the size of a day's Garborg batch, so the two look alike to a watcher.
-BURE_PER_DAY = 40
+BURE_PER_DAY = 80
 
 
 def split(cell):

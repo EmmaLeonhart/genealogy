@@ -69,7 +69,7 @@ FATHER, MOTHER, CHILD, SPOUSE, SIBLING = "P22", "P25", "P40", "P26", "P3373"
 #: 257 statements of which **160 were `P3373`** -- 62% siblings -- which is what provoked it.
 #: Sibling links grow as the SQUARE of a family: nine children is 72 statements on its own,
 #: while parents grow linearly. The rest are carried, not dropped.
-SIBLING_CAP = 10
+SIBLING_CAP = 20
 
 
 

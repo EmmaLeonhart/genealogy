@@ -19,7 +19,7 @@ const PUMP_ALARM = "geni-collector-pump";
 
 const DEFAULTS = {
   running: false,
-  concurrency: 6,
+  concurrency: 12,
   staggerMs: 60000,
   waitMs: 600000,
   dryRun: true,

@@ -55,7 +55,7 @@ API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 
 #: Emma's stated cadence, CLAUDE.md-adjacent: 10-100 edits a day. A run may never
 #: exceed the top of that range however it is invoked.
-MAX_EDITS_PER_RUN = 100
+MAX_EDITS_PER_RUN = 200
 
 #: A live run may only execute a batch that is committed and reviewable. Anything
 #: generated on the fly is a dry run at best.

@@ -28766,3 +28766,40 @@ while a row missing from a block that IS present stays a real zero — her rule,
 Verified on the target that produced the bug: **1896 / 18 / 2 / 7 / 0, `read: true`**, with the
 search resolving to `resolved_none` and 0 steps. Those figures are nowhere near the 15,000
 ceiling, so this one reads as genuinely sparse rather than as a query that overflowed.
+
+## 2026-09-05 — every batch size doubled, at her instruction
+
+Emma: *"Please update it to batches double the older size on all things"*.
+
+| constant | file | was | now |
+| --- | --- | ---: | ---: |
+| `SIBLING_CAP` | `build-from-diff`, `build-garborg-day`, `build-missing-reciprocals` | 10 | **20** |
+| `LABEL_EDIT_CAP` | `build-garborg-day` | 15 | **30** |
+| `CHILDREN_PER_RUN` | `build-garborg-day` | 10 | **20** |
+| `PARENTS_PER_RUN` | `build-garborg-day` | 10 | **20** |
+| `NAME_ITEMS_PER_RUN_HELD` | `build-garborg-name-items` | 3 | **6** |
+| `NAME_ITEMS_PER_RUN_NORMAL` | `build-garborg-name-items` | 10 | **20** |
+| `BURE_PER_DAY` | `link-bure-people` | 40 | **80** |
+| `MAX_EDITS_PER_RUN` | `wikidata-edit-run` | 100 | **200** |
+| `PER_CLUSTER` | `find-export-entry-points` | 3 | **6** |
+| collector `concurrency` | `geni-extension` | 6 | **12** (panel max 24 → 48) |
+
+**`SIBLING_CAP` is one of her own written rulings and `CLAUDE.md` said "10 a day" in five
+places**, so the file has been updated rather than left contradicting the code. Her 2026-08-25
+reasoning for having a cap at all — sibling links grow as the square of a family's size, so one
+family of nine children is 72 `P3373` statements and a batch that looks balanced by people is
+overwhelmingly siblings by statement — is unchanged and still the point. Only the number moved.
+
+**Three things were deliberately NOT doubled, and the distinction is what "batch size" means
+here:**
+
+- **`EXPORT_CONCURRENCY` stays 1.** It is not a batch size we choose. Emma, 2026-08-18:
+  *"There's no way that you can do an export concurrently. That isn't my decision thats geni."*
+  Doubling it would encode a fiction and produce a control that cannot work.
+- **The collector's `staggerMs` (60s) and `waitMs` (10 min) are unchanged.** A stagger is a
+  rate and a wait is a timeout; doubling the stagger would make the run *slower*, which is the
+  opposite of the instruction.
+- **`MAX_HOPS`, `MAX_BRIDGE`, `MAX_LIFESPAN`, `MAX_VALUE_LEN`, `MAX_AGE_HOURS`, `PER_SHARD`,
+  `ROUND_CAP`/`MAX_ROUNDS`** are search depths, validity bounds, file-sharding and round counts.
+  None is "how many things go out per run", and doubling `MAX_LIFESPAN` to 240 years would just
+  break a consistency check.

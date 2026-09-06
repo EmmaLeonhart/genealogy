@@ -107,8 +107,8 @@ GIVEN_NAME_CLASS = "Q202444"      # given name
 #: same date rather than needing to be remembered -- the same reasoning as `held_items()` in
 #: `build-garborg-day.py`, and for the same reason: a limit that must be remembered to be
 #: lifted is a limit that never lifts.
-NAME_ITEMS_PER_RUN_HELD = 3
-NAME_ITEMS_PER_RUN_NORMAL = 10
+NAME_ITEMS_PER_RUN_HELD = 6
+NAME_ITEMS_PER_RUN_NORMAL = 20
 
 #: Kept in step with `build-garborg-day.OBENDER_HOLD_EXPIRES`; `tests/test_obender_hold.py`
 #: fails if the two dates drift apart.

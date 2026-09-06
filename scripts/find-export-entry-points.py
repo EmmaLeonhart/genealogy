@@ -64,7 +64,7 @@ COVERED = 2
 MIN_SIZE = 25
 
 #: Candidates recorded per cluster, and clusters carried into the URL list.
-PER_CLUSTER = 3
+PER_CLUSTER = 6
 TOP_CLUSTERS = 20
 
 def is_redacted(name: str) -> bool:

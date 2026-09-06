@@ -77,7 +77,7 @@ ROOT = Path(__file__).resolve().parent.parent
 #: balanced by people is mostly sibling links by statement. The cap is per DAY across every
 #: batch, so it is shared with `build-missing-reciprocals.py`, and the overflow is carried
 #: rather than dropped: the statements are correct, there are just too many at once.
-SIBLING_CAP = 10
+SIBLING_CAP = 20
 _siblings_emitted = []
 
 SEX = {"M": "Q6581097", "F": "Q6581072"}
@@ -801,7 +801,7 @@ def _label_corrections(our_items, labels, table, state):
 #: **A label at CREATION time is not capped and is not counted.** Her distinction, same message:
 #: *"a label added after item creation is a risk and a label added during item creation is good."*
 #: So this counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
-LABEL_EDIT_CAP = 15
+LABEL_EDIT_CAP = 30
 
 
 #: **The order label edits go out in, by LANGUAGE. Emma, 2026-09-04:**
@@ -1615,8 +1615,8 @@ NEVER_TOUCH_GENI = set(KITAJIMA_GENI) if datetime.date.today() < KITAJIMA_HOLD_E
 NEVER_TOUCH_QID = set(KITAJIMA_QID) if datetime.date.today() < KITAJIMA_HOLD_EXPIRES else set()
 
 
-CHILDREN_PER_RUN = 10
-PARENTS_PER_RUN = 10
+CHILDREN_PER_RUN = 20
+PARENTS_PER_RUN = 20
 
 #: **Free parents, and they do not count against `PARENTS_PER_RUN`.** Her rolling rule:
 #: *"if a child is present and it appears like they have a single mother or single father,
