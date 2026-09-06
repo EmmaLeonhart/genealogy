@@ -81,6 +81,16 @@ segments only exist after the click. A capture taken before it saves a page with
 — the same shape as § *Wait for `#family_profile_module` before saving* in
 `geni-scraping/README.md`, and it would look like a miss rather than an error.
 
+⛔ **SUPERSEDED ON THE SAVE, 2026-09-06.** Emma: *"we are not supposed to be saving pages lol
+... Only the exports need downloading because you write stuff into files in the repo you dummy."*
+Everything below about navigating, waiting and clicking *"Show short path"* is still exactly
+right and is still what the collector's `path` job does. What changed is the last step: the page
+is **not** Blob-downloaded. The chain is parsed in the tab, where the markup is, and the job
+RETURNS the finished path TSV on its result attribute for the agent to write into `paths/`.
+
+The six `*.html` files in this directory are what the page-saving method left behind. They stay
+as the record of those six captures; nothing new lands here.
+
 So the fetch is, per target:
 
     navigate  https://www.geni.com/people/x/<geni id>

@@ -21,12 +21,24 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
 - **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt` — **100
   profile URLs**, one per target, and `reports/isolate-path-pilot-queue.txt` is the same list in
   the collector's input format. Then `python scripts/harvest-isolate-paths.py --write-paths` for
-  the hit rate. **5 of 100 captured so far.**
+  the hit rate. **9 of 100 touched** — 6 with a saved path capture, 3 with a family scrape.
 
-  **Both `blood` and `inlaw` are still wanted — her call, 2026-09-02** — but they are two
-  captures from the one profile page, not two fetches: blood against in-law is a control on the
-  page, not a URL parameter. They file as `geni-paths/<geni id>-<kind>.html`, which is what the
-  harvester looks for. One a minute, no concurrency, bail on anything odd.
+  **⛔ EACH TARGET GETS THE PER-INDIVIDUAL LOOP, and step 1 is the family scrape.**
+  `docs/per-individual-loop.md`: scrape and save the immediate family first, unconditionally,
+  then try the Charlemagne path, and only run step 3b where the path fails **and**
+  `scripts/export_gate.py` clears the statistics. Ballin is the worked skip — Family Tree 11.
+
+  **NOTHING IS SAVED AS A PAGE ANY MORE.** Emma, 2026-09-06: *"we are not supposed to be saving
+  pages lol ... Only the exports need downloading because you write stuff into files in the repo
+  you dummy."* The collector parses the chain in the tab and RETURNS the path TSV, which is
+  written straight into `paths/`; the family scrape returns its TSV for `geni-families/`. The six
+  `geni-paths/*.html` captures are what the earlier page-saving method left and stay as those, not
+  as a destination. `geni-paths/README.md` § *THE CALL THAT WORKS* still describes the Blob save
+  and is superseded on that point.
+
+  **Both `blood` and `inlaw` are still wanted — her call, 2026-09-02** — and they are two captures
+  from the one profile page, not two fetches: blood against in-law is a control on the page, not a
+  URL parameter. One a minute, no concurrency, bail on anything odd.
 
   ⛔ **This item said "200 URLs, both `blood` and `inlaw` per target" until 2026-09-05 and that
   method is refuted.** The `/path/x?from=&path_type=&to=` form ignores `to=`: it redirects to

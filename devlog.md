@@ -29501,3 +29501,16 @@ keeps the pace at the one-a-minute the pilot asks for.
 
 `scripts/write-family-scrape.py` takes the collector's returned scrape and writes both the
 `geni-families/` TSV and the `reports/isolates.csv` row in one pass, so the two cannot drift.
+
+**Sweep: nothing in `queue.md` had completed, and two stale facts inside a live item were
+corrected instead.** Checked each of the seven against the repo rather than assumed —
+`addAncestor`'s termination is still unexercised (no walk has reached a creation), the phase order
+is a governing rule with no done state, the parent-adding campaign is gated by her placement,
+`build-from-diff` and the correspondence-GEDCOM experiment are both untouched at the tail, and the
+tail export section is hers. Nothing removed.
+
+The pilot item said **5 of 100 captured**; it is **9 of 100 touched** — 6 path captures, 3 family
+scrapes. And it told the next session to file captures as `geni-paths/<id>-<kind>.html`, which her
+ruling tonight retires: the collector returns the parsed TSV and the agent writes `paths/`.
+`geni-paths/README.md` is marked superseded on that one step — the navigate/wait/click sequence it
+records is still exactly right and is still what the `path` job does; only the Blob save is gone.
