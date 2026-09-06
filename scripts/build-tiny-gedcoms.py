@@ -196,7 +196,7 @@ def read_path_tsv(path):
     return rows
 
 
-def path_gedcom(name, rows):
+def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path"):
     """Consecutive rows are one family edge; a sibling hop is a CHIL-only family."""
     if len(rows) < 2:
         return None
@@ -226,8 +226,7 @@ def path_gedcom(name, rows):
             fams.append({"chil": [prev["gid"], cur["gid"]]})
     if not fams:
         return None
-    return render("path %s" % name, people, {}, fams,
-                  "one tiny GEDCOM per Geni relationship path")
+    return render("path %s" % name, people, {}, fams, source)
 
 
 # ---------------------------------------------------------------- saved pages
@@ -323,6 +322,32 @@ def main():
             out_path.write_text(text, encoding="utf-8")
             n_pages += 1
 
+    # ⛔ THE SAME PAGE YIELDS BOTH, INTO DIFFERENT DIRECTORIES. Emma, 2026-09-06:
+    # *"Path gedcoms and individual ones are different files in different directories even if they
+    # come from the same html page"*, and *"the paths can come from there"*. A saved profile page
+    # carries the relationship panel as well as the immediate-family block, so it produces a
+    # profile GEDCOM above and a path GEDCOM here. `genimerge.genipage.read_relationship_path` is
+    # the same extractor that produced `paths/*.tsv`, so the two readers cannot disagree.
+    from genimerge.genipage import read_relationship_path
+    n_page_paths = 0
+    for p in sorted((ROOT / "geni-scraping").glob("*.html")):
+        if not p.stem.isdigit():
+            continue
+        out_path = PATH_OUT / ("saved-%s.ged" % p.stem)
+        if out_path.exists():
+            continue
+        try:
+            links = read_relationship_path(p)
+        except Exception:
+            continue
+        rows = [{"name": l.name, "rel": (l.relation or "").strip().lower(), "gid": l.geni_id}
+                for l in links if l.geni_id]
+        text = path_gedcom("saved-%s" % p.stem, rows,
+                           "one tiny GEDCOM per relationship path, read off a saved profile page")
+        if text:
+            out_path.write_text(text, encoding="utf-8")
+            n_page_paths += 1
+
     for p in sorted((ROOT / "paths").glob("*.tsv")):
         rows = read_path_tsv(p)
         text = path_gedcom(p.stem, rows)
@@ -332,7 +357,8 @@ def main():
 
     print("profiles: %d from extension scrapes, %d from saved pages (%d unparseable) in %s"
           % (n_prof, n_pages, n_bad, PROFILE_OUT.relative_to(ROOT)))
-    print("paths:    %d tiny gedcoms in %s" % (n_path, PATH_OUT.relative_to(ROOT)))
+    print("paths:    %d from paths/*.tsv, %d from saved pages in %s"
+          % (n_path, n_page_paths, PATH_OUT.relative_to(ROOT)))
     print("invented people: 0 -- an unknown parent is an absent slot")
     return 0
 

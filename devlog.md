@@ -30420,3 +30420,19 @@ a page does not.
 
 The merge now reads **1,309 files**: 1,307 counted as exports and the 2 aggregates excluded, since
 `scraped-pages.ged` at 14,121 individuals must not be measured against a 5,000 cap.
+
+**Paths from the saved pages too.** Her confirmation: *"the paths can come from there"*, and the
+directory split is hers — *"Path gedcoms and individual ones are different files in different
+directories even if they come from the same html page."*
+
+    paths      694 from paths/*.tsv  +  457 from saved pages  = 1,151
+    profiles   1,565
+    59,023 INDI, zero invented
+
+`genimerge.genipage.read_relationship_path` is the same extractor that produced `paths/*.tsv`, so
+the two readers cannot disagree about what a page says. 457 of the 1,555 pages carry a
+relationship panel with a chain on it; the rest have none, which is ordinary — a page is saved for
+its family block as often as for its path.
+
+Both artifacts come off one page and land in different directories, `saved-<id>.ged` in
+`tiny-paths/` beside `<id>.ged` in `tiny-profiles/`.
