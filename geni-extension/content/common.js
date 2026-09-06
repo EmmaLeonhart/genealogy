@@ -92,15 +92,46 @@ GC.relationDescription = function () {
  * 15,000 (or 5,000) is a CEILING, not a count. Her rule: any of these numbers at the cap means
  * the query exceeded its maximum, and is the STRONGEST evidence of world-tree connection there
  * is -- so a "no path found" sitting beside one is a database failure, not a negative result. */
-GC.statistics = function () {
+GC.statistics = async function () {
   const want = ["family tree", "blood relatives", "ancestors", "descendants", "followers"];
-  const out = {};
-  for (const k of want) out[k.replace(/ /g, "_")] = 0;
-  const text = (document.body ? document.body.innerText : "");
+
+  /* ⛔ WAIT FOR THE BLOCK, or every number is a fabricated zero.
+   *
+   * Found 2026-09-05 on the pilot's first target: this returned 0 for all five while the page
+   * plainly read *Family Tree 1,896 / Blood Relatives 18 / Ancestors 2 / Descendants 7*. The
+   * regexes were right -- run again by hand a moment later they matched every one. It was
+   * called too early: the sidebar renders after the relationship box does.
+   *
+   * That is worse than an ordinary bug here, because of the rule it collides with. Emma, on
+   * Dorothy Jeakins: *"ancestors are not mentioned at all because she has no ancestors and geni
+   * is weird and gives zero as not an option there"* -- so a MISSING ROW MEANS ZERO and gets
+   * recorded as 0. An extractor that returns zeros because it ran early is therefore
+   * indistinguishable from a person who genuinely has none, and the zeros go into
+   * `reports/isolates.csv` as measurements. `CLAUDE.md` § *check the separator before believing
+   * a distribution* is the family; the absent-versus-zero confusion is the specific trap.
+   *
+   * So `read` says whether the block was there at all. A row missing from a block that IS
+   * present is a real zero; a block that never appeared is not data. */
+  /* ⛔ THE SENTINEL IS THE NUMBER, NOT THE LABEL. Waiting for the words *Family Tree* returned
+   * true instantly and still read zeros: those words are also a NAVIGATION label on the same
+   * page, so the wait was satisfied by the menu while the statistics block had not rendered.
+   * Exactly the shape of the hidden `path_search_response` template -- a sentinel that is not
+   * the thing it stands for, answering yes for the wrong element. Waiting for a digit after the
+   * label waits for the datum itself. */
+  const seen = () => /family[ ]tree[^0-9]{0,20}[0-9]/i.test(
+    document.body ? document.body.innerText : "");
+  await GC.until(seen, 20000);
+  if (!seen()) return { read: false };
+
+  const out = { read: true };
+  const text = document.body.innerText;
   for (const k of want) {
+    const key = k.replace(/ /g, "_");
     const re = new RegExp(k.replace(/ /g, "[ ]") + "[^0-9]{0,20}([0-9][0-9,]*)", "i");
     const m = text.match(re);
-    if (m) out[k.replace(/ /g, "_")] = parseInt(m[1].replace(/,/g, ""), 10);
+    /* Present block, absent row -> 0, which is her rule. Never blank: a blank later reads as
+     * "we failed to scrape it", which is the confusion this whole comment exists against. */
+    out[key] = m ? parseInt(m[1].replace(/,/g, ""), 10) : 0;
   }
   return out;
 };

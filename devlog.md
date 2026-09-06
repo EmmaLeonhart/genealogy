@@ -28732,3 +28732,37 @@ for the least documented lineages — *"mothers are most likely to be not record
 followed by maternal grandparents and so on"* — and the father is created preferentially because
 the evidence is better there, patronymic or suggestion. And that this is deliberately greedy
 best-first rather than the older method's read of a whole displayed tree.
+
+## 2026-09-05 — the statistics block read zeros for everything, twice, for two different reasons
+
+The pilot's first target through the extension returned `family_tree 0, blood_relatives 0,
+ancestors 0, descendants 0` while the page plainly read **Family Tree 1,896 / Blood Relatives 18
+/ Ancestors 2 / Descendants 7**.
+
+**This is the worst place in the collector for a silent zero.** Emma's rule, on Dorothy Jeakins:
+*"ancestors are not mentioned at all because she has no ancestors and geni is weird and gives
+zero as not an option there"* — so a **missing row means zero** and is recorded as one. An
+extractor returning zeros because it ran early is therefore indistinguishable from a person who
+genuinely has none, and the fabrications go into the record as measurements. And the numbers are
+the instrument the whole campaign turns on: a saturated figure is the strongest evidence of
+world-tree connection there is, which is what made Geni's *no path found* on George Drouillard a
+database failure rather than a result.
+
+**Two bugs, one behind the other.**
+
+1. **Called too early.** The regexes were right — run by hand a moment later they matched every
+   one. The sidebar renders after the relationship box. Fixed by waiting.
+2. **The sentinel was not the thing.** Waiting for the words *Family Tree* returned true
+   instantly and still read zeros, because those words are also a **navigation label** on the
+   same page: the wait was satisfied by the menu while the block had not rendered. The sentinel
+   is now the label *followed by a digit* — the datum itself.
+
+That second one is the hidden `path_search_response` template again in a new costume: a sentinel
+that answers yes for the wrong element. Third instance in two days.
+
+`read` now says whether the block was seen at all, so a block that never appeared is not data,
+while a row missing from a block that IS present stays a real zero — her rule, kept.
+
+Verified on the target that produced the bug: **1896 / 18 / 2 / 7 / 0, `read: true`**, with the
+search resolving to `resolved_none` and 0 steps. Those figures are nowhere near the 15,000
+ceiling, so this one reads as genuinely sparse rather than as a query that overflowed.

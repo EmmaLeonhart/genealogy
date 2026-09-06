@@ -66,7 +66,7 @@ GC.runPath = async function (job) {
   await GC.until(() => GC.pathState().state !== "unknown", 25000);
 
   let st = GC.pathState();
-  const stats = GC.statistics();
+  const stats = await GC.statistics();
 
   /* NOT REQUESTED -> ask. This is the click the whole two-pass campaign turns on, and the
    * button vanishing is the confirmation that it took. */
