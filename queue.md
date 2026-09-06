@@ -58,6 +58,21 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   from the one profile page, not two fetches: blood against in-law is a control on the page, not a
   URL parameter. One a minute, no concurrency, bail on anything odd.
 
+  ⛔ **PASS TWO IS NOT "COME BACK AND READ". A REQUESTED SEARCH DECAYS BACK TO UNREQUESTED** —
+  measured 2026-09-06. Rudolf Beck read *"Path search in progress"* and showed the **"How are you
+  related?"** button again two hours later; Hilde Kann's 2026-09-03 miss reads as unrequested
+  today. So pass two must **re-request wherever it has reverted**, and a revisit that only reads
+  reports a target as untouched forever.
+
+  **Two consequences, both already handled, both worth knowing before changing that code.**
+  `path_state` must never infer a hit from the absence of a miss — Asser de Haan showed the
+  not-requested button and was written down as `path_found=yes`, a connected hit on a search
+  nobody ran, which inflates the one number this campaign produces. A **miss** is stated on the
+  page in words; a **hit** needs a parsed chain with the target on it. And a revisit must never
+  blank an observed verdict: `no`/`yes` are observations, blank means *not seen yet*, and only a
+  stronger observation replaces one. Without that, every revisit across 185,327 targets silently
+  reverts its verdict to pending and the reach rate drifts to zero for a reason nothing records.
+
   ⛔ **This item said "200 URLs, both `blood` and `inlaw` per target" until 2026-09-05 and that
   method is refuted.** The `/path/x?from=&path_type=&to=` form ignores `to=`: it redirects to
   Charlemagne's own profile, which renders a full chain — the *viewer's* — so a harvest keyed on

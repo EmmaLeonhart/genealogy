@@ -29840,3 +29840,23 @@ the sort of workaround that leaves the bug in place for everyone after you.
 Relatives 322. Both clear the floor of 300 and both would have been **skipped under the 1,000**
 she replaced, so *"even any number over 300 lol"* changed a real outcome rather than a threshold
 on paper.
+
+**Sweep: nothing removed, sixth running.** All six live items verified against the repo — five
+creations and none from a scheduler walk, the phase order a rule, the pilot at 16 of 100,
+the parent-adding campaign gated by her, `build-from-diff` with no review and the correspondence
+experiment with no GEDCOM, both at the tail by her placement. No other session has committed in
+five hours.
+
+**What the sweep caught: tonight's decay finding lived only in `devlog.md`.** `queue.md` had no
+mention of it — the pilot item still read as though pass two were *come back and read the answer*.
+That is the plan the finding refutes: a requested search reverts to unrequested, so a read-only
+revisit reports a target untouched forever, and a wholesale row rewrite blanks a verdict already
+observed. The devlog is history; the queue is what gets worked, and an instruction that survives
+only in history is one nobody follows.
+
+Recorded in the item, with both consequences beside it — that `path_state` must never infer a hit
+from the absence of a miss, and that a revisit must never blank an observed verdict. **Her tail
+section was left alone**: its three-state list is her own text at her placement, and it was never
+wrong — it names not-requested as one of the three. What it does not say is that a *running*
+search returns to that state, and that is a fact about Geni discovered tonight rather than a
+correction to her.
