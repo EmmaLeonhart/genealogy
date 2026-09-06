@@ -251,8 +251,68 @@ jobs:
             'and CLAUDE.md says 90% of the time it should not be rebuilt anyway.' \
             > /tmp/msg.txt
           git commit -F /tmp/msg.txt
-          git pull --rebase origin main
-          git push origin HEAD:main
+
+          # THE PIPELINE COLLIDES WITH ITS OWN OUTPUT, and that is what this loop is for.
+          # `actions/checkout` above takes `github.sha` -- the commit that TRIGGERED this
+          # run -- not the tip of `main`. So when two pushes land close together the second
+          # run rebuilds from a base that predates the FIRST run's output commit, and
+          # rebasing its regenerated files onto the first run's regenerated files conflicts
+          # every time. Measured 2026-09-06: runs 199, 200, 202 and 205 all died right here,
+          # and `site` is `needs: pipeline`, so Pages stopped republishing with them.
+          #
+          # Every conflicting path is a GENERATED file, by construction: the commit being
+          # replayed holds only what the rebuild changed, and a conflict needs both sides to
+          # have touched the path. The newest rebuild is the right one -- it ran the ledger
+          # refresh last -- and during a rebase git replays OUR commit onto upstream, so the
+          # version to keep is the confusingly-named `--theirs`.
+          for attempt in 1 2 3 4 5; do
+            if ! git pull --rebase origin main; then
+              unmerged="$(git diff --name-only --diff-filter=U)"
+              if [ -z "$unmerged" ]; then
+                echo "::error::rebase stopped with no conflicted paths -- not guessing"
+                git rebase --abort || true
+                exit 1
+              fi
+              echo "resolving in favour of this run's rebuild:"
+              printf '%s\n' "$unmerged"
+              # `git checkout --theirs` writes the WORKING TREE and leaves the index
+              # unmerged, so the `git add -A` on the next line is what actually resolves
+              # the conflict -- and it also stages a delete/modify conflict correctly,
+              # since the file is simply absent. Reversing these two lines deletes every
+              # conflicted file instead of keeping it, which an earlier draft did.
+              git checkout --theirs -- . 2>/dev/null || true
+              git add -A
+              if git diff --name-only --diff-filter=U | grep -q .; then
+                echo "::error::paths still unmerged after resolution"
+                git rebase --abort || true
+                exit 1
+              fi
+              # A resolution that silently did nothing leaves conflict markers in a tracked
+              # file, and committing THAT is worse than the failure this loop replaces. An
+              # earlier draft did exactly that, because `read -d` is a bashism the loop
+              # above no longer relies on. Refuse rather than push a marker.
+              if git grep -qI -e '^<<<<<<< ' -e '^>>>>>>> ' --cached; then
+                echo "::error::conflict markers survived resolution -- refusing to push"
+                git rebase --abort || true
+                exit 1
+              fi
+              # Resolving can leave the replayed commit identical to upstream, which is not
+              # an error and is not something --continue will accept.
+              if git diff --cached --quiet; then
+                GIT_EDITOR=true git rebase --skip || { git rebase --abort || true; exit 1; }
+              else
+                GIT_EDITOR=true git rebase --continue || { git rebase --abort || true; exit 1; }
+              fi
+            fi
+            if git push origin HEAD:main; then
+              break
+            fi
+            if [ "$attempt" = 5 ]; then
+              echo "::error::push still rejected after 5 attempts"
+              exit 1
+            fi
+            echo "push rejected -- origin moved again mid-rebase; retrying"
+          done
           # AFTER the rebase and push: this is the sha now on main, and the one the site
           # must be built from. Without it the site publishes this commit's parent.
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
