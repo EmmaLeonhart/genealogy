@@ -37,11 +37,13 @@ export is worth spending. A **tiny** figure beside the same sentence means the m
 whole neighbourhood is the handful already on the page, and an export seeded there returns that
 handful. Ballin's would have come back with about eleven people.
 
-**Every figure carries a threshold, not just one.** Her correction, same day, twice: first
-*"why the fuck did you choose blood relatives"* -- `family_tree` is the component size, which is
-what an export can actually reach, and a `Forest` export follows spouse links precisely to cross
-the in-law edges `blood_relatives` excludes -- and then *"All of them need thresholds not just
-blood relatives"*.
+**Every figure carries a threshold, not just one, and `blood_relatives` was never her idea.**
+The question put to her offered four floors all written in blood relatives, so the **number**
+1,000 is hers and the **figure** was mine. Her replies: *"why the fuck did you choose blood
+relatives"*, *"All of them need thresholds not just blood relatives"*, and *"I didn't tell you to
+do blood relatives."* `family_tree` is the component size -- what an export can actually reach --
+and a `Forest` export follows spouse links precisely to cross the in-law edges `blood_relatives`
+excludes.
 
 `scripts/export_gate.py` is the single place. The test is **disjunctive**: any one figure clearing
 its own floor clears the gate, because they measure different things and a person can be evidently

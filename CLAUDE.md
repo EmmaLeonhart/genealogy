@@ -2208,6 +2208,34 @@ offered *"kill and resubmit now"*; Geni has no cancel, so that option was fictio
 think you can kill a geni export read the fucking docs you can't."* An impossible option is worse
 than a missing one, because it invites a decision that cannot be carried out.
 
+### The AXIS is part of the question. Four options on one wrong premise is ONE option
+
+**Emma, 2026-09-06:** *"I didn't tell you to do blood relatives."*
+
+She was asked where the floor should sit for the export gate, and **all four options were written
+in `blood_relatives`** — 5,000, 1,000, 100, saturated-only. She picked 1,000. She then said *"why
+the fuck did you choose blood relatives"*, and *"All of them need thresholds not just blood
+relatives"*, and finally the sentence above, on reading a report that described it as a gate she
+had struck out.
+
+**So the number was hers and the figure was mine, and the write-up credited her with both** —
+*"the blood-relative gate she struck out"* — which turns a mistake of mine into a reversal of
+hers. That is the part worth a rule: **an answer to a question does not endorse the question's
+premise.** A menu that varies only the threshold has already decided what is being thresholded,
+and the deciding is the part she would have wanted.
+
+**`family_tree` was the right figure and the data says so plainly.** It is the component size —
+what an export can actually reach — and a `Forest` export follows spouse links precisely to cross
+the in-law edges `blood_relatives` cannot see. Of the first twelve isolate readings, **three clear
+the gate on `family_tree` alone**: Dorothy Jeakins 1,405/1, Bohumil Eisner 1,576/5, Jakob Bettmann
+1,655/8. A quarter of the population, thrown away by the axis nobody had questioned.
+
+**The check before writing an `AskUserQuestion`:** *do the options differ in more than a number?*
+If every one shares an unstated choice — which field, which store, which population — that choice
+is the question, and it belongs in the options or in a second question. § *She answers
+`AskUserQuestion`* already requires every option to be one she could actually pick; this is the
+other half.
+
 ### If you are not sure what she wants, ASK. `AskUserQuestion`, not a guess
 
 **Emma, 2026-08-29:** *"Add to claude.md that if you aren't sure what I want do

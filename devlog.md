@@ -29526,8 +29526,8 @@ five times over. The collector's compact form is now `@`-prefixed metadata lines
 tab-separated line per relative: a large family fits, and a truncated line is visibly truncated.
 `write-family-scrape.py` takes either.
 
-**⛔ THREE OF THE TWELVE CLEAR THE GATE ON `family_tree` ALONE**, and the blood-relative gate she
-struck out would have thrown away all three:
+**⛔ THREE OF THE TWELVE CLEAR THE GATE ON `family_tree` ALONE**, and the blood-relative gate
+**I** wrote would have thrown away all three:
 
     Dorothy Jeakins    FT  1,405   BR     1
     Bohumil Eisner     FT  1,576   BR     5
@@ -29536,6 +29536,16 @@ struck out would have thrown away all three:
 Each is a person joined to a large tree almost entirely through in-laws — which is exactly what a
 `Forest` export follows and what `blood_relatives` cannot see. Her correction was worth a quarter
 of the population, not an edge case.
+
+**And the write-up above credited her with the choice she was correcting.** She never asked for
+blood relatives: the question I put to her offered four floors and every one of them was written
+in that figure, so 1,000 is the only thing she picked out of it. Her words afterwards: *"I didn't
+tell you to do blood relatives."* Two sentences here read *"the blood-relative gate she struck
+out"*, which makes a mistake of mine look like a reversal of hers. Corrected in place.
+
+`CLAUDE.md` § *She answers `AskUserQuestion`* requires every option to be one she could pick. This
+is the other half of that rule and it was not written down: **the axis is part of the question,
+and offering only one axis chooses it for her.** Four options on one wrong premise is one option.
 
 **One borderline, recorded rather than resolved:** Valentine Eisner reads Family Tree **914**
 against the 1,000 floor, so she skips by 86. Her path search is still pending, so the gate has

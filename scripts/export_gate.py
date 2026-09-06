@@ -4,9 +4,17 @@
 Ancestors 5 -- whose Charlemagne search resolved to a genuine *"No path found"*:
 *"this guy has pretty much no relatives so he shouldn't get an export lol"*.
 
-And, when the gate was first written on Blood Relatives alone:
-*"why the fuck did you choose blood relatives"*, then *"All of them need thresholds not just
-blood relatives"*.
+**⛔ SHE NEVER ASKED FOR BLOOD RELATIVES. That was mine, twice over.** The question put to her
+offered four floors and every one of them was written in `blood_relatives`, so the only thing she
+chose out of it was the **number**, 1,000. Her replies: *"why the fuck did you choose blood
+relatives"*, and then *"All of them need thresholds not just blood relatives"* -- and afterwards,
+reading a report that described it as a gate she had struck out: *"I didn't tell you to do blood
+relatives."*
+
+She is right and the distinction matters for the record: a question whose options share a wrong
+premise does not become her decision because she answered it. `CLAUDE.md` § *She answers
+`AskUserQuestion`* says every option must be one she could actually pick; it needs the other half
+too -- **the axis is part of the question, and offering only one is choosing it for her.**
 
 ## Why this is the mirror of a rule that already existed
 
@@ -45,7 +53,11 @@ from __future__ import annotations
 
 #: The floor per figure. Clearing ANY of these clears the gate.
 #:
-#: blood_relatives  -- 1,000, HER NUMBER, chosen 2026-09-06.
+#: blood_relatives  -- 1,000. **The NUMBER is hers; the FIGURE was not.** She was asked "where is
+#:                     the floor?" with all four options written in blood relatives, so 1,000 is
+#:                     the only thing she actually picked out of that menu. She then corrected the
+#:                     axis twice -- see the module docstring. Do not record this as her having
+#:                     chosen blood relatives.
 #: family_tree      -- the same scale: it is the component size and is never smaller than the
 #:                     blood count in the readings we hold.
 #: ancestors        -- 100 generations-worth of recorded line is a deep tree, not a stub.
