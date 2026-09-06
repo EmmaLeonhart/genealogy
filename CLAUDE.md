@@ -3589,8 +3589,12 @@ Geni id, so an entry point without one cannot become a row. Resolving the QIDs t
 
 **`special-geni-gedcom-recognition` is `exports/post-merge/wikidata-qid-links.ged`** — her words:
 *"There's a specific gedcom that just links geni profiles to wikidata. It carries no relationship
-data just ids and bios with wikidata links in it."* Five `INDI` records, each an id and a `NOTE`
-with a Wikidata URL, four distinct QIDs. Its own docstring says *"Do not let it become an
+data just ids and bios with wikidata links in it."* **29** `INDI` records, each an id and a `NOTE`
+with a Wikidata URL, **28** distinct QIDs -- counted 2026-09-05. This said *five records, four
+distinct QIDs* until then, and it was read out and repeated twice in one evening before anybody
+counted the file. `reports/correspondence-sources.md` measures it against the other two
+correspondence sources: **3** of its pairs are in `bio-qids.tsv`, **0** in
+`manual-identifications.csv`, and **26 are in neither**. Its own docstring says *"Do not let it become an
 architecture"*, which is worth knowing before it is grown. The other reading of her sentence is
 `reports/bio-qids.tsv` — 155 profiles whose Geni *About Me* carries a link, read back out of the
 corpus — and it is recorded in the group's `note` rather than silently dropped, because her words

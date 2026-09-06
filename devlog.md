@@ -28910,3 +28910,40 @@ pairs in both places it names the number.
 front of the batch. The second of those covers the documented gap where the CJK labels drift
 while `mul` agrees — 24 items, 46 rows. So the standalone `build-label-corrections.py` is a
 superseded duplicate.
+
+## 2026-09-05 — three correspondence sources, near-disjoint, and only one is wired
+
+Emma, uneasy about a claim of mine: *"I'm not sure what the origin of this file is. And I'm
+concerned it might be conflating two different entity resolution files with different functions —
+one gedcom and one that operates within manual identifications I made using an html artifact."*
+
+She was right to check and there are **three**, not two, and they are almost entirely disjoint:
+
+    manual-identifications.csv   314  her hand verdicts, unioned from emma-judgments.tsv
+                                      and manual-identifications-extra.csv   <- WIRED IN
+    bio-qids.tsv                 158  extracted by extract-bio-qids.py from the Geni About Me
+                                      text inside the exports                <- not wired
+    wikidata-qid-links.ged        29  hand-built, ids and a NOTE per record   <- corpus only
+
+    GEDCOM also in bio-qids   3 | GEDCOM also in manual   0 | GEDCOM in neither  26
+    bio also in manual        0
+
+So **184 correspondences reach nothing that emits `P2600`**, and the file the daily batch reads
+carries none of them. The `batch` column in `manual-identifications.csv` is its own provenance —
+204 of the 314 are `emma-pasted-verdicts`, out of the HTML artifact she named.
+
+**`CLAUDE.md` said the GEDCOM was five records with four distinct QIDs. It is 29 and 28.** That
+sentence was read out and repeated twice in one evening before anyone counted the file — the same
+failure as the `/path/` URL, `pending()`, the labelled parent block and the label-corrections
+guess: a description believed instead of the thing it describes. Corrected in place.
+
+**And the measurement was wrong on its first pass, for a reason this repo has already recorded.**
+`out/wikidata/p2600-all.tsv` has **no header** — its first line is data. Read with
+`csv.DictReader` every lookup returns `None`, and the comparison reported *"0 already stated, 158
+genuine additions"*: clean, plausible, an artifact of the reader. Parsed positionally the real
+split of the 158 is **81 already stated, 7 on an item carrying a different Geni id, 70 on items
+with no `P2600` at all**.
+
+`reports/correspondence-sources.md` records all of it. **Nothing was wired, changed or emitted**
+— her instruction in the same message: *"do not mess with anything until I give clear
+instructions."*
