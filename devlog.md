@@ -30044,3 +30044,39 @@ stays. What is gone is the claim that *setting* it is hers. That distinction —
 survives the tooling improving, against a description of what happened once when nothing else
 would do it — is the rule now in `CLAUDE.md`, and this is its second application in one session
 after the `Ancestors` supersession.
+
+## `build-from-diff` review: it was wired in and contributing NOTHING, silently
+
+Her item, 2026-09-05: *"Put a review of this at the end of the queue"* — flagged because it was
+folded into `pipeline.yml` on a claim rather than a measurement, beside `build-missing-reciprocals`
+which was removed for exactly that.
+
+**The finding, measured by running it rather than by reading it:**
+
+    the diff rests on a snapshot 69.2 hours old
+    refusing to project from a diff older than 24h
+
+**The refusal is correct and the wiring was not.** The script reads
+`out/model-vs-reality-items.json` and refuses anything over 24h, for a good reason — a stale diff
+proposes re-adding her own hand-work. But **nothing in the pipeline refreshed it.** That file is
+tracked and dated 2026-09-03, so every pipeline run since 09-04 has refused, and every run from
+here would have refused forever: the input can only age.
+
+**It exits 0 when it refuses**, so the `|| echo "from-diff skipped"` never fired and the step
+logged nothing unusual. A generator wired in on the claim that it *"emits what the diff says the
+item lacks"* had emitted nothing for two days, and the pipeline reported success throughout. Same
+shape as `build-missing-reciprocals` — a plausible justification, never checked against what the
+thing does.
+
+**Fixed rather than removed, because the claim is achievable and cheap.** The pipeline now
+refreshes the snapshot before projecting from it: 1,203 ledger items at 50 an request = **25
+batched calls**, the same order as the ~15 the deck step already makes two steps below.
+`CLAUDE.md` § *Querying Wikidata is ALLOWED* — batch where the API batches, which this does.
+
+**The alternative was deleting it from the pipeline**, and that is the reading I rejected: unlike
+`build-missing-reciprocals`, whose output was wrong in kind (6,770 unchecked statements poured into
+a batch she reviews), this one's output is right in kind and simply never gets built. The
+falsifier, recorded because it is a guess: **if the next pipeline run still prints a refusal, the
+refresh is not working and the step should come out** rather than being nursed.
+
+The queue item is removed — the review is what it asked for and it is done.

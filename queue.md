@@ -126,14 +126,6 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   eccentric points, the same one § *"Not related to" does NOT mean not related* uses. Do not
   start it early and do not invent the gate's threshold — that is hers.
 
-- **Review `build-from-diff`.** Emma, 2026-09-05, on it being wired into `pipeline.yml`
-  *"tolerantly, since it needs a diff to read and may have nothing to do"*: *"Put a review of
-  this at the end of the queue"*. It is now the only unscheduled generator that was folded into
-  the pipeline on a claim rather than on a measurement — `build-missing-reciprocals` was put in
-  beside it and taken straight back out, because the justification given for both turned out to
-  describe the wrong thing. Nothing has been investigated; `CLAUDE.md` § *"Add it to the end of
-  the queue" means WRITE IT DOWN AND STOP* governs.
-
 - **Experiment: generate the manual parental zipper correspondences into a gitignored GEDCOM that
   the synoptic tree merge consumes.** Emma, 2026-09-05: *"I actually think a good long term
   architectural smoothing would make it so that in the pipeline they are generated into a

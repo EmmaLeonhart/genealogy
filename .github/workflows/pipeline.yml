@@ -184,6 +184,24 @@ jobs:
           PYTHONPATH: src
         run: |
           python scripts/build-regnal-ordinals.py
+          # ⛔ REFRESH THE SNAPSHOT FIRST, or `build-from-diff` contributes NOTHING.
+          #
+          # Reviewed 2026-09-06, her queue item. The script refuses a diff older than 24h -- for
+          # a good reason, since a stale diff proposes re-adding her own hand-work -- and NOTHING
+          # in this pipeline was refreshing it. `out/model-vs-reality-items.json` is tracked and
+          # was dated 2026-09-03, so every run since 09-04 refused. Measured by running it:
+          # *"the diff rests on a snapshot 69.2 hours old ... refusing to project"*.
+          #
+          # And it EXITS 0 when it refuses, so the `|| echo` below never fired and the step
+          # looked clean. A generator wired in on the claim that it *"emits what the diff says
+          # the item lacks"* had emitted nothing for two days, silently -- the same shape as
+          # `build-missing-reciprocals`, which sat in this step on a similar claim and was
+          # removed.
+          #
+          # The refresh is 1,203 ledger items at 50 an request = **25 batched calls**, the same
+          # order as the ~15 the deck step already makes below. `CLAUDE.md` § *Querying Wikidata
+          # is ALLOWED* -- batch where the API batches, which this does.
+          python scripts/model-vs-reality.py --refetch || echo "diff refresh failed; from-diff will refuse"
           python scripts/build-from-diff.py || echo "from-diff skipped: needs a diff to read"
 
       # **The adjudication deck, regenerated every run.** Emma, 2026-09-01: *"I told you to
