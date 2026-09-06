@@ -35,6 +35,42 @@ caution that goes with it — a *"no relationship found"* beside a saturated Blo
 is a database failure, not a negative result, which is why the statistics are read at step 1 and
 not inferred later.
 
+## ⛔ THE PHASE ORDER. The sibling scrape is LAST, and its input is the INTEGRATED tree
+
+**Emma, 2026-09-06, correcting a mass sibling scrape I had already started:**
+
+> *"Run the wikidata isolate connecting operation on all wikidata isolates, then you will have a
+> very large number of paths plus immediate family object things from such people, with occasional
+> forest exports. Then you integrate all of this into the synoptic tree, then on the people who are
+> sibling pairs on the synoptic tree without parents, you do the scrape object thing on each member
+> of the pair lol. So again jumping to the mass action was really bad because you skipped over a
+> lot."*
+
+    PHASE 1  run the isolate-connecting operation over ALL Wikidata isolates
+             -> the per-individual loop below, on each: family scrape, then Charlemagne path,
+                then a Forest export only where the path fails
+             -> yields many paths, many immediate-family objects, OCCASIONAL forest exports
+
+    PHASE 2  INTEGRATE all of it into the synoptic tree
+             -> the new GEDCOMs merged, the family objects folded in
+
+    PHASE 3  in THAT tree, find the people who are sibling pairs WITHOUT PARENTS
+             -> scrape each member of each such pair
+
+**The input to phase 3 is the integrated tree, not `paths/*.tsv`.** That is the whole correction.
+The sibling pairs worth scraping are the ones still lacking parents *after* everything phase 1
+collected has been merged — a set that cannot be known until phase 2 has run, and which will be
+much smaller than the 1,321 pairs the current path files name, because phase 1 supplies parents
+for many of them as a side effect.
+
+**What jumping to phase 3 actually skipped:** the whole isolate campaign, its paths, its family
+objects, its exports, and the merge. Scraping 2,525 people off today's path files would have spent
+2,525 page loads to answer a question that phase 2 was going to answer for free, on a list that
+phase 1 was going to shrink.
+
+**Four scrapes were taken before she stopped it** — Arne Garborg, Jon Eivindson Garborg, Maria
+Carlberg, Sara Carlberg. Read-only, and out of order.
+
 ## The second rule: sibling pairs in paths get the same scrape
 
 **Because parents are what a sibling step needs, and the scrape is the fastest way to get them.**

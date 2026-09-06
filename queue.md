@@ -19,6 +19,15 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   has been measured, and the last real creation predates the change. Unblock signal is one walk
   from a real seed through to a single creation, with the queue observed to stop.
 
+- **⛔ THE PHASE ORDER governs everything below — `docs/per-individual-loop.md`.** Emma,
+  2026-09-06: phase 1 runs the isolate-connecting operation over **all** Wikidata isolates, which
+  yields paths, immediate-family objects and occasional Forest exports; phase 2 **integrates all
+  of it into the synoptic tree**; phase 3 then scrapes each member of the sibling pairs that are
+  **still parentless in that tree**. Her words on my starting at phase 3: *"jumping to the mass
+  action was really bad because you skipped over a lot."* The sibling batch's input is the
+  INTEGRATED tree, never today's `paths/*.tsv` — phase 1 supplies parents for many of those pairs
+  as a side effect, so the real list is much smaller than the 1,321 pairs currently there.
+
 - **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt` — **100
   profile URLs**, one per target, and `reports/isolate-path-pilot-queue.txt` is the same list in
   the collector's input format. Then `python scripts/harvest-isolate-paths.py --write-paths` for
