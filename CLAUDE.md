@@ -1957,6 +1957,35 @@ This is the same family as § *Do not grab the first artifact that vaguely match
 § *Code that is WRITTEN but never CALLED is not done*: the gap is between what the repo says
 and what the repo lets you run.
 
+### ⛔ A SHORTCUT SHE TOOK TO UNBLOCK ME IS NOT A LAW I ENFORCE AGAINST HER
+
+**Emma, 2026-09-06:** *"I was guarding against you being fucking retarded the other day and me
+setting it was a shortcut because you just sat on the page jerking off instead of doing work"* —
+and then *"You can set up a protocol to get it set on Charlemagne lol."*
+
+**The case.** On 2026-09-03 she said *"You do not pin Charlemagne, it needs to be done exactly
+once and I did it"*, because a session had stalled on the page instead of working. That went into
+`CLAUDE.md`, into `queue.md`, and into a test, as though the anchor were untouchable. When the
+first real path capture came back anchored on the viewer — making the pilot's reach rate answer a
+different question than the one asked — it was written up as **NEEDS-DECISION, hers** and left
+sitting across three status reports. **It was never hers to decide.** It was a thing to check and
+set, and `docs/anchor-protocol.md` is now that protocol.
+
+**The general rule: when she does something by hand because the automation is stuck, the lesson is
+AUTOMATE IT, not THIS IS SACRED.** A workaround of hers describes a gap in the tooling. Reading it
+as a constraint inverts it — the gap stays open and her workaround becomes permanent manual
+labour, which is the opposite of the point.
+
+**How to tell the two apart.** A real constraint of hers has a reason attached that survives the
+tooling improving — *the pushpin must not be toggled MID-RUN* is one, because it silently
+re-anchors every later capture, and that stays true forever; the test enforcing it stays. *She
+sets it once by hand* is not a reason, it is a description of what happened when nothing else
+would do it.
+
+**And it is the same failure as § *Do not grab the first artifact that vaguely matches*, one level
+up:** there, availability turned a stale file into an algorithm; here, a sentence of hers spoken
+about one bad session turned into a standing prohibition.
+
 ### Grab the RESIDUALS. The structured parse is not everything on the page
 
 **Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit

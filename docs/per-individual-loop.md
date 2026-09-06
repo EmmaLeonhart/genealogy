@@ -78,6 +78,23 @@ caution that goes with it — a *"no relationship found"* beside a saturated Blo
 is a database failure, not a negative result, which is why the statistics are read at step 1 and
 not inferred later.
 
+## ⛔ STEP 3b IS A `Forest` EXPORT. Her 2026-09-03 `Ancestors` instruction is WRONG
+
+**Emma, 2026-09-06, ruling on the contradiction directly: _"9-03 is wrong"_.**
+
+`queue.md`'s tail section, written 2026-09-03, gives a precedence order whose first case is
+*connected to Charlemagne, no relationship found after the query* → **run a full `Ancestors`
+export**, and calls it the common case. Her 2026-09-06 dictation says the opposite —
+*"if not then we do the forest thing out of the isolated geni individuals"* — and `Forest` is what
+the collector implements.
+
+**She has now settled it: `Forest`.** The reason it matters rather than being a label: `Forest`
+follows spouse links and `Ancestors` walks straight up, so on a person connected through in-laws
+an `Ancestors` export goes past the join entirely. Her own tail notes name Moshe Bar Nissim as
+failing *"because of large in-law chains"* — exactly the case `Ancestors` cannot reach.
+
+The tail's precedence order is left as she wrote it; this supersedes its first case.
+
 ## ⛔ THE PHASE ORDER. The sibling scrape is LAST, and its input is the INTEGRATED tree
 
 **Emma, 2026-09-06, correcting a mass sibling scrape I had already started:**
