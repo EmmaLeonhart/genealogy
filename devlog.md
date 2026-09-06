@@ -30702,3 +30702,32 @@ agent to navigate to each page and run the stuff."* That is exactly `{job:"indiv
 eating through a queue gradually. The open question — whether extension-driven navigation still
 reads as proper traffic — is measurable, unmeasured, and the thing to establish before building
 toward it rather than assuming either way.
+
+## Handoff: `queue.md` rewritten to be continuable on its own
+
+She is shutting the machine down at 16:00 — scheduled with `shutdown /s /t 4019` at 14:53, exit 0 —
+and asked for *"enough context stuff that we can reasonably continue off of it simply with the
+queue.md and anything that the queue.md references."*
+
+`queue.md` is rewritten around **one executable item**, which is her own definition of what the
+queue is for: *"all the queue did was just ask the browser agent to navigate to each page and run
+the stuff."* Navigate, dispatch `{job:"individual"}`, write the files, next target. Everything
+else in it is either gated by her or at the tail by her placement.
+
+**It carries the four things that would otherwise be rediscovered the hard way**, each of which
+cost real time today: nothing downloads and `saveBlob` must not come back a third time; never
+retype a scrape through a shell heredoc, which double-encoded 4 of 14; a pending path is not a
+miss and a requested search decays back to unrequested within hours; and the background service
+worker cannot be updated from here and does not matter.
+
+**Checked rather than asserted:** every file the new `queue.md` names exists — the one apparent
+miss, `build-scraped-gedcom.py`, is referenced precisely *as deleted* — and both commands it
+prescribes run clean, `build-tiny-gedcoms.py` and `pilot-progress.py`.
+
+**State at handoff:** pilot 19 of 100 · `isolates.csv` 20 rows, 7 misses / 1 hit / 12 pending ·
+1,569 tiny profile GEDCOMs · 1,151 tiny path GEDCOMs · zero invented people · the merge reads
+3,323 files · the extension at 1.6.0 with the whole run loop as one job.
+
+A closing section records what this session settled so it is not relitigated: tiny GEDCOMs as the
+native format, absent slots rather than `NN` people, the single 300 floor living in the extension,
+no Playwright or headless, and the anchor on Charlemagne.
