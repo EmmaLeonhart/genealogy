@@ -30680,3 +30680,25 @@ is unconditional.
 
 **And Hilde Kann was my test person**, which is why that profile kept being opened: a known-good
 page for checking the extension itself. Real targets from here.
+
+## Playwright and headless are out, and the scheduler question resolves
+
+**Emma:** *"the agentic stuff is complete overhead to be able to run this... definitely playwright
+is a no-go... headless browser stuff with playwright and such is a nogo."*
+
+Recorded in `CLAUDE.md`, because it is a prohibition rather than a preference and it governs
+anything built here later. The reason is hers: *"Geni is not the most kind to us, heavily gating
+api access"*, and driving her real logged-in browser is what makes the traffic acceptable.
+
+**It also resolves the scheduler, which I spent most of a day treating as a blocker.** Her framing
+— *"this is why the scheduler was iffy"* — is that a scheduler opening its own tabs removes the
+very thing that makes the traffic pass. It was never the missing piece. The stale service worker
+that could not be reloaded was blocking something that should not be reached for yet.
+
+**The agent's job is navigation and nothing else:** *"all the queue did was just ask the browser
+agent to navigate to each page and run the stuff."* That is exactly `{job:"individual"}`.
+
+**Where she wants it to go, as an interest rather than a plan:** her own browser, one button,
+eating through a queue gradually. The open question — whether extension-driven navigation still
+reads as proper traffic — is measurable, unmeasured, and the thing to establish before building
+toward it rather than assuming either way.

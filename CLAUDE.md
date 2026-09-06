@@ -1925,6 +1925,38 @@ points on geni."* So the placeholders accumulate in our tree first; the campaign
 into real people is gated on that, and on `Forest` exports seeded at eccentric points — the same
 instrument § *"Not related to" does NOT mean not related* uses for eccentric targets.
 
+### ⛔ PLAYWRIGHT AND HEADLESS ARE A NO-GO. The agentic navigation is overhead we PAY, not a design
+
+**Emma, 2026-09-06:** *"the agentic stuff is complete overhead to be able to run this... definitely
+playwright is a no-go... But headless browser stuff with playwright and such is a nogo."*
+
+**Why it is paid rather than chosen.** *"Geni is not the most kind to us, heavily gating api
+access."* Driving her real, logged-in browser is what makes the traffic acceptable — her words the
+same day: *"by agentically going to the page and then running the extension, you are considered to
+be proper traffic."* Geni served an Incapsula CAPTCHA after roughly forty rapid loads on
+2026-09-06, which is what the cheaper route costs.
+
+**So the agent's job is navigation and nothing else.** *"basically having it so that all the queue
+did was just ask the browser agent to navigate to each page and run the stuff would be decent."*
+One `{job:"individual"}` call per profile, every decision inside the extension —
+`docs/collector-run-loop.md`, and *"there's no discretion on your part at all"*, said three times.
+
+**And that is why the scheduler was always iffy** — her framing, and it resolves a day spent
+treating its stale service worker as a blocker. A scheduler that opens its own tabs removes the
+very thing that makes the traffic pass. It is not the missing piece; the agentic loop is the
+working one.
+
+**Where she wants it to go**, stated as an interest rather than a plan: *"possible browser
+automation might be able to be done in the future that eliminates more agentic components. I am
+possibly interested in that and possibly even being able to just have my own browser do it all
+with me clicking a button to make it start running stuff... this might be a thing that can be done
+through my browser where it just kinda eats through the queue of items gradually."*
+
+So the target shape is **her browser, one button, working through a queue at its own pace** — which
+is what `background.js` was reaching for. The open question is whether extension-driven navigation
+still reads as proper traffic; that is measurable and unmeasured, and it is the thing to establish
+before building toward it. **What is settled is the floor: no Playwright, no headless.**
+
 ### The working Geni capture call lives in ONE transcript. Name it, do not re-derive it
 
 **Emma, 2026-09-05**, watching a session build a local HTTP sink to POST page captures to,
