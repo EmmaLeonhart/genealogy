@@ -30353,3 +30353,31 @@ pilot exists to decide.
 write files — its service worker has never updated, so nothing it writes can land, and
 hand-carrying is barred after it double-encoded 4 of 14 scrapes. And the four unsettled
 deliverables must be answered.
+
+## The scrape is out of `queue.md`, and that was the mechanism behind the whole day
+
+**Emma:** *"The scrape does not belong in the queue and I think it's presence there causes
+issues."*
+
+She is right about the mechanism, not just the filing. `queue.md` is what the hourly work loop
+takes its next item from, so a **gated** collection task sitting in it was picked up and run
+repeatedly today — before the deliverables existed, by hand, at a pace that drew a CAPTCHA and
+with a transport that double-encoded four scrapes. The queue is for executable steps; a
+long-horizon task with a gate is `todo.md`'s job.
+
+Four sections moved verbatim into `docs/final-wikidata-geni-scrape.md`: the phase order, the
+100-target pilot, the sibling-pair scrape, and the decision about retiring
+`build-scraped-gedcom.py`. **`queue.md` goes from 12 bullets to 7.**
+
+**⛔ AND MEASURING `todo.md`'s STALENESS CAUGHT A DEFECT I HAD JUST INTRODUCED.**
+`sources.geni_exports()` and `find_exports()` both returned **1,309** — meaning 706 generated
+files were being counted as things Geni handed back. `DERIVED_DIR` named exactly one directory
+and I had deleted it, while the tiny GEDCOMs landed in two others. That is precisely the failure
+the distinction exists to prevent: a generated file measured against `GENI_EXPORT_CAP`, or its
+sex coverage read as a corpus statistic. `DERIVED_DIRS` now names all three and the split reads
+**603 real, 706 derived**.
+
+**`todo.md` is marked stale rather than rewritten.** Its 2026-08-16 audit claims 204 exports
+against 603 today, and *"nothing starts before 1 September"* against a date that has passed. A
+table at the top gives the measured values; the 780 lines below are left as the audit they were,
+with item 3c the one current entry.

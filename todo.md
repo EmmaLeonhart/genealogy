@@ -9,6 +9,22 @@ See `CLAUDE.md` § "Queue and longer-horizon work".
 
 ---
 
+**⛔ STALE — this file was last audited 2026-08-16 and Emma flagged it on 2026-09-06:**
+*"the todo.md is probably stale."* It is. Measured that day, against the claims below:
+
+| the note below says | measured 2026-09-06 |
+| --- | --- |
+| 396,181 people, 204 exports | **603 real Geni exports** and 706 derived files, 1,309 read by the merge |
+| *"nothing starts before 1 September"* | that date passed; `AUTOMATION_START_DATE` is **2026-09-15** |
+| *"Nothing in this repo writes to Wikidata"* | still true — no edit has gone through the automated path |
+
+**The tree size is deliberately not restated here.** `reports/frontier.md` is the live count and
+this file is not regenerated — which is what the note below already says and is the reason the
+number went stale rather than wrong.
+
+**Everything below this line is the 2026-08-16 audit, unrevised.** Item 3c is newer and is
+current.
+
 **Progress note — audited 2026-08-16.** Every item was checked against the repo
 rather than carried forward. Items **1, 2, 3, 5** and the GEDCOM half of **7** are
 built; **4** and **6** are built as far as they can go before anything runs

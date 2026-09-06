@@ -35,7 +35,7 @@ import hashlib
 from collections import defaultdict
 from pathlib import Path
 
-__all__ = ["EXPORTS_DIR", "EXCLUDED_DIR", "DERIVED_DIR", "REPO_ROOT",
+__all__ = ["EXPORTS_DIR", "EXCLUDED_DIR", "DERIVED_DIR", "DERIVED_DIRS", "REPO_ROOT",
            "find_exports", "geni_exports",
            "duplicate_groups", "excluded_files"]
 
@@ -98,7 +98,19 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #: its sex coverage read as a corpus statistic. So the fix remains a name for the distinction
 #: rather than a looser assertion: `find_exports` returns these (the merge wants them),
 #: `geni_exports` excludes them (corpus-shape checks want only real ones).
-DERIVED_DIR = EXPORTS_DIR / "family-scrapes"
+#: ⛔ THERE ARE SEVERAL DERIVED DIRECTORIES NOW, and a single one was silently wrong.
+#: `DERIVED_DIR` named one directory; the tiny GEDCOMs landed in two others, so on 2026-09-06
+#: `geni_exports()` returned **1,309 files against `find_exports()`'s 1,309** -- 708 generated
+#: files counted as things Geni handed back. That is the exact failure the distinction exists to
+#: prevent: a generated file measured against `GENI_EXPORT_CAP`, or its sex coverage read as a
+#: corpus statistic. `DERIVED_DIR` stays as the historical name; `DERIVED_DIRS` is the set every
+#: caller should use.
+DERIVED_DIRS = (
+    EXPORTS_DIR / "tiny-profiles",   # one .ged per scraped profile
+    EXPORTS_DIR / "tiny-paths",      # one .ged per relationship path
+    EXPORTS_DIR / "0-scraped",       # the earlier aggregate pair, still in the merge
+)
+DERIVED_DIR = DERIVED_DIRS[0]
 
 
 def _digest(path: Path) -> str:
@@ -227,8 +239,10 @@ def geni_exports(root: Path | None = None) -> list[Path]:
     Use this for any check about what a Geni export *is*: its size, its field coverage, its
     xref prefixes. Use `find_exports` for the merge, which wants the derived files too.
     """
-    derived = (Path(root) if root is not None else EXPORTS_DIR) / DERIVED_DIR.name
-    return [p for p in find_exports(root) if derived not in p.parents]
+    base = Path(root) if root is not None else EXPORTS_DIR
+    derived = [base / d.name for d in DERIVED_DIRS]
+    return [p for p in find_exports(root)
+            if not any(d in p.parents for d in derived)]
 
 
 def duplicate_groups(root: Path | None = None) -> dict[str, list[Path]]:
