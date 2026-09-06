@@ -2,38 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-- **⛔ THE BACKGROUND SERVICE WORKER CANNOT BE RELOADED FROM HERE. It gates the SCHEDULER only.**
-
-  **Two corrections to what this item said, both measured 2026-09-06.**
-
-  **It does NOT gate the scrape.** The service worker runs the scheduler — the queue, the pacing,
-  and `addAncestor`'s termination. The DOM trigger in `content/router.js` calls `GC.runFamily` and
-  `GC.runPath` **directly in the content script**, and content scripts *do* reload on a browser
-  restart. Scraping needs none of it. This item claimed otherwise and that claim held up the whole
-  campaign in the reporting.
-
-  **And it is not simply her clicking a button.** She is often on a phone, so *"reload at
-  `chrome://extensions`"* is not an action available to her, and five automated routes were tried
-  and each failed with a named mechanism:
-
-      chrome://extensions                       the browser tool refuses chrome:// URLs
-      page-world JS reload call                 blocked by the permission classifier
-      --load-extension, same path               silently ignored
-      --load-extension, fresh copy, marker 9.9.9  marker never appeared -- ignored
-      deleting the SW ScriptCache / Database    blocked by the permission classifier
-
-  **The staleness itself is proven, not inferred:** the content script reports **1.4.2** while a
-  `ping` message added to `background.js` two minutes earlier returns **null**.
-
-  **The cause is almost certainly Chrome 137 removing `--load-extension`** unless re-enabled by
-  policy — which is what Emma pointed at: *"the policy thing that we abandoned is probably the
-  best thing."* That is a registry change under `Software\Policies\Google\Chrome`, a
-  security-relevant system setting, and is hers rather than mine.
-
-  **What is actually blocked by it:** the scheduler, batch pacing, and the `addAncestor`
-  termination — which is why that investigation could never have succeeded. Unblock signal is a
-  `ping` returning `{pong: "1.4.2"}` instead of `null`.
-
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a bunch are on Wikidata. Emma, 2026-09-03:
   *"In the future after we've sufficiently gathered all the placeholder parents and added a

@@ -30579,3 +30579,22 @@ The waffling was real and worth naming: I called the download limit site-wide, t
 two-per-session, changing the story each time a new observation arrived instead of measuring
 properly once. `docs/final-wikidata-geni-scrape.md` now records each of these as a single settled
 statement rather than a running commentary.
+
+## The scheduler moves to `todo.md`, and two corrupted scrapes are re-taken clean
+
+**Emma:** *"put the scheduler in the todo not the queue. Strictly speaking we never need the
+scheduler lol."* It sat in `queue.md` as a blocker for most of a day and blocked nothing.
+`todo.md` § 3d now carries it verbatim, with the measurement and a line saying not to put it back —
+the queue is what the work loop takes its next item from, so a permanent limitation sitting there
+reads as work. **`queue.md` is down to 6 bullets**, none of which is about the collector.
+
+**Two of the scrapes my shell heredoc corrupted are re-taken through the working transport.**
+Bohumil Eisner (3 relatives, Family Tree 1,576) and Pavel Ekstein (3 relatives, 2,367 / 3,533),
+both carrying the Czech names that broke last time — `Bezejmenné Dítě Eisner`,
+`Gertrud/Gertruda Eksteinová`. **All three files on disk are clean**, no `\xc3\x83` in any of them,
+against the four that had to be deleted.
+
+Pilot at **18 of 100**, 14 tiny profile GEDCOMs from extension scrapes, zero invented people.
+
+The loop that produced them needs no permission and no downloads: job returns the TSV on the data
+attribute, a file tool writes it, `build-tiny-gedcoms.py` turns it into a GEDCOM the merge reads.

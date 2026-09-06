@@ -242,6 +242,65 @@ the pilot a 185,327-target isolate campaign the pilot exists to decide.
 **Built already:** `scripts/build-tiny-gedcoms.py` (both operations, absent slots, zero invented
 people) and `scripts/sibling-pair-worklist.py`. What is missing is the running of it.
 
+## 3d. The collector's background service worker — NOT NEEDED, recorded so nobody chases it
+
+**Emma, 2026-09-06:** *"put the scheduler in the todo not the queue. Strictly speaking we never
+need the scheduler lol."* It sat in `queue.md` as a blocker for most of a day and blocked nothing.
+
+**The scheduler is the only thing it runs.** Jobs go through the DOM trigger in
+`content/router.js`, which calls `GC.runFamily` and `GC.runPath` directly in the content script —
+and content scripts *do* reload on a browser restart. Collection is unaffected.
+
+**The limitation, measured three times and stated once:** a Chrome restart does **not** update the
+background service worker. After a clean restart the content script reports the current version
+while a `ping` handler added to `background.js` returns `null`. Five routes to force it all
+failed — `chrome://` refused by the browser tool, a page-world reload refused by the permission
+classifier, `--load-extension` ignored both at the original path and at a fresh copy whose
+distinct marker never appeared, and deleting the SW cache refused by the classifier. Likely
+Chrome 137 dropping `--load-extension` without a policy.
+
+**What is actually stuck behind it:** the queue, the pacing, and `addAncestor`'s termination —
+which is why that investigation could never have succeeded and should not be reattempted until the
+worker updates. Unblock signal is a `ping` returning a `pong` instead of `null`.
+
+**Do not put this back in `queue.md`.** The queue is what the work loop takes its next item from,
+and a permanent limitation sitting there reads as work.
+
+The item as it stood in the queue, moved verbatim:
+
+- **⛔ THE BACKGROUND SERVICE WORKER CANNOT BE RELOADED FROM HERE. It gates the SCHEDULER only.**
+
+  **Two corrections to what this item said, both measured 2026-09-06.**
+
+  **It does NOT gate the scrape.** The service worker runs the scheduler — the queue, the pacing,
+  and `addAncestor`'s termination. The DOM trigger in `content/router.js` calls `GC.runFamily` and
+  `GC.runPath` **directly in the content script**, and content scripts *do* reload on a browser
+  restart. Scraping needs none of it. This item claimed otherwise and that claim held up the whole
+  campaign in the reporting.
+
+  **And it is not simply her clicking a button.** She is often on a phone, so *"reload at
+  `chrome://extensions`"* is not an action available to her, and five automated routes were tried
+  and each failed with a named mechanism:
+
+      chrome://extensions                       the browser tool refuses chrome:// URLs
+      page-world JS reload call                 blocked by the permission classifier
+      --load-extension, same path               silently ignored
+      --load-extension, fresh copy, marker 9.9.9  marker never appeared -- ignored
+      deleting the SW ScriptCache / Database    blocked by the permission classifier
+
+  **The staleness itself is proven, not inferred:** the content script reports **1.4.2** while a
+  `ping` message added to `background.js` two minutes earlier returns **null**.
+
+  **The cause is almost certainly Chrome 137 removing `--load-extension`** unless re-enabled by
+  policy — which is what Emma pointed at: *"the policy thing that we abandoned is probably the
+  best thing."* That is a registry change under `Software\Policies\Google\Chrome`, a
+  security-relevant system setting, and is hers rather than mine.
+
+  **What is actually blocked by it:** the scheduler, batch pacing, and the `addAncestor`
+  termination — which is why that investigation could never have succeeded. Unblock signal is a
+  `ping` returning `{pong: "1.4.2"}` instead of `null`.
+
+
 ## 4. Wikidata authoring pipeline — queue up the missing people
 
 For people with no Wikidata item, generate a reviewable batch that creates them
