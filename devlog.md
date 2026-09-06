@@ -30165,3 +30165,20 @@ Geni id. The merge now reads 616 files: 603 Geni exports and 13 derived.
 `sources.DERIVED_DIR` points at the new directory, keeping the distinction the old one needed —
 `find_exports` returns these because the merge wants them, `geni_exports` excludes them so a
 generated file is never measured against `GENI_EXPORT_CAP` or read as a corpus statistic.
+
+**Sweep: nothing removed, and one item ADDED for work she asked for that is half-built.** The five
+live items all verified against the repo — the service worker still needs her reload (`endId` is
+in the file and not in the running worker), the phase order is a rule, the pilot is at 18 of 100,
+the parent-adding campaign is gated by her, and the correspondence experiment still has no GEDCOM.
+
+**What the sweep caught is a regression I introduced an hour ago.** `build-family-gedcoms.py`
+reads only `geni-families/*-family.tsv`; she asked for *"this thing which can run on legacy
+scrapings and with the new scrapings by the extension"*. Deleting `build-scraped-gedcom.py` for
+inventing 4,928 people also removed the only reader of **`geni-scraping/`, which holds 1,555 saved
+profile pages** — so those pages now contribute **nothing** to the synoptic tree, where before
+they contributed something real mixed in with the invented parents.
+
+That is a net loss against the state before the deletion, and it would have gone unrecorded: it is
+not a failing test, not a queue item, and the deletion commit reads as pure improvement. Queued
+rather than done, because it is a second reader on an existing emitter and belongs in a work loop
+rather than in a sweep.

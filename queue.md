@@ -118,6 +118,23 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   34–39% for occupation-filtered academics and 92% for Nordic ones. A blank chain is
   `chain_found=0`, never *unrelated*.
 
+- **Run the tiny-GEDCOM emitter over the 1,555 LEGACY saved pages.** Emma, 2026-09-06, on
+  `build-family-gedcoms.py`: *"this thing which can run on legacy scrapings and with the new
+  scrapings by the extension"*. Only the second half is built — it reads
+  `geni-families/*-family.tsv` and produces 13 files. **`geni-scraping/` holds 1,555 saved profile
+  pages and nothing reads them any more**, because `build-scraped-gedcom.py` was the thing that
+  did and it was deleted for inventing 4,928 people.
+
+  So those 1,555 pages are currently contributing **nothing** to the synoptic tree, where before
+  they contributed something real mixed with the invented parents. That is a regression against
+  the state before the deletion and it is the reason this is here rather than in a report: the
+  immediate-family prose on a saved page is the same shape as a scrape TSV — *"Daughter of A and
+  B / Wife of C / Mother of D, E"* with `href`s carrying the Geni ids — so it is the same emitter
+  with a second reader, not a second emitter.
+
+  ⛔ **Whatever reads them must invent nobody**, which is the whole reason its predecessor is
+  gone. `genimerge.sources.DERIVED_DIR` already covers the output directory.
+
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a bunch are on Wikidata. Emma, 2026-09-03:
   *"In the future after we've sufficiently gathered all the placeholder parents and added a
