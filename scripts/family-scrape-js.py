@@ -33,6 +33,13 @@ def phrase_table() -> str:
 
 
 def snippet(geni_id: str) -> str:
+    """The compact form: `@`-prefixed metadata, then one tab-separated line per relative.
+
+    The statistics come from the collector's own `GC.statistics()` and are pasted into the
+    `@STATS` line by the caller, never re-read here -- a second reader written in this snippet
+    returned all five zeros on a page the extension read as 11 / 10 / 5 / 0 / 1, and all-zeros is
+    indistinguishable from an empty block.
+    """
     return (
         phrase_table()
         + r"""

@@ -45,8 +45,42 @@ def path_state(banner: str) -> str:
     return "yes" if b else ""
 
 
+def parse_block(text: str) -> dict:
+    """The collector's compact form: `@`-prefixed metadata lines, then one line per relative.
+
+    JSON was the first shape and it does not survive the trip: a person with eight relatives
+    overflows the tool-result limit and the last of them is silently truncated mid-object, which
+    is the same absent-versus-narrowed failure as everything else in `CLAUDE.md` -- the answer
+    still parses and is short by one person. Tab-separated lines are compact enough that a large
+    family fits, and a truncated line is visibly a truncated line.
+    """
+    meta, rows = {}, []
+    for line in text.splitlines():
+        if not line.strip():
+            continue
+        if line.startswith("@"):
+            key, _, rest = line.partition("	")
+            meta[key[1:].lower()] = rest
+            continue
+        parts = line.split("	")
+        if len(parts) == 4:
+            rows.append(dict(zip(("relation", "phrase", "geni_id", "name"), parts)))
+    stats = {"read": True}
+    for pair in meta.get("stats", "").split("	"):
+        k, _, v = pair.partition("=")
+        if k:
+            stats[k] = int(v or 0)
+    return {
+        "ext": {"geni_id": meta.get("id", ""), "name": meta.get("name", ""), "stats": stats},
+        "relatives": rows,
+        "prose": meta.get("prose", ""),
+        "banner": meta.get("banner", ""),
+    }
+
+
 def main() -> int:
-    blob = json.load(sys.stdin)
+    raw = sys.stdin.read()
+    blob = json.loads(raw) if raw.lstrip().startswith("{") else parse_block(raw)
     ext, relatives = blob["ext"], blob["relatives"]
     gid, name = ext["geni_id"], ext.get("name", "")
     stats = ext.get("stats", {})

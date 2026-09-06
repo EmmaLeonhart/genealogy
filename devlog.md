@@ -29514,3 +29514,30 @@ scrapes. And it told the next session to file captures as `geni-paths/<id>-<kind
 ruling tonight retires: the collector returns the parsed TSV and the agent writes `paths/`.
 `geni-paths/README.md` is marked superseded on that one step — the navigate/wait/click sequence it
 records is still exactly right and is still what the `path` job does; only the Blob save is gone.
+
+**Phase 1, second pass: three more targets, and the collector's return format changed to survive
+the trip.** Valentine Eisner, Bohumil Eisner, Pavel Ekstein. Twelve readings now sit in
+`reports/isolates.csv`.
+
+**JSON was the wrong shape for a job result and it truncated silently.** Valentine Eisner has
+eight relatives, and the JSON overflowed the tool-result limit mid-object — the answer still
+parsed and was one person short, which is the absent-versus-narrowed failure `CLAUDE.md` records
+five times over. The collector's compact form is now `@`-prefixed metadata lines followed by one
+tab-separated line per relative: a large family fits, and a truncated line is visibly truncated.
+`write-family-scrape.py` takes either.
+
+**⛔ THREE OF THE TWELVE CLEAR THE GATE ON `family_tree` ALONE**, and the blood-relative gate she
+struck out would have thrown away all three:
+
+    Dorothy Jeakins    FT  1,405   BR     1
+    Bohumil Eisner     FT  1,576   BR     5
+    Jakob Bettmann     FT  1,655   BR     8
+
+Each is a person joined to a large tree almost entirely through in-laws — which is exactly what a
+`Forest` export follows and what `blood_relatives` cannot see. Her correction was worth a quarter
+of the population, not an edge case.
+
+**One borderline, recorded rather than resolved:** Valentine Eisner reads Family Tree **914**
+against the 1,000 floor, so she skips by 86. Her path search is still pending, so the gate has
+not actually decided anything for her yet; if she resolves to a miss she is the first person the
+threshold itself turns away, and that is the row to look at before anyone moves the number.
