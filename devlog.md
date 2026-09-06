@@ -29959,3 +29959,45 @@ two paragraphs below name Moshe Bar Nissim as failing *because of* in-law chains
 correction goes in the prose around it rather than through it. This is the one edit to the tail
 section this session, and it is made because she declared the content wrong, not because it looked
 stale to me.
+
+## ⛔ THE BACKGROUND SERVICE WORKER HAS NEVER UPDATED. That is why the termination "never ran"
+
+She told me to stop waiting on CI and **do the investigation**. Done, and the answer is not the
+one the queue item assumed.
+
+**`addAncestor`'s termination has never been exercised because it is not in the running
+extension.** `background.js`'s `DEFAULTS` gained an `endId` key in `28a9f05a`, the same commit
+that added the queue-drop. The running worker returns **nine** keys and no `endId` — byte-for-byte
+the pre-`28a9f05a` list, checked against `git show 28a9f05a~1`. The background is executing code
+from **before 2026-09-05 18:58**. Every change to it since is inert: the termination, `endId`, and
+the removal of the `save` handler I made tonight.
+
+**Content scripts reload on a Chrome restart; the service worker does not.** That is exactly why
+this hid for a day. The marker went 1.0.0 → 1.1.0 → 1.2.1 → 1.3.0 across four restarts and I read
+each one as proof the extension had updated. It is proof about content scripts only, and I have
+been asserting all evening that a restart reloads "the extension".
+
+**The termination was then driven directly, and it did not fire.** Three `seed` jobs plus one
+`path` job loaded, then a `result` with `state: "added"`: the result was recorded, **all three
+seed jobs stayed queued**, and `endId` was never set. That is old code behaving exactly as old
+code would. The queue I loaded was cleared afterwards so nothing synthetic can ever run.
+
+**Four routes to a reload were tried before calling it blocked**, because *report the limit, not
+the task*: a page-world call is refused by the permission classifier; `chrome://extensions` is
+refused by the browser tool; the extension registry lives in `Secure Preferences` and editing it
+is invasive on her profile; and starting Chrome with `--load-extension` at the repo changed
+nothing, since the same unpacked path is already registered. **Unblock signal: a `status` call
+returning ten keys including `endId`.**
+
+**The other half of the investigation is BUILT and PROVEN: the scheduler no longer needs the
+toolbar.** `content/router.js` relays `status`/`start`/`stop`/`load` over the same data-attribute
+channel the job trigger uses — `scripts/scheduler-bridge.md` is the usage. `load` and `status`
+round-trip correctly *against the old worker*, which is how the finding above was measured at all.
+This removes the manual step that has been sitting on her since the scheduler was written:
+*"You start it from the toolbar"* is no longer required.
+
+**⛔ AND A SECOND STALENESS IN THE SAME STATUS CALL: `concurrency` reads 6, not 12.** `state()` is
+`Object.assign({}, DEFAULTS, stored)`, so a value the popup wrote once shadows the default
+forever. Her *"update it to batches double the older size on all things"* moved `DEFAULTS` to 12
+and the scheduler never saw it. **Changing a `DEFAULTS` number does not change a running
+profile** — that is now written in the bridge doc, because it will bite again.

@@ -170,4 +170,4 @@ GC.statistics = async function () {
  * work was done agentically around it, and the question was answered by asking Emma rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
-document.documentElement.setAttribute("data-geni-collector", "1.2.1");
+document.documentElement.setAttribute("data-geni-collector", "1.3.0");

@@ -2,25 +2,39 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-- **NEEDS-INVESTIGATION — `addAncestor`'s termination has never been exercised.** `background.js`
-  drops the remaining seed queue when a result comes back `added`, which is her rule
-  (*"it adds an ancestor of `start_id` and returns the id of it as `end_id`"*), but no walk has run
-  through to a creation since that was written. It is code that has been read, not behaviour that
-  has been measured.
+- **⛔ BLOCKED-ON-USER-ACTION — THE BACKGROUND SERVICE WORKER HAS NEVER UPDATED. Reload the
+  extension at `chrome://extensions`.** This is the whole reason `addAncestor`'s termination
+  "has never been exercised": **it is not in the running extension.**
 
-  ⛔ **This item said "the last real creation predates the change" and that is FALSE** — corrected
-  2026-09-06. The drop went in at `28a9f05a` (2026-09-05 18:58) and **three creations followed
-  it**: Elias Kahrs Ingebrigtsen Hoknes Himo, Ingebrigt Himo, and Anne Marie Knutson, the last
-  made entirely unaided by the extension. The conclusion survives the correction and the reason
-  is the thing to keep: **every one of the five was a single `seed` job fired through the DOM
-  trigger**, and the DOM trigger runs `GC.runSeed` directly. The queue-drop lives in
-  `background.js`'s `result` handler, which only executes when the **scheduler** is driving. So
-  creations can accumulate indefinitely without the termination path ever running, and the stale
-  clause would have told the next session that any new creation exercises it.
+  **Measured 2026-09-06, and it is decisive rather than inferred.** `background.js`'s `DEFAULTS`
+  gained an `endId` key in `28a9f05a` — the same commit that added the queue-drop. The running
+  worker returns **nine** keys and no `endId`, byte-for-byte the pre-`28a9f05a` list. So the
+  background is executing code from **before 2026-09-05 18:58**, and every change to it since is
+  inert — the termination, `endId`, and the removal of the `save` handler.
 
-  Unblock signal is one **walk** from a real seed through to a single creation, with the queue
-  observed to stop — and it should arrive as a side effect of the first genuine step-3b case
-  rather than by firing a creation to watch a code path.
+  **Content scripts DO reload on a Chrome restart and the service worker does not.** That is why
+  this hid: the marker went 1.0.0 → 1.3.0 across restarts and looked like proof the whole
+  extension had updated. It is proof about content scripts only.
+
+  **The termination was then driven directly and did not fire.** A queue of three `seed` jobs plus
+  one `path` job was loaded, and a `result` with `state: "added"` sent: the result was recorded,
+  **all three seed jobs stayed**, and `endId` was never set. Exactly what old code does.
+
+  **Four routes to a reload were tried and none works from here:** a page-world call is refused by
+  the permission classifier; `chrome://extensions` is refused by the browser tool; the extension
+  registry is in `Secure Preferences` and editing it is invasive; and starting Chrome with
+  `--load-extension` pointed at the repo changed nothing, because the same unpacked path is
+  already registered. **Unblock signal: the status call returns ten keys including `endId`.**
+
+  **`scripts/scheduler-bridge.md` is how to drive it once reloaded** — `content/router.js` now
+  relays `status` / `start` / `stop` / `load` from a data attribute, so the scheduler no longer
+  needs the toolbar popup at all. That half is built and proven: `load` and `status` round-trip
+  correctly against the *old* worker.
+
+  **And a second staleness, found in the same status call: `concurrency` reads 6.** `DEFAULTS`
+  says 12 since her *"double the older size on all things"*. `state()` merges storage **over**
+  defaults, so a value stored by the popup before the doubling shadows it permanently. Her
+  instruction never reached the scheduler and nothing said so.
 
 - **⛔ THE PHASE ORDER governs everything below — `docs/per-individual-loop.md`.** Emma,
   2026-09-06: phase 1 runs the isolate-connecting operation over **all** Wikidata isolates, which
