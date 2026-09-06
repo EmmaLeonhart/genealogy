@@ -45,6 +45,14 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   machine. Nothing has been investigated or attempted — `CLAUDE.md` § *"Add it to the end of the
   queue" means WRITE IT DOWN AND STOP* governs.
 
+- **Review `build-from-diff`.** Emma, 2026-09-05, on it being wired into `pipeline.yml`
+  *"tolerantly, since it needs a diff to read and may have nothing to do"*: *"Put a review of
+  this at the end of the queue"*. It is now the only unscheduled generator that was folded into
+  the pipeline on a claim rather than on a measurement — `build-missing-reciprocals` was put in
+  beside it and taken straight back out, because the justification given for both turned out to
+  describe the wrong thing. Nothing has been investigated; `CLAUDE.md` § *"Add it to the end of
+  the queue" means WRITE IT DOWN AND STOP* governs.
+
 ## ⛔ AT THE TAIL — mass export work on the paths for disconnected Wikidata individuals
 
 **Everything established on 2026-09-03, when Emma taught the task by hand after the automated

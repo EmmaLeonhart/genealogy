@@ -140,6 +140,8 @@ def main():
     print(f"{len(touched)} people touched")
 
     lines, seen, tally = [], set(), collections.Counter()
+    #: The unordered sibling pairs already emitted. The cap is on THESE, not on lines.
+    sibling_pairs = set()
     held = []
 
     def add(subj_g, prop, obj_g, why):
@@ -162,15 +164,23 @@ def main():
             return
         if subj_g in NEVER_TOUCH_GENI:
             return
+        # ⛔ THE SIBLING CAP COUNTS PAIRS, NOT STATEMENTS. Emma, 2026-09-05: *"We were
+        # supposed to emit 20 sibling pairs a day."* Both directions are emitted -- `add()` runs
+        # once per person per sibling, so A->B and B->A are separate lines -- and each was
+        # incrementing the tally, which made a cap of 20 mean **10 pairs**. Counting the
+        # unordered pair once is what makes the constant say what she says it says.
+        pair_key = frozenset((sq, oq)) if prop == SIBLING else None
         key = (sq, prop, oq)
         if key in seen:
             return
         seen.add(key)
         line = f'{sq}\t{prop}\t{oq}\tS2600\t"{subj_g}"'
-        if prop == SIBLING and tally[why] >= SIBLING_CAP:
+        if prop == SIBLING and pair_key not in sibling_pairs and len(sibling_pairs) >= SIBLING_CAP:
             held.append(line)
             return
         tally[why] += 1
+        if pair_key is not None:
+            sibling_pairs.add(pair_key)
         lines.append(line)
 
     for g in sorted(touched):

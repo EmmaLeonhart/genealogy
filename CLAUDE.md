@@ -1865,7 +1865,7 @@ nothing.
 carry-forward already exists for exactly this shape of "not today", and using it keeps the hard
 rule intact.
 
-### `P3373` sibling is capped at 20 a day — doubled from 10 on 2026-09-05
+### `P3373` sibling is capped at 20 PAIRS a day — doubled from 10 on 2026-09-05
 
 **Emma, 2026-08-25:** sibling relationships are too numerous to send at once, so
 **sibling adding is limited to 10 QuickStatements a day.** **She doubled it to 20 on 2026-09-05** — *"update it to batches double the older size on all things"* — along with every other per-run batch size in the repo. The reasoning below is unchanged and is why there is a cap at all; only the number moved.
@@ -1876,7 +1876,7 @@ size, because every child is a sibling of every other: one family of nine childr
 statements on its own. Parents grow linearly. So a batch that looks balanced by people is
 overwhelmingly sibling links by statement.
 
-**The cap is 20 `P3373` statements per day, across every batch**, not per file. A builder emitting
+**The cap is 20 `P3373` sibling PAIRS per day, across every batch**, not per file. Emma, 2026-09-05: *"We were supposed to emit 20 sibling pairs a day."* Both directions are emitted, so counting statements made a cap of 20 mean **10 pairs**; it counts the unordered pair now, and a run comes out at 20 pairs / 39 lines. A builder emitting
 siblings must count them and stop.
 
 **It is a pacing rule, not a correctness one.** The links are right; there are simply too many of

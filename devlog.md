@@ -28876,3 +28876,37 @@ are these"*: `build-qid-link-p2600` (the 354-statement file `CLAUDE.md` records 
 by name), `build-label-corrections` (whose job the daily batch's own `Lmul`/`Amul` emission
 appears to cover), and `build-sibling-batch` (which calls itself a one-off and deliberately
 ignores `SIBLING_CAP`). Nothing done to them.
+
+## 2026-09-05 — I put an unchecked batch into the pipeline on a claim, and she caught it
+
+**Retracting what the previous entry said.** `build-missing-reciprocals` was wired into
+`pipeline.yml` on the claim that it emits *"what Wikidata is missing"*, with 1,247 `P40` and
+1,172 `P26` offered as the measurement. That is not what the number is.
+
+The script does **no live check** — her own instruction sits in it, *"do no fuckin check"*,
+because QuickStatements ignores a statement an item already holds and reading a thousand items
+live costs minutes. So it emits everything our tree records among `touched`, which is the ledger
+**plus everyone adjacent to it**: 1,518 ledger people, 2,274 touched, **6,770 statements**,
+re-asserted wholesale for QuickStatements to deduplicate.
+
+That is a sound design for a file she runs by hand and a bad one to pour into the batch she
+reviews. The daily batch emits 39 `P40` **because it checks**; this would have added 1,542 more
+that are mostly already stated. Her words on being shown the framing: *"I don't think there's
+anything to be added that has those properties right now since none are in the ledger."*
+
+Taken back out. `build-regnal-ordinals` (6 `P7338`, against zero in the daily batch) and
+`build-from-diff` stay, and a review of the latter is now at the tail of `queue.md` at her
+instruction — it is the remaining generator that went in on a claim rather than a measurement.
+
+**The sibling cap counts PAIRS now.** Emma: *"We were supposed to emit 20 sibling pairs a day."*
+`add()` runs once per person per sibling, so `A->B` and `B->A` are separate lines and each was
+incrementing the tally — a cap of 20 meant **10 pairs**. Counting the unordered pair gives
+**20 pairs / 39 statement lines** on a fresh run, and 2,637 held. `CLAUDE.md` updated to say
+pairs in both places it names the number.
+
+**And label corrections were already wired in**, which I had guessed at rather than checked.
+`_label_corrections` is defined at `build-garborg-day.py:683` and called at 6879 alongside
+`_cjk_follows_mul`, with `LABEL_EDIT_CAP` (30) pulling label edits on existing items to the
+front of the batch. The second of those covers the documented gap where the CJK labels drift
+while `mul` agrees — 24 items, 46 rows. So the standalone `build-label-corrections.py` is a
+superseded duplicate.

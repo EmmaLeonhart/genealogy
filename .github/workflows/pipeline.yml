@@ -156,9 +156,19 @@ jobs:
       #
       # Neither is duplicative, measured by running them fresh rather than by reading them:
       #
-      #   build-missing-reciprocals   1,247 P40 + 1,172 P26 + 20 P3373, and 2,656 siblings held
-      #                               over the cap -- against 39 P40 and 16 P26 in the live batch
       #   build-regnal-ordinals       6 P7338, against ZERO in the live batch
+      #   build-from-diff             what the model-vs-reality diff says the item lacks
+      #
+      # ⛔ `build-missing-reciprocals` WAS in this step for one commit and has been taken out.
+      # It was added on the claim that it emits what Wikidata is missing, and that was wrong:
+      # the script does **no live check** -- Emma's own instruction in it, *"do no fuckin
+      # check"* -- so its 6,770 statements are everything our tree records among 2,274 touched
+      # people, re-asserted wholesale for QuickStatements to deduplicate. That is a reasonable
+      # design for a file she runs by hand and a bad one to pour into the batch she reviews:
+      # the daily batch emits 39 `P40` because it CHECKS, and this would have added 1,542 more
+      # that are mostly already stated. Her words on being shown the framing: *"I don't think
+      # there's anything to be added that has those properties right now since none are in the
+      # ledger."*
       #
       # P22/P25/P40/P26 are uncapped on purpose -- `CLAUDE.md`: *"they are few per person and
       # each one is structurally load-bearing"* -- while `P3373` stays under `SIBLING_CAP`, which
@@ -167,13 +177,12 @@ jobs:
       #
       # `continue-on-error` for the same reason the deck has it: the Garborg batch is the
       # deliverable and must not be lost to a failure in a batch that rides along.
-      - name: Build the reciprocal and regnal-ordinal batches
+      - name: Build the regnal-ordinal and diff batches
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
           PYTHONPATH: src
         run: |
-          python scripts/build-missing-reciprocals.py
           python scripts/build-regnal-ordinals.py
           python scripts/build-from-diff.py || echo "from-diff skipped: needs a diff to read"
 
