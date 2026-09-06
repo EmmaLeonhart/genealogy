@@ -30242,3 +30242,34 @@ script that reads them. Replaced with what is actually outstanding: **two emitte
 saved-page operation and disagree on one point** — whether an unknown parent is an `NN` person or
 an absent slot — and that wants a decision rather than both being left running over the same
 input. The paths operation is not duplicated; nothing new reads `paths/*.tsv`.
+
+## Two operations, tiny GEDCOMs for both, nobody invented
+
+Her ruling: **an unknown parent is an absent slot, not an `NN` person**, reversing her own
+2026-08-29 placeholder instruction. And the shape: *"There's two distinct operations. Paths and
+profiles. Both ought to make tiny gedcoms for each path or individual."*
+
+`scripts/build-tiny-gedcoms.py` does both, measured on the real inputs:
+
+    profiles   13 tiny gedcoms   <- geni-families/*.tsv
+    paths     694 tiny gedcoms   <- paths/*.tsv
+    28,648 INDI lines, ZERO invented people
+
+A sibling hop is a family with two `CHIL` and no partners -- siblinghood stated, nothing claimed
+about the parents. `build-family-gedcoms.py`, written an hour earlier and covering half of one
+operation, is deleted as superseded.
+
+**The redundancy she insisted on twice is the mechanism, not a cost.** The path GEDCOM says A and
+B are siblings with parents unknown; each member's own profile GEDCOM brings the real parents; the
+merge fuses all three on the Geni id. Scraping one of a pair gets one side's account.
+`scripts/sibling-pair-worklist.py`: **2,130 pairs, 2,528 distinct people, 2,527 with no scrape**.
+
+**Her diagnosis of the whole afternoon, now in `CLAUDE.md`:** *"you just saw something that
+vaguely looked like it that had errors ... and you reported it as though it was doing the same
+operation."* `build-scraped-gedcom.py` was incomplete earlier work toward the design she was
+describing -- she did not know its output had reached the synoptic tree at all. Measuring its
+errors and reporting them as findings described the gap between where that work stopped and where
+it was going, while sounding like a discovery about a finished mechanism.
+
+Retiring it stays queued rather than done: it holds the only reader of `geni-scraping/`'s 1,555
+saved pages, and removing its two files changes every merge.

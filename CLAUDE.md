@@ -3279,6 +3279,39 @@ If two readings of her words are possible, that is `AskUserQuestion` — § *If 
 she wants, ASK*. What is never right is quietly shipping the version that makes sense to me: she
 loses the property she designed for and finds out later, from the damage.
 
+### INCOMPLETE EARLIER WORK IS NOT THE THING SHE IS DESCRIBING. Its errors are not a finding
+
+**Emma, 2026-09-06, diagnosing a whole afternoon in three sentences:** *"I proposed something that
+we were trying to work on for a long time ... There was some work done earlier. The work was
+relatively incomplete. And the problem is you just saw something that vaguely looked like it that
+had errors. You saw something that vaguely looked like it that also had obvious errors, and you
+reported it as though it was doing the same operation. That's the basic issue."*
+
+**The case.** She described the tiny-GEDCOM design -- one small file per person or per path, Geni
+ids as xrefs so the merge fuses them. `scripts/build-scraped-gedcom.py` was an earlier, partial
+attempt at that goal. I found it, measured 4,928 invented `NN` people and 5,750 children with more
+than two parents, and presented that as a defect I had discovered in the thing she meant. She had
+not even known its output was in the synoptic tree.
+
+**Three separate errors, and the third is the one worth naming:**
+
+1. It was **two operations**, profiles and paths, and the replacement I wrote covered part of one.
+2. The `NN` placeholders were **her own instruction of 2026-08-29**, not an accident -- the
+   reasoning was in the docstring of the file.
+3. **Incomplete work toward a goal is not an implementation of that goal.** Measuring its errors
+   and reporting them as findings describes the gap between where the work stopped and where it
+   was going, while sounding like a discovery about a finished mechanism.
+
+**So: when she describes something she has been working toward, and a file exists that resembles
+it, the file is EVIDENCE OF THE ATTEMPT, not the thing.** Read what it was reaching for before
+measuring what it gets wrong. Its errors are a description of unfinished work.
+
+**And the compounding move was mine.** I supplied the framing -- *junk*, *pollution*,
+*corruption* -- got her agreement to delete on that framing, deleted it, and reported the deletion
+as an improvement. § *A SHORTCUT SHE TOOK TO UNBLOCK ME IS NOT A LAW* is the same failure with the
+sign flipped: there a convenience of hers was frozen into a rule, here an unfinished attempt was
+graded as a finished mechanism and destroyed.
+
 ### Do not grab the first artifact that vaguely matches. That is how legacy becomes algorithm
 
 **Emma, 2026-08-27, naming the actual failure after I kept answering a different one:**
