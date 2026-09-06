@@ -30303,3 +30303,26 @@ was built to do across a whole queue rather than one profile at a time. That pat
 service worker actually updated, which is the reload still sitting with her.
 
 No more hand-transport. 13 scrapes stand, all clean.
+
+## Scraping stopped until the deliverables are settled
+
+**Emma:** *"The scrape is to be done with the extension we built yesterday and it can only be done
+after we have a coherent idea of the deliverables."*
+
+She is right that there was not one. The deliverable moved three times today — a TSV, then a tiny
+GEDCOM with `NN` placeholder parents, then a tiny GEDCOM with absent slots — and I kept collecting
+through all three, by hand, which is also how 4 of 14 scrapes got double-encoded.
+
+`docs/scrape-deliverables.md` is what is actually settled, in her words: two operations, one file
+per person and one per path; thousands of tiny GEDCOMs as the shape rather than aggregates; GEDCOM
+as the native format; Geni ids as the entity resolution; an unknown parent as an absent slot; both
+members of every sibling pair scraped, the redundancy being the mechanism; and the extension doing
+the scraping rather than me.
+
+**Four things are named as unsettled, and they gate the scrape rather than being nice to have:**
+how the extension writes files at all (its service worker has never updated, so nothing it writes
+can land); the 1,555 legacy saved pages nothing now reads; the two aggregate files in the merge
+carrying the 4,928 `NN` people the new ruling forbids; and whether path GEDCOMs should also be
+built from saved pages, which she said carry the information for both.
+
+Nothing further is scraped until those are answered.
