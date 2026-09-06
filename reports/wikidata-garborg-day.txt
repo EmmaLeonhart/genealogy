@@ -152,7 +152,7 @@ LAST	P31	Q110874
 #   Q1345250 Petrus Königsson Kenicius: P5056 patronym or matronym = the item just created, qualified P144 based on Q115631696
 Q1345250	P5056	LAST	P144	Q115631696	S2600	"6000000002567020255"
 
-# 143 more name items are needed and wait for a later
+# 151 more name items are needed and wait for a later
 # run -- 6 a day is her cap, not a limit of the data:
 #   Lauritsen (patronymic), 2 bearer(s)
 #   Malmeim (family), 2 bearer(s)
@@ -166,11 +166,50 @@ Q1345250	P5056	LAST	P144	Q115631696	S2600	"6000000002567020255"
 #   Rasmusson (patronymic), 2 bearer(s)
 #   Samuelsdotter (patronymic), 2 bearer(s)
 #   Skanderborg (family), 2 bearer(s)
-#   ... and 131 more
+#   ... and 139 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
 # ========================================================================
+
+# ------------------------------------------------------------------------
+# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 30 PEOPLE,
+#   both her instruction: "any label changes should occur at the beginning of
+#   the batch and be limited to a count of 15 labels added per batch", and
+#   "we do all at once per qid (15 qids) in descending order of qids". A label
+#   set at CREATION time is neither counted nor capped -- "a label added during
+#   item creation is good".
+#   Newest items first, deliberately: a recent item with an error in it looks
+#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
+#   languages, then the rest.
+#   2 people, 12 edits; 0 edits held for a later run
+#   across 0 more people. A repeat is a no-op, so nothing is lost.
+# ------------------------------------------------------------------------
+#   Q5627051 Mattias Edenberg: add a mul alias "Mattias Edenberg"
+Q5627051	Amul	"Mattias Edenberg"
+#   set the mul label to "Mathias Edenberg"
+Q5627051	Lmul	"Mathias Edenberg"
+#   set the zh label to "马蒂亚斯·埃登贝尔格"
+Q5627051	Lzh	"马蒂亚斯·埃登贝尔格"
+#   Q5602483: set the en label to 'Johan Börgesson Carlberg'
+Q5602483	Len	"Johan Börgesson Carlberg"
+#   Q5602483: holds 'Johan Börjesson Carlberg'; ours is 'Johan Börgesson Carlberg'
+#   Q5602483: keep the outgoing label as an alias before it is replaced
+Q5602483	Amul	"Johan Börjesson Carlberg"
+#   Q5602483: set the mul label to 'Johan Börgesson Carlberg'
+Q5602483	Lmul	"Johan Börgesson Carlberg"
+#   Q5602483: set the ja label
+Q5602483	Lja	"ヨハン・ボルゲソン・カルルベルグ"
+#   Q5602483 Johan Börgesson Carlberg: set the ja label to "ヨハン・ボルイェソン・カルルベルグ"
+Q5602483	Lja	"ヨハン・ボルイェソン・カルルベルグ"
+#   Q5602483: set the zh label
+Q5602483	Lzh	"约翰·博尔盖松·卡尔尔贝尔格"
+#   set the zh label to "约翰·博尔耶松·卡尔尔贝尔格"
+Q5602483	Lzh	"约翰·博尔耶松·卡尔尔贝尔格"
+#   Q5602483: set the ko label
+Q5602483	Lko	"조한 뵈르게손 카르르베르그"
+#   set the ko label to "조한 뵈르제손 카르르베르그"
+Q5602483	Lko	"조한 뵈르제손 카르르베르그"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -1556,6 +1595,8 @@ Q141319025	P26	Q141319256	S2600	"6000000000325081072"
 Q141318974	P26	Q141318985	S2600	"6000000005607599851"
 #   Q141319148 Henrik Abrahamsson Heerdhielm: P26 spouse = Q141319253 Maria Jönsdotter Grubb
 Q141319148	P26	Q141319253	S2600	"6000000006734732178"
+#   Q141249729 Kristina Olofsdotter Spaak: P26 spouse = Q5602483 Johan Börgesson Carlberg
+Q141249729	P26	Q5602483	S2600	"6000000006897337018"
 #   Q141319253 Maria Jönsdotter Grubb: P26 spouse = Q141319148 Henrik Abrahamsson Heerdhielm
 Q141319253	P26	Q141319148	S2600	"6000000007180332839"
 #   Q141318872 Arne Olvirsson Aga: P26 spouse = Q141318905 Bergljot Sigurdsdotter Aga
@@ -1564,6 +1605,8 @@ Q141318872	P26	Q141318905	S2600	"6000000007280726030"
 Q141318905	P26	Q141318872	S2600	"6000000007281071419"
 #   Q141319251 Margareta Christina Charlotta Hampusdotter Mörner af Morlanda: P25 mother = Q141319250 Magdalena Margareta Bonde af Björnö
 Q141319251	P25	Q141319250	S2600	"6000000007415230885"
+#   Q141290459 Elisabet Lilliemarck: P26 spouse = Q5627051 Mattias Edenberg
+Q141290459	P26	Q5627051	S2600	"6000000007645338406"
 #   Q141318970 Kristina Charlotta Österberg: P40 child = Q141318987 Wilhelm Leonard Agathon Klinckowström
 Q141318970	P40	Q141318987	S2600	"6000000008778858099"
 #   Q141318909 Erik Gustaf Klingenstierna: P26 spouse = Q141318906 Charlotta Eleonora Hauff
@@ -1576,6 +1619,8 @@ Q141318906	P26	Q141318909	S2600	"6000000011927519928"
 Q141319250	P40	Q141319251	S2600	"6000000013302336871"
 #   Q141319370 Siri Jonsdatter Foss: P734 family name = Q16870001 Foss
 Q141319370	P734	Q16870001
+#   Q141249730 Margareta Catharina Clo: P26 spouse = Q5627051 Mattias Edenberg
+Q141249730	P26	Q5627051	S2600	"6000000020488764955"
 #   Q141318987 Wilhelm Leonard Agathon Klinckowström: P25 mother = Q141318970 Kristina Charlotta Österberg
 Q141318987	P25	Q141318970	S2600	"6000000023047493512"
 #   Q141318968 John Anderssen Lea: P26 spouse = Q141318973 Marta Eivindson Lea
