@@ -29551,3 +29551,18 @@ and offering only one axis chooses it for her.** Four options on one wrong premi
 against the 1,000 floor, so she skips by 86. Her path search is still pending, so the gate has
 not actually decided anything for her yet; if she resolves to a miss she is the first person the
 threshold itself turns away, and that is the row to look at before anyone moves the number.
+
+**The export gate becomes ONE floor of 300.** Emma, 2026-09-06: *"Any number over 1,000 is a sure
+export, i say even any number over 300 lol"*. The five per-figure thresholds were mine and are
+gone; her sentence is a single reading of when the statistics block says there is more there than
+the page shows, so whichever figure carries the number, over 300 clears.
+
+It moves in both directions and that is worth stating, because only one half is obvious.
+`family_tree` and `blood_relatives` came **down** from 1,000. `ancestors`, `descendants` and
+`followers` went **up**, from 100 / 100 / 10 — so a profile clearing on twelve followers alone no
+longer does. Her floor is a floor on the evidence, not a licence for the weakest figure.
+
+**Measured over all twelve readings: exactly one row changes.** Valentine Eisner, Family Tree 914,
+SKIP → EXPORT — the borderline flagged last hour as the first person the threshold itself would
+turn away. She was, and now she is not. Camillo Ballin still skips at Family Tree 11, which is the
+case the gate was built for.

@@ -51,29 +51,19 @@ read, and every one is a threshold to be corrected by measurement rather than a 
 
 from __future__ import annotations
 
-#: The floor per figure. Clearing ANY of these clears the gate.
+#: ⛔ ONE FLOOR, ACROSS EVERY FIGURE. Emma, 2026-09-06: *"Any number over 1,000 is a sure export,
+#: i say even any number over 300 lol"*.
 #:
-#: blood_relatives  -- 1,000. **The NUMBER is hers; the FIGURE was not.** She was asked "where is
-#:                     the floor?" with all four options written in blood relatives, so 1,000 is
-#:                     the only thing she actually picked out of that menu. She then corrected the
-#:                     axis twice -- see the module docstring. Do not record this as her having
-#:                     chosen blood relatives.
-#: family_tree      -- the same scale: it is the component size and is never smaller than the
-#:                     blood count in the readings we hold.
-#: ancestors        -- 100 generations-worth of recorded line is a deep tree, not a stub.
-#:                     Readings: Ballin 5, Drouillard 61, Kann 72, Anna Rood 216, Sara 396,
-#:                     Arne Garborg 3,154.
-#: descendants      -- 100, the same reasoning downward. Almost every isolate reads 0.
-#: followers        -- 10. Followers are OTHER GENI USERS watching the profile, so a followed
-#:                     profile sits in a maintained region even when its own counts are small.
-#:                     Readings: Ballin 1, Arne 32.
-THRESHOLDS = {
-    "family_tree": 1000,
-    "blood_relatives": 1000,
-    "ancestors": 100,
-    "descendants": 100,
-    "followers": 10,
-}
+#: This replaced five separate thresholds — 1,000 / 1,000 / 100 / 100 / 10, one per figure, which
+#: were mine. Her sentence collapses them: it is not a per-figure judgement at all, it is a single
+#: reading of when the statistics block says there is more there than the page shows. **Whichever
+#: figure carries the number, over 300 is enough.**
+#:
+#: Note what moved and what did not. The two big figures came DOWN from 1,000, which is the point
+#: — Valentine Eisner reads Family Tree 914 and was skipped by 86 under the old floor. The three
+#: small ones went UP, from 100 / 100 / 10, so a profile with 12 followers no longer clears on
+#: that alone; her sentence is a floor on the evidence, not a licence for the weakest figure.
+FLOOR = 300
 
 #: Geni's query ceilings. A figure at one of these is a FLOOR on the true value, not a count --
 #: Emma, 2026-09-03: *"15,000 on any number there is a flag that the query number exceeded the
@@ -81,15 +71,18 @@ THRESHOLDS = {
 #: as though it were measured.
 CEILINGS = (5000, 15000)
 
+#: The figures the block carries, in the order Geni prints them.
+FIGURES = ("family_tree", "blood_relatives", "ancestors", "descendants", "followers")
+
 
 def decide(stats: dict) -> dict:
     """Fire step 3b, or not, with the figure that decided it named.
 
     `stats` is the collector's statistics block: `family_tree`, `blood_relatives`, `ancestors`,
-    `descendants`, `followers`. A missing key is zero.
+    `descendants`, `followers`. A missing key is zero. Any one figure at or above `FLOOR` clears.
     """
-    read = {k: int(stats.get(k) or 0) for k in THRESHOLDS}
-    cleared = [k for k, v in read.items() if v >= THRESHOLDS[k]]
+    read = {k: int(stats.get(k) or 0) for k in FIGURES}
+    cleared = [k for k, v in read.items() if v >= FLOOR]
     saturated = [k for k, v in read.items() if v in CEILINGS]
     return {
         "export": bool(cleared),
@@ -100,6 +93,6 @@ def decide(stats: dict) -> dict:
             "no figure clears its threshold; the miss is real and an export would return "
             "only what is already on the page"
             if not cleared else
-            "cleared by " + ", ".join("%s=%d>=%d" % (k, read[k], THRESHOLDS[k]) for k in cleared)
+            "cleared by " + ", ".join("%s=%d>=%d" % (k, read[k], FLOOR) for k in cleared)
         ),
     }

@@ -46,12 +46,22 @@ and a `Forest` export follows spouse links precisely to cross the in-law edges `
 excludes.
 
 `scripts/export_gate.py` is the single place. The test is **disjunctive**: any one figure clearing
-its own floor clears the gate, because they measure different things and a person can be evidently
+the floor clears the gate, because they measure different things and a person can be evidently
 connected by any of them.
 
-    family_tree      >= 1000      blood_relatives >= 1000   <- her number, chosen 2026-09-06
-    ancestors        >=  100      descendants     >=  100
-    followers        >=   10
+**⛔ ONE FLOOR, 300, ACROSS EVERY FIGURE.** Emma, 2026-09-06: *"Any number over 1,000 is a sure
+export, i say even any number over 300 lol"*. That replaced five per-figure thresholds — 1,000 /
+1,000 / 100 / 100 / 10 — which were mine. Her sentence is not five judgements, it is one reading
+of when the block says there is more there than the page shows, so whichever figure carries the
+number, over 300 is enough.
+
+    family_tree  ·  blood_relatives  ·  ancestors  ·  descendants  ·  followers   >= 300
+
+Note both directions. The two big figures came **down** from 1,000, which is the point — Valentine
+Eisner reads Family Tree 914 and was skipped by 86. The three small ones went **up**, so a profile
+with 12 followers no longer clears on that alone: it is a floor on the evidence, not a licence for
+the weakest figure. Measured over the twelve readings held, **exactly one changes** — Valentine
+Eisner, SKIP to EXPORT — and Ballin still skips at 11.
 
 **The case that proves `family_tree` is the right primary figure** is Dorothy Jeakins:
 Family Tree 1,405, Blood Relatives **1**. She is connected through in-laws, and a blood-relative
