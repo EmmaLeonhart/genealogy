@@ -29199,3 +29199,43 @@ where a `.ged` is filed is hers. The third is her own Forest export, 5,000 indiv
 `Hans /father of Anne Margrethe Kingo/`.
 
 No export is in flight and the watcher cron is deleted.
+
+## 2026-09-05 — addParent's silent failure was the anchor navigating, and two of my claims were wrong
+
+**The fault: clicking `Add Family` navigated to its `href="#"` fragment and tore the in-flight
+content-script job down** before its `try/catch` could write anything — which is exactly why it
+failed producing none of the states it defines. `link.addEventListener("click", e =>
+e.preventDefault(), {once:true})` fixes it; the page's own handler still opens the dialog.
+
+**Proved with a dry-open rather than by creating somebody.** `stopBeforeSave` fills the form and
+cancels, so the whole path runs on a real person with nothing written. It reached
+`step: cancelled`, `state: would_have_saved`, and the form correct:
+
+    relationship=parent · first=NN · suggest=true · gender=female · deceased=true
+
+Every stage now writes `data-geni-collector-step` as it happens, because a return value is only
+useful if the function reaches its return, and that was the whole question.
+
+**⛔ CORRECTION: Suggest surnames DOES fill the field.** I wrote on 2026-09-05 that *"the
+suggestion does not exist until the profile is saved"* and made the last-name field blank on
+purpose on the strength of it. On this dialog Geni filled it with **`Hoknes Himo`** before any
+save. The earlier reading was taken on Kari Olsdatter, whose only surname is a patronymic, where
+Geni declines to suggest — so the suggestion is CONDITIONAL, and I generalised one negative case
+into a rule. Her rules for correcting a suggested surname therefore have something to operate on
+after all.
+
+**⛔ CORRECTION: my "a real click does not work either" test was invalid.** I clicked
+`(744, 548)` from `getBoundingClientRect`, which is viewport space and not where the screenshot's
+Save button was; it landed in the middle of the form. Save was at `(930, 683)`. Clicking there
+created the person immediately. A measurement taken through the wrong coordinate frame is not a
+measurement, and it nearly became "trusted events are required", which is false.
+
+**Created: `NN Hoknes Himo` `6000000227614959821`**, mother of Elias Kahrs Ingebrigtsen Hoknes
+Himo `6000000177969361824` — tier 3, father present, mother absent. Recorded in
+`reports/geni-created-placeholders.tsv`.
+
+**What is still NOT verified**: the extension's own `$("submit_ifs").click()`. The form was
+filled by the extension but the Save was a real mouse click, so the last step of the creation path
+remains untested — and testing it would mean creating a second, unwanted mother for the same
+person. The queue item stays open for that reason and for the queue-stopping half, which needs
+the background scheduler that only the unreachable popup can drive.

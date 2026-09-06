@@ -274,13 +274,30 @@ GC.seed.correctSurname = function (suggested, patronymic) {
 /* ---------------------------------------------------------------- creating */
 
 GC.seed.addParent = async function (which, p) {
+  /* ⛔ EVERY STAGE IS RECORDED AS IT HAPPENS, because this function failed SILENTLY on
+   * 2026-09-05 -- no result, and none of the states it defines for failure. A return value is
+   * only useful if the function reaches its return, and the whole question here is whether it
+   * does. `data-geni-collector-step` is written before each stage, so a job that dies leaves
+   * its last completed stage on the page where the next read can see it. */
+  const step = (s) => { document.documentElement.dataset.geniCollectorStep = s; };
+
+  step("find-add-link");
   const link = GC.byText("a", /^add family$/i).find(GC.visible);
   if (!link) return { state: "no_add_link" };
+
+  /* ⛔ `preventDefault` ON AN `href="#"` ANCHOR. Clicking it navigates to the `#` fragment, and
+   * that navigation is the leading suspect for tearing the in-flight job down. The page's own
+   * handler still runs -- the dialog opens either way -- so suppressing the default costs
+   * nothing and removes a whole class of failure. */
+  link.addEventListener("click", (e) => e.preventDefault(), { once: true });
+  step("clicked-add-link");
   link.click();
 
+  step("waiting-for-dialog");
   const ok = await GC.until(() => document.getElementById("page_profile_names_en-US_first_name") &&
                                   document.getElementById("submit_ifs"), 15000);
   if (!ok) return { state: "dialog_never_opened" };
+  step("dialog-open");
 
   const $ = (id) => document.getElementById(id);
   const set = (el, v) => {
@@ -330,7 +347,26 @@ GC.seed.addParent = async function (which, p) {
   const dead = $("page_profile_is_alive_false");
   if (dead && !dead.checked) dead.click();
 
+  /* A dry-open: everything except the irreversible click, so the path can be exercised on a
+   * real person without creating one. */
+  if (p.stopBeforeSave) {
+    const filled = {
+      relationship: $("relationship").value,
+      first: $("page_profile_names_en-US_first_name").value,
+      last: $("page_profile_names_en-US_last_name").value,
+      suggest: $("suggest_surnames").checked,
+      gender: which === "mother" ? $("gender_f").checked : $("gender_m").checked,
+      deceased: $("page_profile_is_alive_false").checked
+    };
+    const cancel = GC.byText("a,button", /^cancel$/i).find(GC.visible);
+    if (cancel) cancel.click();
+    step("cancelled");
+    return { state: "would_have_saved", filled: filled };
+  }
+
+  step("clicking-save");
   $("submit_ifs").click();
+  step("saved-clicked");
 
   /* The confirmation is the page itself showing the parent it did not show before. § *Never run a
    * search to recover an ID. Bail.* -- Geni's search is banned outright and lags creation by an
@@ -398,6 +434,8 @@ GC.runSeed = async function (job) {
     return report({ state: "proposed", which: which, tier: p.tier, first: p.first,
                     last: p.last, why: p.why, name: nm.display, parents: n, enqueue: [] });
   }
+  /* The job's dry-open flag rides on the plan, which is what `addParent` receives. */
+  p.stopBeforeSave = !!job.stopBeforeSave;
   const r = await GC.seed.addParent(which, p);
   /* An add that fails is a skip, not a stop: the walk takes the next person off the queue. */
   return report(Object.assign({ which: which, tier: p.tier, first: p.first, last: p.last,
