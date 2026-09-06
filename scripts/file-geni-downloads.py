@@ -30,6 +30,10 @@ PATHS = REPO / "geni-paths"
 REPORTS = REPO / "reports"
 
 CAPTURE = re.compile(r"^(?P<id>[0-9]+)-(?P<kind>blood|inlaw)\.(?P<ext>html|tsv)$", re.I)
+#: Step 1 of the per-individual loop -- the immediate family scraped off the page. One file
+#: per person, and they accumulate, so they get their own directory rather than joining the
+#: path captures.
+FAMILY = re.compile(r"^(?P<id>[0-9]+)-family\.tsv$", re.I)
 RESULTS = re.compile(r"^geni-collector-results(?: \(\d+\))?\.tsv$", re.I)
 EXPORTS = re.compile(r"^export-geni.*\.zip$", re.I)
 
@@ -66,6 +70,8 @@ def main() -> int:
             dest = (REPO / "paths" / ("isolate-geni-%s-%s.tsv" % (m.group("id"), m.group("kind").lower()))
                     if m.group("ext").lower() == "tsv"
                     else PATHS / f.name.lower())
+        elif FAMILY.match(f.name):
+            dest = REPO / "geni-families" / f.name.lower()
         elif RESULTS.match(f.name):
             dest = REPORTS / "geni-collector-results.tsv"
         else:

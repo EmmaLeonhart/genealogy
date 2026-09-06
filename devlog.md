@@ -29330,3 +29330,47 @@ them from today's export file. Her answer: *"why are you doing this stuff using 
 walk finds slots by climbing **live**, and needs no candidate list at all.
 
 Nothing has been deleted. Whether the three should stay is hers.
+
+## 2026-09-06 — her per-individual loop, written down, and step 1 built
+
+She dictated the whole loop: *"There's three things: forest from created individual, making a path
+from Charlemagne to the individual, and getting the family members from the page only. Generally
+on each individual we always grab the html family members and save them first, then try to get the
+Charlemagne path, and if it succeeds then good, if not then we do the forest thing out of the
+isolated geni individuals. We also do the immediate family scrape on sibling pairs in paths because
+parents are needed and this is the quickest way to get them."*
+
+`docs/per-individual-loop.md` is that, verbatim, with the order treated as the specification:
+
+    1.  ALWAYS scrape the immediate family from the HTML and SAVE it   <- everybody, first
+    2.  try the Charlemagne path
+    3a.   found     -> done
+    3b.   not found -> create a placeholder, Forest export from it
+
+**Step 1 was the missing job and is now built** — `content/family.js`, routed as `job:"family"`.
+It is the cheap unconditional one: no search requested, no export spent, nothing created, on a
+page load steps 2 and 3 were going to make anyway. It writes `<geni id>-family.tsv` carrying the
+subject, Geni's own prose line, the statistics block, and a row per relative with the relationship
+it was listed under; `scripts/file-geni-downloads.py` files them into `geni-families/`.
+
+**It reads the PROSE block, not the labelled one** — the labelled block reported `father` alone
+for a woman with two parents on 2026-09-05, and that is what put a spurious third parent on a live
+profile.
+
+**And it was wrong on its first run in a way worth recording**, because the shape recurs: scoped
+to `lead[0].parentElement` it returned **parents only** on a man whose page also lists a wife and
+a son. Each line of the block has its own parent element, so that container was one line, and the
+result looked like a complete answer while dropping two thirds of the family. Climbing to the
+ancestor that also contains the last phrase fixes it — verified on the same person:
+
+    before   relatives 2   {parent: 2}
+    after    relatives 4   {parent: 2, spouse: 1, child: 1}
+
+**Why this matters most for siblings**, which is the second half of her instruction: Geni records
+no sibling edge, so two siblings are joined only through a shared parent, and a path stepping
+sideways between them names a parent that may be in nothing we hold. **2,125 sibling steps of
+30,329, across 662 of 696 path files** — so this is most paths, not an edge case.
+
+**And it reframes the three placeholders created earlier tonight as out of order**, not merely
+unexported: step 1 should have banked their family members first, and step 3b is reached only
+after step 2 fails.
