@@ -30235,3 +30235,10 @@ NOT A LAW* is about, inverted: there I froze a convenience of hers into a rule; 
 deliberate mechanism of hers for an accident. Both come from not reading why the thing was the way
 it was before acting on it — and this time the reason was written down, in her words, in the
 docstring of the file I deleted.
+
+**The queue item I added an hour ago was false the moment the restore landed** — it said the
+1,555 saved pages contribute nothing to the tree, which was true only while I had deleted the
+script that reads them. Replaced with what is actually outstanding: **two emitters now cover the
+saved-page operation and disagree on one point** — whether an unknown parent is an `NN` person or
+an absent slot — and that wants a decision rather than both being left running over the same
+input. The paths operation is not duplicated; nothing new reads `paths/*.tsv`.
