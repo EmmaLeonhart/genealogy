@@ -58,8 +58,13 @@ across 95% of paths. `scripts/sibling-pair-worklist.py` is the list of who still
 from __future__ import annotations
 
 import hashlib
+import io
 import pathlib
 import re
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PROFILE_OUT = ROOT / "exports" / "tiny-profiles"
@@ -225,6 +230,66 @@ def path_gedcom(name, rows):
                   "one tiny GEDCOM per Geni relationship path")
 
 
+# ---------------------------------------------------------------- saved pages
+
+def saved_page_gedcom(subject, names, edges):
+    """A tiny GEDCOM from one saved `geni-scraping/<id>.html`.
+
+    **Emma, 2026-09-06:** *"we save them on every saved geni html page to start."* The 1,555 pages
+    already on disk are the starting population -- no browser, no rate limit, no CAPTCHA.
+
+    Same rules as the extension's TSVs: every `INDI` is a real Geni profile, and an unknown parent
+    is an absent slot. Where `build-scraped-gedcom.py` minted two `NN` parents to hold a sibling
+    group, this writes the group as a `FAM` with `CHIL` and no partners.
+
+    **Half-siblings are still skipped**, which is hers and unchanged: two half-siblings share
+    exactly one parent, so giving them both would assert a marriage that did not happen. Her
+    ruling: *"If half siblings we go to both siblings to clarify."*
+    """
+    people = dict(names)
+    people.setdefault(subject, names.get(subject, ""))
+    fams = []
+    seen = set()
+    for phrase, others in edges:
+        ids = [pid for pid, _ in others]
+        if phrase in ("son of", "daughter of", "child of"):
+            key = ("C", tuple(sorted(ids)), subject)
+            if key in seen or not ids:
+                continue
+            seen.add(key)
+            fams.append({"husb": ids[0], "wife": ids[1] if len(ids) > 1 else None,
+                         "chil": [subject]})
+        elif phrase in ("father of", "mother of"):
+            key = ("P", subject, tuple(sorted(ids)))
+            if key in seen:
+                continue
+            seen.add(key)
+            fams.append({"husb": subject if phrase == "father of" else None,
+                         "wife": subject if phrase == "mother of" else None,
+                         "chil": ids})
+        elif phrase in ("husband of", "wife of", "partner of"):
+            for other in ids:
+                pair = tuple(sorted((subject, other)))
+                if ("S", pair) in seen:
+                    continue
+                seen.add(("S", pair))
+                fams.append({"husb": subject if phrase == "husband of" else other,
+                             "wife": other if phrase == "husband of" else subject,
+                             "chil": []})
+        elif (phrase.endswith("brother of") or phrase.endswith("sister of"))                 and not phrase.startswith("half"):
+            group = sorted({subject} | set(ids))
+            key = ("SIB", tuple(group))
+            if key in seen:
+                continue
+            seen.add(key)
+            # No parents are invented. Siblinghood stated, parentage not claimed.
+            fams.append({"chil": group})
+    if not fams:
+        return None
+    return render("subject geni:%s" % subject, people, {}, fams,
+                  "one tiny GEDCOM per saved Geni profile page")
+
+
 def main():
     PROFILE_OUT.mkdir(parents=True, exist_ok=True)
     PATH_OUT.mkdir(parents=True, exist_ok=True)
@@ -237,6 +302,27 @@ def main():
             (PROFILE_OUT / ("%s.ged" % subject)).write_text(text, encoding="utf-8")
             n_prof += 1
 
+    from genimerge.genipage import html_of_saved_page
+    from scraped_pages import parse_family
+    n_pages = n_bad = 0
+    for p in sorted((ROOT / "geni-scraping").glob("*.html")):
+        subject = p.stem
+        if not subject.isdigit():
+            continue
+        out_path = PROFILE_OUT / ("%s.ged" % subject)
+        if out_path.exists():
+            continue          # an extension scrape is fresher; do not overwrite it
+        try:
+            names, edges = parse_family(
+                html_of_saved_page(io.open(p, encoding="utf-8", errors="replace").read()))
+            text = saved_page_gedcom(subject, names, edges)
+        except Exception:
+            n_bad += 1
+            continue
+        if text:
+            out_path.write_text(text, encoding="utf-8")
+            n_pages += 1
+
     for p in sorted((ROOT / "paths").glob("*.tsv")):
         rows = read_path_tsv(p)
         text = path_gedcom(p.stem, rows)
@@ -244,7 +330,8 @@ def main():
             (PATH_OUT / ("%s.ged" % p.stem)).write_text(text, encoding="utf-8")
             n_path += 1
 
-    print("profiles: %d tiny gedcoms in %s" % (n_prof, PROFILE_OUT.relative_to(ROOT)))
+    print("profiles: %d from extension scrapes, %d from saved pages (%d unparseable) in %s"
+          % (n_prof, n_pages, n_bad, PROFILE_OUT.relative_to(ROOT)))
     print("paths:    %d tiny gedcoms in %s" % (n_path, PATH_OUT.relative_to(ROOT)))
     print("invented people: 0 -- an unknown parent is an absent slot")
     return 0

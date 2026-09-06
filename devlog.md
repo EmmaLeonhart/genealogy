@@ -30391,3 +30391,32 @@ three-person file, which trips none of the checks the exclusion exists for.
 
 `DERIVED_DIRS` is back to the one directory that needs it. 1,309 files read by the merge, 1,307
 counted as exports, 2 aggregates excluded.
+
+## Tiny GEDCOMs for every saved page — 1,555 of them, nobody invented
+
+**Emma:** *"I want tiny gedcoms for each path and scraped person. That's the new way. Long term we
+save these. And we save them on every saved geni html page to start."* And: *"Path gedcoms and
+individual ones are different files in different directories even if they come from the same html
+page."*
+
+`build-tiny-gedcoms.py` gained a third reader, over the saved pages already on disk — no browser,
+no rate limit, no CAPTCHA, and no gate:
+
+    profiles   1,565 files  <- 1,555 saved pages + 10 extension scrapes
+    paths        694 files  <- paths/*.tsv
+    50,430 INDI, 35,717 FAM, ZERO invented people
+
+**0 of 1,555 pages failed to parse.** `parse_family` and `html_of_saved_page` are reused rather
+than rewritten, so the reading of a page is the same as it always was; what changed is what is
+done with a sibling group that names no parents. Where `build-scraped-gedcom.py` minted two `NN`
+people to hold it, this writes `CHIL` lines and no partners — `1610437.ged` is the worked case,
+seven siblings and no invented parents.
+
+**Half-siblings are still skipped**, unchanged and hers: two half-siblings share exactly one
+parent, so giving them both would assert a marriage that did not happen.
+
+**An extension scrape is never overwritten by a saved page** — it is fresher and states sex, which
+a page does not.
+
+The merge now reads **1,309 files**: 1,307 counted as exports and the 2 aggregates excluded, since
+`scraped-pages.ged` at 14,121 individuals must not be measured against a 5,000 cap.
