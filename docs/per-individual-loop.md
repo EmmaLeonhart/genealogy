@@ -25,6 +25,37 @@ is going to happen anyway, because steps 2 and 3 both start from that same profi
 family members are free, and taking them first means a person who later fails at step 2 has still
 yielded something.
 
+## ⛔ STEP 3b IS GATED ON THE STATISTICS. A tiny profile gets NO export
+
+**Emma, 2026-09-06**, on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10, Ancestors 5,
+whose Charlemagne search resolved to a genuine *"No path found"*:
+*"this guy has pretty much no relatives so he shouldn't get an export lol"*.
+
+This is the mirror of `CLAUDE.md` § *THE STATISTICS BLOCK IS THE REAL INSTRUMENT*. A **saturated**
+figure beside a *"no relationship found"* means a database failure, so the miss is not real and an
+export is worth spending. A **tiny** figure beside the same sentence means the miss IS real: the
+whole neighbourhood is the handful already on the page, and an export seeded there returns that
+handful. Ballin's would have come back with about eleven people.
+
+**Every figure carries a threshold, not just one.** Her correction, same day, twice: first
+*"why the fuck did you choose blood relatives"* -- `family_tree` is the component size, which is
+what an export can actually reach, and a `Forest` export follows spouse links precisely to cross
+the in-law edges `blood_relatives` excludes -- and then *"All of them need thresholds not just
+blood relatives"*.
+
+`scripts/export_gate.py` is the single place. The test is **disjunctive**: any one figure clearing
+its own floor clears the gate, because they measure different things and a person can be evidently
+connected by any of them.
+
+    family_tree      >= 1000      blood_relatives >= 1000   <- her number, chosen 2026-09-06
+    ancestors        >=  100      descendants     >=  100
+    followers        >=   10
+
+**The case that proves `family_tree` is the right primary figure** is Dorothy Jeakins:
+Family Tree 1,405, Blood Relatives **1**. She is connected through in-laws, and a blood-relative
+gate would have thrown away the one export that could reach her. Of the eight readings we hold,
+Ballin is the only skip.
+
 **Step 3 is the expensive fallback and only fires on failure.** A `Forest` export costs a Geni
 slot, runs one at a time and cannot be cancelled; a created placeholder is a write to a live
 site. Neither is spent on somebody the path already reached.

@@ -123,8 +123,12 @@ GC.runPath = async function (job) {
    * count alone scores every miss as a hit. The target's own id must be ON the chain. */
   const hasTarget = ids.includes(id);
 
+  /* ⛔ THE PAGE IS NOT SAVED. Emma, 2026-09-06: *"we are not supposed to be saving pages lol"*.
+   * The chain is parsed here, in the page, where the markup is -- so what leaves this tab is the
+   * finished path TSV, and the agent writes it into `paths/`. `geni-paths/*.html` is the earlier
+   * page-saving form and stays as the six captures it already holds, not as a destination. */
+  let tsv = "";
   if (hasTarget && links.length >= 3) {
-    await GC.saveBlob(id + "-" + kind + ".html", document.documentElement.outerHTML, "text/html");
     const header = [
       "# Geni relationship path to " + (job.label || id) + " (" + kind + ")",
       "#",
@@ -135,11 +139,12 @@ GC.runPath = async function (job) {
       "# keeps --- half-siblings above all, which no step word states:",
       "# " + description
     ].join("\n");
-    await GC.saveBlob(id + "-" + kind + ".tsv", GC.toTsv(links, header), "text/tab-separated-values");
+    tsv = GC.toTsv(links, header);
   }
 
   return report({
     state: "resolved_path", steps: links.length, hasTarget, requested, stats, description,
-    first: ids[0] || "", last: ids[ids.length - 1] || "", saved: hasTarget && links.length >= 3
+    first: ids[0] || "", last: ids[ids.length - 1] || "",
+    filename: id + "-" + kind + ".tsv", tsv: tsv
   });
 };

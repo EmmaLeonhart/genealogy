@@ -131,11 +131,9 @@ GC.runFamily = async function (job) {
              relatives: 0, stats: stats };
   }
 
-  if (!job.dryRun) {
-    await GC.saveBlob(id + "-family.tsv",
-                GC.family.toTsv(id, subjectName, scraped, stats),
-                "text/tab-separated-values");
-  }
+  /* RETURNED, never downloaded -- `common.js` § *THE COLLECTOR DOES NOT DOWNLOAD FILES*.
+   * Emma, 2026-09-06: *"you write stuff into files in the repo you dummy."* */
+  const tsv = GC.family.toTsv(id, subjectName, scraped, stats);
 
   const counts = {};
   for (const r of scraped.relatives) counts[r.relation || "?"] = (counts[r.relation || "?"] || 0) + 1;
@@ -145,6 +143,6 @@ GC.runFamily = async function (job) {
     relatives: scraped.relatives.length, by_relation: counts,
     parents: scraped.relatives.filter((r) => r.relation === "parent").map((r) => r.geni_id),
     siblings: scraped.relatives.filter((r) => r.relation === "sibling").map((r) => r.geni_id),
-    stats: stats, saved: !job.dryRun
+    stats: stats, filename: id + "-family.tsv", tsv: tsv
   };
 };

@@ -29436,3 +29436,44 @@ which is gitignored and now holds the extract; `git ls-files reports/bio-qids.ts
 nothing, so the file agents kept getting confused by is no longer in the tree. The item was still
 sitting at the top of the queue with no done state, which is exactly what the :45 sweep exists to
 catch. Deleted outright rather than annotated.
+
+## 2026-09-06 — the collector stops downloading, and step 3b gets a statistics gate
+
+**Emma: *"we are not supposed to be saving pages lol ... Only the exports need downloading
+because you write stuff into files in the repo you dummy."*** `GC.saveBlob` is deleted. Every job
+that produced a file now returns its text in the result, which crosses on the same data attribute
+everything else does, and the agent writes it into `paths/` or `geni-families/`. The one real
+download is the Geni export, and that was never this mechanism — Geni serves the zip itself.
+
+**What that removed, and it had been lying for two days.** An `<a download>` click is allowed
+**once** per page by Chrome's automatic-downloads content setting and silently blocked after
+that: no error, no rejected promise, the click returns, the job reports `saved: true`. Four
+family scrapes reported saved and one file existed. That was read as a navigation race and fixed
+with a wait; a fifth scrape then reported saved and still landed nothing, and **a bare probe blob
+with nothing following it landed nothing either**. The probe is what settled it — the wait was
+fixing a cause that was not the cause. Same family as § *check the separator before believing a
+distribution*: an instrument reporting success by observing its own call rather than its own
+effect. Returning the payload removes the failure mode rather than working around it, and
+`saved: true` — which meant *a click returned* — is gone.
+
+**⛔ AND STEP 3b IS NOW GATED — `scripts/export_gate.py`.** Emma, on bishop Camillo Ballin,
+Family Tree 11 / Blood Relatives 10 / Ancestors 5, whose Charlemagne search resolved to a real
+*"No path found"*: *"this guy has pretty much no relatives so he shouldn't get an export lol"*.
+
+This is the mirror of § *THE STATISTICS BLOCK IS THE REAL INSTRUMENT*. A saturated figure beside
+a miss means a database failure, so the export is worth spending; a tiny figure beside the same
+sentence means the miss is real and the export returns only what is already on the page — about
+eleven people, in Ballin's case.
+
+**All five figures carry thresholds, and `family_tree` is the primary one.** Both corrections are
+hers: *"why the fuck did you choose blood relatives"*, then *"All of them need thresholds not just
+blood relatives"*. `family_tree` is the component size, which is what an export can actually
+reach, and a `Forest` export follows spouse links precisely to cross the in-law edges
+`blood_relatives` excludes. The test is disjunctive — any one figure clearing its floor clears
+the gate, because they measure different things.
+
+**Dorothy Jeakins is the case that proves it:** Family Tree 1,405, Blood Relatives **1**. She is
+connected through in-laws, and the blood-relative gate I first wrote would have thrown away the
+one export that could reach her. Over the eight readings we hold, Ballin is the only skip.
+
+The `downloads` permission went with the mechanism — the extension no longer needs it.

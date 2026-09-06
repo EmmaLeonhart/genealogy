@@ -136,37 +136,28 @@ GC.statistics = async function () {
   return out;
 };
 
-/* The proven save. `geni-paths/README.md` -- and the transcript it names -- do it exactly this
- * way: a Blob of `document.documentElement.outerHTML` clicked through an `<a download>`, landing
- * in ~/Downloads to be filed by `scripts/file-geni-downloads.py`.
+/* ⛔ THE COLLECTOR DOES NOT DOWNLOAD FILES. It RETURNS them, and the caller writes the repo.
  *
- * `<a download>` strips path separators, so the file cannot be written into a subfolder from
- * here. That is why filing is a separate step and not a nicety. */
-/* ⛔ IT MUST BE AWAITED, OR THE NAVIGATION EATS THE DOWNLOAD.
+ * **Emma, 2026-09-06:** *"we are not supposed to be saving pages lol ... Only the exports need
+ * downloading because you write stuff into files in the repo you dummy."*
  *
- * A blob download is started by clicking a link and finished by the browser some milliseconds
- * later. If the page is navigated or the tab closed in between, the download never lands -- and
- * the job has already returned `saved: true`, because the click succeeded.
+ * So `GC.saveBlob` is gone. Every job that produced a file now returns its text in the result,
+ * the result crosses on a data attribute like everything else, and the agent writes it into
+ * `paths/` or `geni-families/` directly. That is shorter, it is auditable, and it removes a
+ * whole failure mode: an `<a download>` click is allowed ONCE per page by Chrome's
+ * automatic-downloads content setting and silently blocked after that, with no error and no
+ * rejected promise, so the job reported `saved: true` while nothing landed.
  *
- * Measured 2026-09-06: four family scrapes all reported saved; **one file existed**. The three
- * that vanished were followed immediately by a `navigate` to the next person. The one that
- * survived was the one nothing followed.
+ * MEASURED 2026-09-06 before the rule made it moot: four family scrapes reported saved and one
+ * file existed; the race was fixed; a fifth reported saved and still nothing landed; a bare
+ * probe blob with nothing following it also landed nothing. The probe is what settled it -- the
+ * wait added for the race was fixing a cause that was not the cause. `CLAUDE.md` § *check the
+ * separator before believing a distribution* is the family: an instrument reporting success by
+ * observing its own call rather than its own effect.
  *
- * This is the scheduler's problem too, not just a driving mistake: `background.js` closes the tab
- * the moment a result comes back, which is the same race. So the wait lives here, where every
- * caller gets it, rather than in each caller. */
-GC.saveBlob = async function (name, text, mime) {
-  const b = new Blob([text], { type: mime || "text/html" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(b);
-  a.download = name;
-  document.body.appendChild(a);
-  a.click();
-  /* Long enough for Chrome to take the blob. The revoke stays on a longer timer because the
-   * download reads the URL after the click returns. */
-  await GC.sleep(1500);
-  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 10000);
-};
+ * **The ONE real download is the Geni export**, and it is not this mechanism: Geni serves the
+ * zip itself and `export.js` clicks its link. Nothing here manufactures a file for the browser
+ * to save. */
 
 /* ⛔ A MARKER THE PAGE CAN SEE, so "is the extension loaded?" is answerable in one line.
  *
@@ -179,4 +170,4 @@ GC.saveBlob = async function (name, text, mime) {
  * work was done agentically around it, and the question was answered by asking Emma rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
-document.documentElement.setAttribute("data-geni-collector", "1.0.0");
+document.documentElement.setAttribute("data-geni-collector", "1.1.0");
