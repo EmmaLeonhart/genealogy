@@ -53,6 +53,16 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   describe the wrong thing. Nothing has been investigated; `CLAUDE.md` § *"Add it to the end of
   the queue" means WRITE IT DOWN AND STOP* governs.
 
+- **Experiment: generate the manual parental zipper correspondences into a gitignored GEDCOM that
+  the synoptic tree merge consumes.** Emma, 2026-09-05: *"I actually think a good long term
+  architectural smoothing would make it so that in the pipeline they are generated into a
+  gitignored gedcom that is part of the synoptic tree merge, with qids in bios being a fundamental
+  part of the pipeline. But for now pipeline works well and that will be a thing to experiment
+  with at the end of the queue."* `docs/correspondence-merge-proposal.md` is the proposal, written
+  2026-09-05 at her request; it is not a decision. **The pipeline works and must not be broken** —
+  her words — so the GEDCOM is generated *in addition* first and the direct CSV read goes only
+  once the tree route is shown to carry the same pairs.
+
 ## ⛔ AT THE TAIL — mass export work on the paths for disconnected Wikidata individuals
 
 **Everything established on 2026-09-03, when Emma taught the task by hand after the automated

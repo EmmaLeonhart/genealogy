@@ -4,106 +4,53 @@
 be conflating two different entity resolution files with different functions — one gedcom and one
 that operates within manual identifications I made using an html artifact."*
 
-## ⛔ THERE ARE SUPPOSED TO BE **TWO**, AND THERE ARE. Her words, 2026-09-05
+## ⛔ TWO CHANNELS. `bio-qids.tsv` is the READOUT of one of them, not a third
 
-> *"there are supposed to be two disjoint or nearly disjoint QID, geni id correspondences. With
-> one of them being involved with my active entity resolution that I have been doing using
-> artifacts — that is to say Claude artifacts, not GitHub artifacts, which are effectively
-> inaccessible and against our policy to use. And another was built for the purpose of acting as
-> an entity resolution and later access point thing for Jan 1."*
+**Corrected 2026-09-05 after re-running the extractor**, which is what settled it. This page said
+three sources, then said two by reclassifying one, and both were wrong. The measurement:
 
-| | file | what it is |
-| --- | --- | --- |
-| **1** | `reports/manual-identifications.csv` | her **active entity resolution**, adjudicated in a **Claude artifact**. 204 of its 314 rows carry `batch = emma-pasted-verdicts`, pasted out of that artifact, plus 46 from the parent deck |
-| **2** | `exports/post-merge/wikidata-qid-links.ged` | entity resolution **and a later access point for 2027-01-01** |
+| | channel | how a pair gets in | readout |
+| --- | --- | --- | --- |
+| **1** | **the BIO channel** | she writes the QID into a Geni *About Me*; and `exports/post-merge/wikidata-qid-links.ged` **forces** pairs in as corpus regardless of any export | `reports/bio-qids.tsv` — **184 pairs** |
+| **2** | **the MANUAL PARENTAL ZIPPER channel** | she adjudicates a parent in a **Claude artifact**; the deck writes the verdict | `reports/manual-identifications.csv` — **314 pairs** |
 
-**Measured: their overlap is 0.** The disjointness she describes is not approximate here, it is
-exact.
+    overlap between the two channels: 0
 
-**Both halves of file 2's job are wired.** The resolution half is the GEDCOM itself, which is
-corpus and so reaches the tree through the merge. The access-point half is
-`reports/entry-point-groups.tsv`, where `special-geni-gedcom-recognition` names that file as its
-source with **`active_from = 2027-01-01`** — so it switches on by date, with no cron to die and
-nothing to remember. `CLAUDE.md` § *Entry points DRIP IN on a date* is the mechanism.
+**The GEDCOM is not a third source — it is the FORCING MECHANISM of channel 1.** Emma: *"there's
+one special gedcom file that forces bio qids."* Proved by re-running the extractor: **29 of its
+29 pairs are now in `bio-qids.tsv`, where 3 were before.** They were missing because the extract
+was six days stale, not because they were separate.
 
-**`bio-qids.tsv` is NOT one of the two**, and putting it in the same table as them was the
-error this page was written under. It is not a resolution she made: it is a machine extract by
-`extract-bio-qids.py` of QID links already sitting in Geni **About Me** text, read by the roster
-scripts. A derived reading of the corpus, not an act of entity resolution.
+**And it has a second job**: on **2027-01-01** everyone in it becomes an entry point and by
+extension a ledger item — *"opening up the way for edits in certain eccentric clusters of the
+tree."* Registered in `reports/entry-point-groups.tsv` as `special-geni-gedcom-recognition` with
+`active_from = 2027-01-01`.
 
----
+## ⛔ THE NAME OF CHANNEL 2, which is the thing she asked to have fixed
 
-Measured rather than reasoned about. The three files below are **almost entirely disjoint**, and
-the section above says which two of them are the intended pair.
+**It is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.** Emma, 2026-09-05: *"Artifact entity
+resolution is not 'manual entity resolution' and calling it as such is extremely misleading and
+it's the reason for my fear. It should be called idk 'manual parental zipper merge
+correspondences' since the extremely vague title is almost certainly gonna be fucking abused by
+later agents for other purposes."*
 
-| source | pairs | origin | read by the daily batch? |
-| --- | ---: | --- | --- |
-| `reports/manual-identifications.csv` | **314** | her hand verdicts — `build-manual-identifications.py` unions `emma-judgments.tsv` and `manual-identifications-extra.csv` | **yes**, it is what the `P2600` block reads |
-| `reports/bio-qids.tsv` | **158** | machine-extracted by `extract-bio-qids.py` from the **Geni About Me text inside the exports** | **no** |
-| `exports/post-merge/wikidata-qid-links.ged` | **29** | a hand-built GEDCOM carrying only ids and a `NOTE` with a Wikidata URL | no — it is corpus, so it reaches the *tree*, not the `P2600` block |
+- it is a **manual form of the zipper merge**, the job `zipper-join.py` does by position;
+- **right now, only for parents**;
+- she **hopes to phase it out**, so it is not a permanent channel;
+- **artifact means a CLAUDE artifact**, never a GitHub Actions artifact, which is inaccessible
+  to her and against policy.
 
-## The overlaps, which are what settles the question
+The file is still `reports/manual-identifications.csv` and the pipeline reads it under that name.
+**Renaming it is part of the queued architectural experiment, not something to do mid-pipeline** —
+she said plainly that the pipeline works and must not be broken.
 
-    GEDCOM pairs also in bio-qids       3
-    GEDCOM pairs also in manual         0
-    GEDCOM pairs in NEITHER            26
-    bio pairs also in manual            0
+## ⛔ `bio-qids.tsv` GOES STALE SILENTLY
 
-So each file carries a population the others do not. `manual-identifications.csv` is the
-adjudicated one and the only one feeding the `P2600` block; the other **184** (158 + 26) are
-wired to different jobs -- see the section below, which is the part that matters.
+Nothing schedules `extract-bio-qids.py`. On 2026-09-05 the GEDCOM was updated and the extract was
+last built 2026-08-30, so a file whose whole purpose is to **force** pairs into the corpus had 26
+of its 29 invisible to the reader. Re-running took it 158 → 184. Re-run it before quoting a
+bio-QID number.
 
-**The `batch` column in `manual-identifications.csv` is its own provenance**, per row:
+`docs/correspondence-merge-proposal.md` proposes removing this failure mode by reading the bios
+out of the merged tree rather than by scanning 600 exports.
 
-    204  emma-pasted-verdicts        <- pasted out of the HTML artifact
-     46  parent-adjudication-gui
-     24  rejected-parents
-     14  zipper-sample
-     12  blocked-creations
-      8  charlemagne-spine-anchors
-      3  zipper-hard
-      2  given in conversation
-      1  hand
-
-## ⛔ NONE OF THIS IS A GAP. Each is doing a documented job
-
-**Emma's guess, 2026-09-05, and it is correct:** *"My personal guess here is that it's all done
-correctly but badly documented."* The table above reads like three sources of which one is wired
-and two are neglected. That is the wrong reading, and it is the one this file was written under.
-
-- **The GEDCOM is a HOLDING PLACE and the holding is deliberate.** `CLAUDE.md` § *WHAT
-  `wikidata-qid-links.ged` IS FOR: people TOO FAR OUT to edit yet* -- the identification is
-  sound and the **edit** is withheld, because for somebody nowhere near what the account has
-  been building it *"would be perceived as too out of left field"*. They become ordinary entry
-  points on **2027-01-01**. So its 26 unique pairs are unemitted **on purpose**, and wiring them
-  into the `P2600` block would spend exactly what the file exists to keep.
-- **`bio-qids.tsv` is for ROSTER RESOLUTION, not for emission.** It is read by
-  `build-emperor-rosters.py`, `build-succession-roster.py`, `build-merge-worklist.py` and
-  `slim-corpus.py`. `CLAUDE.md` § *The Geni BIO carries her own QID claims* gives the measured
-  reason: through the bio links the 204 Izumo roster QIDs give **8** Geni ids, where
-  `p2600-all.tsv` gives **2**. That is what it is for, and it is wired for it.
-- **The ledger is her CONTRIBUTIONS, and holds 0 bio pairs correctly.** 1,518 rows: 975 and 469
-  from her Wikidata contributions, 41 from `bureatten.csv`. It records what she has actually
-  made on Wikidata, so a correspondence she has not yet acted on does not belong in it.
-
-**So the disjointness measured above is the design, not a symptom.** Three files, three
-functions, one of them feeding the batch. What was missing was a page saying so -- which is what
-she diagnosed: *"badly documented"*, not wrongly built.
-
-## What is NOT established here
-
-Whether the 184 should reach the batch at all. `bio-qids.tsv` is extracted text rather than an
-adjudicated verdict, and of its 158, **81 are already stated on Wikidata, 7 sit on an item
-carrying a different Geni id, and 70 are on items with no `P2600`** — measured against
-`out/wikidata/p2600-all.tsv`. The GEDCOM's 26 include her own profile `Q232803`, which the
-exclusion lists keep out of the batch deliberately.
-
-**Nothing was wired, changed or emitted on the strength of this file.** Her instruction, same
-message: *"do not mess with anything until I give clear instructions."*
-
-## A caution about `p2600-all.tsv`, which bit while measuring this
-
-It has **no header** — the first line is data (`Q1000005 \t 6000000173769890893`). Read with a
-header-consuming reader it silently yields nothing, and the first run of the comparison above
-reported **"0 already stated, 158 genuine additions"**: clean, plausible and entirely an
-artifact. `CLAUDE.md` records this trap for this exact file and it caught somebody again.

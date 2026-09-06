@@ -3393,6 +3393,61 @@ around them pulls them inward — so a high score can mean *we have not sampled 
 than *this person is structurally peripheral*. Two people is not a correlation and is not offered
 as one; the full version is a `genimerge.density` presence count against the file, unrun.
 
+### ⛔ "MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME AND IT IS THE ONE TO GET RIGHT
+
+**Emma, 2026-09-05, naming the risk rather than the file:** *"Artifact entity resolution is not
+'manual entity resolution' and calling it as such is extremely misleading and it's the reason for
+my fear. It should be called idk 'manual parental zipper merge correspondences' since the
+extremely vague title is almost certainly gonna be fucking abused by later agents for other
+purposes."*
+
+**So `reports/manual-identifications.csv` is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.**
+Not "her identifications", not "manual entity resolution", not a general-purpose place to put a
+Geni-to-Wikidata pair somebody is confident about. What it is:
+
+- **a manual form of the ZIPPER MERGE** -- the same job `scripts/zipper-join.py` does by
+  position, done by eye where position is not enough;
+- **right now, only for PARENTS.** Her words. The parent deck is the instrument
+  (§ *THE PARENT DECK*), and 46 of its rows carry `batch = parent-adjudication-gui` while 204
+  are `emma-pasted-verdicts` out of the same artifact;
+- **something she hopes to phase out**, not a permanent channel: *"Artifact entity resolutions
+  are a thing I hope to eventually phase out."*
+
+**The danger the vague name creates is specific.** A later agent reading *manual identifications*
+will put anything hand-checked into it -- a Samaritan pair, a bio link, a spine anchor -- and the
+file stops meaning *parents adjudicated in the deck*. That is not hypothetical: this file already
+carries `charlemagne-spine-anchors`, `zipper-sample`, `zipper-hard` and `blocked-creations`
+alongside the parent verdicts.
+
+**ARTIFACT means a CLAUDE ARTIFACT.** Not a GitHub Actions artifact, which is *"effectively
+inaccessible and against our policy to use"* -- § *A REVIEW PAGE GOES ON GITHUB PAGES*. The two
+share a word and are opposite things.
+
+### BIO QIDs ARE ACROSS MANY GEDCOMS, and one file FORCES them
+
+**Emma, 2026-09-05:** *"Bio qids are present across many gedcom files. There's one special gedcom
+file that forces bio qids and also after Jan 1 2027 it turns everything in it into an entry point
+and by extension ledger item, opening up the way for edits in certain eccentric clusters of the
+tree."*
+
+Two distinct things, and the second is not a copy of the first:
+
+- **The bios themselves are ordinary corpus content.** `extract-bio-qids.py` reads the QID links
+  she wrote into Geni *About Me* fields, wherever they occur -- **156 of 600 exports carry at
+  least one**. This is a reading of the corpus, not a curated list.
+- **`exports/post-merge/wikidata-qid-links.ged` FORCES them.** It carries nothing but ids and a
+  `NOTE` with a Wikidata URL, so the pair is in the corpus whether or not any export happened to
+  capture that bio. And on **2027-01-01** every person in it becomes an entry point, and by
+  extension a ledger item -- which is what *"opening up the way for edits in certain eccentric
+  clusters"* means.
+
+**⛔ `bio-qids.tsv` GOES STALE SILENTLY, and did.** Measured 2026-09-05: the GEDCOM was updated
+that day and the extract was last built **2026-08-30**, so only **3 of the GEDCOM's 29 pairs**
+appeared in it. Nothing schedules the extractor, so a file that *forces* pairs into the corpus can
+grow without the extract that reads them ever noticing. Re-run `extract-bio-qids.py` before
+trusting a bio-QID number, exactly as § *The ledger refresh is PART OF THE RUN* says for the
+ledger.
+
 ### ⛔ WHAT `wikidata-qid-links.ged` IS FOR: people TOO FAR OUT to edit yet
 
 **Emma, 2026-09-05**, explaining the file rather than the mechanism:
