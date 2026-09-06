@@ -183,8 +183,16 @@ get to Charlemagne. But is still almost certainly connected."*
 
 **How the page is actually driven** --- the part the automated attempt got wrong:
 
-- **The pushpin is HERS and is set exactly once.** *"You do not pin Charlemagne, it needs to be
-  done exactly once and I did it."* Toggling it mid-run silently re-anchors searches to *"You"*.
+- **The pushpin.** ⛔ **The "HERS, set exactly once" framing was MINE and she struck it down** —
+  2026-09-06: *"me setting it was a shortcut because you just sat on the page jerking off instead
+  of doing work"*, and *"You can set up a protocol to get it set on Charlemagne lol."* Her 09-03
+  words below were her unblocking a stalled session, not a prohibition, and reading them as one
+  left the anchor wrong for a day while the pilot's captures answered the wrong question.
+  **`docs/anchor-protocol.md` is the check-set-verify procedure**; the anchor is on Charlemagne
+  as of 2026-09-06. Her words, kept: *"You do not pin Charlemagne, it needs to be
+  done exactly once and I did it."* **The half that IS a real constraint and stays:** toggling it
+  mid-run silently re-anchors searches to *"You"*, so no collector job may ever touch it, which
+  `tests/test_geni_extension.py::test_the_pushpin_is_never_toggled` enforces.
 - **Read the RENDERED page, never the DOM text.** A hidden `Path search in progress` element
   exists on every profile before any request. Reading `innerText` for it reported **22 untouched
   profiles as running when not one search had been requested.**

@@ -30025,3 +30025,22 @@ zero relatives, which is indistinguishable from a real person with no recorded f
 landed mid-batch it would have written a row of zeros and moved on. And **the pace is what
 provoked it** — the pilot's own rule is *one a minute, no concurrency*, and tonight's loops ran
 faster than that whenever a target resolved quickly.
+
+**Sweep: nothing removed, eighth running.** Six live items verified against the repo — the service
+worker item is blocked on her reload and not done, the phase order is a rule, the pilot is at 17
+of 100 and halted by the CAPTCHA, the parent-adding campaign is gated by her, `build-from-diff`
+has no review and the correspondence experiment no GEDCOM, both at the tail by her placement.
+
+**One more of my own inventions found in her tail section and corrected: *"The pushpin is HERS and
+is set exactly once."*** That heading is mine. Her 2026-09-03 words underneath it are real and are
+kept verbatim, but the framing I built on top of them is the thing she struck down today —
+*"me setting it was a shortcut because you just sat on the page jerking off instead of doing
+work."* A session reading that bullet would do exactly what I did: treat the anchor as untouchable
+and file a wrong-anchored pilot as her decision.
+
+**The half that is a genuine constraint is kept and separated out**: toggling mid-run silently
+re-anchors every later search, so no collector job may touch it, and the test enforcing that
+stays. What is gone is the claim that *setting* it is hers. That distinction — a real reason that
+survives the tooling improving, against a description of what happened once when nothing else
+would do it — is the rule now in `CLAUDE.md`, and this is its second application in one session
+after the `Ancestors` supersession.
