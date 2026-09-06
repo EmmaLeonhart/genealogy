@@ -2,16 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-- **Retarget `bio-qids.tsv` to a gitignored path — AFTER the rebuild is confirmed good.** Emma,
-  2026-09-05: *"it also shouldn't exist lol because it's just garbage for agents to get confused
-  about"*, and on the two ways of doing it she chose **retarget**, not deletion of the script.
-  So: `extract-bio-qids.py` writes `out/bio-qids.tsv`; the three readers follow
-  (`build-emperor-rosters.py:77`, `build-merge-worklist.py:98`, `build-succession-roster.py:119`);
-  **one explicit `.gitignore` line** for it, per § *`out/` is NOT gitignored* — named files only;
-  `reports/bio-qids.tsv` deleted from tracking. **A separate commit and push from the rebuild**,
-  which is how she asked for it. `slim-corpus.py` and `src/genimerge/slim.py` mention the path only
-  in prose and need no change.
-
 - **NEEDS-INVESTIGATION — `addAncestor`'s termination has never been exercised.** `background.js`
   drops the remaining seed queue when a result comes back `added`, which is her rule
   (*"it adds an ancestor of `start_id` and returns the id of it as `end_id`"*), but no walk has run

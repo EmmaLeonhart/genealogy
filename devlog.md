@@ -29429,3 +29429,10 @@ before returning; `family.js` and `path.js` await it — three call sites, inclu
 captures, which have never been exercised and would have hit this on their first real run.
 
 The three lost scrapes are not being re-taken: they were phase 3 work done out of order.
+
+**Queue: the `bio-qids.tsv` retarget item removed.** It was completed earlier tonight on her
+ruling *"Good — do the retarget"* — `ab4b8766` moved all four call sites to `out/bio-qids.tsv`,
+which is gitignored and now holds the extract; `git ls-files reports/bio-qids.tsv` returns
+nothing, so the file agents kept getting confused by is no longer in the tree. The item was still
+sitting at the top of the queue with no done state, which is exactly what the :45 sweep exists to
+catch. Deleted outright rather than annotated.
