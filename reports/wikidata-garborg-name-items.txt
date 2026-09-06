@@ -84,53 +84,55 @@ Q141223970	P734	LAST	S2600	"6000000003315775479"
 #   Q141319082 Christen Villumsen Schau: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141319082	P734	LAST	P3831	Q2507958	S2600	"6000000175890087867"
 
-# Halvorson -- patronymic, 2 bearer(s) in the batches
+# Kristoffersdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Halvorson"
-LAST	Len	"Halvorson"
-#   set the mul label to "Halvorson"
-LAST	Lmul	"Halvorson"
+#   the item just created: set the en label to "Kristoffersdatter"
+LAST	Len	"Kristoffersdatter"
+#   set the mul label to "Kristoffersdatter"
+LAST	Lmul	"Kristoffersdatter"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q16276226 Halvor
-LAST	P144	Q16276226
-#   Q141244233 Reier Halvorson Vashus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219060 Halvor Johannesson Hobberstad
-Q141244233	P5056	LAST	P144	Q141219060	S2600	"6000000006771426726"
-#   Q141318911 Halvor Halvorsen Storhaug: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219060 Halvor Johannesson Hobberstad
-Q141318911	P5056	LAST	P144	Q141219060	S2600	"6000000017956997817"
+#   P144 based on = Q1789415 Kristoffer
+LAST	P144	Q1789415
+#   P144 based on = Q1084472 Christopher
+LAST	P144	Q1084472
+#   P144 based on = Q1084384 Christoffer
+LAST	P144	Q1084384
+#   P144 based on = Q29169618 Kristopher
+LAST	P144	Q29169618
+#   Q141312942 Ane Maria Kristoffersdatter Stangaland: P5056 patronym or matronym = the item just created
+Q141312942	P5056	LAST	S2600	"6000000005609287370"
 
-# Heerdhielm -- family, 2 bearer(s) in the batches
+# Königsson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Heerdhielm"
-LAST	Len	"Heerdhielm"
-#   set the mul label to "Heerdhielm"
-LAST	Lmul	"Heerdhielm"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141319148 Henrik Abrahamsson Heerdhielm: P734 family name = the item just created
-Q141319148	P734	LAST	S2600	"6000000006734732178"
-#   Q141271405 Catharina Heerdhielm: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141271405	P734	LAST	P3831	Q28418670	S2600	"6000000008908495417"
+#   the item just created: set the en label to "Königsson"
+LAST	Len	"Königsson"
+#   set the mul label to "Königsson"
+LAST	Lmul	"Königsson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q1345250 Petrus Königsson Kenicius: P5056 patronym or matronym = the item just created, qualified P144 based on Q115631696
+Q1345250	P5056	LAST	P144	Q115631696	S2600	"6000000002567020255"
 
-# 213 more name items are needed and wait for a later
+# 143 more name items are needed and wait for a later
 # run -- 6 a day is her cap, not a limit of the data:
-#   Helgesdatter (patronymic), 2 bearer(s)
-#   Jönsdotter (patronymic), 2 bearer(s)
-#   Kristoffersdatter (patronymic), 2 bearer(s)
-#   Königsson (patronymic), 2 bearer(s)
 #   Lauritsen (patronymic), 2 bearer(s)
 #   Malmeim (family), 2 bearer(s)
-#   Mattsdotter (patronymic), 2 bearer(s)
 #   Mattsson (patronymic), 2 bearer(s)
 #   Monsen (patronymic), 2 bearer(s)
-#   Nilsdotter (patronymic), 2 bearer(s)
 #   Nor-Kolnes (family), 2 bearer(s)
 #   Numers (family), 2 bearer(s)
-#   ... and 201 more
+#   Olavsdatter (patronymic), 2 bearer(s)
+#   Osmundsdatter (patronymic), 2 bearer(s)
+#   Person (patronymic), 2 bearer(s)
+#   Rasmusson (patronymic), 2 bearer(s)
+#   Samuelsdotter (patronymic), 2 bearer(s)
+#   Skanderborg (family), 2 bearer(s)
+#   ... and 131 more
 
