@@ -29808,3 +29808,35 @@ resolves to a miss.
 query-string data, so a scrape carried in the readable `@STATS family_tree=…` form arrives empty.
 `parse_block` now also accepts five positional numbers in the order Geni prints them, `FIELDS`
 being the single definition of that order; both forms land in the same dict.
+
+## A pass-two revisit would have ERASED every verdict it had already observed
+
+Three more scraped — Rosa Seckel, Hildegard Kann, and Asser de Haan earlier — taking the pilot to
+15 of 100 and `reports/isolates.csv` to 15 rows.
+
+**⛔ THE BUG, found by scraping someone whose answer we already had.** Hilde Kann was recorded
+`path_found=no` from Emma's own 2026-09-03 session. Her profile **today** shows the *"How are you
+related?"* button, because a requested search decays back to unrequested — the same thing Rudolf
+Beck did between two visits two hours apart. `write-family-scrape.py` rewrites the row wholesale,
+so the revisit would have written a blank over a verdict she actually observed.
+
+**One row is nothing; the campaign is 185,327 targets.** Every revisit silently reverting a
+verdict to pending, and the reach rate — the one number this whole campaign produces — drifting
+towards zero for a reason nothing records. It is the same family as every other instrument failure
+here: a plausible number about the process rather than about the data.
+
+**The rule now: `no` and `yes` are OBSERVATIONS; blank is *we have not seen an answer yet*.** A
+verdict is only ever replaced by a stronger one — a chain found where a miss was recorded, which
+is real news about a live site — and nothing writes blank over a verdict. Verified on the real
+case: re-running Kann with today's actual decayed banner leaves her `no` intact.
+
+**And the summary line was lying about its own file.** It printed the verdict *today's banner*
+suggested, so the run that correctly preserved Kann's `no` announced `pending`. It now prints what
+was written, and says `(kept, today's page shows no request)` rather than hiding the difference. I
+noticed only because I had hand-fed the right banner the first time to protect the row — which is
+the sort of workaround that leaves the bug in place for everyone after you.
+
+**Rosa Seckel is the first person the lowered floor actually rescues** — Family Tree 485, Blood
+Relatives 322. Both clear the floor of 300 and both would have been **skipped under the 1,000**
+she replaced, so *"even any number over 300 lol"* changed a real outcome rather than a threshold
+on paper.

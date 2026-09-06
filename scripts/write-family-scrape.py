@@ -125,9 +125,29 @@ def main() -> int:
     (FAMILIES / ("%s-family.tsv" % gid)).write_text("\n".join(head) + "\n", encoding="utf-8")
 
     rows = list(csv.reader(ISOLATES.open(encoding="utf-8")))
-    header, body = rows[0], [r for r in rows[1:] if r and r[0] != gid]
+    header = rows[0]
+    prior = next((r[8] for r in rows[1:] if r and r[0] == gid and len(r) > 8), "")
+    body = [r for r in rows[1:] if r and r[0] != gid]
+
+    # ⛔ A RECORDED VERDICT IS NEVER DOWNGRADED TO BLANK BY A REVISIT.
+    #
+    # A requested search DECAYS: Rudolf Beck read "Path search in progress" and two hours later
+    # showed the "How are you related?" button again, and Hilde Kann's 2026-09-03 miss reads as
+    # not-requested today. So a pass-two revisit sees a blank state on a person whose answer was
+    # already observed -- and a wholesale row rewrite would erase it. Over a 185,327-target
+    # campaign that is silent, cumulative data loss: every verdict quietly reverting to pending
+    # as the campaign revisits, and the reach rate falling towards zero for a reason nothing
+    # records.
+    #
+    # `no` and `yes` are OBSERVATIONS; blank is *we have not seen an answer yet*. An observation
+    # is only ever replaced by a stronger one -- a chain found where a miss was recorded, which
+    # is real news about a live site. Nothing here ever writes blank over a verdict.
+    fresh = path_state(blob.get("banner", ""))
+    verdict = fresh if fresh else prior
+    if prior == "yes" and fresh == "no":
+        verdict = "yes"   # a chain we hold is evidence; today's miss banner does not retract it
     body.append([gid, name] + [str(stats.get(f, 0) or 0) for f in FIELDS]
-                + ["2026-09-06", path_state(blob.get("banner", ""))])
+                + ["2026-09-06", verdict])
     body.sort(key=lambda r: r[0])
     with ISOLATES.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
@@ -137,8 +157,13 @@ def main() -> int:
     sys.path.insert(0, str(ROOT / "scripts"))
     from export_gate import decide
     d = decide(stats)
-    print("%s  %s | %d relatives | path=%r | %s" % (
-        gid, name, len(relatives), path_state(blob.get("banner", "")) or "pending",
+    # Print the verdict that was WRITTEN, not the one today's banner suggested. The first
+    # version printed `fresh`, so a revisit that correctly preserved a recorded `no` announced
+    # `pending` -- a summary contradicting the file it had just written, which is the shape of
+    # every instrument failure in `CLAUDE.md`. `kept` says so explicitly rather than hiding it.
+    kept = "" if fresh or not verdict else "  (kept, today's page shows no request)"
+    print("%s  %s | %d relatives | path=%r%s | %s" % (
+        gid, name, len(relatives), verdict or "pending", kept,
         ("EXPORT if it misses: " + d["why"]) if d["export"] else ("NO EXPORT: " + d["why"])))
     return 0
 
