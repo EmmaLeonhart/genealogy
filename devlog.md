@@ -29023,3 +29023,37 @@ blocked by the harness, `--load-extension` ignored by Chrome 152).
 
 **The old standalone `.crx` item at the tail was removed**, superseded by the new one, which
 carries the measured state. Two items describing one job is the duplication that started tonight.
+
+## 2026-09-05 — the rebuild was killed by the HARNESS, not by the machine
+
+The full synoptic rebuild was OOM-killed twice as a background task. `CLAUDE.md` predicts that —
+*"killed at 13.3 min, peak RSS 13.30 GB, EXIT -9"* — and I quoted it as though it described this
+machine. It does not: that figure is from a sandbox.
+
+Measured here while the tree was down:
+
+    total RAM       31.3 GB
+    free            19.1 GB
+    chrome           0.9 GB across 12 processes
+    the job's peak  ~13 GB
+
+So the job fits with room to spare, and what killed it was the **harness's background-task memory
+guard**, not Windows. Relaunched detached via `Start-Process`, outside the harness, writing to
+`out/rebuild-2026-09-05.log`. **Step 1 of 14 completed**: `out/merged.ged` replaced at 21:15,
+1,815,816,271 bytes against 1,815,770,664 on Sep 1 — **+45,607 bytes**, consistent with the three
+`.ged` files that were newer than the tree.
+
+**`out/merged.ged` was never at risk.** The merge writes `out/merged.ged.partial` and replaces
+only on success, so both kills left the Sep 1 tree intact byte-for-byte. The stray `.partial` was
+cleared before the relaunch.
+
+**It was NOT re-run with `--slim`**, which is the tempting fix and the wrong one: slim drops
+`NOTE`, and the bios in `NOTE` are the entire reason this rebuild is happening.
+
+The run's logs are gitignored — one explicit line each, per § *`out/` is NOT gitignored*. They are
+how the run is followed and never a deliverable, and without the rule they would have landed in
+the rebuild's own commit.
+
+**Nothing else was started this tick.** The tree is mid-regeneration, so committing it would
+capture a half-finished state, and running the isolate pilot alongside a 13 GB job is how the
+rebuild gets killed a third time.

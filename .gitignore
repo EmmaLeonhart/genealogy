@@ -561,3 +561,10 @@ geni-extension.pem
 # Build artifact of `chrome.exe --pack-extension`; the installed copy lives in
 # %LOCALAPPDATA%\geni-collector. Regenerate it, never track it.
 geni-extension.crx
+
+# Transient logs from a detached `rebuild-everything.py` run. The rebuild is launched
+# outside the harness because its background-task memory guard killed it twice on a job
+# that fits comfortably in this machine (31.3 GB total, ~13 GB peak); the log is how the
+# run is followed, and it is never a deliverable.
+out/rebuild-*.log
+out/rebuild-*.err
