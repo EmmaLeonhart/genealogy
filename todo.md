@@ -198,6 +198,34 @@ Mellegård, who appeared in none of the first three. So the best export so far
 came from a route this repo cannot see or reproduce — an open question, recorded
 in `queue.md`, and the thing most likely to change what is worth building next.
 
+## 3c. `final-wikidata-geni-scrape` — GATED, and the gate is real
+
+**`docs/final-wikidata-geni-scrape.md` is the specification.** Read it before touching this.
+
+Take from every Geni profile the project cares about what the collector can take — immediate
+family, relationship path, statistics — and emit each as a **tiny GEDCOM** that merges into the
+synoptic tree on the Geni id. Thousands of small files, not aggregates: Emma, 2026-09-06,
+*"you didn't understand that thousands of tiny gedcom files was the signal."*
+
+**⛔ IT CANNOT RUN YET, and this is not a formality.** Her instruction: *"The scrape is to be done
+with the extension we built yesterday and it can only be done after we have a coherent idea of the
+deliverables."* Two conditions, both currently unmet:
+
+- **The extension must be able to write files.** Its background service worker has never updated —
+  measured 2026-09-06, it returns the nine-key `DEFAULTS` from before `28a9f05a` — so nothing it
+  writes can land. Hand-carrying scrapes through tool results is barred: it double-encoded 4 of 14
+  before it was caught.
+- **The deliverables must be settled.** § *NOT SETTLED* in the spec names four: how the extension
+  writes at all, the 1,555 legacy saved pages nothing now reads, the two aggregate files still in
+  the merge carrying 4,928 `NN` people the absent-slot ruling forbids, and whether path GEDCOMs
+  should also be built from saved pages.
+
+**Scale:** 2,527 sibling-pair members, 82 of the 100-target pilot, 1,555 legacy pages, and behind
+the pilot a 185,327-target isolate campaign the pilot exists to decide.
+
+**Built already:** `scripts/build-tiny-gedcoms.py` (both operations, absent slots, zero invented
+people) and `scripts/sibling-pair-worklist.py`. What is missing is the running of it.
+
 ## 4. Wikidata authoring pipeline — queue up the missing people
 
 For people with no Wikidata item, generate a reviewable batch that creates them

@@ -30326,3 +30326,30 @@ carrying the 4,928 `NN` people the new ruling forbids; and whether path GEDCOMs 
 built from saved pages, which she said carry the information for both.
 
 Nothing further is scraped until those are answered.
+
+## `final-wikidata-geni-scrape` — named, specified, and listed in `todo.md`
+
+**Emma:** *"a markdown file should exist describing the task well and doing it is listed in the
+todo.md with clear specifications that until we got the extension and the deliverables good we
+can't really run this 'final-wikidata-geni-scrape'."*
+
+`todo.md` had **no mention of the scrape at all** — 780 lines of long-horizon backlog and the
+largest outstanding collection task in the project was absent from it, living only as scattered
+queue items and half-finished scripts.
+
+`docs/scrape-deliverables.md` is renamed `docs/final-wikidata-geni-scrape.md` and reframed as the
+task rather than a list of open points: what it covers, why it is called final, what is settled,
+and what gates it. **§ 3c of `todo.md`** points at it and carries the gate.
+
+**Why "final":** after it there is nothing further to take off a Geni page. The immediate family,
+the relationship path and the statistics block are the whole of what a profile exposes; what
+follows is merging and Wikidata authoring, not more collection.
+
+**Scale, in one place for the first time:** 2,527 sibling-pair members, 82 of the 100-target
+pilot, 1,555 legacy saved pages, and behind the pilot the 185,327-target isolate campaign the
+pilot exists to decide.
+
+**The gate is recorded as two conditions rather than a caveat.** The extension must be able to
+write files — its service worker has never updated, so nothing it writes can land, and
+hand-carrying is barred after it double-encoded 4 of 14 scrapes. And the four unsettled
+deliverables must be answered.

@@ -1,4 +1,30 @@
-# The scrape deliverables
+# `final-wikidata-geni-scrape`
+
+**The task, named by Emma 2026-09-06.** Walk the Geni profiles this project cares about, take from
+each one the things the collector can take, and turn every one of them into a **tiny GEDCOM** that
+merges into the synoptic tree on the Geni id.
+
+**It cannot start until the extension and these deliverables are good** — her words: *"The scrape
+is to be done with the extension we built yesterday and it can only be done after we have a
+coherent idea of the deliverables."* § *NOT SETTLED* below is that gate, and it is not
+decoration: nothing the extension writes can reach disk today.
+
+## What it covers
+
+| population | count | source |
+| --- | ---: | --- |
+| every member of every sibling pair | **2,527** unscraped of 2,528 | `reports/sibling-pair-worklist.tsv` |
+| the isolate path pilot | 82 of 100 remaining | `reports/isolate-path-pilot.tsv` |
+| legacy saved pages already on disk | **1,555** | `geni-scraping/` |
+| the full isolate campaign the pilot decides | 185,327 | `reports/isolate-path-pilot-urls.txt` is the sample |
+
+## Why it is called final
+
+Because after it there is nothing further to take off a Geni page: the immediate family, the
+relationship path, and the statistics block are the whole of what a profile exposes. What follows
+is merging and then Wikidata authoring, not more collection.
+
+---
 
 **Emma, 2026-09-06:** *"The scrape is to be done with the extension we built yesterday and it can
 only be done after we have a coherent idea of the deliverables."*
