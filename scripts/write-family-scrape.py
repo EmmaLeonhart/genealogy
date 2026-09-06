@@ -26,6 +26,7 @@ from __future__ import annotations
 import csv
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -114,6 +115,19 @@ def main() -> int:
         "# Immediate family scraped from the Geni profile page. Step 1 of the per-individual loop.",
         "# subject\t%s\t%s" % (gid, name),
         "# prose\t%s" % blob.get("prose", "")[:400],
+        # ⛔ How many relatives the prose NAMES but the block does not LINK.
+        #
+        # "and N others" reads like an expander and is not one. Measured 2026-09-06 on Julius
+        # Hohenberger and on Arne Garborg: clicking it adds no anchor, a real MouseEvent adds no
+        # anchor, and `<< less` is already displayed on both -- the list is expanded and those
+        # people simply carry no `href`, which is what a redacted profile looks like in this
+        # block. So the shortfall is a limit of the source, not a defect to fix.
+        #
+        # It is recorded because a row count would otherwise imply completeness: Arne's scrape
+        # holds 12 rows and names 15 relatives. `GC.family.unlinked` computes the same sum on the
+        # collector's side, so both writers of this file agree.
+        "# unlinked\t%d\trelatives the prose names that carry no link, and that no click reveals"
+        % sum(int(n) for n in re.findall(r"and (\d+) others?", blob.get("prose", ""))),
         "# statistics\t" + "\t".join(
             "%s=%s" % (f, "" if stats.get(f) is None else stats[f]) for f in FIELDS)
         + "\tread=%s" % ("1" if stats.get("read") else "0"),

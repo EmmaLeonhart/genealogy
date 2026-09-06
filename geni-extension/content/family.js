@@ -49,6 +49,29 @@ GC.family.classify = function (text) {
  * Walks the block in document order and attributes each `data-profile-id` anchor to the most
  * recent relationship phrase seen. A phrase with no anchors after it contributes nothing, and an
  * anchor before any phrase is recorded with an empty relation rather than guessed at. */
+/* ⛔ "AND N OTHERS" IS NOT A COLLAPSED LIST. Those relatives have NO ANCHOR, and no click makes one.
+ *
+ * Geni renders a long line as `Hugo; Rosa; Elsa; Hermine; Margaretha and 1 other; and Laura`.
+ * That reads like an expander, and a `GC.family.expand` was written on 2026-09-06 to click it.
+ * **It was measured and it does nothing**, which is why it is not in this file:
+ *
+ *     Julius Hohenberger   6 anchors -> click "1 other"  -> 6 anchors, text unchanged
+ *     Arne Garborg         8 anchors -> click "3 others" -> 8 anchors, text unchanged
+ *
+ * A real `MouseEvent` behaves the same, and **`« less` is already displayed on both** — the list
+ * is expanded, and the missing people are named in the count while carrying no `href`. They are
+ * relatives Geni will not link, which is what a redacted or private profile looks like in this
+ * block.
+ *
+ * So the shortfall is a LIMIT OF THE SOURCE, not a defect to fix, and the honest thing is to make
+ * it visible rather than to let a row count imply completeness. `toTsv` writes `# unlinked <n>`,
+ * read out of the prose, so a consumer counting rows can see that `n` relatives exist and were
+ * never linkable. `CLAUDE.md` § *Grab the RESIDUALS*: the prose keeps what the structured walk
+ * drops, and here the prose is the only place the gap is stated at all.
+ *
+ * The clicking version is left out deliberately -- it clicked 18 toggles across the page on its
+ * first run and gained not one anchor. § *a fix that changes nothing is evidence, not
+ * reassurance.* */
 GC.family.scrape = function () {
   const lead = [...document.querySelectorAll("*")].filter(
     (e) => e.children.length === 0 && GC.family.classify(e.textContent));
@@ -95,11 +118,23 @@ GC.family.scrape = function () {
   return { found: true, relatives: relatives, prose: (block.innerText || "").replace(/\s+/g, " ").trim() };
 };
 
+/* How many relatives the prose NAMES but the block does not LINK -- the `and N others` counts,
+ * summed. Zero for most people; 3 on Arne Garborg, 1 on Julius Hohenberger. */
+GC.family.unlinked = function (prose) {
+  let n = 0;
+  const re = /and (\d+) others?/gi;
+  let m;
+  while ((m = re.exec(prose || ""))) n += parseInt(m[1], 10);
+  return n;
+};
+
 GC.family.toTsv = function (subject, subjectName, scraped, stats) {
   const head = [
     "# Immediate family scraped from the Geni profile page. Step 1 of the per-individual loop.",
     "# subject\t" + subject + "\t" + subjectName,
     "# prose\t" + (scraped.prose || "").slice(0, 400),
+    "# unlinked\t" + GC.family.unlinked(scraped.prose) +
+      "\trelatives the prose names that carry no link, and that no click reveals",
     "# statistics\tfamily_tree=" + (stats.family_tree === undefined ? "" : stats.family_tree) +
       "\tblood_relatives=" + (stats.blood_relatives === undefined ? "" : stats.blood_relatives) +
       "\tancestors=" + (stats.ancestors === undefined ? "" : stats.ancestors) +
@@ -143,6 +178,6 @@ GC.runFamily = async function (job) {
     relatives: scraped.relatives.length, by_relation: counts,
     parents: scraped.relatives.filter((r) => r.relation === "parent").map((r) => r.geni_id),
     siblings: scraped.relatives.filter((r) => r.relation === "sibling").map((r) => r.geni_id),
-    stats: stats, filename: id + "-family.tsv", tsv: tsv
+    stats: stats, unlinked: GC.family.unlinked(scraped.prose), filename: id + "-family.tsv", tsv: tsv
   };
 };

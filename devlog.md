@@ -29860,3 +29860,43 @@ section was left alone**: its three-state list is her own text at her placement,
 wrong — it names not-requested as one of the three. What it does not say is that a *running*
 search returns to that state, and that is a fact about Geni discovered tonight rather than a
 correction to her.
+
+## "and N others" is NOT a collapsed list, and the fix I wrote for it did nothing
+
+Julius Hohenberger's prose names seven siblings; the block holds **six** `data-profile-id`
+anchors. The seventh sits behind what looks like an expander — `Margaretha Hohenberger **and 1
+other**; and Laura Budabin` — so `GC.family.expand` was written to click those toggles before the
+walk, the extension rebuilt, Chrome restarted, and the scrape re-run.
+
+**It gained nothing, and saying so is the point.**
+
+    Julius Hohenberger   6 anchors -> click "1 other"  -> 6 anchors, text unchanged
+    Arne Garborg         8 anchors -> click "3 others" -> 8 anchors, text unchanged
+
+A synthetic click and a real `MouseEvent` behave identically, and **`« less` is already displayed
+on both pages** — which settles it: the list is *already expanded*, and the missing people carry
+no `href` at all. They are relatives Geni names in the count and will not link, which is what a
+redacted or private profile looks like in this block. There is no anchor to find, so no click can
+find one.
+
+**So the expander is reverted.** It clicked **18** toggles across the page on its first run and
+produced not one extra relative — `CLAUDE.md`'s own rule applies to my own change: *a fix that
+changes nothing is evidence, not reassurance*. Keeping it because it was already written would
+have left dead code clicking arbitrary links on her live account.
+
+**What replaces it is a measurement, not a fix, because the shortfall is a limit of the source.**
+`# unlinked <n>` now sits in every scrape's header, computed from the prose by
+`GC.family.unlinked` on the collector side and by the same sum in `write-family-scrape.py`, so the
+two writers of that file agree. Backfilled across all 12 existing scrapes.
+
+**Measured: exactly one scrape is short, and it is the first one ever taken.** Arne Garborg —
+**12 linked, 3 unlinked, 15 named**. Every other scrape names exactly what it links. A row count
+would have implied his file was complete; now the file says otherwise on its own face.
+
+**Three self-inflicted detours, recorded because the pattern is mine.** Editing this file by line
+number without re-reading it overwrote the `# statistics` line and emitted the `# unlinked` header
+twice; a `str.replace` searching for a real tab silently matched nothing where the source holds a
+literal `\t`, so an edit reported success and changed no bytes. Both were found by *running the
+job and reading the output*, never by the edit reporting failure — the same shape as the download
+that returned `saved: true`. The fix was to stop patching and use exact-match editing on a
+re-read file.
