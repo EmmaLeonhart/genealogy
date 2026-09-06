@@ -172,14 +172,7 @@ GC.runFamily = async function (job) {
   /* RETURNED, never downloaded -- `common.js` § *THE COLLECTOR DOES NOT DOWNLOAD FILES*.
    * Emma, 2026-09-06: *"you write stuff into files in the repo you dummy."* */
   const tsv = GC.family.toTsv(id, subjectName, scraped, stats);
-  /* One download per page load, which is exactly one per profile. `saved` means the click was
-   * awaited, not that the file is on disk -- `scripts/file-geni-downloads.py` is what confirms
-   * that, by finding it. */
-  let saved = false;
-  if (!job.dryRun) {
-    try { await GC.saveBlob(id + "-family.tsv", tsv, "text/tab-separated-values"); saved = true; }
-    catch (e) { saved = false; }
-  }
+
 
   const counts = {};
   for (const r of scraped.relatives) counts[r.relation || "?"] = (counts[r.relation || "?"] || 0) + 1;
@@ -189,6 +182,6 @@ GC.runFamily = async function (job) {
     relatives: scraped.relatives.length, by_relation: counts,
     parents: scraped.relatives.filter((r) => r.relation === "parent").map((r) => r.geni_id),
     siblings: scraped.relatives.filter((r) => r.relation === "sibling").map((r) => r.geni_id),
-    stats: stats, saved: saved, unlinked: GC.family.unlinked(scraped.prose), filename: id + "-family.tsv", tsv: tsv
+    stats: stats, unlinked: GC.family.unlinked(scraped.prose), filename: id + "-family.tsv", tsv: tsv
   };
 };
