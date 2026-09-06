@@ -21,8 +21,8 @@ entirely disjoint**.
     bio pairs also in manual            0
 
 So each file carries a population the others do not. `manual-identifications.csv` is the
-adjudicated one and the only one wired in; the other **184 correspondences** (158 + 26) reach
-nothing that emits `P2600`.
+adjudicated one and the only one feeding the `P2600` block; the other **184** (158 + 26) are
+wired to different jobs -- see the section below, which is the part that matters.
 
 **The `batch` column in `manual-identifications.csv` is its own provenance**, per row:
 
@@ -35,6 +35,31 @@ nothing that emits `P2600`.
       3  zipper-hard
       2  given in conversation
       1  hand
+
+## ⛔ NONE OF THIS IS A GAP. Each is doing a documented job
+
+**Emma's guess, 2026-09-05, and it is correct:** *"My personal guess here is that it's all done
+correctly but badly documented."* The table above reads like three sources of which one is wired
+and two are neglected. That is the wrong reading, and it is the one this file was written under.
+
+- **The GEDCOM is a HOLDING PLACE and the holding is deliberate.** `CLAUDE.md` § *WHAT
+  `wikidata-qid-links.ged` IS FOR: people TOO FAR OUT to edit yet* -- the identification is
+  sound and the **edit** is withheld, because for somebody nowhere near what the account has
+  been building it *"would be perceived as too out of left field"*. They become ordinary entry
+  points on **2027-01-01**. So its 26 unique pairs are unemitted **on purpose**, and wiring them
+  into the `P2600` block would spend exactly what the file exists to keep.
+- **`bio-qids.tsv` is for ROSTER RESOLUTION, not for emission.** It is read by
+  `build-emperor-rosters.py`, `build-succession-roster.py`, `build-merge-worklist.py` and
+  `slim-corpus.py`. `CLAUDE.md` § *The Geni BIO carries her own QID claims* gives the measured
+  reason: through the bio links the 204 Izumo roster QIDs give **8** Geni ids, where
+  `p2600-all.tsv` gives **2**. That is what it is for, and it is wired for it.
+- **The ledger is her CONTRIBUTIONS, and holds 0 bio pairs correctly.** 1,518 rows: 975 and 469
+  from her Wikidata contributions, 41 from `bureatten.csv`. It records what she has actually
+  made on Wikidata, so a correspondence she has not yet acted on does not belong in it.
+
+**So the disjointness measured above is the design, not a symptom.** Three files, three
+functions, one of them feeding the batch. What was missing was a page saying so -- which is what
+she diagnosed: *"badly documented"*, not wrongly built.
 
 ## What is NOT established here
 

@@ -28947,3 +28947,26 @@ with no `P2600` at all**.
 `reports/correspondence-sources.md` records all of it. **Nothing was wired, changed or emitted**
 — her instruction in the same message: *"do not mess with anything until I give clear
 instructions."*
+
+## 2026-09-05 — her guess was right: correctly built, badly documented
+
+*"My personal guess here is that it's all done correctly but badly documented."* Checked, and
+that is what it is. The three-source measurement in `reports/correspondence-sources.md` read like
+one wired file and two neglected ones. Each of the other two is doing a documented job:
+
+- the GEDCOM is a **holding place** — the identification is sound and the edit is deliberately
+  withheld, because for someone far from anything the account has been building it *"would be
+  perceived as too out of left field"*; they become entry points on 2027-01-01;
+- `bio-qids.tsv` is for **roster resolution** and is read by four scripts, with the measured
+  reason on record: 8 Geni ids for the Izumo roster against `p2600-all.tsv`'s 2;
+- the ledger holds 0 bio pairs **correctly**, being a record of contributions she has made.
+
+So the disjointness is the design. The report has been corrected so it does not read as a gap,
+which is the actual defect she identified — not the wiring, the page that should have said this.
+
+**The pattern across the whole evening is the same one**, and it is worth naming once: a
+description was believed instead of the thing it describes. The `/path/` URL, `pending()`, the
+labelled parent block, the statistics sentinel, "five `INDI` records", "label corrections are not
+wired in", "184 correspondences reach nothing". Every one was resolved by measuring the artifact
+rather than reading about it, and in three of them the wrong reading had already been written
+down somewhere authoritative.
