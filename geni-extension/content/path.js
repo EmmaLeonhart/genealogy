@@ -124,7 +124,7 @@ GC.runPath = async function (job) {
   const hasTarget = ids.includes(id);
 
   if (hasTarget && links.length >= 3) {
-    GC.saveBlob(id + "-" + kind + ".html", document.documentElement.outerHTML, "text/html");
+    await GC.saveBlob(id + "-" + kind + ".html", document.documentElement.outerHTML, "text/html");
     const header = [
       "# Geni relationship path to " + (job.label || id) + " (" + kind + ")",
       "#",
@@ -135,7 +135,7 @@ GC.runPath = async function (job) {
       "# keeps --- half-siblings above all, which no step word states:",
       "# " + description
     ].join("\n");
-    GC.saveBlob(id + "-" + kind + ".tsv", GC.toTsv(links, header), "text/tab-separated-values");
+    await GC.saveBlob(id + "-" + kind + ".tsv", GC.toTsv(links, header), "text/tab-separated-values");
   }
 
   return report({

@@ -132,7 +132,7 @@ GC.runFamily = async function (job) {
   }
 
   if (!job.dryRun) {
-    GC.saveBlob(id + "-family.tsv",
+    await GC.saveBlob(id + "-family.tsv",
                 GC.family.toTsv(id, subjectName, scraped, stats),
                 "text/tab-separated-values");
   }

@@ -142,13 +142,29 @@ GC.statistics = async function () {
  *
  * `<a download>` strips path separators, so the file cannot be written into a subfolder from
  * here. That is why filing is a separate step and not a nicety. */
-GC.saveBlob = function (name, text, mime) {
+/* ⛔ IT MUST BE AWAITED, OR THE NAVIGATION EATS THE DOWNLOAD.
+ *
+ * A blob download is started by clicking a link and finished by the browser some milliseconds
+ * later. If the page is navigated or the tab closed in between, the download never lands -- and
+ * the job has already returned `saved: true`, because the click succeeded.
+ *
+ * Measured 2026-09-06: four family scrapes all reported saved; **one file existed**. The three
+ * that vanished were followed immediately by a `navigate` to the next person. The one that
+ * survived was the one nothing followed.
+ *
+ * This is the scheduler's problem too, not just a driving mistake: `background.js` closes the tab
+ * the moment a result comes back, which is the same race. So the wait lives here, where every
+ * caller gets it, rather than in each caller. */
+GC.saveBlob = async function (name, text, mime) {
   const b = new Blob([text], { type: mime || "text/html" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(b);
   a.download = name;
   document.body.appendChild(a);
   a.click();
+  /* Long enough for Chrome to take the blob. The revoke stays on a longer timer because the
+   * download reads the URL after the click returns. */
+  await GC.sleep(1500);
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 10000);
 };
 

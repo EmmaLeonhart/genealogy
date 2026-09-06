@@ -29394,3 +29394,38 @@ curated Geni-to-Wikidata correspondences, and it is not one — it is a machine 
 already in Geni bios. `reports/correspondence-sources.md` is that distinction, and
 `extract-bio-qids.py`'s own docstring now says it too, so the next reader learns it from the file
 rather than from a report they may not open.
+
+## 2026-09-06 — filed the exports, and found that three of four scrapes never saved
+
+**Filed at her instruction** — *"File them all now"*. Three exports into `exports/hoknes-kingo/`,
+a directory chosen because all three are that one family and she left the naming to me:
+
+    export-Forest-6000000227614275833.ged      5,000 individuals  (her own export, Kingo seed)
+    export-Ancestors-6000000177921459109.ged      38              Andreas Petrus Eliassen Hoknes
+    export-Ancestors-6000000177921459114.ged   4,387              Clara Amilia Knutson
+
+**One collided and was NOT overwritten.** `exports/gaps/export-Ancestors-6000000177921459114.ged`
+already existed from 2026-08-13, same seed and same style. Containment checked before inventing a
+disambiguator, as § *Two exports can share a style and a seed* requires:
+
+    Aug 13   4,100 individuals        in old but not new:  13
+    today    4,387                    in new but not old: 300
+
+**Neither contains the other**, so both are corpus and both stay — the 13 are people Geni no
+longer places in that ancestry, which is exactly the case exclusion exists for and nothing here
+excludes anything. Today's went in its own directory rather than being renamed.
+
+**⛔ AND THREE OF FOUR FAMILY SCRAPES NEVER SAVED, having reported that they did.** Only Arne
+Garborg's file exists. A blob download is *started* by a click and *finished* by the browser
+milliseconds later; the three that vanished were each followed immediately by a `navigate` to the
+next person, and the one that survived was the one nothing followed. The job returns `saved: true`
+because the click succeeded, so the failure is silent and the count looks right — the same shape
+as every other instrument caught this week.
+
+**It is the scheduler's bug too**, which is why the fix is in `GC.saveBlob` rather than in the
+caller: `background.js` closes the tab the moment a result comes back, which is the same race, and
+the scheduler has never run so it would have arrived fresh. `saveBlob` is now `async` and waits
+before returning; `family.js` and `path.js` await it — three call sites, including both path
+captures, which have never been exercised and would have hit this on their first real run.
+
+The three lost scrapes are not being re-taken: they were phase 3 work done out of order.
