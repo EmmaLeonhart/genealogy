@@ -29752,3 +29752,22 @@ same rolling-window mechanism, so it will return. Worth knowing when it does: th
 `reports/garborg-live-state.tsv`, which holds **14 rows** — so it can only catch an overwrite on
 fourteen items, and a clean run says very little. Not widened here; that is a measurement about
 which items the batch touches, not a fix to make in passing.
+
+**Sweep: nothing removed, fourth running.** All six live items verified against the repo, and no
+other session has committed in three hours. `addAncestor`'s termination still unexercised; the
+phase order is a rule; the pilot is 13 of 100; the parent-adding campaign is gated by her;
+`build-from-diff` has no review and the correspondence experiment no GEDCOM, both at the tail by
+her placement; the tail export section is hers.
+
+**One false clause found and corrected, in the item at the very top.** It read *"the last real
+creation predates the change"*. Measured: the queue-drop went in at `28a9f05a`, 2026-09-05 18:58,
+and **three creations followed it** — the last of them, Anne Marie Knutson, made entirely unaided
+by the extension.
+
+**The item's conclusion survives, and why it survives is the part worth having.** All five
+creations were single `seed` jobs fired through the DOM trigger, which calls `GC.runSeed`
+directly; the queue-drop lives in `background.js`'s `result` handler and only executes when the
+**scheduler** is driving. So creations can accumulate indefinitely without the termination path
+ever running — and the stale clause would have told the next session the opposite, that a new
+creation exercises it. A wrong reason under a right conclusion is worse than no reason, because
+it is the reason that gets acted on.

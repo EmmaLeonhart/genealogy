@@ -6,8 +6,21 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   drops the remaining seed queue when a result comes back `added`, which is her rule
   (*"it adds an ancestor of `start_id` and returns the id of it as `end_id`"*), but no walk has run
   through to a creation since that was written. It is code that has been read, not behaviour that
-  has been measured, and the last real creation predates the change. Unblock signal is one walk
-  from a real seed through to a single creation, with the queue observed to stop.
+  has been measured.
+
+  ⛔ **This item said "the last real creation predates the change" and that is FALSE** — corrected
+  2026-09-06. The drop went in at `28a9f05a` (2026-09-05 18:58) and **three creations followed
+  it**: Elias Kahrs Ingebrigtsen Hoknes Himo, Ingebrigt Himo, and Anne Marie Knutson, the last
+  made entirely unaided by the extension. The conclusion survives the correction and the reason
+  is the thing to keep: **every one of the five was a single `seed` job fired through the DOM
+  trigger**, and the DOM trigger runs `GC.runSeed` directly. The queue-drop lives in
+  `background.js`'s `result` handler, which only executes when the **scheduler** is driving. So
+  creations can accumulate indefinitely without the termination path ever running, and the stale
+  clause would have told the next session that any new creation exercises it.
+
+  Unblock signal is one **walk** from a real seed through to a single creation, with the queue
+  observed to stop — and it should arrive as a side effect of the first genuine step-3b case
+  rather than by firing a creation to watch a code path.
 
 - **⛔ THE PHASE ORDER governs everything below — `docs/per-individual-loop.md`.** Emma,
   2026-09-06: phase 1 runs the isolate-connecting operation over **all** Wikidata isolates, which
