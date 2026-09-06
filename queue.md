@@ -56,6 +56,25 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
   not on Emma, which is what the 663 existing paths use. The anchor is her account's pushpin,
   set once by her, and is never toggled.
 
+  ⛔ **MEASURED 2026-09-06: THE FIRST REAL CAPTURE CAME BACK ANCHORED ON THE VIEWER, NOT ON
+  CHARLEMAGNE.** Rudolf Beck resolved to a 23-step chain whose **step 1 is `You`**, with Geni's
+  own prose reading *"Rudolf Beck is your second great uncle's..."* — an Emma-anchored path of
+  exactly the kind as the 663 already in `paths/`.
+  `paths/isolate-geni-rudolf-beck-1919-c1941.tsv` is it, and its header says so.
+
+  **This is load-bearing for the whole pilot, because the number it produces is a reach rate TO
+  CHARLEMAGNE.** Captures anchored on the viewer measure a different question, and a run that
+  files them as pilot results reports a rate that is not the one anyone asked for — the same
+  shape as the `/path/` refutation two paragraphs up, where a plausible number was about the
+  instrument rather than the data.
+
+  **Why it is not fixed here:** the anchor is the pushpin, the pushpin is HERS and is set exactly
+  once (*"You do not pin Charlemagne, it needs to be done exactly once and I did it"*), and the
+  collector reads it and never sets it —
+  `tests/test_geni_extension.py::test_the_pushpin_is_never_toggled` fails any line that would.
+  So this is **NEEDS-DECISION, hers**: whether the anchor is still set, and whether the pilot
+  proceeds Emma-anchored or waits. Do not toggle it to find out.
+
   **Needs her browser, and now runs through `geni-extension`** rather than agentically. The
   number it produces decides whether the 185,327-target campaign runs — her own batches were
   34–39% for occupation-filtered academics and 92% for Nordic ones. A blank chain is

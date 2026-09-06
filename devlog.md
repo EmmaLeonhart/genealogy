@@ -29694,3 +29694,23 @@ forever.
 chain.** Step 22 of the path is `6000000011662689164` Antonie Beck, and the family scrape taken
 hours earlier independently recorded that same profile id as his mother. Two captures, two
 mechanisms, the same primary key.
+
+**Sweep: nothing removed, third running.** All six live items verified against the repo —
+`addAncestor`'s termination still unexercised (5 creations on record, every one a hand-fired
+`seed` job, no scheduler walk); the phase order is a rule; the pilot is 13 of 100 with
+`isolates.csv` at 7 misses / 1 hit / 5 pending; the parent-adding campaign is gated by her;
+`build-from-diff` has outputs but no review; the correspondence experiment has a proposal but no
+GEDCOM. The last three are at the tail by her placement, and the tail export section is hers.
+
+**One live item was carrying a premise the evidence now contradicts, which is the class of dead
+fact a sweep exists to catch.** The pilot item states its captures are anchored on Charlemagne.
+The first real capture — Rudolf Beck, 23 steps — came back with **step 1 as `You`**. Since the
+pilot's entire deliverable is a *reach rate to Charlemagne*, a session reading the item as it
+stood would file viewer-anchored paths as pilot results and publish a rate that answers a
+different question. That is the same failure as the `/path/` refutation recorded in the item
+itself: a plausible number about the instrument rather than about the data.
+
+Recorded rather than fixed, and deliberately: the anchor is the pushpin, the pushpin is hers and
+is set exactly once, and the collector reads it and never sets it —
+`test_the_pushpin_is_never_toggled` fails any line that would. Whether the anchor is still set,
+and whether the pilot proceeds Emma-anchored or waits, is **NEEDS-DECISION, hers**.
