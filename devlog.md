@@ -30001,3 +30001,27 @@ This removes the manual step that has been sitting on her since the scheduler wa
 forever. Her *"update it to batches double the older size on all things"* moved `DEFAULTS` to 12
 and the scheduler never saw it. **Changing a `DEFAULTS` number does not change a running
 profile** — that is now written in the bridge doc, because it will bite again.
+
+## The isolates ledger records WHICH ANCHOR each verdict was taken under
+
+The anchor moved to Charlemagne earlier today, and a verdict is meaningless without it: on the
+viewer a capture answers *how is this person related to Emma*, on Charlemagne *how is this person
+related to Charlemagne*. Same page, same wording, different question — and the pilot's deliverable
+is a reach rate **to Charlemagne**, so mixing the two produces a number answering neither.
+
+`write-family-scrape.py` carries an `ANCHOR` constant and stamps every new row with it. **A
+preserved verdict keeps its own anchor rather than inheriting today's** — checked on the real
+case: re-running Hilde Kann leaves her `no` intact and still marked `emma`, because that is the
+anchor it was observed under. Getting that backwards would have silently relabelled seven
+Emma-anchored misses as Charlemagne results, which is exactly the reach rate the campaign turns on.
+
+**⛔ AND GENI PUT UP A CAPTCHA.** Target `6000000188817855822` returned an Incapsula *"Additional
+security check is required"* page — blank title, blank body, no profile — after roughly forty
+profile loads across the session. I do not solve CAPTCHAs, so Geni work stops here.
+
+Two things worth recording rather than shrugging at. **A CAPTCHA is invisible to every check the
+collector makes**: the family job returned cleanly with an empty name, all-zero statistics and
+zero relatives, which is indistinguishable from a real person with no recorded family. Had this
+landed mid-batch it would have written a row of zeros and moved on. And **the pace is what
+provoked it** — the pilot's own rule is *one a minute, no concurrency*, and tonight's loops ran
+faster than that whenever a target resolved quickly.

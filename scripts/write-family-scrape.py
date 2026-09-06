@@ -35,6 +35,12 @@ ISOLATES = ROOT / "reports" / "isolates.csv"
 
 FIELDS = ["family_tree", "blood_relatives", "ancestors", "descendants", "followers"]
 
+#: Which profile Geni's relationship search is anchored on RIGHT NOW. Set on Charlemagne
+#: 2026-09-06 via `docs/anchor-protocol.md`; everything captured before that is `emma`. If the
+#: anchor is ever moved, this moves with it -- a row written under the wrong label is worse than
+#: no label, because it is silently counted in the wrong reach rate.
+ANCHOR = "charlemagne"
+
 #: ⛔ THE BANNER CAN ONLY EVER PROVE A MISS. It cannot prove a hit, and the first version of this
 #: function claimed otherwise: anything that was neither the pending sentence nor the miss
 #: sentence fell through to `"yes"`.
@@ -160,8 +166,21 @@ def main() -> int:
     verdict = fresh if fresh else prior
     if prior == "yes" and fresh == "no":
         verdict = "yes"   # a chain we hold is evidence; today's miss banner does not retract it
+    # ⛔ A VERDICT IS MEANINGLESS WITHOUT THE ANCHOR IT WAS TAKEN UNDER.
+    #
+    # With the pushpin on the viewer a capture answers *how is this person related to Emma*; on
+    # Charlemagne, *how is this person related to Charlemagne*. Same page, same wording, different
+    # question — and the pilot's deliverable is a reach rate to Charlemagne, so mixing the two
+    # produces a number that answers neither. `docs/anchor-protocol.md`.
+    #
+    # The anchor moved to Charlemagne on 2026-09-06 and every row taken before it is marked
+    # `emma`. A row carries the anchor that was live when its VERDICT was observed, so a
+    # preserved verdict keeps its own anchor rather than inheriting today's.
+    prior_anchor = next((r[9] for r in rows[1:] if r and r[0] == gid and len(r) > 9), "")
+    anchor = prior_anchor if (verdict and verdict == prior and prior_anchor) else (
+        ANCHOR if verdict else "")
     body.append([gid, name] + [str(stats.get(f, 0) or 0) for f in FIELDS]
-                + ["2026-09-06", verdict])
+                + ["2026-09-06", verdict, anchor])
     body.sort(key=lambda r: r[0])
     with ISOLATES.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
