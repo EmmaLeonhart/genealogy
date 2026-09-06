@@ -29173,3 +29173,29 @@ with this narrowed.
 Also learnt while walking: Nicoline's mother is **Olina Salomonsdatter**, which is the *Olina* in
 the `Salomon father of Olina` item Emma sent a screenshot of. Her merge, her Forest export and
 this line are one family.
+
+## 2026-09-05 — both Ancestors exports down: Alfred's ancestry is present
+
+The entry above left Clara's export building. It is down, and the pair answers her instruction.
+
+    export-geni (1).zip        6,603 B   Ancestors   38 individuals,    22 families
+                                         seed Andreas Petrus Eliassen /Hoknes/
+    export-geni (2).zip   15,918,076 B   Ancestors  4,387 individuals, 2,628 families
+                                         seed Clara Amilia /Knutson/
+
+**4,387 against the 4,395 Alfred's own statistics block claims**, so the two parents together
+carry effectively his whole recorded ancestry; the eight-person shortfall is Alfred himself, his
+two parents, and the overlap between the lines. That is the check she asked for —
+*"make sure all of his ancestors are present"* — and it is a measurement rather than an
+assumption, which matters because Alfred himself **cannot be exported**: Geni answers
+*"You are not allowed to export that profile."*
+
+**Clara's birth surname is `Knutson`, not `Hoknes`.** The Hoknes on her profile is the married
+name, which `CLAUDE.md` § *The MARRIED name is the real name* would have predicted and which the
+export's own `NAME` line settles.
+
+**All three zips are unfiled in `~/Downloads` on purpose** — § *Do not integrate as you go*, and
+where a `.ged` is filed is hers. The third is her own Forest export, 5,000 individuals, seeded on
+`Hans /father of Anne Margrethe Kingo/`.
+
+No export is in flight and the watcher cron is deleted.
