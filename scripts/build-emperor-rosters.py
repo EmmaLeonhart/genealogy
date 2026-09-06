@@ -74,7 +74,7 @@ def _sort_key(qid: str) -> tuple[int, str]:
 
 def bio_links() -> dict[str, str]:
     """`qid -> geni id` from her own Geni *About Me* links, read out of the corpus."""
-    path = ROOT / "reports" / "bio-qids.tsv"
+    path = ROOT / "out" / "bio-qids.tsv"
     out: dict[str, str] = {}
     if not path.exists():
         return out

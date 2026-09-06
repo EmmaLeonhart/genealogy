@@ -568,3 +568,8 @@ geni-extension.crx
 # run is followed, and it is never a deliverable.
 out/rebuild-*.log
 out/rebuild-*.err
+
+# A machine extract of the Wikidata links already in Geni bios, read by the roster scripts.
+# It lived in reports/ and read as a curated correspondence, which it is not -- her 2026-09-06
+# ruling. Regenerate with scripts/extract-bio-qids.py; never track it.
+out/bio-qids.tsv

@@ -29,7 +29,11 @@ level record and attributes every link found to it.
 **A person may carry more than one QID and that is not an error** -- `CLAUDE.md` § *A second
 Geni ID on one Wikidata item is NOT a conflict* is the mirror of it. All pairs are emitted.
 
-Writes `reports/bio-qids.tsv` -- `geni_id`, `qid`, `exports`.
+Writes **`out/bio-qids.tsv`, which is gitignored** -- Emma, 2026-09-06: *"it also
+shouldn't exist lol because it's just garbage for agents to get confused about."* It sat in
+`reports/` looking like one of the two curated Geni-to-Wikidata correspondences and is not
+one: it is a machine extract of links already in Geni bios, read by the roster scripts.
+`reports/correspondence-sources.md` is what that distinction is. Writes -- `geni_id`, `qid`, `exports`.
 """
 from __future__ import annotations
 
@@ -45,7 +49,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from genimerge.sources import find_exports  # noqa: E402
 
-OUT = ROOT / "reports" / "bio-qids.tsv"
+OUT = ROOT / "out" / "bio-qids.tsv"
 
 #: `0 @I6000000001846508982@ INDI` -- the record that owns everything until the next `0` line.
 INDI = re.compile(rb"^0 @I(\d+)@ INDI", re.M)

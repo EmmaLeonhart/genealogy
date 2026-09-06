@@ -29374,3 +29374,23 @@ sideways between them names a parent that may be in nothing we hold. **2,125 sib
 **And it reframes the three placeholders created earlier tonight as out of order**, not merely
 unexported: step 1 should have banked their family members first, and step 3b is reached only
 after step 2 fails.
+
+## 2026-09-06 — bio-qids retargeted to a gitignored path, after she confirmed the rebuild
+
+Her sequence, and this is the second half of it: rebuild, regenerate, commit, push, confirm good,
+then retarget. She confirmed on 2026-09-06 — *"Good — do the retarget"* — and chose retarget over
+deleting the script, so the four readers keep working.
+
+    reports/bio-qids.tsv   ->   out/bio-qids.tsv   (gitignored, one explicit line)
+
+Four call sites moved, not three: `extract-bio-qids.py` itself plus `build-emperor-rosters.py`,
+`build-merge-worklist.py` and `build-succession-roster.py`. `slim-corpus.py` and
+`src/genimerge/slim.py` mention the path only in prose and needed no change. All four compile and
+the 184 rows are where the readers now look.
+
+**Why it moved rather than being deleted:** her words, *"it also shouldn't exist lol because it's
+just garbage for agents to get confused about."* Sitting in `reports/` it read as one of the two
+curated Geni-to-Wikidata correspondences, and it is not one — it is a machine extract of links
+already in Geni bios. `reports/correspondence-sources.md` is that distinction, and
+`extract-bio-qids.py`'s own docstring now says it too, so the next reader learns it from the file
+rather than from a report they may not open.

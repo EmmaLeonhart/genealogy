@@ -95,7 +95,7 @@ def izumo_ids():
     # refresh that refuted it, which is the failure `CLAUDE.md` § *CHECK before you alarm her*
     # names.
     bio = collections.defaultdict(set)
-    bio_path = ROOT / "reports" / "bio-qids.tsv"
+    bio_path = ROOT / "out" / "bio-qids.tsv"
     if bio_path.exists():
         with bio_path.open(encoding="utf-8", newline="") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):

@@ -116,7 +116,7 @@ def geni_by_qid():
     our Geni corpus under a matching id.
     """
     out = {}
-    bio = ROOT / "reports" / "bio-qids.tsv"
+    bio = ROOT / "out" / "bio-qids.tsv"
     if bio.exists():
         with io.open(bio, encoding="utf-8", newline="") as fh:
             for r in csv.DictReader(fh, delimiter="\t"):
