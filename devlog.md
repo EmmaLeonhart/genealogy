@@ -30769,3 +30769,27 @@ content filter, which it demonstrated again on the first attempt.
 
 **The ledger cannot drift** because `write-family-scrape.py` writes the TSV and the
 `isolates.csv` row in the same pass. Nothing was written with a file tool directly.
+
+**Five more in the same pass**, all misses under the Charlemagne anchor, all cleared for export:
+Dr. Hans Johann Jan Ritter `6000000001335702813` (family_tree 2,247 · **blood_relatives 15,000**),
+Jana Rosemann `6000000129381572848` (2,865), Josef Roubiček `6000000072168452370` (2,877 / 3,031),
+Ella Schleissner (Löwy) `6000000025096985990` (6,737 / 5,065), Rita Schulz `6000000152456435836`
+(1,326 / 1,793).
+
+**Ritter's 15,000 is the CEILING, not a count** — `common.js` § the statistics block: any figure
+at the cap means the query exceeded its maximum, and is the strongest evidence of world-tree
+connection there is. A "no blood relationship was found" sitting beside one is a database
+failure, which is exactly the case her rule sends to an export.
+
+**⛔ A SINGLE OBSERVATION OF `no_panel` IS NOT EVIDENCE OF ANYTHING, and it nearly became a code
+change.** Waiting on the five, one target was read directly and had no relationship panel at all
+— no `path_search_response`, no *How are you related?* button, no segments — which reads exactly
+like a search that has died, and a wait was about to be capped on the strength of it. All five
+then resolved normally to a miss banner. The panel is simply absent between the request and the
+answer. `individual.js` carries the correction beside the change it nearly justified.
+
+**What did land is a wiring fix.** `runPath` has documented `waitMs` as *the caller's budget*
+since it was written and `runIndividual` never passed one, so no caller could ever reach it —
+`CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*. The default stays 600000,
+because her figure for a real search is ten minutes and a capped wait turns a slow hit into a
+deferral. Extension 1.6.0 → 1.6.1.

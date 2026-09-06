@@ -65,7 +65,22 @@ GC.runIndividual = async function (job) {
    *      distinguishes not-requested, running, resolved-with-chain and resolved-with-nothing,
    *      and clicks "Show short path" itself, which is step 5a's expand. */
   step("path");
-  const path = await GC.runPath({ geni_id: id, kind: job.kind || "blood" });
+  /* ⛔ `waitMs` IS THE CALLER'S BUDGET AND WAS UNREACHABLE THROUGH THIS JOB.
+   * `runPath` has documented it as the caller's budget since it was written, and this
+   * function never passed one -- so every individual run takes the 600000 default whatever
+   * the caller asks for. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
+   *
+   * ⛔ AND THE DEFAULT STAYS 600000, because her figure for a real search is ten minutes and
+   * a capped wait turns a slow HIT into a deferral. This makes the knob reachable and moves
+   * no behaviour: `job.waitMs` is undefined unless a caller sets it.
+   *
+   * ⛔ DO NOT CAP IT ON THE STRENGTH OF A SNAPSHOT. Five targets were read mid-run on
+   * 2026-09-06 as having no relationship panel at all -- no `path_search_response`, no
+   * button, no segments -- which reads exactly like a search that has died. All five then
+   * resolved normally to a miss banner. The panel is simply absent between the request and
+   * the answer, so a single observation of `no_panel` is not evidence of anything. */
+  const path = await GC.runPath({ geni_id: id, kind: job.kind || "blood",
+                                  waitMs: job.waitMs });
   out.path_state = path.state;
   out.path_steps = path.steps;
   out.path_has_target = path.hasTarget;
