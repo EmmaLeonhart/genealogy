@@ -55,6 +55,7 @@ GC.toTsv = function (links, header) {
 /* One target, start to finish. Resolves with a verdict the background stores; it never decides
  * what the hit RATE is, which stays with `harvest-isolate-paths.py` over the saved files. */
 GC.runPath = async function (job) {
+  if (GC.blocked()) return { job: "path", geni_id: String(job.geni_id), state: "blocked" };
   const id = String(job.geni_id);
   const kind = job.kind || "blood";
   const report = (extra) => Object.assign({

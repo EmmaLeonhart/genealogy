@@ -159,6 +159,50 @@ GC.statistics = async function () {
  * zip itself and `export.js` clicks its link. Nothing here manufactures a file for the browser
  * to save. */
 
+/* ⛔ IS THIS A GENI PAGE AT ALL, OR AN INCAPSULA BLOCK? A CAPTCHA IS INVISIBLE TO EVERY OTHER CHECK.
+ *
+ * **Emma, 2026-09-06:** *"geni started wanting captchas again and that's why stuff was not
+ * working."* Geni sits behind Imperva/Incapsula, and when it decides the traffic looks automated
+ * it serves *"Additional security check is required"* with an hCaptcha in place of the profile.
+ *
+ * **What makes it dangerous is that it looks like a person with no family.** Measured on target
+ * `6000000188817855822`: the `family` job returned cleanly with an empty name, **all five
+ * statistics zero**, and **zero relatives** — which is indistinguishable from a real profile whose
+ * relatives are unrecorded. Nothing errored. Had it landed mid-batch the row would have been
+ * written and the run would have carried on, and `# unlinked 0` would have asserted completeness
+ * about a page that contained no genealogy at all.
+ *
+ * That is the `CLAUDE.md` § *check the separator before believing a distribution* family in its
+ * purest form: a clean, plausible, entirely fictional zero.
+ *
+ * ⛔ **`_Incapsula_Resource` IS NOT A BLOCK MARKER AND WAS THE FIRST VERSION OF THIS FUNCTION.**
+ * Incapsula proxies the WHOLE of Geni, so that string is injected into every page it serves.
+ * Measured on Natalia Krebs `6000000188817855822`, a page that had loaded perfectly: marker
+ * present, `h1` present, 43-character title, three frames and no captcha among them. The guard
+ * returned `blocked` on a working profile — it would have blocked **every scrape in the
+ * campaign** while looking like a careful safety check.
+ *
+ * That is the shape this file keeps hitting from the other side: a plausible signal that is
+ * really about the infrastructure rather than about the page. It was caught by running the guard
+ * on a page known to be fine, which is the only thing that would have caught it.
+ *
+ * **The three that DO discriminate**, each checked against both a real block page and a real
+ * profile: the block page's own sentence, an hCaptcha frame, and the structural tell — a Geni
+ * profile always has an `h1` and a non-empty `<title>`, and the block page has neither because
+ * its text lives inside the frame.
+ *
+ * A blocked page is `state: "blocked"` and writes nothing. The caller stops; it must never be
+ * retried in a loop, which is what provoked the block in the first place. */
+GC.blocked = function () {
+  if (/Additional security check is required/i.test(document.documentElement.innerHTML || "")) {
+    return true;
+  }
+  if ([...document.querySelectorAll("iframe")].some(
+        (f) => /hcaptcha|recaptcha/i.test(f.src || ""))) return true;
+  return !document.querySelector("h1") && !document.title.trim()
+         && (document.body.innerText || "").trim().length < 40;
+};
+
 /* ⛔ A MARKER THE PAGE CAN SEE, so "is the extension loaded?" is answerable in one line.
  *
  * A content script runs in an ISOLATED world: nothing it defines -- `GC` included -- is visible
@@ -170,4 +214,4 @@ GC.statistics = async function () {
  * work was done agentically around it, and the question was answered by asking Emma rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
-document.documentElement.setAttribute("data-geni-collector", "1.3.0");
+document.documentElement.setAttribute("data-geni-collector", "1.4.1");

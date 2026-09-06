@@ -151,6 +151,9 @@ GC.family.toTsv = function (subject, subjectName, scraped, stats) {
 
 GC.runFamily = async function (job) {
   const id = String(job.geni_id);
+  /* Before anything: is this Geni, or the block page? A CAPTCHA scrapes as a person with no
+   * family and no statistics, and reports success. */
+  if (GC.blocked()) return { job: "family", geni_id: id, state: "blocked" };
   await GC.until(
     () => !!document.querySelector("#family_profile_module, .immediate-family"), 25000);
 

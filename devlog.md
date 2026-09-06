@@ -30080,3 +30080,38 @@ falsifier, recorded because it is a guess: **if the next pipeline run still prin
 refresh is not working and the step should come out** rather than being nursed.
 
 The queue item is removed — the review is what it asked for and it is done.
+
+## A CAPTCHA guard — and the first version of it would have blocked every scrape
+
+**Emma, 2026-09-06:** *"geni started wanting captchas again and that's why stuff was not
+working."* Geni sits behind Imperva/Incapsula and serves an hCaptcha page in place of the profile
+when the traffic looks automated. It is invisible to every check the collector makes: measured on
+`6000000188817855822`, the `family` job returned cleanly with an **empty name, all five statistics
+zero and zero relatives** — indistinguishable from a real person with no recorded family, and
+`# unlinked 0` would have asserted completeness about a page containing no genealogy at all.
+
+`GC.blocked()` now runs first in both `runFamily` and `runPath`; a blocked page is
+`state: "blocked"` and writes nothing.
+
+**⛔ AND THE FIRST VERSION OF THE GUARD WAS WORSE THAN NO GUARD.** It keyed on
+`_Incapsula_Resource` in the page source. **Incapsula proxies the whole of Geni**, so that string
+is on every page it serves — measured on Natalia Krebs, a profile that had loaded perfectly:
+marker present, `h1` present, 43-character title, three frames and no captcha among them. The
+guard returned `blocked` on a working page. Shipped, it would have blocked **every scrape in the
+campaign** while looking like a careful safety check.
+
+It was caught by running the guard on a page known to be fine — the only thing that would have
+caught it, and the same discipline that caught the expander that did nothing. A signal that is
+really about the infrastructure rather than about the page is the recurring shape here.
+
+**The three that discriminate**, each checked against both a real block page and a real profile:
+the block page's own sentence, an hCaptcha iframe, and the structural tell — a Geni profile always
+has an `h1` and a non-empty `<title>` and the block page has neither, because its text lives inside
+the frame. Verified after the fix: `state: scraped`, Natalia Krebs, 2 relatives.
+
+**And the anchor shows in the wording now.** Her banner reads *"How are **they** related?"* where
+every earlier capture read *"How are **you** related?"* — the pushpin is live and the page is
+asking about the profile and Charlemagne rather than about the viewer.
+
+Natalia Krebs: Family Tree 396, Blood Relatives 2 — clears the floor on `family_tree` alone, a
+fourth person joined almost entirely through in-laws.
