@@ -33,6 +33,70 @@ Take a person off the queue and, for that person:
 
 4. **Repeat.** *"And it keeps on going like this, going up going up and trying to add people."*
 
+## ⛔ THE FULL RULE, dictated 2026-09-05. This supersedes the sketch above where they differ
+
+Her words, and the surname source is the part that changes what was built:
+
+> *"From any individual the mother and father get added in order to the queue if both exist.*
+>
+> *If neither exists and the person has a recognized patronymic then the father is created using
+> first name taken from the patronymic plus suggested surname, if the suggested surname is the
+> patronymic it is replaced with "NN" and if it contains but isn't entirely the patronymic then
+> the patronymic is removed with regex from the suggested surname.*
+>
+> *If there's no patronymic then father is NN suggested surname.*
+>
+> *If there's a father but no mother then the mother is NN suggested surname. If a matronymic
+> existed it would go through all the patronymic rules but we do not support matronymics yet.*
+>
+> *If both parents exist or an error kept you from adding a new parent then move onto next in the
+> queue."*
+
+| state of the person | who is created | first name | surname |
+| --- | --- | --- | --- |
+| both parents exist | nobody | — | — (enqueue mother, then father) |
+| no parents, has a patronymic | **father** | from the patronymic | **suggested**, minus the patronymic |
+| no parents, no patronymic | **father** | `NN` | **suggested** |
+| father present, mother absent | **mother** | `NN` | **suggested** |
+| an add fails for any reason | nobody | — | move to the next in the queue |
+
+**⛔ THE SURNAME IS GENI'S SUGGESTION, not ours.** This is the correction: the walk was computing
+a surname by parsing the child's own name tokens, which is why it had a Spanish two-surname
+problem and a `last token` heuristic at all. It does not need one. Geni's *Suggest surnames*
+offers something plausible for a parent, and the rule is applied to **that string**:
+
+    suggested == the patronymic          ->  "NN"
+    suggested contains the patronymic    ->  strip the patronymic out of it
+    otherwise                            ->  use it as offered
+
+**SUGGEST SURNAMES IS ALWAYS ON.** Emma, 2026-09-05: *"suggested surnames are always a good
+thing. And the agent just decided to disable suggested surnames for no reason, basically."* It
+was ticked off in the first implementation on the strength of
+`docs/export-seed-rules.md` tier 3, which said Geni would offer the child's surname *"which
+would be invented"*. Her ruling reverses that and the reasoning is hers: a plausible surname is
+a better handle than none, and the patronymic-stripping rules above are what keep it honest.
+
+**Matronymics are NOT supported.** Her words: if one existed it would go through all the
+patronymic rules. Nothing infers one today, and nothing should start.
+
+## Why the queue is shaped this way — it optimises for the least documented lineages
+
+**Her reasoning, and it is the justification for mother-first:** *"mothers are most likely to be
+not recorded and then followed by maternal grandparents and so on... it's structured to optimize
+it."* So the ordering is not arbitrary politeness; it walks toward the sparsest part of the
+record first.
+
+**And the father is created preferentially** because the evidence is better there: *"patronymic
+sometimes give their first name, and suggested surnames will tend to give something plausible for
+the father even if there was no patronymic."*
+
+**It is greedy best-first, and that is a deliberate change from the older method.** Her framing:
+*"to speak in vibes, it's a bit more greedy best first. The earlier algorithms saw several
+generations up, [and] would choose the most optimal person to add from a displayed family tree,
+whereas this one goes just simply up through a queue, but it's the same basic thing."* So a
+worse-but-cheaper pick each step, rather than reading a whole tree view to find the best one --
+which is also what lets it run without the canvas.
+
 ## Failure is a skip, and that is the whole master-profile handling
 
 **Her words:** *"If it fails to add somebody for some reason, then it's pretty simple. It just

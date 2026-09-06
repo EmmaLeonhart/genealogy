@@ -28692,3 +28692,43 @@ The dry run had been reporting `tier 3, mother absent` for people with no parent
 was wrong on both the tier and the parent.
 
 Nothing was created while this was open.
+
+## 2026-09-05 — the surname is GENI'S suggestion, and it cannot be read before saving
+
+Emma re-specified the walk in full and the load-bearing correction is the surname source. It was
+being computed here by parsing the child's own name tokens — a `last token` heuristic, which is
+exactly why it had a Spanish two-surname problem. Her rule does not need one:
+
+> *"the father is created using first name taken from the patronymic plus suggested surname, if
+> the suggested surname is the patronymic it is replaced with "NN" and if it contains but isn't
+> entirely the patronymic then the patronymic is removed with regex from the suggested surname"*
+
+and, on the box being unticked in the first implementation: *"suggested surnames are always a
+good thing. And the agent just decided to disable suggested surnames for no reason, basically."*
+That was done on the strength of `docs/export-seed-rules.md` tier 3; her ruling reverses it.
+
+**⛔ MEASURED: the suggestion does not exist until the profile is saved.** With *Suggest surnames*
+ticked and a first name typed, `page_profile_names_en-US_last_name` stays empty — on typing, and
+on focus. Geni applies it server-side at creation. So the field is now left **blank on purpose**:
+writing anything into it suppresses the suggestion, which is the one thing that must not happen,
+and her rules run against what comes back rather than against a value inspected in the form.
+
+`GC.seed.correctSurname` is those two rules, checked against her cases:
+
+    suggested 'Olsen'           patronymic 'Olsen'   ->  'NN'
+    suggested 'Larsen Tjaaland' patronymic 'Larsen'  ->  'Tjaaland'
+    suggested 'Tjaaland'        patronymic 'Larsen'  ->  'Tjaaland'   (untouched)
+
+The point is that a father must never carry his child's patronymic as a surname: `Ole Olsen` as
+father of `Anders Olsen` names a family that does not exist.
+
+**One measurement worth keeping: Geni suggested nothing at all in the one case we have.** The
+`NN` mother created for Kari Olsdatter, with the box ticked, came back as bare `NN` with no
+surname — presumably because the child's only surname is itself a patronymic. So the correction
+rules may fire rarely; that is a reading of one case, not a rate.
+
+Also recorded her reasoning for the queue order, which was not written down before: it optimises
+for the least documented lineages — *"mothers are most likely to be not recorded and then
+followed by maternal grandparents and so on"* — and the father is created preferentially because
+the evidence is better there, patronymic or suggestion. And that this is deliberately greedy
+best-first rather than the older method's read of a whole displayed tree.

@@ -245,6 +245,32 @@ GC.seed.plan = function (nm, pat, which, parentCount) {
   return { tier: 5, first: "NN", last: "father of " + nm.given, why: "no surname" };
 };
 
+/* Emma's rules on the SUGGESTED surname, 2026-09-05:
+ *
+ *     "if the suggested surname is the patronymic it is replaced with 'NN' and if it contains
+ *      but isn't entirely the patronymic then the patronymic is removed with regex from the
+ *      suggested surname"
+ *
+ * Applied to what Geni returns, because the suggestion does not exist until the profile is
+ * saved. The point is that a father must never end up carrying his child's patronymic as a
+ * surname -- `Ole Olsen` as the father of `Anders Olsen` names a family that does not exist.
+ */
+GC.seed.correctSurname = function (suggested, patronymic) {
+  const sug = (suggested || "").trim();
+  const pat = (patronymic || "").trim();
+  if (!sug || !pat) return { surname: sug, changed: false };
+  const foldEq = (a, b) => GC.seed.fold(a) === GC.seed.fold(b);
+
+  if (foldEq(sug, pat)) return { surname: "NN", changed: true, why: "suggested == patronymic" };
+
+  const kept = sug.split(/\s+/).filter((t) => !foldEq(t, pat));
+  if (kept.length !== sug.split(/\s+/).length) {
+    return { surname: kept.join(" ") || "NN", changed: true,
+             why: "patronymic removed from the suggestion" };
+  }
+  return { surname: sug, changed: false };
+};
+
 /* ---------------------------------------------------------------- creating */
 
 GC.seed.addParent = async function (which, p) {
@@ -280,7 +306,21 @@ GC.seed.addParent = async function (which, p) {
 
   set($("page_profile_names_en-US_first_name"), p.first);
   set($("page_profile_names_en-US_middle_name"), "");
-  set($("page_profile_names_en-US_last_name"), p.last);
+  /* ⛔ THE LAST NAME IS LEFT BLANK ON PURPOSE, so Geni's *Suggest surnames* fills it.
+   *
+   * Emma, 2026-09-05: the father is *"first name taken from the patronymic plus suggested
+   * surname"*, and *"suggested surnames are always a good thing. And the agent just decided to
+   * disable suggested surnames for no reason."* So the surname is GENI'S, not ours -- which is
+   * also what retires the token-parsing this file used to do, and with it the Spanish
+   * two-surname problem that parsing had.
+   *
+   * **Measured 2026-09-05: the suggestion cannot be read before saving.** With the box ticked
+   * and a first name typed, `page_profile_names_en-US_last_name` stays empty -- on typing, and
+   * on focus. Geni applies it server-side when the profile is created. So her rules about the
+   * suggested surname are applied to what comes BACK, in `GC.seed.correctSurname`, not to a
+   * value inspected here. Writing anything into the field would suppress the suggestion, which
+   * is the one thing that must not happen. */
+  set($("page_profile_names_en-US_last_name"), "");
 
   const g = which === "mother" ? $("gender_f") : $("gender_m");
   if (g && !g.checked) g.click();
