@@ -86,22 +86,6 @@ Q141319195	P5056	LAST	P144	Q141219299	S2600	"6000000003492021754"
 #   Q141217385 Guri Persdatter Øksnevad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200028 Per Jonson Øksnevad
 Q141217385	P5056	LAST	P144	Q141200028	S2600	"6000000005607155246"
 
-# Remmie -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Remmie"
-LAST	Len	"Remmie"
-#   set the mul label to "Remmie"
-LAST	Lmul	"Remmie"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141199868 Ingvold Remmie: P734 family name = the item just created
-Q141199868	P734	LAST	S2600	"6000000035698131765"
-#   Q141319135 Dorthy Thelma Remmie: P734 family name = the item just created
-Q141319135	P734	LAST	S2600	"6000000035698227660"
-
 # / -- given, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -132,35 +116,55 @@ Q141268102	P734	LAST	S2600	"6000000010673340669"
 #   Q141271420 Jakob Larsson Bratt-Hetland: P734 family name = the item just created
 Q141271420	P734	LAST	S2600	"6000000010673653631"
 
-# Garborg -- given, 2 bearer(s) in the batches
+# Gautun -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Garborg"
-LAST	Len	"Garborg"
-#   set the mul label to "Garborg"
-LAST	Lmul	"Garborg"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   Q141168788 Arne Garborg Tunheim: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q141168788	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000037693739967"
-#   Q141216501 Siri Garborg Talle: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q141216501	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000177687513857"
+#   the item just created: set the en label to "Gautun"
+LAST	Len	"Gautun"
+#   set the mul label to "Gautun"
+LAST	Lmul	"Gautun"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141223970 Villum Jonsen Gautun: P734 family name = the item just created
+Q141223970	P734	LAST	S2600	"6000000003315775479"
+#   Q141319082 Christen Villumsen Schau: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141319082	P734	LAST	P3831	Q2507958	S2600	"6000000175890087867"
 
-# 304 more name items are needed and wait for a later
+# Halvorson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Halvorson"
+LAST	Len	"Halvorson"
+#   set the mul label to "Halvorson"
+LAST	Lmul	"Halvorson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q16276226 Halvor
+LAST	P144	Q16276226
+#   Q141244233 Reier Halvorson Vashus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219060 Halvor Johannesson Hobberstad
+Q141244233	P5056	LAST	P144	Q141219060	S2600	"6000000006771426726"
+#   Q141318911 Halvor Halvorsen Storhaug: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219060 Halvor Johannesson Hobberstad
+Q141318911	P5056	LAST	P144	Q141219060	S2600	"6000000017956997817"
+
+# 271 more name items are needed and wait for a later
 # run -- 6 a day is her cap, not a limit of the data:
-#   Gautun (family), 2 bearer(s)
-#   Johannessen (patronymic), 2 bearer(s)
-#   Johansson (patronymic), 2 bearer(s)
+#   Heerdhielm (family), 2 bearer(s)
+#   Helgesdatter (patronymic), 2 bearer(s)
+#   Jönsdotter (patronymic), 2 bearer(s)
 #   Kristoffersdatter (patronymic), 2 bearer(s)
 #   Königsson (patronymic), 2 bearer(s)
 #   Lauritsen (patronymic), 2 bearer(s)
-#   Linnerhielm (family), 2 bearer(s)
 #   Malmeim (family), 2 bearer(s)
 #   Margretelund (family), 2 bearer(s)
+#   Mattsdotter (patronymic), 2 bearer(s)
 #   Mattsson (patronymic), 2 bearer(s)
 #   Monsen (patronymic), 2 bearer(s)
-#   Nor-Kolnes (family), 2 bearer(s)
-#   ... and 292 more
+#   Nilsdotter (patronymic), 2 bearer(s)
+#   ... and 259 more
 
 # ========================================================================
 # THE DAY'S PEOPLE
