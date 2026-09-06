@@ -29657,3 +29657,40 @@ content change is one row added (`derived-marriages.csv`), one gone
 generated file that **cannot** be reviewed by diff, which is exactly the hazard § *SORTING MUST BE
 DETERMINISTIC* names — here it is inherent to the report rather than a sort bug, since staleness in
 days is what the file is for.
+
+## The first real path capture through the extension — and it is NOT anchored on Charlemagne
+
+**Rudolf Beck `6000000026849996554` resolved: `resolved_path`, 23 steps, target on the chain.**
+The `path` job drove the whole sequence itself — clicked *"How are you related?"*, waited through
+the green progress bar, clicked *"Show short path"*, parsed the segments and returned the TSV.
+`paths/isolate-geni-rudolf-beck-1919-c1941.tsv`.
+
+**⛔ BUT STEP 1 IS `You`.** Geni's own prose reads *"Rudolf Beck is your second great uncle's
+uncle's wife's first cousin once removed's wife's aunt's husband's father's mother's sister's
+son's daughter's son"*, and the chain runs out through Borsheim and Stangeland — so this is an
+**Emma-anchored** path of exactly the kind as the 663 already in `paths/`, and **not** the
+Charlemagne-anchored capture the isolate pilot is specified for. `CLAUDE.md` § *the anchor applies
+to NEW paths only* wanted Charlemagne from 2026-09-03 on.
+
+**It is kept and it is live work** — her ruling: *"a bunch of the paths are from an individual to
+me, and that's 100% fine and they are to be filled in."* It simply does not answer the pilot's
+question, and the file says so in its own header rather than being filed as though it did.
+
+**Whether the pushpin is still set is HERS.** *"You do not pin Charlemagne, it needs to be done
+exactly once and I did it."* The collector reads the anchor and never sets it, and
+`tests/test_geni_extension.py` fails any line that toggles it. Nothing here touched it; the
+page carries no anchor control in this state, so what I can report is what the capture says, not
+why.
+
+**⛔ AND A REQUESTED SEARCH DECAYS BACK TO UNREQUESTED.** Beck read *"Path search in progress"*
+when his family was scraped, and two hours later the same profile showed the **"How are you
+related?"** button — the *not requested* state. So pass two of the two-pass campaign is not
+"come back and read the answer"; it is **come back, and where it has reverted, request it again**.
+`harvest-isolate-paths.py` has `not_requested()` as a state and nothing recorded that a *running*
+search returns to it. A pass-two run that only reads will report a pending target as untouched
+forever.
+
+**Cross-checked against our own earlier capture, which is what makes it more than a plausible
+chain.** Step 22 of the path is `6000000011662689164` Antonie Beck, and the family scrape taken
+hours earlier independently recorded that same profile id as his mother. Two captures, two
+mechanisms, the same primary key.
