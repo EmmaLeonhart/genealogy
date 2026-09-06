@@ -150,6 +150,13 @@ relationship for a man four steps from a family continuous with Charlemagne.
 
 **Her precedence order for what to do with each person:**
 
+⛔ **CASE 1'S EXPORT STYLE IS SUPERSEDED. Emma, 2026-09-06: _"9-03 is wrong"_.** It is a
+**`Forest`** export, not `Ancestors` — `docs/per-individual-loop.md`. Her words are left below as
+she wrote them because a quote that has been tidied stops being evidence, but **do not run an
+`Ancestors` export off this line.** `Forest` follows spouse links; `Ancestors` walks straight up
+and goes past exactly the in-law joins case 1 exists for — Moshe Bar Nissim, named two paragraphs
+down as *"failing because of large in-law chains"*, is the worked example.
+
 1. **connected to Charlemagne, no relationship found after the query** --- run a full **Ancestors**
    export, which yields roughly 5,000 new individuals. This is the common case.
 2. **connected to Charlemagne, relationship found** --- save the page, **once both blood AND

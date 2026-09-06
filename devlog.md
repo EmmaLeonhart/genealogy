@@ -29941,3 +29941,21 @@ toward the reach rate.
 **The general lesson is bigger than the pin, and it is now in `CLAUDE.md`:** when she does
 something by hand because the automation is stuck, that describes a gap in the tooling. Automate
 it. Reading it as sacred keeps the gap open and makes her workaround permanent manual labour.
+
+**Sweep: nothing removed, seventh running — but a live instruction in the tail is now WRONG and is
+marked as such.** All six items verified: five creations and none from a scheduler walk, the phase
+order a rule, the pilot at 17 of 100, the parent-adding campaign gated by her, `build-from-diff`
+with no review and the correspondence experiment with no GEDCOM. No other session has committed in
+six hours.
+
+**Her tail's precedence order case 1 says to run an `Ancestors` export, and she ruled that wrong
+today** — *"9-03 is wrong"*. That is not a stale figure or a drifted count; it is an instruction a
+session would act on, and acting on it spends one of her export slots on a walk that goes past the
+join it is meant to close. `Forest` follows spouse links; `Ancestors` does not, and her own notes
+two paragraphs below name Moshe Bar Nissim as failing *because of* in-law chains.
+
+**Her words are left exactly as written and the supersession sits above them.** `CLAUDE.md`
+§ *"SYNOPTIC TREE"* — a quote that has been tidied is no longer evidence of what she said — so the
+correction goes in the prose around it rather than through it. This is the one edit to the tail
+section this session, and it is made because she declared the content wrong, not because it looked
+stale to me.
