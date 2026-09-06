@@ -30182,3 +30182,17 @@ That is a net loss against the state before the deletion, and it would have gone
 not a failing test, not a queue item, and the deletion commit reads as pure improvement. Queued
 rather than done, because it is a second reader on an existing emitter and belongs in a work loop
 rather than in a sweep.
+
+**Correction, hers: the family-xref stability is worth doing and not worth much.** *"geni does not
+expose family ids. This is good to attempt but I'm not sure how much it matters as wikidata does
+not use families."*
+
+She is right and I billed it as a headline property beside the invented-people finding, as though
+they were comparable. They are not. Geni exposes no family id, so any `FAM` xref is ours either
+way; Wikidata has no family object and models `P22`/`P25`/`P40`/`P26` directly, so one couple
+written as two `FAM` records still yields the same edges and deduplicates downstream. The digest
+stays because it costs nothing over a counter and makes the run idempotent — but it is bookkeeping.
+
+**The invented people are the actual defect**, and they are a different order of thing: 4,928
+fabricated humans with non-Geni ids, corrupting the edges rather than the numbering around them.
+`build-family-gedcoms.py`'s docstring said otherwise and now says this.

@@ -32,10 +32,20 @@ page.
 everything"*, so the merge is an exact join and these files fuse into the tree rather than sitting
 beside it. That is what she means by the entity resolution in them doing the linking.
 
-**A family xref is DERIVED FROM ITS MEMBERS, not from a counter.** The superseded script numbered
-families `9990000000000000000 + n` in file order, so the same couple scraped twice got two
-different xrefs and merged as two families. Here the xref is a digest of the member ids, so the
-Krebs family is the same family in every file that mentions it, and re-running is idempotent.
+**A family xref is derived from its members rather than from a counter -- worth doing, NOT worth
+much.** Emma, 2026-09-06: *"geni does not expose family ids. This is good to attempt but I'm not
+sure how much it matters as wikidata does not use families."* She is right and this docstring
+originally billed it as a headline property.
+
+Geni exposes no family id, so any `FAM` xref here is ours either way. Wikidata has no family
+object at all -- it models `P22` father, `P25` mother, `P40` child and `P26` spouse directly -- so
+the same couple written as two `FAM` records yields the same parent and child edges and
+deduplicates downstream. The digest costs nothing over a counter and makes re-running idempotent,
+which is why it stays; it is not what was wrong with the thing this replaces.
+
+**What WAS wrong with it was the invented people**, and that is a different order of problem:
+4,928 fabricated `NN` humans carrying non-Geni ids, which corrupts the edges themselves rather
+than the bookkeeping around them.
 
 **Names are whole strings.** Emma, 2026-08-29: *"the names being present as strings makes things
 significantly harder... You'd probably be using spacing to figure out what the last name is."* So
