@@ -603,14 +603,16 @@ Sources in merge order (later sources win value conflicts):
 597. `export-Forest-6000000227414103872.ged`
 598. `export-Forest-6000000178918141824-refresh.ged`
 599. `export-Forest-6000000227415008926.ged`
-600. `wikidata-qid-links.ged`
+600. `export-Forest-6000000227558482822.ged`
+601. `export-Forest-6000000227558664902.ged`
+602. `wikidata-qid-links.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 630050 |
-| INDI | 1451964 |
+| FAM | 630053 |
+| INDI | 1451993 |
 | NOTE | 59744 |
 | SUBM | 51106 |
 
@@ -1217,7 +1219,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227414103872.ged` | 0 | 1 | 0 | 0 | 7942 | 73 |
 | `export-Forest-6000000178918141824-refresh.ged` | 0 | 0 | 0 | 0 | 9124 | 4 |
 | `export-Forest-6000000227415008926.ged` | 0 | 2 | 0 | 0 | 7881 | 304 |
-| `wikidata-qid-links.ged` | 0 | 0 | 0 | 0 | 3 | 3 |
+| `export-Forest-6000000227558482822.ged` | 3 | 11 | 0 | 0 | 7866 | 490 |
+| `export-Forest-6000000227558664902.ged` | 0 | 18 | 0 | 0 | 7860 | 184 |
+| `wikidata-qid-links.ged` | 0 | 0 | 0 | 0 | 29 | 29 |
 
 ## Pointers to records we do not have
 

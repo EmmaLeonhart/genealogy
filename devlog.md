@@ -29057,3 +29057,33 @@ the rebuild's own commit.
 **Nothing else was started this tick.** The tree is mid-regeneration, so committing it would
 capture a half-finished state, and running the isolate pilot alongside a 13 GB job is how the
 rebuild gets killed a third time.
+
+## 2026-09-05 — the synoptic tree rebuilt, all 14 steps, 32.8 minutes
+
+Her instruction: rebuild, regenerate, commit, push, confirm good, and only then retarget
+`bio-qids.tsv`. This is the first half.
+
+**It only completed because it was run outside the harness.** Two background-task attempts were
+OOM-killed by the harness's memory guard on a job that peaks around 13 GB with 19.1 GB free.
+Relaunched detached with `Start-Process`; 32.8 minutes, no errors.
+
+    out/merged.ged   1,815,816,271 bytes   (was 1,815,770,664 on Sep 1, +45,607)
+
+The three `.ged` files newer than the old tree are in it: two `post-merge` Forest exports and
+`wikidata-qid-links.ged`, whose 29 bio pairs are the reason this was worth doing.
+
+**Every `.gz` was decompressed and counted before committing**, because a half-written archive is
+the one failure that looks identical to a good one until something reads it:
+
+    derived-labels.csv.gz     1,451,994 lines      derived-family.csv.gz   1,451,994
+    derived-facts.csv.gz      1,451,994            display-names.csv.gz    1,856,261
+    family-structure.tsv.gz   3,013,863
+
+1,451,994 is 1,451,993 people plus the header, which is the tree's own count.
+
+The run also regenerated the batch — `reports/wikidata-garborg-day.txt`, now **757 statement
+lines** against 696 — and the adjudication deck, 5 candidates. Those are the pipeline's own
+outputs rather than anything chosen here.
+
+**`bio-qids.tsv` stays tracked in this commit.** Removing it is the next item and a separate
+commit, which is the order she asked for: confirm the rebuild first.

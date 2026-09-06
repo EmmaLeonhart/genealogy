@@ -4,14 +4,14 @@ Plan items 3 and 4. Emma, 2026-08-12: *"Occupation can be done with string
 stuff"* and *"Birthplace birth date death date death place burial date burial
 place all can be done with string."*
 
-One row per person in `reports/derived-facts.csv` — **1,451,964 people**, 
+One row per person in `reports/derived-facts.csv` — **1,451,993 people**, 
 of whom 43,680 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,444,974 | 99.5% |
+| sex | 1,445,003 | 99.5% |
 | occupation | 185,464 | 12.8% |
 | birth date | 1,011,055 | 69.6% |
 | birth place | 378,013 | 26.0% |
