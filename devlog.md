@@ -28657,3 +28657,38 @@ here is the set of failures that are **silent**:
 Every assertion was evaluated directly before pushing rather than by running the suite: manifest
 valid with no missing files, both host patterns `*://www.geni.com/*`, zero control characters,
 zero pushpin toggles, concurrency pinned in the background and absent from the panel.
+
+## 2026-09-05 — the collector runs, and the walk was unbounded until she bounded it
+
+Chrome restart reloads an unpacked extension from disk, so the DOM trigger landed without her
+touching anything — that was the answer to a click I had been asking for repeatedly.
+
+**First job through the extension**, on Kari Olsdatter:
+
+    state both_present · parents 2 · listed "Ole father of Kari | NN"
+    enqueue [6000000227610585972, 6000000227315643833]      <- mother, then father
+
+Adds nothing and enqueues in her order. The walk is running in the extension rather than
+agentically, which is the whole point of building it.
+
+**Then the dry run showed it does not terminate, and she bounded it.** Both enqueued people are
+placeholders with zero parents, so the walk proposed an `NN` mother for each — and every `NN` it
+creates has no parents of its own, so the next pass proposes one for that. An unbounded chain of
+invented people on a live site.
+
+Emma: *"this is not an unbound method... it runs like `addAncestor(start_id);` and then it adds
+an ancestor of `start_id` and returns the id of it as `end_id` and then a subsequent method will
+use `end_id`, generally doing a forest export, or descendants export. Blood relatives exports and
+ancestor exports are of questionable use for this time."*
+
+So climbing is a **search for one open slot**. A creation ends the walk, the remaining seed jobs
+are dropped, and `endId` is what the export runs from. `background.js` implements that.
+
+**And the zero-parent case takes the FATHER** — her ruling the same message, asked directly:
+*"Father, per the seed rules"*, i.e. tiers 4 and 5, `NN` plus the birth surname or
+`NN /father of X/`. That settles the divergence `docs/parent-walk-algorithm.md` flagged when it
+was written: mother-first governs the **one-parent** case, the seed rules govern the empty one.
+The dry run had been reporting `tier 3, mother absent` for people with no parents at all, which
+was wrong on both the tier and the parent.
+
+Nothing was created while this was open.

@@ -47,6 +47,38 @@ different direction, and it is why the walk needs no error taxonomy.
 **No hold list.** A person skipped is not excluded — the same rule as § *A BAIL IS PER-ATTEMPT,
 NEVER PER-PERSON*. The walk is self-healing because the queue keeps producing work.
 
+## ⛔ IT ADDS ONE ANCESTOR AND RETURNS ITS ID. It is not a campaign
+
+**Emma, 2026-09-05**, asked whether the walk should give parents to the placeholders it had just
+created: *"Uhh. No this is not an unbound method. I think it technically uses recursion but the
+rule is simple: it runs like `addAncestor(start_id);` and then it adds an ancestor of `start_id`
+and returns the id of it as `end_id` and then a subsequent method will use `end_id`, generally
+doing a forest export, or descendants export. Blood relatives exports and ancestor exports are of
+questionable use for this time."*
+
+So the loop above is a **search for one open slot**, not a programme of filling in a tree. The
+moment a person is created the walk ends, its remaining queue is dropped, and `end_id` is the
+handle the next step uses.
+
+**Why the bound matters rather than being tidiness.** Every created `NN` has no parents of its
+own, so without this it immediately becomes a candidate for its own `NN` mother, and the next
+pass for that one's. That is an unbounded chain of invented people on a live site carrying other
+people's trees. Two such proposals were sitting in front of a dry run when she was asked.
+
+**The export that follows is `Forest` or `Descendants`.** Her words, same message: blood-relatives
+and ancestors walks are *"of questionable use for this time"* -- so they are not what an
+`addAncestor` result is spent on.
+
+## The zero-parent case takes the FATHER
+
+**Her ruling, 2026-09-05**, asked who is created for somebody with no parents at all and no
+patronymic: **"Father, per the seed rules"** -- `docs/export-seed-rules.md` tiers 4 and 5, `NN`
+plus the birth surname, or `NN /father of X/`.
+
+That settles the divergence this file flagged when it was written. **The mother-first ordering
+above governs the case where one parent already exists**; the empty case is the seed rules'.
+A patronymic still takes the father first either way, because it names him.
+
 ## What the walk does NOT decide: the name
 
 Which parent to add, and in what order, is this file. **What that parent is CALLED is
@@ -54,12 +86,7 @@ Which parent to add, and in what order, is this file. **What that parent is CALL
 (`Olsen` → `Ole`, not `Ols`), the farm name that is a surname, and `Suggest surnames` staying
 off so a created `NN` does not acquire an invented family name.
 
-**One divergence to settle with her, flagged rather than silently resolved.** For a person with
-**no parents at all and no patronymic**, this algorithm checks the mother first and so adds the
-**mother**; the seed rules' tiers 4 and 5 create the **father** (`NN` plus the birth surname, or
-`NN /father of X/`). Both are hers, this one is later and is explicitly about ordering, so the
-walk follows this file — but the tiers were written about the same situation and the two should
-be reconciled rather than left to whichever code runs.
+**That divergence is SETTLED** -- see § *The zero-parent case takes the FATHER* above. She ruled on 2026-09-05 that a person with no parents and no patronymic gets the father, per the seed rules, and that the mother-first order governs the one-parent case.
 
 ## Why this shape gets round the canvas
 

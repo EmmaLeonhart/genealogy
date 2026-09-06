@@ -26,7 +26,9 @@ const DEFAULTS = {
   queue: [],
   active: {},
   results: [],
-  startedAt: null
+  startedAt: null,
+  //: The id `addAncestor` returned: what the export runs from.
+  endId: ""
 };
 
 async function state() {
@@ -61,6 +63,29 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * Already-seen ids are dropped: pedigree collapse is dense in this tree, so the same
        * ancestor is reached down several lines and would otherwise be walked repeatedly. */
       let queue = s.queue;
+
+      /* ⛔ `addAncestor(start_id)` ADDS ONE ANCESTOR AND RETURNS ITS ID. Emma, 2026-09-05:
+       * *"this is not an unbound method... it runs like addAncestor(start_id); and then it adds
+       * an ancestor of start_id and returns the id of it as end_id and then a subsequent method
+       * will use end_id, generally doing a forest export, or descendants export."*
+       *
+       * So a creation ENDS the walk. Climbing exists only to find an open slot; once one person
+       * is created there is an `end_id` and the next step is an export from it, not more
+       * ancestors. Left running, every created `NN` has no parents of its own and becomes a
+       * candidate for its own `NN` mother -- an unbounded chain of invented people on a live
+       * site. That was the shape of it before she ruled.
+       *
+       * The remaining seed jobs are dropped rather than kept: they were the search for a slot,
+       * and the slot has been found. */
+      if (msg.result && msg.result.state === "added") {
+        queue = s.queue.filter((q) => q.job !== "seed");
+        await put({ active, results, queue, endId: msg.result.pid || "" });
+        try { await chrome.tabs.remove(tabId); } catch (e) {}
+        sendResponse(true);
+        pump();
+        return;
+      }
+
       const add = (msg.result && msg.result.enqueue) || [];
       if (add.length) {
         const seen = new Set(s.results.map((r) => String(r.geni_id))

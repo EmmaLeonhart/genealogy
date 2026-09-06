@@ -209,7 +209,7 @@ GC.seed.surname = function (nm, pat) {
 GC.seed.UNKNOWN = /^(nn|n\.n\.|unknown|ukjent|private|n)$/i;
 
 /* Which tier, and what the person is called. `docs/export-seed-rules.md` is the authority. */
-GC.seed.plan = function (nm, pat, which) {
+GC.seed.plan = function (nm, pat, which, parentCount) {
   const surname = GC.seed.surname(nm, pat);
   const markerGiven = !nm.given || GC.seed.UNKNOWN.test(nm.given);
 
@@ -226,10 +226,18 @@ GC.seed.plan = function (nm, pat, which) {
 
   if (pat && pat.system === "iberian-unknown") return { skip: "unmapped Iberian patronymic" };
 
-  /* Tier 3 -- the other parent is present and this one is not. No surname: Geni's *Suggest
-   * surnames* would offer the child's, which would be invented. The value is the SLOT, not the
-   * label -- *"by creating this person we're actually reducing ambiguity in the tree"*. */
-  if (which === "mother") return { tier: 3, first: "NN", last: "", why: "mother absent" };
+  /* ⛔ TIER 3 IS ONLY WHEN ONE PARENT IS ALREADY THERE. Emma, 2026-09-05, asked which parent a
+   * person with NO parents and no patronymic should get: **"Father, per the seed rules"** --
+   * `docs/export-seed-rules.md` tiers 4 and 5, `NN` plus the birth surname or `NN /father of X/`.
+   * So her mother-first ordering in `docs/parent-walk-algorithm.md` governs the case where one
+   * parent already exists, and the seed rules govern the empty case. This reported `tier 3,
+   * mother absent` for people with zero parents until she ruled.
+   *
+   * The value of a tier 3 is the SLOT, not the label -- *"by creating this person we're actually
+   * reducing ambiguity in the tree"*. */
+  if (which === "mother" && parentCount >= 1) {
+    return { tier: 3, first: "NN", last: "", why: "father present, mother absent" };
+  }
 
   /* Tier 4 -- Decision 1: the given name is `NN` and the father does NOT inherit the child's. */
   if (surname) return { tier: 4, first: "NN", last: surname, why: "no patronymic, birth surname kept" };
@@ -337,10 +345,13 @@ GC.runSeed = async function (job) {
                          name: nm.display, parents: n, enqueue: [] });
   } else {
     /* No parents at all. A patronymic overrides the default and takes the father first. */
-    which = pat && pat.father ? "father" : "mother";
+    /* No parents at all. A patronymic still takes the father first -- it NAMES him, which is
+     * what makes tiers 1 and 2 worth more than an `NN`. Without one it is also the father, per
+     * her 2026-09-05 ruling and the seed rules' tiers 4 and 5. */
+    which = "father";
   }
 
-  const p = GC.seed.plan(nm, pat, which);
+  const p = GC.seed.plan(nm, pat, which, n);
   if (p.skip) return report({ state: "skipped", which: which, reason: p.skip,
                               name: nm.display, parents: n, enqueue: [] });
   if (job.dryRun) {
