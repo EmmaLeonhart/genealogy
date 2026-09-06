@@ -2,16 +2,31 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-- **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt`, 200 URLs,
-  both `blood` and `inlaw` per target — her call, 2026-09-02. Blob-save each as
-  `geni-paths/<geni id>-<kind>.html`, one a minute, no concurrency, bail on anything odd. Then
-  `python scripts/harvest-isolate-paths.py --write-paths` for the hit rate.
+- **Fetch the 100-target isolate path pilot.** `reports/isolate-path-pilot-urls.txt` — **100
+  profile URLs**, one per target, and `reports/isolate-path-pilot-queue.txt` is the same list in
+  the collector's input format. Then `python scripts/harvest-isolate-paths.py --write-paths` for
+  the hit rate. **5 of 100 captured so far.**
+
+  **Both `blood` and `inlaw` are still wanted — her call, 2026-09-02** — but they are two
+  captures from the one profile page, not two fetches: blood against in-law is a control on the
+  page, not a URL parameter. They file as `geni-paths/<geni id>-<kind>.html`, which is what the
+  harvester looks for. One a minute, no concurrency, bail on anything odd.
+
+  ⛔ **This item said "200 URLs, both `blood` and `inlaw` per target" until 2026-09-05 and that
+  method is refuted.** The `/path/x?from=&path_type=&to=` form ignores `to=`: it redirects to
+  Charlemagne's own profile, which renders a full chain — the *viewer's* — so a harvest keyed on
+  step count scores every miss as a hit and returns a reach rate made of copies of one path.
+  Re-measured 2026-09-05 from her own browser. `geni-paths/README.md` § *THE CALL THAT WORKS*
+  has the working call verbatim; do not re-derive it.
+
   Anchored on **Charlemagne** (`6000000002457013227`, `Q3044`), her correction of 2026-09-03 —
-  not on Emma, which is what the 663 existing paths use.
-  **Needs her browser**: Geni is not reachable from the remote session, and the anchor is pinned
-  by her logged-in account. The number it produces decides whether the 185,327-target campaign
-  runs — her own batches were 34–39% for occupation-filtered academics and 92% for Nordic ones.
-  A blank chain is `chain_found=0`, never *unrelated*. `geni-paths/README.md` is the method.
+  not on Emma, which is what the 663 existing paths use. The anchor is her account's pushpin,
+  set once by her, and is never toggled.
+
+  **Needs her browser, and now runs through `geni-extension`** rather than agentically. The
+  number it produces decides whether the 185,327-target campaign runs — her own batches were
+  34–39% for occupation-filtered academics and 92% for Nordic ones. A blank chain is
+  `chain_found=0`, never *unrelated*.
 
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a bunch are on Wikidata. Emma, 2026-09-03:

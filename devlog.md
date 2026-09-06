@@ -28603,3 +28603,22 @@ rule is not the thing to weaken for it: the column is now `comment`, which is Me
 name for the field and more accurate anyway. The test is untouched.
 
 CI on `8e481d5e` was still red when these were found; whether it goes green is for the next run.
+
+## 2026-09-05 — the pilot queue item still described the method that was refuted this morning
+
+`reports/isolate-path-pilot-urls.txt` was corrected today to **100 profile URLs**, one per
+target, after the `/path/x?from=&path_type=&to=` form was measured to ignore `to=` and return
+Charlemagne's own profile — a page that renders a full chain, so a harvest keyed on step count
+scores every miss as a hit.
+
+The queue item itself still read *"200 URLs, both `blood` and `inlaw` per target"*, which is the
+refuted form. Anyone picking the item up next would have fetched the dead list and got a reach
+rate made of copies of one path — the exact failure the morning's fix exists to stop, reachable
+straight from the queue.
+
+Corrected in place: 100 profile URLs, the two kinds named as **two captures from one page**
+rather than two fetches, the refutation recorded so it is not re-derived a third time, and a
+pointer to `geni-paths/README.md` § *THE CALL THAT WORKS*. Her decisions are untouched — both
+path types, the Charlemagne anchor, the never-touch pushpin, and the 34–39% / 92% figures the
+result is judged against all stand. Only the mechanical description that had become false was
+changed, plus the current count: **5 of 100 captured.**
