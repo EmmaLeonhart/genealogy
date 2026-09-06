@@ -29140,3 +29140,36 @@ export was worth a minute to learn that; Clara's is the one that answers her ins
 
 Both were caught by running a real export rather than by reading the file, which is the only
 thing that has caught anything today.
+
+## 2026-09-05 — the extension's creation path has never successfully created anyone
+
+Working the `addAncestor` item. Walked the Hoknes line from `6000000177921459109` Andreas Petrus
+Eliassen Hoknes and the walk behaved correctly at every step:
+
+    Andreas Petrus Eliassen Hoknes   2 parents  -> add nothing, enqueue mother then father
+    Nicoline Rebekka Svensdatter     2 parents  -> add nothing, enqueue
+    Elias Kahrs Ingebrigtsen Hoknes  1 parent   -> OPEN SLOT, tier 3, add mother NN
+
+**Then the creation did not happen, and it did not report why.** With `dryRun:false` the evaluate
+dies with *"Inspected target navigated or closed"*, `data-geni-collector-result` is never set, and
+the profile still reads *"Son of Ingebrigt Himo"* — verified twice, after a full reload. So
+nothing was created, which is the one thing worth being sure of.
+
+**Dry runs through the same trigger work.** Three ran in this walk and returned correct verdicts.
+So the trigger, the listener and the whole read path are fine; it is `GC.seed.addParent` that
+fails, and it fails **silently** — no `dialog_never_opened`, no `add_not_confirmed`, no `error`,
+which its own code should produce for each of those.
+
+**The thing to notice: the extension has never created anybody.** The one real creation tonight —
+`NN 6000000227610585972`, mother of Kari Olsdatter — was made agentically with direct JS before
+the DOM trigger existed. So `addParent` has been carried as working on the strength of code that
+was read, which is precisely what this queue item exists to doubt, and the doubt was justified.
+
+**Not fixed and not guessed at.** The likely suspects are the `Add Family` anchor's `href="#"`
+causing a fragment navigation that tears down the in-flight job, or the job being cut short before
+its `try/catch` can record anything. Both are testable and neither is tested. The item stays open
+with this narrowed.
+
+Also learnt while walking: Nicoline's mother is **Olina Salomonsdatter**, which is the *Olina* in
+the `Salomon father of Olina` item Emma sent a screenshot of. Her merge, her Forest export and
+this line are one family.
