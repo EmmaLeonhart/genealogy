@@ -28622,3 +28622,38 @@ pointer to `geni-paths/README.md` § *THE CALL THAT WORKS*. Her decisions are un
 path types, the Charlemagne anchor, the never-touch pushpin, and the 34–39% / 92% figures the
 result is judged against all stand. Only the mechanical description that had become false was
 changed, plus the current count: **5 of 100 captured.**
+
+## 2026-09-05 — `geni-extension/` had no check of any kind, and the bug it needs one for hit twice
+
+The collector is the instrument for every Geni action now, and CI ran nothing against it — it is
+JavaScript in a Python repo. A broken manifest or a mangled file would have surfaced in her
+browser, mid-run.
+
+`tests/test_geni_extension.py` is **build checks, not behaviour tests**. What the collector does
+is verified the way she asks for: the naming measured over 400,000 corpus names into
+`reports/seed-naming-sample.tsv`, and the path parser run against a live page, matching
+`paths/charlemagne-to-arne-garborg.tsv` at 34 steps. Neither belongs in a unit test. What is
+here is the set of failures that are **silent**:
+
+- **A control character in source.** This is the one that earns the file. Writing `\b` through a
+  non-raw Python string produces U+0008 BACKSPACE, and the regex then matches nothing while the
+  code goes on returning a plausible answer. It happened twice on 2026-09-05:
+  `harvest-isolate-paths.py` (`<[^>]*\x08id=`, so `pending()` kept lying — the fix printed the
+  *same wrong answer* as the bug) and `geni-extension/content/export.js` (`/^forest\x08/i`,
+  which would have submitted the default `Blood Relatives` walk while reporting `Forest`). Both
+  were invisible: `sed` prints a backspace as nothing, and the second was caught only by
+  `cat -A`.
+- **A manifest naming a file that is not there** makes Chrome refuse the *whole* extension, so a
+  path typo is indistinguishable from it never having been loaded — which was a real question
+  today that took reading Chrome's own `Preferences` to answer.
+- **Host patterns widening beyond Geni.** The collector runs in her logged-in browser, so its
+  match patterns are its entire blast radius.
+- **The pushpin being toggled.** *"You do not pin Charlemagne, it needs to be done exactly once
+  and I did it."* The call is one line away in Geni's page API and re-anchors every later search
+  to *"You"*.
+- **A control that offers what Geni cannot do.** `EXPORT_CONCURRENCY` stays 1 and stays out of
+  the panel, and nothing offers to cancel a submitted export.
+
+Every assertion was evaluated directly before pushing rather than by running the suite: manifest
+valid with no missing files, both host patterns `*://www.geni.com/*`, zero control characters,
+zero pushpin toggles, concurrency pinned in the background and absent from the panel.
