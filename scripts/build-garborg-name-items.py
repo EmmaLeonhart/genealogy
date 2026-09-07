@@ -86,6 +86,10 @@ ROOT = Path(__file__).resolve().parent.parent
 #: `CLAUDE.md` § Wikidata properties and items.
 INSTANCE_OF = "P31"
 FAMILY_NAME_CLASS = "Q101352"     # family name
+#: `Q1076664` *matronymic* -- "personal name component based on ones mother's given name".
+#: Emma supplied the id herself on 2026-09-07, answering the one thing this container could not
+#: look up; `Q110874` *patronymic* is its sibling and is not it.
+MATRONYMIC_CLASS = "Q1076664"     # matronymic
 GIVEN_NAME_CLASS = "Q202444"      # given name
 
 #: **3 name items a run while the hold is on; 10 after it lifts.**
@@ -120,6 +124,7 @@ NAME_ITEMS_PER_RUN = (NAME_ITEMS_PER_RUN_HELD
 
 CLASS_FOR = {
     "patronymic": PATRONYMIC_CLASS,
+    "matronymic": MATRONYMIC_CLASS,
     "family": FAMILY_NAME_CLASS,
     "given": GIVEN_NAME_CLASS,
 }
@@ -138,11 +143,16 @@ CLASS_FOR = {
 #: constraint § *NO descriptions* calls *"by far the worst trap"* -- turned round and pointed at
 #: the problem.
 #:
-#: **`matronymic` currently fires for nothing, and that answers her question.** The classifier
-#: produces three usages -- `given` 11,515, `family` 9,799, `patronymic` 1,677 -- and matronymic
-#: is not among them: a `-datter` token is classified `patronymic` whether or not it names a
-#: mother. `P5056` is *patronym or matronym*, one property for both. The entry is here so that a
-#: classifier that learns the distinction needs no second change.
+#: **`matronymic` FIRES NOW, and the answer to her question is 110 tokens over 214 people.**
+#: This comment read *"matronymic currently fires for nothing, and that answers her question"*
+#: until 2026-09-07, and it was measuring the classifier rather than the corpus: a `-datter`
+#: token is classified `patronymic` whether or not it names a mother, so nothing could ever have
+#: fired. Walking the MOTHER settles it — `Mariasson`, `Annasson`, `Evasdotter`, `Britasson`,
+#: `Bodilsen`, `Rannveigsson` are attested by a mother and by no father.
+#:
+#: `matronymic_tokens()` reads that verdict off the plan, because it is a corpus-wide fact the
+#: classifier cannot see from one token. `P5056` is *patronym or matronym*, one property for
+#: both, so only the item's own `P31` and description move.
 #:
 #: **`given` is deliberately absent.** She named patronymics, surnames and matronymics. A given
 #: name is not obviously one description -- Wikidata distinguishes male, female and unisex given
@@ -183,7 +193,10 @@ def ledger():
 
 
 #: The property a name item of each usage hangs off the PERSON by.
-PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056"}
+#: `P5056` is *patronym or matronym* -- one property for both, which is why `matronymic` hangs
+#: off the person by the same one.
+PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056",
+            "matronymic": "P5056"}
 
 #: `P144` *based on* — on a NAME item it points at the name the patronymic derives from, which
 #: is a different claim from the `P144` on a PERSON's `P5056`, where it names the father.
@@ -249,6 +262,29 @@ def based_on_targets():
             qids = [q for q in (row.get("p144_targets") or "").split() if q.startswith("Q")]
             if token and qids:
                 out[token.casefold()] = list(dict.fromkeys(qids))
+    return out
+
+
+def matronymic_tokens():
+    """The folded tokens the plan classes MATRONYMIC — attested by a mother and by no father.
+
+    **Emma, 2026-09-07: "Reclassify as matronymic"**, and she supplied `Q1076664` *matronymic*.
+    `namemodel.classify_fields` cannot make this call: it reads the token, and `Mariasdotter`
+    looks exactly like `Jonsdotter`. What separates them is *whose* given name attests the stem,
+    which is a corpus-wide fact and therefore the plan file's job — the same division that makes
+    `based_on_targets` a lookup rather than a decision.
+
+    So the usage stays `patronymic` for every lookup keyed on `(token, usage)`, and only the
+    item's own `P31` and description change. `P5056` is *patronym or matronym*, one property for
+    both, so nothing on the PERSON moves.
+    """
+    out = set()
+    if not PATRONYMIC_PLAN.exists():
+        return out
+    with open(PATRONYMIC_PLAN, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            if (row.get("usage") or "").strip() == "matronymic":
+                out.add((row.get("token") or "").strip().casefold())
     return out
 
 
@@ -567,8 +603,14 @@ def main():
     linked_now = 0
     based_on = based_on_targets()
     based_on_now, no_based_on = 0, []
+    matronymics = matronymic_tokens()
     for (token, usage), bearers in ranked[:NAME_ITEMS_PER_RUN]:
-        lines.append(f"# {token} -- {usage}, {bearers} bearer(s) in the batches")
+        # The classifier says `patronymic` for every `-son`/`-datter` token; the plan says which
+        # of them a MOTHER attests and no father does. Only the item's own class and description
+        # move — `P5056` *patronym or matronym* covers both on the person.
+        kind = ("matronymic" if usage == "patronymic"
+                and token.casefold() in matronymics else usage)
+        lines.append(f"# {token} -- {kind}, {bearers} bearer(s) in the batches")
         lines.append("CREATE")
         lines.append(f'LAST\tLen\t"{token}"')
         lines.append(f'LAST\tLmul\t"{token}"')
@@ -586,9 +628,9 @@ def main():
         # That is the same uniqueness constraint § *NO descriptions* warns can BLOCK a creation
         # -- her *"by far the worst trap"*. Here it is turned round and pointed at the problem:
         # the trap becomes the mechanism.
-        if usage in DESCRIPTION_FOR:
-            lines.append(f'LAST\tDen\t"{DESCRIPTION_FOR[usage]}"')
-        lines.append(f"LAST\t{INSTANCE_OF}\t{CLASS_FOR[usage]}")
+        if kind in DESCRIPTION_FOR:
+            lines.append(f'LAST\tDen\t"{DESCRIPTION_FOR[kind]}"')
+        lines.append(f"LAST\t{INSTANCE_OF}\t{CLASS_FOR[kind]}")
         # **The derivation, on the item itself.** Emma, 2026-09-05: add the source names to the
         # patronymic items this file makes. `P144` *based on* here points at the GIVEN NAME the
         # patronymic comes from -- every one the attesting fathers carry, multi-valued -- and it

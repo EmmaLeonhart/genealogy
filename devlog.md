@@ -31500,3 +31500,30 @@ The `P31` value is the one thing outstanding and is **BLOCKED-ON-EXTERNAL**: the
 class is in neither `wikidata-labels.tsv` nor the name-item store, and this container's egress
 policy refuses `www.wikidata.org`. Unblock signal: any Actions run, which reaches Wikidata for
 the live reads the pipeline already makes. No id is written down until one confirms it.
+
+**And she supplied the class the same evening: `Q1076664` *matronymic*** — *"personal name
+component based on ones mother's given name"*. That was the one thing this container could not
+look up (§ *Do not guess these*, and the egress policy refuses `www.wikidata.org`), so it waited
+for her rather than being invented.
+
+Wired end to end. `build-patronymic-items.py` runs the mother walk beside the father one and
+writes a `usage` column: **110 tokens are `matronymic`**, attested by a mother and by no father,
+matching the census exactly. `build-garborg-name-items.matronymic_tokens()` reads that verdict,
+and only the name item's `P31` and its `Den "matronymic"` description change —
+**`P5056` is *patronym or matronym*, one property for both, so nothing on the person moves.**
+
+Three things the wiring had to get right:
+
+* **The verdict belongs to the PLAN, not the classifier.** `classify_fields` reads one token and
+  `Mariasdotter` looks exactly like `Jonsdotter`; whose given name attests the stem is a
+  corpus-wide fact. Same division that makes `based_on_targets` *"a lookup, not a decision"*, and
+  it means the usage stays `patronymic` for every `(token, usage)` lookup.
+* **A token BOTH parents attest is an ordinary patronymic.** Requiring the father side empty is
+  what holds this to 110 — a `Jonsdotter` whose mother is `Jona` still derives from her father.
+* **Never overwrite a father-walk bearer count.** It counts everyone carrying the token, matched
+  or not, and a matronymic's bearers may well have fathers who simply do not attest the name.
+  Overwriting understated the token and then mis-ranked it and mis-picked its `P5278` partner.
+
+The comment in `DESCRIPTION_FOR` read *"matronymic currently fires for nothing, and that answers
+her question"* until today. It was measuring the classifier rather than the corpus: a `-datter`
+token is classed `patronymic` whatever it names, so nothing could ever have fired.

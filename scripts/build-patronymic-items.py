@@ -177,7 +177,7 @@ def language_of(token):
 
 
 def main():
-    label, father = {}, {}
+    label, father, mother = {}, {}, {}
     with io.open(LABELS, encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh):
             label[r["geni_id"]] = r.get("label_en") or r.get("label_mul") or ""
@@ -186,6 +186,9 @@ def main():
             f = (r.get("father") or "").strip()
             if f:
                 father[r["geni_id"]] = f
+            m = (r.get("mother") or "").strip()
+            if m:
+                mother[r["geni_id"]] = m
 
     # ---- the ONE string comparison: which given names attest each patronymic ------------
     #
@@ -241,6 +244,59 @@ def main():
                         else:
                             sink[tok.casefold()].add(w)
                         break
+
+    # ---- the MOTHER walk: a token no father attests is a MATRONYMIC ---------------------
+    #
+    # **Emma, 2026-09-07: "Reclassify as matronymic"**, and `Q1076664` *matronymic* is the class
+    # she supplied. The population she was shown -- `P144` values whose given-name item is
+    # `Q11879590` *female given name* -- was the wrong one: `adriansdatter <- Adrian`,
+    # `jonesdatter <- Jone`, `brynildsen <- Brynild` are male Norwegian and Old Norse names with
+    # a wrong or unisex `P31` on Wikidata, and a source in the father walk IS the father's name
+    # however Wikidata classes it.
+    #
+    # A matronymic derives from the MOTHER, and nothing walked her. `Mariasson` is the son of
+    # *Maria*; the mother is the only parent who attests it.
+    #
+    # **Attested by a mother AND by no father.** A token both parents attest is an ordinary
+    # patronymic that a mother happens to share a stem with -- `Jonsdotter` with a mother `Jona`
+    # -- and the father is the derivation. Requiring the father side to be empty is what keeps
+    # this to the 110 tokens where the mother is the only possible source.
+    #
+    # `patronymic_or_surname` asks whether the FATHER carries the same token, so it is a father
+    # test by construction and is not applied here; the token's shape and her given name are the
+    # whole evidence. The Latin genitive stays on the father, which `name modelling.txt` models
+    # as his.
+    matro = collections.defaultdict(collections.Counter)
+    for g, lab in label.items():
+        mum = label.get(mother.get(g, ""), "")
+        if not mum:
+            continue
+        for tok in lab.split():
+            if not nm.PATRONYMIC.match(tok):
+                continue
+            m = nm.PATRONYMIC_PARTS.match(tok)
+            if not m:
+                continue
+            stem = m.group(1).casefold().rstrip("s")
+            key = tok.casefold()
+            if key in sources:
+                continue
+            for w in nm.given_name_run(mum.split()):
+                if nm.PATRONYMIC.match(w):
+                    continue
+                if nm._same_name(stem, w.casefold().rstrip("s")):
+                    matro[key][w] += 1
+                    break
+    for tok, srcs in matro.items():
+        sources[tok] = srcs
+        # **Never overwrite a bearer count the father walk already made.** It counts everyone
+        # carrying the token, matched or not, and a matronymic's bearers may well have fathers
+        # -- the fathers simply do not attest the name. Overwriting understates the token and
+        # then mis-ranks it and mis-picks its `P5278` partner.
+        if not bearers[tok]:
+            bearers[tok] = sum(srcs.values())
+    print(f"{len(matro):,} matronymic tokens -- attested by a mother and by no father",
+          file=sys.stderr)
 
     given, pat_items = name_items()
     plural = {q for tok, srcs in sources.items() for n in srcs
@@ -329,6 +385,7 @@ def main():
 
         rows.append({
             "token": tok,
+            "usage": "matronymic" if tok in matro else "patronymic",
             "bearers": bearers[tok],
             "existing_item": pat_items.get(tok, ""),
             "action": "link" if tok in pat_items else "create",
@@ -357,12 +414,15 @@ def main():
     wd = sum(len(r["p144_withdrawn"].split()) for r in rows)
     langs = collections.Counter(r["p407"] for r in rows if r["p407"])
     create = sum(1 for r in rows if r["action"] == "create")
-    print(f"{len(rows):,} patronymic tokens attested by a father in our tree")
+    print(f"{len(rows):,} tokens attested by a parent in our tree "
+          f"({len(rows) - len(matro):,} by a father, {len(matro):,} by a mother alone)")
     print(f"  {create:,} need an item created; {len(rows)-create:,} already have one")
     print(f"  {have144:,} have at least one unambiguous P144 target")
     print(f"  {amb:,} blocked ONLY by an ambiguous given name (several items share the label)")
     print(f"  {unk:,} have no given-name item for any attesting father")
     print(f"  {pairs:,} have a P5278 surname-for-other-gender partner")
+    print(f"  {sum(1 for r in rows if r['usage'] == 'matronymic'):,} are MATRONYMIC "
+          f"(Q1076664) -- attested by a mother and by no father")
     print(f"  {wd:,} P144 value(s) withdrawn by the given-name scoping, on "
           f"{sum(1 for r in rows if r['p144_withdrawn']):,} token(s)")
     print(f"  {sum(langs.values()):,} carry a P407 language from their suffix "

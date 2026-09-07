@@ -1036,13 +1036,29 @@ by construction and is not applied on the mother side — there the token's shap
 name are the whole evidence. And the Latin-genitive branch stays on the father, since
 `name modelling.txt` models that form as his.
 
-**⛔ THE `P31` VALUE IS NOT YET CONFIRMED AND MUST NOT BE GUESSED.** `Q110874` is *patronymic*;
-the matronymic name class is a different item and is in neither `reports/wikidata-labels.tsv`
-nor `out/wikidata/name-items-in-store.tsv.gz`, whose 463 patronymic-kind items are all
-`Q110874`. This container cannot ask — the environment's egress policy answers `CONNECT
-www.wikidata.org:443` with 403 — so the lookup belongs to a run that can, and § *Do not guess
-these* is why no id appears in this section. `DESCRIPTION_FOR` already carries the description
-`matronymic`, which is the half that needs no lookup.
+**`Q1076664` *matronymic* is the class, and EMMA SUPPLIED IT** — 2026-09-07, the same evening,
+after this container could not: `Q110874` *patronymic* is its sibling, the matronymic item is in
+neither `reports/wikidata-labels.tsv` nor `out/wikidata/name-items-in-store.tsv.gz` (whose 463
+patronymic-kind items are all `Q110874`), and the environment's egress policy answers `CONNECT
+www.wikidata.org:443` with 403. § *Do not guess these* is why the id waited for her rather than
+being invented. Its own description reads *"personal name component based on ones mother's given
+name"*.
+
+**Only the NAME ITEM changes. Nothing on the person moves.** `P5056` is *patronym or matronym* —
+one property for both — so a matronymic bearer carries exactly what a patronymic bearer does, and
+what differs is the item's `P31` and its `Den "matronymic"` description, the latter already in
+`DESCRIPTION_FOR`.
+
+**The verdict lives in the PLAN, not in the classifier.** `namemodel.classify_fields` reads one
+token and `Mariasdotter` looks exactly like `Jonsdotter`; what separates them is whose given name
+attests the stem, which is a corpus-wide fact. So `build-patronymic-items.py` writes a `usage`
+column and `build-garborg-name-items.matronymic_tokens()` reads it — the same division that makes
+`based_on_targets` *"a lookup, not a decision"*. The usage stays `patronymic` for every lookup
+keyed on `(token, usage)`.
+
+**A token BOTH parents attest is an ordinary patronymic.** Requiring the father side to be empty
+is what keeps this to the 110: a `Jonsdotter` whose mother happens to be `Jona` derives from her
+father, and the mother sharing a stem is a coincidence rather than a derivation.
 
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
@@ -2466,6 +2482,7 @@ ran.
 | Q28418670 | married name | item — the `P3831` role on the `_MARNM` family name |
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
+| Q1076664 | matronymic | item — what a MATRONYMIC name item is an *instance of*, the sibling of `Q110874`. *"personal name component based on ones mother's given name."* **Emma supplied this id herself on 2026-09-07**, which is why it is not guessed: § *A MATRONYMIC DERIVES FROM THE MOTHER* is the rule and this is its class. The person still carries `P5056` *patronym or matronym* — one property for both — so only the name item's `P31` and its `Den "matronymic"` description differ from a patronymic's |
 
 **A diacritic makes a different name, and folding it away invents ambiguity.**
 Emma, 2026-08-16, asked why `Maria` matched nine Wikidata items: *"everything
