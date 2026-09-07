@@ -30793,3 +30793,22 @@ since it was written and `runIndividual` never passed one, so no caller could ev
 `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*. The default stays 600000,
 because her figure for a real search is ten minutes and a capped wait turns a slow hit into a
 deferral. Extension 1.6.0 → 1.6.1.
+
+**Six more, and the ceiling appears three times in one batch.** Leo Stransky `6000000121836149850`
+(blood_relatives 3,050 on a family_tree of **5** — the two figures measure genuinely different
+things, which is why the floor is disjunctive), Sofie Löwy `6000000021475413577` (2,677 / 1,450),
+MUDr. Ernst Spitz `6000000040947428814` (1,480 / 1,157), Maria Steinherz `6000000034136628854`
+(1,017 / **15,000**), Anna Rood `6000000007741108347` (**15,000 / 15,000**), Erna Carla Jeannette
+Wolf `6000000024875462043` (11,775 / **15,000**).
+
+**Anna Rood is the strongest database-failure case the pilot has produced**: both figures at the
+cap, 216 ancestors, and Geni still answering *"No blood relationship was found."*
+
+**Karoline Steiner `6000000175949095860` came back `no_panel` and is the four-state rule paying
+for itself.** Not a miss — the row went in with a blank `path_found` and a blank `anchor`, so she
+is revisited rather than counted as unreachable. Her statistics are 4 / 3 / 2 / 0 / 1, so even if
+the miss is later confirmed she is below the floor and buys no export.
+
+**Leo Stransky is the case for the floor being disjunctive rather than a single number.** A
+`family_tree` of 5 with 3,050 blood relatives would be refused by any conjunctive reading and by
+`family_tree` alone, and the 3,050 is what says he is in the World Tree.
