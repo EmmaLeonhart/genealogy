@@ -1099,7 +1099,7 @@ the two IS the abbreviation and nothing else can be rewritten. An item she has a
 hand simply matches and is skipped, which `Q141271379` demonstrates.
 
 **Four went out in the first batch** — `Marit Ormsd Byre`, `Ranveig Olsd Trevland`,
-`Anna Ivarsd Stokka`, `Magdalena Lauritsd Hogganvik` — and the rest drain under the 30-a-batch
+`Anna Ivarsd Stokka`, `Magdalena Lauritsd Hogganvik` — and the rest drain under the 60-a-batch
 label cap.
 
 **One left alone and worth knowing:** `Rakel Marie Bertelsdt Bertelsdottir Idland` carries both
@@ -2193,7 +2193,7 @@ nothing.
 carry-forward already exists for exactly this shape of "not today", and using it keeps the hard
 rule intact.
 
-### `P3373` sibling is capped at 20 PAIRS a day — doubled from 10 on 2026-09-05
+### `P3373` sibling is capped at 40 PAIRS a day — doubled twice, 10 → 20 → 40
 
 **Emma, 2026-08-25:** sibling relationships are too numerous to send at once, so
 **sibling adding is limited to 10 QuickStatements a day.** **She doubled it to 20 on 2026-09-05** — *"update it to batches double the older size on all things"* — along with every other per-run batch size in the repo. The reasoning below is unchanged and is why there is a cap at all; only the number moved.
@@ -2204,7 +2204,7 @@ size, because every child is a sibling of every other: one family of nine childr
 statements on its own. Parents grow linearly. So a batch that looks balanced by people is
 overwhelmingly sibling links by statement.
 
-**The cap is 20 `P3373` sibling PAIRS per day, across every batch**, not per file. Emma, 2026-09-05: *"We were supposed to emit 20 sibling pairs a day."* Both directions are emitted, so counting statements made a cap of 20 mean **10 pairs**; it counts the unordered pair now, and a run comes out at 20 pairs / 39 lines. A builder emitting
+**The cap is 40 `P3373` sibling PAIRS per day, across every batch**, not per file. Emma, 2026-09-05: *"We were supposed to emit 20 sibling pairs a day."* Both directions are emitted, so counting statements made a cap of 20 mean **10 pairs**; it counts the unordered pair now. She doubled it again on 2026-09-07 — *"change it so that the daily batch is twice as large in all of the things it does... all numbers doubled basically"* — so it is 40 pairs, and a full run comes out at about 79 lines. A builder emitting
 siblings must count them and stop.
 
 **It is a pacing rule, not a correctness one.** The links are right; there are simply too many of
@@ -4148,7 +4148,7 @@ is what `compose()` grows the ring from. The additions pass 300 lines later iter
 **It is bounded, which is why it is cheap.** Additions can only touch items already in the
 ledger; they cannot pull a new person in. Expansion is the ring's job and stays subgraph-gated.
 The only thing that grows with the ledger is the count of fill-in statements — 178 on 2026-08-28
-— and `P3373` *sibling* is capped at 20 a day regardless.
+— and `P3373` *sibling* is capped at 40 pairs a day regardless.
 
 **And it pre-builds bridges rather than wandering.** The six people it was knitting together are
 Jon Reimatsen, Cecilie Ebbesdatter and their four children — six of the seven she named as

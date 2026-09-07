@@ -31553,3 +31553,46 @@ hours of runner time for nothing.
 which is right and is why nothing wrong went out — but a hold that fires on every item every run
 looks exactly like a feature that does nothing. I claimed the removals would land in the pipeline
 and they did not; the claim was checkable and I did not check it until the batch came back empty.
+
+## 2026-09-07 — every batch size doubled again
+
+Emma: *"change it so that the daily batch is twice as large in all of the things it does...
+All numbers doubled basically."* The second doubling — the first was 2026-09-05,
+*"update it to batches double the older size on all things"* — so the constants are now four
+times the figures she originally dictated.
+
+| constant | file | was | now |
+| --- | --- | ---: | ---: |
+| `CHILDREN_PER_RUN` | `build-garborg-day.py` | 20 | **40** |
+| `PARENTS_PER_RUN` | `build-garborg-day.py` | 20 | **40** |
+| `FREE_PARENTS_FREE` | `build-garborg-day.py` | 10 | **20** |
+| `SIBLING_CAP` (pairs a day) | `build-garborg-day.py`, `build-from-diff.py` | 20 | **40** |
+| `LABEL_EDIT_CAP` | `build-garborg-day.py` | 30 | **60** |
+| `MANUAL_P2600_PER_RUN` | `build-garborg-day.py` | 10 | **20** |
+| `NAME_ITEMS_PER_RUN_NORMAL` | `build-garborg-name-items.py` | 20 | **40** |
+| `NAME_ITEMS_PER_RUN_HELD` | `build-garborg-name-items.py` | 6 | **12** |
+| `MAX_EDITS_PER_RUN` | `wikidata-edit-run.py` | 200 | **400** |
+
+**`SIBLING_CAP` moves in both files together or it is not a daily cap.** It is *"per DAY across
+every batch"*, and `build-from-diff.py` carries its own copy, so a doubling in one place would
+have made the pair inconsistent rather than larger.
+
+**`MAX_EDITS_PER_RUN` is included because it sends the batch.** It is not itself a batch size,
+but a 400-statement day arriving at a 200-edit ceiling is a doubled batch delivered truncated,
+which is the opposite of what she asked for.
+
+**The free-parent formula scales with its own constant** rather than the literal ten: it is
+`FREE_PARENTS_FREE + (n - FREE_PARENTS_FREE) // 2`, so 34 eligible now gives 20 + 7 = 27. Her
+quoted wording — *"10 free parents plus half of the remaining"* — is kept verbatim as the shape;
+the docstrings around it name the constant instead of restating the number, which is why it drifted.
+
+Two pinned tests updated to the new figures: `test_obender_hold.py` (12 and 40) and the
+`SIBLING_CAP` mirror in `test_p2600_batches.py`. **That mirror was stale at 10 through the whole
+of the first doubling and nothing went red**, because its loop selects `.txt` names while
+`BATCHES` globs `.qs` — it matches nothing and asserts nothing. The comment now says so, and says
+that it counts statements while the cap counts unordered pairs, so the honest bound on lines is
+twice the constant. Neither fact was fixed here; rewriting what the test measures is not doubling
+a number.
+
+`docs/daily-algorithm.md` and `CLAUDE.md` § *`P3373` sibling is capped* carried the old figures in
+prose and now carry the current ones, with her dictated 10s kept as the shape she specified.

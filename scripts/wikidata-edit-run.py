@@ -53,9 +53,12 @@ sys.path.insert(0, str(REPO / "src"))
 from genimerge.editorder import Blocked, runnable_order  # noqa: E402
 API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 
-#: Emma's stated cadence, CLAUDE.md-adjacent: 10-100 edits a day. A run may never
-#: exceed the top of that range however it is invoked.
-MAX_EDITS_PER_RUN = 200
+#: Emma's stated cadence was 10-100 edits a day; the ceiling has been doubled with every
+#: other batch size in the repo -- 100 -> 200 on 2026-09-05, 200 -> 400 on 2026-09-07,
+#: *"the daily batch is twice as large in all of the things it does"*. A run may never exceed
+#: it however it is invoked, and it has to keep pace with the batch it sends or a doubled
+#: batch simply arrives truncated.
+MAX_EDITS_PER_RUN = 400
 
 #: A live run may only execute a batch that is committed and reviewable. Anything
 #: generated on the fly is a dry run at best.

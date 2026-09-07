@@ -78,7 +78,7 @@ ROOT = Path(__file__).resolve().parent.parent
 #: balanced by people is mostly sibling links by statement. The cap is per DAY across every
 #: batch, so it is shared with `build-missing-reciprocals.py`, and the overflow is carried
 #: rather than dropped: the statements are correct, there are just too many at once.
-SIBLING_CAP = 20
+SIBLING_CAP = 40
 _siblings_emitted = []
 
 SEX = {"M": "Q6581097", "F": "Q6581072"}
@@ -567,7 +567,7 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 #: generates 10 quickstatements adding the geni id to the individuals at the beginning of each
 #: generation. The 10 quickstatements are 10 of the ones from the csv that are found not to be
 #: present in the thing."*
-MANUAL_P2600_PER_RUN = 10
+MANUAL_P2600_PER_RUN = 20
 
 
 def manual_p2600_lines(priority_qids=()):
@@ -990,7 +990,7 @@ def _label_corrections(our_items, labels, table, state, fields=None):
 #: **A label at CREATION time is not capped and is not counted.** Her distinction, same message:
 #: *"a label added after item creation is a risk and a label added during item creation is good."*
 #: So this counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
-LABEL_EDIT_CAP = 30
+LABEL_EDIT_CAP = 60
 
 
 #: **The order label edits go out in, by LANGUAGE. Emma, 2026-09-04:**
@@ -1774,7 +1774,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 #   2. 4 random sets of parents, drawn from the ball
 #   3. 4 random families -- a solitary individual gets their spouse and children
 #   4. 1 random existing couple -- all their children, properly linked
-#   5. <=10 mutual sibling links, which the additions pass emits under SIBLING_CAP
+#   5. mutual sibling links, which the additions pass emits under SIBLING_CAP
 #
 # Every component reduces to *which people go in `frontier`*, because the emitter below
 # already does labels, names, dates, sex, `S2600` references and the duplicate guard.
@@ -1881,8 +1881,8 @@ NEVER_TOUCH_GENI = set(KITAJIMA_GENI) if datetime.date.today() < KITAJIMA_HOLD_E
 NEVER_TOUCH_QID = set(KITAJIMA_QID) if datetime.date.today() < KITAJIMA_HOLD_EXPIRES else set()
 
 
-CHILDREN_PER_RUN = 20
-PARENTS_PER_RUN = 20
+CHILDREN_PER_RUN = 40
+PARENTS_PER_RUN = 40
 
 #: **Free parents, and they do not count against `PARENTS_PER_RUN`.** Her rolling rule:
 #: *"if a child is present and it appears like they have a single mother or single father,
@@ -1894,18 +1894,20 @@ PARENTS_PER_RUN = 20
 #: them. Capped anyway at a number far above what the corpus produces per run, because
 #: "uncapped" is what she stopped the last run for; the cap is reported when it bites.
 #: **Her formula, 2026-08-26: "10 free parents plus half of the remaining."** So of the
-#: half-attached people eligible for one, the first ten are free and half of whatever is
-#: left beyond ten comes too. It bounds the step without stalling the backlog: 17 eligible
-#: gives 10 + 3 = 13, and the rest wait for the next run.
+#: half-attached people eligible for one, the first `FREE_PARENTS_FREE` are free and half of
+#: whatever is left beyond that comes too. It bounds the step without stalling the backlog,
+#: and the rest wait for the next run. **The constant is 20 since 2026-09-07**, when she
+#: doubled every batch size again -- *"the daily batch is twice as large in all of the things
+#: it does... all numbers doubled basically"* -- so 34 eligible gives 20 + 7 = 27.
 #:
 #: Two earlier readings, both wrong and both hers to correct. A flat ceiling of 40 was mine.
 #: Scoping it to this run's children alone gave 5, which under-serves a backlog she wants
 #: worked down.
-FREE_PARENTS_FREE = 10
+FREE_PARENTS_FREE = 20
 
 
 def free_parent_budget(eligible):
-    """`10 + (n - 10) // 2` -- ten free, then half the remainder."""
+    """`FREE_PARENTS_FREE + (n - FREE_PARENTS_FREE) // 2` -- free ones, then half the rest."""
     return eligible if eligible <= FREE_PARENTS_FREE else (
         FREE_PARENTS_FREE + (eligible - FREE_PARENTS_FREE) // 2)
 
@@ -5314,15 +5316,16 @@ def compose(our_items, fam, rng, ring_seeds=None):
        paths are walked, so the line down to her advances every run as well as the line up
        to Charlemagne -- she doubted the last run produced the *"critical path going to
        me"*, and it did not: all 16 steps of `paths/bergitte-to-emma.tsv` were uncreated.
-    2. **Ten children.** A random person who has an uncreated child gets **one** child.
+    2. **`CHILDREN_PER_RUN` children.** A random person who has an uncreated child gets
+       **one** child.
        *"you go to a person, and then it adds a child."*
     3. **The substitution.** *"If the person has a childless marriage, then it can generate
        their spouse instead."* So a person picked in step 2 who has a spouse we lack and no
        child to add contributes the spouse. There is **no independent spouse bucket** --
        her earlier *"10 spouses"* was revised away in the same message.
-    4. **Ten parents.** A random person missing a parent gets one. *"then the next run it
+    4. **`PARENTS_PER_RUN` parents.** A random person missing a parent gets one. *"then the next run it
        generates the child's parent."*
-    5. **Free parents, not counted against the ten.** *"if a child is present and it appears
+    5. **Free parents, not counted against that cap.** *"if a child is present and it appears
        like they have a single mother or single father, then the next time they get their
        parents for free."*
 
@@ -5345,7 +5348,7 @@ def compose(our_items, fam, rng, ring_seeds=None):
             return True
         return False
 
-    # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
+    # --- 2 & 3. children, or a spouse where the marriage is childless -----------
     # The seed pool, not the whole ledger: spine steps are excluded upstream.
     pool = sorted(ring_seeds)
     rng.shuffle(pool)
@@ -5367,7 +5370,7 @@ def compose(our_items, fam, rng, ring_seeds=None):
     why.append(f"3. {spouses_instead} spouses instead, where the marriage had no child "
                f"left to add")
 
-    # --- 4. ten parents ----------------------------------------------------------
+    # --- 4. parents --------------------------------------------------------------
     rng.shuffle(pool)
     parents = 0
     for g in pool:
@@ -5382,7 +5385,8 @@ def compose(our_items, fam, rng, ring_seeds=None):
     # --- 5. free parents for anyone half-attached --------------------------------
     # Her rolling rule. A person with one parent linked and the other never created is
     # the structural wart the old algorithm left behind; this closes them as it goes.
-    # **Every half-attached person is eligible; the budget is `10 + half the rest`.**
+    # **Every half-attached person is eligible; the budget is
+    # `FREE_PARENTS_FREE + half the rest`.**
     # Her formula. The eligible set is counted first and the budget derived from it, so the
     # number is a function of the backlog rather than of iteration order.
     eligible = []

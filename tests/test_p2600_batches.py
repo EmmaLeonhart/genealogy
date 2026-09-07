@@ -48,9 +48,16 @@ P2600_SNAPSHOT = REPO / "out" / "wikidata" / "p2600-all.tsv"
 
 #: Archived records of batches Emma has already run. They are history, not proposals, and
 #: are never rewritten to satisfy a rule made after they went out.
-#: `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*. Mirrored rather than imported so
+#: `CLAUDE.md` § *`P3373` sibling is capped at 40 PAIRS a day* -- 10 until 2026-09-05, 20
+#: until 2026-09-07, doubled each time on her instruction. Mirrored rather than imported so
 #: the guard does not pass merely because the builder lowered its own constant.
-SIBLING_CAP = 10
+#:
+#: **Two things a reader should know before trusting this number here.** The count below is of
+#: `P3373` *statements* and the cap is of unordered PAIRS, and both directions are emitted, so
+#: the honest bound on lines is twice this. And the loop selects on `.txt` names while
+#: `BATCHES` globs `.qs`, so it currently matches nothing and asserts nothing -- which is why
+#: it sat at 10 through the first doubling without going red.
+SIBLING_CAP = 40
 
 SPENT_BATCHES = {
     "wikidata-garborg-day-1.qs": "the first day batch, 9 creations + 362 statements",

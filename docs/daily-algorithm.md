@@ -56,13 +56,19 @@ because of the unbounded behaviour."* The cause was the old step 1b — five cou
 **entire** children, one of which had eleven — which supplied 28 of the 50.
 *"Creating individuals with all of their children is just crazy talk."*
 
-| | per run |
-| --- | ---: |
-| **children** — a random person gets **ONE** child | **10** |
-| **spouse instead**, where the couple has no child left to add | inside the 10 |
-| **parents** — a random person missing one gets **ONE** | **10** |
-| **free parents** — half-attached people, `10 + half the remainder` | uncapped by design |
-| **the spine**, one step on EACH of the two paths | outside every cap |
+**The numbers she dictated were 10s. They have been doubled twice since** — 2026-09-05,
+*"update it to batches double the older size on all things"*, and 2026-09-07, *"change it so
+that the daily batch is twice as large in all of the things it does... all numbers doubled
+basically"*. The shape below is hers; the figures are the current constants, which live in
+`scripts/build-garborg-day.py` and are the authority on their own values.
+
+| | per run | constant |
+| --- | ---: | --- |
+| **children** — a random person gets **ONE** child | **40** | `CHILDREN_PER_RUN` |
+| **spouse instead**, where the couple has no child left to add | inside the 40 | — |
+| **parents** — a random person missing one gets **ONE** | **40** | `PARENTS_PER_RUN` |
+| **free parents** — half-attached people, `20 + half the remainder` | uncapped by design | `FREE_PARENTS_FREE` |
+| **the spine**, one step on EACH of the two paths | outside every cap | — |
 
 **Spouses have no bucket of their own.** Her first version said *"10 parents, 10 spouses, 10
 children"*; she revised it in the same message — *"spouses are only added through the 10
@@ -75,8 +81,8 @@ marriages is just because, without substituting in childless marriages, there's 
 spouses from childless marriages."*
 
 **The free-parent budget is a formula, not a cap**: *"10 free parents plus half of the
-remaining."* Of the eligible half-attached people, the first ten come free and half of whatever
-is left beyond ten comes too. Two earlier readings were wrong — a flat ceiling of 40 (mine), and
+remaining."* Of the eligible half-attached people, the first `FREE_PARENTS_FREE` come free and
+half of whatever is left beyond that comes too — 20 since the 2026-09-07 doubling. Two earlier readings were wrong — a flat ceiling of 40 (mine), and
 scoping it to this run's children alone, which gave 5 and under-served the backlog.
 
 **The spine advances on BOTH paths, one step each.** `paths/charlemagne-to-arne-garborg.tsv` and
@@ -90,7 +96,8 @@ herself** — and emitted a `CREATE` that would have minted her a second item be
 
 ## Step 2 — creation of names
 
-**10 name items** per run, taken from the name items missing in the ideal state, **with their
+**`NAME_ITEMS_PER_RUN` name items** per run — 40, or 12 while a hold runs — taken from the
+name items missing in the ideal state, **with their
 links made in the same run**. `scripts/build-garborg-name-items.py` does this: each `CREATE` is
 followed by `Qperson Pprop LAST` for every bearer who already holds a QID. A person the same run
 is *creating* cannot be linked here — `LAST` would then name the person — and waits for the next
