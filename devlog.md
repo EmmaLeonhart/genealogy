@@ -31779,3 +31779,14 @@ fiancée*. Geni's prose is the only place the whole path is marked in-law —
 `CLAUDE.md` § *Grab the RESIDUALS*. `paths/isolate-geni-anna-throndsen-1536.tsv` carries the
 qualification in its header and flags **NEEDS-DECISION, hers**: whether the reach rate counts
 in-law paths at all. Every other hit today reads *"is Charlemagne's Nth great grand-"*.
+
+**And two of the four re-runs turned from hits into MISSES.** Anna Hørlück
+`297536201290008921` and Erika Sofia Wenström `3052917` both came back `path_found` under the
+lapsed anchor, with long in-law chains to Emma. Under Charlemagne both read
+*"No blood relationship was found."*
+
+That is the cost of the anchor drifting, made concrete: **two apparent hits were not hits.** Had
+they been filed, the reach rate would have gained two people who have no blood path to
+Charlemagne at all — and nothing downstream would ever have contradicted it.
+
+Ledger after the correction: **92 rows under the Charlemagne anchor, 12 hits and 80 misses.**
