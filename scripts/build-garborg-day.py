@@ -369,9 +369,21 @@ def describe_all(geni_id, facts, father, mother, labels, table,
     #: relative"*, and a child is one. The `WORDS` table already carried `parent_of`,
     #: `spouse_of` and `sibling_of` with the right word per sex and the right preposition per
     #: direction (`datter af` but `mor til`); nothing consulted them.
+    #: **SPOUSE BEATS CHILD.** Emma, 2026-09-07: *"Parents are the most significant identifier
+    #: of a person, then spouse, then child."* This tuple had child in second place, so it
+    #: disagreed with `build-nn-label-batch.nearest`, which has had parent -> spouse -> child
+    #: since it was written -- two emitters, one model, and they had drifted apart. Her
+    #: 2026-08-25 reliability ranking says the same thing from the other side: *"parents are
+    #: always most reliable"*, then spouses, then children.
+    #:
+    #: **9,256 unnamed people are described by a different relative because of it** -- those
+    #: with no named parent but both a named spouse and a named child. Reading them settles
+    #: which order is better than arguing it does: `1260387` was *parent of Johan Israelsson
+    #: Klockare* and becomes *spouse of Israel Olofsson*, where the child's own patronymic
+    #: names the spouse anyway.
     BY = (("child_of", (father.get(geni_id), mother.get(geni_id))),
-          ("parent_of", tuple(children.get(geni_id, ()))),
           ("spouse_of", tuple(spouses.get(geni_id, ()))),
+          ("parent_of", tuple(children.get(geni_id, ()))),
           ("sibling_of", tuple(siblings.get(geni_id, ()))))
 
     for group_name, relatives in BY:

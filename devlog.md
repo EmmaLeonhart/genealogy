@@ -30955,3 +30955,39 @@ runs. Two are `(o.ä)`, a dotted spelling of the `oä` already in `_DESCRIPTION`
 of them in `NSFX`; the copy sitting in a name field stays, and that is the safe design working
 rather than failing — reaching it would mean matching a bare word list against a trailing token,
 which is what keeps `Anna King` her surname.
+
+## 2026-09-07 — spouse beats child in a descriptive label, and the stale-description gap
+
+Emma, on `Q141337174` reading *mother of Gunhild Øysteinsdotter Kvavik*: *"Parents are the most
+significant identifier of a person, then spouse, then child. This person seems to have it
+completely inverted and it makes me suspect all our name generation has it backwards."*
+
+**Two separate things, and only one of them caused her example.**
+
+**The real ordering bug.** `build-garborg-day.describe_all` ordered its relatives parent →
+**child** → spouse; `build-nn-label-batch.nearest` has ordered them parent → **spouse** → child
+since it was written. Two emitters of one model, drifted apart, neither tested against the other
+— the shape `CLAUDE.md` already records for the married-name label and for `drop_title_tail`.
+Her ranking, and her 2026-08-25 reliability order (*"parents are always most reliable"*, then
+spouses, then children), both say spouse. Swapped.
+
+**It changes 9,256 people** — the unnamed who have no named parent but do have both a named
+spouse and a named child. Reading a sample is what settles it: `1260387` was *parent of Johan
+Israelsson Klockare* and becomes *spouse of Israel Olofsson*, where the child's own patronymic
+names the spouse anyway.
+
+**But her example is a STALE LABEL, not a mis-ranking**, and saying so matters because the fix
+is different. Parent is first in both orderings, and she has a named father in our tree —
+`6000000004916081011` **Torbjørn Jonsson Skofteland**, matching her patronymic exactly. Run
+`describe_all` on her today and it returns *daughter of Torbjørn Jonsson Skofteland*. The live
+item says *mother of Gunhild* because it was written when the father was not yet available, and
+**nothing ever re-checks a descriptive label once it is on an item**. That is the larger gap:
+74,130 unnamed people now have a named parent, and any of them described by a child or spouse
+before that parent arrived is still described that way.
+
+Scale of the population: of 1,451,993 people, 175,385 carry an unknown-name marker; 74,130 have
+a named parent, 9,256 have spouse-and-child but no parent, 8,178 child only, 8,385 spouse only,
+75,436 neither.
+
+No correction pass is written yet — it needs the live labels, and `reports/garborg-live-values.tsv`
+carries properties rather than labels, so there is nothing on disk to diff against.
