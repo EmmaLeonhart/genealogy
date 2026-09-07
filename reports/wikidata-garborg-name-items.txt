@@ -32,32 +32,6 @@ Q4157020	P5056	LAST	P144	Q2874754	S2600	"6000000003579020143"
 #   Q141337058 Jakob Axelsson Lindblom: P5056 patronym or matronym = the item just created
 Q141337058	P5056	LAST	S2600	"6000000011759904315"
 
-# Carlsson -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Carlsson"
-LAST	Len	"Carlsson"
-#   set the mul label to "Carlsson"
-LAST	Lmul	"Carlsson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q2529610 Carl
-LAST	P144	Q2529610
-#   P144 based on = Q15731830
-LAST	P144	Q15731830
-#   P144 based on = Q4259083 Kaarle
-LAST	P144	Q4259083
-#   P144 based on = Q2958359 Charles
-LAST	P144	Q2958359
-#   P144 based on = Q1044619 Carolus
-LAST	P144	Q1044619
-#   P144 based on = Q1719508 Kaarlo
-LAST	P144	Q1719508
-#   Q19631563 Erik Carlsson Odelström: P5056 patronym or matronym = the item just created
-Q19631563	P5056	LAST	S2600	"6000000006783257558"
-
 # Håkansson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -116,43 +90,53 @@ Q141337173	P5056	LAST	P144	Q141224900	S2600	"6000000007366209796"
 #   Q141289011 Margareta Samuelsdotter Grubb: P5056 patronym or matronym = the item just created, qualified P144 based on Q5773287 Samuel Andreæ Grubb
 Q141289011	P5056	LAST	P144	Q5773287	S2600	"6000000019244208594"
 
-# Toresen -- patronymic, 3 bearer(s) in the batches
+# Torgerson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Toresen"
-LAST	Len	"Toresen"
-#   set the mul label to "Toresen"
-LAST	Lmul	"Toresen"
+#   the item just created: set the en label to "Torgerson"
+LAST	Len	"Torgerson"
+#   set the mul label to "Torgerson"
+LAST	Lmul	"Torgerson"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q1548096 Tore
-LAST	P144	Q1548096
-#   P144 based on = Q23047611 Thore
-LAST	P144	Q23047611
-#   P144 based on = Q2460609 Ture
-LAST	P144	Q2460609
-#   P144 based on = Q19818192 Tor
-LAST	P144	Q19818192
-#   P144 based on = Q2428812 Thor
-LAST	P144	Q2428812
-#   Q141249737 Ole Thoreson Toresen Lende: P5056 patronym or matronym = the item just created
-Q141249737	P5056	LAST	S2600	"6000000010517303222"
+#   P144 based on = Q2444019 Torger
+LAST	P144	Q2444019
+#   P144 based on = Q1584196 Torgeir
+LAST	P144	Q1584196
+#   Q141216653 Torger Torgerson Stokka: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271443 Torger Olson Skorve
+Q141216653	P5056	LAST	P144	Q141271443	S2600	"6000000002726968193"
+#   Q141313691 Fanuel Torgerson Skorve: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271443 Torger Olson Skorve
+Q141313691	P5056	LAST	P144	Q141271443	S2600	"6000000017616300608"
 
-# 212 more name items are needed and wait for a later
+# Ellingson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Ellingson"
+LAST	Len	"Ellingson"
+#   set the mul label to "Ellingson"
+LAST	Lmul	"Ellingson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q21074382 Elling
+LAST	P144	Q21074382
+
+# 142 more name items are needed and wait for a later
 # run -- 6 a day is her cap, not a limit of the data:
-#   Torgerson (patronymic), 3 bearer(s)
-#   Björksund (family), 2 bearer(s)
-#   Björnö (family), 2 bearer(s)
-#   Ellingson (patronymic), 2 bearer(s)
 #   Gustafsson (patronymic), 2 bearer(s)
 #   Hageby (family), 2 bearer(s)
-#   Halvorson (patronymic), 2 bearer(s)
-#   Heerdhielm (family), 2 bearer(s)
-#   Helgö (family), 2 bearer(s)
 #   Malmeim (family), 2 bearer(s)
 #   Mattsson (patronymic), 2 bearer(s)
 #   Monsen (patronymic), 2 bearer(s)
-#   ... and 200 more
+#   Måge (family), 2 bearer(s)
+#   Numers (family), 2 bearer(s)
+#   Olavsdatter (patronymic), 2 bearer(s)
+#   Olsdotter (patronymic), 2 bearer(s)
+#   Osmundsdatter (patronymic), 2 bearer(s)
+#   Person (patronymic), 2 bearer(s)
+#   Rasmusson (patronymic), 2 bearer(s)
+#   ... and 130 more
 
