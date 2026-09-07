@@ -68,6 +68,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     viewer-anchored, treat every miss since the last verified capture as suspect.
     Re-set it with `docs/anchor-protocol.md`: check on Charlemagne's own page, click the pin,
     verify on two real targets. Setting it is yours to do; she said so.
+  * ⛔⛔ **BLOOD IS NOT THE QUESTION. IN-LAW COUNTS, AND THERE IS AT LEAST A THIRD SEARCH.**
+    Emma, 2026-09-07: *"in-law connections are just as valid blood is no required lol"*. The loop
+    asked Geni only for the blood path until 1.6.3, so **every `no` in `reports/isolates.csv`
+    predating that means *no BLOOD path* and nothing more.** `GC.runInLaw` now clicks *Show Me*
+    after a blood miss — and **only** after one: *"do not waste time redoing it on ones that have
+    blood paths already."*
+    ⛔ **AND IT IS NOT DONE.** Measured on Anna Hørlück `297536201290008921`: after
+    *"No in-law relationship was found."* the page **still** offers *"They might be connected in
+    other ways"* with another **Show Me**. So Geni has a third search that nothing has run and
+    nobody has named. Establish what it returns before calling any person a final miss.
   * ⛔ **A HIT CANNOT BE READ OFF THE PAGE.** `path_state` is asymmetric by design; only the job's
     `resolved_path` + `hasTarget` establishes one. Pass `@PATH yes` to `write-family-scrape.py`
     when it does, or a confirmed hit is filed as pending.
