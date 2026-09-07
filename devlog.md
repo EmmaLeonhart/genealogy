@@ -30812,3 +30812,49 @@ the miss is later confirmed she is below the floor and buys no export.
 **Leo Stransky is the case for the floor being disjunctive rather than a single number.** A
 `family_tree` of 5 with 3,050 blood relatives would be refused by any conjunctive reading and by
 `family_tree` alone, and the 3,050 is what says he is in the World Tree.
+
+## ⛔ GENI HAS A THIRD WAY OF SAYING NO, AND THE COLLECTOR COULD NOT READ IT
+
+**`No path found to <name>.`** — a stated miss, in words, on the page, matching neither pattern
+in `GC.pathState`. Found 2026-09-06 on Jan Luis Castellanos `6000000145513239986` and confirmed
+on Matthijs • Baptist `6000000192523870824`.
+
+**Four of four `no_panel` deferrals in this run were misses**: Castellanos, Baptist, Karoline
+Steiner `6000000175949095860` and Lorenzo Flaherty `6000000151388898942`. Every one of them was
+about to be revisited indefinitely against an answer already printed on the page. All four are
+now recorded as `no` under the Charlemagne anchor.
+
+**The cost of the gap runs one way, which is why it matters.** An unrecognised miss is never
+written as a miss — the asymmetry in `path_state` is deliberate and correct — so the people it
+loses are removed from the denominator of the one number this pilot exists to produce. It
+inflates the reach rate, which is the same failure as the `/path/` URL from the other end.
+
+**`scripts/write-family-scrape.py` already matched `"no path found"`.** Only the extension did
+not, so the two halves of the instrument disagreed and the disagreement was invisible: the
+script never saw the sentence because the extension never handed it one.
+
+## ⛔ AND `read` WAS BEING ASSERTED TRUE, WHICH MANUFACTURES FIVE ZEROS
+
+Castellanos is a real profile with **no statistics block at all** — no CAPTCHA, no hCaptcha
+iframe, no *"additional security check"*, and no digit after *family tree* anywhere on the page.
+`GC.statistics` correctly returned `{read: false}`. `parse_block` then wrote `read: True`
+unconditionally, so he arrived as five measured zeros.
+
+That is precisely the confusion `read` exists to prevent, and `common.js` § the statistics block
+had already written the warning: *"an extractor that returns zeros because it ran early is
+indistinguishable from a person who genuinely has none, and the zeros go into
+`reports/isolates.csv` as measurements."* The flag existed and the transport dropped it.
+
+Three fixes, and the third was found by reading the file rather than the summary:
+
+* `@READ` carries the flag across; absent, it defaults true, which is what every block written
+  before today meant.
+* The ledger writes **blank**, not zero, for a block that never rendered. Her rule that a row
+  missing from a *present* block is a real zero is untouched — a block that never appeared is
+  the other thing, and the file already uses blank for *not measured* in `path_found`.
+* An **empty** `@STATS` was parsing to exactly one zero: `"".split("\t")` is `[""]`, so the
+  positional zip set `family_tree=0` and left the other four absent. The summary line read
+  correctly either way; only the written file showed it.
+
+**Extension 1.6.1 → 1.6.2.** The content-script change needs a Chrome restart to load; until
+then the banner is read from the page directly at harvest time, which is what caught all four.

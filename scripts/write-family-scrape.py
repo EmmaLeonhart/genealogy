@@ -87,13 +87,33 @@ def parse_block(text: str) -> dict:
         parts = line.split("	")
         if len(parts) == 4:
             rows.append(dict(zip(("relation", "phrase", "geni_id", "name"), parts)))
-    stats = {"read": True}
+    # ⛔ `read` IS NOT ALWAYS TRUE, AND HARD-CODING IT MANUFACTURES FIVE ZEROS.
+    #
+    # `GC.statistics` returns `{read: false}` and NOTHING ELSE when the block never rendered,
+    # which is the whole point of that flag: a row missing from a block that IS present is a
+    # real zero, and a block that never appeared is not data at all. This function asserted
+    # `read: True` unconditionally, so a scrape of a profile with no statistics block arrived
+    # as `family_tree=0 ... followers=0  read=1` -- five fabricated measurements, indexed in
+    # `reports/isolates.csv`, indistinguishable from a person who genuinely has none.
+    #
+    # Found 2026-09-06 on Jan Luis Castellanos `6000000145513239986`: a real profile, no
+    # CAPTCHA, no statistics block, `family tree` followed by no digit anywhere on the page.
+    # `@READ` carries the flag across; absent, it defaults true, which is what every block
+    # written before today meant.
+    stats = {"read": (meta.get("read", "1").strip() != "0")}
     raw = meta.get("stats", "")
     if "=" in raw:
         for pair in raw.split("	"):
             k, _, v = pair.partition("=")
             if k:
                 stats[k] = int(v or 0)
+    elif not raw.strip():
+        # ⛔ AN EMPTY `@STATS` PARSES TO ONE ZERO, NOT TO NOTHING. `"".split("	")` is `[""]`,
+        # so the positional zip below sets `family_tree=0` and leaves the other four absent --
+        # a single fabricated figure on a person whose block never rendered, which is the exact
+        # thing `read` exists to prevent. Caught 2026-09-06 by reading the file that was written
+        # rather than the summary line, which said the right thing either way.
+        pass
     else:
         # POSITIONAL, in the order Geni prints the block. The `key=value` form is still accepted
         # and is the readable one, but it cannot always be carried: the browser tool blocks a
@@ -179,8 +199,17 @@ def main() -> int:
     prior_anchor = next((r[9] for r in rows[1:] if r and r[0] == gid and len(r) > 9), "")
     anchor = prior_anchor if (verdict and verdict == prior and prior_anchor) else (
         ANCHOR if verdict else "")
-    body.append([gid, name] + [str(stats.get(f, 0) or 0) for f in FIELDS]
-                + ["2026-09-06", verdict, anchor])
+    # ⛔ A BLOCK THAT NEVER RENDERED IS BLANK HERE, NOT ZERO.
+    #
+    # Her rule is that a row MISSING FROM A PRESENT BLOCK is a real zero -- *"geni is weird and
+    # gives zero as not an option there"* -- and that is unchanged. A block that never appeared
+    # at all is the other thing, and writing it as five zeros makes an unmeasured person
+    # indistinguishable from a person who genuinely has nobody. The ledger has no `read`
+    # column, so blank is how it says *not measured*, exactly as it already does for
+    # `path_found`.
+    read = stats.get("read", True)
+    figures = [(str(stats.get(f, 0) or 0) if read else "") for f in FIELDS]
+    body.append([gid, name] + figures + ["2026-09-06", verdict, anchor])
     body.sort(key=lambda r: r[0])
     with ISOLATES.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)

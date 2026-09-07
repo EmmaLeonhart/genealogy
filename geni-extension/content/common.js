@@ -62,7 +62,17 @@ GC.until = function (test, timeoutMs) {
 GC.pathState = function () {
   const ask = GC.byText("a,button,input", /how are (they|you) related/i).find(GC.visible);
   const running = GC.visible(document.getElementById("path_search_response"));
-  const none = GC.byText("*", /no blood relationship was found|the relationship could not be found/i)
+  /* ⛔ GENI HAS THREE WAYS OF SAYING NO, AND THE THIRD WAS MISSING.
+   * Found 2026-09-06 on Jan Luis Castellanos `6000000145513239986`, whose page reads
+   * *"No path found to Jan Luis Castellanos."* -- a stated miss, in words, that matched
+   * neither pattern. `pathState` therefore returned `no_panel`, the collector deferred him,
+   * and he would have been revisited forever against an answer the page was already giving.
+   *
+   * The cost of the gap is one-directional and that is why it matters: an unrecognised miss
+   * is never written as a miss, so the reach rate the pilot exists to produce is inflated by
+   * exactly these people -- the same failure as the `/path/` URL, from the other end. The
+   * name is interpolated into the sentence, so the pattern stops at *to*. */
+  const none = GC.byText("*", /no blood relationship was found|the relationship could not be found|no path found to/i)
     .filter((e) => e.children.length === 0).some(GC.visible);
   const segs = document.querySelectorAll("span.segment > span.name a[data-profile-id]").length;
   const rd = document.querySelector("#relation_description, .relation_description");
@@ -233,4 +243,4 @@ GC.blocked = function () {
  * work was done agentically around it, and the question was answered by asking Emma rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
-document.documentElement.setAttribute("data-geni-collector", "1.6.1");
+document.documentElement.setAttribute("data-geni-collector", "1.6.2");
