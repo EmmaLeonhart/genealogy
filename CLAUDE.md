@@ -1381,6 +1381,40 @@ compared to anything**, including on rows marked *attested*: `Schmidt` carries `
 Korean writes `슈미트`. Given § *CJK INCLUDES KOREAN*, that is a larger hole than any rule bug
 here, and nothing addresses it.
 
+### ⛔ A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME. Geni puts the husband in `GIVN`
+
+**Emma, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
+relatives... Are you using their wikidata labels instead of their geni?"*
+
+**No — it is Geni's own field, and that is the part to know.** She is recorded
+`NAME NN ektefelle Søren Jonson /Aukland/`, so her `GIVN` reads **`NN ektefelle Søren Jonson`**:
+`ektefelle` is Norwegian for *spouse* and the rest is her HUSBAND. Parsed positionally it gave
+her his given name `Søren` as `P735` with `P3831` *middle name*, his patronymic `Jonson` as
+`P5056`, and `Aukland` as `P734` — three statements, all about a different person.
+
+**The tell is structural: an unknown-name MARKER, then a relationship WORD.** `NN` says the name
+is missing, `ektefelle` says what follows describes a relation. Neither alone is enough — `NN
+Aukland` is the legitimate marker-plus-surname shape and is untouched — and together they cannot
+be a name. `build-garborg-day.names_a_relative` reads the relationship words out of
+`build-nn-label-batch.WORDS`, the same table `_relationship_prefixes` uses, so a language added
+there is covered with no second edit.
+
+**552 people, and reading them is what fixed the shape:** `NN ektefelle Ole Tollefson`,
+`Unknown wife of Brand Hereson`, `NN daughter of Walter & Eva`,
+`unknown mother of Geoffroy (concubine of Richard I)`, `Unknown Child of Henry I & Mathilda`.
+
+**The field is emptied at the `fields` LOADER, once.** Both `name_lines` call sites sit behind
+`_has_given_name`, which then stops firing; `statements_tokens` cannot put a relative's name
+into `name-tokens-needed.tsv`; and there is one place to read rather than two that have
+disagreed before. The label path is unaffected — these people are `redacted` on the marker in
+their label and take `describe_all`.
+
+**This is § *A DESCRIPTION IS NOT A NAME* in the GEDCOM FIELD rather than in the label.**
+`is_relationship_description` guards the label and could never have seen this.
+
+**One is live in the batch on her screen** — `Q141352505` with `P735`, `P734` and `P5056`. Only
+1 of the 552 is in the ledger, so that is the whole exposure today.
+
 ### A PERSON IS CREATED WITH THEIR NAME LINKS. Two things were stopping it
 
 **Emma, 2026-09-07:** *"individuals are supposed to be created already having name links and

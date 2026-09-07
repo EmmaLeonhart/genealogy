@@ -283,7 +283,52 @@ def _relationship_prefixes():
     return frozenset(out)
 
 
+def _relationship_words():
+    """Every relationship noun `WORDS` holds, in every language. `son`, `hustru`, `ektefelle`."""
+    out = set()
+    for words in WORDS.values():
+        for group, forms in words.items():
+            if group == "of" or not isinstance(forms, dict):
+                continue
+            out |= {str(w).casefold() for w in forms.values() if w}
+    return out
+
+
 RELATIONSHIP_PREFIXES = _relationship_prefixes()
+RELATIONSHIP_WORDS = _relationship_words()
+
+
+def names_a_relative(field):
+    """True when a NAME FIELD is a sentence about somebody else, not this person's name.
+
+    **Emma, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
+    relatives... Are you using their wikidata labels instead of their geni?"* No — it is Geni's
+    own field. She is recorded `NAME NN ektefelle Søren Jonson /Aukland/`, so `GIVN` reads
+    **`NN ektefelle Søren Jonson`**: `ektefelle` is Norwegian for *spouse*, and the rest is her
+    HUSBAND. Parsed positionally that gave her his given name `Søren` as `P735` with
+    `P3831` *middle name*, his patronymic `Jonson` as `P5056`, and `Aukland` as `P734`.
+
+    **The tell is structural: an unknown-name MARKER, then a relationship WORD.** `NN` says the
+    name is missing and `ektefelle` says what follows describes a relation — neither alone is
+    enough, and together they cannot be a name. The vocabulary is `WORDS`, the same table
+    `_relationship_prefixes` reads, so a language added there is covered here with no second
+    edit; the markers are `scripts/labels`'.
+
+    **552 people**, and reading them is what settles the shape: `NN ektefelle Ole Tollefson`,
+    `Unknown wife of Brand Hereson`, `NN daughter of Walter & Eva`, `unknown mother of Geoffroy
+    (concubine of Richard I)`, `Unknown Child of Henry I & Mathilda`. Every one of them would
+    have been given a relative's name as their own.
+
+    This is § *A DESCRIPTION IS NOT A NAME* in the GEDCOM FIELD rather than in the label —
+    `is_relationship_description` guards the label and could never see this.
+    """
+    from labels import NARROW_MARKERS, WORDS_MEANING_UNKNOWN
+    tokens = (field or "").split()
+    if len(tokens) < 2:
+        return False
+    markers = {m.casefold() for m in (NARROW_MARKERS | WORDS_MEANING_UNKNOWN)}
+    low = [tok.casefold().strip(".,") for tok in tokens]
+    return low[0] in markers and any(tok in RELATIONSHIP_WORDS for tok in low[1:])
 
 
 def is_relationship_description(text):
@@ -6067,6 +6112,21 @@ def main():
                 for key in ("givn", "surn", "nick", "marnm", "nsfx"):
                     if (row.get(key) or "").strip():
                         held[key] = row[key]
+            # **⛔ A NAME FIELD THAT NAMES A RELATIVE IS EMPTIED, HERE, ONCE.** Emma,
+            # 2026-09-07: *"why are the NN people getting the names of their relatives"*.
+            # `Q141352505` is recorded on Geni as `NN ektefelle Søren Jonson /Aukland/`, so her
+            # `GIVN` holds her HUSBAND -- and she went out with his `P735` Søren, his `P5056`
+            # Jonson and `P734` Aukland. See `names_a_relative`; **552 people**.
+            #
+            # Emptied at the LOADER rather than at the two `name_lines` call sites, so the
+            # `_has_given_name` gates in front of both stop firing, `statements_tokens` does
+            # not put a relative's name into `name-tokens-needed.tsv`, and there is one place
+            # to read rather than two that have disagreed before. The label path is unaffected:
+            # these people are `redacted` on the marker in their label and take `describe_all`.
+            if held is not None:
+                for key in ("givn", "surn", "marnm"):
+                    if names_a_relative(held.get(key, "")):
+                        held[key] = ""
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}

@@ -32045,3 +32045,34 @@ land.
 **Gating creation on full name coverage was measured and refused.** 1 of 56 people qualifies, so
 it would stop the ring rather than fix it — the learned-helplessness move § *The batches are a
 SEQUENCE* is written against.
+
+## 2026-09-07 — the NN people were given their relatives' names
+
+Emma, on `Q141352505`: *"why are the NN people getting the names of their relatives... Are you
+using their wikidata labels instead of their geni?"*
+
+**No — it is Geni's own field.** She is recorded `NAME NN ektefelle Søren Jonson /Aukland/`, so
+`GIVN` holds `NN ektefelle Søren Jonson`. `ektefelle` is Norwegian for *spouse*; the rest is her
+husband. Parsed positionally she got his `Søren` as `P735` with `P3831` *middle name*, his
+patronymic `Jonson` as `P5056`, and `Aukland` as `P734`.
+
+**The tell is a marker followed by a relationship word**, and neither half is sufficient on its
+own — `NN Aukland` is the legitimate marker-plus-surname shape and stays. The vocabulary comes
+out of `build-nn-label-batch.WORDS`, the table the descriptive labels are built from, so it is
+not a second list to keep in step.
+
+**552 people carry such a field.** `NN ektefelle Ole Tollefson`, `Unknown wife of Brand
+Hereson`, `NN daughter of Walter & Eva`, `unknown mother of Geoffroy (concubine of Richard I)`,
+`Unknown Child of Henry I & Mathilda`. Every one would have been given a relative's name.
+
+Emptied at the `fields` loader rather than at the two `name_lines` call sites: the
+`_has_given_name` gates in front of both then stop firing, `statements_tokens` cannot put a
+relative's name into `name-tokens-needed.tsv`, and there is one place to read instead of two
+that have disagreed before.
+
+**Exposure: 1 of the 552 is in the ledger** — `Q141352505`, three statements, live in the batch
+she was running. Everything else was caught before it went out.
+
+This is § *A DESCRIPTION IS NOT A NAME* moved one layer down: the guard that exists,
+`is_relationship_description`, tests the label and could never have seen a description sitting
+in `GIVN`.
