@@ -833,6 +833,74 @@ language the item carried it in.
 11,157 of 40,898 in `reports/labels.md`. Nothing was tuned to produce that; it is what a
 correct removal looks like from the outside.
 
+### A BARE GIVEN NAME IS NOT A LABEL. The farm name is the surname; `NN` fills what is left
+
+**Emma, 2026-09-07, on `Q141352187`:** *"this guy was not given an appropriate name originally
+lol. A single given name is generally not acceptable and we strongly prefer given name NN, but
+he has a surname anyway lol."* The batch created him as **`Ånon`**; she corrected the item to
+**`Ånon Byre`**.
+
+**Two rules, and the order between them is the whole of her sentence:**
+
+| | |
+| --- | --- |
+| **a surname exists** | use it — `Ånon i /Byre/` → **`Ånon Byre`** |
+| **no surname is recorded** | **`Given NN`** — the mirror of `NN Garborg` |
+
+**THE FARM NAME IS THE SURNAME, and the territorial rule was eating it.** Geni files him
+`Ånon i /Byre/` — `GIVN` *Ånon i*, `SURN` **Byre** — and Norwegian `i` is the farm designation
+that joins them. `drop_label_title` reads `i Byre` as a territorial tail, which is right for
+`Judith of Flanders` (her own ruling of the same day, § *A TITLE INSIDE A LABEL*) and wrong
+here: the place **is** the family name. `namemodel.keep_own_surname` is the discriminator and
+it is the person's **OWN `SURN`/`_MARNM`, never a word list** — the same exactness
+`drop_title_suffix` and `drop_description_suffix` use, and for the same reason.
+
+**Only when the truncation leaves ONE token.** `Ragnhild Toresdatter Håland i Gjesdal` still
+becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is for the
+case where the label would otherwise be a bare given name.
+
+**Measured: 21 candidates, 10 labels move** — `Ånon Byre`, `Henrik Hebnes`, `Peder Mælum`,
+`Bjorn Grude`, `Jan Serrurier`, `Louis Steyn`, and four `Chiang`s. Reading them is what set the
+`av` exclusion: **`Sigward i av Norge` files `av Norge` as its surname and that is a country**,
+so a rescued tail that itself opens with a territorial word is refused. `Louis` is why the
+comma goes: Geni's `SURN` for him is literally `Steyn,`.
+
+**`Given NN` is not a new shape.** `labels.strip_markers` already says so in its own docstring —
+*"`Sara NN` — given name known, surname unknown — is already right and is left alone"*. Geni
+writes `Sara /NN/` when it records the gap; this writes the same string when Geni leaves the
+surname empty, which is the same fact about the same person. **12,596 people**, about one per
+day's batch.
+
+**⛔ `mul` GETS THE MARKER; EVERY OTHER LANGUAGE GETS PROSE.** Asked which languages carry
+what, Emma, 2026-09-07: *"given NN for mul labels but the NN is replaced with prose in every
+language that isn't mul."*
+
+    mul  Sigrid NN                     <- the marker, where the unknown half is
+    en   daughter of …                 <- prose, from the nearest named relative
+    ja   …の娘
+
+**`Ånon` is NOT an example of this** — he has `Byre` and is rescued above, which is her
+*"but he has a surname anyway lol"*. The population here is people Geni records with a given
+name and nothing else: `Sigrid`, `Helvig`, `Katarzyna`, `Mads`, `Håkon`.
+
+**So these people belong on the DESCRIPTIVE path, not the named one** — `CLAUDE.md` § *`NN` is
+PRESERVED in `mul`* with the halves swapped, and the same branch `NN Garborg` already takes.
+`_carries_marker` cannot find them, which is why the branch test is the **fields**: one token,
+and no surname Geni actually records. `Ånon i /Byre/` carries no marker at all, and
+`Maria /No name/` has already had hers dropped upstream.
+
+**This ALSO settles her 2026-08-29 ruling, which pointed the other way.**
+`labels.drop_marker_surname` deletes a trailing marker — `Maria /No name/` → `Maria`, on
+*"I would say I just use it by its first name"* — over **2,167 people**. Both hold together
+now: the deletion stands, so the prose form `No name` never reaches a label, and the marker
+comes back **normalised** as `Maria NN`. Her answer when the collision was put to her was to
+take that reconciliation.
+
+**598 single-token labels that are a SURNAME or a title residue get nothing** — `Grand`, `King`,
+`Queen`, left where `drop_title_tail` dropped a royal style. Appending `NN` there would assert
+that somebody's surname is their given name, so the third guard is that the token must be the
+person's own `GIVN`.
+
 ### PARSE PATRONYMICS BY FORM. Do not parse a name positionally
 
 **Emma, 2026-09-04, and it is the diagnosis of the whole class rather than of one bug:**

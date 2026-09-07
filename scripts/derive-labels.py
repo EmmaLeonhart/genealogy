@@ -47,7 +47,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
     drop_clan_suffix, drop_description_suffix, drop_label_title,
-    drop_repeated_patronymic, married_name_of,
+    drop_repeated_patronymic, keep_own_surname, married_name_of,
     normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
@@ -225,7 +225,15 @@ def main() -> int:
             # **252 labels became `father`, `wife` or `daughter`** on the first run of this.
             # `labels.is_description` is the census-backed test and was already imported here.
             if not is_description(rendered):
-                rendered = drop_label_title(rendered)
+                # **A FARM NAME IS THE SURNAME, and truncating it left a bare given name.**
+                # Emma, 2026-09-07, on `Q141352187` *Ånon Byre*, which went out as `Ånon`:
+                # *"this guy was not given an appropriate name originally lol."* Geni files
+                # him `Ånon i /Byre/` -- `SURN` **Byre** -- so the tail the territorial rule
+                # cuts is his own family name. 21 people; `namemodel.keep_own_surname` needs
+                # the record's own fields, which is what makes it exact.
+                rendered = keep_own_surname(
+                    rendered, drop_label_title(rendered), clean(record["surn"]),
+                    clean(record["marnm"]))
             if not rendered:
                 continue
             group = script_group(record["scripts"])

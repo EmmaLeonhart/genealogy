@@ -2466,6 +2466,19 @@ def _carries_marker(label):
     return any(tok.casefold().strip(".,") in markers for tok in (label or "").split())
 
 
+def _name_fields(record):
+    """`(givn, surn, marnm)` off a `fields` row, whitespace-normalised. `()`-safe."""
+    record = record or {}
+    return tuple(" ".join((record.get(k) or "").split())
+                 for k in ("givn", "surn", "marnm"))
+
+
+def _nn_surname(label, givn="", surn="", marnm=""):
+    """`labels.name_with_unknown_surname`, imported lazily like `_strip_markers`."""
+    from labels import name_with_unknown_surname
+    return name_with_unknown_surname(label, givn, surn, marnm)
+
+
 def _strip_markers(label):
     """`labels.strip_markers`, imported lazily — `scripts/` is on the path only at runtime."""
     from labels import strip_markers
@@ -5409,7 +5422,7 @@ def compose(our_items, fam, rng, ring_seeds=None):
         if take(missing, f"free parent: {g} had only one"):
             free += 1
     why.append(f"5. {free} free parents of {len(eligible)} eligible "
-               f"(10 free + half the remaining = {budget}), outside the cap")
+               f"({FREE_PARENTS_FREE} free + half the remaining = {budget}), outside the cap")
 
     return picked, why
 
@@ -6578,8 +6591,19 @@ def main():
         # is literally that — took the ordinary-name path and `NN` went out in her `en` label
         # with no description. `reports/partial-nn.csv` counts **9,539** people with a marker
         # in one name field and a real name in the other; every one of them belongs here.
+        # **A BARE GIVEN NAME IS UNNAMED ON THE SURNAME SIDE, so it belongs here.** Emma,
+        # 2026-09-07: *"A single given name is generally not acceptable and we strongly prefer
+        # given name NN"*, and, asked which languages carry what: *"given NN for mul labels but
+        # the NN is replaced with prose in every language that isn't mul"*. That is exactly
+        # this branch — `CLAUDE.md` § *`NN` is PRESERVED in `mul`. Descriptive labels are ADDED
+        # in other languages*, the `NN Garborg` shape with the halves swapped.
+        #
+        # `_carries_marker` cannot see them: `Ånon i /Byre/` carries no marker at all, and
+        # `Maria /No name/` has already had hers dropped by `drop_marker_surname` upstream. The
+        # test is the fields — one token, and no surname Geni actually records.
         redacted = ("<private>" in low or low.startswith("private")
-                    or _carries_marker(label))
+                    or _carries_marker(label)
+                    or _nn_surname(label, *_name_fields(fields.get(g))) != label)
         if redacted and args.skip_nn:
             carried.append((g, label, "redacted: skipped by --skip-nn for this run"))
             continue
@@ -6610,6 +6634,10 @@ def main():
             # is not what `CLAUDE.md` § *`NN` is PRESERVED in `mul`* asks for. The marker is
             # the floor: *"NN is always preserved in the multi-language label."*
             mul_value = _dms(nn_form(qs(labels.get(g, "")))) or UNNAMED_MARKER
+            # **`Ånon` -> `Ånon NN`.** The marker sits where the unknown half is, which for
+            # these people is the surname rather than the given name. A label that is already
+            # two tokens, or is the bare marker, is returned untouched.
+            mul_value = _nn_surname(mul_value, *_name_fields(fields.get(g)))
 
             # **A married NN woman has TWO recorded surnames and was keeping one.**
             # This branch set `birth = ""` and never reached the alias block below, so

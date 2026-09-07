@@ -776,6 +776,68 @@ def drop_label_title(label: str) -> str:
     return " ".join(toks).strip().rstrip(",").strip() or label
 
 
+#: The Scandinavian farm designations — `TERRITORIAL_OPENERS` without English `of`, which is
+#: the same set `build-garborg-day.TERRITORIAL` carries for the transliterated label.
+#: `of` is excluded because its tails are countries and duchies without exception, and Emma
+#: ruled on 2026-09-07 that `Judith of Flanders` becomes `Judith`.
+FARM_OPENERS = TERRITORIAL_OPENERS - {"of"}
+
+
+def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = "") -> str:
+    """Put back a farm surname the title rule cut away, when it leaves a bare given name.
+
+    **Emma, 2026-09-07, on `Q141352187`:** *"this guy was not given an appropriate name
+    originally lol. A single given name is generally not acceptable and we strongly prefer
+    given name NN, but he has a surname anyway lol."* She had hand-corrected the item to
+    **`Ånon Byre`**; the batch created him as **`Ånon`**.
+
+    Geni records him `Ånon i /Byre/` — `GIVN` *Ånon i*, `SURN` **Byre** — so `Byre` is his
+    surname in Geni's own fields, and Norwegian `i` is the farm designation that joins them.
+    `drop_label_title` reads `i Byre` as a territorial tail and truncates, which is right for
+    `Judith of Flanders` and wrong here: the place IS the family name.
+
+    **The discriminator is the person's OWN `SURN`/`_MARNM`, never a word list** — the same
+    exactness `drop_title_suffix` and `drop_description_suffix` use, and for the same reason.
+    A tail that merely looks like a farm is dropped; one the record itself files as the
+    surname is kept, without the preposition, which is the form she wrote by hand.
+
+    **Only when the truncation leaves ONE token.** `Ragnhild Toresdatter Håland i Gjesdal`
+    still becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is
+    for the case where the label would otherwise be a bare given name.
+
+    **Measured over the corpus: 21 candidates, 10 labels move** — the rest take their label
+    from a different name record on the same person. Reading them is what set the `av`
+    exclusion: `Sigward i av Norge` files `av Norge` as its surname, which is a country, so a
+    rescued tail that itself opens with a territorial word is refused.
+    """
+    if not label or not truncated or truncated == label:
+        return truncated
+    if len(truncated.split()) != 1 or not label.startswith(truncated):
+        return truncated
+    parts = label[len(truncated):].strip().lstrip(",").strip().split()
+    if len(parts) < 2 or parts[0].casefold() not in FARM_OPENERS:
+        return truncated
+    rest = " ".join(parts[1:])
+    if rest.split()[0].casefold() in TERRITORIAL_OPENERS | TITLE_CONNECTIVES:
+        return truncated
+    # **The field may carry the preposition too.** `2598370` is `Peder i /Hevonpää/` with
+    # `_MARNM` = `i Hevonpää`, so an exact comparison misses him and he keeps a bare given
+    # name. Geni files the farm designation inconsistently — `Ånon`'s `SURN` is the bare
+    # `Byre` — and either spelling is the same claim about the same person.
+    def _bare(field):
+        tokens = (field or "").split()
+        if tokens and tokens[0].casefold() in FARM_OPENERS:
+            tokens = tokens[1:]
+        return " ".join(tokens)
+
+    if rest not in (surn, marnm, _bare(surn), _bare(marnm)):
+        return truncated
+    # Geni files `SURN` as `Steyn,` for `6000000121567998946`, comma included. A trailing
+    # comma is punctuation the field carries, not part of the surname, and `drop_label_title`
+    # already ends with the same `rstrip` on its own output.
+    return f"{truncated} {rest}".rstrip(",").strip()
+
+
 def is_suffix_title(token: str) -> bool:
     """True when this `NSFX` token is a title rather than part of the name."""
     if not token:

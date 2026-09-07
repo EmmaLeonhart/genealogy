@@ -31669,3 +31669,66 @@ capture is `paths/isolate-geni-sophia-elisabeth-sahlin-1789.tsv`.
 every `paths/isolate-geni-*.tsv` reading step 1 by id: **10 Charlemagne-anchored, all from
 tonight; 664 viewer-anchored**, which is the pre-existing corpus and is live work by her own
 ruling. No file taken tonight is mislabelled.
+
+## 2026-09-07 — a bare given name is not a label
+
+Emma, on `Q141352187`: *"this guy was not given an appropriate name originally lol. A single
+given name is generally not acceptable and we strongly prefer given name NN, but he has a
+surname anyway lol."* The batch had created him as **`Ånon`**; she corrected the item by hand to
+**`Ånon Byre`**.
+
+**The truncation was ours and the surname was in the record the whole time.** Geni files him
+`Ånon i /Byre/` — `GIVN` *Ånon i*, `SURN` **Byre** — and `namemodel.drop_label_title` reads
+`i Byre` as a territorial tail. That is right for `Judith of Flanders`, which is her own ruling
+of the same day, and wrong here: Norwegian `i` is the farm designation and the farm name is the
+family name. `P734` *family name* was being emitted for Byre in the same `CREATE` block whose
+label dropped it.
+
+`namemodel.keep_own_surname` restores it, and the discriminator is the person's **own
+`SURN`/`_MARNM`** rather than a word list — the same exactness `drop_title_suffix` and
+`drop_description_suffix` use. It fires only where the truncation leaves ONE token, so
+`Ragnhild Toresdatter Håland i Gjesdal` still loses `i Gjesdal`.
+
+**21 candidates, 10 labels moved**, and reading them is what set two of the rules:
+
+    Ånon i Byre       -> Ånon Byre        Peder på Mælum  -> Peder Mælum
+    Henrik på Hebnes  -> Henrik Hebnes    Bjorn i Grude   -> Bjorn Grude
+    Hung i Chiang     -> Hung Chiang      Louis i Steyn,  -> Louis Steyn
+
+`Sigward i av Norge` files `av Norge` as its surname and that is a country, so a rescued tail
+that itself opens with a territorial word is refused — `av` is excluded, which is why
+`TERRITORIAL_OPENERS` minus `of` is not the whole story. And `Louis` is why the trailing comma
+goes: Geni's `SURN` for him is literally `Steyn,`.
+
+**The `Given NN` half went in on her follow-up ruling, not on the obvious reading.** Asked which
+languages carry what, she said: *"given NN for mul labels but the NN is replaced with prose in
+every language that isn't mul."* So these people take the **descriptive** branch — `mul` reads
+`Ånon NN` and every other language gets the relationship prose `describe_all` already builds.
+That is `CLAUDE.md` § *`NN` is PRESERVED in `mul`* with the halves swapped.
+
+    mul  Ånon NN
+    en   son of Orm Ånonsen
+    ja   オルム・オーノンセンの息子
+
+**The first implementation had it backwards and would have shipped.** It appended `NN` to `en`
+and `mul` alike and fed the CJK transliterator the marker-free form, on the reasoning that
+`_carries_marker` would otherwise flip 12,596 people into the redacted branch. That reasoning
+was right about the mechanism and wrong about the goal: the flip is what she wants.
+
+**It also settles her ruling of 2026-08-29, which pointed the other way.**
+`labels.drop_marker_surname` deletes a trailing marker — `Maria /No name/` → `Maria`, on *"I
+would say I just use it by its first name"* — over 2,167 people, and today's rule says they
+should read `Maria NN`. Both hold: the deletion stands so the prose form `No name` never
+reaches a label, and the marker comes back normalised. Put to her as the collision it was, she
+took that reconciliation.
+
+**Three guards, each measured against a population it would have damaged.** The label must be
+one token; the person's own `SURN` and `_MARNM` must both be empty or a marker — 4,442 people
+have a surname that is merely missing from the label, and that is a truncation to fix rather
+than an unknown to mark; and the token must be the person's own `GIVN` — 598 single-token
+labels are a surname or a title residue (`Grand`, `King`, `Queen`, left where `drop_title_tail`
+took a royal style off), and appending `NN` there would assert that a surname is a given name.
+
+`reports/derived-labels.csv` was regenerated in place. It needs no tree rebuild —
+`derive-labels.py` reads `display-names.csv`, which is committed — and the pipeline does not
+re-run it, so the `.csv.gz` is committed with the change rather than waiting for one.

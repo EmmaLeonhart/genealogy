@@ -877,6 +877,68 @@ def strip_markers(label: str) -> str:
 
 
 
+def name_with_unknown_surname(label: str, givn: str = "", surn: str = "",
+                              marnm: str = "") -> str:
+    """`Ånon` -> `Ånon NN`. A bare given name is not an acceptable label.
+
+    **Emma, 2026-09-07, on `Q141352187`:** *"A single given name is generally not acceptable
+    and we strongly prefer given name NN, but he has a surname anyway lol."* The item had gone
+    out labelled `Ånon`; she corrected it to `Ånon Byre`, since Geni files `Byre` as his
+    surname — so the rescue comes first and this is what is left when there is nothing to
+    rescue.
+
+    **It is the mirror of a shape this repo already writes, not a new one.** `strip_markers`
+    says so in its own docstring: *"`Sara NN` — given name known, surname unknown — is already
+    right and is left alone"*. Geni itself writes `Sara /NN/` when it records the gap; this
+    writes the same string when Geni simply leaves the surname empty, which is the same fact
+    about the same person. `NN Garborg` is the other half, and `CLAUDE.md` § *`NN` is
+    PRESERVED in `mul`* is the rule both obey: the marker sits where the unknown part is.
+
+    **Three guards, each of which stops it firing on somebody it would damage:**
+
+    * **The label must be ONE token.** Two tokens is a name, whatever the fields say.
+    * **The person's own `SURN` and `_MARNM` must both be empty or a marker.** A surname that
+      exists and is merely missing from the label is a truncation to fix, not an unknown to
+      mark — 4,442 people are in that state and none of them is this. A field that is itself
+      a marker counts as empty, which is what brings `Maria /No name/` in.
+    * **The token must be the person's own given name.** 598 people carry a single-token
+      label that is a *surname* or a title residue (`Grand`, `King`, `Queen`); appending `NN`
+      there would assert that their surname is their given name. They are left alone.
+
+    A label that is already a marker is returned unchanged: bare `NN` means both halves are
+    unknown and `describe_all` supplies the descriptive labels for it.
+
+    **The result is a `mul` label and nothing else.** Emma, asked which languages carry what:
+    *"given NN for mul labels but the NN is replaced with prose in every language that isn't
+    mul."* So `build-garborg-day` uses this both as the branch test — a label this function
+    would change belongs on the descriptive path — and to build the `mul` value once it is
+    there. Every other language comes from `describe_all`.
+
+    **It also reconciles her ruling of 2026-08-29 rather than reversing it.**
+    `drop_marker_surname` deletes the marker Geni put in `SURN`, on *"I would say I just use it
+    by its first name"* — so the prose form `No name` never reaches a label — and this puts the
+    marker back **normalised**: `Maria /No name/` is `Maria NN`, not `Maria No name`. That is
+    the reading she took when the collision was put to her.
+
+    **12,596 people with no surname field at all, plus the 2,167 whose surname field is a
+    marker.** In a day's batch it is about one.
+    """
+    if not label or len(label.split()) != 1:
+        return label
+    if is_marker_label(label) or is_placeholder_form(label) or is_description(label):
+        return label
+    if strip_markers(label) != label:
+        return label
+    for field in (surn, marnm):
+        cleaned = " ".join((field or "").split())
+        if cleaned and not is_placeholder_form(cleaned):
+            return label
+    first = " ".join((givn or "").split()).split()
+    if not first or first[0].casefold() != label.casefold():
+        return label
+    return f"{label} {UNNAMED_MARKER}"
+
+
 def drop_marker_surname(label: str, *surnames: str) -> str:
     """Strip a trailing unknown-name marker that Geni put in the SURNAME field.
 
