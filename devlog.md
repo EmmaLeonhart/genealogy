@@ -32076,3 +32076,27 @@ she was running. Everything else was caught before it went out.
 This is § *A DESCRIPTION IS NOT A NAME* moved one layer down: the guard that exists,
 `is_relationship_description`, tests the label and could never have seen a description sitting
 in `GIVN`.
+
+## 2026-09-07 — five verdicts, and CJK cases leave the deck
+
+Emma ruled on the five held parent identifications: `Walram d'Arlon II` / `Udo of Limburg`
+**DIFFERENT**, `Thukra` / `Pharnaspes` **DIFFERENT**, and the three CJK pairs **UNSURE** with a
+ruling attached:
+
+> *"I'm making a firm ruling here that effectively all these cjk people are undoable for me in
+> my current situation and idk why they are even getting in as they aren't in the universe I
+> don't think."*
+
+Appended to `reports/emma-judgments.tsv` — 332 pairs decided, 13 UNSURE.
+
+**A card is judged by reading two people's spouses and children**, and that is not something she
+can do for a Heian courtier or a Northern Wei official from where she is. `_has_cjk` tests both
+sides, so the pair `宣度 崔` / `Cui Xuandu` is caught on ours; the range is in ASCII escapes.
+
+**The `universe` half of her sentence is right about them and does not generalise into the
+filter.** None of these is in the ledger — but neither is any other case, and the ledger scope
+was tried on 2026-08-31 and selected 0 of 709, which is what published an empty page while the
+work was still there. So the filter is the script she actually ruled on, not the universe.
+
+**The deck is now empty**: two retired by her verdicts, three held by the filter. They stay in
+`reports/parent-candidates.tsv`, which is the census.

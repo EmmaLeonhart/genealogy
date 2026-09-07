@@ -4586,6 +4586,26 @@ actions artifacts are both inaccessible to me."* Those two things share a word a
 same thing. **Publish the artifact first and let the workflow catch Pages up**, because the
 workflow takes minutes and she is waiting.
 
+**⛔ A CJK CASE IS NOT IN THE DECK. Emma, 2026-09-07, ruling firmly:** *"I'm making a firm
+ruling here that effectively all these cjk people are undoable for me in my current situation
+and idk why they are even getting in as they aren't in the universe I don't think."* She was
+handed `宣度 崔`/`Cui Xuandu`, `丹後内侍`/`藤原遠宗の娘` and `惟宗広言`/`Koremune no Tadayasu`
+and marked all three `UNSURE`.
+
+A card is judged by reading two people's spouses and children, and that is not something she can
+do for a Heian courtier or a Northern Wei official from where she is. Holding them costs her a
+turn each and settles nothing. `build-parent-candidates._has_cjk` tests **both** sides — the pair
+`宣度 崔`/`Cui Xuandu` is caught on ours — and the range is written in ASCII escapes, per § *A Han
+range written with LITERAL boundary characters*.
+
+**The `universe` half of her sentence is right about them and must NOT become the filter.** None
+of these is in the ledger — but neither is any other case, and the ledger scope was tried on
+2026-08-31 and selected **0 of 709**, which published an empty page while the work was still
+there. The filter is the script, which is what she actually ruled on.
+
+They stay in `reports/parent-candidates.tsv`, which is the census; only the deck she reads is
+filtered.
+
 **REGENERATE BEFORE HANDING IT OVER. Always.** The committed HTML is a photograph of whenever it
 was last built, and § *Emma edits the tree and the items BY HAND, continuously* is why that goes
 stale in minutes: a card she has already answered is a card that wastes her turn. The verdicts go

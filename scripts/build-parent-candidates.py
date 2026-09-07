@@ -310,6 +310,18 @@ def words(names):
     return out
 
 
+#: Han, kana and Hangul. **Written as ASCII escapes on purpose** -- `CLAUDE.md` § *A Han range
+#: written with LITERAL boundary characters is a bug waiting to happen*: NFC folds U+F900 onto
+#: U+8C48, which silently swallowed the whole Hangul block and cost 5,338 Korean people.
+_CJK = re.compile(r"[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF"
+                  r"\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF\u1100-\u11FF]")
+
+
+def _has_cjk(text):
+    """True when the name is written in Han, kana or Hangul. See the deck filter."""
+    return bool(_CJK.search(text or ""))
+
+
 def main():
     # ---- Wikidata: who holds a P2600, and what each item says about its family ----------
     geni_of, kids_of, sp_of, parents_of = {}, {}, {}, {}
@@ -612,7 +624,29 @@ def main():
     # sitting, and progress is kept in `localStorage`, so a long deck costs nothing and a short
     # one silently hides work. Decided pairs are already retired above, so the deck shrinks as
     # she answers.
-    deck = cases
+    # **⛔ A CJK CASE IS UNDOABLE FOR HER AND IS NOT IN THE DECK.** Emma, 2026-09-07, ruling on
+    # the three she was handed -- `宣度 崔`/`Cui Xuandu`, `丹後内侍`/`藤原遠宗の娘`,
+    # `惟宗広言`/`Koremune no Tadayasu`: *"I'm making a firm ruling here that effectively all
+    # these cjk people are undoable for me in my current situation and idk why they are even
+    # getting in as they aren't in the universe I don't think."*
+    #
+    # A card is judged by reading two people's spouses and children, and that is not something
+    # she can do for a Heian courtier or a Northern Wei official from where she is. Holding them
+    # in the deck costs her a turn each and settles nothing.
+    #
+    # **The `universe` half of her sentence is right about them and does NOT generalise into the
+    # filter.** None of these is in the ledger -- but neither is any other case: the ledger scope
+    # was tried on 2026-08-31 and selected **0 of 709**, which is what published an empty page
+    # while the work was still there. So the filter is the script, which is what she actually
+    # ruled on.
+    #
+    # Kept in `reports/parent-candidates.tsv`, which is the census; only the deck she reads is
+    # filtered.
+    held_cjk = [c for c in cases if _has_cjk(c.get("our")) or _has_cjk(c.get("cand"))]
+    deck = [c for c in cases if c not in held_cjk]
+    if held_cjk:
+        print("%d CJK case(s) held out of the deck, per her ruling of 2026-09-07: %s"
+              % (len(held_cjk), ", ".join(c["qid"] for c in held_cjk)), file=sys.stderr)
     json.dump(deck, io.open(OUT_JSON, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
     if TEMPLATE.exists():
