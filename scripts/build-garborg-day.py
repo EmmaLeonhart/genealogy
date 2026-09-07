@@ -816,7 +816,38 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
     return out
 
 
-def _label_corrections(our_items, labels, table, state):
+def _birth_forms(label, alternates):
+    """Those `alternates` that differ from `label` in the LAST TOKEN ONLY — the birth form.
+
+    **The one part of `further_latin_names` that is a legitimate ground for a label
+    correction.** Our married-name flip swaps the surname and leaves the given names alone, so
+    the form it replaced shares every token but the last: `Bergitte Gunnbjørnsdatter Tengs`
+    against `Bergitte Gunnbjørnsdatter Aukland`. That is exactly what
+    § *The MARRIED name is the real name* makes the `Amul`.
+
+    **⛔ TAKING THE WHOLE COLUMN RE-CREATES THE FAILURE THIS GROUND WAS NARROWED AGAINST.**
+    Measured: it offered `Adolf Erik Nordenskiöld` -> `Nils Adolf Erik Nordenskiöld`,
+    `Anders Chydenius` -> `Anders Jacobsson Chydenius` and `Stina Piper` ->
+    `Christina Charlotta Piper` — Wikidata's labels being BETTER than ours — and
+    `Emma Leonhart` -> `Emma Himiko Leonhart`, the one middle name `CLAUDE.md` says in as many
+    words must never be emitted. 40 items, most of them wrong; 13 under this rule.
+
+    Computed from the LABEL rather than from `fields`, because `fields` keeps a person's FIRST
+    `NAME` record and Bergitte's first record is a plain string with no `SURN` or `_MARNM` at
+    all — the structured ones are records 1 and 2.
+    """
+    head = (label or "").split()
+    if len(head) < 2:
+        return set()
+    out = set()
+    for alt in alternates:
+        toks = alt.split()
+        if len(toks) == len(head) and toks[:-1] == head[:-1] and toks[-1] != head[-1]:
+            out.add(alt)
+    return out
+
+
+def _label_corrections(our_items, labels, table, state, fields=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
 
     **Emma, 2026-08-29:** *"You should be adding into the generated quick statements a block
@@ -847,8 +878,30 @@ def _label_corrections(our_items, labels, table, state):
         want_ids = set(our_items)
         for row in csv.DictReader(dl.open(encoding="utf-8")):
             if row["geni_id"] in want_ids:
-                aliases_of[row["geni_id"]] = {
-                    a.strip() for a in (row.get("alias_names") or "").split(" | ") if a.strip()}
+                # **`alias_names` alone could never fire for the case Emma sent.**
+                # `Q141198835` Bergitte Gunnbjørnsdatter — the hinge of the three lines — has
+                # `SURN Tengs` and `_MARNM Aukland`, so § *The MARRIED name is the real name*
+                # makes `Aukland` the label and `Tengs` the `Amul`. But `alias_names` holds
+                # what `alias_from_married_name` builds, which is the MARRIED form and so the
+                # label again; her birth form was only ever in `further_latin_names`.
+                #
+                # **⛔ AND `further_latin_names` IS NOT THE FIX.** Taking that column whole
+                # re-creates the failure this ground was narrowed against: measured, it offered
+                # `Adolf Erik Nordenskiöld` -> `Nils Adolf Erik Nordenskiöld`,
+                # `Anders Chydenius` -> `Anders Jacobsson Chydenius`, `Stina Piper` ->
+                # `Christina Charlotta Piper` — Wikidata's labels being BETTER than ours — and
+                # `Emma Leonhart` -> `Emma Himiko Leonhart`, the one middle name `CLAUDE.md`
+                # says in as many words must never be emitted. 40 items, most of them wrong.
+                #
+                # So the ground is the BIRTH FORM specifically: `givn + surn`, the rendering
+                # our own married-name flip replaced. Nothing else in that column qualifies.
+                names = {a.strip()
+                         for a in (row.get("alias_names") or "").split(" | ") if a.strip()}
+                names |= _birth_forms(
+                    (row.get("label_mul") or row.get("label_en") or "").strip(),
+                    [a.strip() for a in (row.get("further_latin_names") or "").split(" | ")
+                     if a.strip()])
+                aliases_of[row["geni_id"]] = names
 
     live = {}
     ledger = ROOT / "reports" / "garborg-qids.tsv"
@@ -7099,7 +7152,7 @@ def main():
         print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
     lines = _cap_label_edits(
         lines, clan_block,
-        _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table)
+        _label_corrections(our_items, labels, table, state, fields) + _cjk_follows_mul(table)
         + _missing_cjk_labels(our_items, labels, table, live_labels),
         priority=_cjk_priority_qids(our_items))
 

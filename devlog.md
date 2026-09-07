@@ -31338,3 +31338,38 @@ it and the long vowel, `アルゴットソン` and `マットソン` carry the g
 to skip them. Exactly one was broken, and it is corrected by hand to `ヴァルデマーソン` with the
 reason in its note — her own *"we can do them much more manually than I think you give them
 credit for"*, at the scale she said.
+
+## 2026-09-07 — Bergitte, and the birth-name ground that could never fire
+
+Emma sent `Q141198835` **Bergitte Gunnbjørnsdatter** — the hinge of the three lines — with no
+`ja`/`zh`, a live label of `… Tengs`, and ours reading `… Aukland`.
+
+Geni gives her `SURN Tengs` and `_MARNM Aukland`, so § *The MARRIED name is the real name* makes
+`Aukland` the label and `Tengs` the `Amul`. That is exactly what `_label_corrections`' birth-name
+ground exists for — **and it could never fire**, because `aliases_of` reads `alias_names`, which
+holds what `alias_from_married_name` builds: the MARRIED form, which is the label again. Her birth
+form was only ever in `further_latin_names`. The mismatch is her 2026-08-11 reading (*"married
+name plugs into name to produce an alias"*) left standing underneath the 2026-08-26 one.
+
+**⛔ AND `further_latin_names` WHOLE IS NOT THE FIX — measuring it is what stopped me shipping it.**
+Taking the column re-created the corrected-everything failure the ground was narrowed against:
+40 items, and among them `Adolf Erik Nordenskiöld` → `Nils Adolf Erik Nordenskiöld`,
+`Anders Chydenius` → `Anders Jacobsson Chydenius`, `Stina Piper` → `Christina Charlotta Piper` —
+**Wikidata's labels being better than ours** — and `Emma Leonhart` → `Emma Himiko Leonhart`, the
+one middle name `CLAUDE.md` says in as many words must never be emitted.
+
+`_birth_forms` takes only an alternate that differs from the label **in the last token alone**,
+which is what our flip does: it swaps the surname and leaves the given names. **17 items**, her own
+excluded, Bergitte included:
+
+    Q141198835  Bergitte Gunnbjørnsdatter Tengs  ->  … Aukland   + Amul Tengs + ja/zh/ko
+
+Computed from the label rather than from `fields`, because `fields` keeps a person's FIRST `NAME`
+record and Bergitte's first is a plain string with no `SURN` or `_MARNM` at all.
+
+**Her five, after the repeated-patronymic and clan fixes: three now ship.** `Q6197518` Svantepolk
+went from `Svantepolk Knutsson Knutsson Skarsholmsätten` to `Svantepolk Knutsson`, matching
+Wikidata. The two still held — `Algot Bryniolfsson` against Wikidata's `Brynolfsson`, and Tore,
+whose Geni record itself gives `givn Tore II Gardson` and `marnm Gard` — are **source
+differences, not our bugs**, and § *The purpose is to ADD to Wikidata, not to correct it* is why
+they stay held rather than being "fixed".
