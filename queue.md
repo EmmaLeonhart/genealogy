@@ -21,18 +21,22 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   `geni-extension/content/individual.js`. Do not re-derive any of it in prose; that reasoning is
   the discretion she removed.
 
-  **Where the targets come from, in this order:**
+  **Where the targets come from:**
 
-      reports/isolate-path-pilot.tsv       100 targets, 19 touched, 81 to go
-      reports/sibling-pair-worklist.tsv    2,526 people with no scrape yet
+      reports/isolate-path-pilot.tsv       ⛔ COMPLETE 2026-09-06, 100 of 100
+      reports/sibling-pair-worklist.tsv    the live list -- 2,526 people with no scrape yet
 
-  `python scripts/pilot-progress.py` prints the first count; the second is any `geni_id` in the
-  worklist with no `geni-families/<id>-family.tsv`.
+  The remaining count is any `geni_id` in the worklist with no `geni-families/<id>-family.tsv`:
+
+      awk -F'	' 'NR>1{print $2}' reports/sibling-pair-worklist.tsv |
+        while read -r id; do [ -f "geni-families/$id-family.tsv" ] || echo "$id"; done | wc -l
+
+  `python scripts/pilot-progress.py` still prints the pilot's own count and should read 100/100.
 
   **After each scrape:** `PYTHONPATH=src python scripts/build-tiny-gedcoms.py` turns everything on
   disk into tiny GEDCOMs. It is idempotent and safe to run repeatedly.
 
-  ⛔ **THE FOUR THINGS THAT WILL WASTE A SESSION IF YOU REDISCOVER THEM:**
+  ⛔ **THE SEVEN THINGS THAT WILL WASTE A SESSION IF YOU REDISCOVER THEM:**
 
   * **Nothing downloads.** Roughly two files land per browser session and Chrome blocks the rest —
     a per-origin permission needing an omnibox grant she cannot give from a phone. The job returns
@@ -44,12 +48,28 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     the tool's content filter, and so is any line containing `key=value`.
   * **A pending path search is NOT a miss**, and a requested search **decays back to unrequested**
     within hours. Revisit and re-request; never write a blank over an observed verdict.
+  * ⛔ **`no_panel` HAS NEVER ONCE MEANT "STILL RUNNING".** Every one seen on 2026-09-06 — and it
+    was the state's whole population that day — turned out to be a page stating
+    **`No path found to <name>.`**, a third miss sentence `pathState` could not read until 1.6.2.
+    Until Chrome restarts and loads 1.6.2, read the banner off the page at harvest time rather
+    than trusting `path_state`.
+  * ⛔ **A HIT CANNOT BE READ OFF THE PAGE.** `path_state` is asymmetric by design; only the job's
+    `resolved_path` + `hasTarget` establishes one. Pass `@PATH yes` to `write-family-scrape.py`
+    when it does, or a confirmed hit is filed as pending.
+  * **Long results truncate mid-row.** A family of ~10+ overflows the tool result; fetch the rows
+    in slices and check the count before writing. A truncated line is visibly truncated, which is
+    why the transport is tab-separated rather than JSON.
   * **The background service worker cannot be updated from here** and does not matter — it runs
     only the scheduler. `todo.md` § 3d has the measurement and five failed routes.
 
-  **State right now:** pilot 19 of 100 · `reports/isolates.csv` 20 rows, 7 misses / 1 hit /
-  12 pending · 1,569 tiny profile GEDCOMs · 1,151 tiny path GEDCOMs · **zero invented people** ·
-  the merge reads 3,323 files.
+  **State right now, 2026-09-06 evening:** the pilot is **100 of 100** · `reports/isolates.csv`
+  102 rows · under the Charlemagne anchor **83 answered: 7 hits, 76 misses, a reach rate of
+  8.4%**, and of those misses the floor clears 37 and refuses 39 · 1,657 tiny profile GEDCOMs ·
+  1,158 tiny path GEDCOMs · **zero invented people** · extension at 1.6.2.
+
+  ⛔ **THE ANCHOR COLUMN IS WHAT MAKES THAT RATE MEAN ANYTHING.** 8 of the 102 rows were taken
+  under the Emma anchor before 2026-09-06 and 11 have no verdict yet; neither is in the 83. A
+  rate computed over all 102 answers a question nobody asked.
 
   **The live-site writes sit behind `job.create`.** Setting it lets the loop create one ancestor
   and run a `Forest` export when the gate clears. It has not been exercised yet, so the first one

@@ -31144,3 +31144,42 @@ a named parent, 9,256 have spouse-and-child but no parent, 8,178 child only, 8,3
 
 No correction pass is written yet — it needs the live labels, and `reports/garborg-live-values.tsv`
 carries properties rather than labels, so there is nothing on disk to diff against.
+
+## ⛔ THE ISOLATE PILOT IS COMPLETE. 100 OF 100
+
+Every target in `reports/isolate-path-pilot.tsv` now carries a family scrape, and the reach rate
+the pilot exists to produce is measurable for the first time.
+
+**Under the Charlemagne anchor, 83 answered targets: 7 hits, 76 misses.** A reach rate of
+**8.4%**. The other 19 rows in `reports/isolates.csv` are 8 taken under the Emma anchor before
+2026-09-06 and 11 with no verdict yet — neither is mixed into that figure, which is what the
+`anchor` column exists for.
+
+**Of the 76 misses, the 300 floor clears 37 for export and refuses 39** — very nearly an even
+split, which is the first evidence that the threshold is placed somewhere useful rather than at
+one end of the distribution. Her *"any number over 1,000 is a sure export, i say even any number
+over 300"* lands within a person or two of the median.
+
+**The seven hits:**
+
+| | steps | Geni's own words |
+| --- | ---: | --- |
+| Viktor Georg Frhr. von Wolff | 64 (two chains) | 29th great grandson |
+| Louise von Renngarten | 32 | 29th great granddaughter |
+| Henry Taylor Blow | 66 (two chains that rejoin) | 30th great grandson |
+| Birger Dahlerus | 33 | 30th great grandson |
+| Thomas Starr | 34 | 31st great grandson |
+| Louis Henri de Cahuzac, marquis de Caux | 35 | 32nd great grandson |
+| Alberto Heber Usher | 41 | 38th great grandson |
+
+**What the pilot settled beyond its own number**, each recorded above with its measurement: a
+third miss sentence the collector could not read; `read` being asserted true and manufacturing
+zeros; a hit that could not reach the ledger; the tool-result overflow; the private-profile
+layout; and the shared von Tiesenhausen trunk — which the seventh hit then showed is a property
+of three captures rather than of Charlemagne descents generally.
+
+**Nothing was invented.** `build-tiny-gedcoms.py` still reports **zero invented people** over
+the whole corpus.
+
+**Next is `reports/sibling-pair-worklist.tsv`** — 2,526 people with no scrape yet, the same loop
+at eighty times the scale.
