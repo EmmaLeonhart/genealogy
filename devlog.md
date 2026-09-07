@@ -31240,3 +31240,35 @@ Residue: **6** labels are still a bare relationship word, and 5 of them have `da
 as their literal Geni name, unchanged by any of this. The sixth is `daughter (or granddaughter) of
 Nabopolassar`, whose parenthetical defeats `is_description`'s prefix test. One row in 1.29M; the
 guard is narrow on purpose and widening it risks rewriting a real name to `NN`.
+
+## 2026-09-07 — the missing CJK labels, and why nothing was reaching them
+
+Emma: *"the entire line from me/Arne to Charlemagne needs cjk labels and idk if that's
+scheduled. We need a lot of ones that are missing."* It was not scheduled, and the reason is
+structural rather than a cap or a gate.
+
+**`_label_corrections` emits CJK only as a SIDE EFFECT of a Latin correction.** Its two grounds
+are an abbreviation expansion and the birth-name flip. An item whose Latin label is already right
+is skipped — and its missing `ja`/`zh`/`ko` is never noticed by anything. Measured on the batch
+of 2026-09-07: **0 of the 34 spine items appear in it at all**, and the whole 1,717-line file
+carried 48 `Lja` lines against 1,699 ledger people.
+
+`_missing_cjk_labels` is the pass that was absent. **Purely additive**: a language is emitted only
+where `read_live_labels` has no value for it, so it cannot touch her hand-edits and cannot restate
+§ *The purpose is to ADD to Wikidata, not to correct it*. An absent live-labels file emits nothing,
+per that function's own rule that no value means *we do not know*.
+
+**963 ledger items would gain CJK labels; 27 of the 34 on the Charlemagne path are among them.**
+
+**And her own ordering was working against her own request.** Label edits drain newest-QID-first —
+*"making an item very recently that has an error in it looks worse"* — which puts this path LAST,
+because its people are `Q3044` Charlemagne and `Q43974` Louis the Pious, the oldest items in the
+ledger. At 963 waiting behind a cap of 30, *"next batch"* would have been about a month.
+`_cjk_priority_qids` reads the path file as data and the cap takes those first. It is **not** a
+resurrection of the spine machinery removed on 2026-09-02: one named path, read from a file, and
+nothing else in the run consults it.
+
+**What is verified and what is not.** The pass and the priority resolver were run against the real
+ledger, derived labels, live labels and transliteration table — 2,085 lines over 963 items, 34
+priority QIDs. The whole builder was **not** run: `out/merged.ged` is gitignored and absent from
+this clone, so the end-to-end batch will first be produced by the pipeline on Actions.

@@ -693,6 +693,82 @@ def read_tree():
 
 
 
+#: The path whose CJK labels Emma asked for by name on 2026-09-07 — *"the entire line from
+#: me/Arne to Charlemagne needs cjk labels"*, and *"Yes, next batch."* Read as DATA from the
+#: file the repo already holds; this is not a resurrection of the spine machinery removed on
+#: 2026-09-02, and nothing else in the run consults it.
+CJK_PRIORITY_PATH = "paths/charlemagne-to-arne-garborg.tsv"
+
+
+def _cjk_priority_qids(our_items):
+    """QIDs of the people on `CJK_PRIORITY_PATH`, for the label cap to take first.
+
+    **Newest-QID-first puts this path LAST**, which is her own ordering working against her own
+    request: its people are `Q3044` Charlemagne and `Q43974` Louis the Pious, the oldest items
+    in the ledger, and with 963 items waiting behind a cap of 30 "next batch" would have meant
+    about a month. A missing file yields an empty set and the ordering is unchanged.
+    """
+    path = ROOT / CJK_PRIORITY_PATH
+    if not path.exists():
+        return set()
+    ids = set(re.findall(r"geni:(\d+)", path.read_text(encoding="utf-8")))
+    return {q for g, q in our_items.items() if g in ids}
+
+
+def _missing_cjk_labels(our_items, labels, table, live_labels):
+    """`Lja`/`Lzh`/`Lko` for a ledger item whose LATIN label is already right and that has none.
+
+    **Emma, 2026-09-07**, on the whole Arne → Charlemagne line reading with no Japanese label at
+    all: *"the entire line from me/Arne to Charlemagne needs cjk labels and idk if that's
+    scheduled. We need a lot of ones that are missing."* It was not scheduled. Asked whether to
+    ship the ones that render cleanly: *"Yes, next batch."*
+
+    **Why nothing reached them.** `_label_corrections` emits CJK only as a SIDE EFFECT of a
+    `mul`/`en` correction — its two grounds are an abbreviation expansion and the birth-name
+    flip. An item whose Latin label is already correct is skipped, and its missing `ja`/`zh`/`ko`
+    is never noticed. Measured on the batch of 2026-09-07: **0 of the 34 spine items appear in
+    it at all**, and the whole 1,717-line file carried 48 `Lja` lines.
+
+    **PURELY ADDITIVE. It never rewrites a label that exists.** A language is emitted only where
+    `live_labels` has no value for it, so this cannot touch her hand-edits and cannot restate
+    § *The purpose is to ADD to Wikidata, not to correct it*. A disagreement with an existing
+    CJK label is a different question and stays with `_label_corrections`.
+
+    **An absent live-labels file means "we do not know", not "the item has nothing"** — the rule
+    `read_live_labels` states in its own docstring. With no file this emits nothing rather than
+    blanket-writing every item.
+    """
+    out = []
+    if not live_labels:
+        return out
+    seen = {qid for (qid, _lang) in live_labels}
+    for geni_id, qid in sorted(our_items.items(), key=lambda kv: kv[1]):
+        if qid not in seen:
+            continue                      # never fetched: we do not know what it holds
+        want = labels.get(geni_id, "")
+        if not want or is_relationship_description(want):
+            continue
+        missing = [c for c in ("ja", "zh", "ko") if not live_labels.get((qid, c))]
+        if not missing:
+            continue
+        ja, zh, ko = label_in(want, table)
+        if not ja:
+            continue
+        value = {"ja": ja, "zh": zh, "ko": ko}
+        out.append(f"#   {qid}: {want!r} has no {'/'.join(missing)} label")
+        for code in missing:
+            out.append(f"#   {qid}: set the {code} label")
+            out.append(f'{qid}\tL{code}\t"{qs(value[code])}"')
+    if out:
+        out = ["", "# " + "-" * 72,
+               "# MISSING CJK LABELS -- ledger items whose Latin label is already right and",
+               "#   that carry no ja/zh/ko. Purely additive: a language already holding a",
+               "#   value is left alone. Emma, 2026-09-07, on the Charlemagne line: 'we need",
+               "#   a lot of ones that are missing'.",
+               "# " + "-" * 72] + out
+    return out
+
+
 def _label_corrections(our_items, labels, table, state):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
 
@@ -868,7 +944,7 @@ def _label_tiers():
         | {"D" + lang for lang in supported}]
 
 
-def _cap_label_edits(lines, clan_block, corrections):
+def _cap_label_edits(lines, clan_block, corrections, priority=()):
     """Move label edits on existing items to the FRONT, capped at `LABEL_EDIT_CAP` QIDS.
 
     **⛔ The cap counts PEOPLE, not lines, and everything for one person goes at once.** Emma,
@@ -962,9 +1038,20 @@ def _cap_label_edits(lines, clan_block, corrections):
     for edit in every:
         by_qid[edit["qid"]].append(edit)
 
+    # **THE SPINE JUMPS THE QUEUE, and only because she asked for it.** Emma, 2026-09-07, on
+    # the Arne → Charlemagne line having no Japanese label at all: *"Yes, next batch."* Newest
+    # QID first is her own ordering — *"making an item very recently that has an error in it
+    # looks worse"* — and it puts the spine LAST, because its people are `Q3044` Charlemagne
+    # and `Q43974` Louis the Pious, the oldest items in the ledger. With 963 items waiting and
+    # a cap of 30, "next batch" would have meant about a month.
+    #
+    # This is a priority for ONE named path, not a general ranking: `SPINE_PATHS` is the same
+    # constant the spine builder reads, so nothing new decides what counts.
+    priority = set(priority)
     # Descending QID — numerically, because `Q9` is newer than `Q10000` as a string and older
     # as an item.
-    chosen = sorted(by_qid, key=lambda q: -int(q[1:]))[:LABEL_EDIT_CAP]
+    chosen = sorted(by_qid,
+                    key=lambda q: (q not in priority, -int(q[1:])))[:LABEL_EDIT_CAP]
     held = sum(len(v) for q, v in by_qid.items() if q not in chosen)
 
     head, newly = [], []
@@ -6952,7 +7039,9 @@ def main():
         print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
     lines = _cap_label_edits(
         lines, clan_block,
-        _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table))
+        _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table)
+        + _missing_cjk_labels(our_items, labels, table, live_labels),
+        priority=_cjk_priority_qids(our_items))
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first.** Emma, 2026-08-30: *"One file, not two. Names first, then
