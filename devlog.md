@@ -31890,3 +31890,35 @@ us. **910 held back, 12 still reachable**, `Q141219063` among them.
 
 Caught by reading the agreement figure rather than by the suite: `reports/labels.md` went
 11,659 → 11,655 exact matches against Wikidata, which is what a correct change should not do.
+
+## The ledger now says WHICH search answered, and CI parses the extension
+
+Two follow-ons to her in-law ruling, both non-Geni, done while the browser loop is stood down.
+
+**`reports/isolates.csv` gains a `via` column, and NOTHING is back-filled.** `path_found` means
+*any* path now — *"in-law connections are just as valid blood is no required lol"* — so a bare
+`yes`/`no` no longer says which question Geni was asked. `via` says it, and **blank means
+unrecorded rather than blood**: the rows that predate the column were written when only one
+question was ever asked, and stamping them `blood` would assert that the other had been tried.
+
+Measured against the committed file rather than asserted: **111 rows before and after, 0 rows
+changed in their existing ten fields, 0 rows carrying a non-blank `via`.** The field parses when
+supplied and defaults empty when not, checked directly against `parse_block`. A revisit preserves
+a recorded `via` for the same reason `anchor` is preserved — the observation belongs to the run
+that made it, and a later pass asking a different question must not relabel it.
+
+The docstring now carries the caveat where the writer will read it: **every `no` written before
+1.6.3 means *no blood path* and nothing more**, and those rows are not final.
+
+**CI parses the extension.** The collector is JavaScript nothing here imports, so a syntax error
+in it is invisible to pytest and to every reader — it surfaces when Chrome next loads the
+unpacked extension, on her machine, mid-run, silently. That nearly shipped today: a generated
+header in `path.js` landed with a **real newline inside a string literal** instead of a `
+`
+escape, and it was caught by reading the file, not by any check. `node --check` parses without
+executing and cannot touch Geni.
+
+**The step asserts the FILE COUNT, not just the exit status.** A `for` loop over zero files exits
+0 and reads exactly like a pass — the shape `tests/test_join_sanity.py` exists against. The
+sparse checkout takes `/*` minus a few directories; if `geni-extension` ever joins that list this
+fails instead of going quiet. Dry-run locally: **9 files, all parse.**

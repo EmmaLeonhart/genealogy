@@ -19,6 +19,19 @@ IS ASYNCHRONOUS* records: nine targets read as *"0 steps"* when they had simply 
 **A MISSING STATISTICS ROW IS ZERO** -- Emma, 2026-09-03 on Dorothy Jeakins: *"geni is weird and
 gives zero as not an option there"*. The collector already reads it that way; nothing here turns
 a zero back into a blank.
+
+⛔ **`path_found` MEANS *ANY* PATH. IN-LAW COUNTS.** Emma, 2026-09-07: *"in-law connections are
+just as valid blood is no required lol."*
+
+**AND EVERY `no` WRITTEN BEFORE EXTENSION 1.6.3 MEANS *NO BLOOD PATH* AND NOTHING MORE.** The
+collector only ever dispatched `runPath` with `kind: "blood"`; Geni offers a second search behind
+a *Show Me* button that nothing clicked, so those rows record an answer to a narrower question
+than the column is read as asking. They are not final and must not be totalled as if they were.
+
+`via` says which search answered, and **blank means unrecorded rather than blood** -- the 80 rows
+that predate this column were written when only one question was ever asked, and back-filling
+them with `blood` would assert that the other one had been tried. Anna Hørlück
+`297536201290008921` is the one checked by hand: *"No in-law relationship was found."* as well.
 """
 
 from __future__ import annotations
@@ -128,6 +141,7 @@ def parse_block(text: str) -> dict:
         "prose": meta.get("prose", ""),
         "banner": meta.get("banner", ""),
         "path": meta.get("path", ""),
+        "via": meta.get("via", ""),
     }
 
 
@@ -167,6 +181,8 @@ def main() -> int:
 
     rows = list(csv.reader(ISOLATES.open(encoding="utf-8")))
     header = rows[0]
+    if "via" not in header:
+        header = header + ["via"]
     prior = next((r[8] for r in rows[1:] if r and r[0] == gid and len(r) > 8), "")
     body = [r for r in rows[1:] if r and r[0] != gid]
 
@@ -228,7 +244,17 @@ def main() -> int:
     # `path_found`.
     read = stats.get("read", True)
     figures = [(str(stats.get(f, 0) or 0) if read else "") for f in FIELDS]
-    body.append([gid, name] + figures + ["2026-09-06", verdict, anchor])
+    # ⛔ WHICH SEARCH ANSWERED. Blank means UNRECORDED, never "blood".
+    #
+    # `path_found` is now *any* path -- her ruling, 2026-09-07 -- so a bare `yes`/`no` no longer
+    # says which question Geni was asked. `via` says it. A revisit preserves a recorded `via` for
+    # the same reason `anchor` is preserved: the observation belongs to the run that made it, and
+    # a later pass that asked a different question must not relabel it.
+    prior_via = next((r[10] for r in rows[1:] if r and r[0] == gid and len(r) > 10), "")
+    via = (blob.get("via") or "").strip().lower()
+    if via not in ("blood", "inlaw"):
+        via = prior_via if (verdict and verdict == prior) else ""
+    body.append([gid, name] + figures + ["2026-09-06", verdict, anchor, via])
     body.sort(key=lambda r: r[0])
     with ISOLATES.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)

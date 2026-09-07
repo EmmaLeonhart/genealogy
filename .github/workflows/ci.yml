@@ -75,6 +75,28 @@ jobs:
       # `genimerge.wikidata.require_agent` refuses an empty User-Agent by design, because
       # Wikimedia answers one with a bare 403. One test builds a client and fails without this.
       # It is a contact address, not a secret -- it is in CLAUDE.md.
+      # The extension is JavaScript that nothing here imports, so a syntax error in it is
+      # invisible to pytest and to every reader -- it surfaces only when Chrome next loads the
+      # unpacked extension, which happens on HER machine, mid-run, silently. On 2026-09-07 a
+      # generated header in `path.js` landed with a REAL newline inside a string literal instead
+      # of a `
+` escape; it was caught by reading the file, not by any check. `node --check`
+      # parses without executing, so it costs nothing and cannot touch Geni.
+      - name: The extension parses
+        run: |
+          set -e
+          n=0
+          for f in geni-extension/*.js geni-extension/content/*.js; do
+            node --check "$f"
+            n=$((n+1))
+          done
+          echo "$n extension files parse"
+          # A loop over zero files exits 0 and reads exactly like a pass. This repo has been
+          # caught by that shape more than once, so the count is asserted rather than printed:
+          # the sparse checkout above takes `/*` minus a few directories, and if `geni-extension`
+          # ever joins that exclusion list this fails instead of going quiet.
+          test "$n" -ge 8
+
       - name: Fast lane
         env:
           BOT_CONTACT: emma@topazcomputing.com
