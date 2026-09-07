@@ -31206,3 +31206,37 @@ held `of` オフ, `the` テ, `and` アンド, `king` キング, `duke` ドケ, `
 Not fixed and still the largest hole in this area: **no note in the transliteration table has ever
 cited a Korean attestation, 0 of 38,376**, so the `ko` column is unchecked rule output throughout —
 `베레아르` for Berengar in the output above is that showing.
+
+## 2026-09-07 — titles out of the `mul` label
+
+Emma: *"the highest priority is to make sure that title names and such don't end up in mul labels
+and dont get transliterated"*, and — asked whether a bare territorial counts — **both**, so
+`Judith of Flanders` becomes `Judith`. § *A TITLE IS NOT A NAME* had said the tail rule *"does not
+touch the LABEL"* and left the question open; this closes it.
+
+**The list is curated by hand, and that is her instruction rather than a shortcut**: *"most of
+these words… aren't that common and that means we can do them much more manually than I think you
+give them credit for."* She is right about the size — **128 distinct tokens open a label** across
+1,295,228 labelled people and ~110 open a title tail. Six are held out, each confirmed with her
+individually: `miles` (a given name), `ra` (Egyptian), `bonde` (a Swedish noble surname), `saint`,
+`katz`/`segal`/`halevi`/`hakohen` (surnames), `infant` (ambiguous, and the `NSFX` rule already
+handles the died-young case more safely).
+
+**Three regressions, all found by reading output rather than by reasoning:**
+
+* the name-FIELD rule deleted a given name — `Miles de Thouars seigneur de Pouzaugues` →
+  `de Thouars seigneur de Pouzaugues`. That is why the list is curated at all.
+* an ungated residue clean-up took `Anna King` → `Anna` and `Sarah Bishop` → `Sarah`, the exact
+  surnames the connective rule exists to protect. It now runs only where a truncation happened.
+* `drop_title_tail` truncates a relationship phrase at its connective, so `father of Asukabe no
+  Namura` became the bare word `father`. **252 labels became `father`, `wife` or `daughter`.**
+  `labels.is_description` was already imported into `derive-labels` and is the guard.
+
+**33,348 `mul` labels change. The corroboration is 11,157 → 11,652 exact matches against
+Wikidata** — **+495 moved INTO agreement**, which nothing here was tuned for: Wikidata's own
+labels do not carry the titles either.
+
+Residue: **6** labels are still a bare relationship word, and 5 of them have `daughter` or `wife`
+as their literal Geni name, unchanged by any of this. The sixth is `daughter (or granddaughter) of
+Nabopolassar`, whose parenthetical defeats `is_description`'s prefix test. One row in 1.29M; the
+guard is narrow on purpose and widening it risks rewriting a real name to `NN`.
