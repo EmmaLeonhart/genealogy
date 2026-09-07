@@ -61,10 +61,36 @@ LAST	Lmul	"Axelsson"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q4157020 Magnus Julius Axelsson De la Gardie till Tullgarn: P5056 patronym or matronym = the item just created, qualified P144 based on Q2874754
+#   Q4157020 Magnus Julius Axelsson De la Gardie: P5056 patronym or matronym = the item just created, qualified P144 based on Q2874754
 Q4157020	P5056	LAST	P144	Q2874754	S2600	"6000000003579020143"
 #   Q141337058 Jakob Axelsson Lindblom: P5056 patronym or matronym = the item just created
 Q141337058	P5056	LAST	S2600	"6000000011759904315"
+
+# Carlsson -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Carlsson"
+LAST	Len	"Carlsson"
+#   set the mul label to "Carlsson"
+LAST	Lmul	"Carlsson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q2529610 Carl
+LAST	P144	Q2529610
+#   P144 based on = Q15731830
+LAST	P144	Q15731830
+#   P144 based on = Q4259083 Kaarle
+LAST	P144	Q4259083
+#   P144 based on = Q2958359 Charles
+LAST	P144	Q2958359
+#   P144 based on = Q1044619 Carolus
+LAST	P144	Q1044619
+#   P144 based on = Q1719508 Kaarlo
+LAST	P144	Q1719508
+#   Q19631563 Erik Carlsson Odelström: P5056 patronym or matronym = the item just created
+Q19631563	P5056	LAST	S2600	"6000000006783257558"
 
 # Håkansson -- patronymic, 3 bearer(s) in the batches
 # create a new item
@@ -85,6 +111,22 @@ LAST	P144	Q15711061
 Q6082642	P5056	LAST	P144	Q141244101	S2600	"6000000004548321013"
 #   Q141336978 Anders Håkansson Rudén: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244101 Haquinus Thorstani Rudenius
 Q141336978	P5056	LAST	P144	Q141244101	S2600	"6000000011663058018"
+
+# Nor-Kolnes -- family, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Nor-Kolnes"
+LAST	Len	"Nor-Kolnes"
+#   set the mul label to "Nor-Kolnes"
+LAST	Lmul	"Nor-Kolnes"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141224287 Ole Johannes Johnsen Nor-Kolnes: P734 family name = the item just created
+Q141224287	P734	LAST	S2600	"6000000003491995664"
+#   Q141223997 Ane Kristine Olsdatter Nor-Kolnes: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141223997	P734	LAST	P3831	Q28418670	S2600	"6000000003491995699"
 
 # Samuelsdotter -- patronymic, 3 bearer(s) in the batches
 # create a new item
@@ -108,71 +150,99 @@ Q141337173	P5056	LAST	P144	Q141224900	S2600	"6000000007366209796"
 #   Q141289011 Margareta Samuelsdotter Grubb: P5056 patronym or matronym = the item just created, qualified P144 based on Q5773287 Samuel Andreæ Grubb
 Q141289011	P5056	LAST	P144	Q5773287	S2600	"6000000019244208594"
 
-# Gustafsson -- patronymic, 2 bearer(s) in the batches
+# Toresen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Gustafsson"
-LAST	Len	"Gustafsson"
-#   set the mul label to "Gustafsson"
-LAST	Lmul	"Gustafsson"
+#   the item just created: set the en label to "Toresen"
+LAST	Len	"Toresen"
+#   set the mul label to "Toresen"
+LAST	Lmul	"Toresen"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q15646212 Gustaf
-LAST	P144	Q15646212
-#   Q6188777 Arvid Nils Gustafsson Stenbock: P5056 patronym or matronym = the item just created, qualified P144 based on Q6188812
-Q6188777	P5056	LAST	P144	Q6188812	S2600	"6000000004594967673"
-#   Q5951786 Johan Gustafsson Liljencrantz: P5056 patronym or matronym = the item just created, qualified P144 based on Q5951772
-Q5951786	P5056	LAST	P144	Q5951772	S2600	"6000000006127859967"
+#   P144 based on = Q1548096 Tore
+LAST	P144	Q1548096
+#   P144 based on = Q23047611 Thore
+LAST	P144	Q23047611
+#   P144 based on = Q2460609 Ture
+LAST	P144	Q2460609
+#   P144 based on = Q19818192 Tor
+LAST	P144	Q19818192
+#   P144 based on = Q2428812 Thor
+LAST	P144	Q2428812
+#   Q141249737 Ole Thoreson Toresen Lende: P5056 patronym or matronym = the item just created
+Q141249737	P5056	LAST	S2600	"6000000010517303222"
 
-# Hageby -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Hageby"
-LAST	Len	"Hageby"
-#   set the mul label to "Hageby"
-LAST	Lmul	"Hageby"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141336995 Charlotta Fredrika Hamilton af Hageby: P734 family name = the item just created
-Q141336995	P734	LAST	S2600	"6000000001448400396"
-#   Q141288852 Fredrika Lovisa Hamilton af Hageby: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141288852	P734	LAST	P3831	Q28418670	S2600	"6000000008988803122"
-
-# Malmeim -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Malmeim"
-LAST	Len	"Malmeim"
-#   set the mul label to "Malmeim"
-LAST	Lmul	"Malmeim"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141290461 Gunvor Mauritsdatter Malmeim: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141290461	P734	LAST	P3831	Q28418670	S2600	"6000000003491988881"
-#   Q141290465 Maurits Gabrielson Malmeim: P734 family name = the item just created
-Q141290465	P734	LAST	S2600	"6000000003491988924"
-
-# 143 more name items are needed and wait for a later
+# 395 more name items are needed and wait for a later
 # run -- 6 a day is her cap, not a limit of the data:
-#   Mattsson (patronymic), 2 bearer(s)
-#   Monsen (patronymic), 2 bearer(s)
-#   Måge (family), 2 bearer(s)
-#   Nor-Kolnes (family), 2 bearer(s)
-#   Numers (family), 2 bearer(s)
-#   Olavsdatter (patronymic), 2 bearer(s)
-#   Olsdotter (patronymic), 2 bearer(s)
-#   Osmundsdatter (patronymic), 2 bearer(s)
-#   Person (patronymic), 2 bearer(s)
-#   Rasmusson (patronymic), 2 bearer(s)
-#   Skanderborg (family), 2 bearer(s)
-#   Tollaksdatter (patronymic), 2 bearer(s)
-#   ... and 131 more
+#   Torgerson (patronymic), 3 bearer(s)
+#   Aubø (family), 2 bearer(s)
+#   Björksund (family), 2 bearer(s)
+#   Björnö (family), 2 bearer(s)
+#   Ellingson (patronymic), 2 bearer(s)
+#   Gustafsson (patronymic), 2 bearer(s)
+#   Hageby (family), 2 bearer(s)
+#   Halvorson (patronymic), 2 bearer(s)
+#   Heerdhielm (family), 2 bearer(s)
+#   Helgö (family), 2 bearer(s)
+#   Helmik (given), 2 bearer(s)
+#   Johannessen (patronymic), 2 bearer(s)
+#   ... and 383 more
+
+
+# ======================================================================
+# DESCRIPTIONS on name items that already exist and have none.
+# Label + description must be unique per language, so this is what
+# makes Wikidata refuse a duplicate of a name item already in use.
+# Name items only -- never people.
+# ======================================================================
+#   Q112261760: set the en description to "family name"
+Q112261760	Den	"family name"
+#   Q124785549: set the en description to "family name"
+Q124785549	Den	"family name"
+#   Q131994301: set the en description to "family name"
+Q131994301	Den	"family name"
+#   Q98139923: set the en description to "family name"
+Q98139923	Den	"family name"
+
+# ======================================================================
+# P144 BASED ON, on patronymic items that already exist and lack it.
+# The given names each patronymic derives from, which is what her
+# resolution rule reads: a bearer gets P5056 when their father's
+# P735 item is among these values. Patronymics only -- never people.
+# ======================================================================
+#   Q141290188: P144 based on = Q58785388
+Q141290188	P144	Q58785388
+#   Q141336969: P144 based on = Q58785388
+Q141336969	P144	Q58785388
+
+# ======================================================================
+# P460 SAID TO BE THE SAME AS, between spellings of one patronymic.
+# Both ways, as she wrote them by hand on Olofsson and Olai. Only
+# where the two items share a P144 source, a stem and a gendered
+# suffix -- a shared source alone matches Jonsdatter to Johansdotter.
+# ======================================================================
+#   Q141189036: P460 said to be the same as = Q141319007
+Q141189036	P460	Q141319007
+#   Q141319007: P460 said to be the same as = Q141189036
+Q141319007	P460	Q141189036
+#   Q141189036: P460 said to be the same as = Q141336973
+Q141189036	P460	Q141336973
+#   Q141336973: P460 said to be the same as = Q141189036
+Q141336973	P460	Q141189036
+#   Q141189045: P460 said to be the same as = Q141318999
+Q141189045	P460	Q141318999
+#   Q141318999: P460 said to be the same as = Q141189045
+Q141318999	P460	Q141189045
+#   Q141318571: P460 said to be the same as = Q141318792
+Q141318571	P460	Q141318792
+#   Q141318792: P460 said to be the same as = Q141318571
+Q141318792	P460	Q141318571
+#   Q141319007: P460 said to be the same as = Q141336973
+Q141319007	P460	Q141336973
+#   Q141336973: P460 said to be the same as = Q141319007
+Q141336973	P460	Q141319007
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -188,83 +258,286 @@ Q141290465	P734	LAST	S2600	"6000000003491988924"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   30 people, 37 edits; 398 edits held for a later run
-#   across 259 more people. A repeat is a no-op, so nothing is lost.
+#   30 people, 116 edits; 1506 edits held for a later run
+#   across 564 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141337254 Ølver Aga: add a mul alias "Ølver Aspa"
-Q141337254	Amul	"Ølver Aspa"
-#   Q141337248 Torbjørn Ormssønn Måge: add a mul alias "Torbjørn Ormssønn Tokheim"
-Q141337248	Amul	"Torbjørn Ormssønn Tokheim"
-#   set the ja label to "トルビョルン・オルムッソン・モーゲ"
-Q141337248	Lja	"トルビョルン・オルムッソン・モーゲ"
-#   set the zh label to "托尔博尔恩·奥尔姆松·莫盖"
-Q141337248	Lzh	"托尔博尔恩·奥尔姆松·莫盖"
-#   Q141337235 Rasmus Jonsson Auestad: add a mul alias "Rasmus Jonsson Lura"
-Q141337235	Amul	"Rasmus Jonsson Lura"
-#   add a mul alias "Ola Lauritsson Skas"
-Q141337175	Amul	"Ola Lauritsson Skas"
-#   set the ja label to "ン・トルビョルンスドッテル・スコフテランド"
-Q141337174	Lja	"ン・トルビョルンスドッテル・スコフテランド"
-#   set the zh label to "恩·托尔博尔恩斯多特·斯科夫特兰德"
-Q141337174	Lzh	"恩·托尔博尔恩斯多特·斯科夫特兰德"
-#   set the ko label to "느느 토르브죄르느스도테르 스코프테란드"
-Q141337174	Lko	"느느 토르브죄르느스도테르 스코프테란드"
-#   add a mul alias "Magle Trulsdatter Sveinsvoll"
-Q141337118	Amul	"Magle Trulsdatter Sveinsvoll"
-#   add a mul alias "Karen Rangen"
-Q141337114	Amul	"Karen Rangen"
-#   Q141337058 Jakob Axelsson Lindblom: add a mul alias "Jakob Axelsson Axelsson Lindblom"
-Q141337058	Amul	"Jakob Axelsson Axelsson Lindblom"
-#   Q141337057 Ingeborg Olsdatter Eikeland: add a mul alias "Ingeborg Olsdatter Olsdatter"
-Q141337057	Amul	"Ingeborg Olsdatter Olsdatter"
-#   Q141337000 Fredrika Charlotta Constantia Tigerstedt: set the ja label to "フレデリカ・カルロッタ・コンスタンティア・ティゲルステドト"
-Q141337000	Lja	"フレデリカ・カルロッタ・コンスタンティア・ティゲルステドト"
-#   set the ja label to "カルロッタ・フレデリカ・ハミルトン・アフ・ハゲビ"
-Q141336995	Lja	"カルロッタ・フレデリカ・ハミルトン・アフ・ハゲビ"
-#   Q141336993 Cal Verna Marie Gary: add a mul alias "Cal Verna Marie Tunheim"
-Q141336993	Amul	"Cal Verna Marie Tunheim"
-#   Q141336989 Berta Olsdotter Sveinsvoll: add a mul alias "Berta Olsdotter Heigre"
-Q141336989	Amul	"Berta Olsdotter Heigre"
-#   add a mul alias "Anna Tollaksdatter Vestre Bore"
-Q141336982	Amul	"Anna Tollaksdatter Vestre Bore"
-#   Q141336978 Anders Håkansson Rudén: add a mul alias "Anders Håkansson Håkansson Rudén"
-Q141336978	Amul	"Anders Håkansson Håkansson Rudén"
-#   Q141336741 Yngve Andrew Berggren: set the ja label to "イングヴェ・アンドリュー・ベルッグレン"
-Q141336741	Lja	"イングヴェ・アンドリュー・ベルッグレン"
-#   set the ja label to "マリア・ヴォン・ハルトマンスドルフ"
-Q141336623	Lja	"マリア・ヴォン・ハルトマンスドルフ"
-#   Q141336514 Ebba Catharina Falkengréen: set the ja label to "エッバ・カタリーナ・ファルケングレエン"
-Q141336514	Lja	"エッバ・カタリーナ・ファルケングレエン"
-#   Q141336510 Dorotea Tott: set the ja label to "ドロテア・トット"
-Q141336510	Lja	"ドロテア・トット"
-#   Q141336509 Christina Stromman: set the ja label to "クリスティーナ・ストロムマン"
-Q141336509	Lja	"クリスティーナ・ストロムマン"
-#   set the ja label to "ベルディネス・オルソン・ニョー"
-Q141336495	Lja	"ベルディネス・オルソン・ニョー"
-#   set the zh label to "贝尔迪内斯·奥尔森·诺"
-Q141336495	Lzh	"贝尔迪内斯·奥尔森·诺"
-#   set the ja label to "アンデルス・オムムンドソン・ヴェストリ"
-Q141336483	Lja	"アンデルス・オムムンドソン・ヴェストリ"
-#   Q141336479 Alheid Sigbjørnsdatter Horpestad: set the ja label to "アルヘイド・シグビョルンスダッテル・ホルペスタド"
-Q141336479	Lja	"アルヘイド・シグビョルンスダッテル・ホルペスタド"
-#   set the zh label to "阿尔赫伊德·西格博尔恩斯达特·霍尔佩斯塔德"
-Q141336479	Lzh	"阿尔赫伊德·西格博尔恩斯达特·霍尔佩斯塔德"
-#   Q141319370 Siri Jonsdatter Foss: set the ja label to "シリ・ヨンスダッテル・フォッス"
-Q141319370	Lja	"シリ・ヨンスダッテル・フォッス"
-#   Q141319253 Maria Jönsdotter Grubb: set the ja label to "マリア・ヨンスドッテル・グルッブ"
-Q141319253	Lja	"マリア・ヨンスドッテル・グルッブ"
-#   Q141319251 Margareta Christina Charlotta Hampusdotter Mörner af Morlanda: set the ja label to "マルガレータ・クリスティーナ・カルロッタ・ハムプスドッテル・モルネル・アフ・モルランダ"
-Q141319251	Lja	"マルガレータ・クリスティーナ・カルロッタ・ハムプスドッテル・モルネル・アフ・モルランダ"
-#   Q141319077 Beata Charlotta Rosenborg: set the ja label to "ベアタ・カルロッタ・ローセンボー"
-Q141319077	Lja	"ベアタ・カルロッタ・ローセンボー"
-#   Q141318985 Torbjørn Monsson Gjesdal: set the ja label to "トルビョルン・モンソン・イェスダール"
-Q141318985	Lja	"トルビョルン・モンソン・イェスダール"
-#   set the zh label to "托尔博尔恩·蒙松·耶斯达尔"
-Q141318985	Lzh	"托尔博尔恩·蒙松·耶斯达尔"
-#   Q141318976 Nils Ansteinssøn Tau: set the ja label to "ニルス・アンステインッソン・タウ"
-Q141318976	Lja	"ニルス・アンステインッソン・タウ"
-#   Q141318970 Kristina Charlotta Österberg: set the ja label to "クリスティーナ・カルロッタ・オステルベルグ"
-Q141318970	Lja	"クリスティーナ・カルロッタ・オステルベルグ"
+#   Q141336505: holds 'カール・アウグスト・ティゲルステドト' in ja; ours is 'カール・アウグスト・ティゲルステト'
+#   Q141336505: set the ja label
+Q141336505	Lja	"カール・アウグスト・ティゲルステト"
+#   Q141336505 Carl August Tigerstedt: set the ja label to "カール・アウグスト・ティゲルステト"
+Q141336505	Lja	"カール・アウグスト・ティゲルステト"
+#   Q141336505: holds '卡尔·奥古斯特·蒂盖尔斯特德特' in zh; ours is '卡尔·奥古斯特·蒂盖尔斯特特'
+#   Q141336505: set the zh label
+Q141336505	Lzh	"卡尔·奥古斯特·蒂盖尔斯特特"
+#   set the zh label to "卡尔·奥古斯特·蒂盖尔斯特特"
+Q141336505	Lzh	"卡尔·奥古斯特·蒂盖尔斯特特"
+#   Q141336505: holds '카르르 아우구스트 티게르스테드트' in ko; ours is '칼 아우구스트 티게르스테트'
+#   Q141336505: set the ko label
+Q141336505	Lko	"칼 아우구스트 티게르스테트"
+#   set the ko label to "칼 아우구스트 티게르스테트"
+Q141336505	Lko	"칼 아우구스트 티게르스테트"
+#   Q141313961 Helena Maria Linnerhielm: add a mul alias "Helena Maria Linnerhielm ogift"
+Q141313961	Amul	"Helena Maria Linnerhielm ogift"
+#   Q141313961: holds 'ヘレナ・マリア・リネルヒエルム' in ja; ours is 'ヘレナ・マリア・リンネルヒエルム'
+#   Q141313961: set the ja label
+Q141313961	Lja	"ヘレナ・マリア・リンネルヒエルム"
+#   set the ja label to "ヘレナ・マリア・リンネルヒエルム"
+Q141313961	Lja	"ヘレナ・マリア・リンネルヒエルム"
+#   Q141216349: 'Ingrid Guttormsdotter' has no ko label
+#   Q141216349: holds 'イングリッド・グトルムスドッテル' in ja; ours is 'イングリッド・グットルムスドッテル'
+#   Q141216349: set the ja label
+Q141216349	Lja	"イングリッド・グットルムスドッテル"
+#   Q141216349 Ingrid Guttormsdotter: set the ja label to "イングリッド・グットルムスドッテル"
+Q141216349	Lja	"イングリッド・グットルムスドッテル"
+#   Q141205942: holds 'Tore Gardsson'; ours is 'Tore II Gardson Gard'
+#   Q141205942: keep the outgoing label as an alias before it is replaced
+Q141205942	Amul	"Tore Gardsson"
+#   Q141205942: set the ja label
+Q141205942	Lja	"トーレ2世・ガルドソン・ガルド"
+#   set the ja label to "トーレ・ガルドソン"
+Q141205942	Lja	"トーレ・ガルドソン"
+#   Q141205942: set the zh label
+Q141205942	Lzh	"托雷二世·加尔德松·加尔德"
+#   set the zh label to "托雷·加尔德松"
+Q141205942	Lzh	"托雷·加尔德松"
+#   Q141205942: set the ko label
+Q141205942	Lko	"토레 2세 가르드손 가르드"
+#   set the ko label to "토레 가르드손"
+Q141205942	Lko	"토레 가르드손"
+#   Q141205937: 'Ragnhild Eyvindsdotter Byre' has no ja/zh/ko label
+#   Q141205937: set the ja label
+Q141205937	Lja	"ラグンヒル・エイヴィンドスドッテル・ビレ"
+#   Q141205937 Ragnhild Eyvindsdotter Byre: set the ja label to "ラグンヒル・エイヴィンドスドッテル・ビレ"
+Q141205937	Lja	"ラグンヒル・エイヴィンドスドッテル・ビレ"
+#   Q141205937: set the zh label
+Q141205937	Lzh	"拉格希尔德·埃伊文德斯多特·比雷"
+#   set the zh label to "拉格希尔德·埃伊文德斯多特·比雷"
+Q141205937	Lzh	"拉格希尔德·埃伊文德斯多特·比雷"
+#   Q141205937: set the ko label
+Q141205937	Lko	"락느힐드 에이빈드스도테르 비레"
+#   set the ko label to "락느힐드 에이빈드스도테르 비레"
+Q141205937	Lko	"락느힐드 에이빈드스도테르 비레"
+#   Q141199851: 'Gunnbjørn Toresson Tengs' has no ja/zh label
+#   Q141199851: set the ja label
+Q141199851	Lja	"グンビョルン・トレソン・テングス"
+#   set the ja label to "グンビョルン・トレソン・テングス"
+Q141199851	Lja	"グンビョルン・トレソン・テングス"
+#   Q141199851: set the zh label
+Q141199851	Lzh	"贡博尔恩·托雷松·滕斯"
+#   set the zh label to "贡博尔恩·托雷松·滕斯"
+Q141199851	Lzh	"贡博尔恩·托雷松·滕斯"
+#   Q141198835: set the ja label
+Q141198835	Lja	"ベルギッテ・グンビョルンスダッテル・アウクランド"
+#   set the ja label to "ベルギッテ・グンビョルンスダッテル・テングス"
+Q141198835	Lja	"ベルギッテ・グンビョルンスダッテル・テングス"
+#   Q141198835: set the zh label
+Q141198835	Lzh	"贝尔吉特·贡博尔恩斯达特·奥克兰德"
+#   set the zh label to "贝尔吉特·贡博尔恩斯达特·滕斯"
+Q141198835	Lzh	"贝尔吉特·贡博尔恩斯达特·滕斯"
+#   Q141198835: set the ko label
+Q141198835	Lko	"베르기테 군느브죄르느스다테르 아우크란드"
+#   Q141198834: set the ja label
+Q141198834	Lja	"グンビョルン・ヨンソン・ミョルフス"
+#   set the ja label to "グンビョルン・ヨンソン・アウクランド"
+Q141198834	Lja	"グンビョルン・ヨンソン・アウクランド"
+#   Q141198834: set the zh label
+Q141198834	Lzh	"贡博尔恩·永松·莫尔胡斯"
+#   set the zh label to "贡博尔恩·永松·奥克兰德"
+Q141198834	Lzh	"贡博尔恩·永松·奥克兰德"
+#   Q141198834: set the ko label
+Q141198834	Lko	"군느브죄르느 존손 므죌후스"
+#   Q141198832: 'Lars Gunnbjørnsen Mjølhus' has no zh/ko label
+#   Q141198832: holds 'ラース・グンンブヨルンセン・ムヨルフス' in ja; ours is 'ラース・グンビョルンセン・ミョルフス'
+#   Q141198832: set the ja label
+Q141198832	Lja	"ラース・グンビョルンセン・ミョルフス"
+#   Q141198832 Lars Gunnbjørnsen Mjølhus: set the ja label to "ラース・グンビョルンセン・ミョルフス"
+Q141198832	Lja	"ラース・グンビョルンセン・ミョルフス"
+#   Q141198832: set the zh label
+Q141198832	Lzh	"拉尔斯·贡博尔恩森·莫尔胡斯"
+#   set the zh label to "拉尔斯·贡博尔恩森·莫尔胡斯"
+Q141198832	Lzh	"拉尔斯·贡博尔恩森·莫尔胡斯"
+#   Q141198831: 'Peder Larsen Mjølhus' has no ja/zh/ko label
+#   Q141198831: set the ja label
+Q141198831	Lja	"ペーダー・ラーセン・ミョルフス"
+#   Q141198831 Peder Larsen Mjølhus: set the ja label to "ペーダー・ラーセン・ミョルフス"
+Q141198831	Lja	"ペーダー・ラーセン・ミョルフス"
+#   Q141198831: set the zh label
+Q141198831	Lzh	"彼泽·拉森·莫尔胡斯"
+#   set the zh label to "彼泽·拉森·莫尔胡斯"
+Q141198831	Lzh	"彼泽·拉森·莫尔胡斯"
+#   Q141198751: 'Lars Person Nedre Rossavik' has no ja/zh/ko label
+#   Q141198751: set the ja label
+Q141198751	Lja	"ラース・ペルソン・ネドレ・ロッサヴィク"
+#   Q141198751 Lars Person Nedre Rossavik: set the ja label to "ラース・ペルソン・ネドレ・ロッサヴィク"
+Q141198751	Lja	"ラース・ペルソン・ネドレ・ロッサヴィク"
+#   Q141198382: 'Berita Larsdatter Rossavik' has no ja/zh/ko label
+#   Q141198382: set the ja label
+Q141198382	Lja	"ベリタ・ラーシュダッテル・ロッサヴィク"
+#   set the ja label to "ベリタ・ラーシュダッテル・ロッサヴィク"
+Q141198382	Lja	"ベリタ・ラーシュダッテル・ロッサヴィク"
+#   Q101247444 Ingegerd Svantepolksdotter: set the ja label to "インゲゲルド・スヴァンテポルクスドッテル"
+Q101247444	Lja	"インゲゲルド・スヴァンテポルクスドッテル"
+#   set the zh label to "英格格德·斯万特波尔克斯多特"
+Q101247444	Lzh	"英格格德·斯万特波尔克斯多特"
+#   set the ko label to "이에게르드 스반테폴크스도테르"
+Q101247444	Lko	"이에게르드 스반테폴크스도테르"
+#   Q19061035: holds '구토르므 오술브손' in ko; ours is '구토르므 아술프손 아 레인'
+#   Q19061035: set the ko label
+Q19061035	Lko	"구토르므 아술프손 아 레인"
+#   Q6197518: 'Svantepolk Knutsson' has no ja/zh/ko label
+#   Q6197518: set the ja label
+Q6197518	Lja	"スヴァンテポルク・クヌートソン"
+#   set the ja label to "スヴァンテポルク・クヌートソン"
+Q6197518	Lja	"スヴァンテポルク・クヌートソン"
+#   Q6197518: set the zh label
+Q6197518	Lzh	"斯万特波尔克·克努特松"
+#   set the zh label to "斯万特波尔克·克努特松"
+Q6197518	Lzh	"斯万特波尔克·克努特松"
+#   Q6197518: set the ko label
+Q6197518	Lko	"스반테폴크 크누촌"
+#   set the ko label to "스반테폴크 크누촌"
+Q6197518	Lko	"스반테폴크 크누촌"
+#   Q6180419: 'Skule Torstigson' has no ja/zh/ko label
+#   Q6180419: set the ja label
+Q6180419	Lja	"スクレ・トルスティグソン"
+#   Q6180419: set the zh label
+Q6180419	Lzh	"斯库莱·托尔斯蒂格松"
+#   Q6180419: set the ko label
+Q6180419	Lko	"스쿠레 토르스틱손"
+#   Q3769073: 'Gisela' has no ja/ko label
+#   Q3769073: set the ja label
+Q3769073	Lja	"ギゼラ"
+#   set the ja label to "フリウリのギゼラ"
+Q3769073	Lja	"フリウリのギゼラ"
+#   Q3769073: holds '弗留利的吉塞拉' in zh; ours is '吉塞拉'
+#   Q3769073: set the zh label
+Q3769073	Lzh	"吉塞拉"
+#   Q3769073: set the ko label
+Q3769073	Lko	"기세라"
+#   set the ko label to "프리울리의 기세라"
+Q3769073	Lko	"프리울리의 기세라"
+#   Q3743799 Knut Valdemarsson: add a mul alias "Knut Valdemarsson"
+Q3743799	Amul	"Knut Valdemarsson"
+#   Q3743799: 'Knut Valdemarsson' has no ja/zh/ko label
+#   Q3743799: set the ja label
+Q3743799	Lja	"クヌート・ヴァルデマーソン"
+#   set the ja label to "エストニア公カヌテ"
+Q3743799	Lja	"エストニア公カヌテ"
+#   Q3743799: set the zh label
+Q3743799	Lzh	"克努特·瓦尔德马松"
+#   set the zh label to "爱沙尼亚公爵卡努特"
+Q3743799	Lzh	"爱沙尼亚公爵卡努特"
+#   Q3743799: set the ko label
+Q3743799	Lko	"크누트 발데마르손"
+#   set the ko label to "에스토니아공작 카누테"
+Q3743799	Lko	"에스토니아공작 카누테"
+#   Q466257: 'Rozala' has no ko label
+#   Q466257: holds 'ロザーラ・ディタリー' in ja; ours is 'ロザラ'
+#   Q466257: set the ja label
+Q466257	Lja	"ロザラ"
+#   Q466257: holds '罗扎利娅' in zh; ours is '罗扎拉'
+#   Q466257: set the zh label
+Q466257	Lzh	"罗扎拉"
+#   Q466257: set the ko label
+Q466257	Lko	"로자라"
+#   Q378177: 'Baldwin IV the Bearded' has no ko label
+#   Q378177: holds 'ボールドウィン・イヴ' in ja; ours is '髭王ボールドウィン4世'
+#   Q378177: set the ja label
+Q378177	Lja	"髭王ボールドウィン4世"
+#   Q378177: holds '鲍德温·伊夫' in zh; ours is '大胡子鲍德温四世'
+#   Q378177: set the zh label
+Q378177	Lzh	"大胡子鲍德温四世"
+#   Q378177: set the ko label
+Q378177	Lko	"수염왕 발드위느 4세"
+#   Q314521: holds 'ベレンガーリオ2世' in ja; ours is 'ベレンガル2世'
+#   Q314521: set the ja label
+Q314521	Lja	"ベレンガル2世"
+#   set the ja label to "イタリアのベレンガル2世"
+Q314521	Lja	"イタリアのベレンガル2世"
+#   Q314521: holds '伊夫雷亞的貝倫加爾' in zh; ours is '贝伦加尔二世'
+#   Q314521: set the zh label
+Q314521	Lzh	"贝伦加尔二世"
+#   set the zh label to "意大利的贝伦加尔二世"
+Q314521	Lzh	"意大利的贝伦加尔二世"
+#   Q314521: holds '베렌가리오 2세' in ko; ours is '베레아르 2세'
+#   Q314521: set the ko label
+Q314521	Lko	"베레아르 2세"
+#   set the ko label to "이탈리아의 베레아르 2세"
+Q314521	Lko	"이탈리아의 베레아르 2세"
+#   Q274606: holds 'ベレンガーリオ1世' in ja; ours is 'ベレンガル1世'
+#   Q274606: set the ja label
+Q274606	Lja	"ベレンガル1世"
+#   Q274606: holds '베렌가리오 1세' in ko; ours is '베레아르 1세'
+#   Q274606: set the ko label
+Q274606	Lko	"베레아르 1세"
+#   Q273181: 'Judith' has no ja/ko label
+#   Q273181: set the ja label
+Q273181	Lja	"ジュディス"
+#   Q273181: holds '法蘭德斯的朱迪思' in zh; ours is '朱迪斯'
+#   Q273181: set the zh label
+Q273181	Lzh	"朱迪斯"
+#   Q273181: set the ko label
+Q273181	Lko	"주디트"
+#   Q43974: holds 'ルートヴィヒ1世' in ja; ours is '敬虔王ルイ1世'
+#   Q43974: set the ja label
+Q43974	Lja	"敬虔王ルイ1世"
+#   set the ja label to "敬虔王ルイ"
+Q43974	Lja	"敬虔王ルイ"
+#   Q43974: holds '虔誠者路易' in zh; ours is '虔诚者路易一世'
+#   Q43974: set the zh label
+Q43974	Lzh	"虔诚者路易一世"
+#   set the zh label to "虔诚者路易"
+Q43974	Lzh	"虔诚者路易"
+#   Q43974: holds '루트비히 1세' in ko; ours is '경건왕 루이스 1세'
+#   Q43974: set the ko label
+Q43974	Lko	"경건왕 루이스 1세"
+#   set the ko label to "경건왕 루이스"
+Q43974	Lko	"경건왕 루이스"
+#   Q3044: holds '차르레막네' in ko; ours is '차레막네'
+#   Q3044: set the ko label
+Q3044	Lko	"차레막네"
+#   set the ko label to "차레막네"
+Q3044	Lko	"차레막네"
+#   Q141337060: holds 'ヨハン・グスタフ・ボンデ・アフ・ブヨルノ' in ja; ours is 'ヨハン・グスタフ・ボンデ・アフ・ビョルノ'
+#   Q141337060: set the ja label
+Q141337060	Lja	"ヨハン・グスタフ・ボンデ・アフ・ビョルノ"
+#   set the ja label to "ヨハン・グスタフ・ボンデ・アフ・ビョルノ"
+Q141337060	Lja	"ヨハン・グスタフ・ボンデ・アフ・ビョルノ"
+#   Q141337060: holds '约翰·古斯塔夫·邦德·阿夫·布约尔诺' in zh; ours is '约翰·古斯塔夫·邦德·阿夫·博尔诺'
+#   Q141337060: set the zh label
+Q141337060	Lzh	"约翰·古斯塔夫·邦德·阿夫·博尔诺"
+#   set the zh label to "约翰·古斯塔夫·邦德·阿夫·博尔诺"
+Q141337060	Lzh	"约翰·古斯塔夫·邦德·阿夫·博尔诺"
+#   Q141337000: holds 'フレデリカ・カルロタ・コンスタンティア・ティゲルステドト' in ja; ours is 'フレデリカ・カルロッタ・コンスタンティア・ティゲルステト'
+#   Q141337000: set the ja label
+Q141337000	Lja	"フレデリカ・カルロッタ・コンスタンティア・ティゲルステト"
+#   Q141337000 Fredrika Charlotta Constantia Tigerstedt: set the ja label to "フレデリカ・カルロッタ・コンスタンティア・ティゲルステト"
+Q141337000	Lja	"フレデリカ・カルロッタ・コンスタンティア・ティゲルステト"
+#   Q141337000: holds '夫雷德里卡·卡尔洛塔·孔斯坦蒂阿·蒂盖尔斯特德特' in zh; ours is '夫雷德里卡·卡尔洛塔·孔斯坦蒂阿·蒂盖尔斯特特'
+#   Q141337000: set the zh label
+Q141337000	Lzh	"夫雷德里卡·卡尔洛塔·孔斯坦蒂阿·蒂盖尔斯特特"
+#   set the zh label to "夫雷德里卡·卡尔洛塔·孔斯坦蒂阿·蒂盖尔斯特特"
+Q141337000	Lzh	"夫雷德里卡·卡尔洛塔·孔斯坦蒂阿·蒂盖尔斯特特"
+#   Q141337000: holds '프레드리카 차르로타 콘스탄티아 티게르스테드트' in ko; ours is '프레드리카 차로타 콘스탄티아 티게르스테트'
+#   Q141337000: set the ko label
+Q141337000	Lko	"프레드리카 차로타 콘스탄티아 티게르스테트"
+#   set the ko label to "프레드리카 차로타 콘스탄티아 티게르스테트"
+Q141337000	Lko	"프레드리카 차로타 콘스탄티아 티게르스테트"
+#   Q141336995: holds '차르로타 프레드리카 하밀톤 아프 하게비' in ko; ours is '차로타 프레드리카 하밀톤 아프 하게비'
+#   Q141336995: set the ko label
+Q141336995	Lko	"차로타 프레드리카 하밀톤 아프 하게비"
+#   set the ko label to "차로타 프레드리카 하밀톤 아프 하게비"
+Q141336995	Lko	"차로타 프레드리카 하밀톤 아프 하게비"
+#   Q141336621: holds '마리아 츠리스티나 노르덴프리츠트' in ko; ours is '마리아 크리스티나 노르덴프리츠트'
+#   Q141336621: set the ko label
+Q141336621	Lko	"마리아 크리스티나 노르덴프리츠트"
+#   Q141336621 Maria Christina Nordenflycht: set the ko label to "마리아 크리스티나 노르덴프리츠트"
+Q141336621	Lko	"마리아 크리스티나 노르덴프리츠트"
+#   Q141336615: holds '마르가레타 에리사베트 뫼르네르 아프 모르란다' in ko; ours is '마르가레타 에리사베트 뫼르네르 아프 모란다'
+#   Q141336615: set the ko label
+Q141336615	Lko	"마르가레타 에리사베트 뫼르네르 아프 모란다"
+#   Q141336615 Margareta Elisabet Mörner af Morlanda: set the ko label to "마르가레타 에리사베트 뫼르네르 아프 모란다"
+Q141336615	Lko	"마르가레타 에리사베트 뫼르네르 아프 모란다"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -290,8 +563,8 @@ LAST	Lfr	"fille de Jens Wilhelm Wendt"
 LAST	Lit	"figlia di Jens Wilhelm Wendt"
 #   set the ja label to "イェンス・ヴィルヘルム・ヴェントの娘"
 LAST	Lja	"イェンス・ヴィルヘルム・ヴェントの娘"
-#   set the ko label to "젠스 위르헬므 웨느드트의 딸"
-LAST	Lko	"젠스 위르헬므 웨느드트의 딸"
+#   set the ko label to "젠스 위르헬므 웨느트의 딸"
+LAST	Lko	"젠스 위르헬므 웨느트의 딸"
 #   set the nb label to "datter av Jens Wilhelm Wendt"
 LAST	Lnb	"datter av Jens Wilhelm Wendt"
 #   set the nl label to "dochter van Jens Wilhelm Wendt"
@@ -380,8 +653,8 @@ LAST	Lfr	"épouse de Jens Wilhelm Wendt"
 LAST	Lit	"moglie di Jens Wilhelm Wendt"
 #   set the ja label to "イェンス・ヴィルヘルム・ヴェントの妻"
 LAST	Lja	"イェンス・ヴィルヘルム・ヴェントの妻"
-#   set the ko label to "젠스 위르헬므 웨느드트의 아내"
-LAST	Lko	"젠스 위르헬므 웨느드트의 아내"
+#   set the ko label to "젠스 위르헬므 웨느트의 아내"
+LAST	Lko	"젠스 위르헬므 웨느트의 아내"
 #   set the nb label to "hustru til Jens Wilhelm Wendt"
 LAST	Lnb	"hustru til Jens Wilhelm Wendt"
 #   set the nl label to "echtgenote van Jens Wilhelm Wendt"
@@ -491,9 +764,9 @@ LAST	P2600	"6000000124936769821"	P1810	"Anna Hedvig Steuch"
 LAST	P569	+1733-04-20T00:00:00Z/11	S2600	"6000000124936769821"
 #   P570 date of death = +1733-04-28T00:00:00Z/11
 LAST	P570	+1733-04-28T00:00:00Z/11	S2600	"6000000124936769821"
-#   P22 father = Q6330080 Elof Steuch till Duveke
+#   P22 father = Q6330080 Elof Steuch
 LAST	P22	Q6330080	S2600	"6000000124936769821"
-#   Q6330080 Elof Steuch till Duveke: P40 child = the item just created
+#   Q6330080 Elof Steuch: P40 child = the item just created
 Q6330080	P40	LAST	S2600	"6000000124936769821"
 #   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 LAST	P735	Q666578	P1545	"1"	P7452	Q3409033
@@ -502,10 +775,10 @@ LAST	P735	Q13648620	P1545	"2"	P3831	Q245025
 
 # create a new item
 CREATE
-#   set the en label to "Ånon i Byre"
-LAST	Len	"Ånon i Byre"
-#   set the mul label to "Ånon i Byre"
-LAST	Lmul	"Ånon i Byre"
+#   set the en label to "Ånon"
+LAST	Len	"Ånon"
+#   set the mul label to "Ånon"
+LAST	Lmul	"Ånon"
 #   set the ja label to "オーノン"
 LAST	Lja	"オーノン"
 #   set the zh label to "奥农"
@@ -516,7 +789,7 @@ LAST	Lko	"아논"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000007980728811 Ånon i Byre, qualified P1810 subject named as Ånon i Byre
+#   P2600 Geni.com profile ID = 6000000007980728811 Ånon, qualified P1810 subject named as Ånon i Byre
 LAST	P2600	"6000000007980728811"	P1810	"Ånon i Byre"
 #   P569 date of birth = +1483-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
 LAST	P569	+1483-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000007980728811"
@@ -605,8 +878,8 @@ LAST	Lmul	"Christina Påhl"
 LAST	Lja	"クリスティーナ・ポール"
 #   set the zh label to "克里斯蒂娜·波尔"
 LAST	Lzh	"克里斯蒂娜·波尔"
-#   set the ko label to "츠리스티나 포흐르"
-LAST	Lko	"츠리스티나 포흐르"
+#   set the ko label to "크리스티나 포흐르"
+LAST	Lko	"크리스티나 포흐르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -669,8 +942,8 @@ LAST	Lmul	"Eva Christina Charlotta Gyllenkrok"
 LAST	Lja	"エヴァ・クリスティーナ・カルロッタ・ギレンクロク"
 #   set the zh label to "伊娃·克里斯蒂娜·卡尔洛塔·吉伦克罗克"
 LAST	Lzh	"伊娃·克里斯蒂娜·卡尔洛塔·吉伦克罗克"
-#   set the ko label to "에바 츠리스티나 차르로타 길렌크로크"
-LAST	Lko	"에바 츠리스티나 차르로타 길렌크로크"
+#   set the ko label to "에바 크리스티나 차로타 길렌크로크"
+LAST	Lko	"에바 크리스티나 차로타 길렌크로크"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -741,17 +1014,17 @@ LAST	P21	Q6581072
 LAST	P2600	"6000000039886468441"	P1810	"Gyrid Eivindsdatter"
 #   P569 date of birth = +1414-00-00T00:00:00Z/9
 LAST	P569	+1414-00-00T00:00:00Z/9	S2600	"6000000039886468441"
-#   P22 father = Q141219176 Eivind Ogmundsson Byre på Høyland
+#   P22 father = Q141219176 Eivind Ogmundsson Byre
 LAST	P22	Q141219176	S2600	"6000000039886468441"
 #   P25 mother = Q141216603 Brynhild Hallvardsdotter
 LAST	P25	Q141216603	S2600	"6000000039886468441"
-#   Q141219176 Eivind Ogmundsson Byre på Høyland: P40 child = the item just created
+#   Q141219176 Eivind Ogmundsson Byre: P40 child = the item just created
 Q141219176	P40	LAST	S2600	"6000000039886468441"
 #   Q141216603 Brynhild Hallvardsdotter: P40 child = the item just created
 Q141216603	P40	LAST	S2600	"6000000039886468441"
 #   the item just created: P735 given name = Q32787165 Gyrid
 LAST	P735	Q32787165
-#   P5056 patronym or matronym = Q141189042, qualified P144 based on Q141219176 Eivind Ogmundsson Byre på Høyland
+#   P5056 patronym or matronym = Q141189042, qualified P144 based on Q141219176 Eivind Ogmundsson Byre
 LAST	P5056	Q141189042	P144	Q141219176
 #   add a mul alias "Gyrid Eivindsen"
 LAST	Amul	"Gyrid Eivindsen"
@@ -1233,32 +1506,32 @@ Q141224910	P22	LAST	S2600	"6000000177921459099"
 CREATE
 #   the item just created: set the mul label to "NN"
 LAST	Lmul	"NN"
-#   set the ca label to "esposa de Ånon i Byre"
-LAST	Lca	"esposa de Ånon i Byre"
-#   set the da label to "hustru til Ånon i Byre"
-LAST	Lda	"hustru til Ånon i Byre"
-#   set the de label to "Ehefrau von Ånon i Byre"
-LAST	Lde	"Ehefrau von Ånon i Byre"
-#   set the en label to "wife of Ånon i Byre"
-LAST	Len	"wife of Ånon i Byre"
-#   set the es label to "esposa de Ånon i Byre"
-LAST	Les	"esposa de Ånon i Byre"
-#   set the fr label to "épouse de Ånon i Byre"
-LAST	Lfr	"épouse de Ånon i Byre"
-#   set the it label to "moglie di Ånon i Byre"
-LAST	Lit	"moglie di Ånon i Byre"
+#   set the ca label to "esposa de Ånon"
+LAST	Lca	"esposa de Ånon"
+#   set the da label to "hustru til Ånon"
+LAST	Lda	"hustru til Ånon"
+#   set the de label to "Ehefrau von Ånon"
+LAST	Lde	"Ehefrau von Ånon"
+#   set the en label to "wife of Ånon"
+LAST	Len	"wife of Ånon"
+#   set the es label to "esposa de Ånon"
+LAST	Les	"esposa de Ånon"
+#   set the fr label to "épouse de Ånon"
+LAST	Lfr	"épouse de Ånon"
+#   set the it label to "moglie di Ånon"
+LAST	Lit	"moglie di Ånon"
 #   set the ja label to "オーノンの妻"
 LAST	Lja	"オーノンの妻"
 #   set the ko label to "아논의 아내"
 LAST	Lko	"아논의 아내"
-#   set the nb label to "hustru til Ånon i Byre"
-LAST	Lnb	"hustru til Ånon i Byre"
-#   set the nl label to "echtgenote van Ånon i Byre"
-LAST	Lnl	"echtgenote van Ånon i Byre"
-#   set the pt label to "esposa de Ånon i Byre"
-LAST	Lpt	"esposa de Ånon i Byre"
-#   set the sv label to "maka till Ånon i Byre"
-LAST	Lsv	"maka till Ånon i Byre"
+#   set the nb label to "hustru til Ånon"
+LAST	Lnb	"hustru til Ånon"
+#   set the nl label to "echtgenote van Ånon"
+LAST	Lnl	"echtgenote van Ånon"
+#   set the pt label to "esposa de Ånon"
+LAST	Lpt	"esposa de Ånon"
+#   set the sv label to "maka till Ånon"
+LAST	Lsv	"maka till Ånon"
 #   set the zh label to "奥农之妻"
 LAST	Lzh	"奥农之妻"
 #   P31 instance of = Q5 human
@@ -1450,8 +1723,8 @@ CREATE
 LAST	Len	"Olof Kolthoff"
 #   set the mul label to "Olof Kolthoff"
 LAST	Lmul	"Olof Kolthoff"
-#   set the ja label to "オロフ・コルトフ"
-LAST	Lja	"オロフ・コルトフ"
+#   set the ja label to "オロフ・コルトッフ"
+LAST	Lja	"オロフ・コルトッフ"
 #   set the zh label to "奥洛夫·科尔托夫"
 LAST	Lzh	"奥洛夫·科尔托夫"
 #   set the ko label to "오로프 콜토프"
