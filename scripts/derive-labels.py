@@ -46,7 +46,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
-    married_name_of, normalise_generation_suffix, without_nickname,
+    drop_description_suffix, married_name_of, normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
     drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker,
@@ -123,7 +123,9 @@ def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
     if not marnm:
         return ""
     parts = [clean(givn), clean(marnm), clean(nsfx)]
-    return " ".join(p for p in parts if p)
+    # The alias is built out of the same `NSFX`, so it needs the same rule or a person whose
+    # label was fixed keeps `ogift` in the alias beside it.
+    return drop_description_suffix(" ".join(p for p in parts if p), clean(nsfx))
 
 
 def main() -> int:
@@ -192,6 +194,12 @@ def main() -> int:
 
         for record in records:
             rendered = clean(record["display_name"])
+            # **`ogift` is Swedish for *unmarried* and is not part of anybody's name.** Emma,
+            # 2026-09-07, on `Q141313961` *Helena Maria Linnerhielm ogift*. `display_name`
+            # concatenates `givn + surn + NSFX`, so a marker Geni filed as a suffix arrives
+            # glued to the label; `namemodel.drop_description_suffix` takes it off, matching
+            # the person's own `NSFX` and nothing else. 627 labels move.
+            rendered = drop_description_suffix(rendered, clean(record["nsfx"]))
             if not rendered:
                 continue
             group = script_group(record["scripts"])

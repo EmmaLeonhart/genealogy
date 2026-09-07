@@ -31055,3 +31055,92 @@ siblings and fifteen half-siblings, and it needed four fetches to carry without 
 **Also in:** Ole Klemet Johansen Sara `6000000007276916105`, a Sámi profile at 15,000 / 15,000
 with 396 ancestors and a miss — cleared for export; Gábor A Somorjai `6000000040382462848`
 refused at 3 / 2.
+## 2026-09-07 — `ogift` out of the label: a description marker is not a name
+
+Emma, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is some kind of
+suffix that shouldn't have been treated as part of the name, and as a result it needs to be
+corrected on everyone that has it in their labels."* `ogift` is Swedish for **unmarried**.
+
+**The token had never been a name statement, and the guard that kept it out already existed.**
+`ogift` sits in `namemodel._DESCRIPTION`, whose comment reads *"a description of the person,
+never a name"*, so `drop_title_suffix` has always kept it out of `P735` *given name* and `P734`
+*family name*. What nothing removed it from is the **label** — `build-display-names.py`
+concatenates `givn + surn + NSFX` into `display_name` and `derive-labels.py` takes that string
+whole. § *A TITLE IS NOT A NAME* said in as many words that the rule *"does not touch the
+LABEL"*, and left what a label should read open. Her message closes it for this class.
+
+**Two things were put to her and both narrowed the work rather than widening it.** What the fact
+becomes: *nothing* — the Geni-rendered string is what `P1810` *subject named as* carries by
+design, so the marker is not lost, and no `P26` *spouse* no-value, alias or per-language
+rendering goes in its place. And the scope: `drop_title_suffix` would also strip `Graf`, `MP`
+and `Kt.` from **7,075** labels, 6,385 beyond this change; she took the 631. A title is a thing
+the person was, a description marker is an annotation about the record.
+
+`namemodel.drop_description_suffix` is the one place, scoped to `_DESCRIPTION`, matching the
+person's **own** `NSFX` rather than a bare word list — the exactness that keeps `Anna King` her
+surname, and it binds here too: 34 people carry `Twin` or `Infant` in a name field and are
+untouched. It takes the comma that introduced the marker with it (`Josiah Wood I, twin` →
+`Josiah Wood I`), and never reduces a label to empty.
+
+**Three call sites, wired in the same commit rather than a day apart** — `derive-labels.py` for
+the label and the married-name alias, and both the correction path *and* the creation block of
+`build-garborg-day.py`. The creation block is on that list because § *Code that is WRITTEN but
+never CALLED is not done*: the generation-suffix rule was correct and unwired there for a day,
+and every creation went out carrying `d.y.` in five languages.
+
+**Measured over the real corpus rather than asserted** — `derive-labels.py` re-run over all
+1,451,993 people: **689 labels change**, plus 7 married-name aliases, and
+`reports/description-markers-in-labels.tsv` is the census with before and after. `twin` 238,
+`tvilling` 91, `infant` 69, `ug` 52, `ugift` 51, `tvill` 34, `ogift` 25, `legendary` 18,
+`concubine` 12, `heiress` 10, `oä` 8, `solteira` 8, `fictional` 6, `mistress` 6, `fictitious` 5,
+`tv` 3. Exactly **one is live on Wikidata** — the one she found — and the correction path emits
+it for `mul`, `en`, `en-ca`, `en-us` and `fr`, every language the item carried it in.
+
+**The corroboration is one nobody tuned for: three labels moved INTO exact agreement with
+Wikidata**, 11,154 → 11,157 of 40,898 in `reports/labels.md`.
+
+Held off `main` for thirty minutes at her instruction, on `claude/ogift-suffix-label-fix-tl1nva`,
+with a cron to merge at 19:40 her time.
+
+**Census residue, read rather than assumed.** Three of the 763 keep a marker after the rule
+runs. Two are `(o.ä)`, a dotted spelling of the `oä` already in `_DESCRIPTION`. The third,
+`Sophie Rønnenkamp Flensburg (ugift) (ugift)`, has Geni's marker written **twice** and only one
+of them in `NSFX`; the copy sitting in a name field stays, and that is the safe design working
+rather than failing — reaching it would mean matching a bare word list against a trailing token,
+which is what keeps `Anna King` her surname.
+
+## 2026-09-07 — spouse beats child in a descriptive label, and the stale-description gap
+
+Emma, on `Q141337174` reading *mother of Gunhild Øysteinsdotter Kvavik*: *"Parents are the most
+significant identifier of a person, then spouse, then child. This person seems to have it
+completely inverted and it makes me suspect all our name generation has it backwards."*
+
+**Two separate things, and only one of them caused her example.**
+
+**The real ordering bug.** `build-garborg-day.describe_all` ordered its relatives parent →
+**child** → spouse; `build-nn-label-batch.nearest` has ordered them parent → **spouse** → child
+since it was written. Two emitters of one model, drifted apart, neither tested against the other
+— the shape `CLAUDE.md` already records for the married-name label and for `drop_title_tail`.
+Her ranking, and her 2026-08-25 reliability order (*"parents are always most reliable"*, then
+spouses, then children), both say spouse. Swapped.
+
+**It changes 9,256 people** — the unnamed who have no named parent but do have both a named
+spouse and a named child. Reading a sample is what settles it: `1260387` was *parent of Johan
+Israelsson Klockare* and becomes *spouse of Israel Olofsson*, where the child's own patronymic
+names the spouse anyway.
+
+**But her example is a STALE LABEL, not a mis-ranking**, and saying so matters because the fix
+is different. Parent is first in both orderings, and she has a named father in our tree —
+`6000000004916081011` **Torbjørn Jonsson Skofteland**, matching her patronymic exactly. Run
+`describe_all` on her today and it returns *daughter of Torbjørn Jonsson Skofteland*. The live
+item says *mother of Gunhild* because it was written when the father was not yet available, and
+**nothing ever re-checks a descriptive label once it is on an item**. That is the larger gap:
+74,130 unnamed people now have a named parent, and any of them described by a child or spouse
+before that parent arrived is still described that way.
+
+Scale of the population: of 1,451,993 people, 175,385 carry an unknown-name marker; 74,130 have
+a named parent, 9,256 have spouse-and-child but no parent, 8,178 child only, 8,385 spouse only,
+75,436 neither.
+
+No correction pass is written yet — it needs the live labels, and `reports/garborg-live-values.tsv`
+carries properties rather than labels, so there is nothing on disk to diff against.

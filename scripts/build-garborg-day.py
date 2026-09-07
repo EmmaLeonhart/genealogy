@@ -52,7 +52,8 @@ sys.stdout.reconfigure(encoding="utf-8")
 from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
-    normalise_generation_suffix, statements_for, suffix_is_native)
+    drop_description_suffix, normalise_generation_suffix, statements_for,
+    suffix_is_native)
 
 
 def _load_gaps():
@@ -368,9 +369,21 @@ def describe_all(geni_id, facts, father, mother, labels, table,
     #: relative"*, and a child is one. The `WORDS` table already carried `parent_of`,
     #: `spouse_of` and `sibling_of` with the right word per sex and the right preposition per
     #: direction (`datter af` but `mor til`); nothing consulted them.
+    #: **SPOUSE BEATS CHILD.** Emma, 2026-09-07: *"Parents are the most significant identifier
+    #: of a person, then spouse, then child."* This tuple had child in second place, so it
+    #: disagreed with `build-nn-label-batch.nearest`, which has had parent -> spouse -> child
+    #: since it was written -- two emitters, one model, and they had drifted apart. Her
+    #: 2026-08-25 reliability ranking says the same thing from the other side: *"parents are
+    #: always most reliable"*, then spouses, then children.
+    #:
+    #: **9,256 unnamed people are described by a different relative because of it** -- those
+    #: with no named parent but both a named spouse and a named child. Reading them settles
+    #: which order is better than arguing it does: `1260387` was *parent of Johan Israelsson
+    #: Klockare* and becomes *spouse of Israel Olofsson*, where the child's own patronymic
+    #: names the spouse anyway.
     BY = (("child_of", (father.get(geni_id), mother.get(geni_id))),
-          ("parent_of", tuple(children.get(geni_id, ()))),
           ("spouse_of", tuple(spouses.get(geni_id, ()))),
+          ("parent_of", tuple(children.get(geni_id, ()))),
           ("sibling_of", tuple(siblings.get(geni_id, ()))))
 
     for group_name, relatives in BY:
@@ -6186,6 +6199,15 @@ def main():
         # II` where Emma's ruling is `Jr.` Each style is computed from the same source string.
         raw_consensus = mul
         mul = normalise_generation_suffix(mul, "mul")
+        # **`ogift` is Swedish for *unmarried*, and it is on the live item.** Emma,
+        # 2026-09-07, on `Q141313961` *Helena Maria Linnerhielm ogift*: *"a suffix that
+        # shouldn't have been treated as part of the name."* The consensus is read off the
+        # LIVE labels, so an item created before the fix agrees with itself and nothing would
+        # otherwise be emitted; dropping it here is what makes the marker its own ground for
+        # a correction, the way an expanded abbreviation is.
+        _nsfx = (fields.get(g) or {}).get("nsfx", "")
+        mul = drop_description_suffix(mul, _nsfx)
+        raw_consensus = drop_description_suffix(raw_consensus, _nsfx)
         source = mul or labels.get(g, "")
 
         # A live label that already reads correctly is not replaced by the same thing with a
@@ -6248,6 +6270,19 @@ def main():
                 continue
             fixed = normalise_generation_suffix(value, "mul")
             if fixed != value:
+                lines.append(f'{q}\tL{code}\t"{qs(fixed)}"')
+
+        # **A description marker is native to NO language**, which is what separates it from a
+        # generation suffix: `d.y.` is correct Swedish and stays in `sv`, while `ogift` is a
+        # note about the record rather than a thing the person is called, in Swedish as much
+        # as in French. So this runs over every language including `en`, which the loop above
+        # excludes because `en` gets its generation suffix from `raw_consensus` instead.
+        # `Q141313961` carried the marker in `mul`, `en`, `en-ca`, `en-us` and `fr`.
+        for code, value in sorted(mine.items()):
+            if code in {"mul", "ja", "zh", "ko"} or not value:
+                continue
+            fixed = drop_description_suffix(value, _nsfx)
+            if fixed != value and f'{q}\tL{code}\t"{qs(fixed)}"' not in lines:
                 lines.append(f'{q}\tL{code}\t"{qs(fixed)}"')
     print(f"{len(seen)} statements added to existing items")
     lines.append("")
@@ -6402,6 +6437,13 @@ def main():
             # being at the end"* — and the position is fine: `_SUFFIX_RE` is unanchored and
             # takes `Lars Jonson d.y. Skrudland` to `Lars Jonson II Skrudland`. Nothing here
             # called it. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
+            # **And the same for a description marker, wired here at the same time rather
+            # than a day later.** `primary` comes from `derived-labels.csv`, which is clean
+            # once `derive-labels.py` re-runs -- but the generation-suffix rule was correct in
+            # exactly that way and still went out wrong from this block for a day, because a
+            # label reaching here by any other route is unfiltered. It costs one call.
+            _nsfx_new = (fields.get(g) or {}).get("nsfx", "")
+            primary = drop_description_suffix(primary, _nsfx_new)
             mul_form = normalise_generation_suffix(primary, "mul")
             en_form = normalise_generation_suffix(primary, "en")
             if re.search(r"[A-Za-z]", primary):
