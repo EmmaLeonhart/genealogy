@@ -1449,6 +1449,25 @@ def consensus_latin_label(labels):
     tied = sorted(v for v, n in votes.items() if n == best)
     if len(tied) == 1:
         return tied[0]
+    # **⛔ THE INCUMBENT `mul` BREAKS ITS OWN TIE, BEFORE ENGLISH.** Emma, 2026-09-07:
+    # *"wikidata labels beat our own that's a rule that's been violated a few times with
+    # different mul labels getting overwritten with the English. Most notably Svantepolk of
+    # Viby."*
+    #
+    # `Q6197518` is the worked case and the vote is exactly 2–2:
+    #
+    #     Svantepolk Knutsson    fr, sv   — and the label `mul` already holds
+    #     Svantepolk of Viby     en, nl
+    #
+    # English broke it, so the batch would have replaced a correct `mul` with the English
+    # territorial form. `mul` still does NOT vote — the docstring above is right that a wrong
+    # `mul` must not defend itself — and it does not have to: any string with strictly more
+    # votes still wins outright, and a lone correcting label is a majority of one. What the
+    # incumbent wins is a TIE, which is precisely the case where there is no consensus to
+    # overturn it with.
+    current = (labels.get("mul") or "").strip()
+    if current in tied:
+        return current
     english = (labels.get("en") or "").strip()
     return english if english in tied else tied[0]
 

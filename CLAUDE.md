@@ -996,6 +996,42 @@ the abbreviation and the full Icelandic form, and the corpus majority expands it
 while her own record says `Bertelsdottir`. `FULL` reads `datter`/`dotter` and not `dóttir`, so her
 own evidence is invisible to it. One row; mapping Icelandic onto the Norwegian pair is a decision.
 
+### ⛔ WIKIDATA'S LABEL BEATS OURS. An existing `mul` is not ours to overwrite
+
+**Emma, 2026-09-07:** *"wikidata labels beat our own that's a rule that's been violated a few
+times with different mul labels getting overwritten with the English. Most notably Svantepolk of
+Viby."*
+
+**`Q6197518` is the worked case and the vote is exactly 2–2:**
+
+    Svantepolk Knutsson    fr, sv   — and what `mul` already holds
+    Svantepolk of Viby     en, nl
+
+`consensus_latin_label` breaks a tie with English, so the batch was about to replace a correct
+`mul` with the English territorial form. **The incumbent `mul` now breaks its own tie, before
+English.**
+
+**`mul` still does not VOTE, and that distinction is the whole safety of it.** The reason it was
+excluded is right and unchanged — a wrong `mul` must not defend its own position, or no
+correction could ever reach an item. It does not have to: any string with strictly more votes
+still wins outright, and a lone correcting label is a majority of one. What the incumbent wins is
+a **tie**, which is precisely the case where there is no consensus to overturn it with.
+
+**Six items across the 1,791 with live labels, and every one is the same shape** — the English
+label carrying a title or a territorial that has no business in `mul`:
+
+    Q109296398  Fredrika Eleonora Horn        would have become  … Horn af Ekebyholm
+    Q110548812  Maria Stjernblad                                 Baroness Maria Stjernblad
+    Q111989591  Margareta Fordbohm                               burgeress Margareta Frodbom, heiress of Ingemarshov
+    Q6197518    Svantepolk Knutsson                              Svantepolk of Viby
+
+**The general rule this is one instance of:** where Wikidata already holds a label, it beats our
+derived one. Our label is a *proposal*, and § *The purpose is to ADD to Wikidata, not to correct
+it* is the same principle from the other side. The narrow exceptions are corrections of **our own
+earlier writes** — an abbreviation we expanded, the birth-name flip, a description marker, a
+generation suffix — each of which `_label_corrections` names and tests for specifically. A
+consensus vote is not one of those: it is us imposing a reading on an item somebody else labelled.
+
 ### A TITLE INSIDE A LABEL TAKES THE NATIVE FORM IN CJK, never a transliteration
 
 **Emma, 2026-09-07**, choosing between four readings after being shown what the spine would emit

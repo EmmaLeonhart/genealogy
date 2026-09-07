@@ -31373,3 +31373,25 @@ Wikidata. The two still held — `Algot Bryniolfsson` against Wikidata's `Brynol
 whose Geni record itself gives `givn Tore II Gardson` and `marnm Gard` — are **source
 differences, not our bugs**, and § *The purpose is to ADD to Wikidata, not to correct it* is why
 they stay held rather than being "fixed".
+
+## 2026-09-07 — the English tiebreak was overwriting correct `mul` labels
+
+Emma: *"wikidata labels beat our own that's a rule that's been violated a few times with different
+mul labels getting overwritten with the English. Most notably Svantepolk of Viby."*
+
+`Q6197518`'s Latin labels vote **2–2** — `Svantepolk Knutsson` from `fr` and `sv`, which is also
+what `mul` holds, against `Svantepolk of Viby` from `en` and `nl`. `consensus_latin_label` breaks
+a tie with English, so the batch was about to replace a correct `mul` with the English territorial
+form.
+
+**The incumbent `mul` now breaks its own tie, before English.** It still does not VOTE, and that
+is the point: the docstring's reason for excluding it is right — a wrong `mul` must not defend
+itself — and it does not have to. Any string with strictly more votes wins outright and a lone
+correcting label is a majority of one; the incumbent wins only a TIE, which is exactly where there
+is no consensus to overturn it with. Checked all three ways: Svantepolk keeps `Knutsson`, a wrong
+`mul` still loses to one correcting label, and a genuine 2–1 majority still beats the incumbent.
+
+**Six of the 1,791 items with live labels, and every one the same shape** — the English label
+carrying a title or territorial: `… Horn af Ekebyholm`, `Baroness Maria Stjernblad`,
+`Baroness Lovisa Thott`, `burgeress Margareta Frodbom, heiress of Ingemarshov`,
+`Eleonora Sofia, Baroness Stiernblad`, `Svantepolk of Viby`.
