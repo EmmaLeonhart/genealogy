@@ -764,6 +764,21 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
             continue
         if qid in CJK_LABELS_NOT_OURS:
             continue
+        # **⛔ NEVER DERIVE CJK FROM A LATIN LABEL THAT DISAGREES WITH THE LIVE ONE.** The CJK
+        # forms are a transliteration of the primary label, so emitting them while the two
+        # disagree writes our disagreement into three more languages at once — and the
+        # disagreement is often OURS. Of the five items Emma photographed twice, three are
+        # blocked by exactly this:
+        #
+        #   Q6197518   ours `Svantepolk Knutsson Knutsson Skarsholmsätten` against live
+        #              `Svantepolk Knutsson` — the duplicated patronymic she reported herself
+        #   Q19842232  ours `Algot Bryniolfsson` against live `Algot Brynolfsson`
+        #   Q141205942 ours `Tore II Gardson Gard` against live `Tore Gardsson`
+        #
+        # An item with no live `mul` is not a disagreement, only an absence, and still qualifies.
+        current_mul = live_labels.get((qid, "mul"))
+        if current_mul and current_mul != want:
+            continue
         ja, zh, ko = label_in(want, table)
         if not ja:
             continue

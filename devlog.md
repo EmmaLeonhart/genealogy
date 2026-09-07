@@ -31312,3 +31312,29 @@ Those rows now keep their `ja`/`zh` and have only their `ko` re-derived: **105 o
     Schmidt     스미드트 -> 스미트        Arndt       아르느드트 -> 아르느트
 
 `Tigerstedt`, her original report, now reads `ティゲルステト` / `蒂盖尔斯特特` / `티게르스테트`.
+
+## 2026-09-07 — never derive CJK from a Latin label that disagrees with the live one
+
+Emma sent the same five items a second time, wordlessly. Computing what we would actually emit
+for them is what the second sending was worth: **only two of the five are safe to ship.**
+
+    Q3743799    ours `Knut Valdemarsson`        = live      -> ships
+    Q141199851  ours `Gunnbjørn Toresson Tengs` = live      -> ships
+    Q6197518    ours `Svantepolk Knutsson Knutsson Skarsholmsätten`  vs live `Svantepolk Knutsson`
+    Q19842232   ours `Algot Bryniolfsson`                    vs live `Algot Brynolfsson`
+    Q141205942  ours `Tore II Gardson Gard`                  vs live `Tore Gardsson`
+
+The CJK forms are a transliteration of the primary label, so emitting them while the Latin
+labels disagree writes our disagreement into three more languages at once — and the
+disagreement is **ours**: `Q6197518` carries the duplicated patronymic she reported herself.
+`_missing_cjk_labels` now holds an item whose live `mul` differs from ours. 1,193 -> 1,017 items.
+
+**And her five turned up one genuinely broken table row.** `Valdemarsson` held
+`ヴァルデマーションン`, machine output that no refresh reaches because its note is `patronymic`
+rather than `by rule`. Reading all **47** rows with that note settled the question the right way:
+they are hand quality and the rule is WORSE than they are — `アンデシュドッテル` for
+`Andersdotter` carries the Swedish `rs` → シュ, `ペーデシュダッテル` and `トーレスダッテル` carry
+it and the long vowel, `アルゴットソン` and `マットソン` carry the gemination. The refresh is right
+to skip them. Exactly one was broken, and it is corrected by hand to `ヴァルデマーソン` with the
+reason in its note — her own *"we can do them much more manually than I think you give them
+credit for"*, at the scale she said.
