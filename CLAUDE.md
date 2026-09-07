@@ -2791,6 +2791,17 @@ the same commit that just produced the batch"* — which is why it survived a da
 asserting a property nobody measured is worse than no comment: it answers the question for the
 next reader, wrongly. It now carries the measurement instead.
 
+**And the same fact about `github.sha` breaks the COMMIT step too, which is a second bug from one
+cause.** The pipeline job checks out the triggering commit, so when two pushes land close together
+the second run rebuilds from a base predating the first run's output commit, and rebasing its
+regenerated files onto the first run's regenerated files conflicts every time. **Measured
+2026-09-06: runs 199, 200, 202 and 205 all died at `Commit the rebuilt batch`**, and `site` is
+`needs: pipeline`, so Pages stopped republishing with them — the exact symptom this section was
+written about, arriving by a different route. The step now resolves such a conflict in favour of
+the run's own rebuild (`--theirs` during a rebase) and retries the push up to five times. Every
+conflicting path is a generated file by construction: the replayed commit holds only what the
+rebuild changed, and a conflict needs both sides to have touched the path.
+
 **The checkout has to be sparse or it does not fit.** Measured 2026-09-01: **13.3 GB tracked** —
 `wikidata/` 4.3 GB, `exports/` 4.3 GB, `paths_for_wikidata_isolates/` 2.7 GB, `reports/` 1.1 GB —
 against roughly 14 GB of runner disk. `filter: blob:none` plus a non-cone sparse checkout drops
