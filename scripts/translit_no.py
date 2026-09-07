@@ -181,8 +181,11 @@ for _c in ("b", "f", "m", "n", "p", "r"):
     _i = ROWS[_c][0][1]
     _PALATAL[_c + "j"] = ((_i + "ャ", _i, _i + "ュ", _i + "ェ", _i + "ョ"),
                           ROWS[_c][1])
-for _c in ("d", "l"):
-    _PALATAL[_c + "j"] = ROWS["gj"]
+# **`dj` and `lj` are OUT for the same reason as `tj`.** Norwegian `dj` is /j/ -- the `d` is
+# silent, as in `Djupvik` -- but the corpus also holds Indonesian names where `dj` is /dʒ/, the
+# old spelling of `j`. The refresh made `AMIDJAJA` read `アミヤヤ`, dropping a consonant from a
+# name that is not Norwegian at all. One rule cannot serve both and nothing here says which a
+# given token is, so neither is added.
 ROWS.update(_PALATAL)
 
 

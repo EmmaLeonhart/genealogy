@@ -996,6 +996,69 @@ the abbreviation and the full Icelandic form, and the corpus majority expands it
 while her own record says `Bertelsdottir`. `FULL` reads `datter`/`dotter` and not `dóttir`, so her
 own evidence is invisible to it. One row; mapping Icelandic onto the Norwegian pair is a decision.
 
+### A TITLE INSIDE A LABEL TAKES THE NATIVE FORM IN CJK, never a transliteration
+
+**Emma, 2026-09-07**, choosing between four readings after being shown what the spine would emit
+today: **イタリアのベレンガーリオ1世** — the native form, `の` for *of*, `王` for *king*, and the
+same shape for `zh` and `ko`. Not a transliteration of the English words.
+
+**What provoked it.** She asked for CJK labels on the whole Arne → Charlemagne line and gave five
+items with no `ja` label at all. Computing what could be emitted produced:
+
+    Q274606   Berengar I, emperor of the Romans   ->  ベレンガル・I・エムペロル・オフ・テ・ロマンス
+    Q43974    Louis I, The Pious                  ->  ルイ・I・ザ・ピオウス
+    Q3743799  Knut Valdemarsson, Duke of Estland  ->  クヌート・…・デューク・オフ・エストランド・アンド・ロランド
+
+`オフ` is the English word *of* spelled in katakana, `テ` is *the*, `アンド` is *and* — the same
+failure as the `ソン・オフ・` relationship descriptions of 2026-09-03, in a new place. The table
+holds katakana for words that were never names: `of` オフ, `the` テ, `and` アンド, `king` キング,
+`duke` ドケ, `count` コウント, `emperor` エムペロル, `bishop` ビスホプ. **17,376 people carry a
+bare `of`/`the`/`and` after the first token.**
+
+**`CLAUDE.md` had already reserved this for her** — § *A TITLE IS NOT A NAME* says whether
+`Anne of Denmark` should read `アン・オフ・ダンマーク` *"is a question about her LABEL and is
+hers"*. That exact shape is what was blocking the spine, so the question was overdue rather than
+new.
+
+**This is a BUILD, not a rule change**: it needs a title and place vocabulary per language —
+`の`, `王`, `皇帝`, `公` and their `zh`/`ko` equivalents — rather than a transliteration table.
+Nothing implements it yet. **The Latin `mul` label is untouched**; only the CJK forms change.
+
+**The 29 spine people with no title in their label ship first** — her call the same day, *"Yes,
+next batch"* — once the rule bugs below are fixed.
+
+### THE RULE IS VALIDATED AGAINST THE ATTESTED COLUMN, and that is what catches a bad fix
+
+**`reports/garborg-name-transliterations.tsv` holds 5,902 tokens whose `ja` came from Wikidata
+rather than from the rule.** Agreement with those is a measurement the rule cannot argue with,
+and it is the test any change to `scripts/translit_no.py` is scored on:
+
+    baseline          809  (13.7%)
+    + geminates     1,014  (17.2%)
+    + `dt`          1,023
+    - `dj`/`lj`     1,025  (17.4%)
+
+**It caught a fix of mine that made things worse.** Emitting the plain coda for every geminate
+fixed `Anna` (アナ → アンナ) and broke `Abba` (アッバ → アブバ), scoring **803 against the
+baseline's 809** — worse than doing nothing. A geminate is three things: nasal → `ン`, liquid →
+nothing, otherwise → `ッ`.
+
+**And it caught a regression on names that are not Norwegian.** Adding `dj`/`lj` as /j/ onsets is
+right for `Djupvik` and wrong for Indonesian `AMIDJAJA`, which lost a consonant entirely
+(アミドヤヤ → アミヤヤ). Removing them scored *better*. `tj` and `vj` were never added, for the
+same reason: nothing in the data says which language a token belongs to.
+
+**`dt` is one /t/ and the corpus proves it** — of the 24 `-dt` tokens with an attested rendering,
+**0 end in `ドト`** (`Schmidt` シュミット ja 33×, `Brandt` ブラント 14×) while **201 of 201**
+rule-made ones did. Chinese agrees independently: of the 4 with a real `zh` attestation, 0 contain
+德特.
+
+**⛔ NO NOTE IN THAT TABLE HAS EVER CITED A KOREAN ATTESTATION — 0 of 38,376.** The check runs
+against `ja` and `zh` only, so the **entire `ko` column is rule output that has never been
+compared to anything**, including on rows marked *attested*: `Schmidt` carries `스미드트` where
+Korean writes `슈미트`. Given § *CJK INCLUDES KOREAN*, that is a larger hole than any rule bug
+here, and nothing addresses it.
+
 ### A middle initial keeps its Latin letter in every language
 
 **Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was
