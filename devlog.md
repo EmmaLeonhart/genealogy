@@ -30986,3 +30986,24 @@ clears on `family_tree` 1,405 against one recorded relative, a husband.
 
 The Han characters survive the transport — 饒子儀 reads correctly in
 `geni-families/6000000075422143962-family.tsv`.
+
+## A FIFTH HIT, AND THE FIRST CHAIN THAT RUNS THROUGH WOMEN
+
+**Louis Henri de Roger de Cahuzac, marquis de Caux** `6000000013749280860`, Charlemagne's 32nd
+great grandson — 35 steps, and steps 13 to 25 are **thirteen consecutive mother-to-daughter
+links**: Matilda of Boulogne down through Auvergne, Apchon, Peyre, Bruyères, Landorre, Lescure,
+Monestiès, Buxi and Bertier. Every other Charlemagne chain captured today runs mostly father to
+son. `CLAUDE.md` § *When an export is meant to close a specific path, read the relation column
+first* is what this is for.
+
+Steps 15 and 16 are both `Mahaut d'Auvergne`, mother and daughter, on different Geni ids — two
+people sharing a name, not a repeat. `paths/isolate-geni-louis-henri-de-cahuzac-marquis-de-caux-1825.tsv`.
+
+**Joseph-Massé Gravel dit Brindelière `6000000003312241152` is the first target with DESCENDANTS
+at the ceiling.** A Château-Richer settler of 1616: `family_tree` 10,893, `blood_relatives`
+15,000, **`descendants` 15,000**, sixteen recorded children — and Geni answering *"No blood
+relationship was found."* Whatever else that is, it is not a person with no relatives.
+
+**Also in:** Carl Skovgaard-Petersen `6000000052527554821` cleared on `family_tree` 6,753 against
+**two** blood relatives, the disjunction from the opposite side to Drouillard; Abraham Lincoln
+Marovitz `6000000075674026857` refused at 9 / 10.
