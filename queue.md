@@ -77,14 +77,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   * **The background service worker cannot be updated from here** and does not matter — it runs
     only the scheduler. `todo.md` § 3d has the measurement and five failed routes.
 
-  **State right now, 2026-09-06 evening:** the pilot is **100 of 100** · `reports/isolates.csv`
-  102 rows · under the Charlemagne anchor **83 answered: 7 hits, 76 misses, a reach rate of
-  8.4%**, and of those misses the floor clears 37 and refuses 39 · 1,657 tiny profile GEDCOMs ·
-  1,158 tiny path GEDCOMs · **zero invented people** · extension at 1.6.2.
+  **State right now, 2026-09-07:** the isolate pilot is **100 of 100, COMPLETE** ·
+  `reports/isolates.csv` 111 rows, of which **92 were taken under the Charlemagne anchor: 12 hits,
+  80 misses** · the sibling worklist has **2,517 of 2,526 still to scrape** · 1,655 tiny profile
+  GEDCOMs · 1,163 tiny path GEDCOMs · **zero invented people** · extension at 1.6.2.
 
-  ⛔ **THE ANCHOR COLUMN IS WHAT MAKES THAT RATE MEAN ANYTHING.** 8 of the 102 rows were taken
-  under the Emma anchor before 2026-09-06 and 11 have no verdict yet; neither is in the 83. A
-  rate computed over all 102 answers a question nobody asked.
+  ⛔ **THE ANCHOR COLUMN IS WHAT MAKES THAT RATE MEAN ANYTHING**, and it earned its keep on
+  2026-09-06: the pin lapsed mid-run and four captures came back answering *related to Emma*.
+  Two were **hits that became misses** once re-run under Charlemagne. Rows taken under the Emma
+  anchor, and rows with no verdict yet, are excluded from the 92; a rate over all 111 answers a
+  question nobody asked.
 
   **The live-site writes sit behind `job.create`.** Setting it lets the loop create one ancestor
   and run a `Forest` export when the gate clears. It has not been exercised yet, so the first one
