@@ -656,6 +656,85 @@ LABEL_LEADING_TITLES = frozenset("""
 """.split())
 
 
+def _patronymic_key(token: str) -> str:
+    """A token folded far enough that two SPELLINGS of one patronymic agree, and no further.
+
+    `Gardson`/`Gardsson`, `Ericsen`/`Eriksen`, `Olson`/`Olsson`. Case and diacritics fold,
+    doubled letters collapse, and `c` reads as `k` — nothing else. **Deliberately not
+    `_skeleton`**, which deletes every vowel and would make `Johansson` agree with `Junnasson`;
+    that is the failure `CLAUDE.md` records for `P144`, and the comparison here is closed
+    (two adjacent tokens on one person) rather than a search, so it needs no such reach.
+    """
+    t = unicodedata.normalize("NFD", (token or "").casefold())
+    t = "".join(c for c in t if not unicodedata.combining(c)).replace("c", "k")
+    out = []
+    for ch in t:
+        if not out or out[-1] != ch:
+            out.append(ch)
+    return "".join(out)
+
+
+def drop_repeated_patronymic(label: str) -> str:
+    """`label` with an adjacent repeat of one patronymic collapsed to a single token.
+
+    **Emma, 2026-09-07**, on `Q141205942` and `Q141205937`: *"Both of these are replications of
+    the patronymic. Idk what's going on with them."* Two mechanisms produce it and both end here:
+
+    * Geni writes the patronymic into `GIVN` **and** `SURN` -- `Tore Gardson /Gardsson/` --
+      and `build-display-names.py` concatenates every piece. **3,786 name records repeat it
+      exactly and 1,238 in another spelling** (`Oluf Ericsen Eriksen`, `Bjørn Bjørnson
+      Biørnsen`).
+    * the married-name flip puts `_MARNM` where the surname was, and the `_MARNM` is the same
+      patronymic the `GIVN` already ends with. `Q6197518` is that: `Svantepolk Knutsson /Viby/`
+      with `_MARNM Knutsson` rendered `Svantepolk Knutsson Knutsson Skarsholmsätten`.
+
+    **Only where BOTH tokens are patronymics.** A repeated given name -- `Felipe Felipe
+    Restrepo` -- is left alone: it may be exactly what the person was called, and collapsing it
+    is a claim about them rather than about a concatenation.
+    """
+    toks = (label or "").split()
+    out = []
+    for tok in toks:
+        if (out and PATRONYMIC.match(tok) and PATRONYMIC.match(out[-1])
+                and _patronymic_key(tok) == _patronymic_key(out[-1])):
+            # Keep the LONGER spelling: `Gardsson` over `Gardson`, since the genitive `s` is
+            # the form the patronymic is built with and the short one is the elision.
+            if len(tok) > len(out[-1]):
+                out[-1] = tok
+            continue
+        out.append(tok)
+    return " ".join(out)
+
+
+def drop_clan_suffix(label: str, nsfx: str) -> str:
+    """`label` with a Swedish *ätt* name out of its own `NSFX` removed. `Skarsholmsätten`.
+
+    An *ätt* is a noble clan, and `_DYNASTY` already holds `bjälboätten` and `folkungaätten` as
+    things that are not names. **53 distinct `-ätt` tokens occur, 237 times**, and a bare
+    `-ätt$` rule would destroy `Lätt` (10), `Slätt`, `Nätt` and `Sprätt` — ordinary Swedish
+    surnames. Only the DEFINITE form `-ätten` is the clan, and even that has one trap:
+    `von Glanstätten` is a German territorial surname.
+
+    **Matching the person's own `NSFX` removes the trap entirely** — measured, every clan token
+    is in `nsfx` and `Glanstätten` only ever in `surn`/`marnm`. Same exactness as
+    `drop_title_suffix`, and the same reason.
+
+    `Q6197518` is the case: `Svantepolk Knutsson /Viby/ Skarsholmsätten`, where Wikidata's own
+    label is `Svantepolk Knutsson`.
+    """
+    if not label or not nsfx:
+        return label
+    suffix = {t.strip("()[]{}.,").casefold() for t in nsfx.split()}
+    toks = label.split()
+    while len(toks) > 1:
+        low = toks[-1].strip("()[]{}.,").casefold()
+        if low in suffix and low.endswith("ätten"):
+            toks.pop()
+            continue
+        break
+    return " ".join(toks).strip() or label
+
+
 def drop_label_title(label: str) -> str:
     """`label` with a leading title and a trailing title phrase removed. For a LABEL.
 

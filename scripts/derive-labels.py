@@ -46,7 +46,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
-    drop_description_suffix, drop_label_title, married_name_of,
+    drop_clan_suffix, drop_description_suffix, drop_label_title,
+    drop_repeated_patronymic, married_name_of,
     normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
@@ -126,7 +127,8 @@ def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
     parts = [clean(givn), clean(marnm), clean(nsfx)]
     # The alias is built out of the same `NSFX`, so it needs the same rule or a person whose
     # label was fixed keeps `ogift` in the alias beside it.
-    alias = drop_description_suffix(" ".join(p for p in parts if p), clean(nsfx))
+    alias = drop_clan_suffix(drop_repeated_patronymic(
+        drop_description_suffix(" ".join(p for p in parts if p), clean(nsfx))), clean(nsfx))
     return alias if is_description(alias) else drop_label_title(alias)
 
 
@@ -202,6 +204,14 @@ def main() -> int:
             # glued to the label; `namemodel.drop_description_suffix` takes it off, matching
             # the person's own `NSFX` and nothing else. 627 labels move.
             rendered = drop_description_suffix(rendered, clean(record["nsfx"]))
+            # **The patronymic arrives twice and both mechanisms end here.** Geni writes it into
+            # `GIVN` and `SURN` alike (`Tore Gardson /Gardsson/`), and the married-name flip puts
+            # a `_MARNM` where the surname was when the `GIVN` already ends with it
+            # (`Svantepolk Knutsson /Viby/` with `_MARNM Knutsson`). Emma, 2026-09-07: *"Both of
+            # these are replications of the patronymic."*
+            rendered = drop_repeated_patronymic(rendered)
+            # An *ätt* is a clan, not a name, and only where the person's own `NSFX` says so.
+            rendered = drop_clan_suffix(rendered, clean(record["nsfx"]))
             # **A TITLE MUST NOT END UP IN A `mul` LABEL.** Emma, 2026-09-07: *"the highest
             # priority is to make sure that title names and such don't end up in mul labels
             # and dont get transliterated"*, and, asked whether a bare territorial counts:
