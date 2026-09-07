@@ -78,7 +78,8 @@ def main():
             stem = m.group(1).casefold().rstrip("s")
             key = tok.casefold()
             bearers[key] += 1
-            for w in dad.split():
+            # The same scoping the plan builder applies, so the census measures what ships.
+            for w in nm.given_name_run(dad.split()):
                 if nm.PATRONYMIC.match(w):
                     continue
                 if nm._same_name(stem, w.casefold().rstrip("s")):

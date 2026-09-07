@@ -192,6 +192,13 @@ def main():
     # Against the father this tree already names, never against the store. The father is one
     # fixed person, so this confirms a position the structure chose rather than searching.
     sources = collections.defaultdict(collections.Counter)
+    # **What the OLD rule accepted and this one does not.** Items we created before 2026-09-07
+    # carry `P144` values sourced from the father's surname slot, and Emma found two of them
+    # live. A removal must name a value we can positively identify as ours and withdrawn --
+    # never merely "not in today's plan", which would take anything she added by hand. Running
+    # the unscoped walk beside the scoped one is what makes that identification exact, and it
+    # maintains itself: the day a source stops being withdrawn the removal stops being emitted.
+    withdrawn_names = collections.defaultdict(set)
     bearers = collections.Counter()
     for g, lab in label.items():
         dad = label.get(father.get(g, ""), "")
@@ -219,12 +226,21 @@ def main():
                 continue
             stem = m.group(1).casefold().rstrip("s")
             bearers[tok.casefold()] += 1
-            for w in dad.split():
-                if nm.PATRONYMIC.match(w):
-                    continue
-                if nm._same_name(stem, w.casefold().rstrip("s")):
-                    sources[tok.casefold()][w] += 1
-                    break
+            # **Only the father's GIVEN names may attest**, her ruling of 2026-09-07 on `Junna`.
+            # `namemodel.given_name_run` is the one place; reading every word of the label let a
+            # farm name three positions along source a patronymic 4,512 people bear.
+            words = dad.split()
+            for scope, sink in ((nm.given_name_run(words), sources),
+                                (words, withdrawn_names)):
+                for w in scope:
+                    if nm.PATRONYMIC.match(w):
+                        continue
+                    if nm._same_name(stem, w.casefold().rstrip("s")):
+                        if sink is sources:
+                            sink[tok.casefold()][w] += 1
+                        else:
+                            sink[tok.casefold()].add(w)
+                        break
 
     given, pat_items = name_items()
     plural = {q for tok, srcs in sources.items() for n in srcs
@@ -261,6 +277,18 @@ def main():
             else:
                 ambiguous.append("%s(%d)" % (name, len(qids)))
 
+        # **One QID at most once.** Two spellings of a name -- `Sjur` and `SJUR`, `Zachris` and
+        # `zachris` -- fold to one label and so to one item, and the pair columns are positional,
+        # so the de-duplication has to keep name and target in lockstep. 63 rows carried a
+        # repeat. `build-garborg-name-items` already dropped them on read, so nothing wrong
+        # shipped; this is the file she reads being right as well.
+        seen, unique = set(), []
+        for name, qid in targets:
+            if qid not in seen:
+                seen.add(qid)
+                unique.append((name, qid))
+        targets = unique
+
         # `P5278` surname for other gender: same stem, the opposite gendered suffix.
         # **Pair off the STEM, not by swapping suffixes on the whole token.** Swapping produced
         # `olsdatter` -> `olssen` and `olsen` -> `oldatter`, neither of which is a word: the
@@ -288,6 +316,17 @@ def main():
             if cands:
                 pair = max(cands, key=lambda c: (bearers.get(c, 0), c in pat_items))
 
+        # The values the unscoped walk would have produced and this one does not -- the
+        # removals, resolved through the same lookup so a name that never had an item cannot
+        # become a `-Q…` line.
+        withdrawn = []
+        for name in sorted(withdrawn_names.get(tok, set()) - set(srcs)):
+            qids = given.get(name.casefold())
+            if qids and len(qids) == 1:
+                q = next(iter(qids))
+                if q not in {t for _, t in targets} and q not in withdrawn:
+                    withdrawn.append(q)
+
         rows.append({
             "token": tok,
             "bearers": bearers[tok],
@@ -298,6 +337,7 @@ def main():
             "p144_names": " ".join(n for n, _ in targets),
             "p144_ambiguous": " ".join(ambiguous),
             "p144_unknown": " ".join(unknown),
+            "p144_withdrawn": " ".join(withdrawn),
             "p5278_pair": pair,
             "stem": stem_raw,
             # `P407` by suffix, her ruling 2026-09-01. A claim about the token's FORM, never
@@ -314,6 +354,7 @@ def main():
     amb = sum(1 for r in rows if not r["p144_targets"] and r["p144_ambiguous"])
     unk = sum(1 for r in rows if not r["p144_targets"] and not r["p144_ambiguous"])
     pairs = sum(1 for r in rows if r["p5278_pair"])
+    wd = sum(len(r["p144_withdrawn"].split()) for r in rows)
     langs = collections.Counter(r["p407"] for r in rows if r["p407"])
     create = sum(1 for r in rows if r["action"] == "create")
     print(f"{len(rows):,} patronymic tokens attested by a father in our tree")
@@ -322,6 +363,8 @@ def main():
     print(f"  {amb:,} blocked ONLY by an ambiguous given name (several items share the label)")
     print(f"  {unk:,} have no given-name item for any attesting father")
     print(f"  {pairs:,} have a P5278 surname-for-other-gender partner")
+    print(f"  {wd:,} P144 value(s) withdrawn by the given-name scoping, on "
+          f"{sum(1 for r in rows if r['p144_withdrawn']):,} token(s)")
     print(f"  {sum(langs.values()):,} carry a P407 language from their suffix "
           f"({langs.get(chr(81)+chr(57)+chr(48)+chr(50)+chr(55), 0):,} Swedish, "
           f"{langs.get('Q9043', 0):,} Norwegian)")

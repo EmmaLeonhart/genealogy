@@ -252,6 +252,32 @@ def based_on_targets():
     return out
 
 
+def withdrawn_targets():
+    """`{folded token: [given-name item, ...]}` — `P144` values the OLD source rule produced.
+
+    **Emma, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* live
+    with `P144` *based on* `Q58785388` *Junna*: *"neither of these are based on Junna lol."*
+    `Junna` is the farm name in `Juho Niilonpoika Junna`; the source walk read every word of the
+    father's label until `namemodel.given_name_run` scoped it to his given names.
+
+    Those two items are ours — `reports/created-name-items.tsv` — and § *We can correct stuff we
+    added* is her own rule for them. **The removal names a value we can positively identify as
+    ours and withdrawn**, from the plan's `p144_withdrawn` column, which is the difference
+    between the two walks computed in the same run. Anything else on the item, including a value
+    she added by hand, is untouched: "not in today's plan" is not grounds to remove a statement.
+    """
+    out = {}
+    if not PATRONYMIC_PLAN.exists():
+        return out
+    with open(PATRONYMIC_PLAN, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            token = (row.get("token") or "").strip()
+            qids = [q for q in (row.get("p144_withdrawn") or "").split() if q.startswith("Q")]
+            if token and qids:
+                out[token.casefold()] = list(dict.fromkeys(qids))
+    return out
+
+
 def live_values():
     """`(qid, property) -> {values}` from `reports/garborg-live-values.tsv`.
 
@@ -713,6 +739,10 @@ def main():
     # same statement, but a batch that says nothing is a batch she can read in seconds, and
     # `CLAUDE.md` § *Duplication is deliberate here* means never proposing one by accident.
     backfill = {}
+    #: The patronymic items THIS repo created, by QID. A removal is only ever proposed on one of
+    #: these -- § *The purpose is to ADD to Wikidata, not to correct it* holds for everybody
+    #: else's, and her *"we can correct stuff we added"* is scoped to ours by its own words.
+    ours = {}
     for (token, usage), (existing, _action) in plan.items():
         if usage == "patronymic" and (existing or "").strip().startswith("Q"):
             targets = based_on.get(token.casefold())
@@ -725,9 +755,12 @@ def main():
                 if row.get("kind") != "patronymic":
                     continue
                 qid = (row.get("qid") or "").strip()
-                targets = based_on.get((row.get("label") or "").casefold())
+                label_here = (row.get("label") or "")
+                targets = based_on.get(label_here.casefold())
+                if qid.startswith("Q"):
+                    ours[qid] = label_here
                 if qid.startswith("Q") and targets:
-                    backfill.setdefault(qid, (row["label"], targets))
+                    backfill.setdefault(qid, (label_here, targets))
     if backfill:
         ids = sorted(backfill)
         print("")
@@ -768,6 +801,29 @@ def main():
             lines.extend(added)
         print(f"   {len(added):,} P144 statement(s) to add"
               + (f"; {held:,} item(s) held, the live read failed" if held else ""))
+
+        # ---- P144 REMOVALS: the values the old source rule put on items we made ------
+        #
+        # See `withdrawn_targets` for her ruling and the mechanism. Three conditions, all
+        # required: the item is one we created, the value is on it live, and the plan names
+        # that value as withdrawn by the given-name scoping. A value she added by hand is in
+        # none of the withdrawn lists, so it cannot be reached from here.
+        withdrawn = withdrawn_targets()
+        removals = [f"-{qid}\t{BASED_ON}\t{value}"
+                    for qid in ids if qid in claims_of and qid in ours
+                    for value in sorted(withdrawn.get(ours[qid].casefold(), ()))
+                    if value in claims_of[qid][BASED_ON]]
+        if removals:
+            lines.append("")
+            lines.append("# " + "=" * 70)
+            lines.append("# P144 BASED ON, REMOVED. Emma, 2026-09-07, on Q141336969 and")
+            lines.append("# Q141290188: \"neither of these are based on Junna lol\". The source")
+            lines.append("# walk read every word of the father's label, so a farm name could")
+            lines.append("# attest a patronymic; namemodel.given_name_run scopes it to his")
+            lines.append("# given names. Items this repo created, values it put there.")
+            lines.append("# " + "=" * 70)
+            lines.extend(removals)
+        print(f"   {len(removals):,} P144 statement(s) to remove")
 
         # ---- P460 said to be the same as -------------------------------------------
         #

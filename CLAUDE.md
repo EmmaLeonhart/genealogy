@@ -949,6 +949,61 @@ the widening — trailing-dot spellings like `Simonsen.` — so "has a new token
 **162,246** long-established identifications instead of the **15,636** nobody has read. `-sdtr` is
 1,103 of 1,103 tokens new and is what she should open on.
 
+### A PATRONYMIC SOURCE COMES FROM THE FATHER'S GIVEN NAME. Not from anywhere in his label
+
+**Emma, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* live with
+`P144` *based on* `Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the
+Junna you linked. Not sure how you even got that one or how you're defining the patronymic
+sources."* Her floor: *"Uhh it needs to be attested lol. Really attested in our data plus some
+degree of agentic inference or my manual approval."*
+
+**`Junna` is the farm name in `Juho Niilonpoika Junna`.** The source walk in
+`build-patronymic-items.py` iterated **every word** of the father's label, so a surname three
+positions along could attest a patronymic 4,512 people bear — while the Latin-genitive branch
+sitting beside it already read `dad.split()[0]` and could not. `namemodel.given_name_run` is now
+the one place: the leading run up to the father's own patronymic, or all but the last token when
+he carries none.
+
+**⛔ BOTH ATTESTATION FLOORS ARE REFUTED, and the census is the record.**
+`scripts/census-patronymic-sources.py` → `reports/patronymic-source-attestation.tsv`, **9,825
+(token, source) pairs over 6,864 tokens** with the father count, the share and an example bearer.
+Nothing on disk carried that number before: the plan file writes the accepted *names* and not
+their weight, so a 4,000-father source read the same as a one-father one.
+
+| rule | pairs dropped | tokens losing every source |
+| --- | ---: | ---: |
+| fathers >= 2 | 3,999 | **2,654** |
+| share >= 10% | 1,573 | 0 |
+| first vowel agrees | 407 | 132 |
+| vowel agrees OR share >= 10% | 168 | 0 |
+| **the father's given-name position** | **64** | 47 |
+
+* **A father-count floor is destructive.** A token three people bear has three attesting fathers
+  at most, so `>= 2` takes the derivation off 2,654 tokens.
+* **A share floor drops mostly GOOD pairs** — `johnsen ← Johannes` (8 fathers), `henriksen ←
+  Henrich` (38), `christiansdatter ← Christen` (14), `olsson ← Olaus` (4). Dropping those is
+  precisely what her multi-valued ruling exists to prevent.
+* Even the tightest blend leaves 168, and **reading all 168 shows most are genuine** —
+  `knutsen ← Canuti`, `mortensen ← Martinus`, `staffansson ← Stefan`, `paulsen ← Poul`.
+
+**Position separates them and no threshold does.** Every pair she flagged is in the 64:
+`johansson ← Junna`, `larsson ← Luur` (from `Anders Andersson Luur Läraktig`), `bjørnsen ← Brun`,
+`andersen ← Aanderaa`, `jensen ← in`. A second group falls out for free — `jesenhausen ←
+Jesenhaus`, `ekmansson ← Ekman`, `lüttringhausen` — inherited German and Swedish surnames
+`patronymic_or_surname` had let through, whose "source" was the same family name in the father's
+surname slot. This is § *PARSE PATRONYMICS BY FORM* again: **a threshold was being reached for
+where a structural test belongs.**
+
+**A REMOVAL NAMES A VALUE WE CAN IDENTIFY AS OURS AND WITHDRAWN — never "not in today's plan".**
+The plan carries a `p144_withdrawn` column: what the unscoped walk would have produced and the
+scoped one does not, computed in the same run so it maintains itself. `build-garborg-name-items`
+emits `-Q… P144 …` only where all three hold — the item is in `reports/created-name-items.tsv`,
+the value is live on it, and the plan names that value as withdrawn. **9 values across 8 tokens**,
+of which the two she photographed are two. Anything she added by hand is in no withdrawn list and
+cannot be reached from there; § *The purpose is to ADD to Wikidata, not to correct it* holds for
+everybody else's statements, and *"we can correct stuff we added"* is scoped to ours by its own
+words.
+
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
 **Emma, 2026-09-04**, having hand-corrected `Q141271379` from `Anna Ormsd Byre`: *"I changed her

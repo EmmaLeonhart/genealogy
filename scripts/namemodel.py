@@ -1049,6 +1049,49 @@ def latin_patronymic(token: str, father_given: str) -> bool:
     return bool(latin_patronymic_source(token, father_given))
 
 
+def given_name_run(words):
+    """The father's GIVEN names — the only position a patronymic source may come from.
+
+    **Emma, 2026-09-07**, shown `Q141336969` and `Q141290188` carrying `P144` *based on*
+    `Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the Junna you
+    linked. Not sure how you even got that one or how you're defining the patronymic sources."*
+
+    `Junna` is the farm name in `Juho Niilonpoika Junna`. The source walk read **every word** of
+    the father's label, so a surname three positions along could attest a patronymic — while the
+    Latin-genitive branch beside it already read `dad.split()[0]` and could not.
+
+    **The fix is position, not a threshold, and the census is why.**
+    `reports/patronymic-source-attestation.tsv` measures every (token, source) pair; both floors
+    proposed for it are refuted there. A father-count floor at `>= 2` takes the whole derivation
+    off **2,654 tokens**, because a token three people bear has at most three attesting fathers.
+    A share floor drops mostly *good* pairs — `johnsen ← Johannes` (8 fathers), `henriksen ←
+    Henrich` (38), `olsson ← Olaus` (4) are real spellings of one name, and dropping them is what
+    her multi-valued ruling exists to prevent. Even the tightest blend leaves 168, and reading
+    all 168 shows `knutsen ← Canuti` and `mortensen ← Martinus` among them.
+
+    **This drops 64 pairs and 47 thin tokens lose their derivation**, and every pair she flagged
+    is in the 64: `johansson ← Junna`, `larsson ← Luur` (from `Anders Andersson Luur`),
+    `bjørnsen ← Brun`, `andersen ← Aanderaa`, `jensen ← in`. A second group falls out for free —
+    `jesenhausen ← Jesenhaus`, `ekmansson ← Ekman`, `lüttringhausen` — inherited German and
+    Swedish surnames that `patronymic_or_surname` had let through and whose "source" was the same
+    family name in the father's surname slot.
+
+    The run stops at the father's own patronymic, which is what separates the given names from
+    everything after them: `Juho Niilonpoika Junna` → `Juho`, `Anders Andersson Luur Läraktig` →
+    `Anders`. A label with no patronymic in it gives up its **last** token instead, since that is
+    the surname slot — `Christopher Andreas Brun` → `Christopher Andreas`. A single-token label
+    is all given name.
+    """
+    out = []
+    for w in words:
+        if PATRONYMIC.match(w):
+            break
+        out.append(w)
+    if len(out) == len(words) and len(words) > 1:
+        out = list(words[:-1])
+    return out or list(words[:1])
+
+
 def latin_patronymic_source(token: str, father_given: str) -> str:
     """The father's given name `token` is the Latin genitive of, or `""`.
 

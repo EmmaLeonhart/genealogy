@@ -31463,3 +31463,22 @@ Brun` from `Christopher Andreas Brun`. The walk iterates every word of the fathe
 while the Latin-genitive branch beside it already uses `dad.split()[0]`. So the discriminator
 is **position, not weight** — which is the § *PARSE PATRONYMICS BY FORM* rule again: a
 threshold was being reached for where a structural test belongs.
+
+**The fix, same day: `namemodel.given_name_run`.** The source may come only from the father's
+given names — the leading run up to his own patronymic, or all but the last token when he carries
+none. Wired into `build-patronymic-items.py` and the census, so the census measures what ships.
+**64 pairs out, 47 thin tokens lose their derivation**, and every pair she flagged is in the 64.
+A second group falls out for free: `jesenhausen ← Jesenhaus`, `ekmansson ← Ekman`,
+`lüttringhausen` — inherited surnames whose "source" was the same family name in the father's
+surname slot.
+
+Plan: **6,923 → 6,864 tokens**, `P144` values **6,931 → 6,904**. Also deduped the targets — 63
+rows carried one QID twice, `Sjur` and `SJUR` folding to `Q12000735`; the generator already
+dropped them on read, so nothing wrong shipped, but the file Emma reads is right now too.
+
+**And the removal.** `p144_withdrawn` is the difference between the two walks, computed in the
+same run. `build-garborg-name-items` emits `-Q… P144 …` only where the item is one we created,
+the value is live on it, and the plan names it withdrawn: **9 values on 8 tokens**, including
+`Q58785388` *Junna* on both `Q141336969` and `Q141290188` — the two she photographed. The live
+read is blocked in this container (the environment's egress policy answers `CONNECT
+www.wikidata.org:443` with 403), so the removals fire in the pipeline, not here.
