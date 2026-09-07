@@ -127,6 +127,7 @@ def parse_block(text: str) -> dict:
         "relatives": rows,
         "prose": meta.get("prose", ""),
         "banner": meta.get("banner", ""),
+        "path": meta.get("path", ""),
     }
 
 
@@ -182,7 +183,25 @@ def main() -> int:
     # `no` and `yes` are OBSERVATIONS; blank is *we have not seen an answer yet*. An observation
     # is only ever replaced by a stronger one -- a chain found where a miss was recorded, which
     # is real news about a live site. Nothing here ever writes blank over a verdict.
-    fresh = path_state(blob.get("banner", ""))
+    # ⛔ A HIT CANNOT COME FROM THE BANNER, AND THE COLLECTOR IS THE ONLY THING THAT KNOWS ONE.
+    #
+    # `path_state` is asymmetric on purpose: a miss is stated on the page in words, a hit is
+    # not. Its own docstring says what does establish one -- *"a parsed chain whose steps
+    # include the target, which is what the `path` job's `state == \"resolved_path\"` with
+    # `hasTarget` establishes"* -- and nothing carried that verdict here, so a confirmed hit
+    # arrived with an empty banner and was written as PENDING.
+    #
+    # Measured 2026-09-06: Viktor Georg Frhr. von Wolff `6000000040539833345` and Louise von
+    # Renngarten `6000000029392019410` both came back `resolved_path` with the target in the
+    # chain, both carrying a 32-step and a 64-step Charlemagne descent, and both landed in the
+    # ledger as pending. A hit recorded as pending is the mirror of the failure the asymmetry
+    # exists against: it deflates the reach rate instead of inflating it, and it queues a
+    # revisit for a person whose chain is already on disk.
+    #
+    # `@PATH` carries the job's verdict and ONLY the job may set it to `yes`. Absent, the
+    # banner decides exactly as before, so every block written before today is unaffected.
+    declared = (blob.get("path") or "").strip().lower()
+    fresh = declared if declared in ("yes", "no") else path_state(blob.get("banner", ""))
     verdict = fresh if fresh else prior
     if prior == "yes" and fresh == "no":
         verdict = "yes"   # a chain we hold is evidence; today's miss banner does not retract it

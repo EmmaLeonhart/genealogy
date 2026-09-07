@@ -30871,3 +30871,33 @@ person. Read the row count against the prose before writing a large family.
 
 Also in: Christoph Tetsch `6000000083078044976`, below the floor at 232 / 217 despite 210
 descendants; Hassar cleared at 1,172 / 8,836.
+
+## ⛔ THE FIRST TWO CHARLEMAGNE HITS, AND A HIT COULD NOT REACH THE LEDGER
+
+**Viktor Georg Frhr. von Wolff `6000000040539833345`** and **Louise von Renngarten
+`6000000029392019410`**, both *Charlemagne's 29th great grand-*child in Geni's own prose. The
+anchor protocol works and these are the first captures that demonstrate it end to end: step 1 of
+each chain is Charlemagne himself, not `You`.
+
+* Louise — **32 steps**, Carolingian → von Stade → von Tiesenhausen → von Patkul → von Grotthuß
+  → von Renngarten. `paths/isolate-geni-louise-von-renngarten-1872.tsv`.
+* Viktor — **64 steps in two chains**, and that is the `paths/nn-basse.tsv` shape rather than a
+  defect: Geni rendered two alternative routes and `GC.parsePath` takes every `span.segment`
+  anchor on the page. Steps 1-32 go by von Tiesenhausen and von Mengden; steps 33-64 restart at
+  Charlemagne and arrive by Berengar, the Capetians and von Staff-Reitzenstein. Charlemagne,
+  Louis the Pious and Viktor each appear twice, which is `REPEAT` and counts as held —
+  `CLAUDE.md` § *`ABSENT` on a path means "not in the tree" and nothing else*.
+
+**Both landed in the ledger as PENDING, and that is the mirror of the miss bug.**
+`path_state` is asymmetric by design — a miss is stated on the page in words, a hit is not —
+and its own docstring names what does establish one: *"a parsed chain whose steps include the
+target, which is what the `path` job's `state == "resolved_path"` with `hasTarget`
+establishes."* Nothing carried that verdict into `write-family-scrape.py`, so a confirmed hit
+with a 64-step chain already on disk was recorded as *we have not seen an answer yet*.
+
+**It deflates the reach rate where the miss bug inflated it, and it queues a pointless
+revisit.** `@PATH` now carries the job's verdict, and only the job may set it to `yes`; absent,
+the banner decides exactly as before, so every block written before today is unaffected. The
+asymmetry is intact — nothing infers a hit from the page.
+
+**Reach so far under the Charlemagne anchor: 2 hits, 31 misses, 11 not yet answered.**
