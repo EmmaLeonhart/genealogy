@@ -35,6 +35,7 @@ A guessed row is a wrong name in two languages at once.
 """
 from __future__ import annotations
 
+import re
 import unicodedata
 import csv
 import sys
@@ -163,6 +164,28 @@ NASAL_COL = {"a": 0, "e": 1, "i": 2, "o": 3, "u": 4, "y": 2, "æ": 1, "ø": 3, "
              "ö": 3, "ä": 1, "ü": 2, "é": 1}
 
 
+#: **Cj is ONE palatalised onset, and only `sj kj gj hj skj` were listed.** So `Bjørn` found no
+#: onset, fell through to the coda branch, and came out `ブヨルン` -- while the *attested*
+#: Wikidata value for the same token is `ビョルン` (ja 5x). The rule disagreed with the corpus
+#: on a name this tree is full of.
+#:
+#: Built from each base row's `i` column, which is what palatalisation does in katakana:
+#: `b` -> `ビ` gives `ビャ ビ ビュ ビェ ビョ`. `dj` and `lj` are Norwegian /j/ -- the consonant is
+#: silent, exactly as `gj` and `hj` already are -- so they take the ya-row.
+#:
+#: **`tj` and `vj` are deliberately absent.** Norwegian `tj` is /ç/ and Japanese writes it as
+#: both `チ` (Tjøme) and `ヒ`/`シ`; nothing here settles which, so it keeps the old reading
+#: rather than gaining a guessed one. `CLAUDE.md` § *Do not guess these*.
+_PALATAL = {}
+for _c in ("b", "f", "m", "n", "p", "r"):
+    _i = ROWS[_c][0][1]
+    _PALATAL[_c + "j"] = ((_i + "ャ", _i, _i + "ュ", _i + "ェ", _i + "ョ"),
+                          ROWS[_c][1])
+for _c in ("d", "l"):
+    _PALATAL[_c + "j"] = ROWS["gj"]
+ROWS.update(_PALATAL)
+
+
 def _onsets():
     return sorted((o for o in ROWS if o), key=len, reverse=True)
 
@@ -250,6 +273,19 @@ def translit(token):
     # `サクケン` -> `サケン`) in one place. 47 tokens were affected.
     s = (token.casefold().translate(BARE_VOWEL).replace("aa", "å")
          .replace("ck", "k"))
+    # **A doubled nasal with no vowel after it is one mora nasal.** `Finn` came out `フィンン`
+    # and `Gunnbjørn` `グンンブヨルン`: the nasal-final block consumed one `n` and the geminate
+    # branch below then emitted the other. Collapsing here, the same way `ck` collapses above,
+    # leaves the geminate branch to handle only the case it was written for -- `nn` BEFORE a
+    # vowel, which is `Anna` -> `アンナ`.
+    s = re.sub(r"([nm])\1(?![aeiouyæøåöäü])", r"\1", s)
+    # **`dt` is ONE /t/**, in German, Danish, Norwegian and Swedish alike -- and the corpus
+    # settles it rather than anyone's opinion: of the 24 `-dt` tokens carrying an ATTESTED
+    # Wikidata rendering, **0 end in `ドト`** (`Schmidt` シュミット ja 33x, `Brandt` ブラント 14x,
+    # `Arndt` アルント, `Mundt` ムント), while **201 of 201** rule-made ones did. Chinese agrees
+    # independently: of the 4 with a real `zh` attestation, 0 contain 德特.
+    # Same shape as `ck` above -- two letters, one phoneme, normalised before the walk.
+    s = s.replace("dt", "t")
     if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxz-'’." for c in s):
         return None, None
     ja, zh, i = [], [], 0
@@ -277,6 +313,21 @@ def translit(token):
                 if c in CODA:
                     # geminate: `nn` in Anna is one coda, then the `na` syllable
                     if i + 1 < len(s) and s[i + 1] == c:
+                        # **A geminate is THREE different things and the branch emitted
+                        # nothing at all**, so `Anna` came out `アナ` and `Gunnar` `グナル` --
+                        # a mora short, and a different name. Emitting the plain coda for all
+                        # of them is wrong the other way: it gave `Abba` -> `アブバ` where the
+                        # attested value is `アッバ`. Measured against the 5,902 attested `ja`
+                        # values, undifferentiated emission scored WORSE than emitting nothing
+                        # (803 against 809), which is what caught it.
+                        #
+                        #   nasal      `nn` `mm`  -> `ン`   Anna  -> アンナ
+                        #   liquid     `ll` `rr`  -> nothing  Aall -> オール
+                        #   otherwise             -> `ッ`   Abba  -> アッバ
+                        if c in "nm":
+                            ja.append(CODA[c][0])
+                        elif c not in "lr":
+                            ja.append("ッ")
                         i += 1
                         continue
                     kj, kz = CODA[c]
