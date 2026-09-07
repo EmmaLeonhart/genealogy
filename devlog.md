@@ -31007,3 +31007,29 @@ relationship was found."* Whatever else that is, it is not a person with no rela
 **Also in:** Carl Skovgaard-Petersen `6000000052527554821` cleared on `family_tree` 6,753 against
 **two** blood relatives, the disjunction from the opposite side to Drouillard; Abraham Lincoln
 Marovitz `6000000075674026857` refused at 9 / 10.
+
+## A SIXTH HIT, AND THE SIX SHARE A TRUNK — MEASURED, NOT EYEBALLED
+
+**Birger Dahlerus `6000000027943363968`**, Charlemagne's 30th great grandson, 33 steps. He is
+the sixth Charlemagne-anchored capture of the day, and putting the six side by side gives the
+first result that is about the *set* rather than about one person. Common prefixes over the
+Geni ids:
+
+    von Wolff  vs Dahlerus     17 steps
+    von Wolff  vs Renngarten   16 steps
+    Dahlerus   vs Renngarten   16 steps
+    all three                  16 steps
+
+**Three of the six descend through one Carolingian → von Stade → von Tiesenhausen trunk.**
+Renngarten leaves at Johann von Tiesenhausen; von Wolff and Dahlerus stay together one step
+further and split after Bartholomeus von Tiesenhausen of Kokenhausen. Across all six captures,
+**16 people appear in three or more of them**.
+
+**That is the `reports/connectors.md` ranking arriving on its own** — *"rank by slots closed
+across every path a cluster blocks, never by gap length"*. Sixteen people close three paths.
+The measurement is a script over the files rather than a reading of them, because three chains
+that look alike at a glance are exactly the thing this repo gets wrong by eye.
+
+**Also in:** Raymond Impanis `2205409` refused at 63 / 49, and he is the first target whose
+family block carries a `partner` row — Sara Vranken, beside a spouse. The collector keeps the
+relation word rather than folding it into `spouse`, which is the residual rule.
