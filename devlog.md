@@ -30919,3 +30919,30 @@ relatives including eight half-siblings; Daniel Washabaugh `6000000022202609073`
 `geni-families/6000000076774926079-family.tsv`, as do the Hungarian `Richárd Baradlay` and the
 German `Günther`. Tool result → file tool → `PYTHONIOENCODING=utf-8` on stdin, never a shell
 heredoc.
+
+## ⛔ A FULLY PRIVATE PROFILE IS PARSED AS NOTHING, AND IT LOOKS LIKE A CAPTCHA
+
+`<private> van der Laan` `6000000205349611830` is served at `geni.com/people/private/<id>` and the
+collector read **no prose, no relatives, and no statistics block** — `{read: false}`. That is the
+signature `common.js` warns is *"indistinguishable from a real profile whose relatives are
+unrecorded"*, and it is also, character for character, the Incapsula signature.
+
+**It is neither.** Checked on the page: no hCaptcha iframe, no *"additional security check"*, a
+real `h1`, and the profile plainly reads **"Immediate Family: Spouse of `<private>` Winter"**. So
+Geni serves a different layout for a fully redacted profile and `GC.family.scrape` does not match
+it. The spouse is on the page and does not reach the scrape.
+
+**What it cost here: nothing, because `read` is honest.** The row carries blank statistics rather
+than five zeros and the verdict comes from the page's own words. What it would have cost without
+today's `read` fix is five fabricated measurements on a person Geni declines to describe.
+
+**NEEDS-INVESTIGATION — the private-profile family block.** The selector is
+`geni-extension/content/family.js`; the page to test against is the one above. It is not fixed
+here because the fix is a DOM change that cannot be verified without reloading the extension,
+which needs a Chrome restart, and a restart while collection is in flight costs more than the
+gap does. `CLAUDE.md` § *Redacted people go in* is why it is worth fixing rather than skipping:
+the structure is the informative part and a spouse link is structure.
+
+**Also in:** Theodor Fanta `6000000031175749115` cleared at 1,728 / 1,072; Alan Ameche
+`6000000041544139488` refused at 92 / 11 despite eleven recorded relatives; Deron Williams
+`6000000055041621884` refused at 64 / 48, a seventh `no_panel` that was a stated miss.
