@@ -874,6 +874,7 @@ def _label_corrections(our_items, labels, table, state, fields=None,
     """
     # The birth forms, so a correction can be recognised as one rather than guessed at.
     aliases_of = {}
+    theirs = {}
     dl = ROOT / "reports" / "derived-labels.csv"
     if dl.exists():
         csv.field_size_limit(10 ** 8)
@@ -904,6 +905,14 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                     [a.strip() for a in (row.get("further_latin_names") or "").split(" | ")
                      if a.strip()])
                 aliases_of[row["geni_id"]] = names
+                # **Wikidata's OWN label for this person, from the bulk store.** Non-empty
+                # means somebody outside this project labelled the item, which is what
+                # § *WIKIDATA'S LABEL BEATS OURS* protects. The generation-suffix ground
+                # below is the only one that could reach such an item, so it is the only one
+                # that has to check.
+                theirs[row["geni_id"]] = (
+                    (row.get("wikidata_en") or "").strip(),
+                    (row.get("wikidata_mul") or "").strip())
 
     live = {}
     ledger = ROOT / "reports" / "garborg-qids.tsv"
@@ -959,10 +968,24 @@ def _label_corrections(our_items, labels, table, state, fields=None,
         # `mul` takes the numeral and `en` the abbreviation, per § *A GENERATION SUFFIX GOES
         # LAST*, so the two languages get different strings here where the other grounds emit
         # one. The CJK labels follow the `mul` form.
+        # **⛔ AND IT MUST NOT REACH AN ITEM SOMEBODY ELSE LABELLED.** Measured before this
+        # shipped: **240 items** hold a Wikidata label that is exactly ours minus the suffix --
+        # `Q6230601` *Marcus Wallenberg*, `Q47102` *Joseph Smith*, `Q768342` *Augustine
+        # Washington* -- and without a gate this ground would have rewritten every one of them
+        # to `… Jr.`. § *WIKIDATA'S LABEL BEATS OURS*: the exceptions are corrections of OUR
+        # OWN earlier writes, and those are not ours.
+        #
+        # The other two grounds are gated by construction -- the abbreviation one tests that
+        # the live label expands to ours, the birth-name one that it is a birth form we
+        # flipped -- and this one had nothing, because a suffix Geni records says nothing about
+        # who wrote the label. `wikidata_en`/`wikidata_mul` from the bulk store is the evidence
+        # available: non-empty means the item was labelled independently of us.
         _key = (generation or {}).get(geni_id, "")
+        _their_en, _their_mul = theirs.get(geni_id, ("", ""))
         _want_mul = normalise_generation_suffix(have, "mul", _key)
         _want_en = normalise_generation_suffix(have, "en", _key)
-        if _key and want in (_want_mul, _want_en) and _want_mul != have:
+        if (_key and want in (_want_mul, _want_en) and _want_mul != have
+                and not _their_en and not _their_mul):
             out.append(f"#   {qid}: holds {have!r}; Geni records the suffix {_key!r}")
             out.append(f"#   {qid}: keep the outgoing label as an alias before it is replaced")
             out.append(f'{qid}\tAmul\t"{have}"')

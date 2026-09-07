@@ -31876,3 +31876,17 @@ third relationship search that nothing in this repo has ever run, and no person 
 a final miss until it is established what that one returns. Recorded rather than guessed at —
 Chrome's tab group went away mid-measurement and the browser loop was stood down because the
 five-tab run was measurably slowing her phone.
+**⛔ The correction ground would have rewritten 240 items that are not ours, and the gate went in
+before it shipped.** `Q6230601` *Marcus Wallenberg*, `Q47102` *Joseph Smith*, `Q768342`
+*Augustine Washington* — 240 items whose Wikidata label is exactly ours minus the suffix, which
+this ground matches by construction. § *WIKIDATA'S LABEL BEATS OURS* makes the exceptions
+corrections of **our own** earlier writes, and those are not ours.
+
+The other two grounds are gated by what they test: an abbreviation ground only matches a label
+we abbreviated, a birth-name ground only a form we flipped. A suffix Geni records says nothing
+about who wrote the label, so this one had no gate at all. `wikidata_en`/`wikidata_mul` from the
+bulk store is the evidence available — non-empty means the item was labelled independently of
+us. **910 held back, 12 still reachable**, `Q141219063` among them.
+
+Caught by reading the agreement figure rather than by the suite: `reports/labels.md` went
+11,659 → 11,655 exact matches against Wikidata, which is what a correct change should not do.

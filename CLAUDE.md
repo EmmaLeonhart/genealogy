@@ -675,6 +675,15 @@ the abbreviation one — **the live label plus this person's own suffix must equ
 we want** — and it is the only ground that emits a different string per language, `II` for
 `mul` and `Jr.` for `en`.
 
+**⛔ AND IT MUST NOT REACH AN ITEM SOMEBODY ELSE LABELLED. Measured before it shipped: 240
+items** hold a Wikidata label that is exactly ours minus the suffix — `Q6230601` *Marcus
+Wallenberg*, `Q47102` *Joseph Smith*, `Q768342` *Augustine Washington* — and ungated this
+ground would have rewritten every one to `… Jr.`. The other two grounds are gated by
+construction; a suffix Geni records says nothing about who wrote the label, so this one needed
+its own test. `wikidata_en`/`wikidata_mul` from the bulk store is the evidence available:
+non-empty means the item was labelled independently of us. **910 held back, 12 still reachable**
+— `Q141219063` among them, which is the one she photographed.
+
 **And the rule existed for a day before anything called it.** `normalise_generation_suffix` was
 wired into `derive-labels.py` and the label-corrections pass, and **not** into the block that
 writes a new item's `Lmul`/`Len`/`Lja`/`Lzh`/`Lko` — so every creation carried the Norwegian
