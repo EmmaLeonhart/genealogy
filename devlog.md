@@ -31732,3 +31732,41 @@ took a royal style off), and appending `NN` there would assert that a surname is
 `reports/derived-labels.csv` was regenerated in place. It needs no tree rebuild —
 `derive-labels.py` reads `display-names.csv`, which is committed — and the pipeline does not
 re-run it, so the `.csv.gz` is committed with the change rather than waiting for one.
+## ⛔ A FIANCÉ WAS SCRAPED AS A PARENT. AN UNKNOWN PHRASE INHERITED THE PREVIOUS LINE
+
+Anna Throndsen `296165995120003655` reads *"Daughter of Kristoffer Trondsson and Karen
+Knutsdatter"*, then *"Fiancée of James Hepburn, 4th Earl of Bothwell"*. `GC.family.PHRASES` had
+no entry for `Fiancée of`, so `classify` returned null, `current` stayed on `Daughter of`, and
+**Hepburn was scraped as her third parent** — on its way into a tiny GEDCOM as a `FAM`.
+
+**Adding the phrase fixes one line. The class needed the other fix.** The walk attributes each
+anchor to the most recent phrase above it, so *any* opener the table does not know leaves
+`current` pointing at the line before and files every name on the new line under the wrong
+relationship. `GC.family.LOOKS_LIKE_OPENER` now clears the relation when a line-opening phrase
+fails to classify, so an unlisted phrase yields an anchor with an **empty** relation instead of
+a false one.
+
+**That is the absent-slot rule applied to relations rather than to people.** A relative with no
+relationship recorded is a gap; a relative with the wrong one is an invented fact, and this repo
+already refuses the second everywhere else.
+
+Checked on the page before trusting it, because a regex that is nearly right is the recurring
+failure here: `Fiancée of`, `Daughter of`, `Half brother of`, `Mother of` all match the opener
+shape; `James Hepburn, 4th Earl of Bothwell`, `Kristoffer Trondsson Rustung til Seim` and
+`Anna Throndsen` do not. A name is never mistaken for an opener, and the failure direction is a
+gap.
+
+**Also added**, since the table was plainly a subset rather than a specification: `stepfather`,
+`stepmother`, `stepbrother`, `stepsister`, `adopted son/daughter`, `foster son/daughter`.
+
+**Her file is corrected and verified.** Hepburn now appears in
+`exports/tiny-profiles/296165995120003655.ged` as an `INDI` with a name and an `RFN` and in **no
+`FAM` at all** — he exists, and nothing is claimed about how. Her parents' family holds only her
+two real parents.
+
+**The capture itself is the campaign's first in-law hit**, and the step words nearly hide that
+too: steps 1-23 are blood from Charlemagne to Mary, Queen of Scots, then *her husband* and *his
+fiancée*. Geni's prose is the only place the whole path is marked in-law —
+`CLAUDE.md` § *Grab the RESIDUALS*. `paths/isolate-geni-anna-throndsen-1536.tsv` carries the
+qualification in its header and flags **NEEDS-DECISION, hers**: whether the reach rate counts
+in-law paths at all. Every other hit today reads *"is Charlemagne's Nth great grand-"*.

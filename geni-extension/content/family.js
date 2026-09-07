@@ -30,11 +30,37 @@ GC.family.PHRASES = [
   [/^son of/i, "parent"], [/^daughter of/i, "parent"],
   [/^husband of/i, "spouse"], [/^wife of/i, "spouse"],
   [/^partner of/i, "partner"], [/^ex-husband of/i, "ex-spouse"], [/^ex-wife of/i, "ex-spouse"],
+  /* ⛔ `Fiancé(e) of` WAS MISSING AND IT PUT A FALSE PARENT ON A LIVE PROFILE.
+   * Anna Throndsen `296165995120003655` reads "Daughter of A and B" then "Fiancée of James
+   * Hepburn, 4th Earl of Bothwell". `classify` did not know the phrase, so `current` stayed on
+   * `Daughter of` and Hepburn was scraped as her THIRD PARENT -- a relationship that does not
+   * exist, on its way into a tiny GEDCOM. The accented and unaccented spellings both occur. */
+  [/^fianc(é|e)e? of/i, "fiance"],
   [/^father of/i, "child"], [/^mother of/i, "child"],
   [/^brother of/i, "sibling"], [/^sister of/i, "sibling"],
   [/^half brother of/i, "half-sibling"], [/^half sister of/i, "half-sibling"],
-  [/^stepson of/i, "step-parent"], [/^stepdaughter of/i, "step-parent"]
+  [/^stepson of/i, "step-parent"], [/^stepdaughter of/i, "step-parent"],
+  [/^stepfather of/i, "step-child"], [/^stepmother of/i, "step-child"],
+  [/^stepbrother of/i, "step-sibling"], [/^stepsister of/i, "step-sibling"],
+  [/^adopted son of/i, "adoptive-parent"], [/^adopted daughter of/i, "adoptive-parent"],
+  [/^foster son of/i, "foster-parent"], [/^foster daughter of/i, "foster-parent"]
 ];
+
+/* ⛔ A LINE OPENER THIS TABLE DOES NOT KNOW MUST CLEAR THE RELATION, NEVER INHERIT IT.
+ *
+ * Adding `fiancée` fixes one phrase; this fixes the CLASS. The walk attributes each anchor to the
+ * most recent phrase above it, so an unrecognised opener leaves `current` pointing at the line
+ * BEFORE it and every name on the new line is filed under the wrong relationship. That is how a
+ * fiancé became a parent, and the next unlisted phrase would do it again silently.
+ *
+ * `Fiancée of James Hepburn` matches this shape, so even without its entry above it would now
+ * produce an anchor with an EMPTY relation rather than a false `parent`. An unlabelled relative
+ * is a gap; a wrongly labelled one is an invented fact, and this repo's whole rule about absent
+ * slots is that the first is acceptable and the second is not.
+ *
+ * Kept narrow on purpose: a short run of letters, spaces and hyphens ending in ` of`, which is
+ * the shape of every opener in the table and is not the shape of a name. */
+GC.family.LOOKS_LIKE_OPENER = /^[A-Za-z][A-Za-zÀ-ɏ' -]{1,30} of$/;
 
 GC.family.classify = function (text) {
   const t = (text || "").trim();
@@ -99,7 +125,10 @@ GC.family.scrape = function () {
   for (let n = walk.nextNode(); n; n = walk.nextNode()) {
     if (n.nodeType === Node.TEXT_NODE) {
       const hit = GC.family.classify(n.textContent);
-      if (hit) current = hit;
+      if (hit) { current = hit; continue; }
+      /* An opener we do not recognise ENDS the previous relation rather than extending it.
+       * See GC.family.LOOKS_LIKE_OPENER. */
+      if (GC.family.LOOKS_LIKE_OPENER.test((n.textContent || "").trim())) current = null;
       continue;
     }
     if (n.tagName === "A" && n.hasAttribute("data-profile-id")) {
