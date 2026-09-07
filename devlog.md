@@ -30901,3 +30901,21 @@ the banner decides exactly as before, so every block written before today is una
 asymmetry is intact — nothing infers a hit from the page.
 
 **Reach so far under the Charlemagne anchor: 2 hits, 31 misses, 11 not yet answered.**
+
+**Six of six `no_panel` results have now turned out to be stated misses** — Castellanos,
+Baptist, Steiner, Flaherty, and now Katalin Varga `291026634180003195` and Vincenzo Negrini
+`6000000181036310844`. That is the whole population of `no_panel` this session; the state has
+not once meant *the search is still running*.
+
+**Pilot at 50 of 100 touched, 47 with a family scrape.** Under the Charlemagne anchor the ledger
+reads **2 hits, 40 misses, 11 not yet answered** over 53 rows.
+
+Also in: Елена Владимировна Шуман-Делакроа `6000000076774926079` — 297 on `family_tree`, three
+short of the floor, refused; Luise Cruse `6000000078891045035` cleared at 3,005 with 16
+relatives including eight half-siblings; Daniel Washabaugh `6000000022202609073` at 5,372 /
+15,000 with 136 descendants.
+
+**The Cyrillic survives the transport intact** — `Шуман-Делакроа` reads correctly in
+`geni-families/6000000076774926079-family.tsv`, as do the Hungarian `Richárd Baradlay` and the
+German `Günther`. Tool result → file tool → `PYTHONIOENCODING=utf-8` on stdin, never a shell
+heredoc.
