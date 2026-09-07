@@ -2365,6 +2365,76 @@ points on geni."* So the placeholders accumulate in our tree first; the campaign
 into real people is gated on that, and on `Forest` exports seeded at eccentric points — the same
 instrument § *"Not related to" does NOT mean not related* uses for eccentric targets.
 
+### ⛔ BOTH TIES, ALWAYS. BLOOD **AND** MARRIAGE TO CHARLEMAGNE, PLUS THE IMMEDIATE FAMILY
+
+**Emma, 2026-09-07, typed out in Notepad because the phone app kept moving her keyboard.** This
+is the specification; nothing here is inferred.
+
+> *"In the future the goal is to ideally have for each person a blood and a marriage tie to
+> charlemagne, plus their full immediate family. This creates an interconnected graph on wikidata
+> that has much more surface area for more genealogical stuff to potentially be grafted onto it
+> from other things like geni most notably, but also other sources like genealogics wikitree
+> etc."*
+
+**⛔ THE REDUNDANCY IS THE POINT. It is not waste to be optimised away.**
+
+> *"The redundancy here is the point to be clear since the kind of 'ring' of the person to
+> charlemange with the blood and non-blood gives a maximum amount of relatives to go through for
+> a minimal cost of just clicking the button twice and waiting"*
+
+So a person's deliverable is a **ring**: the blood chain to Charlemagne, the marriage/in-law
+chain to Charlemagne, and their immediate family. Two chains reach far more relatives than one,
+and the extra cost is one more click and one more wait. Do not treat the second chain as a
+fallback for when the first fails — that reading is what produced the bug this section replaces.
+
+### THE FOUR RULES, in her words
+
+1. **Both searches, always, on every person.** *"When requesting a blood relationship, you always
+   request the non-blood other ways too, and if no blood relationship found, you always look at
+   the other ways too."* Not in-law-as-fallback. Both, every time.
+2. **A blood miss with no path is NOT DONE.** *"If blood did not hit and there is no path then
+   redo it."*
+3. **⛔ DO NOT BACKFILL IN-LAW ONTO PEOPLE WHO ALREADY HAVE A BLOOD PATH.** *"I do not care about
+   non-blood relationships among people already connected because I am time conscious and this
+   shit is taking way too long and I do not want you to do that massive work. These first people
+   covered just get worse coverage and that is life."* The 12 already-resolved people keep their
+   worse coverage. This is a deliberate cost she has accepted, not an oversight to correct later.
+4. **The redone people are ORDINARY QUEUE MEMBERS.** *"it is best for them to just be normal
+   queue members in this thing lol"*, and *"order is actually not important"*. They are not a
+   separate backfill campaign — they go into the same pool as everyone else.
+
+### ⛔ ANYTHING ODD ABOUT A PERSON -> FOREST EXPORT. Stop investigating
+
+**Emma, same message:** *"for Hørlück just do a full forest export by making an ancestor of him
+and exporting forest arond him, whatever the fuck this investigation thing is that you are
+planning if there is anything odd about him just forest, if anything odd occurs with any
+individual then forest export"*.
+
+**This authorises `job.create`** — creating an ancestor and running the `Forest` export — as the
+STANDING response to an anomaly, in place of writing it up. `docs/export-seed-rules.md` is how
+the placeholder is made and `Forest` is the style, both already specified.
+
+**It replaces a habit, and that is the point.** A person who behaves oddly was becoming a
+NEEDS-INVESTIGATION line in a status report, which costs her a read and returns nothing. An
+export costs one seed and returns up to 5,000 people around them — and `Forest` is precisely the
+style that follows spouse links, which is what the in-law half of the ring needs.
+
+### How progress is tracked, and why "mark them not done" needs no editing
+
+She asked: *"however the fuck you are tracking progress in this, removing them from a tsv?"*
+
+**It is DERIVED, not stored, and no list is hand-edited.** `scripts/collector-worklist.py` recomputes
+who still needs the collector on every run, from two facts on disk:
+
+    no `geni-families/<id>-family.tsv`                    -> never scraped
+    `reports/isolates.csv` row with path_found=no and     -> blood-only miss, rule 2 says redo
+      `via` not recording that other-ways was checked
+
+So rule 2 is satisfied by the criterion itself: the moment `via` became the record of which
+search answered, every blood-only miss re-entered the pool without a row being touched. Nothing
+is deleted to mark work undone, which matters because the family scrape on those people is real
+data that must survive the re-run.
+
 ### ⛔ PLAYWRIGHT AND HEADLESS ARE A NO-GO. The agentic navigation is overhead we PAY, not a design
 
 **Emma, 2026-09-06:** *"the agentic stuff is complete overhead to be able to run this... definitely

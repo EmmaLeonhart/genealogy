@@ -88,42 +88,57 @@ GC.runIndividual = async function (job) {
   out.path_filename = path.filename;
   out.description = path.description;
 
-  if (path.state === "resolved_path" && path.hasTarget) {
-    /* 5a. Found. Both artifacts are in hand and nothing further is spent on this person. */
-    out.state = "path_found";
-    out.export_decision = "not needed -- the path resolved";
+  /* ⛔ 5. BOTH TIES, ALWAYS. Not in-law-as-fallback.
+   *
+   * **Emma, 2026-09-07:** *"When requesting a blood relationship, you always request the
+   * non-blood other ways too, and if no blood relationship found, you always look at the other
+   * ways too."* And the reason, which is why this is not waste: *"The redundancy here is the
+   * point ... the kind of 'ring' of the person to charlemange with the blood and non-blood gives
+   * a maximum amount of relatives to go through for a minimal cost of just clicking the button
+   * twice and waiting."*
+   *
+   * Her goal for a person is a RING -- a blood chain to Charlemagne, a marriage chain to
+   * Charlemagne, and the immediate family -- so the second search runs even when the first
+   * succeeded. The first version of this ran in-law only after a blood miss, which is the
+   * fallback reading she corrected.
+   *
+   * ⛔ WHAT IS NOT DONE HERE IS THE BACKFILL. *"I do not care about non-blood relationships
+   * among people already connected ... These first people covered just get worse coverage and
+   * that is life."* That is about not RE-RUNNING the twelve who already resolved; it does not
+   * make the second search optional on a person the loop is visiting now. */
+  step("inlaw");
+  const inlaw = await GC.runInLaw({ geni_id: id, label: job.label, waitMs: job.waitMs });
+  out.inlaw_state = inlaw.state;
+  out.inlaw_steps = inlaw.steps;
+  out.inlaw_tsv = inlaw.tsv;
+  out.inlaw_filename = inlaw.filename;
+  out.inlaw_description = inlaw.description;
+
+  const bloodHit = path.state === "resolved_path" && path.hasTarget;
+  const inlawHit = inlaw.state === "resolved_path";
+  /* ⛔ `neither` IS A VERDICT AND MUST BE WRITTEN. A blank `via` means *not asked*, and
+   * `scripts/collector-worklist.py` re-queues on exactly that -- so a person who genuinely
+   * misses BOTH searches would return to the pool forever unless the second miss is recorded.
+   * The distinction is the same one `read` draws for the statistics block: unmeasured is not
+   * the same fact as measured-and-empty. */
+  const asked = inlaw.state === "resolved_path" || inlaw.state === "resolved_none";
+  out.via = bloodHit && inlawHit ? "both"
+          : bloodHit ? "blood"
+          : inlawHit ? "inlaw"
+          : (path.state === "resolved_none" && asked) ? "neither" : "";
+
+  if (bloodHit || inlawHit) {
+    out.state = bloodHit && inlawHit ? "path_found_both"
+              : bloodHit ? "path_found" : "path_found_inlaw";
+    out.export_decision = "not needed -- " + out.via + " resolved";
     return out;
   }
 
   if (path.state !== "resolved_none") {
-    /* Still running, or never asked. NOT a miss -- a requested search decays back to
-     * unrequested, so this person is revisited rather than being written off. */
+    /* The BLOOD search never resolved -- still running, or never asked. NOT a miss: a requested
+     * search decays back to unrequested, so this person is revisited rather than written off. */
     out.state = path.state;
-    out.export_decision = "deferred -- the search has not resolved";
-    return out;
-  }
-
-  /* 5a-bis. ⛔ A BLOOD MISS IS NOT THE ANSWER. ASK FOR THE IN-LAW PATH BEFORE GIVING UP.
-   *
-   * **Emma, 2026-09-07:** *"in-law connections are just as valid blood is no required lol"*,
-   * and then *"WERE YOU NOT SAVING IN LAW RELATIONSHIPS"*. Geni offers a second search under
-   * *"They might be connected in other ways"*; nothing ever clicked it, so every miss this
-   * collector recorded meant only *no BLOOD path*.
-   *
-   * ⛔ AND IT RUNS ONLY HERE, AFTER A BLOOD MISS. Her instruction, same day: *"do not waste
-   * time redoing it on ones that have blood paths already."* A person who resolved above has
-   * returned already and never reaches this line. */
-  step("inlaw");
-  const inlaw = await GC.runInLaw({ geni_id: id, label: job.label, waitMs: job.waitMs });
-  out.inlaw_state = inlaw.state;
-  if (inlaw.state === "resolved_path") {
-    out.state = "path_found_inlaw";
-    out.path_steps = inlaw.steps;
-    out.path_has_target = true;
-    out.path_tsv = inlaw.tsv;
-    out.path_filename = inlaw.filename;
-    out.description = inlaw.description;
-    out.export_decision = "not needed -- an in-law path resolved";
+    out.export_decision = "deferred -- the blood search has not resolved";
     return out;
   }
 

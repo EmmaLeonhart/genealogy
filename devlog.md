@@ -31922,3 +31922,48 @@ executing and cannot touch Geni.
 0 and reads exactly like a pass — the shape `tests/test_join_sanity.py` exists against. The
 sparse checkout takes `/*` minus a few directories; if `geni-extension` ever joins that list this
 fails instead of going quiet. Dry-run locally: **9 files, all parse.**
+
+## ⛔ HER SPECIFICATION, TYPED OUT IN NOTEPAD: BOTH TIES, ALWAYS
+
+**2026-09-07.** She wrote it in Notepad because the phone app kept moving her keyboard while I
+worked. It is now `CLAUDE.md` § *BOTH TIES, ALWAYS*, and this is what changed.
+
+**The goal is a RING per person** — a blood chain to Charlemagne, a marriage chain to Charlemagne,
+and the immediate family — *"This creates an interconnected graph on wikidata that has much more
+surface area for more genealogical stuff to potentially be grafted onto it ... geni most notably,
+but also other sources like genealogics wikitree etc."*
+
+**And the redundancy is the POINT, not waste:** *"the kind of 'ring' of the person to charlemange
+with the blood and non-blood gives a maximum amount of relatives to go through for a minimal cost
+of just clicking the button twice and waiting."*
+
+**So the second search is no longer a fallback.** I had wired `runInLaw` to fire only after a
+blood miss; her rule is *"When requesting a blood relationship, you always request the non-blood
+other ways too."* `runIndividual` now runs both on every person and records `via` as
+`both`/`blood`/`inlaw`/`neither`.
+
+**⛔ AND THE TWELVE WHO ALREADY RESOLVED ARE NOT REVISITED.** *"I do not care about non-blood
+relationships among people already connected because I am time conscious ... These first people
+covered just get worse coverage and that is life."* That is an accepted cost, not a debt.
+
+**`neither` had to become a written verdict.** A blank `via` means *not asked*, and the worklist
+re-queues on exactly that — so a person who genuinely misses both searches would return to the
+pool forever. Same distinction `read` draws for the statistics block: unmeasured is not
+measured-and-empty.
+
+**Progress is DERIVED, so "mark them not done" edited nothing.** `scripts/collector-worklist.py`
+recomputes the pool from disk: no family TSV, or a `path_found=no` whose `via` does not record
+the other-ways search. The moment `via` existed, every blood-only miss re-entered the pool
+without a row being touched — which matters because those people have real family scrapes that a
+list-deletion would have destroyed.
+
+**Measured:** **2,604 outstanding — 87 blood-only misses re-queued, 2,517 never scraped**, one
+pool, sorted on the id for determinism and explicitly not as a priority order (*"order is
+actually not important"*). Checked rather than asserted: **13 ledger hits, 0 of them re-queued**;
+Anna Throndsen, whose only path is in-law, correctly stays out.
+
+**And an anomaly is now a Forest export, not an investigation.** *"if anything odd occurs with
+any individual then forest export"* — which authorises `job.create`, and is the style that
+follows spouse links, exactly what the in-law half of the ring needs.
+
+1.6.3 → 1.6.4.
