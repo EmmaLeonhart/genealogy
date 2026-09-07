@@ -47,7 +47,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
     drop_clan_suffix, drop_description_suffix, drop_label_title,
-    drop_repeated_patronymic, keep_own_surname, married_name_of,
+    drop_repeated_patronymic, generation_suffix_key, keep_own_surname, married_name_of,
     normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
@@ -192,6 +192,13 @@ def main() -> int:
     for geni_id, records in by_person.items():
         labels: dict[str, list[str]] = defaultdict(list)
         aliases: list[str] = []
+        # **The generation suffix is a fact about the PERSON, not about one name string.**
+        # Emma, 2026-09-07, on two items both labelled *Lars Osmundsen Nese*: *"these two
+        # people are clearly different but I think the I, II, Sr, Jr, d.y. suffixing was not
+        # done properly."* The younger carries `NSFX` = `d. y.` on his Foss-Eikeland record
+        # and his label comes from the record holding `_MARNM` = `Nese`, so the suffix was
+        # dropped between them. Read off every record, applied to whichever label wins.
+        generation = generation_suffix_key(*(r["nsfx"] for r in records))
         qid = records[0]["qid"]
         wd_en = records[0]["wikidata_en"]
         wd_mul = records[0]["wikidata_mul"]
@@ -438,8 +445,8 @@ def main() -> int:
         # one. `namemodel.GENERATION_SUFFIX` carries the forms and the reasoning.
         #
         # This is also why the two columns can now differ where they used to be the same string.
-        primary = normalise_generation_suffix(primary, "en")
-        mul_label = normalise_generation_suffix(mul_label, "mul")
+        primary = normalise_generation_suffix(primary, "en", generation)
+        mul_label = normalise_generation_suffix(mul_label, "mul", generation)
 
         rows.append([
             geni_id,

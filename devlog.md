@@ -31825,3 +31825,46 @@ question never asked of 80 people whose ids are on disk** — a revisit, not a l
 **Two of the misses are already checked by hand and are genuine both ways** — Anna Hørlück
 `297536201290008921` reads *"No in-law relationship was found."*, and Anna Throndsen
 `296165995120003655` was an in-law hit all along and is recorded as one.
+## 2026-09-07 — the generation suffix fell between two name records
+
+Emma, shown `Q141242551` and `Q141219063` — two items, both labelled **Lars Osmundsen Nese**:
+*"These two people are clearly different but I think the I, II, Sr, Jr, d.y. suffixing was not
+done properly."*
+
+**The younger has three name records and the suffix is on the wrong one.**
+
+    0  Lars Osmundsen Foss-Eikeland, d. y.
+    1  Lars Osmundsen /Foss-Eikeland/ d. y.    NSFX = d. y.
+    2  Lars Osmundsen /Foss-Eikeland/          _MARNM = Nese
+
+§ *The MARRIED name is the real name* takes the label from record 2. The suffix is on record 1.
+`normalise_generation_suffix` matched against the label STRING, so there was nothing in it to
+match and the suffix was dropped — leaving two different men with identical labels and no way
+to tell them apart.
+
+**A generation suffix is a fact about the PERSON, not about one of their name strings.**
+`namemodel.generation_suffix_key` reads it off every record, and `normalise_generation_suffix`
+now takes it as an argument, so it survives a label built from a different record and survives
+the married-name rebuild in the creation block, which discards the label entirely.
+
+    mul  Lars Osmundsen Nese II
+    en   Lars Osmundsen Nese Jr.
+
+**234 people lose it this way, 19 of whom already have an item.** Only the person's own `NSFX`
+counts. Matching a suffix anywhere in a rendered name instead gives 515 and sweeps in
+`Juan Martín Roco de Campofrio Señor de Campofrío`, a `Dorothy Roberts (dau`, and a bare `King`
+left behind by a title truncation — the same reason every other rule here matches the field
+rather than a trailing token.
+
+**And the correction ground for existing items did not exist, though `CLAUDE.md` said it did.**
+§ *WIKIDATA'S LABEL BEATS OURS* lists the narrow exceptions as *"an abbreviation we expanded,
+the birth-name flip, a description marker, a generation suffix — each of which
+`_label_corrections` names and tests for specifically"*. It had two grounds, and a generation
+suffix was not one of them, so `Q141219063` would have stayed wrong however often the batch ran.
+The third ground is now there, tested the same way the abbreviation ground is: **the live label
+plus this person's own suffix must equal exactly what we want**, so the only difference between
+the two is the suffix and nothing else can be rewritten.
+
+It is the one ground that emits a different string per language — `mul` takes `II` and `en`
+takes `Jr.`, per § *A GENERATION SUFFIX GOES LAST* — where the other two write one string to
+both. The CJK labels follow the `mul` form.

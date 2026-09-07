@@ -52,7 +52,8 @@ sys.stdout.reconfigure(encoding="utf-8")
 from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
-    drop_description_suffix, normalise_generation_suffix, statements_for,
+    drop_description_suffix, generation_suffix_key,
+    normalise_generation_suffix, statements_for,
     suffix_is_native)
 
 
@@ -847,7 +848,8 @@ def _birth_forms(label, alternates):
     return out
 
 
-def _label_corrections(our_items, labels, table, state, fields=None):
+def _label_corrections(our_items, labels, table, state, fields=None,
+                       generation=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
 
     **Emma, 2026-08-29:** *"You should be adding into the generated quick statements a block
@@ -937,6 +939,38 @@ def _label_corrections(our_items, labels, table, state, fields=None):
             out.append(f"#   {qid}: set the en label to {want!r}")
             out.append(f'{qid}\tLen\t"{want}"')
             ja, zh, ko = label_in(want, table)
+            if ja:
+                for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
+                    out.append(f"#   {qid}: set the {code} label")
+                    out.append(f'{qid}\tL{code}\t"{value}"')
+            continue
+        # **A MISSING GENERATION SUFFIX is its own ground.** Emma, 2026-09-07, shown
+        # `Q141242551` and `Q141219063` both labelled *Lars Osmundsen Nese*: *"These two people
+        # are clearly different but I think the I, II, Sr, Jr, d.y. suffixing was not done
+        # properly."* The younger carries `NSFX` = `d. y.` on a name record that is not the one
+        # his label was built from, so it fell between them -- and this block had no ground for
+        # it, though `CLAUDE.md` § *WIKIDATA'S LABEL BEATS OURS* has listed "a generation
+        # suffix" among the narrow exceptions all along.
+        #
+        # **The test is that the live label PLUS this person's own suffix is exactly what we
+        # want**, so the only difference between the two is the suffix and nothing else can be
+        # rewritten -- the same shape as the abbreviation ground above.
+        #
+        # `mul` takes the numeral and `en` the abbreviation, per § *A GENERATION SUFFIX GOES
+        # LAST*, so the two languages get different strings here where the other grounds emit
+        # one. The CJK labels follow the `mul` form.
+        _key = (generation or {}).get(geni_id, "")
+        _want_mul = normalise_generation_suffix(have, "mul", _key)
+        _want_en = normalise_generation_suffix(have, "en", _key)
+        if _key and want in (_want_mul, _want_en) and _want_mul != have:
+            out.append(f"#   {qid}: holds {have!r}; Geni records the suffix {_key!r}")
+            out.append(f"#   {qid}: keep the outgoing label as an alias before it is replaced")
+            out.append(f'{qid}\tAmul\t"{have}"')
+            out.append(f"#   {qid}: set the mul label to {_want_mul!r}")
+            out.append(f'{qid}\tLmul\t"{_want_mul}"')
+            out.append(f"#   {qid}: set the en label to {_want_en!r}")
+            out.append(f'{qid}\tLen\t"{_want_en}"')
+            ja, zh, ko = label_in(_want_mul, table)
             if ja:
                 for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
                     out.append(f"#   {qid}: set the {code} label")
@@ -5934,6 +5968,7 @@ def main():
     # model was re-parsing the rendered label. The first NAME record wins; later ones
     # are alternate forms and `derive-labels.py` already owns those.
     fields = {}
+    generation = {}
     with open(ROOT / "reports" / "display-names.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids and row["geni_id"] not in fields:
@@ -5959,6 +5994,16 @@ def main():
                     given_name.get(row["geni_id"], "").split()
                     + (row.get("givn") or "").split()
                     + (row.get("nick") or "").split()[:1]))
+            # **The generation suffix is read off EVERY record, not just the first.** It is a
+            # fact about the person, and Geni files it on whichever name record carries it --
+            # for `Q141219063` that is his Foss-Eikeland record, while his label comes from the
+            # one holding `_MARNM` = `Nese`, so it fell between them. Emma, 2026-09-07: *"the
+            # I, II, Sr, Jr, d.y. suffixing was not done properly."* This sits OUTSIDE the
+            # first-wins guard above on purpose; everything else there is per-record.
+            if row["geni_id"] in ids and not generation.get(row["geni_id"]):
+                key = generation_suffix_key(row.get("nsfx", ""))
+                if key:
+                    generation[row["geni_id"]] = key
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -6729,8 +6774,12 @@ def main():
             # label reaching here by any other route is unfiltered. It costs one call.
             _nsfx_new = (fields.get(g) or {}).get("nsfx", "")
             primary = drop_description_suffix(primary, _nsfx_new)
-            mul_form = normalise_generation_suffix(primary, "mul")
-            en_form = normalise_generation_suffix(primary, "en")
+            # `generation` rather than `_nsfx_new`: the suffix may sit on a name record
+            # this person's `fields` row is not, and `primary` is rebuilt from `GIVN` +
+            # `_MARNM` for a married person, which drops anything the label carried.
+            _gen = generation.get(g, "")
+            mul_form = normalise_generation_suffix(primary, "mul", _gen)
+            en_form = normalise_generation_suffix(primary, "en", _gen)
             if re.search(r"[A-Za-z]", primary):
                 lines.append(f'LAST\tLen\t"{qs(en_form)}"')
             lines.append(f'LAST\tLmul\t"{qs(mul_form)}"')
@@ -7203,7 +7252,8 @@ def main():
         print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
     lines = _cap_label_edits(
         lines, clan_block,
-        _label_corrections(our_items, labels, table, state, fields) + _cjk_follows_mul(table)
+        _label_corrections(our_items, labels, table, state, fields, generation)
+        + _cjk_follows_mul(table)
         + _missing_cjk_labels(our_items, labels, table, live_labels),
         priority=_cjk_priority_qids(our_items))
 

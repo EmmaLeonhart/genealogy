@@ -274,10 +274,40 @@ _SUFFIX_RE = re.compile(
     ) + r")(?![\w.])", re.I)
 
 
-def normalise_generation_suffix(label: str, style: str) -> str:
+def generation_suffix_key(*values: str) -> str:
+    """The `GENERATION_SUFFIX` key any of these `NSFX` values holds, else `""`.
+
+    Geni files the suffix in the name-suffix field, and a person's suffix is a fact about the
+    PERSON rather than about one of their name strings — which is how it went missing. See
+    `normalise_generation_suffix`.
+    """
+    for value in values:
+        key = " ".join((value or "").split()).casefold().strip(",")
+        if key in GENERATION_SUFFIX:
+            return key
+    return ""
+
+
+def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
     """Move a generation suffix to the END of the label, in its `mul` or `en` form.
 
     `style` is `"mul"` or `"en"`. See `GENERATION_SUFFIX` for where both forms come from.
+
+    **`nsfx` is the person's own suffix field, and it is how the suffix survives a label built
+    from a DIFFERENT name record.** Emma, 2026-09-07, on `Q141242551` and `Q141219063`, two
+    items both labelled *Lars Osmundsen Nese*: *"These two people are clearly different but I
+    think the I, II, Sr, Jr, d.y. suffixing was not done properly."*
+
+    The younger has three name records — `Lars Osmundsen /Foss-Eikeland/ d. y.` carrying
+    `NSFX` = `d. y.`, and `Lars Osmundsen /Foss-Eikeland/` with `_MARNM` = `Nese`. § *The
+    MARRIED name is the real name* takes the label from the second, and the suffix is on the
+    first, so it was dropped and the two men came out with identical labels. Reading the
+    suffix off the person rather than off the string makes his `mul` read
+    **`Lars Osmundsen Nese II`**.
+
+    **234 people lose it this way**, 19 of whom already have an item. Only the person's own
+    `NSFX` counts — matching a suffix anywhere in a rendered name instead gives 515 and sweeps
+    in `Señor de Campofrío` and a `King` left behind by a title truncation.
 
     **THE SUFFIX GOES LAST. It is not rewritten where it stands.** Emma, 2026-09-05, on a first
     version that substituted in place and produced `Lars Jonson II Skrudland`: *"Lars Jonson
@@ -300,9 +330,17 @@ def normalise_generation_suffix(label: str, style: str) -> str:
     rather than a second suffix being appended. The comma that introduced the suffix goes with
     it, so nothing is left reading `Welhaven, II`.
     """
-    if not label or not _SUFFIX_RE.search(label):
+    if not label:
         return label
     index = 0 if style == "mul" else 1
+    targets = {v[0] for v in GENERATION_SUFFIX.values()} | {
+        v[1] for v in GENERATION_SUFFIX.values()}
+    if not _SUFFIX_RE.search(label):
+        key = generation_suffix_key(nsfx)
+        # Nothing to append, or the label already says it another way.
+        if not key or any(token in targets for token in label.split()):
+            return label
+        return f"{label} {GENERATION_SUFFIX[key][index]}".strip()
 
     want = ""
 
@@ -323,8 +361,6 @@ def normalise_generation_suffix(label: str, style: str) -> str:
     # **Across BOTH styles, because `II` and `Jr.` say the same thing.** A numeral already in the
     # label is what the person is called; the converted suffix is dropped rather than stacked
     # beside it, which is what left the `en` form reading `Daniel Ström II Jr.`
-    targets = {v[0] for v in GENERATION_SUFFIX.values()} | {
-        v[1] for v in GENERATION_SUFFIX.values()}
     if any(token in targets for token in out.split()):
         return out
     return f"{out} {want}".strip()

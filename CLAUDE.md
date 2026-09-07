@@ -649,6 +649,32 @@ with `mul` — a French or German label may spell the name differently for good 
 **The CJK labels follow the `mul` form**, per § *The MARRIED name is the real name*: they are the
 transliteration of the primary label. `ラース・ヨンソン・スクルドランド2世`.
 
+**⛔ A GENERATION SUFFIX IS A FACT ABOUT THE PERSON, NOT ABOUT ONE NAME STRING.** Emma,
+2026-09-07, shown `Q141242551` and `Q141219063` — two items, both labelled *Lars Osmundsen
+Nese*: *"These two people are clearly different but I think the I, II, Sr, Jr, d.y. suffixing
+was not done properly."*
+
+The younger has three name records: `Lars Osmundsen /Foss-Eikeland/ d. y.` carrying `NSFX` =
+`d. y.`, and `Lars Osmundsen /Foss-Eikeland/` carrying `_MARNM` = `Nese`. § *The MARRIED name
+is the real name* takes the label from the second and the suffix is on the first, so
+`normalise_generation_suffix` — which matched against the label STRING — found nothing and
+dropped it. Two different men, one label, nothing to tell them apart.
+
+`namemodel.generation_suffix_key` reads the suffix off **every** record and
+`normalise_generation_suffix` takes it as an argument, so it survives a label built from a
+different record and survives the creation block's married-name rebuild, which discards the
+label entirely. **234 people, 19 of them already with an item.** Only the person's own `NSFX`
+counts: matching a suffix anywhere in a rendered name gives 515 and sweeps in `Señor de
+Campofrío` and a bare `King` left by a title truncation.
+
+**And the correction ground for existing items did not exist, though this file said it did.**
+§ *WIKIDATA'S LABEL BEATS OURS* lists a generation suffix among the exceptions *"each of which
+`_label_corrections` names and tests for specifically"*. It had two grounds and this was not
+one, so a live item stayed wrong however often the batch ran. The third ground is tested like
+the abbreviation one — **the live label plus this person's own suffix must equal exactly what
+we want** — and it is the only ground that emits a different string per language, `II` for
+`mul` and `Jr.` for `en`.
+
 **And the rule existed for a day before anything called it.** `normalise_generation_suffix` was
 wired into `derive-labels.py` and the label-corrections pass, and **not** into the block that
 writes a new item's `Lmul`/`Len`/`Lja`/`Lzh`/`Lko` — so every creation carried the Norwegian
