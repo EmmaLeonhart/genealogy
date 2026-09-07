@@ -2873,6 +2873,21 @@ label — all of that is ordinary work now, not a rule violation. The constraint
 offers batching (`wbgetentities` takes 50 ids), do not fan out one request per item when one
 request would do, and do not hammer to finish faster.
 
+**⛔ AND WE WERE 429ed, MEASURED 2026-09-07 in pipeline run 246.** *"Your bot is making too many
+requests"* — **every chunk of every live read in `build-garborg-name-items.py` failed**: all 137
+chunks of the description check over 6,833 items, then both chunks of the `P144` check, which
+inherited the throttled state. So the whole existing-item enrichment emitted nothing that run —
+`0 P144 to add`, `0 P460`, and `0` of the `P144` removals — while printing it as *"held, the live
+read failed"*, which reads as a soft note rather than as the feature being dead.
+
+`live_name_items._get` was the hand-rolled client with no pacing and no retry, next to
+`genimerge.wikidata`, which has had a delay, `Retry-After` and a back-off ladder all along. It now
+has the same, in `_get` because that is the one place every caller goes through. And
+`GIVE_UP_AFTER = 5` stops a pass that is plainly being refused, because retrying turns a fast
+total failure into a two-hour one — the same shape as the edit runner stopping after five
+refusals. **A hold that fires on every item every run is indistinguishable from the feature not
+existing**, which is why the pacing and the give-up go in together.
+
 **What survives from the old rule, because the reasoning was never wrong:** the offline store under
 `wikidata/items/` with its index is still the right first place to look — it is faster, it costs
 Wikidata nothing, and a question answerable there needs no request at all. Reach for the network

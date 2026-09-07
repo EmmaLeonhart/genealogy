@@ -31527,3 +31527,29 @@ Three things the wiring had to get right:
 The comment in `DESCRIPTION_FOR` read *"matronymic currently fires for nothing, and that answers
 her question"* until today. It was measuring the classifier rather than the corpus: a `-datter`
 token is classed `patronymic` whatever it names, so nothing could ever have fired.
+
+**And the removals did NOT reach the batch — Wikidata 429ed us, and reading the run log is what
+found it.** Run 246 emitted `0` removals, and the tempting reading was that Emma had removed
+`Q58785388` *Junna* herself. She had not. The log says:
+
+    [name-items] checking 6,833 existing name items for a missing description
+    [name-items]    chunk at 0 failed (HTTP Error 429: Your bot is making too many requests...)
+    ... all 137 chunks ...
+    [name-items] checking 89 existing patronymic items for P144 based on and P460
+    [name-items]    0 P144 statement(s) to add; 89 item(s) held, the live read failed
+    [name-items]    0 P144 statement(s) to remove
+
+**The description check fires 137 `wbgetentities` calls back to back with no pause**, which is
+what earns the 429; the `P144` check then inherits it. § *Querying Wikidata is ALLOWED. Be polite
+about the rate* is the rule broken — *"do not hammer to finish faster"*.
+
+`live_name_items._get` had no pacing and no retry, while `genimerge.wikidata` beside it has had a
+delay, `Retry-After` handling and a back-off ladder from the start. `_get` now has the same, and
+it goes there rather than at a call site so the next caller cannot be written to hammer again.
+`GIVE_UP_AFTER = 5` bounds the cost: 137 chunks each retrying through (2, 5, 15, 45) is over two
+hours of runner time for nothing.
+
+**The failure was invisible because it was polite.** The code holds rather than emitting blind,
+which is right and is why nothing wrong went out — but a hold that fires on every item every run
+looks exactly like a feature that does nothing. I claimed the removals would land in the pipeline
+and they did not; the claim was checkable and I did not check it until the batch came back empty.

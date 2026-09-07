@@ -203,6 +203,19 @@ PROP_FOR = {"given": "P735", "family": "P734", "patronymic": "P5056",
 #: Both are correct and both are emitted by this file, in their own places.
 BASED_ON = "P144"
 
+#: **Stop a live pass after this many chunks fail in a row.**
+#:
+#: Measured 2026-09-07, run 246: all 137 chunks of the description check 429ed, then both chunks
+#: of the `P144` check. Pacing and retrying `live_name_items._get` is the fix for the cause, but
+#: it turns a fast total failure into a slow one -- 137 chunks each retrying through a
+#: (2, 5, 15, 45) ladder is over two hours of runner time for nothing.
+#:
+#: So a pass that is plainly being refused stops, exactly as the edit runner stops after five
+#: refusals in a row: that is a throttled account or a changed API rather than a bad chunk, and
+#: grinding through the rest costs time and answers nothing. The items are HELD either way --
+#: § *`LookupUnavailable`* -- so stopping early loses nothing but the waiting.
+GIVE_UP_AFTER = 5
+
 #: The User-Agent every request from this file carries. Wikimedia answers an empty one with a
 #: bare 403, so it is a constant rather than an environment lookup that can be missing on a
 #: runner. Same shape as `live_name_items`' own default.
@@ -732,7 +745,7 @@ def main():
         ids = sorted(want)
         print("")
         print(f"checking {len(ids):,} existing name items for a missing description")
-        missing = 0
+        missing, consecutive = 0, 0
         for k in range(0, len(ids), 50):
             chunk = ids[k:k + 50]
             try:
@@ -741,7 +754,13 @@ def main():
                                 "ids": "|".join(chunk)}, AGENT)
             except Exception as exc:                                   # noqa: BLE001
                 print(f"   chunk at {k} failed ({exc}); those items are left alone")
+                consecutive += 1
+                if consecutive >= GIVE_UP_AFTER:
+                    print(f"   {consecutive} chunks failed in a row -- stopping this pass "
+                          f"rather than retrying {len(ids) - k - 50:,} more items")
+                    break
                 continue
+            consecutive = 0
             for q, ent in (data.get("entities") or {}).items():
                 if "missing" in ent or q not in want:
                     continue
@@ -807,7 +826,7 @@ def main():
         ids = sorted(backfill)
         print("")
         print(f"checking {len(ids):,} existing patronymic items for P144 based on and P460")
-        claims_of, held = {}, 0
+        claims_of, held, consecutive = {}, 0, 0
         for k in range(0, len(ids), 50):
             chunk = ids[k:k + 50]
             try:
@@ -819,7 +838,14 @@ def main():
                 # the check is not to propose what is already there.
                 held += len(chunk)
                 print(f"   chunk at {k} could not be read ({exc}); those items are held")
+                consecutive += 1
+                if consecutive >= GIVE_UP_AFTER:
+                    held += max(0, len(ids) - k - 50)
+                    print(f"   {consecutive} chunks failed in a row -- stopping this pass; "
+                          f"{held:,} item(s) held in total")
+                    break
                 continue
+            consecutive = 0
             for qid, ent in (data.get("entities") or {}).items():
                 if "missing" in ent or qid not in backfill:
                     continue

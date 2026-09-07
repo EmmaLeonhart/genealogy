@@ -66,6 +66,7 @@ from __future__ import annotations
 import json
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 
 API = "https://www.wikidata.org/w/api.php"
@@ -98,11 +99,63 @@ class LookupUnavailable(Exception):
     """
 
 
+#: The floor between two requests from this process, in seconds, and the 429 back-off ladder.
+#:
+#: **Measured 2026-09-07, pipeline run 246: EVERY live read in the name-items generator failed
+#: with `HTTP Error 429: Your bot is making too many requests`** — all 137 chunks of the
+#: description check over 6,833 items, and then all 2 chunks of the `P144` check, which inherited
+#: the rate-limited state. So the whole existing-item enrichment emitted nothing: *"0 P144
+#: statement(s) to add; 89 item(s) held, the live read failed"*, and the same for `P460` and for
+#: the `P144` REMOVALS Emma asked for on the `Junna` items.
+#:
+#: `CLAUDE.md` § *Querying Wikidata is ALLOWED. Be polite about the rate* is the rule this broke:
+#: *"do not fan out one request per item when one request would do, and do not hammer to finish
+#: faster."* 137 `wbgetentities` calls back to back with no pause is hammering, and Wikimedia
+#: said so.
+#:
+#: **It lands in `_get` because that is the one place every caller goes through.** Pacing it at a
+#: call site would leave the next caller written to hammer again — the same reasoning that puts
+#: `given_name_run` and `drop_description_suffix` each in one place.
+_MIN_INTERVAL = 0.25
+_BACKOFF = (2, 5, 15, 45)
+_last_request = 0.0
+
+
 def _get(params, agent):
-    q = urllib.parse.urlencode(params)
-    req = urllib.request.Request(API + "?" + q, headers={"User-Agent": agent})
-    with urllib.request.urlopen(req, timeout=60) as fh:
-        return json.loads(fh.read().decode("utf-8"))
+    """One paced, 429-aware GET against the Wikidata API.
+
+    **A 429 is retried, never swallowed.** The callers here treat a failed lookup as *hold this
+    item* rather than as *nothing is there* — which is right and is why run 246 emitted no wrong
+    statement — but a hold that fires on every item every run is indistinguishable from the
+    feature not existing. Retrying is what makes the hold mean what it says.
+
+    `Retry-After` is honoured when Wikimedia sends one, because their number is better than ours.
+    """
+    global _last_request
+    for attempt, wait in enumerate((0,) + _BACKOFF):
+        if wait:
+            time.sleep(wait)
+        gap = _MIN_INTERVAL - (time.monotonic() - _last_request)
+        if gap > 0:
+            time.sleep(gap)
+        q = urllib.parse.urlencode(params)
+        req = urllib.request.Request(API + "?" + q, headers={"User-Agent": agent})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as fh:
+                return json.loads(fh.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            # 429 too many requests, 503 service unavailable: ours to wait out. Anything else
+            # -- a 400 on a malformed id, a 404 -- is a real answer and is raised at once.
+            if exc.code not in (429, 503) or attempt == len(_BACKOFF):
+                raise
+            retry_after = (exc.headers or {}).get("Retry-After")
+            try:
+                if retry_after and int(retry_after) > 0:
+                    time.sleep(min(int(retry_after), 120))
+            except (TypeError, ValueError):
+                pass
+        finally:
+            _last_request = time.monotonic()
 
 
 def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing.com)"):
