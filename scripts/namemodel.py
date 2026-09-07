@@ -579,6 +579,9 @@ _DESCRIPTION = (
     'ugift', '殤',
 )
 
+#: the `_DESCRIPTION` group, casefolded, for the LABEL rule
+_DESCRIPTION_MARKERS = frozenset(t.casefold() for t in _DESCRIPTION)
+
 #: a dynasty or clan tag
 _DYNASTY = (
     'bagratids', 'bjälboätten', 'folkungaätten', 'riurikaitis', 'rurikid',
@@ -705,6 +708,53 @@ def drop_title_suffix(label: str, nsfx: str) -> str:
         toks.pop()
         suffix.pop()
     return " ".join(toks).strip() or label
+
+
+def drop_description_suffix(label: str, nsfx: str) -> str:
+    """`label` with a DESCRIPTION marker out of its own `NSFX` removed. `ogift` and its kin.
+
+    **Emma, 2026-09-07**, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*:
+    *"ogift is some kind of suffix that shouldn't have been treated as part of the name, and
+    as a result it needs to be corrected on everyone that has it in their labels."* `ogift`
+    is Swedish for *unmarried*.
+
+    **The token was never a name statement and the machinery for that already existed.** It
+    sits in `_DESCRIPTION`, whose own comment reads *"a description of the person, never a
+    name"*, so `drop_title_suffix` has always kept it out of `P735` *given name* and `P734`
+    *family name*. What nothing removed it from is the LABEL, because
+    `build-display-names.py` concatenates `givn + surn + NSFX` into `display_name` and
+    `derive-labels.py` takes that string whole. § *A TITLE IS NOT A NAME* says the tail rule
+    *"does not touch the LABEL"* and leaves what a label should read as a separate question;
+    this answers it for one class of token and for no other.
+
+    **Scoped to `_DESCRIPTION`, deliberately.** `drop_title_suffix` would strip this label and
+    also `Graf`, `Queen` and `Knight` from every label carrying one, which is a far larger
+    change than the one asked for and reverses a ruling of hers rather than extending it. A
+    title is a thing a person was; a description marker is an annotation about the record.
+
+    **The person's OWN `NSFX`, never a bare word list** -- the same exactness that keeps
+    `Anna King` her surname. 34 people carry `Twin` or `Infant` somewhere in a *name* field
+    and are untouched here; only a token the profile itself files as a suffix is removed.
+
+    **The comma that introduced the marker goes with it**, so `Josiah Wood I, twin` becomes
+    `Josiah Wood I` and never `Josiah Wood I,` -- the rule
+    `normalise_generation_suffix` already carries for the same reason.
+
+    **Never to empty.** A label that is nothing but a marker keeps it: an item labelled
+    nothing at all is worse than one labelled oddly, and `label_for` is the one place a label
+    is emptied on purpose.
+    """
+    if not label or not nsfx:
+        return label
+    toks = label.split()
+    suffix = nsfx.split()
+    while toks and suffix and toks[-1] == suffix[-1]:
+        if toks[-1].strip("()[]{}.,").casefold() not in _DESCRIPTION_MARKERS:
+            break
+        toks.pop()
+        suffix.pop()
+    out = " ".join(toks).strip().rstrip(",").strip()
+    return out or label
 
 
 def drop_title_tail(label: str) -> str:

@@ -778,6 +778,61 @@ Fixing it moved name statements **145 → 157** on the live batch — the titles
 real surnames the positional parse had been missing in: `Fleming`, `Boije`, `Henckel`,
 `Donnersmarck`, `Oxenstierna`, `Munck`, `Olofsson`, `Eriksdotter`.
 
+### A DESCRIPTION MARKER COMES OUT OF THE LABEL. `ogift` is not a name
+
+**Emma, 2026-09-07**, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is
+some kind of suffix that shouldn't have been treated as part of the name, and as a result it
+needs to be corrected on everyone that has it in their labels."* `ogift` is Swedish for
+**unmarried**.
+
+**The token was never a name statement, and the machinery to keep it out already existed.** It
+sits in `namemodel._DESCRIPTION`, whose own comment reads *"a description of the person, never
+a name"*, so `drop_title_suffix` has always kept it out of `P735` *given name* and `P734`
+*family name*. What nothing removed it from is the **label**: `build-display-names.py`
+concatenates `givn + surn + NSFX` into `display_name` and `derive-labels.py` takes that string
+whole. § *A TITLE IS NOT A NAME* says the tail rule *"does not touch the LABEL"* and leaves what
+a label should read as a separate question. **This is that question answered for one class of
+token and for no other.**
+
+**The fact is NOT re-emitted as anything.** Her ruling the same day, choosing between four
+readings of *"incorporated so it will be translated or whatever"*: nothing goes in its place.
+The Geni-rendered string is what `P1810` *subject named as* carries on the `P2600` by design, so
+the marker is not lost — it stays as the name Geni renders. **No `P26` *spouse* with no value,
+no alias, no per-language rendering.** This is what § *A TITLE IS NOT A NAME* already does with
+`Graf` and `Queen`: dropped from the name, and nothing put in its place.
+
+**SCOPE IS DESCRIPTIONS ONLY — her call, and the neighbouring population was measured and put to
+her.** `drop_title_suffix` would strip `Graf`, `MP` and `Kt.` from **7,075** labels, 6,385 of
+them beyond this change; she chose the 631. So a title in a label stays, and
+§ *A TITLE IS NOT A NAME*'s *"it does not touch the LABEL"* is intact for titles. The difference
+that makes the two separable: **a title is a thing the person was; a description marker is an
+annotation about the record.**
+
+`namemodel.drop_description_suffix` is the one place. Three call sites, wired together rather
+than a day apart — `derive-labels.py` (the label and the married-name alias), and both the
+correction path and the **creation** block of `build-garborg-day.py`. § *Code that is WRITTEN
+but never CALLED is not done* is why the creation block is on that list: the generation-suffix
+rule was correct and unwired there for a day, and every creation went out carrying `d.y.` in
+five languages.
+
+**It matches the person's OWN `NSFX`, never a bare word list against a trailing token** — the
+exactness that keeps `Anna King` her surname, and it matters here too: 34 people carry `Twin` or
+`Infant` in a *name* field and are untouched. **The comma that introduced the marker goes with
+it**, so `Josiah Wood I, twin` becomes `Josiah Wood I` and not `Josiah Wood I,`. **Never to
+empty**: a label that is nothing but a marker keeps it.
+
+**Measured over the real corpus, 1,451,993 people: 689 labels change**, plus 7 married-name
+aliases. `reports/description-markers-in-labels.tsv` is the census, one row per person, with the
+before and after — `twin` 238, `tvilling` 91, `infant` 69, `ug` 52, `ugift` 51, `tvill` 34,
+`ogift` 25, `legendary` 18, `concubine` 12, `heiress` 10, `oä` 8, `solteira` 8, `fictional` 6,
+`mistress` 6, `fictitious` 5, `tv` 3. **Only one of the 631 is live on Wikidata** — the one she
+found — and the correction path emits it for `mul`, `en`, `en-ca`, `en-us` and `fr`, every
+language the item carried it in.
+
+**The corroboration is that three labels moved INTO exact agreement with Wikidata**, 11,154 →
+11,157 of 40,898 in `reports/labels.md`. Nothing was tuned to produce that; it is what a
+correct removal looks like from the outside.
+
 ### PARSE PATRONYMICS BY FORM. Do not parse a name positionally
 
 **Emma, 2026-09-04, and it is the diagnosis of the whole class rather than of one bug:**
