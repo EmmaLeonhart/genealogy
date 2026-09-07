@@ -30946,3 +30946,27 @@ the structure is the informative part and a spouse link is structure.
 **Also in:** Theodor Fanta `6000000031175749115` cleared at 1,728 / 1,072; Alan Ameche
 `6000000041544139488` refused at 92 / 11 despite eleven recorded relatives; Deron Williams
 `6000000055041621884` refused at 64 / 48, a seventh `no_panel` that was a stated miss.
+
+## ⛔ GEORGE DROUILLARD: `family_tree` 2, `blood_relatives` 15,000, and Geni says no
+
+`6000000018080676477`, of the Lewis and Clark expedition, is the sharpest case the floor has
+produced and it is a person this repo already knows the answer for. `CLAUDE.md` § *The working
+Geni capture call lives in ONE transcript* records that a French-Canadian `Forest` export near
+him returned 5,000 people, 7 of them already in our tree, **all 7 in the main component**, with
+**Drouillard four hops from Charles Lespérance** — which is what established that a Geni
+*"no relationship found"* is a database failure rather than a negative result.
+
+Today the collector met him blind and produced exactly that reading from the statistics alone:
+
+    family_tree        2        <- the component the relationship search can walk
+    blood_relatives    15,000   <- AT THE CEILING
+    ancestors          62
+    verdict            miss, and EXPORT WARRANTED, cleared by blood_relatives
+
+**A conjunctive floor would have refused him, and `family_tree` alone would have refused him
+hardest of anyone this session.** Two. The disjunctive rule is the whole reason he is flagged,
+and the independently-known answer says the flag is right.
+
+**Also in:** Ermenegildo Castiglioni `6000000090830529714` 11/8, Sergio Quinzio
+`6000000177397455823` 8/3, both `no_panel` misses below the floor — twelve `no_panel` results
+this session and twelve stated misses.
