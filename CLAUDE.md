@@ -1381,6 +1381,39 @@ compared to anything**, including on rows marked *attested*: `Schmidt` carries `
 Korean writes `슈미트`. Given § *CJK INCLUDES KOREAN*, that is a larger hole than any rule bug
 here, and nothing addresses it.
 
+### A PERSON IS CREATED WITH THEIR NAME LINKS. Two things were stopping it
+
+**Emma, 2026-09-07:** *"individuals are supposed to be created already having name links and
+this does not seem to be happening reliably at least."* Measured on one batch: of **56** people
+created, **9 carried no name statement at all**, and of the 184 they should have carried,
+**107 had no item to link to**. Exactly **1 of the 56** could link every token.
+
+**⛔ CAUSE ONE — the first `NAME` record is often the one with NO components.** Geni writes the
+bare rendered form as one record and the parsed one as another:
+
+    0  Anders Persson Hägg   givn=''       surn=''        marnm=''
+    1  Anders /Persson/      givn='Anders' surn='Persson' marnm='Persson Hägg'
+
+`fields` took row 0 first-wins, `statements_for` had nothing to parse, and the person went out
+with no name at all. **The components are backfilled from the first row that has them;
+`display_name` is NOT** — that column is what `P1810` *subject named as* carries, and for
+`Anders Persson Hägg` the bare row is the fuller rendering. Two questions off two rows.
+
+**⛔ CAUSE TWO — the name-item step cannot see who the ring is about to create.**
+`build-garborg-name-items.py` draws its bearers from `garborg-qids.tsv`, people who **already**
+hold a QID, and ranks by bearer count. A token needed by somebody being created today was
+invisible to it and lost to tokens borne by hundreds of long-standing ledger people. The cap is
+40 name items a day against **~90 new tokens a batch**.
+
+`build-garborg-day.py --compose` now writes `reports/name-tokens-needed.tsv` and the name step
+ranks those first — the two run in that order, which is what makes it possible.
+**It does not make TODAY's links appear**: a person and a name item minted in one batch cannot
+point at each other. It makes tomorrow's land, which is § *The batches are a SEQUENCE* working
+rather than drifting.
+
+**Gating creation on full name coverage was measured and REFUSED**: 1 of 56 people qualifies,
+so it would stop the ring rather than fix it.
+
 ### A TOKEN THE CORPUS NEVER USES AS A FIRST GIVEN NAME IS NOT A GIVEN NAME
 
 **Emma, 2026-09-07, on `Q141352791`** — an item labelled `Garborg`, `P31` *given name*, minted

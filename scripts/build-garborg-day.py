@@ -2523,6 +2523,22 @@ def _carries_marker(label):
     return any(tok.casefold().strip(".,") in markers for tok in (label or "").split())
 
 
+def statements_tokens(record):
+    """`(token, usage, ordinal)` for one `fields` row, with the never-items dropped.
+
+    The same reading `build-garborg-name-items.py` does, so the file the ring writes and the
+    file the name step reads cannot disagree about what a token IS.
+    """
+    got = classify_fields(record.get("givn", ""), record.get("surn", ""),
+                          marnm=record.get("marnm", ""))
+    out = []
+    for token, usage, ordinal in got:
+        if usage in ("particle", "unknown", "nickname"):
+            continue
+        out.append((token, "family" if usage == "married" else usage, ordinal))
+    return out
+
+
 def _name_fields(record):
     """`(givn, surn, marnm)` off a `fields` row, whitespace-normalised. `()`-safe."""
     record = record or {}
@@ -6027,6 +6043,30 @@ def main():
                 key = generation_suffix_key(row.get("nsfx", ""))
                 if key:
                     generation[row["geni_id"]] = key
+            # **⛔ THE FIRST NAME RECORD IS OFTEN THE ONE WITH NO COMPONENTS.** Emma,
+            # 2026-09-07: *"individuals are supposed to be created already having name links and
+            # this does not seem to be happening reliably."* Geni writes the bare rendered form
+            # as one `NAME` record and the parsed one as another, and the bare one carries empty
+            # `GIVN`, `SURN` and `_MARNM`:
+            #
+            #     0  Anders Persson Hägg   givn=''       surn=''        marnm=''
+            #     1  Anders /Persson/      givn='Anders' surn='Persson' marnm='Persson Hägg'
+            #
+            # First-wins takes row 0, `statements_for` has nothing to parse, and the person is
+            # created with **NO name statement at all** -- 6 of 56 creations in one batch, every
+            # one of them somebody whose name Geni records perfectly well.
+            #
+            # **The components are backfilled; `display_name` is NOT.** That column is what
+            # `P1810` *subject named as* carries -- *"I want us to have the property P1810 with
+            # the specific name geni gives them"* -- and for `Anders Persson Hägg` the bare row
+            # is the fuller rendering. Two different questions off two different rows, which is
+            # why this is a separate pass rather than a change to which row wins.
+            held = fields.get(row["geni_id"])
+            if held is not None and not any(
+                    (held.get(k) or "").strip() for k in ("givn", "surn", "marnm")):
+                for key in ("givn", "surn", "nick", "marnm", "nsfx"):
+                    if (row.get(key) or "").strip():
+                        held[key] = row[key]
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -6631,6 +6671,38 @@ def main():
               "#    between two people created here wait for tomorrow, when they have",
               "#    QIDs -- two items minted in one batch cannot point at each other.",
               ""]
+    # **⛔ THE NAME-ITEM STEP CANNOT SEE WHO THIS STEP IS ABOUT TO CREATE, so it never mints
+    # their names.** Emma, 2026-09-07: *"individuals are supposed to be created already having
+    # name links and this does not seem to be happening reliably."*
+    #
+    # `build-garborg-name-items.py` draws its bearers from `garborg-qids.tsv` -- people who
+    # ALREADY hold a QID -- and ranks by bearer count, so a token needed by somebody being
+    # created today competes with tokens borne by hundreds of long-standing ledger people and
+    # loses every time. Measured on this batch: the 56 people created need **184** name
+    # statements, **107 of them have no item to link to**, and only **1 of the 56** could link
+    # every token. The cap is 40 name items a day against ~90 new tokens a batch.
+    #
+    # So the ring writes what it needs and step 2 reads it. The two run in order --
+    # `build-daily-batch.STEPS` is individuals then names -- which is what makes this possible
+    # at all. **It does not make today's links appear**: a person and a name item minted in one
+    # batch cannot point at each other. It makes TOMORROW's land, which is the sequence working
+    # rather than drifting.
+    wanted = collections.Counter()
+    for g in to_create:
+        f_ = fields.get(g) or {}
+        for token, usage, _o in statements_tokens(f_):
+            wanted[(token, usage)] += 1
+    if wanted:
+        path = ROOT / "reports" / "name-tokens-needed.tsv"
+        with open(path, "w", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, delimiter="\t", lineterminator="\n")
+            w.writerow(["token", "usage", "people"])
+            # A TOTAL sort key -- § *SORTING MUST BE DETERMINISTIC*.
+            for (token, usage), n in sorted(wanted.items(),
+                                            key=lambda kv: (-kv[1], kv[0][0], kv[0][1])):
+                w.writerow([token, usage, n])
+        print(f"{len(wanted)} name token(s) the ring needs -> reports/name-tokens-needed.tsv")
+
     created = 0
     for g in sorted(to_create, key=lambda x: labels.get(x, "")):
         f, label = facts.get(g), qs(expand_abbreviations(

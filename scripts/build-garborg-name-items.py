@@ -347,6 +347,26 @@ def live_values():
     return out
 
 
+RING_TOKENS = ROOT / "reports" / "name-tokens-needed.tsv"
+
+
+def ring_tokens():
+    """`{(token, usage)}` the day's ring is about to create people for, else an empty set.
+
+    Written by `build-garborg-day.py --compose`, which runs first. Absent means no
+    prioritisation and the old bearer-count order alone -- never an error, because this file is
+    an optimisation and a missing one must not stop names being made.
+    """
+    out = set()
+    if not RING_TOKENS.exists():
+        return out
+    with RING_TOKENS.open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle, delimiter="\t"):
+            if row.get("token"):
+                out.add((row["token"], row["usage"]))
+    return out
+
+
 ATTESTATION = ROOT / "reports" / "given-name-attestation.tsv"
 
 _attested: dict[str, bool] | None = None
@@ -663,7 +683,25 @@ def main():
         "# them, and leaves out any given name whose label is ambiguous or has no item.",
         "",
     ]
-    ranked = sorted(need.items(), key=lambda kv: (-kv[1], kv[0]))
+    # **⛔ WHAT THE RING IS ABOUT TO CREATE COMES FIRST.** Emma, 2026-09-07: *"individuals are
+    # supposed to be created already having name links and this does not seem to be happening
+    # reliably."*
+    #
+    # This script's bearers are people who ALREADY hold a QID, so a token needed by somebody
+    # being created today was invisible to it and, ranked by bearer count, lost to tokens borne
+    # by hundreds of long-standing ledger people. Measured on one batch: of the 56 people
+    # created, **107 of their 184 name statements had no item to link to** and exactly **1**
+    # could link every token.
+    #
+    # `build-garborg-day.py --compose` runs first (`build-daily-batch.STEPS`) and writes what
+    # its ring needs. Those tokens sort above everything else; within each group the old
+    # bearer-count order stands. **This does not make today's links appear** -- a person and a
+    # name item minted in one batch cannot point at each other -- it makes tomorrow's land.
+    needed = ring_tokens()
+    if needed:
+        print(f"{len(needed)} token(s) the ring is about to need are ranked first")
+    ranked = sorted(need.items(),
+                    key=lambda kv: (0 if kv[0] in needed else 1, -kv[1], kv[0]))
     held_back = ranked[NAME_ITEMS_PER_RUN:]
     linked_now = 0
     based_on = based_on_targets()

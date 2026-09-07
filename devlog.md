@@ -32009,3 +32009,39 @@ the store download.
 was wrong; I put three readings of *whether* it was wrong to her, and then offered — as one
 option — reversing her own August ruling. Both answers were swearing, which
 § *SWEARING IS NOT A STOP ORDER* reads correctly as *you have stopped and you should not have*.
+
+## 2026-09-07 — a person created with no name links, twice over
+
+Emma: *"individuals are supposed to be created already having name links and this does not seem
+to be happening reliably at least."* Measured on one batch: **56** people created, **9 with no
+name statement at all**, and of the 184 they should carry, **107 had no item to link to**. One
+of the 56 could link every token.
+
+**Cause one, a plain bug.** Geni writes the bare rendered name as one `NAME` record and the
+parsed one as another, and the bare one has empty `GIVN`/`SURN`/`_MARNM`:
+
+    0  Anders Persson Hägg   givn=''       surn=''        marnm=''
+    1  Anders /Persson/      givn='Anders' surn='Persson' marnm='Persson Hägg'
+
+First-wins took row 0. `Anders Persson Hägg`, `Brynhild Arnesdatter Aske`, `Hugo Johan Ingvar
+Eneroth`, `Kari Lindholm`, `Mariet Andersdotter`, `Mons Ljødeson Gjesdal` and `Tora
+Gunnarsdatter Vølstad` all went out nameless. The components are backfilled from the first row
+that has them; `display_name` is deliberately not, because that is what `P1810` carries and the
+bare row is the fuller rendering there.
+
+Same shape as the generation suffix earlier today: first-wins on a per-record basis for a fact
+that belongs to the person.
+
+**Cause two, structural.** `build-garborg-name-items.py` takes its bearers from
+`garborg-qids.tsv` — people who already hold a QID — so a token needed by somebody being created
+today is invisible to it, and ranked by bearer count it loses to tokens borne by hundreds of
+long-standing ledger people. 40 name items a day against ~90 new tokens a batch.
+
+`build-garborg-day.py --compose` now writes `reports/name-tokens-needed.tsv` and the name step
+ranks those first. The two already run in that order. It does not make today's links appear — a
+person and a name item minted in one batch cannot point at each other — it makes tomorrow's
+land.
+
+**Gating creation on full name coverage was measured and refused.** 1 of 56 people qualifies, so
+it would stop the ring rather than fix it — the learned-helplessness move § *The batches are a
+SEQUENCE* is written against.
