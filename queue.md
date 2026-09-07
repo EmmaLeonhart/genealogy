@@ -36,7 +36,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **After each scrape:** `PYTHONPATH=src python scripts/build-tiny-gedcoms.py` turns everything on
   disk into tiny GEDCOMs. It is idempotent and safe to run repeatedly.
 
-  ⛔ **THE SEVEN THINGS THAT WILL WASTE A SESSION IF YOU REDISCOVER THEM:**
+  ⛔ **THE EIGHT THINGS THAT WILL WASTE A SESSION IF YOU REDISCOVER THEM:**
 
   * **Nothing downloads.** Roughly two files land per browser session and Chrome blocks the rest —
     a per-origin permission needing an omnibox grant she cannot give from a phone. The job returns
@@ -53,6 +53,21 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **`No path found to <name>.`**, a third miss sentence `pathState` could not read until 1.6.2.
     Until Chrome restarts and loads 1.6.2, read the banner off the page at harvest time rather
     than trusting `path_state`.
+  * ⛔⛔ **CHECK THE ANCHOR ON EVERY CAPTURE, NOT ONCE A SESSION. IT EXPIRES ON ITS OWN.**
+    It came off Charlemagne mid-run on 2026-09-06 after ten good captures, with nobody touching
+    it, and **a viewer-anchored hit looks exactly like a real one** — `resolved_path`, a full
+    chain, confident prose. The tell is free and already in the result:
+
+        step 1 == geni:6000000002457013227   -> Charlemagne. the capture counts.
+        step 1 == geni:6000000087535357291   -> "You". it answers a different question.
+
+    Geni's prose says the same: *"is Charlemagne's Nth great grandson"* against *"is your ..."*.
+    Read one before writing any path file. `write-family-scrape.py` stamps `ANCHOR` from a module
+    constant and **cannot see the page**, so nothing downstream will catch it.
+    A **miss** gives no warning at all — no chain, identical banner — so if a hit comes back
+    viewer-anchored, treat every miss since the last verified capture as suspect.
+    Re-set it with `docs/anchor-protocol.md`: check on Charlemagne's own page, click the pin,
+    verify on two real targets. Setting it is yours to do; she said so.
   * ⛔ **A HIT CANNOT BE READ OFF THE PAGE.** `path_state` is asymmetric by design; only the job's
     `resolved_path` + `hasTarget` establishes one. Pass `@PATH yes` to `write-family-scrape.py`
     when it does, or a confirmed hit is filed as pending.
