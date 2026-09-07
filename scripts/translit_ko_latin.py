@@ -181,6 +181,11 @@ def render_word(word):
     # own epenthetic syllable and the l then started another. Collapsed, it is 칼손, and
     # `Karl` stays 칼.
     word = word.replace("rl", "l")
+    # **`dt` is one /t/**, in German, Danish, Norwegian and Swedish alike. Korean has no
+    # attestation column to check against -- 0 of 38,376 rows cite one -- but the fact is the
+    # same one the 24 attested `ja` rows settle: `Schmidt` is シュミット and 슈미트, never
+    # `스미드트`. Same shape as the `dt` normalisation in `translit_no`.
+    word = word.replace("dt", "t")
     # **A doubled consonant behaves two different ways and collapsing all of them was wrong.**
     # A doubled STOP or sibilant is written once -- `Svensson` is 스벤손, `Hansdotter` 한스도테르 --
     # while a doubled LIQUID or NASAL keeps both, the first closing the syllable: `Lilly` is 릴리

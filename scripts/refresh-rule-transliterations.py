@@ -28,7 +28,13 @@ stays live on every other.
 
 **So the split is by the `note` column, and it is the whole safety story:**
 
-* `by rule` and `composed by rule: …` — recomputed. These are cache.
+* **ANY note beginning `by rule`** — recomputed. These are cache. That means `by rule`,
+  `by rule, minted for the transcription batch` (15,836 rows) and `by rule, minted during the
+  run` (237) alike. **The test was `note == "by rule"` until 2026-09-07 and that froze 16,071
+  rows — 42% of the table — against every rule fix.** It is how Emma's own example survived:
+  she reported `Carl August Tigerstedt` reading `ティゲルステドト`, the `-dt` rule was fixed and
+  the refresh run, and her row did not move, because it is noted *minted during the run*.
+* `composed by rule: …` — recomputed, same reason.
 * everything else (`composed: …` off a hand stem, blank, or any hand annotation) — **untouched**.
   Those readings were checked by a person, and `CLAUDE.md` § *the entire purpose of this is to
   add* applies: a rule does not get to overwrite a human.
@@ -69,12 +75,29 @@ def _suffixes():
 SUFFIXES = _suffixes()
 
 
+def _ko(token):
+    """The Korean reading the engine gives now, or `""` when it cannot read the token."""
+    try:
+        from translit_ko_latin import render
+        return render(token) or ""
+    except Exception:
+        return ""
+
+
 def recompute(row, by_rule, hand):
-    """The `(ja, zh)` this row's note says it was derived by, recomputed now."""
+    """The `(ja, zh, ko)` this row's note says it was derived by, recomputed now.
+
+    **`ko` was NOT recomputed until 2026-09-07 and this file never mentioned it.** So every
+    Korean value in the table was frozen at whatever it was first written as, immune to every
+    later fix to `translit_ko_latin`: `Carl` still read `카르르` in the table while the engine
+    had given `칼` since the `rl` collapse was added. `CLAUDE.md` § *CJK INCLUDES KOREAN* is the
+    rule this quietly broke -- `ko` was being maintained as a leftover, not as a third language.
+    """
     note = row.get("note") or ""
     token = row["token"]
-    if note == "by rule":
-        return by_rule(token)
+    if note.startswith("by rule"):
+        ja, zh = by_rule(token)
+        return ja, zh, _ko(token)
     if note.startswith("composed by rule:"):
         for suf, sja, szh in SUFFIXES:
             if token.casefold().endswith(suf) and len(token) > len(suf) + 1:
@@ -83,9 +106,9 @@ def recompute(row, by_rule, hand):
                 # row is that row's business, and `composed:` (no "by rule") covers it.
                 sja_, szh_ = by_rule(stem)
                 if sja_:
-                    return sja_ + sja, szh_ + szh
-                return None, None
-    return None, None
+                    return sja_ + sja, szh_ + szh, _ko(token)
+                return None, None, None
+    return None, None, None
 
 
 def main():
@@ -101,22 +124,45 @@ def main():
         rows = list(csv.DictReader(_fh, delimiter="\t"))
     hand = {r["token"]: r for r in rows}
     changed, unreadable, kept = [], [], 0
+    ko_only = []
     for row in rows:
         note = row.get("note") or ""
-        if not (note == "by rule" or note.startswith("composed by rule:")):
+        if not (note.startswith("by rule") or note.startswith("composed by rule:")):
+            # **AN ATTESTED ROW IS ATTESTED IN `ja` AND `zh`, NEVER IN `ko`.** No note in this
+            # table has ever cited a Korean count -- 0 of 38,376 -- so the Korean value on an
+            # "attested" row was always machine output, and skipping the whole row froze it
+            # forever. `Carl` reads `카르르` here while the engine has given `칼` since the `rl`
+            # collapse; `Schmidt` reads `스미드트` where Korean writes `슈미트`.
+            #
+            # So a row a human checked keeps its `ja` and `zh` untouched -- the rule does not
+            # get to overwrite a person -- and has only its `ko` recomputed.
+            if "ko " not in note and (row.get("ko") or ""):
+                fresh = _ko(row["token"])
+                if fresh and fresh != row["ko"]:
+                    ko_only.append((row["token"], row["ko"], fresh))
+                    row["ko"] = fresh
+                    continue
             kept += 1
             continue
-        ja, zh = recompute(row, translit, hand)
+        ja, zh, ko = recompute(row, translit, hand)
         if ja is None:
             # The engine no longer reads this token. Leave the cached value rather than
             # emptying a cell -- *partial is worse than absent* is about what gets EMITTED,
             # and deleting a reading we already published would be a silent regression.
             unreadable.append(row["token"])
             continue
-        if (ja, zh) != (row["ja"], row["zh"]):
+        # `ko` falls back to the cached value when the Korean engine cannot read the token,
+        # for the same reason `ja` does: deleting a published reading is a silent regression.
+        ko = ko or row.get("ko", "")
+        if (ja, zh, ko) != (row["ja"], row["zh"], row.get("ko", "")):
             changed.append((row["token"], row["ja"], row["zh"], ja, zh))
-            row["ja"], row["zh"] = ja, zh
+            row["ja"], row["zh"], row["ko"] = ja, zh, ko
 
+    if ko_only:
+        print(f"{len(ko_only):,} attested rows had ONLY their ko re-derived "
+              f"(an attestation covers ja and zh; no note has ever cited a Korean count)")
+        for token, old_ko, new_ko in ko_only[:10]:
+            print(f"   {token:<20}{old_ko:<18}-> {new_ko}")
     print(f"{len(rows):,} rows: {kept:,} hand-checked and untouched, "
           f"{len(changed):,} re-derived, {len(unreadable):,} no longer readable and left as-is")
     for token, oja, ozh, ja, zh in changed[:40]:
@@ -129,7 +175,10 @@ def main():
     if args.dry_run:
         print("\n--dry-run: table untouched")
         return
-    if not changed:
+    # `ko_only` counts: an attested row whose Korean was re-derived is a change to the table
+    # even though its `ja` and `zh` did not move. Gating on `changed` alone computed 105 of
+    # them, printed them, and wrote nothing.
+    if not changed and not ko_only:
         print("\nnothing to write")
         return
     # **Columns from the file, a total sort, and an atomic replace.** This carried the same

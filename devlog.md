@@ -31272,3 +31272,43 @@ nothing else in the run consults it.
 ledger, derived labels, live labels and transliteration table — 2,085 lines over 963 items, 34
 priority QIDs. The whole builder was **not** run: `out/merged.ged` is gitignored and absent from
 this clone, so the end-to-end batch will first be produced by the pipeline on Actions.
+
+## 2026-09-07 — she gave the QIDs, and following them found the frozen table
+
+Emma: *"I gave the qids lol in the photos."* She had, and reading them beats deriving a set:
+`Q141205937` **Ragnhild Eyvindsdotter Byre** has no `ja`, `zh` or `ko` at all and is **not on the
+Charlemagne path**, so `CJK_PRIORITY_PATH` missed her. `reports/cjk-priority-qids.tsv` is the nine
+she photographed, read as data; the next one she names is one line.
+
+Checking her nine against the live labels split them: five have no CJK at all, three **have all
+three and hold them wrong**, and two are name items outside the ledger. The additive pass skipped
+the middle three by design, so it now corrects as well as adds — guarded by `CJK_LABELS_NOT_OURS`,
+which is what protects a value she set by hand.
+
+**Three defects came out of following her list rather than my own.**
+
+**A redaction marker was being transliterated.** `NN Torbjørnsdotter Skofteland` rendered
+`ン・トルビョルンスドッテル・スコフテランド` — `NN` as a bare mora nasal — and `느느 …` in Korean.
+`label_in` refused a relationship description and not a marker. Guarded at the same choke point.
+
+**⛔ 16,071 rows of the table — 42% — were frozen against every rule fix.**
+`refresh-rule-transliterations.py` tested `note == "by rule"` exactly, so
+`by rule, minted for the transcription batch` (15,836) and `by rule, minted during the run` (237)
+were never recomputed. **That is how her own example survived**: she reported `Carl August
+Tigerstedt` reading `ティゲルステドト`, the `-dt` rule was fixed, the refresh was run, and her row
+did not move. Any note beginning `by rule` is cache now, and 2,136 rows re-derived.
+
+**⛔ AND THE `ko` COLUMN WAS NEVER RECOMPUTED AT ALL.** That file did not contain the string `ko`.
+Every Korean value was frozen at whatever it was first written as, immune to every fix to
+`translit_ko_latin`: `Carl` read `카르르` in the table while the engine had given `칼` since the
+`rl` collapse was added. This is § *CJK INCLUDES KOREAN* quietly broken — `ko` maintained as a
+leftover rather than as a third language.
+
+**An attested row is attested in `ja` and `zh`, never in `ko`** — no note has ever cited a Korean
+count, 0 of 38,376 — so its Korean was always machine output, and skipping the whole row froze it.
+Those rows now keep their `ja`/`zh` and have only their `ko` re-derived: **105 of them**.
+
+    Carl        카르르  -> 칼           Brandt      브란드트  -> 브란트
+    Schmidt     스미드트 -> 스미트        Arndt       아르느드트 -> 아르느트
+
+`Tigerstedt`, her original report, now reads `ティゲルステト` / `蒂盖尔斯特特` / `티게르스테트`.

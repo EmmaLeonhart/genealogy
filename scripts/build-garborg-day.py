@@ -699,6 +699,13 @@ def read_tree():
 #: 2026-09-02, and nothing else in the run consults it.
 CJK_PRIORITY_PATH = "paths/charlemagne-to-arne-garborg.tsv"
 
+#: **The QIDs Emma handed over directly, which outrank anything derived.** She sent photographs
+#: of nine items on 2026-09-07 and then said *"I gave the qids lol in the photos"* — and she was
+#: right that reading them beats deriving a set: `Q141205937` **Ragnhild Eyvindsdotter Byre** has
+#: no `ja`, `zh` or `ko` at all and is **not on the Charlemagne path**, so `CJK_PRIORITY_PATH`
+#: misses her entirely. A file, not a literal, so the next one she names is one line.
+CJK_PRIORITY_FILE = "reports/cjk-priority-qids.tsv"
+
 
 def _cjk_priority_qids(our_items):
     """QIDs of the people on `CJK_PRIORITY_PATH`, for the label cap to take first.
@@ -708,11 +715,18 @@ def _cjk_priority_qids(our_items):
     in the ledger, and with 963 items waiting behind a cap of 30 "next batch" would have meant
     about a month. A missing file yields an empty set and the ordering is unchanged.
     """
+    out = set()
+    named = ROOT / CJK_PRIORITY_FILE
+    if named.exists():
+        with open(named, encoding="utf-8", newline="") as fh:
+            out |= {(row.get("qid") or "").strip()
+                    for row in csv.DictReader(fh, delimiter="\t")
+                    if (row.get("qid") or "").strip().startswith("Q")}
     path = ROOT / CJK_PRIORITY_PATH
-    if not path.exists():
-        return set()
-    ids = set(re.findall(r"geni:(\d+)", path.read_text(encoding="utf-8")))
-    return {q for g, q in our_items.items() if g in ids}
+    if path.exists():
+        ids = set(re.findall(r"geni:(\d+)", path.read_text(encoding="utf-8")))
+        out |= {q for g, q in our_items.items() if g in ids}
+    return out
 
 
 def _missing_cjk_labels(our_items, labels, table, live_labels):
@@ -748,15 +762,33 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
         want = labels.get(geni_id, "")
         if not want or is_relationship_description(want):
             continue
-        missing = [c for c in ("ja", "zh", "ko") if not live_labels.get((qid, c))]
-        if not missing:
+        if qid in CJK_LABELS_NOT_OURS:
             continue
         ja, zh, ko = label_in(want, table)
         if not ja:
             continue
         value = {"ja": ja, "zh": zh, "ko": ko}
-        out.append(f"#   {qid}: {want!r} has no {'/'.join(missing)} label")
-        for code in missing:
+        # **A WRONG CJK label is the other half of this, and the additive rule alone skips it.**
+        # Three of the nine items Emma photographed on 2026-09-07 -- `Q141336505` Carl August
+        # Tigerstedt, `Q141313961` Helena Maria Linnerhielm and `Q141337174` NN Torbjørnsdotter
+        # Skofteland -- HOLD all three languages and hold them wrong, built before the `-dt`
+        # fix, before `ogift` came out of the label, and from a child-based description. An
+        # item whose Latin label is already right is exactly where those went unnoticed.
+        #
+        # Overwriting a CJK value is what `_label_corrections` already does whenever a Latin
+        # correction fires; this reaches the same items when the Latin label needs nothing.
+        # `CJK_LABELS_NOT_OURS` is the guard for a value she has set by hand.
+        todo = [c for c in ("ja", "zh", "ko")
+                if (live_labels.get((qid, c)) or "") != value[c]]
+        if not todo:
+            continue
+        absent = [c for c in todo if not live_labels.get((qid, c))]
+        if absent:
+            out.append(f"#   {qid}: {want!r} has no {'/'.join(absent)} label")
+        for code in todo:
+            live = live_labels.get((qid, code))
+            if live:
+                out.append(f"#   {qid}: holds {live!r} in {code}; ours is {value[code]!r}")
             out.append(f"#   {qid}: set the {code} label")
             out.append(f'{qid}\tL{code}\t"{qs(value[code])}"')
     if out:
@@ -1476,6 +1508,19 @@ def label_in(label, table):
     # `describe_all` builds the right CJK form for these people (`…の息子`), so refusing here
     # loses nothing and stops `son of X` becoming `ソン・オフ・X`.
     if is_relationship_description(label):
+        return None, None, None
+
+    # **A REDACTION MARKER IS NOT A NAME AND MUST NOT BE TRANSLITERATED.** `NN Torbjørnsdotter
+    # Skofteland` came out `ン・トルビョルンスドッテル・スコフテランド` -- `NN` rendered as a bare
+    # mora nasal -- and `느느 …` in Korean. `CLAUDE.md` § *`NN` is PRESERVED in `mul`* keeps the
+    # marker in the language-neutral label and puts the description in the others; nothing
+    # anywhere asks for it spelled out in katakana, which is the same shape as the
+    # `ソン・オフ・` failure of 2026-09-03.
+    #
+    # `describe_all` already builds the right CJK form for these people (`…の娘`), so refusing
+    # here loses nothing. Guarded at the choke point rather than at the callers, for the reason
+    # the description check above gives.
+    if _carries_marker(label):
         return None, None, None
 
     # **A territorial designation is not part of the name, and transliterating it is how
