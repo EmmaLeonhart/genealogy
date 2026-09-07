@@ -1004,6 +1004,46 @@ cannot be reached from there; § *The purpose is to ADD to Wikidata, not to corr
 everybody else's statements, and *"we can correct stuff we added"* is scoped to ours by its own
 words.
 
+### A MATRONYMIC DERIVES FROM THE MOTHER. A female-looking source in the father walk is not one
+
+**Emma, 2026-09-07**, ruling on the second half of the `P144` question: **"Reclassify as
+matronymic."** She was choosing over the 53 `P144` values whose given-name item is `Q11879590`
+*female given name* — and **that was the wrong population, which reading the rows says plainly**:
+
+    adriansdatter <- Adrian (Q372250)      jonesdatter  <- Jone (Q14436586)
+    brynildsen    <- Brynild (Q33093604)   herlaugson   <- Herlaug (Q16427631)
+
+`Adrian`, `Jone`, `Brynild`, `Herlaug`, `Fridleif`, `Geirlaug`, `Gunnleif` are Norwegian and Old
+Norse **male** names carrying a wrong or unisex `P31` on Wikidata. **A source in the father walk
+IS the father's name**, so it cannot make a matronymic however Wikidata classes it. 50 tokens
+would have been reclassified on a property of the *name item* rather than of the person.
+
+**Nothing had ever walked the mother.** `census-patronymic-sources.py` now does both:
+
+    father   9,825 pairs over 6,864 tokens
+    mother     669 pairs over   476 tokens
+    ONLY by a mother   110 tokens, 214 people   <- the matronymics
+
+`Mariasson`, `Mariasdotter`, `Annasson`, `Evasdotter`, `Britasson`, `Evasson`, `Bodilsen`,
+`Elinason`, `Rannveigsson`, `Ulrikasdotter`, `Johannasdotter`, `Klarasson` — the son of *Maria*
+is `Mariasson`, and that is unambiguous. It answers the question standing in
+`build-garborg-name-items`' own comment, *"matronymic currently fires for nothing, and that
+answers her question"*: it fired for nothing because the mothers were never looked at.
+
+**Two things the mother walk does NOT do, and both are deliberate.**
+`patronymic_or_surname` asks whether the *father* carries the same token, so it is a father test
+by construction and is not applied on the mother side — there the token's shape and her given
+name are the whole evidence. And the Latin-genitive branch stays on the father, since
+`name modelling.txt` models that form as his.
+
+**⛔ THE `P31` VALUE IS NOT YET CONFIRMED AND MUST NOT BE GUESSED.** `Q110874` is *patronymic*;
+the matronymic name class is a different item and is in neither `reports/wikidata-labels.tsv`
+nor `out/wikidata/name-items-in-store.tsv.gz`, whose 463 patronymic-kind items are all
+`Q110874`. This container cannot ask — the environment's egress policy answers `CONNECT
+www.wikidata.org:443` with 403 — so the lookup belongs to a run that can, and § *Do not guess
+these* is why no id appears in this section. `DESCRIPTION_FOR` already carries the description
+`matronymic`, which is the half that needs no lookup.
+
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
 **Emma, 2026-09-04**, having hand-corrected `Q141271379` from `Anna Ormsd Byre`: *"I changed her

@@ -31482,3 +31482,21 @@ the value is live on it, and the plan names it withdrawn: **9 values on 8 tokens
 `Q58785388` *Junna* on both `Q141336969` and `Q141290188` — the two she photographed. The live
 read is blocked in this container (the environment's egress policy answers `CONNECT
 www.wikidata.org:443` with 403), so the removals fire in the pipeline, not here.
+
+**And the matronymic ruling was answered on the wrong population — mine, not hers.** She said
+*"Reclassify as matronymic"* over the 53 `P144` values whose given-name item is `Q11879590`
+*female given name*. Reading them refutes the premise: `adriansdatter ← Adrian`, `jonesdatter ←
+Jone`, `brynildsen ← Brynild`, `herlaugson ← Herlaug` are male Norwegian and Old Norse names with
+a wrong or unisex `P31` on Wikidata, and a source in the father walk is the father's name
+whatever Wikidata calls it. 50 tokens would have been reclassified on a property of the name item
+rather than of the person.
+
+The census walks the mother now: **669 pairs over 476 tokens, and 110 tokens attested by a mother
+ALONE — 214 people.** `Mariasson`, `Mariasdotter`, `Annasson`, `Evasdotter`, `Britasson`,
+`Bodilsen`, `Rannveigsson`. Those are the matronymics, and they are the first the repo has been
+able to name.
+
+The `P31` value is the one thing outstanding and is **BLOCKED-ON-EXTERNAL**: the matronymic name
+class is in neither `wikidata-labels.tsv` nor the name-item store, and this container's egress
+policy refuses `www.wikidata.org`. Unblock signal: any Actions run, which reaches Wikidata for
+the live reads the pipeline already makes. No id is written down until one confirms it.
