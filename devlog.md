@@ -31033,3 +31033,25 @@ that look alike at a glance are exactly the thing this repo gets wrong by eye.
 **Also in:** Raymond Impanis `2205409` refused at 63 / 49, and he is the first target whose
 family block carries a `partner` row — Sara Vranken, beside a spouse. The collector keeps the
 relation word rather than folding it into `spouse`, which is the residual rule.
+
+## A SEVENTH HIT, AND IT REFUTES THE TRUNK BEING A GENERAL PROPERTY
+
+**Thomas Starr `6000000002831500863`**, Charlemagne's 31st great grandson, 34 steps — and the
+first capture that leaves Charlemagne by a **different son**. Every other Charlemagne hit today
+goes through Louis the Pious at step 2; this one goes through **Pépin, king of Italy**, and so
+shares nothing with them but Charlemagne himself. It descends by the Lombard kings, Senlis,
+Gent, twelve generations of de Vere earls of Oxford, then Bullock, Buffington and Harlan into
+the Cherokee Starr family.
+
+**So the shared trunk recorded an entry above is a property of those three captures, not of
+Charlemagne captures in general.** That is worth having established before anybody ranks a
+bridge on it — three chains agreeing looked like a pattern and the fourth independent one does
+not join it.
+
+**His family block is the largest of the run: 38 relatives**, thirteen children, eight full
+siblings and fifteen half-siblings, and it needed four fetches to carry without truncation.
+`family_tree` 15,000 · `blood_relatives` 15,000 · `ancestors` 9,250 · 77 descendants.
+
+**Also in:** Ole Klemet Johansen Sara `6000000007276916105`, a Sámi profile at 15,000 / 15,000
+with 396 ancestors and a miss — cleared for export; Gábor A Somorjai `6000000040382462848`
+refused at 3 / 2.
