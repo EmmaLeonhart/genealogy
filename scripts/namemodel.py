@@ -573,7 +573,11 @@ _OFFICE = (
 #: a description of the person, never a name
 _DESCRIPTION = (
     'b.l.', 'concubine', 'fictional', 'fictitious', 'heiress',
-    'infant', 'legendary', 'mistress', 'ogift', 'oä',
+    'infant', 'legendary', 'mistress', 'o.ä', 'ogift',
+    # `o.ä` 4 and `oä` 12 are the only two spellings the corpus holds of *oäkta*. Both are
+    # listed rather than dot-stripped, for the reason `NAME_SUFFIX_TITLES` already carries:
+    # stripping dots put `d.e.` (Swedish *den äldre*) onto the particle `de`.
+    'oä',
     'solteira', 'stillborn', 'tv', 'tvill', 'tvill.',
     'tvilling', 'twin', 'u.b.', 'ug', 'ug.',
     'ugift', '殤',

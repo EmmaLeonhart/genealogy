@@ -654,3 +654,61 @@ def test_fersen_needs_the_father_to_stop_being_a_patronymic():
     assert namemodel.patronymic_or_surname("Fersen", "Hans Axel von Fersen") == "family"
     # A genuine patronymic must not be reclassified by the same rule.
     assert namemodel.patronymic_or_surname("Olsen", "Ole Hansen") == "patronymic"
+
+
+# --- drop_description_suffix: a description marker is not a name -----------------------
+#
+# **Emma, 2026-09-07**, on `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is
+# some kind of suffix that shouldn't have been treated as part of the name."* `ogift` is
+# Swedish for *unmarried*.
+#
+# Every case below fails if a specific guard is removed, which is the bar
+# `CLAUDE.md` § *The NO-NEW-TESTS moratorium ENDED* sets — `test_namemodel.py:620` passes
+# with its discriminator deleted and is the warning these are written against.
+
+
+def test_the_marker_comes_off_the_label():
+    """The case she found. Fails if the rule is not wired to `_DESCRIPTION` at all."""
+    assert namemodel.drop_description_suffix(
+        "Helena Maria Linnerhielm ogift", "ogift") == "Helena Maria Linnerhielm"
+
+
+def test_a_title_is_not_a_description_and_stays():
+    """Scope. Emma chose the 631 description labels over the 7,075 `drop_title_suffix` takes.
+
+    Fails the moment this is widened to `NAME_SUFFIX_TITLES`, which is the one-line change
+    that would silently reverse § *A TITLE IS NOT A NAME*'s *"it does not touch the LABEL"*.
+    """
+    label = "Dániel IV Esterházy de Galántha Graf"
+    assert namemodel.drop_description_suffix(label, "Graf") == label
+    assert namemodel.drop_title_suffix(label, "Graf") != label   # the wider rule would take it
+
+
+def test_a_bare_word_list_would_take_a_real_surname():
+    """`Anna King` keeps her surname because the match is against her OWN `NSFX`.
+
+    Fails if the implementation ever matches a trailing token against the word list
+    directly — the failure `drop_title_suffix` already carries a comment about.
+    """
+    assert namemodel.drop_description_suffix("Sarah Twin", "") == "Sarah Twin"
+    assert namemodel.drop_description_suffix("Infant Jones", "Jones") == "Infant Jones"
+
+
+def test_the_comma_that_introduced_the_marker_goes_with_it():
+    """`Josiah Wood I, twin`. Fails without the `rstrip`, leaving `Josiah Wood I,`."""
+    assert namemodel.drop_description_suffix("Josiah Wood I, twin", "I, twin") == "Josiah Wood I"
+
+
+def test_never_to_empty():
+    """A label that is nothing but a marker keeps it — an unlabelled item is worse."""
+    assert namemodel.drop_description_suffix("twin", "twin") == "twin"
+
+
+def test_both_corpus_spellings_of_oa_are_listed():
+    """`oä` 12 and `(o.ä)` 4 are the only two forms the corpus holds, and both must strip.
+
+    Fails if the dotted form is dropped from `_DESCRIPTION` — nothing is dot-stripped here,
+    because dot-stripping put `d.e.` onto the particle `de`.
+    """
+    assert namemodel.drop_description_suffix(
+        "Ester Frideborg Karlsson (o.ä) (ogift)", "(o.ä) (ogift)") == "Ester Frideborg Karlsson"
