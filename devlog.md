@@ -30970,3 +30970,19 @@ and the independently-known answer says the flag is right.
 **Also in:** Ermenegildo Castiglioni `6000000090830529714` 11/8, Sergio Quinzio
 `6000000177397455823` 8/3, both `no_panel` misses below the floor — twelve `no_panel` results
 this session and twelve stated misses.
+
+**Four Chinese profiles that are genuinely alone, and one that proves the zero rule.** Song
+Cangshu 宋蒼舒 `6000000074703185568`, Dai Duanshu 戴端書 `6000000075415530946`, Qi Kejiu 祁可久
+`6000000075426993825` and Rao Ziyi 饒子儀 `6000000075422143962` each read
+`family_tree=1 blood_relatives=1` with no relatives at all: Geni holds the person and records
+nobody around them. `read` is **1** — the statistics block is present and says one — so these are
+measurements, not the unrendered case. That distinction is exactly what today's `read` fix buys.
+
+**Dorothy Jeakins `6000000018119318134` is the person `CLAUDE.md` names for the zero rule** —
+*"ancestors are not mentioned at all because she has no ancestors and geni is weird and gives
+zero as not an option there"*. The collector read `ancestors=0 descendants=0` off a present
+block, which is her rule working: a row missing from a block that IS there is a real zero. She
+clears on `family_tree` 1,405 against one recorded relative, a husband.
+
+The Han characters survive the transport — 饒子儀 reads correctly in
+`geni-families/6000000075422143962-family.tsv`.
