@@ -1020,9 +1020,37 @@ bare `of`/`the`/`and` after the first token.**
 hers"*. That exact shape is what was blocking the spine, so the question was overdue rather than
 new.
 
-**This is a BUILD, not a rule change**: it needs a title and place vocabulary per language —
-`の`, `王`, `皇帝`, `公` and their `zh`/`ko` equivalents — rather than a transliteration table.
-Nothing implements it yet. **The Latin `mul` label is untouched**; only the CJK forms change.
+**BUILT 2026-09-07, same evening** — *"And yes we can run it agentically. Implement it and merge
+in… Oh my god give them custom things quickly and merge in."* `scripts/cjk_titles.py` is the
+vocabulary: 29 titles, 80 territories and peoples, 20 epithets, each with its `ja`/`zh`/`ko`
+form. `label_in` splits the tail with `namemodel.drop_title_tail`, renders it from the
+vocabulary, and composes it BEFORE the name, which is where Japanese and Chinese put it.
+
+    Berengar I, emperor of the Romans          ローマ人皇帝ベレンガル1世   罗马人皇帝贝伦加尔一世
+    Berengar II of Ivrea, king of Italy        イタリア王ベレンガル2世
+    Louis I, The Pious                         敬虔王ルイ1世              虔诚者路易一世
+    Baldwin IV the Bearded, count of Flanders  フランドル伯ボールドウィン4世
+    Rozala of Italy                            イタリアのロザラ            <- her own example's shape
+    Judith of Flanders                         フランドルのジュディス
+
+**⛔ AN UNKNOWN PLACE OR TITLE IS DROPPED, NEVER TRANSLITERATED.** That is the whole point: a
+rule-transliterated `Italy` is `イタリ`, and rendering a word it does not know as a name is what
+produced `オフ` and `テ` in the first place. A tail outside the vocabulary yields the name alone.
+
+**Four rules the cases forced, each of which was wrong first:**
+
+* **A katakana title takes `の`, a kanji one attaches.** `エジプトのファラオ` against `エジプト王`.
+* **A bare territory takes `の`; a territory WITH a title does not.** `イタリアのロザラ` against
+  `イタリア王ベレンガル2世` — reading only the front of `of Ivrea, king of Italy` gave
+  `イタリア王のベレンガル2世`, so `is_bare_place` follows the same comma recursion as `render_tail`.
+* **A tail can stack two titles** — `of Ivrea, king of Italy` — and the first connective swallows
+  the rest as one unfindable place. Retry on the part after the last comma.
+* **A title WINS over an epithet.** `フランドル伯髭王ボールドウィン4世` stacks two bynames where
+  Japanese writes one.
+
+**Measured over the first 6,000 labels: 5,723 render, and 2 carry a whole-segment English
+function word** — `Anna King`, whose surname genuinely is King, and one quoted epithet outside the
+vocabulary. **The Latin `mul` label is untouched**; only the CJK forms change.
 
 **The 29 spine people with no title in their label ship first** — her call the same day, *"Yes,
 next batch"* — once the rule bugs below are fixed.

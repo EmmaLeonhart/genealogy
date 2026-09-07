@@ -31183,3 +31183,26 @@ the whole corpus.
 
 **Next is `reports/sibling-pair-worklist.tsv`** — 2,526 people with no scrape yet, the same loop
 at eighty times the scale.
+
+## 2026-09-07 — kings and dukes get Japanese names
+
+Emma: *"Yeah like kings and dukes and such have Japanese names lol. Oh my god give them custom
+things quickly and merge in."* `scripts/cjk_titles.py` — 29 titles, 80 territories and peoples,
+20 epithets, each with a `ja`/`zh`/`ko` form. `label_in` splits the tail with
+`namemodel.drop_title_tail`, renders it from the vocabulary and composes it before the name.
+
+`ベレンガル・I・エムペロル・オフ・テ・ロマンス` is now `ローマ人皇帝ベレンガル1世`.
+
+Stripping the tail also fixed the ordinal for free: `Berengar I, emperor…` left the `I`
+mid-string, where `labels.FINAL_ORDINALS` only reads a bare `I` in final position — so `II`
+became `2世` and `I` stayed a Latin letter. With the tail gone it reads `1世`.
+
+An unknown place or title is DROPPED, never transliterated: 1,654 of a 4,000-label sample render
+the name alone. Over the first 6,000 labels, 5,723 render and **2** carry a whole-segment English
+function word — `Anna King`, whose surname is King, and one quoted epithet. Before this the table
+held `of` オフ, `the` テ, `and` アンド, `king` キング, `duke` ドケ, `count` コウント,
+`emperor` エムペロル, `bishop` ビスホプ, and 17,376 people carried a bare `of`/`the`/`and`.
+
+Not fixed and still the largest hole in this area: **no note in the transliteration table has ever
+cited a Korean attestation, 0 of 38,376**, so the `ko` column is unchecked rule output throughout —
+`베레아르` for Berengar in the output above is that showing.

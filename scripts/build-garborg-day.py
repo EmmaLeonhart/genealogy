@@ -1410,6 +1410,39 @@ def label_in(label, table):
     # information -- and only the CJK label truncates, which is exactly the edit Emma made.
     label = _drop_territorial(label)
 
+    # **A TITLE TAKES ITS NATIVE FORM, never a transliteration.** Emma, 2026-09-07, choosing
+    # between four readings: **イタリアのベレンガーリオ1世** — and *"Yeah like kings and dukes
+    # and such have Japanese names lol"*. Before this, `Berengar I, emperor of the Romans` came
+    # out `ベレンガル・I・エムペロル・オフ・テ・ロマンス`: `オフ` is the English word *of* in
+    # katakana and `テ` is *the*, the same failure as the `ソン・オフ・` descriptions.
+    #
+    # `namemodel.drop_title_tail` finds the split — the connective rule, 29,119 labels — and
+    # `scripts/cjk_titles` renders the tail from a vocabulary. **An unknown place or title is
+    # DROPPED, never transliterated**, so `the Pious` and `of that Ilk` yield the name alone
+    # rather than an invented reading.
+    #
+    # Stripping the tail also makes a trailing `I` the FINAL token, which is what
+    # `labels.FINAL_ORDINALS` needs to read it as `1世` — before, `Berengar I, emperor…` left
+    # the `I` mid-string and it stayed a Latin letter while `II` became `2世`.
+    from cjk_titles import is_bare_place, render_tail, split_epithet
+    from namemodel import drop_title_tail as _drop_title_tail
+    _kept = _drop_title_tail(label)
+    _title_cjk, _bare = None, False
+    if _kept and _kept != label:
+        _tail = label[len(_kept):].strip()
+        _title_cjk = render_tail(_tail)
+        _bare = is_bare_place(_tail)
+        label = _kept
+    # **An epithet carries no connective**, so the tail rule never sees it and
+    # `Louis I, The Pious` came out `ルイ・I・ザ・ピオウス`. `敬虔王` is the established
+    # Japanese form. An unknown byname stays on the label -- it may be a name.
+    label, _epithet = split_epithet(label)
+    # **A title WINS over an epithet when both are present.** `フランドル伯髭王ボールドウィン
+    # 4世` stacks two bynames where Japanese writes one; the territorial title is the more
+    # identifying of the two, and it is the one ja.wikipedia keeps.
+    if _epithet and _title_cjk is None:
+        _title_cjk, _bare = _epithet, False
+
     # **Punctuation stuck to a token is not part of the name.** `Christina, Sofia Carlsdotter`
     # tokenised to `Christina,` with the comma attached, which is in no table and therefore
     # killed the whole label -- one stray comma costing a person both their `ja` and `zh`.
@@ -1464,7 +1497,8 @@ def label_in(label, table):
             out += part if (i == 0 or attached[i]) else sep + part
         return out
 
-    return joined(ja, "・"), joined(zh, "·"), " ".join(ko)
+    from cjk_titles import compose
+    return compose((joined(ja, "・"), joined(zh, "·"), " ".join(ko)), _title_cjk, _bare)
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
