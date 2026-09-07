@@ -31596,3 +31596,33 @@ a number.
 
 `docs/daily-algorithm.md` and `CLAUDE.md` § *`P3373` sibling is capped* carried the old figures in
 prose and now carry the current ones, with her dictated 10s kept as the shape she specified.
+## THE SIBLING WORKLIST OPENS AT 3 HITS IN 5, AND ONE PAIR CAPTURED BOTH WAYS
+
+First batch off `reports/sibling-pair-worklist.tsv`, and the hit rate is nothing like the
+pilot's: **3 of 5 resolved with a chain**, against 7 of 83 for the Wikidata isolates.
+
+**That is expected and is not a finding about Geni.** These people were selected as members of
+sibling pairs on *existing* paths, so they sit near the part of the tree already traced; the
+isolates were selected for being unconnected. Two different populations, and comparing their
+rates as if they measured the same thing would be the error.
+
+**Fridtjof Aas `283292555200002881` and Solveig Tandberg `283292775990002931` are a pair, both
+captured, and their chains share all 34 steps above them.** The 34 ids were compared one at a
+time before Solveig's file was written from her brother's — a shared parent makes two chains
+*look* identical and only the ids establish it. This is the cheap half of the campaign: the
+second member of a pair costs one page load and one new person.
+
+**Both run through the Charlemagne spine's own medieval end** — Louis the Pious `Q43974`,
+Berengar II `Q314521`, Baldwin IV `Q378177`, Judith of Flanders `Q273181`, and **Guttorm
+Àsulfsson à Rein `Q19061035`**, who is step 23 of `paths/charlemagne-to-arne-garborg.tsv` and,
+per `CLAUDE.md` § *THE THREE LINES*, *"the deepest person who already has an item"*, where the
+Arne line closes. So these captures and the Garborg spine meet on a named person.
+
+**Johanna Amalia Edman `288342880310004568` is a fourth capture on the von Tiesenhausen trunk**,
+leaving it at Kersten III von Rosen. Re-measured over all ten Charlemagne-anchored captures now
+on disk: **22 people appear in three or more, 16 in four or more, 4 in five or more.**
+
+**Also in:** Constans Wilhelm Wenström `1605703` — the very name a shell heredoc corrupted to
+`WenstrÃÂ¶m` in an earlier session — landing intact 17 times in his TSV, at
+1,088 / 330 with 194 descendants; Karl Olofsson `2398881` at 15,000 / 15,000 with 79
+descendants, missing and cleared.
