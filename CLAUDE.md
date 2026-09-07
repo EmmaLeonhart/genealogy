@@ -1381,6 +1381,46 @@ compared to anything**, including on rows marked *attested*: `Schmidt` carries `
 Korean writes `슈미트`. Given § *CJK INCLUDES KOREAN*, that is a larger hole than any rule bug
 here, and nothing addresses it.
 
+### A TOKEN THE CORPUS NEVER USES AS A FIRST GIVEN NAME IS NOT A GIVEN NAME
+
+**Emma, 2026-09-07, on `Q141352791`** — an item labelled `Garborg`, `P31` *given name*, minted
+by our own generator for two people: *"Also bruh Garborg s was made as a given name wtf."*
+
+**The cause is positional parsing, in a new place.** Geni files both bearers as `GIVN` =
+`Arne Garborg` / `Siri Garborg` with an **empty `SURN`**, so the name model reads the second
+token as a middle name. Neither has a Garborg parent — `Martin Tollefson Tunheim` and
+`Sigurd Sverre Ravn Talle` — so they are children named after the writer, and `Garborg` is his
+surname. Our own `name-item-plan.csv` already holds it as `family`, 39 bearers, `Q30250555`.
+§ *PARSE PATRONYMICS BY FORM. Do not parse a name positionally*.
+
+**⛔ THE TEST IS CATEGORICAL AND IS NOT THE DOMINANCE RATIO SHE DELETED.** Her 2026-08-15 ruling
+— *"If something is a surname and a given name, then it gets a surname and a given name
+object"* — forbids ADJUDICATING between two real usages, and is untouched. This asks a different
+question: **is there a given-name usage at all?** A token that is a first given name **zero**
+times and a family name **at least once** has none. Nothing is weighed.
+
+    Garborg    first 0       later 4       family 285   -> refused
+    Maria      first 31,129  later 18,255  family 50    -> untouched
+    Johan      first 25,273  later 7,390   family 14    -> untouched
+    Waldemar   first 101     later 270     family 0     -> untouched
+
+`scripts/census-given-name-attestation.py` → `reports/given-name-attestation.tsv`, 301,196
+tokens. **A missing census file means every token passes**, so a derived file that was not built
+cannot silently start refusing names.
+
+**Two rules were tried on the way here and BOTH are refuted — do not propose either again:**
+
+* ***"the token is a family name elsewhere"*** — **242,831 people**, headed by `Maria`, `Marie`,
+  `Elisabeth`, `Johan`, `Gustaf`. Being a surname somewhere says nothing at all.
+* ***"`SURN` empty and `_MARNM` present, so the last `GIVN` token is the birth surname"*** —
+  **168,309 people**, and the last token is `Johan` 2,773, `Fredrik` 2,427, `Maria` 2,419, then
+  `Waldemar`, `Verónica`, `Hazel`. It would have rewritten every one of their names.
+
+**The two live statements are still wrong and nothing here removes them.** `Q141168788` and
+`Q141216501` each carry `P735` → `Q141352791` with `P3831` *middle name*. A `P734` in its place
+would assert Garborg is their family name, which their parents contradict, so the honest
+correction is removal and `Q141352791` orphaned — not yet wired.
+
 ### A middle initial keeps its Latin letter in every language
 
 **Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was

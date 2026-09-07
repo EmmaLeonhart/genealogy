@@ -31967,3 +31967,45 @@ any individual then forest export"* — which authorises `job.create`, and is th
 follows spouse links, exactly what the in-law half of the ring needs.
 
 1.6.3 → 1.6.4.
+## 2026-09-07 — Garborg was minted as a given name
+
+Emma, on `Q141352791`: *"Also bruh Garborg s was made as a given name wtf."* Our own
+`build-garborg-name-items.py` created it — `# Garborg -- given, 2 bearer(s)`, `P31` `Q202444`
+*given name* — and linked `Q141168788` *Arne Garborg Tunheim* and `Q141216501` *Siri Garborg
+Talle* to it with `P735` + `P3831` *middle name*.
+
+**Positional parsing again.** Geni files both as `GIVN` = `Arne Garborg` / `Siri Garborg` with an
+empty `SURN`, so the second token lands where a middle name would be. Neither bearer has a
+Garborg parent — Tunheim and Talle — so they are namesakes of the writer, and `Garborg` is his
+surname: `name-item-plan.csv` already holds it as `family`, 39 bearers, `Q30250555`.
+
+**The rule is categorical, and saying so is the whole justification.** A token that is a first
+given name **zero** times and a family name **at least once** has no given-name usage to model.
+That is a different question from the one her 2026-08-15 ruling answers — *"If something is a
+surname and a given name, then it gets a surname and a given name object"* adjudicates between
+two real usages, and is untouched.
+
+    Garborg    first 0       later 4       family 285
+    Maria      first 31,129  later 18,255  family 50
+    Waldemar   first 101     later 270     family 0
+
+**Two rules were tried first and both are refuted by measurement.** *The token is a family name
+elsewhere*: 242,831 people, headed by Maria, Marie, Elisabeth, Johan. *SURN empty and `_MARNM`
+present, so the last GIVN token is the birth surname*: 168,309 people, last token Johan 2,773,
+Fredrik 2,427, Maria 2,419, Waldemar, Verónica, Hazel. Either would have rewritten tens of
+thousands of names to fix four.
+
+`census-given-name-attestation.py` writes `reports/given-name-attestation.tsv`, 301,196 tokens,
+and a missing file means every token passes — a derived file that was not built must not
+silently start refusing names.
+
+**What this does not do: remove the two live statements.** A `P734` in their place would assert
+Garborg is their family name, which their parents contradict, so the honest correction is
+removal with `Q141352791` orphaned. Not wired — the generator would need to recognise its own
+refused token in a bearer's live values, and I have no offline label for an item created after
+the store download.
+
+**And I asked her two questions I should have answered myself.** She had already said the item
+was wrong; I put three readings of *whether* it was wrong to her, and then offered — as one
+option — reversing her own August ruling. Both answers were swearing, which
+§ *SWEARING IS NOT A STOP ORDER* reads correctly as *you have stopped and you should not have*.

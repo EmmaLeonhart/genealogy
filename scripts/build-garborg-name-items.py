@@ -347,6 +347,32 @@ def live_values():
     return out
 
 
+ATTESTATION = ROOT / "reports" / "given-name-attestation.tsv"
+
+_attested: dict[str, bool] | None = None
+
+
+def first_given_attested(token):
+    """False when the corpus never uses `token` as a FIRST given name but does as a family name.
+
+    See `scripts/census-given-name-attestation.py` for the measurement and for the two rules
+    that were tried and refuted before this one. **A missing census file means every token
+    passes** -- it must not silently start refusing names because a derived file was not built.
+    """
+    global _attested
+    if _attested is None:
+        _attested = {}
+        if ATTESTATION.exists():
+            with ATTESTATION.open(encoding="utf-8", newline="") as handle:
+                for row in csv.DictReader(handle, delimiter="\t"):
+                    _attested[row["token"]] = not (
+                        row["first_given"] == "0" and row["family"] != "0")
+        else:
+            print(f"WARNING: {ATTESTATION.name} absent -- the never-a-given-name check is off "
+                  f"for this run; build it with scripts/census-given-name-attestation.py")
+    return _attested.get(token, True)
+
+
 def reuse_from_bearers(fields, have, live):
     """`(token, usage) -> qid` the token's OWN bearers already point at on Wikidata.
 
@@ -498,6 +524,7 @@ def main():
     live_rescues = []
     bearer_rescues = []
     unavailable = []
+    never_first = collections.Counter()
     bearer_reuse = reuse_from_bearers(fields, have, live_values())
     if bearer_reuse:
         print(f"{len(bearer_reuse)} token(s) are already pointed at by their own bearers")
@@ -513,6 +540,27 @@ def main():
             # either, so one reaching the emit loop is a `KeyError` -- which is how this was
             # found, rather than by a wrong item being created.
             if usage in ("particle", "unknown"):
+                continue
+            # **⛔ A TOKEN THE CORPUS NEVER USES AS A FIRST GIVEN NAME IS NOT A GIVEN NAME.**
+            # Emma, 2026-09-07, on `Q141352791` -- an item labelled `Garborg`, `P31` *given
+            # name*, minted by this generator for two people: *"Also bruh Garborg s was made as
+            # a given name wtf."* Geni files both with `GIVN` = `Arne Garborg` / `Siri Garborg`
+            # and an EMPTY `SURN`, so the second token was read positionally as a middle name;
+            # neither bearer has a Garborg parent, and our own plan holds `Garborg` as `family`
+            # with `Q30250555`.
+            #
+            # **Not the dominance ratio she deleted on 2026-08-15.** That adjudicated between
+            # two real usages -- *"If something is a surname and a given name, then it gets a
+            # surname and a given name object"* -- and is untouched. This asks whether there is
+            # a given-name usage at all, and answers it categorically: **zero** first-given
+            # occurrences, against at least one as a family name. `Maria` 31,129/50, `Johan`
+            # 25,273/14, `Waldemar` 101/0 are all first given names somewhere and are not
+            # touched; `Garborg` is 0/285.
+            #
+            # `census-given-name-attestation.py` is the file and carries the two rules that
+            # were refuted on the way here. Held rather than dropped, so it prints.
+            if usage == "given" and not first_given_attested(token):
+                never_first[token] += 1
                 continue
             # A married surname is a family name like any other -- same item kind, same
             # lookup -- it just reaches the person by a different field.
@@ -580,6 +628,10 @@ def main():
 
     print(f"{len(linked)} tokens already have an item and are linked, not created")
     print(f"{len(need)} need creating, {len(ambiguous)} are ambiguous and are not")
+    if never_first:
+        top = ", ".join(f"{tok} ({n})" for tok, n in never_first.most_common(6))
+        print(f"{len(never_first)} token(s) held: never a first given name in the corpus but "
+              f"attested as a family name -- {top}")
     if bearer_rescues:
         print(f"{len(bearer_rescues)} token(s) RESCUED by the bearers' own statements -- "
               f"these would have been created a second time:")
