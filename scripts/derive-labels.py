@@ -46,7 +46,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
-    drop_description_suffix, married_name_of, normalise_generation_suffix, without_nickname,
+    drop_description_suffix, drop_label_title, married_name_of,
+    normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
     drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker,
@@ -125,7 +126,8 @@ def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
     parts = [clean(givn), clean(marnm), clean(nsfx)]
     # The alias is built out of the same `NSFX`, so it needs the same rule or a person whose
     # label was fixed keeps `ogift` in the alias beside it.
-    return drop_description_suffix(" ".join(p for p in parts if p), clean(nsfx))
+    alias = drop_description_suffix(" ".join(p for p in parts if p), clean(nsfx))
+    return alias if is_description(alias) else drop_label_title(alias)
 
 
 def main() -> int:
@@ -200,6 +202,20 @@ def main() -> int:
             # glued to the label; `namemodel.drop_description_suffix` takes it off, matching
             # the person's own `NSFX` and nothing else. 627 labels move.
             rendered = drop_description_suffix(rendered, clean(record["nsfx"]))
+            # **A TITLE MUST NOT END UP IN A `mul` LABEL.** Emma, 2026-09-07: *"the highest
+            # priority is to make sure that title names and such don't end up in mul labels
+            # and dont get transliterated"*, and, asked whether a bare territorial counts:
+            # **both** -- `Judith of Flanders` becomes `Judith`.
+            # `namemodel.drop_label_title` is curated by hand rather than derived, because
+            # applying the name-FIELD rule to a label deleted `Miles` from
+            # `Miles de Thouars` and took `Anna King` to `Anna`.
+            # **A DESCRIPTION IS NOT A NAME WITH A TITLE ON IT.** `father of Asukabe no
+            # Namura` is a relationship phrase Geni recorded in the name field, and
+            # `drop_title_tail` truncates it at the connective to the bare word `father`.
+            # **252 labels became `father`, `wife` or `daughter`** on the first run of this.
+            # `labels.is_description` is the census-backed test and was already imported here.
+            if not is_description(rendered):
+                rendered = drop_label_title(rendered)
             if not rendered:
                 continue
             group = script_group(record["scripts"])

@@ -614,6 +614,89 @@ _LEADING_TITLES = frozenset(
     for t in group)
 
 
+#: **Titles that may be stripped from the FRONT of a LABEL.** Hand-curated, not derived from
+#: `_LEADING_TITLES`, and the difference is the whole point.
+#:
+#: **Emma, 2026-09-07:** *"most of these words that we've been transliterating… aren't that
+#: common and that means we can do them much more manually than I think you give them credit
+#: for"*, and *"the highest priority is to make sure that title names and such don't end up in
+#: mul labels and dont get transliterated"*.
+#:
+#: She is right about the size: **128 distinct tokens open a label across all 1,295,228 labelled
+#: people**, so this is a list somebody reads rather than a rule somebody trusts. Counts are the
+#: measured occurrences in that position.
+#:
+#: **⛔ THE EXCLUSIONS ARE THE REASON THIS IS A LIST.** Applying `_LEADING_TITLES` — which is
+#: built for a name FIELD, where the context is different — turned
+#: `Miles de Thouars seigneur de Pouzaugues` into `de Thouars seigneur de Pouzaugues`, deleting
+#: a given name because *miles* is Latin for knight. Each of these is held out and why:
+#:
+#:   `miles` 49    a given name. Miles de Thouars, Miles Standish.
+#:   `ra` 104      Egyptian, in an Egypt-heavy corpus. Not the Royal Academy postnominal.
+#:   `bonde` 29    a major Swedish noble surname as well as Swedish for *farmer*.
+#:   `saint` 25    `Saint-Germain` and its kin are surnames.
+#:   `katz` 2      a very common surname, as are `segal`, `halevi`, `hakohen`.
+#:   `infant` 134  ambiguous between the Iberian royal title and the description marker.
+#:   `kg` `br` `dd` `md` `esq` `usa`   post-nominals, which do not open a name.
+#:   `twin` `tvilling` `concubine` `mistress` `heiress` `fictitious`   descriptions, not
+#:                 titles — § *A DESCRIPTION MARKER COMES OUT OF THE LABEL* owns those and
+#:                 matches the person's own `NSFX` rather than a bare word list.
+LABEL_LEADING_TITLES = frozenset("""
+    pangeran count prince princess sir jarl king lady donna doña dona bishop rabbi duke
+    marquesa rev conte sogneprest sognepræst queen fray graf countess baron marquis friherre
+    freiherr freiin freifrau ritter sor biskop comte lord greve marchese marchesa ridder conde
+    comtesse herr gräfin gravin duchess duca barone prins prinsesse prinz prinzessin dame
+    baroness princesse principessa grevinna herzog herzogin presbítero pbro kung bischof frei
+    frade irmã nonne nun abbess archbishop cardinal cardinale seigneur alferez alférez capitan
+    capitán capt captain conquistador nobile infanta pfalzgraf landgraf markgraf burggraf
+    lensgreve knyaz knight exilarch licenciado dr mr mrs esquire professor general major
+    lagmann lagman margrave landgrave palsgrave mayor viscount vicomte marquess
+    margravine archduke archduchess castellan chancellor
+    senator consul gróf coya khatun nasi
+""".split())
+
+
+def drop_label_title(label: str) -> str:
+    """`label` with a leading title and a trailing title phrase removed. For a LABEL.
+
+    **`CLAUDE.md` § *A TITLE IS NOT A NAME* said the tail rule "does not touch the LABEL" and
+    left what a label should read as an open question.** Emma closed it on 2026-09-07: titles
+    must not end up in `mul` labels. This is that, and it is deliberately narrower than the
+    name-field rules — `LABEL_LEADING_TITLES` is curated and `_LEADING_TITLES` is not.
+
+    **The dangling fragment is why this is not two calls.** `drop_title_tail` truncates at the
+    connective, so `Peter Venables MP, of Kinderton` became `Peter Venables MP,` and
+    `Napoléon … Bonaparte 3rd prince de Canino` became `… Bonaparte 3rd` — a title and an
+    orphaned ordinal left where the tail used to be. Trailing title tokens and the punctuation
+    that introduced them go too.
+
+    **Never to empty**, and never past the last surviving token: a label that is nothing but a
+    title keeps it, exactly as `drop_leading_title` does, because an item labelled nothing is
+    worse than one labelled oddly.
+    """
+    if not label:
+        return label
+    out = drop_title_tail(label)
+    truncated = out != label
+    toks = out.split()
+    while len(toks) > 1 and toks[0].strip("()[]{}.,").casefold() in LABEL_LEADING_TITLES:
+        toks.pop(0)
+    # **The residue clean-up runs ONLY where the tail was actually truncated.** Run
+    # unconditionally it took `Anna King` to `Anna` and `Sarah Bishop` to `Sarah` — the exact
+    # surnames `drop_title_tail`'s connective rule exists to protect, destroyed by a bare word
+    # list applied to a trailing token. What it is for is the fragment truncation leaves
+    # behind: `Peter Venables MP, of Kinderton` -> `Peter Venables MP,`, and
+    # `Napoléon … Bonaparte 3rd prince de Canino` -> `… Bonaparte 3rd`.
+    while truncated and len(toks) > 1:
+        last = toks[-1].strip("()[]{}.,").casefold()
+        if last in LABEL_LEADING_TITLES or last in NAME_SUFFIX_TITLES or re.fullmatch(
+                r"\d+(?:st|nd|rd|th)", last):
+            toks.pop()
+            continue
+        break
+    return " ".join(toks).strip().rstrip(",").strip() or label
+
+
 def is_suffix_title(token: str) -> bool:
     """True when this `NSFX` token is a title rather than part of the name."""
     if not token:
