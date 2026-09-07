@@ -30858,3 +30858,16 @@ Three fixes, and the third was found by reading the file rather than the summary
 
 **Extension 1.6.1 → 1.6.2.** The content-script change needs a Chrome restart to load; until
 then the banner is read from the page directly at harvest time, which is what caught all four.
+
+**And the tool-result overflow is real, not theoretical.** Friedrich Gotthard Justus Hassar
+`6000000092214095830` has 14 relatives and his block came back cut mid-row —
+`sibling	Brother	6000000198743104821	D[TRUNCATED]`. `parse_block`'s docstring predicted exactly
+this and it had never been seen: *"a person with eight relatives overflows the tool-result limit
+and the last of them is silently truncated."* Refetched in two parts; all 14 rows landed.
+
+**A truncated line is visibly truncated, which is the whole reason the format is tab-separated
+rather than JSON** — a JSON scrape cut in the same place still parses and is simply short by one
+person. Read the row count against the prose before writing a large family.
+
+Also in: Christoph Tetsch `6000000083078044976`, below the floor at 232 / 217 despite 210
+descendants; Hassar cleared at 1,172 / 8,836.
