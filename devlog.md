@@ -31423,3 +31423,43 @@ not filled:
 **Korean still has no attestation column — 0 of 38,376.** Every `ja`/`zh` change tonight was
 scored against the 5,902 tokens Wikidata supplies; these are argued from the writing system
 instead. Building that validation set needs a fetch this container cannot make and Actions can.
+
+## 2026-09-07 — the `P144` attestation census, and both floors refuted
+
+**Emma, 2026-09-07**, shown `Q141336969` and `Q141290188` carrying `P144` *based on*
+`Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the Junna you
+linked. Not sure how you even got that one or how you're defining the patronymic sources."*
+Her floor: *"Uhh it needs to be attested lol. Really attested in our data plus some degree of
+agentic inference or my manual approval."*
+
+`scripts/census-patronymic-sources.py` → `reports/patronymic-source-attestation.tsv`:
+**9,889 (token, source) pairs over 6,911 tokens**, each with how many fathers attest it, its
+share of the token's attestations, and one example bearer with his father. Nothing on disk
+carried that number before — `patronymic-items-to-create.tsv` writes the accepted *names* and
+not their weight, so a 4,000-father source and a one-father source were indistinguishable.
+
+**Both floors I proposed are refuted by the census, and it took reading the rows to see it.**
+
+| rule | pairs dropped | tokens losing every source |
+| --- | ---: | ---: |
+| fathers >= 2 | 3,999 | **2,654** |
+| share >= 10% | 1,573 | 0 |
+| first vowel agrees | 407 | 132 |
+| vowel agrees OR share >= 10% | 168 | 0 |
+
+* **A father-count floor is destructive.** At `>= 2` it takes the whole derivation off 2,654
+  tokens — a token borne by three people has three attesting fathers at most.
+* **A share floor drops mostly GOOD pairs.** `johnsen ← Johannes` (8 fathers), `henriksen ←
+  Henrich` (38), `christiansdatter ← Christen` (14), `claesson ← Clas` (15), `olsson ← Olaus`
+  (4) are all real spellings of one name, and dropping them is exactly what her multi-valued
+  ruling protects against.
+* Even the tightest combination leaves 168, and reading all 168 shows **most are genuine** —
+  `knutsen ← Canuti`, `mortensen ← Martinus`, `staffansson ← Stefan`, `paulsen ← Poul`.
+
+**The junk that survives every threshold has one thing in common: the source is not in the
+father's GIVEN-NAME position.** `johansson ← Junna` comes from `Juho Niilonpoika Junna`, where
+`Junna` is the farm name; `larsson ← Luur` from `Anders Andersson Luur Läraktig`; `bjørnsen ←
+Brun` from `Christopher Andreas Brun`. The walk iterates every word of the father's label,
+while the Latin-genitive branch beside it already uses `dad.split()[0]`. So the discriminator
+is **position, not weight** — which is the § *PARSE PATRONYMICS BY FORM* rule again: a
+threshold was being reached for where a structural test belongs.
