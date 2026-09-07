@@ -55,3 +55,48 @@ this protocol — and never a side effect of collecting.
 miss with in-law unchecked. His path file
 `paths/isolate-geni-rudolf-beck-1919-c1941.tsv` stays — Emma-anchored paths are live work by her
 own ruling — but it is not a pilot hit and must not be counted as one.
+
+## ⛔ THE ANCHOR DECAYS. IT CAME OFF CHARLEMAGNE MID-RUN ON 2026-09-06
+
+**It was set at the start of the evening, produced ten verified Charlemagne captures, and was
+back on the viewer a few hours later without anyone touching it.** Caught on Sophia Elisabeth
+Sahlin `2892509`, whose capture came back with **step 1 = `You`** and Geni's prose reading
+*"is your 15th cousin 7 times removed"*. The two targets running beside her, Anna Throndsen
+`296165995120003655` and Anna Hørlück `297536201290008921`, were the same.
+
+**Nothing in the capture announces it.** A viewer-anchored hit is a hit: `resolved_path`,
+`hasTarget` true, a full chain, a confident prose sentence. It parses, it writes, it counts —
+and it answers *how is this person related to Emma*. Had the three been filed by the ordinary
+route they would have entered `reports/isolates.csv` stamped `charlemagne`, because
+`write-family-scrape.py` carries `ANCHOR` as a module constant and cannot see the page.
+
+**So the anchor is not a thing you set once a session either.** *"Set exactly once"* was already
+recorded above as a shortcut mistaken for a law; this is the same lesson one level down — set
+once **per run** is also wrong, because the anchor expires on its own.
+
+### The check that costs nothing and must be done
+
+**Step 1 of every captured chain is the anchor.** If it is Charlemagne
+`geni:6000000002457013227`, the capture answers the pilot's question. If it is `You`
+`geni:6000000087535357291`, it does not. Geni's prose says the same thing in words —
+*"is Charlemagne's Nth great grandson"* against *"is your ..."* — and both are already in the
+result the collector hands back.
+
+Read one of them before writing any path file. It is free, it is per-capture rather than
+per-session, and it is the only thing that survives the anchor expiring at an unknown moment.
+
+**A miss needs the same care and gives less warning**, because a miss has no chain to read step 1
+from. The banner wording is identical under either anchor. The only protection there is that the
+anchor was verified recently — which is why the check above is per-capture and why a run that
+finds a viewer-anchored hit should treat every miss since the last verified capture as suspect.
+
+### What was done
+
+The three were **not** filed as Charlemagne results. The anchor was re-set by this protocol —
+checked on Charlemagne's own page, clicked, and verified on two independent targets: Rudolf Beck
+went from a viewer-anchored in-law chain to *"How are they related"*, and Sahlin's page went to
+*"Charlemagne is connected to Sophia Elisabeth"*. Then all three were re-run.
+
+**The ten captures taken earlier are unaffected and were checked rather than assumed** — every
+one of them has Charlemagne as step 1 and *"is Charlemagne's Nth great grand-"* in its prose,
+both recorded in the files.

@@ -31626,3 +31626,46 @@ on disk: **22 people appear in three or more, 16 in four or more, 4 in five or m
 `WenstrÃÂ¶m` in an earlier session — landing intact 17 times in his TSV, at
 1,088 / 330 with 194 descendants; Karl Olofsson `2398881` at 15,000 / 15,000 with 79
 descendants, missing and cleared.
+
+## ⛔ THE ANCHOR CAME OFF CHARLEMAGNE MID-RUN, AND A HIT DOES NOT ANNOUNCE IT
+
+It was set at the start of the evening, produced **ten verified Charlemagne captures**, and was
+back on the viewer a few hours later with nobody touching it.
+
+**Caught on Sophia Elisabeth Sahlin `2892509`**: her capture came back `path_found`,
+`resolved_path`, `hasTarget` true, a confident 39-step chain — and **step 1 was `You`**, with
+Geni's prose reading *"is your 15th cousin 7 times removed"*. Anna Throndsen and Anna Hørlück,
+running beside her, were the same, and Erika Sofia Wenström made a fourth once the check was
+being applied.
+
+**Nothing about a viewer-anchored hit looks wrong.** It parses, it has a chain, it would have
+been written to `paths/` and stamped `charlemagne` in `reports/isolates.csv`, because
+`write-family-scrape.py` carries `ANCHOR` as a module constant and cannot see the page. Four
+files answering *how is this person related to Emma* would have gone into a reach rate that
+claims to answer *how is this person related to Charlemagne*.
+
+**Sahlin is the proof of how different those answers are.** Under the viewer anchor: 39 steps
+through Borsheim, Hoknes and Bjorgo. Under Charlemagne: 34 steps through Berengar, the counts
+of Flanders, Adela into Denmark, the Bjälbo earls, Vinge, Bratt and Sahlin. **The two chains
+share nothing but her.** Both are correct; they answer different questions; and only step 1 and
+the prose say which.
+
+**So "set once per session" is wrong the same way "set exactly once" was.** `docs/anchor-protocol.md`
+already recorded that her one-time setting was a shortcut I turned into a law. This is that
+lesson one level down: the anchor expires on its own, so the check has to be **per capture**,
+not per run. Step 1 of the chain is free, it is already in the result, and it is the only thing
+that survives an expiry at an unknown moment.
+
+**A miss gives no such warning** — no chain, and the banner reads identically under either
+anchor. That asymmetry is now written into the protocol: a run that finds a viewer-anchored hit
+should treat every miss since the last verified capture as suspect.
+
+**Re-set by the protocol and verified on two independent targets**, never on the pin: Rudolf
+Beck went from a viewer-anchored in-law chain to *"How are they related"*, and Sahlin's page to
+*"Charlemagne is connected to Sophia Elisabeth"*. The four were re-run; Sahlin's Charlemagne
+capture is `paths/isolate-geni-sophia-elisabeth-sahlin-1789.tsv`.
+
+**And the claim that the earlier ten are unaffected was CHECKED, not asserted** — a pass over
+every `paths/isolate-geni-*.tsv` reading step 1 by id: **10 Charlemagne-anchored, all from
+tonight; 664 viewer-anchored**, which is the pre-existing corpus and is live work by her own
+ruling. No file taken tonight is mislabelled.
