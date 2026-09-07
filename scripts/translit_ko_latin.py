@@ -80,10 +80,18 @@ _CONS = {
     "þ": "t", "ð": "d", "ß": "s",
     # Digraphs, longest first when matching.
     "ch": "ch", "sh": "s", "th": "t", "ph": "p", "kh": "k", "gh": "g",
-    "ck": "k", "ng": "ng", "qu": "kw", "ts": "ch", "sch": "s", "sz": "s",
+    "ck": "k", "ng": "ng", "qu": "kw", # **`ts` is `t` + `s` here, not the /ts/ affricate.** Every `ts` in this corpus is a
+    # patronymic boundary -- `Knutsson` is Knut + sson, `Mattsson` Matt + sson -- and reading it
+    # as ㅊ gave 크누촌 and 마촌 where Korean writes 크누트손 and 마트손. The affricate belongs to
+    # `tz`, which is what `Fritz` has: 프리츠.
+    "tz": "ch", "sch": "s", "sz": "s",
 
     "cz": "ch", "rz": "j", "zh": "j", "kj": "k", "gj": "g", "sj": "s",
-    "skj": "s", "hj": "h", "lj": "l", "nj": "n", "dj": "j", "tj": "ch",
+    "skj": "s", "hj": "h", "lj": "l",
+    # **The palatal set was incomplete**, so `Bjørn` walked `b` + `jø` and came out 브죄른
+    # where Korean writes 뵈른. These follow exactly the convention the ones above use --
+    # the `j` is dropped and the consonant carries the vowel.
+    "bj": "b", "fj": "p", "mj": "m", "pj": "p", "vj": "b", "nj": "n", "dj": "j", "tj": "ch",
 }
 
 #: Latin vowel (or digraph) to the Korean vowel it transcribes as. Nordic vowels are here
@@ -192,6 +200,12 @@ def render_word(word):
     # and `Heller` 헬레르. Collapsing everything gave 리리 and 헤레르; keeping everything gave
     # 한스도트테르.
     word = re.sub(r"([bcdfgkpqstvxz])\1", r"\1", word)
+    # **A doubled nasal or liquid with NO VOWEL after it is one consonant.** The rule above
+    # keeps a doubled liquid or nasal because the first closes a syllable -- `Lilly` 릴리 --
+    # but that only works when a vowel follows. `Ahlemann` ended `nn` and came out 아흐레만느:
+    # the first `n` took the 받침 and the second had nowhere to go. Same shape as the doubled
+    # nasal in `translit_no`.
+    word = re.sub(r"([nmlr])\1(?![aeiouyæøåäöü])", r"\1", word)
     units = _tokens(word)
     if not units:
         return ""
@@ -230,8 +244,18 @@ def render_word(word):
             if nxt and nxt[0] == "V":
                 merged = "w" + nxt[1]
                 if merged in _V:
-                    out.append(_compose("", merged))
-                    i += 2
+                    # **This branch dropped the final slot**, so `Adwin` came out 아드위느
+                    # where the `n` is an ordinary ㄴ 받침: 아드윈.
+                    final = ""
+                    j = i + 2
+                    if j < len(units) and units[j][0] == "C":
+                        c = units[j][1]
+                        after = units[j + 1] if j + 1 < len(units) else None
+                        if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+                            final = c
+                            j += 1
+                    out.append(_compose("", merged, final))
+                    i = j
                     continue
             out.append(_compose("", "u"))
             i += 1
@@ -241,8 +265,18 @@ def render_word(word):
             if nxt and nxt[0] == "V":
                 merged = "y" + nxt[1]
                 if merged in _V:
-                    out.append(_compose("", merged))
-                    i += 2
+                    # **This branch dropped the final slot**, so `Adwin` came out 아드위느
+                    # where the `n` is an ordinary ㄴ 받침: 아드윈.
+                    final = ""
+                    j = i + 2
+                    if j < len(units) and units[j][0] == "C":
+                        c = units[j][1]
+                        after = units[j + 1] if j + 1 < len(units) else None
+                        if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+                            final = c
+                            j += 1
+                    out.append(_compose("", merged, final))
+                    i = j
                     continue
             out.append(_compose("", "i"))
             i += 1
@@ -285,12 +319,25 @@ def render_word(word):
                 out.append(syl)
             i = j
             continue
-        # No vowel follows: the consonant takes 으.
-        syl = _compose(initial, "eu")
+        # No vowel follows: the consonant takes 으 -- **and that syllable has a final slot
+        # like any other.** It was composed without one, so a word-final cluster split into two
+        # epenthetic syllables: `Abjörn` 압죄르느 where Korean writes 른, `Adsirn` 아드시르느.
+        # **1,245 tokens carried the 느 filler**, and Emma named the whole class:
+        # *"we're improvising to get a faithfulness to the original languages that theoretically
+        # is good but ends up just destroying stuff."*
+        final = ""
+        j = i + 1
+        if j < len(units) and units[j][0] == "C":
+            c = units[j][1]
+            after = units[j + 1] if j + 1 < len(units) else None
+            if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+                final = c
+                j += 1
+        syl = _compose(initial, "eu", final)
         if not syl:
             return ""
         out.append(syl)
-        i += 1
+        i = j
     return "".join(out) if all(out) else ""
 
 

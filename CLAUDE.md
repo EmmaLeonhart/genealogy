@@ -996,6 +996,41 @@ the abbreviation and the full Icelandic form, and the corpus majority expands it
 while her own record says `Bertelsdottir`. `FULL` reads `datter`/`dotter` and not `dóttir`, so her
 own evidence is invisible to it. One row; mapping Icelandic onto the Norwegian pair is a decision.
 
+### TRANSLITERATE THE ENGLISH READING. Faithfulness to the source language destroys more than it saves
+
+**Emma, 2026-09-07**, on why the Korean output was bad: *"we should just be transliterating the
+English reading by default but instead we're improvising to get a faithfulness to the original
+languages that theoretically is good but ends up just destroying stuff when the English would come
+out a consistent quality."*
+
+And, on how it got there: *"I really assumed the Korean stuff was just done with a regular
+program."* It is not — `scripts/translit_ko_latin.py` is a hand-rolled engine, and so is
+`translit_no.py`.
+
+**The principle: a consistent English reading beats an improvised source-faithful one.** The
+Korean engine was trying to honour Norwegian phonology and produced `군느브죄르느` for
+`Gunnbjørn`; read plainly it is `군뵈른`. Where the two conflict, take the consistent one.
+
+**The measured damage was one mechanism: the engine never used a 받침 where it could.**
+
+    Gunnbjørn   군느브죄르느  ->  군뵈른        Abjörn    압죄르느  ->  압죄른
+    Ahlemann    아흐레만느    ->  아흐레만      Adwin     아드위느  ->  아드윈
+    Knutsson    크누촌        ->  크누트손      Bjørn     브죄른    ->  뵈른
+
+**1,245 tokens carried the `느` filler; 115 remain.** Four bugs, each one a slot that existed
+and was not filled: the epenthetic `으` syllable was composed with no final, so a word-final
+cluster split in two (`-rn` as 르느 rather than 른); the `w`/`y` merged-vowel branches dropped the
+final slot; a doubled nasal or liquid with no vowel after it was kept, so the second had nowhere
+to go; and the palatal set was missing `bj fj mj pj vj` while already holding `nj lj gj hj`.
+`ts` was read as the /ts/ affricate when every `ts` in this corpus is a patronymic boundary —
+`Knut + sson` — and the affricate belongs to `tz`, which is what `Fritz` has.
+
+**⛔ AND KOREAN HAS NO ATTESTATION COLUMN TO CHECK AGAINST — 0 of 38,376.** Every `ja` and `zh`
+change this evening was scored against the 5,902 tokens Wikidata itself supplies; Korean has
+nothing, so these are argued from the writing system rather than measured against a corpus.
+That asymmetry is the next thing worth fixing, and it needs a fetch of Korean labels from
+Wikidata, which this container cannot reach and Actions can.
+
 ### ⛔ WIKIDATA'S LABEL BEATS OURS. An existing `mul` is not ours to overwrite
 
 **Emma, 2026-09-07:** *"wikidata labels beat our own that's a rule that's been violated a few

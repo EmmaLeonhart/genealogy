@@ -31395,3 +31395,31 @@ is no consensus to overturn it with. Checked all three ways: Svantepolk keeps `K
 carrying a title or territorial: `… Horn af Ekebyholm`, `Baroness Maria Stjernblad`,
 `Baroness Lovisa Thott`, `burgeress Margareta Frodbom, heiress of Ingemarshov`,
 `Eleonora Sofia, Baroness Stiernblad`, `Svantepolk of Viby`.
+
+## 2026-09-07 — the Korean engine never used a 받침
+
+Emma: *"we should just be transliterating the English reading by default but instead we're
+improvising to get a faithfulness to the original languages that theoretically is good but ends up
+just destroying stuff when the English would come out a consistent quality"*, and *"I really
+assumed the Korean stuff was just done with a regular program."*
+
+**1,245 tokens carried the `느` filler; 115 remain.** Four bugs, each a slot that existed and was
+not filled:
+
+* the epenthetic `으` syllable was composed with **no final slot**, so a word-final cluster split
+  into two syllables — `Abjörn` 압죄르느 where Korean writes 압죄른;
+* the `w`/`y` merged-vowel branches dropped the final too — `Adwin` 아드위느 for an ordinary
+  ㄴ 받침, 아드윈;
+* a doubled nasal or liquid with no vowel after it was kept, so the second had nowhere to go —
+  `Ahlemann` 아흐레만느;
+* the palatal set held `nj lj gj hj kj tj sj` and not `bj fj mj pj vj`, so `Bjørn` walked `b` +
+  `jø` and gave 브죄른 where Korean writes 뵈른.
+
+`ts` was read as the /ts/ affricate; every `ts` here is a patronymic boundary (`Knut + sson`), so
+`Knutsson` gave 크누촌 rather than 크누트손. The affricate is `tz`, which is what `Fritz` has: 프리츠.
+
+3,926 rows re-derived. `Gunnbjørn` now reads 군뵈른.
+
+**Korean still has no attestation column — 0 of 38,376.** Every `ja`/`zh` change tonight was
+scored against the 5,902 tokens Wikidata supplies; these are argued from the writing system
+instead. Building that validation set needs a fetch this container cannot make and Actions can.
