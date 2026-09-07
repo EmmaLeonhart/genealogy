@@ -20,17 +20,16 @@
 # and `his fiancée` as relation words but nothing in the chain marks the whole path as in-law,
 # and a reader counting steps would call this a 25-step blood descent.
 #
-# ⛔ SO IT IS NOT A BLOOD REACH AND MUST NOT BE COUNTED AS ONE. Every other Charlemagne hit
-# captured on 2026-09-06 reads *"is Charlemagne's Nth great grand-"*, which is blood. This one
-# reaches him only through a marriage and an engagement. `reports/isolates.csv` has no column
-# for the distinction; the row is `yes` because a path to Charlemagne exists, which is what that
-# column says, and this header is where the qualification lives.
+# ⛔ AND IT COUNTS. Emma, 2026-09-07: *"in-law connections are just as valid blood is no
+# required lol."* So this is a hit on the same terms as any other, and the in-law shape is a
+# fact about the route rather than a caveat on the result.
 #
-# **NEEDS-DECISION, hers: whether the reach rate should count in-law paths.** Her framing of the
-# pilot has always been *blood* — `runPath` is dispatched with `kind: "blood"` — and
-# `docs/anchor-protocol.md` already records Rudolf Beck as *"a blood miss with in-law
-# unchecked"*, which implies the two are tracked apart. One row is not worth a schema change;
-# a second one is.
+# It is recorded here anyway because the STEP WORDS DO NOT CARRY IT — a reader counting steps
+# sees 25 links and no marker, and only Geni's prose says the last two are a marriage and an
+# engagement. `CLAUDE.md` § *Grab the RESIDUALS* is exactly that: keep what the structured parse
+# drops. What is NOT true, and was written here for an hour before she corrected it, is that a
+# blood path is the thing being counted.
+#
 step	name	relation_to_previous	note
 1	Charlemagne	-	geni:6000000002457013227
 2	Louis I, The Pious	his son	geni:6000000001266578142

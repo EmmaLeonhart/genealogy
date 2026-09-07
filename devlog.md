@@ -31790,3 +31790,38 @@ they been filed, the reach rate would have gained two people who have no blood p
 Charlemagne at all — and nothing downstream would ever have contradicted it.
 
 Ledger after the correction: **92 rows under the Charlemagne anchor, 12 hits and 80 misses.**
+
+## ⛔ IN-LAW CONNECTIONS COUNT. THE COLLECTOR NEVER ASKED FOR THEM
+
+**Emma, 2026-09-07:** *"in-law connections are just as valid blood is no required lol"*, and then,
+on seeing what that implied: *"WERE YOU NOT SAVING IN LAW RELATIONSHIPS"*.
+
+**No. `runIndividual` dispatched `runPath` with `kind: "blood"` and nothing else.** When Geni
+answered *"No blood relationship was found."* the loop recorded a miss and moved on. Geni offers a
+**second search** on that same page — *"They might be connected in other ways"*, with a **Show Me**
+button — and nothing in this repo has ever clicked it.
+
+**So every `no` in `reports/isolates.csv` means *no BLOOD path*, which is narrower than the
+question the column is read as answering.** `docs/anchor-protocol.md` had already written the
+sentence about one person — Rudolf Beck, *"a blood miss with in-law unchecked"* — and that sat
+there while the same gap applied to all 80 misses.
+
+**What is NOT affected, and it is most of the work.** Every family scrape, every tiny GEDCOM, the
+12 resolved paths, and the 664 older Emma-anchored captures are untouched. The gap is a **second
+question never asked of 80 people whose ids are on disk** — a revisit, not a loss.
+
+**Built, 1.6.2 → 1.6.3:**
+
+* `GC.runInLaw` — clicks *Show Me*, waits on the search the same way the blood one does (it is
+  equally asynchronous), and returns the chain, `resolved_none` on *"No in-law relationship was
+  found."*, or `not_offered` where there is no button. An in-law path file says **IN-LAW** in its
+  header, because the step words carry `her husband` and `his wife` while nothing marks the path
+  as a whole — `CLAUDE.md` § *Grab the RESIDUALS*.
+* `GC.pathState` learns the fourth miss sentence.
+* `runIndividual` calls it **only after a blood miss** — her instruction the same day: *"do not
+  waste time redoing it on ones that have blood paths already."* A person who resolved on blood
+  has already returned and never reaches the line.
+
+**Two of the misses are already checked by hand and are genuine both ways** — Anna Hørlück
+`297536201290008921` reads *"No in-law relationship was found."*, and Anna Throndsen
+`296165995120003655` was an in-law hit all along and is recorded as one.

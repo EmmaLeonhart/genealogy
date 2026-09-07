@@ -103,7 +103,32 @@ GC.runIndividual = async function (job) {
     return out;
   }
 
-  /* 5b. A real miss. The statistics decide, and they decide here rather than in a report. */
+  /* 5a-bis. ⛔ A BLOOD MISS IS NOT THE ANSWER. ASK FOR THE IN-LAW PATH BEFORE GIVING UP.
+   *
+   * **Emma, 2026-09-07:** *"in-law connections are just as valid blood is no required lol"*,
+   * and then *"WERE YOU NOT SAVING IN LAW RELATIONSHIPS"*. Geni offers a second search under
+   * *"They might be connected in other ways"*; nothing ever clicked it, so every miss this
+   * collector recorded meant only *no BLOOD path*.
+   *
+   * ⛔ AND IT RUNS ONLY HERE, AFTER A BLOOD MISS. Her instruction, same day: *"do not waste
+   * time redoing it on ones that have blood paths already."* A person who resolved above has
+   * returned already and never reaches this line. */
+  step("inlaw");
+  const inlaw = await GC.runInLaw({ geni_id: id, label: job.label, waitMs: job.waitMs });
+  out.inlaw_state = inlaw.state;
+  if (inlaw.state === "resolved_path") {
+    out.state = "path_found_inlaw";
+    out.path_steps = inlaw.steps;
+    out.path_has_target = true;
+    out.path_tsv = inlaw.tsv;
+    out.path_filename = inlaw.filename;
+    out.description = inlaw.description;
+    out.export_decision = "not needed -- an in-law path resolved";
+    return out;
+  }
+
+  /* 5b. A real miss on BOTH questions. The statistics decide, and they decide here rather
+   *     than in a report. */
   step("gate");
   const gate = GC.individual.gate(fam.stats);
   out.gate = gate;

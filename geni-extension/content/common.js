@@ -72,7 +72,11 @@ GC.pathState = function () {
    * is never written as a miss, so the reach rate the pilot exists to produce is inflated by
    * exactly these people -- the same failure as the `/path/` URL, from the other end. The
    * name is interpolated into the sentence, so the pattern stops at *to*. */
-  const none = GC.byText("*", /no blood relationship was found|the relationship could not be found|no path found to/i)
+  /* ⛔ FOUR MISS SENTENCES, AND THE IN-LAW ONE IS A DIFFERENT QUESTION'S ANSWER.
+   * *"No in-law relationship was found."* only appears after the in-law search has been asked
+   * for, so it means the SECOND question came back empty. `pathState` reports the page's state
+   * and `runPath` decides what to do about it; both sentences are misses here. */
+  const none = GC.byText("*", /no blood relationship was found|no in-law relationship was found|the relationship could not be found|no path found to/i)
     .filter((e) => e.children.length === 0).some(GC.visible);
   const segs = document.querySelectorAll("span.segment > span.name a[data-profile-id]").length;
   const rd = document.querySelector("#relation_description, .relation_description");
@@ -243,4 +247,4 @@ GC.blocked = function () {
  * work was done agentically around it, and the question was answered by asking Emma rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
-document.documentElement.setAttribute("data-geni-collector", "1.6.2");
+document.documentElement.setAttribute("data-geni-collector", "1.6.3");
