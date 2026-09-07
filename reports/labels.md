@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 267,013 people
+## Aliases from married names — 267,064 people
 
 Emma: *"Married name plugs into name to produce an alias."*
 

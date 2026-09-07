@@ -805,10 +805,16 @@ def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = ""
     still becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is
     for the case where the label would otherwise be a bare given name.
 
-    **Measured over the corpus: 21 candidates, 10 labels move** — the rest take their label
-    from a different name record on the same person. Reading them is what set the `av`
-    exclusion: `Sigward i av Norge` files `av Norge` as its surname, which is a country, so a
-    rescued tail that itself opens with a territorial word is refused.
+    **Measured over the corpus: 19 labels move.** `Ånon Byre`, `Henrik Hebnes`, `Peder Mælum`,
+    `Arne Tomb`, `Olav Tomb`, `Gyrid Øvrebø`, `Sigrid Frang`, `Børild Tjørn`, `Bjorn Grude`,
+    `Louis Steyn`, four `Chiang`s. Reading them is what set the `av` exclusion:
+    `Sigward i av Norge` files `av Norge` as its surname, which is a country, so a rescued tail
+    that itself opens with a territorial word is refused.
+
+    **`Marina til Jylland` -> `Marina Jylland` is the one to watch.** Jylland is a Danish
+    region, so it is the `Judith of Flanders` shape her ruling excludes — but Geni files it in
+    her `SURN`, and nothing in the data separates a farm from a region without a gazetteer,
+    which is the inference this repo refuses everywhere else. The field is the evidence.
     """
     if not label or not truncated or truncated == label:
         return truncated
@@ -820,10 +826,11 @@ def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = ""
     rest = " ".join(parts[1:])
     if rest.split()[0].casefold() in TERRITORIAL_OPENERS | TITLE_CONNECTIVES:
         return truncated
-    # **The field may carry the preposition too.** `2598370` is `Peder i /Hevonpää/` with
-    # `_MARNM` = `i Hevonpää`, so an exact comparison misses him and he keeps a bare given
-    # name. Geni files the farm designation inconsistently — `Ånon`'s `SURN` is the bare
-    # `Byre` — and either spelling is the same claim about the same person.
+    # **The field usually carries the preposition too, and an exact comparison misses it.**
+    # `Arne /på Tomb/` files `SURN` = `på Tomb`, `Marina /til Jylland/` files `til Jylland`.
+    # Geni is inconsistent about it — `Ånon`'s `SURN` is the bare `Byre` — and either spelling
+    # is the same claim about the same person. **This is 9 of the 19**: matching the exact
+    # string alone rescued only 10.
     def _bare(field):
         tokens = (field or "").split()
         if tokens and tokens[0].casefold() in FARM_OPENERS:

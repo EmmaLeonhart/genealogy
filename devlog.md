@@ -31689,16 +31689,25 @@ label dropped it.
 `drop_description_suffix` use. It fires only where the truncation leaves ONE token, so
 `Ragnhild Toresdatter Håland i Gjesdal` still loses `i Gjesdal`.
 
-**21 candidates, 10 labels moved**, and reading them is what set two of the rules:
+**19 labels moved**, and reading them is what set three of the rules:
 
     Ånon i Byre       -> Ånon Byre        Peder på Mælum  -> Peder Mælum
-    Henrik på Hebnes  -> Henrik Hebnes    Bjorn i Grude   -> Bjorn Grude
-    Hung i Chiang     -> Hung Chiang      Louis i Steyn,  -> Louis Steyn
+    Henrik på Hebnes  -> Henrik Hebnes    Arne på Tomb    -> Arne Tomb
+    Gyrid på Øvrebø   -> Gyrid Øvrebø     Louis i Steyn,  -> Louis Steyn
+
+**Nine of the nineteen needed the field compared with its own preposition stripped.** Geni is
+inconsistent: `Ånon`'s `SURN` is the bare `Byre`, `Arne /på Tomb/` files `på Tomb`. Matching the
+exact string alone rescued 10.
 
 `Sigward i av Norge` files `av Norge` as its surname and that is a country, so a rescued tail
 that itself opens with a territorial word is refused — `av` is excluded, which is why
 `TERRITORIAL_OPENERS` minus `of` is not the whole story. And `Louis` is why the trailing comma
 goes: Geni's `SURN` for him is literally `Steyn,`.
+
+**One of the nineteen is arguable and is shipped rather than filtered.** `Marina til Jylland`
+becomes `Marina Jylland`, and Jylland is a Danish region — the `Judith of Flanders` shape her
+own ruling excludes. Geni files it in her `SURN`, and separating a farm from a region needs a
+gazetteer, which is the inference this repo refuses everywhere else.
 
 **The `Given NN` half went in on her follow-up ruling, not on the obvious reading.** Asked which
 languages carry what, she said: *"given NN for mul labels but the NN is replaced with prose in

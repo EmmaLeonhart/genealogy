@@ -859,11 +859,20 @@ it is the person's **OWN `SURN`/`_MARNM`, never a word list** — the same exact
 becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is for the
 case where the label would otherwise be a bare given name.
 
-**Measured: 21 candidates, 10 labels move** — `Ånon Byre`, `Henrik Hebnes`, `Peder Mælum`,
-`Bjorn Grude`, `Jan Serrurier`, `Louis Steyn`, and four `Chiang`s. Reading them is what set the
-`av` exclusion: **`Sigward i av Norge` files `av Norge` as its surname and that is a country**,
-so a rescued tail that itself opens with a territorial word is refused. `Louis` is why the
-comma goes: Geni's `SURN` for him is literally `Steyn,`.
+**Measured: 19 labels move** — `Ånon Byre`, `Henrik Hebnes`, `Peder Mælum`, `Arne Tomb`,
+`Olav Tomb`, `Gyrid Øvrebø`, `Sigrid Frang`, `Børild Tjørn`, `Bjorn Grude`, `Louis Steyn`, four
+`Chiang`s. Reading them is what set the `av` exclusion: **`Sigward i av Norge` files `av Norge`
+as its surname and that is a country**, so a rescued tail that itself opens with a territorial
+word is refused. `Louis` is why the comma goes: Geni's `SURN` for him is literally `Steyn,`.
+
+**The FIELD usually carries the preposition, and that is 9 of the 19** — `Arne /på Tomb/` files
+`SURN` = `på Tomb`, not `Tomb`. Matching the exact string alone rescued 10; comparing against
+the field with a leading farm opener stripped rescued the rest.
+
+**`Marina til Jylland` → `Marina Jylland` is the one to watch.** Jylland is a Danish region, so
+it is the `Judith of Flanders` shape — but Geni files it in her `SURN`, and separating a farm
+from a region needs a gazetteer, which is the inference this repo refuses everywhere else. The
+field is the evidence.
 
 **`Given NN` is not a new shape.** `labels.strip_markers` already says so in its own docstring —
 *"`Sara NN` — given name known, surname unknown — is already right and is left alone"*. Geni
