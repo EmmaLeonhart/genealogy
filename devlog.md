@@ -32100,3 +32100,25 @@ work was still there. So the filter is the script she actually ruled on, not the
 
 **The deck is now empty**: two retired by her verdicts, three held by the filter. They stay in
 `reports/parent-candidates.tsv`, which is the census.
+
+## 2026-09-08 — `both_present` is the walk continuing, and `neither` reaches the ledger
+
+Two follow-ons to the both-ties work of 2026-09-07, both found on the same person — Anna
+Hørlück `297536201290008921`, the first individual the two-search loop ever ran to a verdict.
+
+**`runIndividual` called a started walk a dead end.** `runSeed` does ONE person and hands back
+the queue of who to visit next; `docs/parent-walk-algorithm.md` rule 4 is her dictation — *"both
+present -> add neither; enqueue the mother, THEN the father, and carry on up."* Anna has two
+recorded parents, so `runSeed` returned `both_present` with `enqueue` = [mother, father], and
+the job reported `seed_failed` — which reads as *the export is impossible* when the walk had not
+started. It now returns `seed_walk` and hands the queue back, because walking it needs a page
+load per step and a page load is the agent's job: agentic navigation is the CAPTCHA mitigation,
+not overhead to engineer away.
+
+**`write-family-scrape.py` was discarding `neither`.** The guard listed `blood` and `inlaw`
+only, so the one verdict that says *both searches ran and both missed* was dropped back to
+blank — and blank is what `collector-worklist.py` re-queues on, so that person returns to the
+pool forever. All four values are verdicts. The devlog entry above claimed this was in place; the
+code change was not committed with it.
+
+Extension 1.6.4 → 1.6.5.

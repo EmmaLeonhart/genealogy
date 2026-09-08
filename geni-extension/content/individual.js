@@ -166,9 +166,26 @@ GC.runIndividual = async function (job) {
     return out;
   }
 
+  /* ⛔ `both_present` IS THE WALK CONTINUING, NOT A FAILURE.
+   *
+   * `docs/parent-walk-algorithm.md` rule 4 -- her dictation: *"both present -> add neither;
+   * enqueue the mother, THEN the father, and carry on up."* `runSeed` does ONE person and hands
+   * back that queue; walking it needs a page load per step, and a page load is the agent's job
+   * because agentic navigation is the CAPTCHA mitigation. So the job cannot finish the walk on
+   * its own and must say so rather than reporting the first person as a dead end.
+   *
+   * Anna Hørlück `297536201290008921` is the case: two parents recorded, `enqueue` =
+   * [mother, father], and the first version of this line called it `seed_failed` and returned --
+   * which reads as *the export is impossible* when the walk had not started. */
   step("seed");
   const seed = await GC.runSeed({ geni_id: id });
   out.seed = seed;
+  if (seed.state === "both_present" || seed.state === "enqueued") {
+    out.state = "seed_walk";
+    out.walk_queue = seed.enqueue || [];
+    out.export_decision += " -- walk up: " + (out.walk_queue.join(", ") || "(nothing enqueued)");
+    return out;
+  }
   if (seed.state !== "added") { out.state = "seed_failed"; return out; }
 
   step("export");

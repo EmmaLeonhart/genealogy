@@ -252,7 +252,11 @@ def main() -> int:
     # a later pass that asked a different question must not relabel it.
     prior_via = next((r[10] for r in rows[1:] if r and r[0] == gid and len(r) > 10), "")
     via = (blob.get("via") or "").strip().lower()
-    if via not in ("blood", "inlaw"):
+    # ⛔ ALL FOUR ARE VERDICTS. The first version listed only `blood` and `inlaw`, so `neither`
+    # -- the one that says BOTH searches ran and both missed -- was silently discarded, and
+    # `collector-worklist.py` would have re-queued that person forever. Caught on Anna Hørlück
+    # `297536201290008921`, the first person the two-search loop ever finished.
+    if via not in ("blood", "inlaw", "both", "neither"):
         via = prior_via if (verdict and verdict == prior) else ""
     body.append([gid, name] + figures + ["2026-09-06", verdict, anchor, via])
     body.sort(key=lambda r: r[0])
