@@ -9,7 +9,13 @@ decision:**
 > tree merge, with qids in bios being a fundamental part of the pipeline. But for now pipeline
 > works well and that will be a thing to experiment with at the end of the queue."*
 
-**Nothing here is implemented.** The queue item is at the tail. The pipeline is untouched.
+**⛔ THE FIRST HALF IS BUILT, 2026-09-08, and the second half has a NAMED BLOCKER.**
+`scripts/build-correspondence-gedcom.py` writes `out/manual-parental-correspondences.ged` and
+`rebuild-everything.py` runs it in front of the merge, which consumes it with
+`genimerge merge --also`. **`build-garborg-day.ledger()` still reads the CSV directly** — that is
+her *"I do not want to break the pipeline"*, and it stays until the tree route is shown to carry
+the same pairs. See § *What was built* and § *What blocks the second half* at the foot of this
+file.
 
 ## What exists today
 
@@ -67,6 +73,13 @@ ids plus a `NOTE` carrying the Wikidata URL — and let the synoptic tree merge 
 
 ### What has to be decided before it is built
 
+**All three were decided on 2026-09-08 under `CLAUDE.md` § *Working the queue: GUESS. Do not
+ask*, and the readings are in `build-correspondence-gedcom.py`'s docstring:** the pair only and
+not the verdict; **everything in the file, because none of it is a rejection** — all 314 rows
+carry `SAME` or `RIGHT`, and `rejected-parents`/`blocked-creations` name what was rejected (a
+parent *link*, a *creation*), never the identification; and `bio-qids.tsv` stays a separate
+extract for now.
+
 - **Does the generated GEDCOM carry only the pair, or the verdict too?** The CSV has
   `verdict` and `batch`; a `NOTE` can carry them, and a tree consumer might want to know a pair
   came from the parent deck rather than from a bio.
@@ -84,3 +97,59 @@ extract was last built 2026-08-30, so **3 of its 29 pairs** were visible in the 
 schedules the extractor. A design where the bios are read out of the merged tree removes that
 failure mode entirely, because the tree is rebuilt from the corpus rather than from a snapshot of
 it.
+
+---
+
+## What was built, 2026-09-08
+
+| | |
+| --- | --- |
+| `scripts/build-correspondence-gedcom.py` | 314 pairs → `out/manual-parental-correspondences.ged`, 24,377 bytes |
+| `.gitignore` | one explicit line, the same convention as the zips and `out/merged.ged` |
+| `genimerge merge --also PATH` | an extra input merged LAST that is **not corpus**. Repeatable |
+| `rebuild-everything.py` | the generator runs immediately before the merge, which is given `--also` |
+| `tests/test_correspondence_gedcom.py` | that `--also` **adds** rather than replaces, and refuses a missing file |
+
+**Measured, not reasoned** — three tiny profile GEDCOMs plus the overlay, merged:
+
+    plain merge    359 INDI    314 wikidata NOTEs
+    --slim         359 INDI      0 wikidata NOTEs
+
+and the NOTE lands on the person's existing record rather than making a second one, because the
+xref is the Geni id:
+
+    0 @I6000000023140541858@ INDI
+    1 NAME Kristina Samuelsdotter
+    1 RFN geni:6000000023140541858
+    1 NOTE https://www.wikidata.org/wiki/Q127270437
+
+**All 314 are already in the tree**, so nothing was held back by the invented-person guard.
+
+### `--also` rather than a file under `exports/`
+
+Two reasons, and the first is a test that would fail the moment the file existed:
+`tests/test_repo_invariants.py` compares `git ls-files` against `find` over `exports/`, and this
+file is gitignored. The second is quieter and worse — `genimerge.sources` is *the only place that
+answers which GEDCOMs are the corpus*, and `inventory`'s overlap figures and `density`'s presence
+counts both **divide by how many exports contain a person**. A generated 314-record file counted
+as an export would move both.
+
+## ⛔ What blocks the second half: THE SLIM TREE DROPS `NOTE`
+
+`genimerge.slim.DROP_INSIDE` holds `NOTE`, and `tree.yml` — the only thing that rebuilds the
+synoptic tree in Actions — runs `--slim`. So *"qids in bios being a fundamental part of the
+pipeline"* is **not true in CI today**, and this experiment did not make it so.
+
+**It was already not true, which is the part worth knowing.** The same drop applies to
+`exports/post-merge/wikidata-qid-links.ged`, her 29 hand-written pairs: the slimmed tree has
+never carried a single bio QID, from any source. Nothing broke, because the two consumers that
+read `NOTE` out of the merged tree — `prepare-cases.py` and `samaritan_spine.py` — read the local
+full merge.
+
+**So the decision before the CSV read can go is a memory decision**, and it is hers or at least
+needs measuring first: `NOTE` is most of what slim removes (Geni *About Me* text), so a blanket
+`KEEP_TAGS` widening puts the runner back at 13.30 GB and killed. The narrow form — keep a `NOTE`
+whose value is a `wikidata.org` URL — costs almost nothing and is a **value-conditional** rule,
+which is a different kind of thing from the tag whitelist slim is built out of. Neither was
+shipped here: quietly moving the correspondence onto a tag that happens to survive would be
+writing a more intuitive version of her program.

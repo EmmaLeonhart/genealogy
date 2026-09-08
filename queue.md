@@ -109,16 +109,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   related eccentric graph points on geni."* Do not start it early and do not invent the gate's
   threshold — that is hers.
 
-- **Experiment: generate the manual parental zipper correspondences into a gitignored GEDCOM that
-  the synoptic tree merge consumes.** Emma, 2026-09-05: *"I actually think a good long term
-  architectural smoothing would make it so that in the pipeline they are generated into a
-  gitignored gedcom that is part of the synoptic tree merge, with qids in bios being a fundamental
-  part of the pipeline. But for now pipeline works well and that will be a thing to experiment
-  with at the end of the queue."* `docs/correspondence-merge-proposal.md` is the proposal, not a
-  decision. **The pipeline works and must not be broken** — her words — so the GEDCOM is generated
-  *in addition* first, and the direct CSV read goes only once the tree route carries the same
-  pairs.
-
 ---
 
 ## What this session settled, so it is not relitigated

@@ -58,6 +58,17 @@ out/wikidata/download-state.sqlite3
 out/wikidata/store-index.sqlite3
 out/wikidata/labels.tsv
 
+# ⛔ THE ONE IGNORED FILE HERE THAT IS NOT A SIZE PROBLEM, and it is ignored on her
+# instruction rather than on GitHub's. Emma, 2026-09-05, on the manual parental zipper
+# correspondences: "a good long term architectural smoothing would make it so that in the
+# pipeline they are generated into a gitignored gedcom that is part of the synoptic tree
+# merge". It is derived from reports/manual-identifications.csv — which IS tracked — on
+# every run, so tracking it too would be a second copy that can disagree with the first.
+#
+# It is NOT under exports/, and that is deliberate: exports/ is the corpus and every .ged
+# there is committed, so a generated one fails tests/test_repo_invariants.py by existing.
+out/manual-parental-correspondences.ged
+
 # Coverage measurement leftovers
 .coverage
 .coverage.*

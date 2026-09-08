@@ -143,6 +143,28 @@ def _cmd_merge(args: argparse.Namespace) -> int:
         print(f"no .ged files given and none found under {ws.exports_dir}", file=sys.stderr)
         return 1
 
+    # **`--also` is for a GENERATED input that must not be corpus.** Emma, 2026-09-05, on the
+    # manual parental zipper correspondences: *"generated into a gitignored gedcom that is part
+    # of the synoptic tree merge"*. A file under `exports/` is corpus, which is two things this
+    # is not: it is untracked (and `tests/test_repo_invariants.py` compares `git ls-files`
+    # against `find` over that directory), and it would be counted as an export by
+    # `inventory`'s overlap figures and `density`'s presence counts, both of which divide by how
+    # many exports contain a person. So `genimerge.sources` is left alone — it stays the only
+    # answer to *which GEDCOMs are the corpus* — and the extra input is named here instead.
+    #
+    # It goes LAST, after `sources._post_merge_last`, because later wins a single-valued
+    # conflict. Nothing here is single-valued: `NOTE` is in `merge.ALWAYS_REPEATABLE`, so this
+    # only ever adds a line beside what an export already said.
+    for extra in getattr(args, "also", None) or []:
+        extra = Path(extra)
+        if not extra.exists():
+            # Refuse rather than merge silently without it: a caller passing `--also` is saying
+            # the file matters, and a missing generated input reads as *nothing to add* — which
+            # is exactly how a stale derived file goes unnoticed.
+            print(f"--also {extra} does not exist", file=sys.stderr)
+            return 1
+        paths.append(extra)
+
     doc, report = merge_mod.merge_files(paths, slim=getattr(args, 'slim', False))
 
     output = args.output or ws.merged
@@ -1168,6 +1190,15 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         default=None,
         help="where to write the merged GEDCOM (default: <out>/merged.ged)",
+    )
+    p_merge.add_argument(
+        "--also",
+        action="append",
+        default=None,
+        metavar="PATH",
+        help="an extra GEDCOM to merge in LAST that is not corpus — a generated overlay such as "
+             "out/manual-parental-correspondences.ged. Repeatable. Unlike a positional argument "
+             "this ADDS to the corpus rather than replacing it.",
     )
     p_merge.add_argument(
         "--slim",

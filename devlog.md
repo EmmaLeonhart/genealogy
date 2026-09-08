@@ -32122,3 +32122,50 @@ pool forever. All four values are verdicts. The devlog entry above claimed this 
 code change was not committed with it.
 
 Extension 1.6.4 → 1.6.5.
+
+## 2026-09-08 — the manual correspondences reach the tree as a generated GEDCOM
+
+The tail queue item, her design of 2026-09-05: *"a good long term architectural smoothing would
+make it so that in the pipeline they are generated into a gitignored gedcom that is part of the
+synoptic tree merge, with qids in bios being a fundamental part of the pipeline."*
+
+`scripts/build-correspondence-gedcom.py` writes the 314 pairs of
+`reports/manual-identifications.csv` into `out/manual-parental-correspondences.ged` — ids plus a
+`NOTE` carrying the Wikidata URL, the same shape as `exports/post-merge/wikidata-qid-links.ged`,
+which is the shape the merge is already proven on. `rebuild-everything.py` runs it immediately
+before the merge and hands it over with a new `genimerge merge --also`.
+
+**It is generated IN ADDITION.** `build-garborg-day.ledger()` still reads the CSV directly, which
+is her *"I do not want to break the pipeline"*. The direct read goes only once the tree route is
+shown to carry the same pairs.
+
+**Measured** — three tiny profile GEDCOMs plus the overlay, merged: **314 wikidata NOTEs over 359
+INDI**, each landing on the person's *existing* record rather than a second one, because the xref
+is the Geni id and `merge.ALWAYS_REPEATABLE` holds `NOTE`. All 314 are already in the tree, so
+the invented-person guard held nothing back. Re-running is byte-identical.
+
+**⛔ AND THE SLIM TREE DROPS `NOTE`, WHICH IS THE BLOCKER ON THE SECOND HALF.** The same three
+files under `--slim`: **0 wikidata NOTEs**, same 359 people. `genimerge.slim.DROP_INSIDE` holds
+`NOTE` and `tree.yml` runs `--slim`, so *"qids in bios"* is **not true in CI** — and was not
+before this either: her 29 hand-written pairs in `exports/post-merge/wikidata-qid-links.ged` have
+never survived a slim rebuild. Nothing broke, because the two consumers that read `NOTE` out of
+the merged tree read the local full merge. Widening the whitelist is a memory decision (`NOTE` is
+most of what slim removes) and moving the correspondence onto a tag that happens to survive would
+be writing a more intuitive version of her program, so neither was done.
+
+**`--also` rather than a file under `exports/`, for two reasons and the second is the quiet one.**
+`tests/test_repo_invariants.py` compares `git ls-files` against `find` over `exports/`, so a
+gitignored `.ged` there fails the suite by existing. And `genimerge.sources` is the only place
+that answers which GEDCOMs are the corpus — `inventory`'s overlap figures and `density`'s presence
+counts both divide by how many exports contain a person, so a generated 314-record file counted as
+an export would move both. `sources` is untouched; the extra input is named at the call site.
+
+**`--skip-merge` was `STEPS[1:]`**, which means *drop whatever happens to be first* — and the
+moment the generator went in front of the merge, that slice dropped the generator and left the
+merge reading a file nothing had written. It skips by label now.
+
+The three questions the proposal left open were decided rather than asked (§ *Working the queue:
+GUESS*): the pair only, not the verdict; everything in the file, because **none of it is a
+rejection** — all 314 rows carry `SAME` or `RIGHT`, and `rejected-parents`/`blocked-creations`
+name what was rejected, a parent *link* and a *creation*, never the identification; and
+`bio-qids.tsv` stays a separate extract.

@@ -80,7 +80,18 @@ STEPS = [
     # reads: measured 2026-09-03, peak RSS 13.30 GB and KILLED without it against 8.79 GB in
     # 7.7 min with it, for the same 1,451,993 people and 630,053 families. It is what lets this
     # script run on a GitHub runner at all -- see `genimerge.slim`.
-    ("merge the corpus", [sys.executable, "-m", "genimerge", "merge"]),
+    # **BEFORE the merge, because the merge consumes what it writes.** Emma, 2026-09-05, on the
+    # manual parental zipper correspondences: *"a good long term architectural smoothing would
+    # make it so that in the pipeline they are generated into a gitignored gedcom that is part of
+    # the synoptic tree merge, with qids in bios being a fundamental part of the pipeline."*
+    #
+    # It is generated IN ADDITION: `build-garborg-day.ledger()` still reads
+    # `reports/manual-identifications.csv` directly, which is her *"I do not want to break the
+    # pipeline"*. The direct read goes only once the tree route is shown to carry the same pairs.
+    ("the manual correspondences as a GEDCOM",
+     [sys.executable, os.path.join("scripts", "build-correspondence-gedcom.py")]),
+    ("merge the corpus", [sys.executable, "-m", "genimerge", "merge",
+                          "--also", os.path.join("out", "manual-parental-correspondences.ged")]),
     # **The four family maps, so the scheduled pipeline can run without the GEDCOM.**
     # `build-garborg-day.read_tree` needs them and `out/merged.ged` is 409 MB and
     # gitignored, so a runner can never have it. Written once here, gzipped by
@@ -142,7 +153,13 @@ def main():
     env["PYTHONPATH"] = os.pathsep.join(
         [os.path.join(ROOT, "src"), os.path.join(ROOT, "scripts"), env.get("PYTHONPATH", "")])
 
-    steps = STEPS[1:] if args.skip_merge else STEPS
+    # **`--skip-merge` drops the merge AND the step that feeds it**, by label rather than by
+    # index. It was `STEPS[1:]`, which silently meant *drop whatever happens to be first* — and
+    # the moment the correspondence generator went in front of the merge, that slice dropped the
+    # generator and ran the merge against a file it had not written.
+    SKIPPED_BY_SKIP_MERGE = {"merge the corpus", "the manual correspondences as a GEDCOM"}
+    steps = ([s for s in STEPS if s[0] not in SKIPPED_BY_SKIP_MERGE]
+             if args.skip_merge else STEPS)
     if args.slim and not args.skip_merge:
         steps = [(label, argv + ["--slim"]) if label == "merge the corpus" else (label, argv)
                  for label, argv in steps]
