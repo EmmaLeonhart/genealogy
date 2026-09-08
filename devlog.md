@@ -32169,3 +32169,45 @@ GUESS*): the pair only, not the verdict; everything in the file, because **none 
 rejection** — all 314 rows carry `SAME` or `RIGHT`, and `rejected-parents`/`blocked-creations`
 name what was rejected, a parent *link* and a *creation*, never the identification; and
 `bio-qids.tsv` stays a separate extract.
+
+## 2026-09-08 — a channel for a label she dictates, and it beats the derived one
+
+**Emma, 2026-09-08:** *"I want this for label applications"*, with four lines —
+`Q140568870` `Lzh 李命玥`, `Lja エマ・レオンハート`, `Aja 閻魔獅心`, `Lko 엠마 레온하트` — and
+*"this will be one of many labels that gets applied over time through the label correction
+systems … I think we probably have it but not sure if that is how we did label corrections."*
+
+**We did not have it.** `reports/label-corrections.tsv` is keyed on the **Geni id**, carries one
+**Latin** label and is consumed by `derive-labels.py` at derivation: it corrects what our tree
+thinks a person is called and reaches Wikidata only through whatever the ordinary emitters make
+of it. It has no language and no alias. `_label_corrections` beside it is every ground we
+**derive** — an abbreviation we expanded, the birth-name flip, a description marker, a generation
+suffix — each computed from our own data by construction. Neither is a channel for a string she
+supplies.
+
+`reports/label-applications.tsv` is that channel: `qid, kind, lang, value, source, date, note`,
+emitted **verbatim** into the batch. No transliteration, no `label_in`, no consensus vote, no
+title rule.
+
+**⛔ AND WITHOUT ONE MORE STEP HER VALUE WOULD HAVE LOST SILENTLY.** All four are corrections of
+*ours* — the rule gave that item `エマ・レオンハルト`, `艾玛·莱翁哈尔特` and `엠마 레온하르트` on
+2026-09-06, and `reports/label-edits-emitted.tsv` records it. Both her line and the derived one
+for the same slot would be emitted, `_cap_label_edits` sorts within a person by
+`(language_rank, rank, order)` so they land adjacent — and **a label REPLACES, so the last one
+written wins**, which is the derived one. The batch would have read as though her correction had
+gone out. `_without_hand_covered` drops the derived edit for any slot the hand file sets, and
+takes its comments with it. An **alias is not covered**: `Aja` adds rather than replacing.
+
+**Idempotence has two halves.** An `L` row whose live value already matches is skipped, read from
+`reports/garborg-live-labels.tsv`. An `A` row cannot be checked — `refresh-live-values.py` does
+not capture aliases at all — so it is emitted, and the `done` ledger keyed on `(qid, slot, value)`
+is what stops it repeating. Re-adding an alias Wikidata already holds is a no-op.
+
+**Her QIDs lead the cap** through `_cap_label_edits(priority=…)`, the mechanism that already
+exists for *she asked for this one next*. The cap is untouched — it is her pacing rule — but
+newest-QID-first would otherwise put a line she dictated today behind 60 generated ones.
+
+A `D` row is **refused by name**, § *NO descriptions and NO edit summaries* being categorical and
+this format being able to carry one. So are a value containing a double quote (QuickStatements V1
+cannot escape it and `qs()` would silently strip it, emitting a different name from the one she
+wrote), a malformed QID, a malformed language code and an empty value.

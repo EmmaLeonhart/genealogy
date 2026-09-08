@@ -893,6 +893,168 @@ def _birth_forms(label, alternates):
     return out
 
 
+#: Her hand-dictated label applications. See `_hand_label_applications`.
+LABEL_APPLICATIONS_FILE = ROOT / "reports" / "label-applications.tsv"
+
+
+def hand_label_applications(path=None):
+    """Read `reports/label-applications.tsv` -> `[(qid, kind, lang, value, note), ...]`.
+
+    Split out from the emitter so the file can be validated without composing a batch.
+    """
+    path = path or LABEL_APPLICATIONS_FILE
+    rows = []
+    if not path.exists():
+        return rows
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            qid = (row.get("qid") or "").strip()
+            kind = (row.get("kind") or "").strip().upper()
+            lang = (row.get("lang") or "").strip()
+            value = (row.get("value") or "").strip()
+            if not qid or qid.startswith("#"):
+                continue
+            # ⛔ **A `D` ROW IS REFUSED, LOUDLY.** `CLAUDE.md` § *NO descriptions and NO edit
+            # summaries* is categorical, and the ONE exception is a name item's
+            # `Den "patronymic"`, which is minted by `build-garborg-name-items.py` and never by
+            # a hand file. This format could carry a `D` and nothing else would stop it, so it
+            # is stopped here rather than discovered in a live batch.
+            if kind == "D":
+                print(f"REFUSING {qid} D{lang}: descriptions are categorically not emitted "
+                      f"(CLAUDE.md § NO descriptions and NO edit summaries)")
+                continue
+            if kind not in ("L", "A"):
+                print(f"REFUSING {qid}: kind must be L or A, not {kind!r}")
+                continue
+            if not re.fullmatch(r"Q[1-9][0-9]*", qid):
+                print(f"REFUSING {qid!r}: not a QID")
+                continue
+            if not re.fullmatch(r"[a-z]{2,3}(-[a-z0-9]+)*", lang):
+                print(f"REFUSING {qid} {kind}{lang!r}: not a language code")
+                continue
+            if not value:
+                print(f"REFUSING {qid} {kind}{lang}: empty value")
+                continue
+            if '"' in value:
+                # QuickStatements V1 cannot escape a double quote inside a string, and `qs()`
+                # would silently strip it -- which would emit a DIFFERENT name from the one she
+                # wrote. Refusing is the only honest option.
+                print(f"REFUSING {qid} {kind}{lang}: the value contains a double quote, which "
+                      f"QuickStatements V1 cannot carry")
+                continue
+            rows.append((qid, kind, lang, value, (row.get("note") or "").strip()))
+    return rows
+
+
+def _hand_label_applications(live_labels=None, path=None):
+    """The labels and aliases EMMA DICTATES, straight into the batch. Verbatim, never derived.
+
+    **Emma, 2026-09-08, giving the first four and saying what they are:**
+
+        Q140568870|Lzh|"李命玥"
+        Q140568870|Lja|"エマ・レオンハート"
+        Q140568870|Aja|"閻魔獅心"
+        Q140568870|Lko|"엠마 레온하트"
+
+    *"And so basically this will be one of many labels that gets applied over time through the
+    label correction systems ... here is one I am specifically proposing here to be wired into
+    the quickstatement generation and I think we probably have it but not sure if that is how we
+    did label corrections."*
+
+    **We did not have it, and the file that sounds like it is a different thing.**
+    `reports/label-corrections.tsv` is keyed on the **Geni id**, carries **one Latin label**, and
+    is consumed by `derive-labels.py` at DERIVATION -- it corrects what our tree thinks a person
+    is called, and reaches Wikidata only by whatever the ordinary emitters then make of it. It
+    cannot express *this QID, this language, this exact string*, and it cannot express an alias
+    at all. `_label_corrections` next to this is every ground we DERIVE -- an abbreviation we
+    expanded, the birth-name flip, a description marker, a generation suffix -- and each is
+    computed from our own data by construction. Neither is a channel for a value she supplies.
+
+    **So this is that channel, and its whole content is that it does not think.** No
+    transliteration, no consensus vote, no `label_in`, no title rule. The value she writes is the
+    value emitted. `CLAUDE.md` § *WIKIDATA'S LABEL BEATS OURS* protects an item somebody else
+    labelled from OUR derived proposal; a string she typed is not that -- she is the editor.
+
+    **Idempotence has two halves and they are different.**
+
+    * A **label** REPLACES, so an `L` row whose live value already matches is skipped outright,
+      read from `reports/garborg-live-labels.tsv` -- refreshed every run by
+      `refresh-live-values.py`.
+    * An **alias** ADDS, and `refresh-live-values.py` does not capture aliases at all, so there
+      is nothing to compare against. It is emitted, and `_cap_label_edits`'s `done` ledger --
+      `reports/label-edits-emitted.tsv`, keyed on `(qid, slot, value)` -- is what stops it
+      repeating. Re-adding an alias Wikidata already holds is a no-op anyway.
+
+    **It goes through the cap like everything else, but its QIDs lead.** The cap is her pacing
+    rule and is not weakened; `_cap_label_edits(priority=...)` already exists for exactly the
+    case of *she asked for this one next*, and it is what stops a line she dictated today
+    sitting behind 60 generated ones under newest-QID-first.
+    """
+    rows = hand_label_applications(path)
+    if not rows:
+        return []
+    live = live_labels or {}
+    out, skipped = [], 0
+    for qid, kind, lang, value, note in rows:
+        # `live_labels()` is keyed on the `(qid, lang)` PAIR, not nested. A missing key means
+        # "do not know" rather than "the item has nothing" — its own docstring says so — which
+        # is the right way round here: not knowing emits the line, and a repeat is a no-op.
+        if kind == "L" and live.get((qid, lang), "") == value:
+            skipped += 1
+            continue
+        what = "label" if kind == "L" else "alias"
+        out.append(f"#   {qid}: {lang} {what}, hand-supplied -- reports/label-applications.tsv"
+                   + (f" ({note})" if note else ""))
+        out.append(f'{qid}\t{kind}{lang}\t"{value}"')
+    if skipped:
+        print(f"hand label applications: {skipped} already live, {len(out) // 2} to emit")
+    return out
+
+
+def _hand_covered_slots(hand_lines):
+    """`{(qid, slot)}` the hand file sets a LABEL for. Aliases are not covered; they add."""
+    out = set()
+    for ln in hand_lines:
+        if ln.startswith("Q") and "\t" in ln:
+            qid, slot = ln.split("\t")[0], ln.split("\t")[1]
+            if slot.startswith("L"):
+                out.add((qid, slot))
+    return out
+
+
+def _without_hand_covered(derived, covered):
+    """Drop a DERIVED label edit that a hand application already sets for the same slot.
+
+    ⛔ **WITHOUT THIS, HER VALUE LOSES AND THE BATCH LOOKS FINE.** Her four lines are
+    corrections of ours: `Q140568870` was given `Lja` エマ・レオンハルト, `Lzh` 艾玛·莱翁哈尔特
+    and `Lko` 엠마 레온하르트 by the rule on 2026-09-06, and she is replacing all three. Both
+    the hand line and a derived one for the same slot would be emitted, `_cap_label_edits` sorts
+    within a person by `(language_rank, rank, order)` — so they land adjacent, in that order —
+    and a label REPLACES. The LAST one wins, which would be the derived one, and the file would
+    read as though her correction had been applied.
+
+    A comment belongs to the edit below it, which is how the batch is written, so a dropped edit
+    takes its comments with it — the same shape as the exclusion filter at the foot of `main`.
+    """
+    if not covered:
+        return derived
+    kept, pending = [], []
+    for ln in derived:
+        if not ln.strip() or ln.lstrip().startswith("#"):
+            pending.append(ln)
+            continue
+        if ln.startswith("Q") and "\t" in ln:
+            qid, slot = ln.split("\t")[0], ln.split("\t")[1]
+            if (qid, slot) in covered:
+                pending = []          # the edit is dropped, and its comments with it
+                continue
+        kept.extend(pending)
+        kept.append(ln)
+        pending = []
+    kept.extend(pending)
+    return kept
+
+
 def _label_corrections(our_items, labels, table, state, fields=None,
                        generation=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
@@ -7405,12 +7567,26 @@ def main():
     clan_block = CJK_CLAN_BLOCK if datetime.date.today() >= CLAN_BLOCK_GATE else ""
     if not clan_block:
         print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
-    lines = _cap_label_edits(
-        lines, clan_block,
+    # **Her hand-dictated applications lead**, and they are FIRST in the corrections list so
+    # they also lead within a person. `_hand_label_applications` is the channel for a label she
+    # supplies as a string rather than one we derive; everything after it is derived.
+    hand = _hand_label_applications(live_labels)
+    hand_qids = {ln.split("\t", 1)[0] for ln in hand if ln.startswith("Q")}
+    if hand_qids:
+        print(f"hand label applications: {len(hand) // 2} edit(s) over {len(hand_qids)} item(s), "
+              f"taking priority in the cap")
+    derived_labels = (
         _label_corrections(our_items, labels, table, state, fields, generation)
         + _cjk_follows_mul(table)
-        + _missing_cjk_labels(our_items, labels, table, live_labels),
-        priority=_cjk_priority_qids(our_items))
+        + _missing_cjk_labels(our_items, labels, table, live_labels))
+    covered = _hand_covered_slots(hand)
+    trimmed = _without_hand_covered(derived_labels, covered)
+    if covered and len(trimmed) != len(derived_labels):
+        print(f"hand label applications: dropped derived edits for {len(covered)} slot(s) she "
+              f"sets by hand -- a label REPLACES, so the last one written would have won")
+    lines = _cap_label_edits(
+        lines, clan_block, hand + trimmed,
+        priority=set(_cjk_priority_qids(our_items)) | hand_qids)
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first.** Emma, 2026-08-30: *"One file, not two. Names first, then

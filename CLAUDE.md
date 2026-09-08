@@ -2167,6 +2167,38 @@ label only she can supply — *"Name should be … Jacobus Bothniensis"* — in
 `reports/label-corrections.tsv`, which `derive-labels.py` applies at derivation
 so the exports stay the record of what Geni actually said.
 
+**⛔ THERE ARE TWO HAND-LABEL FILES AND THEY ARE NOT INTERCHANGEABLE.** The one above is keyed
+on the **Geni id**, carries **one Latin label**, and is read at DERIVATION — it corrects what our
+tree thinks somebody is called. `reports/label-applications.tsv` is keyed on the **QID** and
+carries `qid, kind, lang, value` — *this item, this language, this exact string* — and goes
+**straight into the QuickStatements batch, verbatim**. Emma, 2026-09-08, giving the first four:
+
+    Q140568870|Lzh|"李命玥"        Q140568870|Aja|"閻魔獅心"
+    Q140568870|Lja|"エマ・レオンハート"  Q140568870|Lko|"엠마 레온하트"
+
+*"this will be one of many labels that gets applied over time through the label correction
+systems … I think we probably have it but not sure if that is how we did label corrections."*
+**We did not.** Neither file could express it: the derivation one has no language and no alias,
+and `_label_corrections` is every ground we DERIVE — an abbreviation we expanded, the birth-name
+flip, a description marker, a generation suffix — each computed from our own data by
+construction. `kind` is `L` or `A` only; a `D` row is **refused by name**, § *NO descriptions*
+being categorical.
+
+**Nothing thinks about the value.** No transliteration, no `label_in`, no consensus vote, no
+title rule. § *WIKIDATA'S LABEL BEATS OURS* protects an item somebody else labelled from OUR
+derived proposal; a string she typed is not that.
+
+**⛔ AND A DERIVED EDIT FOR A SLOT SHE SETS BY HAND IS DROPPED.** Her first four are corrections
+of ours — the rule gave `Q140568870` `エマ・レオンハルト`, `艾玛·莱翁哈尔特` and `엠마 레온하르트`
+on 2026-09-06 — so both lines would be emitted, land adjacent under `_cap_label_edits`'s
+per-person ordering, and **a label REPLACES: the last one written wins**, which is the derived
+one. The batch would read as though her correction had gone out. `_without_hand_covered` removes
+them. An **alias is not covered**, because an alias adds rather than replacing.
+
+**Her QIDs lead the cap** via `_cap_label_edits(priority=…)`, which already exists for *she asked
+for this one next*. The cap itself is untouched — it is her pacing rule — but newest-QID-first
+would otherwise put a line she dictated today behind 60 generated ones.
+
 **`reconcile` is deleted, and name matching does not come back.** Emma ordered
 the name-search matcher removed on 2026-08-12 — *"no fucking clue why there's a
 fuzzy matcher that sounds like something you made with zero consent from me"* —
