@@ -2195,9 +2195,10 @@ per-person ordering, and **a label REPLACES: the last one written wins**, which 
 one. The batch would read as though her correction had gone out. `_without_hand_covered` removes
 them. An **alias is not covered**, because an alias adds rather than replacing.
 
-**Her QIDs lead the cap** via `_cap_label_edits(priority=…)`, which already exists for *she asked
-for this one next*. The cap itself is untouched — it is her pacing rule — but newest-QID-first
-would otherwise put a line she dictated today behind 60 generated ones.
+**IT QUEUES LIKE ANY OTHER LABEL EDIT.** Emma, 2026-09-08: *"it should be like regular label
+applications but just a stronger level of it. not taking priority doing just like anything
+else."* The first version gave these QIDs `_cap_label_edits(priority=…)` and that was wrong.
+**Stronger means it wins its SLOT, not its place in the queue.**
 
 **`reconcile` is deleted, and name matching does not come back.** Emma ordered
 the name-search matcher removed on 2026-08-12 — *"no fucking clue why there's a

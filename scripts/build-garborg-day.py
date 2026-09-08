@@ -985,10 +985,11 @@ def _hand_label_applications(live_labels=None, path=None):
       `reports/label-edits-emitted.tsv`, keyed on `(qid, slot, value)` -- is what stops it
       repeating. Re-adding an alias Wikidata already holds is a no-op anyway.
 
-    **It goes through the cap like everything else, but its QIDs lead.** The cap is her pacing
-    rule and is not weakened; `_cap_label_edits(priority=...)` already exists for exactly the
-    case of *she asked for this one next*, and it is what stops a line she dictated today
-    sitting behind 60 generated ones under newest-QID-first.
+    **It queues like any other label edit.** Emma, 2026-09-08: *"it should be like regular label
+    applications but just a stronger level of it. not taking priority doing just like anything
+    else."* The first version put these QIDs in `_cap_label_edits(priority=...)`; that is not
+    what stronger means. **Stronger is that it WINS ITS SLOT** — `_without_hand_covered` drops
+    the derived edit for a slot she sets — and when it goes out is the cap's business.
     """
     rows = hand_label_applications(path)
     if not rows:
@@ -7567,14 +7568,19 @@ def main():
     clan_block = CJK_CLAN_BLOCK if datetime.date.today() >= CLAN_BLOCK_GATE else ""
     if not clan_block:
         print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
-    # **Her hand-dictated applications lead**, and they are FIRST in the corrections list so
-    # they also lead within a person. `_hand_label_applications` is the channel for a label she
-    # supplies as a string rather than one we derive; everything after it is derived.
+    # **A hand application is an ORDINARY label edit and queues like every other one.** Emma,
+    # 2026-09-08: *"it should be like regular label applications but just a stronger level of it.
+    # not taking priority doing just like anything else."* The first version put its QIDs in
+    # `_cap_label_edits(priority=…)` so they jumped the queue; that is not what stronger means.
+    #
+    # **Stronger means it WINS ITS SLOT**, which is `_without_hand_covered` below: the derived
+    # edit for a slot she sets by hand is dropped, so her value is the one that lands. When it
+    # goes out is the cap's business, the same as anything else.
     hand = _hand_label_applications(live_labels)
     hand_qids = {ln.split("\t", 1)[0] for ln in hand if ln.startswith("Q")}
     if hand_qids:
         print(f"hand label applications: {len(hand) // 2} edit(s) over {len(hand_qids)} item(s), "
-              f"taking priority in the cap")
+              f"queued like any other label edit")
     derived_labels = (
         _label_corrections(our_items, labels, table, state, fields, generation)
         + _cjk_follows_mul(table)
@@ -7586,7 +7592,7 @@ def main():
               f"sets by hand -- a label REPLACES, so the last one written would have won")
     lines = _cap_label_edits(
         lines, clan_block, hand + trimmed,
-        priority=set(_cjk_priority_qids(our_items)) | hand_qids)
+        priority=_cjk_priority_qids(our_items))
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first.** Emma, 2026-08-30: *"One file, not two. Names first, then
