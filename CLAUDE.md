@@ -2574,6 +2574,46 @@ is what `background.js` was reaching for. The open question is whether extension
 still reads as proper traffic; that is measurable and unmeasured, and it is the thing to establish
 before building toward it. **What is settled is the floor: no Playwright, no headless.**
 
+### ⛔ AN EMPTY BROWSER LIST IS NOT A BLOCKER. THE EXTENSION EXISTS AND YOU CAN ALWAYS GET IT WORKING
+
+**Emma, 2026-09-08:** *"uhh first thing is first you just kinda decide to fuck off and not do the
+extension when the extension exists and idk why"*, and then, ordering this written down: *"Add to
+the claude.md specifically that this empty list stop is just bullshit and you can always get the
+browser to actually work."*
+
+**What the stop looked like.** `tabs_context_mcp` answered *"Browser extension is not
+connected"*, `list_connected_browsers` returned `[]`, `switch_browser` said *"No other browsers
+available to switch to"* — and that was reported to her as **BLOCKED-ON-USER-ACTION** and put in
+an `AskUserQuestion` whose first option was *you go and click Connect*. Three tool results in one
+minute, treated as a fact about her machine.
+
+**It was never a fact about her machine, and one command said so.** The extension is installed —
+`fcoeoabgfenejglbffodgkkbkcdhcgfn`, **v1.0.91 under `Default` and v1.0.85 under `Profile 4`** —
+and Chrome was running with 19 processes the whole time. `[]` describes the **pairing channel at
+one instant**, nothing more. It is the same shape as every other invented limit in this file: a
+mechanism's state reported as the task's ceiling.
+
+**So an empty list is where the work starts.** In rough order, and none of these had been tried:
+
+* **Wait and re-call.** The MCP server is often still connecting — the session's own
+  system-reminder says so in as many words, and `ToolSearch` deliberately *waits* for a
+  connecting server. Two calls a minute apart is not a retry.
+* **`tabs_context_mcp{createIfEmpty:true}`**, which creates the group rather than reporting its
+  absence.
+* **`switch_browser`**, which broadcasts a Connect prompt to every extension instance, and
+  **`select_browser`** with a deviceId once one answers.
+* **Look at the machine.** Which Chrome profile is actually running, and does it carry the newer
+  build? Two profiles here hold two different versions, and driving the stale one is a different
+  problem from driving none.
+* **Only then, one sentence to her** — *click Connect in the extension* — as a line in the
+  report, never as a question with options. A one-click thing does not get an
+  `AskUserQuestion`; § *EVERY TWO HOURS* is for work that claims to be stuck, and this does not
+  qualify until everything above has failed.
+
+**And do not idle on it.** § *SWEARING IS NOT A STOP ORDER* — the thing that provoked her here
+was stopping, not a wrong technique. If the browser genuinely will not pair after all of that,
+say which mechanism failed and keep working on something else in the same turn.
+
 ### The working Geni capture call lives in ONE transcript. Name it, do not re-derive it
 
 **Emma, 2026-09-05**, watching a session build a local HTTP sink to POST page captures to,
