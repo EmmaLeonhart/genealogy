@@ -1005,7 +1005,7 @@ Two things about it changed the conventions rather than just adding data.
 
 **`Forest` is a style, not a person.** The three exports already in
 `data_lake/` — `Forest`, `Ancestors`, `BloodTree` — are all rooted at the *same*
-first `INDI` record, Emma Leonhart `6000000087535357291`, which is also their
+first `INDI` record, `6000000087535357291`, which is also their
 `SUBM` xref. They are three shapes of one seed. So Geni's filename is
 `export-<style>.ged` and carries nothing about who the export is *of*, and the
 fourth export — rooted at Iver Mellegård `6000000226977233850`, who appears in
@@ -6015,8 +6015,7 @@ The surname head is CJK, and two of the commonest â€” `éš´è¥¿ç‹„
 store points at; the lookup is built from items our own people reference, so it
 is a floor rather than a measure of what Wikidata holds.
 
-**The deadname.** Profile `6000000087535357291` is Emma Leonhart. Geni was
-renamed; the exports taken before were not, so the old name was in every GEDCOM,
+**The deadname.** A profile was renamed on Geni; the exports taken before were not, so the old name was in every GEDCOM,
 every derived report, and the prose quoting them. **223 files rewritten, zero
 remaining.** Whole-name strings only, and the GEDCOM name pieces only inside her
 own `INDI` record â€” 391 lines carry that surname for other people, and a
@@ -19231,9 +19230,9 @@ protects an unrelated item from edits nobody was making, which costs nothing, an
 now writes to `Q232803`. Verified after: `build-garborg-day.py` parses, the three JSON files still
 load, 289 passed / 32 skipped.
 
-**One thing this does NOT do, stated because she asked for the duplicate to happen.** Her Geni id
+**One thing this does NOT do, stated because she asked for the duplicate to happen.** The Geni id
 `6000000087535357291` is still in `NEVER_TOUCH_GENI`, and that is what the creation refusal keys
-on -- so the batch still will not mint an item for her. The QID replace was the whole of what she
+on -- so the batch still will not mint an item for it. The QID replace was the whole of what she
 asked for here; removing the Geni id is a separate change and is hers to call.
 
 ## 2026-08-29 — "no Latin label", not "no label": 13,872 people were invisible
@@ -20462,7 +20461,7 @@ from step 5 to **step 14**.
 closes the fourth spine line *and* gives Richard his `P25`.
 
 **Why none of the three was generated, and it is not a bug.** `wikidata_subgraph()` from
-`Q11959067` holds **252 items**, and neither Helen Frisk `Q141223923` nor Emma `Q140568870` is in
+`Q11959067` holds **252 items**, and neither `Q141223923` nor `Q140568870` is in
 it — both have QIDs, but nothing on Wikidata yet links them to Arne, so they cannot seed a ring
 and Richard is one hop from people outside the pool. `CLAUDE.md` § *The seed set is the WIKIDATA
 SUBGRAPH from Arne* working exactly as written. It is self-correcting: one `P26` or `P40` joining
@@ -20546,7 +20545,7 @@ and a handful of other Rogaland farm people at the same eccentricity.
 | Arne Garborg `Q467497` | 12 | 7 |
 | Johannes Bureus `Q633094` | 8 | 11 |
 | Richard Wade Borsheim | 4 | 16 |
-| **Emma** `Q140568870` | **1** | **16** |
+| `Q140568870` | **1** | **16** |
 
 A construction pointed at one person puts that person near its centre with density falling away.
 This has the opposite shape: Emma is a single-edge leaf at maximum eccentricity, and the two
@@ -22021,7 +22020,7 @@ time those items are fetched.
 Marked `xfail(strict=True)` rather than loosened: when the data catches up the test passes, a
 strict xfail then fails, and whoever sees that deletes the marker instead of letting it rot.
 
-**Worth noticing in passing:** `Q140568870` is Emma, carrying `6000000087535357291` — a second
+**Worth noticing in passing:** `Q140568870` carries `6000000087535357291` — a second
 item beside `Q232803`. That is the deliberate duplication of § *Her own duplicates are
 DELIBERATE*, not a defect, and nothing here touches it.
 
@@ -23771,17 +23770,17 @@ reciprocals file I rebuilt an hour earlier:
 `NEVER_TOUCH_QID` from the builder that owns them rather than restating them — a second copy is
 how two lists stop agreeing, which is the reasoning that module already gives for `SPINE_BLOCK_QIDS`.
 
-**And she was never in those sets.** Checked: `"6000000087535357291" in NEVER_TOUCH_GENI` is
-**False**, and `NEVER_TOUCH_QID` held twenty Kitajima items and not her. The builder kept her out
-only because deleting `entity_resolution.md` removed her from `have` — **an accident of an
-unrelated change, not a guard**. Any script reading the ledger instead, as this one does, saw her
+**And that id was never in those sets.** Checked: `"6000000087535357291" in NEVER_TOUCH_GENI` is
+**False**, and `NEVER_TOUCH_QID` held twenty Kitajima items and not it. The builder kept it out
+only because deleting `entity_resolution.md` removed it from `have` — **an accident of an
+unrelated change, not a guard**. Any script reading the ledger instead, as this one does, saw it
 straight away.
 
-Her item is also `Q140568870` now, where the test bans `Q232803`; the ledger resolves her Geni id
-to the newer one. Both are in `NEVER_TOUCH_QID`, and her Geni id in `NEVER_TOUCH_GENI`, so the
+`Q140568870` is the newer item, where the test bans `Q232803`; the ledger resolves that Geni id
+to it. Both are in `NEVER_TOUCH_QID`, and the Geni id in `NEVER_TOUCH_GENI`, so the
 protection is now stated rather than incidental.
 
-4,325 → 4,321 statements, her two lines gone. **300 pass** across the two batch modules.
+4,325 → 4,321 statements, the two lines gone. **300 pass** across the two batch modules.
 
 **Worth naming plainly: I reported this file as "checked, every subject and value resolves" before
 running the suite.** The check I ran asked whether the QIDs *exist*. It never asked whether they
@@ -25116,8 +25115,8 @@ narrowed. `tests/test_p2600_batches.py`: **284 passed, 34 skipped.**
 documentation referencing me and my number and such. Use Empress Jingu as the example for all
 these things lol. I'm just a normal person in the tree lol."*
 
-`6000000087535357291` → `6000000001846508982`, `Q140568870` → `Q232803`, `Emma Leonhart` →
-`Empress Jingū`, across 38 files in `scripts/`, `src/`, `tests/`, `docs/`, `README.md`, `queue.md`.
+`6000000087535357291` → `6000000001846508982` and `Q140568870` → `Q232803`, with the labels that
+went with them, across 38 files in `scripts/`, `src/`, `tests/`, `docs/`, `README.md`, `queue.md`.
 **0 residual** in code or docs. The corpus under `exports/` is untouched — those are her real GEDCOM
 records and a GEDCOM is never edited.
 
@@ -26349,7 +26348,7 @@ no expand click — a blob-saved profile page carries 3 `span.segment` anchors (
 *You → X*) against 118 on a saved path page, which is why the `geni-scraping/` capture cannot
 be reused as-is.
 
-**`from` is `6000000087535357291` Emma Himiko Leonhart (`Q140568870`)** — established as step
+**`from` is `6000000087535357291` (`Q140568870`)** — established as step
 1 "You" on 679 saved paths. `scripts/build-path-to-wikidata-report.py` carries
 `EMMA = "6000000001846508982"`, which is Empress Jingū and the wrong end for a path. Not
 changed here; noted where the new scripts use the right one.

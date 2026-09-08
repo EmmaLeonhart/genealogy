@@ -1026,9 +1026,9 @@ def _hand_covered_slots(hand_lines):
 def _without_hand_covered(derived, covered):
     """Drop a DERIVED label edit that a hand application already sets for the same slot.
 
-    ⛔ **WITHOUT THIS, HER VALUE LOSES AND THE BATCH LOOKS FINE.** Her four lines are
-    corrections of ours: `Q140568870` was given `Lja` エマ・レオンハルト, `Lzh` 艾玛·莱翁哈尔特
-    and `Lko` 엠마 레온하르트 by the rule on 2026-09-06, and she is replacing all three. Both
+    ⛔ **WITHOUT THIS, HER VALUE LOSES AND THE BATCH LOOKS FINE.** A hand row is typically
+    correcting a value the RULE wrote earlier -- that is the usual reason to write one at all --
+    so the derived emitters go on proposing their own version of the same slot. Both
     the hand line and a derived one for the same slot would be emitted, `_cap_label_edits` sorts
     within a person by `(language_rank, rank, order)` — so they land adjacent, in that order —
     and a label REPLACES. The LAST one wins, which would be the derived one, and the file would

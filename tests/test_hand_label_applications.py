@@ -1,10 +1,9 @@
 """The channel for a label EMMA DICTATES, `reports/label-applications.tsv`.
 
-**What is worth pinning is that her value is the one that lands.** Her first four lines are
-corrections of ours — `Q140568870` was given `Lja` エマ・レオンハルト, `Lzh` 艾玛·莱翁哈尔特 and
-`Lko` 엠마 레온하르트 by the rule on 2026-09-06 — so a derived edit for the same slot emitted
-beside hers would be applied second and would silently win, in a batch that reads as though her
-correction went out.
+**What is worth pinning is that her value is the one that lands.** A hand row is usually
+correcting a value the rule wrote earlier, so the derived emitters go on proposing their own
+version of the same slot — and a derived edit emitted beside hers is applied second and silently
+wins, in a batch that reads as though her correction went out.
 
 The other half is the format's own hazard: it could carry a `D` row, and `CLAUDE.md` § *NO
 descriptions and NO edit summaries* is categorical.
