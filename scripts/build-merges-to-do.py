@@ -130,9 +130,9 @@ def pair_lines(geni_id, qids, label):
 def main():
     dupes = wikidata_duplicates()
     led = ledger()
-    hers = {g: q for g, q in dupes.items() if g in led}
-    theirs = {g: q for g, q in dupes.items() if g not in led}
-    names = tree_labels(set(theirs))
+    in_ledger = {g: q for g, q in dupes.items() if g in led}
+    outside = {g: q for g, q in dupes.items() if g not in led}
+    names = tree_labels(set(outside))
 
     w = []
     w.append("# Merges to do - by hand\n")
@@ -153,7 +153,7 @@ def main():
         "fall where it should.\n"
     )
 
-    w.append("\n## 1. Wikidata duplicates in your own ledger - {}\n".format(len(hers)))
+    w.append("\n## 1. Wikidata duplicates in the ledger - {}\n".format(len(in_ledger)))
     w.append(
         "One Geni profile carrying two Wikidata items, where the ledger tracks that person. "
         "This is a double-creation, not the two-ids-on-one-item case CLAUDE.md says to leave "
@@ -166,7 +166,7 @@ def main():
         "`wbgetentities`, none is already a redirect, and each pair carries the same `P2600`. "
         "They are live duplicates, not an artefact of a stale download.\n"
     )
-    consecutive = [g for g, q in hers.items() if len(q) == 2 and qnum(q[1]) - qnum(q[0]) <= 3]
+    consecutive = [g for g, q in in_ledger.items() if len(q) == 2 and qnum(q[1]) - qnum(q[0]) <= 3]
     if consecutive:
         w.append(
             "**{} of these are near-consecutive Q numbers**, which means one run created "
@@ -174,16 +174,16 @@ def main():
                 len(consecutive)
             )
         )
-    for geni_id, qids in sorted(hers.items(), key=lambda kv: qnum(kv[1][0])):
+    for geni_id, qids in sorted(in_ledger.items(), key=lambda kv: qnum(kv[1][0])):
         w.append(pair_lines(geni_id, qids, led[geni_id].get("label", "")))
 
-    w.append("\n## 2. Wikidata duplicates outside your ledger - {}\n".format(len(theirs)))
+    w.append("\n## 2. Wikidata duplicates outside your ledger - {}\n".format(len(outside)))
     w.append(
         "Same shape, but these items are not ones the ledger records you making, so some "
         "will be somebody else's duplicates rather than ours. Lower priority, and worth a "
         "look at the item before merging.\n"
     )
-    for geni_id, qids in sorted(theirs.items(), key=lambda kv: qnum(kv[1][0])):
+    for geni_id, qids in sorted(outside.items(), key=lambda kv: qnum(kv[1][0])):
         w.append(pair_lines(geni_id, qids, names.get(geni_id, "")))
 
     w.append("\n## 3. Geni merges that cross a manager\n")
@@ -309,7 +309,7 @@ def main():
         "These are the opposite: the older item carries **no Geni id at all**, so no `P2600` join "
         "reaches it and a `P2600` search afterwards returns only the one we made. `Q550343` "
         "*Welf I, Duke of Bavaria* - 27 sitelinks - was created again as `Q141249742` for exactly "
-        "this reason on 2026-09-01, along with three others you merged by hand.\n"
+        "this reason on 2026-09-01, along with three others merged by hand.\n"
     )
     w.append(
         "`reports/synoptic-correspondence.tsv` does see them, through the zipper and the "
@@ -318,7 +318,7 @@ def main():
         "found each pair: a `zipper`-only row is the weakest, carrying a measured 2.8-4.8% error, "
         "so read both items before merging that one.\n"
     )
-    # `older` rather than `theirs`: `theirs` is section 2's dict and shadowing it here made the
+    # `older` rather than `outside`: that name is section 2's dict and shadowing it here made the
     # closing summary print `1 other` while the file itself correctly said 67. A summary line that
     # disagrees with the file it summarises is the exact failure this repo keeps recording.
     for g, ours, older in rivals:
@@ -340,7 +340,7 @@ def main():
 
     OUT.write_text("\n".join(w) + "\n", encoding="utf-8")
     print("wrote {}".format(OUT))
-    print("  wikidata duplicates: {} yours, {} other".format(len(hers), len(theirs)))
+    print("  wikidata duplicates: {} in the ledger, {} outside".format(len(in_ledger), len(outside)))
     print("  created beside an older item: {}".format(len(rivals)))
 
     # **The page is regenerated with the file, in the same step.** The queue item asks for this

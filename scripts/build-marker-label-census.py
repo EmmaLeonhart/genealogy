@@ -391,7 +391,7 @@ def cjk_relationship_in(label: str) -> tuple[str, str] | None:
             # An earlier version kept the other tokens, so `盧氏 Chan` came out
             # `盧 Chan` and those three came out with the annotation intact and
             # `NN` in front of it. Keeping only `李`, `方`, `蕭`, `盧` is both the
-            # correct surname and the only part that is hers.
+            # correct surname and the only part that is her own.
             # A parenthetical is annotation about her, never part of a surname:
             # `蕭氏(炀帝后)` is *the Xiao-clan woman (Emperor Yang's empress)*, and the
             # bracket contents are a description. Only the clan survives. This is

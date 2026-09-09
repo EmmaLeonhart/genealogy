@@ -128,7 +128,7 @@ def main():
                         # because it predates this and is Norwegian by construction.
                         if m.group(2).lower() in NEW_FORMS:
                             continue
-                        suffix, basis = "datter", "no evidence; her example"
+                        suffix, basis = "datter", "no evidence; the worked example"
                     else:
                         suffix, basis = ("datter" if d >= o else "dotter"), "corpus stem majority"
                 by_basis[basis] += 1

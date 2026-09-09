@@ -4,7 +4,7 @@
 
 **This is the measurement `queue.md` § LABELS names as the blocker on the `en` step:** *"Do not
 wire `romanised` into `label_en` until the Japanese-in-`zh` rate is measured — a wrong reading of
-a real name is the one thing her rules forbid outright."*
+a real name is the one thing the rules forbid outright."*
 
 The symptom that prompted it: `幸豊 青山` romanised `Qing Shan Heng Li` and `忠貫 酒井`
 `Jiu Jing Zhong Guan`. Aoyama and Sakai are Japanese samurai houses being read in Mandarin

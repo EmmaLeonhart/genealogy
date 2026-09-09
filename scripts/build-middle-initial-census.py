@@ -12,7 +12,7 @@ a name -- it is an abbreviation of one we were never told. So the mechanical tra
 path that works for `John` -> the standard katakana rendering has nothing to work with
 here, and the obvious outs -- drop the initial, transliterate the letter, or leave it in
 Latin inside a non-Latin label -- are all decisions about how a person's name is
-*presented*, which is hers to make.
+*presented*, which is a call to be made by hand.
 
 **This is a superset of the `single-letter` class in `build-regnal-ordinal-census.py`.**
 That script tests only `I V X L C D M`, because its question was Roman numerals; a

@@ -337,7 +337,7 @@ def main():
         # `zachris` -- fold to one label and so to one item, and the pair columns are positional,
         # so the de-duplication has to keep name and target in lockstep. 63 rows carried a
         # repeat. `build-garborg-name-items` already dropped them on read, so nothing wrong
-        # shipped; this is the file she reads being right as well.
+        # shipped; this is the file that gets read being right as well.
         seen, unique = set(), []
         for name, qid in targets:
             if qid not in seen:
@@ -397,7 +397,7 @@ def main():
             "p144_withdrawn": " ".join(withdrawn),
             "p5278_pair": pair,
             "stem": stem_raw,
-            # `P407` by suffix, her ruling 2026-09-01. A claim about the token's FORM, never
+            # `P407` by suffix, ruled 2026-09-01. A claim about the token's FORM, never
             # about where its bearer lived.
             "p407": language_of(tok),
         })

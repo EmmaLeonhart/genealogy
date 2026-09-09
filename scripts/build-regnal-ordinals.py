@@ -24,12 +24,12 @@ a regnal number**. Of the 15 distinct given names behind those 18:
   § *The batches are a SEQUENCE* is the reason this is not a blocker: what cannot run today is
   tomorrow's batch, because tomorrow those items exist.
 * **5 are ambiguous** — Aharon, Baba, Elazar, Jonathan, Levi, with two or three items each.
-  § *One name item per USAGE* makes that hers, and they go on the same deck as the other
+  § *One name item per USAGE* makes that a hand call, and they go on the same deck as the other
   ambiguous given names rather than being guessed at here.
 
 **The ordinal is written as the ROMAN numeral the source uses**, not converted to an integer.
 `P7338` is a string, and `III` is how the person is actually styled — `Abisha III`, not
-`Abisha 3`. Her own worked example writes the numeral in the label and the ordinal beside it.
+`Abisha 3`. The worked example writes the numeral in the label and the ordinal beside it.
 
 Writes `reports/wikidata-regnal-ordinals.qs`.
 """

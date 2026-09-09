@@ -89,7 +89,7 @@ def main() -> int:
 
     print("\n%d filed, %d left alone" % (moved, skipped))
     if zips:
-        # Named, never moved: filing an export is hers, and a batch is filed all at once.
+        # Named, never moved: filing an export is a manual call, and a batch is filed at once.
         print("%d export zip(s) in %s, NOT touched: %s"
               % (len(zips), src, ", ".join(zips[:5]) + (" ..." if len(zips) > 5 else "")))
     return 0

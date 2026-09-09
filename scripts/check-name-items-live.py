@@ -5,7 +5,7 @@
 **Some created name items -- `Tunheim` among them -- were merged into an existing item**, which
 means the existence check on a name was not actually finding what was already there.
 
-She is right, and the cause is written in the resolver's own docstring.
+The cause is written in the resolver's own docstring.
 `measure-name-resolution.py`: *"A name item counts only if some person in our own store already
 points at it with `P735` or `P734` … A Geni name Wikidata has an item for, which nobody in our
 store carries, is invisible here."* `Q36927172` *Tunheim* (family name) exists on Wikidata and

@@ -11,7 +11,7 @@ paragraph asserting there are three kinds. The shapes are **measured**.
 
 **The two directions are opposites with opposite fixes.**
 
-* **One Wikidata item carrying several Geni ids.** Her explanation of the cause, which is
+* **One Wikidata item carrying several Geni ids.** The cause, which is
   about how Geni behaves rather than about error: a profile gets isolated from the main
   tree, nobody can edit it, so somebody creates a new one -- *"Jenny doesn't have the
   ability to differentiate between multiple different contradictory facts."* Zerubbabel is

@@ -8,7 +8,7 @@ operation."*
 So this does both halves: derives what the rules already settle, and counts what
 is present per person so the cataloguing is a measurement rather than a guess.
 
-**The rules applied, each one hers and quoted where it was given:**
+**The rules applied, each one ruled and quoted where it was given:**
 
 * The label is the `NAME` line **rendered** — slashes removed. GEDCOM 5.5.1 puts
   the name in spoken order with the surname in slashes, and says systems must
@@ -376,7 +376,7 @@ def main() -> int:
         # `CLAUDE.md` § *Redacted people go in* calls **the single place that decides this** and
         # which returns `''` for `Private` and `<private>`. So `<private> /Garborg/` came out as
         # the literal label `<private> Garborg` -- for **14,449 people**, 12 of whom already had
-        # items, several of them hers.
+        # items, several of them made by hand.
         #
         # That is the *"logic that never gets in"* pattern in its purest form: the decider
         # existed, was correct, was documented as authoritative, and the generator feeding every

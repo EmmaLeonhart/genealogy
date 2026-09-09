@@ -223,7 +223,7 @@ def main():
    them.</li>
    <li><strong>Labels are <code>en</code> and <code>mul</code>, the same string.</strong>
    No description, no alias, no sitelink on any of them.</li>
-   <li><strong>No qualifier of hers appears anywhere</strong> &mdash; no P1545, no P7452,
+   <li><strong>No qualifier appears anywhere</strong> &mdash; no P1545, no P7452,
    no P3831, no P144. The only qualifiers in the 14 items are community-added, on
    Q467497 and Q3143008.</li>
    <li><strong>Never used:</strong> P19 place of birth, P20 place of death, P119 place of

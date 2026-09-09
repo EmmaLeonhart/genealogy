@@ -9,7 +9,7 @@ creation of parents… I'm trying to manually approve or reject all currently bl
 you can get a better sample size as to the rules and edge cases."*
 
 Then, on how to find them: *"you know you can use the mechanics of the algorithm to find the
-rejected parent inclusions"*. She is right, and it matters — I had re-derived the population by
+rejected parent inclusions"*. That matters: the population had been re-derived by
 hand and got a different number three times. This runs **the guard's own second arm**, unchanged,
 over every candidate instead of over one day's ring:
 

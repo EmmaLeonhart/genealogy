@@ -20,12 +20,12 @@ IBM Plex / Newsreader pairing, the keyboard flow and the `localStorage` key are 
 
 ## The card carries what actually decides a merge
 
-Her verdict on the first deck was *"the problem with that html is it didn't give that good
+The verdict on the first deck was *"the problem with that html is it didn't give that good
 feedback"*, and the queue item spells out the fix: a card without **sex and dates** is not worth
 building. So each side shows label, description, sitelink count, statement count, and the Geni
 `P2600` — and the Geni tree's own sex and birth–death sit above them, from `derived-facts.csv`.
 
-**The live fetch is the point.** She merges by hand continuously, so a pair may already be done by
+**The live fetch is the point.** Merges happen by hand continuously, so a pair may already be done by
 the time the page is opened. `wbgetentities` in batches of 50 answers that: an item that is now a
 **redirect** is shown as already merged and is not offered again. `--offline` skips the fetch and
 builds the page from the markdown alone, with the evidence columns blank.
@@ -151,7 +151,7 @@ def esc(s):
 
 
 def style_from_template():
-    """Her palette and type, lifted verbatim from the approved template."""
+    """The palette and type, lifted verbatim from the approved template."""
     if not TEMPLATE.exists():
         return ""
     text = io.open(TEMPLATE, encoding="utf-8").read()

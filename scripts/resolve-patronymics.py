@@ -14,7 +14,7 @@ patronymic has no reference to that given name it is skipped too. Nothing here f
 string.
 
 **This writes no QuickStatements.** It reports who would resolve and what stops the rest, which is
-the number that says whether the design reaches anybody yet. She has not asked for a batch.
+the number that says whether the design reaches anybody yet. No batch has been asked for.
 
 ## Why it is cheap
 

@@ -4,7 +4,7 @@
 
 **Isolated means present as an item and absent as genealogy** — `CLAUDE.md`
 § *An item with no relationships is not a missing item*. The Samaritan high
-priests are the worked example: on Geni, on Wikidata, attached to nothing. Her own
+priests are the worked example: on Geni, on Wikidata, attached to nothing. The
 `Q232803` is the same shape. The earlier pass established *that* they exist;
 this asks *who they are*.
 

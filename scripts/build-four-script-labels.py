@@ -15,7 +15,7 @@ no such alternative.** The job is *English → the four remaining
 scripts*: for a Norwegian farmer there is no Russian or Greek or Hindi or Arabic form of the
 name waiting to be found, and writing one is the whole task rather than a fallback.
 
-So the standard here is hers: *"incorrect romanization or incorrect representations in katakana
+So the standard here is: *"incorrect romanization or incorrect representations in katakana
 are totally acceptable. An incorrect name is not."* `Флйгаре` may not be how a Russian would
 spell *Flygare*, but it is that person's name in Cyrillic letters, and nothing invents a
 different name.

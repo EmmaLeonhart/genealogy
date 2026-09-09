@@ -3,7 +3,7 @@
 `background.js` has always answered `status`, `start`, `stop` and `load` over
 `chrome.runtime.sendMessage` — but only from an extension context, and the only one that existed
 was the toolbar popup. The toolbar is browser chrome and `chrome-extension://` URLs are refused
-the same way `chrome://` ones are, so *"start it from the toolbar"* was a manual step on Emma
+the same way `chrome://` ones are, so *"start it from the toolbar"* was a manual step on
 every single run. That is why the scheduler had never run once.
 
 `content/router.js` now relays those messages from a data attribute, the same channel the job
@@ -37,8 +37,8 @@ in `background.js`. A bridge that made decisions would be a second scheduler.
 
 ## ⛔ `stop` does not cancel a submitted export
 
-Geni has no cancel. `stop` prevents new tabs opening and nothing more — Emma, on being offered a
-kill: *"you think you can kill a geni export read the fucking docs you can't."*
+Geni has no cancel. `stop` prevents new tabs opening and nothing more: a Geni export cannot be
+killed once it is running, and the docs say so.
 
 ## ⛔ A STORED SETTING SHADOWS ITS DEFAULT, PERMANENTLY
 
