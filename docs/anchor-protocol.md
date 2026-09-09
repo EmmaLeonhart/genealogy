@@ -40,6 +40,38 @@ because the automation is stuck, the lesson is *automate it*, not *this is sacre
 classifier**, so the click is the mechanism. That is fine and arguably better: it is the same
 action a person takes, and it leaves the tooltip visible to read back.
 
+## ⛔ THERE IS A THIRD STATE: ANCHORED ON SOMEBODY ELSE ENTIRELY
+
+**Found 2026-09-09.** The protocol above names two states — viewer, or Charlemagne. A third
+exists and it is what was actually found: the pin was on **Lǐ Shìmín 李世民, Emperor Taizong of
+Tang**, so every page read *"… is connected to Lǐ Shìmín"* and Charlemagne's own page read
+*"Charlemagne is Lǐ Shìmín's 8th great nephew's wife's mother's partner's wife's fiancé's 6th
+great grandfather."*
+
+**Step 1's test must therefore be positive, not a negation.** *"Not viewer-anchored"* does not
+mean *anchored on Charlemagne* — it meant anchored on a Tang emperor. The check that works is
+the one already used per-capture: does the banner name **Charlemagne** as the other end?
+
+**AND IT TAKES TWO CLICKS FROM THAT STATE.** The pin is a toggle against the VIEWER, not a
+three-way switch:
+
+    on Lǐ Shìmín   --click-->  "Charlemagne is your 35th great grandfather"   (viewer)
+    viewer         --click-->  "View other profiles to see their relationship to Charlemagne"
+
+So a single click from the third state lands on the state you were trying to leave. Read the
+banner between the two clicks; do not fire them blind as a pair.
+
+## ⛔ THE SCREENSHOT AND THE PAGE DISAGREE ON COORDINATES, AND THE FIRST CLICK MISSED
+
+`getBoundingClientRect()` put the pin at **(1215, 256)**; it renders in the screenshot at
+**(1240, 261)**. The `computer` tool takes SCREENSHOT coordinates, so the JS-derived pair missed
+the element and the page did not change — which reads exactly like a click that was ignored, and
+sent this session looking for a permission problem that was not there.
+
+The ratio is about **1.021** here and it is a property of the display rather than of the page, so
+it must not be hard-coded. **Take a screenshot and read the pin off it**, or click by element
+`ref` from `find`/`read_page`. Do not compute a click target from `getBoundingClientRect`.
+
 ## What the collector may and may not do
 
 `tests/test_geni_extension.py::test_the_pushpin_is_never_toggled` **stays**, and it is not
@@ -96,6 +128,14 @@ The three were **not** filed as Charlemagne results. The anchor was re-set by th
 checked on Charlemagne's own page, clicked, and verified on two independent targets: Rudolf Beck
 went from a viewer-anchored in-law chain to *"How are they related"*, and Sahlin's page went to
 *"Charlemagne is connected to Sophia Elisabeth"*. Then all three were re-run.
+
+### Re-set again 2026-09-09, from the Lǐ Shìmín state
+
+Checked on Charlemagne's own page, clicked twice with the banner read in between, and verified on
+two independent targets that had been captured earlier the same day: Ellen Margrethe Charlotte
+Jessen `360492713900012510` read *"Charlemagne's 35th great granddaughter"* and Louis d'Anjou
+`368713820640003185` read *"Charlemagne's 15th great grandson"* — both matching the chains
+already on disk, which verifies the anchor and corroborates those captures at the same time.
 
 **The ten captures taken earlier are unaffected and were checked rather than assumed** — every
 one of them has Charlemagne as step 1 and *"is Charlemagne's Nth great grand-"* in its prose,

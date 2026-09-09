@@ -53,6 +53,11 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **`No path found to <name>.`**, a third miss sentence `pathState` could not read until 1.6.2.
     Until Chrome restarts and loads 1.6.2, read the banner off the page at harvest time rather
     than trusting `path_state`.
+  * ⛔ **IT WAS ON A THIRD PERSON ON 2026-09-09 — Lǐ Shìmín 李世民, Emperor Taizong of Tang — and
+    was re-set by protocol that day.** *"Not viewer-anchored"* is not the same as *"on
+    Charlemagne"*, and from a third-person state the pin takes **two** clicks: one back to the
+    viewer, one onto Charlemagne. `docs/anchor-protocol.md` carries both that and the
+    click-coordinate trap that made the first attempt look like a permission problem.
   * ⛔⛔ **CHECK THE ANCHOR ON EVERY CAPTURE, NOT ONCE A SESSION. IT EXPIRES ON ITS OWN.**
     It came off Charlemagne mid-run on 2026-09-06 after ten good captures, with nobody touching
     it, and **a viewer-anchored hit looks exactly like a real one** — `resolved_path`, a full

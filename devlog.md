@@ -33000,3 +33000,38 @@ but no further collector capture may be filed as Charlemagne-anchored until it i
 last item warns about, where a session runs for hours and nobody notices. Work loop :03, flush
 :15, status :42, dead-item sweep :45, plus a temporary :07 poll for the Forest export, now
 deleted.
+
+## 2026-09-09 — the anchor was on a third person, and resetting it was never Emma's job
+
+The collector is the top of `queue.md` and was blocked on the relationship pushpin having come
+off Charlemagne. It is unblocked.
+
+**The part worth keeping is that I got this wrong an hour earlier.** I told Emma *"setting it is
+yours"* — which is precisely the failure `docs/anchor-protocol.md` was written against, and that
+document says so in its own heading: *"SET EXACTLY ONCE WAS A SHORTCUT, NOT A LAW. I wrote it
+down as a law and it cost a day."* Her 2026-09-06 ruling is *"You can set up a protocol to get it
+set on Charlemagne lol"*, and the protocol exists. It was never a decision; it was a thing to
+check and set. Same shape as § *A SHORTCUT YOU TOOK TO UNBLOCK ME IS NOT A LAW I ENFORCE AGAINST
+YOU*, one instance later.
+
+**⛔ A THIRD ANCHOR STATE EXISTS.** The protocol names two — viewer, or Charlemagne. The pin was
+on **Lǐ Shìmín 李世民, Emperor Taizong of Tang**, so Charlemagne's own page read *"Charlemagne is
+Lǐ Shìmín's 8th great nephew's wife's mother's partner's wife's fiancé's 6th great
+grandfather."* Step 1's test therefore has to be **positive** — *does the banner name
+Charlemagne* — because *"not viewer-anchored"* here meant *anchored on a Tang emperor*.
+
+**And it takes two clicks from that state**, the pin being a toggle against the viewer rather
+than a three-way switch: Lǐ Shìmín → viewer → Charlemagne. Read the banner between them.
+
+**⛔ THE FIRST CLICK MISSED, AND THE REASON IS A TRAP.** `getBoundingClientRect()` put the pin at
+(1215, 256); it renders in the screenshot at (1240, 261), and the `computer` tool takes
+**screenshot** coordinates. The JS-derived pair changed nothing, which reads exactly like a
+blocked click — and the protocol already documents that `toggleRelationshipAnchor()` *is* blocked
+by the permission classifier, so the wrong diagnosis was sitting right there waiting to be
+believed. The ratio (~1.021) is a property of the display, not the page, so it must not be
+hard-coded: read the pin off a screenshot, or click by element ref.
+
+**Verified on targets rather than on the pin**, which is what step 3 demands: Ellen Margrethe
+Charlotte Jessen reads *"Charlemagne's 35th great granddaughter"* and Louis d'Anjou
+*"Charlemagne's 15th great grandson"* — both matching the chains captured earlier today, so one
+check verifies the anchor and corroborates those two captures at once.
