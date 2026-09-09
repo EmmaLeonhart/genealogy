@@ -2,8 +2,8 @@
 
     py scripts/build-cjk-transcription-labels.py
 
-**Emma's ruling, 2026-09-01**, asked directly whether a rule-based transcription of a Latin name
-counts as a publishable label: **emit it for the people who already have a QID.** Not for
+**The ruling, 2026-09-01**, on whether a rule-based transcription of a Latin name counts as a
+publishable label: **emit it for the people who already have a QID.** Not for
 everyone — 1.29 million people would be ~2.5 million edits nobody can apply, because most of them
 are not on Wikidata yet and their labels ride along with the creation instead.
 
@@ -12,15 +12,15 @@ Those two refuse to transcribe a Latin name at all, on the ground that transcrip
 reading: a Chinese, Japanese or Korean person may have a name in their own script already, and a
 transcription would be second-best. That reasoning is still right *for them* — they run over the
 whole corpus, most of it uncreated. Here the population is bounded and every edit is applicable
-today, so the trade is different and she made it.
+today, so the trade is different and was made deliberately.
 
-## Why `zh` comes too, when she said `ja` and `ko`
+## Why `zh` comes too, when the ruling named `ja` and `ko`
 
 `translit_no.translit(token)` returns **`(katakana, chinese)` from one call** — `ja` and `zh` are
 the same engine and the same table column. Emitting `ja` while withholding `zh` would recreate
-exactly the inconsistency her ruling removed, and `CLAUDE.md` § *CJK INCLUDES KOREAN* treats the
-three as one set. So all three go, and this note is here so that reading it back does not look
-like scope she did not sanction.
+exactly the inconsistency that ruling removed, and `CLAUDE.md` § *CJK INCLUDES KOREAN* treats
+the three as one set. So all three go, and this note is here so that reading it back does not
+look like unsanctioned scope.
 
 ## The table first, the engine second
 
@@ -147,8 +147,8 @@ def main() -> int:
     lines = ["# `ja`, `zh` and `ko` transcribed, for people who already have a QID", "",
              "Built by `scripts/build-cjk-transcription-labels.py`. **Emits nothing to Wikidata.**",
              "",
-             "Emma, 2026-09-01, asked whether a rule-based transcription of a Latin name counts "
-             "as a publishable label: **emit it for the people who already have a QID.**", "",
+             "On whether a rule-based transcription of a Latin name counts as a publishable "
+             "label: **emit it for the people who already have a QID.**", "",
              f"- **{len(edits):,} labels** over {why['EMITTED']:,} people.", "",
              "| language | labels |", "| --- | ---: |"]
     for code in ("ja", "zh", "ko"):

@@ -1,8 +1,7 @@
 """The blood line to Charlemagne, and where its descendants thin.
 
-Emma, 2026-08-13: *"do this link to Charlemagne instead of the other one.
-Ancestry is good like this. I want to see which points where the descendants
-clearly thin in a way that suggests I'll need another export."*
+The link to Charlemagne, laid out as an ancestry, to show where the descendants
+thin in a way that calls for another export.
 
 **This replaces `build-charlemagne-route.py` as the link that matters.** That one
 minimised people-to-create and returned a 398-step route hopping through spouses
@@ -225,9 +224,8 @@ def main() -> int:
     add = L.append
     add("# The blood line to Charlemagne, and where it thins")
     add("")
-    add("Emma, 2026-08-13: *\"do this link to Charlemagne instead of the other one.")
-    add("Ancestry is good like this. I want to see which points where the descendants")
-    add("clearly thin in a way that suggests I'll need another export.\"*")
+    add("The link to Charlemagne, laid out as an ancestry, to show where the")
+    add("descendants thin in a way that calls for another export.")
     add("")
     add("Geni's own **shortest blood relationship** — Charlemagne as 35th great")
     add(f"grandfather, **{len(LINE)-1} steps, every one a parent**. This supersedes")

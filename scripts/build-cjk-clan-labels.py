@@ -2,9 +2,9 @@
 
     python scripts/build-cjk-clan-labels.py
 
-**Emma's ruling, 2026-08-28**, worked out on `Q10864996` and then generalised by her:
-*"I think this formulation should be 'woman of the Li clan, from Longxi Didao' as the English
-label and all languages have a similar thing but NN is the right mul."*
+**The ruling, 2026-08-28**, worked out on `Q10864996` and then generalised: the formulation is
+*woman of the Li clan, from Longxi Didao* as the English label, with a similar form in every
+language, and `NN` as the `mul` label.
 
 ## The shape, and it is almost universal
 
@@ -27,13 +27,12 @@ The three-way degradation is natural: clan and place, clan alone, place alone.
 
 **338 of the 354 records are male.** The case the formula was designed on — Wanshou — is one of
 only 16 women, and printing the first ten rows gave an all-female sample that read as
-representative. Emma, asked whether the men take the same formula: *"Yes — same formula, sex word
-from the data."*
+representative. The men take the same formula, with the sex word read from the data.
 
 ## `mul` is bare `NN`
 
 Not `NN 隴西狄道`. The place is not the person's name, and splicing a Latin marker into a Han
-label produces neither a Chinese label nor an English one. Her words: *"NN is the right mul."*
+label produces neither a Chinese label nor an English one. `NN` is the right `mul`.
 
 ## `ja` and `zh` are deliberately absent
 
@@ -144,9 +143,8 @@ def main() -> None:
 
     # **A person whose Wikidata label is a REAL NAME is held, not relabelled.**
     #
-    # Emma, 2026-08-29: *"I think that our clan things are much worse than you think, which is
-    # why I never actually ran them adn I think I am seein at least some evidence."* She was
-    # right, and it is measurable: checked live on 2026-09-01, **all 177 of these items already
+    # The clan labels were suspected of being much worse than they looked, which is why they
+    # were never run. That was right, and it is measurable: checked live on 2026-09-01, **all 177 of these items already
     # carry an English label**, and **15 of them are real names** rather than markers --
     # `Q10864996` is 万寿公主, Princess Wanshou, and this batch would have relabelled her
     # *"woman of the Li clan, from Longxi Didao"*. Also `Liu Zhen`, `Li Daogu`, `Cui Lin`,

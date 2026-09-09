@@ -2,8 +2,8 @@
 
     py scripts/build-cjk-reading-labels.py
 
-**Emma, 2026-09-02**, on why these are aliases and not labels: *"there would be `Amul` labels for
-the rest — for the other two, or even `Amul` for all of them — and the `mul` one is set later."*
+**Why these are aliases and not labels:** every reading goes out as an `Amul` alias — the other
+two, or all three of them — and the `mul` label is set later.
 
 That is the whole design and it is what takes the culture classifier off the critical path. Every
 reading a person's characters can have is emitted as an `Amul` alias. **Which one is promoted to
