@@ -72,7 +72,7 @@ hand-built tree sitting at the far edge.
 Both sit modestly outside the middle and nowhere near the edge, where the numbers run to 183 and
 318.
 
-**That does not contradict her read of Martin — it locates it.** His eccentricity is a property
+**That does not contradict the read of Martin — it locates it.** His eccentricity is a property
 of **Geni's World Tree**, where a relationship query has to cross the sparse part of the graph
 and can time out. Our corpus is a sample of Geni, and someone we happen to have sampled well
 looks central here while being eccentric there. `CLAUDE.md` § *Presence measures our sampling,

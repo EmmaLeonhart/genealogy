@@ -430,7 +430,7 @@ The link written is the form already used, so it matches the profiles made
 herself: `https://wikidata.org/wiki/Special:EntityPage/<QID>#sitelinks-wikipedia`.
 
 **About a third already had it** and were skipped rather than rewritten. Generations
-40-52 were hers to a person; the early Izumo line and the whole Senge/Kitajima columns
+40-52 were hand-made to a person; the early Izumo line and the whole Senge/Kitajima columns
 were empty. **Nothing carried a different QID** — the check is `OTHER`, and it never
 fired, so no adjudication was needed anywhere.
 

@@ -44,7 +44,7 @@ almost none of it.
 
 That reframes the item. It is not "build the tree onto Geni" as a first step, because
 The account owner's own account is that the clan is **already on Geni three times over** — added in
-2008 in Japanese, in 2011 in English, and by her in 2026 off this page. The profiles exist.
+2008 in Japanese, in 2011 in English, and by hand in 2026 off this page. The profiles exist.
 What does not exist is any `P2600` connecting them to the 204 Wikidata items.
 
 ## So the work is resolution first, not creation
@@ -84,16 +84,16 @@ So "the clan is already on Geni three times over" and "the clan is in our corpus
 different statements, and only the first is true. The profiles exist on Geni; our 548
 exports have never reached them.
 
-**Her 2026-08-19 browser warning no longer holds.** The Izumo tree renders cleanly now —
+**The 2026-08-19 browser warning no longer holds.** The Izumo tree renders cleanly now —
 Ameno-hohi 1, Takehinatori 2, Kushini 3, Tsusa 4, regnal numbers visible in the node
 labels exactly as described. Whatever was failing that day was the *"high volume of
 automated traffic"* banner, not something structural.
 
-**Her seed is not exportable directly** — `/gedcom/export/6000000012789160423` redirects to
+**The seed is not exportable directly** — `/gedcom/export/6000000012789160423` redirects to
 `/error`, so the account does not manage it despite having built around it. A placeholder was
 created at Kushini-no-mikoto 3's open mother slot: `NN no Mikoto`
 (`6000000227389059850`), keeping Geni's suggested `no Mikoto` surname because that matches
-the `NN no Mikoto` already in her tree rather than the generic tier-3 rule.
+the `NN no Mikoto` already in the tree rather than the generic tier-3 rule.
 
 **That export is the right instrument here** and it is not the refuted sparse-region work:
 this is a named lineage known to exist on Geni and known to be absent from the corpus,
@@ -118,7 +118,7 @@ priestly chain.
 material we lack is the middle and modern end — the Izumo no Kuni no Miyatsuko proper, then
 the Senge and Kitajima branches after the 1340 split. That account points the same
 way: these were built *"as ancestors of the spouse of Noriko Senge"*, so the modern Senge
-end is where her additions attach and where the chain is reachable without crossing the
+end is where the additions attach and where the chain is reachable without crossing the
 imperial mass first.
 
 This is a different failure from the refuted sparse-region work. That one seeded into
@@ -271,7 +271,7 @@ and rightly so.
 **First, it was not asked for.** The instruction on this clan was to build the tree the
 Shinto-wiki page shows onto Geni, carry the Wikidata links, and flag duplicate merges. The
 regnal matcher, the kokuso join and the succession walk were mine, written into the queue by
-me and then treated as if they had come from her.
+me and then treated as if they had been dictated.
 
 **Second, the kokuso join matched on the stopword `no`.** It paired a roster person with any
 Geni profile carrying the same number and one shared name token, and `no` is a token:

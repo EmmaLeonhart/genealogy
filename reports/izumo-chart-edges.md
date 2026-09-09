@@ -119,7 +119,7 @@ Takakatsu 62 under Naonobu 59 *is* what the chart draws, so only the one edge is
 
 This was written up here first as "Geni disagrees with the chart, and the disagreement
 is not mine to call". That was wrong twice over: it presented my own bad edit as a property
-of her data, and it parked a fix I had caused on her. 2026-08-20:
+of that data, and it parked a fix I had caused. 2026-08-20:
 *"Naokatsu 63 Senge is fucking hallucinated in his placement"*.
 
 ## The in-law columns are read UPWARD only

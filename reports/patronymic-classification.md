@@ -74,7 +74,7 @@ called non-patronymic: *"We probably should be doing some level of
 classification for situations where it is ambiguous."* They are the
 `AMBIGUOUS:` rows, split by why the father could not settle it.
 
-Her prior on them, recorded and **not applied** — deciding on it would be
+The prior on them, recorded and **not applied** — deciding on it would be
 inference where this project uses evidence: *"most patronymics are not used
 as surnames."*
 

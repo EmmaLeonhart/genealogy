@@ -3,7 +3,7 @@
 The item, 2026-08-18.** Twelve Scholar profiles and twelve ORCID records, read from
 the profiles themselves. No Wikidata, no Geni export.
 
-**Her ranking, which is the frame for everything below:**
+**The ranking, which is the frame for everything below:**
 
 > **Hoknes > Borsheim > Børsheim > Frisk**, in order of probability of relatedness.
 
@@ -17,7 +17,7 @@ the profiles themselves. No Wikidata, no Geni export.
    the whole question.
 3. **It called the Bergen/Hordaland candidates the plausible ones.** Hordaland is the
    `Børsheim` spelling, which ranks *third*. The hand pick — Scholar profile 2, Carlin
-   **Borsheim**-Black — is the spelling that ranks second, and the corpus agrees with her
+   **Borsheim**-Black — is the spelling that ranks second, and the corpus agrees with it
    rather than with me.
 
 ## Who these people actually are
@@ -214,7 +214,7 @@ descent. What is missing is the one edge that would give her a number.
 ## What would settle it, in order of what it costs
 
 1. **Carlin Borsheim-Black's birth family.** She is the strongest candidate by that
-   ranking *and* her own pick, publishes under an unhyphenated `Borsheim` before 2008, and
+   ranking *and* the hand pick, publishes under an unhyphenated `Borsheim` before 2008, and
    is in Michigan. A US census or obituary trace back two generations meets either the
    Canadian branch or the Jæren farm, or neither — and either answer is worth having.
 2. **A Hoknes candidate.** None was supplied. If one is supplied, it goes to the front of the

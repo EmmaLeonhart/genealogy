@@ -1,7 +1,7 @@
 # Anvilaquarius
 
 2026-09-03: *"Anvilaquarius is a user I want to study the behaviour of."* Then, pointing at
-her screen: *"Actually just this pastebin it"* — <https://pastebin.com/v4UcMx36>, which is the
+a screen: *"Actually just this pastebin it"* — <https://pastebin.com/v4UcMx36>, which is the
 material named.
 
 **The pastebin resolves** (checked 2026-09-04) and is a **watchlist dump**, not a page about this
@@ -47,7 +47,7 @@ not useful."*
 Right on both counts. `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI — never
 whether Geni is right* already settles it: the two spouses carry identical dates in
 `derived-facts.csv` because Geni records them that way, so our snapshot is current and there is
-nothing here to fix. § *The purpose is to ADD to Wikidata* keeps it out of her decision queue.
+nothing here to fix. § *The purpose is to ADD to Wikidata* keeps it out of the decision queue.
 
 **So: nothing further on this, and no report.** The census that was here is removed rather than
 kept, because a measurement nobody will act on reads as open work to the next session — which is

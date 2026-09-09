@@ -73,7 +73,7 @@ emitted only when *both* ends resolve to a Wikidata item, and the value written 
 the other end's `wikidata_qid`, never its order.life QID.
 
 **Anything pointing at Q1 falls out automatically** — Aster has no Wikidata item,
-so every edge into her fails the both-ends test. That is the right outcome and it
+so every edge into that node fails the both-ends test. That is the right outcome and it
 happens for the right reason rather than by a special case.
 
 ## The crosswalk properties

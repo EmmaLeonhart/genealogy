@@ -62,8 +62,8 @@ names it, and as *scheduled* when that script is named in `.github/workflows/*.y
 
 ## ⛔ SETTLED, 2026-09-06 — all six ruled on
 
-Put to her as an `AskUserQuestion` after four status reports had listed them as a blocker without
-anyone asking. Her rulings:
+Put up as an `AskUserQuestion` after four status reports had listed them as a blocker without
+anyone asking. The rulings:
 
 | generator | ruling |
 | --- | --- |

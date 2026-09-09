@@ -65,7 +65,7 @@ them and the sizes are lopsided.**
   single-parent family gets its missing parent invented is not stated, and the
   population is **163 times** the one described.
 - **3,758 families have one child and no parent.** With a single child there is
-  no sibling relationship, so by her wording — *"sibling relationships without
+  no sibling relationship, so by that wording — *"sibling relationships without
   parents"* — they are out of scope. Correct as written, and worth seeing.
 
 **NEEDS-DECISION**, on both.
@@ -74,7 +74,7 @@ them and the sizes are lopsided.**
 
 - **Nothing is emitted.** The placeholders are proposals in a CSV; no item is
   created anywhere.
-- **No `P3373`.** Her approach routes siblings through invented parents rather
+- **No `P3373`.** The approach routes siblings through invented parents rather
   than stating sibling links directly, which is the Wikidata-preferred shape —
   recorded because it is a consequence of the rule rather than a separate
   decision.

@@ -20,7 +20,7 @@ deciding a usage means whatever is convenient.
 
 ## The unclear ones are not 84 decisions. They are these classes
 
-### her own quoted words — 14
+### quoted words — 14
 
 A quoted line. Not ours to redefine; it stays verbatim whatever the answer is.
 

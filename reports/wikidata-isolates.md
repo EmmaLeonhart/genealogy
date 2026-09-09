@@ -71,7 +71,7 @@ academics?"* The first version of this report answered with centuries and with t
 tautology that 99.1% carry a `P2600` — which is the definition of the group, not a
 finding.
 
-### Her guess about Wikipedia — WRONG
+### The guess about Wikipedia — WRONG
 
 *"My guess is, out of these people, almost all of them have Wikipedia articles. Is
 that true?"* No.
@@ -82,7 +82,7 @@ that true?"* No.
 | English Wikipedia | 46,237 (25.2%) |
 | **none at all** | **100,448 (54.7%)** |
 
-### Her guess about Geni connectedness — untestable for 99.6%, and false for the rest
+### The guess about Geni connectedness — untestable for 99.6%, and false for the rest
 
 *"They tend to be people who are relatively not that well-connected on Jenny."*
 
@@ -93,7 +93,7 @@ something this data can speak to.
 For the 722 we do hold: median 2 relatives, mean 3.28 — against a whole-corpus
 median of 2 and mean 3.20. **Indistinguishable from everybody else.**
 
-**Her conclusion still holds, for a different reason.** Not that they are poorly
+**The conclusion still holds, for a different reason.** Not that they are poorly
 connected, but that they are *outside the tree entirely*. The ruling, same day:
 *"this group of people is a group that I probably would consider to be very low
 priority... I don't think that they're that important to get into the World Tree."*

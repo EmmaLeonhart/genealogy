@@ -45,7 +45,7 @@ decision rather than a rule.
 
 **Read as:** the married name takes the surname's place in the rendered name, so
 `Judith /de France/` carrying `_MARNM Flandre` yields the alias `Judith Flandre`.
-A `_MARNM` identical to `SURN` is ignored, per her earlier rule, which is 31% of
+A `_MARNM` identical to `SURN` is ignored, per the earlier rule, which is 31% of
 the 244,392 records carrying the tag.
 
 **That reading is an interpretation of one sentence and is flagged rather than

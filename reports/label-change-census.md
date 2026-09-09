@@ -1,6 +1,6 @@
 # How many Geni labels actually need changing?
 
-Her queue item, answered 2026-09-01 over `reports/derived-labels.csv` (1,451,964 people).
+The queue item, answered 2026-09-01 over `reports/derived-labels.csv` (1,451,964 people).
 
 | | people |
 | --- | ---: |
@@ -23,7 +23,7 @@ So the 29,743 differences are not a backlog. **1,590 items carry no label at all
 
 **A difference is also not evidence that ours is better.** These items were largely labelled by
 other editors from other sources; `CLAUDE.md` § *The tree and the items are edited BY HAND* adds
-that some of the differences are her own corrections, where the stale half is ours. Nothing here
+that some of the differences are hand corrections, where the stale half is ours. Nothing here
 should be read as 29,743 wrong labels on Wikidata.
 
 ## What this does not count
