@@ -1,8 +1,7 @@
-"""Build reports/merges-to-do.md - the file Emma works from by hand.
+"""Build reports/merges-to-do.md - the file the merges are worked from by hand.
 
-Emma, 2026-08-31: "Just make a 'merges to do' file that records these merges and the
-wikidata duplicates and all the other things we went over that's a file I'll use tomorrow
-to do merges manually on my own with the quickstatements session".
+Asked for 2026-08-31: a "merges to do" file recording these merges, the Wikidata duplicates
+and everything else gone over, to work from by hand in a QuickStatements session.
 
 Three populations, and they are not the same kind of work:
 
@@ -13,10 +12,10 @@ Three populations, and they are not the same kind of work:
     double-creation.
   * **Geni merges that cross a manager** - a real duplicate where the other profile belongs
     to somebody else, so merging is a request another editor sees.
-  * **Items to audit** - three she flagged as wrong rather than duplicated. Not merges, but
+  * **Items to audit** - three flagged as wrong rather than duplicated. Not merges, but
     the same sitting.
 
-Labels come from her ledger where she has one and from the merged tree otherwise; nothing
+Labels come from the ledger where there is one and from the merged tree otherwise; nothing
 here is looked up over the network.
 """
 
@@ -82,15 +81,15 @@ def ledger_against_correspondence():
     """`[(geni_id, ours, {rival qid: sources})]` — an item we created beside an older one.
 
     **The shape section 1 cannot see.** That section needs BOTH items to carry a `P2600`, so it
-    finds double-creations by our own batches and nothing else. The duplicates Emma actually hit
+    finds double-creations by our own batches and nothing else. The duplicates actually hit
     on 2026-09-01 were the opposite: the **pre-existing item carries no Geni id at all**, so no
     `P2600` join reaches it and a `P2600` search afterwards returns only the one we made.
     `Q550343` *Welf I, Duke of Bavaria*, 27 sitelinks, was created again as `Q141249742` for
-    exactly that reason, along with three others she merged by hand the same afternoon.
+    exactly that reason, along with three others merged by hand the same afternoon.
 
     `reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural
     walk. Where the ledger says a Geni profile is one item and the correspondence says it is also
-    an older one, that is a probable double-creation and a merge for her.
+    an older one, that is a probable double-creation and a merge to make.
 
     **40 of them on 2026-09-01**, five spot-checked live that day: every one matched on sex, and
     on both dates wherever both sides carried them — `Johanna Catharina Burman` 1710–1778 against
@@ -138,9 +137,9 @@ def main():
     w = []
     w.append("# Merges to do - by hand\n")
     w.append(
-        "**Emma's file, 2026-08-31**: *\"Just make a 'merges to do' file that records these "
-        "merges and the wikidata duplicates and all the other things we went over that's a "
-        "file I'll use tomorrow to do merges manually on my own with the quickstatements "
+        "**Asked for 2026-08-31**: a \"merges to do\" file recording these "
+        "merges, the wikidata duplicates and everything else gone over -- a "
+        "file to do merges from by hand in a quickstatements "
         'session"*.\n'
     )
     w.append(
@@ -267,9 +266,9 @@ def main():
 
     w.append("\n## 6. Created by a batch, and needing a merge afterwards\n")
     w.append(
-        "**Emma flagged this one herself, 2026-08-31**, while running the batch: *\"we are gonna "
-        "want to merge https://www.wikidata.org/wiki/Q130665779 with our recently created thing "
-        "at some point\"*.\n"
+        "**Flagged by hand on 2026-08-31**, while running the batch: "
+        "https://www.wikidata.org/wiki/Q130665779 wants merging with the recently created item "
+        "at some point.\n"
     )
     w.append(
         "- **Ulrika von Düben** — `Q130665779` (sv *svensk friherrinna*, b. 1749-01-26, "
@@ -295,9 +294,9 @@ def main():
         "similarity.\n"
     )
     w.append(
-        "**Creating then merging is not a defect here.** `CLAUDE.md` § *Her own duplicates are "
-        "DELIBERATE* records that a creation followed by a merge leaves the edit trail she "
-        "wants, and she raised this as something to do *at some point* rather than something "
+        "**Creating then merging is not a defect here.** `CLAUDE.md` § *Duplication is "
+        "deliberate here* records that a creation followed by a merge leaves the intended edit "
+        "trail, and this was raised as something to do *at some point* rather than something "
         "to prevent.\n"
     )
 

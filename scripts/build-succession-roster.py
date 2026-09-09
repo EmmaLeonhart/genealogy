@@ -2,16 +2,15 @@
 
     python scripts/build-succession-roster.py
 
-**Emma's spec, 2026-08-31:** *"it's relatively easy to just agentically write the stuff into csv
-files with the geni id, qid if applicable, regnal number if applicable, and number in office, and
-whether they are Izumo, Senge, Kitajima, or Samaritan."*
+**The spec, 2026-08-31:** write the material agentically into CSV files carrying the Geni id,
+the QID where applicable, the regnal number where applicable, the number in office, and whether
+the person is Izumo, Senge, Kitajima or Samaritan.
 
-## The two numbers are different things, which is why she asked for both columns
+## The two numbers are different things, which is why both columns were asked for
 
 - **`regnal_number`** is the number **inside the personal name** -- `Elazar XX`, `Yoseph II`. On
   Wikidata it is `P7338` *regnal ordinal*, a qualifier on the `P735` *given name* statement, per
-  `name modelling.txt`. Emma, 2026-08-18: *"regnal ordinals fucking cannot behave like a middle
-  name."*
+  `name modelling.txt`. Ruled 2026-08-18: a regnal ordinal cannot behave like a middle name.
 - **`number_in_office`** counts the person among the holders of a post -- the Nth head of the
   house. On Wikidata that is `P39` *position held* with `P1545` *series ordinal*, which is a
   statement about the office and not about the name.
@@ -19,7 +18,7 @@ whether they are Izumo, Senge, Kitajima, or Samaritan."*
 **They do not co-occur the way one might assume.** Measured 2026-08-31: of the 19,450
 ordinal-bearing rows in `reports/regnal-ordinals.csv`, **zero** are Izumo, Senge, Kitajima or
 Kitashima -- their numbers are not in the Latin name at all. A single item would have covered the
-Samaritans and silently missed the family she named in the same breath, which is why she split it.
+Samaritans and silently missed the family named in the same breath, which is why it is split.
 
 ## Where each family's numbers come from
 
@@ -33,7 +32,7 @@ Samaritans and silently missed the family she named in the same breath, which is
 
 ## What it does NOT do
 
-No statements, no QuickStatements. This is the roster she asked for, to be read and corrected by
+No statements, no QuickStatements. This is the roster that was asked for, to be read and corrected by
 hand before anything is emitted -- and it needs that: `reports/regnal-ordinals.csv` contains
 `Wife 2 /ben Nathan, Mar Huna IV/` and `Preben 1. /Bille-Brahe/`, neither of which is a regnal
 ordinal.
@@ -101,7 +100,7 @@ def sam_key(name):
 
 
 def geni_by_qid():
-    """`{qid: geni_id}` from Wikidata's own `P2600`, then from her bio links.
+    """`{qid: geni_id}` from Wikidata's own `P2600`, then from the bio links.
 
     **`P2600` reaches almost none of these people, and that is the data rather than a broken
     join.** Measured 2026-08-31 over the 109 numbered Izumo/Senge/Kitajima heads: **0** are in
@@ -112,7 +111,7 @@ def geni_by_qid():
     read second and never skipped.
 
     The `geni_id` column therefore comes out nearly empty on the Japanese side. These are ancient
-    and medieval office-holders who have Wikidata items, largely of her own making, and are not in
+    and medieval office-holders who have Wikidata items, largely hand-made, and are not in
     our Geni corpus under a matching id.
     """
     out = {}
@@ -136,8 +135,8 @@ def main():
 
     # ---- Izumo / Senge / Kitajima ----------------------------------------------------
     #
-    # **The agentic pass, and it is a CHECK rather than a name guess.** Emma, 2026-08-31:
-    # *"All of them are on geni lol the wikidata just doesn't have p2600."* She is right, and the
+    # **The agentic pass, and it is a CHECK rather than a name guess.** Established 2026-08-31:
+    # all of them are on Geni, and Wikidata simply lacks the `P2600`. That is right, and the
     # matcher missed them because the two sides write the name differently: the chart says
     # `Senge no Takakuni`, Geni says `Takakuni Senge`. Reversing `X no Y` to `Y X` finds **63 of
     # 73**.
@@ -187,9 +186,9 @@ def main():
                         geni, gstatus = hits[0][0], "sole match, no number in the label"
                     elif hits:
                         gstatus = "AMBIGUOUS (%d hits, none numbered %s)" % (len(hits), succ)
-                # **Her bio links are the last and best resort.** Emma, 2026-08-31: *"most of
-                # the geni profiles have qids in their bios."* `reports/bio-qids.tsv` is that,
-                # attributed to the `INDI` that owns the link, so it is her own statement of
+                # **The bio links are the last and best resort.** Established 2026-08-31: most
+                # of the Geni profiles carry QIDs in their bios. `reports/bio-qids.tsv` is that,
+                # attributed to the `INDI` that owns the link, so it is a direct statement of
                 # identity rather than anything inferred -- and `CLAUDE.md` records that for the
                 # Izumo roster the bio links give 8 Geni ids where `P2600` gives 2.
                 #
@@ -209,7 +208,7 @@ def main():
                             gstatus = "AMBIGUOUS (%d carry %s)" % (len(cjk), ja)
                 if not geni and r.get("qid", "").strip() in by_qid:
                     geni = by_qid[r["qid"].strip()]
-                    gstatus = "her QID link in the Geni bio"
+                    gstatus = "the QID link in the Geni bio"
                 if not gstatus:
                     gstatus = "not found in the corpus"
 
@@ -237,7 +236,7 @@ def main():
 
     # ---- Samaritan: driven by the SUCCESSION LIST, so the file is comprehensive ------
     #
-    # **Emma, 2026-08-31: *"we have the csv as a comprehensive data source now?"*** Only if the
+    # **Asked 2026-08-31 whether the CSV is a comprehensive data source.** Only if the
     # Samaritan half is driven by the succession rather than by whoever happens to carry a Roman
     # ordinal in their Geni label. So every one of the 132 positions gets a row, present in our
     # corpus or not — the absences are the point.
