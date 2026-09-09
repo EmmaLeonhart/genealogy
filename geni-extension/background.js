@@ -2,9 +2,9 @@
  *
  * Two pacing rules, and they are different in kind:
  *
- *  - **Exports run one at a time and that is GENI's limit**, not a setting. Emma, 2026-08-18:
- *    *"There's no way that you can do an export concurrently. That isn't my decision thats
- *    geni."* `EXPORT_CONCURRENCY` is 1 and is deliberately not exposed in the popup, because a
+ *  - **Exports run one at a time and that is GENI's limit**, not a setting: there is no way to
+ *    run an export concurrently, and that is Geni's constraint rather than a choice made here.
+ *    `EXPORT_CONCURRENCY` is 1 and is deliberately not exposed in the popup, because a
  *    control implies a choice that does not exist.
  *  - **Path collection is bounded by RAM and by politeness**, both of which are ours. A tab
  *    must STAY OPEN while its search runs -- *"If you do not leave the tabs open then it
@@ -64,16 +64,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * ancestor is reached down several lines and would otherwise be walked repeatedly. */
       let queue = s.queue;
 
-      /* ⛔ `addAncestor(start_id)` ADDS ONE ANCESTOR AND RETURNS ITS ID. Emma, 2026-09-05:
-       * *"this is not an unbound method... it runs like addAncestor(start_id); and then it adds
-       * an ancestor of start_id and returns the id of it as end_id and then a subsequent method
-       * will use end_id, generally doing a forest export, or descendants export."*
+      /* ⛔ `addAncestor(start_id)` ADDS ONE ANCESTOR AND RETURNS ITS ID. It is not an unbound
+       * method: it runs as `addAncestor(start_id)`, adds an ancestor of `start_id`, and returns
+       * that new id as `end_id`, which a subsequent method uses -- generally a Forest or a
+       * Descendants export.
        *
        * So a creation ENDS the walk. Climbing exists only to find an open slot; once one person
        * is created there is an `end_id` and the next step is an export from it, not more
        * ancestors. Left running, every created `NN` has no parents of its own and becomes a
        * candidate for its own `NN` mother -- an unbounded chain of invented people on a live
-       * site. That was the shape of it before she ruled.
+       * site. That was the shape of it before that ruling.
        *
        * The remaining seed jobs are dropped rather than kept: they were the search for a slot,
        * and the slot has been found. */
@@ -97,7 +97,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       }
       await put({ active, results, queue });
       /* A resolved tab is closed. It is held open only WHILE the search runs, which is the
-       * thing her rule protects; once the answer is on the page the tab costs RAM and buys
+       * thing the rule protects; once the answer is on the page the tab costs RAM and buys
        * nothing. A still-running or never-asked target is closed too and goes to the next
        * pass -- that is what makes this a two-pass campaign rather than an unbounded wait. */
       try { await chrome.tabs.remove(tabId); } catch (e) {}

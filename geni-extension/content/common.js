@@ -225,8 +225,8 @@ GC.blocked = function () {
  * wrong too.** Two files
  * land per browser session and everything after is blocked: 2120676 and one probe landed, then
  * three consecutive scrapes and a second probe did not. It is Chrome's per-origin
- * *multiple automatic downloads* permission, which needs an omnibox grant -- a desktop action,
- * and she is usually on a phone.
+ * *multiple automatic downloads* permission, which needs an omnibox grant -- a desktop action
+ * that is unavailable on a phone.
  *
  * **The transport that works needs no permission at all: the job returns the TSV on the data
  * attribute, and the agent writes the repo.** The tool result carries UTF-8 intact -- `Ås` and

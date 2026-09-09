@@ -1,12 +1,11 @@
 # `geni-extension/` — the Geni collector
 
-**Emma's design, 2026-09-05:** *"I wish we could do this through playwright or some hybrid
-thing. Lets say agentically opening up the tabs and then running an extension that we build
-explicitly for this purpose. Can't be playwright proper but the extension can basically run
-almost all our algorithms"*, and then *"And adding individuals to do a forest export"* /
-*"All geni stuff for our repo"*.
+**The design, 2026-09-05:** tabs are opened agentically and an extension built for this
+purpose runs inside them. It cannot be Playwright proper, but the extension can run almost all
+of the algorithms — adding individuals, running a Forest export, and every other Geni operation
+this repo needs.
 
-Playwright proper is out for the reason she gave: Geni needs **her logged-in Chrome**, and the
+Playwright proper is out for a specific reason: Geni needs **a logged-in Chrome**, and the
 pushpin anchor is a property of that account. An extension runs *inside* that session.
 
 ## Why it exists — it fixes the one thing that was actually broken
@@ -30,7 +29,7 @@ the rate could only come out 100%.
 
 ## Install
 
-One-time, and it needs her:
+One-time, and it has to be done by hand on the machine:
 
 1. `chrome://extensions` → **Developer mode** on.
 2. **Load unpacked** → select `geni-extension/`.
@@ -107,7 +106,6 @@ down, and filing them into `exports/` is hers.
 `searches at once` is how many may be in flight; a tab is held open **while its search runs**,
 because closing it *"drops its promise to notify you"*. `seconds between opens` is the rate and
 defaults to 60 — `geni-scraping/`'s one-a-minute rule. `wait minutes` is how long a single
-target may run before it is left for the next pass; her measurement is that one *"might take 10
-minutes"*.
+target may run before it is left for the next pass; a real search can take ten minutes.
 
 Bail on anything odd. That rule is unchanged and is not automatable.

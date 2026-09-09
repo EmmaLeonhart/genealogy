@@ -5,8 +5,8 @@
  * of Geni's rather than a preference of ours:
  *
  *  - **Walk `Forest`, size 5000, everything else default.**
- *  - **STRICTLY ONE AT A TIME.** Emma, 2026-08-18: *"There's no way that you can do an export
- *    concurrently. That isn't my decision thats geni."* So there is no throughput dial. The
+ *  - **STRICTLY ONE AT A TIME.** There is no way to run an export concurrently, and that is
+ *    Geni's constraint rather than a choice made here. So there is no throughput dial. The
  *    background scheduler runs export jobs with a concurrency of exactly 1 and it is not
  *    configurable -- a second in flight is not slower, it is impossible.
  *  - **A SUBMITTED EXPORT CANNOT BE CANCELLED.** *"you think you can kill a geni export read
@@ -65,16 +65,15 @@ GC.runExport = async function (job) {
                   (r.parentElement && r.parentElement.textContent) || "";
       return txt.replace(/\s+/g, " ").trim();
     };
-    /* The walk is the JOB'S, defaulting to Forest. It was hardcoded until 2026-09-05, when she
-     * asked for an **Ancestors** export of a specific person to check his ancestors were all
-     * present -- *"Make sure all of his ancestors are present by doing an ancestor export of
-     * [Alfred Ingerman Hoknes] after and this is the proper thing."*
+    /* The walk is the JOB'S, defaulting to Forest. It was hardcoded until 2026-09-05, when an
+     * **Ancestors** export of a specific person was called for, to check that all of his
+     * ancestors were present -- an ancestor export of Alfred Ingerman Hoknes, run afterwards.
      *
      * `docs/export-seed-rules.md` says `Forest`, size 5000, and that is still the default and
      * still what a seed-driven export takes. This is the other case: a named person, a named
-     * walk, for a stated reason. Her 2026-09-05 remark that ancestors and blood-relatives walks
-     * are *"of questionable use for this time"* was about what to spend an `addAncestor` result
-     * on, not a ban -- and a later instruction naming one outranks it either way. */
+     * walk, for a stated reason. The 2026-09-05 remark that ancestors and blood-relatives walks
+     * are of questionable use right now was about what to spend an `addAncestor` result on, not
+     * a ban -- and a later instruction naming one outranks it either way. */
     const want = new RegExp("^" + (job.walk || "forest"), "i");
     const walk = radios.find((r) => want.test(labelOf(r)));
     if (!walk) return report({ state: "no_such_walk", walk: job.walk || "forest" });

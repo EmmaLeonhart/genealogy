@@ -1,8 +1,8 @@
 /* Step 1 of the per-individual loop: scrape the immediate family FROM THE PAGE, and save it.
  *
- * **Emma, 2026-09-06:** *"on each individual we always grab the html family members and save them
- * first, then try to get the Charlemagne path"*, and *"we also do the immediate family scrape on
- * sibling pairs in paths because parents are needed and this is the quickest way to get them."*
+ * **On each individual the HTML family members are grabbed and saved FIRST, and only then is the
+ * Charlemagne path requested.** The immediate-family scrape also runs on the sibling pairs in
+ * paths, because the parents are needed and this is the quickest way to get them.
  *
  * `docs/per-individual-loop.md` is the order. This job is the cheap, unconditional one: no search
  * is requested, no export is spent, nothing is created. It runs on everybody, first, and the page
@@ -199,7 +199,7 @@ GC.runFamily = async function (job) {
   }
 
   /* RETURNED, never downloaded -- `common.js` § *THE COLLECTOR DOES NOT DOWNLOAD FILES*.
-   * Emma, 2026-09-06: *"you write stuff into files in the repo you dummy."* */
+   * The caller writes it into a file in the repo; nothing here downloads. */
   const tsv = GC.family.toTsv(id, subjectName, scraped, stats);
 
 

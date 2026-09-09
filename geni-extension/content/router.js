@@ -85,7 +85,7 @@ document.addEventListener("geni-collector-run", async () => {
  * `chrome.runtime.sendMessage`, so it was always drivable — but only from an extension context,
  * and the only one that existed was the toolbar popup. The toolbar is browser chrome and
  * `chrome-extension://` URLs are refused the same way `chrome://` ones are, so driving it meant
- * asking Emma to click, every time. That is why *"the scheduler I don't know if it can work"* was
+ * asking for a click, every time. That is why the scheduler's viability was
  * still open weeks after the queue logic was written, and why `addAncestor`'s termination — which
  * lives in the background's `result` handler and nowhere else — had never executed.
  *

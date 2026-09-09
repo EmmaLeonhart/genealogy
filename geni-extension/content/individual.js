@@ -1,7 +1,7 @@
 /* THE RUN LOOP. One job per individual, and every decision inside it.
  *
- * **Emma, 2026-09-06, dictating it and saying this three times: "There's no discretion on your
- * part at all."** `docs/collector-run-loop.md` is the dictation. The agent lands on the profile;
+ * **THERE IS NO DISCRETION AT THE AGENT'S END AT ALL** -- said three times when this was
+ * dictated. `docs/collector-run-loop.md` is that dictation. The agent lands on the profile;
  * everything after that is decided here, the same way every time.
  *
  *     scrape the family            -> tiny profile GEDCOM material, produced immediately
@@ -14,10 +14,10 @@
  * **What this replaces is me.** Every step already existed as a job -- `runFamily`, `runPath`,
  * `runSeed`, `runExport` -- and I dispatched them one at a time and reasoned about the result
  * between calls. The gate lived in `scripts/export_gate.py` and I applied it in prose, per person.
- * That reasoning is the discretion she removed; it is one rule here, applied identically.
+ * That reasoning is the discretion that was removed; it is one rule here, applied identically.
  *
- * ⛔ **THE THRESHOLD IS 300, ON ANY FIGURE.** Emma: *"if the relatives numbers indicate that it
- * would be worthwhile based off of our common threshold there, I believe three hundred"*. It
+ * ⛔ **THE THRESHOLD IS 300, ON ANY FIGURE** -- the common threshold for whether the relatives
+ * numbers make a person worth doing. It
  * replaced five per-figure numbers that were mine. Disjunctive: the figures measure different
  * things and a person can be evidently connected by any of them.
  *
@@ -70,7 +70,7 @@ GC.runIndividual = async function (job) {
    * function never passed one -- so every individual run takes the 600000 default whatever
    * the caller asks for. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
    *
-   * ⛔ AND THE DEFAULT STAYS 600000, because her figure for a real search is ten minutes and
+   * ⛔ AND THE DEFAULT STAYS 600000, because the figure for a real search is ten minutes and
    * a capped wait turns a slow HIT into a deferral. This makes the knob reachable and moves
    * no behaviour: `job.waitMs` is undefined unless a caller sets it.
    *
@@ -90,17 +90,17 @@ GC.runIndividual = async function (job) {
 
   /* ⛔ 5. BOTH TIES, ALWAYS. Not in-law-as-fallback.
    *
-   * **Emma, 2026-09-07:** *"When requesting a blood relationship, you always request the
-   * non-blood other ways too, and if no blood relationship found, you always look at the other
-   * ways too."* And the reason, which is why this is not waste: *"The redundancy here is the
+   * **BOTH SEARCHES, ALWAYS.** When a blood relationship is requested the non-blood other ways
+   * are requested too, and where no blood relationship is found the other ways are still looked
+   * at. And the reason, which is why this is not waste: *"The redundancy here is the
    * point ... the kind of 'ring' of the person to charlemange with the blood and non-blood gives
    * a maximum amount of relatives to go through for a minimal cost of just clicking the button
    * twice and waiting."*
    *
-   * Her goal for a person is a RING -- a blood chain to Charlemagne, a marriage chain to
+   * The goal for a person is a RING -- a blood chain to Charlemagne, a marriage chain to
    * Charlemagne, and the immediate family -- so the second search runs even when the first
    * succeeded. The first version of this ran in-law only after a blood miss, which is the
-   * fallback reading she corrected.
+   * fallback reading that was corrected.
    *
    * ⛔ WHAT IS NOT DONE HERE IS THE BACKFILL. *"I do not care about non-blood relationships
    * among people already connected ... These first people covered just get worse coverage and
@@ -153,7 +153,7 @@ GC.runIndividual = async function (job) {
     return out;
   }
 
-  /* At or above the floor a miss is a database failure rather than a real negative -- her rule:
+  /* At or above the floor a miss is a database failure rather than a real negative -- the rule:
    * *"15,000 blood relatives or really any of these numbers being high on this scale indicates
    * that they are in the world tree but it was a database failure."* So walk up for an open slot,
    * create one ancestor, and export from it. */
@@ -168,7 +168,7 @@ GC.runIndividual = async function (job) {
 
   /* ⛔ `both_present` IS THE WALK CONTINUING, NOT A FAILURE.
    *
-   * `docs/parent-walk-algorithm.md` rule 4 -- her dictation: *"both present -> add neither;
+   * `docs/parent-walk-algorithm.md` rule 4, as dictated: *"both present -> add neither;
    * enqueue the mother, THEN the father, and carry on up."* `runSeed` does ONE person and hands
    * back that queue; walking it needs a page load per step, and a page load is the agent's job
    * because agentic navigation is the CAPTCHA mitigation. So the job cannot finish the walk on
