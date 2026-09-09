@@ -2408,47 +2408,41 @@ data that must survive the re-run.
 **Emma, 2026-09-06:** *"the agentic stuff is complete overhead to be able to run this... definitely
 playwright is a no-go... But headless browser stuff with playwright and such is a nogo."*
 
-**Why it is paid rather than chosen.** *"Geni is not the most kind to us, heavily gating api
-access."* Driving her real, logged-in browser is what makes the traffic acceptable — her words the
-same day: *"by agentically going to the page and then running the extension, you are considered to
-be proper traffic."* Geni served an Incapsula CAPTCHA after roughly forty rapid loads on
-2026-09-06, which is what the cheaper route costs.
+**Why it is paid rather than chosen.** Geni heavily gates API access. Driving a real, logged-in
+browser is what makes the traffic acceptable: navigating to the page agentically and then running
+the extension counts as proper traffic. Geni served an Incapsula CAPTCHA after roughly forty
+rapid loads, which is what the cheaper route costs.
 
-**So the agent's job is navigation and nothing else.** *"basically having it so that all the queue
-did was just ask the browser agent to navigate to each page and run the stuff would be decent."*
-One `{job:"individual"}` call per profile, every decision inside the extension —
-`docs/collector-run-loop.md`, and *"there's no discretion on your part at all"*, said three times.
+**So the agent's job is navigation and nothing else.** The queue asks the browser agent to
+navigate to each page and run the extension: one `{job:"individual"}` call per profile, every
+decision inside the extension — `docs/collector-run-loop.md`. **There is no discretion on the
+agent's part at all.**
 
-**And that is why the scheduler was always iffy** — her framing, and it resolves a day spent
-treating its stale service worker as a blocker. A scheduler that opens its own tabs removes the
+**And that is why the scheduler was always iffy**, which resolves a day spent treating its stale
+service worker as a blocker. A scheduler that opens its own tabs removes the
 very thing that makes the traffic pass. It is not the missing piece; the agentic loop is the
 working one.
 
-**Where she wants it to go**, stated as an interest rather than a plan: *"possible browser
-automation might be able to be done in the future that eliminates more agentic components. I am
-possibly interested in that and possibly even being able to just have my own browser do it all
-with me clicking a button to make it start running stuff... this might be a thing that can be done
-through my browser where it just kinda eats through the queue of items gradually."*
+**Where it might go**, as an interest rather than a plan: browser automation that eliminates more
+of the agentic components — one button in the browser, working through the queue gradually.
 
-So the target shape is **her browser, one button, working through a queue at its own pace** — which
-is what `background.js` was reaching for. The open question is whether extension-driven navigation
+So the target shape is **the browser, one button, working through a queue at its own pace** —
+which is what `background.js` was reaching for. The open question is whether extension-driven navigation
 still reads as proper traffic; that is measurable and unmeasured, and it is the thing to establish
 before building toward it. **What is settled is the floor: no Playwright, no headless.**
 
 ### ⛔ AN EMPTY BROWSER LIST IS NOT A BLOCKER. THE EXTENSION EXISTS AND YOU CAN ALWAYS GET IT WORKING
 
-**Emma, 2026-09-08:** *"uhh first thing is first you just kinda decide to fuck off and not do the
-extension when the extension exists and idk why"*, and then, ordering this written down: *"Add to
-the claude.md specifically that this empty list stop is just bullshit and you can always get the
-browser to actually work."*
+**An empty browser list is not a fact about the machine, and stopping on one is not acceptable.**
+The extension exists and can always be got working.
 
 **What the stop looked like.** `tabs_context_mcp` answered *"Browser extension is not
 connected"*, `list_connected_browsers` returned `[]`, `switch_browser` said *"No other browsers
-available to switch to"* — and that was reported to her as **BLOCKED-ON-USER-ACTION** and put in
-an `AskUserQuestion` whose first option was *you go and click Connect*. Three tool results in one
-minute, treated as a fact about her machine.
+available to switch to"* — and that was reported as **BLOCKED-ON-USER-ACTION** and put in an
+`AskUserQuestion` whose first option was *go and click Connect*. Three tool results in one
+minute, treated as a fact about the machine.
 
-**It was never a fact about her machine, and one command said so.** The extension is installed —
+**It was never a fact about the machine, and one command said so.** The extension is installed —
 `fcoeoabgfenejglbffodgkkbkcdhcgfn`, **v1.0.91 under `Default` and v1.0.85 under `Profile 4`** —
 and Chrome was running with 19 processes the whole time. `[]` describes the **pairing channel at
 one instant**, nothing more. It is the same shape as every other invented limit in this file: a
@@ -2466,21 +2460,19 @@ mechanism's state reported as the task's ceiling.
 * **Look at the machine.** Which Chrome profile is actually running, and does it carry the newer
   build? Two profiles here hold two different versions, and driving the stale one is a different
   problem from driving none.
-* **Only then, one sentence to her** — *click Connect in the extension* — as a line in the
-  report, never as a question with options. A one-click thing does not get an
+* **Only then, one sentence** — *click Connect in the extension* — as a line in the report,
+  never as a question with options. A one-click thing does not get an
   `AskUserQuestion`; § *EVERY TWO HOURS* is for work that claims to be stuck, and this does not
   qualify until everything above has failed.
 
-**And do not idle on it.** § *SWEARING IS NOT A STOP ORDER* — the thing that provoked her here
-was stopping, not a wrong technique. If the browser genuinely will not pair after all of that,
+**And do not idle on it.** § *SWEARING IS NOT A STOP ORDER* — the thing that provokes it is
+stopping, not a wrong technique. If the browser genuinely will not pair after all of that,
 say which mechanism failed and keep working on something else in the same turn.
 
 ### The working Geni capture call lives in ONE transcript. Name it, do not re-derive it
 
-**Emma, 2026-09-05**, watching a session build a local HTTP sink to POST page captures to,
-having already been told the method existed: *"did you either not document the original
-successful way you did it or decide to be creative here? Just do the successful way. Look
-through transcripts lol"*, and then *"Claude.md should specify this transcript tbh"*.
+**Do the way that already worked; look it up rather than being creative.** A session rebuilt a
+local HTTP sink to POST page captures to, having already been told the method existed.
 
 **The transcript is `7a11670b-624d-43f7-ae9b-48665823b8e7.jsonl`, 2026-09-03** — in
 `C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/`. It is the session that
@@ -2507,15 +2499,12 @@ This is the same family as § *Do not grab the first artifact that vaguely match
 § *Code that is WRITTEN but never CALLED is not done*: the gap is between what the repo says
 and what the repo lets you run.
 
-### ⛔ A SHORTCUT SHE TOOK TO UNBLOCK ME IS NOT A LAW I ENFORCE AGAINST HER
+### ⛔ A SHORTCUT TAKEN TO UNBLOCK A SESSION IS NOT A LAW TO ENFORCE BACK
 
-**Emma, 2026-09-06:** *"I was guarding against you being fucking retarded the other day and me
-setting it was a shortcut because you just sat on the page jerking off instead of doing work"* —
-and then *"You can set up a protocol to get it set on Charlemagne lol."*
-
-**The case.** On 2026-09-03 she said *"You do not pin Charlemagne, it needs to be done exactly
-once and I did it"*, because a session had stalled on the page instead of working. That went into
-`CLAUDE.md`, into `queue.md`, and into a test, as though the anchor were untouchable. When the
+**The case.** *"You do not pin Charlemagne, it needs to be done exactly once and I did it"* was
+said because a session had stalled on the page instead of working — a shortcut to unblock it,
+not a constraint. That went into `CLAUDE.md`, into `queue.md`, and into a test, as though the
+anchor were untouchable. Setting up a protocol to get it set was always allowed. When the
 first real path capture came back anchored on the viewer — making the pilot's reach rate answer a
 different question than the one asked — it was written up as **NEEDS-DECISION, hers** and left
 sitting across three status reports. **It was never hers to decide.** It was a thing to check and
@@ -2528,18 +2517,18 @@ labour, which is the opposite of the point.
 
 **How to tell the two apart.** A real constraint of hers has a reason attached that survives the
 tooling improving — *the pushpin must not be toggled MID-RUN* is one, because it silently
-re-anchors every later capture, and that stays true forever; the test enforcing it stays. *She
-sets it once by hand* is not a reason, it is a description of what happened when nothing else
-would do it.
+re-anchors every later capture, and that stays true forever; the test enforcing it stays. *It was
+set once by hand* is not a reason, it is a description of what happened when nothing else would
+do it.
 
-**And it is the same failure as § *Do not grab the first artifact that vaguely matches*, one level
-up:** there, availability turned a stale file into an algorithm; here, a sentence of hers spoken
+**And it is the same failure as § *Do not grab the first artifact that vaguely matches*, one
+level up:** there, availability turned a stale file into an algorithm; here, a sentence spoken
 about one bad session turned into a standing prohibition.
 
 ### Grab the RESIDUALS. The structured parse is not everything on the page
 
-**Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit
-happens we need to grab residuals all the time."*
+**So much structurally weird material comes through that residuals have to be grabbed all the
+time.**
 
 **The worked case, and it is why this is a rule.** `genimerge.genipage` parses a path as the
 anchors inside `span.segment > span.name`, which is correct and is what makes the join exact.
@@ -2568,12 +2557,7 @@ and measured **0 of 200 pages** as having a description. Balancing `<div>` depth
 
 ### Always write the English label next to a property or item ID
 
-**Emma, 2026-08-15:** *"I have no fucking clue what any property or Q ID property
-name is or what Q ID is. So you need to actually provide the English labels with
-them."*
-
-So `P5056` alone is not a thing anyone can read. Write **`P5056` *patronym or
-matronym***, **`Q110874` *patronymic***, **`P7338` *regnal ordinal***. This applies
+**A bare property or item ID is unreadable.** Write **`P5056` *patronym or matronym***, **`Q110874` *patronymic***, **`P7338` *regnal ordinal***. This applies
 in chat, in reports, in queue items and in commit messages — everywhere a bare ID
 would otherwise appear.
 
@@ -2584,18 +2568,15 @@ it is **Austria–Hungary**, which produced 1,406 fake Japanese isolates.
 
 ### Queue items are BULLET POINTS, never numbered or lettered
 
-**Emma, 2026-08-15, and the reasoning is hers:** *"they should be bullet points
-because you should be blasting through them. Having something like A, B, C, or
-whatever kind of implies durability, because you can't easily just remove A, so
-that is actually detrimental."*
+**Queue items are bullet points because they are meant to be blasted through.** `A`, `B`, `C`
+implies durability, because `A` cannot easily be removed, and that is detrimental.
 
 A number is a promise that the item will still be there. It makes deletion feel
 like renumbering everything else, so items accumulate instead of being blasted
 through — which is exactly what happened to `queue.md` twice in one day. An
 unnumbered item can be deleted the moment it is done and nothing else moves.
 
-**This also killed the `8a`/`8b` sub-lettering** and the `Task A/B/C` labels I
-invented for her three priorities, which she had never used.
+**This also kills `8a`/`8b` sub-lettering** and invented `Task A/B/C` labels.
 
 ### Wikidata properties and items
 
