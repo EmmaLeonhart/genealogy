@@ -41,9 +41,9 @@ __all__ = [
 #: how half of one gets lost. `derive-facts.py` originally wrote only raw, year
 #: and modifier — so `BET 1400 AND 1410` kept its start, reported "between", and
 #: **dropped 1410 entirely**, and a day-precision date was indistinguishable from
-#: a bare year. Emma, 2026-08-12: *"you basically completely bullshit most of the
-#: dates and have been persistently ignoring the actual properties of the dates
-#: … the before, after, between, and about."*
+#: a bare year. The actual properties of a date -- before, after, between and
+#: about -- were being persistently ignored, and most of the dates were wrong
+#: as a result.
 DATE_FIELDS = ("raw", "iso", "precision", "year", "month", "day", "year_end", "modifier")
 
 PRECISION_YEAR = 9

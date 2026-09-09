@@ -108,7 +108,7 @@ class PatronymLink:
 def patronymic_chain(name: str) -> list[PatronymLink]:
     """Split a chained patronymic into one `P5056` link per generation.
 
-    Emma's worked example, `name modelling.txt`, and this reproduces it exactly:
+    The worked example in `name modelling.txt`, reproduced here exactly:
 
         Abisha III ben Phinhas ben Yittzhaq ben Shalma
           P5056 ben Phinhas    P144 Phinhas ben Yittzhaq ben Shalma   P1545 1

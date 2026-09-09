@@ -1,8 +1,7 @@
 """English labels for QIDs and property IDs, fetched once and cached on disk.
 
-Emma, 2026-08-11, looking at a raw Wikidata item: *"the Wikidata stuff is not
-human-readable at all. You absolutely need to fetch the English-language labels
-of the stuff it's referencing for both the properties and these other things."*
+A raw Wikidata item is not human-readable at all: the English labels of everything
+it references have to be fetched, for the properties as well as the items.
 
 **Why this is allowed when `CLAUDE.md` says never to query Wikidata.** Same
 carve-out `scripts/fetch-labels.py` already documents: the download walked

@@ -1,7 +1,6 @@
 """What the editing pipeline reads, and nothing else — the merge's input filter.
 
-**Emma, 2026-09-03:** *"realistically anything that doesn't go into the editing pipeline isn't
-needed in the synoptic tree."*
+**Anything that does not go into the editing pipeline is not needed in the synoptic tree.**
 
 **Measured, and it is what makes the tree buildable in Actions:**
 
@@ -33,8 +32,8 @@ default that silently removed it would break them for a benefit only CI needs. W
 it is those two moving off the merged tree, after which the flag could become the default.
 
 **Bio QIDs are NOT lost, checked rather than assumed.** `scripts/extract-bio-qids.py` reads
-`find_exports()` — the raw corpus — not the merged tree, so her Wikidata links in Geni *About Me*
-survive whatever this drops. `exports/` is never touched by any of this.
+`find_exports()` — the raw corpus — not the merged tree, so the Wikidata links in Geni
+*About Me* survive whatever this drops. `exports/` is never touched by any of this.
 """
 
 from __future__ import annotations

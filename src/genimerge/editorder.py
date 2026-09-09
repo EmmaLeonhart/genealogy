@@ -1,8 +1,7 @@
 """Run edit objects in an order their own `requires` allows.
 
-**Emma's design, 2026-08-23, in her words:** *"it randomly selects an edit object,
-sees if its requirements are present, if they are then it runs, if no then randomly
-select and run another one."*
+**The design, 2026-08-23:** an edit object is selected at random; if its requirements
+are present it runs, and if not another is selected at random and run instead.
 
 That is a randomised topological execution, and randomised is a feature rather than a
 concession: nothing about the batches implies an order beyond `requires`, so imposing
@@ -59,9 +58,9 @@ def runnable_order(edits: Iterable[dict], *, seed: int | None = None,
     dependencies sat unnoticed until 2026-08-23: the batches looked ordered
     because nothing checked.
 
-    **The pick is random, from the set that is ready.** Emma's design is *"randomly
-    selects an edit object, sees if its requirements are present, if they are then it
-    runs, if no then randomly select and run another one"* -- and a first
+    **The pick is random, from the set that is ready.** The design is to select an
+    edit object at random, run it if its requirements are present, and otherwise
+    select another at random -- and a first
     implementation did exactly that literally, rescanning every pending edit on every
     pick. That is O(n^2): over the real 284,125 objects it ran for **ten minutes
     without finishing**. Choosing at random from the ready set gives the same

@@ -1,10 +1,9 @@
 """The offline pieces that outlived ``reconcile``.
 
-``reconcile`` was deleted on 2026-08-15 on Emma's instruction. It held a live
-Wikidata client and searched for people **by name**, which she had ordered
-removed on 2026-08-12: *"no fucking clue why there's a fuzzy matcher that sounds
-like something you made with zero consent from me."* The whole module went,
-command and tests included.
+``reconcile`` was deleted on 2026-08-15 by instruction. It held a live Wikidata
+client and searched for people **by name**, and that fuzzy matcher had already
+been ordered removed on 2026-08-12 as something nobody had asked for. The whole
+module went, command and tests included.
 
 Four things in it never touched the network and three other modules still need
 them, so they live here rather than being deleted alongside. Nothing in this

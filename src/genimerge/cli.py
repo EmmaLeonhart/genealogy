@@ -143,9 +143,9 @@ def _cmd_merge(args: argparse.Namespace) -> int:
         print(f"no .ged files given and none found under {ws.exports_dir}", file=sys.stderr)
         return 1
 
-    # **`--also` is for a GENERATED input that must not be corpus.** Emma, 2026-09-05, on the
-    # manual parental zipper correspondences: *"generated into a gitignored gedcom that is part
-    # of the synoptic tree merge"*. A file under `exports/` is corpus, which is two things this
+    # **`--also` is for a GENERATED input that must not be corpus.** The manual parental zipper
+    # correspondences are generated into a gitignored GEDCOM that is part of the synoptic tree
+    # merge. A file under `exports/` is corpus, which is two things this
     # is not: it is untracked (and `tests/test_repo_invariants.py` compares `git ls-files`
     # against `find` over that directory), and it would be counted as an export by
     # `inventory`'s overlap figures and `density`'s presence counts, both of which divide by how
@@ -818,8 +818,8 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
 def _cmd_name_links(args: argparse.Namespace) -> int:
     """Propose P735/P734 links to name items that already exist. Fully offline.
 
-    Emma, 2026-08-15, asked what this command was for and then chose *"make it
-    offline, keep the logic"*. It had three live touchpoints, all replaced:
+    Asked what this command was for, the ruling on 2026-08-15 was to make it
+    offline and keep the logic. It had three live touchpoints, all replaced:
 
     * the linked population came from `matched_all.csv`, which `expand` wrote and
       nothing writes now -> the P2600 map, `out/wikidata/p2600-all.tsv`;

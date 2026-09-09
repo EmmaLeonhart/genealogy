@@ -38,7 +38,7 @@ EVENT_TAGS = {
 class Name:
     """One ``NAME`` line. People routinely have several."""
 
-    #: the whole GEDCOM name, e.g. ``"Emma /Leonhart/"``
+    #: the whole GEDCOM name, e.g. ``"Anna /Olsdatter/"``
     full: str
     given: str = ""
     surname: str = ""

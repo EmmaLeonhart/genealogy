@@ -200,8 +200,8 @@ def _post_merge_last(paths: list[Path], root: Path) -> list[Path]:
         (tail if POST_MERGE_DIR in parts[:-1] else head).append(path)
 
     # **Inside the privileged directory, NEWEST wins — so order by mtime, not name.**
-    # Two exports can be seeded on the same person: one taken before Emma merged a
-    # duplicate and one after. Path order puts them in an arbitrary order, and worse, a
+    # Two exports can be seeded on the same person: one taken before a duplicate was
+    # merged on Geni and one after. Path order puts them in an arbitrary order, and worse, a
     # descriptive suffix reverses it -- `…141824-refresh.ged` sorts BEFORE
     # `…141824.ged`, because `-` is 0x2D and `.` is 0x2E. The refresh would have lost
     # to the very file it supersedes.
