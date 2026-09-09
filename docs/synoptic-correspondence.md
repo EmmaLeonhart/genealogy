@@ -1,9 +1,8 @@
 # How the synoptic correspondence is actually made
 
-**Emma, 2026-08-25:** *"Put into the queue also an analysis of how the synoptic tree is actually
-made."* And the framing that makes this a survey rather than a blocker: *"I'm going to treat the
-synoptic tree as though it is perfect, and we are going to address whether the synoptic tree is
-well functioning later."* So nothing waits on this; it is a description of what
+**An analysis of how the synoptic tree is actually made**, asked for 2026-08-25. The framing
+that makes it a survey rather than a blocker: the synoptic tree is to be treated as though it is
+perfect, and whether it functions well is a question for later. So nothing waits on this; it is a description of what
 `scripts/build-synoptic-correspondence.py` does, and a list of the places it is doing something
 nobody chose.
 
@@ -14,7 +13,7 @@ Measured by running it, 2026-08-31.
     565,348 distinct (qid, geni) pairs
     561,999 QIDs · 564,931 Geni profiles
       3,225 QIDs carrying more than one Geni id   — ordinary, P2600 is multi-valued
-        410 Geni profiles claiming more than one QID — contradictions, hers to settle
+        410 Geni profiles claiming more than one QID — contradictions, settled by hand
 
 `reports/synoptic-correspondence.tsv` is the union; `reports/synoptic-conflicts.tsv` is the 410.
 
@@ -25,7 +24,7 @@ Measured by running it, 2026-08-31.
 | `wikidata-p2600` | **518,941** | Wikidata's own `P2600` statement. Not our inference at all. |
 | `zipper` | **45,898** | Our positional join, all eight rounds. Inference, with provenance. |
 | `structural` | 7,606 | The relationship walk: both sides have a person in the same slot. |
-| `geni-about-me` | 405 | **Her own QID links written into Geni bios.** Her statement of identity. |
+| `geni-about-me` | 405 | **QID links written by hand into Geni bios.** A direct statement of identity. |
 | `tanba-roster` | 181 | Hand-built clan roster. |
 | `geni-wikidata-pairs` | 126 | |
 | `izumo-sister-roster` | 121 | |
@@ -37,14 +36,14 @@ this file and treating a pair as one thing is flattening that distinction — th
 is what keeps it, and it should never be dropped.
 
 **The long tail is not noise.** 405 + 181 + 126 + 121 + 111 = 944 pairs that no automated method
-found, most of them from her own hands. `geni-about-me` in particular is the only source here that
+found, most of them hand-made. `geni-about-me` in particular is the only source here that
 names people whether or not any inference reaches them.
 
 ## The `date_refuted` filter, and what it deliberately does not touch
 
 **235 structural pairs dropped.** A pair like `Eufemia von Hirscher` 1166–1229 against
-`Margaret of Nuremberg` 1359–1390 is not a judgement call — Emma, 2026-08-24: *"All these ones
-look easy."*
+`Margaret of Nuremberg` 1359–1390 is not a judgement call; cases like it were ruled easy on
+2026-08-24.
 
 **It refutes OUR OWN inference and nothing else.** A `wikidata-p2600` pair whose dates disagree is
 Wikidata stating an identifier we do not get to overrule; that is a disagreement to record, not a
@@ -78,7 +77,7 @@ instrument.
   places that have to agree about a separator, which is the exact shape of the ` | ` bug
   `CLAUDE.md` § *Our side could never have two children* records.
 - **410 Geni profiles claim more than one QID and the file records them without resolving them.**
-  That is right — they are hers to settle — but nothing downstream is required to look at
+  That is right — they are settled by hand — but nothing downstream is required to look at
   `synoptic-conflicts.tsv`, so a consumer of the correspondence gets both pairs silently.
 - **No source is weighted.** A `zipper` round-8 pair and a `wikidata-p2600` pair are the same row
   with a different `sources` value, and any consumer that does not read that column treats an

@@ -1,9 +1,8 @@
-# Emma's dictation, 2026-08-26 — the daily QuickStatements algorithm
+# The dictation of 2026-08-26 — the daily QuickStatements algorithm
 
-**Verbatim. Do not summarise this file, do not tidy it, do not reformat it.** Her standing
-instruction, 2026-08-25: *"Really save my dictation somewhere verbatim so you can't summarize it
-and have to use it directly."* `docs/daily-algorithm.md` is a reading of this and loses in any
-disagreement.
+**Verbatim. Do not summarise this file, do not tidy it, do not reformat it.** Dictation is saved
+verbatim so it cannot be summarised and has to be used directly. `docs/daily-algorithm.md` is a
+reading of this and loses in any disagreement.
 
 ---
 

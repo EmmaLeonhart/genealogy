@@ -1,7 +1,7 @@
 # Possible future modelling
 
 **Everything this project has decided *not* to model, with why, and what would
-unblock it.** Created 2026-08-14 at Emma's request, alongside the batches that
+unblock it.** Created 2026-08-14 on request, alongside the batches that
 *are* being generated, so that a decision to defer is recorded rather than
 becoming a silent gap.
 
@@ -17,7 +17,7 @@ left out of `scripts/build-orderlife-batch.py`.
 
 | property | decision | what would unblock it |
 | --- | --- | --- |
-| **P59 Cladoplast of** | **Not mapped, not emitted.** See the section below — the property and the object are two different things and an earlier draft of this file conflated them. | the **object** existing on Wikidata, which is Emma's call and is not being made now |
+| **P59 Cladoplast of** | **Not mapped, not emitted.** See the section below — the property and the object are two different things and an earlier draft of this file conflated them. | the **object** existing on Wikidata, which is a decision not being made now |
 | **P12 Occupation** (monolingual text) | **Dropped.** *"The only monolingual text that we just don't do is the P12 and P13 occupation and residence."* | a decision to reverse it; the technical blocker would be normalising free text to `P106` items |
 | **P13 Residence** (monolingual text) | **Dropped**, same instruction | as above, target would be `P551` |
 | P49 ordinal within year, P50 ordinal within month, P51 ISO week number, P52 ISO weekday number | Not mapped — this is `calendar-lib`, not genealogy | nothing; there is no Wikidata target and no reason to invent one |
@@ -33,16 +33,15 @@ rule.
 
 ## P59 Cladoplast: the property and the object are different things
 
-**Emma, 2026-08-14, correcting an earlier draft of this file:** *"you get that
-the Cladoplast property is not the Cladoplast object. Those are different things.
-The property doesn't exist on Wikidata and probably never will. The object might
-exist on Wikidata someday but it would be really weird if it existed right now."*
+**The Cladoplast property is not the Cladoplast object**, and an earlier draft of this
+file conflated them. The property does not exist on Wikidata and probably never will. The
+object might exist someday, and it would be strange for it to exist now.
 
 - **The property** is order.life's `P59` "Cladoplast of", datatype `external-id`,
   formatter `https://wikidata.org/wiki/$1` — so **its values are Wikidata QIDs**.
   There is no Wikidata property for this and there is not expected to be one.
 - **The object** would be a Wikidata item for the concept *cladoplast*. That is
-  the thing that might exist one day. Emma is not making it now.
+  the thing that might exist one day. It is not being made now.
 
 **What P59 actually links to is taxa**, e.g. `Corticus → Q2998108`,
 `Kenichthys campbelli → Q3814561`, `Rhizodontiformes → Q3934109`,
@@ -112,7 +111,7 @@ Assyria`** are the only two wives in 99 family records across the priestly tree.
 Both are **descriptions, not names** — the field holds a relationship.
 
 **Creating items labelled that would invent two people.** If either is ever
-wanted she is a qualifier or a described statement, never an item. See
+wanted, it is a qualifier or a described statement, never an item. See
 `reports/samaritan-marriages.md`.
 
 ## Contradiction resolution
@@ -136,8 +135,7 @@ batch containing one is worth reading closely.
 
 From `todo.md`: creating Wikidata items for **surnames that have none**, so
 people can be linked to them, and queued edits adding name links to people who
-already have items. Named by Emma as one of the harder pieces from the outset.
-Not started.
+already have items. Named as one of the harder pieces from the outset. Not started.
 
 ## The Itamar spine's invented generation count
 
@@ -150,12 +148,12 @@ independently confirming it counts offices.
 
 **The Itamar line's generation depth is not recorded anywhere.** The file
 currently asserts a count no source makes, and a single "distance not recorded"
-link between Itamar and Shalma is the honest replacement. Not applied — Emma has
-not said which way to take it.
+link between Itamar and Shalma is the honest replacement. Not applied — which way to
+take it is undecided.
 
 ## Silent drops in the relationship pass — measured 2026-08-14
 
-**These were added by Claude without being asked, and Emma caught them.** Both are
+**These were added by Claude without being asked, and were caught in review.** Both are
 in `scripts/build-orderlife-batch.py`. The numbers, over 71,647 parent edges where
 both ends carry a Wikidata item:
 
@@ -171,9 +169,8 @@ Nakui no Atai → Yukitei no Atai → Yamato no Tehiko — plus `Ante Adam →
 Y-Chromosomal Adam`. A guard on one *column* deleted fourteen generations of
 *relationships*.
 
-**`Q1` in the sex column is an error, and it is a fixable one.** Emma,
-2026-08-14: *"Q1 is not a third gender, it is an error, but it is an error that
-can be clearly fixed on all of the items that have it."* An earlier draft of this
+**`Q1` in the sex column is an error, and it is a fixable one** — not a third gender,
+and clearly fixable on every item that carries it (2026-08-14). An earlier draft of this
 file called it a third value in order.life's scheme because `Q1`'s *label* is
 "Aster, Goddess of Alpha" — reading what the item is instead of what the column
 means. It is a bad pointer, not a category.
@@ -203,7 +200,7 @@ duplicate claims on live items.
 So the **5,108** relationships currently in the batch are what survived a check
 that could not run on a fifth of the candidates.
 
-Two ways out, and it is Emma's call:
+Two ways out, and the choice between them is not made here:
 
 1. **Expand the `wikidata-download` seed set** to cover those 14,842 QIDs and
    re-run the comparison. Safe, and more work. It is also the same fix the
@@ -211,10 +208,9 @@ Two ways out, and it is Emma's call:
    are invisible to the store for the same reason.
 2. **Emit them unchecked** and accept duplicate-claim risk.
 
-**The general point, which matters more than either number.** Emma, 2026-08-14:
-*"I find it extremely weird how it is that you have a tendency to try to do
-exception handling for stuff that I do not consider to be even necessarily
-errors."* A skip that is never counted reads as "there was nothing there". Every
+**The general point, which matters more than either number.** Exception handling keeps
+getting written for things that are not errors (2026-08-14). A skip that is never counted
+reads as "there was nothing there". Every
 guard that drops data must report how much it dropped, in the run output, or it
 is not a guard — it is a silent narrowing of the answer.
 
@@ -222,7 +218,7 @@ is not a guard — it is a silent narrowing of the answer.
 
 order.life holds **80 `P1317` claims on 20 people**, in its own time format.
 `P1317` is a real Wikidata property with the same meaning, so mapping it would be
-straightforward. Emma's call when shown the size: **skip it.** 80 claims on 20
+straightforward. The call when the size was known: **skip it.** 80 claims on 20
 people does not earn a date-format port, and `genimerge.dates` exists for GEDCOM
 dates rather than order.life's.
 
