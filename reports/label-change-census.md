@@ -22,7 +22,7 @@ So the 29,743 differences are not a backlog. **1,590 items carry no label at all
 — that is the addable population, and it is 3.6% of the items we touch.
 
 **A difference is also not evidence that ours is better.** These items were largely labelled by
-other editors from other sources; `CLAUDE.md` § *Emma edits the tree and the items BY HAND* adds
+other editors from other sources; `CLAUDE.md` § *The tree and the items are edited BY HAND* adds
 that some of the differences are her own corrections, where the stale half is ours. Nothing here
 should be read as 29,743 wrong labels on Wikidata.
 

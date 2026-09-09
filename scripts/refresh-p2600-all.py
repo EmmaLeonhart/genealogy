@@ -25,8 +25,7 @@ missing most of the work of three weeks.
 **What it did NOT fix, and the difference matters.** The Izumo roster's 204 QIDs resolve to
 **2** Geni ids both before and after. That is not staleness: only 2 of those 204 items carry a
 `P2600` on live Wikidata at all. This docstring asserted the opposite before the refresh was
-run — a cause assumed rather than tested, which is exactly what `CLAUDE.md` § *CHECK before you
-alarm her* forbids.
+run — a cause assumed rather than tested, which is exactly what `CLAUDE.md` § *CHECK before raising an alarm* forbids.
 
 **Sixteen partitioned queries, by MD5 prefix**, which is `overlap.PARTITIONS`. That is the whole
 politeness story: a handful of large queries rather than one that times out or half a million

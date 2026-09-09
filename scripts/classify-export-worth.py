@@ -11,7 +11,7 @@ So three qualifying categories, and everything else goes to `geni-scraping/`:
 * **Scandinavian / Nordic** --- *"if there's particularly very large paths that are
   specifically related to Scandinavian people, like the Norwegian, Swedish academics we
   were doing for the Rogaland people, these ones are pretty valuable."* This is the same
-  reasoning as CLAUDE.md § *The practical goal is EMMA densely linked*: Norway and Sweden
+  reasoning as CLAUDE.md § *The practical goal is ONE DENSE NEIGHBOURHOOD*: Norway and Sweden
   are where she is linked, so the paths are short and the links land near her.
 * **Popes** --- named explicitly, twice.
 * **Weird and far out there** --- her phrase, and she confirmed the three groups I put to

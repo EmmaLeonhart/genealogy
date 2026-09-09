@@ -119,7 +119,7 @@ subgraph.
 
 **The 18 spine couples are the deterministic part** — chosen, ordered, one per run. Everything else
 is drawn at random from the subgraph. The random work is not filler: it thickens the neighbourhood
-the spine runs through, which is what `CLAUDE.md` § *The practical goal is EMMA densely linked*
+the spine runs through, which is what `CLAUDE.md` § *The practical goal is ONE DENSE NEIGHBOURHOOD*
 asks for.
 
 ## Lower priority, named as such

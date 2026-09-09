@@ -22,8 +22,7 @@ of a ledger refresh and a batch commit, either of which can fail and take the si
 Her verdicts come back in `reports/emma-judgments.tsv`. `SAME` and `DIFFERENT` retire a case; an
 `UNSURE` is *I cannot tell from this* and comes back on a later run with more evidence.
 
-**ALWAYS REGENERATE BEFORE HANDING IT OVER.** `CLAUDE.md` § *Emma edits the tree and the items BY
-HAND, continuously* --- the committed HTML is a photograph, and a card she has already answered
+**ALWAYS REGENERATE BEFORE HANDING IT OVER.** `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously* --- the committed HTML is a photograph, and a card she has already answered
 costs her a turn.
 
 **The check that catches a broken build is not the count, it is the page.** Three separate bugs

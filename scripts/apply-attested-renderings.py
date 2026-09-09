@@ -70,7 +70,7 @@ BY_RULE_PREFIX = "by rule"
 
 #: Her own corrections, which outrank both the engine and the attestation. She looked `Stephen`
 #: up and gave `史蒂芬`; Wikidata attests `斯蒂芬` 26 times. Both are standard and hers wins,
-#: because `CLAUDE.md` § *Emma edits the tree and the items BY HAND* makes a value she has
+#: because `CLAUDE.md` § *The tree and the items are edited BY HAND* makes a value she has
 #: supplied a decision rather than drift.
 HERS = {
     "Stephen": {"zh": "史蒂芬"},

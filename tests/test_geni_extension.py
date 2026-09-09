@@ -130,7 +130,7 @@ def test_exports_are_never_concurrent_and_never_cancellable():
     Emma, 2026-08-18: *"There's no way that you can do an export concurrently. That isn't my
     decision thats geni."* And on cancelling: *"you think you can kill a geni export read the
     fucking docs you can't."* A control implying either is possible offers a choice that cannot
-    be carried out, which `CLAUDE.md` § *She answers `AskUserQuestion`* calls worse than a
+    be carried out, which `CLAUDE.md` § *Only `AskUserQuestion` gets answered* calls worse than a
     missing option.
     """
     background = (EXT / "background.js").read_text(encoding="utf-8")

@@ -161,7 +161,7 @@ Her other 08-16 instructions, each against the commit or file that answers it:
 | --- | --- |
 | Exhaust Swedish, then Finnish and Danish academics | five Nordic batches; `reports/nordic-isolates.csv`. Superseded the same night by her own *"we're kind of hitting diminishing returns"* |
 | Rogaland and Stavanger isolates, all of them | `reports/rogaland-stavanger-isolates.csv` |
-| The practical goal is her own dense neighbourhood | `CLAUDE.md` § *The practical goal is EMMA densely linked* |
+| The practical goal is her own dense neighbourhood | `CLAUDE.md` § *The practical goal is ONE DENSE NEIGHBOURHOOD* |
 | Japanese and Chinese researchers; how many Chinese isolates | measured; **closed by her** — *"we figured it out, and it's pretty simple"* |
 | Bridge people: how many, how many held, how many overlap | `reports/path-bridge-targets.csv`; 511 on more than one path and absent |
 | Midpoints, not neighbours of what we hold | `reports/path-midpoint-seeds.csv` |
@@ -171,7 +171,7 @@ Her other 08-16 instructions, each against the commit or file that answers it:
 | Samaritan qualifiers matter; read Pummer via Wikipedia | `reports/wikidata-samaritan-succession.json`, `P1545` *series ordinal* on 18 of 21 |
 | *"we are right, and Wikidata is wrong for the father"* | `scripts/build-abram-father-fix.py`, 2 edits |
 | Nothing is blocked; 1 September is a start date | `CLAUDE.md` § *A start date is not a blocker* |
-| Not replying means she is content | `CLAUDE.md` § *Emma not replying means she is content* |
+| Not replying means she is content | `CLAUDE.md` § *NO REPLY MEANS CONTENT* |
 | `NN` to `mul`, describe the locals, no `remove_label` | `reports/wikidata-nn-labels.json`, 3,525 edits (`f8950e1`) |
 | `Private` and `NN` are the same population | `CLAUDE.md`; the placeholder batch already labels both |
 | Delete the byte-identical duplicate export | `95591e7` |

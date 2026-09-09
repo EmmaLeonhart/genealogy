@@ -40,7 +40,7 @@ column by construction.
 ## Freshness
 
 The diff is only as current as `out/model-vs-reality-items.json`. Its age is printed and refused
-beyond a day, because `CLAUDE.md` § *Emma edits the tree and the items BY HAND, continuously*
+beyond a day, because `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously*
 means a stale diff proposes re-adding what she has already done.
 
 Writes `reports/wikidata-from-diff.qs`. Queued, never run — editing starts 2026-09-01.

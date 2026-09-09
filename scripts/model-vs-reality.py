@@ -39,7 +39,7 @@ difference is reported and nothing more.
 **Freshness matters and is enforced.** `--refetch` pulls every ledger item again through
 `genimerge.wikidata.full_entities`, the sanctioned batched client. Without it the cached
 `out/model-vs-reality-items.json` is used and its age is printed, because
-`CLAUDE.md` § *Emma edits the tree and the items BY HAND, continuously* means a stale snapshot
+`CLAUDE.md` § *The tree and the items are edited BY HAND, continuously* means a stale snapshot
 produces a diff that proposes undoing her work.
 
 Writes `reports/model-vs-reality.tsv` and prints the pattern summary.

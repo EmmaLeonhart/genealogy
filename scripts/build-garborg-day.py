@@ -605,7 +605,7 @@ def manual_p2600_lines(priority_qids=()):
     **"found not to be present" is checked LIVE**, in one batched request, not against
     `out/wikidata/p2600-all.tsv`. That file was last refreshed 2026-08-30 and she adds `P2600`
     statements by hand continuously; a stale check would keep re-proposing pairs she has already
-    made. `CLAUDE.md` § *Emma edits the tree and the items BY HAND* is explicit that a snapshot
+    made. `CLAUDE.md` § *The tree and the items are edited BY HAND* is explicit that a snapshot
     goes stale in minutes.
 
     **No reference.** Emma, 2026-08-31: *"geni ids do not get sources you retard"* -- an `S2600`
@@ -1266,7 +1266,7 @@ P2600_LEAD_CAP = 40
 #: four scripts below are the ones it adds afterwards.
 #:
 #: **The actively supported set is `hi`, `ar`, `ru`, `el`** — `build-four-script-labels.CODES`,
-#: 151,320 labels, § *HER RULINGS, 2026-09-01* — read from that module rather than restated, so
+#: 151,320 labels, § *THE RULINGS OF 2026-09-01* — read from that module rather than restated, so
 #: adding a language there moves it up this list for free.
 LABEL_LANGUAGE_ORDER = ("en", "mul", "ja", "zh", "ko")
 

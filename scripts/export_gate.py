@@ -12,8 +12,7 @@ reading a report that described it as a gate she had struck out: *"I didn't tell
 relatives."*
 
 She is right and the distinction matters for the record: a question whose options share a wrong
-premise does not become her decision because she answered it. `CLAUDE.md` § *She answers
-`AskUserQuestion`* says every option must be one she could actually pick; it needs the other half
+premise does not become her decision because she answered it. `CLAUDE.md` § *Only `AskUserQuestion` gets answered* says every option must be one she could actually pick; it needs the other half
 too -- **the axis is part of the question, and offering only one is choosing it for her.**
 
 ## Why this is the mirror of a rule that already existed

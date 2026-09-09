@@ -1,15 +1,13 @@
 # The daily QuickStatements algorithm
 
 **`docs/dictation/2026-08-26-daily-algorithm.md` is the authority.** This file is a reading of
-it and loses in any disagreement. Emma, 2026-08-26, on why the spec is dictated so rigidly:
-*"The order itself is structurally rigid because it depends on certain things being capable of
-being referenced in certain situations."*
+it and loses in any disagreement. The order is structurally rigid because it depends on certain
+things being referenceable in certain situations.
 
 ## The weirdness is the design. Do not sand it off
 
-**Emma, 2026-08-26:** *"The algorithm is a bit weird, and the weirdness isn't something to be
-sanded off and tried to be made sensible. The weirdness exists because we are structurally forced
-into the weirdness by the nature of the API that we're using."*
+**The algorithm is weird, and the weirdness is not to be sanded off into something sensible.**
+It exists because the API structurally forces it.
 
 The output will contain arrangements that look wrong and are not:
 
@@ -17,22 +15,21 @@ The output will contain arrangements that look wrong and are not:
   to none of those children**.
 * A person with two parents **who are not linked to each other as spouses**.
 
-Her words: *"These things aren't how things should work. They're not sensible, but specifically,
-they are very intentional."* They are what falls out of a path-dependent order optimised for
+These are not how things should work and they are not sensible, and they are very
+intentional. They are what falls out of a path-dependent order optimised for
 **the fastest creation possible within QuickStatements batches**. A later day closes them. Do not
 add a pass that "fixes" them mid-run, and do not treat one as a bug report.
 
-## Step 0 — read her Wikidata contributions, then diff against the ideal
+## Step 0 — read the account's Wikidata contributions, then diff against the ideal
 
-1. **Check her Wikidata profile for everything she has edited**, and add it to the ledger.
-   `Special:Contributions/日巫女`, never a bulk download — `CLAUDE.md` § *Emma edits the tree and
-   the items BY HAND, continuously*, and git records what a batch *offered*, not what exists.
+1. **Check the Wikidata account for everything it has edited**, and add it to the ledger.
+   `Special:Contributions/日巫女`, never a bulk download — `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously*, and git records what a batch *offered*, not what exists.
 2. **Take those out**, and check the actual state of what remains against **the ideal state**.
 
-**The ideal state is what Wikidata already holds plus what Geni supports** — her ruling,
-2026-09-01. It used to read *"the union of the synoptic tree and the Geni tree"*, which is a
-tautology if *synoptic* means the Geni union and a redundancy if it means the full union; neither
-was what she meant. Not the Geni tree alone
+**The ideal state is what Wikidata already holds plus what Geni supports** — ruled 2026-09-01.
+It used to read *"the union of the synoptic tree and the Geni tree"*, which is a tautology if
+*synoptic* means the Geni union and a redundancy if it means the full union; neither was the
+thing meant. Not the Geni tree alone
 and not Wikidata's current contents: the model says what each item *should* hold, and the diff
 against reality says what is emittable. `scripts/model-vs-reality.py` is the existing half of
 this; its `missing` column is the emittable set and its `CONFLICT` column goes out beside what is
@@ -49,17 +46,15 @@ real API limit is that **two items created in the same batch cannot point at eac
 existing item may point at a new one and a new one at an existing one. Everything in this order
 follows from that.
 
-## Step 1 — creation of individuals. REVISED 2026-08-26, after she stopped a run
+## Step 1 — creation of individuals. REVISED 2026-08-26, after a run was stopped
 
-**She terminated a 50-creation run partway through**: *"I had to terminate that round early
-because of the unbounded behaviour."* The cause was the old step 1b — five couples with their
-**entire** children, one of which had eleven — which supplied 28 of the 50.
-*"Creating individuals with all of their children is just crazy talk."*
+**A 50-creation run was terminated partway through, for unbounded behaviour.** The cause was
+the old step 1b — five couples with their **entire** children, one of which had eleven — which
+supplied 28 of the 50. Creating individuals with all of their children is not a thing to do.
 
-**The numbers she dictated were 10s. They have been doubled twice since** — 2026-09-05,
-*"update it to batches double the older size on all things"*, and 2026-09-07, *"change it so
-that the daily batch is twice as large in all of the things it does... all numbers doubled
-basically"*. The shape below is hers; the figures are the current constants, which live in
+**The dictated numbers were 10s. They have been doubled twice since** — 2026-09-05 and
+2026-09-07, both times every per-run number in the repo at once. The shape below is the
+specified one; the figures are the current constants, which live in
 `scripts/build-garborg-day.py` and are the authority on their own values.
 
 | | per run | constant |
@@ -70,29 +65,27 @@ basically"*. The shape below is hers; the figures are the current constants, whi
 | **free parents** — half-attached people, `20 + half the remainder` | uncapped by design | `FREE_PARENTS_FREE` |
 | **the spine**, one step on EACH of the two paths | outside every cap | — |
 
-**Spouses have no bucket of their own.** Her first version said *"10 parents, 10 spouses, 10
-children"*; she revised it in the same message — *"spouses are only added through the 10
-parents and 10 children"*. They arrive two ways, both subordinate to children: as the **free
-parent** of a child just added (which is that child's other parent, i.e. somebody's spouse), and
-as the **substitution** when a picked person's marriage has no child left. Her words: *"spouses
-are going to be added at the same rate as children, but they're added in a way that is, in a
-sense, subordinate to the adding of children. The only reason we substitute in childless
-marriages is just because, without substituting in childless marriages, there's no way to access
-spouses from childless marriages."*
+**Spouses have no bucket of their own.** The first version of the spec gave them one and it was
+revised in the same message: spouses are added only through the parents and children buckets.
+They arrive two ways, both subordinate to children: as the **free parent** of a child just added
+(that child's other parent, i.e. somebody's spouse), and as the **substitution** when a picked
+person's marriage has no child left. So spouses are added at the same rate as children, in a way
+subordinate to them, and the substitution exists only because without it a childless marriage
+gives no route to its spouses at all.
 
-**The free-parent budget is a formula, not a cap**: *"10 free parents plus half of the
-remaining."* Of the eligible half-attached people, the first `FREE_PARENTS_FREE` come free and
+**The free-parent budget is a formula, not a cap**: ten free parents plus half of the
+remainder. Of the eligible half-attached people, the first `FREE_PARENTS_FREE` come free and
 half of whatever is left beyond that comes too — 20 since the 2026-09-07 doubling. Two earlier readings were wrong — a flat ceiling of 40 (mine), and
 scoping it to this run's children alone, which gave 5 and under-served the backlog.
 
 **The spine advances on BOTH paths, one step each.** `paths/charlemagne-to-arne-garborg.tsv` and
 `paths/bergitte-to-emma.tsv`. Walking a concatenation advances only the first, which is how the
-line down to her stayed at **0 of 16 steps** — the *"critical path going to me"* she doubted the
-last run produced. It had not.
+second path stayed at **0 of 16 steps** while appearing to run.
 
-**Her hand identifications are folded into the ledger**, because they are the only record of an item
-that carries no `P2600` yet. Without it the spine walk hit step 1 of the Bergitte path — **Emma
-herself** — and emitted a `CREATE` that would have minted her a second item beside `Q232803`.
+**The hand identifications are folded into the ledger**, because they are the only record of an
+item that carries no `P2600` yet. Without it the spine walk hit step 1 of the Bergitte path — a
+person who already has `Q232803` — and emitted a `CREATE` that would have minted a second item
+beside it.
 
 ## Step 2 — creation of names
 
@@ -110,8 +103,8 @@ run. That is the sequence working, not a gate.
 | `P3373` *sibling* pairs | **10** |
 | `P26` *spouse*, `P22` *father*, `P25` *mother*, `P40` *child* between existing items | **all of them** |
 
-*"We do 10 sibling pair relationships and all of the spouse, parent, etc., relationships between
-existing items… Because siblings is really massive, these ones are not."*
+Ten sibling pairs and all of the spouse, parent and child relationships between existing items,
+because siblings are massive in number and the others are not.
 
 Siblings grow as the **square** of a family's size — one family of nine children is 72 `P3373`
 statements — which is why they alone are capped. `CLAUDE.md` § *`P3373` sibling is capped at 10 a
@@ -121,9 +114,9 @@ of them to send in one batch.
 ## What this supersedes
 
 The one-hop-a-day ring in `scripts/build-garborg-day.py` is not this algorithm, and neither is
-the first version of this file. That one had **five parent pairs with their entire children**;
-she stopped a run over it and it is gone. What stands is above: ten children, ten parents, free
+the first version of this file. That one had **five parent pairs with their entire children**; a run was stopped over it and it
+is gone. What stands is above: ten children, ten parents, free
 parents at `10 + half the remainder`, one spine step per path, spouses only as a consequence.
 
-The hyperlocal target is unchanged — `CLAUDE.md` § *The programme is HYPERLOCAL* — and *"in the
-arnie area, it's really clear"* is where the ideal state is well enough known to run this.
+The hyperlocal target is unchanged — `CLAUDE.md` § *The programme is HYPERLOCAL*. The Arne
+neighbourhood is where the ideal state is known well enough to run this.

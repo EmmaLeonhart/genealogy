@@ -38,8 +38,7 @@ was invisible, and this script reported **100 of 251 still absent** for a campai
 ends *"CAMPAIGN COMPLETE: all 251 Bureatten people with a Geni id are now in exports/"*. The true
 number was 0, confirmed by scanning every `.ged` directly.
 
-That is `CLAUDE.md` § *Correcting her own record in an export does nothing until the tree is
-re-merged* in a new place: **running the analysers is not running the generator**, and a file's
+That is `CLAUDE.md` § *Correcting a record in an export does nothing until the tree is re-merged* in a new place: **running the analysers is not running the generator**, and a file's
 mtime says when it was written, never how fresh its inputs were.
 
 If the merge is missing the script falls back to `derived-labels.csv` and says so, because a

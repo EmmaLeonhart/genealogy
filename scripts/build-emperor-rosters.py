@@ -20,8 +20,7 @@ or item ID*:
 | `Q10962705` | *Emperor of Ethiopia* | hereditary rulers of the Ethiopian Empire |
 | `Q208233` | *Emperor of Japan* | head of state of Japan |
 
-**The Geni join has THREE sources and the order is hers.** `CLAUDE.md` § *The Geni BIO
-carries her own QID claims. Read them before any download* --- her own bio links are the
+**The Geni join has THREE sources and the order is hers.** `CLAUDE.md` § *The Geni BIO carries hand-written QID claims. Read them before any download* --- her own bio links are the
 freshest statement of identity there is, so they are read first; then the live `P2600` on the
 item; then the local `p2600-all.tsv` snapshot. The `geni_source` column records which one
 answered, so a row can be traced rather than trusted.

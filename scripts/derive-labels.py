@@ -311,7 +311,7 @@ def main() -> int:
         # transliterator was wrong; it was handed the wrong string.
         #
         # **A hand correction still outranks everything.** `reports/label-corrections.tsv` carries
-        # names nothing here could reconstruct, and § *Emma edits the tree BY HAND* makes
+        # names nothing here could reconstruct, and § *The tree is edited BY HAND* makes
         # those decisions rather than drift -- so a corrected name stays primary and the
         # married form, if any, stays an alias beside it.
         # **Strip the nickname from the LABEL here, at the source.** `CLAUDE.md`

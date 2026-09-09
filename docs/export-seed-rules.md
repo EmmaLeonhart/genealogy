@@ -401,7 +401,7 @@ regardless of how many people are missing:
 - **Scandinavian / Nordic** — *"if there's particularly very large paths that are
   specifically related to Scandinavian people, like the Norwegian, Swedish academics we
   were doing for the Rogaland people, these ones are pretty valuable."* Same reasoning as
-  `CLAUDE.md` § *The practical goal is EMMA densely linked*: that is where she is linked,
+  `CLAUDE.md` § *The practical goal is ONE DENSE NEIGHBOURHOOD*: that is where she is linked,
   so the paths are short and the links land near her.
 - **Popes.** Named explicitly, twice.
 - **Weird and far out there.** Her phrase. She confirmed three groups: religious founders

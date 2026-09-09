@@ -107,7 +107,7 @@ def geni_by_qid():
     join.** Measured 2026-08-31 over the 109 numbered Izumo/Senge/Kitajima heads: **0** are in
     `out/wikidata/p2600-all.tsv`, **0** are in `reports/izumo-geni-anchors.tsv` (which covers a
     later, different part of the chart), and **5** are reachable through `reports/bio-qids.tsv`.
-    `CLAUDE.md` § *The Geni BIO carries her own QID claims* already records this asymmetry -- for
+    `CLAUDE.md` § *The Geni BIO carries hand-written QID claims* already records this asymmetry -- for
     the Izumo roster the bio links give 8 Geni ids where `P2600` gives 2 -- so the bio file is
     read second and never skipped.
 
