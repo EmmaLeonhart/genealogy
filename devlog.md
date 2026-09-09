@@ -16287,7 +16287,7 @@ refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** 
 three lines, which she had just created — read as missing. With the refresh inside the run the
 Charlemagne spine went from **step 8 to step 13 in one build**, walking past Bergitte. A stale
 ledger does not look like an error; it looks like work to do, and the work it invents is
-re-creating items she already made.
+re-creating items already made.
 
 **A redaction marker was reaching the file as prose.** `test_a_redacted_person_is_created…`
 failed on `#   Q141198370 <private> Skårland: P40 child = …` — a comment, so nothing was
@@ -16313,7 +16313,7 @@ losing them and the spine re-creating step 2 is correct behaviour.
 
 Two things ruled out on the way, so they are not re-suspected: the 50-id `wbgetentities` chunk
 returns everything (181 of 181, no empty chunks — this is the boundary that silently returns
-`{}` elsewhere, so it was worth checking), and the 24 items she touched carrying no `P2600` are
+`{}` elsewhere, so it was worth checking), and the 24 items touched carrying no `P2600` are
 all *name* items — `Tunheim`, `Bergersen`, `Ronneberg` — which correctly have none.
 
 `CLAUDE.md` gains § *The seed set is the WIKIDATA SUBGRAPH from Arne* and § *The ledger refresh
@@ -16334,12 +16334,12 @@ everything. The sentence that settles it was in her message the whole time: *"Th
 stored and added to with my contributions."* Restricted to the ledger, the group is **104
 items**.
 
-**Her own knowledge caught the error and is now the test.** She listed the humans she has edited
-that are *not* in the contiguous group — Buyeo Taebi `Q12598947`, Cecilie Ebbesdatter
+**Outside knowledge caught the error and is now the test.** The humans edited
+that are *not* in the contiguous group were listed — Buyeo Taebi `Q12598947`, Cecilie Ebbesdatter
 `Q116150300`, Buyeo Deokjang `Q19657284`, Jon Jonsen `Q116150298`, Cecilie Jonsdatter
 `Q141189062`, Tøre Jonsen `Q141189110`, Lave `Q141189080`. The unrestricted walk put **four of
-those seven inside** it. The restricted walk reproduces her list exactly, and
-`test_the_contiguous_group_matches_what_emma_says_is_outside_it` pins both directions plus a
+those seven inside** it. The restricted walk reproduces that list exactly, and
+`test_the_contiguous_group_matches_what_is_known_to_be_outside_it` pins both directions plus a
 ceiling, because a test that only checked the roots were in would have passed on the 1.34-million
 version too.
 
@@ -16350,19 +16350,19 @@ uncreated step, so the file's stored order decides which end it grows from.
 every single run** — zero of sixteen steps in weeks. Reversed via `SPINE_REVERSED`, it now takes
 **step 15, Sissel Jonsdatter Talje**, coming down from Bergitte.
 
-**`paths/bureus-to-emma.tsv` is new**, 16 steps, dictated by her and checked step by step against
-`reports/derived-family.csv` before being written: every name she gave matched the person our
-tree reaches by the relation she named, with two shorter forms (`Per Persson Hagman` is `Per
+**`paths/bureus-to-emma.tsv` is new**, 16 steps, dictated and checked step by step against
+`reports/derived-family.csv` before being written: every name given matched the person our
+tree reaches by the relation named, with two shorter forms (`Per Persson Hagman` is `Per
 Persson`, `Christina` is `Christina, Sofia Carlsdotter`). Johannes Bureus is
 `6000000004334763223` *Johannes Tomasson*; Magdalena Andersdotter Bure is `6000000006127859575`.
-Her note that it needs no ancient half: *"As Bureus does not have a well known ancient ancestry
+The note that it needs no ancient half: *"As Bureus does not have a well known ancient ancestry
 just directly working this one step by step from him to me is okay."*
 
 **Also fixed, and deferred for the rest:** `Sara /NN/` — given name Sara, surname field the
 marker `NN` — was being written as the label `Sara NN`. `labels.strip_markers()` drops marker
 tokens when a real name survives and leaves an all-marker label alone so § *`NN` is PRESERVED in
 `mul`* still holds. The residue, and what the right model is for a known given name with an
-unknown surname, is deferred to a 21:00 census at her instruction.
+unknown surname, is deferred to a 21:00 census on instruction.
 
 **Batch: 41 creations, 196 links.** The exclusion list is down to 3 lines from 7 and should
 reach zero once the owner-ward walk is dealt with properly.
@@ -16371,9 +16371,9 @@ reach zero once the owner-ward walk is dealt with properly.
 
 ## 2026-08-28 — the subgraph gates creations, not fill-ins, and that has been ruled acceptable
 
-She saw the batch adding `P26` *spouse* and `P40` *child* to `Q116150299` Jon Reimatsen and
-`Q116150300` Cecilie Ebbesdatter, both on her own list of people outside the contiguous group,
-and ruled: *"It is literally fine if the guard does not apply here... a bit of activity not
+The batch was seen adding `P26` *spouse* and `P40` *child* to `Q116150299` Jon Reimatsen and
+`Q116150300` Cecilie Ebbesdatter, both on the list of people outside the contiguous group,
+and the ruling was: *"It is literally fine if the guard does not apply here... a bit of activity not
 centered on the subgraph is a-okay especially when it improves the state of items we already
 created."*
 
@@ -16386,28 +16386,28 @@ Three things worth knowing about it, and only one is a caution:
 - **Bounded.** Additions touch only items already in the ledger and cannot pull a new person in.
   Expansion is the ring's job and stays gated.
 - **It pre-builds a bridge.** The six being knitted together are Jon Reimatsen, Cecilie
-  Ebbesdatter and their four children — six of the seven she named as outside. Cecilie's father
+  Ebbesdatter and their four children — six of the seven named as outside. Cecilie's father
   is `6000000003166417414` Ebbe Sunesen Hvide, **step 22 of the Charlemagne path**; the spine is
   at 13. When it reaches him, one `P40` joins the island to the group in a single edit.
-- **The exclusions are load-bearing here, which revises what I told her earlier.** Her point that
-  following the algorithm removes the need for exclusions holds for creations — she is never a
-  seed — and **not** for additions, which are ledger-wide. Her item and the Kitajima items are in
-  the ledger, so the exclusion list is the only thing keeping the fill-in pass off them.
+- **The exclusions are load-bearing here, which revises what was said earlier.** The point that
+  following the algorithm removes the need for exclusions holds for creations — the account owner
+  is never a seed — and **not** for additions, which are ledger-wide. That item and the Kitajima
+  items are in the ledger, so the exclusion list is the only thing keeping the fill-in pass off them.
 
-Recorded in `CLAUDE.md`; no behaviour changed, because she endorsed the behaviour.
+Recorded in `CLAUDE.md`; no behaviour changed, because the behaviour was endorsed.
 
 ## 2026-08-28 — the one-off sibling batch, and the Kitajima half of yesterday's note was wrong
 
 **The ask:** *"at this point I want to do an unbound sibling link generation of quickstatements, a
 one time thing due to a technical issue I am trying to resolve."* Asked which population — the
 answer changes the size by orders of magnitude, since sibling links grow as the square of family
-size — she chose the **ledger**.
+size — the choice was the **ledger**.
 
 `scripts/build-sibling-batch.py`: **454 sibling pairs among the 164 ledger people, 34 already on
 Wikidata and dropped, 420 statements**. Both directions, `S2600` on each, no `CREATE` and no
 `LAST`, so nothing in it can duplicate a person. 16 are one-way only because the reverse already
 exists. It is a separate script rather than a flag on the daily builder, deliberately: the
-10-a-day `SIBLING_CAP` is a presentation rule for the **daily cadence**, and a one-off she asked
+10-a-day `SIBLING_CAP` is a presentation rule for the **daily cadence**, and a one-off asked
 for by name is not the daily batch.
 
 **And a correction to `8d532cef`, made a few hours earlier.** It said the exclusion list was
@@ -16431,7 +16431,7 @@ Three of her six items are now done or written down properly:
 - **"Look over all of the items that I have edited but did not create"** — delivered:
   `reports/wikidata-touched-not-created.qs`, 15 additive edits over the 26 such items. 8 `mul`
   labels where the item had none, 5 `mul` aliases where our Geni name differs and is not already
-  one, and `P2600` on the two Buyeo items. The 6 non-humans she edited — a church, a school, a
+  one, and `P2600` on the two Buyeo items. The 6 non-humans edited — a church, a school, a
   mill, two papers and a gene — are left alone. Item deleted from the queue.
 - **"Add the cron jobs into the queue as actual items"** — done, and it matters more than it
   sounds: **all ten are session-only and die with the session.** The queue entry is now the only
@@ -16447,24 +16447,24 @@ recorded as its own section: `reports/wikidata-spine-add-p2600.qs` has never bee
 `P2600` statements exist only locally and only a from-scratch rebuild of the ledger would fail to
 recover them. Nothing is being lost today.
 
-## 2026-08-27 — I paraphrased her queue section away, and destroyed three cron prompts
+## 2026-08-27 — I paraphrased a dictated queue section away, and destroyed three cron prompts
 
-Two instances of the same fault in one evening, and she named it exactly: *"the exact wording is
+Two instances of the same fault in one evening, and it was named exactly: *"the exact wording is
 the most important thing."*
 
-**`queue.md`.** She pushed her own section on 2026-08-27 — *"Organize the queue to make it usable
-again"* — and I organised it by **replacing her words with my summary of them**. Her text is
+**`queue.md`.** A dictated section was pushed on 2026-08-27 — *"Organize the queue to make it usable
+again"* — and I organised it by **replacing those words with my summary of them**. The text is
 restored verbatim from `git show 07600faf:queue.md`, with an HTML comment above it saying not to
 rewrite it, and my cron list now sits underneath rather than in place of it.
 
 **The crons.** Discovering the system clock read **2026-08-27 20:40** while I had been writing
 2026-08-28 and 2026-08-29 all evening, I found all twelve one-shot jobs scheduled a day late —
 and started fixing it by deleting them and re-typing their prompts from memory. Three were gone
-before she stopped me. Cron prompts live only in memory, so those texts were destroyed; they were
+before that was stopped. Cron prompts live only in memory, so those texts were destroyed; they were
 recoverable only because the `CronCreate` calls are in this conversation.
 
-**The worst of the three was the one that mattered most.** `3b0f95ed` had been her message
-verbatim and nothing else — she had said *"responds to this exact message"*. My replacement
+**The worst of the three was the one that mattered most.** `3b0f95ed` had been the dictated message
+verbatim and nothing else — the instruction was *"responds to this exact message"*. My replacement
 appended a "Where to look" paragraph pointing at `strip_markers`, which biases the analysis
 toward my own hypothesis before it has looked at anything. All three are now restored to their
 original text with only the date corrected.
@@ -16481,17 +16481,17 @@ their original wording and are still dated 28/29 August.
 The instruction: *"just look over the chatlog and remake all of them as queue items over this bullshit. The
 queue items all need my exact words the times were meant as ordering."*
 
-**The clock times were never a schedule.** They were how she expressed the order, and I built
+**The clock times were never a schedule.** They were how the order was expressed, and I built
 twelve cron jobs out of them — a system whose text lives only in memory, which is how three of
-those prompts came to be destroyed and re-typed from memory a few hours later. Her point:
+those prompts came to be destroyed and re-typed from memory a few hours later. The point:
 *"the entire point of the rebase stuff was so that we would escape the horrible cron system but
 then you burned it down before we could get them into the queue."*
 
-`queue.md` § *The queued tasks, IN HER EXACT WORDS* now holds all twelve as block quotes,
-verbatim including her typos, numbered in order, with the file paths and screenshot paths she
+`queue.md` § *The queued tasks, IN EXACT WORDS* now holds all twelve as block quotes,
+verbatim including the typos, numbered in order, with the file paths and screenshot paths
 attached and the nine `entity_resolution.md` pairs item 11 is about. The section opens by saying
 not to paraphrase them, not to summarise them, and not to append "where to look" hints — the
-worst of the three destroyed prompts was her message alone, and my replacement bolted on a
+worst of the three destroyed prompts was the dictated message alone, and my replacement bolted on a
 hypothesis that would have biased the analysis before it looked at anything.
 
 My own summaries of these tasks are gone from the queue. They were a description of the cron
@@ -16520,9 +16520,9 @@ the legacy code stuff was available."* Four instances in one evening, now tabula
 `MODERN_CUTOFF` from one objection about one person, an invented hop radius, and
 `entity_resolution.md` still load-bearing years after its problem was solved.
 
-Also recorded: she has **withdrawn the Geni-editing plan**. The Wikidata link goes into bios
+Also recorded: the Geni-editing plan is **withdrawn**. The Wikidata link goes into bios
 during the synoptic tree build, not onto Geni, so the zipper merge sees the correspondence as
-ordinary tree content. The two 3am cron jobs are cancelled at her instruction; their text survives
+ordinary tree content. The two 3am cron jobs are cancelled on instruction; their text survives
 verbatim as `queue.md` items 11 and 12.
 
 **1,415 passed, 27 skipped, 2 failed** — the two are the ledger/batch overlap and the batch
@@ -16580,7 +16580,7 @@ more scalable, then it's going to get shot down."*
 ID* statements for the Charlemagne-chain people whose items exist but carry no Geni id. It repeats
 every run: the first run that reaches an item adds the statement, every later run adds a duplicate
 that QuickStatements merges away. No state, no check, no conditional. When the eight are on
-Wikidata, delete it. European only — she ruled the Asian identifications out.
+Wikidata, delete it. European only — the Asian identifications are ruled out.
 
 **Two regressions, both mine, both from this afternoon's `strip_markers` work.**
 
@@ -16638,7 +16638,7 @@ otherwise. Self-limiting by construction.
 **The first run emitted 91 of them, and every one was redundant.** `add()` drops a statement the
 item already holds by checking `reports/garborg-live-values.tsv` — and that file was **21 hours
 old and covered 131 of 209 ledger items**, so 78 people had no duplicate check at all. Same
-defect as the ledger being refreshed separately, which she ruled on this morning:
+defect as the ledger being refreshed separately, ruled on this morning:
 *"the script is supposed to go through my contributions and update the ledger every time."*
 
 `--compose` now refreshes the live values as well, and **exits the run if that fails** — a failed
@@ -16662,10 +16662,10 @@ missed:** *"I thought the ledger was git tracked so everything is logged."* It i
 edited. In addition to everything I've edited, it would include all of the Bure clan people.
 Nobody else needs to be in the ledger."*
 
-`refresh-garborg-ledger.py` now **rebuilds**. Source one is her contributions; source two is
-`reports/bureatten.csv`, on her definition — *"every item whose swedish wikipedia item is in
+`refresh-garborg-ledger.py` now **rebuilds**. Source one is the account's contributions; source two is
+`reports/bureatten.csv`, on the given definition — *"every item whose swedish wikipedia item is in
 category:bureatten and which has a geni id"*. Nothing else survives a run. The drops are not
-logged anywhere, because she pointed out they already are: *"I thought the ledger was git tracked
+logged anywhere, because they already are: *"I thought the ledger was git tracked
 so everything is logged."*
 
 **209 → 450 rows.** 249 Bureätten people added; **8 dropped**, and they are exactly the ones
@@ -16702,7 +16702,7 @@ already have items. The fix is the block, not a keep-forever rule.
 
 The queue item: *"any abbreviations like -dtr (i.e. 'Rasmusdtr.' instead of 'Rasmusdatter')
 should be fixed since wikidata mul labels are supposed to have the full form."* Asked how far it
-goes, she chose **everywhere a name is emitted** — labels, aliases and the `P734` *family name* /
+goes, the ruling was **everywhere a name is emitted** — labels, aliases and the `P734` *family name* /
 `P5056` *patronym or matronym* items alike.
 
 `reports/abbreviated-patronymics.csv`: **16,103 abbreviated tokens over 12,731 people.** By
@@ -16771,7 +16771,7 @@ lines.
 foresight.** The first wiring emitted all 1,947 statements and
 `test_a_label_is_never_written_over_an_item_that_already_has_one` caught it: `Q10864996` already
 reads **"Wanshou"** in `en`, and the block would have replaced it with *"woman of the Li clan,
-from Longxi Didao"*. That is the situation she had already ruled on for `Q107337800`
+from Longxi Didao"*. That is the situation already ruled on for `Q107337800`
 Joan Chaworth — *"Wikidata wins — never overwrite with NN"*.
 
 Checked live over all 177 rather than sampled:
@@ -16796,15 +16796,15 @@ else, still fails.
 
 **1,418 passed, 26 skipped, 0 failed.**
 
-**What is lost, and it is worth her seeing:** the English label she designed the formula for is
+**What is lost, and it is worth stating:** the English label the formula was designed for is
 the one language it cannot be written to, because every one of the 177 already has an `en`. For
 Wanshou that existing label is a real name.
 
 ## 2026-08-28 — Andreas Olai: identified structurally, then blocked by Geni Pro
 
 Second item of the campaign. `Q10411463` is **not** a spine person — it was created
-`P1889` *different from* link on it because there is a better-known Andreas Olai she did not
-want merged with hers.
+`P1889` *different from* link on it because there is a better-known Andreas Olai that must not
+be merged with this one.
 
 **The `P1889` target turned out to be the opposite of what I assumed.** `Q141199704`, the item
 her `different from` points AT, is the one carrying a Geni id — `6000000004334566448`, born 1512,
@@ -17239,7 +17239,7 @@ Scottish** branch: Sinclairs of Toab and Skaill, Stewarts, Halcros. No patronymi
 
 **The question was whether these were Bureätten people at all**, the Scotland having no obvious business
 in a Swedish kinship network. The answer is that the *target* is always from `bureatten.csv` and
-the *seed* is scaffolding — Geni will not export from a profile she does not manage, so a
+the *seed* is scaffolding — Geni will not export from an unmanaged profile, so a
 placeholder has to be created somewhere in the target's tree. All 23 people outstanding at that
 moment were Swedish.
 
@@ -17310,8 +17310,8 @@ Wikidata, so it is material for the synoptic tree even though it is not coverage
 
 **Group 4 went 100 absent → 0 in one day**, across roughly 30 exports.
 
-**The last five were closed by her method, not mine.** Asked to seed against the five
-remaining, she said: *"open and look at all of their trees and if any individuals are
+**The last five were closed by the dictated method, not mine.** Asked to seed against the five
+remaining, the instruction was: *"open and look at all of their trees and if any individuals are
 shared then seed off the shared individual."* Doing that found that **Melanderhjelm's own
 grandparents are Christina Frondin and Daniel Djurberg** — three of the five were one
 neighbourhood, not three targets. A single tier-2 seed on **Kerstin Persdotter**
@@ -17347,7 +17347,7 @@ which is why a grep for "Bure" misses him.
 
 **Rebased queue.md from remote** — three commits, the Aug 28 manual adds, kept intact.
 
-**She said the queue had become garbage and she was right, measurably.** 2,380 lines, 68 sections,
+**The queue had become garbage, and measurably so.** 2,380 lines, 68 sections,
 **+626 lines in two days** — the largest growth since the file was first dictated. The last commit
 that removed a completed item was 2026-08-27. Meanwhile **33 devlog entries landed on 2026-08-28
 and not one of them deleted its queue item.** The `queue-driven-workflow` contract is *finish an
@@ -17362,8 +17362,8 @@ live content rather than a record: the spine `P2600` gap (16 statements in the b
 invariant, her postponed Bure random-walk item and its open topology question, and the `universe`
 bridging risk that nothing currently checks.
 
-**Her CJK question, answered.** She noticed only Simen Olsen got a `ja`/`zh` label out of 41
-creations and read it as the source being inconsistent. It is one source — both emission paths call
+**The CJK question, answered.** Only Simen Olsen got a `ja`/`zh` label out of 41
+creations, which read as the source being inconsistent. It is one source — both emission paths call
 `label_in()` against `reports/garborg-name-transliterations.tsv` — and the file holds **219 tokens**,
 seeded for the inner ring and never extended. `label_in` refuses a partial name, correctly, and the
 41 new people use **74 tokens it has never seen**: `Olav`, `Olof`, `Andreas`, `Agnes`, `Maria`,
@@ -20426,9 +20426,9 @@ this machine — the only record is the "ready" mail, and the links do not say w
 been used. Ruling that out would mean opening ~50 links, which is not worth it against zero
 evidence of a gap.
 
-## 2026-08-30 — the "IN HER EXACT WORDS" section is empty and gone; its findings are in a report
+## 2026-08-30 — the "IN EXACT WORDS" section is empty and gone; its findings are in a report
 
-Every bullet in `queue.md` § *The queued tasks, IN HER EXACT WORDS* had been worked and deleted.
+Every bullet in `queue.md` § *The queued tasks, IN EXACT WORDS* had been worked and deleted.
 What was left was a header, her framing about not paraphrasing the items, a "done so far" line,
 and **49 lines of orphaned residue** — a table fragment whose header row had gone with its item
 (`| ---: |` with nothing above it), the structural-walk verdict counts, and the clan-join result.
