@@ -19055,7 +19055,7 @@ Sverkersdotter as her mother. That is exactly the merge being done by hand.
 
 **Two sources, because neither is current alone.** `out/wikidata/relations.tsv` gives 910,282 items
 with a `P22`/`P25`, but it predates most of the ledger; `reports/garborg-live-values.tsv` is
-refreshed every run and carries the current statements for the people Emma made this week, which is
+refreshed every run and carries the current statements for the people made this week, which is
 where a *fresh* rival would appear.
 
 Batch after the change: 30 creations (was 31), 21 links, 3 held by the duplicate guard -- 2 in the
@@ -19068,7 +19068,7 @@ creations live in.
 
 ## 2026-08-29 — her rule is about the STATEMENT, not the person
 
-**Emma, correcting the guard I had just built:** *"my rule is not explicitly a rule saying that we
+**Correcting the guard just built:** *"my rule is not explicitly a rule saying that we
 can't create duplicates. It's a more specific one... We should not be adding the father property on
 something that already has a father linked, or the mother property, because the father property
 being duplicated or the mother property being duplicated gets flagged... this is the situation where
@@ -19119,7 +19119,7 @@ the predicate returns `True`. That is the check that was missing the first time.
 
 ## 2026-08-29 — 252 entry points. The Bure people are roots, as she specified
 
-**Emma:** *"YES THE BURE PEOPLE ARE ALL ENTRY POINS."* They were in the `universe` -- walkable
+**The ruling:** *"YES THE BURE PEOPLE ARE ALL ENTRY POINS."* They were in the `universe` -- walkable
 *through* -- but not in `roots`, so they joined the subgraph only if a walk from Arne or Bureus
 happened to reach them. **113 of the 251 are islands of exactly one person**, so they were
 unreachable by construction, and 2 of 251 were inside.
@@ -19150,11 +19150,11 @@ previous batch.
 carries anyone whose every relative lacks a QID, because the alternative is an item with no links
 at all. This person is carried for **both** reasons -- *"no named relative to describe by"* and
 *"no relationship could be emitted"* -- so creating them yields an item reading `NN` and attached
-to nothing. Which rule wins is Emma's call, not a test to loosen.
+to nothing. Which rule wins is a hand call, not a test to loosen.
 
 ## 2026-08-29 — a marker in the SURNAME slot was never tested. 2,167 people
 
-**Emma**, pointing at `Q141217396` labelled *Maria No name*: *"this one is a clear example where
+Pointing at `Q141217396` labelled *Maria No name*: *"this one is a clear example where
 the generation caused problems with no recognizing a clear placeholder noname thing... I'm not
 sure how it is that no name didn't get through our detection thing, because that seems like such
 an obvious one."*
@@ -19199,7 +19199,7 @@ Malin Olofsdotter* in ten languages. 309 passed, 32 skipped.
 
 Ramborg Knutsdotter Lejon `Q141216350` and Ingrid Guttormsdotter `Q141216349` are both in the
 ledger, so the constant that named them is dead. Its own comment said to delete it once they
-existed, and the reason it was a named pair rather than a rule is Emma's: *"Building the helper is
+existed, and the reason it was a named pair rather than a rule: *"Building the helper is
 over engineering a solution to a problem that will likely only exist today."*
 
 Three sites went, not one: the constant, the `take()` loop that pushed them into every batch, and
@@ -19213,7 +19213,7 @@ Gjesdal. 14 creations, 112 links. 289 passed, 32 skipped.
 
 ## 2026-08-29 — her QID is gone from the repository
 
-**Emma:** *"my QID should be nonexistent in the repository... It shouldn't be in the repo at all,
+**The instruction:** *"my QID should be nonexistent in the repository... It shouldn't be in the repo at all,
 simple as that."* Her reason is strategic and hers: the item's editing history, how collisions and
 bot merges make an item read as organic, and keeping it out of the way of later mass imports.
 *"I have the ability to figure out when my item gets created and do stuff related to it."*
@@ -19237,7 +19237,7 @@ asked for here; removing the Geni id is a separate change and is hers to call.
 
 ## 2026-08-29 — "no Latin label", not "no label": 13,872 people were invisible
 
-Working the *English names ON GENI* queue item, whose subject in Emma's words is *"people whose
+Working the *English names ON GENI* queue item, whose subject is *"people whose
 Geni name exists only in Han/kana/hangul and who therefore have no English form anywhere."*
 
 **There are two such groups and only one was being served.**
@@ -19369,7 +19369,7 @@ people it is already walking toward**. Caroline Signe Borsheim is reached either
 unique to that file, all on its long blood detour.
 
 `randolph-paulus-borsheim.tsv` is the one genuinely unwalked path: 13 missing, **zero** overlap
-with the Signe spine, carrying the Selma Borsheim marriage link that makes Arne → Emma 23 steps.
+with the Signe spine, carrying the Selma Borsheim marriage link that makes Arne → the account owner 23 steps.
 
 **Why this happened, because it is the second time today.** I wrote that queue paragraph myself and
 then read it back as a source. `CLAUDE.md` § *The batches are a SEQUENCE* already names it --
@@ -19378,7 +19378,7 @@ a number from our own notes, presented as a fact about Wikidata.
 
 ## 2026-08-29 — stop blocking her own item from being created
 
-**Emma:** *"It is supposed to generate the fucking wikidata item for me just remove the shit that
+**The objection:** *"It is supposed to generate the fucking wikidata item for me just remove the shit that
 stops it from generating. This is not a cleanup to make me not be identified this is a cleanup to
 make it actually fucking generate my item"*, and *"my geni id should be just like any other one."*
 
@@ -19408,7 +19408,7 @@ QIDs; that was reverted too.
 
 ## 2026-08-29 — the Borsheim paths item closes on her ruling
 
-**Emma, 2026-08-29:** *"imo do not wire it in, it will come in on its own. Arne -> Signe is going
+**Ruled 2026-08-29:** *"imo do not wire it in, it will come in on its own. Arne -> Signe is going
 fine right?"*
 
 So neither Borsheim path joins `SPINE_PATHS`, and the item is deleted rather than left open. Her
@@ -19418,7 +19418,7 @@ Signe Borsheim is reached without the file being wired in at all.
 
 **Arne → Signe checked, since she asked:** 8 of 15 held, contiguous from Arne down to step 8
 Kristine Sørensdatter Gjesdal `Q141217391`; step 9 Søren Sørenson Gjesdal is in the batch on disk.
-It is the only unfinished spine that **can** complete -- the other two terminate at Emma, and while
+It is the only unfinished spine that **can** complete -- the other two terminate at the account owner, and while
 her Geni id is no longer excluded, they need her created before they close.
 
 `randolph-paulus-borsheim.tsv` stays unwalked: 13 missing, zero overlap with the Signe spine.
@@ -19442,7 +19442,7 @@ earlier today are the live piece of it.
 
 ## 2026-08-29 — the saved pages and the paths become GEDCOM
 
-**Emma:** *"convert these things into GEDCOM files that would go into a special GEDCOM directory...
+**The instruction:** *"convert these things into GEDCOM files that would go into a special GEDCOM directory...
 it builds from the saved pages, both the paths and the saved individuals proper, so that it will
 save both the paths and the saved pages because they are different."*
 
@@ -19549,7 +19549,7 @@ encoding 3836 as a cap Geni enforces is exactly this failure.
 **So the fix names the distinction instead.** `sources.DERIVED_DIR` and `sources.geni_exports()`,
 the same mechanism `exports/excluded/` already uses:
 
-- `find_exports()` → **596** files. The merge wants the derived ones; Emma asked for them in the
+- `find_exports()` → **596** files. The merge wants the derived ones; they were asked for in the
   synoptic tree.
 - `geni_exports()` → **594**. Anything asserting what a *Geni export* is — its size, its field
   coverage, its xref prefixes — reads this.
@@ -19602,7 +19602,7 @@ inside the October kluge** and cannot be touched until then.
 
 ## 2026-08-29 — `P1449` nickname dropped; the nickname lives in the alias
 
-**Emma:** *"the nicknames (listed in English????) are not something that's good. Just drop the
+**The ruling:** *"the nicknames (listed in English????) are not something that's good. Just drop the
 nickname functionality because the nicknames being listed in English is unacceptable. Just lmul vs
 amul."*
 
@@ -19687,7 +19687,7 @@ Fast lane at `bb20b626`: 1469 passed, 33 skipped, 0 failed.
 
 ## 2026-08-29 — the Wikidata query ban is lifted
 
-**Emma:** *"Why do you not have the ability to access Wikidata? What, are you getting 429s on
+**The ruling:** *"Why do you not have the ability to access Wikidata? What, are you getting 429s on
 Wikidata? You are completely 100% allowed to access wiki data to do basically any task. You just
 need to do so with reasonable API policies. Just don't decide to run 5 million requests in a
 minute."*
@@ -19708,7 +19708,7 @@ costs Wikidata nothing — not because a query is forbidden. And batch where the
 
 ## 2026-08-29 — one script for the whole rebuild chain
 
-**Emma, on being shown the rebuild was five scripts in a fixed order:** *"this explains why it's so
+**On being shown the rebuild was five scripts in a fixed order:** *"this explains why it's so
 hard: because it's not one script it's a bunch of scripts that you need to remember to run in the
 right order. Nope make it one script that always ends by calling the script that regenerates the
 quickstatements."*
@@ -19843,7 +19843,7 @@ same command reports **9,376 differences over 657 people — 127 `missing`, 51 `
 9,198 `extra`**.
 
 `diff_summary()` trims the 90-odd-row property table to the rows that move. Everything dropped
-is `extra` alone, which is Emma's hand-work and the column this project never touches; `missing`
+is `extra` alone, which is hand-work and the column this project never touches; `missing`
 and `CONFLICT` survive, and so does any count, which is how `ITEM NOT FETCHED` stays visible.
 
 **What the first honest diff shows, unacted on:** `P1449` *nickname* has 66 `missing`, and
@@ -19872,7 +19872,7 @@ title records the catch: *"it nearly created her a second item"*.
 
 **Why the ring reached 7th-century Baekje at all is already written down** — `CLAUDE.md`
 § *The seed set is the WIKIDATA SUBGRAPH from Arne*: the ring grew one hop from **every ledger
-person**, and the ledger is every item Emma has ever made, her Korean and Izumo work included.
+person**, and the ledger is every item ever made, the Korean and Izumo work included.
 `697fcd70` (2026-08-27) replaced that with the subgraph walk from `Q11959067`, and under it she
 is not a seed, because nothing on Wikidata connects Buyeo Deokjang to Arne Garborg.
 
@@ -20000,7 +20000,7 @@ count the general population, report the number, propose nothing.
 | **surname only** — whole label is the trailing part of the spouse's | **398** | 287 | 685 |
 | shares a token — *not* counted as borrowed | 43,881 | 95,196 | 139,077 |
 
-**The population Emma named — name taken from the spouse AND no parents recorded: 2,785.**
+**The population in question — name taken from the spouse AND no parents recorded: 2,785.**
 
 The third band is reported for scale and deliberately excluded: two people sharing a given name
 is a coincidence, and counting it would turn 2,785 into 46,666 by including every couple with a
@@ -20014,7 +20014,7 @@ Nothing is proposed and `labels.py` is untouched, per the item.
 
 ## 2026-08-30 — correction: "317 hand-checked" was wrong, and the 86% was the engine grading itself
 
-Emma, on the entry above: *"Idk what the 317 hand chrcked rows vs the 47 rederived are but this
+On the entry above: *"Idk what the 317 hand chrcked rows vs the 47 rederived are but this
 seems really fucking sus"*. It was. Two things in that entry are wrong.
 
 **"317 hand-checked" describes a mixed set.** By `note`:
@@ -20060,7 +20060,7 @@ so it is queued rather than guessed at over 3,700 rows.
 
 ## 2026-08-30 — every label is redone now, and the Chinese engine was structurally wrong
 
-Emma's rule: *"Every single label gets redone and if they disagree then they go onto the
+The rule: *"Every single label gets redone and if they disagree then they go onto the
 quickstatements that are generated. Arne Garborg and Johannes Bureus are the only people with
 cjk labels not added by us. So only those ones are to be taken as gospel. And my correction of
 Minnie is to be used."*
@@ -20069,7 +20069,7 @@ Minnie is to be used."*
 
 **1. The batch could not see a disagreement.** It emitted a label only into a language the item
 did not have, and it learned which languages those were from the offline store — which predates
-every item Emma has made. `refresh-live-values.py` now writes
+every item made. `refresh-live-values.py` now writes
 `reports/garborg-live-labels.tsv` from the same fetch as the statements, no extra requests, and
 the batch compares values.
 
@@ -20129,7 +20129,7 @@ rendering and is not a rule this engine can carry. Not touched.
 
 ## 2026-08-30 — stop guessing: 20,302 name renderings taken from what Wikidata actually writes
 
-Emma: *"Are you not using an actual library for this, but just kind of guessing at everything?
+The objection: *"Are you not using an actual library for this, but just kind of guessing at everything?
 … This is a solved problem. You understand that, right? There isn't really an excuse."*
 
 She is right and there is no defence. `translit_no.py` is a hand-rolled letter walk over tables
@@ -20142,7 +20142,7 @@ number of tokens, so `Bud Greenspan` / `B. 格林斯潘` is dropped rather than 
 **308,327 aligned labels** and an attested vocabulary of **20,302 tokens** with counts.
 
 `Alexander` is `アレクサンダー` (245 items) and `亚历山大` (114). `Johan` is `约翰` (29), not our
-`约汉`. **It also confirms Emma's Minnie correction independently** — `ミニー` 14×, `米妮` — which
+`约汉`. **It also confirms the Minnie correction independently** — `ミニー` 14×, `米妮` — which
 is a check on the corpus as much as on her.
 
 **Precedence is now: her corrections, then the attested rendering, then the rule engine.**
@@ -20169,7 +20169,7 @@ is wrong about roughly three-quarters of the names Wikidata has actually written
 
 ## 2026-08-30 — the name-item duplicates: she created 10, five were merged away
 
-Emma: *"You cunt I did create name items and they got merged because they were duplicates."*
+The correction: *"You cunt I did create name items and they got merged because they were duplicates."*
 She is right and I had said the opposite twice — first that none existed, then after checking
 her QIDs against the local store, which **cannot see a merged item** because it resolves to a
 redirect. That is the instrument failure `queue.md` § *A join that matches NOTHING must fail
@@ -20232,7 +20232,7 @@ Geni allows one in flight and has no cancel, so they went in sequence.
 
 **Two of them collide with files that already exist** — `bure-campaign/` holds a Forest and an
 Ancestors of that seed from 28 Aug. `CLAUDE.md` § *Never overwrite an existing `.ged`* makes
-that a filing question rather than a default, so it went to Emma; she chose
+that a filing question rather than a default, so it was put up; the choice was
 `exports/fleshing-out/`, the precedent the same section names for a re-export of an already
 exported seed. They are date-suffixed and the 28 Aug originals are untouched. The placement
 loop refuses rather than overwrites if a destination exists.
@@ -20250,7 +20250,7 @@ over"* — is met.
 
 ## 2026-08-30 — no descriptions, no edit summaries, and the collision that made it matter
 
-**Emma, twice:** *"It's a hard rule that we never create items with descriptions."* Then:
+**Twice:** *"It's a hard rule that we never create items with descriptions."* Then:
 *"edit summaries and descriptions are never used we categorically never use
 them."* `CLAUDE.md` § *NO descriptions and NO edit summaries* records both in her words, and
 `tests/test_no_descriptions_or_summaries.py` guards them.
@@ -20286,7 +20286,7 @@ been seen to fail is not known to guard*.
 
 ## 2026-08-30 — the CJK label was transliterating Geni's display string, not the item's label
 
-Emma, on `Q6161733`: *"why was the japanese label we added so weird? I fixed it but we added a
+On `Q6161733`: *"why was the japanese label we added so weird? I fixed it but we added a
 weird one."* We had emitted `カール・フレドリク・パイパー・ティル・クラゲホルム`; she corrected it
 to `カール・フレドリク・パイパー`.
 
@@ -20323,7 +20323,7 @@ preposition, which truncated the same name again by a different route after case
 
 ## 2026-08-30 — neither form of private gets a `P1810`, and what I got wrong about the surname
 
-`Q141223549` carried `P1810 "Private"`. Emma: *"Was 'Private' and should be '<private> Paulson'…
+`Q141223549` carried `P1810 "Private"`. The correction: *"Was 'Private' and should be '<private> Paulson'…
 Your promised fix to the <private> error failed again on this one."*
 
 **Checked, and the accusation of a lie needed a real answer.** `<private> /Surname/` occurs
@@ -20360,7 +20360,7 @@ alias, and **never to a `ja`/`zh` alias** — her answer, *"No ja/zh alias at al
 
 ## 2026-08-30 — the `mul` consensus, wired
 
-Emma's specification: observe whether the person *"has an English-language label that is in
+The specification: observe whether the person *"has an English-language label that is in
 Latin characters, or they have a consistent Latin label across two or more languages"*, assign
 that as `mul`, give it to `en` if `en` lacks it, derive `ja`/`zh` **from the `mul`**, and put the
 Geni rendering in `P1810` and an `Amul` alias. And explicitly: *"The transliteration of the Geni
@@ -20449,7 +20449,7 @@ it, and `CLAUDE.md` already carries the rule it was protecting.
 
 ## 2026-08-30 — the Signe line is two people from closing, and both are now in the batch
 
-Emma asked how the Signe path was going. `paths/arne-to-signe-no-borsheim.tsv` has gone from
+The Signe path was asked about. `paths/arne-to-signe-no-borsheim.tsv` has gone from
 **4 of 15 held to 13 of 15**: steps 5 through 13 — three Stokkas, two Gjesdals, three Limas and
 Inger Serine Lerma Gunderson — have all been created since 08-29, and the first gap has moved
 from step 5 to **step 14**.
@@ -20465,7 +20465,7 @@ closes the fourth spine line *and* gives Richard his `P25`.
 it — both have QIDs, but nothing on Wikidata yet links them to Arne, so they cannot seed a ring
 and Richard is one hop from people outside the pool. `CLAUDE.md` § *The seed set is the WIKIDATA
 SUBGRAPH from Arne* working exactly as written. It is self-correcting: one `P26` or `P40` joining
-Helen or Emma to that component makes all three reachable with no special case.
+Helen or the account owner to that component makes all three reachable with no special case.
 
 I first told her the reason was that no relative held a QID. That was wrong — two of them do.
 
@@ -20480,11 +20480,11 @@ the other four by rule. Both Borsheims now generate normally instead of being he
 The three the subgraph cannot reach were appended by hand at her request: Sophia with
 `P25` → `Q141224204` and its reciprocal, Signe with labels and identity only (her mother, father
 and husband are all uncreated or created in this same run), and Richard with `P26` → Helen and
-`P40` → Emma, both reciprocated.
+`P40` → the account owner, both reciprocated.
 
 ## 2026-08-30 — the name-item generator was recreating its own output, eleven times over
 
-Emma spotted `OBender12` correcting her edits and asked whether the family-name work was still
+`OBender12` was spotted correcting these edits, raising whether the family-name work was still
 broken. It was, and not in the way she had reported — this is a duplicate-creation bug, mine.
 
 **What he was doing.** Merging duplicate name items and stripping the `P734` links to the loser:
@@ -20495,7 +20495,7 @@ broken. It was, and not in the way she had reported — this is a duplicate-crea
 **The mechanism.** `store_name_item` resolved a token against
 `out/wikidata/name-items-in-store.tsv.gz` — the offline download. An item created *today* is not
 in it, and the ledger tracks **people**, keyed on `P2600`, which a name item does not have. So a
-token created in one run was invisible to the next, and `CREATE` always mints a new item. Emma
+token created in one run was invisible to the next, and `CREATE` always mints a new item. That
 ran the same regenerated file three times because I kept handing it to her.
 
 **Measured over all 584 of her creations: 29 name items, 18 distinct labels, 10 created more than
@@ -20523,7 +20523,7 @@ tokens now resolve, and the regenerated batch proposes ten entirely different on
 Two things nearly undid it and are worth noting: the loader's `return {}` on a missing store
 would have discarded her creations, and its `index = {}` a few lines later wiped them.
 
-## 2026-08-30 — the component's shape: Emma is a degree-1 leaf 16 hops from the centre
+## 2026-08-30 — the component's shape: the account owner is a degree-1 leaf 16 hops from the centre
 
 Her question: does the cluster read as a regional genealogy somebody built, or as a construction
 pointed at one person? Measured live by walking `P22`/`P25`/`P26`/`P40`/`P3373` from
@@ -20548,7 +20548,7 @@ and a handful of other Rogaland farm people at the same eccentricity.
 | `Q140568870` | **1** | **16** |
 
 A construction pointed at one person puts that person near its centre with density falling away.
-This has the opposite shape: Emma is a single-edge leaf at maximum eccentricity, and the two
+This has the opposite shape: the account owner is a single-edge leaf at maximum eccentricity, and the two
 notable figures are twice as central and carry far more edges. `Q232803` is not in the component
 at all.
 
@@ -20562,7 +20562,7 @@ before it existed, which is the structural argument for finishing rather than st
 ## 2026-08-30 — the month-long hold, implemented
 
 `reports/strategic-analysis-2026-08-30.md` is written and its first decision is now code rather
-than a proposal. Emma's control: *any item `OBender12` has touched is locked — our
+than a proposal. The control: *any item `OBender12` has touched is locked — our
 QuickStatements may not edit it.*
 
 `scripts/fetch-obender12-touched.py` → `reports/obender12-touched.tsv`;
@@ -20649,7 +20649,7 @@ is worth recording because it is the same family again: the header regex read `2
 the first 4 KB matched the `CHAN` date of the file's first `INDI` instead of the export's own
 `HEAD` date, and produced a perfectly plausible ordering.
 
-Step 3 — the browser pass over the candidates — is unchanged and remains Emma's: the merges are
+Step 3 — the browser pass over the candidates — is unchanged and remains a hand pass: the merges are
 hers, flagged and never performed here.
 
 ## 2026-08-30 — `P1449` nickname: the model was stale, not the emitter
@@ -20695,7 +20695,7 @@ message says to do; 7 pass. Re-verified: the affected modules are green individu
 
 ## 2026-08-30 — what the edge exports actually closed
 
-Emma, 2026-08-15: *"Finding these sparse areas, which we kind of did, and I did exports based off
+From 2026-08-15: *"Finding these sparse areas, which we kind of did, and I did exports based off
 of them, but it feels like you kind of forgot about them."* Thirty-one edge exports were run off
 `reports/export-entry-points.csv` and filed into `exports/edges/`, and nothing ever checked what
 they bought. `scripts/backtest-edge-exports.py` → `reports/edge-export-backtest.md` is the check.
@@ -20728,7 +20728,7 @@ This is the third seed-choosing method put to a backtest here and **the first to
 
 ## 2026-08-30 — name-item cap cut to 3, path work moved to the tail
 
-Two answers from Emma, both acted on rather than recorded.
+Two answers, both acted on rather than recorded.
 
 **Name items: 10 a day → 3, and it restores itself.** Asked what name-item creation should do
 while the `OBender12` hold runs, she said *"Cut it to 2-3 a day."* The reasoning is in
@@ -20753,7 +20753,7 @@ it actually sits.
 ## 2026-08-30 — the merge audit's step 3 has a starting point, and a marker leak is closed
 
 Working the first queue item, `Audit of Geni merges`. Its remaining step is the browser pass,
-which is Emma's — the merges are hers and are never performed here. What was missing was any way
+which is a hand pass — the merges are made by hand and are never performed here. What was missing was any way
 to start it: the candidate report is **12,287 groups**, and nobody opens a browser against that.
 
 **`reports/geni-merge-worklist.md`** (`scripts/build-merge-worklist.py`) is the handoff — the top
@@ -20811,7 +20811,7 @@ Read correctly it is **344 of 699**, and fully-connected paths go 28 → 351. Ne
 breakage was the instrument, not the tree. `census-paths.connected` is now the one place that
 knows this.
 
-**And the bio QIDs.** Emma, 2026-08-31: *"Yeah you use the bio qids lol."*
+**And the bio QIDs**, ruled 2026-08-31: *"Yeah you use the bio qids lol."*
 `scripts/extract-bio-qids.py` → `reports/bio-qids.tsv`: **158 (person, item) pairs over 155
 profiles, in 156 of the 600 exports**, each attributed to the `INDI` record that owns the link
 rather than grepped file-wide. For the Izumo join the 204 roster QIDs give **8** Geni ids through
