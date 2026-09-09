@@ -4020,29 +4020,26 @@ produced runs of a size the ordinary ring cannot reach. § *THE EDIT ALGORITHM* 
 *"the most ideal situation for lots of people being added is a bunch of individuals that are not
 linked to each other and are relatively close to each other."*
 
-**It is a stock, not a rate, and the stock is being spent.** Her words: *"this is very much a
-temporary thing"*, and the two families are now *"kinda connected to each other enough"*. So a
+**It is a stock, not a rate, and the stock is being spent.** It is a temporary phenomenon, and
+the two families are now connected to each other enough. So a
 falling batch size in that region is the campaign working, never a regression — do not treat it
 as one and do not go looking for a cause.
 
-**Her prediction, and it is a prediction rather than a plan:** *"when some of the Japanese blocs
-are introduced on Wikidata, we'll have a similar phenomenon, as well as generally with any kind
-of mass introduction of entry points."* The blocs dated 2027-01-01 are that introduction.
+**A prediction rather than a plan:** introducing the Japanese blocs on Wikidata should produce
+the same phenomenon, as should any mass introduction of entry points. The blocs dated 2027-01-01
+are that introduction.
 
 **⛔ ECCENTRICITY IS THE ISSUE. CENTRALITY IS GOOD.** A high-eccentricity person or cluster is a
 problem to close, which is what § *THE EDIT ALGORITHM*'s
 service areas are for. Do not record this as *"centrality is not a metric"*; it was written that
-way once and is the opposite of what she said.
-
-**And on the whole programme:** *"my general perception of all this stuff is pretty good. I think
-we're doing things well with this generally."*
+way once and is the opposite of the rule.
 
 ### ⛔ A BLOC IS A ROSTER REFERENCE. Six people off a report is not the ancient Chinese bloc
 
 **A more intuitive version of the specification is not the specification.** Six hand-listed
 Chinese individuals were put into the entry points file where a roster reference was specified.
 
-**What was done.** Her 2026-09-03 bloc list names *"Ancient Chinese bloc"* alongside the Samaritan
+**What was done.** The bloc list names *Ancient Chinese bloc* alongside the Samaritan
 high priests, the Ethiopian and Japanese Emperors, Tanba and Izumo. Instead of a roster, **six
 individuals were hand-listed in `reports/entry-points.tsv`** — 少昊 Shaohao, 顓頊 Zhuanxu, 女修
 Nüxiu, 大業 Daye, 皋陶 Gaoyao, 伯益 Bo Yi — the six an eccentricity report happened to surface,
@@ -4062,15 +4059,15 @@ by putting its pair in `exports/post-merge/wikidata-qid-links.ged` — the `spec
 group reads it and switches on **2027-01-01**, the same date the bloc wanted. **One mechanism, two
 purposes**: the bio link does entity resolution inside the merged tree *and* makes the QID an entry
 point. Hand-listing six people duplicated a mechanism that was already there, which is the exact
-redundancy her design removes.
+redundancy the design removes.
 
 **So `entry-points.tsv` is only for a person who needs their OWN date** — Ettinger 2026-09-03,
 Martin 2026-10-01. Anything landing on 2027-01-01 goes through the gedcom.
 
-**They are removed.** `entry-points.tsv` is back to the two people she named individually and gave
-individual reasons for, Ettinger and Martin. The `ancient-chinese-bloc` row stays in
+**They are removed.** `entry-points.tsv` is back to the two people named individually, with
+individual reasons: Ettinger and Martin. The `ancient-chinese-bloc` row stays in
 `entry-point-groups.tsv` and correctly reports **NO ROSTER**; building one to fill the gap would
-be the same mistake a second time, and the roster is hers to specify.
+be the same mistake a second time; the roster has to be specified rather than derived.
 
 **The tell was visible for two days and read as a feature.** All six printed in the UNRESOLVED
 list every run — the mechanism that exists so *"a roster row that does nothing and says nothing"*
@@ -4085,7 +4082,7 @@ himself in `reports/bureatten.csv`, so of the 252 that existed before the drip-i
 Bure and exactly one is not**: almost all of them are Bure people, and Arne Garborg is the one
 exception.
 
-**Her reason for the asymmetry, and it is about SURFACE AREA rather than about importance:**
+**The reason for the asymmetry is SURFACE AREA rather than importance:**
 
 > *"the family of Arne were precreated by me and are generally pretty well connected to each
 > other. Whereas this other family is in the interesting situation where… a massive amount of
@@ -4135,7 +4132,7 @@ State as of 2026-09-03:
 | ancient-chinese-bloc | 6 | held as individuals; **none carries a QID in our data** |
 | ethiopian-emperors | 0 | **NO ROSTER EXISTS** |
 | japanese-emperors | 0 | **NO ROSTER EXISTS** |
-| special-geni-gedcom-recognition | 0 | **awaiting her definition** |
+| special-geni-gedcom-recognition | 0 | **awaiting a definition** |
 
 **⛔ MEASURED, AND IT IS THE THING TO KNOW: a root that is not in the ledger contributes
 NOTHING as `compose()` is wired.** `ring_seeds = {g for g, q in our_items.items() if q in
@@ -4144,10 +4141,9 @@ the ledger; none of the 315 group QIDs is, and neither is Ettinger or Martin.** 
 roots grows the subgraph by exactly 315 — themselves — and pulls in **0** further ledger people
 and **0** further ring seeds.
 
-**Her answer, 2026-09-03, and her diagnosis was right before the code was checked:** *"I think
-the Bure people were somehow manually added to the universe or ledger too somehow. My guess is
-this was done manually in an unscalable manner possibly with errors. Every entry point should be
-automatically in the ledger once it is an established entry point."*
+**The diagnosis was right before the code was checked:** the Bure people were manually added to
+the ledger too, in an unscalable way. **Every entry point should be automatically in the ledger
+once it is an established entry point.**
 
 That is exactly what `refresh-garborg-ledger.py` does — the Bure people are a hand-wired
 **second source**, and 113 ledger rows carry the note `Category:Bureätten (bureatten.csv)`. So an
@@ -4161,18 +4157,18 @@ Geni id, so an entry point without one cannot become a row. Resolving the QIDs t
 (`izumo-p2600-pairs.tsv`, `tanba-p2600-pairs.tsv`) gives **316 of 330**. Same rule as reading
 `bureatten.csv` rather than re-deriving it.
 
-**`special-geni-gedcom-recognition` is `exports/post-merge/wikidata-qid-links.ged`** — her words:
-*"There's a specific gedcom that just links geni profiles to wikidata. It carries no relationship
-data just ids and bios with wikidata links in it."* **29** `INDI` records, each an id and a `NOTE`
+**`special-geni-gedcom-recognition` is `exports/post-merge/wikidata-qid-links.ged`** — a specific
+GEDCOM that just links Geni profiles to Wikidata, carrying no relationship data, only ids and
+bios with Wikidata links. **29** `INDI` records, each an id and a `NOTE`
 with a Wikidata URL, **28** distinct QIDs -- counted 2026-09-05. This said *five records, four
 distinct QIDs* until then, and it was read out and repeated twice in one evening before anybody
 counted the file. `reports/correspondence-sources.md` measures it against the other two
 correspondence sources: **3** of its pairs are in `bio-qids.tsv`, **0** in
 `manual-identifications.csv`, and **26 are in neither**. Its own docstring says *"Do not let it become an
-architecture"*, which is worth knowing before it is grown. The other reading of her sentence is
+architecture"*, which is worth knowing before it is grown. The other reading is
 `reports/bio-qids.tsv` — 155 profiles whose Geni *About Me* carries a link, read back out of the
-corpus — and it is recorded in the group's `note` rather than silently dropped, because her words
-name a specific gedcom.
+corpus — and it is recorded in the group's `note` rather than silently dropped, because the
+instruction names a specific gedcom.
 
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
@@ -4192,8 +4188,8 @@ The only thing that grows with the ledger is the count of fill-in statements —
 — and `P3373` *sibling* is capped at 40 pairs a day regardless.
 
 **And it pre-builds bridges rather than wandering.** The six people it was knitting together are
-Jon Reimatsen, Cecilie Ebbesdatter and their four children — six of the seven she named as
-outside the group. Cecilie's father in our tree is `6000000003166417414` **Ebbe Sunesen Hvide**,
+Jon Reimatsen, Cecilie Ebbesdatter and their four children — six of the seven named as outside
+the group. Cecilie's father in our tree is `6000000003166417414` **Ebbe Sunesen Hvide**,
 who is **step 22 of `paths/charlemagne-to-arne-garborg.tsv`**. When the spine reaches him, one
 `P40` joins that whole island to the contiguous group in a single edit.
 
@@ -4222,10 +4218,10 @@ if it fails**. `--no-refresh` exists for offline work and is the wrong thing to 
 ledger refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** — the
 hinge of all three lines, created minutes earlier — read as missing, and the Charlemagne spine
 reported itself stuck at step 8. With the refresh inside the run it went **step 8 → step
-13 in one build**, walking past her.
+13 in one build**.
 
 **A stale ledger does not look like an error. It looks like work to do** — and the work it
-invents is re-creating items she has already made.
+invents is re-creating items that already exist.
 
 ### The programme is HYPERLOCAL: one hop out from Arne Garborg, per day
 
@@ -4241,8 +4237,7 @@ relationship type a day.
 
 **So the deliverable is a small daily batch, not a large correct one.** The point is
 confidence: a hop a day is reviewable by eye, and it is rehearsal for a later Geni bot.
-`docs/wikidata-item-template.md` is the shape each item takes, read off the items she
-built by hand.
+`docs/wikidata-item-template.md` is the shape each item takes, read off the hand-built items.
 
 **Do not invent a runnable edit batch nobody asked for.** Mass batches are harmful when
 generated speculatively. Measurement, censuses and reports are fine unprompted — § *No unprompted reports* still applies to their volume — but
@@ -4264,31 +4259,30 @@ cover all of it by hand — and doing it by hand at this size yields legitimate 
 is stored so that the auto-merge threshold can eventually be set from real data.
 
 **So the verdicts are not a backlog being cleared. They are a sample being collected**, and the
-sample is only worth collecting while the network is small enough that she can cover **all** of
-it rather than a slice. Every `SAME`/`DIFFERENT` in `reports/emma-judgments.tsv` is a labelled
+sample is only worth collecting while the network is small enough to cover **all** of it rather
+than a slice. Every `SAME`/`DIFFERENT` in `reports/emma-judgments.tsv` is a labelled
 example of what a correct identification looks like, and the point is to learn the rule well
 enough to auto-merge later.
 
 **Three things follow, and they change how these tools are built:**
 
-- **Scope the deck to what she can finish**, not to what exists. The parent deck was 60 slices of
-  a 9,061-row corpus-wide file; her reply was *"there are not 9,061 open candidates lol... there
-  could at the very maximum in principle be 400 people in the network... just do all 47 in a
-  run."* The 47 are the ledger ones — the population the pipeline is actually blocked on. Full
+- **Scope the deck to what can be finished**, not to what exists. The parent deck was 60 slices
+  of a 9,061-row corpus-wide file, when there are at most ~400 people in the network and the
+  answerable set was 47. The 47 are the ledger ones — the population the pipeline is actually blocked on. Full
   coverage of a small set is the deliverable; a ranked slice of a large one is not.
 - **Never auto-accept the easy cases to shrink the deck.** The obvious ones are the labelled
-  positives the sample needs most. Deciding them for her destroys exactly the data being
+  positives the sample needs most. Deciding them automatically destroys exactly the data being
   collected.
 - **Storage is the point, so the record must be complete.** `emma-judgments.tsv` keeps every
   verdict including `UNSURE`, and `ledger()` folds only `SAME`. An `UNSURE` is a data point about
   where the evidence runs out, which is what tells us the auto-merge threshold.
 
-### THE PARENT DECK: `parent-review.html`. Regenerate it, never hand her the committed one
+### THE PARENT DECK: `parent-review.html`. Regenerate it, never hand over the committed one
 
 **The artifact.** <https://emmaleonhart.github.io/genealogy/parent-review.html> --- the deck of
 parent identifications the duplicate guard is sitting on, one card per case, rendered for reading
 by eye. It is published on GitHub Pages **unlinked**, per § *A REVIEW PAGE GOES ON GITHUB PAGES*.
-When she asks for *"the artifact we used for identifying parents"*, that URL is the answer.
+The *artifact used for identifying parents* is that URL.
 
 **A cloud session regenerated the page and published it in a state that made it useless.** The
 documentation below exists so that future sessions regenerate it on demand, correctly.
@@ -4305,7 +4299,7 @@ runner: sparse checkout, unpack the derived CSVs, build, copy onto the site, com
 too, but only after a ledger refresh and a QuickStatements compose, and it commits the batch in
 the same run --- so on 2026-09-04 the deck rebuilt perfectly, the *batch* commit hit a rebase
 conflict, the `site` job was skipped, and Pages went on serving cards that named nobody. The deck
-is what she asks for and must not be downstream of anything.
+is what gets asked for and must not be downstream of anything.
 
 **On a machine that has the tree, it is one command:**
 
@@ -4325,35 +4319,33 @@ the session, and is what § *A REVIEW PAGE GOES ON GITHUB PAGES* is about. A **c
 often what is actually wanted. The rule against artifacts is about **GitHub Actions artifacts**,
 the zip downloads that need a sign-in and are therefore inaccessible. Those two things share a
 word and are not the same thing. **Publish the artifact first and let the workflow catch Pages up**, because the
-workflow takes minutes and she is waiting.
+workflow takes minutes and somebody is waiting.
 
 **⛔ A CJK CASE IS NOT IN THE DECK.** A CJK card is not adjudicable in practice — `宣度 崔`/`Cui
 Xuandu`, `丹後内侍`/`藤原遠宗の娘` and `惟宗広言`/`Koremune no Tadayasu` all came back `UNSURE`.
 
-A card is judged by reading two people's spouses and children, and that is not something she can
-do for a Heian courtier or a Northern Wei official from where she is. Holding them costs her a
-turn each and settles nothing. `build-parent-candidates._has_cjk` tests **both** sides — the pair
+A card is judged by reading two people's spouses and children, which is not doable for a Heian
+courtier or a Northern Wei official. Holding them costs a turn each and settles nothing. `build-parent-candidates._has_cjk` tests **both** sides — the pair
 `宣度 崔`/`Cui Xuandu` is caught on ours — and the range is written in ASCII escapes, per § *A Han
 range written with LITERAL boundary characters*.
 
-**The `universe` half of her sentence is right about them and must NOT become the filter.** None
+**The `universe` half of that is right about them and must NOT become the filter.** None
 of these is in the ledger — but neither is any other case, and the ledger scope was tried on
 2026-08-31 and selected **0 of 709**, which published an empty page while the work was still
-there. The filter is the script, which is what she actually ruled on.
+there. The filter is the script.
 
-They stay in `reports/parent-candidates.tsv`, which is the census; only the deck she reads is
-filtered.
+They stay in `reports/parent-candidates.tsv`, which is the census; only the deck is filtered.
 
 **REGENERATE BEFORE HANDING IT OVER. Always.** The committed HTML is a photograph of whenever it
 was last built, and § *The tree and the items are edited BY HAND, continuously* is why that goes
 stale in minutes: an already-answered card wastes a turn. The verdicts go
 back to `reports/emma-judgments.tsv` --- `SAME`/`DIFFERENT` retires a case, `UNSURE` does not.
 
-**Her verdicts arrive as a pasted block and go in by hand.** The page's *Copy decisions* button
+**Verdicts arrive as a pasted block and go in by hand.** The page's *Copy decisions* button
 gives five tab-separated columns --- `geni_id, our_name, qid, their_name, verdict` --- and a row
 is appended as `date, batch, n, round, geni_id, our_name, qid, their_name, verdict, her_words`
 with `batch` = `parent-adjudication-gui` and the three middle columns empty. Then rebuild: the
-deck shrinks by what she answered, which is the check that it landed. On 2026-09-04 her 15 took
+deck shrinks by what was answered, which is the check that it landed. One batch of 15 took
 the deck to **7** and the file to 328 decided pairs.
 
 **Three things made the published page useless, all fixed 2026-09-04, all worth knowing because
@@ -4364,8 +4356,7 @@ each one produced a page that looked fine to whatever built it:**
   fathers arrived as the single token `4259064 | 9995000000000000074 | 9995000000000102196`,
   which is not an id, resolves to no name, and reached the deck as a card naming nobody --- 4 of
   17. Worse, `our_children` and `our_spouses` came back **empty** for everyone with more than one,
-  which is precisely what she says makes a card unanswerable: *"no relationships means I can't
-  make a judgment."* This is § *Our side could never have two children* recurring in a second
+  which is precisely what makes a card unanswerable: no relationships means no judgement. This is § *Our side could never have two children* recurring in a second
   script; the two files this generator reads use two different separators and one helper served
   both.
 - **The Wikidata names came only from `out/wikidata/labels.tsv`, which is GITIGNORED.** So it is
@@ -4411,7 +4402,7 @@ each a helper right in one copy and wrong in another.
 * **child** --- a parent of our person holds a QID whose `P40` names a child nothing accounts
   for. **This is the duplicate guard's own first arm**, § *THE DUPLICATE GUARD* --- the one that
   caught `Q2183430` being created twice. It has held people back ever since and nothing had put
-  the question to her.
+  the question up.
 * **sibling** --- a *sibling* of our person holds a QID whose `P3373` names a sibling nothing
   accounts for. It needs no item on the parent at all, which is coverage the child arm cannot
   reach, and it is evidence our tree structurally cannot produce: Geni records **no** sibling
@@ -4443,7 +4434,7 @@ sides line up is what settles it. § *1600-1900 is the band where NAMES LIE and 
 why sex and years are chips and the shared words are only a highlight.
 
 **A card with no name on OUR side is dropped and counted, not a failure.** Geni redacts, so
-`Private` and the unnamed arrive with an empty label and she cannot judge an empty box against a
+`Private` and the unnamed arrive with an empty label, and an empty box cannot be judged against a
 name. A bare QID on the **Wikidata** side still fails the run --- that one is the label lookup
 having failed, which is the instrument rather than the data.
 
@@ -4594,7 +4585,7 @@ heavily linked to each other.
 somewhere in `exports/`.** Not one export each — the number of exports it takes is whatever it
 takes, and the campaign is over the moment the absent list is empty.
 
-**The reason it converges is the one she gives: they are a family.** A `Forest` export returns up
+**The reason it converges: they are a family.** A `Forest` export returns up
 to 5000 people, so one seeded anywhere inside the network sweeps in many of them at once. Seeding
 each absent person in turn would be mostly redundant work.
 
