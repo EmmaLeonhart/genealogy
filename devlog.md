@@ -32355,3 +32355,41 @@ heredoc: every block went from the tool result through a file tool into
 without a reload, so the fix is on disk and not yet in the browser; the five captures above had
 their `via` derived at harvest by the identical rule. Reloading it needs one click in
 `chrome://extensions`, which the automation surface cannot reach.
+
+### the same run, continued: two Charlemagne hits, and they are brothers
+
+Three more targets, and **the first two hits of the run** — both redacted profiles, both reaching
+Charlemagne in 37 steps.
+
+| target | verdict | |
+| --- | --- | --- |
+| `<private> Falch` `300566252160002064` | **hit**, `via=blood` | 37 steps, *"Charlemagne's 34th great grandson"* |
+| `<private> Falch` `307414261200006461` | **hit**, `via=blood` | 37 steps, the same chain |
+| Karen Pedersdatter Thrane `309744814030004598` | miss, `via=neither` | blood 15,000 · descendants 15,000 · export |
+
+**They are brothers, and the two captures agree step for step.** Run independently, minutes apart,
+in different tabs: steps 1–36 are identical and only step 37 differs. Both are children of Judith
+Falch at step 36. `paths/isolate-geni-private-falch-300566252160002064.tsv` and
+`-307414261200006461.tsv`, each carrying a pointer to the other.
+
+**The anchor was checked on both, by id and by prose** — step 1 is `geni:6000000002457013227`,
+Charlemagne himself, not the viewer's `6000000087535357291`, and Geni's own sentence reads
+*"is Charlemagne's 34th great grandson"* rather than *"is your"*. That check is free and it is the
+only thing separating a real hit from a viewer-anchored one.
+
+**Steps 1–12 are a spine this repo already holds.** Louis the Pious, Giséle of Cysoing,
+Berengar I, Rozala of Italy, Baldwin IV, Judith of Flanders, then the Norwegian Rein line to
+Guttorm Àsulfsson à Rein — the same people as `paths/charlemagne-to-arne-garborg.tsv`, and
+`CLAUDE.md` § *THE THREE LINES* records Guttorm as the deepest person on that path already
+carrying a QID.
+
+**Both hits are redacted profiles whose statistics block never rendered**, so their `isolates.csv`
+figures are **blank, not zero** — the distinction `read` exists to preserve. They still go in:
+`CLAUDE.md` § *Redacted people go in*, and the structure is what is informative. Neither buys an
+export, and neither needs one: they are already connected.
+
+**The in-law search ran properly on `300566252160002064`** — `resolved_none` from a real button
+click — which is what the fixed `runInLaw` produces for the other four by reading the sentence
+instead. Same verdict, two routes to it.
+
+Outstanding 2,599 → 2,596. Tiny GEDCOMs: 102 profiles, 708 paths, **0 invented people**.
