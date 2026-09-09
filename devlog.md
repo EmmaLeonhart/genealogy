@@ -13570,7 +13570,7 @@ assumption and is now written where the next reader will hit it.
 
 ### 2026-08-25 — the add-`P2600` batch, gated, and an honest account of how much the gate buys
 
-Emma approved generalising the add batch to the whole store *with* the condition attached:
+Generalising the add batch to the whole store was approved *with* the condition attached:
 **gate it with the parent test first.** `scripts/build-add-p2600-batch.py`.
 
 **The gate.** For a proposed `(qid, geni_id)` where the item carries **no `P2600` at all**: read
@@ -13596,12 +13596,12 @@ needs *"Wikidata's father and our father are the same recorded profile"*. No nam
 **The cost, stated because it is the part that could be quietly omitted: the gate rejects 5,654
 of 7,320, and 95.2% of the rejected ones with comparable dates are date-consistent.** Most of
 what it throws away is probably fine. That is a deliberate trade — the output writes to Wikidata —
-but it is a trade, not a free win, and whether to loosen it is now a NEEDS-DECISION for Emma
+but it is a trade, not a free win, and whether to loosen it is now a NEEDS-DECISION
 rather than something to tune quietly.
 
 ### 2026-08-25 — the zipper join, actually implemented
 
-Emma: *"The zipper merge kinda half exists and is opaque I thought you meant something more clear
+The objection: *"The zipper merge kinda half exists and is opaque I thought you meant something more clear
 and substantive than just having never even tried to implement the feature. Implement it."*
 
 **She is right and the diagnosis is precise.** What existed were parent-shaped fragments — three
@@ -13624,7 +13624,7 @@ first**, which is the zipper's teeth — each closed pair removes a candidate fr
 shrinks the residual. A slot proposes a pair **only when exactly one unpaired person remains on
 each side**. New pairs become anchors and the next round runs.
 
-**Two-against-two proposes nothing, deliberately.** That is Emma's hard case — *"Children,
+**Two-against-two proposes nothing, deliberately.** That is the hard case — *"Children,
 however, selecting between children and spouses, and in some cases multiple sets of parents, is a
 much, much more difficult task"* — and her ruling the same day settles it:
 **"Lean two people — never merge on a coin flip."** Those slots are written to
@@ -13633,10 +13633,10 @@ much, much more difficult task"* — and her ruling the same day settles it:
 A proposal contradicting a recorded `P2600` is a conflict and never a pair. A person proposed for
 two items, or an item for two people, drops **both** proposals. No name is compared anywhere.
 
-**Not yet run** — Emma asked to hold at this exact point while she runs Arne QuickStatements. The
+**Not yet run** — held at this exact point while the Arne QuickStatements run. The
 relations extract was still building when work stopped.
 
-### 2026-08-25 — three errors in the Garborg batch, all Emma's catches
+### 2026-08-25 — three errors in the Garborg batch, all caught on review
 
 She looked at the built file and found three things.
 
@@ -13657,7 +13657,7 @@ everywhere else. Every alias now gets both; the rebuilt file is 59 and 59.
 **3. Her father was reachable.** *"no we are no fuckin gmaking my father as a wikidata item right
 now lol."* Richard Wade Borsheim (b.1963) is step 2 of the Arne path, so any roster drawn from
 that path reaches him. There is now a hard guard at **birth year 1880**, dropping **55 people**
-including Emma (1996), her father (1963), her grandfather Randolph (1926), Reinhert Borsheim
+including the account owner (1996), her father (1963), her grandfather Randolph (1926), Reinhert Borsheim
 (1891) and Selma Pedersdtr. Borsheim (1890). A year cut rather than a name list, so a path that
 reaches some other modern relative is caught too. "Right now" is hers to lift.
 
@@ -13671,7 +13671,7 @@ to zero. It now finds ids by pattern and prints the count per file, so an unread
 
 ### 2026-08-25 — a duplicate reached Wikidata, and the guard that would have stopped it
 
-**Emma: *"you also kinda immediately just fucked up with making a person who has an item see here
+**The catch: *"you also kinda immediately just fucked up with making a person who has an item see here
 https://www.wikidata.org/wiki/Q2183430"*.** She is right and this is the worst failure of the
 session: a batch I built created a second Wikidata item for a person who already had one, on a
 public database, and she has to merge it by hand.
@@ -13682,7 +13682,7 @@ properties.** The batch created *Bengta Ebbesdotter Ebbesdatter Hvide*, b.1170 d
 item's own English label.
 
 **Why nothing caught it.** The builder knew about existing items exactly two ways:
-`reports/garborg-qids.tsv`, the 41 people Emma had made, and `out/wikidata/p2600-all.tsv`, items
+`reports/garborg-qids.tsv`, the 41 people already made, and `out/wikidata/p2600-all.tsv`, items
 carrying a `P2600`. `Q2183430` has no `P2600`. It was invisible to both — while sitting in our own
 local store with a full set of claims.
 
@@ -13697,7 +13697,7 @@ Verified against the real case — the guard fires on `Q16063657`.
 
 **It is conservative on purpose**: it will hold back genuinely new people whenever a sibling of
 theirs has an unmatched item. Holding a real person back costs a day. Creating a duplicate costs
-Emma a manual merge on Wikidata.
+a manual merge on Wikidata.
 
 **Also fixed this round**, all from her: the ring is now ordered by **graph distance from Arne**
 rather than alphabetically, `--limit N` takes the N closest, and `--skip-nn` bites **before** the
@@ -13732,18 +13732,18 @@ one of our Geni ids is a candidate.
 The other 14 are genuinely absent.
 
 **Also: `reports/wikidata-bergitte.qs`.** Bergitte Aukland `6000000002481819312`, 1465–1522 —
-`queue.md`: *"the bigger target one"*, the common ancestor on both Emma↔Arne lines who is herself
+`queue.md`: *"the bigger target one"*, the common ancestor on both owner↔Arne lines who is herself
 descended from Charlemagne. She has no item, and neither do her parents, her husband or her four
 children, so there is nothing to link her to yet. Checked against `p2600-all.tsv` and the
 candidate search before writing: genuinely absent, not hidden like Benedicta.
 
 **And `out/chain-charlemagne-to-arne.html`**, built by `scripts/build-chain-page.py` — every
-person on the 399-step descent plus both Emma↔Arne chains, each with a Geni link and a Wikidata
-link where one exists. **Only Emma and Arne have items; all 22 people between them do not.**
+person on the 399-step descent plus both owner↔Arne chains, each with a Geni link and a Wikidata
+link where one exists. **Only the account owner and Arne have items; all 22 people between them do not.**
 
 **One correction recorded in the script.** The junction was first *derived* by intersecting the
 route with the blood path, giving Rasmus Wibye Andersson Lea — which is only where two files stop
-agreeing. Emma had written the answer in `queue.md` weeks earlier: *"the first common ancestor of
+agreeing. The answer was in `queue.md` weeks earlier: *"the first common ancestor of
 us is Rasmus Ingebretsen Grude"*. Her note is the source; the files illustrate it. Deriving what
 is already recorded cost her a turn to say so.
 
@@ -13793,7 +13793,7 @@ rate hid a 3.4x effect.
 **9,589 of the 23,596 have no comparable dates and are unchecked.** That is 41% resting on
 position alone with nothing testing it, and the unchecked share is not evenly spread either.
 
-## The hard case Emma named, measured
+## The hard case named, measured
 
 **615 slots were too ambiguous to call**, and the distribution is exactly where she said it would
 be:
@@ -13821,7 +13821,7 @@ is not.
 
 ### 2026-08-25 — the queue's closing item, and the spine recorded
 
-Emma: *"record somewhere clearly that we have that path from Marta Jonsdatter Li up to that common
+The instruction: *"record somewhere clearly that we have that path from Marta Jonsdatter Li up to that common
 ancestor and then to charlemagne and to me... make it 100% clear in our queue at the end and no
 other crap no excuses queue says to build the thing that makes a lot of them."*
 
@@ -13846,7 +13846,7 @@ lists the five pieces that already exist to build it from.
 
 ### 2026-08-25 — `P3373` sibling capped at 10 a day
 
-**Emma:** *"sibling relationships are too numerous to send at once. We limit sibling
+**The ruling:** *"sibling relationships are too numerous to send at once. We limit sibling
 relationship adding to 10 quickstatements a day."*
 
 **The numbers that provoked it.** `wikidata-reciprocals.qs` was **257 statements, 160 of them
@@ -13880,7 +13880,7 @@ not to re-run the walk.
 
 ### 2026-08-25 — the three lines, recorded as what the programme is doing
 
-Emma: *"make it very clear in the claude.md referencing all of this stuff that this is what we are
+The instruction: *"make it very clear in the claude.md referencing all of this stuff that this is what we are
 doing... Yes it should be three lines lol: Charlemagne to Bergitte, Bergitte to me, Bergitte to
 Arne."*
 
@@ -13890,15 +13890,15 @@ through **Bergitte at step 12**, so it is lines 1 and 3 in one file. I had been 
 `reports/charlemagne-route.csv` instead, a **different** 399-step descent up another branch that
 does not contain Bergitte at all — which is exactly why the junction I derived came out wrong.
 
-**Bergitte confirmed by walking our own tree rather than assumed**: an ancestor of both Emma and
+**Bergitte confirmed by walking our own tree rather than assumed**: an ancestor of both the account owner and
 Arne, Arne at depth 11. She is **not** their nearest common ancestor — that is Rasmus Ingebretsen
-Grude (Emma +10, Arne +5) — and they share **2,780** ancestors. She matters because she is the one
+Grude (owner +10, Arne +5) — and they share **2,780** ancestors. She matters because she is the one
 on both lines who descends from Charlemagne, exactly as `queue.md` said.
 
 | line | people | have items | to create |
 | --- | ---: | ---: | ---: |
 | 1. Charlemagne to Bergitte | 23 | 9 | **14** |
-| 2. Bergitte to Emma | **not captured** | — | — |
+| 2. Bergitte to the account owner | **not captured** | — | — |
 | 3. Bergitte to Arne | 12 | 3 | **9** |
 
 **Where the gap is, and it is not spread out.** 22 creations, **19 consecutive** — steps 4 to 22,
@@ -13907,7 +13907,7 @@ the whole Norwegian and Swedish middle. **The royal end is already done**: Gutto
 Pious `Q43974`, Charlemagne `Q3044`. Three gaps up there only. The line closes at **step 23,
 Guttorm Àsulfsson**, the deepest existing item.
 
-**A correction owed.** When Emma asked whether Ingrid Guttormsdotter was on Wikidata, I answered
+**A correction owed.** Asked whether Ingrid Guttormsdotter was on Wikidata, the answer given was
 the lookup and then said she was not in the sequence. **She is step 22 of this spine**, and her
 father at step 23 is the item the whole line hangs from.
 
@@ -13915,7 +13915,7 @@ father at step 23 is the item the whole line hangs from.
 
 ### 2026-08-25 — the chain's absences investigated, and it is 18 not 22
 
-Emma: *"we didn't actually establish in any meaningful sense that the people are absent in that
+The objection: *"we didn't actually establish in any meaningful sense that the people are absent in that
 chain... We might basically find that that one single daughter is the only person absent in the
 line in Wikidata, but it's just that the Wikidata ones are not genealogically linked."*
 
@@ -13945,7 +13945,7 @@ by searching names:
 creations.**
 
 **So the spine is 18 creations and 4 additions, not 22 creations** — which is exactly the 18 runs
-Emma budgeted.
+was budgeted.
 
 **And the break is where she predicted.** Steps 23–25 — Guttorm Àsulfsson, Åsulv Skulesson, Skule
 Torstigson — are all present. Step 22, **Guttorm's daughter Ingrid**, is not, and Wikidata records
@@ -13954,12 +13954,12 @@ her**. Her words: *"random daughters of somewhat obscure noblemen tend not to be
 are most well documented."*
 
 **One more thing worth carrying**: `Q127427192` *Ragnhild Skulesdatter*, Skule's other daughter,
-is on Wikidata with **no Geni id at all**. The pattern Emma described is real and there will be
+is on Wikidata with **no Geni id at all**. The pattern described is real and there will be
 more of it.
 
-### 2026-08-25 — line 2 established: Bergitte is Emma's 13th great grandmother
+### 2026-08-25 — line 2 established: Bergitte is the account owner's 13th great grandmother
 
-Emma: *"if you really need to save a geni page you can open it up and save it yourself"*, then
+The instruction: *"if you really need to save a geni page you can open it up and save it yourself"*, then
 *"Navigate on geni lol why aren't your doing it"*. Fair — so I did.
 
 **Geni states it plainly: "Bergitte Gunnbjørnsdatter Aukland is your 13th great grandmother."**
@@ -13972,7 +13972,7 @@ control cost three attempts and two frozen renderers before I gave up on it:
     https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000087535357291
 
 The pin had been left set to Bergitte, so every profile was showing its relationship *to her*
-rather than to Emma, and clicking it to reset did nothing. `?through=<geni id>` pins the
+rather than to the viewer, and clicking it to reset did nothing. `?through=<geni id>` pins the
 relationship to a chosen profile directly.
 
 **The step-by-step path is still not captured.** Expanding the panel froze the renderer three
@@ -13983,11 +13983,11 @@ Stopping there rather than hammering a frozen tab.
 aliases, and twelve genealogy identifiers per item. That is the instrument for the name-variant
 half of the absence question, the half the structural search cannot reach.
 
-**And Emma has merged `Q2183430`.** The duplicate my batch created is resolved.
+**And `Q2183430` has been merged.** The duplicate the batch created is resolved.
 
 ### 2026-08-25 — zipper capped at round 3 and wired into the synoptic join
 
-Emma picked round 3 from the by-round error table. Error compounds because each round anchors on
+Round 3 was picked from the by-round error table. Error compounds because each round anchors on
 the last: 3.9% at round 1, 9.8% at round 3, 27.1% at round 8, measured against dates. Round 3 is
 the knee — rounds 1–3 add 8,272 pairs over round 1 for 1.6 points of extra error, while round 4
 onward adds fewer pairs for more.
@@ -14008,17 +14008,17 @@ Later rounds stay in `reports/zipper-pairs.tsv` with their round number; the fil
 | `izumo-sister-roster` | 121 |
 | `izumo-roster` | 111 |
 
-**525,807 → 535,826 distinct pairs.** Both directions are present as Emma required —
+**525,807 → 535,826 distinct pairs.** Both directions are present as required —
 `wikidata-p2600` for the Wikidata side and `geni-about-me` for the QID she wrote into the Geni
 description. Conflicts 332 → 356.
 
 **On the writing:** the first version of the cap carried a twenty-line comment justifying the
-number. Emma: *"I feel you taking this as a bigger commitment than it is lol."* Cut to four lines.
+number: *"I feel you taking this as a bigger commitment than it is lol."* Cut to four lines.
 It is a threshold, not a treaty, and it is meant to be revisited.
 
 ## 2026-08-25 — the zipper join actually reaches the hard cases
 
-**Emma: *"I feel the zipper merge still isn't hitting the hard points lol."*** She was
+**The objection: *"I feel the zipper merge still isn't hitting the hard points lol."*** It was
 right, and the cause was a parser rather than a design choice. `reports/derived-family.csv`
 separates multi-valued cells with ` | ` and `zipper-join.py`'s `split()` knew only `,` and
 `;`, so a five-child cell parsed as one token, missed the index, and the person reached the
@@ -14097,7 +14097,7 @@ a parsing loss.
 | theirs | 2,710 | 1,987 father, 723 mother |
 | **crossed** | **783** | where the join had to choose — **489 are zipper pairs** |
 
-Nothing resolved, and nothing should be: this is the survey Emma asked for, and the 783
+Nothing resolved, and nothing should be: this is the survey asked for, and the 783
 are now enumerable in `reports/multi-parents-crossed.tsv`.
 
 Also recorded so it is not repeated: both Sapiega profiles behind `Q122925764` are already
@@ -14106,7 +14106,7 @@ export she asked for is genuinely warranted here, unlike Obitake 23.
 
 ## 2026-08-25 (late) — `LAST` works as a value, and the dictation is saved verbatim
 
-**Emma:** *"you never actually did the 2-way relationship addin qith the creation of items that
+**The correction:** *"you never actually did the 2-way relationship addin qith the creation of items that
 is completely possible but you just decide to fuck off and no do it because it goes QID PID LAST
 instead of LAST PID QID."*
 
@@ -14149,7 +14149,7 @@ presence.
 
 `CLAUDE.md`, `docs/batch-rules.md`, `reports/the-spine.md` and `queue.md` all asserted that `LAST`
 is *"only valid as a subject, never as a value"*. That is wrong, it was my generalisation rather
-than Emma's instruction, and it shaped the spine plan, the daily cadence and
+than the instruction, and it shaped the spine plan, the daily cadence and
 `build-missing-reciprocals.py`'s whole reason for existing.
 
 The true statement is narrower: `LAST` names only the most recently created item, so **two people
@@ -14168,7 +14168,7 @@ not for all relationships.
 
 ## 2026-08-25 (22:00) — the four deferred decisions
 
-Emma deferred four to a 10pm cron rather than answering live. Each was measurable, so each was
+Four were deferred to a 10pm cron rather than answered live. Each was measurable, so each was
 measured and decided rather than handed back.
 
 **1. `ROUND_CAP` 3 → 8.** The 3 came from a date-based curve (3.9% → 27.1%) read as error
@@ -14178,7 +14178,7 @@ checks → 29 → 0). `P21` *sex or gender* has 86–100% coverage at every roun
 confound of its own, found before deciding: sex can never refute a `father`/`mother` pairing, and
 those slots grow 38.6% → 57.7% with depth. On `child`/`spouse` only, error goes **2.8% → 4.8%**
 across eight rounds. A 1.7× rise, no knee at 3, and 12,485 pairs were being discarded for it. The
-deciding comparison is Emma's own: she kept `child`+`solo` at 10.0%. **No method cap proposed** —
+the deciding comparison was the ruling that kept `child`+`solo` at 10.0%. **No method cap proposed** —
 method matters more than round, but it is handled by `SLOT_YEAR_TOLERANCE` and the sex filter
 rather than by a cap.
 
@@ -14208,7 +14208,7 @@ row is a candidate ranked by how much *besides* the name agrees.
   invisible. Caught on `5101295410550070399`, about to be duplicated. `linked` now reads
   `out/wikidata/p2600-all.tsv` — 517,750 ids — and is kept **separate from `have`**, because
   folding it in made the frontier most of the tree and the build never finished. This is the
-  offline half of the check Emma rejected in its live form, and it costs nothing.
+  offline half of the check rejected in its live form, and it costs nothing.
 - **The NN description only ever looked at parents.** A redacted person with no recorded parent
   got `Lmul "NN Skårland"` and nothing else, while carrying a named *child*. `CLAUDE.md` says the
   description comes from *"the nearest named relative"*, and the `WORDS` table already held
@@ -14237,7 +14237,7 @@ All three hold, and not marginally:
 **They chain.** Helena's son is Svantepolk's father is Ingegerd's grandfather, and step 20 was
 already matched to `Q3743799`. Steps 18–21 are a contiguous run that exists on Wikidata in full,
 linked to each other there, invisible to us only because no `P2600` names them — which is exactly
-the shape Emma predicted.
+the predicted shape.
 
 The spine now reads **14 hold a `P2600`, 7 are existing items, 13 to create**. The creation count
 has fallen from 22 to 13 without a single edit being made.
@@ -14298,10 +14298,10 @@ as the strongest row in the file and is the weakest by anchoring.
 
 Both zero-anchor rows now say so in their confidence, and the `.qs` carries the count per line
 with what it means. Nothing was removed: a self-corroborating chain is not thereby wrong, and
-`CLAUDE.md` is explicit that Emma's bar for discarding is *"a pretty damn good reason"*. It is a
+`CLAUDE.md` is explicit that the bar for discarding is *"a pretty damn good reason"*. It is a
 reading made visible, which is the same standard `zipper-provenance.py` applies with `POISONED`.
 
-## 2026-08-26 — three of Emma's decisions applied, and the date paradox resolved
+## 2026-08-26 — three decisions applied, and the date paradox resolved
 
 **The `P2600` gate is loosened: 1,665 → 7,168 additions.** Shown what it was actually doing, she
 said *"Loosen it — emit the ~7,000."* It required a parent anchor and rejected 5,651 of 7,320, of
