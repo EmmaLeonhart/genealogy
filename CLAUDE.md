@@ -2909,14 +2909,12 @@ on 2026-08-15 over the 633 items that are `instance of` `Q110874`: **`P144` on
 119 of them**, plus `P5278` *surname for other gender* on 97 — which is the
 `Olsson` ↔ `Olsdotter` pairing. `P1705` native label (513), `P282` writing system
 (579) and `P407` language of work or name (370) are the near-universal ones.
-Emma also wants the derivation stated in the item's **description text**, not
-only as a claim.
+The derivation is also stated in the item's **description text**, not only as a claim.
 
 **That measurement is the one live Wikidata query this project has made since the
-rule, and Emma authorised it specifically.** *"You are going to look at Wikidata
-live to see if there are objects for patronymics… this is a legitimate reason to
-keep Wikidata. It's not a legitimate reason to query Wikidata because you just
-want to figure out something about some random individual."* It was one aggregate
+rule, and it was authorised specifically** — a question about Wikidata's own modelling
+conventions is a legitimate reason to query it, where wanting to figure out something about a
+random individual is not. It was one aggregate
 `SPARQL` query, no per-item lookups, run only after the local store was checked
 and found not to hold `Q110874` — the store is a Geni-shaped slice of **people**
 and carries almost no name items. **The rule is unchanged**: the exception was
@@ -2946,30 +2944,27 @@ closely.
 **References** — P248 stated in, P854 reference URL, P813 retrieved,
 P143 imported from Wikimedia project.
 
-### Emma edits the tree and the items BY HAND, continuously. Snapshots go stale in minutes
+### The tree and the items are edited BY HAND, continuously. Snapshots go stale in minutes
 
-**Emma, 2026-08-24:** *"Remember that I've been actively fixing the tree manually."*
+A downloaded item file is a photograph, not a mirror. Labels are fixed, Geni profiles merged and
+relationships added by hand while a batch is being built, so:
 
-A downloaded item file is a photograph, not a mirror. She fixes labels, merges Geni
-profiles and adds relationships while a batch is being built, so:
-
-- **Re-download immediately before emitting a correction**, never from a file fetched
-  earlier in the session. A correction computed against a stale snapshot re-writes work
-  she has already done, which is worse than doing nothing.
-- **Say when a hand-off was verified.** "Checked live at <time>" is the useful claim;
-  "the item has X" without a time is not.
-- **A label she has changed is a decision, not drift.** `Q141168785` had `en` and `mul`
-  hand-corrected to the married form while `ja` still read the birth form — the stale
-  half was ours, not hers.
-- The ledger `reports/garborg-qids.tsv` has the same problem and is refreshed from her
-  Wikidata contributions; a stale ledger is what made a batch try to re-create 21 people
-  she had just made.
+- **Re-download immediately before emitting a correction**, never from a file fetched earlier in
+  the session. A correction computed against a stale snapshot re-writes work already done, which
+  is worse than doing nothing.
+- **Say when a hand-off was verified.** "Checked live at <time>" is the useful claim; "the item
+  has X" without a time is not.
+- **A hand-changed label is a decision, not drift.** `Q141168785` had `en` and `mul`
+  hand-corrected to the married form while `ja` still read the birth form — the stale half was
+  ours.
+- The ledger `reports/garborg-qids.tsv` has the same problem and is refreshed from the account's
+  Wikidata contributions; a stale ledger is what made a batch try to re-create 21 people that had
+  just been made.
 
 ### A SUMMARY of a Wikidata item is not the item. Download the full item
 
-**Emma, 2026-08-24:** *"you're supposed to download the full wikidata items for the
-people I've edited to get the modelling not look at my edit history to see what's in
-them."*
+**The modelling comes from downloading the full Wikidata items, never from reading an edit
+history to see what is in them.**
 
 Reading an item through a fetch-and-summarise channel produced **three false findings**
 in one session, each published to a report, the artifact and a commit message:
@@ -2991,17 +2986,14 @@ in one session, each published to a report, the artifact and a commit message:
 from `out/garborg-full-items.json`. A summariser may be used to *find* something, never
 to establish that a property is absent — absence is exactly what it gets wrong.
 
-**The local store is not a substitute either.** It was downloaded before Emma made most
-of these items, so it agreed that Arne had no parents. An item she has edited since the
-download must be re-fetched, not looked up.
+**The local store is not a substitute either.** It was downloaded before most of these items
+existed, so it agreed that Arne had no parents. An item edited since the download must be
+re-fetched, not looked up.
 
 ### Querying Wikidata is ALLOWED. Be polite about the rate
 
-**Emma, 2026-08-29, lifting the ban outright:** *"Why do you not have the ability to access
-Wikidata? What, are you getting 429s on Wikidata? You are completely 100% allowed to access wiki
-data to do basically any task. You just need to do so with reasonable API policies. Just don't
-decide to run 5 million requests in a minute because of the fact that you decided that you think
-that it would be so cool to get the task done quickly."*
+**Wikidata may be accessed for basically any task, under reasonable API policies.** The one
+thing that is not allowed is running millions of requests to finish faster.
 
 **So: query it.** Resolving a redirect, checking whether an item really carries `P22`, reading a
 label — all of that is ordinary work now, not a rule violation. The constraint that remains is
@@ -3030,9 +3022,6 @@ Wikidata nothing, and a question answerable there needs no request at all. Reach
 when the store cannot answer, not before.
 
 ### SORTING MUST BE DETERMINISTIC. A generated file is byte-identical or the diff is a lie
-
-**Emma, 2026-09-01:** *"sorting needs to be deterministic put that in claude.md to ensure that we
-don't have this issue"*.
 
 **The issue, measured.** `reports/garborg-name-transliterations.tsv` was rewritten with **zero**
 content change — 36,901 tokens, 0 lost, 0 gained, 0 altered — and `git diff` reported **36,901
@@ -3071,8 +3060,8 @@ POSIX the leak passes silently and ships.
 
 ### "SYNOPTIC TREE" — the two things it means, and which one each usage is
 
-**Emma, 2026-08-29:** *"it is consistently conflated between the union of all the geni gedcoms and
-the union of that tree with all data sources."* Both meanings are in use and both are legitimate;
+The term is consistently conflated between the union of all the Geni GEDCOMs and the union of
+that tree with all data sources. Both meanings are in use and both are legitimate;
 what is not legitimate is a sentence where the reader cannot tell which.
 
 - **the Geni union** — every `.ged` under `exports/` merged, i.e. `out/merged.ged`. This is what
@@ -3097,8 +3086,7 @@ it was spotted. `docs/daily-algorithm.md` and this file now say the thing she me
 
 ### The four big derived CSVs are committed GZIPPED
 
-**Emma, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding any more
-data into our tree. Just processing."*
+Gzipped because this is long term and no more data is being added to the tree — only processing.
 
 `reports/display-names.csv`, `derived-facts.csv`, `derived-family.csv` and
 `derived-labels.csv` regenerate from the merge at **108-184 MiB** each, and GitHub refuses
@@ -3119,12 +3107,11 @@ here because "never gitignore a `.ged`" is a rule two sections up. `out/merged.g
 is 409 MB — generated, regenerable by `genimerge merge`, and over GitHub's file
 limit. It is covered by the existing `out/` line, so **no `.ged` pattern exists
 and none should be added**; the rule about the corpus under `exports/` is
-untouched. Emma's call, 2026-08-07: ignore it by necessity.
+untouched. It is ignored by necessity.
 
 ### ⛔ TESTS RUN IN CI/CD OR NOT AT ALL. Never run the suite locally
 
-**Emma, 2026-09-02:** *"Stop the fast lane holy shit tests are on ci/cd or not at all"*, and then:
-*"add this to the claude.md so it does not randomly decide to start doing this again"*.
+**Tests are on CI/CD or not at all.**
 
 **So do not run `pytest` here. Not the fast lane, not a single module, not in the background.**
 `.github/workflows/ci.yml` runs on a schedule and on demand, and that is the only place the suite
@@ -3176,20 +3163,18 @@ not. The Windows-path bug was found by the first CI run and by nothing else.
 
 ### Historical: NO NEW TESTS until CI/CD runs on a public repo
 
-**Emma, 2026-08-31:** *"all the tests of this repo are kinda bullshit, so no more tests until we
-got the ci/cd with github actions as a public repo running."*
+**No new tests until CI/CD ran on a public repo**, because the existing suite could not be
+trusted.
 
-**She is right and the proof is in the suite.** `tests/test_namemodel.py:620` asserts
+**The proof is in the suite.** `tests/test_namemodel.py:620` asserts
 `patronymic_or_surname("Olsen", "Ole Hansen") == "patronymic"`. It passes. It also passes with
 the discriminator **deleted**, because the fallthrough returns `"patronymic"` too -- so the test
 that appears to pin the father-name check has never observed it doing anything, and 62,637 tokens
 went out mis-modelled underneath it. A test asserting only the positive case of a function whose
 default IS that case asserts nothing.
 
-**And do not RUN the suite routinely either.** Emma, 2026-08-31: *"please don't waste time with
-the tests lol. They are paused until ci/cd."* The fast lane is ~7 minutes and it was run six times
-in one evening; that is 40 minutes of her session spent on a signal she has already said she does
-not trust. Run a specific module when a change plausibly touches it, and let CI run the lane once
+**And do not RUN the suite routinely either.** The fast lane is ~7 minutes and it was run six
+times in one evening; that is 40 minutes spent on a signal nobody trusts. Run a specific module when a change plausibly touches it, and let CI run the lane once
 it exists.
 
 **What replaces it is not nothing.** The rails still forbid claiming *works* or *verified* without
@@ -3214,14 +3199,12 @@ it on the strength of this rule -- note the dependency and leave the order as sh
 
 ### The repo is PUBLIC as of 2026-09-01. CI runs — and `pipeline.yml` DOES run on push
 
-**Emma, 2026-09-01:** *"The repo is public now lol"*, after *"I want to make this a public repo so
-we don't need to waste your attention on the tests shit"*. Actions minutes are free on public
-repos, so the cost argument that made CI manual-only is gone and `.github/workflows/ci.yml` now
+The repo went public so that CI could run without spending attention on the test question.
+Actions minutes are free on public repos, so the cost argument that made CI manual-only is gone and `.github/workflows/ci.yml` now
 carries `schedule:` (05:17 daily, off the hour) and `pull_request:` alongside `workflow_dispatch:`.
 
-**`push:` was banned outright until 2026-09-03, when Emma reversed it for ONE workflow:**
-*"pushes should trigger the pipeline to go all the way including up to getting a working qs file
-and having the daily batch on the site."*
+**`push:` was banned outright until it was reversed for ONE workflow:** a push should trigger
+the pipeline to go all the way, up to a working `.qs` file and the daily batch on the site.
 
 So `.github/workflows/pipeline.yml` carries `push: branches: [main]`, and **a push bypasses the
 six-hour gate**. That is the point rather than a side effect: the gate asks whether she has edited
@@ -3259,8 +3242,8 @@ it, because the pipeline pushes its commit after the sha is already fixed.
 **Measured on run 33687514166 (2026-09-02):** the `pipeline` job pushed `4111f4d` at 22:02:19 and
 `site / build` checked out `8dcf42f6` thirteen seconds later. Since `build-pages-site.py`
 publishes `reports/wikidata-garborg-day.qs` on the page, **every site build served the previous
-batch** — it had never once shown the batch from its own run. Emma found it: *"the pipeline does
-not update github pages lol."*
+batch** — it had never once shown the batch from its own run. The symptom was that the pipeline
+did not update GitHub Pages.
 
 **The fix is an explicit hand-off:** the `pipeline` job outputs `git rev-parse HEAD` after its
 rebase and push, `pages.yml` takes a `ref` input on `workflow_call`, and the `site` job passes it.
@@ -3329,12 +3312,9 @@ Nothing is wrong with it; it is just long.
 
 ### A ten-minute ceiling is not a wall. Run it in the BACKGROUND, do not hand it back
 
-**Emma, 2026-08-27:** *"My god you cunt just run that shit instead of acting like you need
-me."*
-
-This paragraph used to end *"run it in your own terminal"*, and that sentence was quoted in
-status report after status report as though the slow lane were something only she could do.
-It is not. The **foreground** tool call has a ten-minute ceiling; a **backgrounded** one does
+This paragraph used to end *run it in your own terminal*, and that sentence was quoted in status
+report after status report as though the slow lane needed somebody else. It does not. The
+**foreground** tool call has a ten-minute ceiling; a **backgrounded** one does
 not, and the slow modules run there perfectly well — sequentially in one command, so the
 whole-corpus merges do not thrash each other.
 
@@ -3372,7 +3352,7 @@ is a partial stand-in for that, and says so.
 
 ### The 183,674 isolated Geni-linked Wikidata items are LOW PRIORITY
 
-**Emma's ruling, 2026-08-15**, after the demographic analysis:
+**Ruled after the demographic analysis:**
 *"this group of people is a group that I probably would consider to be very low
 priority, and I don't consider my relationship with them to be that important. I
 don't think that they're that important to get into the World Tree."*
@@ -3383,15 +3363,14 @@ appear in none of the 203 exports, so they are not people the tree is missing a
 link to; they are outside it entirely.
 
 They are politicians, writers, lawyers and academics, mostly 19th–20th century,
-and **54.7% have no Wikipedia article** — Emma guessed almost all would.
+and **54.7% have no Wikipedia article**, against an expectation that almost all would.
 
 **Do not spend effort connecting them.** This is recorded because the group is
 large enough (13% of stored humans) to look like a priority and is not.
 
 ### An item with no relationships is not a missing item. Geni ID first, then everything else
 
-**Emma, 2026-08-15, correcting the framing of the Samaritan high priests.** They
-are **on Geni and on Wikidata**. What they lack on Wikidata is *genealogy*:
+**The Samaritan high priests are on Geni AND on Wikidata.** What they lack on Wikidata is *genealogy*:
 *"they aren't really genealogical entries. They are just individuals… They just
 are individuals without any relationships and such."* Reporting them as absent
 was the § *"Is X present?"* failure again, one section down, in a new costume —
