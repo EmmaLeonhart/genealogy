@@ -1903,10 +1903,8 @@ as "conflicts" has regressed.
 
 ### "Is X present?" means BOTH stores. Answer for each, and name which
 
-**Emma's rule, 2026-08-14, after a whole session was lost to the ambiguity.**
-When she asks whether somebody or something is *present*, she is **completely
-agnostic between Wikidata and Geni**. She is asking whether it exists in the
-material this project works with, not which container it sits in. So:
+**"Is X present?" is completely agnostic between Wikidata and Geni.** It asks whether something
+exists in the material this project works with, not which container it sits in. So:
 
 - **Check both.** The corpus under `exports/` (plus `gedcom/`), and the local
   Wikidata store under `wikidata/items/` with its index in
@@ -1921,11 +1919,10 @@ material this project works with, not which container it sits in. So:
   holders and their neighbours — so absent-from-store never means absent-from-Wikidata. Both
   limits get stated, not implied.
 
-**How it went wrong, because the shape recurs.** Asked whether the pre-1600s
-Samaritan high priests existed, the answer given was scoped silently: first to
-Wikidata (0 of 35 linked), then to `order.life` (0 of 35), each true, neither the
-question. Emma had **built that tree on Geni herself** and heard "they are not
-present". The 35 were in the corpus the whole time.
+**How it went wrong, because the shape recurs.** Asked whether the pre-1600s Samaritan high
+priests existed, the answer given was scoped silently: first to Wikidata (0 of 35 linked), then
+to `order.life` (0 of 35), each true, neither the question. That tree had been built on Geni by
+hand, and the answer came back "they are not present". The 35 were in the corpus the whole time.
 
 **Join on the Geni ID; do not search by name.** The same session grepped for
 `Shalma|Tabia|Abta` — names from the *modern* end of the family — and missed 35
@@ -1943,8 +1940,8 @@ export resolves — reading it as "Geni has little here" is backwards. The doorw
 column is the discriminator: many parentless people means under-sampled, few
 means possibly just a small family that ended.
 
-**"Region" is a neighbourhood in the family graph, never a place.** Emma was
-explicit about this. Do not classify people geographically: birthplace strings
+**"Region" is a neighbourhood in the family graph, never a place.** Do not classify people
+geographically: birthplace strings
 are mostly absent, and inferring a place from a name is the fuzzy matching this
 repo refuses everywhere else.
 
@@ -1959,9 +1956,8 @@ clan exits and a single marriage. Reach for the neighbourhood walk first; the
 name screen is at best a way to pick seeds for it.
 
 **`SURN` is not reliably a surname, and `_MARNM` is not reliably a married
-name.** `_MARNM` *is* the married name — Emma, 2026-08-11, and it is confirmed on
-the female records checkable against history (Judith `/de France/` → `Flandre`).
-But 244,392 of 444,874 `NAME` records carry the tag and most are not doing that:
+name.** `_MARNM` *is* the married name, confirmed on the female records checkable against
+history (Judith `/de France/` → `Flandre`). But 244,392 of 444,874 `NAME` records carry the tag and most are not doing that:
 31% duplicate `SURN`, **43% are the only surname on the record** because `SURN`
 is empty, and the 25% that differ are **53% male**. So neither field can be read
 alone. The trap for P734 is the CJK shape — `SURN 陳郡陽夏` (Chen commandery,
@@ -1978,51 +1974,45 @@ to follow. An `Ancestors` or `BloodTree` export can hide wives; a `Forest` one
 cannot, and that asymmetry is what let the Hata question be settled rather than
 left open.
 
-**A hand-recorded identity or label correction goes in a TRACKED TSV.** Her
-Geni-to-Wikidata identities live in `reports/manual-identifications.csv`, and a
-label only she can supply — *"Name should be … Jacobus Bothniensis"* — in
-`reports/label-corrections.tsv`, which `derive-labels.py` applies at derivation
-so the exports stay the record of what Geni actually said.
+**A hand-recorded identity or label correction goes in a TRACKED TSV.** Hand-made
+Geni-to-Wikidata identities live in `reports/manual-identifications.csv`, and a label that can
+only be supplied by hand — *Name should be Jacobus Bothniensis* — in
+`reports/label-corrections.tsv`, which `derive-labels.py` applies at derivation so the exports
+stay the record of what Geni actually said.
 
 **⛔ THERE ARE TWO HAND-LABEL FILES AND THEY ARE NOT INTERCHANGEABLE.** The one above is keyed
 on the **Geni id**, carries **one Latin label**, and is read at DERIVATION — it corrects what our
 tree thinks somebody is called. `reports/label-applications.tsv` is keyed on the **QID** and
 carries `qid, kind, lang, value` — *this item, this language, this exact string* — and goes
-**straight into the QuickStatements batch, verbatim**. Emma, 2026-09-08, giving the first four:
+**straight into the QuickStatements batch, verbatim**. The first four rows:
 
     Q140568870|Lzh|"李命玥"        Q140568870|Aja|"閻魔獅心"
     Q140568870|Lja|"エマ・レオンハート"  Q140568870|Lko|"엠마 레온하트"
 
-*"this will be one of many labels that gets applied over time through the label correction
-systems … I think we probably have it but not sure if that is how we did label corrections."*
-**We did not.** Neither file could express it: the derivation one has no language and no alias,
-and `_label_corrections` is every ground we DERIVE — an abbreviation we expanded, the birth-name
+Neither existing file could express this: the derivation one has no language and no alias, and
+`_label_corrections` is every ground we DERIVE — an abbreviation we expanded, the birth-name
 flip, a description marker, a generation suffix — each computed from our own data by
 construction. `kind` is `L` or `A` only; a `D` row is **refused by name**, § *NO descriptions*
 being categorical.
 
 **Nothing thinks about the value.** No transliteration, no `label_in`, no consensus vote, no
 title rule. § *WIKIDATA'S LABEL BEATS OURS* protects an item somebody else labelled from OUR
-derived proposal; a string she typed is not that.
+derived proposal; a hand-typed string is not that.
 
-**⛔ AND A DERIVED EDIT FOR A SLOT SHE SETS BY HAND IS DROPPED.** Her first four are corrections
-of ours — the rule gave `Q140568870` `エマ・レオンハルト`, `艾玛·莱翁哈尔特` and `엠마 레온하르트`
-on 2026-09-06 — so both lines would be emitted, land adjacent under `_cap_label_edits`'s
-per-person ordering, and **a label REPLACES: the last one written wins**, which is the derived
-one. The batch would read as though her correction had gone out. `_without_hand_covered` removes
-them. An **alias is not covered**, because an alias adds rather than replacing.
+**⛔ AND A DERIVED EDIT FOR A HAND-SET SLOT IS DROPPED.** Those first four are corrections of
+ours — the rule gave `Q140568870` `エマ・レオンハルト`, `艾玛·莱翁哈尔特` and `엠마 레온하르트`
+— so both lines would be emitted, land adjacent under `_cap_label_edits`'s per-person ordering,
+and **a label REPLACES: the last one written wins**, which is the derived one. The batch would
+read as though the hand correction had gone out. `_without_hand_covered` removes them. An **alias is not covered**, because an alias adds rather than replacing.
 
-**IT QUEUES LIKE ANY OTHER LABEL EDIT.** Emma, 2026-09-08: *"it should be like regular label
-applications but just a stronger level of it. not taking priority doing just like anything
-else."* The first version gave these QIDs `_cap_label_edits(priority=…)` and that was wrong.
-**Stronger means it wins its SLOT, not its place in the queue.**
+**IT QUEUES LIKE ANY OTHER LABEL EDIT** — a stronger level of the regular label application, not
+a higher priority. Giving these QIDs `_cap_label_edits(priority=…)` was wrong. **Stronger means
+it wins its SLOT, not its place in the queue.**
 
-**`reconcile` is deleted, and name matching does not come back.** Emma ordered
-the name-search matcher removed on 2026-08-12 — *"no fucking clue why there's a
-fuzzy matcher that sounds like something you made with zero consent from me"* —
-and on 2026-08-15 chose to delete the whole module rather than strip it, along
-with `genimerge reconcile` and `genimerge expand`. It held a live Wikidata
-client, which is the other reason: a command that queries on a keystroke is how
+**`reconcile` is deleted, and name matching does not come back.** The name-search matcher was
+removed outright, and the whole module deleted rather than stripped, along with
+`genimerge reconcile` and `genimerge expand`. It held a live Wikidata client, which is the other
+reason: a command that queries on a keystroke is how
 the 2026-08-07 rate-limit incident happened. The four offline pieces that other
 modules still need moved to `genimerge.matching` — two year tolerances,
 `year_of` for **Wikidata** time literals, and `distance_from_matched`. Nothing
@@ -2037,9 +2027,7 @@ batch, read recursively · `paths/` relationship paths generated from saved page
 `reports/` generated reports worth keeping in git · `out/` generated data, **tracked**
 · `tests/` pytest.
 
-**`out/` is NOT gitignored, and that is deliberate.** This line said "gitignored" until
-2026-08-25 and it was stale — Emma un-ignored it on 2026-08-15: *"Oh my god why the fuck is
-it gitignored? Un gitignore"*. The old `out/*` rule cost real work: the Wikidata
+**`out/` is NOT gitignored, and that is deliberate.** The old `out/*` rule cost real work: the Wikidata
 download-state index lives there, a restart lost it, and the downloader believed all
 514,876 seeds were unfetched while 1.4M items sat on disk. **Only the files GitHub
 physically refuses are ignored, one explicit line each** — `out/merged.ged`,
@@ -2050,9 +2038,9 @@ never data. `out/wikidata/relations.tsv` (65 MB) and `dates.tsv` (18 MB) are und
 stay tracked, so a clean clone can run the zipper after one labels rebuild.
 `.gitignore` line 32 carries the reasoning.
 
-The stale word was not harmless: it was quoted back at Emma as grounds for adding `out/`
-to `.gitignore`, and she approved a change that would have undone her own instruction.
-The `.gitignore` was right and the documentation was wrong.
+This paragraph said "gitignored" for ten days after the rule changed, and the stale word was not
+harmless: it was cited as grounds for adding `out/` back to `.gitignore`, and the change was
+approved on the strength of it. The `.gitignore` was right and the documentation was wrong.
 
 **`exports/excluded/` is the one part of `exports/` that is NOT corpus.** Added
 2026-08-15. An export lands there when Geni has since **changed a relationship it
@@ -2065,18 +2053,16 @@ tracked, readable, and still the record of what Geni said that day; they are onl
 kept out of the merge. `genimerge.sources` skips them and `excluded_files()`
 lists them.
 
-**The condition is checked now, never predicted.** Emma, 2026-08-15, rejecting a
-proposal to exclude them *once* a later export covered their people: *"That is
-stupid. It's a prediction of something that may or may not happen. I want you to
-move them into an excluded directory… and check to see if every single individual
-there is present in at least one other export."*
-`tests/test_repo_invariants.py::test_no_excluded_export_strands_a_person` is that
+**The condition is checked now, never predicted.** Excluding an export *once* a later one covers
+its people is a prediction of something that may or may not happen; the rule is to move the file
+into the excluded directory and check that every individual in it is present in at least one
+other export. `tests/test_repo_invariants.py::test_no_excluded_export_strands_a_person` is that
 check, so an exclusion that would drop somebody from the tree fails the suite.
 
 **The worked case, `excluded/samaritans/`** — four exports taken before
 `Yitzhaq I ben Tsedaka` (`6000000227245553985`) existed on Geni. Geni had linked
-**Tsedaka II → Abram** directly, skipping him; when Emma created him, Geni
-rewrote family `F6000000178795360833` **in place**, swapping its child from Abram
+**Tsedaka II → Abram** directly, skipping him; when he was created, Geni rewrote family
+`F6000000178795360833` **in place**, swapping its child from Abram
 to Yitzhaq I. Merging old and new gave that family both children and gave Abram
 two fathers, one of them the other's father. They became excludable only when
 `export-BloodTree-6000000178794141887.ged` arrived and covered the last **1,091**
