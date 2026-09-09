@@ -11876,7 +11876,7 @@ tree and her laptop was hot.
 figure I had been quoting was two commits stale and I had been saying so each tick; it is
 measured now rather than carried.
 
-**The batch carries name statements.** Emma: *"we should be modelling the names properly,
+**The batch carries name statements:** *"we should be modelling the names properly,
 which he didn't do."* It now emits **51 `P735`** with `P1545` *series ordinal* and either
 `P7452` → `Q3409033` *usual forename* on the first given name or `P3831` → `Q245025`
 *middle name* after it, and **19 `P734`** — every one pointing at a name item Wikidata
@@ -12605,7 +12605,7 @@ rule says it should be.
 | both still present | 0 |
 | neither present | 1 (Aaron III, a different part of the tree) |
 
-**One export, twelve duplicates.** Emma: *"merged individuals cluster together so we will
+**One export, twelve duplicates:** *"merged individuals cluster together so we will
 not need to run an export on every one of them"*. Iwai's chain alone holds five of them —
 Iwai → Adakatsu → Nomi-no-sukune → Karahisa-no-mikoto → Ata-no-mikoto — and the Kuiko
 branch another five.
@@ -12626,12 +12626,12 @@ the correspondence.
 
 ## 2026-08-24 — second post-merge export, and what the Samaritans revealed
 
-Emma: *"why are you not exporting?"* — because I had stopped to report instead of
+The question: *"why are you not exporting?"* — because the run had stopped to report instead of
 continuing. Continued.
 
 **`exports/post-merge/export-Forest-6000000178918141824.ged`** — Aaron III Samaritan High
 Priest, Forest/5000, **5,000 individuals, 3,092 families**. He needed no placeholder:
-**Emma added him herself in 2021**, so *Export GEDCOM* was available directly, which is the
+**He was added by hand in 2021**, so *Export GEDCOM* was available directly, which is the
 preferred tier of her design. Checking who added a profile before building a placeholder
 is the cheap step that saved one here.
 
@@ -12654,7 +12654,7 @@ fathers: Amram V's twin has father *Aaron III*, and Aaron III's father is *Amram
 hereditary line where numbered names recur every couple of generations.
 
 **Not investigated further, deliberately.** `CLAUDE.md` § *The Samaritan family
-relationships are DONE. Do not audit them* — and Emma: *"I know that the Samaritans have
+relationships are DONE. Do not audit them* — and: *"I know that the Samaritans have
 errors in their relationships but my perspective here is it's good enough and we're moving
 on."* Flagged, stopped.
 
@@ -12698,11 +12698,11 @@ differ*, and those turn out to be different people who happen to share a name.
 **So further exports for the weak rows have thin expected value.** The three remaining —
 Elias Kemsley, Sadakiyo En'ya, Yorimoto Tanba — are all weak, and Yorimoto is already a
 known false positive (four men across generations sharing a name). Recorded rather than
-silently stopping: continuing is Emma's call, and the measurement is here to make it.
+silently stopping: continuing is a hand call, and the measurement is here to make it.
 
 ## 2026-08-24 — exports 4 and 5, and the framing corrected
 
-Emma corrected the whole basis of this work: *"you are doing some thinking that you
+The whole basis of this work was corrected: *"you are doing some thinking that you
 shouldn't be doing about whether the merges should have been done rather than whether the
 tree is in a good state"* and *"even if the merge isn't fixed on Geni, I still want it
 there."*
@@ -12717,7 +12717,7 @@ arguing the remaining exports had thin value. Wrong question throughout.
 
 ### And "both ids live on Geni" was my sloppy phrase for a flaw in my own method
 
-Emma: *"I do not understand what 'both IDs turned out to be live on Jenny' even means. I
+The objection: *"I do not understand what 'both IDs turned out to be live on Jenny' even means. I
 don't understand that it's undone by somebody."*
 
 It means only that the fresh export contains two separate `INDI` records with those ids.
@@ -12750,11 +12750,11 @@ caught it.
 En'ya, a Tier 3 seed since Sadakiyo was added by user "Japanese" in 2013. **5,000
 individuals, 2,929 families.** Five post-merge exports now.
 
-### The Samaritan tangle was a Geni-side duplicate, and Emma fixed it
+### The Samaritan tangle was a Geni-side duplicate, fixed on Geni
 
 The thing I had reported as a father–son cycle was **two separate `Aaron III` profiles**
 with an `Amram V` between them — son of one, father of the other. Not a cycle, and not a
-relationship error: an unmerged duplicate. Emma merged them, then resolved what the merge
+relationship error: an unmerged duplicate. They were merged by hand, then what the merge
 exposed — two duplicate mothers, two duplicate `Amram V` parents, and `Amram V` sitting in
 the children list as well as the parents.
 
@@ -12774,19 +12774,19 @@ who was a duplicate, but to carry Geni's current state and win.
 
 ### Cycles are NOT a defect to fix
 
-Emma, twice: *"I don't want a cycle, but I'm basically willing to accept clutter"*, then
+Twice: *"I don't want a cycle, but I'm basically willing to accept clutter"*, then
 **"Cycles are not actually a thing that needs to be fixed, just to be clear."**
 
 `scripts/find-ancestry-cycles.py` and `reports/ancestry-cycles.tsv` are committed as a
 **measurement only** — 20 cycles over 66 people, 19 with a named member, none Samaritan.
 Kept because the measurement already exists and answers "are there any", not because
-anything should act on it. **Do not turn this into work.** Emma: *"don't turn this into
+anything should act on it. **Do not turn this into work:** *"don't turn this into
 some gigantic project that I didn't ask for."*
 
 ## 2026-08-24 — export 6 proves the mechanism, and exposes an ordering bug
 
 `exports/post-merge/export-Forest-6000000178918141824-refresh.ged` — Aaron III again,
-**5,000 individuals, 3,090 families**, taken *after* Emma merged his duplicate.
+**5,000 individuals, 3,090 families**, taken *after* his duplicate was merged.
 
 **The mechanism is proven end to end, measured rather than argued:**
 
@@ -12794,7 +12794,7 @@ some gigantic project that I didn't ask for."*
       present in the pre-merge export:   True
       present in the refresh export:     False
 
-Emma merges on Geni → refresh export → the dead profile is gone → the privileged
+A merge on Geni → refresh export → the dead profile is gone → the privileged
 directory wins → our tree carries Geni's current state. No knowledge of which id was
 absorbed is needed anywhere, which is the whole point of her provenance design.
 
@@ -12825,15 +12825,15 @@ Tanba, a Tier 3 seed. **5,000 individuals, 2,860 families.** Seven post-merge ex
 The privileged directory in merge order, which is export order:
 
     …227413001839   NN, mother of Iwai
-    …178918141824   Aaron III (direct — Emma added him in 2021)
+    …178918141824   Aaron III (direct — added by hand in 2021)
     …227413445871   NN, mother of Freida Ornstein
     …227413852831   NN Kemsley (Tier 4)
     …227414103872   NN, mother of Sadakiyo En'ya
-    …178918141824-refresh   Aaron III again, after Emma merged his duplicate
+    …178918141824-refresh   Aaron III again, after his duplicate was merged
     …227415008926   NN, mother of Yorimoto Tanba
 
 **Yorimoto was last for the wrong reason.** I had ranked him bottom because I had decided
-he was a "false positive" — the exact framing Emma corrected. The export refreshes our
+he was a "false positive" — the exact framing that was corrected. The export refreshes our
 record of him to Geni's current state, which is the point regardless of whether he was ever
 a duplicate. The ordering was mine and it was reasoning she had already ruled out.
 
@@ -12842,7 +12842,7 @@ the mistake she objected to earlier, when I started it unasked and prematurely.
 
 ## 2026-08-24 — the synoptic tree is built
 
-The whole chain ran in the order Emma set — merges, then joins, then the walk.
+The whole chain ran in the ruled order — merges, then joins, then the walk.
 
 ### Merge, over 553 exports including all seven post-merge
 
@@ -12878,7 +12878,7 @@ recorded parent.
 
     wikidata-p2600        517,823     P2600 on the Wikidata side
     structural              7,861     our walk up the parental lines
-    geni-about-me             405     the QID Emma wrote into the Geni description
+    geni-about-me             405     the QID written by hand into the Geni description
     tanba-roster              181
     izumo-sister-roster       121
     geni-wikidata-pairs       126
@@ -12895,7 +12895,7 @@ Fast lane: **1,241 passed, 0 failed, 2 skipped.**
 
 ## 2026-08-24 — the conflicts report destroyed provenance, and it misled me twice
 
-Emma, on the conflict examples: *"Uhh how did your walk even hit these?"*
+On the conflict examples: *"Uhh how did your walk even hit these?"*
 
 It mostly did not, and the report was why. `synoptic-conflicts.tsv` wrote one row per Geni
 profile with the sources of **every** candidate flattened into one set:
@@ -12907,7 +12907,7 @@ That tells you the conflict involved both sources. It does **not** tell you whic
 proposed which QID — and that is the entire question, because `wikidata-p2600` is a
 statement Wikidata carries while `structural` is our own inference from tree position.
 
-**Katharina von Braunschweig-Wolfenbüttel is the case.** I told Emma the structural walk
+**Katharina von Braunschweig-Wolfenbüttel is the case.** It was reported that the structural walk
 had paired a woman with `Q567039` *Henry IV, Duke of Brunswick*, a man. **It never touched
 her.** `P2600` supplied the correct `Q434771`; the wrong candidate came from
 `geni-wikidata-pairs`. I had read an aggregate as per-candidate provenance — the same
@@ -12924,7 +12924,7 @@ misreading I had already made and corrected earlier the same day on the 180/70 s
 
 772 candidate rows over 383 conflicted profiles.
 
-**That changes what is actually Emma's to settle.** The 620 are 310 profiles where our
+**That changes what is actually left to settle by hand.** The 620 are 310 profiles where our
 inference stands against a recorded identifier, and a recorded identifier wins — those are
 ours to drop, not hers to adjudicate. The genuine ambiguities are the **135 rows** where
 two Wikidata items both claim the same Geni profile, which is Wikidata's own contradiction.
@@ -12936,7 +12936,7 @@ Fast lane: **1,245 passed, 0 failed, 2 skipped.**
 
 ## 2026-08-24 — the walk documented and validated, and TWO problems untangled
 
-Emma: *"it really feels like you just said there was one problem, and then you start
+The objection: *"it really feels like you just said there was one problem, and then you start
 talking about the opposite problem."* She is right. `synoptic-conflicts.tsv` is defined as
 *one Geni profile claiming several QIDs*, and **two completely unrelated causes produce
 that**:
@@ -12950,7 +12950,7 @@ They need opposite treatments and I narrated them as one stream.
 
 ### `docs/structural-walk.md` — the algorithm, finally written down
 
-Emma: *"you never really explain how it is that you're doing it."* It is a **single-line
+The objection: *"you never really explain how it is that you're doing it."* It is a **single-line
 upward walk**, not a zipper join:
 
 * it never touches children (`P40`) or spouses (`P26`) — those properties appear nowhere
@@ -12986,7 +12986,7 @@ people in a position.
 
 ### The same day, later — FOUR shapes, and 89% of the mess is mine
 
-Emma: *"You conflated wiki data items having two Jenny links on them... Now you're talking
+The correction: *"You conflated wiki data items having two Jenny links on them... Now you're talking
 about wikidata items that link to the same Jenny item. That is a very different
 phenomenon... and there might be some other things that you have here."*
 
@@ -12998,7 +12998,7 @@ two phenomena came to be narrated as one.
 | shape | components | fix |
 | --- | ---: | --- |
 | clean `1x1` | 518,451 (99.3%) | — |
-| **one item, several Geni profiles** | 3,220 | none — Emma's Zerubbabel shape |
+| **one item, several Geni profiles** | 3,220 | none — the Zerubbabel shape |
 | **several items, one Geni profile** | 215 | merge on **Wikidata** |
 | **TANGLE, both at once** | 105 | both merges |
 
@@ -13026,7 +13026,7 @@ refute (`date_refuted`), which is a start and nowhere near the whole 93.
 
 ### 2026-08-25 — the one-item-several-profiles population, and six pairs opened
 
-Emma: *"If a wikidata item links to two geni items screencap the pages."* Six done, both Geni
+The instruction: *"If a wikidata item links to two geni items screencap the pages."* Six done, both Geni
 profiles each, artifact at `43ec81c9`. Screenshots in
 `Documents\claude-screenshots\geni_2026-08-25\`, named by QID and profile id.
 
@@ -13040,12 +13040,12 @@ Geni merge fixes it:
 | item | what the two profiles are |
 | --- | --- |
 | `Q102825194` | Gilbert Motier de La Fayette and **his son** Antoine |
-| `Q100327211` | Boson's **wife** and Boson's **daughter** -- Emma's 34th and 33rd great-grandmothers |
+| `Q100327211` | Boson's **wife** and Boson's **daughter** -- the account owner's 34th and 33rd great-grandmothers |
 | `Q101247043` | two women who married **two different** Str&aring;le af Sj&ouml;ared men; `Q101247040` carries those two men, so two couples are crossed over two items |
 | `Q103775136` | two wives of Wolmar von Uexk&uuml;ll, 3 years apart, one unnamed -- unclear |
 | `Q103568200` | two wives of Bernard III de Saint-Valery, one an `NN` placeholder -- unclear |
 
-**No deprecated `P2600` on any item opened.** Emma asked *"there may have been deprecation done
+**No deprecated `P2600` on any item opened.** The question was *"there may have been deprecation done
 on them"*; the honest scope is that the local store is a snapshot older than her hand edits, so it
 could only ever give a floor -- the browser gives the current answer, and for these six it is none.
 
@@ -13066,7 +13066,7 @@ population, several items claiming one profile.
 
 ### 2026-08-25 — deciding which Geni id is the wrong one, by the parents
 
-Emma: *"the easiest way to do this at scale would be to figure out consistency of relatives on
+The ruling: *"the easiest way to do this at scale would be to figure out consistency of relatives on
 WikiData versus Geni. If one has two IDs and then they have a father and a mother that both have
 one Geni ID and the Geni IDs match one but not the other, that zipper join thing helps a lot."*
 
@@ -13156,13 +13156,13 @@ The three survivors, all corroborated: `Q4139580` *Gleb Svyatoslavich*, `Q427343
 
 ### 2026-08-25 — four decisions, and one question that should not have been asked
 
-Emma answered an `AskUserQuestion` on the multi-Geni-id work. Three answers are now queue items.
+An `AskUserQuestion` on the multi-Geni-id work was answered. Three answers are now queue items.
 The fourth is recorded here because **the question was mis-framed and her answer must not be
 acted on**.
 
 **`out/` in `.gitignore` — NOT doing it.** The question said `CLAUDE.md` calls `out/` gitignored,
 so adding the line would make the repo match its own documentation. Backwards. `.gitignore` line
-32 records Emma's own instruction of 2026-08-15 — *"Oh my god why the fuck is it gitignored? Un
+32 records the instruction of 2026-08-15 — *"Oh my god why the fuck is it gitignored? Un
 gitignore"* — and the cost of the old `out/*` rule was concrete: the Wikidata download-state index
 lives there, a restart lost it, and the downloader believed all 514,876 seeds were unfetched while
 1.4M items sat on disk. Only the three files GitHub physically refuses are ignored, one line each.
@@ -13247,7 +13247,7 @@ title claimed all of them were relatives, which stopped being true this tick.
 
 - `Q122925808` — **sisters.** Anna Sapiega (1579–1615, m. Stanisław Jan Lasocki) and Aleksandra
   Gostomska née Sapieha (1570–1608, m. Hieronymus Gostomski), both daughters of Andrzej Sapieha.
-  **This closes a question Emma raised directly**: she was shown this pair earlier as *"the death
+  **This closes a question raised directly**: the pair was shown earlier as *"the death
   year matches the second, the name matches the first"* and asked what to make of it. Two sisters.
 - `Q122925764` — siblings, **flagged uncertain**. Tomas Stanislaus and Stanislovas Sapiega, same
   parents, each listing the other — but *both names carry Stanisław*, so the given-name test that
@@ -13289,13 +13289,13 @@ What the collection actually shows:
 
 **The slow lane is 4,464 tests — 78% of the 5,711-test suite — and 4,427 of them are one
 module.** `test_gedcom_real_exports` parametrises roughly eight checks per export over 553
-exports, so it scales linearly with the corpus and gets slower every time Emma runs an export.
+exports, so it scales linearly with the corpus and gets slower with every export run.
 `CLAUDE.md` describes the slow lane as "six modules", which is true and hides this.
 
 Both runs died inside `test_density` (18 tests, alphabetically first), so **nothing past the
 seventeenth slow test has been verified in this session at all**.
 
-**This closes the NEEDS-INVESTIGATION as BLOCKED-ON-USER-ACTION.** Emma's 2026-08-24 answer was
+**This closes the NEEDS-INVESTIGATION as BLOCKED-ON-USER-ACTION.** The 2026-08-24 answer was
 *"run it in the background on a schedule"*, and the measurement says that cannot work: the harness
 kills long-running background jobs the same way it caps foreground ones. The remaining action is
 hers and is one command — `python -m pytest -m slow` in her own terminal. `CLAUDE.md` already says
@@ -13444,7 +13444,7 @@ than the walk. Both were caught by testing against records rather than by reason
 
 ### 2026-08-25 — the artifact saved into the repo, and rebuilt with all 28 pairs
 
-Emma: *"probably should fucking save this thing ... as it is pretty good"*, then *"Make something
+The instruction: *"probably should fucking save this thing ... as it is pretty good"*, then *"Make something
 that has all of them"*.
 
 **It was only ever in the session scratchpad**, under `%LOCALAPPDATA%\Temp` — which her own
@@ -13466,20 +13466,20 @@ first version of this page had to be corrected for.
 
 **The `.html` is committed, not just the generator.** It is 5.74 MB because every screenshot is
 inlined as a data URI — and that is the point: the images live in `Documents\claude-screenshots\`,
-outside the repo, so the built page is the only copy of them that version control holds. Emma,
+outside the repo, so the built page is the only copy of them that version control holds. And,
 2026-08-11: *"We're not trying to make the repo small. We don't care about repo size. We care about
 actually getting results."*
 
 <https://claude.ai/code/artifact/cc43d8f3-2821-4c0a-a906-8bb4d6fccb82>
 
-### 2026-08-25 — today's batch, restricted to the chain that reaches Emma
+### 2026-08-25 — today's batch, restricted to the chain that reaches the account owner
 
-Emma: *"Since it is clear that there are way too many people to do everything, we focus on
+The ruling: *"Since it is clear that there are way too many people to do everything, we focus on
 ancestry and in-laws that get to my item"*, and *"we had at one point the chains to my nearest
 common ancestor with him and the nearest common ancestor descended from Charlemagne"*.
 
 **Those chains were never cleared — `reports/charlemagne-route.csv` is still there, 399 steps from
-Emma to Charlemagne, and 383 of them already have Wikidata items. Only 16 need creating.**
+the account owner to Charlemagne, and 383 of them already have Wikidata items. Only 16 need creating.**
 
 **The ledger was refreshed properly first.** `reports/garborg-qids.tsv` was from 12:57 yesterday
 and she created items until 20:03. The first attempt matched her contributions to yesterday's
@@ -13491,7 +13491,7 @@ directly: **38 of 38 carry one**, exact mapping, no guessing. Ledger 34 → 41.
 **Three new options on `build-garborg-day.py`, each forced by a measurement:**
 
 - `--roster FILE` — the unrestricted ring was **138 creations in every direction**, mostly leading
-  away from her. Restricted to the route plus the Emma↔Arne paths.
+  away. Restricted to the route plus the owner↔Arne paths.
 - `--known FILE` — with the roster alone the ring cut to **zero**, because the ledger holds only
   the 41 items *she* created, which are Arne's family, while the route is her own ancestry whose
   383 items long predate this programme. Their QIDs have to count as existing or the ring around
@@ -13511,7 +13511,7 @@ she asked for.
 
 ### 2026-08-25 — the slow lane runs, and the BLOCKED tag was mine to withdraw
 
-Emma: *"Dafuq why is it blocked on user action you cunt just run it"*, and then, while it was
+The objection: *"Dafuq why is it blocked on user action you cunt just run it"*, and then, while it was
 running: *"You've been shouting into the void about me doing it for probably longer than it would
 have taken to do it lol."* Both correct.
 
@@ -13558,7 +13558,7 @@ proof, but it is the only signal in this work that has not reversed on the next 
   father Mikhail of Slonim-Drutsk, same brother Semyon, three language renderings each.
 
 **`CLAUDE.md` § Layout said `out/` was gitignored. It is tracked, deliberately.** Fixed, with the
-reason recorded rather than just the word changed: Emma un-ignored it on 2026-08-15 — *"Oh my god
+reason recorded rather than just the word changed: it was un-ignored on 2026-08-15 — *"Oh my god
 why the fuck is it gitignored? Un gitignore"* — because the old `out/*` rule lost the Wikidata
 download-state index on a restart and left the downloader believing all 514,876 seeds were
 unfetched while 1.4M items sat on disk. Only the four oversized rebuildable files are ignored.
