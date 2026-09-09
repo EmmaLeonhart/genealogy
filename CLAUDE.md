@@ -8,223 +8,186 @@ Workflow behaviors live as skills in `.claude/skills/` (auto-discovered by Claud
 current by the `cleanvibe-update-check` skill.
 
 - **Last cleanvibe update check:** `2026-07-31` — all six skills present, none
-  superseded, nothing refreshed. Note the page's newest entry is **v1.15.0**
-  while this repo was scaffolded from **v1.17.0**, so the check can only show
-  that nothing *listed* is newer than what is vendored here; whether v1.16 or
-  v1.17 changed a skill is not something the page currently answers.
+  superseded, nothing refreshed. The page's newest entry is **v1.15.0** while this repo
+  was scaffolded from **v1.17.0**, so the check can only show that nothing *listed* is
+  newer than what is vendored here.
 - **Updates source:** <https://cleanvibe.emmaleonhart.com/updates.md>
 
 ## Project Description
 
 Merge Geni.com GEDCOM exports into one canonical genealogy, then reconcile that
-genealogy against Wikidata — and eventually generate the edits that would create
-the missing people on Wikidata.
+genealogy against Wikidata, and generate the edits that would create the missing people
+on Wikidata.
 
-The user's stated direction, in their own framing:
+The programme, in order:
 
 1. Merge the exports into a single tree.
-2. Work out the Wikidata connections as far as the data allows, using the Geni
-   ID that every record preserves.
-3. Later, expand the tree with more exports from Geni — which means finding
-   good **branch points** in the genealogy to export from next.
-4. Much later, queue up creation of the absent people *on* Wikidata, connected
-   to their parents, carrying whatever the genealogy supports: multilingual
-   label, English label, Geni ID, sex, and the relationship links. Harder
-   pieces they named explicitly: the name/surname *properties*, creating
-   Wikidata items for surnames that have none so people can be linked to them,
+2. Work out the Wikidata connections as far as the data allows, using the Geni ID that
+   every record preserves.
+3. Expand the tree with more exports from Geni — which means finding good **branch
+   points** in the genealogy to export from next.
+4. Queue up creation of the absent people *on* Wikidata, connected to their parents,
+   carrying whatever the genealogy supports: multilingual label, English label, Geni ID,
+   sex, and the relationship links. The harder pieces are the name/surname *properties*,
+   creating Wikidata items for surnames that have none so people can be linked to them,
    and queued edits adding name links to people who already have items.
 
 ## Architecture and Conventions
 
-**The Geni profile ID is the primary key for everything.** Geni's export writes
-it as the GEDCOM xref (`0 @I6000000001846508982@ INDI`) and repeats it as
-`1 RFN geni:6000000001846508982`. Merging is therefore an exact join, never
-fuzzy name matching. `genimerge.identity` is the single place that knows this;
-`tests/test_gedcom_real_exports.py` asserts it against the real files so a
-change in Geni's format fails loudly.
+**The Geni profile ID is the primary key for everything.** Geni's export writes it as the
+GEDCOM xref (`0 @I6000000001846508982@ INDI`) and repeats it as
+`1 RFN geni:6000000001846508982`. Merging is therefore an exact join, never fuzzy name
+matching. `genimerge.identity` is the single place that knows this;
+`tests/test_gedcom_real_exports.py` asserts it against the real files so a change in
+Geni's format fails loudly.
 
-Exactly **four xref prefixes** occur, each bound to one record type: `I` on
-`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **291,439**
-xrefs in the exports, re-measured on 2026-08-04 against each batch of new
-ones rather than carried forward. Some exports carry no `NOTE` records at all, so
-an export need not use every letter; the claim is that no *other* letter appears
-and no letter spans two record types. `GENI_ID_RE` accepts only
-those on purpose: when it accepted any letters, the foreign xref `@NI04461@`
-parsed as Geni ID `04461` and would have produced a URL to a stranger's profile.
-**`tests/test_gedcom_real_exports.py` asserts this on every run**, per export,
-naming the offending prefix and record type if Geni ever adds a fifth — so it
-needs no remembering, and a change breaks the suite instead of quietly changing
-which profile an ID points at.
+Exactly **four xref prefixes** occur, each bound to one record type: `I` on `INDI`, `F` on
+`FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **291,439** xrefs, re-measured
+against each batch of new exports rather than carried forward. Some exports carry no
+`NOTE` records, so an export need not use every letter; the claim is that no *other*
+letter appears and no letter spans two record types. `GENI_ID_RE` accepts only those on
+purpose: when it accepted any letters, the foreign xref `@NI04461@` parsed as Geni ID
+`04461` and would have produced a URL to a stranger's profile.
+`tests/test_gedcom_real_exports.py` asserts this on every run, per export, naming the
+offending prefix and record type if Geni ever adds a fifth.
 
 ### Open the FAMILY TREE page for an export seed, not the profile page
 
-**Emma, 2026-08-17, definitively:** *"rather definitively this kind of thing
-https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
-for them rather than the pages you opened."*
-
-So a batch of export seeds is opened as
-`https://www.geni.com/family-tree/index/<geni id>`, **not**
-`https://www.geni.com/people/x/<geni id>`. The profile page shows one person; the
-family-tree index shows the neighbourhood around them, which is what she needs in
-front of her to create the placeholder and run the export.
+A batch of export seeds is opened as `https://www.geni.com/family-tree/index/<geni id>`,
+**not** `https://www.geni.com/people/x/<geni id>`. The profile page shows one person; the
+family-tree index shows the neighbourhood around them, which is what creating the
+placeholder and running the export needs in front of it.
 
 **`reports/midpoint-seeds-to-open.tsv` is overwritten every batch, and that is the
-intended behaviour.** Emma, 2026-08-17: *"don't make it accumulate overwriting is the
-intended functionality lol."* It is the handoff for the batch being opened now, not a
-history of what has been opened.
+intended behaviour.** It is the handoff for the batch being opened now, not a history of
+what has been opened.
 
-**So there is no already-opened filter.** Each batch is simply the top of the current
-ranking. She has said this twice — 2026-08-16, on a filter built for the same reason:
-*"I don't know what the already open filter is for… I feel like it might be
-overcomplicating things"*, and its bug had cut a candidate list from 778 to 7. Re-opening
-a tab she has already dealt with costs her one glance; a filter costs correctness.
+**There is no already-opened filter.** Each batch is simply the top of the current
+ranking. A filter built for that purpose had a bug that cut a candidate list from 778 to
+7; re-opening a tab already dealt with costs one glance, and a filter costs correctness.
 
 Keeping the picks on **disjoint chains** is a different thing and stays: without it fifty
 tabs can all be standing on the same three chains, so they buy three exports rather than
 fifty.
 
-This applies to **seed batches** — the midpoint openings, the density and edge picks.
-It does not change the *isolate* batches, where the thing being judged is whether one
-person connects at all, nor the saved-page workflow below, which needs the profile
-page because that is where the relationship panel and its `href`s live.
+This applies to **seed batches** — the midpoint openings, the density and edge picks. It
+does not change the *isolate* batches, where the thing being judged is whether one person
+connects at all, nor the saved-page workflow below, which needs the profile page because
+that is where the relationship panel and its `href`s live.
 
 ### `docs/export-seed-rules.md` is how an export individual gets made
 
-**Emma dictated the whole method on 2026-08-17** and asked for it written down.
-It covers where to put a placeholder profile, what to name it, and what to do when
-a tree has no open slots left — a five-tier preference order with patronymics at
-the top, because a patronymic names the father and so the created person is
-attested rather than invented. It also fixes the export itself: **`Forest`, size
-5000, strictly one at a time, and the zips are filed into `exports/` in bulk only
-once every one of them is down.**
+That file covers where to put a placeholder profile, what to name it, and what to do when
+a tree has no open slots left — a five-tier preference order with patronymics at the top,
+because a patronymic names the father and so the created person is attested rather than
+invented. It also fixes the export itself: **`Forest`, size 5000, strictly one at a time,
+and the zips are filed into `exports/` in bulk only once every one of them is down.**
 
 That file is the authority; do not re-derive any of it here.
 
-**The whole loop runs under Chrome automation now**, proven end to end on
-2026-08-17: create the profile in the tree view, Actions → Export GEDCOM, poll the
-download page, click through. Emma's framing: *"we've managed to use Chrome
-automation to actually completely run my old workflow… all of my human labor
-involved with the exports."*
+**The whole loop runs under Chrome automation**, proven end to end on 2026-08-17: create
+the profile in the tree view, Actions → Export GEDCOM, poll the download page, click
+through.
 
-**Relationship paths: save the page, never the pasted text.** A Geni
-relationship path — the chain of people between two profiles, which Geni shows
-for any pair it can connect — is the only evidence in this repo that comes from
-*outside* our own data: it names people whether or not any export has reached
-them. Copying the panel as text keeps the names and loses the `href`s, and the
-`href`s are where the profile IDs are. **Saving the page keeps them**, so the
-workflow is: save the profile page from the browser into `geni_pages/`, then
-`python -m genimerge path-from-html <page> -o paths/<name>.tsv`, then
+**Relationship paths: save the page, never the pasted text.** A Geni relationship path —
+the chain of people between two profiles, which Geni shows for any pair it can connect —
+is the only evidence in this repo that comes from *outside* our own data: it names people
+whether or not any export has reached them. Copying the panel as text keeps the names and
+loses the `href`s, and the `href`s are where the profile IDs are. **Saving the page keeps
+them**, so the workflow is: save the profile page from the browser into `geni_pages/`,
+then `python -m genimerge path-from-html <page> -o paths/<name>.tsv`, then
 `python -m genimerge path <file>` → `reports/path-*.md` and `path-*.json`.
 
-`genimerge.genipage` does the extraction, and the difficulty is scoping: a Geni
-profile page carries several hundred `data-profile-id` anchors — immediate
-family, managers, followers — and only those inside `span.segment > span.name`
-are on the path. Matching anchors directly yields a plausible-looking list that
-is not a path.
+`genimerge.genipage` does the extraction, and the difficulty is scoping: a Geni profile
+page carries several hundred `data-profile-id` anchors — immediate family, managers,
+followers — and only those inside `span.segment > span.name` are on the path. Matching
+anchors directly yields a plausible-looking list that is not a path.
 
-**`reports/connectors.md` and `out/connectors.html` answer "who do we lack?"
-across all the paths at once.** `python -m genimerge connectors` checks every
-path file against one loaded tree — a second `genimerge path` run per file would
-pay the whole cost of loading the merge each time, so `--write-paths` refreshes
-every `reports/path-*.md` from the same pass. It groups absent steps into
-**bridges** (a run of consecutive missing people, plus the doorway to seed on and
-the resume point beyond) and merges bridges that share any person into one
-cluster. **Rank by slots closed across every path a cluster blocks, never by gap
-length**: ten people blocking five paths beat fifty private to one. The report
-carries a separate **"one export?"** column because payoff and feasibility come
-apart at the top of the table — nine people is the widest gap a targeted export
-has closed here, and the highest-slot cluster is routinely wider than that.
+**`reports/connectors.md` and `out/connectors.html` answer "who do we lack?" across all
+the paths at once.** `python -m genimerge connectors` checks every path file against one
+loaded tree — a second `genimerge path` run per file would pay the whole cost of loading
+the merge each time, so `--write-paths` refreshes every `reports/path-*.md` from the same
+pass. It groups absent steps into **bridges** (a run of consecutive missing people, plus
+the doorway to seed on and the resume point beyond) and merges bridges that share any
+person into one cluster. **Rank by slots closed across every path a cluster blocks, never
+by gap length**: ten people blocking five paths beat fifty private to one. The report
+carries a separate **"one export?"** column because payoff and feasibility come apart at
+the top of the table — nine people is the widest gap a targeted export has closed here,
+and the highest-slot cluster is routinely wider than that.
 
-**`ABSENT` on a path means "not in the tree" and nothing else.** A person walked
-*twice* on one path is `REPEAT`, which counts as held. The two shared a branch
-until 2026-08-06 and the cost was not cosmetic: `paths/nn-basse.tsv` holds two
-relationship paths end to end, so its second chain re-walks steps 1–9, and the
-tool reported **the account owner himself** as a missing person — which
-`connectors` then offered as a nine-person bridge worth exporting for. The
-`used` rule that caused it is still right for the *name* fallback, where a
-second step landing on one profile is a matching error; an exact ID landing
-twice is a file holding two paths. `tests/test_paths.py` pins both directions,
-including that a repeat of someone genuinely absent stays absent.
+**`ABSENT` on a path means "not in the tree" and nothing else.** A person walked *twice*
+on one path is `REPEAT`, which counts as held. `paths/nn-basse.tsv` holds two relationship
+paths end to end, so its second chain re-walks steps 1–9; conflating the two reported the
+account owner as a missing person and offered him as a nine-person bridge worth exporting
+for. The `used` rule that caused it is still right for the *name* fallback, where a second
+step landing on one profile is a matching error; an exact ID landing twice is a file
+holding two paths. `tests/test_paths.py` pins both directions, including that a repeat of
+someone genuinely absent stays absent.
 
-`genimerge.paths` **falls back to name matching only for rows with no ID**, and
-that fallback is a report for a human, never an input to a merge. Do not let it
-become load-bearing: run against the Jimmu path it invented eleven holes in a
-run of thirty and moved the headline finding from "stops at step 30" to "stops
-at step 2". Its guards exist because of specific failures — a person settled by
-one step is never offered to a later one (Jelena Urošević matched Elisabeth of
-Hungary, the step before her, reporting the doorway as already held); a name
-shared by more than `AMBIGUITY_LIMIT` people is `UNRESOLVED` rather than held,
-because 73 profiles are called `n n`; and a row whose ID is simply absent from
-the tree resolves to absent rather than falling back to its name.
+`genimerge.paths` **falls back to name matching only for rows with no ID**, and that
+fallback is a report for a human, never an input to a merge. Do not let it become
+load-bearing: run against the Jimmu path it invented eleven holes in a run of thirty and
+moved the headline finding from "stops at step 30" to "stops at step 2". Its guards exist
+because of specific failures — a person settled by one step is never offered to a later
+one (Jelena Urošević matched Elisabeth of Hungary, the step before her, reporting the
+doorway as already held); a name shared by more than `AMBIGUITY_LIMIT` people is
+`UNRESOLVED` rather than held, because 73 profiles are called `n n`; and a row whose ID is
+simply absent from the tree resolves to absent rather than falling back to its name.
 
-**Later sources win value conflicts.** Changed 2026-08-04, having been
-earlier-wins since the start. Geni is a live site, so two exports disagreeing on
-a single-valued path means the profile was edited between them and the newer
-export holds the correction. The first conflicts to appear in real data — at 45
-exports; there were none at 10 — were all `INDI.CHAN.DATE`, the profile's own
-last-edited stamp, where keeping the older value is not arbitrary but wrong.
-Merge order is filename order, not export date: if "later" ever needs to mean
-"more recently exported", sort the paths by their `HEAD` date before calling
-`merge_files` and the rule follows without a code change.
+**Later sources win value conflicts.** Geni is a live site, so two exports disagreeing on
+a single-valued path means the profile was edited between them and the newer export holds
+the correction. The first conflicts to appear in real data — at 45 exports; there were
+none at 10 — were all `INDI.CHAN.DATE`, the profile's own last-edited stamp, where keeping
+the older value is not arbitrary but wrong. Merge order is filename order, not export
+date: if "later" ever needs to mean "more recently exported", sort the paths by their
+`HEAD` date before calling `merge_files` and the rule follows without a code change.
 
 **The xref is the merge key; `RFN` is corroboration checked elsewhere.**
-`Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory
-`RFN` does not stop a merge. The cross-check runs in `inventory`, in `model`,
-and over the merged output in `tests/test_merge_real_exports.py`.
+`Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory `RFN` does
+not stop a merge. The cross-check runs in `inventory`, in `model`, and over the merged
+output in `tests/test_merge_real_exports.py`.
 
-**Exports are bounded, but no number here is the bound.** The first three
-exports each hit 3836 individuals exactly while sharing only 354 people, so they
-are overlapping slices rather than copies — and that identical count read as a
-cap. Every export since has held more. Ordered by the timestamp in their own
-`HEAD`, 28 exports read: 3836 ×3 (30 Jul), 3840 (01 Aug), 3844 (02 Aug), then on
-04 Aug 3848, 3852, 3856 within twelve minutes — and **3860 for each of the
-eleven exports taken between 15:21 and 16:22**. Exports holding less (876, 1073,
-1192) exhausted their component before filling.
+**Exports are bounded, but no number here is the bound.** The first three exports each hit
+3836 individuals exactly while sharing only 354 people, so they are overlapping slices
+rather than copies — and that identical count read as a cap. Every export since has held
+more. Ordered by the timestamp in their own `HEAD`, 28 exports read: 3836 ×3 (30 Jul),
+3840 (01 Aug), 3844 (02 Aug), then on 04 Aug 3848, 3852, 3856 within twelve minutes — and
+**3860 for each of the eleven exports taken between 15:21 and 16:22**. Exports holding
+less (876, 1073, 1192) exhausted their component before filling.
 
-That flat run of eleven is the part that pays: those eleven came from eleven
-different seeds in three different styles and all landed on 3860 exactly, so the
-bound is **global, not per-seed and not per-style** — which also rules out the
-walk overshooting a floor to finish the generation it is on. Why the ceiling
-*moved* 3836 → 3860 over five days is still unestablished. **Do not encode the
-arithmetic**: a run of eleven identical values is evidence the number sits
-still, not evidence it steps by four on a schedule, and do not describe it as a
-cap Geni enforces.
+That flat run of eleven is the part that pays: those eleven came from eleven different
+seeds in three different styles and all landed on 3860 exactly, so the bound is **global,
+not per-seed and not per-style** — which also rules out the walk overshooting a floor to
+finish the generation it is on. Why the ceiling *moved* 3836 → 3860 over five days is
+unestablished. **Do not encode the arithmetic**: a run of eleven identical values is
+evidence the number sits still, not evidence it steps by four on a schedule, and it is not
+a cap Geni enforces.
 
-`genimerge.seeds.GENI_EXPORT_CAP` is **5000** as of 2026-08-17, meaning *largest
-yet seen*; its docstring is the long form of this, and is where each reading is
-recorded — do not update this number without adding the reading there. It was 3860 when the
-paragraph above was written, and the sentence about the number sitting still
-survived the move rather than being falsified by it — 4008 came from a pair of
-exports taken seven minutes apart that held 3972 and 4008, which is a ceiling
-that moved, not a step of four. The 99th export (2026-08-06) held 4004 and
-changed nothing. The four exports of that evening went 4016, 4020, 4020, 4020
-between 18:10 and 18:19, so the ceiling **rose inside a single nine-minute
-sitting** and then held for three takes — see
-`reports/audit-downloads-2026-08-06.md`. It is a modelling number for
-`reports/seeds.md` only — nothing in the merge depends on it.
-`tests/test_seeds.py` fails if an export in `exports/` exceeds it, so the next
-one to do so is loud rather than silent — that is how 3840, 3844 and 3856 were
-each caught. The constant tracks the largest export *seen*, which is not
-necessarily one that has been ingested, so the test is a floor on it rather than
-its source. Expect to merge many exports over time, and expect the merge to be
-re-run rather than hand-edited. See `reports/inventory.md`.
+`genimerge.seeds.GENI_EXPORT_CAP` is **5000** as of 2026-08-17, meaning *largest yet
+seen*; its docstring is the long form of this and is where each reading is recorded — do
+not update the number without adding the reading there. It was 3860 when the paragraph
+above was written, and the sentence about the number sitting still survived the move
+rather than being falsified by it: 4008 came from a pair of exports taken seven minutes
+apart that held 3972 and 4008, a ceiling that moved rather than a step of four. The 99th
+export (2026-08-06) held 4004 and changed nothing. The four exports of that evening went
+4016, 4020, 4020, 4020 between 18:10 and 18:19, so the ceiling **rose inside a single
+nine-minute sitting** and then held for three takes — `reports/audit-downloads-2026-08-06.md`.
+It is a modelling number for `reports/seeds.md` only; nothing in the merge depends on it.
+`tests/test_seeds.py` fails if an export in `exports/` exceeds it, which is how 3840, 3844
+and 3856 were each caught. The constant tracks the largest export *seen*, not necessarily
+one that has been ingested, so the test is a floor on it rather than its source. Expect to
+merge many exports over time, and expect the merge to be re-run rather than hand-edited.
+See `reports/inventory.md`.
 
-**The merged tree is one connected tree — as of 2026-08-04, and not before.**
-105349 people, 56455 families, **1 component**, over 54 exports. It was two
-components for most of that day (16217 Norwegian and 11501 Japanese, sharing no
-person and no family) and the whole of 08-02..08-04. `reports/frontier.md`
-§ Components is the live count and the thing to check rather than this
-paragraph: an export that reaches somewhere nothing else does will split it
-again, and that is normal rather than wrong. Disjoint components do not
-conflict — they just never meet.
+**The merged tree is one connected tree — as of 2026-08-04, and not before.** 105349
+people, 56455 families, **1 component**, over 54 exports. It was two components for most
+of that day (16217 Norwegian and 11501 Japanese, sharing no person and no family).
+`reports/frontier.md` § Components is the live count and the thing to check rather than
+this paragraph: an export that reaches somewhere nothing else does will split it again,
+and that is normal rather than wrong. Disjoint components do not conflict — they just
+never meet.
 
 ### The question is whether OUR TREE MATCHES GENI — never whether Geni is right
-
-**Emma, 2026-08-24, correcting the whole framing of the duplicate work:** *"I think that
-you are doing some thinking that you shouldn't be doing about whether the merges should
-have been done rather than whether the tree is in a good state... even if the merge isn't
-fixed on Geni, I still want it there. I still want the wrong information from Geni there
-because it is possible to correct it now."*
 
 **Geni is the source. Our corpus is a stale photograph of it.** The only question a
 duplicate, a conflict or an odd relationship raises is: *does our snapshot still match
@@ -234,235 +197,195 @@ be corrected on Geni and flow through, and one we filtered out cannot.
 
 **What this forbids.** Adjudicating whether a merge was justified. Grading a pair as "not
 really a duplicate" and therefore skipping it. Deciding an export has "thin expected
-value" because the pair looks like two different people. All three were done on
-2026-08-24 and all three are the same mistake: answering *is Geni right* when the question
-is *are we current*.
+value" because the pair looks like two different people. All three are the same mistake:
+answering *is Geni right* when the question is *are we current*.
 
-**What the evidence grading in `reports/geni-stale-duplicates.tsv` is actually for:**
-ranking which snapshots are most stale, so the most valuable refresh runs first. It is not
-a filter on which people deserve fixing.
+**What the evidence grading in `reports/geni-stale-duplicates.tsv` is for:** ranking which
+snapshots are most stale, so the most valuable refresh runs first. It is not a filter on
+which people deserve fixing.
 
 **So a post-merge export is worth running even when the pair turns out not to be a
-duplicate at all** — it refreshes our record of those people to Geni's current state, which
-is the whole job.
+duplicate at all** — it refreshes our record of those people to Geni's current state,
+which is the whole job.
 
 ### A small component is IGNORED. Do not report it, do not analyse it
 
-**Emma, 2026-08-17:** *"if there's a cluster of 344 people you fucking ignore it and add
-to claude.md"* — and, on being told the merge had split into 472,655 and 344: *"this
-isolated group of 344 people, they aren't in the chains, are they? They're not in the
-chains, and because they're not in the chains, it means you shouldn't even be analysing
-them."*
+A cluster of a few hundred people disconnected from the main tree is **no priority**, not
+low priority. It is checkable: 0 of the 344 in one such split appear in any of the 586
+relationship paths. Every path starts from the account owner's own profile, which is in
+the large component, so a small component cannot be on a chain — that is what being a
+separate component means. The work is clearing chains.
 
-**She is right and it is checkable: 0 of those 344 appear in any of the 586 relationship
-paths.** Every path starts at her own profile, which is in the large component, so a
-small component cannot be on a chain — that is what being a separate component means.
-The work is clearing chains, so a group off the chains is not small-priority, it is **no
-priority**.
+**The merge's component count is not a finding and does not go in a status report.** The
+line the merge prints is fine where it is. Working out what is in a small component, or
+which export brought it, is the unprompted analysis § *No unprompted reports* forbids.
 
-**So the merge's component count is not a finding and does not go in a report to her.**
-The line the merge prints is fine where it is. Mentioning it in a status update, working
-out what is in it, or wondering which export brought it — all of that is the unprompted
-analysis § *No unprompted reports* forbids, and it cost her a turn to shut down.
+`reports/frontier.md` § Components stays as the place the number lives.
 
-`reports/frontier.md` § Components stays as the place the number lives for anyone who
-ever needs it.
+### Path repair, export naming, and what a seed actually is
 
-**How it was joined, because the method generalises.** `reports/path-jimmu.md`
-checks an 83-step Geni relationship path against the tree. It went 62/83 held
-(gap of 21 steps) → 77/83 (gap of 6) → **83/83, every step held**. Two `Forest`
-exports seeded inside the six-person window closed it. Note the style mattered:
-that stretch of path crosses `her brother`, `his partner` and `her husband`
-links, so `Ancestors` and `BloodTree` would have walked straight past
-Guarandukht Bagrationi and Sultan Alp Arslan and never bridged. **When an export
-is meant to close a specific path, read the relation column first and pick a
-style that follows those link types.**
+**`reports/path-jimmu.md` is the worked example of closing a path.** It checks an 83-step
+Geni relationship path against the tree: 62/83 held (gap of 21) → 77/83 (gap of 6) →
+**83/83**. Two `Forest` exports seeded inside the six-person window closed it. The style
+mattered: that stretch crosses `her brother`, `his partner` and `her husband` links, so
+`Ancestors` and `BloodTree` would have walked straight past Guarandukht Bagrationi and
+Sultan Alp Arslan and never bridged. **When an export is meant to close a specific path,
+read the relation column first and pick a style that follows those link types.**
 
-**An export is named for its style, not its seed — so filenames collide.** Geni
-writes `export-<style>.ged`, and **five** styles have now been seen: `Forest`,
-`Ancestors`, `BloodTree`, `Descendants` and — first seen 2026-08-06 21:33 —
-**`Bio`**. This paragraph said "four" until that file arrived, which is worth
-noting as a caution rather than a correction: nothing enumerates the styles, so
-a sixth would land silently. What `Bio` selects for is **not established** and
-should not be guessed; the one export of it holds 4056 people, the same as the
-`Descendants`, `Ancestors` and `BloodTree` takes minutes either side of it, so
-its size says nothing about its shape. The first three exports are all three
-styles of the *same* seed, Empress Jingū `6000000001846508982`, which is also
-their `SUBM` xref. A second `Forest` export from a different seed therefore
-arrives with a filename already taken. Disambiguate by appending
-the seed's Geni profile ID — `export-Forest-6000000226977233850.ged` — since the
-profile ID is this repo's primary key. Note the `SUBM` xref is the *account
-owner*, not the seed, so it cannot be used for this.
+**An export is named for its style, not its seed — so filenames collide.** Geni writes
+`export-<style>.ged`, and **five** styles have been seen: `Forest`, `Ancestors`,
+`BloodTree`, `Descendants` and `Bio`. Nothing enumerates the styles, so a sixth would land
+silently. What `Bio` selects for is **not established** and should not be guessed; the one
+export of it holds 4056 people, the same as the `Descendants`, `Ancestors` and `BloodTree`
+takes minutes either side of it, so its size says nothing about its shape. Disambiguate a
+collision by appending the seed's Geni profile ID —
+`export-Forest-6000000226977233850.ged` — since the profile ID is this repo's primary key.
+The `SUBM` xref is the *account owner*, not the seed, so it cannot be used for this.
 
-**The seed is the file's first `INDI` record**, and this is checkable rather
-than assumed: of the saved pages in `geni_pages/`, seven are the first `INDI` of
-some export and the rest are pages saved for connections not yet exported from.
-**Do not expect the seed to be the person the export is named after in
-conversation.** All three exports ingested on 2026-08-04 open on a profile
-created a minute or two before the export ran — `export-Forest-6000000227036288825.ged`
-is "the Li Hong export" and its seed is an `NN` wife of Li Yuanfeng created at
-14:40:46 and exported at 14:41:36. Creating a placeholder at the frontier and
-exporting from it is the technique; the filename records the seed, not the
-intent.
+**The seed is the file's first `INDI` record**, and this is checkable rather than assumed:
+of the saved pages in `geni_pages/`, seven are the first `INDI` of some export and the
+rest are pages saved for connections not yet exported from. **Do not expect the seed to be
+the person the export is named after in conversation.** All three exports ingested on
+2026-08-04 open on a profile created a minute or two before the export ran —
+`export-Forest-6000000227036288825.ged` is "the Li Hong export" and its seed is an `NN`
+wife of Li Yuanfeng created at 14:40:46 and exported at 14:41:36. Creating a placeholder
+at the frontier and exporting from it is the technique; the filename records the seed, not
+the intent.
 
-**`reports/density.md` is where to look for the next export, not
-`reports/seeds.md`.** `genimerge.density` counts how many exports contain each
-person — **presence** — and then finds *connected runs* of people almost no
-export reached. One thin person is the rim of a ball and means nothing; a run of
-thousands is a neighbourhood sampled once and never returned to. `seeds.md`
-ranks by doorway count and has never been validated against an outcome; density
-is measured from what the exports actually did.
+### `reports/density.md` is where to look for the next export, not `reports/seeds.md`
 
-**The `Descendants` campaign is about time, not thinness — Emma's own framing,
-2026-08-06.** She is running `Descendants` exports because **the tree is biased
-towards ancient and medieval individuals and she is trying to reach modern
-times**. That is a different target from `reports/density.md`, which ranks by
-how few exports touched a neighbourhood and knows nothing about dates. The two
-can point the same way and often will, but do not present density picks as
-serving this goal, and do not describe her `Descendants` takes as thin-region
-work. `Descendants` fans out downward, which is what makes it the instrument for
-reaching later generations.
+`genimerge.density` counts how many exports contain each person — **presence** — and then
+finds *connected runs* of people almost no export reached. One thin person is the rim of a
+ball and means nothing; a run of thousands is a neighbourhood sampled once and never
+returned to. `seeds.md` ranks by doorway count and has never been validated against an
+outcome; density is measured from what the exports actually did.
 
-**A `Descendants` export reaches about twelve generations forward, and that
-outranks every seed heuristic — measured 2026-08-07.** The export is a
-breadth-first ball of ~4076 people, so it fills the generations *nearest* the
-seed; a descent branching twice per couple hits 4096 at generation 12 unaided.
-So a ball carries roughly **350 years** and no choice of seed changes it.
+### The `Descendants` campaign is about TIME, not thinness
 
-Emma's batch of **eleven** `Descendants` exports, all seeded on ancient or
-undated people, added **18,218 people** — median birth year **1582** — and
-**four** born after 1900. The 1500s gained 3,369, the 1600s 3,045, the 1800s
-101, the 1900s 4. **No person born 1800 or later gained a child, of 14,371.**
-The campaign is about reaching modern times and this did not move it.
+`Descendants` exports are run because the tree is biased towards ancient and medieval
+individuals, and the goal is to reach modern times. That is a different target from
+`reports/density.md`, which ranks by how few exports touched a neighbourhood and knows
+nothing about dates. The two can point the same way and often will, but do not present
+density picks as serving this goal, and do not describe a `Descendants` take as
+thin-region work. `Descendants` fans out downward, which is what makes it the instrument
+for reaching later generations.
 
-**So: seed where you want to arrive.** To deliver people born after 1900 an
-export must be seeded after about 1750. `genimerge.descendants.REACH_GENERATIONS`
-and `REACH_TARGET` encode the screen, and `reports/descendants.md` leads with
-§ *Seeds that can reach 1900*. Everything else in that report is background.
+**A `Descendants` export reaches about twelve generations forward, and that outranks every
+seed heuristic.** The export is a breadth-first ball of ~4076 people, so it fills the
+generations *nearest* the seed; a descent branching twice per couple hits 4096 at
+generation 12 unaided. A ball therefore carries roughly **350 years** and no choice of
+seed changes it.
 
-**The campaign's seeds are 1800s people, measured not argued.** Of the 7591
-candidates a ball can get to 1900 from: 1500s 605 (8%), 1600s 1426 (19%), 1700s
-1777 (23%), **1800s 2980 (39%)**, 1900s 803 (11%). Two independent reasons put
-the answer there rather than later — a seed born 1850 needs two or three
-generations to pass 1900 and has them to spare, and **Geni redacts living
-people**, so a 1900s seed's descendants largely cannot be exported at all. The
-1800s are the last cohort whose full descent is retrievable, not a compromise.
+A batch of **eleven** `Descendants` exports, all seeded on ancient or undated people,
+added **18,218 people** — median birth year **1582** — and **four** born after 1900. The
+1500s gained 3,369, the 1600s 3,045, the 1800s 101, the 1900s 4. **No person born 1800 or
+later gained a child, of 14,371.** The campaign is about reaching modern times and this
+did not move it.
 
-**One seed per couple — `drop_duplicate_balls`.** Two parents of the same
-children have the same descendants, so a `Descendants` export from either
-returns the identical ball. This is not an edge case: the ranking rewards a
-large recorded family and both parents of one score alike, so **a quarter of the
-shortlist was the same export listed twice** (10071 → 7591). Ranks 1 and 2 were
-Margaret Outlaw and Samuel D. Outlaw, a married couple with the same 20
-children, offered as two suggestions.
+**So: seed where you want to arrive.** To deliver people born after 1900 an export must be
+seeded after about 1750. `genimerge.descendants.REACH_GENERATIONS` and `REACH_TARGET`
+encode the screen, and `reports/descendants.md` leads with § *Seeds that can reach 1900*.
+Everything else in that report is background.
 
-**`out/reach-1900-seeds.html` is the thing to actually use** — 600 candidates,
-filter by decade, sort by any column, pick by eye. Emma asked to "arbitrarily
-look over" them and that is the right instinct given the ordering is untested;
-the page says so on itself. Read `line reaches` against `ball reaches`: the gap
-is roughly what an export would add.
+**The campaign's seeds are 1800s people, measured not argued.** Of the 7591 candidates a
+ball can get to 1900 from: 1500s 605 (8%), 1600s 1426 (19%), 1700s 1777 (23%), **1800s
+2980 (39%)**, 1900s 803 (11%). Two independent reasons put the answer there rather than
+later — a seed born 1850 needs two or three generations to pass 1900 and has them to
+spare, and **Geni redacts living people**, so a 1900s seed's descendants largely cannot be
+exported at all. The 1800s are the last cohort whose full descent is retrievable, not a
+compromise.
 
-**Two seed-choosing methods have been refuted by measurement. Do not propose a
-third on reasoning alone.** `reports/descendants-backtest-2026-08-07.md` is the
-record, and it exists because `out/merged-134.ged` was kept before the batch was
-merged — **keep the pre-batch tree whenever a batch lands**, it is the only way
-this question is answerable.
+**One seed per couple — `drop_duplicate_balls`.** Two parents of the same children have
+the same descendants, so a `Descendants` export from either returns the identical ball.
+This is not an edge case: the ranking rewards a large recorded family and both parents of
+one score alike, so **a quarter of the shortlist was the same export listed twice**
+(10071 → 7591). Ranks 1 and 2 were Margaret Outlaw and Samuel D. Outlaw, a married couple
+with the same 20 children, offered as two suggestions.
+
+**`out/reach-1900-seeds.html` is the thing to actually use** — 600 candidates, filter by
+decade, sort by any column, pick by eye. The ordering is untested and the page says so on
+itself. Read `line reaches` against `ball reaches`: the gap is roughly what an export
+would add.
+
+**Two seed-choosing methods have been refuted by measurement. Do not propose a third on
+reasoning alone.** `reports/descendants-backtest-2026-08-07.md` is the record, and it
+exists because `out/merged-134.ged` was kept before the batch was merged — **keep the
+pre-batch tree whenever a batch lands**, it is the only way this question is answerable.
 
 - *"Small but nonzero descent"* — refuted. All ten seeds that already existed had
-  **exactly one recorded child** and descent-path counts from 371 to **1.5
-  billion**, every one outside the 1–20 candidate band. The report would not
-  have proposed any of them.
-- *"The rim of a cut-off ball"* — proposed and refuted the same day. Childless
-  people inside an export that came back at the size bound gained children at
-  **0.71%**, *below* the 1.00% base rate and below the 1.05% of people on no rim.
-  It anti-predicts. The test is indirect, so it refutes the premise rather than
-  the tactic — but the method was going to be presented as an improvement on
-  reasoning alone, and that is exactly what is no longer allowed here.
+  **exactly one recorded child** and descent-path counts from 371 to **1.5 billion**,
+  every one outside the 1–20 candidate band. The report would not have proposed any of
+  them.
+- *"The rim of a cut-off ball"* — refuted the same day. Childless people inside an export
+  that came back at the size bound gained children at **0.71%**, *below* the 1.00% base
+  rate and below the 1.05% of people on no rim. It anti-predicts.
 
-**`reports/descendants.md` is the report built for that campaign** — added
-2026-08-07 on the `geni-descendants` branch. `genimerge.descendants` ranks the
-**downward** edge the way `frontier` ranks the upward one, and buckets it by
-period so the ranking can be read one century at a time.
+### `reports/descendants.md` ranks the downward edge
 
-- **The signal is a descent-path count that is small but nonzero**, and both
-  halves carry weight. *Nonzero* means Geni recorded at least one child, so the
-  line demonstrably continues and there is something below to follow. *Small*
-  means we have barely followed it. A person with **zero** recorded descendants
-  is deliberately excluded: nothing in our data separates childless from
-  unexplored, which is the same discriminator `density` applies upward with its
-  doorway column.
-- **Count descent paths, not distinct people — Emma's call, 2026-08-07.** The
-  measure is her recursion, `paths(p) = Σ over each recorded child c of
-  (1 + paths(c))`. Somebody reachable down two lines counts **twice**, and that
-  is the point: the question is how many lines come down from a person, and a
-  descendant reached twice is two lines. She ruled distinct-person counting out
-  as not merely irrelevant but plausibly *worse* here — pedigree collapse is
-  dense in this tree, and de-duplicating it makes the top of a wide,
-  repeatedly-intermarried descent look narrow. `frontier.descendant_counts`
-  still counts distinct people for callers that want that.
-- **Rank on `generations followed` (`depth`), never on `stall`.** Stall — years
-  between the line's last recorded birth and now — was the first ranking and is
-  a trap: a person's own birth year is a floor on how far their line reaches, so
-  sorting a 100-year band by stall sorts it by birth year, and **every band's
-  top pick came out born in the band's first year**. That is where the band edge
-  fell, not a finding. Depth is available for dated and undated people alike and
-  does not move with the band. Stall stays as a column worth reading.
-- **The path count is why this module is cheap, and it was not always.**
-  Distinct-person counting needs a set union per person: `frontier` carries a
-  bitmask, one bit per person per person, a kilobyte each at 8766 people and
-  32 KB each at 257219 — tens of gigabytes. This module carried a capped walk
-  and a `descendants_exact` flag to work around that. Emma's recursion is a
-  plain post-order sum, O(V+E), exact at every size, and deleted all of it. The
-  sums saturate at `PATH_CEILING` (1e12) because path counts compound through
-  shared subtrees and a deep intermarried ancestor's true count runs to
-  thousands of digits; that is a display bound thirteen orders of magnitude
-  above any usable `small`, never a candidacy one.
-- **A candidate whose parent is also a candidate is dropped, per band.** An
-  export seeded on the ancestor covers the descendant's line plus branches off
-  it we never saw, so the ancestor is strictly the better seed and a six-person
-  line would otherwise be reported six times. Checking parents alone suffices,
-  because path counts rise strictly upward — a parent's count is at least
-  `1 + child's`. Per band rather than report-wide, so a band keeps its own best
-  pick.
-- **A depth of 0 must mean "no children", never "the child is in a cycle".**
-  `_post_order` drops an edge back into a node still being expanded — right, a
-  person is not their own descendant — and both depth functions then guarded
-  with `if c in depth` and fell through to `0`, which reads as *childless*.
-  Depth is `descendants`' primary ranking key **ascending**, so those people
-  sorted above every genuine candidate: `Arne` (`6000000007351784249`), one
-  descent path and no open ends, held the top of the `undated` band of 136953.
-  **8** people of the 123256 with a recorded child were affected — a tiny
-  population with an outsized effect, because being ranked first is a position
-  of exactly one per band. `frontier.ancestor_depth` is the same eight lines
-  with `parents` for `children` and had it identically (**5** of 208863),
-  invisible only because nothing ranks on it. Both now contribute `0` for an
-  unresolved neighbour rather than nothing, so a cycle *truncates* the measure
-  instead of falsifying it. This is the same shape as the date parser's
-  silently-dropped years: **a guard against a malformed case, paid for with real
-  values that then vanish without trace.** The tree holds 15 ancestry cycles
-  across 55 people — `frontier.ancestry_cycles` reports them.
-- **The metric change moved the implementation, not the answer.** Candidates
-  went 52196 → 52171 and the per-band picks barely shifted: path counts and
-  distinct counts coincide almost exactly at the small end, because a line of
-  twenty people rarely re-converges. They diverge in the tail, where this report
-  does not look. Descent paths are right because they are the right *question*,
-  not because they reranked anything — do not cite a numbers change as their
-  justification.
-- **Both axes are reported because neither covers everyone.** 53% of the tree
-  carries no birth year, and those people are invisible to the period view.
-  Generations-above ranks them — but it is **not a second clock**: it measures
-  how far *we* have traced upward, so an untraced person looks shallow whenever
-  they lived. No date is ever inferred.
+`genimerge.descendants` ranks the **downward** edge the way `frontier` ranks the upward
+one, and buckets it by period so the ranking can be read one century at a time.
+
+- **The signal is a descent-path count that is small but nonzero**, and both halves carry
+  weight. *Nonzero* means Geni recorded at least one child, so the line demonstrably
+  continues and there is something below to follow. *Small* means it has barely been
+  followed. A person with **zero** recorded descendants is deliberately excluded: nothing
+  in our data separates childless from unexplored, which is the same discriminator
+  `density` applies upward with its doorway column.
+- **Count descent paths, not distinct people.** The measure is
+  `paths(p) = Σ over each recorded child c of (1 + paths(c))`. Somebody reachable down two
+  lines counts **twice**, and that is the point: the question is how many lines come down
+  from a person, and a descendant reached twice is two lines. Distinct-person counting is
+  not merely irrelevant here but plausibly worse — pedigree collapse is dense in this
+  tree, and de-duplicating it makes the top of a wide, repeatedly-intermarried descent
+  look narrow. `frontier.descendant_counts` still counts distinct people for callers that
+  want that.
+- **Rank on `generations followed` (`depth`), never on `stall`.** Stall — years between
+  the line's last recorded birth and now — is a trap: a person's own birth year is a floor
+  on how far their line reaches, so sorting a 100-year band by stall sorts it by birth
+  year, and **every band's top pick came out born in the band's first year**. That is
+  where the band edge fell, not a finding. Depth is available for dated and undated people
+  alike and does not move with the band. Stall stays as a column worth reading.
+- **The path count is why this module is cheap.** Distinct-person counting needs a set
+  union per person: `frontier` carries a bitmask, one bit per person per person, a
+  kilobyte each at 8766 people and 32 KB each at 257219 — tens of gigabytes. The
+  post-order sum is O(V+E) and exact at every size. The sums saturate at `PATH_CEILING`
+  (1e12) because path counts compound through shared subtrees and a deep intermarried
+  ancestor's true count runs to thousands of digits; that is a display bound thirteen
+  orders of magnitude above any usable `small`, never a candidacy one.
+- **A candidate whose parent is also a candidate is dropped, per band.** An export seeded
+  on the ancestor covers the descendant's line plus branches off it we never saw, so the
+  ancestor is strictly the better seed and a six-person line would otherwise be reported
+  six times. Checking parents alone suffices, because path counts rise strictly upward — a
+  parent's count is at least `1 + child's`. Per band rather than report-wide, so a band
+  keeps its own best pick.
+- **A depth of 0 must mean "no children", never "the child is in a cycle".** `_post_order`
+  drops an edge back into a node still being expanded — right, a person is not their own
+  descendant — and both depth functions then guarded with `if c in depth` and fell through
+  to `0`, which reads as *childless*. Depth is the primary ranking key **ascending**, so
+  those people sorted above every genuine candidate: `Arne` (`6000000007351784249`), one
+  descent path and no open ends, held the top of the `undated` band of 136953. **8** of
+  the 123256 people with a recorded child were affected — a tiny population with an
+  outsized effect, because being ranked first is a position of exactly one per band.
+  `frontier.ancestor_depth` had it identically (**5** of 208863), invisible only because
+  nothing ranks on it. Both now contribute `0` for an unresolved neighbour, so a cycle
+  *truncates* the measure instead of falsifying it. This is the same shape as the date
+  parser's silently-dropped years: **a guard against a malformed case, paid for with real
+  values that then vanish without trace.** The tree holds 15 ancestry cycles across 55
+  people — `frontier.ancestry_cycles` reports them.
+- **The metric change moved the implementation, not the answer.** Candidates went
+  52196 → 52171 and the per-band picks barely shifted: path counts and distinct counts
+  coincide almost exactly at the small end, because a line of twenty people rarely
+  re-converges. They diverge in the tail, where this report does not look. Descent paths
+  are right because they are the right *question*, not because they reranked anything — do
+  not cite a numbers change as their justification.
+- **Both axes are reported because neither covers everyone.** 53% of the tree carries no
+  birth year, and those people are invisible to the period view. Generations-above ranks
+  them — but it is **not a second clock**: it measures how far *we* have traced upward, so
+  an untraced person looks shallow whenever they lived. No date is ever inferred.
 
 ### The NN/Private label algorithm applies to EVERY unnamed person. It is not optional
 
-**Emma, 2026-08-24, when asked whether three redacted people should be created
-unlabelled:** *"THERE IS LITERALLY A SUPER WELL DOCUMENTED ALGORITHM I TALKED ABOUT FOR
-AGES AND ASSUMED THAT EXISTED INVOLVING NN AND FORMULAIC CONSTRUCTION IN MULTIPLE
-LANGUAGES FOR PEOPLE WITH PRIVATE OR NN OR UKJENT OR WHATEVER."*
-
-She is right, it is documented two sections down, and the question should never have been
-asked. **"Create it with no label" is not one of the options.** The algorithm is:
+**"Create it with no label" is not one of the options.** The algorithm is:
 
     mul  NN Garborg                                  <- marker + the surname, which survives redaction
     en   son of Arne Olaus Fjørtoft Garborg          <- formulaic, from the nearest named relative
@@ -477,141 +400,116 @@ inflect the name after the relationship word, and it excludes `ja`/`zh` **only**
 the relative's name is usually not transliterated — where it is, as in the Garborg family,
 they are emitted.
 
-**`PRIVATE`, `NN`, `UKJENT` and the rest are one population.** Emma: *"NN and private are
-the same thing here, because if there's a private individual whose name is not exported,
-it comes out as an NN."*
+**`PRIVATE`, `NN`, `UKJENT` and the rest are one population.** A private individual whose
+name is not exported comes out as an `NN`, so they are the same thing here.
 
 ### An obvious unknown-word marker goes straight in. Stop asking
 
-**Emma, 2026-08-27**, asked whether `Name Not Known` (45 people) and `Unknown Wife` (37) were
-markers: **"Both are markers — stop asking."** Widening `WORDS_MEANING_UNKNOWN` used to be
-reserved to her; it is not any more, for the obvious cases.
-
 **A word or phrase meaning *the name is unknown* is a marker.** Add it to
-`scripts/labels.WORDS_MEANING_UNKNOWN` with its corpus count in the comment, and move on. Her
-2026-08-17 boundary still holds and is the only line: **words yes, punctuation no** — a label
-that is nothing but punctuation is handled separately, and `Nechama (?) Heller` is a name with a
-bracketed hole, not a marker.
+`scripts/labels.WORDS_MEANING_UNKNOWN` with its corpus count in the comment, and move on.
+`Name Not Known` (45 people) and `Unknown Wife` (37) are markers; cases this obvious need
+no ruling.
 
-**This does not widen `NOT_A_NAME`.** Detection and suppression are different questions, as that
-module already says: an `unknown Bloomfield` is detected and still keeps a label — it becomes
-`NN Bloomfield`. `label_for()` still empties `Private` and `<private>` and nothing else.
+**The one boundary: words yes, punctuation no.** A label that is nothing but punctuation
+is handled separately, and `Nechama (?) Heller` is a name with a bracketed hole, not a
+marker.
 
-**And the item was stale for nine days.** `queue.md` carried both phrases as awaiting her ruling
-while she had already ruled on 2026-08-18 and both were sitting in `labels.py` with her words in
-the comment. Asking again cost her a turn to answer something already implemented — the same
-shape as § *Emma not replying means she is content*, which is what that rule is for.
+**This does not widen `NOT_A_NAME`.** Detection and suppression are different questions,
+as that module already says: an `unknown Bloomfield` is detected and still keeps a label —
+it becomes `NN Bloomfield`. `label_for()` still empties `Private` and `<private>` and
+nothing else.
 
-### The label gate, and the order she set for it
+### The label gate, and the order
 
-**Emma, in her own words:** *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
-EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."* Read with § *CJK INCLUDES KOREAN* below, the
-gate is **`ja` + `zh` + `ko`**.
+**No creation runs until `ja`, `zh` and `ko` labels exist on everything.** That gate sits
+immediately before Wikidata editing.
 
-**Her order, and it is not the obvious one:** *"create the relatives first, then label."* So the
-structural placeholders are created, then the other creations, and only then the `set_labels`
-edits — each carrying the full set. Labelling first would mean labelling people whose relatives do
-not exist yet, and the NN descriptive labels are built *from* those relatives.
+**The order is not the obvious one: create the relatives first, then label.** The
+structural placeholders are created, then the other creations, and only then the
+`set_labels` edits — each carrying the full set. Labelling first would mean labelling
+people whose relatives do not exist yet, and the NN descriptive labels are built *from*
+those relatives.
 
-**The three directions the labels are MADE in**, never copied: CJK → English (romanisation),
-English → CJK, and English → the four remaining scripts (`hi`, `ar`, `ru`, `el` —
-`scripts/build-four-script-labels.py`, 151,320 labels).
+**The three directions the labels are MADE in**, never copied: CJK → English
+(romanisation), English → CJK, and English → the four remaining scripts (`hi`, `ar`, `ru`,
+`el` — `scripts/build-four-script-labels.py`, 151,320 labels).
 
-**Name items first is what makes it tractable.** Transliterate a token once in its name item and
-every bearer inherits it: 140,764 distinct tokens across 396,377 people, of which the CJK part is
-30,876 Han, 1,552 Hangul, 92 kana.
+**Name items first is what makes it tractable.** Transliterate a token once in its name
+item and every bearer inherits it: 140,764 distinct tokens across 396,377 people, of which
+the CJK part is 30,876 Han, 1,552 Hangul, 92 kana.
 
-**And the one hard problem stays hard: which culture a CJK name is.** Han characters do not say
-whether a name is Chinese, Japanese or Korean — 陳 is *Chen*, *Chin* or *Jin*. Kana and Hangul are
-decisive; bare Han is not. **Do not guess from the name**; the tree settles it, via neighbours and
-which exports they came from.
+**The one hard problem stays hard: which culture a CJK name is.** Han characters do not
+say whether a name is Chinese, Japanese or Korean — 陳 is *Chen*, *Chin* or *Jin*. Kana
+and Hangul are decisive; bare Han is not. **Do not guess from the name**; the tree settles
+it, via neighbours and which exports they came from.
 
 ### CJK INCLUDES KOREAN. `ko` ranks with `zh`, not with the leftovers
 
-**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
-prioritize getting korean labels all the time and this seems to not get that cjk includes
-korean"*.
+Korean is as important as Chinese here. The C, the J and the K are three languages, and
+any place this repo says "CJK" and means Han plus kana is wrong.
 
-**Every place this repo says "CJK" and means Han plus kana is wrong.** The C, the J and the K are
-three languages, and `ko` has been treated throughout as one of the four *other* scripts —
-queued behind `hi`/`ar`/`ru`/`el` as a research task — when it belongs beside `ja` and `zh`.
+- **The creation gate is `ja` + `zh` + `ko`**, not `ja` + `zh`.
+- **The token funnel mints all three.** `reports/garborg-name-transliterations.tsv` carries
+  a `ja`, a `zh` and a `ko` column.
+- **`ko` is derivable by rule and `P1814` kana is not.** A Han character has a regular
+  hanja reading; a Japanese *name* reading does not follow from the characters. So `ko` is
+  engine work like `zh`, while kana stays agentic.
 
-So, everywhere:
-
-- **The creation gate is `ja` + `zh` + `ko`**, not `ja` + `zh`. § *ABSOLUTE PREREQUISITE — no
-  individual is created without their CJK labels* means all three.
-- **The token funnel mints all three.** `reports/garborg-name-transliterations.tsv` carries a
-  `ja` and a `zh` column and needs a `ko` one.
-- **`ko` is derivable by rule and `P1814` kana is not**, which is why they were queued together
-  and should not have been. A Han character has a regular hanja reading; a Japanese *name*
-  reading does not follow from the characters. So `ko` is engine work like `zh`, while kana stays
-  agentic.
-
-**The 1,552 Hangul tokens are already decisive evidence of culture** — `CLAUDE.md` § *"Is X
-present?"* records that kana and Hangul settle which culture a CJK name is where bare Han does
-not. Those people were being used to disambiguate and then not labelled in their own language.
+**The 1,552 Hangul tokens are decisive evidence of culture** — kana and Hangul settle
+which culture a CJK name is where bare Han does not, so those people must be labelled in
+their own language rather than only used to disambiguate others.
 
 ### ALL THREE readings are produced for everyone. Culture only picks which goes on top
 
-**Emma, 2026-09-02, and it dissolves the culture problem rather than solving it:** *"the kana name
-plus the Korean name plus the Mandarin pronunciation of every single arbitrary character thing is
-something that is actually produced... we'd even essentially have all of the labels the thing
-would ever possibly have in the `mul` label. It's just a matter of which one is chosen at the
-top."* And on the shape: *"there would be `Amul` labels for the rest — for the other two, or even
-`Amul` for all of them — and the `mul` one is set later."*
+The kana name, the Korean name and the Mandarin reading of every character are all
+produced, so the `mul` label holds every label the item could ever have; which one is
+promoted to the top is set later, and the other two become `Amul` aliases.
 
-**So the culture classifier is OFF the critical path.** It no longer decides whether a person gets
-a label; it decides which alias is promoted to `mul`. That is one line, per person, movable
-afterwards — so a wrong verdict costs a reordering, not a wrong name and not a missing one. The
-people the walk cannot classify stop being blocked and become a roster.
+**So the culture classifier is OFF the critical path.** It no longer decides whether a
+person gets a label; it decides which alias is promoted to `mul`. That is one line, per
+person, movable afterwards — a wrong verdict costs a reordering, not a wrong name and not
+a missing one. The people the walk cannot classify stop being blocked and become a roster.
 
-**This is why the classifier must not be perfected.** Emma, same message, naming what went wrong:
-*"this isn't something to waste forty eight hours on... this is just a very ill scoped problem
-that got a massive scope creep."* The gate and the roster are the deliverable. Confirmed cultures
+**This is why the classifier must not be perfected.** It is an ill-scoped problem that
+attracts scope creep. The gate and the roster are the deliverable. Confirmed cultures
 propagate by network proximity, so the roster shrinks as people are settled.
 
-**The character table is the unit, not the person.** `reports/han-readings.tsv` is 4,688 rows for
-41,154 people, reusable by every emitter: `ko` 4,688, `zh` 4,682, `ja` candidate-only.
-`scripts/import-unihan.py` builds it from Unicode's Unihan — **a data file, not a dependency**, so
-§ *Stdlib only* is intact; Emma chose it over `pip install pypinyin` on 2026-09-02.
+**The character table is the unit, not the person.** `reports/han-readings.tsv` is 4,688
+rows for 41,154 people, reusable by every emitter: `ko` 4,688, `zh` 4,682, `ja`
+candidate-only. `scripts/import-unihan.py` builds it from Unicode's Unihan — **a data
+file, not a dependency**, so § *Stdlib only* is intact.
 
-**`ko` needs TWO sources and neither alone is right.** `hanja` returns one reading; Unihan's
-`kHangul` lists several. 金 is `금 김`, and taking the first gave 金庾信 as 금유신 when the man is
-**김유신, Kim Yu-sin** — the commonest surname in Korea read as the wrong word. 沈 is 심/침 and the
-surname is 심. Measured over all 4,688: the two agree 3,543 times and differ 100, and almost every
-difference is **두음법칙**, the initial-sound rule — `hanja` gives the word-initial form (隴 농,
-礼 예) and Unihan the base reading (롱, 례). Neither is wrong. Coverage is complementary, ~1,000
-characters each way, so both are merged and **every reading is kept** — § *One name item per
-USAGE*, where a token in two roles is not an ambiguity to resolve.
+**`ko` needs TWO sources and neither alone is right.** `hanja` returns one reading;
+Unihan's `kHangul` lists several. 金 is `금 김`, and taking the first gave 金庾信 as 금유신
+when the man is **김유신, Kim Yu-sin** — the commonest surname in Korea read as the wrong
+word. 沈 is 심/침 and the surname is 심. Measured over all 4,688: the two agree 3,543 times
+and differ 100, and almost every difference is **두음법칙**, the initial-sound rule —
+`hanja` gives the word-initial form (隴 농, 礼 예) and Unihan the base reading (롱, 례).
+Neither is wrong. Coverage is complementary, ~1,000 characters each way, so both are
+merged and **every reading is kept** — § *One name item per USAGE*, where a token in two
+roles is not an ambiguity to resolve.
 
-**Alternates vary the SURNAME TOKEN ONLY** — Geni writes given names first, so that is the last
-token. That is where the alternation changes a name; varying every position on a four-character
-name yields sixteen aliases nobody searches for.
+**Alternates vary the SURNAME TOKEN ONLY** — Geni writes given names first, so that is the
+last token. That is where the alternation changes a name; varying every position on a
+four-character name yields sixteen aliases nobody searches for.
 
 **`ja` is the one that stays research.** `pykakasi` reads *surnames* correctly out of its
-dictionary — 青山 あおやま, 酒井 さかい, 藤原 ふじわら — and falls back to on'yomi on *given*
-names, where Japanese personal readings are irregular: 幸豊 → こうほう for **Yukitoyo**. So it is
-a candidate column, never an emitted one, and `scripts/fetch-kana-readings.py` remains the sourced
-answer. That measurement is what *"a kana reading is not derivable by rule"* looks like in data.
+dictionary — 青山 あおやま, 酒井 さかい, 藤原 ふじわら — and falls back to on'yomi on
+*given* names, where Japanese personal readings are irregular: 幸豊 → こうほう for
+**Yukitoyo**. So it is a candidate column, never an emitted one, and
+`scripts/fetch-kana-readings.py` remains the sourced answer. That measurement is what *a
+kana reading is not derivable by rule* looks like in data.
 
-**A Han range written with LITERAL boundary characters is a bug waiting to happen.** U+F900 CJK
-COMPATIBILITY IDEOGRAPH and U+8C48 render identically, and NFC normalisation maps the first to the
-second — so `豈-﫿` silently becomes U+8C48–U+FAFF, which contains the whole Hangul Syllables
-block. It cost **5,338 Korean people**, whose names are already Hangul, being counted as Han,
-found unreadable and dropped; skips went 5,350 → 12 on the fix. The tell was that only 2
-characters in the corpus lacked a reading, which cannot explain 13% of the population failing.
-**Write the range as ASCII `\uXXXX` escapes** — the literal form did not survive one edit
-round-trip here. The pre-existing copies in `classify-name-ambiguity.py`, `profilenames.py` and
-`build-cjk-clan-labels.py` were each checked by codepoint and are correct.
+**A Han range written with LITERAL boundary characters is a bug waiting to happen.**
+U+F900 CJK COMPATIBILITY IDEOGRAPH and U+8C48 render identically, and NFC normalisation
+maps the first to the second — so `豈-﫿` silently becomes U+8C48–U+FAFF, which contains
+the whole Hangul Syllables block. It cost **5,338 Korean people**, whose names are already
+Hangul, being counted as Han, found unreadable and dropped; skips went 5,350 → 12 on the
+fix. The tell was that only 2 characters in the corpus lacked a reading, which cannot
+explain 13% of the population failing. **Write the range as ASCII `\uXXXX` escapes** — the
+literal form did not survive one edit round-trip here.
 
 ### A GENERATION SUFFIX GOES LAST. A regnal ordinal stays where it is
-
-**Emma, 2026-09-05**, on a fix that turned `Lars Jonson d.y. Skrudland` into `Lars Jonson II
-Skrudland`: *"Lars Jonson Skrudland Jr. I didn't tell you to do that. Regnal numbers can come
-after the first name, regular ones go Sr Jr III etc always as a suffix in English and in mul
-always as a suffix I, II, III."*
-
-**Two things that look alike and are not:**
 
 | | where it goes | property |
 | --- | --- | --- |
@@ -623,42 +521,36 @@ always as a suffix I, II, III."*
 
 `namemodel.normalise_generation_suffix` removes the token and appends the converted form.
 `GENERATION_SUFFIX` holds **no bare Roman numeral**, so a regnal ordinal is never a match and
-cannot move — that is structural rather than a special case. A label already carrying the numeral
-does not gain a second one: `Daniel Ström II, dy` keeps its `II`, and the comma that introduced
-the suffix goes with the suffix.
+cannot move — structural rather than a special case. A label already carrying the numeral does
+not gain a second one: `Daniel Ström II, dy` keeps its `II`, and the comma that introduced the
+suffix goes with the suffix.
 
-**A suffix STAYS in the languages that use it.** Emma, same day: *"the dy will be present
-wherever for the languages that use it but the suffixes we have will be always at the end"*, and
-earlier: *"the inappropriate languages it is on should go to 'Elias Lagerheim II'"*. So `nb`, `nn`,
-`no`, `da` and `sv` keep their own form where their own grammar puts it, `fi` keeps `nuorempi`,
-English keeps `Jr.`, and every other language takes the `mul` shape.
+**A suffix STAYS in the languages that use it.** `nb`, `nn`, `no`, `da` and `sv` keep their own
+form where their own grammar puts it, `fi` keeps `nuorempi`, English keeps `Jr.`, and every
+other language takes the `mul` shape.
 
 **`namemodel.SUFFIX_LANGUAGES` keys on the FORM, never on a list of Scandinavian languages** —
-the two pairs differ by one letter and belong to different places: `d.ä.`/`den äldre` are Swedish,
-`d.e.`/`den eldre` are Norwegian and Danish. A "Scandinavian keeps everything" rule would leave a
-Swedish `den eldre` and a Norwegian `d.ä.` in place, each of which is the other language's
-spelling. **A region subtag inherits its base language**: `en-ca` and `en-us` were the only English
-labels being rewritten to `II` — 2 of the first run's 60, both wrong, and found by reading the
-sample rather than the count.
+the two pairs differ by one letter and belong to different places: `d.ä.`/`den äldre` are
+Swedish, `d.e.`/`den eldre` are Norwegian and Danish. A "Scandinavian keeps everything" rule
+would leave a Swedish `den eldre` and a Norwegian `d.ä.` in place, each of which is the other
+language's spelling. **A region subtag inherits its base language**: `en-ca` and `en-us` were
+the only English labels being rewritten to `II` — 2 of the first run's 60, both wrong, found by
+reading the sample rather than the count.
 
 Measured over the 11,827 live labels on 1,465 items: **19 kept native** (`sv` 7, `fi` 6, `nb` 2,
 `en-ca` 1, `en-us` 1, `nn` 1, `da` 1), **58 normalised** (`ast`, `nl`, `pap`, `sl`, `sq`, `ca`,
 `es`, `ga`, `fr`, `tr`). Each language is normalised **from its own label**, never overwritten
 with `mul` — a French or German label may spell the name differently for good reason.
 
-**The CJK labels follow the `mul` form**, per § *The MARRIED name is the real name*: they are the
-transliteration of the primary label. `ラース・ヨンソン・スクルドランド2世`.
+**The CJK labels follow the `mul` form**: they are the transliteration of the primary label.
+`ラース・ヨンソン・スクルドランド2世`.
 
-**⛔ A GENERATION SUFFIX IS A FACT ABOUT THE PERSON, NOT ABOUT ONE NAME STRING.** Emma,
-2026-09-07, shown `Q141242551` and `Q141219063` — two items, both labelled *Lars Osmundsen
-Nese*: *"These two people are clearly different but I think the I, II, Sr, Jr, d.y. suffixing
-was not done properly."*
-
-The younger has three name records: `Lars Osmundsen /Foss-Eikeland/ d. y.` carrying `NSFX` =
-`d. y.`, and `Lars Osmundsen /Foss-Eikeland/` carrying `_MARNM` = `Nese`. § *The MARRIED name
-is the real name* takes the label from the second and the suffix is on the first, so
-`normalise_generation_suffix` — which matched against the label STRING — found nothing and
-dropped it. Two different men, one label, nothing to tell them apart.
+**⛔ A GENERATION SUFFIX IS A FACT ABOUT THE PERSON, NOT ABOUT ONE NAME STRING.** `Q141242551`
+and `Q141219063` are two different men, both labelled *Lars Osmundsen Nese*. The younger has
+three name records: `Lars Osmundsen /Foss-Eikeland/ d. y.` carrying `NSFX` = `d. y.`, and
+`Lars Osmundsen /Foss-Eikeland/` carrying `_MARNM` = `Nese`. § *The MARRIED name is the real
+name* takes the label from the second and the suffix is on the first, so a rule matching against
+the label STRING finds nothing and drops it.
 
 `namemodel.generation_suffix_key` reads the suffix off **every** record and
 `normalise_generation_suffix` takes it as an argument, so it survives a label built from a
@@ -667,39 +559,32 @@ label entirely. **234 people, 19 of them already with an item.** Only the person
 counts: matching a suffix anywhere in a rendered name gives 515 and sweeps in `Señor de
 Campofrío` and a bare `King` left by a title truncation.
 
-**And the correction ground for existing items did not exist, though this file said it did.**
-§ *WIKIDATA'S LABEL BEATS OURS* lists a generation suffix among the exceptions *"each of which
-`_label_corrections` names and tests for specifically"*. It had two grounds and this was not
-one, so a live item stayed wrong however often the batch ran. The third ground is tested like
-the abbreviation one — **the live label plus this person's own suffix must equal exactly what
-we want** — and it is the only ground that emits a different string per language, `II` for
-`mul` and `Jr.` for `en`.
+**⛔ IT MUST NOT REACH AN ITEM SOMEBODY ELSE LABELLED. Measured before it shipped: 240 items**
+hold a Wikidata label that is exactly ours minus the suffix — `Q6230601` *Marcus Wallenberg*,
+`Q47102` *Joseph Smith*, `Q768342` *Augustine Washington* — and ungated this ground would have
+rewritten every one to `… Jr.`. The other correction grounds are gated by construction; a
+suffix Geni records says nothing about who wrote the label, so this one needs its own test.
+`wikidata_en`/`wikidata_mul` from the bulk store is the evidence available: non-empty means the
+item was labelled independently of us. **910 held back, 12 still reachable.**
 
-**⛔ AND IT MUST NOT REACH AN ITEM SOMEBODY ELSE LABELLED. Measured before it shipped: 240
-items** hold a Wikidata label that is exactly ours minus the suffix — `Q6230601` *Marcus
-Wallenberg*, `Q47102` *Joseph Smith*, `Q768342` *Augustine Washington* — and ungated this
-ground would have rewritten every one to `… Jr.`. The other two grounds are gated by
-construction; a suffix Geni records says nothing about who wrote the label, so this one needed
-its own test. `wikidata_en`/`wikidata_mul` from the bulk store is the evidence available:
-non-empty means the item was labelled independently of us. **910 held back, 12 still reachable**
-— `Q141219063` among them, which is the one she photographed.
+**The correction is tested like the abbreviation one** — the live label plus this person's own
+suffix must equal exactly what we want — and it is the only ground that emits a different
+string per language, `II` for `mul` and `Jr.` for `en`.
 
-**And the rule existed for a day before anything called it.** `normalise_generation_suffix` was
-wired into `derive-labels.py` and the label-corrections pass, and **not** into the block that
-writes a new item's `Lmul`/`Len`/`Lja`/`Lzh`/`Lko` — so every creation carried the Norwegian
-abbreviation in all five languages and `label_in` transliterated it as a name: `…・ドイ・…`,
-`…디…`. Her guess at the cause was the position; `_SUFFIX_RE` is unanchored and the position was
-always fine. § *Code that is WRITTEN but never CALLED is not done*.
+**Wire it everywhere or it does nothing.** `normalise_generation_suffix` was wired into
+`derive-labels.py` and the label-corrections pass and **not** into the block that writes a new
+item's `Lmul`/`Len`/`Lja`/`Lzh`/`Lko`, so every creation carried the Norwegian abbreviation in
+all five languages and `label_in` transliterated it as a name: `…・ドイ・…`, `…디…`. § *Code
+that is WRITTEN but never CALLED is not done*.
 
-### THE NAME-ITEM DUPLICATE GUARD NEEDS HER CONTRIBUTIONS, because search LAGS
+### THE NAME-ITEM DUPLICATE GUARD NEEDS THE CONTRIBUTIONS, because search LAGS
 
-**Emma, 2026-09-05:** *"the quickstatements I most recently ran tried to make duplicate surnames
-again lol."* `Låge-Håland`, refused because `Q141257135` already held that label and description —
-and the refusal broke the **four `LAST` lines after it**, which is what a mid-batch `CREATE`
-failure costs.
+A batch tried to create `Låge-Håland` when `Q141257135` already held that label and
+description. The creation was refused, and the refusal broke the **four `LAST` lines after
+it** — which is what a mid-batch `CREATE` failure costs.
 
-**The refusal is the guard working**; § *THE ONE EXCEPTION* is the rule that makes a name item's
-description refuse a duplicate. The generator should not have proposed it.
+**The refusal is the guard working**; § *THE ONE EXCEPTION* is the rule that makes a name
+item's description refuse a duplicate. The generator should not have proposed it.
 
 **Four lookups, and all four missed — each for its own reason, so no single one is the fix:**
 
@@ -710,33 +595,30 @@ description refuse a duplicate. The generator should not have proposed it.
 | `reports/created-name-items.tsv` | **nothing ever refreshed it** |
 | live `wbsearchentities` | reads the **search index** |
 
-**⛔ `wbsearchentities` reads the SEARCH INDEX, which Wikidata populates asynchronously.** An item
-is retrievable by `wbgetentities` immediately and may not be findable by *search* for some time
-after. So the live check is blind in exactly the window a daily cadence duplicates in — an item
-created by yesterday's batch or by an earlier run of today's. It stays as the last resort, because
-it catches items created by **other people**, which contributions cannot.
+**⛔ `wbsearchentities` reads the SEARCH INDEX, which Wikidata populates asynchronously.** An
+item is retrievable by `wbgetentities` immediately and may not be findable by *search* for some
+time after. So the live check is blind in exactly the window a daily cadence duplicates in — an
+item created by yesterday's batch or by an earlier run of today's. It stays as the last resort,
+because it catches items created by **other people**, which contributions cannot.
 
-**`refresh-created-name-items.py` is the source with no lag** — it reads her contributions for page
-creations whose `P31` is a name class, and follows redirects so a merged-away item resolves to its
-survivor. It was written 2026-08-30 **against this exact bug** and nothing called it for six days,
-so the file sat at 18 rows from a hand-run. It now runs inside `build-garborg-day.py --compose`
-beside the ledger refresh, and **fails the run** for the same reason the ledger does: a stale file
-does not look like an error, it looks like work to do, and the work it invents is re-creating what
-exists.
+**`refresh-created-name-items.py` is the source with no lag** — it reads the account's
+contributions for page creations whose `P31` is a name class, and follows redirects so a
+merged-away item resolves to its survivor. It runs inside `build-garborg-day.py --compose`
+beside the ledger refresh, and **fails the run** for the same reason the ledger does: a stale
+file does not look like an error, it looks like work to do, and the work it invents is
+re-creating what exists.
 
 ### A TITLE IS NOT A NAME, and Geni already said so — in `NSFX`
 
-**Emma, 2026-09-03, on `Q2183430` *Benedicta Ebbesdotter of Hvide*:** *"There was a bit of a
-disaster of her names in an earlier quickstatements batch where 'Queen' and 'Sweden' were treated
-as names."* It was live: `Q2183430 P735 Q20899047` — given name **Queen**, as middle name 3 — and
-`Q2183430 P734 Q37437749` for **Sweden**.
+`Q2183430` *Benedicta Ebbesdotter of Hvide* went out with `P735` given name **Queen** as middle
+name 3 and `P734` family name **Sweden**.
 
-**The GEDCOM was right the whole way.** Her record is
-`1 NAME Bengta Ebbesdotter /Ebbesdatter Galen/` with `2 NSFX Queen of Sweden` — the title in the
-name-**suffix** field, which is where it belongs. `build-display-names.py` concatenates every
-piece into `display_name`, `derive-labels.py` appends `nsfx` again when it builds the married-name
-alias, and the name model then parses that rendered string positionally. **A field whose entire
-purpose is *this part is not a name* became two name items.**
+**The GEDCOM was right the whole way.** The record is
+`1 NAME Bengta Ebbesdotter /Ebbesdatter Galen/` with `2 NSFX Queen of Sweden` — the title in
+the name-**suffix** field, which is where it belongs. `build-display-names.py` concatenates
+every piece into `display_name`, `derive-labels.py` appends `nsfx` again when it builds the
+married-name alias, and the name model then parses that rendered string positionally. **A field
+whose entire purpose is *this part is not a name* became two name items.**
 
 **`NSFX` holds two different things, measured over 1,856,150 name records** — 86,947 carry one:
 
@@ -747,36 +629,34 @@ purpose is *this part is not a name* became two name items.**
 | multi-word, no connective | 13,826 | `d. y.` · `Patrizio Napoletano` · `132, 91, 44, 9` |
 
 **Only the phrase form is dropped**, and the connective is doing the work rather than the word
-list. Over the 1,295,226 labelled people the rule truncates **10,619 and leaves 5,945 alone**, and
-reading the second list is what established it: `Sarah Bishop`, `Anne Greve`, `Anna King` and
-`Nicholas Henry Pope` are real surnames a bare word list would have destroyed. Truncation is at
-the **earliest** title word once any of them qualifies, so `Prins, Hertig av Västergötland` goes
-as one stack — **171 labels stack titles that way and every one is genuine**.
-`reports/title-tails-dropped.tsv` is the census: **18,165 people**, titles and territorials
-together.
+list. Over the 1,295,226 labelled people the rule truncates **10,619 and leaves 5,945 alone**,
+and reading the second list is what established it: `Sarah Bishop`, `Anne Greve`, `Anna King`
+and `Nicholas Henry Pope` are real surnames a bare word list would have destroyed. Truncation is
+at the **earliest** title word once any of them qualifies, so `Prins, Hertig av Västergötland`
+goes as one stack — **171 labels stack titles that way and every one is genuine**.
+`reports/title-tails-dropped.tsv` is the census: **18,165 people**.
 
-**`namemodel.drop_title_tail` is the one place**, called inside `statements_for` on the label and
-on `givn`/`surn`/`marnm` alike, because there are two emitters and they have disagreed before.
-**It does not touch the LABEL.** What a person's `mul` label should read is a separate question
-from what becomes a `P735`, and this changes only the second.
+**`namemodel.drop_title_tail` is the one place**, called inside `statements_for` on the label
+and on `givn`/`surn`/`marnm` alike, because there are two emitters and they have disagreed
+before. **It does not touch the LABEL.** What a person's `mul` label should read is a separate
+question from what becomes a `P735`, and this changes only the second.
 
-**She ruled on the single tokens the next day: DROP TITLES, KEEP ORDINALS.** Emma, 2026-09-04,
-choosing between four readings. So `Graf` 464, `Knight` 274, `Kt.` 400 and `Donna` 209 stop
+**DROP TITLES, KEEP ORDINALS.** `Graf` 464, `Knight` 274, `Kt.` 400 and `Donna` 209 stop
 becoming name items, while `II` 2,224, `I` 1,836, `Jr.` 1,693, `Sr.` 1,436, `d.y.` 598, `d.e.`
 369 and the CJK generation numerals stay — the ordinals carry `P7338` *regnal ordinal* and are
 part of what the person is called. `namemodel.NAME_SUFFIX_TITLES` is the list, **297 tokens read
 off the values with their counts**, and it drops 7,917 of the 30,730 occurrences, 25.8%.
 
 **What SURVIVES the filter is the test, and it is why this is a list and not a rule.** Under the
-ordinals sit Norwegian farm surnames — `Ytteren` 26, `Altermark` 26, `Skonseng` 17, `Sandnes` 16,
-`Sveen` 16, `Kjærulf` 15 — ordinary names that happen to be in the suffix field. Anything that
-dropped what it did not recognise would have deleted them.
+ordinals sit Norwegian farm surnames — `Ytteren` 26, `Altermark` 26, `Skonseng` 17, `Sandnes`
+16, `Sveen` 16, `Kjærulf` 15 — ordinary names that happen to be in the suffix field. Anything
+that dropped what it did not recognise would have deleted them.
 
 **Two collisions were found by measuring and both would have been silent.** `i` casefolds
 together with the Roman numeral `I`, 1,836 people, so `i` is not on the list at all — the same
-trap `_drop_territorial` already carries a comment about. And matching on a dot-stripped form put
-`d.e.` (369, Swedish *den äldre*) onto the particle `de`. Nothing is dot-stripped; every surface
-form the corpus holds is listed instead.
+trap `_drop_territorial` already carries a comment about. And matching on a dot-stripped form
+put `d.e.` (369, Swedish *den äldre*) onto the particle `de`. Nothing is dot-stripped; every
+surface form the corpus holds is listed instead.
 
 **`drop_title_suffix` matches the person's OWN `NSFX` exactly**, never a bare word list against a
 trailing token — `Anna King` keeps her surname while `Dániel IV Esterházy de Galántha Graf` loses
