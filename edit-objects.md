@@ -1,6 +1,6 @@
 # Edit objects
 
-Emma's specification, 2026-08-12. **We emit JSON objects describing edits.** A
+The specification, 2026-08-12. **We emit JSON objects describing edits.** A
 later pipeline executes them; roughly a hundred a day. Nothing here sends
 anything.
 
@@ -16,7 +16,7 @@ anything.
 
 ## An item without a Geni ID is the ordinary case, not a special one
 
-Emma, 2026-08-12: *"it's just a wikidata object. It's a wikidata object that
+2026-08-12: *"it's just a wikidata object. It's a wikidata object that
 should be linked in the way that any other wikidata object should be linked.
 There should not be anything special about it."*
 
@@ -27,7 +27,7 @@ whatever that merge produces, and every matched item takes the same path:
 1. `add_geni_id` — always first, because everything else cites it;
 2. then claims, relationships, and creations hanging off it.
 
-**The expected shape of the work**, in her words: *"the majority of the JSONs are
+**The expected shape of the work**, verbatim: *"the majority of the JSONs are
 going to be minor trait edits on existing items … because the majority of the
 surface area is existing items."* The initially-valid ones are mostly
 `add_geni_id` on merged items, plus labels. Creations are occasional and
@@ -36,7 +36,7 @@ can link to.
 
 ## Name items
 
-Emma, 2026-08-12: *"the name items are things that would get created. There would
+2026-08-12: *"the name items are things that would get created. There would
 be a create name item thing that would be done for all of the names that fit
 sufficiently into Western name conventions … when they are created, they are
 always linked to one of the people who links to it in a similar way."*
@@ -63,7 +63,7 @@ of them are patronyms."*
 
 ## Not every object is valid to run when it is written
 
-This is the part that makes them objects rather than a batch. **Emma: *"not all
+This is the part that makes them objects rather than a batch. ***"not all
 of the JSONs are valid to run initially. This is a bit of an important thing."***
 
 The dependency that drives it: **we cite claims to the person's Geni ID, so the
