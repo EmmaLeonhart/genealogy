@@ -303,12 +303,11 @@ def main() -> int:
         "",
         "## ⛔ `P2600 linked` DOES NOT MEAN WIKIDATA HAS THEM",
         "",
-        "**Emma, 2026-09-05, on the first version of this report:** *\"your measurement of there "
-        "being qids is a bit flawed. Both Chinese lines likely have wiki data items even if no "
-        "connection… Pre dynastic Egypt definitely does… Axum certainly have qids lol… Third "
-        "intermediate period def has qids lol\"*.",
+        "**The first version of this report measured QIDs wrongly.** Both Chinese lines "
+        "likely have Wikidata items even with no connection recorded; pre-dynastic Egypt "
+        "certainly does, as do Axum and the Third Intermediate Period.",
         "",
-        "**She is right, and the column was mislabelled rather than miscounted.** It counts a "
+        "**The column was mislabelled rather than miscounted.** It counts a "
         "`P2600` *Geni.com profile ID* — somebody having **linked** a Geni profile to a Wikidata "
         "item. Scorpion I, Makeda Queen of Sheba and Scheschonq all have items; not one has a "
         "`P2600`, so the cluster reads `0` and the first version of this report said *\"every "
@@ -329,9 +328,9 @@ def main() -> int:
         "",
         "## Rope or ball — `per hop` and `deg≤2` say which, and they are different findings",
         "",
-        "**Emma, 2026-09-05:** *\"there\'s a bit of fuckery that geni enforced with its bible ban "
-        "that we can undo, although the exact way isn\'t 100% clear\"*. Tracing one cluster shows "
-        "the shape of it, and the shape is measurable for all of them.",
+        "Geni\'s bible ban distorted these lines in a way that can be undone, though the exact "
+        "route is not settled. Tracing one cluster shows the shape of it, and the shape is "
+        "measurable for all of them.",
         "",
         "**The 153 hops from Charlemagne to `Solomon King of Israel` "
         "(`6000000210521125824`) are a ROPE.** The route runs Charlemagne → Louis the Pious → "

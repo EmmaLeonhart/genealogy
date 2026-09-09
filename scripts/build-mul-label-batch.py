@@ -1,7 +1,7 @@
-"""Step 2 of Emma's label order: `mul` for every individual, derived from `en`.
+"""Step 2 of the label order: `mul` for every individual, derived from `en`.
 
-**Emma, 2026-08-17:** *"then mul gets made for every individual (almost always derived
-from en)"*. This mirrors `reports/wikidata-en-labels.json`, which is step 1.
+**`mul` is made for every individual, almost always derived from `en`.** This mirrors
+`reports/wikidata-en-labels.json`, which is step 1.
 
 **"Almost always" is doing real work in that sentence, and this is where it bites.** A
 `mul` label is the name a person is known by across languages. Two of step 1's three
@@ -11,8 +11,8 @@ sources are names; the third is not.
 * **A romanised Han name** -- a name. `mul` mirrors it.
 * **A relationship label**, `husband of Lakech Gashawbeza` -- **not a name.** It describes
   somebody by who they are related to, and copying it into `mul` would assert across every
-  language that this is what the person is called. Emma ruled on exactly this shape on
-  2026-08-17: *"And NN for mul there"*. Those people already receive `mul: NN` from
+  language that this is what the person is called. This exact shape was ruled on
+  2026-08-17: **`NN` for `mul` there**. Those people already receive `mul: NN` from
   `build-placeholder-label-batch.py`, so this batch leaves them alone rather than
   overwriting a correct marker with a description.
 
@@ -55,7 +55,7 @@ def main():
         edits.append({
             "id": "mul_label:%s" % g,
             "type": "set_label",
-            "source": "step 2 of Emma's label order",
+            "source": "step 2 of the label order",
             "subject": {"qid": None, "geni_id": g},
             "requires": ["en_label:%s" % g],
             "label": {"language": "mul", "value": e["label"]["value"]},
@@ -67,16 +67,15 @@ def main():
     by = Counter(e["derived_from"] for e in edits)
     md = ["# Step 2 — `mul` for every individual, derived from `en`", "",
           "Built by `scripts/build-mul-label-batch.py`. **Emits nothing to Wikidata.**", "",
-          "Emma, 2026-08-17: *\"then mul gets made for every individual (almost always "
-          "derived from en)\"*.", "",
+          "`mul` is made for every individual, almost always derived from `en`.", "",
           "- step 1 `en` edits: **%d**" % len(step1),
           "- `mul` mirrored from them: **%d**" % len(edits),
           "- deliberately not mirrored: **%d**" % sum(skipped.values()), "",
           "## Why %d are left alone" % sum(skipped.values()), "",
-          "*\"Almost always\"* is doing the work in her sentence. A relationship label — "
+          "*\"Almost always\"* is doing the work in that rule. A relationship label — "
           "`husband of Lakech Gashawbeza` — is **not a name**; copying it into `mul` would "
-          "assert across every language that this is what the person is called. She ruled "
-          "on this shape on 2026-08-17: *\"And NN for mul there\"*, and those people already "
+          "assert across every language that this is what the person is called. This shape "
+          "was ruled on 2026-08-17 — `NN` for `mul` there — and those people already "
           "get `mul: NN` from `build-placeholder-label-batch.py`. Overwriting a correct "
           "marker with a description would be a regression.", "",
           "| mirrored from | people |", "| --- | ---: |"]

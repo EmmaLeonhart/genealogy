@@ -1,15 +1,13 @@
 """Two Wikidata items to create standalone, on 2026-09-30.
 
-Emma, 2026-08-13: *"create wikidata items for [Baruch Jafe] and [Samuell
-Standen] on September 30 as independent unlinked items completely independently
-of their links elsewhere... these appear to have gotten into the data somehow but
-are apparently completely unlinked and I still want them to get in."*
+Baruch Jafe and Samuell Standen get Wikidata items on 2026-09-30, as independent
+unlinked items, entirely independently of their links elsewhere. They reached the
+data somehow and are completely unlinked, and they are still wanted in.
 
-**Unlinked is the starting point, not the goal.** Emma, 2026-08-13: *"I want
-everything on geni naturally linked to wikidata but also ideally linked into both
-of their world trees."* Both — Geni's tree and Wikidata's. These two items are
-created standalone because *"this allows for the wikidata stuff to finally start
-doing connections"*: an item has to exist before anything can point at it.
+**Unlinked is the starting point, not the goal.** The target is everything on Geni
+naturally linked to Wikidata and also linked into both world trees — Geni's and
+Wikidata's. These two items are created standalone so the Wikidata side can start
+making connections at all: an item has to exist before anything can point at it.
 
 **Nothing to point at yet.** Neither man's father, mother, spouse or child
 carries a Wikidata item — checked against `reports/derived-labels.csv`, all six
@@ -19,7 +17,7 @@ these are unlinked on the day.
 
 **The Geni side is no longer symmetric between them**, which is worth stating
 because it stops being a reason to treat them alike. Samuell Standen joined the
-main tree on 2026-08-13 when Emma's `Forest` of `6000000227226600829` bridged the
+main tree on 2026-08-13 when the `Forest` of `6000000227226600829` bridged the
 Standen ball; Baruch Jafe is still inside the remaining cut-off component of
 4,088. Each item carries only what stands on its own: label, `P31` human, `P2600`
 Geni ID, `P21` sex, and the dates Geni records — every statement referenced to
@@ -61,7 +59,7 @@ csv.field_size_limit(10_000_000)
 SCHEDULED = "2026-09-30"
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 
-#: Geni ID -> the URL Emma gave, kept so the report links where she linked.
+#: Geni ID -> the URL supplied with the request, kept so the report links to the same page.
 SUBJECTS = {
     "6000000040078764766": "https://www.geni.com/people/Baruch-Jafe/6000000040078764766",
     "6000000107265740881": "https://www.geni.com/people/Samuell-Standen/6000000107265740881",
@@ -149,10 +147,9 @@ def main() -> int:
     add = L.append
     add("# Two unlinked items, to create on 2026-09-30")
     add("")
-    add("Emma, 2026-08-13: *\"create wikidata items for [these two] on September 30")
-    add("as independent unlinked items completely independently of their links")
-    add("elsewhere... these appear to have gotten into the data somehow but are")
-    add("apparently completely unlinked and I still want them to get in.\"*")
+    add("These two get Wikidata items on 2026-09-30, as independent unlinked items,")
+    add("entirely independently of their links elsewhere. They reached the data")
+    add("somehow and are completely unlinked, and they are still wanted in.")
     add("")
     add(f"**{len(objects)} creations, scheduled `{SCHEDULED}`.** Queued the way the")
     add("Charlemagne route is queued — written down as edit objects now, executed")

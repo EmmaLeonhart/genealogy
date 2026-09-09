@@ -1,7 +1,7 @@
-"""Step 3 of Emma's label order: the `ja` label, for everyone it can be had for honestly.
+"""Step 3 of the label order: the `ja` label, for everyone it can be had for honestly.
 
-**Emma, 2026-08-17:** *"and then the Japanese gets made for all languages, and then the
-Chinese gets made for all languages"* -- one batch per language over the whole population.
+**Japanese is made for all languages, then Chinese is made for all languages** -- one
+batch per language over the whole population.
 
 **This emits only the `ja` labels that require no invention**, and says plainly how many it
 cannot reach. Two sources:
@@ -18,8 +18,8 @@ WHAT IT DOES NOT DO, AND WHY THAT IS THE WHOLE POINT
 must not be the hangul -- Japanese does not write Korean names that way. Their `ja` needs a
 katakana reading, which is the same problem as the Latin names below.
 
-**401,410 people need English -> katakana and get nothing here.** Emma's method for that
-direction is a hand-built table -- *"hand-built tables, except CJK -> English"* -- and a
+**401,410 people need English -> katakana and get nothing here.** The method for that
+direction is a hand-built table -- hand-built tables everywhere except CJK -> English -- and a
 table that turns `Brodsky` into `ブロツキー` correctly is a real piece of work with real
 failure modes: syllabification, long vowels, and the fact that established Japanese
 spellings of European names are conventional rather than derivable. **Guessing at 401,410
@@ -100,7 +100,7 @@ def main():
     edits = [{
         "id": "ja_label:%s" % g,
         "type": "set_label",
-        "source": "step 3 of Emma's label order",
+        "source": "step 3 of the label order",
         "subject": {"qid": None, "geni_id": g},
         "requires": [],
         "label": {"language": "ja", "value": v},
@@ -123,8 +123,8 @@ def main():
            "**Hangul-only names: %d.** A `ja` label must not be the hangul — Japanese does "
            "not write Korean names that way. They need a katakana reading, which is the "
            "same unsolved problem as the Latin names." % hangul_only, "",
-           "**English → katakana: the rest.** Emma's method for this direction is a "
-           "hand-built table (*\"hand-built tables, except CJK → English\"*). A table that "
+           "**English → katakana: the rest.** The method for this direction is a "
+           "hand-built table; tables are hand-built everywhere except CJK → English. A table that "
            "turns `Brodsky` into `ブロツキー` correctly has real failure modes — "
            "syllabification, long vowels, and the fact that established Japanese spellings "
            "of European names are conventional rather than derivable. Guessing at that many "
