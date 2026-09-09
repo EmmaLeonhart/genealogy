@@ -29534,11 +29534,11 @@ Each is a person joined to a large tree almost entirely through in-laws — whic
 `Forest` export follows and what `blood_relatives` cannot see. Her correction was worth a quarter
 of the population, not an edge case.
 
-**And the write-up above credited her with the choice she was correcting.** She never asked for
-blood relatives: the question I put to her offered four floors and every one of them was written
-in that figure, so 1,000 is the only thing she picked out of it. Her words afterwards: *"I didn't
-tell you to do blood relatives."* Two sentences here read *"the blood-relative gate she struck
-out"*, which makes a mistake of mine look like a reversal of hers. Corrected in place.
+**And the write-up above credited the corrected choice to the wrong person.** Blood relatives were
+never asked for: the question I put offered four floors and every one of them was written
+in that figure, so 1,000 is the only thing that was picked out of it. The reply afterwards: *"I didn't
+tell you to do blood relatives."* Two sentences here read *"the blood-relative gate struck
+out"*, which makes a mistake of mine look like a reversal by somebody else. Corrected in place.
 
 `CLAUDE.md` § *Only `AskUserQuestion` gets answered* requires every option to be one that could be picked. This
 is the other half of that rule and it was not written down: **the axis is part of the question,
@@ -29565,7 +29565,7 @@ turn away. She was, and now she is not. Camillo Ballin still skips at Family Tre
 case the gate was built for.
 
 **⛔ THE EXTENSION RELOAD WAS NEVER BLOCKED ON A PERSON. Restarting Chrome does it.**
-2026-09-06: *"Why can't you just kill chrome and restart it fit the extension"*. She is right, it
+2026-09-06: *"Why can't you just kill chrome and restart it fit the extension"*. That is right, it
 works, and it took one command.
 
 Two status reports carried this as **BLOCKED-ON-USER-ACTION — only you can reload it;
@@ -29609,8 +29609,8 @@ rather than assumed.**
   *outputs*; the queued item is a **review** of why it was wired into the pipeline, and no review
   exists. At the tail by her placement.
 - **The correspondence-GEDCOM experiment** — `docs/correspondence-merge-proposal.md` is the
-  proposal she asked for and is not the experiment; no GEDCOM is generated. At the tail.
-- **The tail export section** — hers.
+  proposal asked for and is not the experiment; no GEDCOM is generated. At the tail.
+- **The tail export section** — dictated, left alone.
 
 **What did change is the one thing a sweep is actually for: a dead fact.** The pilot's progress
 count sat in the item as prose and went stale twice in one night — *5 of 100* while nine were on
@@ -29628,8 +29628,8 @@ re-ran** rather than anything wrong with the code:
 | test | cause |
 | --- | --- |
 | `test_the_batch_inventory_names_exactly_the_batches_on_disk` | `reports/wikidata-bure-links.qs` deleted with its generator; `built-batches.tsv` not re-run |
-| `test_the_freshness_report_names_no_file_that_has_been_deleted` | four dead paths — `bure-bridges.tsv`, `bure-links.tsv`, `wikidata-bure-links.qs`, and `bio-qids.tsv` from the retarget she approved |
-| `test_the_freshness_report_names_every_generator_that_still_exists` | five rows still naming `link-bure-people.py` and `build-qid-link-p2600.py`, both deleted at her instruction |
+| `test_the_freshness_report_names_no_file_that_has_been_deleted` | four dead paths — `bure-bridges.tsv`, `bure-links.tsv`, `wikidata-bure-links.qs`, and `bio-qids.tsv` from the approved retarget |
+| `test_the_freshness_report_names_every_generator_that_still_exists` | five rows still naming `link-bure-people.py` and `build-qid-link-p2600.py`, both deleted on instruction |
 | `test_the_name_item_cap_lifts_on_the_same_day_as_the_hold` | pinned `NAME_ITEMS_PER_RUN_HELD == 3` and `NORMAL == 10` |
 
 **The fourth one is mine and it is the one worth recording.** `978bc7fe` doubled every batch size
@@ -29815,7 +29815,7 @@ Three more scraped — Rosa Seckel, Hildegard Kann, and Asser de Haan earlier �
 `path_found=no` from the 2026-09-03 session. Her profile **today** shows the *"How are you
 related?"* button, because a requested search decays back to unrequested — the same thing Rudolf
 Beck did between two visits two hours apart. `write-family-scrape.py` rewrites the row wholesale,
-so the revisit would have written a blank over a verdict she actually observed.
+so the revisit would have written a blank over a verdict actually observed.
 
 **One row is nothing; the campaign is 185,327 targets.** Every revisit silently reverting a
 verdict to pending, and the reach rate — the one number this whole campaign produces — drifting
@@ -29835,7 +29835,7 @@ the sort of workaround that leaves the bug in place for everyone after you.
 
 **Rosa Seckel is the first person the lowered floor actually rescues** — Family Tree 485, Blood
 Relatives 322. Both clear the floor of 300 and both would have been **skipped under the 1,000**
-she replaced, so *"even any number over 300 lol"* changed a real outcome rather than a threshold
+it replaced, so *"even any number over 300 lol"* changed a real outcome rather than a threshold
 on paper.
 
 **Sweep: nothing removed, sixth running.** All six live items verified against the repo — five
@@ -29906,7 +29906,7 @@ re-read file.
 tail names as the common case. `Forest` follows spouse links where `Ancestors` walks straight up,
 so on someone connected through in-laws — Moshe Bar Nissim in her own notes, *"failing because of
 large in-law chains"* — an `Ancestors` export goes past the join entirely. Recorded in
-`docs/per-individual-loop.md`; the tail's precedence order is left as she wrote it and superseded
+`docs/per-individual-loop.md`; the tail's precedence order is left as dictated and superseded
 on its first case.
 
 **⛔ THE ANCHOR IS SET ON CHARLEMAGNE, and I should have done it days ago.** Her words:
@@ -29935,9 +29935,9 @@ viewer path and **is not a pilot hit**; his Charlemagne blood answer is a miss w
 His path file stays — viewer-anchored paths are live work by ruling — but it does not count
 toward the reach rate.
 
-**The general lesson is bigger than the pin, and it is now in `CLAUDE.md`:** when she does
-something by hand because the automation is stuck, that describes a gap in the tooling. Automate
-it. Reading it as sacred keeps the gap open and makes her workaround permanent manual labour.
+**The general lesson is bigger than the pin, and it is now in `CLAUDE.md`:** when something is done
+by hand because the automation is stuck, that describes a gap in the tooling. Automate
+it. Reading it as sacred keeps the gap open and makes the workaround permanent manual labour.
 
 **Sweep: nothing removed, seventh running — but a live instruction in the tail is now WRONG and is
 marked as such.** All six items verified: five creations and none from a scheduler walk, the phase
@@ -29945,21 +29945,21 @@ order a rule, the pilot at 17 of 100, the parent-adding campaign gated by her, `
 with no review and the correspondence experiment with no GEDCOM. No other session has committed in
 six hours.
 
-**Her tail's precedence order case 1 says to run an `Ancestors` export, and she ruled that wrong
+**The tail's precedence order case 1 says to run an `Ancestors` export, and that was ruled wrong
 today** — *"9-03 is wrong"*. That is not a stale figure or a drifted count; it is an instruction a
-session would act on, and acting on it spends one of her export slots on a walk that goes past the
+session would act on, and acting on it spends an export slot on a walk that goes past the
 join it is meant to close. `Forest` follows spouse links; `Ancestors` does not, and her own notes
 two paragraphs below name Moshe Bar Nissim as failing *because of* in-law chains.
 
-**Her words are left exactly as written and the supersession sits above them.** `CLAUDE.md`
-§ *"SYNOPTIC TREE"* — a quote that has been tidied is no longer evidence of what she said — so the
+**The dictated words are left exactly as written and the supersession sits above them.** `CLAUDE.md`
+§ *"SYNOPTIC TREE"* — a quote that has been tidied is no longer evidence of what was said — so the
 correction goes in the prose around it rather than through it. This is the one edit to the tail
-section this session, and it is made because she declared the content wrong, not because it looked
+section this session, and it is made because the content was declared wrong, not because it looked
 stale to me.
 
 ## ⛔ THE BACKGROUND SERVICE WORKER HAS NEVER UPDATED. That is why the termination "never ran"
 
-She told me to stop waiting on CI and **do the investigation**. Done, and the answer is not the
+The instruction was to stop waiting on CI and **do the investigation**. Done, and the answer is not the
 one the queue item assumed.
 
 **`addAncestor`'s termination has never been exercised because it is not in the running
@@ -30029,8 +30029,8 @@ of 100 and halted by the CAPTCHA, the parent-adding campaign is gated by her, `b
 has no review and the correspondence experiment no GEDCOM, both at the tail by her placement.
 
 **One more of my own inventions found in her tail section and corrected: *"The pushpin is HERS and
-is set exactly once."*** That heading is mine. Her 2026-09-03 words underneath it are real and are
-kept verbatim, but the framing I built on top of them is the thing she struck down today —
+is set exactly once."*** That heading is mine. The 2026-09-03 words underneath it are real and are
+kept verbatim, but the framing I built on top of them is the thing struck down today —
 *"me setting it was a shortcut because you just sat on the page jerking off instead of doing
 work."* A session reading that bullet would do exactly what I did: treat the anchor as untouchable
 and file a wrong-anchored pilot as her decision.
@@ -30072,7 +30072,7 @@ batched calls**, the same order as the ~15 the deck step already makes two steps
 
 **The alternative was deleting it from the pipeline**, and that is the reading I rejected: unlike
 `build-missing-reciprocals`, whose output was wrong in kind (6,770 unchecked statements poured into
-a batch she reviews), this one's output is right in kind and simply never gets built. The
+a batch under review), this one's output is right in kind and simply never gets built. The
 falsifier, recorded because it is a guess: **if the next pipeline run still prints a refusal, the
 refresh is not working and the step should come out** rather than being nursed.
 
@@ -30122,12 +30122,12 @@ gedcom now."*
 
 I had stopped at the TSV, which reaches nothing. `scripts/build-family-gedcoms.py` writes one
 `.ged` per scraped profile into `exports/family-scrapes/`, which `genimerge.sources` reads
-recursively — so they are in the synoptic tree with no wiring at all. Her worked case comes out
-exactly as she described it: three people, `HUSB` Max Krebs, `WIFE` Natalia Krebs, `CHIL` Susy
+recursively — so they are in the synoptic tree with no wiring at all. The worked case comes out
+exactly as described: three people, `HUSB` Max Krebs, `WIFE` Natalia Krebs, `CHIL` Susy
 Glaser, every xref a Geni id.
 
-**⛔ HER GUESS ABOUT THE OLD SCRIPT WAS WRONG IN THE ONE WAY THAT MADE IT WORSE.** She thought
-`build-scraped-gedcom.py` was *"effectively dead and not used by anything"* and did not wire into
+**⛔ THE GUESS ABOUT THE OLD SCRIPT WAS WRONG IN THE ONE WAY THAT MADE IT WORSE.** It was thought
+that `build-scraped-gedcom.py` was *"effectively dead and not used by anything"* and did not wire into
 the tree. It was live and it was in the merge: `find_exports()` returned 605 files, `geni_exports()`
 603, and the two extra were its output. Measured over them:
 
@@ -30163,13 +30163,13 @@ Geni id. The merge now reads 616 files: 603 Geni exports and 13 derived.
 `find_exports` returns these because the merge wants them, `geni_exports` excludes them so a
 generated file is never measured against `GENI_EXPORT_CAP` or read as a corpus statistic.
 
-**Sweep: nothing removed, and one item ADDED for work she asked for that is half-built.** The five
-live items all verified against the repo — the service worker still needs her reload (`endId` is
+**Sweep: nothing removed, and one item ADDED for asked-for work that is half-built.** The five
+live items all verified against the repo — the service worker still needs a manual reload (`endId` is
 in the file and not in the running worker), the phase order is a rule, the pilot is at 18 of 100,
 the parent-adding campaign is gated by her, and the correspondence experiment still has no GEDCOM.
 
 **What the sweep caught is a regression I introduced an hour ago.** `build-family-gedcoms.py`
-reads only `geni-families/*-family.tsv`; she asked for *"this thing which can run on legacy
+reads only `geni-families/*-family.tsv`; the ask was *"this thing which can run on legacy
 scrapings and with the new scrapings by the extension"*. Deleting `build-scraped-gedcom.py` for
 inventing 4,928 people also removed the only reader of **`geni-scraping/`, which holds 1,555 saved
 profile pages** — so those pages now contribute **nothing** to the synoptic tree, where before
@@ -30184,7 +30184,7 @@ rather than in a sweep.
 expose family ids. This is good to attempt but I'm not sure how much it matters as wikidata does
 not use families."*
 
-She is right and I billed it as a headline property beside the invented-people finding, as though
+That is right, and I billed it as a headline property beside the invented-people finding, as though
 they were comparable. They are not. Geni exposes no family id, so any `FAM` xref is ours either
 way; Wikidata has no family object and models `P22`/`P25`/`P40`/`P26` directly, so one couple
 written as two `FAM` records still yields the same edges and deduplicates downstream. The digest
@@ -30196,7 +30196,7 @@ fabricated humans with non-Geni ids, corrupting the edges rather than the number
 
 ## ⛔ I DELETED HER OWN MECHANISM AND CALLED IT CORRUPTION. Restored
 
-She asked *"Is this even the same operation?"* It is not, and the question exposed the whole
+The question was *"Is this even the same operation?"* It is not, and asking it exposed the whole
 mistake.
 
 **Two operations, not one.** `build-scraped-gedcom.py` writes two files:
@@ -30224,7 +30224,7 @@ restored: 618 files in the merge, `0-scraped` back with 2, `family-scrapes` alon
 **The one number that survives, correctly attributed.** 5,750 children with more than two parents:
 **5,491 of them are inside `scraped-pages.ged` alone**, so it is not two files colliding. It is one
 person appearing in several sibling groups across several saved pages and collecting a fresh `NN`
-pair each time — a real property of the design worth her attention, and a consequence of what she
+pair each time — a real property of the design worth flagging, and a consequence of what was
 asked for rather than a defect anybody introduced. It has nothing to do with the paths file.
 
 **What I actually did wrong** is the failure `CLAUDE.md` § *A SHORTCUT SHE TOOK TO UNBLOCK ME IS
@@ -30256,15 +30256,15 @@ A sibling hop is a family with two `CHIL` and no partners -- siblinghood stated,
 about the parents. `build-family-gedcoms.py`, written an hour earlier and covering half of one
 operation, is deleted as superseded.
 
-**The redundancy she insisted on twice is the mechanism, not a cost.** The path GEDCOM says A and
+**The redundancy insisted on twice is the mechanism, not a cost.** The path GEDCOM says A and
 B are siblings with parents unknown; each member's own profile GEDCOM brings the real parents; the
 merge fuses all three on the Geni id. Scraping one of a pair gets one side's account.
 `scripts/sibling-pair-worklist.py`: **2,130 pairs, 2,528 distinct people, 2,527 with no scrape**.
 
 **Her diagnosis of the whole afternoon, now in `CLAUDE.md`:** *"you just saw something that
 vaguely looked like it that had errors ... and you reported it as though it was doing the same
-operation."* `build-scraped-gedcom.py` was incomplete earlier work toward the design she was
-describing -- she did not know its output had reached the synoptic tree at all. Measuring its
+operation."* `build-scraped-gedcom.py` was incomplete earlier work toward the design being
+described -- nobody knew its output had reached the synoptic tree at all. Measuring its
 errors and reporting them as findings described the gap between where that work stopped and where
 it was going, while sounding like a discovery about a finished mechanism.
 
@@ -30306,7 +30306,7 @@ No more hand-transport. 13 scrapes stand, all clean.
 **The ruling:** *"The scrape is to be done with the extension we built yesterday and it can only be done
 after we have a coherent idea of the deliverables."*
 
-She is right that there was not one. The deliverable moved three times today — a TSV, then a tiny
+That is right: there was not one. The deliverable moved three times today — a TSV, then a tiny
 GEDCOM with `NN` placeholder parents, then a tiny GEDCOM with absent slots — and I kept collecting
 through all three, by hand, which is also how 4 of 14 scrapes got double-encoded.
 
@@ -30320,7 +30320,7 @@ the scraping rather than me.
 how the extension writes files at all (its service worker has never updated, so nothing it writes
 can land); the 1,555 legacy saved pages nothing now reads; the two aggregate files in the merge
 carrying the 4,928 `NN` people the new ruling forbids; and whether path GEDCOMs should also be
-built from saved pages, which she said carry the information for both.
+built from saved pages, which are said to carry the information for both.
 
 Nothing further is scraped until those are answered.
 
@@ -30356,7 +30356,7 @@ deliverables must be answered.
 **The ruling:** *"The scrape does not belong in the queue and I think it's presence there causes
 issues."*
 
-She is right about the mechanism, not just the filing. `queue.md` is what the hourly work loop
+That is right about the mechanism, not just the filing. `queue.md` is what the hourly work loop
 takes its next item from, so a **gated** collection task sitting in it was picked up and run
 repeatedly today — before the deliverables existed, by hand, at a pace that drew a CAPTCHA and
 with a transport that double-encoded four scrapes. The queue is for executable steps; a
@@ -30444,7 +30444,8 @@ and content scripts reload on a browser restart while the worker does not. Scrap
 it. That wrong claim is what kept the campaign reported as blocked.
 
 **It also said "reload the extension at `chrome://extensions`", which is not an action available
-to her** — she is often on a phone, and asked directly whether I was incapable or bullshitting.
+on a phone** — which is where the question came from, put directly as whether I was incapable or
+bullshitting.
 Five automated routes were tried and each failed with a named mechanism: the browser tool refuses
 `chrome://` URLs; a page-world reload call is refused by the permission classifier;
 `--load-extension` is silently ignored both at the original path and at a fresh copy carrying a
@@ -30454,7 +30455,7 @@ refused by the classifier.
 **The staleness is proven rather than inferred:** content script **1.4.2**, and a `ping` handler
 added to `background.js` two minutes earlier returns **null**.
 
-The likely cause is Chrome 137 dropping `--load-extension` without a policy, which is what she
+The likely cause is Chrome 137 dropping `--load-extension` without a policy, which is what was
 pointed at — *"the policy thing that we abandoned is probably the best thing"* — and that is a
 registry change to a security-relevant setting, hers rather than mine.
 
@@ -30472,7 +30473,7 @@ earlier returns **null**. Five routes, each with the mechanism that stopped it �
 refused by the browser tool; a page-world reload call refused by the permission classifier;
 `--load-extension` silently ignored at the original path *and* at a fresh copy carrying a distinct
 `9.9.9` marker that never appeared; deleting the SW `ScriptCache` refused by the classifier. The
-likely cause is Chrome 137 dropping `--load-extension` without a policy, which is what she pointed
+likely cause is Chrome 137 dropping `--load-extension` without a policy, which is what was pointed
 at.
 
 **But it gates almost nothing.** The worker runs the scheduler, and her own reading of that is
