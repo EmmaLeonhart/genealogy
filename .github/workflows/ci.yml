@@ -79,9 +79,8 @@ jobs:
       # invisible to pytest and to every reader -- it surfaces only when Chrome next loads the
       # unpacked extension, which happens on HER machine, mid-run, silently. On 2026-09-07 a
       # generated header in `path.js` landed with a REAL newline inside a string literal instead
-      # of a `
-` escape; it was caught by reading the file, not by any check. `node --check`
-      # parses without executing, so it costs nothing and cannot touch Geni.
+      # of a backslash-n escape; it was caught by reading the file, not by any check.
+      # `node --check` parses without executing, so it costs nothing and cannot touch Geni.
       - name: The extension parses
         run: |
           set -e

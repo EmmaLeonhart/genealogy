@@ -32601,3 +32601,41 @@ Bramsen as blood. Bramsen also carries *"No in-law relationship was found."*, so
 are answered and the ring's second tie does not exist for him.
 
 Pool 2,600 → 2,597; 111 tiny profile GEDCOMs, 715 tiny path GEDCOMs, **0 invented people**.
+
+### ⛔ CI had been dead for two days, and the comment that killed it was describing itself
+
+**`.github/workflows/ci.yml` has been invalid YAML since 2026-09-07.** Last green run:
+**`710aaf89`, 2026-09-06 15:17.** Every run since — more than twenty, on every push — failed with
+GitHub's *"This run likely failed because of a workflow file issue"*, which is not a test failure
+and produces no test output, so nothing in the log said what was wrong.
+
+**The cause, and it is exactly the thing it was warning about.** `ba85f4cb` added the
+`node --check` step with a comment explaining why:
+
+    # ... On 2026-09-07 a generated header in `path.js` landed with a REAL newline inside a
+    # string literal instead of a `
+    ` escape; it was caught by reading the file, not by any check.
+
+The escape in that sentence was written as a **literal newline** rather than the two characters,
+so the comment broke across two lines and line 83 began with a backtick at column 0, outside the
+comment. YAML: *"found character '`' that cannot start any token"*. A comment describing a bug in
+which a real newline replaced an escape was written with a real newline replacing an escape, and
+it took down the workflow that was being added to catch that class of bug.
+
+**What it cost is not the two days of red; it is what the red concealed.** § *TESTS RUN IN CI/CD
+OR NOT AT ALL* makes this workflow the repo's only verification channel, so for two days there
+was none — and *"which sha CI last went green on"* was answering with a sha from before the
+window rather than saying so. The `node --check` step in particular has **never once executed**:
+it was added in the same commit that broke the file. Extension 1.6.6 and 1.6.7 were checked with
+`node --check` by hand this session, which is why that is stated rather than assumed.
+
+**Every workflow was checked, not just this one**: 11 files under `.github/workflows/`, all parse,
+only `ci.yml` was broken. The escape is now written out in words so it cannot recur, and the
+sentence sits on one line.
+
+**Tagged wrong the tick before.** The 05:42 status report filed this BLOCKED-ON-EXTERNAL with
+"a green ci.yml run" as the unblock signal. It was never external: a broken workflow file in this
+repo is ours, nothing was waiting on anybody, and the not-done taxonomy's own load-bearing default
+— *if it fits none of these with a specifically-named blocker, DO IT NOW* — applied. Naming an
+external blocker for something self-inflicted is the failure `CLAUDE.md` § *NEVER SAY YOU CANNOT
+DO SOMETHING YOU HAVE NOT TRIED* is written against, one step removed.
