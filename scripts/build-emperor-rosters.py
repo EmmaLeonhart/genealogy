@@ -2,9 +2,9 @@
 
     python scripts/build-emperor-rosters.py
 
-**Emma, 2026-09-03**, asked how to source them: *"Build from Wikidata later."* Both are
-entry-point groups dated 2027-01-01 in `reports/entry-point-groups.tsv` and both resolved to
-**0** people, because nothing in the repo enumerates either.
+Both are entry-point groups dated 2027-01-01 in `reports/entry-point-groups.tsv`, and both
+resolved to **0** people because nothing in the repo enumerated either. The instruction was to
+build them from Wikidata.
 
 **The roster is the holders of a POSITION, never a label match.** `queue.md` said it in the
 item and `CLAUDE.md` § *A clan name is not a clan* is the general rule: the 52 tree labels
@@ -20,7 +20,7 @@ or item ID*:
 | `Q10962705` | *Emperor of Ethiopia* | hereditary rulers of the Ethiopian Empire |
 | `Q208233` | *Emperor of Japan* | head of state of Japan |
 
-**The Geni join has THREE sources and the order is hers.** `CLAUDE.md` § *The Geni BIO carries hand-written QID claims. Read them before any download* --- her own bio links are the
+**The Geni join has THREE sources and the order is fixed.** `CLAUDE.md` § *The Geni BIO carries hand-written QID claims. Read them before any download* --- the hand-written bio links are the
 freshest statement of identity there is, so they are read first; then the live `P2600` on the
 item; then the local `p2600-all.tsv` snapshot. The `geni_source` column records which one
 answered, so a row can be traced rather than trusted.
@@ -72,7 +72,7 @@ def _sort_key(qid: str) -> tuple[int, str]:
 
 
 def bio_links() -> dict[str, str]:
-    """`qid -> geni id` from her own Geni *About Me* links, read out of the corpus."""
+    """`qid -> geni id` from the hand-written Geni *About Me* links, read out of the corpus."""
     path = ROOT / "out" / "bio-qids.tsv"
     out: dict[str, str] = {}
     if not path.exists():
@@ -134,7 +134,7 @@ def main() -> None:
             writer.writerow(["qid", "label", "geni_ids", "geni_source", "position"])
             for qid in sorted(people, key=_sort_key):
                 entry = people[qid]
-                # Her bio links first, then the item's own statement, then the snapshot.
+                # Bio links first, then the item's own statement, then the snapshot.
                 if qid in bios:
                     geni, source = bios[qid], "bio"
                 elif entry["live"]:

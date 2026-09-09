@@ -1,8 +1,5 @@
 """Fetch English labels for every property and item our store references but lacks.
 
-Emma, 2026-08-12: **"Great so it's labels on things we don't have, yes grab them
-right now, properties and items."**
-
 The store holds 1,408,401 people, fetched whole, because the download walked
 P22/P25/P26/P40/P3373. It holds nothing those people merely *point at* — not the
 name items `P735`/`P734` reference, not occupations, not places, not the
