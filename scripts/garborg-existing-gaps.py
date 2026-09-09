@@ -2,8 +2,8 @@
 
     python scripts/garborg-existing-gaps.py
 
-Emma, 2026-08-24, answering whether to add properties to items that already exist:
-**yes**. The daily batch only ever closed *links* between existing items — the
+Properties ARE added to items that already exist, ruled 2026-08-24.
+The daily batch only ever closed *links* between existing items — the
 reciprocal `P40` and the `P3373` among siblings — and never asked whether an item that
 exists is missing a date, a sex, a name statement or a label in another language.
 
@@ -12,11 +12,10 @@ Two very different sources of truth, and the difference matters:
 * **Items in the local store** (`Q467497` *Arne Garborg* and the other long-standing
   ones) can be read exactly, offline. `CLAUDE.md`: *"Every question about Wikidata's
   contents is answered offline, against the local store."*
-* **Items Emma created herself** in the last two days are **not** in the store, which
+* **Items created by hand** in the last two days are **not** in the store, which
   was downloaded before they existed. What they hold is whatever their `CREATE` block
-  carried, and that is knowable from the batch — but only approximately, because she
-  ran *some* of the file: *"I only ran some of the quick statements because many of
-  them required links that couldn't exist."*
+  carried, and that is knowable from the batch — but only approximately, because only
+  *some* of the file gets run: many statements require links that cannot exist yet.
 
 So this report states, per person, which of the two it is. An unknown is reported as
 unknown rather than assumed empty.
@@ -80,7 +79,7 @@ def existing_state(qids):
     """`{qid: (label languages, claim properties)}` for the items the store holds.
 
     A QID **absent from the result** is one the store has never seen. For the Garborg
-    ledger that means Emma created it in the last two days, after the download — so
+    ledger that means it was created in the last two days, after the download — so
     what it holds is whatever our own batch wrote, which is knowable from the batch
     rather than from here. Callers must not read absence as "the item is empty".
     """
@@ -94,7 +93,7 @@ def existing_state(qids):
     # docstring above says a QID absent from the result is one the store has never seen, and
     # both callers already handle exactly that: `absent()` returns True and emits a statement
     # QuickStatements merges away if redundant, and the label site reads `langs` from
-    # `reports/garborg-live-labels.tsv` because the store predates every item Emma has made.
+    # `reports/garborg-live-labels.tsv` because the store predates almost every ledger item.
     # An offline enrichment that is unavailable must not fail a run that has its answer.
     if not INDEX.exists():
         print(f"WARNING: {INDEX} is absent — every item reads as 'not in the store', which is "
