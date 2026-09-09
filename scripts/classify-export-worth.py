@@ -1,6 +1,6 @@
 """Which remaining paths are worth an export, and which get page-saving instead.
 
-**Emma, 2026-08-18**, after the destination-seeded exports turned out to halve gaps
+**Ruled 2026-08-18**, after the destination-seeded exports turned out to halve gaps
 rather than clear them: *"the person has to be either really weird and far out there,
 like [Ludovico Buglio] or something, or popes or something like that. They have to be
 weird and far out there, or they need to be popes, or they need to be Scandinavian, for
@@ -12,14 +12,14 @@ So three qualifying categories, and everything else goes to `geni-scraping/`:
   specifically related to Scandinavian people, like the Norwegian, Swedish academics we
   were doing for the Rogaland people, these ones are pretty valuable."* This is the same
   reasoning as CLAUDE.md § *The practical goal is ONE DENSE NEIGHBOURHOOD*: Norway and Sweden
-  are where she is linked, so the paths are short and the links land near her.
+  are where the account is already linked, so the paths are short and the links land close.
 * **Popes** --- named explicitly, twice.
-* **Weird and far out there** --- her phrase, and she confirmed the three groups I put to
-  her: religious founders and missionaries, people who named or founded something
+* **Weird and far out there** --- the phrase used, and three groups were confirmed under it:
+  religious founders and missionaries, people who named or founded something
   load-bearing, and non-European scholars.
 
 **The place comes from the path FILENAME, not from the path text.** Every path starts at
-Emma and runs up through her Norwegian ancestors, so scanning the file body for Nordic
+one profile and runs up through Norwegian ancestors, so scanning the file body for Nordic
 place names fires on the path's own members and says nothing about the destination --- it
 ranked Nelly Sachs and Burton Watson as strongly Scandinavian. The isolate slug carries
 the destination's own recorded place (`...-1879-1964-oslo`), which is the right signal.
@@ -52,19 +52,18 @@ NORDIC = re.compile(
 
 POPE = re.compile(r"\bpope\b", re.I)
 
-#: **"I'm going to leave it up to you to determine what a long path is."** — Emma,
-#: 2026-08-18, and she was explicit that she is handing over an unusually large amount of
-#: discretion because she is trying to close this work off.
+#: **What counts as a long path was delegated here** on 2026-08-18, explicitly as an unusually
+#: large amount of discretion, because the work was being closed off.
 #:
-#: **The upper quintile**, her final instruction: *"run it on the upper quintile of
-#: Nordic people, the upper quintile of all people, and on the weird people, and everybody
-#: else gets the abbreviated page saving version."*
+#: **The upper quintile** is the final instruction: run it on the upper quintile of Nordic
+#: people, the upper quintile of all people, and on the weird people; everybody else gets the
+#: abbreviated page-saving version.
 #:
 #: The 80th percentile of the 451 paths still holding 4+ missing people is **14**.
 #:
-#: **This is larger than the number she rejected an hour earlier**, and that was pointed
-#: out to her rather than quietly reconciled: a quintile of 451 is about 90 paths by
-#: definition, where 16+ gave 68 and she called 68 *"too much... like seven hours."* Her
+#: **This is larger than the number rejected an hour earlier**, and that was raised rather
+#: than quietly reconciled: a quintile of 451 is about 90 paths by definition, where 16+ gave
+#: 68 and 68 was called too much, at roughly seven hours. The
 #: latest instruction wins, and the tighter set (22 / 16, 39 paths) is one edit away if
 #: the clock turns out to be the real constraint.
 LONG = 22
@@ -75,8 +74,8 @@ LONG = 22
 #: quintile because Nordic paths are shorter (mean 8.6, median 8, max 21).
 NORDIC_FLOOR = 16
 
-#: Her three confirmed "weird and far out there" groups, by destination name. This list
-#: is deliberately explicit rather than heuristic --- weirdness is a judgement she made,
+#: The three confirmed "weird and far out there" groups, by destination name. This list
+#: is deliberately explicit rather than heuristic --- weirdness is a judgement that was made,
 #: and a regex guessing at it would be the fuzzy matching this repo refuses everywhere.
 WEIRD = {
     # religious founders and missionaries
@@ -125,7 +124,7 @@ def main() -> int:
         by[r["why"].split(":")[0]] = by.get(r["why"].split(":")[0], 0) + 1
 
     L = ["# Which paths are worth an export", "",
-         "Emma's rule, 2026-08-18: a path earns a series of exports only if the "
+         "The rule of 2026-08-18: a path earns a series of exports only if the "
          "destination is **Scandinavian**, a **pope**, or **weird and far out there**. "
          "Everything else goes to page-saving in `geni-scraping/`.", "",
          f"Of the **{len(rows)}** paths still in the export band (4+ missing):", "",

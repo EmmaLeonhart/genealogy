@@ -2,7 +2,7 @@
 
 `scripts/build-marker-label-census.py` decides which of 62,000 Geni labels and
 31,000 Wikidata labels carry a marker rather than a name, and its output is what
-Emma's *"normalizes them into proper things based on our rules"* item runs on. The
+the *normalise them into proper forms under our rules* item runs on. The
 cost of getting it wrong is asymmetric: a missed marker leaves a bad label alone,
 while a false positive **strips a real one** — so the guards are pinned here rather
 than left to a rerun to notice.
@@ -47,9 +47,9 @@ def test_a_hyphen_inside_prose_is_not_a_marker(census, label):
 
 @pytest.mark.parametrize("label", ["Toeloes .", "Siti Komara .", "Nechama (?) Heller"])
 def test_punctuation_inside_a_label_is_left_alone(census, label):
-    """Emma, 2026-08-17: *"Words yes, punctuation no."*
+    """Ruled 2026-08-17: words yes, punctuation no.
 
-    Her ruling goes further than the hyphen fix and leaves the tail dot and the
+    The ruling goes further than the hyphen fix and leaves the tail dot and the
     bracketed hole alone as well — 3,102 `?`-at-tail rows an earlier pass would have
     rewritten. Stripping typography is guessing at it.
     """
@@ -59,7 +59,7 @@ def test_punctuation_inside_a_label_is_left_alone(census, label):
 @pytest.mark.parametrize("label", ["?", "???", "-", "."])
 def test_punctuation_as_the_whole_label_still_means_absent(census, label):
     """`derive-labels.ABSENT` has always read a label of nothing but punctuation
-    that way, and her ruling is about not stripping it from *inside* a name."""
+    that way, and the ruling is about not stripping it from *inside* a name."""
     kind, _marker, vocab, position, _rest = census._classify(label)
     assert (kind, vocab, position) == ("marker", "punctuation", "whole")
 
@@ -102,13 +102,13 @@ def test_a_bare_n_leading_a_surname_is_a_marker(census, label, position):
 def test_a_trailing_single_letter_is_a_middle_initial_not_a_marker(census, label):
     """205 of them, and `f9b9f86` records 283 middle initials this repo nearly
     invented once already. Decided rather than asked: `n` is neither a word nor
-    punctuation, so Emma's ruling does not reach it."""
+    punctuation, so the ruling does not reach it."""
     assert census._classify(label) is None
 
 
 # -- the CJK description class ----------------------------------------------
 #
-# Emma, 2026-08-17, shown the measurement: descriptions, the same as the English
+# Ruled 2026-08-17 against the measurement: descriptions, the same as the English
 # ones. About 5,400 people, more than the 1,222 English descriptions.
 
 
@@ -131,8 +131,8 @@ def test_every_cjk_suffix_comes_off_the_remainder_not_just_the_matched_one(censu
     assert census._classify("古河某妻")[4] == "古河"
 
 
-def test_the_clan_suffix_keeps_her_own_surname(census):
-    """`氏` attaches to **her** surname, the other suffixes to the relative.
+def test_the_clan_suffix_keeps_the_womans_own_surname(census):
+    """`氏` attaches to **her own** surname, the other suffixes to the relative.
 
     `盧氏 Chan` is what exposed this: dropping the whole `盧氏` token left `Chan` and
     threw away `盧`, the woman's actual clan. Getting it wrong is silent in both
@@ -247,8 +247,8 @@ def test_cjk_descriptions_are_detected_since_emmas_ruling(census):
     The census shipped with CJK deliberately undetected, because reading a trailing
     `母` as a relationship marker is a claim about Chinese naming and not a lookup.
     Measuring the population — 室 2,565 · 氏 1,613 · 娘 617 · 某 311 · 妻 210 ·
-    母 100 — and putting it to Emma got *"Descriptions, same as English"*. So the
-    evidence the old test was waiting for arrived and she ruled on it.
+    母 100 — and putting it up for a decision got: descriptions, the same as English. So the
+    evidence the old test was waiting for arrived and was ruled on.
     """
     kind, suffix, vocab, _position, rest = census._classify("陳母 Chan")
     assert (kind, suffix, vocab, rest) == ("description", "母", "cjk", "Chan")
@@ -258,7 +258,7 @@ def test_cjk_descriptions_are_detected_since_emmas_ruling(census):
 
 
 def test_the_marker_classes_stay_distinguishable(census):
-    """A row says which class matched, so her ruling stays legible in the output:
+    """A row says which class matched, so the ruling stays legible in the output:
     `narrow` is `NN`/`Private`, `word` is the 18,280 `unknown` labels and their
     equivalents in eight other languages."""
     assert not (census.NARROW & census.WORDS_MEANING_UNKNOWN)

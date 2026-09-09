@@ -135,8 +135,8 @@ def test_the_garborg_ledger_joins_to_the_derived_tree():
 
     **The Bureätten rows are excluded, and that is a finding rather than an exemption.** Since
     2026-08-27 the ledger has a second source — `reports/bureatten.csv`, the sv.wikipedia
-    Category:Bureätten listing, on Emma's definition: *"every item whose swedish wikipedia item
-    is in category:bureatten and which has a geni id."* Those people have Geni profiles but are
+    Category:Bureätten listing, on the stated definition: every item whose Swedish Wikipedia
+    article is in Category:Bureätten and which has a Geni id. Those people have Geni profiles but are
     **not all in our exports**: about 101 are absent from `derived-labels.csv`, which took the
     ledger to 349 of 450 and broke this floor.
 
@@ -148,7 +148,7 @@ def test_the_garborg_ledger_joins_to_the_derived_tree():
     ledger = [r["geni_id"] for r in _rows(R / "garborg-qids.tsv", "\t")
               if r.get("qid", "").startswith("Q")
               and "Bureätten" not in (r.get("note") or "")]
-    assert len(ledger) > 20, f"only {len(ledger)} ledger rows from her contributions"
+    assert len(ledger) > 20, f"only {len(ledger)} ledger rows from the contributions"
     people = {r["geni_id"] for r in _rows(R / "derived-labels.csv")}
     hit = sum(1 for g in ledger if g in people)
     assert hit > 0.8 * len(ledger), (
@@ -214,7 +214,7 @@ def test_the_model_vs_reality_snapshot_is_a_dict_of_items():
 
 
 def test_the_duplicate_report_actually_contains_japanese_profiles():
-    """Emma asked for higher scrutiny on the Japanese profiles. The column said `Latin`.
+    """Higher scrutiny was asked for on the Japanese profiles. The column said `Latin`.
 
     `scripts/find-geni-duplicates.py` carried a `script` column and a sort key putting
     `Han`/`Kana`/`mixed` first — and for the whole life of the report it classified
@@ -303,7 +303,7 @@ def test_compose_returns_stripped_geni_ids():
     assert not bad, (
         f"compose returned ids carrying whitespace: {bad!r} — the ` | ` split is not "
         f"stripping its values, so every downstream lookup will miss")
-    # **One parent, not both.** Her revised algorithm takes a single parent per person per
+    # **One parent, not both.** The revised algorithm takes a single parent per person per
     # run — `PARENTS_PER_RUN` is a count of parents, not of pairs — so the assertion is that
     # a parent behind the ` | ` is reachable at all, which is what the strip governs.
     assert {"200", "300"} & set(picked), (
@@ -358,7 +358,7 @@ def test_a_read_is_not_a_write():
     *inputs* by subtracting what it writes from what it names, and `written` matched any
     `open(` followed by a filename literal. So every file a script opened for READING was
     classified as its output and deleted from its inputs — which both hid real drift and
-    defeated the reader-is-not-a-generator skip, reporting Emma's hand-written
+    defeated the reader-is-not-a-generator skip, reporting the hand-written
     `reports/emma-judgments.tsv` as 35h behind an input it does not have.
 
     The distinction is the mode. A synthetic source is used rather than a real script so the
@@ -400,7 +400,7 @@ def test_the_other_write_spellings_are_all_recognised():
 def test_emma_s_hand_written_files_are_not_claimed_as_generated():
     """The real case: `reports/emma-judgments.tsv` has no generator and must not gain one.
 
-    It is her hand-verdict file — `CLAUDE.md` § *The chain of provenance* — and nothing in
+    It is the hand-verdict file — `CLAUDE.md` § *The chain of provenance* — and nothing in
     `scripts/` writes it. Two scripts READ it, and while a read looked like a write they were
     named its writers.
     """
@@ -412,7 +412,7 @@ def test_emma_s_hand_written_files_are_not_claimed_as_generated():
         text = path.read_text(encoding="utf-8", errors="replace")
         assert "emma-judgments.tsv" not in freshness.writes_in(text), (
             f"scripts/{script} is claimed to WRITE emma-judgments.tsv; it reads it, and "
-            f"Emma maintains it by hand")
+            f"it is maintained by hand")
         assert "reports/emma-judgments.tsv" in freshness.inputs_of(f"scripts/{script}"), (
             f"scripts/{script} no longer reports emma-judgments.tsv as an input — the "
             f"filename scan has stopped matching")
@@ -468,7 +468,7 @@ def test_the_refresher_decodes_subprocess_output_as_utf8():
 def test_a_middle_initial_stays_latin_in_a_japanese_label():
     """`John F. Smith` -> ジョン・F・スミス, not "no label at all".
 
-    **Emma, 2026-08-27**, choosing between four readings: keep the initial Latin inside the
+    **Ruled 2026-08-27**, between four readings: keep the initial Latin inside the
     label. Dropping it loses what the Latin label carries; rendering it エフ invents a reading
     nobody uses. 12,805 tokens sit in the middle-initial position across the corpus and every
     name containing one was getting no `ja`/`zh` label at all, because the transliteration rule
@@ -492,7 +492,7 @@ def test_a_middle_initial_stays_latin_in_a_japanese_label():
 def test_the_two_phrases_emma_ruled_on_are_in_the_marker_vocabulary():
     """`Name Not Known` (45 people) and `Unknown Wife` (37) — "Both are markers".
 
-    Held out of the vocabulary until she ruled, because widening it is her call. Pinned here
+    Held out of the vocabulary until ruled on, because widening it is a decision. Pinned here
     because a queue item claimed for nine days that they were still waiting while they were
     already in `labels.py`.
     """
@@ -533,7 +533,7 @@ def test_an_argument_free_day_build_is_refused():
     **Bare it emits 272 creations; with `--compose` it emits 34** — the flag carries
     `CHILDREN_PER_RUN`, `PARENTS_PER_RUN`, `FREE_PARENTS_FREE` and `SIBLING_CAP`, so the bare
     path is not a smaller daily algorithm, it skips the algorithm. Both write the same file, so
-    a bare run silently replaces a day Emma may already have run.
+    a bare run silently replaces a day that may already have been run.
 
     `--roster` is a real second mode and stays allowed; only the argument-free call is refused,
     because it has no purpose except the mistake.
@@ -555,7 +555,7 @@ def test_an_argument_free_day_build_is_refused():
 
 
 def test_the_ck_digraph_is_one_sound_not_two():
-    """Emma hand-corrected `Q141216408` from **ウン・モルクク** to **ウン・モルク**, 2026-08-29.
+    """`Q141216408` was hand-corrected from **ウン・モルクク** to **ウン・モルク**, 2026-08-29.
 
     `translit_no` walks letter by letter with a geminate rule for *identical* adjacent letters
     (`nn` in `Anna`), and had none for a digraph of *different* letters spelling one phoneme.
@@ -569,10 +569,10 @@ def test_the_ck_digraph_is_one_sound_not_two():
     _sys.path.insert(0, str(ROOT / "scripts"))
     from translit_no import translit
 
-    assert translit("Mørck") == ("モルク", "莫尔克"), "her correction, exactly"
+    assert translit("Mørck") == ("モルク", "莫尔克"), "the hand correction, exactly"
     assert translit("Sacken") == ("サケン", "萨肯"), (
         "ck in onset position. The Chinese was 萨凯恩 when this test was written, which "
-        "encoded the coda-nasal bug Emma caught on 2026-08-30: ken is 肯, one syllable.")
+        "encoded the coda-nasal bug caught on 2026-08-30: ken is 肯, one syllable.")
     assert translit("Anna") == ("アナ", "阿纳"), "the geminate rule for identical letters stands"
 
 
@@ -596,7 +596,7 @@ def test_the_rule_refresh_never_rewrites_a_hand_checked_row():
 
 
 def test_a_syllable_final_nasal_is_inside_the_chinese_syllable():
-    """Emma, 2026-08-30: *"is 塞恩 right for sen? … sounds sussy for Chinese"*. It was not.
+    """Queried 2026-08-30: was 塞恩 right for `sen`? It was not.
 
     `translit_no` gave every coda consonant its own character, so a syllable-final nasal became
     a separate 恩: `sen` as 塞 + 恩 rather than 森. **1,701 rows of the table carried the shape
@@ -618,12 +618,12 @@ def test_a_syllable_final_nasal_is_inside_the_chinese_syllable():
     assert translit("Anna") == ("アナ", "阿纳")
 
 
-def test_emmas_own_corrections_are_in_the_table():
-    """Her hand corrections outrank the engine and must survive every re-derivation.
+def test_the_hand_corrections_are_in_the_table():
+    """A hand correction outranks the engine and must survive every re-derivation.
 
     `Mørck` -> `モルク` (2026-08-29, on `Q141216408`) and `Minnie` -> `ミニー` / `米妮`
     (2026-08-30, on `Q141216493`). The `Minnie` row was `ミニエ` / `米尼埃` by rule, and the
-    engine still produces that — so this fails the moment a refresh treats her row as cache.
+    engine still produces that — so this fails the moment a refresh treats the row as cache.
     """
     import csv as _csv
     rows = {r["token"]: r for r in _csv.DictReader(
@@ -634,8 +634,8 @@ def test_emmas_own_corrections_are_in_the_table():
 
 
 def test_the_two_items_whose_cjk_labels_are_not_ours_are_never_overwritten():
-    """Emma, 2026-08-30: *"Arne Garborg and Johannes Bureus are the only people with cjk labels
-    not added by us. So only those ones are to be taken as gospel."*
+    """Ruled 2026-08-30: Arne Garborg and Johannes Bureus are the only people whose CJK labels
+    were not added by us, so only those two are taken as gospel.
 
     Everything else in the ledger got its `ja`/`zh` from this pipeline, which is what makes
     redoing them safe — and makes these two the one place where redoing them is not.
@@ -647,11 +647,11 @@ def test_the_two_items_whose_cjk_labels_are_not_ours_are_never_overwritten():
     spec.loader.exec_module(module)
     assert module.CJK_LABELS_NOT_OURS == {"Q467497", "Q633094"}
     assert module.ZH_OVERWRITE is True, (
-        "she said fix it and do the overwrite, not gate it")
+        "the ruling was to fix it and do the overwrite, not gate it")
 
 
 def test_a_territorial_designation_is_not_transliterated_as_a_name():
-    """`Q6161733` came out `カール・フレドリク・パイパー・ティル・クラゲホルム`. Emma fixed it.
+    """`Q6161733` came out `カール・フレドリク・パイパー・ティル・クラゲホルム` and was fixed by hand.
 
     *"why was the japanese label we added so weird? I fixed it but we added a weird one"* --
     `till Krageholm` is Swedish for *of Krageholm*, an estate, and reading it token by token
