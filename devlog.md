@@ -32955,3 +32955,48 @@ documentation *about the owner* — not a find-and-replace over the pronoun.
 
 **Kept from the reverted range:** `NAME_ADD_CAP` and `P2600_LEAD_CAP` with their `CLAUDE.md`
 section, and the pipe batch. Only the pronoun pass went.
+
+## 2026-09-09 — a new seed at the top of the Turgesh line, and two exports from her
+
+You asked for an ancestor of `n n` `6000000035218690155` — a Seljuq matriarch, wife of Mika'il
+Seljuq and mother of Sultan Tughril I — and then a Descendants export from her followed by a
+Forest one.
+
+**Two things in the request resolved differently from how they read.** The `?through=` in your
+URL is `6000000003075071669`, which is **Elizabeth II** — a relationship-path artefact rather
+than a parent, so it named no line to seed on. And **`Kut Chor` is female**: Inal Kut Chor's
+page reads *"Son of Kut Chor"* and hers reads *"Daughter of Turgesh Khagan Kut Chor, Mother of
+Inal Kut Chor"*, so she is his mother and the slot missing on him is a FATHER.
+
+That left two open slots — Inal's father, or Kut Chor's mother. **Kut Chor's mother** was taken:
+female, which is what your *"a descendants export of her"* wants, and one generation higher, so
+strictly the better Descendants seed. Turgesh Khagan Kut Chor above her already holds both
+parents (Türgesh khagan Suluk and Princess Jinhe Ashina), so that is the highest open slot on
+the line.
+
+**Created `NN` `6000000227668434852`** — tier 3 of `docs/export-seed-rules.md`, given name `NN`
+and no surname, with *Suggest surnames* unchecked so Geni could not offer `Kut Chor` and invent
+a name for her.
+
+    export-Descendants-6000000227668434852.ged   5000 people, 2913 families
+    export-Forest-6000000227668434852.ged        5000 people, 2807 families
+
+Both filed into `exports/turgesh-seljuq/`, your choice of four offered. Both are the first
+`INDI` in their own file, which is the check that the seed is who it should be. **Both came back
+at exactly 5000**, which equals `GENI_EXPORT_CAP` and does not exceed it, so no new reading goes
+in its docstring — a ball cut off at the bound rather than one that exhausted its component.
+
+The zips stay in `~/Downloads` and are not added to the repo, matching `exports/Niels NN/`:
+`.ged` alone in a seed-named directory, and no `.gitignore` line needed for a zip that is not
+under `exports/`.
+
+**⛔ THE RELATIONSHIP PUSHPIN IS NO LONGER ON CHARLEMAGNE.** Every Geni page tonight reads
+*"Lǐ Shìmín 李世民, Emperor Taizong of Tang is connected to …"*. It does not touch these exports,
+but no further collector capture may be filed as Charlemagne-anchored until it is reset by
+`docs/anchor-protocol.md`. The five captures taken earlier today were each verified against
+`geni:6000000002457013227` at the time and stand.
+
+**And this session had no crons at all** until they were recreated — the failure the queue's own
+last item warns about, where a session runs for hours and nobody notices. Work loop :03, flush
+:15, status :42, dead-item sweep :45, plus a temporary :07 poll for the Forest export, now
+deleted.
