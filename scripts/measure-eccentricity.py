@@ -1,14 +1,14 @@
 """How far out on the graph each person sits --- the "eccentric" people, measured.
 
-**Emma, 2026-09-03:** *"George RR Martin is interesting due to his eccentricity… Might be worth
-measuring the most eccentric people in the synoptic tree."*
+**George R.R. Martin is interesting for his eccentricity, and the most eccentric people in the
+synoptic tree are worth measuring.**
 
 **Eccentricity has been doing two jobs in this repo and they are not the same number**, so both
 are computed and both are columns. Conflating them is how a ranking ends up measuring one thing
 and being read as the other.
 
-* `dist_charlemagne` --- **distance from the centre.** Emma's own claim is that *"Charlemagne is
-  the most central person in the Jenny graph"*, and it is his centrality that makes him the
+* `dist_charlemagne` --- **distance from the centre.** Charlemagne is taken as the most central
+  person in the Geni graph, and it is his centrality that makes him the
   anchor for the path campaign. One BFS. This is the sense in which a Geni path query times out:
   the far side of the graph is expensive to reach from the middle.
 * `ecc_lower_bound` --- **graph eccentricity proper**, the greatest distance from a person to
@@ -62,8 +62,8 @@ OUT = REPO / "reports" / "tree-eccentricity.csv"
 SEP = " | "
 LINK_COLUMNS = ("father", "mother", "spouses", "children", "fathers", "mothers")
 
-#: `Q3044` Charlemagne. Emma, 2026-09-03: *"Charlemagne is the most central person in the Jenny
-#: graph"*, which is why the path campaign anchors on him.
+#: `Q3044` Charlemagne, taken as the most central person in the Geni graph, which is why
+#: the path campaign anchors on him.
 CHARLEMAGNE = "6000000002457013227"
 
 

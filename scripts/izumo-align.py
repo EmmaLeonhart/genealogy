@@ -1,8 +1,8 @@
 """Align the Izumo chart to Geni by RELATIONAL POSITION, not by name.
 
-Emma, 2026-08-20: *"Are you using text similarity instead of relational position?"*
-For the presence check, I had been - a name search plus a token-set match. This
-replaces that. And: *"YOU CAN MOVE IN DIFFERENT DIRECTIONS THAN DOWN"* - the Geni
+**Relational position, never text similarity.** The presence check used to be a name
+search plus a token-set match; this replaces it. And a walk **can move in directions
+other than down** - the Geni
 side is a neighbourhood walked through parents, children, siblings and spouses, not
 a descent, which is why the in-law columns are reachable at all.
 
@@ -21,14 +21,14 @@ From an anchor whose Geni id is known, and then outward one edge at a time:
 - The same propagation runs upward through parents and sideways through spouses.
 
 Anchors come from two places, both exact: `reports/izumo-geni-overrides.tsv`, which
-is where Emma puts an identity no computation could reach, and the ids recorded in
+is where a hand identity no computation could reach is recorded, along with the ids in
 `reports/izumo-geni-build.md` for people this project created itself.
 
 ## What it will not do
 
 It will not pick between two Geni profiles in one position. That is the duplicate
 case, and duplicates on this tree are a permanent feature - the clan was loaded onto
-Geni three separate times - so they are reported for Emma to merge, never resolved
+Geni three separate times - so they are reported to be merged by hand, never resolved
 here.
 """
 

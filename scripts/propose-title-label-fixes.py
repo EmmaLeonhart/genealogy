@@ -28,7 +28,7 @@ nothing to do.
 
 * **`marker-only`.** `noble NN of Venne` reduces to a bare `NN`, and `CLAUDE.md` § *A BARE GIVEN
   NAME IS NOT A LABEL* is explicit that a lone marker is not one. The tail is the only thing
-  distinguishing her from every other `NN`.
+  distinguishing that person from every other `NN`.
 * **`one-token`.** `noble Hebla Kristiina` is fine, but a reduction to a single given name is the
   same rule from the other side: *"A single given name is generally not acceptable."*
 * **`no-change`.** The rule fires and produces exactly what is live. Nothing to emit.
@@ -61,7 +61,7 @@ A `|` needs no such gate: it is not a character any name contains.
 
 **Nothing here edits anything.** It writes a proposal file; what turns that into QuickStatements
 is a separate step, and § *WIKIDATA'S LABEL BEATS OURS* is why: these are somebody else's labels,
-and only Emma's explicit instruction of 2026-09-09 puts them in scope at all.
+and only the explicit instruction of 2026-09-09 puts them in scope at all.
 """
 import csv
 import os
@@ -176,7 +176,7 @@ def split_pipe(label):
     # bracket in any reading is the tell.
     #
     # It is held rather than solved because `Name (Variant)` is a THIRD convention on top of the
-    # rank and the pipe, and Emma asked about neither -- § *The requested scope is the
+    # rank and the pipe, and neither was asked about -- § *The requested scope is the
     # deliverable*. Reading 121 rows is cheap; inventing a bracket rule uninvited is what
     # § *Do not grab the first artifact that vaguely matches* is against.
     for r in readings:
@@ -226,8 +226,9 @@ def tidy(text):
 #: `lady Kim`, `queen Janghwa`, `prince Kume` — Chinese, Korean, Japanese and Vietnamese
 #: consorts and royals, where the rank is not an artefact in a name field but the way every
 #: source names them, and where the remainder is a court name rather than a given name.
-#: `CLAUDE.md` § *THE PARENT DECK* records Emma's firm 2026-09-07 ruling that a CJK case is not
-#: one she can adjudicate from where she is, so these are held rather than decided here.
+#: `CLAUDE.md` § *THE PARENT DECK* records the firm 2026-09-07 ruling that a CJK case is not
+#: one that can be adjudicated from a reading of the two cards, so these are held rather
+#: than decided here.
 COURT_RANKS = frozenset({"queen", "king", "prince", "princess", "princesse", "empress",
                          "emperor", "lady", "consort", "duchess", "duke"})
 

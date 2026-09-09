@@ -4,9 +4,8 @@
 downloaded name items carry labels in?" and the raw answer for Japanese is bleak: **9.0%**.
 That number is the wrong one to plan from, and this script computes the right one.
 
-Emma, 2026-08-18: *"I think in Japanese there's a standard katakana rendering of the name
-Jack. There's a standard katakana rendering of the name John."* She is right, and the raw
-share hides it — because the 824,358 name items are dominated by long-tail surnames that
+Japanese has a standard katakana rendering for a name like `Jack` or `John`. The raw
+share hides that — because the 824,358 name items are dominated by long-tail surnames that
 exist on Wikidata and are borne by nobody in this tree, while `John` and `Maria` are borne
 by thousands. **The question is per-person, not per-item**, so every figure here is
 weighted by `occurrences`: how many name-uses in the corpus can be rendered.
@@ -39,7 +38,7 @@ LANGS = ["mul", "en", "ja", "zh", "ko", "ar", "he", "ru",
 #: A verdict that names exactly one item. `ambiguous` is held out rather than
 #: guessed at: picking the first QID of several is the diacritic-folding mistake
 #: in a new place, and `CLAUDE.md` § *One name item per USAGE* says a real
-#: ambiguity is Emma's call.
+#: ambiguity is decided by hand.
 RESOLVED = {"resolved"}
 
 csv.field_size_limit(min(sys.maxsize, 2**31 - 1))
@@ -96,7 +95,7 @@ def main() -> None:
         "| | name-uses | share |",
         "| --- | ---: | ---: |",
         f"| resolve to exactly one name item | {resolved:,} | {pct(resolved, total)} |",
-        f"| resolve to several (held for Emma) | {ambiguous:,} | {pct(ambiguous, total)} |",
+        f"| resolve to several (held for review) | {ambiguous:,} | {pct(ambiguous, total)} |",
         f"| no name item on Wikidata at all | {no_item:,} | {pct(no_item, total)} |",
         "",
         "## Renderable without transliterating anything",

@@ -2,9 +2,8 @@
 
     python scripts/garborg-modelling.py
 
-**Emma, 2026-08-24:** *"you're supposed to download the full wikidata items for the
-people I've edited to get the modelling not look at my edit history to see what's in
-them."*
+**The whole Wikidata item is downloaded for anybody whose modelling is being read**,
+never an edit history summarised into what it appears to contain.
 
 The first pass read each item through a fetch-and-summarise channel. That is not the
 same as holding the item: it truncated `Q467497` — 126 properties arrived as a partial
@@ -33,7 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ITEMS = ROOT / "out" / "garborg-full-items.json"
 OUT = ROOT / "reports" / "garborg-live-state.tsv"
 
-#: The properties this programme emits, so "does she use it" is answerable per item.
+#: The properties this programme emits, so "is it used" is answerable per item.
 #: Labels from `reports/wikidata-labels.tsv` / `CLAUDE.md`; never guessed.
 OURS = {
     "P31": "instance of", "P21": "sex or gender", "P2600": "Geni.com profile ID",
@@ -82,7 +81,7 @@ def main():
         "#\tthe complete property and label set.\n"
         "#\n"
         "#\tThe batch builder consults this because the local store predates most of\n"
-        "#\tthese items and Emma edits by hand.\n"
+        "#\tthese items and they are edited by hand.\n"
         + "qid\tverified\tlangs\tprops\n"
         + "".join(f"{r['qid']}\t{r['verified']}\t{r['langs']}\t{r['props']}\n"
                  for r in rows),
@@ -90,12 +89,12 @@ def main():
     print(f"wrote {OUT.relative_to(ROOT)}: {len(rows)} items, all complete\n")
 
     # -- which of our properties each item carries --------------------------
-    hers = [q for q in data if q.startswith("Q1411")]
-    print("Items Emma created (Q1411…):", len(hers))
+    recent = [q for q in data if q.startswith("Q1411")]
+    print("Items created by hand (Q1411…):", len(recent))
     header = ["P31", "P21", "P2600", "P569", "P570", "P22", "P25", "P26", "P40",
               "P3373", "P735", "P734", "P5056"]
     print("             " + " ".join(f"{p:>6}" for p in header))
-    for qid in ["Q467497", "Q3143008", "Q11959067"] + sorted(hers):
+    for qid in ["Q467497", "Q3143008", "Q11959067"] + sorted(recent):
         claims = data[qid].get("claims", {})
         marks = " ".join(f"{('yes' if p in claims else '-'):>6}" for p in header)
         print(f"{qid:<12} {marks}")
@@ -112,9 +111,9 @@ def main():
         if prop in OURS:
             print(f"   {prop} {OURS[prop]:<22} ref {rprop}   ×{n}")
 
-    print("\nProperties we emit that appear on NONE of her items:")
+    print("\nProperties we emit that appear on NONE of those items:")
     used = set()
-    for qid in hers:
+    for qid in recent:
         used |= set(data[qid].get("claims", {}))
     for prop in OURS:
         if prop not in used:

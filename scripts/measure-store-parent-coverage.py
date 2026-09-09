@@ -1,9 +1,9 @@
 """How often is an item's parent on Wikidata missing from our local store?
 
-**Emma's question, 2026-08-15:** *"I was under the assumption that, because of the
-fact that we did such a large amount of wikidata exports, we would have
-effectively covered the entirety of the wikidata network that would ever run into
-this issue… How pervasive is this issue where, say, ancestors on wikidata are not
+**The question, 2026-08-15:** given how large the Wikidata download was, the
+assumption was that it would have effectively covered the entirety of the network
+that would ever run into this issue.
+*"How pervasive is this issue where, say, ancestors on wikidata are not
 covered or are not imported? My impression was it was pretty much entirely
 20th-century people who are not like this."*
 
@@ -21,7 +21,7 @@ option.** We do not hold the parent — that is what missing means — so the pa
 has no date to read. The child's `P569` is the proxy, and it is a *lower* bound
 on the parent's era rather than an estimate of it: a parent of somebody born 1950
 belongs to the 20th century, a parent of somebody born 1200 does not. That is
-exactly the resolution Emma's question needs, and no date is ever inferred for
+exactly the resolution the question needs, and no date is ever inferred for
 the parent itself.
 
 **Undated children are reported as their own bucket, never distributed.** They
@@ -192,10 +192,10 @@ def main() -> int:
     add = L.append
     add("# Are the parents on Wikidata actually in our store?")
     add("")
-    add("**Emma, 2026-08-15:** *\"I was under the assumption that… we would have")
-    add("effectively covered the entirety of the wikidata network that would ever run")
-    add("into this issue… My impression was it was pretty much entirely 20th-century")
-    add("people who are not like this.\"*")
+    add("**The question, 2026-08-15:** the assumption was that the download had")
+    add("effectively covered the entirety of the Wikidata network that would ever run")
+    add("into this issue, and that the people who are not like this are pretty much")
+    add("entirely 20th-century.")
     add("")
     add("Every missing parent is a row in `reports/store-parent-coverage.csv`.")
     add("")
