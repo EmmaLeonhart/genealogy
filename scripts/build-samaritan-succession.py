@@ -1,10 +1,9 @@
 """Standardise how the Samaritan high priests are modelled on Wikidata.
 
-**Emma, 2026-08-16, adding this as the final queue item:** *"I want you to look
-over the data modeling of all of them and try to put together something based
-upon the most recent data modeling to be done across all of them in a standard
-way, with the succession… they're rather poorly modeled… Particularly the ones
-from around 1600 to 1980 are really badly modeled."*
+**Added as the final queue item on 2026-08-16.** The data modelling of all of
+them is reviewed and standardised on the most recent modelling, with the
+succession. They are rather poorly modelled, and the ones from about 1600 to 1980
+are the worst.
 
 **Measured, and it is worse than "inconsistent": there are two opposite styles
 and no item uses both.**
@@ -16,11 +15,10 @@ and no item uses both.**
 | neither | 5 | |
 
 So **16 of 21 do not say they held the office**, and the 5 that do say nothing
-about who preceded them. Her earlier description of the fix, 2026-08-14: *"an
-example of a single one of these custom atomic edits would be one that, in a
-single sweep, removes the old style of 'preceded by' and 'followed by' and puts
-in the occupation 'Samaritan high priest' preceded by 'followed by' as used by
-the modern ones."*
+about who preceded them. The fix, described 2026-08-14: one custom atomic edit per
+person that in a single sweep removes the old style of *preceded by* and *followed
+by* and puts in the occupation *Samaritan high priest* with the *preceded by* /
+*followed by* form the modern ones use.
 
 **The target model**, which is Wikidata's normal shape for an office:
 
@@ -35,9 +33,9 @@ property for holding an office.
 
 **The order is sourced, not inferred.** The existing `P155`/`P156` edges gave one
 chain of 14 running Yitzhaq I → Yaacob II and left the five modern priests
-floating entirely. Emma offered the way out — *"You can use the Wikipedia article
-on Samaritan high priest to find the order of succession if you need it"* — and
-that article (Pummer's list) supplies both missing ends and the term dates. All
+floating entirely. The way out is the Wikipedia article on the Samaritan high
+priest, which carries the order of succession: that article (Pummer's list)
+supplies both missing ends and the term dates. All
 **21 of 21** are now placed. Where the article and the existing links disagree the
 article wins: it is a source, and the `P155`/`P156` here are an artefact of
 piecemeal editing.
@@ -75,9 +73,9 @@ REPLACES, REPLACED_BY = "P1365", "P1366"
 FOLLOWS, FOLLOWED_BY = "P155", "P156"
 
 
-#: The succession, from the Wikipedia article Emma pointed at: *"You can use the
-#: Wikipedia article on Samaritan high priest to find the order of succession if
-#: you need it."* Pummer's list. `(qid, name, start, end)`; `None` for a QID we
+#: The succession, from the Wikipedia article on the Samaritan high priest, which
+#: carries the order of succession -- Pummer's list.
+#: `(qid, name, start, end)`; `None` for a QID we
 #: do not hold, `""` for a year that is not stated unambiguously.
 #:
 #: **This closes what the existing links could not.** `P155`/`P156` on the items
@@ -94,9 +92,8 @@ FOLLOWS, FOLLOWED_BY = "P155", "P156"
 #: hedging between two, and picking one would state a precision the source does
 #: not have.
 #: **The succession, from Pummer's list as given in the English Wikipedia article
-#: *Samaritan High Priest*.** Emma, 2026-08-16: *"read the Wikipedia article on
-#: samaritan high priest to find the succession and we normalize the qualifiers
-#: too."*
+#: *Samaritan High Priest*.** The article gives the succession, and the qualifiers
+#: are normalised along with it.
 #:
 #: Each row is **(ordinal, QID, name, start, end)**. The ordinal is the priest's
 #: absolute number in the line and is now **read from the source, not derived**.
@@ -109,7 +106,7 @@ FOLLOWS, FOLLOWED_BY = "P155", "P156"
 #: wrong, which is exactly the failure a derived constant invites: three
 #: consistent readings of the same mistake.
 #:
-#: **Wikidata's existing three are left alone.** Emma's standing rule is that this
+#: **Wikidata's existing three are left alone.** The standing rule is that this
 #: project adds rather than corrects, and a disagreement between Pummer and
 #: Wikidata over three ordinals is a note, not a work item. New statements carry
 #: Pummer's number; the three that already state one are not touched.
@@ -240,8 +237,8 @@ def main() -> int:
             "source": "samaritans/priests.txt + existing P155/P156",
             "subject": {"qid": q, "geni_id": geni.get(q) or None},
             # **A `P2600` reference is only usable once the item carries that
-            # Geni ID.** Emma's rule: *"The Jenny ID needs to be present before
-            # any properties derived from Jenny can be taken from it."* Nine of
+            # Geni ID.** The Geni ID has to be present before any property
+            # derived from Geni can be taken from it. Nine of
             # these 21 cited a Geni ID the item does not yet have, which is the
             # broken-reference case `tests/test_edit_emitters.py` pins. The
             # dependency is declared rather than the reference dropped: the

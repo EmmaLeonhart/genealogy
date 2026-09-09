@@ -9,17 +9,17 @@ The discriminator is the parsed step count, and the threshold is deliberate: a p
 fewer than `MIN_STEPS` rows carries no chain --- but the count alone is NOT the discriminator
 and scoring on it reported the first real page as a 100% hit. See `chain_found`.
 
-**A MISS IS NOT A STATEMENT THAT THE TWO ARE UNRELATED --- Emma, 2026-09-03:** *"not related
-to is not actually a statement that the person is not related. It superficially appears that
-way, but it is not that way. It sometimes gives a not related to from a query timeout."* So
+**A MISS IS NOT A STATEMENT THAT THE TWO ARE UNRELATED.** Geni's "not related to" is not a
+statement that the person is unrelated. It superficially appears to be one and is not: it is
+sometimes returned because the query timed out. So
 `no_chain` is what the column means and what it is named. Reading it as *unrelated* is a
 `CLAUDE.md` § *"Is X present?"* failure in a new costume: it measures Geni's query budget and
 reports it as Geni's content.
 
-**And the timeout is informative in the other direction.** Her reading: a timeout *"usually
-indicates that the person is very eccentric on the World Tree graph"* --- so a `no_chain` is
-weak evidence the target sits somewhere sparse, not evidence they are unreachable. There are
-*"plenty of people that have verifiable relationships but which it does not show up for."*
+**And the timeout is informative in the other direction.** A timeout usually indicates the
+person is very eccentric on the World Tree graph --- so a `no_chain` is weak evidence the target
+sits somewhere sparse, not evidence they are unreachable. Plenty of people have verifiable
+relationships that Geni does not show.
 
 **The route for those, and it is expensive so it is for high-value targets only.** Build a
 seed individual from the person's ancestry per `docs/export-seed-rules.md`, run a `Forest`
@@ -28,15 +28,15 @@ generally are connected"* --- in an odd cluster rather than off the graph. Rando
 sampling on high-eccentricity individuals, biased toward earlier generations, then reliably
 joins them to the World Tree. Time-consuming, *"but it is very possible."*
 
-**The rate the pilot measures is therefore a REACH rate, not a connectivity rate.** Emma's own
+**The rate the pilot measures is therefore a REACH rate, not a connectivity rate.** Earlier
 batches ran **34-39%** for academics filtered by occupation and **92%** for Nordic academics.
 What it decides is the request budget for a 185,327-target campaign, not who is related.
 
-**Both path types, always --- Emma, 2026-09-02.** `blood` follows descent only; `inlaw`
+**Both path types, always.** `blood` follows descent only; `inlaw`
 allows marriage steps and reaches people no blood path can.
 
-**And the quantity is PEOPLE, not reachability --- Emma, 2026-09-03:** *"Both helps as it
-gives a more diverse set of connections. More places to add more people onto."* So a target
+**And the quantity is PEOPLE, not reachability.** Both types help because together they give a
+more diverse set of connections and more places to hang more people onto. So a target
 the two types both reach is **not** a duplicate fetch: the second chain runs through
 different people, and every one of them is another place to hang a creation on. Counting
 targets with a chain would score that second chain at zero.
@@ -178,7 +178,7 @@ def chain_found(links, target_id: str, html: str = "") -> bool:
     """Is this page a real chain to `target_id`?
 
     **Three guards, because the step count alone scored every miss as a hit.** Two of them
-    come from `geni-paths/README.md`, written after four probes from her own browser:
+    come from `geni-paths/README.md`, written after four probes from a live browser:
 
     - the body must not carry `NOT_FOUND_TEXT`;
     - the **target's own Geni id** must be among the parsed steps --- on the failing probes the
@@ -201,7 +201,7 @@ def chain_found(links, target_id: str, html: str = "") -> bool:
 def read_page(p: Path) -> tuple[list, str, str]:
     """The parsed steps AND Geni's own prose summary --- the residual the steps drop.
 
-    **Emma, 2026-09-03:** *"we need to grab residuals all the time."* The prose keeps
+    **Residuals are grabbed all the time.** The prose keeps
     distinctions the per-step words flatten: measured over 664 saved pages it is present on
     **all 664**, 15 of them saying *half* and 112 saying *ex-*, where no step word in 30,329
     ever says *half*.
@@ -276,8 +276,8 @@ def main() -> int:
                 )
                 out.write_text(genipage.to_tsv(links, header=header), encoding="utf-8")
 
-        # **The union is the quantity, not reachability --- Emma, 2026-09-03:** *"Both helps as
-        # it gives a more diverse set of connections. More places to add more people onto."* So a
+        # **The union is the quantity, not reachability.** Both types help because together
+        # they give a more diverse set of connections and more places to add people onto. So a
         # target with a chain of both types is not a duplicate: the second chain is more surface to
         # hang people on, and `inlaw_only_people` is what the second fetch actually buys.
         blood, inlaw = walked.get("blood", set()), walked.get("inlaw", set())

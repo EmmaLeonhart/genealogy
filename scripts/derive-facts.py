@@ -1,15 +1,14 @@
 """Plan items 3 and 4 — occupation, and the dates and places, per person.
 
-Emma, 2026-08-12: *"Occupation can be done with string stuff"* and *"Birthplace
-birth date death date death place burial date burial place all can be done with
-string."*
+Occupation is string work, and so are birthplace, birth date, death date, death
+place, burial date and burial place.
 
 They come off the same `INDI` record, so this is one pass.
 
 **Rules already settled, applied here:**
 
-* **`ADDR` is kept as an address string, not dropped and not resolved.** Emma,
-  2026-08-12: *"Do addresses with the address property (multilingual text)."*
+* **`ADDR` is kept as an address string, not dropped and not resolved.** An
+  address goes on the address property as text.
   Wikidata's `P6375` street address is monolingual text, so an address never has
   to become a place item. **This supersedes the `PLAC`-only rule of 2026-08-11**,
   which was chosen before its cost was known and dropped the location entirely
@@ -66,8 +65,8 @@ for _prefix in EVENTS.values():
 def compose_address(data: dict) -> str:
     """The `ADDR` block as one string, narrowest part first.
 
-    Emma, 2026-08-12: *"Do addresses with the address property (multilingual
-    text)."* This is the string that would become the `P6375` value, so the
+    An address goes on the address property as text. This is the string that
+    would become the `P6375` value, so the
     ordering is a data decision rather than a formatting one — extracted from
     ``main`` so it can be pinned by a test.
 
@@ -165,8 +164,8 @@ def main() -> int:
                 elif tag == "PLAC" and value and "plac" not in data:
                     data["plac"] = value
                 elif tag == "ADDR":
-                    # Emma, 2026-08-12: "Do addresses with the address property
-                    # (multilingual text)." So the block is kept as text rather
+                    # An address goes on the address property as text, so the
+                    # block is kept as text rather
                     # than dropped or resolved to a place item. This supersedes
                     # the PLAC-only rule of 2026-08-11, which cost 101,579
                     # events their location entirely.
@@ -194,9 +193,8 @@ def main() -> int:
     add = L.append
     add("# Derived facts: occupation, dates, places")
     add("")
-    add("Plan items 3 and 4. Emma, 2026-08-12: *\"Occupation can be done with string")
-    add("stuff\"* and *\"Birthplace birth date death date death place burial date burial")
-    add("place all can be done with string.\"*")
+    add("Plan items 3 and 4. Occupation is string work, and so are birthplace,")
+    add("birth date, death date, death place, burial date and burial place.")
     add("")
     add(f"One row per person in `reports/derived-facts.csv` — **{len(rows):,} people**, ")
     add(f"of whom {linked:,} carry a Wikidata item.")
@@ -214,8 +212,8 @@ def main() -> int:
     add("")
     add("## Addresses, kept as text")
     add("")
-    add("Emma, 2026-08-12: *\"Do addresses with the address property (multilingual")
-    add("text).\"* Wikidata's **`P6375` street address** is monolingual text, so an")
+    add("An address goes on the address property as text. Wikidata's **`P6375`")
+    add("street address** is monolingual text, so an")
     add("address never has to become a place item. **This supersedes the `PLAC`-only")
     add("rule of 2026-08-11**, which was chosen before its cost was known.")
     add("")
