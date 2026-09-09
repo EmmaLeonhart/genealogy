@@ -33275,3 +33275,41 @@ we can do it manually lol."* It is not lost by this deletion: `build-noble-label
 carries it in its own comment, saying it is deliberately absent and why, and the run's
 `rank-not-ruled-on` counter reports exactly those 9 every time it builds. That is where a
 session looks, rather than at the queue.
+
+## 2026-09-09 — a first-visit path search goes PENDING, and the first export gate has cleared
+
+Work-loop tick on the collector, two targets.
+
+**⛔ A NEVER-SCRAPED TARGET'S PATH SEARCH IS OFTEN NOT COMPUTED YET, and the job waits out its
+whole timeout for it.** Hans Berthelsen `373188888440007990` came back with the page reading
+*"Path search in progress. If we find a path, we will notify you."* — three `span.segment`s, no
+miss sentence, no *Show Me*, no prose. Geni queues the search and answers asynchronously, so the
+`individual` job's synchronous wait cannot succeed on the first visit; on 1.6.4 that is up to
+600 s of nothing.
+
+`queue.md` already records *"a pending path search is NOT a miss, and a requested search decays
+back to unrequested within hours"*, and nothing here writes over that: **he stays queued because
+the worklist is derived from files**, and with no `geni-families/<id>-family.tsv` he simply
+re-enters the pool. That is the self-healing property `collector-worklist.py` was built for
+working exactly as intended — no row was touched to make it happen.
+
+Worth knowing for pacing: it is not universal. Ellen, Louis, Margareta and Miroslava all
+resolved within ~25 s earlier today, so some targets are already computed and some are not, and
+which is which cannot be told before asking.
+
+**⛔ AND THE FIRST EXPORT GATE HAS CLEARED — Søren Hansen Hiuler `373218413260013352`.**
+
+    state             miss_export_warranted
+    export_decision   export -- cleared by family_tree, blood_relatives
+                      (not run: job.create was not set)
+    statistics        family_tree 1365, blood_relatives 15000, ancestors 104, descendants 144
+    via               neither -- BOTH searches answered and both missed
+
+**Nothing was written to Geni.** `job.create` is unset, and your own note is that the live-site
+writes sit behind it and *"it has not been exercised yet, so the first one is worth watching"*.
+Firing an untested write path unattended is the opposite of that, so it is held for you rather
+than run. The decision itself was the extension's — the gate lives in `individual.js`, and no
+version of it was applied in prose here.
+
+18 relatives, fetched whole and checked rather than assumed truncated; `unlinked` records the 5
+the prose names that carry no `href`.
