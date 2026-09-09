@@ -2,9 +2,9 @@
 
     py scripts/post-merge-coverage.py
 
-**Emma's stopping rule, 2026-08-24:** *"Export until every first-degree relative of every merged
-individual is present"* in `exports/post-merge/` — *"that is the stopping rule, not a count of
-exports."* Nothing measured it, so the campaign had no way to end except by someone deciding it
+**The stopping rule, 2026-08-24:** export until every first-degree relative of every merged
+individual is present in `exports/post-merge/`. That is the stopping rule, not a count of
+exports. Nothing measured it, so the campaign had no way to end except by someone deciding it
 felt done.
 
 **And the economy is hers too:** *"merged individuals cluster together so we will not need to run

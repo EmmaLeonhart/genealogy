@@ -1,6 +1,6 @@
 """Latin names into Cyrillic, Greek, Devanagari and Arabic.
 
-Emma's seven languages are `en` · `ja` · `zh` · `hi` · `ar` · `ru` · `el` plus `mul`. `ja`/`zh`
+The seven languages are `en` · `ja` · `zh` · `hi` · `ar` · `ru` · `el` plus `mul`. `ja`/`zh`
 are `scripts/translit_no.py`; this is the other four, authorised 2026-08-31 to run in parallel
 rather than behind them.
 

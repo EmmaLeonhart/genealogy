@@ -22,8 +22,8 @@ inverts:
     The one certainty available. Everyone above a pharaoh is BCE, whatever their
     recorded year says, so this is a **lower bound** that needs no inference.
 
-Nothing here corrects a date. Deciding what the corpus should hold is Emma's,
-and this exists to put a number in front of that decision.
+Nothing here corrects a date. What the corpus should hold is decided by hand, and
+this exists to put a number in front of that decision.
 """
 
 from __future__ import annotations

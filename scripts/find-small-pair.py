@@ -1,8 +1,8 @@
 """Find people whose Geni record AND Wikidata item are both small.
 
-Emma, 2026-08-11: *"find an example of something that has a Wikidata item and a
-Geni item that are both pretty small and are connected to each other, and then go
-through the data structure of both of them so we can actually establish stuff."*
+Find an example of a person who has both a Wikidata item and a Geni profile, both
+of them small and connected to each other, so the data structure of each can be read
+end to end and something established from it.
 
 The point is to look at two whole records side by side without either being so
 large that the structure disappears into the volume. Henry III is 2,686 lines;
@@ -176,7 +176,7 @@ def main() -> int:
         default="",
         help="comma-separated Wikidata properties the item must all carry, e.g. P569,P22",
     )
-    # Emma, 2026-08-11: a pre-modern non-Western record is the worst thing to
+    # A pre-modern non-Western record is the worst thing to
     # model from, because the Geni profile was authored by someone fitting a
     # Western name/date shape onto a person it does not fit. The 1800s are where
     # both sides are most likely to be doing what they were designed for.

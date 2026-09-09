@@ -1,9 +1,10 @@
 """Emit the creation batch for the fathers the patronymics imply.
 
-**Emma's item.** Both blockers were settled on 2026-08-19. Sourcing: *"reference the
-bearer's profile"* -- each father is attested by the child whose patronymic names him, so
-every statement carries that child's `P2600` as its reference. Unit: *"If you don't know
-the people are siblings you create one per individual"*, with her one exception -- a shared
+**A queued item.** Both blockers were settled on 2026-08-19. Sourcing: reference the
+bearer's profile -- each father is attested by the child whose patronymic names him, so
+every statement carries that child's `P2600` as its reference. Unit: where it is not known
+that two people are siblings, one father is created per individual, with one exception -- a
+shared
 mother plus the same implied name is one man.
 
 **These are the first creations in this repo with no `P2600` of their own.** Every other
@@ -106,7 +107,7 @@ def main():
           "- total edit objects: **%d**" % len(edits), "",
           "**No `P2600` on the subject.** These are the first creations here for people with "
           "no Geni profile at all. The Geni ID appears only as the *reference* on every "
-          "statement, pointing at the child whose patronymic attests him — Emma's ruling of "
+          "statement, pointing at the child whose patronymic attests him — the ruling of "
           "2026-08-19.", "",
           "**The name is never derived from the string**: it is the modal given name of the "
           "confirmed fathers of that token. `Olsen` implies *Ole* because 1,809 real "

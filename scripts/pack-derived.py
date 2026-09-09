@@ -3,8 +3,8 @@
     python scripts/pack-derived.py            # csv -> csv.gz, for committing
     python scripts/pack-derived.py --unpack   # csv.gz -> csv, after a clean clone
 
-**Emma's call, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding
-any more data into our tree. Just processing."*
+**Gzip, ruled 2026-08-24**, because this is long term and no more data is going into
+the tree -- only processing.
 
 Regenerated from the 546-export merge, all four exceed GitHub's **100 MiB** per-file
 limit — 183.6, 175.9, 127.7 and 108.6 MiB, against 37–68 MiB at ~250 exports. Nothing

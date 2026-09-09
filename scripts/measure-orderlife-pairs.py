@@ -5,7 +5,7 @@
 **`order.life` is a THIRD SOURCE, not a thing to wait on.** `todo.md` carried it as
 BLOCKED-ON-EXTERNAL — *"another agent is editing it right now"* — which was true when written
 and blocked nothing: it is explicitly the last source to touch, and everything ahead of it was
-unfinished. Emma ruled on 2026-08-27 that nothing in that list is blocked. Its last commit is
+unfinished. It was ruled on 2026-08-27 that nothing in that list is blocked. Its last commit is
 2026-08-19, so it is not in flux either.
 
 ## What it holds
