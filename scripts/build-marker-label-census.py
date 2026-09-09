@@ -1,8 +1,7 @@
 """Every label that carries a placeholder marker inside it, on both sides.
 
-**Emma, 2026-08-17:** *"Put an item at the end of the queue that finds these kinds of
-ones where the label has this stuff already in it, and normalizes them into proper
-things based on our rules."*
+**Asked for 2026-08-17:** find the labels that already carry this material and normalise
+them into proper forms under our rules.
 
 This is the census that item needs, and it is a census rather than a fix because
 `CLAUDE.md` § *"Analyse this" means build a CSV* asks for every instance first: *"you
@@ -33,10 +32,11 @@ memory: a label that already reads like a phrase this project *generates* is a
 description by construction. 154 `(word, of)` pairs, required adjacent, which is what
 keeps `hija de` apart from `Rodrigo de Vivar`.
 
-**CJK descriptions ARE detected, since Emma ruled on 2026-08-17.** This file shipped
+**CJK descriptions ARE detected, ruled 2026-08-17.** This file shipped
 with them deliberately excluded — `陳母` is *Chen's mother*, and reading a trailing `母`
 as a relationship marker is a claim about Chinese naming rather than a lookup. Measuring
-the population and putting it to her got *"Descriptions, same as English"*: 室 2,565 ·
+the population and putting it up for a decision got: descriptions, the same as English —
+室 2,565 ·
 氏 1,613 · 娘 617 · 某 311 · 妻 210 · 母 100, about **5,400 people**, more than the 1,222
 English ones. See `CJK_RELATIONSHIP`.
 
@@ -44,27 +44,26 @@ Every row carries `kind` — `marker` or `description` — so the two never merg
 output. A marker wins when both are present: `NN wife of Aun` is reported as its marker
 with `wife of Aun` as the remainder, which shows the description is there too.
 
-### The vocabulary was three sets that disagreed, and Emma settled it
+### The vocabulary was three sets that disagreed, and the ruling settled it
 
-Her queue item says they *"should end up as one"*. They could not be merged silently,
-because they were built to different rulings — and on 2026-08-17, asked directly, she
-chose **words yes, punctuation no**. The three sets as they stood:
+The queue item says they should end up as one. They could not be merged silently,
+because they were built to different rulings — and on 2026-08-17, asked directly, the
+answer was **words yes, punctuation no**. The three sets as they stood:
 
 * `scripts/labels.py` — deliberately **narrow**: `private`, `<private>`, and the `NN`
-  spellings. Its docstring records why `unknown` and `?` are absent — Emma refused them
-  when they were added unasked: *"I didn't tell you to do that. I didn't tell you to
-  avoid the NN people."*
+  spellings. Its docstring records why `unknown` and `?` are absent — they were refused
+  when they were added unasked, because the NN people are not to be avoided.
 * `scripts/build-relationship-label-preview.py` — **wide**: adds `unknown`, `?`, `ukjent`,
   `onbekend`, `namn okänt`, `(no name)`, punctuation-only forms. This is the set that
   shipped in the 39,299-edit placeholder batch.
 * `scripts/walk-structural-merge.py` — a copy of the wide set.
 
 The `vocabulary` column says which class matched — `narrow`, `word`, `punctuation`,
-`letter`, or for a description `relationship`, `cjk`, `honorific` — so her ruling stays
+`letter`, or for a description `relationship`, `cjk`, `honorific` — so the ruling stays
 legible in the output rather than being folded away into a boolean.
 
-**Folding the other three onto this vocabulary is the remaining half of her item.**
-The preview's set still contains the punctuation forms her ruling removes, so doing it
+**Folding the other three onto this vocabulary is the remaining half of the item.**
+The preview's set still contains the punctuation forms the ruling removes, so doing it
 changes the 39,299-edit placeholder batch and has to re-run it.
 
 Writes `reports/marker-labels.csv` (every instance) and prints the analysis.
@@ -99,9 +98,9 @@ csv.field_size_limit(10 ** 7)
 #: for this set and it is narrow on purpose.
 NARROW = _labels.NARROW_MARKERS
 
-#: Words meaning *unknown*. **Emma ruled on these on 2026-08-17: words yes,
-#: punctuation no.** Asked whether `unknown` / `?` / `ukjent` / `*` are markers the
-#: way `NN` and `Private` are, she chose *"Words yes, punctuation no"* — somebody
+#: Words meaning *unknown*. **Ruled 2026-08-17: words yes, punctuation no.**
+#: Asked whether `unknown` / `?` / `ukjent` / `*` are markers the
+#: way `NN` and `Private` are, the answer was words yes, punctuation no — somebody
 #: who typed a word meaning "I don't know" is making the same statement `NN` makes,
 #: and bare punctuation is typography we would be guessing at.
 #:
@@ -154,13 +153,13 @@ NOT_MARKERS = {"anon", "子"}
 VOCABULARY = {form: "narrow" for form in NARROW}
 VOCABULARY.update({form: "word" for form in WORDS_MEANING_UNKNOWN})
 
-#: Punctuation, which is a marker **only when it is the whole label** — Emma's
-#: ruling of 2026-08-17, *"words yes, punctuation no"*.
+#: Punctuation, which is a marker **only when it is the whole label** — the
+#: ruling of 2026-08-17: words yes, punctuation no.
 #:
 #: The first run of this census treated bare punctuation as a marker wherever it
 #: sat, and would have corrupted real labels: `George Clark, II - farmer` and
 #: `Birch, Charles Weldon (1821 - 1894), Naturalist` are hyphenated prose, 289 rows
-#: over 112 Wikidata items. Her ruling goes further than that fix and leaves
+#: over 112 Wikidata items. The ruling goes further than that fix and leaves
 #: `Toeloes .` and `Nechama (?) Heller` alone as well — 3,102 `?`-at-tail rows that
 #: an earlier pass would have rewritten.
 #:
@@ -177,15 +176,14 @@ PUNCTUATION_ONLY = {"-", "--", ".", "_", "*", "**", "***", "'",
 #: which is the mistake this repo has already made once at scale: `f9b9f86` records
 #: 283 middle initials nearly invented out of a regnal ordinal.
 #:
-#: Neither a word nor punctuation, so Emma's ruling does not reach it. Decided here
-#: rather than put to her, per `CLAUDE.md`: a judgement call is mine to take and
-#: record.
+#: Neither a word nor punctuation, so the ruling does not reach it. Decided here
+#: rather than escalated, per `CLAUDE.md`: a judgement call is taken and recorded.
 SINGLE_LETTER = {"n"}
 
-#: CJK relationship suffixes. **Emma's ruling, 2026-08-17: descriptions, the same as
-#: the English ones.** Shown the measurement — 室 2,565 · 氏 1,613 · 娘 617 · 某 311 ·
+#: CJK relationship suffixes. **Ruled 2026-08-17: descriptions, the same as
+#: the English ones.** Against the measurement — 室 2,565 · 氏 1,613 · 娘 617 · 某 311 ·
 #: 妻 210 · 母 100, about 5,400 people, more than the 1,222 English descriptions —
-#: she chose to treat them as the CJK arm of the description class.
+#: they are treated as the CJK arm of the description class.
 #:
 #: What they mean, since a bare character is unreadable to most readers of this file:
 #:
@@ -206,7 +204,7 @@ CJK_RELATIONSHIP = ("正室", "側室", "室", "氏", "娘", "某", "妻", "母"
 #:
 #: * `謝氏` is *the Xie-clan woman* — `謝` is **her** surname and must survive, so the
 #:   suffix comes off its own token and everything else stays: `盧氏 Chan` → `盧 Chan`.
-#: * `信秀正室 織田` is *principal wife of Nobuhide, of the Oda* — `信秀` is her
+#: * `信秀正室 織田` is *principal wife of Nobuhide, of the Oda* — `信秀` is the
 #:   **husband's** given name, and carrying it into her `mul` would label her with
 #:   somebody else's name. The whole token goes: → `織田`.
 #:
@@ -224,7 +222,7 @@ HONORIFICS = {"mrs.", "mrs", "miss", "frau", "fru", "madame", "señora", "sra.",
 
 
 #: A parenthesised stand-in — kept as a concept because the brackets are in the
-#: data, but no longer a marker: her ruling leaves `Nechama (?) Heller` alone.
+#: data, but no longer a marker: the ruling leaves `Nechama (?) Heller` alone.
 def _parenthesised(token: str) -> bool:
     return token.startswith("(") and token.endswith(")") and len(token) > 2
 
@@ -333,7 +331,7 @@ def marker_in(label: str) -> tuple[str, str, str] | None:
 
     whole = " ".join(folded)
     if whole in PUNCTUATION_ONLY:
-        # Punctuation is a marker only as the whole label. Her ruling.
+        # Punctuation is a marker only as the whole label, by ruling.
         return (whole, "whole", "")
 
     # A two-word form like `n n` or `no name` has to be matched before the single
@@ -382,7 +380,7 @@ def cjk_relationship_in(label: str) -> tuple[str, str] | None:
             residue = residue.replace(other, "")
         residue = residue.strip()
         if suffix in CLAN_SUFFIX:
-            # **Her own surname is the ONLY thing worth keeping.** It lives in the
+            # **The woman's own surname is the ONLY thing worth keeping.** It lives in the
             # carrying token, and everything else in a `氏` label turns out to be
             # annotation rather than name — which the Wikidata side is what showed:
             #

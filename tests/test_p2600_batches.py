@@ -16,8 +16,8 @@ What is checked, and why each one:
 * **Balanced quotes.** QuickStatements V1 has no escape for a double quote inside a
   string, which already bit this project: nine Bureätten labels carried
   `Stine "Stena"` and would have ended the string early, shifting every field after it.
-* **The reference form is `S2600`.** `docs/wikidata-item-template.md`, read off Emma's
-  own items: the reference is the Geni ID itself, not `S854` *reference URL* plus
+* **The reference form is `S2600`.** `docs/wikidata-item-template.md`, read off the
+  hand-made items: the reference is the Geni ID itself, not `S854` *reference URL* plus
   `S813` *retrieved*. The old Garborg batch used the latter.
 * **Geni ids are Geni ids** — digits, and parseable back out of a GEDCOM xref by
   `GENI_ID_RE`, the single place that knows the form.
@@ -29,7 +29,7 @@ What is checked, and why each one:
 **What this cannot catch, stated so nobody trusts it further than it goes.** Whether
 a `CREATE` would duplicate an item that already exists on Wikidata is only decidable
 against a current `P2600` map. Ours (`out/wikidata/p2600-all.tsv`) is a snapshot, it
-is gitignored, and it predates the Garborg items Emma created by hand — so the check
+is gitignored, and it predates the Garborg items created by hand — so the check
 below **would not have caught the bug that prompted this file to be widened**. It
 catches the ordinary case and skips when the snapshot is absent. The reliable guard
 against that failure remains reading what exists before generating a creation.
@@ -46,10 +46,10 @@ REPO = Path(__file__).resolve().parent.parent
 REPORTS = REPO / "reports"
 P2600_SNAPSHOT = REPO / "out" / "wikidata" / "p2600-all.tsv"
 
-#: Archived records of batches Emma has already run. They are history, not proposals, and
+#: Archived records of batches already run. They are history, not proposals, and
 #: are never rewritten to satisfy a rule made after they went out.
 #: `CLAUDE.md` § *`P3373` sibling is capped at 40 PAIRS a day* -- 10 until 2026-09-05, 20
-#: until 2026-09-07, doubled each time on her instruction. Mirrored rather than imported so
+#: until 2026-09-07, doubled each time by instruction. Mirrored rather than imported so
 #: the guard does not pass merely because the builder lowered its own constant.
 #:
 #: **Two things a reader should know before trusting this number here.** The count below is of
@@ -62,7 +62,7 @@ SIBLING_CAP = 40
 SPENT_BATCHES = {
     "wikidata-garborg-day-1.qs": "the first day batch, 9 creations + 362 statements",
     "wikidata-garborg-day-2026-08-25-run.qs": "archived 2026-08-25 when the live file was rebuilt",
-    # A one-off from 2026-08-25 -- Emma: *"add the parents of Jon Samuelsen Raustad"*. Its own
+    # A one-off from 2026-08-25, adding the parents of Jon Samuelsen Raustad. Its own
     # header records that neither parent's Geni id was on any item when it was written. Both now
     # hold one (`Q141178381`, `Q141178380`) and both are in the ledger, so running it is what
     # minted them: it is spent by the same evidence that would otherwise flag it.
@@ -162,7 +162,7 @@ def test_no_line_carries_an_unescapable_quote(name):
 
 @pytest.mark.parametrize("name", NAMES)
 def test_references_are_the_geni_id_not_a_url(name):
-    """Her model: the reference is `P2600`. `S854` + `S813` is the old generator."""
+    """The model: the reference is `P2600`. `S854` + `S813` is the old generator."""
     path = REPORTS / name
     bad = [(i, ln) for i, ln in statements(path) if "\tS854\t" in ln or "\tS813\t" in ln]
     assert not bad, (
@@ -291,9 +291,8 @@ def test_no_two_batches_create_the_same_person():
     asks the wrong question and answers it wrongly: on 2026-08-26 the live batch and
     `wikidata-garborg-day-1.qs` shared `6000000019384841547` *Martin Tollefson Tunheim*,
     and the ledger — refreshed from `Special:Contributions/日巫女` that minute, 0 rows
-    added, so current — says he has **no item at all**. Day-1 was only partly run, which
-    Emma said at the time: *"I only ran some of the quick statements because many of them
-    required links that couldn't exist."*
+    added, so current — says he has **no item at all**. Day-1 was only partly run, as
+    reported at the time: many of its statements needed links that could not exist.
 
     **What actually protects against a duplicate creation is the ledger**, plus
     `out/wikidata/p2600-all.tsv`, both consulted live inside `build-garborg-day.py`. This
@@ -404,11 +403,12 @@ def test_the_creation_reader_notices_a_block_with_no_geni_id(tmp_path):
 
 @pytest.mark.parametrize("name", NAMES)
 def test_no_batch_ever_adds_an_english_alias(name):
-    """`Aen` is never emitted. Emma, 2026-08-26.
+    """`Aen` is never emitted. Ruled 2026-08-26.
 
-    Her rule: *"married name is always the 'real' name and applied as the primary mul
-    label (first amul added if applicable) and then the birth name is next as an amul.
-    No aen are ever supposed to be added lol only ones in non-latin scripts get aliases
+    The rule: the married name is always the real name and becomes the primary `mul`
+    label, with the outgoing `mul` preserved as an `Amul` first, and the birth name
+    following as an `Amul`.
+    No `Aen` is ever added; only non-Latin-script forms get aliases
     for their birth names that are not in amul."*
 
     `mul` is the language-neutral label; an alias that exists only in `en` is invisible
@@ -424,7 +424,7 @@ def test_no_batch_ever_adds_an_english_alias(name):
     Wikidata come off: `reports/wikidata-garborg-label-fixes.qs` carries 13.
 
     **Two SPENT files are exempt and are named one at a time, never matched by a
-    pattern.** They are archived records of batches Emma has already run -- 12 `Aen` in
+    pattern.** They are archived records of batches already run -- 12 `Aen` in
     one, 3 in the other -- and rewriting a record of what was run would falsify it. The
     corrective batch removes those aliases from Wikidata instead. A pattern like
     `*-run.qs` would also exempt whatever a future run is named, which is the opposite
@@ -445,8 +445,8 @@ def test_the_sibling_cap_holds_across_every_live_batch():
 
     `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"The cap is 10 `P3373` statements
     per day, across every batch, not per file. A builder emitting siblings must count them and
-    stop."* Emma's reason is presentation, not correctness — *"siblin relationships are too
-    numerous and imo are too many to send at once"* — and sibling links grow as the SQUARE of a family,
+    stop."* The reason is presentation, not correctness — sibling relationships are too
+    numerous to send at once — and sibling links grow as the SQUARE of a family,
     so one family of nine children is 72 statements on its own.
 
     **`build-garborg-day.py` had two emission sites and only one counted.** The additions pass
@@ -482,8 +482,8 @@ def test_the_sibling_cap_holds_across_every_live_batch():
 
 @pytest.mark.parametrize("name", NAMES)
 def test_every_statement_has_a_comment_above_it(name):
-    """Emma's format, 2026-08-26: *"Every line has a comment the line above it saying what
-    change is happening."*
+    """The format set 2026-08-26: every line carries a comment above it saying what
+    change is happening.
 
     Applied as a post-pass in `scripts/qscomment.py` rather than at each `lines.append`,
     because these builders emit from a dozen sites and a rule applied at every call site
@@ -517,7 +517,7 @@ def test_no_english_label_is_written_in_a_non_latin_script(name):
     `label_mul` are both empty while they carry a name in `cjk_names` (44,028) or
     `other_script_names` (11,519) — without it they hit the redacted branch and were created
     as a bare `NN`, losing a name Geni actually recorded. `6000000186285688241` is the case
-    Emma's own batch surfaced: their name is `부여융 무명`.
+    a batch surfaced: their name is `부여융 무명`.
 
     But that name then landed in `Len` as well as `Lmul`, and an English label holding a
     Korean string is wrong twice over: it is not English, and Wikidata's `Help:Default values
@@ -543,8 +543,8 @@ def test_no_english_label_is_written_in_a_non_latin_script(name):
 def test_the_daily_batch_never_restates_what_the_item_already_holds():
     """A statement already on the item must not be emitted again.
 
-    **Emma, 2026-08-27**, on the relationship section never shrinking: *"the relationship one
-    is questionable that it's always gonna be so huge and growing."* Measured that day: **229
+    **Raised 2026-08-27**, on the relationship section never shrinking and always being huge.
+    Measured that day: **229
     of 306** statements on existing items were already on Wikidata — 75% of the section.
 
     Two causes, and the stale file was only one. `P40` *child*, `P26` *spouse* and `P3373`
@@ -553,8 +553,8 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
     second father from an existing one nor that yesterday's batch was run.
 
     QuickStatements merges a duplicate rather than failing, which is exactly why it went
-    unnoticed for days: nothing broke, the batches were simply three-quarters things she had
-    already done.
+    unnoticed for days: nothing broke, the batches were simply three-quarters things already
+    done.
 
     `LAST` is exempt — it names an item created in this run, so the statement cannot already
     exist. Labels and aliases are exempt because they REPLACE rather than add.
@@ -582,17 +582,17 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
 def test_no_batch_names_an_excluded_id():
     """The held Kitajima ids must appear in no batch, in any position.
 
-    **Emma is deliberately no longer banned here**, her instruction of 2026-09-01: *"Yeah remove
-    it"*. This test used to ban `Q232803` and `6000000001846508982` and that is why it went red
-    on 2026-08-31 when `build-missing-reciprocals.py` edited her item — I answered the red test by
-    re-adding her to `NEVER_TOUCH`, which was reaching for the nearest mechanism rather than
-    asking which of her two instructions won. Her anonymisation instruction governs: **remove code
-    that treats her item as special.** So her ids are gone from the banned set and her item is
-    editable like anyone else's.
+    **The account owner is deliberately no longer banned here**, by instruction of 2026-09-01.
+    This test used to ban `Q232803` and `6000000001846508982`, and that is why it went red
+    on 2026-08-31 when `build-missing-reciprocals.py` edited that item — the red test was answered
+    by re-adding the ids to `NEVER_TOUCH`, which was reaching for the nearest mechanism rather
+    than asking which of the two instructions won. The anonymisation instruction governs: **remove
+    code that treats one person's item as special.** So those ids are gone from the banned set and
+    the item is editable like anyone else's.
 
     **What is still guarded is the Kitajima/Kitashima hold**, and it is now month-long rather than
-    permanent — `KITAJIMA_HOLD_EXPIRES`, 2026-10-01, her call the same day: *"we're doing a month
-    long exclusion on the other ones too"*. After that date the sets are empty and this test
+    permanent — `KITAJIMA_HOLD_EXPIRES`, 2026-10-01, ruled the same day as a month-long
+    exclusion. After that date the sets are empty and this test
     passes trivially, which is intended: a hold that has to be remembered to be lifted stays
     forever.
 
@@ -614,15 +614,16 @@ def test_no_batch_names_an_excluded_id():
     # **`wikidata-geni-qid-p2600.qs` is excluded, and the reason is a finding rather than a
     # convenience.** That file is dated 2026-08-23, predates the Kitajima hold, is not produced by
     # the daily pipeline (`build-qid-link-p2600.py` writes it), and **names 67 lines' worth of held
-    # Kitajima ids**. Widening this test from "Emma's two ids" to "everything currently held" is
+    # Kitajima ids**. Widening this test from two ids to everything currently held is
     # what surfaced it. The hold governs what the builder emits from now on; a batch written
-    # before the hold existed is Emma's to run or not.
+    # before the hold existed is a separate decision to run or not.
     # **Two legacy files are excluded, and that is a finding rather than a convenience.** Both
     # predate the Kitajima hold and neither is produced by the daily pipeline:
     # `wikidata-join-izumo.qs` (2026-08-24, **56 lines**) and `wikidata-geni-qid-p2600.qs`
     # (2026-08-23, **20 lines**, written by `build-qid-link-p2600.py`). Widening this test from
-    # "Emma's two ids" to "everything currently held" is what surfaced them. The hold governs what
-    # the builder emits from now on; a batch written before the hold existed is hers to run or not,
+    # two ids to everything currently held is what surfaced them. The hold governs what
+    # the builder emits from now on; a batch written before the hold existed is a separate
+    # decision to run or not,
     # and the hold expires 2026-10-01 anyway.
     legacy = {"wikidata-geni-qid-p2600.qs", "wikidata-join-izumo.qs"}
     for path in sorted((root / "reports").glob("*.qs")):
@@ -635,14 +636,14 @@ def test_no_batch_names_an_excluded_id():
                 if token in line:
                     bad.append(f"{path.name}:{n}: {line[:80]}")
     assert not bad, (
-        "a batch names an excluded id — she must not be in the traversable graph:\n  "
+        "a batch names an excluded id — it must not be in the traversable graph:\n  "
         + "\n  ".join(bad[:10]))
 
 
 def test_no_geni_id_statement_is_sourced_to_its_own_geni_id():
     """`P2600` carries no reference. An identifier is not evidence for itself.
 
-    **Emma, 2026-08-31:** *"geni ids do not get sources"*, on seeing
+    **Ruled 2026-08-31:** Geni ids do not get sources — on seeing
     `Q6014618 P2600 "4198641" S2600 "4198641"` in the day batch — the Geni id statement cited
     to the Geni id. `S2600` belongs on every statement *derived* from a Geni profile, where the
     profile is external evidence for a claim about the person. On `P2600` the profile IS the

@@ -4,12 +4,12 @@ It is the difference between `P735` *given name*, `P734` *family name* and `P505
 *patronym or matronym* on every person the Garborg programme creates, and it shipped
 with no tests at all.
 
-The rules under test are Emma's, from `name modelling.txt` and `CLAUDE.md`, not
+The rules under test come from `name modelling.txt` and `CLAUDE.md`, not from
 inventions here:
 
 * **A patronymic is its own property.** `P5056`, parallel to `P735` and `P734` — not
-  a `P735` carrying a qualifier, which is what this file used to say before she
-  corrected it.
+  a `P735` carrying a qualifier, which is what this file used to say before it was
+  corrected.
 * **A middle name is a given name after the first that is NOT a patronymic**, so the
   patronymic test runs before the position test.
 * **The last token is the family name unless it is itself patronymic.** `Jon
@@ -49,7 +49,7 @@ def test_the_ordinary_norwegian_three_part_name():
 
 
 def test_a_second_given_name_is_a_middle_name_not_a_patronymic():
-    """Emma: a middle name is a given name after the first that is NOT patronymic."""
+    """A middle name is a given name after the first that is NOT patronymic."""
     got = classify("Ane Oline Jonsdatter Raugstad")
     assert got == [("Ane", "given", 1), ("Oline", "given", 2),
                    ("Jonsdatter", "patronymic", 0), ("Raugstad", "family", 0)]
@@ -62,8 +62,8 @@ def test_a_patronymic_last_token_is_not_a_family_name():
 
 
 def test_daughter_and_son_are_one_category():
-    """Emma, on the Norwegian material: *"The daughter and son would be the same
-    thing"* — `-datter` and `-sen`/`-son` are both patronymics, not two kinds."""
+    """On the Norwegian material the daughter and son forms are the same thing —
+    `-datter` and `-sen`/`-son` are both patronymics, not two kinds."""
     for token in ("Eivindsdatter", "Eivindsen", "Eivindson", "Kristoffersdatter"):
         assert usages(f"Ola {token} Garborg")[1] == (token, "patronymic")
 
@@ -73,7 +73,7 @@ def test_a_two_part_name_is_given_plus_family():
 
 
 def test_a_quoted_nickname_keeps_the_name_and_drops_the_quotes():
-    """Geni writes `Stine "Stena" …`; `CLAUDE.md` records that Emma took the nickname."""
+    """Geni writes `Stine "Stena" …`; `CLAUDE.md` records that the nickname was taken."""
     assert [t for t, _u in usages('Stine "Stena" Eivindsdatter Garborg')] == [
         "Stine", "Stena", "Eivindsdatter", "Garborg"]
 
@@ -115,21 +115,21 @@ PLAN = {
 
 
 def test_usual_forename_is_emitted_ONLY_where_there_is_a_middle_name():
-    """Emma, 2026-08-24: *"usual forename only applies when there is a middle name"*.
+    """Ruled 2026-08-24: usual forename applies only where there is a middle name.
 
     `P7452` → `Q3409033` exists to say which of several given names is the one actually
     used. On a person with a single given name it distinguishes nothing and asserts a
     contrast that does not exist.
 
     **This test previously asserted the opposite** — that a lone given name carries it —
-    which is exactly what the generator was doing when she corrected it.
+    which is exactly what the generator was doing when it was corrected.
     """
     # One given name: NO ordinal and no usual-forename qualifier.
     #
     # **The ordinal half of this changed on 2026-08-25**, and the test previously required
-    # the opposite. Emma, on why she had been running the generated batches only in part:
-    # *"they have consistently included things I did not want, such as the series orginal 1
-    # on peoples given names when there is only one given name"*. `P1545` *series ordinal*
+    # the opposite. Reported as one reason the generated batches were being run only in part:
+    # they consistently included unwanted things, a series ordinal of 1 on a person with only
+    # one given name among them. `P1545` *series ordinal*
     # orders a person's several given names against each other; with one there is nothing to
     # order, and the qualifier asserts a sequence that does not exist. Same objection as the
     # usual-forename one directly below it.
@@ -156,7 +156,7 @@ def test_a_later_given_name_is_marked_a_middle_name():
 
 
 def test_the_patronym_is_its_own_property_not_a_qualified_given_name():
-    """The correction Emma made to this file: `P5056`, parallel to `P735`."""
+    """The correction made to this file: `P5056`, parallel to `P735`."""
     lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1")
     assert [ln[0] for ln in lines] == [GIVEN_NAME, PATRONYM, FAMILY_NAME]
 
@@ -217,8 +217,8 @@ def usages_of(**fields):
 def test_the_surname_is_read_not_inferred():
     """`SURN` is recorded data. The old parser took the last whitespace token instead.
 
-    Emma, 2026-08-24: *"I thought we were resolving name objects but now we're
-    determining which name field to use as a source of the label?"* Agreeing by luck
+    Caught 2026-08-24: name objects are resolved from the fields, not by choosing which
+    name field to use as a source of the label. Agreeing by luck
     with a positional guess is not the same as reading the field.
     """
     got = usages_of(givn="Eivind Aadnesson", surn="Garborg")
@@ -238,7 +238,7 @@ def test_a_patronym_in_the_SURN_field_is_still_a_patronym():
 
 
 def test_a_quoted_token_inside_givn_is_a_nickname_not_a_middle_name():
-    """Emma's ruling, 2026-08-24: it becomes `P1449` *nickname*.
+    """Ruled 2026-08-24: it becomes `P1449` *nickname*.
 
     The old parser made `Stena` a second given name carrying `P1545` *series ordinal*
     2 and `P3831` → `Q245025` *middle name*. She is not called Stena as a middle
@@ -258,7 +258,7 @@ def test_the_nickname_does_not_consume_an_ordinal():
 
 
 def test_the_married_name_is_a_second_family_name_only_when_it_differs():
-    """Emma, 2026-08-24, and sex is explicitly NOT a screen."""
+    """Ruled 2026-08-24, and sex is explicitly NOT a screen."""
     differs = usages_of(givn="Stine", surn="Garborg", marnm="Jacobson")
     assert ("Jacobson", "married") in differs
     assert ("Garborg", "family") in differs
@@ -269,10 +269,11 @@ def test_the_married_name_is_a_second_family_name_only_when_it_differs():
 
 
 def test_a_married_man_gets_the_married_name_too():
-    """Her ruling was explicit: *"only when different sex does not matter"*.
+    """The ruling was explicit: only when different; sex does not matter.
 
     The corpus measurement suggested screening on sex, because 25% of the differing
-    `_MARNM` values are male. She overrode that, and it is her data model.
+    `_MARNM` values are male. That was overridden, and the data model is the one
+    specified.
     """
     assert ("Nyvold", "married") in usages_of(
         givn="Hans", surn="Garborg", marnm="Nyvold")
@@ -294,7 +295,7 @@ def test_the_two_family_names_carry_roles_that_say_which_is_which():
 
 
 def test_a_lone_surname_carries_no_role_qualifier():
-    """None of Emma's eleven items qualifies a family name, so a bare one stays bare."""
+    """None of the eleven hand-made items qualifies a family name, so a bare one stays bare."""
     plan = {("Garborg", "family"): ("Q30250555", "link")}
     lines, _notes = statements_for("", plan, "1",
                                    fields={"givn": "Eivind", "surn": "Garborg"})
@@ -302,7 +303,7 @@ def test_a_lone_surname_carries_no_role_qualifier():
 
 
 def test_a_nickname_produces_an_alias_and_no_statement():
-    """Emma, 2026-08-29: *"Just drop the nickname functionality... Just lmul vs amul."*
+    """Ruled 2026-08-29: drop the nickname functionality; `Lmul` against `Amul` instead.
 
     This asserted `(NICKNAME, "Stena", [])` in `lines` until 2026-08-30. The property is
     monolingual text and the tag being emitted was `en`, declaring Norwegian words to be
@@ -325,11 +326,11 @@ def test_a_nickname_produces_an_alias_and_no_statement():
 
 
 def test_aliases_cover_the_nickname_and_the_married_full_name():
-    """The nickname alias carries the SURNAME. Emma, 2026-08-26.
+    """The nickname alias carries the SURNAME. Ruled 2026-08-26.
 
-    It used to assert the bare `"Stena"`, and she overruled that on seeing `Q141189102`
-    *Sigrid "Sally" Manilva Tunheim* get an alias of `Sally`: *"this person was given an
-    alias of 'Sally' instead of 'Sally Ekman'"*. A bare given-name token is not something
+    It used to assert the bare `"Stena"`, and that was overruled on seeing `Q141189102`
+    *Sigrid "Sally" Manilva Tunheim* get an alias of `Sally` where it should have been
+    `Sally Ekman`. A bare given-name token is not something
     anybody can look a person up by, and `Help:Aliases` says the purpose of an alias is
     only to find the entity in searches — so a form nobody would search is no alias at all.
 
@@ -348,8 +349,8 @@ def test_aliases_cover_the_nickname_and_the_married_full_name():
 
 
 def test_the_nick_field_never_takes_the_surname():
-    """Emma, 2026-09-04, on `Carolina Gustafsdotter Wittfooth`: *"This persons last name
-    is re[pe]ated twice in a mul alias"* — the created item carried
+    """Reported 2026-09-04 on `Carolina Gustafsdotter Wittfooth`: her surname was repeated
+    twice in a `mul` alias — the created item carried
     `Amul "Wittfoth Wittfooth"`.
 
     Her record is `NICK Karolina`, `NICK Wittfoth`, `SURN Wittfooth`, `_MARNM Wittfooth`.
@@ -360,7 +361,7 @@ def test_the_nick_field_never_takes_the_surname():
     The two sources of the usage `nickname` are different things and this pins both:
     Geni's `NICK` field is an *also known as*, already a name, emitted as it stands; a
     QUOTED token inside `GIVN` is a byname that is not findable bare, and still gains the
-    surname. The test above is the second half and Emma's own `Sally` case is that shape
+    surname. The test above is the second half and the `Sally` case is that shape
     — `Q141189102`'s `nick` column is empty.
     """
     got = aliases_for({"givn": "Carolina Gustafsdotter", "surn": "Wittfooth",
@@ -384,7 +385,7 @@ def test_the_nick_field_never_takes_the_surname():
 
 
 def test_a_mans_marnm_family_name_carries_no_married_role():
-    """Emma, 2026-08-24, on seeing a man with `Q28418670` *married name*.
+    """Ruled 2026-08-24, on seeing a man with `Q28418670` *married name*.
 
     *"ontologically married name on a man means more like adopted surname. So men's
     'married names' should not have the role of married name."*
@@ -421,7 +422,7 @@ def test_the_plan_covers_every_usage_the_classifier_asks_for():
 
     So the plan files `Gundersen` as `given` (63 bearers) and `family` (19, with `Q656767`),
     the classifier looks up `(Gundersen, patronymic)`, and the lookup misses an item that
-    exists. The person then gets **no name statement at all** — which is what Emma saw on
+    exists. The person then gets **no name statement at all** — which is what was reported on
     `Q141189052` Anna Carine Gundersen, whose three tokens all failed.
 
     Measured over `reports/name-item-plan.csv`: **1,051 tokens, 31,259 bearers**, led by
@@ -433,7 +434,7 @@ def test_the_plan_covers_every_usage_the_classifier_asks_for():
     **FIXED 2026-08-27.** `scripts/build-name-item-batch.py` now emits a patronymic row for a
     `-sen`/`-son` token **as well as** its given/family rows, rather than instead of them.
     That is `CLAUDE.md` § *One name item per USAGE*: a token used two ways gets two items, and
-    it is not an ambiguity to resolve. Emma's father test then decides per person which of the
+    it is not an ambiguity to resolve. The father test then decides per person which of the
     two that person links to. Patronymic rows in the plan: 623 -> 1,677.
 
     **This assertion was a strict `xfail` for a day and never tested anything.** It failed with
@@ -460,7 +461,7 @@ def test_the_plan_covers_every_usage_the_classifier_asks_for():
 
 
 def test_the_father_decides_patronymic_from_inherited_surname():
-    """Emma's test, 2026-08-26, and the literal reading of it is 91% wrong.
+    """The test as first stated, 2026-08-26, whose literal reading is 91% wrong.
 
     *"If father has -son or -sen then it's a surname lol that's the test same with other
     patronymic surnames."* Taken literally that calls 91% of these tokens surnames — because
@@ -582,14 +583,14 @@ def test_the_father_name_reaches_statements_for_and_changes_the_property():
 # --------------------------------------------------------------------------------------
 # Markers in the GIVEN-NAME field, and stillbirth descriptions.
 #
-# Both fixed 2026-08-31 from Emma's `Q141224141`: *"an item was created as 'En dödfödd
-# son Bielke', which is just wrong"*, and *"please stop trying to assign names to this
-# person who does not in fact have any names at all."*
+# Both fixed 2026-08-31 from `Q141224141`: an item created as `En dödfödd son Bielke`,
+# which is simply wrong, and the ruling that names must not be assigned to a person who
+# has no names at all.
 #
 # The item is the worked case for both. Our batch created it, gave it `P735` *given
-# name* `En` -- the Swedish indefinite article -- with `P7452` *usual forename*, she
-# deleted the statements at 20:57 on 08-30, and the next batch put them back at 22:32,
-# so she deleted them a second time at 22:34.
+# name* `En` -- the Swedish indefinite article -- with `P7452` *usual forename*. The
+# statements were deleted by hand at 20:57 on 08-30, the next batch put them back at 22:32,
+# and they were deleted again at 22:34.
 # --------------------------------------------------------------------------------------
 
 def test_a_marker_in_givn_is_not_a_given_name():
@@ -646,7 +647,7 @@ def test_a_nickname_still_survives_a_normal_given_field():
 def test_fersen_needs_the_father_to_stop_being_a_patronymic():
     """`Q141223488` — `Fersen` created as `P31` `Q110874` *patronymic*, twice.
 
-    Emma's rule, 2026-08-26: *"If father has -son or -sen then it's a surname."* The
+    The rule as stated 2026-08-26: if the father has `-son` or `-sen` then it is a surname. The
     classifier implements it and `build-garborg-name-items.py` was calling it without a
     father, so every `-sen` token fell through to `patronymic`.
     """
@@ -658,8 +659,8 @@ def test_fersen_needs_the_father_to_stop_being_a_patronymic():
 
 # --- drop_description_suffix: a description marker is not a name -----------------------
 #
-# **Emma, 2026-09-07**, on `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is
-# some kind of suffix that shouldn't have been treated as part of the name."* `ogift` is
+# **Ruled 2026-09-07** on `Q141313961`, live as *Helena Maria Linnerhielm ogift*: `ogift` is
+# a suffix that should never have been treated as part of the name. `ogift` is
 # Swedish for *unmarried*.
 #
 # Every case below fails if a specific guard is removed, which is the bar
@@ -668,13 +669,13 @@ def test_fersen_needs_the_father_to_stop_being_a_patronymic():
 
 
 def test_the_marker_comes_off_the_label():
-    """The case she found. Fails if the rule is not wired to `_DESCRIPTION` at all."""
+    """The reported case. Fails if the rule is not wired to `_DESCRIPTION` at all."""
     assert namemodel.drop_description_suffix(
         "Helena Maria Linnerhielm ogift", "ogift") == "Helena Maria Linnerhielm"
 
 
 def test_a_title_is_not_a_description_and_stays():
-    """Scope. Emma chose the 631 description labels over the 7,075 `drop_title_suffix` takes.
+    """Scope: the 631 description labels were chosen over the 7,075 `drop_title_suffix` takes.
 
     Fails the moment this is widened to `NAME_SUFFIX_TITLES`, which is the one-line change
     that would silently reverse § *A TITLE IS NOT A NAME*'s *"it does not touch the LABEL"*.
