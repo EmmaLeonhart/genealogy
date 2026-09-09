@@ -1,16 +1,16 @@
-# The per-individual loop — three things, in her order
+# The per-individual loop — three things, in the specified order
 
-**Emma, 2026-09-06, dictating the whole of it:**
+**Dictated 2026-09-06:**
 
-> *"There's three things: forest from created individual, making a path from Charlemagne to the
-> individual, and getting the family members from the page only.*
+> There are three things: a `Forest` export from a created individual, making a path from
+> Charlemagne to the individual, and getting the family members from the page only.
 >
-> *Generally on each individual we always grab the html family members and save them first, then
-> try to get the Charlemagne path, and if it succeeds then good, if not then we do the forest
-> thing out of the isolated geni individuals.*
+> On each individual, always grab the HTML family members and save them first, then try to get the
+> Charlemagne path; if it succeeds then good, and if not then do the `Forest` thing out of the
+> isolated Geni individuals.
 >
-> *We also do the immediate family scrape on sibling pairs in paths because parents are needed and
-> this is the quickest way to get them."*
+> Also do the immediate-family scrape on sibling pairs in paths, because parents are needed and
+> this is the quickest way to get them.
 
 ## The order, and the order is the specification
 
@@ -27,9 +27,9 @@ yielded something.
 
 ## ⛔ STEP 3b IS GATED ON THE STATISTICS. A tiny profile gets NO export
 
-**Emma, 2026-09-06**, on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10, Ancestors 5,
-whose Charlemagne search resolved to a genuine *"No path found"*:
-*"this guy has pretty much no relatives so he shouldn't get an export lol"*.
+**Ruled 2026-09-06** on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10, Ancestors 5,
+whose Charlemagne search resolved to a genuine *"No path found"*: a person with pretty much no
+relatives should not get an export.
 
 This is the mirror of `CLAUDE.md` § *THE STATISTICS BLOCK IS THE REAL INSTRUMENT*. A **saturated**
 figure beside a *"no relationship found"* means a database failure, so the miss is not real and an
@@ -37,11 +37,10 @@ export is worth spending. A **tiny** figure beside the same sentence means the m
 whole neighbourhood is the handful already on the page, and an export seeded there returns that
 handful. Ballin's would have come back with about eleven people.
 
-**Every figure carries a threshold, not just one, and `blood_relatives` was never her idea.**
-The question put to her offered four floors all written in blood relatives, so the **number**
-1,000 is hers and the **figure** was mine. Her replies: *"why the fuck did you choose blood
-relatives"*, *"All of them need thresholds not just blood relatives"*, and *"I didn't tell you to
-do blood relatives."* `family_tree` is the component size -- what an export can actually reach --
+**Every figure carries a threshold, not just one, and `blood_relatives` was never the specified
+axis.** The question asked offered four floors all written in blood relatives, so the **number**
+1,000 was chosen and the **figure** was not: every figure needs a threshold, not just blood
+relatives. `family_tree` is the component size -- what an export can actually reach --
 and a `Forest` export follows spouse links precisely to cross the in-law edges `blood_relatives`
 excludes.
 
@@ -49,10 +48,9 @@ excludes.
 the floor clears the gate, because they measure different things and a person can be evidently
 connected by any of them.
 
-**⛔ ONE FLOOR, 300, ACROSS EVERY FIGURE.** Emma, 2026-09-06: *"Any number over 1,000 is a sure
-export, i say even any number over 300 lol"*. That replaced five per-figure thresholds — 1,000 /
-1,000 / 100 / 100 / 10 — which were mine. Her sentence is not five judgements, it is one reading
-of when the block says there is more there than the page shows, so whichever figure carries the
+**⛔ ONE FLOOR, 300, ACROSS EVERY FIGURE.** Ruled 2026-09-06: any number over 1,000 is a sure
+export, and even any number over 300. That replaced five invented per-figure thresholds — 1,000 /
+1,000 / 100 / 100 / 10. It is not five judgements, it is one reading of when the block says there is more there than the page shows, so whichever figure carries the
 number, over 300 is enough.
 
     family_tree  ·  blood_relatives  ·  ancestors  ·  descendants  ·  followers   >= 300
@@ -78,33 +76,31 @@ caution that goes with it — a *"no relationship found"* beside a saturated Blo
 is a database failure, not a negative result, which is why the statistics are read at step 1 and
 not inferred later.
 
-## ⛔ STEP 3b IS A `Forest` EXPORT. Her 2026-09-03 `Ancestors` instruction is WRONG
+## ⛔ STEP 3b IS A `Forest` EXPORT. The 2026-09-03 `Ancestors` instruction is WRONG
 
-**Emma, 2026-09-06, ruling on the contradiction directly: _"9-03 is wrong"_.**
+**Ruled 2026-09-06, on the contradiction directly: the 09-03 version is wrong.**
 
 `queue.md`'s tail section, written 2026-09-03, gives a precedence order whose first case is
 *connected to Charlemagne, no relationship found after the query* → **run a full `Ancestors`
-export**, and calls it the common case. Her 2026-09-06 dictation says the opposite —
-*"if not then we do the forest thing out of the isolated geni individuals"* — and `Forest` is what
-the collector implements.
+export**, and calls it the common case. The 2026-09-06 dictation says the opposite — the `Forest`
+thing, out of the isolated Geni individuals — and `Forest` is what the collector implements.
 
-**She has now settled it: `Forest`.** The reason it matters rather than being a label: `Forest`
-follows spouse links and `Ancestors` walks straight up, so on a person connected through in-laws
-an `Ancestors` export goes past the join entirely. Her own tail notes name Moshe Bar Nissim as
-failing *"because of large in-law chains"* — exactly the case `Ancestors` cannot reach.
+**It is settled: `Forest`.** The reason it matters rather than being a label: `Forest` follows
+spouse links and `Ancestors` walks straight up, so on a person connected through in-laws an
+`Ancestors` export goes past the join entirely. The tail's own notes name Moshe Bar Nissim as
+failing because of large in-law chains — exactly the case `Ancestors` cannot reach.
 
-The tail's precedence order is left as she wrote it; this supersedes its first case.
+The tail's precedence order is left as written; this supersedes its first case.
 
 ## ⛔ THE PHASE ORDER. The sibling scrape is LAST, and its input is the INTEGRATED tree
 
-**Emma, 2026-09-06, correcting a mass sibling scrape I had already started:**
+**Ruled 2026-09-06, correcting a mass sibling scrape already under way:**
 
-> *"Run the wikidata isolate connecting operation on all wikidata isolates, then you will have a
-> very large number of paths plus immediate family object things from such people, with occasional
-> forest exports. Then you integrate all of this into the synoptic tree, then on the people who are
-> sibling pairs on the synoptic tree without parents, you do the scrape object thing on each member
-> of the pair lol. So again jumping to the mass action was really bad because you skipped over a
-> lot."*
+> Run the Wikidata isolate-connecting operation on all Wikidata isolates, and that yields a very
+> large number of paths plus immediate-family objects from those people, with occasional `Forest`
+> exports. Then integrate all of it into the synoptic tree. Then, on the people who are sibling
+> pairs in the synoptic tree without parents, do the scrape on each member of the pair. Jumping
+> straight to the mass action was bad because it skipped over a lot.
 
     PHASE 1  run the isolate-connecting operation over ALL Wikidata isolates
              -> the per-individual loop below, on each: family scrape, then Charlemagne path,
@@ -128,7 +124,7 @@ objects, its exports, and the merge. Scraping 2,525 people off today's path file
 2,525 page loads to answer a question that phase 2 was going to answer for free, on a list that
 phase 1 was going to shrink.
 
-**Four scrapes were taken before she stopped it** — Arne Garborg, Jon Eivindson Garborg, Maria
+**Four scrapes were taken before it was stopped** — Arne Garborg, Jon Eivindson Garborg, Maria
 Carlberg, Sara Carlberg. Read-only, and out of order.
 
 ## The second rule: sibling pairs in paths get the same scrape
