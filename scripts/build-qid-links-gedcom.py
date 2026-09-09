@@ -175,6 +175,23 @@ PAIRS = {
     # `Q5`, and every cluster out here is exactly that population. Our -1013 against the item's
     # -1000 is what actually settles her.
     "6000000210521076830": "Q159888",   # Makeda Queen of Sheba -- Queen of Sheba
+
+    # -- THE SELJUQ PAIR, given by Emma 2026-09-09 with both links in her own message. They are
+    # the two sons of `n n` `6000000035218690155`, the Seljuq matriarch whose line she has been
+    # building westward -- *"this is the line from China to Europe that I wanted to get here and
+    # was not sure if it was actually around"*.
+    #
+    # They belong here rather than in `reports/manual-identifications.csv`, which
+    # `CLAUDE.md` § *"MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME* says is the manual
+    # PARENTAL ZIPPER MERGE correspondences and warns will be abused by *"a later agent [who]
+    # will put anything hand-checked into it -- a Samaritan pair, a bio link, a spine anchor"*.
+    # A pair of 11th-century sultans is precisely that abuse.
+    #
+    # And they fit this file's own category exactly: § *WHAT `wikidata-qid-links.ged` IS FOR*
+    # is *"far off genealogical people who are too far away in the regular clusters to be ones
+    # to start with"*, expanded to take people who already hold a proper QID. Both do.
+    "6000000031527612551": "Q144565",   # Sultan Tughril I -- Tughril, first Seljuq sultan
+    "6000000031528142916": "Q870223",   # Dawud Chaghri Bey, Lord of Khorasan -- Chaghri Beg
 }
 ONLY = set(PAIRS)
 

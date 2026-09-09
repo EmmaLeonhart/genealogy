@@ -33455,3 +33455,38 @@ standing between a mislabelled chain and the ledger, now that the version-based 
 the Miroslava defect has collapsed.
 
 Tiny GEDCOMs rebuilt: 119 profiles, 720 paths, invented people 0.
+
+## 2026-09-09 — the Seljuq identifications, and the China-to-Europe line's own exports
+
+**Two identifications you gave with both links in your own message**, recorded in
+`scripts/build-qid-links-gedcom.PAIRS` and regenerated into
+`exports/post-merge/wikidata-qid-links.ged` — **29 → 31 individuals**:
+
+    6000000031527612551  Sultan Tughril I                    Q144565
+    6000000031528142916  Dawud Chaghri Bey, Lord of Khorasan  Q870223
+
+They are the two sons of `n n` `6000000035218690155`, the Seljuq matriarch whose line this is.
+
+**⛔ NOT into `reports/manual-identifications.csv`, and the reason is your own warning.**
+`CLAUDE.md` § *"MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME* says that file is the manual
+**parental zipper merge** correspondences and predicts it *"is almost certainly gonna be fucking
+abused by later agents for other purposes"* — naming *"a Samaritan pair, a bio link, a spine
+anchor"* as the shape of the abuse. Two 11th-century sultans are exactly that. They fit the
+QID-links GEDCOM's own stated category instead: § *WHAT `wikidata-qid-links.ged` IS FOR* is *"far
+off genealogical people who are too far away in the regular clusters to be ones to start with"*,
+widened to take people who already hold a proper QID. Both do. They also become entry points on
+**2027-01-01** by that file's standing rule, which is the right timing for a bloc this far out.
+
+**Your export, downloaded and filed.** You ran a Descendants export on `NN`
+`6000000227676315909` — wife of Kaitouko Djankot, mother of Inal the Great, created by you
+today — and it was still building when I looked. **5,000 people, 2,989 families**, filed to
+`exports/turgesh-seljuq/export-Descendants-6000000227676315909.ged` beside the two from the same
+line. The seed is the file's first `INDI`, checked rather than assumed.
+
+**Finding it needed a route worth writing down**, since a task id is not guessable: `/gedcom`
+lists every export of the past year — 580 of them — and each download link carries
+`downloadGedcom('<task id>')` in a `data-onclick-bound` attribute. That is how a run started
+outside this session gets picked up.
+
+**A Forest export from the same person is submitted**, task `6000000227676391933`, building now.
+Geni allows one at a time, which is why it went in only after the Descendants zip was on disk.
