@@ -23620,7 +23620,7 @@ gathered.
 On the first card of the deck — `Helena Mikontytär Schulin` against
 `Lars Henrik Keckman` — *"pretty sure this is the wife of the person lol."*
 
-She was right, and `Q17381568` was sitting two lines above the question, **in Helena's own spouse
+That was right, and `Q17381568` was sitting two lines above the question, **in Helena's own spouse
 list on the same card**.
 
 **The bug is structural and it was systematic, not one bad row.** A child has two parents. The
@@ -23884,8 +23884,8 @@ tidy up, and the rails forbid exactly that. Only the read came out. The wider 21
 says **report the list before deleting in bulk**, for that reason.
 
 **The builder still works and its output moved for a reason I checked rather than waved through.**
-24 creations where the last run gave 27: her nine new `SAME` verdicts landed, and **0 of the 46
-people she has confirmed are being created** — which is the ledger fold doing its job, not a
+24 creations where the last run gave 27: the nine new `SAME` verdicts landed, and **0 of the 46
+confirmed people are being created** — which is the ledger fold doing its job, not a
 regression from this cleanup.
 
 ## 2026-08-31 — the marker normalisation, screened; and `strip_markers` was not idempotent
@@ -23924,7 +23924,7 @@ repacked.
 The instruction: *"please don't waste time with the tests lol. They are paused until ci/cd."* Recorded in
 `CLAUDE.md` § *NO NEW TESTS*, which already banned writing them and now says not to run the lane
 routinely either. The fast lane is ~7 minutes and I ran it **six times this evening** — 40 minutes
-of her session on a signal she has said she does not trust.
+of session time on a signal that is explicitly not trusted.
 
 **What replaces it is not nothing**, and the day's evidence is unambiguous. Every real defect
 found today came from measurement and reading output, not from the suite: the parent deck offering
@@ -23945,7 +23945,7 @@ correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differin
 **Ruled 2026-09-03:** *"you probably should have a script that spits out a random one whenever
 you need one."* Built to her specification: a roster CSV of every Wikidata isolate, a random draw,
 a test of membership of the big connected mass, return if absent --- and **delete from the roster
-and re-draw if present**, which is the healing she asked for. `--refresh` rebuilds both files.
+and re-draw if present**, which is the healing asked for. `--refresh` rebuilds both files.
 
 **The two artifacts, and they go stale for different reasons.**
 `reports/wikidata-isolate-roster.csv` is **191,113** items carrying a `P2600` and stating no
@@ -24012,13 +24012,13 @@ runs out, and it comes back on a later run rather than being retired.
 
 **`CLAUDE.md` § *THE PARENT DECK* now carries the whole loop** --- which command with and without
 a local corpus, that a claude.ai artifact and a GitHub **Actions** artifact are different things
-and only the second is the one she cannot open, and how a pasted block of verdicts becomes rows.
+and only the second is the unopenable one, and how a pasted block of verdicts becomes rows.
 
 **All 19 open issues closed at her instruction.** Every one was an auto-created *Garborg batch*
 notification from the pipeline, 17 of them from the last two days --- the pipeline opens one per
 run, so they accumulate on their own.
 
-## 2026-09-04 --- the parent deck named nobody, on the page she was told to open
+## 2026-09-04 --- the parent deck named nobody, on the page it was published to
 
 **The ask:** *"give me the artifact we used for identifying parents with each other in previous
 sessions I want a session of using the thing"*, then, on
@@ -24241,7 +24241,7 @@ carry a `SURN` and a different `_MARNM`** — measured over `display-names.csv`.
 changes it — the surname is the part redaction does not take.
 
 **Today's batch does not exercise it**, and that is worth saying rather than implying otherwise:
-of 28 creations one is redacted and she has no married surname. The path is verified by the field
+of 28 creations one is redacted, with no married surname. The path is verified by the field
 map instead — `fields` is built with `("givn", "surn", "nick", "marnm", "display_name")`, so both
 lookups resolve, and `NN /Thaulow/` will emit `Lmul "NN Hahn"` and `Amul "NN Thaulow"`.
 
@@ -24268,9 +24268,9 @@ what those rulings turned into.
 **Nine items deleted outright** on her word — the eight Asian identities, the Bure random-walk,
 the World-Tree review and its `universe` note, the chains-as-a-system, the six unwalked algorithm
 steps, the four-label census, resolving names against the store, and the 46%/41% transliteration
-measurement. Three moved to the tail. The queue is doing what she said it should: getting small.
+measurement. Three moved to the tail. The queue is doing what it should: getting small.
 
-### Korean, which she put at the top
+### Korean, put at the top
 
 `ko` had been filed with `hi`/`ar`/`ru`/`el` as a research task behind `ja` and `zh`. It is CJK.
 
@@ -24293,7 +24293,7 @@ claiming damage: no batch on disk emits one, so nothing would overwrite her item
 took the `en` batch from 25,930 edits to **104,856**, because those people reach the
 relationship-label path for the first time.
 
-**The clan labels were much worse than I thought, exactly as she suspected.** All 177 already
+**The clan labels were much worse than I thought, exactly as suspected.** All 177 already
 carry an English label and **15 are real names** — `Q10864996` is 万寿公主, Princess Wanshou, and
 the batch would have relabelled her *"woman of the Li clan, from Longxi Didao"*.
 
@@ -24306,7 +24306,7 @@ rescued **21 tokens** on the real batch.
 
 ### Two things that turned out already done
 
-Both established by checking rather than by working. **The four export retries** she named are all
+Both established by checking rather than by working. **The four named export retries** are all
 in the corpus and in the merged tree, and `census-paths.py` reports **every path connected end to
 end** across 699 files — so no export ran. **`P735` on new people** was already happening: 25 of
 28 creations carry one.
@@ -24349,7 +24349,7 @@ three parts verified in the code and in today's rebuild log, not assumed:
 
 - the gate — `build-garborg-day.py` carries `GATE: no ja/zh/ko label, so not created`, and it is
   three languages now rather than two;
-- the drain order she confirmed — `LABEL_EDIT_CAP`, and the log reads *"label edits on existing
+- the confirmed drain order — `LABEL_EDIT_CAP`, and the log reads *"label edits on existing
   items: 15 emitted, 2085 held for a later batch (cap 15)"*;
 - clan last — *"CJK clan labels suppressed until 2026-10-01"* in the same log.
 
@@ -24519,7 +24519,7 @@ husband/wife/sibling **of** and no in-law wording at all.
 
 The long-range relations were named — *"grandparents or grandchildren or siblings"* —
 and did not name in-laws. Adding *"daughter-in-law of X"* across ten languages is inventing
-vocabulary she has not asked for, so it goes to her. The default in force is unchanged: `mul`, no
+vocabulary nobody asked for, so it is a question to put. The default in force is unchanged: `mul`, no
 `en`.
 
 **Also recorded: the CI slow-lane kills are not understood.** Four kills, two attempts, both
@@ -24562,7 +24562,7 @@ anonymisation means, the deleted and moved lists, the export-loop finding) stay 
 batch is one file of 31 `CREATE` blocks with the name items first.
 
 **The two rows kept** are the ones still live: the `en` shortfall, which turned out to need in-law
-relation words she has never sanctioned and is therefore a decision rather than arithmetic; and
+relation words that have never been sanctioned and is therefore a decision rather than arithmetic; and
 `exports/post-merge/`, where the grading says 408 of 412 are real deletions and her standing
 ruling is to leave them and keep measuring.
 
@@ -24676,7 +24676,7 @@ two of the three CJK languages, which contradicts her ruling of the same day.
 ## 2026-09-01 — dead-queue sweep, fourth pass
 
 **Deleted: § *Two slow modules exhaust a CI runner's memory — decide what to do about it*.** The
-decision was hers and she made it — *keep them local, out of CI* — and it is executed: the matrix
+decision was made — *keep them local, out of CI* — and it is executed: the matrix
 in `.github/workflows/ci.yml` now names `tests/test_gedcom_real_exports.py` and nothing else, with
 the measurement and the local command in the comment above it. Both halves of the item, the
 investigation and the choice, are finished.
@@ -24705,7 +24705,7 @@ and their labels ride along with the creation.
 and `ko` each. Skipped: 5,908 who already have a name in a CJK script (not a transcription case at
 all), 3,545 holding a token nothing can render, and 307 with no Latin label.
 
-**`zh` is included although she said `ja` and `ko`.** `translit_no.translit` returns katakana and
+**`zh` is included although the instruction said `ja` and `ko`.** `translit_no.translit` returns katakana and
 Chinese from one call — same engine, same table column — so emitting one and withholding the other
 would recreate the inconsistency her ruling removed.
 
@@ -24743,7 +24743,7 @@ recently-stale layer — which it did.
 
 **Nothing was deleted, so nothing was annotated DONE.** 23 sections before and after.
 
-## 2026-09-01 — a pipeline that runs only when she has been editing
+## 2026-09-01 — a pipeline that runs only when the account has been editing
 
 **Her design:** *"Every six hours it checks the time of my last contribution. If it is under six
 hours old then it does the full pipeline. Ledger refresh plus quickstatement rebuild. So basically
@@ -24753,11 +24753,11 @@ it is intended as facilitating potentially quite intensive work like this."*
 request for `日巫女`; the **pipeline** only runs if it answers under six hours.
 
 **The gate is the right signal because the ledger is built from the same data.**
-`refresh-garborg-ledger.py` reads that same list for that same account, so *"she has edited"* and
+`refresh-garborg-ledger.py` reads that same list for that same account, so *"the account has edited"* and
 *"the ledger will differ"* are one fact rather than a proxy for each other.
 
 **It fails OPEN.** If Wikidata is unreachable the age is unknown and it runs anyway: a wasted run
-costs minutes of free Actions time, a skipped run means she wakes to a stale batch.
+costs minutes of free Actions time, a skipped run means the morning's batch is stale.
 
 **It does not rebuild the tree**, and that is what makes it affordable. `genimerge merge` peaks at
 17 GB against a 16 GB runner; `--compose` reads the derived CSVs, so `exports/` is not even
@@ -24798,7 +24798,7 @@ still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have 
 current* (standing processes, not steps) · § *The placeholder batch emits `ja` and `zh` and NO
 `ko`* (grepped: still zero) · § *`P1814`* · § *LABELS, IN THE SET ORDER* · the seven specifications.
 
-## 2026-09-01 - she ruled on 207 pairs by hand, and named the rule they teach
+## 2026-09-01 - 207 pairs ruled on by hand, and the rule they teach
 
 **The message: *"Btw I did verdicts anyways lol"*** - 207 pairs pasted into chat, 206 of them new.
 `reports/emma-judgments.tsv` 115 -> 321 rows; `reports/manual-identifications.csv` 109 -> **314**
@@ -24812,11 +24812,11 @@ TRAINING DATA* - an `UNSURE` is a data point about where the evidence runs out.
 disambiguation"*, because those people *"are bilingual in terms of the records... their names are
 represented in many different ways and made from places."*
 
-**147 of her 207 pairs - 71% - spell the name differently on the two sides**, after folding case
-and diacritics. In the 1600-1900 band, 138 of 196: **70%**. Every pair she ruled on falls in
+**147 of the 207 pairs - 71% - spell the name differently on the two sides**, after folding case
+and diacritics. In the 1600-1900 band, 138 of 196: **70%**. Every pair ruled on falls in
 1600-1900 (196) or pre-1600 (11); none is post-1900. So a string comparison would have thrown out
-seven of every ten identifications she made by hand, and the three mechanisms are all visible in
-her own list: language of the record (`Gustav Adolf` / `Kustaa Adolf` Järnefelt), birth against
+seven of every ten identifications made by hand, and the three mechanisms are all visible in
+the list itself: language of the record (`Gustav Adolf` / `Kustaa Adolf` Järnefelt), birth against
 married name (`Herman` / `Schönherr`), and a title written into the label (`Baroness`,
 `Friherrinna`, `Gräfin`).
 
@@ -24846,7 +24846,7 @@ what the section said the next tick should do.
 `zipper-join.py` compared 192,039 slots over eight rounds against 42,281 anchors, and its own
 guards fired: **907 pairs refuted by `P21` sex or gender**, 21 by a recorded `P2600`, 14,989 slots
 left too ambiguous to call. Provenance splits 31,363 `solo` / 9,935 `date` / 8,252 `name`, and the
-ambiguity is where she said it would be — **13,738 of 14,989 in the `child` slot**.
+ambiguity is where it was predicted to be — **13,738 of 14,989 in the `child` slot**.
 
 **And it turned up a gap worth more than the run.** The correspondence had **eight** sources and
 her own hand verdicts were not among them. Measured before assuming it mattered: **1 of 313** was
@@ -24855,7 +24855,7 @@ same pair. That is the right number to report and the wrong reason for the most 
 source in the repo to be present, so `manual-identifications.csv` is now a source in its own right.
 
 **The negative half is still unused** and is queued rather than guessed at: `refuted` is fed by
-`date_refuted()` alone, so a pair she has ruled `DIFFERENT` can still be asserted by another
+`date_refuted()` alone, so a pair hand-ruled `DIFFERENT` can still be asserted by another
 source. The item says to measure it first, since it may well be zero.
 
 ## 2026-09-01 — her negative verdicts measured out, and a pipeline fault I kept repeating
@@ -24866,7 +24866,7 @@ the 2026-08-25 `zipper-hard` batch) and **0 of them still asserted** by
 `reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
 
 The population is small by design rather than by accident: the deck retires `SAME` and `DIFFERENT`
-and returns `UNSURE`, so when she cannot tell she skips. 295 `SAME`, 17 `RIGHT`, 5 `UNSURE`,
+and returns `UNSURE`, so an unanswerable card is skipped. 295 `SAME`, 17 `RIGHT`, 5 `UNSURE`,
 2 `BROWSER`, 1 `WRONG`.
 
 **Corrected: the pipeline is not broken.** I wrote *"it has never completed a run"* into the queue
@@ -24886,7 +24886,7 @@ me to run later."*
 
 **Queue item cleared: § *Wire the adjudication deck onto the pipeline*.** Her instruction was
 *"I told you to regenerate the html every time with the pipeline"*, and asked directly where it
-should run she chose **both**, with **no cap**.
+should run, the answer was **both**, with **no cap**.
 
 - `scripts/rebuild-everything.py` — a step after the batch, so a deck rendered there describes the
   same state the batch was built from.
@@ -24896,12 +24896,12 @@ should run she chose **both**, with **no cap**.
 
 **It was reachable only by chance before.** Nothing but `refresh-drift.py` happening to pick it up
 ran `build-parent-candidates.py`, which is why `out/parent-review.html` rendered **0 cards** on
-2026-09-01 while 709 candidates sat in `reports/parent-candidates.tsv` — and she answered 207 of
-them off the raw TSV instead of the page built for it. Same family as the CJK funnel wired into
+2026-09-01 while 709 candidates sat in `reports/parent-candidates.tsv` — and 207 of them were
+answered off the raw TSV instead of the page built for it. Same family as the CJK funnel wired into
 one entry point and not the other.
 
-**No cap, her call.** The 60-card limit was the other half of the same failure: she did 207 in a
-sitting, `localStorage` keeps her place, and a cap silently hides work.
+**No cap, by ruling.** The 60-card limit was the other half of the same failure: 207 were done in a
+sitting, `localStorage` keeps the reader's place, and a cap silently hides work.
 
 ## 2026-09-01 — the 13:40 generation, second attempt, and the spine is CLOSED
 
@@ -24918,8 +24918,8 @@ because two items created in the same run cannot point at each other.
     reports/wikidata-garborg-name-items.qs   3 name items (cap 3, 327 carried)
     reports/garborg-carry-forward.tsv       1,176 carried to a later day
 
-**`spine arne-garborg-to-johannes-bureus-geni: every step already has an item.`** The batch she
-ran this afternoon created Sara Carlberg, the last of the 18. The spine is complete, which is the
+**`spine arne-garborg-to-johannes-bureus-geni: every step already has an item.`** The batch run
+this afternoon created Sara Carlberg, the last of the 18. The spine is complete, which is the
 precondition the 2026-09-02 removal item asks to check before deleting the spine machinery.
 
 **Checks before attaching, and one failed.** `grep -c Aen` is **0** in both files. The `CREATE`
@@ -24952,23 +24952,23 @@ every one is genuinely open:
 
 **One heading cut back rather than deleted.** § *FOR 2026-09-02 — the two removals, and one
 question I would not answer alone* no longer describes itself: the spine removal moved to the tail
-as her true last item, so one removal is elsewhere and the other never was one. It is now
-§ *The `NEVER_TOUCH` lists — one question only she can answer*, which is what the surviving content
-is — whether those lists come out entirely and her item becomes editable like any other, or stay as
+as the true last item, so one removal is elsewhere and the other never was one. It is now
+§ *The `NEVER_TOUCH` lists — one question for the owner alone*, which is what the surviving content
+is — whether those lists come out entirely and that item becomes editable like any other, or stay as
 the mechanism keeping her out of the traversable graph. A heading that promises two things the
 section does not contain is the same readability failure as annotating a finished item.
 
-## 2026-09-01 — merges-to-do refreshed, and it was blind to the duplicates she actually hit
+## 2026-09-01 — merges-to-do refreshed, and it was blind to the duplicates actually hit
 
 **Queue item worked: § *Keep `reports/merges-to-do.md` current*.** It is a standing regeneration
 rather than a one-off, so the section stays; the file was 09:20 against a ledger refreshed at
 14:19 and is now current.
 
 **Regenerating it exposed a hole.** Section 1 finds a duplicate by looking for **one Geni id
-carried by two Wikidata items** — which requires both items to have a `P2600`. Every duplicate she
+carried by two Wikidata items** — which requires both items to have a `P2600`. Every duplicate
 hit today was the opposite shape: `Q550343` *Welf I, Duke of Bavaria*, 27 sitelinks, carries **no
 Geni id at all**, so no `P2600` join can reach it and a `P2600` search afterwards returns only the
-new item. None of the four she merged by hand appeared in the file built to collect exactly that
+new item. None of the four merged by hand appeared in the file built to collect exactly that
 work.
 
 **New § 8, from the correspondence rather than from `P2600`: 40 pairs.** Where the ledger says a
@@ -25030,9 +25030,8 @@ done and the evidence is on disk, not in memory:
   the transcription step lives. They are not an `en` gap; they carry real names in Han (2,173 rows),
   Cyrillic (359), Han+Latin (344), Hebrew (140) and six more scripts.
 
-**Nothing governing was lost, which is the only reason deleting is safe.** Two of her quotes lived
-*only* in that section, so they are now in `CLAUDE.md` as § *The label gate, and the order she set
-for it*: the gate itself — *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
+**Nothing governing was lost, which is the only reason deleting is safe.** Two rulings lived
+*only* in that section, so they are now in `CLAUDE.md` as § *The label gate, and the order*: the gate itself — *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
 EVERYTHING"* — and her ordering, *"create the relatives first, then label"*, with the reason it is
 not the obvious order. The culture problem, the three directions, and the name-items-first argument
 went with them.
