@@ -1,13 +1,13 @@
 """Roster of the Izumo clan genealogy from the Shinto-wiki page.
 
-Emma's queue item: build the family tree that is visually on
+The queue item: build the family tree that is visually on
 https://shinto.miraheze.org/wiki/Izumo_clan onto Geni, and carry the Wikidata
 links. The rendered page mangles the {{familytree}} template into unusable prose;
 the wikitext does not, so this parses the wikitext.
 
 Each person is an {{ill|Name|lang|...|qid=Q...}} inside a familytree cell. A
 bolded name with a <sup>N</sup> is an Izumo no Kuni no Miyatsuko and N is their
-REGNAL NUMBER, not a middle name -- Emma flagged that specifically. Lineage is
+REGNAL NUMBER, not a middle name -- that was flagged specifically. Lineage is
 read off the name prefix once the clan splits in 1340 into Senge and Kitajima.
 
 Writes reports/izumo-roster.tsv. Nothing here touches Geni or Wikidata.

@@ -2,7 +2,7 @@
 
     py scripts/build-han-readings.py
 
-**Emma, 2026-09-02, and it dissolves the culture problem rather than solving it:** *"the kana
+**The ruling that dissolves the culture problem rather than solving it:** *"the kana
 name plus the Korean name plus the Mandarin pronunciation of every single arbitrary character
 thing is something that is actually produced... we'd even essentially have all of the labels
 the thing would ever possibly have in the `mul` label. It's just a matter of which one is chosen
@@ -31,7 +31,7 @@ it is reusable by every emitter, and it is the thing a per-person table is a joi
   what that sentence looks like in the data. `scripts/fetch-kana-readings.py` is the sourced
   answer; this column exists to be checked against it, never instead of it.
 * **`zh` is mechanical**, from Unihan's `kMandarin`, once `scripts/import-unihan.py` has run.
-  4,682 of the 4,688 characters carry one. Emma authorised the download on 2026-09-02, choosing
+  4,682 of the 4,688 characters carry one. The download was authorised on 2026-09-02, choosing
   a data file over a `pypinyin` dependency, so § *Stdlib only* is intact.
 
 ## `ko` merges TWO sources, and neither alone is right

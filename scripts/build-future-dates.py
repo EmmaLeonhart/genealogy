@@ -1,8 +1,7 @@
 """Every DATE line in the corpus whose year is later than this one.
 
-Emma, 2026-08-15, deleting the impossible-years work and replacing it:
-*"I want you to delete all of the reports and scripts and .md but run a new
-report on just future dates."*
+The impossible-years work was deleted and replaced: every report, script and
+markdown file went, and this runs the replacement, on future dates alone.
 
 So the screen is one thing and nothing else. A date later than today is
 **observably** wrong — nobody in a genealogy is born in 2087 — and the whole

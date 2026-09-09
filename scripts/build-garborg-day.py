@@ -119,7 +119,7 @@ ZH_OVERWRITE = True
 #:
 #: Both were released by hand on 2026-08-26 when they were put up for a decision.
 RELEASED_FROM_DUPLICATE_GUARD = {
-    # Ramborg Knutsdotter Lejon. Her parent `Q5915800` has unmatched children `Q4955715`
+    # Ramborg Knutsdotter Lejon. The parent `Q5915800` has unmatched children `Q4955715`
     # *Ingegerd Knutsdotter* and `Q16595443` *Katarina Knutsdotter* -- Ramborg's sisters, both
     # named, neither of them Ramborg.
     "6000000004870648136": "the two unmatched children are her named sisters",
