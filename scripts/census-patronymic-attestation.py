@@ -1,10 +1,9 @@
 """How many fathers actually attest each `P144` *based on* source of each patronymic.
 
-**Emma, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* carrying
-`P144` -> `Q58785388` *Junna*, which she removed by hand: *"neither of these are based on Junna
-lol at least not the Junna you linked. Not sure how you even got that one or how you're defining
-the patronymic sources."* Asked how a source should be defined: *"it needs to be attested lol.
-Really attested in our data."*
+**`Q141336969` *Johansson* and `Q141290188` *Johansdotter* carried `P144` -> `Q58785388`
+*Junna*, and neither is based on that name.** Those values were removed by hand, and it raised
+the question of how a patronymic source is being defined at all. The answer: it has to be
+genuinely attested in our own data.
 
 **The counts already existed and were thrown away.** `build-patronymic-items.py` accumulates
 `sources[token][father's given name] += 1` in a `Counter`, sorts the names by it, and then writes

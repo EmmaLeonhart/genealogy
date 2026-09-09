@@ -1,8 +1,8 @@
-"""Parse Emma's Wikidata interaction log into a CSV of every edit.
+"""Parse the Wikidata interaction log into a CSV of every edit.
 
-The source is `reports/wikidata-interaction-log-2026-09-03.txt` --- the pastebin she
-handed over on 2026-09-03: *"These are all of the users I ever interacted with, please
-look into them"*. It is a MediaWiki contributions/watchlist rendering pasted as text, so
+The source is `reports/wikidata-interaction-log-2026-09-03.txt` --- a pastebin handed
+over on 2026-09-03 holding every user this account has ever interacted with. It is a
+MediaWiki contributions/watchlist rendering pasted as text, so
 every line is one revision by somebody else touching an item this project created or
 edited.
 
@@ -147,10 +147,10 @@ def parse(text: str) -> list[dict[str, str]]:
                 "tags": tags,
                 # ⛔ The column is `comment`, which is MediaWiki's own name for this field,
                 # and NOT `summary`. Two reasons and both matter: this script READS an edit
-                # comment off her contributions log, it never writes one, and
+                # comment off a contributions log, it never writes one, and
                 # `tests/test_no_descriptions_or_summaries.py` scans every script for the
                 # shape `"summary":` because setting one is categorically forbidden --
-                # Emma, 2026-08-30. A parser recording what Wikidata already said tripped
+                # ruled 2026-08-30. A parser recording what Wikidata already said tripped
                 # that scan and turned CI red. Renaming the key keeps the rule un-weakened
                 # rather than carving an exception into the test for a reading script.
                 "comment": summary,

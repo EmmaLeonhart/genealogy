@@ -12,7 +12,7 @@ to re-query Wikidata, which CLAUDE.md forbids. Every P2600 claim is already in
 
 Our side is read by streaming the INDI xref lines through `identity.GENI_ID_RE`
 rather than parsing the GEDCOM — same answer, a fraction of the CPU, which
-matters on a laptop Emma is watching the heat of.
+matters on a laptop whose heat somebody is watching.
 
 Malformed P2600 values are written to `reports/wikidata-p2600-malformed.tsv` and
 never parsed for an ID. They are URLs pasted into a field that should hold an ID;

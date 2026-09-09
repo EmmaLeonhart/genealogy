@@ -1,14 +1,14 @@
 """Which languages do the downloaded name items actually carry labels in?
 
-**This is the ceiling on mechanical name translation.** Emma, 2026-08-18: *"there should
+**This is the ceiling on mechanical name translation.** *"there should
 be a sizable amount of individuals for whom we're effectively able to just translate the
 names, really, based off of the existing labels… I think in Japanese there's a standard
 katakana rendering of the name Jack. There's a standard katakana rendering of the name
 John."* If `John` (`Q4925477`) carries `ja` = ジョン, then a person called John gets a
 Japanese label without anybody transliterating anything. If it does not, no amount of
 assembling helps and the gap has to be filled by adding labels **to the name item**,
-which is her second point: *"we're going to be… having to add labels in other languages
-to the name objects."*
+which is the second half of the target: labels in other languages have to be added to
+the name objects.
 
 So the question this answers is not "how many name items do we hold" — that is settled,
 `scripts/collect-name-item-qids.py` enumerated 824,358 by `P31` and 99.9% are in the

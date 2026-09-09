@@ -1,12 +1,12 @@
 """Who needs their Geni page saved, for the paths too short to be worth an export.
 
-**Emma, 2026-08-18:** *"It is not worth six minutes to fill in something on the flat
+**The rule, 2026-08-18:** *"It is not worth six minutes to fill in something on the flat
 tail that is just covering one or two individuals."* So a path with **<=3 missing
 people** is not an export. Instead each of its members gets their profile page saved
 into `geni-scraping/`, and the relatives section expanded before saving.
 
-**Every path member needs their OWN saved page.** Emma was emphatic, correcting the
-opposite claim: *"A mention on the saved page is not legitimate enough for a path
+**Every path member needs their OWN saved page**, correcting the opposite claim:
+*"A mention on the saved page is not legitimate enough for a path
 member. It's just enough for making a non-path individual."* So this lists every step
 of every such path, not only the missing ones --- *"If there's a two-person path, yes,
 you save the page of every single individual there."*
@@ -17,7 +17,7 @@ gives both a link property and the sex.
 
 Rate: one page a minute, no concurrency, bail immediately on anything suspicious.
 
-**DO NOT RE-RUN THIS WHILE THE SAVING IS IN PROGRESS.** Emma, 2026-08-19:
+**DO NOT RE-RUN THIS WHILE THE SAVING IS IN PROGRESS.** The rule, 2026-08-19:
 *"the target list is just a set amount of individuals that we are determined to
 download. Me mass downloading the descendants of people should not [change it].
 Just ignore these exports honestly... Just focus on getting all the pages
@@ -26,13 +26,13 @@ saved."*
 The roster is **not** a fixed set of people — it is re-derived from whichever
 paths currently have 1-3 missing. So any new export moves it: a path at 4
 missing falls to 3 and its whole membership joins the list. Re-running it after
-her thirteen `8-19 exports` took it 1,824 -> 1,869, which is the script working
+the thirteen `8-19 exports` took it 1,824 -> 1,869, which is the script working
 and the wrong thing to do mid-run. `reports/scrape-targets.csv` was restored to
 the 1,824 and is **frozen** until the saving finishes.
 
-Her Descendants exports are filed in `exports/8-19 exports/` and are corpus like
+Those `Descendants` exports are filed in `exports/8-19 exports/` and are corpus like
 any other; they are simply not allowed to redefine this list while it is being
-worked. She keeps her own copies separately and the two will be joined later.
+worked. Separate copies are kept and the two will be joined later.
 
     PYTHONPATH=src python scripts/build-scrape-targets.py
 """

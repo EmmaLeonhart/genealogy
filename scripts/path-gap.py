@@ -1,6 +1,6 @@
 """Show one path's remaining gap and its midpoint, for seeding the next export.
 
-The workhorse of the closing campaign. Emma's procedure per qualifying path is
+The workhorse of the closing campaign. The procedure per qualifying path is
 endpoint, then midpoint of what remains, then page-saving; this prints what is still
 missing and names the midpoint so the next seed can be chosen without re-deriving it.
 

@@ -3,8 +3,8 @@
 **This is not a Geni export and must never be mistaken for one.** It carries no
 `RFN geni:` lines and lives outside `exports/`, so the corpus tests
 (`tests/test_gedcom_real_exports.py`, which asserts the four Geni xref prefixes)
-never see it. It is source-derived material for Emma to open in a tree editor and
-enter into Geni by hand.
+never see it. It is source-derived material to open in a tree editor and enter into
+Geni by hand.
 
 Everything here comes from `reports/samaritan-priesthood.md` and
 `reports/samaritan-families.md`, which are transcriptions of:
