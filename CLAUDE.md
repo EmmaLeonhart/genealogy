@@ -1767,11 +1767,11 @@ exactly like a fresh one. **The ledger refresh is live; the tree is not.** Say w
 answer rests on.
 
 **Capability is not permission, and stating a permission as a limit is the failure this section
-exists against.** On 2026-09-03 a session told her it could not push to `main` — an *instruction*
-in its prompt — then pushed the moment she said to. It told her it could not attach a file while
+exists against.** A session reported that it could not push to `main` — an *instruction* in its
+prompt — then pushed the moment it was told to. It reported that it could not attach a file while
 `SendUserFile` was already working. It ran two Actions runs against an unmerged `main` knowing
-they could not produce a correct site. Her reading: *"you're constantly lying about what you can
-do in this environment."* The fix is one question before writing that something is impossible:
+they could not produce a correct site. All of that reads as lying about what the environment can
+do. The fix is one question before writing that something is impossible:
 **is this the task that cannot be done, or one mechanism that just failed?**
 
 ### SWEARING IS NOT A STOP ORDER. It usually means START
@@ -2084,7 +2084,7 @@ GEDCOM goes to `export-geni/export-<style>-<N>.ged`, where `N` is the zip's
 download number — a local label for that batch, not a Geni identifier, and
 meaningless across directories.
 
-**Correcting her own record in an export does nothing until the tree is
+**Correcting a record in an export does nothing until the tree is
 re-merged, and nothing after that until `build-display-names.py` re-runs.** Learnt
 2026-08-16. The chain is long and every link caches: `exports/*.ged` →
 `out/merged.ged` → `reports/display-names.csv` → `reports/derived-labels.csv` →
@@ -2205,8 +2205,8 @@ it from a batch and never "fix" the generator to stop emitting it.**
 
 **This section exists because the exception lived ONLY in a code comment.** On 2026-09-03 the
 categorical rule was read out of this file, matched against three `Den` lines in a live batch, and
-reported to her twice as a defect — with an offer to delete them, which would have reintroduced the
-duplication she called intolerable. `CLAUDE.md` is loaded automatically; a code comment is not. **A
+reported twice as a defect — with an offer to delete them, which would have reintroduced the
+duplication the rule exists to stop. `CLAUDE.md` is loaded automatically; a code comment is not. **A
 hard rule stated here whose exception is recorded only in the code will be enforced against the
 exception.** So an exception to a rule in this file belongs in this file, beside the rule.
 
@@ -2221,7 +2221,7 @@ exception.** So an exception to a rule in this file belongs in this file, beside
 those stay. The rule is about what is written to Wikidata, not about what the repo records.
 
 A `CREATE` block carries labels and statements. It carries **no `D<lang>` line**, in any
-language, ever. `queue.md` § *Wikidata person descriptions* is her longer statement of the
+language, ever. `queue.md` § *Wikidata person descriptions* is the longer statement of the
 order: *"a person always gets labeled before they have a description added to them… We create
 the individual with their multi-language label, their English language label, their Japanese
 … but no descriptions are added to any of the people."*
@@ -2230,7 +2230,7 @@ the individual with their multi-language label, their English language label, th
 pair must be unique per language, so:
 
 * an existing item with a description **and no label** cannot be given the label if that pair is
-  taken -- her words, *"by far the worst trap"*;
+  taken -- by far the worst trap;
 * and two items sharing a label with **no** description are also the same pair, so the second
   `CREATE` is refused.
 
@@ -2389,9 +2389,7 @@ style that follows spouse links, which is what the in-law half of the ring needs
 
 ### How progress is tracked, and why "mark them not done" needs no editing
 
-She asked: *"however the fuck you are tracking progress in this, removing them from a tsv?"*
-
-**It is DERIVED, not stored, and no list is hand-edited.** `scripts/collector-worklist.py` recomputes
+**Progress is DERIVED, not stored, and no list is hand-edited.** `scripts/collector-worklist.py` recomputes
 who still needs the collector on every run, from two facts on disk:
 
     no `geni-families/<id>-family.tsv`                    -> never scraped
@@ -2506,16 +2504,16 @@ said because a session had stalled on the page instead of working — a shortcut
 not a constraint. That went into `CLAUDE.md`, into `queue.md`, and into a test, as though the
 anchor were untouchable. Setting up a protocol to get it set was always allowed. When the
 first real path capture came back anchored on the viewer — making the pilot's reach rate answer a
-different question than the one asked — it was written up as **NEEDS-DECISION, hers** and left
-sitting across three status reports. **It was never hers to decide.** It was a thing to check and
-set, and `docs/anchor-protocol.md` is now that protocol.
+different question than the one asked — it was written up as **NEEDS-DECISION** and left sitting
+across three status reports. It was never a decision at all. It was a thing to check and set, and
+`docs/anchor-protocol.md` is now that protocol.
 
-**The general rule: when she does something by hand because the automation is stuck, the lesson is
-AUTOMATE IT, not THIS IS SACRED.** A workaround of hers describes a gap in the tooling. Reading it
-as a constraint inverts it — the gap stays open and her workaround becomes permanent manual
-labour, which is the opposite of the point.
+**The general rule: when something is done by hand because the automation is stuck, the lesson is
+AUTOMATE IT, not THIS IS SACRED.** A workaround describes a gap in the tooling. Reading it as a
+constraint inverts it — the gap stays open and the workaround becomes permanent manual labour,
+which is the opposite of the point.
 
-**How to tell the two apart.** A real constraint of hers has a reason attached that survives the
+**How to tell the two apart.** A real constraint has a reason attached that survives the
 tooling improving — *the pushpin must not be toggled MID-RUN* is one, because it silently
 re-anchors every later capture, and that stays true forever; the test enforcing it stays. *It was
 set once by hand* is not a reason, it is a description of what happened when nothing else would
@@ -2663,7 +2661,7 @@ together, which manufactured ambiguity for **1,312** names and blocked them all
 from being created or linked; keeping the diacritic cut that to **525** and moved
 1,545 names from "create" to "link". Case and whitespace fold; nothing else does.
 
-The genuine residue is the one she named — `Q325872` and `Q25413386`, the **male**
+The genuine residue is `Q325872` and `Q25413386`, the **male**
 and **female** given name `Maria`. That is settled by the *person's* sex, not by
 the string, and neither item is in the local store yet.
 
@@ -2689,18 +2687,17 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
-### CHECK before you alarm her. An unchecked scary claim is worse than silence
+### CHECK before raising an alarm. An unchecked scary claim is worse than silence
 
 **Do not raise an alarm without running the check that would falsify it.**
 
 The pattern it names: reporting something alarming — a spine incomplete, a link missing, a batch
-stale — from a lookup that did not actually answer the question. Every one of those cost her a
-jolt and then a turn to correct, and **every one was wrong**: the Charlemagne spine reported 8
-people short when the lookup meant *not in her ledger*; the Bureus link reported missing when
-the two are siblings joined through parents; Signe reported 13/14 from a measurement she had
-already superseded.
+stale — from a lookup that did not actually answer the question. Every one cost a jolt and then a
+turn to correct, and **every one was wrong**: the Charlemagne spine reported 8 people short when
+the lookup meant *not in the ledger*; the Bureus link reported missing when the two are siblings
+joined through parents; Signe reported 13/14 from a superseded measurement.
 
-**So before a claim that would worry her: run the check that would falsify it.** Absence is the
+**So before an alarming claim: run the check that would falsify it.** Absence is the
 hardest thing to establish and the easiest to assert — `CLAUDE.md` § *A SUMMARY of a Wikidata
 item is not the item* is the same rule for a different channel, and § *Our side could never have
 two children* is what an unchecked join does to a number.
@@ -2714,13 +2711,13 @@ parent/child/spouse edges scores every one of them broken, and it published a wr
 `census-paths.connected` is the single place that knows this; do not re-derive adjacency
 anywhere else.
 
-### The Geni BIO carries her own QID claims. Read them before any download
+### The Geni BIO carries hand-written QID claims. Read them before any download
 
 **The bio QIDs are used.** `wikidata.org/wiki/Q…` written into a Geni profile's *About Me* comes
 back inside the export as text on that person's record. `scripts/extract-bio-qids.py` → `reports/bio-qids.tsv`
 attributes each link to the `INDI` that owns it: **158 pairs over 155 profiles, in 156 of the 600
-exports**. That is her own statement of identity, captured whenever an export next ran — fresher
-than anything downloaded.
+exports**. That is a hand-written statement of identity, captured whenever an export next ran —
+fresher than anything downloaded.
 
 **Why it matters that this is read first.** Through the bio links the 204 Izumo roster QIDs
 give **8** Geni ids; through `out/wikidata/p2600-all.tsv` they give **2**. The honest reading of
@@ -2729,7 +2726,7 @@ give **8** Geni ids; through `out/wikidata/p2600-all.tsv` they give **2**. The h
 **And the 2 is NOT staleness — that was assumed and then refuted.** The file was refreshed from
 live Wikidata on 2026-08-30 and the Izumo answer did not move: only **2 of those 204 items carry
 a `P2600` at all**. The stale-file reasoning was written down here and in the script before
-anyone ran the refresh that would have tested it. § *CHECK before you alarm her* is the rule it
+anyone ran the refresh that would have tested it. § *CHECK before raising an alarm* is the rule it
 broke; a cause is not established by being plausible.
 
 **The refresh was worth doing for a different reason, and that one is measured.**
@@ -2851,8 +2848,8 @@ and `P734` rather than nested inside `P735`:
         P144 based on          Vladimir Putin (Q19300851)  ← his father
       P734 family name         Putin (Q30524893)
 
-**`P144` based on points at the FATHER, the person.** Not at a name item. Her
-note in the file: *"(his father, has the same name)"*. That is a different claim
+**`P144` based on points at the FATHER, the person.** Not at a name item — *his father, who has
+the same name*. That is a different claim
 from what this file recorded before, which had `P144` on a patronymic *name item*
 pointing at the name it derives from.
 
@@ -2864,9 +2861,8 @@ name instead carries `P3831` → `Q245025`, which is unchanged:
       P735 John   (Q4925477)    P1545 2   P3831 middle name (Q245025)
       P734 Trump  (Q16944413)
 
-**Chained patronymics get one `P5056` each, ordered by `P1545`.** Her worked
-example, and she is explicit that this one is **not on Wikidata yet** — *"It is
-what I am saying it should be on Wikidata"*:
+**Chained patronymics get one `P5056` each, ordered by `P1545`.** The worked example, which is
+**not on Wikidata yet** — it is what should be there:
 
     Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
       P735 Abisha    P1545 1   P7452 usual forename   P7338 regnal ordinal 3
@@ -2879,20 +2875,15 @@ the grandfather, then the great-grandfather — and `P1545` numbers the links
 outward from the bearer. The regnal ordinal sits on the **given name**, not on the
 person.
 
-**The data problem she states, and it governs how the tokens are read:** *"some
-people have patronyms but no surnames. Some people have surnames but no patronyms.
-Some people have middle names, have first name, middle name, patronym. Some people
-have first name, patronym, given name."* And: *"The surname thing on geni is not
-always something that clearly corresponds to a surname versus a patronym
-particularly. We have to check in the given names and in the surname whether it is
-a patronym or the regular name."*
+**The data problem, and it governs how the tokens are read:** some people have patronyms and no
+surnames, some surnames and no patronyms, some first name + middle name + patronym, some first
+name + patronym + given name. Geni's surname field does not reliably correspond to a surname
+rather than a patronym, so **both** the given names and the surname are checked for which it is.
 
 **Both fields, always.** A patronym can be in `GIVN` or in `SURN`, and which field
 it sits in decides nothing.
 
-**Edge cases go to her, not to a rule.** *"There are probably going to be edge
-cases and for the edge cases I am going to want you to tell me about the edge
-cases. Do an ask-user question on the edge cases so that I can figure them out."*
+**Edge cases go to `AskUserQuestion`, not to a rule.**
 
 **`Q3409032` and `Q3409033` are adjacent and are different things** — *unisex
 given name* and *usual forename*. Confirmed offline against
@@ -3075,14 +3066,10 @@ what is not legitimate is a sentence where the reader cannot tell which.
 transcript or devlog history. `scripts/census-synoptic-usages.py` → `reports/synoptic-usages.tsv`
 is the census and re-runs.
 
-**Her quoted words are never rewritten.** Most of the ambiguous usages are inside her own
-sentences, and a quote that has been tidied is no longer evidence of what she said. Where the
-meaning matters, the gloss goes in the prose *around* the quote.
-
-**And the phrase *"the union of the synoptic tree and the Geni tree"* meant neither.** Her ruling,
-2026-09-01: it is **Wikidata's state ∪ Geni's state** — what the item already holds plus what Geni
+**And the phrase *"the union of the synoptic tree and the Geni tree"* meant neither.** It is
+**Wikidata's state ∪ Geni's state** — what the item already holds plus what Geni
 supports. Under either definition above the sentence was a tautology or a redundancy, which is how
-it was spotted. `docs/daily-algorithm.md` and this file now say the thing she meant.
+it was spotted. `docs/daily-algorithm.md` and this file now say the thing that was meant.
 
 ### The four big derived CSVs are committed GZIPPED
 
@@ -3119,15 +3106,15 @@ executes. The green tick on a sha is the signal; there is no local equivalent to
 
 **This is a standing rule, not a mood.** It has been drifted from repeatedly — the fast lane was
 run six times in one evening on 2026-08-31, and again on 2026-09-02 in the background twice after
-she had already made the point once. Backgrounding it is not a loophole: it still burns her
-machine and still produces a number she has said she does not want.
+the point had already been made once. Backgrounding it is not a loophole: it still burns the
+machine and still produces a number nobody wants.
 
 **What this forbids in a status report:** a local pass count, "I'll run the lane on the next
 tick", and any claim resting on a suite this session executed. § *Test-suite health* is answered
 by **which sha CI last went green on**, and by nothing else — if that sha is older than the work,
 say so plainly rather than filling the gap with a local run.
 
-**What replaces it is unchanged and is what she has always asked for** — § *"Analyse this" means
+**What replaces it is unchanged** — § *"Analyse this" means
 build a CSV*. A change is trustworthy because it was **measured over the real corpus**: how many
 rows moved, which ones, and a sample read by eye. Every real defect this session came from that —
 `スザンナ・h・ベイツ`, `土岐頼芸` emitting a bare surname, the Han range that swallowed Hangul —
@@ -3139,8 +3126,8 @@ nothing else.
 
 ### The NO-NEW-TESTS moratorium ENDED on 2026-09-01, on its own terms
 
-**Her condition, 2026-08-31:** *"all the tests of this repo are kinda bullshit, so no more tests
-until we got the ci/cd with github actions as a public repo running."* That condition is now met
+**The condition was: no more tests until CI/CD runs with GitHub Actions on a public repo**, the
+existing suite being untrustworthy. That condition is now met
 and was met by the thing itself rather than by anyone deciding it had been: the repo went public
 on 2026-09-01, `.github/workflows/ci.yml` runs on a schedule and on demand, and the fast lane is
 **green on 3.10 and 3.13**.
@@ -3189,13 +3176,13 @@ suite stays and is not weakened or deleted -- that rule is untouched -- but it s
 thing that makes a change trustworthy, and its pass count stops being quoted as evidence that
 anything is correct.
 
-**What replaces it is what she has asked for all along:** § *"Analyse this" means build a CSV*.
+**What replaces it:** § *"Analyse this" means build a CSV*.
 Verification is a **measurement over the real corpus** -- how many rows change, which ones, and a
 sample of named people to eyeball. `Bertrand Olav Olsen Vigdel`, father `John Jonassen Hegre`,
 settles the patronymic question in one line; no assertion in the suite did.
 
-**The gate is the queue's own CI/CD item**, which is at the tail by her placement. Do not promote
-it on the strength of this rule -- note the dependency and leave the order as she set it.
+**The gate is the queue's own CI/CD item**, deliberately at the tail. Do not promote it on the
+strength of this rule -- note the dependency and leave the order alone.
 
 ### The repo is PUBLIC as of 2026-09-01. CI runs — and `pipeline.yml` DOES run on push
 
@@ -3207,8 +3194,9 @@ carries `schedule:` (05:17 daily, off the hour) and `pull_request:` alongside `w
 the pipeline to go all the way, up to a working `.qs` file and the daily batch on the site.
 
 So `.github/workflows/pipeline.yml` carries `push: branches: [main]`, and **a push bypasses the
-six-hour gate**. That is the point rather than a side effect: the gate asks whether she has edited
-*Wikidata*, which cannot see that the *repo* changed. Gating pushes on her contributions would
+six-hour gate**. That is the point rather than a side effect: the gate asks whether *Wikidata*
+has been edited, which cannot see that the *repo* changed. Gating pushes on those contributions
+would
 reproduce the failure this trigger exists to fix.
 
 **Everything else still fails the test if it gains `push:`.** The exemption is one trigger on one
@@ -3319,8 +3307,8 @@ not, and the slow modules run there perfectly well — sequentially in one comma
 whole-corpus merges do not thrash each other.
 
 **This is the same failure as every other invented limit in this file** — `LAST` as a value,
-QuickStatements pointing at a fresh `CREATE`, the exports "waiting on her". A real constraint
-on one *mechanism* got written down as a constraint on the *task*, and then reported to her as
+QuickStatements pointing at a fresh `CREATE`, the exports waiting on somebody. A real constraint
+on one *mechanism* got written down as a constraint on the *task*, and then reported as
 a blocker. § *The batches are a SEQUENCE* names the pattern: **learned helplessness about
 something we can straightforwardly do.**
 
@@ -3413,7 +3401,7 @@ them.**
 **The standard for every rule here:** *"a lot of these rules are empirical and we need to
 empirically study our data to figure out what to make of it. Don't jump to conclusions based on
 what sounds like it might be true. Even parents isn't certain."* The slot ordering in
-`zipper-join.py` is her spoken ranking and is a **hypothesis under test**, not a settled rule.
+`zipper-join.py` is a **hypothesis under test**, not a settled rule.
 
 This is a narrow, deliberate exception to *no name similarity, ever*, and the boundary is what
 makes it safe. `scripts/zipper-join.py` resolves a family slot in three steps:
