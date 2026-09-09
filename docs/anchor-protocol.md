@@ -72,6 +72,30 @@ The ratio is about **1.021** here and it is a property of the display rather tha
 it must not be hard-coded. **Take a screenshot and read the pin off it**, or click by element
 `ref` from `find`/`read_page`. Do not compute a click target from `getBoundingClientRect`.
 
+### It moved TWICE on 2026-09-09, and the second time onto a profile we had just created
+
+**First to Lǐ Shìmín 李世民, Emperor Taizong of Tang**, found when Charlemagne's own page read
+*"Charlemagne is Lǐ Shìmín's 8th great nephew's wife's mother's partner's wife's fiancé's 6th
+great grandfather."*
+
+**Then, hours later, onto `NN`** — one of the placeholder ancestors created that afternoon.
+Anders Danielsson Falk's page read *"NN is connected to Anders Danielsson Falk"* and
+Charlemagne's read *"NN is connected to Charlemagne"*.
+
+**⛔ THE LIKELY CAUSE IS OUR OWN WORK, which makes this a per-run hazard rather than bad luck.**
+Between the two resets the session created two `NN` placeholders and ran four exports, which
+means repeatedly loading those profiles and their export pages. The anchor followed. So a run
+that CREATES people or exports from them is exactly the run whose later captures are most likely
+to be anchored on the wrong person — and the export half of the collector's own loop does both.
+
+**It cost nothing, and that is the point of the per-capture check.** `anchorOk` is a single
+regex on the banner and it caught the state before a single row was written. Nothing was filed
+under the wrong question either time.
+
+**Both resets needed TWO clicks**, because the pin toggles against the viewer rather than being a
+three-way switch: `NN` → viewer → Charlemagne, with the banner read in between so neither click
+is blind.
+
 ## What the collector may and may not do
 
 `tests/test_geni_extension.py::test_the_pushpin_is_never_toggled` **stays**, and it is not

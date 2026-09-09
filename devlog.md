@@ -33557,3 +33557,30 @@ anywhere else.
 
 That also explains the intermittency recorded before, where a second click sometimes worked: a
 click landing is chance, and the endpoint is not.
+
+## 2026-09-09 — the anchor moved onto a profile we created, and the check caught it free
+
+Work-loop tick. Anders Danielsson Falk `375738756460004676` came up and his page read **"NN is
+connected to Anders Danielsson Falk"** — the relationship pushpin had moved onto one of the `NN`
+placeholders created this afternoon. Charlemagne's own page agreed: *"NN is connected to
+Charlemagne."*
+
+**Second move today**, after Lǐ Shìmín this morning. Reset by the protocol — two clicks, `NN` →
+viewer → Charlemagne, banner read between them so neither is blind — and verified on the target,
+which then read *"Charlemagne is connected to Anders Danielsson Falk."*
+
+**⛔ The cause is probably our own work, which upgrades this from bad luck to a per-run hazard.**
+Between the two resets this session created two `NN` placeholders and ran four exports — loading
+those profiles and their export pages repeatedly. The anchor followed. A run that creates people
+or exports from them is therefore exactly the run whose later captures are most at risk, and the
+collector's own loop does both.
+
+**Nothing was filed wrong either time.** `anchorOk` is one regex on the banner, checked before
+dispatch, and it caught the state before a row was written. That is the whole argument for the
+check being per-capture rather than per-session, made twice in one day.
+
+**And the pending-path pattern is now 2 of the last 3 never-scraped targets** — Anders and Hans
+Berthelsen both came back *"Path search in progress. If we find a path, we will notify you."*
+Geni queues the search and answers asynchronously, so the `individual` job's synchronous wait
+cannot succeed on a first visit. Both stay queued on their own, because the worklist is derived
+from files and neither has a `geni-families/<id>-family.tsv`.
