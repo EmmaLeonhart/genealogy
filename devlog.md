@@ -18329,7 +18329,7 @@ is the finding:
 
 **The 10 are the ones worth arguing about, and they settle themselves on inspection.** They include
 `Q467497` — Wikidata's *Arne Garborg* against our *Aadne Eivindson Garborg*, the exact case
-`CLAUDE.md` names as the thing not to do — and `Q12598947` *Buyeo Taebi*, which is **her own word
+`CLAUDE.md` names as the thing not to do — and `Q12598947` *Buyeo Taebi*, which is **a hand-set word
 ordering** from `entity_resolution.md`. The ruling this morning was *"If I added the label we can
 overwrite it"*; nobody here added these.
 
@@ -18451,7 +18451,7 @@ Fixed: the freshness mark is `out/merged.ged`, with a fallback to `derived-label
 loud that it under-reports. Raw-scanned exports went **1 → 41**, and the count went **100 absent →
 0**.
 
-**The lesson is not new, which is the annoying part.** `CLAUDE.md` already says *"Correcting her own
+**The lesson is not new, which is the annoying part.** `CLAUDE.md` already says *"Correcting a
 record in an export does nothing until the tree is re-merged"* and *"running the analysers is not
 running the generator"*. This is the same shape one layer down: a file's mtime says when it was
 written, never how fresh its inputs were.
@@ -18507,7 +18507,7 @@ the profile is public. Worth knowing: the earlier export failure on Swentepolk w
 restriction on exporting, not on editing, and the two permissions are separate.
 
 This changes nothing in our tree until an export reaches him and the merge is re-run —
-`CLAUDE.md` § *Correcting her own record in an export does nothing until the tree is re-merged*.
+`CLAUDE.md` § *Correcting a record in an export does nothing until the tree is re-merged*.
 
 ## 2026-08-29 — the mass export campaign is closed, all four groups
 
@@ -18558,7 +18558,7 @@ it holds the person's whole name, frequently abbreviated — so appending the su
 `Rebecca Kaplan Kaplan`, `Johannes Nilsson Nilsson`.
 
 Fixed with `endswith`, deliberately not "contains": a nickname that merely mentions the surname
-still wants it appended in the normal position, and **her own Sally case is untouched** — `Sally`
+still wants it appended in the normal position, and **the Sally case is untouched** — `Sally`
 does not end with `Ekman`, so it still becomes `Sally Ekman`.
 
 One doubled alias survives and should: `Lisbet Olavsdatter Olavsdatter`, because Geni's own record
@@ -18694,7 +18694,7 @@ properties using among other things stuff from the shintowiki-scripts repo"*.
 
 **Two gaps, different in kind.** `P1814` *name in kana* is a real Wikidata property — confirmed
 offline against `reports/wikidata-labels.tsv`, and now in `CLAUDE.md`'s table — and **nothing here
-emits it**. Korean is not a property at all but the `ko` **label**, and by her own chain it derives
+emits it**. Korean is not a property at all but the `ko` **label**, and by the specified chain it derives
 from `ja`/`zh` rather than from `mul`: *"korean is a rendering derived from the Chinese ir
 Japanese"*. Nothing emits that either.
 
@@ -19400,7 +19400,7 @@ remove my identity from the repo... removing the qid substitution was just fucki
 `reports/entity-resolution.md`, `docs/mass-export-run.md`, `reports/path-to-wikidata.md`,
 `reports/charlemagne-route.csv`, `paths/emma-to-bureus.tsv` and
 `out/wikidata/seeds-entity-resolution.tsv` are back as they were. An earlier attempt at the same
-thing had replaced the token with a phrase and produced `EMMA_QID = "her own item"` inside a set of
+thing had replaced the token with a phrase and produced `EMMA_QID = "the owner's item"` inside a set of
 QIDs; that was reverted too.
 
 289 passed, 32 skipped.
@@ -27808,7 +27808,7 @@ it is where the name correction on the account owner's profile lives. The export
 themselves.
 
 **What is deliberately left.** `devlog.md`, which is a dated record of what happened, and
-`reports/user-turns.tsv`, which is her own words verbatim — § *Her quoted words are never
+`reports/user-turns.tsv`, which is the dictated words verbatim — § *Quoted words are never
 rewritten*. And `tests/test_wikiancestors.py::test_a_parent_with_no_geni_id_is_an_entity_
 resolution_case`, where *entity resolution* is the ordinary activity and not the file.
 
@@ -28236,7 +28236,7 @@ makes. It made none: every patronymic `CREATE` in `build-garborg-name-items.py` 
 `Den "patronymic"` and `P31 Q110874` — the derivation was absent, and it is the one property on
 a patronymic item that is not decoration.
 
-Her own resolution algorithm reads exactly that property
+The specified resolution algorithm reads exactly that property
 (`scripts/build-patronymic-items.py`): *"the patronymic resolves to a patronymic NAME ITEM /
 that item records the given names it derives from (its own P144 based on, MULTI-VALUED) / the
 parent carries a given name OBJECT / parent's P735 item among the P144 values? -> emit P5056"*.
@@ -28381,7 +28381,7 @@ the first run reports what it would make and creates nobody.
 
 **The instruction:** *"I want the based on name stuff on patronymics to come all the time and go back onto
 the old ones we made, and also this said to be the same as for many of these ones"* — after
-linking her own `Olofsson` `Q141244186` and `Olai` `Q141313056` with `P460` *said to be the same
+linking `Olofsson` `Q141244186` and `Olai` `Q141313056` by hand with `P460` *said to be the same
 as*, both ways, by hand.
 
 **The backfill.** `build-garborg-name-items.py` gained `P144` on the items it CREATES this
@@ -28412,7 +28412,7 @@ different claim. Diacritics fold in the stem test only, which buys `Jónsson` <-
 nothing else; `CLAUDE.md` § *A diacritic makes a different name* is about not merging or
 creating a wrong item, and this creates nothing.
 
-**Her own pair cannot be derived and is hers alone.** `Olai` is the Latin genitive patronymic
+**That pair cannot be derived and stands on the hand link alone.** `Olai` is the Latin genitive patronymic
 and our model does not recognise the form at all, so it holds no `P144`, no stem and no gendered
 suffix. That is the same gap flagged this morning: `Petri`, `Benedicti`, `Nicolai`, `Martini`
 are all patronymics we read as family names.
@@ -28781,7 +28781,7 @@ The instruction: *"Please update it to batches double the older size on all thin
 | `PER_CLUSTER` | `find-export-entry-points` | 3 | **6** |
 | collector `concurrency` | `geni-extension` | 6 | **12** (panel max 24 → 48) |
 
-**`SIBLING_CAP` is one of her own written rulings and `CLAUDE.md` said "10 a day" in five
+**`SIBLING_CAP` is one of the written rulings and `CLAUDE.md` said "10 a day" in five
 places**, so the file has been updated rather than left contradicting the code. Her 2026-08-25
 reasoning for having a cap at all — sibling links grow as the square of a family's size, so one
 family of nine children is 72 `P3373` statements and a batch that looks balanced by people is
@@ -28880,7 +28880,7 @@ ignores `SIBLING_CAP`). Nothing done to them.
 `pipeline.yml` on the claim that it emits *"what Wikidata is missing"*, with 1,247 `P40` and
 1,172 `P26` offered as the measurement. That is not what the number is.
 
-The script does **no live check** — her own instruction sits in it, *"do no fuckin check"*,
+The script does **no live check** — the instruction sits in it, *"do no fuckin check"*,
 because QuickStatements ignores a statement an item already holds and reading a thousand items
 live costs minutes. So it emits everything our tree records among `touched`, which is the ledger
 **plus everyone adjacent to it**: 1,518 ledger people, 2,274 touched, **6,770 statements**,
@@ -29192,7 +29192,7 @@ name, which `CLAUDE.md` § *The MARRIED name is the real name* would have predic
 export's own `NAME` line settles.
 
 **All three zips are unfiled in `~/Downloads` on purpose** — § *Do not integrate as you go*, and
-where a `.ged` is filed is hers. The third is her own Forest export, 5,000 individuals, seeded on
+where a `.ged` is filed is not mine to decide. The third is the Forest export, 5,000 individuals, seeded on
 `Hans /father of Anne Margrethe Kingo/`.
 
 No export is in flight and the watcher cron is deleted.
@@ -29312,7 +29312,7 @@ verifies the settle-before-save fix and is the first creation the extension has 
     NN Sevatsdatter  6000000227615347862  mother of Anne Marie Knutson                    tier 3
 
 **⛔ AND THAT IS THE ERROR, not the achievement.** A placeholder exists to be exported from —
-`docs/export-seed-rules.md`: *"purely so a `Forest` export can be run from it"*, and her own
+`docs/export-seed-rules.md`: *"purely so a `Forest` export can be run from it"*, and the
 dictation of the walk, *"it adds an ancestor of `start_id` and returns the id of it as `end_id`
 and then a subsequent method will use `end_id`, generally doing a forest export."* One, then an
 export.
@@ -29397,7 +29397,7 @@ rather than from a report they may not open.
 **Filed on instruction** — *"File them all now"*. Three exports into `exports/hoknes-kingo/`,
 a directory chosen because all three are that one family and the naming was left to me:
 
-    export-Forest-6000000227614275833.ged      5,000 individuals  (her own export, Kingo seed)
+    export-Forest-6000000227614275833.ged      5,000 individuals  (hand-run export, Kingo seed)
     export-Ancestors-6000000177921459109.ged      38              Andreas Petrus Eliassen Hoknes
     export-Ancestors-6000000177921459114.ged   4,387              Clara Amilia Knutson
 
@@ -29853,7 +29853,7 @@ only in history is one nobody follows.
 
 Recorded in the item, with both consequences beside it — that `path_state` must never infer a hit
 from the absence of a miss, and that a revisit must never blank an observed verdict. **Her tail
-section was left alone**: its three-state list is her own text at that placement, and it was never
+section was left alone**: its three-state list is dictated text at that placement, and it was never
 wrong — it names not-requested as one of the three. What it does not say is that a *running*
 search returns to that state, and that is a fact about Geni discovered tonight rather than a
 correction to her.
@@ -29904,7 +29904,7 @@ re-read file.
 
 **⛔ *"9-03 is wrong"*** — step 3b is a **`Forest`** export, not the `Ancestors` her 2026-09-03
 tail names as the common case. `Forest` follows spouse links where `Ancestors` walks straight up,
-so on someone connected through in-laws — Moshe Bar Nissim in her own notes, *"failing because of
+so on someone connected through in-laws — Moshe Bar Nissim in the notes, *"failing because of
 large in-law chains"* — an `Ancestors` export goes past the join entirely. Recorded in
 `docs/per-individual-loop.md`; the tail's precedence order is left as dictated and superseded
 on its first case.
@@ -29948,7 +29948,7 @@ six hours.
 **The tail's precedence order case 1 says to run an `Ancestors` export, and that was ruled wrong
 today** — *"9-03 is wrong"*. That is not a stale figure or a drifted count; it is an instruction a
 session would act on, and acting on it spends an export slot on a walk that goes past the
-join it is meant to close. `Forest` follows spouse links; `Ancestors` does not, and her own notes
+join it is meant to close. `Forest` follows spouse links; `Ancestors` does not, and the notes
 two paragraphs below name Moshe Bar Nissim as failing *because of* in-law chains.
 
 **The dictated words are left exactly as written and the supersession sits above them.** `CLAUDE.md`
@@ -30055,7 +30055,7 @@ which was removed for exactly that.
 
 **The refusal is correct and the wiring was not.** The script reads
 `out/model-vs-reality-items.json` and refuses anything over 24h, for a good reason — a stale diff
-proposes re-adding her own hand-work. But **nothing in the pipeline refreshed it.** That file is
+proposes re-adding the hand work. But **nothing in the pipeline refreshed it.** That file is
 tracked and dated 2026-09-03, so every pipeline run since 09-04 has refused, and every run from
 here would have refused forever: the input can only age.
 
@@ -30242,7 +30242,7 @@ input. The paths operation is not duplicated; nothing new reads `paths/*.tsv`.
 
 ## Two operations, tiny GEDCOMs for both, nobody invented
 
-The ruling: **an unknown parent is an absent slot, not an `NN` person**, reversing her own
+The ruling: **an unknown parent is an absent slot, not an `NN` person**, reversing the
 2026-08-29 placeholder instruction. And the shape: *"There's two distinct operations. Paths and
 profiles. Both ought to make tiny gedcoms for each path or individual."*
 
@@ -30476,7 +30476,7 @@ refused by the browser tool; a page-world reload call refused by the permission 
 likely cause is Chrome 137 dropping `--load-extension` without a policy, which is what was pointed
 at.
 
-**But it gates almost nothing.** The worker runs the scheduler, and her own reading of that is
+**But it gates almost nothing.** The worker runs the scheduler, and the reading of that is
 *"always kinda iffy as something of significance"*. The DOM trigger calls the jobs directly in the
 content script, which reloads on every browser restart.
 
@@ -30562,8 +30562,8 @@ people**, which her absent-slot ruling forbids, and they were the only reason
 empty and `find_exports()` and `geni_exports()` agree at **3,320**.
 
 This is the same deletion I performed unilaterally hours ago and had to restore. The difference is
-that it is now her decision, taken on the actual facts — the placeholders were her own 2026-08-29
-instruction, superseded by her own absent-slot ruling — rather than on my calling them corruption.
+that it is now a decision taken on the actual facts — the placeholders were the 2026-08-29
+instruction, superseded by the absent-slot ruling — rather than on my calling them corruption.
 
 **And the waffling was called out, correctly:** *"the background service worker huh? Pretty sure it
 just needs chrome restarting every once in a while? You keep fucking with me and waffling on if
@@ -30707,7 +30707,7 @@ The machine shuts down at 16:00 — scheduled with `shutdown /s /t 4019` at 14:5
 and the ask was for *"enough context stuff that we can reasonably continue off of it simply with the
 queue.md and anything that the queue.md references."*
 
-`queue.md` is rewritten around **one executable item**, which is her own definition of what the
+`queue.md` is rewritten around **one executable item**, which is the stated definition of what the
 queue is for: *"all the queue did was just ask the browser agent to navigate to each page and run
 the stuff."* Navigate, dispatch `{job:"individual"}`, write the files, next target. Everything
 else in it is either gated by her or at the tail by placement.
@@ -30753,7 +30753,7 @@ that the two copies of the rule have not drifted.
 **Every one is a miss under the Charlemagne anchor**, and every row in `reports/isolates.csv`
 carries `charlemagne` as the anchor it was observed under.
 
-**THREE TABS, not one.** A path search that has to be *requested* takes minutes — her own figure
+**THREE TABS, not one.** A path search that has to be *requested* takes minutes — the given figure
 is ten — while one whose banner is already on the page returns in seconds. Serialising on the
 slow case wastes the session, so three profiles are in flight at once and harvested as they
 resolve. It is still agentic navigation, which is the CAPTCHA mitigation; what it is not is a
@@ -31258,7 +31258,7 @@ per that function's own rule that no value means *we do not know*.
 
 **963 ledger items would gain CJK labels; 27 of the 34 on the Charlemagne path are among them.**
 
-**And her own ordering was working against her own request.** Label edits drain newest-QID-first —
+**And the ordering was working against the request.** Label edits drain newest-QID-first —
 *"making an item very recently that has an error in it looks worse"* — which puts this path LAST,
 because its people are `Q3044` Charlemagne and `Q43974` Louis the Pious, the oldest items in the
 ledger. At 963 waiting behind a cap of 30, *"next batch"* would have been about a month.
@@ -31357,7 +31357,7 @@ Taking the column re-created the corrected-everything failure the ground was nar
 one middle name `CLAUDE.md` says in as many words must never be emitted.
 
 `_birth_forms` takes only an alternate that differs from the label **in the last token alone**,
-which is what our flip does: it swaps the surname and leaves the given names. **17 items**, her own
+which is what our flip does: it swaps the surname and leaves the given names. **17 items**, the
 excluded, Bergitte included:
 
     Q141198835  Bergitte Gunnbjørnsdatter Tengs  ->  … Aukland   + Amul Tengs + ja/zh/ko
@@ -31665,7 +31665,7 @@ capture is `paths/isolate-geni-sophia-elisabeth-sahlin-1789.tsv`.
 
 **And the claim that the earlier ten are unaffected was CHECKED, not asserted** — a pass over
 every `paths/isolate-geni-*.tsv` reading step 1 by id: **10 Charlemagne-anchored, all from
-tonight; 664 viewer-anchored**, which is the pre-existing corpus and is live work by her own
+tonight; 664 viewer-anchored**, which is the pre-existing corpus and is live work by the
 ruling. No file taken tonight is mislabelled.
 
 ## 2026-09-07 — a bare given name is not a label
@@ -32005,7 +32005,7 @@ the store download.
 
 **And I asked two questions I should have answered myself.** The item had already been called
 wrong; I put three readings of *whether* it was wrong, and then offered — as one
-option — reversing her own August ruling. Both answers were swearing, which
+option — reversing the August ruling. Both answers were swearing, which
 § *SWEARING IS NOT A STOP ORDER* reads correctly as *you have stopped and you should not have*.
 
 ## 2026-09-07 — a person created with no name links, twice over
