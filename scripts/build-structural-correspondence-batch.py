@@ -2,10 +2,10 @@
 
 **This is the step that was missing.** `scripts/walk-structural-merge.py` has been
 writing `reports/structural-correspondence.csv` since 2026-08-15 and nothing consumed
-it. You, 2026-08-16: *"What even was the issue that you came across? The structural
+it. Emma, 2026-08-16: *"What even was the issue that you came across? The structural
 cases you were going to do and then you didn't do."*
 
-**Your order is fixed and this is step one of it**, 2026-08-15: *"The Jenny ID needs to
+**Her order is fixed and this is step one of it**, 2026-08-15: *"The Jenny ID needs to
 be present before any properties derived from Jenny can be taken from it, or before
 any relationships can be added."* So the only thing emitted here is the identifier.
 Everything Geni-derived about these people — the parents, the dates, the sex — comes
@@ -14,7 +14,7 @@ in a later batch that declares `requires: structural_correspondence:<qid>`.
 **Where the pairing comes from, and why it is not name matching.** The walk starts
 from somebody holding *both* a Geni ID and a QID, and compares our father of that
 person against Wikidata's `P22` *father* of that item. Those are the same position in
-the same family, so they are the same person unless something contradicts it — your
+the same family, so they are the same person unless something contradicts it — Emma's
 2026-08-12 rule: *"we merge them based off of whether something is the mother on both
 sides of an individual."* The label is carried through so a human can see the pair is
 not absurd; it never chooses one. `correspondence.md`: *no name similarity, ever*.
@@ -39,7 +39,7 @@ store:
   dropped.
 
 Writes `reports/wikidata-structural-correspondence.json`. Offline; nothing is asked of
-the network. Emits nothing to Wikidata — execution begins 1 September, which is your
+the network. Emits nothing to Wikidata — execution begins 1 September, which is Emma's
 own start date and not a blocker.
 
     py scripts/build-structural-correspondence-batch.py
@@ -78,7 +78,7 @@ RETRIEVED = "P813"
 def shared_name_tokens(geni_name: str, label: str) -> int:
     """How many name tokens the two sides happen to share.
 
-    **A review aid, and nothing filters on it.** Your method is *"the structure
+    **A review aid, and nothing filters on it.** Emma's method is *"the structure
     picks the pair; the label only confirms it"* — so this exists so a reviewer can
     sort the batch and look at the pairs whose labels have nothing in common first.
     It never decides whether an edit is emitted, which is the line

@@ -2,9 +2,9 @@
 
     python scripts/census-name-scripts.py
 
-**You, 2026-08-26:** *"really I think the ideal thing was supposed to be that we do a census of
+**Emma, 2026-08-26:** *"really I think the ideal thing was supposed to be that we do a census of
 all languages in the synoptic tree (our geni stuff) and we add labels in all of them. And I don't
-think we fully did that."* You are right — nothing enumerated it.
+think we fully did that."* She is right — nothing enumerated it.
 
 ## Script, not language, and the difference is the point
 

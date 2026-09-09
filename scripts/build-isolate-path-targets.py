@@ -1,6 +1,6 @@
 """The roster for mass-exporting Geni relationship paths to disconnected Wikidata people.
 
-**your idea, 2026-09-02:** *"what if we mass exported the paths to the disconnected
+**Emma's idea, 2026-09-02:** *"what if we mass exported the paths to the disconnected
 wikidata people on geni? ... the mass export of the path lists might be feasible and help
 with getting wikidata generally connected even if we have a bunch of 'sinews' only linking
 people in."*
@@ -34,7 +34,7 @@ discriminating on step count alone scores a **100% reach rate** made of 100 iden
 one path. `CLAUDE.md` § *check the separator before believing a distribution* is the family,
 and this is the variant that returns a plausible number instead of a zero.
 
-**The working method is the PROFILE page with you anchor set**, validated the same day against
+**The working method is the PROFILE page with her anchor set**, validated the same day against
 `6000000003492005116` Arne Garborg: 34 steps, first Charlemagne, last the target, reproducing
 `paths/charlemagne-to-arne-garborg.tsv` exactly.
 
@@ -47,20 +47,20 @@ and this is the variant that returns a plausible number instead of a zero.
 So the roster carries **one url per target, not two**.
 
 **`FROM` is Charlemagne, and that governs NEW paths only.** The 663 existing paths are anchored
-on you (`6000000087535357291`, step 1 "You" on 679 saved paths) because they were saved from
-your own profile view, and they stay **live work**. You, 2026-09-03: *"a bunch of the paths are
+on Emma (`6000000087535357291`, step 1 "You" on 679 saved paths) because they were saved from
+her own profile view, and they stay **live work**. Emma, 2026-09-03: *"a bunch of the paths are
 from an individual to me, and that's 100% fine and they are to be filled in I just mean new
-ones."* Nothing here retires an you-anchored path or changes how one is filled in.
+ones."* Nothing here retires an Emma-anchored path or changes how one is filled in.
 
-**Both path types, always --- your call, 2026-09-02.** `blood` follows descent only;
+**Both path types, always --- Emma's call, 2026-09-02.** `blood` follows descent only;
 `inlaw` allows marriage steps and reaches people no blood path can. That is two *captures* per
 target and still one url: **blood against in-law is a control on the page, not a URL
 parameter** --- the profile carries a "Blood Relatives" link beside "Show short path" --- so the
 type is read off the page rather than assumed from the url, and the two captures file as
 `geni-paths/<geni id>-<kind>.html`, which is what the harvester looks for.
 
-**This is a PILOT of 100, your call the same day.** The hit rate for the general population is
-the one thing not measured: your own batches ran **34-39%** for academics filtered by
+**This is a PILOT of 100, her call the same day.** The hit rate for the general population is
+the one thing not measured: her own batches ran **34-39%** for academics filtered by
 occupation alone and **92%** for Nordic academics, so a uniform sample is what says which end
 of that range a 185k campaign sits at. The sample is uniform over the whole population rather
 than over the un-rostered part of it, so it projects to the campaign as a whole; the
@@ -90,17 +90,17 @@ REPO = Path(__file__).resolve().parent.parent
 
 csv.field_size_limit(10_000_000)
 
-# **The anchor is CHARLEMAGNE, not you --- your correction, 2026-09-03:** *"I believe
+# **The anchor is CHARLEMAGNE, not Emma --- her correction, 2026-09-03:** *"I believe
 # Charlemagne is the most central person in the Jenny graph, so it would be going through
 # Charlemagne. We pin relationships to Charlemagne, and we go to each individual."* An
-# You-anchored path measures distance from you; a Charlemagne-anchored one runs through the
+# Emma-anchored path measures distance from her; a Charlemagne-anchored one runs through the
 # densest part of the World Tree, which is where the surface area is.
 #
 # `6000000002457013227` is `Q3044` Charlemagne in `reports/derived-labels.csv`, and is step 34
 # --- the far end --- of `paths/charlemagne-to-arne-garborg.tsv`.
 FROM = "6000000002457013227"
 
-# The anchor is Geni's own pushpin on Charlemagne's profile, set once against you account ---
+# The anchor is Geni's own pushpin on Charlemagne's profile, set once against her account ---
 # `toggleRelationshipAnchor('6000000002457013227')`. It is NOT a url parameter, and the
 # `/path/?from=&to=` form this module used to emit is refuted in the docstring above: `to=` is
 # ignored, and the miss comes back looking like a 38-step hit. So the fetch is the target's own

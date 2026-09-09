@@ -1,7 +1,7 @@
 """What is in `order.life` that is not in this project's tree.
 
-**Not a merge, and not a synoptic tree.** You, 2026-08-14: the synoptic tree is
-already built and you do not want another one — You want to know *what the
+**Not a merge, and not a synoptic tree.** Emma, 2026-08-14: the synoptic tree is
+already built and she does not want another one — she wants to know *what the
 order.life repository holds that this one does not*. This produces that list and
 stops.
 

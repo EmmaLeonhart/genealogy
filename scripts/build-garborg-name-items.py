@@ -2,20 +2,20 @@
 
     python scripts/build-garborg-name-items.py
 
-You, 2026-08-24: *"we should be modelling the names properly, which he didn't
+Emma, 2026-08-24: *"we should be modelling the names properly, which he didn't
 do."* `P735` given name, `P734` family name and `P5056` patronym all point at
 **items**, and a link cannot be written before the item exists.
 
 **A patronymic is its own item even when the spelling already exists.**
 `CLAUDE.md` § *One name item per USAGE*: `Eivindsen` has a Wikidata item as a given
-name, and the patronymic `Eivindsen` is *"a different object"*. Your own `Q141152710`
+name, and the patronymic `Eivindsen` is *"a different object"*. Her own `Q141152710`
 *Aadnesson* is the pattern — labels and `P31` → `Q110874` *patronymic*. That minimalism is
 copied deliberately: the measurement in `CLAUDE.md` found `P1705`, `P282` and `P407` on most
-existing patronymic items and **You do not add them**.
+existing patronymic items and **she does not add them**.
 
-**`P144` *based on* is the one thing that is NOT decoration, and it goes in.** You, 2026-09-05:
+**`P144` *based on* is the one thing that is NOT decoration, and it goes in.** Emma, 2026-09-05:
 add the source names to the patronymic items this file makes. It is the derivation — the
-given names the fathers who attest the token actually carry — and your own resolution algorithm
+given names the fathers who attest the token actually carry — and her own resolution algorithm
 is gated on it (`scripts/build-patronymic-items.py`): *"the patronymic resolves to a patronymic
 NAME ITEM / that item records the given names it derives from (its own P144 based on,
 MULTI-VALUED) / the parent carries a given name OBJECT / parent's P735 item among the P144
@@ -23,14 +23,14 @@ values? -> emit P5056"*. Without it every item this file mints fails that identi
 which is what *"it requires well developed patronymic objects we currently lack"* means.
 
 The targets come from `reports/patronymic-items-to-create.tsv`, which resolves them ONCE against
-the fathers our own tree names — the single string comparison your design allows — and leaves an
-ambiguous or unattested given name out rather than guessing. **Multi-valued, your ruling:** every
+the fathers our own tree names — the single string comparison her design allows — and leaves an
+ambiguous or unattested given name out rather than guessing. **Multi-valued, her ruling:** every
 given-name item the attesting fathers carry is emitted, because keeping only the commonest would
 make the `Olsdatter`s whose father was `Ola` fail the identity test and get no `P5056` at all.
 
 **Ambiguous tokens are never created.** Where `reports/name-item-plan.csv` says a
 token already resolves to several items — `Marie`, `Olga`, `Anton` — creating one more
-is the `Maria` failure that would have made a tenth. They are listed for you instead.
+is the `Maria` failure that would have made a tenth. They are listed for Emma instead.
 
 **It no longer runs first and on its own, because the limit it was built around is not
 real.** This file said *"QuickStatements V1 cannot point at an item a `CREATE` in the same
@@ -39,7 +39,7 @@ relationship links: `LAST` **is** how you point at what was just created. What c
 is having two items created in one run cite *each other*. A name item and a person who already
 exists are not two new items.
 
-**You, 2026-08-26:** *"For every missing name the daily quickstatements generation should
+**Emma, 2026-08-26:** *"For every missing name the daily quickstatements generation should
 generate the ones for existing items and in the generation run add it to the existing ones too
 lol. Just like with people being linked on their relatives through QID PID LAST inverted of the
 creation property setting LAST PID QID."*
@@ -87,22 +87,22 @@ ROOT = Path(__file__).resolve().parent.parent
 INSTANCE_OF = "P31"
 FAMILY_NAME_CLASS = "Q101352"     # family name
 #: `Q1076664` *matronymic* -- "personal name component based on ones mother's given name".
-#: you supplied the id yourself on 2026-09-07, answering the one thing this container could not
+#: Emma supplied the id herself on 2026-09-07, answering the one thing this container could not
 #: look up; `Q110874` *patronymic* is its sibling and is not it.
 MATRONYMIC_CLASS = "Q1076664"     # matronymic
 GIVEN_NAME_CLASS = "Q202444"      # given name
 
 #: **3 name items a run while the hold is on; 10 after it lifts.**
 #:
-#: The original cap is your, 2026-08-26: *"generating 10 name items based upon the missing
+#: The original cap is Emma's, 2026-08-26: *"generating 10 name items based upon the missing
 #: name items from the ideal state, with the links as a thing that specifically is made."*
 #: WHICH ones is not specified, so the most-borne tokens go first -- that maximises the links
 #: each created item earns in the same run. Rejected: taking them at random, which would leave
-#: a nine-bearer surname waiting behind a one-bearer one for no reason. Falsified if you say
+#: a nine-bearer surname waiting behind a one-bearer one for no reason. Falsified if she says
 #: the choice should be random, as the parent pairs are.
 #:
-#: **The reduction is yours too, 2026-08-30**, asked directly and answered *"Cut it to 2-3 a
-#: day"*. Your decision of 2026-08-30: name-item creation is
+#: **The reduction is hers too, 2026-08-30**, asked directly and answered *"Cut it to 2-3 a
+#: day"*. Her decision of 2026-08-30: name-item creation is
 #: the highest-risk operation in the pipeline, because the duplicates another editor merged
 #: were name items and the people side has no comparable audience. Three keeps the vocabulary
 #: growing while staying well under the rate that produced them.
@@ -132,7 +132,7 @@ CLASS_FOR = {
 #: **The English description each kind of name item carries**, and it is the one exception to
 #: `CLAUDE.md` § *NO descriptions and NO edit summaries*.
 #:
-#: you, 2026-09-01: *"All patronymics get the description 'patronymic' so that they actually are
+#: Emma, 2026-09-01: *"All patronymics get the description 'patronymic' so that they actually are
 #: properly deduplicated. We are still creating duplicate patronymics and it is at the point of
 #: intolerability."* Then: *"All surnames get 'family name', all matronymics (do we even have
 #: any) get 'matronymic'."*
@@ -143,7 +143,7 @@ CLASS_FOR = {
 #: constraint § *NO descriptions* calls *"by far the worst trap"* -- turned round and pointed at
 #: the problem.
 #:
-#: **`matronymic` FIRES NOW, and the answer to your question is 110 tokens over 214 people.**
+#: **`matronymic` FIRES NOW, and the answer to her question is 110 tokens over 214 people.**
 #: This comment read *"matronymic currently fires for nothing, and that answers her question"*
 #: until 2026-09-07, and it was measuring the classifier rather than the corpus: a `-datter`
 #: token is classified `patronymic` whether or not it names a mother, so nothing could ever have
@@ -154,9 +154,9 @@ CLASS_FOR = {
 #: classifier cannot see from one token. `P5056` is *patronym or matronym*, one property for
 #: both, so only the item's own `P31` and description move.
 #:
-#: **`given` is deliberately absent.** You named patronymics, surnames and matronymics. A given
+#: **`given` is deliberately absent.** She named patronymics, surnames and matronymics. A given
 #: name is not obviously one description -- Wikidata distinguishes male, female and unisex given
-#: names -- so guessing one would be inventing a description you have not asked for, which is what
+#: names -- so guessing one would be inventing a description she has not asked for, which is what
 #: the rule this overrides exists to prevent.
 DESCRIPTION_FOR = {
     "patronymic": "patronymic",
@@ -252,7 +252,7 @@ def based_on_targets():
     """`{folded token: [given-name item, ...]}` — the `P144` sources of each patronymic.
 
     Read from `reports/patronymic-items-to-create.tsv`, which `scripts/build-patronymic-items.py`
-    writes. That file makes the one string comparison your design permits — the token's stem
+    writes. That file makes the one string comparison her design permits — the token's stem
     against the given names of the fathers who actually bear it in our tree — and drops a name
     whose label resolves to several items (`p144_ambiguous`) or to none (`p144_unknown`) instead
     of picking. So everything here is already adjudicated; this is a lookup, not a decision.
@@ -281,7 +281,7 @@ def based_on_targets():
 def matronymic_tokens():
     """The folded tokens the plan classes MATRONYMIC — attested by a mother and by no father.
 
-    **You, 2026-09-07: "Reclassify as matronymic"**, and you supplied `Q1076664` *matronymic*.
+    **Emma, 2026-09-07: "Reclassify as matronymic"**, and she supplied `Q1076664` *matronymic*.
     `namemodel.classify_fields` cannot make this call: it reads the token, and `Mariasdotter`
     looks exactly like `Jonsdotter`. What separates them is *whose* given name attests the stem,
     which is a corpus-wide fact and therefore the plan file's job — the same division that makes
@@ -304,16 +304,16 @@ def matronymic_tokens():
 def withdrawn_targets():
     """`{folded token: [given-name item, ...]}` — `P144` values the OLD source rule produced.
 
-    **You, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* live
+    **Emma, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* live
     with `P144` *based on* `Q58785388` *Junna*: *"neither of these are based on Junna lol."*
     `Junna` is the farm name in `Juho Niilonpoika Junna`; the source walk read every word of the
     father's label until `namemodel.given_name_run` scoped it to his given names.
 
     Those two items are ours — `reports/created-name-items.tsv` — and § *We can correct stuff we
-    added* is your own rule for them. **The removal names a value we can positively identify as
+    added* is her own rule for them. **The removal names a value we can positively identify as
     ours and withdrawn**, from the plan's `p144_withdrawn` column, which is the difference
     between the two walks computed in the same run. Anything else on the item, including a value
-    You added by hand, is untouched: "not in today's plan" is not grounds to remove a statement.
+    she added by hand, is untouched: "not in today's plan" is not grounds to remove a statement.
     """
     out = {}
     if not PATRONYMIC_PLAN.exists():
@@ -330,7 +330,7 @@ def withdrawn_targets():
 def live_values():
     """`(qid, property) -> {values}` from `reports/garborg-live-values.tsv`.
 
-    That file is a LIVE read of your items and is refreshed by the same run that builds the
+    That file is a LIVE read of her items and is refreshed by the same run that builds the
     batch, so it is the freshest thing on disk -- fresher than the offline store download and
     fresher than `created-name-items.tsv`.
     """
@@ -399,7 +399,7 @@ def reuse_from_bearers(fields, have, live):
     **This is the source that catches what the other three miss, and the case that named it is
     `Kristiansen`.** On 2026-09-04 the batch emitted a `CREATE` for it while THREE of its four
     bearers already carried `P5056` -> `Q141267893`; QuickStatements refused the duplicate on the
-    `patronymic` description, exactly as you designed it to. But a refused `CREATE` is not free:
+    `patronymic` description, exactly as Emma designed it to. But a refused `CREATE` is not free:
     every following line in that block resolves `LAST`, so all four `P5056` statements, their
     `P144` qualifiers and their `P2600` sources died with it -- "No last item available", six
     rows lost per refusal.
@@ -439,10 +439,10 @@ def main():
     have = ledger()
 
     # **The father for a patronymic's `P144` comes from a WIDER map than the ledger.**
-    # You, 2026-09-02: *"Patronymics are not getting the names they come from in the logic lol
+    # Emma, 2026-09-02: *"Patronymics are not getting the names they come from in the logic lol
     # that's actually essential to the real specified algorithm."* The ledger is ~1,179 rows;
     # 518,855 Geni ids carry a `P2600` on Wikidata. Looking only in the ledger meant `P144`
-    # fired only where you had made the father yourself.
+    # fired only where she had made the father herself.
     #
     # The correspondence union is deliberately NOT consulted: it is 568,535 wide and includes
     # zipper-inferred pairs measured at 2.8-4.8% error, and a wrong `P144` asserts that this
@@ -464,10 +464,10 @@ def main():
     # hold a QID (so they are linked in this very run).
     ids = ids | set(have)
 
-    # **The GEDCOM name FIELDS, not the rendered label.** You, 2026-08-24, caught the
+    # **The GEDCOM name FIELDS, not the rendered label.** Emma, 2026-08-24, caught the
     # name model re-parsing a display string; this file was still doing it after the
     # model was fixed, which mattered more here than anywhere else. It gates every
-    # other batch, so a wrong list means you create items nobody needs and lacks ones
+    # other batch, so a wrong list means she creates items nobody needs and lacks ones
     # that are needed: nicknames stopped needing an item at all (`P1449` takes text)
     # and married surnames started needing one.
     fields = {}
@@ -483,7 +483,7 @@ def main():
     # NAME, not his QID: without it every `-sen`/`-son`/`-datter` token falls through
     # to `"patronymic"`, which is how `Fersen` -- a Baltic-German family name -- was
     # created twice as an item whose `P31` reads `Q110874` *patronymic*
-    # (`Q141223488`, and `Q141223718` merged into it). You, 2026-08-30: *"both just
+    # (`Q141223488`, and `Q141223718` merged into it). Emma, 2026-08-30: *"both just
     # completely erroneous"*. `reports/audit-q141223488.md` is the audit.
     with open(ROOT / "reports" / "derived-family.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
@@ -562,14 +562,14 @@ def main():
             if usage in ("particle", "unknown"):
                 continue
             # **⛔ A TOKEN THE CORPUS NEVER USES AS A FIRST GIVEN NAME IS NOT A GIVEN NAME.**
-            # You, 2026-09-07, on `Q141352791` -- an item labelled `Garborg`, `P31` *given
+            # Emma, 2026-09-07, on `Q141352791` -- an item labelled `Garborg`, `P31` *given
             # name*, minted by this generator for two people: *"Also bruh Garborg s was made as
             # a given name wtf."* Geni files both with `GIVN` = `Arne Garborg` / `Siri Garborg`
             # and an EMPTY `SURN`, so the second token was read positionally as a middle name;
             # neither bearer has a Garborg parent, and our own plan holds `Garborg` as `family`
             # with `Q30250555`.
             #
-            # **Not the dominance ratio you deleted on 2026-08-15.** That adjudicated between
+            # **Not the dominance ratio she deleted on 2026-08-15.** That adjudicated between
             # two real usages -- *"If something is a surname and a given name, then it gets a
             # surname and a given name object"* -- and is untouched. This asks whether there is
             # a given-name usage at all, and answers it categorically: **zero** first-given
@@ -588,14 +588,14 @@ def main():
             qid, action = plan.get((token, usage), ("", "not in the plan"))
             # **Ask the store before creating anything.** A token missing from the plan used
             # to fall straight through to `need`, and `Ronneberg` is exactly that: not in
-            # `name-item-plan.csv`, already `Q37504456` on Wikidata, created by you once and
-            # merged away by another editor. Five of the ten name items you have ever created
+            # `name-item-plan.csv`, already `Q37504456` on Wikidata, created by Emma once and
+            # merged away by another editor. Five of the ten name items she has ever created
             # went the same way -- Tunheim, Ronneberg, Bø, Heigre, Nyvold.
             if not qid:
                 qid = store_name_item(token, usage)
                 if qid:
                     action = "link (already on Wikidata)"
-            # **Then ask Wikidata LIVE, because both offline sources are snapshots.** You,
+            # **Then ask Wikidata LIVE, because both offline sources are snapshots.** Emma,
             # 2026-09-01: *"I thought we reused name objects by default lol... Fuck you for
             # defaulting to the dangerous one lol."*
             #
@@ -607,7 +607,7 @@ def main():
             # existed THREE times. The batch would have made a fourth.
             #
             # Only an exact label match with the right `P31`, and SEVERAL qualifying items
-            # means no answer -- that ambiguity is § *One name item per USAGE* and is yours.
+            # means no answer -- that ambiguity is § *One name item per USAGE* and is hers.
             # **Then the bearers' OWN statements, before any network call.** See
             # `reuse_from_bearers`: this is the source that caught `Kristiansen`, and it costs
             # nothing because the file it reads was refreshed by this same run.
@@ -622,7 +622,7 @@ def main():
                 # `""`, which is the same value as "nothing exists" and sends the token
                 # straight to creation -- so a 429, a timeout or a blocked proxy minted a
                 # duplicate of something already on Wikidata, on the one path whose entire
-                # job is to prevent that. You have had five merged away by another editor.
+                # job is to prevent that. Emma has had five merged away by another editor.
                 try:
                     qid = live_existing_item(token, usage)
                 except LookupUnavailable as exc:
@@ -683,7 +683,7 @@ def main():
         "# them, and leaves out any given name whose label is ambiguous or has no item.",
         "",
     ]
-    # **⛔ WHAT THE RING IS ABOUT TO CREATE COMES FIRST.** You, 2026-09-07: *"individuals are
+    # **⛔ WHAT THE RING IS ABOUT TO CREATE COMES FIRST.** Emma, 2026-09-07: *"individuals are
     # supposed to be created already having name links and this does not seem to be happening
     # reliably."*
     #
@@ -718,7 +718,7 @@ def main():
         lines.append(f'LAST\tLen\t"{token}"')
         lines.append(f'LAST\tLmul\t"{token}"')
         # **A PATRONYMIC carries a description, and it is the one exception to the hard rule.**
-        # You, 2026-09-01: *"All patronymics get the description 'patronymic' so that they
+        # Emma, 2026-09-01: *"All patronymics get the description 'patronymic' so that they
         # actually are properly deduplicated. We are still creating duplicate patronymics and
         # it is at the point of intolerability."*
         #
@@ -729,15 +729,15 @@ def main():
         # `Olsdatter` + `patronymic` is REFUSED at creation.
         #
         # That is the same uniqueness constraint § *NO descriptions* warns can BLOCK a creation
-        # -- your *"by far the worst trap"*. Here it is turned round and pointed at the problem:
+        # -- her *"by far the worst trap"*. Here it is turned round and pointed at the problem:
         # the trap becomes the mechanism.
         if kind in DESCRIPTION_FOR:
             lines.append(f'LAST\tDen\t"{DESCRIPTION_FOR[kind]}"')
         lines.append(f"LAST\t{INSTANCE_OF}\t{CLASS_FOR[kind]}")
-        # **The derivation, on the item itself.** You, 2026-09-05: add the source names to the
+        # **The derivation, on the item itself.** Emma, 2026-09-05: add the source names to the
         # patronymic items this file makes. `P144` *based on* here points at the GIVEN NAME the
         # patronymic comes from -- every one the attesting fathers carry, multi-valued -- and it
-        # is what your resolution algorithm reads: a bearer resolves when their father's `P735`
+        # is what her resolution algorithm reads: a bearer resolves when their father's `P735`
         # item is among these values. An item minted without them is inert forever.
         if usage == "patronymic":
             for target in based_on.get(token.casefold(), ()):
@@ -803,13 +803,13 @@ def main():
         for (token, usage), bearers in sorted(ambiguous.items()):
             lines.append(f"#   {token} ({usage}), {bearers} bearer(s)")
 
-    # A comment above every line, the same post-pass the day batch uses. You, 2026-08-26:
+    # A comment above every line, the same post-pass the day batch uses. Emma, 2026-08-26:
     # *"Every line has a comment the line above it saying what change is happening."*
     # `name_of` turns a QID back into the person it belongs to, so a link reads as a
     # sentence rather than as two numbers.
     # ---- descriptions on name items that ALREADY exist -----------------------------
     #
-    # **You, 2026-09-02:** *"add an item at the end of the queue to make the generated
+    # **Emma, 2026-09-02:** *"add an item at the end of the queue to make the generated
     # quickstatements add these descriptions to the patronymics and family names"*.
     #
     # The block above puts a description on every name item it CREATES, because label plus
@@ -873,12 +873,12 @@ def main():
 
     # ---- P144 based on, on patronymic items that ALREADY EXIST ---------------------
     #
-    # **You, 2026-09-05:** *"I want the based on name stuff on patronymics to come all the
+    # **Emma, 2026-09-05:** *"I want the based on name stuff on patronymics to come all the
     # time and go back onto the old ones we made"*.
     #
     # The `CREATE` blocks above carry `P144` from today. Every patronymic item minted before
     # 2026-09-05 has none -- including the 38 in `reports/created-name-items.tsv` -- so the
-    # identity test your resolution algorithm runs (father's `P735` among the item's `P144`
+    # identity test her resolution algorithm runs (father's `P735` among the item's `P144`
     # values) fails on all of them. This is the backfill, and it runs every day, so an item
     # that gains an attesting father tomorrow gains the value the day after.
     #
@@ -887,12 +887,12 @@ def main():
     # the plan cannot know about -- it is built from a download that predates them.
     #
     # **A value already on the item is not re-sent.** QuickStatements would treat it as the
-    # same statement, but a batch that says nothing is a batch you can read in seconds, and
+    # same statement, but a batch that says nothing is a batch she can read in seconds, and
     # `CLAUDE.md` § *Duplication is deliberate here* means never proposing one by accident.
     backfill = {}
     #: The patronymic items THIS repo created, by QID. A removal is only ever proposed on one of
     #: these -- § *The purpose is to ADD to Wikidata, not to correct it* holds for everybody
-    #: else's, and your *"we can correct stuff we added"* is scoped to ours by its own words.
+    #: else's, and her *"we can correct stuff we added"* is scoped to ours by its own words.
     ours = {}
     for (token, usage), (existing, _action) in plan.items():
         if usage == "patronymic" and (existing or "").strip().startswith("Q"):
@@ -962,9 +962,9 @@ def main():
 
         # ---- P144 REMOVALS: the values the old source rule put on items we made ------
         #
-        # See `withdrawn_targets` for your ruling and the mechanism. Three conditions, all
+        # See `withdrawn_targets` for her ruling and the mechanism. Three conditions, all
         # required: the item is one we created, the value is on it live, and the plan names
-        # that value as withdrawn by the given-name scoping. A value you added by hand is in
+        # that value as withdrawn by the given-name scoping. A value she added by hand is in
         # none of the withdrawn lists, so it cannot be reached from here.
         withdrawn = withdrawn_targets()
         removals = [f"-{qid}\t{BASED_ON}\t{value}"
@@ -985,7 +985,7 @@ def main():
 
         # ---- P460 said to be the same as -------------------------------------------
         #
-        # **You, 2026-09-05**, having linked your own `Olofsson` `Q141244186` and `Olai`
+        # **Emma, 2026-09-05**, having linked her own `Olofsson` `Q141244186` and `Olai`
         # `Q141313056` by hand, both ways: *"also this said to be the same as for many of
         # these ones"*. One patronymic is written several ways -- `Jonsen`, `Jonson`,
         # `Jonsson`; `Pedersen`, `Pederson`, `Pedersson` -- and each spelling has its own item
@@ -1003,7 +1003,7 @@ def main():
         # buys, and `CLAUDE.md` § *A diacritic makes a different name* is about not MERGING
         # two name items or creating the wrong one -- this creates nothing and merges nothing,
         # it says the two are said to be the same, which is what the property is for.
-        # Falsified if you say the Icelandic spelling should stand alone.
+        # Falsified if she says the Icelandic spelling should stand alone.
         #
         # An item created TODAY gets its P460 tomorrow, once the ledger refresh has seen it.
         # That is the ordinary carry-forward, not a gap.
@@ -1042,7 +1042,7 @@ def main():
           f"from {len(based_on):,} tokens with a resolved derivation")
     if no_based_on:
         # Loud, because a patronymic without its derivation is inert: nothing can ever
-        # resolve a bearer to it. It is still created -- the item is what your algorithm
+        # resolve a bearer to it. It is still created -- the item is what her algorithm
         # needs first -- but the gap is named rather than left to be inferred from a count.
         print(f"   {len(no_based_on)} created WITHOUT a P144: "
               + ", ".join(sorted(no_based_on)))

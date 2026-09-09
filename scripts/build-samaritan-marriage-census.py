@@ -1,13 +1,13 @@
 """Every family record touching the Samaritan priestly families, one row each.
 
-Your rule (CLAUDE.md § *"Analyse this" means build a CSV of every instance*):
+Emma's rule (CLAUDE.md § *"Analyse this" means build a CSV of every instance*):
 build the census first, commit it, then analyse it. So this writes two CSVs and
 draws no conclusions.
 
 **The set is the priestly families as Geni holds them**, seeded from the two
 runs of priests found in the corpus and then grown **one hop** along every
 parent, child and spouse edge, so a wife recorded anywhere is caught even though
-You are not a priest:
+she is not a priest:
 
   * the post-1624 Itamar component rooted at Tabia ha'Abta'i;
   * the pre-1624 chain whose profiles carry `Samaritan High Priest` in the

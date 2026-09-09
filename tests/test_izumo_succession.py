@@ -1,6 +1,6 @@
 """Guards on the three-office Izumo succession, `reports/wikidata-izumo-succession.json`.
 
-Your model, 2026-08-24: three offices distinguished by the organisation, not one chain,
+Emma's model, 2026-08-24: three offices distinguished by the organisation, not one chain,
 with the last unified holder carrying two successors.
 
 Every assertion here is against the built file rather than the builder, so a change that

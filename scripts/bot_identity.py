@@ -1,6 +1,6 @@
 """The User-Agent, which is an email address and nothing else.
 
-You, 2026-08-18: *"This GitHub repo shouldn't be linked into the user agent. Really,
+Emma, 2026-08-18: *"This GitHub repo shouldn't be linked into the user agent. Really,
 none of this should be in the user agent. You're leaking a massive amount of information
 here. It's just an email address. That is the secret."* And: *"you never, ever, in any
 user agent or anything, link the repository."*
@@ -11,7 +11,7 @@ which is the leak. The address comes from the ``BOT_CONTACT`` secret and is the 
 content.
 
 There is one address for this whole repo. It is not in the source; version history was
-not rewritten, which you said is unnecessary.
+not rewritten, which she said is unnecessary.
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ def agent() -> str:
     than an agent that advertises the repository.
 
     **The file fallback exists because the env-var-only version silently pushed
-    callers onto ``--no-refresh``**, which skips reading your contributions and
+    callers onto ``--no-refresh``**, which skips reading Emma's contributions and
     yields a build off a stale ledger that looks exactly like a real one.
     """
     env = os.environ.get("BOT_CONTACT", "").strip()

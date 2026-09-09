@@ -42,7 +42,7 @@ __all__ = ["EXPORTS_DIR", "EXCLUDED_DIR", "DERIVED_DIR", "DERIVED_DIRS", "REPO_R
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 #: Everything under here is corpus **except `excluded/`**. Subdirectories are
-#: your filing — one per seed you exported from, plus `archive/` and
+#: Emma's filing — one per seed she exported from, plus `archive/` and
 #: `fleshing-out/` for bulk takes — and carry no meaning for the merge.
 EXPORTS_DIR = REPO_ROOT / "exports"
 
@@ -57,7 +57,7 @@ EXPORTS_DIR = REPO_ROOT / "exports"
 #: readable, still the record of what Geni said that day. It is only kept out of
 #: the merge.
 #:
-#: **your instruction, 2026-08-15**, after I proposed excluding them *once* a
+#: **Emma's instruction, 2026-08-15**, after I proposed excluding them *once* a
 #: later export covered their people: *"I want to exclude these particular ones,
 #: not stop reading them once Export 204 covers their people. That is stupid.
 #: It's a prediction of something that may or may not happen. I want you to move
@@ -69,19 +69,19 @@ EXPORTS_DIR = REPO_ROOT / "exports"
 #:
 #: `excluded/samaritans/` — four exports taken before `Yitzhaq I ben Tsedaka`
 #: (`6000000227245553985`) existed on Geni. Geni had linked **Tsedaka II →
-#: Abram** directly, skipping him; when you added him, Geni rewrote family
+#: Abram** directly, skipping him; when Emma added him, Geni rewrote family
 #: `F6000000178795360833` in place, swapping the child from Abram to Yitzhaq I.
 #: The union of old and new gave that family both children and gave Abram two
 #: fathers, one of them the other's father.
 EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 
 #: **`exports/family-scrapes/` is corpus but is NOT a Geni export.** One tiny GEDCOM per scraped
-#: profile, built by `scripts/build-family-gedcoms.py` -- You, 2026-09-06: *"this is what is
+#: profile, built by `scripts/build-family-gedcoms.py` -- Emma, 2026-09-06: *"this is what is
 #: supposed to be the main result of the scrape ... the geni ids set up so that they end up
 #: getting merged in"*. It belongs in the merge; it is not something Geni handed back, and must
 #: not be measured as though it were.
 #:
-#: **It replaces `exports/0-scraped/`, which was DELETED on your instruction 2026-09-06** --
+#: **It replaces `exports/0-scraped/`, which was DELETED on her instruction 2026-09-06** --
 #: *"just delete them"*. Those two files were built by `build-scraped-gedcom.py`, which minted a
 #: placeholder parent whenever a family wanted one, and they were in the merge the whole time:
 #:
@@ -98,7 +98,7 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #: its sex coverage read as a corpus statistic. So the fix remains a name for the distinction
 #: rather than a looser assertion: `find_exports` returns these (the merge wants them),
 #: `geni_exports` excludes them (corpus-shape checks want only real ones).
-#: **EMPTY, and that is the finished state.** You, 2026-09-06: *"delete those ones lol"* — the two
+#: **EMPTY, and that is the finished state.** Emma, 2026-09-06: *"delete those ones lol"* — the two
 #: aggregate files in `exports/0-scraped/` are gone, with the script that wrote them. They were the
 #: only reason this distinction existed: `scraped-pages.ged` held 14,121 individuals against a
 #: `GENI_EXPORT_CAP` of 5,000, and its sex coverage was 2,284 of 12,463 because only the invented
@@ -106,7 +106,7 @@ EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 #:
 #: What replaced them is `exports/tiny-profiles/` and `exports/tiny-paths/` — thousands of small
 #: files, three to twenty people each, every `INDI` a real Geni profile. Those are corpus in the
-#: ordinary way and trip none of those checks; your words when I tried to exclude them: *"these are
+#: ordinary way and trip none of those checks; her words when I tried to exclude them: *"these are
 #: real gedcoms to go into the synoptic tree just tiny ones."*
 #:
 #: Kept as an empty tuple rather than deleted because `geni_exports()` and `__all__` name it, and
@@ -170,7 +170,7 @@ def _corpus_files(root: Path) -> list[Path]:
     return out
 
 
-#: Exports taken AFTER you merged the duplicate profiles they contain. Everything in
+#: Exports taken AFTER Emma merged the duplicate profiles they contain. Everything in
 #: here must be merged LAST, because `merge._merge_into` gives a single-valued conflict
 #: to the later source and "later" means later in this list.
 POST_MERGE_DIR = "post-merge"
@@ -179,8 +179,8 @@ POST_MERGE_DIR = "post-merge"
 def _post_merge_last(paths: list[Path], root: Path) -> list[Path]:
     """`exports/post-merge/` sorts to the END, whatever its name would do alphabetically.
 
-    **your design needs this and the obvious implementation does not provide it.**
-    You asked for a directory whose records *"overwrite earlier ones from other repos in
+    **Emma's design needs this and the obvious implementation does not provide it.**
+    She asked for a directory whose records *"overwrite earlier ones from other repos in
     the synoptic tree"*. The merge already gives a conflict to the later source — but
     merge order is **path sort order**, and `post-merge` sorts at position 17 of 22
     under `exports/`: *before* `samaritans`, `sparse_filling`, `stragglers` and
@@ -202,7 +202,7 @@ def _post_merge_last(paths: list[Path], root: Path) -> list[Path]:
         (tail if POST_MERGE_DIR in parts[:-1] else head).append(path)
 
     # **Inside the privileged directory, NEWEST wins — so order by mtime, not name.**
-    # Two exports can be seeded on the same person: one taken before you merged a
+    # Two exports can be seeded on the same person: one taken before Emma merged a
     # duplicate and one after. Path order puts them in an arbitrary order, and worse, a
     # descriptive suffix reverses it -- `…141824-refresh.ged` sorts BEFORE
     # `…141824.ged`, because `-` is 0x2D and `.` is 0x2E. The refresh would have lost

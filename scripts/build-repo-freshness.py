@@ -1,6 +1,6 @@
 """Census every tracked non-corpus artifact and say how stale it is.
 
-You, 2026-08-15: *"it should also do work on figuring out what stuff in the
+Emma, 2026-08-15: *"it should also do work on figuring out what stuff in the
 repository is outdated because there are certain things, like the missing
 ancestors for example, that are kind of outdated."*
 
@@ -103,9 +103,9 @@ def writes_in(text: str) -> set[str]:
 
     **`open(` alone was the bug.** The previous test counted any `open(...)` call containing a
     filename literal as a write, so `open(R / "emma-judgments.tsv", encoding="utf-8")` — a
-    plain READ of a file you maintains by hand — registered as an output. That deleted it from
+    plain READ of a file Emma maintains by hand — registered as an output. That deleted it from
     the script's inputs, which in turn defeated the reader-is-not-a-generator skip in
-    `stale_against_inputs`, and your hand verdicts were reported as 35h behind
+    `stale_against_inputs`, and her hand verdicts were reported as 35h behind
     `reports/structural-correspondence.csv`, an input they do not have.
 
     A write is an inline `open("x.csv", "w")`, or a name bound to a path constant

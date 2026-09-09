@@ -1,6 +1,6 @@
 """Read a QuickStatements V1 batch into typed edit objects.
 
-**Why this exists.** You, 2026-09-05, chose that from the 15th the daily Garborg
+**Why this exists.** Emma, 2026-09-05, chose that from the 15th the daily Garborg
 batch runs itself, sent *"bot-password API, what exists"* -- i.e. through
 `scripts/wikidata-edit-run.py` rather than pasted into QuickStatements by hand.
 That runner takes JSON **edit objects** with a `requires` list; the daily batch is

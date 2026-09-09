@@ -1,6 +1,6 @@
 """Is a token EVER somebody's FIRST given name? -> `reports/given-name-attestation.tsv`.
 
-**You, 2026-09-07**, shown `Q141352791` -- an item labelled `Garborg`, `P31` *given name*,
+**Emma, 2026-09-07**, shown `Q141352791` -- an item labelled `Garborg`, `P31` *given name*,
 created by our own batch for two people: *"Also bruh Garborg s was made as a given name wtf."*
 
 Geni files both bearers with `GIVN` = `Arne Garborg` / `Siri Garborg` and an **empty** `SURN`, so
@@ -9,7 +9,7 @@ FORM. Do not parse a name positionally*, in a new place. Neither bearer has a Ga
 (Tunheim and Talle), so they are children named after the writer, and `Garborg` is his surname:
 our own plan already holds it as `family`, 39 bearers, `Q30250555`.
 
-**⛔ THIS IS NOT THE DOMINANCE RATIO YOU DELETED, and the difference is the whole point.** Your
+**⛔ THIS IS NOT THE DOMINANCE RATIO SHE DELETED, and the difference is the whole point.** Her
 ruling of 2026-08-15 is that a token used in two roles gets two items: *"If something is a
 surname and a given name, then it gets a surname and a given name object."* That forbids
 ADJUDICATING between two real usages. This asks a different question -- **is there a given-name

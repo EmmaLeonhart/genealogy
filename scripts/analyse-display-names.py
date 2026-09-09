@@ -1,6 +1,6 @@
 """Score "the Latin display name becomes the English label" against ground truth.
 
-You, 2026-08-11: *"I don't know how bad it is to have it so that all the display
+Emma, 2026-08-11: *"I don't know how bad it is to have it so that all the display
 names just turn into English language labels like this or whatever... My
 impression is that it's often kind of passable but not good. But it's your job to
 figure it out. It's not mine. It's your job. I'm putting you on this job."*

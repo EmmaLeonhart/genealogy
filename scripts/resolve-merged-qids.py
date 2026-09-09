@@ -2,10 +2,10 @@
 
     python scripts/resolve-merged-qids.py [--write]
 
-**You, 2026-08-29:** *"a lot of the items were merged and this is a problem. since it
+**Emma, 2026-08-29:** *"a lot of the items were merged and this is a problem. since it
 means a lot of relationship statements consistently use the wrong thing"*.
 
-You are right that this is the failure mode. When two items are merged, the loser becomes
+She is right that this is the failure mode. When two items are merged, the loser becomes
 a **redirect** to the winner. Our ledger keeps whichever QID it recorded first, so every
 `P22`/`P25`/`P26`/`P40`/`P3373` the daily batch emits against that row points at a
 redirect rather than at the surviving item. QuickStatements will often follow it, but the
@@ -13,7 +13,7 @@ statement is then attributed to an item that is not the one we meant, and a late
 comparing "does the item already hold this" against the *target* sees nothing and emits
 it again.
 
-`CLAUDE.md` already asked for this check, in your words: *"I do want to check all the IDs
+`CLAUDE.md` already asked for this check, in her words: *"I do want to check all the IDs
 to ensure that they haven't been merged or anything"*.
 
 **One batched request per 50 ids, `action=wbgetentities&props=info`.** A redirected entity

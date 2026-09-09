@@ -3,7 +3,7 @@
 `genimerge.frontier` ranks **parentless** people — the upward edge, where Geni
 knows an ancestor we do not. `genimerge.density` ranks neighbourhoods **few
 exports touched**, which knows nothing about when anyone lived. Neither answers
-the question behind the `Descendants` campaign, which is your and is about
+the question behind the `Descendants` campaign, which is Emma's and is about
 time rather than thinness: *the tree is biased towards ancient and medieval
 people, and the goal is to reach the present.*
 
@@ -25,13 +25,13 @@ data separates "childless" from "unexplored". That is the same discriminator
 `density` uses upward, where a thin region full of parentless people is
 under-sampled and a thin region with none may simply be finished.
 
-**Descent paths, not distinct people — your call, 2026-08-07.** The measure is
-your recursion: a person's count is, over each recorded child, *one for the child
+**Descent paths, not distinct people — Emma's call, 2026-08-07.** The measure is
+her recursion: a person's count is, over each recorded child, *one for the child
 plus the child's own count*. Someone reachable down two lines is therefore
 counted twice, and that is the point rather than a defect to correct. What this
 report is looking for is **lines coming down from a person**, and a descendant
 reached twice is two lines. Distinct-person counting was the first
-implementation and you ruled it out as not merely irrelevant here but plausibly
+implementation and she ruled it out as not merely irrelevant here but plausibly
 worse: pedigree collapse is dense in this tree, and de-duplicating it makes a
 person at the top of a wide, repeatedly-intermarried descent look like a narrow
 one. :func:`genimerge.frontier.descendant_counts` still counts distinct people
@@ -41,7 +41,7 @@ The change also made this module cheap. Distinct counting needs a set union per
 person, which does not scale at 257219 people — it wanted a bitmask per person
 (32 KB each, tens of gigabytes) or a walk abandoned above a cap. This module
 carried that capped walk, a ``CAP`` constant, a ``--cap`` flag and a
-``descendants_exact`` flag purely to work around it; your recursion is a plain
+``descendants_exact`` flag purely to work around it; Emma's recursion is a plain
 post-order sum, O(V+E), exact at every size, and deleted all of them.
 
 **`stall` is the measure that serves the campaign.** For each person it is the
@@ -183,7 +183,7 @@ def descent_paths(
 
     Returns ``(paths, open_paths)``.
 
-    **`paths` is your recursion**, and it is the measure this whole module is
+    **`paths` is Emma's recursion**, and it is the measure this whole module is
     built on::
 
         paths(person) = sum over each recorded child c of (1 + paths(c))

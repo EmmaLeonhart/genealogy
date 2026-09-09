@@ -1,6 +1,6 @@
 """The patronymic classifier, run against Wikidata instead of the Geni corpus.
 
-**Queue item 11. You, 2026-08-15:** *"Of course we also should be running this
+**Queue item 11. Emma, 2026-08-15:** *"Of course we also should be running this
 processing on both the geni stuff and the wiki data stuff... have at the end of
 the queue a thing to run this same name analysis operation on the wiki data stuff
 at the end of this."*
@@ -48,7 +48,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ITEMS = REPO / "wikidata" / "items"
 #: **Written in parts, because one file would be 194 MB and GitHub rejects
-#: anything over 100.** Your rule is that every instance is a row and repo size
+#: anything over 100.** Emma's rule is that every instance is a row and repo size
 #: is not a constraint — *"We're not trying to make the repo small... We care
 #: about actually getting results"* — so the rows are all kept and the file is
 #: split rather than sampled or filtered. Each part repeats the header.

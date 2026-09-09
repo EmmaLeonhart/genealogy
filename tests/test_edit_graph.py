@@ -11,7 +11,7 @@ mention it; 284,125 edit objects declare an ordering that no executor enforces. 
 is recorded in `queue.md` as work, not fixed here — a resolver is a design decision
 about how the batches run, not a test.
 
-**`genimerge.editorder` now reads `requires`** — your design, a random pick from
+**`genimerge.editorder` now reads `requires`** — Emma's design, a random pick from
 whatever is ready. It orders all 284,146 objects in about a second with no violations.
 
 Two of these tests failed when the file was written and **both markers are now off**:
@@ -93,7 +93,7 @@ def test_every_edit_that_is_not_a_creation_names_something_to_act_on(edits):
       There is nothing else to name it by until the item exists.
     * `create_individual` in `wikidata-orderlife.json` (19,228) -- order.life
       people, carried in `subject.orderlife_qid`. They are not from Geni.
-    * `create_individual` in `wikidata-patronymic-fathers.json` (9,158) -- your
+    * `create_individual` in `wikidata-patronymic-fathers.json` (9,158) -- Emma's
       item, `CLAUDE.md`: *"add items for the hypothetical fathers that are implied
       to exist from the patronymics. These ones would be wiki data items that do not
       have geni items."* Having no Geni id is the point.

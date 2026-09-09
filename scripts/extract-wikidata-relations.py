@@ -2,7 +2,7 @@
 
     python scripts/extract-wikidata-relations.py
 
-**This is the thing whose absence made the zipper join half-exist.** You, 2026-08-25:
+**This is the thing whose absence made the zipper join half-exist.** Emma, 2026-08-25:
 *"The zipper merge kinda half exists and is opaque I thought you meant something more clear and
 substantive than just having never even tried to implement the feature. Implement it."*
 

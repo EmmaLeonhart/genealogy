@@ -3,7 +3,7 @@
     python scripts/pack-derived.py            # csv -> csv.gz, for committing
     python scripts/pack-derived.py --unpack   # csv.gz -> csv, after a clean clone
 
-**your call, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding
+**Emma's call, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding
 any more data into our tree. Just processing."*
 
 Regenerated from the 546-export merge, all four exceed GitHub's **100 MiB** per-file

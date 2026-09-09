@@ -1,8 +1,8 @@
-"""Rebuild the ledger from your Wikidata account, which is the only thing that knows.
+"""Rebuild the ledger from Emma's Wikidata account, which is the only thing that knows.
 
     BOT_CONTACT=you@example.com python scripts/refresh-garborg-ledger.py
 
-**You, 2026-08-25:** *"you fuckin look at wikidata exactly as I told you"*, then
+**Emma, 2026-08-25:** *"you fuckin look at wikidata exactly as I told you"*, then
 *"just look at my fucki nprofile"*, then the URL, then *"fuckin use my account as a guide"* —
 after a batch offered to create five people of whom three already had items.
 
@@ -10,31 +10,31 @@ after a batch offered to create five people of whom three already had items.
 *"`reports/garborg-qids.tsv` is the ledger of who has one. It is filled from **Emma's Wikidata
 contributions**, not from a bulk download — her instruction: 'You should be looking at my
 contributions to see the new ones I've created.'"* Nothing automated it, so it drifted, and
-**11 of your items were missing from it** when this was first run.
+**11 of her items were missing from it** when this was first run.
 
-**Your account is `日巫女`.** `Special:Contributions` is the authority for what you have made;
+**Her account is `日巫女`.** `Special:Contributions` is the authority for what she has made;
 `list=usercontribs` is one request per 500 edits.
 
 ## Two sources, because neither alone is enough
 
-* **Your contributions** give everything you created or edited — 49 created, 59 touched. This is
-  the guide you named.
-* **A live `P2600` lookup** catches items you did *not* make. `Q138474188` *Hans Syvertsen
+* **Her contributions** give everything she created or edited — 49 created, 59 touched. This is
+  the guide she named.
+* **A live `P2600` lookup** catches items she did *not* make. `Q138474188` *Hans Syvertsen
   Nyvold* is the worked example: it carries the Geni id of a Garborg-line person because
-  **an IP added it by accident** (your words, 2026-08-25), so it appears in no contribution list
-  of yours and would still have been duplicated. `scripts/build-garborg-day.py` runs that check
+  **an IP added it by accident** (her words, 2026-08-25), so it appears in no contribution list
+  of hers and would still have been duplicated. `scripts/build-garborg-day.py` runs that check
   as a pre-flight before every `CREATE`.
 
 ## What was wrong before, so it is not re-attempted
 
-Three offline sources were being trusted and all three are snapshots taken before you started
+Three offline sources were being trusted and all three are snapshots taken before she started
 creating: the hand-maintained ledger, `out/wikidata/p2600-all.tsv` from the bulk download, and
 `out/wikidata/relations.tsv` behind the parent-`P40` duplicate guard.
 
-**Git history is NOT a substitute and was briefly tried.** You: *"idk why the fuck you decided
-it was gonna be okay to use git history."* You are right — `git log -S` over `reports/*.qs` records
-what a batch **offered**, which is not what exists. An offer you declined would block a real
-person forever, and an item you made by hand outside any batch would be invisible.
+**Git history is NOT a substitute and was briefly tried.** Emma: *"idk why the fuck you decided
+it was gonna be okay to use git history."* She is right — `git log -S` over `reports/*.qs` records
+what a batch **offered**, which is not what exists. An offer she declined would block a real
+person forever, and an item she made by hand outside any batch would be invisible.
 
 Merges into `reports/garborg-qids.tsv` rather than overwriting: rows already there keep their
 `label` and `note` columns, which carry hand-written provenance.
@@ -94,8 +94,8 @@ def agent():
     if not contact:
         sys.exit("BOT_CONTACT is not set. Wikimedia answers an empty User-Agent with a bare "
                  "403, so this fails loudly rather than mysteriously.")
-    # You, 2026-08-18: the agent is the address and NOTHING else -- no tool name,
-    # no version, no repository. "geni-merge/1.0" was exactly the leak you named.
+    # Emma, 2026-08-18: the agent is the address and NOTHING else -- no tool name,
+    # no version, no repository. "geni-merge/1.0" was exactly the leak she named.
     return contact
 
 
@@ -125,7 +125,7 @@ def main():
     print(f"{len(contribs)} mainspace edits by {ACCOUNT}; "
           f"{len(created)} items created, {len(touched)} touched")
 
-    # Every touched item, not only the created ones: you add a P2600 to items other
+    # Every touched item, not only the created ones: she adds a P2600 to items other
     # people made, and that correspondence is just as load-bearing.
     found = {}
     for i in range(0, len(touched), 50):
@@ -147,7 +147,7 @@ def main():
 
     # **REBUILT, not merged. Two sources, and nothing else survives.**
     #
-    # You, 2026-08-27: *"never deleting rows is a horrible idea. Simple as that... This seems to
+    # Emma, 2026-08-27: *"never deleting rows is a horrible idea. Simple as that... This seems to
     # explain why it is that it was this giant grab bag of some stuff that was actually generated
     # and some random garbage that got thrown in. The ledger should be everything I've edited. In
     # addition to everything I've edited, it would include all of the Bure clan people. Nobody
@@ -156,10 +156,10 @@ def main():
     #
     # This file merged from its first commit, `30943703` on 2026-08-25 — titled *"rebuild the
     # Garborg ledger from Emma's account"* while the code loaded the existing file and only ever
-    # added. That is the accumulation mechanism, and on 2026-08-27 it was described to you as
+    # added. That is the accumulation mechanism, and on 2026-08-27 it was described to her as
     # reassuring (*"nothing is being lost"*) rather than as the problem.
     #
-    # **Nothing logs the drops beyond git, deliberately.** Your answer when asked: *"I thought the
+    # **Nothing logs the drops beyond git, deliberately.** Her answer when asked: *"I thought the
     # ledger was git tracked so everything is logged."* It is — the file is committed every run,
     # so a removed row is in the diff, which outlives any print or side file.
     previous = {}
@@ -181,7 +181,7 @@ def main():
         elif old["qid"] != qid:
             changed.append((g, old["qid"], qid))
 
-    # **Source two: the Bureätten people.** You, 2026-08-27, defining them exactly after I had
+    # **Source two: the Bureätten people.** Emma, 2026-08-27, defining them exactly after I had
     # invented a hop threshold instead of asking: *"every item whose swedish wikipedia item is in
     # category:bureatten and which has a geni id."* That is `reports/bureatten.csv`, the
     # sv.wikipedia Category:Bureätten listing. No roster, no hops, no threshold.
@@ -202,13 +202,13 @@ def main():
                         n_bure += 1
     print(f"{n_bure} Bureätten people added as the second source")
 
-    # **Source three: the entry points.** You, 2026-09-03, when shown that adding 315 group QIDs
+    # **Source three: the entry points.** Emma, 2026-09-03, when shown that adding 315 group QIDs
     # as roots produced **0** new ring seeds: *"I think the Bure people were somehow manually
     # added to the universe or ledger too somehow. My guess is this was done manually in an
     # unscalable manner possibly with errors. Every entry point should be automatically in the
     # ledger once it is an established entry point."*
     #
-    # Your guess is right and the code above is the evidence: the Bure people ARE a hand-added
+    # Her guess is right and the code above is the evidence: the Bure people ARE a hand-added
     # second source, and 113 ledger rows carry that note. So an entry point being in the ledger
     # was never a property of the algorithm --- it was a property of one roster having been wired
     # in by hand. This makes it general instead.
@@ -266,15 +266,15 @@ def main():
 
     # **A ledger QID that has since been MERGED AWAY is followed to its survivor.**
     #
-    # You, 2026-09-02: *"an item that I edit that later gets redirected the algorithm needs to
+    # Emma, 2026-09-02: *"an item that I edit that later gets redirected the algorithm needs to
     # follow the redirect and put the new one s as a possible one to run on too."*
     #
-    # **This is the COMMON case, not the mirror of the check further down.** You, 2026-09-02:
+    # **This is the COMMON case, not the mirror of the check further down.** Emma, 2026-09-02:
     # *"it is almost 100% ubiquitous that my item i created or edited is gonna be the one
     # redirected elsewhere lol merge redirect targeting occurs by age."*
     #
-    # You are right and it is measurable. `Help:Merge` keeps the LOWER Q number, and every item
-    # in this ledger you made yourself is new -- so yours is the one merged AWAY, essentially
+    # She is right and it is measurable. `Help:Merge` keeps the LOWER Q number, and every item
+    # in this ledger she made herself is new -- so hers is the one merged AWAY, essentially
     # always. Of the 26 stale rows the first run found, **26 of 26** went high Q to low Q:
     # Q141225740 -> Q109852817, Q141216475 -> Q10511224, Q141242568 -> Q130665779. None went
     # the other way.
@@ -282,7 +282,7 @@ def main():
     # So this is the direction that matters, and the resolution further down -- which asks
     # whether a SCRAPED qid redirects to what the ledger holds -- covers the rare shape rather
     # than the symmetric other half. Describing the two as opposite directions of one problem
-    # understated how routine this one is: it is what happens every time you merges.
+    # understated how routine this one is: it is what happens every time she merges.
     #
     # Left unfollowed, every algorithm keyed on the ledger points at a dead id -- the subgraph
     # walk cannot reach the person, the duplicate guard cannot see their statements, and the
@@ -332,12 +332,12 @@ def main():
     print(f"\n{len(added)} added to the ledger:")
     for g, qid, label in added:
         print(f"   {g}  {qid}  {label}")
-    # **A "disagreement" is usually a MERGE you have already done.** You merged nine duplicate
-    # items on 2026-08-31 and this went on reporting all nine, because your contributions still
-    # name the item you created and that item is now a REDIRECT to the survivor the ledger
+    # **A "disagreement" is usually a MERGE she has already done.** Emma merged nine duplicate
+    # items on 2026-08-31 and this went on reporting all nine, because her contributions still
+    # name the item she created and that item is now a REDIRECT to the survivor the ledger
     # holds. Resolved live, every one of the nine pointed at the ledger's own value: the ledger
     # was right and the warning was noise -- noise that reads as "these people are absent",
-    # which is exactly what you asked about.
+    # which is exactly what she asked about.
     #
     # So resolve before comparing. A scraped qid that redirects to what the ledger holds is
     # AGREEMENT. One request per 50 candidates, never one per item.
@@ -370,7 +370,7 @@ def main():
 
     # **Resolve merges, every run, for the same reason the refresh itself runs every run.**
     #
-    # You, 2026-08-29: *"a lot of the items were merged and this is a problem. since it
+    # Emma, 2026-08-29: *"a lot of the items were merged and this is a problem. since it
     # means a lot of relationship statements consistently use the wrong thing"*. When two
     # items merge, the loser becomes a redirect; a ledger row still naming the loser makes
     # every P22/P25/P26/P40/P3373 the daily batch emits point at a redirect rather than at

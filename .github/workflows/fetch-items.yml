@@ -1,6 +1,6 @@
 # **Read a live Wikidata item from a session that cannot reach Wikidata.**
 #
-# `CLAUDE.md` § *A SESSION RUNS ON THE ANTHROPIC CLOUD OR ON YOUR COMPUTER* says a cloud session
+# `CLAUDE.md` § *A SESSION RUNS ON THE ANTHROPIC CLOUD OR ON HER COMPUTER* says a cloud session
 # can query Wikidata, and that is true of the ones whose egress allows it. This one's proxy
 # denies `www.wikidata.org` outright -- 403 on CONNECT, `urllib` and WebFetch alike -- so the
 # mechanism failed, not the task. Actions can reach it.

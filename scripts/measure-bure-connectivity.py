@@ -1,6 +1,6 @@
 """Are the Bureätten people we hold connected to each other in our tree?
 
-You, 2026-08-22: "we're just trying to connect them to each other... We're not
+Emma, 2026-08-22: "we're just trying to connect them to each other... We're not
 trying to run a gigantic export on all of them. We're trying to get them all
 connected to each other on a family tree."
 

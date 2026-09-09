@@ -2,7 +2,7 @@
 
     python scripts/build-izumo-p2600.py
 
-`reports/geni-qid-links.tsv` holds the identifier you wrote into these profiles
+`reports/geni-qid-links.tsv` holds the identifier Emma wrote into these profiles
 by hand. This intersects it with `reports/izumo-roster.tsv` and writes
 `reports/izumo-p2600-pairs.tsv`: for each roster person, the Geni profile whose
 About Me points at that person's Wikidata item.
@@ -14,7 +14,7 @@ numbers at all, so that was never a join to Wikidata.
 
 A QID sitting on more than one Geni profile is Geni's duplicate-profile
 situation. Both ids go in the row: `P2600` is multi-valued and a second one is
-the correct representation, per `CLAUDE.md`. The merges are your.
+the correct representation, per `CLAUDE.md`. The merges are Emma's.
 """
 import sys
 import csv
@@ -62,7 +62,7 @@ def main():
     dupes = [(r, ids) for r, ids in hit if len(ids) > 1]
     if dupes:
         print(f'\n{len(dupes)} roster people whose QID sits on more than one Geni profile '
-              f'-- both ids emitted, merges are you\'s:')
+              f'-- both ids emitted, merges are Emma\'s:')
         for r, ids in dupes:
             print(f'  {r["name"]:<34} {r["qid"]:<12} {";".join(ids)}')
 

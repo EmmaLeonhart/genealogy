@@ -1,21 +1,21 @@
 """How many of OUR people could take a label straight from order.life?
 
-**Queue item 13. You, 2026-08-15:** asked whether order.life feeds the
+**Queue item 13. Emma, 2026-08-15:** asked whether order.life feeds the
 seven-language work, and answered *"Yes — measure it properly first."*
 
-You had said order.life *"doesn't have a whole lot of them"*. Sampled over 40,000
+She had said order.life *"doesn't have a whole lot of them"*. Sampled over 40,000
 of its items it carries `ja` on 73%, plus `ko`, `he`, `zh`, `es` and `ru`. That is
 a lot, and it matters because **a copied label is free and a transliterated one is
 hand-built agentically**, name by name. If order.life covers a large share of the
 people item 1 has to label, item 1 gets much smaller.
 
 **What this does NOT do is reopen the rule.** The seven-language labels are
-*made*, not copied, for everybody order.life does not cover — your ruling
+*made*, not copied, for everybody order.life does not cover — Emma's ruling
 stands. This only measures the part that need not be made.
 
 **Joined on BOTH identifiers.** `orderlife/analysis/persons.tsv` carries a
 `geni_id` column *and* a `wikidata_qid` column, and a row may have either, both or
-neither. You, 2026-08-15: *"WHY THE FUCK DID YOU JOIN ON THE GENI ID RATHER THAN
+neither. Emma, 2026-08-15: *"WHY THE FUCK DID YOU JOIN ON THE GENI ID RATHER THAN
 JOINING ON THE WIKIDATA ID? THE ORDER.LIFE THING HAS WIKIDATA IDS AS A PROPERTY ON
 ITS OWN ITEMS."*
 
@@ -54,7 +54,7 @@ OUT_CSV = REPO / "reports" / "orderlife-label-coverage.csv"
 
 csv.field_size_limit(10_000_000)
 
-#: The seven you named, plus `mul`. Everything else is counted but not reported
+#: The seven Emma named, plus `mul`. Everything else is counted but not reported
 #: per-language, because it is not what item 1 needs.
 WANTED = ("en", "ja", "zh", "hi", "ar", "ru", "el", "mul")
 

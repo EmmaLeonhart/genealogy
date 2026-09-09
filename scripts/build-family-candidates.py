@@ -1,6 +1,6 @@
-"""The CHILD and SIBLING half of the manual zipper, as a deck you can answer.
+"""The CHILD and SIBLING half of the manual zipper, as a deck she can answer.
 
-**You, 2026-09-09:** *"I want to do some more manual zipper merging. Now I'm thinking for
+**Emma, 2026-09-09:** *"I want to do some more manual zipper merging. Now I'm thinking for
 siblings/children as I think we're get through of the parents mostly."*
 
     python scripts/pack-derived.py --unpack     # clean clone only; the derived CSVs are gitignored
@@ -8,7 +8,7 @@ siblings/children as I think we're get through of the parents mostly."*
 
     -> reports/family-candidates.tsv    every open case, one row -- the census
     -> out/family-gui-data.json         the deck
-    -> out/family-review.html           the deck rendered, which is what you opens
+    -> out/family-review.html           the deck rendered, which is what she opens
 
 Published, UNLINKED, at <https://emmaleonhart.github.io/genealogy/family-review.html>.
 
@@ -21,7 +21,7 @@ These ask the mirror question one slot down:
   accounts for. **This is the duplicate guard's own first arm**, the one that caught
   `Q2183430` *Benedicta Ebbesdotter of Hvide* being created a second time: `CLAUDE.md`
   § *THE DUPLICATE GUARD*, *"the duplicate was sitting in a list the batch already had a QID
-  for"*. It has held people back ever since and nothing ever put the question to you.
+  for"*. It has held people back ever since and nothing ever put the question to her.
 * **sibling** --- a sibling of our person holds a QID, and that item's `P3373` names a sibling
   nothing accounts for.
 
@@ -52,7 +52,7 @@ to build a card for, not something to smuggle through this one.
 
 ## What the card carries
 
-Parents, siblings, spouses and children on **both** sides. You, shown a question carrying none
+Parents, siblings, spouses and children on **both** sides. Emma, shown a question carrying none
 of it: *"Fuck you no relationships means I can't make a judgment."* For these two arms the
 siblings are the discriminating list --- the slot is a sibship, and whether the two sides line up
 is what settles it.
@@ -60,10 +60,10 @@ is what settles it.
 Shared words between the sides are highlighted. They are an aid to reading and never a decision;
 `CLAUDE.md` no-name-similarity governs and nothing here proposes anything. In 1600-1900 they will
 often disagree on a real pair --- § *1600-1900 is the band where NAMES LIE and YEARS decide*,
-71% of your own confirmed pairs spell the name differently --- which is why sex and years are on
+71% of her own confirmed pairs spell the name differently --- which is why sex and years are on
 the card and the names are not the evidence.
 
-Your verdicts come back through *Copy decisions* and go into `reports/emma-judgments.tsv` with
+Her verdicts come back through *Copy decisions* and go into `reports/emma-judgments.tsv` with
 `batch` = `family-adjudication-gui`. `SAME` and `DIFFERENT` retire a pair; `UNSURE` comes back.
 """
 
@@ -263,7 +263,7 @@ def main():
     deck.mark_also_offered(cases)
 
     # **A card with no name on OUR side is data, not a bug.** Geni redacts, so `Private` and the
-    # unnamed come through with an empty label, and you cannot judge an empty box against a name.
+    # unnamed come through with an empty label, and she cannot judge an empty box against a name.
     # Those are dropped from the deck and counted. A bare QID on the WIKIDATA side is the other
     # thing entirely -- that is the label lookup having failed -- and it still fails the run.
     unnamed = [c for c in cases if not (c.get("our") or "").strip()]
@@ -282,7 +282,7 @@ def main():
               "bare QID" % format(len(unresolved), ","), file=sys.stderr)
         ready = [c for c in ready if c not in unresolved]
 
-    # **Most evidence first.** A case with names in common across the two sibships is one you can
+    # **Most evidence first.** A case with names in common across the two sibships is one she can
     # settle in a glance; a case with nothing on either side is one nobody can, and leading with
     # those is how a deck stops being worked. This orders the deck; it judges nothing.
     ready.sort(key=lambda c: (len(c["shared"]),

@@ -2,10 +2,10 @@
 
     python scripts/audit-qid-identities.py
 
-**You, 2026-08-24:** *"do an audit of the qid identities"* — after one entry turned out
+**Emma, 2026-08-24:** *"do an audit of the qid identities"* — after one entry turned out
 to name the wrong person.
 
-`reports/geni-qid-links.tsv` maps Geni profiles to a QID taken from the Wikidata link you
+`reports/geni-qid-links.tsv` maps Geni profiles to a QID taken from the Wikidata link she
 wrote into each profile's About Me. It is the join the whole programme rests on, and it is
 hand-entered, so an entry can be wrong. The known case: `6000000227334350078` *Naokiyo
 Hiraoka* carries a link to `Q135579476` *Senge no Naokatsu* — **his son**. The father's
@@ -21,8 +21,8 @@ Two checks, both offline:
   rejection — because transliteration and regnal numbers make Geni and Wikidata names
   differ constantly and legitimately.
 
-**Nothing is rewritten.** These are your own About Me entries; which of two links is
-wrong is yours to say. `CLAUDE.md`: the purpose is to add, and your scratchpad data is not
+**Nothing is rewritten.** These are Emma's own About Me entries; which of two links is
+wrong is hers to say. `CLAUDE.md`: the purpose is to add, and her scratchpad data is not
 ours to edit.
 
 Writes `reports/qid-identity-audit.tsv`.

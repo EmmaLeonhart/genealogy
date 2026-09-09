@@ -2,11 +2,11 @@
 
     python scripts/census-solo-children.py
 
-**You, 2026-08-25:** *"solo child gives a bit of support but it's not gospel I'm gonna ask for a
+**Emma, 2026-08-25:** *"solo child gives a bit of support but it's not gospel I'm gonna ask for a
 queued up analysis on synoptic tree vs wikidata solo children situations like this."* And, before
 any of it was measured: *"Solo child says nothing unless there's some reason to match them lol."*
 
-You were right and it is now measured twice. `child`+`solo` is the worst cell in the join by the
+She was right and it is now measured twice. `child`+`solo` is the worst cell in the join by the
 one check with near-total coverage — **10.0%** of its pairs are refuted outright by `P21` *sex or
 gender*, against **0.0%** for `father`+`solo` and `mother`+`solo`.
 

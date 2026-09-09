@@ -1,6 +1,6 @@
 """What is actually going on with the "impossible" dates.
 
-You, 2026-08-11: *"The chances are there is actually something going on with
+Emma, 2026-08-11: *"The chances are there is actually something going on with
 them, and you're just deeming them impossible or whatever… you have to do the
 research on it."*
 
@@ -19,7 +19,7 @@ denotes**:
 
 A contradiction is only real when the intervals **cannot** be reconciled. The
 tolerance for `ABT` is not a constant this file invents — survival is reported
-at 0, 2, 5 and 10 years so the sensitivity is visible and you can choose.
+at 0, 2, 5 and 10 years so the sensitivity is visible and Emma can choose.
 
 Reads `reports/consistency-findings.csv`. Writes `reports/consistency-analysis.md`
 and `reports/consistency-surviving.csv` — every finding that survives at ±5, one

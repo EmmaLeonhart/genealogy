@@ -1,11 +1,11 @@
 # How to make an export individual
 
-**Your rules, dictated 2026-08-17.** An *export individual* is a placeholder
+**Emma's rules, dictated 2026-08-17.** An *export individual* is a placeholder
 profile created on Geni at an open slot in the tree, purely so a `Forest` export
 can be run from it. This file is the whole method: where to put one, what to call
 it, and what to do when a tree has no open slots left.
 
-Your framing for why it is written down at all: *"This all occurs sequentially and
+Her framing for why it is written down at all: *"This all occurs sequentially and
 this is why it takes a bit of difficulty to do because it's sequential. It's a bit
 time-consuming but I'm realizing I can just save all my time by having you do
 it."*
@@ -23,7 +23,7 @@ Five tiers, most preferred first. Take the highest tier the page offers.
 
 The best case, and the reason patronymics rank above everything else: the
 patronymic *names the father*, so the person being created is directly attested
-rather than invented. You: *"patronymics allow us to create an individual that is
+rather than invented. Emma: *"patronymics allow us to create an individual that is
 directly historically attested and doesn't involve the NN on them."*
 
 - **Given name** — read it off the patronymic. `Anders Olsen` → the father is
@@ -31,7 +31,7 @@ directly historically attested and doesn't involve the NN on them."*
 - **Surname** — the child's surname, and **the patronymic must not survive into
   it**.
 
-**The patronymic sits in either field and which one decides nothing.** You:
+**The patronymic sits in either field and which one decides nothing.** Emma:
 *"Sometimes the patronymic is part of the first name and sometimes it's in the
 last name, so you want to make sure that just the surname comes in and the
 patronymic is not present — the patronymic is removed if it was in the surname
@@ -59,12 +59,12 @@ view offers as an **Add mother** box.
 - **Surname** — none. We do not know it, and Geni's *Suggest surnames* will offer
   the child's, which would be invented.
 
-**Father-absent works identically.** You: *"For mother is present, father is
+**Father-absent works identically.** Emma: *"For mother is present, father is
 absent — we really will do the same thing. It's not a super preferable thing that
 it has to be that the placeholder individual we're creating is for the mother. It
 can be for the father. That's just really rare."*
 
-**Why this is worth doing even with no name to give.** You: *"We don't really
+**Why this is worth doing even with no name to give.** Emma: *"We don't really
 know what their name is, but what we do know is that by creating this person we're
 actually reducing ambiguity in the tree, because now there's an individual
 representing their mother — which can be helpful for situations where somebody may
@@ -86,7 +86,7 @@ informative part.
 
 ## `-ez` IS a patronymic, and it is read as one
 
-**You, 2026-08-18:** *"-ez is a real patronymic in some cases lol and we do treat it as
+**Emma, 2026-08-18:** *"-ez is a real patronymic in some cases lol and we do treat it as
 one in historical contexts."*
 
 So `Juana Jiménez de Castro` is **tier 1**, not tier 4: the patronymic names her father
@@ -98,7 +98,7 @@ explicit that *the patronymic must not survive into the surname*.
 **This was got wrong once**, on 2026-08-18, on that exact person. The reasoning was that
 `-ez` had fossilised into an inherited surname by the 1400s and that reading it live would
 invent a man. That is a real linguistic fact and it is **not** how this project reads
-them; your ruling is that the historical context is where the patronymic is live. The
+them; her ruling is that the historical context is where the patronymic is live. The
 profile created under the wrong reading is `NN Jiménez de Castro`
 (`6000000227314434935`) — it carries both faults, the `NN` and the patronymic left in the
 surname. It is left as-is rather than edited: the export it seeded already ran and closed
@@ -110,7 +110,7 @@ wide and Iberian lines are well represented in it.
 
 ## A Nordic farm name IS a surname, so it makes the seed tier 1
 
-**You, 2026-08-18:** *"uhh farm names are surnames here lol."*
+**Emma, 2026-08-18:** *"uhh farm names are surnames here lol."*
 
 So `Gilja`, `Mjåland`, `Tjåland`, `Aabø`, `Håle` and `Skårland` are **surnames**, and a
 person carrying a live patronymic *and* a farm name is **tier 1**: the patronymic names
@@ -120,11 +120,11 @@ the father, and the farm name is the surname he takes.
     Asgjerd Klausdtr. Aabø    ->   Klaus /Aabø/
     Ingeborg Olsdotter Gilja  ->   Ole /Gilja/
 
-**This paragraph said the opposite until you corrected it**, and the reasoning it gave
+**This paragraph said the opposite until she corrected it**, and the reasoning it gave
 was that a farm name is carried by both spouses and so is not patrilineal. That is a real
 fact about Norwegian naming and it is **not** the call here — the same shape as the `-ez`
 correction above, where a true linguistic observation was used to talk the seed down a
-tier and you ruled otherwise both times. **Do not reason a surname out of existence.** If
+tier and she ruled otherwise both times. **Do not reason a surname out of existence.** If
 the surname field holds something that is not the patronymic, it is the surname.
 
 Two placeholders were created under the old reading before the correction and are left
@@ -139,7 +139,7 @@ unaffected.
 
 ## Bail on anything weird. The loop is self-healing
 
-**You, 2026-08-17, and this is the governing rule for the whole loop:** *"if you
+**Emma, 2026-08-17, and this is the governing rule for the whole loop:** *"if you
 run into any kind of weirdness on any specific individual that might make you do
 weird stuff — like, say, running a search because you can't figure out how to
 click through — bail on that one, and try the next thing."*
@@ -149,12 +149,12 @@ completely self-healing. If you miss an individual because of weird rendering
 errors, then you move on to the next one, and there's a decent chance that you
 won't even need to do that individual this next time."*
 
-**A BAIL IS PER-ATTEMPT, NEVER PER-PERSON. There is no hold list.** You, 2026-08-18:
+**A BAIL IS PER-ATTEMPT, NEVER PER-PERSON. There is no hold list.** Emma, 2026-08-18:
 *"my guess with the bailed people is you can just go back to them… you can try different
 people. You can try adding different individuals at other parts of their tree and then
 running it… I feel like you've been too stateful with this."*
 
-Your intent, in your words, is *"filling up the entire family tree around a certain person
+Her intent, in her words, is *"filling up the entire family tree around a certain person
 with new individuals constantly trying to figure out one that actually works"*. So a
 saturated rim is not a dead end — **expand a `+N` button and the frontier appears**, with
 open parent slots on it. That is how `Ola R Sande` was retried after being wrongly written
@@ -181,7 +181,7 @@ so a person skipped this round either gets covered by somebody else's export or
 simply comes back at the top of the next list. Nothing is lost by skipping and
 real time is lost by not skipping.
 
-**Geni's own search is never used for anything, ever.** You, 2026-08-18:
+**Geni's own search is never used for anything, ever.** Emma, 2026-08-18:
 *"Geni search should absolutely never be used whatsoever because it is actively
 hostilely designed and built towards upselling you on a very expensive subscription.
 It does not give any useful information whatsoever… you should absolutely never even
@@ -194,8 +194,8 @@ and it does **not** help here, because *"new individuals take a while to be inde
 and every profile this loop creates is seconds old. For a freshly created placeholder
 there is no search of any kind that works. The page is the only source.
 
-**Never run a search to recover an ID. Bail.** You, 2026-08-18: *"bruh why did
-You attempt a search?"* and *"you do not search you just bail if you run into
+**Never run a search to recover an ID. Bail.** Emma, 2026-08-18: *"bruh why did
+you attempt a search?"* and *"you do not search you just bail if you run into
 issues."* The ID comes off the page — click the newly created node in the tree and
 it opens the profile in a new tab whose URL carries the ID. If it does not come off
 the page, that individual is done: drop it and take the next one. Searching Geni for
@@ -222,7 +222,7 @@ neighbourhood, one export either way.
 
 **Not yet a rule.** The alternatives are to use the child's full display name
 (`father of NN Persson`), to fall back a tier whenever the child's given name is a
-marker, or to accept `father of NN`. Raise it with you when the loop is not
+marker, or to accept `father of NN`. Raise it with Emma when the loop is not
 mid-flight.
 
 ## The ID can be lost AFTER the profile is created, and that is still a bail
@@ -247,7 +247,7 @@ route is the limit.
 ## A master profile is a skip
 
 Sometimes a slot looks addable and is not — Geni's **master profiles** are locked
-against edits from an account that does not curate them. You, 2026-08-17: *"if it
+against edits from an account that does not curate them. Emma, 2026-08-17: *"if it
 looks like you should be able to add an individual but you can't… just don't
 bother that much and skip through it."*
 
@@ -268,11 +268,11 @@ person's tree, and pick where to work from that number.
 - **Small**, because a small tree means more open slots.
 - **Odd**, because an odd number of ancestors almost always means one couple is
   half-filled — a father present with the mother absent — which is a guaranteed
-  legitimate insertion point. You: *"an odd number of ancestors guarantees a
+  legitimate insertion point. Emma: *"an odd number of ancestors guarantees a
   legitimate insertion point."*
 
 An even count is not disqualifying; it just does not come with that guarantee.
-You: *"even number of ancestors — you can have that same kind of insertion point
+Emma: *"even number of ancestors — you can have that same kind of insertion point
 if there is, say, a single eternal lineage of four people or something like
 that."*
 
@@ -280,7 +280,7 @@ that."*
 in the context of choosing which tree to move to, **1 beats 0**.
 
 **Rough ranking, and it is explicitly rough:** `1, 3, 5, 0, 2, 4, 6, 7, 9, 11, …`
-You: *"you can make your own ordering ranking for this, and don't put too much
+Emma: *"you can make your own ordering ranking for this, and don't put too much
 stress on it… just don't overthink it."* So this ordering is a tiebreak heuristic,
 not a rule to defend. The tier list above is the part that matters.
 
@@ -296,27 +296,27 @@ Once the individual exists, export from **their** profile:
 3. Submit, leave the page open — it refreshes itself when the file is built — then
    click **Download My GEDCOM File**.
 
-**A SUBMITTED EXPORT CANNOT BE CANCELLED.** You, 2026-08-29: *"you think you can kill a geni
+**A SUBMITTED EXPORT CANNOT BE CANCELLED.** Emma, 2026-08-29: *"you think you can kill a geni
 export read the fucking docs you can't."* Geni offers no cancel, no abort and no queue management —
 once submitted, the only options are wait or abandon. So "kill it and resubmit" is not a choice
 anyone can make, and offering it as one is offering fiction. A slow export is waited out or written
 off; it is never killed.
 
-**One at a time is GENI's limit, not a preference.** You, 2026-08-18: *"There's no
+**One at a time is GENI's limit, not a preference.** Emma, 2026-08-18: *"There's no
 way that you can do an export concurrently. That isn't my decision thats geni."* So
 there is no throughput dial here and nothing to trade off — a second export cannot be
 in flight, short of a second Geni account. When builds are slow the rate is slow, and
 the only thing the loop controls is dead time between one zip landing and the next
 export being submitted.
 
-**Poll the page, not a clock.** Your instruction the same day: *"please don't use the
+**Poll the page, not a clock.** Her instruction the same day: *"please don't use the
 ticks as a clock. Please use the web page changing as a clock."* The download page
 flips to *Your GEDCOM File is Ready to Download* the moment the build finishes; that
 flip is the signal to act. Waiting for an hourly cron tick to notice instead can add
 most of an hour per export — measured overnight 2026-08-18, where letting the ticks
 drive dropped the rate from 7.1 exports/hour to about 1.
 
-**Strictly one at a time.** You, 2026-08-17: the batch of seeds *"needs to be
+**Strictly one at a time.** Emma, 2026-08-17: the batch of seeds *"needs to be
 exported after these people have the GEDCOMs exported and downloaded"*, and
 sequence is the point. Queue the next export only once the previous zip is on
 disk.
@@ -334,7 +334,7 @@ Kept numbered so they can be referred to later without re-reading the whole file
 
 ### Decision 1 — tier 4's given name is `NN`
 
-**You, 2026-08-17, asked directly.** A tier 4 father is `NN` plus the child's
+**Emma, 2026-08-17, asked directly.** A tier 4 father is `NN` plus the child's
 **birth surname**: child `Kari /Bergstrom/` gives father `NN /Bergstrom/`.
 
 Tier 4 is *defined* by having no patronymic, so nothing attests his given name,
@@ -346,7 +346,7 @@ The father does **not** inherit the child's given name.
 
 ### Decision 2 — the patronymic resolves to the proper nominative
 
-**You, 2026-08-17, choosing against the option that matched your own past seeds.**
+**Emma, 2026-08-17, choosing against the option that matched her own past seeds.**
 Strip the patronymic ending and write the **real given name it came from**, not
 the bare stem:
 
@@ -358,10 +358,10 @@ the bare stem:
 | `Carl Karlsson` | `Karl` |
 | `Hugh ben Lewis` | `Lewis` |
 
-So `Ols father of Karen` — an existing seed of yours — would be made as `Ole`
-today. Your earlier seeds are not the standard; this is.
+So `Ols father of Karen` — an existing seed of hers — would be made as `Ole`
+today. Her earlier seeds are not the standard; this is.
 
-**Every patronymic system counts, not just the Norse one.** You, 2026-08-17:
+**Every patronymic system counts, not just the Norse one.** Emma, 2026-08-17:
 *"this happens in all patronymics so like ap X, fitz X, ferch X, X-ez, but Norse
 is by far most common in this data."*
 
@@ -389,7 +389,7 @@ tiers 1 and 2 worth more than an `NN`.
 
 ## Which paths earn an export at all
 
-**You, 2026-08-18**, once the destination-seeded exports were measured honestly and
+**Emma, 2026-08-18**, once the destination-seeded exports were measured honestly and
 turned out to halve gaps rather than clear them: *"the person has to be either really
 weird and far out there... or popes or something like that. They have to be weird and far
 out there, or they need to be popes, or they need to be Scandinavian, for us to do a
@@ -401,19 +401,19 @@ regardless of how many people are missing:
 - **Scandinavian / Nordic** — *"if there's particularly very large paths that are
   specifically related to Scandinavian people, like the Norwegian, Swedish academics we
   were doing for the Rogaland people, these ones are pretty valuable."* Same reasoning as
-  `CLAUDE.md` § *The practical goal is YOU densely linked*: that is where you are linked,
-  so the paths are short and the links land near you.
+  `CLAUDE.md` § *The practical goal is EMMA densely linked*: that is where she is linked,
+  so the paths are short and the links land near her.
 - **Popes.** Named explicitly, twice.
-- **Weird and far out there.** Your phrase. You confirmed three groups: religious founders
+- **Weird and far out there.** Her phrase. She confirmed three groups: religious founders
   and missionaries, people who named or founded something load-bearing, and non-European
   scholars. **Ask when unsure** — *"if you are unsure if somebody is weird enough or not"*
   — this is the one category that is a judgement rather than a lookup.
 
-**A random celebrity does not qualify.** Your words: *"for paths that are like a random
+**A random celebrity does not qualify.** Her words: *"for paths that are like a random
 celebrity ... basically the person has to be either really weird and far out there."* So
 Magnus Carlsen, Emma Watson, Dan Brown and Luka Modrić are page-saving, not exports.
 
-`scripts/classify-export-worth.py` applies this, with thresholds you delegated and then
+`scripts/classify-export-worth.py` applies this, with thresholds Emma delegated and then
 corrected once. Of the 451 paths still holding 4+ missing people, **39 earn exports** and
 **412 go to page-saving**:
 
@@ -424,32 +424,32 @@ corrected once. Of the 451 paths still holding 4+ missing people, **39 earn expo
 | every weird, any length | 7 |
 | Nordic, 16+ missing | 7 |
 
-**The first answer was 16 and you rejected it** — it produced 68 long paths, *"68 exports
+**The first answer was 16 and she rejected it** — it produced 68 long paths, *"68 exports
 is too much, as an export takes about 10 minutes. That is like seven hours."* The binding
-constraint is your clock.
+constraint is her clock.
 
-**The Nordic measurement is what settled the number.** You asked for it directly: Nordic
+**The Nordic measurement is what settled the number.** She asked for it directly: Nordic
 paths in the export band run **mean 8.6 missing, median 8, max 21**. The entire Nordic
 distribution sits below 16, so "long path" and "Nordic path" were never the same
 population and a threshold tuned to Nordic lengths would have swept in hundreds. 22 puts
 the long-path gate above every Nordic path, which is the right shape: **Nordic paths
 qualify on significance, not on length.**
 
-**Read the place off the path FILENAME, not the path body.** Every path starts at you
-and climbs through your Norwegian ancestors, so scanning the file for Nordic place names
+**Read the place off the path FILENAME, not the path body.** Every path starts at Emma
+and climbs through her Norwegian ancestors, so scanning the file for Nordic place names
 fires on the path's own members and tells you nothing about the destination — it scored
 Nelly Sachs and Burton Watson as strongly Scandinavian. The isolate slug carries the
 destination's own recorded place (`...-1879-1964-oslo`).
 
-**George R.R. Martin is IN**, on your instruction, despite being none of the three: *"the
+**George R.R. Martin is IN**, on her instruction, despite being none of the three: *"the
 sheer length of his tree makes it pretty interesting"* and *"I think there's a reasonable
 chance that a massive amount will just be cut off of this path by doing so."* He is the
-longest path in the corpus at 35 missing over 85 steps. This is an exception you made by
+longest path in the corpus at 35 missing over 85 steps. This is an exception she made by
 name, not a fourth category.
 
 ### A long path gets TWO exports, then page-saving. It does not recurse
 
-**You, 2026-08-18**, superseding the earlier recurse-until-the-gap-is-small rule:
+**Emma, 2026-08-18**, superseding the earlier recurse-until-the-gap-is-small rule:
 
 > *"If the page is particularly long, like the George R.R. Martin one, my vision of how to
 > deal with it is pretty simple: 1. We run the process on the endpoint. 2. We find whatever

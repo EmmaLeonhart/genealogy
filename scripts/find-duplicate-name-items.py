@@ -9,7 +9,7 @@ verdict: *"These look like Wikidata duplicates. Worth reporting upstream rather 
 between."*
 
 That report named four examples and no list, so this recomputes the bucket in full and writes
-it where you can act on it. You asked on 2026-08-31 for one file holding *"these merges and
+it where Emma can act on it. She asked on 2026-08-31 for one file holding *"these merges and
 the wikidata duplicates and all the other things we went over"*, to work through by hand.
 
 **Identical description is evidence, not proof.** Two family-name items both described

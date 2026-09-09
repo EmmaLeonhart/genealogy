@@ -1,6 +1,6 @@
 """For every profile carrying a placeholder name: does it ALSO have a real one?
 
-**This is the question that decides whether normalising is safe.** You,
+**This is the question that decides whether normalising is safe.** Emma,
 2026-08-14: *"I want to know if any of these have additional names that are not
 in the unknown thing or whatever, because a lot of these individuals, we are
 normalizing them but they're expected to be like this."*

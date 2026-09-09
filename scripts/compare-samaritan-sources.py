@@ -1,6 +1,6 @@
 """The hand-transcribed Samaritan GEDCOMs against what Geni now holds.
 
-Queue item 9b. **You, 2026-08-16, explicitly without an answer:** *"I don't
+Queue item 9b. **Emma, 2026-08-16, explicitly without an answer:** *"I don't
 really know what you're supposed to do with the old Samaritan stuff. Now that we
 have this new Samaritan stuff, has that one changed relationship? This
 relationship would kind of either have to be changed in them or they need to be
@@ -28,7 +28,7 @@ both, does the transcription and Geni agree about who the father is? Three
 outcomes:
 
 * `AGREE` — same father name on both sides.
-* `DISAGREE` — **the thing you are asking about.** Reported with both, never
+* `DISAGREE` — **the thing Emma is asking about.** Reported with both, never
   resolved here.
 * `GENI ONLY` / `SOURCE ONLY` — one side records a father and the other does not.
 

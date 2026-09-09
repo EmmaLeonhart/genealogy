@@ -2,15 +2,15 @@
 
     python scripts/extract-wikidata-labels.py
 
-**You, 2026-08-25:** *"we didn't actually establish in any meaningful sense that the people are
+**Emma, 2026-08-25:** *"we didn't actually establish in any meaningful sense that the people are
 absent in that chain... I want you to actually at least make some effort in trying to do text
 searches on the names or variants of the names on Wikidata... We might basically find that that
 one single daughter is the only person absent in the line in Wikidata, but it's just that the
 Wikidata ones are not genealogically linked."*
 
-**You are right that nothing established the absences.** The chain was called absent because no
+**She is right that nothing established the absences.** The chain was called absent because no
 `P2600` *Geni.com profile ID* carries those Geni ids. That is the same reasoning that called
-`Q2183430` *Benedicta Ebbesdotter of Hvide* absent while you sat in our store with thirty
+`Q2183430` *Benedicta Ebbesdotter of Hvide* absent while she sat in our store with thirty
 properties — **absence of a Geni id is not absence of an item.**
 
 Two ways a chain member could be present and invisible, and this file supports both:
@@ -18,10 +18,10 @@ Two ways a chain member could be present and invisible, and this file supports b
 **1. Under a name we have not looked for.** `Lagmann Gunnbjørn Toresson Tengs` might be
 `Gunnbjørn Toresson` or `Gunnbjørn på Tengs` on Wikidata. Names are useless for *deciding*
 identity — `CLAUDE.md` deleted a module for that and it stays deleted — but they are exactly right
-for *finding candidates a human then judges*, which is what you asked for.
+for *finding candidates a human then judges*, which is what Emma asked for.
 
 **2. Through another genealogy database.** Wikidata carries a dozen genealogical identifiers, and
-they cross-reference each other. You: *"I think Wikidata does the best at entity resolution
+they cross-reference each other. Emma: *"I think Wikidata does the best at entity resolution
 across different genealogical databases... if those things have cross-references with Geni, we
 could potentially go down that chain."* An item with a Genealogics or Rodovid id for a person our
 chain names is the same evidence a `P2600` would be, arriving by a different route.

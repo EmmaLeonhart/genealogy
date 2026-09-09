@@ -2,12 +2,12 @@
 
     python scripts/check-name-items-live.py [--usage family] [--limit N]
 
-**You, 2026-08-29:** *"certain names, for example Tunheim, I've noticed that some of these
+**Emma, 2026-08-29:** *"certain names, for example Tunheim, I've noticed that some of these
 names got merged in with an existing item. I'm extremely confused how this happened, and it
 seems to me to indicate maybe you're not actually checking the existence of the names correctly
 in our data."*
 
-You are right, and the cause is written in the resolver's own docstring.
+She is right, and the cause is written in the resolver's own docstring.
 `measure-name-resolution.py`: *"A name item counts only if some person in our own store already
 points at it with `P735` or `P734` … A Geni name Wikidata has an item for, which nobody in our
 store carries, is invisible here."* `Q36927172` *Tunheim* (family name) exists on Wikidata and

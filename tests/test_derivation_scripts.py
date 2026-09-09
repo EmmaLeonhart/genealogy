@@ -1,12 +1,12 @@
 """The rule-encoding functions in `scripts/` that produce the derived data.
 
-Every CSV you are being asked to make decisions from is written by a script in
+Every CSV Emma is being asked to make decisions from is written by a script in
 `scripts/`, and the test suite reaches `src/genimerge/` only. That gap produced a
 real defect: `derive-labels.py` fell back to a mixed Latin+CJK string when a
 person had no pure Latin name, so an "English label" could contain CJK
 characters. It was caught by two reports disagreeing, not by the code.
 
-These pin the rules that turn your instructions into data — the ones where a
+These pin the rules that turn Emma's instructions into data — the ones where a
 silent change alters what gets written rather than crashing.
 
 Scripts have hyphens in their filenames and are not importable, so they are
@@ -138,7 +138,7 @@ def test_no_letters_at_all(labels):
     assert labels.script_group("") == "none"
 
 
-# --- your dot rule -------------------------------------------------------
+# --- Emma's dot rule -------------------------------------------------------
 
 
 @pytest.mark.parametrize("token", [".", "..", "?", "-", "_"])

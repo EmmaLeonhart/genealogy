@@ -2,7 +2,7 @@
 
     py scripts/build-agreeing-latin-labels.py
 
-**You, 2026-09-01, giving the rule outright:** *"There's a simple solution to no English label:
+**Emma, 2026-09-01, giving the rule outright:** *"There's a simple solution to no English label:
 if multiple Latin alphabet labels agree then it becomes the en label and the mul label."*
 
 **The population is the 36,592 people who still have no `en` label** after the 2026-09-01 rebuild.
@@ -138,7 +138,7 @@ def main() -> int:
         w.writeheader()
         w.writerows(sorted(rows, key=lambda r: (-r["records"], r["geni_id"])))
 
-    # Two edits per person: `en` and `mul` carry the same agreed string. Your rule names both,
+    # Two edits per person: `en` and `mul` carry the same agreed string. Her rule names both,
     # and `CLAUDE.md` section *The MARRIED name is the real name* makes `mul` the real label --
     # so this is not `en` with a copy, it is the label, written in both places.
     edits = []

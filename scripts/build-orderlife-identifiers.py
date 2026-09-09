@@ -1,6 +1,6 @@
 """order.life's genealogy identifiers that Wikidata lacks, as edit objects.
 
-Queue item 6. You, 2026-08-15: *"look over all the order.life properties that
+Queue item 6. Emma, 2026-08-15: *"look over all the order.life properties that
 might be novel"* — and the ones from **P155 up are not novel at all**. They carry
 the same number and the same meaning as Wikidata's, because order.life allocated
 them by copying Wikidata's numbering above its own local block.

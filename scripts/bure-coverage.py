@@ -2,7 +2,7 @@
 
     python scripts/bure-coverage.py
 
-**You, 2026-08-28, and it changes the shape of the campaign:** *"the bure people here we
+**Emma, 2026-08-28, and it changes the shape of the campaign:** *"the bure people here we
 don't need to export from all of them we just need to get all of them in exports"*.
 
 The target is **coverage of the 251**, not one export per person. A `Forest` export returns
@@ -14,7 +14,7 @@ So the loop is: seed one absent person, export, **re-measure**, and only seed fo
 still missing. This script is the re-measure step, and the reason it exists as a script rather
 than a grep is that it has to run after every single export.
 
-**The campaign ends when the list is empty, and that is your stopping rule.** You, same day:
+**The campaign ends when the list is empty, and that is her stopping rule.** Emma, same day:
 *"we can search through all of the people as we add more since we want all these bureatten
 people in the geni synoptic tree and once everyone is covered the campaign is over. Because
 these people are quite linked as they are a family relationship to each other."*
@@ -38,7 +38,7 @@ was invisible, and this script reported **100 of 251 still absent** for a campai
 ends *"CAMPAIGN COMPLETE: all 251 Bureatten people with a Geni id are now in exports/"*. The true
 number was 0, confirmed by scanning every `.ged` directly.
 
-That is `CLAUDE.md` § *Correcting your own record in an export does nothing until the tree is
+That is `CLAUDE.md` § *Correcting her own record in an export does nothing until the tree is
 re-merged* in a new place: **running the analysers is not running the generator**, and a file's
 mtime says when it was written, never how fresh its inputs were.
 

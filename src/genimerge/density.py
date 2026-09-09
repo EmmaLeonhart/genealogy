@@ -386,7 +386,7 @@ def render_markdown(
 def render_seed_list(regions: list[Region]) -> str:
     """One line per region, in the shape of `individuals I can easily export.txt`.
 
-    ``<url> | Geni - <name>``, so the output drops straight into the file you
+    ``<url> | Geni - <name>``, so the output drops straight into the file Emma
     already keeps by hand and can be pasted back into a browser.
     """
     lines = []

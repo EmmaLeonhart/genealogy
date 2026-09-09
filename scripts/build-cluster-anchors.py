@@ -1,6 +1,6 @@
 """Where the two cut-off clusters touch Wikidata.
 
-You, 2026-08-13, having found `Kadin Harding` and `Jacqueline Crispin` inside
+Emma, 2026-08-13, having found `Kadin Harding` and `Jacqueline Crispin` inside
 them: *"my expectation here is basically that the seeds supposed to link to them
 just were not going correctly... we can go on and try to get them connected to
 the world tree in other ways."*
@@ -44,7 +44,7 @@ CLUSTERS = {
                               / "export-Forest-6000000227145420853.ged",
 }
 
-#: The two profiles you found by hand, which is what prompted this.
+#: The two profiles Emma found by hand, which is what prompted this.
 FOUND = {
     "6000000176095890839": "Kadin Harding",
     "6000000005082335522": "Jacqueline Crispin",

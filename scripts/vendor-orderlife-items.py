@@ -1,6 +1,6 @@
 """Vendor order.life's 164,558 item JSONs into this repo as gzipped shards.
 
-You, 2026-08-15: *"The data should be vendored here… we preserve the Order.life
+Emma, 2026-08-15: *"The data should be vendored here… we preserve the Order.life
 QIDs because there's some important stuff about it. It should be here so that we
 can easily reference it all the time."*
 
@@ -9,7 +9,7 @@ so a clean clone of this repo could not build the batch at all — the same fail
 as the 37 gitignored GEDCOMs, where a fresh checkout silently measured something
 different from every report in the repo.
 
-**Sharded rather than copied file-for-file, which was your call.** Every QID and
+**Sharded rather than copied file-for-file, which was Emma's call.** Every QID and
 every claim is preserved either way; the difference is what git has to track.
 164,558 loose files would take this working tree from 5,307 to ~175,000 and slow
 every `status`, `add` and `checkout`. **`wikidata/items/` already uses this exact

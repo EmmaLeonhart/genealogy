@@ -3,7 +3,7 @@ everything derived from it, ending with the batch.
 
     python scripts/rebuild-everything.py
 
-**You, 2026-08-29, and this script exists because you are right:** *"this explains why it's so
+**Emma, 2026-08-29, and this script exists because she is right:** *"this explains why it's so
 hard: because it's not one script it's a bunch of scripts that you need to remember to run in the
 right order. Nope make it one script that always ends by calling the script that regenerates the
 quickstatements."*
@@ -38,7 +38,7 @@ in this area — *a guard against a malformed case, paid for with real values th
 without trace*.
 
 **Step 5 exists because the chain rotted in exactly the way this script was written to prevent.**
-You, 2026-09-01, on being shown it: *"Just that it was so stale lol."*
+Emma, 2026-09-01, on being shown it: *"Just that it was so stale lol."*
 `reports/relationship-label-preview.csv` was dated **2026-08-19** against a tree rebuilt on
 **08-31** — twelve days — and it is the sole source of the `relationship label` rows in the `en`
 batch. Measured before the rebuild: it held 39,691 people, of whom only **9,996** were still
@@ -80,13 +80,13 @@ STEPS = [
     # reads: measured 2026-09-03, peak RSS 13.30 GB and KILLED without it against 8.79 GB in
     # 7.7 min with it, for the same 1,451,993 people and 630,053 families. It is what lets this
     # script run on a GitHub runner at all -- see `genimerge.slim`.
-    # **BEFORE the merge, because the merge consumes what it writes.** You, 2026-09-05, on the
+    # **BEFORE the merge, because the merge consumes what it writes.** Emma, 2026-09-05, on the
     # manual parental zipper correspondences: *"a good long term architectural smoothing would
     # make it so that in the pipeline they are generated into a gitignored gedcom that is part of
     # the synoptic tree merge, with qids in bios being a fundamental part of the pipeline."*
     #
     # It is generated IN ADDITION: `build-garborg-day.ledger()` still reads
-    # `reports/manual-identifications.csv` directly, which is your *"I do not want to break the
+    # `reports/manual-identifications.csv` directly, which is her *"I do not want to break the
     # pipeline"*. The direct read goes only once the tree route is shown to carry the same pairs.
     ("the manual correspondences as a GEDCOM",
      [sys.executable, os.path.join("scripts", "build-correspondence-gedcom.py")]),
@@ -124,16 +124,16 @@ STEPS = [
     ("pack the big CSVs", [sys.executable, os.path.join("scripts", "pack-derived.py")]),
     ("the QuickStatements batch",
      [sys.executable, os.path.join("scripts", "build-garborg-day.py"), "--compose"]),
-    # **The adjudication deck, AFTER the batch.** You, 2026-09-01: *"I told you to regenerate the
+    # **The adjudication deck, AFTER the batch.** Emma, 2026-09-01: *"I told you to regenerate the
     # html every time with the pipeline."* It reads the derived CSVs plus
     # `reports/emma-judgments.tsv`, so it must follow the derived layer; it goes after the batch
     # so a deck rendered here describes the same state the batch was built from.
     #
     # It was reachable only through `refresh-drift.py` picking it up by chance, which is why
     # `out/parent-review.html` rendered **0 cards** on 2026-09-01 while 709 candidates sat in
-    # `reports/parent-candidates.tsv` -- and you answered 207 of them off the raw TSV instead.
+    # `reports/parent-candidates.tsv` -- and she answered 207 of them off the raw TSV instead.
     #
-    # It makes ~15 batched Wikidata requests for the candidates' sex and dates. Your call, asked
+    # It makes ~15 batched Wikidata requests for the candidates' sex and dates. Her call, asked
     # directly: run it in both this and the scheduled pipeline, and carry the whole deck with no
     # cap -- a cap is what hid the work the first time.
     ("the adjudication deck",

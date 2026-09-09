@@ -1,10 +1,10 @@
 name: Daily batch
 
-# **You, 2026-08-31:** *"not wikidata editing but instead emailing me the daily quickstatements
+# **Emma, 2026-08-31:** *"not wikidata editing but instead emailing me the daily quickstatements
 # file to me every day so I can run it."* Nothing here edits Wikidata. The deliverable is delivery.
 #
-# **It opens an ISSUE rather than sending mail, and that is your idea, 2026-09-01:** *"Uhh I don't
-# think I need this? Can't github actions just send me an email lol."* You are right. GitHub
+# **It opens an ISSUE rather than sending mail, and that is her idea, 2026-09-01:** *"Uhh I don't
+# think I need this? Can't github actions just send me an email lol."* She is right. GitHub
 # already emails about issues, so an SMTP server, a sending account and an app password were three
 # secrets bought for something the platform does for free. `send_batch_email.py` and the `SMTP_*`
 # secrets are deleted.
@@ -13,7 +13,7 @@ name: Daily batch
 # textarea, so the text IS the deliverable and an email carrying it is a complete hand-off. The
 # run artifact stays for anything that wants the file.
 #
-# **It is assigned to you**, because a notification on issue creation is not guaranteed by
+# **It is assigned to her**, because a notification on issue creation is not guaranteed by
 # watching alone -- assignment is.
 
 on:

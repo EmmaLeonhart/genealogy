@@ -2,7 +2,7 @@
 
     python scripts/build-emperor-rosters.py
 
-**You, 2026-09-03**, asked how to source them: *"Build from Wikidata later."* Both are
+**Emma, 2026-09-03**, asked how to source them: *"Build from Wikidata later."* Both are
 entry-point groups dated 2027-01-01 in `reports/entry-point-groups.tsv` and both resolved to
 **0** people, because nothing in the repo enumerates either.
 
@@ -20,8 +20,8 @@ or item ID*:
 | `Q10962705` | *Emperor of Ethiopia* | hereditary rulers of the Ethiopian Empire |
 | `Q208233` | *Emperor of Japan* | head of state of Japan |
 
-**The Geni join has THREE sources and the order is yours.** `CLAUDE.md` § *The Geni BIO
-carries your own QID claims. Read them before any download* --- your own bio links are the
+**The Geni join has THREE sources and the order is hers.** `CLAUDE.md` § *The Geni BIO
+carries her own QID claims. Read them before any download* --- her own bio links are the
 freshest statement of identity there is, so they are read first; then the live `P2600` on the
 item; then the local `p2600-all.tsv` snapshot. The `geni_source` column records which one
 answered, so a row can be traced rather than trusted.
@@ -135,7 +135,7 @@ def main() -> None:
             writer.writerow(["qid", "label", "geni_ids", "geni_source", "position"])
             for qid in sorted(people, key=_sort_key):
                 entry = people[qid]
-                # Your bio links first, then the item's own statement, then the snapshot.
+                # Her bio links first, then the item's own statement, then the snapshot.
                 if qid in bios:
                     geni, source = bios[qid], "bio"
                 elif entry["live"]:

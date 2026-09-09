@@ -2,16 +2,16 @@
 
     python scripts/measure-zipper-reliability.py
 
-**You, 2026-08-25, on the cascade being presented as your design:** *"solo -> date -> name isn't
-really a thing I asked for lol it's a hallucination on your part."* You had said dates-then-names
+**Emma, 2026-08-25, on the cascade being presented as her design:** *"solo -> date -> name isn't
+really a thing I asked for lol it's a hallucination on your part."* She had said dates-then-names
 about the **2x2 sibling** case specifically; it was generalised into an architecture and then
-attributed back to you.
+attributed back to her.
 
 And the substantive half: *"Solo child says nothing unless there's some reason to match them lol"*
 -- a single unmatched person on each side is trivially unique and therefore carries no
 information. Uniqueness is not evidence when the set has one element.
 
-Then the standard you set for all of it: *"a lot of these rules are empirical and we need to
+Then the standard she set for all of it: *"a lot of these rules are empirical and we need to
 empirically study our data to figure out what to make of it. Don't jump to conclusions based on
 what sounds like it might be true. Even parents isn't certain."*
 
@@ -22,13 +22,13 @@ without asking Wikidata anything:
   A floor on wrongness, not a measure of rightness: agreeing dates prove very little, and the
   `date` method selects on the year so its own column is circular by construction and is marked.
 * **independent corroboration** -- some source that is not the zipper puts the same pair together
-  (your About Me links, your hand identifications, the structural walk, the Izumo and Tanba
-  rosters, your hand verdicts in `reports/emma-judgments.tsv`).
+  (Emma's About Me links, her hand identifications, the structural walk, the Izumo and Tanba
+  rosters, her hand verdicts in `reports/emma-judgments.tsv`).
 * **independent contradiction** -- such a source puts one of them with somebody else.
 
-**The reliability order in `zipper-join.py`'s `SLOTS` is your spoken ranking and is a hypothesis
-this file exists to test.** You said parents are the most reliable and then immediately warned
-*"even parents isn't certain"*. Nothing here assumes you are right and nothing assumes you are
+**The reliability order in `zipper-join.py`'s `SLOTS` is Emma's spoken ranking and is a hypothesis
+this file exists to test.** She said parents are the most reliable and then immediately warned
+*"even parents isn't certain"*. Nothing here assumes she is right and nothing assumes she is
 wrong; the table is the answer.
 
 Writes `reports/zipper-reliability.md`. Offline.

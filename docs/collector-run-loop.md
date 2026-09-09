@@ -1,4 +1,4 @@
-# The collector's run loop — your dictation, 2026-09-06
+# The collector's run loop — her dictation, 2026-09-06
 
 **This is the whole of what the extension does per individual.** Written down before any of it is
 built, because the last day was spent building pieces of it in the wrong order.
@@ -41,7 +41,7 @@ built, because the last day was spent building pieces of it in the wrong order.
                     -> at or above it: walk up the family tree, add the individual,
                        run the Forest export, and flag them in a ledger as an export target
 
-## ⛔ NO DISCRETION ON THE AGENT'S PART. You said it three times
+## ⛔ NO DISCRETION ON THE AGENT'S PART. She said it three times
 
 The agent navigates. Everything after that — whether the path resolved, whether the statistics
 justify an export, which ancestor to add, whether to run the export at all — is the extension's,
@@ -78,10 +78,10 @@ getting this wrong.
 | the whole thing as ONE job | **not built** — it is five jobs I sequence by hand |
 
 **The missing piece is the sequencing**, not the parts. Almost every step exists as a job the
-agent has to call in the right order and reason about between calls; your design is one job that
+agent has to call in the right order and reason about between calls; her design is one job that
 runs the whole loop and makes every decision itself.
 
-## The goal, in your words
+## The goal, in her words
 
 *"By doing this stuff, we are going to be getting all these Wikidata people connected into the
 tree."*

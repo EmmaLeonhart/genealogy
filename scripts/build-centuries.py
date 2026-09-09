@@ -1,6 +1,6 @@
 """Birth-century distribution, Wikidata against Geni — `todo.md` 8b, queue item 8b-i.
 
-Scores a prediction you recorded on 2026-08-07, **before** the store existed:
+Scores a prediction Emma recorded on 2026-08-07, **before** the store existed:
 the Geni-linked items on Wikidata *"skew heavily to the 20th and 21st centuries
 much as the Geni profiles do, with the 19th ambiguous"*. Written down first so
 it can be marked right or wrong rather than confirmed after the fact.

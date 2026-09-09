@@ -1,6 +1,6 @@
 """What a generated relationship label would actually say, for every placeholder person.
 
-You, 2026-08-15, asked to see this before deciding: *"I would like you to check
+Emma, 2026-08-15, asked to see this before deciding: *"I would like you to check
 what this would actually look like, like the one and the ones with surnames or
 the ones that properly have relationships… show me both populations first and do
 an ask-user question on it."*
@@ -10,8 +10,8 @@ an ask-user question on it."*
 - **bare `NN`** — a placeholder given name and no surname at all
 - **`NN <surname>`** — a placeholder given name with a real surname
 
-Your precedence for choosing which relative names the person: **parent, father,
-mother, spouse, child**. What you have already settled and this does not re-ask:
+Her precedence for choosing which relative names the person: **parent, father,
+mother, spouse, child**. What she has already settled and this does not re-ask:
 the `mul` label stays `NN` or `NN <surname>` — *"the multi-language labels keep
 the NN surname"* — and the generated relationship label is the **per-language**
 one.
@@ -77,12 +77,12 @@ PLACEHOLDER_GIVEN = _labels.PLACEHOLDER_FORMS
 
 #: Sex -> the word for a child and for a spouse. Unknown sex gets the neutral
 #: form rather than a guess: inventing a gender to make a label read better is
-#: exactly the normalisation you have objected to.
+#: exactly the normalisation Emma has objected to.
 CHILD_WORD = {"M": "son", "F": "daughter", "": "child"}
 SPOUSE_WORD = {"M": "husband", "F": "wife", "": "spouse"}
 PARENT_WORD = {"M": "father", "F": "mother", "": "parent"}
 
-#: Two hops out. Queue item 6, and your ordering extends the one-hop
+#: Two hops out. Queue item 6, and Emma's ordering extends the one-hop
 #: precedence rather than replacing it:
 #: **child-of -> spouse-of -> parent-of -> grandchild-of -> sibling / nephew /
 #: uncle.** A one-hop relative is always preferred; these only run when every
@@ -93,14 +93,14 @@ SIBLING_WORD = {"M": "brother", "F": "sister", "": "sibling"}
 NIBLING_WORD = {"M": "nephew", "F": "niece", "": "nephew or niece"}
 PIBLING_WORD = {"M": "uncle", "F": "aunt", "": "uncle or aunt"}
 
-#: **The in-law pair, added 2026-09-01 on your ruling.** They are not decoration: of the
+#: **The in-law pair, added 2026-09-01 on her ruling.** They are not decoration: of the
 #: 9,580 unlabelled people the census reaches by a relative and this preview reached by
 #: nobody, **8,129 are a spouse's father** and 799 a spouse's mother. The shape is always
 #: the same -- the person has a spouse, but the spouse is ALSO unnamed, so no one-hop
 #: *"wife of X"* is available and the nearest named person is a parent-in-law.
 #:
-#: you named grandparents, grandchildren and siblings when you asked for long-range
-#: relations and did not name in-laws; asked directly on 2026-09-01 you chose to add them.
+#: Emma named grandparents, grandchildren and siblings when she asked for long-range
+#: relations and did not name in-laws; asked directly on 2026-09-01 she chose to add them.
 CHILD_IN_LAW_WORD = {"M": "son-in-law", "F": "daughter-in-law", "": "child-in-law"}
 SIBLING_IN_LAW_WORD = {"M": "brother-in-law", "F": "sister-in-law",
                        "": "brother-in-law or sister-in-law"}
@@ -113,7 +113,7 @@ def is_placeholder(given: str) -> bool:
 def is_unusable(label: str) -> bool:
     """Whether a relative's label is too empty to name somebody else by.
 
-    Two cases, both ruled on by you on 2026-08-15: a redaction marker, which
+    Two cases, both ruled on by Emma on 2026-08-15: a redaction marker, which
     must not travel into another person's label; and a label that is itself a
     placeholder, where `NN de Nantes` names nobody.
     """
@@ -126,7 +126,7 @@ def is_unusable(label: str) -> bool:
     return first in PLACEHOLDER_GIVEN
 
 
-#: Material that is not part of a name. You, 2026-08-19: *trim, and fix the English too.*
+#: Material that is not part of a name. Emma, 2026-08-19: *trim, and fix the English too.*
 #: 2,732 of 12,661 distinct relative names carried a parenthetical, a date range or a
 #: leading list number, so `daughter of Hamengkubuwana VII Raden Mas Murtejo
 #: (22.12.1877-29.1.1921)` was a label nobody could transliterate and nobody should read.
@@ -300,27 +300,27 @@ def main() -> int:
         spouses = [s for s in (row.get("spouses") or "").split(" | ") if s]
         children = [c for c in (row.get("children") or "").split(" | ") if c]
 
-        # You, 2026-08-15: a redacted relative is SKIPPED and the precedence
+        # Emma, 2026-08-15: a redacted relative is SKIPPED and the precedence
         # falls through to the next one. "husband of <private> Gaya Pereira"
         # puts a redaction marker into somebody else's label, which the rule
         # about `Private` never being a label was written to prevent.
         #
         # The same fall-through is applied to a relative whose own label is a
-        # placeholder ("husband of NN de Nantes", 53 cases). You ruled on the
+        # placeholder ("husband of NN de Nantes", 53 cases). She ruled on the
         # redacted case and not explicitly on this one; it is the same shape,
         # and it is called out in the report so it can be reversed.
         #
         # Every spouse and child is tried, not just the first, because skipping
         # more relatives means the first one is more often unusable.
-        # One hop first, in your precedence. Two-hop candidates are appended
+        # One hop first, in her precedence. Two-hop candidates are appended
         # after, so a nearer relative always wins and the extra hops only run
         # when the near ones are absent or unusable.
         grandparents = [g for parent in (father, mother) if parent
                         for g in parents(parent)]
         grandchildren = [g for child in children for g in kids(child)]
         sibs = siblings(gid)
-        # **The side is known here and was being thrown away.** You, 2026-09-01: *"you realize we
-        # can do logic for the NN stuff right? It's easy lol."* You are right — a pibling is reached
+        # **The side is known here and was being thrown away.** Emma, 2026-09-01: *"you realize we
+        # can do logic for the NN stuff right? It's easy lol."* She is right — a pibling is reached
         # through a NAMED parent and a nibling through a NAMED sibling, so whether the link runs
         # through the father or the mother is not an inference, it is which list the candidate came
         # out of. Korean needs exactly that (삼촌 against 외삼촌, 고모 against 이모) and the batch
@@ -410,7 +410,7 @@ def main() -> int:
                 generated = f"{PIBLING_WORD.get(sex, 'uncle or aunt')} of {other}"
             break
 
-        # You, 2026-08-15: a surname that is itself placeholder vocabulary
+        # Emma, 2026-08-15: a surname that is itself placeholder vocabulary
         # carries no information, so these collapse to bare `NN` rather than
         # becoming `NN ???`.
         if surname.strip().lower() in PLACEHOLDER_GIVEN:
@@ -497,7 +497,7 @@ def main() -> int:
         lines.append(f"| {kind} | {bare_rel.get(kind, 0):,} | "
                      f"{sur_rel.get(kind, 0):,} |")
 
-    # -- the rules you set on this preview, and what they cost -------------
+    # -- the rules Emma set on this preview, and what they cost -------------
     got = bare_got + sur_got
     leaked = [r for r in got if "private" in r["generated_en"].lower()
               or " of NN" in r["generated_en"]]

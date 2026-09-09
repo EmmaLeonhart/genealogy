@@ -2,19 +2,19 @@
 
     python scripts/zipper-provenance.py [GENI_ID ...]
 
-**You, 2026-08-25:** *"providence is important in this, and ideally, a zipper merge will almost
+**Emma, 2026-08-25:** *"providence is important in this, and ideally, a zipper merge will almost
 always be done with there being a relatively large chain of providence, not just a simple 'this
 was the justification,' but a potentially very large series of justifications."*
 
-And the reason your own verdicts exist: *"That is the actual reason why I asked you to record my
+And the reason her own verdicts exist: *"That is the actual reason why I asked you to record my
 manual decisions, because of the fact that they entered into the province too."*
 
 `reports/zipper-pairs.tsv` records **one step** — the slot, the method, the pair it hung off, and
 the evidence. That is a link. This walks the links into the chain: a round-6 pair's justification
 is its own step plus every step beneath it, all the way down to a Wikidata-stated `P2600`
-*Geni.com profile ID* or to a verdict you gave by hand.
+*Geni.com profile ID* or to a verdict Emma gave by hand.
 
-## Both directions, which is the part you were explicit about
+## Both directions, which is the part she was explicit about
 
 **Support propagates upward from an independent resolution.** *"suddenly you go into the ancestors
 and you notice that somebody connected one of the ancestors. There's an entity resolution on one
@@ -26,8 +26,8 @@ resolution that clearly contradicts it, this indicates a clear contradiction... 
 ways."*
 
 So every pair the zipper inferred is checked against every *independent* correspondence this repo
-holds -- your About Me links, your hand identifications, the structural walk, the Izumo and Tanba
-rosters, and your hand verdicts. An independent source that **agrees** is corroboration; one that
+holds -- Emma's About Me links, her hand identifications, the structural walk, the Izumo and Tanba
+rosters, and her hand verdicts. An independent source that **agrees** is corroboration; one that
 **disagrees** is a contradiction. Neither is applied only to the pair itself: both are pushed
 along the chain, because a chain is only as good as the step it rests on.
 
@@ -35,7 +35,7 @@ along the chain, because a chain is only as good as the step it rests on.
 
 A pair whose chain passes through a contradicted step is marked `POISONED`. That is a **reading**,
 not a deletion: `CLAUDE.md` is emphatic that the question is whether our snapshot matches Geni,
-never whether Geni is right, and your own standard for stopping the join is high --
+never whether Geni is right, and Emma's own standard for stopping the join is high --
 *"we need a pretty damn good reason to stop it... This reasoning requires something pretty good."*
 So nothing is dropped here. The marking exists so that the reason is visible.
 
@@ -75,7 +75,7 @@ def read_pairs(path, qcol, gcol, delim):
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter=delim):
             q = (row.get(qcol) or "").strip()
-            # your own file carries a verdict column; a WRONG is not a correspondence.
+            # Emma's own file carries a verdict column; a WRONG is not a correspondence.
             if row.get("verdict") in ("WRONG", "BROWSER"):
                 continue
             for g in re.split(r"[;,|]", row.get(gcol) or ""):
@@ -123,7 +123,7 @@ def main():
             n += 1
         print(f"  {label:<22} {n:>7,} independent pairs"
               + ("" if path.exists() else "   (missing)"))
-    # Your explicit WRONGs are the strongest contradiction there is.
+    # Her explicit WRONGs are the strongest contradiction there is.
     if (R / "emma-judgments.tsv").exists():
         with open(R / "emma-judgments.tsv", encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
@@ -142,7 +142,7 @@ def main():
     print(f"\n{len(supported):,} inferred pairs an INDEPENDENT source corroborates")
     print(f"{len(contradicted):,} an independent source contradicts")
 
-    # --- propagate along the chain, exactly as you described -------------------------
+    # --- propagate along the chain, exactly as she described -------------------------
     status, reason = {}, {}
     for g in pairs:
         st, why = "INFERRED", ""

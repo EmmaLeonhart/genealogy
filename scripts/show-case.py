@@ -1,9 +1,9 @@
-"""Show one person, both sides, in full — for case-by-case review with you.
+"""Show one person, both sides, in full — for case-by-case review with Emma.
 
 `python scripts/show-case.py <geni_id>`
 
-**This exists because the reports were the wrong shape.** You, 2026-08-10:
-*"You give me the information, and I'll look over it and confirm... You're just
+**This exists because the reports were the wrong shape.** Emma, 2026-08-10:
+*"You give me the information, and I'll look over it and confirm... you're just
 aggressively jumping into the database modelling and skipping the
 interpretation."* So this prints records, not statistics. It decides nothing,
 scores nothing, and proposes no rule. One person, what Geni says, what Wikidata

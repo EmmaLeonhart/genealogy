@@ -1,10 +1,10 @@
 """Which name tokens are patronymics? Decided from the father, entirely offline.
 
-**your correction, 2026-08-15:** *"Whether something is or is not a patronymic
+**Emma's correction, 2026-08-15:** *"Whether something is or is not a patronymic
 here is determined by completely offline information related to the person's
 father's name."*
 
-You said it after item 2 had been written up as blocked on downloading Wikidata's
+She said it after item 2 had been written up as blocked on downloading Wikidata's
 `P31`. That was wrong. `Olsen` on a man whose father is `Ole` is a patronymic and
 **nothing on Wikidata is needed to know that**. Wikidata only decides *which
 existing item to link to*, once we already know what our own token is.
@@ -54,9 +54,9 @@ OUT_MD = REPO / "reports" / "patronymic-classification.md"
 
 csv.field_size_limit(10_000_000)
 
-#: **Patronymic endings, by tradition.** You, 2026-08-15: *"the patronymics have
+#: **Patronymic endings, by tradition.** Emma, 2026-08-15: *"the patronymics have
 #: a variety of forms and you might not have gotten all the forms… we have things
-#: like Anes and Rodriguez and Fitz John that are all patronymics too."* You were
+#: like Anes and Rodriguez and Fitz John that are all patronymics too."* She was
 #: right — the first version was Scandinavian, Dutch and Slavic only, and handled
 #: no prefix form at all, so `Fitz John` and `FitzGerald` were invisible.
 #:
@@ -90,11 +90,11 @@ PARTICLES = {"ben", "bin", "ibn", "bint", "bat", "bar", "ap", "ab",
 
 ABSENT = {".", "..", "?", "-", "_", "nn", "n.n.", "private", "<private>"}
 
-#: Regnal ordinals are **not name tokens and never patronymic material**. You,
+#: Regnal ordinals are **not name tokens and never patronymic material**. Emma,
 #: 2026-08-15: *"The ordinals on them are not patronymic-related and the
 #: classifier should not really be looking at the ordinals."* They are skipped as
 #: candidates entirely; where they belong is a `P7338` qualifier on the given
-#: name, which is a separate queue item of yours.
+#: name, which is a separate queue item of hers.
 ORDINAL = re.compile(r"^(?:[IVXLCDM]+|\d{1,3})$", re.IGNORECASE)
 
 #: Suffixes that name the bearer's own sex. A `-sen`/`-son` is *son of*; a
@@ -108,7 +108,7 @@ DAUGHTER_OF = {"sdatter", "sdotter", "sdottir", "datter", "dotter", "dottir",
 def sex_conflict(form: str, sex: str) -> bool:
     """Does the suffix contradict the bearer's recorded sex?
 
-    **your hypothesis, 2026-08-15, and it holds:** *"if there is a gender
+    **Emma's hypothesis, 2026-08-15, and it holds:** *"if there is a gender
     mismatch, it might be that the married name goes through an error to become a
     patronymic or something like that."*
 
@@ -117,7 +117,7 @@ def sex_conflict(form: str, sex: str) -> bool:
     *daughter-of* suffix on a man is **0.2%** (11 of 6,074). Sixty-eight times
     apart, and the son-of cases are `Gustafsson`, `Wilson`, `Rasmussen`, `Nilsen`
     on women in the surname field — inherited or married family names, exactly as
-    You predicted. `-datter` almost never does this because it never became
+    she predicted. `-datter` almost never does this because it never became
     heritable.
     """
     if not sex:
@@ -134,7 +134,7 @@ def fold(text: str) -> str:
     """Casefold and strip diacritics **for stem comparison only**.
 
     Diacritics are kept everywhere else in this project — folding them away is
-    the bug you caught in the name matcher. Here the comparison is between a
+    the bug Emma caught in the name matcher. Here the comparison is between a
     father's name and a derived form of it *within one record*, where `Åke` →
     `Akesson` is the ordinary spelling drift of the derivation rather than a
     different name. The fold never reaches an emitted value.
@@ -327,14 +327,14 @@ def main() -> int:
                 if derived:
                     verdict, evidence = "patronymic", derived
                 elif form and not fid:
-                    # **your call, 2026-08-15:** *"Generally speaking I'm going
+                    # **Emma's call, 2026-08-15:** *"Generally speaking I'm going
                     # to say these things are patronymics."* Almost all of them
                     # sit in real family context — 41.2% have a mother recorded
                     # and no father, 58.8% have a spouse or children, and only 6
                     # of 19,621 have no family link at all. The missing father is
                     # a gap in our data, not evidence against the name.
                     #
-                    # The exception is the sex conflict you predicted, which is
+                    # The exception is the sex conflict she predicted, which is
                     # an inherited or married surname wearing patronymic shape.
                     if sex_conflict(form, sex_of.get(gid, "")):
                         verdict, evidence = ("surname: patronymic form conflicts "

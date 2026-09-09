@@ -1,6 +1,6 @@
 # What one QuickStatements batch contains
 
-**You dictated this on 2026-08-25** after seeing batches that tried to do the whole spine at once.
+**Emma dictated this on 2026-08-25** after seeing batches that tried to do the whole spine at once.
 It is the shape of every run from here. `CLAUDE.md` § *THE THREE LINES* is what is being built;
 this is how much of it moves per day.
 
@@ -27,7 +27,7 @@ day skipped. What it must not be is one big batch that does the lot.
 
 ## The subgraph is Arne's component ON WIKIDATA — clarified 2026-08-25
 
-Asked what radius over our Geni tree should bound the random draws, you: *"Uhh what the fuck. You
+Asked what radius over our Geni tree should bound the random draws, Emma: *"Uhh what the fuck. You
 misunderstand it completely if you're even asking the question."* The bound is not a radius over
 our tree at all. It is **Arne's connected component on Wikidata, as it currently stands** — 42
 items today, larger after every run, because the runs are what build it. Each batch draws its
@@ -36,7 +36,7 @@ random work from what exists and enlarges the pool the next batch draws from.
 That is what makes the programme self-bootstrapping, and it is why it takes ~18 runs rather than
 one: the pool has to grow before there is more to draw from.
 
-**And it is why Bure needs its own algorithm rather than a bigger radius.** You: *"bure is a bunch
+**And it is why Bure needs its own algorithm rather than a bigger radius.** Emma: *"bure is a bunch
 of unlinked people with entity resolutions to geni, so it isn't dense it's a different kind of area
 though which needs its own algorithm."* There the items already exist and carry `P2600`, so the
 work is linking QIDs that both exist — which has no `LAST` constraint and therefore does not need
@@ -55,11 +55,11 @@ generation."* A couple goes in together or not at all.
 | 4 | **1 random existing couple** — all of their children, properly linked |
 | 5 | **≤10 mutual sibling links** — reciprocal, so **20 statements** |
 
-**Three readings settled by you on 2026-08-25, each of which the first draft had wrong:**
+**Three readings settled by Emma on 2026-08-25, each of which the first draft had wrong:**
 
 - **The spine couple is the chain person plus their spouse**, not the two parents of the chain
   person. One run advances the line by exactly one step and brings the off-chain partner with it.
-- **"One couple on Arne's side" is not its own component.** Your words: *"this is just part of the
+- **"One couple on Arne's side" is not its own component.** Her words: *"this is just part of the
   add 4 sets of parents randomly in the neighborhood not its own thing. But one thing that is
   worth doing imo is randomly choose an existing couple and add all the children. Properly linked
   and everything."* So it was replaced by the existing-couple component above.
@@ -72,7 +72,7 @@ generation."* A couple goes in together or not at all.
 *which people go in the frontier*, because the emitter already owns labels, names, dates, sex,
 `S2600` references and the duplicate guard. `--seed` makes a run reproducible.
 
-You on the sibling arithmetic: *"we are actually mixing together 10 sibling links. Each sibling
+Emma on the sibling arithmetic: *"we are actually mixing together 10 sibling links. Each sibling
 link here is actually 20 fixed statements, but it's 10 being linked together."* That is the same
 10-a-day cap `CLAUDE.md` records — ten *links*, twenty *statements*.
 
@@ -87,18 +87,18 @@ other.
 resolves to the item created just above. What cannot be done is linking **two items created
 in the same run** to each other, because `LAST` names only the most recent one.
 
-You, 2026-08-25: *"you never actually did the 2-way relationship addin qith the creation of
+Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the creation of
 items that is completely possible but you just decide to fuck off and no do it because it goes
-QID PID LAST instead of LAST PID QID."* The general claim was mine, not yours, and it cost you
+QID PID LAST instead of LAST PID QID."* The general claim was mine, not hers, and it cost her
 weeks of one-way links to repair by hand.
 
 **This distinction was lost for weeks and it changes the shape of the batch.** Everything a new
 person is related to that ALREADY has a QID — parents, spouses, siblings, children — is linked
-both ways in the same run. Only new-to-new links wait. You: *"the parents cannot actually be linked to each other because of a technical
+both ways in the same run. Only new-to-new links wait. Emma: *"the parents cannot actually be linked to each other because of a technical
 limitation in terms of quick statements, but the quick statement batch is supposed to be this
 way."*
 
-So the links land one run late, and you have accepted that deliberately:
+So the links land one run late, and she has accepted that deliberately:
 
 > *"This is a bit of an unnatural arrangement because the children aren't linked to the spouse or
 > spouses... but then the next run, the spouse gets linked to them, and the children get linked to
@@ -114,7 +114,7 @@ creating anything new. `scripts/build-missing-reciprocals.py` is that half.
 > the family. We create the family going down, with the descent going down, and we have the family
 > going down until it reaches me."*
 
-Up from Arne to Bergitte, up from Bergitte to Charlemagne, then **down from Bergitte to you** —
+Up from Arne to Bergitte, up from Bergitte to Charlemagne, then **down from Bergitte to Emma** —
 line 2, the one not yet captured.
 
 ## Deterministic and random, mixed on purpose
@@ -125,12 +125,12 @@ line 2, the one not yet captured.
 
 **The 18 spine couples are the deterministic part** — chosen, ordered, one per run. Everything else
 is drawn at random from the subgraph. The random work is not filler: it thickens the neighbourhood
-the spine runs through, which is what `CLAUDE.md` § *The practical goal is YOU densely linked*
+the spine runs through, which is what `CLAUDE.md` § *The practical goal is EMMA densely linked*
 asks for.
 
 ## Lower priority, named as such
 
-The nearest-blood and nearest-in-law chains between you and Arne — `queue.md` § *Connect you and
+The nearest-blood and nearest-in-law chains between Emma and Arne — `queue.md` § *Connect Emma and
 Arne Garborg to Bergitte Aukland* — are *"ones that I don't care about as much, but they're ones
 that we could be filling in over time."* Fill them opportunistically; never at the cost of a spine
 step.

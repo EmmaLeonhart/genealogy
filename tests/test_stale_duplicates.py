@@ -1,7 +1,7 @@
 """`reports/geni-stale-duplicates.tsv` — people Geni merged and our corpus did not.
 
-Built from your own Geni activity feed, which is ground truth for which profiles you
-has merged. `CLAUDE.md`: the duplicate merges are yours — this flags, never merges.
+Built from Emma's own Geni activity feed, which is ground truth for which profiles she
+has merged. `CLAUDE.md`: the duplicate merges are hers — this flags, never merges.
 """
 from __future__ import annotations
 

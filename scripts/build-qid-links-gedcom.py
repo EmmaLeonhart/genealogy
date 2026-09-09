@@ -3,40 +3,40 @@
     python scripts/build-qid-links-gedcom.py
 
 **A bio Wikidata link is a specific entity-resolution strategy, not a property of the tree.**
-You, 2026-08-29: *"the tree shouldnt bio wikidata links are just a specific entity resolution
-strategy"*. The technique is yours and it already exists in the other direction — You write a
+Emma, 2026-08-29: *"the tree shouldnt bio wikidata links are just a specific entity resolution
+strategy"*. The technique is hers and it already exists in the other direction — she writes a
 Wikidata URL into a Geni About Me by hand, Geni exports it as a `NOTE`, and
 `scripts/build-geni-qid-links.py` reads the QID back out. This file applies that same technique
-to **three people you identified where the link was never written**, so the correspondence has
-somewhere to live besides your scratchpad.
+to **three people she identified where the link was never written**, so the correspondence has
+somewhere to live besides her scratchpad.
 
 **It is three records. Do not let it become an architecture.** An earlier version of this
 docstring said the file existed so the synoptic tree *"ALWAYS"* carried QID links, which is the
-tree-wide framing you rejected — and the code under it emitted 83,988 people. Both were
+tree-wide framing she rejected — and the code under it emitted 83,988 people. Both were
 generalisations of *"When the synoptic tree is merged we change all of their bios to links to
 their qids"*, where *their* meant the people named below and nobody else.
 
 ## THREE people, not the whole correspondence
 
-**You, 2026-08-29:** *"it was supposed to be to three individuals lol."* The first version of
+**Emma, 2026-08-29:** *"it was supposed to be to three individuals lol."* The first version of
 this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
-in our tree -- **83,988 individuals**. That was a generalisation of a specific instruction and you
+in our tree -- **83,988 individuals**. That was a generalisation of a specific instruction and she
 never asked for it.
 
-The three are the residue of a retired side file: identities you *"put a lot of effort into
+The three are the residue of a retired side file: identities she *"put a lot of effort into
 creating identification with"*, whose Wikidata items carry **no `P2600`**, so the pairing exists
 nowhere outside that scratchpad. Checked live 2026-08-29. The rest of the file's nine pairs are
 already handled and are deliberately absent here -- `Q11443857` Futohime is in `CJK_CLAN_BLOCK`,
 `Q19657284` and `Q12598947` already carry their `P2600`, the two Kitajima items are in
-`NEVER_TOUCH_QID`, and the ninth is you yourself, who must never enter the traversable graph.
+`NEVER_TOUCH_QID`, and the ninth is Emma herself, who must never enter the traversable graph.
 
 **Widening this to the full correspondence is a decision, not a default.** It is one constant
 below and the filtering already works, but 84,000 links is a different act from three and wants
-your word first.
+her word first.
 
-## `exports/post-merge/`, your choice when asked
+## `exports/post-merge/`, her choice when asked
 
-`sources._post_merge_last` sorts that directory to the **end** of merge order explicitly — You
+`sources._post_merge_last` sorts that directory to the **end** of merge order explicitly — she
 asked for a directory whose records *"overwrite earlier ones from other repos in the synoptic
 tree"*, and alphabetical order would have put `post-merge` before `samaritans` and `tanba`. So
 this applies last, which is what an overlay wants.
@@ -54,12 +54,12 @@ and its `NOTE` joins theirs. `merge.ALWAYS_REPEATABLE` holds `NOTE`, so nothing 
 repeatable paths with a value are matched on that value, an identical line collapses, a different
 one is kept alongside. Re-generating and re-merging is therefore idempotent.
 
-## The source is your hand identifications, and the first attempt got that wrong too
+## The source is her hand identifications, and the first attempt got that wrong too
 
 Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
 which is not a bug, it is the point restated. That report joins five places a pairing can live
 and that side file was not one of them, so these three are invisible to it. They exist in
-your scratchpad and nowhere else, which is exactly why writing them into the tree is worth doing.
+her scratchpad and nowhere else, which is exactly why writing them into the tree is worth doing.
 
 The pairs are inlined below, because the parser that read them and the file it read are both
 file parses with zero unparsed entries.
@@ -98,8 +98,8 @@ OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 #: four dead-item sweeps.
 #:
 #: **The correspondence is not a substitute: 0 of these 3 are in
-#: `reports/synoptic-correspondence.tsv`.** Checked rather than assumed. They are yours by hand,
-#: from identities you *"put a lot of effort into creating identification with"*, and no
+#: `reports/synoptic-correspondence.tsv`.** Checked rather than assumed. They are hers by hand,
+#: from identities she *"put a lot of effort into creating identification with"*, and no
 #: automated source reaches them -- which is exactly why they were in a hand-written file.
 #:
 #: So they live here as a constant, which is what `queue.md` already says: *"widening this beyond
@@ -109,29 +109,29 @@ PAIRS = {
     "6000000001844033355": "Q11078587",   # 播磨稲日大郎姫 Harima no Inabi, his daughter
     "6000000002039751362": "Q24890131",   # 物部伊莒弗 Mononobe no Ikofutsu
 
-    # **Empress Jingū, added 2026-09-01 on your instruction:** *"add to the identifications
+    # **Empress Jingū, added 2026-09-01 on her instruction:** *"add to the identifications
     # gedcom so that Jingu is linked on geni and wiki data in the future"*.
     #
-    # `Q232803` is 神功皇后 — 38 sitelinks, no `P2600`, so nothing joins your by id and the
-    # zipper cannot reach you either. **Geni holds two profiles for you**, which is the
+    # `Q232803` is 神功皇后 — 38 sitelinks, no `P2600`, so nothing joins her by id and the
+    # zipper cannot reach her either. **Geni holds two profiles for her**, which is the
     # ordinary unmergeable-duplicate case `CLAUDE.md` records, so both are linked to the one
     # item rather than one being picked.
     "6000000001846508982": "Q232803",   # 神功皇后 Jingū-kōgō (Okinagatarashi-hime)
     "6000000045545840003": "Q232803",   # the same person, Geni's second profile
 
-    # **The eccentric clusters, added 2026-09-05 on your instruction:** *"write these ones into
+    # **The eccentric clusters, added 2026-09-05 on her instruction:** *"write these ones into
     # that identification gedcom thing that serves the dual purpose of entity resolution through
     # adding dummy bios with the wikidata links, which is scheduled to at Jan 1, 2027 become a
     # thing that turns every qid there into an entry point for editing"*.
     #
-    # This is the widening the docstring above reserves for you word, and it is bounded: these
+    # This is the widening the docstring above reserves for her word, and it is bounded: these
     # are the pairs that survived `reports/eccentric-cluster-candidates.tsv`, not a rule. Every
     # one was read by hand against the item's own label, description, `P31` and dates, which is
     # § *How this project works now* -- records, then a decision.
     #
     # **Not one of them carries a `P2600`**, which is why the pairing exists nowhere else: the
     # clusters they come from read `p2600_linked = 0` in `reports/eccentric-clusters.md`, and
-    # that is what you corrected -- *"Pre dynastic Egypt definitely does"* have items. It does;
+    # that is what Emma corrected -- *"Pre dynastic Egypt definitely does"* have items. It does;
     # nobody had linked them.
 
     # -- Cluster 3, PRE-DYNASTIC AND EARLY DYNASTIC EGYPT, 295 people at 100-129 hops.
@@ -172,7 +172,7 @@ PAIRS = {
     # biblical figure*, not `Q5` *human*, so `instance_of_human` reads `no` on a correct pair.
     # Recorded because it is a general hole -- a legendary or biblical person is routinely not
     # `Q5`, and every cluster out here is exactly that population. Our -1013 against the item's
-    # -1000 is what actually settles you.
+    # -1000 is what actually settles her.
     "6000000210521076830": "Q159888",   # Makeda Queen of Sheba -- Queen of Sheba
 }
 ONLY = set(PAIRS)

@@ -2,14 +2,14 @@
 
     python scripts/build-garborg-entry-sheet.py
 
-The page at claude.ai/code/artifact/c2430047-… is your entry sheet for the Garborg
-items you builds by hand.
+The page at claude.ai/code/artifact/c2430047-… is Emma's entry sheet for the Garborg
+items she builds by hand.
 
 **Everything here comes from `out/garborg-full-items.json`**, all 14 items fetched via
 `genimerge.wikidata.full_entities`, by way of `scripts/garborg-modelling.py`. A previous
 version of this page was built from a fetch-and-summarise read instead, and it published
 three false claims — chiefly that Arne Garborg had no parents on Wikidata. He has them.
-You: *"you're supposed to download the full wikidata items for the people I've edited to
+Emma: *"you're supposed to download the full wikidata items for the people I've edited to
 get the modelling."*
 
 The stylesheet is the one the page already had; the design is unchanged on purpose, so a
@@ -179,13 +179,13 @@ def main():
 <header>
  <p class="eyebrow">Wikidata &middot; full items &middot; 24 August 2026</p>
  <h1>Garborg Family Entry Sheet</h1>
- <p class="standfirst">All ten people have items, and the eleven you have built are
+ <p class="standfirst">All ten people have items, and the eleven Emma has built are
  uniform in shape. What is left is <em>names</em>: ten of the eleven carry none.
  <em>This page previously said Arne Garborg had no parents. That was wrong</em> &mdash; it
  was built from a summary of his item rather than the item.</p>
 
  <div class="situation">
-  <div class="stat"><span class="n">11</span><span class="k">items you have built</span></div>
+  <div class="stat"><span class="n">11</span><span class="k">items Emma has built</span></div>
   <div class="stat"><span class="n">1</span><span class="k">of them carries name properties</span></div>
   <div class="stat"><span class="n">0</span><span class="k">of them carry ja or zh</span></div>
   <div class="stat"><span class="n">6</span><span class="k">sibling links Arne still lacks</span></div>
@@ -224,7 +224,7 @@ def main():
    them.</li>
    <li><strong>Labels are <code>en</code> and <code>mul</code>, the same string.</strong>
    No description, no alias, no sitelink on any of them.</li>
-   <li><strong>No qualifier of yours appears anywhere</strong> &mdash; no P1545, no P7452,
+   <li><strong>No qualifier of hers appears anywhere</strong> &mdash; no P1545, no P7452,
    no P3831, no P144. The only qualifiers in the 14 items are community-added, on
    Q467497 and Q3143008.</li>
    <li><strong>Never used:</strong> P19 place of birth, P20 place of death, P119 place of

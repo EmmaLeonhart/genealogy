@@ -1,6 +1,6 @@
 """Every SUBM record and every reference to one, so we can say what SUBM is.
 
-You parked `SUBM` on 2026-08-11 — *"may theoretically exist, may theoretically
+Emma parked `SUBM` on 2026-08-11 — *"may theoretically exist, may theoretically
 be useful. I have no idea how it's going to be useful"* — then unparked it the
 same day with *"agentic RAG to figure it out"*.
 

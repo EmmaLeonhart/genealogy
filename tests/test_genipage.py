@@ -30,7 +30,7 @@ PAGE = """<html><body>
 <span class="segment"><span class="name"><a
   href="https://www.geni.com/people/Richard/6000000177921459056?through=6000000001829589817"
   data-profile-id="6000000177921459056">Richard Wade Borsheim</a></span> <span
-  class="subtext"><span class="clipboard-only">(</span>her father<span
+  class="subtext"><span class="clipboard-only">(</span>your father<span
   class="clipboard-only">)</span></span></span>
 </div>
 <div class="immediate-family">
@@ -61,7 +61,7 @@ def test_a_manager_link_in_a_name_span_is_not_on_the_path():
 def test_the_relation_loses_the_parentheses_that_are_markup():
     links = genipage.parse_relationship_path(PAGE)
 
-    assert links[1].relation == "her father"
+    assert links[1].relation == "your father"
 
 
 def test_the_first_step_has_no_relation():

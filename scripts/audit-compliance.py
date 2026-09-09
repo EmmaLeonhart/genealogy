@@ -1,9 +1,9 @@
 """How compliant are the items we created with the specification we wrote down?
 
-**your queued item, in your words:** *"an analysis of the existing individuals that I have added
+**Emma's queued item, in her words:** *"an analysis of the existing individuals that I have added
 using this, to see how compliant they are with the original specifications and visions."*
 
-The specification is `docs/wikidata-item-template.md`, read off the items you built by hand, plus
+The specification is `docs/wikidata-item-template.md`, read off the items she built by hand, plus
 the rulings in `CLAUDE.md`. This checks the ones the programme created against it.
 
 **Entirely offline** — `reports/garborg-live-values.tsv` is refreshed by the ledger refresh inside
@@ -14,9 +14,9 @@ the rulings in `CLAUDE.md`. This checks the ones the programme created against i
 * `P31` *instance of* `Q5` and `P21` *sex or gender* — the two statements every person item gets.
 * `P2600` *Geni.com profile ID* — the identity that makes the item retrievable, and the thing
   `CLAUDE.md` says must be added before anything derived from Geni.
-* `P1810` *subject named as* on that `P2600` — your 2026-08-28 ruling.
+* `P1810` *subject named as* on that `P2600` — her 2026-08-28 ruling.
 * **at least one relationship** (`P22`/`P25`/`P26`/`P40`/`P3373`) — an item with none is the
-  *"individuals without any relationships"* shape you objected to.
+  *"individuals without any relationships"* shape she objected to.
 * **an `Aen` alias** — must never exist. `CLAUDE.md`: *"No aen are ever supposed to be added."*
 
 Writes `reports/compliance-audit.tsv`, one row per item.

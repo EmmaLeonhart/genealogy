@@ -1,11 +1,11 @@
 """Two Wikidata items to create standalone, on 2026-09-30.
 
-You, 2026-08-13: *"create wikidata items for [Baruch Jafe] and [Samuell
+Emma, 2026-08-13: *"create wikidata items for [Baruch Jafe] and [Samuell
 Standen] on September 30 as independent unlinked items completely independently
 of their links elsewhere... these appear to have gotten into the data somehow but
 are apparently completely unlinked and I still want them to get in."*
 
-**Unlinked is the starting point, not the goal.** You, 2026-08-13: *"I want
+**Unlinked is the starting point, not the goal.** Emma, 2026-08-13: *"I want
 everything on geni naturally linked to wikidata but also ideally linked into both
 of their world trees."* Both — Geni's tree and Wikidata's. These two items are
 created standalone because *"this allows for the wikidata stuff to finally start
@@ -19,7 +19,7 @@ these are unlinked on the day.
 
 **The Geni side is no longer symmetric between them**, which is worth stating
 because it stops being a reason to treat them alike. Samuell Standen joined the
-main tree on 2026-08-13 when your `Forest` of `6000000227226600829` bridged the
+main tree on 2026-08-13 when Emma's `Forest` of `6000000227226600829` bridged the
 Standen ball; Baruch Jafe is still inside the remaining cut-off component of
 4,088. Each item carries only what stands on its own: label, `P31` human, `P2600`
 Geni ID, `P21` sex, and the dates Geni records — every statement referenced to
@@ -61,7 +61,7 @@ csv.field_size_limit(10_000_000)
 SCHEDULED = "2026-09-30"
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 
-#: Geni ID -> the URL you gave, kept so the report links where you linked.
+#: Geni ID -> the URL Emma gave, kept so the report links where she linked.
 SUBJECTS = {
     "6000000040078764766": "https://www.geni.com/people/Baruch-Jafe/6000000040078764766",
     "6000000107265740881": "https://www.geni.com/people/Samuell-Standen/6000000107265740881",

@@ -1,6 +1,6 @@
 """A comment above every line of a QuickStatements batch, saying what it changes.
 
-**You, 2026-08-26:** *"With comments as headings and comments. Every line has a comment the
+**Emma, 2026-08-26:** *"With comments as headings and comments. Every line has a comment the
 line above it saying what change is happening."*
 
 Shared by `build-garborg-day.py` and `build-garborg-name-items.py` so the two files read the
@@ -61,7 +61,7 @@ def qid_labels(wanted):
 def annotate(lines, name_of):
     """A comment above EVERY statement line, saying what that line changes.
 
-    **You, 2026-08-26:** *"With comments as headings and comments. Every line has a
+    **Emma, 2026-08-26:** *"With comments as headings and comments. Every line has a
     comment the line above it saying what change is happening."*
 
     Written as a post-pass over the assembled batch rather than at each `lines.append`,
@@ -110,7 +110,7 @@ def annotate(lines, name_of):
             # **The qualifier keeps its property ID too.** It used to render the label alone
             # -- `qualified subject named as ...` -- while the statement above it read
             # `P2600 Geni.com profile ID`. `CLAUDE.md` § *Always write the English label next
-            # to a property or item ID* cuts both ways: you, 2026-08-15, *"I have no fucking
+            # to a property or item ID* cuts both ways: Emma, 2026-08-15, *"I have no fucking
             # clue what any property or Q ID property name is"*, and a bare label is the same
             # problem in reverse, since nothing says which property was written.
             extra = [f"{parts[i]} {props.get(parts[i], '')}".strip() + f" {human(parts[i + 1])}"

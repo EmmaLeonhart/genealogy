@@ -1,6 +1,6 @@
 """Plan items 3 and 4 — occupation, and the dates and places, per person.
 
-You, 2026-08-12: *"Occupation can be done with string stuff"* and *"Birthplace
+Emma, 2026-08-12: *"Occupation can be done with string stuff"* and *"Birthplace
 birth date death date death place burial date burial place all can be done with
 string."*
 
@@ -8,7 +8,7 @@ They come off the same `INDI` record, so this is one pass.
 
 **Rules already settled, applied here:**
 
-* **`ADDR` is kept as an address string, not dropped and not resolved.** You,
+* **`ADDR` is kept as an address string, not dropped and not resolved.** Emma,
   2026-08-12: *"Do addresses with the address property (multilingual text)."*
   Wikidata's `P6375` street address is monolingual text, so an address never has
   to become a place item. **This supersedes the `PLAC`-only rule of 2026-08-11**,
@@ -66,7 +66,7 @@ for _prefix in EVENTS.values():
 def compose_address(data: dict) -> str:
     """The `ADDR` block as one string, narrowest part first.
 
-    You, 2026-08-12: *"Do addresses with the address property (multilingual
+    Emma, 2026-08-12: *"Do addresses with the address property (multilingual
     text)."* This is the string that would become the `P6375` value, so the
     ordering is a data decision rather than a formatting one — extracted from
     ``main`` so it can be pinned by a test.
@@ -165,7 +165,7 @@ def main() -> int:
                 elif tag == "PLAC" and value and "plac" not in data:
                     data["plac"] = value
                 elif tag == "ADDR":
-                    # You, 2026-08-12: "Do addresses with the address property
+                    # Emma, 2026-08-12: "Do addresses with the address property
                     # (multilingual text)." So the block is kept as text rather
                     # than dropped or resolved to a place item. This supersedes
                     # the PLAC-only rule of 2026-08-11, which cost 101,579

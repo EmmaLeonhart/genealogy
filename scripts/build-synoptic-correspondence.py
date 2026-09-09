@@ -2,11 +2,11 @@
 
     python scripts/build-synoptic-correspondence.py
 
-**You, 2026-08-23:** *"there was a tsv qid correspondence quickstatement thing is
+**Emma, 2026-08-23:** *"there was a tsv qid correspondence quickstatement thing is
 that represented in our data?... I'm afraid it isn't properly represented in our
 synoptic tree."*
 
-You were right to be afraid. Five files hold QID↔Geni pairings and **nothing joined
+She was right to be afraid. Five files hold QID↔Geni pairings and **nothing joined
 them**, which is precisely the artefact `CLAUDE.md` says the synoptic tree is for:
 *"we definitely need to… be essentially building up our own correspondence of the
 QIDs and Jenny IDs for these ones."*
@@ -14,7 +14,7 @@ QIDs and Jenny IDs for these ones."*
 | source | what it is |
 | --- | --- |
 | `out/wikidata/p2600-all.tsv` | what **Wikidata already states**, from the bulk download |
-| `reports/geni-qid-links.tsv` | the Wikidata URL **You wrote into the Geni About Me** |
+| `reports/geni-qid-links.tsv` | the Wikidata URL **Emma wrote into the Geni About Me** |
 | `reports/structural-correspondence.csv` | found by walking relationships, not names |
 | `reports/geni-wikidata-pairs.csv` | the Geni↔Wikidata pairing pass |
 | `reports/izumo-p2600-pairs.tsv` | the Izumo roster join |
@@ -29,7 +29,7 @@ multi-valued, and 2,861 stored items already carry more than one. Not flagged.
 
 *One Geni id, several QIDs* is a **contradiction**: one person cannot be two Wikidata
 items. Those are counted and listed, never resolved here — merges and identity calls
-are your.
+are Emma's.
 
 Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
 Offline throughout.
@@ -49,7 +49,7 @@ ROOT = Path(__file__).resolve().parent.parent
 def date_refuted():
     """`{(qid, geni_id)}` the structural walk proposed and dates prove impossible.
 
-    **You, 2026-08-24, on the walk's date conflicts:** *"All these ones look easy."*
+    **Emma, 2026-08-24, on the walk's date conflicts:** *"All these ones look easy."*
     They are: `Eufemia von Hirscher` 1166-1229 paired with `Margaret of Nuremberg`
     1359-1390 is not a judgement call, it is a pairing that cannot be right. So they are
     dropped here rather than carried into the full union and left for a human to
@@ -125,7 +125,7 @@ def main():
         ("structural", rows_from(R / "structural-correspondence.csv", "qid", "geni_id")),
         ("geni-wikidata-pairs", rows_from(R / "geni-wikidata-pairs.csv", "qid", "geni_id")),
         ("izumo-roster", rows_from(R / "izumo-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
-        # You, 2026-08-24: *"the tanba onakatomi izumo stuff is a prerequisite for the
+        # Emma, 2026-08-24: *"the tanba onakatomi izumo stuff is a prerequisite for the
         # synoptic rebuild"*. Tanba and the sister repo's fuller Izumo roster had joins
         # that nothing read, so a whole clan was invisible here despite every one of its
         # people carrying a Wikidata item. Onakatomi is deliberately absent: 0 of its 97
@@ -141,8 +141,8 @@ def main():
         # and corrected for the father/mother slots where sex can never refute), the real
         # rise is 2.8% -> 4.8% across eight rounds. `scripts/zipper-join.py` § ROUND_CAP
         # carries the full working.
-        # **Your own hand verdicts, which were not a source until 2026-09-01.** Every SAME and
-        # RIGHT you have ruled, via `scripts/build-manual-identifications.py`. Measured when it
+        # **Her own hand verdicts, which were not a source until 2026-09-01.** Every SAME and
+        # RIGHT she has ruled, via `scripts/build-manual-identifications.py`. Measured when it
         # was added, only **1 of 313** was missing from the union -- the other 312 arrive because
         # some other source happened to propose the same pair, which is exactly the wrong reason
         # for the most authoritative source in the repo to be present. `CLAUDE.md` § *The manual
@@ -202,7 +202,7 @@ def main():
     #
     # It misled twice on 2026-08-24 alone. Katharina von Braunschweig-Wolfenbüttel was
     # reported as the structural walk pairing a woman with `Q567039` *Henry IV, Duke of
-    # Brunswick* -- a man. The walk never touched you: `P2600` supplied the correct
+    # Brunswick* -- a man. The walk never touched her: `P2600` supplied the correct
     # `Q434771` and the wrong candidate came from `geni-wikidata-pairs`. The flattened
     # column made an ordinary aggregate look like per-candidate provenance.
     conf = R / "synoptic-conflicts.tsv"

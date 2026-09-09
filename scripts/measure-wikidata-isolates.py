@@ -1,12 +1,12 @@
 """Who are the Wikidata people with no genealogy? A demographic census.
 
-**You, 2026-08-15:** *"Can you look over the isolated wikidata individuals? I
+**Emma, 2026-08-15:** *"Can you look over the isolated wikidata individuals? I
 want to analyze who they are. We did a bit of analysis but I want to basically
 analyze them demographically."*
 
 **Isolated means present as an item and absent as genealogy** — `CLAUDE.md`
 § *An item with no relationships is not a missing item*. The Samaritan high
-priests are the worked example: on Geni, on Wikidata, attached to nothing. Your own
+priests are the worked example: on Geni, on Wikidata, attached to nothing. Her own
 `Q232803` is the same shape. The earlier pass established *that* they exist;
 this asks *who they are*.
 

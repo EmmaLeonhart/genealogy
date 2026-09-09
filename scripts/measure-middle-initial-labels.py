@@ -1,13 +1,13 @@
 """What Wikidata itself does with a middle initial, language by language.
 
-**You, 2026-08-18, on the proposal to keep the initial as a Latin letter:** *"Can you
+**Emma, 2026-08-18, on the proposal to keep the initial as a Latin letter:** *"Can you
 give me some examples of the first one in action? It looks the best but I want evidence
 of it being standard."* Quite right — the claim was asserted, not shown. And then, having
 seen the Japanese answer: *"I'm guessing Russian and Greek do it with transliterating the
 initial though and they should do that. Idk what Hindi does but do the standard for it
 too."*
 
-So the answer is **per language, and measured for each** rather than settled once. Your
+So the answer is **per language, and measured for each** rather than settled once. Her
 guess about Cyrillic and Greek is a hypothesis this script can confirm or refute, and the
 Hindi instruction is explicitly *find the convention*, not *pick one*.
 
@@ -25,7 +25,7 @@ what became of the initial:
 
 * `latin_initial` — the Latin letter survives as itself: ジョセフ・**C**・オマホニー
 * `script_initial` — the initial is rendered **as an initial in the target script**:
-  Джозеф **С.** О'Махони. This is what you mean by transliterating the initial.
+  Джозеф **С.** О'Махони. This is what Emma means by transliterating the initial.
 * `expanded` — the initial is replaced by the **full middle name**, which Wikidata knows
   and we do not: `Samuel S. Cox` → サミュエル・**サリヴァン**・コックス (Sullivan).
 * `dropped` — the initial is gone and the label has fewer components.
@@ -77,8 +77,8 @@ SHARDS = sorted((REPO / "wikidata" / "items").glob("items-*.jsonl.gz"))
 OUT_CSV = REPO / "reports" / "middle-initial-wikidata-practice.csv"
 OUT_MD = REPO / "reports" / "middle-initial-wikidata-practice.md"
 
-#: The languages the decision covers. `ja`/`zh` are the ones you first asked about;
-#: `ru`/`el`/`hi` are the ones you named next; the rest are the other non-Latin scripts
+#: The languages the decision covers. `ja`/`zh` are the ones Emma first asked about;
+#: `ru`/`el`/`hi` are the ones she named next; the rest are the other non-Latin scripts
 #: this corpus's people plausibly need, measured rather than assumed alongside them.
 LANGS = ["ja", "zh", "ko", "ru", "el", "hi", "uk", "bg", "sr", "he", "ar", "fa", "ta"]
 

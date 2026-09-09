@@ -1,6 +1,6 @@
 """Plan item 6 — marriage date, place and end, per family.
 
-You, 2026-08-12: *"Marriage date and place and end and whatever will be
+Emma, 2026-08-12: *"Marriage date and place and end and whatever will be
 easy-ish."*
 
 **"End" is measured rather than assumed.** The `FAM`-level tags in this corpus

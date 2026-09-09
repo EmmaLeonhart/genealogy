@@ -1,10 +1,10 @@
 # What the structural walk actually does, and what it does not
 
-**You, 2026-08-24:** *"I'm still not 100% sure how it is that you're doing the zipper
+**Emma, 2026-08-24:** *"I'm still not 100% sure how it is that you're doing the zipper
 join... It's not clear to me that you've ever been doing the zipper join correctly,
 especially since you never really explain how it is that you're doing it."*
 
-You are right that it was never written down. This is the algorithm, exactly, read off
+She is right that it was never written down. This is the algorithm, exactly, read off
 `scripts/walk-structural-merge.py` rather than described from memory.
 
 ## The algorithm
@@ -34,7 +34,7 @@ build, of which 7,861 became rows in `reports/structural-correspondence.csv`.
 **It is not a zipper join.** Calling it one oversold it.
 
 - **It never looks at children (`P40`) or spouses (`P26`).** Neither property appears
-  anywhere in the script. The hard cases you named — choosing among several children,
+  anywhere in the script. The hard cases Emma named — choosing among several children,
   choosing among spouses — are not done badly, they are **not done**.
 - **It walks a single line.** `father or mother` means a person with both parents has
   only the father's line walked. The mother is *compared* at that step and then

@@ -1,4 +1,4 @@
-"""Which of your instructions are not written down anywhere in the repo?
+"""Which of Emma's instructions are not written down anywhere in the repo?
 
     python scripts/audit-turns-recorded.py
 
@@ -18,11 +18,11 @@ two objective cuts and hands the residue to a human:
    `devlog.md` and `docs/`. A hit means somebody wrote it down; a miss means nobody did.
 
 **Why a distinctive PHRASE and not the whole turn.** The whole turn never matches -- the repo
-quotes your in fragments, and matching on any single common word matches everything. The phrase
+quotes her in fragments, and matching on any single common word matches everything. The phrase
 taken is the longest run of words that is rare in the repo, which is what makes a hit meaningful
 in both directions.
 
-**A miss is a CANDIDATE, not a finding.** You repeats yourself, rephrases, and much of what you
+**A miss is a CANDIDATE, not a finding.** She repeats herself, rephrases, and much of what she
 says is answered in the moment and needs no record. The output is a shortlist to read, and the
 reading is the part this cannot do.
 
@@ -42,7 +42,7 @@ csv.field_size_limit(1 << 30)
 TURNS = ROOT / "reports" / "user-turns.tsv"
 OUT = ROOT / "reports" / "unrecorded-instructions.tsv"
 
-#: Where the project writes down what you have said.
+#: Where the project writes down what she has said.
 RECORDS = [ROOT / "CLAUDE.md", ROOT / "queue.md", ROOT / "devlog.md",
            ROOT / "name modelling.txt"]
 
@@ -55,8 +55,8 @@ DIRECTIVE = re.compile(
 #: "do it". They are real but carry nothing to record.
 MIN_WORDS = 8
 
-#: **And a turn longer than this is the HARNESS talking, not you.** Cron prompts, skill bodies
-#: and pasted system text come through the same channel as your typing -- `CLAUDE.md` already says
+#: **And a turn longer than this is the HARNESS talking, not Emma.** Cron prompts, skill bodies
+#: and pasted system text come through the same channel as her typing -- `CLAUDE.md` already says
 #: to skip cron prompts and `<task-notification>` for this reason, and skills are the same class.
 #:
 #: Measured 2026-08-31 over the 376 flagged turns: the six that are harness text have a **median

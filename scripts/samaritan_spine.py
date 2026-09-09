@@ -137,7 +137,7 @@ def ordinal(n: int) -> str:
 
 
 #: The descriptive name a placeholder generation carries instead of a personal
-#: name. Your instruction, 2026-08-14: they are not "unnamed placeholders",
+#: name. Emma's instruction, 2026-08-14: they are not "unnamed placeholders",
 #: they are a numbered generation of a named line, and the label has to say so.
 def generation_label(n: int) -> str:
     return f"{ordinal(n)} generation Samaritan Itamar line"

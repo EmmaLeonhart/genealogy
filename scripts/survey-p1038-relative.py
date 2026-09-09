@@ -2,7 +2,7 @@
 
     python scripts/survey-p1038-relative.py
 
-**You, 2026-08-25**, having ranked the four link kinds the zipper uses — parents, spouses,
+**Emma, 2026-08-25**, having ranked the four link kinds the zipper uses — parents, spouses,
 children, siblings — named a fifth: *"there are other relationships there that are sometimes
 reported on Wikidata, like the relative role"*. `queue.md` records the instruction attached to
 it: **measure how much of it exists before building anything on it.**

@@ -8,7 +8,7 @@ from tree position.
 
 **It misled twice in one day.** Katharina von Braunschweig-Wolfenbüttel was reported as
 the structural walk pairing a woman with `Q567039` *Henry IV, Duke of Brunswick*. The walk
-never touched you: `P2600` supplied the correct `Q434771`, and the wrong candidate came
+never touched her: `P2600` supplied the correct `Q434771`, and the wrong candidate came
 from `geni-wikidata-pairs`.
 """
 from __future__ import annotations

@@ -1,12 +1,12 @@
-"""The join key you put in the data yourself: a Wikidata URL in the Geni About Me.
+"""The join key Emma put in the data herself: a Wikidata URL in the Geni About Me.
 
     python scripts/build-geni-qid-links.py
 
-You, 2026-08-23: *"we have intentionally added actual join keys for the Samaritan
+Emma, 2026-08-23: *"we have intentionally added actual join keys for the Samaritan
 high priests, Izumo clan, and Tanba clan... The wikidata items linked in the
 descriptions."*
 
-You are right and it is exact. Geni exports the About Me as
+She is right and it is exact. Geni exports the About Me as
 ``1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q135579415#…``
 so the profile carries its own Wikidata identity. No name is consulted, no
 number, no position in a succession -- an identifier written by hand for exactly
@@ -70,7 +70,7 @@ def main():
     print(f'  {one} carry exactly one QID; {len(qids) - one} carry more than one')
 
     # A QID on two profiles is Geni's duplicate-profile situation, which is
-    # ordinary here and is your to merge -- never ours. Reported, not resolved.
+    # ordinary here and is Emma's to merge -- never ours. Reported, not resolved.
     holders = {}
     for g, qs in qids.items():
         for q in qs:

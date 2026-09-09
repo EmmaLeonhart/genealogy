@@ -1,34 +1,34 @@
 """Labels for every placeholder-named person, as JSON edit objects.
 
 Queue items 7 and 8, which are one job: the `mul` label is the normalisation and
-the per-language label is the generated relationship. Both were settled by you
-on 2026-08-15 after you read the preview, so this generates rather than asks.
+the per-language label is the generated relationship. Both were settled by Emma
+on 2026-08-15 after she read the preview, so this generates rather than asks.
 
 **`mul` — the normalisation.** Every placeholder given-name form collapses to
 `NN`, or `NN <surname>` where a real surname exists. A surname that is *itself*
 placeholder vocabulary — `NN ???`, `NN N.N.`, `NN Unknown` — collapses to bare
-`NN`; your call, 351 people.
+`NN`; her call, 351 people.
 
 **`en` — the relationship label.** Precedence parent, spouse, child, giving
-`daughter of Olof Larsson`, `wife of Rostaing Arbald`. Your rulings, both applied:
+`daughter of Olof Larsson`, `wife of Rostaing Arbald`. Her rulings, both applied:
 
 * **Everyone with a placeholder given name gets one**, including the 3,934 who
   already carry a surname, and including the 331 whose surname also appears
-  inside the generated label. Shown the rows, you chose to generate: the label
+  inside the generated label. Shown the rows, she chose to generate: the label
   still carries a given name the `mul` label does not.
 * **A redacted or placeholder relative is skipped** and the precedence falls
   through to the next one, trying every spouse and child. This is why no label
   reads *"husband of `<private>` Gaya Pereira"* — there were 2,730 of those.
 
 **The surname is kept, and the reason is the measurement.** A relative has a real
-name for 69% of bare-`NN` people but only 36% of `NN <surname>` ones. You read
+name for 69% of bare-`NN` people but only 36% of `NN <surname>` ones. Emma read
 that correctly where I had it backwards: *"the surname ones being badly connected
 is kind of evidence in favour of the fact that we need to keep the surname."* For
 that population the relationship label usually cannot be built at all, so the
 surname is the only informative thing they have.
 
 **No `ja` or `zh` is emitted here and that is queue item 9, not an oversight.**
-You requires English, Japanese, Chinese and `mul` on everything. `en` comes free
+Emma requires English, Japanese, Chinese and `mul` on everything. `en` comes free
 because the relative's own label is English; `ja` and `zh` have to be
 *constructed*, since Japanese is not in Wikidata's top 18 languages by coverage
 and cannot be copied from a relative. Every edit records which languages it is
@@ -60,7 +60,7 @@ OUT = REPO / "reports" / "wikidata-placeholder-labels.json"
 
 csv.field_size_limit(10 ** 7)
 
-#: you, 2026-08-15: English, Japanese and Chinese on everything, plus `mul`.
+#: Emma, 2026-08-15: English, Japanese and Chinese on everything, plus `mul`.
 REQUIRED = ("en", "ja", "zh")
 
 
@@ -79,7 +79,7 @@ REQUIRED = ("en", "ja", "zh")
 #: `en` label and no CJK at all -- the pattern `CLAUDE.md` keeps recording, where two halves of
 #: one job drift apart because nothing forces them to agree.
 #:
-#: The in-law pair is new on 2026-09-01, your ruling. It is the largest single population:
+#: The in-law pair is new on 2026-09-01, her ruling. It is the largest single population:
 #: **8,129 people whose only named relative is a spouse's father**, because their own spouse is
 #: unnamed too.
 CJK_RELATION = {
@@ -104,7 +104,7 @@ CJK_RELATION = {
     "nephew": ("の甥", "之侄", "의 조카"),
     "niece": ("の姪", "之侄女", "의 조카딸"),
     "nephew or niece": ("の甥姪", "之侄", "의 조카"),
-    # **Side-dependent: the Korean comes from `KO_BY_SIDE`, not from here.** You, 2026-09-01:
+    # **Side-dependent: the Korean comes from `KO_BY_SIDE`, not from here.** Emma, 2026-09-01:
     # *"you realize we can do logic for the NN stuff right? It's easy lol."* A nibling is reached
     # through a NAMED sibling who is that nibling's father or mother, so paternal against maternal
     # is which list the candidate came out of rather than an inference. 삼촌/외삼촌, 고모/이모.
@@ -140,8 +140,8 @@ KO_BY_INLAW = {
     "F-F": "의 올케",              # her brother's wife; no date needed, and 112 of the 121
     "F-M-older": "의 형수",        # his older brother's wife
     "F-M-younger": "의 제수",      # his younger brother's wife
-    "M-F-older": "의 형부",        # your older sister's husband
-    "M-F-younger": "의 제부",      # your younger sister's husband
+    "M-F-older": "의 형부",        # her older sister's husband
+    "M-F-younger": "의 제부",      # her younger sister's husband
     "M-M-older": "의 매형",        # his older sister's husband
     "M-M-younger": "의 매제",      # his younger sister's husband
 }

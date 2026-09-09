@@ -1,6 +1,6 @@
 """Every person in the corpus Geni records as having no surname at all.
 
-**your definition, 2026-08-18: mononyms are `Name /./`.** Geni writes an explicit
+**Emma's definition, 2026-08-18: mononyms are `Name /./`.** Geni writes an explicit
 full stop in the GEDCOM surname slot to mean *this person has no surname*, which is a
 positive statement and not the same as an empty slot. **10,695** NAME lines carry it.
 
@@ -11,7 +11,7 @@ instead was the empty-slot population. Both are reported below now, apart, becau
 are different statements: `/./` is Geni saying there is no surname, and `//` is Geni
 saying nothing.
 
-**your rule for what they get, same day:** *"if it repeats, it's a name. If it repeats
+**Emma's rule for what they get, same day:** *"if it repeats, it's a name. If it repeats
 over 10 times, I think that was our actual criterion. […] People with mononyms get a
 first name if it's a repeated name."* So a mononym is not a defect to pad out with an
 `NN` surname — the person gets a `P735` *given name*, and only when the token repeats,
@@ -21,11 +21,11 @@ threshold matches `MIN_BEARERS` in `scripts/build-name-item-batch.py`.
 **The marker vocabulary is imported, never redefined.** The first version carried its own
 English-only set and so ranked `Ukjent` (Norwegian) and `未知` (Chinese) — both meaning
 *unknown* — among Anna, Anders and Lars as though they were names. `scripts/labels.py`
-already held `ukjent`, which is your *"I thought that was in the logic"*; `未知` was
+already held `ukjent`, which is Emma's *"I thought that was in the logic"*; `未知` was
 genuinely missing and has been added there. That module is the single place that decides
 what a marker is, per `CLAUDE.md`, and the whole failure came from having a second copy.
 
-Those people are not dropped. You: *"Ukjent and 未知 get the mul NN treatment"* — the
+Those people are not dropped. Emma: *"Ukjent and 未知 get the mul NN treatment"* — the
 shape in `CLAUDE.md` § *`NN` is PRESERVED in `mul`*, where `NN` stays in `mul` and
 descriptive labels are added in other languages. They are counted here as markers so they
 do not become a `P735` given name; what they *do* get is that treatment, elsewhere.
@@ -51,7 +51,7 @@ from labels import (NARROW_MARKERS, PUNCTUATION_MARKERS, SINGLE_LETTER_MARKERS,
 OUT_CSV = sources.REPO_ROOT / "reports" / "mononyms.csv"
 OUT_MD = sources.REPO_ROOT / "reports" / "mononyms.md"
 
-#: your number, kept in step with `MIN_BEARERS` in build-name-item-batch.py.
+#: Emma's number, kept in step with `MIN_BEARERS` in build-name-item-batch.py.
 MIN_BEARERS = 10
 
 #: Everything `scripts/labels.py` calls a marker. One vocabulary, imported.

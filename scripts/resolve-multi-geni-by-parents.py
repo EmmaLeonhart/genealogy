@@ -2,12 +2,12 @@
 
     python scripts/resolve-multi-geni-by-parents.py
 
-**You, 2026-08-25:** *"the easiest way to do this at scale would be to figure out consistency
+**Emma, 2026-08-25:** *"the easiest way to do this at scale would be to figure out consistency
 of relatives on WikiData versus Geni. If one has two IDs and then they have a father and a
 mother that both have one Geni ID and the Geni IDs match one but not the other, that zipper
 join thing helps a lot with figuring out."*
 
-That is the zipper join used on the half you called easy: *"parents are very easy to do a
+That is the zipper join used on the half she called easy: *"parents are very easy to do a
 zipper join on. Children, however, selecting between children and spouses... is a much, much
 more difficult task."* This module does parents only, on purpose.
 
@@ -49,13 +49,13 @@ itself makes**, and the anchor is a recorded `P2600`, never an inference.
 
 ## Removal versus deprecation, which are different cases
 
-You have asked for both, for different things, and conflating them would destroy data:
+Emma has asked for both, for different things, and conflating them would destroy data:
 
 * **Wrong id** -- the item is carrying a *relative's* profile, as with `Q102825194` holding both
   Gilbert Motier de La Fayette and his son Antoine. Nothing on Geni fixes this. The statement is
-  **removed**, which is what you asked for here: *"Make edit JSONs that remove the property of
+  **removed**, which is what she asked for here: *"Make edit JSONs that remove the property of
   the wrong one."*
-* **Merged-away id** -- two Geni profiles for one person, one since merged into the other. Your
+* **Merged-away id** -- two Geni profiles for one person, one since merged into the other. Her
   rule, 2026-08-25: *"Once you've merged it, you would deprecate the one that redirects to the
   other one."* That is a rank change, not a removal, and this script does not emit it.
 
@@ -63,8 +63,8 @@ This script only ever emits the first, and only where the parents contradict the
 
 ## What it cannot tell you
 
-The local store predates your hand editing (`CLAUDE.md` -- *a downloaded item file is a
-photograph, not a mirror*), so an item you have fixed since the download still reads as broken
+The local store predates Emma's hand editing (`CLAUDE.md` -- *a downloaded item file is a
+photograph, not a mirror*), so an item she has fixed since the download still reads as broken
 here. Every emitted edit therefore names the store as its evidence and is **queued, never run**;
 Wikidata editing in this repo starts 2026-09-01.
 

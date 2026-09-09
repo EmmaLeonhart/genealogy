@@ -1,11 +1,11 @@
 """The bridge trunk: create the few people every saved path runs through.
 
-**Agenda task A, you 2026-08-15:** *"Connecting myself with these other
+**Agenda task A, Emma 2026-08-15:** *"Connecting myself with these other
 researchers on Wikidata."* And on how the bridging should work: *"finding the
 nearest person with a Wikidata ID to me, adding that, forming the bridge of that,
 doing that for the next and so on."*
 
-**The measurement says the nearest useful people are your own family, and they do
+**The measurement says the nearest useful people are her own family, and they do
 not exist on Wikidata.** Over the 560 saved paths:
 
 | paths through | who | on Wikidata |
@@ -17,7 +17,7 @@ not exist on Wikidata.** Over the 560 saved paths:
 | 194 | Beda Elvira Wedberg | no |
 
 **8,987 of the 9,211 people named across those paths have no Wikidata item.** So
-the first bridge is not a distant notable — it is the trunk of your own ancestry,
+the first bridge is not a distant notable — it is the trunk of her own ancestry,
 which every path already crosses. Creating it once means each isolate attached
 afterwards reaches Wikidata *through* the trunk rather than needing its own chain.
 
@@ -34,7 +34,7 @@ parents before children.
 
 **Nothing is executed.** This writes a reviewable batch;
 `scripts/wikidata-edit-run.py` is the only thing that talks to Wikidata and it is
-dry-run by default. Your standing rule: no Wikidata edits before 1 September.
+dry-run by default. Emma's standing rule: no Wikidata edits before 1 September.
 
 Writes `reports/wikidata-trunk-batch.json` and `reports/trunk-batch.csv`.
 
@@ -63,7 +63,7 @@ def label_set(label: str) -> dict:
 
     This script copied the derived label straight into both slots, which shipped
     `Private` as a Wikidata label on one item and `ukjent Knutsdatter` on another.
-    `CLAUDE.md` is explicit that `Private` must never be a label at all, and you
+    `CLAUDE.md` is explicit that `Private` must never be a label at all, and Emma
     2026-08-16: *"no local language should have"* `NN`.
 
     The same three cases the rest of the pipeline uses:
@@ -89,8 +89,8 @@ def label_set(label: str) -> dict:
 BRIDGE = REPO / "reports" / "path-bridge-targets.csv"
 FAMILY = REPO / "reports" / "derived-family.csv"
 #: **Labels come from `derived-labels.csv`, never from `display-names.csv`.**
-#: The latter holds raw `NAME` records straight out of the GEDCOM, which for you
-#: still contains the surname removed on 2026-08-12. `CLAUDE.md` § *Your name is
+#: The latter holds raw `NAME` records straight out of the GEDCOM, which for Emma
+#: still contains the surname removed on 2026-08-12. `CLAUDE.md` § *Her name is
 #: Empress Jingū*: the removed name is never written down again, and
 #: `derive-labels.py` is where the correction is applied. Reading the raw column
 #: put the old name into a generated Wikidata label on the first run of this
@@ -148,11 +148,11 @@ def main() -> int:
 
     qid_of = {g: (r.get("qid") or "").strip() for g, r in fam.items() if (r.get("qid") or "").strip()}
 
-    # **Anything you resolved by hand already exists and must not be created.**
-    # `reports/manual-identifications.csv` holds your Geni-to-Wikidata identities;
-    # `Q232803` is your own item, which carries no `P2600` and is therefore
+    # **Anything Emma resolved by hand already exists and must not be created.**
+    # `reports/manual-identifications.csv` holds her Geni-to-Wikidata identities;
+    # `Q232803` is her own item, which carries no `P2600` and is therefore
     # invisible to the `qid` column of `derived-family.csv`. The first run of this
-    # script proposed creating you a second item.
+    # script proposed creating her a second item.
     trunk = {g: n for g, n in trunk.items() if g not in qid_of}
     print(f"{len(trunk)} after removing people who already have an item")
 

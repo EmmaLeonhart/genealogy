@@ -1,5 +1,5 @@
 """Pair Geni profiles with Wikidata items from the `wikidata.org/wiki/Q...` links
-You put in their Geni `about_me`, and emit the `add_geni_id` batch.
+Emma put in their Geni `about_me`, and emit the `add_geni_id` batch.
 
 **These pairs are hand-curated identity claims, not inference.** Somebody wrote
 the Wikidata URL onto the Geni profile. That is the same kind of evidence as
@@ -17,7 +17,7 @@ Each pair is then checked against the local Wikidata store, offline:
   Geni-seeded slice and an unlinked item is exactly what falls outside it
 
 **A second Geni ID on one item is normal and permanent, not a conflict.**
-You, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
+Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
 that."* Geni forbids connecting biblical people to living people, so users
 repeatedly create fresh biblical profiles and attach their own lines to those.
 The duplicates cannot be merged and will keep appearing. Aaron has two

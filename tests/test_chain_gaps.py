@@ -1,6 +1,6 @@
 """The gap finder, which answers presence without building the merged tree.
 
-You, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
+Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
 is just going to create another tree that's going to become out of date pretty soon."*
 The rules pinned here are the ones that make the cheap answer the correct one.
 """
@@ -32,7 +32,7 @@ def test_the_xref_pattern_reads_geni_ids_and_only_those(gaps):
     """
     text = (b"0 HEAD\n"
             b"0 @I6000000001846508982@ INDI\n"
-            b"1 NAME you /Leonhart/\n"
+            b"1 NAME Emma /Leonhart/\n"
             b"0 @F123@ FAM\n"
             b"1 NOTE see @I999@ INDI for details\n"
             b"0 @I42@ INDI\n"

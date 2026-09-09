@@ -1,6 +1,6 @@
 """Every name item on Wikidata, as a seed list for the bulk downloader.
 
-**You, 2026-08-15:** *"Because we are not allowed to do this individual
+**Emma, 2026-08-15:** *"Because we are not allowed to do this individual
 querying, you're supposed to be doing mass exports on this stuff. I would say,
 realistically, you probably should be doing a mass export on every instance of a
 surname, every single instance of a patronymic, and every single instance of a

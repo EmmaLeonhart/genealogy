@@ -9,7 +9,7 @@ See `CLAUDE.md` § "Queue and longer-horizon work".
 
 ---
 
-**⛔ STALE — this file was last audited 2026-08-16 and you flagged it on 2026-09-06:**
+**⛔ STALE — this file was last audited 2026-08-16 and Emma flagged it on 2026-09-06:**
 *"the todo.md is probably stale."* It is. Measured that day, against the claims below:
 
 | the note below says | measured 2026-09-06 |
@@ -77,7 +77,7 @@ already exists. The primary key is **P2600 (Geni.com profile ID)**.
 
 **The "progressively weaker evidence" half of this item is DEAD, and saying so
 is the point of keeping the paragraph.** It used to read: *fall back to name +
-birth/death dates, parent/child links, known-royalty name forms*. You killed it
+birth/death dates, parent/child links, known-royalty name forms*. Emma killed it
 on 2026-08-12 — *"no fucking clue why there's a fuzzy matcher that sounds like
 something you made with zero consent from me"* — and `correspondence.md` states
 the rule: **no name similarity, ever.** `genimerge.reconcile`, which implemented
@@ -97,7 +97,7 @@ merged tree: individuals with missing parents, sparse subtrees, and
 high-connectivity hubs that would pull in the most new material per export. Use
 this to decide what to export next from Geni.
 
-### 3z. The three phases, in your framing (recorded 2026-08-04)
+### 3z. The three phases, in Emma's framing (recorded 2026-08-04)
 
 This is the ordering the rest of item 3 sits inside. Written down because the
 sub-items below were built during phase 1 and read as though it were the whole
@@ -107,8 +107,8 @@ job.
 things: reach a person, close a gap between components, make a path walkable.
 `Forest` and `Ancestors` do this. The Jimmu bridge is the worked example.
 
-**Phase 2 — bulk (in progress).** You are taking every export Geni will readily
-give you, **up to about 50**. These are not aimed at anything; they are cheap
+**Phase 2 — bulk (in progress).** Emma is taking every export Geni will readily
+give her, **up to about 50**. These are not aimed at anything; they are cheap
 coverage. `exports/archive/` is where they land. Do not analyse them one by one
 or try to read intent into a seed — but do check them for people a path file is
 waiting on, because `(22)` and `(23)` were bridging exports sitting in the bulk
@@ -123,14 +123,14 @@ comprehensive — which is where the next round of exports should aim, and which
 matters because thin regions are exactly the ones that will reconcile badly
 against Wikidata.
 
-**You named the descendants of the Indian people as the clearest example of a
+**Emma named the descendants of the Indian people as the clearest example of a
 thin region.** That is the first thing to check when the measure exists.
 
 `Descendants` exports belong to phase 3, not phase 1. They are not for
 connecting people — they fan out to pull in everyone below one person, which is
 a *breadth* instrument. Do not propose one to close a path.
 
-**"Region" means a region of the graph, not a place.** You were explicit:
+**"Region" means a region of the graph, not a place.** Emma was explicit:
 do not classify people geographically. Birthplace strings are dirty, most people
 do not have one, and inferring a place from a name is exactly the fuzzy matching
 this repo refuses everywhere else. A region here is a **neighbourhood in the
@@ -143,7 +143,7 @@ aggregate it over the graph. The measure needs: (a) a count per Geni ID of how
 many exports hold it, and (b) a way to find *contiguous stretches of graph*
 where that count is low and the stretch is large. Neither exists.
 
-**Not before the bulk downloads are done.** You are supportive of building this
+**Not before the bulk downloads are done.** Emma is supportive of building this
 and equally clear it is not wanted yet — with ~50 exports still arriving, any
 density measured now describes the download queue rather than the tree.
 
@@ -186,18 +186,18 @@ ruled out on 2026-08-04.
 **This whole item is worth less than it was, and that is a change in the
 project rather than a defect.** Seed ranking answers "which one profile should I
 export from next?", which mattered while each export was a deliberate choice.
-You have since switched to exporting whatever Geni will readily give you — 17
+Emma has since switched to exporting whatever Geni will readily give her — 17
 takes in one afternoon — so the binding constraint is now ingest and download
 time, not seed choice. Ranking still earns its place for the *targeted* exports
 (the Jimmu gap was found and closed this way), but do not spend effort improving
 it on the assumption it is on the critical path.
 
 Still open: **taking the next export**, from the sequence in `reports/seeds.md`.
-**This is NOT blocked on you and the tag saying so was wrong.** `CLAUDE.md`
+**This is NOT blocked on Emma and the tag saying so was wrong.** `CLAUDE.md`
 § *The batches are a SEQUENCE* lists "the merges/exports must wait on her" as one
 of three invented limits, refuted on 2026-08-17: Chrome automation runs the whole
 loop end to end — create the placeholder in the tree view, Actions → Export
-GEDCOM, poll the download page, click through. Your words: *"we've managed to use
+GEDCOM, poll the download page, click through. Her words: *"we've managed to use
 Chrome automation to actually completely run my old workflow… all of my human
 labor involved with the exports."* An export tagged BLOCKED-ON-USER-ACTION here is
 a thing nothing is blocking.
@@ -220,10 +220,10 @@ in `queue.md`, and the thing most likely to change what is worth building next.
 
 Take from every Geni profile the project cares about what the collector can take — immediate
 family, relationship path, statistics — and emit each as a **tiny GEDCOM** that merges into the
-synoptic tree on the Geni id. Thousands of small files, not aggregates: you, 2026-09-06,
+synoptic tree on the Geni id. Thousands of small files, not aggregates: Emma, 2026-09-06,
 *"you didn't understand that thousands of tiny gedcom files was the signal."*
 
-**⛔ IT CANNOT RUN YET, and this is not a formality.** Your instruction: *"The scrape is to be done
+**⛔ IT CANNOT RUN YET, and this is not a formality.** Her instruction: *"The scrape is to be done
 with the extension we built yesterday and it can only be done after we have a coherent idea of the
 deliverables."* Two conditions, both currently unmet:
 
@@ -244,7 +244,7 @@ people) and `scripts/sibling-pair-worklist.py`. What is missing is the running o
 
 ## 3d. The collector's background service worker — NOT NEEDED, recorded so nobody chases it
 
-**You, 2026-09-06:** *"put the scheduler in the todo not the queue. Strictly speaking we never
+**Emma, 2026-09-06:** *"put the scheduler in the todo not the queue. Strictly speaking we never
 need the scheduler lol."* It sat in `queue.md` as a blocker for most of a day and blocked nothing.
 
 **The scheduler is the only thing it runs.** Jobs go through the DOM trigger in
@@ -278,8 +278,8 @@ The item as it stood in the queue, moved verbatim:
   restart. Scraping needs none of it. This item claimed otherwise and that claim held up the whole
   campaign in the reporting.
 
-  **And it is not simply your clicking a button.** You are often on a phone, so *"reload at
-  `chrome://extensions`"* is not an action available to you, and five automated routes were tried
+  **And it is not simply her clicking a button.** She is often on a phone, so *"reload at
+  `chrome://extensions`"* is not an action available to her, and five automated routes were tried
   and each failed with a named mechanism:
 
       chrome://extensions                       the browser tool refuses chrome:// URLs
@@ -292,9 +292,9 @@ The item as it stood in the queue, moved verbatim:
   `ping` message added to `background.js` two minutes earlier returns **null**.
 
   **The cause is almost certainly Chrome 137 removing `--load-extension`** unless re-enabled by
-  policy — which is what you pointed at: *"the policy thing that we abandoned is probably the
+  policy — which is what Emma pointed at: *"the policy thing that we abandoned is probably the
   best thing."* That is a registry change under `Software\Policies\Google\Chrome`, a
-  security-relevant system setting, and is yours rather than mine.
+  security-relevant system setting, and is hers rather than mine.
 
   **What is actually blocked by it:** the scheduler, batch pacing, and the `addAncestor`
   termination — which is why that investigation could never have succeeded. Unblock signal is a
@@ -306,7 +306,7 @@ The item as it stood in the queue, moved verbatim:
 For people with no Wikidata item, generate a reviewable batch that creates them
 with everything the genealogy actually supports.
 
-**The format is JSON edit objects, not QuickStatements.** Your 2026-08-12 spec
+**The format is JSON edit objects, not QuickStatements.** Emma's 2026-08-12 spec
 calls for JSON with dependency ordering, roughly a hundred executed per day;
 QuickStatements was deleted entirely on 2026-08-15 — *"we are deleting the entire
 thing right now."* Every batch below is JSON.
@@ -350,7 +350,7 @@ numbers:
   needs reading closely".
 - **A NAME is Geni's display *label*, not always a name.** Some values
   ("Unknown Wife", "NN", "daughter of …") are descriptions; on Wikidata they are
-  a label or an alias, never a P735/P734 link. Your framing 2026-08-07: "the
+  a label or an alias, never a P735/P734 link. Emma's framing 2026-08-07: "the
   names aren't exactly the display names, and they aren't exactly the most
   natural" — the pipeline has to decide per string whether it is a name at all.
 
@@ -358,7 +358,7 @@ numbers:
 of the tree carries a CJK form; 56.3% of those are native-script only and 43.7%
 also carry a romanisation (often in the `_MARNM` slot). So the hard-to-recover
 native label is the *well*-covered one and matches Wikidata's native labels
-directly; the gap is the *English* label, which Wikidata often supplies. Your
+directly; the gap is the *English* label, which Wikidata often supplies. Emma's
 plan for the CJK cases (2026-08-07): translate to English where a romanisation
 is missing, the harder part being to distinguish Japanese from Chinese first.
 
@@ -373,7 +373,7 @@ several Wikidata items share the label (`Maria` matches nine). One item per
 **usage**, not per string, so a token used as a given name, a surname and a
 patronymic is three items.
 
-**You were right about the patronymics.** All 633 Wikidata items that are
+**Emma was right about the patronymics.** All 633 Wikidata items that are
 `instance of` `Q110874` are saved in `reports/patronymic-items.csv`; coverage is
 Russian, Icelandic, Spanish and Ukrainian, Swedish has 13 and Danish/Norwegian
 essentially none. 143 of the 633 match a token here and get **linked**; 4,143
@@ -395,7 +395,7 @@ Three slices of this are built, each writing a reviewable batch to
 - **P2600 backfill** — `genimerge quickstatements` and its `.qs` output were
   **deleted 2026-08-15**. The work now lives in
   `scripts/build-geni-wikidata-pairs.py` → `reports/wikidata-add-geni-id.json`,
-  36 entries from the Wikidata URLs you wrote onto Geni profiles.
+  36 entries from the Wikidata URLs Emma wrote onto Geni profiles.
 - **P735/P734 name links to items that already exist** — `genimerge name-links`,
   **now fully offline**: the P2600 map, `reports/name-resolution.csv` and the
   downloaded store, no network at all.
@@ -450,7 +450,7 @@ source" for something whose Q-space is its own: `Q1` there is Aster, and
 
 ## 8. A parallel Wikidata tree, built by SPARQL, and provenance throughout
 
-**Recorded 2026-08-05, in your framing. Long-term — You are still doing a
+**Recorded 2026-08-05, in Emma's framing. Long-term — she is still doing a
 comprehensive Geni export, and that comes first.**
 
 The end goal is not only to reconcile our Geni tree against Wikidata one person
@@ -464,18 +464,18 @@ Geni's — it is dense exactly where Geni is dense (heavily studied dynasties) a
 absent for the ordinary people who make up most of a Geni export. Expect the two
 trees to agree on structure and disagree on who exists at all.
 
-**Your judgement on where exports pay, recorded because it changes the
+**Emma's judgement on where exports pay, recorded because it changes the
 ranking.** Hyper-dense regions are **low** return on an export: we can get that
 material from Wikidata instead, and where Geni disagrees with Wikidata there it
-will be over minor details rather than whole people. You also expects those
+will be over minor details rather than whole people. She also expects those
 regions to be *hard* to export from at all — see the note on Geni entry points
 below. So the small-world but non-dense regions are the ones worth exporting,
 which cuts against ranking purely by doorway count.
 
 **Why dense regions resist export, which no report here could have worked out.**
-You gains access to a cluster through *nearby contributions* — that is how
+Emma gains access to a cluster through *nearby contributions* — that is how
 every export so far was seeded. Once an area is too densely covered by other
-contributors you cannot add an individual to it, and so cannot create the
+contributors she cannot add an individual to it, and so cannot create the
 foothold an export needs. A larger export size limit would penetrate these
 areas; the current one does not. This is a constraint of Geni's editing model,
 not of our data, and it explains the Carolingian hole in `reports/paths.md`
@@ -493,18 +493,18 @@ behaves differently again. **Another agent was editing it when this was written 
 flux**, so reading it for anything load-bearing would be reading a moving target.
 **This blocks nothing**: order.life is explicitly the last source to touch and
 everything ahead of it is unfinished, so "don't read it yet" is an ordering note
-rather than a stalled item. Ask you when it is actually next.
+rather than a stalled item. Ask Emma when it is actually next.
 
-**Your 2026-08-07 framing of order.life and the phase ordering.** order.life
+**Emma's 2026-08-07 framing of order.life and the phase ordering.** order.life
 is **a third source**, alongside Geni and Wikidata, feeding the Phase-4 queue of
-things to add to Geni. It is **on your PC** — local, not in this session's
-reach — and you are **deferring it deliberately** ("we'll do it later"), until
+things to add to Geni. It is **on Emma's PC** — local, not in this session's
+reach — and she is **deferring it deliberately** ("we'll do it later"), until
 the Wikidata side is built offline. Because it is not Geni-native it needs a
 **different citation** from the Geni-ID-as-source used for the Geni-derived
 claims. This does not change its BLOCKED status; it names why the block is
-Your choice, not just the other agent's edits.
+Emma's choice, not just the other agent's edits.
 
-The ordering you stated, end to end: (1) descendant-distribution search to pick
+The ordering she stated, end to end: (1) descendant-distribution search to pick
 where to export next — tomorrow's work, item 3/3z; (2) a very large export
 campaign off those picks; (3) the Geni-side enrichment pipeline (items 4/6);
 (4) build the Wikidata tree offline and superimpose it (this item); (5)
@@ -513,16 +513,16 @@ of 4–5 is done **offline** on purpose — it is how the entity resolution and 
 merge decisions get made without hammering Geni with live operations, and only
 the *final* confirmed merges go online where parents can be compared.
 
-**A postponed Geni-side merge queue — recorded, not started.** You, 2026-08-07:
+**A postponed Geni-side merge queue — recorded, not started.** Emma, 2026-08-07:
 **most of the cases where two Geni IDs sit on one Wikidata item are Geni
 duplicates that should be merged, but cannot be merged on Geni yet** ("because
 Geni's Geni"). `reports/wikidata-doubles.md` already surfaces these pairs side by
 side; the eventual Phase-4 output is a *queue of Geni merges* to perform online,
 one that only exists once the offline Wikidata tree and its entity resolution
-are in place. You are explicitly **postponing this until the Wikidata side is
+are in place. She is explicitly **postponing this until the Wikidata side is
 offline as well** — it is the last thing, not a current task.
 
-### 8a. How the Wikidata download must be built — your design constraints, 2026-08-07
+### 8a. How the Wikidata download must be built — Emma's design constraints, 2026-08-07
 
 **This is the part that has been got wrong before by ignoring how Wikidata
 behaves. Read it before writing a line of the downloader.** The shape of the job:
@@ -532,7 +532,7 @@ then **grow the set by walking family relationships** — parent, child, spouse
 (P22/P25/P26/P40) — to items that have no Geni ID, iterating outward. That is the
 whole tree of Wikidata reachable from the Geni-linked seed.
 
-**Treat it as a multi-day background operation, not a rush.** Your words: it
+**Treat it as a multi-day background operation, not a rush.** Emma's words: it
 "should be treated as a couple-day-long operation that is run in the background",
 **not** a "do it as fast as possible and don't even bother with rate-limit stuff"
 job. Running in the background is what *makes it easy* — wall-clock length is not
@@ -540,7 +540,7 @@ a problem, so there is no reason to run hot. The number of items per hour is
 unknown and is to be **found by serious experimentation up front**, not assumed.
 
 **Wikidata is hostile and rate-limits readily — design for that from the first
-line.** Expect HTTP 429s (you: "we're going to get fortune nines"). The rule is
+line.** Expect HTTP 429s (Emma: "we're going to get fortune nines"). The rule is
 to **back off the moment one arrives**, not to run flat out and then treat 429s
 as a surprise to complain about. Non-negotiables:
 
@@ -585,7 +585,7 @@ JSON entity API; no dependency is needed for this.
 
 ### 8a-revised. Dump-first, batched writes — 2026-08-07, same day, before any code
 
-**Source: `chats/wikidata-querying-2026-08-07.md`.** You took § 8a above to a
+**Source: `chats/wikidata-querying-2026-08-07.md`.** Emma took § 8a above to a
 second model and it found three things wrong with it. This section supersedes
 § 8a where they disagree; § 8a is kept because most of it stands and because the
 corrections only read as corrections next to what they replace.
@@ -595,7 +595,7 @@ corrections only read as corrections next to what they replace.
 - Write each item's full JSON to disk **the moment it is fetched**, and never
   fetch it again once present. That is the property § 8a actually wanted.
 - **Commit and push in batches** — every 500–1000 items, or every few minutes,
-  whichever comes first. Your own number: "every hundred or every thousand
+  whichever comes first. Emma's own number: "every hundred or every thousand
   individuals would be fine; per individual would be a big problem". Half a
   million commits is not a slow version of this plan, it is a repo that stops
   working somewhere in the low hundreds of thousands.
@@ -604,7 +604,7 @@ corrections only read as corrections next to what they replace.
   (plus retry count and last error) is an instant lookup; `ls`-ing 500k files or
   reading `git log` on every resume is not. § 8a's "picks up from what is already
   stored" is right about the *guarantee* and wrong about the *mechanism*.
-- **Still hard-committed to the repo** — that part is your decision and does
+- **Still hard-committed to the repo** — that part is Emma's decision and does
   not change. The cadence is the only thing being changed.
 
 **Two-phase sourcing, because the seed set and the frontier are different jobs.**
@@ -626,7 +626,7 @@ the action API** — a 60-second query timeout and its own throttling. "SPARQL i
 cheap" in § 8a is true per query and false per campaign; the P2600 list needs
 pagination and pacing like anything else.
 
-**Expansion scope — your prediction, recorded so it can be scored.** Expect
+**Expansion scope — Emma's prediction, recorded so it can be scored.** Expect
 **heavy interconnection inside the seed set itself**: most P22/P25/P26/P40 edges
 from a Geni-linked item will land on another Geni-linked item already in the set,
 not on a new one. The frontier — items reached that lack a Geni ID — is therefore
@@ -653,7 +653,7 @@ are measurements, not arguments, and each could flip the decision:
    Whatever the answer, it lands in a git repo that GitHub starts warning about
    in the low single-digit GB, so **sharded and compressed** (gzipped JSONL,
    fixed items per shard) is the shape to assume, and the pilot exists to say
-   whether even that is viable. If it is not, the plan needs your decision
+   whether even that is viable. If it is not, the plan needs Emma's decision
    about what "hard committed as part of the repo" means at this scale — not a
    quiet switch to storing it somewhere else.
 
@@ -663,13 +663,13 @@ and every one of those is currently a guess. Nothing about the 500k run should b
 designed on numbers nobody has measured — that is the failure § 8a was written
 to prevent, repeated one level up.
 
-### 8a-decided. Your calls, 2026-08-07 evening — this is the built design
+### 8a-decided. Emma's calls, 2026-08-07 evening — this is the built design
 
 Made after reading § 8a-revised, and they close most of what it left open.
 `genimerge wikidata-download` implements them; `src/genimerge/wikidownload.py`
 is the long form.
 
-**Live API for the whole seed set. The dump is not needed.** Your reasoning:
+**Live API for the whole seed set. The dump is not needed.** Her reasoning:
 *"because of how easy it is to get the 500,000, we can get the 500,000 with all
 their data"* — 50 QIDs per `wbgetentities` request makes it ~10,300 requests, not
 500,000, and the dump's cost was always the ~100 GB download the seed phase would
@@ -677,14 +677,14 @@ have to pay before filtering. The dump stays on the shelf as the fallback if the
 live path turns out to throttle harder than it looks.
 
 **Storage: many ordinary files, committed and pushed as the run proceeds.**
-You, explicitly: *"I do not want the Wikidata to be all in one file that would
+Emma, explicitly: *"I do not want the Wikidata to be all in one file that would
 need LFS. I want the Wikidata to be kept in a common way so they can be committed
 and pushed and actively done, building up the tree."* Gzipped JSONL shards of
 1000 items under `wikidata/items/`, each a few megabytes — small enough that a
 push is incremental and no single file approaches a limit. **No LFS.** The
 resume index sits in `out/` and is derived, not committed.
 
-**Two queues, and the walk between them is the point.** Your design, in your
+**Two queues, and the walk between them is the point.** Her design, in her
 terms:
 
 1. **The take-from-Wikidata queue** — QIDs known to exist and not yet held. It
@@ -721,7 +721,7 @@ was added and none should be; the corpus rule under `exports/` is untouched.
 `wikidata/items/` once the download has finished, and each is written down now
 precisely so it does not get "just quickly checked" against the live endpoint.
 
-**The century distribution, Wikidata against Geni.** Your guess, 2026-08-07:
+**The century distribution, Wikidata against Geni.** Emma's guess, 2026-08-07:
 the Geni-linked items on Wikidata skew heavily to the 20th and 21st centuries
 much as the Geni profiles do, with the 19th ambiguous — *"I'm not really sure,
 but that dynamic is something I could imagine would be happening"*. Recorded as a
@@ -740,13 +740,13 @@ export toward and the input to entity resolution between the two trees.
 
 ## order.life: the descent-from-antiquity material
 
-**You, 2026-08-14.** `order.life` is chaotic but you believes it **gets the link
+**Emma, 2026-08-14.** `order.life` is chaotic but she believes it **gets the link
 right** for the cases Geni cannot express — Zerubbabel especially, where
 `6000000000961704850` and `6000000206646432835` are the same person and Geni
-cannot merge them. You think it has the correct father for him.
+cannot merge them. She thinks it has the correct father for him.
 
 It is **not** a source to make our real-life tree from. It carries descent-from-
-antiquity material you want to **include in the synoptic tree**, and you asked
+antiquity material she wants to **include in the synoptic tree**, and she asked
 for its content to be gone over **later**.
 
 Wikidata should also be getting this right, which is the check to run against the
@@ -754,9 +754,9 @@ local store once the pairs are in.
 
 ## The built batches, and the 1 September date
 
-**Moved out of `queue.md` on 2026-08-16.** You: *"What the fuck waits on 1 September? That
+**Moved out of `queue.md` on 2026-08-16.** Emma: *"What the fuck waits on 1 September? That
 shouldn't be in the queue?"* Right — it is not work, it is a list of what exists. The date
-is your instruction of 2026-08-14: *"no wikidata edits until September 1."*
+is her instruction of 2026-08-14: *"no wikidata edits until September 1."*
 
 Every batch below is generated, committed, and has sent nothing anywhere.
 
@@ -799,13 +799,13 @@ the script instead of editing the table.
 
 ## 9. Future modelling, folded in from `provisional-todo.md` (2026-08-16)
 
-You made that file on 2026-08-15 because `todo.md` was untrusted; this audit is
+Emma made that file on 2026-08-15 because `todo.md` was untrusted; this audit is
 what it was waiting for, so it comes here and the file goes.
 
 ### 9a · Cladoplast — a property plus a role qualifier, once the item exists
 
 The Gaiad's `P59 Cladoplast of` has no Wikidata equivalent
-(`reports/orderlife-properties.md` § *Genuinely novel*). Your model for it, when
+(`reports/orderlife-properties.md` § *Genuinely novel*). Emma's model for it, when
 the time comes:
 
 > some sort of other Wikidata property, with a qualifier of *object of statement
@@ -815,7 +815,7 @@ So the shape is `<some property>` + **`P3831`** → *Cladoplast*, exactly the
 pattern already used for patronymics (`P3831` → `Q110874`). The base property is
 **not chosen** and must not be guessed.
 
-**Your own estimate of when: not soon.** *"The Cladoplast item is probably going to
+**Her own estimate of when: not soon.** *"The Cladoplast item is probably going to
 take a really long time to be made, so it's not exactly something that's that
 relevant."* Nothing is blocked on it.
 
@@ -829,7 +829,7 @@ corrections a transcript audit has to respect.
 eventually, once the Gaiad stuff is better sorted out, the Gaiad stuff is going to
 have individual citations."*
 
-**They are not a separate class of person.** You, same message: *"Everybody is a
+**They are not a separate class of person.** Emma, same message: *"Everybody is a
 human, basically."* So `P31` → `Q5` stays, and no Gaiad-specific typing is
 emitted.
 
@@ -853,7 +853,7 @@ designed. **Do not "fix" it, do not substitute a real property, and do not filte
 these entries out of the batch to make it run clean.**
 
 **It is `T`, not `P`, and that was checked.** Written as `P999999` at first on
-the reasoning that properties are `P`; you, 2026-08-15: *"It is not P."* So the
+the reasoning that properties are `P`; Emma, 2026-08-15: *"It is not P."* So the
 `T` is deliberate and is part of why the reference cannot resolve. Do not
 "correct" it back.
 
@@ -864,7 +864,7 @@ the reasoning that properties are `P`; you, 2026-08-15: *"It is not P."* So the
 Kept because it is where 9a–9c came from, and because the fix went wrong twice.
 
 It set `"gaiad": true` by **searching the raw JSON text** of each order.life item
-for `Q153802`. You: *"You shouldn't be doing a raw substring search."* It reads
+for `Q153802`. Emma: *"You shouldn't be doing a raw substring search."* It reads
 the **claim** now — and it was accidentally correct: over a 4,000-item sample the
 substring test and the `P39` claim agreed exactly, 3,970 each, zero false
 positives. The method changed; the answer did not.

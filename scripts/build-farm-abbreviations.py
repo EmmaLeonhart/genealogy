@@ -1,7 +1,7 @@
 """Farm-name abbreviations, expanded only where the CORPUS attests the full form.
 
-**You, 2026-09-04, on `Q141216388` *Jon Hansson St. Vatne*:** *"I think in this one St. Stands
-for Store"* -- and *"St. Gives a misinpression"*, because it reads as *Saint*. You are right, and
+**Emma, 2026-09-04, on `Q141216388` *Jon Hansson St. Vatne*:** *"I think in this one St. Stands
+for Store"* -- and *"St. Gives a misinpression"*, because it reads as *Saint*. She is right, and
 the corpus says so rather than the reasoning: `Store Vatne` is written out **42 times**.
 
 **A blanket rule would be badly wrong.** `St.` heads 358 labels and most of them really are

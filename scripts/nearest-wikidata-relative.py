@@ -1,6 +1,6 @@
 """How many family-tree hops from a person to somebody who has a Wikidata item?
 
-You, 2026-08-12: *"I'd like you to look through my ancestry and ascend through
+Emma, 2026-08-12: *"I'd like you to look through my ancestry and ascend through
 my ancestry to find the earliest one of my ancestors that has a Wikidata item …
 It wouldn't necessarily be the earliest ancestor. It would just be the least
 amount of hops in the family tree to somebody with a Wikidata item."*
@@ -15,7 +15,7 @@ ancestral line. Two runs, because they answer different questions:
 
 Every step is reported, so the path can be read rather than trusted.
 
-    py scripts/nearest-wikidata-relative.py                    # you
+    py scripts/nearest-wikidata-relative.py                    # Emma
     py scripts/nearest-wikidata-relative.py <geni_id>
 """
 
@@ -35,7 +35,7 @@ FACTS = REPO_ROOT / "reports" / "derived-facts.csv"
 
 csv.field_size_limit(10_000_000)
 
-YOU = "6000000001846508982"
+EMMA = "6000000001846508982"
 
 
 def load():
@@ -89,7 +89,7 @@ def describe(lab: dict, fac: dict, geni_id: str) -> str:
 
 
 def main() -> int:
-    start = sys.argv[1] if len(sys.argv) > 1 else YOU
+    start = sys.argv[1] if len(sys.argv) > 1 else EMMA
     fam, lab, fac = load()
     if start not in fam:
         print(f"{start} is not in the tree")

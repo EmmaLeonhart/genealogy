@@ -123,7 +123,7 @@ def test_the_real_corpus_has_no_byte_identical_duplicates():
 def test_post_merge_exports_are_merged_last(tmp_path):
     """`exports/post-merge/` must win a value conflict, and its NAME does not do that.
 
-    Your design, 2026-08-24: exports taken after you merged the duplicate profiles
+    Emma's design, 2026-08-24: exports taken after she merged the duplicate profiles
     they contain, whose records *"overwrite earlier ones from other repos in the
     synoptic tree"*.
 
@@ -167,7 +167,7 @@ def test_the_order_outside_post_merge_is_still_path_sorted(tmp_path):
 def test_inside_post_merge_the_newest_export_wins_not_the_name(tmp_path):
     """A refresh of the same seed must beat the file it supersedes.
 
-    Two exports can share a seed: one taken before you merged a duplicate on Geni and
+    Two exports can share a seed: one taken before Emma merged a duplicate on Geni and
     one after. The later file carries Geni's current state and must win the value
     conflict, which means it must be merged LAST.
 

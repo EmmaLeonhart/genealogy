@@ -1,6 +1,6 @@
 """The Geni name records: how many, which fields, which scripts.
 
-You asked for this one by name, 2026-08-12. The requirements, in your words:
+Emma asked for this one by name, 2026-08-12. The requirements, in her words:
 
 * *"the portion of them that have one name object or one name field versus many"*
 * *"the amount of name fields that have different things, like the married name,
@@ -42,7 +42,7 @@ SOURCE = REPO_ROOT / "reports" / "display-names.csv"
 OUT_MD = REPO_ROOT / "reports" / "geni-names.md"
 #: **Deleted 2026-08-15**: `reports/geni-name-records.csv` duplicated
 #: `display-names.csv` on all 11 shared columns across all 444,875 rows, and
-#: its one extra column `script_class` is a pure function of `scripts`. You
+#: its one extra column `script_class` is a pure function of `scripts`. Emma
 #: approved removing it. This writes to `out/` now, so re-running the report
 #: does not reintroduce the 41 MB duplicate into git.
 OUT_CSV = REPO_ROOT / "out" / "geni-name-records.csv"
@@ -56,7 +56,7 @@ csv.field_size_limit(10_000_000)
 NOT_A_SCRIPT = {"Masculine", "Feminine", "Modifier", "Combining", "Unnamed",
                 "Ideographic", "Fullwidth", "Halfwidth"}
 
-#: Han is deliberately *not* resolved to a language. You, 2026-08-12: if a name
+#: Han is deliberately *not* resolved to a language. Emma, 2026-08-12: if a name
 #: is written solely in kanji the Japanese and Chinese labels are the same string,
 #: so there is nothing to decide. Kana and Hangul do resolve, because they are
 #: exclusive to one language.

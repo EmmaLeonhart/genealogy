@@ -2,16 +2,16 @@
 
     python scripts/multi-geni-item-roster.py
 
-**You, 2026-08-25:** *"I came here wanting to do the one item several geni profiles and
+**Emma, 2026-08-25:** *"I came here wanting to do the one item several geni profiles and
 gave detailed instructions earlier about it so do them."*
 
-Your cause for the shape, which is about how Geni behaves rather than about error: *"Jenny
+Her cause for the shape, which is about how Geni behaves rather than about error: *"Jenny
 profiles get isolated from the main tree. Because they're isolated from the main tree,
 nobody can edit them, so people add a new one because Jenny doesn't have the ability to
 differentiate between multiple different contradictory facts."* Zerubbabel is the standing
 example.
 
-**Your algorithm, and it deliberately does NOT need to know which id was merged:** *"the
+**Her algorithm, and it deliberately does NOT need to know which id was merged:** *"the
 algorithm I provided you revolves around Providence of Entries... we have a separate
 directory that is privileged over the other ones for this stuff. This means that we aren't
 really removing the merged profile from the synoptic tree... We're just linking everything
@@ -28,9 +28,9 @@ things per item, all offline:
 * **whether the profiles sit near each other in our tree** — measured as graph distance
   over parent/child/spouse edges, capped, because two profiles a few hops apart are one
   export and two profiles in different centuries are two;
-* **how many first-degree relatives are missing**, which is your stopping condition.
+* **how many first-degree relatives are missing**, which is Emma's stopping condition.
 
-**The weakness you named is checked, not assumed:** *"we need to be sure that wiki data
+**The weakness she named is checked, not assumed:** *"we need to be sure that wiki data
 stuff might potentially give the wrong ID... our wiki data mapping might be a bit wrong if
 the ID changed."* The `in_corpus` column is exactly that check — a `P2600` naming a profile
 no export has ever seen is either a stale id or a region we have not sampled, and the two
@@ -90,7 +90,7 @@ def main():
                         adj[other].add(me)
     print(f"{len(everyone):,} people in the merged tree")
 
-    # **your stopping condition is about the PRIVILEGED directory, not the tree.**
+    # **Emma's stopping condition is about the PRIVILEGED directory, not the tree.**
     # *"export until all first-degree relatives of merged individuals are present"* --
     # present in `exports/post-merge/`, whose records win. A relative already in the tree
     # from a two-week-old export is exactly the stale snapshot the re-export exists to
@@ -136,7 +136,7 @@ def main():
         # anywhere in the group covers the group if any pair is close.
         dists = [hops(a, b) for i, a in enumerate(held) for b in held[i + 1:]]
         near = [d for d in dists if d != ""]
-        # your stopping condition, measured per held profile: a first-degree relative
+        # Emma's stopping condition, measured per held profile: a first-degree relative
         # is "present" only when the privileged directory covers them.
         kin = {k for g in held for k in adj.get(g, ())}
         missing_kin = len(kin - refreshed)

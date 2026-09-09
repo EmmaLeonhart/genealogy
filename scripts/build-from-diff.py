@@ -2,29 +2,29 @@
 
     python scripts/build-from-diff.py
 
-**You, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata items
+**Emma, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata items
 should be and compare with the reality for the quickstatements modelling stuff."* The half of that
-instruction this script carries is your phrase *the batch becomes a projection of the diff* — a
+instruction this script carries is her phrase *the batch becomes a projection of the diff* — a
 statement is emitted because `reports/model-vs-reality.tsv` says it is absent, and for no other
 reason.
 
 **Why that ordering matters.** The method it replaces built a batch from the rules directly and
-found out what was wrong when you ran it: four corrective rounds in one afternoon. A projection
+found out what was wrong when she ran it: four corrective rounds in one afternoon. A projection
 cannot emit a statement the item already holds, because such a statement is not in the `missing`
 column by construction.
 
 ## What is emitted and what is refused
 
-* **`extra` is never touched.** The item holds something the model does not — almost always your
-  hand-work. `CLAUDE.md`: *"the entire purpose of this is to add"*, and you edit continuously.
+* **`extra` is never touched.** The item holds something the model does not — almost always her
+  hand-work. `CLAUDE.md`: *"the entire purpose of this is to add"*, and she edits continuously.
 * **`CONFLICT` is emitted as an ADDITIONAL statement, cited `S2600` to the Geni profile.** Both
   sides hold the property with different values; the existing statement is left exactly as it is
   and ours goes in beside it, so the item records both readings. That is `CLAUDE.md` § *The
   purpose is to ADD to Wikidata, not to correct it* -- *"prefer adding a second statement cited
   to Geni over editing the existing one"* -- applied generically rather than per property.
 
-  **It used to route these to you and that does not scale.** Your words, 2026-08-26, on the four
-  Garborg date conflicts and the three Izumo `P22` ones being put to you as decisions: *"those
+  **It used to route these to Emma and that does not scale.** Her words, 2026-08-26, on the four
+  Garborg date conflicts and the three Izumo `P22` ones being put to her as decisions: *"those
   seemed like simple data issues that by design were supposed to get pushed onto wikidata"*, and
   *"we are doing over a million people here."* Twelve conflicts is a rounding error against the
   corpus; a pipeline that stops on each one never finishes.
@@ -40,8 +40,8 @@ column by construction.
 ## Freshness
 
 The diff is only as current as `out/model-vs-reality-items.json`. Its age is printed and refused
-beyond a day, because `CLAUDE.md` § *you edit the tree and the items BY HAND, continuously*
-means a stale diff proposes re-adding what you have already done.
+beyond a day, because `CLAUDE.md` § *Emma edits the tree and the items BY HAND, continuously*
+means a stale diff proposes re-adding what she has already done.
 
 Writes `reports/wikidata-from-diff.qs`. Queued, never run — editing starts 2026-09-01.
 """
@@ -63,7 +63,7 @@ ITEMS = ROOT / "out" / "model-vs-reality-items.json"
 
 #: `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*.
 SIBLING_CAP = 40
-#: Refuse a diff older than this. You edit by hand between runs.
+#: Refuse a diff older than this. She edits by hand between runs.
 MAX_AGE_HOURS = 24
 #: Never projected: these replace rather than add.
 NEVER = {"label", "alias", "description"}

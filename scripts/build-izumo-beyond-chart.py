@@ -3,11 +3,11 @@
     python scripts/build-izumo-beyond-chart.py
 
 The chart stops at Senge 76 and Kitajima 68. Geni goes further: Kitajima 69-74 and
-Senge 77-81, eleven men `reports/izumo-roster.tsv` has no row for. You, 2026-08-23,
+Senge 77-81, eleven men `reports/izumo-roster.tsv` has no row for. Emma, 2026-08-23,
 asked whether to create Wikidata items for them: *"Yes lol that's the point of why I
 made it? They are part of the geni individual creation pipeline."*
 
-**Ten of the eleven already have items, and you linked them yourself.** Their About Me
+**Ten of the eleven already have items, and she linked them herself.** Their About Me
 carries a `wikidata.org` URL, so they are already in `reports/geni-qid-links.tsv` and
 already in the 354-statement `P2600` batch. Nothing to create.
 
@@ -52,10 +52,10 @@ def main():
         'subject': {'qid': None, 'geni_id': GENI},
         'requires': [],
         'anchor': None,
-        # The regnal number is NOT part of the name -- You flagged that when the
+        # The regnal number is NOT part of the name -- Emma flagged that when the
         # roster was built, and the roster keeps it in its own column. It goes on
         # the given name as P7338 regnal ordinal, per CLAUDE.md, not into the label.
-        # The label form follows the roster's for this lineage; worth your glance.
+        # The label form follows the roster's for this lineage; worth her glance.
         'labels': {'en': 'Senge no Takanori', 'mul': 'Senge no Takanori'},
         'descriptions': {},
         'statements': [

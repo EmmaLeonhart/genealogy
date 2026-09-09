@@ -1,6 +1,6 @@
 """The four big derived CSVs live in git gzipped. The two forms must not drift.
 
-**your call, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding
+**Emma's call, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding
 any more data into our tree. Just processing."* Regenerated from the 546-export merge
 they are 108–184 MiB each, and GitHub refuses anything over 100 MiB, so the plain
 `.csv` is gitignored and the `.csv.gz` is committed.

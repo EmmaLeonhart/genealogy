@@ -2,7 +2,7 @@
 
     python scripts/find-geni-duplicates.py
 
-**You, 2026-08-24:** *"Find profiles that look similar like shared parents, plus look
+**Emma, 2026-08-24:** *"Find profiles that look similar like shared parents, plus look
 over basically all Japanese items with higher scrutiny."*
 
 **The signal is two children of one parent bearing the same name.** Parents do not
@@ -18,10 +18,10 @@ because an unparented duplicate is exactly what a re-created biblical or clan pr
 looks like — `CLAUDE.md` § *A second Geni ID on one Wikidata item*. Those are reported
 separately and never mixed in with the strong ones.
 
-**Nothing is merged and nothing is rewritten.** Your standing rule: the duplicate
-merges are yours, flag and never perform. This writes records.
+**Nothing is merged and nothing is rewritten.** Emma's standing rule: the duplicate
+merges are hers, flag and never perform. This writes records.
 
-**Japanese profiles are marked, not filtered.** You asked for higher scrutiny over them,
+**Japanese profiles are marked, not filtered.** She asked for higher scrutiny over them,
 so the report carries a `script` column and sorts them first; it does not drop the rest.
 
 **And that column read `Latin` for every person alive, which made the whole Japanese pass
@@ -60,14 +60,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from genimerge.matching import YEAR_TOLERANCE  # noqa: E402
 
-# The marker vocabulary is your and lives in ONE place. See `is_placeholder`.
+# The marker vocabulary is Emma's and lives in ONE place. See `is_placeholder`.
 from labels import WORDS_MEANING_UNKNOWN  # noqa: E402
 
 #: Placeholder names. Two children called `NN` are not evidence of anything — a parent
 #: with several unnamed children is ordinary, and treating them as duplicates would
 #: bury the real cases. `CLAUDE.md`: NN is *nomen nescio*, a real statement that the
 #: name is unknown.
-#: **The punctuation forms live here and nowhere else, deliberately.** Your boundary,
+#: **The punctuation forms live here and nowhere else, deliberately.** Emma's boundary,
 #: 2026-08-17, is *words yes, punctuation no*: `scripts/labels.WORDS_MEANING_UNKNOWN` holds only
 #: words, because emptying a label is a different decision from spotting a placeholder. Detection
 #: is the looser question, so `?` and `???` belong in this set and not in that one.
@@ -350,7 +350,7 @@ def main():
             "birth_years": year,
         })
 
-    # Japanese first -- your instruction was higher scrutiny on those, so they sort to the top
+    # Japanese first -- her instruction was higher scrutiny on those, so they sort to the top
     # rather than being filtered out -- then by how tight the structural bracket is: a shared
     # parent id beats a shared parent name, which beats no parent at all.
     tightness = {"same parent, same name": 0,

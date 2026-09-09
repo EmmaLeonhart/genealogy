@@ -2,10 +2,10 @@
 
     py scripts/build-ja-labels.py
 
-**Your order, `queue.md` § LABELS:** `en`, then `mul`, then **`ja`**, then `zh`, then the rest —
+**Her order, `queue.md` § LABELS:** `en`, then `mul`, then **`ja`**, then `zh`, then the rest —
 each one step over the whole population.
 
-**You, 2026-09-02, on the objection this file removes:** *"Wtf lol that's why we have katakana
+**Emma, 2026-09-02, on the objection this file removes:** *"Wtf lol that's why we have katakana
 facepalm"*. The `ja` work had been held back because a generated Japanese label would come out
 `Gerard Spencerの娘`, mixing scripts, and the `NN` batch excludes `ja` and `zh` for exactly that
 reason. **Katakana is the answer and always was** — a European name has a Japanese form, and the
@@ -30,7 +30,7 @@ failure modes. A token with no sourced form is a token this step does not render
 
 **A partly-rendered name is not emitted**, per § *partial is worse than absent*: half a label in
 katakana and half in Latin is not a name anybody has. The one exception is a middle initial, which
-`labels.transliterate_token` keeps as its Latin letter in every language — your 2026-08-27
+`labels.transliterate_token` keeps as its Latin letter in every language — Emma's 2026-08-27
 ruling, ジョン・F・スミス.
 
 **The 863,026 partials are mostly a STORE-COVERAGE gap, not a language problem.** The commonest
@@ -39,7 +39,7 @@ ordinary given names like `Carl` (14,141), `Anders` (13,916) and `John` (10,916)
 katakana on Wikidata but no name item inside this Geni-shaped slice of it. Fetching those is a
 bounded follow-up, not a blocker.
 
-**A Han-named person already has a `ja` label: the name as written.** You: *"If the name is
+**A Han-named person already has a `ja` label: the name as written.** Emma: *"If the name is
 solely in kanji, then the Chinese and Japanese labels are both the same for it."*
 
 Writes `reports/label-ja.tsv`.
@@ -127,7 +127,7 @@ def main() -> int:
             en = (r.get("label_en") or "").strip()
 
             if cjk and HAN.search(cjk):
-                # Your rule: a name written solely in kanji IS the Japanese label.
+                # Her rule: a name written solely in kanji IS the Japanese label.
                 tally["from the Han name, written as it stands"] += 1
                 rows.append([g, r.get("qid", ""), cjk, en, "from the Han name, as written"])
                 continue
@@ -145,7 +145,7 @@ def main() -> int:
             out = []
             for t in toks:
                 # **The RAW token first, casefolded only as a fallback.** `transliterate_token`
-                # keeps a middle initial as its Latin letter and never changes case -- your
+                # keeps a middle initial as its Latin letter and never changes case -- Emma's
                 # 2026-08-27 ruling, ジョン・F・スミス. Casefolding before the call defeated that:
                 # `Susannah H. Bates` came out `スザンナ・h・ベイツ`, a lowercase initial nobody
                 # writes. The table is keyed casefolded, so the fallback still finds names.

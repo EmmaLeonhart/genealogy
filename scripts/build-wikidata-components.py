@@ -1,7 +1,7 @@
 """Map every connected family component in the stored Wikidata graph.
 
 Walking outward from one person answers "is this an island?" for that person and
-costs a pass over the shards each time. You are going to ask it repeatedly —
+costs a pass over the shards each time. Emma is going to ask it repeatedly —
 *"I will look at other similar points as well"* — so this computes it once for
 all 1,408,402 items and writes the component of each, making every later question
 a lookup.

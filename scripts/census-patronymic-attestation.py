@@ -1,7 +1,7 @@
 """How many fathers actually attest each `P144` *based on* source of each patronymic.
 
-**You, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* carrying
-`P144` -> `Q58785388` *Junna*, which you removed by hand: *"neither of these are based on Junna
+**Emma, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* carrying
+`P144` -> `Q58785388` *Junna*, which she removed by hand: *"neither of these are based on Junna
 lol at least not the Junna you linked. Not sure how you even got that one or how you're defining
 the patronymic sources."* Asked how a source should be defined: *"it needs to be attested lol.
 Really attested in our data."*

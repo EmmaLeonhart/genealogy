@@ -2,7 +2,7 @@
 
     py scripts/import-unihan.py --zip <path to Unihan.zip>
 
-**You authorised the download on 2026-09-02**, choosing it over `pip install pypinyin`: Unihan is
+**Emma authorised the download on 2026-09-02**, choosing it over `pip install pypinyin`: Unihan is
 a **data file**, not a dependency, so `CLAUDE.md` § *Stdlib only* is untouched — it is the same
 pattern as the Wikidata dumps already under `wikidata/`.
 

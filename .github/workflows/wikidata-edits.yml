@@ -12,7 +12,7 @@ name: wikidata-edits
 # TWO DATES, and they gate different things.
 #   START_DATE            2026-09-01  may this repo edit Wikidata at all
 #   AUTOMATION_START_DATE 2026-09-15  may the SCHEDULE send them by itself
-# You, 2026-09-05: "I want to on the 15th start all of this stuff automatically",
+# Emma, 2026-09-05: "I want to on the 15th start all of this stuff automatically",
 # and, asked what starts: the daily Garborg batch, through the bot-password API.
 # Before the 15th the schedule still runs -- as a DRY RUN, so the wiring is
 # exercised daily and a break shows up before the day rather than on it.
@@ -57,7 +57,7 @@ env:
   WIKIDATA_API: https://www.wikidata.org/w/api.php
   START_DATE: "2026-09-01"
   AUTOMATION_START_DATE: "2026-09-15"
-  # The daily batch. Your choice, 2026-09-05, of what runs by itself.
+  # The daily batch. Emma's choice, 2026-09-05, of what runs by itself.
   DAILY_BATCH: reports/wikidata-garborg-day.txt
   # What a live run has already applied, so a re-sent batch does not create the
   # same people twice. Committed after every live run.
@@ -100,7 +100,7 @@ jobs:
           python-version: "3.11"
 
       # THE START DATE, and it is this repo's own. It used to read a lockout state
-      # file belonging to shintowiki-scripts; you, 2026-08-23: "Shintowiki scripts
+      # file belonging to shintowiki-scripts; Emma, 2026-08-23: "Shintowiki scripts
       # and this one are not the same and not really coordinated." The coordination
       # was invented by an earlier session, and because the check failed closed it
       # would have blocked this repo from 2026-09-01 for another repo's reason.

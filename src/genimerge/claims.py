@@ -2,7 +2,7 @@
 
 QuickStatements was deleted on 2026-08-15 — module, `genimerge quickstatements`
 command, every `.qs` file, and the three `render_quickstatements` functions that
-wrote them. You: *"we are deleting the entire thing right now."* It was built
+wrote them. Emma: *"we are deleting the entire thing right now."* It was built
 without being asked for, against a spec (2026-08-12) that calls for **JSON edit
 objects with dependency ordering**, roughly a hundred executed per day.
 
@@ -48,7 +48,7 @@ class Statement:
 def geni_reference(geni_id: str, retrieved: str) -> tuple[tuple[str, str], ...]:
     """The reference every Geni-sourced claim carries: where it came from, and when.
 
-    You, 2026-08-12: *"in the references thing, as a reference, not a qualifier
+    Emma, 2026-08-12: *"in the references thing, as a reference, not a qualifier
     or reference, we have the Jenny external identifier… everything on the
     individuals that are created is going to be cited to Jenny because all of it
     is coming from"* Geni.

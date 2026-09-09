@@ -1,12 +1,12 @@
 """Every distinct name token in the corpus, and how it BEHAVES.
 
-You, 2026-08-15, specifying the name-item rule and then asking for this:
+Emma, 2026-08-15, specifying the name-item rule and then asking for this:
 *"running an analysis of this [synoptic] tree, all the different names inside…
-You're supposed to be doing this analysis of most commonly occurring names,
+you're supposed to be doing this analysis of most commonly occurring names,
 patronymics, and surnames, and it very much can occur in other languages like
 CJK and stuff."*
 
-**"Western convention" is behavioural, not geographic.** Your clarification, and
+**"Western convention" is behavioural, not geographic.** Her clarification, and
 the thing this script exists to measure: *"Western convention does not mean that
 there are only western names. For the most part, everything that behaves like a
 surname, or is a first name that behaves like a first name, or is a patronymic,
@@ -17,7 +17,7 @@ One row per distinct token, with the counts that decide it:
 
 - `as_given` / `as_surname` / `as_married` — how many `NAME` records put it in
   `GIVN`, `SURN`, `_MARNM`. **A token in both slots gets both name items** —
-  You, 2026-08-15: *"They're two completely different things with completely
+  Emma, 2026-08-15: *"They're two completely different things with completely
   different objects."* Nothing here adjudicates between them.
 - `patronymic_marker` — the suffix or particle matched, empty if none. **The
   marker is evidence, not a verdict**: `-sen` is Danish patronymic morphology and
@@ -27,7 +27,7 @@ One row per distinct token, with the counts that decide it:
   population is visible rather than lumped in.
 - `placeholder` — `NN`, `?`, `???` and friends, **marked rather than dropped**.
   `CLAUDE.md`: unrequested exception handling is its own category of error, and
-  You have objected to placeholder vocabulary being silently removed.
+  Emma has objected to placeholder vocabulary being silently removed.
 
 Reads `reports/display-names.csv` (444,874 parsed `NAME` records, one row
 each) rather than rescanning the corpus, and de-duplicates bearers by Geni ID so
@@ -55,7 +55,7 @@ MD_OUT = REPO / "reports" / "name-classes.md"
 csv.field_size_limit(10 ** 7)
 
 #: Patronymic morphology, longest suffix first so `-sdatter` wins over `-datter`.
-#: Nordic, Slavic, Arabic and Hebrew forms. You: *"The daughter and son would be
+#: Nordic, Slavic, Arabic and Hebrew forms. Emma: *"The daughter and son would be
 #: the same thing"* — the son and daughter suffixes are one category.
 PATRONYMIC_SUFFIXES = [
     "sdottir", "sdóttir", "sdatter", "sdotter", "sson", "ssen", "søn",

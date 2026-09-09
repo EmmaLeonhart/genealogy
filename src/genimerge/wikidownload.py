@@ -5,7 +5,7 @@ carry a Geni profile ID (P2600), *complete*, then grow the set by walking family
 links to items that have none. The result is a Wikidata-side tree accreted item
 by item, to be held beside the Geni-side tree that arrives in bulk exports.
 
-**Two queues, which is your design and not an implementation detail.**
+**Two queues, which is Emma's design and not an implementation detail.**
 
 1. The **fetch queue** — "take from Wikidata". QIDs known to exist and not yet
    held. It starts as the whole P2600 seed set and is fed by the scan.
@@ -432,7 +432,7 @@ class StateIndex:
         """Take the run lock, or return False because someone else holds it.
 
         **This exists because the run is meant to be restarted automatically.**
-        Your machine interrupts the download constantly, so something has to
+        Emma's machine interrupts the download constantly, so something has to
         notice and start it again — and the moment that is automatic, the way it
         fails is two copies running at once, both appending to the same shard.
         That corrupts the store rather than merely wasting requests.

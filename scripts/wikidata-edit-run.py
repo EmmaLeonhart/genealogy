@@ -5,7 +5,7 @@ the run is capped by `--limit` and refuses a batch that is not the reviewed file
 committed to the repo.
 
 Credentials come from the environment — `USERNAME`, `BOT_NAME` and
-`BOT_PASSWORD`, all three GitHub Actions secrets, named for what you actually
+`BOT_PASSWORD`, all three GitHub Actions secrets, named for what Emma actually
 created in the repo's secret store. A bot-password login name is
 `<account>@<botname>`, so the first two are joined with `@` to make `lgname`.
 They are never read from a file, never logged, and never written anywhere. If
@@ -22,7 +22,7 @@ object carries. `CLAUDE.md` leans on that ordering where it is most dangerous: t
 `NN` fix is two edits per item, the `mul` one declared as a dependency of the `en`
 one, *"so the marker is written before the slot holding it is reused"* — and on the
 1,271 items whose only `NN` lives in `en`, the wrong order erases the marker.
-`genimerge.editorder` now supplies the order, by your design: a random pick from
+`genimerge.editorder` now supplies the order, by Emma's design: a random pick from
 whatever is currently runnable.
 
 **A batch whose prerequisites live in another file refuses rather than half-running.**
@@ -53,7 +53,7 @@ sys.path.insert(0, str(REPO / "src"))
 from genimerge.editorder import Blocked, runnable_order  # noqa: E402
 API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 
-#: your stated cadence was 10-100 edits a day; the ceiling has been doubled with every
+#: Emma's stated cadence was 10-100 edits a day; the ceiling has been doubled with every
 #: other batch size in the repo -- 100 -> 200 on 2026-09-05, 200 -> 400 on 2026-09-07,
 #: *"the daily batch is twice as large in all of the things it does"*. A run may never exceed
 #: it however it is invoked, and it has to keep pace with the batch it sends or a doubled
@@ -66,7 +66,7 @@ REVIEWED_BATCHES = {
     "out/wikidata/unlinked-items.json",
     "out/wikidata/priority-chain.json",
     "out/wikidata/edits.json",
-    # The daily Garborg batch. You, 2026-09-05, choosing what starts running by
+    # The daily Garborg batch. Emma, 2026-09-05, choosing what starts running by
     # itself on the 15th: "The daily Garborg batch", sent through the bot-password
     # API. It qualifies as reviewed on the same terms as the others -- it is
     # committed to the repo by the pipeline and published on the site every day,
@@ -424,13 +424,13 @@ def main() -> int:
               f"Re-run with --live to execute.")
         return 0
 
-    # THE START DATE. You, 2026-08-14: "no wikidata edits until September 1."
+    # THE START DATE. Emma, 2026-08-14: "no wikidata edits until September 1."
     # Checked only on the LIVE path — a dry run sends nothing, so it stays useful
     # before the date. FAILS CLOSED: an unreadable date == locked.
     #
-    # This used to read a lockout state file in another repo. You, 2026-08-23:
+    # This used to read a lockout state file in another repo. Emma, 2026-08-23:
     # "Shintowiki scripts and this one are not the same and not really
-    # coordinated" — and you are right that the coordination was invented here
+    # coordinated" — and she is right that the coordination was invented here
     # rather than observed. The date is this repo's own.
     allowed, why = wikidata_lockout.editing_allowed()
     if not allowed:

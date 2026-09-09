@@ -1,6 +1,6 @@
 """Turn `order.life` into the third source of the synoptic tree, as edit objects.
 
-**Everything goes in.** You, 2026-08-14: *"Something without a geni ID and
+**Everything goes in.** Emma, 2026-08-14: *"Something without a geni ID and
 without a Wikidata ID can still be merged into the synoptic tree because we have
 the order.life thing as a third data source… we are, in fact, trying to get all
 this information, some of which was destroyed on geni."* So no person is dropped
@@ -16,18 +16,18 @@ real people included, into "add last". Every entry still carries
 
 **Tiering is on identifiers instead**, which does discriminate: a person with no
 Geni ID and no Wikidata QID is order.life-only, and that is where epic-only
-material actually concentrates. Your intent — *"the Gaiad stuff would be added
+material actually concentrates. Emma's intent — *"the Gaiad stuff would be added
 only very, very, very, very late"* — is served by tier 3 being last, not by a
 flag that is always true.
 
-**No order.life citation is emitted, and that is the bug this fixes.** You:
+**No order.life citation is emitted, and that is the bug this fixes.** Emma:
 *"These JSONs aren't gonna fire because they're trying to cite an order.life
 citation that doesn't exist."* A reference to a source Wikidata does not have
 makes the whole statement unusable. So: a Geni ID gives `S2600`, and a person
 with no Geni ID gets **no reference at all** rather than a broken one.
 
 **Relationships order.life has and Wikidata does not are added to the existing
-items.** You, 2026-08-14: *"some of the wiki data stuff with wiki data IDs but
+items.** Emma, 2026-08-14: *"some of the wiki data stuff with wiki data IDs but
 no geni IDs is literally stuff that I added… we are going to be adding all of the
 relationships that are not present on wiki data that are present there in the
 order.life stuff, because some of it is just work that I did that is not on
@@ -38,14 +38,14 @@ that and buried 37,728 people.
 Each candidate edge is checked against the local store first: if the existing
 item already states that `P22`/`P25`/`P26` value, nothing is emitted.
 
-**order.life is its own Wikibase, not a Wikidata mirror.** You: *"It isn't a
+**order.life is its own Wikibase, not a Wikidata mirror.** Emma: *"It isn't a
 true wiki data export. It's its own wiki base, which is mostly structured very
 commonly with wiki data but not entirely."* So its property numbers are its own —
 `P47` father, `P48` mother, `P42` spouse, `P20` child — and must be translated
 rather than passed through. The `analysis/*.tsv` tables are used instead of the
 raw claims for exactly that reason.
 
-**your property decisions, 2026-08-14.** `P64 Multi language label` is
+**Emma's property decisions, 2026-08-14.** `P64 Multi language label` is
 Wikidata's multilingual label and is emitted as `Lmul`. `P59 Cladoplast of` is
 not mapped and not emitted — *"we don't do anything with it until there is a
 Cladoplast object on Wikidata, which there currently is not."* `P12 Occupation`
@@ -53,7 +53,7 @@ and `P13 Residence` are **dropped**, not normalised: *"the only monolingual text
 that we just don't do is the P12 and P13 occupation and residence."* Of the
 monolingual-text properties, address is the one that is done, as `P6375`.
 
-`Q2` is you and is skipped — your own item, not genealogy this should assert.
+`Q2` is Emma and is skipped — her own item, not genealogy this should assert.
 
 Inputs, all from `order.life/wikibase/`:
   `analysis/persons.tsv`  qid, label, sex, birth, death, gedcom, wikidata_qid, geni_id
@@ -85,7 +85,7 @@ from genimerge import sources  # noqa: E402
 from labels import describe, label_for, labels_for  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
-#: **Vendored, not a sibling checkout.** You, 2026-08-15: *"The data should
+#: **Vendored, not a sibling checkout.** Emma, 2026-08-15: *"The data should
 #: be vendored here… we preserve the Order.life QIDs because there's some
 #: important stuff about it. It should be here so that we can easily reference
 #: it all the time."* Until 2026-08-15 this was an absolute path into
@@ -160,8 +160,8 @@ def gaiad_qids(qids: list[str]) -> set[str]:
     """Which of these order.life items are flagged as Gaiad characters.
 
     **Reads the claim, not the file text.** This used to ask whether the string
-    ``Q153802`` appeared anywhere in the raw JSON. You, 2026-08-15: *"You
-    shouldn't be doing a raw substring search."* It is the method you rejected on
+    ``Q153802`` appeared anywhere in the raw JSON. Emma, 2026-08-15: *"You
+    shouldn't be doing a raw substring search."* It is the method she rejected on
     2026-08-14 — *"random text searches almost always show up false positives"* —
     and it would have matched the QID in a qualifier, a reference, or on any
     unrelated property.
@@ -171,7 +171,7 @@ def gaiad_qids(qids: list[str]) -> set[str]:
     claim agreed exactly, 3,970 each, with zero false positives. The change is to
     the method, and the answer did not move.
 
-    **Reads the vendored shards**, not 164,558 loose files. You chose the shard
+    **Reads the vendored shards**, not 164,558 loose files. Emma chose the shard
     layout on 2026-08-15 to keep git fast; ``orderlife/items/items-*.jsonl.gz``
     matches ``wikidata/items/``. One streaming pass over the shards replaces one
     ``open()`` per person.
@@ -279,7 +279,7 @@ def read_tsv(path):
 
     Measured 2026-08-15: the default cost **128 rows** of `persons.tsv`, and
     corrupted the row before each loss. `Q98159` (*"Abu'l Hasan" Muhammad bin
-    Yahya bin al-Husain*) was the one you reported. Its own line is well formed;
+    Yahya bin al-Husain*) was the one Emma reported. Its own line is well formed;
     the parser merged it with the next row, so its `geni_id` went missing and its
     `wikidata_qid` picked up `Q153719` — **order.life's "Female" item** — which
     is a syntactically valid QID and therefore sails past the validation below.
@@ -298,7 +298,7 @@ def _assert_wikidata_qid(value: str, where: str) -> str:
 #: **Sex from the graph, when order.life's own column is unusable.**
 #:
 #: `Q1`/`Q153721` is "Aster, Goddess of Alpha" and appears in the sex column of
-#: 40 people; 3,081 more are blank. You, 2026-08-14: *"Sex = Q1 is an error, but
+#: 40 people; 3,081 more are blank. Emma, 2026-08-14: *"Sex = Q1 is an error, but
 #: it is not an error that means all the data is bad. I believe you can literally
 #: just figure out the sex."*
 #:
@@ -322,7 +322,7 @@ _SEX_LETTER = {OL_MALE: "M", OL_FEMALE: "F"}
 def _describe_from_relatives(q, persons, parents_of, spouses, children_of):
     """`"daughter of Gerard Spencer"` for somebody order.life records no name for.
 
-    Your precedence, from the Geni placeholder work and reused by
+    Emma's precedence, from the Geni placeholder work and reused by
     `build-nn-label-batch.py`: **parent, then spouse, then child.** A relative
     whose own label is itself a marker is skipped rather than used - *"mother of
     NN"* names nobody - which is what `describe()` returning `''` signals.
@@ -515,11 +515,11 @@ def main() -> int:
         #
         # **Until 2026-08-16 this set both `en` and `mul` to `''`**, so 1,109 of
         # these creations had no label in any language and could not be read or
-        # found. You: *"NN and private are the same thing here"* and *"NN is
+        # found. Emma: *"NN and private are the same thing here"* and *"NN is
         # always preserved in the multi-language label. It just has more
         # descriptive labels added in some languages for the relationships."*
         # So `mul` carries `NN` and `en` carries a relationship phrase built
-        # from a named relative - parent, then spouse, then child, your
+        # from a named relative - parent, then spouse, then child, her
         # precedence from the placeholder work.
         raw = ((r.get("label") or "").strip()
                or (r.get("gedcom") or "").strip())

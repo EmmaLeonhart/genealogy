@@ -1,6 +1,6 @@
 """Clusters only ONE export ever reached, and the deepest people inside them.
 
-**your item, 2026-08-15, in your words:** *"we are going to look over the geni
+**Emma's item, 2026-08-15, in her words:** *"we are going to look over the geni
 exports to try to find large clusters like the Javanese ones that have only one
 geni export covering them. My perception here is that such areas are more likely
 to have important links that were not covered and that with a different entry
@@ -15,7 +15,7 @@ once by a walk that went up out of the Samaritan cluster and never returned.
 connected runs of people at or below a presence threshold; run at `threshold=1`
 those runs are exactly "clusters one export covered". What it ranks them by is a
 **doorway** count — people whose parents are unrecorded — which is the right
-question for *coverage*. You are asking a different one: which member is
+question for *coverage*. Emma is asking a different one: which member is
 **deepest**, because that is where a differently-seeded export would reach past
 what the single existing one stopped at.
 

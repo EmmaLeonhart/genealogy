@@ -21,7 +21,7 @@ offers batching, and do not fan out one request per item.
 The query is restricted to **name items** — `Q202444` given name, `Q101352` family name,
 `Q12308941` male given name, `Q11879590` female given name, `Q3409032` unisex given name,
 `Q110874` patronymic. That restriction is doing real work: it is why `von`, `af`, `de` and `la`
-return nothing instead of returning a place or a preposition. **Those particles need your ruling,
+return nothing instead of returning a place or a preposition. **Those particles need her ruling,
 not a lookup** — they are not names and have conventional Japanese forms.
 
 ## What is rejected

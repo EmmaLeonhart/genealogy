@@ -4,7 +4,7 @@
 
 **Found 2026-08-25 while opening the multi-`P2600` targets by hand.** `Q13478526` pairs
 *Vasilko II Bryachislavich of Vitebsk* with *Василий Брячиславич* — and both profiles record the
-same daughter, who is yourself another target: `Q13478538` pairs *Lyubava Vasilkovna of Vitebsk*
+same daughter, who is herself another target: `Q13478538` pairs *Lyubava Vasilkovna of Vitebsk*
 with *Любовь Васильевна*. Checking the cluster, **17 of the 52 unopened targets are one lineage**,
 the Polotsk / Vitebsk / Smolensk Rurikids, imported into Geni twice — once romanised, once in
 Cyrillic — with Wikidata joining them person by person.
@@ -18,7 +18,7 @@ same father, the same mother or the same child are the same person.
 
 **No name is compared anywhere in this module.** The evidence is entirely `P2600` incidence:
 Wikidata already claims each relative pair is one person, and this module only asks whether those
-claims line up across a generation. That is the zipper join you described — *"we merge them based
+claims line up across a generation. That is the zipper join Emma described — *"we merge them based
 off of whether something is the mother on both sides of an individual"* — applied to a pair whose
 identity is in question rather than to a pair being proposed.
 

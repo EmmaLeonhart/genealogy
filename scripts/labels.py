@@ -5,7 +5,7 @@ it will not show, and `NN` for one recorded without a name. Neither is what the
 person is called, and an item labelled "Private" asserts something false about
 them while being useless to find.
 
-**A redacted person is NOT left unlabelled either.** You, 2026-08-16: *"NN is
+**A redacted person is NOT left unlabelled either.** Emma, 2026-08-16: *"NN is
 always preserved in the multi-language label. It just has more descriptive labels
 added in some languages for the relationships."* — and, in the same message,
 *"NN and private are the same thing here, because if there's a private individual
@@ -23,7 +23,7 @@ item labelled nothing at all cannot be read or found, which is the same objectio
 this module exists to raise. `labels_for()` is the function callers should use;
 `label_for()` remains the narrow "is this string a name" test it always was.
 
-**The person still goes in.** You, 2026-08-14: *"Even if the data is affected by
+**The person still goes in.** Emma, 2026-08-14: *"Even if the data is affected by
 redaction, I'm not really that against the data getting onto Wikidata because it
 still is informative, like the so-called private names."* The informative part is
 the structure — the Geni ID, the sex, the parents and children — and none of that
@@ -42,7 +42,7 @@ corpus, 2026-08-14, of 390,560 profiles:
 `<private> /HUÁNG 黃/`, `<private> /Rådestad/`, `<private> /KOESOEMAH ADINATA/`,
 `<private> /Larsson/` — Geni withholds the **given name** and leaves the family
 name. Treating those as fully redacted throws away 3,605 surnames, which is
-exactly the material you called valuable: *"these private names are still worth
+exactly the material Emma called valuable: *"these private names are still worth
 inclusion because they still do flush out the wiki data, and they flush it out by
 a substantial amount."*
 
@@ -60,11 +60,11 @@ from __future__ import annotations
 
 import re
 
-#: **Only Geni's redaction markers, and only because you named them.**
+#: **Only Geni's redaction markers, and only because Emma named them.**
 #:
-#: An earlier version of this set also held `nn`, `n n`, `unknown` and `?`. You,
+#: An earlier version of this set also held `nn`, `n n`, `unknown` and `?`. Emma,
 #: 2026-08-14: *"I didn't tell you to do that. I didn't tell you to avoid the NN
-#: people."* You specified `Private` and `<private>`; the rest was added here
+#: people."* She specified `Private` and `<private>`; the rest was added here
 #: unasked and silently suppressed labels on people nobody had decided about.
 #:
 #: `NN` is *nomen nescio* — a genealogist recording that the name is unknown. It
@@ -89,7 +89,7 @@ def is_redacted(gedcom_name: str) -> bool:
             or display_name(raw).strip() == "private")
 
 #: The `NN` spellings that mean *nomen nescio*. **Deliberately narrow** — it does
-#: not include `unknown` or `?`, which you refused when they were added to
+#: not include `unknown` or `?`, which Emma refused when they were added to
 #: `NOT_A_NAME` unasked, and which are somebody's editorial choice rather than a
 #: marker this project owns.
 _NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n.n", "n-n"}
@@ -98,7 +98,7 @@ _NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n.n", "n-n"}
 # --------------------------------------------------------------------------
 # THE MARKER VOCABULARY — one set, replacing three
 #
-# your item said the vocabularies *"should end up as one"*, and there were
+# Emma's item said the vocabularies *"should end up as one"*, and there were
 # three: this module's, and a copy of a wider set in
 # `build-relationship-label-preview.py` and `walk-structural-merge.py`. They are
 # folded here because `CLAUDE.md` names this module as the single place that
@@ -106,7 +106,7 @@ _NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n.n", "n-n"}
 #
 # **`NOT_A_NAME` above is untouched, and that is the whole point.** Two different
 # questions were being conflated. `NOT_A_NAME` decides what `label_for()`
-# **empties**, and you have ruled on it twice — `Private` and `<private>` and
+# **empties**, and Emma has ruled on it twice — `Private` and `<private>` and
 # nothing else. The sets below decide what a **marker** is, for finding and
 # normalising labels that carry one. Widening detection is not widening
 # suppression: an `unknown Bloomfield` is detected here and still keeps a label,
@@ -116,7 +116,7 @@ _NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n.n", "n-n"}
 #: The forms all three vocabularies already agreed on.
 NARROW_MARKERS = _NN_FORMS | {"private", "<private>"}
 
-#: Words meaning *unknown*, in any language. **your ruling, 2026-08-17: words
+#: Words meaning *unknown*, in any language. **Emma's ruling, 2026-08-17: words
 #: yes, punctuation no.** Somebody who typed a word meaning *I don't know* is
 #: making the statement `NN` makes.
 #:
@@ -136,26 +136,26 @@ _STILLBORN_PHRASE = re.compile(
     r"(?:\s+\d+)?\b", re.I)
 
 WORDS_MEANING_UNKNOWN = {
-    # **Stillborn is a DESCRIPTION, not a name.** You, 2026-08-30, on `Q141224141`:
+    # **Stillborn is a DESCRIPTION, not a name.** Emma, 2026-08-30, on `Q141224141`:
     # *"please stop trying to assign names to this person who does not in fact have any names
     # at all."* Geni records him as `En dödfödd son Bielke` -- Swedish for *a stillborn son* --
     # and the batch emitted `P735` given name `En` with `P7452` *usual forename*, so the
     # indefinite article became his first name.
     #
     # **505 people in `display-names.csv` carry one of these**: `dødfødt` 216, `stillborn` 148,
-    # `dödfödd` 116, `dödfött` 21, `dødfød` 4. Your standing rule -- § *An obvious unknown-word
+    # `dödfödd` 116, `dödfött` 21, `dødfød` 4. Her standing rule -- § *An obvious unknown-word
     # marker goes straight in* -- covers this without asking.
     "unknown",        # 2,127
     "ukjent",         #   188  Norwegian
     "no name",        #    92
-    "name not known", #    45  you, 2026-08-18, asked which of two phrases the
+    "name not known", #    45  Emma, 2026-08-18, asked which of two phrases the
                       #        mononym census turned up were markers: "Both are
                       #        markers". This one slipped through only because
                       #        matching is whole-label and exact, so the `not
                       #        known` already listed never fired on the longer
                       #        phrase.
     "unknown wife",   #    37  A description of a relationship rather than a name,
-                      #        and your ruling puts it here: not a `P735` given
+                      #        and her ruling puts it here: not a `P735` given
                       #        name, `NN` in `mul`, descriptive labels elsewhere.
     "без име",        #    52  Bulgarian / Macedonian
     "ukendt",         #    18  Danish
@@ -176,21 +176,21 @@ WORDS_MEANING_UNKNOWN = {
     "namn okänt",     #        Swedish
     "(no name)",
     "ukj.",           #        Norwegian, abbreviating ukjent
-    "未知",            #   204  Chinese, "unknown" — You, 2026-08-18: "Ukjent and
+    "未知",            #   204  Chinese, "unknown" — Emma, 2026-08-18: "Ukjent and
                       #        未知 get the mul NN treatment". `ukjent` was already
                       #        here at 188; this one was the gap, and it was found
                       #        by the mononym census ranking it among Anna and Lars.
     "未詳",            #     1  Japanese, "details unknown"
     "無名",            #        Japanese / Chinese, "nameless"
     "某",              #   252  Chinese, "a certain one" -- the exact sense of `NN`.
-                      #        You, 2026-08-19, asked whether it belonged here
+                      #        Emma, 2026-08-19, asked whether it belonged here
                       #        beside 未知 and ukjent: *"Add it"*. It is the whole
                       #        given name on 252 Han-only records and there is no
                       #        surname 某 and no given name containing it, so it
                       #        never collides with a real name.
 }
 
-#: Punctuation, a marker **only as the whole label** — the other half of your
+#: Punctuation, a marker **only as the whole label** — the other half of her
 #: ruling. `George Clark, II - farmer` is prose and `Nechama (?) Heller` is a name
 #: with a bracketed hole; neither is rewritten. A label that is *nothing but*
 #: punctuation has no name in it, which `derive-labels.ABSENT` has always said.
@@ -200,7 +200,7 @@ PUNCTUATION_MARKERS = {"-", "--", ".", "..", "_", "*", "**", "***", "'",
 #: `n` alone — a marker at the **start** of a label, never inside or at the end.
 #: `N Пузына` is a placeholder given name before a real surname, 917 of them;
 #: `Laura N` is a **middle initial**, 205, and this repo has already nearly
-#: invented 283 of those (`f9b9f86`). Neither a word nor punctuation, so your
+#: invented 283 of those (`f9b9f86`). Neither a word nor punctuation, so her
 #: ruling does not reach it and this is a judgement recorded rather than asked.
 SINGLE_LETTER_MARKERS = {"n"}
 
@@ -227,7 +227,7 @@ PLACEHOLDER_FORMS = (
 def is_placeholder_form(text: str) -> bool:
     """Whether this whole field or label means *no name here*.
 
-    **A label every component of which is a marker is a marker.** Your rule,
+    **A label every component of which is a marker is a marker.** Emma's rule,
     2026-08-18, chosen over listing the spellings one at a time: *"All-marker
     components rule"*. Matching whole labels exactly had let `? ?` (13 rows),
     `N.N. N.N.` (8) and `NN .` (3) through, each of them two markers with a space
@@ -266,7 +266,7 @@ def leads_with_a_marker(text: str) -> bool:
 
 #: Quote characters a label may be wrapped in. Stripped before matching, because a
 #: marker in quotation marks is still a marker: `"unknown"` and `"unbekannt"` were both
-#: reading as names, 4 records, found 2026-08-18 while checking your instruction that
+#: reading as names, 4 records, found 2026-08-18 while checking Emma's instruction that
 #: `unbekannt` be treated as an NN substitute — it already was, and the quoting was what
 #: defeated it. Straight and typographic, single and double, plus the European guillemets
 #: and the German low-9 forms, since the corpus is Norwegian, German and Swedish.
@@ -297,7 +297,7 @@ def is_marker_label(label: str) -> bool:
       with a real surname, so the label is not written to a local language, but the
       surname is not thrown away either; that is the 3,605-surname rule.
 
-    **Words yes, punctuation no** for the head test -- You, 2026-08-17 -- so
+    **Words yes, punctuation no** for the head test -- Emma, 2026-08-17 -- so
     `. Weill` and `Nechama (?) Heller` are left alone. Punctuation is a marker only
     as the whole label, which is the first test's business.
     """
@@ -314,10 +314,10 @@ def is_unnamed(gedcom_name: str) -> bool:
 
     This is what `labels_for()` branches on, and it is **wider than
     `is_redacted()`** on purpose: `NN` is not a redaction, but it is equally not
-    a name, and you settled on 2026-08-16 that the two get one treatment. It is
+    a name, and Emma settled on 2026-08-16 that the two get one treatment. It is
     **narrower than suppression**: an unnamed person is still created, still gets
     `NN` in `mul`, and still gets a descriptive `en` where a relative supplies
-    one. Nobody is dropped, which is what you objected to when `nn` was quietly
+    one. Nobody is dropped, which is what she objected to when `nn` was quietly
     added to `NOT_A_NAME`.
 
     **It consults the whole marker vocabulary, not `_NN_FORMS`.** It used to test
@@ -327,16 +327,16 @@ def is_unnamed(gedcom_name: str) -> bool:
     called. Five items in `reports/wikidata-orderlife.json` carried
     `Unknown Wife` in both slots that way.
 
-    You settled it on 2026-08-18, asked which of two such phrases counted:
-    *"Both are markers"*, alongside your earlier *"Ukjent and 未知 get the mul NN
+    Emma settled it on 2026-08-18, asked which of two such phrases counted:
+    *"Both are markers"*, alongside her earlier *"Ukjent and 未知 get the mul NN
     treatment"*. That treatment is precisely this branch — `NN` in `mul`, a
-    descriptive phrase in `en` — so routing these here is what your rule asks for,
+    descriptive phrase in `en` — so routing these here is what her rule asks for,
     and keeping a second narrower list next to `PLACEHOLDER_FORMS` is the
     duplication this module's *one set, replacing three* note exists against.
 
     Note this widens **routing**, not suppression: every one of these people is
     still created and still readable through `mul`. That distinction is the one
-    You objected to losing when `nn` was quietly added to `NOT_A_NAME`.
+    she objected to losing when `nn` was quietly added to `NOT_A_NAME`.
     """
     if is_redacted(gedcom_name):
         return True
@@ -361,7 +361,7 @@ def labels_for(gedcom_name: str, descriptive: str = "") -> dict[str, str]:
 
     **A marker with a real surname behind it keeps the surname — in `mul` only.**
     `N.N. binti Lubb` and `NN (Wife of Marcus Aemilius Lepidus)` are the shape, and
-    they were reaching `en` verbatim, marker and all, on 575 rows. You chose the
+    they were reaching `en` verbatim, marker and all, on 575 rows. Emma chose the
     split on 2026-08-18: *generated description in `en` instead*, so
 
         N.N. binti Lubb   ->  mul  NN binti Lubb
@@ -472,14 +472,14 @@ INITIAL_RE = re.compile(r"^(?:[A-Z]|[A-Za-z]\.)$")
 
 #: A REGNAL ORDINAL, and only in its unambiguous multi-character form.
 #:
-#: **You fixed `Q141223436` by hand on 2026-09-04 and that edit is the specification.** You had
+#: **Emma fixed `Q141223436` by hand on 2026-09-04 and that edit is the specification.** She had
 #: said only *"This persons ordinals were totally fucked up"*; the item now reads
 #: `ja トーレ・ウンデルベルゲ3世`, `ko 토레 운데르베르게 3세`, `zh 托雷·温德尔贝尔盖三世`. Before it, the
 #: transliteration table carried `III` as a NAME and spelled the letters out phonetically --
 #: `イイイ`, `伊伊伊`, `이이이` -- because a rule-based pass had no notion of an ordinal and every
 #: token reaching it was a name. `II` was `イイ`, `IV` was `イヴ`, `Jr.` was `イル`.
 #:
-#: **Three separate conventions, all read off your edit rather than reasoned:** `ja` takes an
+#: **Three separate conventions, all read off her edit rather than reasoned:** `ja` takes an
 #: ARABIC digit with 世, `zh` a HAN numeral with 世, `ko` an arabic digit with 세. And `ja`/`zh`
 #: attach it with **no separator** where every other token takes `・`/`·`; `ko` keeps its space,
 #: which is what it does between all words anyway.
@@ -487,7 +487,7 @@ INITIAL_RE = re.compile(r"^(?:[A-Z]|[A-Za-z]\.)$")
 #: **Single letters are deliberately excluded** -- `I`, `V`, `X`, `L`, `C`, `D`, `M`. Measured over
 #: `derived-labels.csv`, `C` heads 944 labels and `L` 839, and they are middle initials
 #: (`John C. Smith`), not ordinals; `INITIAL_RE` already keeps a letter Latin in every script per
-#: you 2026-08-27, and that is the right answer for them. Nothing in a rendered label separates a
+#: Emma 2026-08-27, and that is the right answer for them. Nothing in a rendered label separates a
 #: bare `I` that is an ordinal from one that is an initial -- the discriminator is the `NSFX`
 #: field, which `label_in` does not have. So the multi-character forms are fixed and the
 #: one-letter residue is left where it was: **17,731 of the 23,814 people** carrying a Roman
@@ -535,7 +535,7 @@ def ordinal_readings(token, final=False):
 
     **`final=True` also accepts a bare `I` or `V`**, which `ORDINAL_RE` excludes on purpose
     because a single letter in the body of a name is a middle initial. It became necessary when
-    your generation-suffix ruling of 2026-09-04 made `Sr.` into `I`: without it
+    Emma's generation-suffix ruling of 2026-09-04 made `Sr.` into `I`: without it
     `Bellest Bellestsen Lauvsnes I` rendered as `…・I`, a Latin letter left standing in a
     Japanese label. See `FINAL_ORDINALS`.
     """
@@ -553,8 +553,8 @@ def ordinal_readings(token, final=False):
 def transliterate_token_ko(token, table, final=False):
     """The Korean reading for one name token, or `None` if it cannot be rendered.
 
-    **`ko` is CJK.** You, 2026-09-01: *"korean is extremely important on par with Chinese and
-    You really should prioritize getting korean labels all the time and this seems to not get
+    **`ko` is CJK.** Emma, 2026-09-01: *"korean is extremely important on par with Chinese and
+    you really should prioritize getting korean labels all the time and this seems to not get
     that cjk includes korean"*. It had been filed with `hi`/`ar`/`ru`/`el` as a research task,
     behind `ja` and `zh`, when it belongs beside them.
 
@@ -585,9 +585,9 @@ def transliterate_token_ko(token, table, final=False):
 def transliterate_token(token, table, final=False):
     """`(ja, zh)` for one name token, or `(None, None)` if it cannot be rendered.
 
-    **An initial keeps its Latin letter in every language.** You, 2026-08-27, asked what
+    **An initial keeps its Latin letter in every language.** Emma, 2026-08-27, asked what
     `John F. Smith` should become in Japanese and Chinese: *keep it Latin inside the label* —
-    ジョン・F・スミス, 约翰·F·史密斯. The alternatives you were shown and did not take were
+    ジョン・F・スミス, 约翰·F·史密斯. The alternatives she was shown and did not take were
     dropping it (loses information the Latin label carries) and transliterating the letter as
     エフ (invents a reading nobody uses).
 
@@ -629,9 +629,9 @@ def normalise_marker_spelling(label: str) -> str:
     redaction rather than about spelling. Two sections of `CLAUDE.md` can be read against each
     other on it: § *Redacted people go in* has `label_for()` empty `Private` and `<private>`
     **and nothing else**, while § *`NN` is PRESERVED in `mul`* has `Private` and `NN` as one
-    population getting the same treatment. You have corrected an attempt to settle that twice,
+    population getting the same treatment. Emma has corrected an attempt to settle that twice,
     once sharply -- *"I didn't tell you to do that. I didn't tell you to avoid the NN people."*
-    So it stays yours.
+    So it stays hers.
 
     What is left is uncontroversial and is what the queue item actually wanted: **6,515** labels
     where the marker is written inconsistently -- `nn`, `N.N.`, `unknown`, `ukjent`, `某`,
@@ -648,8 +648,8 @@ def normalise_marker_spelling(label: str) -> str:
 
 
 #: The CJK descriptors whose PRECEDING characters are the woman's own clan, not somebody
-#: else's name. `謝氏` is "the Xie-clan woman" and 謝 is yours. `織田敏信娘` is "daughter of Oda
-#: Toshinobu" and 織田敏信 is your FATHER — putting that in your label would name your after him.
+#: else's name. `謝氏` is "the Xie-clan woman" and 謝 is hers. `織田敏信娘` is "daughter of Oda
+#: Toshinobu" and 織田敏信 is her FATHER — putting that in her label would name her after him.
 CLAN_SUFFIX = ("氏",)
 
 #: A title, not a relationship: the name beside it is the person's own.
@@ -673,7 +673,7 @@ RELATIONSHIP_DESCRIPTORS = (
 def is_description(label: str) -> bool:
     """Is this label a description of a person rather than a name?
 
-    Three shapes, from you census — `queue.md` § *LABELS, IN YOUR ORDER*: an English or Spanish
+    Three shapes, from her census — `queue.md` § *LABELS, IN HER ORDER*: an English or Spanish
     relationship phrase (`wife of` 1,447, `daughter of` 1,201), a CJK descriptor (`氏` 7,444,
     `娘` 1,589, `某` 1,420, `室` 998), and an honorific (`mrs.` 661).
 
@@ -698,13 +698,13 @@ def is_description(label: str) -> bool:
 def mul_for_description(label: str) -> str:
     """The `mul` label for a person whose name slot holds a DESCRIPTION, not a name.
 
-    **You, 2026-08-17:** *"And NN for mul there"* — plus the real surname where the description
-    leaves one standing, your examples being `謝氏` → `NN 謝` and `信秀正室 織田` → `NN 織田`.
+    **Emma, 2026-08-17:** *"And NN for mul there"* — plus the real surname where the description
+    leaves one standing, her examples being `謝氏` → `NN 謝` and `信秀正室 織田` → `NN 織田`.
 
-    **The surname is only taken when it is YOURS, and that is the whole difficulty.** The census's
+    **The surname is only taken when it is HERS, and that is the whole difficulty.** The census's
     `remainder` for a relationship description is the *other* person: `Wife of William Ryves`
     leaves `William Ryves`, and `NN William Ryves` would label a woman with her husband's name.
-    Same in CJK — `織田敏信娘` is *daughter of Oda Toshinobu*, so the characters before 娘 are your
+    Same in CJK — `織田敏信娘` is *daughter of Oda Toshinobu*, so the characters before 娘 are her
     father's.
 
     So a surname is only lifted from a `氏` clan suffix, where `謝氏` genuinely means *the woman of
@@ -741,7 +741,7 @@ def mul_for_description(label: str) -> str:
 def strip_wedged_marker(label: str) -> str:
     """Remove an unknown-name marker that sits INSIDE an otherwise real name.
 
-    **Your instruction**, `queue.md` § *LABELS, IN YOUR ORDER*, the second of three marker
+    **Her instruction**, `queue.md` § *LABELS, IN HER ORDER*, the second of three marker
     populations: *"A real name with a marker wedged inside it — strip the marker, keep the rest.
     `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`, `Hadaburg N.N.
     Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no judgement."*
@@ -749,7 +749,7 @@ def strip_wedged_marker(label: str) -> str:
     **It is the only one of the three that is mechanical**, because it decides nothing about what
     the person is called: the name is already there and a word saying it is unknown is being taken
     out of the middle of it. The other two — a marker LEADING a surname, and a description in the
-    name slot — decide the label itself and are yours.
+    name slot — decide the label itself and are hers.
 
     **So the head token is never touched.** `nn Gunnarsdatter Frafjord` is population one and
     belongs to `normalise_marker_spelling`, which spells it `NN` and keeps it.
@@ -805,9 +805,9 @@ def strip_wedged_marker(label: str) -> str:
 def strip_markers(label: str) -> str:
     """Normalise an unknown-name marker to `NN`. **Never delete it.**
 
-    **You, 2026-08-27**, on `Q141198538`: *"clearly has 'nn' as its first name however it was
+    **Emma, 2026-08-27**, on `Q141198538`: *"clearly has 'nn' as its first name however it was
     not produced as an NN person, so what happened, can you please fix the algorithm so it does
-    no do this in the future?"* Geni records your as `nn Gunnarsdatter /Frafjord/` — the marker
+    no do this in the future?"* Geni records her as `nn Gunnarsdatter /Frafjord/` — the marker
     sits inside `GIVN`, in front of a real patronymic — and the label went out as
     `nn Gunnarsdatter Frafjord`, reading as a name.
 
@@ -829,7 +829,7 @@ def strip_markers(label: str) -> str:
 
     A label that is nothing but markers collapses to the bare marker `NN`.
 
-    **A stillborn DESCRIPTION is removed whole, article and kinship word included.** You,
+    **A stillborn DESCRIPTION is removed whole, article and kinship word included.** Emma,
     2026-08-30, on `Q141224141`: *"please stop trying to assign names to this person who does
     not in fact have any names at all."* Geni records him `En dödfödd son Bielke` — Swedish for
     *a stillborn son* — and the batch emitted `P735` given name `En`, the indefinite article,
@@ -881,9 +881,9 @@ def name_with_unknown_surname(label: str, givn: str = "", surn: str = "",
                               marnm: str = "") -> str:
     """`Ånon` -> `Ånon NN`. A bare given name is not an acceptable label.
 
-    **You, 2026-09-07, on `Q141352187`:** *"A single given name is generally not acceptable
+    **Emma, 2026-09-07, on `Q141352187`:** *"A single given name is generally not acceptable
     and we strongly prefer given name NN, but he has a surname anyway lol."* The item had gone
-    out labelled `Ånon`; you corrected it to `Ånon Byre`, since Geni files `Byre` as his
+    out labelled `Ånon`; she corrected it to `Ånon Byre`, since Geni files `Byre` as his
     surname — so the rescue comes first and this is what is left when there is nothing to
     rescue.
 
@@ -908,17 +908,17 @@ def name_with_unknown_surname(label: str, givn: str = "", surn: str = "",
     A label that is already a marker is returned unchanged: bare `NN` means both halves are
     unknown and `describe_all` supplies the descriptive labels for it.
 
-    **The result is a `mul` label and nothing else.** You, asked which languages carry what:
+    **The result is a `mul` label and nothing else.** Emma, asked which languages carry what:
     *"given NN for mul labels but the NN is replaced with prose in every language that isn't
     mul."* So `build-garborg-day` uses this both as the branch test — a label this function
     would change belongs on the descriptive path — and to build the `mul` value once it is
     there. Every other language comes from `describe_all`.
 
-    **It also reconciles your ruling of 2026-08-29 rather than reversing it.**
+    **It also reconciles her ruling of 2026-08-29 rather than reversing it.**
     `drop_marker_surname` deletes the marker Geni put in `SURN`, on *"I would say I just use it
     by its first name"* — so the prose form `No name` never reaches a label — and this puts the
     marker back **normalised**: `Maria /No name/` is `Maria NN`, not `Maria No name`. That is
-    the reading you took when the collision was put to you.
+    the reading she took when the collision was put to her.
 
     **12,596 people with no surname field at all, plus the 2,167 whose surname field is a
     marker.** In a day's batch it is about one.
@@ -942,7 +942,7 @@ def name_with_unknown_surname(label: str, givn: str = "", surn: str = "",
 def drop_marker_surname(label: str, *surnames: str) -> str:
     """Strip a trailing unknown-name marker that Geni put in the SURNAME field.
 
-    **You, 2026-08-29**, shown `Q141217396` labelled *Maria No name*:
+    **Emma, 2026-08-29**, shown `Q141217396` labelled *Maria No name*:
     *"I would say I just use it by its first name."* So `Maria /No name/` is labelled
     **Maria** -- the given name alone -- and the marker never reaches a label, which is the
     same rule as `Private`.
@@ -951,7 +951,7 @@ def drop_marker_surname(label: str, *surnames: str) -> str:
     That predicate tests the WHOLE label, or a LEADING marker: `unknown Bloomfield` is
     `True`, `Bloomfield unknown` is `False`. Geni writes the marker into `SURN`, which lands
     at the END, and that position was never tested. The vocabulary was never the problem --
-    `no name` has been in `WORDS_MEANING_UNKNOWN` all along. You: *"I'm not sure how it is
+    `no name` has been in `WORDS_MEANING_UNKNOWN` all along. Emma: *"I'm not sure how it is
     that no name didn't get through our detection thing, because that seems like such an
     obvious one."*
 

@@ -1,20 +1,20 @@
-"""Your per-person patronymic resolution, run as a measurement: who clears both gates today.
+"""Her per-person patronymic resolution, run as a measurement: who clears both gates today.
 
     python scripts/resolve-patronymics.py
 
-**your design, 2026-08-31.** The half this script covers is the one that runs *after* the
+**Emma's design, 2026-08-31.** The half this script covers is the one that runs *after* the
 patronymic name items exist:
 
     the parent carries a given name OBJECT              (P735 -> an item)
     that item is among the patronymic item's P144 values
     -> emit  P5056 patronym, with P144 based on pointing at THAT PARENT as a person
 
-Both gates are hard skips in your words -- *"if the father doesn't have a given name object, then
+Both gates are hard skips in her words -- *"if the father doesn't have a given name object, then
 it just doesn't go"*, and *"if the patronymic in question does not have a reference to the certain
 given name presence, that's also skipped."* Nothing here falls back to a string.
 
 **This writes no QuickStatements.** It reports who would resolve and what stops the rest, which is
-the number that says whether the design reaches anybody yet. You have not asked for a batch.
+the number that says whether the design reaches anybody yet. She has not asked for a batch.
 
 ## Why it is cheap
 

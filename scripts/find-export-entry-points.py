@@ -1,13 +1,13 @@
 """Where to actually seed an export: the people furthest from anything covered.
 
-**You, 2026-08-15:** *"can you please find people who are most distant from
+**Emma, 2026-08-15:** *"can you please find people who are most distant from
 people that are not exported otherwise, so that I can actually run the exports out
 of them? You can't just tell me what these clusters are without even giving geni
 IDs… Give me doorway status or something."*
 
 `find-single-export-clusters.py` answered *where* the thin regions are and ranked
 their members by **generations of recorded ancestry**, which was the wrong measure
-for you purpose: it tied thousands of people at the same depth, so the "deepest
+for her purpose: it tied thousands of people at the same depth, so the "deepest
 member" of a cluster was arbitrary among them.
 
 **The measure here is graph distance from covered ground.** Everybody with
@@ -17,7 +17,7 @@ their distance to the nearest well-covered person. The furthest are the deep
 interior of a region only one export ever touched, and seeding there is what
 reaches material no existing export came near.
 
-**Everybody is a candidate, including redacted profiles.** You, 2026-08-15:
+**Everybody is a candidate, including redacted profiles.** Emma, 2026-08-15:
 *"we are including redacted profiles. Redacted profiles are important, and it's
 kinda stupid to me that you're absolutely refusing to do anything with them."* A
 first version excluded them on my own reasoning; that was the reflex `CLAUDE.md`
@@ -71,10 +71,10 @@ def is_redacted(name: str) -> bool:
     """Reported as a column, **never used to exclude anybody.**
 
     A first version dropped `Private` profiles from the candidates on the
-    reasoning that a redacted person makes a poor seed. You, 2026-08-15:
+    reasoning that a redacted person makes a poor seed. Emma, 2026-08-15:
     *"we are including redacted profiles. Redacted profiles are important, and
     it's kinda stupid to me that you're absolutely refusing to do anything with
-    them."* That was my rule, not yours, and it is the same reflex `CLAUDE.md`
+    them."* That was my rule, not hers, and it is the same reflex `CLAUDE.md`
     § *Redacted people go in* already forbids — the structure around a redacted
     person is not redacted, and an export seeded there returns their relatives.
     """

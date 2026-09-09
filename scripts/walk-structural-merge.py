@@ -1,6 +1,6 @@
 """Walk up the parental lines, matching Geni's parents against Wikidata's.
 
-You, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
+Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
 going up the parental lines and stuff like that and merging the parents on Jenny
 and Wikidata if there are ones on both. Same with all the other relationships.
 That is a critical part of building up this synoptic tree."*
@@ -12,12 +12,12 @@ other way round. It writes no edits and merges nothing.
 **The structure picks the pair; the label only confirms it.** Start from somebody
 holding **both** a Geni ID and a QID. Our father of that Geni ID and Wikidata's
 `P22` of that QID are the *same position in the same family*, so they are the
-same person unless something says otherwise — your 2026-08-12 rule: *"we merge
+same person unless something says otherwise — Emma's 2026-08-12 rule: *"we merge
 them based off of whether something is the mother on both sides of an individual.
 We merge them together unless the mothers really conflict."*
 
 **What this must never become:** searching Wikidata for a name. That is the
-matcher you killed on 2026-08-12 and whose module was deleted on 2026-08-15.
+matcher Emma killed on 2026-08-12 and whose module was deleted on 2026-08-15.
 `correspondence.md`: *"No name similarity, ever. Not as a tiebreak, not as
 corroboration, not as a candidate list for a human."* Every comparison here is
 between two people the structure already placed opposite each other.
@@ -65,7 +65,7 @@ csv.field_size_limit(10 ** 7)
 
 FATHER, MOTHER = "P22", "P25"
 
-#: your gate on everything created: `en` · `ja` · `zh` · `hi` · `ar` · `ru` ·
+#: Emma's gate on everything created: `en` · `ja` · `zh` · `hi` · `ar` · `ru` ·
 #: `el`, plus `mul`. *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS
 #: ON EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."* Every edit records which
 #: of these it still lacks, so the batch that fills them can find its own work.
@@ -81,7 +81,7 @@ PLACEHOLDER_LABELS = _labels.PLACEHOLDER_FORMS
 def is_placeholder_label(label: str) -> bool:
     """Whether this string is a marker rather than a name.
 
-    **You, 2026-08-16:** *"NN is always preserved in the multi-language label. It
+    **Emma, 2026-08-16:** *"NN is always preserved in the multi-language label. It
     just has more descriptive labels added in some languages for the
     relationships."* And: *"no local language should have it."* So `NN` in `en` is
     the specific thing forbidden — the first version of this walk's label set put
@@ -91,7 +91,7 @@ def is_placeholder_label(label: str) -> bool:
     **The head check defers to `labels.leads_with_a_marker`, and used to be its own
     copy.** Testing `head in PLACEHOLDER_LABELS` made a leading full stop a marker,
     so `. Bagration-Davitashvili`, `. Weill` and `? binti Pg Seri Lela` counted as
-    markers on the strength of their punctuation. You ruled on that specific point
+    markers on the strength of their punctuation. Emma ruled on that specific point
     on 2026-08-17 — **words yes, punctuation no**, punctuation being a marker *only
     as the whole label* — precisely so that `Nechama (?) Heller` and
     `George Clark, II - farmer` are left alone. A stray leading dot before a real
@@ -107,7 +107,7 @@ def is_placeholder_label(label: str) -> bool:
 def label_set_for(row: dict) -> dict:
     """The label set for one `derived-labels.csv` row, per `emission-spec.md`.
 
-    **A placeholder was being created with `en` and nothing else.** Your spec is
+    **A placeholder was being created with `en` and nothing else.** Emma's spec is
     that *"the multi-language label comes from the Latin alphabet name, and the
     English language label will come from it too"* — so `mul` is the label that
     matters and it was the one missing on all 12,260. `mul` is not a nicety here:
@@ -179,15 +179,15 @@ def label_of(entity, lang="en"):
 def walk_all(anchors, fam, ourqid, names, label_sets, depth):
     """Every anchor, writing what the walk finds.
 
-    You, 2026-08-16, on the three "questions" this had been sitting on:
+    Emma, 2026-08-16, on the three "questions" this had been sitting on:
     *"if they are only on wikidata there is no problem is there lol. But about
     only geni well same? Tehy are created lol. WAHT TE FUCK IS THIS THIS IS A
-    SUPER EASY THING ANS YOU ARE TRATING IT AS A BLOCKER."* You are right on both.
+    SUPER EASY THING ANS YOU ARE TRATING IT AS A BLOCKER."* She is right on both.
     `WD ONLY` needs nothing — Wikidata knowing a parent we do not costs us
     nothing. `GENI ONLY` is a **creation**, which is the entire point of the
     project. Neither was ever a decision.
 
-    So this writes the two things you asked the midnight job to produce: the
+    So this writes the two things she asked the midnight job to produce: the
     QID ↔ Geni ID correspondence built from the merges, and the placeholder list
     for people on Geni and not on Wikidata.
     """
@@ -238,8 +238,8 @@ def walk_all(anchors, fam, ourqid, names, label_sets, depth):
                         # Geni person is that QID" and gives no way to check the
                         # claim: the whole basis is that both sit at the same
                         # parent position of the SAME child, and the child was
-                        # missing from the output. You reviews cases one by one,
-                        # so a row you cannot verify is not a case.
+                        # missing from the output. Emma reviews cases one by one,
+                        # so a row she cannot verify is not a case.
                         corr[ours_id] = (theirs[0], key,
                                          names.get(ours_id, ""),
                                          label_of(ents.get(theirs[0])) or "",
@@ -267,7 +267,7 @@ def walk_all(anchors, fam, ourqid, names, label_sets, depth):
     # `label_of` had nothing to read and **3,526 of 3,668 rows came out with an
     # empty `wikidata_label`**.
     #
-    # That is not cosmetic. Your method is *"the structure picks the pair; the
+    # That is not cosmetic. Emma's method is *"the structure picks the pair; the
     # label only confirms it"* — a correspondence with no label cannot be
     # reviewed at all, which is the entire purpose of this file.
     missing = sorted({v[0] for v in corr.values()} - set(ents))
@@ -364,7 +364,7 @@ def main() -> int:
     #
     # This **overlays** rather than filling gaps. A placeholder-named person does
     # have a `label_mul` — it is `NN` — so keying on "not already present" left
-    # `NN Hildesheim` sitting in `en`, which is the one placement your rule names.
+    # `NN Hildesheim` sitting in `en`, which is the one placement her rule names.
     if PREVIEW.exists():
         with PREVIEW.open(encoding="utf-8", newline="") as fh:
             for r in csv.DictReader(fh):

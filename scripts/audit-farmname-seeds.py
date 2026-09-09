@@ -1,6 +1,6 @@
 """Placeholder seeds that should have taken the child's surname and did not.
 
-**You, 2026-08-18:** *"uhh farm names are surnames here lol"* --- and, on the two
+**Emma, 2026-08-18:** *"uhh farm names are surnames here lol"* --- and, on the two
 already created: *"add a task in the queue to fix the surnames of these people before
 the synoptic tree is built. I will do the editing on geni for this."*
 

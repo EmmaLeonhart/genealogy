@@ -1,15 +1,15 @@
 """Who still needs the immediate-family scrape. EVERY member of EVERY sibling pair.
 
-**You, 2026-09-06, and you said it twice because it looks redundant and is not:** *"every single
+**Emma, 2026-09-06, and she said it twice because it looks redundant and is not:** *"every single
 sibling pair gets the small scrape done on it. The one that just gets their immediate relatives is
 something that needs to be done on every single person, every single person in sibling pairs. And,
 yes, I know this is slightly redundant, but I'm telling you to do it. I'm telling you to do it."*
 
 **Why both members and not one.** A path names a sibling hop and never names the parents -- Geni
-records no sibling edge, so a path can only say *these two are siblings*. Under your ruling that an
+records no sibling edge, so a path can only say *these two are siblings*. Under her ruling that an
 unknown parent is an absent slot, the path GEDCOM writes them as a family with two `CHIL` and no
 partners. The parents arrive from the members' own profile pages, and scraping only one of the
-pair gets one side's account of them. Your words: *"it'll create a gedcom for each one of the
+pair gets one side's account of them. Her words: *"it'll create a gedcom for each one of the
 members of the sibling pair, and then this links them as siblings with their parents in this new
 gedcom file, but they're also linked as siblings in the path gedcom files."*
 
@@ -23,13 +23,13 @@ in almost every path.
 ## ⛔ THE PHASE ORDER STILL GOVERNS WHAT THIS LIST IS FOR
 
 `docs/per-individual-loop.md`: phase 3 scrapes the sibling pairs that are **still parentless in
-the integrated tree**, not the ones a path file happens to name today. Your correction of
+the integrated tree**, not the ones a path file happens to name today. Her correction of
 2026-09-06: *"jumping to the mass action was really bad because you skipped over a lot."*
 
 So this script reports both, and never conflates them:
 
   * **from the paths** -- every sibling pair the path GEDCOMs contain, which is the full
-    population and the thing you have just asked to be covered;
+    population and the thing she has just asked to be covered;
   * **still parentless** -- of those, the ones for whom no profile scrape yet exists, which is
     the actual work queue.
 

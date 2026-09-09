@@ -1,12 +1,12 @@
 """The eccentric TAIL of the tree, split into connected clusters.
 
-**You, 2026-09-05:** *"A couple days ago in a different chat you did eccentricity analysis on
+**Emma, 2026-09-05:** *"A couple days ago in a different chat you did eccentricity analysis on
 the synoptic tree. You found a bunch of Chinese ancient people were most eccentric. Think you can
 run something like that again? I want to see other eccentric clusters"*.
 
 `scripts/measure-eccentricity.py` ranks PEOPLE, and the top of that ranking is one descent — 少昊
 Shaohao down to 伯益 Bo Yi, six people on a single chain, which `CLAUDE.md` § *The Chinese
-legendary lineage* records your calling *"very clustered with each other"*. A ranked list of
+legendary lineage* records her calling *"very clustered with each other"*. A ranked list of
 individuals cannot show a second group: everything near the top is the same lineage, and the next
 family starts wherever that one runs out.
 
@@ -129,9 +129,9 @@ def describe(labels) -> str:
     """The words shared across a WHOLE cluster, commonest first.
 
     **This exists because reading the five farthest labels is how a cluster gets mislabelled.**
-    You, 2026-09-05, on the 222-person cluster this report called *"the Samaritan Itamar line"*:
+    Emma, 2026-09-05, on the 222-person cluster this report called *"the Samaritan Itamar line"*:
     *"you said Samaritan itamar line but it's clearly everyone in the Samaritans cluster and you
-    just bullshitted"*. You are right and it is countable — over all 222 labels, `Samaritan`
+    just bullshitted"*. She is right and it is countable — over all 222 labels, `Samaritan`
     occurs **145** times and `Itamar` **111**, alongside `High Priest` 38, `Cohen` 35 and
     `ben` 71. The Itamar line is the largest thread in a Samaritan cluster, not the cluster.
 

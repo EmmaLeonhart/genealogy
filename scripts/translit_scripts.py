@@ -1,10 +1,10 @@
 """Latin names into Cyrillic, Greek, Devanagari and Arabic.
 
-Your seven languages are `en` · `ja` · `zh` · `hi` · `ar` · `ru` · `el` plus `mul`. `ja`/`zh`
+Emma's seven languages are `en` · `ja` · `zh` · `hi` · `ar` · `ru` · `el` plus `mul`. `ja`/`zh`
 are `scripts/translit_no.py`; this is the other four, authorised 2026-08-31 to run in parallel
 rather than behind them.
 
-**Your standard governs and is the reason this is allowed to exist:** *"Incorrect romanization or
+**Her standard governs and is the reason this is allowed to exist:** *"Incorrect romanization or
 incorrect representations in katakana are totally acceptable. An incorrect name is not, because
 half these words, nobody knows how they're pronounced anyway."* A transcription that a native
 reader would spell differently is acceptable; a different *name* is not. So every mapping here is
@@ -100,8 +100,8 @@ VIRAMA = "्"
 # Arabic. An abjad. Long vowels get `ا`/`و`/`ي`, which is the ordinary convention for
 # foreign names; short vowels are simply not written, and that loss is the script's.
 #: `ia` and `ea` are written out in Arabic for a foreign name -- `Maria` is `ماريا`. Without
-#: them the vowel-dropping rule reduced your to `مرا`, which has lost the name rather than its
-#: short vowels, and that is the line your standard actually draws.
+#: them the vowel-dropping rule reduced her to `مرا`, which has lost the name rather than its
+#: short vowels, and that is the line her standard actually draws.
 AR_DIGRAPHS = [("kh", "خ"), ("gh", "غ"), ("sh", "ش"), ("th", "ث"), ("ch", "تش"),
                ("ph", "ف"), ("dh", "ذ"), ("ck", "ك"), ("qu", "كو"),
                ("ia", "يا"), ("ea", "يا"), ("ie", "ي"), ("ae", "ا")]

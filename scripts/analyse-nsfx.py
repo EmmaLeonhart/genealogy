@@ -3,7 +3,7 @@
 `correspondence.md` marks `NSFX` **TO ANALYSE**: *"assuming it is always a title
 is exactly the kind of guess Emma has stopped."*
 
-It bears directly on a rule you did give, 2026-08-11: *"a noble suffix or a noble
+It bears directly on a rule she did give, 2026-08-11: *"a noble suffix or a noble
 particle is a legitimately common thing in English, to the point that it makes it
 useless to do that rule on Latin names"* — so the suffix stays in, and the Latin
 display name becomes both the `mul` and the `en` label.

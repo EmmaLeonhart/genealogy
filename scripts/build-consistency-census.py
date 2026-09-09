@@ -1,9 +1,9 @@
 """Every "impossible" and "implausible" date finding, with its dates intact.
 
-You, 2026-08-11, refusing to treat `reports/consistency.md` as a verdict:
+Emma, 2026-08-11, refusing to treat `reports/consistency.md` as a verdict:
 *"it's your job to do analysis on these to figure out what's actually going on
 with them. The chances are there is actually something going on with them, and
-You're just deeming them impossible or whatever. The chances are there's
+you're just deeming them impossible or whatever. The chances are there's
 something going on with them that's good, and you're just bullshitting your way
 around it, so you have to do the research on it."*
 

@@ -2,8 +2,8 @@
 
     python scripts/refresh-rule-transliterations.py [--dry-run]
 
-**You, 2026-08-29:** *"we want to introduce a system to try to fix romanizaion errors."*
-Your first case: `Q141216408` came out **ウン・モルクク** and you hand-corrected it to
+**Emma, 2026-08-29:** *"we want to introduce a system to try to fix romanizaion errors."*
+Her first case: `Q141216408` came out **ウン・モルクク** and she hand-corrected it to
 **ウン・モルク**.
 
 ## What was wrong, and why it was never one name
@@ -15,7 +15,7 @@ phoneme. So every `ck` in the corpus doubled: `Falck` ファルクク, `Munck` �
 ルドベクク, `Sack` サクク, and in onset position `Sacken` サクケン. **47 tokens.**
 
 The fix is one line in `translit_no.translit` — `ck` normalises to `k` before the walk, the same
-way `aa` already normalises to `å` — and it gives your correction exactly: `Mørck` →
+way `aa` already normalises to `å` — and it gives Emma's correction exactly: `Mørck` →
 `モルク` / `莫尔克`.
 
 ## Why this script exists at all
@@ -23,7 +23,7 @@ way `aa` already normalises to `å` — and it gives your correction exactly: `M
 `extend-transliterations.py` only ever ADDS: *"The hand table always wins. Every existing row is
 preserved untouched."* That is right for hand rows and wrong for rule rows, which are a cached
 function of an engine that can change. Without this, a rule fix corrects nothing already
-written — the table keeps serving `モルクク` forever, and the error you corrected on one item
+written — the table keeps serving `モルクク` forever, and the error Emma corrected on one item
 stays live on every other.
 
 **So the split is by the `note` column, and it is the whole safety story:**
@@ -31,9 +31,9 @@ stays live on every other.
 * **ANY note beginning `by rule`** — recomputed. These are cache. That means `by rule`,
   `by rule, minted for the transcription batch` (15,836 rows) and `by rule, minted during the
   run` (237) alike. **The test was `note == "by rule"` until 2026-09-07 and that froze 16,071
-  rows — 42% of the table — against every rule fix.** It is how your own example survived:
-  You reported `Carl August Tigerstedt` reading `ティゲルステドト`, the `-dt` rule was fixed and
-  the refresh run, and your row did not move, because it is noted *minted during the run*.
+  rows — 42% of the table — against every rule fix.** It is how Emma's own example survived:
+  she reported `Carl August Tigerstedt` reading `ティゲルステドト`, the `-dt` rule was fixed and
+  the refresh run, and her row did not move, because it is noted *minted during the run*.
 * `composed by rule: …` — recomputed, same reason.
 * everything else (`composed: …` off a hand stem, blank, or any hand annotation) — **untouched**.
   Those readings were checked by a person, and `CLAUDE.md` § *the entire purpose of this is to
@@ -183,11 +183,11 @@ def main():
         return
     # **Columns from the file, a total sort, and an atomic replace.** This carried the same
     # `["token", "ja", "zh", "note"]` literal that truncated the table to an 18-byte header on
-    # 2026-09-01, destroying 36,902 hand-built rows: the table has had a `ko` column since you
+    # 2026-09-01, destroying 36,902 hand-built rows: the table has had a `ko` column since Emma
     # ruled that *"cjk includes korean"*, and `open(..., "w")` truncates before `writerows`
     # raises. A second copy of a landmine is still a landmine.
     #
-    # The sort is `translit_no.table_sort_key` because **sorting has to be deterministic** — your
+    # The sort is `translit_no.table_sort_key` because **sorting has to be deterministic** — her
     # instruction, 2026-09-01. 738 tokens tie under `casefold` alone, and three scripts write this
     # file, so an unsorted hand-off reshuffles the ties and a content-identical rewrite shows up
     # as 36,901 changed lines.

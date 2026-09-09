@@ -2,7 +2,7 @@
 
     python scripts/validate-structural-walk.py
 
-**You, 2026-08-24:** *"It's not clear to me that you've ever been doing the zipper join
+**Emma, 2026-08-24:** *"It's not clear to me that you've ever been doing the zipper join
 correctly, especially since you never really explain how it is that you're doing it."*
 
 `docs/structural-walk.md` is the explanation. This is the check.

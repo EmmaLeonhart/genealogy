@@ -2,13 +2,13 @@
 
     python scripts/census-synoptic-usages.py
 
-**You, 2026-08-29:** *"it is consistently conflated between the union of all the geni gedcoms
+**Emma, 2026-08-29:** *"it is consistently conflated between the union of all the geni gedcoms
 and the union of that tree with all data sources."* Two meanings, one phrase:
 
 * **geni** — every `.ged` under `exports/` merged, i.e. `out/merged.ged`.
 * **full** — that tree joined to every other source, Wikidata above all. Does not exist yet.
 
-Your instruction is to put **every specific usage** to you rather than pick a definition and
+Her instruction is to put **every specific usage** to her rather than pick a definition and
 apply it everywhere. 181 occurrences across 26 files is too many questions to be answerable, so
 this classifies each one first and leaves only the genuinely undecidable ones to ask about.
 
