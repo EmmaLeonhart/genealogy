@@ -1,7 +1,7 @@
 """Which name items to add a label to first, ranked by how many of our people it unlocks.
 
-Emma, 2026-08-18: *"We're going to be, of course, having to add labels in other languages
-to the name objects."* This is the worklist for that, and its whole point is the
+Labels in other languages have to be added to the name objects. This is the worklist for
+that, and its whole point is the
 **ordering**: a name item is worth a label in proportion to how many people in this
 corpus bear it, so `Olsdatter` outranks a surname carried by six.
 
@@ -13,7 +13,7 @@ would move that number.
 
 **It proposes no labels and invents no transliterations.** What katakana `Leonhart` takes
 is not something to derive from a rule -- `CLAUDE.md` § *name modelling.txt* sends edge
-cases to Emma rather than to a guess, and a wrong reading of a name is the kind of thing
+cases to a person rather than to a guess, and a wrong reading of a name is the kind of thing
 that is painful to correct on Wikidata afterwards (§ *The purpose is to ADD to Wikidata,
 not to correct it*). So every row is a question with a size attached, never an answer.
 
@@ -40,7 +40,7 @@ RES_CSV = REPO / "reports" / "name-resolution.csv"
 OUT_CSV = REPO / "reports" / "name-label-gaps.csv"
 OUT_MD = REPO / "reports" / "name-label-gaps.md"
 
-#: Emma's label ladder, 2026-08-18: `mul`, then `en`, then `ja`, then `zh`, then the
+#: The label ladder, 2026-08-18: `mul`, then `en`, then `ja`, then `zh`, then the
 #: rest. Only the languages the ladder actually names are ranked here; the wider set
 #: lives in `name-item-languages.csv` for anyone who wants it.
 TARGETS = ["mul", "en", "ja", "zh"]
@@ -109,7 +109,7 @@ def main() -> None:
         "people carry.",
         "",
         "This report proposes no labels. What katakana a name takes is a reading, not a "
-        "derivation, and `name modelling.txt` sends that to Emma rather than to a rule.",
+        "derivation, and `name modelling.txt` sends that to a person rather than to a rule.",
         "",
         "| language | items missing it | name-uses behind them |",
         "| --- | ---: | ---: |",

@@ -1,7 +1,6 @@
 """The prioritised, ordered chain of edits that links a person to the world tree.
 
-Emma, 2026-08-13: *"Great save this path it's important. This one is a priority
-and it has an ordering."*
+This path is a priority and it has an ordering.
 
 The ordering is forced, not chosen:
 
@@ -134,9 +133,9 @@ def main() -> int:
 
     L: list[str] = []
     add = L.append
-    add("# Priority chain: linking Emma into the Wikidata world tree")
+    add("# Priority chain: linking the account owner into the Wikidata world tree")
     add("")
-    add("Emma, 2026-08-13: *\"This one is a priority and it has an ordering.\"*")
+    add("This path is a priority and it has an ordering.")
     add("")
     add(f"**{len(objects)} edits, executed in this order.** The ordering is forced: the")
     add("Geni ID must exist before anything cites it, and a creation must have a")
@@ -158,8 +157,8 @@ def main() -> int:
     add("The route search reported 16. The extra one — Bengta Ebbesdotter Galen, born")
     add("1170 — sits **inside** the world-tree component, between two people who are both")
     add("already in it. She is connected to Charlemagne by other edges regardless; the")
-    add("search routed through her on a cost tie. Only the unbroken run between Emma and")
-    add("the first person already in the component is actually required.")
+    add("search routed through her on a cost tie. Only the unbroken run between the")
+    add("subject and the first person already in the component is actually required.")
     add("")
     add("## What this buys")
     add("")

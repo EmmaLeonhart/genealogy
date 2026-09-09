@@ -2,9 +2,8 @@
 
     py scripts/build-ko-label-batch.py
 
-**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
-prioritize getting korean labels all the time and this seems to not get that cjk includes
-korean"*. `ko` had been filed with `hi`/`ar`/`ru`/`el` as a research task behind `ja` and `zh`,
+**Korean is as important as Chinese and is prioritised all the time: CJK includes Korean.**
+`ko` had been filed with `hi`/`ar`/`ru`/`el` as a research task behind `ja` and `zh`,
 when it belongs beside them — this is the batch that was missing.
 
 **It holds the same line `build-ja-label-batch.py` holds**, and the line is what makes both
@@ -24,7 +23,7 @@ trustworthy: emit only what needs no invention, and say plainly how many are out
 
 **Latin names are excluded, exactly as `ja` excludes them.** `translit_ko_latin` renders 97% of
 the 1.29 million Latin-labelled people, and that is transcription rather than reading — the same
-category as English → katakana, which Emma's method reserves for a hand-built table and which the
+category as English → katakana, which is reserved for a hand-built table and which the
 `ja` batch has never emitted either. Doing it here and not there would be the two batches
 disagreeing about what counts as honest, which is worse than either answer.
 
@@ -112,7 +111,7 @@ def main() -> int:
                 edits.append({
                     "id": f"ko_label:{g}",
                     "type": "set_label",
-                    "source": "step 5 of Emma's label order -- ko is CJK",
+                    "source": "step 5 of the label order -- ko is CJK",
                     "subject": {"qid": r.get("qid") or None, "geni_id": g},
                     "requires": [],
                     "label": {"language": "ko", "value": value},
@@ -126,9 +125,8 @@ def main() -> int:
     got = [k for k in why if k.startswith("EMITTED")]
     lines = ["# Step 5 — the `ko` label", "",
              "Built by `scripts/build-ko-label-batch.py`. **Emits nothing to Wikidata.**", "",
-             "Emma, 2026-09-01: *\"korean is extremely important on par with Chinese and you "
-             "really should prioritize getting korean labels all the time and this seems to not "
-             "get that cjk includes korean\"*.", "",
+             "Korean is as important as Chinese and is prioritised all the time: "
+             "CJK includes Korean.", "",
              f"- **{len(edits):,} `ko` labels**, from sources that need no invention.", ""]
     lines += ["| source | people |", "| --- | ---: |"]
     for k in sorted(got, key=lambda x: -why[x]):

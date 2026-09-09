@@ -1,13 +1,12 @@
-"""Step 1 of Emma's label order: an `en` label for every individual who lacks one.
+"""Step 1 of the label order: an `en` label for every individual who lacks one.
 
-**Emma, 2026-08-17:** *"makes en labels for every individual (so Japanese gets
-transcribed)... all of the en labels are done at the same time as one step, and then mul,
-then ja, then zh, then others."*
+**All the `en` labels are done at once, as one step, so Japanese gets transcribed** -- then
+`mul`, then `ja`, then `zh`, then the others.
 
 **This is that step, and only that step.** `mul` follows from `en` and is the next batch;
 nothing here emits `mul`, `ja` or `zh`.
 
-**Her order is the one that works.** `emission-spec.md` had `mul` first with `en` derived
+**That order is the one that works.** `emission-spec.md` had `mul` first with `en` derived
 from it, which has no route at all for a person whose name is written only in Han
 characters. Making `en` first, by transcribing, is what gives those people anything to
 derive a `mul` from.
@@ -87,7 +86,7 @@ def main():
     edits = [{
         "id": "en_label:%s" % g,
         "type": "set_label",
-        "source": "step 1 of Emma's label order",
+        "source": "step 1 of the label order",
         "subject": {"qid": None, "geni_id": g},
         "requires": [],
         "label": {"language": "en", "value": v},
@@ -100,9 +99,8 @@ def main():
     short = len(need) - len(src)
     md = ["# Step 1 — an `en` label for every individual who lacks one", "",
           "Built by `scripts/build-en-label-batch.py`. **Emits nothing to Wikidata.**", "",
-          "Emma, 2026-08-17: *\"makes en labels for every individual (so Japanese gets "
-          "transcribed)... all of the en labels are done at the same time as one step, and "
-          "then mul, then ja, then zh.\"* This is that step and only that step.", "",
+          "All the `en` labels are done at once, as one step, so Japanese gets transcribed "
+          "-- then `mul`, then `ja`, then `zh`. This is that step and only that step.", "",
           "- individuals with no English label: **%d**" % len(need),
           "- of those, an `en` is now available: **%d**" % len(src),
           "- still without one: **%d**" % short, "",

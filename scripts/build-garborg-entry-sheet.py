@@ -2,15 +2,14 @@
 
     python scripts/build-garborg-entry-sheet.py
 
-The page at claude.ai/code/artifact/c2430047-… is Emma's entry sheet for the Garborg
-items she builds by hand.
+The page at claude.ai/code/artifact/c2430047-… is the entry sheet for the Garborg
+items that are built by hand.
 
 **Everything here comes from `out/garborg-full-items.json`**, all 14 items fetched via
 `genimerge.wikidata.full_entities`, by way of `scripts/garborg-modelling.py`. A previous
 version of this page was built from a fetch-and-summarise read instead, and it published
 three false claims — chiefly that Arne Garborg had no parents on Wikidata. He has them.
-Emma: *"you're supposed to download the full wikidata items for the people I've edited to
-get the modelling."*
+The whole Wikidata item has to be downloaded for anyone whose modelling is being read.
 
 The stylesheet is the one the page already had; the design is unchanged on purpose, so a
 redeploy reads as the same document rather than a new one.
@@ -125,7 +124,7 @@ PEOPLE = [
          ("uncited",
           "P31, P21 and P2600 carry no reference — the same on every item"),
      ],
-     "Identical in shape to Samuel and Inger Marie. The eleven items she made are "
+     "Identical in shape to Samuel and Inger Marie. The eleven hand-made items are "
      "uniform; there is no partial one among them."),
 
     ("Aadnesson", "a patronymic name item", "minimal", "rel",
