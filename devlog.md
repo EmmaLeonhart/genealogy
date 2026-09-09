@@ -4375,7 +4375,7 @@ whole-suite run now costs the store pass on top of 145 exports.
 ## 2026-08-09 (later still) — the two trees measured against each other
 
 The instruction: *"merging geni exports and wikidata dump stuff as per queue.md"*. The gate
-on § *Active after import finished* is her call earlier the same day that the
+on § *Active after import finished* is a ruling earlier the same day that the
 Wikidata side is present enough to focus on Geni, so the download stays stopped
 and everything here is offline.
 
@@ -6953,7 +6953,7 @@ earlier that no such file existed** — my search was for `*.md` in the repo roo
 and hers is `.txt`. The cron prompt I wrote said "markdown file", which is the
 bug: it narrowed a search that had no reason to be narrow.
 
-**Her model corrects this repo's central claim about patronymics.** `CLAUDE.md`
+**The model corrects this repo's central claim about patronymics.** `CLAUDE.md`
 said a patronymic was a `P735` given name qualified with `P3831` → `Q110874`, the
 name item being an instance of `Q110874`. Her file gives it **its own property**:
 
@@ -7360,7 +7360,7 @@ imported by name looked unused. Worth remembering before the next sweep.
 ## 2026-08-15 — namelinks rewritten to `name modelling.txt`
 
 "Rewrite now, regenerate the batch" was approved. `src/genimerge/namelinks.py`
-now emits her model rather than the superseded one:
+now emits the model rather than the superseded one:
 
 - **`P5056` patronym or matronym** as a property of its own, parallel to `P735`
   given name and `P734` family name — not a `P735` statement qualified with
@@ -7374,7 +7374,7 @@ now emits her model rather than the superseded one:
 **A patronymic is now emitted instead of discarded.** It used to be skipped with
 "patronymic in the given-name field" — not because dropping it was right, but
 because the only available property was `P735` and putting it there would have
-been a false claim. Her model provides the correct property, so the workaround has
+been a false claim. The model provides the correct property, so the workaround has
 no reason to exist.
 
 **One test was replaced, and it is worth being explicit about why.**
@@ -7786,7 +7786,7 @@ Geni**: of 1,588 `NN` items, **27** carry a `P2600` *Geni.com profile ID* at all
 **4** point at a profile in our corpus, and **4** Wikidata relatives are unnamed on
 Wikidata but named in Geni. They are Wikidata-only people. That bounds the claim to
 this set — it is not a reason to skip the synoptic check next time, which is the
-whole point of her correction.
+whole point of the correction.
 
 **Final batch: 3,525 edits.** 1,310 `mul` moves, 2,215 descriptive labels across ten
 Germanic and Romance languages, 17 people with no named relative at any distance.
@@ -7861,7 +7861,7 @@ which one was actually behind.
 5,132 strings, worst case 57 people reading *granddaughter of Kandjeng Pangeran
 Soeria Koesoemah Adinata (Bupati Sumedang)*. 8,270 of those are one-hop `father`
 cases, so it predates the two-hop work. Measured and left alone: Wikidata's uniqueness
-constraint is on label *plus description*, and her spec creates people with labels and
+constraint is on label *plus description*, and the spec creates people with labels and
 no description, so nothing collides until descriptions are worked — which is the item
 that already carries her warning about exactly this.
 
@@ -7876,7 +7876,7 @@ Two of the three findings from the resume review, closed.
 `reports/structural-correspondence.csv` since 08-15 and **nothing consumed it**:
 *"The structural cases you were going to do and then you didn't do."*
 `scripts/build-structural-correspondence-batch.py` is the consumer, and it emits the
-one thing her ordering rule allows first — the identifier:
+one thing the ordering rule allows first — the identifier:
 
     3,413  emit
       306  a second Geni ID on the item  (emitted, flagged)
@@ -8008,7 +8008,7 @@ within a *file* puts the head of the second path at the middle of the first, and
 middle is exactly what this ranks on, so a seam would manufacture the best candidate
 on the page.
 
-**Her question needs two conditions and the old file carried one.** `held` and
+**The question needs two conditions and the old file carried one.** `held` and
 `bridges_through` are new columns. The account owner is row 1 — **818 chains**, because *"You"*
 opens every path — and now reads `held: yes`, `bridges_through: 0`, the opposite of a
 bridge person. Of 10,287 people named by a path, **3,337 are held and 6,950 are not**.
@@ -8445,7 +8445,7 @@ place the placeholder and run the export. The 50 I opened were profile pages. Re
 person connects at all, and the saved-page workflow needs the profile page because the
 relationship panel and its `href`s live there.
 
-**Four exports integrated into `exports/midpoints/`**, a new directory on her call rather
+**Four exports integrated into `exports/midpoints/`**, a new directory on a ruling rather
 than a guess. All `Forest`, all **exactly 5000** people, seeded on placeholders made by hand
 at the midpoints of path gaps:
 
@@ -8526,7 +8526,7 @@ stale, because it reads the corpus rather than a snapshot of it.
 asks for a regeneration — the same defect `path-bridge-targets.csv` had, a live artifact
 with no generator.
 
-**The ranking is slots, also her call.** *"The midpoints for path segments were making
+**The ranking is slots, also a ruling.** *"The midpoints for path segments were making
 some assumptions: an assumption of relative equality of presence in slots, but I don't
 think this is true anymore."* Slot counts run from 10 down to 1, so the assumption fails
 plainly: midpointness was treating somebody blocking ten paths the same as somebody
@@ -9522,7 +9522,7 @@ not, and the output is not usable yet.**
 
 ### The culture half, which is hers and is right
 
-Her order of evidence, all three built:
+The order of evidence, all three built:
 
 1. **A listed place.** *"If there's any listed place of birth, then you know which one
    it is."*
@@ -9537,7 +9537,7 @@ Her order of evidence, all three built:
 
 ### The reading half, and why the output is wrong
 
-No `pypinyin`, no `hanja`, no `pykakasi`, and her standing rule forbids programmatic
+No `pypinyin`, no `hanja`, no `pykakasi`, and the standing rule forbids programmatic
 transliteration anyway. So readings are read off Wikidata name items carrying both a
 Han label and a Latin one — a *published* reading rather than a guess. Filtering those
 by `P31` gave 494 Chinese characters, 6 Korean and **zero** Japanese; filtering by the
@@ -10497,7 +10497,7 @@ section alone reached **465 lines** describing work that was finished. That is a
 entry wearing a queue item's clothes, and it makes the file unusable for its one purpose:
 telling somebody what is left to do.
 
-It also makes the merge worse, which is what surfaced it. Her reasoning: *"the more you
+It also makes the merge worse, which is what surfaced it. The reasoning: *"the more you
 remove from the queue, the easier the merge is, because the agent gets to figure out what's
 going on with the queue. Is the queue actually being done?"* A 2,188-line queue answers that
 question with noise.
@@ -10605,7 +10605,7 @@ The name is the modal given name of the confirmed fathers of that token — `Ols
 *Ole* because 1,809 real `Olsen` fathers are called Ole. Bearers whose token has no
 confirmed father anywhere (6,373) get no item, because there would be nothing to call him.
 
-## 2026-08-19 — step 1 of her label order: `en` for every individual, 22,373 edits
+## 2026-08-19 — step 1 of the label order: `en` for every individual, 22,373 edits
 
 Ruled 2026-08-17: *"makes en labels for every individual (so Japanese gets transcribed),
 and then mul gets made for every individual (almost always derived from en), and then the
@@ -10613,7 +10613,7 @@ Japanese gets made for all languages, and then the Chinese... all of the en labe
 at the same time as one step."* `scripts/build-en-label-batch.py` →
 `reports/wikidata-en-labels.json`. **Emits nothing to Wikidata.**
 
-Her order is the one that works. `emission-spec.md` had `mul` first with `en` derived from
+The set order is the one that works. `emission-spec.md` had `mul` first with `en` derived from
 it, which leaves no route at all for a person whose name is written only in Han characters.
 Making `en` first, by transcribing, is what gives those people something to derive a `mul`
 from.
@@ -10648,10 +10648,10 @@ Also collapsed `LABELS, IN THE SET ORDER` in the queue from 143 lines to 25 — 
 normalisation it described is built (56,369 edits: unnamed 23,237, marker+surname 18,859,
 description 6,979, description+clan 6,254, name repaired 1,010).
 
-## 2026-08-19 — step 2 of her label order: `mul` from `en`, 14,972 edits
+## 2026-08-19 — step 2 of the label order: `mul` from `en`, 14,972 edits
 
 `scripts/build-mul-label-batch.py` → `reports/wikidata-mul-labels.json`. Each edit requires
-its step-1 `en`, so the two land in her order rather than racing.
+its step-1 `en`, so the two land in the set order rather than racing.
 
 **The interesting part is what it does not mirror.** The wording was *"mul gets made for
 every individual (almost always derived from en)"*, and "almost always" is doing real work:
@@ -10942,7 +10942,7 @@ existing item still lacks, rather than ten people to create.
 
 **Where the page was wrong, and this is what the review was for.** It said the reference
 was `P854` *reference URL* + `P813` *retrieved*; the hand items use `P2600` *Geni.com profile ID*
-as the reference snak. It suggested English descriptions; all five of her items are
+as the reference snak. It suggested English descriptions; all five of those items are
 description-empty. It argued against `P3373` *sibling* as redundant given shared parents;
 the hand items use it. It emitted no name properties at all; the hand work creates name items, including a new
 one for a patronym. `reports/wikidata-garborg.qs` is superseded on all four counts and
@@ -11287,10 +11287,10 @@ mattered only because it made a request. Rather than delete them, the guarantee 
 no `urllib` and no `LOCKOUT_STATE_URL` in it. Not sharing an agent because there is nothing
 to send beats sharing one.
 
-**And the answer to her question: `P2600` is *Geni.com profile ID*.** Every batch this gate
+**And the answer to the question: `P2600` is *Geni.com profile ID*.** Every batch this gate
 guards says *this Wikidata item is that Geni profile*. They are run by hand.
 
-Also this tick, on her call: **`exports/chain-seeds/export-Forest-6000000227320885873.ged`
+Also this tick, on a ruling: **`exports/chain-seeds/export-Forest-6000000227320885873.ged`
 deleted** — byte-identical to `…837821.ged` (sha256 `2a7f14ae…`), which `genimerge.sources`
 was already dropping. Same call as for the Delldén duplicate on 08-16, and the same
 reason: identity, not redundancy. `test_the_real_corpus_has_no_byte_identical_duplicates`
@@ -11770,7 +11770,7 @@ mid-regeneration, and a suite that reddens for that gets ignored.
 The ruling: *"we should be modelling the names properly, which he didn't do."* That is right —
 both Garborg batches carried labels and **no `P735`, `P734` or `P5056` at all**.
 
-**`scripts/namemodel.py`** classifies a Norwegian name into her model from
+**`scripts/namemodel.py`** classifies a Norwegian name into the model from
 `name modelling.txt`: first token `P735` with `P1545` ordinal 1 and `P7452` → `Q3409033`
 *usual forename*; later given tokens `P735` with `P3831` → `Q245025` *middle name*; a
 `-sen/-son/-datter` token `P5056` *patronym or matronym* as its **own property**, not a
@@ -12022,7 +12022,7 @@ name statements"*. The store predates most of these items and **they are edited 
 the assumption was wrong exactly where it mattered: `Q141152512` Eivind carries a bare
 `P735` → `Q3358418` added by hand, and the batch emitted `P735` → `Q3358418` **with**
 `P1545` and `P7452`. QuickStatements merges an identical statement but records a
-differently-qualified one as a **new** statement — a duplicate given name on her item.
+differently-qualified one as a **new** statement — a duplicate given name on the item.
 
 `reports/garborg-live-state.tsv` is the measured answer and now outranks the store.
 Statements to existing items went 114 → **106**; the eight that went were duplicates.
@@ -12469,7 +12469,7 @@ qualifier is right.
 ### The ledger was stale, which was the real bug
 
 The day batch was still trying to create the 21 people that had just been made, because
-`reports/garborg-qids.tsv` had not been updated from her contributions. Updated: 13 → 34.
+`reports/garborg-qids.tsv` had not been updated from the account's contributions. Updated: 13 → 34.
 The frontier grew 55 → 120 as a result, which is the hop expanding correctly.
 
 `--skip-nn` added as a **per-run** flag — *"for this quickstatements run the NN people are
@@ -12632,7 +12632,7 @@ continuing. Continued.
 **`exports/post-merge/export-Forest-6000000178918141824.ged`** — Aaron III Samaritan High
 Priest, Forest/5000, **5,000 individuals, 3,092 families**. He needed no placeholder:
 **He was added by hand in 2021**, so *Export GEDCOM* was available directly, which is the
-preferred tier of her design. Checking who added a profile before building a placeholder
+preferred tier of the design. Checking who added a profile before building a placeholder
 is the cheap step that saved one here.
 
 **The two balls do not overlap at all** — 5,000 of the Aaron III ball's 5,000 people are
@@ -13874,7 +13874,7 @@ structurally load-bearing.
 Recorded in `CLAUDE.md` as a standing rule, since it governs every future batch and not just these
 two.
 
-**Also: the 2:07pm synoptic rebuild is rescheduled to 16:01** (`9c96578d`) at her request. Step 1
+**Also: the 2:07pm synoptic rebuild is rescheduled to 16:01** (`9c96578d`) on request. Step 1
 already ran and produced a byte-identical file, so the new job does steps 2 and 3 only and is told
 not to re-run the walk.
 
@@ -14124,7 +14124,7 @@ peoples given names when there is only one given name."* The ordinal orders seve
 against each other; with one there is nothing to order. Same objection that already restricted
 `P7452`.
 
-**`docs/dictation/2026-08-25-batch-rules.md` holds her dictation verbatim**, on instruction:
+**`docs/dictation/2026-08-25-batch-rules.md` holds the dictation verbatim**, on instruction:
 *"Really save my dictation somewhere verbatim so you can't summarize it and have to use it
 directly."* `docs/batch-rules.md` is a reading of it and loses in any disagreement. The summary
 had reversed *"We create two parents, link them together"* into the opposite claim.
@@ -14414,7 +14414,7 @@ of.
 Wulff* also claimed his son Wolf Rubensson, 48 years and a different family apart; `Q96985053`
 *John Loomis* also claimed his son of the same name. `reports/wikidata-remove-collapsed-generation-p2600.qs`.
 
-**The Bure link batch is sliced into 16 days of ~40**, her call — nothing technical requires it,
+**The Bure link batch is sliced into 16 days of ~40**, a ruling — nothing technical requires it,
 since both ends of every statement exist and `LAST` never appears, but a few hundred at once reads
 as spam the way siblings did. Sliced by *subject*, so one person's statements always arrive
 together.
@@ -14985,7 +14985,7 @@ differ by two and are never reconciled are how a report gets mistrusted later.
 
 ## 2026-08-26 — her daily algorithm, built into the scripts that already exist
 
-`docs/dictation/2026-08-26-daily-algorithm.md` is her spec. It is a **revision of
+`docs/dictation/2026-08-26-daily-algorithm.md` is the spec. It is a **revision of
 `compose()`**, not a new program — the counts, the shuffle and the order changed:
 
 | | before | after |
@@ -15003,7 +15003,7 @@ batch. The five pairs are now collected and shuffled before insertion.
 
 *"Creation of individuals comes first, then creation of names, then the relationships"* — both
 sections are still built in whatever order the code finds convenient and are **concatenated in
-her order at write time**, so neither section's construction had to change.
+the set order at write time**, so neither section's construction had to change.
 
 ## The strip bug again, and this time wearing the one disguise that survives a careful read
 
@@ -15046,7 +15046,7 @@ both from one invocation is the fix, and the test is what noticed.
 
 ## 2026-08-26 — one command for a day, and two guards learned what a spent batch is
 
-`scripts/build-daily-batch.py` runs step 0 then the three steps in her order and prints the run
+`scripts/build-daily-batch.py` runs step 0 then the three steps in the set order and prints the run
 order with each file's position. It is an orchestrator and generates nothing of its own; the
 order is the part that is easy to get wrong by hand and invisible from the files themselves.
 
@@ -15392,7 +15392,7 @@ first uncreated step overall, so `bergitte-to-emma` never moved — which is why
 path going to me"* stood at **0 of 16 steps**. One step per path now.
 
 *And then it tried to create the account owner.* Step 1 of that path is her. `Q232803` is in neither
-`garborg-qids.tsv` nor `p2600-all.tsv` — her item has no `P2600`, which is the whole point — so
+`garborg-qids.tsv` nor `p2600-all.tsv` — the item has no `P2600`, which is the whole point — so
 every guard was blind and the batch emitted a `CREATE` for a **second item beside her own**.
 `ledger()` now folds in `entity_resolution.md`, the only record of a hand-asserted item.
 
@@ -15464,7 +15464,7 @@ default label. `Len` now requires a Latin letter; `mul` takes it alone.
 
 ## Why the batch only shrank 11%, measured
 
-Her question. Creations fell 50 → 36 (−28%) but the file fell 986 → 818 (−17%), and the reason
+The question. Creations fell 50 → 36 (−28%) but the file fell 986 → 818 (−17%), and the reason
 is a clean split:
 
 | | old | new | |
@@ -15631,7 +15631,7 @@ understand. A script that overwrites a checked-in file must not accept an argume
 parse.
 
 **`full_entities` silently returns `{}` above 50 ids.** Asked for 71 it gave nothing, which read
-as *"her items carry no ja/zh"* — the same absence-versus-broken-join confusion as everywhere
+as *"those items carry no ja/zh"* — the same absence-versus-broken-join confusion as everywhere
 else this week. Chunked at 40, all 71 came back.
 
 **And two claims of mine were wrong.** I called the census incomplete for covering only the Geni
@@ -16436,7 +16436,7 @@ Three of her six items are now done or written down properly:
 - **"Add the cron jobs into the queue as actual items"** — done, and it matters more than it
   sounds: **all ten are session-only and die with the session.** The queue entry is now the only
   durable record of what each was asked to do, with its id and its subject.
-- **The rest of her items are restated as a live list** rather than left in the paragraph they
+- **The rest of those items are restated as a live list** rather than left in the paragraph they
   arrived in: `Q141180412`'s `ja`/`zh` labels not deriving from `mul`, expanding `-dtr`
   abbreviations in `mul`, and `Q4411612`.
 
@@ -16601,7 +16601,7 @@ name field and a real name in the other.
 **1,418 passed, 26 skipped, 0 failed.** The two failures carried at the back of the queue are both
 gone — the ledger/batch overlap resolved itself once the ledger was regenerated from Wikidata.
 
-## 2026-08-27 — steps 1 and 2 of her order: the 1880 cutoff is gone, and the names are unambiguous
+## 2026-08-27 — steps 1 and 2 of the set order: the 1880 cutoff is gone, and the names are unambiguous
 
 **The implementation order was given as a numbered list**, and these are the first two.
 
@@ -16626,7 +16626,7 @@ The batch is byte-identical after this too.
 
 **1,418 passed, 26 skipped, 0 failed.**
 
-Still to come, in her order: `P2600` written when the algorithm links to an existing item, then
+Still to come, in the set order: `P2600` written when the algorithm links to an existing item, then
 the ledger rebuilt from contributions + Bureätten.
 
 ## 2026-08-27 — step 3: `P2600` when the algorithm links someone, and the live values go stale no more
@@ -16678,7 +16678,7 @@ they come back on their own.
 **Effect on the batch:** contiguous group 105 → 178 items, unrestricted ring 706 → 1,797, caps
 still binding at 41 creations, and all three spine lines advanced.
 
-**Two tests failed and both were assumptions her rulings had invalidated, so both were updated
+**Two tests failed and both were assumptions the rulings had invalidated, so both were updated
 rather than loosened.**
 
 `test_every_explicit_subject_already_exists` asserts every `Q…` subject is a ledger member. The
@@ -17554,7 +17554,7 @@ that only Simen Olsen got a CJK name in the last creation batch (fixed by the tw
 The queue item was to put the chain state to her as an `AskUserQuestion`: *"idk if I am actually
 gettin ganythin gon the chain here... Did we get the paths to work or not"*. Joined
 `paths/charlemagne-to-arne-garborg.tsv` against the current ledger and the bulk `P2600` store:
-**32 of 34 steps already have a Wikidata item** — 23 in her ledger, 9 long-standing (`Q3044`
+**32 of 34 steps already have a Wikidata item** — 23 in the ledger, 9 long-standing (`Q3044`
 *Charlemagne*, `Q43974` *Louis the Pious*, `Q273181` *Judith of Flanders*, `Q378177` *Baldwin IV*,
 `Q314521` *Berengar II*, `Q3769073` *Gisela of Friuli*, `Q19061035` *Guttorm Àsulfsson*,
 `Q75291928` *Åsulv Skulesson*, `Q6180419` *Skule Torstigson*). Only **step 15 Ramborg
@@ -17747,11 +17747,11 @@ a note in its docstring saying the block now has a hand-written tail it does not
 regenerating and pasting over the literal would silently drop her.
 
 **The rest of `entity_resolution.md` was left alone on purpose.** Its residue is three `P2600`
-statements, and those are not pending work: the nine pairs are her dictated item 11, whose method
+statements, and those are not pending work: the nine pairs are the dictated item 11, whose method
 is a Wikidata link in each Geni bio followed by a `Forest` export per person — not a `P2600`
 written from here.
 
-## 2026-08-29 — the CJK-at-creation-time complaint is closed, and her diagnosis was right
+## 2026-08-29 — the CJK-at-creation-time complaint is closed, and the diagnosis was right
 
 The queue item: *"only Simen Olsen (6000000016756376445) even had a cjk name... it indicates the pipeline
 has a source for cjk labels, but that source is somehow inconsistent or absent."*
@@ -17787,7 +17787,7 @@ transcript was the right instinct.
 **Presenting it as work to start was not.** That plan — edit the eight Geni bios now, then a
 `Forest` export each — had already been replaced, and the replacement was sitting in `CLAUDE.md`
 § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited*. I went to
-the transcript and did not check the file that exists to hold the current ruling. Her reply: *"No
+the transcript and did not check the file that exists to hold the current ruling. The reply: *"No
 fuck you you didn't get the later discussion."*
 
 **What is actually true, verbatim:** *"When the synoptic tree is merged we change all of their
@@ -17797,7 +17797,7 @@ synoptic build, feeding a **Wikidata union that does not exist yet**. There is n
 editing task and no export campaign for these eight. I had also asked her whether to start the
 eight bios now, which was offering to do the superseded thing.
 
-`CLAUDE.md` gains her sentence about what the link is for, plus the rule the episode actually
+`CLAUDE.md` gains the sentence about what the link is for, plus the rule the episode actually
 teaches: **a transcript is not the authority when `CLAUDE.md` holds a later ruling on the same
 thing.** This is § *Do not grab the first artifact that vaguely matches* in a new costume — the
 artifact was a dead cron, it looked exactly like the missing plan, and nothing checked whether it
@@ -17941,7 +17941,7 @@ creates her has been run.
 `test_every_line_is_a_well_formed_quickstatements_line` said so. The test is right; a queue item is
 where a step-not-yet-takeable belongs.
 
-## 2026-08-29 — her dictated series is intact, and item 1 is done
+## 2026-08-29 — the dictated series is intact, and item 1 is done
 
 Her queue note: *"No clue at this point if the large series of tasks I added was even preserved at
 all since the queue appears to habve already become complete garbage."*
@@ -18314,7 +18314,7 @@ issues. Create a batch of quickstatements that does some kind of minor edit on a
 possible preferable settin their mul labels or something."*
 
 **The 27 came from the ledger, not from a guess.** `refresh-garborg-ledger.py` already reads the
-`new` flag on her contributions and marks everything else *"(P2600 added to an existing item)"*.
+`new` flag on the account's contributions and marks everything else *"(P2600 added to an existing item)"*.
 Those rows are exactly the population.
 
 **"Preferably setting their mul labels" turns out to be possible for 6 of the 27**, and the split
@@ -18334,7 +18334,7 @@ ordering** from `entity_resolution.md`. The ruling this morning was *"If I added
 overwrite it"*; nobody here added these.
 
 **So the 10 get an `Amul` instead.** An alias is additive, never destructive, is a real edit — hence
-one batch entry, which is the whole point of her item — and is independently useful: `Help:Aliases`
+one batch entry, which is the whole point of the item — and is independently useful: `Help:Aliases`
 says aliases exist to find entities in searches, and somebody looking for *Aadne Eivindson Garborg*
 currently cannot find him.
 
@@ -18614,7 +18614,7 @@ am going to be going to run the quickstatements later."*
 2026-08-27. Steps 1, 2, 4, 5, 6, 7, 9 and 11 of it were walked through and ruled on in
 `build-garborg-day.py --compose`; **steps 3 (`linked`), 8, 10, 12, 13 and 14 were never reached.**
 Those are now their own tail item saying so, because closing a review is not the same as finishing
-it and nothing in those six has her sign-off. Her rulings on the covered steps are recorded
+it and nothing in those six has her sign-off. The rulings on the covered steps are recorded
 alongside — including the note that her `entity_resolution.md` entry was overtaken the same day,
 since deleting the whole file removed `Q232803` from `have` anyway.
 
@@ -18642,7 +18642,7 @@ The queue item had three parts: `P1810` carrying Geni's exact name; always addin
 where Geni has no English name, writing one onto Geni first. It ended *"For now, we're sticking
 to this being a primary Wikidata-based project, so we just do not add a label."*
 
-**I read that as deferring all three. It deferred the third.** Her correction: *"Only the
+**I read that as deferring all three. It deferred the third.** The correction: *"Only the
 Geni-editing part."* So the English-label rule has been live and I had it parked for a day.
 
 **And the qualifier was already right, which is the part I had overblown.** `P1810` carries what
@@ -18669,7 +18669,7 @@ has been asked, and § *NO REPLY MEANS CONTENT* then reads that silence as appro
 
 **And an option that cannot be picked is worse than no option.** My export-timeout question offered *"kill
 and resubmit now"*. Geni has no cancel — `docs/export-seed-rules.md` only ever said one-at-a-time,
-and I extrapolated a stop button that does not exist. Her reply: *"you think you can kill a geni
+and I extrapolated a stop button that does not exist. The reply: *"you think you can kill a geni
 export read the fucking docs you can't."* The no-cancel fact is now in that file, so the same
 fiction cannot be offered twice. The ruling on the export itself: keep the four hours.
 
@@ -18770,7 +18770,7 @@ whether that was misleading. It was, by that sentence.
 **Why the fourth needed a hand-written file** — not sequencing, which is what it looks like.
 `LAST P22 Q19061035` would have worked inside her batch; Guttorm has existed for years. The builder
 only emits a link when the far end is in `have`, and `have` is the ledger. Guttorm carries `P2600`
-`6000000001200156499` on Wikidata but is not in her ledger, so the pipeline never knew it could
+`6000000001200156499` on Wikidata but is not in the ledger, so the pipeline never knew it could
 point at him. Widening `have` to anyone with a known `P2600` is the general fix and is queued, not
 taken here.
 
@@ -18893,7 +18893,7 @@ the case the gate was built for.
 
 So it is **not** a leak through the new Charlemagne connection. Charlemagne `Q3044` is not in her
 ledger, so he is not in the `universe`, and the walk only traverses edges whose **both** ends are
-her items -- he is a wall, not a bridge. None of the three Buyeo people is in the subgraph today.
+those items -- he is a wall, not a bridge. None of the three Buyeo people is in the subgraph today.
 
 **The kluge, and it is labelled one.** Ruled 2026-08-29: *"it blocks all three of those people
 from being considered part of the universe until, let's say, October."* `KLUGE_UNIVERSE_BLOCK`
@@ -18937,7 +18937,7 @@ labelling proceeds as planned. Verified after the change: block 181 people, subg
 **Identifying the right set mattered.** "Clan individuals" could have been read as
 `NEVER_TOUCH_GENI`'s Kitajima/Kitashima family. It is not: `CJK_CLAN_BLOCK` holds 178 real
 people labelled *"woman of the Li clan, from Longxi Didao"*, and they are the ones whose
-*labelling* is scheduled for September -- which is the half of her sentence that picks the set.
+*labelling* is scheduled for September -- which is the half of the sentence that picks the set.
 
 ## 2026-08-29 — the Kitajima family joins the kluge. 201 people blocked
 
@@ -18982,7 +18982,7 @@ the Kitajima people would be reached through -- which is precisely the reachabil
 
 The first three are also the entire content of `exports/post-merge/wikidata-qid-links.ged`.
 
-Verified: **205 blocked**, her item excluded, subgraph **316** (unchanged), 0 blocked people
+Verified: **205 blocked**, the item excluded, subgraph **316** (unchanged), 0 blocked people
 inside it, roots intact. None of the five is in the ledger, so this is prophylactic rather than
 corrective -- which is what was asked for.
 
@@ -19510,7 +19510,7 @@ otherwise they do not, because I'm just too sceptical of the clan names."* `CLAN
 everyone else's `ja`/`zh` was finished. `_cap_label_edits` draws three sources against one budget
 of 15 **in priority order**: corrections, then the clan block, then everybody else. So the clan
 people were served *ahead* of ordinary ones every run. Moving label edits to the front of the file
-was cosmetic and was her request; the cap of 15 was her request; **the ordering among sources was
+was cosmetic and was the request; the cap of 15 was the request; **the ordering among sources was
 neither — it was mine and unstated.**
 
 **Then her real worry, which the data confirms.** *"there might be instances where the Geni has an
@@ -19928,7 +19928,7 @@ committed unrun. Analysis only, per the item: the existence check is unchanged.
 
 ## 2026-08-30 — we had 823,907 name items on disk and were resolving against 132,569 of them
 
-Her question on Tunheim: *"So did we have that name item downloaded and just decided not to use
+The question on Tunheim: *"So did we have that name item downloaded and just decided not to use
 it because nobody in our store pointed to it?"* Yes.
 
 `Q36927172` *Tunheim* is in `wikidata/items/items-01552.jsonl.gz` with `P31 Q101352` *family
@@ -19968,7 +19968,7 @@ doubling**: `Falck` ファルクク, `Munck` ムンクク, `Rudbeck` ルドベ�
 onset position it invented a syllable, `Sacken` → サクケン.
 
 `ck` now normalises to `k` before the walk, the way `aa` already normalises to `å`. That gives
-her correction exactly, `Mørck` → `モルク` / `莫尔克`, and fixes onset and coda in one place.
+the correction exactly, `Mørck` → `モルク` / `莫尔克`, and fixes onset and coda in one place.
 
 **The system half is that a rule fix must reach what the rule already wrote.**
 `extend-transliterations.py` only ADDS — *"the hand table always wins, every existing row is
@@ -19982,7 +19982,7 @@ note means a person checked the reading and is untouched. This run: **4,017 rows
 hand-checked and untouched, 47 re-derived, 0 unreadable.** The engine's score against the table
 is unchanged at 86% ja / 75% zh, which is the point — both sides moved together.
 
-`tests/test_join_sanity.py` pins her correction in both positions and fails if the doubling
+`tests/test_join_sanity.py` pins the correction in both positions and fails if the doubling
 returns to any row.
 
 ## 2026-08-30 — 2,785 people carry their spouse's name and have no parents of their own
@@ -20311,7 +20311,7 @@ every difference is a Geni artefact: `(1745–1800)`, `(jurist)`, `Erik Benzeliu
 against `the Younger`, `Gustaf von Essen (1803–1874)`. All of it was being transliterated.
 
 **The check that it worked:** our `ja` from the Wikidata label is now
-`カール・フレドリク・パイパー`, identical to her correction, so no `ja` edit is emitted for him at
+`カール・フレドリク・パイパー`, identical to the correction, so no `ja` edit is emitted for him at
 all. `P1810` is untouched and still carries the Geni string verbatim, including `3 barn?`.
 
 **The territorial rule I wrote first survives, scoped to creations only**, where no item label
@@ -20476,7 +20476,7 @@ every token"*. The engine renders all six. They are in the table now, attested-f
 precedence: `Randolph` `ランドルフ` (28 items) and `Paulus` `パウルス` (8) came from the corpus,
 the other four by rule. Both Borsheims now generate normally instead of being held.
 
-The three the subgraph cannot reach were appended by hand at her request: Sophia with
+The three the subgraph cannot reach were appended by hand on request: Sophia with
 `P25` → `Q141224204` and its reciprocal, Signe with labels and identity only (her mother, father
 and husband are all uncreated or created in this same run), and Richard with `P26` → Helen and
 `P40` → the account owner, both reciprocated.
@@ -20524,7 +20524,7 @@ would have discarded her creations, and its `index = {}` a few lines later wiped
 
 ## 2026-08-30 — the component's shape: the account owner is a degree-1 leaf 16 hops from the centre
 
-Her question: does the cluster read as a regional genealogy somebody built, or as a construction
+The question: does the cluster read as a regional genealogy somebody built, or as a construction
 pointed at one person? Measured live by walking `P22`/`P25`/`P26`/`P40`/`P3373` from
 `Q11959067`.
 
@@ -20997,7 +20997,7 @@ placeholder carrying `Q135579463`; `…134824` was added by **Isao Takaoka** in 
 manages it — b.1437, d.1483, father of `Joan Bingo-nyudo Takaoka`. Same name, same father
 `Shigeyori Takaoka`, so it is a genuine duplicate. But merging across managers puts a request in
 front of another editor, and `CLAUDE.md` § *Duplication is a DOUBLE-EDGED SWORD* is precisely
-about how many times one observer sees us. That is her call, and it governs most of the 40 CJK
+about how many times one observer sees us. That is a ruling, and it governs most of the 40 CJK
 groups too, so it is worth settling once rather than per group.
 
 **Also fixed: `reports/geni-merge-worklist.md` opened by declaring the merges are made by hand and
@@ -21020,7 +21020,7 @@ my own with the quickstatements session."*
 `scripts/build-merges-to-do.py` builds it. Five sections, and they are deliberately not one list
 because they are not one kind of work.
 
-**16 Wikidata duplicates in her ledger — one Geni id carried by two items.** This is the mirror
+**16 Wikidata duplicates in the ledger — one Geni id carried by two items.** This is the mirror
 image of the case `CLAUDE.md` § *A second Geni ID on one Wikidata item is NOT a conflict* tells
 us to leave alone: two ids on one item is Geni's structure showing through, one id on two items
 is our own double-creation. 15 of the 16 are near-consecutive Q numbers in the `Q1412257xx` run,
@@ -21134,7 +21134,7 @@ first line — for every such token in every batch. It built `father_of` and use
 father's *QID* alone, and never passed `father_name=` to `statements_for` either, whose own
 comment says that argument *"is what turns a `-sen` token into the right kind of statement."*
 
-Her diagnosis was right to the word: *"the father test either did not run or did not decide."*
+The diagnosis was right to the word: *"the father test either did not run or did not decide."*
 It did not run.
 
 **Verified against her three named cases.** `Christian Frederik Bergersen` and
@@ -21176,7 +21176,7 @@ have a `GIVN` that is a stillbirth description.
 
 `DESCRIPTION_MARKERS` is deliberately stronger than `UNKNOWN_MARKERS`: a marker suppresses its own
 token, a description suppresses the **whole** given-name field, because `En`, `son`, `barn` and
-`gossebarn` are the rest of one phrase. Her sentence is the authority — *"does not in fact have
+`gossebarn` are the rest of one phrase. The sentence is the authority — *"does not in fact have
 any names at all."* The surname is untouched, so `Bielke` still becomes `P734`.
 
 ### Two things deliberately not done
@@ -21425,7 +21425,7 @@ for.
 
 **`What is actually left in entity_resolution.md` is a finished measurement.** Its own conclusion
 is that the residue is three `P2600` statements which are *"deliberate rather than pending"* —
-they belong to her dictated item 11, whose method is a bio link plus a `Forest` export per person,
+they belong to the dictated item 11, whose method is a bio link plus a `Forest` export per person,
 not a `P2600` written from here. A section whose content is a completed analysis and whose
 remainder is routed elsewhere is a record, and records live here.
 
@@ -21485,7 +21485,7 @@ shards, so the walk that discovers relatives has covered **under 1% of the store
 queue is empty because the scan has produced no new work, not because there is none — and the
 "scanned N items, discovered 0" lines I quoted were re-walking the same opening shards.
 
-**So her question is still open**, and the honest form of it: the scan must run over the
+**So the question is still open**, and the honest form of it: the scan must run over the
 remaining 99%, each pass queueing items whose own relatives then extend it. Whether that
 converges is exactly the question asked and it is not yet answered. The item budgets 3-8 hours and
 says to run the existing tooling and then decide, which is now the next step.
@@ -21520,7 +21520,7 @@ went from **shard 21** to the end of **2,249**, and the store went **2,248,462 �
 
 So the walk that had been reporting itself closed since this morning had **5,625 items** left to
 find, and they were where the shard analysis said they would be. Nothing was rebuilt to get
-there — it is the existing downloader with a bigger scan slice, which her item requires:
+there — it is the existing downloader with a bigger scan slice, which the item requires:
 *"Whatever the fuck you do, do not build the new tooling."*
 
 Re-measuring `scripts/measure-store-parent-coverage.py` now; the 34,151 figure is the test of
@@ -21539,7 +21539,7 @@ analysis suggested were waiting in shards 1200-1600, and the reason is the thing
 question interesting rather than arithmetic: **a fetched item names parents of its own.** Closing
 a gap opens new ones, so the population is a moving target, not a fixed backlog being drained.
 
-**Which is exactly her question** — *"come up with some level of estimation of how long it'll
+**Which is exactly the question** — *"come up with some level of estimation of how long it'll
 take… If it turns out that the amount doesn't seem like there's a clear end point, then we move
 on"* — and it cannot be answered from one pass. One pass gives a net delta; two give a decay
 rate. A second full walk is running, and the number that matters is whether the second delta is
@@ -21564,7 +21564,7 @@ The complete walk finished and it supersedes everything I said about this today:
 **The frontier was never closed.** A full walk of the store finds ~90,000 people Wikidata has and
 we do not — 4% of the store.
 
-**Her question is answered: there is a clear end point, and it is roughly a day of fetching**,
+**The question is answered: there is a clear end point, and it is roughly a day of fetching**,
 against a stated budget of 3-8 hours. It is resumable, unattended and polite (nothing throttled
 across 606 requests), so the sensible shape is to leave it draining rather than to sit with it.
 One pass will not settle it — fetched items name relatives of their own — so the decay rate needs
@@ -22085,7 +22085,7 @@ already exist, in one batch.
 **One test is red and it is the artifact, not the code.**
 `test_no_existing_item_is_left_without_a_parent_link_it_should_have` reads
 `reports/wikidata-garborg-day.qs` on disk, and that file is currently the spine-roster run I made
-before reading her item — 0 creations, so no `LAST P22` anywhere. It needs a regenerated batch,
+before reading the item — 0 creations, so no `LAST P22` anywhere. It needs a regenerated batch,
 which is the next step and not a loosening.
 
 ## 2026-08-31 — batch rebuilt on a refreshed ledger, with the new spine rule live
@@ -22442,7 +22442,7 @@ is any `.ged` newer than `out/merged.ged`?
 
 ## 2026-08-31 — the spine gap: 14 of 18, and the last 4 are one consecutive run
 
-**Measured from the files, per her item, not from the run's own log** — and the log was wrong in
+**Measured from the files, per the item, not from the run's own log** — and the log was wrong in
 a way worth recording. Step 1 printed **seven** spine steps; only **three** are creations in
 `reports/wikidata-garborg-day.qs`. The other four were picked by the no-front rule and then
 blocked downstream, so a reader of the log would think the spine advanced twice as far as it did.
@@ -22474,7 +22474,7 @@ and `SPINE_ANCHORS`. Using one is how § *CHECK before you alarm her* gets broke
 
 ## 2026-08-31 — "why does it appear absent": it never was. 22 merges, 0 disagreements
 
-Her question about the ledger warnings, answered by resolving them rather than reasoning about
+The question about the ledger warnings, answered by resolving them rather than reasoning about
 them. All nine pairs I had flagged, and thirteen more, resolve the same way live:
 
     6000000014196858070   ledger Q141225804 live | live Q141225805 -> Q141225804
@@ -22584,12 +22584,12 @@ stays and is not weakened — that rule is untouched — but its pass count stop
 evidence that a change is right. What replaces it is her own standard, § *"Analyse this" means
 build a CSV*: how many rows change, which, and named people to eyeball.
 
-The dependency runs to the queue's CI/CD item, which sits at the tail by her placement. Noted,
+The dependency runs to the queue's CI/CD item, which sits at the tail by placement. Noted,
 not promoted.
 
 ## 2026-08-31 — the patronymic father test made load-bearing, and the matcher rebuilt to suit
 
-**Her diagnosis, and it was better than mine:** *"there's a consistent pattern where I give
+**The diagnosis, and it was better than mine:** *"there's a consistent pattern where I give
 complex instructions with many logical conditionals such as the patronymic one and you just kinda
 implement it halfway."* Not a testing problem. The half I drop is always the half that does not
 decide whether the thing **runs** — the batch still generates, the classifier still returns a
@@ -22820,7 +22820,7 @@ seven specification sections.
 
 ## 2026-08-31 — the per-person half, run; and an unbounded fetch that was caught
 
-`scripts/resolve-patronymics.py` runs the half of her design that follows the name items: the
+`scripts/resolve-patronymics.py` runs the half of the design that follows the name items: the
 parent's `P735` item against the patronymic item's `P144` values, no string comparison anywhere.
 It writes no QuickStatements.
 
@@ -22838,7 +22838,7 @@ pipeline so far.
 
 **The "ambiguity" was not one.** I found that `Johansson` listed `Johannes`/`Johann` but not
 `Johan`, `Carlsson` not `Carl`, `Olofsdotter` not `Olof` -- the commonest source missing every
-time, because two items share the label -- and put it to her as an `AskUserQuestion`. Her reply:
+time, because two items share the label -- and put it to her as an `AskUserQuestion`. The reply:
 *"What? What's the language of work we're even using lol"*, then *"I cannot even imagine a case
 where this is a real issue."* Looked up rather than assumed, the pairs are separated by **sex** and
 **script**:
@@ -22961,7 +22961,7 @@ else apart. `Lars`/`Laurentius` and `Ola`/`Olaus` are the same shape. That needs
 Scandinavian given-name forms, built by reading Latinate fathers against vernacular patronymics in
 our own corpus rather than invented.
 
-## 2026-08-31 — all patronymic modelling to the tail, her call
+## 2026-08-31 — all patronymic modelling to the tail, a ruling
 
 The instruction: *"just skip it please I'm trying to get through the queue, all pstronymic modelling is at
 the end now."*
@@ -23180,7 +23180,7 @@ This is the third stale statement the sweep has caught today, after `patronymic-
 30,171 and the 546/4,340 figures. All three were mine and all three stayed plausible after the
 thing they described had changed.
 
-## 2026-08-31 — the succession and regnal roster, to her spec
+## 2026-08-31 — the succession and regnal roster, to the spec
 
 Her spec: *"just agentically write the stuff into csv files with the geni id, qid if applicable,
 regnal number if applicable, and number in office, and whether they are Izumo, Senge, Kitajima, or
@@ -23272,7 +23272,7 @@ and I guessed three wrong before asking which:
   `samaritans/wikidata.txt` complains about — *"it doesn't even say who is the Samaritan high
   priest... they're not very well documented"* — so the office property cannot enumerate the
   office.
-- **`samaritans/wikidata.txt`** is her dictation about the work, not a list.
+- **`samaritans/wikidata.txt`** is the dictation about the work, not a list.
 - **`samaritans/The Samaritan Update.html`** covers the modern line only, 20 priests.
 
 Asking rather than guessing a fourth time was the right call and § *Do not grab the first artifact
@@ -23460,7 +23460,7 @@ analysis of how the synoptic tree is actually made"*), not a specification of ho
 and the analysis now exists as `docs/synoptic-correspondence.md` with nothing lost. Recording the
 disagreement rather than letting it pass unnoticed.
 
-## 2026-08-31 — `pykakasi` testing queued at the tail, her call
+## 2026-08-31 — `pykakasi` testing queued at the tail, a ruling
 
 The reaction on seeing it installed was qualified rather than a yes: *"I can say for a fact
 that that library sucks for converting Kanji to Hiragana... I'm gonna guess it's probably easier
@@ -23493,7 +23493,7 @@ clear."*
 So the item is retitled and softened. It was written as *test before trusting*, which read as a
 gate; her position is that a fallback is fine and the testing is due diligence. A fallback fires
 only on tokens nothing else renders — a small tail by construction — and a wrong katakana form
-there sits inside her standing rule that *"incorrect romanization or incorrect representations in
+there sits inside the standing rule that *"incorrect romanization or incorrect representations in
 katakana are totally acceptable"*.
 
 **What is actually being asked for is that the scepticism be recorded**, so the next person to find
@@ -23582,7 +23582,7 @@ steps.
 
 **Also cut back: § *Labels in seven languages*.** Its stated blocker was
 `wikidata-placeholder-labels.json` having `ja`/`zh` on none; that is now 22,614 of 32,129 and the
-remainder is queued at the tail. What stays is the rest of her order — `hi`, `ar`, `ru`, `el` not
+remainder is queued at the tail. What stays is the rest of the set order — `hi`, `ar`, `ru`, `el` not
 started, and the `en`/`mul` passes over the whole corpus rather than the placeholders alone.
 
 ## 2026-08-31 — the deck is the 47, and the 9,061 was a mislabel of mine
@@ -23697,7 +23697,7 @@ case where the letter-by-letter walk produced something that is not a word:
 - `Johannes` → `Ёханнес`, which nobody writes — `ё` carries the glide only inside a word, so
   word-initial `jo` is `йо`. It needs position, which a digraph table has no notion of.
 - `Maria` → `مرا` in Arabic. The vowel-dropping rule had eaten the name rather than its short
-  vowels, which is the line her standard actually draws: *"incorrect representations ... are
+  vowels, which is the line the standard actually draws: *"incorrect representations ... are
   totally acceptable. An incorrect name is not."*
 - `Maria` → `मरिअ` in Devanagari, with a bare independent `अ` stranded after a matra. `ia` is
   `i` plus the `ya` glide: `मारिया`.
@@ -23853,7 +23853,7 @@ the file is half the job"* — and this was a reader nobody triaged.
 `reports/synoptic-correspondence.tsv`.** They are hand-made, from identities somebody *"put a lot of
 effort into creating identification with"*, and no automated source reaches them — which is
 precisely why they lived in a hand-written file. So they are a constant in the script now, which
-is what `queue.md` already said: *"widening this beyond the three is her call and is one
+is what `queue.md` already said: *"widening this beyond the three is a ruling and is one
 constant."*
 
 **The item's third check passes.** It wanted *"regenerating and re-merging changes nothing"*, and
@@ -24260,7 +24260,7 @@ real tab, `\n` as a newline inside an f-string, and a duplicated line from a hal
 Every one was in a `<<'PY'` heredoc that is supposed to pass text through unchanged. The reliable
 route is the editing tools, or building the escape with `chr(92)`.
 
-## 2026-09-01 — the night's work, against her rulings
+## 2026-09-01 — the night's work, against the rulings
 
 The whole queue was interviewed through before sleeping and every item ruled on. What follows is
 what those rulings turned into.
@@ -24289,7 +24289,7 @@ measurement. Three moved to the tail. The queue is doing what it should: getting
 **`<private> Garborg` was being emitted as a label** — for 14,449 people, twelve of whom already
 had items, several of them hers. `derive-labels.py` took `clean(display_name)` and never called
 `labels.label_for`, which `CLAUDE.md` calls the single place that decides this. Checked before
-claiming damage: no batch on disk emits one, so nothing would overwrite her item today. Fixing it
+claiming damage: no batch on disk emits one, so nothing would overwrite the item today. Fixing it
 took the `en` batch from 25,930 edits to **104,856**, because those people reach the
 relationship-label path for the first time.
 
@@ -24374,7 +24374,7 @@ strictly ordered, each the precondition for the next. All four verified rather t
 1. **Shrink what CI checks out** — `filter: blob:none` plus a non-cone sparse checkout in
    `ci.yml`, five patterns, measured at 13.3 GB tracked against ~14 GB of runner disk.
 2. **Anonymise** — done to *her* definition of 2026-09-01, which replaced the
-   96,000-private-rows reading: cut the strategy content and the code that treats her item as
+   96,000-private-rows reading: cut the strategy content and the code that treats the item as
    special. A repo-wide grep for that vocabulary across every `.md`, `.py` and `.yml` returns
    **nothing**.
 3. **Make the repo public** — `gh repo view` reports `PUBLIC`.
@@ -24506,7 +24506,7 @@ properly, that framing was wrong, and the breakdown of the 57,179 says so:
      9,580  census finds a relative, batch emits nothing
      1,539  outside the placeholder population entirely (935 CJK-named)
 
-**The 35,565 are not a gap at all.** Her model puts the marker in `mul` and a *description* in the
+**The 35,565 are not a gap at all.** The model puts the marker in `mul` and a *description* in the
 local languages; a description needs a named relative and they have none. `NN Larsson` with no
 `en` is the algorithm working, not failing.
 
@@ -24551,7 +24551,7 @@ Same treatment the SMTP section got an hour earlier, for the same reason.
 **No section deleted; one cut back.** § *HER RULINGS, 2026-09-01* carried a 20-row *"To do, in her
 words"* table, and **18 of the 20 are finished**. Left whole it reads as twenty outstanding jobs,
 which is exactly what was objected to on 2026-08-30 — a queue that keeps completed work as steps
-becomes unreadable. Her rulings themselves are untouched: the definitional ones (what
+becomes unreadable. The rulings themselves are untouched: the definitional ones (what
 anonymisation means, the deleted and moved lists, the export-loop finding) stay in full.
 
 **Each removed row was verified by artifact, not by memory** — `name-form-pairs.tsv`,
@@ -24563,7 +24563,7 @@ batch is one file of 31 `CREATE` blocks with the name items first.
 
 **The two rows kept** are the ones still live: the `en` shortfall, which turned out to need in-law
 relation words that have never been sanctioned and is therefore a decision rather than arithmetic; and
-`exports/post-merge/`, where the grading says 408 of 412 are real deletions and her standing
+`exports/post-merge/`, where the grading says 408 of 412 are real deletions and the standing
 ruling is to leave them and keep measuring.
 
 **Nothing else was dead.** The CI slow-lane item is mid-measurement — run `33524955243` has the
@@ -24642,7 +24642,7 @@ now names every generator that failed, so a persistent failure is loud rather th
 
 ## 2026-09-01 — her three rulings, executed
 
-**CI.** `test_density.py` and `test_paths.py` are out of the workflow, her call. A hosted runner
+**CI.** `test_density.py` and `test_paths.py` are out of the workflow, a ruling. A hosted runner
 has 16 GB and `test_density` pins it at 15.9 GB with 33 MB free for ten minutes before being
 reclaimed; both pass here in 35m44 because this machine has 31 GB. The comment in `ci.yml` carries
 the numbers and the local command.
@@ -24909,7 +24909,7 @@ sitting, `localStorage` keeps the reader's place, and a cap silently hides work.
 `36bcbcc7` and § *SORTING MUST BE DETERMINISTIC* for the whole story. Nothing was attached from
 that run.
 
-**Second attempt, clean.** Ledger refreshed from her contributions: **1,096 → 1,158 rows**.
+**Second attempt, clean.** Ledger refreshed from the account's contributions: **1,096 → 1,158 rows**.
 Order as specified — 0a ledger, 0b live values, 0c model-vs-reality, 0d token funnel, then
 **individuals → names → relationships**, relationships being the second section of the day file
 because two items created in the same run cannot point at each other.
@@ -25032,7 +25032,7 @@ done and the evidence is on disk, not in memory:
 
 **Nothing governing was lost, which is the only reason deleting is safe.** Two rulings lived
 *only* in that section, so they are now in `CLAUDE.md` as § *The label gate, and the order*: the gate itself — *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
-EVERYTHING"* — and her ordering, *"create the relatives first, then label"*, with the reason it is
+EVERYTHING"* — and the ordering, *"create the relatives first, then label"*, with the reason it is
 not the obvious order. The culture problem, the three directions, and the name-items-first argument
 went with them.
 
@@ -25063,7 +25063,7 @@ Pointers, the `exports/post-merge` tail note. And *Always last*, which carries t
 copy.
 
 **The split is now clean and is the one that was always implied:** `CLAUDE.md` is the authority —
-her rules, her algorithms, the records of what was decided. `queue.md` is work that can be finished
+the rules, her algorithms, the records of what was decided. `queue.md` is work that can be finished
 and deleted. A specification cannot be finished, so it was never a queue item.
 
 **`queue.md` goes 1,006 lines and 24 sections → 631 lines and 12 items.**
@@ -25121,7 +25121,7 @@ records and a GEDCOM is never edited.
 **The pairing is TRUE, which is what makes it a good example.** `6000000001846508982` really is
 Jingū-kōgō (Okinagatarashi-hime) on Geni and `Q232803` really is 神功皇后 — 38 sitelinks, no
 `P2600`. Her *"it was a joke replacing my qid with hers"* explains why `Q232803` was recorded as
-her item throughout; the examples now assert something correct instead of standing in for her.
+the item throughout; the examples now assert something correct instead of standing in for her.
 
 **Two `CLAUDE.md` sections were deleted rather than renamed** — § *The owner's own duplicates are
 DELIBERATE* and § *The owner IS on the traversable graph*. Both exist only to discuss one item's
@@ -25325,7 +25325,7 @@ rather than being asserted.
 
 **§ *Then: make CI/CD run and generate the NEXT batch* is cut back, not deleted.** Its stated
 deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
-with the issue opened"* — is met and proven. What survives is the other two thirds of her sentence,
+with the issue opened"* — is met and proven. What survives is the other two thirds of the sentence,
 *"the archive (committed) and the pages"*, each of which waits on its own item above; when those
 jobs exist the check is that **one** dispatch produces all three, since the words are singular.
 
@@ -25484,7 +25484,7 @@ Pomerania` → `Anna Duchess of Pomerania`, `Jens NN Skeel` → `Jens Skeel`, `I
 → `Inger til Holmstrup`. Far fewer than the 1,568 rows in the report, and that is right — 867 of
 those are Wikidata-side labels this file does not touch, and the rest collapse by person.
 
-**Two things the function refuses, both on her rules:**
+**Two things the function refuses, both on the rules:**
 
 * **A HEAD marker is never touched.** `nn Gunnarsdatter Frafjord` is population one — the marker
   leads a real surname and becomes `mul: NN Gunnarsdatter` — which decides what the person is
@@ -25712,7 +25712,7 @@ CJK-named people: 13,171 romanised from Wikidata name items, 2,675 already had a
 The unknowns are 23,360 with no Latin form anywhere, 1,284 with no culture verdict, and 664 held
 because a Mandarin reading would be a wrong name. Nothing is blocked on them.
 
-Next in her order is `mul`, *"almost always derived from en"*.
+Next in the set order is `mul`, *"almost always derived from en"*.
 
 ## 2026-09-02 — dead-queue sweep: two completed sections removed (17 → 15)
 
@@ -25776,7 +25776,7 @@ the 156,738 unlabelled people meant nothing. The raw GEDCOM name lives in `displ
 
 Still unknown and rostered: 33,982 with a name nothing derived a label from, overwhelmingly CJK
 and Hangul outside the `en` step's reach; 22,010 with no `NAME` record; 94,845 redacted and
-correctly empty. Next in her order is `ja`.
+correctly empty. Next in the set order is `ja`.
 
 ## 2026-09-02 — the `ja` step; katakana was the answer all along
 
@@ -26034,7 +26034,7 @@ Sections 6 → 6; both cuts were **inside** sections.
 - **§ *Then: one dispatch* — the ledger-archive half of its dependency.** It waited on a section
   that has since been deleted as already-implemented, 2026-09-02: *"Lmao you cunt it fetches
   every time the ledger from pages I edited"*. `build-daily-batch.py` STEP 0b runs
-  `full_entities` over the ledger and the pipeline refreshes it from her contributions every run.
+  `full_entities` over the ledger and the pipeline refreshes it from the account's contributions every run.
   The section now waits on the Pages site alone, which is the one job genuinely still missing.
 
 **Checked and NOT dead:** the katakana fetch (862,329 partials still waiting on it); the Pages
@@ -26148,7 +26148,7 @@ would create them again.
 
 The row is rewritten rather than dropped, so nothing is lost and the move is auditable.
 
-## 2026-09-02 — correcting the redirect framing: her item is ALWAYS the one merged away
+## 2026-09-02 — correcting the redirect framing: the item is ALWAYS the one merged away
 
 On the two redirect checks being described as opposite directions of one problem:
 *"it is almost 100% ubiquitous that my item i created or edited is gonna be the one redirected
@@ -26287,7 +26287,7 @@ gone — but `test_no_source_file_links_a_repository` then failed on
 repositories to anyone reading the code. Removed; no source file links a repository now.
 
 **Two CI failures in a row, both mine, both from the same commit-and-move-on pattern** — the
-spine removal left dead generators, and the Pages site shipped a link her rules forbid. Neither
+spine removal left dead generators, and the Pages site shipped a link the rules forbid. Neither
 was findable here, which is the argument for the CI-only rule rather than against it.
 
 ## 2026-09-02 — the QuickStatements go ON the Pages site, not into a zip
@@ -26314,7 +26314,7 @@ The instruction: *"last item of the queue is shutting down the computer (only ap
 I don't care about any side effects do not deliberately not do it, do it no matter what because
 this is ending a session."*
 
-Everything above it was finished first, in her order — queue order is sacred:
+Everything above it was finished first, in the set order — queue order is sacred:
 
 - `exports/post-merge/` closed at 27 of 27
 - the `en`, `mul` and `ja` label steps, 267,976 Japanese labels
@@ -26370,7 +26370,7 @@ steps, writes `reports/isolate-path-pilot-results.tsv` with per-type hit columns
 reproduces `paths/isolate-geni-ada-yonath-livshitz.tsv` exactly — 59 parsed against 59
 committed, same first and last person. But no bare `/path/` page has been fetched: Geni is
 not reachable from this session (the egress proxy refuses it), and the path is computed from
-her logged-in profile anyway. A harvest run reporting 0 steps on every page means the markup
+the logged-in profile anyway. A harvest run reporting 0 steps on every page means the markup
 differs, not that nothing is connected.
 
 Not run: no Geni request was made. `geni-paths/README.md` carries the method and the rate rule.
@@ -26382,7 +26382,7 @@ people onto."*
 
 That is a different measurement from the one `harvest-isolate-paths.py` was built to take. It
 counted targets **reached** — a target the blood and inlaw paths both connect scored 1 either
-way, so the second chain was worth zero to the report. Under her reasoning the second chain is
+way, so the second chain was worth zero to the report. Under the reasoning the second chain is
 the point: it runs through different people, and each of those is another place to hang a
 creation on.
 
@@ -26431,7 +26431,7 @@ generally are connected"* — in an odd cluster rather than off the graph.
 
 ## 2026-09-03 — does the path vocabulary discriminate half-siblings and ex-spouses?
 
-Her question. Measured over **30,329 relation steps in 696 path files**, 38 distinct words.
+The question. Measured over **30,329 relation steps in 696 path files**, 38 distinct words.
 
 **Ex-spouses: yes, explicitly.** `her ex-husband` 52, `his ex-wife` 42, `her ex-partner` 42,
 `his ex-partner` 28 — against `her husband` 934, `his wife` 908, `her partner` 22, `his partner`
@@ -26626,7 +26626,7 @@ Wikidata has an item for 少昊 is a question our store cannot answer.
 Verified: 8 roster rows, roots still 253 today, `active_entry_points('2027-01-01')` returns
 Ettinger and Martin only, and all six Chinese rows report as both PENDING and UNRESOLVED.
 
-**And her correction to the eccentricity reading, which qualifies the whole report.** On Ettinger:
+**And the correction to the eccentricity reading, which qualifies the whole report.** On Ettinger:
 *"I only recently added him, basically."* Measured over the 602 exports in the corpus — **Ettinger
 appears in 4, Shaohao in 1**. A person one export reached sits wherever that export left them, so
 a high score can mean we have not sampled there yet rather than that the person is structurally
@@ -27380,7 +27380,7 @@ ledger items only, and none of the 161 is in the ledger, so its silence about th
 asked*, not *not held*. That is § *CHECK before you alarm her* — the check that would falsify
 the claim had to be the live one.
 
-The two blocks are now separate lists concatenated in her order — identifications, then name
+The two blocks are now separate lists concatenated in the set order — identifications, then name
 items, then the day's people — so neither can overwrite the other. `CLAUDE.md` § *Code that is
 WRITTEN but never CALLED is not done*, in its worst form: the code ran and only its output was
 dropped, so the log said the opposite of what the file held.
@@ -27414,7 +27414,7 @@ language-neutral one every other language falls back to; and § *The label gate*
 step two before step one — the same shape as the Geni-id-first correction in the same message.
 
 `Amul` rides with it, because the outgoing label is preserved as an alias on the line above the
-`Lmul` that replaces it and some of those are her hand-edits. They are in that order, so the
+`Lmul` that replaces it and some of those are the hand edits. They are in that order, so the
 alias claims its slot first; a budget that runs out between them leaves the alias added and the
 label unchanged, which is harmless and repeats next run.
 
@@ -27601,7 +27601,7 @@ not be used"***. `d.y.` and `den yngre` are Swedish, `nuorempi` is Finnish; none
 language-neutral label or an English one.
 
 **`mul` takes the numeral because `mul` is language-neutral** — the junior is the SECOND of the
-name, so `Jr.` is `II` and `Sr.` is `I`. Her sentence listed the numerals and the abbreviations in
+name, so `Jr.` is `II` and `Sr.` is `I`. The sentence listed the numerals and the abbreviations in
 opposite order; the worked example settles it.
 
 **And it makes the CJK labels fall out for free.** `mul` reading `II` goes through
@@ -27649,7 +27649,7 @@ differ every run and the diff would be noise — § *SORTING MUST BE DETERMINIST
 example is 36,901 changed lines over zero content change. Checked: two different input orders
 produce byte-identical files, and qualifiers survive the roundtrip.
 
-## 2026-09-04 — the label cap goes out in her language order
+## 2026-09-04 — the label cap goes out in the language order
 
 **Asked what order the added languages should be in:**
 
@@ -27675,7 +27675,7 @@ missing"*.
 
 **The `Amul` that preserves an outgoing `mul` label stays immediately above the `Lmul` that
 replaces it**, because both are in the `mul` tier and a tier keeps the order its lines were
-emitted in. Some of those aliases are her hand-edits and nothing else records them, so separating
+emitted in. Some of those aliases are the hand edits and nothing else records them, so separating
 them would lose work. Checked against `_cap_label_edits` with four edits in each of eleven
 languages in scrambled order: the 15 came out `en` ×5, `mul` ×6 with the alias directly above its
 label, `ja` ×4, and relationships passed through uncapped.
@@ -27698,14 +27698,14 @@ effect based off of live prioritization of different things"*, and the failure m
 before I could reach it — *"Lemme guess safety thing you made up"*. **No fairness pass, no age
 bonus, no oldest-first sweep.**
 
-**This also corrects how I read her language order.** With every edit for a person going out
+**This also corrects how I read the language order.** With every edit for a person going out
 together, `en / mul / ja / zh / ko / supported / rest` is a **layout within the person**, not a
 priority between people. I had implemented it as a priority, which was right only while the cap
 counted lines.
 
 Checked against `_cap_label_edits` with 20 people, five scrambled languages each, plus
 relationship lines: 15 people came out, descending numerically (`Q141283790` … `Q13`), each
-person's edits contiguous, languages in her order within each, the `Amul` still directly above its
+person's edits contiguous, languages in the set order within each, the `Amul` still directly above its
 `Lmul`, relationships passed through uncapped, and 25 edits across 5 more people held.
 
 Batches get bigger as a result — the test run emitted 77 label lines where the old cap emitted 15.
@@ -27776,7 +27776,7 @@ you constantly come back to it all the time for seemingly unrelated tasks? … s
 completely scrubbed from all the docs because the only way I can remotely see you mentioning it so
 often is if the docs say it serves some kind of purpose"*.
 
-**Her diagnosis was exactly right and the culprit was one paragraph.** `CLAUDE.md` carried a live
+**The diagnosis was exactly right and the culprit was one paragraph.** `CLAUDE.md` carried a live
 rule — *"is a scratchpad and must stay free-form"*, with instructions on parsing it and not
 reformatting it — for a file **deleted on 2026-08-29**. Every session read that as current, went
 looking, found it gone, and wrote a comment explaining the absence. There were **seven** such
@@ -27842,7 +27842,7 @@ thing they were all cases of.
 rendering comes out empty in any of the three languages, and — belt and braces, because
 `label_in` already consults them first — anything `ORDINAL_RE` or `INITIAL_RE` claims. Dotted
 abbreviations are left alone deliberately: `A.B.D` is somebody's recorded name token, an
-approximate reading of it is what her standard permits, and refusing costs a real person their
+approximate reading of it is what the standard permits, and refusing costs a real person their
 label.
 
 **And the loader now prefers a curated row over a minted one whatever the file order.** That is
@@ -28244,7 +28244,7 @@ So every item this generator has ever minted is inert — nothing can resolve a 
 and that is what *"it requires well developed patronymic objects we currently lack"* meant.
 
 The targets come from `reports/patronymic-items-to-create.tsv`, which already resolved them:
-**4,781 tokens of 6,752 have at least one**, made by the single string comparison her design
+**4,781 tokens of 6,752 have at least one**, made by the single string comparison the design
 allows — the token's stem against the given names of the fathers who actually bear it in our
 tree — with an ambiguous or item-less given name left out rather than guessed. Multi-valued,
 the ruling, so every attesting given-name item is emitted; `mattsson` carries twelve.
@@ -28348,7 +28348,7 @@ mother is the gender radio. Measured on the live dialog and closed unsaved.
 **Detection is exact, not inferred.** Ane Oline Jonsdatter Raugstad's block reads
 `husband, son, daughter, father` and no `mother` — she has a father and no mother, and a
 patronymic, so the algorithm checks the father first, finds him, falls through, and adds the
-mother. That is her ordering producing the right answer on a real person.
+mother. That is the ordering producing the right answer on a real person.
 
 **The naming was measured over 400,000 corpus names, not asserted** —
 `reports/seed-naming-sample.tsv`. 149,040 carry a patronymic (37.3%): norse 139,379, iberian
@@ -28459,7 +28459,7 @@ confirmed 29 times before that guard existed.
 `Al-Abbasi` 24, `Al-Muttalibi` 17 — the token is the father's given name plus `-i`, so the test
 passes on its own terms. In every sampled case the father IS the named man (`Al-Hasan`), and the
 same-token rule stops it the moment the father carries the nisba himself, which is the second
-generation onward. Left in, flagged here: it is her call whether a nisba should carry `P5056`.
+generation onward. Left in, flagged here: it is a ruling whether a nisba should carry `P5056`.
 
 **Both forms of one patronymic sit on one person and both go out.** *Zacharias Olai Plantin* has
 `Olofsson` in `SURN` and `Olai` in `_MARNM`; `classify_fields` now returns both as patronymics
@@ -28593,7 +28593,7 @@ Measured after regenerating: patronymic rows **1,677 -> 1,882**, plan 23,196 row
 assertion's own query returns **0 missing over 0 bearers**.
 
 **`parse-wikidata-interaction-log.py` tripped the edit-summary ban by reading one.** The script
-parses her contributions log and recorded the edit comment as `"summary": summary`, which
+parses the account's contributions log and recorded the edit comment as `"summary": summary`, which
 `test_no_descriptions_or_summaries.py` scans for because setting one is categorically forbidden
 — ruled 2026-08-30. A parser recording what Wikidata already said is not setting one, but the
 rule is not the thing to weaken for it: the column is now `comment`, which is MediaWiki's own
@@ -28643,7 +28643,7 @@ here is the set of failures that are **silent**:
 - **A manifest naming a file that is not there** makes Chrome refuse the *whole* extension, so a
   path typo is indistinguishable from it never having been loaded — which was a real question
   today that took reading Chrome's own `Preferences` to answer.
-- **Host patterns widening beyond Geni.** The collector runs in her logged-in browser, so its
+- **Host patterns widening beyond Geni.** The collector runs in the logged-in browser, so its
   match patterns are its entire blast radius.
 - **The pushpin being toggled.** *"You do not pin Charlemagne, it needs to be done exactly once
   and I did it."* The call is one line away in Geni's page API and re-anchors every later search
@@ -28665,7 +28665,7 @@ touching anything — that was the answer to a click I had been asking for repea
     state both_present · parents 2 · listed "Ole father of Kari | NN"
     enqueue [6000000227610585972, 6000000227315643833]      <- mother, then father
 
-Adds nothing and enqueues in her order. The walk is running in the extension rather than
+Adds nothing and enqueues in the set order. The walk is running in the extension rather than
 agentically, which is the whole point of building it.
 
 **Then the dry run showed it does not terminate, and a bound was set.** Both enqueued people are
@@ -28708,7 +28708,7 @@ That was done on the strength of `docs/export-seed-rules.md` tier 3; the ruling 
 ticked and a first name typed, `page_profile_names_en-US_last_name` stays empty — on typing, and
 on focus. Geni applies it server-side at creation. So the field is now left **blank on purpose**:
 writing anything into it suppresses the suggestion, which is the one thing that must not happen,
-and her rules run against what comes back rather than against a value inspected in the form.
+and the rules run against what comes back rather than against a value inspected in the form.
 
 `GC.seed.correctSurname` is those two rules, checked against her cases:
 
@@ -28724,7 +28724,7 @@ father of `Anders Olsen` names a family that does not exist.
 surname — presumably because the child's only surname is itself a patronymic. So the correction
 rules may fire rarely; that is a reading of one case, not a rate.
 
-Also recorded her reasoning for the queue order, which was not written down before: it optimises
+Also recorded the reasoning for the queue order, which was not written down before: it optimises
 for the least documented lineages — *"mothers are most likely to be not recorded and then
 followed by maternal grandparents and so on"* — and the father is created preferentially because
 the evidence is better there, patronymic or suggestion. And that this is deliberately greedy
@@ -29096,7 +29096,7 @@ follow-through was to commit and push; both happened.
 Nothing else went. The retarget below it is **gated on her confirming the rebuild is good** and
 `reports/bio-qids.tsv` is still tracked, which is the correct state for it. `addAncestor`'s
 termination is still unexercised, the two decisions are queued questions not yet asked, the pilot
-is at 5 of 100, and the rest are gated or at the tail by her placement.
+is at 5 of 100, and the rest are gated or at the tail by placement.
 
 ## 2026-09-05 — the Forest export collected, and the Ancestors export asked for
 
@@ -29218,7 +29218,7 @@ suggestion does not exist until the profile is saved"* and made the last-name fi
 purpose on the strength of it. On this dialog Geni filled it with **`Hoknes Himo`** before any
 save. The earlier reading was taken on Kari Olsdatter, whose only surname is a patronymic, where
 Geni declines to suggest — so the suggestion is CONDITIONAL, and I generalised one negative case
-into a rule. Her rules for correcting a suggested surname therefore have something to operate on
+into a rule. The rules for correcting a suggested surname therefore have something to operate on
 after all.
 
 **⛔ CORRECTION: my "a real click does not work either" test was invalid.** I clicked
@@ -29263,7 +29263,7 @@ unpacked works and survives restarts; the policy route only removed Developer mo
 folder-must-not-move condition, at the cost of an elevated shell.
 
 **And "the tail" is not a real category:** *"tail is not a real thing it's just a thing you
-do."* Four sweeps in a row declined to consider items by citing *"at the tail by her placement"*,
+do."* Four sweeps in a row declined to consider items by citing *"at the tail by placement"*,
 which turned an ordinary position in a file into a protected class and let me report an empty
 sweep as if it were a finished one. Items at the end are items.
 
@@ -29502,7 +29502,7 @@ keeps the pace at the one-a-minute the pilot asks for.
 **Sweep: nothing in `queue.md` had completed, and two stale facts inside a live item were
 corrected instead.** Checked each of the seven against the repo rather than assumed —
 `addAncestor`'s termination is still unexercised (no walk has reached a creation), the phase order
-is a governing rule with no done state, the parent-adding campaign is gated by her placement,
+is a governing rule with no done state, the parent-adding campaign is gated by placement,
 `build-from-diff` and the correspondence-GEDCOM experiment are both untouched at the tail, and the
 tail export section is hers. Nothing removed.
 
@@ -29531,7 +29531,7 @@ tab-separated line per relative: a large family fits, and a truncated line is vi
     Jakob Bettmann     FT  1,655   BR     8
 
 Each is a person joined to a large tree almost entirely through in-laws — which is exactly what a
-`Forest` export follows and what `blood_relatives` cannot see. Her correction was worth a quarter
+`Forest` export follows and what `blood_relatives` cannot see. The correction was worth a quarter
 of the population, not an edge case.
 
 **And the write-up above credited the corrected choice to the wrong person.** Blood relatives were
@@ -29551,7 +29551,7 @@ threshold itself turns away, and that is the row to look at before anyone moves 
 
 **The export gate becomes ONE floor of 300**, ruled 2026-09-06: *"Any number over 1,000 is a sure
 export, i say even any number over 300 lol"*. The five per-figure thresholds were mine and are
-gone; her sentence is a single reading of when the statistics block says there is more there than
+gone; the sentence is a single reading of when the statistics block says there is more there than
 the page shows, so whichever figure carries the number, over 300 clears.
 
 It moves in both directions and that is worth stating, because only one half is obvious.
@@ -29607,7 +29607,7 @@ rather than assumed.**
 - **The parent-adding campaign** — gated by her, and the gate is hers to open.
 - **`build-from-diff`** — `reports/wikidata-from-diff.qs` and `-izumo.qs` exist, but those are its
   *outputs*; the queued item is a **review** of why it was wired into the pipeline, and no review
-  exists. At the tail by her placement.
+  exists. At the tail by placement.
 - **The correspondence-GEDCOM experiment** — `docs/correspondence-merge-proposal.md` is the
   proposal asked for and is not the experiment; no GEDCOM is generated. At the tail.
 - **The tail export section** — dictated, left alone.
@@ -29697,7 +29697,7 @@ mechanisms, the same primary key.
 `seed` job, no scheduler walk); the phase order is a rule; the pilot is 13 of 100 with
 `isolates.csv` at 7 misses / 1 hit / 5 pending; the parent-adding campaign is gated by her;
 `build-from-diff` has outputs but no review; the correspondence experiment has a proposal but no
-GEDCOM. The last three are at the tail by her placement, and the tail export section is hers.
+GEDCOM. The last three are at the tail by placement, and the tail export section is hers.
 
 **One live item was carrying a premise the evidence now contradicts, which is the class of dead
 fact a sweep exists to catch.** The pilot item states its captures are anchored on Charlemagne.
@@ -29721,7 +29721,7 @@ failure sets are disjoint, so the inventory regeneration and the hold repin did 
 whose own header reads *"HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet"*,
 emitting ten a run out of `reports/manual-identifications.csv`. Every one of those statements is
 *adding a Geni id to an item that does not have one* — so the subject **cannot** be in the ledger,
-which is built from `P2600` holders and her contributions. The guard was asking those lines to
+which is built from `P2600` holders and the account's contributions. The guard was asking those lines to
 satisfy a condition the line itself creates.
 
 **Three carve-outs already existed for exactly this and each says so** — the spine block, the CJK
@@ -29754,7 +29754,7 @@ which items the batch touches, not a fix to make in passing.
 other session has committed in three hours. `addAncestor`'s termination still unexercised; the
 phase order is a rule; the pilot is 13 of 100; the parent-adding campaign is gated by her;
 `build-from-diff` has no review and the correspondence experiment no GEDCOM, both at the tail by
-her placement; the tail export section is hers.
+the placement; the tail export section is hers.
 
 **One false clause found and corrected, in the item at the very top.** It read *"the last real
 creation predates the change"*. Measured: the queue-drop went in at `28a9f05a`, 2026-09-05 18:58,
@@ -29841,7 +29841,7 @@ on paper.
 **Sweep: nothing removed, sixth running.** All six live items verified against the repo — five
 creations and none from a scheduler walk, the phase order a rule, the pilot at 16 of 100,
 the parent-adding campaign gated by her, `build-from-diff` with no review and the correspondence
-experiment with no GEDCOM, both at the tail by her placement. No other session has committed in
+experiment with no GEDCOM, both at the tail by placement. No other session has committed in
 five hours.
 
 **What the sweep caught: tonight's decay finding lived only in `devlog.md`.** `queue.md` had no
@@ -29853,7 +29853,7 @@ only in history is one nobody follows.
 
 Recorded in the item, with both consequences beside it — that `path_state` must never infer a hit
 from the absence of a miss, and that a revisit must never blank an observed verdict. **Her tail
-section was left alone**: its three-state list is her own text at her placement, and it was never
+section was left alone**: its three-state list is her own text at that placement, and it was never
 wrong — it names not-requested as one of the three. What it does not say is that a *running*
 search returns to that state, and that is a fact about Geni discovered tonight rather than a
 correction to her.
@@ -30026,7 +30026,7 @@ faster than that whenever a target resolved quickly.
 **Sweep: nothing removed, eighth running.** Six live items verified against the repo — the service
 worker item is blocked on her reload and not done, the phase order is a rule, the pilot is at 17
 of 100 and halted by the CAPTCHA, the parent-adding campaign is gated by her, `build-from-diff`
-has no review and the correspondence experiment no GEDCOM, both at the tail by her placement.
+has no review and the correspondence experiment no GEDCOM, both at the tail by placement.
 
 **One more of my own inventions found in her tail section and corrected: *"The pushpin is HERS and
 is set exactly once."*** That heading is mine. The 2026-09-03 words underneath it are real and are
@@ -30261,7 +30261,7 @@ B are siblings with parents unknown; each member's own profile GEDCOM brings the
 merge fuses all three on the Geni id. Scraping one of a pair gets one side's account.
 `scripts/sibling-pair-worklist.py`: **2,130 pairs, 2,528 distinct people, 2,527 with no scrape**.
 
-**Her diagnosis of the whole afternoon, now in `CLAUDE.md`:** *"you just saw something that
+**The diagnosis of the whole afternoon, now in `CLAUDE.md`:** *"you just saw something that
 vaguely looked like it that had errors ... and you reported it as though it was doing the same
 operation."* `build-scraped-gedcom.py` was incomplete earlier work toward the design being
 described -- nobody knew its output had reached the synoptic tree at all. Measuring its
@@ -30710,7 +30710,7 @@ queue.md and anything that the queue.md references."*
 `queue.md` is rewritten around **one executable item**, which is her own definition of what the
 queue is for: *"all the queue did was just ask the browser agent to navigate to each page and run
 the stuff."* Navigate, dispatch `{job:"individual"}`, write the files, next target. Everything
-else in it is either gated by her or at the tail by her placement.
+else in it is either gated by her or at the tail by placement.
 
 **It carries the four things that would otherwise be rediscovered the hard way**, each of which
 cost real time today: nothing downloads and `saveBlob` must not come back a third time; never
@@ -31252,7 +31252,7 @@ of 2026-09-07: **0 of the 34 spine items appear in it at all**, and the whole 1,
 carried 48 `Lja` lines against 1,699 ledger people.
 
 `_missing_cjk_labels` is the pass that was absent. **Purely additive**: a language is emitted only
-where `read_live_labels` has no value for it, so it cannot touch her hand-edits and cannot restate
+where `read_live_labels` has no value for it, so it cannot touch the hand edits and cannot restate
 § *The purpose is to ADD to Wikidata, not to correct it*. An absent live-labels file emits nothing,
 per that function's own rule that no value means *we do not know*.
 
@@ -31523,7 +31523,7 @@ Three things the wiring had to get right:
   Overwriting understated the token and then mis-ranked it and mis-picked its `P5278` partner.
 
 The comment in `DESCRIPTION_FOR` read *"matronymic currently fires for nothing, and that answers
-her question"* until today. It was measuring the classifier rather than the corpus: a `-datter`
+the question"* until today. It was measuring the classifier rather than the corpus: a `-datter`
 token is classed `patronymic` whatever it names, so nothing could ever have fired.
 
 **And the removals did NOT reach the batch — Wikidata 429ed us, and reading the run log is what
@@ -32091,7 +32091,7 @@ Appended to `reports/emma-judgments.tsv` — 332 pairs decided, 13 UNSURE.
 answerable for a Heian courtier or a Northern Wei official from a phone. `_has_cjk` tests both
 sides, so the pair `宣度 崔` / `Cui Xuandu` is caught on ours; the range is in ASCII escapes.
 
-**The `universe` half of her sentence is right about them and does not generalise into the
+**The `universe` half of the sentence is right about them and does not generalise into the
 filter.** None of these is in the ledger — but neither is any other case, and the ledger scope
 was tried on 2026-08-31 and selected 0 of 709, which is what published an empty page while the
 work was still there. So the filter is the script actually ruled on, not the universe.
@@ -32105,7 +32105,7 @@ Two follow-ons to the both-ties work of 2026-09-07, both found on the same perso
 Hørlück `297536201290008921`, the first individual the two-search loop ever ran to a verdict.
 
 **`runIndividual` called a started walk a dead end.** `runSeed` does ONE person and hands back
-the queue of who to visit next; `docs/parent-walk-algorithm.md` rule 4 is her dictation — *"both
+the queue of who to visit next; `docs/parent-walk-algorithm.md` rule 4 is the dictation — *"both
 present -> add neither; enqueue the mother, THEN the father, and carry on up."* Anna has two
 recorded parents, so `runSeed` returned `both_present` with `enqueue` = [mother, father], and
 the job reported `seed_failed` — which reads as *the export is impossible* when the walk had not
@@ -32123,7 +32123,7 @@ Extension 1.6.4 → 1.6.5.
 
 ## 2026-09-08 — the manual correspondences reach the tree as a generated GEDCOM
 
-The tail queue item, her design of 2026-09-05: *"a good long term architectural smoothing would
+The tail queue item, the design of 2026-09-05: *"a good long term architectural smoothing would
 make it so that in the pipeline they are generated into a gitignored gedcom that is part of the
 synoptic tree merge, with qids in bios being a fundamental part of the pipeline."*
 
@@ -32192,7 +32192,7 @@ title rule.
 2026-09-06, and `reports/label-edits-emitted.tsv` records it. Both her line and the derived one
 for the same slot would be emitted, `_cap_label_edits` sorts within a person by
 `(language_rank, rank, order)` so they land adjacent — and **a label REPLACES, so the last one
-written wins**, which is the derived one. The batch would have read as though her correction had
+written wins**, which is the derived one. The batch would have read as though the correction had
 gone out. `_without_hand_covered` drops the derived edit for any slot the hand file sets, and
 takes its comments with it. An **alias is not covered**: `Aja` adds rather than replacing.
 
