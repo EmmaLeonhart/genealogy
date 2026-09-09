@@ -93,6 +93,26 @@ def outstanding():
         # Rule 3: a blood path is done, whatever `via` says. Rule 2: a blood-only miss is not.
         if verdict == "no" and via not in ("inlaw", "both", "neither"):
             rows.append((gid, label or row.get("label", ""), "blood-only-miss"))
+        # ⛔ A BLANK VERDICT MEANS *COME BACK LATER*, AND NOTHING WAS COMING BACK.
+        #
+        # `write-family-scrape.py` is explicit that the blank is load-bearing -- *"blank costs a
+        # revisit and `yes` costs the measurement"*, and *"a pending search folded into the miss
+        # column is the failure `geni-paths/README.md` records"*. It writes blank precisely so
+        # the person is asked again. This function tested `verdict == "no"` and nothing else, so
+        # a scraped person with no verdict matched no reason at all and left the pool for good --
+        # the one outcome the three-valued column exists to prevent.
+        #
+        # Measured 2026-09-08: **11 rows**, every one of them scraped, every one with a blank
+        # anchor as well -- Asser de Haan, Julius Hohenberger, Natalia Krebs, Bohumil Eisner,
+        # Jakob Bettmann among them. `queue.md` even counted them, as *"11 with no verdict yet"*
+        # excluded from the reach rate, without anything noticing they could never be revisited.
+        #
+        # A requested search DECAYS back to unrequested within hours, so this is not a rare
+        # transient: any person whose search had not landed when the tab was harvested lands
+        # here. Same rule as hers, one state further along: if the question has no answer yet,
+        # it has not been answered.
+        elif not verdict:
+            rows.append((gid, label or row.get("label", ""), "pending-no-verdict"))
     # Sorted on the geni id for a deterministic file -- CLAUDE.md SORTING MUST BE DETERMINISTIC.
     # This is NOT a priority order; her rule 4 is that order does not matter.
     return sorted(rows, key=lambda r: r[0])

@@ -32473,3 +32473,45 @@ cleared for export. Outstanding 2,594 → 2,591; 106 tiny profile GEDCOMs, 710 t
 unpacked extension does not reload itself and `chrome://extensions` is refused by the automation
 surface — so 1.6.6 and 1.6.7 are on disk and unexecuted. Every verdict written today had its
 `via` derived at harvest by the same rules, read off the page by hand.
+
+### two more blood hits, and a blank verdict turns out to be a one-way exit from the pool
+
+**`"Bjødna-Tore" Torsen, Haaland` `335925615900006076`** — 34 steps, *"Charlemagne's 31st great
+grandson"*, `via=blood`. Steps 1-22 are identical to the Oftedal chain captured in another tab the
+same hour, including the spine's missing middle at 15-20; they diverge at 23, both into Rogaland.
+
+**`Karen Jensdatter Dahl` `340883344110012776`** — 35 steps, *"Charlemagne's 32nd great
+granddaughter"*, `via=blood`. Same descent as far as Guttorm Àsulfsson à Rein's daughter Ingrid,
+then **Danish** rather than Swedish: Ulfeldt, Galen, Rani, Grubbe, Lunge, Rud.
+
+Neither page carries a miss sentence, so both are plain blood hits rather than the other search's
+chain — which is the distinction 1.6.7 exists to keep, and it is worth noting it did not fire
+here.
+
+**⛔ A BLANK `path_found` DROPPED A PERSON OUT OF THE CAMPAIGN ALTOGETHER.**
+`write-family-scrape.py` is explicit that the blank is load-bearing — *"blank costs a revisit and
+`yes` costs the measurement"* — and writes it precisely so the person is asked again.
+`collector-worklist.outstanding()` tested `verdict == "no"` and nothing else, so a **scraped**
+person with no verdict matched no reason at all and left the pool permanently. The three-valued
+column exists to prevent exactly that outcome and was producing it.
+
+**11 rows, measured, every one scraped and every one unreachable**: Asser de Haan, Julius
+Hohenberger, Natalia Krebs, Bohumil Eisner, Jakob Bettmann, Valentine Eisner, Pavel Ekstein, Jakob
+Sichel, Rosa Seckel, David Johansen Monrad, and Arne Garborg himself. `queue.md` had even counted
+them — *"11 with no verdict yet"*, excluded from the reach rate — without anything noticing they
+could never be revisited. And it is not a rare transient: a requested search decays back to
+unrequested within hours, so anyone whose search had not landed when their tab was harvested lands
+here. `pending-no-verdict` is now a third reason; the pool went 2,591 → 2,600.
+
+**Johan Christian Fr. Heinzelmann `341971073600011641` is the case that surfaced it, and he is a
+fifth wrinkle.** His panel states *"No in-law relationship was found."* and **nothing about
+blood** — no miss sentence, no chain, no segments, no search running. `GC.pathState` folds all
+four miss sentences together, so `runPath` read the **in-law** answer and reported the blood
+question `resolved_none`. His `common.js` comment already admits the two sentences answer
+different questions and calls both misses anyway. He is written with a blank verdict rather than
+a fabricated `no`, and the new reason is what brings him back.
+
+**Four defects, one shape, all today** — a reader taking the wrong evidence for a verdict, or for
+its absence: the button that is gone once the answer is stated; the segment count that cannot
+rise when the chain is already there; the rendered chain that belongs to the other question; and
+now the blank that means *ask again* and was read as *nothing to do*.
