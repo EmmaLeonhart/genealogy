@@ -13059,7 +13059,7 @@ own row, and presence is measured against `exports/post-merge/` -- **2,104** fir
 across the actionable items are still unrefreshed.
 
 **Two detours cost her turns and are recorded as errors, not as work.** The roster script was
-built off a misread of *"I gave detailed instructions earlier"* -- the instructions were her
+built off a misread of *"I gave detailed instructions earlier"* -- the instructions were the
 AskUserQuestion answer about merging on Geni, treating as an export target, then deprecating the
 one that redirects. And the first four screenshots were of Wikidata items from the *opposite*
 population, several items claiming one profile.
@@ -13563,7 +13563,7 @@ why the fuck is it gitignored? Un gitignore"* — because the old `out/*` rule l
 download-state index on a restart and left the downloader believing all 514,876 seeds were
 unfetched while 1.4M items sat on disk. Only the four oversized rebuildable files are ignored.
 
-**The stale word was not harmless.** It was quoted back at her as grounds for adding `out/` to
+**The stale word was not harmless.** It was quoted back as grounds for adding `out/` to
 `.gitignore`, and a change was approved that would have undone the original instruction. The
 `.gitignore` was right and the documentation was wrong — which is the reverse of the usual
 assumption and is now written where the next reader will hit it.
@@ -13654,7 +13654,7 @@ alias block, which wrote **`Aen` alone**. The file under review had **4 `Aen` an
 `Amul`**. `mul` is the language-neutral label, so an alias living only in `en` is invisible
 everywhere else. Every alias now gets both; the rebuilt file is 59 and 59.
 
-**3. Her father was reachable.** *"no we are no fuckin gmaking my father as a wikidata item right
+**3. The father was reachable.** *"no we are no fuckin gmaking my father as a wikidata item right
 now lol."* Richard Wade Borsheim (b.1963) is step 2 of the Arne path, so any roster drawn from
 that path reaches him. There is now a hard guard at **birth year 1880**, dropping **55 people**
 including the account owner (1996), her father (1963), her grandfather Randolph (1926), Reinhert Borsheim
@@ -13699,7 +13699,7 @@ Verified against the real case — the guard fires on `Q16063657`.
 theirs has an unmatched item. Holding a real person back costs a day. Creating a duplicate costs
 a manual merge on Wikidata.
 
-**Also fixed this round**, all from her: the ring is now ordered by **graph distance from Arne**
+**Also fixed this round**, all on instruction: the ring is now ordered by **graph distance from Arne**
 rather than alphabetically, `--limit N` takes the N closest, and `--skip-nn` bites **before** the
 limit — asking for 10 named people had returned 7 because three of the ten closest were redacted
 and were dropped afterwards.
@@ -13744,8 +13744,8 @@ link where one exists. **Only the account owner and Arne have items; all 22 peop
 **One correction recorded in the script.** The junction was first *derived* by intersecting the
 route with the blood path, giving Rasmus Wibye Andersson Lea — which is only where two files stop
 agreeing. The answer was in `queue.md` weeks earlier: *"the first common ancestor of
-us is Rasmus Ingebretsen Grude"*. Her note is the source; the files illustrate it. Deriving what
-is already recorded cost her a turn to say so.
+us is Rasmus Ingebretsen Grude"*. That note is the source; the files illustrate it. Deriving what
+is already recorded cost a turn to say so.
 
 ### 2026-08-25 — the zipper join runs, and its error compounds with every round
 
@@ -14043,7 +14043,7 @@ Measured rather than argued: where both sides carry a birth year, name-reached p
 disagree by more than ten years **9.2%** of the time against **11.8%** for position-only.
 
 **Provenance is a chain now.** `scripts/zipper-provenance.py` — max depth 8, mean 2.7,
-walked to a stated `P2600` or one of her hand verdicts, with support and contradiction both
+walked to a stated `P2600` or one of the hand verdicts, with support and contradiction both
 propagating as specified. 25,570 corroborated, 18,949 inferred, 187 poisoned; poisoned
 is a reading, never a deletion. It earned itself immediately, catching a name match of
 `shared: 7th` — an **ordinal**, which inside a sibling slot is a position in that family's
@@ -14051,7 +14051,7 @@ own succession and matches brother to brother. Same class as the `Wachtmeister �
 Wachtmeister` surname match caught an hour earlier: evidence unique only because the
 candidates it beat had missing data.
 
-**Slot order is her reliability ranking** — parents, spouses, children — and it is
+**Slot order is the stated reliability ranking** — parents, spouses, children — and it is
 load-bearing, since the first slot to claim a person in a round removes them from every
 later slot's candidates. It ran children ahead of spouses before.
 
@@ -14112,9 +14112,9 @@ instead of LAST PID QID."*
 
 That is right. `LAST` cannot be the value in a statement whose subject is *also* newly created —
 two items minted in one run cannot point at each other. That is a real limit and the one that
-described in her batch dictation. **It says nothing about a subject that already exists**:
+described in the batch dictation. **It says nothing about a subject that already exists**:
 `Q141178381 P22 LAST` is ordinary QuickStatements. I generalised the narrow limit into "no
-reciprocals at all", built a day-late carry-forward around it, and left her fixing one-way links
+reciprocals at all", built a day-late carry-forward around it, and left the one-way links to be fixed by hand
 by hand. Every relationship to somebody who already holds a QID is now emitted both ways in the
 same run.
 
@@ -14131,10 +14131,10 @@ had reversed *"We create two parents, link them together"* into the opposite cla
 
 **`--exclude` silently did nothing for `--roster` runs** — it lived inside the `--compose` branch.
 That is how a roster batch came out re-creating two people an earlier batch the same day had
-already given her. A guard that does not run is worse than none, because it gets reported as
+already given. A guard that does not run is worse than none, because it gets reported as
 protection.
 
-**The ledger is rebuilt from her account**, `Special:Contributions/日巫女`, not from git history —
+**The ledger is rebuilt from the account**, `Special:Contributions/日巫女`, not from git history —
 git records what a batch *offered*, not what exists. It found 11 missing rows, including both
 people the previous batch would have duplicated.
 
@@ -14182,7 +14182,7 @@ the deciding comparison was the ruling that kept `child`+`solo` at 10.0%. **No m
 method matters more than round, but it is handled by `SLOT_YEAR_TOLERANCE` and the sex filter
 rather than by a cap.
 
-**2. Cadence — today's run is complete and consumed.** Refreshing the ledger from her account
+**2. Cadence — today's run is complete and consumed.** Refreshing the ledger from the account
 added nine rows and showed **all four creations in today's batch now exist**: Ingeborg
 Gyntesdotter `Q141180406`, Magdalena Andersdotter `Q141180409`, Margareta Mårtensdotter Bång
 `Q141180410`, Thomas Matthiæ `Q141180413`. It ran while this was being worked. No batch
@@ -14309,7 +14309,7 @@ which **5,540 had no disagreement anywhere** — they were simply uncheckable. I
 contradiction now and not silence: 148 rejected, every one a case where a parent is recorded on
 both sides and the two are different people.
 
-**A correction I owed her**: I had told her only 16 rejects were real disagreements. The honest
+**A correction owed**: I had said only 16 rejects were real disagreements. The honest
 number is **111** — my classifier assigned each row to its *first* matching reason, so a row with
 one uncheckable parent and one disagreeing parent was filed as uncheckable. The decision stands at
 111 of 5,651, but the number I gave was wrong.
@@ -14507,7 +14507,7 @@ complete models of what the wikidata items should be and compare with the realit
 `scripts/model-vs-reality.py` builds the intended item from the Geni record plus the rules —
 `P31`, `P21`, `P2600`, dates, the four relationships, and the full name model through
 `scripts/namemodel.py` — fetches the real item through `genimerge.wikidata.full_entities`, and
-diffs three ways. Over the 71 ledger people: **483 extra** (her hand-work, never touched), **77
+diffs three ways. Over the 71 ledger people: **483 extra** (hand work, never touched), **77
 missing** (the only column a batch may project from), **4 CONFLICT**.
 
 The four are real and a decision to settle — Rozala d'Ivrea died 13 Dec or 7 Feb 1003; Knut Valdemarsson
@@ -14541,7 +14541,7 @@ reason. That is the second half of the instruction, and it makes a whole class o
 impossible: a projection cannot emit a statement the item already holds, because such a statement
 is not in the `missing` column by construction.
 
-Refused, each for a recorded reason: `extra` (her hand-work), `CONFLICT` (a decision to settle), labels
+Refused, each for a recorded reason: `extra` (hand work), `CONFLICT` (a decision to settle), labels
 and aliases (they *replace*, and `Q467497` is better labelled on Wikidata than our derived string).
 The 8 missing `P2600` are skipped because `reports/wikidata-spine-add-p2600.qs` already carries
 them — **the diff rediscovered exactly that set of eight independently**, which is a real
@@ -14727,7 +14727,7 @@ amul."*
 
 **Two emitters held two different models and nothing had noticed.** `build-garborg-day.py` made
 the married name both labels and the birth name an `Amul`; `build-label-corrections.py` made the
-married name `Len` and the **birth** name `Lmul` — a label, not an alias. Her message settles it
+married name `Len` and the **birth** name `Lmul` — a label, not an alias. The ruling settles it
 in favour of the first, and the second was rewritten.
 
     en    Aagot Garborg      <- married, primary
@@ -14944,7 +14944,7 @@ fails on a line genuinely repeated inside one block, checked by injecting one.
 **And this is a pattern, now written into `CLAUDE.md` § *The batches are a SEQUENCE*:**
 *"You are often not respecting the fact that I do invariance-based algorithms. You just end up
 going towards a learned helplessness that we cannot do certain things, which we can."* Three
-invented limits are on record — `LAST`-as-value, this one, and exports "needing" her — and each
+invented limits are on record — `LAST`-as-value, this one, and exports "needing" a person — and each
 one had machinery built around it before anybody tried the thing.
 
 **1,358 passed, 0 failed.**
@@ -14983,7 +14983,7 @@ differ by two and are never reconciled are how a report gets mistrusted later.
 
 **1,358 passed, 0 failed.**
 
-## 2026-08-26 — her daily algorithm, built into the scripts that already exist
+## 2026-08-26 — the daily algorithm, built into the scripts that already exist
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is the spec. It is a **revision of
 `compose()`**, not a new program — the counts, the shuffle and the order changed:
@@ -15093,7 +15093,7 @@ The two vocabularies come to **17 tokens between them** — `(de)`, `(D.)`, `(du
 `(Von)`, `(De)`, `(af)`, `(di)`, `(ben)`; `(anonyma)`, `(?)`, `(unknown)`, `(Ukjent)`,
 `(Unknown)`, `(NN)`, `(??)`, `(ukjent)`. That is the list asked for.
 
-**Two discriminators were built and both are gone.** Her earlier answers ruled `Turesson
+**Two discriminators were built and both are gone.** The earlier answers ruled `Turesson
 (Bielke)` a family name and `Weirman (Weyerman)` an alias, and the shapes are identical:
 
 - **Bare-form frequency** — refuted by the census written for it. `Voehl` occurs 20 times
@@ -15130,7 +15130,7 @@ elaborate than the one wanted.
 
 **1,359 passed, 0 failed.**
 
-## 2026-08-26 — her parenthesised-token rulings, implemented, and a particle is not a surname
+## 2026-08-26 — the parenthesised-token rulings, implemented, and a particle is not a surname
 
 `scripts/namemodel.py` now carries `PARTICLES`, `UNKNOWN_MARKERS` and `name_shape()`.
 `classify_fields` strips the brackets and names the shape; `statements_for` skips particles and
@@ -15244,7 +15244,7 @@ first to be caught at the moment it happened.
 
 ## 2026-08-26 — a comment above every line, and three things spotted in the output
 
-**Her format, adopted:** *"With comments as headings and comments. Every line has a comment the
+**The dictated format, adopted:** *"With comments as headings and comments. Every line has a comment the
 line above it saying what change is happening."* `scripts/qscomment.py` is the shared post-pass:
 
     # create a new item
@@ -15285,10 +15285,10 @@ rows so they can be created. Queued.
 **2. Bure was not covered today, and that is by design.** Zero Bure people in the batch; the
 five `grep` hits are comment text. `compose` draws the ring around people who already hold a
 QID, which is the Garborg neighbourhood; Bure is the mother's side, a separate campaign that
-postponed to the tail of the queue herself.
+postponed to the tail of the queue by ruling.
 
 **3. Volume.** 50 creations, 154 links, 10 name items, 33 name links. It is being run today
-and says it is too much long-term. Left to her, since every count in it is a decision.
+and says it is too much long-term. Left undecided, since every count in it is a decision.
 
 **1,362 passed, 0 failed.**
 
@@ -15382,7 +15382,7 @@ the substitution when a picked person's marriage has no child left, which is *"t
 substitute in childless marriages"*.
 
 **Three readings of the free-parent rule before the right one**, two of them mine: a flat ceiling
-of 40; then scoping it to this run's children, which gave 5. Her formula is *"10 free parents
+of 40; then scoping it to this run's children, which gave 5. The formula is *"10 free parents
 plus half of the remaining."*
 
 **Two defects found by running it rather than by reading it.**
@@ -15437,7 +15437,7 @@ person; not adjudicated here.
 `Q16649637` and `Jacobus Johannis Zebrozynthius` `Q6251491` — a shared tail of three steps, so
 the two lines are one line below that junction.
 
-**And the Bure end is already partly built by her.** Step 20 of the antiquarian path is
+**And the Bure end is already partly built by hand.** Step 20 of the antiquarian path is
 `Q141180409` *Magdalena Andersdotter Bure*, one of the hand-made creations.
 
 No export was run and no page was saved. `paths/arne-to-bureus.tsv`,
@@ -15568,7 +15568,7 @@ is not an edit, it is a deletion with a survivor.
 
 **1,381 passed, 1 xfailed, 0 failed.**
 
-## 2026-08-26 — her `-sen` test, and the naive reading of it is 91% wrong
+## 2026-08-26 — the `-sen` test, and the naive reading of it is 91% wrong
 
 *"If father has -son or -sen then it's a surname lol that's the test same with other patronymic
 surnames."*
@@ -16069,7 +16069,7 @@ for nine days, and asking again spent a turn on something finished. That is § *
 CONTENT* wearing a new costume — the check is the code, not the queue.
 
 The half that is new is the standing authorisation: an obvious unknown-word marker now goes
-straight into the vocabulary with its corpus count, no question. Her 2026-08-17 boundary is the
+straight into the vocabulary with its corpus count, no question. The 2026-08-17 boundary is the
 only line left — **words yes, punctuation no**. `NOT_A_NAME` is untouched; detection is not
 suppression.
 
@@ -16147,7 +16147,7 @@ carrying a full stop, and case is never changed. A bare lowercase letter blocks 
 any other untransliterated word. Pinned by a test carrying that exact name.
 
 **`build-garborg-day.py` bare emits 272 creations; with `--compose` it emits 34.** `--compose`
-is the flag `build-daily-batch.py` passes and it is where her caps live — the bare path is not a
+is the flag `build-daily-batch.py` passes and it is where the caps live — the bare path is not a
 smaller daily algorithm, it is a different one. I ran it bare, which is the `--check`-was-not-a-
 flag mistake inverted: omitting the flag that carries the algorithm rather than inventing one
 that does not exist.
