@@ -2,19 +2,19 @@
 
     py scripts/build-en-labels.py
 
-**Her order, `queue.md` § LABELS:** *"makes en labels for every individual (so Japanese gets
+**The order, `queue.md` § LABELS:** *"makes en labels for every individual (so Japanese gets
 transcribed), and then mul gets made for every individual (almost always derived from en)"* — one
 step over the whole population, not a per-person loop.
 
-**Emma, 2026-09-02, on how to finish it:** *"just finish I'm not asking for categorization lol
-just list these as unknowns if they are unclear lol"*. So there is no adjudication here. A person
+**How to finish it:** no categorisation -- anything unclear is listed as `unknown` and the run
+moves on. So there is no adjudication here. A person
 either has an English form this repo can stand behind, or the row says `unknown` and moves on.
 
 ## Where a romanisation is allowed to come from
 
 **Only `reports/cjk-romanisation.csv`**, which reads Latin forms out of **Wikidata's own name
-items**. Emma: *"from CJK to English do not remotely try to do any kind of programmatic
-transliteration because they all suck."* Nothing here transliterates — `pykakasi` and the Unihan
+items**. From CJK to English, no programmatic transliteration is attempted at all: they are
+all bad. Nothing here transliterates — `pykakasi` and the Unihan
 pinyin are used for *aliases* and for measurement, never to manufacture an English label.
 
 ## What becomes `unknown`, and it is a roster rather than a failure

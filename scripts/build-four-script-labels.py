@@ -2,7 +2,8 @@
 
     py scripts/build-four-script-labels.py
 
-**Emma, 2026-09-01: "Wire hi/ar/ru/el now."** `queue.md` § *Labels in seven languages* has had
+**`hi`/`ar`/`ru`/`el` are wired NOW**, ruled 2026-09-01. `queue.md` § *Labels in seven
+languages* has had
 them listed since the beginning — *"Devanagari, Arabic, Cyrillic and Greek chosen for script
 coverage"* — and nothing had ever emitted one.
 
@@ -10,8 +11,8 @@ coverage"* — and nothing had ever emitted one.
 
 The CJK batches refuse to transcribe a Latin name, because a Chinese or Japanese or Korean name
 may exist in its own script already and a transcription would be second-best. **These four have
-no such alternative.** Her own description of the job is *"English → the four remaining
-scripts"*: for a Norwegian farmer there is no Russian or Greek or Hindi or Arabic form of the
+no such alternative.** The job is *English → the four remaining
+scripts*: for a Norwegian farmer there is no Russian or Greek or Hindi or Arabic form of the
 name waiting to be found, and writing one is the whole task rather than a fallback.
 
 So the standard here is hers: *"incorrect romanization or incorrect representations in katakana
@@ -94,7 +95,7 @@ def main() -> int:
                 edits.append({
                     "id": f"{code}_label:{r['geni_id']}",
                     "type": "set_label",
-                    "source": "step 6 of Emma's label order -- hi/ar/ru/el",
+                    "source": "step 6 of the label order -- hi/ar/ru/el",
                     "subject": {"qid": qid, "geni_id": r["geni_id"]},
                     "requires": [],
                     "label": {"language": code, "value": value},
@@ -108,7 +109,7 @@ def main() -> int:
 
     lines = ["# Steps 6-9 — `hi`, `ar`, `ru`, `el`", "",
              "Built by `scripts/build-four-script-labels.py`. **Emits nothing to Wikidata.**", "",
-             "Emma, 2026-09-01: **\"Wire hi/ar/ru/el now.\"** These four have been listed in the "
+             "**`hi`/`ar`/`ru`/`el` are wired now.** These four have been listed in the "
              "seven-languages item since the beginning and nothing had ever emitted one.", "",
              f"- **{len(edits):,} labels** over {why['EMITTED for a person with an item']:,} "
              "people who already carry a Wikidata item.", "",

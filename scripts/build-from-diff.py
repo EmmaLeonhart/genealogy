@@ -2,29 +2,30 @@
 
     python scripts/build-from-diff.py
 
-**Emma, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata items
-should be and compare with the reality for the quickstatements modelling stuff."* The half of that
-instruction this script carries is her phrase *the batch becomes a projection of the diff* — a
+**Generate a complete model of what each Wikidata item should be and compare it against
+reality.** The half of that this script carries is that *the batch becomes a projection of the
+diff* — a
 statement is emitted because `reports/model-vs-reality.tsv` says it is absent, and for no other
 reason.
 
 **Why that ordering matters.** The method it replaces built a batch from the rules directly and
-found out what was wrong when she ran it: four corrective rounds in one afternoon. A projection
+found out what was wrong once it had run: four corrective rounds in one afternoon. A projection
 cannot emit a statement the item already holds, because such a statement is not in the `missing`
 column by construction.
 
 ## What is emitted and what is refused
 
-* **`extra` is never touched.** The item holds something the model does not — almost always her
-  hand-work. `CLAUDE.md`: *"the entire purpose of this is to add"*, and she edits continuously.
+* **`extra` is never touched.** The item holds something the model does not — almost always
+  hand-work. `CLAUDE.md`: the entire purpose of this is to ADD, and the items are edited by
+  hand continuously.
 * **`CONFLICT` is emitted as an ADDITIONAL statement, cited `S2600` to the Geni profile.** Both
   sides hold the property with different values; the existing statement is left exactly as it is
   and ours goes in beside it, so the item records both readings. That is `CLAUDE.md` § *The
   purpose is to ADD to Wikidata, not to correct it* -- *"prefer adding a second statement cited
   to Geni over editing the existing one"* -- applied generically rather than per property.
 
-  **It used to route these to Emma and that does not scale.** Her words, 2026-08-26, on the four
-  Garborg date conflicts and the three Izumo `P22` ones being put to her as decisions: *"those
+  **It used to route these out as questions and that does not scale.** Ruled 2026-08-26, on the
+  four Garborg date conflicts and the three Izumo `P22` ones being put up as decisions: *"those
   seemed like simple data issues that by design were supposed to get pushed onto wikidata"*, and
   *"we are doing over a million people here."* Twelve conflicts is a rounding error against the
   corpus; a pipeline that stops on each one never finishes.
@@ -41,7 +42,7 @@ column by construction.
 
 The diff is only as current as `out/model-vs-reality-items.json`. Its age is printed and refused
 beyond a day, because `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously*
-means a stale diff proposes re-adding what she has already done.
+means a stale diff proposes re-adding what has already been done by hand.
 
 Writes `reports/wikidata-from-diff.qs`. Queued, never run — editing starts 2026-09-01.
 """
@@ -117,8 +118,8 @@ def main():
         print(f"the diff rests on a snapshot {age:.1f} hours old")
         if age > MAX_AGE_HOURS:
             sys.exit(f"refusing to project from a diff older than {MAX_AGE_HOURS}h -- "
-                     f"re-run scripts/model-vs-reality.py --refetch. Emma edits by hand "
-                     f"continuously and a stale diff proposes re-adding her own work.")
+                     f"re-run scripts/model-vs-reality.py --refetch. The items are edited by "
+                     f"hand continuously and a stale diff proposes re-adding that work.")
 
     already = set()
     spine = R / "wikidata-spine-add-p2600.qs"
@@ -158,8 +159,8 @@ def main():
                 f"# Every line below exists because {diff.name} says the item\n"
                 "# does not hold it. No statement is here because a rule produced it.\n"
                 "#\n"
-                "# NOT emitted: `extra` (the item holds it and the model does not -- her hand\n"
-                "# work), labels and aliases (they REPLACE, and hers are better).\n"
+                "# NOT emitted: `extra` (the item holds it and the model does not -- hand\n"
+                "# work), labels and aliases (they REPLACE, and the live ones are better).\n"
                 "#\n"
                 "# A CONFLICT IS emitted, as a SECOND statement BESIDE the existing one and never\n"
                 "# in place of it. The item ends up recording both readings, ours cited to Geni.\n"

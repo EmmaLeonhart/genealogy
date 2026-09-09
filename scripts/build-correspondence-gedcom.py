@@ -2,7 +2,7 @@
 
     PYTHONPATH=src python scripts/build-correspondence-gedcom.py
 
-**Emma's design, 2026-09-05, and this is the experiment she put at the tail of the queue:**
+**The design, 2026-09-05, and this is the experiment at the tail of the queue:**
 
 > *"I think the manual zipper parents are wired in correctly and well, and I do not want to break
 > the pipeline, but I actually think a good long term architectural smoothing would make it so
@@ -13,7 +13,7 @@
 `docs/correspondence-merge-proposal.md` is the proposal. This is its first half: the file is
 generated **in addition**, and `build-garborg-day.ledger()` still reads
 `reports/manual-identifications.csv` directly. The direct read goes only once the tree route is
-shown to carry the same pairs, which is her *"do not want to break the pipeline"*.
+shown to carry the same pairs, which is what keeps the pipeline from breaking.
 
 ## Why `out/` and not `exports/`
 
@@ -24,7 +24,7 @@ copy that can disagree with the first. It goes to `out/`, gitignored by its own 
 the merge is told about it with `genimerge merge --also`.
 
 That is also why it is not simply dropped into `exports/post-merge/` beside
-`wikidata-qid-links.ged`: that file is **29 hand-written pairs she named**, corpus by her choice,
+`wikidata-qid-links.ged`: that file is **29 hand-written pairs**, corpus by deliberate choice,
 and its own docstring says *"Do not let it become an architecture."* 314 rows regenerated every
 run is a different kind of thing.
 
@@ -38,18 +38,18 @@ This does not make the design wrong; it names what has to change before the tree
 replace the CSV read. It is recorded here rather than worked around, because widening the
 whitelist is a memory decision (§ *the tree BUILDS in Actions* --- `NOTE` is most of what slim
 removes) and quietly moving the correspondence onto a surviving tag would be writing a more
-intuitive version of her program.
+intuitive version of the program than the one specified.
 
 ## The three open decisions, and the readings taken
 
 `CLAUDE.md` § *Working the queue: GUESS. Do not ask* --- so each is decided and recorded rather
-than put to her.
+than put up as a question.
 
 * **The pair only, not the verdict.** Every row of the CSV is affirmed (`SAME` 297, `RIGHT` 17)
   and `ledger()` already reads them all regardless of batch, so a verdict `NOTE` would carry no
   distinction anything acts on --- while adding a second `NOTE` per person to a merge whose size
-  is the binding constraint. The provenance stays in the CSV, which is tracked and is where she
-  reads it. What would switch this: a tree consumer that wants to know a pair came from the parent
+  is the binding constraint. The provenance stays in the CSV, which is tracked and is where it
+  gets read. What would switch this: a tree consumer that wants to know a pair came from the parent
   deck rather than from a bio.
 * **Everything in the file, because none of it is a rejection.** The proposal called
   `rejected-parents` (24) and `blocked-creations` (12) rejections; reading the rows says otherwise
@@ -171,7 +171,7 @@ def main() -> int:
         absent = sorted(g for g in pairs if g not in in_tree)
         if absent:
             # Never silently: emitting one of these CREATES the person rather than annotating
-            # them. Printed in full because the finding is which of her verdicts names somebody
+            # them. Printed in full because the finding is which hand verdicts name somebody
             # no export has reached.
             print(f"HELD -- not in the merged tree, would be minted as new people: {len(absent)}")
             for g in absent:
