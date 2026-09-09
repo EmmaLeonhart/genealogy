@@ -2,8 +2,8 @@
 
     python scripts/bure-coverage.py
 
-**Emma, 2026-08-28, and it changes the shape of the campaign:** *"the bure people here we
-don't need to export from all of them we just need to get all of them in exports"*.
+**The shape of the campaign:** these people do not each need an export of their own; they
+need to be *in* exports.
 
 The target is **coverage of the 251**, not one export per person. A `Forest` export returns
 up to 5000 people and the Bureätten are one kinship network, so a single export seeded
@@ -14,7 +14,7 @@ So the loop is: seed one absent person, export, **re-measure**, and only seed fo
 still missing. This script is the re-measure step, and the reason it exists as a script rather
 than a grep is that it has to run after every single export.
 
-**The campaign ends when the list is empty, and that is her stopping rule.** Emma, same day:
+**The campaign ends when the list is empty, and that is the stopping rule:**
 *"we can search through all of the people as we add more since we want all these bureatten
 people in the geni synoptic tree and once everyone is covered the campaign is over. Because
 these people are quite linked as they are a family relationship to each other."*

@@ -8,9 +8,9 @@ The line is the 78 profiles Geni holds in one father-to-son chain from `Uzzi ben
 Bakhi` down through Baba Rabba — the **pre-1624 Phinhas** high priesthood. None
 of the 78 carries a Wikidata item, joined on the Geni ID.
 
-**It is kept separate from the post-1624 Itamar items on purpose.** Emma,
-2026-08-14: *"on wikidata explicitly, they are going to be different lines… two
-parallel lines on Wikidata"*. The Phinhas line ended in 1624 and the Itamar
+**It is kept separate from the post-1624 Itamar items on purpose.** On Wikidata
+these are explicitly different lines -- two parallel lines. The Phinhas line ended
+in 1624 and the Itamar
 priests replaced it; they are not one descent, and nothing here links them.
 
 **`Samaritan High Priest` never becomes a family name.** It sits in the GEDCOM
@@ -93,13 +93,13 @@ def main() -> int:
     # Anything already on Wikidata is not a creation. Joined on the Geni ID.
     #
     # **Two sources, and missing the second one was a real bug.** The store index
-    # only knows a link once *Wikidata* states the `P2600`. Emma also writes the
-    # Wikidata URL onto the **Geni profile**, which is a hand-made identity claim
+    # only knows a link once *Wikidata* states the `P2600`. The Wikidata URL is
+    # also written onto the **Geni profile**, which is a hand-made identity claim
     # that Wikidata has not been told about yet — and those were invisible here.
     # The batch therefore proposed creating `Jonathan I` (`Q20502598`) and
     # `Baba Rabba` (`Q2911644`), both of which already exist and both of which
-    # she had linked herself. Emma, 2026-08-16: *"I literally have an entire file
-    # dedicated to samaritan high priest qids that you ignored."* Duplicate items
+    # had already been linked by hand -- there is a whole file dedicated to the
+    # Samaritan high priest QIDs, and it was being ignored. Duplicate items
     # are the one failure mode here that damages Wikidata rather than wasting a
     # run, so this reads both sources.
     linked = {}

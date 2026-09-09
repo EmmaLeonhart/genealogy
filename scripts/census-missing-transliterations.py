@@ -2,8 +2,8 @@
 
     python scripts/census-missing-transliterations.py
 
-**Emma, 2026-08-26:** *"I'm confused why the created individuals are not getting their names
-across different languages. Chinese and Japanese should be mandatory on the creations."*
+**Created individuals are not getting their names across the different languages.** Chinese
+and Japanese are mandatory on a creation.
 
 **They are not getting them because the table is small and the rule is all-or-nothing.**
 `reports/garborg-name-transliterations.tsv` holds **113 tokens**, built for the original Garborg

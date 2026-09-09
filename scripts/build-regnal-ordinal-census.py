@@ -6,9 +6,8 @@
 lose which name it qualifies"* — but nothing in the repo ever extracted or counted one.
 So the size of the population was unknown, and so were its forms.
 
-Emma's rule is that this is not a Samaritan special case. 2026-08-15: *"they should all
-have the regnal orders put on their names as qualifiers"*, and **not only the
-Samaritans** — anyone whose name carries an ordering.
+This is not a Samaritan special case. Every such name carries its regnal order as a
+qualifier, and **not only the Samaritans** — anyone whose name carries an ordering.
 
 **Reads `exports/` directly, never the merged tree.** The question is "what does this
 person's name say", which is answered by one streaming pass over the corpus and a dict
@@ -206,9 +205,8 @@ def main() -> None:
         "portion only — everything before the first GEDCOM slash — and never in "
         "the first token, because a name that opens with a numeral is a record "
         "that begins oddly rather than somebody's regnal number.", "",
-        "**Emma, 2026-08-18, on what this population actually is:** *\"regular "
-        "ordinals simply are not a thing. There won't be regular ordinals here "
-        "because somebody would need to be like a monarch or something.\"* So the "
+        "**What this population actually is:** regular ordinals are not really a "
+        "thing -- somebody would have to be a monarch or the like. So the "
         "roman class is the real one and the other two want reading with care.", "",
         "| kind | people | |", "| --- | ---: | --- |",
     ]

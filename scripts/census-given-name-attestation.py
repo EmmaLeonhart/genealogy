@@ -1,7 +1,7 @@
 """Is a token EVER somebody's FIRST given name? -> `reports/given-name-attestation.tsv`.
 
-**Emma, 2026-09-07**, shown `Q141352791` -- an item labelled `Garborg`, `P31` *given name*,
-created by our own batch for two people: *"Also bruh Garborg s was made as a given name wtf."*
+**`Q141352791` was created by our own batch as an item labelled `Garborg`, `P31` *given
+name*, for two people.** `Garborg` is not a given name.
 
 Geni files both bearers with `GIVN` = `Arne Garborg` / `Siri Garborg` and an **empty** `SURN`, so
 the name model reads the second token positionally as a middle name -- § *PARSE PATRONYMICS BY

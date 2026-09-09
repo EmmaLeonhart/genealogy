@@ -2,7 +2,7 @@
 
     python scripts/measure-post-merge-override.py
 
-**Emma's design, 2026-08-24:** `exports/post-merge/` is *"a directory with special logic: a
+**The design, 2026-08-24:** `exports/post-merge/` is *"a directory with special logic: a
 Geni record in there overwrites the same Geni ID from any other export"*, because post-merge is
 newest and therefore right.
 
