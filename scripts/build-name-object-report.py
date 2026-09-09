@@ -1,12 +1,12 @@
 """The name objects: which exist, which do not, and what kind of names these are.
 
-Emma scheduled this, 2026-08-12: *"we are going to fire off the analysis of the
-names."* Three questions, plus the reason for the third: **name items get created
+The analysis of the names, scheduled 2026-08-12. Three questions, plus the reason
+for the third: **name items get created
 for names fitting Western conventions**, so the report has to say which names
 those are, not merely how many are missing.
 
-Her framing of the structure: *"some of the names are relatively irregular, some
-of them are normal, and some of them are patronyms."*
+The structure: some names are relatively irregular, some are normal, and some are
+patronymics.
 
 **The classification is heuristic and its failure modes are named in the report
 rather than hidden.** Nothing here is fuzzy-matched to Wikidata; a name either
@@ -47,7 +47,7 @@ ORDINAL = re.compile(r"^[ivxlcdm]{1,7}$", re.I)
 NUMERIC = re.compile(r"^[\d.,;:()\[\]/\\-]+$")
 
 #: Patronymic endings. Scandinavian first because that is most of this corpus,
-#: then the Slavic and Arabic forms Emma named.
+#: then the Slavic and Arabic forms.
 PATRONYMIC_SUFFIX = re.compile(
     r"(?:s?son|s?sen|sson|szen|zen|s?datter|s?dotter|sdtr|dtr|"
     r"ovich|evich|ovna|evna|ovic|evic)$", re.I)
@@ -170,7 +170,7 @@ def main() -> int:
     add = L.append
     add("# Name objects: what exists, what does not, and what kind of names these are")
     add("")
-    add("Scheduled by Emma for midnight. Every distinct name is a row in")
+    add("Scheduled for midnight. Every distinct name is a row in")
     add("`reports/name-objects.csv`, ranked by how many people carry it.")
     add("")
     add("**Why the classification matters.** Her rule is that name items get created")
@@ -228,7 +228,7 @@ def main() -> int:
 
     add("## Which names are creation candidates")
     add("")
-    add("Applying her rule — Western conventions — the candidates are the *ordinary*")
+    add("Applying the rule — Western conventions — the candidates are the *ordinary*")
     add("rows with no item found. Everything else is excluded for a stated reason:")
     add("")
     add("| excluded | why |")

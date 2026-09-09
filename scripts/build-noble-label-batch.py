@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 """QuickStatements for the `noble` rank, removed from the labels it was never a name in.
 
-**Emma, 2026-09-09**, on `Q110731142` — `noble Nike|Victoria Soutzaina`: *"there's a fuckton of
+**On `Q110731142` — `noble Nike|Victoria Soutzaina`:** *"there's a fuckton of
 people with the prefix 'noble' on wikidata that comes from the same guy in 2022... all of them
 have the title in their mul label which is more like an English label and I would like to use our
 completely present wikidata export that should contain all of these people and redo their labels
 agentically to be proper."*
 
-**⛔ SCOPE IS `noble` AND ONLY `noble`, and she narrowed it herself.** Offered every lowercase
+**⛔ SCOPE IS `noble` AND ONLY `noble`, narrowed deliberately.** Offered every lowercase
 rank — 1,029 people, the same artefact from the same imports, `knight`, `ridder`, `farmer`,
-`esquire`, `skipper`, `mistress` — she chose **`noble` only**. `reports/title-label-proposals.tsv`
+`esquire`, `skipper`, `mistress` — the ruling was **`noble` only**. `reports/title-label-proposals.tsv`
 holds the rest, computed and waiting; they are not emitted.
 
-**⛔ AND THE PIPES ARE HELD, BY HER RULING THE SAME DAY:** *"bruh no the pipes are a bit more
+**⛔ AND THE PIPES ARE HELD, BY THE RULING THE SAME DAY:** *"bruh no the pipes are a bit more
 complicated, I am not 100% sure how to interpret it lol."* So a `noble` label that also carries a
-`|` — 7 of the 464 — is **excluded**, even though the rank half of it is settled. Her uncertainty
-is about how to read `Nike|Victoria` at all, and a batch that removed the rank and left the pipe
-would commit to half an interpretation she has not made.
+`|` — 7 of the 464 — is **excluded**, even though the rank half of it is settled. What is
+unsettled is how to read `Nike|Victoria` at all, and a batch that removed the rank and left the
+pipe would commit to half an interpretation nobody has made.
 
-**Nothing goes in the rank's place** — her third ruling, and it is `CLAUDE.md`
+**Nothing goes in the rank's place** — the third ruling, and it is `CLAUDE.md`
 § *A TITLE IS NOT A NAME* and § *A DESCRIPTION MARKER COMES OUT OF THE LABEL* already: dropped
 from the name, nothing put back. **No `Amul` carrying the old string either.** The `Amul`
-preservation of § *The MARRIED name is the real name* exists to stop a HAND EDIT of hers being
+preservation of § *The MARRIED name is the real name* exists to stop a HAND EDIT being
 overwritten by a label; these are `GZWDer`'s bot labels of January 2022, and preserving
-`noble Nike Soutzaina` as a searchable alias is exactly the *"something in its place"* she
+`noble Nike Soutzaina` as a searchable alias is exactly the *"something in its place"* that was
 refused.
 
 **No `D<lang>` line and no edit summary**, § *NO descriptions and NO edit summaries*, categorical.

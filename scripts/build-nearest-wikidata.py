@@ -1,8 +1,7 @@
-"""Who is the fewest hops from Emma to a person who could hold a Wikidata item.
+"""Who is the fewest hops from a person to somebody who could hold a Wikidata item.
 
-Emma, 2026-08-18: *"I didn't ask you to give me the closest linked person. I asked you to
-give me the closest person… I only want sideways counts. The main thing is that just a
-sibling is considered two hops, not one hop."*
+**The question is the closest PERSON, not the closest already-linked person**, counted
+sideways: a sibling is two hops, not one.
 
 **So: hops are edges in the parent/child graph, and nothing else.** A sibling is two — up
 to the shared parent and back down. A first cousin is four. An uncle is three. This is the
@@ -10,9 +9,9 @@ plain graph distance, not a kinship degree, and `build-path-to-wikidata-report.p
 answer it: that one walks **ancestors only** and reports 14 generations, which is the wrong
 question for finding a living relative.
 
-WHY IT IS THE WRONG QUESTION. The point, in her words, is that *"I can make an individual
-who is considered notable by publication… if they are close enough to me, that's great."*
-The item does not have to exist yet. So the search is not for the nearest existing QID —
+WHY IT IS THE WRONG QUESTION. An individual who is notable by publication can be made into
+an item, and being close enough is what makes that worth doing. The item does not have to
+exist yet. So the search is not for the nearest existing QID —
 it is for the nearest **person**, with the QID noted where there is one, because a
 publishing second cousin at six hops beats an ancestor at fourteen.
 

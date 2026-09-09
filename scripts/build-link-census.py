@@ -1,8 +1,8 @@
 """Every P2600 link, and how far the two sides agree — the census behind the
 "links worth re-checking" question.
 
-Emma, 2026-08-11, on the two links flagged as suspect (Canute I Erikska
-`Q442876`, Bengt Folkesson `Q1621801`): **"Analyse them like the dates."**
+The two links flagged as suspect (Canute I Erikska `Q442876`, Bengt Folkesson
+`Q1621801`) are analysed the way the dates were.
 
 The dates analysis worked because it censused *every* instance rather than
 reading the two worst. So this does the same: one row per comparison and one row

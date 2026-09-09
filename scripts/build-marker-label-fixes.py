@@ -1,8 +1,7 @@
-"""Turn the marker-label census into label edits, by Emma's rules.
+"""Turn the marker-label census into label edits, by the ruled shapes.
 
-**Emma, 2026-08-17:** *"finds these kinds of ones where the label has this stuff already
-in it, and normalizes them into proper things based on our rules."* The census found
-them; this normalises them.
+**Find the labels that already carry this material and normalise them into the proper
+form.** The census found them; this normalises them.
 
 Reads `reports/marker-labels.csv` and writes `reports/wikidata-marker-label-fixes.json`.
 Offline, emits nothing to Wikidata.
@@ -29,7 +28,7 @@ the wrong thing about a person.
 * **`description`** — the label describes somebody by their relationship instead of
   naming them. `mul: NN` plus the real surname where the remainder is one, and the
   description itself kept as the local-language label, which is where it always
-  belonged. Emma: *"And NN for mul there."* Covers the English phrases, the CJK suffixes
+  belonged: `NN` for `mul` there. Covers the English phrases, the CJK suffixes
   and the honorific forms alike.
 
 ### Where the remainder is a surname and where it is somebody else

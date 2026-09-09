@@ -10,8 +10,8 @@ the Han name beside the romanised one, and `reports/derived-labels.csv` has held
 `cjk_names` all along. Where the two competing items carry different Han forms and the
 bearer's own name contains one of them, the collision is settled for that person.
 
-**Per bearer, not per string** — which is Emma's own ruling on `Maria`, *"there's a male and
-a female Maria… That is settled by the person's sex"*, applied to a different signal.
+**Per bearer, not per string** — which is the `Maria` ruling (a male `Maria` and a female
+`Maria`, settled by the person's sex) applied to a different signal.
 `Tachibana no Moroe` is 橘 and `Q16884158`; a Tachibana written 立花 is `Q26216117`. The
 string stays ambiguous; the people do not.
 
