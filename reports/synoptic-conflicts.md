@@ -1,6 +1,6 @@
 # The 257 Geni profiles mapping to more than one Wikidata item
 
-Emma asked to see a sample rather than have a rule applied to them. The sample is
+The request was to see a sample rather than have a rule applied to them. The sample is
 `reports/synoptic-conflicts-labelled.tsv` — every row with **names on both sides**, since
 bare QIDs are unreadable. What the sample shows is that these are not one phenomenon but
 three, and the largest is not a contradiction at all.

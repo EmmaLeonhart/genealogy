@@ -1,6 +1,6 @@
 # Patronymics on the Wikidata side
 
-**Queue item 11.** Emma, 2026-08-15: *"we also should be running this
+**Queue item 11.** 2026-08-15: *"we also should be running this
 processing on both the geni stuff and the wiki data stuff."*
 
 Same method as `reports/patronymic-classification.md` — the **father's**

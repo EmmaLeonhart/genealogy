@@ -1,6 +1,6 @@
 # Did the ancient sparse-region exports expand the tree?
 
-Asked by Emma, 2026-08-22. Ten `Forest`/5000 exports ran that afternoon: five seeded
+Asked by 2026-08-22. Ten `Forest`/5000 exports ran that afternoon: five seeded
 on the top sparse regions from `reports/density.md`, four on ancient seeds, one
 `Descendants` that was hers and is excluded from the comparison.
 

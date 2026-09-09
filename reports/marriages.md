@@ -1,6 +1,6 @@
 # Marriage cases, both sides
 
-**Emma, 2026-08-10: "Marriage mapping: not decided. Show me marriage cases
+**2026-08-10: "Marriage mapping: not decided. Show me marriage cases
 first."** Walk more `FAM` records before choosing any `P26`-qualifier shape.
 These are the cases. **Nothing here proposes a mapping.**
 
@@ -122,7 +122,7 @@ field, the same fault class as Aénor's three birthplaces joined by "or".
 - **No `P26` shape is proposed.** That was the point of showing cases first.
 - **The 30 "different spouse" rows are not a gap** and probably should never be
   emitted; the Christian IV pair shows why.
-- **`P1545` appears 256 times.** Emma already ruled that marriage ordinals derive
+- **`P1545` appears 256 times.** It was already ruled that marriage ordinals derive
   from dates and that `P1545` is a cross-check, not a source — that stands, and
   these 256 are the cross-check material.
 - **A Geni place string is genuinely mis-encoded, and I nearly published the

@@ -9,7 +9,7 @@ mappings marked **open** need her.
 
 ## The point is adding, not correcting
 
-Emma, 2026-08-10: *"the entire purpose of this is to add it… Correcting stuff on
+2026-08-10: *"the entire purpose of this is to add it… Correcting stuff on
 Wikidata is actually such a pain that it's almost effectively out of the
 question. We will be more prone to adding in contradictory information cited to
 Geni than we are to correcting information."*

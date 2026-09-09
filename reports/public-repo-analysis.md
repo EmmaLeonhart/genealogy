@@ -1,6 +1,6 @@
 # Could this repo be public, with Actions emailing a QuickStatements file daily?
 
-**Emma's question, queued 2026-08-27:** *"analysis of whether we could set this repo as public, and
+The question, queued 2026-08-27:** *"analysis of whether we could set this repo as public, and
 use github actions to have it periodically email me a quickstatements file every day at 9am... I do
 not think the security issue is that bad (people who are digging can find stuff), and... making this
 100% programmatic i gonna allow for more reliability since I am no gonna need you to constantly

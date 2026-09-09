@@ -1,6 +1,6 @@
 # What order.life could label for us, for free
 
-**Queue item 13.** Emma, 2026-08-15, on whether order.life feeds the
+**Queue item 13.** 2026-08-15, on whether order.life feeds the
 seven-language work: *"Yes — measure it properly first."*
 
 **Joined on the Geni ID where present and the Wikidata QID otherwise**,

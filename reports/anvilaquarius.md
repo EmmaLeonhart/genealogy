@@ -1,6 +1,6 @@
 # Anvilaquarius
 
-Emma, 2026-09-03: *"Anvilaquarius is a user I want to study the behaviour of."* Then, pointing at
+2026-09-03: *"Anvilaquarius is a user I want to study the behaviour of."* Then, pointing at
 her screen: *"Actually just this pastebin it"* — <https://pastebin.com/v4UcMx36>, which is the
 material she named.
 
@@ -36,7 +36,7 @@ nothing has been built for it.
 
 ## The identical dates are not our problem — her ruling
 
-Emma, 2026-09-04, on being shown the analysis: *"Why the fuck are you working on that thing? …
+2026-09-04, on being shown the analysis: *"Why the fuck are you working on that thing? …
 I formally place it in the category of none of my business … I am concerned with getting the data
 in more so than I am with the accuracy of it."*
 

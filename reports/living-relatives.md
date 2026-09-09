@@ -1,6 +1,6 @@
 # Living relatives on Google Scholar, ORCID and arXiv
 
-**Emma's item, 2026-08-18.** Twelve Scholar profiles and twelve ORCID records, read from
+The item, 2026-08-18.** Twelve Scholar profiles and twelve ORCID records, read from
 the profiles themselves. No Wikidata, no Geni export.
 
 **Her ranking, which is the frame for everything below:**
@@ -58,7 +58,7 @@ particular, because that is what a generic surname looks like.
 | surname | records | dated | range | **born ≥ 1940** | places |
 | --- | ---: | ---: | --- | ---: | --- |
 | **Hoknes** | 23 | 7 | 1849–1938 | **0** | Canada (1); the rest blank |
-| **Borsheim** | 167 | 127 | 1632–1998 | **36** | Borsheim, Borsok, Klepp, Årsvoll, Malmheim, Nærbø — **Jæren, Rogaland**; emigrants to **Canada**. **Emma's ancestral line** |
+| **Borsheim** | 167 | 127 | 1632–1998 | **36** | Borsheim, Borsok, Klepp, Årsvoll, Malmheim, Nærbø — **Jæren, Rogaland**; emigrants to **Canada**. **The ancestral line** |
 | **Børsheim** | 16 | 10 | 1587–1927 | **0** | M./Y. Børsheim, Strandebarm — **Hardanger, Hordaland** |
 | **Frisk** | 25 | 16 | 1720–1931 | **0** | Järbo, Munsåker, Grindstugan — **Sweden** |
 

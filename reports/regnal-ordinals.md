@@ -2,7 +2,7 @@
 
 **19,450 people** of 883,478, one row each in `regnal-ordinals.csv`. The ordinal is searched for in the given-name portion only — everything before the first GEDCOM slash — and never in the first token, because a name that opens with a numeral is a record that begins oddly rather than somebody's regnal number.
 
-**Emma, 2026-08-18, on what this population actually is:** *"regular ordinals simply are not a thing. There won't be regular ordinals here because somebody would need to be like a monarch or something."* So the roman class is the real one and the other two want reading with care.
+**2026-08-18, on what this population actually is:** *"regular ordinals simply are not a thing. There won't be regular ordinals here because somebody would need to be like a monarch or something."* So the roman class is the real one and the other two want reading with care.
 
 | kind | people | |
 | --- | ---: | --- |

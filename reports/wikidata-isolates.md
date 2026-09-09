@@ -1,6 +1,6 @@
 # Who the isolated Wikidata people are
 
-**Emma, 2026-08-15:** *"I want to basically analyze them demographically."*
+**2026-08-15:** *"I want to basically analyze them demographically."*
 
 **Isolated = the item states no `P22`/`P25`/`P40`/`P3373`/`P26`.** Every one
 is a row in `reports/wikidata-isolates.csv`.

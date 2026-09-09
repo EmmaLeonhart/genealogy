@@ -1,6 +1,6 @@
 # People Geni records as having no surname
 
-Emma, 2026-08-18: **"Mononyms are `Name /./`"** — Geni writes an explicit full stop in the GEDCOM surname slot to say *this person has no surname*. That is a positive statement, and different from an empty slot, which says nothing. Both are counted here and kept apart.
+2026-08-18: **"Mononyms are `Name /./`"** — Geni writes an explicit full stop in the GEDCOM surname slot to say *this person has no surname*. That is a positive statement, and different from an empty slot, which says nothing. Both are counted here and kept apart.
 
 | surname slot | people |
 | --- | ---: |

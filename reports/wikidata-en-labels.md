@@ -2,7 +2,7 @@
 
 Built by `scripts/build-en-label-batch.py`. **Emits nothing to Wikidata.**
 
-Emma, 2026-08-17: *"makes en labels for every individual (so Japanese gets transcribed)... all of the en labels are done at the same time as one step, and then mul, then ja, then zh."* This is that step and only that step.
+2026-08-17: *"makes en labels for every individual (so Japanese gets transcribed)... all of the en labels are done at the same time as one step, and then mul, then ja, then zh."* This is that step and only that step.
 
 - individuals with no English label: **156765**
 - of those, an `en` is now available: **114341**

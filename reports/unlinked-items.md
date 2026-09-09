@@ -1,6 +1,6 @@
 # Two unlinked items, to create on 2026-09-30
 
-Emma, 2026-08-13: *"create wikidata items for [these two] on September 30
+2026-08-13: *"create wikidata items for [these two] on September 30
 as independent unlinked items completely independently of their links
 elsewhere... these appear to have gotten into the data somehow but are
 apparently completely unlinked and I still want them to get in."*

@@ -1,6 +1,6 @@
 # Which tokens are patronymics, decided from the father
 
-**Emma, 2026-08-15:** *"Whether something is or is not a patronymic here is
+**2026-08-15:** *"Whether something is or is not a patronymic here is
 determined by completely offline information related to the person's father's
 name."* No Wikidata data is used here at all.
 
@@ -69,7 +69,7 @@ Every token of every person is a row in
 | **total** | **593,591** | |
 
 **33,326 tokens carry a patronymic FORM that the father does
-not confirm.** Emma asked for these to be separated rather than silently
+not confirm.** The request was for these to be separated rather than silently
 called non-patronymic: *"We probably should be doing some level of
 classification for situations where it is ambiguous."* They are the
 `AMBIGUOUS:` rows, split by why the father could not settle it.

@@ -1,6 +1,6 @@
 # Resume review — the last few days of conversation
 
-**Emma's instruction, 2026-08-16, the last thing she said before shutting the
+The instruction, 2026-08-16, the last thing she said before shutting the
 machine down:** *"can you just write the stuff down, whatever it is we're doing
 right now, into the queue? I would say probably at the beginning of the queue,
 write a thing about saying to review the last few days of conversation to ensure,
@@ -43,7 +43,7 @@ is gone. `queue.md`'s procedure is corrected to read both record types.
 
 ## Not done · 6,206 long-range labels exist and are not in the batch
 
-**Emma, 2026-08-16:** *"I'm pretty sure that long-range relationships have much
+**2026-08-16:** *"I'm pretty sure that long-range relationships have much
 larger things to contribute than you consider them to do so… It can work off of
 those long-range things… grandparents or grandchildren or siblings."*
 
@@ -119,7 +119,7 @@ is the item that already carries her deduplication warning.
 
 ## Not done · the structural merge stopped at showing cases
 
-**Emma, 2026-08-16:** *"What? What are you talking about? What even was the issue
+**2026-08-16:** *"What? What are you talking about? What even was the issue
 that you came across? The structural cases you were going to do and then you didn't
 do."*
 
@@ -136,7 +136,7 @@ to anything, the assumption should be I'm happy with what you're doing."*
 
 ## Not done · a saved page's two paths are still one chain
 
-**Emma, 2026-08-16:** *"You haven't been distinguishing the blood and marriage
+**2026-08-16:** *"You haven't been distinguishing the blood and marriage
 things. You've been treating them as one gigantic tree, one gigantic line? If so,
 that's really weird… It doesn't really matter that much whether you're distinguishing
 them, as long as you treat it as being two paths and not one."*

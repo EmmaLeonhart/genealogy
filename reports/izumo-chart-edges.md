@@ -1,7 +1,7 @@
 # Izumo chart — parent → child edges, read visually
 
 **Read off screenshots of the rendered `{{familytree}}`, never from the page text.**
-Emma, 2026-08-19: *"you can only look at it visually it's basically an image"*, and
+2026-08-19: *"you can only look at it visually it's basically an image"*, and
 again on 2026-08-20 when she allowed the text for the roster: *"You just cannot use
 the text as a way to get the relationships."* So `reports/izumo-chart-roster.tsv`
 says who exists; this file says who descends from whom, and the two are built by
@@ -119,12 +119,12 @@ Takakatsu 62 under Naonobu 59 *is* what the chart draws, so only the one edge is
 
 This was written up here first as "Geni disagrees with the chart, and the disagreement
 is Emma's call". That was wrong twice over: it presented my own bad edit as a property
-of her data, and it parked a fix I had caused on her. Emma, 2026-08-20:
+of her data, and it parked a fix I had caused on her. 2026-08-20:
 *"Naokatsu 63 Senge is fucking hallucinated in his placement"*.
 
 ## The in-law columns are read UPWARD only
 
-Emma, 2026-08-20: *"GO UP the in-laws line"*, and *"the in-laws line is absurd if you
+2026-08-20: *"GO UP the in-laws line"*, and *"the in-laws line is absurd if you
 go the other direction"*. The chart draws each in-law house as an **ancestor chain
 feeding into one marriage** - Sasaki down to En'ya down to Kakunin, who marries
 Yasutaka 52. Following those people *downward* on Geni leaves the chart immediately

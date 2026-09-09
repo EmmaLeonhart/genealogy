@@ -1,6 +1,6 @@
 # Marriages, wives and mothers in the Samaritan priestly families
 
-**Asked for by Emma, 2026-08-14: the marriage records of the priestly families —
+**Asked for by 2026-08-14: the marriage records of the priestly families —
 the mothers, the wives, the children, in the contemporary period.**
 
 Census: `reports/samaritan-marriages.csv` (one row per family per export) and

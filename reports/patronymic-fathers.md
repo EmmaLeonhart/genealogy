@@ -1,6 +1,6 @@
 # The fathers the patronymics imply
 
-Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-classification.csv`, which decides what is a patronymic from the father, per Emma 2026-08-15. **It emits no edit.**
+Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-classification.csv`, which decides what is a patronymic from the father, per 2026-08-15. **It emits no edit.**
 
 - bearers classified `patronymic (inferred, no father recorded)`: **18518**
 - of those, a name is available from confirmed fathers: **12145**
@@ -46,4 +46,4 @@ Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-cla
 
 ## Sourcing
 
-Each created father is sourced to **the Geni profile of the child whose patronymic attests him** (Emma, 2026-08-19).
+Each created father is sourced to **the Geni profile of the child whose patronymic attests him** (2026-08-19).

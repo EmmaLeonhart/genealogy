@@ -24,7 +24,7 @@ P2600. Both sides state the fact and the values differ.
 | P26 spouse | 68 | 36 (53%) | 32 |
 | **total** | **930** | 584 | 346 |
 
-**The per-property asymmetry Emma asked to look for is present.** Where the two
+**The per-property asymmetry the request was to look for is present.** Where the two
 sides disagree about a *date*, Wikidata's value carries a reference **69%** of
 the time; where they disagree about a *relationship*, only **46–53%**. That is a
 real difference and it runs in the direction the "Geni wins relationships,
@@ -78,7 +78,7 @@ settled by hand, `reports/husb-conflicts.md`, was resolved by **structure**
 the lead worth following: 292 of these are structural conflicts, and 0.00Z
 showed a structural conflict can be a duplicate rather than a disagreement.
 
-**The merge rule.** Emma chose a rule the code applies, which is the more
+**The merge rule.** The choice was a rule the code applies, which is the more
 committal of the two outputs she was offered. It should be generated from an
 adjudicated sample, not from the table above — citation coverage is not
 correctness, and a rule built on it would encode "Wikidata cites more sources"

@@ -24,7 +24,7 @@ father `Okina 坂上老` and his son `Inukai`, and the Sakanoue line continues b
 into Karitamaro and Tamuramaro. **The Tanba line is not attached to any of it** — the
 chart makes `Tanba no Yasuyori` a second son of Ōkuni and Geni gives Ōkuni only Inukai.
 
-Emma, 2026-08-20, after this survey: *"the tanba clan is simply absent and we can just
+2026-08-20, after this survey: *"the tanba clan is simply absent and we can just
 mass add going down from Tanba no Yasuyori as a child of Sakanoue no Okuni"*, and
 *"as the tanba line is so unattested the adding of the descendants en masse will be
 much cleaner"*.

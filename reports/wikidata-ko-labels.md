@@ -2,7 +2,7 @@
 
 Built by `scripts/build-ko-label-batch.py`. **Emits nothing to Wikidata.**
 
-Emma, 2026-09-01: *"korean is extremely important on par with Chinese and you really should prioritize getting korean labels all the time and this seems to not get that cjk includes korean"*.
+2026-09-01: *"korean is extremely important on par with Chinese and you really should prioritize getting korean labels all the time and this seems to not get that cjk includes korean"*.
 
 - **33,725 `ko` labels**, from sources that need no invention.
 

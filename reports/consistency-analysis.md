@@ -1,6 +1,6 @@
 # The "impossible" dates: what is actually going on with them
 
-**Emma, 2026-08-11:** *"it's your job to do analysis on these to figure out
+**2026-08-11:** *"it's your job to do analysis on these to figure out
 what's actually going on with them. The chances are there is actually something
 going on with them, and you're just deeming them impossible or whatever… you have
 to do the research on it."*

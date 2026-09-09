@@ -4,7 +4,7 @@ Source chart: <https://shinto.miraheze.org/wiki/Izumo_clan> § Genealogy.
 Geni entry point: <https://www.geni.com/people/Tsusa-no-mikoto-no-Mikoto/6000000012789160423>
 
 **The chart has no machine-readable relationships** — it is a `{{familytree}}` ASCII
-grid rendered as a table, and Emma ruled out parsing it (2026-08-19: *"you can only
+grid rendered as a table, and the ruling was out parsing it (2026-08-19: *"you can only
 look at it visually it's basically an image"*). Edges are read from screenshots of the
 rendered chart. Existence on Geni is checked **by profile ID**, not by the tree canvas
 — Emma, same day: *"you can just use the IDs and look through the list of children
@@ -15,7 +15,7 @@ and add"*. The canvas gave a stale render and cost a duplicate; the ID check did
 numbered kokuso match exactly despite romanisation differing between the 2008
 Japanese, 2011 English and 2026 additions. Never match these people by name spelling.
 
-## Rules for this job (Emma, 2026-08-19)
+## Rules for this job (2026-08-19)
 
 - **Only add individuals the chart has and Geni lacks entirely.**
 - **Never merge.** *"just flag the duplicates so I can merge them later merges are not
@@ -33,7 +33,7 @@ Japanese, 2011 English and 2026 additions. Never match these people by name spel
 ## Created
 
 Method: the person's **profile page** → `Add Family` → Relationship `child`. Not the tree
-canvas — Emma, 2026-08-19: *"do not fucking use the graphical tree shit just use the
+canvas — 2026-08-19: *"do not fucking use the graphical tree shit just use the
 fucking regular individual page"*. The canvas re-renders and pans between clicks, so
 roughly two thirds of clicks landed on empty space; the profile-page dialog is stable and
 its `Add another family member` checkbox chains several children of one parent.
@@ -95,7 +95,7 @@ changes — the people are right, only the attachment point is the guess.
 
 ## The Isetsuhiko line — state as of 2026-08-19
 
-Emma asked for this branch first: *"it is a lot smaller but also big enough it needs to
+The request was for this branch first: *"it is a lot smaller but also big enough it needs to
 be done"*. Measured by ID walk, its **named** spine is already complete to the chart's
 end:
 

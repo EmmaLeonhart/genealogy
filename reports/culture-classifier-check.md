@@ -66,7 +66,7 @@ costs nothing and needs no threshold.
 cross from a Japanese neighbourhood into a Manchu or Chinese one through a marriage"* — inferred
 from the **two** classified-Japanese people who have a Wikidata item, both misclassified.
 
-**Two is not a basis for a claim about the walk.** Emma, 2026-09-01: *"please don't make
+**Two is not a basis for a claim about the walk.** 2026-09-01: *"please don't make
 generalizations on the entire dataset with small test sections, because the dataset is extremely
 heterogeneous."* Measured over the whole output of `reports/cjk-romanisation.csv` instead:
 

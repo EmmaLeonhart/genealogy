@@ -2,7 +2,7 @@
 
 Built by `scripts/build-four-script-labels.py`. **Emits nothing to Wikidata.**
 
-Emma, 2026-09-01: **"Wire hi/ar/ru/el now."** These four have been listed in the seven-languages item since the beginning and nothing had ever emitted one.
+2026-09-01: **"Wire hi/ar/ru/el now."** These four have been listed in the seven-languages item since the beginning and nothing had ever emitted one.
 
 - **151,320 labels** over 37,830 people who already carry a Wikidata item.
 

@@ -1,6 +1,6 @@
 # Spec: modelling person names for Wikidata
 
-**The purpose is to add, not to correct.** Emma, 2026-08-10: *"the entire
+**The purpose is to add, not to correct.** 2026-08-10: *"the entire
 purpose of this is to add it… Correcting stuff on Wikidata is actually such a
 pain that it's almost effectively out of the question. We will be more prone to
 adding in contradictory information cited to Geni than we are to correcting
@@ -82,7 +82,7 @@ the data ranks them and the case walk has already shown Geni carrying prose,
 alternates joined by "or", and empty subtags inside fields meant to hold one
 value.
 
-## `_MARNM` is the married name — answered by Emma, 2026-08-11
+## `_MARNM` is the married name — answered by 2026-08-11
 
 **And the corpus uses the slot for a good deal more than marriage.** Both halves
 matter, so both are recorded here.
@@ -145,7 +145,7 @@ marking this spec lacks.
 - **Whether `NSFX` belongs in a label.** `Henry III King of England` carries
   `NSFX King of England`; Wikidata's own label is `Henry III of England`. So
   Geni's full string is not what Wikidata uses even when both are English.
-- **`mul` labels** — Emma said "occasionally", which is not yet a rule.
+- **`mul` labels** — The instruction was "occasionally", which is not yet a rule.
 - **The 501 missing English labels.** Small enough to look at individually.
 
 ## What this spec deliberately does not do

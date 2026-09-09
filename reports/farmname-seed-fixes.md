@@ -1,6 +1,6 @@
 # Placeholder seeds that need a surname, not `father of X`
 
-Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is built. I will do the editing on geni for this."*
+2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is built. I will do the editing on geni for this."*
 
 **She does the Geni edits.** This file is the worklist, not an instruction to touch anything.
 

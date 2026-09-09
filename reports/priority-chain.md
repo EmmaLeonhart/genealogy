@@ -1,6 +1,6 @@
 # Priority chain: linking Emma into the Wikidata world tree
 
-Emma, 2026-08-13: *"This one is a priority and it has an ordering."*
+2026-08-13: *"This one is a priority and it has an ordering."*
 
 **17 edits, executed in this order.** The ordering is forced: the
 Geni ID must exist before anything cites it, and a creation must have a

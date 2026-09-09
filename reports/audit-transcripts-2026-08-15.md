@@ -86,7 +86,7 @@ is how the 08-07 incident happened.
 
 ### 3.2 The QuickStatements emitter
 
-Emma's spec (#187, 08-12) is JSON edit objects with dependency ordering, ~100 a
+The spec (#187, 08-12) is JSON edit objects with dependency ordering, ~100 a
 day. A QuickStatements emitter was built anyway; `build-edits.py` was deleted
 when she said so, but `src/genimerge/quickstatements.py`, the CLI command, and
 `reports/wikidata-add-geni-id.qs` / `reports/wikidata-samaritan-priests.qs`

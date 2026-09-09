@@ -1,6 +1,6 @@
 # Which languages a relationship label can be generated in
 
-**Emma asked, 2026-08-14:** *"The language things are obviously very strongly
+**Asked, 2026-08-14:** *"The language things are obviously very strongly
 based upon the presence of the label in the language already. I would like you to
 check."*
 

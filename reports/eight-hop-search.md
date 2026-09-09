@@ -1,6 +1,6 @@
 # Every relative within eight hops, searched
 
-**Emma's item, 2026-08-18:** *"look at all my relatives that are within eight hops of me.
+The item, 2026-08-18:** *"look at all my relatives that are within eight hops of me.
 Do some level of web searching for them… or probably wikidata searching."*
 
 Offline graph, then the Wikidata search API. No writes, no exports.

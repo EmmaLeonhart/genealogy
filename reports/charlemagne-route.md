@@ -1,6 +1,6 @@
 # Cheapest route from `6000000087535357291` into the Wikidata world tree
 
-Emma, 2026-08-13: *"We can colloquially define it based on link to charlemagne …
+2026-08-13: *"We can colloquially define it based on link to charlemagne …
 the one with the least required new individuals to create."*
 
 The cost minimised is **people to create**, not hops. Stepping onto someone who

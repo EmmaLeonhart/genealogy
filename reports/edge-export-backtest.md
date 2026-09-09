@@ -1,6 +1,6 @@
 # What the edge exports closed
 
-**Emma, 2026-08-15:** *"Finding these sparse areas, which we kind of did, and I did exports based off of them, but it feels like you kind of forgot about them."* This is the check that was never run.
+**2026-08-15:** *"Finding these sparse areas, which we kind of did, and I did exports based off of them, but it feels like you kind of forgot about them."* This is the check that was never run.
 
 Every one of the **2,631** people in `reports/export-entry-points.csv` was in **exactly one** export when that file was written — the file is drawn from clusters only one export ever reached. Counting the same people across the corpus today gives what the edge exports bought, exactly.
 

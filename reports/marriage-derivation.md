@@ -1,6 +1,6 @@
 # Marriage: date, place and end, derived
 
-Plan item 6. Emma, 2026-08-12: *"Marriage date and place and end and whatever
+Plan item 6. 2026-08-12: *"Marriage date and place and end and whatever
 will be easy-ish."*
 
 `reports/derived-marriages.csv` — **36,314 families** that say something
@@ -55,7 +55,7 @@ kept rather than dropped.
 
 ## Not done here
 
-- **No `P26` shape chosen.** Emma asked to see cases before deciding and
+- **No `P26` shape chosen.** The request was to see cases before deciding and
   `reports/marriages.md` holds them; this is the derivation, not the mapping.
 - **No place resolved to an item.**
 - **The 30 families where Wikidata names a different spouse are untouched** —

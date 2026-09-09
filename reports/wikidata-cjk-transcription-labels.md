@@ -2,7 +2,7 @@
 
 Built by `scripts/build-cjk-transcription-labels.py`. **Emits nothing to Wikidata.**
 
-Emma, 2026-09-01, asked whether a rule-based transcription of a Latin name counts as a publishable label: **emit it for the people who already have a QID.**
+2026-09-01, asked whether a rule-based transcription of a Latin name counts as a publishable label: **emit it for the people who already have a QID.**
 
 - **101,760 labels** over 33,920 people.
 

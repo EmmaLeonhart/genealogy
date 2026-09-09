@@ -1,6 +1,6 @@
 # Merges to do - by hand
 
-**Emma's file, 2026-08-31**: *"Just make a 'merges to do' file that records these merges and the wikidata duplicates and all the other things we went over that's a file I'll use tomorrow to do merges manually on my own with the quickstatements session"*.
+The file, 2026-08-31**: *"Just make a 'merges to do' file that records these merges and the wikidata duplicates and all the other things we went over that's a file I'll use tomorrow to do merges manually on my own with the quickstatements session"*.
 
 Regenerate with `python scripts/build-merges-to-do.py`. Every link is prefilled; nothing here has been executed.
 

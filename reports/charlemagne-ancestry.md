@@ -1,6 +1,6 @@
 # The blood line to Charlemagne, and where it thins
 
-Emma, 2026-08-13: *"do this link to Charlemagne instead of the other one.
+2026-08-13: *"do this link to Charlemagne instead of the other one.
 Ancestry is good like this. I want to see which points where the descendants
 clearly thin in a way that suggests I'll need another export."*
 

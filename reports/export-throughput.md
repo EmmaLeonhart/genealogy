@@ -1,6 +1,6 @@
 # Export slowness: size, or the clock?
 
-Emma, 2026-08-18: *"Does the slowness correspond to the size of the exports, or does this slowness correspond to the time?"* — the question that decides whether the campaign continues in its present form.
+2026-08-18: *"Does the slowness correspond to the size of the exports, or does this slowness correspond to the time?"* — the question that decides whether the campaign continues in its present form.
 
 **104 exports** in `exports/chain-seeds/`, **75** of them with a usable build window.
 

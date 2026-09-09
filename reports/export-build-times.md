@@ -1,6 +1,6 @@
 # How long Geni actually takes to build an export
 
-Emma, 2026-08-18: *"Does the slowness correspond to the size of the exports, or does this slowness correspond to the time?"*
+2026-08-18: *"Does the slowness correspond to the size of the exports, or does this slowness correspond to the time?"*
 
 **Measured from the session transcripts, not inferred from file mtimes.** Every export ran through the browser tool, and every message carries a timestamp. For each Geni `task_id` the transcripts give when it was first submitted, the last time the page still said *being created*, and the first time it said *ready*. The true build time is between those last two.
 

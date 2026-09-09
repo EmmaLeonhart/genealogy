@@ -1,6 +1,6 @@
 # Bureätten: who is covered, who is not
 
-Emma's queue item: *"run exports to get a good account of the Bure Kinship... Check to
+The queue item: *"run exports to get a good account of the Bure Kinship... Check to
 make sure all members of the category are covered, since I think they are all on geni and
 can be highly linked up, all of them should have geni exports on them if they are unlinked
 and we check for those whose wikidata items do not connected geni ids similar to Samaritan
@@ -30,7 +30,7 @@ work.
 **All 147 Bureätten people already in the tree sit in ONE connected component**, the same
 1,274,287-person component as everything else. `scripts/measure-bure-connectivity.py`.
 
-Emma's framing was *"we're just trying to connect them to each other... We're not trying
+The framing was *"we're just trying to connect them to each other... We're not trying
 to run a gigantic export on all of them"*, and the answer is that they already are. The
 work is **coverage**, not joining.
 

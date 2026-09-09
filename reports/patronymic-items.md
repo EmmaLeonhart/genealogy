@@ -1,10 +1,10 @@
 # Patronymic items that already exist on Wikidata
 
-Emma, 2026-08-15: *"for the 119 patronymic items, please save them… so that we can be a bit clear about this stuff. Because I don't want us to be creating duplicates of things."*
+2026-08-15: *"for the 119 patronymic items, please save them… so that we can be a bit clear about this stuff. Because I don't want us to be creating duplicates of things."*
 
 **Every item on Wikidata that is `instance of` patronymic (`Q110874`): 633.** One row each in `reports/patronymic-items.csv`. Given-name and family-name items are already covered by `reports/name-items.csv` (132,569 rows); patronymics were the gap, because the local store is a Geni-shaped slice of **people** and holds none of them.
 
-**119 carry `P144` based on** — the structured link to the name they derive from, which is what Emma asked to find. **97 carry `P5278`**, pairing `Eriksson` with `Eriksdotter`.
+**119 carry `P144` based on** — the structured link to the name they derive from, which is what the request was to find. **97 carry `P5278`**, pairing `Eriksson` with `Eriksdotter`.
 
 ## Languages
 

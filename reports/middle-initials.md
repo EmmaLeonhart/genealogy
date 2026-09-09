@@ -2,7 +2,7 @@
 
 **26,337 single-letter tokens across 25,353 people**, out of 865,527 in the corpus. One row per token, so somebody with two initials appears twice.
 
-Emma, 2026-08-18: *"As far as the middle initial people, I'm not really sure what to do with them, at least going into other languages."* This is the size and shape of that population. It deliberately proposes nothing.
+2026-08-18: *"As far as the middle initial people, I'm not really sure what to do with them, at least going into other languages."* This is the size and shape of that population. It deliberately proposes nothing.
 
 The difficulty is that an initial is not a name. `John` has a Wikidata name item and a standard rendering in Japanese; `C` has neither, because it abbreviates a name the record never gives us. So these people cannot be labelled mechanically in a non-Latin language without a decision about what happens to the letter.
 

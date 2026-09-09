@@ -1,6 +1,6 @@
 # Do any close living relatives have a publication record?
 
-**Emma's item, 2026-08-18:** *"Yeah can you actually search for this stuff?"*
+The item, 2026-08-18:** *"Yeah can you actually search for this stuff?"*
 
 **Answer: no. Not one of the 53.** OpenAlex, every living person inside eight hops.
 

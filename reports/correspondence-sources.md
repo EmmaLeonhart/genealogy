@@ -1,6 +1,6 @@
 # The three Geni↔Wikidata correspondence sources, and how they differ
 
-**Emma, 2026-09-05:** *"I'm not sure what the origin of this file is. And I'm concerned it might
+**2026-09-05:** *"I'm not sure what the origin of this file is. And I'm concerned it might
 be conflating two different entity resolution files with different functions — one gedcom and one
 that operates within manual identifications I made using an html artifact."*
 
@@ -28,7 +28,7 @@ tree."* Registered in `reports/entry-point-groups.tsv` as `special-geni-gedcom-r
 
 ## ⛔ THE NAME OF CHANNEL 2, which is the thing she asked to have fixed
 
-**It is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.** Emma, 2026-09-05: *"Artifact entity
+**It is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.** 2026-09-05: *"Artifact entity
 resolution is not 'manual entity resolution' and calling it as such is extremely misleading and
 it's the reason for my fear. It should be called idk 'manual parental zipper merge
 correspondences' since the extremely vague title is almost certainly gonna be fucking abused by

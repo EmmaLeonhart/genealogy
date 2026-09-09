@@ -1,6 +1,6 @@
 # Izumo / Senge clan: the roster, and where it actually stands
 
-Emma's queue item, from 2026-08-19: build the family tree that is visually on
+The queue item, from 2026-08-19: build the family tree that is visually on
 <https://shinto.miraheze.org/wiki/Izumo_clan> onto Geni, carry the Wikidata links, and
 flag duplicate-profile merges rather than performing them.
 

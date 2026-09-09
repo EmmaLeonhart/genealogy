@@ -2,7 +2,7 @@
 
 Built by `scripts/build-mul-label-batch.py`. **Emits nothing to Wikidata.**
 
-Emma, 2026-08-17: *"then mul gets made for every individual (almost always derived from en)"*.
+2026-08-17: *"then mul gets made for every individual (almost always derived from en)"*.
 
 - step 1 `en` edits: **114341**
 - `mul` mirrored from them: **5880**

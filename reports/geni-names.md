@@ -1,6 +1,6 @@
 # Geni name records: how many, which fields, which scripts
 
-Asked for by Emma, 2026-08-12. Every `NAME` record is a row in
+Asked for by 2026-08-12. Every `NAME` record is a row in
 `reports/geni-name-records.csv`.
 
 **298,591 people, 444,874 `NAME` records.**

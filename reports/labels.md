@@ -1,6 +1,6 @@
 # Derived labels, and the catalogue behind them
 
-Plan item 1. Emma, 2026-08-12: *"First thing is deriving labels from gedcom.
+Plan item 1. 2026-08-12: *"First thing is deriving labels from gedcom.
 Something that's very easy."* And: *"Every individual needs an English,
 Japanese, and Chinese label but really we gotta catalogue these things a bit
 better too as a bulk operation."*

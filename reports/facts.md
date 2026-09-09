@@ -1,6 +1,6 @@
 # Derived facts: occupation, dates, places
 
-Plan items 3 and 4. Emma, 2026-08-12: *"Occupation can be done with string
+Plan items 3 and 4. 2026-08-12: *"Occupation can be done with string
 stuff"* and *"Birthplace birth date death date death place burial date burial
 place all can be done with string."*
 
@@ -22,7 +22,7 @@ of whom 43,680 carry a Wikidata item.
 
 ## Addresses, kept as text
 
-Emma, 2026-08-12: *"Do addresses with the address property (multilingual
+2026-08-12: *"Do addresses with the address property (multilingual
 text)."* Wikidata's **`P6375` street address** is monolingual text, so an
 address never has to become a place item. **This supersedes the `PLAC`-only
 rule of 2026-08-11**, which was chosen before its cost was known.

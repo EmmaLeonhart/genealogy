@@ -1,6 +1,6 @@
 # Which QuickStatements batches are produced by anything?
 
-**Emma asked for this on 2026-09-05**, after noticing that `BURE_PER_DAY` — a *per-day* cap —
+**The request was for this on 2026-09-05**, after noticing that `BURE_PER_DAY` — a *per-day* cap —
 sat on a script no schedule ran: *"Uhh I'm just confused why are these segregated in code?"*
 
 **No deletions were made from this audit.** Her instruction was to check and report.

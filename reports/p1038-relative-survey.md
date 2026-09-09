@@ -1,6 +1,6 @@
 # `P1038` *relative* in the local store — measured, not assumed
 
-Emma, 2026-08-25, after ranking parents / spouses / children / siblings: *"there are other relationships there that are sometimes reported on Wikidata, like the relative role"*. The instruction attached to it was to **measure how much exists before building anything on it**. This is that measurement and nothing is built.
+2026-08-25, after ranking parents / spouses / children / siblings: *"there are other relationships there that are sometimes reported on Wikidata, like the relative role"*. The instruction attached to it was to **measure how much exists before building anything on it**. This is that measurement and nothing is built.
 
 **The store is a Geni-shaped slice** — 2,247,041 lines read from the shards, seeded from `P2600` holders and their neighbours. Every number below is about that slice, never about Wikidata as a whole.
 

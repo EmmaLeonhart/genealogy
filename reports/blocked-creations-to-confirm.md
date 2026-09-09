@@ -1,6 +1,6 @@
 # Blocked creations — is our Geni person the same as this Wikidata item?
 
-**Emma, 2026-08-31:** *"just ask if geni == wikidata for all the blocked creations from the current network. You should be adding the geni id and treating as an existing network member if I approve."*
+**2026-08-31:** *"just ask if geni == wikidata for all the blocked creations from the current network. You should be adding the geni id and treating as an existing network member if I approve."*
 
 Each row is a creation the duplicate guard is holding. The **candidate** is a Wikidata item that
 our person's parent already names as a child, which is why the guard will not create a possible

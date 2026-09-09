@@ -8,7 +8,7 @@
 
 ## Izumo — 3 groups
 
-Emma, 2026-08-24: *"Izumo ones are good to explore to see how redirects potentially work."* Found by joining the candidate ids against the 210 ids named across every `reports/izumo*.tsv`; searching the candidate file for `izumo` finds none of them, because the profiles are called Senge, Kitajima and so on.
+2026-08-24: *"Izumo ones are good to explore to see how redirects potentially work."* Found by joining the candidate ids against the 210 ids named across every `reports/izumo*.tsv`; searching the candidate file for `izumo` finds none of them, because the profiles are called Senge, Kitajima and so on.
 
 - **息長宿祢王** — 2 profiles, parent of the same name, same name, child of kanime ikazuchi
     - https://www.geni.com/people/x/6000000001846463714

@@ -1,6 +1,6 @@
 # The most eccentric people in the synoptic tree
 
-**Emma, 2026-09-03:** *"George RR Martin is interesting due to his eccentricity… Might be worth
+**2026-09-03:** *"George RR Martin is interesting due to his eccentricity… Might be worth
 measuring the most eccentric people in the synoptic tree."*
 
 `scripts/measure-eccentricity.py` → **`reports/tree-eccentricity.csv`**, one row per person, all
@@ -85,7 +85,7 @@ Samaritan and Chinese results above are exactly where it is not.
 
 ## Eccentricity is PARTLY A RECENCY MEASURE, and that qualifies everything above
 
-**Emma, 2026-09-03, on Ettinger:** *"I think Ettinger is high in eccentricity because of the fact
+**2026-09-03, on Ettinger:** *"I think Ettinger is high in eccentricity because of the fact
 that he… I only recently added him, basically."*
 
 She is right that this is the mechanism, and it is checkable. Over the **602** exports in the

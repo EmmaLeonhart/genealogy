@@ -1,6 +1,6 @@
 # Every relative with a Wikidata item, ranked
 
-**Emma, 2026-08-18:** *"Jonas Salte (Q138696805) is the best person to go to. Any other
+**2026-08-18:** *"Jonas Salte (Q138696805) is the best person to go to. Any other
 people — do you have a ranking of all the ones we found?"*
 
 **22 people within 14 hops carry an item.** Ranked below by hops, then by what the item is

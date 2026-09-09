@@ -1,6 +1,6 @@
 # Eccentric CLUSTERS in the synoptic tree
 
-**Emma, 2026-09-05:** *"You found a bunch of Chinese ancient people were most eccentric… I want to see other eccentric clusters"*.
+**2026-09-05:** *"You found a bunch of Chinese ancient people were most eccentric… I want to see other eccentric clusters"*.
 
 `reports/eccentricity.md` ranks people, and the top of that ranking is one descent — six people on a single chain. A ranked list cannot show a second group, because everything near the top is the same lineage.
 
@@ -10,7 +10,7 @@
 
 ## ⛔ `P2600 linked` DOES NOT MEAN WIKIDATA HAS THEM
 
-**Emma, 2026-09-05, on the first version of this report:** *"your measurement of there being qids is a bit flawed. Both Chinese lines likely have wiki data items even if no connection… Pre dynastic Egypt definitely does… Axum certainly have qids lol… Third intermediate period def has qids lol"*.
+**2026-09-05, on the first version of this report:** *"your measurement of there being qids is a bit flawed. Both Chinese lines likely have wiki data items even if no connection… Pre dynastic Egypt definitely does… Axum certainly have qids lol… Third intermediate period def has qids lol"*.
 
 **She is right, and the column was mislabelled rather than miscounted.** It counts a `P2600` *Geni.com profile ID* — somebody having **linked** a Geni profile to a Wikidata item. Scorpion I, Makeda Queen of Sheba and Scheschonq all have items; not one has a `P2600`, so the cluster reads `0` and the first version of this report said *"every other cluster is 0"* as though that were a fact about Wikidata's content.
 
@@ -20,7 +20,7 @@
 
 ## Rope or ball — `per hop` and `deg≤2` say which, and they are different findings
 
-**Emma, 2026-09-05:** *"there's a bit of fuckery that geni enforced with its bible ban that we can undo, although the exact way isn't 100% clear"*. Tracing one cluster shows the shape of it, and the shape is measurable for all of them.
+**2026-09-05:** *"there's a bit of fuckery that geni enforced with its bible ban that we can undo, although the exact way isn't 100% clear"*. Tracing one cluster shows the shape of it, and the shape is measurable for all of them.
 
 **The 153 hops from Charlemagne to `Solomon King of Israel` (`6000000210521125824`) are a ROPE.** The route runs Charlemagne → Louis the Pious → the Italian and Byzantine houses → the Ethiopian royal line, and then **about 120 consecutive Kings of Axum at degree 2** — each recorded only as the son of the last, no siblings, no spouses, no branches. Every generation adds a hop because there is nothing else to add.
 

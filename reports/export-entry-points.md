@@ -1,6 +1,6 @@
 # Where to seed the next exports
 
-**Emma, 2026-08-15:** *"find people who are most distant from people that
+**2026-08-15:** *"find people who are most distant from people that
 are not exported otherwise, so that I can actually run the exports out of
 them… Give me doorway status or something."*
 

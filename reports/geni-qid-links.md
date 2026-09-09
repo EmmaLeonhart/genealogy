@@ -1,6 +1,6 @@
 # The join key was in the data: a Wikidata URL in the Geni About Me
 
-Emma, 2026-08-23: *"we have intentionally added actual join keys for the Samaritan high
+2026-08-23: *"we have intentionally added actual join keys for the Samaritan high
 priests, Izumo clan, and Tanba clan... The wikidata items linked in the descriptions."*
 
 She is right, and it is exact. Geni exports the About Me as a `NOTE`:
@@ -152,7 +152,7 @@ reference at all, which the template permits: `P2600` is in the uncited group.
 
 ## The synoptic correspondence: five sources, now one file
 
-**Emma, 2026-08-23, and she was right to worry:** *"there was a tsv qid correspondence
+**2026-08-23, and she was right to worry:** *"there was a tsv qid correspondence
 quickstatement thing is that represented in our data?… I'm afraid it isn't properly
 represented in our synoptic tree."*
 

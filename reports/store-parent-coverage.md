@@ -1,6 +1,6 @@
 # Are the parents on Wikidata actually in our store?
 
-**Emma, 2026-08-15:** *"I was under the assumption that… we would have
+**2026-08-15:** *"I was under the assumption that… we would have
 effectively covered the entirety of the wikidata network that would ever run
 into this issue… My impression was it was pretty much entirely 20th-century
 people who are not like this."*

@@ -1,6 +1,6 @@
 # What Wikidata does with a middle initial, by language
 
-Emma asked for evidence rather than an assertion — *"I want evidence of it being standard"* — and then for the question to be asked per language: *"I'm guessing Russian and Greek do it with transliterating the initial though and they should do that. Idk what Hindi does but do the standard for it too."*
+The request was for evidence rather than an assertion — *"I want evidence of it being standard"* — and then for the question to be asked per language: *"I'm guessing Russian and Greek do it with transliterating the initial though and they should do that. Idk what Hindi does but do the standard for it too."*
 
 **19,250 items** in the local store have an English label of the form `Given X Surname`, after excluding 2,264 regnal ordinals such as `Henry I of England`. **6,378** of them carry a label in at least one of the languages below.
 

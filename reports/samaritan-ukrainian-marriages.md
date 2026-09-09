@@ -1,6 +1,6 @@
 # The Ukrainian marriages into the Samaritan community
 
-**Emma's line of enquiry, 2026-08-14, and she was ahead of it throughout.** She
+The line of enquiry, 2026-08-14, and she was ahead of it throughout.** She
 named Yousef Cohen as the thread to pull, asked for the Ukrainian marriages
 specifically, and when four pages returned 403 she **downloaded all four
 herself**. Those saved pages are what settled the surname question and corrected

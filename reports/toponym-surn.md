@@ -1,6 +1,6 @@
 # Surnames that are places — the spread, before any rule
 
-**Emma asked for exactly this, 2026-08-11.** Shown Aénor of Châtellerault —
+**The request was for exactly this, 2026-08-11.** Shown Aénor of Châtellerault —
 `SURN of Châtellerault`, birthplace Châtellerault, and no `P734` on her Wikidata
 item at all — and offered three options, she chose **"Show me more cases first."**
 So this is the spread, and it proposes nothing.
@@ -125,5 +125,5 @@ is not proposed as a rule.
   a place" hits 8,649 rows of which the plurality are ordinary Norwegian
   surnames.
 - **The signal has a direction problem** — `Willis` / Willis Hill Cemetery.
-- **No rule is proposed.** Emma asked to see cases before one exists, and this is
+- **No rule is proposed.** The request was to see cases before one exists, and this is
   the cases.

@@ -2,7 +2,7 @@
 
 Built by `scripts/build-unidentified-clusters.py`. **Proposes nothing** — this is for reading.
 
-Emma, 2026-08-19: *"I'll just try to identify them especially if they cluster it well likely help."*
+2026-08-19: *"I'll just try to identify them especially if they cluster it well likely help."*
 
 - records with no culture: **964**
 - connected clusters they form: **306**

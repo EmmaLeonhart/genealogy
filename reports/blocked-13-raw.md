@@ -1,6 +1,6 @@
 # The 13 blocked creations — raw records, both sides
 
-Emma asked to see each person before being asked about them. These are the rows as they stand;
+The request was to see each person before being asked about them. These are the rows as they stand;
 nothing is reformatted or summarised. Where a field is empty in our data it is shown empty.
 
 **Why each is a candidate:** the duplicate guard holds a creation when the person's PARENT

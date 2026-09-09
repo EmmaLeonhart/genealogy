@@ -1,6 +1,6 @@
 # Family links, and the parents that would be invented
 
-Plan item 5. Emma, 2026-08-12: *"And family links. Noting that sibling
+Plan item 5. 2026-08-12: *"And family links. Noting that sibling
 relationships without parents need to get two parents that are 'father of x and
 y' and 'mother of x and y' and geni linked if possible. Mother father spouse and
 child is easier."*

@@ -1,6 +1,6 @@
 # order.life's 94 properties: which are Wikidata's, which are its own
 
-**Asked for by Emma, 2026-08-14** — check the order.life properties for novel ones
+**Asked for by 2026-08-14** — check the order.life properties for novel ones
 before anything is passed through. Source:
 `order.life/wikibase/properties/*.json`.
 
@@ -53,7 +53,7 @@ raw claims for exactly this reason, so none of these numbers is ever touched.
 
 ## The Q-space is order.life's own, and this is the worse trap
 
-**Emma, 2026-08-14:** *"The order.life QIDs, some of them correspond, some of them
+**2026-08-14:** *"The order.life QIDs, some of them correspond, some of them
 don't. The QIDs are relatively different on order.life versus other things."*
 
 The property numbers being local is the obvious hazard. The **item** numbers being
