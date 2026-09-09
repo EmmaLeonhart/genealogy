@@ -24265,7 +24265,7 @@ route is the editing tools, or building the escape with `chr(92)`.
 The whole queue was interviewed through before sleeping and every item ruled on. What follows is
 what those rulings turned into.
 
-**Nine items deleted outright** on her word — the eight Asian identities, the Bure random-walk,
+**Nine items deleted outright** by ruling — the eight Asian identities, the Bure random-walk,
 the World-Tree review and its `universe` note, the chains-as-a-system, the six unwalked algorithm
 steps, the four-label census, resolving names against the store, and the 46%/41% transliteration
 measurement. Three moved to the tail. The queue is doing what it should: getting small.
@@ -24373,7 +24373,7 @@ strictly ordered, each the precondition for the next. All four verified rather t
 
 1. **Shrink what CI checks out** — `filter: blob:none` plus a non-cone sparse checkout in
    `ci.yml`, five patterns, measured at 13.3 GB tracked against ~14 GB of runner disk.
-2. **Anonymise** — done to *her* definition of 2026-09-01, which replaced the
+2. **Anonymise** — done to the *stated* definition of 2026-09-01, which replaced the
    96,000-private-rows reading: cut the strategy content and the code that treats the item as
    special. A repo-wide grep for that vocabulary across every `.md`, `.py` and `.yml` returns
    **nothing**.
@@ -24381,14 +24381,14 @@ strictly ordered, each the precondition for the next. All four verified rather t
 4. **The two things that were waiting on it** — `daily-batch-email.yml` and
    `send_batch_email.py` exist and have run green twice; and the tests moratorium ends, below.
 
-**The no-new-tests moratorium is over, and it ended on its own terms.** Her condition was *"no
+**The no-new-tests moratorium is over, and it ended on its own terms.** The condition was *"no
 more tests until we got the ci/cd with github actions as a public repo running"*. That is now
 literally true, so `CLAUDE.md` records it as ended rather than leaving a rule in force whose
 trigger has fired. What does not come back is the habit it was against — a test that asserts only
 the case its function already defaults to, of which `tests/test_namemodel.py:620` remains the
 worked example, and measurement over the real corpus stays the primary evidence.
 
-**Retitled, not deleted:** the email section was headed *"BUILT, needs three secrets from her"*,
+**Retitled, not deleted:** the email section was headed *"BUILT, needs three secrets"*,
 which is an annotation of done-ness in a queue that is supposed to hold only outstanding work. It
 is now *"Add three SMTP secrets so the daily batch email can send"* — the action, which is a decision.
 
@@ -24453,7 +24453,7 @@ running the measurement, decide later.
 
 ## 2026-09-01 — dead-queue sweep, third pass
 
-**Deleted: § *The midpoint export campaign — her batch of 2026-08-17*.** Its purpose was closing
+**Deleted: § *The midpoint export campaign — the batch of 2026-08-17*.** Its purpose was closing
 chain gaps, and its own instrument now says there are none. `scripts/find-chain-gaps.py`, the tool
 the section names and which answers the question straight off the export files without a merge:
 
@@ -24469,7 +24469,7 @@ path is connected end to end* across 699 files.
 never the profile page* and *no already-opened filter* are both in `CLAUDE.md`, twice each.
 
 **Kept, and they are not dead:** § *Always last* is a standing check that the four crons are
-running, not a one-off; § *`exports/post-merge/` — MOVED TO THE TAIL* is her live ruling to leave
+running, not a one-off; § *`exports/post-merge/` — MOVED TO THE TAIL* is the live ruling to leave
 the 408 in place and keep running the measurement.
 
 ## 2026-09-01 — the label-gap census, re-run after the redaction fix
@@ -24510,7 +24510,7 @@ properly, that framing was wrong, and the breakdown of the 57,179 says so:
 local languages; a description needs a named relative and they have none. `NN Larsson` with no
 `en` is the algorithm working, not failing.
 
-**The 9,580 are reachable only through relations her table does not name.** The slot my census
+**The 9,580 are reachable only through relations the table does not name.** The slot my census
 used: **spouse's father 8,129**, spouse's mother 799, spouse's sibling 426, and a long tail.
 **9,562 of 9,580 are at two hops.** These people have a spouse, but the spouse is *also* unnamed,
 so the preview cannot say *"wife of NN"* at one hop and the nearest named person is a
@@ -24548,7 +24548,7 @@ Same treatment the SMTP section got an hour earlier, for the same reason.
 
 ## 2026-09-01 — sweep: the rulings table trimmed to what is not done
 
-**No section deleted; one cut back.** § *HER RULINGS, 2026-09-01* carried a 20-row *"To do, in her
+**No section deleted; one cut back.** § *THE RULINGS, 2026-09-01* carried a 20-row *"To do, in the
 words"* table, and **18 of the 20 are finished**. Left whole it reads as twenty outstanding jobs,
 which is exactly what was objected to on 2026-08-30 — a queue that keeps completed work as steps
 becomes unreadable. The rulings themselves are untouched: the definitional ones (what
@@ -24567,8 +24567,8 @@ relation words that have never been sanctioned and is therefore a decision rathe
 ruling is to leave them and keep measuring.
 
 **Nothing else was dead.** The CI slow-lane item is mid-measurement — run `33524955243` has the
-instrumented job in flight — and the rest are specifications, standing procedures, her tail
-placements, or the three things waiting on her.
+instrumented job in flight — and the rest are specifications, standing procedures, tail
+placements, or the three things waiting on a ruling.
 
 ## 2026-09-01 — the daily batch delivers by ISSUE, and needs no secrets at all
 
@@ -24586,7 +24586,7 @@ the deliverable and an email carrying it is a complete hand-off. It was **54,184
 2026-09-01 against a 65,536 issue-body limit — 17% of headroom — so the fallback to the run
 artifact is written and is not theoretical.
 
-**The issue is assigned to her**, because a notification on issue creation is not guaranteed by
+**The issue is assigned to the repo owner**, because a notification on issue creation is not guaranteed by
 watching alone; assignment is.
 
 **§ *Add three SMTP secrets* is deleted from the queue.** That leaves two blockers, both
@@ -24640,7 +24640,7 @@ now names every generator that failed, so a persistent failure is loud rather th
 **Not yet verified.** The confirming run is still going; this entry will be wrong if
 `build-garborg-day.py --compose` turns out to fail inside the refresher for some other reason.
 
-## 2026-09-01 — her three rulings, executed
+## 2026-09-01 — three rulings, executed
 
 **CI.** `test_density.py` and `test_paths.py` are out of the workflow, a ruling. A hosted runner
 has 16 GB and `test_density` pins it at 15.9 GB with 33 MB free for ten minutes before being
@@ -24667,7 +24667,7 @@ That was the actual bug: two halves of one job with nothing forcing them to agre
 | `mul` only, no other language | 21,088 | **11,470** |
 | `en` batch total | 104,860 | **114,341** |
 
-**Transcription for QID-holders** is her third ruling and is the next item, not this commit.
+**Transcription for QID-holders** is the third ruling and is the next item, not this commit.
 
 **One thing found and queued rather than fixed:** the placeholder batch emits `ja` and `zh` and
 **no `ko`** — zero occurrences. It is the largest label producer in the repo, so 58,937 people get
@@ -24691,12 +24691,12 @@ the change bought (`en` 137,528 → 147,148, CJK 44,132 → 58,937) and keeps on
 outside the placeholder population, 935 of them CJK-named.
 
 **Nothing else was dead.** The drift item is mid-run, the `ko`-in-placeholder item was written an
-hour ago, and the rest are specifications, standing procedures, her tail items, or tomorrow's
+hour ago, and the rest are specifications, standing procedures, tail items, or tomorrow's
 spine removal.
 
 ## 2026-09-01 — transcribed CJK labels for the people who already have a QID
 
-Her third ruling of the day, asked directly: does a rule-based transcription of a Latin name count
+The third ruling of the day, asked directly: does a rule-based transcription of a Latin name count
 as a publishable label? **Yes, for the people who already have a QID.** Not for everyone — 1.29
 million people would be ~2.5 million edits nobody can apply, because most are not on Wikidata yet
 and their labels ride along with the creation.
@@ -24745,7 +24745,7 @@ recently-stale layer — which it did.
 
 ## 2026-09-01 — a pipeline that runs only when the account has been editing
 
-**Her design:** *"Every six hours it checks the time of my last contribution. If it is under six
+**The design:** *"Every six hours it checks the time of my last contribution. If it is under six
 hours old then it does the full pipeline. Ledger refresh plus quickstatement rebuild. So basically
 it is intended as facilitating potentially quite intensive work like this."*
 
@@ -24769,14 +24769,14 @@ signal"*. `/usr/bin/time -v` plus a 30-second sampler are in the compose step so
 also too big for 16 GB, the log says which and when.
 
 **It commits and pushes the rebuilt batch**, repacking the gzipped CSVs first, and rebases before
-pushing so a concurrent commit is not clobbered. Then it opens the issue, assigned to her.
+pushing so a concurrent commit is not clobbered. Then it opens the issue, assigned to the owner.
 
 ## 2026-09-01 — dead-queue sweep, fourth pass
 
 **24 sections before, 24 after.** No whole section was dead; two were carrying finished work
 inside them, which § *How to read this file* says to cut back rather than annotate.
 
-**Deleted: § *HER RULINGS* → `### The export loop: the four retries were already satisfied`.**
+**Deleted: § *THE RULINGS* → `### The export loop: the four retries were already satisfied`.**
 A completed verification with no step left in it — it ends *"There is nothing to retry"* and
 *"So no export was run."* Checked independently rather than taken from its own claim: all four
 people are in the corpus by `grep` over `exports/` —
@@ -24805,10 +24805,10 @@ current* (standing processes, not steps) · § *The placeholder batch emits `ja`
 identifications, which is what `manual_p2600_lines()` draws its ten-a-run from.
 
 **206 SAME, 1 UNSURE** (`Magnus Fredrik Otonpoika Tandefelt` / `Q108067073`). One pair was already
-held. Her `UNSURE` stays in the file and stays out of the fold, per § *The manual approvals are
+held. An `UNSURE` stays in the file and stays out of the fold, per § *The manual approvals are
 TRAINING DATA* - an `UNSURE` is a data point about where the evidence runs out.
 
-**Her finding, and it is now measured:** *"I think for 1600-1900 people years are best
+**The finding, and it is now measured:** *"I think for 1600-1900 people years are best
 disambiguation"*, because those people *"are bilingual in terms of the records... their names are
 represented in many different ways and made from places."*
 
@@ -24825,11 +24825,11 @@ existing `solo -> date -> name` ordering in `zipper-join.py` rather than changin
 the reason, which `reports/zipper-reliability.md` had already reached from the other side with
 `date` at 0.0% disagreement against `name` at 9.2%.
 
-**One row is held back and put as a question: `Q5712230`.** Two of her pairs claim it -
+**One row is held back and put as a question: `Q5712230`.** Two of the pairs claim it -
 `6000000013227282778` Johan Mattias von Engeström and `6000000013227327610` Brita Christina
 Wallenstråle, his wife - and both rows carry the same `their_name`, *Johan Mathias von Engeström*.
 That identical third column is the tell: the deck rendered the husband's item against the wife's
-row, so her `SAME` was given on a mismatched pair rather than in error. § *A second Geni ID on one
+row, so that `SAME` was given on a mismatched pair rather than in error. § *A second Geni ID on one
 Wikidata item is NOT a conflict* does not cover it, because that is one person with two Geni
 profiles and this is two people with one item.
 
@@ -24858,9 +24858,9 @@ source in the repo to be present, so `manual-identifications.csv` is now a sourc
 `date_refuted()` alone, so a pair hand-ruled `DIFFERENT` can still be asserted by another
 source. The item says to measure it first, since it may well be zero.
 
-## 2026-09-01 — her negative verdicts measured out, and a pipeline fault I kept repeating
+## 2026-09-01 — the negative verdicts measured out, and a pipeline fault I kept repeating
 
-**Queue item cleared: § *Her `DIFFERENT` verdicts refute nothing*.** It said to measure before
+**Queue item cleared: § *The `DIFFERENT` verdicts refute nothing*.** It said to measure before
 building anything, and the measurement closes it: **1 negative verdict in 320** (one `WRONG`, from
 the 2026-08-25 `zipper-hard` batch) and **0 of them still asserted** by
 `reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
@@ -24924,7 +24924,7 @@ precondition the 2026-09-02 removal item asks to check before deleting the spine
 
 **Checks before attaching, and one failed.** `grep -c Aen` is **0** in both files. The `CREATE`
 count did **not** match: 24 in the day file against 21 reported. It is not a fault — the day file
-carries 21 people plus the **3 name items prepended** under her 2026-08-30 rule *one batch file,
+carries 21 people plus the **3 name items prepended** under the 2026-08-30 rule *one batch file,
 names first*. But comparing a whole-file `CREATE` count to a people-only figure will "fail" every
 run, so the check as written is measuring two different things.
 
@@ -24955,7 +24955,7 @@ question I would not answer alone* no longer describes itself: the spine removal
 as the true last item, so one removal is elsewhere and the other never was one. It is now
 § *The `NEVER_TOUCH` lists — one question for the owner alone*, which is what the surviving content
 is — whether those lists come out entirely and that item becomes editable like any other, or stay as
-the mechanism keeping her out of the traversable graph. A heading that promises two things the
+the mechanism keeping that item out of the traversable graph. A heading that promises two things the
 section does not contain is the same readability failure as annotating a finished item.
 
 ## 2026-09-01 — merges-to-do refreshed, and it was blind to the duplicates actually hit
@@ -25057,13 +25057,13 @@ move, and verified afterwards: a distinctive line from every removed section is 
 
 The specifications and standing processes — THE DAILY ALGORITHM, THE EDIT ALGORITHM, THE TAIL
 ALGORITHM, the chain of provenance, link reliability order, STANDING PROCEDURE, the daily Garborg
-batch. The records and meta — *How to read this file*, the Aug 28 manual adds, HER RULINGS,
+batch. The records and meta — *How to read this file*, the Aug 28 manual adds, THE RULINGS,
 Pointers, the `exports/post-merge` tail note. And *Always last*, which carries the cron set: the
 `autonomous-loop` skill documents those too, but it was ported rather than trusted to a second
 copy.
 
 **The split is now clean and is the one that was always implied:** `CLAUDE.md` is the authority —
-the rules, her algorithms, the records of what was decided. `queue.md` is work that can be finished
+the rules, the algorithms, the records of what was decided. `queue.md` is work that can be finished
 and deleted. A specification cannot be finished, so it was never a queue item.
 
 **`queue.md` goes 1,006 lines and 24 sections → 631 lines and 12 items.**
@@ -25096,12 +25096,12 @@ queue item then said *"**They were not removed**"*, which hid the re-add and is 
 as `OBENDER_HOLD_EXPIRES`: the sets are built from the Kitajima lists only while today is before
 the date, and are **empty afterwards**. After 2026-10-01 nothing in this repo excludes anybody.
 
-**Auditing for other special-casing found none in logic.** Her ids appear in 19 places across
+**Auditing for other special-casing found none in logic.** Those ids appear in 19 places across
 `scripts/`, `src/` and `tests/`; all are docstring examples of the GEDCOM line, or analysis that
-legitimately starts from her because every relationship path in `paths/` starts at her profile.
+legitimately starts there because every relationship path in `paths/` starts at that profile.
 `build-trunk-batch.py` carries a stale comment about `Q232803` but its filter is generic.
 
-**Widening the test from her two ids to the whole held set surfaced two legacy files** that name
+**Widening the test from those two ids to the whole held set surfaced two legacy files** that name
 held Kitajima ids: `wikidata-join-izumo.qs` (2026-08-24, **56 lines**) and
 `wikidata-geni-qid-p2600.qs` (2026-08-23, **20 lines**). Neither is produced by the daily pipeline.
 They are excluded by name with that count recorded in the test, rather than the test being quietly
@@ -25115,13 +25115,13 @@ these things lol. I'm just a normal person in the tree lol."*
 
 `6000000087535357291` → `6000000001846508982` and `Q140568870` → `Q232803`, with the labels that
 went with them, across 38 files in `scripts/`, `src/`, `tests/`, `docs/`, `README.md`, `queue.md`.
-**0 residual** in code or docs. The corpus under `exports/` is untouched — those are her real GEDCOM
+**0 residual** in code or docs. The corpus under `exports/` is untouched — those are the real GEDCOM
 records and a GEDCOM is never edited.
 
 **The pairing is TRUE, which is what makes it a good example.** `6000000001846508982` really is
 Jingū-kōgō (Okinagatarashi-hime) on Geni and `Q232803` really is 神功皇后 — 38 sitelinks, no
-`P2600`. Her *"it was a joke replacing my qid with hers"* explains why `Q232803` was recorded as
-the item throughout; the examples now assert something correct instead of standing in for her.
+`P2600`. The *"it was a joke replacing my qid with hers"* explains why `Q232803` was recorded as
+the item throughout; the examples now assert something correct instead of standing in for it.
 
 **Two `CLAUDE.md` sections were deleted rather than renamed** — § *The owner's own duplicates are
 DELIBERATE* and § *The owner IS on the traversable graph*. Both exist only to discuss one item's
@@ -25194,7 +25194,7 @@ straight.** Korean splits those by the speaker's sex **and relative age** — �
 against 시동생 — and age is not what the side logic yields. 482 people keep `ja` and `zh` and no
 `ko`. That is a real gap rather than a claim that it cannot be done.
 
-**Her other correction, applied to how this was written up:** *"please don't make generalizations
+**The other correction, applied to how this was written up:** *"please don't make generalizations
 on the entire dataset with small test sections, because the dataset is extremely heterogeneous."*
 The counts above are over the whole preview, not a slice — and no claim is made here about what the
 61 or the 482 imply for any other population.
@@ -25217,7 +25217,7 @@ which Korean splits by the speaker's sex *and relative age* — the side logic y
 is a different derivation rather than an impossible one. The remainder simply lack a Hangul
 rendering for some token, which is the transliteration table's problem and already has its own item.
 
-**Checked and left alone:** § *"Synoptic tree" means two things* (needs her per-usage ruling),
+**Checked and left alone:** § *"Synoptic tree" means two things* (needs a per-usage ruling),
 § *`P1814`* (corrected today, still open and now correctly blocked on the culture classifier),
 § *`exports/post-merge/`* (the standing ruling to leave and keep measuring), § *LABELS, IN THE
 SET ORDER*, and the seven tail items ordered by hand.
@@ -25255,7 +25255,7 @@ join tests.
 
 ## 2026-09-01 — "synoptic tree" is defined once, and one sentence meant neither thing
 
-**Queue item cleared: § *"Synoptic tree" means two different things*.** Her 2026-08-29 diagnosis:
+**Queue item cleared: § *"Synoptic tree" means two different things*.** The 2026-08-29 diagnosis:
 *"it is consistently conflated between the union of all the geni gedcoms and the union of that tree
 with all data sources."*
 
@@ -25317,7 +25317,7 @@ first-degree relative of every merged individual is present"*, not a standing me
 the whole job unattended: the gate found a contribution inside six hours, the ledger refreshed to
 **1,158 rows**, `build-garborg-day.py --compose` produced **23 creations**, the bot committed them
 as `45f8eaf6`, the `wikidata-garborg-day` artifact carried the `.qs` and `out/parent-review.html`,
-and issue **#9** opened assigned to her.
+and issue **#9** opened, assigned to the owner.
 
 **It also regenerated `reports/parent-candidates.tsv`** and the placeholder and four-script label
 batches, which is the deck-on-the-pipeline wiring from earlier in the day working as intended
@@ -25387,7 +25387,7 @@ the **pair** was wrong: `6000000004100737740` → `Q11355852`, source `zipper` o
 those are `zipper`-only.** That is a lead rather than a verdict — a woman recorded as `見星院 阿知和`
 and as `於久の方` is one person under a Buddhist name and shares nothing by design. But it is a cheap
 falsification test on a join the zipper already made, which is what `CLAUDE.md` permits: *labels
-confirm a position; they never choose one.* They belong in her deck.
+confirm a position; they never choose one.* They belong in the deck.
 
 ## 2026-09-02 — the kana extractor: three more shapes, and one where flattening was WRONG
 
@@ -25468,7 +25468,7 @@ bullet now says exactly that, which is the difference between a finished measure
 job. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* is the rule it would
 otherwise break.
 
-**The other two populations stay untouched and both need her**: a marker *leading* a real surname
+**The other two populations stay untouched and both need a ruling**: a marker *leading* a real surname
 (`unknown Bloomfield` → `mul: NN Bloomfield`) and a *description* in the name slot. Both decide
 what a person is called.
 
@@ -25529,7 +25529,7 @@ a standing instruction. That is the invented-blocker pattern `CLAUDE.md` names.
 
 **Population one was already done and had been for weeks.** `normalise_marker_spelling`, wired in
 `derive-labels.py`, turns `unknown Bloomfield` into `NN Bloomfield`. Nothing needed deciding; I had
-been reporting solved work as blocked on her.
+been reporting solved work as blocked.
 
 **Population three is done now.** `labels.is_description` + `labels.mul_for_description`, wired in
 `derive-labels.py`: **2,298 rows changed, every one `mul` only, `en` untouched on all of them.**
@@ -25719,7 +25719,7 @@ Next in the set order is `mul`, *"almost always derived from en"*.
 - **`Anonymise, shrink the CI checkout, then go public`** — all three pieces done, and its
   premise superseded. CI checks out with `filter: blob:none` and a non-cone `sparse-checkout`
   (`.github/workflows/ci.yml` lines 44–53, 113–122); the repo went public 2026-09-01; and
-  `CLAUDE.md` § *Anonymisation is NOT redacting the tree* records her redefinition, which
+  `CLAUDE.md` § *Anonymisation is NOT redacting the tree* records that redefinition, which
   *"replaces the ~96,000-private-rows reading entirely"* — the section still described that
   superseded reading as the gate. The one remaining hold is the Kitajima one, which expires
   2026-10-01 by its own constant.
@@ -25752,18 +25752,18 @@ which this repo meets by construction.
 Verified rather than asserted: `reports/derived-labels.csv` holds 20,928 rows carrying a redaction
 marker out of 1,451,964, and the corpus keeps all 94,071 `Private` and 17,548 `<private>` markers.
 
-`CLAUDE.md` § *Anonymisation* now leads with her criterion and states outright that nobody is
+`CLAUDE.md` § *Anonymisation* now leads with the criterion and states outright that nobody is
 excluded, so the next summary cannot repeat the ambiguity.
 
 ## 2026-09-02 — the `mul` step, and two kinds of unreadable label
 
-`scripts/build-mul-labels.py` → `reports/label-mul.tsv`, all 1,451,964 people. Her *"almost always
+`scripts/build-mul-labels.py` → `reports/label-mul.tsv`, all 1,451,964 people. The *"almost always
 derived from en"* is now measured: 1,292,894 already had `mul` identical to `en`, so the step is
 carrying `en` across and naming the exceptions. **5,901 gain a `mul` they did not have**, 131 of
 them already holding a Wikidata item.
 
 - **504 unnamed people were getting punctuation as a label** — `?` (223), `/???/` (134), `? /?/`
-  (68), `*` (29), `.`, `--`. Her line is *words yes, punctuation no*, so those become `NN`, while
+  (68), `*` (29), `.`, `--`. The line is *words yes, punctuation no*, so those become `NN`, while
   the 44 word-markers (`未知` 23, `Без име` 18, `未詳`, `某`, `Неизвестна`) are preserved.
 - **34 labels already in `derived-labels.csv` had no word character at all.** 27 were invisible —
   U+200F/U+200E bidi marks with spaces — and were hiding a real surname: `‏‏‎ ‎ /姬姓/` becomes
@@ -25904,7 +25904,7 @@ site, the merges HTML page, the spine removal (`SPINE_PATHS` still present), and
 
 ## 2026-09-02 — `exports/post-merge/` is COMPLETE, 27 of 27
 
-Her stopping rule was *"export until every first-degree relative of every merged individual is
+The stopping rule was *"export until every first-degree relative of every merged individual is
 present"*. It now reads **27 of 27 covered, 0 survivors needing an export**, and the queue section
 is deleted.
 
