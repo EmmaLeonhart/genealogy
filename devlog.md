@@ -6924,7 +6924,7 @@ and the move was to delete it, not to audit her tree. Recorded in `CLAUDE.md`.
 
 ## 2026-08-15 — item 6, multi-hop relationship labels
 
-Emma's ordering, extending the one-hop precedence rather than replacing it:
+The ordering, extending the one-hop precedence rather than replacing it:
 **child-of → spouse-of → parent-of → grandchild-of → sibling / nephew / uncle.**
 Built into `scripts/build-relationship-label-preview.py` rather than a second
 script, so the placeholder vocabulary, the redaction skip and the unusable-label
@@ -6948,7 +6948,7 @@ the normalisation Emma has objected to before.
 
 ## 2026-08-15 — `name modelling.txt`, and the patronymic model was wrong
 
-Emma wrote it by hand and committed it at 13:03. **I had reported one minute
+It was written by hand and committed at 13:03. **I had reported one minute
 earlier that no such file existed** — my search was for `*.md` in the repo root
 and hers is `.txt`. The cron prompt I wrote said "markdown file", which is the
 bug: it narrowed a search that had no reason to be narrow.
@@ -6980,8 +6980,8 @@ candidates from both and decides from the father.
 
 ## 2026-08-15 — item 13: order.life will not carry the CJK labels
 
-**Measured, and it contradicts the figure I used to raise the question.** I told
-Emma order.life carries `ja` on 73% of its items and that this could remove a
+**Measured, and it contradicts the figure used to raise the question.** The claim
+was that order.life carries `ja` on 73% of its items and that this could remove a
 large part of item 1. That was a sample of **order.life's own items**, not of the
 people we share with it, and it does not hold on the population that matters.
 
@@ -7011,7 +7011,7 @@ Labels available on those 28,624:
 meaningfully shrink item 1. The `en` coverage is real (28,405) but `en` was never
 the hard part.
 
-Emma was right the first time: *"it doesn't have a whole lot of them."* The 73%
+The first impression was right: *"it doesn't have a whole lot of them."* The 73%
 was mine and it was measured on the wrong population.
 
 
@@ -7058,7 +7058,7 @@ and the thing missing is the genealogy, exactly the shape `CLAUDE.md` records fo
 the Samaritan priests and for `Q232803`.
 
 **They are modern.** 47.8% born in the 1800s and 28.1% in the 1900s — **76% in two
-centuries**. Everything before 1500 together is under 1.5%. Emma's guess about the
+centuries**. Everything before 1500 together is under 1.5%. The guess about the
 Geni-linked items skewing modern (`todo.md` § 8b, deferred until the download
 finished) holds for this population.
 
@@ -7110,12 +7110,12 @@ split here, so the tokens are the **label's** words. `P735`/`P734` name *items*,
 and resolving those to strings needs the name-item download still running.
 
 Also deleted item 14, which was marked DONE and kept "for the finding" — the exact
-pattern Emma had this queue cleaned of this morning, reintroduced by me.
+pattern this queue was cleaned of this morning, and reintroduced.
 
 
 ## 2026-08-15 — item 16, the order.life processing, run from the vendored copy
 
-Emma at 04:46: *"And why was the order.life one not run? Should be run based on
+At 04:46: *"And why was the order.life one not run? Should be run based on
 the contents of this repo or a cron job to run at 1am."* No 1am cron was ever
 created; she then chose a queue item over a cron, because a cron only fires while
 the session is idle and these keep starving.
@@ -7159,7 +7159,7 @@ created as a person.
 
 **Item 9 deleted too.** It was a complete record of finished patronymic work
 sitting in the queue as if it were a step — the third time this session I have
-left a done item in place after Emma had the file cleaned out this morning.
+left a done item in place after the file had been cleaned out this morning.
 
 
 ## 2026-08-15 — Nordic isolates hit 92%, and the country filter is the reason
@@ -7168,7 +7168,7 @@ Three batches of academics filtered only by occupation ran **39%, 37%, 34%**. On
 batch of 100 filtered by **country as well** — 55 Norwegian, 44 Swedish, 1 Swedish
 Pomerania — came back at **92%**.
 
-**That kills the academics hypothesis as the explanation.** Emma's theory was that
+**That kills the academics hypothesis as the explanation.** The theory was that
 academics come from stable, well-documented families; that fits 34–39% but cannot
 explain a jump to 92% when the only variable changed was nationality. These people
 are close to *her* tree — Norway and Sweden are where she is linked — so the path
@@ -7188,7 +7188,7 @@ this loop, which is why the batch size is hers to set.
 
 ## 2026-08-15 — all 560 saved paths ingested, and where the bridges actually are
 
-**Emma's ask:** *"I want you to ingest the paths and stuff like that so that we
+**The ask:** *"I want you to ingest the paths and stuff like that so that we
 have all the paths down. I want to figure out… what level of overlap there is
 between these paths, what amounts of these paths we have, where we have overlaps."*
 
@@ -7234,7 +7234,7 @@ one exists and the nearest step at which each appears.
 
 ## 2026-08-15 — the bridge census, and the Japan experiment cannot run
 
-**Emma's four questions about the paths, answered.** 560 paths name 9,211 people;
+**Four questions about the paths, answered.** 560 paths name 9,211 people;
 560 of those are the researchers themselves, so **8,650 are bridge people**
 between her and a researcher.
 
@@ -7289,7 +7289,7 @@ individuals.
 
 ## 2026-08-15 — agenda task B: did the edge exports close the sparse areas?
 
-**Nobody had checked.** Emma: *"I did exports based off of them, but it feels like
+**Nobody had checked:** *"I did exports based off of them, but it feels like
 you kind of forgot about them."* Correct — 31 edge exports were placed and no
 measurement followed.
 
@@ -7328,11 +7328,11 @@ The top 18 account for **178 path-slots**, and two of them share one seed.
 ### Task C, closed by measurement
 
 **30 Japanese isolates exist**, all now opened. **19,467 Chinese**, of which
-**17,259 are the Song/CBDB block** Emma already dismissed — leaving **2,208** real
+**17,259 are the Song/CBDB block** already dismissed — leaving **2,208** real
 ones across Qing, Yuan, Tang, Ming and the two republics.
 
 
-## 2026-08-15 — bloat review, and three deletions Emma approved
+## 2026-08-15 — bloat review, and three approved deletions
 
 Started from `reports/repo-freshness.csv` as instructed. **Two of my four
 candidates were wrong because that file is stale**, which is now item 24: it lists
@@ -7347,7 +7347,7 @@ gone on 2026-08-15.
   items"* with near-identical columns. `name-resolution.csv` is the newest and was
   regenerated today with the diacritic fix; these two were earlier attempts.
 - **`scripts/fetch-patronymic-items.py`** — the only script besides the downloader
-  that made a live Wikidata query. Emma: a live-query script is a hazard, which is
+  that made a live Wikidata query: a live-query script is a hazard, which is
   `CLAUDE.md`'s own reasoning about the 2026-08-07 rate-limit incident. Its output,
   `reports/patronymic-items.csv`, is kept.
 
@@ -7359,7 +7359,7 @@ imported by name looked unused. Worth remembering before the next sweep.
 
 ## 2026-08-15 — namelinks rewritten to `name modelling.txt`
 
-Emma approved "rewrite now, regenerate the batch". `src/genimerge/namelinks.py`
+"Rewrite now, regenerate the batch" was approved. `src/genimerge/namelinks.py`
 now emits her model rather than the superseded one:
 
 - **`P5056` patronym or matronym** as a property of its own, parallel to `P735`
@@ -7390,7 +7390,7 @@ entities suites, 53 passed.
 
 ## 2026-08-16 — the exports-then-gaps-then-regeneration sequence, finished
 
-Emma's sequence, which she asked to be queued so it ran in exactly this order:
+The sequence, queued so it ran in exactly this order:
 exports in, measure what they cleared, gaps analysis, then a full synoptic
 regeneration.
 
@@ -7431,7 +7431,7 @@ name appears nowhere, and she is correctly absent from the creations because
 The download and the store-index rebuild made this answerable for the first time.
 **1,633 of the 1,731 competing items are readable.**
 
-Emma's diagnosis named the right causes and overstated their reach. Splitting by
+The diagnosis named the right causes and overstated their reach. Splitting by
 `P31` *instance of* — given name versus family name — resolves **192** of 975
 ambiguous strings. The other 769 are two items of the *same* kind sharing a label.
 
@@ -7460,7 +7460,7 @@ every patronymic."*
 
 **That was false.** The script creates **name items** and emits no person
 statements. Its 13,320 creations carry `P31` *instance of* and `P144` *based on*
-and nothing else — `P735` *given name* appears nowhere in the output. Under Emma's
+and nothing else — `P735` *given name* appears nowhere in the output. Under the
 model a patronymic name item **is** an instance of `Q110874` *patronymic*, so
 `P31 → Q110874` is right, and `P144` on a name item pointing at the base name is
 the convention 119 of the 633 existing patronymic items already follow.
@@ -7482,7 +7482,7 @@ it points at the father as a person. Those are different jobs in different scrip
 
 ## 2026-08-16 — Samaritan normalization: already built, and one real defect
 
-Emma listed five priests as *well modelled* and fifteen as *badly modelled* and
+Five priests were listed as *well modelled* and fifteen as *badly modelled*, and
 asked for the normalization to be planned. **What her labels mean is measurable**,
 and it is one property: `P39` *position held* → `Q678510` *Samaritan High Priest*,
 present on **5/5** of the good and **0/15** of the bad. On two other counts the
@@ -7505,7 +7505,7 @@ read from the store, not assumed: 12 of 21 do.
 
 ## 2026-08-16 — NN on Wikidata: 1,570 relationship labels
 
-Emma's item, untouched since she wrote it. **1,588 Wikidata items carry `NN` or an
+A queued item, untouched since it was written. **1,588 Wikidata items carry `NN` or an
 equivalent as their English label**, and only **27** carry a `P2600` *Geni.com
 profile ID* — so this is Wikidata-side work, not a Geni join.
 
@@ -7526,7 +7526,7 @@ Geni withholding one.
 
 ## 2026-08-16 — `Private` and `NN` are one population, and 1,109 items had no label at all
 
-Emma, correcting two things in one message: *"why the fuck are you emptying private
+Two corrections in one message: *"why the fuck are you emptying private
 but relabeling NN? Everything is NN. NN and private are the same thing here, because
 if there's a private individual whose name is not exported, it comes out as an NN."*
 And then the model itself: *"NN is not relabeled… NN is always preserved in the
@@ -7549,7 +7549,7 @@ something false; an item labelled nothing cannot be read or found. Same objectio
 `labels.py` gains `is_unnamed()`, `labels_for()` and `describe()`. `is_unnamed` is
 **wider than `is_redacted`** — it catches the `NN` spellings too — and **narrower than
 suppression**: nobody is dropped, everybody gets `mul`, and `en` is filled wherever a
-relative supplies a name. That distinction is the whole of Emma's earlier objection
+relative supplies a name. That distinction is the whole of the earlier objection
 when `nn` was quietly added to `NOT_A_NAME`: *"I didn't tell you to avoid the NN
 people."* Avoiding them is still forbidden; giving them a readable label is the
 opposite of avoiding them.
@@ -7620,7 +7620,7 @@ and gets a `_real` decorator combining `skipif` with `slow`.
 `sources` drops byte-identical repeats — and the test's own docstring calls the
 failure *"information rather than breakage"*. **The only recorded remedy is deleting
 the repeat, which `CLAUDE.md` forbids without qualification**, and which of the two
-paths keeps the file is a filing question that is explicitly Emma's. So nothing was
+paths keeps the file is a filing question that is explicitly a hand call. So nothing was
 deleted, renamed, or asserted away, and it is queued as NEEDS-DECISION with the
 options written out. Making that test pass by loosening it is precisely the move the
 hard rails forbid.
@@ -7634,7 +7634,7 @@ now a documented property of the environment rather than an open question, and
 
 The last open piece of `name modelling.txt` except the regnal ordinal.
 `genimerge.names` gains `patronymic_chain()` and `given_part()`, and they
-reproduce Emma's worked example exactly:
+reproduce the worked example exactly:
 
     Abisha III ben Phinhas ben Yittzhaq ben Shalma
       P5056 ben Phinhas    P144 Phinhas ben Yittzhaq ben Shalma   P1545 1
@@ -7655,7 +7655,7 @@ only the person it points at carries the rest.
 - **The surname slot emitted `P734` family name for it.** Geni writes
   `Abram /ben Yitzhaq/`, so the patronymic sits in `SURN` — and the emitter was
   asserting `ben Yitzhaq` is an inherited family name, which is the precise false
-  claim `P5056` exists to avoid. Emma had already said both fields must be checked:
+  claim `P5056` exists to avoid. It had already been said that both fields must be checked:
   *"We have to check in the given names and in the surname whether it is a patronym
   or the regular name."*
 - **The all-or-nothing rule silenced the chain.** Given names are emitted whole or
@@ -7734,7 +7734,7 @@ still NEEDS-DECISION and still untouched. `queue.md` loses **two** sections for 
 one item; it had been queued twice under different headings.
 
 
-## 2026-08-16 — the duplicate export deleted, on Emma's authorisation
+## 2026-08-16 — the duplicate export deleted, on authorisation
 
 *"Yes delete it."* The only NEEDS-DECISION in the repo, and the only fix was one
 `CLAUDE.md` forbids outright, so it sat untouched until she ruled.
@@ -7760,7 +7760,7 @@ overlap.
 
 ## 2026-08-16 — `NN` moved to `mul` properly, and the one-store habit named again
 
-Emma stated the model in full and it corrected two things I had built.
+The model was stated in full, and it corrected two things already built.
 
 **`NN` belongs in `mul` and nowhere else.** Not "preserve it wherever it is" — *move*
 it. Every local-language copy goes: 2,273 labels across fifteen languages, `en` 1549
@@ -7848,7 +7848,7 @@ Chain re-run end to end — `derive-family.py` → `build-relationship-label-pre
 | `mul: NN` and nothing else | 14,987 | **9,287** |
 
 **7,001 of the gain is the long-range relatives** — 5,720 grandparent, 617
-uncle/aunt, 382 sibling, 166 grandchild, 116 nephew/niece — which is what Emma was
+uncle/aunt, 382 sibling, 166 grandchild, 116 nephew/niece — which is what was
 pointing at on 08-16: *"long-range relationships have much larger things to contribute
 than you consider them to do so."* The rest is the tree having grown.
 
@@ -7873,7 +7873,7 @@ Two of the three findings from the resume review, closed.
 ### 3,719 `add_geni_id` edits, and 180 withheld because they are identity claims
 
 `scripts/walk-structural-merge.py` had been writing
-`reports/structural-correspondence.csv` since 08-15 and **nothing consumed it**. Emma:
+`reports/structural-correspondence.csv` since 08-15 and **nothing consumed it**:
 *"The structural cases you were going to do and then you didn't do."*
 `scripts/build-structural-correspondence-batch.py` is the consumer, and it emits the
 one thing her ordering rule allows first — the identifier:
@@ -7906,7 +7906,7 @@ position the structure chose"* asks for.
 
 ### A saved Geni page holds two paths, and 242 of 586 files are affected
 
-Emma, 2026-08-16: *"You haven't been distinguishing the blood and marriage things…
+Ruled 2026-08-16: *"You haven't been distinguishing the blood and marriage things…
 as long as you treat it as being two paths and not one."*
 
 Geni shows a pair a blood path **and** an in-law path; `path-from-html` writes both
@@ -8009,7 +8009,7 @@ middle is exactly what this ranks on, so a seam would manufacture the best candi
 on the page.
 
 **Her question needs two conditions and the old file carried one.** `held` and
-`bridges_through` are new columns. Emma is row 1 — **818 chains**, because *"You"*
+`bridges_through` are new columns. The account owner is row 1 — **818 chains**, because *"You"*
 opens every path — and now reads `held: yes`, `bridges_through: 0`, the opposite of a
 bridge person. Of 10,287 people named by a path, **3,337 are held and 6,950 are not**.
 
@@ -8054,7 +8054,7 @@ the same shape — a filter with something downstream that undid it.**
 
 - **`NN` in `en`.** Copying `label_en` across without looking at it put `NN`, `NN NN`
   and `NN Hildesheim` into `en` for the 10 people whose derived label is exactly that.
-  Emma, 2026-08-16: *"no local language should have it."*
+  Ruled 2026-08-16: *"no local language should have it."*
 - **`Private` in `mul`.** Filtering `en` alone left `structural_placeholder:2302305`
   labelled `Private` in `mul`. `Private` is not a label in **any** slot, and the
   marker these people get is `NN` — *"if there's a private individual whose name is
@@ -8080,7 +8080,7 @@ profile ID*, which is what makes them retrievable.
 
 ## 2026-08-17 — `º` was a writing system, and it cost 646 people their label
 
-Emma, shown the 364 structural placeholders with no label: *"OH MY GOD What the FUCK
+Shown the 364 structural placeholders with no label: *"OH MY GOD What the FUCK
 ARE THESE 364 placeholders… just fucking figure them out."*
 
 **They are not unnamed. 219 of the 364 have a real name that was thrown away**, and
@@ -8138,7 +8138,7 @@ because six of those pairs now have a label to share tokens with.
 
 ## 2026-08-17 — the marker-label census, and a false positive caught before it shipped
 
-Emma's first label item: *"finds these kinds of ones where the label has this stuff
+The first label item: *"finds these kinds of ones where the label has this stuff
 already in it, and normalizes them into proper things based on our rules."*
 `scripts/build-marker-label-census.py` is the census that has to come first, per
 § *"Analyse this" means build a CSV of every instance*. **Both stores, named
@@ -8193,7 +8193,7 @@ that fed a live batch with no generator — is superseded by this, since the 1,5
 items it lists are a filtered view of these 17,707.
 
 
-## 2026-08-17 — three rulings from Emma, and the CJK records turn out to be the template
+## 2026-08-17 — three rulings, and the CJK records turn out to be the template
 
 She answered both questions the census raised, and then added two instructions that
 change what the `ja`/`zh` step is.
@@ -8250,7 +8250,7 @@ suffixes come off now, leaving `古河`.
 
 ### The records are the template for generated `ja`/`zh` labels
 
-**Emma:** *"That relationship description should be the template for how we generate
+**The ruling:** *"That relationship description should be the template for how we generate
 Chinese and Japanese nn suppleting labels."*
 
 This unblocks what `ja`/`zh` were deferred for. The stated objection was that a
@@ -8377,7 +8377,7 @@ marker taken out and no `NN` at all**. 60 tests.
 
 ## 2026-08-17 — three marker vocabularies folded into one, and it was additive
 
-Emma's item said they *"should end up as one"*. There were three: `scripts/labels.py`,
+The queue item said they *"should end up as one"*. There were three: `scripts/labels.py`,
 and a 27-form set copied verbatim into `build-relationship-label-preview.py` and
 `walk-structural-merge.py`. They now import `labels.PLACEHOLDER_FORMS`.
 
@@ -8390,7 +8390,7 @@ screened, which is the property that made this safe to do in one step.
 
 **`NOT_A_NAME` is untouched, and that is the point rather than an omission.** Two
 questions were being conflated. `NOT_A_NAME` decides what `label_for()` **empties**, and
-Emma has ruled on it twice — `Private` and `<private>`, nothing else, after an earlier
+It has been ruled on twice — `Private` and `<private>`, nothing else, after an earlier
 version added `NN`, `unknown` and `?` unasked. The new sets decide what a **marker** is,
 for detection and normalisation. Widening detection is not widening suppression: an
 `unknown Bloomfield` is now detected and still keeps a label, it just becomes
@@ -8434,7 +8434,7 @@ needed. The damage was real and its blast radius was one working tree.
 
 ## 2026-08-17 — the first midpoint exports, and the family-tree page is the right one
 
-**Emma, definitively:** *"rather definitively this kind of thing
+**Definitively:** *"rather definitively this kind of thing
 https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
 for them rather than the pages you opened."*
 
