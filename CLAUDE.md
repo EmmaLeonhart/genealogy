@@ -3654,7 +3654,7 @@ Four in this repo, all mine:
 
 | what was written | what never called it | what it cost |
 | --- | --- | --- |
-| name creations, as their own `.qs` pipeline | nothing ever ran that pipeline | her words, 2026-08-30: *"name creations were always segregated into a different Quick Statements generation pipeline that was never run"* -- so no new name item was created at all |
+| name creations, as their own `.qs` pipeline | nothing ever ran that pipeline | name creations were segregated into a separate QuickStatements pipeline that was never run, so no new name item was created at all |
 | the CJK token funnel | wired as STEP 0d of `build-daily-batch.py` only | `build-garborg-day.py --compose`, which is what actually gets run, skipped it entirely |
 | `patronymic_or_surname`'s father-name check | the fallthrough returned the same answer | 62,637 tokens mis-modelled under a test that passed with the discriminator deleted |
 | `derive-family.py` reading `derived-labels.csv` | the pipeline built that file *afterwards* | every rebuild used the previous generation's labels, silently |
@@ -3701,11 +3701,9 @@ inefficient or plain wrong is the output of thinking that has already been done 
 a failure mode not visible from the code. The obvious improvement is obvious *because* the
 constraint it violates is invisible.
 
-**The failure has a shape and it is not laziness: it is writing a more INTUITIVE version of her
-program.** Her diagnosis, same day, of six people hand-listed where a roster reference was
-specified: *"you probably decided to write a more intuitive version of my program instead of
-following specifications and this is why you made bullshit."* Hand-listing was shorter, more
-visible, and looked like progress. It also silently redefined a bloc as whatever report was open.
+**The failure has a shape and it is not laziness: it is writing a more INTUITIVE version of the
+specified program.** Six people were hand-listed where a roster reference was specified.
+Hand-listing was shorter, more visible, and looked like progress. It also silently redefined a bloc as whatever report was open.
 
 **Worked examples, every one of which reads as a mistake until the reason lands:**
 
@@ -3716,17 +3714,17 @@ visible, and looked like progress. It also silently redefined a bloc as whatever
 | **no** already-opened filter on seed batches | *"I don't know what the already open filter is for… I feel like it might be overcomplicating things"* — the filter's bug once cut 778 candidates to 7. Re-opening a tab costs one glance |
 | a **description** on a name item, against a categorical no-descriptions rule | the description IS the deduplication: two undescribed `Olsdatter` items are both legal, a second described one is refused |
 | counting a descendant **twice** when two lines reach them | *"somebody reachable down two lines counts twice"* — the question is how many lines come down, and de-duplicating makes a wide intermarried descent look narrow |
-| label edits in **descending QID order**, newest first | she raised the backlog objection herself and dismissed it: *"making an item very recently that has an error in it looks worse than an item that I made a long time ago having an error in it"* |
+| label edits in **descending QID order**, newest first | the backlog objection was raised and dismissed: a recently made item with an error in it looks worse than an old one with the same error |
 | a generation suffix moved to the **end** rather than fixed in place | *"regular ones go Sr Jr III etc always as a suffix"* — and a regnal ordinal, which looks identical, must **not** move |
 
-**Her tell for when this is happening:** *"Lemme guess safety thing you made up."* If a rule in the
-code has no sentence of hers behind it, that is what it is.
+**The tell for when this is happening:** a safety rule nobody asked for. If a rule in the code
+has no instruction behind it, that is what it is.
 
 **What to do instead of improving it.** Implement the odd thing exactly. If it genuinely cannot
 work, say which mechanism fails and why — § *NEVER SAY YOU CANNOT DO SOMETHING YOU HAVE NOT TRIED*.
-If two readings of her words are possible, that is `AskUserQuestion` — § *If you are not sure what
-she wants, ASK*. What is never right is quietly shipping the version that makes sense to me: she
-loses the property she designed for and finds out later, from the damage.
+If two readings of an instruction are possible, that is `AskUserQuestion` — § *If the instruction
+is ambiguous, ASK*. What is never right is quietly shipping the version that makes more sense:
+the designed-for property is lost, and it surfaces later as damage.
 
 ### INCOMPLETE EARLIER WORK IS NOT THE THING SHE IS DESCRIBING. Its errors are not a finding
 
@@ -3737,27 +3735,27 @@ though it were doing the same operation is the failure.
 **The case.** The tiny-GEDCOM design -- one small file per person or per path, Geni
 ids as xrefs so the merge fuses them. `scripts/build-scraped-gedcom.py` was an earlier, partial
 attempt at that goal. I found it, measured 4,928 invented `NN` people and 5,750 children with more
-than two parents, and presented that as a defect I had discovered in the thing she meant. She had
-not even known its output was in the synoptic tree.
+than two parents, and presented that as a defect discovered in the thing being described. Nobody
+had known its output was in the synoptic tree.
 
 **Three separate errors, and the third is the one worth naming:**
 
 1. It was **two operations**, profiles and paths, and the replacement I wrote covered part of one.
-2. The `NN` placeholders were **her own instruction of 2026-08-29**, not an accident -- the
-   reasoning was in the docstring of the file.
+2. The `NN` placeholders were **a deliberate instruction**, not an accident -- the reasoning was
+   in the docstring of the file.
 3. **Incomplete work toward a goal is not an implementation of that goal.** Measuring its errors
    and reporting them as findings describes the gap between where the work stopped and where it
    was going, while sounding like a discovery about a finished mechanism.
 
-**So: when she describes something she has been working toward, and a file exists that resembles
-it, the file is EVIDENCE OF THE ATTEMPT, not the thing.** Read what it was reaching for before
+**So: when a goal is described and a file exists that resembles it, the file is EVIDENCE OF THE
+ATTEMPT, not the thing.** Read what it was reaching for before
 measuring what it gets wrong. Its errors are a description of unfinished work.
 
 **And the compounding move was mine.** I supplied the framing -- *junk*, *pollution*,
-*corruption* -- got her agreement to delete on that framing, deleted it, and reported the deletion
-as an improvement. § *A SHORTCUT SHE TOOK TO UNBLOCK ME IS NOT A LAW* is the same failure with the
-sign flipped: there a convenience of hers was frozen into a rule, here an unfinished attempt was
-graded as a finished mechanism and destroyed.
+*corruption* -- got agreement to delete on that framing, deleted it, and reported the deletion as
+an improvement. § *A SHORTCUT TAKEN TO UNBLOCK A SESSION IS NOT A LAW TO ENFORCE BACK* is the
+same failure with the sign flipped: there a convenience was frozen into a rule, here an
+unfinished attempt was graded as a finished mechanism and destroyed.
 
 ### Do not grab the first artifact that vaguely matches. That is how legacy becomes algorithm
 
@@ -3770,22 +3768,20 @@ graded as a finished mechanism and destroyed.
 > them. We ended up with an algorithm that kind of used a lot of legacy code stuff because the
 > legacy code stuff was available in the algorithm."*
 
-**The mechanism is availability, not error.** A file exists, its name resembles what she said, it
+**The mechanism is availability, not error.** A file exists, its name resembles what was said, it
 parses — so it goes in, and nothing ever takes it out. Four in one evening:
 
-| she said | what I reached for | what she meant |
+| what was said | what was reached for | what was meant |
 | --- | --- | --- |
 | "every Bure kinship person" | `reports/bure-roster.tsv`, and I invented a hop threshold on it | `reports/bureatten.csv` — the sv.wikipedia Category:Bureätten listing, 251 with a Geni id |
 | "no we are not making my father an item **right now**" | `MODERN_CUTOFF = 1880`, a demographic filter on everyone | that one person, that one day |
 | "nothing more than 1 hop away" | a distance-from-Arne radius on the seed pool, cutting a batch to 7 | the ring already is one hop; the seeds were wrong |
 | an early hand-resolution file | a superseded side file wired into `have` and left there | a fix for a problem that is now solved, and *"an active liability"* |
 
-**So: when she references an object, find the one she means before using one.** If two artifacts
-could be it, that is an `AskUserQuestion` — her instruction, same evening: *"If something is
-ambiguous do AskUserQuestion instead of bullshitting yourself into retarded harmful
-algorithms."*
+**So: when an instruction references an object, find the one it means before using one.** If two
+artifacts could be it, that is an `AskUserQuestion` rather than a guess.
 
-**And when something she objected to is fixed, remove the thing that was added for it.** None of
+**And when an objection is fixed, remove the thing that was added for it.** None of
 the four above was ever removed; each was still running days later, and two of them were dead
 code that still printed reassuring counts.
 
@@ -3809,22 +3805,21 @@ correspondence as ordinary tree content rather than needing a side file.
 **The IDs are checked for merges first**, and offline: *"it really should be on our export of
 Wikidata, because that's effectively what it works on."* Redirects resolve to their target.
 
-**What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
-change all of their bios to links to their qids so that the next step in with the wikidata union
-(which isn't really implemented yet) they get joined with those wikidata items."* So it is a step
+**What the bio link is FOR:** when the synoptic tree is merged, the bios become links to the
+QIDs, so that the next step — the Wikidata union, not yet implemented — joins those people to
+those items. So it is a step
 *inside* the build, feeding the **Wikidata union**, which does not exist yet. It is not a Geni
 editing task that can be run early, and there is no export campaign attached to it.
 
 **This supersedes an earlier plan that is still in the transcripts**, which had eight
 hand-resolved people getting their bios edited immediately and a `Forest` export each. A
 cron carrying that plan died in the 2026-08-28 crash; it was recovered on 08-29 and handed back to
-her as live work, and her reply was *"No fuck you you didn't get the later discussion."*
+back as live work, when a later ruling had already replaced it.
 **A transcript is not the authority when this file holds a later ruling on the same thing** — the
 replacement was already written down two paragraphs up, and reading it would have been enough.
 
-**So the correspondence belongs in the TREE, not in a side file.** Do not act on that yet — she
-said *"this entity resolution stuff is important, but I think you may have been presenting it as
-being more important than it is. It's important, but just don't do stuff on it right now."*
+**So the correspondence belongs in the TREE, not in a side file.** Do not act on it yet: the
+entity-resolution work is important, and it has been presented as more important than it is.
 
 ### The seed set is the WIKIDATA SUBGRAPH from Arne. Not the ledger, and never a hop count
 
@@ -3843,9 +3838,9 @@ The subgraph answers *may the ring grow from them*. Conflating the two is what p
 Garborg batch of 36: the ledger is **every item ever made by hand**, including the Izumo and
 Kitajima work, and the ring grew around all of it.
 
-**This is what makes the spine self-limiting, with no special case.** Her words:
-*"the spine people shouldn't play a role because they aren't part of the subgraph. The subgraph
-is stored and added to with my contributions."* A medieval couple the spine created yesterday
+**This is what makes the spine self-limiting, with no special case.** Spine people play no role
+because they are not part of the subgraph, which is stored and grown from the account's
+contributions. A medieval couple the spine created yesterday
 has no path to Arne on Wikidata yet, so it seeds nothing. It needs no exclusion, no flag and no
 list.
 
@@ -3854,8 +3849,8 @@ under the subgraph rule the account owner is not a seed and neither are the Kita
 because nothing on Wikidata connects either to Arne.
 
 **Two things that are NOT the algorithm and were invented here, both now deleted.** A
-*distance-from-Arne radius*: it appears nowhere in her specification, and bounding the pool to
-her immediate ring cut a batch from ~30 people to **7** because the caps stopped binding — 2 of
+*distance-from-Arne radius*: it appears nowhere in the specification, and bounding the pool to
+the immediate ring cut a batch from ~30 people to **7** because the caps stopped binding — 2 of
 10 children, 0 of 10 parents. And *ordering the ring by closeness to Arne*, which `11295af7`
 did over **our Geni tree**; that is the closest thing that ever existed, and it is not this.
 
@@ -3879,7 +3874,7 @@ person we hold is a request that answers nothing a local join does not. § *Quer
 ALLOWED* permits it and § *the offline store is the right first place to look* still decides
 where to start; the network is for what the store cannot answer.
 
-**The two she named, resolved that way** — § *Do not guess these*, joined on the label in
+**The two named entry points, resolved that way** — § *Do not guess these*, joined on the label in
 `reports/derived-labels.csv`:
 
 | | QID | Geni | live from |
@@ -3887,7 +3882,7 @@ where to start; the network is for what the store cannot answer.
 | **Robert Chester Wilson Ettinger** | `Q714044` | `6000000003022010249` | **now** |
 | **George R.R. Martin** | `Q181677` | `6000000081001962237` | **2026-10-01** |
 
-**Both are textbook service areas by her own specification, measured.** Neither states a single
+**Both are textbook service areas by the specification, measured.** Neither states a single
 `P22`, `P25`, `P40` or `P26` on Wikidata, so each reaches exactly itself there — and § *THE EDIT
 ALGORITHM* wants exactly that: *"something that has a GeniID but is otherwise isolated."* In our
 Geni tree both are richly attached — Ettinger has parents, 2 spouses and 2 children, Martin has
@@ -3897,9 +3892,9 @@ ring from its first day.
 **The run prints LIVE and PENDING every time.** A timer nobody can see is a timer nobody can
 check, so the day one switches on shows in the output rather than being inferred.
 
-**Who else drips in is HERS.** She said she is not sure who, and that is an open question rather
-than a brief to go ranking candidates — § *No unprompted reports* governs. Roots are cheap and
-reversible; the constraint is which people she wants the graph grown from.
+**Who else drips in is an OPEN QUESTION**, not a brief to go ranking candidates — § *No
+unprompted reports* governs. Roots are cheap and reversible; the constraint is which people the
+graph should be grown from, and that is decided rather than computed.
 
 **And the roster stays at ABOUT 250.** Dripping in is a trickle, not a campaign — the count is a
 property of the design, not a number to grow.
@@ -3933,12 +3928,12 @@ and calling it that is extremely misleading: the right name is **manual parental
 correspondences**, because a vague title will be abused by later sessions for other purposes.
 
 **So `reports/manual-identifications.csv` is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.**
-Not "her identifications", not "manual entity resolution", not a general-purpose place to put a
+Not "manual identifications", not "manual entity resolution", not a general-purpose place to put a
 Geni-to-Wikidata pair somebody is confident about. What it is:
 
 - **a manual form of the ZIPPER MERGE** -- the same job `scripts/zipper-join.py` does by
   position, done by eye where position is not enough;
-- **right now, only for PARENTS.** Her words. The parent deck is the instrument
+- **right now, only for PARENTS.** The parent deck is the instrument
   (§ *THE PARENT DECK*), and 46 of its rows carry `batch = parent-adjudication-gui` while 204
   are `emma-pasted-verdicts` out of the same artifact;
 - **something to be phased out eventually**, not a permanent channel.
@@ -3962,7 +3957,7 @@ opening the way for edits in certain eccentric clusters of the tree.
 Two distinct things, and the second is not a copy of the first:
 
 - **The bios themselves are ordinary corpus content.** `extract-bio-qids.py` reads the QID links
-  she wrote into Geni *About Me* fields, wherever they occur -- **156 of 600 exports carry at
+  written into Geni *About Me* fields, wherever they occur -- **156 of 600 exports carry at
   least one**. This is a reading of the corpus, not a curated list.
 - **`exports/post-merge/wikidata-qid-links.ged` FORCES them.** It carries nothing but ids and a
   `NOTE` with a Wikidata URL, so the pair is in the corpus whether or not any export happened to
@@ -3992,15 +3987,13 @@ The identification is sound; making the edit *now* would read as arriving from n
 the person is nowhere near anything the account has been building. Recording the pair in the
 GEDCOM keeps it without spending it.
 
-**It is EXPANDING, and it now takes people who already have a proper QID.** Her words: *"we are
-expanding the file to basically include even items that do actually have the proper QID, but which
-are in this similar category."* The original rows were people needing a Geni ID added; that is no
+**It is EXPANDING, and it now takes people who already have a proper QID** — items that do have
+the proper QID but are in the same category. The original rows were people needing a Geni ID added; that is no
 longer the qualification.
 
-**⛔ THE CATEGORY, in her words, is the thing to get right:** *"far off genealogical people who
-are too far away in the regular clusters to be ones to start with, because we're starting again.
-We started again with two Scandinavian families, and we're kind of expanding roughly around
-everybody."*
+**⛔ THE CATEGORY is the thing to get right:** far-off genealogical people, too far away in the
+regular clusters to be ones to start with. The programme restarted with two Scandinavian families
+and expands roughly around everybody from there.
 
 So a row qualifies on **distance from the current base cluster**, not on obscurity, not on script,
 not on lacking an identifier. The 24 eccentric-cluster pairs added on 2026-09-05 — pre-dynastic
@@ -4009,8 +4002,8 @@ that population: 100–168 hops from Charlemagne, nothing near the Scandinavian 
 
 **And it is why the file is not two mechanisms.** Holding a far-off identification and minting an
 entry point on 2027-01-01 are the same act, because a person too far out to edit *today* is
-precisely a person worth growing a graph from *later*. § *THE STUPIDER AND MORE SPECIFIC* — her
-*"stupid spaghetti code at first glance… it reduces redundancy"* is this.
+precisely a person worth growing a graph from *later*. § *THE STUPIDER AND MORE SPECIFIC* — the
+stupid-spaghetti-code-that-reduces-redundancy case is this one.
 
 ### The 1,800-statement runs were SURFACE AREA, and it is temporary
 
