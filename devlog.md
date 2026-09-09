@@ -33250,3 +33250,28 @@ stays held and is flagged to you instead.
 **One rank taken by extension rather than asked: bare `general`, 2 people.** You ruled `captain`,
 `major` and `general,` explicitly and all three drop; a bare `general` is the same word as the
 last of those. Reversible in one line of `RANKS` if that is wrong.
+
+## 2026-09-09 — swept the lowercase-ranks item; it had gone from stale to harmful
+
+Dead-item sweep. Three of the four queue items verified live against the files and stay: the
+collector (**2,597** outstanding in `collector-worklist.tsv`), the gated parent-adding campaign,
+and the `|`-in-a-label question, which is yours.
+
+**The lowercase-ranks item is removed**, and it was worth removing rather than leaving, because
+two of its instructions had become false in ways that cause damage rather than confusion:
+
+* **"DO NOT RUN IT AS BUILT"** pointed at `reports/wikidata-noble-labels.qs`, which has since
+  been rebuilt prefix-only. The warning would have stopped you running a correct batch.
+* **"Still to put to you … `prince` 10, `dona` 7, …"** listed 23 ranks. Every one has been ruled.
+  A session reading it would put questions to you that you have already answered — exactly the
+  *"stale instruction that will be acted on again"* the sweep exists for.
+
+Also stale: the code it quoted (`tidy(drop_title_tail(drop_comma_tail(stripped)))` is now
+`tidy(stripped)`), its "re-measure before regenerating" step (measured, 737 → 881 emittable),
+and its verdict table, all eleven rows of which are implemented in `RANKS`.
+
+**The one live residue is `esquire`, 9 people, and it is yours by hand** — *"If there's 9 people
+we can do it manually lol."* It is not lost by this deletion: `build-noble-label-batch.RANKS`
+carries it in its own comment, saying it is deliberately absent and why, and the run's
+`rank-not-ruled-on` counter reports exactly those 9 every time it builds. That is where a
+session looks, rather than at the queue.
