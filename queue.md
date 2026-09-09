@@ -87,10 +87,37 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   * **The background service worker cannot be updated from here** and does not matter — it runs
     only the scheduler. `todo.md` § 3d has the measurement and five failed routes.
 
-  **State right now, 2026-09-07:** the isolate pilot is **100 of 100, COMPLETE** ·
-  `reports/isolates.csv` 111 rows, of which **92 were taken under the Charlemagne anchor: 12 hits,
-  80 misses** · the sibling worklist has **2,517 of 2,526 still to scrape** · 1,655 tiny profile
-  GEDCOMs · 1,163 tiny path GEDCOMs · **zero invented people** · extension at 1.6.2.
+  **State right now, 2026-09-08:** the isolate pilot is **100 of 100, COMPLETE** ·
+  `reports/isolates.csv` 118 rows, of which **99 were taken under the Charlemagne anchor: 15 hits,
+  84 misses** · `reports/collector-worklist.tsv` has **2,592 outstanding** (2,510 never scraped,
+  82 blood-only misses) · **zero invented people** · extension **1.6.6 on disk**.
+
+  ⛔ **THE RUNNING CHROME IS STILL ON 1.6.5 UNTIL SOMEBODY RELOADS THE EXTENSION.** An unpacked
+  extension does not pick up file changes on its own, and `chrome://extensions` is refused by the
+  automation surface the same way `chrome://` always is. One click in that page, or a Chrome
+  restart, loads 1.6.6. Until then the loop still returns `not_offered` for an in-law verdict
+  that is stated on the page, and the harvest has to apply the same rule by hand.
+
+  ⛔ **`runInLaw` WAS THROWING AWAY THE IN-LAW VERDICT ON EVERY PERSON — fixed 2026-09-08 in
+  1.6.6.** It looked for the *Show Me* button first and returned `not_offered` when it was
+  absent; Geni states the miss in words and then removes the button, so a stated verdict read as
+  *never asked*, `via` stayed blank, and `collector-worklist.py` re-queued that person forever.
+  Nobody could ever be finished. It now reads the sentence before looking for a button.
+
+  ⛔ **AND THE SAME SHAPE IS STILL OPEN FOR A HIT.** `runInLaw` settles on *the segment count
+  going up*, so when Geni has already rendered the in-law chain before the click — Ellen
+  Christensdatter Thrane `309763264470008240`, 29 segments on the page, prose reading
+  *"Charlemagne's third great granddaughter's 19th great niece"* — nothing changes and it waits
+  out the full 600000 ms. Not a miss and not lost, just slow. The asymmetry rule says a hit needs
+  a parsed chain rather than prose, so the fix is to compare against the chain already present,
+  not to trust the sentence.
+
+  ⛔ **GENI HAS TWO MISS SHAPES AND ONLY ONE CAN BE ANSWERED.** Most profiles give the pair
+  *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin Varga
+  `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
+  in-law sentence and no button at all**, so no in-law verdict is obtainable for her. Her `via`
+  is blank rather than `neither`, which means she re-queues forever on the rule above. That
+  population is not yet sized and nothing addresses it.
 
   ⛔ **THE ANCHOR COLUMN IS WHAT MAKES THAT RATE MEAN ANYTHING**, and it earned its keep on
   2026-09-06: the pin lapsed mid-run and four captures came back answering *related to Emma*.

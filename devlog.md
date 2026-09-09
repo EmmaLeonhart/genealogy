@@ -32423,3 +32423,53 @@ and the two path filenames all vanished from the text, and bash printed 80 lines
 heredoc rule in `queue.md` — **prose does not go through a shell string.** Write it to a file
 with a file tool, then append it with Python and an explicit encoding, which is what the two
 entries above it did without incident.
+
+### ⛔ the in-law chain was being returned as the BLOOD result, and scored `via=both`
+
+**Ellen Christensdatter Thrane `309763264470008240` is the case, and her two path files came back
+byte-identical.** Her page states *"No blood relationship was found."* in words. The run still
+returned `resolved_path` with a 29-step chain, `runInLaw` then found **the same chain again**, and
+`individual.js` scored her `via = "both"` — one chain counted twice, and a blood verdict on a page
+that denies a blood relationship. Written out she would have carried `path_found=yes, via=both`
+and a `-blood.tsv` that is not a blood path.
+
+**The cause is a render race, not a parse error.** Geni answers the blood question and the
+other-ways question into the *same* panel and they do not land together. `GC.pathState` tests the
+miss sentence first, so whichever arrives first decides: when the in-law chain rendered before the
+miss sentence did, `segs > 0 && rd` matched and the chain was returned as the blood answer.
+
+**Fixed in 1.6.7 by the repo's own asymmetry rule.** A miss is stated on the page in words and is
+readable; a hit is an inference from whatever is displayed. So when Geni has said no to *this*
+question, that sentence wins over anything on screen. Only the three blood-miss sentences count
+there — the in-law one answers a different question and stays `runInLaw`'s to read.
+
+**Step 7 is why she is an in-law at all**, and it is worth reading:
+
+    6  Gisèle                              Charlemagne's descendant, blood
+    7  Gange-Hrólfr 'Rollo' Ragnvaldsson   HER HUSBAND
+    8  Ragnvald Eysteinsson, Earl of Møre  his father -- the walk goes back UP
+
+Steps 1-6 descend from Charlemagne through Charles the Bald, Louis the Stammerer and Charles the
+Simple; everything from step 8 is Rollo's own ancestry and then the Orkney jarls down into
+Rogaland, reachable only across that marriage. Emma, 2026-09-07: *"in-law connections are just as
+valid blood is no required lol."* Filed as
+`paths/isolate-geni-ellen-christensdatter-thrane-c1619.tsv`, labelled IN-LAW, `via=inlaw`.
+
+**Three defects, one shape.** All three found today, all in the same panel-reading code, and all
+of them a reader taking the wrong evidence for a verdict Geni had already stated:
+
+| | what it did |
+| --- | --- |
+| `runInLaw` looks for a button | a stated miss read as *never asked*, `via` blank forever |
+| `runInLaw` waits for the count to rise | an already-rendered chain never settles; waits out 600 s |
+| `runPath` trusts a rendered chain | the in-law chain returned as the blood result, `via=both` |
+
+**Sofie Vikan `315011297710001593`** (family_tree 7,569 · blood 15,000) and **Julius (Judel)
+Samuel Stusser `316216248270002934`** (1,826 · 344) both miss both searches: `via=neither`, both
+cleared for export. Outstanding 2,594 → 2,591; 106 tiny profile GEDCOMs, 710 tiny path GEDCOMs,
+**0 invented people**.
+
+**Nothing here has been exercised in the browser.** The running Chrome is still on 1.6.5 — an
+unpacked extension does not reload itself and `chrome://extensions` is refused by the automation
+surface — so 1.6.6 and 1.6.7 are on disk and unexecuted. Every verdict written today had its
+`via` derived at harvest by the same rules, read off the page by hand.

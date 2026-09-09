@@ -206,6 +206,32 @@ GC.runPath = async function (job) {
     return report({ state: "resolved_none", steps: 0, hasTarget: false,
                     requested, stats, description: GC.relationDescription() });
   }
+
+  /* ⛔ A STATED MISS BEATS A RENDERED CHAIN, because the chain may belong to the OTHER search.
+   *
+   * Geni answers the blood question and the other-ways question into the SAME panel, and they do
+   * not land together. `pathState` tests the miss sentence first, so the order it happens to
+   * sample in decides the answer: if the in-law chain renders before the blood-miss sentence
+   * does, `segs > 0 && rd` matches and the in-law chain is returned as the BLOOD result.
+   *
+   * Measured 2026-09-08 on Ellen Christensdatter Thrane `309763264470008240`. Her page states
+   * *"No blood relationship was found."* in words, and the run produced `resolved_path` with a
+   * 29-step chain -- so `runInLaw` then found the same chain again and `individual.js` scored her
+   * `via = "both"`, one chain counted twice. Her `path_tsv` and `inlaw_tsv` came back
+   * byte-identical, which is what made it visible. Written out she would have carried
+   * `path_found=yes, via=both` and a "blood" path file that is not a blood path.
+   *
+   * The repo's asymmetry rule is what settles it: a MISS is stated on the page in words and is
+   * readable; a HIT is an inference from what happens to be displayed. So when Geni has said no
+   * to *this* question, that sentence wins, whatever is on screen. Only the blood-miss sentences
+   * count here -- the in-law one answers a different question and is `runInLaw`'s to read. */
+  const deniedHere = GC.byText(
+    "*", /no blood relationship was found|the relationship could not be found|no path found to/i)
+    .filter((e) => e.children.length === 0).some(GC.visible);
+  if (deniedHere) {
+    return report({ state: "resolved_none", steps: 0, hasTarget: false,
+                    requested, stats, description: GC.relationDescription() });
+  }
   if (st.state !== "resolved_path") {
     /* Still running, or never had a panel. Both are "come back later", never a miss -- the
      * distinction the harvester's `pending()` and `not_requested()` now keep apart. */
