@@ -3632,25 +3632,22 @@ be linked to anybody who already has a QID, in both directions, in that same bat
 resolves to the item created just above. What cannot be done is linking **two items created
 in the same run** to each other, because `LAST` names only the most recent one.
 
-Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the creation of
-items that is completely possible but you just decide to fuck off and no do it because it goes
-QID PID LAST instead of LAST PID QID."* The general claim was mine, not hers, and it cost her
-weeks of one-way links to repair by hand.
+Two-way relationship adding at creation time is entirely possible: it goes `QID PID LAST` rather
+than `LAST PID QID`. Believing otherwise cost weeks of one-way links, repaired by hand.
 
 So a spine batch needs a second file only for the links **between two people it is creating**.
 `scripts/build-missing-reciprocals.py` is that second half, and it is much smaller than it was:
 `scripts/build-garborg-day.py` now emits `Q… P… LAST` for every relationship to an existing item.
 
-**All four of these lines are COMPLETE, and they are legacy.** Emma, 2026-08-30, after verifying
-them: *"the spines are all clear and I'm putting an item at the end of the queue declaring them
-legacy code and removing them."* `reports/the-spine.md`, which carried the person-by-person state,
+**All four of these lines are COMPLETE, and they are legacy.** The spines are all clear.
+`reports/the-spine.md`, which carried the person-by-person state,
 is deleted; the section above is kept as the record of what the three lines were and why Bergitte
 is the hinge.
 
 **One spine is live and it runs on a different rule** — `paths/arne-garborg-to-johannes-bureus-geni.tsv`,
 Geni's own in-law route joining Arne Garborg and Johannes Bureus **to each other** rather than
-through Emma. Her rule, 2026-08-30: *"any of them is always added whenever possible from any side
-including the middle."* So there is no front and no hop-a-day: every step that can be created is
+through Emma. **Any step is added whenever possible, from any side including the middle.** So
+there is no front and no hop-a-day: every step that can be created is
 created in the same run, and the only gate is being in the corpus. `SPINE_PATHS` in
 `scripts/build-garborg-day.py` holds it, and `SPINE_REVERSED` is empty because that path is stored
 Arne-first and grows from no particular end.
@@ -3661,10 +3658,7 @@ is the deliverable.
 
 ### Code that is WRITTEN but never CALLED is not done. Wire it, then measure it
 
-**Emma, 2026-08-31:** *"I've noticed this weird pattern in this repo where you always say you
-will do something and then wrote logic that never actually gets in. What's going on here?"*
-
-**She is describing a specific, repeated failure: the logic lands, the call site does not.** The
+**The failure is specific and repeated: the logic lands, the call site does not.** The
 function exists, the module imports, a test may even exercise it directly -- and nothing in the
 pipeline reaches it. The work is then reported as done, because from the inside it looks done.
 
@@ -3678,8 +3672,8 @@ Four in this repo, all mine:
 | `derive-family.py` reading `derived-labels.csv` | the pipeline built that file *afterwards* | every rebuild used the previous generation's labels, silently |
 
 **So "implemented" means a caller in the path that actually runs, and a number measured after it
-runs.** Not "the function is correct". The check is one question: *if I run the thing Emma runs,
-does this code execute?* If the honest answer is "it would if you ran the other entry point",
+runs.** Not "the function is correct". The check is one question: *if I run the thing that
+actually gets run, does this code execute?* If the honest answer is "it would if you ran the other entry point",
 it is not done.
 
 **And the measurement must come from the wired path**, because that is what distinguishes this
@@ -3693,11 +3687,8 @@ pipeline touches.
 
 ### LEGACY CODE IS DELETED. Not kept, not ignored — deleted
 
-**Emma, 2026-08-29, stating it as a hard rule:** *"Nothing should exist in this repo. This is a hard
-rule. If something's in this repo that is legacy code or something, it should be removed. Legacy
-code should be removed from this repo because legacy code is all this random crap that isn't
-actually used in the pipeline. It is something that just comes up and causes you to get confused
-and confused and write in bullshit."*
+**Hard rule: legacy code is removed from this repo.** Legacy code is whatever is not actually
+used in the pipeline, and it exists only to be found later and confused for something current.
 
 **The cost is not hypothetical and it is not tidiness.** On 2026-09-04 a session spent four
 workflow dispatches asking Wikidata questions whose answers `refresh-live-values.py` had fetched
@@ -3715,8 +3706,7 @@ confusion it causes.
 
 ### ⛔ THE STUPIDER AND MORE SPECIFIC THE INSTRUCTION, THE HARDER SHE THOUGHT ABOUT IT
 
-**Emma, 2026-09-05:** *"Remember the more stupid and specific a thing I tell you to make the more
-I've thought deeply about it lol."*
+**The more stupid and specific an instruction looks, the more thought went into it.**
 
 **So oddness is a SIGNAL, not noise to sand off.** An instruction that looks arbitrary, redundant,
 inefficient or plain wrong is the output of thinking that has already been done — usually against
@@ -3752,13 +3742,11 @@ loses the property she designed for and finds out later, from the damage.
 
 ### INCOMPLETE EARLIER WORK IS NOT THE THING SHE IS DESCRIBING. Its errors are not a finding
 
-**Emma, 2026-09-06, diagnosing a whole afternoon in three sentences:** *"I proposed something that
-we were trying to work on for a long time ... There was some work done earlier. The work was
-relatively incomplete. And the problem is you just saw something that vaguely looked like it that
-had errors. You saw something that vaguely looked like it that also had obvious errors, and you
-reported it as though it was doing the same operation. That's the basic issue."*
+**Incomplete earlier work toward a goal is not an implementation of that goal.** Finding
+something that vaguely resembles the described thing, measuring its errors, and reporting them as
+though it were doing the same operation is the failure.
 
-**The case.** She described the tiny-GEDCOM design -- one small file per person or per path, Geni
+**The case.** The tiny-GEDCOM design -- one small file per person or per path, Geni
 ids as xrefs so the merge fuses them. `scripts/build-scraped-gedcom.py` was an earlier, partial
 attempt at that goal. I found it, measured 4,928 invented `NN` people and 5,750 children with more
 than two parents, and presented that as a defect I had discovered in the thing she meant. She had
@@ -3785,7 +3773,7 @@ graded as a finished mechanism and destroyed.
 
 ### Do not grab the first artifact that vaguely matches. That is how legacy becomes algorithm
 
-**Emma, 2026-08-27, naming the actual failure after I kept answering a different one:**
+**The failure, named:**
 
 > *"I had very clear ideas of what the algorithm was supposed to be, but you had a tendency to
 > often put things into it without knowing. When I referenced a certain object or whatever, I
@@ -3815,7 +3803,7 @@ code that still printed reassuring counts.
 
 ### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
 
-**Emma, 2026-08-27**, revising her own earlier instruction to edit Geni profiles:
+**Revising an earlier instruction to edit Geni profiles:**
 
 > *"Actually, no, I realised we don't actually need to edit your geni at all for this. Editing
 > geni is actually a step that makes stuff much more complicated than it actually should be. In
@@ -3852,9 +3840,8 @@ being more important than it is. It's important, but just don't do stuff on it r
 
 ### The seed set is the WIKIDATA SUBGRAPH from Arne. Not the ledger, and never a hop count
 
-**Emma, 2026-08-28:** *"You understand my algorithm is entirely based on anyone on the
-continuous subgraph currently on wikidata from Arne right? Like no counting hops it literally
-should do a billion hops under the constraints if that's possible."*
+**The algorithm is based entirely on anyone on the continuous subgraph currently on Wikidata
+from Arne.** No counting hops — it should do a billion hops under the constraints if possible.
 
 **A person may seed a ring when Wikidata already connects them to Arne** by any chain of `P22`
 *father*, `P25` *mother*, `P26` *spouse*, `P40` *child* or `P3373` *sibling*, however long.
@@ -3865,7 +3852,7 @@ Garborg*. Measured 2026-08-28: **97 items, containing 96 of 171 ledger people.**
 *does this person already have an item* — it must stay whole, or the batch re-creates things.
 The subgraph answers *may the ring grow from them*. Conflating the two is what put a
 7th-century Baekje royal, Carolingian Friuli, `Okoshi Mononobe` and `Saburou Kitashima` in a
-Garborg batch of 36: the ledger is **every item Emma has ever made**, including her Izumo and
+Garborg batch of 36: the ledger is **every item ever made by hand**, including the Izumo and
 Kitajima work, and the ring grew around all of it.
 
 **This is what makes the spine self-limiting, with no special case.** Her words:
@@ -3874,10 +3861,9 @@ is stored and added to with my contributions."* A medieval couple the spine crea
 has no path to Arne on Wikidata yet, so it seeds nothing. It needs no exclusion, no flag and no
 list.
 
-**Exclusion lists are a smell here.** Emma: *"why are we even having exclusions? If you just
-followed the algorithm then exclusions wouldn't be needed."* She is right — under the subgraph
-she is not a seed and neither are the Kitajima people, because nothing on Wikidata connects
-either to Arne.
+**Exclusion lists are a smell here.** If the algorithm is followed, exclusions are not needed —
+under the subgraph rule the account owner is not a seed and neither are the Kitajima people,
+because nothing on Wikidata connects either to Arne.
 
 **Two things that are NOT the algorithm and were invented here, both now deleted.** A
 *distance-from-Arne radius*: it appears nowhere in her specification, and bounding the pool to
