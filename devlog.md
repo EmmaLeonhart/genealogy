@@ -10644,7 +10644,7 @@ reading no available source supplies.
 person. It is a single record whose name field is an empire, recorded in this file on
 2026-08-19; no rule fixes it and a data edit is what it needs.
 
-Also collapsed `LABELS, IN HER ORDER` in the queue from 143 lines to 25 — the marker
+Also collapsed `LABELS, IN THE SET ORDER` in the queue from 143 lines to 25 — the marker
 normalisation it described is built (56,369 edits: unnamed 23,237, marker+surname 18,859,
 description 6,979, description+clan 6,254, name repaired 1,010).
 
@@ -11386,7 +11386,7 @@ sections and most of them were not steps.
 
 **What was deliberately kept, because it is specification and not chatter:** the
 seven-language label gate, `THE EDIT ALGORITHM`, `THREE SEPARATE WIKIDATA OPERATIONS`,
-`LABELS, IN HER ORDER`, the export loop and tail algorithm, the synoptic tree, the
+`LABELS, IN THE SET ORDER`, the export loop and tail algorithm, the synoptic tree, the
 Charlemagne spine lines and the CI/CD wiring. Those are how pending work is to be done, and
 compressing them would lose the instruction rather than the verbosity.
 
@@ -22264,7 +22264,7 @@ campaign therefore invisible. Measured today: `merged.ged` is **1.8 GB, 11:33**,
 `reports/wikidata-garborg-day.qs` was regenerated at 13:12 and attached. The rationale was for one
 particular morning; keeping it makes a done thing read as outstanding.
 
-**`LABELS, IN HER ORDER`** — the `ANSWERED 2026-08-17 / Done 2026-08-17` bullet. Her ruling
+**`LABELS, IN THE SET ORDER`** — the `ANSWERED 2026-08-17 / Done 2026-08-17` bullet. Her ruling
 (*words yes, punctuation no*) lives in `CLAUDE.md` § *An obvious unknown-word marker goes straight
 in*, and the fold landed: `scripts/labels.PLACEHOLDER_FORMS` holds **51** forms including `ukendt`,
 `okänd`, `n. n.`, `unknown` and `ukjent`, imported by `build-relationship-label-preview.py` and
@@ -22760,7 +22760,7 @@ rather than by rule, and taking it from the export or the region is the geograph
 
 `scripts/build-patronymic-items.py` -> `reports/patronymic-items-to-create.tsv`. It builds the
 objects her algorithm gates on, and writes **no QuickStatements** — the deliverable is the data,
-per § *"Analyse this" means build a CSV*, and an edit batch she has not asked for is its own rule.
+per § *"Analyse this" means build a CSV*, and an unrequested edit batch is its own rule.
 
     6,658 patronymic tokens attested by a father in our tree
       6,613 need an item created; 45 already have one
@@ -22818,7 +22818,7 @@ plausible after the thing it measured has changed.
 still open), § *Keep `reports/merges-to-do.md` current* (standing, refreshed at 15:2x), and the
 seven specification sections.
 
-## 2026-08-31 — the per-person half, run; and an unbounded fetch she caught
+## 2026-08-31 — the per-person half, run; and an unbounded fetch that was caught
 
 `scripts/resolve-patronymics.py` runs the half of her design that follows the name items: the
 parent's `P735` item against the patronymic item's `P144` values, no string comparison anywhere.
@@ -22855,7 +22855,7 @@ Filtering on sex and writing system: ambiguous tokens **546 -> 178**, unambiguou
 
 **And the first attempt crawled the whole index.** `given_kinds` was handed every qid in `given`
 -- **225,457** items, thousands of requests -- when the question concerns only the labels that are
-actually plural. It ran past 590 seconds before she said *"I'm gonna guess you're spewing bullshit
+actually plural. It ran past 590 seconds before *"I'm gonna guess you're spewing bullshit
 simple as that"*, and killing it was right. Scoped properly it is **467 items, ten requests**.
 That is the § *Querying Wikidata is ALLOWED. Be polite about the rate* line, and I was on the
 wrong side of it.
@@ -22930,7 +22930,7 @@ right place for it and the front would have been wrong.
 
 Noted in the item: show her the candidate items themselves. Looking up what actually separated
 `Carl`, `Johan` and `Olof` — sex and writing system — answered the previous version of this
-question in one line, where my summary of it had produced a four-option `AskUserQuestion` she
+question in one line, where my summary of it had produced a four-option `AskUserQuestion` that was
 rightly rejected.
 
 ## 2026-08-31 — the inner `h` folded, measured and sampled first
@@ -22972,7 +22972,7 @@ implied fathers, and the `AskUserQuestion` on the 175 ambiguous tokens and `P407
 **The placement was my mistake and it is worth naming.** Patronymic modelling was put at the
 **front** this morning — *"patronymics as first queue item complete it and move on"* — and
 closed it when it was done. But I had created the residue item hours earlier at position 4, right
-behind it, so *"move on to the next one"* landed on patronymics twice more. What she had sent to
+behind it, so *"move on to the next one"* landed on patronymics twice more. What had been sent to
 the tail was only the *implied fathers*; I should have put anything I split off there too.
 
 **The queue is being cleared, which was her other question.** Measured over today's commits:
@@ -22985,7 +22985,7 @@ specification, then § *The daily Garborg batch*.
 
 ## 2026-08-31 — the ja/zh gate enforced, and the token funnel finally wired
 
-**Her ruling, put to her item by item as she asked:** the seven-language rule is *"still a gate,
+**The ruling, put item by item as asked:** the seven-language rule is *"still a gate,
 and the daily batch is violating it."* It was, and in a way that made the carry-forward lie: the
 builder recorded *"no transliteration for every token"* against a person **and emitted their
 `CREATE` anyway**. So the debt was logged and the person was created without CJK labels
@@ -22993,7 +22993,7 @@ regardless. Abandoning the block with `del lines[block_start:]` is what the carr
 to be doing. That is `queue.md` § *ABSOLUTE PREREQUISITE*, moved from "later" to now by her
 ruling.
 
-Enforced, the gate refused **7 of 27** creations. Then she named the actual cause:
+Enforced, the gate refused **7 of 27** creations. Then the actual cause was named:
 
 > *"we have all the data to do everything properly cjk represented but just don't do it because
 > somehow the tokenization thing was still never taken seriously despite me keeping telling you
@@ -23021,7 +23021,7 @@ Before the funnel it was 20 creations with 7 refused; after, 27 with none.
 - § *Fix the surnames of the tier-2 placeholders* — 11 profiles, needs her hands on Geni, nothing
   downstream waiting. `reports/farmname-seed-fixes.md` stays in the repo.
 
-§ *STANDING PROCEDURE* she asked to run again; the transcript extract and audit are running.
+§ *STANDING PROCEDURE* was asked for again; the transcript extract and audit are running.
 
 ## 2026-08-31 — the transcript audit re-run, and my guess about it was wrong
 
@@ -23055,8 +23055,8 @@ question with the case for and against, not a proposal.
 
 **Deleted:**
 
-- § *Wikidata person descriptions* — superseded by her own later ruling. On 2026-08-30 she made
-  descriptions categorically forbidden (*"never used we categorically never
+- § *Wikidata person descriptions* — superseded by a later ruling. On 2026-08-30 descriptions
+  became categorically forbidden (*"never used we categorically never
   use them"*), so a section specifying the order in which to add them describes something that
   never happens. The uniqueness trap it warned about survives in `CLAUDE.md` and in
   `scripts/check-label-collisions.py`, which is the pre-flight.
@@ -23070,7 +23070,7 @@ question with the case for and against, not a proposal.
   `out/merged.ged`, and the bottleneck is emission rather than coverage.
   `docs/export-seed-rules.md` keeps the method if it is ever wanted again.
 
-**Moved to the tail:** § *LABELS, IN HER ORDER*, the ~140-line mass label pass. It is a whole-
+**Moved to the tail:** § *LABELS, IN THE SET ORDER*, the ~140-line mass label pass. It is a whole-
 population operation while the live work is hyperlocal, so it was being read and skipped every
 tick. Nothing about it changed except its position.
 
@@ -23082,7 +23082,7 @@ tick. Nothing about it changed except its position.
 `genimerge merge` is one command and `rebuild-everything.py` wraps the whole chain; a queue
 section for running something already automated is a section that gets read and skipped.
 
-**§ *Regnal ordinals* split in two, and the measurement says she was right to ask.** Her reading:
+**§ *Regnal ordinals* split in two, and the measurement says the question was right.** The reading:
 *"there's actually two related things: succession and the number attached to the name. Split this
 into two."*
 
@@ -23094,13 +23094,13 @@ into two."*
 
 **The split was not cosmetic. Of those 19,450 ordinal rows, ZERO are Izumo, Senge, Kitajima or
 Kitashima** — their numbers are not in the Latin name form at all, so the name-side census cannot
-see them. One item would have covered the Samaritans and silently missed the family she named in
+see them. One item would have covered the Samaritans and silently missed the family named in
 the same breath. `reports/izumo-chart-roster.tsv` is 298 people, and the first step there is
 finding where those numbers actually live rather than assuming the name.
 
 **§ *Wire up CI/CD* rewritten as a delivery job**, per her ruling: *"not wikidata editing but
 instead emailing me the daily quickstatements file to me every day so I can run it."* Nothing
-edits Wikidata; the batch arrives in her inbox and she runs it by hand, which is what has been
+edits Wikidata; the batch arrives by email and is run by hand, which is what has been
 happening in chat all along. The `START_DATE = 2026-09-01` constants stay as the rail on the
 *edit* path, which remains unused. Noted in the item: while the repo is private, Actions minutes
 are the constraint, so this either waits on the public-repo work at the tail or runs from a local
@@ -23169,8 +23169,8 @@ placeholder for everyone on Geni and not on Wikidata"* — and both files exist:
 proposes the pair, names only check it, and the deleted `reconcile` matcher stays deleted.
 
 **Deleted: § *Labels, in this order, once the correspondence is large*** — a seven-line stub that
-was not merely redundant but **carried the ordering she corrected**. It says *"`mul` first —
-everything gets one. Then `en` on everything"*. Her order, in § *LABELS, IN HER ORDER* and in
+was not merely redundant but **carried the ordering that was corrected**. It says *"`mul` first —
+everything gets one. Then `en` on everything"*. The real order, in § *LABELS, IN THE SET ORDER* and in
 `CLAUDE.md`, is the other way round: **`en` is made first, by transcribing, and `mul` is then
 "almost always derived from en"** — which is the only route that gives the 806 Han-only people a
 `mul` at all. A stub restating a superseded rule is worse than a redundant one, because whoever
@@ -23187,7 +23187,7 @@ regnal number if applicable, and number in office, and whether they are Izumo, S
 Samaritan."* `scripts/build-succession-roster.py` → `reports/succession-and-ordinals.csv`, 151
 rows: Izumo 53, Senge 22, Kitajima 14, Samaritan 62.
 
-**Two corrections she made while it was being built, both to my reading of the data.**
+**Two corrections made while it was being built, both to my reading of the data.**
 
 **"All of them are on geni lol the wikidata just doesn't have p2600."** I had reported the Geni
 column as nearly empty and written a docstring explaining that these are ancient office-holders
@@ -23195,7 +23195,7 @@ absent from our corpus. Wrong: they are in the corpus, and what is missing is th
 Wikidata to them. So an empty cell means our matching failed, and the queue item now says that
 rather than the opposite.
 
-**And "Uhhh what"** — she was reading the output, where `Tsedaka II` had a regnal number and
+**And "Uhhh what"** — that was read off the output, where `Tsedaka II` had a regnal number and
 `Yitzhaq I` did not. My screen took `kind == "roman"` from the census, which files a bare `I`,
 `V` or `X` as `single-letter` because elsewhere it could be a middle initial. Inside a
 `ben`-patronymic name there are no middle initials, so the guard was costing real values: **19 of
@@ -23211,7 +23211,7 @@ by luck; the lineage column is what the data says.
 are wrong on their face — `Izumo no Yoshitada` matched *Minamoto* no Yoshitada, `Izumo no
 Takatoki` matched *Fujiwara* no Takatoki — while others are 18-way ambiguity blobs. Only single
 unambiguous ids are carried and `geni_status` records which case each row is. Filling the rest is
-the agentic pass she asked for, and reaching for a name search is what produced the Minamoto and
+the agentic pass asked for, and reaching for a name search is what produced the Minamoto and
 Fujiwara matches in the first place.
 
 The two queue items merge back into one, since the split has done its work: it is now a single
@@ -23263,10 +23263,10 @@ Provenance of the 106 Geni ids now in the file:
 neither pass reaches; two have several corpus rows carrying the same Han name and need her eye,
 not another rule.
 
-## 2026-08-31 — the Samaritan succession, from the source she named
+## 2026-08-31 — the Samaritan succession, from the source named
 
-Izumo, Senge and Kitajima she called done. For the Samaritans she said there was an easy source
-and I guessed three wrong before asking her which:
+Izumo, Senge and Kitajima were called done. For the Samaritans there was said to be an easy source,
+and I guessed three wrong before asking which:
 
 - **`wdt:P39 wd:Q678510` returns 7 items.** That is exactly the state her own
   `samaritans/wikidata.txt` complains about — *"it doesn't even say who is the Samaritan high
@@ -23471,9 +23471,9 @@ STOP* — no testing done now.
 **The item records the distinction that makes her scepticism separable from our use.** Kanji →
 hiragana is a *reading* problem, where the same characters take different readings per person —
 which is exactly why `P1814` *name in kana* exists as a property rather than being computed. That
-is the direction she knows it fails at, and it is **not** the direction the funnel needs.
-European → katakana is transcription. Her guess that it is easier is plausible and is not
-evidence, which is the whole reason she wants it tested.
+is the direction it is known to fail at, and it is **not** the direction the funnel needs.
+European → katakana is transcription. The guess that it is easier is plausible and is not
+evidence, which is the whole reason it is to be tested.
 
 **There is a number to beat rather than an impression to form.** `reports/garborg-name-
 transliterations.tsv` holds 317 hand-written rows the engine did not itself write, and
@@ -23496,8 +23496,8 @@ only on tokens nothing else renders — a small tail by construction — and a w
 there sits inside her standing rule that *"incorrect romanization or incorrect representations in
 katakana are totally acceptable"*.
 
-**What she is actually asking for is that the scepticism be recorded**, so the next person to find
-`pykakasi` installed does not adopt it wholesale without knowing she has been burned by it. That
+**What is actually being asked for is that the scepticism be recorded**, so the next person to find
+`pykakasi` installed does not adopt it wholesale without knowing it has burned somebody here. That
 is a different request from blocking its use, and writing it as a gate would have been the
 `CLAUDE.md` § *inventing a hard limit* failure in miniature — turning a caution into a
 precondition.
@@ -23567,8 +23567,8 @@ both directions. `scripts/zipper-provenance.py` is that, and re-running it today
      7,306 an independent source corroborates · 88 it contradicts
     25,723 CORROBORATED · 20,008 INFERRED · 167 POISONED
 
-Her verdicts are in it as she asked — **103 independent pairs** from `emma-judgments.tsv`,
-alongside the structural walk (7,841), her Geni bio links (405) and the clan rosters.
+The hand verdicts are in it as asked — **103 independent pairs** from `emma-judgments.tsv`,
+alongside the structural walk (7,841), the Geni bio links (405) and the clan rosters.
 
 **Cut to the specification rather than deleted**, because the sweep brief names this section as
 one that stays and the two propagation rules in it are hers rather than derivable from the code:
@@ -23609,8 +23609,8 @@ DATA***, from her explanation:
 > legitimate information. You are storing it so that we can actually get a serious idea of what is
 > going on with it, to the degree that we're able to just do auto-merges."*
 
-Her verdicts are a **sample being collected**, not a queue being drained, and it is only worth
-collecting while she can cover *all* of a population rather than the top of a ranking. That
+The hand verdicts are a **sample being collected**, not a queue being drained, and it is only worth
+collecting while *all* of a population can be covered rather than the top of a ranking. That
 retires the auto-accept idea I had offered an hour earlier: the overwhelming cases are the
 labelled positives the sample needs most, and deciding them for her destroys the data being
 gathered.
@@ -23639,8 +23639,8 @@ structural and touches no names, which is the only kind of fix allowed here.
 `Berengar I, emperor of the Romans` against `Berengar I of Italy`, `Taebi Buyeo` against
 `부여태비`, `Torsten Håkansson Rudén` against `Torsten Rudeen`.
 
-**And this is why § *The manual approvals are TRAINING DATA* matters.** Had she worked the 47
-without noticing, 38 `DIFFERENT` verdicts would have entered `emma-judgments.tsv` as labelled
+**And this is why § *The manual approvals are TRAINING DATA* matters.** Had the 47 been worked
+without the defect being noticed, 38 `DIFFERENT` verdicts would have entered `emma-judgments.tsv` as labelled
 examples of a distinction that is not the one being learnt — teaching the threshold that spouses
 are not duplicates, which nobody needed, while the real signal was diluted eightfold. A deck of
 mostly-wrong questions does not merely waste her time; it poisons the sample.
@@ -23712,7 +23712,7 @@ sample was read by eye before anything was wired to it.
 waiting on now exist. **4,325 statements over 1,468 people**: 1,007 `P22` with 1,007 `P40` back,
 775 `P25` with 775 `P40`, 751 `P26`, and **10** `P3373` with **1,810 siblings held** over her
 10-a-day cap — the cap doing exactly what it was written for, since that file was 257 statements
-and 62% siblings when she set it.
+and 62% siblings when it was set.
 
 **Checked before offering, which the item asked for.** 1,584 subjects and 1,635 values, **0
 unknown to any source**, no `LAST` in a value position, no `Aen`. 595 subjects and 653 values sit
@@ -23728,8 +23728,8 @@ minted in the **same** run cannot reference each other.
 
 So the script generating the fix was printing the misconception at the top of it. Corrected.
 
-**Not attached.** It is 4,325 statements and she has not asked for it; § *Do not invent a runnable
-edit batch she has not asked for* holds until she does.
+**Not attached.** It is 4,325 statements and nobody asked for it; § *Do not invent an unrequested
+runnable edit batch* holds until somebody does.
 
 ## 2026-08-31 — sweep: the new-to-new reciprocals item removed
 
@@ -23738,7 +23738,7 @@ edit batch she has not asked for* holds until she does.
 **Removed: § *THE LAST ITEM — the new-to-new links the spine batch cannot emit*.** Every step in
 it is done and the only thing left is hers:
 
-- *"The batch itself is built and run"* — its own words, and she declared the spines clear on
+- *"The batch itself is built and run"* — its own words, and the spines were declared clear on
   2026-08-30.
 - *"Rebuild it and check it against the ledger"* — done in the previous commit.
   `reports/wikidata-reciprocals.qs` is 4,325 statements over 1,468 people, rebuilt today, and the
@@ -23748,13 +23748,13 @@ it is done and the only thing left is hers:
   `reports/wikidata-reciprocals-siblings-held.qs`.
 
 **And I annotated it in place last tick rather than deleting it**, which is precisely what
-`queue.md` § *How to read this file* forbids and what she objected to on 2026-08-30. The
+`queue.md` § *How to read this file* forbids and what was objected to on 2026-08-30. The
 "REBUILT 2026-08-31 and checked" paragraph I added made a finished item read as a live step for
 one whole tick. The numbers it carried are in `devlog.md` where results belong; the file itself is
 the artefact.
 
-*Running the batch is not a queue item for me* — it is a thing she does, and it is waiting for her
-whenever she wants it.
+*Running the batch is not a queue item for me* — it is done by hand, and it is waiting there
+whenever it is wanted.
 
 ## 2026-08-31 — her own item was never actually excluded; the guard was an accident
 
@@ -23832,7 +23832,7 @@ Not fixed in this tick: the safe 6,515 and the 94,231 come out of the same call,
 - it omits that one entirely, along with `caroline-signe-borsheim-hoknes.tsv`.
 
 Re-measured against the directory and the constant. The requirement itself is untouched and still
-undone: she wants the chains to be a **system** rather than files that happen to exist.
+undone: the chains are to be a **system** rather than files that happen to exist.
 
 **Checked and still genuinely open** — `scripts/build-qid-links-gedcom.py` still raises
 `FileNotFoundError: entity_resolution.md`, so both § *the QID-link GEDCOM* and § *Systematic
@@ -23850,7 +23850,7 @@ right that the file had to go; § *Systematic review for legacy code* is the oth
 the file is half the job"* — and this was a reader nobody triaged.
 
 **The correspondence is not a substitute, checked rather than assumed: 0 of the 3 pairs are in
-`reports/synoptic-correspondence.tsv`.** They are hers by hand, from identities she *"put a lot of
+`reports/synoptic-correspondence.tsv`.** They are hand-made, from identities somebody *"put a lot of
 effort into creating identification with"*, and no automated source reaches them — which is
 precisely why they lived in a hand-written file. So they are a constant in the script now, which
 is what `queue.md` already said: *"widening this beyond the three is her call and is one
@@ -23867,7 +23867,7 @@ Section deleted.
 The instruction: *"no files should read it lol, fix that."* **22 files mentioned it; 0 code readers remain.**
 
 - **Deleted:** `build-entity-resolution-batch.py`, whose entire purpose was that file, and
-  `build-charlemagne-route.py`, for the spine she declared legacy on 2026-08-30.
+  `build-charlemagne-route.py`, for the spine declared legacy on 2026-08-30.
 - **Read removed, script kept:** `build-garborg-day.py`, `derive-labels.py`,
   `refresh-live-values.py`, `path-between.py`, `build-trunk-batch.py`, `build-edit-objects.py`,
   `build-path-to-wikidata-report.py`. Every one folded that file's hand-asserted pairs into a
@@ -23875,7 +23875,7 @@ The instruction: *"no files should read it lol, fix that."* **22 files mentioned
   `CLAUDE.md` § *Systematic review for legacy code* names as the worse half: *"deleting the file
   is half the job."*
 - **`genimerge.cli`'s command keeps working with no default source.** `genimerge.entities` still
-  parses her free-form format and she may hand it another file; the assumption that the retired
+  parses the free-form format and may be handed another file; the assumption that the retired
   one is there is what went.
 
 **One near-miss worth recording: I deleted `build-edit-objects.py` and had to restore it**, because
@@ -24796,7 +24796,7 @@ outside the placeholder population, 935 CJK-named — all stay.
 still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have not run) ·
 § *FOR 2026-09-02* (dated tomorrow) · § *The daily Garborg batch* and § *Keep merges-to-do.md
 current* (standing processes, not steps) · § *The placeholder batch emits `ja` and `zh` and NO
-`ko`* (grepped: still zero) · § *`P1814`* · § *LABELS, IN HER ORDER* · the seven specifications.
+`ko`* (grepped: still zero) · § *`P1814`* · § *LABELS, IN THE SET ORDER* · the seven specifications.
 
 ## 2026-09-01 - she ruled on 207 pairs by hand, and named the rule they teach
 
@@ -25005,7 +25005,7 @@ returns False for them. They are not unnamed people the NN algorithm is failing 
 descriptions like `(Molher de Bernat Gòt)`), then Tibetan, Hangul, Arabic, Hiragana and Greek.
 `蟜牛`, `Иоанн Всеволодович`, `Jew Law Ying 趙羅英`, `זלדה`.
 
-So the work is the transcription step § *LABELS, IN HER ORDER* already specifies — *"a Han-only or
+So the work is the transcription step § *LABELS, IN THE SET ORDER* already specifies — *"a Han-only or
 Cyrillic-only or Hebrew-only person gets an `en` made for them"* — and for the CJK majority it is
 **agentic, never programmatic**, culture settled by the tree first. The row is moved there and the
 seven-languages section has nothing open.
@@ -25026,7 +25026,7 @@ done and the evidence is on disk, not in memory:
   37,830 people carrying a QID. The section says so itself.
 - The `en` shortfall — the in-law half closed 2026-09-01; the 35,565 `surname`-only and 10,495
   `bare` people **correctly get no `en`**, because a description needs a named relative.
-- Its last open row, the **1,539** — traced today and refiled into § *LABELS, IN HER ORDER*, where
+- Its last open row, the **1,539** — traced today and refiled into § *LABELS, IN THE SET ORDER*, where
   the transcription step lives. They are not an `en` gap; they carry real names in Han (2,173 rows),
   Cyrillic (359), Han+Latin (344), Hebrew (140) and six more scripts.
 
@@ -25040,7 +25040,7 @@ went with them.
 **And it was hiding a dangling pointer.** The section said the funnel's remainder was *"at the tail
 as § the tokens the transliteration funnel cannot read"* — **that section does not exist**, so the
 work was referenced and invisible. It is **8 tokens of 627**, now stated plainly in
-§ *LABELS, IN HER ORDER*: six are tokenisation debris (`""Inge""`, `"Ingebret`, `Garborg"`, `I,`,
+§ *LABELS, IN THE SET ORDER*: six are tokenisation debris (`""Inge""`, `"Ingebret`, `Garborg"`, `I,`,
 `Talgje,`, `Törnstjerna,`), one is a title (`Queen`), one is Cyrillic (`Карлов`). The fix is in the
 tokeniser rather than the engine.
 
@@ -25310,7 +25310,7 @@ which needs `translit_scripts`).
 **Checked and left alone:** § *`P1814`* (corrected today, blocked on the culture classifier),
 § *`exports/post-merge/`* — a live export campaign with a real stopping rule, *"export until every
 first-degree relative of every merged individual is present"*, not a standing measurement —
-§ *LABELS, IN HER ORDER*, and the six tail items she ordered herself.
+§ *LABELS, IN THE SET ORDER*, and the six tail items she ordered herself.
 
 ## 2026-09-02 — the pipeline completed end to end for the first time
 
@@ -25502,7 +25502,7 @@ those are Wikidata-side labels this file does not touch, and the rest collapse b
 
 ## 2026-09-02 — dead-queue sweep: the mechanical marker bullet deleted, it is finished
 
-**10 sections before, 10 after.** No whole item died; the bullet inside § *LABELS, IN HER ORDER*
+**10 sections before, 10 after.** No whole item died; the bullet inside § *LABELS, IN THE SET ORDER*
 that was cut back last sweep is now **deleted**, because it is done on both halves.
 
 **Built** (`f64fe8c5`, `3e85242c`): `scripts/build-marker-normalisation.py` →
