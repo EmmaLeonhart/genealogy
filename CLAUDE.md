@@ -2405,8 +2405,8 @@ data that must survive the re-run.
 
 ### ⛔ PLAYWRIGHT AND HEADLESS ARE A NO-GO. The agentic navigation is overhead we PAY, not a design
 
-**Emma, 2026-09-06:** *"the agentic stuff is complete overhead to be able to run this... definitely
-playwright is a no-go... But headless browser stuff with playwright and such is a nogo."*
+**The agentic navigation is complete overhead paid to be able to run this at all. Playwright is
+a no-go, and so is anything headless.**
 
 **Why it is paid rather than chosen.** Geni heavily gates API access. Driving a real, logged-in
 browser is what makes the traffic acceptable: navigating to the page agentically and then running
@@ -2646,19 +2646,18 @@ ran.
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
 | P144 | based on | item — **qualifier on `P5056`, pointing at the PERSON that link names**: the father, then the grandfather for a chained patronymic. `name modelling.txt` supersedes the earlier reading of this as a name-item-to-name-item link. |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
-| P460 | said to be the same as | item — between two SPELLINGS of one patronymic, both ways. Emma linked `Olofsson` `Q141244186` and `Olai` `Q141313056` by hand on 2026-09-05 and asked for it *"for many of these ones"*. Emitted only where the two items share a `P144` source, a stem and a gendered suffix: a shared source alone matches `Jonsdatter` to `Johansdotter`, which are different names one father was recorded under. A gendered pair is `P5278`, not this. |
+| P460 | said to be the same as | item — between two SPELLINGS of one patronymic, both ways; `Olofsson` `Q141244186` and `Olai` `Q141313056` were linked by hand as the worked case. Emitted only where the two items share a `P144` source, a stem and a gendered suffix: a shared source alone matches `Jonsdatter` to `Johansdotter`, which are different names one father was recorded under. A gendered pair is `P5278`, not this. |
 | P1814 | name in kana | **string, NOT monolingual text** — confirmed against `wbgetentities` on 2026-09-02, where `P1477` and `P1559` really are `monolingualtext` and this is not. The table said monolingual text and nothing had emitted it, so the error was harmless until a survey of 151 items reported **0 carrying it** when 45 do: the reader demanded a `{text, language}` dict and `P1814` stores `{"value": "おいちのかた", "type": "string"}`. A QuickStatements line therefore takes a bare quoted string with **no language prefix** — `Q635214	P1814	"おいちのかた"`, never `ja:"…"`. The Japanese reading of a name written in Han characters; **nothing emits it yet**, and a kana reading is not derivable by rule from the characters — it is found, not generated. |
-| P1449 | nickname | monolingual text — **modelled but NEVER EMITTED**, per Emma 2026-08-29; see § *A nickname alias carries the SURNAME*. A quoted token inside `GIVN` is still read as a nickname — `Stine "Stena" Eivindsdatter` makes *Stena* a nickname, **not** a given name and **not** a middle name — and it becomes an `Amul` alias rather than a statement |
+| P1449 | nickname | monolingual text — **modelled but NEVER EMITTED**; see § *A nickname alias carries the SURNAME*. A quoted token inside `GIVN` is still read as a nickname — `Stine "Stena" Eivindsdatter` makes *Stena* a nickname, **not** a given name and **not** a middle name — and it becomes an `Amul` alias rather than a statement |
 | Q2507958 | birth name | item — the `P3831` role on the `SURN` family name, when a married one sits beside it |
 | Q28418670 | married name | item — the `P3831` role on the `_MARNM` family name |
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
-| Q1076664 | matronymic | item — what a MATRONYMIC name item is an *instance of*, the sibling of `Q110874`. *"personal name component based on ones mother's given name."* **Emma supplied this id herself on 2026-09-07**, which is why it is not guessed: § *A MATRONYMIC DERIVES FROM THE MOTHER* is the rule and this is its class. The person still carries `P5056` *patronym or matronym* — one property for both — so only the name item's `P31` and its `Den "matronymic"` description differ from a patronymic's |
+| Q1076664 | matronymic | item — what a MATRONYMIC name item is an *instance of*, the sibling of `Q110874`. *"personal name component based on ones mother's given name."* Supplied by hand rather than guessed, since no offline source here holds it: § *A MATRONYMIC DERIVES FROM THE MOTHER* is the rule and this is its class. The person still carries `P5056` *patronym or matronym* — one property for both — so only the name item's `P31` and its `Den "matronymic"` description differ from a patronymic's |
 
 **A diacritic makes a different name, and folding it away invents ambiguity.**
-Emma, 2026-08-16, asked why `Maria` matched nine Wikidata items: *"everything
-appears to be diacritics or stuff that's not actually it… there's a male and a
-female Maria."* `María` (Spanish), `Mária` (Hungarian) and `Marià` (Catalan) each
+`Maria` matched nine Wikidata items, and almost all of them were diacritic variants rather than
+the same name. `María` (Spanish), `Mária` (Hungarian) and `Marià` (Catalan) each
 have their own Wikidata item on purpose. `measure-name-resolution` folded them
 together, which manufactured ambiguity for **1,312** names and blocked them all
 from being created or linked; keeping the diacritic cut that to **525** and moved
@@ -2668,8 +2667,8 @@ The genuine residue is the one she named — `Q325872` and `Q25413386`, the **ma
 and **female** given name `Maria`. That is settled by the *person's* sex, not by
 the string, and neither item is in the local store yet.
 
-**One name item per USAGE, not per string — "Jackson Jackson Jackson".** Emma's
-worked example, 2026-08-15: somebody whose given name is Jackson, whose surname
+**One name item per USAGE, not per string — "Jackson Jackson Jackson".** The worked example:
+somebody whose given name is Jackson, whose surname
 is Jackson, and who carries a patronymic Jackson **because their father is Jack
 Jackson**. That is *"a different object for all three usages"* — a given-name
 item, a family-name item and a patronymic item, three separate Wikidata items
@@ -2677,20 +2676,14 @@ that happen to share a spelling.
 
 So a token appearing in more than one slot is **not an ambiguity to resolve**.
 This was got wrong on 2026-08-15: the name census built a dominance ratio and a
-bearer floor to decide which slot a token "really" belonged to, and Emma: *"If
-something is a surname and a given name, then it gets a surname and a given name
-object… They're two completely different things with completely different
-objects. I feel like you jumped through a lot of hoops to try to introduce safety
-stuff here that I did not want."* All of it was deleted.
+bearer floor to decide which slot a token "really" belonged to. **If something is a surname and a
+given name, it gets a surname object and a given name object** — two completely different things
+with completely different objects. All the adjudication machinery was deleted.
 
-**Where a real ambiguity does exist, ask.** Her rule in the same breath, on
-whether Jackson is ever a middle name: *"if there is an ambiguity like that, you
-ask me what the ambiguity is. You don't try to figure it out on your own."*
+**Where a real ambiguity does exist, ask** rather than figuring it out alone — whether Jackson is
+ever a *middle* name is that kind of question.
 
-**A middle name is a given name after the first that is NOT a patronymic.** Emma's
-definition, 2026-08-15, stated when asked about the ambiguous name items: *"The way
-we define a middle name, to be clear, is that a middle name is like a given name
-that comes after the first given name but it's not a patronymic."*
+**A middle name is a given name after the first that is NOT a patronymic.**
 
 So position alone does not make a middle name — the second given token is a middle
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
@@ -2698,7 +2691,7 @@ the token *is*, and `P1545` numbers them either way.
 
 ### CHECK before you alarm her. An unchecked scary claim is worse than silence
 
-**Emma, 2026-08-30:** *"Stop constantly trying to make me panic by not checking."*
+**Do not raise an alarm without running the check that would falsify it.**
 
 The pattern it names: reporting something alarming — a spine incomplete, a link missing, a batch
 stale — from a lookup that did not actually answer the question. Every one of those cost her a
@@ -2712,9 +2705,8 @@ hardest thing to establish and the easiest to assert — `CLAUDE.md` § *A SUMMA
 item is not the item* is the same rule for a different channel, and § *Our side could never have
 two children* is what an unchecked join does to a number.
 
-**A sibling step is the worked example, and it is 7% of the data.** Emma, 2026-08-30: *"geni
-chains often have situations where they skip between siblings. How are the parents represented
-and how common is this situation?"* — **2,126 of the 30,361 relation steps in `paths/`**. Geni
+**A sibling step is the worked example, and it is 7% of the data.** Geni chains often skip
+between siblings — **2,126 of the 30,361 relation steps in `paths/`**. Geni
 records **no sibling edge**: two siblings are joined through a shared parent, so they are two
 hops apart in `derived-family.csv` while being one step apart on a path. Counting only
 parent/child/spouse edges scores every one of them broken, and it published a wrong figure —
@@ -2724,10 +2716,8 @@ anywhere else.
 
 ### The Geni BIO carries her own QID claims. Read them before any download
 
-**Emma, 2026-08-31:** *"Yeah you use the bio qids lol."*
-
-She writes `wikidata.org/wiki/Q…` into a Geni profile's *About Me*, so the link comes back inside
-the export as text on that person's record. `scripts/extract-bio-qids.py` → `reports/bio-qids.tsv`
+**The bio QIDs are used.** `wikidata.org/wiki/Q…` written into a Geni profile's *About Me* comes
+back inside the export as text on that person's record. `scripts/extract-bio-qids.py` → `reports/bio-qids.tsv`
 attributes each link to the `INDI` that owns it: **158 pairs over 155 profiles, in 156 of the 600
 exports**. That is her own statement of identity, captured whenever an export next ran — fresher
 than anything downloaded.
@@ -2743,8 +2733,8 @@ anyone ran the refresh that would have tested it. § *CHECK before you alarm her
 broke; a cause is not established by being plausible.
 
 **The refresh was worth doing for a different reason, and that one is measured.**
-`reports/garborg-qids.tsv` went from **258 of 849** items resolving to **849 of 849** — 591 of
-her own items were invisible to the forty scripts that read this file. The row count moved only
+`reports/garborg-qids.tsv` went from **258 of 849** items resolving to **849 of 849** — 591
+hand-made items were invisible to the forty scripts that read this file. The row count moved only
 +1,124 (517,851 → 518,975), which is why the staleness never announced itself.
 `scripts/refresh-p2600-all.py` does the fetch in sixteen partitions without the corpus merge
 that `genimerge overlap` drags along, and refuses to write a short fetch.
@@ -2752,38 +2742,28 @@ that `genimerge overlap` drags along, and refuses to write a short fetch.
 **A profile may name more than one item** (3 do), and that is § *A second Geni ID on one Wikidata
 item is NOT a conflict* seen from the other side. Emit both.
 
-### She answers `AskUserQuestion`. A question in prose usually gets no reply
+### Only `AskUserQuestion` gets answered. A question in prose usually gets no reply
 
-**Emma, 2026-08-29:** *"Again I'll only regularly answer if you use AskUserQuestion add that to
-claude.md"*.
+A question that matters goes through the **tool**, with real options, not buried in a paragraph
+of report. A question in prose has not been asked — it is a sentence that can be scrolled past,
+and § *NO REPLY MEANS CONTENT* then reads that silence as approval.
 
-So a question that matters goes through the **tool**, with real options, not buried in a paragraph
-of report. A question in prose is not a question she has been asked — it is a sentence she can
-scroll past, and § *Emma not replying means she is content* then reads that silence as approval.
+**This is the mechanism behind the two-hourly blocker rule**, § *EVERY TWO HOURS, PUT THE
+BLOCKERS UP AS AN AskUserQuestion*, and the reason it says *the actual tool, with real options*.
 
-**This is the mechanism behind the two-hourly blocker rule**, § *EVERY TWO HOURS, PUT THE BLOCKERS
-TO HER AS AN AskUserQuestion*, and the reason it says *the actual tool, with real options*.
-
-**Every option must be one she could actually pick.** On 2026-08-29 the export-timeout question
-offered *"kill and resubmit now"*; Geni has no cancel, so that option was fiction. Her reply: *"you
-think you can kill a geni export read the fucking docs you can't."* An impossible option is worse
-than a missing one, because it invites a decision that cannot be carried out.
+**Every option must be one that can actually be picked.** An export-timeout question offered
+*kill and resubmit now*; Geni has no cancel, so that option was fiction. An impossible option is
+worse than a missing one, because it invites a decision that cannot be carried out.
 
 ### The AXIS is part of the question. Four options on one wrong premise is ONE option
 
-**Emma, 2026-09-06:** *"I didn't tell you to do blood relatives."*
+A question about where the floor should sit for the export gate offered four options — 5,000,
+1,000, 100, saturated-only — and **all four were written in `blood_relatives`**. The answer chose
+1,000; the field was never chosen at all, and the write-up then credited the answer with both.
 
-She was asked where the floor should sit for the export gate, and **all four options were written
-in `blood_relatives`** — 5,000, 1,000, 100, saturated-only. She picked 1,000. She then said *"why
-the fuck did you choose blood relatives"*, and *"All of them need thresholds not just blood
-relatives"*, and finally the sentence above, on reading a report that described it as a gate she
-had struck out.
-
-**So the number was hers and the figure was mine, and the write-up credited her with both** —
-*"the blood-relative gate she struck out"* — which turns a mistake of mine into a reversal of
-hers. That is the part worth a rule: **an answer to a question does not endorse the question's
-premise.** A menu that varies only the threshold has already decided what is being thresholded,
-and the deciding is the part she would have wanted.
+**An answer to a question does not endorse the question's premise.** A menu that varies only the
+threshold has already decided what is being thresholded, and the deciding is the part that
+mattered.
 
 **`family_tree` was the right figure and the data says so plainly.** It is the component size —
 what an export can actually reach — and a `Forest` export follows spouse links precisely to cross
@@ -2793,18 +2773,15 @@ the gate on `family_tree` alone**: Dorothy Jeakins 1,405/1, Bohumil Eisner 1,576
 
 **The check before writing an `AskUserQuestion`:** *do the options differ in more than a number?*
 If every one shares an unstated choice — which field, which store, which population — that choice
-is the question, and it belongs in the options or in a second question. § *She answers
-`AskUserQuestion`* already requires every option to be one she could actually pick; this is the
-other half.
+is the question, and it belongs in the options or in a second question. § *Only
+`AskUserQuestion` gets answered* already requires every option to be pickable; this is the other
+half.
 
-### If you are not sure what she wants, ASK. `AskUserQuestion`, not a guess
+### If the instruction is ambiguous, ASK. `AskUserQuestion`, not a guess
 
-**Emma, 2026-08-29:** *"Add to claude.md that if you aren't sure what I want do
-AskUserQuestion"* — said immediately after two guesses in one turn went wrong. She asked for
-*"that particular section"* to be removed from the generated QuickStatements; I removed the
-**CJK clan block**, which she had never mentioned, when she meant the **spine `P2600`
-entity-resolution block**. Her replies: *"What the fuck the clan block is gone? Bring it the
-fuck back"* and *"I wanted the spine entity resolution geni id adding statements gone"*.
+Two guesses in one turn went wrong: an instruction to remove *that particular section* from the
+generated QuickStatements was read as the **CJK clan block**, which had never been mentioned,
+when it meant the **spine `P2600` entity-resolution block**.
 
 **The tell was there and was ignored: two blocks in that file are hard-coded and appended
 every run.** When a referent has two candidates, that is not a thing to resolve by picking the
@@ -2814,69 +2791,57 @@ extended from artifacts to instructions.
 
 **This does not repeal § *Working the queue: GUESS. Do not ask*.** That governs ambiguities
 *inside* a queue item already specified — how to render an edge case, which of two readings of
-a name model. This governs **which thing she is pointing at**. Guessing the referent wrong
+a name model. This governs **which thing the instruction points at**. Guessing the referent wrong
 destroys work; guessing an edge case wrong produces a row to fix.
 
 ### "Add it to the end of the queue" means WRITE IT DOWN AND STOP
 
-**Emma, 2026-08-29:** *"I told you to add it to the end of the queue. You did the exact opposite and
-immediately started working on the fucking problem. When I tell you to add something to the end of
-the queue you do not ask questions, you put it at the end of the queue and move on."*
+**No investigation. No questions. No "gathering evidence so the item is useful."** Write the item
+— what it is, where it points — commit it, and go back to what you were doing.
 
-**No investigation. No questions. No "gathering evidence so the item is useful."** Write the item —
-her words, what it is, where it points — commit it, and go back to what you were doing.
+**What it looked like:** asked to queue *an analysis about why the name Tunheim ended up getting
+created twice*, a session ran five commands hunting the answer — the name-item plan, the batches,
+the label store, the downloaded item JSON — and found `Q36927172` before writing a single line of
+the queue item. That is the whole task done in the wrong place, at the wrong time, having been
+told explicitly not to.
 
-**What it looked like:** asked to queue *"an analysis about why the name Tunheim ended up getting
-created twice"*, I ran five commands hunting the answer — the name-item plan, the batches, the
-label store, the downloaded item JSON — and found `Q36927172` before writing a single line of the
-queue item. That is the whole task done in the wrong place, at the wrong time, having been told
-explicitly not to.
+**Why it is not helpful, even when the findings are good.** The tail of the queue is where things
+decided to be *not now* go. Doing them now overrides that decision, spends the session on the
+lowest priority, and hands back a result that has to be read when the point was to forget it. It
+is the same failure as § *Do not grab the first artifact*: acting past the instruction because
+the work looked worth doing.
 
-**Why it is not helpful, even when the findings are good.** The tail of the queue is where she puts
-things she has decided are *not now*. Doing them now overrides that decision, spends the session on
-her lowest priority, and hands her a result she has to read when she asked to be able to forget it.
-It is the same failure as § *Do not grab the first artifact* and the `spine_closers()` helper: acting
-past the instruction because the work looked worth doing.
-
-**The one thing that is allowed** is naming a related existing queue item, so the two are not solved
-twice. That is a cross-reference, not research.
+**The one thing that is allowed** is naming a related existing queue item, so the two are not
+solved twice. That is a cross-reference, not research.
 
 ### Working the queue: GUESS. Do not ask
 
-**Emma, 2026-08-18:** *"as for everything in the queue, I'm gonna say don't do an
-ask-user question because I have explained everything sufficiently… when going through
-the queue right now, you just make a reasonable guess whenever you have some sort of an
-ambiguity."*
+**While the queue is being worked, do not ask — the items are explained sufficiently. Make a
+reasonable guess whenever an ambiguity comes up.**
 
 So while the queue is being worked, an ambiguity is **resolved by making a reasonable
 guess and recording it**, not by stopping. This suspends the *ask on ambiguity* habit
 for queue execution specifically — it does not repeal § *One name item per USAGE* or
-`name modelling.txt` § *edge cases*, which are about the name model and are decisions
-she wants to make herself once she is back.
+`name modelling.txt` § *edge cases*, which are about the name model and are decided by hand.
 
 **What "recording it" means, because a guess that vanishes is just an unlogged
 decision:** write the reading you took and the reading you rejected next to the work —
 the queue item, the devlog entry, or the module docstring — plus what would falsify it.
-`queue.md` § *Mass export from every profile Emma has added* is the worked example: two
-readings of one dictated phrase, the one chosen, and the observation that would switch
-it.
+`queue.md` § *Mass export from every profile Emma has added* is the worked example: two readings
+of one dictated phrase, the one chosen, and the observation that would switch it.
 
-**She was asleep from roughly 2026-08-18 00:40 PST for twelve hours** and asked for no
-`AskUserQuestion` in that window. The guess rule is what makes that workable rather
-than a stall.
+The guess rule exists so that a twelve-hour window with nobody to ask is workable rather than a
+stall.
 
 ### `name modelling.txt` is the authority on how a name is modelled
 
-**Emma wrote it by hand, 2026-08-15, in the repo root.** It supersedes what this
-file previously said, and where the two disagree it wins. *"Please use
-AskUserQuestion if anything here is unclear in the modeling. I tried to make it as
-clear as possible."*
+**Hand-written, in the repo root.** It supersedes what this file previously said, and where the
+two disagree it wins. Anything unclear in the modelling goes to `AskUserQuestion`.
 
-**The patronymic is `P5056` patronym or matronym — NOT `P735` with a qualifier.**
-This is the correction. This file used to say the patronymic was a `P735` given
-name carrying `P3831` → `Q110874`, with the name item an instance of `Q110874`.
-Her model gives the patronymic **its own property**, parallel to `P735` and
-`P734` rather than nested inside `P735`:
+**The patronymic is `P5056` patronym or matronym — NOT `P735` with a qualifier.** This file used
+to say the patronymic was a `P735` given name carrying `P3831` → `Q110874`, with the name item an
+instance of `Q110874`. The model gives the patronymic **its own property**, parallel to `P735`
+and `P734` rather than nested inside `P735`:
 
     Vladimir Putin (Q7747)
       P735 given name          Vladimir (Q2253934)
