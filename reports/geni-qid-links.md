@@ -41,7 +41,7 @@ number join could never have reached them however well it worked.
 
 **Two Kitajima are in the corpus but carry no About Me link** — `Kitajima no Tokitaka`
 (`Q135579474`) and `Kitajima no Yasutaka` (`Q135579480`). They are not missing people; they
-are profiles missing the link. Adding it on Geni is a one-line fix and Emma's to make.
+are profiles missing the link. Adding it on Geni is a one-line fix and not mine to make.
 
 **NOT a duplicate — corrected 2026-08-24.** `Q135579476` *Senge no Naokatsu* was
 recorded here as one item sitting on two Geni profiles. It is not. The two profiles are
@@ -55,7 +55,7 @@ recorded here as one item sitting on two Geni profiles. It is not. The two profi
 the *son's* QID. Confirmed in `exports/izumo/export-Forest-6000000227331852896.ged` and
 `-6000000227390753876.ged`, and by loading both Geni pages: neither redirected —
 `/people/x/<id>` only fills the name slug and keeps the id, so nothing was learnt about
-merge redirects either. Which of the two links is wrong is Emma's to say; nothing here
+merge redirects either. Which of the two links is wrong is not mine to say; nothing here
 rewrites one of her About Me entries.
 
 93 rostered items are not linked from any Geni profile we hold; `reports/izumo-unlinked.tsv`.
@@ -164,7 +164,7 @@ now writes `reports/synoptic-correspondence.tsv`, every pair carrying its proven
 | --- | ---: |
 | `out/wikidata/p2600-all.tsv` — what Wikidata already states | 517,823 |
 | `reports/structural-correspondence.csv` — found by walking relationships | 3,902 |
-| `reports/geni-qid-links.tsv` — the URL Emma wrote into the Geni About Me | 405 |
+| `reports/geni-qid-links.tsv` — the URL written into the Geni About Me | 405 |
 | `reports/geni-wikidata-pairs.csv` | 126 |
 | `reports/izumo-p2600-pairs.tsv` | 112 |
 | **distinct pairs after the join** | **522,086** |
@@ -184,7 +184,7 @@ carry that `P2600`), so they are not ours to have caused. The other **190 involv
 our own sources**, and **183 of those are `structural` against `wikidata-p2600`** — the
 relationship walk proposing a pairing for a profile Wikidata already links elsewhere.
 
-**Nothing here is resolved.** Identity calls and merges are Emma's, and a contradiction
+**Nothing here is resolved.** Identity calls and merges are not mine, and a contradiction
 is a note rather than a work item — `CLAUDE.md` § *The purpose is to ADD to Wikidata*.
 What changed is that the disagreements are now visible in one place instead of implicit
 across five.

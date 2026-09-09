@@ -1,6 +1,6 @@
 # Display names, and whether they can be English labels
 
-**The question, from Emma on 2026-08-11:** *"I don't know how bad it is to
+**The question, 2026-08-11:** *"I don't know how bad it is to
 have it so that all the display names just turn into English language labels
 like this or whatever... My impression is that it's often kind of passable but
 not good. But it's your job to figure it out."*
@@ -24,7 +24,7 @@ below has to be taken on trust.
 | of the scored, carrying more than one Latin name | 4,919 |
 
 **5,216 people have no Latin-script name whatsoever.** Those are the
-translation cases Emma named — *"If there's only a name present in some sort of
+translation cases named — *"If there's only a name present in some sort of
 other script, we have to do a translation"* — and they are not a fringe: they are
 31% of the linked people.
 

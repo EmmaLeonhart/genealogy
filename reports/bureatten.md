@@ -88,7 +88,7 @@ will arrive with them.
 ## The 198 unlinked: Google works but cannot be automated naively
 
 Searching `site:geni.com "Adolf Ludvig Piper"` returns real Geni profiles with no upsell,
-so the route Emma named does work. **But the top hit is the wrong man.** He is
+so the route named does work. **But the top hit is the wrong man.** He is
 *Adolf Ludvig Piper, till Ängsö* on Geni, so his own page does not match the plain name,
 while he appears constantly inside other people's pages as *"son of"* and *"brother of"*.
 The first result is **Axel Adolf Piper**, his son. Taking the first hit would be exactly
@@ -162,7 +162,7 @@ Fersen → `6000000001515228463`, Johan Magnus af Nordin → `600000001273428553
 That is almost certainly the same man and the gate is wrong about him. It is **not** being
 loosened: relaxing the comparison to absorb c/k is fuzzy name matching arriving by the back
 door, and this repo deleted a whole module for that. Six rejections is a small enough pile
-for Emma to eyeball, and the row keeps its reason so she can see exactly what the machine
+to eyeball, and the row keeps its reason so a reader can see exactly what the machine
 objected to.
 
 `Hedvig Catharina von Fersen` → `Hedvig Catharina Charlotta De la Gardie` passed the gate

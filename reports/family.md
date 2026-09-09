@@ -37,7 +37,7 @@ both ends exist on Wikidata, which the file makes checkable rather than assumed.
 | one child, no parent recorded | 3,758 |
 | **children (plural), no parent recorded** | **250** |
 
-## The case Emma named is 250 families
+## The named case is 250 families
 
 `reports/invented-parents.csv` — **500 placeholders over 250 families**, two per
 family, labelled from the children exactly as she specified:
@@ -68,7 +68,7 @@ them and the sizes are lopsided.**
   no sibling relationship, so by her wording — *"sibling relationships without
   parents"* — they are out of scope. Correct as written, and worth seeing.
 
-**NEEDS-DECISION — Emma**, on both.
+**NEEDS-DECISION**, on both.
 
 ## What is not done
 

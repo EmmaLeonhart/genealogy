@@ -10,7 +10,7 @@ Tanba **179/183 (97%)** and the sister repo's Izumo roster **120/202** joined â€
 that the corpus-wide About Me extraction had not already found.**
 
 That is not a null result. Two independent paths reach the same set, which is the strongest
-thing a join of this kind can say about itself. Emma: *"it probably means we did good data
+thing a join of this kind can say about itself. *"it probably means we did good data
 modelling early on."*
 
 **The new fact is `Onakatomi` 0 of 97.** That clan has no About Me links written yet, so it

@@ -8,7 +8,7 @@
 > wrong; check the store. This warning exists because the report was quoted that way.
 
 
-Scheduled by Emma for midnight. Every distinct name is a row in
+Scheduled for midnight. Every distinct name is a row in
 `reports/name-objects.csv`, ranked by how many people carry it.
 
 **Why the classification matters.** Her rule is that name items get created

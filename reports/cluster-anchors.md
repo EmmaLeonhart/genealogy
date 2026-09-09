@@ -1,6 +1,6 @@
 # Where the two cut-off clusters touch Wikidata
 
-Emma found `Kadin Harding` and `Jacqueline Crispin` inside them by hand, and
+`Kadin Harding` and `Jacqueline Crispin` were found inside them by hand, and
 read it as the seeds having failed rather than the people being unreachable.
 That reading is right, and it goes further than expected.
 
@@ -16,7 +16,7 @@ The world tree is the 1,116,499-person Wikidata component from
 is aimed at. A cluster member already in it is a person our Geni data cannot
 reach and Wikidata already connects.
 
-## The two Emma found
+## The two found by hand
 
 | who | geni id | cluster | born | died |
 | --- | --- | --- | ---: | ---: |

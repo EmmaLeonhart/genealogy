@@ -307,7 +307,7 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 
 ## 6. Created by a batch, and needing a merge afterwards
 
-**Emma flagged this one herself, 2026-08-31**, while running the batch: *"we are gonna want to merge https://www.wikidata.org/wiki/Q130665779 with our recently created thing at some point"*.
+**This one was flagged from outside, 2026-08-31**, while running the batch: *"we are gonna want to merge https://www.wikidata.org/wiki/Q130665779 with our recently created thing at some point"*.
 
 - **Ulrika von Düben** — `Q130665779` (sv *svensk friherrinna*, b. 1749-01-26, d. 1777-01-13) against the item `reports/wikidata-garborg-day.qs` creates for Geni `6000000009063273551`.
     - merge the newly created item **into `Q130665779`** — it is the older and far better populated one, carrying `P22`, `P25`, `P26`, `P27`, `P40`×2, `P569`, `P570`, `P734` and `P735`.

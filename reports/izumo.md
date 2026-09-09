@@ -14,7 +14,7 @@ browser.
 
 **214 people. 204 carry a Wikidata item. 89 carry a regnal number.**
 
-The regnal numbers are the *Izumo no Kuni no Miyatsuko* succession, 1 to 84 — Emma flagged
+The regnal numbers are the *Izumo no Kuni no Miyatsuko* succession, 1 to 84 — flagged
 that these are **not middle names**, and the roster keeps them in their own column rather
 than inside the name.
 
@@ -43,7 +43,7 @@ Bureätten, where 251 of 576 carried a Geni ID. Here the Wikidata side is nearly
 almost none of it.
 
 That reframes the item. It is not "build the tree onto Geni" as a first step, because
-Emma's own account is that the clan is **already on Geni three times over** — added in
+The account owner's own account is that the clan is **already on Geni three times over** — added in
 2008 in Japanese, in 2011 in English, and by her in 2026 off this page. The profiles exist.
 What does not exist is any `P2600` connecting them to the 204 Wikidata items.
 
@@ -71,7 +71,7 @@ The order that follows:
 
 ## The lineage is not in our corpus, and the browser warning has expired
 
-`scripts/walk-izumo-geni.py` walks outward from Emma's own seed
+`scripts/walk-izumo-geni.py` walks outward from the account owner's seed
 (`6000000012789160423`, Tsusa-no-mikoto 4), which **is** already in the merged tree — so
 the Geni side did not have to be searched name by name.
 
@@ -116,7 +116,7 @@ priestly chain.
 
 **The correction: seed at the far end, not the founder.** The lineage runs 1 → 84 and the
 material we lack is the middle and modern end — the Izumo no Kuni no Miyatsuko proper, then
-the Senge and Kitajima branches after the 1340 split. Emma's own account points the same
+the Senge and Kitajima branches after the 1340 split. That account points the same
 way: she built these *"as ancestors of the spouse of Noriko Senge"*, so the modern Senge
 end is where her additions attach and where the chain is reachable without crossing the
 imperial mass first.
@@ -138,7 +138,7 @@ them, and the tree contained `Takamune Senge`, `Sadataka Kitajima`, `Naokuni Sen
 is fuzzy: the tokens must still agree exactly, only their order and the particle move.
 
 **Searching only the ball.** The first run indexed just the 1,312 people within 25 hops of
-Emma's seed. But the Senge and Kitajima profiles are reached through the **modern imperial
+that seed. But the Senge and Kitajima profiles are reached through the **modern imperial
 line** — Kunimaro Senge married Princess Noriko in 2014 — not through the founder end, so
 no radius around Tsusa 4 was ever going to contain them. The search now runs over the whole
 tree and the ball is used only to report distance.
@@ -265,7 +265,7 @@ to ask, and the module docstring says why.
 
 ## RETRACTED, same day: the ancient-seat "resolutions" were junk
 
-Everything this section previously claimed about seats 1-18 is withdrawn. Emma stopped it
+Everything this section previously claimed about seats 1-18 is withdrawn. It was stopped
 and she was right to.
 
 **First, it was not asked for.** Her instruction on this clan was to build the tree the

@@ -128,7 +128,7 @@ same as, P1317 floruit, P1630 formatter URL, P1813 short name, P1814 name in
 kana, P4425 mtDNA haplogroup, P4426 Y-DNA haplogroup, **P4602 date of burial or
 cremation** (in CLAUDE.md's table already), P58/P68/P94 image properties.
 
-## Emma's decisions, 2026-08-14
+## The decisions of 2026-08-14
 
 - **P64 Multi language label → Wikidata's `mul` label.** It is the multilingual
   label and is emitted as `Lmul`, not as a claim.

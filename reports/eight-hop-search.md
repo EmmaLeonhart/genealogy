@@ -53,7 +53,7 @@ search and re-finds them as new.**
 ## What this does not answer
 
 **Nobody in the 1,015 has a publication record yet, because that is a different search.**
-The Wikidata pass answers *"does an item already exist"*. Emma's goal is someone she can
+The Wikidata pass answers *"does an item already exist"*. The goal is someone who can
 *make* notable, and for that the target is the **54 living people**, none of whom Wikidata
 knows:
 

@@ -6,7 +6,7 @@ Built by `scripts/build-cjk-romanisation.py`. **Nothing is transliterated** — 
 - culture settled: **37,226**
 - romanised: **13,644** — zh **13,422**, ko **0**, ja **222**
 
-## How culture was settled, in Emma's order of evidence
+## How culture was settled, in the stated order of evidence
 
 | evidence | people |
 | --- | ---: |
@@ -21,4 +21,4 @@ Built by `scripts/build-cjk-romanisation.py`. **Nothing is transliterated** — 
 
 ## Japanese is separated on purpose
 
-Emma: *"Chinese and Korean readings are all very straightforward. Japanese readings are not straightforward."* She is right, and it is structural: a Chinese or Korean character has effectively one reading as a name, while a Japanese one takes different readings in different names and the item only gives the reading for *that* name. **The `ja` rows are the ones to distrust.**
+*"Chinese and Korean readings are all very straightforward. Japanese readings are not straightforward."* That is right, and it is structural: a Chinese or Korean character has effectively one reading as a name, while a Japanese one takes different readings in different names and the item only gives the reading for *that* name. **The `ja` rows are the ones to distrust.**

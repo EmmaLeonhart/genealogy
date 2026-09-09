@@ -1,6 +1,6 @@
 # Sizing the name-item download
 
-Emma approved a `wikidownload` pass fetching the items `P735` and `P734` point
+A `wikidownload` pass was approved, fetching the items `P735` and `P734` point
 at. The store holds *people* — the download walked P22/P25/P26/P40/P3373 — so no
 name string resolves to an item offline today.
 

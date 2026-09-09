@@ -25,7 +25,7 @@ Four ancient seeds: 1,305 new, 314 of them born before 1100.**
 ## The answer
 
 **No, not in volume.** An ancient ball returns about a thirteenth of what a modern
-one does — 326 new people on average against 3,374. Emma predicted this before the
+one does — 326 new people on average against 3,374. This was predicted before the
 run: *"the main spine is pretty much already there"*. A `Forest` ball seeded in
 antiquity spends its 5000 slots re-walking people 526 previous exports already
 reached.
@@ -42,19 +42,19 @@ size tracks how well-documented a neighbourhood is, not how much of it is new.
 ## Two things this run established about the loop
 
 **Geni exports only from a profile the account manages.** `/gedcom/export/<id>` on
-an existing profile Emma merely found redirects to `/error`. That is why the
+an existing profile merely found redirects to `/error`. That is why the
 placeholder technique in `docs/export-seed-rules.md` exists, and it means a density
 seed can never be exported from directly — a placeholder at an open slot beside it
 is mandatory, not a convenience.
 
 **Ancient European seeds are frequently locked.** Magnus Maximus (340) and Ingina
 (680) both render their parent slots grey rather than as *Add father* / *Add mother*,
-which is the master-profile shape from a Basic account. Emma supplied a nearby
+which is the master-profile shape from a Basic account. A nearby profile was supplied,
 unlocked profile for each; both then worked. Expect this on curated World Tree
 figures and expect to need a substitute one or two hops away.
 
 ## What is not established
 
-Whether the 314 are worth the four exports is Emma's call, not a measurement. And
+Whether the 314 are worth the four exports is a decision, not a measurement. And
 this compares four ancient seeds against five modern ones — enough to show the
 direction, not enough to put a number on the ratio.

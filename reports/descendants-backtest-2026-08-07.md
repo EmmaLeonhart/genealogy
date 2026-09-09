@@ -1,7 +1,7 @@
 # What eleven `Descendants` exports actually did
 
 A backtest, not a proposal. `out/merged-134.ged` is the tree as it stood before
-Emma's 2026-08-07 batch and `out/merged.ged` is the same tree with eleven
+The 2026-08-07 batch and `out/merged.ged` is the same tree with eleven
 `Descendants` exports merged in, so for once there is a before and an after and
 the question "was that a good seed?" has an answer rather than an argument.
 
@@ -22,7 +22,7 @@ came back holding 4,076 people and one holding 3,749.
 ## The campaign goal was not served
 
 The `Descendants` campaign exists because **the tree is biased towards ancient
-and medieval people and Emma is trying to reach modern times.** Against that
+and medieval people and the campaign is trying to reach modern times.** Against that
 goal, this is what 18,218 new people bought:
 
 | born | before | after | added |

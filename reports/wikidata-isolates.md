@@ -62,7 +62,7 @@ A `P2600` on an isolated item is the case `CLAUDE.md` describes: the person
 is on Geni **and** on Wikidata, and what is missing is the genealogy.
 
 
-## Who they actually are — Emma's questions, 2026-08-15
+## Who they actually are — the questions of 2026-08-15
 
 She asked for this and named what she wanted: *"the degree that these people have,
 Anglophone names, their nationalities, maybe some level of categorization... Do

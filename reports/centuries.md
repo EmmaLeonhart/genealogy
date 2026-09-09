@@ -43,7 +43,7 @@ purely by having fewer blanks.
 | 2100s | 0 | 0.0% | 3 | 0.0% |
 | 2200s | 0 | 0.0% | 1 | 0.0% |
 
-## Scoring Emma's prediction
+## Scoring the prediction
 
 Recorded in `todo.md` 8b on 2026-08-07, before the store existed: the Geni-linked
 items on Wikidata *"skew heavily to the 20th and 21st centuries much as the Geni

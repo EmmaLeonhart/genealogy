@@ -6,7 +6,7 @@ Built by `scripts/build-patronymic-father-batch.py`. **Nothing runs before 1 Sep
 - `P22` links added to bearers: **12145**
 - total edit objects: **21303**
 
-**No `P2600` on the subject.** These are the first creations here for people with no Geni profile at all. The Geni ID appears only as the *reference* on every statement, pointing at the child whose patronymic attests him — Emma's ruling of 2026-08-19.
+**No `P2600` on the subject.** These are the first creations here for people with no Geni profile at all. The Geni ID appears only as the *reference* on every statement, pointing at the child whose patronymic attests him — the ruling of 2026-08-19.
 
 **The name is never derived from the string**: it is the modal given name of the confirmed fathers of that token. `Olsen` implies *Ole* because 1,809 real `Olsen` fathers are called Ole.
 

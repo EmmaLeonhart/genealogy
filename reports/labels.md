@@ -20,7 +20,7 @@ One row per person in `reports/derived-labels.csv` — **1,451,993 people**.
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
 so everyone in a *needs translation* row has no derivable English label at all —
-that is the population Emma's *"if there's only a name present in some sort of
+that is the population the *"if there's only a name present in some sort of
 other script, we have to do a translation"* applies to, sized.
 
 ## Name records by script group
@@ -41,7 +41,7 @@ decision rather than a rule.
 
 ## Aliases from married names — 267,064 people
 
-Emma: *"Married name plugs into name to produce an alias."*
+*"Married name plugs into name to produce an alias."*
 
 **Read as:** the married name takes the surname's place in the rendered name, so
 `Judith /de France/` carrying `_MARNM Flandre` yields the alias `Judith Flandre`.

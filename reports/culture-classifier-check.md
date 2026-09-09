@@ -91,7 +91,7 @@ heterogeneous."* Measured over the whole output of `reports/cjk-romanisation.csv
 answer a defect seen twice. `MAX_HOPS` is **14**, not the eight this report said, and a comment
 beside it still says "six-hop"; both were stale.
 
-**The real finding is scope, not hops — and the mechanism is not what I first wrote.** Emma,
+**The real finding is scope, not hops — and the mechanism is not what I first wrote.**
 2026-09-01: *"Why can't we just do our cultural clarification algorithm from earlier? What's so
 hard about the classification?"* Nothing is hard. The algorithm — clan seat, place, name form, then
 the graph walk — works. It is pointed at the population that needs **romanising**, and that
