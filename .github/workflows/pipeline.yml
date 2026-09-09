@@ -32,8 +32,19 @@ on:
   # authored by `github-actions[bot]`, so the pipeline's own push is inert. A push from a person
   # or a Claude session is what starts a run.
   #
-  # `concurrency: pipeline` with `cancel-in-progress: false` still holds, so a burst of pushes
-  # QUEUES rather than running in parallel or cancelling a run that is mid-push.
+  # `concurrency: pipeline` with `cancel-in-progress: false` still holds, so a run that is
+  # MID-PUSH is never cancelled -- which is the half that matters, since that is the failure
+  # `cancel-in-progress: true` would cause.
+  #
+  # **It is not a queue of many, though, and this comment used to imply one.** GitHub holds at
+  # most ONE pending run per concurrency group: a newer push cancels the one waiting, not the one
+  # running. Measured on 2026-09-09 -- run 471 was created 20:23:16 and cancelled 20:27:06 as 472
+  # arrived at 20:27:04; 472 was cancelled 20:30:18 as 473 arrived at 20:30:17.
+  #
+  # That is benign and is arguably what you want -- the superseded run would have rebuilt from an
+  # older sha, and the survivor's checkout contains its commits anyway -- but it means a burst of
+  # three pushes produces two runs, not three. Do not read a cancelled pending run as a failure,
+  # and do not push again while waiting on one if the point is to watch that run.
   push:
     branches: [main]
   schedule:
