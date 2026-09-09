@@ -12597,7 +12597,7 @@ missing): `NN`, mother of Iwai — `6000000227413001839`, female, deceased, no s
 cap exactly: **5,000 individuals, 3,137 families**. Its first `INDI` is the seed, as the
 rule says it should be.
 
-### The result, and it vindicates her clustering argument
+### The result, and it vindicates the clustering argument
 
 | | of the 13 strong |
 | --- | ---: |
@@ -12648,7 +12648,7 @@ absent from the first. Two seeds, two disjoint neighbourhoods.
 
 ### The 5 "both present" rows are a finding, not a failure
 
-Both ids are still live on Geni *after* her merges, so those pairs were **not** duplicates
+Both ids are still live on Geni *after* the merges, so those pairs were **not** duplicates
 that a merge removed. Four are Samaritan High Priests and the pattern is visible in the
 fathers: Amram V's twin has father *Aaron III*, and Aaron III's father is *Amram V* — a
 hereditary line where numbered names recur every couple of generations.
@@ -12723,7 +12723,7 @@ don't understand that it's undone by somebody."*
 It means only that the fresh export contains two separate `INDI` records with those ids.
 **It does not mean a merge was undone**, and implying that was wrong.
 
-The real cause: **her activity feed gives only the SURVIVING profile id, never the absorbed
+The real cause: **the activity feed gives only the SURVIVING profile id, never the absorbed
 one.** So the pair was never known. I guessed the partner by finding another profile with
 the same name and a same-named parent — and in the Samaritan lines, where numbered names
 recur as father and son (*Amram V*, *Aaron III*), that pairs people who were never the pair
@@ -12796,7 +12796,7 @@ some gigantic project that I didn't ask for."*
 
 A merge on Geni → refresh export → the dead profile is gone → the privileged
 directory wins → our tree carries Geni's current state. No knowledge of which id was
-absorbed is needed anywhere, which is the whole point of her provenance design.
+absorbed is needed anywhere, which is the whole point of the provenance design.
 
 ### The refresh would have lost to the file it supersedes
 
@@ -12885,7 +12885,7 @@ recorded parent.
     izumo-roster              111
 
 **526,042 distinct (QID, Geni) pairs — 522,491 QIDs against 525,653 Geni profiles.** Both
-join directions present and joined, which was her requirement.
+join directions present and joined, which was the requirement.
 
 3,398 QIDs carry more than one Geni id, which is ordinary — `P2600` is multi-valued. 383
 Geni profiles claim more than one QID; those are a decision to settle and are in
@@ -12909,7 +12909,7 @@ statement Wikidata carries while `structural` is our own inference from tree pos
 
 **Katharina von Braunschweig-Wolfenbüttel is the case.** It was reported that the structural walk
 had paired a woman with `Q567039` *Henry IV, Duke of Brunswick*, a man. **It never touched
-her.** `P2600` supplied the correct `Q434771`; the wrong candidate came from
+that item.** `P2600` supplied the correct `Q434771`; the wrong candidate came from
 `geni-wikidata-pairs`. I had read an aggregate as per-candidate provenance — the same
 misreading I had already made and corrected earlier the same day on the 180/70 split.
 
@@ -12972,7 +12972,7 @@ people in a position.
   `scripts/validate-structural-walk.py`: **3,964 agree, 235 conflict, 3,662 unknown.**
   **94% of the 4,199 judgeable pairs agree**, and 3,662 — 47% — cannot be judged at all.
 
-### Two display bugs of mine that misled her
+### Two display bugs of mine that misled the report
 
 * I reported the nine in-corpus conflicts as "genuinely unclear, needs you". They are not.
   Each pair holds **half the facts** — `Constantine Koriat` is `b.1335` on one item and
@@ -13002,7 +13002,7 @@ two phenomena came to be narrated as one.
 | **several items, one Geni profile** | 215 | merge on **Wikidata** |
 | **TANGLE, both at once** | 105 | both merges |
 
-Her cause for the first, which is about how Geni behaves rather than about error: a profile
+The cause for the first, which is about how Geni behaves rather than about error: a profile
 gets isolated from the main tree, nobody can edit it, so somebody creates a new one —
 *"Jenny doesn't have the ability to differentiate between multiple different contradictory
 facts."*
@@ -13046,7 +13046,7 @@ Geni merge fixes it:
 | `Q103568200` | two wives of Bernard III de Saint-Valery, one an `NN` placeholder -- unclear |
 
 **No deprecated `P2600` on any item opened.** The question was *"there may have been deprecation done
-on them"*; the honest scope is that the local store is a snapshot older than her hand edits, so it
+on them"*; the honest scope is that the local store is a snapshot older than the hand edits, so it
 could only ever give a floor -- the browser gives the current answer, and for these six it is none.
 
 `scripts/multi-geni-item-roster.py` sizes the job: of **3,220** items carrying several Geni
@@ -13058,7 +13058,7 @@ adjacency itself, making every relative a member by construction. Membership is 
 own row, and presence is measured against `exports/post-merge/` -- **2,104** first-degree relatives
 across the actionable items are still unrefreshed.
 
-**Two detours cost her turns and are recorded as errors, not as work.** The roster script was
+**Two detours cost turns and are recorded as errors, not as work.** The roster script was
 built off a misread of *"I gave detailed instructions earlier"* -- the instructions were the
 AskUserQuestion answer about merging on Geni, treating as an export target, then deprecating the
 one that redirects. And the first four screenshots were of Wikidata items from the *opposite*
@@ -15391,7 +15391,7 @@ plus half of the remaining."*
 first uncreated step overall, so `bergitte-to-emma` never moved — which is why the *"critical
 path going to me"* stood at **0 of 16 steps**. One step per path now.
 
-*And then it tried to create the account owner.* Step 1 of that path is her. `Q232803` is in neither
+*And then it tried to create the account owner.* Step 1 of that path is that person. `Q232803` is in neither
 `garborg-qids.tsv` nor `p2600-all.tsv` — the item has no `P2600`, which is the whole point — so
 every guard was blind and the batch emitted a `CREATE` for a **second item beside the existing one**.
 `ledger()` now folds in `entity_resolution.md`, the only record of a hand-asserted item.
@@ -16189,7 +16189,7 @@ Blocker interrogation. All three collapsed on *what would I do if nobody ever an
 none was put up.
 
 - **"Taking the next export — BLOCKED-ON-USER-ACTION."** Directly contradicted by `CLAUDE.md`
-  § *The batches are a SEQUENCE*, which lists "the merges/exports must wait on her" as one of
+  § *The batches are a SEQUENCE*, which lists "the merges/exports must wait" as one of
   three **invented** limits, refuted on 2026-08-17: Chrome automation runs the loop end to end.
   The words are in that section. The tag was wrong when written.
 - **"Re-running reconciliation after a batch is accepted — BLOCKED-ON-USER-ACTION."** Stale twice
@@ -16217,7 +16217,7 @@ hop away."*
 of 1 to **46**. One hop out from the 46 is how a 7th-century Baekje royal, Carolingian Friuli
 and 20th-century Iowa arrived in one batch of 36 beside Rogaland farmers.
 
-**The mechanism is her spine rule composing with the seeding rule.** *"The ancestral couples
+**The mechanism is the spine rule composing with the seeding rule.** *"The ancestral couples
 between Bergitte, going from Arne to Bergitte to Charlemagne, are always getting made"* — right,
 and outside the caps. But each one then entered the ledger, and the next run treated it as an
 ordinary seed and grew a ring around **it**. The ball sprouted a new lobe at the far end daily.
@@ -16226,7 +16226,7 @@ Nobody chose that.
 `have` now stays whole — it answers *does this person already have an item* and must not shrink
 — and only the **seed pool** is bounded, by `hops_from(ARNE_GENI, …)`. `RING_MAX_HOPS = 1`. It
 was first written as **6**, a number I picked against the measured spread, which is the invented
-threshold this repo keeps deleting; her specification says one.
+threshold this repo keeps deleting; the specification says one.
 
 **Result: 36 creations → 7**, and the unrestricted ring would have been 437.
 
@@ -16234,8 +16234,8 @@ threshold this repo keeps deleting; her specification says one.
 
 That batch also wrote `Q232803 P22 LAST` and `Q232803 P25 LAST`, attaching **the account owner's own
 item** to the 1,339,227-person component that contains Charlemagne — the opposite of *"I should
-not be in the traversable graph"*. Her Geni id arrives through `paths/bergitte-to-emma.tsv`,
-whose step 1 is her.
+not be in the traversable graph"*. That Geni id arrives through `paths/bergitte-to-emma.tsv`,
+whose step 1 it is.
 
 `NEVER_TOUCH_GENI` / `NEVER_TOUCH_QID` are enforced as a **post-pass over the assembled file**,
 for the reason `qscomment` gives about comments: this builder emits from a dozen sites and a
@@ -17262,7 +17262,7 @@ Twelve seeds were placed by hand, with the question whether those exports would 
 remaining Bureätten people without further seeding from me. They largely did:
 **19 absent → 5.**
 
-| her seed | closed |
+| seed | closed |
 | --- | --- |
 | Hans father of Beata | Johan Martin Reftelius |
 | NN (Artedi line) | Peter Artedi |
@@ -17571,8 +17571,8 @@ items, no per-item lookups. Of the **33 consecutive pairs on that path, 29 are j
 those two people. `reports/spine-bonds.tsv` is the row-by-row record. `out/wikidata/relations.tsv`
 could not have answered it — it was downloaded 2026-08-25 and 20 of these items postdate it.
 
-`paths/bergitte-to-emma.tsv` is the thin one: 4 of 16, bonded 3 of 15 pairs, everything from her
-back to Guri Pedersdatter Foss still to create.
+`paths/bergitte-to-emma.tsv` is the thin one: 4 of 16, bonded 3 of 15 pairs, everything from that
+end back to Guri Pedersdatter Foss still to create.
 
 **`reports/wikidata-spine-completion.qs` is the block, and the first attempt at it was wrong.** I
 started by adding a `spine_closers()` helper to `build-garborg-day.py` — a general rule for
