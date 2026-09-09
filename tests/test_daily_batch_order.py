@@ -1,6 +1,6 @@
 """`build-daily-batch.py` — step 0's second half, and where in the run it sits.
 
-`docs/daily-algorithm.md` § *Step 0* is two halves: read her Wikidata contributions into the
+`docs/daily-algorithm.md` § *Step 0* is two halves: read the Wikidata contributions into the
 ledger, then **take those out and check what remains against the ideal state**. Only the first
 half was wired into the orchestrator; `queue.md` carried the second as *"model-vs-reality.py is
 the diff and is not yet wired into the daily command"*.
@@ -10,7 +10,7 @@ The two things worth pinning are the ones that would silently regress:
 * **the diff runs before the three generators.** After them it is a post-mortem of the day
   rather than a check on it, and it would still print a plausible-looking table either way.
 * **the summary keeps `missing` and `CONFLICT` and drops rows that are `extra` alone.**
-  `extra` is Emma's hand-work and is never touched; the full table is 90-odd rows of it, which
+  `extra` is hand-work and is never touched; the full table is 90-odd rows of it, which
   is how a summary stops being one.
 """
 
@@ -62,7 +62,7 @@ def test_the_summary_keeps_what_moves_and_drops_hand_work(daily):
     kept = daily.diff_summary(DIFF_OUTPUT)
     assert "127  missing" in kept
     assert "51  CONFLICT" in kept
-    # Both of these are `extra` alone -- 22 siblings and 13 countries Emma added by hand.
+    # Both of these are `extra` alone -- 22 siblings and 13 countries added by hand.
     assert "P3373" not in kept
     assert "P27 " not in kept
     # Both of these move: one on every column, one on `missing` alone.

@@ -15,7 +15,7 @@ and every site calls it.
 What is pinned here is that rule, not any script's output. The corpus grows daily and
 the counts move; a marker being a name never becomes acceptable.
 
-Emma's rulings this rests on:
+The rulings this rests on:
 
 * 2026-08-16 — *"NN is always preserved in the multi-language label… no local language
   should have it."*
@@ -50,7 +50,7 @@ def _load(name: str):
 
 #: Every spelling that has actually reached, or nearly reached, a label slot.
 #: `未知` is the one that produced 22 live edits; `Private` is the redaction marker;
-#: `Ukjent` is the Norwegian one Emma named in the same breath as `未知`.
+#: `Ukjent` is the Norwegian one ruled on in the same breath as `未知`.
 MARKERS = ["NN", "N.N.", "nn", "Private", "<private>", "未知", "Ukjent",
            "unknown", "? ?", "NN .", "-", ".", "N"]
 

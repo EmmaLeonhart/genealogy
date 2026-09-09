@@ -1,8 +1,8 @@
 """Assert the download stores **whole** Wikidata items, against the real store.
 
-Emma's requirement, 2026-08-07, and the failure it guards against is expensive
-rather than subtle: *"I don't want to end up running this entire thing and then
-finding that suddenly all they stored was the name."* A four-hour run that
+The requirement, 2026-08-07, and the failure it guards against is expensive rather
+than subtle: a whole download must not turn out to have stored nothing but the
+names. A four-hour run that
 quietly kept labels and dropped claims would look like a success and be worth
 nothing, and no unit test on a hand-written fixture would notice — the fixture
 would be whatever shape the code produced.
@@ -83,7 +83,7 @@ class _Scan:
 
     Every stored item is still examined one at a time, so what is asserted is
     unchanged; only the retention is. Keep it that way — sampling the store
-    would silently retire the guarantee Emma asked for in the module docstring.
+    would silently retire the guarantee the module docstring states.
     """
 
     total: int = 0

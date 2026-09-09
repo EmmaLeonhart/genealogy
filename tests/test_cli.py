@@ -366,8 +366,8 @@ def test_an_empty_exports_dir_fails_with_a_useful_message(tmp_path, capsys):
     assert "no .ged files" in capsys.readouterr().err
 
 
-# `reconcile` and `expand` were deleted on 2026-08-15 (Emma: the name-search
-# matcher went in with "zero consent from me"). The four commands that used to
+# `reconcile` and `expand` were deleted on 2026-08-15: the name-search matcher
+# had gone in unasked. The four commands that used to
 # read their output still refuse to run without it, which is now the permanent
 # state of the online branch rather than a "run this first" hint.
 

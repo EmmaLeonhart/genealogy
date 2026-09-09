@@ -68,7 +68,7 @@ def test_two_separate_runs_are_two_bridges():
 
 
 def test_a_bridge_never_spans_two_paths_in_one_file():
-    """Emma, 2026-08-16: *"treat it as being two paths and not one."*
+    """A blood path and an in-law path are two paths, not one.
 
     A saved page carries a blood path and an in-law path, and both land in one
     file. A run of absent steps that reaches the seam has reached the end of

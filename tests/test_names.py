@@ -22,7 +22,7 @@ TREE = """0 HEAD
 2 SURN Olavsson
 1 RFN geni:2
 0 @I3@ INDI
-1 NAME Emma /Leonhart/
+1 NAME Anna /Eikeland/
 2 GIVN Eric
 2 SURN Borsheim
 1 NAME Eric Wade /Borsheim/
@@ -293,10 +293,10 @@ def test_the_report_states_the_patronymic_heuristic_is_only_grouping():
 
 
 def test_a_chain_becomes_one_link_per_generation():
-    """Emma's worked example, reproduced exactly.
+    """The worked example, reproduced exactly.
 
-    `name modelling.txt`, and she is explicit it is not on Wikidata yet: *"It is
-    what I am saying it should be on Wikidata"*. Four generations in one string.
+    `name modelling.txt`, which is explicit that this is not on Wikidata yet: it
+    is what it SHOULD be. Four generations in one string.
     """
     links = names.patronymic_chain("Abisha III ben Phinhas ben Yittzhaq ben Shalma")
     assert [(l.name, l.based_on, l.ordinal) for l in links] == [

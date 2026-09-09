@@ -176,7 +176,7 @@ def test_a_second_real_component_is_measured_on_its_own_landmarks():
 
 
 def test_the_same_tree_gives_the_same_answer_twice():
-    """Ties are broken by ID: a report Emma works through must not reshuffle."""
+    """Ties are broken by ID: a report worked through by hand must not reshuffle."""
     tree = tree_from(wrap(chain(60)))
 
     first = [p.geni_id for p in remote.most_remote(tree, count=5)]
