@@ -1,6 +1,6 @@
 """Every family record touching the Samaritan priestly families, one row each.
 
-Emma's rule (CLAUDE.md § *"Analyse this" means build a CSV of every instance*):
+The rule (CLAUDE.md § *"Analyse this" means build a CSV of every instance*):
 build the census first, commit it, then analyse it. So this writes two CSVs and
 draws no conclusions.
 

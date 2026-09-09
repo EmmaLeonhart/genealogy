@@ -2,9 +2,8 @@
 
     python scripts/extract-wikidata-dates.py
 
-**Emma, 2026-08-25, on how the zipper should resolve a sibling set that position alone cannot
-separate:** *"Dates first then names but also bruh providence of zipper merges should be
-recorded."*
+**How the zipper resolves a sibling set that position alone cannot separate: dates first,
+then names** — and the provenance of a zipper merge is recorded either way.
 
 Dates first requires dates, and nothing had extracted them: `out/wikidata/relations.tsv` carries
 `P22`/`P25`/`P40`/`P26`/`P2600` and `out/wikidata/labels.tsv` carries labels and identifiers, but

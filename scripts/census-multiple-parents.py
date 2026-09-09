@@ -2,8 +2,7 @@
 
     python scripts/census-multiple-parents.py
 
-**Emma, 2026-08-25:** *"Put into the queue an analysis on both corpuses of people with multiple
-mothers or multiple fathers."*
+**An analysis, over both corpuses, of people with multiple mothers or multiple fathers.**
 
 **This is not tidiness. It tests an assumption the zipper join is built on.**
 `scripts/zipper-join.py` compares "our father" against "their `P22`" as though each side had at

@@ -2,9 +2,8 @@
 
     python scripts/path-between.py <geni_id_a> <geni_id_b> [-o paths/name.tsv]
 
-**Emma, 2026-08-26:** *"I'd be interested in whether there is a link between Arne and Bureus
-that we could potentially follow and add… You have the ability to go into the browser, find
-these, save them, and figure it out."*
+**Is there a link between Arne and Bureus worth following and adding?** The pages can be
+found in the browser, saved, and read.
 
 **The browser is not needed when both ends are already in the corpus.** `genimerge path-from-html`
 exists because a Geni relationship path names people *no export has reached* — that is its whole
@@ -17,7 +16,7 @@ relation column reads *"her brother"*, *"his partner"*, *"her husband"*, and `CL
 an export style being chosen because a stretch of path crossed exactly those.
 
 **Every step reports whether that person holds a Wikidata item**, from the same ledger the daily
-batch uses — `reports/garborg-qids.tsv` plus her hand-asserted identifications — because
+batch uses — `reports/garborg-qids.tsv` plus the hand-asserted identifications — because
 the question behind this is what would have to be *created* to make the line continuous.
 
 Writes a TSV in the shape `genimerge path` consumes, so a found path joins the same machinery as
@@ -78,9 +77,9 @@ def main():
                          "repeatable. The endpoints are always kept.")
     args = ap.parse_args()
 
-    # **`--avoid` is a routing constraint, not a filter on the answer.** Emma, 2026-08-29:
-    # *"I want a path to be added from Arne to Signe (adding from Arne to Signe) that does not
-    # go through any Borsheim"*. Breadth-first returns *a* shortest path and there is usually
+    # **`--avoid` is a routing constraint, not a filter on the answer.** The ask, 2026-08-29,
+    # was a path from Arne to Signe that does not go through any Borsheim.
+    # Breadth-first returns *a* shortest path and there is usually
     # more than one; excluding people up front makes the walk find a different route rather
     # than reporting failure on the route it happened to pick first.
     #

@@ -1,8 +1,7 @@
 """Every SUBM record and every reference to one, so we can say what SUBM is.
 
-Emma parked `SUBM` on 2026-08-11 — *"may theoretically exist, may theoretically
-be useful. I have no idea how it's going to be useful"* — then unparked it the
-same day with *"agentic RAG to figure it out"*.
+`SUBM` was parked on 2026-08-11 as something that may theoretically be useful with
+no clear use in sight, then unparked the same day to be figured out agentically.
 
 Looking at the records first: they carry a person's name, and occasionally a
 postal address. So the hypothesis is that a `SUBM` is the Geni **user** who

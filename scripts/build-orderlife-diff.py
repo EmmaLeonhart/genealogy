@@ -1,9 +1,8 @@
 """What is in `order.life` that is not in this project's tree.
 
-**Not a merge, and not a synoptic tree.** Emma, 2026-08-14: the synoptic tree is
-already built and she does not want another one — she wants to know *what the
-order.life repository holds that this one does not*. This produces that list and
-stops.
+**Not a merge, and not a synoptic tree.** The synoptic tree is already built and
+a second one is not wanted; the question is *what the order.life repository holds
+that this one does not*. This produces that list and stops.
 
 **order.life is a Wikibase carrying two different kinds of thing in one graph.**
 Its `Q1` is "Aster / Our Greatest Grandmother", dated −13,000,000,000: the Gaiad

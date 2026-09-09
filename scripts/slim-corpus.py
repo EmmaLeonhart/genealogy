@@ -7,8 +7,8 @@ they drift.
 
     python scripts/slim-corpus.py -o /tmp/slim
 
-**Emma, 2026-09-03:** *"realistically anything that doesn't go into the editing pipeline isn't
-needed in the synoptic tree."* This is that rule applied to the merge's input.
+**Anything that does not go into the editing pipeline is not needed in the synoptic tree.**
+This is that rule applied to the merge's input.
 
 **Why it exists: the merge does not fit in a runner, measured.** Run 33808839371 was killed at
 15,921 MB with 67 MB free after seven minutes pinned at the ceiling. The cause is structural
@@ -35,7 +35,7 @@ is pointed at those. Every `.ged` stays committed, complete, with its notes.
 
 **Bio QIDs are NOT lost, and that was checked rather than assumed.**
 `scripts/extract-bio-qids.py` reads `find_exports()` -- the raw corpus -- not the merged tree, so
-her Wikidata links in Geni *About Me* survive untouched. None of the eight steps of
+the Wikidata links in Geni *About Me* survive untouched. None of the eight steps of
 `rebuild-everything.py` reads `NOTE` either: the tag lists of `build-display-names.py`,
 `derive-labels.py`, `derive-family.py` and `derive-facts.py` are the whitelist below.
 
