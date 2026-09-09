@@ -15338,7 +15338,7 @@ On `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given an ali
 `P1449` *nickname* keeps the bare token — `Sally` is the nickname; it is the alias, whose job is
 retrieval, that needs the full form.
 
-**She asked for the label question to be looked up rather than guessed**, offering two
+**The label question was to be looked up rather than guessed**, and there were two
 alternatives: nickname-as-label with the full name as alias, or the quotes staying inside the
 label. Checked against Wikidata's own help pages:
 
@@ -15354,7 +15354,7 @@ So the full name stays the label: nothing sourced says a 19th-century farm woman
 known as Sally, only that Geni records she was called it. The nickname form lives where
 `Help:Aliases` says it belongs.
 
-**A test's invariant changed on her instruction and is recorded as such**, not quietly relaxed:
+**A test's invariant changed on instruction and is recorded as such**, not quietly relaxed:
 `test_aliases_cover_the_nickname_and_the_married_full_name` asserted the bare `"Stena"`. It now
 asserts `Stena Jacobson` is present **and** that the bare `Stena` is not.
 
@@ -15363,7 +15363,7 @@ Also fixed: the comment annotator stripped quotes off monolingual values, so a l
 
 **1,362 passed, 1 xfailed, 0 failed.**
 
-## 2026-08-26 — the daily algorithm rebuilt to her caps, after she stopped a run
+## 2026-08-26 — the daily algorithm rebuilt to the specified caps, after a run was stopped
 
 *"I had to terminate that round early because of the unbounded behaviour."* The 50-creation run
 drew 28 from one component: five couples with their **entire** children, one with eleven.
@@ -15376,7 +15376,7 @@ drew 28 from one component: five couples with their **entire** children, one wit
 | free parents — `10 + half the remainder` of the half-attached | 16 of 23 eligible |
 | the spine, one step on EACH path | outside every cap |
 
-**Spouses have no bucket.** Her first version said 10 of them; she revised it in the same
+**Spouses have no bucket.** The first version said 10 of them; it was revised in the same
 message. They arrive subordinate to children — as the free parent of a child just added, and as
 the substitution when a picked person's marriage has no child left, which is *"the only reason we
 substitute in childless marriages"*.
@@ -15487,13 +15487,13 @@ removed were sparse records costing little each.
 
 `reports/garborg-name-transliterations.tsv` holds **114 tokens**, built for the original Garborg
 family, and `label_in()` is all-or-nothing on purpose. **32 of 36** creations are carried with
-*"no transliteration for every token"*. Queued with the two other language items she raised,
+*"no transliteration for every token"*. Queued with the two other language items raised,
 including that `mul` may cause a bot to strip per-language labels — which would be deleting this
 work behind us, and cannot be established offline.
 
 **1,381 passed, 1 xfailed, 0 failed.**
 
-## 2026-08-26 — the language census she asked for, and Korean was the surprise
+## 2026-08-26 — the language census, and Korean was the surprise
 
 *"The ideal thing was supposed to be that we do a census of all languages in the synoptic tree…
 And I don't think we fully did that."* Nothing had. `scripts/census-name-scripts.py` →
@@ -15531,7 +15531,7 @@ would have been the same error as the Austria-Hungary one, with more rows. Folde
 ## 2026-08-26 — the transliteration table, and the Chinese was never a decision
 
 I had put "the Chinese characters are a judgement per name" on the blocker list. The ruling: *"Chinese
-transliteration is already done lol btw so why do I need to make a decision"* — and she is right.
+transliteration is already done lol btw so why do I need to make a decision"* — and that is right.
 `reports/garborg-name-transliterations.tsv` already held **113 tokens with both columns filled**,
 so the method was settled and what remained was authoring, not a ruling. It came off the list.
 
@@ -15593,17 +15593,17 @@ spelling variants — `Jonsen`/`John`, `Jakobsdotter`/`Jacob`.
 
 Measuring it before implementing is what caught the 91%. Queued with the implementation shape.
 
-**And the `mul` blocker was my misreading.** She reported the bot's behaviour; I read it as a
-warning against `Lmul` and put it on the blocker list for three status reports. Her answer:
+**And the `mul` blocker was my misreading.** What was reported was the bot's behaviour; I read it as a
+warning against `Lmul` and put it on the blocker list for three status reports. The answer:
 *"you completely misunderstood and lmul is extremely important on everything lol."* Nothing
 changes; the item is gone.
 
 ## 2026-08-26 — the good transliterator existed and was never wired in
 
 On being told the table had been hand-extended: *"Uhh what? We have a transliteration."*
-She was right and I had not looked. `scripts/translit_no.py` and
+That was right and I had not looked. `scripts/translit_no.py` and
 `scripts/extend-transliterations.py` both exist, landed 2026-08-25 in `11295af7`, written after
-she asked *"did you kinda bullshit these instead of selecting from an actual pipeline?"*
+the question *"did you kinda bullshit these instead of selecting from an actual pipeline?"*
 
 **`extend-transliterations.py` never imported `translit_no`.** It carried its own inline
 letter-by-letter reader:
@@ -15620,8 +15620,8 @@ then left unused. `by_rule` now delegates to it.
 
 **How long, and did it ship: one day, and no.** The table was hand-maintained throughout — 113
 rows on 2026-08-24, 218 on 2026-08-26 — and the extender was never run and committed in between.
-**Checked against Wikidata rather than against the repo**, which is what she told me to do: 41 of
-her 71 items carry `ja`/`zh` and every one reads correctly — `アルネ・ガルボルグ`,
+**Checked against Wikidata rather than against the repo**, which is the instruction: 41 of
+the 71 items carry `ja`/`zh` and every one reads correctly — `アルネ・ガルボルグ`,
 `エイヴィン・オードネソン・ガルボルグ`, `オーゴット・ガルボルグ`.
 
 **The script took no arguments, so `--check` was silently ignored and it ran and rewrote the
@@ -15635,10 +15635,10 @@ as *"her items carry no ja/zh"* — the same absence-versus-broken-join confusio
 else this week. Chunked at 40, all 71 came back.
 
 **And two claims of mine were wrong.** I called the census incomplete for covering only the Geni
-side; she only cares about Geni, so it was complete. And I called the transliterator horrible on
+side; only the Geni side is in scope, so it was complete. And I called the transliterator horrible on
 the strength of the wrong engine's output.
 
-## 2026-08-26 — her father test is in, and it found a missing Swedish suffix
+## 2026-08-26 — the father test is in, and it found a missing Swedish suffix
 
 `classify_fields` takes an optional `father_name`; `patronymic_or_surname()` applies the
 test. Without a father it keeps today's morphological answer, which all nine existing callers
@@ -15735,7 +15735,7 @@ the shape, and this neighbourhood does not yet.
 ## 2026-08-27 — the relationship section was three-quarters duplicates
 
 The objection: *"the relationship one is questionable that it's always gonna be so huge and growing."*
-She was right, and the cause was not that there is a lot of work. **229 of 306** statements on
+That was right, and the cause was not that there is a lot of work. **229 of 306** statements on
 existing items in that day's batch were **already on Wikidata**. 77 were new.
 
 **Two causes, and the stale file was only one.**
@@ -15748,8 +15748,8 @@ existing items in that day's batch were **already on Wikidata**. 77 were new.
   cannot know yesterday's batch was run.
 
 **QuickStatements merges a duplicate rather than failing, which is why it went unnoticed.**
-Nothing ever broke. The batches were simply three-quarters things she had already done — and
-every one of those lines was hers to read past.
+Nothing ever broke. The batches were simply three-quarters things already done — and
+every one of those lines was a line to read past.
 
 `scripts/refresh-live-values.py` reads whole items through `full_entities` and writes
 `reports/garborg-live-values.tsv`: 1,409 statements over 80 items, one row per
@@ -15782,7 +15782,7 @@ exactly how the batch became three-quarters duplicates — `garborg-live-state.t
 files and what the second one is for.
 
 **The first full run of it shows how much hand work has landed.** The ledger went **80 → 121 items** and
-the live values **1,409 → 1,798 statements over 130 items** — she has run batches since
+the live values **1,409 → 1,798 statements over 130 items** — batches have run since
 yesterday. Today's build: 36 creations, **48 links** (up from 16, because more people now hold a
 QID and so more links are genuinely new), 704 statement lines, **0 duplicates**.
 
@@ -16006,7 +16006,7 @@ What came out of them:
 - **`zipper-provenance.tsv`** — 45,898 inferred pairs, **7,302 corroborated by an independent
   source**: the structural walk 7,841, the About Me 405, Tanba 181, Izumo 111,
   `geni-wikidata-pairs` 126, and **17 hand verdicts**, which are nodes in the
-  provenance graph exactly as she said they were.
+  provenance graph exactly as specified.
 - **`add-p2600-gate.tsv`** — 148 rejected with a reason, 139 of them `WITHHELD` because the
   candidates share a name and may be one person; **1,017 inferred candidates dropped because only
   a Wikidata-asserted id can be removed**.
@@ -16074,7 +16074,7 @@ only line left — **words yes, punctuation no**. `NOT_A_NAME` is untouched; det
 suppression.
 
 **A middle initial keeps its Latin letter in every language.** `John F. Smith` →
-**ジョン・F・スミス**, **约翰·F·史密斯**. Shown four readings, she took this one over dropping the
+**ジョン・F・スミス**, **约翰·F·史密斯**. Of four readings, this one was taken over dropping the
 initial (loses what the Latin label carries) and rendering it エフ (invents a reading nobody
 uses).
 
