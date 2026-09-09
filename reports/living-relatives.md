@@ -16,7 +16,7 @@ the profiles themselves. No Wikidata, no Geni export.
 2. **It never looked at `Hoknes` or `Frisk` at all**, having assumed the father's side was
    the whole question.
 3. **It called the Bergen/Hordaland candidates the plausible ones.** Hordaland is the
-   `Børsheim` spelling, which ranks *third*. Emma's own pick — Scholar profile 2, Carlin
+   `Børsheim` spelling, which ranks *third*. The hand pick — Scholar profile 2, Carlin
    **Borsheim**-Black — is the spelling that ranks second, and the corpus agrees with her
    rather than with me.
 
@@ -27,14 +27,14 @@ the profiles themselves. No Wikidata, no Geni export.
 | profile | person | affiliation | field |
 | --- | --- | --- | --- |
 | `qg1-JFAAAAAJ` | **Elisabet Børsheim** | Arkansas Children's Nutrition Center; UAMS | energy and substrate metabolism |
-| `riYs2qYAAAAJ` | **Carlin Borsheim-Black** ← *Emma: "much more plausible"* | Central Michigan University | antiracist English education |
+| `riYs2qYAAAAJ` | **Carlin Borsheim-Black** ← *"much more plausible"* | Central Michigan University | antiracist English education |
 
 Carlin Borsheim-Black published as **`C Borsheim`** through 2008 and as `Borsheim-Black`
 from 2010 — a married name, so the birth surname is the unhyphenated `Borsheim`. She is
 also ORCID `0000-0002-3831-609X`, so profile and ORCID row are one person, not two
 candidates.
 
-**Mother's side — all ten profiles are `Frisk`**, the surname Emma ranks *last*:
+**Mother's side — all ten profiles are `Frisk`**, the surname ranked *last*:
 
 | person | affiliation | country |
 | --- | --- | --- |
@@ -67,7 +67,7 @@ looks.** Rogaland farms against a Hordaland farm, no overlap in place, and a 150
 in where the records stop. `Børsheim` is a farm name and there is a farm of that name in
 each county, so two unrelated families can carry it honestly.
 
-**But the spelling on any individual person is not reliable, in either direction.** Emma,
+**But the spelling on any individual person is not reliable, in either direction.**
 2026-08-18:
 
 > *"Borsheim is the surname of my ancestors. Børsheim is sometimes conflated with people
@@ -84,7 +84,7 @@ hypercorrection lives, so the spelling is not evidence that she is *not* from th
 line. Her spelling should be treated as unknown, not as third-ranked.
 
 The correction the first pass needed was not "stop folding". It was: **fold for people,
-separate for farms.** Folding hid Emma's ranking; treating the spellings as two closed
+separate for farms.** Folding hid that ranking; treating the spellings as two closed
 families would now hide the drift she is describing.
 
 ## Hoknes is the interesting one, and nobody supplied a candidate for it
@@ -111,7 +111,7 @@ that is assimilation happening across three generations. **Sixteen of the twenty
 carry no date at all**, which is what a Geni tree looks like exactly where living people
 are: present as names, undated because nobody exported them.
 
-That is a coherent reason for Emma's ranking — it is her recent family, so it is the line
+That is a coherent reason for the ranking — it is the recent family, so it is the line
 that could still reach a living academic, and it is the line the corpus documents worst.
 
 ## The one thing that argues against the Borsheim candidates
@@ -149,7 +149,7 @@ and in full form, **`Yngve Borsheim`**. **That is `Knut Yngve Børsheim`**, ORCI
 `0000-0003-2180-1811` and `0009-0009-7736-1326` — who is registered with the **ø** and
 publishes **without** it.
 
-**This is Emma's point about the spellings, evidenced on a single named individual rather
+**This is the point about the spellings, evidenced on a single named individual rather
 than argued from farm names.** One person, two spellings, in sources of record. Any method
 here that treats `Borsheim` and `Børsheim` as disjoint sets will split him in half.
 
@@ -189,7 +189,7 @@ place among the 167.
 | | |
 | --- | --- |
 | Carlin's line | **Sperling, Manitoba** → Wheaton, Minnesota → Mt. Pleasant, Michigan |
-| the corpus's Canadian Borsheims | **Birch Hills, Saskatchewan** and Vancouver — and they are Emma's own immediate family: Richard Wade (1 hop), Jared (2), Dean |
+| the corpus's Canadian Borsheims | **Birch Hills, Saskatchewan** and Vancouver — and they are the account owner's immediate family: Richard Wade (1 hop), Jared (2), Dean |
 
 Sperling and Birch Hills are about a thousand kilometres apart, both in the Norwegian
 prairie settlement. **Neither Eilert, Earl nor Eugene appears anywhere in the corpus**, and
@@ -207,17 +207,17 @@ among its settlers and names no individuals, and no source found gives Eilert's 
 origin. What would settle it is a Norwegian parish record or a Geni export seeded on
 Eilert — and **exports are the other session's job**, so this is where this branch stops.
 
-**She remains the best candidate on paper** — Emma's own pick, an unhyphenated `Borsheim`
+**She remains the best candidate on paper** — the hand pick, an unhyphenated `Borsheim`
 birth surname, a real publication record, and now a confirmed Canadian-Norwegian
 descent. What is missing is the one edge that would give her a number.
 
 ## What would settle it, in order of what it costs
 
-1. **Carlin Borsheim-Black's birth family.** She is the strongest candidate by Emma's own
+1. **Carlin Borsheim-Black's birth family.** She is the strongest candidate by that
    ranking *and* her own pick, publishes under an unhyphenated `Borsheim` before 2008, and
    is in Michigan. A US census or obituary trace back two generations meets either the
    Canadian branch or the Jæren farm, or neither — and either answer is worth having.
-2. **A Hoknes candidate.** None was supplied. If Emma has one, it goes to the front of the
+2. **A Hoknes candidate.** None was supplied. If one is supplied, it goes to the front of the
    queue ahead of everything here.
 3. **The three arXiv papers**, not yet read, which may carry names outside these lists.
 4. **Frisk: do not chase it on the surname.** Ten profiles across four countries with a
@@ -227,6 +227,6 @@ descent. What is missing is the one edge that would give her a number.
 ## Not settled here, and not mine to settle
 
 Whether any of these people is a relative, and whether living people belong in the tree at
-all, are Emma's rulings. This establishes that **none of the twenty-two is in the corpus
+all, are hand rulings. This establishes that **none of the twenty-two is in the corpus
 today**, that the corpus stops one generation short of all of them, and that the two
 spellings she ranks separately are separate families in the data as well.

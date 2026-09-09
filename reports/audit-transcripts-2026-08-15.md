@@ -1,6 +1,6 @@
 # Transcript audit — what was asked, what was done, what is stale
 
-Run 2026-08-15 as queue item 0, extended by Emma's instruction the same day:
+Run 2026-08-15 as queue item 0, extended by instruction the same day:
 *"figuring out what stuff in the repository is outdated… We're doing a very,
 very systematic review of the transcripts and what I asked and what was actually
 done."*
@@ -14,9 +14,9 @@ that a correction is read after the thing it corrects.
 Method notes, because both matter for trusting the result:
 
 - The extraction did not summarise. Every turn was read as written.
-- **Later statements win.** Emma reverses herself explicitly and often, so a
+- **Later statements win.** An instruction is reversed explicitly and often, so a
   standing instruction is whichever version is latest, not whichever is loudest.
-- Turns 196 is a context-compaction summary, not something Emma wrote. Its
+- Turns 196 is a context-compaction summary, not something dictated. Its
   quoted user messages were treated as evidence, its narration was not.
 
 ---
@@ -34,8 +34,8 @@ checked rather than assumed.
 | Never overwrite an existing `.ged` | 08-13 | `CLAUDE.md` | yes |
 | "Analyse" = CSV of every instance, committed | 08-12 | `CLAUDE.md` | yes |
 | No unprompted reports | 08-12 #182 | `CLAUDE.md` | yes |
-| Case-by-case, Emma interprets | 08-10 #131 | `CLAUDE.md` | yes |
-| Her name is Emma Leonhart; the old name is not rewritten anywhere | 08-13 #168 | `CLAUDE.md` | yes |
+| Case-by-case interpretation | 08-10 #131 | `CLAUDE.md` | yes |
+| The account owner's name; the old name is not rewritten anywhere | 08-13 #168 | `CLAUDE.md` | yes |
 | A second Geni ID is not a conflict | 08-14 #283 | `CLAUDE.md` | yes |
 | Redacted people go in; `Private` never becomes a label | 08-15 #295–#300 | `CLAUDE.md`, `scripts/labels.py` | yes |
 | "Is X present?" means both stores, and say which | 08-14 #268 | `CLAUDE.md` | yes |
@@ -43,7 +43,7 @@ checked rather than assumed.
 
 ## 2 · Instructions that were given and are NOT done
 
-Each of these was said by Emma, is not contradicted by anything later, and is
+Each of these was dictated, is not contradicted by anything later, and is
 not in the repo as finished work. They are the rebuilt queue.
 
 | # | instruction | said | state |
@@ -56,12 +56,12 @@ not in the repo as finished work. They are the rebuilt queue.
 | F | **Find the numbered-generation placeholder profiles on Geni** — *"I think they're Chinese. I'd like you to try to find them"* | 08-14 #258 | not attempted |
 | G | **`Q98159` in order.life `persons.tsv` is a malformed row** — an embedded quote splits it | 08-15 | not fixed |
 | H | **Wadah Cohen's father** is a missing son of `Amram ben Yitzhaq` `6000000178795370821` | 08-14 | not created |
-| I | **The unrequested-normalisation audit** Emma scheduled for 19:00 by cron | 08-15 #301 | **cron died with the session; never ran** — this document is its replacement, §3 |
+| I | **The unrequested-normalisation audit** scheduled for 19:00 by cron | 08-15 #301 | **cron died with the session; never ran** — this document is its replacement, §3 |
 | J | **Descent-from-antiquity people with neither a Geni nor a Wikidata link** — *"I want to include everything here in the synoptic tree… flagging whether an individual is a [DFA] individual"* | 08-15 #284 | undecided, see §5 |
 | K | **The 15,094 unreadable-item relationship edges** — 21% of available work | 08-14 | undecided, see §5 |
 | L | **The 40 `sex = Q1` rows** — *"Sex = Q1 is an error, but it is not an error that means all the data is bad"* | 08-15 #304 | 2 of 18 parents recovered by `infer_sex`; 40 rows still open |
 
-## 3 · Things done that Emma did not ask for
+## 3 · Things done that were never asked for
 
 This is §2 item I — the audit she asked for at 19:00, run here instead. The
 question in each case is narrow: **was this built on an instruction, or on my
@@ -95,14 +95,14 @@ remain.
 ### 3.3 The impossible-dates work
 
 `scripts/build-impossible-years-census.py`, `reports/impossible-years.md`,
-`reports/impossible-years.csv`. Emma, in an AskUserQuestion answer on 08-12:
+`reports/impossible-years.csv`. In an AskUserQuestion answer on 08-12:
 *"I have no clue what you're even talking about here… I never even asked you to
 do any kind of fixing of impossible dates."* She had asked to *"look over the
 future birth dates"* (08-10 #128) — looking is not a census plus a fix.
 
 ### 3.4 Normalisation inside the order.life batch
 
-Emma, 08-15 #302–#303: *"You've been dropping the parent edges when the parent's
+08-15 #302–#303: *"You've been dropping the parent edges when the parent's
 sex is blank and skipping items? … you did a massive amount of normalization
 stuff that creates data that I don't want."* Partly reversed the same night —
 `infer_sex()` now recovers sex from the graph and unresolved parents go to
@@ -111,7 +111,7 @@ remain (§2 L).
 
 ### 3.5 Emptying `NN`, `unknown` and `?` labels
 
-`label_for()` briefly returned `''` for those alongside `Private`. Emma: *"I
+`label_for()` briefly returned `''` for those alongside `Private`. The correction: *"I
 didn't tell you to do that. I didn't tell you to avoid the NN people."*
 Reverted; `CLAUDE.md` records why.
 
@@ -147,12 +147,12 @@ that no longer exists.
 | `reports/wikidata-overlap.md` | 145 | 58 | regenerate |
 | `reports/wikidata-isolates.md` | 145 | 58 | **line of inquiry parked 08-14** |
 | `reports/wikidata-unreached.md` | 151 | 52 | regenerate |
-| `reports/missing-ancestors.md` | 186 | 17 | Emma named this one; see below |
+| `reports/missing-ancestors.md` | 186 | 17 | this one was named; see below |
 | `reports/samaritan-component.md` | 192 | 11 | regenerate |
 | `CLAUDE.md` § Layout | 103 | 100 | prose figure, needs the sentence updated |
 | `todo.md` | 50 | 153 | prose figure |
 
-**`missing-ancestors` specifically**, since Emma named it. The check ran on
+**`missing-ancestors` specifically**, since it was named. The check ran on
 2026-08-13 over 186 exports and reported **0 absent** — the enumerated ancestors
 from the saved `missing ancestors/` HTML pages were all present. Since then she
 has run further ancestor and blood-relative exports (08-14 #281). The report is
@@ -164,7 +164,7 @@ Nine reports are untouched for 12 days with no corpus claim to check —
 `consistency.md`, `distant-pairs.md`, `remote-people.md` and the ten path
 reports frozen at 08-06. These are all regenerable by their CLI command.
 
-## 5 · Open questions put to Emma
+## 5 · Open questions put up
 
 Asked by `AskUserQuestion` in this session rather than parked here. Recorded so
 that the answers have somewhere to land.

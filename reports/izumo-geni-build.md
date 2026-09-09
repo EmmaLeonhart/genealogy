@@ -7,7 +7,7 @@ Geni entry point: <https://www.geni.com/people/Tsusa-no-mikoto-no-Mikoto/6000000
 grid rendered as a table, and the ruling was out parsing it (2026-08-19: *"you can only
 look at it visually it's basically an image"*). Edges are read from screenshots of the
 rendered chart. Existence on Geni is checked **by profile ID**, not by the tree canvas
-— Emma, same day: *"you can just use the IDs and look through the list of children
+— same day: *"you can just use the IDs and look through the list of children
 and add"*. The canvas gave a stale render and cost a duplicate; the ID check did not.
 
 **The regnal number is the join key.** Geni carries it inside the name —
@@ -24,7 +24,7 @@ Japanese, 2011 English and 2026 additions. Never match these people by name spel
   chart was offered and declined.
 - Add the Wikidata link to a person's description where it is missing.
 
-## Duplicates to merge — Emma's queue, not mine
+## Duplicates to merge — a hand queue, not mine
 
 | person | keep | duplicate | how it happened |
 | --- | --- | --- | --- |
@@ -65,13 +65,13 @@ its `Add another family member` checkbox chains several children of one parent.
 
 The chart hangs the "Ancestor of *X* no Kuni no Miyatsuko" collaterals off the **main
 kokuso line** — its generation rows put them beside Chiri 9, Yomorosu 10 and Ada. Geni
-does not: Emma had already built them descending through **Midorokimi**, Kushida 8's
+does not: they had already been built descending through **Midorokimi**, Kushida 8's
 brother, and had `Etarabihi no Mikoto, Musashi no Kuni no Miyatsuko` as a *child* of
 Nintachikatahi. Both readings are coherent — the collaterals form their own line through
 the non-kokuso brother.
 
-**The additions follow her Geni structure, not the chart's row placement**, because
-extending what is already there is what she asked for and because restructuring existing
+**The additions follow the existing Geni structure, not the chart's row placement**, because
+extending what is already there is what was asked for and because restructuring existing
 relationships is merge-shaped work that is hers. Within that, each person's parent comes
 from **column alignment in the chart**: the row-11 collaterals sit directly beneath their
 row-10 counterparts, so Kotatemi(521)→under Aogatsuhikono(521), Aratahishi(652)→under
@@ -79,7 +79,7 @@ Isumino(652), Oshikunishikun(763)→under Sugase(763), Anawaihikono(862)→under
 Etarabihi(862), Oyakinotomi(963)→under Otomuhikono(963), Ikijirodome and Otakino→under
 Takemisasuhino, Kyosahino(1445)→under Ikinagano(1445).
 
-**What would falsify it:** if Emma says the collaterals belong on the main line as the
+**What would falsify it:** a ruling that the collaterals belong on the main line as the
 chart draws them, every one of these 18 moves up a branch. Nothing else about them
 changes — the people are right, only the attachment point is the guess.
 
@@ -87,7 +87,7 @@ changes — the people are right, only the attachment point is the guess.
 
 - `Isonokaya Sukunenomikoto` — chart column 1072, aligned under `Nintachikatapinomikoto`,
   which is probably the same person as Geni's `Nintachikatahi` under a different
-  romanisation. Held because that identity is exactly the kind of call Emma makes.
+  romanisation. Held because that identity is exactly the kind of call that is not mine to make.
 - `Izumokusunemino Mikoto` — chart row 8, brother of Kushida 8 and Midorokimi.
 - `Inakubinomikoto`, Ancestor of Tsushima no Miyatsuko — chart column 652, directly under
   `Takeyamikiru no Mikoto`, who did not exist until today.
@@ -113,7 +113,7 @@ end:
                     Musashi no Kuni no Miyatsuko [...491049]
 
 What is unfinished in it is **9 `NN no Mikoto` placeholders**, and those stay NN by
-her instruction.
+instruction.
 
 ## Where the numbered succession actually stands on Geni
 
@@ -121,7 +121,7 @@ her instruction.
   Kushini 3 → Tsusa 4 → Kushimikasaki 5 → Kishitsuki 6 → Kushimikatomi 7 → Kushida 8
   → Chiri 9 → Morosu 10 → Ada no Mikoto → **Izumo-Furune 11**.
 - **The chart breaks here and so does Geni.** Furune 11's only charted child is
-  Miyoshiya no Mikoto, who has no children drawn — Emma: *"that person has no children
+  Miyoshiya no Mikoto, who has no children drawn — *"that person has no children
   just implied descendants"*. The succession resumes at **12 under Ibe no Mikoto**,
   Furune's brother, and Ibe → `Ukatsu Kunu 12 no Mikoto` `6000000227332010844`
   already exists.
@@ -133,7 +133,7 @@ her instruction.
 
 `reports/izumo-kokuso-roster.tsv` — 103 kokuso carrying both a regnal number and a
 Wikidata item, extracted from the chart's `[Wikidata]` links. The regnal number joins
-it to the Geni name. Emma: the numeric middle names *"are regnal numbers for the Izumo
+it to the Geni name. The numeric middle names *"are regnal numbers for the Izumo
 no Kuni no Miyatsuko"*, not middle names.
 
 ## Second block — the numbered line's collaterals, generations 11-21
@@ -167,7 +167,7 @@ Three mechanisms were tried and only the third is usable.
 - **The tree canvas** re-renders and pans between one click and the next, so about two
   thirds of clicks land on empty space. It also served a **stale render** — showing
   Isetsuhiko with only one child when he already had two — which is what produced the
-  duplicate Kamisahime. Abandoned on Emma's instruction.
+  duplicate Kamisahime. Abandoned on instruction.
 - **Coordinate clicking on the profile dialog** works but the browser window keeps
   resizing between calls (1536x674, 1568x688, 1568x745 all seen in one session), so
   fixed coordinates drift and silently miss the name field. Several adds saved blank
@@ -190,9 +190,9 @@ Geni's `Suggest surnames` fills the surname from the parent, so children added u
 left as Geni generated it rather than corrected mid-run — flagging it rather than
 deciding it.
 
-## Emma's naming rule for the later generations, not yet reached
+## The naming rule for the later generations, not yet reached
 
-**`Higashianatsuu Senge` and its like are really `Anatsuu Higashi`** — Emma,
+**`Higashianatsuu Senge` and its like are really `Anatsuu Higashi`** —
 2026-08-19: *"they are all more like 'Anatsuu Higashi' and they should be changed
 accordingly once you reach that point"*. So the chart's run-together forms in the
 Senge/Kitajima/Higashi/Takaoka/Hiraoka/Akatsuka generations are surname+given
@@ -222,7 +222,7 @@ is written (`Hiroshima 25 Izumo` = first `Hiroshima`, middle `25`, last `Izumo`)
 
 **72 people created in total.**
 
-## The name inversion, applied — Emma's rule
+## The name inversion, applied — the stated rule
 
 *"they are all more like 'Anatsuu Higashi' and they should be changed accordingly once
 you reach that point"* — reached, and done. Ten profiles renamed:
@@ -268,7 +268,7 @@ The `Takatoki 53 Izumo` `6000000227334408837` created today under Yasutaka 52 is
 **same person**. So this is not merely a duplicate to tidy — **merging these two joins
 the numbered kokuso chain to the entire existing Senge and Kitajima tree**, which is
 the join the whole exercise is for. It is the highest-value item in this file and it
-is Emma's to perform.
+is not mine to perform.
 
 It also means **54 and 55 need no creating**: Kiyotaka 54, Senge Takamune 55 and
 Kitajima Sadataka 55 are already there under the old Takatoki.
@@ -286,7 +286,7 @@ down. **None of it existed.** Created as a chain off Yasutaka 52:
               Naotaka Hiraoka [6000000227334516908]
                 Naokiyo Hiraoka [...]
 
-Named given-first per Emma's rule, so `Hiraoka no Sadataka` becomes `Sadataka Hiraoka`.
+Named given-first per that rule, so `Hiraoka no Sadataka` becomes `Sadataka Hiraoka`.
 
 **79 people created in total.**
 
@@ -341,7 +341,7 @@ Two things this needed:
   middle name, so `Yoshitaka-Kitajima` is what comes back for `Yoshitaka 56
   Kitajima`. Matching the full name reported a successful save as a failure.
 
-## Duplicate created today, for Emma to merge
+## Duplicate created today, to be merged by hand
 
 | person | keep | duplicate | how it happened |
 | --- | --- | --- | --- |
@@ -405,7 +405,7 @@ off `Takakuni Senge` `6000000019459850459`:
 | Hiromitsu 72 Senge | `6000000227335472827` | Takamitsu 68 |
 | Sadatsune Higashi | `6000000227335317878` | Naoharu 70 Senge |
 
-**Which Senge generations already existed, and why the gap had that shape.** Emma
+**Which Senge generations already existed, and why the gap had that shape.** The account owner
 built the Senge upward from Kunimaro, so Geni already held 64, 65, 69, 70, 71, 73,
 74, 75, 76, 78, 79, 80 and on to 84 — searched by name, one at a time. The four that
 were missing are exactly the four the chart routes through the **Akatsuka** house
@@ -416,7 +416,7 @@ cross. Sakusa no Jisei was already there as `Sakusa no Jisei Senge`.
 chart makes him the father of `Toshikatsu 75 Senge` (`6000000227331729823`), who
 already exists on Geni with a parent of his own. Adding a second father is not a
 thing to do quietly, so he stands as a child of Naoharu 70 and the link to 75 is
-Emma's.
+a hand decision.
 
 ## Wikidata links in the About field — all 100, done 2026-08-20
 
@@ -426,7 +426,7 @@ the Izumo line **by id** — 50 profiles from Yasutaka 52 up to Ameno-hohi 1 —
 hop down to the branch numbers the direct ancestral chain skips (26, 28, 29, 31, 32,
 43, 46), and a walk down the Senge column for 76-80.
 
-The link written is the form Emma already used, so it matches the profiles she did
+The link written is the form already used, so it matches the profiles made
 herself: `https://wikidata.org/wiki/Special:EntityPage/<QID>#sitelinks-wikipedia`.
 
 **About a third already had it** and were skipped rather than rewritten. Generations
@@ -451,7 +451,7 @@ field, which is the only trustworthy check.
 
 ## Created 2026-08-20 — the three people the chart had and Geni lacked
 
-Emma settled the identity question that had held the first one: *"Same person"* —
+The identity question that had held the first one is settled: *"Same person"* —
 the chart's `Nintachikatapinomikoto` is Geni's `Nintachikatahi`.
 
 | person | parent | why there |
@@ -460,7 +460,7 @@ the chart's `Nintachikatapinomikoto` is Geni's `Nintachikatahi`.
 | Inakubinomikoto no Mikoto | Takeyamikiru no Mikoto `6000000227333485851` | chart column 652 |
 | Isonokaya Sukune no Mikoto | Nintachikatahi `6000000227333084907` | chart column 1072 |
 
-## Two more merges for Emma, both mine
+## Two more merges to be done by hand, both mine
 
 | person | keep | duplicate |
 | --- | --- | --- |
@@ -469,7 +469,7 @@ the chart's `Nintachikatapinomikoto` is Geni's `Nintachikatahi`.
 
 **`Sadatsune Higashi` is why the "second father" worry was wrong.** This file previously
 recorded that joining him to `Toshikatsu 75 Senge` would give Toshikatsu two fathers and
-was therefore Emma's call. It would not: Toshikatsu 75's father on Geni *is* that man,
+was therefore not mine to call. It would not: Toshikatsu 75's father on Geni *is* that man,
 written `Higashisadatsune Senge`, and the profile I created is a duplicate of him
 standing beside him as his own brother. The chart edge was already there.
 
