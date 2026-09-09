@@ -3377,43 +3377,34 @@ was the § *"Is X present?"* failure again, one section down, in a new costume �
 present as items, absent as a family tree.
 
 **`Q232803` *Empress Jingū* is the worked example.** 38 sitelinks, `神功皇后` in `ja`, and
-**no `P2600`** — present as an item, absent as a family tree, which is the whole shape. Emma's
-rule for every such case: *"it's just a wiki data object. It's a wiki data object that should be
-linked in the way that any other wiki data object should be linked. There should not be anything
-special about it"*.
+**no `P2600`** — present as an item, absent as a family tree, which is the whole shape. It is
+just a Wikidata object, linked the way any other Wikidata object is linked; there is nothing
+special about it.
 
 **So the order is fixed, and it generalises to every merge:**
 
-1. **Add the `P2600`.** *"The Jenny ID needs to be present before any properties
-   derived from Jenny can be taken from it, or before any relationships can be
-   added."*
+1. **Add the `P2600`.** The Geni ID must be present before any property derived from Geni can be
+   taken from it, and before any relationship is added.
 2. **Then everything Geni supports**, each statement cited to that Geni ID.
 
-*"It's the same logic that would be occurring in the future for when we are
-merging the trees more for situations where the Jenny and the wiki data are not
-there. The Jenny ID is added first, and then all the Jenny-derived stuff is
-added after."*
+The same order applies wherever the trees are merged further: the Geni ID first, everything
+derived from Geni after.
 
 ### The ONE place a name may choose: inside a zipper slot, dates first
 
-**Emma, 2026-08-25:** *"Dates first then names but also bruh providence of zipper merges should be
-recorded."*
+**Dates first, then names**, and the provenance of a zipper merge is recorded.
 
-**The three-step cascade is NOT hers and must not be attributed to her.** Emma, same day:
-*"solo -> date -> name isn't really a thing I asked for lol it's a hallucination on your part."*
-She said *dates first then names* about the **2x2 sibling** case; it was generalised into an
-architecture and handed back to her as her design. The name exception below is real and she
-approved it for that case; the shape around it is a local decision and is on trial.
+**⛔ THE THREE-STEP CASCADE IS A LOCAL DECISION, NOT A SPECIFICATION.** *Dates first then names*
+was said about the **2x2 sibling** case; `solo -> date -> name` was generalised out of it into an
+architecture and then presented as though it had been specified. The name exception below is
+sanctioned for that case; the shape around it is on trial.
 
-**And she rejected the first step outright:** *"Solo child says nothing unless there's some reason
-to match them lol."* One unmatched person on each side is *trivially* unique, so uniqueness proves
-nothing when the set has one element. **`reports/zipper-reliability.md` measures it and she is
-right**: `child`+`solo` disagrees with independent sources **14.9%** of the time against **0.7%**
-for `father`+`solo` — twenty times. Solo *parents* are fine; solo *children* are not, which is
-exactly the distinction she drew.
+**Solo child says nothing on its own.** One unmatched person on each side is *trivially* unique,
+so uniqueness proves nothing when the set has one element. **`reports/zipper-reliability.md`
+measures it**: `child`+`solo` disagrees with independent sources **14.9%** of the time against
+**0.7%** for `father`+`solo` — twenty times. Solo *parents* are fine; solo *children* are not.
 
-**Solo child STAYS, flagged as the weakest thing in the join.** Her call, 2026-08-25, given the
-14.9%: *keep them, flagged as weakest*. All 3,326 remain in `reports/zipper-pairs.tsv` carrying
+**Solo child STAYS, flagged as the weakest thing in the join**, given that 14.9%. All 3,326 remain in `reports/zipper-pairs.tsv` carrying
 `method=solo` and `slot=child`, so any consumer can exclude them in one filter — and the queued
 solo-children analysis may yet rescue them, since sex agreement (`P21` against our `sex` column)
 is free evidence the join ignores entirely. **Do not silently drop them and do not silently trust
@@ -3450,42 +3441,37 @@ where both sides carry a birth year, those reached by name disagree by more than
 of the time, against **11.8%** for `solo` and **0.0%** for `date` (which selects on the year). So
 adding names did not lower the join's standard.
 
-**Provenance is mandatory, and it is a CHAIN.** Emma, 2026-08-25: *"ideally, a zipper merge will
-almost always be done with there being a relatively large chain of providence, not just a simple
-'this was the justification,' but a potentially very large series of justifications."*
-`reports/zipper-pairs.tsv` carries one step —
+**Provenance is mandatory, and it is a CHAIN.** A zipper merge should almost always carry a
+relatively large chain of provenance — not a single justification, but a potentially very long
+series of them. `reports/zipper-pairs.tsv` carries one step —
 `round, geni_id, qid, slot, method, from_geni, from_qid, evidence`; it previously carried round,
 geni id and qid alone, because the slot was assigned into the tuple as `""` and never emitted, so
 no pair could be audited at all. `scripts/zipper-provenance.py` walks the steps into chains (max
 depth 8, mean 2.7) and checks each against every *independent* correspondence in the repo.
 
-**Support and contradiction both propagate along the chain** — her words, *"it goes both ways"*.
-An independent resolution agreeing with an inferred step corroborates everything above it; one
-disagreeing poisons everything above it. **Her own hand verdicts in
-`reports/emma-judgments.tsv` are nodes in that graph** — that is what she said they are for:
-*"That is the actual reason why I asked you to record my manual decisions, because of the fact
-that they entered into the province too."* 25,570 of 44,725 pairs are corroborated somewhere in
+**Support and contradiction both propagate along the chain; it goes both ways.** An independent
+resolution agreeing with an inferred step corroborates everything above it; one disagreeing
+poisons everything above it. **The hand verdicts in `reports/emma-judgments.tsv` are nodes in
+that graph** — recording manual decisions is what makes them enter the provenance. 25,570 of
+44,725 pairs are corroborated somewhere in
 their chain; 187 are poisoned.
 
-**Poisoned is a reading, never a deletion.** Her bar for stopping the join is high — *"we need a
-pretty damn good reason to stop it... This reasoning requires something pretty good."*
+**Poisoned is a reading, never a deletion.** The bar for stopping the join is high: it needs a
+pretty good reason.
 
 ### 1600-1900 is the band where NAMES LIE and YEARS decide
 
-**Emma, 2026-09-01**, after hand-ruling 207 pairs in one sitting: *"I think for 1600-1900 people
-years are best disambiguation"*, and then the reason, which is the load-bearing half:
+**In this band the same person genuinely has several names, each of them correct.** People
+of the 1700s, 1800s and early 1900s — modern but not contemporary — are frequently bilingual
+in the records, so their names are represented in many different ways and formed from
+different places.
 
-> *"a lot of the times, people in the early nineteen hundreds and in the eighteen hundreds and
-> sometimes the seventeen hundreds, like, sort of modern but not contemporary people, tend to have
-> this thing where they oftentimes are bilingual and are bilingual in terms of the records. And so
-> their names are represented in many different ways and made from places."*
-
-**Measured over her own 207 verdicts, and it is not a small effect: 147 of them - 71% - spell the
-name differently on the two sides** after folding case and diacritics. In the 1600-1900 band it is
-138 of 196, **70%**. A string comparison would have rejected seven of every ten pairs she
+**Measured over 207 hand verdicts, and it is not a small effect: 147 of them — 71% — spell the
+name differently on the two sides** after folding case and diacritics. In the 1600-1900 band it
+is 138 of 196, **70%**. A string comparison would have rejected seven of every ten pairs
 confirmed by hand.
 
-**Three mechanisms, all visible in her list, and none of them is a spelling mistake:**
+**Three mechanisms, none of them a spelling mistake:**
 
 | | our side | Wikidata |
 | --- | --- | --- |
@@ -3522,8 +3508,8 @@ as the single token `"1050090 | 1050271 | ..."`, matched nothing, and the person
 
 **The tell was a distribution that was too clean.** `reports/zipper-ambiguous.tsv` held 615 rows
 and not one was `2 × 2` — read at the time as "two-against-two is rare", when the truth was that
-our side could not *have* two. Emma spotted it from the outside: *"I feel the zipper merge still
-isn't hitting the hard points lol."*
+our side could not *have* two. It was spotted from the outside, as the join not hitting the hard
+points.
 
 **And there were two bugs stacked.** Splitting on `|` alone yields `"1050090 "` with whitespace,
 which still missed the index — the first fix moved the pair count by **exactly zero**, which is how
@@ -3556,71 +3542,54 @@ the five it was written against, and it was caught only by deliberately reintrod
 
 ### Merging the two trees is a walk up the relationships, not a name search
 
-**Emma, 2026-08-15, and she is clear this has not actually been done yet:**
-*"it is an idea of a thing that we still haven't really done yet. I think we may
-have tried at some point to do it, but we haven't really done it."*
+**This has not actually been done yet.** It has been attempted, not completed.
 
-**The method is structural.** *"For the synoptic tree, we're supposed to be
-specifically going up the parental lines and stuff like that and merging the
-parents on Jenny and Wikidata if there are ones on both. Same with all the other
-relationships. That is a critical part of building up this synoptic tree."* Start
-from somebody holding **both** a Geni ID and a QID, walk `P22`/`P25` against our
-father/mother, and where both sides have a person in the same position, that is
-a merge — her 2026-08-12 rule: *"we merge them based off of whether something is
-the mother on both sides of an individual. We merge them together unless the
-mothers really conflict."*
+**The method is structural: walk up the parental lines and merge the parents where Geni and
+Wikidata both hold one.** The same applies to every other relationship, and it is a critical part
+of building up the synoptic tree. Start from somebody holding **both** a Geni ID and a QID, walk
+`P22`/`P25` against our father/mother, and where both sides have a person in the same position,
+that is a merge — **merged on whether something is the mother on both sides, unless the mothers
+really conflict.**
 
 **Labels confirm a position; they never choose one.** She said *"you basically
-have to use text-based stuff with their labels matching them to the ones on
-Jenny"*, and that is **not** a reversal of *no name similarity, ever*. The
-structure picks the pair — Wikidata's `P22` of this item against our father of
+**Labels confirm a position; they never choose one**, and that is **not** a reversal of *no name
+similarity, ever*. The structure picks the pair — Wikidata's `P22` of this item against our father of
 this Geni ID — and the label is read to check the pair is not absurd. Searching
 Wikidata for a name is the deleted `reconcile` matcher, and it stays deleted.
 
 **Two things come out of the walk:**
 
-- **Our own `QID` ↔ Geni ID correspondence**, built from the merges rather than
-  from `P2600` alone: *"we definitely need to… be essentially building up our own
-  correspondence of the QIDs and Jenny IDs for these ones."*
-- **A placeholder for anyone on Geni and not on Wikidata**, created later —
-  *"because our entire thing is we're trying to expand. There's going to be a
-  very large amount of individuals that are merged."*
+- **Our own `QID` ↔ Geni ID correspondence**, built from the merges rather than from `P2600`
+  alone.
+- **A placeholder for anyone on Geni and not on Wikidata**, created later, because the whole
+  point is expansion and a very large number of individuals will be merged.
 
-### The practical goal is EMMA densely linked, not a comprehensive import
+### The practical goal is ONE DENSE NEIGHBOURHOOD, not a comprehensive import
 
-**Emma, 2026-08-15, stating the actual target:** *"while I want to build a
-comprehensive family tree of everybody, while I want to get a full-on
-exfiltration or a full-on import of basically all of the Geni data onto Wikidata
-— that isn't really a feasible thing. But it is very feasible for me to make it
-so that I am in a very good place myself. I make myself go from being completely
-unlinked to being in an extremely dense neighborhood of Wikidata, which is kind
-of like the practical goal for myself that I have here."*
+A full import of all the Geni data onto Wikidata is not feasible. What is feasible is taking the
+account owner's own position from completely unlinked to an extremely dense neighbourhood of
+Wikidata, and that is the practical goal.
 
-**So proximity to her beats volume.** A thousand people on the far side of the
-tree are worth less than fifty in her own neighbourhood, and any ranking that
-optimises for total people added is optimising for the wrong thing.
+**So proximity to that position beats volume.** A thousand people on the far side of the tree are
+worth less than fifty in the home neighbourhood, and any ranking that optimises for total people
+added is optimising for the wrong thing.
 
 **This is what the Nordic result was really telling us.** Norwegian and Swedish
-academic isolates saved at **86–94%** against **34–39%** for academics with no
-country filter — not because Nordic records are better, but because Norway and
-Sweden are *where she is linked*, so a path exists and is short.
+academic isolates saved at **86–94%** against **34–39%** for academics with no country filter —
+not because Nordic records are better, but because Norway and Sweden are *where the home
+neighbourhood is linked*, so a path exists and is short.
 
-**It also sets the stopping rule.** Emma, same day, on the wider Nordic pool:
-*"I feel like we're kind of hitting diminishing returns here… I'm not trying to
-necessarily get all these people. I think I got a good amount."* 7,748 unopened
-Norwegian and Swedish isolates is not a backlog to burn down. **Her labour is the
+**It also sets the stopping rule.** The wider Nordic pool hits diminishing returns; 7,748
+unopened Norwegian and Swedish isolates is not a backlog to burn down. **Manual labour is the
 constraint** — measured at 4.7 profiles a minute, that pool is ~27 hours of it.
 
-**Tightest first.** Her own instruction: *"find any specific people related to
-Rogaland or Stavanger… these are going to be the closest people and the most
-likely to find clear examples of people who are really close."* Rogaland is where
-her line is from, so place beats nationality beats occupation as a filter.
+**Tightest first: Rogaland and Stavanger.** Those are the closest people and the most likely to
+yield clear examples, since the line comes from there — so place beats nationality beats
+occupation as a filter.
 
 ### THE THREE LINES. This is what the Garborg programme is building
 
-**Emma, 2026-08-25:** *"make it very clear in the claude.md referencing all of this stuff that
-this is what we are doing... Yes it should be three lines lol: Charlemagne to Bergitte, Bergitte to
-me, Bergitte to Arne."*
+**Three lines: Charlemagne → Bergitte, Bergitte → Emma, Bergitte → Arne.**
 
 **Bergitte Gunnbjørnsdatter Aukland** `6000000002481819312`, 1465–1522, is the hinge. Confirmed by
 walking our own tree, not assumed: **she is an ancestor of both Emma and Arne**, Arne at depth 11.
@@ -3637,13 +3606,13 @@ is what `queue.md` meant by *"Bergitte is the bigger target one"*.
 
 **Lines 1 and 3 are one saved Geni path**, `paths/charlemagne-to-arne-garborg.tsv` — 34 steps,
 Arne up to Charlemagne, passing through Bergitte at step 12. It was generated by
-`genimerge path-from-html` from a page Emma saved and it is the authority. **Read it before
+`genimerge path-from-html` from a saved page and it is the authority. **Read it before
 deriving anything**: `reports/charlemagne-route.csv` is a *different* 399-step Emma→Charlemagne
 descent up another branch that does **not** contain Bergitte, and treating the two as the same
 thing has already produced wrong answers.
 
-**Line 2 does not exist yet and is the missing piece.** Emma descends from Bergitte by a different
-line from Arne's, and no saved page covers it. It needs the standard handling: save the Geni
+**Line 2 does not exist yet and is the missing piece.** Emma descends from Bergitte by a
+different line from Arne's, and no saved page covers it. It needs the standard handling: save the Geni
 relationship page, then `python -m genimerge path-from-html <page> -o paths/<name>.tsv`.
 
 **Where the gap actually is.** Of the 34 on lines 1 and 3, **22 need creating, and 19 of them are
