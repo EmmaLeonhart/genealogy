@@ -1,13 +1,12 @@
 """What Wikidata itself does with a middle initial, language by language.
 
-**Emma, 2026-08-18, on the proposal to keep the initial as a Latin letter:** *"Can you
-give me some examples of the first one in action? It looks the best but I want evidence
-of it being standard."* Quite right — the claim was asserted, not shown. And then, having
-seen the Japanese answer: *"I'm guessing Russian and Greek do it with transliterating the
-initial though and they should do that. Idk what Hindi does but do the standard for it
+**The proposal to keep the initial as a Latin letter needed evidence of being standard**,
+not just an assertion that it looks best. And then, once the Japanese answer was in: the
+guess is that Russian and Greek transliterate the initial, and should do so. What Hindi does
+is unknown, so the instruction there is to find the standard for it
 too."*
 
-So the answer is **per language, and measured for each** rather than settled once. Her
+So the answer is **per language, and measured for each** rather than settled once. The
 guess about Cyrillic and Greek is a hypothesis this script can confirm or refute, and the
 Hindi instruction is explicitly *find the convention*, not *pick one*.
 
@@ -25,7 +24,7 @@ what became of the initial:
 
 * `latin_initial` — the Latin letter survives as itself: ジョセフ・**C**・オマホニー
 * `script_initial` — the initial is rendered **as an initial in the target script**:
-  Джозеф **С.** О'Махони. This is what Emma means by transliterating the initial.
+  Джозеф **С.** О'Махони. This is what transliterating the initial means.
 * `expanded` — the initial is replaced by the **full middle name**, which Wikidata knows
   and we do not: `Samuel S. Cox` → サミュエル・**サリヴァン**・コックス (Sullivan).
 * `dropped` — the initial is gone and the label has fewer components.
@@ -77,8 +76,8 @@ SHARDS = sorted((REPO / "wikidata" / "items").glob("items-*.jsonl.gz"))
 OUT_CSV = REPO / "reports" / "middle-initial-wikidata-practice.csv"
 OUT_MD = REPO / "reports" / "middle-initial-wikidata-practice.md"
 
-#: The languages the decision covers. `ja`/`zh` are the ones Emma first asked about;
-#: `ru`/`el`/`hi` are the ones she named next; the rest are the other non-Latin scripts
+#: The languages the decision covers. `ja`/`zh` are the ones first asked about;
+#: `ru`/`el`/`hi` are the ones named next; the rest are the other non-Latin scripts
 #: this corpus's people plausibly need, measured rather than assumed alongside them.
 LANGS = ["ja", "zh", "ko", "ru", "el", "hi", "uk", "bg", "sr", "he", "ar", "fa", "ta"]
 
@@ -265,10 +264,10 @@ def main() -> None:
     lines = [
         "# What Wikidata does with a middle initial, by language",
         "",
-        "Emma asked for evidence rather than an assertion — *\"I want evidence of it "
-        "being standard\"* — and then for the question to be asked per language: *\"I'm "
-        "guessing Russian and Greek do it with transliterating the initial though and "
-        "they should do that. Idk what Hindi does but do the standard for it too.\"*",
+        "This wants evidence rather than an assertion of what is standard, and the "
+        "question is asked per language: the guess is that Russian and Greek "
+        "transliterate the initial and should do so, while what Hindi does is unknown "
+        "and its own standard is what to follow.",
         "",
         f"**{scanned:,} items** in the local store have an English label of the form "
         f"`Given X Surname`, after excluding {regnal:,} regnal ordinals such as "

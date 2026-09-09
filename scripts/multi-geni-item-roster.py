@@ -2,20 +2,17 @@
 
     python scripts/multi-geni-item-roster.py
 
-**Emma, 2026-08-25:** *"I came here wanting to do the one item several geni profiles and
-gave detailed instructions earlier about it so do them."*
+**One Wikidata item, several Geni profiles.** This is the roster for that work.
 
-Her cause for the shape, which is about how Geni behaves rather than about error: *"Jenny
-profiles get isolated from the main tree. Because they're isolated from the main tree,
-nobody can edit them, so people add a new one because Jenny doesn't have the ability to
-differentiate between multiple different contradictory facts."* Zerubbabel is the standing
-example.
+The cause is how Geni behaves rather than an error: Geni profiles get isolated from the
+main tree, nobody can edit an isolated profile, so people add a new one -- Geni cannot
+differentiate between multiple contradictory facts on one profile. Zerubbabel is the
+standing example.
 
-**Her algorithm, and it deliberately does NOT need to know which id was merged:** *"the
-algorithm I provided you revolves around Providence of Entries... we have a separate
-directory that is privileged over the other ones for this stuff. This means that we aren't
-really removing the merged profile from the synoptic tree... We're just linking everything
-to the proper thing there."* So the work is **exports into `exports/post-merge/`**, whose
+**The algorithm deliberately does NOT need to know which id was merged.** It revolves
+around provenance of entries: a separate directory is privileged over the others for this,
+so the merged profile is not removed from the synoptic tree -- everything is simply linked
+to the proper thing there. So the work is **exports into `exports/post-merge/`**, whose
 records win by `sources._post_merge_last`, until the first-degree relatives of the affected
 people are present. And: *"merged individuals cluster together so we will not need to run
 an export on every one of them."*
@@ -28,11 +25,10 @@ things per item, all offline:
 * **whether the profiles sit near each other in our tree** — measured as graph distance
   over parent/child/spouse edges, capped, because two profiles a few hops apart are one
   export and two profiles in different centuries are two;
-* **how many first-degree relatives are missing**, which is Emma's stopping condition.
+* **how many first-degree relatives are missing**, which is the stopping condition.
 
-**The weakness she named is checked, not assumed:** *"we need to be sure that wiki data
-stuff might potentially give the wrong ID... our wiki data mapping might be a bit wrong if
-the ID changed."* The `in_corpus` column is exactly that check — a `P2600` naming a profile
+**The named weakness is checked, not assumed:** the Wikidata mapping may give the wrong id
+if an id has changed since. The `in_corpus` column is exactly that check — a `P2600` naming a profile
 no export has ever seen is either a stale id or a region we have not sampled, and the two
 look identical from here, so it is reported rather than resolved.
 
@@ -90,9 +86,9 @@ def main():
                         adj[other].add(me)
     print(f"{len(everyone):,} people in the merged tree")
 
-    # **Emma's stopping condition is about the PRIVILEGED directory, not the tree.**
-    # *"export until all first-degree relatives of merged individuals are present"* --
-    # present in `exports/post-merge/`, whose records win. A relative already in the tree
+    # **The stopping condition is about the PRIVILEGED directory, not the tree.**
+    # Export until all first-degree relatives of merged individuals are present -- present
+    # in `exports/post-merge/`, whose records win. A relative already in the tree
     # from a two-week-old export is exactly the stale snapshot the re-export exists to
     # replace, so counting them as present answers the wrong question.
     refreshed = set()
@@ -136,7 +132,7 @@ def main():
         # anywhere in the group covers the group if any pair is close.
         dists = [hops(a, b) for i, a in enumerate(held) for b in held[i + 1:]]
         near = [d for d in dists if d != ""]
-        # Emma's stopping condition, measured per held profile: a first-degree relative
+        # The stopping condition, measured per held profile: a first-degree relative
         # is "present" only when the privileged directory covers them.
         kin = {k for g in held for k in adj.get(g, ())}
         missing_kin = len(kin - refreshed)

@@ -1,9 +1,8 @@
 """How long Geni actually takes to build an export, measured not estimated.
 
-**Emma, 2026-08-18:** *"Does the slowness correspond to the size of the exports, or does
-this slowness correspond to the time? […] do a comprehensive analysis of the rate limit
-timing and the export times corresponding to the size of the export file to determine
-whether it appears like we're being rate-limited."*
+**Does the slowness track the SIZE of the exports, or the TIME they are taken at?** This
+is the comprehensive analysis of rate-limit timing against export size, to decide whether
+the exports are being rate-limited at all.
 
 `measure-export-throughput.py` answered this from file mtimes and was **biased**: it
 timed each build from the *previous download*, so a late download made the next build
@@ -205,8 +204,7 @@ def main() -> None:
     lines = [
         "# How long Geni actually takes to build an export",
         "",
-        "Emma, 2026-08-18: *\"Does the slowness correspond to the size of the exports, "
-        "or does this slowness correspond to the time?\"*",
+        "Does the slowness track the size of the exports, or the time they are taken at?",
         "",
         "**Measured from the session transcripts, not inferred from file mtimes.** Every "
         "export ran through the browser tool, and every message carries a timestamp. For "
