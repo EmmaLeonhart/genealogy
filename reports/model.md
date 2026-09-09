@@ -5,7 +5,7 @@ it would become on Wikidata. Counts are from the 151-export merge: **298,591
 people, 149,613 families**, every structure counted by its full tag path.
 
 Nothing here is applied to anything. Mappings marked **decided** are rulings;
-mappings marked **open** need her.
+mappings marked **open** need a ruling.
 
 ## The point is adding, not correcting
 

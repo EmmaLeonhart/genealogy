@@ -2,7 +2,7 @@
 
 Asked by 2026-08-22. Ten `Forest`/5000 exports ran that afternoon: five seeded
 on the top sparse regions from `reports/density.md`, four on ancient seeds, one
-`Descendants` that was hers and is excluded from the comparison.
+`Descendants` that was hand-run and is excluded from the comparison.
 
 **Baseline: 526 exports, 1,294,667 distinct people.** "New" means a Geni ID in none
 of them.

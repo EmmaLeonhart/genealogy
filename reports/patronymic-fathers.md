@@ -6,7 +6,7 @@ Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-cla
 - of those, a name is available from confirmed fathers: **12145**
 - token has no confirmed father anywhere, so no name: **6373**
 - **fathers to create: 9158**
-  (4023 people merged into 1036 shared fathers under her same-mother rule)
+  (4023 people merged into 1036 shared fathers under the same-mother rule)
 
 ## The name comes from real fathers, never from the string
 

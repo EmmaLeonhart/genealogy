@@ -1,4 +1,4 @@
-# Parenthesised `SURN`/`_MARNM` tokens, classified by her four rulings
+# Parenthesised `SURN`/`_MARNM` tokens, classified by the four rulings
 
 2,495 distinct tokens, 5,866 occurrences, over the 2,593,522 unparenthesised tokens that provide the attestation test.
 

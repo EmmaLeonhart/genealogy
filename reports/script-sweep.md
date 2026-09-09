@@ -16,7 +16,7 @@ The three are `browser-sink.py`, `convert-new-saved-pages.py` and `split-scrape-
 
 ## Why almost nothing is deletable, against expectation
 
-Her test is *"does the pipeline read this?"*, and for most of these the answer is no — but the
+The test is *"does the pipeline read this?"*, and for most of these the answer is no — but the
 **report is the deliverable**, not the script. `CLAUDE.md` § *"Analyse this" means build a CSV*
 makes a one-off census a first-class output: build the CSV, commit it, analyse it. A script that
 ran once, wrote `reports/mononyms.csv`, and was never called again is not legacy under that rule.

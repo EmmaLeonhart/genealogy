@@ -34,7 +34,7 @@ exactly that condition and nothing else, so the guard was right and the populati
 | `Q12598947` | `Buyeo Taebi` | `Taebi Buyeo` |
 
 A disambiguator we would strip; a hand-chosen Latinised form; a patronymic Wikidata omits by
-convention; and — `Q12598947` — **her own word ordering**, set by hand.
+convention; and — `Q12598947` — **a hand-set word ordering**.
 `CLAUDE.md` § *The purpose is to ADD to Wikidata, not to correct it* governs all of them, and it
 names the Ingegerd case specifically as the thing not to do.
 
@@ -46,7 +46,7 @@ ruling as every other conflict.
 
 **575 labels are simply missing** — `ja` 229, `zh` 230, `mul` 116 — on items that already exist.
 These became derivable only when the transliteration table went 218 → 3,261 tokens on 2026-08-29,
-so they are not damage; they are new reach. They go out through the daily batch at her cap of **15
+so they are not damage; they are new reach. They go out through the daily batch at the cap of **15
 label edits a batch**, tracked in `reports/label-edits-emitted.tsv`, which is roughly 38 batches.
 
 ## What the audit cannot see

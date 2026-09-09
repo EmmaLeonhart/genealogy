@@ -38,7 +38,7 @@ later agents for other purposes."*
 - **right now, only for parents**;
 - it is **hoped to be phased out**, so it is not a permanent channel;
 - **artifact means a CLAUDE artifact**, never a GitHub Actions artifact, which is inaccessible
-  to her and against policy.
+  and against policy.
 
 The file is still `reports/manual-identifications.csv` and the pipeline reads it under that name.
 **Renaming it is part of the queued architectural experiment, not something to do mid-pipeline** —

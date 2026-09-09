@@ -56,7 +56,7 @@ the *son's* QID. Confirmed in `exports/izumo/export-Forest-6000000227331852896.g
 `-6000000227390753876.ged`, and by loading both Geni pages: neither redirected —
 `/people/x/<id>` only fills the name slug and keeps the id, so nothing was learnt about
 merge redirects either. Which of the two links is wrong is not mine to say; nothing here
-rewrites one of her About Me entries.
+rewrites an About Me entry.
 
 93 rostered items are not linked from any Geni profile we hold; `reports/izumo-unlinked.tsv`.
 

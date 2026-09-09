@@ -23,8 +23,8 @@ where any was given.
 
 ## Zipper-join merges, sampled 2026-08-25
 
-Twenty pairs drawn from `reports/zipper-pairs.tsv`, put to her one batch at a time with **both
-sides' parents shown** — her requirement: *"just give the names of their parents this with no
+Twenty pairs drawn from `reports/zipper-pairs.tsv`, put up one batch at a time with **both
+sides' parents shown** — the requirement: *"just give the names of their parents this with no
 relational context is useless"* — and ordered easiest first: *"Lead with easy cases."*
 
 **Twenty judged: 17 Right, 1 Wrong, 2 sent to browser resolution.**
@@ -48,17 +48,17 @@ relational context is useless"* — and ordered easiest first: *"Lead with easy 
 | 15 | 2 | Sten Bosson Natt och Dag `6000000001951142201` | `Q6188549` | **Right** + finding |
 | 16 | 3 | Paolo Passionei `6000000063791737012` | `Q100441649` | **Right** |
 
-## The hard end, put to her the same day
+## The hard end, put up the same day
 
 Sixteen easy rows were read in a row, and said so: *"All of these seemed like easy ones lol I'm not
 sure if you're only choosing ones you consider 'ambiguous'... I'm confused what a hard one will
-even look like."* The sample was random and then **sorted easiest-first at her own instruction**,
+even look like."* The sample was random and then **sorted easiest-first on instruction**,
 so the ordering was the artefact, not the population.
 
 `reports/zipper-evidence.tsv` measures the population instead of guessing at it — all 23,596
 pairs, banded by how much a human would have to go on. **33.2% look like the sixteen** (both sides
 name both parents and both agree). The hard tail is `NAMES-CONFLICT` at **3.2%** and `NO-PARENTS`
-at **10.3%**. Four of those went to her:
+at **10.3%**. Four of those went up:
 
 | # | round | ours | theirs | verdict |
 | ---: | ---: | --- | --- | --- |
@@ -76,7 +76,7 @@ The wording on the two that would not be called:
 - **11, Brita Gustafsdotter Bååt** — *"Can't tell."* Father matches; the mothers are both Görvel
   but one is `Gyllenhorn` and one is `Joensdotter av Hacksta`.
 
-Her wording on **15**, which is a finding rather than a verdict:
+The wording on **15**, which is a finding rather than a verdict:
 
 > *"Both right but importantly we found something. Wikidata mother should have NN overwritten with
 > geni name and identified with."*
@@ -87,7 +87,7 @@ see § *What came out of it* below.
 
 ---
 
-## What came out of it — rules, in her judgements' own terms
+## What came out of it — rules, in the judgements' own terms
 
 These are read off the sixteen, not asserted in advance. Each one is falsifiable by a later row.
 
@@ -111,11 +111,11 @@ that renamed `CONTRADICTED` to `PARENTS-NOT-JOINED`: **absence never refutes.**
 
 **An `NN` on their side is an absence, not a name.** Row 15. It is also an opportunity — see below.
 
-**A pair with no evidence at all is still acceptable to her.** Row 20 has no parents on either
+**A pair with no evidence at all is still acceptable.** Row 20 has no parents on either
 side, a given name that matches and a surname that does not, and it was called **Right**. So
 `NO-PARENTS` — 10.3% of the join — is not a band to strip out, and the third option offered
 ("a pair with no corroboration should not be in the correspondence at all") was declined. Position
-is evidence in her model even when nothing else is.
+is evidence in that model even when nothing else is.
 
 **The one Wrong is a whole different shape, and it is nameable.** Row 17 is the only pair of the
 twenty where the person's *own* name shares no word with theirs **and** all four parents are
@@ -127,7 +127,7 @@ resolve to the same people once language is allowed for.**
 **Orthography and language are not evidence of difference, at all.** Row 18 is Swedish against a
 Danish-Latin rendering (`Bengt`→`Benedikt`, `Torkel`→`Thorgils`) and row 19 is Swedish against
 Finnish (`Gustafsson`→`Kustaanpoika`, `Nilsdotter`→`Niilontytär`). Both Right. Together with the
-sixteen this means **every kind of name variation put to her has been accepted**, and the only
+sixteen this means **every kind of name variation put up has been accepted**, and the only
 rejection turned on the people, not the strings.
 
 **Round number did not predict error in this sample.** Three of the sixteen are round 3 and all

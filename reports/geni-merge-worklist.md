@@ -22,7 +22,7 @@
 
 ## Japanese and Chinese — top 40 of 122
 
-Her *"higher scrutiny"* pass, biggest groups first. **Sibling sets are excluded** -- a group whose members carry different given names is not duplicates, and `坂上` under a `Tanba` parent is the worked case: 39 of those 40 groups are brothers sharing the surname Sakanoue. A residue of bare one-token surnames (`杨`, `黄`, `邱`) survives because those people have a given name recorded somewhere while their `cjk_names` carries only the surname — those are an artefact of the name column, not evidence of duplication.
+The *"higher scrutiny"* pass, biggest groups first. **Sibling sets are excluded** -- a group whose members carry different given names is not duplicates, and `坂上` under a `Tanba` parent is the worked case: 39 of those 40 groups are brothers sharing the surname Sakanoue. A residue of bare one-token surnames (`杨`, `黄`, `邱`) survives because those people have a given name recorded somewhere while their `cjk_names` carries only the surname — those are an artefact of the name column, not evidence of duplication.
 
 - **杨** — 30 profiles, parent of the same name, same name, child of 杨
     - https://www.geni.com/people/x/6000000223421469235

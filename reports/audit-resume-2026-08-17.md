@@ -20,7 +20,7 @@ else traces to committed work.
 
 **A `type: "user"` record is not the only place the dictated words live.** The standing
 procedure says *"a user turn is `message.role == "user"`"*. On 08-16 that finds
-**28** of her **49** messages. The other 21 exist in the transcript only as
+**28** of the **49** messages. The other 21 exist in the transcript only as
 `{"type": "queue-operation", "operation": "enqueue"}` records — what the harness
 writes for typing while a tool call is running, which is most of the
 time.
@@ -115,7 +115,7 @@ pair — and the rule is that a created person gets labels and **no description*
 *"We create the individual with their multi-language label, their English language
 label… but no descriptions are added to any of the people."* So a shared label
 collides with nothing today. It becomes live the moment descriptions are worked, which
-is the item that already carries her deduplication warning.
+is the item that already carries the deduplication warning.
 
 ## Not done · the structural merge stopped at showing cases
 
@@ -155,14 +155,14 @@ run across the seam. This is the smallest of the three findings and is filed as 
 
 ## Done, and traceable
 
-Her other 08-16 instructions, each against the commit or file that answers it:
+The other 08-16 instructions, each against the commit or file that answers it:
 
 | instruction | where it landed |
 | --- | --- |
-| Exhaust Swedish, then Finnish and Danish academics | five Nordic batches; `reports/nordic-isolates.csv`. Superseded the same night by her own *"we're kind of hitting diminishing returns"* |
+| Exhaust Swedish, then Finnish and Danish academics | five Nordic batches; `reports/nordic-isolates.csv`. Superseded the same night by *"we're kind of hitting diminishing returns"* |
 | Rogaland and Stavanger isolates, all of them | `reports/rogaland-stavanger-isolates.csv` |
-| The practical goal is her own dense neighbourhood | `CLAUDE.md` § *The practical goal is ONE DENSE NEIGHBOURHOOD* |
-| Japanese and Chinese researchers; how many Chinese isolates | measured; **closed by her** — *"we figured it out, and it's pretty simple"* |
+| The practical goal is one dense neighbourhood | `CLAUDE.md` § *The practical goal is ONE DENSE NEIGHBOURHOOD* |
+| Japanese and Chinese researchers; how many Chinese isolates | measured; **closed** — *"we figured it out, and it's pretty simple"* |
 | Bridge people: how many, how many held, how many overlap | `reports/path-bridge-targets.csv`; 511 on more than one path and absent |
 | Midpoints, not neighbours of what we hold | `reports/path-midpoint-seeds.csv` |
 | The three-task agenda, written down | `queue.md` § *THE AGENDA* |

@@ -54,7 +54,7 @@ Of 1,697,887 name rows in `reports/display-names.csv`:
 | `Private` — Geni withheld the whole name | **79,795** |
 | `<private> Surname` — given name withheld, surname real | **16,190** |
 
-So ~96,000 rows concern people Geni considers private, most of them living. `CLAUDE.md` records her
+So ~96,000 rows concern people Geni considers private, most of them living. `CLAUDE.md` records the
 position that redacted people still go on Wikidata because the structure is informative — but that
 is a decision about *Wikidata*, where the identifiers are already public. Publishing the corpus is a
 different act: it republishes Geni's private-profile structure in bulk, outside Geni's access
@@ -77,11 +77,11 @@ one thing the change straightforwardly improves.
   and the bulk republication of ~96,000 private-profile rows.
 - **Daily emailed batch: possible, but not end-to-end.** The compose step fits a runner; the merge
   it depends on does not.
-- **Her stated motive is sound.** A scheduled job would remove the *"I do not know the degree that
+- **The stated motive is sound.** A scheduled job would remove the *"I do not know the degree that
   somethin is your discretion or part of the algorithm"* problem, because the run would be a log
   rather than a conversation.
 
-## Her direction, 2026-08-29
+## The direction, 2026-08-29
 
 *"we will optimize the cicd revisions to be small and do other things to optimize filesizes for the
 runners but can 100% do all this stuff if we anonymize it properly"*

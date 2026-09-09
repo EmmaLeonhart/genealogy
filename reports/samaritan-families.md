@@ -141,7 +141,7 @@ December 1969, and the A.B. Institute of Samaritan Studies archive. That is wher
 a community this size records births and marriages. Its web home,
 `thesamaritanupdate.com` and the `shomron0.tripod.com` mirror, **refuses
 connections from here** — but it served the 2008 Tsedaka PDF to a browser,
-so it is reachable from her machine and not from this tool.
+so it is reachable from a browser and not from this tool.
 
 Two files worth pulling by hand:
 

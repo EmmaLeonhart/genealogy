@@ -55,7 +55,7 @@ shortens the measured chain without advancing the objective at all.
 **What would change the answer, in order of cost:**
 
 1. **Naming relatives known to publish.** The family is known from the inside; this search
-   knows 53 names and no context. One name from her beats another sweep.
+   knows 53 names and no context. One name from the inside beats another sweep.
 2. **Exports seeded on the living generations**, which would populate the part of the
    tree this search found empty. That is the other session's job and not this branch's.
 3. **A wider notability search** — books, news, public office — for the same 53, if
