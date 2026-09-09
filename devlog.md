@@ -26089,7 +26089,7 @@ tick".
 
 ## 2026-09-02 — the kana work is deleted, and it was worked out of order
 
-Emma: *"Yes fucking get rid of the dumbass kana stuff is it even in the front of the queue? If it
+The ruling: *"Yes fucking get rid of the dumbass kana stuff is it even in the front of the queue? If it
 isn't then a double fuck you for working on something that was not the first item"*, and
 *"You lost the privilege of working on hiragana"*.
 
@@ -26130,7 +26130,7 @@ are all authorised (*"All three now"*) but wait their turn behind it.
 
 ## 2026-09-02 — follow a redirect: 26 ledger entries were pointing at dead items
 
-Emma: *"All you do is on each item I have edited check if it is a redirect and if it is then add
+The instruction: *"All you do is on each item I have edited check if it is a redirect and if it is then add
 the target to the ledger that's simple"*. It is, and it found real staleness immediately.
 
 `scripts/refresh-garborg-ledger.py` now checks every QID **the ledger itself holds**, 50 at a
@@ -26152,7 +26152,7 @@ The row is rewritten rather than dropped, so nothing is lost and the move is aud
 
 ## 2026-09-02 — correcting the redirect framing: her item is ALWAYS the one merged away
 
-Emma, on my describing the two redirect checks as opposite directions of one problem:
+On the two redirect checks being described as opposite directions of one problem:
 *"it is almost 100% ubiquitous that my item i created or edited is gonna be the one redirected
 elsewhere lol merge redirect targeting occurs by age."*
 
@@ -26168,7 +26168,7 @@ numbers.
 ## 2026-09-02 — the GitHub Pages site
 
 `scripts/build-pages-site.py` → `out/site/index.html`, published by `.github/workflows/pages.yml`.
-Emma, 2026-09-01: *"a github pages site built with actions that documents generally what the repo
+Ruled 2026-09-01: *"a github pages site built with actions that documents generally what the repo
 is doing with different things, its data modeling and algorithms and such."*
 
 **Generated from the repo, which the queue item asked for and which is the only thing that keeps
@@ -26197,7 +26197,7 @@ nothing looks like a working deploy, which is a failure mode this repo has hit e
 
 ## 2026-09-02 — patronymics now carry the name they come from
 
-Emma: *"Patronymics are not getting the names they come from in the logic lol that's actually
+The finding: *"Patronymics are not getting the names they come from in the logic lol that's actually
 essential to the real specified algorithm."*
 
 **The cause was scope, not a missing feature.** `namemodel.statements_for` has taken a
@@ -26221,7 +26221,7 @@ to point at and the absent qualifier is correct.
 
 ## 2026-09-02 — descriptions on existing name items: wired, and a no-op today
 
-Emma: *"add an item at the end of the queue to make the generated quickstatements add these
+The instruction: *"add an item at the end of the queue to make the generated quickstatements add these
 descriptions to the patronymics and family names"*.
 
 `build-garborg-name-items.py` now checks every **existing** patronymic and family-name item the
@@ -26284,7 +26284,7 @@ archive (committed) and the pages and the quickstatements for me to run later."*
 
 **And CI caught a rule of hers I broke in the Pages site.** The spine fix worked — that failure is
 gone — but `test_no_source_file_links_a_repository` then failed on
-`build-pages-site.py links github.com`. My footer hard-coded a "Source on GitHub" link. Emma,
+`build-pages-site.py links github.com`. The footer hard-coded a "Source on GitHub" link. And,
 2026-08-18: *"no fucking github links in it either"* — a URL in a source file names her
 repositories to anyone reading the code. Removed; no source file links a repository now.
 
@@ -26294,7 +26294,7 @@ was findable here, which is the argument for the CI-only rule rather than agains
 
 ## 2026-09-02 — the QuickStatements go ON the Pages site, not into a zip
 
-Emma: *"idk what a github artifact is but a non-attached zip file in the email is way worse than
+The objection: *"idk what a github artifact is but a non-attached zip file in the email is way worse than
 having the quickstatements just on a page on github pages lol, that's kinda why I made github
 pages."*
 
@@ -26312,7 +26312,7 @@ than removing one.
 
 ## 2026-09-02 — end of session: the queue is empty and the machine is shut down
 
-Emma: *"last item of the queue is shutting down the computer (only applies to sept 2, 2026) ...
+The instruction: *"last item of the queue is shutting down the computer (only applies to sept 2, 2026) ...
 I don't care about any side effects do not deliberately not do it, do it no matter what because
 this is ending a session."*
 
@@ -26328,7 +26328,7 @@ The flush ran first and never gated the shutdown, as the item required.
 
 ## 2026-09-02 — mass path export to the disconnected Wikidata people: the pilot roster
 
-**Emma's idea:** *"what if we mass exported the paths to the disconnected wikidata people
+**The idea:** *"what if we mass exported the paths to the disconnected wikidata people
 on geni? … the mass export of the path lists might be feasible and help with getting
 wikidata generally connected even if we have a bunch of 'sinews' only linking people in."*
 
@@ -26379,7 +26379,7 @@ Not run: no Geni request was made. `geni-paths/README.md` carries the method and
 
 ## 2026-09-03 — the pilot measures PEOPLE, not reachability
 
-**Emma:** *"Both helps as it gives a more diverse set of connections. More places to add more
+**The ruling:** *"Both helps as it gives a more diverse set of connections. More places to add more
 people onto."*
 
 That is a different measurement from the one `harvest-isolate-paths.py` was built to take. It
@@ -26410,7 +26410,7 @@ Still not run against a real `/path/` page: Geni is unreachable from this sessio
 
 ## 2026-09-03 — anchor moved to Charlemagne; "not related to" is not a finding
 
-**Emma corrected the anchor:** *"you may have implied that it was relationships to me, but it
+**The anchor was corrected:** *"you may have implied that it was relationships to me, but it
 shouldn't be relationships to me. I believe Charlemagne is the most central person in the Jenny
 graph, so it would be going through Charlemagne. We pin relationships to Charlemagne, and we go
 to each individual."*
@@ -26419,7 +26419,7 @@ to each individual."*
 and step 34 of `paths/charlemagne-to-arne-garborg.tsv`. The pinning is Geni's own pushpin: the
 saved pages carry `toggleRelationshipAnchor(<id>)` with the tooltip *"Click this push pin to
 find relationships from this profile to other profiles"*, and `from=` is that anchor in the URL.
-Roster regenerated; the 663 existing paths stay Emma-anchored and answer a different question.
+Roster regenerated; the 663 existing paths stay viewer-anchored and answer a different question.
 
 **And a correction with teeth: a blank path is not a statement of non-relationship.** Her
 words: *"not related to is not actually a statement that the person is not related… It
@@ -26458,17 +26458,17 @@ Recorded on the sibling-placeholder queue item, since it bounds what a placehold
 
 ## 2026-09-03 — the Charlemagne anchor governs NEW paths only
 
-**Emma, correcting how the previous entry read:** *"a bunch of the paths are from an individual
+**Correcting how the previous entry read:** *"a bunch of the paths are from an individual
 to me, and that's 100% fine and they are to be filled in I just mean new ones."*
 
 The code was already right — the roster builder sets the anchor for what it fetches and touches
 nothing existing — but the prose in `geni-paths/README.md` and the script docstring said the 663
-Emma-anchored paths *"answer a different question"*, which reads as retiring them. They are live
+Viewer-anchored paths *"answer a different question"*, which reads as retiring them. They are live
 work and get filled in as they always were. Wording fixed in both places; no behaviour changed.
 
 ## 2026-09-03 — sibling steps: placeholder parents in our tree, `P3373` on Wikidata
 
-**Emma:** *"wikidata modelling of them shouldn't use placeholder parents. Because we can on
+**The ruling:** *"wikidata modelling of them shouldn't use placeholder parents. Because we can on
 wikidata represent these people just with the sibling property. Instead of risking it with
 inventing placeholder parents. But I'm interested in them having placeholder profiles in our
 synoptic tree so I can look at their network positions."*
@@ -26488,7 +26488,7 @@ first, with `Forest` exports at eccentric points as the instrument.
 
 ## 2026-09-03 — residuals: `relation_description` is now kept
 
-**Emma:** *"our parser I think was weird because structurally so much weird shit happens we need
+**The ruling:** *"our parser I think was weird because structurally so much weird shit happens we need
 to grab residuals all the time."*
 
 `genipage.parse_relationship_path` takes the anchors inside `span.segment > span.name`, which is
@@ -26512,7 +26512,7 @@ father."*
 
 ## 2026-09-03 — entry points drip in on a date
 
-**Emma:** *"for entry points into the graph: I actually want this as a timer: on October 1
+**The instruction:** *"for entry points into the graph: I actually want this as a timer: on October 1
 George RR Martin is added as an entry point, and Robert Ettinger is added as an entry point
 right now!"*
 
@@ -26541,7 +26541,7 @@ Who else drips in is hers — she said she is not sure who, and nothing was rank
 
 ## 2026-09-03 — why the entry points are Bure, and one correction to me
 
-**Emma:** *"Idk why you queried wikidata over this."* Resolving the two new entry points' QIDs,
+**The correction:** *"Idk why you queried wikidata over this."* Resolving the two new entry points' QIDs,
 I reached for `wbsearchentities` first. It was blocked by the proxy and the answer was in
 `reports/derived-labels.csv` the whole time — that file carries the qid beside the Geni id for
 everyone in the tree. Recorded in `CLAUDE.md`: resolve an entry point from our own data; the
@@ -26570,7 +26570,7 @@ after the download, and the Bure rows in it are post-campaign rather than pre-ca
 
 ## 2026-09-03 — eccentricity measured across the whole tree
 
-**Emma:** *"George RR Martin is interesting due to his eccentricity… Might be worth measuring
+**The observation:** *"George RR Martin is interesting due to his eccentricity… Might be worth measuring
 the most eccentric people in the synoptic tree."*
 
 `scripts/measure-eccentricity.py` → `reports/tree-eccentricity.csv`, one row per person, all
@@ -26608,7 +26608,7 @@ carries each, and there is no single criterion to generalise into a filter.
 
 ## 2026-09-03 — the Chinese lineage as 2027 entry points; eccentricity is partly recency
 
-**Emma, on the six the eccentricity report surfaced:** *"those few people that you listed should
+**On the six the eccentricity report surfaced:** *"those few people that you listed should
 be considered as entry points starting on January first of twenty twenty seven, because they are
 eccentric enough that I'm gonna probably want a large amount of history before I actually run
 stuff. But they're also, like, very clustered with each other."*
@@ -26638,7 +26638,7 @@ file, which has not been run.
 
 ## 2026-09-03 — whole blocs as entry points, and a root outside the ledger does nothing
 
-**Emma:** *"Ancient Chinese bloc / All Samaritan high priests / All Ethiopian Emperors / All
+**The ruling:** *"Ancient Chinese bloc / All Samaritan high priests / All Ethiopian Emperors / All
 Japanese Emperors / All Tanba people / All Izumo/Senge/Kitajima people / All people with special
 geni gedcom recognition become entry people."*
 
@@ -26762,7 +26762,7 @@ viewer**. The target is not on it. Four probes, two targets, both path types, al
 **The dangerous part is that the miss page renders 38 `span.segment > span.name` anchors** —
 the viewer's own chain — and `harvest-isolate-paths.py` discriminates on parsed step count. Run
 as written the pilot would have reported a **100% reach rate** made of 100 identical copies of
-the Charlemagne→Emma path. The script's docstring anticipates the opposite failure, *"a run
+the Charlemagne→owner path. The script's docstring anticipates the opposite failure, *"a run
 reporting 0 steps on every page means the markup differs"*; this one produces a plausible number
 instead of a zero, which is the § *check the separator before believing a distribution* family.
 
@@ -26816,7 +26816,7 @@ Not verified end to end: the fix lands on a branch, so the next run on `main` is
 
 ## 2026-09-03 — pushes now run the pipeline all the way, gate bypassed
 
-Emma: *"pushes should trigger the pipeline to go all the way including up to getting a working qs
+The ruling: *"pushes should trigger the pipeline to go all the way including up to getting a working qs
 file and having the daily batch on the site."*
 
 `.github/workflows/pipeline.yml` gains `push: branches: [main]`, and **a push bypasses the
@@ -26849,7 +26849,7 @@ fresh far more often, but the misleading title is untouched and not part of this
 
 ## 2026-09-03 — the notifications pointed at a zip; they now point at the page
 
-Emma: *"What the fuck is an artifact and how to access it? Everything is made as an artifact and
+The objection: *"What the fuck is an artifact and how to access it? Everything is made as an artifact and
 I've never seen the artifacts lol I just get emails saying they are refusing to send me important
 stuff."*
 
@@ -26886,7 +26886,7 @@ and the user was told it did not.
 
 ## 2026-09-03 — artifacts deleted outright: inaccessible to her, and obsolete
 
-Emma: *"Github actions artifacts are both inaccessible to me (github pages is best since I don't
+The ruling: *"Github actions artifacts are both inaccessible to me (github pages is best since I don't
 need to sign in) and the generated artifacts are completely obsolete too."*
 
 Both halves are true, so the uploads are gone rather than improved.
@@ -26912,11 +26912,11 @@ it is how Pages ships a build to the deploy job, not something anybody downloads
 NOT DONE, and it is a judgement I am not making alone: `daily-batch-email.yml` now does nothing
 the pipeline's own issue does not do better, and it is the workflow that sent the stale batch. It
 is a candidate for deletion under § *LEGACY CODE IS DELETED*, but deleting a whole workflow of
-hers is her call. NEEDS-DECISION — Emma, whether that workflow survives.
+is a hand call. NEEDS-DECISION: whether that workflow survives.
 
 ## 2026-09-03 — the batches are `.txt`, not `.qs`
 
-Emma: *"Really just switch to .txt instead of .qs."* `.qs` opens nowhere by default; `.txt` opens
+The ruling: *"Really just switch to .txt instead of .qs."* `.qs` opens nowhere by default; `.txt` opens
 in every browser and every editor, which is the whole point when the delivery channel is a link
 or an attachment.
 
@@ -26966,7 +26966,7 @@ declared impossible, a question asked instead of an action taken. This session h
 
 ## 2026-09-03 — the Pages site is the daily batch and nothing else
 
-Emma: *"The home page has a bunch of bullshit on it that should not be there. A bunch of random
+The objection: *"The home page has a bunch of bullshit on it that should not be there. A bunch of random
 rules from CLAUDE.md that might also even be stale... who the fuck cares what these rules are? The
 only purpose of the GitHub pages is to give the daily batch... all that should be present is very
 simply the daily batch."*
@@ -26999,7 +26999,7 @@ build; it now asserts `CREATE`. And the sparse checkout dropped from `CLAUDE.md`
 
 ## 2026-09-03 — the cloud/local split, written down as a rule
 
-Emma: *"GH actions is fully capable of doing all of the Wikidata querying that we want. The only
+The ruling: *"GH actions is fully capable of doing all of the Wikidata querying that we want. The only
 thing that's really blocked and my computer's essential for it is Geni... we actually can do most
 of the stuff that we want from here, from this environment."* And: *"probably you should be putting
 it in the CLAUDE.md that any session can be run either on the Anthropic cloud or on my local
@@ -27029,7 +27029,7 @@ that reading is reasonable from where she sat.
 
 ## 2026-09-03 — the synoptic tree gets a workflow, and the "it cannot run in Actions" claim gets tested
 
-Emma: *"I am going to want you to set it up to be built with actions and commit and push to main."*
+The instruction: *"I am going to want you to set it up to be built with actions and commit and push to main."*
 
 `.github/workflows/tree.yml` runs `rebuild-everything.py` in full — the merge over every `.ged`
 under `exports/`, then the derived layer in its required order, then the batch — and commits the
@@ -27066,7 +27066,7 @@ commit — which is the objection the push ban was written against.
 
 ## 2026-09-03 — standing authorization to push to main
 
-Emma: *"Add to claude.md that Claude cloud sessions are 100% able to push to main."*
+The ruling: *"Add to claude.md that Claude cloud sessions are 100% able to push to main."*
 
 `CLAUDE.md` § *STANDING AUTHORIZATION: a cloud session PUSHES TO MAIN* is that grant, written so
 no future session asks for it or reports it as a limit. Commit, push to `main`, say what was
@@ -27127,7 +27127,7 @@ Her levers, measured: notes and media are ~67% of corpus bytes against ~6% for n
 
 ## 2026-09-03 — her rule fixed the merge: the synoptic tree builds in Actions
 
-Emma: *"realistically anything that doesn't go into the editing pipeline isn't needed in the
+The ruling: *"realistically anything that doesn't go into the editing pipeline isn't needed in the
 synoptic tree."* Then: *"Great run it!"*
 
     full corpus   peak RSS 13.30 GB  KILLED at 13.3 min   (runner: 15.92 GB, killed at 21.6 min)
@@ -27165,7 +27165,7 @@ reads `NOTE`.
 
 ## 2026-09-04 — the patronymic identifications go on Pages, unlinked
 
-Emma: *"Can you give me the artifact for the identifications for me to go through?"*, then
+The ask: *"Can you give me the artifact for the identifications for me to go through?"*, then
 *"I meant the identification artifacr html thing"*. She had already ruled on the channel earlier
 the same day — *"Github actions artifacts are both inaccessible to me (github pages is best since
 I don't need to sign in)"* — and a claude.ai artifact fails that test the same way an Actions
@@ -27194,7 +27194,7 @@ the runner never checks the file out and the copy is a no-op on a file that does
 
 ## 2026-09-04 — the `NICK` field is an also-known-as, and it never takes the surname
 
-Emma, on `Carolina Gustafsdotter Wittfooth`: *"This persons last name is re[pe]ated twice in a
+On `Carolina Gustafsdotter Wittfooth`: *"This persons last name is re[pe]ated twice in a
 mul alias"*. The created item carried `Amul "Wittfoth Wittfooth"`.
 
 Her GEDCOM record is `GIVN Carolina Gustafsdotter`, `SURN Wittfooth`, `_MARNM Wittfooth`, and
@@ -27207,7 +27207,7 @@ inside `GIVN` and the `NICK` field both come back as `nickname`, so `aliases_for
 them apart. They are different things:
 
 * a **quoted `GIVN` token** is a byname — `Sigrid "Sally" Manilva Tunheim`. Bare `Sally` finds
-  nobody, so it takes the surname. That is Emma's 2026-08-26 ruling and her `nick` column is
+  nobody, so it takes the surname. That is the 2026-08-26 ruling and the `nick` column is
   empty, so it was never the field.
 * the **`NICK` field** is Geni's *also known as*, and the census says it is overwhelmingly a
   whole alternate name rather than a byname: `Sally Miller`, `Bethiah Lathrop`,
@@ -27236,7 +27236,7 @@ only a tree rebuild regenerates.
 
 ## 2026-09-04 — the ordinals, and the two ways a label stopped being what Geni recorded
 
-Emma: *"This persons ordinals were totally fucked up https://www.wikidata.org/wiki/Q141223436 —
+The finding: *"This persons ordinals were totally fucked up https://www.wikidata.org/wiki/Q141223436 —
 Idk why the comma was actively dropped before the ordinal — Check this persons mul label for what
 I wanted https://www.wikidata.org/wiki/Q136376387"*.
 
@@ -27269,7 +27269,7 @@ is the medical suffix, not 1500.
 
 **`Jr.`, `Sr.`, `d.y.`, `d.e.` are dropped with nothing to replace them**, so those people now get
 no CJK label rather than a wrong one. `Jr` (no dot) had a correct `ja` `ジュニア` beside the
-invented `イル` on `Jr.`, and neither had a usable `zh` or `ko`. That is a question for Emma, not
+invented `イル` on `Jr.`, and neither had a usable `zh` or `ko`. That is a question to be ruled on, not
 something to guess.
 
 **The comma: a RECONSTRUCTION was overruling a RECORDED rendering.** The primary label is the
@@ -27293,7 +27293,7 @@ ambiguous and are left to `patronymic_or_surname`, which has the father's name t
 `Carlsdotter` was becoming a `P734` *family name* with the `Q28418670` *married name* role. It
 now classifies as a patronymic, which is what `name modelling.txt` asks for.
 
-**4,414 labels changed** on the re-derivation, and Emma's two items now read exactly what she set
+**4,414 labels changed** on the re-derivation, and the two hand-corrected items now read exactly what was set
 by hand. Her own rulings are untouched and were checked: `Aagot Nyvold` still flips to
 `Aagot Garborg`, and `Sigrid "Sally" Manilva Tunheim` still yields `Sally Ekman`.
 
@@ -27313,7 +27313,7 @@ are suffixes and read correctly as they stand.
 
 ## 2026-09-04 — the copy button on the batch page
 
-Emma: *"fix the daily batch quickstatements page since the copy button does not work"*.
+The instruction: *"fix the daily batch quickstatements page since the copy button does not work"*.
 
 The handler was one `navigator.clipboard.writeText(text).then(ok, fail)`, and it had three ways
 to fail her — her screenshots are from an iPhone, and iOS Safari is where each of them bites:
@@ -27338,7 +27338,7 @@ which stage it reached, which the old version could not.
 
 ## 2026-09-04 — the project is called Synoptic
 
-Emma: *"fix the branding of this project away from geni since although the main thing it does is
+The instruction: *"fix the branding of this project away from geni since although the main thing it does is
 geni derived exports to wikidata that is not the core of it and not what I want the branding to
 be"*.
 
@@ -27359,7 +27359,7 @@ The repo itself is already `genealogy` and was not the thing carrying the brandi
 
 ## 2026-09-04 — the Geni id was generated on every run and thrown away on every run
 
-Emma, on the daily batch: *"It seems it is still messing with people's names without doing geni
+On the daily batch: *"It seems it is still messing with people's names without doing geni
 identifications. Like the name objects are being linked on people without geni ids, this should
 be categorically not allowed as the geni id must be applied as the first edit on any individual…
 Idk why it thinks name objects are an exception when the name data even comes from geni"*.
@@ -27430,7 +27430,7 @@ batch would have suppressed those edits from a real one.
 
 ## 2026-09-04 — `Q138582215` and `Q29246906`: the mechanism written for them never emitted a line
 
-Emma, 2026-09-03: *"https://www.wikidata.org/wiki/Q138582215 idk how this was edited but no geni
+Raised 2026-09-03: *"https://www.wikidata.org/wiki/Q138582215 idk how this was edited but no geni
 link or mul label add investigation to queue at end"*, and separately that both items *"appear to
 have not had geni ids added on wikidata despite having been edited"*.
 
@@ -27474,7 +27474,7 @@ a live label made worse, repeatedly.
 
 `_only_adds_a_title` refuses exactly that: a replacement whose sole difference is title words on
 the front. **It does not stop a titled label being added** — the other 7 have no `mul` at all and a
-label with a title is a label, and Emma's § *A TITLE IS NOT A NAME* says in terms that it *"does
+label with a title is a label, and § *A TITLE IS NOT A NAME* says in terms that it *"does
 not touch the LABEL"*. Title words rather than a general prefix test, so `Anne` → `Carl Anne` is
 untouched: that is a given name being added, not a title.
 
@@ -27500,7 +27500,7 @@ found one of the 24 by eye.
 
 ## 2026-09-04 — four items, and the thing that was silently undoing every label fix
 
-Emma, four in one message:
+Four in one message:
 
 | | what she said | what it was |
 | --- | --- | --- |
@@ -27558,7 +27558,7 @@ All four verified against the rebuilt tables:
 
 ## 2026-09-04 — the whole items were downloaded every run and thrown away
 
-Emma: *"Github actions is supposed to download jsons of the current revisions of the entire ledger
+The instruction: *"Github actions is supposed to download jsons of the current revisions of the entire ledger
 all at once and commit them, so the information is supposed to always be present in the repository
 lol. My guess is you never actually added that functionality"*.
 
