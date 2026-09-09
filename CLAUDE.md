@@ -4720,14 +4720,11 @@ time. Showing her a record is how a rule gets decided;
 building the CSV is how the phenomenon gets measured. Do both, in that order:
 records first so she can see what the thing is, then the full census.
 
-### Emma's own profile: the middle name is intended on Geni and stays off Wikidata
+### The account owner's own profile: the middle name is intended on Geni and stays off Wikidata
 
-**Emma, 2026-08-15:** *"There was a middle name added to me, by the way, that is
-intended. It is not something to be added to a wikidata."*
-
-Two separate facts, and the second is the rule. The middle name on her Geni
-profile is **deliberate** — not a data error, nothing to correct, nothing to ask
-about. And it is **not to be emitted**: no `P735` with `P3831` → `Q245025`, no
+Two separate facts, and the second is the rule. The middle name on that Geni profile is
+**deliberate** — not a data error, nothing to correct, nothing to ask about. And it is **not to
+be emitted**: no `P735` with `P3831` → `Q245025`, no
 appearance in a label, in any language.
 
 **It is in the corpus now.** When she first mentioned it no export held it; a
@@ -4735,9 +4732,9 @@ later one did. `out/merged.ged` carries `1 NAME Emma Himiko /Leonhart/` as a sec
 `NAME` record, and `reports/derived-labels.csv` shows it under
 `further_latin_names`.
 
-**Checked 2026-08-16: nothing emits it.** No batch contains the string, and the
-only edit referencing `6000000001846508982` anywhere is the `P2600` *Geni.com
-profile ID* from her own hand-recorded identification — no label, no name, no sex.
+**Checked: nothing emits it.** No batch contains the string, and the only edit referencing
+`6000000001846508982` anywhere is the `P2600` *Geni.com profile ID* from a hand-recorded
+identification — no label, no name, no sex.
 The rule holds because the label emitters use `label_en`, which is the corrected
 single name, and never `further_latin_names`. It is written here rather than in the queue because
 it governs how the project works and has no step attached.
@@ -4748,13 +4745,12 @@ answer lives.
 
 ### A cron only fires while the session is idle — never schedule a long job into active work
 
-**Measured 2026-08-15/16.** Of seven crons, six fired and one never did: the
-19:07 re-merge starved for four hours because the session was busy on the hour,
-every hour. Emma: *"fucking do this shit right there fuck now or at least queue
-it up at the end so it actually runs."* It ran by hand at 00:30.
+**Measured.** Of seven crons, six fired and one never did: the 19:07 re-merge starved for four
+hours because the session was busy on the hour, every hour. **Do it immediately, or queue it at
+the end so it actually runs.**
 
-**So: run a long or load-bearing job directly, or schedule it for a window when
-nothing else is running.** The short hourly ticks are fine because they re-fire;
+**So: run a long or load-bearing job directly, or schedule it for a window when nothing else is
+running.** The short hourly ticks are fine because they re-fire;
 a twenty-minute merge is not. And **check the crons when a session resumes** —
 they are session-only, so they die with it, and a job that quietly never fires
 looks exactly like one that had nothing to do.
@@ -4784,8 +4780,8 @@ surname legitimately. Never substitute on a bare surname; it rewrites strangers.
 ### Reading a Wikidata statement: the value is not the statement
 
 **Qualifiers and references carry the genealogy.** Reading only `mainsnak` and
-reporting what you found is how this project twice told Emma that Wikidata held
-nothing when it held the answer.
+reporting what you found is how this project twice reported that Wikidata held nothing when it
+held the answer.
 
 Henry III (`Q160311`), 2026-08-10. The `P26` spouse statement's mainsnak is just
 `Q228885`. Everything that matters is beside it:
@@ -4799,8 +4795,8 @@ Henry III (`Q160311`), 2026-08-10. The `P26` spouse statement's mainsnak is just
 
 Marriage date, marriage place, when and why it ended, all sourced. A display that
 read mainsnak only reported "Wikidata has the spouse link but no date and no
-place", and Emma corrected it: *"No wikidata often has it, but not in the same
-place and it's relatively rare."* Both halves of that are true and the second is
+place". **Wikidata often has it, but not in the same place, and it is relatively rare.** Both
+halves of that are true and the second is
 the trap — it is rare enough that a sample can miss it and confident enough to
 mislead when it is there.
 
@@ -4851,10 +4847,8 @@ gets re-implemented badly.
 
 ## ⛔ WIKIDATA EDITING STARTS 2026-09-01 IN THIS REPO
 
-**Emma, 2026-08-23:** *"Shintowiki scripts uses a different lockdown period lol. This repo
-starts at sept 1."* Then, on being shown the coupling: *"Shintowiki scripts and this one are
-not the same and not really coordinated"*, and *"I think you hallucinated a coordination
-between them."*
+**`shintowiki-scripts` uses a different lockdown period. This repo starts at 2026-09-01.** The
+two are not the same repo and are not coordinated; a coupling between them was invented.
 
 **There is no coupling to `shintowiki-scripts`** and nothing here may reintroduce one.
 
@@ -4866,21 +4860,19 @@ module, so `tests/test_wikidata_start_date.py` fails if they ever disagree. It s
 closed on an unreadable date, and it makes **no network request at all** — which is a
 stronger guarantee than the agent-sharing it used to be tested for.
 
-**`P2600` is *Geni.com profile ID*** — Emma asked directly on 2026-08-23, so it is worth
-writing plainly next to the date: every batch this gate guards is of the form *this Wikidata
+**`P2600` is *Geni.com profile ID***, worth writing plainly next to the date: every batch this gate guards is of the form *this Wikidata
 item is that Geni profile*.
 
-**Nothing is blocked meanwhile, and she may not use the gate at all.** Emma, 2026-08-23:
-*"If it's geni id then I'll run manual quickstatements."* Batches are written to files for
-her — `reports/wikidata-geni-qid-p2600.qs`, `reports/wikidata-garborg.qs` — and no edit has
-ever been attempted through the automated path. § *A start date is not a blocker* still
+**Nothing is blocked meanwhile, and the gate may not be used at all** — a Geni-ID batch gets run
+as manual QuickStatements instead. Batches are written to files —
+`reports/wikidata-geni-qid-p2600.qs`, `reports/wikidata-garborg.qs` — and no edit has ever been
+attempted through the automated path. § *A start date is not a blocker* still
 governs: build, review and commit now.
 
 ### ⛔ ON 2026-09-15 THE DAILY BATCH RUNS ITSELF. Two dates, not one
 
-**Emma, 2026-09-05:** *"I want to on the 15th start all of this stuff automatically"* — and, asked
-what starts and how: **the daily Garborg batch**, sent through **the bot-password API, what
-exists**.
+**On the 15th all of this starts automatically**: the daily Garborg batch, sent through the
+bot-password API.
 
 **There are TWO dates and both stay true.** They gate different things, so collapsing them would
 either back-date the automation or re-lock the manual path:
@@ -4975,7 +4967,7 @@ Today's date is 2026-07-30.
 
 ### Finish all 39 exports BEFORE saving any stragglers, then restart the work loop
 
-**Emma, 2026-08-18.** The closing plan has two phases and they do not interleave:
+The closing plan has two phases and they do not interleave:
 
 1. **The 39 exports in `reports/export-worth.md`.** Each qualifying path gets the
    bounded treatment — an export seeded on an ancestor of the **endpoint**, then one
@@ -4988,16 +4980,17 @@ Today's date is 2026-07-30.
 
 **The ordering is the instruction, not an optimisation.** Do not start page-saving
 because an export is slow, and do not interleave the two to "make progress" while
-waiting — the exports are the phase with a deadline attached (Emma's own hours), and
-page-saving is the cheap fallback that will still be there afterwards. Her framing all
-day has been that she is *"actively trying to close this thing off"*, and closing it
-means the export phase ends before the scraping phase begins.
+waiting — the exports are the phase with a deadline attached (they need a person at the
+browser), and page-saving is the cheap fallback that will still be there afterwards. The point is
+to close the thing off, and closing it means the export phase ends before the scraping phase
+begins.
 
 `scripts/classify-export-worth.py` decides which 39, `scripts/path-gap.py` names the
 seed for each step, and `scripts/census-paths.py` is the current-state snapshot.
 
 ## HER ALGORITHMS, moved out of `queue.md` on 2026-09-01
-**Emma:** *"remove all the 14 bullshit queue items"*. The queue is for work; these are specifications and standing processes, so they live here instead. Verbatim as they stood — nothing was rewritten in the move.
+The queue is for work; these are specifications and standing processes, so they live here
+instead.
 
 ### ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
@@ -5032,13 +5025,12 @@ a SEQUENCE* is written against.
 ### The daily Garborg batch — one QuickStatements run per day
 
 `scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
-`reports/garborg-qids.tsv` is the ledger of who has a QID, filled from **Emma's Wikidata
-contributions** (account 日巫女), never a bulk download — her instruction, 2026-08-24.
+`reports/garborg-qids.tsv` is the ledger of who has a QID, filled from **the account's Wikidata
+contributions** (日巫女), never a bulk download.
 
-**The rule: a statement goes in only if BOTH ends already have a QID.** Emma, after
-running the first file: *"I only ran some of the quick statements because many of them
-required links that couldn't exist... this is going to be the practical limitation of
-what our quick statements can do."* Nothing deferred, nothing commented out. What cannot
+**The rule: a statement goes in only if BOTH ends already have a QID.** A batch whose statements
+require links that cannot exist yet is only partly runnable, and that is the practical limitation
+of what QuickStatements can do. Nothing deferred, nothing commented out. What cannot
 run today is tomorrow's batch, because tomorrow those items exist.
 
 Each day: close the links yesterday's creations made possible, create the next ring, link
