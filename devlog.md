@@ -16059,14 +16059,14 @@ accepts `build-repo-freshness.py`. `test_join_sanity.py` is 16 passed.
 
 ## 2026-08-27 — two rulings, and one of them was already implemented nine days ago
 
-Blocker interrogation put two items to Emma. Both were "her call" by her own prior words rather
+Blocker interrogation put two items up. Both were already ruled on by prior words rather
 than mine, and both had been sitting since 2026-08-18.
 
 **`Name Not Known` (45 people) and `Unknown Wife` (37): "Both are markers — stop asking."**
 They were already in `scripts/labels.WORDS_MEANING_UNKNOWN`, added on **2026-08-18 with those
-exact words in the comment**. The queue item saying they were held awaiting her ruling was stale
-for nine days, and asking again spent one of her turns on something finished. That is § *Emma
-not replying means she is content* wearing a new costume — the check is the code, not the queue.
+exact words in the comment**. The queue item saying they were held awaiting a ruling was stale
+for nine days, and asking again spent a turn on something finished. That is § *NO REPLY MEANS
+CONTENT* wearing a new costume — the check is the code, not the queue.
 
 The half that is new is the standing authorisation: an obvious unknown-word marker now goes
 straight into the vocabulary with its corpus count, no question. Her 2026-08-17 boundary is the
@@ -16168,7 +16168,7 @@ exits non-zero, writes nothing, and prints the two ways to invoke it properly.
 
 The hazard was not subtlety, it was silence: **bare it emits 272 creations, `--compose` emits
 34**, and both write `reports/wikidata-garborg-day.qs`. So a bare run replaced a committed day —
-one Emma may already have pasted into QuickStatements — with an uncapped batch eight times the
+one that may already have been pasted into QuickStatements — with an uncapped batch eight times the
 size, and said nothing about it. I did exactly that yesterday and only noticed from the creation
 count.
 
@@ -16186,7 +16186,7 @@ guarded. Advancing the sequence is what it is for.
 ## 2026-08-27 — three blocker tags in `todo.md`, none of them blocking anything
 
 Blocker interrogation. All three collapsed on *what would I do if nobody ever answered this*, so
-none went to Emma.
+none was put up.
 
 - **"Taking the next export — BLOCKED-ON-USER-ACTION."** Directly contradicted by `CLAUDE.md`
   § *The batches are a SEQUENCE*, which lists "the merges/exports must wait on her" as one of
@@ -16197,7 +16197,7 @@ none went to Emma.
   correspondence and zipper chain, which `scripts/refresh-drift.py` now walks in dependency
   order. It has nothing new to consume until edits land, and editing starting 2026-09-01 is a
   date, not an obstacle — § *A start date is not a blocker*.
-- **"order.life — BLOCKED-ON-EXTERNAL until Emma says it has settled."** True as written and
+- **"order.life — BLOCKED-ON-EXTERNAL until it has settled."** True as written and
   blocking nothing: order.life is explicitly the last source to touch and everything ahead of it
   is unfinished, so it is an ordering note rather than a stalled item.
 
@@ -16207,7 +16207,7 @@ reading `CLAUDE.md` against the tag, not re-reading the tag.**
 
 ## 2026-08-28 — the ring was one hop from 156 places, not one hop from Arne
 
-Emma, on the batch of 2026-08-27: *"there are tons of completely random people that were
+On the batch of 2026-08-27: *"there are tons of completely random people that were
 created"*, then *"Why is there a ring that is any more than 1 hop lol?"*, then *"literally
 nothing in the algorithm as I specified it has any business knowing about anything more than 1
 hop away."*
@@ -16232,7 +16232,7 @@ threshold this repo keeps deleting; her specification says one.
 
 ## The same day — a hard exclusion, because one call site was never going to be enough
 
-That batch also wrote `Q232803 P22 LAST` and `Q232803 P25 LAST`, attaching **Emma's own
+That batch also wrote `Q232803 P22 LAST` and `Q232803 P25 LAST`, attaching **the account owner's own
 item** to the 1,339,227-person component that contains Charlemagne — the opposite of *"I should
 not be in the traversable graph"*. Her Geni id arrives through `paths/bergitte-to-emma.tsv`,
 whose step 1 is her.
@@ -16256,7 +16256,7 @@ created by the batch she ran and the refresh captured later items from that same
 
 ## 2026-08-28 — the seed set is the Wikidata subgraph from Arne, and the ledger refresh is part of the run
 
-Two corrections from Emma, and both were architectural rather than a bug in a line.
+Two corrections, both architectural rather than a bug in a line.
 
 **"My algorithm is entirely based on anyone on the continuous subgraph currently on wikidata
 from Arne... no counting hops it literally should do a billion hops."** The seed set was the
@@ -16281,7 +16281,7 @@ computes distance from Arne over *our Geni tree* and uses it only to order the r
 with `--limit`. There has never been a Wikidata-connectivity walk here.
 
 **The ledger refresh now runs inside every `--compose` build, and fails the run if it fails.**
-Emma: *"the script is supposed to go through my contributions and update the ledger every
+The correction: *"the script is supposed to go through my contributions and update the ledger every
 time."* It was a separate step, and the cost was immediate: a batch built at 17:33 used a ledger
 refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** — the hinge of all
 three lines, which she had just created — read as missing. With the refresh inside the run the
@@ -16322,7 +16322,7 @@ last architecture drifted from.
 
 ## 2026-08-28 — two roots, her own items as the universe, and all three lines walking downward
 
-Three corrections from Emma, each of which changed the shape rather than a value.
+Three corrections, each of which changed the shape rather than a value.
 
 **Two roots.** *"it is supposed to do this from Johannes Bureus and Arne Garborg, subgraphs
 coming from both of them."* `SUBGRAPH_ROOTS = (Q11959067, Q633094)`.
@@ -16346,7 +16346,7 @@ version too.
 **Direction.** *"You understand that we are supposed to be building a path from Bergitte to me,
 not from me to Bergitte? That is a pretty significant difference."* The spine takes the first
 uncreated step, so the file's stored order decides which end it grows from.
-`paths/bergitte-to-emma.tsv` is stored Emma-first and had been taking **Richard Wade Borsheim
+`paths/bergitte-to-emma.tsv` is stored owner-first and had been taking **Richard Wade Borsheim
 every single run** — zero of sixteen steps in weeks. Reversed via `SPINE_REVERSED`, it now takes
 **step 15, Sissel Jonsdatter Talje**, coming down from Bergitte.
 
@@ -16365,11 +16365,11 @@ tokens when a real name survives and leaves an all-marker label alone so § *`NN
 unknown surname, is deferred to a 21:00 census at her instruction.
 
 **Batch: 41 creations, 196 links.** The exclusion list is down to 3 lines from 7 and should
-reach zero once the Emma-ward walk is dealt with properly.
+reach zero once the owner-ward walk is dealt with properly.
 
 **1,399 passed, 25 skipped, 0 failed** in 6m01s.
 
-## 2026-08-28 — the subgraph gates creations, not fill-ins, and Emma has ruled that acceptable
+## 2026-08-28 — the subgraph gates creations, not fill-ins, and that has been ruled acceptable
 
 She saw the batch adding `P26` *spouse* and `P40` *child* to `Q116150299` Jon Reimatsen and
 `Q116150300` Cecilie Ebbesdatter, both on her own list of people outside the contiguous group,
@@ -16398,7 +16398,7 @@ Recorded in `CLAUDE.md`; no behaviour changed, because she endorsed the behaviou
 
 ## 2026-08-28 — the one-off sibling batch, and the Kitajima half of yesterday's note was wrong
 
-**Emma:** *"at this point I want to do an unbound sibling link generation of quickstatements, a
+**The ask:** *"at this point I want to do an unbound sibling link generation of quickstatements, a
 one time thing due to a technical issue I am trying to resolve."* Asked which population — the
 answer changes the size by orders of magnitude, since sibling links grow as the square of family
 size — she chose the **ledger**.
@@ -16422,7 +16422,7 @@ entry for the family is belt and braces.
 
 ## 2026-08-29 — the queue is usable again, and the cron jobs are in it
 
-Emma pushed her own queue section on 2026-08-27 opening *"idk what is going on since a lot of
+A queue section was pushed on 2026-08-27 opening *"idk what is going on since a lot of
 contradictory things are happening... Organize the queue to make it usable again, currently it
 does not appear to be usable."* Fair.
 
@@ -16478,7 +16478,7 @@ their original wording and are still dated 28/29 August.
 
 ## 2026-08-27 — the twelve queued tasks, in her words, in the queue
 
-Emma: *"just look over the chatlog and remake all of them as queue items over this bullshit. The
+The instruction: *"just look over the chatlog and remake all of them as queue items over this bullshit. The
 queue items all need my exact words the times were meant as ordering."*
 
 **The clock times were never a schedule.** They were how she expressed the order, and I built
@@ -16501,7 +16501,7 @@ system, not an escape from it.
 
 **`genimerge.genipage` could not read a single-file MHTML page.** Chrome's "Webpage, Single File"
 is MIME with a quoted-printable HTML part, so every `href="…"` is stored as `href=3D"…"` and the
-parser matched nothing. Both of Emma's saved pages failed as *"no relationship path found"* —
+parser matched nothing. Both saved pages failed as *"no relationship path found"* —
 indistinguishable from a page saved signed-out, while the markup was in them the whole time: 48
 `segment` classes, 68 `data-profile-id` anchors, 2,378 `=3D` sequences. `html_of_saved_page()`
 decodes the MIME part; plain HTML passes through untouched.
@@ -16509,10 +16509,10 @@ decodes the MIME part; plain HTML passes through untouched.
 Both paths then extracted: **`randolph-paulus-borsheim` 21 steps, `caroline-signe-borsheim-hoknes`
 31 steps**, every row carrying a profile id, and **21 of 21 and 31 of 31 steps held** in the tree.
 The Randolph file holds two routes end to end — one through Ane Oline's sister and a **marriage**
-link at step 6, which is the one Emma flagged, and one down through Rasmus Ingebretsen Grude.
+link at step 6, which is the one flagged, and one down through Rasmus Ingebretsen Grude.
 
 **And the correction that matters more than any of it.** I had spent the evening treating
-duplicate-creation as the defect. Emma: *"the issue is the fact that you were putting in all sorts
+duplicate-creation as the defect. The correction: *"the issue is the fact that you were putting in all sorts
 of stuff... you oftentimes just grabbed the first thing that vaguely looked like it... and not
 remove them. We ended up with an algorithm that kind of used a lot of legacy code stuff because
 the legacy code stuff was available."* Four instances in one evening, now tabulated in `CLAUDE.md`
@@ -16531,7 +16531,7 @@ the queue at her instruction rather than chased mid-review.
 
 ## 2026-08-27 — the partial-NN census: 9,539 people have half a name
 
-Emma deferred this from the batch work: what is the right model for `Sara /NN/`, where `GIVN` is
+Deferred from the batch work: what is the right model for `Sara /NN/`, where `GIVN` is
 a real name and the surname field is the literal marker `NN`?
 
 **`scripts/census-partial-nn.py`, over 1,697,887 name records:**
@@ -16570,7 +16570,7 @@ including lowercase `nn` on `Q141198538`. Nothing has swept them.
 
 ## 2026-08-27 — the hard-coded spine block, and two regressions it exposed
 
-**Emma asked for a kludge and was explicit about why, and about what she expected me to do to
+**A kludge was asked for, explicitly, and with a stated expectation of what to do to
 it:** *"there is a block of text with the quick statements hard-coded into the end of it. They
 stay in forever, adding the QIDs every single time... My fear with asking you to do this thing is
 that you are going to decide to over-engineer this... If you get any clever ideas about making it
@@ -16603,7 +16603,7 @@ gone — the ledger/batch overlap resolved itself once the ledger was regenerate
 
 ## 2026-08-27 — steps 1 and 2 of her order: the 1880 cutoff is gone, and the names are unambiguous
 
-**Emma gave the implementation order as a numbered list**, and these are the first two.
+**The implementation order was given as a numbered list**, and these are the first two.
 
 **`MODERN_CUTOFF = 1880` deleted, twenty-one lines.** It came from one objection to one person on
 2026-08-25 — *"no we are no fuckin gmaking my father as a wikidata item right now lol"* —
@@ -16631,7 +16631,7 @@ the ledger rebuilt from contributions + Bureätten.
 
 ## 2026-08-27 — step 3: `P2600` when the algorithm links someone, and the live values go stale no more
 
-**Emma's scope, chosen from four options: only when actually linked in that batch.** So an item
+**The scope, chosen from four options: only when actually linked in that batch.** So an item
 gets its Geni id at the moment the algorithm asserts a relationship about it, and never
 otherwise. Self-limiting by construction.
 
@@ -16700,7 +16700,7 @@ already have items. The fix is the block, not a keep-forever rule.
 
 ## 2026-08-28 — the abbreviation census, and why `-dtr` cannot be expanded from the string
 
-Emma's queue item: *"any abbreviations like -dtr (i.e. 'Rasmusdtr.' instead of 'Rasmusdatter')
+The queue item: *"any abbreviations like -dtr (i.e. 'Rasmusdtr.' instead of 'Rasmusdatter')
 should be fixed since wikidata mul labels are supposed to have the full form."* Asked how far it
 goes, she chose **everywhere a name is emitted** — labels, aliases and the `P734` *family name* /
 `P5056` *patronym or matronym* items alike.
@@ -16728,7 +16728,7 @@ count.
 
 ## 2026-08-28 — the CJK clan formula, worked out from one case and then measured
 
-Emma, on `Q10864996`: *"I think this formulation should be 'woman of the Li clan, from Longxi
+On `Q10864996`: *"I think this formulation should be 'woman of the Li clan, from Longxi
 Didao' as the English label and all languages have a similar thing but NN is the right mul."*
 Then: *"How much does this generalize as a formula in cjk ones?"*
 
@@ -16748,7 +16748,7 @@ untransliterated, so a half-Han label cannot escape.
 
 **I would have got the sex badly wrong.** I printed the first ten rows, saw women, and wrote
 "every sample so far is female" into the code. Measured: **338 of 354 records are male**, and
-Wanshou — the case the formula was designed on — is one of only sixteen women. Emma, asked
+Wanshou — the case the formula was designed on — is one of only sixteen women. Asked
 whether the men take the same formula: *"Yes — same formula, sex word from the data."* The sex now
 comes from `derived-facts.csv` and a person with none gets no description at all, because
 `man`/`woman` is not something to default.
@@ -16763,7 +16763,7 @@ QuickStatements like `SPINE_P2600_BLOCK` — but that block is eight lines and t
 
 ## 2026-08-28 — the CJK clan block is wired in, writing only empty label slots
 
-Emma: *"Fucking wire it in"*. `CJK_CLAN_BLOCK` is now a literal string in
+The instruction: *"Fucking wire it in"*. `CJK_CLAN_BLOCK` is now a literal string in
 `build-garborg-day.py`, appended to every batch beside `SPINE_P2600_BLOCK`. Batch 1,398 → 4,684
 lines.
 
@@ -16802,7 +16802,7 @@ Wanshou that existing label is a real name.
 
 ## 2026-08-28 — Andreas Olai: identified structurally, then blocked by Geni Pro
 
-Second item of the campaign. `Q10411463` is **not** a spine person — Emma created the
+Second item of the campaign. `Q10411463` is **not** a spine person — it was created
 `P1889` *different from* link on it because there is a better-known Andreas Olai she did not
 want merged with hers.
 
@@ -16824,7 +16824,7 @@ Same sibling pair, sons of Olof, which is what *Olai* means.
 
 **And there it stops: every search-result link on Geni is Pro-gated.** The person's name and the
 "View Profile" link both resolve to `geni.com/pro/signup`, and the only ungated `/people/` href on
-the results page is Emma's own profile. A profile found by search that is not already in her tree
+the results page is the account owner's own profile. A profile found by search that is not already in that tree
 cannot be opened without a paid account. Entering payment details is not something this session
 does.
 
@@ -16833,7 +16833,7 @@ So the identification is *made* and the identifier is *unreachable*. Recorded th
 
 ## 2026-08-28 — the Bureätten campaign converges: one export, twenty people
 
-**Emma's ruling reshaped the campaign.** *"the bure people here we don't need to export from all
+**A ruling reshaped the campaign.** *"the bure people here we don't need to export from all
 of them we just need to get all of them in exports"*, and then the stopping rule: *"once everyone
 is covered the campaign is over. Because these people are quite linked as they are a family
 relationship to each other."*
@@ -16857,7 +16857,7 @@ The Andreas export was not aimed at the network at all — neither he nor his br
 closed twenty, including **Axel Gustaf Gyllenkrok**, who was the next name on the list and now
 needs no export of his own.
 
-**Group 2 closed the same evening.** Emma supplied Andreas Olai's profile URL after Geni's
+**Group 2 closed the same evening.** Andreas Olai's profile URL was supplied by hand after Geni's
 Pro-gated search dead-ended, and it confirms structurally: the About prose reads *"Andreas Olai,
 född 1521 i Örebro, död 1560, var en svensk ämbetsman"*, matching `Q10411463`'s `P569` *date of
 birth* 1521, `P570` *date of death* 1560 and its description *Swedish civil servant*; *"Brother of
@@ -16872,7 +16872,7 @@ added in"*. The block's header now separates the eight Charlemagne-chain pairing
 identifications, since more of the latter will arrive.
 
 **All three exports needed a placeholder seed**, because Export GEDCOM is absent from the Actions
-menu on a profile Emma does not manage. She authorised them: *"And yes I'm authorizing new seed
+menu on an unmanaged profile. They were authorised: *"And yes I'm authorizing new seed
 people on all of these people lol"*. All three were tier 3 per `docs/export-seed-rules.md` — a
 person with a father and no mother, so `NN`, given name only, no surname, *Suggest surnames* left
 unchecked because it would have offered the child's.
@@ -16900,7 +16900,7 @@ Fredrik Johan Cederschiöld and Ulrika Strömfelt. **76 absent → 72.**
 
 Four exports into group 4 the closures per export read 2, 20, 2, 4. The twenty was Elof Steuch's,
 seeded inside the densest part of the network; the small ones are seeded at its edges. That is the
-convergence argument behaving as Emma stated it rather than as a constant rate.
+convergence argument behaving as stated rather than as a constant rate.
 
 ## 2026-08-28 — a tier-3 seed for Rehbinder, and the campaign's fastest export
 
@@ -17211,7 +17211,7 @@ patronymic. Tier 4, seed `6000000227474621825` `NN /Brandt/`.
 
 **Closed three, all Sandels — 27 absent → 24**: August, Gösta Sandels the painter, and Karl
 Sandels. Three separate entries on the Bureätten list that are one family, closed by one export.
-That is Emma's convergence argument at the smallest scale: the ball does not close a target, it
+That is the convergence argument at the smallest scale: the ball does not close a target, it
 closes a neighbourhood.
 
 **Sixteen exports collected today: 100 absent → 24.**
@@ -17256,9 +17256,9 @@ export.
 
 **Eighteen exports collected today: 100 absent → 20.**
 
-## 2026-08-28 — Emma's twelve seeds, and two failed predictions about seed quality
+## 2026-08-28 — twelve hand-placed seeds, and two failed predictions about seed quality
 
-Emma placed twelve seeds by hand and asked whether her own exports would close the
+Twelve seeds were placed by hand, with the question whether those exports would close the
 remaining Bureätten people without further seeding from me. They largely did:
 **19 absent → 5.**
 
@@ -17294,7 +17294,7 @@ in the network.
 Descendant count measures how much sits *below* a seed, not whether any of it is still
 *missing*. A Forest ball is 5000 people either way; only where those 5000 fall matters.
 
-**Von Borcke** deserves its own line because Emma flagged it as the important one. Its
+**Von Borcke** deserves its own line because it was flagged as the important one. Its
 ball contains no Bureätten person at all — Borcke is Pomeranian and enters the Swedish
 network by marriage, so the ball spends itself in Germany. That is the 13-to-1 outward
 edge ratio made concrete. The export is still worth having: he is a real person carrying
@@ -17305,7 +17305,7 @@ Wikidata, so it is material for the synoptic tree even though it is not coverage
 ## 2026-08-28 — the Bureätten campaign is complete: 251 of 251
 
 `reports/bure-to-export.tsv` is empty. Every person in sv.wikipedia's
-`Category:Bureätten` carrying a Geni id is now in `exports/`. Emma's stopping rule —
+`Category:Bureätten` carrying a Geni id is now in `exports/`. The stopping rule —
 *"once everyone is covered the campaign is over"* — is met.
 
 **Group 4 went 100 absent → 0 in one day**, across roughly 30 exports.
@@ -17332,7 +17332,7 @@ produced them:**
 * **The `+N` count does not indicate an open parent slot.** Five small counts on the
   Bielke page all had both parents; the four people with *no* arrow were the frontier.
 
-**Emma's connectivity hypothesis was right and my first answer was wrong.** She said the
+**The connectivity hypothesis was right and the first answer was wrong.** It said the
 family is well connected outside itself but not within. I measured paths, found 64% within
 two hops, and called it half-refuted. The edge measurement settles it: **68 edges to other
 Bureätten against 891 outward, and 100 of 151 with no Bureätten neighbour at all.** Two
@@ -17345,7 +17345,7 @@ which is why a grep for "Bure" misses him.
 
 ## 2026-08-29 — the queue was write-only; and the CJK table is starving, not inconsistent
 
-**Rebased queue.md from remote** — three of Emma's commits, her Aug 28 manual adds, kept intact.
+**Rebased queue.md from remote** — three commits, the Aug 28 manual adds, kept intact.
 
 **She said the queue had become garbage and she was right, measurably.** 2,380 lines, 68 sections,
 **+626 lines in two days** — the largest growth since the file was first dictated. The last commit
@@ -17381,7 +17381,7 @@ All 41 creations and every `P22`/`P25`/`P26`/`P40`/`P3373`/`P2600`/`P569`/`P570`
 report is from Aug 26 02:43 and still lists steps 4-12 as `create`. Joining
 `paths/charlemagne-to-arne-garborg.tsv` against the live ledger: **steps 1-13 are unbroken** —
 Arne Garborg `Q467497` up through Bergitte Gunnbjørnsdatter Aukland `Q141198835` to Gunnbjørn
-Toresson Tengs `Q141199851`. Line 3, Bergitte to Arne, is **complete**. Emma acknowledged it.
+Toresson Tengs `Q141199851`. Line 3, Bergitte to Arne, is **complete**, and acknowledged.
 
 **The join key is in the `note` column, not a column of its own.** 694 of 697 path files have
 headers `step / name / relation_to_previous / note`, and `genimerge.genipage` writes the profile id
@@ -17390,7 +17390,7 @@ like a spine that had not moved. Only 3 path files carry an explicit `qid` colum
 
 ## 2026-08-29 — a creation with no relationship is held, not shipped
 
-Emma, on `Anders Persson` `375734886370012680` arriving as a bare item: *"where the fuck is this
+On `Anders Persson` `375734886370012680` arriving as a bare item: *"where the fuck is this
 in the tree? why no relationships... relationships on creation is the thin that keeps items from
 being deleted"*. She is right on both counts.
 
@@ -17419,7 +17419,7 @@ Anders Persson, Peder Tormodson Foss, Sigrid Jonsdotter Rudbera.
 
 ## 2026-08-29 — merged items: the ledger named the redirect, so every link built from it did too
 
-Emma: *"a lot of the items were merged and this is a problem. since it means a lot of relationship
+The finding: *"a lot of the items were merged and this is a problem. since it means a lot of relationship
 statements consistently use the wrong thing"*.
 
 When two Wikidata items merge, the loser becomes a redirect. `reports/garborg-qids.tsv` keeps
