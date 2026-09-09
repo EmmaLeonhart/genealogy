@@ -33611,3 +33611,8 @@ the ability to basically pause in any given tab as it is waiting for things, and
 once it is completed"*. It holds a tab open while a search runs (closing one *"drops its promise
 to notify you"*) and closes it on the result. That is written and correct; it is the service
 worker not receiving messages that stops any of it running.
+
+## 2026-09-09 — a tenth profile on the descendants list
+
+`https://www.geni.com/profile/index/6000000227676658979`, appended to the same queue item.
+Verbatim, not looked up.
