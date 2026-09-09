@@ -27801,7 +27801,7 @@ label correction for the same person (*"change her name to Mononobe no Futohime"
 `reports/manual-identifications.csv` and `reports/label-corrections.tsv`.
 
 **Prose rewritten in 22 files** — `CLAUDE.md`, `docs/`, `reports/` and every script comment — to
-say what the thing was (*her hand identifications*, `reports/manual-identifications.csv`,
+say what the thing was (*the hand identifications*, `reports/manual-identifications.csv`,
 `reports/label-corrections.tsv`) rather than to name a file nobody can read. Two `CLAUDE.md`
 statements were not merely stale but **wrong**: that `Q232803` reaches `have` through it, and that
 it is where the name correction on the account owner's profile lives. The exports carry that corrected name
@@ -27818,7 +27818,7 @@ On the description of it: *"What the fuck is this lol"*.
 
 **What it is.** When `label_in` meets a token with no reading, `_render_token` runs the
 rule-based transliterator on it, uses the result, **and writes it into
-`reports/garborg-name-transliterations.tsv`** — the same file as her chosen readings and the
+`reports/garborg-name-transliterations.tsv`** — the same file as the chosen readings and the
 attested ones, distinguished only by a `note` column.
 
 **The funnel itself is a decision**, and so is the standard: *"If anything even remotely wants to
@@ -27862,7 +27862,7 @@ qid is present — none dropped in the fetch.
 
 **But the ledger TSV is not what the batch uses, and that is a 172-item hole.**
 `refresh-live-values.py` read `reports/garborg-qids.tsv`; `build-garborg-day.ledger()` folds in
-her `SAME` verdicts from `reports/emma-judgments.tsv`, the entry-point roster and the
+the `SAME` verdicts from `reports/emma-judgments.tsv`, the entry-point roster and the
 correspondences, and returns **1,465**. So 172 items the batch labels, links and reasons about
 were **never read live at all** — and every check that consults the live files answered *not
 held* for them when it meant *not asked*.
@@ -27930,7 +27930,7 @@ column *is* the P2600 join — 43,680 against p2600-all.tsv's 43,709 over the sa
 hops through the Carolingians, the Byzantine houses, the Ethiopian line, then ~120 consecutive
 **Kings of Axum at degree 2**. That cluster is 1.1 people per hop, 80% degree ≤2 — a succession
 list entered as a chain. Cluster 1 is 18.1 per hop, a genuinely wide family. `span`, `per_hop`
-and `deg_le2_pct` are columns now. Her bible-ban point is visible in the gap: `Solomon King of
+and `deg_le2_pct` are columns now. The bible-ban point is visible in the gap: `Solomon King of
 Israel` exists **once**, at 153, the medieval Jewish lines sit at 26–28, and nothing lies between
 75 and 152.
 
@@ -27981,7 +27981,7 @@ transliterated as `ドイ`. Then the fix converted it **in place**, and that was
 A generation suffix now moves to the end; a regnal ordinal cannot move, because
 `GENERATION_SUFFIX` holds no bare Roman numeral.
 
-**And the other half of that ruling had been outstanding since her earlier message.** `nb`/`sv`/`da`
+**And the other half of that ruling had been outstanding since the earlier message.** `nb`/`sv`/`da`
 were safe only by omission — the corrections pass emitted `mul`/`en`/`ja`/`zh`/`ko` and nothing
 else — while a Swedish `den yngre` sat in ten other languages untouched. `SUFFIX_LANGUAGES` keys on
 the form rather than listing Scandinavian languages, because `d.ä.` is Swedish and `d.e.` is
@@ -28011,7 +28011,7 @@ parse. And an unset workflow input arrives as an **empty string**, not as an abs
 **What "what exists" turned out to be.** `scripts/wikidata-edit-run.py` logs in, takes a CSRF
 token — and then raises. Its live loop had never sent an edit: *"the edit-object → API-call
 mapping is not written yet"*, held back since 2026-08-13 because the batch format was
-NEEDS-DECISION. Her choice of what runs settled the format, so the mapping is written:
+NEEDS-DECISION. The choice of what runs settled the format, so the mapping is written:
 `entity_data()` builds the `wbeditentity` payload and `Session.apply()` is the one place that
 makes the call.
 
@@ -28037,7 +28037,7 @@ not understand is how 4,459 events lost their year.
   in one day's batch. The one-pass reader written first closed the create on the first such line
   and rejected the file it exists for. It is two passes now — group, then identify.
 - **`wbeditentity` REPLACES an alias list.** § *The MARRIED name is the real name* puts an `Amul`
-  above every `Lmul` precisely to preserve what the item already read, *"Some of those are her
+  above every `Lmul` precisely to preserve what the item already read, *"Some of those are
   hand-edits"* — so a plain alias write deletes the thing the line above exists to save. Aliases
   carry `"add": ""`; labels and descriptions do not, because a label is a replacement by
   definition.
@@ -28104,7 +28104,7 @@ hCaptcha was cleared:
       -> 34 segments, reproducing paths/charlemagne-to-arne-garborg.tsv exactly
       -> controls present: "Show short path", "Blood Relatives"
 
-So her pushpin anchor is live and the profile route is the method. The generator now emits
+So the pushpin anchor is live and the profile route is the method. The generator now emits
 `https://www.geni.com/people/x/<geni id>`, **one url per target rather than two**: blood against
 in-law is a control on the page, not a URL parameter, so the type is read off the capture and
 the two still file as `geni-paths/<geni id>-<kind>.html` for the harvester.
@@ -28324,7 +28324,7 @@ collected before joining now, so nothing becomes a string of spaces.
 **Not fixed, and it is the same person's name:** `Olai` in his `_MARNM` is the Latin genitive
 patronymic *son of Olaus* and is still read as a family name, as are `Petri`, `Benedicti`,
 `Nicolai`, `Martini` and `Engelberti` on his relatives. That is a patronymic FORM the model
-does not know, per her 2026-09-04 rule, and it needs its own measurement rather than being
+does not know, per the 2026-09-04 rule, and it needs its own measurement rather than being
 folded into this one.
 
 ## 2026-09-05 — the parent walk, and the extension gets the dictated algorithm
@@ -28385,7 +28385,7 @@ linking `Olofsson` `Q141244186` and `Olai` `Q141313056` by hand with `P460` *sai
 as*, both ways, by hand.
 
 **The backfill.** `build-garborg-name-items.py` gained `P144` on the items it CREATES this
-morning; every patronymic item minted before that has none, so the identity test her resolution
+morning; every patronymic item minted before that has none, so the identity test that resolution
 algorithm runs — father's `P735` among the item's `P144` values — fails on all of them. The new
 pass reads two sources, because neither knows the other: the plan holds patronymic tokens whose
 item already existed on Wikidata, and `reports/created-name-items.tsv` holds the ones we made,
@@ -28431,7 +28431,7 @@ patronymics — the Latin genitive, *son of Olaus*, *son of Petrus* — and the 
 of them as a family name. The whole Swedish and Finnish clergy line is named that way:
 `Olaus Petri Niurenius`, `Nicolaus Olai Plantin`, `Johannes Benedicti`, `Petrus Martini`.
 
-**Her specification, followed exactly:** *"detect the form, then confirm it against the father's
+**The specification, followed exactly:** *"detect the form, then confirm it against the father's
 own given name so `Petri` on an Italian is not swept up."*
 
 **The shape alone decides nothing — 99,005 tokens match it and 1,544 survive the father test.**
@@ -28511,7 +28511,7 @@ the labelled block still reports `father` alone.
 
 **Suggest surnames is now ON**, ruled 2026-09-05: *"Suggest surnames on is best tbh"*. That
 reverses `docs/export-seed-rules.md` tier 3, which had it off on the grounds that Geni would
-offer the child's surname *"which would be invented"*. Her later ruling wins.
+offer the child's surname *"which would be invented"*. The later ruling wins.
 
 ## 2026-09-05 — the walk ran up the account owner's own line and made its first correct placeholder
 
@@ -28524,7 +28524,7 @@ Seeded on **Ane Oline Jonsdatter Raugstad** and walked upward, mother first at e
     Kari Olsdatter                   1 -> OPEN SLOT
 
 **`NN` (`6000000227610585972`) is now the mother of Kari Olsdatter** (`6000000005609534649`),
-who previously read *"Daughter of Ole father of Kari"* and now reads *"...and NN"*. Her one
+who previously read *"Daughter of Ole father of Kari"* and now reads *"...and NN"*. The one
 existing parent is itself a tier 2 placeholder from an earlier session, which is the loop
 compounding as intended.
 
@@ -28557,7 +28557,7 @@ BUILD*, which retires `entity_resolution.md` as a mechanism — plus one new scr
     UA = "genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)"
 
 which is exactly what the 2026-08-18 rule forbids — *"no fucking github links in it either"* —
-because a repository URL in a constant names her repositories to anyone reading the code, and a
+because a repository URL in a constant names the account's repositories to anyone reading the code, and a
 description of the project does the same. It now calls `genimerge.wikidata.require_agent()`,
 which is contact-only by construction, reads `BOT_CONTACT` or the gitignored `.bot-contact`, and
 fails with a clear message rather than sending an empty agent that Wikimedia answers with a 403.
@@ -28615,7 +28615,7 @@ straight from the queue.
 
 Corrected in place: 100 profile URLs, the two kinds named as **two captures from one page**
 rather than two fetches, the refutation recorded so it is not re-derived a third time, and a
-pointer to `geni-paths/README.md` § *THE CALL THAT WORKS*. Her decisions are untouched — both
+pointer to `geni-paths/README.md` § *THE CALL THAT WORKS*. The decisions are untouched — both
 path types, the Charlemagne anchor, the never-touch pushpin, and the 34–39% / 92% figures the
 result is judged against all stand. Only the mechanical description that had become false was
 changed, plus the current count: **5 of 100 captured.**
@@ -28623,7 +28623,7 @@ changed, plus the current count: **5 of 100 captured.**
 ## 2026-09-05 — `geni-extension/` had no check of any kind, and the bug it needs one for hit twice
 
 The collector is the instrument for every Geni action now, and CI ran nothing against it — it is
-JavaScript in a Python repo. A broken manifest or a mangled file would have surfaced in her
+JavaScript in a Python repo. A broken manifest or a mangled file would have surfaced in the
 browser, mid-run.
 
 `tests/test_geni_extension.py` is **build checks, not behaviour tests**. What the collector does
@@ -28657,7 +28657,7 @@ zero pushpin toggles, concurrency pinned in the background and absent from the p
 
 ## 2026-09-05 — the collector runs, and the walk was unbounded until it was bounded
 
-Chrome restart reloads an unpacked extension from disk, so the DOM trigger landed without her
+Chrome restart reloads an unpacked extension from disk, so the DOM trigger landed without a manual
 touching anything — that was the answer to a click I had been asking for repeatedly.
 
 **First job through the extension**, on Kari Olsdatter:
@@ -28710,7 +28710,7 @@ on focus. Geni applies it server-side at creation. So the field is now left **bl
 writing anything into it suppresses the suggestion, which is the one thing that must not happen,
 and the rules run against what comes back rather than against a value inspected in the form.
 
-`GC.seed.correctSurname` is those two rules, checked against her cases:
+`GC.seed.correctSurname` is those two rules, checked against the named cases:
 
     suggested 'Olsen'           patronymic 'Olsen'   ->  'NN'
     suggested 'Larsen Tjaaland' patronymic 'Larsen'  ->  'Tjaaland'
@@ -28782,7 +28782,7 @@ The instruction: *"Please update it to batches double the older size on all thin
 | collector `concurrency` | `geni-extension` | 6 | **12** (panel max 24 → 48) |
 
 **`SIBLING_CAP` is one of the written rulings and `CLAUDE.md` said "10 a day" in five
-places**, so the file has been updated rather than left contradicting the code. Her 2026-08-25
+places**, so the file has been updated rather than left contradicting the code. The 2026-08-25
 reasoning for having a cap at all — sibling links grow as the square of a family's size, so one
 family of nine children is 72 `P3373` statements and a batch that looks balanced by people is
 overwhelmingly siblings by statement — is unchanged and still the point. Only the number moved.
@@ -28811,9 +28811,9 @@ referenced by nothing but its own output report; it wrote `reports/wikidata-bure
 written 2026-08-27, and nothing composed that into the daily batch. The cap had never paced
 anything, and I doubled it without noticing it was dead.
 
-That is her 2026-08-30 complaint recurring — *"name creations were always segregated into a
+That is the 2026-08-30 complaint recurring — *"name creations were always segregated into a
 different Quick Statements generation pipeline that was never run"* — so the script goes, per
-§ *LEGACY CODE IS DELETED*. Her call: *"Delete it as legacy"*. Removed with the three outputs
+§ *LEGACY CODE IS DELETED*. The ruling: *"Delete it as legacy"*. Removed with the three outputs
 nothing else reads; **`reports/bure-topology.md` is kept**, because the topology measurement it
 produced answers a question that was asked and is not code.
 
@@ -28892,7 +28892,7 @@ that are mostly already stated. The words on being shown the framing: *"I don't 
 anything to be added that has those properties right now since none are in the ledger."*
 
 Taken back out. `build-regnal-ordinals` (6 `P7338`, against zero in the daily batch) and
-`build-from-diff` stay, and a review of the latter is now at the tail of `queue.md` at her
+`build-from-diff` stay, and a review of the latter is now at the tail of `queue.md` by
 instruction — it is the remaining generator that went in on a claim rather than a measurement.
 
 **The sibling cap counts PAIRS now:** *"We were supposed to emit 20 sibling pairs a day."*
@@ -28945,7 +28945,7 @@ with no `P2600` at all**.
 — the instruction in the same message: *"do not mess with anything until I give clear
 instructions."*
 
-## 2026-09-05 — her guess was right: correctly built, badly documented
+## 2026-09-05 — the guess was right: correctly built, badly documented
 
 *"My personal guess here is that it's all done correctly but badly documented."* Checked, and
 that is what it is. The three-source measurement in `reports/correspondence-sources.md` read like
@@ -28975,7 +28975,7 @@ of them being involved with my active entity resolution that I have been doing u
 that is to say Claude artifacts, not GitHub artifacts... And another was built for the purpose of
 acting as an entity resolution and later access point thing for Jan 1."*
 
-    1  reports/manual-identifications.csv        her artifact-adjudicated resolution   314
+    1  reports/manual-identifications.csv        artifact-adjudicated resolution       314
     2  exports/post-merge/wikidata-qid-links.ged resolution + access point for Jan 1    29
        overlap                                                                          0
 
@@ -29006,7 +29006,7 @@ once an hour in a report that has to be open at the time:
     NEEDS-DECISION        the six unruled .qs generators      -> AskUserQuestion
     NEEDS-DECISION        the .crx + policy install           -> AskUserQuestion
 
-**The two decisions are written as questions to PUT to her, not as work to do.** That is the
+**The two decisions are written as questions to PUT, not as work to do.** That is the
 difference the instruction turns on: a `NEEDS-DECISION` item whose next action is "decide it" is
 one an agent will quietly resolve on its own judgement, which is how
 `build-missing-reciprocals` got folded into the pipeline on a wrong claim this evening. Written as
@@ -29093,7 +29093,7 @@ commit, which is the order asked for: confirm the rebuild first.
 the 22 regenerated files, pushed. The item's own unblock signal was the process finishing and its
 follow-through was to commit and push; both happened.
 
-Nothing else went. The retarget below it is **gated on her confirming the rebuild is good** and
+Nothing else went. The retarget below it is **gated on the rebuild being confirmed good** and
 `reports/bio-qids.tsv` is still tracked, which is the correct state for it. `addAncestor`'s
 termination is still unexercised, the two decisions are queued questions not yet asked, the pilot
 is at 5 of 100, and the rest are gated or at the tail by placement.
@@ -29104,7 +29104,7 @@ The instruction: *"watch my email for another forest export. I did a merge on ge
 around them... Make sure all of his ancestors are present by doing an ancestor export of
 [Alfred Ingerman Hoknes] after and this is the proper thing."*
 
-**Her Forest export, collected from the email link.** `export-geni.zip`, 599,345 bytes, **5,000
+**The Forest export, collected from the email link.** `export-geni.zip`, 599,345 bytes, **5,000
 individuals, 1,486 families**, seeded on `6000000227614275833` — `Hans /father of Anne Margrethe
 Kingo/`, a tier 2 placeholder, which matches the Kingo item in the screenshot sent. Left in
 `~/Downloads`: § *Do not integrate as you go*, and where a `.ged` is filed is not mine to decide.
@@ -29187,7 +29187,7 @@ two parents, and the overlap between the lines. That is the check asked for —
 assumption, which matters because Alfred himself **cannot be exported**: Geni answers
 *"You are not allowed to export that profile."*
 
-**Clara's birth surname is `Knutson`, not `Hoknes`.** The Hoknes on her profile is the married
+**Clara's birth surname is `Knutson`, not `Hoknes`.** The Hoknes on that profile is the married
 name, which `CLAUDE.md` § *The MARRIED name is the real name* would have predicted and which the
 export's own `NAME` line settles.
 
@@ -29242,7 +29242,7 @@ the background scheduler that only the unreachable popup can drive.
 The words when I finally asked: *"fuck you fuckinh ask me the goddamn questions instead of
 jerking off."* Two queue items had said **PUT THIS TO HER AS AN AskUserQuestion** since I wrote
 them, and I reported both as blockers in four consecutive status reports instead. Writing an item
-that says *ask her* and then not asking is the same learned helplessness `CLAUDE.md` § *The
+that says *ask* and then not asking is the same learned helplessness `CLAUDE.md` § *The
 batches are a SEQUENCE* names — the blocker was mine.
 
 **Deleted on instruction:** `build-missing-reciprocals.py`, `build-qid-link-p2600.py`,
@@ -29253,7 +29253,7 @@ and every one is prose in a comment — `pipeline.yml`, `build-garborg-day.py` a
 **`build-add-p2600-batch` is deferred to 2026-09-13**, as a workflow rather than a note:
 `.github/workflows/requeue-add-p2600.yml` runs daily, does nothing until the date, and then
 appends the question to `queue.md` once, guarded by a marker so a daily schedule cannot
-duplicate it. Her reason for the deferral is in the item, verbatim. This is the same shape as
+duplicate it. The reason for the deferral is in the item, verbatim. This is the same shape as
 § *Entry points DRIP IN on a date*: every session-local cron in this repo has died at least once,
 so a date in a tracked file is what survives.
 
@@ -29275,7 +29275,7 @@ over.
 
 **Measured on a fresh slot rather than by duplicating a mother.** The walk found
 `6000000178118920851` **Ingebrigt Himo** — zero parents, no patronymic — which is **tier 4** and
-the FATHER, per her 2026-09-05 ruling that the empty case follows the seed rules rather than the
+the FATHER, per the 2026-09-05 ruling that the empty case follows the seed rules rather than the
 walk's mother-first order.
 
     extension, filling and clicking Save itself   ->  nothing created, page reloaded
@@ -29319,7 +29319,7 @@ export.
 
 I created three and exported from none. That is the bound set hours earlier, drifted out of by
 reading *"fucking add individuals"* as the task rather than as the first step of one. Three
-profiles now sit on her live tree having bought nothing.
+profiles now sit on the live tree having bought nothing.
 
 **Two wrong methods on the way, both corrected from outside:** picking targets from `derived-family.csv`
 (two of two candidates already had both parents live — the corpus is a photograph), then picking
@@ -29328,7 +29328,7 @@ walk finds slots by climbing **live**, and needs no candidate list at all.
 
 Nothing has been deleted. Whether the three should stay is a decision.
 
-## 2026-09-06 — her per-individual loop, written down, and step 1 built
+## 2026-09-06 — the per-individual loop, written down, and step 1 built
 
 The whole loop was dictated: *"There's three things: forest from created individual, making a path
 from Charlemagne to the individual, and getting the family members from the page only. Generally
@@ -29427,7 +29427,7 @@ captures, which have never been exercised and would have hit this on their first
 
 The three lost scrapes are not being re-taken: they were phase 3 work done out of order.
 
-**Queue: the `bio-qids.tsv` retarget item removed.** It was completed earlier tonight on her
+**Queue: the `bio-qids.tsv` retarget item removed.** It was completed earlier tonight on
 ruling *"Good — do the retarget"* — `ab4b8766` moved all four call sites to `out/bio-qids.tsv`,
 which is gitignored and now holds the extract; `git ls-files reports/bio-qids.tsv` returns
 nothing, so the file agents kept getting confused by is no longer in the tree. The item was still
@@ -29488,7 +29488,7 @@ folded into the miss column.
 
 **Bettmann is the second Dorothy Jeakins.** Family Tree 1,655 against Blood Relatives 8 — a man
 connected almost entirely through in-laws. The blood-relative gate I wrote first would have
-skipped both of them, which is exactly what her *"why the fuck did you choose blood relatives"*
+skipped both of them, which is exactly what the *"why the fuck did you choose blood relatives"*
 caught. Two of the four readings taken since would have been thrown away.
 
 **Fetch-parsing was tried and does not work**, which is worth recording so it is not retried:
@@ -29507,7 +29507,7 @@ is a governing rule with no done state, the parent-adding campaign is gated by p
 tail export section is a decision. Nothing removed.
 
 The pilot item said **5 of 100 captured**; it is **9 of 100 touched** — 6 path captures, 3 family
-scrapes. And it told the next session to file captures as `geni-paths/<id>-<kind>.html`, which her
+scrapes. And it told the next session to file captures as `geni-paths/<id>-<kind>.html`, which the
 ruling tonight retires: the collector returns the parsed TSV and the agent writes `paths/`.
 `geni-paths/README.md` is marked superseded on that one step — the navigate/wait/click sequence it
 records is still exactly right and is still what the `path` job does; only the Blob save is gone.
@@ -29542,7 +29542,7 @@ out"*, which makes a mistake of mine look like a reversal by somebody else. Corr
 
 `CLAUDE.md` § *Only `AskUserQuestion` gets answered* requires every option to be one that could be picked. This
 is the other half of that rule and it was not written down: **the axis is part of the question,
-and offering only one axis chooses it for her.** Four options on one wrong premise is one option.
+and offering only one axis takes that choice away.** Four options on one wrong premise is one option.
 
 **One borderline, recorded rather than resolved:** Valentine Eisner reads Family Tree **914**
 against the 1,000 floor, so she skips by 86. Her path search is still pending, so the gate has
@@ -29557,7 +29557,7 @@ the page shows, so whichever figure carries the number, over 300 clears.
 It moves in both directions and that is worth stating, because only one half is obvious.
 `family_tree` and `blood_relatives` came **down** from 1,000. `ancestors`, `descendants` and
 `followers` went **up**, from 100 / 100 / 10 — so a profile clearing on twelve followers alone no
-longer does. Her floor is a floor on the evidence, not a licence for the weakest figure.
+longer does. The floor is a floor on the evidence, not a licence for the weakest figure.
 
 **Measured over all twelve readings: exactly one row changes.** Valentine Eisner, Family Tree 914,
 SKIP → EXPORT — the borderline flagged last hour as the first person the threshold itself would
@@ -29812,7 +29812,7 @@ Three more scraped — Rosa Seckel, Hildegard Kann, and Asser de Haan earlier �
 15 of 100 and `reports/isolates.csv` to 15 rows.
 
 **⛔ THE BUG, found by scraping someone whose answer we already had.** Hilde Kann was recorded
-`path_found=no` from the 2026-09-03 session. Her profile **today** shows the *"How are you
+`path_found=no` from the 2026-09-03 session. That profile **today** shows the *"How are you
 related?"* button, because a requested search decays back to unrequested — the same thing Rudolf
 Beck did between two visits two hours apart. `write-family-scrape.py` rewrites the row wholesale,
 so the revisit would have written a blank over a verdict actually observed.
@@ -29852,7 +29852,7 @@ observed. The devlog is history; the queue is what gets worked, and an instructi
 only in history is one nobody follows.
 
 Recorded in the item, with both consequences beside it — that `path_state` must never infer a hit
-from the absence of a miss, and that a revisit must never blank an observed verdict. **Her tail
+from the absence of a miss, and that a revisit must never blank an observed verdict. **The tail
 section was left alone**: its three-state list is dictated text at that placement, and it was never
 wrong — it names not-requested as one of the three. What it does not say is that a *running*
 search returns to that state, and that is a fact about Geni discovered tonight rather than a
@@ -29879,7 +29879,7 @@ find one.
 **So the expander is reverted.** It clicked **18** toggles across the page on its first run and
 produced not one extra relative — `CLAUDE.md`'s own rule applies to my own change: *a fix that
 changes nothing is evidence, not reassurance*. Keeping it because it was already written would
-have left dead code clicking arbitrary links on her live account.
+have left dead code clicking arbitrary links on a live account.
 
 **What replaces it is a measurement, not a fix, because the shortfall is a limit of the source.**
 `# unlinked <n>` now sits in every scrape's header, computed from the prose by
@@ -29902,7 +29902,7 @@ re-read file.
 
 **Two rulings, both correcting me.**
 
-**⛔ *"9-03 is wrong"*** — step 3b is a **`Forest`** export, not the `Ancestors` her 2026-09-03
+**⛔ *"9-03 is wrong"*** — step 3b is a **`Forest`** export, not the `Ancestors` the 2026-09-03
 tail names as the common case. `Forest` follows spouse links where `Ancestors` walks straight up,
 so on someone connected through in-laws — Moshe Bar Nissim in the notes, *"failing because of
 large in-law chains"* — an `Ancestors` export goes past the join entirely. Recorded in
@@ -29913,7 +29913,7 @@ on its first case.
 *"I was guarding against you being fucking retarded the other day and me setting it was a shortcut
 because you just sat on the page jerking off instead of doing work."*
 
-Her 2026-09-03 *"it needs to be done exactly once and I did it"* was her unblocking a stalled
+The 2026-09-03 *"it needs to be done exactly once and I did it"* was an unblocking of a stalled
 session. I recorded it as a law — in `CLAUDE.md`, in `queue.md`, and behind a test — and when the
 first real capture came back viewer-anchored I filed it as **NEEDS-DECISION** and carried it
 across three status reports. It was a thing to check and set.
@@ -29982,7 +29982,7 @@ code would. The queue I loaded was cleared afterwards so nothing synthetic can e
 **Four routes to a reload were tried before calling it blocked**, because *report the limit, not
 the task*: a page-world call is refused by the permission classifier; `chrome://extensions` is
 refused by the browser tool; the extension registry lives in `Secure Preferences` and editing it
-is invasive on her profile; and starting Chrome with `--load-extension` at the repo changed
+is invasive on a live profile; and starting Chrome with `--load-extension` at the repo changed
 nothing, since the same unpacked path is already registered. **Unblock signal: a `status` call
 returning ten keys including `endId`.**
 
@@ -29990,12 +29990,12 @@ returning ten keys including `endId`.**
 toolbar.** `content/router.js` relays `status`/`start`/`stop`/`load` over the same data-attribute
 channel the job trigger uses — `scripts/scheduler-bridge.md` is the usage. `load` and `status`
 round-trip correctly *against the old worker*, which is how the finding above was measured at all.
-This removes the manual step that has been sitting on her since the scheduler was written:
+This removes the manual step that has been outstanding since the scheduler was written:
 *"You start it from the toolbar"* is no longer required.
 
 **⛔ AND A SECOND STALENESS IN THE SAME STATUS CALL: `concurrency` reads 6, not 12.** `state()` is
 `Object.assign({}, DEFAULTS, stored)`, so a value the popup wrote once shadows the default
-forever. Her *"update it to batches double the older size on all things"* moved `DEFAULTS` to 12
+forever. The *"update it to batches double the older size on all things"* moved `DEFAULTS` to 12
 and the scheduler never saw it. **Changing a `DEFAULTS` number does not change a running
 profile** — that is now written in the bridge doc, because it will bite again.
 
@@ -30024,7 +30024,7 @@ provoked it** — the pilot's own rule is *one a minute, no concurrency*, and to
 faster than that whenever a target resolved quickly.
 
 **Sweep: nothing removed, eighth running.** Six live items verified against the repo — the service
-worker item is blocked on her reload and not done, the phase order is a rule, the pilot is at 17
+worker item is blocked on a manual reload and not done, the phase order is a rule, the pilot is at 17
 of 100 and halted by the CAPTCHA, the parent-adding campaign is gated by placement, `build-from-diff`
 has no review and the correspondence experiment no GEDCOM, both at the tail by placement.
 
