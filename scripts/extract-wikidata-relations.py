@@ -2,9 +2,8 @@
 
     python scripts/extract-wikidata-relations.py
 
-**This is the thing whose absence made the zipper join half-exist.** Emma, 2026-08-25:
-*"The zipper merge kinda half exists and is opaque I thought you meant something more clear and
-substantive than just having never even tried to implement the feature. Implement it."*
+**This is the thing whose absence made the zipper join half-exist.** The zipper merge half
+existed and was opaque, because the feature had never actually been implemented.
 
 Everything built so far read Wikidata's relationships **one item at a time**, opening a shard per
 question — `resolve-multi-geni-by-parents.py` for a pair's parents,

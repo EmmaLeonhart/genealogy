@@ -47,19 +47,17 @@ ABSENT = {".", "..", "?", "-", "_"}
 def fold(text: str) -> str:
     """Case and whitespace only. **Diacritics are kept.**
 
-    Folding them away was wrong and Emma caught it, 2026-08-16: asked why
-    `Maria` came out matching nine Wikidata items she looked and found *"there is
-    one thing worth noting, which is that there's a male and a female Maria.
-    Aside from that, everything appears to be diacritics or stuff that's not
-    actually it."*
+    Folding them away was wrong, and reading the nine `Maria` items settles it:
+    the only real ambiguity is a male `Maria` and a female `Maria`, and everything
+    else is diacritics or items that are not the name at all.
 
-    She is right. Of the nine, **four are `María`, `Mária` or `Marià`** — Spanish,
+    Of the nine, **four are `María`, `Mária` or `Marià`** — Spanish,
     Hungarian and Catalan names that are *different names*, not spellings of this
     one. Wikidata gives each its own item deliberately. Collapsing them
     manufactured ambiguity that does not exist and put 1,312 names into
     review-and-do-not-create.
 
-    The genuine residue is the one she named: `Q325872` and `Q25413386`, the male
+    The genuine residue is the pair above: `Q325872` and `Q25413386`, the male
     and the female given name `Maria`. That is a real distinction and is settled
     by the *person's* sex, not by the string.
     """

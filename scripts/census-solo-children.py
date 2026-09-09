@@ -2,11 +2,11 @@
 
     python scripts/census-solo-children.py
 
-**Emma, 2026-08-25:** *"solo child gives a bit of support but it's not gospel I'm gonna ask for a
-queued up analysis on synoptic tree vs wikidata solo children situations like this."* And, before
-any of it was measured: *"Solo child says nothing unless there's some reason to match them lol."*
+**A solo child gives a little support and is not gospel**, which is what this queued analysis
+of synoptic-tree against Wikidata solo-child situations exists to measure. And, before any of it
+was measured: a solo child says nothing unless there is some reason to match them.
 
-She was right and it is now measured twice. `child`+`solo` is the worst cell in the join by the
+Both readings hold and are now measured twice. `child`+`solo` is the worst cell in the join by the
 one check with near-total coverage — **10.0%** of its pairs are refuted outright by `P21` *sex or
 gender*, against **0.0%** for `father`+`solo` and `mother`+`solo`.
 

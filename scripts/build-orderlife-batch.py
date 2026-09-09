@@ -87,7 +87,7 @@ REPO = Path(__file__).resolve().parent.parent
 #: **Vendored, not a sibling checkout**, ruled 2026-08-15: the data is vendored here,
 #: preserving the order.life QIDs, so it can be referenced at any time.
 #: Until 2026-08-15 this was an absolute path into
-#: `C:/Users/Emma/Documents/GitHub/order.life`, so a clean checkout of this
+#: an absolute path into a sibling checkout, so a clean checkout of this
 #: repo could not build the batch at all — the same failure as the 37
 #: gitignored GEDCOMs, where a fresh clone silently measured something else.
 OL = REPO / "orderlife"

@@ -2,8 +2,8 @@
 
     python scripts/census-creation-opportunities.py
 
-**Emma, 2026-08-25, on the lopsided slots -- 2,484 where we hold two unmatched children and
-Wikidata holds one, 2,012 where we hold five and they hold one:** *"Uhhhh yeah no shit it's an
+**On the lopsided slots -- 2,484 where we hold two unmatched children and Wikidata holds one,
+2,012 where we hold five and they hold one:** *"Uhhhh yeah no shit it's an
 adding opportunity but we do need to figure out which person merges in if present lmfao lol like
 zipping has a direction. If we have entity resolved one of the children and the other 4 are absent
 from wikidata is not a problem at all lol."*
@@ -21,8 +21,9 @@ exists** -- which is the whole shape `docs/wikidata-item-template.md` describes 
 `CLAUDE.md` puts the Geni id before everything else.
 
 Ranked by **distance from Arne Garborg**, because `CLAUDE.md` is explicit that proximity beats
-volume: *"A thousand people on the far side of the tree are worth less than fifty in her own
-neighbourhood."* Distance is hop count over parent, child and spouse edges in our own tree.
+volume: a thousand people on the far side of the tree are worth less than fifty in the
+account's own neighbourhood. Distance is hop count over parent, child and spouse edges in our
+own tree.
 
 **This writes a census, never an edit batch.** `CLAUDE.md`: a `.qs` produced uninvited *"presents
 work as ready that nobody sanctioned"*.

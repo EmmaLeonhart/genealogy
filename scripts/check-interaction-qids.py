@@ -1,4 +1,4 @@
-"""For every item in Emma's interaction log: is it a redirect, and how old is it?
+"""For every item in the interaction log: is it a redirect, and how old is it?
 
 Answers the one question the log alone cannot: **which side of each merge was ours.**
 `reports/created-name-items.tsv` records `Tunheim -> Q36927172` as an item created on
@@ -33,7 +33,7 @@ LOG = ROOT / "reports" / "wikidata-interactions.csv"
 OUT = ROOT / "reports" / "wikidata-interaction-qids.csv"
 API = "https://www.wikidata.org/w/api.php"
 
-EXTRA = ["Q141267933"]  # her own pointer: "this person had a weird error"
+EXTRA = ["Q141267933"]  # flagged by hand: "this person had a weird error"
 
 
 def get(params: dict) -> dict:
