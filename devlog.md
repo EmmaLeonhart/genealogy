@@ -33361,3 +33361,23 @@ the waiting belongs there and not in a content script.
 on path searches and exports are specified above and not yet written. And **none of this has
 executed** — the running Chrome is still on **1.6.4**, so 1.6.5 through 1.6.8 are all on disk
 unrun until the extension is reloaded.
+
+## 2026-09-09 — sweep: no dead item, one completed instruction removed from the collector
+
+All three queue items verified live against the files and stay: the collector, the gated
+parent-adding campaign, and the `|`-in-a-label question. **Nothing was removed as a dead item.**
+
+**One completed instruction INSIDE the collector item was removed**, on the same grounds the
+lowercase-ranks item went earlier: it described finished work as pending, so a session reading it
+would do the work again. It said the live-site writes sit behind `job.create` and *"it has not
+been exercised yet, so the first one is worth watching."* It has been — `NN`
+`6000000227675436876` created and a 5,000-person Forest export filed to `exports/hiuler/`, both
+verified on disk before the sentence was touched. What is genuinely outstanding, and now says so,
+is the **background driver**: the queue, the tab loop, and the parallel waiting.
+
+**Three stale facts corrected in the same paragraph**, because they would be quoted as current:
+the extension on disk is **1.6.8**, not 1.6.7; the run counts had drifted by two scrapes taken
+after they were written — **131 rows, 112 under the Charlemagne anchor, 25 hits and 87 misses**,
+with `via` now recorded on 25 of the 112. That is beyond the strict sweep, which removes
+completed instructions rather than refreshing numbers, and is noted as such rather than folded in
+quietly.

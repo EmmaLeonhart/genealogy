@@ -92,20 +92,19 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   * **The background service worker cannot be updated from here** and does not matter — it runs
     only the scheduler. `todo.md` § 3d has the measurement and five failed routes.
 
-  **State right now, measured 2026-09-09 after five runs:** the isolate pilot is **100 of 100,
-  COMPLETE** · `reports/isolates.csv` **129 rows, 129 family scrapes on disk**, of which **110
-  were taken under the Charlemagne anchor: 24 hits, 86 misses** · **zero invented people** ·
-  extension **1.6.7 on disk**, and the running Chrome is at least 1.6.6 — a stated in-law miss
-  came back as `via=neither` rather than `not_offered` on both of the day's misses.
+  **State right now, measured 2026-09-09 15:1x PST:** the isolate pilot is **100 of 100,
+  COMPLETE** · `reports/isolates.csv` **131 rows, 131 family scrapes on disk**, of which **112
+  were taken under the Charlemagne anchor: 25 hits, 87 misses** · **zero invented people** ·
+  extension **1.6.8 on disk**, and the running Chrome is **1.6.4**, measured — see below.
 
-  **The in-law verdict is recorded for 18 of the 105** — `via` reads `neither` 9, `blood` 6,
-  `inlaw` 3, and is **blank on 87**, which is every row taken before the in-law search existed.
-  **75 of the 84 misses are blood-only**, so they re-enter the pool under rule 2 of § *BOTH TIES,
+  **The in-law verdict is recorded for 25 of the 112** — `via` reads `neither` 12, `blood` 9,
+  `inlaw` 4, and is **blank on 87**, which is every row taken before the in-law search existed.
+  **75 of the 87 misses are blood-only**, so they re-enter the pool under rule 2 of § *BOTH TIES,
   ALWAYS* and are not final misses.
 
   ⛔ **THE RUNNING CHROME IS ON 1.6.4 — MEASURED 2026-09-09, THREE VERSIONS BEHIND THE DISK.**
   **Read it, do not guess it:** `documentElement.dataset.geniCollector` is stamped by the content
-  script; it is five characters and its digits are `164`. So **1.6.5, 1.6.6 and 1.6.7 are all on
+  script; it is five characters and its digits are `164`. So **1.6.5 through 1.6.8 are all on
   disk and none of them has ever executed**, and every in-law defect they fix is still live. An
   unpacked extension does not pick up file changes on its own, and `chrome://extensions` is
   refused by the automation surface the same way `chrome://` always is. One click in that page,
@@ -178,9 +177,14 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   anchor, and rows with no verdict yet, are excluded from the 92; a rate over all 111 answers a
   question nobody asked.
 
-  **The live-site writes sit behind `job.create`.** Setting it lets the loop create one ancestor
-  and run a `Forest` export when the gate clears. It has not been exercised yet, so the first one
-  is worth watching.
+  **`job.create` WAS exercised on 2026-09-09 and both halves worked** — `NN`
+  `6000000227675436876` created as Hans Jørgensen Hiuler's mother, Forest export back at 5,000
+  people, filed to `exports/hiuler/`. What failed was the walk BETWEEN them, which had been
+  handed out of the extension for the agent to hold; `content/walk.js` has the account.
+
+  ⛔ **What is outstanding is the BACKGROUND DRIVER**: the queue, the tab loop, and the parallel
+  waiting on path searches and exports. Until it exists the extension answers one person and
+  nothing drives the traversal.
 
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a batch is on Wikidata. You, 2026-09-03: *"In
