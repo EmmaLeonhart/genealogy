@@ -27591,7 +27591,7 @@ tonight as though 161 items had no `P2600` when it simply does not cover them.
 
 ## 2026-09-04 — the generation suffix, in her two forms, and two rulings it restored
 
-**Emma's specification**, with `Q106206114` as the worked example — Wikidata has him as
+**The specification**, with `Q106206114` as the worked example — Wikidata has him as
 `Elias Lagerheim den yngre`:
 
     Lmul  Elias Lagerheim II
@@ -27653,7 +27653,7 @@ produce byte-identical files, and qualifiers survive the roundtrip.
 
 ## 2026-09-04 — the label cap goes out in her language order
 
-**Emma, asked what order the added languages should be in:**
+**Asked what order the added languages should be in:**
 
     En / Mul / Ja / Zh / Ko
     Then any ordering of our actively supported languages
@@ -27684,7 +27684,7 @@ label, `ja` ×4, and relationships passed through uncapped.
 
 ## 2026-09-04 — the cap counts PEOPLE, and the newest first on purpose
 
-**Emma:** *"we do all at once per qid (15 qids) in descending order of qids"*.
+**The ruling:** *"we do all at once per qid (15 qids) in descending order of qids"*.
 
 It counted **lines** until now, which split a person across runs — an item could get its `mul`
 today and its `ja` a fortnight later and be wrong in between in a way that reads as carelessness
@@ -27715,7 +27715,7 @@ That is what *"all at once per qid"* means.
 
 ## 2026-09-04 — the identical dates are none of our business
 
-Emma: *"Why the fuck are you working on that thing? … I formally place it in the category of none
+The objection: *"Why the fuck are you working on that thing? … I formally place it in the category of none
 of my business … I am concerned with getting the data in more so than I am with the accuracy of
 it."* And on the shape of it: *"you're investigating the one part that you can of a thing that is
 impossible for you to investigate, and you're going to build some sort of report that is not
@@ -27729,7 +27729,7 @@ work to the next session. Her ruling is recorded there in its place.
 
 ## 2026-09-04 — the `mul` consensus is a VOTE, and English was deciding instead of voting
 
-**Emma:** *"in the event that just the English exists as a Latin alphabet thing, the English name
+**The ruling:** *"in the event that just the English exists as a Latin alphabet thing, the English name
 turns into the multi language label. And if two or more Latin alphabet labels exist, then the
 Latin alphabet labels vote on whichever one is going to be the multi language label… you can say
 that it even is the case if there's only English, because it's just, like, English ties or English
@@ -27773,13 +27773,13 @@ labels rather than of dict order.
 
 ## 2026-09-05 — the retired side file is scrubbed from the repo
 
-**Emma:** *"why the fuck is [it] needed lol? What the fuck is so important about that file that
+**The objection:** *"why the fuck is [it] needed lol? What the fuck is so important about that file that
 you constantly come back to it all the time for seemingly unrelated tasks? … should probably be
 completely scrubbed from all the docs because the only way I can remotely see you mentioning it so
 often is if the docs say it serves some kind of purpose"*.
 
 **Her diagnosis was exactly right and the culprit was one paragraph.** `CLAUDE.md` carried a live
-rule — *"is Emma's scratchpad and must stay free-form"*, with instructions on parsing it and not
+rule — *"is a scratchpad and must stay free-form"*, with instructions on parsing it and not
 reformatting it — for a file **deleted on 2026-08-29**. Every session read that as current, went
 looking, found it gone, and wrote a comment explaining the absence. There were **seven** such
 comment blocks in `scripts/`, each one saying only *"it is gone and nothing may read it"*, and
@@ -27816,7 +27816,7 @@ resolution_case`, where *entity resolution* is the ordinary activity and not the
 
 ## 2026-09-05 — the funnel was minting readings for things that are not names
 
-Emma, on the description of it: *"What the fuck is this lol"*.
+On the description of it: *"What the fuck is this lol"*.
 
 **What it is.** When `label_in` meets a token with no reading, `_render_token` runs the
 rule-based transliterator on it, uses the result, **and writes it into
@@ -27855,7 +27855,7 @@ provenance.
 
 ## 2026-09-05 — the download works; it was fetching 172 fewer items than the batch uses
 
-Emma, on the pipeline run: *"this appears to be working and actually the pipeline run downloading
+On the pipeline run: *"this appears to be working and actually the pipeline run downloading
 all of them is good news because it means the download can work it's just finnicky."*
 
 **It landed.** `reports/garborg-live-items.json`, committed by run `510de40`, **28.7 MB**, 1,293
@@ -27881,7 +27881,7 @@ the builder cannot be imported. About four more requests.
 
 ## 2026-09-05 — eccentric CLUSTERS, not an eccentric ranking
 
-Emma: *"You found a bunch of Chinese ancient people were most eccentric… I want to see
+The ask: *"You found a bunch of Chinese ancient people were most eccentric… I want to see
 other eccentric clusters"*.
 
 `reports/eccentricity.md` ranks **people**, and the top of a ranking cannot show a second
@@ -27909,7 +27909,7 @@ unlabelled members are redactions, which is a fact about Geni rather than a gap 
 
 ## 2026-09-05 — the cluster report was wrong three ways, all of them hers to spot
 
-Emma, on the first version: *"your measurement of there being qids is a bit flawed… Pre dynastic
+On the first version: *"your measurement of there being qids is a bit flawed… Pre dynastic
 Egypt definitely does… Axum certainly have qids lol"*, *"you said Samaritan itamar line but it's
 clearly everyone in the Samaritans cluster and you just bullshitted"*, and *"Idk if you even
 bothered cross-checking wikidata p2600 properties linking to these lol"*.
@@ -27955,7 +27955,7 @@ variable, so `os.environ.get(name, "20")` returned `""` and `int("")` killed a r
 
 ## 2026-09-05 — the eccentric clusters into the identification gedcom, and three rules she had to state twice
 
-**The gedcom.** Emma: *"write these ones into that identification gedcom thing that serves the
+**The gedcom:** *"write these ones into that identification gedcom thing that serves the
 dual purpose of entity resolution through adding dummy bios with the wikidata links, which is
 scheduled to at Jan 1, 2027 become a thing that turns every qid there into an entry point for
 editing."* `exports/post-merge/wikidata-qid-links.ged` goes **5 records → 29, 28 distinct QIDs**,
@@ -28007,7 +28007,7 @@ parse. And an unset workflow input arrives as an **empty string**, not as an abs
 
 ## 2026-09-05 — the daily batch runs itself from the 15th, and the runner can finally send
 
-**Emma:** *"I want to on the 15th start all of this stuff automatically"*, and, put to her as an
+**The ruling:** *"I want to on the 15th start all of this stuff automatically"*, and, put as an
 `AskUserQuestion`: **the daily Garborg batch**, through **the bot-password API, what exists**.
 
 **What "what exists" turned out to be.** `scripts/wikidata-edit-run.py` logs in, takes a CSRF
@@ -28123,7 +28123,7 @@ columns, so nothing downstream depended on the old pair.
 
 ## 2026-09-05 — the method was in a transcript and not in the repo, so it got rebuilt
 
-Emma, watching a local HTTP sink get built to POST page captures to: *"did you either not
+Watching a local HTTP sink get built to POST page captures to: *"did you either not
 document the original successful way you did it or decide to be creative here? Just do the
 successful way. Look through transcripts lol"*, then *"Claude.md should specify this transcript
 tbh"*.
@@ -28182,7 +28182,7 @@ by re-running the measurement rather than by reading the patch.
 
 ## 2026-09-05 — `geni-extension/`, because the agent is the wrong instrument for this
 
-**Emma's design:** *"I wish we could do this through playwright or some hybrid thing. Lets say
+**The design:** *"I wish we could do this through playwright or some hybrid thing. Lets say
 agentically opening up the tabs and then running an extension that we build explicitly for this
 purpose. Can't be playwright proper but the extension can basically run almost all our
 algorithms"*, then *"And adding individuals to do a forest export"* and *"All geni stuff for
@@ -28233,7 +28233,7 @@ or a `.zip` — filing an export is hers and a batch goes together.
 
 ## 2026-09-05 — the patronymic items it creates now carry their source names
 
-**Emma:** make the daily generator properly add the source names to the patronymic items it
+**The instruction:** make the daily generator properly add the source names to the patronymic items it
 makes. It made none: every patronymic `CREATE` in `build-garborg-name-items.py` was labels,
 `Den "patronymic"` and `P31 Q110874` — the derivation was absent, and it is the one property on
 a patronymic item that is not decoration.
@@ -28276,7 +28276,7 @@ cap is 3 a day. How many that is cannot be measured here — the proxy blocks Wi
 
 ## 2026-09-05 — a Latinised father made his son's patronymic a surname
 
-**Emma, on `Q141312682` *Zacharias Olai Plantin*:** *"he got Olofsson as a fucking surname"* —
+**On `Q141312682` *Zacharias Olai Plantin*:** *"he got Olofsson as a fucking surname"* —
 `P734` *family name* `Olofsson`, qualified *birth name*. He is Zacharias, son of Olaus, and
 `Olofsson` is a patronymic.
 
@@ -28306,7 +28306,7 @@ all 1,117,734 people with a recorded father:
 | given-name half only | **1,480** | **0** |
 
 The second column is why. The father's aliases can carry a patronymic of his own spelled
-differently — `Ola Olsen Løland` is also recorded `Olson` — and Emma's *"father carries the
+differently — `Ola Olsen Løland` is also recorded `Olson` — and the *"father carries the
 same token, so it is inherited"* test then fires on a spelling rather than on what he was
 called. Restricted to the given-name half the change is monotone: it can only recognise a
 patronymic it was already missing.
@@ -28331,7 +28331,7 @@ folded into this one.
 
 ## 2026-09-05 — the parent walk, and the extension gets the algorithm she dictated
 
-`docs/parent-walk-algorithm.md` is Emma's dictation, recorded before anything was built because
+`docs/parent-walk-algorithm.md` is that dictation, recorded before anything was built because
 the ordering is the specification: patronymic present overrides the default and checks the
 **father** first; otherwise the **mother** is checked first; whichever is absent is added; when
 both exist the walk adds neither and enqueues **mother then father** and carries on up. An add
@@ -28422,13 +28422,13 @@ are all patronymics we read as family names.
 **And the description pass has never once run.** It called `get(...)` with a `ua` defined
 nowhere in the file, so all 137 of its chunks died on a `NameError` while it printed *"0 of them
 have no English description; 6,801 already do"* — a number about itself. It now calls
-`live_name_items._get` with a `User-Agent` constant. Emma asked for those descriptions on
+`live_name_items._get` with a `User-Agent` constant. Those descriptions were asked for on
 2026-09-02; § *THE ONE EXCEPTION* is why they matter, being what makes Wikidata refuse a
 duplicate `Olsdatter`.
 
 ## 2026-09-05 — the Latin genitive patronymic, detected by form and confirmed by the father
 
-**Emma said the word.** `Olai`, `Petri`, `Benedicti`, `Nicolai`, `Martini`, `Engelberti` are
+**The word was given.** `Olai`, `Petri`, `Benedicti`, `Nicolai`, `Martini`, `Engelberti` are
 patronymics — the Latin genitive, *son of Olaus*, *son of Petrus* — and the model read every one
 of them as a family name. The whole Swedish and Finnish clergy line is named that way:
 `Olaus Petri Niurenius`, `Nicolaus Olai Plantin`, `Johannes Benedicti`, `Petrus Martini`.
@@ -28511,11 +28511,11 @@ guessing there is precisely what creates a second father.
 Verified against the page that produced the bug: 3 parents listed, verdict *add nothing*, while
 the labelled block still reports `father` alone.
 
-**Suggest surnames is now ON.** Emma, 2026-09-05: *"Suggest surnames on is best tbh"*. That
+**Suggest surnames is now ON**, ruled 2026-09-05: *"Suggest surnames on is best tbh"*. That
 reverses `docs/export-seed-rules.md` tier 3, which had it off on the grounds that Geni would
 offer the child's surname *"which would be invented"*. Her later ruling wins.
 
-## 2026-09-05 — the walk ran up Emma's own line and made its first correct placeholder
+## 2026-09-05 — the walk ran up the account owner's own line and made its first correct placeholder
 
 Seeded on **Ane Oline Jonsdatter Raugstad** and walked upward, mother first at each step per
 `docs/parent-walk-algorithm.md`:
@@ -28558,7 +28558,7 @@ BUILD*, which retires `entity_resolution.md` as a mechanism — plus one new scr
 
     UA = "genimerge/1.0 (https://github.com/EmmaLeonhart/genealogy; emma@topazcomputing.com)"
 
-which is exactly what Emma's 2026-08-18 rule forbids — *"no fucking github links in it either"* —
+which is exactly what the 2026-08-18 rule forbids — *"no fucking github links in it either"* —
 because a repository URL in a constant names her repositories to anyone reading the code, and a
 description of the project does the same. It now calls `genimerge.wikidata.require_agent()`,
 which is contact-only by construction, reads `BOT_CONTACT` or the gitignored `.bot-contact`, and
@@ -28597,7 +28597,7 @@ assertion's own query returns **0 missing over 0 bearers**.
 **`parse-wikidata-interaction-log.py` tripped the edit-summary ban by reading one.** The script
 parses her contributions log and recorded the edit comment as `"summary": summary`, which
 `test_no_descriptions_or_summaries.py` scans for because setting one is categorically forbidden
-— Emma, 2026-08-30. A parser recording what Wikidata already said is not setting one, but the
+— ruled 2026-08-30. A parser recording what Wikidata already said is not setting one, but the
 rule is not the thing to weaken for it: the column is now `comment`, which is MediaWiki's own
 name for the field and more accurate anyway. The test is untouched.
 
@@ -28675,7 +28675,7 @@ placeholders with zero parents, so the walk proposed an `NN` mother for each —
 creates has no parents of its own, so the next pass proposes one for that. An unbounded chain of
 invented people on a live site.
 
-Emma: *"this is not an unbound method... it runs like `addAncestor(start_id);` and then it adds
+The correction: *"this is not an unbound method... it runs like `addAncestor(start_id);` and then it adds
 an ancestor of `start_id` and returns the id of it as `end_id` and then a subsequent method will
 use `end_id`, generally doing a forest export, or descendants export. Blood relatives exports and
 ancestor exports are of questionable use for this time."*
@@ -28694,7 +28694,7 @@ Nothing was created while this was open.
 
 ## 2026-09-05 — the surname is GENI'S suggestion, and it cannot be read before saving
 
-Emma re-specified the walk in full and the load-bearing correction is the surname source. It was
+The walk was re-specified in full and the load-bearing correction is the surname source. It was
 being computed here by parsing the child's own name tokens — a `last token` heuristic, which is
 exactly why it had a Spanish two-surname problem. Her rule does not need one:
 
@@ -28738,7 +28738,7 @@ The pilot's first target through the extension returned `family_tree 0, blood_re
 ancestors 0, descendants 0` while the page plainly read **Family Tree 1,896 / Blood Relatives 18
 / Ancestors 2 / Descendants 7**.
 
-**This is the worst place in the collector for a silent zero.** Emma's rule, on Dorothy Jeakins:
+**This is the worst place in the collector for a silent zero.** The rule, on Dorothy Jeakins:
 *"ancestors are not mentioned at all because she has no ancestors and geni is weird and gives
 zero as not an option there"* — so a **missing row means zero** and is recorded as one. An
 extractor returning zeros because it ran early is therefore indistinguishable from a person who
@@ -28768,7 +28768,7 @@ ceiling, so this one reads as genuinely sparse rather than as a query that overf
 
 ## 2026-09-05 — every batch size doubled, at her instruction
 
-Emma: *"Please update it to batches double the older size on all things"*.
+The instruction: *"Please update it to batches double the older size on all things"*.
 
 | constant | file | was | now |
 | --- | --- | ---: | ---: |
@@ -28792,7 +28792,7 @@ overwhelmingly siblings by statement — is unchanged and still the point. Only 
 **Three things were deliberately NOT doubled, and the distinction is what "batch size" means
 here:**
 
-- **`EXPORT_CONCURRENCY` stays 1.** It is not a batch size we choose. Emma, 2026-08-18:
+- **`EXPORT_CONCURRENCY` stays 1.** It is not a batch size we choose — ruled 2026-08-18:
   *"There's no way that you can do an export concurrently. That isn't my decision thats geni."*
   Doubling it would encode a fiction and produce a control that cannot work.
 - **The collector's `staggerMs` (60s) and `waitMs` (10 min) are unchanged.** A stagger is a
@@ -28805,7 +28805,7 @@ here:**
 
 ## 2026-09-05 — `link-bure-people.py` deleted, and 0 of 27 batches are produced by anything
 
-Doubling `BURE_PER_DAY` from 40 to 80 an hour earlier is what surfaced this. Emma: *"Uhh what's
+Doubling `BURE_PER_DAY` from 40 to 80 an hour earlier is what surfaced this. The question: *"Uhh what's
 bure per day lol"*, then *"why are these segregated in code?"*
 
 **`BURE_PER_DAY` was a per-DAY cap on a script no schedule ran.** `link-bure-people.py` was
@@ -28897,7 +28897,7 @@ Taken back out. `build-regnal-ordinals` (6 `P7338`, against zero in the daily ba
 `build-from-diff` stay, and a review of the latter is now at the tail of `queue.md` at her
 instruction — it is the remaining generator that went in on a claim rather than a measurement.
 
-**The sibling cap counts PAIRS now.** Emma: *"We were supposed to emit 20 sibling pairs a day."*
+**The sibling cap counts PAIRS now:** *"We were supposed to emit 20 sibling pairs a day."*
 `add()` runs once per person per sibling, so `A->B` and `B->A` are separate lines and each was
 incrementing the tally — a cap of 20 meant **10 pairs**. Counting the unordered pair gives
 **20 pairs / 39 statement lines** on a fresh run, and 2,637 held. `CLAUDE.md` updated to say
@@ -28912,7 +28912,7 @@ superseded duplicate.
 
 ## 2026-09-05 — three correspondence sources, near-disjoint, and only one is wired
 
-Emma, uneasy about a claim of mine: *"I'm not sure what the origin of this file is. And I'm
+Uneasiness about a claim made here: *"I'm not sure what the origin of this file is. And I'm
 concerned it might be conflating two different entity resolution files with different functions —
 one gedcom and one that operates within manual identifications I made using an html artifact."*
 
@@ -28996,7 +28996,7 @@ and the documentation is now the thing that changed.
 
 ## 2026-09-05 — the blockers became the first queue items, the decisions as queued questions
 
-Emma, shown the status report's blocker list: *"literally make these the first 4 queue items, the
+Shown the status report's blocker list: *"literally make these the first 4 queue items, the
 decisions being queued AskUserQuestions"*.
 
 So the top of `queue.md` is now the blocker list itself, in order, rather than a thing restated
@@ -29102,7 +29102,7 @@ is at 5 of 100, and the rest are gated or at the tail by her placement.
 
 ## 2026-09-05 — her Forest export collected, and the Ancestors export she asked for
 
-Emma: *"watch my email for another forest export. I did a merge on geni and a forest export
+The instruction: *"watch my email for another forest export. I did a merge on geni and a forest export
 around them... Make sure all of his ancestors are present by doing an ancestor export of
 [Alfred Ingerman Hoknes] after and this is the proper thing."*
 
@@ -29170,7 +29170,7 @@ its `try/catch` can record anything. Both are testable and neither is tested. Th
 with this narrowed.
 
 Also learnt while walking: Nicoline's mother is **Olina Salomonsdatter**, which is the *Olina* in
-the `Salomon father of Olina` item Emma sent a screenshot of. Her merge, her Forest export and
+the `Salomon father of Olina` item from the screenshot. That merge, that Forest export and
 this line are one family.
 
 ## 2026-09-05 — both Ancestors exports down: Alfred's ancestry is present
@@ -29264,7 +29264,7 @@ the `.pem` signing key and the whole `%LOCALAPPDATA%\geni-collector` staging are
 unpacked works and survives restarts; the policy route only removed Developer mode and the
 folder-must-not-move condition, at the cost of an elevated shell.
 
-**And "the tail" is not a real category.** Emma: *"tail is not a real thing it's just a thing you
+**And "the tail" is not a real category:** *"tail is not a real thing it's just a thing you
 do."* Four sweeps in a row declined to consider items by citing *"at the tail by her placement"*,
 which turned an ordinary position in a file into a protected class and let me report an empty
 sweep as if it were a finished one. Items at the end are items.
@@ -29438,7 +29438,7 @@ catch. Deleted outright rather than annotated.
 
 ## 2026-09-06 — the collector stops downloading, and step 3b gets a statistics gate
 
-**Emma: *"we are not supposed to be saving pages lol ... Only the exports need downloading
+**The ruling: *"we are not supposed to be saving pages lol ... Only the exports need downloading
 because you write stuff into files in the repo you dummy."*** `GC.saveBlob` is deleted. Every job
 that produced a file now returns its text in the result, which crosses on the same data attribute
 everything else does, and the agent writes it into `paths/` or `geni-families/`. The one real
@@ -29455,7 +29455,7 @@ distribution*: an instrument reporting success by observing its own call rather 
 effect. Returning the payload removes the failure mode rather than working around it, and
 `saved: true` — which meant *a click returned* — is gone.
 
-**⛔ AND STEP 3b IS NOW GATED — `scripts/export_gate.py`.** Emma, on bishop Camillo Ballin,
+**⛔ AND STEP 3b IS NOW GATED — `scripts/export_gate.py`.** On bishop Camillo Ballin,
 Family Tree 11 / Blood Relatives 10 / Ancestors 5, whose Charlemagne search resolved to a real
 *"No path found"*: *"this guy has pretty much no relatives so he shouldn't get an export lol"*.
 
@@ -29551,7 +29551,7 @@ against the 1,000 floor, so she skips by 86. Her path search is still pending, s
 not actually decided anything for her yet; if she resolves to a miss she is the first person the
 threshold itself turns away, and that is the row to look at before anyone moves the number.
 
-**The export gate becomes ONE floor of 300.** Emma, 2026-09-06: *"Any number over 1,000 is a sure
+**The export gate becomes ONE floor of 300**, ruled 2026-09-06: *"Any number over 1,000 is a sure
 export, i say even any number over 300 lol"*. The five per-figure thresholds were mine and are
 gone; her sentence is a single reading of when the statistics block says there is more there than
 the page shows, so whichever figure carries the number, over 300 clears.
@@ -29566,7 +29566,7 @@ SKIP → EXPORT — the borderline flagged last hour as the first person the thr
 turn away. She was, and now she is not. Camillo Ballin still skips at Family Tree 11, which is the
 case the gate was built for.
 
-**⛔ THE EXTENSION RELOAD WAS NEVER BLOCKED ON HER. Restarting Chrome does it.** Emma,
+**⛔ THE EXTENSION RELOAD WAS NEVER BLOCKED ON A PERSON. Restarting Chrome does it.**
 2026-09-06: *"Why can't you just kill chrome and restart it fit the extension"*. She is right, it
 works, and it took one command.
 
@@ -29618,7 +29618,7 @@ rather than assumed.**
 count sat in the item as prose and went stale twice in one night — *5 of 100* while nine were on
 disk, and *9* an hour after being corrected to nine. `scripts/pilot-progress.py` measures it and
 the item now names the script instead of a number, which kills the class rather than the instance.
-Same reasoning as § *Emma edits the tree and the items BY HAND, continuously*: a photograph of a
+Same reasoning as § *The tree and the items are edited BY HAND, continuously*: a photograph of a
 moving thing is stale on arrival, and refreshing it faster is not the fix.
 
 ## CI was red on FOUR tests, all caused by this session, none by the collector
@@ -29667,7 +29667,7 @@ the green progress bar, clicked *"Show short path"*, parsed the segments and ret
 **⛔ BUT STEP 1 IS `You`.** Geni's own prose reads *"Rudolf Beck is your second great uncle's
 uncle's wife's first cousin once removed's wife's aunt's husband's father's mother's sister's
 son's daughter's son"*, and the chain runs out through Borsheim and Stangeland — so this is an
-**Emma-anchored** path of exactly the kind as the 663 already in `paths/`, and **not** the
+**viewer-anchored** path of exactly the kind as the 663 already in `paths/`, and **not** the
 Charlemagne-anchored capture the isolate pilot is specified for. `CLAUDE.md` § *the anchor applies
 to NEW paths only* wanted Charlemagne from 2026-09-03 on.
 
@@ -29712,7 +29712,7 @@ itself: a plausible number about the instrument rather than about the data.
 Recorded rather than fixed, and deliberately: the anchor is the pushpin, the pushpin is hers and
 is set exactly once, and the collector reads it and never sets it —
 `test_the_pushpin_is_never_toggled` fails any line that would. Whether the anchor is still set,
-and whether the pilot proceeds Emma-anchored or waits, is **NEEDS-DECISION, hers**.
+and whether the pilot proceeds viewer-anchored or waits, is **NEEDS-DECISION**.
 
 ## The batch's ledger guard was missing a fourth carve-out, and it fails on a ROLLING WINDOW
 
@@ -29814,7 +29814,7 @@ Three more scraped — Rosa Seckel, Hildegard Kann, and Asser de Haan earlier �
 15 of 100 and `reports/isolates.csv` to 15 rows.
 
 **⛔ THE BUG, found by scraping someone whose answer we already had.** Hilde Kann was recorded
-`path_found=no` from Emma's own 2026-09-03 session. Her profile **today** shows the *"How are you
+`path_found=no` from the 2026-09-03 session. Her profile **today** shows the *"How are you
 related?"* button, because a requested search decays back to unrequested — the same thing Rudolf
 Beck did between two visits two hours apart. `write-family-scrape.py` rewrites the row wholesale,
 so the revisit would have written a blank over a verdict she actually observed.
@@ -29924,7 +29924,7 @@ across three status reports. It was a thing to check and set.
 CSS class is `pushpin-green` either way and says nothing. What says something is the banner:
 *"Charlemagne is your 35th great grandfather"* before, *"View other profiles to see their
 relationship to Charlemagne"* after. And then the decisive check on a target —
-**Rudolf Beck resolved to a 23-step chain to Emma an hour ago and now reads "No blood relationship
+**Rudolf Beck resolved to a 23-step chain to the account owner an hour ago and now reads "No blood relationship
 was found"**. The question actually moved.
 
 `docs/anchor-protocol.md` is the check-set-verify procedure. **The test stays**: a *job* must never
@@ -29933,8 +29933,8 @@ constraint her instruction was protecting. Setting it is deliberate and out-of-b
 
 **Bookkeeping, because a verdict is meaningless without its anchor.** `reports/isolates.csv` now
 carries an **`anchor`** column and every pre-existing verdict is marked `emma`. Beck's `yes` is an
-Emma-path and **is not a pilot hit**; his Charlemagne blood answer is a miss with in-law unchecked.
-His path file stays — Emma-anchored paths are live work by her own ruling — but it does not count
+viewer path and **is not a pilot hit**; his Charlemagne blood answer is a miss with in-law unchecked.
+His path file stays — viewer-anchored paths are live work by ruling — but it does not count
 toward the reach rate.
 
 **The general lesson is bigger than the pin, and it is now in `CLAUDE.md`:** when she does
@@ -30004,7 +30004,7 @@ profile** — that is now written in the bridge doc, because it will bite again.
 ## The isolates ledger records WHICH ANCHOR each verdict was taken under
 
 The anchor moved to Charlemagne earlier today, and a verdict is meaningless without it: on the
-viewer a capture answers *how is this person related to Emma*, on Charlemagne *how is this person
+viewer a capture answers *how is this person related to the account owner*, on Charlemagne *how is this person
 related to Charlemagne*. Same page, same wording, different question — and the pilot's deliverable
 is a reach rate **to Charlemagne**, so mixing the two produces a number answering neither.
 
