@@ -1020,10 +1020,8 @@ father, and the mother sharing a stem is a coincidence rather than a derivation.
 
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
-**Emma, 2026-09-04**, having hand-corrected `Q141271379` from `Anna Ormsd Byre`: *"I changed her
-name to correct the issue of an abbreviation of Ormsdatter."* Her standing instruction is
-2026-08-27: *"any abbreviations like -dtr … should be fixd since wikidata mul labels are supposed
-to have the full form. This is a part of the compliance stuff."*
+**An abbreviation in a `mul` label is a compliance defect.** Wikidata `mul` labels take the full
+form, so `Anna Ormsd Byre` is `Anna Ormsdatter Byre`.
 
 **The machinery all existed and the pattern matched one form.**
 `census-abbreviated-patronymics.py` carried `\b(\w+?)(dtr)\.?` — so `Ormsd`, `Johansdr`,
@@ -1053,8 +1051,8 @@ happens to be attested with `datter`. Requiring the `s` removes every one and lo
 covered its form kept the abbreviation forever and nothing noticed. `_label_corrections` now
 takes an expansion as its own ground for a correction, alongside the birth-name case — and the
 test is that **the live label expands to exactly what we want**, so the only difference between
-the two IS the abbreviation and nothing else can be rewritten. An item she has already fixed by
-hand simply matches and is skipped, which `Q141271379` demonstrates.
+the two IS the abbreviation and nothing else can be rewritten. An item already fixed by hand simply
+matches and is skipped, which `Q141271379` demonstrates.
 
 **Four went out in the first batch** — `Marit Ormsd Byre`, `Ranveig Olsd Trevland`,
 `Anna Ivarsd Stokka`, `Magdalena Lauritsd Hogganvik` — and the rest drain under the 60-a-batch
@@ -1062,19 +1060,18 @@ label cap.
 
 **One left alone and worth knowing:** `Rakel Marie Bertelsdt Bertelsdottir Idland` carries both
 the abbreviation and the full Icelandic form, and the corpus majority expands it to `Bertelsdatter`
-while her own record says `Bertelsdottir`. `FULL` reads `datter`/`dotter` and not `dóttir`, so her
-own evidence is invisible to it. One row; mapping Icelandic onto the Norwegian pair is a decision.
+while the record itself says `Bertelsdottir`. `FULL` reads `datter`/`dotter` and not `dóttir`, so
+that evidence is invisible to it. One row; mapping Icelandic onto the Norwegian pair is a
+decision.
 
 ### TRANSLITERATE THE ENGLISH READING. Faithfulness to the source language destroys more than it saves
 
-**Emma, 2026-09-07**, on why the Korean output was bad: *"we should just be transliterating the
-English reading by default but instead we're improvising to get a faithfulness to the original
-languages that theoretically is good but ends up just destroying stuff when the English would come
-out a consistent quality."*
+**Transliterate the English reading by default.** Improvising for faithfulness to the source
+language is theoretically better and destroys more than it saves, where the English reading comes
+out at a consistent quality.
 
-And, on how it got there: *"I really assumed the Korean stuff was just done with a regular
-program."* It is not — `scripts/translit_ko_latin.py` is a hand-rolled engine, and so is
-`translit_no.py`.
+`scripts/translit_ko_latin.py` is a hand-rolled engine, and so is `translit_no.py` — neither is a
+standard program, which is worth knowing before trusting either.
 
 **The principle: a consistent English reading beats an improvised source-faithful one.** The
 Korean engine was trying to honour Norwegian phonology and produced `군느브죄르느` for
@@ -1094,17 +1091,15 @@ to go; and the palatal set was missing `bj fj mj pj vj` while already holding `n
 `ts` was read as the /ts/ affricate when every `ts` in this corpus is a patronymic boundary —
 `Knut + sson` — and the affricate belongs to `tz`, which is what `Fritz` has.
 
-**⛔ AND KOREAN HAS NO ATTESTATION COLUMN TO CHECK AGAINST — 0 of 38,376.** Every `ja` and `zh`
-change this evening was scored against the 5,902 tokens Wikidata itself supplies; Korean has
-nothing, so these are argued from the writing system rather than measured against a corpus.
-That asymmetry is the next thing worth fixing, and it needs a fetch of Korean labels from
-Wikidata, which this container cannot reach and Actions can.
+**⛔ KOREAN HAS NO ATTESTATION COLUMN TO CHECK AGAINST — 0 of 38,376.** Every `ja` and `zh` change
+is scored against the 5,902 tokens Wikidata itself supplies; Korean has nothing, so its rules are
+argued from the writing system rather than measured against a corpus. Closing that gap needs a
+fetch of Korean labels from Wikidata, which a sandbox cannot reach and Actions can.
 
 ### ⛔ WIKIDATA'S LABEL BEATS OURS. An existing `mul` is not ours to overwrite
 
-**Emma, 2026-09-07:** *"wikidata labels beat our own that's a rule that's been violated a few
-times with different mul labels getting overwritten with the English. Most notably Svantepolk of
-Viby."*
+**Where Wikidata already holds a label, it beats our derived one.** The rule has been violated
+by `mul` labels being overwritten with the English form.
 
 **`Q6197518` is the worked case and the vote is exactly 2–2:**
 
@@ -1138,12 +1133,10 @@ consensus vote is not one of those: it is us imposing a reading on an item someb
 
 ### A TITLE INSIDE A LABEL TAKES THE NATIVE FORM IN CJK, never a transliteration
 
-**Emma, 2026-09-07**, choosing between four readings after being shown what the spine would emit
-today: **イタリアのベレンガーリオ1世** — the native form, `の` for *of*, `王` for *king*, and the
-same shape for `zh` and `ko`. Not a transliteration of the English words.
+**イタリアのベレンガーリオ1世** — the native form, `の` for *of*, `王` for *king*, and the same
+shape for `zh` and `ko`. Not a transliteration of the English words.
 
-**What provoked it.** She asked for CJK labels on the whole Arne → Charlemagne line and gave five
-items with no `ja` label at all. Computing what could be emitted produced:
+Without the rule, the Arne → Charlemagne line emitted:
 
     Q274606   Berengar I, emperor of the Romans   ->  ベレンガル・I・エムペロル・オフ・テ・ロマンス
     Q43974    Louis I, The Pious                  ->  ルイ・I・ザ・ピオウス
@@ -1155,13 +1148,8 @@ holds katakana for words that were never names: `of` オフ, `the` テ, `and` �
 `duke` ドケ, `count` コウント, `emperor` エムペロル, `bishop` ビスホプ. **17,376 people carry a
 bare `of`/`the`/`and` after the first token.**
 
-**`CLAUDE.md` had already reserved this for her** — § *A TITLE IS NOT A NAME* says whether
-`Anne of Denmark` should read `アン・オフ・ダンマーク` *"is a question about her LABEL and is
-hers"*. That exact shape is what was blocking the spine, so the question was overdue rather than
-new.
-
-**BUILT 2026-09-07, same evening** — *"And yes we can run it agentically. Implement it and merge
-in… Oh my god give them custom things quickly and merge in."* `scripts/cjk_titles.py` is the
+§ *A TITLE IS NOT A NAME* leaves what `Anne of Denmark` should read in CJK as a separate
+question about the LABEL; this is that question answered. `scripts/cjk_titles.py` is the
 vocabulary: 29 titles, 80 territories and peoples, 20 epithets, each with its `ja`/`zh`/`ko`
 form. `label_in` splits the tail with `namemodel.drop_title_tail`, renders it from the
 vocabulary, and composes it BEFORE the name, which is where Japanese and Chinese put it.
@@ -1170,7 +1158,7 @@ vocabulary, and composes it BEFORE the name, which is where Japanese and Chinese
     Berengar II of Ivrea, king of Italy        イタリア王ベレンガル2世
     Louis I, The Pious                         敬虔王ルイ1世              虔诚者路易一世
     Baldwin IV the Bearded, count of Flanders  フランドル伯ボールドウィン4世
-    Rozala of Italy                            イタリアのロザラ            <- her own example's shape
+    Rozala of Italy                            イタリアのロザラ
     Judith of Flanders                         フランドルのジュディス
 
 **⛔ AN UNKNOWN PLACE OR TITLE IS DROPPED, NEVER TRANSLITERATED.** That is the whole point: a
@@ -1192,8 +1180,8 @@ produced `オフ` and `テ` in the first place. A tail outside the vocabulary yi
 function word** — `Anna King`, whose surname genuinely is King, and one quoted epithet outside the
 vocabulary. **The Latin `mul` label is untouched**; only the CJK forms change.
 
-**The 29 spine people with no title in their label ship first** — her call the same day, *"Yes,
-next batch"* — once the rule bugs below are fixed.
+**The 29 spine people with no title in their label ship first**, once the rule bugs below are
+fixed.
 
 ### THE RULE IS VALIDATED AGAINST THE ATTESTED COLUMN, and that is what catches a bad fix
 
@@ -1206,7 +1194,7 @@ and it is the test any change to `scripts/translit_no.py` is scored on:
     + `dt`          1,023
     - `dj`/`lj`     1,025  (17.4%)
 
-**It caught a fix of mine that made things worse.** Emitting the plain coda for every geminate
+**It caught a fix that made things worse.** Emitting the plain coda for every geminate
 fixed `Anna` (アナ → アンナ) and broke `Abba` (アッバ → アブバ), scoring **803 against the
 baseline's 809** — worse than doing nothing. A geminate is three things: nasal → `ン`, liquid →
 nothing, otherwise → `ッ`.
@@ -1229,11 +1217,9 @@ here, and nothing addresses it.
 
 ### ⛔ A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME. Geni puts the husband in `GIVN`
 
-**Emma, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
-relatives... Are you using their wikidata labels instead of their geni?"*
-
-**No — it is Geni's own field, and that is the part to know.** She is recorded
-`NAME NN ektefelle Søren Jonson /Aukland/`, so her `GIVN` reads **`NN ektefelle Søren Jonson`**:
+`Q141352505` went out carrying the names of her relatives, and the source is **Geni's own
+field**, not a Wikidata label. She is recorded `NAME NN ektefelle Søren Jonson /Aukland/`, so her
+`GIVN` reads **`NN ektefelle Søren Jonson`**:
 `ektefelle` is Norwegian for *spouse* and the rest is her HUSBAND. Parsed positionally it gave
 her his given name `Søren` as `P735` with `P3831` *middle name*, his patronymic `Jonson` as
 `P5056`, and `Aukland` as `P734` — three statements, all about a different person.
@@ -1258,15 +1244,14 @@ their label and take `describe_all`.
 **This is § *A DESCRIPTION IS NOT A NAME* in the GEDCOM FIELD rather than in the label.**
 `is_relationship_description` guards the label and could never have seen this.
 
-**One is live in the batch on her screen** — `Q141352505` with `P735`, `P734` and `P5056`. Only
-1 of the 552 is in the ledger, so that is the whole exposure today.
+`Q141352505` went live with `P735`, `P734` and `P5056` from that field. Only 1 of the 552 is in
+the ledger, so that was the whole exposure.
 
 ### ⛔ A GUARD IN ONE EMITTER IS NOT A GUARD. And NO GIVEN NAME IS NOT NO NAME
 
-**Emma, 2026-09-09, on `Q141353755` — `mul` `NN ektefelle Tollak Jonsson III Aukland`, carrying
-`P735` given name *Tollak*, her HUSBAND:** *"youre still adding names from the generated things
-on NN people as given names"*, and *"you aren't linking peoples names as soon as they are
-created when the items very much exist and are ready"*.
+`Q141353755` — `mul` `NN ektefelle Tollak Jonsson III Aukland` — went live carrying `P735` given
+name *Tollak*, her HUSBAND; and people created with no given name were getting no name links at
+all while their name items existed.
 
 **Two defects, one shape: a rule enforced at a CALL SITE rather than in the model.**
 
@@ -1310,8 +1295,8 @@ becomes a name: `<private> Garborg` yields `P734` Garborg alone, `Private` yield
   unknown-word marker goes straight in* says a new marker goes into
   `labels.WORDS_MEANING_UNKNOWN` **and nothing else** — so `namemodel.UNKNOWN_MARKERS`, a
   hand-kept set, was blind to **28** markers added there since: `未知`, `佚名`, `unbekannt`,
-  `onbekend`, `inconnu`, and `某`, which Emma approved herself on 2026-08-19 and which is the
-  whole given name on **275** people. Every one was emitting `P735` given name `某` — *a certain
+  `onbekend`, `inconnu`, and `某`, an approved marker and the whole given name on **275**
+  people. Every one was emitting `P735` given name `某` — *a certain
   one*. `name_shape` unions both now.
 
 **The check before calling a name rule done:** *is it in `namemodel`, or in the emitter I was
@@ -1321,8 +1306,8 @@ call site present and wrong rather than absent.
 
 ### A PERSON IS CREATED WITH THEIR NAME LINKS. Two things were stopping it
 
-**Emma, 2026-09-07:** *"individuals are supposed to be created already having name links and
-this does not seem to be happening reliably at least."* Measured on one batch: of **56** people
+**A person is created already carrying their name links, and this was not happening
+reliably.** Measured on one batch: of **56** people
 created, **9 carried no name statement at all**, and of the 184 they should have carried,
 **107 had no item to link to**. Exactly **1 of the 56** could link every token.
 
@@ -1354,8 +1339,8 @@ so it would stop the ring rather than fix it.
 
 ### A TOKEN THE CORPUS NEVER USES AS A FIRST GIVEN NAME IS NOT A GIVEN NAME
 
-**Emma, 2026-09-07, on `Q141352791`** — an item labelled `Garborg`, `P31` *given name*, minted
-by our own generator for two people: *"Also bruh Garborg s was made as a given name wtf."*
+`Q141352791` — an item labelled `Garborg`, `P31` *given name* — was minted by our own generator
+for two people. `Garborg` is a surname.
 
 **The cause is positional parsing, in a new place.** Geni files both bearers as `GIVN` =
 `Arne Garborg` / `Siri Garborg` with an **empty `SURN`**, so the name model reads the second
@@ -1364,10 +1349,9 @@ token as a middle name. Neither has a Garborg parent — `Martin Tollefson Tunhe
 surname. Our own `name-item-plan.csv` already holds it as `family`, 39 bearers, `Q30250555`.
 § *PARSE PATRONYMICS BY FORM. Do not parse a name positionally*.
 
-**⛔ THE TEST IS CATEGORICAL AND IS NOT THE DOMINANCE RATIO SHE DELETED.** Her 2026-08-15 ruling
-— *"If something is a surname and a given name, then it gets a surname and a given name
-object"* — forbids ADJUDICATING between two real usages, and is untouched. This asks a different
-question: **is there a given-name usage at all?** A token that is a first given name **zero**
+**⛔ THE TEST IS CATEGORICAL AND IS NOT A DOMINANCE RATIO.** § *One name item per USAGE* — a
+token that is both a surname and a given name gets both objects — forbids ADJUDICATING between
+two real usages, and is untouched. This asks a different question: **is there a given-name usage at all?** A token that is a first given name **zero**
 times and a family name **at least once** has none. Nothing is weighed.
 
     Garborg    first 0       later 4       family 285   -> refused
@@ -1394,9 +1378,8 @@ correction is removal and `Q141352791` orphaned — not yet wired.
 
 ### A middle initial keeps its Latin letter in every language
 
-**Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was
-shown four readings and took this one; dropping the initial loses what the Latin label carries,
-and rendering it エフ invents a reading nobody uses.
+`John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. Dropping the initial loses
+what the Latin label carries, and rendering it エフ invents a reading nobody uses.
 
 **A bare lowercase letter is a WORD, not an initial.** The first rule was
 `^[A-Za-z]\.?$` with an `.upper()`, and it turned `Ragnhild Toresdatter Håland i Gjesdal` into
@@ -1414,9 +1397,7 @@ no `ja`/`zh` label at all.
 
 ### Redacted people go in. `Private` never becomes a label
 
-**Emma, 2026-08-14:** *"Even if the data is affected by redaction, I'm not really
-that against the data getting onto Wikidata because it still is informative, like
-the so-called private names."*
+**Redacted data still goes to Wikidata, because it is still informative.**
 
 **Geni has TWO redaction markers and they withhold different amounts.** Of the
 corpus's 390,560 profiles:
@@ -1429,9 +1410,8 @@ corpus's 390,560 profiles:
 
 `<private> /HUÁNG 黃/`, `<private> /Rådestad/`, `<private> /Larsson/` — the
 **given name** is withheld and the family name is not. Treating those as fully
-redacted throws away 3,605 surnames, which is the material Emma called valuable:
-*"they still do flush out the wiki data, and they flush it out by a substantial
-amount."* `surname_of()` exposes it; a bare surname is not a person's label, so it
+redacted throws away 3,605 surnames, which is exactly the material worth having.
+`surname_of()` exposes it; a bare surname is not a person's label, so it
 feeds the `P734` family-name work rather than the label.
 
 - **The person is created.** What is informative is the structure, and none of it
