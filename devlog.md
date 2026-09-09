@@ -28381,7 +28381,7 @@ the first run reports what it would make and creates nobody.
 
 ## 2026-09-05 — P144 goes back onto the patronymic items we already made, and P460 links their spellings
 
-**Emma:** *"I want the based on name stuff on patronymics to come all the time and go back onto
+**The instruction:** *"I want the based on name stuff on patronymics to come all the time and go back onto
 the old ones we made, and also this said to be the same as for many of these ones"* — after
 linking her own `Olofsson` `Q141244186` and `Olai` `Q141313056` with `P460` *said to be the same
 as*, both ways, by hand.
@@ -30012,7 +30012,7 @@ is a reach rate **to Charlemagne**, so mixing the two produces a number answerin
 preserved verdict keeps its own anchor rather than inheriting today's** — checked on the real
 case: re-running Hilde Kann leaves her `no` intact and still marked `emma`, because that is the
 anchor it was observed under. Getting that backwards would have silently relabelled seven
-Emma-anchored misses as Charlemagne results, which is exactly the reach rate the campaign turns on.
+Viewer-anchored misses as Charlemagne results, which is exactly the reach rate the campaign turns on.
 
 **⛔ AND GENI PUT UP A CAPTCHA.** Target `6000000188817855822` returned an Incapsula *"Additional
 security check is required"* page — blank title, blank body, no profile — after roughly forty
@@ -30082,7 +30082,7 @@ The queue item is removed — the review is what it asked for and it is done.
 
 ## A CAPTCHA guard — and the first version of it would have blocked every scrape
 
-**Emma, 2026-09-06:** *"geni started wanting captchas again and that's why stuff was not
+**Reported 2026-09-06:** *"geni started wanting captchas again and that's why stuff was not
 working."* Geni sits behind Imperva/Incapsula and serves an hCaptcha page in place of the profile
 when the traffic looks automated. It is invisible to every check the collector makes: measured on
 `6000000188817855822`, the `family` job returned cleanly with an **empty name, all five statistics
@@ -30117,7 +30117,7 @@ fourth person joined almost entirely through in-laws.
 
 ## The scrape's real deliverable is a tiny GEDCOM, and the thing that was doing it invented 4,928 people
 
-**Emma, 2026-09-06:** *"Natalia Krebs (Salzmann) will produce a 3 person file ... with the geni
+**The specification, 2026-09-06:** *"Natalia Krebs (Salzmann) will produce a 3 person file ... with the geni
 ids set up so that they end up getting merged in. This is what is supposed to be the main result
 of the scrape."* And: *"for all intents and purposes the native format of this project is the
 gedcom now."*
@@ -30208,7 +30208,7 @@ mistake.
 * `scraped-paths.ged` — `paths/*.tsv` relationship paths to sibling families. **Nothing I built
   touches this at all.** 2,644 of the placeholders are here.
 
-**And the placeholders are HER INSTRUCTION, not a defect.** Emma, 2026-08-29: *"Both parents are
+**And the placeholders were INSTRUCTED, not a defect.** Ruled 2026-08-29: *"Both parents are
 'NN' placeholders. Pipeline generates names for them. However we may attempt to gain the
 information of the parents."* And `CLAUDE.md` § *A sibling step gets a PLACEHOLDER PARENT in our
 tree and NEVER on Wikidata*, 2026-09-03: *"I'm interested in them having placeholder profiles in
@@ -30275,7 +30275,7 @@ saved pages, and removing its two files changes every merge.
 
 ## The scraping method was hand-transport, and it corrupted 4 of 14 scrapes
 
-**Emma:** *"how the fuck are you even scraping lol"*, and then *"Why the fuck are you doing this"*
+**The objection:** *"how the fuck are you even scraping lol"*, and then *"Why the fuck are you doing this"*
 as I started writing an escape codec to work around it.
 
 **What I was doing.** Run the `family` job in the tab, read the TSV back through the tool result,
@@ -30305,7 +30305,7 @@ No more hand-transport. 13 scrapes stand, all clean.
 
 ## Scraping stopped until the deliverables are settled
 
-**Emma:** *"The scrape is to be done with the extension we built yesterday and it can only be done
+**The ruling:** *"The scrape is to be done with the extension we built yesterday and it can only be done
 after we have a coherent idea of the deliverables."*
 
 She is right that there was not one. The deliverable moved three times today — a TSV, then a tiny
@@ -30328,7 +30328,7 @@ Nothing further is scraped until those are answered.
 
 ## `final-wikidata-geni-scrape` — named, specified, and listed in `todo.md`
 
-**Emma:** *"a markdown file should exist describing the task well and doing it is listed in the
+**The instruction:** *"a markdown file should exist describing the task well and doing it is listed in the
 todo.md with clear specifications that until we got the extension and the deliverables good we
 can't really run this 'final-wikidata-geni-scrape'."*
 
@@ -30355,7 +30355,7 @@ deliverables must be answered.
 
 ## The scrape is out of `queue.md`, and that was the mechanism behind the whole day
 
-**Emma:** *"The scrape does not belong in the queue and I think it's presence there causes
+**The ruling:** *"The scrape does not belong in the queue and I think it's presence there causes
 issues."*
 
 She is right about the mechanism, not just the filing. `queue.md` is what the hourly work loop
@@ -30381,7 +30381,7 @@ against 603 today, and *"nothing starts before 1 September"* against a date that
 table at the top gives the measured values; the 780 lines below are left as the audit they were,
 with item 3c the one current entry.
 
-**Reverted: the tiny GEDCOMs are corpus, not a category.** Emma: *"these are real gedcoms to go
+**Reverted: the tiny GEDCOMs are corpus, not a category:** *"these are real gedcoms to go
 into the synoptic tree just tiny ones."* I had added `tiny-profiles/` and `tiny-paths/` to the
 derived-directory exclusion an hour after writing them, on the reasoning that a generated file
 must not be measured as a Geni export. That reasoning applies to the **aggregates** — 
@@ -30393,7 +30393,7 @@ counted as exports, 2 aggregates excluded.
 
 ## Tiny GEDCOMs for every saved page — 1,555 of them, nobody invented
 
-**Emma:** *"I want tiny gedcoms for each path and scraped person. That's the new way. Long term we
+**The instruction:** *"I want tiny gedcoms for each path and scraped person. That's the new way. Long term we
 save these. And we save them on every saved geni html page to start."* And: *"Path gedcoms and
 individual ones are different files in different directories even if they come from the same html
 page."*
@@ -30462,7 +30462,7 @@ registry change to a security-relevant setting, hers rather than mine.
 
 ## The download block is PER PAGE, and that unblocks the whole scrape
 
-Emma, pressing on whether the Chrome limitation was real: *"Are you really incapable of doing the
+Pressed on whether the Chrome limitation was real: *"Are you really incapable of doing the
 chrome thing or are you just bullshitting?"* — and *"The scheduler was always kinda iffy as
 something of significance."*
 
@@ -30503,7 +30503,7 @@ already built, still landing in `~/Downloads` for the agent to file into the rep
 
 ## No downloads. She said so first, I re-added them anyway, and they failed
 
-**Emma:** *"Only the exports need downloading because you write stuff into files in the repo you
+**The ruling:** *"Only the exports need downloading because you write stuff into files in the repo you
 dummy"*, and after I restored `saveBlob`: *"why are you downloading anything lol"*.
 
 **I measured the download limit wrong twice.** First as a site-wide block, which is why `saveBlob`
@@ -30555,7 +30555,7 @@ needed at any point, which is what the download route could never say.
 
 ## The two aggregate files are deleted, and the worker claim is settled
 
-**Emma:** *"delete those ones lol"* — `exports/0-scraped/scraped-pages.ged` and
+**The ruling:** *"delete those ones lol"* — `exports/0-scraped/scraped-pages.ged` and
 `scraped-paths.ged`, with `scripts/build-scraped-gedcom.py`. They carried **4,928 invented `NN`
 people**, which her absent-slot ruling forbids, and they were the only reason
 `genimerge.sources.DERIVED_DIRS` existed: `scraped-pages.ged` held 14,121 individuals against a
@@ -30581,7 +30581,7 @@ statement rather than a running commentary.
 
 ## The scheduler moves to `todo.md`, and two corrupted scrapes are re-taken clean
 
-**Emma:** *"put the scheduler in the todo not the queue. Strictly speaking we never need the
+**The instruction:** *"put the scheduler in the todo not the queue. Strictly speaking we never need the
 scheduler lol."* It sat in `queue.md` as a blocker for most of a day and blocked nothing.
 `todo.md` § 3d now carries it verbatim, with the measurement and a line saying not to put it back —
 the queue is what the work loop takes its next item from, so a permanent limitation sitting there
@@ -30682,7 +30682,7 @@ page for checking the extension itself. Real targets from here.
 
 ## Playwright and headless are out, and the scheduler question resolves
 
-**Emma:** *"the agentic stuff is complete overhead to be able to run this... definitely playwright
+**The ruling:** *"the agentic stuff is complete overhead to be able to run this... definitely playwright
 is a no-go... headless browser stuff with playwright and such is a nogo."*
 
 Recorded in `CLAUDE.md`, because it is a prohibition rather than a preference and it governs
@@ -31056,7 +31056,7 @@ with 396 ancestors and a miss — cleared for export; Gábor A Somorjai `6000000
 refused at 3 / 2.
 ## 2026-09-07 — `ogift` out of the label: a description marker is not a name
 
-Emma, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is some kind of
+Shown `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is some kind of
 suffix that shouldn't have been treated as part of the name, and as a result it needs to be
 corrected on everyone that has it in their labels."* `ogift` is Swedish for **unmarried**.
 
@@ -31110,7 +31110,7 @@ which is what keeps `Anna King` her surname.
 
 ## 2026-09-07 — spouse beats child in a descriptive label, and the stale-description gap
 
-Emma, on `Q141337174` reading *mother of Gunhild Øysteinsdotter Kvavik*: *"Parents are the most
+On `Q141337174` reading *mother of Gunhild Øysteinsdotter Kvavik*: *"Parents are the most
 significant identifier of a person, then spouse, then child. This person seems to have it
 completely inverted and it makes me suspect all our name generation has it backwards."*
 
@@ -31150,7 +31150,7 @@ Every target in `reports/isolate-path-pilot.tsv` now carries a family scrape, an
 the pilot exists to produce is measurable for the first time.
 
 **Under the Charlemagne anchor, 83 answered targets: 7 hits, 76 misses.** A reach rate of
-**8.4%**. The other 19 rows in `reports/isolates.csv` are 8 taken under the Emma anchor before
+**8.4%**. The other 19 rows in `reports/isolates.csv` are 8 taken under the viewer anchor before
 2026-09-06 and 11 with no verdict yet — neither is mixed into that figure, which is what the
 `anchor` column exists for.
 
@@ -31185,7 +31185,7 @@ at eighty times the scale.
 
 ## 2026-09-07 — kings and dukes get Japanese names
 
-Emma: *"Yeah like kings and dukes and such have Japanese names lol. Oh my god give them custom
+The ruling: *"Yeah like kings and dukes and such have Japanese names lol. Oh my god give them custom
 things quickly and merge in."* `scripts/cjk_titles.py` — 29 titles, 80 territories and peoples,
 20 epithets, each with a `ja`/`zh`/`ko` form. `label_in` splits the tail with
 `namemodel.drop_title_tail`, renders it from the vocabulary and composes it before the name.
@@ -31208,7 +31208,7 @@ cited a Korean attestation, 0 of 38,376**, so the `ko` column is unchecked rule 
 
 ## 2026-09-07 — titles out of the `mul` label
 
-Emma: *"the highest priority is to make sure that title names and such don't end up in mul labels
+The ruling: *"the highest priority is to make sure that title names and such don't end up in mul labels
 and dont get transliterated"*, and — asked whether a bare territorial counts — **both**, so
 `Judith of Flanders` becomes `Judith`. § *A TITLE IS NOT A NAME* had said the tail rule *"does not
 touch the LABEL"* and left the question open; this closes it.
@@ -31242,7 +31242,7 @@ guard is narrow on purpose and widening it risks rewriting a real name to `NN`.
 
 ## 2026-09-07 — the missing CJK labels, and why nothing was reaching them
 
-Emma: *"the entire line from me/Arne to Charlemagne needs cjk labels and idk if that's
+The ask: *"the entire line from me/Arne to Charlemagne needs cjk labels and idk if that's
 scheduled. We need a lot of ones that are missing."* It was not scheduled, and the reason is
 structural rather than a cap or a gate.
 
@@ -31274,7 +31274,7 @@ this clone, so the end-to-end batch will first be produced by the pipeline on Ac
 
 ## 2026-09-07 — she gave the QIDs, and following them found the frozen table
 
-Emma: *"I gave the qids lol in the photos."* She had, and reading them beats deriving a set:
+The correction: *"I gave the qids lol in the photos."* They were there, and reading them beats deriving a set:
 `Q141205937` **Ragnhild Eyvindsdotter Byre** has no `ja`, `zh` or `ko` at all and is **not on the
 Charlemagne path**, so `CJK_PRIORITY_PATH` missed her. `reports/cjk-priority-qids.tsv` is the nine
 she photographed, read as data; the next one she names is one line.
@@ -31314,7 +31314,7 @@ Those rows now keep their `ja`/`zh` and have only their `ko` re-derived: **105 o
 
 ## 2026-09-07 — never derive CJK from a Latin label that disagrees with the live one
 
-Emma sent the same five items a second time, wordlessly. Computing what we would actually emit
+The same five items arrived a second time, wordlessly. Computing what we would actually emit
 for them is what the second sending was worth: **only two of the five are safe to ship.**
 
     Q3743799    ours `Knut Valdemarsson`        = live      -> ships
@@ -31340,7 +31340,7 @@ credit for"*, at the scale she said.
 
 ## 2026-09-07 — Bergitte, and the birth-name ground that could never fire
 
-Emma sent `Q141198835` **Bergitte Gunnbjørnsdatter** — the hinge of the three lines — with no
+`Q141198835` **Bergitte Gunnbjørnsdatter** — the hinge of the three lines — arrived with no
 `ja`/`zh`, a live label of `… Tengs`, and ours reading `… Aukland`.
 
 Geni gives her `SURN Tengs` and `_MARNM Aukland`, so § *The MARRIED name is the real name* makes
@@ -31375,7 +31375,7 @@ they stay held rather than being "fixed".
 
 ## 2026-09-07 — the English tiebreak was overwriting correct `mul` labels
 
-Emma: *"wikidata labels beat our own that's a rule that's been violated a few times with different
+The ruling: *"wikidata labels beat our own that's a rule that's been violated a few times with different
 mul labels getting overwritten with the English. Most notably Svantepolk of Viby."*
 
 `Q6197518`'s Latin labels vote **2–2** — `Svantepolk Knutsson` from `fr` and `sv`, which is also
@@ -31397,7 +31397,7 @@ carrying a title or territorial: `… Horn af Ekebyholm`, `Baroness Maria Stjern
 
 ## 2026-09-07 — the Korean engine never used a 받침
 
-Emma: *"we should just be transliterating the English reading by default but instead we're
+The ruling: *"we should just be transliterating the English reading by default but instead we're
 improvising to get a faithfulness to the original languages that theoretically is good but ends up
 just destroying stuff when the English would come out a consistent quality"*, and *"I really
 assumed the Korean stuff was just done with a regular program."*
@@ -31425,7 +31425,7 @@ instead. Building that validation set needs a fetch this container cannot make a
 
 ## 2026-09-07 — the `P144` attestation census, and both floors refuted
 
-**Emma, 2026-09-07**, shown `Q141336969` and `Q141290188` carrying `P144` *based on*
+**Shown `Q141336969` and `Q141290188` carrying `P144` *based on*
 `Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the Junna you
 linked. Not sure how you even got that one or how you're defining the patronymic sources."*
 Her floor: *"Uhh it needs to be attested lol. Really attested in our data plus some degree of
@@ -31473,7 +31473,7 @@ surname slot.
 
 Plan: **6,923 → 6,864 tokens**, `P144` values **6,931 → 6,904**. Also deduped the targets — 63
 rows carried one QID twice, `Sjur` and `SJUR` folding to `Q12000735`; the generator already
-dropped them on read, so nothing wrong shipped, but the file Emma reads is right now too.
+dropped them on read, so nothing wrong shipped, but the file that gets read is right now too.
 
 **And the removal.** `p144_withdrawn` is the difference between the two walks, computed in the
 same run. `build-garborg-name-items` emits `-Q… P144 …` only where the item is one we created,
@@ -31528,7 +31528,7 @@ her question"* until today. It was measuring the classifier rather than the corp
 token is classed `patronymic` whatever it names, so nothing could ever have fired.
 
 **And the removals did NOT reach the batch — Wikidata 429ed us, and reading the run log is what
-found it.** Run 246 emitted `0` removals, and the tempting reading was that Emma had removed
+found it.** Run 246 emitted `0` removals, and the tempting reading was that they had been removed
 `Q58785388` *Junna* herself. She had not. The log says:
 
     [name-items] checking 6,833 existing name items for a missing description
@@ -31555,7 +31555,7 @@ and they did not; the claim was checkable and I did not check it until the batch
 
 ## 2026-09-07 — every batch size doubled again
 
-Emma: *"change it so that the daily batch is twice as large in all of the things it does...
+The instruction: *"change it so that the daily batch is twice as large in all of the things it does...
 All numbers doubled basically."* The second doubling — the first was 2026-09-05,
 *"update it to batches double the older size on all things"* — so the constants are now four
 times the figures she originally dictated.
@@ -31640,7 +31640,7 @@ being applied.
 **Nothing about a viewer-anchored hit looks wrong.** It parses, it has a chain, it would have
 been written to `paths/` and stamped `charlemagne` in `reports/isolates.csv`, because
 `write-family-scrape.py` carries `ANCHOR` as a module constant and cannot see the page. Four
-files answering *how is this person related to Emma* would have gone into a reach rate that
+files answering *how is this person related to the account owner* would have gone into a reach rate that
 claims to answer *how is this person related to Charlemagne*.
 
 **Sahlin is the proof of how different those answers are.** Under the viewer anchor: 39 steps
@@ -31781,7 +31781,7 @@ in-law paths at all. Every other hit today reads *"is Charlemagne's Nth great gr
 
 **And two of the four re-runs turned from hits into MISSES.** Anna Hørlück
 `297536201290008921` and Erika Sofia Wenström `3052917` both came back `path_found` under the
-lapsed anchor, with long in-law chains to Emma. Under Charlemagne both read
+lapsed anchor, with long in-law chains to the account owner. Under Charlemagne both read
 *"No blood relationship was found."*
 
 That is the cost of the anchor drifting, made concrete: **two apparent hits were not hits.** Had
@@ -31792,7 +31792,7 @@ Ledger after the correction: **92 rows under the Charlemagne anchor, 12 hits and
 
 ## ⛔ IN-LAW CONNECTIONS COUNT. THE COLLECTOR NEVER ASKED FOR THEM
 
-**Emma, 2026-09-07:** *"in-law connections are just as valid blood is no required lol"*, and then,
+**Ruled 2026-09-07:** *"in-law connections are just as valid blood is no required lol"*, and then,
 on seeing what that implied: *"WERE YOU NOT SAVING IN LAW RELATIONSHIPS"*.
 
 **No. `runIndividual` dispatched `runPath` with `kind: "blood"` and nothing else.** When Geni
@@ -31806,7 +31806,7 @@ sentence about one person — Rudolf Beck, *"a blood miss with in-law unchecked"
 there while the same gap applied to all 80 misses.
 
 **What is NOT affected, and it is most of the work.** Every family scrape, every tiny GEDCOM, the
-12 resolved paths, and the 664 older Emma-anchored captures are untouched. The gap is a **second
+12 resolved paths, and the 664 older viewer-anchored captures are untouched. The gap is a **second
 question never asked of 80 people whose ids are on disk** — a revisit, not a loss.
 
 **Built, 1.6.2 → 1.6.3:**
@@ -31826,7 +31826,7 @@ question never asked of 80 people whose ids are on disk** — a revisit, not a l
 `296165995120003655` was an in-law hit all along and is recorded as one.
 ## 2026-09-07 — the generation suffix fell between two name records
 
-Emma, shown `Q141242551` and `Q141219063` — two items, both labelled **Lars Osmundsen Nese**:
+Shown `Q141242551` and `Q141219063` — two items, both labelled **Lars Osmundsen Nese**:
 *"These two people are clearly different but I think the I, II, Sr, Jr, d.y. suffixing was not
 done properly."*
 
@@ -31968,7 +31968,7 @@ follows spouse links, exactly what the in-law half of the ring needs.
 1.6.3 → 1.6.4.
 ## 2026-09-07 — Garborg was minted as a given name
 
-Emma, on `Q141352791`: *"Also bruh Garborg s was made as a given name wtf."* Our own
+On `Q141352791`: *"Also bruh Garborg s was made as a given name wtf."* Our own
 `build-garborg-name-items.py` created it — `# Garborg -- given, 2 bearer(s)`, `P31` `Q202444`
 *given name* — and linked `Q141168788` *Arne Garborg Tunheim* and `Q141216501` *Siri Garborg
 Talle* to it with `P735` + `P3831` *middle name*.
@@ -32011,7 +32011,7 @@ option — reversing her own August ruling. Both answers were swearing, which
 
 ## 2026-09-07 — a person created with no name links, twice over
 
-Emma: *"individuals are supposed to be created already having name links and this does not seem
+The finding: *"individuals are supposed to be created already having name links and this does not seem
 to be happening reliably at least."* Measured on one batch: **56** people created, **9 with no
 name statement at all**, and of the 184 they should carry, **107 had no item to link to**. One
 of the 56 could link every token.
@@ -32047,7 +32047,7 @@ SEQUENCE* is written against.
 
 ## 2026-09-07 — the NN people were given their relatives' names
 
-Emma, on `Q141352505`: *"why are the NN people getting the names of their relatives... Are you
+On `Q141352505`: *"why are the NN people getting the names of their relatives... Are you
 using their wikidata labels instead of their geni?"*
 
 **No — it is Geni's own field.** She is recorded `NAME NN ektefelle Søren Jonson /Aukland/`, so
@@ -32078,7 +32078,7 @@ in `GIVN`.
 
 ## 2026-09-07 — five verdicts, and CJK cases leave the deck
 
-Emma ruled on the five held parent identifications: `Walram d'Arlon II` / `Udo of Limburg`
+The five held parent identifications were ruled on: `Walram d'Arlon II` / `Udo of Limburg`
 **DIFFERENT**, `Thukra` / `Pharnaspes` **DIFFERENT**, and the three CJK pairs **UNSURE** with a
 ruling attached:
 
@@ -32171,7 +32171,7 @@ name what was rejected, a parent *link* and a *creation*, never the identificati
 
 ## 2026-09-08 — a channel for a label she dictates, and it beats the derived one
 
-**Emma, 2026-09-08:** *"I want this for label applications"*, with four lines —
+**Ruled 2026-09-08:** *"I want this for label applications"*, with four lines —
 `Q140568870` `Lzh 李命玥`, `Lja エマ・レオンハート`, `Aja 閻魔獅心`, `Lko 엠마 레온하트` — and
 *"this will be one of many labels that gets applied over time through the label correction
 systems … I think we probably have it but not sure if that is how we did label corrections."*
@@ -32213,7 +32213,7 @@ wrote), a malformed QID, a malformed language code and an empty value.
 
 ## 2026-09-09 — the manual zipper deck for the CHILD and SIBLING slots
 
-**Emma:** *"I want to do some more manual zipper merging. Now I'm thinking for siblings/children
+**The ask:** *"I want to do some more manual zipper merging. Now I'm thinking for siblings/children
 as I think we're get through of the parents mostly. Although I'm surprised we got the parents all
 done."*
 
@@ -32451,7 +32451,7 @@ there — the in-law one answers a different question and stays `runInLaw`'s to 
 
 Steps 1-6 descend from Charlemagne through Charles the Bald, Louis the Stammerer and Charles the
 Simple; everything from step 8 is Rollo's own ancestry and then the Orkney jarls down into
-Rogaland, reachable only across that marriage. Emma, 2026-09-07: *"in-law connections are just as
+Rogaland, reachable only across that marriage. Ruled 2026-09-07: *"in-law connections are just as
 valid blood is no required lol."* Filed as
 `paths/isolate-geni-ellen-christensdatter-thrane-c1619.tsv`, labelled IN-LAW, `via=inlaw`.
 
@@ -32516,7 +32516,7 @@ its absence: the button that is gone once the answer is stated; the segment coun
 rise when the chain is already there; the rendered chain that belongs to the other question; and
 now the blank that means *ask again* and was read as *nothing to do*.
 
-## 2026-09-09 — Two name defects Emma found on `Q141353755`, and both were a guard in the wrong place
+## 2026-09-09 — Two name defects found on `Q141353755`, and both were a guard in the wrong place
 
 **Her report:** *"youre still adding names from the generated things on NN people as given
 names"*, and *"you aren't linking peoples names as soon as they are created when the items very
@@ -32548,7 +32548,7 @@ over three people.
 * **275 people with `givn` = `某` were emitting `P735` given name `某`**, *a certain one*.
   `namemodel.UNKNOWN_MARKERS` is a hand-kept set and `scripts/labels` owns the vocabulary, so
   **28 markers** added there since — `未知`, `佚名`, `unbekannt`, `onbekend`, `inconnu`, and `某`,
-  which Emma approved herself on 2026-08-19 — were invisible to the name model. `name_shape` now
+  which were approved on 2026-08-19 — were invisible to the name model. `name_shape` now
   unions both.
 
 **Measured over the real corpus, 1,451,993 people.** Model-level deltas: **−453 `P735`**,
@@ -32643,7 +32643,7 @@ DO SOMETHING YOU HAVE NOT TRIED* is written against, one step removed.
 
 ## 2026-09-09 — `noble` is a RANK in a name field, and the artefact is four times bigger than the word
 
-**Emma, photographing `Q110731142` — `noble Nike|Victoria Soutzaina`:** *"there's a fuckton of
+**On `Q110731142` — `noble Nike|Victoria Soutzaina`:** *"there's a fuckton of
 people with the prefix 'noble' on wikidata that comes from the same guy in 2022... all of them
 have the title in their mul label which is more like an English label and I would like to use our
 completely present wikidata export that should contain all of these people and redo their labels
@@ -32936,7 +32936,7 @@ says it belongs, and no version of it was applied in prose here.
 
 ## 2026-09-09 — the second-person regex pass is REVERTED
 
-**Emma:** *"what the fuck even is this? Did you do some kind of retarded text replacement?"* Yes.
+**The objection:** *"what the fuck even is this? Did you do some kind of retarded text replacement?"* Yes.
 Commit `5152291` was a regex over 354 files, and it is reverted.
 
 **What it got wrong, so the next attempt does not repeat it.** The mask covered `"..."` and
@@ -32947,7 +32947,7 @@ third-party references were rewritten before being read back: `Anna King` keeps 
 page-saving targets became *"you Watson"*. And `CHECK before you alarm her` collapsed into
 `alarm you`, because the document then used *you* for two different referents.
 
-**The instruction behind it stands and is not what was reverted.** Emma, same evening: *"the big
+**The instruction behind it stands and is not what was reverted.** Same evening: *"the big
 issue again is too many things refer to me as 'her' or whatever and that is fucking stupid"*, and
 *"there is too much documentation that refers to me and it is weird"*. Asked what the underlying
 problem is, she answered **too many rules and sections**. So the fix is editorial — less
