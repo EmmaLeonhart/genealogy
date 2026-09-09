@@ -44,7 +44,7 @@ LABELS = ROOT / "reports" / "derived-labels.csv"
 SEEDS = {
     "Johannes Bureus": "6000000004334763223",
     "Arne Garborg": "6000000003492005116",
-    "Emma": "6000000001846508982",
+    "Empress Jingū": "6000000001846508982",
 }
 
 
@@ -129,13 +129,13 @@ def main():
     random.seed(20260830)
     sample = random.sample(sorted(union), min(400, len(union)))
     eccs = sorted(ecc(q)[0] for q in sample)
-    emma_e = ecc(SEEDS["Emma"])[0]
-    below = sum(1 for e in eccs if e < emma_e)
+    third_e = ecc(SEEDS["Empress Jingū"])[0]
+    below = sum(1 for e in eccs if e < third_e)
     print(f"\nover a 400-person sample of the union:")
     print(f"   eccentricity min {eccs[0]}, median {eccs[len(eccs)//2]}, max {eccs[-1]}")
-    print(f"   the third seed's is {emma_e} — {100*below/len(eccs):.0f}% of the sample is LESS eccentric")
+    print(f"   the third seed's is {third_e} — {100*below/len(eccs):.0f}% of the sample is LESS eccentric")
     deg = collections.Counter({q: len(v) for q, v in ind.items()})
-    print(f"\n   its degree {len(ind.get(SEEDS['Emma'], ()))}; "
+    print(f"\n   its degree {len(ind.get(SEEDS['Empress Jingū'], ()))}; "
           f"median degree {sorted(deg.values())[len(deg)//2]}")
 
 

@@ -2,10 +2,9 @@
 
     py scripts/apply-attested-renderings.py
 
-**Emma, 2026-09-01, on `Stephen`:** *"斯特普亨·弗里斯克 — this is a terrible rendering of Stephen
-Frisk lol"*, and then *"This is what I've found for stephen 史蒂芬"*.
+**`斯特普亨·弗里斯克` is a bad rendering of `Stephen Frisk`; the established form is `史蒂芬`.**
 
-She is right and the cause is not the engine. `reports/attested-name-renderings.tsv` already holds
+The cause is not the engine. `reports/attested-name-renderings.tsv` already holds
 **Stephen → スティーヴン (85 uses) / 斯蒂芬 (26 uses)**, harvested from real Wikidata labels — and
 `reports/garborg-name-transliterations.tsv` carried the by-rule `ステプヘン` / `斯特普亨` anyway.
 **The attested file was built and never applied.** That is the *"logic that never gets in"* shape
@@ -28,13 +27,14 @@ Latin letter in every language* already requires, arrived at independently by Wi
 ## What it does NOT do
 
 **It never touches a row that is not `by rule`.** A hand entry, a patronymic construction, or a
-value Emma has corrected stays exactly as it is — attestation is evidence, not authority over her.
+hand-corrected value stays exactly as it is — attestation is evidence, not authority over a
+person's decision.
 
 **It does not overwrite with an empty value.** Many tokens are attested in `ja` and not in `zh`;
 those keep the by-rule `zh` rather than losing it.
 
 **No threshold.** A rendering used even twice was written by a person looking at that name, where
-ours was assembled letter by letter with no idea what the name is. Her standing rule is that an
+ours was assembled letter by letter with no idea what the name is. The standing rule is that an
 imperfect katakana reading is acceptable and an incorrect *name* is not — and `斯特普亨` for
 Stephen is closer to a wrong name than to an imperfect reading. The use count is written into the
 `note` so any row can be argued with.
@@ -68,9 +68,10 @@ ATTESTED = REPO / "reports" / "attested-name-renderings.tsv"
 #: deriving them from it.
 BY_RULE_PREFIX = "by rule"
 
-#: Her own corrections, which outrank both the engine and the attestation. She looked `Stephen`
-#: up and gave `史蒂芬`; Wikidata attests `斯蒂芬` 26 times. Both are standard and hers wins,
-#: because `CLAUDE.md` § *The tree and the items are edited BY HAND* makes a value she has
+#: The hand corrections, which outrank both the engine and the attestation. `Stephen` was looked
+#: up by hand and given as `史蒂芬`; Wikidata attests `斯蒂芬` 26 times. Both are standard and the
+#: hand form wins,
+#: because `CLAUDE.md` § *The tree and the items are edited BY HAND* makes a value someone has
 #: supplied a decision rather than drift.
 HERS = {
     "Stephen": {"zh": "史蒂芬"},
@@ -126,7 +127,7 @@ def main() -> int:
         if not used:
             n["attested but identical to ours"] += 1
             continue
-        src = ("Emma" if mine else
+        src = ("by hand" if mine else
                f"attested on Wikidata (ja {(a or {}).get('ja_count', '?')}x, "
                f"zh {(a or {}).get('zh_count', '?')}x)")
         r["note"] = src
@@ -134,8 +135,8 @@ def main() -> int:
         if len(changed) < 15:
             changed.append((r["token"], before, (r["ja"], r["zh"]), src))
 
-    # **Deterministic order, and an atomic replace.** Emma, 2026-09-01: *"sorting needs to be
-    # deterministic"*. This wrote in input order while `extend-transliterations.py` sorted, so
+    # **Deterministic order, and an atomic replace.** Sorting has to be deterministic, ruled
+    # 2026-09-01. This wrote in input order while `extend-transliterations.py` sorted, so
     # every hand-off between the two reshuffled the 738 tokens that tie under `casefold` — and a
     # rewrite that changed nothing at all came out as 36,901 changed lines in `git diff`. A diff
     # that noisy hides the change you actually need to see.

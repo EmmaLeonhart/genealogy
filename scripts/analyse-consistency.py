@@ -1,8 +1,7 @@
 """What is actually going on with the "impossible" dates.
 
-Emma, 2026-08-11: *"The chances are there is actually something going on with
-them, and you're just deeming them impossible or whatever… you have to do the
-research on it."*
+A finding is not impossible just because it looks impossible: there is usually
+something real going on, and the research has to be done on it.
 
 **The finding, in one line:** `consistency.check` compares bare integers, so a
 child recorded `ABT 1500` against a parent recorded `ABT 1512` is reported as an
@@ -19,7 +18,8 @@ denotes**:
 
 A contradiction is only real when the intervals **cannot** be reconciled. The
 tolerance for `ABT` is not a constant this file invents — survival is reported
-at 0, 2, 5 and 10 years so the sensitivity is visible and Emma can choose.
+at 0, 2, 5 and 10 years so the sensitivity is visible and the tolerance can be
+chosen deliberately.
 
 Reads `reports/consistency-findings.csv`. Writes `reports/consistency-analysis.md`
 and `reports/consistency-surviving.csv` — every finding that survives at ±5, one
@@ -145,12 +145,11 @@ def main() -> int:
     add = L.append
     add("# The \"impossible\" dates: what is actually going on with them")
     add("")
-    add("**Emma, 2026-08-11:** *\"it's your job to do analysis on these to figure out")
-    add("what's actually going on with them. The chances are there is actually something")
-    add("going on with them, and you're just deeming them impossible or whatever… you have")
-    add("to do the research on it.\"*")
+    add("**A finding is not impossible just because it looks impossible.** There is")
+    add("usually something real going on, and the research has to be done on it rather")
+    add("than the case being written off.")
     add("")
-    add("She was right, and the mechanism is specific.")
+    add("The mechanism here is specific.")
     add("")
     add("## The defect")
     add("")
@@ -171,7 +170,7 @@ def main() -> int:
     add("only when the intervals cannot be reconciled at all.")
     add("")
     add("**The `ABT` tolerance is not chosen here.** Survival is given at four values so")
-    add("the sensitivity is visible and the choice is Emma's.")
+    add("the sensitivity is visible and the tolerance can be chosen deliberately.")
     add("")
     header = "| rule | kind | findings | all dates exact |" + "".join(f" ±{t} |" for t in TOLERANCES)
     add(header)

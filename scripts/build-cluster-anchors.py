@@ -1,9 +1,8 @@
 """Where the two cut-off clusters touch Wikidata.
 
-Emma, 2026-08-13, having found `Kadin Harding` and `Jacqueline Crispin` inside
-them: *"my expectation here is basically that the seeds supposed to link to them
-just were not going correctly... we can go on and try to get them connected to
-the world tree in other ways."*
+`Kadin Harding` and `Jacqueline Crispin` were found by hand inside these clusters
+on 2026-08-13. The reading is that the seeds meant to link to them were not going
+correctly, and that they can still be connected to the world tree other ways.
 
 The two clusters are cut off **from our Geni merge**, not from Wikidata. Each is
 exactly one `Forest` export — 4,088 and 4,084 people sharing nobody with the
@@ -44,7 +43,7 @@ CLUSTERS = {
                               / "export-Forest-6000000227145420853.ged",
 }
 
-#: The two profiles Emma found by hand, which is what prompted this.
+#: The two profiles found by hand, which is what prompted this.
 FOUND = {
     "6000000176095890839": "Kadin Harding",
     "6000000005082335522": "Jacqueline Crispin",
@@ -93,8 +92,8 @@ def main() -> int:
     add = L.append
     add("# Where the two cut-off clusters touch Wikidata")
     add("")
-    add("Emma found `Kadin Harding` and `Jacqueline Crispin` inside them by hand, and")
-    add("read it as the seeds having failed rather than the people being unreachable.")
+    add("`Kadin Harding` and `Jacqueline Crispin` were found inside them by hand, which")
+    add("reads as the seeds having failed rather than the people being unreachable.")
     add("That reading is right, and it goes further than expected.")
     add("")
     add("**The clusters are cut off from our Geni merge, not from Wikidata.**")
@@ -111,7 +110,7 @@ def main() -> int:
     add("is aimed at. A cluster member already in it is a person our Geni data cannot")
     add("reach and Wikidata already connects.")
     add("")
-    add("## The two Emma found")
+    add("## The two found by hand")
     add("")
     add("| who | geni id | cluster | born | died |")
     add("| --- | --- | --- | ---: | ---: |")

@@ -178,13 +178,13 @@ def main():
 <header>
  <p class="eyebrow">Wikidata &middot; full items &middot; 24 August 2026</p>
  <h1>Garborg Family Entry Sheet</h1>
- <p class="standfirst">All ten people have items, and the eleven Emma has built are
+ <p class="standfirst">All ten people have items, and the eleven built by hand are
  uniform in shape. What is left is <em>names</em>: ten of the eleven carry none.
  <em>This page previously said Arne Garborg had no parents. That was wrong</em> &mdash; it
  was built from a summary of his item rather than the item.</p>
 
  <div class="situation">
-  <div class="stat"><span class="n">11</span><span class="k">items Emma has built</span></div>
+  <div class="stat"><span class="n">11</span><span class="k">items built by hand</span></div>
   <div class="stat"><span class="n">1</span><span class="k">of them carries name properties</span></div>
   <div class="stat"><span class="n">0</span><span class="k">of them carry ja or zh</span></div>
   <div class="stat"><span class="n">6</span><span class="k">sibling links Arne still lacks</span></div>
