@@ -58,7 +58,7 @@ centre**, and its extreme is a different genealogical tradition that happens to 
 recorded, not a thin or fragile connection.
 
 **Among the 43,667 people who carry a QID, the most distant are the Samaritan high priests** —
-`Q107534557`, `Q2164896`, `Q108907045` and their line, 131–134 hops out. That is Emma's own
+`Q107534557`, `Q2164896`, `Q108907045` and their line, 131–134 hops out. That is the
 hand-built tree sitting at the far edge.
 
 ## George R.R. Martin is NOT extreme on either measure here

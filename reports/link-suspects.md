@@ -2,7 +2,7 @@
 
 **The question.** `reports/wikidata-crosscheck.md` § *Links worth re-checking*
 named two links as suspect — Canute I Erikska `Q442876` and Bengt Folkesson
-`Q1621801` — and they sat in `queue.md` as UNSAFE-TO-GUESS for weeks. Emma,
+`Q1621801` — and they sat in `queue.md` as UNSAFE-TO-GUESS for weeks.
 2026-08-11: **"Analyse them like the dates."**
 
 The dates analysis worked because it censused every instance rather than reading
@@ -109,9 +109,9 @@ Nothing here has been edited, excluded or proposed for exclusion. **66 links out
 of 14,157 is 0.47%** — the P2600 join remains overwhelmingly sound, which is why
 it stays the one non-genealogical matching method in the project.
 
-## What is now worth doing, and what needs Emma
+## What is now worth doing, and what needs a ruling
 
-- **NEEDS-DECISION — Emma:** whether the `Q1349864xx` batch is worth
+- **NEEDS-DECISION:** whether the `Q1349864xx` batch is worth
   investigating as a batch. It is 26 suspect links and 241 linked people, and it
   is the only structure in this data rather than a list of individuals.
 - The per-person section of `reports/wikidata-crosscheck.md` should stop

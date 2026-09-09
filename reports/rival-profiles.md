@@ -5,7 +5,7 @@
 ## What it looks for
 
 A person **this programme minted** and some **other item already on Wikidata** that share a
-neighbour (a parent, or a child) and carry the same label. That is the shape Emma has been
+neighbour (a parent, or a child) and carry the same label. That is the shape that has been
 merging by hand.
 
 Comparison is set-against-set across the six label columns of `out/wikidata/labels.tsv`
@@ -42,13 +42,13 @@ compose time**, on the specific parents a batch is about to create, not against 
 - **Same-label siblings among our own items** — 109 parents carry two or more of our items as
   children; **0** of those sibling sets share a label. We are not duplicating within a batch.
 - **Namesake pairs already on Wikidata** — an earlier pass that did not distinguish minted items
-  from ones Emma merely linked returned 5 pairs, all pre-existing ancestor/descendant namesakes
+  from ones merely linked returned 5 pairs, all pre-existing ancestor/descendant namesakes
   (Carl Gustaf Mannerheim, Henning Mankell, Axel von Rosen, Carl Fredrik Piper, Nils Burensköld).
   None is ours and none is a defect.
 
 ## Ground truth for any future screen
 
-The ledger records the three merges Emma has already had to perform, and a screen that cannot
+The ledger records the three merges already performed by hand, and a screen that cannot
 retrodict these is not working:
 
 | Geni id | ours, merged away | into |

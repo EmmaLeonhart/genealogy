@@ -1,6 +1,6 @@
 # Preservation audit — the 2026-08-06 evening downloads
 
-Written 2026-08-06. Emma's ask: *"I want to make sure no issue occurred with
+Written 2026-08-06. The ask: *"I want to make sure no issue occurred with
 GEDCOM preservation — these ones I think are all new except maybe one, in the
 Downloads folder, as the last bunch of GEDCOMs to flesh out around the edge
 people."*
@@ -8,7 +8,7 @@ people."*
 **Answer: nothing was lost.** Six zips were in `~/Downloads`. Four held GEDCOMs
 this repo did not have and are now committed under `exports/edges/`. Two held
 GEDCOMs **byte-identical** to files already in git, so there was nothing to
-preserve. Emma's guess was right in kind and off by one in count — it was two
+preserve. The guess was right in kind and off by one in count — it was two
 repeats, not one.
 
 This audit was run under a standing instruction to keep CPU low (laptop hot, fan
@@ -54,7 +54,7 @@ filename and the seed ID is used instead.
 The two repeats are **SHA-256 identical**, not merely same-size. They were left
 in `~/Downloads` rather than moved into the repo: adding them would have put a
 second copy of committed content in git and a second zip line in `.gitignore`
-for no gain. They are safe to delete whenever Emma wants; the content is in git
+for no gain. They are safe to delete at any time; the content is in git
 either way. `genimerge.sources` drops byte-identical repeats, so even ingesting
 them would not have changed a single number — but it would have changed the
 apparent corpus size, which is exactly the confusion `audit-corpus-sync.md`
@@ -159,6 +159,6 @@ Named plainly because each is a real gap, not a formality:
   that region 6 yields more than region 4 would have — is still unscored.
 - **Anything networked.** No Wikidata query was made.
 
-Unblock signal for all four: Emma saying the machine is somewhere it can spin
+Unblock signal for all four: word that the machine is somewhere it can spin
 up. This is a standing instruction from the user for this session, not an
 unknown and not a deferral.

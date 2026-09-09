@@ -64,7 +64,7 @@ region.
 ## The 199 are the Samaritan pattern
 
 They have a Wikidata item and **no `P2600`**, so no query in this repo can connect them to
-Geni even if the profile exists. This is the shape Emma pointed at: *"those whose wikidata
+Geni even if the profile exists. This is the shape pointed at: *"those whose wikidata
 items do not connected geni ids similar to Samaritan high priests"* — present on both
 sides, joined on neither.
 

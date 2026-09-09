@@ -44,7 +44,7 @@ These are relatives named by P22/P25/P26/P40/P3373 that are **not in the P2600
 seed set at all**, so they are the expansion frontier: people Wikidata records
 and no Geni-linked item does. That is the thing the whole walk exists to reach.
 
-It is also **larger than `todo.md` § 8a-revised predicts**. Emma's expectation
+It is also **larger than `todo.md` § 8a-revised predicts**. The expectation
 was a small, patchy frontier — most family edges landing on other seed-set items —
 and § 8a-revised says in terms that a much-larger-than-expected frontier should be
 treated as a symptom rather than a success. At 0.43 per item sustained, the

@@ -6,7 +6,7 @@ full path, deliberately, so a fresh checkout anywhere — cloud, another machine
 CI — receives 57 and measures a smaller corpus than any report in `reports/`
 describes. The flaw is that nothing said so.
 
-Numbers below are from **Emma's PC, 2026-08-06**, and the cloud half is quoted
+Numbers below are from **the local PC, 2026-08-06**, and the cloud half is quoted
 from the queue item that recorded it.
 
 ## PC ground truth
@@ -58,7 +58,7 @@ exports produce.
 
 ## Not done here
 
-- **NEEDS-DECISION (Emma) — should the 41 be committed?** Committing them makes
+- **NEEDS-DECISION — should the 41 be committed?** Committing them makes
   every checkout reproduce the reports and costs ~200 MB in git forever, on a
   private repo. Leaving them out keeps the repo small and keeps the cloud
   permanently unable to reproduce a report. `6eddadd` chose the second; the

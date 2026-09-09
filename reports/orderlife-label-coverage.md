@@ -30,7 +30,7 @@ joinable rows and missed the 52,663 that carry only a QID.
 | `mul` | 255 |
 
 **This does not reopen the rule.** The seven-language labels are *made*,
-not copied, for everybody order.life does not cover — Emma's ruling stands.
+not copied, for everybody order.life does not cover — the ruling stands.
 This measures only the part that need not be made.
 
 Every shared person is a row in `reports/orderlife-label-coverage.csv`

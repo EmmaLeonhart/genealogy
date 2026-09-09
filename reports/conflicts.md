@@ -1,6 +1,6 @@
 # Where Geni and Wikidata disagree — the 930 conflicts, characterised
 
-Queue item 2.D, first half. Emma reframed 2.D from matching accuracy to **source
+Queue item 2.D, first half. 2.D was reframed from matching accuracy to **source
 reliability**: measure Geni against Wikidata *per property*, assume no global
 winner, and turn the result into a merge rule the code can apply. This is the
 measurement step. **It does not adjudicate and names no winner.**

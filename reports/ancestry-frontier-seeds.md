@@ -2,7 +2,7 @@
 
 Source: `exports/gaps/export-Ancestors-6000000087535357291.ged` — an **Ancestors** export seeded on Emma (`6000000087535357291`), 4020 people in ahnentafel order, cut off at Geni's export ceiling.
 
-The export dead-ends at **1461 frontier ancestors** (no parents recorded). Their only common descendant is Emma, so no single re-export reaches past them — but heavy pedigree collapse on the Norwegian side means a *small* set of deep seeds covers almost all of them.
+The export dead-ends at **1461 frontier ancestors** (no parents recorded). Their only common descendant is the account owner, so no single re-export reaches past them — but heavy pedigree collapse on the Norwegian side means a *small* set of deep seeds covers almost all of them.
 
 ## Seeds to re-export from
 
@@ -98,4 +98,4 @@ Greedy set cover over deep convergence points (people with a small current ances
 
 ## Full list
 
-`reports/ancestry-frontier.csv` — every one of the 1461 frontier ancestors, one row: Geni ID, name, birth year, generations back from Emma, and which seed above covers it.
+`reports/ancestry-frontier.csv` — every one of the 1461 frontier ancestors, one row: Geni ID, name, birth year, generations back from the account owner, and which seed above covers it.

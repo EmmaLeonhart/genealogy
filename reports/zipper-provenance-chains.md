@@ -396,7 +396,7 @@ Sophie de Mousson `6000000003902457261` = `Q119267542` — round 4, mother by so
 
 ### Eva Margareta Lagerberg `6000000006127496276`
 
-via 386743189540005666: Emma judged this pair WRONG by hand
+via 386743189540005666: this pair was judged WRONG by hand
 
 Eva Margareta Lagerberg `6000000006127496276` = `Q126328659` — round 4, mother by solo (position), from `6000000006127423485`
   └─ Anna Beata Cronstedt af Fullerö `6000000006127423485` = `Q134497823` — round 3, spouse by solo (position), from `6000000006127423478`

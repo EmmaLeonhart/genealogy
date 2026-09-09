@@ -31,7 +31,7 @@ Both talk threads say, verbatim:
 
 They were opened on 2026-08-29 and were still unanswered when this was written six days later.
 **Nothing in this repo looks at talk pages on the items it creates**, so a human taking the
-trouble to write one is not heard. That is the finding; whether to monitor it is Emma's call and
+trouble to write one is not heard. That is the finding; whether to monitor it is a decision and
 nothing has been built for it.
 
 ## The identical dates are not our problem — her ruling

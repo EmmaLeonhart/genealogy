@@ -14,7 +14,7 @@ Scope right now is the **string forms** of names — labels. Linking to name
 and is out of scope here.
 
 Population is the **14,157 people carrying both a Geni ID and a Wikidata item**,
-per Emma's rule that labels are only touched where both exist.
+per the rule that labels are only touched where both exist.
 
 ## What is missing, measured
 
@@ -22,7 +22,7 @@ per Emma's rule that labels are only touched where both exist.
 | --- | ---: | ---: | --- |
 | English | 13,656 (96.5%) | **501** | effectively done |
 | Japanese | 3,996 (28.2%) | **10,161** | the work |
-| `mul` | 2,206 (15.6%) | **11,951** | Emma: "occasionally" |
+| `mul` | 2,206 (15.6%) | **11,951** | "occasionally" |
 
 Wikidata already carries **15.1 labels per item on average** across all
 languages, so these items are not sparse in general — they are sparse in
@@ -64,7 +64,7 @@ Lithuanian (`Izabelė iš Angulemo`).
 
 **Script is the only signal that is read rather than guessed.** CJK-vs-Latin is
 mechanical. Distinguishing English from Spanish inside Latin script is not, and
-Emma has parked it: *"For linguistic stuff, we probably should be trying to
+It is parked: *"For linguistic stuff, we probably should be trying to
 detect what languages stuff is written in, but for now we can focus on other
 stuff."*
 
@@ -74,7 +74,7 @@ For each linked person with no `ja` label:
 
 1. Take the `NAME` records containing CJK.
 2. If exactly one, propose it as the `ja` label.
-3. If more than one, **do not choose** — show Emma the candidates.
+3. If more than one, **do not choose** — show the candidates.
 4. Cite the Geni profile as the source.
 
 Step 3 is the point. This spec does not rank name variants, because nothing in
@@ -138,7 +138,7 @@ through a field with no language tag. It is 1.3% of the 90,901 people with more
 than one `NAME`, so it is a curiosity rather than a route to the language
 marking this spec lacks.
 
-## Open, and needing Emma
+## Open, and needing a ruling
 
 - **Which `NAME` record is the label** when several share a script. Geni's file
   order is not meaningful.

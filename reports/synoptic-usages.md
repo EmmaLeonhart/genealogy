@@ -22,7 +22,7 @@ deciding a usage means whatever is convenient.
 
 ### her own quoted words — 14
 
-A line quoting Emma. Not ours to redefine; it stays verbatim whatever the answer is.
+A quoted line. Not ours to redefine; it stays verbatim whatever the answer is.
 
 * `CLAUDE.md:1800` — **The method is structural.** *"For the synoptic tree, we're supposed to be
 * `CLAUDE.md:1976` — > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic

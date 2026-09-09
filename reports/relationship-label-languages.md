@@ -40,7 +40,7 @@ English at 96% means a relationship label is nearly always generable; Dutch at
 else is a fifth or less. Generating into a language the relative lacks would mean
 inventing a rendering of their name, which is not something this project does.
 
-**`mul` is only on 25% of items**, so Emma's `mul: "NN"` is mostly *adding* a
+**`mul` is only on 25% of items**, so the `mul: "NN"` rule is mostly *adding* a
 multilingual label where none exists rather than overwriting one. That is the
 right slot and it is largely empty.
 
@@ -52,6 +52,6 @@ which case it is — and the answer differs for almost every person.
 
 ## Still open
 
-Emma's own uncertainty, unresolved: whether to run stage 2 at all for people who
+An unresolved uncertainty: whether to run stage 2 at all for people who
 already have a surname, or only for the bare `NN` ones. Not decided, and not
 decided here.

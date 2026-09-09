@@ -4,7 +4,7 @@ Measured offline over `wikidata/items/`, at 1,127 shards and ~1.12M items
 stored. No Wikidata query was made; every number here comes from items already
 downloaded.
 
-Written to test Emma's hypothesis, in her words: *children naturally get really
+Written to test the stated hypothesis: *children naturally get really
 big but fall off hard once you reach the 21st century, and we are at the point
 where likely we have exhausted the first major children wave.*
 

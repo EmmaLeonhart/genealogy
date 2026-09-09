@@ -2,7 +2,7 @@
 
 Measured 2026-08-06, first against the 98-export merge and then again after a
 `Forest` export seeded on a Hata person landed the same afternoon. Written to
-answer Emma's "import the Hata clan — surprised it is not all there already".
+answer the "import the Hata clan — surprised it is not all there already".
 
 **The answer is that there is no more clan to import. It is a line, and that is
 Geni's record rather than our sampling.** The first version of this report
@@ -117,7 +117,7 @@ as a patriline."*
 The count rose by ten and **every one of the ten was a generation**. Breadth did
 not move at all — same nine siblings, same zero marriages, same single branch
 point. The prediction was wrong in the direction the escape clause described,
-and Emma's call before the export ran — *"likely definitively showing it is just
+and the ruling before the export ran — *"likely definitively showing it is just
 a line"* — was right.
 
 The generalisation worth keeping: **a clan name is not a clan.** Asking "do we

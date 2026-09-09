@@ -85,7 +85,7 @@ sibling bar from Yoritaka 69 ends on that same column, so two lines land on one
 point. Taken as **child of Yoritaka 69**, because he carries a Kitajima regnal
 number and Yakura is a cadet house that the chart does not otherwise route the
 headship through. What would settle it: the `{{familytree}}` source line for that
-row, or Emma saying which.
+row, or a ruling on which.
 
 ## The Senge headship after 62 leaves the Senge column entirely
 
@@ -118,7 +118,7 @@ resolution where the connector is unambiguous: a single vertical runs
 Takakatsu 62 under Naonobu 59 *is* what the chart draws, so only the one edge is wrong.
 
 This was written up here first as "Geni disagrees with the chart, and the disagreement
-is Emma's call". That was wrong twice over: it presented my own bad edit as a property
+is not mine to call". That was wrong twice over: it presented my own bad edit as a property
 of her data, and it parked a fix I had caused on her. 2026-08-20:
 *"Naokatsu 63 Senge is fucking hallucinated in his placement"*.
 
@@ -143,7 +143,7 @@ This is corroborated from the Geni side without any name being consulted: Geni g
 Takatoki 53 exactly two parents, `Yasutaka Izumo-kokuso` and `Kakujitsu ni En'ya`,
 which is the position the chart puts Kakunin in.
 
-**The repeated rows Emma warned about are visible here.** Chart rows 95-97 recur as
+**The repeated rows warned about are visible here.** Chart rows 95-97 recur as
 rows 99-101 - `En'ya Yoriyasu`, `En'ya Sadakiyo`, `Kakunin` and
 `Takaoka Muneyoshi` / `Takao Muneyoshi` each appear twice, and the roster carries
 both copies. They are one person each, not two, and a count of "people still to
@@ -151,7 +151,7 @@ create" that treats them as distinct is wrong by that many.
 
 ## Where the two sources disagree, position invents an identity
 
-Worked example, 2026-08-20, caught by Emma: *"how the fuck did Hiraoka no Naokiyo get
+Worked example, 2026-08-20, caught from outside: *"how the fuck did Hiraoka no Naokiyo get
 forced in like that looks very sus"*.
 
 The resolver paired `Hiraoka no Naokiyo` with a Geni profile called
@@ -208,5 +208,5 @@ Every edge above was read zoomed in, not by column alignment.
   `reports/izumo-kokuso-roster.tsv` carries the same duplicate, taken from the same page,
   so it is the source's own numbering rather than a misreading. Recorded here as `#37`
   because he sits between 36 and 38 in the descent; what would settle it is the Japanese
-  Wikipedia article the page translates, or Emma. This changes no Geni edit either way —
+  Wikipedia article the page translates, or a ruling. This changes no Geni edit either way —
   the regnal number on Geni comes from the roster, not from this file.

@@ -2,7 +2,7 @@
 
 **12,880 name items** carry our people's names but are missing a label in at least one of `mul`, `en`, `ja`, `zh`. Ranked by bearers, because a label on a name 900 people carry is worth more than one on a name six people carry.
 
-This report proposes no labels. What katakana a name takes is a reading, not a derivation, and `name modelling.txt` sends that to Emma rather than to a rule.
+This report proposes no labels. What katakana a name takes is a reading, not a derivation, and `name modelling.txt` sends that to a human rather than to a rule.
 
 | language | items missing it | name-uses behind them |
 | --- | ---: | ---: |

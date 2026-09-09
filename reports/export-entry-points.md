@@ -11,7 +11,7 @@ far from all of them sits in the deep interior of a region one export
 touched once, which is where a new seed reaches material nothing else came
 near.
 
-**Redacted profiles are INCLUDED**, and flagged in their own column. Emma:
+**Redacted profiles are INCLUDED**, and flagged in their own column.
 *"we are including redacted profiles. Redacted profiles are important."* The
 structure around a redacted person is not redacted, so an export seeded there
 still returns their relatives.

@@ -66,7 +66,7 @@ Nebhepetre Mentuhotep II was **born in 2111 CE**, sourced to a Geni profile.
 Five records is small enough to correct by hand.
 
 Correcting them means editing the profiles on Geni, since this repo does not
-change export data — **BLOCKED-ON-USER-ACTION**, Emma. The alternative, if that
+change export data — **BLOCKED-ON-USER-ACTION**. The alternative, if that
 is not worth doing for five pharaohs, is for the pipeline to refuse a date for
 any person whose birth year exceeds the current year, which is a two-line guard
 and catches the whole class rather than these five.

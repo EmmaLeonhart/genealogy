@@ -46,7 +46,7 @@ new arrivals settle — so she is a node in this network, not just an instance o
 
 ## SETTLED: he is Wadah **Cohen**, and the high priest was his **uncle**
 
-**RFE/RL, read from the page Emma saved 2026-08-14, is unambiguous** — and it
+**RFE/RL, read from the page saved 2026-08-14, is unambiguous** — and it
 overturns both the AP surname and my own reading of the Globe and Mail:
 
 > "**Alexandra Cohen (formerly Krasuk)** and her two children in the village of
@@ -142,7 +142,7 @@ women's side.
 
 ## Worldcrunch adds money, a third name for Wadah, and two more men
 
-Read from Emma's saved page. It is translated from a French original and keeps
+Read from the saved page. It is translated from a French original and keeps
 detail the wire copy dropped.
 
 **Wadah is called `Wadah Abd Moïne` here** — a third form, after `Wadah Cohen`
@@ -187,7 +187,7 @@ Christian Century and CS Monitor. Genetic testing is now described as
 ## Yousef Sadaka HaCohen — the fuller name, and still no sons
 
 **Christian Century, Michele Chabin, 22 November 2017** (Religion News Service),
-read from Emma's saved page. This is very likely the "Yousef Cohen" the CS
+read from the saved page. This is very likely the "Yousef Cohen" the CS
 Monitor quoted in 2014 — a priest on Mount Gerizim — and it gives a fuller name:
 **Yousef Sadaka HaCohen**.
 
@@ -212,7 +212,7 @@ father, not a closer look at the spelling.
 ## Samaritan marriage law, from the Jewish Women's Archive
 
 The one source written **about the women**, and the only place the rules are set
-out rather than described in passing. Read from Emma's saved page.
+out rather than described in passing. Read from the saved page.
 
 **There is exactly one priest-specific marriage rule, and it is not endogamy:**
 
