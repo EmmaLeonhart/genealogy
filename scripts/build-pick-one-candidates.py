@@ -1,10 +1,10 @@
-"""The AMBIGUOUS family slots, as a card she can actually answer.
+"""The AMBIGUOUS family slots, as a card you can actually answer.
 
     PYTHONPATH=src python scripts/build-pick-one-candidates.py
 
     -> reports/pick-one-candidates.tsv   every open slot, one row per option -- the census
     -> out/pick-one-gui-data.json        the deck
-    -> out/pick-one-review.html          the deck rendered, which is what she opens
+    -> out/pick-one-review.html          the deck rendered, which is what you open
 
 Published, UNLINKED, at <https://emmaleonhart.github.io/genealogy/pick-one-review.html>.
 
@@ -41,7 +41,7 @@ people -- so saying *this one* also says *not those*. So:
 retires a `(geni_id, qid)` pair, so a card that recorded only the winner would re-offer the same
 N-1 people against the same item on every rebuild, forever. This is the reading taken rather
 than asked -- `CLAUDE.md` section *Working the queue: GUESS. Do not ask* -- and what would
-falsify it is her saying a pick means only *this one is right* and not *those are wrong*, in
+falsify it is you saying a pick means only *this one is right* and not *those are wrong*, in
 which case the losers' rows come out and the card needs a separate retire mechanism.
 
 `Skip` is the escape and it is why `None of these` can be strict: *I cannot tell* has its own
@@ -75,8 +75,26 @@ OUT_HTML = ROOT / "out" / "pick-one-review.html"
 PLACEHOLDER = ("9995", "9990")
 
 #: A slot with more options than this is not a card anybody can read, and a pick among thirty
-#: siblings is not a judgement she can make from a phone. They stay in the census.
+#: siblings is not a judgement you can make from a phone. They stay in the census.
 MAX_OPTIONS = 8
+
+#: **How many cards reach the PAGE.** The census is whole and this is not a filter on it -- it
+#: is the size of the deck you open.
+#:
+#: Measured 2026-09-09: the full 6,762 cards render to a **16.9 MB** page, against the family
+#: deck's 819 KB for 898 cards. A pick card is ~2.5 KB because it carries an anchor plus up to
+#: eight option blocks with four relative lists each, so the page grows twice as fast per card
+#: as the other decks do. 16.9 MB is not a page anybody opens on mobile data.
+#:
+#: So it is a rolling window, the same shape as `LABEL_EDIT_CAP` and `NAME_ADD_CAP`: what does
+#: not fit today goes out tomorrow, because the deck retires what you have answered on every
+#: rebuild -- `CLAUDE.md` section *The batches are a SEQUENCE*. The ordering below is
+#: most-evidence-first, so the window holds the cards that can actually be settled.
+#:
+#: **This number is a GUESS taken rather than asked** -- `CLAUDE.md` section *Working the queue:
+#: GUESS. Do not ask* -- and what would falsify it is you wanting the whole deck in one page.
+#: It is one constant, it costs a rebuild to move, and the run prints what it held back.
+DECK_CAP = 1000
 
 
 def main():
@@ -151,7 +169,7 @@ def main():
     print("slots: %s answerable 1x1 (the other deck), %s Nx1, %s 1xN, %s many-to-many (held)"
           % tuple(format(x, ",") for x in (one, n_by_1, one_by_n, many)), file=sys.stderr)
 
-    # ---- one card per slot, dropping options she has already ruled on ----------------
+    # ---- one card per slot, dropping options you have already ruled on ----------------
     cards, oversize, exhausted = [], 0, 0
     for arm, parent, sex, mine, theirs, via_of in slots:
         if len(mine) == 1:
@@ -296,11 +314,24 @@ def main():
         print("%s options and %s whole cards dropped: no name to judge on one side"
               % (format(dropped_opts, ","), format(dropped_cards, ",")), file=sys.stderr)
 
-    # **Most evidence first.** A card whose sides share names is one she can settle in a glance;
+    # **Most evidence first.** A card whose sides share names is one you can settle in a glance;
     # one with nothing on either side is one nobody can. This orders the deck; it judges nothing.
     ready.sort(key=lambda c: (len(c["highlight"]),
                               sum(len(f[1]) for f in c["anchor"]["fields"]),
                               -len(c["options"])), reverse=True)
+
+    # **Hold the CJK cards out BEFORE the window, not after.** `deck.render` does it either way,
+    # but doing it after spends window slots on cards that are then dropped -- the first run
+    # published 995 of a 1000-card window for that reason. Your ruling of 2026-09-07 is that a
+    # CJK case is undoable from where you are, so it is never what a slot should hold.
+    ready = [c for c in ready
+             if not any(deck.has_cjk(n) for n in deck.card_names(c))]
+
+    windowed = len(ready) - DECK_CAP
+    if windowed > 0:
+        print("%s cards held for a later rebuild; %d reach the page. See DECK_CAP."
+              % (format(windowed, ","), DECK_CAP), file=sys.stderr)
+        ready = ready[:DECK_CAP]
 
     out = deck.render(ready, OUT_HTML, OUT_JSON,
                       title="Pick One",

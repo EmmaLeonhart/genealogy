@@ -592,6 +592,29 @@ def mark_also_offered(cases):
                 c["also_offered"] = ", ".join(o["our"] for o in group if o is not c)
 
 
+def card_names(case):
+    """Every person's name a card puts on screen, whatever shape the card is.
+
+    **A PICK CARD HAS NO `our`/`cand` PAIR**, so a holdout reading only those two keys saw
+    nothing on it and let a Han-named option through the ruling of 2026-09-07 that CJK cases are
+    undoable. It has an `anchor` and a list of `options` instead, and every one of those names
+    is on the card.
+    """
+    yield case.get("our")
+    yield case.get("cand")
+    anchor = case.get("anchor") or {}
+    yield anchor.get("name")
+    for opt in case.get("options") or ():
+        yield opt.get("name")
+        yield opt.get("our")
+        yield opt.get("cand")
+
+
+def card_id(case):
+    """What to name a card in a message. A pair card is its item; a pick card is its slot."""
+    return case.get("qid") or case.get("id") or "?"
+
+
 def render(cases, html_path, json_path, title, sub, key):
     """Write the deck JSON and the rendered page. Returns the cases that reached the deck.
 
@@ -600,11 +623,11 @@ def render(cases, html_path, json_path, title, sub, key):
 
     **A CJK CASE IS HELD OUT.** See `has_cjk`.
     """
-    held = [c for c in cases if has_cjk(c.get("our")) or has_cjk(c.get("cand"))]
+    held = [c for c in cases if any(has_cjk(n) for n in card_names(c))]
     deck = [c for c in cases if c not in held]
     if held:
         print("%d CJK case(s) held out of the deck, per your ruling of 2026-09-07: %s"
-              % (len(held), ", ".join(c["qid"] for c in held[:8])), file=sys.stderr)
+              % (len(held), ", ".join(card_id(c) for c in held[:8])), file=sys.stderr)
     json_path.parent.mkdir(parents=True, exist_ok=True)
     json.dump(deck, io.open(json_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     if not TEMPLATE.exists():

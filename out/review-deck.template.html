@@ -258,7 +258,7 @@ function firstUndecided() {
 // **The five columns never change**, whatever the card was. A pick emits one row per option:
 // the chosen one SAME and every other DIFFERENT, because the slot has one answer and saying
 // *this one* also says *not those*. A skip emits every option as UNSURE, which records that
-// she looked and could not tell -- deck.answered_pairs() brings an UNSURE back.
+// you looked and could not tell -- deck.answered_pairs() brings an UNSURE back.
 function tsv() {
   var rows = [];
   CASES.forEach(function (c) {

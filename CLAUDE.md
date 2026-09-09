@@ -4926,6 +4926,55 @@ one.** The cloud container answers `CONNECT www.wikidata.org:443` with 403 and h
 One pass over the 2,427 shards, ~6 minutes, and it is cheaper than the API once a deck is large.
 In Actions the store is excluded and `wbgetentities` is what runs, exactly as before.
 
+### THE PICK-ONE DECK: the AMBIGUOUS family slots, `pick-one-review.html`
+
+<https://emmaleonhart.github.io/genealogy/pick-one-review.html> --- the third deck, and the only
+one whose card is not Same/Different. `scripts/build-pick-one-candidates.py` builds it,
+`reports/pick-one-candidates.tsv` is its census, `batch` = `pick-one-adjudication-gui`.
+
+**It exists because the family deck cannot ask this question.** That deck offers a slot only
+where both sides hold exactly one person of that sex; **12,125 slots hold more**. The common
+shape is `N x 1` --- Wikidata names somebody nothing accounts for and we hold several people it
+could be --- and its own docstring says why a yes/no card is wrong there: *"offering it as three
+yes/no cards invites three Sames."* So the card shows the sibship on both sides and you pick one,
+or none.
+
+    N x 1   the anchor is the ITEM.        "which of our N is this item?"
+    1 x N   the anchor is OUR PERSON.      "which of these items is our person?"
+
+**A slot where BOTH sides hold several is not offered.** That is a matching problem across two
+sets rather than a single pick, and forcing it into this card invites the same over-assertion.
+**4,447 of them** stay in the census, counted in the run's output.
+
+**⛔ A PICK ALSO SAYS *NOT THOSE*, and that is what lets the deck shrink.** The slot has one
+answer by construction, so picking X writes `SAME` for X and `DIFFERENT` for every other option
+in that slot; *None of these* writes `DIFFERENT` for all of them; *Skip* writes nothing and the
+slot comes back. Without the losers' rows `deck.answered_pairs()` would re-offer the same N-1
+people against the same item on every rebuild, forever. This is the reading taken rather than
+asked --- § *Working the queue: GUESS. Do not ask* --- and what would falsify it is you saying a
+pick means only *this one is right*.
+
+**The export format does not change.** The *Copy decisions* button still gives the same five
+columns --- `geni_id, our_name, qid, their_name, verdict` --- so the paste-back into
+`reports/emma-judgments.tsv` is unchanged. One pick card simply emits N rows instead of one.
+
+**`DECK_CAP` is 1,000 and the census is whole.** Measured 2026-09-09: all 6,762 cards render to a
+**16.9 MB** page against the family deck's 819 KB, because a pick card carries an anchor plus up
+to eight option blocks with four relative lists each. It is a rolling window of the same shape as
+`LABEL_EDIT_CAP` --- what does not fit today goes out tomorrow, since the deck retires what you
+have answered on every rebuild. **The ordering is most-evidence-first**, so the window holds the
+cards that can actually be settled. `MAX_OPTIONS` is 8; **110 wider slots** stay in the census.
+
+**A CJK card is held out here too**, § *A CJK CASE IS NOT IN THE DECK* --- and the holdout has to
+read the card's **options**, not an `our`/`cand` pair, because a pick card has neither.
+`deck.card_names()` is that reading and every deck goes through it. It runs **before** the window,
+or the window spends slots on cards that are then dropped.
+
+**Regenerate it before handing it over**, exactly as for the other two ---
+`gh workflow run review-decks.yml` builds all three and republishes Pages, or
+`PYTHONPATH=src python scripts/build-pick-one-candidates.py` on a machine that has the tree.
+
+
 ### The purpose is to ADD to Wikidata, not to correct it
 
 **2026-08-10, you:** *"the entire purpose of this is to add it… Correcting

@@ -1,9 +1,11 @@
 # **The manual zipper decks, on demand.** `CLAUDE.md` § *THE PARENT DECK* is the long form.
 #
-# **Two decks, one workflow, because they are one job.** `parent-review.html` asks whether our
-# person is the PARENT their child already names; `family-review.html` asks the mirror question
-# one slot down, for the CHILD and SIBLING slots. Both are regenerated together so a session
-# handing one over is never handing over a photograph of the other. This file was
+# **Three decks, one workflow, because they are one job.** `parent-review.html` asks whether
+# our person is the PARENT their child already names; `family-review.html` asks the mirror
+# question one slot down, for the CHILD and SIBLING slots; `pick-one-review.html` asks the
+# ambiguous shape of those same slots, where one side names somebody and the other holds
+# several people it could be. All three are regenerated together so a session handing one
+# over is never handing over a photograph of the others. This file was
 # `parent-deck.yml` until 2026-09-09, when the second deck arrived and a name meaning half the
 # job became the kind of misleading label `CLAUDE.md` § *"MANUAL ENTITY RESOLUTION" IS A
 # MISLEADING NAME* is about.
@@ -90,6 +92,17 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-family-candidates.py
 
+      # **The ambiguous shape of the SAME slots**, which the deck above cannot ask about: a
+      # Same/Different card offered N times invites N Sames, so an `N x 1` slot needs a card
+      # that picks one. It runs last because it is the widest -- thousands of cards, and the
+      # store scan or the API fetch behind their names is minutes -- so a failure here leaves
+      # both decks above already rebuilt.
+      - name: Build the pick-one deck
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: python scripts/build-pick-one-candidates.py
+
       - name: Copy it onto the site
         run: python scripts/build-pages-site.py
 
@@ -100,7 +113,9 @@ jobs:
           python scripts/pack-derived.py
           git add out/parent-review.html out/gui-data.json \
                   out/family-review.html out/family-gui-data.json out/site \
-                  reports/parent-candidates.tsv reports/family-candidates.tsv
+                  out/pick-one-review.html out/pick-one-gui-data.json \
+                  reports/parent-candidates.tsv reports/family-candidates.tsv \
+                  reports/pick-one-candidates.tsv
           if git diff --cached --quiet; then
             echo "the deck is unchanged; nothing to commit"
             exit 0
@@ -123,3 +138,5 @@ jobs:
           echo "$(( $(wc -l < reports/parent-candidates.tsv) - 1 )) parent cases open"
           echo "https://emmaleonhart.github.io/genealogy/family-review.html"
           echo "$(( $(wc -l < reports/family-candidates.tsv) - 1 )) child/sibling cases open"
+          echo "https://emmaleonhart.github.io/genealogy/pick-one-review.html"
+          echo "$(( $(wc -l < reports/pick-one-candidates.tsv) - 1 )) ambiguous-slot options open"

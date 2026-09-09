@@ -32861,3 +32861,56 @@ published page, and five files carried `minted your a SECOND item`. All repaired
 `CHECK before you alarm her` also collapsed into `CHECK before you alarm you`, since the
 document now uses *you* for two different referents; renamed to **`CHECK before raising an
 alarm`** across all 10 references rather than left ambiguous.
+
+## 2026-09-09 — the PICK-ONE deck: the ambiguous family slots, as a card you can answer
+
+`scripts/build-pick-one-candidates.py` →
+<https://emmaleonhart.github.io/genealogy/pick-one-review.html>, published unlinked beside the
+other two decks. It closes the queue item that the child/sibling deck's own docstring named as
+the next thing to build.
+
+**The gap it fills.** `build-family-candidates.py` offers a slot only where both sides hold
+exactly one person of that sex; **12,125 slots hold more**. The common shape is `N x 1` —
+Wikidata names somebody nothing accounts for and we hold several people it could be — and a
+Same/Different card offered N times invites N Sames. So the card shows the sibship on both sides
+and you pick one, or none. A slot where **both** sides hold several is a matching problem rather
+than a pick and is not offered: **4,447** of those stay in the census.
+
+    slots  5,249 answerable 1x1 (the other deck) · 6,372 Nx1 · 1,306 1xN · 4,447 many-to-many
+    cards  7,557 over 21,349 options -> reports/pick-one-candidates.tsv
+    deck   1,000 -> out/pick-one-review.html, 3.0 MB raw / 261 KB gzipped
+
+**A pick also says *not those*, and that is what lets the deck shrink.** The slot has one answer
+by construction, so picking X writes `SAME` for X and `DIFFERENT` for every other option in that
+slot. Without the losers' rows `deck.answered_pairs()` would re-offer the same N−1 people against
+the same item on every rebuild, forever. Taken as a guess rather than asked, per `CLAUDE.md`
+§ *Working the queue: GUESS. Do not ask*; what would falsify it is you saying a pick means only
+*this one is right*. `Skip` writes nothing and the slot comes back, which is why `None of these`
+can be strict. The five export columns are unchanged — one pick card emits N rows instead of one.
+
+**`DECK_CAP = 1000`, and the census stays whole.** All 6,762 ready cards render to a **16.9 MB**
+page against the family deck's 819 KB, because a pick card carries an anchor plus up to eight
+option blocks with four relative lists each. That is not a page anybody opens on mobile data, so
+the deck is a rolling window of the same shape as `LABEL_EDIT_CAP` — what does not fit today goes
+out tomorrow, since the deck retires what you have answered on every rebuild. The ordering is
+most-evidence-first, so the window holds the cards that can actually be settled.
+
+**`deck.card_names()` is the fix under `deck.render`'s CJK holdout.** It read `our`/`cand` only,
+and a pick card has neither — it has an `anchor` and a list of `options` — so a Han-named option
+would have gone straight through your ruling of 2026-09-07. **576 cards** are held out by it. It
+now runs **before** the window: applied after, the first run published 995 of a 1,000-card window
+because the holdout spent slots on cards it then dropped.
+
+**Wired for publication, which is three places and all three are needed.**
+`build-pages-site.ALONGSIDE`, `pages.yml`'s sparse checkout (a page missing from it is never
+checked out and the copy is a silent no-op), and `review-decks.yml`, which is now three decks
+rather than two and builds this one last because it is the widest — the store scan behind its
+21,360 names is 162 s. `pipeline.yml` is untouched: it rebuilds only the small parent deck.
+
+The script and the shared template also went to the second person; commit `51522915` swept 354
+files the day before and `32431ddd` landed after it.
+
+**Not done this session: the collector.** The browser extension would not pair —
+`tabs_context_mcp` and `list_connected_browsers` both empty, `switch_browser` finding nothing —
+with Chrome itself running on 12 processes. BLOCKED-ON-USER-ACTION: one click on **Connect** in
+the extension, which also picks up 1.6.6 if the extension is reloaded at the same time.
