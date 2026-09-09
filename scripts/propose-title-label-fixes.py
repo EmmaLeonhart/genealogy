@@ -299,7 +299,21 @@ def main():
             # `King Vidor`, `Noble Sissle` -- and stripping it would rename 41,505 people.
             if title and not title.split()[0][:1].islower():
                 title = ""
-            stripped = live[len(title):].strip() if title else live
+            # ⛔ **THE LEADING WORD ONLY, not the whole stacked run.** You, 2026-09-09, choosing
+            # between dropping one word and dropping the stack: *"Drop the leading word only"*,
+            # so a title after the comma SURVIVES. `leading_title` spans the whole run --
+            # `professor, Rev. Dr.` and `general, baron` are single values of it -- and cutting
+            # `len(title)` took all of it, which is the option you did not pick.
+            #
+            #   professor, Rev. Dr. Göran Wallin, bishop of Gothenburg
+            #     -> Rev. Dr. Göran Wallin, bishop of Gothenburg      (yours)
+            #     -> Göran Wallin, bishop of Gothenburg               (what it did)
+            #
+            # 5 emittable rows have a multi-word leading title, so this is small and exact:
+            # `general, baron`, `count Don`, `ridder Mr.`, `professor, Rev. Dr.`,
+            # `professor, Dr.` Every other row has a one-word title and is unaffected.
+            first = title.split()[0] if title else ""
+            stripped = live[len(first):].strip() if first else live
             # **⛔ THE COMMA TAIL GOES FIRST, and the order is not cosmetic.**
             # `Johann|Hans, Freiherr von Aichberg zu Laberweinting` split first gives
             # `Johann Freiherr von Aichberg zu Laberweinting` -- which keeps a rank the tail

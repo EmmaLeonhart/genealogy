@@ -33211,3 +33211,42 @@ must be position-aware or it capitalises mid-sentence (`"is The call"`).
 voice *during* the pass, one citing a heading the pass had renamed — so the cross-reference was
 broken as well as personal. Renaming a heading breaks every `§ *…*` reference to it; grep the old
 title in the same commit.
+
+## 2026-09-09 — every lowercase rank is ruled: 871 people, 35 ranks, prefix only
+
+You asked to be put through the remaining ranks by `AskUserQuestion` — *"the lowercase ranks I
+want AskUserQuestion on every one of them"* — and ruled on all of them in three rounds. Every
+answer was drop, so the batch now covers **35 ranks over 871 people, 1,442 label edits**.
+
+    noble 572 · knight 51 · ridder 41 · baroness 27 · captain 25 · countess 21 · princess 15
+    count 14 · prince 14 · major 14 · farmer 11 · lady 10 · baron 8 · dona 7 · mistress 6
+    lord 4 · consul 4 · professor 3 · skipper 3 · graf 2 · friherre 2 · doña 2 · baronesse 2
+    general 2 · professor, 2 · rabbi · dr. · mr. · nobile · knyaz · comtesse · general,
+    conte · queen · freiherr
+
+**`esquire` is the one exclusion and it is yours** — 9 people, *"If there's 9 people we can do
+it manually lol."* It is the only lowercase rank left unemitted, and the run's own
+`rank-not-ruled-on` counter reports exactly those 9.
+
+**⛔ THE STACKED TITLES WERE BEING CUT WHOLE, WHICH IS THE OPTION YOU DID NOT PICK.** Offered
+*drop the leading word* against *drop the whole stacked style*, you chose the first — so a title
+after the comma survives. `leading_title` spans the entire run, and `live[len(title):]` took all
+of it:
+
+    professor, Rev. Dr. Göran Wallin, bishop of Gothenburg
+      -> Rev. Dr. Göran Wallin, bishop of Gothenburg      yours
+      -> Göran Wallin, bishop of Gothenburg               what it did
+
+Fixed in `propose-title-label-fixes.py`, which is the one place that computes the label rather
+than in the emitter. **5 emittable rows have a multi-word leading title** — `general, baron`,
+`count Don`, `ridder Mr.`, `professor, Rev. Dr.`, `professor, Dr.` — so the change is small and
+exact, and every one-word row is untouched.
+
+**One of the five now HOLDS rather than emitting, and that is correct.** `general, baron
+Frederik Buchwaldt` drops only `general,` and still opens with `baron`, so the
+`leading-lowercase` guard catches it. Stripping twice would be the option you rejected, so it
+stays held and is flagged to you instead.
+
+**One rank taken by extension rather than asked: bare `general`, 2 people.** You ruled `captain`,
+`major` and `general,` explicitly and all three drop; a bare `general` is the same word as the
+last of those. Reversible in one line of `RANKS` if that is wrong.

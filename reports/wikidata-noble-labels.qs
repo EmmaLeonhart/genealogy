@@ -14,6 +14,10 @@
 # own verdict -- 9 people, to be done by hand. Every rank you have not ruled on is
 # computed in `reports/title-label-proposals.tsv` and deliberately not emitted.
 
+# Q446653  rabbi Shlomo Zalman Auerbach  ->  Shlomo Zalman Auerbach
+Q446653	Len	"Shlomo Zalman Auerbach"
+Q446653	Lit	"Shlomo Zalman Auerbach"
+
 # Q1679281  count Jakob Philip von Schwerin  ->  Jakob Philip von Schwerin
 Q1679281	Lmul	"Jakob Philip von Schwerin"
 
@@ -23,14 +27,75 @@ Q5780803	Len	"Eskild Mogensen til Gisselfeld, lord of Krenkerup and Gisselfeld"
 # Q5797546  noble Detlof Heyke, master of Gammelbo bruk  ->  Detlof Heyke, master of Gammelbo bruk
 Q5797546	Lmul	"Detlof Heyke, master of Gammelbo bruk"
 
+# Q10904245  lady Suk from Im  ->  Suk from Im
+Q10904245	Len	"Suk from Im"
+
+# Q12585945  lady SangSan from Song  ->  SangSan from Song
+Q12585945	Len	"SangSan from Song"
+
+# Q16720014  prince Konstantine Giorgi Shervashidze  ->  Konstantine Giorgi Shervashidze
+Q16720014	Len	"Konstantine Giorgi Shervashidze"
+
 # Q19703584  count Draghici Cantacuzino, 1.Count Cantacuzino-Vlasici  ->  Draghici Cantacuzino, 1.Count Cantacuzino-Vlasici
 Q19703584	Len	"Draghici Cantacuzino, 1.Count Cantacuzino-Vlasici"
 
 # Q23039701  baron Lauritsa Johannes 'Kuha', 1.Baron of Heinlahti, provincial governor, 4.Lord of Kitimäki  ->  Lauritsa Johannes 'Kuha', 1.Baron of Heinlahti, provincial governor, 4.Lord of Kitimäki
 Q23039701	Lmul	"Lauritsa Johannes 'Kuha', 1.Baron of Heinlahti, provincial governor, 4.Lord of Kitimäki"
 
+# Q33123887  prince Alexandros Soutzos, beizades, dragoman  ->  Alexandros Soutzos, beizades, dragoman
+Q33123887	Len	"Alexandros Soutzos, beizades, dragoman"
+
 # Q55848893  countess Charlotte Albertine Finck von Finckenstein  ->  Charlotte Albertine Finck von Finckenstein
 Q55848893	Lmul	"Charlotte Albertine Finck von Finckenstein"
+
+# Q65708670  dr. Paulus Snellen  ->  Paulus Snellen
+Q65708670	Len	"Paulus Snellen"
+Q65708670	Lfr	"Paulus Snellen"
+Q65708670	Lde	"Paulus Snellen"
+Q65708670	Lnl	"Paulus Snellen"
+Q65708670	Les	"Paulus Snellen"
+Q65708670	Lit	"Paulus Snellen"
+Q65708670	Lpt	"Paulus Snellen"
+
+# Q65770261  mr. Johan Francois Barthold van Hasselt  ->  Johan Francois Barthold van Hasselt
+Q65770261	Len	"Johan Francois Barthold van Hasselt"
+Q65770261	Lfr	"Johan Francois Barthold van Hasselt"
+Q65770261	Lde	"Johan Francois Barthold van Hasselt"
+Q65770261	Lnl	"Johan Francois Barthold van Hasselt"
+Q65770261	Les	"Johan Francois Barthold van Hasselt"
+Q65770261	Lit	"Johan Francois Barthold van Hasselt"
+Q65770261	Lpt	"Johan Francois Barthold van Hasselt"
+
+# Q75967053  nobile Giuseppe delle Piane  ->  Giuseppe delle Piane
+Q75967053	Len	"Giuseppe delle Piane"
+
+# Q75970175  graf Avgust Borisovich Sheremetev  ->  Avgust Borisovich Sheremetev
+Q75970175	Len	"Avgust Borisovich Sheremetev"
+Q75970175	Lnl	"Avgust Borisovich Sheremetev"
+
+# Q75970289  knyaz Nikolai Aleksyeevich Kozlovskii  ->  Nikolai Aleksyeevich Kozlovskii
+Q75970289	Len	"Nikolai Aleksyeevich Kozlovskii"
+Q75970289	Lnl	"Nikolai Aleksyeevich Kozlovskii"
+
+# Q75970326  graf Nikolai Dimitrievich Sheremetev  ->  Nikolai Dimitrievich Sheremetev
+Q75970326	Len	"Nikolai Dimitrievich Sheremetev"
+Q75970326	Lnl	"Nikolai Dimitrievich Sheremetev"
+
+# Q76369035  friherre Hans Malte Troil Ramel  ->  Hans Malte Troil Ramel
+Q76369035	Len	"Hans Malte Troil Ramel"
+Q76369035	Lnl	"Hans Malte Troil Ramel"
+
+# Q96075846  doña Leonor de Guzmán  ->  Leonor de Guzmán
+Q96075846	Len	"Leonor de Guzmán"
+Q96075846	Lnl	"Leonor de Guzmán"
+
+# Q96075956  doña Elvira de Ayala  ->  Elvira de Ayala
+Q96075956	Len	"Elvira de Ayala"
+Q96075956	Lnl	"Elvira de Ayala"
+
+# Q96083820  comtesse [Antoine Gabrielle] Marie d'Ursel  ->  [Antoine Gabrielle] Marie d'Ursel
+Q96083820	Len	"[Antoine Gabrielle] Marie d'Ursel"
+Q96083820	Lnl	"[Antoine Gabrielle] Marie d'Ursel"
 
 # Q96240705  ridder Axel Pedersen, High Councillor of Denmark  ->  Axel Pedersen, High Councillor of Denmark
 Q96240705	Len	"Axel Pedersen, High Councillor of Denmark"
@@ -91,6 +156,10 @@ Q99301916	Lnl	"Beata Gustavsdotter av Fiholm"
 # Q99302168  countess Sigrid Gustavsdotter, Grevinna av Bogesund, heiress of Lindholmen & Ervalla  ->  Sigrid Gustavsdotter, Grevinna av Bogesund, heiress of Lindholmen & Ervalla
 Q99302168	Len	"Sigrid Gustavsdotter, Grevinna av Bogesund, heiress of Lindholmen & Ervalla"
 Q99302168	Lnl	"Sigrid Gustavsdotter, Grevinna av Bogesund, heiress of Lindholmen & Ervalla"
+
+# Q99302173  lady Ingeborg Kristofersdotter av Hedåker, heiress presumptive of Ervalla & Hedåker  ->  Ingeborg Kristofersdotter av Hedåker, heiress presumptive of Ervalla & Hedåker
+Q99302173	Len	"Ingeborg Kristofersdotter av Hedåker, heiress presumptive of Ervalla & Hedåker"
+Q99302173	Lnl	"Ingeborg Kristofersdotter av Hedåker, heiress presumptive of Ervalla & Hedåker"
 
 # Q100440308  count Joan Alfons Ferrell  ->  Joan Alfons Ferrell
 Q100440308	Lmul	"Joan Alfons Ferrell"
@@ -161,6 +230,10 @@ Q101248401	Lmul	"Johan Gregersen af Sandbro, lord of Lindholm"
 Q101248401	Len	"Johan Gregersen af Sandbro, lord of Lindholm"
 Q101248401	Lnl	"Johan Gregersen af Sandbro, lord of Lindholm"
 
+# Q101248409  lady Siri Pentintytär of Krakerum, Chatelaine of Viipuri  ->  Siri Pentintytär of Krakerum, Chatelaine of Viipuri
+Q101248409	Len	"Siri Pentintytär of Krakerum, Chatelaine of Viipuri"
+Q101248409	Lnl	"Siri Pentintytär of Krakerum, Chatelaine of Viipuri"
+
 # Q101248477  knight Gregers Bengtson av Ärnäs av Aspenäs  ->  Gregers Bengtson av Ärnäs av Aspenäs
 Q101248477	Len	"Gregers Bengtson av Ärnäs av Aspenäs"
 Q101248477	Lnl	"Gregers Bengtson av Ärnäs av Aspenäs"
@@ -209,6 +282,9 @@ Q103782539	Lnl	"Anders Jachimsen til Voergaard"
 Q103782642	Len	"Tymme Nielsen af Hevringsholm, Lord of Engelsholm and Stensballegaard"
 Q103782642	Lnl	"Tymme Nielsen af Hevringsholm, Lord of Engelsholm and Stensballegaard"
 
+# Q103784012  lord Niels Eriksen i (Sonderholm)  ->  Niels Eriksen i (Sonderholm)
+Q103784012	Len	"Niels Eriksen i (Sonderholm)"
+
 # Q103784054  ridder Erik Nielsson, High Constable of Denmark, lord of Naesbo  ->  Erik Nielsson, High Constable of Denmark, lord of Naesbo
 Q103784054	Lmul	"Erik Nielsson, High Constable of Denmark, lord of Naesbo"
 Q103784054	Len	"Erik Nielsson, High Constable of Denmark, lord of Naesbo"
@@ -224,9 +300,17 @@ Q103788070	Lmul	"Claus Nielsen af Ellinge, Lord of Ellinge"
 Q103788070	Len	"Claus Nielsen af Ellinge, Lord of Ellinge"
 Q103788070	Lnl	"Claus Nielsen af Ellinge, Lord of Ellinge"
 
+# Q103788263  lady Kerstin Eriksdotter av Fågelvik, heiress of Bjurum  ->  Kerstin Eriksdotter av Fågelvik, heiress of Bjurum
+Q103788263	Len	"Kerstin Eriksdotter av Fågelvik, heiress of Bjurum"
+Q103788263	Lnl	"Kerstin Eriksdotter av Fågelvik, heiress of Bjurum"
+
 # Q104550104  knight Jens Ulfson av Ervalla, lord of Ervalla, 'jure uxoris' lord of Djursholm  ->  Jens Ulfson av Ervalla, lord of Ervalla, 'jure uxoris' lord of Djursholm
 Q104550104	Len	"Jens Ulfson av Ervalla, lord of Ervalla, 'jure uxoris' lord of Djursholm"
 Q104550104	Lnl	"Jens Ulfson av Ervalla, lord of Ervalla, 'jure uxoris' lord of Djursholm"
+
+# Q104550254  lady Beate Niilontytär of Grabbaka, heiress of Grabbacka & Lindöö manors  ->  Beate Niilontytär of Grabbaka, heiress of Grabbacka & Lindöö manors
+Q104550254	Len	"Beate Niilontytär of Grabbaka, heiress of Grabbacka & Lindöö manors"
+Q104550254	Lnl	"Beate Niilontytär of Grabbaka, heiress of Grabbacka & Lindöö manors"
 
 # Q105796362  baroness Beata Karlsdotter Gera, Heiress of Bjorkvik  ->  Beata Karlsdotter Gera, Heiress of Bjorkvik
 Q105796362	Len	"Beata Karlsdotter Gera, Heiress of Bjorkvik"
@@ -292,6 +376,10 @@ Q110303577	Lnl	"Margareta Svantesdotter av Stegeholm, Lady of Tureforsa"
 Q110303710	Len	"Leonoora Lindhielm"
 Q110303710	Lnl	"Leonoora Lindhielm"
 
+# Q110304276  baronesse Sophie Cathrine Juel, heiress of Juellinge barony  ->  Sophie Cathrine Juel, heiress of Juellinge barony
+Q110304276	Len	"Sophie Cathrine Juel, heiress of Juellinge barony"
+Q110304276	Lnl	"Sophie Cathrine Juel, heiress of Juellinge barony"
+
 # Q110304280  baroness Ide Helle Margrethe Krag  ->  Ide Helle Margrethe Krag
 Q110304280	Len	"Ide Helle Margrethe Krag"
 Q110304280	Lnl	"Ide Helle Margrethe Krag"
@@ -330,15 +418,35 @@ Q110304633	Lnl	"Karl Jakob Leijonstedt, 2.Greve af Skarpneck"
 Q110313507	Len	"Kirsti Marjatta Eleonora of Liljalinnake, Grevinna Lillienstedt"
 Q110313507	Lnl	"Kirsti Marjatta Eleonora of Liljalinnake, Grevinna Lillienstedt"
 
+# Q110313576  lady Kaarina Kyötikäntytär of Sunniemi, dowager of Örboholm  ->  Kaarina Kyötikäntytär of Sunniemi, dowager of Örboholm
+Q110313576	Lmul	"Kaarina Kyötikäntytär of Sunniemi, dowager of Örboholm"
+Q110313576	Len	"Kaarina Kyötikäntytär of Sunniemi, dowager of Örboholm"
+Q110313576	Lnl	"Kaarina Kyötikäntytär of Sunniemi, dowager of Örboholm"
+
 # Q110323112  countess Caroline von Bohlen, Gräfin von Bohlen, heiress of Grafschaft Gnatzkow (Carlsburg)  ->  Caroline von Bohlen, Gräfin von Bohlen, heiress of Grafschaft Gnatzkow (Carlsburg)
 Q110323112	Lmul	"Caroline von Bohlen, Gräfin von Bohlen, heiress of Grafschaft Gnatzkow (Carlsburg)"
 Q110323112	Len	"Caroline von Bohlen, Gräfin von Bohlen, heiress of Grafschaft Gnatzkow (Carlsburg)"
 Q110323112	Lnl	"Caroline von Bohlen, Gräfin von Bohlen, heiress of Grafschaft Gnatzkow (Carlsburg)"
 
+# Q110330995  prince Mikhail Vasilievich 'khvorostin'  ->  Mikhail Vasilievich 'khvorostin'
+Q110330995	Lmul	"Mikhail Vasilievich 'khvorostin'"
+Q110330995	Len	"Mikhail Vasilievich 'khvorostin'"
+Q110330995	Lnl	"Mikhail Vasilievich 'khvorostin'"
+
+# Q110330997  prince Vasilei Danilovich Ukhorski  ->  Vasilei Danilovich Ukhorski
+Q110330997	Lmul	"Vasilei Danilovich Ukhorski"
+Q110330997	Len	"Vasilei Danilovich Ukhorski"
+Q110330997	Lnl	"Vasilei Danilovich Ukhorski"
+
 # Q110363741  noble Jan Henryk Flemming, Erblandmarschall von Pommern  ->  Jan Henryk Flemming, Erblandmarschall von Pommern
 Q110363741	Lmul	"Jan Henryk Flemming, Erblandmarschall von Pommern"
 Q110363741	Len	"Jan Henryk Flemming, Erblandmarschall von Pommern"
 Q110363741	Lnl	"Jan Henryk Flemming, Erblandmarschall von Pommern"
+
+# Q110369182  conte Amedeo Valperga di Masino  ->  Amedeo Valperga di Masino
+Q110369182	Lmul	"Amedeo Valperga di Masino"
+Q110369182	Len	"Amedeo Valperga di Masino"
+Q110369182	Lnl	"Amedeo Valperga di Masino"
 
 # Q110371585  countess Anna Maria von Meggau, heiress of Greinburg, Gräfin von Meggau  ->  Anna Maria von Meggau, heiress of Greinburg, Gräfin von Meggau
 Q110371585	Len	"Anna Maria von Meggau, heiress of Greinburg, Gräfin von Meggau"
@@ -413,6 +521,10 @@ Q110399630	Lmul	"Maria Palladi"
 Q110399630	Len	"Maria Palladi"
 Q110399630	Lnl	"Maria Palladi"
 
+# Q110399631  princess Ruxandra Cantimir, beizadi  ->  Ruxandra Cantimir, beizadi
+Q110399631	Len	"Ruxandra Cantimir, beizadi"
+Q110399631	Lnl	"Ruxandra Cantimir, beizadi"
+
 # Q110399651  noble Tudosia Tudosica Costin  ->  Tudosia Tudosica Costin
 Q110399651	Lmul	"Tudosia Tudosica Costin"
 Q110399651	Len	"Tudosia Tudosica Costin"
@@ -454,6 +566,10 @@ Q110399778	Lnl	"Smaragda Bals"
 # Q110399794  noble Natalie Bals  ->  Natalie Bals
 Q110399794	Len	"Natalie Bals"
 Q110399794	Lnl	"Natalie Bals"
+
+# Q110399797  prince Nicolae Sturdza, beyzades  ->  Nicolae Sturdza, beyzades
+Q110399797	Len	"Nicolae Sturdza, beyzades"
+Q110399797	Lnl	"Nicolae Sturdza, beyzades"
 
 # Q110399800  noble Maria Bogdan  ->  Maria Bogdan
 Q110399800	Lmul	"Maria Bogdan"
@@ -611,6 +727,10 @@ Q110621365	Len	"Maria Horn"
 Q110621367	Lmul	"Kustavi 'Fincke', Lord of Sunniemi, Castellan of Savonlinna"
 Q110621367	Len	"Kustavi 'Fincke', Lord of Sunniemi, Castellan of Savonlinna"
 
+# Q110621373  lady Metta Steenintytär of Porkkala, Heiress of Porkkala  ->  Metta Steenintytär of Porkkala, Heiress of Porkkala
+Q110621373	Lmul	"Metta Steenintytär of Porkkala, Heiress of Porkkala"
+Q110621373	Len	"Metta Steenintytär of Porkkala, Heiress of Porkkala"
+
 # Q110621385  baron Hannes Henrikki Tiesenhausen, 2.Baron of Rakvere & Ergli  ->  Hannes Henrikki Tiesenhausen, 2.Baron of Rakvere & Ergli
 Q110621385	Len	"Hannes Henrikki Tiesenhausen, 2.Baron of Rakvere & Ergli"
 
@@ -671,6 +791,18 @@ Q110731197	Len	"Salomia Jora"
 Q110731198	Lmul	"Irina Buhush"
 Q110731198	Len	"Irina Buhush"
 
+# Q110737686  general Bardzim Zedginidze-Amilakhvari, Lord of Sa-Milakhoro, governor of Gorhi  ->  Bardzim Zedginidze-Amilakhvari, Lord of Sa-Milakhoro, governor of Gorhi
+Q110737686	Lmul	"Bardzim Zedginidze-Amilakhvari, Lord of Sa-Milakhoro, governor of Gorhi"
+Q110737686	Len	"Bardzim Zedginidze-Amilakhvari, Lord of Sa-Milakhoro, governor of Gorhi"
+
+# Q110737950  queen NN of Sa-Ibiri, heiress of Ujarma  ->  NN of Sa-Ibiri, heiress of Ujarma
+Q110737950	Lmul	"NN of Sa-Ibiri, heiress of Ujarma"
+Q110737950	Len	"NN of Sa-Ibiri, heiress of Ujarma"
+
+# Q110738023  princess Nestan-Darejan, queen ('Thamar III'), claimant of Imereti, etc  ->  Nestan-Darejan, queen ('Thamar III'), claimant of Imereti, etc
+Q110738023	Lmul	"Nestan-Darejan, queen ('Thamar III'), claimant of Imereti, etc"
+Q110738023	Len	"Nestan-Darejan, queen ('Thamar III'), claimant of Imereti, etc"
+
 # Q110738303  count Petros Khristoforou Kapnissis  ->  Petros Khristoforou Kapnissis
 Q110738303	Len	"Petros Khristoforou Kapnissis"
 
@@ -704,8 +836,24 @@ Q110850902	Len	"Kirsti Nuutintytär Glad"
 Q110850905	Lmul	"Anna Samulintytär of Villimies"
 Q110850905	Len	"Anna Samulintytär of Villimies"
 
-# Q110935115  count Don Francisco de Zúñiga y Avellaneda, 4.Conde de Miranda del Castañar  ->  Francisco de Zúñiga y Avellaneda, 4.Conde de Miranda del Castañar
-Q110935115	Len	"Francisco de Zúñiga y Avellaneda, 4.Conde de Miranda del Castañar"
+# Q110935115  count Don Francisco de Zúñiga y Avellaneda, 4.Conde de Miranda del Castañar  ->  Don Francisco de Zúñiga y Avellaneda, 4.Conde de Miranda del Castañar
+Q110935115	Len	"Don Francisco de Zúñiga y Avellaneda, 4.Conde de Miranda del Castañar"
+
+# Q110935116  dona Maria de Bazán y Ulloa, 4.Vizcondesa de la Valduerna  ->  Maria de Bazán y Ulloa, 4.Vizcondesa de la Valduerna
+Q110935116	Len	"Maria de Bazán y Ulloa, 4.Vizcondesa de la Valduerna"
+
+# Q110935414  prince Shanshe Ksanish Eristavi  ->  Shanshe Ksanish Eristavi
+Q110935414	Len	"Shanshe Ksanish Eristavi"
+
+# Q110935418  princess Ekaterina Aslanovna Orbeliani, 'Ekaterina Aslanovna'  ->  Ekaterina Aslanovna Orbeliani, 'Ekaterina Aslanovna'
+Q110935418	Len	"Ekaterina Aslanovna Orbeliani, 'Ekaterina Aslanovna'"
+
+# Q110935446  princess Khoramze of Sa-Megrelo  ->  Khoramze of Sa-Megrelo
+Q110935446	Lmul	"Khoramze of Sa-Megrelo"
+Q110935446	Len	"Khoramze of Sa-Megrelo"
+
+# Q110935481  princess Elene of Mukhrani  ->  Elene of Mukhrani
+Q110935481	Len	"Elene of Mukhrani"
 
 # Q111423998  noble Anna Maria Husgavel  ->  Anna Maria Husgavel
 Q111423998	Lmul	"Anna Maria Husgavel"
@@ -782,8 +930,15 @@ Q111442878	Len	"Anna Lauridsdatter Flint, värdinnan i Brostorp"
 Q111452796	Lmul	"Laurence Clayton, of Mallow"
 Q111452796	Len	"Laurence Clayton, of Mallow"
 
+# Q111457201  dona Josefina de Santiago-Concha y Loresecha  ->  Josefina de Santiago-Concha y Loresecha
+Q111457201	Len	"Josefina de Santiago-Concha y Loresecha"
+
 # Q111954766  countess Hedvig Charlotta Cronhjelm  ->  Hedvig Charlotta Cronhjelm
 Q111954766	Len	"Hedvig Charlotta Cronhjelm"
+
+# Q111954785  professor Olaus Jonae Helsingius Luth  ->  Olaus Jonae Helsingius Luth
+Q111954785	Lmul	"Olaus Jonae Helsingius Luth"
+Q111954785	Len	"Olaus Jonae Helsingius Luth"
 
 # Q111954887  ridder Peder Aagesen Hegle, lord of Ollinge  ->  Peder Aagesen Hegle, lord of Ollinge
 Q111954887	Lmul	"Peder Aagesen Hegle, lord of Ollinge"
@@ -819,6 +974,10 @@ Q111989188	Len	"Erlend Eindridsonn av Losna, Castellan of Tunsberg"
 # Q111989192  knight Olav Haakonson av Nesoy, Lord of Neseya  ->  Olav Haakonson av Nesoy, Lord of Neseya
 Q111989192	Lmul	"Olav Haakonson av Nesoy, Lord of Neseya"
 Q111989192	Len	"Olav Haakonson av Nesoy, Lord of Neseya"
+
+# Q111989480  consul Daniel Henrikinpoika Brunila  ->  Daniel Henrikinpoika Brunila
+Q111989480	Lmul	"Daniel Henrikinpoika Brunila"
+Q111989480	Len	"Daniel Henrikinpoika Brunila"
 
 # Q111989489  noble Iida Aleksandra Husgafvel  ->  Iida Aleksandra Husgafvel
 Q111989489	Lmul	"Iida Aleksandra Husgafvel"
@@ -871,9 +1030,16 @@ Q111989565	Len	"Barbara Sifrentytär of Tavastila"
 Q111989657	Lmul	"Valpuri Sunintytär of Sunila, heiress of Heinlahti manor"
 Q111989657	Len	"Valpuri Sunintytär of Sunila, heiress of Heinlahti manor"
 
+# Q111989733  friherre Ulrik von Düben  ->  Ulrik von Düben
+Q111989733	Len	"Ulrik von Düben"
+
 # Q111989746  noble Marjatta Petterintytär of Kuuslahti, heiress of Tanskila & co-heiress of Kuuslahti & Brunila  ->  Marjatta Petterintytär of Kuuslahti, heiress of Tanskila & co-heiress of Kuuslahti & Brunila
 Q111989746	Lmul	"Marjatta Petterintytär of Kuuslahti, heiress of Tanskila & co-heiress of Kuuslahti & Brunila"
 Q111989746	Len	"Marjatta Petterintytär of Kuuslahti, heiress of Tanskila & co-heiress of Kuuslahti & Brunila"
+
+# Q111989755  lady Marketta of Tuorla  ->  Marketta of Tuorla
+Q111989755	Lmul	"Marketta of Tuorla"
+Q111989755	Len	"Marketta of Tuorla"
 
 # Q111989760  captain Maunu 'Ille', squire of Heinlahti  ->  Maunu 'Ille', squire of Heinlahti
 Q111989760	Len	"Maunu 'Ille', squire of Heinlahti"
@@ -902,6 +1068,12 @@ Q111995540	Len	"Ileana Catargiu"
 # Q111995541  noble Sofia Catargiu  ->  Sofia Catargiu
 Q111995541	Len	"Sofia Catargiu"
 
+# Q111995566  prince Mikhael Rakovitzas, beizades  ->  Mikhael Rakovitzas, beizades
+Q111995566	Len	"Mikhael Rakovitzas, beizades"
+
+# Q111995570  princess Roxandra Ghikaina, beizadi  ->  Roxandra Ghikaina, beizadi
+Q111995570	Len	"Roxandra Ghikaina, beizadi"
+
 # Q112002534  noble Ioan Iancu Pallady  ->  Ioan Iancu Pallady
 Q112002534	Lmul	"Ioan Iancu Pallady"
 Q112002534	Len	"Ioan Iancu Pallady"
@@ -923,6 +1095,10 @@ Q112327925	Len	"Elizabete of Grothuze"
 
 # Q112384651  baroness Sofia Engelhardt  ->  Sofia Engelhardt
 Q112384651	Len	"Sofia Engelhardt"
+
+# Q112493368  general Henning Alexander Kahlden  ->  Henning Alexander Kahlden
+Q112493368	Lmul	"Henning Alexander Kahlden"
+Q112493368	Len	"Henning Alexander Kahlden"
 
 # Q112493374  noble Leonore Charlotte Bohlen z Presenske  ->  Leonore Charlotte Bohlen z Presenske
 Q112493374	Lmul	"Leonore Charlotte Bohlen z Presenske"
@@ -948,9 +1124,19 @@ Q112527631	Len	"Piriitta Eerikintytär of Salmenkylä"
 Q112606561	Lmul	"Grigore Cantacuzino, Count Cantacuzino"
 Q112606561	Len	"Grigore Cantacuzino, Count Cantacuzino"
 
+# Q112606567  princess Zoe (bibeixadi) Rousaitaina  ->  Zoe (bibeixadi) Rousaitaina
+Q112606567	Lmul	"Zoe (bibeixadi) Rousaitaina"
+Q112606567	Len	"Zoe (bibeixadi) Rousaitaina"
+
 # Q112606571  noble Ecaterina 'Catinca' Baleanu  ->  Ecaterina 'Catinca' Baleanu
 Q112606571	Lmul	"Ecaterina 'Catinca' Baleanu"
 Q112606571	Len	"Ecaterina 'Catinca' Baleanu"
+
+# Q112606577  princess Maria Basaraba-Brancoveanu, Reichfürstin  ->  Maria Basaraba-Brancoveanu, Reichfürstin
+Q112606577	Len	"Maria Basaraba-Brancoveanu, Reichfürstin"
+
+# Q112606578  prince Emanoil 'Manolache' Basarabe-Brancoveanu, 4th Reichsfürst, duke of Brancoveni, ban of Craiova, Domm Basaraba,  ->  Emanoil 'Manolache' Basarabe-Brancoveanu, 4th Reichsfürst, duke of Brancoveni, ban of Craiova, Domm Basaraba
+Q112606578	Len	"Emanoil 'Manolache' Basarabe-Brancoveanu, 4th Reichsfürst, duke of Brancoveni, ban of Craiova, Domm Basaraba"
 
 # Q112606585  noble Elisabeta Safta Cantacuzina  ->  Elisabeta Safta Cantacuzina
 Q112606585	Lmul	"Elisabeta Safta Cantacuzina"
@@ -958,6 +1144,17 @@ Q112606585	Len	"Elisabeta Safta Cantacuzina"
 
 # Q112606589  noble Irina Vacarescu  ->  Irina Vacarescu
 Q112606589	Len	"Irina Vacarescu"
+
+# Q112606597  princess Aikatherini Karatzaina, beizadi  ->  Aikatherini Karatzaina, beizadi
+Q112606597	Lmul	"Aikatherini Karatzaina, beizadi"
+Q112606597	Len	"Aikatherini Karatzaina, beizadi"
+
+# Q112606623  prince Giorgios 'Iordaki' Rousaitos, beizades  ->  Giorgios 'Iordaki' Rousaitos, beizades
+Q112606623	Lmul	"Giorgios 'Iordaki' Rousaitos, beizades"
+Q112606623	Len	"Giorgios 'Iordaki' Rousaitos, beizades"
+
+# Q112606625  princess Khristina Ghikaina, beizadi  ->  Khristina Ghikaina, beizadi
+Q112606625	Len	"Khristina Ghikaina, beizadi"
 
 # Q112606635  noble Maria de Brancoven, co-heiress of Craiova & Oltenia  ->  Maria de Brancoven, co-heiress of Craiova & Oltenia
 Q112606635	Lmul	"Maria de Brancoven, co-heiress of Craiova & Oltenia"
@@ -973,6 +1170,9 @@ Q112606638	Len	"Pauna Grecianu"
 
 # Q112606934  noble Ecaterina Vacarescu  ->  Ecaterina Vacarescu
 Q112606934	Len	"Ecaterina Vacarescu"
+
+# Q112606955  princess Elena Basaraba-Brancoveanu, Princesse Basaraba-Brancoveanu  ->  Elena Basaraba-Brancoveanu, Princesse Basaraba-Brancoveanu
+Q112606955	Len	"Elena Basaraba-Brancoveanu, Princesse Basaraba-Brancoveanu"
 
 # Q112606976  noble Anastasia Hurmuzachi  ->  Anastasia Hurmuzachi
 Q112606976	Lmul	"Anastasia Hurmuzachi"
@@ -1006,18 +1206,33 @@ Q112606989	Len	"Nicolae Dudescu, 2.Count 'Dudescu-Cantacuzino', palatine of Vala
 # Q112606991  count Constantin Dudescu, 1.Reichsgraf, lord of Dambovitza & Dudesti, ban of Craiova, boier  ->  Constantin Dudescu, 1.Reichsgraf, lord of Dambovitza & Dudesti, ban of Craiova, boier
 Q112606991	Len	"Constantin Dudescu, 1.Reichsgraf, lord of Dambovitza & Dudesti, ban of Craiova, boier"
 
+# Q112606992  princess Maria Cantimir, beizadi  ->  Maria Cantimir, beizadi
+Q112606992	Len	"Maria Cantimir, beizadi"
+
 # Q112606993  noble Ana 'Anitza' de Golești  ->  Ana 'Anitza' de Golești
 Q112606993	Len	"Ana 'Anitza' de Golești"
 
 # Q112641900  noble Euphrosyne Giorgiaidissa Ghykaina  ->  Euphrosyne Giorgiaidissa Ghykaina
 Q112641900	Len	"Euphrosyne Giorgiaidissa Ghykaina"
 
+# Q112641904  princess Marioara Karatzaina, beizadi, domnitza  ->  Marioara Karatzaina, beizadi, domnitza
+Q112641904	Lmul	"Marioara Karatzaina, beizadi, domnitza"
+Q112641904	Len	"Marioara Karatzaina, beizadi, domnitza"
+
 # Q112641931  countess Sevastie Dudescu, komitissa Tedeskou  ->  Sevastie Dudescu, komitissa Tedeskou
 Q112641931	Len	"Sevastie Dudescu, komitissa Tedeskou"
+
+# Q112641946  prince Matei Cantacuzino-Craiovescu, prince Cantacuzino-Craiovescu, Reichsgraf Kantakuzen, boier  ->  Matei Cantacuzino-Craiovescu, prince Cantacuzino-Craiovescu, Reichsgraf Kantakuzen, boier
+Q112641946	Lmul	"Matei Cantacuzino-Craiovescu, prince Cantacuzino-Craiovescu, Reichsgraf Kantakuzen, boier"
+Q112641946	Len	"Matei Cantacuzino-Craiovescu, prince Cantacuzino-Craiovescu, Reichsgraf Kantakuzen, boier"
 
 # Q112641948  countess Zoe 'Zoitza' Dudescu  ->  Zoe 'Zoitza' Dudescu
 Q112641948	Lmul	"Zoe 'Zoitza' Dudescu"
 Q112641948	Len	"Zoe 'Zoitza' Dudescu"
+
+# Q112641970  princess Anna Rakovitzaina, beizadi  ->  Anna Rakovitzaina, beizadi
+Q112641970	Lmul	"Anna Rakovitzaina, beizadi"
+Q112641970	Len	"Anna Rakovitzaina, beizadi"
 
 # Q112641979  noble Sophia Balshe  ->  Sophia Balshe
 Q112641979	Len	"Sophia Balshe"
@@ -1037,6 +1252,19 @@ Q112642124	Len	"Maria Corbeanu"
 # Q112642129  noble Despina Bengescu  ->  Despina Bengescu
 Q112642129	Lmul	"Despina Bengescu"
 Q112642129	Len	"Despina Bengescu"
+
+# Q112642154  princess Roxane Bibeixadina Rousaitaina, Princess Ruset  ->  Roxane Bibeixadina Rousaitaina, Princess Ruset
+Q112642154	Lmul	"Roxane Bibeixadina Rousaitaina, Princess Ruset"
+Q112642154	Len	"Roxane Bibeixadina Rousaitaina, Princess Ruset"
+
+# Q112664162  prince Piotr Alexandrovich Volkonski  ->  Piotr Alexandrovich Volkonski
+Q112664162	Len	"Piotr Alexandrovich Volkonski"
+
+# Q112664163  prince Alexander Dmitrievich Volkonski  ->  Alexander Dmitrievich Volkonski
+Q112664163	Len	"Alexander Dmitrievich Volkonski"
+
+# Q112664164  prince Dmitri Vladimirich Volkonski  ->  Dmitri Vladimirich Volkonski
+Q112664164	Len	"Dmitri Vladimirich Volkonski"
 
 # Q112664165  noble Anna Stepanovna  ->  Anna Stepanovna
 Q112664165	Len	"Anna Stepanovna"
@@ -1242,6 +1470,10 @@ Q112969103	Len	"Inkeri of Vihreekenttä"
 Q112969104	Lmul	"Lyytikka Matinpoika nob. Grönfelt, lord of Kullaankartano"
 Q112969104	Len	"Lyytikka Matinpoika nob. Grönfelt, lord of Kullaankartano"
 
+# Q112969105  skipper Matias Perttelinpoika, 'jure uxoris' of Hummelsund  ->  Matias Perttelinpoika, 'jure uxoris' of Hummelsund
+Q112969105	Lmul	"Matias Perttelinpoika, 'jure uxoris' of Hummelsund"
+Q112969105	Len	"Matias Perttelinpoika, 'jure uxoris' of Hummelsund"
+
 # Q112969106  noble Kaarina Lyytikäntytär of Humalasalmi  ->  Kaarina Lyytikäntytär of Humalasalmi
 Q112969106	Lmul	"Kaarina Lyytikäntytär of Humalasalmi"
 Q112969106	Len	"Kaarina Lyytikäntytär of Humalasalmi"
@@ -1326,6 +1558,9 @@ Q112970932	Len	"Olavi Niilenpoika 'Olavi Tavasti' of Alasjoki, lord of Porkkala,
 Q112970996	Lmul	"Hemming Andersen i Torkilstorp"
 Q112970996	Len	"Hemming Andersen i Torkilstorp"
 
+# Q112971001  lord Beinkt Nikulasson  ->  Beinkt Nikulasson
+Q112971001	Len	"Beinkt Nikulasson"
+
 # Q112973473  mistress Marketta Pentintytär of Roukko, dowager of Pentillä of Lantoinen, heiress of Roukko rustholli  ->  Marketta Pentintytär of Roukko, dowager of Pentillä of Lantoinen, heiress of Roukko rustholli
 Q112973473	Lmul	"Marketta Pentintytär of Roukko, dowager of Pentillä of Lantoinen, heiress of Roukko rustholli"
 Q112973473	Len	"Marketta Pentintytär of Roukko, dowager of Pentillä of Lantoinen, heiress of Roukko rustholli"
@@ -1361,6 +1596,10 @@ Q112973525	Len	"Ernestas Mengedes, 'jure uxoris' of Kusasmuiza, lord of Ogresmui
 # Q112973533  noble Thomas Blankenfeld, mayor of Berlin  ->  Thomas Blankenfeld, mayor of Berlin
 Q112973533	Lmul	"Thomas Blankenfeld, mayor of Berlin"
 Q112973533	Len	"Thomas Blankenfeld, mayor of Berlin"
+
+# Q112973534  lord Vilhelm 'Vilcke' Blankenfeld, mayor of Berlin, 1.Lord  ->  Vilhelm 'Vilcke' Blankenfeld, mayor of Berlin, 1.Lord
+Q112973534	Lmul	"Vilhelm 'Vilcke' Blankenfeld, mayor of Berlin, 1.Lord"
+Q112973534	Len	"Vilhelm 'Vilcke' Blankenfeld, mayor of Berlin, 1.Lord"
 
 # Q112973654  farmer Eerikki Niilonpoika, co-master in Teinpyöli knaappi farm  ->  Eerikki Niilonpoika, co-master in Teinpyöli knaappi farm
 Q112973654	Lmul	"Eerikki Niilonpoika, co-master in Teinpyöli knaappi farm"
@@ -1437,6 +1676,9 @@ Q112974052	Len	"Marketta Munk, heiress of Fulkila"
 # Q112974053  noble Hilgard Kristiina 'Hilkka' Taube  ->  Hilgard Kristiina 'Hilkka' Taube
 Q112974053	Lmul	"Hilgard Kristiina 'Hilkka' Taube"
 Q112974053	Len	"Hilgard Kristiina 'Hilkka' Taube"
+
+# Q112974222  prince Dimitrie Mihai Sturdza, beizades, marshal of Moldavia  ->  Dimitrie Mihai Sturdza, beizades, marshal of Moldavia
+Q112974222	Len	"Dimitrie Mihai Sturdza, beizades, marshal of Moldavia"
 
 # Q112974229  noble Elisabeta Ruset  ->  Elisabeta Ruset
 Q112974229	Len	"Elisabeta Ruset"
@@ -1602,6 +1844,9 @@ Q116184268	Len	"Jachym Flemming, lord of Warkentin, ducal councillor of Pomerani
 # Q116184271  noble Barbara Pfuel  ->  Barbara Pfuel
 Q116184271	Lmul	"Barbara Pfuel"
 
+# Q116471000  skipper Kristeri Vilhelmi Vestermark  ->  Kristeri Vilhelmi Vestermark
+Q116471000	Len	"Kristeri Vilhelmi Vestermark"
+
 # Q116479864  noble Chiajna Albeasca Gradisteanu  ->  Chiajna Albeasca Gradisteanu
 Q116479864	Lmul	"Chiajna Albeasca Gradisteanu"
 Q116479864	Len	"Chiajna Albeasca Gradisteanu"
@@ -1614,9 +1859,9 @@ Q116479868	Len	"Alexandrina Luxandra Candescu"
 Q116479871	Lmul	"Maria Barbatescu"
 Q116479871	Len	"Maria Barbatescu"
 
-# Q116480201  ridder Mr. Nicolaas Ruysch, Baronet  ->  Nicolaas Ruysch, Baronet
-Q116480201	Lmul	"Nicolaas Ruysch, Baronet"
-Q116480201	Len	"Nicolaas Ruysch, Baronet"
+# Q116480201  ridder Mr. Nicolaas Ruysch, Baronet  ->  Mr. Nicolaas Ruysch, Baronet
+Q116480201	Lmul	"Mr. Nicolaas Ruysch, Baronet"
+Q116480201	Len	"Mr. Nicolaas Ruysch, Baronet"
 
 # Q116581947  noble Maria Sturdza  ->  Maria Sturdza
 Q116581947	Len	"Maria Sturdza"
@@ -1644,6 +1889,10 @@ Q118174961	Len	"Heta Lotta of Aminoff"
 Q118174969	Lmul	"Brita Kristina Wallenstråle, dowager of Kipplingeberrg & Närlinge"
 Q118174969	Len	"Brita Kristina Wallenstråle, dowager of Kipplingeberrg & Närlinge"
 
+# Q118174971  professor, Rev. Dr. Göran Wallin, bishop of Gothenburg  ->  Rev. Dr. Göran Wallin, bishop of Gothenburg
+Q118174971	Lmul	"Rev. Dr. Göran Wallin, bishop of Gothenburg"
+Q118174971	Len	"Rev. Dr. Göran Wallin, bishop of Gothenburg"
+
 # Q118174972  noble Märta Silfverstedt  ->  Märta Silfverstedt
 Q118174972	Lmul	"Märta Silfverstedt"
 Q118174972	Len	"Märta Silfverstedt"
@@ -1659,6 +1908,10 @@ Q118174974	Len	"Ulrika Ulfhielm"
 # Q118174975  noble Frederika Gustava Walden  ->  Frederika Gustava Walden
 Q118174975	Lmul	"Frederika Gustava Walden"
 Q118174975	Len	"Frederika Gustava Walden"
+
+# Q118174978  consul Léon Niiles Vilhelmi Perander  ->  Léon Niiles Vilhelmi Perander
+Q118174978	Lmul	"Léon Niiles Vilhelmi Perander"
+Q118174978	Len	"Léon Niiles Vilhelmi Perander"
 
 # Q118174989  noble Märta Kafle  ->  Märta Kafle
 Q118174989	Lmul	"Märta Kafle"
@@ -2146,6 +2399,10 @@ Q131725927	Len	"Johannes Königsmark"
 Q131725941	Lmul	"Estrid Larsdotter"
 Q131725941	Len	"Estrid Larsdotter"
 
+# Q131726363  professor Andreas Spole  ->  Andreas Spole
+Q131726363	Lmul	"Andreas Spole"
+Q131726363	Len	"Andreas Spole"
+
 # Q131726460  noble Balasha Sturdza, heiress of Bunze, Bacani & Braiesti  ->  Balasha Sturdza, heiress of Bunze, Bacani & Braiesti
 Q131726460	Len	"Balasha Sturdza, heiress of Bunze, Bacani & Braiesti"
 
@@ -2176,6 +2433,10 @@ Q131726953	Len	"Sofia Kristina of Hjärne, Dowager of Adlerheim"
 Q131726979	Lmul	"Vilhelmina Lovisa Frederika Ulrika of Iserhielm"
 Q131726979	Len	"Vilhelmina Lovisa Frederika Ulrika of Iserhielm"
 
+# Q131727048  consul Konrad Jori Fazer  ->  Konrad Jori Fazer
+Q131727048	Lmul	"Konrad Jori Fazer"
+Q131727048	Len	"Konrad Jori Fazer"
+
 # Q131727081  noble Piriitta Skytte, heiress of Sätra, Huseby, Kungsbro & Köunda  ->  Piriitta Skytte, heiress of Sätra, Huseby, Kungsbro & Köunda
 Q131727081	Lmul	"Piriitta Skytte, heiress of Sätra, Huseby, Kungsbro & Köunda"
 Q131727081	Len	"Piriitta Skytte, heiress of Sätra, Huseby, Kungsbro & Köunda"
@@ -2191,6 +2452,10 @@ Q131727100	Len	"Margrete of Braun"
 # Q131727116  noble Maria Magdalena of Hermelin  ->  Maria Magdalena of Hermelin
 Q131727116	Lmul	"Maria Magdalena of Hermelin"
 Q131727116	Len	"Maria Magdalena of Hermelin"
+
+# Q131727117  professor Elias Obrecht  ->  Elias Obrecht
+Q131727117	Lmul	"Elias Obrecht"
+Q131727117	Len	"Elias Obrecht"
 
 # Q131727151  farmer Lars Larsson i Backa  ->  Lars Larsson i Backa
 Q131727151	Lmul	"Lars Larsson i Backa"
@@ -2286,6 +2551,10 @@ Q133283832	Len	"Maria Ulrika of Danckwardt-Lillieström"
 
 # Q133283878  noble Anna Örnevinge  ->  Anna Örnevinge
 Q133283878	Len	"Anna Örnevinge"
+
+# Q133283956  consul Eugen Wolff, industrialist of Tornator  ->  Eugen Wolff, industrialist of Tornator
+Q133283956	Lmul	"Eugen Wolff, industrialist of Tornator"
+Q133283956	Len	"Eugen Wolff, industrialist of Tornator"
 
 # Q133445337  noble Sofie of Levetzow  ->  Sofie of Levetzow
 Q133445337	Len	"Sofie of Levetzow"
@@ -2464,6 +2733,12 @@ Q135668961	Len	"Saara Nuutintytär of Kuurila, heiress of Kutila manor"
 # Q135668964  noble Kirsti Maaria of Metsästystorvi  ->  Kirsti Maaria of Metsästystorvi
 Q135668964	Len	"Kirsti Maaria of Metsästystorvi"
 
+# Q135680848  lady Tehun of Gondar  ->  Tehun of Gondar
+Q135680848	Len	"Tehun of Gondar"
+
+# Q135682025  lord Tasfa Iyasus  ->  Tasfa Iyasus
+Q135682025	Len	"Tasfa Iyasus"
+
 # Q135686152  noble Petro Darahan  ->  Petro Darahan
 Q135686152	Len	"Petro Darahan"
 
@@ -2571,6 +2846,24 @@ Q136029087	Len	"Kerstin Eriksdotter av Knive"
 
 # Q136029089  noble Gertrud Jonsdotter  ->  Gertrud Jonsdotter
 Q136029089	Len	"Gertrud Jonsdotter"
+
+# Q136031008  skipper Mikael Henrikinpoika Brunila, of Vanhala & master-pilot of Brunila  ->  Mikael Henrikinpoika Brunila, of Vanhala & master-pilot of Brunila
+Q136031008	Len	"Mikael Henrikinpoika Brunila, of Vanhala & master-pilot of Brunila"
+
+# Q136121536  dona Rosario Fernándex de Santillán y Valdivia  ->  Rosario Fernándex de Santillán y Valdivia
+Q136121536	Len	"Rosario Fernándex de Santillán y Valdivia"
+
+# Q136121537  dona Ignacia Rafaela de Valdivia y Fernández de Córdoba, 8.condesa de Torralva  ->  Ignacia Rafaela de Valdivia y Fernández de Córdoba, 8.condesa de Torralva
+Q136121537	Len	"Ignacia Rafaela de Valdivia y Fernández de Córdoba, 8.condesa de Torralva"
+
+# Q136121539  dona Joaquina Fernández de Córdoba Heredia Carvajal  ->  Joaquina Fernández de Córdoba Heredia Carvajal
+Q136121539	Len	"Joaquina Fernández de Córdoba Heredia Carvajal"
+
+# Q136121552  dona Piedad Roca de Togores y Valcárcel  ->  Piedad Roca de Togores y Valcárcel
+Q136121552	Len	"Piedad Roca de Togores y Valcárcel"
+
+# Q136121554  dona NN Valcárcel  ->  NN Valcárcel
+Q136121554	Len	"NN Valcárcel"
 
 # Q136142263  noble Iphigenie Gyika de Dajanfalau  ->  Iphigenie Gyika de Dajanfalau
 Q136142263	Len	"Iphigenie Gyika de Dajanfalau"
@@ -2836,6 +3129,9 @@ Q136383915	Len	"Agneta Matsdotter av Almby, till Märinge"
 # Q136383916  noble NN, heiress of Naesby manor  ->  NN, heiress of Naesby manor
 Q136383916	Len	"NN, heiress of Naesby manor"
 
+# Q136383944  freiherr Tönnes Wrangel von Brehmer  ->  Tönnes Wrangel von Brehmer
+Q136383944	Len	"Tönnes Wrangel von Brehmer"
+
 # Q136383952  noble Dordi Elisabeth of Loode  ->  Dordi Elisabeth of Loode
 Q136383952	Len	"Dordi Elisabeth of Loode"
 
@@ -2890,8 +3186,14 @@ Q136386895	Len	"Hebla of Yläne manor"
 # Q136386946  noble Eva av Furumark  ->  Eva av Furumark
 Q136386946	Len	"Eva av Furumark"
 
+# Q136387063  professor, Dr. Jaarli Hagelstam, Doctor of Medicine & Surgery  ->  Dr. Jaarli Hagelstam, Doctor of Medicine & Surgery
+Q136387063	Len	"Dr. Jaarli Hagelstam, Doctor of Medicine & Surgery"
+
 # Q136387064  noble Anna Leonoora of Kunnianjuuri  ->  Anna Leonoora of Kunnianjuuri
 Q136387064	Len	"Anna Leonoora of Kunnianjuuri"
 
 # Q136387082  noble Ellen of Etholeeni  ->  Ellen of Etholeeni
 Q136387082	Len	"Ellen of Etholeeni"
+
+# Q140811854  baronesse Sophie Eleonora von Selby  ->  Sophie Eleonora von Selby
+Q140811854	Len	"Sophie Eleonora von Selby"

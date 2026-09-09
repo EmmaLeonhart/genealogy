@@ -57,17 +57,16 @@ DEST = ROOT / "reports" / "wikidata-noble-labels.qs"
 #: *drop the word, keep the estate* — which is what PREFIX-ONLY already does, since
 #: `propose-title-label-fixes.py` stopped cutting the tail. They are the reason that rule exists.
 RANKS = (
-    "noble",      # 572   your first batch, 2026-09-09
-    "knight",     #  51
-    "ridder",     #  41
-    "baroness",   #  27
-    "captain",    #  25
-    "countess",   #  21
-    "count",      #  14
-    "major",      #  14
-    "farmer",     #  11   drop the word, keep the farm
-    "baron",      #   8
-    "mistress",   #   6   drop the word, keep the estate
+    # nobiliary -- ruled 2026-09-09, all 'drop it everywhere'
+    "noble",      # 572        "knight",     #  51        "ridder",     #  41
+    "knight", "ridder", "baroness", "captain", "countess", "count", "major", "baron",
+    "princess", "prince", "lady", "dona", "doña", "graf", "friherre", "baronesse",
+    "knyaz", "comtesse", "conte", "freiherr", "nobile", "queen",
+    # offices and occupations -- 'drop them all', same call as captain and major
+    "lord", "consul", "skipper", "farmer", "mistress", "general", "general,",
+    # academic and clerical styles -- 'drop the leading word only', so a stacked
+    # title after the comma survives: `professor, Rev. Dr. Goran Wallin` keeps `Rev. Dr.`
+    "professor", "professor,", "dr.", "mr.", "rabbi",
 )
 
 
