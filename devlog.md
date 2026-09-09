@@ -22070,7 +22070,7 @@ rule is different.
 
 The rule change is one `break`. The old spines advanced **one step per path per run**, and a step
 was only created once its neighbour existed — the loop took the first uncreated step and stopped.
-Emma: *"any of them is always added whenever possible from any side including the middle."* So the
+The ruling: *"any of them is always added whenever possible from any side including the middle."* So the
 `break` is gone: every takeable step goes in the same run, and a creation is possible as soon as
 the person is in the corpus. That is the only gate. The middle and both ends now grow toward each
 other instead of a line crawling from one end at a hop a day.
@@ -23336,7 +23336,7 @@ of its 132 rows have an article at all, the rest being red links.
 
 ## 2026-08-31 — the CSV made comprehensive, and the Samaritan absences are the finding
 
-Emma: *"we have the csv as a comprehensive data source now?"* — not until the Samaritan half was
+The question: *"we have the csv as a comprehensive data source now?"* — not until the Samaritan half was
 driven by the **succession** rather than by whoever happened to carry a Roman ordinal in their
 Geni label. Now every one of the 132 positions gets a row, present in our corpus or not.
 
@@ -23368,7 +23368,7 @@ started to drift.
 
 ## 2026-08-31 — French added to the NN labels, and a range that was not a range
 
-Emma: *"weirdest thing I noticed was that we didn't the NN stuff in French."* It was missing
+The observation: *"weirdest thing I noticed was that we didn't the NN stuff in French."* It was missing
 rather than excluded. `CLAUDE.md` records why Slavic and Welsh are out — they inflect the name
 after the relationship word — and French does not: `fille de Arne Garborg` leaves the name exactly
 as it stands, the same as Spanish, Italian and Catalan, all of which were already there.
@@ -23542,7 +23542,7 @@ the program running is the quietest kind.
 
 ## 2026-08-31 — the unreadable tokens queued at the tail
 
-Emma: *"put these tokens at the end of the queue."* Written down, nothing investigated further,
+The instruction: *"put these tokens at the end of the queue."* Written down, nothing investigated further,
 per § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
 
 The item separates the two remainders, because they are different problems and a single "17,077
@@ -23588,7 +23588,7 @@ started, and the `en`/`mul` passes over the whole corpus rather than the placeho
 
 ## 2026-08-31 — the deck is the 47, and the 9,061 was a mislabel of mine
 
-**Emma: *"what the fuck there are not 9,061 open candidates lol."*** She is right, and the
+**The objection: *"what the fuck there are not 9,061 open candidates lol."*** It is right, and the
 arithmetic was fine — the label was wrong. **9,061 is corpus-wide**: every person anywhere in a
 1.45M-person tree who parents somebody holding a QID whose item names an unaccounted parent. That
 is a structural pattern, not a backlog. Calling it *open candidates* made it read as work waiting
@@ -23618,7 +23618,7 @@ gathered.
 
 ## 2026-08-31 — the parent deck was offering the SPOUSE. 38 of 47 were that
 
-Emma, on the first card of the deck — `Helena Mikontytär Schulin` against
+On the first card of the deck — `Helena Mikontytär Schulin` against
 `Lars Henrik Keckman` — *"pretty sure this is the wife of the person lol."*
 
 She was right, and `Q17381568` was sitting two lines above the question, **in Helena's own spouse
@@ -23648,7 +23648,7 @@ mostly-wrong questions does not merely waste her time; it poisons the sample.
 
 ## 2026-08-31 — the deck was stale, and treating the correspondence as identification empties it
 
-Emma answered all nine `SAME` and then said the thing that mattered: *"I think literally all these
+All nine came back `SAME`, and then the thing that mattered: *"I think literally all these
 people were identified earlier and some are very stale. Most have identification already on
 wikidata lmao."*
 
@@ -23865,7 +23865,7 @@ Section deleted.
 
 ## 2026-08-31 — every reader of the deleted `entity_resolution.md` is gone
 
-Emma: *"no files should read it lol, fix that."* **22 files mentioned it; 0 code readers remain.**
+The instruction: *"no files should read it lol, fix that."* **22 files mentioned it; 0 code readers remain.**
 
 - **Deleted:** `build-entity-resolution-batch.py`, whose entire purpose was that file, and
   `build-charlemagne-route.py`, for the spine she declared legacy on 2026-08-30.
@@ -23896,7 +23896,7 @@ default applies: the safe half needed a **screen**, which is work, not a wait.
 
 **`labels.normalise_marker_spelling` is that screen.** It is `strip_markers` except that a label
 whose first token is `Private` or `<private>` is returned untouched. The difference is **94,231
-people**: the unscreened call turns those into `NN`, which is a redaction decision Emma has twice
+people**: the unscreened call turns those into `NN`, which is a redaction decision ruled twice
 corrected an attempt to settle, while what is left is spelling — **8,053** labels where the marker
 is written inconsistently.
 
@@ -23922,7 +23922,7 @@ repacked.
 
 ## 2026-08-31 — stop running the suite too; and the marker item deleted
 
-Emma: *"please don't waste time with the tests lol. They are paused until ci/cd."* Recorded in
+The instruction: *"please don't waste time with the tests lol. They are paused until ci/cd."* Recorded in
 `CLAUDE.md` § *NO NEW TESTS*, which already banned writing them and now says not to run the lane
 routinely either. The fast lane is ~7 minutes and I ran it **six times this evening** — 40 minutes
 of her session on a signal she has said she does not trust.
@@ -23943,7 +23943,7 @@ correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differin
 
 ## 2026-09-04 --- `pick-isolate.py`: one random unconnected Wikidata isolate, self-healing
 
-**Emma, 2026-09-03:** *"you probably should have a script that spits out a random one whenever
+**Ruled 2026-09-03:** *"you probably should have a script that spits out a random one whenever
 you need one."* Built to her specification: a roster CSV of every Wikidata isolate, a random draw,
 a test of membership of the big connected mass, return if absent --- and **delete from the roster
 and re-draw if present**, which is the healing she asked for. `--refresh` rebuilds both files.
@@ -23981,7 +23981,7 @@ parent either way, so component membership is unaffected.
 
 ## 2026-09-04 --- the deck on demand: its own workflow, proven on a runner
 
-**Emma:** *"get the documentation and stuff working well for this to occur as a general part of
+**The instruction:** *"get the documentation and stuff working well for this to occur as a general part of
 the workflow and be easily given by any future claude cloud session (generation with github
 actions and committing into repo lol and claude.md well documenting this as a part of the
 workflow)."*
@@ -24021,7 +24021,7 @@ run, so they accumulate on their own.
 
 ## 2026-09-04 --- the parent deck named nobody, on the page she was told to open
 
-**Emma:** *"give me the artifact we used for identifying parents with each other in previous
+**The ask:** *"give me the artifact we used for identifying parents with each other in previous
 sessions I want a session of using the thing"*, then, on
 <https://emmaleonhart.github.io/genealogy/parent-review.html>: *"it tried to regenerate a
 weird-ass page and put it on github in a way that made it useless."*
@@ -24033,7 +24033,7 @@ healthy count.** All in `scripts/build-parent-candidates.py`.
   **zero** semicolons, so no multi-valued cell had ever been split. Four of seventeen cards were a
   glued token --- `4259064 | 9995000000000000074 | 9995000000000102196` --- which is not an id and
   resolves to no name. The evidence half was worse: `our_children` and `our_spouses` came back
-  **empty** for everyone with more than one, which is exactly the state Emma has already said
+  **empty** for everyone with more than one, which is exactly the state already ruled
   makes a card unanswerable. `CLAUDE.md` § *Our side could never have two children* is the same
   bug in `zipper-join.py`; the generator reads two files with two separators through one helper.
 - **Wikidata names came only from `out/wikidata/labels.tsv`, which is gitignored** --- so absent in
@@ -24069,7 +24069,7 @@ it is handed over.
 
 ## 2026-09-01 — dates carry their GEDCOM modifier at last
 
-Emma, 2026-08-29: *"we very much need to have those qualifiers, and I don't know why it is that
+Ruled 2026-08-29: *"we very much need to have those qualifiers, and I don't know why it is that
 you don't. That was almost a prerequisite for putting any Geni information on Wikidata."*
 
 **Every hedged date in the corpus was being asserted flatly.** `reports/derived-facts.csv` carries
@@ -24108,7 +24108,7 @@ longer exists.
 
 ## 2026-09-01 — `BET` queued for her considered version
 
-Emma: *"I'll do between more later. Add implementing it as the last queue item."* Written down at
+The ruling: *"I'll do between more later. Add implementing it as the last queue item."* Written down at
 the tail, nothing further investigated beyond one measurement that makes the item honest:
 **all 7,797 `between` dates carry an end year**, so the no-end-year fallback in `datequals.py`
 never fires on current data and guards a future parse gap rather than a present one.
@@ -24194,7 +24194,7 @@ the file is merely older than the merge.
 The pipeline is 7 steps → **11**: merge, display names, **derived labels**, derived family,
 derived facts, **preview, placeholder labels, en labels, mul labels**, pack, batch.
 
-Emma picked all three options when asked which gap she meant, and named the real one: *"Just that
+All three options were picked when the gap was asked about, and the real one named: *"Just that
 it was so stale lol you pointed this out you know it better than I do, I don't know what this file
 even does lol."*
 
@@ -24449,7 +24449,7 @@ a shared family in `out/merged.ged`, and none in any post-merge record — and 4
 it.
 
 The file is restored by re-running the grader, and the queue section now carries the grading
-rather than my reading. Emma had already ruled on the outcome on 2026-08-29: leave them, keep
+rather than that reading. The outcome had already been ruled on 2026-08-29: leave them, keep
 running the measurement, decide later.
 
 ## 2026-09-01 — dead-queue sweep, third pass
@@ -24518,7 +24518,7 @@ so the preview cannot say *"wife of NN"* at one hop and the nearest named person
 father-in-law. `build-nn-label-batch.py`'s ten-language table has son/daughter/father/mother/
 husband/wife/sibling **of** and no in-law wording at all.
 
-Emma named the long-range relations she wanted — *"grandparents or grandchildren or siblings"* —
+The long-range relations were named — *"grandparents or grandchildren or siblings"* —
 and did not name in-laws. Adding *"daughter-in-law of X"* across ten languages is inventing
 vocabulary she has not asked for, so it goes to her. The default in force is unchanged: `mul`, no
 `en`.
@@ -24540,7 +24540,7 @@ long as the programme runs."* It stays.
 
 **Retitled:** § *KOREAN — done, except one decision shared with `ja`* → § *Decide whether a
 transcribed Latin name is a publishable label (`ja` and `ko` together)*. The body was already cut
-back to the decision alone, but the heading advertised done-ness, which is exactly what Emma
+back to the decision alone, but the heading advertised done-ness, which is exactly what was
 objected to on 2026-08-30 — *"annotating a finished section keeps it as a step and makes the queue
 unreadable."* A queue heading should name what is outstanding, and what is outstanding here is a
 decision of hers about 1,278,536 people, not the Korean work that is finished.
@@ -24551,7 +24551,7 @@ Same treatment the SMTP section got an hour earlier, for the same reason.
 
 **No section deleted; one cut back.** § *HER RULINGS, 2026-09-01* carried a 20-row *"To do, in her
 words"* table, and **18 of the 20 are finished**. Left whole it reads as twenty outstanding jobs,
-which is exactly what Emma objected to on 2026-08-30 — a queue that keeps completed work as steps
+which is exactly what was objected to on 2026-08-30 — a queue that keeps completed work as steps
 becomes unreadable. Her rulings themselves are untouched: the definitional ones (what
 anonymisation means, the deleted and moved lists, the export-loop finding) stay in full.
 
@@ -24573,7 +24573,7 @@ placements, or the three things waiting on her.
 
 ## 2026-09-01 — the daily batch delivers by ISSUE, and needs no secrets at all
 
-**Emma, 2026-09-01:** *"Uhh I don't think I need this? Can't github actions just send me an email
+**Ruled 2026-09-01:** *"Uhh I don't think I need this? Can't github actions just send me an email
 lol."* She is right, and it retires the only genuine BLOCKED-ON-USER-ACTION of the night.
 
 GitHub already emails about issues. So the three secrets — `SMTP_SERVER`, `SMTP_USERNAME`,
@@ -24801,7 +24801,7 @@ current* (standing processes, not steps) · § *The placeholder batch emits `ja`
 
 ## 2026-09-01 - she ruled on 207 pairs by hand, and named the rule they teach
 
-**Emma: *"Btw I did verdicts anyways lol"*** - 207 pairs pasted into chat, 206 of them new.
+**The message: *"Btw I did verdicts anyways lol"*** - 207 pairs pasted into chat, 206 of them new.
 `reports/emma-judgments.tsv` 115 -> 321 rows; `reports/manual-identifications.csv` 109 -> **314**
 identifications, which is what `manual_p2600_lines()` draws its ten-a-run from.
 
@@ -25051,7 +25051,7 @@ being deleted, since it is a standing regeneration.
 
 ## 2026-09-01 — the queue is work only; every specification and record moved to `CLAUDE.md`
 
-**Emma:** *"remove all the 14 bullshit queue items"*, then *"Move them to the claude.md"*.
+**The instruction:** *"remove all the 14 bullshit queue items"*, then *"Move them to the claude.md"*.
 
 **13 sections out of `queue.md`, all 13 into `CLAUDE.md`** — verbatim, nothing rewritten in the
 move, and verified afterwards: a distinctive line from every removed section is present in
@@ -25080,7 +25080,7 @@ by design.
 
 ## 2026-09-01 — she is out of every exclusion; the Kitajima hold becomes month-long
 
-**Emma:** *"Yeah remove it"*, *"I should be on the traversible graph lol it's literally worse and
+**The ruling:** *"Yeah remove it"*, *"I should be on the traversible graph lol it's literally worse and
 more sus for me to never be edited"*, *"My ids should have nothing special in the logic around
 them"*, and *"we're doing a month long exclusion on the other ones too"*.
 
@@ -25111,7 +25111,7 @@ narrowed. `tests/test_p2600_batches.py`: **284 passed, 34 skipped.**
 
 ## 2026-09-01 — anonymised to Empress Jingū, and the placeholder batch speaks Korean
 
-**Anonymisation.** Emma: *"I told you to anonymize the repo. That means removing bullshit
+**Anonymisation:** *"I told you to anonymize the repo. That means removing bullshit
 documentation referencing me and my number and such. Use Empress Jingu as the example for all
 these things lol. I'm just a normal person in the tree lol."*
 
@@ -25160,7 +25160,7 @@ for some token.
 
 ## `P1814`: the population is not 226
 
-Emma: *"Until the 226 Japanese people exist? What? We got thousands"*. She is right and the figure
+The objection: *"Until the 226 Japanese people exist? What? We got thousands"*. It is right and the figure
 came from a slice reported as if it were the corpus. Measured over `reports/display-names.csv`:
 **796** carry kana (decisively Japanese), **129,338** are Han-only with the culture undecided, and
 **6,112** carry Hangul. And the 796 are the wrong target regardless — `P1814` is the kana *reading*
@@ -25169,7 +25169,7 @@ dependency is the **culture classifier** rather than a creation count.
 
 ## 2026-09-01 — the paternal/maternal side was in the tree all along
 
-**Emma:** *"you realize we can do logic for the NN stuff right? It's easy lol."* She is right and
+**The ruling:** *"you realize we can do logic for the NN stuff right? It's easy lol."* It is right and
 the claim I had written — that Korean forces a distinction *"we never measured"* — was wrong about
 our own data rather than about Korean.
 
@@ -25436,7 +25436,7 @@ The three genuinely ambiguous rows still refuse — `あがた（の）いぬか
 else."* `P1814` moved to the tail — four ticks and zero statements, and the readings are found and
 waiting, so it costs nothing to leave there.
 
-**The new top item had a stopping rule nobody had ever measured.** Emma, 2026-08-24: *"Export until
+**The new top item had a stopping rule nobody had ever measured.** Ruled 2026-08-24: *"Export until
 every first-degree relative of every merged individual is present"* in `exports/post-merge/` —
 *"that is the stopping rule, not a count of exports."* Without a measurement the campaign could
 only end by somebody deciding it felt done.
@@ -25524,7 +25524,7 @@ Both decide what a person is called.
 
 ## 2026-09-02 — all three marker populations done, agentically
 
-**Emma:** *"with all of this shit just flag these things and do them agentically lol. Did you not
+**The instruction:** *"with all of this shit just flag these things and do them agentically lol. Did you not
 take doing things agentically seriously?"* No, and she is right. I had two of the three marker
 populations parked as **NEEDS-DECISION** in every status report, and both were already specified in
 her own instruction. That is the invented-blocker pattern `CLAUDE.md` names.
@@ -25655,7 +25655,7 @@ to measure the Japanese-in-`zh` rate first.
 
 ## 2026-09-02 — all three readings produced; culture demoted to a promotion order
 
-Emma reframed the culture work: *"the kana name plus the Korean name plus the Mandarin
+The culture work was reframed: *"the kana name plus the Korean name plus the Mandarin
 pronunciation of every single arbitrary character thing is something that is actually
 produced... It's just a matter of which one is chosen at the top."* All three readings go on
 as `Amul` aliases, so the classifier no longer gates whether a person is labelled — only which
@@ -25663,7 +25663,7 @@ alias is promoted to `mul`, which is movable per person afterwards.
 
 - `scripts/build-han-readings.py` → `reports/han-readings.tsv`, 4,688 characters over 41,154
   people. `ko` 4,688, `zh` 4,682, `ja` candidate-only.
-- `scripts/import-unihan.py` → `reports/unihan-corpus-readings.tsv`. Emma authorised the Unihan
+- `scripts/import-unihan.py` → `reports/unihan-corpus-readings.tsv`. The Unihan download was authorised:
   download over a `pypinyin` dependency, so stdlib-only stands.
 - `scripts/build-cjk-reading-labels.py` → `reports/cjk-reading-aliases.tsv`, 40,125 people;
   5,621 already have an item, so those aliases need no creation.
@@ -25706,7 +25706,7 @@ blocks the two remaining `exports/post-merge/` survivors, and it is Geni-side.
 
 ## 2026-09-02 — the `en` step is done, unknowns rostered rather than adjudicated
 
-Emma: *"just finish I'm not asking for categorization lol just list these as unknowns if they are
+The ruling: *"just finish I'm not asking for categorization lol just list these as unknowns if they are
 unclear lol"*. `scripts/build-en-labels.py` → `reports/label-en.tsv`, one pass over all 41,154
 CJK-named people: 13,171 romanised from Wikidata name items, 2,675 already had an English label,
 **25,308 unknown and rostered**. 3,829 of the labelled ones already have a Wikidata item.
@@ -25743,7 +25743,7 @@ end-of-queue action rather than a one-off, and `rebuild-everything.py` needs re-
 
 ## 2026-09-02 — correcting what "anonymised" means here
 
-Emma, on the sweep report: *"to be clear because we don't show any more info than geni we consider
+On the sweep report: *"to be clear because we don't show any more info than geni we consider
 it anonymized. Sorry you're vague there and implied you may have excluded them"*.
 
 The report said the section was removed because CLAUDE.md carries "your redefinition of
@@ -25782,7 +25782,7 @@ correctly empty. Next in her order is `ja`.
 
 ## 2026-09-02 — the `ja` step; katakana was the answer all along
 
-Emma, on finding `ja` still held back: *"Wtf lol that's why we have katakana facepalm"*. The step
+On finding `ja` still held back: *"Wtf lol that's why we have katakana facepalm"*. The step
 had been blocked because a generated Japanese label would read `Gerard Spencerの娘`, mixing
 scripts — and the `NN` batch excludes `ja`/`zh` for exactly that reason. Katakana removes the
 objection entirely.
@@ -25850,7 +25850,7 @@ and it is permanent rather than an outage.
 
 **And `docs/export-seed-rules.md` exists for exactly this**, which I had ignored for hours: you do
 not export from the person you want, you create a placeholder at an open slot and export from
-that. Emma: *"Bruh you cunt did you forget the rules"*.
+that: *"Bruh you cunt did you forget the rules"*.
 
 - The Chrome extension had **zero browsers paired**; killing and relaunching Chrome fixed it.
 - Tier 3 slot taken (the highest the page offered): Harima no Inabi no Ōiratsume has a father
@@ -25877,7 +25877,7 @@ observation rather than a lookup.
 a real profile, needing its own placeholder-seeded export.
 
 **Left untouched deliberately:** the pending merge-conflict page on Ōjin asks which values to keep
-(Created On, Manager, First/Last Name, Birth Date). That is Emma's decision, not this loop's.
+(Created On, Manager, First/Last Name, Birth Date). That is a hand decision, not this loop's.
 
 ## 2026-09-02 — dead-queue sweep: the finished half of the post-merge item
 
@@ -25938,11 +25938,11 @@ merged-away relative to its survivor. Neither pair is in `reports/geni-stale-dup
 both were **observed** rather than looked up.
 
 **Left untouched deliberately:** the pending merge-conflict page on Ōjin asks which values to keep
-(Created On, Manager, First/Last Name, Birth Date). That is Emma's decision.
+(Created On, Manager, First/Last Name, Birth Date). That is a hand decision.
 
 ## 2026-09-02 — four rulings worked: spine removed, three sections deleted (10 → 7)
 
-Emma put every queue item to herself via `AskUserQuestion` and ruled on each.
+Every queue item went through `AskUserQuestion` and was ruled on.
 
 **Spine REMOVED**, her condition met. She said *"check if Arne -> Bureus is there, I'm pretty sure
 it is, at which point remove this"* — and it is: **17 of 18 steps resolve to a QID** in the live
@@ -25996,7 +25996,7 @@ modules had passed, because neither reaches the annotation stage — a reminder 
 
 ## 2026-09-02 — the merges page
 
-`scripts/build-merges-page.py` → `out/merges.html`. Emma, asked whether to build it:
+`scripts/build-merges-page.py` → `out/merges.html`. Asked whether to build it:
 *"Build it from the template"*.
 
 **171 cards over four sections, 33 already merged.** The justification is measured, not assumed:
@@ -26029,12 +26029,12 @@ Sections 6 → 6; both cuts were **inside** sections.
 
 - **§ LABELS — *"Then the other universal languages — `hi` · `ar` · `ru` · `el`"*.** Built.
   `reports/wikidata-four-script-labels.json` holds **151,320 `set_label` edits**, each carrying
-  `"source": "step 6 of Emma's label order -- hi/ar/ru"`, and
+  `"source": "step 6 of the label order -- hi/ar/ru"`, and
   `scripts/build-four-script-labels.py` is the generator. `CLAUDE.md` records it done. Checked by
   opening the file and reading an edit, not by trusting the note.
 
 - **§ *Then: one dispatch* — the ledger-archive half of its dependency.** It waited on a section
-  that has since been deleted as already-implemented: Emma, 2026-09-02, *"Lmao you cunt it fetches
+  that has since been deleted as already-implemented, 2026-09-02: *"Lmao you cunt it fetches
   every time the ledger from pages I edited"*. `build-daily-batch.py` STEP 0b runs
   `full_entities` over the ledger and the pipeline refreshes it from her contributions every run.
   The section now waits on the Pages site alone, which is the one job genuinely still missing.
@@ -26072,7 +26072,7 @@ The figure that measures progress is people fully rendered, +77,770.
 
 ## 2026-09-02 — tests run in CI/CD or not at all
 
-Emma: *"Stop the fast lane holy shit tests are on ci/cd or not at all"*, then *"add this to the
+The ruling: *"Stop the fast lane holy shit tests are on ci/cd or not at all"*, then *"add this to the
 claude.md so it does not randomly decide to start doing this again"*.
 
 The background fast lane was killed and `CLAUDE.md` gains a section above the moratorium history,
