@@ -1,15 +1,15 @@
-"""One command for a day, in her order: individuals, then names, then relationships.
+"""One command for a day, in the specified order: individuals, then names, then relationships.
 
     python scripts/build-daily-batch.py [--refresh-ledger] [--seed N]
 
-**Emma, 2026-08-26** — `docs/dictation/2026-08-26-daily-algorithm.md`:
+**Dictated 2026-08-26** — `docs/dictation/2026-08-26-daily-algorithm.md`:
 *"Creation of individuals comes first, then creation of names, then the relationships between
 the individuals. The reason why I'm specifically telling you, pretty rigidly, to go in this
 order is that the order itself is structurally rigid… You need an individual to exist for their
 name object to be linked to them."*
 
 This is an **orchestrator**, not a fourth generator. It runs the two builders that already
-exist, in her order, and prints the run order with the position of each file — because the
+exist, in that order, and prints the run order with the position of each file — because the
 order is the part that is easy to get wrong by hand and impossible to see from the files
 themselves.
 
@@ -23,28 +23,28 @@ themselves.
 
 **Sections 1 and 3 share a file and that is deliberate.** `queue.md`: *"There is exactly ONE
 live batch file"*, because two files creating the same people is how somebody runs both and
-duplicates everybody. `build-garborg-day.py` concatenates its own two sections in her order at
+duplicates everybody. `build-garborg-day.py` concatenates its own two sections in that order at
 write time, so the file reads 1 then 3; the names file is run between them.
 
 **Section 2 has no dependency on section 1 and is still ordered after it.** A name item links
 only to people who already held a QID *before* this run — a person created today gets their
 name statements tomorrow, because `LAST` names the name item and the new person's QID is not
-known. Her order is the general rule, not a per-day dependency graph, and following it is what
+known. The order is the general rule, not a per-day dependency graph, and following it is what
 keeps the general rule true.
 
 ## Step 0 — the ledger, then the diff against the ideal state
 
 `docs/daily-algorithm.md` § *Step 0* is two halves and only the first was ever run here:
 
-1. **Check her Wikidata profile for everything she has edited**, and add it to the ledger.
+1. **Check the Wikidata account for everything it has edited**, and add it to the ledger.
 2. **Take those out, and check what remains against the ideal state.**
 
 `--refresh-ledger` runs `scripts/refresh-garborg-ledger.py` first: *"Check my wiki data profile
 for all the things that I've edited. Grab the things that I've been editing and add them to a
 thing."* It is **off by default** because it is the one network call in the day and needs
 `BOT_CONTACT`; a run without it uses `reports/garborg-qids.tsv` as it stands and says how old
-that is, because a stale ledger is what made a batch try to re-create 21 people she had just
-made.
+that is, because a stale ledger is what made a batch try to re-create 21 people that had just
+been made.
 
 **Step 0c is the second half** — `scripts/model-vs-reality.py`, which builds what each item
 *should* hold and diffs it against what the item does hold. Its `missing` column is the
@@ -98,7 +98,7 @@ def diff_summary(out):
     properties that actually move.
 
     Its full output tabulates every property any ledger item carries -- 90-odd rows, most of
-    them a single `extra` from Emma's hand-work, which is the column this project never
+    them a single `extra` from hand-work, which is the column this project never
     touches. What belongs in a summary whose job is to make the ORDER legible is `missing`
     (the emittable set) and `CONFLICT` (one modelling rule that is wrong, repeated).
     """
@@ -129,7 +129,7 @@ def diff_summary(out):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--refresh-ledger", action="store_true",
-                    help="step 0: rebuild reports/garborg-qids.tsv from her Wikidata "
+                    help="step 0: rebuild reports/garborg-qids.tsv from the Wikidata "
                          "contributions first. Needs BOT_CONTACT and is the day's one "
                          "network call.")
     ap.add_argument("--seed", default="", metavar="N",
@@ -156,10 +156,10 @@ def main():
               f"were duplicates before it existed.")
         print(f"STEP 0  SKIPPED. reports/garborg-qids.tsv is "
               f"{'missing' if age is None else f'{age:.1f} hours old'} -- pass "
-              f"--refresh-ledger to rebuild it from her contributions. A stale ledger is "
-              f"what made a batch try to re-create 21 people she had just made.")
+              f"--refresh-ledger to rebuild it from the contributions. A stale ledger is "
+              f"what made a batch try to re-create 21 people that had just been made.")
 
-    # **Step 0's second half**, `docs/daily-algorithm.md`: read her contributions, take those
+    # **Step 0's second half**, `docs/daily-algorithm.md`: read the contributions, take those
     # out, then check what remains against the ideal state. It runs BEFORE the three
     # generators, because a diff read afterwards is a post-mortem of the day rather than a
     # check on it. It emits nothing and the generators do not read it.
@@ -170,21 +170,21 @@ def main():
 
     # ---- THE TOKEN FUNNEL, before anything is composed ---------------------------------
     #
-    # **Emma, 2026-08-31:** *"we have all the data to do everything properly cjk represented
-    # but just don't do it because somehow the tokenization thing was still never taken
-    # seriously despite me keeping telling you to do it."* Today's ja/zh gate is what made it
+    # **Reported 2026-08-31:** the data to represent everything properly in CJK is all there
+    # and was not being used, because the tokenisation step was never taken seriously despite
+    # repeated instruction. Today's ja/zh gate is what made it
     # undeniable: 10 people refused creation over ten tokens -- Bratterud, Carlberg,
     # Norrstroem, Posse, Saeby, Waern -- every one of which translit_no.translit renders on
     # demand.
     #
-    # Her design, 2026-08-29: *"If anything even remotely wants to generate without having
-    # katakana or Chinese characters, it goes through this thing and then adds the token to
-    # the library, and then continues on."* The pieces existed and nothing called them --
+    # The design, 2026-08-29: anything that would otherwise generate without katakana or
+    # Chinese characters goes through the funnel, which adds the token to the library and then
+    # continues. The pieces existed and nothing called them --
     # translit_no.py since 08-25, extend-transliterations.py after it -- so the table grew only
     # when somebody remembered. Running it here is what makes it a funnel.
     #
-    # Her standard for what it may emit: *"Incorrect romanization or incorrect representations
-    # in katakana are totally acceptable. An incorrect name is not."*
+    # The standard for what it may emit: an incorrect romanisation or katakana spelling is
+    # acceptable; an incorrect NAME is not.
     print("")
     print("STEP 0d token funnel  (extend-transliterations.py)")
     for line in run("extend-transliterations.py", []).splitlines():
@@ -207,15 +207,14 @@ def main():
             if line.startswith("wrote") or line.lstrip()[:2] in ("1.", "2.", "3.", "4."):
                 print(f"        {line.strip()}")
 
-    # ---- a by-product of the run, NOT a fourth step of her order ---------------------
+    # ---- a by-product of the run, NOT a fourth step of the order --------------------
     #
-    # **Emma, 2026-08-31:** the generator should *"actively create merge candidates like
-    # our ones that are files for potential geni identifications related to parents"*. The
-    # duplicate guard already finds them and then loses them to the carry-forward; nothing
-    # was putting the question in front of her, which is how thousands accumulated
-    # unanswered.
+    # **Asked for 2026-08-31:** the generator actively creates merge candidates, as files of
+    # potential Geni identifications for parents. The duplicate guard already finds them and
+    # then loses them to the carry-forward; nothing was putting the question up to be
+    # answered, which is how thousands accumulated unanswered.
     #
-    # It is printed apart from steps 1-3 and emits no QuickStatements. Her three-step order
+    # It is printed apart from steps 1-3 and emits no QuickStatements. The three-step order
     # is structurally rigid and this must never look like a fourth member of it.
     print("")
     print("ALSO  parent merge candidates  (build-parent-candidates.py)")

@@ -2,9 +2,9 @@
 
     python scripts/build-chain-page.py
 
-**Emma, 2026-08-25:** *"link me an html page with the links of all of the people going down from
-Charlemagne to the common ancestor and then down to me and Arne in parallel paths. I do no trust
-you to remember these thins at this poin lol wiidata link and geni link together if possible."*
+**Asked for 2026-08-25:** an HTML page carrying links for every person going down from
+Charlemagne to the common ancestor and then down the two parallel paths, with the Wikidata link
+and the Geni link together where possible.
 
 Every person gets their Geni link and, where one exists, their Wikidata link. Nothing is
 summarised away: the whole 399-step descent is on the page.
@@ -15,8 +15,8 @@ diverge, so the deepest person on both is **Rasmus Wibye Andersson Lea**. That i
 splits.
 
 **And a discrepancy the page states rather than hides.** `queue.md` names **Bergitte Aukland**
-(`6000000002481819312`) as *"the common ancestor in the two lines between me and Arne who is a
-descendant of Charlemagne"*. She does **not appear on `charlemagne-route.csv`**. Either the route
+(`6000000002481819312`) is recorded as the common ancestor of the two lines who is herself a
+descendant of Charlemagne. She does **not appear on `charlemagne-route.csv`**. Either the route
 file takes a different line down from Charlemagne than the one she was found on, or the two were
 worked out at different times from different pages. The page shows the junction the data has and
 says Bergitte is missing from it, because quietly substituting one for the other is how a wrong
@@ -150,19 +150,19 @@ def main():
     marriage = [x for x in chain if x[0] <= 9]
     blood = [x for x in chain if x[0] >= 10]
 
-    # **Emma wrote the junction down weeks ago; do not re-derive it.** `queue.md`:
+    # **The junction was written down weeks ago; do not re-derive it.** `queue.md`:
     # *"the first common ancestor of us is
     # https://www.geni.com/people/Rasmus-Ingebretsen-Grude/6000000003492045766 and Bergitte
     # is the bigger target one."* Deriving it from the route file instead produced Rasmus
     # Wibye Andersson Lea, which is merely where two FILES stop agreeing -- not a finding.
-    # Her note is the source; the files are the illustration.
+    # That note is the source; the files are the illustration.
     MRCA = "6000000003492045766"
     jg = MRCA
     junction = next((x for x in blood if x[3] == jg), None)
 
     # **There is no single junction, and inventing one would be a lie.** Rasmus Ingebretsen
-    # Grude, Emma's and Arne's nearest common ancestor, is NOT on `charlemagne-route.csv`:
-    # that route leaves Emma's line at Rasmus Wibye Andersson Lea and goes up a different
+    # Grude, the nearest common ancestor of the two lines, is NOT on `charlemagne-route.csv`:
+    # that route leaves the descent at Rasmus Wibye Andersson Lea and goes up a different
     # branch. So the page is three lists, not a fork.
     down = list(reversed(route))            # Charlemagne -> Emma
     top, tail = down, []
@@ -231,13 +231,13 @@ def main():
         f'parallel below the junction.</p>'
         '<div class="warn"><strong>One thing does not line up.</strong> '
         '<code>queue.md</code> names <strong>Bergitte Aukland</strong> '
-        '(<code>6000000002481819312</code>) as &ldquo;the common ancestor in the two lines between '
-        'me and Arne who is a descendant of Charlemagne&rdquo;. She does <strong>not appear on '
+        '(<code>6000000002481819312</code>) as the common ancestor of the two lines who is '
+        'herself a descendant of Charlemagne. She does <strong>not appear on '
         '<code>charlemagne-route.csv</code></strong> at all. Either that route takes a different '
         'line down from Charlemagne than the one she was found on, or the two were worked out at '
         'different times from different pages. The junction shown below is the one the data '
         'actually has &mdash; the deepest person on both the Charlemagne route and the blood line '
-        'to Arne. Bergitte is not it, and I have not substituted her for it.</div>'
+        'to Arne. Bergitte is not it, and has not been substituted for it.</div>'
         "</header>\n" + "\n".join(body) +
         '\n<footer>Built by <code>scripts/build-chain-page.py</code> from '
         '<code>reports/charlemagne-route.csv</code>, '
