@@ -19862,7 +19862,7 @@ The queue item was *"I am concerned over why she was created on wikidata at all.
 on 2026-08-25 — ten of them — and every other file under `reports/` at those commits: her Geni
 id `6000000186285688269` appears in the derived censuses and in nothing that emits a `CREATE`.
 The ledger has her from 2026-08-25 because that day's refresh found the item already live under
-her account.
+the account.
 
 **What this repo did do is offer to create her a second time**, the next day. `3c9cfb16`
 (2026-08-26) carries a full `CREATE` block for her — `mother of Taebi Buyeo` in ten languages,
@@ -20075,10 +20075,10 @@ the batch compares values.
 **2. The gospel pair.** `CJK_LABELS_NOT_OURS = {Q467497, Q633094}`. Checked live: Arne Garborg
 is `アルネ・ガルボルグ` / `阿尔内·嘉宝` and Johannes Bureus `ヨーハン・ブーレ` /
 `约翰内斯·托马松`. Neither is anything this pipeline would produce — `嘉宝` is the established
-rendering of *Garbo* against our `加尔博格` — which is the check on her claim, not just the
+rendering of *Garbo* against our `加尔博格` — which is the check on that claim, not just the
 claim.
 
-**3. Her Minnie correction.** `Minnie` was `ミニエ` / `米尼埃` by rule; it is now `ミニー` /
+**3. The Minnie correction.** `Minnie` was `ミニエ` / `米尼埃` by rule; it is now `ミニー` /
 `米妮`, noted as a hand row, and the engine still produces the old value — so a test fails the moment
 a refresh treats that row as cache.
 
@@ -20142,10 +20142,10 @@ number of tokens, so `Bud Greenspan` / `B. 格林斯潘` is dropped rather than 
 
 `Alexander` is `アレクサンダー` (245 items) and `亚历山大` (114). `Johan` is `约翰` (29), not our
 `约汉`. **It also confirms the Minnie correction independently** — `ミニー` 14×, `米妮` — which
-is a check on the corpus as much as on her.
+is a check on the corpus as much as on the rule.
 
-**Precedence is now: her corrections, then the attested rendering, then the rule engine.**
-`apply-attested-renderings.py` corrected **713 rows**, left 256 that already agreed, kept her one
+**Precedence is now: hand corrections, then the attested rendering, then the rule engine.**
+`apply-attested-renderings.py` corrected **713 rows**, left 256 that already agreed, kept the one
 hand row, and left 3,047 tokens the corpus has never written to the engine.
 
 **Two defects were caught in the dry run and fixed before anything was written**, both of which
@@ -20335,9 +20335,9 @@ included**, with no `SURN` line at all. Her father is `<private> /Ronneberg/`, n
 the display is not composed from her parents either. There was never a Paulson in our data and
 no rebuild would have produced one.
 
-**What misled her was mine.** Early today I read out a devlog line about
+**What misled the report was mine.** Early today I read out a devlog line about
 `<private> /Dokken/` being invisible because the derived CSVs predated its export — true, about
-a different record — and quoting it beside her person made staleness look like the explanation
+a different record — and quoting it beside that person made staleness look like the explanation
 here. It was not.
 
 **The ruling, and it reverses the one of 08-29:**
@@ -20466,7 +20466,7 @@ and Richard is one hop from people outside the pool. `CLAUDE.md` § *The seed se
 SUBGRAPH from Arne* working exactly as written. It is self-correcting: one `P26` or `P40` joining
 Helen or the account owner to that component makes all three reachable with no special case.
 
-I first told her the reason was that no relative held a QID. That was wrong — two of them do.
+I first said the reason was that no relative held a QID. That was wrong — two of them do.
 
 **A real defect fell out of it.** `Sophia Borgit Hoknes` had no `ja`/`zh` at all because `Borgit`
 and `Hoknes` were missing from `reports/garborg-name-transliterations.tsv` — and so were
@@ -20495,9 +20495,9 @@ broken. It was, and not in the way reported — this is a duplicate-creation bug
 `out/wikidata/name-items-in-store.tsv.gz` — the offline download. An item created *today* is not
 in it, and the ledger tracks **people**, keyed on `P2600`, which a name item does not have. So a
 token created in one run was invisible to the next, and `CREATE` always mints a new item. That
-ran the same regenerated file three times because I kept handing it to her.
+ran the same regenerated file three times because I kept handing it over.
 
-**Measured over all 584 of her creations: 29 name items, 18 distinct labels, 10 created more than
+**Measured over all 584 creations: 29 name items, 18 distinct labels, 10 created more than
 once** — `Jonsdatter` three times, at 08-27 02:13, 08-30 17:59 and 08-30 19:13. Not only
 patronymics: `Gennäs`, `Morlanda` and `Sør-Reime` are family names. All eleven duplicates had
 already been merged away by `OBender12`.
@@ -20513,14 +20513,14 @@ the ledger refresh finds them and the batch never re-proposes them. Checked all 
 merges cleanly. Five other label collisions are different people with different Geni ids, and the
 thirteen items labelled `NN` are thirteen distinct unnamed people.
 
-**The fix.** `scripts/refresh-created-name-items.py` reads her page creations, keeps the ones that
+**The fix.** `scripts/refresh-created-name-items.py` reads the account's page creations, keeps the ones that
 are `instance of` a name class, follows redirects so a merged duplicate resolves to its survivor,
 and writes `reports/created-name-items.tsv`. `namemodel._load_store_index` reads that **first**,
 then the store with `setdefault` so it can never be overwritten. All ten previously duplicated
 tokens now resolve, and the regenerated batch proposes ten entirely different ones.
 
 Two things nearly undid it and are worth noting: the loader's `return {}` on a missing store
-would have discarded her creations, and its `index = {}` a few lines later wiped them.
+would have discarded those creations, and its `index = {}` a few lines later wiped them.
 
 ## 2026-08-30 — the component's shape: the account owner is a degree-1 leaf 16 hops from the centre
 
@@ -20658,7 +20658,7 @@ The daily-algorithm item carried an open question: the emitter stopped producing
 people missing a nickname** that nothing would ever add. Decide which side is right, and do not
 silence it by filtering the column.
 
-**Her 2026-08-29 ruling is the later word and settles it:** *"the nicknames (listed in
+**The 2026-08-29 ruling is the later word and settles it:** *"the nicknames (listed in
 English????) are not something that's good. Just drop the nickname functionality because the
 nicknames being listed in English is unacceptable. Just lmul vs amul."* `P1449` is monolingual
 text, the tag being emitted was `en` — declaring `Byre` and `Christophersdatter` to be English —
@@ -20771,11 +20771,11 @@ artifact that vaguely matches* is exactly the failure that nearly happened.
 `NOT_A_NAME` and never `scripts/labels.WORDS_MEANING_UNKNOWN`, so every marker already
 ruled on reached the candidate list. It cost **25 groups over 107 profiles, including BOTH of the
 two largest** — the biggest being 33 profiles called `某 李`, where `某` is Chinese for *a certain
-(unnamed) one* and was already in her set. That is the `<private> SOERIANAGARA` failure the
+(unnamed) one* and was already in that set. That is the `<private> SOERIANAGARA` failure the
 function was written for, one marker set out.
 
 12,318 → 12,287 groups, **recall unchanged at 15 of 29 and 14 of 14 strong**: noise removed, no
-real detection lost. The punctuation forms (`?`, `??`) stay in the local set on purpose — her
+real detection lost. The punctuation forms (`?`, `??`) stay in the local set on purpose — the
 boundary is *words yes, punctuation no*, and detection is a looser question than suppression.
 32 tests pass across `test_join_sanity.py` and `test_obender_hold.py`.
 
@@ -20787,7 +20787,7 @@ executing the rest, because otherwise the rest is not trustworthy. Last run 2026
 **Step 1, verbatim extraction** — `scripts/extract-user-turns.py` → `reports/user-turns.tsv`.
 38 transcripts, **3,679 turns since 2026-08-15**, 1,577 distinct. It reads both record types,
 because a turn typed while a tool call was running is a `queue-operation` enqueue and not a
-`user` record; a `role == "user"` scan finds barely half of her.
+`user` record; a `role == "user"` scan finds barely half of them.
 
 **Step 3, recordedness** — `scripts/audit-turns-recorded.py` → `reports/unrecorded-instructions.tsv`.
 **243** turns are directive in shape and have no six-word run appearing anywhere in `CLAUDE.md`,
@@ -20872,7 +20872,7 @@ recorded rule as immovable.
 
 **`Munetoshi 71 Senge` is a confirmed duplicate**, established by opening both profiles rather
 than inferred from the candidate list: same name, same regnal number 71, same father
-`Sakusa no Jisei Senge`, both managed by her, and each recorded as the other's brother.
+`Sakusa no Jisei Senge`, both managed by the account, and each recorded as the other's brother.
 `…623899` (19 Aug) has both children and the `Q135579493` bio link; `…446840` (20 Aug) is empty.
 The merge keeps `…623899`.
 
@@ -21010,7 +21010,7 @@ back as an Imperva hCaptcha challenge, which I cannot complete. A second navigat
 URL went straight through, and every request since has been fine. Reporting the first response as
 a blocker would have parked the whole item on a challenge that cleared on retry.
 
-## 2026-08-31 — `reports/merges-to-do.md`, and the merges going back to her
+## 2026-08-31 — `reports/merges-to-do.md`, and the merges going back to the hand
 
 Asked how to handle merges that cross a manager, none of the four options was taken; instead a
 fifth: *"Just make a 'merges to do' file that records these merges and the wikidata duplicates
@@ -21043,7 +21043,7 @@ called erroneous on 08-30 (`Q141223488`, `Q6197518`, `En dödfödd son Bielke`),
 `Tunheim` name-item merge.
 
 **The queue item is gone rather than rewritten.** Step 3 was *"MINE to perform"*; the answer
-moves the merges back to her, so what is left is keeping the file current when the ledger or
+moves the merges back to the hand, so what is left is keeping the file current when the ledger or
 `p2600-all.tsv` refreshes. That is a one-line standing item, not the browser campaign it replaced.
 
 ## 2026-08-31 — `Q6197518`: the English-only `mul` label was ours
@@ -21055,7 +21055,7 @@ answer is not another editor.
     2026-08-28 03:03  日巫女                    mul -> Svantepolk Knutsson    (a hand edit)
     2026-08-30 19:47:34  日巫女 #quickstatements  Amul += Svantepolk Knutsson
     2026-08-30 19:47:45  日巫女 #quickstatements  mul -> Svantepolk of Viby
-    2026-08-30 19:57:48  日巫女                    mul -> Svantepolk Knutsson    (her, reverting)
+    2026-08-30 19:57:48  日巫女                    mul -> Svantepolk Knutsson    (a hand revert)
 
 Both 19:47 edits are one run, `#temporary_batch_1788119173098`. The line is in
 `reports/wikidata-touched-not-created.qs`.
@@ -21082,7 +21082,7 @@ does not stop an emission is not a guard.
 | `Q101247444` | Ingegerd Svantepolksdotter | the `en` form with *heiress, lady of Händelöö* — a regression |
 | `Q274606` | *none* | Berengar I of Italy |
 | `Q3743799` | *none* | Canute, Duke of Estonia |
-| `Q6197518` | Svantepolk Knutsson | would clobber her fix again |
+| `Q6197518` | Svantepolk Knutsson | would clobber the fix again |
 
 All four `Lmul` lines are removed from the batch, with a comment in the file saying why. The
 four plain-name ones in the same block — `Gisela`, `Arne Garborg`, `Helena Guttormsdatter`,
@@ -21137,9 +21137,9 @@ comment says that argument *"is what turns a `-sen` token into the right kind of
 The diagnosis was right to the word: *"the father test either did not run or did not decide."*
 It did not run.
 
-**Verified against her three named cases.** `Christian Frederik Bergersen` and
+**Verified against the three named cases.** `Christian Frederik Bergersen` and
 `Georg August Bergersen`, father **Gunder Bergersen**, both flip `Bergersen` patronymic →
-**family** — the father carries the token himself, which is precisely her *"linked to the father
+**family** — the father carries the token himself, which is precisely the *"linked to the father
 who demonstrably had a different given name and had that patronymic"*. The third, `Q141223548`
 *Per Nilsson*, is **not** fixed by this and the queue item is cut back to it: our record has
 `Nilsson` in `_MARNM` and nothing in `SURN`, so it reads as `married` before and after, and the
@@ -21164,7 +21164,7 @@ the carry-forward fell 269 → 258 as tokens merged into family-name entries tha
 The name-item half had two holes:
 
 - **The stillborn vocabulary was documented and never implemented.** `scripts/labels.py` carries a
-  full comment block about this exact item, quoting her and counting the corpus — and
+  full comment block about this exact item, quoting the ruling and counting the corpus — and
   `dödfödd`, `dødfødt`, `stillborn` are in **neither** `labels.WORDS_MEANING_UNKNOWN` nor
   `namemodel.UNKNOWN_MARKERS`. A note that claims a fix is worse than no note.
 - **`name_shape` never ran on `GIVN`.** It ran on `SURN` and `_MARNM` only, so every marker already
@@ -21305,7 +21305,7 @@ they carry is the tie-break heuristic rejected in as many words — *"you jumped
 of hoops to try to introduce safety stuff here that I did not want"* — and an ambiguity recorded
 is cheaper than a wrong link created.
 
-## 2026-08-31 — the 57 duplicate name items, recomputed in full and added to her file
+## 2026-08-31 — the 57 duplicate name items, recomputed in full and added to the file
 
 `reports/name-ambiguity-causes.md` found a bucket of name strings whose two candidate items
 carry **identical English descriptions** — `Schloss` is `Q105540652` *family name* and
@@ -21331,7 +21331,7 @@ Neither was deletable whole, so both were cut rather than removed — the rule i
 part still to do.
 
 **`THREE SEPARATE WIKIDATA OPERATIONS`** kept its framing, because its whole purpose is that the
-three do not get conflated again and her 3-8 hour budget stops being applied to the wrong one. Its
+three do not get conflated again and the 3-8 hour budget stops being applied to the wrong one. Its
 detail went: **A · labels fetch** finished 2026-08-12 (876,840 items, 5,637 properties) and
 **B · name items** finished at **824,358 items** — `reports/name-ambiguity-causes.md` is built on
 them, which is the evidence B is done, not just claimed. Each is now one line. **C · individuals**
@@ -21495,7 +21495,7 @@ says to run the existing tooling and then decide, which is now the next step.
 **`THREE SEPARATE WIKIDATA OPERATIONS`.** All three are finished — A the labels fetch
 (876,840 items, 2026-08-12), B the name items (824,358, and `reports/name-ambiguity-causes.md`
 is built on them), C the individuals walk. It was kept earlier today for its framing, so that
-her 3-8 hour budget could not be applied to the wrong one again. That reason has expired: A and
+the 3-8 hour budget could not be applied to the wrong one again. That reason has expired: A and
 B are done and C now has its own live section.
 
 **And it had become actively wrong.** Its C bullet still read *"the fetch queue drained to 0…
@@ -21615,7 +21615,7 @@ which is one thing worded twice — a duplicate rather than an ambiguity).
 
 **So "mixed" was wrong and the bucket dissolves.** Nothing in the 769 is now unexplained.
 
-**A decision taken rather than parked**, per § *Working the queue: GUESS*. Her `Maria` ruling
+**A decision taken rather than parked**, per § *Working the queue: GUESS*. The `Maria` ruling
 covers this shape already — *"there's a male and a female Maria… That is settled by the person's
 sex"* — and it extends: where one candidate is the bare `given name` and the other is sexed, take
 the sexed item matching the **bearer's** sex and fall back to the generic where the bearer has
@@ -21668,7 +21668,7 @@ frontier is: newly-fetched people are exactly the ones whose relatives we do not
 the queue does not shrink it. The store went **2,248,462 → 2,425,946** (+177,484, now 4.3 GB) and
 the fetch queue emptied **twice**, and neither emptying meant anything at all.
 
-**Her criterion decides this, so it is decided rather than asked** — *"If it turns out that the
+**The stated criterion decides this, so it is decided rather than asked** — *"If it turns out that the
 amount doesn't seem like there's a clear end point, then we move on to this stuff."* Two passes,
 no decay, and an expansion that is heading into the whole Wikidata human graph rather than
 converging on the Geni-linked neighbourhood the store was seeded from. **Moving on.** Nothing is
@@ -21784,7 +21784,7 @@ step still to take.
 
 ## 2026-08-31 — the sexed-vs-generic name rule applied: 299 new resolutions
 
-Her `Maria` ruling settles a competing given-name item **per bearer** rather than per string —
+The `Maria` ruling settles a competing given-name item **per bearer** rather than per string —
 *"there's a male and a female Maria… That is settled by the person's sex."* Yesterday's bucketing
 found 33 more of that shape hiding in what `reports/name-ambiguity-causes.md` had called
 *"231 · other. Mixed."*, so the rule is now extended to them.
