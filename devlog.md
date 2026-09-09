@@ -30033,7 +30033,7 @@ is set exactly once."*** That heading is mine. The 2026-09-03 words underneath i
 kept verbatim, but the framing I built on top of them is the thing struck down today —
 *"me setting it was a shortcut because you just sat on the page jerking off instead of doing
 work."* A session reading that bullet would do exactly what I did: treat the anchor as untouchable
-and file a wrong-anchored pilot as her decision.
+and file a wrong-anchored pilot as a settled decision.
 
 **The half that is a genuine constraint is kept and separated out**: toggling mid-run silently
 re-anchors every later search, so no collector job may touch it, and the test enforcing that
@@ -30106,7 +30106,7 @@ the block page's own sentence, an hCaptcha iframe, and the structural tell — a
 has an `h1` and a non-empty `<title>` and the block page has neither, because its text lives inside
 the frame. Verified after the fix: `state: scraped`, Natalia Krebs, 2 relatives.
 
-**And the anchor shows in the wording now.** Her banner reads *"How are **they** related?"* where
+**And the anchor shows in the wording now.** The banner reads *"How are **they** related?"* where
 every earlier capture read *"How are **you** related?"* — the pushpin is live and the page is
 asking about the profile and Charlemagne rather than about the viewer.
 
@@ -30138,7 +30138,7 @@ the tree. It was live and it was in the merge: `find_exports()` returned 605 fil
 That is the origin of the `9995000000000000074` and `9995000000000102196` fathers `CLAUDE.md`
 already records as junk in the parent deck. It has been in every merge.
 
-**Deleted on the instruction** — *"just delete them"* — along with the script itself. Her aside is
+**Deleted on the instruction** — *"just delete them"* — along with the script itself. The aside is
 the part worth keeping: *"it's weird you are treating this thing as so sacrosanct."* I had just
 finished writing a `CLAUDE.md` rule about exactly that failure over the pushpin, and then did it
 again to a generated file, offering to keep it in the corpus pending a decision that was never
@@ -30217,7 +30217,7 @@ in 662 of 698 paths**. The placeholders carry **no `RFN`**, deliberately, so the
 false claim on this repo's primary key. The class even keys a group on its full membership so one
 sibling pair met twice gets one set of parents.
 
-**I read all of that as fabrication, called it *"junk"* and *"pollution"*, got her agreement to
+**I read all of that as fabrication, called it *"junk"* and *"pollution"*, got agreement to
 delete on a framing I had supplied, and deleted the script and both files.** Everything is
 restored: 618 files in the merge, `0-scraped` back with 2, `family-scrapes` alongside with 13.
 
@@ -30297,7 +30297,7 @@ importer. That is three transport hacks stacked to move data the extension is al
 background is not subject to the automatic-download content setting that blocks an `<a download>`
 click, so the collector can put a file on disk without any of this — which is what the scheduler
 was built to do across a whole queue rather than one profile at a time. That path needs the
-service worker actually updated, which is the reload still sitting with her.
+service worker actually updated, which is the reload still outstanding.
 
 No more hand-transport. 13 scrapes stand, all clean.
 
@@ -30418,7 +30418,7 @@ a page does not.
 The merge now reads **1,309 files**: 1,307 counted as exports and the 2 aggregates excluded, since
 `scraped-pages.ged` at 14,121 individuals must not be measured against a 5,000 cap.
 
-**Paths from the saved pages too.** Her confirmation: *"the paths can come from there"*, and the
+**Paths from the saved pages too.** The confirmation: *"the paths can come from there"*, and the
 directory split is a decision — *"Path gedcoms and individual ones are different files in different
 directories even if they come from the same html page."*
 
@@ -30545,7 +30545,7 @@ intact**: no `\xc3\x83` anywhere, the `ř` still two bytes `c5 99`. That is the 
 that got destroyed when the identical text went through a shell heredoc, which is the whole
 difference between the two transports and the reason four scrapes had to be deleted.
 
-Her path search is **in progress**, which is the ordinary asynchronous state rather than a
+That path search is **in progress**, which is the ordinary asynchronous state rather than a
 failure — the tab has to stay open while Geni computes it, and it is collected on a second pass.
 
 **The loop is now:** navigate → `family` job → write the TSV → dispatch the `path` job → leave the
@@ -30556,7 +30556,7 @@ needed at any point, which is what the download route could never say.
 
 **The ruling:** *"delete those ones lol"* — `exports/0-scraped/scraped-pages.ged` and
 `scraped-paths.ged`, with `scripts/build-scraped-gedcom.py`. They carried **4,928 invented `NN`
-people**, which her absent-slot ruling forbids, and they were the only reason
+people**, which the absent-slot ruling forbids, and they were the only reason
 `genimerge.sources.DERIVED_DIRS` existed: `scraped-pages.ged` held 14,121 individuals against a
 `GENI_EXPORT_CAP` of 5,000 and had to be kept out of every corpus-shape check. That set is now
 empty and `find_exports()` and `geni_exports()` agree at **3,320**.
@@ -30599,7 +30599,7 @@ attribute, a file tool writes it, `build-tiny-gedcoms.py` turns it into a GEDCOM
 
 ## Jakob Sichel banked, and the ledger had silently stopped tracking
 
-Isolate pilot, her current objective — *"get the Charlemagne paths for the wikidata isolates that
+Isolate pilot, the current objective — *"get the Charlemagne paths for the wikidata isolates that
 are not in the world tree, and we also save the tiny gedcoms for the individuals we collect the
 paths on"*. **Jakob Sichel `6000000042112380373`**: 10 relatives, Family Tree 1,101, Blood
 Relatives 555, and **four half-siblings**, which the tiny GEDCOM deliberately does not join into a
@@ -30620,7 +30620,7 @@ Backfilled from the files' own `# statistics` headers rather than re-derived, so
 disagree; `path_found` and `anchor` stay blank because neither is knowable from a file.
 **`isolates.csv` is 20 rows: 7 misses, 1 hit, 12 pending.**
 
-## Her run-loop spec, written down before anything else is built
+## The run-loop spec, written down before anything else is built
 
 The whole of what the extension does per individual was dictated, with **"there's no
 discretion on your part at all"** three times. `docs/collector-run-loop.md` is it, verbatim.
@@ -30650,7 +30650,7 @@ One thing genuinely missing rather than misplaced: **no export-target ledger exi
 
 ## The run loop is one job now — `{job:"individual"}`
 
-Her spec, built: `geni-extension/content/individual.js`. The agent lands on the profile and calls
+The spec, built: `geni-extension/content/individual.js`. The agent lands on the profile and calls
 one job; **every decision after that is the extension's**, which is what *"there's no discretion on
 your part at all"* means in code.
 
@@ -30686,7 +30686,7 @@ is a no-go... headless browser stuff with playwright and such is a nogo."*
 
 Recorded in `CLAUDE.md`, because it is a prohibition rather than a preference and it governs
 anything built here later. The reason is a decision: *"Geni is not the most kind to us, heavily gating
-api access"*, and driving her real logged-in browser is what makes the traffic acceptable.
+api access"*, and driving the real logged-in browser is what makes the traffic acceptable.
 
 **It also resolves the scheduler, which I spent most of a day treating as a blocker.** The framing
 — *"this is why the scheduler was iffy"* — is that a scheduler opening its own tabs removes the
@@ -30789,7 +30789,7 @@ answer. `individual.js` carries the correction beside the change it nearly justi
 **What did land is a wiring fix.** `runPath` has documented `waitMs` as *the caller's budget*
 since it was written and `runIndividual` never passed one, so no caller could ever reach it —
 `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*. The default stays 600000,
-because her figure for a real search is ten minutes and a capped wait turns a slow hit into a
+because the figure for a real search is ten minutes and a capped wait turns a slow hit into a
 deferral. Extension 1.6.0 → 1.6.1.
 
 **Six more, and the ceiling appears three times in one batch.** Leo Stransky `6000000121836149850`
@@ -31065,7 +31065,7 @@ never a name"*, so `drop_title_suffix` has always kept it out of `P735` *given n
 *family name*. What nothing removed it from is the **label** — `build-display-names.py`
 concatenates `givn + surn + NSFX` into `display_name` and `derive-labels.py` takes that string
 whole. § *A TITLE IS NOT A NAME* said in as many words that the rule *"does not touch the
-LABEL"*, and left what a label should read open. Her message closes it for this class.
+LABEL"*, and left what a label should read open. The ruling closes it for this class.
 
 **Two things were put as a question and both narrowed the work rather than widening it.** What the fact
 becomes: *nothing* — the Geni-rendered string is what `P1810` *subject named as* carries by
@@ -31098,7 +31098,7 @@ it for `mul`, `en`, `en-ca`, `en-us` and `fr`, every language the item carried i
 Wikidata**, 11,154 → 11,157 of 40,898 in `reports/labels.md`.
 
 Held off `main` for thirty minutes on instruction, on `claude/ogift-suffix-label-fix-tl1nva`,
-with a cron to merge at 19:40 her time.
+with a cron to merge at 19:40 local time.
 
 **Census residue, read rather than assumed.** Three of the 763 keep a marker after the rule
 runs. Two are `(o.ä)`, a dotted spelling of the `oä` already in `_DESCRIPTION`. The third,
@@ -31113,13 +31113,13 @@ On `Q141337174` reading *mother of Gunhild Øysteinsdotter Kvavik*: *"Parents ar
 significant identifier of a person, then spouse, then child. This person seems to have it
 completely inverted and it makes me suspect all our name generation has it backwards."*
 
-**Two separate things, and only one of them caused her example.**
+**Two separate things, and only one of them caused the reported example.**
 
 **The real ordering bug.** `build-garborg-day.describe_all` ordered its relatives parent →
 **child** → spouse; `build-nn-label-batch.nearest` has ordered them parent → **spouse** → child
 since it was written. Two emitters of one model, drifted apart, neither tested against the other
 — the shape `CLAUDE.md` already records for the married-name label and for `drop_title_tail`.
-Her ranking, and her 2026-08-25 reliability order (*"parents are always most reliable"*, then
+The ranking, and the 2026-08-25 reliability order (*"parents are always most reliable"*, then
 spouses, then children), both say spouse. Swapped.
 
 **It changes 9,256 people** — the unnamed who have no named parent but do have both a named
@@ -31155,7 +31155,7 @@ the pilot exists to produce is measurable for the first time.
 
 **Of the 76 misses, the 300 floor clears 37 for export and refuses 39** — very nearly an even
 split, which is the first evidence that the threshold is placed somewhere useful rather than at
-one end of the distribution. Her *"any number over 1,000 is a sure export, i say even any number
+one end of the distribution. The *"any number over 1,000 is a sure export, i say even any number
 over 300"* lands within a person or two of the median.
 
 **The seven hits:**
@@ -31278,12 +31278,12 @@ The correction: *"I gave the qids lol in the photos."* They were there, and read
 Charlemagne path**, so `CJK_PRIORITY_PATH` missed her. `reports/cjk-priority-qids.tsv` is the nine
 photographed, read as data; the next one named is one line.
 
-Checking her nine against the live labels split them: five have no CJK at all, three **have all
+Checking those nine against the live labels split them: five have no CJK at all, three **have all
 three and hold them wrong**, and two are name items outside the ledger. The additive pass skipped
 the middle three by design, so it now corrects as well as adds — guarded by `CJK_LABELS_NOT_OURS`,
 which is what protects a value set by hand.
 
-**Three defects came out of following her list rather than my own.**
+**Three defects came out of following that list rather than my own.**
 
 **A redaction marker was being transliterated.** `NN Torbjørnsdotter Skofteland` rendered
 `ン・トルビョルンスドッテル・スコフテランド` — `NN` as a bare mora nasal — and `느느 …` in Korean.
@@ -31309,7 +31309,7 @@ Those rows now keep their `ja`/`zh` and have only their `ko` re-derived: **105 o
     Carl        카르르  -> 칼           Brandt      브란드트  -> 브란트
     Schmidt     스미드트 -> 스미트        Arndt       아르느드트 -> 아르느트
 
-`Tigerstedt`, her original report, now reads `ティゲルステト` / `蒂盖尔斯特特` / `티게르스테트`.
+`Tigerstedt`, the original report, now reads `ティゲルステト` / `蒂盖尔斯特特` / `티게르스테트`.
 
 ## 2026-09-07 — never derive CJK from a Latin label that disagrees with the live one
 
@@ -31327,7 +31327,7 @@ labels disagree writes our disagreement into three more languages at once — an
 disagreement is **ours**: `Q6197518` carries the duplicated patronymic that was reported.
 `_missing_cjk_labels` now holds an item whose live `mul` differs from ours. 1,193 -> 1,017 items.
 
-**And her five turned up one genuinely broken table row.** `Valdemarsson` held
+**And those five turned up one genuinely broken table row.** `Valdemarsson` held
 `ヴァルデマーションン`, machine output that no refresh reaches because its note is `patronymic`
 rather than `by rule`. Reading all **47** rows with that note settled the question the right way:
 they are hand quality and the rule is WORSE than they are — `アンデシュドッテル` for
@@ -31365,7 +31365,7 @@ excluded, Bergitte included:
 Computed from the label rather than from `fields`, because `fields` keeps a person's FIRST `NAME`
 record and Bergitte's first is a plain string with no `SURN` or `_MARNM` at all.
 
-**Her five, after the repeated-patronymic and clan fixes: three now ship.** `Q6197518` Svantepolk
+**Those five, after the repeated-patronymic and clan fixes: three now ship.** `Q6197518` Svantepolk
 went from `Svantepolk Knutsson Knutsson Skarsholmsätten` to `Svantepolk Knutsson`, matching
 Wikidata. The two still held — `Algot Bryniolfsson` against Wikidata's `Brynolfsson`, and Tore,
 whose Geni record itself gives `givn Tore II Gardson` and `marnm Gard` — are **source
@@ -31427,7 +31427,7 @@ instead. Building that validation set needs a fetch this container cannot make a
 **Shown `Q141336969` and `Q141290188` carrying `P144` *based on*
 `Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the Junna you
 linked. Not sure how you even got that one or how you're defining the patronymic sources."*
-Her floor: *"Uhh it needs to be attested lol. Really attested in our data plus some degree of
+The floor: *"Uhh it needs to be attested lol. Really attested in our data plus some degree of
 agentic inference or my manual approval."*
 
 `scripts/census-patronymic-sources.py` → `reports/patronymic-source-attestation.tsv`:
@@ -31449,7 +31449,7 @@ not their weight, so a 4,000-father source and a one-father source were indistin
   tokens — a token borne by three people has three attesting fathers at most.
 * **A share floor drops mostly GOOD pairs.** `johnsen ← Johannes` (8 fathers), `henriksen ←
   Henrich` (38), `christiansdatter ← Christen` (14), `claesson ← Clas` (15), `olsson ← Olaus`
-  (4) are all real spellings of one name, and dropping them is exactly what her multi-valued
+  (4) are all real spellings of one name, and dropping them is exactly what the multi-valued
   ruling protects against.
 * Even the tightest combination leaves 168, and reading all 168 shows **most are genuine** —
   `knutsen ← Canuti`, `mortensen ← Martinus`, `staffansson ← Stefan`, `paulsen ← Poul`.
@@ -31502,7 +31502,7 @@ the live reads the pipeline already makes. No id is written down until one confi
 **And the class was supplied the same evening: `Q1076664` *matronymic*** — *"personal name
 component based on ones mother's given name"*. That was the one thing this container could not
 look up (§ *Do not guess these*, and the egress policy refuses `www.wikidata.org`), so it waited
-for her rather than being invented.
+externally rather than being invented.
 
 Wired end to end. `build-patronymic-items.py` runs the mother walk beside the father one and
 writes a `usage` column: **110 tokens are `matronymic`**, attested by a mother and by no father,
@@ -31580,7 +31580,7 @@ but a 400-statement day arriving at a 200-edit ceiling is a doubled batch delive
 which is the opposite of what was asked for.
 
 **The free-parent formula scales with its own constant** rather than the literal ten: it is
-`FREE_PARENTS_FREE + (n - FREE_PARENTS_FREE) // 2`, so 34 eligible now gives 20 + 7 = 27. Her
+`FREE_PARENTS_FREE + (n - FREE_PARENTS_FREE) // 2`, so 34 eligible now gives 20 + 7 = 27. The
 quoted wording — *"10 free parents plus half of the remaining"* — is kept verbatim as the shape;
 the docstrings around it name the constant instead of restating the number, which is why it drifted.
 
@@ -31649,7 +31649,7 @@ share nothing but her.** Both are correct; they answer different questions; and 
 the prose say which.
 
 **So "set once per session" is wrong the same way "set exactly once" was.** `docs/anchor-protocol.md`
-already recorded that her one-time setting was a shortcut I turned into a law. This is that
+already recorded that the one-time setting was a shortcut I turned into a law. This is that
 lesson one level down: the anchor expires on its own, so the check has to be **per capture**,
 not per run. Step 1 of the chain is free, it is already in the result, and it is the only thing
 that survives an expiry at an unknown moment.
@@ -31703,8 +31703,8 @@ that itself opens with a territorial word is refused — `av` is excluded, which
 goes: Geni's `SURN` for him is literally `Steyn,`.
 
 **One of the nineteen is arguable and is shipped rather than filtered.** `Marina til Jylland`
-becomes `Marina Jylland`, and Jylland is a Danish region — the `Judith of Flanders` shape her
-own ruling excludes. Geni files it in her `SURN`, and separating a farm from a region needs a
+becomes `Marina Jylland`, and Jylland is a Danish region — the `Judith of Flanders` shape the
+same ruling excludes. Geni files it in her `SURN`, and separating a farm from a region needs a
 gazetteer, which is the inference this repo refuses everywhere else.
 
 **The `Given NN` half went in on a follow-up ruling, not on the obvious reading.** Asked which
@@ -31766,7 +31766,7 @@ gap.
 **Also added**, since the table was plainly a subset rather than a specification: `stepfather`,
 `stepmother`, `stepbrother`, `stepsister`, `adopted son/daughter`, `foster son/daughter`.
 
-**Her file is corrected and verified.** Hepburn now appears in
+**The file is corrected and verified.** Hepburn now appears in
 `exports/tiny-profiles/296165995120003655.ged` as an `INDI` with a name and an `RFN` and in **no
 `FAM` at all** — he exists, and nothing is claimed about how. Her parents' family holds only her
 two real parents.
@@ -31873,7 +31873,7 @@ offers *"They might be connected in other ways"* with another **Show Me**. So th
 third relationship search that nothing in this repo has ever run, and no person should be called
 a final miss until it is established what that one returns. Recorded rather than guessed at —
 Chrome's tab group went away mid-measurement and the browser loop was stood down because the
-five-tab run was measurably slowing her phone.
+five-tab run was measurably slowing the phone.
 **⛔ The correction ground would have rewritten 240 items that are not ours, and the gate went in
 before it shipped.** `Q6230601` *Marcus Wallenberg*, `Q47102` *Joseph Smith*, `Q768342`
 *Augustine Washington* — 240 items whose Wikidata label is exactly ours minus the suffix, which
@@ -31891,7 +31891,7 @@ Caught by reading the agreement figure rather than by the suite: `reports/labels
 
 ## The ledger now says WHICH search answered, and CI parses the extension
 
-Two follow-ons to her in-law ruling, both non-Geni, done while the browser loop is stood down.
+Two follow-ons to the in-law ruling, both non-Geni, done while the browser loop is stood down.
 
 **`reports/isolates.csv` gains a `via` column, and NOTHING is back-filled.** `path_found` means
 *any* path now — *"in-law connections are just as valid blood is no required lol"* — so a bare
@@ -31910,7 +31910,7 @@ The docstring now carries the caveat where the writer will read it: **every `no`
 
 **CI parses the extension.** The collector is JavaScript nothing here imports, so a syntax error
 in it is invisible to pytest and to every reader — it surfaces when Chrome next loads the
-unpacked extension, on her machine, mid-run, silently. That nearly shipped today: a generated
+unpacked extension, on the live machine, mid-run, silently. That nearly shipped today: a generated
 header in `path.js` landed with a **real newline inside a string literal** instead of a `
 `
 escape, and it was caught by reading the file, not by any check. `node --check` parses without
@@ -31979,7 +31979,7 @@ surname: `name-item-plan.csv` already holds it as `family`, 39 bearers, `Q302505
 
 **The rule is categorical, and saying so is the whole justification.** A token that is a first
 given name **zero** times and a family name **at least once** has no given-name usage to model.
-That is a different question from the one her 2026-08-15 ruling answers — *"If something is a
+That is a different question from the one the 2026-08-15 ruling answers — *"If something is a
 surname and a given name, then it gets a surname and a given name object"* adjudicates between
 two real usages, and is untouched.
 
@@ -32096,7 +32096,7 @@ filter.** None of these is in the ledger — but neither is any other case, and 
 was tried on 2026-08-31 and selected 0 of 709, which is what published an empty page while the
 work was still there. So the filter is the script actually ruled on, not the universe.
 
-**The deck is now empty**: two retired by her verdicts, three held by the filter. They stay in
+**The deck is now empty**: two retired by verdicts, three held by the filter. They stay in
 `reports/parent-candidates.tsv`, which is the census.
 
 ## 2026-09-08 — `both_present` is the walk continuing, and `neither` reaches the ledger
@@ -32134,7 +32134,7 @@ which is the shape the merge is already proven on. `rebuild-everything.py` runs 
 before the merge and hands it over with a new `genimerge merge --also`.
 
 **It is generated IN ADDITION.** `build-garborg-day.ledger()` still reads the CSV directly, which
-is her *"I do not want to break the pipeline"*. The direct read goes only once the tree route is
+is the *"I do not want to break the pipeline"*. The direct read goes only once the tree route is
 shown to carry the same pairs.
 
 **Measured** — three tiny profile GEDCOMs plus the overlay, merged: **314 wikidata NOTEs over 359
@@ -32145,11 +32145,11 @@ the invented-person guard held nothing back. Re-running is byte-identical.
 **⛔ AND THE SLIM TREE DROPS `NOTE`, WHICH IS THE BLOCKER ON THE SECOND HALF.** The same three
 files under `--slim`: **0 wikidata NOTEs**, same 359 people. `genimerge.slim.DROP_INSIDE` holds
 `NOTE` and `tree.yml` runs `--slim`, so *"qids in bios"* is **not true in CI** — and was not
-before this either: her 29 hand-written pairs in `exports/post-merge/wikidata-qid-links.ged` have
+before this either: the 29 hand-written pairs in `exports/post-merge/wikidata-qid-links.ged` have
 never survived a slim rebuild. Nothing broke, because the two consumers that read `NOTE` out of
 the merged tree read the local full merge. Widening the whitelist is a memory decision (`NOTE` is
 most of what slim removes) and moving the correspondence onto a tag that happens to survive would
-be writing a more intuitive version of her program, so neither was done.
+be writing a more intuitive version of the specified program, so neither was done.
 
 **`--also` rather than a file under `exports/`, for two reasons and the second is the quiet one.**
 `tests/test_repo_invariants.py` compares `git ls-files` against `find` over `exports/`, so a
