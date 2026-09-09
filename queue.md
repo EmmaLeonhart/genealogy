@@ -206,8 +206,14 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   (`Ann Bincks (Benckes|Bench)`, 136 of them, already held separately). NOT to be interpreted
   here; yours.
 
-- **`undigested.md`** — raw text from you, verbatim and unprocessed. Nothing in it is a task
-  until you say so. Do not investigate its contents.
+- **`undigested.md` — NEEDS-INVESTIGATION.** Raw text from you, verbatim and unprocessed.
+  Investigating it is a real outstanding item and belongs in every status report under that tag,
+  so it does not quietly disappear. **But not yet, and not unprompted** — you, 2026-09-09: *"I do
+  not want you to investigate"*. It rests until you say go.
+
+  Currently holding: nine Geni profiles you called **hinge people** — *"people who seem to have
+  clearly disjoint large numbers of descendants, and as such are good descendants export
+  sources"* — for descendants exports later.
 
 ---
 
