@@ -3873,10 +3873,9 @@ did over **our Geni tree**; that is the closest thing that ever existed, and it 
 
 ### Entry points DRIP IN on a date. `reports/entry-points.tsv` is the timer
 
-**Emma, 2026-09-03:** *"for entry points into the graph: I actually want this as a timer: on
-October 1 George RR Martin is added as an entry point, and Robert Ettinger is added as an entry
-point right now! I think there probably are other people worthy of dripping in as entry points.
-But I'm not sure who."*
+**Entry points drip in on a timer.** Robert Ettinger is an entry point now; George R.R. Martin
+becomes one on October 1. Other people are probably worth dripping in, and which ones is an open
+question.
 
 **The timer is a DATE COLUMN, never a cron.** `reports/entry-points.tsv` carries
 `qid, geni_id, label, active_from, note`, and `subgraph_roots()` includes a row once
@@ -3885,8 +3884,8 @@ fires while the session is idle* records one starving for four hours, and every 
 2026-08-28 crash. A date in a tracked file cannot be lost, needs nothing running on the day, and
 makes switching someone on a property of the repo. Adding the next person is one line.
 
-**Resolve an entry point's QID from OUR OWN DATA. Do not reach for Wikidata.** Emma,
-2026-09-03: *"Idk why you queried wikidata over this."* `reports/derived-labels.csv` already
+**Resolve an entry point's QID from OUR OWN DATA. Do not reach for Wikidata.**
+`reports/derived-labels.csv` already
 carries the qid beside the Geni id for everyone in the tree, so a `wbsearchentities` call for a
 person we hold is a request that answers nothing a local join does not. § *Querying Wikidata is
 ALLOWED* permits it and § *the offline store is the right first place to look* still decides
@@ -3914,15 +3913,14 @@ check, so the day one switches on shows in the output rather than being inferred
 than a brief to go ranking candidates — § *No unprompted reports* governs. Roots are cheap and
 reversible; the constraint is which people she wants the graph grown from.
 
-**And the roster stays at ABOUT 250.** Emma, 2026-09-03: *"leave it with about two hundred and
-fifty entry points or something like that."* Dripping in is a trickle, not a campaign — the
-count is a property of the design, not a number to grow.
+**And the roster stays at ABOUT 250.** Dripping in is a trickle, not a campaign — the count is a
+property of the design, not a number to grow.
 
-**The two she named were named for DIFFERENT reasons, and the `note` column records which.**
-Ettinger: *"important enough that he's worthy of being an entry point of his own"* — standing in
-his own right. Martin: *"interesting due to his eccentricity"* — a position on the graph. So
-there is no single criterion to generalise into a filter, and inventing one is what § *Do not
-grab the first artifact that vaguely matches* warns against.
+**The two are entry points for DIFFERENT reasons, and the `note` column records which.**
+Ettinger is important enough to be an entry point in his own right; Martin is interesting for his
+eccentricity, which is a position on the graph. So there is no single criterion to generalise
+into a filter, and inventing one is what § *Do not grab the first artifact that vaguely matches*
+warns against.
 
 **Eccentricity is measured now: `reports/eccentricity.md` and `tree-eccentricity.csv`**, all
 1,451,964 people. The headline matters for reading the word: **Martin is at the 80th percentile
@@ -3933,8 +3931,8 @@ central here. § *Presence measures our sampling, never Geni's content* is why t
 substituted. The far edge of our own tree is the Chinese legendary lineage (少昊 Shaohao at 183)
 and, among people carrying a QID, the Samaritan high priests at 131–134.
 
-**Eccentricity is PARTLY A RECENCY MEASURE.** Emma, 2026-09-03, on why Ettinger scores high:
-*"I only recently added him, basically."* Measured over the 602 exports: **Ettinger is in 4,
+**Eccentricity is PARTLY A RECENCY MEASURE.** Ettinger scores high largely because he was added
+recently. Measured over the 602 exports: **Ettinger is in 4,
 Shaohao in 1**. A person one export reached sits wherever that export left them, and expanding
 around them pulls them inward — so a high score can mean *we have not sampled here yet* rather
 than *this person is structurally peripheral*. Two people is not a correlation and is not offered
@@ -3942,11 +3940,9 @@ as one; the full version is a `genimerge.density` presence count against the fil
 
 ### ⛔ "MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME AND IT IS THE ONE TO GET RIGHT
 
-**Emma, 2026-09-05, naming the risk rather than the file:** *"Artifact entity resolution is not
-'manual entity resolution' and calling it as such is extremely misleading and it's the reason for
-my fear. It should be called idk 'manual parental zipper merge correspondences' since the
-extremely vague title is almost certainly gonna be fucking abused by later agents for other
-purposes."*
+**The vague name is the risk.** *Artifact entity resolution* is not *manual entity resolution*,
+and calling it that is extremely misleading: the right name is **manual parental zipper merge
+correspondences**, because a vague title will be abused by later sessions for other purposes.
 
 **So `reports/manual-identifications.csv` is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.**
 Not "her identifications", not "manual entity resolution", not a general-purpose place to put a
@@ -3957,8 +3953,7 @@ Geni-to-Wikidata pair somebody is confident about. What it is:
 - **right now, only for PARENTS.** Her words. The parent deck is the instrument
   (§ *THE PARENT DECK*), and 46 of its rows carry `batch = parent-adjudication-gui` while 204
   are `emma-pasted-verdicts` out of the same artifact;
-- **something she hopes to phase out**, not a permanent channel: *"Artifact entity resolutions
-  are a thing I hope to eventually phase out."*
+- **something to be phased out eventually**, not a permanent channel.
 
 **The danger the vague name creates is specific.** A later agent reading *manual identifications*
 will put anything hand-checked into it -- a Samaritan pair, a bio link, a spine anchor -- and the
@@ -3972,10 +3967,9 @@ share a word and are opposite things.
 
 ### BIO QIDs ARE ACROSS MANY GEDCOMS, and one file FORCES them
 
-**Emma, 2026-09-05:** *"Bio qids are present across many gedcom files. There's one special gedcom
-file that forces bio qids and also after Jan 1 2027 it turns everything in it into an entry point
-and by extension ledger item, opening up the way for edits in certain eccentric clusters of the
-tree."*
+**Bio QIDs are present across many GEDCOM files, and one special GEDCOM file forces them.** After
+2027-01-01 that file turns everything in it into an entry point and by extension a ledger item,
+opening the way for edits in certain eccentric clusters of the tree.
 
 Two distinct things, and the second is not a copy of the first:
 
@@ -3997,7 +3991,7 @@ ledger.
 
 ### ⛔ WHAT `wikidata-qid-links.ged` IS FOR: people TOO FAR OUT to edit yet
 
-**Emma, 2026-09-05**, explaining the file rather than the mechanism:
+**What the file is for, rather than how it works:**
 
 > *"it was originally recording very obscure random people that were obscure enough that I made
 > the judgment that actually doing the Wikidata edit would be perceived as too out of left field
@@ -4032,8 +4026,8 @@ precisely a person worth growing a graph from *later*. § *THE STUPIDER AND MORE
 
 ### The 1,800-statement runs were SURFACE AREA, and it is temporary
 
-**Emma, 2026-09-05, explaining the outlier batches** — the same question as § *the range is the
-subject count draining*, answered from her side:
+**The outlier batches, explained** — the same question as § *the range is the subject count
+draining*, from the other side:
 
 > *"normally, we're adding people together, and there's an actual ring expanding. But this
 > particular group was defined by the fact they were all present, but weren't connected."*
@@ -4054,9 +4048,8 @@ as one and do not go looking for a cause.
 are introduced on Wikidata, we'll have a similar phenomenon, as well as generally with any kind
 of mass introduction of entry points."* The blocs dated 2027-01-01 are that introduction.
 
-**⛔ ECCENTRICITY IS THE ISSUE. CENTRALITY IS GOOD.** Emma, 2026-09-05, correcting a paraphrase
-that had inverted her: *"Eccentricity is an issue, centrality is good for me."* A
-high-eccentricity person or cluster is a problem to close, which is what § *THE EDIT ALGORITHM*'s
+**⛔ ECCENTRICITY IS THE ISSUE. CENTRALITY IS GOOD.** A high-eccentricity person or cluster is a
+problem to close, which is what § *THE EDIT ALGORITHM*'s
 service areas are for. Do not record this as *"centrality is not a metric"*; it was written that
 way once and is the opposite of what she said.
 
@@ -4065,9 +4058,8 @@ we're doing things well with this generally."*
 
 ### ⛔ A BLOC IS A ROSTER REFERENCE. Six people off a report is not the ancient Chinese bloc
 
-**Emma, 2026-09-05:** *"the Chinese people shouldn't be in the entry points thing lol, you
-probably decided to write a more intuitive version of my program instead of following
-specifications and this is why you made bullshit."*
+**A more intuitive version of the specification is not the specification.** Six hand-listed
+Chinese individuals were put into the entry points file where a roster reference was specified.
 
 **What was done.** Her 2026-09-03 bloc list names *"Ancient Chinese bloc"* alongside the Samaritan
 high priests, the Ethiopian and Japanese Emperors, Tanba and Izumo. Instead of a roster, **six
@@ -4082,9 +4074,9 @@ Hand-listing is the *intuitive* move — it is shorter, it is visible, and it lo
 and it produces a bloc defined by whatever report was open at the time rather than by what the
 bloc is.
 
-**The mechanism she meant is the GEDCOM, and it already existed.** Emma, 2026-09-05: *"it was
-supposed to be keyed on the entity resolution gedcom for the new ones lol. Again I was super clear
-it's stupid spaghetti code at first glance but it reduces redundancy."* A new entry point is added
+**The mechanism is the GEDCOM, and it already existed** — keyed on the entity-resolution GEDCOM
+for the new ones. It looks like stupid spaghetti code at first glance and it reduces redundancy.
+A new entry point is added
 by putting its pair in `exports/post-merge/wikidata-qid-links.ged` — the `special-geni-gedcom-recognition`
 group reads it and switches on **2027-01-01**, the same date the bloc wanted. **One mechanism, two
 purposes**: the bio link does entity resolution inside the merged tree *and* makes the QID an entry
@@ -4109,8 +4101,8 @@ should read when nothing is wrong.
 
 **Composition, checked 2026-09-03: 253 roots = 251 Bure + Arne + Ettinger.** Johannes Bureus is
 himself in `reports/bureatten.csv`, so of the 252 that existed before the drip-in, **251 are
-Bure and exactly one is not**. Emma: *"Almost all of them are Bure people… Arne Garborg is the
-one exception."*
+Bure and exactly one is not**: almost all of them are Bure people, and Arne Garborg is the one
+exception.
 
 **Her reason for the asymmetry, and it is about SURFACE AREA rather than about importance:**
 
@@ -4125,7 +4117,7 @@ one exception."*
 | | how the items got there | what they connect to |
 | --- | --- | --- |
 | **Bure**, ~251 | sv.wikipedia articles, **no genealogical work** | **each other** — the whole point |
-| **Arne's family**, about the same number | created by Emma, already well linked | **other groups** |
+| **Arne's family**, about the same number | created by hand, already well linked | **other groups** |
 
 So the two sides are doing different jobs, and the Bure count is not lopsidedness to correct.
 An item that exists but states no relationships is the highest-yield entry point there is —
@@ -4137,7 +4129,7 @@ people are that population, and they are why the roots look the way they do.
 It is a download snapshot: **767 of the 928 non-Bure ledger items are absent from it entirely**,
 having been created after the download, so it says nothing about Arne's side. The Bure rows in it
 are also post-campaign rather than pre-campaign, so a relationship count there may be measuring
-her own work. § *Emma edits the tree and the items BY HAND, continuously* is the governing rule.
+hand work. § *The tree and the items are edited BY HAND, continuously* is the governing rule.
 
 ### Whole BLOCS become entry points on 2027-01-01 — and a root outside the ledger does nothing yet
 
