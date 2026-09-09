@@ -1,12 +1,10 @@
 """Who is missing from the relationship chains, ranked by how many slots they fill.
 
-**This does not touch the merged tree, and that is the point.** Emma, 2026-08-17:
-*"I didn't request that you rebuild the synoptic tree. You just did that on your own,
-and I think that's kind of stupid… rebuilding the synoptic tree right now is just going
-to create another tree that's going to become out of date pretty soon."*
+**This does not touch the merged tree, and that is the point.** An unrequested rebuild
+of the synoptic tree only produces another tree that goes out of date shortly after.
 
-She was right, and the cost was not only time: re-merging while she worked took the
-machine to **0.3 GB free of 31.3 GB** and killed two background jobs. The chain question
+The cost was not only time: re-merging alongside other work took the machine to
+**0.3 GB free of 31.3 GB** and killed two background jobs. The chain question
 never needed a merge. *Do we hold this person?* is answered by whether their Geni ID
 appears as an `INDI` xref in any export, which is one pass over `exports/` and a set of
 strings — **13 seconds against roughly five minutes and 4.5 GB**, and it cannot go stale
@@ -15,19 +13,18 @@ because it reads the corpus directly.
 The merged tree is still the right instrument for questions about *structure* — who is
 whose parent, which component somebody is in. It is the wrong one for presence.
 
-### The ranking is slots, not midpointness — her call
+### The ranking is slots, not midpointness
 
-Emma, 2026-08-17: *"can you force open the top 10 people for number of path slots they
-fill? I was asking earlier for midpoints in path segments, but the issue with that is
-that the midpoints for path segments were making some assumptions: an assumption of
-relative equality of presence in slots, but I don't think this is true anymore."*
+The batch opens the top people by **number of path slots they fill**. Ranking by midpoint
+of a path segment assumes rough equality of presence across slots, and that assumption
+does not hold.
 
-She is right about the assumption. Slot counts run from **10 down to 1** across the
+Slot counts run from **10 down to 1** across the
 missing people, so ranking by position-in-chain treated somebody blocking ten paths the
 same as somebody blocking one. A **slot** is one appearance of one person on one saved
 path, so a person on nine paths fills nine slots and closing them buys all nine.
 
-**No already-opened filter.** Her rule, twice: the ranking drops a person by itself as
+**No already-opened filter**, ruled twice: the ranking drops a person by itself as
 soon as an export covers them, so a filter can only exclude people who are *still* gaps.
 `reports/midpoint-seeds-to-open.tsv` is overwritten every run and is the handoff for the
 batch being opened now, never a history.
@@ -68,33 +65,31 @@ csv.field_size_limit(10 ** 7)
 #: decode; the IDs are ASCII digits whatever the rest of the file is.
 INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 
-#: Family-tree index, never the profile page. Emma, 2026-08-17: *"rather definitively
-#: this kind of thing … is a better page to open up for them rather than the pages you
-#: opened."* The profile shows one person; the index shows the neighbourhood she has to
-#: work in to place a placeholder and run the export.
+#: Family-tree index, never the profile page -- ruled definitively 2026-08-17. The
+#: profile shows one person; the index shows the neighbourhood the placeholder has to be
+#: placed in before the export is run.
 FAMILY_TREE_URL = "https://www.geni.com/family-tree/index/{}"
 
 #: ---------------------------------------------------------------- ON HOLD
 #: **Empty, and it should stay that way unless something is genuinely unreachable.**
-#: Emma, 2026-08-17: *"put them on hold… I don't want you to throw them out in the sense
-#: of just not using them at all, because I think we're able to get them. They just
-#: require a slightly different strategy."*
+#: A person on hold is held, not thrown out: they are reachable, they just want a
+#: slightly different strategy.
 #:
-#: **Her bar, in her words:** *"the only situation where I'd be considering somebody to
-#: be unreachable by our method would be if they have 32 ancestors, all of which have 32
-#: ancestors, or if they themselves are a master profile and all of their ancestors are
-#: master profiles."* Both are exhaustion conditions over a whole *walk*, not a property
-#: of one screen.
+#: **The bar for unreachable:** they have 32 ancestors, all of which have 32 ancestors;
+#: or they are themselves a master profile and every one of their ancestors is a master
+#: profile. Both are exhaustion conditions over a whole *walk*, not a property of one
+#: screen.
 #:
-#: **What I did wrong, recorded because it is the failure mode she named.** I put James
-#: IV, Margaret of Denmark, Francis II and Lorenzo II de' Medici here after looking at
+#: **What went wrong here, recorded because it is a named failure mode.** James
+#: IV, Margaret of Denmark, Francis II and Lorenzo II de' Medici were put here after
+#: looking at
 #: the four generations the tree index renders, seeing a green `+N` badge on every box,
 #: and calling the tree saturated. That is not a measurement of reachability — it is not
 #: having walked deeper. `docs/export-seed-rules.md` § *When the whole visible tree is
 #: saturated* says the next move is to follow those counts into a **smaller** ancestor
-#: tree, preferring small odd numbers, and insert there. I skipped that step on all four.
-#: Emma: *"you're dismissing them prematurely because it's very common that you dismiss
-#: tasks prematurely… You just didn't push the depth far enough to actually do it."*
+#: tree, preferring small odd numbers, and insert there. That step was skipped on all
+#: four. They were dismissed prematurely, which is the common failure: the depth was
+#: simply never pushed far enough.
 #:
 #: **A master profile is not an unworkable person.** It cannot be edited from this
 #: account, but the walk does not stop at it, and its neighbours are usually ordinary.

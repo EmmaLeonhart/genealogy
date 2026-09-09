@@ -1,12 +1,11 @@
 """The eccentric TAIL of the tree, split into connected clusters.
 
-**Emma, 2026-09-05:** *"A couple days ago in a different chat you did eccentricity analysis on
-the synoptic tree. You found a bunch of Chinese ancient people were most eccentric. Think you can
-run something like that again? I want to see other eccentric clusters"*.
+**The earlier eccentricity analysis of the synoptic tree found the ancient Chinese people to be
+the most eccentric. This asks the same question again, for the OTHER eccentric clusters.**
 
 `scripts/measure-eccentricity.py` ranks PEOPLE, and the top of that ranking is one descent — 少昊
 Shaohao down to 伯益 Bo Yi, six people on a single chain, which `CLAUDE.md` § *The Chinese
-legendary lineage* records her calling *"very clustered with each other"*. A ranked list of
+legendary lineage* records as being very clustered with each other. A ranked list of
 individuals cannot show a second group: everything near the top is the same lineage, and the next
 family starts wherever that one runs out.
 
@@ -129,9 +128,9 @@ def describe(labels) -> str:
     """The words shared across a WHOLE cluster, commonest first.
 
     **This exists because reading the five farthest labels is how a cluster gets mislabelled.**
-    Emma, 2026-09-05, on the 222-person cluster this report called *"the Samaritan Itamar line"*:
-    *"you said Samaritan itamar line but it's clearly everyone in the Samaritans cluster and you
-    just bullshitted"*. She is right and it is countable — over all 222 labels, `Samaritan`
+    This report once called a 222-person cluster *"the Samaritan Itamar line"* when it is
+    clearly everyone in the Samaritan cluster. That was wrong and it is countable — over all
+    222 labels, `Samaritan`
     occurs **145** times and `Itamar` **111**, alongside `High Priest` 38, `Cohen` 35 and
     `ben` 71. The Itamar line is the largest thread in a Samaritan cluster, not the cluster.
 
@@ -287,8 +286,8 @@ def main() -> int:
     lines = [
         "# Eccentric CLUSTERS in the synoptic tree",
         "",
-        "**Emma, 2026-09-05:** *\"You found a bunch of Chinese ancient people were most "
-        "eccentric… I want to see other eccentric clusters\"*.",
+        "The earlier eccentricity analysis found the ancient Chinese people to be the most "
+        "eccentric. This asks the same question for the OTHER eccentric clusters.",
         "",
         "`reports/eccentricity.md` ranks people, and the top of that ranking is one descent — "
         "six people on a single chain. A ranked list cannot show a second group, because "

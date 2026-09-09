@@ -2,8 +2,8 @@
 
     python scripts/find-geni-duplicates.py
 
-**Emma, 2026-08-24:** *"Find profiles that look similar like shared parents, plus look
-over basically all Japanese items with higher scrutiny."*
+**Find profiles that look similar -- shared parents above all -- and look over the
+Japanese items with higher scrutiny.**
 
 **The signal is two children of one parent bearing the same name.** Parents do not
 normally give two surviving children the same name, so a shared parent plus a shared
@@ -18,10 +18,10 @@ because an unparented duplicate is exactly what a re-created biblical or clan pr
 looks like — `CLAUDE.md` § *A second Geni ID on one Wikidata item*. Those are reported
 separately and never mixed in with the strong ones.
 
-**Nothing is merged and nothing is rewritten.** Emma's standing rule: the duplicate
-merges are hers, flag and never perform. This writes records.
+**Nothing is merged and nothing is rewritten.** The standing rule is that duplicate
+merges are made by hand: flag, never perform. This writes records.
 
-**Japanese profiles are marked, not filtered.** She asked for higher scrutiny over them,
+**Japanese profiles are marked, not filtered.** They want higher scrutiny,
 so the report carries a `script` column and sorts them first; it does not drop the rest.
 
 **And that column read `Latin` for every person alive, which made the whole Japanese pass
@@ -60,15 +60,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from genimerge.matching import YEAR_TOLERANCE  # noqa: E402
 
-# The marker vocabulary is Emma's and lives in ONE place. See `is_placeholder`.
+# The marker vocabulary lives in ONE place. See `is_placeholder`.
 from labels import WORDS_MEANING_UNKNOWN  # noqa: E402
 
 #: Placeholder names. Two children called `NN` are not evidence of anything — a parent
 #: with several unnamed children is ordinary, and treating them as duplicates would
 #: bury the real cases. `CLAUDE.md`: NN is *nomen nescio*, a real statement that the
 #: name is unknown.
-#: **The punctuation forms live here and nowhere else, deliberately.** Emma's boundary,
-#: 2026-08-17, is *words yes, punctuation no*: `scripts/labels.WORDS_MEANING_UNKNOWN` holds only
+#: **The punctuation forms live here and nowhere else, deliberately.** The boundary set
+#: 2026-08-17 is *words yes, punctuation no*: `scripts/labels.WORDS_MEANING_UNKNOWN` holds only
 #: words, because emptying a label is a different decision from spotting a placeholder. Detection
 #: is the looser question, so `?` and `???` belong in this set and not in that one.
 NOT_A_NAME = {"", "nn", "n n", "n.n.", "private", "unknown", "?", "??", "???",
@@ -96,9 +96,9 @@ def is_placeholder(name):
     # one layer in. `FNU` is "first name unknown" and `Infant` names a died-in-infancy
     # child, which is a statement about the person rather than a name.
     # **`WORDS_MEANING_UNKNOWN` is consulted, and was not until 2026-08-30.** That set is
-    # Emma's -- every entry is a word she has ruled means *the name is unknown*, carried in
-    # `scripts/labels.py` with its corpus count. This module knew only `NOT_A_NAME`, which is
-    # `{"private", ""}`, so every other marker she had already ruled on leaked straight into
+    # the ruled vocabulary -- every entry is a word that means *the name is unknown*, carried
+    # in `scripts/labels.py` with its corpus count. This module knew only `NOT_A_NAME`, which is
+    # `{"private", ""}`, so every other already-ruled marker leaked straight into
     # the candidate list.
     #
     # It cost the top of the report: **25 groups covering 107 profiles**, including BOTH of the
@@ -350,7 +350,7 @@ def main():
             "birth_years": year,
         })
 
-    # Japanese first -- her instruction was higher scrutiny on those, so they sort to the top
+    # Japanese first -- those want higher scrutiny, so they sort to the top
     # rather than being filtered out -- then by how tight the structural bracket is: a shared
     # parent id beats a shared parent name, which beats no parent at all.
     tightness = {"same parent, same name": 0,
