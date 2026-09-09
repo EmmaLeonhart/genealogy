@@ -1,8 +1,8 @@
-"""The patronymic name items her algorithm needs, and the `P144` derivations that gate it.
+"""The patronymic name items the algorithm needs, and the `P144` derivations that gate it.
 
     python scripts/build-patronymic-items.py
 
-**Emma's design, 2026-08-31**, dictated after the string-comparison version was built and found
+**The design of 2026-08-31**, dictated after the string-comparison version was built and found
 wanting: a patronymic resolves by **item identity**, not by comparing strings per person.
 
     the patronymic resolves to a patronymic NAME ITEM
@@ -17,7 +17,7 @@ nobody asked for is its own rule.
 
 ## The one string comparison, and where it lives
 
-Her constraint: *"it only uses a string comparison once."* Here it is -- establishing which given
+The constraint: it uses a string comparison exactly once. Here it is -- establishing which given
 name a patronymic derives from -- and the comparison is made **against the fathers our tree
 already names**, never by searching the store. Searching returns 553 candidates for `Olsdatter`
 including `oala` and `oilbhe`; the father is one fixed person, which is the same boundary the
@@ -31,13 +31,13 @@ Measured live over all 631 patronymic items that exist, so the shape is copied n
 
   * `P31` *instance of* -> `Q110874` *patronymic*
   * `P1705` *native label* -- the token as written
-  * `P144` *based on* -- every given-name item the fathers actually carry. **Multi-valued, her
+  * `P144` *based on* -- every given-name item the fathers actually carry. **Multi-valued, by
     ruling:** 1,892 of 7,352 tokens are attested by more than one given name, and keeping only
     the commonest would make the 1,364 `Olsdatter`s whose father was `Ola` fail the identity test
     and receive no `P5056` at all.
   * `P5278` *surname for other gender* -- `Olsson` <-> `Olsdotter`, same stem, gendered suffix.
 
-**`P407` *language of work or name* is emitted from the SUFFIX**, her ruling 2026-09-01 when
+**`P407` *language of work or name* is emitted from the SUFFIX**, ruled 2026-09-01 when
 shown the choice between omitting it and this. 59% of the existing items carry it.
 
 The rule is the suffix and only the suffix -- `-sson`/`-sdotter` is `Q9027` *Swedish*,
@@ -106,8 +106,8 @@ def given_kinds(qids):
 
     **Scope this or it crawls the whole index.** The first version was handed every qid in
     `given` -- 225,457 items, thousands of requests -- when the question only concerns the 207
-    labels that are actually plural. Emma killed it: *"I cannot even imagine a case where this
-    is a real issue."* She is right twice over: the fetch was unbounded, and the ambiguity is
+    labels that are actually plural. It was killed as a non-issue, and rightly, twice over:
+    the fetch was unbounded, and the ambiguity is
     not one. A father is a man and these tokens are Latin, so the male Latin item is the answer.
     """
     import json
@@ -154,8 +154,8 @@ def given_kinds(qids):
     return {q: tuple(v) for q, v in cache.items()}
 
 
-#: `P407` *language of work or name* by SUFFIX. Her ruling, 2026-09-01: *"Add it by suffix
-#: convention"*, over omitting it entirely.
+#: `P407` *language of work or name* by SUFFIX. Ruled 2026-09-01: add it by suffix convention,
+#: over omitting it entirely.
 #:
 #: `Q9027` *Swedish*, `Q9043` *Norwegian*. Danish `Q9035` is deliberately not used: `-sen` and
 #: `-datter` are shared by Danish and Norwegian and nothing in the token separates them, so the
@@ -196,9 +196,9 @@ def main():
     # fixed person, so this confirms a position the structure chose rather than searching.
     sources = collections.defaultdict(collections.Counter)
     # **What the OLD rule accepted and this one does not.** Items we created before 2026-09-07
-    # carry `P144` values sourced from the father's surname slot, and Emma found two of them
-    # live. A removal must name a value we can positively identify as ours and withdrawn --
-    # never merely "not in today's plan", which would take anything she added by hand. Running
+    # carry `P144` values sourced from the father's surname slot, and two were found live.
+    # A removal must name a value we can positively identify as ours and withdrawn --
+    # never merely "not in today's plan", which would take anything added by hand. Running
     # the unscoped walk beside the scoped one is what makes that identification exact, and it
     # maintains itself: the day a source stops being withdrawn the removal stops being emitted.
     withdrawn_names = collections.defaultdict(set)
@@ -214,7 +214,7 @@ def main():
         for tok in lab.split():
             # **The Latin genitive is a patronymic form too**, and it needs its own branch:
             # `PATRONYMIC_PARTS` cannot split `Olai`, so the suffix machinery below would
-            # drop it. Emma, 2026-09-05, on `Olofsson` and `Olai` being one patronymic in two
+            # drop it. Ruled 2026-09-05: `Olofsson` and `Olai` are one patronymic in two
             # languages. The source is the father's own given name, exactly as above.
             if not nm.PATRONYMIC.match(tok):
                 src = nm.latin_patronymic_source(tok, dad_given)
@@ -229,7 +229,7 @@ def main():
                 continue
             stem = m.group(1).casefold().rstrip("s")
             bearers[tok.casefold()] += 1
-            # **Only the father's GIVEN names may attest**, her ruling of 2026-09-07 on `Junna`.
+            # **Only the father's GIVEN names may attest**, ruled 2026-09-07 on `Junna`.
             # `namemodel.given_name_run` is the one place; reading every word of the label let a
             # farm name three positions along source a patronymic 4,512 people bear.
             words = dad.split()
@@ -247,14 +247,14 @@ def main():
 
     # ---- the MOTHER walk: a token no father attests is a MATRONYMIC ---------------------
     #
-    # **Emma, 2026-09-07: "Reclassify as matronymic"**, and `Q1076664` *matronymic* is the class
-    # she supplied. The population she was shown -- `P144` values whose given-name item is
+    # **Ruled 2026-09-07: reclassify as matronymic**, with `Q1076664` *matronymic* supplied by
+    # hand. The population that was shown -- `P144` values whose given-name item is
     # `Q11879590` *female given name* -- was the wrong one: `adriansdatter <- Adrian`,
     # `jonesdatter <- Jone`, `brynildsen <- Brynild` are male Norwegian and Old Norse names with
     # a wrong or unisex `P31` on Wikidata, and a source in the father walk IS the father's name
     # however Wikidata classes it.
     #
-    # A matronymic derives from the MOTHER, and nothing walked her. `Mariasson` is the son of
+    # A matronymic derives from the MOTHER, and nothing walked the mother. `Mariasson` is the son of
     # *Maria*; the mother is the only parent who attests it.
     #
     # **Attested by a mother AND by no father.** A token both parents attest is an ordinary
@@ -263,7 +263,7 @@ def main():
     # this to the 110 tokens where the mother is the only possible source.
     #
     # `patronymic_or_surname` asks whether the FATHER carries the same token, so it is a father
-    # test by construction and is not applied here; the token's shape and her given name are the
+    # test by construction and is not applied here; the token's shape and the mother's given name are the
     # whole evidence. The Latin genitive stays on the father, which `name modelling.txt` models
     # as his.
     matro = collections.defaultdict(collections.Counter)

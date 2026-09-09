@@ -1,10 +1,10 @@
 /* The parent walk: go up the ancestry adding whichever parent is missing.
  *
- * `docs/parent-walk-algorithm.md` is Emma's dictation and the authority on the ORDER. This file
+ * `docs/parent-walk-algorithm.md` is the dictation and the authority on the ORDER. This file
  * implements it; `docs/export-seed-rules.md` decides what a created person is CALLED.
  *
- * ⛔ THE ORDER IS THE SPECIFICATION. Her words: *"I am giving you a very, very specific ordering
- * of things."* Per person:
+ * ⛔ THE ORDER IS THE SPECIFICATION, and it was given as a very specific ordering.
+ * Per person:
  *
  *   1. patronymic present -> check the FATHER first; absent -> add him, named from the patronymic
  *   2. otherwise          -> check the MOTHER first, then the father
@@ -32,7 +32,7 @@ GC.seed = {};
  * way on 2026-09-05, by creating somebody who should never have been created.
  *
  * Ane Oline Jonsdatter Raugstad's labelled block reports **`father` only**. Her prose block
- * reports *"Daughter of Jon Samuelsen Raustad; Inger Kristoffersdatter and NN"* -- she had a
+ * reads *"Daughter of Jon Samuelsen Raustad; Inger Kristoffersdatter and NN"* -- she had a
  * mother, `Inger Kristoffersdatter`, the whole time. Reading the labels said "no mother", the
  * walk added one, and a live profile acquired a spurious third parent.
  *
@@ -85,9 +85,9 @@ GC.seed.family = function () {
  * The GIVEN name is the first token and the SURNAME is the last, unless the last IS the
  * patronymic. That is what makes `Ole Larsen Tjåland` a tier 1 -- given `Ole`, patronymic
  * `Larsen`, surname `Tjåland`, so the father is `Lars /Tjåland/` -- while `Anders Olsen` has no
- * surname left and falls to tier 2. **A Nordic farm name IS a surname** (Emma, 2026-08-18: *"uhh
- * farm names are surnames here lol"*), and the standing warning applies: do not reason a surname
- * out of existence. She ruled that way twice, on farm names and on `-ez`. */
+ * surname left and falls to tier 2. **A Nordic farm name IS a surname** (ruled 2026-08-18), and
+ * the standing warning applies: do not reason a surname out of existence. That ruling was made
+ * twice, on farm names and on `-ez`. */
 GC.seed.name = function () {
   const h = document.querySelector("h1, #profile_name, .profile-name");
   let raw = h ? (h.textContent || "").trim() : "";
@@ -113,8 +113,8 @@ GC.seed.STEM = { ol: "Ole", oll: "Ole", ola: "Ola", olav: "Olav", tor: "Tor", to
   sivert: "Sivert", syvert: "Syvert", gunder: "Gunder", torstein: "Torstein" };
 
 /* An Iberian patronymic is a lookup, not a stem plus an ending: `Rodríguez` is son of *Rodrigo*,
- * not of *Rodrígu*. Emma, 2026-08-18: *"-ez is a real patronymic in some cases lol and we do treat
- * it as one in historical contexts."* The reading that `-ez` had fossilised into an inherited
+ * not of *Rodrígu*. Ruled 2026-08-18: `-ez` is a real patronymic in some cases and is treated
+ * as one in historical contexts. The reading that `-ez` had fossilised into an inherited
  * surname is a true linguistic fact and explicitly NOT how this project reads them. */
 GC.seed.IBERIAN = { rodriguez: "Rodrigo", fernandez: "Fernando", sanchez: "Sancho", nunez: "Nuño",
   jimenez: "Jimeno", ximenez: "Jimeno", gimenez: "Jimeno", gonzalez: "Gonzalo", martinez: "Martín",
@@ -127,7 +127,7 @@ GC.seed.SLAVIC = { petrovich: "Pyotr", petrovna: "Pyotr", ivanovich: "Ivan", iva
   petrovic: "Petar", nikolaevich: "Nikolai", nikolaevna: "Nikolai", alexandrovich: "Alexander",
   alexandrovna: "Alexander", mikhailovich: "Mikhail", vasilievich: "Vasily", wojslawic: "Wojsław" };
 
-/* A particle names the father in the tokens after it, UP TO THE NEXT PARTICLE -- her ruling,
+/* A particle names the father in the tokens after it, UP TO THE NEXT PARTICLE -- ruled
  * 2026-09-04: `bin Haji Muhammad` is one patronymic naming *Haji Muhammad*, while
  * `ben Phinhas ben Yittzhaq` is two. */
 GC.seed.PARTICLES = new Set(["ap", "ab", "ferch", "verch", "fitz", "ben", "bat", "bin", "ibn", "bar"]);
@@ -226,12 +226,12 @@ GC.seed.plan = function (nm, pat, which, parentCount) {
 
   if (pat && pat.system === "iberian-unknown") return { skip: "unmapped Iberian patronymic" };
 
-  /* ⛔ TIER 3 IS ONLY WHEN ONE PARENT IS ALREADY THERE. Emma, 2026-09-05, asked which parent a
-   * person with NO parents and no patronymic should get: **"Father, per the seed rules"** --
+  /* ⛔ TIER 3 IS ONLY WHEN ONE PARENT IS ALREADY THERE. Ruled 2026-09-05, on which parent a
+   * person with NO parents and no patronymic should get: **the father, per the seed rules** --
    * `docs/export-seed-rules.md` tiers 4 and 5, `NN` plus the birth surname or `NN /father of X/`.
-   * So her mother-first ordering in `docs/parent-walk-algorithm.md` governs the case where one
+   * So the mother-first ordering in `docs/parent-walk-algorithm.md` governs the case where one
    * parent already exists, and the seed rules govern the empty case. This reported `tier 3,
-   * mother absent` for people with zero parents until she ruled.
+   * mother absent` for people with zero parents until that ruling.
    *
    * The value of a tier 3 is the SLOT, not the label -- *"by creating this person we're actually
    * reducing ambiguity in the tree"*. */
@@ -245,7 +245,7 @@ GC.seed.plan = function (nm, pat, which, parentCount) {
   return { tier: 5, first: "NN", last: "father of " + nm.given, why: "no surname" };
 };
 
-/* Emma's rules on the SUGGESTED surname, 2026-09-05:
+/* The rules on the SUGGESTED surname, 2026-09-05:
  *
  *     "if the suggested surname is the patronymic it is replaced with 'NN' and if it contains
  *      but isn't entirely the patronymic then the patronymic is removed with regex from the
@@ -313,10 +313,10 @@ GC.seed.addParent = async function (which, p) {
   if (!rel) return { state: "no_relationship_field" };
   set(rel, "parent");
 
-  /* ⛔ SUGGEST SURNAMES **ON** -- Emma, 2026-09-05: *"Suggest surnames on is best tbh"*. This
+  /* ⛔ SUGGEST SURNAMES **ON** -- ruled 2026-09-05 as the better option. This
    * REVERSES `docs/export-seed-rules.md` tier 3, which said to leave it off because Geni would
-   * offer the child's surname *"which would be invented"*. Her later ruling wins, and the
-   * reasoning is hers to hold: a created parent carrying the child's surname is a better handle
+   * offer the child's surname *"which would be invented"*. The later ruling wins, and the
+   * reasoning holds: a created parent carrying the child's surname is a better handle
    * than a bare `NN`, and it is what the rest of the tree already looks like. */
   const sug = $("suggest_surnames");
   if (sug && !sug.checked) sug.click();
@@ -325,15 +325,15 @@ GC.seed.addParent = async function (which, p) {
   set($("page_profile_names_en-US_middle_name"), "");
   /* ⛔ THE LAST NAME IS LEFT BLANK ON PURPOSE, so Geni's *Suggest surnames* fills it.
    *
-   * Emma, 2026-09-05: the father is *"first name taken from the patronymic plus suggested
-   * surname"*, and *"suggested surnames are always a good thing. And the agent just decided to
-   * disable suggested surnames for no reason."* So the surname is GENI'S, not ours -- which is
+   * Ruled 2026-09-05: the father is a first name taken from the patronymic plus the suggested
+   * surname, and suggested surnames are always a good thing — they had been disabled for no
+   * reason. So the surname is GENI'S, not ours -- which is
    * also what retires the token-parsing this file used to do, and with it the Spanish
    * two-surname problem that parsing had.
    *
    * **Measured 2026-09-05: the suggestion cannot be read before saving.** With the box ticked
    * and a first name typed, `page_profile_names_en-US_last_name` stays empty -- on typing, and
-   * on focus. Geni applies it server-side when the profile is created. So her rules about the
+   * on focus. Geni applies it server-side when the profile is created. So the rules about the
    * suggested surname are applied to what comes BACK, in `GC.seed.correctSurname`, not to a
    * value inspected here. Writing anything into the field would suppress the suggestion, which
    * is the one thing that must not happen. */
@@ -416,7 +416,7 @@ GC.runSeed = async function (job) {
     const byPid = {};
     fam.parents.forEach((p) => { byPid[p.pid] = p; });
     const enqueue = [];
-    /* Her order: mother first, then father. Where the labels name them, that order is exact;
+    /* The order: mother first, then father. Where the labels name them, that order is exact;
      * where they do not, the listed order is kept rather than guessed at. */
     if (fam.mother && byPid[fam.mother.pid]) enqueue.push(fam.mother.pid);
     if (fam.father && byPid[fam.father.pid]) enqueue.push(fam.father.pid);
@@ -439,7 +439,7 @@ GC.runSeed = async function (job) {
     /* No parents at all. A patronymic overrides the default and takes the father first. */
     /* No parents at all. A patronymic still takes the father first -- it NAMES him, which is
      * what makes tiers 1 and 2 worth more than an `NN`. Without one it is also the father, per
-     * her 2026-09-05 ruling and the seed rules' tiers 4 and 5. */
+     * the 2026-09-05 ruling and the seed rules' tiers 4 and 5. */
     which = "father";
   }
 

@@ -1,8 +1,8 @@
-"""Every parenthesised `SURN`/`_MARNM` token, classified by Emma's four rulings.
+"""Every parenthesised `SURN`/`_MARNM` token, classified by the four rulings.
 
     python scripts/census-paren-tokens.py
 
-**Her rulings, 2026-08-26**, given case by case on raw records — `CLAUDE.md` § *A parenthesised
+**The rulings of 2026-08-26**, given case by case on raw records — `CLAUDE.md` § *A parenthesised
 token in `SURN`/`_MARNM` is FOUR different things*:
 
 | shape | example | ruling |
@@ -12,24 +12,24 @@ token in `SURN`/`_MARNM` is FOUR different things*:
 | unknown-name marker | `(anonyma)`, `(?)` | an NN marker |
 | any other name-shaped token | `Weirman (Weyerman)`, `Turesson (Bielke)` | **both** — a second `P734` *family name* with the parens stripped, **and** an `Amul` alias |
 
-She asked to see more of the **particles** before the vocabulary is fixed: *"Show me more of
-these first"* was the option offered and only `(de)` and `(D.)` have been put to her. This
-census is that, and it classifies the rest by the rules she did give.
+More of the **particles** were asked for before the vocabulary is fixed, and only `(de)` and
+`(D.)` have been ruled on. This census is that list, and it classifies the rest by the rules
+that were given.
 
 ## How each shape is recognised, and which part is a guess
 
 * **unknown marker** — an exact vocabulary. `anonyma`, `incognita`, `?` and the obvious
   siblings. Exact strings, no heuristic.
 * **particle** — an exact vocabulary too, seeded from the nobiliary particles and honorifics
-  that actually occur here. **This is the list she asked to see**, so it is reported rather
+  that actually occur here. **This is the list that was asked for**, so it is reported rather
   than treated as settled.
 * **name-shaped** — everything else. **It gets BOTH**: a `P734` *family name* item with the
-  parens stripped, **and** an `Amul` alias on the person. Emma, 2026-08-26: *"they get both
-  family names and the alias lol."*
+  parens stripped, **and** an `Amul` alias on the person, ruled 2026-08-26: they get both
+  family names and the alias.
 
 ## The discriminator this file used to need, and no longer does
 
-Two of her rulings looked like they needed telling apart — `Turesson (Bielke)` a house, and
+Two of the rulings looked like they needed telling apart — `Turesson (Bielke)` a house, and
 `Weirman (Weyerman)` a spelling variant — since the two shapes are identical, `X (Y)`.
 
 **Two attempts, and the first was refuted by the census it was written for.** Bare-form
@@ -37,10 +37,9 @@ frequency said `Bielke` 311 against `Weyerman` 2 — but `Voehl` occurs 20 times
 `Loewenberg` 292, so `Vöhl (Voehl)` and `Levi (Loewenberg)` came out as family names when they
 are plainly variants. Frequency measures how common a name is, not whether two strings are the
 same name. The second attempt was string similarity to the neighbouring token, which did
-separate every case she had ruled on — and it was a similarity heuristic, in a repo that bans
-those.
+separate every ruled case — and it was a similarity heuristic, in a repo that bans those.
 
-**Her answer removed the question.** A token gets a family-name item *and* an alias, so nothing
+**The answer removed the question.** A token gets a family-name item *and* an alias, so nothing
 has to decide which one it is. That is the same shape as § *One name item per USAGE* — a token
 appearing in two roles is not an ambiguity to resolve — and as § *A second Geni ID on one
 Wikidata item is NOT a conflict*.
@@ -72,10 +71,9 @@ UNKNOWN_MARKERS = {
     "okänd", "ukjent", "ukendt", "unknown", "n.n.", "nn", "no name", "namn okänt",
 }
 
-#: Nobiliary particles and honorifics. **This is the list Emma asked to see** before the
-#: general rule is fixed; only `de` and `D.` have been put to her. Her ruling on those two:
-#: *"These should be parts of the mul labels because they are integral parts of what the
-#: people are called."*
+#: Nobiliary particles and honorifics. **This is the list that was asked for** before the
+#: general rule is fixed; only `de` and `D.` have been ruled on. That ruling: they are parts of
+#: the `mul` label, because they are integral parts of what the people are called.
 PARTICLES = {
     "de", "d.", "du", "des", "del", "della", "di", "da", "das", "dos", "van", "von",
     "van der", "van den", "vander", "le", "la", "el", "af", "av", "ap", "ben", "bin",
@@ -159,7 +157,7 @@ def main():
         return out
 
     lines = [
-        "# Parenthesised `SURN`/`_MARNM` tokens, classified by her four rulings",
+        "# Parenthesised `SURN`/`_MARNM` tokens, classified by the four rulings",
         "",
         f"{len(rows):,} distinct tokens, {sum(paren.values()):,} occurrences, over the "
         f"{sum(bare.values()):,} unparenthesised tokens that provide the attestation test.",
@@ -173,16 +171,16 @@ def main():
                      f"{r['ruling'] if r else ''} |")
     lines += [
         "",
-        "**The particle list is the one she asked to see.** Only `(de)` and `(D.)` were put to "
-        "her; the rest of `PARTICLES` in `scripts/census-paren-tokens.py` is seeded from what "
+        "**The particle list is the one that was asked for.** Only `(de)` and `(D.)` have been "
+        "ruled on; the rest of `PARTICLES` in `scripts/census-paren-tokens.py` is seeded from what "
         "occurs here and is a proposal, not a ruling.",
         "",
-        "**Nothing has to tell a noble house from a spelling variant.** Emma, 2026-08-26: "
-        "*\"they get both family names and the alias lol\"*. A name-shaped bracketed token "
+        "**Nothing has to tell a noble house from a spelling variant**, ruled 2026-08-26: "
+        "they get both family names and the alias. A name-shaped bracketed token "
         "becomes a second `P734` *family name* with the parens stripped **and** an `Amul` "
         "alias carrying the bracketed form as Geni shows it. Two earlier attempts at a "
         "discriminator — bare-form frequency, then string similarity — are recorded in the "
-        "script; her answer removed the question rather than settling it.",
+        "script; the answer removed the question rather than settling it.",
     ]
     for shape in ("name", "particle", "unknown marker"):
         lines += table(shape)
