@@ -1,7 +1,6 @@
 """Who still needs the collector. DERIVED on every run -- no list is ever hand-edited.
 
-**Emma, 2026-09-07**, asked how progress was being tracked and how to mark the skipped people
-undone: *"however the fuck you are tracking progress in this, removing them from a tsv?"* and
+**Asked how progress is tracked and how to mark the skipped people undone**, the answer was
 *"really just mark the skipped people all as not done yet ... and then run it on them again
 alongside the other people, order is actually not important and it is best for them to just be
 normal queue members in this thing lol."*
@@ -13,15 +12,15 @@ worklist is recomputed from what is on disk, so changing the DEFINITION of done 
 automatically. It already did: the moment `via` became the record of which search answered, every
 blood-only miss re-entered the pool without a row being touched.
 
-Two reasons a person is outstanding, and they are her rules 1 and 2:
+Two reasons a person is outstanding, and they are rules 1 and 2:
 
     never scraped     no `geni-families/<id>-family.tsv`
     blood-only miss   an `isolates.csv` row with path_found=no whose `via` does not record
                       that the other-ways search was run -- *"If blood did not hit and there
                       is no path then redo it."*
 
-⛔ **A PERSON WHO ALREADY HAS A BLOOD PATH IS NOT RE-QUEUED.** Her rule 3, and it is a cost she
-accepted rather than an oversight: *"I do not care about non-blood relationships among people
+⛔ **A PERSON WHO ALREADY HAS A BLOOD PATH IS NOT RE-QUEUED.** Rule 3, and it is an accepted
+cost rather than an oversight: *"I do not care about non-blood relationships among people
 already connected because I am time conscious and this shit is taking way too long and I do not
 want you to do that massive work. These first people covered just get worse coverage and that is
 life."* So `path_found=yes` is done, whatever `via` says.

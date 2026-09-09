@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Every person whose LABEL carries a `_DESCRIPTION` marker out of their own `NSFX`.
 
-**Emma, 2026-09-07**, shown `Q141313961` reading *Helena Maria Linnerhielm ogift*: *"ogift is
-some kind of suffix that shouldn't have been treated as part of the name, and as a result it
-needs to be corrected on everyone that has it in their labels."*
+**`Q141313961` read *Helena Maria Linnerhielm ogift*.** `ogift` is a suffix that should never
+have been treated as part of the name, and it needs correcting on everyone whose label carries
+it.
 
 `ogift` is Swedish for *unmarried*. It is already in `namemodel._DESCRIPTION` -- the group
 whose own comment reads *"a description of the person, never a name"* -- so it has never
@@ -52,8 +52,9 @@ def marker_tokens(nsfx: str) -> list[str]:
 
 
 def main() -> int:
-    # The ledger is what says a person is LIVE on Wikidata, and it is refreshed from her own
-    # contributions -- an item created since the last download is in here and in no store.
+    # The ledger is what says a person is LIVE on Wikidata, and it is refreshed from the
+    # account's contributions -- an item created since the last download is in here and in no
+    # store.
     ledger: dict[str, str] = {}
     ledger_path = REPO_ROOT / "reports" / "garborg-qids.tsv"
     if ledger_path.exists():

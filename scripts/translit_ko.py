@@ -1,9 +1,8 @@
 """Han characters to Hangul — the Korean label, which is CJK and was being skipped.
 
-**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
-prioritize getting korean labels all the time and this seems to not get that cjk includes
-korean"*, then *"more emphasis with the korean stuff there and changing some of the romanization
-pipeline queued stuff"*.
+**Korean is as important as Chinese and is prioritised all the time: CJK includes Korean.**
+That means more emphasis on the Korean output, and changes to the queued romanisation
+pipeline.
 
 **`ko` is engine work, like `zh`, and that is why queuing it beside `P1814` kana was wrong.**
 A hanja has a regular Sino-Korean reading; a Japanese *name* reading does not follow from the

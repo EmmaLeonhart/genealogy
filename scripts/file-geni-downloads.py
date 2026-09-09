@@ -3,12 +3,12 @@
 `<a download>` strips path separators, so a content script cannot write into a subfolder --
 every capture lands flat in `~/Downloads`. That is why filing is a separate step rather than a
 tidy-up, and it is the same shape as the proven manual method, which ended
-`mv /c/Users/Emma/Downloads/<id>-blood.html geni-paths/`.
+`mv ~/Downloads/<id>-blood.html geni-paths/`.
 
     python scripts/file-geni-downloads.py [--downloads DIR] [--dry-run]
 
 **A `.ged`/`.zip` is NEVER touched.** `CLAUDE.md` § *Never overwrite an existing `.ged`* makes
-where an export goes her call, and § *Do not integrate as you go* keeps the zips in
+where an export goes a manual call, and § *Do not integrate as you go* keeps the zips in
 `~/Downloads` until a whole batch is down. This script files path captures and the results TSV
 and nothing else; it prints the exports it can see and leaves them alone.
 

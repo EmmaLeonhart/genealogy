@@ -2,8 +2,8 @@
 
     python scripts/strip-p2600-self-cites.py <in.qs> [-o <out.qs>]
 
-**Emma, 2026-08-31:** *"geni ids do not get sources"*, and then *"Just have a script to remove
-the fucking self-cites"*.
+**Geni ids do not get sources**, and the self-cites already emitted are stripped by this
+script.
 
 `Q6014618 P2600 "4198641" S2600 "4198641"` cites the Geni id statement to the Geni id. `S2600`
 is right on every statement *derived* from a Geni profile -- there the profile is external

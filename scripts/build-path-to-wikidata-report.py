@@ -1,8 +1,8 @@
 """How a person connects to Wikidata's family graph, and by what route.
 
-Emma asked for this by name, 2026-08-12: *"find the earliest one of my ancestors
-that has a Wikidata item … It would just be the least amount of hops in the
-family tree to somebody with a Wikidata item."* Then, after the first answer
+Asked for by name, 2026-08-12: find the nearest ancestor who has a Wikidata item —
+the fewest hops through the family tree to somebody who has one. Then, after the
+first answer
 turned out to be an isolate: *"we will do a similar thing with other ancestors of
 mine instead."*
 

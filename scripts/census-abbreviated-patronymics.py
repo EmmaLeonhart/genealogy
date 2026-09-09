@@ -2,7 +2,7 @@
 
     python scripts/census-abbreviated-patronymics.py
 
-**Emma, 2026-08-27:** *"any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter")
+**The standing rule, 2026-08-27:** *"any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter")
 should be fixd since wikidata mul labels ae supposed to have the full form. This is a part of the
 compliance stuff I mentioned earlier"*.
 
@@ -16,7 +16,7 @@ person, not about the abbreviation. Measured over `reports/derived-labels.csv`: 
 `-datter` against **57,085** full `-dotter`, and the split runs the other way for individual stems —
 `Olsdtr` is `Olsdatter` 6,981 to 1,058, while `Andersdtr` is `Andersdotter` 5,172 to 3,126.
 
-So a global "always `-datter`" would be wrong several thousand times, and her own example
+So a global "always `-datter`" would be wrong several thousand times, and the worked example
 (`Rasmusdtr.` → `Rasmusdatter`) happens to be one of the stems where `-datter` wins 10:1.
 
 ## Evidence per person first, population second
@@ -50,8 +50,8 @@ OUT = ROOT / "reports" / "abbreviated-patronymics.csv"
 #: `Rasmusdtr`, `Rasmusdtr.`, `Ormsd`, `Johansdr`, `Olsdt.` — the stem plus the abbreviation,
 #: optionally a full stop.
 #:
-#: **`dtr` was the only form until 2026-09-04, and it is not the only form.** Emma corrected
-#: `Q141271379` by hand — *"I changed her name to correct the issue of an abbreviation of
+#: **`dtr` was the only form until 2026-09-04, and it is not the only form.** `Q141271379` was
+#: corrected by hand — *"I changed her name to correct the issue of an abbreviation of
 #: Ormsdatter"* — from `Anna Ormsd Byre`. `Ormsd` matched nothing here, so nothing expanded it
 #: and the batch went out with the abbreviation in the label. Widening to the genitive-preserving
 #: family adds **897 occurrences over 317 distinct tokens**: `dr` 382, `d` 317, `dr.` 71, `d.` 60,
