@@ -206,6 +206,9 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   (`Ann Bincks (Benckes|Bench)`, 136 of them, already held separately). NOT to be interpreted
   here; yours.
 
+- **`undigested.md`** — raw text from you, verbatim and unprocessed. Nothing in it is a task
+  until you say so. Do not investigate its contents.
+
 ---
 
 ## What this session settled, so it is not relitigated

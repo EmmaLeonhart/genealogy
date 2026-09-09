@@ -33490,3 +33490,14 @@ outside this session gets picked up.
 
 **A Forest export from the same person is submitted**, task `6000000227676391933`, building now.
 Geni allows one at a time, which is why it went in only after the Descendants zip was on disk.
+
+## 2026-09-09 — `undigested.md`
+
+A place for you to dump text without owing an explanation. Your words: *"like literally just make
+an 'undigested text' file or something and put this text into it I do not want to have to do a
+fuckton of explanation"*, and then *"I do not want you to investigate"*.
+
+First entry is nine Geni profiles you called hinge people — *"people who seem to have clearly
+disjoint large numbers of descendants, and as such are good descendants export sources"* — for
+descendants exports later. Pasted verbatim. **Not looked up, not checked, not ranked, not turned
+into a plan.** One line in `queue.md` points at the file and says the same.
