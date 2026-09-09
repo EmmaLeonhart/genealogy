@@ -28327,7 +28327,7 @@ patronymic *son of Olaus* and is still read as a family name, as are `Petri`, `B
 does not know, per her 2026-09-04 rule, and it needs its own measurement rather than being
 folded into this one.
 
-## 2026-09-05 — the parent walk, and the extension gets the algorithm she dictated
+## 2026-09-05 — the parent walk, and the extension gets the dictated algorithm
 
 `docs/parent-walk-algorithm.md` is that dictation, recorded before anything was built because
 the ordering is the specification: patronymic present overrides the default and checks the
@@ -28400,7 +28400,7 @@ statement that may already be there.
 **`P460`, and the pair has to be ATTESTED rather than spelled alike.** Two patronymic items are
 linked only where they share a `P144` source — the same given-name item, from the fathers in our
 own tree — **and** have the same stem **and** the same gendered suffix. **11 pairs, 22
-statements**, both directions as she wrote them: `Jonsson`/`Jonsen`/`Jonson`,
+statements**, both directions as specified: `Jonsson`/`Jonsen`/`Jonson`,
 `Pedersson`/`Pedersen`/`Pederson`, `Eriksson`/`Erikson`, `Eriksdotter`/`Eriksdatter`,
 `Olsen`/`Olson`, `Hansen`/`Hansson`.
 
@@ -28627,7 +28627,7 @@ JavaScript in a Python repo. A broken manifest or a mangled file would have surf
 browser, mid-run.
 
 `tests/test_geni_extension.py` is **build checks, not behaviour tests**. What the collector does
-is verified the way she asks for: the naming measured over 400,000 corpus names into
+is verified the way asked for: the naming measured over 400,000 corpus names into
 `reports/seed-naming-sample.tsv`, and the path parser run against a live page, matching
 `paths/charlemagne-to-arne-garborg.tsv` at 34 steps. Neither belongs in a unit test. What is
 here is the set of failures that are **silent**:
@@ -28655,7 +28655,7 @@ Every assertion was evaluated directly before pushing rather than by running the
 valid with no missing files, both host patterns `*://www.geni.com/*`, zero control characters,
 zero pushpin toggles, concurrency pinned in the background and absent from the panel.
 
-## 2026-09-05 — the collector runs, and the walk was unbounded until she bounded it
+## 2026-09-05 — the collector runs, and the walk was unbounded until it was bounded
 
 Chrome restart reloads an unpacked extension from disk, so the DOM trigger landed without her
 touching anything — that was the answer to a click I had been asking for repeatedly.
@@ -28668,7 +28668,7 @@ touching anything — that was the answer to a click I had been asking for repea
 Adds nothing and enqueues in her order. The walk is running in the extension rather than
 agentically, which is the whole point of building it.
 
-**Then the dry run showed it does not terminate, and she bounded it.** Both enqueued people are
+**Then the dry run showed it does not terminate, and a bound was set.** Both enqueued people are
 placeholders with zero parents, so the walk proposed an `NN` mother for each — and every `NN` it
 creates has no parents of its own, so the next pass proposes one for that. An unbounded chain of
 invented people on a live site.
@@ -28815,9 +28815,9 @@ That is her 2026-08-30 complaint recurring — *"name creations were always segr
 different Quick Statements generation pipeline that was never run"* — so the script goes, per
 § *LEGACY CODE IS DELETED*. Her call: *"Delete it as legacy"*. Removed with the three outputs
 nothing else reads; **`reports/bure-topology.md` is kept**, because the topology measurement it
-produced answers a question she asked and is not code.
+produced answers a question that was asked and is not code.
 
-**Then the audit she asked for, and the number is the finding: 0 of 27.**
+**Then the audit asked for, and the number is the finding: 0 of 27.**
 
     27 .qs files in reports/
      0  produced by anything the pipeline runs
@@ -28837,7 +28837,7 @@ about.
 Two of the nine carry `SIBLING_CAP`, doubled this evening, and so pace nothing today:
 `build-missing-reciprocals.py` and `build-from-diff.py`.
 
-## 2026-09-05 — the reciprocals and regnal ordinals were never folded in, and she thought they were
+## 2026-09-05 — the reciprocals and regnal ordinals were never folded in, and were believed to be
 
 Going over the nine unscheduled `.qs` generators one by one, her answer to two of them was
 *"Uhh I thought it already was folded in lol"*, and to the other two *"both are highly important
@@ -28854,7 +28854,7 @@ live daily batch does emit these *kinds* of statement, which is why it looked fo
     build-regnal-ordinals     6 P7338
 
 So the kind is covered and the population is not, by two orders of magnitude — and `P7338`
-*regnal ordinal* is not covered at all, though she asked for ordinals on names as qualifiers and
+*regnal ordinal* is not covered at all, though ordinals on names as qualifiers were asked for and
 *"not only the Samaritans"*.
 
 `pipeline.yml` now runs all three after the compose step. `build-from-diff.py` rides along
@@ -28868,13 +28868,13 @@ what finally makes that cap pace something: it had been slicing a batch nothing 
 `continue-on-error`, for the reason the adjudication deck has it: the Garborg batch is the
 deliverable and must not be lost to a failure in something riding along.
 
-**Three of the nine are still undecided and she does not recognise them** — *"Uhh what the fuck
-are these"*: `build-qid-link-p2600` (the 354-statement file `CLAUDE.md` records her objecting to
+**Three of the nine are still undecided and unrecognised** — *"Uhh what the fuck
+are these"*: `build-qid-link-p2600` (the 354-statement file `CLAUDE.md` records an objection to
 by name), `build-label-corrections` (whose job the daily batch's own `Lmul`/`Amul` emission
 appears to cover), and `build-sibling-batch` (which calls itself a one-off and deliberately
 ignores `SIBLING_CAP`). Nothing done to them.
 
-## 2026-09-05 — I put an unchecked batch into the pipeline on a claim, and she caught it
+## 2026-09-05 — I put an unchecked batch into the pipeline on a claim, and it was caught
 
 **Retracting what the previous entry said.** `build-missing-reciprocals` was wired into
 `pipeline.yml` on the claim that it emits *"what Wikidata is missing"*, with 1,247 `P40` and
@@ -28886,8 +28886,8 @@ live costs minutes. So it emits everything our tree records among `touched`, whi
 **plus everyone adjacent to it**: 1,518 ledger people, 2,274 touched, **6,770 statements**,
 re-asserted wholesale for QuickStatements to deduplicate.
 
-That is a sound design for a file she runs by hand and a bad one to pour into the batch she
-reviews. The daily batch emits 39 `P40` **because it checks**; this would have added 1,542 more
+That is a sound design for a file run by hand and a bad one to pour into the batch under
+review. The daily batch emits 39 `P40` **because it checks**; this would have added 1,542 more
 that are mostly already stated. Her words on being shown the framing: *"I don't think there's
 anything to be added that has those properties right now since none are in the ledger."*
 
@@ -28927,7 +28927,7 @@ Checking was right: there are **three**, not two, and they are almost entirely d
 
 So **184 correspondences reach nothing that emits `P2600`**, and the file the daily batch reads
 carries none of them. The `batch` column in `manual-identifications.csv` is its own provenance —
-204 of the 314 are `emma-pasted-verdicts`, out of the HTML artifact she named.
+204 of the 314 are `emma-pasted-verdicts`, out of the HTML artifact named.
 
 **`CLAUDE.md` said the GEDCOM was five records with four distinct QIDs. It is 29 and 28.** That
 sentence was read out and repeated twice in one evening before anyone counted the file — the same
@@ -28956,10 +28956,10 @@ one wired file and two neglected ones. Each of the other two is doing a document
   perceived as too out of left field"*; they become entry points on 2027-01-01;
 - `bio-qids.tsv` is for **roster resolution** and is read by four scripts, with the measured
   reason on record: 8 Geni ids for the Izumo roster against `p2600-all.tsv`'s 2;
-- the ledger holds 0 bio pairs **correctly**, being a record of contributions she has made.
+- the ledger holds 0 bio pairs **correctly**, being a record of contributions made to Wikidata.
 
 So the disjointness is the design. The report has been corrected so it does not read as a gap,
-which is the actual defect she identified — not the wiring, the page that should have said this.
+which is the actual defect identified — not the wiring, the page that should have said this.
 
 **The pattern across the whole evening is the same one**, and it is worth naming once: a
 description was believed instead of the thing it describes. The `/path/` URL, `pending()`, the
@@ -28985,11 +28985,11 @@ the access-point half is `reports/entry-point-groups.tsv`, where `special-geni-g
 names that file as its source with **`active_from = 2027-01-01`**.
 
 **`bio-qids.tsv` is not one of the two.** Listing it beside them was the error the earlier page
-was written under: it is not a resolution she made but a machine extract of QID links already in
+was written under: it is not a hand resolution but a machine extract of QID links already in
 Geni About Me text, read by the roster scripts. `reports/correspondence-sources.md` now leads
 with the two-file model and says so.
 
-So the whole line of enquiry ends where she guessed it would: built correctly, documented badly,
+So the whole line of enquiry ends where it was guessed it would: built correctly, documented badly,
 and the documentation is now the thing that changed.
 
 ## 2026-09-05 — the blockers became the first queue items, the decisions as queued questions
@@ -28998,7 +28998,7 @@ Shown the status report's blocker list: *"literally make these the first 4 queue
 decisions being queued AskUserQuestions"*.
 
 So the top of `queue.md` is now the blocker list itself, in order, rather than a thing restated
-once an hour in a report she has to be reading at the time:
+once an hour in a report that has to be open at the time:
 
     BLOCKED-ON-EXTERNAL   the full synoptic rebuild, running, no --slim
     (its follow-on)       retarget bio-qids.tsv to out/, AFTER the rebuild is confirmed good
@@ -29083,7 +29083,7 @@ lines** against 696 — and the adjudication deck, 5 candidates. Those are the p
 outputs rather than anything chosen here.
 
 **`bio-qids.tsv` stays tracked in this commit.** Removing it is the next item and a separate
-commit, which is the order she asked for: confirm the rebuild first.
+commit, which is the order asked for: confirm the rebuild first.
 
 ## 2026-09-05 — sweep: the synoptic rebuild item retired
 
@@ -29098,7 +29098,7 @@ Nothing else went. The retarget below it is **gated on her confirming the rebuil
 termination is still unexercised, the two decisions are queued questions not yet asked, the pilot
 is at 5 of 100, and the rest are gated or at the tail by her placement.
 
-## 2026-09-05 — her Forest export collected, and the Ancestors export she asked for
+## 2026-09-05 — the Forest export collected, and the Ancestors export asked for
 
 The instruction: *"watch my email for another forest export. I did a merge on geni and a forest export
 around them... Make sure all of his ancestors are present by doing an ancestor export of
@@ -29106,10 +29106,10 @@ around them... Make sure all of his ancestors are present by doing an ancestor e
 
 **Her Forest export, collected from the email link.** `export-geni.zip`, 599,345 bytes, **5,000
 individuals, 1,486 families**, seeded on `6000000227614275833` — `Hans /father of Anne Margrethe
-Kingo/`, a tier 2 placeholder, which matches the Kingo item in the screenshot she sent. Left in
-`~/Downloads`: § *Do not integrate as you go*, and where a `.ged` is filed is hers.
+Kingo/`, a tier 2 placeholder, which matches the Kingo item in the screenshot sent. Left in
+`~/Downloads`: § *Do not integrate as you go*, and where a `.ged` is filed is not mine to decide.
 
-**⛔ ALFRED HIMSELF CANNOT BE EXPORTED.** `6000000015117490925` is live, she manages it, and
+**⛔ ALFRED HIMSELF CANNOT BE EXPORTED.** `6000000015117490925` is live, managed by the account, and
 `/gedcom/export/` on it answers *"You are not allowed to export that profile."* — the exact
 refusal `CLAUDE.md` records from 2026-08-30, where the ruling was to stop asking rather than hunt
 a workaround. His father's export page loads normally, so the refusal is specific to him.
@@ -29126,8 +29126,8 @@ export was worth a minute to learn that; Clara's is the one that answers her ins
 
 **Two defects in `content/export.js`, both selectors written from what the markup ought to be:**
 
-- **The walk was hardcoded to Forest.** It is now `job.walk`, defaulting to Forest, because she
-  asked for an Ancestors export by name. Her remark that ancestors walks are *"of questionable
+- **The walk was hardcoded to Forest.** It is now `job.walk`, defaulting to Forest, because an
+  Ancestors export was asked for by name. The remark that ancestors walks are *"of questionable
   use for this time"* was about what to spend an `addAncestor` result on, not a ban.
 - **The submit is an ANCHOR, not a button** — `<a class="super blue button
   gedcom-export-form-sub">Export GEDCOM</a>`. The old selector asked for
@@ -29182,7 +29182,7 @@ The entry above left Clara's export building. It is down, and the pair answers h
 
 **4,387 against the 4,395 Alfred's own statistics block claims**, so the two parents together
 carry effectively his whole recorded ancestry; the eight-person shortfall is Alfred himself, his
-two parents, and the overlap between the lines. That is the check she asked for —
+two parents, and the overlap between the lines. That is the check asked for —
 *"make sure all of his ancestors are present"* — and it is a measurement rather than an
 assumption, which matters because Alfred himself **cannot be exported**: Geni answers
 *"You are not allowed to export that profile."*
@@ -29237,7 +29237,7 @@ remains untested — and testing it would mean creating a second, unwanted mothe
 person. The queue item stays open for that reason and for the queue-stopping half, which needs
 the background scheduler that only the unreachable popup can drive.
 
-## 2026-09-06 — she ruled on all six generators, after I failed to ask four times
+## 2026-09-06 — all six generators ruled on, after I failed to ask four times
 
 Her words when I finally asked: *"fuck you fuckinh ask me the goddamn questions instead of
 jerking off."* Two queue items had said **PUT THIS TO HER AS AN AskUserQuestion** since I wrote
@@ -29317,7 +29317,7 @@ dictation of the walk, *"it adds an ancestor of `start_id` and returns the id of
 and then a subsequent method will use `end_id`, generally doing a forest export."* One, then an
 export.
 
-I created three and exported from none. That is the bound she set hours earlier, drifted out of by
+I created three and exported from none. That is the bound set hours earlier, drifted out of by
 reading *"fucking add individuals"* as the task rather than as the first step of one. Three
 profiles now sit on her live tree having bought nothing.
 
@@ -29330,7 +29330,7 @@ Nothing has been deleted. Whether the three should stay is hers.
 
 ## 2026-09-06 — her per-individual loop, written down, and step 1 built
 
-She dictated the whole loop: *"There's three things: forest from created individual, making a path
+The whole loop was dictated: *"There's three things: forest from created individual, making a path
 from Charlemagne to the individual, and getting the family members from the page only. Generally
 on each individual we always grab the html family members and save them first, then try to get the
 Charlemagne path, and if it succeeds then good, if not then we do the forest thing out of the
@@ -29372,10 +29372,10 @@ sideways between them names a parent that may be in nothing we hold. **2,125 sib
 unexported: step 1 should have banked their family members first, and step 3b is reached only
 after step 2 fails.
 
-## 2026-09-06 — bio-qids retargeted to a gitignored path, after she confirmed the rebuild
+## 2026-09-06 — bio-qids retargeted to a gitignored path, after the rebuild was confirmed
 
-Her sequence, and this is the second half of it: rebuild, regenerate, commit, push, confirm good,
-then retarget. She confirmed on 2026-09-06 — *"Good — do the retarget"* — and chose retarget over
+The dictated sequence, and this is the second half of it: rebuild, regenerate, commit, push, confirm
+good, then retarget. Confirmed on 2026-09-06 — *"Good — do the retarget"* — and chose retarget over
 deleting the script, so the four readers keep working.
 
     reports/bio-qids.tsv   ->   out/bio-qids.tsv   (gitignored, one explicit line)
@@ -29395,7 +29395,7 @@ rather than from a report they may not open.
 ## 2026-09-06 — filed the exports, and found that three of four scrapes never saved
 
 **Filed at her instruction** — *"File them all now"*. Three exports into `exports/hoknes-kingo/`,
-a directory chosen because all three are that one family and she left the naming to me:
+a directory chosen because all three are that one family and the naming was left to me:
 
     export-Forest-6000000227614275833.ged      5,000 individuals  (her own export, Kingo seed)
     export-Ancestors-6000000177921459109.ged      38              Andreas Petrus Eliassen Hoknes
