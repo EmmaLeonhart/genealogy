@@ -33584,3 +33584,30 @@ Berthelsen both came back *"Path search in progress. If we find a path, we will 
 Geni queues the search and answers asynchronously, so the `individual` job's synchronous wait
 cannot succeed on a first visit. Both stay queued on their own, because the worklist is derived
 from files and neither has a `geni-families/<id>-family.tsv`.
+
+## 2026-09-09 — the NN anchor was Emma, not a run hazard; and the queue gains the descendants list
+
+**Nine profiles she created, added verbatim at the END of `queue.md`, not parked** — descendants
+exports, on her instruction *"do not think about this at all just add it"*. Nothing looked up.
+
+**⛔ AND I GOT THE ANCHOR CAUSE WRONG AN HOUR AGO.** I wrote that creating `NN` placeholders and
+running four exports had dragged the pushpin onto one of them, and called it a **per-run
+hazard** — a run that creates or exports being most at risk. That was a guess presented as a
+finding. Her correction: *"that is something I did … It is not some kind of run hazard lol I just
+assumed the logic was good."*
+
+She moved it, working on her own profiles. **No run is suspect for having created a person or run
+an export**, and `docs/anchor-protocol.md` no longer says so. What survives is what was actually
+measured: the anchor can sit on a third party, and the per-capture banner check catches it free.
+
+**Her expectation is that the extension sets the anchor** — *"I am assuming the extension is good
+for setting the anchor to charlemange"*. It is not, and nothing in `geni-extension/` touches the
+pin. That is partly deliberate: `test_the_pushpin_is_never_toggled` stops a *job* flipping it
+mid-run, which is a real hazard. Setting it once, out of band, is a different operation and the
+extension could own it. Recorded, not built.
+
+**And the async waiting she describes is already what `background.js` does** — *"It should have
+the ability to basically pause in any given tab as it is waiting for things, and you close a tab
+once it is completed"*. It holds a tab open while a search runs (closing one *"drops its promise
+to notify you"*) and closes it on the result. That is written and correct; it is the service
+worker not receiving messages that stops any of it running.

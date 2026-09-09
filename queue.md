@@ -215,6 +215,23 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   clearly disjoint large numbers of descendants, and as such are good descendants export
   sources"* — for descendants exports later.
 
+- **Export DESCENDANTS of these individuals I created.** Emma, 2026-09-09, adding them at the
+  end of the queue and not parked: *"do not think about this at all just add it"*. Verbatim:
+
+      https://www.geni.com/people/NN-%D0%90%D0%BA%D1%83%D0%B4%D0%B6%D0%B1%D0%B0/6000000227676582856
+      https://www.geni.com/people/NN-%D0%A7%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%81%D0%BA%D0%B8%D0%B9/6000000227676362934
+      https://www.geni.com/people/NN-Dzhilyakhstanov/6000000227676617890
+      https://www.geni.com/profile/index/6000000227676697827
+      https://geni.com/profile/index/6000000227676392008
+      https://www.geni.com/people/NN-%D0%A7%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D1%8F/6000000227676257067
+      https://www.geni.com/people/NN-%D0%A7%D0%B5%D1%80%D0%BA%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D1%8F/6000000227676704828
+      https://www.geni.com/people/NN-Volynskaya/6000000227676384979
+      geni.com/profile/index/6000000227676454008
+
+  One at a time — Geni's limit, not a preference. The download button gets swallowed; navigate
+  `https://www.geni.com/gedcom/request_download?task_id=<task id>` instead, and `/gedcom` lists
+  every task id in a `downloadGedcom('...')` attribute.
+
 ---
 
 ## What this session settled, so it is not relitigated

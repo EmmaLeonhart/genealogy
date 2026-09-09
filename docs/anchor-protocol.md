@@ -82,11 +82,22 @@ great grandfather."*
 Anders Danielsson Falk's page read *"NN is connected to Anders Danielsson Falk"* and
 Charlemagne's read *"NN is connected to Charlemagne"*.
 
-**⛔ THE LIKELY CAUSE IS OUR OWN WORK, which makes this a per-run hazard rather than bad luck.**
-Between the two resets the session created two `NN` placeholders and ran four exports, which
-means repeatedly loading those profiles and their export pages. The anchor followed. So a run
-that CREATES people or exports from them is exactly the run whose later captures are most likely
-to be anchored on the wrong person — and the export half of the collector's own loop does both.
+**⛔ THAT WAS EMMA, AND IT IS NOT A HAZARD. I guessed at a cause and guessed wrong.** I wrote
+that creating placeholders and running exports had dragged the anchor along, and called it a
+per-run hazard. Her correction, same day: *"that is something I did and it is not likely to be
+that much of a big issue moving forward … It is not some kind of run hazard lol I just assumed
+the logic was good."*
+
+So the anchor moved because **she moved it**, working on her own profiles. Nothing in the
+collector does it, and no run needs to be treated as suspect for having created a person or run
+an export. What survives is only what was actually measured: the anchor can be on a third party,
+and the per-capture check catches it for free.
+
+**And her expectation is that the EXTENSION sets it**: *"I am assuming the extension is good for
+setting the anchor to charlemange lol."* It is not — nothing in `geni-extension/` touches the
+pin, by deliberate rule (`test_the_pushpin_is_never_toggled`, which stops a *job* flipping it
+mid-run). Setting it out of band, once, is a different operation from a job toggling it, and the
+extension could own that. It does not today.
 
 **It cost nothing, and that is the point of the per-capture check.** `anchorOk` is a single
 regex on the banner and it caught the state before a single row was written. Nothing was filed
