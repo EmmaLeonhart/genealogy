@@ -1,11 +1,11 @@
 """The Geni name records: how many, which fields, which scripts.
 
-Emma asked for this one by name, 2026-08-12. The requirements, in her words:
+This report was asked for by name on 2026-08-12. The requirements:
 
-* *"the portion of them that have one name object or one name field versus many"*
-* *"the amount of name fields that have different things, like the married name,
-  surname, first name, name suffix, and prefix"* and *"the rate of the fields"*
-* *"the distribution between scripts"*, and the script split must be real:
+* the portion of people who have one name record or one name field versus many;
+* how many name fields carry each distinct thing -- married name, surname, first
+  name, name suffix, prefix -- and the rate of each field;
+* the distribution between scripts, and the script split must be real:
   *"Latin versus Korean versus Chinese versus CJK versus CJK with kana versus
   Cyrillic versus whatever"*
 * **the two mixed-script questions, which are different from each other**:
@@ -42,8 +42,8 @@ SOURCE = REPO_ROOT / "reports" / "display-names.csv"
 OUT_MD = REPO_ROOT / "reports" / "geni-names.md"
 #: **Deleted 2026-08-15**: `reports/geni-name-records.csv` duplicated
 #: `display-names.csv` on all 11 shared columns across all 444,875 rows, and
-#: its one extra column `script_class` is a pure function of `scripts`. Emma
-#: approved removing it. This writes to `out/` now, so re-running the report
+#: its one extra column `script_class` is a pure function of `scripts`. Removing
+#: it was approved. This writes to `out/` now, so re-running the report
 #: does not reintroduce the 41 MB duplicate into git.
 OUT_CSV = REPO_ROOT / "out" / "geni-name-records.csv"
 
@@ -56,7 +56,7 @@ csv.field_size_limit(10_000_000)
 NOT_A_SCRIPT = {"Masculine", "Feminine", "Modifier", "Combining", "Unnamed",
                 "Ideographic", "Fullwidth", "Halfwidth"}
 
-#: Han is deliberately *not* resolved to a language. Emma, 2026-08-12: if a name
+#: Han is deliberately *not* resolved to a language: if a name
 #: is written solely in kanji the Japanese and Chinese labels are the same string,
 #: so there is nothing to decide. Kana and Hangul do resolve, because they are
 #: exclusive to one language.
@@ -206,13 +206,13 @@ def main() -> int:
     add = L.append
     add("# Geni name records: how many, which fields, which scripts")
     add("")
-    add("Asked for by Emma, 2026-08-12. Every `NAME` record is a row in")
+    add("Asked for by name, 2026-08-12. Every `NAME` record is a row in")
     add("`out/geni-name-records.csv`.")
     add("")
     add(f"**{people:,} people, {records:,} `NAME` records.**")
     add("")
     add("**Nothing here is a label.** Geni names are language-agnostic strings. A Han")
-    add("name is not Chinese, it is Han — and per Emma, if a name is written solely in")
+    add("name is not Chinese, it is Han — and if a name is written solely in")
     add("kanji the Japanese and Chinese labels are the *same string*, so there is nothing")
     add("to decide. Only kana and Hangul resolve to a language, because only they are")
     add("exclusive to one.")
@@ -261,9 +261,9 @@ def main() -> int:
     add("")
     add("## The two mixed-script questions, which are different")
     add("")
-    add("Emma: *\"A mixed script name often indicates some sort of attempt at a")
-    add("commentary or disambiguation within the name, whereas … a name that suggests")
-    add("multiple names and multiple scripts, just indicates multiple languages.\"*")
+    add("A mixed-script name often indicates an attempt at commentary or")
+    add("disambiguation within the name, whereas a name that suggests multiple names")
+    add("in multiple scripts just indicates multiple languages.")
     add("")
     mixed_total = sum(mixed_combos.values())
     add(f"### One record, two scripts inside it — {mixed_total:,} records")
@@ -293,9 +293,9 @@ def main() -> int:
     add("")
     add("## The first-listed name")
     add("")
-    add("Emma: *\"I believe that the first listed name in the files is usually the one")
+    add("The first listed name in the files is usually the one")
     add("that is treated as being in English and taking priority, but Geni is weird about")
-    add("English names. A lot of stuff is recorded as being English when it's not.\"*")
+    add("English names: a lot is recorded as English when it is not.")
     add("")
     add("Whatever the first record means, this is what script it is in:")
     add("")

@@ -1,14 +1,10 @@
 """`NN` belongs in `mul` and nowhere else; the local languages describe the person.
 
-**Emma, 2026-08-16, stating the model in full:**
-
-    "If it's on Wikidata and it's not somebody's name on Wikidata, or if it's on
-    Wikidata and it is already the multi-language label, it should be preserved
-    there. If it's in somebody's name on Wikidata but it is not in their
-    multi-language label, it should be moved to it. Even while we change the names
-    in local languages to be more specific things, no local language should have
-    it. It's just the multi-language. The individual languages have more specific
-    names."
+**The model in full.** Where `NN` is on Wikidata and is not somebody's name, or is already the
+multi-language label, it is preserved where it is. Where it is in somebody's name but not in
+their multi-language label, it is moved there. Even as the local languages are changed to more
+specific things, **no local language holds it**: it is the multi-language label only, and the
+individual languages carry the more specific names.
 
 Three states, and one of them needs work:
 
@@ -34,15 +30,13 @@ asked for. That was wrong twice over: it left `NN` in a local language, and it
 treated "describe it in Dutch" as optional when the instruction is that **no local
 language should have it**.
 
-**Long-range relationships count.** Emma, 2026-08-16: *"It can work off of those
-long-range things… grandparents or grandchildren or siblings."* So the search runs
-parent → spouse → child → **sibling → grandparent → grandchild**.
+**Long-range relationships count** — grandparents, grandchildren and siblings. So the search
+runs parent → spouse → child → **sibling → grandparent → grandchild**.
 
-**And the reach was measured on the synoptic tree, not on one store.** Emma named
-that failure directly: *"you're using one source, like either the Wikidata or the
-Jenny stuff, and not the Synoptic Tree… I'm pretty sure that long-range
-relationships have much larger things to contribute than you consider them to do
-so."* The method was wrong and the check was owed. **The result, for this
+**And the reach was measured on the synoptic tree, not on one store.** Using one source, either
+the Wikidata side or the Geni side, rather than the synoptic tree, is a named failure, and
+long-range relationships plausibly contribute far more than they are credited with. The method
+was wrong and the check was owed. **The result, for this
 population, is that the join adds almost nothing** — and the reason is worth
 recording because it bounds the claim rather than settling it:
 
@@ -56,12 +50,10 @@ recording because it bounds the claim rather than settling it:
 These are Wikidata-only people. That is a fact about *this* set, not a reason to
 skip the synoptic check next time.
 
-**Nothing emits `remove_label`, because a bot already does it.** Emma, 2026-08-16:
-*"We add the NN to the multi-language label first, and then afterwards we overwrite
-the NN in other languages with whatever the goal is, because there is a bot that
-exists that does the NN overwriting for other stuff. There is a bot that exists that
-removes labels that match the multi-language label, so we don't need to stretch it
-that much."*
+**Nothing emits `remove_label`, because a bot already does it.** The `NN` goes into the
+multi-language label first, and the other languages are then overwritten with the descriptive
+form. A bot already removes labels that duplicate the multi-language label, so this does not
+need to stretch that far.
 
 So the order is **`mul` first, then overwrite the locals**, and any local still
 reading `NN` afterwards now *matches* `mul` and the bot clears it. `cy`, `be`, `pl`,
@@ -119,8 +111,8 @@ UNUSABLE = re.compile(r"^\s*(NN|N\.?\s?N\.?|\?+|unknown|anonymous|"
 
 #: **Relationship words by language, keyed by what the SUBJECT is to the relative,
 #: then by the subject's sex.** Unknown sex takes the neutral form rather than a
-#: guess — inventing a gender to make a label read better is normalisation Emma has
-#: objected to before.
+#: guess — inventing a gender to make a label read better is exactly the kind of
+#: unrequested normalisation this project refuses.
 #:
 #: Only Germanic and Romance languages are here, and only ones already holding an
 #: `NN`. Both build the phrase with a preposition and leave the following name
@@ -187,9 +179,9 @@ WORDS: dict[str, dict[str, object]] = {
            "grandchild_of": {"M": "barnebarn", "F": "barnebarn", "": "barnebarn"},
            "grandparent_of": {"M": "bestefar", "F": "bestemor",
                               "": "besteforelder"}},
-    # **French, added 2026-08-31.** Emma: *"weirdest thing I noticed was that we didn't the NN
-    # stuff in French."* It was simply missing rather than excluded: the reason Slavic and Welsh
-    # are out is that they inflect the name after the relationship word, and French does not --
+    # **French, added 2026-08-31**, having simply been missing rather than excluded. Slavic and
+    # Welsh are out because they inflect the name after the relationship word, and French
+    # does not --
     # `fille de Arne Garborg` leaves the name exactly as it stands, the same as Spanish and
     # Italian, which are both here.
     #
@@ -350,7 +342,7 @@ def main() -> int:
                 text = named(target)
                 if text:
                     return key, target, text
-        # **The long-range pass — Emma's widening.** Two hops up is a grandparent,
+        # **The long-range pass.** Two hops up is a grandparent,
         # two hops down a grandchild. Computed, because Wikidata has no
         # grandparent property.
         for key, up, down in (("grandchild_of", (FATHER, MOTHER), (FATHER, MOTHER)),

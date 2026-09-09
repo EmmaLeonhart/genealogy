@@ -1,17 +1,15 @@
 """Name items: link the ones that exist, create the ones that do not.
 
-Queue item 10, and the prerequisite for everything downstream — Emma's ruling on
-transliteration, 2026-08-16: *"the name objects can actually be used in this
-because we can build the name objects first of all and establish all the labels
-for them… We then only need to potentially not have that many raw things that we
-need to do for the transliteration."* Label a **token** once in its name item and
+Queue item 10, and the prerequisite for everything downstream. The name objects can be built
+first and their labels established there, which leaves far fewer raw strings to transliterate
+by hand. Label a **token** once in its name item and
 every bearer inherits it; per-person work would be the same job multiplied by
 bearer count.
 
 **One item per USAGE, not per string.** `CLAUDE.md` § *"Jackson Jackson
 Jackson"*: a token used as a given name, a surname **and** a patronymic is three
 items that happen to share a spelling. Nothing here adjudicates between them —
-that was the dominance ratio Emma threw out on 2026-08-15.
+that was the dominance ratio thrown out on 2026-08-15.
 
 **Three usages, three item types:**
 
@@ -22,7 +20,7 @@ that was the dominance ratio Emma threw out on 2026-08-15.
 | patronymic | `Q110874` *patronymic* | **`P5056` *patronym or matronym*** |
 
 **The last row was wrong until 2026-08-16** — it said `P735` + `P3831` *object of
-statement has role*, the model Emma's `name modelling.txt` superseded. **Only the
+statement has role*, the model `name modelling.txt` superseded. **Only the
 documentation was wrong.** This script creates *name items*; it emits no person
 statements at all, so `P735` never appeared in its output and the 13,320 planned
 items did not need regenerating. That was reported as a blocker for several ticks
@@ -45,8 +43,8 @@ store, 15,831 resolved) and `reports/patronymic-items.csv` (**all 633** Wikidata
 patronymic items).
 
 **A created patronymic carries its derivation.** `P31` → `Q110874`, `P144` →
-*based on* the name it derives from, and the derivation in the description too —
-Emma wanted both. 119 of the 633 existing ones already do this, which is where
+*based on* the name it derives from, and the derivation in the description too;
+both are wanted. 119 of the 633 existing ones already do this, which is where
 the shape comes from.
 
 **Particles, ordinals and placeholders are excluded and counted.** `de`, `von`,
@@ -125,23 +123,20 @@ PLACEHOLDERS = {"nn", "n.n.", "n", "?", "??", "???", "????", "*", "**", "***",
 #: Below this many bearers a token is not worth an item of its own yet. Not a
 #: confidence threshold — a workload one; the tail is 70% single-use strings.
 #:
-#: **Five is Emma's decision, 2026-08-18: _"Back to 5"_.** That is the whole reason
-#: for the value; everything below is why the question was worth putting to her.
+#: **Five is a ruled decision, 2026-08-18.** That is the whole reason for the value;
+#: everything below is why the question was worth putting rather than assuming.
 #:
-#: She had recalled a different number — *"if it repeats, it's a name. If it repeats
-#: over 10 times, I think that was our actual criterion. Look at the fucking chat
-#: logs to see what it is that I told you to do. I'm not going to want to contradict
-#: myself by saying something off the top of my head when it's down in writing
-#: earlier."*
+#: A different number was recalled at first — that a name repeating over ten times
+#: was the criterion, and that a written instruction should beat an off-the-cuff one.
 #:
-#: **It is not down in writing earlier.** All 27 session transcripts were searched
-#: and no instruction of hers sets a repetition threshold. The 5 sitting here came
-#: from an autonomous work-loop tick on 2026-08-15 with no mandate, and the only
-#: "10" in the repo is a *descriptive* histogram row in
-#: `reports/name-item-download.md` — Wikidata items counted by how often our people
-#: reference them — which is a different quantity and is probably what she
-#: half-remembered. It was briefly raised to 10 on the reasoning that her stated
-#: number should beat my unstated one; shown the actual cost, she chose 5.
+#: **There is no such instruction in writing.** All 27 session transcripts were
+#: searched and none sets a repetition threshold. The 5 sitting here came from an
+#: autonomous work-loop tick on 2026-08-15 with no mandate, and the only "10" in the
+#: repo is a *descriptive* histogram row in `reports/name-item-download.md` —
+#: Wikidata items counted by how often our people reference them — which is a
+#: different quantity and is probably what was half-remembered. It was briefly raised
+#: to 10 on the reasoning that a stated number should beat an unstated one; shown the
+#: actual cost, the ruling came back 5.
 #:
 #: The cost is what decided it, and it was measured rather than argued: the 5..9
 #: band is **8,560 names covering 55,075 name-uses**, and it is not junk —
@@ -218,9 +213,9 @@ def main() -> int:
             # all**: 1,051 tokens over **31,259 bearers**.
             #
             # The token really is both, and `CLAUDE.md` § *One name item per USAGE* says what
-            # to do about that: *"If something is a surname and a given name, then it gets a
-            # surname and a given name object… They're two completely different things with
-            # completely different objects."* Emma's father test then decides, PER PERSON,
+            # to do about that -- something that is a surname and a given name gets a
+            # surname object and a given name object, two completely different things.
+            # The father test then decides, PER PERSON,
             # which of the two that person links to -- `namemodel.patronymic_or_surname`.
             # This file is token-level and cannot make that call: it has no fathers, and a
             # token's usage varies by bearer, which is the whole reason both items are needed.
@@ -269,7 +264,7 @@ def main() -> int:
             if usage == "patronymic":
                 # The base name, if we can see it. `P144` is what 119 of the 633
                 # existing patronymic items use; the description carries it too,
-                # which is what Emma asked for.
+                # which is what the model calls for.
                 base = re.sub(r"(s?d[oó]tt?ir|s?datter|s?dotter|ovich|evich|"
                               r"ovna|evna|ivna|ovych|yevich)$", "", token,
                               flags=re.I)
