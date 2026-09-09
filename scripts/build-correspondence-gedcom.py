@@ -159,7 +159,7 @@ def main() -> int:
 
     in_tree = people_in_tree()
     if in_tree is None:
-        # **Write the empty file rather than failing the run.** Her constraint on this whole
+        # **Write the empty file rather than failing the run.** The constraint on this whole
         # experiment is *"I do not want to break the pipeline"*, and this step sits in front of
         # the merge in `rebuild-everything.py`. A header-only GEDCOM merges as nothing, which is
         # exactly today's behaviour: `build-garborg-day.ledger()` still reads the CSV directly,

@@ -173,7 +173,7 @@ def main() -> int:
     add("Scheduled for midnight. Every distinct name is a row in")
     add("`reports/name-objects.csv`, ranked by how many people carry it.")
     add("")
-    add("**Why the classification matters.** Her rule is that name items get created")
+    add("**Why the classification matters.** The rule is that name items get created")
     add("*\"for all of the names that fit sufficiently into Western name conventions\"* —")
     add("so the question is not how many names lack an item, but **which ones are")
     add("candidates at all**.")

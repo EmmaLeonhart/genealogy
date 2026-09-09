@@ -1038,7 +1038,7 @@ def _label_corrections(our_items, labels, table, state, fields=None,
     **Only where it actually differs**, so the block empties itself as it is run rather than
     repeating unconditionally the way the clan block did. A label REPLACES, so the outgoing
     value goes out as an `Amul` on the line above -- § *The MARRIED name is the real name*,
-    *"first amul added if applicable"* -- which is what stops a hand correction of hers being
+    *"first amul added if applicable"* -- which is what stops a hand correction being
     silently overwritten.
     """
     # The birth forms, so a correction can be recognised as one rather than guessed at.

@@ -606,7 +606,7 @@ def main():
             # existed THREE times. The batch would have made a fourth.
             #
             # Only an exact label match with the right `P31`, and SEVERAL qualifying items
-            # means no answer -- that ambiguity is § *One name item per USAGE* and is hers.
+            # means no answer -- that ambiguity is § *One name item per USAGE* and is a hand call.
             # **Then the bearers' OWN statements, before any network call.** See
             # `reuse_from_bearers`: this is the source that caught `Kristiansen`, and it costs
             # nothing because the file it reads was refreshed by this same run.

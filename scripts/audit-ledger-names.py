@@ -14,7 +14,7 @@ Two changes landed on 2026-08-29, **after** most of those items were created:
   previously produced nothing.
 
 An item created before either carries the **birth** name in `mul` and `en`, and — because `ja`/`zh`
-are transliterated from `label_mul` — in Japanese and Chinese too. Her words: *"the CJK names are
+are transliterated from `label_mul` — in Japanese and Chinese too: *"the CJK names are
 being put in the birth name form"*.
 
 ## One row per item per language, which is the shape asked for

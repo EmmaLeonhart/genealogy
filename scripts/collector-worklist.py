@@ -108,12 +108,12 @@ def outstanding():
         #
         # A requested search DECAYS back to unrequested within hours, so this is not a rare
         # transient: any person whose search had not landed when the tab was harvested lands
-        # here. Same rule as hers, one state further along: if the question has no answer yet,
+        # here. Same rule, one state further along: if the question has no answer yet,
         # it has not been answered.
         elif not verdict:
             rows.append((gid, label or row.get("label", ""), "pending-no-verdict"))
     # Sorted on the geni id for a deterministic file -- CLAUDE.md SORTING MUST BE DETERMINISTIC.
-    # This is NOT a priority order; her rule 4 is that order does not matter.
+    # This is NOT a priority order; rule 4 is that order does not matter.
     return sorted(rows, key=lambda r: r[0])
 
 

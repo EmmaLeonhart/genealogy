@@ -7,7 +7,7 @@ Japanese items with higher scrutiny, then use the browser extension to see wheth
 The Izumo ones are a good place to explore how redirects behave.
 
 Steps 1 and 2 are `scripts/find-geni-duplicates.py`. This is the handoff for step 3, which is
-hers: **the merges are hers and are never performed here.** What is built here is only the
+clear: **the merges are made by hand and are never performed here.** What is built here is only the
 order to look in, and the links to look at.
 
 **Why a worklist and not just the TSV.** `reports/geni-duplicate-candidates.tsv` is 12,318 rows.

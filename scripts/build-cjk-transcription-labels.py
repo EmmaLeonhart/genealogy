@@ -26,8 +26,8 @@ look like unsanctioned scope.
 
 Tokens resolve through `reports/garborg-name-transliterations.tsv` before the engine, which
 matters: **2,247 of its 18,536 rows were corrected on 2026-09-01** from renderings attested on
-Wikidata, plus her own `Stephen` → `史蒂芬`. Going straight to the engine would reproduce the
-`斯特普亨` she objected to.
+Wikidata, plus the hand-set `Stephen` → `史蒂芬`. Going straight to the engine would reproduce
+the `斯特普亨` that was objected to.
 
 **Partial is never emitted.** One unrenderable token drops the whole label for that language, per
 `CLAUDE.md` § *A middle initial keeps its Latin letter*, whose single exception the token helpers
@@ -134,7 +134,7 @@ def main() -> int:
                 edits.append({
                     "id": f"{code}_transcribed:{r['geni_id']}",
                     "type": "set_label",
-                    "source": "her ruling of 2026-09-01: transcribe for people who have a QID",
+                    "source": "ruling of 2026-09-01: transcribe for people who have a QID",
                     "subject": {"qid": qid, "geni_id": r["geni_id"]},
                     "requires": [],
                     "label": {"language": code, "value": value},
@@ -157,10 +157,10 @@ def main() -> int:
     for k, v in sorted(((k, v) for k, v in why.items() if k != "EMITTED"),
                        key=lambda x: -x[1]):
         lines.append(f"| {k} | {v:,} |")
-    lines += ["", "**`zh` is here although she said `ja` and `ko`.** "
+    lines += ["", "**`zh` is here although the ruling named `ja` and `ko`.** "
               "`translit_no.translit` returns katakana and Chinese from one call, so they are the "
               "same engine and the same table column; emitting one and withholding the other "
-              "would recreate the inconsistency her ruling removed.", "",
+              "would recreate the inconsistency that ruling removed.", "",
               "**The corpus-wide batches still withhold transcription**, and that is deliberate: "
               "`build-ja-label-batch.py` and `build-ko-label-batch.py` run over 1.29 million "
               "people who are mostly not on Wikidata, where the labels ride along with the "

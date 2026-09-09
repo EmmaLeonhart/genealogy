@@ -45,7 +45,7 @@ the three rows sampled from the file the lost code produced, `Alice de Lucy` cam
 0.423 against 0.422 here and `Joan Dacre` 0.412 against 0.407, while `Ingeborg
 Bengtsdotter Sparre över blad` moved 0.373 → 0.443. The two near-matches are what
 recommend the formula; the third moved in the direction the **chain split** predicts,
-since her position inside one path is not her position inside a file holding two. So
+since a person's position inside one path is not their position inside a file holding two. So
 this is a formula that agrees with the old numbers where the inputs agree, not a
 reproduction of them.
 
