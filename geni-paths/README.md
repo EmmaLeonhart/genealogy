@@ -1,6 +1,6 @@
 # `geni-paths/` — saved Geni `/path/` pages
 
-**Emma's idea, 2026-09-02:** *"what if we mass exported the paths to the disconnected
+**The idea, 2026-09-02:** *"what if we mass exported the paths to the disconnected
 wikidata people on geni? … the mass export of the path lists might be feasible and help
 with getting wikidata generally connected even if we have a bunch of 'sinews' only linking
 people in."*
@@ -11,7 +11,7 @@ its neighbourhood. That chain is the sinew.
 
 ## What to fetch
 
-The path is a **URL**, not a page save with a click. Both types per target, her call:
+The path is a **URL**, not a page save with a click. Both types per target, by ruling:
 
 ```
 https://www.geni.com/path/x?from=6000000002457013227&path_type=blood&to=<geni id>
@@ -20,16 +20,16 @@ https://www.geni.com/path/x?from=6000000002457013227&path_type=inlaw&to=<geni id
 
 The slug between `/path/` and `?` is cosmetic.
 
-**`from` is CHARLEMAGNE** — `6000000002457013227`, `Q3044`. Emma, 2026-09-03: *"I believe
+**`from` is CHARLEMAGNE** — `6000000002457013227`, `Q3044`. 2026-09-03: *"I believe
 Charlemagne is the most central person in the Jenny graph, so it would be going through
 Charlemagne. We pin relationships to Charlemagne, and we go to each individual."* That
 pinning is Geni's own pushpin — the saved pages carry
 `toggleRelationshipAnchor(<id>)` with the tooltip *"Click this push pin to find relationships
 from this profile to other profiles"* — and `from=` is how the anchor is expressed in the URL.
 
-**The anchor applies to NEW paths only.** Emma, 2026-09-03: *"a bunch of the paths are from an
+**The anchor applies to NEW paths only.** 2026-09-03: *"a bunch of the paths are from an
 individual to me, and that's 100% fine and they are to be filled in I just mean new ones."* So
-the 663 Emma-anchored paths in `paths/isolate-geni-*.tsv` are **live work**, not a superseded
+the 663 viewer-anchored paths in `paths/isolate-geni-*.tsv` are **live work**, not a superseded
 dataset — they get filled in exactly as they always were. Charlemagne is where the anchor sits
 for paths fetched from here on, and nothing about it retires an existing one.
 
@@ -38,7 +38,7 @@ is the same thing with the qid and label beside it.
 
 ## ⛔ THE `/path/` URL DOES NOT WORK AS WRITTEN ABOVE — measured 2026-09-03
 
-**The `to=` parameter is ignored.** Fetched from her own logged-in Chrome, all four probe
+**The `to=` parameter is ignored.** Fetched from the logged-in Chrome, all four probe
 requests behaved the same way:
 
     https://www.geni.com/path/x?from=6000000002457013227&path_type=blood&to=6000000004051490175
@@ -47,12 +47,12 @@ requests behaved the same way:
       -> and `#relation_description` reads "Charlemagne is your 35th great grandfather."
 
 So the page that comes back is **Charlemagne's profile showing his relationship to the
-logged-in viewer**, which is Emma. The requested target appears nowhere on it.
+logged-in viewer**. The requested target appears nowhere on it.
 
 **⚠ The dangerous part is that this page looks like a HIT.** It renders **38** anchors inside
 `span.segment > span.name` — the viewer's own 38-step chain to Charlemagne. `harvest-isolate-paths.py`
 discriminates on the parsed step count (`MIN_STEPS`), so it would score every miss as a hit and
-report a **100% reach rate** made of 100 identical copies of the Charlemagne→Emma path. Its
+report a **100% reach rate** made of 100 identical copies of the Charlemagne→viewer path. Its
 docstring anticipates the opposite failure — *"a run reporting 0 steps on every page means the
 markup differs"* — and this is the one that produces a plausible number instead of a zero.
 `CLAUDE.md` § *check the separator before believing a distribution* is the family.
@@ -81,7 +81,7 @@ segments only exist after the click. A capture taken before it saves a page with
 — the same shape as § *Wait for `#family_profile_module` before saving* in
 `geni-scraping/README.md`, and it would look like a miss rather than an error.
 
-⛔ **SUPERSEDED ON THE SAVE, 2026-09-06.** Emma: *"we are not supposed to be saving pages lol
+⛔ **SUPERSEDED ON THE SAVE, 2026-09-06.** *"we are not supposed to be saving pages lol
 ... Only the exports need downloading because you write stuff into files in the repo you dummy."*
 Everything below about navigating, waiting and clicking *"Show short path"* is still exactly
 right and is still what the collector's `path` job does. What changed is the last step: the page
@@ -147,11 +147,11 @@ pages only**. Its first run said `0/5 = 0%` when four of the five were still sea
 not one. Pass one *requests* every search; pass two collects. The delay is unmeasured — the one
 target watched for 45 seconds had not finished — and the sentence promises a notification, so
 the notification feed may be the cheaper collector than re-visiting 185,327 profiles. **Neither
-is established and this needs her.**
+is established and this needs a ruling.**
 
 ## ⛔ THE STATISTICS BLOCK IS THE REAL INSTRUMENT. "No relationship found" is not a negative result
 
-**Emma, 2026-09-03**, on George Drouillard, whose path search resolved to *"No blood relationship
+**2026-09-03**, on George Drouillard, whose path search resolved to *"No blood relationship
 was found. No in-law relationship was found."*:
 
 > *"Family Tree 10,575 / Blood Relatives 15,000 / Ancestors 61 / Followers 13 — this means that
@@ -159,7 +159,7 @@ was found. No in-law relationship was found."*:
 > relatives or really any of these numbers being high on this scale indicates that they are in
 > the world tree but it was a database failure."*
 
-**MEASURED, and she was right.** She ran a `Forest` export from a seed near him. It came back
+**MEASURED, and rightly.** A `Forest` export was run from a seed near him. It came back
 5,000 people, and:
 
 - Drouillard sits in a 1,174-person component of that export;
@@ -170,7 +170,7 @@ was found. No in-law relationship was found."*:
 
 So Geni reported no relationship for a man four steps from a family continuous with Charlemagne.
 
-**15,000 IS A CEILING, NOT A COUNT — her rule, same day:** *"keep in mind that 15,000 on any
+**15,000 IS A CEILING, NOT A COUNT — the rule, same day:** *"keep in mind that 15,000 on any
 number there is a flag that the query number exceeded the maximum it can do. I do not believe
 there is any section of 15,000 connected people on geni that is not connected to the world tree
 either, or 5,000 for that matter. So anything at those numbers pretty much always will indicate
@@ -180,7 +180,7 @@ So a saturated figure means *at least* that many, and it is the **strongest** ev
 connection there is. A `no path found` sitting beside one is a database failure.
 
 **AND A MISSING ROW MEANS ZERO.** Dorothy Jeakins `6000000018119318134` reads
-`Family Tree 1,405 / Blood Relatives 1 / Followers 1` with **no Ancestors row at all** — Emma:
+`Family Tree 1,405 / Blood Relatives 1 / Followers 1` with **no Ancestors row at all** —
 *"ancestors are not mentioned at all because she has no ancestors and geni is weird and gives
 zero as not an option there"*. Record `0`, never blank: blank later reads as *we failed to
 scrape it*, which is the absent-versus-zero confusion that costs this repo real numbers
@@ -188,7 +188,7 @@ elsewhere.
 
 ### `reports/isolates.csv` — what to store, and when
 
-Her instruction: *"just list these numbers for all of the people for whom no path is found in a
+The instruction: *"just list these numbers for all of the people for whom no path is found in a
 csv file... no judgment you just store the returned numbers for everyone... you store these
 numbers even before a path is found or not, but you always stay on the page and request the
 path"*, with `path_found` added afterwards once it resolves.
@@ -196,13 +196,13 @@ path"*, with `path_found` added afterwards once it resolves.
     geni_id, label, family_tree, blood_relatives, ancestors, descendants, followers,
     requested_at, path_found      <- filled in LATER: yes / no / (blank while running)
 
-**No `qid` column.** Emma, 2026-09-03: *"there should be no qid line since the qid line is just
-completely prone to fabrication lol"* --- and she was right about the specific risk, because a
+**No `qid` column.** 2026-09-03: *"there should be no qid line since the qid line is just
+completely prone to fabrication lol"* --- and that is right about the specific risk, because a
 QID was typed from memory twice in one sitting while a roster file with the real value sat
 unread. Every column here is read off the page.
 
 **`descendants` is in the block and was missed on the first pass.** The extractor looked for four
-labels and Geni prints five. **The zeros in the first six rows are her shortcut, not
+labels and Geni prints five. **The zeros in the first six rows are a shortcut, not
 measurements** --- *"just list everyone except for anna rood as being 0 descendants, since that
 is easier than you looking at each page lol"* --- and at least Ole Klemet Sara and Moshe Bar
 Nissim visibly have children. Do not read those zeros as data; re-read the block for anyone
@@ -231,7 +231,7 @@ screenshot. The button disappearing is the confirmation that the click took.
 
 ### The rate is about ATTENTION, not about requests
 
-Emma, 2026-09-03: *"this takes about 10 seconds max of attention per profile, but each profile
+2026-09-03: *"this takes about 10 seconds max of attention per profile, but each profile
 must be open for quite a while... it is still not done and might take 10 minutes."*
 
 So the shape is **many tabs open at once**, not one at a time:
@@ -240,7 +240,7 @@ So the shape is **many tabs open at once**, not one at a time:
 2. **leave it open** and move to the next;
 3. come back after minutes and read the resolved box.
 
-**Closing the tab breaks it.** Her words: *"If you do not leave the tabs open then it actually
+**Closing the tab breaks it.** Verbatim: *"If you do not leave the tabs open then it actually
 messes a bit with the data that is given"*, and *"if you request many profiles at once after
 closing the tabs then I think it actually drops its promise to notify you, or it only notifies
 you on the most recent one you requested."* It is **RAM intensive** on our side, so the batch
@@ -249,7 +249,7 @@ size is bounded by the machine rather than by politeness.
 **The notifications are not the collector.** *"There are notifications but the notifications
 actively give a worse version of the data."* Read the page.
 
-**The pushpin is set ONCE, BY HER, and is not ours to touch.** Emma, 2026-09-03: *"You do not
+**The pushpin is set ONCE, BY HAND, and is not ours to touch.** 2026-09-03: *"You do not
 pin Charlemagne, it needs to be done exactly once and I did it."* Toggling it mid-run is how a
 batch of profiles came to be queued against *"You"* instead of Charlemagne. The box naming
 **Charlemagne** on both ends is the check that the anchor is right.
@@ -267,7 +267,7 @@ types do not collide. No "complete webpage" saves: the `_files` asset directorie
 **Recorded 2026-09-05 because it was re-derived once already.** Everything above states the
 *steps*; none of it stated the *call*, so a later session read the prose, found that a plain
 `fetch()` returns zero `span.segment` anchors, and started building a local HTTP sink to POST
-captures to. Emma: *"did you either not document the original successful way you did it or
+captures to. *"did you either not document the original successful way you did it or
 decide to be creative here? Just do the successful way."* The steps are not the method — this
 is:
 
@@ -323,7 +323,7 @@ Then the file lands in `~/Downloads` and is moved:
 ## Rate
 
 One a minute, no concurrency, **bail immediately on anything suspicious** — the same rule as
-`geni-scraping/`. 185,327 targets is 27 days at her measured 4.7 profiles a minute, which is
+`geni-scraping/`. 185,327 targets is 27 days at the measured 4.7 profiles a minute, which is
 why the pilot runs first.
 
 ## Then
@@ -332,13 +332,13 @@ why the pilot runs first.
 python scripts/harvest-isolate-paths.py --write-paths
 ```
 
-→ `reports/isolate-path-pilot-results.tsv`. Her own batches ran **34–39%** for
+→ `reports/isolate-path-pilot-results.tsv`. The hand batches ran **34–39%** for
 occupation-filtered academics and **92%** for Nordic ones; where a uniform sample lands decides
 whether the full campaign is worth its request budget.
 
 ## "Not related to" does NOT mean not related
 
-**Emma, 2026-09-03:** *"not related to is not actually a statement that the person is not
+**2026-09-03:** *"not related to is not actually a statement that the person is not
 related. It superficially appears that way, but it is not that way. It sometimes gives a not
 related to from a query timeout."*
 
@@ -360,7 +360,7 @@ high-eccentricity individuals, biased toward earlier generations, then reliably 
 
 Geni offers one type first and the option of the other, *"which I think sometimes it hears,
 sometimes doesn't"*, with a transaction timeout that behaves oddly. Both types are fetched per
-target regardless — her call, 2026-09-02 — so the control flow does not have to be got right
+target regardless — by ruling, 2026-09-02 — so the control flow does not have to be got right
 to get the data.
 
 ## Not `geni_pages/`, not `geni-scraping/`
