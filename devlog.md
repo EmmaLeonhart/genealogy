@@ -6871,7 +6871,7 @@ a rule for when one does, and it is in `CLAUDE.md` rather than here.
 ## 2026-08-15 — three Wikidata operations, told apart
 
 **The correction:** *"These are three completely different operations that you conflated
-with each other."* She is right, and the conflation had already cost a wrong
+with each other."* That is right, and the conflation had already cost a wrong
 decision: her 3-8 hour budget belongs to the **individuals** download and I quoted
 it against the **names** one.
 
@@ -6893,7 +6893,7 @@ no `.people` (the tree comes from `model.build_tree(gedcom.stream_file(...))`, a
 `cli._load_tree` already knew), and `Person.name` is a `Name` object whose string
 is `.display`.
 
-**The patronymic classifier, done**, and entirely offline as she said it should
+**The patronymic classifier, done**, and entirely offline as ruled it should
 be. 528,612 rows; **958 tokens are a patronymic for some bearers and a plain
 surname for others**, which is the *"Jackson Jackson Jackson"* rule showing up in
 real data.
@@ -6915,7 +6915,7 @@ being bought with a rule that would produce wrong matches elsewhere.
 **Item 5, Wadah Cohen's father — closed, and opening it was a mistake.** The item
 was stale: `NN ben Amram ben Yitzhaq /Cohen/` had been created
 (`6000000227240700841`) on 14 AUG 2026 and the chain Amram → NN → Wadah →
-Eliazar is complete. But she was clear about what I should have done instead:
+Eliazar is complete. But the ruling was clear about what should have been done instead:
 *"are you trying to somehow, for some bullshit reason, analyze whether the family
 relationships of the Samaritans are correct? Cuz you shouldn't be doing that. The
 family relationships of the Samaritans are done."* Correct — the item was stale
@@ -7117,7 +7117,7 @@ pattern this queue was cleaned of this morning, and reintroduced.
 
 At 04:46: *"And why was the order.life one not run? Should be run based on
 the contents of this repo or a cron job to run at 1am."* No 1am cron was ever
-created; she then chose a queue item over a cron, because a cron only fires while
+created; a queue item was then chosen over a cron, because a cron only fires while
 the session is idle and these keep starving.
 
 All three ran against `orderlife/`, which is vendored, so nothing reaches outside
@@ -7171,7 +7171,7 @@ Pomerania — came back at **92%**.
 **That kills the academics hypothesis as the explanation.** The theory was that
 academics come from stable, well-documented families; that fits 34–39% but cannot
 explain a jump to 92% when the only variable changed was nationality. These people
-are close to *her* tree — Norway and Sweden are where she is linked — so the path
+are close to *that* tree — Norway and Sweden are where the account is linked — so the path
 exists and is short.
 
 **And it resizes the opportunity.** Nordic academics are nearly used up at 297
@@ -7182,7 +7182,7 @@ running before anything is built on it.
 
 **Also measured: her workflow change is real.** Batch speed went 2.4 → 3.6 → 4.7
 profiles a minute across the three academic batches while the hit rate stayed flat,
-so the improvement is throughput, not selectivity. She is the limiting factor in
+so the improvement is throughput, not selectivity. Hand labour is the limiting factor in
 this loop, which is why the batch size is hers to set.
 
 
@@ -7222,7 +7222,7 @@ her own father, grandfather and great-grandfather are on 597, 434 and 380 of the
 
 **So the bridge order is forced, and it is short.** Creating ~10 items — her
 direct ancestors in the first four steps — puts a linked node on **the shared
-trunk of nearly every path she has collected.** Every isolate she then attaches
+trunk of nearly every path collected.** Every isolate attached afterwards
 reaches Wikidata through that trunk rather than needing its own chain. That is her
 *"finding the nearest person with a Wikidata ID to me, adding that, forming the
 bridge"* — and the measurement says the nearest useful ones are her immediate
@@ -7396,7 +7396,7 @@ regeneration.
 
 **Exports.** 72, 73, 74 placed, then 75 and 76. Corpus **234 → 239**, 245 GEDCOMs,
 all tracked. Two of them sat untracked for a tick because I staged by explicit path
-and listed the zips without the `.ged`s; she caught it and committed them herself.
+and listed the zips without the `.ged`s; that was caught and they were committed by hand.
 
 **What they cleared.** Chain coverage moved **22.4% → 25.0%** across the 560 saved
 paths: the three exports filled 194 chain people and the later two filled 42. About
@@ -7420,7 +7420,7 @@ only one that answers the question.
 **The corrections to her own record reach the end of the chain now.**
 `derived-facts.csv` reads `sex: F`, which is the file the trunk batch takes `P21`
 *sex or gender* from. The removed surname appears nowhere in the batch, the middle
-name appears nowhere, and she is correctly absent from the creations because
+name appears nowhere, and the account owner is correctly absent from the creations because
 `Q232803` already exists.
 
 `test_edit_emitters` and `test_repo_invariants` — 22 passed.
@@ -7435,14 +7435,14 @@ The diagnosis named the right causes and overstated their reach. Splitting by
 `P31` *instance of* — given name versus family name — resolves **192** of 975
 ambiguous strings. The other 769 are two items of the *same* kind sharing a label.
 
-**95 of those are the male/female given name case she had already ruled on**, and
+**95 of those are the male/female given name case already ruled on**, and
 they are settled per **bearer**: `reports/name-resolved-by-sex.csv`, 13,503
 bearer-token pairs, **13,501 resolved**, 2 left where the bearer has no recorded
 sex. The same token maps to different items depending on who carries it.
 
 **207 more could be resolved by preferring the better-populated item** — one having
 ten times the label languages of the other. **Not done.** That is a tie-break
-heuristic of exactly the shape she rejected in the name census, and it needs her
+heuristic of exactly the shape rejected in the name census, and it needs a
 before it becomes a rule.
 
 **And a cause worth recording: same spelling, different language, separate items.**
@@ -7491,7 +7491,7 @@ and `P40` *child* 6/15 against 0/5.
 
 **The batch already existed** and already produced the right shape: 21 edits adding
 the office with `P1365` *replaces*, `P1366` *replaced by*, `P580` *start time* and
-`P582` *end time*, covering all 16 she named including the empty `Q137394557`.
+`P582` *end time*, covering all 16 named, including the empty `Q137394557`.
 
 **The defect worth the tick: 9 of the 21 referenced a `P2600` the item does not
 have.** Her rule is that the Geni ID precedes anything derived from Geni, and a
@@ -7555,7 +7555,7 @@ people."* Avoiding them is still forbidden; giving them a readable label is the
 opposite of avoiding them.
 
 `_NN_FORMS` deliberately excludes `unknown` and `?`. Those were part of the same
-unasked addition she rejected, they are somebody's editorial choice rather than a
+unasked addition that was rejected, they are somebody's editorial choice rather than a
 marker this project owns, and widening the set again on my own initiative is the
 exact move that produced the original complaint.
 
@@ -7737,7 +7737,7 @@ one item; it had been queued twice under different headings.
 ## 2026-08-16 — the duplicate export deleted, on authorisation
 
 *"Yes delete it."* The only NEEDS-DECISION in the repo, and the only fix was one
-`CLAUDE.md` forbids outright, so it sat untouched until she ruled.
+`CLAUDE.md` forbids outright, so it sat untouched until it was ruled on.
 
 `export-Descendants-6000000178898487831.ged` existed twice with sha256
 `2e2f87a62c1810b0ca08d3eb8a4b190f524bd3ba6b886577725f44bd40bf510e`: the original in
@@ -7800,9 +7800,9 @@ everything's working well and nothing was overlooked."* Done over her **49** mes
 of 2026-08-16 — `reports/audit-resume-2026-08-17.md`. The 08-15 audit covers
 everything earlier.
 
-**Three things she asked for are not done.** The rest traces to committed work.
+**Three things asked for are not done.** The rest traces to committed work.
 
-**The largest is a 43% hole in the biggest label batch in the repo.** She said
+**The largest is a 43% hole in the biggest label batch in the repo.** The ruling was
 long-range relationships contribute more than I credit them with —
 *"grandparents or grandchildren or siblings"* — and that was applied to
 `build-nn-label-batch.py`, 1,588 Wikidata items, and not to
@@ -7813,13 +7813,13 @@ population a sibling or grandparent reaches. The seven-language item is gated on
 these labels, so the gap sits upstream of the gate.
 
 Also open: the structural merge produced 3,902 correspondences and 12,260
-placeholders on 08-15 and **nothing has consumed either file since** — she asked
+placeholders on 08-15 and **nothing has consumed either file since** — the ask was
 about that directly, *"the structural cases you were going to do and then you didn't
 do"*; and a saved Geni page's blood path and in-law path are still one concatenated
 chain, against *"as long as you treat it as being two paths and not one."*
 
 **The audit procedure itself was finding 57% of her.** It read
-`{"type": "user"}` records only. A message she types while a tool call is running is
+`{"type": "user"}` records only. A message typed while a tool call is running is
 written as `{"type": "queue-operation", "operation": "enqueue"}` instead, and on
 08-16 that was **21 of 49** — including *"NN is not relabeled"*, *"there is a bot
 that exists that removes labels"*, the structural-merge complaint and the
@@ -7895,7 +7895,7 @@ structurally with `Q41864` *Sigurd Snake-in-the-Eye*, `Rikissa of Sweden` with
 `reports/structural-correspondence-disagreements.csv` rather than counted and dropped.
 
 The 306 second-Geni-ID cases are emitted per `CLAUDE.md` § *A second Geni ID on one
-Wikidata item is NOT a conflict*, and several are the CBDB block she dismissed
+Wikidata item is NOT a conflict*, and several are the CBDB block already dismissed
 (`Q45485638` *Chen Boxuan* gaining `335848880110006014` beside `6000000074732500795`).
 
 `label_tokens_shared` rides along on each edit and **nothing filters on it**: 996 of
@@ -7983,7 +7983,7 @@ multiple bridges and are also not in"* our data. The top five clusters:
 
 Every one of the five wants `Forest`, because the runs cross marriage and sibling
 links that `Ancestors` and `BloodTree` walk straight past. All five are Norwegian or
-Swedish, which is where she is linked — the same reason the Nordic isolate batches ran
+Swedish, which is where the account is linked — the same reason the Nordic isolate batches ran
 at 92%.
 
 **And the chain split shows in the reports.** `reports/path-nn-basse.md` now opens
@@ -8122,7 +8122,7 @@ went 30,012 → 30,015 readable labels.
 Cyrillic-only, 35 Latin+Hebrew, 30 Latin+CJK (`陳母 Chan` — *Chen's mother*), 19
 Latin+Cyrillic, 18 that genuinely are markers (`nn Pedersdatter`, `ukj.`, `Maka till
 Brynjolf Brandsson`), 5 Hebrew or Arabic only. Every non-Latin one of those is a person
-whose `en` has to be **made**, which is exactly the step she ordered first.
+whose `en` has to be **made**, which is exactly the step ordered first.
 
 Five tests in `tests/test_derivation_scripts.py` pin it, including that a real mixed
 name (`陳母 Chan`) is still mixed — the fix must not swallow the case the bucket exists
@@ -8195,7 +8195,7 @@ items it lists are a filtered view of these 17,707.
 
 ## 2026-08-17 — three rulings, and the CJK records turn out to be the template
 
-She answered both questions the census raised, and then added two instructions that
+Both questions the census raised were answered, and two instructions added that
 change what the `ja`/`zh` step is.
 
 ### Words yes, punctuation no
@@ -8235,7 +8235,7 @@ initial — the mistake `f9b9f86` records this repo nearly making 283 times.
 ### CJK relationship suffixes are descriptions, same as English
 
 Shown 室 2,565 · 氏 1,613 · 娘 617 · 某 311 · 妻 210 · 母 100 — about **5,400 people**,
-more than the 1,222 English descriptions — she ruled them the CJK arm of the description
+more than the 1,222 English descriptions — they were ruled the CJK arm of the description
 class. **`mul` gets `NN`**, her words: *"And NN for mul there"*, plus the real surname
 where the description leaves one: `謝氏` → `NN 謝`, `信秀正室 織田` → `NN 織田`.
 
@@ -8439,14 +8439,14 @@ https://www.geni.com/family-tree/index/6000000085113755501 is a better page to o
 for them rather than the pages you opened."*
 
 So a seed batch opens as `/family-tree/index/<geni id>`, not `/people/x/<geni id>`. The
-profile page shows one person; the index shows the neighbourhood she has to work in to
+profile page shows one person; the index shows the neighbourhood the work has to happen in to
 place the placeholder and run the export. The 50 I opened were profile pages. Recorded in
 `CLAUDE.md`, scoped to **seed** batches — the isolate batches are judging whether one
 person connects at all, and the saved-page workflow needs the profile page because the
 relationship panel and its `href`s live there.
 
 **Four exports integrated into `exports/midpoints/`**, a new directory on her call rather
-than a guess. All `Forest`, all **exactly 5000** people, seeded on placeholders she made
+than a guess. All `Forest`, all **exactly 5000** people, seeded on placeholders made by hand
 at the midpoints of path gaps:
 
 | seed | who |
@@ -8486,13 +8486,13 @@ Her four exports off the first midpoint batch, measured on the re-merged tree:
 | still a gap | 6,950 | **6,751** |
 | bridges / clusters | 891 / 419 | 895 / 447 |
 
-**199 chain people closed**, and eight of the fifty she had open are among them.
+**199 chain people closed**, and eight of the fifty then open are among them.
 
-**Two corrections, both mine, both things she had already told me.**
+**Two corrections, both self-inflicted, both things already stated.**
 
 I said the handoff file should accumulate what had been opened. It should not — *"don't
 make it accumulate overwriting is the intended functionality lol"*. And I had built an
-already-opened filter on top of it, which is the same thing she rejected on 2026-08-16
+already-opened filter on top of it, which is the same thing rejected on 2026-08-16
 (*"I don't know what the already open filter is for… I feel like it might be
 overcomplicating things"*). **The filter was not merely unnecessary, it was harmful**:
 the regenerated ranking already drops a person once an export covers them, so the only
@@ -8512,9 +8512,9 @@ On an unrequested re-merge: *"I didn't request that you rebuild the
 synoptic tree. You just did that on your own… rebuilding the synoptic tree right now is
 just going to create another tree that's going to become out of date pretty soon."*
 
-She was right, and the cost was not only the wait. Re-merging while she worked took the
+That was right, and the cost was not only the wait. Re-merging alongside other work took the
 machine to **0.3 GB free of 31.3 GB** and killed two background jobs — including the
-merge's own first attempt, which is what she was asking about when she said *"what the
+merge's own first attempt, which is what was being asked about in *"what the
 fuck happened"*.
 
 **The chain task never needed it.** *Do we hold this person?* is answered by whether
@@ -8522,7 +8522,7 @@ their Geni ID appears as an `INDI` xref in any export: one pass over `exports/` 
 of strings. **18 seconds against roughly five minutes and 4.5 GB**, and it cannot be
 stale, because it reads the corpus rather than a snapshot of it.
 
-`scripts/find-chain-gaps.py` is that, committed rather than retyped inline each time she
+`scripts/find-chain-gaps.py` is that, committed rather than retyped inline each time it
 asks for a regeneration — the same defect `path-bridge-targets.csv` had, a live artifact
 with no generator.
 
@@ -8664,7 +8664,7 @@ and every placeholder here is seconds old. The page is the only source, and clic
 the created node gives the ID immediately.
 
 And while the queue is being worked, an ambiguity is settled by a reasonable guess with
-the reading written down, not by an `AskUserQuestion` — she is asleep for twelve hours
+the reading written down, not by an `AskUserQuestion` — nobody is awake for twelve hours
 and said the queue is explained sufficiently.
 
 **One mechanical note worth keeping.** A save that silently does not take looks exactly
@@ -9171,7 +9171,7 @@ agent, and neither named a contact:
 
 An anonymous agent that *writes* is precisely what Wikimedia's User-Agent policy is
 written for, and what it throttles hardest. Her guess was a worse outcome than the
-truth, and she was right that something was wrong.
+truth, and it was right that something was wrong.
 
 `Email Address T` does exist here — on `genimerge.wikilabels`'s SPARQL
 lookup, a read-only fetcher the workflow never invokes. A real string in the wrong
@@ -9193,7 +9193,7 @@ and "can reach" did the deciding here, not tidiness.
 
 `tests/test_bot_identity.py` asserts the read-only agents **keep their own
 addresses** — `Email Address E` and `Email Address T` — and that the
-bot contact does *not* appear in either. She specified the CI/CD bot. If the bot
+bot contact does *not* appear in either. The instruction specified the CI/CD bot. If the bot
 address should be everywhere that is one word from her and the test changes with it;
 it should not drift there while nobody is looking, which is how a wrong address comes
 to be believed in the first place.
@@ -9208,17 +9208,17 @@ and `Email Address T`, reasoning that the instruction had named *the CI/CD bot*
 specifically — and asserted that in `tests/test_bot_identity.py`, which turned a
 guess of mine into a durable rule.
 
-She had not asked for the distinction: *"Please do not make up your own random
+The distinction had not been asked for: *"Please do not make up your own random
 judgments. No email is better than the Topaz computing one. Just use the
 BenthicThoughts one."*
 
 Every agent in the repo now carries `Email Address B` —
 `genimerge.wikidata`, `genimerge.wikilabels`, `fetch-labels.py`, `import-item.py`,
 `collect-name-item-qids.py` — and the test asserts **no agent holds a
-Email Address T**, which is the thing she actually said was wrong.
+Email Address T**, which is the thing actually named as wrong.
 
 Worth naming, because it is not the same mistake as a wrong value: I made an
-inference she had not asked for, and then wrote a test to protect it. A test is the
+inference nobody had asked for, and then wrote a test to protect it. A test is the
 most durable place to put a judgement, which makes it the worst place to put one
 that was never requested.
 
@@ -9659,7 +9659,7 @@ carry a kana one. `Akira` and `Makoto` are not Mandarin syllables at all, so
 `is_pinyin_syllable` rejects them without needing any item metadata. **zh rows carrying a
 Japanese reading: 174 → 0.**
 
-**Japanese does not compose.** She said so; composing anyway proved it. 文仁 came out
+**Japanese does not compose.** That was stated; composing anyway proved it. 文仁 came out
 `Aya Masashi` when it is *Fumihito*; 信直 `Shin Tadashi` when it is *Nobunao*; 信行
 `Shin Kou` when it is *Nobuyuki*. A Japanese given name is read whole and the isolated
 reading of each kanji is not a part of it. Japanese now emits **only where a name item
@@ -10146,7 +10146,7 @@ and it reaches the **English** labels too — they have shipped with these strin
 `reports/unidentified-clusters.md` was read and called: *"Litteally all chinese and its
 obvious from wikidata names lol"* — then *"Apply it lol"*.
 
-She was right about the bulk, and the clusters are why. The records no rule could settle
+That was right about the bulk, and the clusters are why. The records no rule could settle
 are overwhelmingly one Chinese lineage each — 曾 656, 陳 265, 張 105, 趙 100, 孔 64 — with
 `世`-generation numbering straight out of a 族譜. They had no culture only because their
 component is isolated: no kana, no hangul, no clan seat, no listed place, out to fourteen
@@ -10418,7 +10418,7 @@ titles out of running text, so `Kandjeng Pangeran` and `SINUHUN PAKU BUWANA XII`
 was a different judgement and not the one asked.
 
 **Keep `MAX_HOPS = 14`.** Put to her directly, with the cost stated — 2,077 romanised rows
-rest on inferences beyond six hops and the checks only detect surname-shaped errors — she
+rest on inferences beyond six hops and the checks only detect surname-shaped errors — that
 kept it. Settled; not to be revisited without her.
 
 **Patronymic fathers are sourced to the bearer's Geni profile.** The evidence is the
@@ -10428,9 +10428,9 @@ a count of names, and `Anders` implying 349 people is not one man — and the `O
 flaw has to be fixed before anything is emitted.
 
 **The middle initials were already confirmed, and asking again was a mistake:** *"we
-had an extensive discussion of this"*, *"the initial thing was confirmed."* She is right.
+had an extensive discussion of this"*, *"the initial thing was confirmed."* That is right.
 `reports/middle-initial-wikidata-practice.md` settled it on evidence over 19,250 items, per
-language, which is precisely what she required at the time — *"I want evidence of it being
+language, which is precisely what was required at the time — *"I want evidence of it being
 standard"*, and *"I'm guessing Russian and Greek do it with transliterating the initial
 though and they should do that."*
 
