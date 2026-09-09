@@ -45,9 +45,8 @@ PACKAGE = REPO_ROOT / "src" / "genimerge"
 #: Triggers that make GitHub run a workflow without anybody asking, which on a
 #: private repository means billable minutes per event.
 #: **The repo went PUBLIC on 2026-09-01**, so Actions minutes are free and the cost
-#: argument this set encoded no longer applies. Emma: *"The repo is public now lol"*, and
-#: earlier that day *"I want to make this a public repo so we don't need to waste your
-#: attention on the tests shit"*. `pull_request` and `schedule` are now wanted.
+#: argument this set encoded no longer applies -- the repo was made public so the test
+#: question would stop costing attention. `pull_request` and `schedule` are now wanted.
 #:
 #: **`push` stays out, for a different reason that survives the visibility change.** This
 #: repo takes large generated files many times a day -- the 2026-09-01 label rebuild alone
@@ -55,9 +54,9 @@ PACKAGE = REPO_ROOT / "src" / "genimerge"
 #: nobody anything. That is a signal argument, not a billing one.
 AUTOMATIC_TRIGGERS = {"push", "pull_request_target"}
 
-# **`pipeline.yml` runs on push BY DESIGN.** Emma, 2026-09-03: *"pushes should trigger the
-# pipeline to go all the way including up to getting a working qs file and having the daily batch
-# on the site."* It is the workflow whose whole job is to make a push produce a fresh batch and a
+# **`pipeline.yml` runs on push BY DESIGN.** A push should drive the pipeline all the way
+# through to a working `.qs` file and the daily batch appearing on the site. It is the workflow
+# whose whole job is to make a push produce a fresh batch and a
 # site carrying it, so a push is its correct trigger.
 #
 # `tree.yml` joins it on 2026-09-03: a new export under `exports/` is exactly when the synoptic
@@ -286,7 +285,7 @@ def test_no_gitignore_rule_hides_a_gedcom():
 def test_no_gitignore_pattern_hides_a_zip_that_has_not_arrived_yet():
     """Zips are ignored one full path per line, and that is the whole point.
 
-    An unlisted zip showing up in `git status` is how Emma sees a download has
+    An unlisted zip showing up in `git status` is how a download announces it has
     landed. A `*.zip` pattern would be tidier and would make every future
     download silent — the same class of loss as the `.ged` rule above, in the
     opposite direction. So the probe is a path that does not exist: any rule
@@ -408,13 +407,13 @@ def _individual_ids(path):
 def test_no_excluded_export_strands_a_person():
     """Excluding a file must not remove anybody from the tree.
 
-    **Emma's condition, 2026-08-15:** *"I want you to move them into an excluded
-    directory or something like Samaritan's excluded and check to see if every
-    single individual there is present in at least one other export."*
+    **The condition, set 2026-08-15:** move them into an excluded directory and
+    check that every single individual in them is present in at least one other
+    export.
 
-    She said it after I proposed excluding them *once* a later export covered
-    their people — *"That is stupid. It's a prediction of something that may or
-    may not happen."* So the check runs against the corpus as it stands, here,
+    Excluding them *once* a later export covers their people was refused: that is
+    a prediction of something that may or may not happen. So the check runs
+    against the corpus as it stands, here,
     and an exclusion that would strand somebody fails the suite rather than
     quietly shrinking the tree.
 

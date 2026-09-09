@@ -1,8 +1,7 @@
 """No batch carries a description, and nothing anywhere sets an edit summary.
 
-**Emma, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* Then,
-widening it the same day to cover edit summaries: we categorically
-never use them.
+**It is a hard rule that items are never created with descriptions**, widened the same day to
+cover edit summaries: those are categorically never used either.
 
 `CLAUDE.md` § *NO descriptions and NO edit summaries* is the rule. This is the guard, because
 the rule is categorical and a single slip is the kind that is only noticed by somebody else.
@@ -35,10 +34,10 @@ SUMMARY = re.compile(r"&summary=|[?&]summary|summary\s*=\s*[\"']"
 LOCAL_FILE = re.compile(r"\.csv|\.tsv|\.json|\.md|reports/|out/|add_argument")
 
 
-#: **The one exception, and it is narrow.** Emma, 2026-09-01: *"All patronymics get the
-#: description 'patronymic' so that they actually are properly deduplicated. We are still
-#: creating duplicate patronymics and it is at the point of intolerability."* Then: *"All
-#: surnames get 'family name', all matronymics (do we even have any) get 'matronymic'."*
+#: **The one exception, and it is narrow.** All patronymics get the description
+#: *patronymic* so they deduplicate properly, because duplicate patronymics were being
+#: created to the point of intolerability. All surnames get *family name*, and any
+#: matronymics get *matronymic*.
 #:
 #: The description is what makes Wikidata itself refuse the duplicate -- a label and description
 #: must be unique together per language. So this test is NARROWED rather than weakened: exactly
@@ -62,7 +61,7 @@ def test_no_batch_carries_a_description():
             offenders.append(f"{path.name}:{n} sets {m.group(1)}  {line.strip()[:60]}")
     assert not offenders, (
         "descriptions are emitted ONLY as Den on a name item, and only "
-        f"{sorted(ALLOWED_DESCRIPTIONS)} -- Emma, 2026-09-01: {offenders[:8]}")
+        f"{sorted(ALLOWED_DESCRIPTIONS)} -- ruled 2026-09-01: {offenders[:8]}")
 
 
 def test_nothing_sets_an_edit_summary():
@@ -78,5 +77,5 @@ def test_nothing_sets_an_edit_summary():
                 if SUMMARY.search(line) and not LOCAL_FILE.search(line):
                     offenders.append(f"{path.relative_to(REPO)}:{n}  {line.strip()[:80]}")
     assert not offenders, (
-        "an edit summary is never set. Emma, 2026-08-30, categorically. "
+        "an edit summary is never set, categorically -- ruled 2026-08-30. "
         f"{offenders[:8]}")

@@ -1,12 +1,12 @@
 """The rule-encoding functions in `scripts/` that produce the derived data.
 
-Every CSV Emma is being asked to make decisions from is written by a script in
+Every CSV the decisions are made from is written by a script in
 `scripts/`, and the test suite reaches `src/genimerge/` only. That gap produced a
 real defect: `derive-labels.py` fell back to a mixed Latin+CJK string when a
 person had no pure Latin name, so an "English label" could contain CJK
 characters. It was caught by two reports disagreeing, not by the code.
 
-These pin the rules that turn Emma's instructions into data — the ones where a
+These pin the rules that turn the instructions into data — the ones where a
 silent change alters what gets written rather than crashing.
 
 Scripts have hyphens in their filenames and are not importable, so they are
@@ -138,7 +138,7 @@ def test_no_letters_at_all(labels):
     assert labels.script_group("") == "none"
 
 
-# --- Emma's dot rule -------------------------------------------------------
+# --- the dot rule ----------------------------------------------------------
 
 
 @pytest.mark.parametrize("token", [".", "..", "?", "-", "_"])
@@ -169,7 +169,7 @@ def test_the_married_name_takes_the_surnames_place(labels):
 
 
 def test_the_alias_keeps_a_suffix(labels):
-    """A noble suffix stays in — Emma, 2026-08-11."""
+    """A noble suffix stays in — ruled 2026-08-11."""
     assert labels.alias_from_married_name("Aénor", "Flandre", "Duchess of Aquitaine") == (
         "Aénor Flandre Duchess of Aquitaine"
     )
@@ -182,8 +182,8 @@ def test_a_placeholder_married_name_yields_nothing_usable(labels):
 # --- the invented-parent label, which becomes a created item ---------------
 
 
-def test_two_children_read_as_emma_specified(family):
-    """She gave the format as "father of x and y"; that case is fixed."""
+def test_two_children_read_as_specified(family):
+    """The format is "father of x and y"; that case is fixed."""
     assert family.parent_label("father", ["Mary Payne", "Lucy Payne"]) == (
         "father of Mary Payne and Lucy Payne"
     )

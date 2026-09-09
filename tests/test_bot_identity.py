@@ -1,11 +1,10 @@
 """The User-Agent is an email address and nothing else.
 
-Emma, 2026-08-18: *"This GitHub repo shouldn't be linked into the user agent. Really,
-none of this should be in the user agent. You're leaking a massive amount of information
-here. It's just an email address. That is the secret."*
+The GitHub repo does not belong in the user agent, and neither does anything else: it is
+an email address and nothing more. Everything else leaks a great deal of information.
 
 Every earlier version of the agent named the tool, linked
-her repository, and described what the project does. All three
+the repository, and described what the project does. All three
 told a reader where the code lives and what it is for, which is the leak. What is pinned
 here is that none of them can come back.
 
@@ -96,8 +95,8 @@ def test_the_start_date_gate_sends_nothing_and_so_needs_no_agent():
 
     That test asserted `wikidata_lockout` shared the agent, which mattered only
     because the module fetched a state file belonging to `shintowiki-scripts`.
-    Emma, 2026-08-23: *"Shintowiki scripts and this one are not the same and not
-    really coordinated"* -- the coupling was invented here, and it is gone. The
+    The shintowiki scripts and this one are not the same and are not coordinated;
+    that coupling was invented here, and it is gone. The
     guarantee is now stronger than sharing an agent: there is no request at all.
     `tests/test_wikidata_start_date.py` pins the same thing from the other side.
     """
@@ -109,9 +108,9 @@ def test_the_start_date_gate_sends_nothing_and_so_needs_no_agent():
 
 
 def test_no_source_file_links_a_repository():
-    """Emma, 2026-08-18: *"no fucking github links in it either"*.
+    """No GitHub links anywhere, not only in the agent.
 
-    Not only the agent. A URL in a constant names her repositories to anyone reading the
+    A URL in a constant names the repositories to anyone reading the
     code, which is the same disclosure by a different route -- so the lockout state file's
     location moved into the LOCKOUT_STATE_URL secret too, and the gate fails closed
     without it.
