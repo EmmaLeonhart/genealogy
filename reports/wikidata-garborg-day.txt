@@ -2,8 +2,34 @@
 # HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet.
 # These lead the file: the Geni id is the FIRST edit on any individual,
 # and a name item is not an exception to that.
-# 314 in reports/manual-identifications.csv, 304 already on Wikidata, 20 a run beyond the ones this run touches.
+# 331 in reports/manual-identifications.csv, 303 already on Wikidata, 20 a run beyond the ones this run touches.
 # ========================================================================
+#   Q11368515 丹後内侍: P2600 from her own identification
+Q11368515	P2600	"6000000002933557025"
+#   Q11492951 惟宗広言: P2600 from her own identification
+Q11492951	P2600	"6000000002934660014"
+#   Q116474334 Thukra: P2600 from her own identification
+Q116474334	P2600	"6000000012565017393"
+#   Q116779751 Elisabet Olofsdotter Luth: P2600 from her own identification
+Q116779751	P2600	"6000000008847604706"
+#   Q117303291 NN Woman de Caen Concubine #1 of Henry I of England: P2600 from her own identification
+Q117303291	P2600	"6000000008481458843"
+#   Q125989 Walram d'Arlon II: P2600 from her own identification
+Q125989	P2600	"6000000008575245445"
+#   Q131726353 Ture Ollonberg: P2600 from her own identification
+Q131726353	P2600	"6000000008269934190"
+#   Q134269509 Margarethe von Lode: P2600 from her own identification
+Q134269509	P2600	"6000000003295664915"
+#   Q135480148 Hedvig Hindrichdotter Wegelin: P2600 from her own identification
+Q135480148	P2600	"6000000013175410922"
+#   Q45461100 鴻智 裴: P2600 from her own identification
+Q45461100	P2600	"6000000057602803872"
+#   Q5290415 Mossen Juan Domingo de Borja y Doncel: P2600 from her own identification
+Q5290415	P2600	"4259064"
+#   Q75772676 Maclean: P2600 from her own identification
+Q75772676	P2600	"6000000006454368499"
+#   Q97783170 Francina Marti Llançol: P2600 from her own identification
+Q97783170	P2600	"6000000001062599699"
 #   Q94910724 Joachim Engelke von Bernstorff: P2600 from her own identification
 Q94910724	P2600	"6000000001504723577"
 #   Q94938559 Friedrich Frommhold von Knorring: P2600 from her own identification
@@ -24,6 +50,16 @@ Q99202612	P2600	"6000000006426234038"
 Q99207610	P2600	"6000000000769973327"
 #   Q99207667 Judith Verplanck: P2600 from her own identification
 Q99207667	P2600	"6000000025771297850"
+#   Q4971843 Papia Poppée Poppa de Enver Concubine: P2600 from her own identification
+Q4971843	P2600	"6000000000424732334"
+#   Q50347265 Ture Ollonberg: P2600 from her own identification
+Q50347265	P2600	"6000000008269934190"
+#   Q16590419 Pietro Durazzo XCIII doge di Genova: P2600 from her own identification
+Q16590419	P2600	"6000000021441996908"
+#   Q3762132 Giacomo Grimaldi Durazzo LXIX doge di Genova: P2600 from her own identification
+Q3762132	P2600	"6000000021441530737"
+#   Q5607754 Samuel Johan Chierlin: P2600 from her own identification
+Q5607754	P2600	"6000000018806651741"
 
 # ========================================================================
 # NAME ITEMS. One file, her instruction of 2026-08-30 -- there is no
@@ -274,334 +310,371 @@ Q98139923	Den	"family name"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 135 edits; 839 edits held for a later run
-#   across 334 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 169 edits; 775 edits held for a later run
+#   across 291 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141189061: set the ko label
-Q141189061	Lko	"칼 베르게르센"
-#   set the ko label to "칼 베르게르센"
-Q141189061	Lko	"칼 베르게르센"
-#   Q141180413: 'Thomas Matthiæ' has no ko label
-#   Q141180413: holds 'トーマス・マティエ' in ja; ours is 'トマス・マッティエ'
-#   Q141180413: set the ja label
-Q141180413	Lja	"トマス・マッティエ"
-#   set the ja label to "トマス・マッティエ"
-Q141180413	Lja	"トマス・マッティエ"
-#   Q141180406: set the ko label
-Q141180406	Lko	"이에보륵 긴테스도테르"
-#   set the ko label to "이에보륵 긴테스도테르"
-Q141180406	Lko	"이에보륵 긴테스도테르"
-#   Q141180396: 'Tollef Tollefson Tunheim' has no ko label
-#   Q141180396: set the ko label
-Q141180396	Lko	"톨레프 톨레프손 툰헤임"
-#   Q141178198: 'Enevald Jonasson Heigre' has no ko label
-#   Q141178198: set the ko label
-Q141178198	Lko	"에네발드 조나손 헤이그레"
-#   Q141178197: 'Elisabeth Nyvold' has no ko label
-#   Q141178197: holds 'エリーサベト・ニーヴォル' in ja; ours is 'エリーザベト・ニーヴォル'
-#   Q141178197: set the ja label
-Q141178197	Lja	"エリーザベト・ニーヴォル"
-#   Q141178197: set the ko label
-Q141178197	Lko	"에리사베트 니볼드"
-#   Q141169072: holds '오드네 올센 가르보르그' in ko; ours is '오드네 올센 가르보륵'
-#   Q141169072: set the ko label
-Q141169072	Lko	"오드네 올센 가르보륵"
-#   set the ko label to "오드네 올센 가르보륵"
-Q141169072	Lko	"오드네 올센 가르보륵"
-#   Q141169062: 'Thoralf Tunheim' has no ko label
-#   Q141169062: holds 'トーラルフ・トゥンヘイム' in ja; ours is 'トラルフ・トゥンヘイム'
-#   Q141169062: set the ja label
-Q141169062	Lja	"トラルフ・トゥンヘイム"
-#   Q141169062: set the ko label
-Q141169062	Lko	"토랄프 툰헤임"
-#   Q141169041: 'Olaf Tunheim' has no ko label
-#   Q141169041: holds 'オーラフ・トゥンヘイム' in ja; ours is 'オラフ・トゥンヘイム'
-#   Q141169041: set the ja label
-Q141169041	Lja	"オラフ・トゥンヘイム"
-#   Q141169041: set the ko label
-Q141169041	Lko	"오라프 툰헤임"
-#   Q141168957: set the ko label
-Q141168957	Lko	"조나스 존손 헤이그레"
-#   Q141168954: set the ko label
-Q141168954	Lko	"존 가르보륵"
-#   set the ko label to "존 가르보륵"
-Q141168954	Lko	"존 가르보륵"
-#   set the ko label to "이에브레트 가르보륵"
-Q141168837	Lko	"이에브레트 가르보륵"
-#   Q141168833: holds '이에보르그 구리에 오드네스다테르 가르보르그' in ko; ours is '이에보륵 구리에 오드네스다테르 가르보륵'
-#   Q141168833: set the ko label
-Q141168833	Lko	"이에보륵 구리에 오드네스다테르 가르보륵"
-#   set the ko label to "이에보륵 구리에 오드네스다테르 가르보륵"
-Q141168833	Lko	"이에보륵 구리에 오드네스다테르 가르보륵"
-#   Q141168830: set the zh label
-Q141168830	Lzh	"英格堡·塔勒"
-#   Q141168830: set the ko label
-Q141168830	Lko	"이에보륵 탈레"
-#   set the ko label to "이에보륵 가르보륵"
-Q141168830	Lko	"이에보륵 가르보륵"
-#   Q141168827: holds '한스 에이빈드 가르보르그' in ko; ours is '한스 에이빈드 가르보륵'
-#   Q141168827: set the ko label
-Q141168827	Lko	"한스 에이빈드 가르보륵"
-#   Q141168827 Hans Eivind Garborg: set the ko label to "한스 에이빈드 가르보륵"
-Q141168827	Lko	"한스 에이빈드 가르보륵"
-#   Q141168824: 'Ernest Anton Ronneberg' has no ko label
-#   Q141168824: set the ko label
-Q141168824	Lko	"에르네스트 안톤 론네베륵"
-#   Q141168820: 'Eliza Ronneberg' has no ko label
-#   Q141168820: holds 'エリザ・ロンネベルグ' in ja; ours is 'イライザ・ロンネベルグ'
-#   Q141168820: set the ja label
-Q141168820	Lja	"イライザ・ロンネベルグ"
-#   Q141168820: holds '伊莱扎·龙内贝格' in zh; ours is '伊丽莎·龙内贝格'
-#   Q141168820: set the zh label
-Q141168820	Lzh	"伊丽莎·龙内贝格"
-#   Q141168820: set the ko label
-Q141168820	Lko	"에리자 론네베륵"
-#   Q141168816: 'Elisabet Ådnesdatter Bø' has no ko label
-#   Q141168816: holds 'エリサベート・オードネスダッテル・ベー' in ja; ours is 'エリーザベト・オードネスダッテル・ベー'
-#   Q141168816: set the ja label
-Q141168816	Lja	"エリーザベト・オードネスダッテル・ベー"
-#   Q141168816: holds '伊丽莎白·奥德内斯达特·贝' in zh; ours is '伊丽莎白·奥德内斯达特·鲍伊'
-#   Q141168816: set the zh label
-Q141168816	Lzh	"伊丽莎白·奥德内斯达特·鲍伊"
-#   Q141168816: set the ko label
-Q141168816	Lko	"에리사베트 오드네스다테르 뵈"
-#   Q141168811: 'Eivind Garborg' has no ko label
-#   Q141168811: set the ko label
-Q141168811	Lko	"에이빈드 가르보륵"
-#   Q141168811 Eivind Garborg: set the ko label to "에이빈드 가르보륵"
-Q141168811	Lko	"에이빈드 가르보륵"
-#   Q141168809: 'Edward Tunheim' has no ko label
-#   Q141168809: set the ko label
-Q141168809	Lko	"에드와르드 툰헤임"
-#   Q141168805: 'Edward Ronneberg' has no ko label
-#   Q141168805: set the ko label
-Q141168805	Lko	"에드와르드 론네베륵"
-#   Q141168803: 'Dagny Garborg' has no ko label
-#   Q141168803: set the ko label
-Q141168803	Lko	"닥니 가르보륵"
-#   Q141168801: 'Cora Estelle Pierson' has no ko label
-#   Q141168801: holds '科拉·埃斯特尔·皮尔森' in zh; ours is '科拉·埃斯特尔·皮尔逊'
-#   Q141168801: set the zh label
-Q141168801	Lzh	"科拉·埃斯特尔·皮尔逊"
-#   Q141168801: set the ko label
-Q141168801	Lko	"코라 에스텔레 피에르손"
-#   Q141168797: set the ko label
-Q141168797	Lko	"크리스티안 프레데리크 베르게르센"
-#   set the ko label to "크리스티안 프레데리크 베르게르센"
-Q141168797	Lko	"크리스티안 프레데리크 베르게르센"
-#   Q141168794: 'Betsy Tunheim' has no ko label
-#   Q141168794: holds 'ベッツィ・ヤコブソン' in ja; ours is 'ベッツィー・トゥンヘイム'
-#   Q141168794: set the ja label
-Q141168794	Lja	"ベッツィー・トゥンヘイム"
-#   Q141168794: set the ko label
-Q141168794	Lko	"베트시 툰헤임"
-#   Q141168792: 'Astrid Garborg' has no ko label
-#   Q141168792: set the ko label
-Q141168792	Lko	"아스트리드 가르보륵"
-#   Q141168792 Astrid Garborg: set the ko label to "아스트리드 가르보륵"
-Q141168792	Lko	"아스트리드 가르보륵"
-#   Q141168789: 'Arnold Ronneberg' has no ko label
-#   Q141168789: holds 'アルノルド・ロンネベルグ' in ja; ours is 'アーノルド・ロンネベルグ'
-#   Q141168789: set the ja label
-Q141168789	Lja	"アーノルド・ロンネベルグ"
-#   Q141168789: set the ko label
-Q141168789	Lko	"아르놀드 론네베륵"
-#   Q141168788: 'Arne Garborg Tunheim' has no ko label
-#   Q141168788: holds '阿尔内·加尔博格·通海姆' in zh; ours is '阿恩·加尔博格·通海姆'
-#   Q141168788: set the zh label
-Q141168788	Lzh	"阿恩·加尔博格·通海姆"
-#   Q141168788: set the ko label
-Q141168788	Lko	"아르네 가르보륵 툰헤임"
-#   Q141168787: 'Alma Matilda Bring Iverson' has no ko label
-#   Q141168787: holds 'アルマ・マチルダ・トゥンヘイム' in ja; ours is 'アルマ・マティルダ・ブリング・アイヴァーソン'
-#   Q141168787: set the ja label
-Q141168787	Lja	"アルマ・マティルダ・ブリング・アイヴァーソン"
-#   Q141168787: set the ko label
-Q141168787	Lko	"알마 마틸다 브링 이베르손"
-#   Q141168786: 'Alice Ronneberg' has no ko label
-#   Q141168786: holds '艾丽丝·龙内贝格' in zh; ours is '爱丽丝·龙内贝格'
-#   Q141168786: set the zh label
-Q141168786	Lzh	"爱丽丝·龙内贝格"
-#   Q141168786: set the ko label
-Q141168786	Lko	"아리케 론네베륵"
-#   Q141168785: set the ko label
-Q141168785	Lko	"아아고트 가르보륵"
-#   Q141168784: set the ko label
-Q141168784	Lko	"아아고트 웬트"
-#   Q141168784 Aagot Wendt: set the ko label to "아아고트 가르보륵"
-Q141168784	Lko	"아아고트 가르보륵"
-#   Q141162045: holds '오레 에이빈드센 가르보르그' in ko; ours is '오레 에이빈드센 가르보륵'
-#   Q141162045: set the ko label
-Q141162045	Lko	"오레 에이빈드센 가르보륵"
-#   Q141162045 Ole Eivindsen Garborg: set the ko label to "오레 에이빈드센 가르보륵"
-Q141162045	Lko	"오레 에이빈드센 가르보륵"
-#   Q141162044: holds '아벨 에이빈드센 가르보르그' in ko; ours is '아벨 에이빈드센 가르보륵'
-#   Q141162044: set the ko label
-Q141162044	Lko	"아벨 에이빈드센 가르보륵"
-#   set the ko label to "아벨 에이빈드센 가르보륵"
-Q141162044	Lko	"아벨 에이빈드센 가르보륵"
-#   Q141162041: holds '에벤 에이빈드손 가르보르그' in ko; ours is '에벤 에이빈드손 가르보륵'
-#   Q141162041: set the ko label
-Q141162041	Lko	"에벤 에이빈드손 가르보륵"
-#   set the ko label to "에벤 에이빈드손 가르보륵"
-Q141162041	Lko	"에벤 에이빈드손 가르보륵"
-#   Q141162040: holds '사뭴 에이빈드센 가르보르그' in ko; ours is '사뭴 에이빈드센 가르보륵'
-#   Q141162040: set the ko label
-Q141162040	Lko	"사뭴 에이빈드센 가르보륵"
-#   set the ko label to "사뭴 에이빈드센 가르보륵"
-Q141162040	Lko	"사뭴 에이빈드센 가르보륵"
-#   Q141152614: holds '존 에이빈드손 가르보르그' in ko; ours is '존 에이빈드손 가르보륵'
-#   Q141152614: set the ko label
-Q141152614	Lko	"존 에이빈드손 가르보륵"
-#   set the ko label to "존 에이빈드손 가르보륵"
-Q141152614	Lko	"존 에이빈드손 가르보륵"
-#   set the ko label to "스테나 에이빈드스다테르 가르보륵"
-Q141152600	Lko	"스테나 에이빈드스다테르 가르보륵"
-#   Q141152512: holds '에이빈드 아아드네손 가르보르그' in ko; ours is '에이빈드 아아드네손 가르보륵'
-#   Q141152512: set the ko label
-Q141152512	Lko	"에이빈드 아아드네손 가르보륵"
-#   Q141152512 Eivind Aadnesson Garborg: set the ko label to "에이빈드 아아드네손 가르보륵"
-Q141152512	Lko	"에이빈드 아아드네손 가르보륵"
-#   set the ko label to "사라 베흠"
-Q140192133	Lko	"사라 베흠"
-#   Q140191768: set the ko label
-Q140191768	Lko	"헤드빅 스웨덴보륵"
-#   set the ko label to "헤드빅 스웨덴보륵"
-Q140191768	Lko	"헤드빅 스웨덴보륵"
-#   set the ko label to "알브레츠트 베흠"
-Q139997218	Lko	"알브레츠트 베흠"
-#   Q139651594: set the ko label
-Q139651594	Lko	"시그리드 가르보륵"
-#   set the ko label to "시그리드 가르보륵"
-Q139651594	Lko	"시그리드 가르보륵"
-#   set the ko label to "에바 크리스티나 데 베세"
-Q138582215	Lko	"에바 크리스티나 데 베세"
-#   Q138474188: 'Hans Syvertsen Nyvold' has no ko label
-#   Q138474188: set the ko label
-Q138474188	Lko	"한스 시베르트센 니볼드"
-#   set the ko label to "칼 할렌보륵"
-Q137213784	Lko	"칼 할렌보륵"
-#   Q136376387: holds 'エバ・クリスティーナ・カルルスドッテル' in ja; ours is 'エッバ・クリスティーナ・シオブラド'
-#   Q136376387: set the ja label
-Q136376387	Lja	"エッバ・クリスティーナ・シオブラド"
-#   Q136376387 Ebba Kristina Siöblad: set the ja label to "エッバ・クリスティーナ・シオブラド"
-Q136376387	Lja	"エッバ・クリスティーナ・シオブラド"
-#   Q136376354: 'Agneta Sofia Löwenhielm' has no ja/zh/ko label
-#   Q136376354: set the ja label
-Q136376354	Lja	"アグニェータ・ソフィア・ロヴェンヒエルム"
-#   set the ja label to "エリーザベト・アグニェータ・ソフィア"
-Q136376354	Lja	"エリーザベト・アグニェータ・ソフィア"
-#   Q136376354: set the zh label
-Q136376354	Lzh	"阿格内塔·索菲娅·洛文希埃尔姆"
-#   set the zh label to "科温特斯·阿格内塔·索菲娅"
-Q136376354	Lzh	"科温特斯·阿格内塔·索菲娅"
-#   Q136376354: set the ko label
-Q136376354	Lko	"악네타 소피아 뢰웬히엘므"
-#   set the ko label to "쿤테스 악네타 소피아"
-Q136376354	Lko	"쿤테스 악네타 소피아"
-#   Q136028287: set the ko label
-Q136028287	Lko	"안나 브리타 카레"
-#   set the ko label to "안나 브리타 카레"
-Q136028287	Lko	"안나 브리타 카레"
-#   Q136028286: 'Margareta Charlotta Ihre' has no ja/zh/ko label
-#   Q136028286: set the ja label
-Q136028286	Lja	"マルガレータ・カルロッタ・イレ"
-#   set the ja label to "マーガレット・カルロッタ・イレ"
-Q136028286	Lja	"マーガレット・カルロッタ・イレ"
-#   Q136028286: set the zh label
-Q136028286	Lzh	"瑪格麗塔·卡尔洛塔·伊雷"
-#   Q136028286: set the ko label
-Q136028286	Lko	"마르가레타 차로타 이흐레"
-#   set the ko label to "마르가레트 차로타 이흐레"
-Q136028286	Lko	"마르가레트 차로타 이흐레"
-#   set the ko label to "켈 바르네코우"
-Q135855612	Lko	"켈 바르네코우"
-#   Q135665878: 'Anna Christina Stålhammar' has no ja/zh/ko label
-#   Q135665878: set the ja label
-Q135665878	Lja	"アンナ・クリスティーナ・ストールハムマル"
-#   set the ja label to "アンナ・クリスティーナ・ストールハムマル・ヘイレッス"
-Q135665878	Lja	"アンナ・クリスティーナ・ストールハムマル・ヘイレッス"
-#   Q135665878: set the zh label
-Q135665878	Lzh	"安娜·克里斯蒂娜·斯托尔哈马尔"
-#   set the zh label to "安娜·克里斯蒂娜·斯托尔哈马尔·赫伊雷斯"
-Q135665878	Lzh	"安娜·克里斯蒂娜·斯托尔哈马尔·赫伊雷斯"
-#   Q135665878: set the ko label
-Q135665878	Lko	"안나 크리스티나 스톨함마르"
-#   set the ko label to "안나 크리스티나 스톨함마르 헤이레스"
-Q135665878	Lko	"안나 크리스티나 스톨함마르 헤이레스"
-#   Q135661264: 'Elisabet Charlotta In de Betou' has no ja/zh/ko label
-#   Q135661264: set the ja label
-Q135661264	Lja	"エリーザベト・カルロッタ・イン・デ・ベトウ"
-#   set the ja label to "エリーザベト・カルロッタ・イン・デ・ベトウ"
-Q135661264	Lja	"エリーザベト・カルロッタ・イン・デ・ベトウ"
-#   Q135661264: set the ko label
-Q135661264	Lko	"에리사베트 차로타 인 데 베투"
-#   set the ko label to "에리사베트 차로타 인 데 베투"
-Q135661264	Lko	"에리사베트 차로타 인 데 베투"
-#   Q135661262: 'Carl Reinhold von Essen af Zellie' has no ja/zh/ko label
-#   Q135661262: set the ja label
-Q135661262	Lja	"カール・ラインホルト・ヴォン・エッセン・アフ・ゼリエ"
-#   set the ja label to "コールレ・レイノ・ヴォン・エッセン"
-Q135661262	Lja	"コールレ・レイノ・ヴォン・エッセン"
-#   Q135661262: set the zh label
-Q135661262	Lzh	"卡尔·赖因霍尔德·翁·埃森·阿夫·泽利埃"
-#   set the zh label to "科尔莱·雷诺·翁·埃森"
-Q135661262	Lzh	"科尔莱·雷诺·翁·埃森"
-#   Q135661262: set the ko label
-Q135661262	Lko	"칼 레인홀드 본 에센 아프 젤리에"
-#   set the ko label to "카아레 레이노 본 에센"
-Q135661262	Lko	"카아레 레이노 본 에센"
-#   Q135513404: 'Anders Roland Martin' has no ja/zh/ko label
-#   Q135513404: set the ja label
-Q135513404	Lja	"アンデルス・ローランド・マーティン"
-#   Q135513404: set the zh label
-Q135513404	Lzh	"安德斯·罗兰·马丁"
-#   Q135513404: set the ko label
-Q135513404	Lko	"안데르스 로란드 마르틴"
-#   Q135480259: 'Elsa Barbro Gabrielsdotter Leijonhufwudh' has no ja/zh/ko label
-#   Q135480259: set the ja label
-Q135480259	Lja	"エルザ・バーブロ・ガブリエルスドッテル・レイヨンフフヴド"
-#   set the ja label to "エルザ・バーブロ・グレヴィンナ・オクセンシェルナ・アフ・クロネボルグ"
-Q135480259	Lja	"エルザ・バーブロ・グレヴィンナ・オクセンシェルナ・アフ・クロネボルグ"
-#   Q135480259: set the zh label
-Q135480259	Lzh	"埃尔莎·巴尔布罗·加布里埃尔斯多特·莱伊永胡夫武德"
-#   Q135480259: set the ko label
-Q135480259	Lko	"엘사 바릅로 가브리엘스도테르 레이존후프우우드흐"
-#   set the ko label to "엘사 바릅로 그레빈나 오그센스티에르나 아프 크로네보륵"
-Q135480259	Lko	"엘사 바릅로 그레빈나 오그센스티에르나 아프 크로네보륵"
-#   Q135480258: 'Carl Leonard Leijonhufvud' has no ja/zh/ko label
-#   Q135480258: set the ja label
-Q135480258	Lja	"カール・レナード・レイヨンフフヴド"
-#   Q135480258: set the zh label
-Q135480258	Lzh	"卡尔·伦纳德·莱伊永胡夫武德"
-#   Q135480258: set the ko label
-Q135480258	Lko	"칼 레오나르드 레이존후프부드"
-#   set the ko label to "바론 칼 레오나르드 레이존후프부드 프리헤르레 레이존후프부드"
-Q135480258	Lko	"바론 칼 레오나르드 레이존후프부드 프리헤르레 레이존후프부드"
-#   Q135480230: 'Johan Munck af Rosenschöld' has no ja/zh/ko label
-#   Q135480230: set the ja label
-Q135480230	Lja	"ヨハン・ムンク・アフ・ロセンショルド"
-#   Q135480230: set the zh label
-Q135480230	Lzh	"约翰·蒙克·阿夫·罗森肖尔德"
-#   Q135480230: set the ko label
-Q135480230	Lko	"조한 문크 아프 로센쇨드"
-#   Q135479987: 'Eleonora Sofia Stiernblad' has no ja/zh/ko label
-#   Q135479987: set the ja label
-Q135479987	Lja	"エレオノーラ・ソフィア・スティエルンブラド"
-#   Q135479987 Eleonora Sofia Stiernblad: set the ja label to "エレオノーラ・ソフィア・スティエルンブラド"
-Q135479987	Lja	"エレオノーラ・ソフィア・スティエルンブラド"
-#   Q135479987: set the zh label
-Q135479987	Lzh	"埃莱奥诺拉·索菲娅·斯蒂埃尔恩布拉德"
-#   set the zh label to "埃莱奥诺拉·索菲娅·斯蒂埃尔恩布拉德"
-Q135479987	Lzh	"埃莱奥诺拉·索菲娅·斯蒂埃尔恩布拉德"
-#   Q135479987: set the ko label
-Q135479987	Lko	"에레오노라 소피아 스티에른브라드"
-#   set the ko label to "에레오노라 소피아 스티에른브라드"
-Q135479987	Lko	"에레오노라 소피아 스티에른브라드"
-#   Q135479974: set the ko label
-Q135479974	Lko	"칼 에리크 벤젤스티에르나"
-#   set the ko label to "칼 에리크 벤젤스티에르나"
-Q135479974	Lko	"칼 에리크 벤젤스티에르나"
+#   set the mul label to "Hedvig Schmeer"
+Q135480148	Lmul	"Hedvig Schmeer"
+#   add a mul alias "Hedvig Hindrichdotter Schmeer"
+Q135480148	Amul	"Hedvig Hindrichdotter Schmeer"
+#   Q135480148: 'Hedvig Hindrichdotter Wegelin' has no ja/zh/ko label
+#   Q135480148: set the ja label
+Q135480148	Lja	"ヘドヴィグ・ヒンドリクドッテル・ヴェゲリン"
+#   set the ja label to "ヘドヴィグ・スクメエル"
+Q135480148	Lja	"ヘドヴィグ・スクメエル"
+#   Q135480148: set the zh label
+Q135480148	Lzh	"海德维格·欣德里克多特·韦盖林"
+#   set the zh label to "海德维格·斯克梅埃尔"
+Q135480148	Lzh	"海德维格·斯克梅埃尔"
+#   Q135480148: set the ko label
+Q135480148	Lko	"헤드빅 힌드리츠도테르 웨게린"
+#   set the ko label to "헤드빅 스미르"
+Q135480148	Lko	"헤드빅 스미르"
+#   Q135441621: set the ko label
+Q135441621	Lko	"칼 라게르보륵"
+#   set the ko label to "칼 라게르보륵"
+Q135441621	Lko	"칼 라게르보륵"
+#   Q134895550: 'Maria Hoffman' has no ja/zh/ko label
+#   Q134895550: set the ja label
+Q134895550	Lja	"マリア・ホッフマン"
+#   Q134895550 Maria Hoffman: set the ja label to "マリア・ホッフマン"
+Q134895550	Lja	"マリア・ホッフマン"
+#   set the ja label to "アンドレアス・メンナンデル"
+Q134761202	Lja	"アンドレアス・メンナンデル"
+#   Q134546510: set the ko label
+Q134546510	Lko	"카타리나 에리사베트 브란트"
+#   set the ko label to "카타리나 에리사베트 브란트"
+Q134546510	Lko	"카타리나 에리사베트 브란트"
+#   Q134498447: 'Elisabet Charlotta von Stedingk' has no ja/zh/ko label
+#   Q134498447: set the ja label
+Q134498447	Lja	"エリーザベト・カルロッタ・ヴォン・ステディングク"
+#   Q134498447: set the zh label
+Q134498447	Lzh	"伊丽莎白·卡尔洛塔·翁·斯特丁克"
+#   Q134498447: set the ko label
+Q134498447	Lko	"에리사베트 차로타 본 스테딩크"
+#   set the mul label to "noble Maret Loode"
+Q134269509	Lmul	"noble Maret Loode"
+#   add a mul alias "Margarethe von Lode"
+Q134269509	Amul	"Margarethe von Lode"
+#   Q134269509: 'Margarethe von Lode' has no ja/zh/ko label
+#   Q134269509: set the ja label
+Q134269509	Lja	"マルガレーテ・ヴォン・ロデ"
+#   set the ja label to "ノブレ・マレト・ロオデ"
+Q134269509	Lja	"ノブレ・マレト・ロオデ"
+#   Q134269509: set the zh label
+Q134269509	Lzh	"马尔加雷特·翁·洛德"
+#   set the zh label to "诺布莱·马雷特·洛奥德"
+Q134269509	Lzh	"诺布莱·马雷特·洛奥德"
+#   Q134269509: set the ko label
+Q134269509	Lko	"마르가레테 본 로데"
+#   set the ko label to "노브레 마레트 루데"
+Q134269509	Lko	"노브레 마레트 루데"
+#   Q133861600: 'Catharina Elisabet Lamoni' has no ja/zh/ko label
+#   Q133861600: set the ja label
+Q133861600	Lja	"カタリーナ・エリーザベト・ラモニ"
+#   Q133861600: set the zh label
+Q133861600	Lzh	"卡塔里娜·伊丽莎白·拉莫尼"
+#   Q133861600: set the ko label
+Q133861600	Lko	"카타리나 에리사베트 라모니"
+#   set the ja label to "バロネッス・ベアタ・ソフィア・スティアンクロナ"
+Q133861599	Lja	"バロネッス・ベアタ・ソフィア・スティアンクロナ"
+#   Q133861599: set the ko label
+Q133861599	Lko	"베아타 소피아 스티에른크로나"
+#   set the ko label to "바로네스 베아타 소피아 스티에른크로나"
+Q133861599	Lko	"바로네스 베아타 소피아 스티에른크로나"
+#   Q133825293: 'Christina Ebba Leijonhufvud' has no ja/zh/ko label
+#   Q133825293: set the ja label
+Q133825293	Lja	"クリスティーナ・エッバ・レイヨンフフヴド"
+#   set the ja label to "クリスティーナ・エッバ・レイヨンフフヴド"
+Q133825293	Lja	"クリスティーナ・エッバ・レイヨンフフヴド"
+#   Q133825293: set the ko label
+Q133825293	Lko	"크리스티나 에바 레이존후프부드"
+#   set the ko label to "크리스티나 에바 레이존후프부드"
+Q133825293	Lko	"크리스티나 에바 레이존후프부드"
+#   set the ja label to "キャプテン・ニールス・ガブリエル・ダンクヴァルトリリエストロム"
+Q133283834	Lja	"キャプテン・ニールス・ガブリエル・ダンクヴァルトリリエストロム"
+#   set the zh label to "卡普塔因·尼尔斯·加布里埃尔·丹克瓦尔特利利埃斯特罗姆"
+Q133283834	Lzh	"卡普塔因·尼尔斯·加布里埃尔·丹克瓦尔特利利埃斯特罗姆"
+#   set the ko label to "카프타인 니엘스 가브리엘 단크와르트릴리에스트룀"
+Q133283834	Lko	"카프타인 니엘스 가브리엘 단크와르트릴리에스트룀"
+#   Q133283826: 'Sebastian Tham' has no ja/zh/ko label
+#   Q133283826: set the ja label
+Q133283826	Lja	"セバスチャン・タム"
+#   Q133283826: set the zh label
+Q133283826	Lzh	"塞巴斯蒂安·塔姆"
+#   Q133283826: set the ko label
+Q133283826	Lko	"세바스티안 탐"
+#   set the ja label to "ヘドヴィグ・ソフィア・グレヴィンナ・ハミルトン"
+Q131740913	Lja	"ヘドヴィグ・ソフィア・グレヴィンナ・ハミルトン"
+#   set the ja label to "アンナ・エリーザベト・フリヘリンナ・シルフヴェルシオルド"
+Q131740911	Lja	"アンナ・エリーザベト・フリヘリンナ・シルフヴェルシオルド"
+#   set the ja label to "キャプテン・プリッベルト・アカズ・プラーテン・ロルドフ・カッセルヴィトズ・ユレ・ウクスオリス"
+Q131727094	Lja	"キャプテン・プリッベルト・アカズ・プラーテン・ロルドフ・カッセルヴィトズ・ユレ・ウクスオリス"
+#   set the zh label to "卡普塔因·普里贝尔特·阿卡兹·普拉滕·洛尔多夫·卡塞尔维特兹·尤雷·乌克斯奥里斯"
+Q131727094	Lzh	"卡普塔因·普里贝尔特·阿卡兹·普拉滕·洛尔多夫·卡塞尔维特兹·尤雷·乌克斯奥里斯"
+#   set the ko label to "카프타인 프리베르트 아차즈 프라텐 로르도프 카셀위츠 주레 우그소리스"
+Q131727094	Lko	"카프타인 프리베르트 아차즈 프라텐 로르도프 카셀위츠 주레 우그소리스"
+#   set the ja label to "ノブレ・ヴィルヘルミナ・ロヴィサ・フレデリカ・ウルリカ"
+Q131726979	Lja	"ノブレ・ヴィルヘルミナ・ロヴィサ・フレデリカ・ウルリカ"
+#   set the zh label to "诺布莱·维尔赫尔米纳·洛维萨·夫雷德里卡·乌尔里卡"
+Q131726979	Lzh	"诺布莱·维尔赫尔米纳·洛维萨·夫雷德里卡·乌尔里卡"
+#   set the ko label to "노브레 빌헬미나 로비사 프레데리카 울리카"
+Q131726979	Lko	"노브레 빌헬미나 로비사 프레데리카 울리카"
+#   set the ja label to "トゥーレ・オロンベルグ"
+Q131726353	Lja	"トゥーレ・オロンベルグ"
+#   set the zh label to "图雷·奥隆贝尔格"
+Q131726353	Lzh	"图雷·奥隆贝尔格"
+#   set the ko label to "투레 올론베륵"
+Q131726353	Lko	"투레 올론베륵"
+#   Q130772654: set the ko label
+Q130772654	Lko	"헤드빅 크리스티나 크류츠"
+#   set the ko label to "헤드빅 크리스티나 크류츠"
+Q130772654	Lko	"헤드빅 크리스티나 크류츠"
+#   set the ko label to "칼 피리프 스트룀펠트"
+Q130684265	Lko	"칼 피리프 스트룀펠트"
+#   set the ja label to "セシリエ・ルーシー"
+Q130683609	Lja	"セシリエ・ルーシー"
+#   set the zh label to "塞西莉厄·露西"
+Q130683609	Lzh	"塞西莉厄·露西"
+#   set the ko label to "케키리에 루키에"
+Q130683609	Lko	"케키리에 루키에"
+#   Q130570562: 'Aurora Charlotta Skjöldebrand' has no ja/zh/ko label
+#   Q130570562: set the ja label
+Q130570562	Lja	"アウローラ・カルロッタ・ショルデブランド"
+#   Q130570562 Aurora Charlotta Skjöldebrand: set the ja label to "アウローラ・カルロッタ・ショルデブランド"
+Q130570562	Lja	"アウローラ・カルロッタ・ショルデブランド"
+#   Q130570562: set the ko label
+Q130570562	Lko	"아우로라 차로타 쇨데브란드"
+#   set the ko label to "아우로라 차로타 쇨데브란드"
+Q130570562	Lko	"아우로라 차로타 쇨데브란드"
+#   set the ko label to "크리스토페르 에른스트 본 프라텐"
+Q130564935	Lko	"크리스토페르 에른스트 본 프라텐"
+#   set the ko label to "칼 헨리크 본 호프스텐"
+Q130524451	Lko	"칼 헨리크 본 호프스텐"
+#   Q127270462: 'Barbro Petré' has no ja/zh/ko label
+#   Q127270462: set the ja label
+Q127270462	Lja	"バーブロ・ペトレ"
+#   set the ja label to "バーブロ"
+Q127270462	Lja	"バーブロ"
+#   Q127270462: set the zh label
+Q127270462	Lzh	"巴尔布罗·佩特雷"
+#   set the zh label to "巴尔布罗"
+Q127270462	Lzh	"巴尔布罗"
+#   Q127270462: set the ko label
+Q127270462	Lko	"바릅로 페트레"
+#   set the ko label to "바릅로"
+Q127270462	Lko	"바릅로"
+#   Q126217078: set the ko label
+Q126217078	Lko	"엘사 크리스티나 에흐렌크로나"
+#   set the ko label to "엘사 크리스티나 에흐렌크로나"
+Q126217078	Lko	"엘사 크리스티나 에흐렌크로나"
+#   Q124477457 Anna Elisabet Charlotta Andersdotter Rehbinder: set the ja label to "アンナ・エリーザベト・カルロッタ・アンデシュドッテル・レビンデル"
+Q124477457	Lja	"アンナ・エリーザベト・カルロッタ・アンデシュドッテル・レビンデル"
+#   set the ko label to "안나 에리사베트 차로타 안데르스도테르 레흐빈데르"
+Q124477457	Lko	"안나 에리사베트 차로타 안데르스도테르 레흐빈데르"
+#   set the ko label to "안나 크리스티나 길렌스티에르나"
+Q124219072	Lko	"안나 크리스티나 길렌스티에르나"
+#   Q121362501: 'Hans Georg Strömfelt' has no ko label
+#   Q121362501: set the ko label
+Q121362501	Lko	"한스 게오륵 스트룀펠트"
+#   Q121362501 Hans Georg Strömfelt: set the ko label to "한스 게오륵 스트룀펠트"
+Q121362501	Lko	"한스 게오륵 스트룀펠트"
+#   Q117303291 NN Woman de Caen Concubine #1: set the mul label to "NN"
+Q117303291	Lmul	"NN"
+#   add a mul alias "Elisabet Olofsdotter Luth"
+Q116779751	Amul	"Elisabet Olofsdotter Luth"
+#   set the ja label to "エリーザベト・オロフスドッテル"
+Q116779751	Lja	"エリーザベト・オロフスドッテル"
+#   set the zh label to "伊丽莎白·奥洛夫斯多特"
+Q116779751	Lzh	"伊丽莎白·奥洛夫斯多特"
+#   set the ko label to "에리사베트 오로프스도테르"
+Q116779751	Lko	"에리사베트 오로프스도테르"
+#   set the ja label to "バロネッス・マリアナ・ヘレナ・エレンクロナ"
+Q116775360	Lja	"バロネッス・マリアナ・ヘレナ・エレンクロナ"
+#   Q116775360: set the ko label
+Q116775360	Lko	"헤레나 마리아나 스파르레 아프 쇠프데보륵"
+#   Q116474334 Thukra: set the mul label to "Thukhra"
+Q116474334	Lmul	"Thukhra"
+#   add a mul alias "Thukra"
+Q116474334	Amul	"Thukra"
+#   Q116474334: 'Thukra' has no ja/zh/ko label
+#   Q116474334: set the ja label
+Q116474334	Lja	"トクラ"
+#   set the ja label to "トクラ"
+Q116474334	Lja	"トクラ"
+#   Q116474334: set the zh label
+Q116474334	Lzh	"图克拉"
+#   set the zh label to "图克拉"
+Q116474334	Lzh	"图克拉"
+#   Q116474334: set the ko label
+Q116474334	Lko	"투크라"
+#   set the ko label to "투크라"
+Q116474334	Lko	"투크라"
+#   set the ko label to "존 레이마트센"
+Q116150299	Lko	"존 레이마트센"
+#   set the ja label to "コスタンツァ・マラスピーナ"
+Q116007123	Lja	"コスタンツァ・マラスピーナ"
+#   set the zh label to "科斯坦萨·马拉斯皮纳"
+Q116007123	Lzh	"科斯坦萨·马拉斯皮纳"
+#   set the ko label to "코스탄자 마라스피나"
+Q116007123	Lko	"코스탄자 마라스피나"
+#   Q115631647: 'Margareta Odhelia' has no ja/zh/ko label
+#   Q115631647: set the ja label
+Q115631647	Lja	"マルガレータ・オドヘリア"
+#   set the ja label to "マルガレータ"
+Q115631647	Lja	"マルガレータ"
+#   Q115631647: set the zh label
+Q115631647	Lzh	"瑪格麗塔·奥德赫利阿"
+#   set the zh label to "瑪格麗塔"
+Q115631647	Lzh	"瑪格麗塔"
+#   Q115631647: set the ko label
+Q115631647	Lko	"마르가레타 오드헤리아"
+#   set the ko label to "마르가레타"
+Q115631647	Lko	"마르가레타"
+#   Q113007770: set the ko label
+Q113007770	Lko	"마리아 소피아 스티에른크로나"
+#   set the ko label to "마리아 소피아 스티에른크로나"
+Q113007770	Lko	"마리아 소피아 스티에른크로나"
+#   Q112969835: set the ko label
+Q112969835	Lko	"헤레나 마리아 쇠데르히엘므"
+#   set the ja label to "マルガレータ・フォルドボム"
+Q111989591	Lja	"マルガレータ・フォルドボム"
+#   set the zh label to "瑪格麗塔·福尔德博姆"
+Q111989591	Lzh	"瑪格麗塔·福尔德博姆"
+#   set the ko label to "마르가레타 포르드보흠"
+Q111989591	Lko	"마르가레타 포르드보흠"
+#   Q110621422: 'Anna Andersdotter Björnram' has no ko label
+#   Q110621422: holds 'アンナ・アンデシュドッテル・ブヨルンラム' in ja; ours is 'アンナ・アンデシュドッテル・ビョルンラム'
+#   Q110621422: set the ja label
+Q110621422	Lja	"アンナ・アンデシュドッテル・ビョルンラム"
+#   set the ja label to "アンナ・アンデシュドッテル・アヴ・ブレ・オク・グルッベ"
+Q110621422	Lja	"アンナ・アンデシュドッテル・アヴ・ブレ・オク・グルッベ"
+#   Q110621422: holds '安娜·安德斯多特·布约尔恩拉姆' in zh; ours is '安娜·安德斯多特·博尔恩拉姆'
+#   Q110621422: set the zh label
+Q110621422	Lzh	"安娜·安德斯多特·博尔恩拉姆"
+#   Q110621422: set the ko label
+Q110621422	Lko	"안나 안데르스도테르 뵈른람"
+#   Q110561236: 'Christina Fjodorovna Rosladin' has no ja/zh/ko label
+#   Q110561236: set the ja label
+Q110561236	Lja	"クリスティーナ・フィョドロヴナ・ロスラディン"
+#   Q110561236: set the zh label
+Q110561236	Lzh	"克里斯蒂娜·福多罗夫纳·罗斯拉丁"
+#   Q110561236: set the ko label
+Q110561236	Lko	"크리스티나 포도롭나 로스라딘"
+#   Q110558398: set the ko label
+Q110558398	Lko	"헤레나 본 데르 수렌부륵"
+#   set the ko label to "헤레나 본 데르 수렌부륵"
+Q110558398	Lko	"헤레나 본 데르 수렌부륵"
+#   Q110548896: 'Ebba Lidman' has no ja/zh/ko label
+#   Q110548896: set the ja label
+Q110548896	Lja	"エッバ・リドマン"
+#   Q110548896 Ebba Lidman: set the ja label to "エッバ・リドマン"
+Q110548896	Lja	"エッバ・リドマン"
+#   Q110548816: 'Lovisa Thott' has no ja/zh/ko label
+#   Q110548816: set the ja label
+Q110548816	Lja	"ロヴィサ・トット"
+#   Q110548816 Lovisa Thott: set the ja label to "ロヴィサ・トット"
+Q110548816	Lja	"ロヴィサ・トット"
+#   Q110548812 Maria Stiernblad: add a mul alias "Maria Stiernblad"
+Q110548812	Amul	"Maria Stiernblad"
+#   set the ja label to "マリア・ストイェルンブラド"
+Q110548812	Lja	"マリア・ストイェルンブラド"
+#   set the zh label to "玛丽亚·斯特耶尔恩布拉德"
+Q110548812	Lzh	"玛丽亚·斯特耶尔恩布拉德"
+#   set the ko label to "마리아 스체른브라드"
+Q110548812	Lko	"마리아 스체른브라드"
+#   Q110548255: 'Antoinetta Hertzen' has no ja/zh/ko label
+#   Q110548255: set the ja label
+Q110548255	Lja	"アントイネッタ・ヘルトゼン"
+#   set the ja label to "アントイネッタ・ハルトズ"
+Q110548255	Lja	"アントイネッタ・ハルトズ"
+#   Q110548255: set the zh label
+Q110548255	Lzh	"安托伊内塔·赫尔特曾"
+#   Q110548255: set the ko label
+Q110548255	Lko	"안토이네타 헤르첸"
+#   set the ko label to "안토이네타 하르츠"
+Q110548255	Lko	"안토이네타 하르츠"
+#   Q110548098: 'Anna Christina Hanssen' has no ja/zh/ko label
+#   Q110548098: set the ja label
+Q110548098	Lja	"アンナ・クリスティーナ・ハンセン"
+#   set the ja label to "クリスティーナ・ハンッセン"
+Q110548098	Lja	"クリスティーナ・ハンッセン"
+#   Q110548098: set the zh label
+Q110548098	Lzh	"安娜·克里斯蒂娜·汉森"
+#   Q110548098: set the ko label
+Q110548098	Lko	"안나 크리스티나 한센"
+#   Q110548051: 'Eva Anna Wefverstedt' has no ja/zh/ko label
+#   Q110548051: set the ja label
+Q110548051	Lja	"エヴァ・アンナ・ヴェフヴェルステト"
+#   Q110548051 Eva Anna Wefverstedt: set the ja label to "エヴァ・アンナ・ヴェフヴェルステト"
+Q110548051	Lja	"エヴァ・アンナ・ヴェフヴェルステト"
+#   Q110548051: set the zh label
+Q110548051	Lzh	"伊娃·安娜·韦夫韦尔斯特特"
+#   set the zh label to "伊娃·安娜·韦夫韦尔斯特特"
+Q110548051	Lzh	"伊娃·安娜·韦夫韦尔斯特特"
+#   Q110548051: set the ko label
+Q110548051	Lko	"에바 안나 웨프베르스테트"
+#   set the ko label to "에바 안나 웨프베르스테트"
+Q110548051	Lko	"에바 안나 웨프베르스테트"
+#   set the ja label to "バロネッス・キルスティ・エリーザベト・タウベ・ヘイレッス"
+Q110457049	Lja	"バロネッス・キルスティ・エリーザベト・タウベ・ヘイレッス"
+#   set the zh label to "巴罗内斯·基尔斯蒂·伊丽莎白·陶布·赫伊雷斯"
+Q110457049	Lzh	"巴罗内斯·基尔斯蒂·伊丽莎白·陶布·赫伊雷斯"
+#   Q110457049: set the ko label
+Q110457049	Lko	"크리스티나 에리사베트 타우베 아프 카뢰"
+#   set the ko label to "바로네스 키르스티 에리사베트 타우베 헤이레스"
+Q110457049	Lko	"바로네스 키르스티 에리사베트 타우베 헤이레스"
+#   Q110457041: 'Anna Sofia Stålhammar' has no ja/zh/ko label
+#   Q110457041: set the ja label
+Q110457041	Lja	"アンナ・ソフィア・ストールハムマル"
+#   set the ja label to "アンナ・ソフィア・ストールハムマル"
+Q110457041	Lja	"アンナ・ソフィア・ストールハムマル"
+#   set the ko label to "그라프 니코라우스 안드레아스 말찬 프레이헤르 주 와르텐베륵 운드 펜즈린"
+Q110410743	Lko	"그라프 니코라우스 안드레아스 말찬 프레이헤르 주 와르텐베륵 운드 펜즈린"
+#   set the ja label to "フリヘリンナ・エウヘニア・ヴォン・エッセン"
+Q110395728	Lja	"フリヘリンナ・エウヘニア・ヴォン・エッセン"
+#   Q110395711: 'Charlotta Eleonora Hedvig von Krassow' has no ja/zh/ko label
+#   Q110395711: set the ja label
+Q110395711	Lja	"カルロッタ・エレオノーラ・ヘドヴィグ・ヴォン・クラッソヴ"
+#   set the ja label to "ヘドヴィグ・エレオノーラ・カルロッタ"
+Q110395711	Lja	"ヘドヴィグ・エレオノーラ・カルロッタ"
+#   Q110395711: set the zh label
+Q110395711	Lzh	"卡尔洛塔·埃莱奥诺拉·海德维格·翁·克拉索夫"
+#   set the zh label to "海德维格·埃莱奥诺拉·卡尔洛塔"
+Q110395711	Lzh	"海德维格·埃莱奥诺拉·卡尔洛塔"
+#   Q110395711: set the ko label
+Q110395711	Lko	"차로타 에레오노라 헤드빅 본 크라소우"
+#   set the ko label to "헤드빅 에레오노라 차로타"
+Q110395711	Lko	"헤드빅 에레오노라 차로타"
+#   set the ko label to "마리아 루이세 울리카 에흐렌포흘"
+Q110395628	Lko	"마리아 루이세 울리카 에흐렌포흘"
+#   set the ko label to "카프타인 라우렌스 벤트손 그리이스"
+Q110386205	Lko	"카프타인 라우렌스 벤트손 그리이스"
+#   set the ja label to "ウルリカ・クリスティーナ・モルネル・ヘイレッス"
+Q110386164	Lja	"ウルリカ・クリスティーナ・モルネル・ヘイレッス"
+#   set the zh label to "乌尔里卡·克里斯蒂娜·莫尔内尔·赫伊雷斯"
+Q110386164	Lzh	"乌尔里卡·克里斯蒂娜·莫尔内尔·赫伊雷斯"
+#   Q110386164: set the ko label
+Q110386164	Lko	"울리카 크리스티나 뫼르네르 아프 모란다"
+#   set the ko label to "울리카 크리스티나 뫼르네르 헤이레스"
+Q110386164	Lko	"울리카 크리스티나 뫼르네르 헤이레스"
+#   set the ja label to "アーデルハイト"
+Q110378177	Lja	"アーデルハイト"
+#   set the zh label to "阿德尔赫伊德"
+Q110378177	Lzh	"阿德尔赫伊德"
+#   set the ko label to "아델헤이드"
+Q110378177	Lko	"아델헤이드"
+#   set the ko label to "칼 히싱흐"
+Q110313452	Lko	"칼 히싱흐"
+#   Q110313429: set the ko label
+Q110313429	Lko	"오토 윌헬므 람사이"
+#   set the ko label to "오토 윌헬므 람사이"
+Q110313429	Lko	"오토 윌헬므 람사이"
+#   set the ko label to "레베케 도로테아 본 쾰느"
+Q110304710	Lko	"레베케 도로테아 본 쾰느"
+#   Q110304587: holds 'ヘブラ・スタンドルプ' in ja; ours is 'ヘッブラ・スタンドルプ'
+#   Q110304587: set the ja label
+Q110304587	Lja	"ヘッブラ・スタンドルプ"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -2906,6 +2979,10 @@ Q141353742	P5056	Q141318568
 Q141283777	P735	Q16747395
 #   Q6014618 Enar Vilhelm Nordenfelt: P735 given name = Q12805716 Vilhelm, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q6014618	P735	Q12805716	P1545	"2"	P3831	Q245025
+#   Q5290415 Mossen Juan Domingo de Borja y Doncel: P26 spouse = Q97783170 Francina Marti Llançol
+Q5290415	P26	Q97783170	S2600	"4259064"
+#   P2600 Geni.com profile ID = 4259064 Mossen Juan Domingo de Borja y Doncel, qualified P1810 subject named as Mossen Juan Domingo de Borja y Doncel
+Q5290415	P2600	"4259064"	P1810	"Mossen Juan Domingo de Borja y Doncel"
 #   Q48562235 Prost Olaus Troilius: P735 given name = Q10608165 Olaus
 Q48562235	P735	Q10608165
 #   Q116760688 Maria Nordenfelt: P735 given name = Q325872 Maria, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
@@ -2930,6 +3007,10 @@ Q141312981	P735	Q1576232
 Q141216397	P5056	Q141318568
 #   Q109852817 Jakob Chydenius: P735 given name = Q16747395
 Q109852817	P735	Q16747395
+#   Q97783170 Francina Marti Llançol: P26 spouse = Q5290415 Mossen Juan Domingo de Borja y Doncel
+Q97783170	P26	Q5290415	S2600	"6000000001062599699"
+#   P2600 Geni.com profile ID = 6000000001062599699 Francina Marti Llançol, qualified P1810 subject named as Francina Marti Llançol
+Q97783170	P2600	"6000000001062599699"	P1810	"Francina Marti Llançol"
 #   Q141283771 Jacob Andersson: P735 given name = Q25999604 Jacob
 Q141283771	P735	Q25999604
 #   P5056 patronym or matronym = Q141318548
@@ -3004,6 +3085,16 @@ Q141268100	P735	Q1785744	P1545	"1"	P7452	Q3409033
 Q141268100	P5056	Q141318548
 #   P734 family name = Q16860245
 Q141268100	P734	Q16860245
+#   Q11368515 丹後内侍: P26 spouse = Q11492951 惟宗広言
+Q11368515	P26	Q11492951	S2600	"6000000002933557025"
+#   P2600 Geni.com profile ID = 6000000002933557025 丹後内侍, qualified P1810 subject named as 丹後内侍
+Q11368515	P2600	"6000000002933557025"	P1810	"丹後内侍"
+#   P734 family name = Q107183647 Hiki
+Q11368515	P734	Q107183647
+#   Q11492951 惟宗広言: P26 spouse = Q11368515 丹後内侍
+Q11492951	P26	Q11368515	S2600	"6000000002934660014"
+#   P2600 Geni.com profile ID = 6000000002934660014 惟宗広言, qualified P1810 subject named as 惟宗広言
+Q11492951	P2600	"6000000002934660014"	P1810	"惟宗広言"
 #   Q141189104 Siri Kristine Ivarsdatter Garborg: P734 family name = Q37541803, qualified P3831 object of statement has role Q2507958 birth name
 Q141189104	P734	Q37541803	P3831	Q2507958
 #   Q141244110 Maria Carolina Elisabet Sahlin: P735 given name = Q325872 Maria, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
@@ -3054,6 +3145,10 @@ Q141198382	P5056	Q141314142	P144	Q141198751
 Q141198382	P734	Q141250199	P3831	Q2507958
 #   Q141199706 Anna Andersdotter: P5056 patronym or matronym = Q141318568, qualified P144 based on Q141216357 Anders Jacobsson
 Q141199706	P5056	Q141318568	P144	Q141216357
+#   Q134269509 Margarethe von Lode: P735 given name = Q19967625 Margarethe
+Q134269509	P735	Q19967625
+#   P734 family name = Q28317821 Lode
+Q134269509	P734	Q28317821
 #   Q141353059 Birgit Tormodsdatter Foss: P26 spouse = Q141353676 Jakob Knutsen Jørstad
 Q141353059	P26	Q141353676	S2600	"6000000003332793655"
 #   Q141312948 Anna Larsdotter Burman: P735 given name = Q666578 Anna
@@ -3258,6 +3353,8 @@ Q141336543	P735	Q594279
 Q141250247	P735	Q833345
 #   P5056 patronym or matronym = Q141290188, qualified P144 based on Q5602483 Johan Börgesson Carlberg
 Q141250247	P5056	Q141290188	P144	Q5602483
+#   Q75772676 Maclean: P735 given name = Q17459100 Margaretha
+Q75772676	P735	Q17459100
 #   Q141199881 Ivar Sandsmark Garborg: P734 family name = Q37541803
 Q141199881	P734	Q37541803
 #   Q141353293 Erik Eskilsson Rhålambius: P26 spouse = Q141353741 Margareta Månsdotter Rhålambius
@@ -3354,6 +3451,8 @@ Q141198751	P734	Q141250199
 Q141353744	P26	Q141353715	S2600	"6000000008173927866"
 #   Q141353715 Jon Gunnarson Sveinsvoll: P26 spouse = Q141353744 Marta Eilefsdatter Sveinsvoll
 Q141353715	P26	Q141353744	S2600	"6000000008173999409"
+#   Q131726353 Ture Ollonberg: P735 given name = Q2460609 Ture
+Q131726353	P735	Q2460609
 #   P735 given name = Q2529610 Carl, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q141244212	P735	Q2529610	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q508894 Åke, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -3372,12 +3471,18 @@ Q141249602	P735	Q5499550	P1545	"1"	P7452	Q3409033
 Q141249602	P735	Q18924998	P1545	"2"	P3831	Q245025
 #   P735 given name = Q18759077 Eleonora, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
 Q141249602	P735	Q18759077	P1545	"3"	P3831	Q245025
+#   Q125989 Walram d'Arlon II: P734 family name = Q37024863 Limburg, qualified P3831 object of statement has role Q2507958 birth name
+Q125989	P734	Q37024863	P3831	Q2507958
 #   Q141205937 Ragnhild Eyvindsdotter Byre: P734 family name = Q37515983
 Q141205937	P734	Q37515983
 #   Q141353709 Johan Olofsson Ållongren: P26 spouse = Q141353161 Brita Kagg
 Q141353709	P26	Q141353161	S2600	"6000000008768978360"
 #   Q141353161 Brita Kagg: P26 spouse = Q141353709 Johan Olofsson Ållongren
 Q141353161	P26	Q141353709	S2600	"6000000008769078223"
+#   Q116779751 Elisabet Olofsdotter Luth: P735 given name = Q16423275 Elisabet
+Q116779751	P735	Q16423275
+#   P5056 patronym or matronym = Q141250201
+Q116779751	P5056	Q141250201
 #   Q141268088 Nils Carlsson Posse af Säby: P735 given name = Q16423038 Nils
 Q141268088	P735	Q16423038
 #   P5056 patronym or matronym = Q141352058, qualified P144 based on Q99460476 Carl Henrik Posse af Säby
@@ -3440,6 +3545,12 @@ Q141250251	P734	Q4821650
 Q6015299	P735	Q18109457	P1545	"2"	P3831	Q245025
 #   Q141244108 Margareta Stecksenia: P735 given name = Q8274988 Margareta
 Q141244108	P735	Q8274988
+#   Q135480148 Hedvig Hindrichdotter Wegelin: P40 child = Q109335354 Johan Henrik Wegelin
+Q135480148	P40	Q109335354	S2600	"6000000013175410922"
+#   P2600 Geni.com profile ID = 6000000013175410922 Hedvig Hindrichdotter Wegelin, qualified P1810 subject named as Hedvig Hindrichdotter Schmeer
+Q135480148	P2600	"6000000013175410922"	P1810	"Hedvig Hindrichdotter Schmeer"
+#   P735 given name = Q13648620 Hedvig
+Q135480148	P735	Q13648620
 #   Q141189112 Wilhelmine Sophie Christiansen: P734 family name = Q27824335 Bergersen, qualified P3831 object of statement has role Q2507958 birth name
 Q141189112	P734	Q27824335	P3831	Q2507958
 #   Q141336737 Tørres Olson Soma: P735 given name = Q12008164
@@ -3534,6 +3645,8 @@ Q141352985	P5056	Q141314124	P144	Q141217431
 Q141352985	P734	Q27876648
 #   Q141249734 Maria Gavelia: P735 given name = Q325872 Maria
 Q141249734	P735	Q325872
+#   Q45461100 鴻智 裴: P734 family name = Q9174935
+Q45461100	P734	Q9174935
 #   Q141318580 Aadne Sørensen Gjesdal: P735 given name = Q140865828
 Q141318580	P735	Q140865828
 #   P734 family name = Q27888954 Gjesdal
@@ -3584,6 +3697,8 @@ Q141271415	P735	Q10570000	P1545	"2"	P3831	Q245025
 Q141271415	P734	Q23540757
 #   Q141224910 Theoline Henrika Borsheim: P734 family name = Q20995845, qualified P3831 object of statement has role Q2507958 birth name
 Q141224910	P734	Q20995845	P3831	Q2507958
+#   Q109335354 Johan Henrik Wegelin: P25 mother = Q135480148 Hedvig Hindrichdotter Wegelin
+Q109335354	P25	Q135480148	S2600	"6000000169820541828"
 #   Q141353726 Kristian Sjursen Talle: P26 spouse = Q141353042 Anne Marie Nilsdtr. Talle
 Q141353726	P26	Q141353042	S2600	"6000000177687759847"
 #   Q141353042 Anne Marie Nilsdtr. Talle: P26 spouse = Q141353726 Kristian Sjursen Talle
