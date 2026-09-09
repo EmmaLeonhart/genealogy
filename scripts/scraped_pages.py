@@ -1,10 +1,9 @@
 """Read the immediate family out of a saved Geni profile page.
 
-**Emma, 2026-08-29**, on the 1,555 pages in `geni-scraping/` and the 698 files in `paths/`:
-*"My suggestion would be for us to convert these things into GEDCOM files that would go into a
-special GEDCOM directory... so that it will save both the paths and the saved pages because they
-are different. It turns them into things that are usable and would be merged into the Geni union — the synoptic
-tree as GEDCOM stuff."*
+**The 1,555 pages in `geni-scraping/` and the 698 files in `paths/` become GEDCOMs.** They go
+into a special GEDCOM directory, saving both the paths and the saved pages, which are different
+things. That turns them into something usable, merged into the Geni union — the synoptic tree —
+as ordinary GEDCOM content.
 
 **What a saved page actually carries.** Not a structured family list -- prose with links:
 
@@ -16,13 +15,12 @@ So every edge is an English phrase followed by the anchors it governs, and the a
 Geni id. That is what makes this an exact join rather than a name match, which is the same reason
 `genimerge.genipage` reads the relationship panel from `href`s instead of from the visible text.
 
-**Names arrive as one string and stay that way.** Emma is explicit that this is the cost:
-*"the names being present as strings makes things significantly harder"*, and *"You'd probably be
-using spacing to figure out what the last name is or something. It would work in most cases, but
-not all."* This module therefore emits `1 NAME <string>` and **no `GIVN`/`SURN` split at all** --
+**Names arrive as one string and stay that way**, and that cost is accepted deliberately:
+names present as strings make things significantly harder, and the alternative is guessing the
+surname from spacing, which works in most cases and not all. This module therefore emits `1 NAME <string>` and **no `GIVN`/`SURN` split at all** --
 guessing a surname from spacing is exactly the fuzzy inference this repo refuses everywhere else,
 and `reports/names-spec.md` shows how badly Geni's own fields behave. A later pass can split them
-with a rule she has approved; inventing one here would bake a guess into the corpus.
+with an approved rule; inventing one here would bake a guess into the corpus.
 
 `<li>` is never closed on these pages, so nesting-based scoping does not work and this reads the
 document linearly instead.

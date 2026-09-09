@@ -1,25 +1,25 @@
 """Publish the daily batch to GitHub Pages. That is the whole site.
 
-**Emma, 2026-09-03, cutting it back to one thing:** *"The home page has a bunch of bullshit on it
-that should not be there. A bunch of random rules from CLAUDE.md that might also even be stale...
-who the fuck cares what these rules are? The only purpose of the GitHub pages is to give the daily
-batch... all that should be present is very simply the daily batch."*
+**The site is ONE thing, cut back on 2026-09-03: the daily batch.** The home page had carried
+a pile of material that did not belong there, including a digest of rules from `CLAUDE.md` that
+could go stale. The only purpose of the GitHub Pages site is to hand over the daily batch, and
+that is all that should be on it.
 
 So `index.html` **is** the batch — selectable text with a copy button, no login, no zip. There is
 no landing page, no statistics block, no rules digest and no algorithm summary. Those were 27 KB
-of prose nobody asked for sitting in front of the one file she comes here to copy.
+of prose nobody asked for sitting in front of the one file the site exists to hand over.
 
 **The rules digest was the worst of it and is worth naming**: it lifted sections out of
 `CLAUDE.md` and republished them, so a rule superseded in that file went on being displayed here
 as current. A generated page that restates rules is a second, staler copy of them.
 
-**Name items are already inside the daily batch** -- one file since 2026-08-30, her instruction --
+**Name items are already inside the daily batch** -- one file since 2026-08-30, by instruction --
 so there is no second page to publish and nothing to run in a particular order.
 
 A short list of review pages is copied across beside it, so each keeps a **no-login URL** of its
-own -- Emma, 2026-09-04: *"github pages is best since I don't need to sign in"*, an artifact and an
-Actions artifact both being unreachable to her. None of them is linked from the batch page:
-nothing should compete with the batch, and a page she was handed a URL for does not need a link.
+own. GitHub Pages needs no sign-in, which a Claude artifact and an Actions artifact both do.
+None of them is linked from the batch page: nothing should compete with the batch, and a page
+whose URL has already been handed over does not need a link.
 """
 
 from __future__ import annotations

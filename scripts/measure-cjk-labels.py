@@ -1,9 +1,9 @@
 """Which of our people already have a `ja` or `zh` label on Wikidata?
 
-Emma, 2026-08-12: **"What the fuck we def have Japanese names?"** — after I
-reported zero `ja` labels derivable.
+**This corpus definitely has Japanese names**, against an earlier report of zero
+derivable `ja` labels.
 
-That report was wrong in a way worth writing down. I had bucketed Hiragana,
+That report was wrong in a way worth writing down. It bucketed Hiragana,
 Katakana, Hangul and Han together as "CJK" on the reasoning that Han is shared
 between Japanese and Chinese, and then concluded nothing could be assigned a
 language. **Kana is not shared** — Hiragana and Katakana are Japanese-only and

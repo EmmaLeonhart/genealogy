@@ -2,9 +2,9 @@
 
     py scripts/build-regnal-ordinals.py
 
-**Emma, 2026-08-15:** *"they should all have the regnal orders put on their names as
-qualifiers"*, and **not only the Samaritans** — anyone whose name carries an ordering. Her
-`name modelling.txt` puts it on the GIVEN NAME rather than on the person:
+**Every such name carries its regnal order as a qualifier**, and **not only the Samaritans**
+— anyone whose name carries an ordering. `name modelling.txt` puts it on the GIVEN NAME rather
+than on the person:
 
     Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
       P735 Abisha    P1545 1   P7452 usual forename   P7338 regnal ordinal 3
@@ -103,8 +103,8 @@ def main() -> int:
     header = [
         "# P7338 regnal ordinal, as a qualifier on the given name.",
         "#",
-        '# Emma, 2026-08-15: "they should all have the regnal orders put on their names as',
-        '# qualifiers", and name modelling.txt puts P7338 on the P735 given name rather than',
+        "# Every such name carries its regnal order as a qualifier, and name modelling.txt",
+        "# puts P7338 on the P735 given name rather than",
         "# on the person. The ordinal is the Roman numeral the source uses, because P7338 is a",
         "# string and the person is styled Abisha III, not Abisha 3.",
         "#",

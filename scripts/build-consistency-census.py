@@ -1,11 +1,8 @@
 """Every "impossible" and "implausible" date finding, with its dates intact.
 
-Emma, 2026-08-11, refusing to treat `reports/consistency.md` as a verdict:
-*"it's your job to do analysis on these to figure out what's actually going on
-with them. The chances are there is actually something going on with them, and
-you're just deeming them impossible or whatever. The chances are there's
-something going on with them that's good, and you're just bullshitting your way
-around it, so you have to do the research on it."*
+`reports/consistency.md` is not a verdict. A finding is not impossible just
+because it looks impossible: there is usually something real going on, and the
+research has to be done on it rather than the case being written off.
 
 **The suspicion is specific and checkable.** `consistency.check` compares
 `person.birth_year` against `parent.birth_year` — bare integers. `GedcomDate`

@@ -10,10 +10,9 @@ qualifier values — `Q5933` Westminster Abbey, `Q29265` Canterbury Cathedral, t
 items behind `P1534 end cause` — were never fetched and cannot be resolved
 offline at all.
 
-Emma, 2026-08-10: *"do a SPARQL query to get all of these ones at once. Wikidata
-is great for getting large amounts of information all at once in sync, all at
-once in a single query, and it sucks ass at giving you lots of information in
-rapid sequential queries."*
+One SPARQL query gets all of these at once. Wikidata is good at returning large
+amounts of information in a single query and bad at returning it through many
+rapid sequential ones.
 
 So: **one query, many QIDs, labels only.** Never a loop of single lookups. If a
 caller needs 400 labels that is still one request, not 400.
@@ -54,10 +53,9 @@ def fetch(qids: list[str], attempt: int = 1) -> dict:
     **POST, not GET.** A GET puts the whole VALUES clause in the URL and
     Wikidata answers `HTTP 414: URI Too Long` somewhere past a few hundred
     QIDs — 366 was fine, 30 cases' worth was not. Chunking would have meant
-    several requests, which is the thing Emma asked this to avoid: *"Wikidata
-    is great for getting large amounts of information all at once in a single
-    query, and it sucks ass at giving you lots of information in rapid
-    sequential queries."* The body has no such limit.
+    several requests, which is exactly what this exists to avoid: Wikidata is
+    good at returning large amounts of information in a single query and bad at
+    returning it through many rapid sequential ones. The body has no such limit.
     """
     values = " ".join(f"wd:{q}" for q in qids)
     body = urllib.parse.urlencode({"query": QUERY % values, "format": "json"}).encode("ascii")

@@ -2,11 +2,10 @@
 
     python scripts/census-patronymic-sources.py
 
-**Emma, 2026-09-07**, shown `Q141336969` and `Q141290188` carrying `P144` *based on*
-`Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the Junna you
-linked. Not sure how you even got that one or how you're defining the patronymic sources."*
-Her floor, given when asked: *"Uhh it needs to be attested lol. Really attested in our data
-plus some degree of agentic inference or my manual approval."*
+**`Q141336969` and `Q141290188` carried `P144` *based on* `Q58785388` *Junna*, and neither is
+based on that name.** That raised the question of how a patronymic source is being defined at
+all. The floor: it has to be genuinely attested in our own data, plus some degree of agentic
+inference or hand approval.
 
 **How `Junna` got there.** `namemodel._skeleton` deletes every vowel, so `johan` and `junna`
 both reduce to `jn` and `_same_name` calls them one name. One father in 1.45 M happens to be
@@ -19,19 +18,20 @@ number, one row per pair, per `CLAUDE.md` § *"Analyse this" means build a CSV*.
 
 ## The MOTHER is walked too, and that is where the matronymics actually are
 
-Her second ruling the same day was **"Reclassify as matronymic"**, put to her over the 53
+The second ruling the same day was **reclassify as matronymic**, put over the 53
 `P144` values whose given-name item is `Q11879590` *female given name*. **Those are the wrong
 population and reading them says so**: `adriansdatter ← Adrian`, `jonesdatter ← Jone`,
 `brynildsen ← Brynild`, `herlaugson ← Herlaug` — Norwegian and Old Norse **male** names carrying
 a wrong or unisex `P31` on Wikidata. A source in the father walk *is* the father's name, so it
 cannot make a matronymic however it is classed.
 
-**A matronymic derives from the MOTHER, and nothing walked her.** Measured here: **476 tokens
+**A matronymic derives from the MOTHER, and nothing had walked the mothers.** Measured here:
+**476 tokens
 are attested by a mother and 110 by a mother ALONE**, over 214 people — `Mariasson`,
 `Mariasdotter`, `Annasson`, `Evasdotter`, `Britasson`, `Bodilsen`, `Ulrikasdotter`,
 `Johannasdotter`. Those are unambiguous, and they answer the question in
-`build-garborg-name-items`'s own comment: *"matronymic currently fires for nothing, and that
-answers her question"* — it fired for nothing because nobody had looked at the mothers.
+`build-garborg-name-items`'s own comment, that matronymic currently fires for nothing — it
+fired for nothing because nobody had looked at the mothers.
 
 Writes `reports/patronymic-source-attestation.tsv`, one row per (token, parent role, source).
 """

@@ -172,7 +172,7 @@ def main():
 
     # NOTE: this script no longer writes reports/izumo-p2600-pairs.tsv. That file
     # is built by scripts/build-izumo-p2600.py from the Wikidata URL in each
-    # profile's About Me -- the identifier Emma wrote there herself -- and it holds
+    # profile's About Me -- the identifier written there by hand -- and it holds
     # 111 rows against the 76 this regnal join can see. Two scripts writing one
     # file is how a run of THIS one silently reverted that file on 2026-08-23.
     # What survives here is the reporting above: which rostered people a given
