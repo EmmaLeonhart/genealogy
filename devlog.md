@@ -17958,7 +17958,7 @@ their numbers because the numbers are the ordering.
 **Item 1 — `Q141198538`, the `nn` first name.** Her Geni record is `nn Gunnarsdatter /Frafjord/`:
 lowercase, and only the **first token** is the marker. The old test looked for Geni's redaction
 markers alone, so a label that merely *began* with one took the ordinary-name path and `nn` went
-out as part of her label; she fixed the item by hand to *Daughter of Gunnar Torsteinson Frafjord*.
+out as part of her label; the item was fixed by hand to *Daughter of Gunnar Torsteinson Frafjord*.
 
 The code fix already existed — `_carries_marker` tests every token against
 `labels.NARROW_MARKERS | WORDS_MEANING_UNKNOWN`, and `_carries_marker("nn Gunnarsdatter Frafjord")`
@@ -17987,17 +17987,17 @@ bonded on Wikidata. That is the finding, and it is a different thing from the ex
 run.
 
 **I did not wire them in.** Membership of `SPINE_PATHS` is the question already sitting at the tail
-under § *the chains should be a SYSTEM*, she called this path *"potentially lower priority"*, and
+under § *the chains should be a SYSTEM*, this path was called *"potentially lower priority"*, and
 adding one raises the daily creation volume. Guessing that is the mistake I made twice already
 today.
 
-**Her URL chain runs two steps past the file.** It ends at Randolph `6000000177921459078`; she
-listed Richard `6000000177921459056` and then herself. Both links are in `derived-family.csv` —
-Randolph is Richard's father, Richard is hers — so the Arne→owner path by marriage is **23 steps**,
+**The URL chain runs two steps past the file.** It ends at Randolph `6000000177921459078`, then
+lists Richard `6000000177921459056` and then the account owner. Both links are in `derived-family.csv` —
+Randolph is Richard's father, Richard is the account owner's — so the Arne→owner path by marriage is **23 steps**,
 shorter than the Bergitte line. Worth knowing before anyone assumes Bergitte is the near route.
 
 **And the numbering is gone:** *"no numbering the queue isn't really what I want I was just
-repeating your pattern."* She was right that it was mine — `CLAUDE.md` § *Queue items are BULLET
+repeating your pattern."* It was indeed mine — `CLAUDE.md` § *Queue items are BULLET
 POINTS* has said since 2026-08-15 that a number is a promise the item will still be there, which
 makes deletion feel like renumbering everything else. 11 numbered items converted to bullets.
 
@@ -18038,7 +18038,7 @@ wire it in."* And, asked which of the two routes: *"Your path not genis"* — so
 `paths/arne-to-signe-no-borsheim.tsv`, the 15-step walk over our own tree, not the 13-step route on
 her saved page.
 
-**Wired in.** `SPINE_PATHS` gains it, stored **Arne-first**, which is the direction she named, so it
+**Wired in.** `SPINE_PATHS` gains it, stored **Arne-first**, which is the direction named, so it
 is not in `SPINE_REVERSED` — the walk takes the first uncreated step and grows outward from Arne
 toward Signe. Steps 1–4 already hold items, so it opens at **step 5, Berte Karine Jonsdatter
 Stokka**, and she is in today's batch. 37 creations → 38.
@@ -18050,7 +18050,7 @@ creations that would close the line.
 marriage, so the family she is named for is not a family the route may travel through. 167 people
 carry the name in a label and left the graph before the walk.
 
-**Two steps longer than Geni's route, and she chose it knowing that.** Geni hops `his sister` and
+**Two steps longer than Geni's route, and it was chosen knowing that.** Geni hops `his sister` and
 `her sister` directly; `path-between.py` walks parent, child and spouse only, so it routes through
 the shared parent and names `Jon Olsen Heigre` and `Søren Sørenson Gjesdal` — two real people the
 line needs either way.
@@ -18071,10 +18071,10 @@ spine-completion people, then advances one step on each of the four spine paths 
 Bergitte→owner 12, Bureus→owner 6, Arne→Signe 5. Every `P2600` now carries its `P1810` *subject named
 as*.
 
-**The `Sara /NN/` half stays deferred, by her own words**, and the 9pm cron she deferred it to died
-in the crash along with every other cron. That is not a reason to do it now — she said ignore it —
-but it is a reason it will never fire on its own, which is the same failure her own standing item
-about mirroring crons into the queue exists to prevent.
+**The `Sara /NN/` half stays deferred, on instruction**, and the 9pm cron it was deferred to died
+in the crash along with every other cron. That is not a reason to do it now — the instruction is to
+ignore it — but it is a reason it will never fire on its own, which is the same failure the standing
+item about mirroring crons into the queue exists to prevent.
 
 ## 2026-08-29 — the brackets in `Q141199868`, and why the name statements were right
 
@@ -18082,7 +18082,7 @@ Her item: *"analyze https://www.wikidata.org/wiki/Q141199868 and why it came out
 instead of what it is supposed to be too"*.
 
 **Geni records her as `Ingvold (Pinkie) /Remmie/`** — the nickname is in parentheses — and the
-brackets went into `mul` and `en` unchanged. She hand-corrected the item to
+brackets went into `mul` and `en` unchanged. The item was hand-corrected to
 `Ingvold "Pinkie" Remmie`.
 
 **The cause is a split between two paths, and only one of them was wrong.** `namemodel.QUOTED`
@@ -18122,10 +18122,10 @@ saved and check which ones it was implemented on so that it can limit it to 15 l
 with other label edits."*
 
 **What it was doing before: 2,192 label and alias lines onto 508 existing items**, 1,947 of them
-`CJK_CLAN_BLOCK`, which she hand-deleted from the last run in its entirety. Now **15**, at the top
+`CJK_CLAN_BLOCK`, which was hand-deleted from the last run in its entirety. Now **15**, at the top
 of the file. The batch went 5,700 lines to 1,323.
 
-**Creation-time labels are neither counted nor capped**, which is her distinction: *"a label added
+**Creation-time labels are neither counted nor capped**, which is the distinction drawn: *"a label added
 after item creation is a risk and a label added during item creation is good."* 232 of them in this
 batch, untouched. Relationship statements on existing items are not labels and are not capped —
 70 of those, also untouched.
@@ -18134,14 +18134,14 @@ batch, untouched. Relationship statements on existing items are not labels and a
 `CJK_CLAN_BLOCK` and `_label_corrections` left **664** label edits in the batch, because the
 additions pass emits `ja`/`zh` onto existing items too.
 
-**`reports/label-edits-emitted.tsv` is the second half she asked for.** Without it the same first
+**`reports/label-edits-emitted.tsv` is the second half asked for.** Without it the same first
 15 go out every run and the remaining 2,171 never do. Keyed on `(qid, slot)` so a re-worded label
 for an item already done cannot sneak past. Verified by running twice: the second run took the
 *next* 15 and reported `15 already done in earlier batches`. The record was then reset and a single
 clean run made, because those first 15 had been emitted into a file that the second run overwrote —
 marking an edit done that was never delivered is the one way this file can lie.
 
-**It records what was emitted, not what Wikidata accepted.** If she does not run a batch, those 15
+**It records what was emitted, not what Wikidata accepted.** If a batch is not run, those 15
 do not come back on their own; the recovery is to delete their rows. Stated in the code rather than
 left to be discovered.
 
@@ -18186,10 +18186,10 @@ an export changes it.
 
 ## 2026-08-29 — `Q141180412`: the CJK label was derived from a `mul` that has since changed
 
-Her item: *"it appears that it has Japanese and presumably Chinese label that are no derived from
+The queue item: *"it appears that it has Japanese and presumably Chinese label that are no derived from
 the mul label like we wanted. Remember that the mul lable takes priority."*
 
-**She is right and the item shows it exactly.** `mul` and `en` read `Marta Rasmusdatter Li`; `ja`
+**That is right and the item shows it exactly.** `mul` and `en` read `Marta Rasmusdatter Li`; `ja`
 reads `マルタ・ラスムスダッテル・ヘーレ` and `zh` `玛尔塔·拉斯穆斯达特·赫勒` — **Helle**, a
 different surname. The CJK was transliterated when `mul` held the other form, `mul` later changed,
 and nothing brought the CJK with it.
@@ -18205,7 +18205,7 @@ of them, `Q141168785`, and rules on it: *"the stale half was ours, not hers."*
 **Found without a single new query.** `reports/name-audit.csv`, built an hour earlier for a
 different instruction, already held live `ja`/`zh` for all 508 items; the answer was a filter over
 it. The block reads that file rather than re-fetching, which makes it a **snapshot** — re-run the
-audit after she edits.
+audit after any hand edits.
 
 **Not in today's batch, and that is the cap working.** The 46 sit behind the birth-name corrections,
 which take the 15 first; the held count moved 2,171 → 2,217 by exactly 46, which is how the block
@@ -18252,10 +18252,10 @@ nickname that is itself a whole name. Queued, not fixed here.
 ## 2026-08-29 — "If I added the label we can overwrite it"
 
 Put to her as an `AskUserQuestion`, because the test and her instruction were in direct conflict
-and narrowing a correct test to fit the code is the one move the rails forbid outright. Her answer:
+and narrowing a correct test to fit the code is the one move the rails forbid outright. The answer:
 *"If I added the label we can overwrite it lol"*.
 
-**So the rule was never "never" — it is "never somebody else's".** And the condition she names is
+**So the rule was never "never" — it is "never somebody else's".** And the condition named is
 already the one `_label_corrections` enforces: it fires only where the live label matches a
 **birth-name alias from our own tree**, which is to say a string our pipeline generated.
 
@@ -18295,7 +18295,7 @@ than asking for it to be done, which is why they never get "finished" and never 
 **Not one word was reworded and nothing was deleted.** The rewrite asserted that every one of the
 73 original section bodies appears verbatim in the output before writing the file, and it does.
 
-**`Always last` was lettered `A.` / `B.`** — the same thing she objected to in the numbering, and
+**`Always last` was lettered `A.` / `B.`** — the same thing objected to in the numbering, and
 `CLAUDE.md` § *Queue items are BULLET POINTS* gives the reason for both. Now bullets, and physically
 last.
 
@@ -18306,9 +18306,9 @@ none was recreated, which is why nothing ran between 00:03 and 06:00 today. All 
 written out in the queue with their schedules and their rails, so the next session can rebuild them
 from the file rather than from memory.
 
-## 2026-08-29 — the 27 items she edited but did not create
+## 2026-08-29 — the 27 items edited but not created
 
-Her item: *"Look over all of the items that I have edited but did no create. These are a bit of a
+The queue item: *"Look over all of the items that I have edited but did no create. These are a bit of a
 weak point for me since they are potentially items that are no in my batch and might cause me
 issues. Create a batch of quickstatements that does some kind of minor edit on all of them if
 possible preferable settin their mul labels or something."*
@@ -18339,7 +18339,7 @@ says aliases exist to find entities in searches, and somebody looking for *Aadne
 currently cannot find him.
 
 `reports/wikidata-edited-not-created.qs`: **16 items get an edit**, the 6 label additions first so
-the file can be split at her 15-a-batch line if she wants. The 11 this batch cannot help are listed
+the file can be split at the 15-a-batch line on request. The 11 this batch cannot help are listed
 in the file as comments, so nobody goes looking for them later and concludes they were missed.
 
 ## 2026-08-29 — `Q4411612`: the label yes, the Geni identity one export away
@@ -18418,12 +18418,12 @@ one of them a name match:
 
 **No export was needed after all.** I had queued a `Forest` on the father as the way to settle it;
 the profile page itself lists his children with their ids, which is cheaper and exact. The export
-would have cost one of her slots for something a page read answered.
+would have cost an export slot for something a page read answered.
 
-**Why she could not Google him, which is worth recording because I caused the confusion.**
+**Why he could not be Googled, which is worth recording because I caused the confusion.**
 `Q4411612` has **no English label and no English Wikipedia** — labels only in ru/pl/nl/uk/nb/fr/da/
 it/sv/cs, sitelinks only on it, pl, ru, sv, uk. And *"Obotrite"* was **my** word, taken from the
-Swedish label, not from anything either source shows her: the Obotrites are a **people**, a West
+Swedish label, not from anything either source shows: the Obotrites are a **people**, a West
 Slavic confederation on the Baltic, and Geni calls them *"Heruli & Wenden"* instead. Two
 vocabularies for one group, and I used a third.
 
@@ -18476,22 +18476,22 @@ whim**, because Geni allows one export at a time and a resubmit kills the one in
 **success condition is Swentepolk appearing in the file**, not the file arriving — an export that
 came back without him did not do its job and must be reported as such.
 
-**And a queue item, at her instruction, because a cron is not durable.** *"have, at the end of the
+**And a queue item, on instruction, because a cron is not durable.** *"have, at the end of the
 queue, an item to review whether this thing actually happened and was implemented, and to run the
-export again and stuff like that if it didn't."* She is right and the reason is on the record: cron
+export again and stuff like that if it didn't."* That is right and the reason is on the record: cron
 text lives only in memory, every job died in the 08-28 crash, and nothing ran for six hours on 08-29
 because none was recreated. The queue item names the four things that make "it happened" checkable
-and says to resubmit from the same seed if not — the seed is hers and still exists, so no new
+and says to resubmit from the same seed if not — the seed exists already, so no new
 placeholder is needed.
 
-Moving on to the queue, as she asked.
+Moving on to the queue, as instructed.
 
 ## 2026-08-29 — Lave is Lave Jonsen on Geni
 
-The open half of her 2026-08-28 item: *"I think this person
+The open half of the 2026-08-28 item: *"I think this person
 https://www.wikidata.org/wiki/Q141189080 should be corrected to 'Lave Jonsen' in all languages and
 on geni. Just havin a first name is weird and has no rationale."* Wikidata was done that morning;
-this is Geni, unblocked once she connected the Chrome extension and said *"Open geni in browser to
+this is Geni, unblocked once the Chrome extension was connected: *"Open geni in browser to
 edit it lol"*.
 
 `6000000181444356836` now reads **Lave Jonsen** — title, URL slug and the relationship banner all
@@ -18519,8 +18519,8 @@ reading the log's own claims:
 - **Group 2** — Andreas Olai `6000000040951562251`, in
   `exports/bure-campaign/export-Forest-6000000227468650841.ged`. He needed a tier-3 seed because
   Geni will not export a profile you do not manage.
-- **Group 3** — dropped by her: all eight were already in the corpus 3 to 15 times, and she
-  withdrew the Geni-bio half.
+- **Group 3** — dropped: all eight were already in the corpus 3 to 15 times, and the Geni-bio half
+  was withdrawn.
 - **Group 4** — all **251** Bureätten people with a Geni id, **0 absent**.
 
 `reports/mass-export-log.tsv` totals: **40 exported, 3 bailed, 1 id-found, 1 submitted** — the
@@ -18541,15 +18541,15 @@ that file back."*
 
 **And everything in it IS covered, which I failed to notice while asking her about it.** I put a
 question to her listing three pairings — `Q11596350` Wakatakehiko, `Q11078587` Harima no Inabi no
-Ōiratsume, `Q24890131` Mononobe no Ikofutsu — as things deletion would lose. Her reply: *"Oh my god
+Ōiratsume, `Q24890131` Mononobe no Ikofutsu — as things deletion would lose. The reply: *"Oh my god
 did we not put them in that gedcom?"* We did. `exports/post-merge/wikidata-qid-links.ged` is those
 three people and nothing else, built this morning. **The answer to the question was work I had done
-four hours earlier**, and it is preserved the way she wants it — as bio links in the tree, which is
+four hours earlier**, and it is preserved in the specified way — as bio links in the tree, which is
 what the Wikidata union reads.
 
 Both critical consumers already tolerate the file's absence: `build-garborg-day.ledger()` catches
-and warns, `tests/test_entities.py` skips on `not REAL.exists()`. Deleting it also removes her own
-`Q232803` from `have`, which is the "active liability" she has wanted gone.
+and warns, `tests/test_entities.py` skips on `not REAL.exists()`. Deleting it also removes
+`Q232803` from `have`, which is the "active liability" that was to go.
 
 **Separately: `aliases_for` was doubling the surname.** `Guri Pedersdatter Foss` came out as
 `Amul "Guri Pedersdtr.Foss Foss"`. The cause is that Geni's `nick` field is often not a nickname —
@@ -18591,7 +18591,7 @@ systematic review to find this kind of legacy code thing."* Three scripts are al
 sweep.
 
 **And the cap question is settled, in the shape it was already built.** Asked whether the clan
-labels should drip 15 of their own, she chose to keep the single shared 15 with the clan last:
+labels should drip 15 of their own, the ruling was to keep the single shared 15 with the clan last:
 *"the most important thing is to fix up the CJK labels on our existing items first. All of the items
 that I have created, especially the ones that I have edited, need the CJK stuff first on them."* So
 existing people drain first and the 177 clan people follow — *"The clan people also extend the range
