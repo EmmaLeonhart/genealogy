@@ -1,7 +1,7 @@
 """Vendor only the order.life images the wikibase actually references.
 
-Emma, 2026-08-15: *"I want images used by the wikibase to be preserved but not
-ones not used by it."*
+Images used by the wikibase are preserved; images sitting in the directory that
+the wikibase does not use are not.
 
 `order.life/wikibase/images/` holds 377 files and 217.8 MB, and a good deal of it
 is not genealogy at all — `1NF_video_fixing.png`,
@@ -16,7 +16,7 @@ assumed:
 - `P68` Official portrait
 - `P94` coat of arms image
 
-**Emma's guess was right, and the numbers say so rather than the other way
+**The prediction was right, and the numbers say so rather than the other way
 round.** Of the 20 files that survive, **19 are blazons** (`*_Arms.svg`) and one
 is a `Historical Image`. The 357 left behind are database-normalisation tutorial
 diagrams and cloud-computing charts sharing the directory — `1NF_video_fixing.png`,

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Guard: may this repo edit Wikidata yet?
 
-**This repo's own date, and nothing else.** Emma, 2026-08-23: *"Shintowiki scripts
-uses a different lockdown period lol. This repo starts at sept 1"*, and then:
-*"Shintowiki scripts and this one are not the same and not really coordinated."*
+**This repo's own date, and nothing else.** The shintowiki scripts use a different
+lockdown period; this repo starts on 1 September. The two are not the same repo and
+are not coordinated.
 
 So the coupling is gone. This module used to fetch a lockout state file belonging
 to `shintowiki-scripts` over HTTPS, wired there by an earlier session on the
@@ -32,15 +32,15 @@ import io
 import os
 import sys
 
-#: The date this repo may begin editing Wikidata. Emma, 2026-08-14: *"no wikidata
-#: edits until September 1"*. It matches ``START_DATE`` in
+#: The date this repo may begin editing Wikidata: no Wikidata edits until
+#: 1 September 2026. It matches ``START_DATE`` in
 #: ``.github/workflows/wikidata-edits.yml``; `tests/test_wikidata_start_date.py`
 #: fails if the two ever disagree, which is the whole reason to write it twice.
 START_DATE = "2026-09-01"
 
-#: The date the daily batch starts running BY ITSELF. Emma, 2026-09-05: *"I want to
-#: on the 15th start all of this stuff automatically"*, and asked what starts, "The
-#: daily Garborg batch", sent through the bot-password API.
+#: The date the daily batch starts running BY ITSELF: on the 15th, all of this runs
+#: automatically. What starts is the daily Garborg batch, sent through the
+#: bot-password API.
 #:
 #: It is a second date rather than a move of the first, because they gate different
 #: things and both stay true. ``START_DATE`` is when this repo may edit Wikidata at

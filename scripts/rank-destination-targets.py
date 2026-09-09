@@ -1,10 +1,9 @@
-"""Which paths to export for next, longest-first, per Emma's tail algorithm.
+"""Which paths to export for next, longest-first, per the tail algorithm.
 
-**Emma, 2026-08-18:** *"you should be trying to target it by going from the longest
-paths to the smallest paths… we can very easily run it with the top five longest paths
-having their exports done and then we rebuild and so on and so on."*
+**Target the longest paths first and work down to the shortest.** The top five longest
+paths get their exports done, then the tree is rebuilt, and so on.
 
-Her algorithm in full:
+The algorithm in full:
 
 * a gap of **<=3 missing people** is NOT an export. Save each path member's Geni page
   into `geni-scraping/` instead --- *"It is not worth six minutes to fill in something
@@ -17,7 +16,7 @@ Her algorithm in full:
 
 So the ranking is one row per path, sorted by how many of its steps are missing from the
 corpus. `destination_missing` is the discriminating column: the destination is the last
-row of the path, and Emma's method needs an ancestor of a person we do not hold, which
+row of the path, and the method needs an ancestor of a person we do not hold, which
 is exactly the case this campaign is working.
 
     PYTHONPATH=src python scripts/rank-destination-targets.py

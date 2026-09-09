@@ -10,11 +10,11 @@ not have one" looks like.
 **It is not statefulness. It is the absence of it.** Nothing recorded that a human had made a
 decision about that statement, so every rebuild saw a fresh gap and filled it, more confidently
 each time. Any *emit what is missing* pipeline will fight any editor who deletes, indefinitely.
-Emma had to undo her own undos and then make cosmetic edits to cover the trail.
+That forced a round of undoing undos and then cosmetic edits to cover the trail.
 
 ## How a removal is detected
 
-Not from our own batches: a statement we emitted and she never ran is also absent, and
+Not from our own batches: a statement we emitted that was never run is also absent, and
 suppressing that would silently drop real work. The evidence has to be a **removal by somebody
 else**, which is what `wbremoveclaims` in an edit comment records.
 
@@ -22,23 +22,23 @@ So this reads the contributions of editors *other than* the account, keeps the `
 edits on items in the ledger, and parses the property and value out of the comment — the form is
 `/* wbremoveclaims-remove:1| */ [[Property:P734]]: [[Q141223707]]`.
 
-**A removal by Emma herself is NOT suppressed.** She is the one running the batches; if she
-removes something and the batch re-adds it, that is a conversation she is having with her own
-pipeline, not an edit war with a stranger.
+**A removal by the account running the batches is NOT suppressed.** If that account removes
+something and the batch re-adds it, that is a conversation with its own pipeline, not an edit
+war with a stranger.
 
 Writes `reports/suppressed-statements.tsv`: `qid`, `property`, `value`, `removed_by`, `when`.
 
 ## RUN THIS ONCE, over the LAST 30 DAYS of the named editor's contributions
 
-**Emma, 2026-08-31:** *"you're supposed to run that on the last 30 days of his activity and then
-have it as a static file. That's what I asked for."* And, on the first version: *"It is extremely
+**The specification:** run it over the last 30 days of that editor's activity and keep the
+result as a static file. And, on the first version: *"It is extremely
 stupid that you wrote it as something that actively watches the editor's edits... I want to watch
 their edits once and then leave it."*
 
 **What was wrong, and it is why this never ran.** The first version spent its whole budget
 *discovering* which editors to look at — 200 sequential revision fetches over ledger items — before
 touching a single contribution list. That made it hundreds of requests and tens of minutes, and I
-then quoted that cost back at her as a reason to skip it. The editor was never unknown: it is
+then quoted that cost back as a reason to skip it. The editor was never unknown: it is
 `OBender12`, named in the failure this exists to close. Naming him directly turns the job into a
 handful of `usercontribs` pages bounded by `ucend`.
 
@@ -78,12 +78,13 @@ def ledger_qids():
         return {r["qid"] for r in csv.DictReader(fh, delimiter="\t") if r.get("qid")}
 
 
-#: **Named, not discovered.** Her instruction is *"the last 30 days of his activity"*, and `his`
-#: is `OBender12` — the editor who merged our duplicate name items and stripped the `P734` links.
+#: **Named, not discovered.** The instruction is the last 30 days of one editor's activity, and
+#: that editor is `OBender12` — the one who merged our duplicate name items and stripped the
+#: `P734` links.
 #: A second name goes here if one ever earns it; a crawl to find them does not.
 EDITORS = ("OBender12",)
 
-#: Her bound, in days.
+#: The bound, in days.
 WINDOW_DAYS = 30
 
 

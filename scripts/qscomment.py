@@ -1,7 +1,7 @@
 """A comment above every line of a QuickStatements batch, saying what it changes.
 
-**Emma, 2026-08-26:** *"With comments as headings and comments. Every line has a comment the
-line above it saying what change is happening."*
+**Comments as headings, and comments per line: every line has a comment above it saying what
+change is happening.**
 
 Shared by `build-garborg-day.py` and `build-garborg-name-items.py` so the two files read the
 same way, and so the rule is applied in ONE place. It runs as a **post-pass over the assembled
@@ -61,8 +61,8 @@ def qid_labels(wanted):
 def annotate(lines, name_of):
     """A comment above EVERY statement line, saying what that line changes.
 
-    **Emma, 2026-08-26:** *"With comments as headings and comments. Every line has a
-    comment the line above it saying what change is happening."*
+    **Comments as headings, and a comment above every line saying what change is
+    happening.**
 
     Written as a post-pass over the assembled batch rather than at each `lines.append`,
     because this file emits statements from a dozen places and a rule applied at every
@@ -110,8 +110,8 @@ def annotate(lines, name_of):
             # **The qualifier keeps its property ID too.** It used to render the label alone
             # -- `qualified subject named as ...` -- while the statement above it read
             # `P2600 Geni.com profile ID`. `CLAUDE.md` § *Always write the English label next
-            # to a property or item ID* cuts both ways: Emma, 2026-08-15, *"I have no fucking
-            # clue what any property or Q ID property name is"*, and a bare label is the same
+            # to a property or item ID* cuts both ways: a bare ID is unreadable to anybody,
+            # and a bare label is the same
             # problem in reverse, since nothing says which property was written.
             extra = [f"{parts[i]} {props.get(parts[i], '')}".strip() + f" {human(parts[i + 1])}"
                      for i in range(3, len(parts) - 1, 2)
