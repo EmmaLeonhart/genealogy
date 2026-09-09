@@ -1,6 +1,6 @@
 # Descendants exports
 
-From 2026-08-06 late, Emma stated the campaign changed: **future exports are
+From 2026-08-06 late, the campaign changed: **future exports are
 not gap-filling, they are descendant-adding.** The relationship paths are
 complete (26 of 26) and there is nothing left to bridge, so a new export is
 aimed at breadth in later generations rather than at a named missing person.

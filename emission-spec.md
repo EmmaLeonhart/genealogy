@@ -1,6 +1,6 @@
 # What we emit to Wikidata
 
-**Every row here comes from something Emma said in this project.** This is the
+**Every row here comes from a stated instruction in this project.** This is the
 list of what the pipeline is *for*; `reports/` holds the derived data, and the
 "emitter" column says whether anything can currently write it.
 
@@ -14,7 +14,7 @@ the difference down.
 
 ## 1. Labels and aliases
 
-Emma, 2026-08-12: *"Every individual needs an English, Japanese, and Chinese
+2026-08-12: *"Every individual needs an English, Japanese, and Chinese
 label."* And: *"the multi-language label comes from the Latin alphabet name, and
 the English language label will come from it too."*
 
@@ -26,12 +26,12 @@ the English language label will come from it too."*
 | `zh` label | **the same string as `ja`** | same | **none** |
 | aliases | the married name substituted into the name | `derived-labels.csv` · `aliases_from_married_name` · 47,125 | **none** |
 
-**Han-only names need no ja/zh decision.** Emma: *"If the name is solely in
+**Han-only names need no ja/zh decision.** *"If the name is solely in
 kanji, then the Chinese and Japanese labels are both the same for it."* Only a
 name carrying **kana** would need translating into Chinese — 291 people.
 
 **A Geni name is not a label.** It is a language-agnostic string. Converting
-agnostic forms into labels is the pipeline Emma described as still needed, and
+agnostic forms into labels is the pipeline described as still needed, and
 `reports/geni-names.md` is the measurement it has to be built against.
 
 **Other languages later** — *"possibly going to be wanting you to do this for
@@ -77,7 +77,7 @@ the corpus, and nothing writes it.
 | `P40` child | `FAM` `CHIL` | 138,511 | **none** |
 | `P3373` sibling | — | **deliberately not emitted** | — |
 
-**No `P3373`.** Emma routes siblings through invented parents instead, which is
+**No `P3373`.** Siblings are routed through invented parents instead, which is
 Wikidata's preferred shape.
 
 **Invented parents.** *"Sibling relationships without parents need to get two
@@ -102,7 +102,7 @@ be done with string."*
 | `P6375` street address | `ADDR` block, monolingual text | 71,735 birth · 51,681 death · 16,328 burial | **none** |
 | `P106` occupation | `OCCU` → item | 31,401 strings | **none** — unresolved |
 
-**Burial is two properties, never qualifiers** — Emma: *"the date of burial and
+**Burial is two properties, never qualifiers** — *"the date of burial and
 the place of burial have their own properties."*
 
 **Addresses stay text.** *"Do addresses with the address property (multilingual
@@ -138,13 +138,13 @@ This is the one field where Wikidata has more than we do.
 
 ## 7. Creating people
 
-Emma, 2026-08-12: *"we are explicitly creating new people. There was no doubt
+2026-08-12: *"we are explicitly creating new people. There was no doubt
 about that."*
 
 262,587 of our people have no Wikidata item. A created person carries `P31` =
 `Q5`, labels, `P21`, `P2600`, and their relationship links.
 
-Her sketch of the eventual pipeline: *"a series of edits that it could possibly
+The sketch of the eventual pipeline: *"a series of edits that it could possibly
 do, and it'll do like a hundred random minutes every day"* — creating and linking
 an individual with all its properties; adding a single thing; adding a property
 to an individual. Created individuals may gain properties gradually over time.
