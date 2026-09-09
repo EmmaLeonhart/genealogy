@@ -6191,7 +6191,7 @@ So the item is closed with no code change, which is the outcome worth having.
 ## 2026-08-15 — the 21:00 bloat review, four approved deletions
 
 The cron asked for at 9pm, run against `reports/repo-freshness.csv` and the
-transcript audit. Candidates were put to her with evidence; nothing was deleted
+transcript audit. Candidates were put as a question with evidence; nothing was deleted
 on my own judgement.
 
 **`reports/geni-name-records.csv`, 41 MB — fully redundant.** All 444,875 rows
@@ -8227,7 +8227,7 @@ They are an explicit `NOT_MARKERS` set rather than simply absent, so adding eith
 is an argument somebody has to make.
 
 **`n` is neither a word nor punctuation, so the ruling does not reach it** — decided
-here rather than put to her, per the rule that a judgement call is mine to take. It is a
+here rather than put as a question, per the rule that a judgement call is mine to take. It is a
 marker at the **head** (`N Пузына`, `N Lozinska`, 917 of them) and not inside or at the
 tail (`Gunteroda N`, `Laura N`, 205), because a trailing single letter is a middle
 initial — the mistake `f9b9f86` records this repo nearly making 283 times.
@@ -10417,7 +10417,7 @@ strings since 08-15. The trim removes bracketed material and dates; it does **no
 titles out of running text, so `Kandjeng Pangeran` and `SINUHUN PAKU BUWANA XII` stay. That
 was a different judgement and not the one asked.
 
-**Keep `MAX_HOPS = 14`.** Put to her directly, with the cost stated — 2,077 romanised rows
+**Keep `MAX_HOPS = 14`.** Put as a question directly, with the cost stated — 2,077 romanised rows
 rest on inferences beyond six hops and the checks only detect surname-shaped errors — that
 kept it. Settled; not to be revisited without her.
 
@@ -14057,7 +14057,7 @@ later slot's candidates. It ran children ahead of spouses before.
 
 **`reports/emma-judgments.md` and `.tsv`** — twenty verdicts given by hand, kept
 deliberately separate from anything generated on instruction. 17 Right, 1 Wrong, 2 for
-browser resolution. Every kind of name variation put to her was accepted; the single
+browser resolution. Every kind of name variation put as a question was accepted; the single
 rejection turned on the people, not the strings.
 
 **`reports/creation-opportunities.tsv`** — 94,664 people absent from Wikidata whose parent
@@ -18251,7 +18251,7 @@ nickname that is itself a whole name. Queued, not fixed here.
 
 ## 2026-08-29 — "If I added the label we can overwrite it"
 
-Put to her as an `AskUserQuestion`, because the test and the instruction were in direct conflict
+Put as a question as an `AskUserQuestion`, because the test and the instruction were in direct conflict
 and narrowing a correct test to fit the code is the one move the rails forbid outright. The answer:
 *"If I added the label we can overwrite it lol"*.
 
@@ -20798,7 +20798,7 @@ Two of the candidates were real and both are now rules:
 
 **"Stop constantly trying to make me panic by not checking."** Every alarming claim this week —
 the Charlemagne spine 8 short, the Bureus link missing, Signe at 13/14 — came from a lookup that
-did not answer the question, and every one was wrong. `CLAUDE.md` § *CHECK before you alarm her*.
+did not answer the question, and every one was wrong. `CLAUDE.md` § *CHECK before raising an alarm*.
 
 **"geni chains often have situations where they skip between siblings."** How common
 it is: **2,126 of the 30,361 relation steps in `paths/` — 7.0%**. Geni records no sibling edge,
@@ -20837,7 +20837,7 @@ querying Wikidata was banned — a ban lifted on 2026-08-29.
 **A claim of mine was refuted by the refresh and is corrected in both places it was written.**
 I said the Izumo roster resolving to 2 Geni ids was staleness. It is not: after the refresh it is
 still 2, because only **2 of those 204 items carry a `P2600` at all**. I asserted a cause without
-running the test that would settle it, three commits after writing § *CHECK before you alarm her*
+running the test that would settle it, three commits after writing § *CHECK before raising an alarm*
 into `CLAUDE.md` for exactly that.
 
 **And the path-connection figure moved twice more, both times because the instrument was wrong.**
@@ -21030,7 +21030,7 @@ shape — `Q3120330` *William I of Garlande* is a long-standing item with 20 cla
 
 **Spot-checked live before writing it down.** 12 of the 16 fetched in one `wbgetentities` call:
 none is already a redirect and every pair carries the same `P2600`, so these are live duplicates
-rather than an artefact of a download. § *CHECK before you alarm her* is the rule — a list of 83
+rather than an artefact of a download. § *CHECK before raising an alarm* is the rule — a list of 83
 duplicates handed over unverified is exactly the unchecked scary claim it forbids.
 
 **67 more sit outside the ledger** and are listed separately, because some of those will be
@@ -22470,7 +22470,7 @@ for.
 `out/wikidata/p2600-all.tsv` alone and called step 5 *Gunnar Sahlin* open. He is in
 `reports/garborg-qids.tsv` — created by hand, and `p2600-all` was last refreshed 08-30. Three
 oracles are needed and the builder already uses all three: Wikidata's own `P2600`, the ledger,
-and `SPINE_ANCHORS`. Using one is how § *CHECK before you alarm her* gets broken.
+and `SPINE_ANCHORS`. Using one is how § *CHECK before raising an alarm* gets broken.
 
 ## 2026-08-31 — "why does it appear absent": it never was. 22 merges, 0 disagreements
 
@@ -22680,7 +22680,7 @@ that establishes the derivation once, and every later `Olsdatter` needs no compa
 
 ## 2026-08-31 — `P144` on a patronymic item is MULTI-VALUED, the ruling
 
-Put to her as an `AskUserQuestion` because it is the § *One name item per USAGE* shape and hers to
+Put as a question as an `AskUserQuestion` because it is the § *One name item per USAGE* shape and hers to
 decide. The ambiguity is measured, not supposed: **1,892 of 7,352** attested patronymic tokens
 have more than one distinct father given name behind them.
 
@@ -23014,7 +23014,7 @@ and then continues on."* Table 4,022 → 4,054 tokens.
 **Result: the gate holds and refuses nobody.** 27 creations, **0 lacking `ja` or `zh`**, 0 `Aen`.
 Before the funnel it was 20 creations with 7 refused; after, 27 with none.
 
-**Two sections deleted on the instruction**, both put to her as questions first:
+**Two sections deleted on the instruction**, both put as a question as questions first:
 
 - § *RUN ORDER* — superseded. Its premise was the tree growing by a third per batch of exports,
   and the daily Garborg batch is what actually runs now without consulting it.
@@ -23063,7 +23063,7 @@ question with the case for and against, not a proposal.
 - § *Connect the account owner and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne* — it
   declared all four spine lines complete on 2026-08-30. The derived sections went then; this was
   the hand-written original, which survived only because it sits inside her *Aug 28 manual adds*
-  block. Put to her rather than pruned, because that block says keep intact and I should not be
+  block. Put as a question rather than pruned, because that block says keep intact and I should not be
   deciding what comes out of it.
 - § *Mass export from every hand-added Geni profile* — the export era is over. The tree is
   1.45M people, the Bureätten campaign closed at 251/251, nothing under `exports/` is newer than
@@ -24825,7 +24825,7 @@ existing `solo -> date -> name` ordering in `zipper-join.py` rather than changin
 the reason, which `reports/zipper-reliability.md` had already reached from the other side with
 `date` at 0.0% disagreement against `name` at 9.2%.
 
-**One row is held back and put to her: `Q5712230`.** Two of her pairs claim it -
+**One row is held back and put as a question: `Q5712230`.** Two of her pairs claim it -
 `6000000013227282778` Johan Mattias von Engeström and `6000000013227327610` Brita Christina
 Wallenstråle, his wife - and both rows carry the same `their_name`, *Johan Mathias von Engeström*.
 That identical third column is the tell: the deck rendered the husband's item against the wife's
@@ -24873,7 +24873,7 @@ and returns `UNSURE`, so an unanswerable card is skipped. 295 `SAME`, 17 `RIGHT`
 and repeated it in a status report. The 18:59 UTC failure ran commit `b7b1f5d6`, which carried
 **none** of the three pieces that answer it — `out/family-structure.tsv.gz` was not committed,
 `pack-derived.py` did not list it, and `read_tree` had no fallback. All three landed afterwards
-and nobody re-ran it. § *CHECK before you alarm her* again: the alarming claim was about a stale
+and nobody re-ran it. § *CHECK before raising an alarm* again: the alarming claim was about a stale
 run, not about the code.
 
 **Queue tail reordered to the instruction**, 2026-09-01: *"have it after the pages item, between
@@ -26773,7 +26773,7 @@ holds `Geni - <Name>.html`. `toggleRelationshipAnchor('6000000002457013227')` ex
 Charlemagne's page and raised no error, but the next target's profile then carried no
 `#relation_description` at all. Whether the anchor failed to set or that target computes nothing
 is **not established**, and guessing further at Geni's URL scheme is where the rabbit-hole rule
-says to stop. Put to her.
+says to stop. Put as a question.
 
 **Nothing was fetched in bulk.** The pilot queue item stays; only its method is now corrected.
 
@@ -27377,7 +27377,7 @@ fixed it was generated and discarded on every run since the priority mechanism w
 
 `reports/garborg-live-values.tsv` could not have established this and nearly did: it covers
 ledger items only, and none of the 161 is in the ledger, so its silence about them means *not
-asked*, not *not held*. That is § *CHECK before you alarm her* — the check that would falsify
+asked*, not *not held*. That is § *CHECK before raising an alarm* — the check that would falsify
 the claim had to be the live one.
 
 The two blocks are now separate lists concatenated in the set order — identifications, then name
@@ -29604,7 +29604,7 @@ rather than assumed.**
   which nothing has run. A creation is not the walk.
 - **The phase order** — a governing rule with no done state.
 - **The pilot** — 13 of 100, in progress.
-- **The parent-adding campaign** — gated by her, and the gate is hers to open.
+- **The parent-adding campaign** — gated by placement, and the gate is hers to open.
 - **`build-from-diff`** — `reports/wikidata-from-diff.qs` and `-izumo.qs` exist, but those are its
   *outputs*; the queued item is a **review** of why it was wired into the pipeline, and no review
   exists. At the tail by placement.
@@ -29695,7 +29695,7 @@ mechanisms, the same primary key.
 **Sweep: nothing removed, third running.** All six live items verified against the repo —
 `addAncestor`'s termination still unexercised (5 creations on record, every one a hand-fired
 `seed` job, no scheduler walk); the phase order is a rule; the pilot is 13 of 100 with
-`isolates.csv` at 7 misses / 1 hit / 5 pending; the parent-adding campaign is gated by her;
+`isolates.csv` at 7 misses / 1 hit / 5 pending; the parent-adding campaign is gated by placement;
 `build-from-diff` has outputs but no review; the correspondence experiment has a proposal but no
 GEDCOM. The last three are at the tail by placement, and the tail export section is hers.
 
@@ -29752,7 +29752,7 @@ which items the batch touches, not a fix to make in passing.
 
 **Sweep: nothing removed, fourth running.** All six live items verified against the repo, and no
 other session has committed in three hours. `addAncestor`'s termination still unexercised; the
-phase order is a rule; the pilot is 13 of 100; the parent-adding campaign is gated by her;
+phase order is a rule; the pilot is 13 of 100; the parent-adding campaign is gated by placement;
 `build-from-diff` has no review and the correspondence experiment no GEDCOM, both at the tail by
 the placement; the tail export section is hers.
 
@@ -29840,7 +29840,7 @@ on paper.
 
 **Sweep: nothing removed, sixth running.** All six live items verified against the repo — five
 creations and none from a scheduler walk, the phase order a rule, the pilot at 16 of 100,
-the parent-adding campaign gated by her, `build-from-diff` with no review and the correspondence
+the parent-adding campaign gated by placement, `build-from-diff` with no review and the correspondence
 experiment with no GEDCOM, both at the tail by placement. No other session has committed in
 five hours.
 
@@ -29941,7 +29941,7 @@ it. Reading it as sacred keeps the gap open and makes the workaround permanent m
 
 **Sweep: nothing removed, seventh running — but a live instruction in the tail is now WRONG and is
 marked as such.** All six items verified: five creations and none from a scheduler walk, the phase
-order a rule, the pilot at 17 of 100, the parent-adding campaign gated by her, `build-from-diff`
+order a rule, the pilot at 17 of 100, the parent-adding campaign gated by placement, `build-from-diff`
 with no review and the correspondence experiment with no GEDCOM. No other session has committed in
 six hours.
 
@@ -30025,7 +30025,7 @@ faster than that whenever a target resolved quickly.
 
 **Sweep: nothing removed, eighth running.** Six live items verified against the repo — the service
 worker item is blocked on her reload and not done, the phase order is a rule, the pilot is at 17
-of 100 and halted by the CAPTCHA, the parent-adding campaign is gated by her, `build-from-diff`
+of 100 and halted by the CAPTCHA, the parent-adding campaign is gated by placement, `build-from-diff`
 has no review and the correspondence experiment no GEDCOM, both at the tail by placement.
 
 **One more of my own inventions found in her tail section and corrected: *"The pushpin is HERS and
@@ -30166,7 +30166,7 @@ generated file is never measured against `GENI_EXPORT_CAP` or read as a corpus s
 **Sweep: nothing removed, and one item ADDED for asked-for work that is half-built.** The five
 live items all verified against the repo — the service worker still needs a manual reload (`endId` is
 in the file and not in the running worker), the phase order is a rule, the pilot is at 18 of 100,
-the parent-adding campaign is gated by her, and the correspondence experiment still has no GEDCOM.
+the parent-adding campaign is gated by placement, and the correspondence experiment still has no GEDCOM.
 
 **What the sweep caught is a regression I introduced an hour ago.** `build-family-gedcoms.py`
 reads only `geni-families/*-family.tsv`; the ask was *"this thing which can run on legacy
@@ -30436,7 +30436,7 @@ Both artifacts come off one page and land in different directories, `saved-<id>.
 
 **Sweep: nothing removed, and the top item was wrong in the way that mattered most.** Three live
 items verified — the correspondence experiment still has no GEDCOM, the parent-adding campaign is
-gated by her with 5 placeholders, the tail section is hers.
+gated by placement with 5 placeholders, the tail section is hers.
 
 **The service-worker item claimed it gates the scrape. It does not.** The worker runs the
 *scheduler*; the DOM trigger calls `GC.runFamily` and `GC.runPath` directly in the content script,
@@ -30710,7 +30710,7 @@ queue.md and anything that the queue.md references."*
 `queue.md` is rewritten around **one executable item**, which is the stated definition of what the
 queue is for: *"all the queue did was just ask the browser agent to navigate to each page and run
 the stuff."* Navigate, dispatch `{job:"individual"}`, write the files, next target. Everything
-else in it is either gated by her or at the tail by placement.
+else in it is either gated by placement or at the tail by placement.
 
 **It carries the four things that would otherwise be rediscovered the hard way**, each of which
 cost real time today: nothing downloads and `saveBlob` must not come back a third time; never
@@ -31067,7 +31067,7 @@ concatenates `givn + surn + NSFX` into `display_name` and `derive-labels.py` tak
 whole. § *A TITLE IS NOT A NAME* said in as many words that the rule *"does not touch the
 LABEL"*, and left what a label should read open. Her message closes it for this class.
 
-**Two things were put to her and both narrowed the work rather than widening it.** What the fact
+**Two things were put as a question and both narrowed the work rather than widening it.** What the fact
 becomes: *nothing* — the Geni-rendered string is what `P1810` *subject named as* carries by
 design, so the marker is not lost, and no `P26` *spouse* no-value, alias or per-language
 rendering goes in its place. And the scope: `drop_title_suffix` would also strip `Graf`, `MP`
@@ -32943,7 +32943,7 @@ backticks and **not `'...'`, which is most Python string literals** — so `buil
 was emitting `you&rsquo;s fourth cousin five times removed` onto the published page. Fifteen
 third-party references were rewritten before being read back: `Anna King` keeps **her** surname,
 `Ragnhild Toresdatter Håland` has **her** name either way, and **`Emma Watson`** in a list of
-page-saving targets became *"you Watson"*. And `CHECK before you alarm her` collapsed into
+page-saving targets became *"you Watson"*. And `CHECK before raising an alarm` collapsed into
 `alarm you`, because the document then used *you* for two different referents.
 
 **The instruction behind it stands and is not what was reverted.** Same evening: *"the big
