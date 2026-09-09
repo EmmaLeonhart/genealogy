@@ -2,8 +2,7 @@
 
     python scripts/build-add-p2600-batch.py
 
-**Emma, 2026-08-25**, asked for the add batch to be generalised to the whole store —
-*"Yes, and generalise it to the whole store"* — and the queue item she approved carries the
+**The add batch is generalised to the whole store**, and the approved queue item carries the
 condition alongside it: **gate it with the parent test first.**
 
 The condition is not caution for its own sake. `reports/structural-correspondence.csv` proposes
@@ -59,8 +58,8 @@ pairs by roughly **3.4×**. That is the honest size of the effect.
 **And the cost side, stated plainly: the gate rejects 5,654 of 7,320, and 95.2% of the rejected
 ones that have comparable dates are date-consistent.** Most of what it throws away is probably
 fine. It is deliberately conservative because the output writes to Wikidata, but this is a
-trade-off rather than a free improvement, and lowering the bar is a decision for Emma rather than
-a tuning exercise.
+trade-off rather than a free improvement, and lowering the bar is a decision to be made
+deliberately rather than a tuning exercise.
 
 ## What this does not do
 
@@ -69,8 +68,8 @@ a tuning exercise.
 * **It never removes or replaces anything.** Every line is an addition to an item that currently
   holds nothing in that slot, which is `CLAUDE.md` § *The purpose is to ADD to Wikidata, not to
   correct it* exactly.
-* **It is not run.** Wikidata editing in this repo starts 2026-09-01, and Emma runs QuickStatements
-  by hand.
+* **It is not run.** Wikidata editing in this repo starts 2026-09-01, and QuickStatements are
+  run by hand.
 
 Every statement is emitted with an `S2600` reference to the Geni id being added, so the claim
 carries its own provenance.
@@ -173,8 +172,8 @@ def main():
     print(f"{len(ours):,} of the proposed people are in our tree")
 
     rows, tally = [], collections.Counter()
-    # **The rejects are written out too.** Emma, 2026-08-25, asked to decide the gate's
-    # tightness: *"Show me the rejected ones first"* -- and they had never been emitted, so
+    # **The rejects are written out too.** Deciding the gate's tightness means reading the
+    # rejected rows first -- and they had never been emitted, so
     # the only thing anyone could look at was the percentage. A gate whose discards are
     # invisible cannot be argued about from records, which is what `CLAUDE.md` § *How this
     # project works now* requires: *"Show records, not statistics."*
@@ -222,8 +221,8 @@ def main():
                         why.append(note)
                         conflicts.append(note)
 
-        # **CONTRADICTION is refused. SILENCE is not.** Emma, 2026-08-26, shown what the old
-        # gate was actually doing: *"Loosen it -- emit the ~7,000."*
+        # **CONTRADICTION is refused. SILENCE is not.** Shown what the old gate was actually
+        # doing, the ruling on 2026-08-26 was to loosen it and emit the ~7,000.
         #
         # It used to require a parent anchor and rejected 5,651 of 7,320. Writing the rejects
         # out showed the shape:

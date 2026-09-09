@@ -1,12 +1,12 @@
 """What `NSFX` actually contains, and whether Wikidata's own labels keep it.
 
-`correspondence.md` marks `NSFX` **TO ANALYSE**: *"assuming it is always a title
-is exactly the kind of guess Emma has stopped."*
+`correspondence.md` marks `NSFX` **TO ANALYSE**: assuming it is always a title is
+exactly the kind of guess this project has stopped making.
 
-It bears directly on a rule she did give, 2026-08-11: *"a noble suffix or a noble
-particle is a legitimately common thing in English, to the point that it makes it
-useless to do that rule on Latin names"* — so the suffix stays in, and the Latin
-display name becomes both the `mul` and the `en` label.
+It bears directly on a rule that was given, 2026-08-11: a noble suffix or noble
+particle is legitimately common in English, to the point that stripping it is
+useless on Latin names — so the suffix stays in, and the Latin display name becomes
+both the `mul` and the `en` label.
 
 That is checkable rather than arguable. For the people carrying both IDs,
 Wikidata already holds an English label a human chose. **Does it contain the
@@ -169,7 +169,7 @@ def main() -> int:
     add("")
     add("## Does Wikidata's own English label keep the suffix?")
     add("")
-    add("Emma's rule, 2026-08-11, is that the Latin display name becomes the `en` label")
+    add("The rule of 2026-08-11 is that the Latin display name becomes the `en` label")
     add("**with the suffix left in**, because a noble suffix is how the name is written")
     add("in English. This measures what Wikidata did for the people carrying both IDs.")
     add("")
@@ -197,7 +197,7 @@ def main() -> int:
         add(f"| {kind} | {count:,} | {100.0*count/none_total:.1f}% |")
     add("")
     add("**This does not overturn the rule.** Wikidata's label is what Wikidata chose;")
-    add("Emma's rule is about what *we* produce for people who have no label yet, and")
+    add("the rule is about what *we* produce for people who have no label yet, and")
     add("`correspondence.md` already records that labels are only in scope for people")
     add("carrying both IDs and that Wikidata is definitive where it has one. What the")
     add("table sizes is how far the two conventions differ where both exist.")
