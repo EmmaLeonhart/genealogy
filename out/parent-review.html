@@ -116,7 +116,7 @@ textarea{width:100%;height:220px;margin-top:16px;font:400 12px/1.5 "IBM Plex Mon
   </div>
 </div>
 
-<script id="cases" type="application/json">[]</script>
+<script id="cases" type="application/json">[{"our": "Samuel Johan Chierlin", "geni": "6000000018806651741", "qid": "Q5607754", "cand": "Samuel Johan Chierlin", "slot": "parent", "trigger_pre": "held because their child ", "trigger_bold": "Anna Beata Christina Chierlin", "trigger_post": " already names a parent item on Wikidata", "our_fields": [["Spouse", ["Johanna Carolina Grevesmöhlen"]], ["Children", ["Anna Beata Christina Chierlin"]]], "cand_fields": [["Spouse", []], ["Children", ["Anna Beata Christina Chierlin"]]], "via": "Anna Beata Christina Chierlin", "shared_kid_words": ["anna", "beata", "chierlin", "christina"], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["1742", "1828"], "cand_life": ["1742", "1828"], "highlight": ["anna", "beata", "chierlin", "christina"]}, {"our": "Giacomo Grimaldi Durazzo LXIX doge di Genova", "geni": "6000000021441530737", "qid": "Q3762132", "cand": "Giacomo Grimaldi Durazzo", "slot": "parent", "trigger_pre": "held because their child ", "trigger_bold": "Agostino Durazzo", "trigger_post": " already names a parent item on Wikidata", "our_fields": [["Spouse", ["Maria Maggiolo"]], ["Children", ["Lucrezia Durazzo", "Agostino Durazzo", "Pietro Durazzo XCIII doge di Genova", "Giovanni Durazzo", "Maddalena Grimaldi Durazzo", "Battina Durazzo", "Laura Durazzo"]]], "cand_fields": [["Spouse", []], ["Children", ["Pietro Durazzo", "Agostino Durazzo"]]], "via": "Agostino Durazzo", "shared_kid_words": ["agostino", "durazzo", "pietro"], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["1503", "1579"], "cand_life": ["1503", "1579"], "highlight": ["agostino", "durazzo", "pietro"]}, {"our": "Pietro Durazzo XCIII doge di Genova", "geni": "6000000021441996908", "qid": "Q16590419", "cand": "Pietro Durazzo", "slot": "parent", "trigger_pre": "held because their child ", "trigger_bold": "Niccolò Durazzo", "trigger_post": " already names a parent item on Wikidata", "our_fields": [["Spouse", ["Aurelia Durazzo"]], ["Children", ["Giacomo Durazzo", "Maria Durazzo", "Niccolò Durazzo", "Cassandra Violante Durazzo", "Giovanni Battista Durazzo", "Cesare Durazzo CXVIII doge di Genova", "Stefano Durazzo Cardinale"]]], "cand_fields": [["Spouse", []], ["Children", ["Cesare Durazzo", "Niccolo Durazzo"]]], "via": "Niccolò Durazzo", "shared_kid_words": ["cesare", "durazzo"], "shared_spouse_words": [], "our_sex": "M", "cand_sex": "M", "gone": false, "our_life": ["1560", "1631"], "cand_life": ["1560", "1631"], "highlight": ["cesare", "durazzo"]}]</script>
 <script>
 var CASES = JSON.parse(document.getElementById("cases").textContent);
 var KEY = "parent-adjudication-v1";
@@ -156,6 +156,17 @@ function hl(text, words) {
     if (!tok || /^\s+$/.test(tok)) return tok;
     var f = fold(tok);
     return (f.length > 2 && set[f]) ? "<mark>" + esc(tok) + "</mark>" : esc(tok);
+  }).join("");
+}
+
+// **The deck decides what is worth comparing, not the page.** A parent card shows spouses and
+// children; a child or sibling card also shows the shared parent's other children, which is the
+// list the two sides either line up in or do not. One template, both shapes.
+function fields(spec, words) {
+  if (!spec || !spec.length) return "";
+  return spec.map(function (f) {
+    return '<div class="field"><div class="flabel">' + esc(f[0]) + "</div>" +
+           list(f[1], words) + "</div>";
   }).join("");
 }
 
@@ -220,15 +231,17 @@ function warnings(c) {
   return w.length ? '<div class="warn">' + w.join("") + "</div>" : "";
 }
 
+function key(c) { return c.geni + "|" + c.qid; }
+
 function firstUndecided() {
-  for (var k = 0; k < CASES.length; k++) if (!decisions[CASES[k].qid]) return k;
+  for (var k = 0; k < CASES.length; k++) if (!decisions[key(CASES[k])]) return k;
   return CASES.length;
 }
 
 function tsv() {
-  return CASES.filter(function (c) { return decisions[c.qid]; })
+  return CASES.filter(function (c) { return decisions[key(c)]; })
     .map(function (c) {
-      return [c.geni, c.our, c.qid, c.cand, decisions[c.qid]].join("\t");
+      return [c.geni, c.our, c.qid, c.cand, decisions[key(c)]].join("\t");
     }).join("\n");
 }
 
@@ -251,29 +264,26 @@ function render() {
   }
 
   var c = CASES[i];
-  var kw = c.shared_kid_words || [];
-  var sw = c.shared_spouse_words || [];
+  var hw = c.highlight || [];
   el("stage").innerHTML =
     '<div class="card"><div class="cardtop">' +
       '<div class="name">' + esc(c.our) + "</div>" +
-      '<div class="trigger">held because their child <b>' + esc(c.via) +
-        "</b> already names a parent item on Wikidata</div>" +
+      '<div class="trigger">' + esc(c.trigger_pre || "") + "<b>" +
+        esc(c.trigger_bold || "") + "</b>" + esc(c.trigger_post || "") + "</div>" +
     "</div>" + warnings(c) + '<div class="cols">' +
       '<div class="col"><div class="eyebrow">Ours &middot; Geni</div>' +
         '<div class="who">' + esc(c.our) + "</div>" +
         '<div class="id"><a href="https://www.geni.com/people/x/' + esc(c.geni) +
           '" target="_blank" rel="noopener">' + esc(c.geni) + "</a></div>" +
         chips(c.our_sex, c.our_life, c.cand_sex, c.cand_life) +
-        '<div class="field"><div class="flabel">Spouse</div>' + list(c.our_sp, sw) + "</div>" +
-        '<div class="field"><div class="flabel">Children</div>' + list(c.our_kids, kw) + "</div>" +
+        fields(c.our_fields, hw) +
       "</div>" +
       '<div class="col"><div class="eyebrow">Candidate &middot; Wikidata</div>' +
         '<div class="who">' + esc(c.cand) + "</div>" +
         '<div class="id"><a href="https://www.wikidata.org/wiki/' + esc(c.qid) +
           '" target="_blank" rel="noopener">' + esc(c.qid) + "</a></div>" +
         chips(c.cand_sex, c.cand_life, c.our_sex, c.our_life) +
-        '<div class="field"><div class="flabel">Spouse</div>' + list(c.cand_sp, sw) + "</div>" +
-        '<div class="field"><div class="flabel">Children</div>' + list(c.cand_kids, kw) + "</div>" +
+        fields(c.cand_fields, hw) +
       "</div>" +
     "</div></div>";
 }
@@ -288,7 +298,7 @@ function persist() {
 
 function decide(v) {
   if (i >= CASES.length) return;
-  decisions[CASES[i].qid] = v;
+  decisions[key(CASES[i])] = v;
   i++;
   persist();
   render();

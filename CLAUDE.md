@@ -4628,10 +4628,10 @@ documentation of it much more clear so future sessions always clearly regenerate
 **THE RUNBOOK. A cloud session with no corpus on disk uses the FIRST of these; nothing else
 is needed and nothing else should be improvised:**
 
-    gh workflow run parent-deck.yml            # builds it, commits it to `main`, republishes Pages
-    gh run watch $(gh run list --workflow=parent-deck.yml --limit 1 --json databaseId -q '.[0].databaseId')
+    gh workflow run review-decks.yml           # builds BOTH, commits to `main`, republishes Pages
+    gh run watch $(gh run list --workflow=review-decks.yml --limit 1 --json databaseId -q '.[0].databaseId')
 
-`.github/workflows/parent-deck.yml` is `workflow_dispatch` only and does the whole job on a
+`.github/workflows/review-decks.yml` is `workflow_dispatch` only and does the whole job on a
 runner: sparse checkout, unpack the derived CSVs, build, copy onto the site, commit and push to
 `main`. **It exists separately from `pipeline.yml` on purpose.** The pipeline rebuilds the deck
 too, but only after a ledger refresh and a QuickStatements compose, and it commits the batch in
@@ -4643,6 +4643,7 @@ is what she asks for and must not be downstream of anything.
 
     python scripts/pack-derived.py --unpack     # only on a clean clone; the CSVs are gitignored
     PYTHONPATH=src python scripts/build-parent-candidates.py
+    PYTHONPATH=src python scripts/build-family-candidates.py
 
 It writes three things and they are one artifact in three forms --- `reports/parent-candidates.tsv`
 (the row per case), `out/gui-data.json` (the deck), `out/parent-review.html` (the deck rendered).
@@ -4729,6 +4730,65 @@ on the card by splitting the glued id at display time, which is a real guard and
 left `cell()` alone --- so the spouse and child lists, which are the evidence half and the thing
 Emma actually judges on, stayed empty for everyone with more than one. A symptom can be fixed
 where it shows rather than where it starts.
+
+### THE FAMILY DECK: the CHILD and SIBLING slots, `family-review.html`
+
+**Emma, 2026-09-09:** *"I want to do some more manual zipper merging. Now I'm thinking for
+siblings/children as I think we're get through of the parents mostly."*
+
+<https://emmaleonhart.github.io/genealogy/family-review.html> --- same shape as the parent deck,
+same Copy-decisions round trip, same `reports/emma-judgments.tsv`, `batch` =
+`family-adjudication-gui`. `scripts/build-family-candidates.py` builds it and
+`reports/family-candidates.tsv` is its census. Everything both decks use lives in
+`genimerge.deck`, once, because the parent deck's three published-cards-name-nobody bugs were
+each a helper right in one copy and wrong in another.
+
+**Two arms, and the second is not the first in disguise:**
+
+* **child** --- a parent of our person holds a QID whose `P40` names a child nothing accounts
+  for. **This is the duplicate guard's own first arm**, § *THE DUPLICATE GUARD* --- the one that
+  caught `Q2183430` being created twice. It has held people back ever since and nothing had put
+  the question to her.
+* **sibling** --- a *sibling* of our person holds a QID whose `P3373` names a sibling nothing
+  accounts for. It needs no item on the parent at all, which is coverage the child arm cannot
+  reach, and it is evidence our tree structurally cannot produce: Geni records **no** sibling
+  edge, so two of our siblings are joined only through a shared parent.
+
+**`P3373` had no column in `out/wikidata/relations.tsv` until 2026-09-09**, which is why nothing
+could use it --- `CLAUDE.md` § *Link reliability order* has siblings as the fourth slot and says
+they are *"not a slot yet"*. The extractor now carries it: **155,456 items, 418,004 statements**,
+and the table went 65 MB -> 77 MB, which is still under GitHub's 100 MB refusal but no longer
+comfortably.
+
+**⛔ A CARD IS ONLY OFFERED WHERE THE SLOT HAS ONE ANSWER.** The unit is the slot, as in
+`zipper-join.py`: one parent, one sex, our unclaimed children of that sex against Wikidata's
+unaccounted ones, and a card only where both sides hold **exactly one**.
+
+**Sex splits the slot and it is not decoration.** `scripts/census-solo-children.py` measured
+`P21` refuting **10.0%** of solo-child pairs against 0.0% for solo father and mother slots. It
+takes the deck from 1,466 whole-slot 1x1s to **3,507** pairs, because a 2x2 of one son and one
+daughter each is two answerable questions while a 2x2 of two sons is none.
+
+**Measured 2026-09-09: 3,522 answerable child slots and 1,727 sibling ones; 8,207 and 3,918
+ambiguous ones held back in the census.** An `N x 1` slot asks *which of our N is this item?*,
+which a Same/Different card cannot express --- offering it as N yes/no cards invites N Sames.
+That is the next card shape to build, not something to smuggle through this one.
+
+**The card carries parents, siblings, spouses and children on BOTH sides.** For these two arms
+the siblings are the discriminating list, because the slot *is* a sibship and whether the two
+sides line up is what settles it. § *1600-1900 is the band where NAMES LIE and YEARS decide* is
+why sex and years are chips and the shared words are only a highlight.
+
+**A card with no name on OUR side is dropped and counted, not a failure.** Geni redacts, so
+`Private` and the unnamed arrive with an empty label and she cannot judge an empty box against a
+name. A bare QID on the **Wikidata** side still fails the run --- that one is the label lookup
+having failed, which is the instrument rather than the data.
+
+**`genimerge.deck.store_scan` is the third offline label source and in this sandbox the only
+one.** The cloud container answers `CONNECT www.wikidata.org:443` with 403 and has no
+`out/wikidata/store-index.sqlite3`, so without it every card here would have named a bare QID.
+One pass over the 2,427 shards, ~6 minutes, and it is cheaper than the API once a deck is large.
+In Actions the store is excluded and `wbgetentities` is what runs, exactly as before.
 
 ### The purpose is to ADD to Wikidata, not to correct it
 

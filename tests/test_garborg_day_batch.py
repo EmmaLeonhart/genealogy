@@ -255,13 +255,15 @@ def _emma_confirmed_qids():
     the set she approved and cannot quietly grow. A row counts only with `verdict == SAME` and
     one of the adjudication batch labels.
 
-    **Two labels, one population.** `blocked-creations` is the thirteen put to her individually
+    **Three labels, one population.** `blocked-creations` is the thirteen put to her individually
     by `AskUserQuestion` on 2026-08-31; `parent-adjudication-gui` is the forty she answered the
     same day in `out/parent-review.html`, after asking for *"some sort of a GUI for me to do the
-    selections with"*. The delivery mechanism differs and the verdict does not, so filtering on
-    the first label alone silently excluded the larger set — which is how this test came to call
-    37 items she had just confirmed nonexistent. `UNSURE` rows are excluded by the `SAME` test
-    and must stay excluded: three of the forty are unsure.
+    selections with"*; `family-adjudication-gui` is `out/family-review.html`, the child and
+    sibling slots, added 2026-09-09. The delivery mechanism differs and the verdict does not, so
+    filtering on the first label alone silently excluded the larger set — which is how this test
+    came to call 37 items she had just confirmed nonexistent, and adding a deck without adding
+    its label here is how that recurs. `UNSURE` rows are excluded by the `SAME` test and must
+    stay excluded: three of the forty are unsure.
     """
     path = REPO / "reports" / "emma-judgments.tsv"
     if not path.exists():
@@ -270,7 +272,8 @@ def _emma_confirmed_qids():
     with open(path, encoding="utf-8") as fh:
         for row in csv.DictReader(fh, delimiter="	"):
             if (row.get("verdict") == "SAME"
-                    and row.get("batch") in ("blocked-creations", "parent-adjudication-gui")):
+                    and row.get("batch") in ("blocked-creations", "parent-adjudication-gui",
+                                            "family-adjudication-gui")):
                 if (row.get("qid") or "").startswith("Q"):
                     out.add(row["qid"])
     return out

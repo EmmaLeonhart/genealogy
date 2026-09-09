@@ -102,6 +102,15 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   and run a `Forest` export when the gate clears. It has not been exercised yet, so the first one
   is worth watching.
 
+- **A PICK-ONE card for the ambiguous family slots.** The child/sibling deck only offers a slot
+  where both sides hold exactly one person of that sex; **12,125 slots hold more** — 8,207 child
+  and 3,918 sibling, in `reports/family-candidates.tsv`'s own run output. The common shape is
+  `N x 1`, which asks *which of our N is this item?*, and a Same/Different card cannot say that:
+  offering it as N yes/no cards invites N Sames. It needs a card that shows the sibship on both
+  sides and lets her pick one, or none. The export format must stay the five columns her *Copy
+  decisions* button already produces, so the paste-back into `reports/emma-judgments.tsv` does
+  not change.
+
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a batch is on Wikidata. Emma, 2026-09-03: *"In
   the future after we've sufficiently gathered all the placeholder parents and added a bunch to

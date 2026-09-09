@@ -22,16 +22,23 @@ genealogical join needs:
 | `P25` | mother |
 | `P40` | child |
 | `P26` | spouse |
+| `P3373` | sibling |
 
 `P2600` *Geni.com profile ID* comes along too, so the zipper does not need a second file to know
 which items are already anchored.
+
+**`P3373` was added 2026-09-09, for the sibling half of the manual zipper deck.** Geni records
+no sibling edge -- two siblings are joined only through a shared parent -- so a Wikidata item that
+names a sibling directly is evidence our tree cannot produce from its own structure, and it
+reaches families whose parents have no item at all. It is the one relationship in
+`CLAUDE.md` § *Link reliability order* that had no column here, which is why nothing could use it.
 
 **Deprecated statements are dropped.** A deprecated `P22` is Wikidata saying "not this one", and
 carrying it into a join would let a retracted parent link propose a merge.
 
 Output is one row per item that has at least one of these, values semicolon-separated:
 
-    qid  p22  p25  p40  p26  p2600
+    qid  p22  p25  p40  p26  p3373  p2600
 
 Writes `out/wikidata/relations.tsv`. Reads nothing but the store; makes no request.
 """
@@ -39,6 +46,7 @@ from __future__ import annotations
 
 import gzip
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -49,7 +57,7 @@ ROOT = Path(__file__).resolve().parent.parent
 STORE = ROOT / "wikidata" / "items"
 DEST = ROOT / "out" / "wikidata" / "relations.tsv"
 
-WANTED = ("P22", "P25", "P40", "P26", "P2600")
+WANTED = ("P22", "P25", "P40", "P26", "P3373", "P2600")
 
 
 def values(claims, prop):
@@ -71,8 +79,9 @@ def main():
     DEST.parent.mkdir(parents=True, exist_ok=True)
     started = time.time()
     rows = items = 0
-    with open(DEST, "w", encoding="utf-8", newline="\n") as out:
-        out.write("qid\tp22\tp25\tp40\tp26\tp2600\n")
+    tmp = DEST.with_suffix(DEST.suffix + ".tmp")
+    with open(tmp, "w", encoding="utf-8", newline="\n") as out:
+        out.write("qid\tp22\tp25\tp40\tp26\tp3373\tp2600\n")
         for n, shard in enumerate(shards, 1):
             with gzip.open(shard, "rt", encoding="utf-8") as f:
                 for line in f:
@@ -96,6 +105,7 @@ def main():
                 rate = items / max(time.time() - started, 1)
                 print(f"  {n}/{len(shards)} shards, {items:,} items, {rows:,} with "
                       f"relations, {rate:,.0f}/s", flush=True)
+    os.replace(tmp, DEST)
     print(f"\n{items:,} items read, {rows:,} carry at least one of {', '.join(WANTED)}")
     print(f"wrote {DEST} in {time.time() - started:.0f}s")
 

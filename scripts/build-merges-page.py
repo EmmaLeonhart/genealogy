@@ -11,7 +11,9 @@ the parent-adjudication deck and had answered **none** off the equivalent TSV. T
 
 ## Built FROM her template, not from scratch
 
-`out/parent-review.template.html` is hers and hand-approved. Rebuilding a page from scratch
+`out/review-deck.template.html` is hers and hand-approved --- it was
+`out/parent-review.template.html` until 2026-09-09, when the child/sibling deck started sharing
+it and a name meaning one of its three pages stopped being true. Rebuilding a page from scratch
 instead of reusing it was a mistake she named: *"did you regenerate it from scratch instead of
 using the template you used yesterday lol"*. So the palette, the three-state theme handling, the
 IBM Plex / Newsreader pairing, the keyboard flow and the `localStorage` key are taken from it.
@@ -55,7 +57,7 @@ csv.field_size_limit(1 << 30)
 
 MD = ROOT / "reports" / "merges-to-do.md"
 FACTS = ROOT / "reports" / "derived-facts.csv"
-TEMPLATE = ROOT / "out" / "parent-review.template.html"
+TEMPLATE = ROOT / "out" / "review-deck.template.html"
 OUT = ROOT / "out" / "merges.html"
 
 API = "https://www.wikidata.org/w/api.php"

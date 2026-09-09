@@ -41,6 +41,7 @@ BATCH = ROOT / "reports" / "wikidata-garborg-day.txt"
 #: the runner will not have the file and the copy silently does nothing.
 ALONGSIDE = (
     ROOT / "out" / "parent-review.html",
+    ROOT / "out" / "family-review.html",
     ROOT / "out" / "patronymic-identifications.html",
     ROOT / "out" / "duplicate-surnames.html",
     ROOT / "out" / "duplicate-name-items-we-made.html",

@@ -32210,3 +32210,83 @@ A `D` row is **refused by name**, § *NO descriptions and NO edit summaries* bei
 this format being able to carry one. So are a value containing a double quote (QuickStatements V1
 cannot escape it and `qs()` would silently strip it, emitting a different name from the one she
 wrote), a malformed QID, a malformed language code and an empty value.
+
+## 2026-09-09 — the manual zipper deck for the CHILD and SIBLING slots
+
+**Emma:** *"I want to do some more manual zipper merging. Now I'm thinking for siblings/children
+as I think we're get through of the parents mostly. Although I'm surprised we got the parents all
+done."*
+
+**The parents are not quite all done, and the reason is worth knowing.** The committed deck was
+**0 cards over 3 candidates** — and all three were the CJK cases she ruled undoable on 2026-09-07,
+so the page was empty because the filter emptied it, not because the work was finished.
+Regenerating `out/wikidata/relations.tsv` against the current store surfaced **three more**, and
+every one is a near-certain `SAME` with identical birth and death years on both sides:
+
+    Samuel Johan Chierlin          Q5607754    1742-1828 both sides
+    Giacomo Grimaldi Durazzo       Q3762132    1503-1579 both sides
+    Pietro Durazzo                 Q16590419   1560-1631 both sides
+
+**`P3373` *sibling* now has a column in `out/wikidata/relations.tsv`.** It was the one
+relationship in `CLAUDE.md` § *Link reliability order* with no column, which is why nothing could
+use it. **155,456 items carry it, 418,004 statements**; the table went 65 MB → 77 MB, still under
+GitHub's 100 MB refusal but no longer comfortably. The extractor also writes through a temp file
+and `os.replace` now, so an interrupted run cannot leave a truncated 65 MB table behind and a
+reader running beside it sees the old file whole.
+
+**`scripts/build-family-candidates.py` → `out/family-review.html`**, published unlinked beside the
+parent deck. Two arms:
+
+* **child** — a parent of our person holds a QID whose `P40` names a child nothing accounts for.
+  This is the duplicate guard's own first arm, the one that caught `Q2183430` being created a
+  second time. It has held people back since 2026-08-25 and nothing had put the question to her.
+* **sibling** — a *sibling* of our person holds a QID whose `P3373` names a sibling nothing
+  accounts for. It needs no item on the parent at all, and it is evidence our tree structurally
+  cannot produce: Geni records no sibling edge.
+
+**The unit is the SLOT, split by sex, and a card is only offered where the slot has one answer.**
+Sex is not decoration here — `scripts/census-solo-children.py` measured `P21` refuting **10.0%**
+of solo-child pairs against 0.0% for solo father and mother slots — and splitting on it takes the
+deck from 1,466 whole-slot 1×1s to 3,507 pairs, because a 2×2 of one son and one daughter each is
+two answerable questions while a 2×2 of two sons is none.
+
+    child     3,522 answerable slots    8,207 ambiguous, census only
+    sibling   1,727 answerable slots    3,918 ambiguous, census only
+    -> 5,249 proposals, 2,891 after one question per person
+    -> 2,434 cards: 2,137 child, 297 sibling
+       260 CJK held out per her 2026-09-07 ruling; 197 dropped, Geni records no name on our side
+
+An `N × 1` slot asks *which of our N is this item?*, which a Same/Different card cannot express —
+offering it as N yes/no cards invites N Sames. Those stay in `reports/family-candidates.tsv` and
+are a queue item, not something smuggled through this deck.
+
+**`genimerge.deck` is the one copy of everything both decks use.** The parent deck's three
+published-cards-name-nobody bugs were each a helper right in one place and wrong in another — the
+` | ` separator, the gitignored label file, the CJK-only person with no `label_en` — so the
+separators, the label layering, the chips, the CJK hold-out and the nameless check now live once.
+`scripts/build-parent-candidates.py` was rewritten onto it and reproduces its previous output
+exactly. `out/parent-review.template.html` became `out/review-deck.template.html`, parameterised
+on title, storage key, trigger sentence and evidence fields; `build-merges-page.py`, which lifts
+its CSS, follows the rename.
+
+**A decision is keyed on the PAIR now, not on the QID.** One item can be offered against two
+people and one person against two items, so keying on the QID alone made two questions share one
+answer — the second card arrived pre-decided and exported under the wrong name.
+
+**`genimerge.deck.store_scan` is the third offline label source, and in this sandbox the only
+one.** The cloud container answers `CONNECT www.wikidata.org:443` with 403 and has no
+`out/wikidata/store-index.sqlite3`, so without it every one of these 2,434 cards would have named
+a bare QID — the exact failure `CLAUDE.md` § *THE PARENT DECK* records three times. One pass over
+the 2,427 shards, ~2 minutes, **13,356 of 13,357 names found**. In Actions the store is excluded
+and `wbgetentities` still runs.
+
+**A bare QID and an empty name are different failures and are now handled differently.** Geni
+redacts, so `Private` and the unnamed arrive with an empty label on our side; those cards are
+dropped and counted, because she cannot judge an empty box against a name. A bare QID on the
+Wikidata side is the lookup failing rather than the data, and it fails the run when it is more
+than half the census — which is the shape a systematic failure takes.
+
+`.github/workflows/parent-deck.yml` became `review-decks.yml` and builds both decks in one
+dispatch, so a session handing one over is never handing over a photograph of the other.
+`tests/test_garborg_day_batch.py` learned the third batch label, `family-adjudication-gui` — its
+own docstring records that filtering on one label silently excluded the larger set once already.
