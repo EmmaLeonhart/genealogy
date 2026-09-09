@@ -32914,3 +32914,17 @@ files the day before and `32431ddd` landed after it.
 `tabs_context_mcp` and `list_connected_browsers` both empty, `switch_browser` finding nothing —
 with Chrome itself running on 12 processes. BLOCKED-ON-USER-ACTION: one click on **Connect** in
 the extension, which also picks up 1.6.6 if the extension is reloaded at the same time.
+
+**Also: the collector item's state was stale by two extension versions.** It read *1.6.6 on disk,
+1.6.5 running* and listed the in-law-hit defect as open; `6b2dee75` closed that in **1.6.7**,
+which is what is on disk. Refreshed against the files: `reports/isolates.csv` **124 rows** with
+124 family scrapes beside them, **105 under the Charlemagne anchor — 21 hits, 84 misses**, and
+`via` recorded on only **18** of those (blank on the 87 taken before the in-law search existed),
+so **75 of the 84 misses are blood-only** and re-enter the pool under rule 2 of § *BOTH TIES,
+ALWAYS*. `collector-worklist.tsv` is **2,597**. The running Chrome is the `Default` profile and
+both profiles carry Claude extension `1.0.91`, so the two-different-versions note came out too.
+
+One line in it was a mis-swept pronoun from `51522915`: *"no in-law verdict is obtainable for
+you… which means you re-queues forever"* is about **Katalin Varga**, a person in the tree, not
+about you. Restored to `her`. That is the trap `CLAUDE.md` § *WRITE TO HER IN THE SECOND PERSON*
+names in its own second exception, and the broken grammar is what made it findable.

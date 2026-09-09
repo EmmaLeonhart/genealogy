@@ -87,16 +87,26 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   * **The background service worker cannot be updated from here** and does not matter — it runs
     only the scheduler. `todo.md` § 3d has the measurement and five failed routes.
 
-  **State right now, 2026-09-08:** the isolate pilot is **100 of 100, COMPLETE** ·
-  `reports/isolates.csv` 118 rows, of which **99 were taken under the Charlemagne anchor: 15 hits,
-  84 misses** · `reports/collector-worklist.tsv` has **2,592 outstanding** (2,510 never scraped,
-  82 blood-only misses) · **zero invented people** · extension **1.6.6 on disk**.
+  **State right now, measured 2026-09-09 01:20 PST:** the isolate pilot is **100 of 100,
+  COMPLETE** · `reports/isolates.csv` **124 rows, 124 family scrapes on disk**, of which **105
+  were taken under the Charlemagne anchor: 21 hits, 84 misses** · `reports/collector-worklist.tsv`
+  has **2,597 outstanding** · **zero invented people** · extension **1.6.7 on disk**.
 
-  ⛔ **THE RUNNING CHROME IS STILL ON 1.6.5 UNTIL SOMEBODY RELOADS THE EXTENSION.** An unpacked
+  **The in-law verdict is recorded for 18 of the 105** — `via` reads `neither` 9, `blood` 6,
+  `inlaw` 3, and is **blank on 87**, which is every row taken before the in-law search existed.
+  **75 of the 84 misses are blood-only**, so they re-enter the pool under rule 2 of § *BOTH TIES,
+  ALWAYS* and are not final misses.
+
+  ⛔ **THE RUNNING CHROME IS ON WHATEVER IT LOADED LAST, WHICH IS NOT 1.6.7.** An unpacked
   extension does not pick up file changes on its own, and `chrome://extensions` is refused by the
   automation surface the same way `chrome://` always is. One click in that page, or a Chrome
-  restart, loads 1.6.6. Until then the loop still returns `not_offered` for an in-law verdict
-  that is stated on the page, and the harvest has to apply the same rule by hand.
+  restart, loads it. Until then the loop still mis-handles the in-law verdicts 1.6.6 and 1.6.7
+  were written for, and the harvest has to apply the same rules by hand.
+
+  **The Chrome that is running is the `Default` profile**, and the Claude extension is
+  `1.0.91` there — Profile 4 carries the same build, so the two-different-versions note this
+  item used to carry is stale. Pairing is one click on **Connect** in that profile; on
+  2026-09-09 the extension would not pair and `switch_browser` found nothing to prompt.
 
   ⛔ **`runInLaw` WAS THROWING AWAY THE IN-LAW VERDICT ON EVERY PERSON — fixed 2026-09-08 in
   1.6.6.** It looked for the *Show Me* button first and returned `not_offered` when it was
@@ -104,19 +114,19 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   *never asked*, `via` stayed blank, and `collector-worklist.py` re-queued that person forever.
   Nobody could ever be finished. It now reads the sentence before looking for a button.
 
-  ⛔ **AND THE SAME SHAPE IS STILL OPEN FOR A HIT.** `runInLaw` settles on *the segment count
-  going up*, so when Geni has already rendered the in-law chain before the click — Ellen
-  Christensdatter Thrane `309763264470008240`, 29 segments on the page, prose reading
-  *"Charlemagne's third great granddaughter's 19th great niece"* — nothing changes and it waits
-  out the full 600000 ms. Not a miss and not lost, just slow. The asymmetry rule says a hit needs
-  a parsed chain rather than prose, so the fix is to compare against the chain already present,
-  not to trust the sentence.
+  **AND THE SAME SHAPE FOR A HIT WAS CLOSED IN 1.6.7** — `6b2dee75`, *"the in-law chain was
+  returned as the blood result, and scored via=both"*. `runInLaw` settled on *the segment count
+  going up*, so an in-law chain Geni had already rendered before the click — Ellen
+  Christensdatter Thrane `309763264470008240`, 29 segments, prose reading *"Charlemagne's third
+  great granddaughter's 19th great niece"* — changed nothing and waited out the full 600000 ms.
+  It compares against the chain already present now. **On disk and never executed**, like 1.6.6,
+  until the extension is reloaded.
 
   ⛔ **GENI HAS TWO MISS SHAPES AND ONLY ONE CAN BE ANSWERED.** Most profiles give the pair
   *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin Varga
   `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
-  in-law sentence and no button at all**, so no in-law verdict is obtainable for you. Your `via`
-  is blank rather than `neither`, which means you re-queues forever on the rule above. That
+  in-law sentence and no button at all**, so no in-law verdict is obtainable for her. Her `via`
+  is blank rather than `neither`, which means she re-queues forever on the rule above. That
   population is not yet sized and nothing addresses it.
 
   ⛔ **THE ANCHOR COLUMN IS WHAT MAKES THAT RATE MEAN ANYTHING**, and it earned its keep on
