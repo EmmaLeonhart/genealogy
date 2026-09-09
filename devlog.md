@@ -17500,21 +17500,21 @@ A hand correction from `entity_resolution.md` still outranks both.
 **It fixes the CJK complaint as a side effect, and that is the whole point of fixing it at source.**
 `ja`/`zh` are transliterated from `label_mul`, so every married woman was being rendered into
 Japanese and Chinese under her birth name. Nothing about the transliterator was wrong — it was
-handed the wrong string. Her words: *"the CJK names are being put in the birth name form, which is
+handed the wrong string. The report: *"the CJK names are being put in the birth name form, which is
 just basically a matter of you kind of refusing to."*
 
-**Verified against the two cases she raised.** `Mona Beth Tunheim` → **`Mona Beth Carney Castro`**,
-which is the correction she had already made by hand on `Q141205933`'s label. `Thelma Geraldine
+**Verified against the two cases raised.** `Mona Beth Tunheim` → **`Mona Beth Carney Castro`**,
+which is the correction already made by hand on `Q141205933`'s label. `Thelma Geraldine
 Ekman` → **`Thelma Geraldine Bagby`**, which is what the creation path had been emitting all along —
 so the two halves of the pipeline now agree.
 
-**One thing she should know before it runs, stated rather than quietly hedged.** Of the 251,707,
+**One thing worth knowing before it runs, stated rather than quietly hedged.** Of the 251,707,
 **185,426 are women and 66,235 are men**. `CLAUDE.md` § *`SURN` is not reliably a surname* measured
 53% of differing `_MARNM` values as male, and the male cases are visibly not marriages —
 `Trond Eriksen Lunde` → `Steinde-Brekke`, `Agust* Waldemar Widerberg` → `Wiberg`, and
 `Jeanne LeBaveux` → `La Baveuse` is a spelling variant rather than a marriage at all. The flip was
-applied to everyone because that is what she asked for; restricting it to `sex=F` is a one-line
-change if she wants it.
+applied to everyone because that is what was asked for; restricting it to `sex=F` is a one-line
+change on request.
 
 ## 2026-08-29 — recovering the session that crashed, and the three instructions it never wrote down
 
@@ -17525,16 +17525,15 @@ been doing and whether anything was left interrupted. Transcript
 **Nothing was interrupted.** Its final unit of work committed cleanly as `c04b99f9` and is
 pushed: the CJK clan block restored, `SPINE_P2600_BLOCK` no longer emitted, `_label_corrections()`
 narrowed to items literally holding a birth-name alias, the transliteration table taken from 218
-to 3,261 tokens by `extend-transliterations.py --two-hops`, and `CLAUDE.md` § *If you are not sure
-what she wants, ASK*. The working tree is clean apart from two `.bat` launchers, and
-`origin/main` is level with `HEAD`. So the crash cost no work — it cost the *capture* of what she
-said last.
+to 3,261 tokens by `extend-transliterations.py --two-hops`, and `CLAUDE.md` § *If the instruction is ambiguous, ASK*. The working tree is clean apart from two `.bat` launchers, and
+`origin/main` is level with `HEAD`. So the crash cost no work — it cost the *capture* of the last
+instructions.
 
-**Three instructions from her 01:38 message had no queue item.** They are now sections of
-`queue.md`, in the places she named:
+**Three instructions from the 01:38 message had no queue item.** They are now sections of
+`queue.md`, in the places named:
 
-- **Audit the names of every item she has edited, and every item they were merged into.** The
-  married-name flip and the two-hop table both landed after most of her items were created, so
+- **Audit the names of every item edited, and every item they were merged into.** The
+  married-name flip and the two-hop table both landed after most of those items were created, so
   those items hold the birth name in `mul`, `en`, `ja` and `zh`. `_label_corrections()` fixes the
   subset whose live label matches a known alias; how far the damage actually goes is unmeasured.
 - **Name items are being merged away by other editors** — `Tunheim` is her example. The existence
@@ -17542,10 +17541,10 @@ said last.
   wrong. At the end of the queue, per her.
 - **A comprehensive CJK fallback**, the very last item: a funnel that transliterates an unknown
   token on the spot and writes it into the table, rather than `label_in()` returning nothing and
-  the label being dropped. Her standard for it is that a wrong *romanisation* is acceptable and a
-  wrong *name* is not, and it is the one place she has sanctioned an external dependency.
+  the label being dropped. The standard for it is that a wrong *romanisation* is acceptable and a
+  wrong *name* is not, and it is the one place an external dependency is sanctioned.
 
-Also recovered, and already covered by existing queue items rather than duplicated: her complaint
+Also recovered, and already covered by existing queue items rather than duplicated: the complaint
 that only Simen Olsen got a CJK name in the last creation batch (fixed by the two-hop table — 1 of
 41 became 36 of 37), and the cap of 15 label changes per batch on existing items, which the
 185-row corrections block does not yet respect.
@@ -17561,9 +17560,9 @@ gettin ganythin gon the chain here... Did we get the paths to work or not"*. Joi
 `Q75291928` *Åsulv Skulesson*, `Q6180419` *Skule Torstigson*). Only **step 15 Ramborg
 Knutsdotter Lejon** and **step 22 Ingrid Guttormsdotter** have none.
 
-**She did not take that at face value** — *"is it really only 2 people missing connecting Arne to
+**That was not taken at face value** — *"is it really only 2 people missing connecting Arne to
 Charlemagne? Look over this because it doesn't feel right... if it is the case check with the
-bonds."* She was right that the question was underspecified: item existence and chain continuity
+bonds."* Rightly so: the question was underspecified: item existence and chain continuity
 are different things, and only the first had been measured.
 
 **`scripts/check-spine-bonds.py` answers the second.** One batched `wbgetentities` request, 35
@@ -17612,10 +17611,10 @@ files carry an explicit `qid` column that the Geni-id join ignores. Joining on b
 excluded from the graph by rule. The gaps are people with no item, not people whose item we failed
 to recognise.
 
-**Then I invented a second hypothesis and attributed it to her** — that the missing people might
+**Then I invented a second hypothesis and attributed it to the instruction** — that the missing people might
 hold Wikidata items carrying no `P2600`, which the join cannot see, and started searching
 `out/wikidata/labels.tsv` by name for candidates. The correction: *"No, I did not, in fact, raise that
-specific hypothesis. You made that up."* She had said the *Geni ids* were not connected; I turned
+specific hypothesis. You made that up."* What was said is that the *Geni ids* were not connected; I turned
 that into a claim about Wikidata items lacking a Geni id, which is a different thing, and it would
 have put a name search at the front of a repo that bans them. Abandoned before it produced
 anything.
@@ -17656,9 +17655,9 @@ makes the person findable at all. Verified those three are the only omissions.
 
 **Four tests were already failing before this change and still are** — checked by running them
 against the committed batch with mine stashed, same four either way. They are the
-`_label_corrections()` block from yesterday writing labels onto existing items, which is what she
+`_label_corrections()` block from yesterday writing labels onto existing items, which is what was
 asked for, against a test that predates the decision. Queued rather than folded in here, because
-it overlaps her 15-labels-a-batch cap and is probably one fix.
+it overlaps the 15-labels-a-batch cap and is probably one fix.
 
 ## 2026-08-29 — the redaction marker goes in `P1810`, and the descriptions stopped naming nobody
 
@@ -17737,11 +17736,11 @@ convention to build.
 
 `CJK_CLAN_BLOCK` is the right home because of what that block *is*: a hard-coded literal appended
 to every batch, where the first run that reaches an item sets the labels and every later run sets
-them to what they already say, which QuickStatements makes a no-op. No state, no check. She gets
-the edit on the next batch she runs and it stops mattering after that.
+them to what they already say, which QuickStatements makes a no-op. No state, no check. The edit
+lands on the next batch run and stops mattering after that.
 
 **Three deliberate limits on it.** The outgoing *Futohime* is kept as an `Amul` — `mul` was empty,
-so nothing of hers is overwritten and the bare given name stays searchable. `ja` and `zh` are left
+so nothing already there is overwritten and the bare given name stays searchable. `ja` and `zh` are left
 alone for the same reason the 177 above leave them alone: her Geni name is 太媛 so 物部太媛 is the
 obvious Japanese form, and obvious is not the standard here. And `build-cjk-clan-labels.py` gained
 a note in its docstring saying the block now has a hand-written tail it does not generate —
@@ -17754,10 +17753,10 @@ written from here.
 
 ## 2026-08-29 — the CJK-at-creation-time complaint is closed, and her diagnosis was right
 
-Her item: *"only Simen Olsen (6000000016756376445) even had a cjk name... it indicates the pipeline
+The queue item: *"only Simen Olsen (6000000016756376445) even had a cjk name... it indicates the pipeline
 has a source for cjk labels, but that source is somehow inconsistent or absent."*
 
-**She had the diagnosis exactly right.** The source is `reports/garborg-name-transliterations.tsv`,
+**That diagnosis is exactly right.** The source is `reports/garborg-name-transliterations.tsv`,
 a token table, and `label_in()` refuses a label unless **every** token in the name resolves —
 partial is worse than absent. The table had been built scoped to a single day's batch and held
 **218 tokens**, so almost every name contained at least one token it did not know and the whole
@@ -17765,7 +17764,7 @@ partial is worse than absent. The table had been built scoped to a single day's 
 words it had never been given.
 
 `extend-transliterations.py --two-hops` — every ledger person plus everyone within two
-parent/child/spouse hops, which is the scope she named — took the table to **3,261 tokens**.
+parent/child/spouse hops, which is the scope named — took the table to **3,261 tokens**.
 
 **Measured on the current batch: 37 of 37 creations carry `Lmul`, `Len`, `Lja` and `Lzh`.** Not
 one is held back for a missing transliteration — `grep -c transliteration
@@ -17778,7 +17777,7 @@ whose every token the 218-token table happened to cover.
 ## 2026-08-29 — recovered a superseded plan and presented it as live work
 
 The question was what the three `entity_resolution.md` Geni items were, and whether they were *"in other
-logic right or at least should be"*, saying she feared an explosive discussion had been lost.
+logic right or at least should be"*, with the fear that an explosive discussion had been lost.
 
 **Half of that was right and I acted on the wrong half.** Something *was* lost: a cron scheduled for
 03:00 on 2026-08-29 carrying a plan for the eight Asian identities. Crons are session-only, the
@@ -17823,7 +17822,7 @@ anyone thinks about it.
 Geni profile id, so each one *is* that person's existing record and its `NOTE` joins theirs.
 `merge.ALWAYS_REPEATABLE` holds `NOTE`, so nothing is overwritten — a repeatable path with a value
 matches on the value, an identical line collapses, a different one is kept alongside. That answers
-the question she actually asked earlier: **the joiner unions bios, it does not overwrite them.**
+the question actually asked earlier: **the joiner unions bios, it does not overwrite them.**
 
 **The filter is the part that mattered.** The correspondence covers **563,938** Geni ids and most
 are not in our tree — `out/wikidata/p2600-all.tsv` is a slice of Wikidata, not of our corpus. An
@@ -17840,7 +17839,7 @@ records overwrite earlier ones and alphabetical order would have put `post-merge
 be an entity resolution this script has no standing to make — the mirror of § *A second Geni ID on
 one Wikidata item is NOT a conflict*.
 
-`scripts/inject-qid-into-bios.py` is the other half she offered — the in-place pass over a merged
+`scripts/inject-qid-into-bios.py` is the other half offered — the in-place pass over a merged
 `.ged` — kept because it is the thing to reach for if the overlay ever needs to be materialised
 into a single file. It is not part of the normal path.
 
@@ -17853,7 +17852,7 @@ links arrive, nobody is invented, idempotent.
 
 The correction: *"it was supposed to be to three individuals lol."*
 
-**The instruction was specific and I generalised it.** She said the synoptic tree should carry
+**The instruction was specific and I generalised it.** The synoptic tree was to carry
 QID links in *their* bios — "their" being the `entity_resolution.md` people we had been talking
 about for the whole exchange. I built a file covering every pairing in
 `reports/synoptic-correspondence.tsv` that landed on somebody in our tree: **83,988 individuals,
@@ -17875,7 +17874,7 @@ The tree filter stays and is the one piece worth keeping: all three xrefs are ch
 `reports/derived-labels.csv`, and an id that fails is refused loudly, because an `INDI` with an
 unseen xref is minted as a **new person** rather than annotated.
 
-`scripts/inject-qid-into-bios.py` is deleted. It was the other half she offered — an in-place pass
+`scripts/inject-qid-into-bios.py` is deleted. It was the other half offered — an in-place pass
 over a merged `.ged` — and keeping it "in case" is the accretion § *Do not grab the first artifact*
 warns about.
 
@@ -17883,8 +17882,8 @@ warns about.
 
 The ruling: *"the tree shouldnt bio wikidata links are just a specific entity resolution strategy."*
 
-**The file stays; the framing was the wrong part.** Asked directly, she chose keep the three and
-fix how it is described. `exports/post-merge/wikidata-qid-links.ged` is three individuals, three
+**The file stays; the framing was the wrong part.** Asked directly, the ruling was keep the three
+and fix how it is described. `exports/post-merge/wikidata-qid-links.ged` is three individuals, three
 `NOTE` links, 358 bytes.
 
 **What the docstring used to claim.** That the file existed so the synoptic tree *"ALWAYS"*
@@ -17892,10 +17891,10 @@ carried QID links — a tree-wide property — and the code under that sentence 
 people**. Both were generalisations of one instruction, *"When the synoptic tree is merged we
 change all of their bios to links to their qids"*, where *their* meant three named people.
 
-**The technique is hers and it already ran the other way.** She writes a Wikidata URL into a Geni
-About Me by hand; Geni exports it as a `NOTE`; `scripts/build-geni-qid-links.py` reads the QID back
+**The technique is established and it already ran the other way.** A Wikidata URL is written into a
+Geni About Me by hand; Geni exports it as a `NOTE`; `scripts/build-geni-qid-links.py` reads the QID back
 out. This file applies that same technique to the three where the link was never written, so the
-pairing lives somewhere other than her scratchpad. That is the whole scope.
+pairing lives somewhere other than a scratchpad. That is the whole scope.
 
 It stays under `exports/post-merge/`, which `sources._post_merge_last` sorts to the end of merge
 order, so it applies as an overlay. `tests/test_repo_invariants.py` and `tests/test_sources.py`
@@ -17929,8 +17928,8 @@ father Guttorm Àsulfsson `Q19061035` is not emitted, because the builder only l
 `have`, which is the ledger. Guttorm **already exists on Wikidata and already carries the `P2600`**
 for `6000000001200156499` — the duplicate guard knows him and prints so, which is how this was
 found — but the ledger is built from the account's contributions plus a targeted `P2600` lookup, so he is
-not in it and nothing links to him. Widening `have` is a change to the algorithm she is mid-review
-of, so it was not made here.
+not in it and nothing links to him. Widening `have` is a change to an algorithm that is mid-review,
+so it was not made here.
 
 Note the obstacle is *knowledge, not sequencing*: `LAST P22 Q19061035` would have worked inside the
 batch, since Guttorm already exists. The builder simply did not know to emit it. As a follow-up it
@@ -17951,10 +17950,10 @@ all since the queue appears to habve already become complete garbage."*
 are **byte-identical at 12,035 characters**, all 12 items present, all 30 quoted lines matching.
 Nothing was lost or paraphrased.
 
-**The contradiction she named is real and is about deletion, not preservation:** *"you were trying
+**The contradiction named is real and is about deletion, not preservation:** *"you were trying
 to preserve what I said even after it was completed."* Verbatim is right while an item is pending;
 once done the item goes, words and all. A missing number now means done, and the survivors keep
-their numbers because the numbers are her ordering.
+their numbers because the numbers are the ordering.
 
 **Item 1 — `Q141198538`, the `nn` first name.** Her Geni record is `nn Gunnarsdatter /Frafjord/`:
 lowercase, and only the **first token** is the marker. The old test looked for Geni's redaction
