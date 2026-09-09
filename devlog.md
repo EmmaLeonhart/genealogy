@@ -32396,19 +32396,30 @@ Outstanding 2,599 → 2,596. Tiny GEDCOMs: 102 profiles, 708 paths, **0 invented
 
 ### Lars Nilsen Oftedal crosses the spine gap, and the disjunctive floor is why he was asked
 
-**Third hit of the run**, 35 steps, *"Charlemagne'''s 32nd great grandson"*, anchor checked by id
-and prose. .
+**Third hit of the run**, 35 steps, *"Charlemagne's 32nd great grandson"*, anchor checked by id
+and by prose. `paths/isolate-geni-lars-nilsen-oftedal-1852.tsv`.
 
-**⛔ Steps 15-20 are the spine'''s missing middle.**  § *THE THREE LINES* records 19
-consecutive people the Charlemagne -> Arne Garborg line still needs, naming *"Lejon, Algotsson,
-Svantepolksdotter"*. This chain walks exactly them: Knut Valdemarsson Duke of Estland ,
-Svantepolk Knutsson , Ingegerd Svantepolksdotter, Algot Bryniolfsson, Knut Algotsson,
-Ramborg Knutsdotter Lejon. It shares steps 1-12 with  and
-branches at Guttorm Àsulfsson à Rein'''s daughter rather than his son.
+**⛔ Steps 15-20 are the spine's missing middle.** `CLAUDE.md` § *THE THREE LINES* records 19
+consecutive people the Charlemagne → Arne Garborg line still needs, naming *"Lejon, Algotsson,
+Svantepolksdotter"*. This chain walks exactly them: Knut Valdemarsson, Duke of Estland
+`Q3743799`, Svantepolk Knutsson `Q6197518`, Ingegerd Svantepolksdotter, Algot Bryniolfsson, Knut
+Algotsson, Ramborg Knutsdotter Lejon. It shares steps 1-12 with
+`paths/charlemagne-to-arne-garborg.tsv` and branches at Guttorm Àsulfsson à Rein's daughter
+Ingrid rather than his son, which is how it reaches Rogaland by a different line.
 
-**And his statistics are the case for the floor being disjunctive**:  **13**,
- **15,000**. Any conjunctive reading, or  alone, would have called
-him unconnected -- and Geni returned a 35-step blood chain. Same shape as Leo Stransky.
+**And his statistics are the case for the floor being disjunctive**: `family_tree` **13**,
+`blood_relatives` **15,000**. Any conjunctive reading, or `family_tree` alone, would have called
+him unconnected — and Geni returned a 35-step blood chain. Same shape as Leo Stransky,
+`devlog.md` 2026-09-06.
 
-The third   misses both searches; , blank
-statistics, no export. Outstanding 2,596 -> 2,594.
+The third `<private> Falch` `307418948000001889` misses both searches: `via=neither`, blank
+statistics, no export. Outstanding 2,596 → 2,594.
+
+**⛔ AND THIS ENTRY HAD TO BE WRITTEN TWICE.** The first attempt passed the prose to
+`python -c "..."` inside a double-quoted bash string, so every backticked identifier in it was
+read by the shell as command substitution and executed: `CLAUDE.md`, `Q3743799`, `family_tree`
+and the two path filenames all vanished from the text, and bash printed 80 lines of
+`command not found` while the append still reported success. The same class as the UTF-8
+heredoc rule in `queue.md` — **prose does not go through a shell string.** Write it to a file
+with a file tool, then append it with Python and an explicit encoding, which is what the two
+entries above it did without incident.
