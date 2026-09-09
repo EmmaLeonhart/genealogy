@@ -3175,7 +3175,7 @@ Hata export contributed 988 new people.
 
 **The counter-prediction was right and `reports/hata.md` was wrong.** It predicted that a `Forest`
 export seeded in the line would bring the breadth a blood-only walk had
-discarded. Her call, made before the export ran, was "likely definitively
+discarded. The ruling, made before the export ran, was "likely definitively
 showing it is just a line".
 
 The clan went 27 → 37 people. **All ten new people are a single unbroken
@@ -3833,7 +3833,7 @@ it is not an artefact of merge sequence:
 | Ancestors | 5 | 2 133 | **20** | **0.9%** |
 
 An `Ancestors` export was returning about **twenty** people nothing else
-reached. `Descendants` returns ~1 195 — sixty times more. Her switch was right,
+reached. `Descendants` returns ~1 195 — sixty times more. The switch was right,
 and the reason is legible: ancestry is shared, so a second walk upward
 re-traverses ground the first already covered, while descent fans into families
 no other seed touches.
@@ -3910,7 +3910,7 @@ Latin-script subset. (2) Geni's NAME is a display *label*; "Unknown Wife"/"NN"
 is a description that belongs in a label or alias, never a P735/P734 link.
 
 **todo.md items 4 and 8 refined with the 2026-08-07 framing.** order.life is
-a third source (on her PC, deliberately deferred, needs a different citation
+a third source (on the local PC, deliberately deferred, needs a different citation
 from the Geni-ID source); the phase order is descendant-search → large export
 campaign → Geni enrichment → offline Wikidata tree + superimposition →
 integrate; and the two-Geni-IDs-on-one-item pairs are mostly Geni duplicates
@@ -3982,7 +3982,7 @@ BLOCKED-ON-USER-ACTION in `queue.md` item 4.
   made the ~100 GB dump download unnecessary.
 - **No ad-hoc Wikidata queries, at all.** Now a standing rule in `CLAUDE.md`,
   as stated. Questions about Wikidata's contents go to `todo.md` § 8b and
-  wait for the store — including her prediction, recorded before the data
+  wait for the store — including the prediction, recorded before the data
   exists, that the Geni-linked items skew to the 20th and 21st centuries the way
   the Geni profiles do.
 
@@ -4082,7 +4082,7 @@ check in `tests/test_cli.py`.
 ## 2026-08-07 (branch `geni-descendants`) — descent paths, not distinct people
 
 A ruling, and it replaced the module's measure a few hours after it was
-built: **count lines of descent, not distinct descendants.** Her recursion —
+built: **count lines of descent, not distinct descendants.** The recursion —
 
     paths(person) = sum over each recorded child c of (1 + paths(c))
 
@@ -4600,7 +4600,7 @@ have cost the next several days.
 
 The repo was re-cloned into place at 16:37. Everything gitignored under `out/`
 went with it, and one of the casualties was the page actually worked from:
-`out/wikidata-unreached.html`, half a million rows telling her which Geni
+`out/wikidata-unreached.html`, half a million rows saying which Geni
 profiles Wikidata names that our tree has never reached. Its own report said
 *"gitignored — regenerate rather than commit"* while nothing in the repo could
 regenerate it. That is the defect, not the clone.
@@ -5401,7 +5401,7 @@ errors, not a broken convention. They still matter before `add-claims.qs` runs.
 Wikramawardhana case, so that one stays undecided. That is a decision about two
 records, not a merge rule — whether `merge_files` should generally prefer the
 richer record remains open, and deriving it from one case would be over-reading
-her.
+it.
 
 ## 2026-08-10 — the method changed, and case 1
 
@@ -5483,7 +5483,7 @@ so the chain can also be historically stale.
 structured GEDCOM record, every `FAM` record they appear in whole, and every
 Wikidata statement **with qualifiers and references**. Long notes and image
 blocks withheld and counted. It compares nothing and concludes nothing — the reading
-asked for the data in front of her, not another report.
+asked for the data itself, not another report.
 
 Ten cases written, 366 distinct QIDs resolved in one query.
 
@@ -5637,7 +5637,7 @@ The blocked half of `queue.md` was emptied by being answered, having pointed out
 what it was doing: *"so much stuff is blocked on user action, and half of this
 stuff probably is stuff that I have no intention of ever actually doing. It's
 just clogging up the queue."* Nine items are gone — not deferred, deleted — and
-five that were recorded as needing her turned out to be mine to research.
+five recorded as needing a ruling turned out to be mine to research.
 
 **Two rules now govern the project, and both narrow it sharply.**
 
@@ -5862,7 +5862,7 @@ ignored and a differing one produces an alias. 47,125 people gain an alias.
 The catalogue asked for as a bulk operation: 242,664 people have a Latin name
 only, 40,571 CJK only, 6,773 only a mixed-script name, 4,694 no usable name at
 all, 2,049 both Latin and CJK, 1,840 another script only. **49,184 people â€”
-16.5% â€” have no derivable English label**, which sizes her *"if there's only a
+16.5% â€” have no derivable English label**, which sizes the *"if there's only a
 name present in some sort of other script, we have to do a translation"*.
 
 No Japanese/Chinese split was attempted: Han characters are shared, a codepoint
@@ -5965,7 +5965,7 @@ checks. `P4602` and `P6375` are both in the table now.
 
 **Tests reached `scripts/` for the first time.** Every CSV that gets decided
 from is written there, and the suite covered `src/genimerge/` only â€” a gap that
-had already produced a real defect. 26 tests now pin the rules that turn her
+had already produced a real defect. 26 tests now pin the rules that turn the
 instructions into data: script grouping, the dot rule, the married-name alias as
 substitution, the invented-parent label format, and the address composition.
 Three small extractions moved those rules out of `main()` so they could be
@@ -6017,8 +6017,8 @@ is a floor rather than a measure of what Wikidata holds.
 
 **The deadname.** A profile was renamed on Geni; the exports taken before were not, so the old name was in every GEDCOM,
 every derived report, and the prose quoting them. **223 files rewritten, zero
-remaining.** Whole-name strings only, and the GEDCOM name pieces only inside her
-own `INDI` record â€” 391 lines carry that surname for other people, and a
+remaining.** Whole-name strings only, and the GEDCOM name pieces only inside that
+profile's own `INDI` record â€” 391 lines carry that surname for other people, and a
 bare-surname substitution would have rewritten strangers.
 
 `out/merged.ged` is gitignored and was missed by the file walk, so it was
@@ -6234,7 +6234,7 @@ the request even came from: one line on 2026-08-13 06:57, *"the old geni export
 there to be downloaded is https://drive.google.com/…"*. A previous session
 recorded that it *"requires Google sign-in and could not be fetched"* and
 suggested a manual download; that conclusion was about plain `WebFetch`, and the
-Drive **MCP server reads it fine**. I carried the stale note forward and told her
+Drive **MCP server reads it fine**. I carried the stale note forward and reported it
 to download it by hand, which is not possible.
 
 The download also cost nothing, against the ~597,000 tokens estimated: the
@@ -6384,7 +6384,7 @@ what to do with `WD ONLY` parents Wikidata has and we lack, and when the
 samaritan high priest qids that you ignored… You deliberately didn't do it
 because it required super easy judgments."* Both true.
 
-**The QIDs are in the Samaritan exports**, written onto the Geni profiles by her:
+**The QIDs are in the Samaritan exports**, written onto the Geni profiles by hand:
 18 `(geni id, QID)` pairs across `exports/samaritans/*.ged`. Aaron `Q51676`,
 Moses `Q9077`, Itamar `Q1675214`, Phinehas I `Q128063`, Baba Rabba `Q2911644`,
 and so on.
@@ -6576,7 +6576,7 @@ It was appended to `queue.md` at 02:46 and is done in full:
 - **Download the Wikidata items for all the Samaritan high priests** — 8 fetched,
   all 21 now held.
 - **Connect them in** — 20 matched to Geni profiles by the exports, the 21st
-  given directly by her; 9 `add_geni_id`.
+  given directly; 9 `add_geni_id`.
 - **Standardise the modelling with the succession** —
   `reports/wikidata-samaritan-succession.json`, 21 office statements with
   `P1365`/`P1366` and term dates, 14 removals of the old `P155`/`P156`.
@@ -6813,7 +6813,7 @@ line**, which is where the length was borrowed from.
 built batches, not work, and it was making the queue look longer than it is. Now
 in `todo.md`.
 
-**Checked on her prompt: `Yitzhaq I ben Tsedaka` is handled consistently.**
+**Checked on request: `Yitzhaq I ben Tsedaka` is handled consistently.**
 `Q137394557` ↔ `6000000227245553985` appears as one `add_geni_id` and in the
 succession with `P1365`/`P1366` and his 1650–1694 term, and is **created
 nowhere**. Had the batches not been rebuilt after export 204 brought him in, he
@@ -6872,7 +6872,7 @@ a rule for when one does, and it is in `CLAUDE.md` rather than here.
 
 **The correction:** *"These are three completely different operations that you conflated
 with each other."* That is right, and the conflation had already cost a wrong
-decision: her 3-8 hour budget belongs to the **individuals** download and I quoted
+decision: the 3-8 hour budget belongs to the **individuals** download and I quoted
 it against the **names** one.
 
 - **Labels** — done 2026-08-12, and never the core data. The framing: *"more of a
@@ -6919,7 +6919,7 @@ Eliazar is complete. But the ruling was clear about what should have been done i
 *"are you trying to somehow, for some bullshit reason, analyze whether the family
 relationships of the Samaritans are correct? Cuz you shouldn't be doing that. The
 family relationships of the Samaritans are done."* Correct — the item was stale
-and the move was to delete it, not to audit her tree. Recorded in `CLAUDE.md`.
+and the move was to delete it, not to audit the tree. Recorded in `CLAUDE.md`.
 
 
 ## 2026-08-15 — item 6, multi-hop relationship labels
@@ -6955,7 +6955,7 @@ bug: it narrowed a search that had no reason to be narrow.
 
 **The model corrects this repo's central claim about patronymics.** `CLAUDE.md`
 said a patronymic was a `P735` given name qualified with `P3831` → `Q110874`, the
-name item being an instance of `Q110874`. Her file gives it **its own property**:
+name item being an instance of `Q110874`. The dictated file gives it **its own property**:
 
     P5056  patronym or matronym
 
@@ -7180,7 +7180,7 @@ unopened. Nordic isolates *without* the occupation filter are Sweden 3,983, Norw
 occupation filter is one 100-profile batch away from being known, and is worth
 running before anything is built on it.
 
-**Also measured: her workflow change is real.** Batch speed went 2.4 → 3.6 → 4.7
+**Also measured: the workflow change is real.** Batch speed went 2.4 → 3.6 → 4.7
 profiles a minute across the three academic batches while the hit rate stayed flat,
 so the improvement is throughput, not selectivity. Hand labour is the limiting factor in
 this loop, which is why the batch size is a decision to set.
@@ -7204,7 +7204,7 @@ now extracted, 0 failures.**
 | **carrying a Wikidata QID** | **224 (2.4%)** |
 | path length | median 33 steps, max 99 |
 
-**The overlap is entirely at her end, and that is the whole strategy.** Only 14% of
+**The overlap is entirely at the account owner's end, and that is the whole strategy.** Only 14% of
 the 9,211 appear in more than one path — the far ends are almost all unique. But
 the near end is shared by nearly everything:
 
@@ -7220,12 +7220,12 @@ the near end is shared by nearly everything:
 the account owner's father, grandfather and great-grandfather are on 597, 434 and 380 of the
 560 paths respectively and are on Wikidata nowhere.
 
-**So the bridge order is forced, and it is short.** Creating ~10 items — her
-direct ancestors in the first four steps — puts a linked node on **the shared
+**So the bridge order is forced, and it is short.** Creating ~10 items — the account
+owner's direct ancestors in the first four steps — puts a linked node on **the shared
 trunk of nearly every path collected.** Every isolate attached afterwards
-reaches Wikidata through that trunk rather than needing its own chain. That is her
+reaches Wikidata through that trunk rather than needing its own chain. That is the
 *"finding the nearest person with a Wikidata ID to me, adding that, forming the
-bridge"* — and the measurement says the nearest useful ones are her immediate
+bridge"* — and the measurement says the nearest useful ones are the immediate
 family, not distant notables.
 
 `reports/path-bridge-targets.csv` ranks all 9,211 by paths-through, with QID where
@@ -7236,7 +7236,7 @@ one exists and the nearest step at which each appears.
 
 **Four questions about the paths, answered.** 560 paths name 9,211 people;
 560 of those are the researchers themselves, so **8,650 are bridge people**
-between her and a researcher.
+between the account owner and a researcher.
 
 | | | |
 | --- | ---: | ---: |
@@ -7294,7 +7294,7 @@ you kind of forgot about them."* Correct — 31 edge exports were placed and no
 measurement followed.
 
 **On the targets: yes.** **23 of the 30 entry points offered in the top 10
-clusters are now reached by 2+ exports.** Her seeding hit what it aimed at.
+clusters are now reached by 2+ exports.** The seeding hit what it aimed at.
 
 **In aggregate: no, and that is arithmetic rather than failure.** Thin population
 191,438 → 193,550; clusters 877 → 945.
@@ -7483,7 +7483,7 @@ it points at the father as a person. Those are different jobs in different scrip
 ## 2026-08-16 — Samaritan normalization: already built, and one real defect
 
 Five priests were listed as *well modelled* and fifteen as *badly modelled*, and
-asked for the normalization to be planned. **What her labels mean is measurable**,
+asked for the normalization to be planned. **What the labels mean is measurable**,
 and it is one property: `P39` *position held* → `Q678510` *Samaritan High Priest*,
 present on **5/5** of the good and **0/15** of the bad. On two other counts the
 badly-modelled ones are *better* — `P2600` *Geni.com profile ID* 10/15 against 2/5,
@@ -7573,7 +7573,7 @@ The count rose 1,109 → 1,555 because `is_unnamed` now catches the people order
 records literally as `NN`, who previously took `NN` as their *English* label. The
 Samaritan batch has no unnamed people and is unchanged at 76.
 
-**The descriptive phrase uses her precedence — parent, spouse, child** — and skips a
+**The descriptive phrase uses the stated precedence — parent, spouse, child** — and skips a
 relative whose own label is a marker, because *"mother of NN"* names nobody.
 
 **The Wikidata side of the same rule, fixed in `81673fb`.** `build-nn-label-batch.py`
@@ -7693,11 +7693,11 @@ The last piece of `name modelling.txt`. `Abisha III` now emits `P735` *given nam
 `Abisha` qualified with `P7338` *regnal ordinal* `"III"`, instead of tokenising to
 `Abisha` + `III` and blocking the whole person because nothing is labelled `III`.
 
-**The value format was settled from data, offline, not from her file.**
+**The value format was settled from data, offline, not from the dictated file.**
 `name modelling.txt` writes Abisha's ordinal as `3`, which reads as an integer. The
 repo's own case dumps show `qualifier P7338 = II`, `= I`, `= VI`, and the single
 `P7338` in the downloaded store — `Q46734` — has **datatype `string`, value `II`**.
-So the arabic numeral in her file is shorthand for the ordinal and the roman form is
+So the arabic numeral in that file is shorthand for the ordinal and the roman form is
 what a statement carries. No Wikidata query was made; `out/cases/` and
 `wikidata/items/` answered it.
 
@@ -7775,7 +7775,7 @@ locals we can describe get overwritten, and anything still reading `NN` now matc
 `cy`, `be`, `pl`, `ru`, `uk` — languages that inflect the name after the relationship
 word, where an undeclined `сын X` would be ungrammatical.
 
-**The one-store failure, named by her again.** *"whenever you say things that seem
+**The one-store failure, named again.** *"whenever you say things that seem
 utterly bizarre… you're using one source, like either the Wikidata or the Jenny
 stuff, and not the Synoptic Tree."* I had measured long-range reach against the
 Wikidata store alone and reported it as worth 3 people. The check was owed and I did
@@ -7794,9 +7794,9 @@ Germanic and Romance languages, 17 people with no named relative at any distance
 
 ## 2026-08-17 — the resume review, and the audit method that would have missed it
 
-Her last instruction before shutting the machine down was to review the last few days
+The last instruction before the machine shut down was to review the last few days
 before taking anything else: *"to ensure, as the first part of the queue, that
-everything's working well and nothing was overlooked."* Done over her **49** messages
+everything's working well and nothing was overlooked."* Done over the **49** messages
 of 2026-08-16 — `reports/audit-resume-2026-08-17.md`. The 08-15 audit covers
 everything earlier.
 
@@ -7818,7 +7818,7 @@ about that directly, *"the structural cases you were going to do and then you di
 do"*; and a saved Geni page's blood path and in-law path are still one concatenated
 chain, against *"as long as you treat it as being two paths and not one."*
 
-**The audit procedure itself was finding 57% of her.** It read
+**The audit procedure itself was finding 57% of the turns.** It read
 `{"type": "user"}` records only. A message typed while a tool call is running is
 written as `{"type": "queue-operation", "operation": "enqueue"}` instead, and on
 08-16 that was **21 of 49** — including *"NN is not relabeled"*, *"there is a bot
@@ -7863,7 +7863,7 @@ Soeria Koesoemah Adinata (Bupati Sumedang)*. 8,270 of those are one-hop `father`
 cases, so it predates the two-hop work. Measured and left alone: Wikidata's uniqueness
 constraint is on label *plus description*, and the spec creates people with labels and
 no description, so nothing collides until descriptions are worked — which is the item
-that already carries her warning about exactly this.
+that already carries the warning about exactly this.
 
 
 ## 2026-08-17 — the structural correspondences finally emit, and a path file is two paths
@@ -7970,7 +7970,7 @@ a 255,465-person merge**, from before the 560-path ingest.
 The old 100% was not a finding, it was 26 hand-picked paths that had already been
 closed. The real number is two thirds.
 
-**This is her agenda item one, and it now has a ranking.** *"find people that are in
+**This is agenda item one, and it now has a ranking.** *"find people that are in
 multiple bridges and are also not in"* our data. The top five clusters:
 
 | slots | people | paths | seed on | style |
@@ -7992,7 +7992,7 @@ path 2 — steps 36–57, 22 of 22 held"*, where it used to present 57 steps as 
 242 of the 586 files say something equivalent.
 
 
-## 2026-08-17 — the two files her first agenda item runs on had no generator
+## 2026-08-17 — the two files the first agenda item runs on had no generator
 
 `reports/path-bridge-targets.csv` and `reports/path-midpoint-seeds.csv` are what
 *"find people that are in multiple bridges and are also not in"* our data is answered
@@ -8038,7 +8038,7 @@ person keeps when a bot clears redundant locals.
 `label_set_for` reads `derived-labels.csv` properly: `mul` and `en` from the Latin
 name, `ja` and `zh` from the Han name **as written** (the same string for both — *"If
 the name is solely in kanji, then the Chinese and Japanese labels are both the same
-for it"*), and `missing_languages` against her seven-language gate. Placeholder-named
+for it"*), and `missing_languages` against the seven-language gate. Placeholder-named
 people get the `NN` treatment by joining `relationship-label-preview.csv` on the Geni
 ID, so this batch and `build-placeholder-label-batch.py` cannot disagree about one
 person.
