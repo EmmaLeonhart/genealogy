@@ -2603,7 +2603,7 @@ Asked whether the whole Jimmu path was present or a targeted export was still
 needed, the answer given was "one more, seeded in the six-person window". That
 was wrong in a specific and instructive way: **It had already been taken.**
 
-**The scoping error.** She had said the exports to integrate were in
+**The scoping error.** The exports to integrate had been named as being in
 `exports/Li Hong/` and `exports/n n/`, so those are the directories that got
 checked, and `exports/archive/` was treated as undifferentiated bulk to ingest
 later. `(22)` and `(23)` landed there at 16:35 and 16:40 — after the ingest —
@@ -2704,7 +2704,7 @@ The tree grew 2.75× and the impossible-date count grew 4.7×. Worth understandi
 before any of it reaches Wikidata; not investigated here.
 
 **`entity_resolution.md`** — a hand-written file, six manual Geni↔Wikidata matches
-plus label edits she wants. All six Geni IDs verified present in the merged
+plus the label edits wanted. All six Geni IDs verified present in the merged
 tree. Nothing in this repo consumes the file yet.
 
 **Not done, and deliberately:** the density measure described in `todo.md` § 3z.
@@ -2729,7 +2729,7 @@ P2600 statements and three English label edits.** Nothing was sent to Wikidata.
 
 **Why a parser rather than transcribing nine lines.** The file says at the top
 "they're a bit unstructured" and is obviously going to grow. Hand-writing the
-batch once would mean hand-writing it again every time she adds an entry. The
+batch once would mean hand-writing it again on every new entry. The
 parser reads what is unambiguously machine-readable — Geni URLs, Wikidata URLs,
 label instructions — and **reports what it cannot understand instead of dropping
 it**, which is the only way a free-form source file is safe to automate over.
@@ -3145,9 +3145,9 @@ Enlil-nirari 225/225, Makeda → Matthew 219/219, Makeda → Marguerite 148/155.
 **The Carolingian block is unchanged** — the same ten people (Louis I the Pious
 down through the Alemannian dukes) still block the same five paths, still 50 of
 the 134 missing steps. `todo.md` § 8 carries the explanation, which no
-measurement here could have produced: she reaches a Geni cluster through nearby
+measurement here could have produced: a Geni cluster is reached through nearby
 contributions, and a region already densely covered by other contributors is one
-she cannot add a profile to, so she cannot make the foothold an export needs.
+no profile can be added to, so the foothold an export needs cannot be made.
 
 ## 2026-08-06 — two exports arrived; one was already held, one is the Hata clan
 
@@ -3611,7 +3611,7 @@ Eight more exports (corpus 115 → 123), merge **228 673 → 239 552 people**,
 Paths: **3 459 of 3 464 held (99.9%), 25 of 26 complete, 2 bridges, 5 people.**
 
 **Both remaining gaps are on `hata`, and neither is Hata.** Asked twice, and
-with justified suspicion, whether Hata people were still missing after she took
+with justified suspicion, whether Hata people were still missing after the run took
 an export specifically for them. They are not. All 13 steps on that path named
 Hata are held; all 35 steps from 21 to 55 — the entire Japanese side — are held.
 The five absent are steps 10 and 17-20: Enok Danielson, Stephen Merrill, Erastus
@@ -3631,7 +3631,7 @@ been mis-stated deserved it: each of the five was grepped against
 referenced by somebody else.
 
 **The export size bound is no longer a mystery.** It is stated: four times the
-number of profiles she has added. That accounts for the multiples of four, for
+number of profiles added. That accounts for the multiples of four, for
 its being neither per-style nor per-seed, and for its rising across a session.
 `GENI_EXPORT_CAP` 4056 → 4068, and its docstring now leads with the mechanism
 rather than with 123 exports of inference.
@@ -3749,7 +3749,7 @@ reads `hata` at 55 of 55, and each of the four profile IDs greps to a real
 **That stretch was one export from being abandoned**, on the reading that it was
 "an extremely dense modern group even more impenetrable than the ancient ones".
 It went through. Both halves are worth keeping: density genuinely does obstruct
-*seeding* — `todo.md` item 8 records why, she cannot add a profile where other
+*seeding* — `todo.md` item 8 records why: a profile cannot be added where other
 contributors are already thick on the ground — and it did not stop this one.
 Neither of us predicted the outcome, in either direction.
 
@@ -3820,7 +3820,7 @@ Final export of the night. Corpus **133 GEDCOMs**, merge **255 465 people**,
 **26 of 26, 3 464 of 3 464**.
 
 **Which export style returns new material, measured.** The question was whether
-`Descendants` is adding more than the `Ancestors` exports she was taking
+`Descendants` is adding more than the `Ancestors` exports being taken
 earlier. Counted as people held by *exactly one* export — order-independent, so
 it is not an artefact of merge sequence:
 
@@ -3858,7 +3858,7 @@ closed at the night it was named for; new exports go to `exports/descendants/`.
 Filing only — every `.ged` under `exports/` is corpus the moment it exists, and
 the merge reads them all recursively.
 
-**`genimerge overlap --offline`.** She wants a running figure for what share of
+**`genimerge overlap --offline`.** A running figure is wanted for what share of
 Wikidata's Geni-linked people we hold, and that number should not cost sixteen
 partitions against a live endpoint every time an export lands. Our side moves
 with every merge; Wikidata's side barely moves between them. `--offline` reuses
@@ -4088,7 +4088,7 @@ built: **count lines of descent, not distinct descendants.** Her recursion —
 
 Somebody reachable down two lines counts twice. That is the intent, not a defect
 to correct: the question this report asks is how many lines come down from a
-person, and a descendant reached twice is two lines. She ruled distinct counting
+person, and a descendant reached twice is two lines. Distinct counting was ruled out
 out as not merely irrelevant here but plausibly *worse* — pedigree collapse is
 dense in this tree, and de-duplicating it makes the top of a wide,
 repeatedly-intermarried descent look narrow.
@@ -4897,7 +4897,7 @@ index. The cut: parents born 1500s or later, because a `Descendants` export
 from one returns that parent's whole descent and is only worth taking when it is
 late enough to arrive where the campaign is going.
 
-**The number she chose from was 829 and the answer is 610.** Building the list
+**The number chosen from was 829 and the answer is 610.** Building the list
 surfaced that `reports/wikidata-ancestors.md` had been counting *findings* where
 it said *profiles*. A parent Wikidata names for three of our children is three
 findings and **one** export; the heading and the century table both counted
@@ -4918,7 +4918,7 @@ are the same number, so it could not have caught this; a new test builds one
 parent over two children and asserts the heading says **1**.
 
 The decision is unaffected — same cut, same reasoning — but the list is a
-third shorter than the figure it was chosen from, and she should know that
+third shorter than the figure it was chosen from, and that is worth stating
 before working down it.
 
 `tests/test_wikiancestors.py`: 22 passed.
@@ -5230,7 +5230,7 @@ a download pass — so `todo.md` 8b was promoted, planned into `queue.md`, and r
 `reports/centuries.md`, `scripts/build-centuries.py`, offline throughout.
 
 **The prediction of 2026-08-07, recorded before the store existed, is half
-right.** She guessed the Geni-linked Wikidata items would *"skew heavily to the
+right.** The guess was that the Geni-linked Wikidata items would *"skew heavily to the
 20th and 21st centuries much as the Geni profiles do, with the 19th ambiguous"*.
 
 - **Wikidata skews modern: right.** 72.8% of its dated Geni-linked people were
@@ -5240,7 +5240,7 @@ right.** She guessed the Geni-linked Wikidata items would *"skew heavily to the
 - **The 19th is ambiguous: right, and precisely.** Geni leads every century
   through the 1800s, Wikidata leads every century after. The 1800s is the
   crossover and the closest the two come in the modern range, 15.0% against
-  18.5%. She named the exact century before the data existed.
+  18.5%. The exact century was named before the data existed.
 
 **The wrong half is the more useful finding.** Our tree is medieval and
 early-modern — the 1200s–1800s carry 57.9% of our dated people, and we hold
@@ -5358,7 +5358,7 @@ stays a hand decision.
 ## 2026-08-10 — BCE was never missing; I was dropping it
 
 The answer to the BCE question was *"it's negative years what the fuck"*, and
-she was telling me what the corpus already does rather than asking for a change.
+that is a statement of what the corpus already does rather than a request for a change.
 
 **`out/merged.ged` carries 4,750 minus-sign `DATE` lines and 2,256 BCE people.**
 My grep for `BC` found nothing, which is true and irrelevant: Geni writes BC as a
@@ -5397,7 +5397,7 @@ carry dates and those run -3305 to 2216, correctly negative. So it is five
 errors, not a broken convention. They still matter before `add-claims.qs` runs.
 
 **Also recorded:** the detailed record was chosen for Ōjin
-(`@I6000000001829492981@`) and said explicitly she does not know the
+(`@I6000000001829492981@`) and said explicitly that it is not known
 Wikramawardhana case, so that one stays undecided. That is a decision about two
 records, not a merge rule — whether `merge_files` should generally prefer the
 richer record remains open, and deriving it from one case would be over-reading
@@ -5408,13 +5408,13 @@ her.
 The project was redirected. The failure named: *"you're just aggressively
 jumping into the database modelling and skipping the interpretation... you've run
 this algorithm on a bunch of stuff without telling me and not even looked at a
-single thing."* From here the work is case-by-case, she interprets, rules come
+single thing."* From here the work is case-by-case, read and interpreted by hand, and rules come
 out of cases rather than being applied to them. `CLAUDE.md` carries the rule.
 
-Three of my displays were wrong in the same way, and she caught all three.
+Three displays were wrong in the same way, and all three were caught.
 
 **"13 generations" above Henry III** was my recursion cap (`seen > 12`) printed
-as a measurement. She said *"either a data issue or you kind of just
+as a measurement: *"either a data issue or you kind of just
 bullshitting"*. Real figure: **34 generations, 717 ancestors**.
 
 **The case display collapsed a 2,686-line record to fifteen lines of my own
@@ -5643,7 +5643,7 @@ five that were recorded as needing her turned out to be mine to research.
 
 **Matching is genealogical only.** *"I only want us to be doing it based off of
 genealogical relationships and connections and stuff. That's all I want. That is
-the entirety of what I'm wanting to do."* The join she gave is the mother: two
+the entirety of what I'm wanting to do."* The join given is the mother: two
 records are the same person when the mother matches on both sides, and a genuine
 conflict is resolved rather than decided, possibly leaving a second or third
 mother. No name similarity anywhere, in any role.
@@ -5652,7 +5652,7 @@ mother. No name similarity anywhere, in any role.
 from a GEDCOM to a Wikidata item. These are very different data structures."*
 
 **The fuzzy matcher is to be ripped out, and it should never have existed.** It
-saw it and asked why there was a matcher she had not consented to. She had not:
+saw it and asked why there was a matcher nobody had consented to. Nothing had:
 `reconcile.py` entered on 2026-07-30 inside commit `8f60681`, whose message is
 entirely about `frontier.py` and a component bug. Worse, its own docstring says
 *"nothing is auto-accepted into the final answer"* while `expand_from_matches`
@@ -5853,13 +5853,13 @@ The twelve-decision stall was replaced with an ordered plan and the instruction
 not to do everything at once. Three of its seven items are done.
 
 **Item 1, labels.** `reports/derived-labels.csv`, one row per person for all
-298,591, applying rules she had already given: the label is the `NAME` line
+298,591, applying rules already given: the label is the `NAME` line
 rendered with slashes removed; grouping is by script and never by language; the
 Latin-alphabet name becomes both the `mul` and the `en` label with noble suffixes
 left in; a lone `.` means the field is absent; a `_MARNM` identical to `SURN` is
 ignored and a differing one produces an alias. 47,125 people gain an alias.
 
-The catalogue she asked for as a bulk operation: 242,664 people have a Latin name
+The catalogue asked for as a bulk operation: 242,664 people have a Latin name
 only, 40,571 CJK only, 6,773 only a mixed-script name, 4,694 no usable name at
 all, 2,049 both Latin and CJK, 1,840 another script only. **49,184 people â€”
 16.5% â€” have no derivable English label**, which sizes her *"if there's only a
@@ -5884,11 +5884,11 @@ one row per person, one pass over the merged GEDCOM. Sex 298,130 Â· occupation
 burial 11,907 and 16,360. Dates go through `genimerge.dates.parse_date`; twelve
 values across nine distinct strings parse to no year and keep their raw text.
 
-**The measured cost of a decision she already made.** Her rule is *ignore `ADDR`,
+**The measured cost of a decision already made.** The rule is *ignore `ADDR`,
 use `PLAC` only*. Applied, **101,579 events carry an `ADDR` block and no `PLAC`
 at all** â€” against 113,912 events where `PLAC` supplied a place. The rule is not
 costing precision on those; it is costing the place entirely, for **47% of the
-events that have any location information**. The alternative she declined â€” use
+events that have any location information**. The alternative declined â€” use
 `ADDR` only when `PLAC` is absent â€” is exactly that population and would never
 override a `PLAC`. The rule stands and is applied; the number is recorded so the
 choice is re-openable on evidence rather than recollection.
@@ -5915,9 +5915,9 @@ The invented-parents rule needed the family shapes counted *before* anything was
 generated, because it is the first step in the plan that creates data. That
 mattered: **the case named is 250 families**, while families with exactly
 one recorded parent are **40,884** â€” 163 times larger and not covered by the
-rule as given. She has since confirmed the no-parent case only, so the 40,884
+rule as given. Only the no-parent case has since been confirmed, so the 40,884
 get nothing. 500 placeholders are in `reports/invented-parents.csv`, labelled
-`father of x and y` as she specified. *"Geni linked if possible"* barely applies:
+`father of x and y` as specified. *"Geni linked if possible"* barely applies:
 only 17 of the 250 groups have even one child carrying a QID.
 
 Routing siblings through invented parents means **no `P3373` is emitted at all**.
@@ -6033,8 +6033,8 @@ rules. `CLAUDE.md` carries the rule in prose without the name.
 
 **Three failures on my side, recorded because the sequence is the point.** I
 called the account owner's Wikidata item being absent *"correctly absentâ€¦ not a gap"* â€”
-defending the enumeration instead of looking. I then asked whether she wanted it
-pulled in, after she had told me to record it and after I had. Then, given her
+defending the enumeration instead of looking. The next question asked whether it was wanted
+pulled in, after the instruction to record it and after it had been recorded. Then, given the
 correct name, I kept the old one in a `further_latin_names` column and called
 that preservation rather than erasure. Each was defensible alone; together they
 were harassment of the person whose deadname it was.
@@ -6116,7 +6116,7 @@ Queue item 0 ran (see the entry above); this is what came of it.
 audit raised:
 
 - **`reconcile`** — the whole module, plus `genimerge reconcile` and `expand`.
-  She had ordered its name-search matcher removed on 08-12 and chose deletion
+  Its name-search matcher had been ordered removed on 08-12, and deletion was chosen
   over stripping. Four offline pieces three other modules still needed moved to
   `genimerge.matching`, which makes no requests and compares no names.
 - **QuickStatements** — module, command, both committed `.qs` files, all four
@@ -6124,14 +6124,14 @@ audit raised:
   deleting the entire thing right now."* The claim model survives in
   `genimerge.claims` with plain `P854`/`P813` references; the `S` prefix was
   QuickStatements marking a reference inside a flat line.
-- **The impossible-years census**, replaced by the report she asked for instead:
+- **The impossible-years census**, replaced by the report asked for instead:
   future dates only. 35 lines on 9 people out of 1,592,331 `DATE` lines.
 
 `HANDOFF.md` went too. **969 tests pass** after all of it.
 
 **`provisional-queue.md` exists now:** *"the old queue is kind of messed
 up… once we're clear of all of this, the provisional queue is just going to
-basically get back into the regular queue."* It also fixes an ambiguity she
+basically get back into the regular queue."* It also fixes an ambiguity that
 caught — *"queuing something for midnight versus setting up a midnight cron job
 are very different things"* — so every scheduled item is listed with its real
 `CronCreate` id.
@@ -6190,7 +6190,7 @@ So the item is closed with no code change, which is the outcome worth having.
 
 ## 2026-08-15 — the 21:00 bloat review, four approved deletions
 
-The cron she asked for at 9pm, run against `reports/repo-freshness.csv` and the
+The cron asked for at 9pm, run against `reports/repo-freshness.csv` and the
 transcript audit. Candidates were put to her with evidence; nothing was deleted
 on my own judgement.
 
@@ -6217,7 +6217,7 @@ which names have items. `reports/name-items.csv` answers that offline.
 **The missing-ancestors machinery** — `check-missing-ancestors.py`,
 `missing-ancestors.md` and three CSVs. Last measured **0 absent** on 2026-08-13
 and the question was called closed. **The `missing ancestors/` directory is
-untouched**: 70 MB of pages she saved by hand, the definitive enumeration of the
+untouched**: 70 MB of pages saved by hand, the definitive enumeration of the
 Geni IDs, and irreplaceable.
 
 Also fixed on the way through: deleting `coverage` took `_read_seed_matches` with
@@ -6235,7 +6235,7 @@ there to be downloaded is https://drive.google.com/…"*. A previous session
 recorded that it *"requires Google sign-in and could not be fetched"* and
 suggested a manual download; that conclusion was about plain `WebFetch`, and the
 Drive **MCP server reads it fine**. I carried the stale note forward and told her
-to download it herself, which she cannot do.
+to download it by hand, which is not possible.
 
 The download also cost nothing, against the ~597,000 tokens estimated: the
 harness spilled the 1.19 MB base64 result to disk, so it was decoded from there
@@ -6376,7 +6376,7 @@ holds: no name similarity, ever.
 
 Three questions are open — whether `MERGE` is right when the labels differ,
 what to do with `WD ONLY` parents Wikidata has and we lack, and when the
-`GENI ONLY` placeholders get recorded. Nothing is written until she answers.
+`GENI ONLY` placeholders get recorded. Nothing is written until it is answered.
 
 ## 2026-08-16 — the Samaritan batch would have created two items that exist
 
@@ -6396,7 +6396,7 @@ the `P2600`.** It queried the store index and nothing else, so a QID that had be
 written onto a Geni profile — a hand-made identity claim Wikidata has not been
 told about yet — was invisible. The batch therefore proposed **creating
 `Jonathan I` (`Q20502598`) and `Baba Rabba` (`Q2911644`)**, both of which already
-exist and both of which she had linked herself. `CLAUDE.md` calls duplicate items
+exist and both of which had already been linked by hand. `CLAUDE.md` calls duplicate items
 the one failure mode that damages Wikidata rather than merely wasting a run. Now
 reads both sources: 78 creations → **76**, and the two children whose father was
 removed point at the real QIDs (`Jair I ben Jonathan` → `P22` `Q20502598`,
@@ -6478,7 +6478,7 @@ It was answered directly.
 **`Q137394557 Yitzhaq I ben Tsedaka` is linked**, given by hand:
 `6000000227245553985`. No match over the exports could have found him — the only
 Geni `Yitzhaq` there has `Shalma II ben Tabia` for a father, and **the profile is
-in none of the 203 exports** because she created it after the last Samaritan
+in none of the 203 exports** because it was created after the last Samaritan
 export ran. All 21 priests are now linked; 9 `add_geni_id` edits.
 
 ## 2026-08-16 — all seven cron prompts written into the queue
@@ -6706,7 +6706,7 @@ rule requires: a `Forest` export seeded on **Abram ben Yitzhaq**
 
 The context is worth keeping: the re-export happened because `Yitzhaq I ben Tsedaka`
 had been left out of the earlier take, and the ball came back 4940 rather than
-4868 **with him in it**. Consistent with the ceiling tracking the profiles she
+4868 **with him in it**. Consistent with the ceiling tracking the profiles that
 has added, and not evidence of any rule about the number — `CLAUDE.md` is
 explicit that this is *largest yet seen*, never a cap Geni enforces.
 
@@ -6788,7 +6788,7 @@ because the fix broke twice on the way.
 it: *"everything appears to be diacritics or stuff that's not actually it. As far
 as Maria goes… there's a male and a female Maria."*
 
-She was right. `measure-name-resolution` folded diacritics away, so of the nine
+That was right. `measure-name-resolution` folded diacritics away, so of the nine
 `Maria` candidates **four were `María`, `Mária` or `Marià`** — Spanish, Hungarian
 and Catalan names with their own Wikidata items on purpose. Collapsing them
 manufactured ambiguity that does not exist:
@@ -6801,7 +6801,7 @@ manufactured ambiguity that does not exist:
 
 1,545 names moved from *create* to *link* — every one a duplicate that would
 otherwise have been created. The genuine residue is the male/female `Maria`
-distinction she named, which is settled by the person's sex rather than the
+distinction named, which is settled by the person's sex rather than the
 string.
 
 **The Itamar spine** — *"Fix the header to say 121."* Done, with the 112 kept in
@@ -6824,7 +6824,7 @@ would have been created and linked at the same time.
 
 **The instruction:** *"PLEASE CLEAN UP THE QUEUE! Oh my God! We did a comprehensive audit of
 the queue, and then you just decided to fuck around and immediately bloat it."*
-She is right. The audit rebuilt it on 2026-08-15 and within a day it was **567
+That is right. The audit rebuilt it on 2026-08-15 and within a day it was **567
 lines**, most of which described work already finished. A queue that narrates is
 not a queue.
 
@@ -31671,7 +31671,7 @@ ruling. No file taken tonight is mislabelled.
 
 ## 2026-09-07 — a bare given name is not a label
 
-Emma, on `Q141352187`: *"this guy was not given an appropriate name originally lol. A single
+On `Q141352187`: *"this guy was not given an appropriate name originally lol. A single
 given name is generally not acceptable and we strongly prefer given name NN, but he has a
 surname anyway lol."* The batch had created him as **`Ånon`**; she corrected the item by hand to
 **`Ånon Byre`**.
