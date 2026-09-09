@@ -32187,9 +32187,9 @@ string.
 emitted **verbatim** into the batch. No transliteration, no `label_in`, no consensus vote, no
 title rule.
 
-**⛔ AND WITHOUT ONE MORE STEP HER VALUE WOULD HAVE LOST SILENTLY.** All four are corrections of
+**⛔ AND WITHOUT ONE MORE STEP THE HAND VALUE WOULD HAVE LOST SILENTLY.** All four are corrections of
 *ours* — the rule gave that item `エマ・レオンハルト`, `艾玛·莱翁哈尔特` and `엠마 레온하르트` on
-2026-09-06, and `reports/label-edits-emitted.tsv` records it. Both her line and the derived one
+2026-09-06, and `reports/label-edits-emitted.tsv` records it. Both the hand line and the derived one
 for the same slot would be emitted, `_cap_label_edits` sorts within a person by
 `(language_rank, rank, order)` so they land adjacent — and **a label REPLACES, so the last one
 written wins**, which is the derived one. The batch would have read as though the correction had
@@ -32238,7 +32238,7 @@ parent deck. Two arms:
 
 * **child** — a parent of our person holds a QID whose `P40` names a child nothing accounts for.
   This is the duplicate guard's own first arm, the one that caught `Q2183430` being created a
-  second time. It has held people back since 2026-08-25 and nothing had put the question to her.
+  second time. It has held people back since 2026-08-25 and nothing had put the question up.
 * **sibling** — a *sibling* of our person holds a QID whose `P3373` names a sibling nothing
   accounts for. It needs no item on the parent at all, and it is evidence our tree structurally
   cannot produce: Geni records no sibling edge.
@@ -32253,7 +32253,7 @@ two answerable questions while a 2×2 of two sons is none.
     sibling   1,727 answerable slots    3,918 ambiguous, census only
     -> 5,249 proposals, 2,891 after one question per person
     -> 2,434 cards: 2,137 child, 297 sibling
-       260 CJK held out per her 2026-09-07 ruling; 197 dropped, Geni records no name on our side
+       260 CJK held out per the 2026-09-07 ruling; 197 dropped, Geni records no name on our side
 
 An `N × 1` slot asks *which of our N is this item?*, which a Same/Different card cannot express —
 offering it as N yes/no cards invites N Sames. Those stay in `reports/family-candidates.tsv` and
@@ -32330,7 +32330,7 @@ page reads *"Charlemagne is connected to…"*, not *"your"*. All five rows carry
 the pair *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin
 Varga `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
 in-law sentence and no Show Me button at all**, so no in-law verdict can be obtained for her
-through the current UI. Her `via` is left blank rather than written `neither`: blank costs a
+through the current UI. That `via` is left blank rather than written `neither`: blank costs a
 revisit, and `neither` would assert a search that was never offered. That population re-queues
 forever on the same rule, which is the same shape as the defect above and is not yet addressed.
 
@@ -32426,7 +32426,7 @@ entries above it did without incident.
 ### ⛔ the in-law chain was being returned as the BLOOD result, and scored `via=both`
 
 **Ellen Christensdatter Thrane `309763264470008240` is the case, and her two path files came back
-byte-identical.** Her page states *"No blood relationship was found."* in words. The run still
+byte-identical.** That page states *"No blood relationship was found."* in words. The run still
 returned `resolved_path` with a 29-step chain, `runInLaw` then found **the same chain again**, and
 `individual.js` scored her `via = "both"` — one chain counted twice, and a blood verdict on a page
 that denies a blood relationship. Written out she would have carried `path_found=yes, via=both`
@@ -32517,7 +32517,7 @@ now the blank that means *ask again* and was read as *nothing to do*.
 
 ## 2026-09-09 — Two name defects found on `Q141353755`, and both were a guard in the wrong place
 
-**Her report:** *"youre still adding names from the generated things on NN people as given
+**The report:** *"youre still adding names from the generated things on NN people as given
 names"*, and *"you aren't linking peoples names as soon as they are created when the items very
 much exist and are ready"*. The item photographed is `Q141353755`, `mul` = `NN ektefelle
 Tollak Jonsson III Aukland`, carrying `P735` given name **Tollak** — her husband.
@@ -32703,7 +32703,7 @@ all 10 are stillborn records. And the `unbalanced` catch-all fires on **3** rows
 **Nothing is emitted.** The scope beyond `noble` — the other lowercase ranks, and whether the
 41,505 capitalised `Sir … , Nth Baronet` labels are in scope at all — is a decision.
 
-## 2026-09-09 — the `noble` batch: 457 people, and both of her narrowings
+## 2026-09-09 — the `noble` batch: 457 people, and both narrowings
 
 **Three rulings on the census above, and two of them narrow it.**
 
@@ -32876,8 +32876,9 @@ both profiles carry Claude extension `1.0.91`, so the two-different-versions not
 
 One line in it was a mis-swept pronoun from `51522915`: *"no in-law verdict is obtainable for
 you… which means you re-queues forever"* is about **Katalin Varga**, a person in the tree, not
-about you. Restored to `her`. That is the trap `CLAUDE.md` § *WRITE TO HER IN THE SECOND PERSON*
-names in its own second exception, and the broken grammar is what made it findable.
+the reader. Restored to `her`. That is the trap a blind pronoun sweep sets — it cannot tell a
+person in the genealogy from the person being written to — and the broken grammar is what made
+it findable.
 
 ## 2026-09-09 — the collector ran again: five targets, three hits, and two defects found
 
@@ -32905,7 +32906,7 @@ headers.
 
 **⛔ AND ON MARGARETA THE TWO CHAINS ARE THE BLOOD TIE AND THE MARRIAGE TIE, out of ONE search.**
 Steps 1-23 descend to her through her father Roberto Sanseverino; steps 24-42 are the
-Berengar/Flanders/Périgord descent to her **husband** Louis — byte-identical to steps 1-18 of his
+Berengar/Flanders/Périgord descent to the **husband** Louis — byte-identical to steps 1-18 of his
 own file — and then one step, *"his wife"*, onto her. That is the ring § *BOTH TIES, ALWAYS* asks
 for, arriving with `inlaw_state` reading `not_offered`, because rule 3 stops the second search
 once blood resolves. Here that rule cost nothing: Geni volunteered the marriage route anyway.
