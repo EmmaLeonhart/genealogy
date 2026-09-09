@@ -32393,3 +32393,22 @@ click — which is what the fixed `runInLaw` produces for the other four by read
 instead. Same verdict, two routes to it.
 
 Outstanding 2,599 → 2,596. Tiny GEDCOMs: 102 profiles, 708 paths, **0 invented people**.
+
+### Lars Nilsen Oftedal crosses the spine gap, and the disjunctive floor is why he was asked
+
+**Third hit of the run**, 35 steps, *"Charlemagne'''s 32nd great grandson"*, anchor checked by id
+and prose. .
+
+**⛔ Steps 15-20 are the spine'''s missing middle.**  § *THE THREE LINES* records 19
+consecutive people the Charlemagne -> Arne Garborg line still needs, naming *"Lejon, Algotsson,
+Svantepolksdotter"*. This chain walks exactly them: Knut Valdemarsson Duke of Estland ,
+Svantepolk Knutsson , Ingegerd Svantepolksdotter, Algot Bryniolfsson, Knut Algotsson,
+Ramborg Knutsdotter Lejon. It shares steps 1-12 with  and
+branches at Guttorm Àsulfsson à Rein'''s daughter rather than his son.
+
+**And his statistics are the case for the floor being disjunctive**:  **13**,
+ **15,000**. Any conjunctive reading, or  alone, would have called
+him unconnected -- and Geni returned a 35-step blood chain. Same shape as Leo Stransky.
+
+The third   misses both searches; , blank
+statistics, no export. Outstanding 2,596 -> 2,594.
