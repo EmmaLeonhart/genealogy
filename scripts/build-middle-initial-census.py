@@ -1,8 +1,8 @@
 """Every person in the corpus whose given names include a bare single letter.
 
-**Why this exists.** Emma, 2026-08-18, on assembling person labels mechanically from
-Wikidata name items: *"As far as the middle initial people, I'm not really sure what to
-do with them, at least going into other languages."* That is an open question, and the
+**Why this exists.** What to do with the middle-initial people when person labels are
+assembled mechanically from Wikidata name items, in languages other than English, is
+undecided. That is an open question, and the
 rule here is that an open question gets a census rather than a proposed rule --
 `CLAUDE.md` § *"Analyse this" means build a CSV of every instance*.
 
@@ -155,9 +155,9 @@ def main() -> None:
         f"{len(people):,} in the corpus. One row per token, so somebody with two "
         "initials appears twice.",
         "",
-        "Emma, 2026-08-18: *\"As far as the middle initial people, I'm not really "
-        "sure what to do with them, at least going into other languages.\"* This is "
-        "the size and shape of that population. It deliberately proposes nothing.",
+        "What to do with the middle-initial people in languages other than English "
+        "is undecided. This is the size and shape of that population. It deliberately "
+        "proposes nothing.",
         "",
         "The difficulty is that an initial is not a name. `John` has a Wikidata name "
         "item and a standard rendering in Japanese; `C` has neither, because it "

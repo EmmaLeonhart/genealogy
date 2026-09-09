@@ -1,8 +1,7 @@
 """How many people have we CREATED on Wikidata carrying a marker as their surname?
 
-**Emma, 2026-08-29**, on finding `Q141217396` labelled *Maria No name*:
-*"Like us to do some level of audit to see the degree that we've created individuals with
-that error."*
+`Q141217396` was found labelled *Maria No name*, and this is the audit of how many
+individuals were created with that error.
 
 The defect is in `labels.is_marker_label`, which tests the whole label or a LEADING marker
 and never a trailing one. Geni writes the unknown-name marker into `SURN`, which lands at

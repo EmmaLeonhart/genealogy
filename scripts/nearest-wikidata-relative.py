@@ -1,9 +1,8 @@
 """How many family-tree hops from a person to somebody who has a Wikidata item?
 
-Emma, 2026-08-12: *"I'd like you to look through my ancestry and ascend through
-my ancestry to find the earliest one of my ancestors that has a Wikidata item …
-It wouldn't necessarily be the earliest ancestor. It would just be the least
-amount of hops in the family tree to somebody with a Wikidata item."*
+Ascend a person's ancestry to find the nearest ancestor who has a Wikidata item.
+Not the earliest ancestor -- the fewest hops through the family tree to somebody
+who has one.
 
 So this is a breadth-first search over the family graph, not a climb up the
 ancestral line. Two runs, because they answer different questions:
@@ -15,7 +14,7 @@ ancestral line. Two runs, because they answer different questions:
 
 Every step is reported, so the path can be read rather than trusted.
 
-    py scripts/nearest-wikidata-relative.py                    # Emma
+    py scripts/nearest-wikidata-relative.py                    # the account owner
     py scripts/nearest-wikidata-relative.py <geni_id>
 """
 

@@ -2,20 +2,20 @@
 
     py scripts/build-merges-page.py [--offline]
 
-**Emma, 2026-09-01:** *"merges put them at the end of the queue with an html page for them"*, and
-then on 2026-09-02, asked whether to build it: *"Build it from the template"*.
+**The merges go at the end of the queue, with an HTML page for them**, built from the existing
+template.
 
-**Why a page at all, measured rather than assumed:** she cleared **207 pairs in one sitting** off
-the parent-adjudication deck and had answered **none** off the equivalent TSV. The markdown
-`reports/merges-to-do.md` is 8 sections she reads by hand; this is the same content as cards.
+**Why a page at all, measured rather than assumed:** **207 pairs were cleared in one sitting**
+off the parent-adjudication deck, and **none** off the equivalent TSV. The markdown
+`reports/merges-to-do.md` is 8 sections to read by hand; this is the same content as cards.
 
-## Built FROM her template, not from scratch
+## Built FROM the template, not from scratch
 
-`out/review-deck.template.html` is hers and hand-approved --- it was
+`out/review-deck.template.html` is hand-approved --- it was
 `out/parent-review.template.html` until 2026-09-09, when the child/sibling deck started sharing
 it and a name meaning one of its three pages stopped being true. Rebuilding a page from scratch
-instead of reusing it was a mistake she named: *"did you regenerate it from scratch instead of
-using the template you used yesterday lol"*. So the palette, the three-state theme handling, the
+instead of reusing it is a named mistake: the template from the previous day is what a new
+deck is built from. So the palette, the three-state theme handling, the
 IBM Plex / Newsreader pairing, the keyboard flow and the `localStorage` key are taken from it.
 
 ## The card carries what actually decides a merge
@@ -26,7 +26,7 @@ building. So each side shows label, description, sitelink count, statement count
 `P2600` — and the Geni tree's own sex and birth–death sit above them, from `derived-facts.csv`.
 
 **The live fetch is the point.** She merges by hand continuously, so a pair may already be done by
-the time she opens the page. `wbgetentities` in batches of 50 answers that: an item that is now a
+the time the page is opened. `wbgetentities` in batches of 50 answers that: an item that is now a
 **redirect** is shown as already merged and is not offered again. `--offline` skips the fetch and
 builds the page from the markdown alone, with the evidence columns blank.
 

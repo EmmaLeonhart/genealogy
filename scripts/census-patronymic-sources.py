@@ -101,7 +101,7 @@ def main():
                     continue
                 # `patronymic_or_surname` is the father's test by construction -- it asks
                 # whether the father carries the same token -- so it is applied on the father
-                # walk only. On the mother walk the token shape and her given name are the
+                # walk only. On the mother walk the token shape and the mother's given name are the
                 # whole evidence, which is what makes `Mariasson` legible.
                 if role == "father" and nm.patronymic_or_surname(tok, par) != "patronymic":
                     continue

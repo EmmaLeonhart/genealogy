@@ -1,8 +1,6 @@
 """Who are the Wikidata people with no genealogy? A demographic census.
 
-**Emma, 2026-08-15:** *"Can you look over the isolated wikidata individuals? I
-want to analyze who they are. We did a bit of analysis but I want to basically
-analyze them demographically."*
+**The isolated Wikidata individuals, analysed demographically: who are they?**
 
 **Isolated means present as an item and absent as genealogy** — `CLAUDE.md`
 § *An item with no relationships is not a missing item*. The Samaritan high
@@ -210,7 +208,7 @@ def main() -> int:
     add = L.append
     add("# Who the isolated Wikidata people are")
     add("")
-    add("**Emma, 2026-08-15:** *\"I want to basically analyze them demographically.\"*")
+    add("**The isolated individuals, analysed demographically.**")
     add("")
     add("**Isolated = the item states no `P22`/`P25`/`P40`/`P3373`/`P26`.** Every one")
     add("is a row in `reports/wikidata-isolates.csv`.")
