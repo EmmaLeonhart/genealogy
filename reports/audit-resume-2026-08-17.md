@@ -1,6 +1,6 @@
 # Resume review — the last few days of conversation
 
-The instruction, 2026-08-16, the last thing she said before shutting the
+The instruction, 2026-08-16, the last thing dictated before shutting the
 machine down:** *"can you just write the stuff down, whatever it is we're doing
 right now, into the queue? I would say probably at the beginning of the queue,
 write a thing about saying to review the last few days of conversation to ensure,
@@ -11,7 +11,7 @@ Run 2026-08-17 on resume, before any other queue item. The window is
 **2026-08-16**, because `reports/audit-transcripts-2026-08-15.md` covers everything
 up to then. Source: transcript `c33ce219`, plus this session's `db9f357e`.
 
-**49 messages from her on 08-16.** Three things she asked for are not done. Everything
+**49 messages on 08-16.** Three things asked for are not done. Everything
 else traces to committed work.
 
 ---
@@ -22,7 +22,7 @@ else traces to committed work.
 procedure says *"a user turn is `message.role == "user"`"*. On 08-16 that finds
 **28** of her **49** messages. The other 21 exist in the transcript only as
 `{"type": "queue-operation", "operation": "enqueue"}` records — what the harness
-writes when she types while a tool call is running, which for her is most of the
+writes for typing while a tool call is running, which is most of the
 time.
 
 Five of the messages a `role == "user"` scan misses:
@@ -125,8 +125,8 @@ do."*
 
 `scripts/walk-structural-merge.py` ran and wrote `reports/structural-correspondence.csv`
 (3,902 rows) and `reports/wikidata-structural-placeholders.json` (12,260). Eight
-sample cases were printed for her. She did not reply, six status reports called that
-a blocker, and **nothing has consumed either file since**. The rule she stated on
+sample cases were printed out. No reply came, six status reports called that
+a blocker, and **nothing has consumed either file since**. The rule stated on
 2026-08-15 — *"we definitely need to… be essentially building up our own
 correspondence of the QIDs and Jenny IDs"* — is what those 3,902 rows are, and they
 are not wired into anything.
@@ -171,12 +171,12 @@ Her other 08-16 instructions, each against the commit or file that answers it:
 | Samaritan qualifiers matter; read Pummer via Wikipedia | `reports/wikidata-samaritan-succession.json`, `P1545` *series ordinal* on 18 of 21 |
 | *"we are right, and Wikidata is wrong for the father"* | `scripts/build-abram-father-fix.py`, 2 edits |
 | Nothing is blocked; 1 September is a start date | `CLAUDE.md` § *A start date is not a blocker* |
-| Not replying means she is content | `CLAUDE.md` § *NO REPLY MEANS CONTENT* |
+| No reply means content | `CLAUDE.md` § *NO REPLY MEANS CONTENT* |
 | `NN` to `mul`, describe the locals, no `remove_label` | `reports/wikidata-nn-labels.json`, 3,525 edits (`f8950e1`) |
 | `Private` and `NN` are the same population | `CLAUDE.md`; the placeholder batch already labels both |
 | Delete the byte-identical duplicate export | `95591e7` |
 | Kill the browsers to save memory | done at the time |
 
-**One she deferred herself and no one should pick up:** the user interview about her
+**One deferred and not to be picked up:** the user interview about the
 business and the Extropic application — *"It's just not the immediate task right
 now."* The 10:07 decision-interview cron covers project decisions and is not that.

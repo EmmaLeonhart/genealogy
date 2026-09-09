@@ -2,7 +2,7 @@
 
 **The request was for exactly this, 2026-08-11.** Shown Aénor of Châtellerault —
 `SURN of Châtellerault`, birthplace Châtellerault, and no `P734` on her Wikidata
-item at all — and offered three options, she chose **"Show me more cases first."**
+item at all — and offered three options, the answer was **"Show me more cases first."**
 So this is the spread, and it proposes nothing.
 
 **No place-name list was used.** That would be the fuzzy matching this repo

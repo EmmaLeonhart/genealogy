@@ -93,7 +93,7 @@ These are read off the sixteen, not asserted in advance. Each one is falsifiable
 
 **A name that differs is not a parent that differs.** Every one of the fourteen `Right` verdicts
 survived at least one parent name that does not match as a string, and she called them right
-anyway. The variation she accepted, by kind:
+anyway. The variation accepted, by kind:
 
 | kind | example | rows |
 | --- | --- | ---: |
@@ -112,7 +112,7 @@ that renamed `CONTRADICTED` to `PARENTS-NOT-JOINED`: **absence never refutes.**
 **An `NN` on their side is an absence, not a name.** Row 15. It is also an opportunity — see below.
 
 **A pair with no evidence at all is still acceptable to her.** Row 20 has no parents on either
-side, a given name that matches and a surname that does not, and she called it **Right**. So
+side, a given name that matches and a surname that does not, and it was called **Right**. So
 `NO-PARENTS` — 10.3% of the join — is not a band to strip out, and the third option offered
 ("a pair with no corroboration should not be in the correspondence at all") was declined. Position
 is evidence in her model even when nothing else is.
@@ -120,7 +120,7 @@ is evidence in her model even when nothing else is.
 **The one Wrong is a whole different shape, and it is nameable.** Row 17 is the only pair of the
 twenty where the person's *own* name shares no word with theirs **and** all four parents are
 different people. Rows 18 and 19 also have own-names that share no word — `Lars`/`Laurens`,
-`Margareta`/`Marjatta` — and she called both Right, because their parents are the same people in
+`Margareta`/`Marjatta` — and both were called Right, because their parents are the same people in
 another orthography. So the discriminator is not "the names differ". It is **whether the parents
 resolve to the same people once language is allowed for.**
 
@@ -135,7 +135,7 @@ three were Right; both browser referrals are rounds 2 and 3. The `ROUND_CAP = 3`
 `scripts/zipper-join.py` is untouched by this — sixteen rows cannot move a cap set against a
 date-measured error curve — but nothing here argues for lowering it.
 
-**Where she stopped is where the family repeats a name across generations.** Row 8 is a John son
+**Where the judging stopped is where the family repeats a name across generations.** Row 8 is a John son
 of a John, and row 11 is one of two Görvels. That is the shape to route to the browser: not "the
 names differ" but **"the names match and there is more than one candidate they could match."**
 

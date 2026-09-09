@@ -59,4 +59,4 @@ shortens the measured chain without advancing the objective at all.
 2. **Exports seeded on the living generations**, which would populate the part of the
    tree this search found empty. That is the other session's job and not this branch's.
 3. **A wider notability search** — books, news, public office — for the same 53, if
-   academic publishing is not the only route she will accept.
+   academic publishing is not the only acceptable route.

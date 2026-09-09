@@ -72,7 +72,7 @@ Lowest eccentricity, 18, is shared by a handful of obscure Rogaland farm people:
 
 **That item is a degree-1 leaf at the maximum eccentricity of the graph, 16 hops from its centre.**
 One edge attaches her: her father. The two notable figures — a canonical Norwegian writer and a
-Swedish antiquarian — are twice as central as she is and carry an order of magnitude more edges.
+Swedish antiquarian — are twice as central and carry an order of magnitude more edges.
 
 ## What that means for how it reads
 

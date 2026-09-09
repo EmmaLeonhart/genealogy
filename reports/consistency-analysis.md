@@ -5,7 +5,7 @@ what's actually going on with them. The chances are there is actually something
 going on with them, and you're just deeming them impossible or whatever… you have
 to do the research on it."*
 
-She was right, and the mechanism is specific.
+That is right, and the mechanism is specific.
 
 ## The defect
 

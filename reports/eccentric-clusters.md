@@ -12,7 +12,7 @@
 
 **2026-09-05, on the first version of this report:** *"your measurement of there being qids is a bit flawed. Both Chinese lines likely have wiki data items even if no connection… Pre dynastic Egypt definitely does… Axum certainly have qids lol… Third intermediate period def has qids lol"*.
 
-**She is right, and the column was mislabelled rather than miscounted.** It counts a `P2600` *Geni.com profile ID* — somebody having **linked** a Geni profile to a Wikidata item. Scorpion I, Makeda Queen of Sheba and Scheschonq all have items; not one has a `P2600`, so the cluster reads `0` and the first version of this report said *"every other cluster is 0"* as though that were a fact about Wikidata's content.
+**That is right, and the column was mislabelled rather than miscounted.** It counts a `P2600` *Geni.com profile ID* — somebody having **linked** a Geni profile to a Wikidata item. Scorpion I, Makeda Queen of Sheba and Scheschonq all have items; not one has a `P2600`, so the cluster reads `0` and the first version of this report said *"every other cluster is 0"* as though that were a fact about Wikidata's content.
 
 **So a `0` here means UNLINKED, and nothing more.** `CLAUDE.md` § *"Is X present?"* is the standing rule: our Wikidata store is a Geni-shaped slice, so absent-from-it never means absent-from-Wikidata, and every absence has to carry the store it is about. The column is now named for what it measures.
 

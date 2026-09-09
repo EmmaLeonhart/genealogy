@@ -7,7 +7,7 @@ not think the security issue is that bad (people who are digging can find stuff)
 opaquely generate stuff for me where I do not know the degree that somethin is your discretion or
 part of the algorithm. Biggest barrier imo is the synoptic tree file stuff."*
 
-Measured 2026-08-29. **She named the barrier correctly, and it is worse than a file-size problem.**
+Measured 2026-08-29. **The barrier was named correctly, and it is worse than a file-size problem.**
 
 ## The size, and a correction
 
@@ -31,7 +31,7 @@ The `.css` and `.download` are saved-page furniture under `geni-scraping/`, not 
 So size costs **checkout time**, not feasibility. It is not a barrier to either going public or
 running a scheduled job.
 
-## The barrier she named: the synoptic tree cannot be built in Actions
+## The barrier named: the synoptic tree cannot be built in Actions
 
 `genimerge merge` over the corpus is **~14 minutes and peaks near 17 GB of RAM** (`CLAUDE.md`
 records 16.8 GB, and 23.6 GB for the idempotence test). GitHub-hosted runners give **16 GB on the
@@ -43,9 +43,9 @@ That is not a size problem to be solved by pruning — it is the job itself.
 **What CAN run in Actions:** the batch generator, `build-garborg-day.py --compose`, reads the
 derived CSVs rather than the merge. Those are committed (gzipped). So a daily emailed batch is
 feasible **as long as the derived CSVs are refreshed by hand elsewhere** — which reintroduces
-exactly the manual step she wants removed, just at a lower frequency.
+exactly the manual step to be removed, just at a lower frequency.
 
-## The privacy question, which is not the barrier she assumed
+## The privacy question, which is not the barrier assumed
 
 Of 1,697,887 name rows in `reports/display-names.csv`:
 

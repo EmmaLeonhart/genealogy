@@ -11,8 +11,8 @@ three sources, then said two by reclassifying one, and both were wrong. The meas
 
 | | channel | how a pair gets in | readout |
 | --- | --- | --- | --- |
-| **1** | **the BIO channel** | she writes the QID into a Geni *About Me*; and `exports/post-merge/wikidata-qid-links.ged` **forces** pairs in as corpus regardless of any export | `reports/bio-qids.tsv` — **184 pairs** |
-| **2** | **the MANUAL PARENTAL ZIPPER channel** | she adjudicates a parent in a **Claude artifact**; the deck writes the verdict | `reports/manual-identifications.csv` — **314 pairs** |
+| **1** | **the BIO channel** | the QID is written into a Geni *About Me* by hand; and `exports/post-merge/wikidata-qid-links.ged` **forces** pairs in as corpus regardless of any export | `reports/bio-qids.tsv` — **184 pairs** |
+| **2** | **the MANUAL PARENTAL ZIPPER channel** | a parent is adjudicated in a **Claude artifact**; the deck writes the verdict | `reports/manual-identifications.csv` — **314 pairs** |
 
     overlap between the two channels: 0
 
@@ -26,7 +26,7 @@ extension a ledger item — *"opening up the way for edits in certain eccentric 
 tree."* Registered in `reports/entry-point-groups.tsv` as `special-geni-gedcom-recognition` with
 `active_from = 2027-01-01`.
 
-## ⛔ THE NAME OF CHANNEL 2, which is the thing she asked to have fixed
+## ⛔ THE NAME OF CHANNEL 2, which is the thing asked to be fixed
 
 **It is the MANUAL PARENTAL ZIPPER MERGE CORRESPONDENCES.** 2026-09-05: *"Artifact entity
 resolution is not 'manual entity resolution' and calling it as such is extremely misleading and
@@ -36,13 +36,13 @@ later agents for other purposes."*
 
 - it is a **manual form of the zipper merge**, the job `zipper-join.py` does by position;
 - **right now, only for parents**;
-- she **hopes to phase it out**, so it is not a permanent channel;
+- it is **hoped to be phased out**, so it is not a permanent channel;
 - **artifact means a CLAUDE artifact**, never a GitHub Actions artifact, which is inaccessible
   to her and against policy.
 
 The file is still `reports/manual-identifications.csv` and the pipeline reads it under that name.
 **Renaming it is part of the queued architectural experiment, not something to do mid-pipeline** —
-she said plainly that the pipeline works and must not be broken.
+the ruling is plain that the pipeline works and must not be broken.
 
 ## ⛔ `bio-qids.tsv` GOES STALE SILENTLY
 

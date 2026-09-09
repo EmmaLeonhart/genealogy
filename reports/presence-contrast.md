@@ -50,7 +50,7 @@ Of the top thirty pre-1600 by contrast, a clear plurality are Roman or late-anti
 Faustus` (400, seen **once** among neighbours seen 16), `Tarrutenia` (405, once against
 16), `Marcus Cocceius Nerva` (−5, once against 15), `Julia Caesaris` (−76, three against
 16), `Juba` (−85, once against 16). The Roman neighbourhoods were named as one of the
-three she thought had been missed; the instrument found them without being told to.
+three thought to have been missed; the instrument found them without being told to.
 
 `reports/presence-contrast-ancient.tsv` is the 392 pre-1600 people at contrast ≥ 6, with
 names, sorted by contrast then by how many neighbours the median rests on.

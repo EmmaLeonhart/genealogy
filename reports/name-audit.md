@@ -33,7 +33,7 @@ exactly that condition and nothing else, so the guard was right and the populati
 | `Q11858191` | `Erik af Palén` | `Erik Johan Abrahamsson af Palén` |
 | `Q12598947` | `Buyeo Taebi` | `Taebi Buyeo` |
 
-A disambiguator we would strip; a Latinised form she chose; a patronymic Wikidata omits by
+A disambiguator we would strip; a hand-chosen Latinised form; a patronymic Wikidata omits by
 convention; and — `Q12598947` — **her own word ordering**, set by hand.
 `CLAUDE.md` § *The purpose is to ADD to Wikidata, not to correct it* governs all of them, and it
 names the Ingegerd case specifically as the thing not to do.
@@ -53,7 +53,7 @@ label edits a batch**, tracked in `reports/label-edits-emitted.tsv`, which is ro
 
 **102 of the 508 ledger items are not in our tree at all** — they appear in
 `reports/garborg-qids.tsv` but not in `reports/derived-labels.csv`, which is why `we_have_none` is
-102 in `en`. Those are people she made items for whom no export has reached: Bureätten members and
+102 in `en`. Those are people with hand-made items whom no export has reached: Bureätten members and
 the medieval end of the spine. Nothing can be said about their labels from here, and an export is
 the only thing that would change that.
 

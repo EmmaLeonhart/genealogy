@@ -40,7 +40,7 @@ Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-cla
 | Kristen | 84 |
 | Ivar | 83 |
 
-## One per person, with the exception she named
+## One per person, with the named exception
 
 *"If you don't know the people are siblings you create one per individual."* The exception is a shared mother plus the same implied name, and it fires for **4023 people forming 1036 shared fathers**. Where the names differ under one mother they are not merged.
 

@@ -21,6 +21,6 @@ Built by `scripts/build-cjk-transcription-labels.py`. **Emits nothing to Wikidat
 | a token nothing can render, so the whole label is withheld | 3,545 |
 | no Latin label to transcribe | 307 |
 
-**`zh` is here although she said `ja` and `ko`.** `translit_no.translit` returns katakana and Chinese from one call, so they are the same engine and the same table column; emitting one and withholding the other would recreate the inconsistency her ruling removed.
+**`zh` is here although the instruction said `ja` and `ko`.** `translit_no.translit` returns katakana and Chinese from one call, so they are the same engine and the same table column; emitting one and withholding the other would recreate the inconsistency the ruling removed.
 
 **The corpus-wide batches still withhold transcription**, and that is deliberate: `build-ja-label-batch.py` and `build-ko-label-batch.py` run over 1.29 million people who are mostly not on Wikidata, where the labels ride along with the creation instead.
