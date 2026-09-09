@@ -1,27 +1,26 @@
 """Take a collector family scrape off stdin as JSON and write it into the repo.
 
-**Emma, 2026-09-06:** *"Only the exports need downloading because you write stuff into files in
-the repo you dummy."* This is the "write it into files in the repo" half. The collector returns
+**Only the exports need downloading; everything else is written into files in the repo.**
+This is the write-it-into-the-repo half. The collector returns
 the scrape on a data attribute; this puts it where it belongs and updates the isolate ledger in
 the same pass, so the two cannot drift.
 
 It writes two things per person:
 
   `geni-families/<geni id>-family.tsv`   step 1 of `docs/per-individual-loop.md`
-  a row in `reports/isolates.csv`        her instruction, 2026-09-03: *"you store these numbers
-                                         even before a path is found or not, but you always stay
-                                         on the page and request the path"*
+  a row in `reports/isolates.csv`        the numbers are stored before a path is found or
+                                         not, and the page is stayed on to request the path
 
 **`path_found` is THREE-VALUED and the blank is load-bearing.** `yes` / `no` / empty-while-running.
 A pending search folded into the miss column is the failure `geni-paths/README.md` § *THE SEARCH
 IS ASYNCHRONOUS* records: nine targets read as *"0 steps"* when they had simply not finished.
 
-**A MISSING STATISTICS ROW IS ZERO** -- Emma, 2026-09-03 on Dorothy Jeakins: *"geni is weird and
-gives zero as not an option there"*. The collector already reads it that way; nothing here turns
-a zero back into a blank.
+**A MISSING STATISTICS ROW IS ZERO.** Dorothy Jeakins is the worked case: Geni does not offer
+zero as a value there. The collector already reads it that way; nothing here turns a zero back
+into a blank.
 
-⛔ **`path_found` MEANS *ANY* PATH. IN-LAW COUNTS.** Emma, 2026-09-07: *"in-law connections are
-just as valid blood is no required lol."*
+⛔ **`path_found` MEANS *ANY* PATH. IN-LAW COUNTS.** In-law connections are just as valid; blood
+is not required.
 
 **AND EVERY `no` WRITTEN BEFORE EXTENSION 1.6.3 MEANS *NO BLOOD PATH* AND NOTHING MORE.** The
 collector only ever dispatched `runPath` with `kind: "blood"`; Geni offers a second search behind
@@ -50,7 +49,7 @@ ISOLATES = ROOT / "reports" / "isolates.csv"
 FIELDS = ["family_tree", "blood_relatives", "ancestors", "descendants", "followers"]
 
 #: Which profile Geni's relationship search is anchored on RIGHT NOW. Set on Charlemagne
-#: 2026-09-06 via `docs/anchor-protocol.md`; everything captured before that is `emma`. If the
+#: 2026-09-06 via `docs/anchor-protocol.md`; everything captured before that is `viewer`. If the
 #: anchor is ever moved, this moves with it -- a row written under the wrong label is worse than
 #: no label, because it is silently counted in the wrong reach rate.
 ANCHOR = "charlemagne"
@@ -246,21 +245,22 @@ def main() -> int:
         verdict = "yes"   # a chain we hold is evidence; today's miss banner does not retract it
     # ⛔ A VERDICT IS MEANINGLESS WITHOUT THE ANCHOR IT WAS TAKEN UNDER.
     #
-    # With the pushpin on the viewer a capture answers *how is this person related to Emma*; on
-    # Charlemagne, *how is this person related to Charlemagne*. Same page, same wording, different
+    # With the pushpin on the viewer a capture answers *how is this person related to the
+    # account owner*; on Charlemagne, *how is this person related to Charlemagne*. Same page,
+    # same wording, different
     # question — and the pilot's deliverable is a reach rate to Charlemagne, so mixing the two
     # produces a number that answers neither. `docs/anchor-protocol.md`.
     #
     # The anchor moved to Charlemagne on 2026-09-06 and every row taken before it is marked
-    # `emma`. A row carries the anchor that was live when its VERDICT was observed, so a
+    # `viewer`. A row carries the anchor that was live when its VERDICT was observed, so a
     # preserved verdict keeps its own anchor rather than inheriting today's.
     prior_anchor = next((r[9] for r in rows[1:] if r and r[0] == gid and len(r) > 9), "")
     anchor = prior_anchor if (verdict and verdict == prior and prior_anchor) else (
         ANCHOR if verdict else "")
     # ⛔ A BLOCK THAT NEVER RENDERED IS BLANK HERE, NOT ZERO.
     #
-    # Her rule is that a row MISSING FROM A PRESENT BLOCK is a real zero -- *"geni is weird and
-    # gives zero as not an option there"* -- and that is unchanged. A block that never appeared
+    # The rule is that a row MISSING FROM A PRESENT BLOCK is a real zero, because Geni does
+    # not offer zero as a value there -- and that is unchanged. A block that never appeared
     # at all is the other thing, and writing it as five zeros makes an unmeasured person
     # indistinguishable from a person who genuinely has nobody. The ledger has no `read`
     # column, so blank is how it says *not measured*, exactly as it already does for
@@ -269,7 +269,7 @@ def main() -> int:
     figures = [(str(stats.get(f, 0) or 0) if read else "") for f in FIELDS]
     # ⛔ WHICH SEARCH ANSWERED. Blank means UNRECORDED, never "blood".
     #
-    # `path_found` is now *any* path -- her ruling, 2026-09-07 -- so a bare `yes`/`no` no longer
+    # `path_found` is now *any* path -- ruled 2026-09-07 -- so a bare `yes`/`no` no longer
     # says which question Geni was asked. `via` says it. A revisit preserves a recorded `via` for
     # the same reason `anchor` is preserved: the observation belongs to the run that made it, and
     # a later pass that asked a different question must not relabel it.

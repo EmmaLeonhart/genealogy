@@ -1,15 +1,14 @@
 """One person, both sides, readable — every QID and PID resolved to its label.
 
-Emma, 2026-08-11: *"the Wikidata stuff is not human-readable at all. You
-absolutely need to fetch the English-language labels of the stuff it's
-referencing for both the properties and these other things."*
+Raw Wikidata is not human-readable: the English labels of everything it
+references have to be fetched, for the properties as well as the items.
 
 Nothing is summarised or dropped from the Wikidata side: every statement, every
 qualifier, every reference snak, with `precision` decoded so a year-precision
 date cannot be mistaken for a day-precision one.
 
 The Geni side omits exactly four line types — `FAMS`, `RFN`, `SUBM`, `CHAN` —
-Emma's rule of 2026-08-11, because the FAM records carry that information
+the rule of 2026-08-11, because the FAM records carry that information
 directly and the pointer lines say nothing on their own. What is omitted is
 printed as a count, never silently.
 
@@ -37,7 +36,7 @@ STORE = REPO_ROOT / "wikidata" / "items"
 INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 LABELS = REPO_ROOT / "out" / "wikidata" / "labels.tsv"
 
-#: Emma's rule, 2026-08-11. Ignored on the individual's own record only.
+#: The rule of 2026-08-11. Ignored on the individual's own record only.
 IGNORED_TAGS = ("FAMS", "RFN", "SUBM", "CHAN")
 
 
@@ -148,7 +147,7 @@ def main() -> int:
     for line in kept:
         print(line)
     if dropped:
-        print(f"\n(omitted {dropped} lines: {', '.join(IGNORED_TAGS)} — Emma's rule 2026-08-11)")
+        print(f"\n(omitted {dropped} lines: {', '.join(IGNORED_TAGS)} — rule of 2026-08-11)")
 
     fams = {
         parts[2]

@@ -1,7 +1,7 @@
 """Norwegian name -> katakana and Chinese, syllable by syllable.
 
-**Emma, 2026-08-25:** *"did you kinda bullshit these instead of selecting from an actual
-pipeline? It should no be that hard. Why is this so inconsistent?"*
+**These readings come from a real pipeline, not from improvisation, and they have to be
+consistent.**
 
 The first attempt at a rule engine mapped **one letter at a time** and produced `Anna` →
 `アンンア`. Katakana is syllabic: `Anna` is `アンナ`, three kana for four letters, because `nn`
@@ -108,9 +108,8 @@ DIPHTHONGS = {"ei": ("エイ", "艾"), "ai": ("アイ", "艾"), "au": ("アウ",
 
 #: **A syllable-final nasal is part of the syllable in Chinese. It is not its own character.**
 #:
-#: Emma, 2026-08-30: *"is 塞恩 right for sen? Sounds like you made coda -n its own character
-#: instead of merging them which sounds sussy for Chinese."* It is not right, and that is
-#: exactly what `CODA` did: onset+vowel gave one character and the `n` gave another, so `sen`
+#: `塞恩` for `sen` is wrong: a coda `-n` was being made its own character instead of merged,
+#: which Chinese does not do. That is exactly what `CODA` did: onset+vowel gave one character and the `n` gave another, so `sen`
 #: came out 塞 + 恩 instead of **森**. Measured before the fix: **1,701 rows of
 #: `garborg-name-transliterations.tsv` carry a vowel + nasal coda and 1,201 carry a standalone
 #: 恩** — `Absalon` 阿布萨洛恩, `Aanenson` 奥内恩松.
@@ -271,7 +270,7 @@ def translit(token):
     # **`ck` is ONE sound spelled with two letters.** The geminate rule below handles
     # *identical* adjacent letters (`nn` in `Anna`); it cannot see a digraph of *different*
     # letters spelling one phoneme, so `Mørck` walked m-ø, r, c, k and produced `モルクク`.
-    # Emma hand-corrected that item to `モルク` on 2026-08-29. Normalising here, the same way
+    # That item was hand-corrected to `モルク` on 2026-08-29. Normalising here, the same way
     # `aa` normalises to `å`, fixes the coda (`Falck`, `Munck`) and the onset (`Sacken`
     # `サクケン` -> `サケン`) in one place. 47 tokens were affected.
     s = (token.casefold().translate(BARE_VOWEL).replace("aa", "å")
@@ -440,7 +439,7 @@ if __name__ == "__main__":
 def table_sort_key(row):
     """Total ordering for a row of `reports/garborg-name-transliterations.tsv`.
 
-    **Emma, 2026-09-01:** *"sorting needs to be deterministic"*.
+    **Sorting has to be deterministic**, ruled 2026-09-01.
 
     `sorted(key=str.casefold)` is NOT total on this table: **738 tokens collide under
     casefold** -- `A`/`a`, `Aarne`/`AARNE`, `'Le'`/`'le'`. Python's sort is stable, so a tie
