@@ -1415,6 +1415,64 @@ their label and take `describe_all`.
 **One is live in the batch on her screen** — `Q141352505` with `P735`, `P734` and `P5056`. Only
 1 of the 552 is in the ledger, so that is the whole exposure today.
 
+### ⛔ A GUARD IN ONE EMITTER IS NOT A GUARD. And NO GIVEN NAME IS NOT NO NAME
+
+**Emma, 2026-09-09, on `Q141353755` — `mul` `NN ektefelle Tollak Jonsson III Aukland`, carrying
+`P735` given name *Tollak*, her HUSBAND:** *"youre still adding names from the generated things
+on NN people as given names"*, and *"you aren't linking peoples names as soon as they are
+created when the items very much exist and are ready"*.
+
+**Two defects, one shape: a rule enforced at a CALL SITE rather than in the model.**
+
+* **`names_a_relative` lived in `build-garborg-day.py` alone.** § *A NAME FIELD THAT NAMES A
+  RELATIVE IS NOT A NAME* was fixed on 2026-09-07 in that file's `fields` loader.
+  **`build-garborg-name-items.py` builds its own `fields` straight from `display-names.csv`** and
+  never went through it, so it emitted a husband's given name as `P735` for two days after the
+  fix was called done. It is in **`namemodel.classify_fields`** now, which every emitter goes
+  through. The loader keeps its own copy for a different job — stopping `statements_tokens`
+  putting a relative's name into `reports/name-tokens-needed.tsv`, which the next day's name-item
+  step ranks first.
+* **`_has_given_name` gated the WHOLE name block.** So a person with no given name got no `P734`
+  and no `P5056` either — `NN Andersson`, `NN Skjelbrei`, every `<private> Surname`, and
+  `En dodfodd son Bielke`, the very case the function was written for. **Its own docstring
+  promised the opposite** — *"`Bielke` still reaches `P734` through the ordinary path"* — and it
+  could not, because the caller never let it. Deleted, from both the additions path and the
+  creation path. **6,978 statements unlocked** — 6,709 `P734`, 269 `P5056`, **zero** `P735` — on
+  6,595 people.
+
+**⛔ A REDACTED PERSON'S SURNAME IS A `P734`.** The creation path's `if not redacted:` was the
+same failure with a different name. § *Redacted people go in* already says it: `<private>
+/Larsson/` withholds the GIVEN name and not the family one, and the surname *"feeds the `P734`
+family-name work"*. The gate was built on a redundancy argument over **three** people —
+*"`Garborg` is their father's family name, which `P22` already says"* — and redundancy is never a
+reason to withhold a statement (§ *The purpose is to ADD to Wikidata*). It then generalised over
+a `redacted` test that has widened enormously since: **114,782** people carry a marker or
+`<private>`, of whom **4,798** have a name the model resolves today.
+
+**Nothing was needed in its place, and that is measured rather than argued.** The marker never
+becomes a name: `<private> Garborg` yields `P734` Garborg alone, `Private` yields nothing, and
+`En dodfodd son Bielke` yields `P734` Bielke alone.
+
+**⛔ AND A GUARD MASKS WHAT IT GUARDS. Removing these surfaced two live defects underneath:**
+
+* **`drop_leading_title` MANUFACTURES A NAME OUT OF "THERE IS NO NAME".** It reads `Stillborn` as
+  a title, so `Stillborn Son` reached `classify_fields` as `Son` and `Stillborn daughter 1` as
+  `daughter 1` — and `is_description` matches the phrase **whole**, so it never saw one. **296
+  stillborn people** would have gained `P735` *Son*, *daughter* and *1*. `statements_for` now
+  blanks `givn` when `is_description` fires on the **raw** field, before the drop chain.
+* **THE MARKER VOCABULARY WAS IN TWO PLACES AND `scripts/labels` OWNS IT.** § *An obvious
+  unknown-word marker goes straight in* says a new marker goes into
+  `labels.WORDS_MEANING_UNKNOWN` **and nothing else** — so `namemodel.UNKNOWN_MARKERS`, a
+  hand-kept set, was blind to **28** markers added there since: `未知`, `佚名`, `unbekannt`,
+  `onbekend`, `inconnu`, and `某`, which Emma approved herself on 2026-08-19 and which is the
+  whole given name on **275** people. Every one was emitting `P735` given name `某` — *a certain
+  one*. `name_shape` unions both now.
+
+**The check before calling a name rule done:** *is it in `namemodel`, or in the emitter I was
+looking at?* There are two emitters and they have disagreed before — § *A TITLE IS NOT A NAME*
+says so in as many words. This is § *Code that is WRITTEN but never CALLED is not done* with the
+call site present and wrong rather than absent.
+
 ### A PERSON IS CREATED WITH THEIR NAME LINKS. Two things were stopping it
 
 **Emma, 2026-09-07:** *"individuals are supposed to be created already having name links and

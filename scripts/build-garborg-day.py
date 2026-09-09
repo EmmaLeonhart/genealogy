@@ -52,6 +52,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
+    names_a_relative as _namemodel_names_a_relative,
     drop_description_suffix, generation_suffix_key,
     normalise_generation_suffix, statements_for,
     suffix_is_native)
@@ -283,52 +284,13 @@ def _relationship_prefixes():
     return frozenset(out)
 
 
-def _relationship_words():
-    """Every relationship noun `WORDS` holds, in every language. `son`, `hustru`, `ektefelle`."""
-    out = set()
-    for words in WORDS.values():
-        for group, forms in words.items():
-            if group == "of" or not isinstance(forms, dict):
-                continue
-            out |= {str(w).casefold() for w in forms.values() if w}
-    return out
-
-
 RELATIONSHIP_PREFIXES = _relationship_prefixes()
-RELATIONSHIP_WORDS = _relationship_words()
 
-
-def names_a_relative(field):
-    """True when a NAME FIELD is a sentence about somebody else, not this person's name.
-
-    **Emma, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
-    relatives... Are you using their wikidata labels instead of their geni?"* No — it is Geni's
-    own field. She is recorded `NAME NN ektefelle Søren Jonson /Aukland/`, so `GIVN` reads
-    **`NN ektefelle Søren Jonson`**: `ektefelle` is Norwegian for *spouse*, and the rest is her
-    HUSBAND. Parsed positionally that gave her his given name `Søren` as `P735` with
-    `P3831` *middle name*, his patronymic `Jonson` as `P5056`, and `Aukland` as `P734`.
-
-    **The tell is structural: an unknown-name MARKER, then a relationship WORD.** `NN` says the
-    name is missing and `ektefelle` says what follows describes a relation — neither alone is
-    enough, and together they cannot be a name. The vocabulary is `WORDS`, the same table
-    `_relationship_prefixes` reads, so a language added there is covered here with no second
-    edit; the markers are `scripts/labels`'.
-
-    **552 people**, and reading them is what settles the shape: `NN ektefelle Ole Tollefson`,
-    `Unknown wife of Brand Hereson`, `NN daughter of Walter & Eva`, `unknown mother of Geoffroy
-    (concubine of Richard I)`, `Unknown Child of Henry I & Mathilda`. Every one of them would
-    have been given a relative's name as their own.
-
-    This is § *A DESCRIPTION IS NOT A NAME* in the GEDCOM FIELD rather than in the label —
-    `is_relationship_description` guards the label and could never see this.
-    """
-    from labels import NARROW_MARKERS, WORDS_MEANING_UNKNOWN
-    tokens = (field or "").split()
-    if len(tokens) < 2:
-        return False
-    markers = {m.casefold() for m in (NARROW_MARKERS | WORDS_MEANING_UNKNOWN)}
-    low = [tok.casefold().strip(".,") for tok in tokens]
-    return low[0] in markers and any(tok in RELATIONSHIP_WORDS for tok in low[1:])
+#: **`names_a_relative` LIVES IN `namemodel` NOW**, applied inside `classify_fields` so every
+#: emitter is covered rather than this one. It was defined here alone from 2026-09-07 to
+#: 2026-09-09, and `build-garborg-name-items.py` -- which builds its own `fields` from
+#: `display-names.csv` -- went on emitting a husband's given name as `P735` the whole time.
+names_a_relative = _namemodel_names_a_relative
 
 
 def is_relationship_description(text):
@@ -1749,27 +1711,6 @@ def _label_collisions():
         return set()
     with open(path, encoding="utf-8") as f:
         return {row["geni_id"] for row in csv.DictReader(f, delimiter="	") if row["geni_id"]}
-
-
-def _has_given_name(fields):
-    """Does this person have a GIVEN name, once a stillborn description is removed?
-
-    **Emma, 2026-08-30, on `Q141224141`:** *"please stop trying to assign names to this person
-    who does not in fact have any names at all."* Geni records him `En dodfodd son Bielke` --
-    Swedish for *a stillborn son* -- and the batch emitted `P735` given name `En`, the
-    indefinite article, carrying `P7452` *usual forename*.
-
-    **Testing the whole label is not enough and that was the first fix.** Stripped, he reads
-    `NN Bielke`, so "does this person have a name" answers yes -- on the strength of a surname.
-    The defect is on the given-name side, so that is what has to be asked. `Bielke` still
-    reaches `P734` through the ordinary path.
-
-    505 people in the corpus carry a stillborn word.
-    """
-    from labels import _STILLBORN_PHRASE, NARROW_MARKERS, WORDS_MEANING_UNKNOWN
-    givn = _STILLBORN_PHRASE.sub(" ", (fields or {}).get("givn", "") or "")
-    markers = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
-    return any(t for t in givn.split() if t.casefold().strip(".,") not in markers)
 
 
 #: Tokens this run rendered on the fly, flushed to the shared table at the end. See the funnel
@@ -6281,11 +6222,12 @@ def main():
             # `GIVN` holds her HUSBAND -- and she went out with his `P735` Søren, his `P5056`
             # Jonson and `P734` Aukland. See `names_a_relative`; **552 people**.
             #
-            # Emptied at the LOADER rather than at the two `name_lines` call sites, so the
-            # `_has_given_name` gates in front of both stop firing, `statements_tokens` does
-            # not put a relative's name into `name-tokens-needed.tsv`, and there is one place
-            # to read rather than two that have disagreed before. The label path is unaffected:
-            # these people are `redacted` on the marker in their label and take `describe_all`.
+            # **Emptied HERE as well as in `classify_fields`, and both are wanted.** The
+            # model's copy is what stops a relative's name becoming a statement, wherever it is
+            # read from; this one stops `statements_tokens` putting that name into
+            # `reports/name-tokens-needed.tsv`, which is what the next day's name-item step
+            # ranks first. The label path is unaffected: these people are `redacted` on the
+            # marker in their label and take `describe_all`.
             if held is not None:
                 for key in ("givn", "surn", "marnm"):
                     if names_a_relative(held.get(key, "")):
@@ -6703,7 +6645,21 @@ def main():
         # The label fix in `labels.strip_markers` is not enough on its own, because the name
         # model reads the raw `GIVN`/`SURN` fields rather than the label, which is exactly the
         # separation `namemodel` was built for. So the gate goes here as well.
-        if absent(q, "P735") and absent(q, "P734") and _has_given_name(fields.get(g)):
+        # **⛔ NO GIVEN NAME IS NOT NO NAME.** Emma, 2026-09-09: *"you aren't linking peoples
+        # names as soon as they are created when the items very much exist and are ready"*.
+        # `_has_given_name` gated this WHOLE block, so `NN Andersson` and `Brita NN` -- and
+        # `En dodfodd son Bielke`, the case the function was written for -- went out with no
+        # name statement at all, while `Q2817217` *Andersson* and `Q37547315` *Bielke* sat
+        # there waiting. The function's own docstring promised the opposite: *"`Bielke` still
+        # reaches `P734` through the ordinary path."* It could not, because the caller never
+        # let it.
+        #
+        # The given-name side is already suppressed where it belongs: `classify_fields` drops
+        # markers and the stillborn phrase, so `NN Andersson` yields `P734` alone and
+        # `En dodfodd son Bielke` yields `P734` alone -- measured, not assumed. The gate was
+        # a second guard for a case the model already handles, paid for with every family
+        # name and patronymic those people should have had.
+        if absent(q, "P735") and absent(q, "P734"):
             dad = father.get(g)
             # The father's NAME, not just his QID: Emma's test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
@@ -7245,46 +7201,54 @@ def main():
         # properly, which he didn't do."* Only tokens whose item ALREADY exists --
         # the ones still to be made are in reports/wikidata-garborg-name-items.txt and
         # join the batch the day after that runs, same single-run rule as everyone.
-        # A redacted profile gets no name statements for the same reason it gets no
-        # label: `<private>` is Geni withholding the name, not a name. Asking the plan
-        # for a `<private>` given-name item produced three "name item missing" rows
-        # that read as work to do, when the right answer is that there is nothing
-        # underneath. The *surname* survives redaction and is real data -- but these
-        # three are `<private> Garborg`, and `Garborg` is their father's family name,
-        # which `P22` already says.
-        # **The same no-name gate as the existing-items path.** A stillborn description is not
-        # a name: `En dodfodd son Bielke` produced `P735` given name `En`, the Swedish
-        # indefinite article, on `Q141224141`. Emma, 2026-08-30: *"please stop trying to assign
-        # names to this person who does not in fact have any names at all."* Gating only the
-        # existing-item path would fix the item she saw and keep making new ones.
-        if not redacted and _has_given_name(fields.get(g)):
-            dad = father.get(g)
-            name_statements, unresolved = name_lines(
-                labels[g], plan, g, father_item(dad),
-                fields=fields.get(g), sex=f["sex"],
-                father_name=labels.get(dad, "") if dad else "",
-                father_aka=aka.get(dad, "") if dad else "",
-                father_given=given_name.get(dad, "") if dad else "")
-            lines.extend(name_statements)
-            # Aliases: the nickname, and the full name under a married surname. Emma
-            # asked for these alongside the second `P734` *family name*.
-            # An alias identical to the label is noise. Now that the married name is
-            # the primary label, `aliases_for`'s married-full-name alias often
-            # duplicates it exactly -- `Aen "Inger Kristoffersdatter"` sitting beside
-            # `Len "Inger Kristoffersdatter"`. The birth-name alias is already emitted
-            # with the labels above, so this carries only what those do not.
-            # **An alias is an `Amul` and nothing else.** Emma, 2026-08-26: *"No aen are
-            # ever supposed to be added"*. This block wrote both, and before 2026-08-25 it
-            # wrote `Aen` alone — an alias that exists only in `en` is invisible to every
-            # other language, which is why `mul` is the one that matters and `en` is the
-            # one that never applies.
-            emitted = {qs(primary), qs(birth)}
-            for alias in aliases_for(fields.get(g, {})):
-                if qs(alias) and qs(alias) not in emitted:
-                    lines.append(f'LAST	Amul	"{qs(alias)}"')
-                    emitted.add(qs(alias))
-            for note in unresolved:
-                carried.append((g, label, f"name item missing: {note}"))
+        # **⛔ A REDACTED PERSON'S SURNAME IS REAL DATA AND BECOMES A `P734`.** `CLAUDE.md`
+        # § *Redacted people go in* says it outright: `<private> /Larsson/` withholds the
+        # GIVEN name and not the family one, and the surname *"feeds the `P734` family-name
+        # work"*. This gate withheld it -- so `NN Andersson`, `NN Skjelbrei` and every
+        # `<private> Surname` went out with no name statement at all while their name items
+        # sat there. Emma, 2026-09-09: *"you aren't linking peoples names as soon as they are
+        # created when the items very much exist and are ready"*.
+        #
+        # The reasoning it was built on was a redundancy argument over THREE people --
+        # *"`Garborg` is their father's family name, which `P22` already says"* -- and
+        # redundancy is not a reason to withhold a statement (§ *The purpose is to ADD to
+        # Wikidata*). It then generalised over a `redacted` test that has widened enormously
+        # since: **114,782** people carry a marker or `<private>`, of whom **4,798** have a
+        # name the model can resolve today -- 3,831 `P734`, 1,333 `P735`, 495 `P5056`.
+        #
+        # **Nothing is needed in its place, measured rather than assumed.** The marker never
+        # becomes a name: `classify_fields` drops it through `name_shape`, so
+        # `<private> Garborg` yields `P734` Garborg alone, `Private` yields nothing, and
+        # `En dodfodd son Bielke` -- the stillborn case the old gate was written for -- yields
+        # `P734` Bielke alone, which is exactly what that gate's own docstring promised and
+        # its caller prevented.
+        dad = father.get(g)
+        name_statements, unresolved = name_lines(
+            labels[g], plan, g, father_item(dad),
+            fields=fields.get(g), sex=f["sex"],
+            father_name=labels.get(dad, "") if dad else "",
+            father_aka=aka.get(dad, "") if dad else "",
+            father_given=given_name.get(dad, "") if dad else "")
+        lines.extend(name_statements)
+        # Aliases: the nickname, and the full name under a married surname. Emma
+        # asked for these alongside the second `P734` *family name*.
+        # An alias identical to the label is noise. Now that the married name is
+        # the primary label, `aliases_for`'s married-full-name alias often
+        # duplicates it exactly -- `Aen "Inger Kristoffersdatter"` sitting beside
+        # `Len "Inger Kristoffersdatter"`. The birth-name alias is already emitted
+        # with the labels above, so this carries only what those do not.
+        # **An alias is an `Amul` and nothing else.** Emma, 2026-08-26: *"No aen are
+        # ever supposed to be added"*. This block wrote both, and before 2026-08-25 it
+        # wrote `Aen` alone — an alias that exists only in `en` is invisible to every
+        # other language, which is why `mul` is the one that matters and `en` is the
+        # one that never applies.
+        emitted = {qs(primary), qs(birth)}
+        for alias in aliases_for(fields.get(g, {})):
+            if qs(alias) and qs(alias) not in emitted:
+                lines.append(f'LAST	Amul	"{qs(alias)}"')
+                emitted.add(qs(alias))
+        for note in unresolved:
+            carried.append((g, label, f"name item missing: {note}"))
 
         # **A creation with NO relationship is not shipped. It is carried.**
         #

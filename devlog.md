@@ -32515,3 +32515,53 @@ a fabricated `no`, and the new reason is what brings him back.
 its absence: the button that is gone once the answer is stated; the segment count that cannot
 rise when the chain is already there; the rendered chain that belongs to the other question; and
 now the blank that means *ask again* and was read as *nothing to do*.
+
+## 2026-09-09 — Two name defects Emma found on `Q141353755`, and both were a guard in the wrong place
+
+**Her report:** *"youre still adding names from the generated things on NN people as given
+names"*, and *"you aren't linking peoples names as soon as they are created when the items very
+much exist and are ready"*. The item she photographed is `Q141353755`, `mul` = `NN ektefelle
+Tollak Jonsson III Aukland`, carrying `P735` given name **Tollak** — her husband.
+
+**Issue one: `names_a_relative` was defined in ONE emitter.** The 2026-09-07 fix went into
+`build-garborg-day.py`'s `fields` loader alone. `build-garborg-name-items.py` builds its own
+`fields` straight from `display-names.csv` and never saw it, so it went on emitting a husband's
+given name as `P735` for two days. Moved to `namemodel.classify_fields`, which every emitter goes
+through; the loader keeps its own copy so `statements_tokens` cannot put a relative's name into
+`reports/name-tokens-needed.tsv`.
+
+**Issue two: `_has_given_name` gated the WHOLE name block, in both emitters.** A person with no
+given name got no `P734` and no `P5056` either — `NN Andersson`, `NN Skjelbrei`, every
+`<private> Surname`, and `En dodfodd son Bielke`, the case the function was written for. Its own
+docstring promised *"`Bielke` still reaches `P734` through the ordinary path"*; it could not,
+because the caller never let it. Deleted. The creation path's `if not redacted:` gate went the
+same way and for the same reason — `CLAUDE.md` § *Redacted people go in* says the surname
+*"feeds the `P734` family-name work"*, and the gate withheld it on a redundancy argument made
+over three people.
+
+**Two further defects the gates had been masking, each surfaced by removing them:**
+
+* **296 stillborn people would have gained `P735` *Son*, *daughter* and *1*.** `statements_for`
+  runs `drop_leading_title` before `classify_fields`, and `drop_leading_title("Stillborn Son")`
+  is `"Son"` — so `is_description`, which matches the phrase WHOLE, never saw one. `givn` is now
+  blanked when `is_description` fires on the raw field.
+* **275 people with `givn` = `某` were emitting `P735` given name `某`**, *a certain one*.
+  `namemodel.UNKNOWN_MARKERS` is a hand-kept set and `scripts/labels` owns the vocabulary, so
+  **28 markers** added there since — `未知`, `佚名`, `unbekannt`, `onbekend`, `inconnu`, and `某`,
+  which Emma approved herself on 2026-08-19 — were invisible to the name model. `name_shape` now
+  unions both.
+
+**Measured over the real corpus, 1,451,993 people.** Model-level deltas: **−453 `P735`**,
+**−1 `P734`**, **−18 `P5056`**. Removing the gates unlocks **6,978 statements** — 6,709 `P734`,
+269 `P5056`, **zero** `P735` — on **6,595 people**. Of the 114,782 carrying a marker or
+`<private>`, **4,798** have a name the model resolves today: 3,831 `P734`, 1,333 `P735`,
+495 `P5056`. The marker itself never becomes a name in any of them: `<private> Garborg` yields
+`P734` Garborg alone, `Private` yields nothing, `En dodfodd son Bielke` yields `P734` Bielke
+alone.
+
+**On the regenerated batch:** `Q141353755 P735 LAST` for *Tollak* is gone and she now carries
+`P734` `Q4821650` **Aukland**, her own surname. **0** `P735` statements land on a marker-labelled
+person, against 1,259 in total. Created people with no name statement went **10 of 68 → 2 of 58**,
+and both remainders are correct — a bare `NN`, and one whose entire `GIVN` is her husband's name
+and whose `SURN` is empty. `NN Andersson` → `P734` `Q2817217`, `NN Skjelbrei` → `P5056`
+`Q51885688`, `NN ektefelle Vebrand Halvorson Årstad` → `P734` `Q30884596` **Årstad**.

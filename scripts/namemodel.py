@@ -1285,7 +1285,14 @@ def name_shape(token):
     m = PAREN.match(token)
     bare = m.group(1) if m else token
     low = bare.casefold()
-    if low in UNKNOWN_MARKERS:
+    # **⛔ ONE MARKER VOCABULARY, AND `scripts/labels` OWNS IT.** `CLAUDE.md` § *An obvious
+    # unknown-word marker goes straight in* says a new marker is added to
+    # `labels.WORDS_MEANING_UNKNOWN` and nothing else -- so this module keeping its own list
+    # meant every marker added there since was invisible here. **28 of them**, including
+    # `未知`, `佚名`, `unbekannt`, `onbekend`, `inconnu` and `某`, which Emma approved herself
+    # on 2026-08-19 (*"Add it"*) and which is the whole given name on 252 Han-only records.
+    # Every one of those 252 was emitting `P735` given name `某` -- *a certain one*.
+    if low in UNKNOWN_MARKERS or low in _unknown_markers():
         return bare, "unknown"
     if low in PARTICLES:
         return bare, "particle"
@@ -1658,6 +1665,77 @@ def without_nickname(label, fields):
     return " ".join(out.split())
 
 
+#: The per-language relationship table, loaded lazily so this module stays import-cheap and
+#: stdlib-only. `build-nn-label-batch.py` owns the vocabulary -- ten languages, the right word
+#: per sex and the right preposition per direction -- and it is read, never restated.
+_RELATIONSHIP_WORDS: frozenset | None = None
+
+
+def relationship_words() -> frozenset:
+    """Every relationship noun the label table holds, in every language: `son`, `hustru`,
+    `ektefelle`."""
+    global _RELATIONSHIP_WORDS
+    if _RELATIONSHIP_WORDS is None:
+        import importlib.util
+        path = Path(__file__).resolve().parent / "build-nn-label-batch.py"
+        spec = importlib.util.spec_from_file_location("_nn_label_words", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        out = set()
+        for words in module.WORDS.values():
+            for group, forms in words.items():
+                if group == "of" or not isinstance(forms, dict):
+                    continue
+                out |= {str(w).casefold() for w in forms.values() if w}
+        _RELATIONSHIP_WORDS = frozenset(out)
+    return _RELATIONSHIP_WORDS
+
+
+def names_a_relative(field: str) -> bool:
+    """True when a NAME FIELD is a sentence about somebody else, not this person's name.
+
+    **Emma, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
+    relatives"*. She is recorded on Geni as `NN ektefelle Søren Jonson /Aukland/`, so her
+    `GIVN` reads `NN ektefelle Søren Jonson` -- `ektefelle` is Norwegian for *spouse* and the
+    rest is her HUSBAND. Parsed positionally that gives her his given name as `P735` and his
+    patronymic as `P5056`.
+
+    **The tell is structural: an unknown-name MARKER, then a relationship WORD.** Neither
+    alone is enough -- `NN Aukland` is the legitimate marker-plus-surname shape and is
+    untouched -- and together they cannot be a name.
+
+    **⛔ IT LIVES HERE, IN THE MODEL, BECAUSE ONE EMITTER IS NOT ALL OF THEM.** It was added
+    on 2026-09-07 to `build-garborg-day`'s `fields` loader, and `build-garborg-name-items.py`
+    -- which builds its own `fields` straight from `display-names.csv` and emits
+    `Q… P735 LAST` for every bearer of a token it creates -- never saw it. Emma, 2026-09-09,
+    on `Q141353755`: *"youre still adding names from the generated things on NN people as
+    given names"*, and the batch on her screen carried
+    `Q141353755 P735 LAST … P3831 Q245025` for **Tollak**, her husband's given name.
+    `classify_fields` is the one place every emitter goes through, so the guard belongs
+    here and a future emitter is covered without being told.
+    """
+    tokens = (field or "").split()
+    if len(tokens) < 2:
+        return False
+    markers = {m.casefold() for m in _unknown_markers()}
+    low = [tok.casefold().strip(".,") for tok in tokens]
+    return low[0] in markers and any(tok in relationship_words() for tok in low[1:])
+
+
+_MARKERS: frozenset | None = None
+
+
+def _unknown_markers() -> frozenset:
+    """`scripts/labels`' markers, lazily -- `NN`, `Private`, `Ukjent`, `unknown` and the rest."""
+    global _MARKERS
+    if _MARKERS is None:
+        import importlib
+        labels = importlib.import_module("labels")
+        _MARKERS = frozenset(m.casefold()
+                             for m in (labels.NARROW_MARKERS | labels.WORDS_MEANING_UNKNOWN))
+    return _MARKERS
+
+
 def classify_fields(givn: str, surn: str, nick: str = "",
                     marnm: str = "", father_name: str = "",
                     father_aka: str = "",
@@ -1682,6 +1760,16 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     The married name carries no ordinal. Sex does not decide whether it is emitted --
     it decides only whether the `P3831` role says *married name*; see `statements_for`.
     """
+    # **⛔ A FIELD THAT NAMES A RELATIVE IS EMPTIED BEFORE ANYTHING READS IT.** See
+    # `names_a_relative`. Here rather than in a caller because there are several callers and
+    # they have disagreed: the 2026-09-07 fix went into `build-garborg-day`'s loader alone, and
+    # `build-garborg-name-items.py` went on emitting `Q141353755 P735 LAST` for **Tollak** --
+    # her husband's given name -- until Emma found it on the live item two days later.
+    # `nick` is left alone: a relative's name does not arrive quoted.
+    givn = "" if names_a_relative(givn) else givn
+    surn = "" if names_a_relative(surn) else surn
+    marnm = "" if names_a_relative(marnm) else marnm
+
     out: list[tuple[str, str, int]] = []
     # **The Latin genitive test needs the father's GIVEN name and nothing else** -- see
     # `latin_patronymic`, where matching any token of his label let a Cypriot surname confirm
@@ -1860,6 +1948,19 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     label = drop_title_tail(label)
     if fields:
         fields = dict(fields)
+        # **⛔ THE DROP CHAIN MUST NOT MANUFACTURE A NAME OUT OF "THERE IS NO NAME".**
+        # `drop_leading_title` reads `Stillborn` as a title, so `Stillborn Son` arrived at
+        # `classify_fields` as `Son` and `Stillborn daughter 1` as `daughter 1` -- and
+        # `classify_fields` recognises the phrase WHOLE, through `is_description`, so it never
+        # saw one. That produced `P735` given name *Son*, *daughter* and *1* on **296**
+        # stillborn people. Emma, 2026-08-30: *"please stop trying to assign names to this
+        # person who does not in fact have any names at all."*
+        #
+        # It was invisible because `build-garborg-day` gated the whole name block on its own
+        # `_has_given_name`, which reads the RAW field and so answered correctly. The guard
+        # masked the defect instead of fixing it, and removing the guard is what surfaced it.
+        if is_description(fields.get("givn", "")):
+            fields["givn"] = ""
         for _f in ("givn", "surn", "marnm"):
             if fields.get(_f):
                 if fields.get("nsfx"):
