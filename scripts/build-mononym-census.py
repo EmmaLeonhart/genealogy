@@ -1,6 +1,6 @@
 """Every person in the corpus Geni records as having no surname at all.
 
-**Emma's definition, 2026-08-18: mononyms are `Name /./`.** Geni writes an explicit
+**The definition: mononyms are `Name /./`.** Geni writes an explicit
 full stop in the GEDCOM surname slot to mean *this person has no surname*, which is a
 positive statement and not the same as an empty slot. **10,695** NAME lines carry it.
 
@@ -11,9 +11,9 @@ instead was the empty-slot population. Both are reported below now, apart, becau
 are different statements: `/./` is Geni saying there is no surname, and `//` is Geni
 saying nothing.
 
-**Emma's rule for what they get, same day:** *"if it repeats, it's a name. If it repeats
-over 10 times, I think that was our actual criterion. […] People with mononyms get a
-first name if it's a repeated name."* So a mononym is not a defect to pad out with an
+**The rule for what they get:** if it repeats, it is a name; if it repeats over ten
+times, that is the criterion. People with mononyms get a first name where the name is a
+repeated one. So a mononym is not a defect to pad out with an
 `NN` surname — the person gets a `P735` *given name*, and only when the token repeats,
 because a token carried once is as likely to be a fragment or a place as a name. The
 threshold matches `MIN_BEARERS` in `scripts/build-name-item-batch.py`.
@@ -21,11 +21,11 @@ threshold matches `MIN_BEARERS` in `scripts/build-name-item-batch.py`.
 **The marker vocabulary is imported, never redefined.** The first version carried its own
 English-only set and so ranked `Ukjent` (Norwegian) and `未知` (Chinese) — both meaning
 *unknown* — among Anna, Anders and Lars as though they were names. `scripts/labels.py`
-already held `ukjent`, which is Emma's *"I thought that was in the logic"*; `未知` was
+already held `ukjent`, as the logic was expected to; `未知` was
 genuinely missing and has been added there. That module is the single place that decides
 what a marker is, per `CLAUDE.md`, and the whole failure came from having a second copy.
 
-Those people are not dropped. Emma: *"Ukjent and 未知 get the mul NN treatment"* — the
+Those people are not dropped. `Ukjent` and `未知` get the `mul` `NN` treatment — the
 shape in `CLAUDE.md` § *`NN` is PRESERVED in `mul`*, where `NN` stays in `mul` and
 descriptive labels are added in other languages. They are counted here as markers so they
 do not become a `P735` given name; what they *do* get is that treatment, elsewhere.
@@ -51,7 +51,7 @@ from labels import (NARROW_MARKERS, PUNCTUATION_MARKERS, SINGLE_LETTER_MARKERS,
 OUT_CSV = sources.REPO_ROOT / "reports" / "mononyms.csv"
 OUT_MD = sources.REPO_ROOT / "reports" / "mononyms.md"
 
-#: Emma's number, kept in step with `MIN_BEARERS` in build-name-item-batch.py.
+#: The ruled threshold, kept in step with `MIN_BEARERS` in build-name-item-batch.py.
 MIN_BEARERS = 10
 
 #: Everything `scripts/labels.py` calls a marker. One vocabulary, imported.
@@ -156,7 +156,7 @@ def main() -> None:
     lines = [
         "# People Geni records as having no surname",
         "",
-        "Emma, 2026-08-18: **\"Mononyms are `Name /./`\"** — Geni writes an explicit "
+        "**Mononyms are `Name /./`** — Geni writes an explicit "
         "full stop in the GEDCOM surname slot to say *this person has no surname*. "
         "That is a positive statement, and different from an empty slot, which says "
         "nothing. Both are counted here and kept apart.",
@@ -172,9 +172,9 @@ def main() -> None:
         "",
         "## What they get",
         "",
-        "Emma, same day: *\"if it repeats, it's a name. If it repeats over 10 times, "
-        "I think that was our actual criterion. […] People with mononyms get a first "
-        "name if it's a repeated name.\"*",
+        "If it repeats, it is a name; if it repeats over 10 times, that is the "
+        "criterion. People with mononyms get a first name where the name is a "
+        "repeated one.",
         "",
         "| | people |",
         "| --- | ---: |",
@@ -192,9 +192,9 @@ def main() -> None:
         "**The marker vocabulary is imported from `scripts/labels.py`, not redefined.** "
         "The first version carried its own English-only list and ranked `Ukjent` "
         "(Norwegian) and `未知` (Chinese) among Anna, Anders and Lars as if they were "
-        "names. `ukjent` was already in `labels.py` — Emma: *\"I thought that was in "
-        "the logic\"* — and `未知` was the real gap, now added there at 204 occurrences. "
-        "Those people are not discarded: *\"Ukjent and 未知 get the mul NN treatment\"*, "
+        "names. `ukjent` was already in `labels.py`, as expected, and `未知` was the "
+        "real gap, now added there at 204 occurrences. "
+        "Those people are not discarded: `Ukjent` and `未知` get the `mul` `NN` treatment, "
         "so they keep `NN` in `mul` and gain descriptive labels in other languages. "
         "They are excluded here only from becoming a given name.",
         "",

@@ -1,24 +1,21 @@
 """Every distinct name token in the corpus, and how it BEHAVES.
 
-Emma, 2026-08-15, specifying the name-item rule and then asking for this:
-*"running an analysis of this [synoptic] tree, all the different names inside…
-you're supposed to be doing this analysis of most commonly occurring names,
-patronymics, and surnames, and it very much can occur in other languages like
-CJK and stuff."*
+An analysis of the synoptic tree's names: the most commonly occurring names,
+patronymics and surnames, in every language the corpus holds, CJK included.
 
-**"Western convention" is behavioural, not geographic.** Her clarification, and
-the thing this script exists to measure: *"Western convention does not mean that
-there are only western names. For the most part, everything that behaves like a
-surname, or is a first name that behaves like a first name, or is a patronymic,
-would count."* So a token is not classified by what language it looks like. It
-is classified by **which slot it occupies, and how often**.
+**"Western convention" is behavioural, not geographic**, and that is what this
+script exists to measure. It does not mean there are only western names: for the
+most part, everything that behaves like a surname, or is a first name that
+behaves like a first name, or is a patronymic, counts. So a token is not
+classified by what language it looks like. It is classified by **which slot it
+occupies, and how often**.
 
 One row per distinct token, with the counts that decide it:
 
 - `as_given` / `as_surname` / `as_married` — how many `NAME` records put it in
-  `GIVN`, `SURN`, `_MARNM`. **A token in both slots gets both name items** —
-  Emma, 2026-08-15: *"They're two completely different things with completely
-  different objects."* Nothing here adjudicates between them.
+  `GIVN`, `SURN`, `_MARNM`. **A token in both slots gets both name items**: they
+  are two completely different things with completely different objects. Nothing
+  here adjudicates between them.
 - `patronymic_marker` — the suffix or particle matched, empty if none. **The
   marker is evidence, not a verdict**: `-sen` is Danish patronymic morphology and
   is also an ordinary frozen surname, and nothing here can tell those apart. The
@@ -27,7 +24,7 @@ One row per distinct token, with the counts that decide it:
   population is visible rather than lumped in.
 - `placeholder` — `NN`, `?`, `???` and friends, **marked rather than dropped**.
   `CLAUDE.md`: unrequested exception handling is its own category of error, and
-  Emma has objected to placeholder vocabulary being silently removed.
+  silently removing placeholder vocabulary has been ruled against.
 
 Reads `reports/display-names.csv` (444,874 parsed `NAME` records, one row
 each) rather than rescanning the corpus, and de-duplicates bearers by Geni ID so
@@ -55,8 +52,8 @@ MD_OUT = REPO / "reports" / "name-classes.md"
 csv.field_size_limit(10 ** 7)
 
 #: Patronymic morphology, longest suffix first so `-sdatter` wins over `-datter`.
-#: Nordic, Slavic, Arabic and Hebrew forms. Emma: *"The daughter and son would be
-#: the same thing"* — the son and daughter suffixes are one category.
+#: Nordic, Slavic, Arabic and Hebrew forms. The daughter and son forms are the
+#: same thing — the son and daughter suffixes are one category.
 PATRONYMIC_SUFFIXES = [
     "sdottir", "sdóttir", "sdatter", "sdotter", "sson", "ssen", "søn",
     "dottir", "dóttir", "datter", "dotter", "son", "sen", "søn", "zen",
@@ -235,12 +232,11 @@ def main() -> int:
         f"**{len(rows):,} distinct tokens**. One row each in "
         "`reports/name-classes.csv`.",
         "",
-        "**The classification is behavioural, not geographic.** Emma, "
-        "2026-08-15: *\"Western convention does not mean that there are only "
-        "western names… everything that behaves like a surname, or is a first "
-        "name that behaves like a first name, or is a patronymic, would "
-        "count.\"* So a token is placed by which slot it occupies, not by what "
-        "language it looks like.",
+        "**The classification is behavioural, not geographic.** Western "
+        "convention does not mean there are only western names: everything "
+        "that behaves like a surname, or is a first name that behaves like a "
+        "first name, or is a patronymic, counts. So a token is placed by which "
+        "slot it occupies, not by what language it looks like.",
         "",
         f"**{len(rows) - len(real):,} tokens are placeholder vocabulary** "
         "(`NN`, `?`, `???`). They are **marked, not removed** — screened on the "
@@ -263,12 +259,12 @@ def main() -> int:
         f"**{len(patro):,} distinct tokens carry patronymic morphology**, "
         f"borne by {sum(r['bearers'] for r in patro):,} people.",
         "",
-        "Emma's model for these, 2026-08-15: the name item is an **instance of "
-        "patronymic** (`Q110874`), and the statement carries **object of "
-        "statement has role** (`P3831`) → patronymic, where an ordinary middle "
-        "name would carry `Q245025` and a first given name `Q202444`. *\"The "
-        "daughter and son would be the same thing\"* — `-son` and `-datter` are "
-        "one category.",
+        "The model for these: the name item is an **instance of patronymic** "
+        "(`Q110874`), and the statement carries **object of statement has "
+        "role** (`P3831`) \u2192 patronymic, where an ordinary middle name "
+        "would carry `Q245025` and a first given name `Q202444`. The daughter "
+        "and son forms are the same thing \u2014 `-son` and `-datter` are one "
+        "category.",
         "",
         "**The marker is evidence, not a verdict.** `-sen` is Danish patronymic "
         "morphology and is also an ordinary frozen surname; nothing measurable "
@@ -284,11 +280,10 @@ def main() -> int:
     lines += [
         "## What the numbers say",
         "",
-        f"**A token used both ways gets both name items.** Emma, 2026-08-15, "
-        "when this report first tried to adjudicate between them: *\"If "
-        "something is a surname and a given name, then it gets a surname and a "
-        "given name object… They're two completely different things with "
-        "completely different objects.\"* So the "
+        f"**A token used both ways gets both name items.** This report first "
+        "tried to adjudicate between them, and that was refused: if something "
+        "is a surname and a given name, it gets a surname object and a given "
+        "name object, two completely different things. So the "
         f"{len(both):,} `both` tokens are not a problem to be resolved. `Chen` "
         "is a family name **and** a given name; two items, and each person "
         "links to whichever one their record puts them in. There is no "
@@ -308,7 +303,7 @@ def main() -> int:
         "needs its own role.** `Olsen` is recorded as a *given* token for 742 "
         "people and a surname for 266; `Olsdatter` 691 against 213. Geni writes "
         "`Ole Olsen` into `GIVN`, so the patronymic lands where a middle name "
-        "would — the position Emma's model assigns `P3831` → `Q110874` rather "
+        "would — the position the name model assigns `P3831` → `Q110874` rather "
         "than `Q245025`.",
         "",
         "**CJK needs no special case.** 陳 is 3,247 surname against 8 given; 曾 "

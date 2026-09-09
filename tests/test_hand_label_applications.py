@@ -1,9 +1,9 @@
-"""The channel for a label EMMA DICTATES, `reports/label-applications.tsv`.
+"""The channel for a label SET BY HAND, `reports/label-applications.tsv`.
 
-**What is worth pinning is that her value is the one that lands.** A hand row is usually
+**What is worth pinning is that the hand-set value is the one that lands.** A hand row is usually
 correcting a value the rule wrote earlier, so the derived emitters go on proposing their own
-version of the same slot — and a derived edit emitted beside hers is applied second and silently
-wins, in a batch that reads as though her correction went out.
+version of the same slot — and a derived edit emitted beside it is applied second and silently
+wins, in a batch that reads as though the hand correction went out.
 
 The other half is the format's own hazard: it could carry a `D` row, and `CLAUDE.md` § *NO
 descriptions and NO edit summaries* is categorical.
@@ -37,7 +37,7 @@ def test_the_shipped_file_parses_and_emits_verbatim():
     rows = mod.hand_label_applications()
     assert ("Q140568870", "L", "zh", "李命玥", rows[0][4]) == rows[0]
     lines = mod._hand_label_applications(live_labels={})
-    # Exactly what she wrote, with no transliteration, no title rule and no consensus vote.
+    # Exactly the string in the file, with no transliteration, title rule or consensus vote.
     assert 'Q140568870\tLzh\t"李命玥"' in lines
     assert 'Q140568870\tLja\t"エマ・レオンハート"' in lines
     assert 'Q140568870\tAja\t"閻魔獅心"' in lines
@@ -69,9 +69,9 @@ def test_a_label_already_live_is_skipped_and_an_alias_is_not(tmp_path):
     assert 'Q7\tAja\t"テスト"' in lines              # an alias ADDS, and live aliases are unknown
 
 
-def test_a_derived_edit_for_a_slot_she_sets_by_hand_is_dropped():
+def test_a_derived_edit_for_a_hand_set_slot_is_dropped():
     mod = _bgd()
-    covered = mod._hand_covered_slots(['Q1\tLja\t"hers"', 'Q1\tAja\t"her alias"'])
+    covered = mod._hand_covered_slots(['Q1\tLja\t"by hand"', 'Q1\tAja\t"hand alias"'])
     assert covered == {("Q1", "Lja")}               # an alias is not covered: it adds
     derived = ["#   Q1: set the ja label", 'Q1\tLja\t"ours"',
                "#   Q1: an alias", 'Q1\tAja\t"ours"',
