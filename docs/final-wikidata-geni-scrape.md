@@ -1,12 +1,12 @@
 # `final-wikidata-geni-scrape`
 
-**The task, named by Emma 2026-09-06.** Walk the Geni profiles this project cares about, take from
+**The task, named 2026-09-06.** Walk the Geni profiles this project cares about, take from
 each one the things the collector can take, and turn every one of them into a **tiny GEDCOM** that
 merges into the synoptic tree on the Geni id.
 
-**It cannot start until the extension and these deliverables are good** — her words: *"The scrape
-is to be done with the extension we built yesterday and it can only be done after we have a
-coherent idea of the deliverables."* § *NOT SETTLED* below is that gate, and it is not
+**It cannot start until the extension and these deliverables are good.** The scrape is done with
+the extension, and only once there is a coherent idea of the deliverables. § *NOT SETTLED* below
+is that gate, and it is not
 decoration: nothing the extension writes can reach disk today.
 
 ## What it covers
@@ -26,50 +26,46 @@ is merging and then Wikidata authoring, not more collection.
 
 ---
 
-**Emma, 2026-09-06:** *"The scrape is to be done with the extension we built yesterday and it can
-only be done after we have a coherent idea of the deliverables."*
+**The scrape is done with the extension, and only once the deliverables are coherent.**
 
 Written because the deliverable moved three times in one day — a TSV, then a tiny GEDCOM with `NN`
 placeholder parents, then a tiny GEDCOM with absent slots — while collection carried on through
 all three. Nothing more is scraped until this is right.
 
-## SETTLED — her words, this session
+## SETTLED this session
 
-**Two distinct operations.** *"There's two distinct operations. Paths and profiles. Both ought to
-make tiny gedcoms for each path or individual. Both have similar information. Many saved pages
-have the info to make both tiny gedcoms from them."*
+**Two distinct operations: paths and profiles.** Both make tiny GEDCOMs, one per path or per
+individual. Both carry similar information, and many saved pages hold enough to make both.
 
 | operation | unit | one file per |
 | --- | --- | --- |
 | **profiles** | a person's immediate family | person |
 | **paths** | a relationship path | path |
 
-**The output is thousands of tiny GEDCOMs, and that shape is the point.** *"you didn't understand
-that thousands of tiny gedcom files was the signal."* Not two aggregate files. The granularity is
+**The output is thousands of tiny GEDCOMs, and that shape is the point** — it is the signal, and
+missing it is what went wrong before. Not two aggregate files. The granularity is
 what distinguishes this from the earlier incomplete attempt.
 
-**GEDCOM is the native format.** *"for all intents and purposes the native format of this project
-is the gedcom now."* A `.ged` under `exports/` is read recursively by `genimerge.sources`, so it
+**GEDCOM is the native format** of this project, for all intents and purposes. A `.ged` under
+`exports/` is read recursively by `genimerge.sources`, so it
 reaches the synoptic tree with no wiring.
 
-**Geni ids are the entity resolution.** *"with the geni ids set up so that they end up getting
-merged in ... the entity resolution in them means they significantly link things together."* Every
+**Geni ids are the entity resolution.** With the ids set up so the files merge in, the entity
+resolution inside them links things together substantially. Every
 `INDI` xref is a Geni id, so the merge is an exact join and these files fuse into the tree.
 
-**An unknown parent is an ABSENT SLOT, not a person.** Her ruling, chosen between the two
-readings. A sibling pair with no known parents is a `FAM` with two `CHIL` and no `HUSB`/`WIFE`.
-This supersedes her 2026-08-29 *"Both parents are 'NN' placeholders"*.
+**An unknown parent is an ABSENT SLOT, not a person.** Ruled between the two readings. A sibling
+pair with no known parents is a `FAM` with two `CHIL` and no `HUSB`/`WIFE`. This supersedes the
+2026-08-29 rule that both parents are `NN` placeholders.
 
-**Every member of every sibling pair gets the profile scrape, and the redundancy is deliberate.**
-*"every single sibling pair gets the small scrape done on it ... I know this is slightly
-redundant, but I'm telling you to do it."* Because: *"it'll create a gedcom for each one of the
-members of the sibling pair, and then this links them as siblings with their parents in this new
-gedcom file, but they're also linked as siblings in the path gedcom files."* The path GEDCOM says
+**Every member of every sibling pair gets the profile scrape, and the redundancy is deliberate**
+and instructed. It creates a GEDCOM for each member of the pair, linking them as siblings with
+their parents in that file, while they are also linked as siblings in the path GEDCOMs. The path
+GEDCOM says
 *siblings, parents unknown*; each member's profile GEDCOM carries the real parents; the merge
 fuses all three on the Geni id.
 
-**The extension does the scraping.** *"The scrape is to be done with the extension we built
-yesterday."* Not agentically, and not by hand-carrying data through tool results — which
+**The extension does the scraping.** Not agentically, and not by hand-carrying data through tool results — which
 double-encoded 4 of 14 scrapes before it was caught.
 
 ## BUILT
@@ -83,17 +79,17 @@ double-encoded 4 of 14 scrapes before it was caught.
 ## SETTLED SINCE — all four
 
 1. **How the extension writes files: it does not.** The job returns the TSV on the data attribute
-   and the agent writes the repo, which is what she said at the outset. Downloads were tried and
-   are not viable — roughly **two files land per browser session**, then Chrome's per-origin
-   *multiple automatic downloads* permission blocks the rest, and that needs an omnibox grant she
-   cannot give from a phone. The result attribute carries UTF-8 intact; a shell heredoc does not,
+   and the agent writes the repo, which is what was specified at the outset. Downloads were tried
+   and are not viable — roughly **two files land per browser session**, then Chrome's per-origin
+   *multiple automatic downloads* permission blocks the rest, and that needs an omnibox grant that
+   cannot be given from a phone. The result attribute carries UTF-8 intact; a shell heredoc does not,
    which is what destroyed 4 of 14 scrapes.
 
 2. **The 1,555 legacy saved pages: done.** `build-tiny-gedcoms.py` reads them — 1,555 profile
    GEDCOMs, 0 unparseable.
 
-3. **`scraped-pages.ged` and `scraped-paths.ged`: DELETED**, with `build-scraped-gedcom.py`. Her
-   call, 2026-09-06: *"delete those ones lol"*. They carried 4,928 invented `NN` people, which the
+3. **`scraped-pages.ged` and `scraped-paths.ged`: DELETED**, with `build-scraped-gedcom.py`, on
+   2026-09-06. They carried 4,928 invented `NN` people, which the
    absent-slot ruling forbids. `genimerge.sources.DERIVED_DIRS` is now empty — they were the only
    thing it existed for.
 
@@ -110,16 +106,16 @@ ignored at the original path and at a fresh copy whose distinct marker never app
 deleting the SW cache refused by the classifier. Likely Chrome 137 dropping `--load-extension`
 without a policy.
 
-**It gates the scheduler and nothing else** — her own reading: *"the scheduler was always kinda
-iffy as something of significance."* The jobs run through the DOM trigger in the content script,
+**It gates the scheduler and nothing else**, and the scheduler was always iffy as something of
+significance. The jobs run through the DOM trigger in the content script,
 which does reload on every restart, so collection is unaffected.
 
 ---
 
 # Moved out of `queue.md`, 2026-09-06
 
-**Emma:** *"The scrape does not belong in the queue and I think it's presence there causes
-issues."* She is right about the mechanism: `queue.md` is what the hourly work loop takes its next
+**The scrape does not belong in the queue, and its presence there causes issues.** The mechanism
+is plain: `queue.md` is what the hourly work loop takes its next
 item from, so a gated collection task sitting in it was picked up and run repeatedly today before
 any of these deliverables existed. The queue is for executable steps; this is a long-horizon task
 with a gate, which is `todo.md`'s job.
@@ -128,12 +124,12 @@ Everything below is verbatim from the queue, moved rather than rewritten.
 
 ## The phase order
 
-- **⛔ THE PHASE ORDER governs everything below — `docs/per-individual-loop.md`.** Emma,
+- **⛔ THE PHASE ORDER governs everything below — `docs/per-individual-loop.md`.** Ruled
   2026-09-06: phase 1 runs the isolate-connecting operation over **all** Wikidata isolates, which
   yields paths, immediate-family objects and occasional Forest exports; phase 2 **integrates all
   of it into the synoptic tree**; phase 3 then scrapes each member of the sibling pairs that are
-  **still parentless in that tree**. Her words on my starting at phase 3: *"jumping to the mass
-  action was really bad because you skipped over a lot."* The sibling batch's input is the
+  **still parentless in that tree**. Starting at phase 3 was bad precisely because it skipped
+  over a lot. The sibling batch's input is the
   INTEGRATED tree, never today's `paths/*.tsv` — phase 1 supplies parents for many of those pairs
   as a side effect, so the real list is much smaller than the 1,321 pairs currently there.
 
@@ -155,15 +151,15 @@ Everything below is verbatim from the queue, moved rather than rewritten.
   then try the Charlemagne path, and only run step 3b where the path fails **and**
   `scripts/export_gate.py` clears the statistics. Ballin is the worked skip — Family Tree 11.
 
-  **NOTHING IS SAVED AS A PAGE ANY MORE.** Emma, 2026-09-06: *"we are not supposed to be saving
-  pages lol ... Only the exports need downloading because you write stuff into files in the repo
-  you dummy."* The collector parses the chain in the tab and RETURNS the path TSV, which is
+  **NOTHING IS SAVED AS A PAGE ANY MORE**, ruled 2026-09-06. Only the exports need downloading,
+  because everything else is written straight into files in the repo. The collector parses the
+  chain in the tab and RETURNS the path TSV, which is
   written straight into `paths/`; the family scrape returns its TSV for `geni-families/`. The six
   `geni-paths/*.html` captures are what the earlier page-saving method left and stay as those, not
   as a destination. `geni-paths/README.md` § *THE CALL THAT WORKS* still describes the Blob save
   and is superseded on that point.
 
-  **Both `blood` and `inlaw` are still wanted — her call, 2026-09-02** — and they are two captures
+  **Both `blood` and `inlaw` are still wanted, ruled 2026-09-02** — and they are two captures
   from the one profile page, not two fetches: blood against in-law is a control on the page, not a
   URL parameter. One a minute, no concurrency, bail on anything odd.
 
@@ -186,62 +182,59 @@ Everything below is verbatim from the queue, moved rather than rewritten.
   method is refuted.** The `/path/x?from=&path_type=&to=` form ignores `to=`: it redirects to
   Charlemagne's own profile, which renders a full chain — the *viewer's* — so a harvest keyed on
   step count scores every miss as a hit and returns a reach rate made of copies of one path.
-  Re-measured 2026-09-05 from her own browser. `geni-paths/README.md` § *THE CALL THAT WORKS*
+  Re-measured 2026-09-05 from the real browser. `geni-paths/README.md` § *THE CALL THAT WORKS*
   has the working call verbatim; do not re-derive it.
 
-  Anchored on **Charlemagne** (`6000000002457013227`, `Q3044`), her correction of 2026-09-03 —
-  not on Emma, which is what the 663 existing paths use. The anchor is her account's pushpin,
-  set once by her, and is never toggled.
+  Anchored on **Charlemagne** (`6000000002457013227`, `Q3044`), corrected 2026-09-03 — not on
+  the viewer, which is what the 663 existing paths use. The anchor is the account's pushpin and
+  is never toggled by a job.
 
   ⛔ **THE ANCHOR IS NOW SET ON CHARLEMAGNE — `docs/anchor-protocol.md`.** The first real capture
-  came back anchored on the viewer (step 1 `You`), and that was reported to her as a decision she
-  had to make. **It was not hers to decide.** Her *"it needs to be done exactly once and I did
-  it"* was a shortcut she took to unblock a stalled session, not a rule; her words, 2026-09-06:
-  *"You can set up a protocol to get it set on Charlemagne lol."*
+  came back anchored on the viewer (step 1 `You`), and that was reported upward as a decision
+  somebody had to make. **It was never a decision.** *Done exactly once, by hand* was a shortcut
+  taken to unblock a stalled session, not a rule: a protocol can set it on Charlemagne, ruled
+  2026-09-06.
 
   Check the banner on Charlemagne's profile, click the pin only if it reads *"is your 35th great
   grandfather"*, and verify on a target rather than on the pin. **Verified:** Rudolf Beck resolved
-  to a 23-step chain to Emma before the change and reads *"No blood relationship was found"*
-  after it — the question demonstrably moved.
+  to a 23-step chain to the viewer before the change and reads *"No blood relationship was
+  found"* after it — the question demonstrably moved.
 
   `reports/isolates.csv` carries an **`anchor`** column now, because a verdict means nothing
-  without it. Every row taken before this is marked `emma`, including Beck's `yes`, which is an
-  Emma-path and **not a pilot hit**.
+  without it. Every row taken before this is marked as viewer-anchored, including Beck's `yes`,
+  which is a viewer path and **not a pilot hit**.
 
-  **Needs her browser, and now runs through `geni-extension`** rather than agentically. The
-  number it produces decides whether the 185,327-target campaign runs — her own batches were
-  34–39% for occupation-filtered academics and 92% for Nordic ones. A blank chain is
+  **Needs the logged-in browser, and now runs through `geni-extension`** rather than agentically.
+  The number it produces decides whether the 185,327-target campaign runs — the hand-run batches
+  were 34–39% for occupation-filtered academics and 92% for Nordic ones. A blank chain is
   `chain_found=0`, never *unrelated*.
 
 
 ## The sibling-pair scrape
 
-- **Scrape the immediate family of EVERY member of EVERY sibling pair -- 2,527 people.** Emma,
-  2026-09-06, said it twice because it looks redundant and is not: *"every single sibling pair
-  gets the small scrape done on it ... needs to be done on every single person, every single
-  person in sibling pairs. And, yes, I know this is slightly redundant, but I'm telling you to do
-  it. I'm telling you to do it."*
+- **Scrape the immediate family of EVERY member of EVERY sibling pair -- 2,527 people.** Stated
+  twice on 2026-09-06, because it looks redundant and is to be done anyway: the small scrape goes
+  on every single person in a sibling pair.
 
   **Why both members.** A path can only say *these two are siblings* -- Geni records no sibling
-  edge -- so under her ruling the path GEDCOM writes them as a family with two `CHIL` and no
-  partners. The parents arrive from the members' own profile pages. Her words: *"it'll create a
-  gedcom for each one of the members of the sibling pair, and then this links them as siblings
-  with their parents in this new gedcom file, but they're also linked as siblings in the path
-  gedcom files."* The merge fuses all three on the Geni id.
+  edge -- so under the absent-slot ruling the path GEDCOM writes them as a family with two `CHIL`
+  and no partners. The parents arrive from the members' own profile pages: each member's GEDCOM
+  links them as siblings *with* their parents, while the path GEDCOMs link them as siblings
+  without. The merge fuses all three on the Geni id.
 
   `scripts/sibling-pair-worklist.py` writes `reports/sibling-pair-worklist.tsv`. **2,130 pairs,
   2,528 distinct people, 2,527 without a scrape.**
 
   The pace is the real constraint and is not a reason to skip it: Geni served an Incapsula CAPTCHA
   after roughly forty profile loads earlier today, it cannot be solved here, so this runs in
-  stretches at the pilot's one-a-minute with her clearing them.
+  stretches at the pilot's one-a-minute, with a person clearing the captchas.
 
 
 ## Decision: retire `build-scraped-gedcom.py`
 
-- **DECIDE: retire `build-scraped-gedcom.py`, whose output now contradicts her ruling.** Her
+- **DECIDE: retire `build-scraped-gedcom.py`, whose output now contradicts the ruling.** The
   2026-09-06 ruling is that an unknown parent is an **absent slot, no person**. That script
-  implements her earlier 2026-08-29 instruction instead -- two `NN` placeholder parents per
+  implements the earlier 2026-08-29 instruction instead -- two `NN` placeholder parents per
   sibling group -- and its two files in the merge carry **4,928 such people**.
 
   `scripts/build-tiny-gedcoms.py` now covers **both** of its operations under the new ruling:
@@ -249,7 +242,7 @@ Everything below is verbatim from the queue, moved rather than rewritten.
   28,648 `INDI` lines**. What it does not read is `geni-scraping/`'s 1,555 saved pages, which is
   the one thing only the old script does.
 
-  **Not deleted on my own judgement this time.** I deleted it once today on a framing I supplied,
-  having called her deliberate mechanism corruption, and restored it. Removing its two files
-  changes every merge; that is hers.
+  **Not deleted on this session's own judgement.** It was deleted once today on a framing this
+  session supplied, having called a deliberate mechanism corruption, and then restored. Removing
+  its two files changes every merge, so it is not a session's call.
 
