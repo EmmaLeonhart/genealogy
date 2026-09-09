@@ -2640,7 +2640,7 @@ ran.
 | P5056 | patronym or matronym | item — **the property a patronymic uses**, parallel to `P735`/`P734`, per `name modelling.txt`. Not a qualifier on `P735`. |
 | P7452 | reason for preferred rank | **qualifier** — value `Q3409033` *usual forename* on the first given name |
 | Q3409033 | usual forename | item — the `P7452` value. **Not** `Q3409032`, which is *unisex given name* |
-| P7338 | regnal ordinal | **qualifier** on the given name — `Robert VII` is `P735` Robert + `P7338` VII. Emma, 2026-08-15: *"they should all have the regnal orders put on their names as qualifiers"*, and **not only the Samaritans** — anyone whose name carries an ordering. Confirmed offline against `reports/wikidata-labels.tsv`. Distinct from `P1545`, which orders a person's several given names rather than the person among namesakes. |
+| P7338 | regnal ordinal | **qualifier** on the given name — `Robert VII` is `P735` Robert + `P7338` VII. Every regnal order goes on the name as a qualifier, and **not only for the Samaritans** — anyone whose name carries an ordering. Confirmed offline against `reports/wikidata-labels.tsv`. Distinct from `P1545`, which orders a person's several given names rather than the person among namesakes. |
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
 | P144 | based on | item — **qualifier on `P5056`, pointing at the PERSON that link names**: the father, then the grandfather for a chained patronymic. `name modelling.txt` supersedes the earlier reading of this as a name-item-to-name-item link. |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
@@ -5349,10 +5349,10 @@ as outstanding work rather than as a record of a night. What is left of it:
 | item | ruling | where it stands |
 | --- | --- | --- |
 | seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall | `hi`/`ar`/`ru`/`el` **done**, 151,320 labels. The `en` shortfall turned out to need in-law relation words she has not sanctioned — a decision, not arithmetic |
-| `exports/post-merge/` | do the stale-duplicate resolution | graded: **408 of 412 are real deletions**. Her standing ruling of 2026-08-29 is to leave them and keep measuring |
+| `exports/post-merge/` | do the stale-duplicate resolution | graded: **408 of 412 are real deletions**. The standing ruling is to leave them and keep measuring |
 
 **Removed as done**, all verified by artifact rather than by memory: the `en` agreement rule ·
-labels in her order (`en`/`mul`/`ja`/`zh`/`ko`) · name items reused by default · `Sara /NN/` and
+labels in the specified order (`en`/`mul`/`ja`/`zh`/`ko`) · name items reused by default · `Sara /NN/` and
 the `Garborg` override · the label-change census · `ko` · the NN birth-name alias · the unreadable
 transliteration tokens · the 218-script sweep · one batch file, names first · the clan labels ·
 the export loop · the 179 ambiguous patronymics · `P407` by suffix · the `Nils`/`Nicolaus` form
