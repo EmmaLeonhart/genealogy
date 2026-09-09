@@ -1,6 +1,6 @@
 # The names on the hand-made items, audited against our tree
 
-**Her instruction, 2026-08-28**, the last one before the crash: *"All the individuals that I've
+**The instruction, 2026-08-28**, the last one before the crash: *"All the individuals that I've
 worked on and any individuals that they've been merged into should basically always be all the
 individuals that I've worked on, pretty much all of them. All the people that they've been merged
 into should have audits done on their names to figure out the degree that we've messed them up."*
@@ -58,5 +58,5 @@ the medieval end of the spine. Nothing can be said about their labels from here,
 the only thing that would change that.
 
 **No item had been merged away.** `redirected items: 0` — `wbgetentities` returns the target for a
-redirected QID, so this was checked rather than assumed, and the second half of her instruction —
+redirected QID, so this was checked rather than assumed, and the second half of the instruction —
 *"any individuals that they've been merged into"* — currently has no members.

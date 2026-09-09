@@ -3,7 +3,7 @@
 **The request was for this on 2026-09-05**, after noticing that `BURE_PER_DAY` — a *per-day* cap —
 sat on a script no schedule ran: *"Uhh I'm just confused why are these segregated in code?"*
 
-**No deletions were made from this audit.** Her instruction was to check and report.
+**No deletions were made from this audit.** The instruction was to check and report.
 
 ## The result
 
@@ -34,7 +34,7 @@ Every `.qs` in `reports/` is a relic of a hand-run.
 2026-08-30 — *"name creations were always segregated into a different Quick Statements generation
 pipeline that was never run"* — and `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not
 done* is the rule. Whether each should be folded into the daily batch, run on its own schedule,
-or deleted is hers; nothing here assumes.
+or deleted is a decision; nothing here assumes.
 
 Two carry the caps that were doubled on 2026-09-05 and so pace nothing today:
 `build-missing-reciprocals.py` (`SIBLING_CAP`) and `build-from-diff.py` (`SIBLING_CAP`).

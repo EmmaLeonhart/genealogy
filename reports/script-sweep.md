@@ -1,6 +1,6 @@
 # The 264-script sweep
 
-Her ruling, 2026-09-01: **"Sweep and delete"**, over reporting first. The sweep ran. What it
+The ruling, 2026-09-01: **"Sweep and delete"**, over reporting first. The sweep ran. What it
 found is that there is very little to delete, and that is the finding.
 
 | | scripts |
@@ -42,7 +42,7 @@ Both are the same shape as the defects `CLAUDE.md` records elsewhere: **a screen
 narrows its input, producing a plausible number about the instrument rather than the data.** The
 first run said 58 dead. The correct answer is 3.
 
-## The judgement that is hers
+## The judgement that is a decision
 
 Whether a one-off census script counts as legacy. The measurement cannot answer it: they are
 unreferenced by construction and their outputs are committed by instruction. **The 15 that still

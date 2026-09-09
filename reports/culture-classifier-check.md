@@ -1,6 +1,6 @@
 # The CJK culture classifier, checked against Wikidata
 
-**Why this was run.** Her ruling of 2026-09-01 was *"Do both, kana agentically"* — `ko` by rule
+**Why this was run.** The ruling of 2026-09-01 was *"Do both, kana agentically"* — `ko` by rule
 and `P1814` *name in kana* read by hand. Scoping the kana half turned into a check of the thing
 underneath it, because kana readings only make sense for people the classifier calls Japanese.
 
@@ -51,7 +51,7 @@ to a person the classifier itself calls Chinese — the leak running the other w
 we use a name (*Emperor Qinzong of Song*, *King Wen of Zhou* — whose given name genuinely was 昌
 Chang). `Q45600318` is *Jun* against *Xun* for 濬, both defensible readings.
 
-## What to do about it is hers
+## What to do about it is a decision
 
 Shortening the propagation would cut the 226 and the leak together, but the hop count is not
 obviously the right dial — a long chain inside one genuinely Japanese family is exactly what the

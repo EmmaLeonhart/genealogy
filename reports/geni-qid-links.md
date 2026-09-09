@@ -3,7 +3,7 @@
 2026-08-23: *"we have intentionally added actual join keys for the Samaritan high
 priests, Izumo clan, and Tanba clan... The wikidata items linked in the descriptions."*
 
-She is right, and it is exact. Geni exports the About Me as a `NOTE`:
+That is right, and it is exact. Geni exports the About Me as a `NOTE`:
 
     1 NAME Takamune /Senge/
     1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q135579415#sitelinks-wikipedia
@@ -152,7 +152,7 @@ reference at all, which the template permits: `P2600` is in the uncited group.
 
 ## The synoptic correspondence: five sources, now one file
 
-**2026-08-23, and she was right to worry:** *"there was a tsv qid correspondence
+**2026-08-23, and the worry was right:** *"there was a tsv qid correspondence
 quickstatement thing is that represented in our data?… I'm afraid it isn't properly
 represented in our synoptic tree."*
 

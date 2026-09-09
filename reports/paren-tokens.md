@@ -10,7 +10,7 @@
 
 **The particle list is the one asked for.** Only `(de)` and `(D.)` were put up; the rest of `PARTICLES` in `scripts/census-paren-tokens.py` is seeded from what occurs here and is a proposal, not a ruling.
 
-**Nothing has to tell a noble house from a spelling variant.** 2026-08-26: *"they get both family names and the alias lol"*. A name-shaped bracketed token becomes a second `P734` *family name* with the parens stripped **and** an `Amul` alias carrying the bracketed form as Geni shows it. Two earlier attempts at a discriminator — bare-form frequency, then string similarity — are recorded in the script; her answer removed the question rather than settling it.
+**Nothing has to tell a noble house from a spelling variant.** 2026-08-26: *"they get both family names and the alias lol"*. A name-shaped bracketed token becomes a second `P734` *family name* with the parens stripped **and** an `Amul` alias carrying the bracketed form as Geni shows it. Two earlier attempts at a discriminator — bare-form frequency, then string similarity — are recorded in the script; the answer removed the question rather than settling it.
 
 ## name — 2,478 tokens, 5,553 occurrences
 

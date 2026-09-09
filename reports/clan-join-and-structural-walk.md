@@ -14,7 +14,7 @@ thing a join of this kind can say about itself. *"it probably means we did good 
 modelling early on."*
 
 **The new fact is `Onakatomi` 0 of 97.** That clan has no About Me links written yet, so it
-cannot join at all — nothing is wrong with the join. Writing them is hers.
+cannot join at all — nothing is wrong with the join. Writing them is a decision.
 
 ## The structural walk
 

@@ -20,7 +20,7 @@ Japanese, 2011 English and 2026 additions. Never match these people by name spel
 - **Only add individuals the chart has and Geni lacks entirely.**
 - **Never merge.** *"just flag the duplicates so I can merge them later merges are not
   difficult"* — duplicates go in the table below and nowhere near a merge tool.
-- **Leave `NN no Mikoto` placeholders alone.** They are hers; renaming them from the
+- **Leave `NN no Mikoto` placeholders alone.** They are hand-made; renaming them from the
   chart was offered and declined.
 - Add the Wikidata link to a person's description where it is missing.
 
@@ -72,7 +72,7 @@ the non-kokuso brother.
 
 **The additions follow the existing Geni structure, not the chart's row placement**, because
 extending what is already there is what was asked for and because restructuring existing
-relationships is merge-shaped work that is hers. Within that, each person's parent comes
+relationships is merge-shaped work that is a decision. Within that, each person's parent comes
 from **column alignment in the chart**: the row-11 collaterals sit directly beneath their
 row-10 counterparts, so Kotatemi(521)→under Aogatsuhikono(521), Aratahishi(652)→under
 Isumino(652), Oshikunishikun(763)→under Sugase(763), Anawaihikono(862)→under

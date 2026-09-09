@@ -33,7 +33,7 @@ other script, we have to do a translation"* applies to, sized.
 | other | 26,466 |
 | none | 454 |
 
-Grouped by **script, never language** — her rule. `CJK` deliberately holds Han,
+Grouped by **script, never language** — the rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
 attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a

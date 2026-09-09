@@ -55,13 +55,13 @@ even one child carrying a QID. The other 233 would attach invented parents to
 children who do not exist on Wikidata either, so the placeholder cannot be
 anchored to anything already there.
 
-## Two adjacent populations her rule does not cover
+## Two adjacent populations the rule does not cover
 
 **These are not proposed. They are named because the rule as given stops short of
 them and the sizes are lopsided.**
 
 - **40,884 families have exactly one recorded parent** — 36,097 father-only,
-  4,787 mother-only. Her rule covers families with *no* parent. Whether a
+  4,787 mother-only. The rule covers families with *no* parent. Whether a
   single-parent family gets its missing parent invented is not stated, and the
   population is **163 times** the one described.
 - **3,758 families have one child and no parent.** With a single child there is
@@ -76,7 +76,7 @@ them and the sizes are lopsided.**
   created anywhere.
 - **No `P3373`.** Her approach routes siblings through invented parents rather
   than stating sibling links directly, which is the Wikidata-preferred shape —
-  recorded because it is a consequence of her rule rather than a separate
+  recorded because it is a consequence of the rule rather than a separate
   decision.
 - **No spouse link is qualified.** Marriage dates and places are plan item 6;
   `reports/marriages.md` already holds the cases and the gaps.

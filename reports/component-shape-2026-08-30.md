@@ -85,7 +85,7 @@ away from them. This has the opposite shape: density peaks 8–12 hops away from
 on the rim with a single edge.
 
 `Q232803`, her other item, is **not in the component at all** — nothing on Wikidata connects it,
-which is consistent with her instruction to keep it out of the traversable graph.
+which is consistent with the instruction to keep it out of the traversable graph.
 
 ## The one visible signature
 

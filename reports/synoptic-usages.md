@@ -27,8 +27,8 @@ A quoted line. Not ours to redefine; it stays verbatim whatever the answer is.
 * `CLAUDE.md:1800` — **The method is structural.** *"For the synoptic tree, we're supposed to be
 * `CLAUDE.md:1976` — > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
 * `CLAUDE.md:1977` — > tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
-* `CLAUDE.md:1988` — **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
-* `queue.md:1235` — **Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
+* `CLAUDE.md:1988` — **What the bio link is FOR, verbatim, 2026-08-29:** *"When the synoptic tree is merged we
+* `queue.md:1235` — **The words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
 * `queue.md:1382` — *"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
 * `queue.md:1701` — **2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
 * `scripts/build-clan-p2600-pairs.py:5` — **2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
@@ -53,7 +53,7 @@ scripts/build-join-batch.p
 
 `rebuild-everything.py` and the things that say 'rebuild the synoptic tree'. What that script actually produces is `out/merged.ged`, the GENI union.
 
-* `CLAUDE.md:1988` — **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+* `CLAUDE.md:1988` — **What the bio link is FOR, verbatim, 2026-08-29:** *"When the synoptic tree is merged we
 * `docs/mass-export-run.md:37` — tree and then rebuild the synoptic tree, and then generate the quickstatements with the
 * `queue.md:988` — ## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
 * `queue.md:1047` — **2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
@@ -72,7 +72,7 @@ scripts/build-join-batch.p
 * `docs/mass-export-run.md:36` — https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
 * `docs/mass-export-run.md:172` — injection into the synoptic tree build. Both the novelty and the purpose are gone.
 * `queue.md:36` — `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
-* `queue.md:189` — - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
+* `queue.md:189` — - **The ideal state is still the Geni tree alone.** The spec says the **union of the synoptic
 * `queue.md:190` — tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
 * `queue.md:931` — export alone. If it does then that'll be great. We'll have a synoptically
 * `queue.md:1135` — thing so that we can deal with more important stuff."* Read as the synoptic-tree build

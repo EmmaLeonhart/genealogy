@@ -16,8 +16,8 @@ measurements. This is testimony, and it outranks them.
 
 These are **the labelled set**. A rule proposed for the zipper join, the structural walk or any
 future matcher is checked against this file first: if it disagrees with a row here, the rule is
-wrong, not the row. New verdicts are appended as she gives them, with the date and her wording
-where she gave any.
+wrong, not the row. New verdicts are appended as they are given, with the date and the wording
+where any was given.
 
 ---
 
@@ -50,7 +50,7 @@ relational context is useless"* — and ordered easiest first: *"Lead with easy 
 
 ## The hard end, put to her the same day
 
-She read sixteen easy rows in a row and said so: *"All of these seemed like easy ones lol I'm not
+Sixteen easy rows were read in a row, and said so: *"All of these seemed like easy ones lol I'm not
 sure if you're only choosing ones you consider 'ambiguous'... I'm confused what a hard one will
 even look like."* The sample was random and then **sorted easiest-first at her own instruction**,
 so the ordering was the artefact, not the population.
@@ -67,7 +67,7 @@ at **10.3%**. Four of those went to her:
 | 19 | 1 | Margareta Gödiksdotter Fincke `4085368611040124960` | `Q105796231` Marjatta of Porkkala | **Right** |
 | 20 | 1 | Eleonora Juliana Wiggman `342026151920011851` | `Q29246906` Eleonora von Sydow | **Right** |
 
-Her wording on the two she would not call:
+The wording on the two that would not be called:
 
 - **8, John de Mohun** — *"Need pages opened, imo this should be adder to the queue as a web
   browser based project of yours at the end to do the resolution because this is thorny."* Both
@@ -92,7 +92,7 @@ see § *What came out of it* below.
 These are read off the sixteen, not asserted in advance. Each one is falsifiable by a later row.
 
 **A name that differs is not a parent that differs.** Every one of the fourteen `Right` verdicts
-survived at least one parent name that does not match as a string, and she called them right
+survived at least one parent name that does not match as a string, and they were called right
 anyway. The variation accepted, by kind:
 
 | kind | example | rows |

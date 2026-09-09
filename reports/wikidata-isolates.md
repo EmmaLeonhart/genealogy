@@ -64,7 +64,7 @@ is on Geni **and** on Wikidata, and what is missing is the genealogy.
 
 ## Who they actually are — the questions of 2026-08-15
 
-She asked for this and named what she wanted: *"the degree that these people have,
+This was asked for, with what was wanted named: *"the degree that these people have,
 Anglophone names, their nationalities, maybe some level of categorization... Do
 they tend to be celebrities? Do they tend to be athletes? Do they tend to be
 academics?"* The first version of this report answered with centuries and with the
@@ -94,7 +94,7 @@ For the 722 we do hold: median 2 relatives, mean 3.28 — against a whole-corpus
 median of 2 and mean 3.20. **Indistinguishable from everybody else.**
 
 **Her conclusion still holds, for a different reason.** Not that they are poorly
-connected, but that they are *outside the tree entirely*. Her ruling, same day:
+connected, but that they are *outside the tree entirely*. The ruling, same day:
 *"this group of people is a group that I probably would consider to be very low
 priority... I don't think that they're that important to get into the World Tree."*
 

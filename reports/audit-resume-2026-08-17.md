@@ -111,7 +111,7 @@ so this predates the two-hop work rather than being caused by it.
 
 **It is not an error under the spec and nothing is being changed for it.**
 Wikidata does not require labels to be unique — label *plus description* is the unique
-pair — and her rule is that a created person gets labels and **no description**:
+pair — and the rule is that a created person gets labels and **no description**:
 *"We create the individual with their multi-language label, their English language
 label… but no descriptions are added to any of the people."* So a shared label
 collides with nothing today. It becomes live the moment descriptions are worked, which
@@ -131,7 +131,7 @@ a blocker, and **nothing has consumed either file since**. The rule stated on
 correspondence of the QIDs and Jenny IDs"* — is what those 3,902 rows are, and they
 are not wired into anything.
 
-Her ruling on the not-replying part is now in `CLAUDE.md`: *"when I'm not responding
+The ruling on the not-replying part is now in `CLAUDE.md`: *"when I'm not responding
 to anything, the assumption should be I'm happy with what you're doing."*
 
 ## Not done · a saved page's two paths are still one chain

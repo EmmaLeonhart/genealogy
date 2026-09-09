@@ -34,7 +34,7 @@ They were opened on 2026-08-29 and were still unanswered when this was written s
 trouble to write one is not heard. That is the finding; whether to monitor it is a decision and
 nothing has been built for it.
 
-## The identical dates are not our problem — her ruling
+## The identical dates are not our problem — the ruling
 
 2026-09-04, on being shown the analysis: *"Why the fuck are you working on that thing? …
 I formally place it in the category of none of my business … I am concerned with getting the data

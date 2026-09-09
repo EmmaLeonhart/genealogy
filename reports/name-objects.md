@@ -11,7 +11,7 @@
 Scheduled for midnight. Every distinct name is a row in
 `reports/name-objects.csv`, ranked by how many people carry it.
 
-**Why the classification matters.** Her rule is that name items get created
+**Why the classification matters.** The rule is that name items get created
 *"for all of the names that fit sufficiently into Western name conventions"* —
 so the question is not how many names lack an item, but **which ones are
 candidates at all**.
@@ -107,7 +107,7 @@ following the family walk — the same gap that limits `P735`/`P734` emission.
 
 ## Which names are creation candidates
 
-Applying her rule — Western conventions — the candidates are the *ordinary*
+Applying the rule — Western conventions — the candidates are the *ordinary*
 rows with no item found. Everything else is excluded for a stated reason:
 
 | excluded | why |

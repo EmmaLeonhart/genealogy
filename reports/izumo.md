@@ -51,7 +51,7 @@ What does not exist is any `P2600` connecting them to the 204 Wikidata items.
 
 Creating people on Geni before finding the ones already there would manufacture a fourth
 duplicate set on top of the three already awaiting a merge — and the merges
-are hers, not ours.
+are a hand operation, not ours.
 
 The order that follows:
 
@@ -268,7 +268,7 @@ to ask, and the module docstring says why.
 Everything this section previously claimed about seats 1-18 is withdrawn. It was stopped
 and rightly so.
 
-**First, it was not asked for.** Her instruction on this clan was to build the tree the
+**First, it was not asked for.** The instruction on this clan was to build the tree the
 Shinto-wiki page shows onto Geni, carry the Wikidata links, and flag duplicate merges. The
 regnal matcher, the kokuso join and the succession walk were mine, written into the queue by
 me and then treated as if they had come from her.

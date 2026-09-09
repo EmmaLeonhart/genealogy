@@ -61,7 +61,7 @@ different act: it republishes Geni's private-profile structure in bulk, outside 
 control, for people who never chose it. That is worth deciding deliberately rather than inheriting
 from *"people who are digging can find stuff"*.
 
-**This is hers to decide and is not a technical blocker.** It is recorded here because the question
+**This is a decision to take and is not a technical blocker.** It is recorded here because the question
 as asked was about security, and the exposure is bulk rather than the "digging" kind.
 
 ## The billing point runs the other way

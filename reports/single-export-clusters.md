@@ -1,6 +1,6 @@
 # Clusters only one export ever reached
 
-The item, in her words:** *"we are going to look over the geni exports
+The item, verbatim:** *"we are going to look over the geni exports
 to try to find large clusters like the Javanese ones that have only one geni
 export covering them… particularly looking at the deepest members of such
 clusters of people only in one export."*
