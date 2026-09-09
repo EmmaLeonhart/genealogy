@@ -657,78 +657,67 @@ together with the Roman numeral `I`, 1,836 people, so `i` is not on the list at 
 trap `_drop_territorial` already carries a comment about. And matching on a dot-stripped form
 put `d.e.` (369, Swedish *den äldre*) onto the particle `de`. Nothing is dot-stripped; every
 surface form the corpus holds is listed instead.
-
-**`drop_title_suffix` matches the person's OWN `NSFX` exactly**, never a bare word list against a
-trailing token — `Anna King` keeps her surname while `Dániel IV Esterházy de Galántha Graf` loses
-the `Graf`. 17 people carry `King` as a suffix and far more as a name.
+**`drop_title_suffix` matches the person's OWN `NSFX` exactly**, never a bare word list against
+a trailing token — `Anna King` keeps her surname while `Dániel IV Esterházy de Galántha Graf`
+loses the `Graf`. 17 people carry `King` as a suffix and far more as a name.
 
 ### The same title, at the other two ends of a name field
 
-Wiring the suffix rule surfaced two more, both emitting a live statement, both fixed with the
-same list and neither reachable by the tail rule:
+Two more shapes, both emitting a live statement, both fixed with the same list and neither
+reachable by the tail rule:
 
 - **A LEADING title.** `Q110410743` carries `_MARNM` = `Graf von Maltzahn, Freiherr zu
   Wartenberg und Penzlin` and emitted `P734` *family name* `Q1158367` **Graf**.
-  `drop_leading_title` strips it and keeps `von Maltzahn` — **`_PARTICLE` is deliberately not in
-  that set**, because `von` is *"an integral part of what the people are called"* and
+  `drop_leading_title` strips it and keeps `von Maltzahn` — **`_PARTICLE` is deliberately not
+  in that set**, because `von` is an integral part of what those people are called and
   `name_shape` already stops it becoming an item. It never strips to empty: a field whose only
   token is a title keeps it, which is what protects `King`.
-- **A WHOLLY TERRITORIAL field.** `Q2705969` *Guaimar II of Salerno Gybbosus* carries `_MARNM` =
-  `of Salerno` and emitted `P734` **Salerno**. `drop_title_tail` skips index 0 on purpose — a
-  label must never truncate to nothing — but a *field* may, and `drop_leading_territorial` empties
-  it. Nobody's family name is Salerno.
+- **A WHOLLY TERRITORIAL field.** `Q2705969` *Guaimar II of Salerno Gybbosus* carries `_MARNM`
+  = `of Salerno` and emitted `P734` **Salerno**. `drop_title_tail` skips index 0 on purpose — a
+  label must never truncate to nothing — but a *field* may, and `drop_leading_territorial`
+  empties it. Nobody's family name is Salerno.
 
 **English `of` is a territorial opener IN THE NAME MODEL and only there.** Measured: 16,165
 labelled people carry a non-initial bare `of` with something after it, and the tails are places
 without exception — `of Egypt` 324, `of Axum` 126, `of Armenia` 83, `of Burgundy` 77,
-`of Denmark` 55, `of Sweden` 44, `of that Ilk` 58. No family name in this corpus is introduced by
-English `of`. It stays out of `build-garborg-day._drop_territorial`, which trims the label before
-transliteration: whether `Anne of Denmark` should read `アン・オフ・ダンマーク` is a question about
-her LABEL and is hers.
+`of Denmark` 55, `of Sweden` 44, `of that Ilk` 58. No family name in this corpus is introduced
+by English `of`. It stays out of `build-garborg-day._drop_territorial`, which trims the label
+before transliteration: what `Anne of Denmark` should read in CJK is a question about her label,
+answered in § *A TITLE INSIDE A LABEL*.
 
-**The additions pass was NOT passing `fields` at all, and that is the whole root cause.** Without
-them `statements_for` falls back to parsing the rendered label positionally, and the rendered
-label is `givn + surn + NSFX` run together. The creation path 400 lines below always passed them.
+**The additions pass was NOT passing `fields` at all, and that is the whole root cause.**
+Without them `statements_for` falls back to parsing the rendered label positionally, and the
+rendered label is `givn + surn + NSFX` run together. The creation path always passed them.
 Fixing it moved name statements **145 → 157** on the live batch — the titles and places out, and
 real surnames the positional parse had been missing in: `Fleming`, `Boije`, `Henckel`,
 `Donnersmarck`, `Oxenstierna`, `Munck`, `Olofsson`, `Eriksdotter`.
 
 ### A DESCRIPTION MARKER COMES OUT OF THE LABEL. `ogift` is not a name
 
-**Emma, 2026-09-07**, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*: *"ogift is
-some kind of suffix that shouldn't have been treated as part of the name, and as a result it
-needs to be corrected on everyone that has it in their labels."* `ogift` is Swedish for
-**unmarried**.
+`ogift` is Swedish for **unmarried**, and `Q141313961` was live as *Helena Maria Linnerhielm
+ogift*.
 
 **The token was never a name statement, and the machinery to keep it out already existed.** It
-sits in `namemodel._DESCRIPTION`, whose own comment reads *"a description of the person, never
-a name"*, so `drop_title_suffix` has always kept it out of `P735` *given name* and `P734`
-*family name*. What nothing removed it from is the **label**: `build-display-names.py`
-concatenates `givn + surn + NSFX` into `display_name` and `derive-labels.py` takes that string
-whole. § *A TITLE IS NOT A NAME* says the tail rule *"does not touch the LABEL"* and leaves what
-a label should read as a separate question. **This is that question answered for one class of
-token and for no other.**
+sits in `namemodel._DESCRIPTION`, a description of the person and never a name, so
+`drop_title_suffix` has always kept it out of `P735` and `P734`. What nothing removed it from is
+the **label**: `build-display-names.py` concatenates `givn + surn + NSFX` into `display_name`
+and `derive-labels.py` takes that string whole.
 
-**The fact is NOT re-emitted as anything.** Her ruling the same day, choosing between four
-readings of *"incorporated so it will be translated or whatever"*: nothing goes in its place.
-The Geni-rendered string is what `P1810` *subject named as* carries on the `P2600` by design, so
-the marker is not lost — it stays as the name Geni renders. **No `P26` *spouse* with no value,
-no alias, no per-language rendering.** This is what § *A TITLE IS NOT A NAME* already does with
-`Graf` and `Queen`: dropped from the name, and nothing put in its place.
+**The fact is NOT re-emitted as anything.** Nothing goes in its place. The Geni-rendered string
+is what `P1810` *subject named as* carries on the `P2600` by design, so the marker is not lost —
+it stays as the name Geni renders. **No `P26` *spouse* with no value, no alias, no per-language
+rendering.** This is what § *A TITLE IS NOT A NAME* already does with `Graf` and `Queen`.
 
-**SCOPE IS DESCRIPTIONS ONLY — her call, and the neighbouring population was measured and put to
-her.** `drop_title_suffix` would strip `Graf`, `MP` and `Kt.` from **7,075** labels, 6,385 of
-them beyond this change; she chose the 631. So a title in a label stays, and
-§ *A TITLE IS NOT A NAME*'s *"it does not touch the LABEL"* is intact for titles. The difference
-that makes the two separable: **a title is a thing the person was; a description marker is an
-annotation about the record.**
+**SCOPE IS DESCRIPTION MARKERS ONLY.** `drop_title_suffix` would strip `Graf`, `MP` and `Kt.`
+from **7,075** labels, 6,385 of them beyond this change; only the 631 markers are in scope. So a
+title in a label stays, and § *A TITLE IS NOT A NAME*'s *"it does not touch the LABEL"* is
+intact for titles. The difference that makes the two separable: **a title is a thing the person
+was; a description marker is an annotation about the record.**
 
 `namemodel.drop_description_suffix` is the one place. Three call sites, wired together rather
 than a day apart — `derive-labels.py` (the label and the married-name alias), and both the
 correction path and the **creation** block of `build-garborg-day.py`. § *Code that is WRITTEN
-but never CALLED is not done* is why the creation block is on that list: the generation-suffix
-rule was correct and unwired there for a day, and every creation went out carrying `d.y.` in
-five languages.
+but never CALLED is not done* is why the creation block is on that list.
 
 **It matches the person's OWN `NSFX`, never a bare word list against a trailing token** — the
 exactness that keeps `Anna King` her surname, and it matters here too: 34 people carry `Twin` or
@@ -740,22 +729,17 @@ empty**: a label that is nothing but a marker keeps it.
 aliases. `reports/description-markers-in-labels.tsv` is the census, one row per person, with the
 before and after — `twin` 238, `tvilling` 91, `infant` 69, `ug` 52, `ugift` 51, `tvill` 34,
 `ogift` 25, `legendary` 18, `concubine` 12, `heiress` 10, `oä` 8, `solteira` 8, `fictional` 6,
-`mistress` 6, `fictitious` 5, `tv` 3. **Only one of the 631 is live on Wikidata** — the one she
-found — and the correction path emits it for `mul`, `en`, `en-ca`, `en-us` and `fr`, every
-language the item carried it in.
+`mistress` 6, `fictitious` 5, `tv` 3. **Only one of the 631 is live on Wikidata**, and the
+correction path emits it for `mul`, `en`, `en-ca`, `en-us` and `fr`, every language the item
+carried it in.
 
 **The corroboration is that three labels moved INTO exact agreement with Wikidata**, 11,154 →
-11,157 of 40,898 in `reports/labels.md`. Nothing was tuned to produce that; it is what a
-correct removal looks like from the outside.
+11,157 of 40,898 in `reports/labels.md`. Nothing was tuned to produce that; it is what a correct
+removal looks like from the outside.
 
 ### A BARE GIVEN NAME IS NOT A LABEL. The farm name is the surname; `NN` fills what is left
 
-**Emma, 2026-09-07, on `Q141352187`:** *"this guy was not given an appropriate name originally
-lol. A single given name is generally not acceptable and we strongly prefer given name NN, but
-he has a surname anyway lol."* The batch created him as **`Ånon`**; she corrected the item to
-**`Ånon Byre`**.
-
-**Two rules, and the order between them is the whole of her sentence:**
+A single given name is not an acceptable label. Two rules, and the order between them matters:
 
 | | |
 | --- | --- |
@@ -765,14 +749,14 @@ he has a surname anyway lol."* The batch created him as **`Ånon`**; she correct
 **THE FARM NAME IS THE SURNAME, and the territorial rule was eating it.** Geni files him
 `Ånon i /Byre/` — `GIVN` *Ånon i*, `SURN` **Byre** — and Norwegian `i` is the farm designation
 that joins them. `drop_label_title` reads `i Byre` as a territorial tail, which is right for
-`Judith of Flanders` (her own ruling of the same day, § *A TITLE INSIDE A LABEL*) and wrong
-here: the place **is** the family name. `namemodel.keep_own_surname` is the discriminator and
-it is the person's **OWN `SURN`/`_MARNM`, never a word list** — the same exactness
-`drop_title_suffix` and `drop_description_suffix` use, and for the same reason.
+`Judith of Flanders` (§ *A TITLE INSIDE A LABEL*) and wrong here: the place **is** the family
+name. `namemodel.keep_own_surname` is the discriminator and it is the person's **OWN
+`SURN`/`_MARNM`, never a word list** — the same exactness `drop_title_suffix` and
+`drop_description_suffix` use, and for the same reason.
 
 **Only when the truncation leaves ONE token.** `Ragnhild Toresdatter Håland i Gjesdal` still
-becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is for the
-case where the label would otherwise be a bare given name.
+becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is for the case
+where the label would otherwise be a bare given name.
 
 **Measured: 19 labels move** — `Ånon Byre`, `Henrik Hebnes`, `Peder Mælum`, `Arne Tomb`,
 `Olav Tomb`, `Gyrid Øvrebø`, `Sigrid Frang`, `Børild Tjørn`, `Bjorn Grude`, `Louis Steyn`, four
@@ -789,36 +773,31 @@ it is the `Judith of Flanders` shape — but Geni files it in her `SURN`, and se
 from a region needs a gazetteer, which is the inference this repo refuses everywhere else. The
 field is the evidence.
 
-**`Given NN` is not a new shape.** `labels.strip_markers` already says so in its own docstring —
-*"`Sara NN` — given name known, surname unknown — is already right and is left alone"*. Geni
-writes `Sara /NN/` when it records the gap; this writes the same string when Geni leaves the
-surname empty, which is the same fact about the same person. **12,596 people**, about one per
-day's batch.
+**`Given NN` is not a new shape.** `labels.strip_markers` already says so: `Sara NN` — given
+name known, surname unknown — is already right and is left alone. Geni writes `Sara /NN/` when
+it records the gap; this writes the same string when Geni leaves the surname empty, which is the
+same fact about the same person. **12,596 people**, about one per day's batch.
 
-**⛔ `mul` GETS THE MARKER; EVERY OTHER LANGUAGE GETS PROSE.** Asked which languages carry
-what, Emma, 2026-09-07: *"given NN for mul labels but the NN is replaced with prose in every
-language that isn't mul."*
+**⛔ `mul` GETS THE MARKER; EVERY OTHER LANGUAGE GETS PROSE.**
 
     mul  Sigrid NN                     <- the marker, where the unknown half is
     en   daughter of …                 <- prose, from the nearest named relative
     ja   …の娘
 
-**`Ånon` is NOT an example of this** — he has `Byre` and is rescued above, which is her
-*"but he has a surname anyway lol"*. The population here is people Geni records with a given
-name and nothing else: `Sigrid`, `Helvig`, `Katarzyna`, `Mads`, `Håkon`.
+**`Ånon` is NOT an example of this** — he has `Byre` and is rescued above. The population here
+is people Geni records with a given name and nothing else: `Sigrid`, `Helvig`, `Katarzyna`,
+`Mads`, `Håkon`.
 
-**So these people belong on the DESCRIPTIVE path, not the named one** — `CLAUDE.md` § *`NN` is
-PRESERVED in `mul`* with the halves swapped, and the same branch `NN Garborg` already takes.
+**So these people belong on the DESCRIPTIVE path, not the named one** — § *`NN` is PRESERVED in
+`mul`* with the halves swapped, and the same branch `NN Garborg` already takes.
 `_carries_marker` cannot find them, which is why the branch test is the **fields**: one token,
 and no surname Geni actually records. `Ånon i /Byre/` carries no marker at all, and
 `Maria /No name/` has already had hers dropped upstream.
 
-**This ALSO settles her 2026-08-29 ruling, which pointed the other way.**
-`labels.drop_marker_surname` deletes a trailing marker — `Maria /No name/` → `Maria`, on
-*"I would say I just use it by its first name"* — over **2,167 people**. Both hold together
-now: the deletion stands, so the prose form `No name` never reaches a label, and the marker
-comes back **normalised** as `Maria NN`. Her answer when the collision was put to her was to
-take that reconciliation.
+**This reconciles with `labels.drop_marker_surname`**, which deletes a trailing marker —
+`Maria /No name/` → `Maria` — over **2,167 people**. Both hold together: the deletion stands, so
+the prose form `No name` never reaches a label, and the marker comes back **normalised** as
+`Maria NN`.
 
 **598 single-token labels that are a SURNAME or a title residue get nothing** — `Grand`, `King`,
 `Queen`, left where `drop_title_tail` dropped a royal style. Appending `NN` there would assert
@@ -827,47 +806,41 @@ person's own `GIVN`.
 
 ### PARSE PATRONYMICS BY FORM. Do not parse a name positionally
 
-**Emma, 2026-09-04, and it is the diagnosis of the whole class rather than of one bug:**
-*"the big thing that really really caused the issues with the data here, and I think was the
-ultimate cause of most of them, is the fact that there is no real standardized representation of
-[patronymics] in our data… so we needed to do some level of positional parsing… Names should not
-be positionally parsed lol, we should just be able to fix the patronymic issue by parsing
-patronymics lol. Patronymics are extremely simple but gedcom just sucks at representing them.
-'x-son' 'x-sen' 'bin_x' 'ap_x' 'ben_x' 'bar_x' 'fitz_x' 'ferch_x' — a bunch of patronymic forms
-exist. And they are numerous but extremely regular for the most part."*
+**Names are not parsed positionally.** There is no standardised representation of patronymics in
+GEDCOM, and positional parsing is the ultimate cause of most of the name defects in this repo.
+Patronymics are numerous but extremely regular, and they are parsed **by form**: `x-son`,
+`x-sen`, `bin x`, `ap x`, `ben x`, `bar x`, `fitz x`, `ferch x`.
 
-**And her rule for the suffix field, categorical:** *"the name suffix never is anything involved…
-there never should be anything that is ever translated within the name suffix. It is just it in
-terms of, like, the father name, the middle name, the first name, last name."* Those four are the
-components; `NSFX` is none of them, so `drop_name_suffix` removes the whole of it before any
-classification. That does not contradict her *keep ordinals* of the same day: an ordinal stays in
-the rendered label and stays available as `P7338` *regnal ordinal*, a **qualifier** on the given
-name. What it stops being is a `P735` or `P734` of its own, which `II` never should have been.
+**`NSFX` is never a name component.** The components are the father name, the middle name, the
+first name and the last name; `NSFX` is none of them, so `drop_name_suffix` removes the whole of
+it before any classification. That does not contradict § *DROP TITLES, KEEP ORDINALS*: an
+ordinal stays in the rendered label and stays available as `P7338` *regnal ordinal*, a
+**qualifier** on the given name. What it stops being is a `P735` or `P734` of its own, which
+`II` never should have been.
 
 **`PATRONYMIC` matched six endings and the corpus holds far more.** Measured over 5,416,925 name
-tokens: `-son` 187,432 · `-sen` 162,015 · `-dotter` 106,075 · `-datter` 105,351 · `-dtr` 15,849 ·
-`-søn` 2,072 · `-dóttir` 1,424 · `-ović` 961 · `-wicz` 873 · `-ovna/-evna` 198 ·
+tokens: `-son` 187,432 · `-sen` 162,015 · `-dotter` 106,075 · `-datter` 105,351 · `-dtr` 15,849
+· `-søn` 2,072 · `-dóttir` 1,424 · `-ović` 961 · `-wicz` 873 · `-ovna/-evna` 198 ·
 `-ovich/-evich` 186 · `-sønn` 118. Plus the standalone particles, which had no handling at all:
-`ap` 6,702 · `verch` 1,881 · `ben` 1,558 · `bin` 1,477 · `ab` 1,261 · `ferch` 1,234 · `ibn` 865 ·
-`bint` 465 · `bat` 342 · `bar` 315.
+`ap` 6,702 · `verch` 1,881 · `ben` 1,558 · `bin` 1,477 · `ab` 1,261 · `ferch` 1,234 · `ibn` 865
+· `bint` 465 · `bat` 342 · `bar` 315.
 
 **`join_particles` makes `ben Phinhas` ONE token before anything classifies it**, so `classify`
 and `classify_fields` need no lookahead and cannot disagree. It also stops `ben` being thrown
 away: `ben` is in `PARTICLES`, so `name_shape` dropped it and left `Phinhas` to be read as an
-ordinary name. `CLAUDE.md` recorded that it *"must never become a `P734` family name of its own"*
-— true, and it was becoming nothing at all. Joined, `Abisha III ben Phinhas ben Yittzhaq ben
-Shalma` parses as three `P5056` links, which is exactly what `name modelling.txt` specifies and
-what nothing could emit before.
+ordinary name. It must never become a `P734` family name of its own — and before this it was
+becoming nothing at all. Joined, `Abisha III ben Phinhas ben Yittzhaq ben Shalma` parses as
+three `P5056` links, which is what `name modelling.txt` specifies and what nothing could emit
+before.
 
 **Scale: 32,558 name records carry a patronymic the old pattern missed** —
 `reports/patronymic-forms-newly-detected.tsv`, sorted on the Geni id. `dtr` 15,636 · `ap` 6,620 ·
 `søn` 1,983 · `verch` 1,863 · `ben` 1,505 · `ab` 1,258 · `ferch` 1,232 · `dóttir` 1,106 ·
 `ovich` 946 · `wicz` 873.
 
-**The LATIN GENITIVE is a patronymic form too, and it was added 2026-09-05 on her instruction.**
-Emma, shown that `Q141312682` *Zacharias Olai Plantin* had `Olai` read as a family name: *"detect
-the form, then confirm it against the father's own given name so `Petri` on an Italian is not
-swept up."* Swedish and Finnish clergy of the 16th to 18th centuries are named this way as a
+**The LATIN GENITIVE is a patronymic form too.** `Q141312682` *Zacharias Olai Plantin* had
+`Olai` read as a family name. The rule is: detect the form, then confirm it against the
+father's own given name, so `Petri` on an Italian is not swept up. Swedish and Finnish clergy of the 16th to 18th centuries are named this way as a
 matter of course — `Olaus Petri Niurenius`, `Nicolaus Olai Plantin`, `Johannes Benedicti`,
 `Petrus Martini`.
 
@@ -897,7 +870,7 @@ does not belong to:
 - **`-es` 76,975 and `-ez` 29,929** — `Jones`, `Alcides`, `Ramirez`, `Perez`. Patronymic in
   origin, inherited surnames by the time they reach us.
 - **`-ian` 9,800** — mostly `Christian` and `Sebastian`, which are given names.
-- **`Mac`, `Mc`, `Fitz`, `O'`, 9,670** — her message lists `fitz_x`, and in this corpus they are
+- **`Mac`, `Mc`, `Fitz`, `O'`, 9,670** — a patronymic form elsewhere; in this corpus they are
   **attached and inherited**: `MacKinnon`, `McIntosh`, `Fitzalan`, `O'Neill`. Not one occurs as a
   separate token. A separate `Fitz` token would qualify and there is none.
 - **Unaccented `ni` and `ui`** — capitalised `Ni` heads `Ni Choon`, a Chinese name, as often as a
@@ -908,14 +881,14 @@ does not belong to:
 capitalised against 1,346 lower. `bar` has the one real residue, `van Bar Opper-Lotharingen`
 being a place in Lorraine, 10 of 185.
 
-**Two edge cases left alone, and they are hers** — `name modelling.txt` § *edge cases*:
+**One edge case left alone** — `name modelling.txt` § *edge cases*:
 
 - **`Abisha III`.** The regnal ordinal sits in `GIVN`, not `NSFX`, so the suffix rule does not
   reach it and it still reads as a second given name rather than a `P7338` *regnal ordinal*
   qualifier.
 
-**A particle takes everything up to the NEXT particle.** Emma, 2026-09-04, on the one edge case
-that was put to her: *"'bin Haji Muhammad' is a single patronymic."* `Haji` is an honorific and
+**A particle takes everything up to the NEXT particle.** `bin Haji Muhammad` is a single
+patronymic: `Haji` is an honorific and
 the father is *Haji Muhammad*, so stopping after one token names the wrong man. Stopping at the
 next particle is what makes both readings hold at once — `bin Haji Putih` is one patronymic while
 `ben Phinhas ben Yittzhaq ben Shalma` stays three links rather than collapsing into one, which is
@@ -927,27 +900,24 @@ Geni id. The review page built from it is grouped by form, opens on the largest 
 added, and carries the example bearers, because spotting a `Ni Choon` needs the person rather than
 the token.
 
-**A REVIEW PAGE GOES ON GITHUB PAGES, unlinked. Not an artifact, not an Actions artifact.** Emma,
-2026-09-04, having been handed a claude.ai artifact she could not open: *"Github actions artifacts
-are both inaccessible to me (github pages is best since I don't need to sign in)."* So
+**A REVIEW PAGE GOES ON GITHUB PAGES, unlinked. Not an Actions artifact.** An Actions artifact
+needs a sign-in and is inaccessible; GitHub Pages does not. So
 `scripts/build-pages-site.ALONGSIDE` is the list, `scripts/build-patronymic-identifications-page.py`
 is the generator, and the page lands at `/patronymic-identifications.html` beside the batch
-**without a link to it** — nothing competes with the daily batch, which is the whole of the site by
-her instruction. A page added to that tuple and **not** to `pages.yml`'s sparse checkout is silently
+**without a link to it** — nothing competes with the daily batch, which is the whole of the
+site. A page added to that tuple and **not** to `pages.yml`'s sparse checkout is silently
 not published: the runner never checks the file out and the copy is a no-op.
 
 **Rank the landing form by NEW BEARERS, never by whether any exist.** `-sen` gained seven tokens in
 the widening — trailing-dot spellings like `Simonsen.` — so "has a new token" landed the page on its
-**162,246** long-established identifications instead of the **15,636** nobody has read. `-sdtr` is
-1,103 of 1,103 tokens new and is what she should open on.
+**162,246** long-established identifications instead of the **15,636** nobody has read. `-sdtr`
+is 1,103 of 1,103 tokens new and is what the page should open on.
 
 ### A PATRONYMIC SOURCE COMES FROM THE FATHER'S GIVEN NAME. Not from anywhere in his label
 
-**Emma, 2026-09-07**, shown `Q141336969` *Johansson* and `Q141290188` *Johansdotter* live with
-`P144` *based on* `Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the
-Junna you linked. Not sure how you even got that one or how you're defining the patronymic
-sources."* Her floor: *"Uhh it needs to be attested lol. Really attested in our data plus some
-degree of agentic inference or my manual approval."*
+`Q141336969` *Johansson* and `Q141290188` *Johansdotter* went live with `P144` *based on*
+`Q58785388` *Junna*, and neither is based on that name. **The floor is attestation**: attested
+in our own data, plus agentic inference or manual approval.
 
 **`Junna` is the farm name in `Juho Niilonpoika Junna`.** The source walk in
 `build-patronymic-items.py` iterated **every word** of the father's label, so a surname three
@@ -974,11 +944,11 @@ their weight, so a 4,000-father source read the same as a one-father one.
   at most, so `>= 2` takes the derivation off 2,654 tokens.
 * **A share floor drops mostly GOOD pairs** — `johnsen ← Johannes` (8 fathers), `henriksen ←
   Henrich` (38), `christiansdatter ← Christen` (14), `olsson ← Olaus` (4). Dropping those is
-  precisely what her multi-valued ruling exists to prevent.
+  precisely what the multi-valued rule exists to prevent.
 * Even the tightest blend leaves 168, and **reading all 168 shows most are genuine** —
   `knutsen ← Canuti`, `mortensen ← Martinus`, `staffansson ← Stefan`, `paulsen ← Poul`.
 
-**Position separates them and no threshold does.** Every pair she flagged is in the 64:
+**Position separates them and no threshold does.** Every wrong pair is in the 64:
 `johansson ← Junna`, `larsson ← Luur` (from `Anders Andersson Luur Läraktig`), `bjørnsen ← Brun`,
 `andersen ← Aanderaa`, `jensen ← in`. A second group falls out for free — `jesenhausen ←
 Jesenhaus`, `ekmansson ← Ekman`, `lüttringhausen` — inherited German and Swedish surnames
@@ -990,17 +960,15 @@ where a structural test belongs.**
 The plan carries a `p144_withdrawn` column: what the unscoped walk would have produced and the
 scoped one does not, computed in the same run so it maintains itself. `build-garborg-name-items`
 emits `-Q… P144 …` only where all three hold — the item is in `reports/created-name-items.tsv`,
-the value is live on it, and the plan names that value as withdrawn. **9 values across 8 tokens**,
-of which the two she photographed are two. Anything she added by hand is in no withdrawn list and
-cannot be reached from there; § *The purpose is to ADD to Wikidata, not to correct it* holds for
-everybody else's statements, and *"we can correct stuff we added"* is scoped to ours by its own
-words.
+the value is live on it, and the plan names that value as withdrawn. **9 values across 8 tokens.**
+A value added by hand is in no withdrawn list and cannot be reached from there; § *The purpose is
+to ADD to Wikidata, not to correct it* holds for everybody else's statements, and correcting what
+we added is scoped to ours.
 
 ### A MATRONYMIC DERIVES FROM THE MOTHER. A female-looking source in the father walk is not one
 
-**Emma, 2026-09-07**, ruling on the second half of the `P144` question: **"Reclassify as
-matronymic."** She was choosing over the 53 `P144` values whose given-name item is `Q11879590`
-*female given name* — and **that was the wrong population, which reading the rows says plainly**:
+**The 53 `P144` values whose given-name item is `Q11879590` *female given name* are the WRONG
+population**, which reading the rows says plainly:
 
     adriansdatter <- Adrian (Q372250)      jonesdatter  <- Jone (Q14436586)
     brynildsen    <- Brynild (Q33093604)   herlaugson   <- Herlaug (Q16427631)
@@ -1019,22 +987,20 @@ would have been reclassified on a property of the *name item* rather than of the
 `Mariasson`, `Mariasdotter`, `Annasson`, `Evasdotter`, `Britasson`, `Evasson`, `Bodilsen`,
 `Elinason`, `Rannveigsson`, `Ulrikasdotter`, `Johannasdotter`, `Klarasson` — the son of *Maria*
 is `Mariasson`, and that is unambiguous. It answers the question standing in
-`build-garborg-name-items`' own comment, *"matronymic currently fires for nothing, and that
-answers her question"*: it fired for nothing because the mothers were never looked at.
+`build-garborg-name-items`' own comment that matronymic fires for nothing: it fired for nothing
+because the mothers were never looked at.
 
 **Two things the mother walk does NOT do, and both are deliberate.**
 `patronymic_or_surname` asks whether the *father* carries the same token, so it is a father test
-by construction and is not applied on the mother side — there the token's shape and her given
-name are the whole evidence. And the Latin-genitive branch stays on the father, since
+by construction and is not applied on the mother side — there the token's shape and the mother's
+given name are the whole evidence. And the Latin-genitive branch stays on the father, since
 `name modelling.txt` models that form as his.
 
-**`Q1076664` *matronymic* is the class, and EMMA SUPPLIED IT** — 2026-09-07, the same evening,
-after this container could not: `Q110874` *patronymic* is its sibling, the matronymic item is in
+**`Q1076664` *matronymic* is the class**, the sibling of `Q110874` *patronymic*. It is in
 neither `reports/wikidata-labels.tsv` nor `out/wikidata/name-items-in-store.tsv.gz` (whose 463
-patronymic-kind items are all `Q110874`), and the environment's egress policy answers `CONNECT
-www.wikidata.org:443` with 403. § *Do not guess these* is why the id waited for her rather than
-being invented. Its own description reads *"personal name component based on ones mother's given
-name"*.
+patronymic-kind items are all `Q110874`), and a sandbox with no egress cannot look it up, so the
+id had to be supplied rather than derived — § *Do not guess these*. Its description reads
+*"personal name component based on ones mother's given name"*.
 
 **Only the NAME ITEM changes. Nothing on the person moves.** `P5056` is *patronym or matronym* —
 one property for both — so a matronymic bearer carries exactly what a patronymic bearer does, and
