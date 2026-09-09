@@ -1420,14 +1420,11 @@ feeds the `P734` family-name work rather than the label.
   item labelled that asserts something false while being impossible to find. The
   `P2600` is what makes it retrievable.
 
-`scripts/labels.py` is the single place that decides this — `label_for()` returns
-`''` for `Private` and `<private>` **and nothing else**. It briefly also emptied
-`NN`, `unknown` and `?`; Emma, same day: *"I didn't tell you to do that. I didn't
-tell you to avoid the NN people."* `NN` is *nomen nescio*, a genealogist saying
-the name is unknown — a real statement about a person, not Geni withholding data,
-and whether it becomes a label is a decision rather than a string to add to a set.
-A caller that falls back to the raw
-string when it gets `''` reintroduces the whole problem.
+`scripts/labels.py` is the single place that decides this — `label_for()` returns `''` for
+`Private` and `<private>` **and nothing else**. `NN` is *nomen nescio*, a genealogist saying the
+name is unknown: a real statement about a person, not Geni withholding data, so it is not in that
+set. A caller that falls back to the raw string when it gets `''` reintroduces the whole
+problem.
 
 **This is the same rule as the Samaritan "wives" in `docs/future-modelling.md`,
 with the opposite outcome, and the difference is what to check for.** `daughter
@@ -1437,16 +1434,15 @@ is never "is the label bad", it is "is there anything real underneath it".
 
 **Do not confuse redacted with unnamed.** The seed of
 `exports/samaritans/export-Forest-6000000178794141887.ged` is
-`NN /bint Aabed-El ben Asher ben Matzliach/` — that is how she is *recorded*, not
-Geni withholding a name it holds. Her record comes through complete. Only 29 of
-that export's 4,820 people are `Private` at all, so an export seeded on a living
-person is **not** substantially redacted; assuming otherwise was wrong when it
-was assumed here.
+`NN /bint Aabed-El ben Asher ben Matzliach/` — that is how she is *recorded*, not Geni
+withholding a name it holds, and her record comes through complete. Only 29 of that export's
+4,820 people are `Private` at all, so an export seeded on a living person is **not**
+substantially redacted.
 
 ### A parenthesised token in `SURN`/`_MARNM` is THREE different things
 
-**Emma ruled on these case by case, 2026-08-26**, shown the raw records rather than a summary.
-5,866 occurrences over 2,495 distinct tokens, across 1,697,887 name records.
+5,866 occurrences over 2,495 distinct tokens, across 1,697,887 name records, ruled case by case
+from the raw records.
 
 | shape | example | tokens / occurrences | ruling |
 | --- | --- | ---: | --- |
@@ -1454,49 +1450,41 @@ was assumed here.
 | **particle or honorific** | `(de) Worms`, `Henriques (D.)` | 9 / 205 | **into the `mul` label**, never a name item |
 | **unknown-name marker** | `(anonyma)`, `(incognita)`, `(?)` | 8 / 108 | **an NN marker** — joins `Private`/`NN`/`Ukjent` |
 
-**On the particles, her words:** *"These should be parts of the mul labels because they are
-integral parts of what the people are called."* So `de` is not dropped and is not an item — it
-belongs in the label the person is read by. `(de)` occurs 97 times and bare `de` 125,328, so this
+**A particle belongs in the `mul` label**, because it is an integral part of what the people are
+called. So `de` is not dropped and is not an item — it belongs in the label the person is read
+by. `(de)` occurs 97 times and bare `de` 125,328, so this
 governs a large population beyond the parenthesised ones.
 
-**Nothing tells a noble house from a spelling variant, and nothing needs to.** Emma, shown that
-the two shapes are identical: *"nvm they get both family names and the alias lol"*, then
-*"Amul for the brackets and two assigned family names"*. So `Weirman (Weyerman)` yields **two
-`P734` statements** plus the alias. This is § *One name item per USAGE* again: a token in two
+**Nothing tells a noble house from a spelling variant, and nothing needs to.** The two shapes
+are identical, so `Weirman (Weyerman)` yields **two `P734` statements** plus the alias. This is § *One name item per USAGE* again: a token in two
 roles is not an ambiguity to resolve.
 
-**And no qualifier on either.** She first said the bracketed one should carry *"a qualifier of
-some sort"*; asked which, from four options confirmed offline, she dropped it: *"Ehh both
-surnames are coequal properties and nvm about a qualifier just drop that. Both are coequal
-properties for the surname."* Nothing marks one as primary, because nothing in the data says one
-is.
+**And no qualifier on either.** Both surnames are coequal properties. Nothing marks one as
+primary, because nothing in the data says one is.
 
 **Two discriminators were built and both are gone.** Bare-form frequency was refuted by the
 census written for it — `Voehl` occurs 20 times unparenthesised and `Loewenberg` 292, so
 `Vöhl (Voehl)` and `Levi (Loewenberg)` came out as houses when they are plainly spellings.
 String similarity to the neighbouring token did separate every ruled case, and was a similarity
-heuristic in a repo that bans them. **Her answer removed the question instead of settling it**,
-which is worth remembering the next time a rule appears to need a threshold.
+heuristic in a repo that bans them. **Emitting both removed the question instead of settling
+it**, which is worth remembering the next time a rule appears to need a threshold.
 
 ### A nickname alias carries the SURNAME. `P1449` is NOT emitted
 
-**Emma, 2026-08-26**, on `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given
-an alias of 'Sally' instead of 'Sally Ekman'."*
+`Q141189102` *Sigrid "Sally" Manilva Tunheim* was given an alias of `Sally` rather than
+`Sally Ekman`. The alias carries the surname:
 
     Amul  alias      Sally Ekman        <- nickname + the MARRIED surname
     Amul  alias      Sigrid Manilva Ekman
 
-**`P1449` was dropped on 2026-08-29 and this section said the opposite until 08-30.** Her words:
-*"the nicknames (listed in English????) are not something that's good. Just drop the nickname
-functionality because the nicknames being listed in English is unacceptable. Just lmul vs
-amul."* It is monolingual text, so it needs a language tag; the tag being emitted was `en`,
-declaring `Byre` and `Christophersdatter` to be English words. **No right tag is available
+**`P1449` is dropped.** It is monolingual text, so it needs a language tag; the tag being
+emitted was `en`, declaring `Byre` and `Christophersdatter` to be English words. **No right tag is available
 either** — the nickname is Norwegian on a person whose label is language-neutral `mul`, and
 guessing a language per person is the inference this repo refuses everywhere else.
 
 **The nickname is not lost.** It is still recognised, still kept out of the given names, and
-still reaches Wikidata as the `Amul` alias above — which is exactly the *"just lmul vs amul"*
-she asked for.
+still reaches Wikidata as the `Amul` alias above, which is all that is wanted: `Lmul` and
+`Amul`.
 
 **The drop lives in `namemodel.statements_for`, the one place that models a name.** It sat in
 `build-garborg-day.py` for a day instead, so the model went on producing `P1449` while nothing
@@ -1510,9 +1498,9 @@ primary label takes, so the alias is the same person's name with the nickname sw
 `Help:Aliases`: *"the purpose of aliases is only to find entities in searches"*. A bare `Sally`
 is not something anybody would search.
 
-**The label stays the FULL name, and quotes never go in a label.** She raised two alternatives
-— nickname-as-label with the full name as alias, or keeping the quotes inside the label — and
-asked for them to be looked up rather than guessed. `Help:Label` supports nickname-as-label only
+**The label stays the FULL name, and quotes never go in a label.** Two alternatives were looked
+up rather than guessed — nickname-as-label with the full name as alias, and keeping the quotes
+inside the label. `Help:Label` supports nickname-as-label only
 where the nickname genuinely IS the common name (*Xavi* against *Xavier Hernández i Creus*);
 `Help:Default values for labels and aliases` makes the default label the native full name in
 Latin script. **Nothing on any of the three help pages puts quotation marks inside a label.**
@@ -1521,10 +1509,9 @@ records only that she was called it — so the full name stays the label.
 
 ### The MARRIED name is the real name. `mul` carries it, and no batch adds an `Aen`
 
-**Emma, 2026-08-26:** *"married name is always the 'real' name and applied as the primary
-mul label (first amul added if applicable) and then the birth name is next as an amul. No
-aen are ever supposed to be added lol only ones in non-latin scripts get aliases for their
-birth names that are not in amul."*
+**The married name is always the real name**, and it is the primary `mul` label; the birth name
+follows as an `Amul`. No `Aen` is ever added — only non-Latin scripts get an alias for a birth
+name that cannot live in `Amul`.
 
     en    Aagot Garborg      <- married, primary
     mul   Aagot Garborg      <- married again. `mul` is the real label.
@@ -1534,7 +1521,7 @@ birth names that are not in amul."*
 
 **`(first amul added if applicable)` is a preservation step, not an ordering quirk.** A label
 REPLACES, so whatever the item currently reads in `mul` goes out as an `Amul` on the line
-*above* the `Lmul` that overwrites it. Some of those are her hand-edits — `Q141152600` holds
+*above* the `Lmul` that overwrites it. Some of those are hand edits — `Q141152600` holds
 *Stena Eivindsdatter Garborg*, which nothing in this repo could reconstruct.
 
 **`Aen` is never emitted.** `mul` is the language-neutral label and an alias living only in
@@ -1550,11 +1537,9 @@ was tested against the other, and the alias half was got wrong twice in opposite
 
 ### `NN` is PRESERVED in `mul`. Descriptive labels are ADDED in other languages
 
-**Emma, 2026-08-16:** *"NN is not relabeled. Why are you thinking that I'm saying
-that it's relabeled? NN is always preserved in the multi-language label. It just
-has more descriptive labels added in some languages for the relationships."*
-
-So the shape on a Wikidata item for an unnamed person is **both**:
+**`NN` is never relabelled.** It is always preserved in the language-neutral label; the other
+languages gain descriptive labels for the relationships. So the shape on a Wikidata item for an
+unnamed person is **both**:
 
     mul  NN                              <- the marker, never removed
     en   daughter of Fujiwara no Tadaki   <- descriptive, added
@@ -1575,8 +1560,8 @@ INTO `mul` and then transliterated as a name.** `Q141249589` went out as `Amul "
 `Lmul "son of Astri Torchelsdatter Øvre Time"` — the marker demoted to an alias and the English
 sentence made the language-neutral label — and then as
 `Lja "ソン・オフ・アストリ・トルケルスダッテル・オヴレ・ティメ"`, which is the English words *son* and *of*
-spelled out in katakana. `zh` and `ko` the same: `松·奥夫·`, `손 오프`. Eight labels in one batch,
-on a rolling window with 2,552 behind it. Emma spotted it on the site.
+spelled out in katakana. `zh` and `ko` the same: `松·奥夫·`, `손 오프`. Eight labels in one batch, on a rolling window
+with 2,552 behind it, and it was caught on the published site rather than in the generator.
 
 **One cause, two symptoms.** `consensus_latin_label` reads the `en` label first — and for these
 people `en` is our own descriptive sentence, by design. Nothing anywhere said *a description is
@@ -1595,97 +1580,80 @@ stopping: `daughter of father of`, `wife of Son of Menon III Pharsalos`. 21 of t
 in `reports/wikidata-placeholder-labels.json`. Same fix as a marker — fall through to the next
 relative, never reconstruct.
 
-**`Private` and `NN` are the same population and get the same treatment.** Emma,
-same message: *"NN and private are the same thing here, because if there's a
-private individual whose name is not exported, it comes out as an NN."* The rule
-one section down — *`Private` never becomes a label* — was right about what must
+**`Private` and `NN` are the same population and get the same treatment**, because a private
+individual whose name is not exported comes out as an `NN`. The rule one section down — *`Private` never becomes a label* — was right about what must
 not be written and wrong to stop there: emptying it leaves an item with no way to
 be read at all, which is the same objection. **Neither marker is a label; neither
 person is left unlabelled.**
 
 ### Regenerating QuickStatements ALWAYS regenerates the ledger. It almost never rebuilds the tree
 
-**Emma, 2026-08-31:** *"we absolutely never need to regenerate quickstatements without
-regenerating the ledger, but 90% of the time we are not gonna want to rebuild the synoptic
-tree."*
+**Regenerating QuickStatements always regenerates the ledger, and almost never rebuilds the
+synoptic tree.** Two separate inputs, and they are on opposite defaults:
 
-Two separate inputs, and they are on opposite defaults:
-
-- **The ledger, `reports/garborg-qids.tsv` — ALWAYS.** It is built from her Wikidata
-  contributions, and she edits by hand continuously, so a batch built on a stale one re-creates
-  what she has already made. `--refresh-ledger` is not an option to weigh; it is what
+- **The ledger, `reports/garborg-qids.tsv` — ALWAYS.** It is built from the account's Wikidata
+  contributions, and those are edited by hand continuously, so a batch built on a stale ledger
+  re-creates items that already exist. `--refresh-ledger` is not an option to weigh; it is what
   regenerating means. § *The ledger refresh is PART OF THE RUN* is the same rule from the other
   side — a batch at 17:33 on a ledger from hours earlier reported the Charlemagne spine stuck at
-  step 8 while she had just created the person at step 13.
+  step 8 when the person at step 13 had just been created.
 - **The synoptic tree — almost never.** `scripts/rebuild-everything.py` merges the whole corpus:
   ~14 minutes, ~17 GB, and it has been killed mid-run more than once. It changes nothing unless
-  `exports/` has changed, and asking for a batch is not asking for it. Emma, 2026-08-31: *"I did
-  not ask you to make the synoptic tree just to refresh the ledger."*
+  `exports/` has changed, and asking for a batch is not asking for it.
 
 **So the default command is `build-daily-batch.py --refresh-ledger`, and the check for the other
 10% is one line:** is any `.ged` newer than `out/merged.ged`? If none is, the merge is redundant.
 If one is, say so and ask before merging rather than doing it.
 
-### The batches are a SEQUENCE. Her algorithms are invariants, not walls
+### The batches are a SEQUENCE. The algorithms are invariants, not walls
 
-**Emma, 2026-08-26, and it is a criticism of a pattern rather than of one bug:** *"in every
-single explanation I've ever given to you about the quick statements and what I've done, I have
-been very, very specific about the order of the days. We are specifically generating them in
-these sequential batches, which are supposed to be run sequentially because of the fact that
-wikidata is faithful. You've always very consistently not actually implemented them in this way
-and often relied on weird summaries. You are often not respecting the fact that I do
-invariance-based algorithms. You just end up going towards a learned helplessness that we cannot
-do certain things, which we can."*
+**The batches are generated in a specific order and run sequentially.** They are
+invariance-based algorithms, and reading an invariant as a wall is the recurring failure here.
 
 **Wikidata is faithful: what ran yesterday is there today.** That is the whole basis of the
 daily cadence. A batch is not a self-contained unit that must do everything or fail — it is one
 step of a sequence, and the next step gets to assume the previous one landed. *"What cannot run
 today is tomorrow's batch, because tomorrow those items exist."*
 
-**Her rules are INVARIANTS that make the sequence converge.** *A statement goes in only if both
+**The rules are INVARIANTS that make the sequence converge.** *A statement goes in only if both
 ends already have a QID* is not a limit on what can be built; it is the condition that makes
 every batch runnable in full and lets the next one go further. Reading it as *"therefore this
 cannot be done"* inverts it.
 
 **The failure mode has a name and a track record: inventing a hard limit, then building around
-it.** Three in this repo, all mine, all false:
+it.** Three in this repo, all false:
 
 | the "limit" | what is true | what it cost |
 | --- | --- | --- |
-| *"`LAST` is only valid as a subject, never as a value"* | `Q… P22 LAST` is ordinary | weeks of one-way links she repaired by hand |
-| *"QuickStatements cannot point at an item a `CREATE` in the same batch just minted"* | that is exactly what `LAST` is | 42 name items and every name statement gated behind a phantom, then reported to her as a blocker |
-| *"the merges/exports must wait on her"* | Chrome automation runs the loop end to end | an export tagged BLOCKED-ON-USER-ACTION that nothing was blocking |
+| *`LAST` is only valid as a subject, never as a value* | `Q… P22 LAST` is ordinary | weeks of one-way links repaired by hand |
+| *QuickStatements cannot point at an item a `CREATE` in the same batch just minted* | that is exactly what `LAST` is | 42 name items and every name statement gated behind a phantom, then reported as a blocker |
+| *the merges and exports must wait on a person* | Chrome automation runs the loop end to end | an export tagged BLOCKED-ON-USER-ACTION that nothing was blocking |
 
-**The one real limit, in her words:** *"two things created in the same batch can't point at each
-other."* Everything else composes — *"You can point an existing item to a new one or a new one to
-an existing one in quickstatements."*
+**The one real limit: two things created in the same batch cannot point at each other.**
+Everything else composes — an existing item can point at a new one, and a new one at an existing
+one.
 
 **And "relied on weird summaries" is literal.** `build-label-corrections.py` read
 `out/garborg-new-items.json`, a summary with no `claims`, `labels` or `aliases`, and printed
 *"0 items need correcting"* while 45 needed it. § *A SUMMARY of a Wikidata item is not the item*
 already existed; the script predated nobody noticing.
 
-**So, before writing that something is impossible:** try it, or find where in her instructions
-she already said it works. She has given step-by-step structure for these algorithms repeatedly,
-and the transcripts are the authority — not a reconstruction of what seems plausible.
+**So, before writing that something is impossible:** try it, or find where this file already
+says it works. The transcripts are the authority for these algorithms — not a reconstruction of
+what seems plausible.
 
-### EVERY TWO HOURS, PUT THE BLOCKERS TO HER AS AN AskUserQuestion
+### EVERY TWO HOURS, PUT THE BLOCKERS UP AS AN AskUserQuestion
 
-**Emma, 2026-08-26, ordering this as an upheaval to the work loop:** *"as a part of the loop
-at 10:00 12:00 14:00 16:00 18:00 20:00 22:00 and 24:00 you need to do AskUserQuestion on the
-blockers like this. Upheaval to the work loop because this is such a bad problem."*
-
-**At 10, 12, 14, 16, 18, 20, 22 and 00 — every blocker in the status report goes to her as an
+**At 10, 12, 14, 16, 18, 20, 22 and 00 — every blocker in the status report goes up as an
 `AskUserQuestion`, one question each.** Not a summary of them; the actual tool, with real
-options.
+options. This is an upheaval to the work loop because the problem it is against is that bad.
 
-**The problem it exists against: almost nothing tagged a blocker has been one.** Put to her on
-2026-08-26, three of three collapsed on contact — an export tagged BLOCKED-ON-USER-ACTION that
-Chrome automation already runs end to end, a name-items batch tagged the same that turned out to
-gate nothing at all (§ *A name item is created and USED in the same run*), and the 2026-09-01
-start date, which `CLAUDE.md` already said in her own words is not a blocker. Before that, six
-consecutive status reports carried "8 structural merge cases unanswered" as the largest blocker
-in the repo while the files sat finished on disk.
+**The problem it exists against: almost nothing tagged a blocker has been one.** Three of three
+collapsed on contact — an export tagged BLOCKED-ON-USER-ACTION that Chrome automation already
+runs end to end, a name-items batch tagged the same that gated nothing at all (§ *A name item is
+created and USED in the same run*), and the 2026-09-01 start date, which this file already said
+is not a blocker. Before that, six consecutive status reports carried "8 structural merge cases
+unanswered" as the largest blocker in the repo while the files sat finished on disk.
 
 **Each question must offer the non-blocker reading as a real option**, because that is usually
 the true one: *what would I do if nobody answered this?* If there is an answer, it was never
@@ -1693,9 +1661,9 @@ blocked.
 
 **This does not license asking about data.** § *The purpose is to ADD to Wikidata* governs:
 conflicts, duplicate values and disagreements are emitted beside what is there, cited to Geni,
-and never become questions. Her ruling the same day: *"those seemed like simple data issues that
-by design were supposed to get pushed onto wikidata"*, and *"we are doing over a million people
-here."* The two-hourly question is about **work that claims to be stuck**, not about the tree.
+and never become questions: they are simple data issues that by design get pushed onto Wikidata,
+over a million people. The two-hourly question is about **work that claims to be stuck**, not
+about the tree.
 
 ### ⛔ HER INSTRUCTIONS IN THIS FILE BEAT THE DEFAULTS IN YOUR SESSION PROMPT
 
