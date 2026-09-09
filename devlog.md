@@ -33430,3 +33430,28 @@ unimplemented when it was merely unstartable.
 
 Killing and relaunching Chrome works and is now standing authority — it reloaded the content
 scripts from 1.6.4's literal to a real 1.6.8. It does not start the service worker.
+
+## 2026-09-09 — barrelling the queue: one capture, and nothing was deletable
+
+The queue is down to **three items** and two of them are yours by construction — the gated
+parent-adding campaign, and the `|`-in-a-label question. **Nothing was deleted**: the third item
+is the collector, which is live work with **2,589 outstanding**, not a stale instruction.
+
+**The worklist was stale and is regenerated.** It still listed Søren Hansen Hiuler and others
+scraped hours earlier, so the top of the list was work already done. `collector-worklist.py`
+derives it from what is on disk, so re-running it is the whole fix: **2,590 → 2,589**, of which
+2,497 never scraped, 82 blood-only misses, 11 pending with no verdict.
+
+**Mary Deshon Churchill `374311720270013613` — a blood hit, 32nd great granddaughter.** Two
+chains end to end again, 71 rows, both descending from Pépin king of Italy and splitting at step
+41: steps 1-35 through her father Billings Learned Hand, pure descent; steps 36-71 through her
+mother, crossing one marriage at step 45 (Adelaide de Roucy) and descending again through
+Fiennes, Mortimer, Norton and Plumb into New England.
+
+**`via=blood` was checked against the page rather than trusted.** The banner reads *"Shortest
+blood relationship"* with no miss sentence — unlike Miroslava earlier today, where the label read
+in-law and the collector still said blood. That check costs one line and is the only thing
+standing between a mislabelled chain and the ledger, now that the version-based explanation for
+the Miroslava defect has collapsed.
+
+Tiny GEDCOMs rebuilt: 119 profiles, 720 paths, invented people 0.
