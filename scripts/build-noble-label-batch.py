@@ -44,7 +44,31 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "reports" / "title-label-proposals.tsv"
 DEST = ROOT / "reports" / "wikidata-noble-labels.qs"
 
-RANK = "noble"
+#: ⛔ **THE RANKS YOU HAVE RULED ON, and only those.** You went through them one at a time on
+#: 2026-09-09 by `AskUserQuestion`, having asked for exactly that: *"the lowercase ranks I want
+#: AskUserQuestion on every one of them."* A rank not in this set has not been ruled on and is
+#: computed-but-unemitted in `reports/title-label-proposals.tsv`, which is where it stays.
+#:
+#: **`esquire` is DELIBERATELY ABSENT** — 9 people, and your verdict was *"If there's 9 people we
+#: can do it manually lol."* Adding it here would be doing by machine what you said you would do
+#: by hand.
+#:
+#: **`farmer` and `mistress` are in, and they needed no special case.** Your verdict on both was
+#: *drop the word, keep the estate* — which is what PREFIX-ONLY already does, since
+#: `propose-title-label-fixes.py` stopped cutting the tail. They are the reason that rule exists.
+RANKS = (
+    "noble",      # 572   your first batch, 2026-09-09
+    "knight",     #  51
+    "ridder",     #  41
+    "baroness",   #  27
+    "captain",    #  25
+    "countess",   #  21
+    "count",      #  14
+    "major",      #  14
+    "farmer",     #  11   drop the word, keep the farm
+    "baron",      #   8
+    "mistress",   #   6   drop the word, keep the estate
+)
 
 
 def main():
@@ -59,8 +83,8 @@ def main():
             if row["hold"]:
                 skipped[row["hold"]] += 1
                 continue
-            if row["leading_title"].split()[:1] != [RANK]:
-                skipped["not-noble"] += 1
+            if row["leading_title"].split()[:1] and row["leading_title"].split()[0] not in RANKS:
+                skipped["rank-not-ruled-on"] += 1
                 continue
             if row["kind"] != "title":
                 skipped["carries-a-pipe"] += 1
@@ -71,15 +95,21 @@ def main():
             picked.append(row)
 
     lines = [
-        "# Every one of these labels reads `noble <name>` -- a RANK that Genealogics files in",
+        "# Every one of these labels opens with a lowercase RANK that Genealogics files in",
         "# its own column and GZWDer's semi-automatic import of January 2022 carried into the",
         "# name field verbatim. Kristbaumbot then copied `en` into `mul` in June 2025, so the",
         "# language-neutral label became an English sentence. Nothing here is a name change:",
         "# the rank comes off and the name that was already there is what remains.",
         "#",
-        "# Scope is `noble` alone and pipe-free, both by Emma's ruling of 2026-09-09.",
-        "# `reports/title-label-proposals.tsv` holds every other lowercase rank, computed and",
-        "# deliberately not emitted.",
+        "# ⛔ THE RANK COMES OFF AND NOTHING ELSE MOVES. You, 2026-09-09, shown that these",
+        "# proposals also truncated the territorial tail: \"Uhh bruh what? I'm asking you to",
+        "# remove the prefix lol not the other stuff.\" So `noble Detlof Heyke, master of",
+        "# Gammelbo bruk` becomes `Detlof Heyke, master of Gammelbo bruk`, and the 87 rows that",
+        "# would have been cut back to a bare given name plus patronymic keep their estate.",
+        "#",
+        "# Scope is the ranks you ruled on one by one, and pipe-free. `esquire` is out by your",
+        "# own verdict -- 9 people, to be done by hand. Every rank you have not ruled on is",
+        "# computed in `reports/title-label-proposals.tsv` and deliberately not emitted.",
         "",
     ]
     for row in sorted(picked, key=lambda r: (int(r["qid"][1:]), r["qid"])):

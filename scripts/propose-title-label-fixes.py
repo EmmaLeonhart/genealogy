@@ -306,7 +306,19 @@ def main():
             # rule would have removed -- and an alias of the bare word `Hans`, because only the
             # second reading carried the comma. Cutting the tail first gives `Johann` and
             # `Hans`, which is the same person's name twice and is what the `|` says.
-            trimmed = tidy(drop_title_tail(drop_comma_tail(stripped)))
+            # ⛔ **PREFIX ONLY. You, 2026-09-09**, shown that these proposals also truncated
+            # the territorial tail: *"Uhh bruh what? I'm asking you to remove the prefix lol not
+            # the other stuff."* So the rank word comes off and nothing else moves.
+            #
+            # What this used to do -- `tidy(drop_title_tail(drop_comma_tail(stripped)))` -- cut
+            # a comma tail on 112 of `noble`'s 457 and reduced 87 of them to a bare given name
+            # plus patronymic, which is the shape you refused for `farmer` in the same sitting:
+            # `noble Beata Henrikintytar, heiress of Hannola` -> `Beata Henrikintytar`.
+            #
+            # `tail_cut` is kept and is now always False, because `hold_reason` takes it and the
+            # pipe branch below still reads the same variable. Nothing is cut, so nothing is
+            # held for having been cut.
+            trimmed = tidy(stripped)
             tail_cut = trimmed != tidy(stripped)
             stripped = trimmed
             label, aliases, ok = split_pipe(stripped)
