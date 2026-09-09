@@ -4133,14 +4133,13 @@ hand work. § *The tree and the items are edited BY HAND, continuously* is the g
 
 ### Whole BLOCS become entry points on 2027-01-01 — and a root outside the ledger does nothing yet
 
-**Emma, 2026-09-03:** *"Ancient Chinese bloc / All Samaritan high priests / All Ethiopian
-Emperors / All Japanese Emperors / All Tanba people / All Izumo/Senge/Kitajima people / All
-people with special geni gedcom recognition become entry people."* Plus *"Ethiopian emperors as
-much as they can be entry points. Imo on Jan 1."*
+**Whole blocs become entry points on 2027-01-01**: the Ancient Chinese bloc, all Samaritan high
+priests, all Ethiopian Emperors, all Japanese Emperors, all Tanba people, all
+Izumo/Senge/Kitajima people, and everyone with special Geni GEDCOM recognition.
 
-**Her reason it is not reckless, and it is a prediction rather than a claim:** *"the invariant
-graph structure will probably mean they are cumulatively at most a quarter of edits. 1->251 got
-the 250 giving ~50%."* The precedent is real — 2 roots to 252 took the subgraph 316 → 565, so 250
+**Why it is not reckless, as a prediction rather than a claim:** the invariant graph structure
+will probably mean they are cumulatively at most a quarter of edits. 1 → 251 roots got 250 more
+people, about 50%. The precedent is real — 2 roots to 252 took the subgraph 316 → 565, so 250
 extra roots bought ~249 people, because a root only seeds what the subgraph already connects.
 
 **`reports/entry-point-groups.tsv` holds a group as a REFERENCE TO A ROSTER**, never as pasted
@@ -4196,11 +4195,10 @@ name a specific gedcom.
 
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
-**Emma, 2026-08-28**, shown that the batch had added `P26` *spouse* and `P40` *child* statements
-to `Q116150299` *Jon Reimatsen* and `Q116150300` *Cecilie Ebbesdatter*, both of whom she had
-listed as outside the contiguous group: *"It is literally fine if the guard does not apply here,
-It is fine to add these things to people we are not creating, a bit of activity not centered on
-the subgraph is a-okay especially when it improves the state of items we already created."*
+**It is fine for the subgraph guard not to apply to additions.** Adding statements to people we
+are not creating is acceptable; a bit of activity not centred on the subgraph is fine, especially
+where it improves the state of items already created. `Q116150299` *Jon Reimatsen* and
+`Q116150300` *Cecilie Ebbesdatter* are the worked case, both outside the contiguous group.
 
 **Two passes, two populations, and the split was never designed** — it is where the filter
 happened to go. `build-garborg-day.py` line ~1035 gates the **seed pool** by the subgraph, which
@@ -4218,11 +4216,11 @@ outside the group. Cecilie's father in our tree is `6000000003166417414` **Ebbe 
 who is **step 22 of `paths/charlemagne-to-arne-garborg.tsv`**. When the spine reaches him, one
 `P40` joins that whole island to the contiguous group in a single edit.
 
-**Why the exclusion list still exists — for HER, and not for the Kitajima family.** Emma:
-*"why are we even having exclusions? If you just followed the algorithm then exclusions wouldn't
-be needed."* True of **creations**: she is not in the subgraph, so she is never a seed. Not true
-of **additions**, which are ledger-wide — her `Q232803` reaches `have` through the ledger, so
-without the exclusion the fill-in pass would edit her item.
+**Why the exclusion list still exists — for the account owner's own item, and not for the
+Kitajima family.** If the algorithm is followed, exclusions are not needed — true of
+**creations**, since that item is not in the subgraph and is never a seed. Not true of
+**additions**, which are ledger-wide: `Q232803` reaches `have` through the ledger, so without the
+exclusion the fill-in pass would edit it.
 
 **The Kitajima half of that was wrong and is corrected here.** Checked by id, 2026-08-28:
 **none of the 24 Kitajima/Kitashima people is in the ledger**, so neither the fill-in pass nor
@@ -4233,17 +4231,16 @@ braces, not the thing holding the line.
 
 ### The ledger refresh is PART OF THE RUN. A separate step is a stale ledger
 
-**Emma, 2026-08-28:** *"this is worrying since it seems to indicate that you might be building
-the ledger as a separate part from the script, when in reality the script is supposed to go
-through my contributions and update the ledger every time."*
+**The script goes through the account's contributions and updates the ledger every time.**
+Building the ledger as a separate step from the script is the defect.
 
 `build-garborg-day.py --compose` now runs `scripts/refresh-garborg-ledger.py` first and **exits
 if it fails**. `--no-refresh` exists for offline work and is the wrong thing to reach for.
 
 **The cost of it having been separate, measured the same day:** a batch built at 17:33 used a
 ledger refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** — the
-hinge of all three lines, which Emma had just created — read as missing, and the Charlemagne
-spine reported itself stuck at step 8. With the refresh inside the run it went **step 8 → step
+hinge of all three lines, created minutes earlier — read as missing, and the Charlemagne spine
+reported itself stuck at step 8. With the refresh inside the run it went **step 8 → step
 13 in one build**, walking past her.
 
 **A stale ledger does not look like an error. It looks like work to do** — and the work it
@@ -4251,16 +4248,13 @@ invents is re-creating items she has already made.
 
 ### The programme is HYPERLOCAL: one hop out from Arne Garborg, per day
 
-**Emma, 2026-08-23, correcting an assumption that had been running for days:**
-*"the only reason we ever should be doin these is specifically building up from the
-Garborg tree. Remember we are only editing hyperlocal for a reason and may even
-substantially change the algorithm of the Garborg tree stuff to favor it more. We were
-supposed to every day have our own Garborg qs batch kind of extending off of him by 1
-each time. Until we get the confidence to actually run this on wikidata, this is a good
-thin to run. We are testing the waters for a later geni bot automation."*
+**The only reason to run these batches is building up from the Garborg tree.** The editing is
+hyperlocal on purpose, and the algorithm may change further to favour that. The daily Garborg
+batch extends off Arne by one hop each time. Until there is confidence to run this at scale on
+Wikidata, this is the thing to run — it is testing the waters for a later Geni bot automation.
 
-**One step is one HOP of the tree**, her ruling when asked: each daily batch takes
-everybody at the next distance from Arne — his siblings, then their spouses and
+**One step is one HOP of the tree**: each daily batch takes everybody at the next distance from
+Arne — his siblings, then their spouses and
 children, then the grandparents, and outward. Not one person a day, and not one
 relationship type a day.
 
@@ -4269,32 +4263,26 @@ confidence: a hop a day is reviewable by eye, and it is rehearsal for a later Ge
 `docs/wikidata-item-template.md` is the shape each item takes, read off the items she
 built by hand.
 
-**Do not invent a runnable edit batch she has not asked for.** Emma, same message:
-mass batches are *"pretty harmful when generated"*. Measurement, censuses and reports
-are fine unprompted — § *No unprompted reports* still applies to their volume — but
+**Do not invent a runnable edit batch nobody asked for.** Mass batches are harmful when
+generated speculatively. Measurement, censuses and reports are fine unprompted — § *No unprompted reports* still applies to their volume — but
 a `.qs` or a JSON edit batch is a thing someone can paste into QuickStatements, and
-producing one uninvited presents work as ready that nobody sanctioned. On 2026-08-23
-four `.qs` files were attached to the chat when she had asked for one; the largest,
-`reports/wikidata-geni-qid-p2600.qs` (354 statements), was generated on my own
-initiative during a work-loop tick. Her reply: *"What the fuck are those
-quickstatements only the garborg ones are ones that I asked for."*
+producing one uninvited presents work as ready that nobody sanctioned. Four `.qs` files were once
+attached to a chat when one had been asked for; the largest,
+`reports/wikidata-geni-qid-p2600.qs` (354 statements), was generated unprompted during a
+work-loop tick.
 
-**The existing mass batches are NOT shelved and are NOT a mistake.** Same message,
-asked whether the 284,000 edit objects should be parked: *"Keep maintaining them they
-are gonna be run lol the program is on it will just not run until sept 1."* They stay
-live and stay consistent. The rule above is about **new** batches, not about unwinding
+**The existing mass batches are NOT shelved and are NOT a mistake.** The 284,000 edit objects
+stay maintained and are going to be run; the programme is on, it simply does not run before the
+start date. They stay live and stay consistent. The rule above is about **new** batches, not about unwinding
 the programme.
 
 ### The manual approvals are TRAINING DATA. That is why they happen now, at this size
 
-**Emma, 2026-08-31:** *"the entire idea behind this is that I am doing the manual approval of
-everything in the corpus while the corpus is still reasonable. I'm doing all this stuff in the
-network while the network size is still reasonable. The idea here is that doing it manually when
-the network size is still reasonable is going to give us legitimate information. You are storing
-it so that we can actually get a serious idea of what is going on with it, to the degree that
-we're able to just do auto-merges and stuff like that."*
+**The manual approvals happen now, at this size, because the network is still small enough to
+cover all of it by hand — and doing it by hand at this size yields legitimate information.** It
+is stored so that the auto-merge threshold can eventually be set from real data.
 
-**So her verdicts are not a backlog being cleared. They are a sample being collected**, and the
+**So the verdicts are not a backlog being cleared. They are a sample being collected**, and the
 sample is only worth collecting while the network is small enough that she can cover **all** of
 it rather than a slice. Every `SAME`/`DIFFERENT` in `reports/emma-judgments.tsv` is a labelled
 example of what a correct identification looks like, and the point is to learn the rule well
