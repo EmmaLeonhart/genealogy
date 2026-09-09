@@ -17768,7 +17768,7 @@ parent/child/spouse hops, which is the scope named — took the table to **3,261
 
 **Measured on the current batch: 37 of 37 creations carry `Lmul`, `Len`, `Lja` and `Lzh`.** Not
 one is held back for a missing transliteration — `grep -c transliteration
-reports/garborg-carry-forward.tsv` is 0. The carry-forward is now 571 sibling links over her
+reports/garborg-carry-forward.tsv` is 0. The carry-forward is now 571 sibling links over the
 10-a-day cap and 20-odd missing name items, which are different problems.
 
 So the item is deleted rather than carried. Simen Olsen was not special; he was the one person
@@ -18299,7 +18299,7 @@ than asking for it to be done, which is why they never get "finished" and never 
 `CLAUDE.md` § *Queue items are BULLET POINTS* gives the reason for both. Now bullets, and physically
 last.
 
-**The crons are now durable queue items**, her other bullet: *"add them into the queue as actual
+**The crons are now durable queue items**, the other bullet: *"add them into the queue as actual
 items with he specification they are the cron jobs so they cget crossed off if he cron job finishes,
 but are a bit more stable."* Cron text lives only in memory — every cron died in the 08-28 crash and
 none was recreated, which is why nothing ran between 00:03 and 06:00 today. All three are now
@@ -18502,7 +18502,7 @@ that a bare given name has no rationale.** His father is `Jon Reinmodsen`, and h
 the same page are **Jon Jonsen Lille**, **Cecilie Jonsdatter** and **Tøre Jonsen** — so `Jonsen` is
 not inferred from the father alone, it is the form his own siblings already carry.
 
-**Note the profile is managed by Flemming Riis, not her**, and Geni allowed the edit anyway because
+**Note the profile is managed by Flemming Riis, not this account**, and Geni allowed the edit anyway because
 the profile is public. Worth knowing: the earlier export failure on Swentepolk was a *manager*
 restriction on exporting, not on editing, and the two permissions are separate.
 
@@ -19385,7 +19385,7 @@ Four things removed from `build-garborg-day.py`, all of them deletions:
 - `"6000000087535357291"` out of `NEVER_TOUCH_GENI` -- **this was the one that mattered.** The
   `CREATE` refusal keys on that set, so it aborted the run rather than mint her.
 - `EMMA_QID` deleted.
-- her entry in `NEVER_TOUCH_QID` deleted -- after the substitution it named an unrelated item
+- that entry in `NEVER_TOUCH_QID` deleted -- after the substitution it named an unrelated item
   anyway, so it protected a stranger and nothing else.
 - `kitajima = {q for q in NEVER_TOUCH_QID if q != EMMA_QID}` becomes `set(NEVER_TOUCH_QID)`, since
   there is no longer anything to subtract. That filter existed for one day.
@@ -19418,7 +19418,7 @@ Signe Borsheim is reached without the file being wired in at all.
 **Arne → Signe checked, as asked:** 8 of 15 held, contiguous from Arne down to step 8
 Kristine Sørensdatter Gjesdal `Q141217391`; step 9 Søren Sørenson Gjesdal is in the batch on disk.
 It is the only unfinished spine that **can** complete -- the other two terminate at the account owner, and while
-her Geni id is no longer excluded, they need her created before they close.
+that Geni id is no longer excluded, they need the item created before they close.
 
 `randolph-paulus-borsheim.tsv` stays unwalked: 13 missing, zero overlap with the Signe spine.
 5 of its 18 people hold items, and its short route is only 5 people from Ane Oline `Q141152523`
@@ -19633,7 +19633,7 @@ furniture rather than genealogy.
 
 **The privacy exposure is not the kind assumed.** Of 1,697,887 name rows: **79,795 `Private`**
 and **16,190 `<private> Surname`** — ~96,000 rows about people Geni treats as private, mostly
-living. Her *"people who are digging can find stuff"* is about discoverability; publishing the
+living. The *"people who are digging can find stuff"* is about discoverability; publishing the
 corpus is bulk republication of Geni's private-profile structure outside Geni's access control.
 Recorded as a decision to take, not flagged as a technical blocker.
 
@@ -19771,8 +19771,8 @@ against and the branch would never have run.** Asked directly about the two know
     Q141199704   id=Q141199704   P2600=6000000004334566448   Andreas Olai
     Q141199808   id=Q141199704   P2600=6000000004334566448   Andreas Olai
 
-**`Q141199808` resolves to `Q141199704` — the redirect runs from her contribution list TO the
-ledger.** Same for `Q141178149` → `Q110302791`. So the ledger holds the **survivor** and her
+**`Q141199808` resolves to `Q141199704` — the redirect runs from the contribution list TO the
+ledger.** Same for `Q141178149` → `Q110302791`. So the ledger holds the **survivor** and the
 contributions name the merged-away item, which is the opposite of what
 `queue.md` recorded (*"the ledger held one QID and Wikidata now returns another"*). The refresh is
 right to keep its own value and say so rather than overwrite.
@@ -21834,7 +21834,7 @@ Its warning — *do not "rebuild" that file* — is now sharpened in
 became 801 on a from-scratch run, only **14** of the 95 existing tokens overlap what the bucketing
 covers, and the run exits 0 while doing it.
 
-**`Comprehensive Wikidata re-import` — deleted.** Her criterion decided it —
+**`Comprehensive Wikidata re-import` — deleted.** The criterion decided it —
 *"if there's no clear end point, we move on"* — and two passes showed no decay: 89,832 discovered,
 then 87,693. The decision is taken and the numbers are in this log.
 
@@ -21854,7 +21854,7 @@ passes, 45 tests.
 The item asked one question — *"whether it is kept, regenerated or deleted"* — and it is a
 decision inside an already-specified item, so § *Working the queue: GUESS. Do not ask* applies.
 
-**Kept, and kept regenerating.** Her § *LEGACY CODE IS DELETED* gives the test — *"does the
+**Kept, and kept regenerating.** § *LEGACY CODE IS DELETED* gives the test — *"does the
 pipeline read this?", not "might this be useful?"* — and the answer is yes on both sides:
 
 - `src/genimerge/cli.py` writes it, via the `seeds` module it imports;
@@ -22056,7 +22056,7 @@ rather than deleted, because its third check is still a step.
 
 **The wrong thing was queued first, and it was caught.** An item was written to finish the Charlemagne
 spine, declared **legacy** on 2026-08-30: *"the spines are all clear and I'm putting an
-item at the end of the queue declaring them legacy code and removing them."* Her actual item was
+item at the end of the queue declaring them legacy code and removing them."* The actual item was
 already in the queue and I had not read it. It is **Arne↔Bureus**, and its whole point is that the
 rule is different.
 
@@ -22171,8 +22171,8 @@ carry-forward, **883 (90%) are the `P3373` sibling cap** — the 10-a-day rule r
 block. Only **15** were held by the duplicate guard, and 2 of those had a candidate already
 carrying somebody else's `P2600`. So **13** were real questions.
 
-Each went to her as its own `AskUserQuestion`; all 13 came back SAME. They are appended to
-`reports/wikidata-garborg-day.qs` as `Q… P2600 "…" P1810 "…"` — her choice of delivery, *"into
+Each went up as its own `AskUserQuestion`; all 13 came back SAME. They are appended to
+`reports/wikidata-garborg-day.qs` as `Q… P2600 "…" P1810 "…"` — the chosen delivery, *"into
 today's batch file"* — and recorded in `reports/emma-judgments.tsv`, which `CLAUDE.md` § *The
 chain of provenance* already calls the record of the hand verdicts.
 
@@ -22309,7 +22309,7 @@ ones are recorded and inert — they neither create nor link.
   Adelswärd* carries `Q110547936` and `Q110547941` as parents, and our
   `6000000008935291612 Altea Silfverström` **is** `Q110547941`. The edge was never missing — the
   identity was. Adding the id accounts for the parent and stops every future run proposing a
-  duplicate of her.
+  duplicate of that item.
 
 **Batch rebuilt on the enlarged ledger:** 37 creations, 270 links, 1,071 carried forward. The
 duplicate guard now holds **12** people, down from 18.
@@ -23591,7 +23591,7 @@ started, and the `en`/`mul` passes over the whole corpus rather than the placeho
 arithmetic was fine — the label was wrong. **9,061 is corpus-wide**: every person anywhere in a
 1.45M-person tree who parents somebody holding a QID whose item names an unaccounted parent. That
 is a structural pattern, not a backlog. Calling it *open candidates* made it read as work waiting
-on her.
+on a ruling.
 
 The stated bound: *"there could at the very maximum in principle be 400 people in the network right
 now, if all of them had two unique candidate parents 800, and yeah so just do all 47 in a run so
@@ -23816,7 +23816,7 @@ didn't tell you to avoid the NN people."* So the item now says to normalise the 
 spelling and leave `Private`/`<private>` alone until it is ruled on.
 
 Not fixed in this tick: the safe 6,515 and the 94,231 come out of the same call, so wiring
-`strip_markers` into `derive-labels.py` without a screen would make her decision for her.
+`strip_markers` into `derive-labels.py` without a screen would pre-empt that decision.
 
 ## 2026-08-31 — sweep: nothing dead, and a queue table describing deleted files
 
@@ -23943,7 +23943,7 @@ correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differin
 ## 2026-09-04 --- `pick-isolate.py`: one random unconnected Wikidata isolate, self-healing
 
 **Ruled 2026-09-03:** *"you probably should have a script that spits out a random one whenever
-you need one."* Built to her specification: a roster CSV of every Wikidata isolate, a random draw,
+you need one."* Built to specification: a roster CSV of every Wikidata isolate, a random draw,
 a test of membership of the big connected mass, return if absent --- and **delete from the roster
 and re-draw if present**, which is the healing asked for. `--refresh` rebuilds both files.
 
@@ -24005,7 +24005,7 @@ falls back to whatever label exists. **Run 33923842675: 13 of 13 names resolved 
 alone, no `labels.tsv`, no store, committed and pushed.** So the guard has now been seen to fail
 on a real defect and then pass, which is what `CLAUDE.md` asks of a guard.
 
-**Her verdicts, two blocks, 21 rows.** 15 then 6 (one duplicate): 15 SAME, 1 DIFFERENT, 5 UNSURE.
+**The verdicts, two blocks, 21 rows.** 15 then 6 (one duplicate): 15 SAME, 1 DIFFERENT, 5 UNSURE.
 `reports/emma-judgments.tsv` 313 -> 330 decided; the deck 15 -> 7 -> **5**. Four of the last seven
 came back `UNSURE`, which is the file working: an UNSURE is a data point about where the evidence
 runs out, and it comes back on a later run rather than being retired.
@@ -24105,7 +24105,7 @@ ring is mostly people with exact dates, which is the right proportion rather tha
 `reports/wikidata-spine-completion.qs`, which the item also named as flattening deliberately, no
 longer exists.
 
-## 2026-09-01 — `BET` queued for her considered version
+## 2026-09-01 — `BET` queued for a considered version
 
 The ruling: *"I'll do between more later. Add implementing it as the last queue item."* Written down at
 the tail, nothing further investigated beyond one measurement that makes the item honest:
@@ -24125,7 +24125,7 @@ strict improvement on the bare value it replaced.
 
 ## 2026-09-01 — the CJK funnel fires from `label_in`, not just from the wrapper
 
-Her design, 2026-08-29: *"If anything even remotely wants to generate without having katakana or
+The design, 2026-08-29: *"If anything even remotely wants to generate without having katakana or
 Chinese characters, it goes through this thing and then adds the token to the library, and then
 continues on."*
 
@@ -24148,7 +24148,7 @@ into a file other scripts read while they read it.
     Alenius   アレニウス      阿莱尼乌斯        Bjelbo    ブイェルボ    布耶尔博
     Alstrin   アルストリン    阿尔斯特林        Boström   ボストロム    博斯特罗姆
 
-Her standard is what makes on-the-fly rendering acceptable at all: *"incorrect romanization or
+The standard is what makes on-the-fly rendering acceptable at all: *"incorrect romanization or
 incorrect representations in katakana are totally acceptable. An incorrect name is not."*
 
 **Two mistakes of mine while doing it, both from heredoc escaping**, and one damaged an unrelated
@@ -24199,7 +24199,7 @@ even does lol."*
 
 ## 2026-09-01 — CI runs, and it is green
 
-**Her hard requirement for the night.** The repo went public today — *"The repo is public now
+**The hard requirement for the night.** The repo went public today — *"The repo is public now
 lol"* — so Actions minutes are free and the manual-only rule that `CLAUDE.md` § *Cost* imposed
 for a private repo is retired.
 
