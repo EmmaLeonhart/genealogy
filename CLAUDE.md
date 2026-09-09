@@ -3246,9 +3246,30 @@ repository's `GITHUB_TOKEN` does not create a new workflow run. The pipeline com
 `github-actions[bot]` through the token `actions/checkout` persists, so its own push to `main` is
 inert; only a push from a person or a Claude session starts a run.
 
-**A burst of pushes QUEUES.** `concurrency: pipeline` with `cancel-in-progress: false` is
-unchanged, so runs serialise rather than racing, and one that is mid-push is never cancelled. If
-the queue ever becomes the problem, the lever is a `paths-ignore:` on the trigger — not
+**⛔ A BURST OF PUSHES DOES NOT QUEUE. GitHub keeps ONE pending run per group, and this
+paragraph said the opposite until 2026-09-09.** `concurrency: pipeline` with
+`cancel-in-progress: false` means a run that is **mid-push is never cancelled** — that half is
+right and is the half that matters, since a run killed between its commit and its push is the
+failure the setting exists to prevent. But the waiting run **is** cancelled when a newer push
+arrives. Measured, three instances in seven minutes:
+
+    run 471  created 20:23:16  cancelled 20:27:06   <- 472 created 20:27:04
+    run 472  created 20:27:04  cancelled 20:30:18   <- 473 created 20:30:17
+    run 473  created 20:30:17  cancelled 20:33:0x   <- 474 created 20:33:0x
+
+Each cancellation lands within two seconds of the next run being created, which is the tell.
+
+**It is benign, and arguably what you want** — the superseded run would have rebuilt from an
+older sha, and the survivor's checkout contains its commits anyway. Three consequences, all of
+which cost a turn here before they were understood:
+
+* **A cancelled pending run is not a failure.** Do not investigate one, and do not report it as
+  a broken pipeline.
+* **Three pushes produce two runs.** Any count of runs against pushes will be short, by design.
+* **Do not push again while waiting on a run you want to watch**, because the push cancels it.
+  Land the work in one commit, or accept re-arming the watch on the new run.
+
+If the queue ever becomes the problem, the lever is a `paths-ignore:` on the trigger — not
 `cancel-in-progress`, which is the thing that would kill a run between its commit and its push.
 
 **What "all the way" means, checked end to end:** push → gate forced → ledger refresh and
@@ -4757,6 +4778,55 @@ running.** The short hourly ticks are fine because they re-fire;
 a twenty-minute merge is not. And **check the crons when a session resumes** —
 they are session-only, so they die with it, and a job that quietly never fires
 looks exactly like one that had nothing to do.
+
+### ⛔ THE DOCUMENTATION DOES NOT REFER TO THE ACCOUNT OWNER. Not in the third person, not in the second
+
+**Too much of this documentation talked about the owner, and that is the defect.** The rule is
+neither *use her pronouns* nor *use "you"* — it is that prose about the project should not be
+about a person at all. Ruled 2026-09-09 and applied across `CLAUDE.md`, `queue.md`, `devlog.md`,
+`docs/`, `reports/`, the scripts and the published pages.
+
+**THE METHOD, decided rather than improvised:**
+
+* **Delete the attribution and the quotation, then state the rule impersonally.** A ruling is
+  recorded as what it requires, not as who said it or in what words.
+* **⛔ QUOTATIONS ARE NOT PRESERVED.** Keeping the words and dropping the name is not a
+  half-measure, it is the thing being removed — a block quote is the most personal form the
+  prose has. Preserving them *"because they are evidence"* is what kept this going for weeks.
+* **Delete incident narration outright.** *"I told her an hour ago that…"* records a session,
+  not a rule.
+* **Use the passive, or the artefact as the actor.** *"applied by me, per person"* becomes
+  *"applied by hand"*; *"what I did"* becomes *"what was done"*; the script, the file or the
+  measurement does the acting.
+
+**⛔ A BLIND REGEX PASS IS BANNED. It was tried, it shipped, and it was reverted whole.**
+Commit `5152291` rewrote 354 files. The mask covered `"..."` and backticks and **not `'...'`**,
+which is most Python string literals, so `build-chain-page.py` published
+`you&rsquo;s fourth cousin five times removed`. **Fifteen third-party references were rewritten**
+— `Emma Watson` in a page-saving list became **`you Watson`** — and
+`CHECK before raising an alarm` collapsed to `alarm you`.
+
+**THE DISCRIMINATOR IS WHY NO PATTERN CAN DO THIS.** Two populations share every word, and only
+reading the sentence separates them:
+
+| leave it | change it |
+| --- | --- |
+| **a third party in the genealogy** — `Emma Watson`; the genuine *her* of Ragnhild Toresdatter Håland, Juana Jiménez de Castro, Dorothy Jeakins, the Seljuq matriarch | an attribution, a quotation, or a second-person address to the owner |
+| **a Geni UI string** — *"Charlemagne is your 35th great grandfather"*, *"How are you related"* | prose describing what the project does |
+| **an identifier** — `@I6000000023140541858@`, `Huzziya I`, the `geni-about-me` source tag | a name used as an actor: *"applied by me"*, *"jobs I sequence"* |
+
+**Two mechanical traps, both hit, both costing a revert of a whole tree:**
+
+* **Anchor every substitution.** `(?<![A-Za-z])…(?![A-Za-z])`, always. Unanchored,
+  `"her answer"` rewrote the tail of `"the other answer"` and produced `"the otthe answer"`.
+* **A possessive rule must be position-aware.** `Emma's item` → `The item` capitalises
+  mid-sentence: `"is The call"`, `"from **The PC**"`, `"extended by The instruction"`.
+
+**And it is not finished by one pass, because other sessions keep writing it back.** Two devlog
+entries landed *during* the 2026-09-09 pass in the old voice, one of them citing
+§ *A SHORTCUT YOU TOOK TO UNBLOCK ME IS NOT A LAW I ENFORCE AGAINST YOU* — a heading the
+same pass had renamed, so the cross-reference was broken as well as personal. **Renaming a
+heading breaks every `§ *…*` reference to it**; grep for the old title in the same commit.
 
 ### The account owner's name is Empress Jingū
 

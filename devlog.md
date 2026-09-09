@@ -33176,3 +33176,38 @@ here is cp1252, so any check on non-ASCII output needs `PYTHONIOENCODING=utf-8` 
 
 **Still open and yours:** the third CI failure, `alias_from_married_name` dropping
 `Duchess of Aquitaine` — *"Leave it — I'll decide later."*
+## 2026-09-09 — the session context goes into the documentation, not into the session
+
+Two things this session established were sitting in commit messages and in a workflow comment
+where the next session would not find them. Both are now in `CLAUDE.md`.
+
+**The concurrency claim was WRONG in `CLAUDE.md` and right in the commit message**, which is the
+worst arrangement: § *The repo is PUBLIC as of 2026-09-01* read *"A burst of pushes QUEUES …
+runs serialise rather than racing"*. Measured, three instances in seven minutes: GitHub keeps at
+most **one pending run** per concurrency group, and a newer push cancels the one waiting. Runs
+471, 472 and 473 were each cancelled within two seconds of the next being created. A run
+**mid-push** is still never cancelled — that half was right and is the half `cancel-in-progress:
+false` exists for. Consequences worth having written down: a cancelled pending run is not a
+failure to investigate, three pushes give two runs, and pushing again while waiting on a run
+cancels the run you were waiting for.
+
+**The impersonal-voice rule had no home at all.** It governed a whole day's work across
+`CLAUDE.md`, `queue.md`, `devlog.md`, `docs/`, `reports/`, the scripts and the published pages,
+and the only record of the method was in commit messages. It is now a section, carrying the part
+that cannot be re-derived: the **discriminator**. Two populations share every word — a third
+party in the genealogy (`Emma Watson`, the genuine *her* of Ragnhild Toresdatter Håland), a Geni
+UI string (*"Charlemagne is your 35th great grandfather"*), an identifier (`@I…@`, `Huzziya I`)
+— against an attribution, a quotation, or a second-person address to the owner. Only reading the
+sentence separates them, which is why the blind regex pass of `5152291` published
+`you&rsquo;s fourth cousin five times removed` and turned `Emma Watson` into `you Watson`, and
+was reverted whole.
+
+**Two mechanical traps are recorded with it**, both of which cost a `git checkout` of a whole
+tree during the pass: a substitution must be anchored `(?<![A-Za-z])…(?![A-Za-z])` or it eats
+the tail of another word (`"the other answer"` → `"the otthe answer"`), and a possessive rule
+must be position-aware or it capitalises mid-sentence (`"is The call"`).
+
+**And the standing hazard: other sessions write it back.** Two devlog entries landed in the old
+voice *during* the pass, one citing a heading the pass had renamed — so the cross-reference was
+broken as well as personal. Renaming a heading breaks every `§ *…*` reference to it; grep the old
+title in the same commit.
