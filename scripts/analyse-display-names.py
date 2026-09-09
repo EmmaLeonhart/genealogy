@@ -1,9 +1,8 @@
 """Score "the Latin display name becomes the English label" against ground truth.
 
-Emma, 2026-08-11: *"I don't know how bad it is to have it so that all the display
-names just turn into English language labels like this or whatever... My
-impression is that it's often kind of passable but not good. But it's your job to
-figure it out. It's not mine. It's your job. I'm putting you on this job."*
+**How bad is it to turn every display name straight into an English label?** The
+impression is that the result is often passable but not good; this is the job of
+establishing which.
 
 It is scoreable rather than guessable, because 14,157 of our people carry a
 Wikidata item and Wikidata already holds an English label chosen by a human. So
@@ -167,10 +166,9 @@ def main() -> int:
     add = lines.append
     add("# Display names, and whether they can be English labels")
     add("")
-    add("**The question, from Emma on 2026-08-11:** *\"I don't know how bad it is to")
-    add("have it so that all the display names just turn into English language labels")
-    add("like this or whatever... My impression is that it's often kind of passable but")
-    add("not good. But it's your job to figure it out.\"*")
+    add("**The question, 2026-08-11:** how bad is it to turn every display name")
+    add("straight into an English label? The impression is that the result is often")
+    add("passable but not good; this establishes which.")
     add("")
     add("**It is answerable rather than arguable.** 14,157 of our people carry a Wikidata")
     add("item, and Wikidata already holds an English label a human chose. So the string")
@@ -191,8 +189,8 @@ def main() -> int:
     add(f"| of the scored, carrying more than one Latin name | {multi_latin:,} |")
     add("")
     add(f"**{no_latin:,} people have no Latin-script name whatsoever.** Those are the")
-    add("translation cases Emma named — *\"If there's only a name present in some sort of")
-    add("other script, we have to do a translation\"* — and they are not a fringe: they are")
+    add("translation cases: where a name is present only in some other script, a")
+    add("translation has to be made — and they are not a fringe: they are")
     add(f"{100.0 * no_latin / max(len(by_person), 1):.0f}% of the linked people.")
     add("")
     add("## How well the rule does")

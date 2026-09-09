@@ -239,7 +239,7 @@ def main() -> int:
     add("It strips nothing and proposes no rule. The honorific list is used only to")
     add("*count* a category — `todo.md` names honorifics as the problem, and a list")
     add("short enough to write by hand is not a classifier. Whether a patronymic should")
-    add("become a `P735` at all is **NEEDS-DECISION — Emma**, and it is the question")
+    add("become a `P735` at all is **NEEDS-DECISION**, and it is the question")
     add("Arne Olson Anda raised in `correspondence.md`.")
 
     OUT_MD.write_text("\n".join(L) + "\n", encoding="utf-8")

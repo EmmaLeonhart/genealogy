@@ -2,8 +2,8 @@
 
     py scripts/build-agreeing-latin-labels.py
 
-**Emma, 2026-09-01, giving the rule outright:** *"There's a simple solution to no English label:
-if multiple Latin alphabet labels agree then it becomes the en label and the mul label."*
+**The rule, 2026-09-01:** where a person has no English label and several Latin-alphabet labels
+agree, that agreed string becomes both the `en` label and the `mul` label.
 
 **The population is the 36,592 people who still have no `en` label** after the 2026-09-01 rebuild.
 `build-en-label-batch.py` has three sources -- Wikidata's own English label, a romanised Han name,
@@ -138,7 +138,7 @@ def main() -> int:
         w.writeheader()
         w.writerows(sorted(rows, key=lambda r: (-r["records"], r["geni_id"])))
 
-    # Two edits per person: `en` and `mul` carry the same agreed string. Her rule names both,
+    # Two edits per person: `en` and `mul` carry the same agreed string. The rule names both,
     # and `CLAUDE.md` section *The MARRIED name is the real name* makes `mul` the real label --
     # so this is not `en` with a copy, it is the label, written in both places.
     edits = []
@@ -147,7 +147,7 @@ def main() -> int:
             edits.append({
                 "id": f"{lang}_label_agreed:{g}",
                 "type": "set_label",
-                "source": "agreeing Latin name records (Emma, 2026-09-01)",
+                "source": "agreeing Latin name records (rule of 2026-09-01)",
                 "subject": {"qid": None, "geni_id": g},
                 "requires": [],
                 "label": {"language": lang, "value": value},

@@ -1,8 +1,7 @@
 """Placeholder seeds that should have taken the child's surname and did not.
 
-**Emma, 2026-08-18:** *"uhh farm names are surnames here lol"* --- and, on the two
-already created: *"add a task in the queue to fix the surnames of these people before
-the synoptic tree is built. I will do the editing on geni for this."*
+**Farm names ARE surnames here.** For the two already created, the surnames are fixed on Geni
+by hand before the synoptic tree is rebuilt; this file is the queue item for that.
 
 A tier-1 seed gives the created father **the child's surname**, with the patronymic
 stripped out of it. A tier-2 seed has no surname to give and uses `father of <child>`.
@@ -86,12 +85,11 @@ def main() -> int:
     lines = [
         "# Placeholder seeds that need a surname, not `father of X`",
         "",
-        "Emma, 2026-08-18: *\"uhh farm names are surnames here lol\"* --- and *\"add a "
-        "task in the queue to fix the surnames of these people before the synoptic tree "
-        "is built. I will do the editing on geni for this.\"*",
+        "**Farm names are surnames here.** The surnames of these people are fixed on "
+        "Geni before the synoptic tree is rebuilt.",
         "",
-        "**She does the Geni edits.** This file is the worklist, not an instruction to "
-        "touch anything.",
+        "**The Geni edits are made by hand.** This file is the worklist, not an "
+        "instruction to touch anything.",
         "",
         f"**{len(hits)} placeholders** carry `father of <child>` where the child has a "
         f"real surname the father should have taken. A further **{skipped}** were "
