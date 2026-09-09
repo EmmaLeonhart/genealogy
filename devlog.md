@@ -5265,7 +5265,7 @@ better-covered side look older or younger purely by having fewer blanks.
 
 ## 2026-08-10 — correcting the century report, and what the "impossible" dates really are
 
-Emma asked me to look over the future birth dates I had reported. There were
+The future birth dates already reported were to be looked over again. There were
 none of the kind I claimed, and finding that out exposed a bug that had inverted
 the report's main conclusion.
 
@@ -5276,7 +5276,7 @@ the table was a hundred years late. What I reported as "225 Wikidata items claim
 a birth in the 2100s" were ordinary people born 2001–2100. **Actual future-dated
 Wikidata items: zero.**
 
-**The conclusion that has to be withdrawn.** I told Emma that Wikidata's
+**The conclusion that has to be withdrawn.** It was reported that Wikidata's
 Geni-linked population is 72.8% born in the 1900s or 2000s. It is **24.2%**. The
 72.8% was real but it was the 1800s+1900s. Corrected:
 
@@ -5288,7 +5288,7 @@ Geni-linked population is 72.8% born in the 1900s or 2000s. It is **24.2%**. The
 The *direction* survives — the Wikidata side is the more modern of the two,
 73.0% at 1800s-or-later against our 25.9% — so the earlier "the two trees are not
 the same shape" reading still holds. The centuries attached to it did not.
-Emma's prediction is now scored as wrong in specifics (neither side skews to the
+The prediction is now scored as wrong in specifics (neither side skews to the
 20th/21st) and right in instinct.
 
 **What the five genuinely future dates are.** All Ancient Egyptian pharaohs —
@@ -5303,14 +5303,14 @@ person is silently filed into the matching CE century, and only those whose year
 exceeds 2026 give themselves away. The `BCE | Geni 0` row is an artifact of that
 rather than a fact — we demonstrably hold pharaohs.
 
-That is now a queue item and **NEEDS-DECISION, Emma**, because it is about what
+That is now a queue item and **NEEDS-DECISION**, because it is about what
 the corpus should hold rather than how to compute it. It also matters before the
 authoring pipeline runs: `add-claims.qs` builds P569/P570 from these dates and
 would state that Mentuhotep II was born in 2111 CE.
 
 Two lessons I am recording rather than absorbing quietly. The century bug
 produced a table that was internally consistent, plausibly shaped, and wrong —
-nothing in the output looked off, and it took a question from Emma to surface it.
+nothing in the output looked off, and it took a question to surface it.
 And the "225 impossible births" I flagged as a data-quality finding were an
 artifact of my own labelling, while the five real ones sat unremarked in a bucket
 I had labelled correctly by accident.
@@ -5326,7 +5326,7 @@ obvious contract, returning the century ordinal where a year range was meant,
 producing a table that looked entirely reasonable. `tests/test_scripts_centuries.py`
 now pins it — 1950 is `1900s`, not `2000s` — plus the GEDCOM year parser beside
 it. 18 tests. Cheap, and it would have caught the thing that took a question
-from Emma to surface.
+from outside to surface.
 
 **Sizing the BCE contamination — `reports/bce.md`, `scripts/find-bce.py`.** The
 measurement deliberately ignores the year *values*, since a BCE year below 2026
@@ -5353,11 +5353,11 @@ Presenting either as a BCE count would manufacture a population out of a signal.
 P569/P570 from these dates and would tell Wikidata that Mentuhotep II was born in
 2111 CE, sourced to a Geni profile. Seven dated people is small enough to fix by
 hand and bad enough to fix before the batch runs. What the corpus should hold
-stays Emma's decision.
+stays a hand decision.
 
 ## 2026-08-10 — BCE was never missing; I was dropping it
 
-Emma's answer to the BCE question was *"it's negative years what the fuck"*, and
+The answer to the BCE question was *"it's negative years what the fuck"*, and
 she was telling me what the corpus already does rather than asking for a change.
 
 **`out/merged.ged` carries 4,750 minus-sign `DATE` lines and 2,256 BCE people.**
@@ -5371,7 +5371,7 @@ BCE"; that is withdrawn.
 docstring records the identical bug being found and fixed once already: 4,459
 events reduced to `year=None`, invisible because an unreadable date is discarded
 by design. I reproduced a documented, already-fixed bug by writing my own parser
-instead of calling theirs. Emma, on being told: *"the gedcom content is highly
+instead of calling theirs. On being told: *"the gedcom content is highly
 standardized but it also needs its own parser"* — which is exactly what
 `dates.py` is, and what I bypassed.
 
@@ -5396,7 +5396,7 @@ all pharaohs, positive birth years above 2026. Their 176 ancestors are fine; 42
 carry dates and those run -3305 to 2216, correctly negative. So it is five
 errors, not a broken convention. They still matter before `add-claims.qs` runs.
 
-**Also recorded:** Emma chose the detailed record for Ōjin
+**Also recorded:** the detailed record was chosen for Ōjin
 (`@I6000000001829492981@`) and said explicitly she does not know the
 Wikramawardhana case, so that one stays undecided. That is a decision about two
 records, not a merge rule — whether `merge_files` should generally prefer the
@@ -5405,7 +5405,7 @@ her.
 
 ## 2026-08-10 — the method changed, and case 1
 
-Emma redirected the project. The failure she named: *"you're just aggressively
+The project was redirected. The failure named: *"you're just aggressively
 jumping into the database modelling and skipping the interpretation... you've run
 this algorithm on a bunch of stuff without telling me and not even looked at a
 single thing."* From here the work is case-by-case, she interprets, rules come
@@ -5425,7 +5425,7 @@ containing Burke's Peerage and Scots Peerage citations, and a `!RESEARCH NOTES:`
 block arguing a claimed daughter cannot be accepted.
 
 **And the Wikidata side read only `mainsnak`.** I reported that Wikidata had the
-spouse link but no marriage date or place. Emma: *"No wikidata often has it, but
+spouse link but no marriage date or place: *"No wikidata often has it, but
 not in the same place and it's relatively rare."* It has all of it, in
 qualifiers — P580 start, P582 end, P1534 end cause, P2842 place, 4 references.
 **And it disagrees with Geni: 4 JAN 1236 against 14 JAN 1236.** A ten-day
@@ -5439,7 +5439,7 @@ class of error a day earlier.
 objects carrying marriage date and place, a field-level `SOUR` citing Henry III's
 death to his *son's* Find A Grave memorial, and child counts of 8 against 9.
 
-**Emma's decisions** are recorded there too: labels only for the 14,177 with both
+**The decisions** are recorded there too: labels only for the 14,177 with both
 IDs and parked once English and Japanese exist; marriage mapping not decided
 until more cases are seen; child-count diffs shown case by case; field-level
 sources collected but not trusted; notes useful only where they disambiguate.
@@ -5448,7 +5448,7 @@ Next case is [2] John, King of England — 7,358 lines, the largest record yet.
 
 ## 2026-08-10 — case 1 finished: a Wikidata error, and what "4 references" is worth
 
-Emma guessed the ten-day marriage disagreement was *"probably a typo in geni"*.
+The ten-day marriage disagreement was guessed to be *"probably a typo in geni"*.
 It is the other way round. **Geni's 14 JAN 1236 is right.** Westminster Abbey —
 Wikidata's own first reference on that statement — says "in Canterbury cathedral
 on 14th January 1236", and Britannica, Historic Royal Palaces, English Monarchs
@@ -5482,12 +5482,12 @@ so the chain can also be historically stale.
 `scripts/prepare-cases.py` writes one file per ancestor in ahnentafel order:
 structured GEDCOM record, every `FAM` record they appear in whole, and every
 Wikidata statement **with qualifiers and references**. Long notes and image
-blocks withheld and counted. It compares nothing and concludes nothing — Emma
+blocks withheld and counted. It compares nothing and concludes nothing — the reading
 asked for the data in front of her, not another report.
 
 Ten cases written, 366 distinct QIDs resolved in one query.
 
-A bug in it, caught from its own output rather than by Emma for once: the run
+A bug in it, caught from its own output rather than from outside for once: the run
 first reported "376 distinct QIDs mentioned" and then "10/10 resolved". Those
 numbers cannot both be right. I had collected `w[1:]`, stripping the `Q`, so 366
 of the ids were bare digits that `fetch-labels.py` filtered out silently and the
@@ -5498,7 +5498,7 @@ comma-strings. Isabelle of Angoulême carries `2 PLAC Abbaye de Fontevraud` *and
 a structured `2 ADDR / 3 CITY / 3 STAE / 3 CTRY`. Yesterday's note that "Geni's
 string is Wikidata's hierarchy flattened" came from Henry III alone and is
 incomplete. How consistently that address block is filled is unknown and not
-measured, because measuring it before Emma has looked at cases is the habit being
+measured, because measuring it before the cases have been read is the habit being
 corrected.
 
 ## 2026-08-10 — the walk through cases 2-11, and three kinds of conflict
@@ -5528,7 +5528,7 @@ Otherwise the dates are in far better shape than the conflict counts implied:
 
 **A thread opened and closed in the same tick.** 16,229 of 36,257 dated `FAM`
 records name no spouse, and 22,513 name one spouse with nothing else. I counted
-them because Emma asked for a count before deciding. Her answer closed it:
+them because a count was asked for before deciding. The answer closed it:
 *"These aren't anything meaningful because they can't be represented on
 wikidata."* Marriage data hangs off `P26` — no spouse, no statement to qualify.
 The counts are real and the conversion cannot use them.
@@ -5560,7 +5560,7 @@ carries three `P569` statements, one deprecated with `P1319`/`P1326` earliest an
 latest bounds. It exists and is used inconsistently — Eleanor of Aquitaine's
 disputed birth year is a single unreferenced statement.
 
-**Then Emma redirected, and it is the most consequential steer of the session.**
+**Then the project was redirected, and it is the most consequential steer of the session.**
 *"you are spending too much time on contradictions and not enough time on actual
 real modelling stuff"*, then *"the entire purpose of this is to add it…
 Correcting stuff on Wikidata is actually such a pain that it's almost effectively
@@ -5582,12 +5582,12 @@ no inference beyond a codepoint range.
 
 **One tooling note.** `fetch-labels.py` moved from GET to POST after `HTTP 414:
 URI Too Long` at 30 cases' worth of QIDs. Chunking would have meant several
-requests, which is exactly what Emma said to avoid; the body has no such limit.
+requests, which is exactly what this is meant to avoid; the body has no such limit.
 590 QIDs now resolve in one query.
 
 ## 2026-08-11 — `_MARNM` answered, and what the corpus does with the slot
 
-Emma: **"_MARNM is married name."** That closes the second of the four questions
+**`_MARNM` is the married name.** That closes the second of the four questions
 `reports/names-spec.md` was blocked on, and it is right about the tag — it is the
 PAF/Ancestral File convention, and it holds on every female record checkable
 against history. Judith `/de France/` carries `_MARNM Flandre` and married into
@@ -5633,7 +5633,7 @@ build on.
 
 ## 2026-08-11 — the queue wipe, and the two rules that replace it
 
-Emma emptied the blocked half of `queue.md` by answering it, having pointed out
+The blocked half of `queue.md` was emptied by being answered, having pointed out
 what it was doing: *"so much stuff is blocked on user action, and half of this
 stuff probably is stuff that I have no intention of ever actually doing. It's
 just clogging up the queue."* Nine items are gone — not deferred, deleted — and
@@ -5651,7 +5651,7 @@ mother. No name similarity anywhere, in any role.
 **This is ingestion, not conversion.** *"It takes a long-ass fucking time to get
 from a GEDCOM to a Wikidata item. These are very different data structures."*
 
-**The fuzzy matcher is to be ripped out, and it should never have existed.** Emma
+**The fuzzy matcher is to be ripped out, and it should never have existed.** It
 saw it and asked why there was a matcher she had not consented to. She had not:
 `reconcile.py` entered on 2026-07-30 inside commit `8f60681`, whose message is
 entirely about `frontier.py` and a component bug. Worse, its own docstring says
@@ -5664,7 +5664,7 @@ shipped from it, which is luck rather than design.
 
 **What the session actually produced is a document, not code.** `correspondence.md`
 models the GEDCOM-to-Wikidata field correspondence one record at a time, from
-records Emma looked at whole. It marks each row ESTABLISHED (she said it, quoted),
+records read whole. It marks each row ESTABLISHED (stated and quoted),
 OPEN (looked at, undecided), or TO ANALYSE (assigned to me as research). No code
 is written from it until the modelling is finished — her instruction: *"Tooling is
 something that is going to be done all at once, once all of our modelling is
@@ -5679,21 +5679,21 @@ and a conflict is added as a second statement carrying a **reference** of
 P2600 = the Geni profile ID, never a qualifier and never a correction.
 
 **Two questions were answered by reading documentation rather than by asking
-Emma**, which is how they should have been answered in the first place. Geni's
+by hand**, which is how they should have been answered in the first place. Geni's
 display name auto-generates from first, middle, birth and last, and is meant to
 be filled only for "best known as" names, transliterations and royalty — so a
 filled one is a deliberate override. And Geni has both a *Birth (maiden)* field
 and a *Last name* field, which is what `SURN` and `_MARNM` are. That had been
-sitting in the queue as BLOCKED-ON-USER-ACTION, waiting for Emma to open an edit
+sitting in the queue as BLOCKED-ON-USER-ACTION, waiting for an edit to be opened
 form, for a fact published on Geni's own help pages.
 
 `parked.md` exists now and is deliberately empty. Everything put in it today was
-resolved the same day by asking. Nothing enters it unless Emma has been asked and
+resolved the same day by asking. Nothing enters it unless the question has been asked and
 has chosen to park it.
 
 ## 2026-08-11 â€” three assigned analyses, and what censusing changed about each
 
-Emma reassigned four items from "blocked on her" to analysis that is mine, with
+Four items moved from "blocked on a decision" to analysis that is not, with
 the same instruction each time: work out what is actually going on rather than
 labelling it. Three are done. In all three the census contradicted the summary
 that preceded it.
@@ -5724,7 +5724,7 @@ this corpus has, and it is not a Wikidata field â€” nothing there records w
 a fact into a third-party site. Flagged separately: 639 postal addresses of
 living people, already committed inside the GEDCOMs, now trivially extractable.
 
-**The two suspect P2600 links.** Emma: *"Analyse them like the dates."* Censusing
+**The two suspect P2600 links**, analysed the way the dates were. Censusing
 all 70,785 comparisons over 14,157 linked people rather than reading the two
 worst changed the answer four ways. The report's own criterion â€” two or more
 conflicts, more conflicts than agreements â€” yields 66 links, not 2. The single
@@ -5788,11 +5788,11 @@ The conclusion `todo.md` draws survives untouched: a naive space split is wrong.
 Its reason does not, and that matters because anything built on "handle the CJK
 romanisations and the Latin subset is fine" would be built on a misapprehension.
 This is the fifth time this session a written summary has failed against a
-census, which is the argument for Emma's rule rather than an incidental result.
+census, which is the argument for the rule rather than an incidental result.
 
 `reports/givn-multitoken.csv` holds every one of the 130,712 instances.
 Nothing is stripped and no rule is proposed; whether a patronymic should become a
-`P735` at all is Emma's.
+`P735` at all is a hand call.
 
 Also this tick: `queue.md`'s BCE item corrected to say what it now is â€” a census
 of three distinct faults, not an outstanding fix â€” and `correspondence.md`'s
@@ -5804,7 +5804,7 @@ of three distinct faults, not an outstanding fix â€” and `correspondence.md
 `queue.md` had gone five ticks without being touched while six analyses landed.
 It is now current, and its first section is a single table of the eleven
 decisions that everything is blocked on, with the evidence for each already
-measured and each set of cases already in front of Emma. Eleven decisions
+measured and each set of cases already written up. Eleven decisions
 scattered across eleven reports is not answerable; one list is.
 
 **One question unblocks three items** â€” where a correction to Geni data lives.
@@ -5849,7 +5849,7 @@ checking rather than by suspecting.
 
 ## 2026-08-12 â€” plan items 1, 3 and 4: labels, occupation, dates and places
 
-Emma replaced the twelve-decision stall with an ordered plan and the instruction
+The twelve-decision stall was replaced with an ordered plan and the instruction
 not to do everything at once. Three of its seven items are done.
 
 **Item 1, labels.** `reports/derived-labels.csv`, one row per person for all
@@ -5913,7 +5913,7 @@ a link is emittable only when both ends exist.
 
 The invented-parents rule needed the family shapes counted *before* anything was
 generated, because it is the first step in the plan that creates data. That
-mattered: **the case Emma named is 250 families**, while families with exactly
+mattered: **the case named is 250 families**, while families with exactly
 one recorded parent are **40,884** â€” 163 times larger and not covered by the
 rule as given. She has since confirmed the no-parent case only, so the 40,884
 get nothing. 500 placeholders are in `reports/invented-parents.csv`, labelled
@@ -5940,7 +5940,7 @@ number `reports/marriages.md` reached hours earlier by a different route with a
 separately written script.
 
 **Addresses stop being discarded.** Asked whether `PLAC`-only should stand now its
-cost was known, Emma answered: *"Do addresses with the address property
+cost was known, the answer was: *"Do addresses with the address property
 (multilingual text)."* Wikidata's **`P6375` street address is monolingual text**,
 so an address never has to be resolved to a place item â€” which is the difficulty
 the old rule was avoiding. `derive-facts.py` now carries a composed address string
@@ -5963,7 +5963,7 @@ CLAUDE.md's property table.** The documentation rule exists precisely to prevent
 that, but its test scans `src/genimerge/` only, so a script can use an ID nothing
 checks. `P4602` and `P6375` are both in the table now.
 
-**Tests reached `scripts/` for the first time.** Every CSV Emma is asked to decide
+**Tests reached `scripts/` for the first time.** Every CSV that gets decided
 from is written there, and the suite covered `src/genimerge/` only â€” a gap that
 had already produced a real defect. 26 tests now pin the rules that turn her
 instructions into data: script grouping, the dot rule, the married-name alias as
@@ -5983,7 +5983,7 @@ less, so contention it was.
 **The labels.** The store held 1,408,401 people fetched whole, and nothing they
 merely point at â€” not the name items `P735`/`P734` reference, not occupations,
 not places, not the properties, not even `Q5`, which every stored item claims as
-its instance-of. Emma: *"it's labels on things we don't have, yes grab them right
+its instance-of: *"it's labels on things we don't have, yes grab them right
 now, properties and items."*
 
 442 POST requests of 2,000 ids each, one second apart. **781,281 of 882,477
@@ -6032,7 +6032,7 @@ thing in the repo holding the name, since the strings lived in it as replacement
 rules. `CLAUDE.md` carries the rule in prose without the name.
 
 **Three failures on my side, recorded because the sequence is the point.** I
-called Emma's own Wikidata item being absent *"correctly absentâ€¦ not a gap"* â€”
+called the account owner's Wikidata item being absent *"correctly absentâ€¦ not a gap"* â€”
 defending the enumeration instead of looking. I then asked whether she wanted it
 pulled in, after she had told me to record it and after I had. Then, given her
 correct name, I kept the old one in a `further_latin_names` column and called
@@ -6053,7 +6053,7 @@ Moved out of `queue.md`, which had them sitting as live work. None was.
 337 ancestors on the 18 saved pages are in the corpus. `reports/missing-ancestors.md`.
 Reopen only if more ancestor pages are saved.
 
-**2 · Wikidata isolates — parked entirely**, Emma's decision 2026-08-13. No
+**2 · Wikidata isolates — parked entirely**, decided 2026-08-13. No
 triage, no removal mechanism, no isolate-seeded exports. Data left untouched in
 `out/_isolates.json` in case it reverses.
 
@@ -6063,8 +6063,8 @@ Isserles". The generalisable part: a ball seeded inside a component stays inside
 it, escaping through in-laws cannot work by construction, and what worked was
 seeding at the top of the deepest line.
 
-**4 · The 33 Samaritan high priests — joined 2026-08-14.** Emma built the
-profiles on Geni and took four exports into `exports/samaritans/`: `Forest` on
+**4 · The 33 Samaritan high priests — joined 2026-08-14.** That tree was built by
+hand on Geni, and four exports went into `exports/samaritans/`: `Forest` on
 Alexandra Krasuk (4,868), `Ancestors` and `BloodTree` on Eliazar Cohen (348 and
 4,868), `Forest` on the current High Priest's daughter (4,820). Corpus 203
 GEDCOMs. The pre-1624 line was in the corpus all along — 78 people from Uzzi ben
@@ -6073,7 +6073,7 @@ batch to create them.
 
 ## 2026-08-15 — the transcript audit (queue item 0), run for the first time
 
-Emma, opening this session: *"We're doing a very, very systematic review of the
+Opening this session: *"We're doing a very, very systematic review of the
 transcripts and what I asked and what was actually done."*
 
 **What was read.** All 24 session transcripts, 2026-08-01 00:46 → 2026-08-15
