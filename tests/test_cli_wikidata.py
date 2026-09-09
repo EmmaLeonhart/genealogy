@@ -254,7 +254,7 @@ def test_overlap_says_so_when_the_fetched_rows_miss_the_reported_total(ws, capsy
 # -- what `reconcile` and `expand` used to leave behind ------------------
 #
 # Both commands were deleted on 2026-08-15: they queried Wikidata live, and
-# `reconcile` searched for people by name, which Emma had ordered removed on
+# `reconcile` searched for people by name, which was ordered removed on
 # 2026-08-12. The four commands below still READ the CSVs they wrote, so the
 # fixture writes those files directly. The rows are exactly what the deleted
 # pair produced against this fake: Ada and Bo matched by P2600, Cy reached by

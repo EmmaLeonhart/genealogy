@@ -1,7 +1,7 @@
 """`reports/geni-stale-duplicates.tsv` — people Geni merged and our corpus did not.
 
-Built from Emma's own Geni activity feed, which is ground truth for which profiles she
-has merged. `CLAUDE.md`: the duplicate merges are hers — this flags, never merges.
+Built from the Geni activity feed, which is ground truth for which profiles have been
+merged. `CLAUDE.md`: the duplicate merges are made by hand — this flags, never merges.
 """
 from __future__ import annotations
 
@@ -64,7 +64,7 @@ def test_placeholder_names_are_excluded():
 
 
 def test_weak_evidence_is_kept_rather_than_dropped():
-    """Amram V has two different fathers recorded. That is for Emma to judge, not for
+    """Amram V has two different fathers recorded. That is judged by hand, not by
     this report to hide by only publishing what it is confident about."""
     kinds = {r["evidence"] for r in rows()}
     assert kinds <= {"strong", "medium", "weak"}

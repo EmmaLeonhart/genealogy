@@ -125,7 +125,7 @@ def test_a_person_walked_twice_is_held_both_times():
 
 
 def test_a_row_with_no_relation_starts_a_new_chain():
-    """Emma, 2026-08-16: *"treat it as being two paths and not one."*
+    """A blood path and an in-law path are two paths, not one.
 
     Geni shows a pair a blood path and an in-law path, and `path-from-html`
     writes both into one file. The boundary is stated rather than guessed: only

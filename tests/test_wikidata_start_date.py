@@ -72,9 +72,9 @@ def test_an_unreadable_date_fails_closed(monkeypatch):
 
 def test_nothing_in_the_gate_reaches_the_network():
     """It used to fetch another repo's state file over HTTPS, and failed closed on
-    every network error — so an outage read as a stop order. Emma, 2026-08-23:
-    *"Shintowiki scripts and this one are not the same and not really
-    coordinated."* The coupling was invented here, not observed."""
+    every network error — so an outage read as a stop order. The shintowiki
+    scripts and this repo are not the same and are not coordinated; that
+    coupling was invented here, not observed."""
     source = (REPO / "scripts" / "wikidata_lockout.py").read_text(encoding="utf-8")
     body = "\n".join(
         line for line in source.splitlines() if not line.lstrip().startswith("#")
@@ -86,8 +86,8 @@ def test_nothing_in_the_gate_reaches_the_network():
 
 
 # ---------------------------------------------------------------------------
-# THE SECOND DATE. Emma, 2026-09-05: "I want to on the 15th start all of this
-# stuff automatically" — the daily Garborg batch, through the bot-password API.
+# THE SECOND DATE: on the 15th all of this starts running automatically — the
+# daily Garborg batch, through the bot-password API.
 #
 # It is written twice for exactly the reason the first one is: the workflow's
 # `Decide what this run does` step compares dates in bash, before the module

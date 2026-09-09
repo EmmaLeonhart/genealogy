@@ -101,7 +101,7 @@ def test_the_user_agent_is_the_contact_address_and_nothing_else(tmp_path):
     """It used to assert `"genimerge" in USER_AGENT` and had been red since `0483a470`.
 
     That commit — *"The user agent is the email address and nothing else"* — acted on
-    Emma's 2026-08-18 instruction that **the repository must never be linked from an
+    The 2026-08-18 rule that **the repository must never be linked from an
     agent, and neither should a description of what the project does**, both being
     signposts to where a reader could go looking. The test kept asserting the removed
     behaviour, so it was demanding the opposite of the rule.

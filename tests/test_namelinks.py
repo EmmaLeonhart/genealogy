@@ -122,7 +122,7 @@ def test_a_patronymic_is_emitted_as_P5056_not_dropped(tmp_path):
     "patronymic in the given-name field", because the only property available was
     `P735` given name and putting it there would have been a false claim.
 
-    Emma's `name modelling.txt` gives a patronymic **its own property**, `P5056`
+    `name modelling.txt` gives a patronymic **its own property**, `P5056`
     patronym or matronym, parallel to `P735` and `P734`. There is now somewhere
     correct to put it, so discarding it is no longer right - the old test encoded
     a workaround for a missing property, not a rule about names.
@@ -334,7 +334,7 @@ def chain_batch(existing_claims=()):
 
 
 def test_a_chain_emits_one_P5056_per_generation():
-    """Emma's worked example. Before this, `classify-patronymics` read only the
+    """The worked example. Before this, `classify-patronymics` read only the
     first `ben X` and nothing produced more than one patronymic per person."""
     links = [l for l in chain_batch().links
              if l.prop == namelinks.PATRONYM and l.qid == "Q10"]

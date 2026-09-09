@@ -293,7 +293,7 @@ def test_a_small_region_needs_one_export():
 
 
 def test_the_seed_list_emits_every_seed_not_just_the_first():
-    """It is the file Emma pastes into a browser; a region needing three
+    """It is the file that gets pasted into a browser; a region needing three
     exports that contributes one line is the bug this whole change is about."""
     tree = _tree(_chain(9))
     graph = _graph_of(tree)
