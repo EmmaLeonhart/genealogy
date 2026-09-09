@@ -1,15 +1,15 @@
-name: Pipeline when she has been editing
+name: Pipeline when the account has been editing
 
-# **Her design, 2026-09-01:** *"Every six hours it checks the time of my last contribution. If it
-# is under six hours old then it does the full pipeline. Ledger refresh plus quickstatement
+# **The design, 2026-09-01:** every six hours it checks the time of the last contribution. If it
+# is under six hours old it does the full pipeline. Ledger refresh plus QuickStatements
 # rebuild. So basically it is intended as facilitating potentially quite intensive work like
 # this."*
 #
 # **The gate is what makes it affordable.** The pipeline checks out several GB and rebuilds the
 # batch; run unconditionally that is four expensive runs a day whether or not anything changed.
-# Her contributions are the right signal because the ledger is BUILT from them --
-# `refresh-garborg-ledger.py` reads the same `list=usercontribs` for the same account, so "she has
-# edited" and "the ledger will differ" are the same fact.
+# The contributions are the right signal because the ledger is BUILT from them --
+# `refresh-garborg-ledger.py` reads the same `list=usercontribs` for the same account, so "the
+# account has edited" and "the ledger will differ" are the same fact.
 #
 # **It does NOT rebuild the synoptic tree.** That is `genimerge merge`: ~14 minutes and a 17 GB
 # peak against a 16 GB runner, so it cannot run here — and it does not need to. `--compose` reads
@@ -21,9 +21,9 @@ name: Pipeline when she has been editing
 # with `The runner has received a shutdown signal` and nobody knowing why.
 
 on:
-  # **`push:` IS DELIBERATE HERE, and it is the one workflow that has it.** Emma, 2026-09-03:
-  # *"pushes should trigger the pipeline to go all the way including up to getting a working qs
-  # file and having the daily batch on the site."* This reverses CLAUDE.md's blanket ban, which
+  # **`push:` IS DELIBERATE HERE, and it is the one workflow that has it.** Ruled 2026-09-03:
+  # a push triggers the pipeline all the way, up to a working `.qs` file and the daily batch on
+  # the site. This reverses CLAUDE.md's blanket ban, which
   # is updated in the same commit; every other workflow stays manual-or-scheduled.
   #
   # **It cannot loop.** This job pushes its own commit to `main`, which would retrigger the
@@ -73,8 +73,8 @@ jobs:
           python-version: "3.13"
 
       # **A PUSH BYPASSES THE GATE, and that is the whole point of the trigger.** The gate asks
-      # whether she has edited Wikidata in six hours; a push means the REPO changed, which the
-      # gate cannot see. Gating pushes on her contributions would reproduce exactly the failure
+      # whether the account has edited Wikidata in six hours; a push means the REPO changed,
+      # which the gate cannot see. Gating pushes on contributions would reproduce exactly the failure
       # of 2026-09-03, where three scheduled runs skipped and the site served a batch from the
       # night before while every run showed green. "All the way" means the gate does not stop it.
       - id: check
@@ -148,9 +148,8 @@ jobs:
 
       # ⛔ **THE OTHER TWO GENERATORS THE BATCH NEEDS, which nothing ran until 2026-09-05.**
       #
-      # Emma, shown that both were standalone: *"Uhh I thought it already was folded in lol"* and
-      # *"both are highly important but I'm not sure where either one runs and the fact they are
-      # standalone is worrying"*. They were not folded in, and the audit found the reason is
+      # Raised when both turned out to be standalone: they were assumed already folded in, and
+      # both are important, so leaving them standalone was worrying. They were not folded in, and the audit found the reason is
       # general: `reports/qs-batch-audit.md` measured **0 of 27** `.qs` files as produced by
       # anything this pipeline runs.
       #
@@ -161,18 +160,17 @@ jobs:
       #
       # ⛔ `build-missing-reciprocals` WAS in this step for one commit and has been taken out.
       # It was added on the claim that it emits what Wikidata is missing, and that was wrong:
-      # the script does **no live check** -- Emma's own instruction in it, *"do no fuckin
-      # check"* -- so its 6,770 statements are everything our tree records among 2,274 touched
+      # the script does **no live check**, by instruction recorded in it -- so its 6,770
+      # statements are everything our tree records among 2,274 touched
       # people, re-asserted wholesale for QuickStatements to deduplicate. That is a reasonable
-      # design for a file she runs by hand and a bad one to pour into the batch she reviews:
+      # design for a file run by hand and a bad one to pour into the reviewed batch:
       # the daily batch emits 39 `P40` because it CHECKS, and this would have added 1,542 more
-      # that are mostly already stated. Her words on being shown the framing: *"I don't think
-      # there's anything to be added that has those properties right now since none are in the
-      # ledger."*
+      # that are mostly already stated. The ruling on being shown the framing: nothing with
+      # those properties is addable right now, since none of them are in the ledger.
       #
       # P22/P25/P40/P26 are uncapped on purpose -- `CLAUDE.md`: *"they are few per person and
       # each one is structurally load-bearing"* -- while `P3373` stays under `SIBLING_CAP`, which
-      # is what the held file is for. So folding these in respects the pacing she designed rather
+      # is what the held file is for. So folding these in respects the designed pacing rather
       # than working around it.
       #
       # `continue-on-error` for the same reason the deck has it: the Garborg batch is the
@@ -186,8 +184,8 @@ jobs:
           python scripts/build-regnal-ordinals.py
           # ⛔ REFRESH THE SNAPSHOT FIRST, or `build-from-diff` contributes NOTHING.
           #
-          # Reviewed 2026-09-06, her queue item. The script refuses a diff older than 24h -- for
-          # a good reason, since a stale diff proposes re-adding her own hand-work -- and NOTHING
+          # Reviewed 2026-09-06 as a queue item. The script refuses a diff older than 24h -- for
+          # a good reason, since a stale diff proposes re-adding hand-work -- and NOTHING
           # in this pipeline was refreshing it. `out/model-vs-reality-items.json` is tracked and
           # was dated 2026-09-03, so every run since 09-04 refused. Measured by running it:
           # *"the diff rests on a snapshot 69.2 hours old ... refusing to project"*.
@@ -204,10 +202,10 @@ jobs:
           python scripts/model-vs-reality.py --refetch || echo "diff refresh failed; from-diff will refuse"
           python scripts/build-from-diff.py || echo "from-diff skipped: needs a diff to read"
 
-      # **The adjudication deck, regenerated every run.** Emma, 2026-09-01: *"I told you to
-      # regenerate the html every time with the pipeline."* Until now it refreshed only when
+      # **The adjudication deck, regenerated every run**, ruled 2026-09-01: the HTML is
+      # regenerated every time with the pipeline. Until then it refreshed only when
       # somebody ran `refresh-drift.py` by hand, so it rendered 0 cards while 709 candidates
-      # waited and she worked off the raw TSV instead. It makes ~15 batched Wikidata requests.
+      # waited and the raw TSV was being worked off instead. It makes ~15 batched Wikidata requests.
       #
       # `continue-on-error` because the deck is a convenience and the batch is the deliverable:
       # a Wikidata hiccup here must not fail a run that has already produced the QuickStatements.
@@ -241,10 +239,10 @@ jobs:
             exit 0
           fi
           printf '%s\n' \
-            'rebuild the batch: she edited within the last six hours' \
+            'rebuild the batch: the account edited within the last six hours' \
             '' \
             'Scheduled pipeline. The gate found a contribution newer than six hours, so' \
-            'the ledger was refreshed from her contributions and build-garborg-day.py' \
+            'the ledger was refreshed from the contributions and build-garborg-day.py' \
             '--compose was re-run.' \
             '' \
             'The synoptic tree was NOT rebuilt: that needs 17 GB and this runner has 16,' \
@@ -332,12 +330,12 @@ jobs:
             const when = new Date().toISOString().slice(0, 16).replace('T', ' ');
             const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
                         `/actions/runs/${context.runId}`;
-            // **The PAGE is the hand-off, never the artifact.** Emma, 2026-09-02: *"idk what
+            // **The PAGE is the hand-off, never the artifact.** Ruled 2026-09-02: *"idk what
             // a github artifact is but a non-attached zip file in the email is way worse than
             // having the quickstatements just on a page on github pages lol, that's kinda why I
             // made github pages."* The batch is ~130 KB against a 65,536-byte issue-body limit,
             // so it ALWAYS overflows -- every notification hit the old artifact fallback, which
-            // is why she kept being told her batch was being withheld.
+            // is why the notification kept saying the batch was being withheld.
             const site = 'https://emmaleonhart.github.io/genealogy';
             const head = [
               `**${process.env.CREATES} creations - ${process.env.LINES} statement lines - ` +
@@ -369,12 +367,12 @@ jobs:
             });
             core.info(`opened #${issue.data.number}: ${issue.data.html_url}`);
 
-  # **The third deliverable, from the same dispatch.** Her framing is one run producing the
+  # **The third deliverable, from the same dispatch.** The design is one run producing the
   # archive, the site and the QuickStatements -- the archive is already inside `--compose`
   # (STEP 0b runs `full_entities` over the ledger), the QuickStatements are the job above, and
   # this is the site.
   #
-  # `needs: pipeline` rather than `needs: gate`, deliberately: if she has not edited, the gate
+  # `needs: pipeline` rather than `needs: gate`, deliberately: if the account has not edited, the gate
   # skips the pipeline and the site is not rebuilt either. Nothing has changed, so there is
   # nothing to publish, and a run that publishes an identical page is the kind of noise the
   # gate exists to prevent.
