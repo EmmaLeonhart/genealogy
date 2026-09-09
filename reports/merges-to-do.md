@@ -317,7 +317,7 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 
 **They are the same person on STRUCTURE, not on the name.** Our `6000000009063273551` has spouse `6000000007680468910`, which the ledger holds as `Q5626148` *Carl Wilhelm von Düben*; `Q130665779` carries `P26 Q5626148` — the same husband. That is a closed-slot match of the kind `CLAUDE.md` permits, not a name similarity.
 
-**Creating then merging is not a defect here.** `CLAUDE.md` § *Her own duplicates are DELIBERATE* records that a creation followed by a merge leaves the edit trail she wants, and she raised this as something to do *at some point* rather than something to prevent.
+**Creating then merging is not a defect here.** `CLAUDE.md` § *The owner's own duplicates are DELIBERATE* records that a creation followed by a merge leaves the intended edit trail, and this was raised as something to do *at some point* rather than something to prevent.
 
 
 ## 8. An item you created beside an older one nobody joined by Geni id - 41

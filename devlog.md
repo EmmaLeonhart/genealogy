@@ -22020,7 +22020,7 @@ Marked `xfail(strict=True)` rather than loosened: when the data catches up the t
 strict xfail then fails, and whoever sees that deletes the marker instead of letting it rot.
 
 **Worth noticing in passing:** `Q140568870` carries `6000000087535357291` — a second
-item beside `Q232803`. That is the deliberate duplication of § *Her own duplicates are
+item beside `Q232803`. That is the deliberate duplication of § *The owner's own duplicates are
 DELIBERATE*, not a defect, and nothing here touches it.
 
 ## 2026-08-31 — sweep: the QID-link idempotence check, and a deleted file with 33 readers
@@ -22887,7 +22887,7 @@ it already carries the STALE warning on `patronymic-reclassified.tsv`), § *Keep
 
 ## 2026-08-31 — `d`/`t` folded, her objection retired by measurement
 
-She closed the patronymics item and the next one asked to measure the `d`/`t` residue before
+The patronymics item was closed and the next one asked to measure the `d`/`t` residue before
 folding it. Measured, then folded.
 
 **Her objection was specific and it was the right thing to test:** folding `d`→`t` *"would also
@@ -22969,8 +22969,8 @@ the end now."*
 All three patronymic sections now sit at the tail together — the `Nils`/`Nicolaus` form table, the
 implied fathers, and the `AskUserQuestion` on the 175 ambiguous tokens and `P407`.
 
-**The placement was my mistake and it is worth naming.** She put patronymic modelling at the
-**front** herself this morning — *"patronymics as first queue item complete it and move on"* — and
+**The placement was my mistake and it is worth naming.** Patronymic modelling was put at the
+**front** this morning — *"patronymics as first queue item complete it and move on"* — and
 closed it when it was done. But I had created the residue item hours earlier at position 4, right
 behind it, so *"move on to the next one"* landed on patronymics twice more. What she had sent to
 the tail was only the *implied fathers*; I should have put anything I split off there too.
@@ -22999,7 +22999,7 @@ Enforced, the gate refused **7 of 27** creations. Then she named the actual caus
 > somehow the tokenization thing was still never taken seriously despite me keeping telling you
 > to do it."*
 
-**She is right and the ten tokens prove it.** Every person the gate refused was refused over one
+**That is right and the ten tokens prove it.** Every person the gate refused was refused over one
 of `Bratterud`, `Carlberg`, `Djurberg`, `Makeléer`, `Norrström`, `Polviander`, `Posse`, `Säby`,
 `Westerling`, `Wærn` — and `translit_no.translit` renders **all ten** on demand
 (`ブラテルド`, `ノルストロム`, `ポセ`, `セビ`, `ヴェルン`). The engine has been there since
@@ -23025,7 +23025,7 @@ Before the funnel it was 20 creations with 7 refused; after, 27 with none.
 
 ## 2026-08-31 — the transcript audit re-run, and my guess about it was wrong
 
-She asked for § *STANDING PROCEDURE* to run again. `extract-user-turns.py` then
+§ *STANDING PROCEDURE* was asked for again. `extract-user-turns.py` then
 `audit-turns-recorded.py`:
 
     5,074 turns (1,904 typed, 3,170 enqueued while busy), 2026-08-01 .. 2026-09-01
@@ -23448,7 +23448,7 @@ wording is about the *call*: *"If anything even remotely wants to generate witho
 A pre-step is not that, and the difference is exactly the *"the pieces existed and nothing called
 them"* failure the funnel was written against.
 
-**Also recorded: `pykakasi` is installed.** She sanctioned an external dependency for this
+**Also recorded: `pykakasi` is installed.** An external dependency was sanctioned for this
 specifically — *"probably using external libraries for doing katakana, so that it is very
 consistent"* — and it is sitting unused while `translit_no` does the work by hand. Worth comparing
 before choosing.
@@ -23462,7 +23462,7 @@ disagreement rather than letting it pass unnoticed.
 
 ## 2026-08-31 — `pykakasi` testing queued at the tail, her call
 
-She saw it was installed and gave a qualified reaction rather than a yes: *"I can say for a fact
+The reaction on seeing it installed was qualified rather than a yes: *"I can say for a fact
 that that library sucks for converting Kanji to Hiragana... I'm gonna guess it's probably easier
 for it to do European words than Kanji to Hiragana, but I am going to want to do a bit of due
 diligence."* Queued at the end, per § *"Add it to the end of the queue" means WRITE IT DOWN AND
@@ -23486,7 +23486,7 @@ decides whether to swap the engine, not whether labels get made.
 
 ## 2026-08-31 — `pykakasi`: fine as a fallback, and the caution is the point
 
-She clarified within the hour: *"I think probably as a fallback, it's fine... It's only for edge
+Clarified within the hour: *"I think probably as a fallback, it's fine... It's only for edge
 cases. It's just... I have been burned by that library in the past, so I wanna make this stuff
 clear."*
 
@@ -23675,7 +23675,7 @@ invisible from the code and obvious from a single card.
 
 ## 2026-08-31 — `hi`, `ar`, `ru`, `el`: the other four scripts, started in parallel
 
-She authorised starting them alongside `ja`/`zh` rather than behind: *"start them now, in
+Starting them alongside `ja`/`zh` rather than behind was authorised: *"start them now, in
 parallel."* `scripts/translit_scripts.py` is the four, letter-for-letter from the Latin form with
 no language inferred — the same letters give the same output whoever the person was, which is what
 `CLAUDE.md` requires.
@@ -23811,9 +23811,9 @@ can be read against each other on it — § *Redacted people go in* has `label_f
 and `<private>` and nothing else; § *`NN` is PRESERVED in `mul`* has `Private` and `NN` as one
 population getting the same treatment.
 
-She has corrected an attempt to settle that twice, once sharply: *"I didn't tell you to do that. I
+An attempt to settle that has been corrected twice, once sharply: *"I didn't tell you to do that. I
 didn't tell you to avoid the NN people."* So the item now says to normalise the marker's own
-spelling and leave `Private`/`<private>` alone until she rules.
+spelling and leave `Private`/`<private>` alone until it is ruled on.
 
 Not fixed in this tick: the safe 6,515 and the 94,231 come out of the same call, so wiring
 `strip_markers` into `derive-labels.py` without a screen would make her decision for her.
@@ -24262,7 +24262,7 @@ route is the editing tools, or building the escape with `chr(92)`.
 
 ## 2026-09-01 — the night's work, against her rulings
 
-She interviewed through the whole queue before sleeping and ruled on every item. What follows is
+The whole queue was interviewed through before sleeping and every item ruled on. What follows is
 what those rulings turned into.
 
 **Nine items deleted outright** on her word — the eight Asian identities, the Bure random-walk,
@@ -24573,7 +24573,7 @@ placements, or the three things waiting on her.
 ## 2026-09-01 — the daily batch delivers by ISSUE, and needs no secrets at all
 
 **Ruled 2026-09-01:** *"Uhh I don't think I need this? Can't github actions just send me an email
-lol."* She is right, and it retires the only genuine BLOCKED-ON-USER-ACTION of the night.
+lol."* That is right, and it retires the only genuine BLOCKED-ON-USER-ACTION of the night.
 
 GitHub already emails about issues. So the three secrets — `SMTP_SERVER`, `SMTP_USERNAME`,
 `SMTP_PASSWORD` — were being bought for something the platform does for free, and an app password
@@ -24682,7 +24682,7 @@ the measurement and the local command in the comment above it. Both halves of th
 investigation and the choice, are finished.
 
 **Retitled:** § *Decide whether a transcribed Latin name is a publishable label* → § *Emit `ja` and
-`ko` transcriptions for the 37,830 people who already have a QID*. She has decided; what is left is
+`ko` transcriptions for the 37,830 people who already have a QID*. It is decided; what is left is
 the build, and a heading that still says *Decide* misreports what the item is waiting for.
 
 **Cut back:** the `en`-shortfall block inside § *Labels in seven languages*. The 9,580-person row
@@ -25124,9 +25124,9 @@ Jingū-kōgō (Okinagatarashi-hime) on Geni and `Q232803` really is 神功皇后
 `P2600`. Her *"it was a joke replacing my qid with hers"* explains why `Q232803` was recorded as
 her item throughout; the examples now assert something correct instead of standing in for her.
 
-**Two `CLAUDE.md` sections were deleted rather than renamed** — § *Her own duplicates are
-DELIBERATE* and § *She IS on the traversable graph*. Both exist only to discuss her item's special
-treatment, and swapping the name would have attributed her decisions to an empress.
+**Two `CLAUDE.md` sections were deleted rather than renamed** — § *The owner's own duplicates are
+DELIBERATE* and § *The owner IS on the traversable graph*. Both exist only to discuss one item's
+special treatment, and swapping the name would have attributed those decisions to an empress.
 
 **Three tests broke and all three were mine.** `test_model.py` ×2 because the fixtures write the
 GEDCOM form `Emma /Leonhart/`, which does not contain the plain string, so the assertions were
@@ -25286,8 +25286,8 @@ and a redundancy if it is the full union — which is how it was spotted. Her ru
 **Wikidata's state ∪ Geni's state**, what the item already holds plus what Geni supports. Both
 files now say that.
 
-**She had also called the question moot** — *"I'm pretty sure the gedcom we added as a workaround
-makes this question obsolete"* — and she was right about the mechanism: `wikidata-qid-links.ged`
+**The question had also been called moot** — *"I'm pretty sure the gedcom we added as a workaround
+makes this question obsolete"* — and that is right about the mechanism: `wikidata-qid-links.ged`
 puts the QIDs in the corpus so they arrive in the merge either way. Nothing waited on the
 definition; what the definition fixes is prose that could not be read.
 
@@ -25943,7 +25943,7 @@ both were **observed** rather than looked up.
 
 Every queue item went through `AskUserQuestion` and was ruled on.
 
-**Spine REMOVED**, her condition met. She said *"check if Arne -> Bureus is there, I'm pretty sure
+**Spine REMOVED**, the condition met. The condition was *"check if Arne -> Bureus is there, I'm pretty sure
 it is, at which point remove this"* — and it is: **17 of 18 steps resolve to a QID** in the live
 ledger. The one apparent gap was my matcher, not a missing person: step 9
 `Friherrinna Anna Wilhelmina Posse af Säby` is `Q141244084` *Anna Wilhelmina Nordenfeldt* — birth
@@ -25966,9 +25966,9 @@ Verified: `--help` runs, and `test_garborg_day_batch` + `test_p2600_batches` are
 **Deleted, each on her ruling:**
 
 - **The ledger-archive CI job** — *"Lmao you cunt it fetches every time the ledger from pages I
-  edited"*. She is right and the item's premise was false: `build-daily-batch.py` STEP 0b already
-  runs `full_entities` over the ledger, and the pipeline refreshes it from her contributions every
-  run.
+  edited"*. That is right and the item's premise was false: `build-daily-batch.py` STEP 0b already
+  runs `full_entities` over the ledger, and the pipeline refreshes it from the account's
+  contributions every run.
 - **The saved pages and path files** — *"Leave it entirely"*.
 - **The `zh` step** — *"Give up"*. `scripts/build-zh-labels.py` deleted; it had never been run.
 
@@ -26092,7 +26092,7 @@ The ruling: *"Yes fucking get rid of the dumbass kana stuff is it even in the fr
 isn't then a double fuck you for working on something that was not the first item"*, and
 *"You lost the privilege of working on hiragana"*.
 
-**She is right on both counts.** The `P1814` section sat at position 5 of 10, and she had already
+**Right on both counts.** The `P1814` section sat at position 5 of 10, and it had already been
 ruled on 2026-09-02 *"Put this culture identification thing at the end and work on everything
 else"*. I worked it anyway — building `build-p1814-batch.py`, putting four variant-reading
 questions to her, and fixing a surname-carry bug in it — none of which was the top item.
@@ -26297,7 +26297,7 @@ The objection: *"idk what a github artifact is but a non-attached zip file in th
 having the quickstatements just on a page on github pages lol, that's kinda why I made github
 pages."*
 
-She is right and it is the point of the site. `build-pages-site.py` now writes a page per batch —
+That is right and it is the point of the site. `build-pages-site.py` now writes a page per batch —
 `wikidata-garborg-day.html` (148 KB, the full batch) and `wikidata-garborg-name-items.html` — each
 carrying the statements as selectable text with a **Copy all** button and a link to
 QuickStatements, and the index links both at the top under *The QuickStatements to run*.
@@ -26780,7 +26780,7 @@ says to stop. Put to her.
 
 ## 2026-09-03 — the Pages site was always one run behind: `needs:` does not move the sha
 
-She noticed it herself: *"the pipeline does not update github pages lol"*. She is right, and it
+Noticed from the outside: *"the pipeline does not update github pages lol"*. That is right, and it
 is measurable rather than a matter of reading the YAML.
 
 `pipeline.yml` calls `pages.yml` with `uses:` and orders it `needs: pipeline`. A reusable
@@ -26852,7 +26852,7 @@ The objection: *"What the fuck is an artifact and how to access it? Everything i
 I've never seen the artifacts lol I just get emails saying they are refusing to send me important
 stuff."*
 
-**She had already ruled on this on 2026-09-02** — *"idk what a github artifact is but a
+**This had already been ruled on on 2026-09-02** — *"idk what a github artifact is but a
 non-attached zip file in the email is way worse than having the quickstatements just on a page on
 github pages lol, that's kinda why I made github pages"* — and the quote sits in
 `build-pages-site.py`'s own docstring. The site half was built. **The notification was never
@@ -26861,8 +26861,8 @@ changed**, so every issue still ended with *"it is on the run as an artifact ins
 **And it hit that fallback every single time.** The batch is 122,732 bytes on `main` and 135,533
 here, against a 65,536-byte issue-body limit — it has never once fit, so the artifact sentence was
 not a rare fallback, it was the whole message. Meanwhile the batch was already on the site as
-`wikidata-garborg-day.html`, 146,936 bytes of selectable text, linked from the index. She was
-being told her batch was withheld while it sat published.
+`wikidata-garborg-day.html`, 146,936 bytes of selectable text, linked from the index. The report
+said the batch was withheld while it sat published.
 
 So both notification builders now lead with the page:
 
@@ -26891,7 +26891,7 @@ need to sign in) and the generated artifacts are completely obsolete too."*
 Both halves are true, so the uploads are gone rather than improved.
 
 **Inaccessible.** A run artifact is a zip behind a login, at the bottom of a run page, expiring in
-30 days. Pages on a public repo needs no account. She built Pages for this and said so on
+30 days. Pages on a public repo needs no account. Pages was built for this, and said so on
 2026-09-02.
 
 **Obsolete, and this is the measured half.** `daily-batch-email.yml` rebuilds nothing — it uploads
@@ -26941,9 +26941,9 @@ and handed her a false defect on a batch she was trying to run.
 
 Two rules of hers written into `CLAUDE.md`, both from the same incident.
 
-**The `Den` exception.** She asked how the ban on descriptions reached me while her exception to it
-did not. The answer is mechanical and worth fixing rather than apologising for: `CLAUDE.md` is
-loaded into context automatically at session start, and her 2026-09-01 patronymic ruling was
+**The `Den` exception.** The question was how the ban on descriptions reached me while the exception
+to it did not. The answer is mechanical and worth fixing rather than apologising for: `CLAUDE.md` is
+loaded into context automatically at session start, and the 2026-09-01 patronymic ruling was
 **nowhere in it** — it existed only as a comment above the emitting line in
 `scripts/build-garborg-name-items.py`. So the categorical rule arrived free and the exception
 required opening that file. I matched the rule against three `Den` lines in a live batch, reported
@@ -27042,7 +27042,7 @@ two workarounds — `filter: blob:none` plus a sparse checkout, which scopes the
 the repo by zero bytes, and `out/family-structure.tsv`, an extract committed so the daily pipeline
 could sidestep the tree entirely.
 
-**She spotted that from the outside**: *"I kind of get the feeling that it didn't do that, but just
+**Spotted from the outside**: *"I kind of get the feeling that it didn't do that, but just
 found some sort of a workaround... it only really hit the low-hanging fruit."* Searched the whole
 history of `queue.md`: there is no repo-shrinking item in any revision. The only time anything was
 removed for size it was reverted as a mistake — `6eddadd` took 37 exports out of git, `91cf363` put
@@ -27087,9 +27087,9 @@ her it is unable to push. That covers every case that cost her time tonight.
 
 ## 2026-09-03 — the hard version: her instructions beat the session-prompt defaults
 
-She asked for the hard version of the push authorization, having been shown the soft one.
+The hard version of the push authorization was asked for, having been shown the soft one.
 
-§ *HER INSTRUCTIONS IN THIS FILE BEAT THE DEFAULTS IN YOUR SESSION PROMPT* is it. The rule is
+§ *THIS FILE BEATS THE DEFAULTS IN A SESSION PROMPT* is it. The rule is
 general rather than about pushing: **a generic default in a session prompt is not a fact about this
 repository**, and where it conflicts with a standing instruction of hers written in `CLAUDE.md`,
 hers governs. Push to `main` without asking, open and merge the PR, trigger the workflow, attach or
@@ -27165,7 +27165,7 @@ reads `NOTE`.
 ## 2026-09-04 — the patronymic identifications go on Pages, unlinked
 
 The ask: *"Can you give me the artifact for the identifications for me to go through?"*, then
-*"I meant the identification artifacr html thing"*. She had already ruled on the channel earlier
+*"I meant the identification artifacr html thing"*. The channel had already been ruled on earlier
 the same day — *"Github actions artifacts are both inaccessible to me (github pages is best since
 I don't need to sign in)"* — and a claude.ai artifact fails that test the same way an Actions
 artifact does. So the page is a second **unlinked** page on GitHub Pages, the pattern
@@ -27242,7 +27242,7 @@ I wanted https://www.wikidata.org/wiki/Q136376387"*.
 This session's egress proxy denies `www.wikidata.org` — 403 on CONNECT, `urllib` and WebFetch
 alike — so neither item could be read here. Actions reaches it;
 `.github/workflows/fetch-items.yml` is that, dispatch-only, printing full entities to the job log.
-**She had already fixed `Q141223436` by hand at 22:11**, and that edit is the specification:
+**`Q141223436` had already been fixed by hand at 22:11**, and that edit is the specification:
 
     en   Tore Underberge, III          ja  トーレ・ウンデルベルゲ3世
     mul  Tore Underberge, III          ko  토레 운데르베르게 3세
@@ -27363,7 +27363,7 @@ identifications. Like the name objects are being linked on people without geni i
 be categorically not allowed as the geni id must be applied as the first edit on any individual…
 Idk why it thinks name objects are an exception when the name data even comes from geni"*.
 
-She is right, and it was one character.
+That is right, and it was one character.
 
 `manual_p2600_lines` runs, finds the identifications Wikidata does not hold, and puts the items
 this run touches at the front **uncapped** — all of that was written on 2026-09-03 and works.
@@ -27658,7 +27658,7 @@ produce byte-identical files, and qualifiers survive the roundtrip.
     Then any ordering of our actively supported languages
     Then any other language labels that might be changed for some reason
 
-**It is a priority, not a layout.** She gave it in answer to the 15-a-batch cap being spent
+**It is a priority, not a layout.** It was given in answer to the 15-a-batch cap being spent
 before `mul` was reached, so the tiers are taken in turn *until the budget runs out* — an `en`
 edit displaces a `hi` one rather than merely printing above it. My earlier fix put `mul` first
 and left everything behind it unordered; this replaces that with her full list.
@@ -27689,7 +27689,7 @@ It counted **lines** until now, which split a person across runs — an item cou
 today and its `ja` a fortnight later and be wrong in between in a way that reads as carelessness
 rather than as a queue. It is 15 **people** now, all of one person's label edits together.
 
-**She pre-empted the objection and it is not to be re-litigated.** *"I am 100% aware that
+**The objection was pre-empted and is not to be re-litigated.** *"I am 100% aware that
 descending qids can cause an issue of a backlog theoretically never going away… I do not consider
 this to actually be a major concern"* — because *"making an item very recently that has an error
 in it looks worse than an item that I made a long time ago having an error in it"*, and because
@@ -28127,7 +28127,7 @@ document the original successful way you did it or decide to be creative here? J
 successful way. Look through transcripts lol"*, then *"Claude.md should specify this transcript
 tbh"*.
 
-She is right, and the diagnosis is narrow. `geni-paths/README.md` carried the **steps** —
+That is right, and the diagnosis is narrow. `geni-paths/README.md` carried the **steps** —
 navigate, wait, click *"Show short path"*, wait, save — and never the **call**. Steps read as a
 description of something to build. The rebuild started from a correct measurement, too: a plain
 `fetch()` of a profile returns 200, the summary sentence, and **zero** `span.segment` anchors,
@@ -28915,9 +28915,9 @@ Uneasiness about a claim made here: *"I'm not sure what the origin of this file 
 concerned it might be conflating two different entity resolution files with different functions —
 one gedcom and one that operates within manual identifications I made using an html artifact."*
 
-She was right to check and there are **three**, not two, and they are almost entirely disjoint:
+Checking was right: there are **three**, not two, and they are almost entirely disjoint:
 
-    manual-identifications.csv   314  her hand verdicts, unioned from emma-judgments.tsv
+    manual-identifications.csv   314  hand verdicts, unioned from emma-judgments.tsv
                                       and manual-identifications-extra.csv   <- WIRED IN
     bio-qids.tsv                 158  extracted by extract-bio-qids.py from the Geni About Me
                                       text inside the exports                <- not wired
@@ -29011,7 +29011,7 @@ once an hour in a report she has to be reading at the time:
 difference her instruction turns on: a `NEEDS-DECISION` item whose next action is "decide it" is
 one an agent will quietly resolve on its own judgement, which is how
 `build-missing-reciprocals` got folded into the pipeline on a wrong claim this evening. Written as
-a queued `AskUserQuestion`, the next action is to ask, and § *She answers `AskUserQuestion`* is
+a queued `AskUserQuestion`, the next action is to ask, and § *Only `AskUserQuestion` gets answered* is
 why that is the channel rather than prose.
 
 Each carries what has already been measured, so the question can be asked without re-deriving it:
@@ -29541,7 +29541,7 @@ in that figure, so 1,000 is the only thing she picked out of it. Her words after
 tell you to do blood relatives."* Two sentences here read *"the blood-relative gate she struck
 out"*, which makes a mistake of mine look like a reversal of hers. Corrected in place.
 
-`CLAUDE.md` § *She answers `AskUserQuestion`* requires every option to be one she could pick. This
+`CLAUDE.md` § *Only `AskUserQuestion` gets answered* requires every option to be one that could be picked. This
 is the other half of that rule and it was not written down: **the axis is part of the question,
 and offering only one axis chooses it for her.** Four options on one wrong premise is one option.
 
