@@ -28,8 +28,8 @@ and the point of the census is to count them rather than assume the split:
 counts the same thing at 605 exports and per person rather than per record.
 
 **Relatives are searched to two hops, not one**, and both are recorded separately so the cost of
-the second hop is visible rather than assumed. Emma, 2026-08-16: *"It can work off of those
-long-range things... grandparents or grandchildren or siblings."* Order within a hop is
+the second hop is visible rather than assumed: the search works off the long-range
+relationships too -- grandparents, grandchildren, siblings. Order within a hop is
 father, mother, spouse, child, then sibling -- parents first because
 `docs/export-seed-rules.md` puts patronymics at the top for the same reason, that a parent names
 the person rather than merely relating to them.
@@ -60,8 +60,8 @@ FAMILY = REPO / "reports" / "derived-family.csv"
 NAMES = REPO / "reports" / "display-names.csv"
 OUT = REPO / "reports" / "label-gap.csv"
 
-#: A `SURN` that is punctuation or a marker is not a family name. Emma's boundary, 2026-08-17:
-#: **words yes, punctuation no** -- and she confirmed a surname of `.` becomes nothing.
+#: A `SURN` that is punctuation or a marker is not a family name. The boundary set 2026-08-17
+#: is **words yes, punctuation no**, and a surname of `.` becomes nothing.
 NOT_A_SURNAME = {"", ".", "?", "-", "--", "n", "nn", "n n", "private", "<private>",
                  "unknown", "ukjent", "okand", "ukendt"}
 
@@ -126,7 +126,7 @@ def main() -> int:
                 kin[s]["spouse"].append(g)
 
     # Siblings: everyone sharing a recorded parent. Geni records no sibling edge --
-    # `CLAUDE.md` section *CHECK before you alarm her* measures 2,126 of 30,361 path steps as
+    # `CLAUDE.md` section *CHECK before you alarm* measures 2,126 of 30,361 path steps as
     # sibling hops, so leaving them out would understate the reach by a real margin.
     bykid = collections.defaultdict(set)
     for g, (fa, mo) in parents_of.items():
@@ -161,7 +161,7 @@ def main() -> int:
         else:
             # Two hops. The intermediate is by construction unnamed, which is why its own
             # relatives are worth walking -- an unnamed father with a named father gives a
-            # grandfather, and that is the long-range case Emma named.
+            # grandfather, and that is the long-range case the walk is for.
             for mid_slot in SLOTS:
                 for mid in kin.get(g, {}).get(mid_slot, ()):
                     if label.get(mid):

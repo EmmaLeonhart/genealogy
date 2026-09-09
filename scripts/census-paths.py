@@ -1,10 +1,8 @@
-"""The path census, in the shape Emma asked for, repeatable so runs compare.
+"""The path census, in the shape asked for, repeatable so runs compare.
 
-**Emma, 2026-08-18**, having been shown the wrong thing twice: *"My god that's not
-the path census"*, then *"I wanted the histogram of lengths"*, then a screenshot of
-the census she meant with *"This is what I wanted."*
-
-So the format is hers and is not to be redesigned:
+**The census wanted here is the HISTOGRAM OF LENGTHS**, not a summary of the paths --
+which took three tries to establish, so the format below is settled and is not to be
+redesigned:
 
 1. **Paths overall** --- how many files, how many fully covered, how many still
    incomplete, each with a percentage.
@@ -48,7 +46,7 @@ OUT = REPO / "reports" / "path-census.md"
 INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 
 
-#: The account owner. Every Geni relationship path is measured from her profile, so a second
+#: The account owner. Every Geni relationship path is measured from that profile, so a second
 #: appearance of it inside one file is a second path rather than a step.
 ACCOUNT_OWNER = "6000000001846508982"
 
@@ -133,9 +131,9 @@ def load_adjacency():
 def connected(a, b, adj, parents):
     """Is a path's step from `a` to `b` carried by the tree?
 
-    **A SIBLING step is connected and is not a direct edge.** Emma raised it, 2026-08-30:
-    *"geni chains often have situations where they skip between siblings. How are the parents
-    represented and how common is this situation?"* -- and it is common: **2,126 of the 30,361
+    **A SIBLING step is connected and is not a direct edge.** Geni chains often skip between
+    siblings, and the question of how the parents are represented and how common this is was
+    raised 2026-08-30. It is common: **2,126 of the 30,361
     relation steps in `paths/`, 7.0%**, read `his brother`, `her sister` and so on.
 
     Geni records no sibling edge. Two siblings are joined through a shared parent, so they are

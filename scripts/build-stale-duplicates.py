@@ -2,13 +2,13 @@
 
     python scripts/build-stale-duplicates.py
 
-**Emma's method, 2026-08-24:** *"just use my method"* — read the merges off her own Geni
-activity feed rather than guessing at them. `reports/geni-merges-performed.tsv` is that
+**The method, 2026-08-24:** read the merges off the Geni activity feed rather than
+guessing at them. `reports/geni-merges-performed.tsv` is that
 list: 180 distinct surviving profile ids over 13 pages, and the feed reached its end, so
 it is complete rather than a sample.
 
 **What a row means.** Geni now holds **one** profile for this person. Our merged tree
-holds **two**, because the exports covering them were taken before she merged. So the
+holds **two**, because the exports covering them were taken before the merge. So the
 tree double-counts the person, and — since their parents are frequently duplicated too —
 whole parallel lineages sit side by side. That is the clan-added-to-Geni-three-times
 phenomenon showing up in our data.
@@ -26,7 +26,7 @@ the evidence is strongest. This compares father and mother **names**, and grades
 `weak` is kept in the file, not dropped. Amram V Samaritan High Priest is the worked
 example: one profile's father is *Tsedaka I*, the other's is *Aaron III*, and only one
 carries a death date. That is either one man with conflicting parentage from two creation
-runs or two different men, and Emma is the one who can tell.
+runs or two different men, and only a person reading the pair can tell.
 
 **The absorbed id is unknowable from the feed** — it shows only the survivor. So a twin
 here is a *candidate* for the profile that was absorbed, never a certainty; `Yorimoto
@@ -69,7 +69,7 @@ def main():
             line = line.strip()
             if line and not line.startswith("#") and line != "geni_id":
                 survivors.add(line)
-    print(f"{len(survivors)} merge survivors from Emma's activity feed")
+    print(f"{len(survivors)} merge survivors from the Geni activity feed")
 
     labels = {}
     with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
