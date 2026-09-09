@@ -10517,7 +10517,7 @@ queue now holds work, and the history is where history goes.
 
 ## 2026-08-19 — the name strings trimmed, on her ruling
 
-Emma, 2026-08-19: *trim, and fix the English too.* `trim_name()` in
+Ruled 2026-08-19: *trim, and fix the English too.* `trim_name()` in
 `build-relationship-label-preview.py` removes bracketed material, date ranges and a leading
 list number. **12,649 names trimmed**; English labels on the placeholder batch **31,882 →
 32,129**.
@@ -10541,7 +10541,7 @@ doing nothing at all.
 
 ## 2026-08-19 — the patronymic fathers, rebuilt on the classification that already existed
 
-Emma: *"We already addressed this. Read through the transcripts."* She was right, and the
+The correction: *"We already addressed this. Read through the transcripts."* It was right, and the
 transcript says it plainly — 2026-08-15: *"Whether something is or is not a patronymic here
 is determined by completely offline information related to the person's father's name."*
 `scripts/classify-patronymics.py` and `reports/patronymic-classification.csv` were built
@@ -10565,7 +10565,7 @@ becomes the implied father's name:
 
 The population is far larger than my version found — 18,518 against 3,855 — because the
 existing classifier recognises patronymic forms well beyond Nordic suffixes, which is
-exactly what Emma warned about on 08-15: *"the patronymics have a variety of forms and you
+exactly what was warned about on 08-15: *"the patronymics have a variety of forms and you
 might not have gotten all the forms… we have things like Anes and Rodriguez and Fitz John
 that are all patronymics too."*
 
@@ -10589,7 +10589,7 @@ the bearer's Geni profile. Nothing runs before 1 September.
 created item is a Geni profile getting a Wikidata item; these men have no Geni profile at
 all — they exist because the patronymic attests them. So `subject.geni_id` is null, no
 `P2600` statement is emitted, and the Geni ID appears **only as the reference** on every
-statement, pointing at the child. That is exactly Emma's ruling of 2026-08-19: *reference
+statement, pointing at the child. That is exactly the ruling of 2026-08-19: *reference
 the bearer's profile*.
 
 Four invariants checked on the emitted file rather than asserted: no creation carries a
@@ -10607,7 +10607,7 @@ confirmed father anywhere (6,373) get no item, because there would be nothing to
 
 ## 2026-08-19 — step 1 of her label order: `en` for every individual, 22,373 edits
 
-Emma, 2026-08-17: *"makes en labels for every individual (so Japanese gets transcribed),
+Ruled 2026-08-17: *"makes en labels for every individual (so Japanese gets transcribed),
 and then mul gets made for every individual (almost always derived from en), and then the
 Japanese gets made for all languages, and then the Chinese... all of the en labels are done
 at the same time as one step."* `scripts/build-en-label-batch.py` →
@@ -10653,7 +10653,7 @@ description 6,979, description+clan 6,254, name repaired 1,010).
 `scripts/build-mul-label-batch.py` → `reports/wikidata-mul-labels.json`. Each edit requires
 its step-1 `en`, so the two land in her order rather than racing.
 
-**The interesting part is what it does not mirror.** Emma's wording was *"mul gets made for
+**The interesting part is what it does not mirror.** The wording was *"mul gets made for
 every individual (almost always derived from en)"*, and "almost always" is doing real work:
 of step 1's three sources, two are names and one is not.
 
@@ -10662,7 +10662,7 @@ of step 1's three sources, two are names and one is not.
     relationship label            NOT a name  -> left alone, 7,401 people
 
 `husband of Lakech Gashawbeza` describes somebody by who they are related to. Copying that
-into `mul` would assert across every language that it is what the person is *called*. Emma
+into `mul` would assert across every language that it is what the person is *called*. That
 ruled on this exact shape on 2026-08-17 — *"And NN for mul there"* — and those people
 already receive `mul: NN` from `build-placeholder-label-batch.py`, so mirroring would have
 overwritten a correct marker with a description.
@@ -10673,7 +10673,7 @@ relationship label appears in the batch at all.
 
 ## 2026-08-19 — adding `某` broke two emitted batches, and I shipped it untested
 
-`e4c6a5c1` added `某` to `scripts/labels.py`'s marker vocabulary on Emma's *"Add it"*. I
+`e4c6a5c1` added `某` to `scripts/labels.py`'s marker vocabulary on a one-word *"Add it"*. That
 verified the predicate by hand and committed. **I did not run the test suite**: the run had
 been backgrounded, it was killed, and I moved on to the next item without noticing the
 result never came back. The hard rail says never claim a thing works without having run it,
@@ -10708,7 +10708,7 @@ unchanged, so the `ja` label *is* the name) and **4,547** from Wikidata's own `j
 `カール・マルテル`, `ロロ` — which somebody wrote and which beats anything derived.
 
 **406,713 people are not reached, and that is deliberate.** 5,291 have a hangul-only name
-and a `ja` label must not be the hangul; the rest need English → katakana. Emma's method for
+and a `ja` label must not be the hangul; the rest need English → katakana. The method for
 that direction is a hand-built table, and a table that turns `Brodsky` into `ブロツキー`
 correctly has real failure modes — syllabification, long vowels, and the fact that
 established Japanese spellings of European names are conventional rather than derivable.
@@ -10735,7 +10735,7 @@ Then: *"YOU CAN MOVE IN DIFFERENT DIRECTIONS THAN DOWN"* — and that is the who
 correction. I had written in a report that the in-law columns were *structurally
 unreachable* because the walk followed children only. They were never unreachable; the
 walk was. Walking parents, siblings and spouses as well reached `Yoriyasu En'ya` and
-`Kakujitsu-ni En'ya` within forty profiles, and one of those is an identity Emma had had
+`Kakujitsu-ni En'ya` within forty profiles, and one of those is an identity that had been
 to hand me by URL because no search of mine had found it.
 
 `scripts/izumo-align.py` replaces `izumo-join.py`, which is deleted rather than kept,
@@ -10762,7 +10762,7 @@ sessions appending in the same place.
 
 **Sixteen exports run and filed**, each on arrival rather than batched: ten sparse-region,
 Sultan Mahmud Shah, Bertha von Vohburg-Andechs, Christine Kid/Hegedal, Rhys Fychan, the
-Rufius Festus probe, and Emma's own deferred `Descendants`. Corpus 547.
+Rufius Festus probe, and the deferred `Descendants`. Corpus 547.
 
 **Two seed-choosing methods refuted by measurement, in one day.**
 
@@ -10771,7 +10771,7 @@ returned 16,872 new people and exactly one born before 1100; four ancient seeds 
 1,305 new and 314 before 1100. So ancient balls are a thirteenth as productive and are the
 only thing that reaches antiquity at all — which is a trade-off, not a failure.
 
-*Presence contrast.* `reports/presence-contrast.md`. Emma's own idea, built as
+*Presence contrast.* `reports/presence-contrast.md`, built as
 `scripts/build-presence-contrast.py`: rank people by how far below their neighbourhood's
 median presence they sit, rather than by absolute thinness. It found 25,839 such people,
 6,067 born before 1600, and the head of the list was Roman — which is exactly where she
@@ -10781,7 +10781,7 @@ well-covered neighbourhood means the region is exhausted and the low-presence pe
 leaf, not that the balls stopped short of a doorway. Third method refuted here, second
 proposed on reasoning alone.
 
-**Emma's Wikidata items are now the template.** `docs/wikidata-item-template.md`, read off
+**The hand-made Wikidata items are now the template.** `docs/wikidata-item-template.md`, read off
 `Q467497` and the five items she built by hand. The generated QuickStatements batch was
 wrong in six ways — most importantly it emitted no name properties at all, where she uses
 `P735`, `P734` and `P5056` and created a patronymic item (`Q141152710`, `Aadnesson`).
@@ -10797,7 +10797,7 @@ Two measurements redirected the work overnight.
 
 **They are already connected.** All 147 Bureätten people in the merged tree sit in one
 component, the same 1,274,287-person one as everything else
-(`scripts/measure-bure-connectivity.py`). Emma's goal was *"to get them all connected to
+(`scripts/measure-bure-connectivity.py`). The goal was *"to get them all connected to
 each other on a family tree"* — that is done. The ~26-export sweep being set up was aimed
 at a problem that does not exist; one export had run and the second was abandoned on the
 form unsubmitted.
@@ -10833,7 +10833,7 @@ fuzzy name matching returning by the back door.
 
 ## 2026-08-23 — Bure kinship closed at the easy seven
 
-Emma: *"just use the easy bure people and skip anyone that's hard and resolve that queue
+The instruction: *"just use the easy bure people and skip anyone that's hard and resolve that queue
 stuff"*, and *"I'm not gonna look at those rows just move past this"*. So no review pile
 was left behind.
 
@@ -10863,19 +10863,19 @@ emperors beside them — that is what the browser attempt kept failing on. The w
 every person in their own `{{ill|…|qid=…}}` cell.
 
 **214 people, 204 with a Wikidata item, 89 with a regnal number** (1–84, the Izumo no Kuni
-no Miyatsuko succession, kept in their own column because Emma flagged they are not middle
+no Miyatsuko succession, kept in their own column because it was flagged that they are not middle
 names). Lineages: 137 pre-split trunk and in-laws, 39 Izumo, 22 Senge, 16 Kitajima.
 
 **Only 2 of the 214 carry a Geni ID.** Far more extreme than Bureätten's 251 of 576. The
 Wikidata side was built for this genealogy and is nearly complete; nothing joins it to Geni.
 
-That reorders the item: resolution before creation. Emma's own account is that the clan is
+That reorders the item: resolution before creation. The account is that the clan is
 already on Geni three times over, so creating profiles first would manufacture a fourth
 duplicate set on top of merges she has reserved to herself.
 
 ## 2026-08-23 — the two lockout periods were conflated, and this repo's is 2026-09-01
 
-Emma: *"Shintowiki scripts uses a different lockdown period lol. This repo starts at sept
+The ruling: *"Shintowiki scripts uses a different lockdown period lol. This repo starts at sept
 1."*
 
 An earlier session read her 2026-08-18 *"no wikidata editing for a month"* as covering this
@@ -10885,7 +10885,7 @@ separate, so the gate enforces another repo's schedule here.
 
 Corrected in `CLAUDE.md` and in the module's own docstring. **The gate itself is not
 changed**: it fails closed, so from 2026-09-01 it will block editing this repo is entitled
-to do, and repointing or retiring a safety gate is Emma's call rather than one to make
+to do, and repointing or retiring a safety gate is a hand call rather than one to make
 unasked. It is now a queue item with the date attached.
 
 Nothing has been blocked in practice — every batch so far is a file for her to run, and no
@@ -10903,7 +10903,7 @@ breadth-first ball of 5000 spends itself on the dense side and never walks the t
 84-generation chain.
 
 Different from the sparse-region refutation: there the premise was wrong, here only the
-aim. Seeding the Senge/Kitajima end — where Emma's own additions attach — is the fix, and
+aim. Seeding the Senge/Kitajima end — where the hand additions attach — is the fix, and
 is now the queue step.
 
 ## 2026-08-23 — the Izumo coverage figure was wrong twice; 21, not 10
@@ -10914,7 +10914,7 @@ is now the queue step.
 normalised comparison misses all of them. `variants()` now generates both orders — exact
 tokens either way, nothing fuzzy.
 
-**Ball-only search.** The first run indexed only the 1,312 people within 25 hops of Emma's
+**Ball-only search.** The first run indexed only the 1,312 people within 25 hops of the
 seed, but the Senge and Kitajima profiles hang off the modern imperial line — Kunimaro
 Senge married Princess Noriko in 2014 — so no radius around the founder contains them. The
 search now covers the whole tree; the ball only reports distance.
@@ -10996,7 +10996,7 @@ Left: 17 rostered people, one contiguous stretch — Izumo 11 and 18–33.
 
 `tests/test_wikidata.py::test_requests_identify_the_tool` asserted
 `"genimerge" in wikidata.USER_AGENT` and has been red since `0483a470`, *"The user agent is
-the email address and nothing else"* — the commit that acted on Emma's 2026-08-18
+the email address and nothing else"* — the commit that acted on the 2026-08-18
 instruction that **the repository must never be linked from an agent, and neither should a
 description of what the project does**. The code changed; the test did not, so it was
 asserting exactly the leak the rule exists to prevent.
@@ -11009,7 +11009,7 @@ agent into a mystery 403.
 Also confirmed not ours, and left alone: `test_the_offline_guard_actually_fires` fails only
 when `BOT_CONTACT` is unset in the shell (it passes with it set), and
 `test_the_real_corpus_has_no_byte_identical_duplicates` is the known `chain-seeds` pair
-awaiting Emma's call on deletion.
+awaiting a call on deletion.
 
 Fast lane after the fix: 1043 passed.
 
@@ -11081,7 +11081,7 @@ among children, which is a guess.
 as `Ibe /no Mikoto/`, `6000000227332042822`. The one person the queue still listed as missing
 was never missing. **Nobody rostered is absent now**, and no export was needed to establish it.
 
-**Nine seats are CONTESTED and stay Emma's.** Seats 1–9 land two different people, because
+**Nine seats are CONTESTED and stay a hand call.** Seats 1–9 land two different people, because
 two of Geni's three copies of this clan disagree by one generation — the kanji chain sits a
 seat higher than the romaji one throughout, so 世毛呂須 (the roster's 10) occupies the seat
 the romaji chain gives Chiri (9). Both chains are internally consistent and cannot both be
@@ -11101,7 +11101,7 @@ Also fixed: `walk-izumo-succession.py` first stripped only the `@` from an xref 
 
 ## 2026-08-23 — RETRACTED: the Izumo kokuso joins, and they were not asked for
 
-Emma stopped this and she was right on both counts.
+This was stopped, and rightly on both counts.
 
 **It was not asked for.** Her instruction on this clan was to build the tree the Shinto-wiki
 page shows onto Geni, carry the Wikidata links, and flag duplicate merges. The regnal
@@ -11127,18 +11127,18 @@ The "nine contested seats" I reported as a finding about Geni's duplicate sets i
 plausibly that assumption meeting a tree with a different generation count — an artefact of
 my own method dressed up as a discovery. Script and output deleted.
 
-**This is the deleted `reconcile` matcher coming back.** Emma on that one: *"no fucking clue
+**This is the deleted `reconcile` matcher coming back.** On that one: *"no fucking clue
 why there's a fuzzy matcher that sounds like something you made with zero consent from me."*
 Same shape, less excuse — a stopword collision is not even fuzzy matching, it is no matching
 at all.
 
 What stands: the lineage join, where the regnal number sits beside an `Izumo`/`Senge`/
 `Kitajima` surname that pins it to this family. 76 rows. The kokuso are unresolved and stay
-unresolved until Emma says otherwise.
+unresolved until ruled otherwise.
 
 ## 2026-08-23 — the join key was in the data all along: a Wikidata URL in the Geni About Me
 
-Emma: *"we have intentionally added actual join keys for the Samaritan high priests, Izumo
+The instruction: *"we have intentionally added actual join keys for the Samaritan high priests, Izumo
 clan, and Tanba clan... The wikidata items linked in the descriptions."*
 
 She is right and it is exact. Geni exports it as
@@ -11186,7 +11186,7 @@ Wikidata URLs against `out/wikidata/p2600-all.tsv`:
 | item has a `P2600` with a different Geni id — a *second* statement | 5 |
 
 **354 statements in `reports/wikidata-geni-qid-p2600.qs`, for 2026-09-01.** This is the
-whole point of finding the key: an identifier Emma wrote into Geni by hand becomes an edit
+whole point of finding the key: an identifier written into Geni by hand becomes an edit
 on Wikidata with nothing inferred in between.
 
 **None of the 5 is a conflict, and one of them proves the rule.** `Q51676` Aaron against
@@ -11259,14 +11259,14 @@ All 15 pass; 50 including `test_repo_invariants` and `test_identity`.
 
 ## 2026-08-23 — the shintowiki coupling was invented here, and it is gone
 
-Emma, asked what to do with the gate: *"Why are we even doing shintowiki stuff here? What's
+Asked what to do with the gate: *"Why are we even doing shintowiki stuff here? What's
 p2600? If it's geni id then I'll run manual quickstatements."* Then: *"Shintowiki scripts
 and this one are not the same and not really coordinated"*, and *"I think you hallucinated a
 coordination between them."*
 
 **She is right.** `scripts/wikidata_lockout.py` fetched a lockout state file belonging to
 `shintowiki-scripts`, and `CLAUDE.md` asserted there was *"exactly one lockout state file
-for all of Emma's repos"*. Nothing in this repo evidences that. An earlier session inferred
+for all of the repos"*. Nothing in this repo evidences that. An earlier session inferred
 it from her 2026-08-18 *"no wikidata editing for a month"* and wrote the inference down as
 fact — which is how it survived three sessions as a thing to be "repointed" rather than a
 thing to be doubted.
@@ -11298,7 +11298,7 @@ is green for the first time in weeks.
 
 ## 2026-08-23 — ten of the eleven "beyond the chart" already had items
 
-Emma, asked whether to create Wikidata items for the office-holders Geni carries past the
+Asked whether to create Wikidata items for the office-holders Geni carries past the
 end of the Shinto-wiki chart: *"Yes lol that's the point of why I made it? They are part of
 the geni individual creation pipeline."*
 
@@ -11357,7 +11357,7 @@ nothing in it is a `P2600` candidate until its kind is established.
 
 ## 2026-08-23 — queue.md trimmed: 48 sections to 31, 1,738 lines to 1,141
 
-Emma, 2026-08-22, in the queue itself: *"I think it is really stupid how the queue already
+In the queue itself, 2026-08-22: *"I think it is really stupid how the queue already
 appears to have gotten pretty verbose with a high level of attempt to preserve my writing…
 you are makign the queue useless by presering my verbatim words."* It had grown to 48
 sections and most of them were not steps.
@@ -11368,7 +11368,7 @@ sections and most of them were not steps.
 - **Finished, by their own text** — `FOUND BY THE RESUME REVIEW` (*"All three are now
   done"*), `IN FLIGHT AT SHUTDOWN` (*"Committed and pushed; nothing is half-written"*),
   `MANALLY WRITTEN STUFF AT 8-22-2026` (all three asks delivered).
-- **Closed by Emma** — the 7 Samaritan father disagreements, Chinese and Japanese
+- **Closed by ruling** — the 7 Samaritan father disagreements, Chinese and Japanese
   genealogy.
 - **Audits and meta** — `AUDIT 2026-08-15`, `The audit method was itself incomplete`,
   `Fucking bizarre cruddy AI generated shit` (its one real rule became the preamble),
@@ -11377,7 +11377,7 @@ sections and most of them were not steps.
   ended; where the cron carried real work, the work stayed as a line.
 - **Superseded** — `⛔ TOP PRIORITY — the export slowness`. The loop now runs end to end
   under Chrome automation, which `CLAUDE.md` records.
-- **Measurements** — `Nordic isolates` (Emma called diminishing returns on it),
+- **Measurements** — `Nordic isolates` (called diminishing returns),
   `repo-freshness.csv` (kept as one line: it is still stale).
 - **Built-and-waiting** — Samaritan normalization, NN labels, entity resolution. Folded
   into one § *Built and waiting on 2026-09-01* with the 354 `P2600` statements and the one
@@ -11396,7 +11396,7 @@ The preamble now says the rule out loud: a queue item is a step, and her wording
 ## 2026-08-23 — the Garborg batch rebuilt, because the old one would have made duplicates
 
 `reports/wikidata-garborg.qs` was written on 2026-08-22, when nobody around Arne Garborg
-had a Wikidata item. Emma has since created four of them by hand. **The file still opened
+had a Wikidata item. Four of them have since been created by hand. **The file still opened
 with `CREATE` for Eivind and Ane Oline** — `Q141152512` and `Q141152523` — so running it
 would have minted duplicate items for real people. Marking it "superseded, do not run" in
 the queue was not enough: a `.qs` sitting in `reports/` is exactly what gets pasted into
@@ -11421,7 +11421,7 @@ the six — the parents' `P40`, the existing siblings' reciprocal `P3373` — is
 6 creations, 84 statements, 0 occurrences of `S854`.
 
 **Name properties are still not emitted, and that is a decision rather than an omission.**
-Eivind carries `P735`, `P734` and the `P5056` patronym item Emma made (`Q141152710`
+Eivind carries `P735`, `P734` and the `P5056` patronym item made by hand (`Q141152710`
 *Aadnesson*). The same for the others needs the QID of each given-name item plus a new
 patronymic item per patronym — *Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*.
 Guessing a name-item QID is the error this repo keeps paying for, so they are listed in the
@@ -11460,7 +11460,7 @@ and it is the second time this week they have earned it.
 **What the guard cannot do, said in its docstring so nobody trusts it further.** Whether a
 `CREATE` would duplicate an existing Wikidata item is only decidable against a current
 `P2600` map; ours is a gitignored snapshot from 2026-08-09 and predates the Garborg items
-Emma made by hand. **That check would not have caught the bug that prompted this work.** It
+made by hand. **That check would not have caught the bug that prompted this work.** It
 catches the ordinary case and skips when the snapshot is absent.
 
 **Fast lane: 1,091 passed, 0 failed**, with `BOT_CONTACT` set — green for the first time
@@ -11505,7 +11505,7 @@ them.
 
 ## 2026-08-23 — the todo.md batch inventory listed 14 of 24, and missed the largest
 
-Emma's item, 2026-08-15: *"I don't know if the to-do is being properly done."* Audited the
+A queued item, 2026-08-15: *"I don't know if the to-do is being properly done."* Audited the
 one part of `todo.md` that is checkable rather than a judgement — § *The built batches* — by
 counting the files instead of reading the table.
 
@@ -11602,7 +11602,7 @@ over and neither is silently tolerated.
 **And one rule of mine was wrong, which is the part worth keeping.** I asserted every
 subject names a `qid` or a `geni_id`; it failed on 41,706 edits that are all correct.
 `create_name_item` has no identifier until the item exists. order.life people carry
-`orderlife_qid` and are not from Geni. And the 9,158 patronymic fathers are Emma's own item
+`orderlife_qid` and are not from Geni. And the 9,158 patronymic fathers are a queued item
 — *"wiki data items that do not have geni items"* — where having no Geni ID **is the
 point**. The rule now covers non-creations only, and the docstring lists all three
 exceptions so the next person does not re-derive them.
@@ -11643,7 +11643,7 @@ that stays in `queue.md` as a design decision.
 
 **Fast lane: 1,105 passed, 1 xfailed, 0 failed**, 5m42s.
 
-## 2026-08-24 — Garborg hop 2, and the correspondence Emma feared was missing
+## 2026-08-24 — Garborg hop 2, and the correspondence suspected of being missing
 
 **Hop 2 is built.** `scripts/build-garborg-hop.py`, `reports/wikidata-garborg-hop2.qs`:
 **38 creations, 17 links, 21 deferred** — the spouses and children of Arne's siblings, plus
