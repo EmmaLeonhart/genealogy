@@ -10717,7 +10717,7 @@ left for a deliberate build.
 
 ## 2026-08-20 — I matched people by name when the structure was right there
 
-Emma, mid-run: *"Are you using text similarity instead of relational position?"* Yes, for
+Mid-run: *"Are you using text similarity instead of relational position?"* Yes, for
 one half of the job, and it was the half that kept failing.
 
 Creating people was fine — every person went onto a parent identified by **Geni id**, in
@@ -11655,7 +11655,7 @@ A link is emitted only where its target already has a QID. Twenty-one point at s
 are still hop-1 creations, and QuickStatements V1 cannot name an item minted in the same
 run, so those go to the commented second pass rather than being guessed.
 
-**And the correspondence.** Emma: *"there was a tsv qid correspondence quickstatement thing
+**And the correspondence:** *"there was a tsv qid correspondence quickstatement thing
 is that represented in our data?… I'm afraid it isn't properly represented in our synoptic
 tree."* **She was right.** Five files held QID↔Geni pairings and nothing joined them —
 which is exactly the artefact `CLAUDE.md` says the synoptic tree is for.
@@ -11726,7 +11726,7 @@ rather than predicted:
 
 596 MiB between them. They sit on disk uncommitted, so a clean checkout still has the
 08-17 versions and the working tree has the current ones — a split that must not be left
-standing. Three options are in `queue.md`; the choice is Emma's, because it collides with
+standing. Three options are in `queue.md`; the choice is a hand call, because it collides with
 her rule that `reports/` is tracked and *"we don't care about repo size."*
 
 **The Garborg batches were not affected, and I checked rather than assumed.** Both hops had
@@ -11740,7 +11740,7 @@ and are small enough to commit.
 
 ## 2026-08-24 — the derived CSVs are committed gzipped
 
-Emma's call: *"Imo gzip because this is long term and we aren't adding any more data into
+The ruling: *"Imo gzip because this is long term and we aren't adding any more data into
 our tree. Just processing."*
 
 `scripts/pack-derived.py` packs the four and `--unpack` restores them:
@@ -11767,7 +11767,7 @@ mid-regeneration, and a suite that reddens for that gets ignored.
 
 ## 2026-08-24 — name modelling, and 31 name items Wikidata does not have
 
-Emma: *"we should be modelling the names properly, which he didn't do."* She is right —
+The ruling: *"we should be modelling the names properly, which he didn't do."* That is right —
 both Garborg batches carried labels and **no `P735`, `P734` or `P5056` at all**.
 
 **`scripts/namemodel.py`** classifies a Norwegian name into her model from
@@ -11780,7 +11780,7 @@ and `Samuelsen` must not become one.
 
 Two tokeniser bugs found by running it on real names: Geni's quoted nicknames
 (`Stine "Stena"`) and parentheses (`Ingvold (Pinkie)`) were becoming tokens with the
-punctuation attached. Stripped, content kept — `CLAUDE.md` records that Emma took the
+punctuation attached. Stripped, content kept — `CLAUDE.md` records that the ruling took the
 nickname and dropped the quotes.
 
 **`scripts/build-garborg-name-items.py` → `reports/wikidata-garborg-name-items.qs`: 31
@@ -11795,7 +11795,7 @@ different object for all three usages."* Four patronymic items are needed for sp
 that already exist as given names.
 
 **Checked against Wikidata offline first.** Arne `Q467497` has exactly one `P40` child,
-`Q11959067`, confirming Emma's *"he just had one child"* — our tree agrees, so there is
+`Q11959067`, confirming the *"he just had one child"* reading — our tree agrees, so there is
 nothing missing to add there. He carries `P735` *Arne* and `P734` *Garborg* and **no
 `P5056`**, though Geni names him `Aadne Eivindson Garborg`.
 
@@ -11812,7 +11812,7 @@ doing its job on its first real occasion.
 
 ## 2026-08-24 — a note on machine load
 
-Emma, mid-session: *"Are you causing the high temperature? Fan is super loud."* Yes. A full
+Mid-session: *"Are you causing the high temperature? Fan is super loud."* Yes. A full
 546-export merge, four derive passes over the 1.6 GB tree, a 596 MiB gzip and repeated fast
 lanes, several of them running **concurrently**. None of that needed to overlap.
 
@@ -11826,7 +11826,7 @@ No shutdown was needed — the jobs had finished and no Python process remained.
 
 `scripts/namemodel.py` decides whether a token becomes `P735` *given name*, `P734`
 *family name* or `P5056` *patronym or matronym* on every person the Garborg programme
-creates, and it shipped with **no tests**. 18 now, pinning Emma's rules rather than the
+creates, and it shipped with **no tests**. 18 now, pinning the rules rather than the
 implementation: the patronymic is its own property and not a qualified `P735`; a middle
 name is a given name after the first that is *not* patronymic, so the order of the tests
 matters; the last token is the family name **unless it is itself patronymic**, because
@@ -11844,12 +11844,12 @@ It changed nothing downstream — the Garborg name-item batch is identical at 38
 and 7 ambiguous — which is what makes it worth writing down: the bug was latent and would
 have surfaced the first time this touched a mononym, and this repo is full of them.
 
-No heavy jobs run: Emma's laptop is hot and the structural walk and hop 3 both want minutes
+No heavy jobs run: the laptop is hot and the structural walk and hop 3 both want minutes
 of sustained disk on the 1.6 GB tree. They wait.
 
 ## 2026-08-24 — the single-run rule is now checked, and "living" was an inference
 
-`tests/test_garborg_day_batch.py`, 5 tests, pinning the rule Emma set after running the
+`tests/test_garborg_day_batch.py`, 5 tests, pinning the rule set after running the
 first file: **every QID a statement points at must already exist**. Checked against the
 real batch and the ledger rather than against a fixture, so it is the shipped file that is
 verified. It also refuses a "second pass" comment anywhere in the batch — that appendix is
@@ -11897,7 +11897,7 @@ set of things known to exist got more accurate.
 
 ## 2026-08-24 — the batch now fills existing items, and a guard test that never fired
 
-**Emma asked for properties on items that already exist and section 1 had never done
+**Properties were asked for on items that already exist and section 1 had never done
 it.** It closed *links* — `P40`, `P3373`, `P26` — and never asked whether an existing
 item was missing a date, a name statement, a label or **a parent**. `Q467497` *Arne
 Garborg* had no `P22` *father* and no `P25` *mother* on Wikidata while both his parents
@@ -11917,7 +11917,7 @@ is `scripts/garborg-existing-gaps.py` → `reports/garborg-existing-gaps.tsv`:
   emitting would contradict a curated statement rather than add to it.
 
 **Only 3 of the 13 ledger items are readable offline.** The store was downloaded before
-Emma made the other ten, so their contents are known from our own batches instead. The
+The other ten were made by hand, so their contents are known from our own batches instead. The
 report says which of the two per person rather than reporting an unknown as an empty item.
 
 **A redaction marker was being sent to the name model.** The three `<private> Garborg`
@@ -11962,7 +11962,7 @@ adjudicate.
 35,118 objects, 35,118 distinct ids, **0 dangling `requires`**. 33,450 carry a `mul`
 label, 1,293 a `ja`/`zh` one, 798 none at all.
 
-This is maintenance of a batch that already existed, per Emma 2026-08-23 — *"Keep
+This is maintenance of a batch that already existed, per the 2026-08-23 ruling — *"Keep
 maintaining them they are gonna be run"* — not a new one invented uninvited.
 
 **The rows read the way the method says they should.** `Isabelle de Canouville` on Geni
@@ -11973,7 +11973,7 @@ but failing to be absurd. No name was searched.
 ## 2026-08-24 — the Garborg items re-read live, and the artifact republished
 
 Eight items read: `Q467497`, `Q141152512`, `Q141152523`, `Q141152600`, `Q141162040`,
-`Q141162043`, `Q141162046`, and the name item `Q141152710`. Emma authorised reading these
+`Q141162043`, `Q141162046`, and the name item `Q141152710`. Reading these was authorised:
 specific pages, so this is not the ad-hoc lookup `CLAUDE.md` forbids.
 
 **All ten people have items now.** The artifact and `docs/wikidata-item-template.md` both
@@ -12018,7 +12018,7 @@ own stylesheet so a redeploy reads as the same document.
 
 The re-read paid for itself immediately. `absent()` in `build-garborg-day.py` falls back,
 for an item the local store does not hold, to *"our own batch made it, so it carries no
-name statements"*. The store predates most of these items and **Emma edits by hand**, so
+name statements"*. The store predates most of these items and **they are edited by hand**, so
 the assumption was wrong exactly where it mattered: `Q141152512` Eivind carries a bare
 `P735` → `Q3358418` she added herself, and the batch emitted `P735` → `Q3358418` **with**
 `P1545` and `P7452`. QuickStatements merges an identical statement but records a
@@ -12043,7 +12043,7 @@ Fast lane: **1,177 passed, 0 failed, 4m01s.**
 
 ## 2026-08-24 — retraction: I read summaries of the items, not the items
 
-**Emma:** *"you're supposed to download the full wikidata items for the people I've
+**The correction:** *"you're supposed to download the full wikidata items for the people I've
 edited to get the modelling not look at my edit history to see what's in them."*
 
 I did not use her edit history — I fetched `Special:EntityData/<QID>.json` per person.
@@ -12087,7 +12087,7 @@ Fast lane: **1,177 passed, 0 failed, 3m50s.**
 
 **I asked whether three redacted people should be created unlabelled. That question
 should never have been asked** — `CLAUDE.md` § *`NN` is PRESERVED in `mul`* documents the
-algorithm, Emma had described it at length, and "no label" is not one of the options. Her
+algorithm, described at length, and "no label" is not one of the options. The
 reply, in full caps and deserved.
 
 The three `<private> Garborg` now come out as:
@@ -12111,7 +12111,7 @@ The surname is kept in `mul`: it survives redaction and is real data.
 
 ### Ambiguous given names: 7 → 1
 
-Emma's rule is *resolve by the bearer's sex*. It settles **two** — `Marie` (female item
+The rule is *resolve by the bearer's sex*. It settles **two** — `Marie` (female item
 over unisex) and `Ola` (male over unisex). The other four are two candidates of the **same
 sex**, so sex has nothing to separate.
 
@@ -12138,7 +12138,7 @@ Fast lane: **1,177 passed, 0 failed, 1 skipped, 5m22s.**
 
 ## 2026-08-24 — name objects come from the fields, not from re-parsing the label
 
-**Emma:** *"I thought we were resolving name objects but now we're determining which name
+**The objection:** *"I thought we were resolving name objects but now we're determining which name
 field to use as a source of the label?"*
 
 She was right. `namemodel.classify()` took `label_en`, a rendered display string, and
@@ -12158,7 +12158,7 @@ along — `givn`, `surn`, `nick`, `marnm` — and **field-based classifiers alre
   `Q245025` *middle name*; *Mary* got ordinal 3. Both are nicknames.
 - `_MARNM` was never read, so two real family names did not exist to the model.
 
-**Emma's rulings, both implemented.** A quoted token inside `GIVN` becomes `P1449`
+**Two rulings, both implemented.** A quoted token inside `GIVN` becomes `P1449`
 *nickname*. A married name becomes a **second** `P734` *family name*, the pair
 distinguished by `P3831` *object of statement has role* → `Q2507958` *birth name* and
 `Q28418670` *married name*, plus an alias — only where it differs from `SURN`, and **sex
@@ -12183,7 +12183,7 @@ Fast lane: **1,187 passed, 0 failed, 1 skipped, 5m30s.**
 `scripts/build-garborg-name-items.py` produces the file that must run **before** any other
 Garborg batch, because nothing can point at a name item until it exists. It was still
 calling `classify(label)` after the name model moved to the GEDCOM fields, and that
-mattered more here than anywhere else: a wrong list costs Emma a QuickStatements run and
+mattered more here than anywhere else: a wrong list costs a QuickStatements run and
 leaves items on Wikidata that nobody needs.
 
 Both directions were wrong:
@@ -12191,7 +12191,7 @@ Both directions were wrong:
 - **It proposed creating items for nicknames** — *Stena*, *Mary*, *Pinkie*, *Lena*. A
   nickname is `P1449`, which takes text, so it needs no item at all.
 - **It could not see married surnames**, because it never read `_MARNM`. Those now need a
-  family-name item under Emma's ruling, and there are **41** married-surname tokens among
+  family-name item under that ruling, and there are **41** married-surname tokens among
   the 55 people this batch creates.
 
 Items to create **38 → 45**; tokens already linked 52 → 57. `Olga` remains the single
@@ -12213,7 +12213,7 @@ Fast lane: **1,189 passed, 0 failed, 1 skipped, 5m36s.**
 
 ## 2026-08-24 — the Izumo items are real and mostly unconnected, measured on all 204
 
-**Emma:** *"Most of these Izumo people exist but are not connected to each other on
+**The finding:** *"Most of these Izumo people exist but are not connected to each other on
 wikidata. This is because of an earlier creation run on them that created a lot of items
 from the page but didn't properly connect them."*
 
@@ -12236,7 +12236,7 @@ completely misleading answer. Downloaded all 204 in full instead:
 
 ### The join is built and nothing consumes it
 
-Emma, asked whether the P2600 join was implemented: *"this isn't a separate run lol it's
+Asked whether the P2600 join was implemented: *"this isn't a separate run lol it's
 part of the algorithm we have been building for weeks... did you not actually implement
 this?"*
 
@@ -12257,7 +12257,7 @@ and the sister repo's raw wiki source says: *"Solid lines indicate biological ch
 dotted lines (vertical) indicate adopted children."* So the likely reading is that Geni
 holds the **biological** father and the chart the **adoptive** one, and neither is wrong.
 `reports/izumo-chart-edges.tsv` records `kind=child` flat and has already lost that
-distinction. **Not asserted — this is a hypothesis for Emma, and it is why she asked for
+distinction. **Not asserted — this is a hypothesis to be ruled on, and it is why the ask was for
 records rather than a rule.**
 
 ### Scope note
@@ -12270,19 +12270,19 @@ unprompted-analysis reflex and it is recorded here rather than quietly dropped.
 
 **Fetched 300 more items** from the sister repo's rosters (`roster-extraction/data_lake/`)
 — Izumo 202 QIDs, Tanba 183, Onakatomi 97, **482 distinct**, 182 already held.
-`out/clan-full-items.json` holds **504**. Emma: *"fetch all of them"*.
+`out/clan-full-items.json` holds **504**, on *"fetch all of them"*.
 
 The sister rosters carry **no Geni IDs at all** — 0 of 298 Izumo, 0 of 185 Tanba. They
 supply the Wikidata side and cannot supply the join.
 
 ### The join has both directions and is consumed by nothing
 
-Emma, mid-turn: *"geni description qid to wikidata qid is also important and needs to be
+Mid-turn: *"geni description qid to wikidata qid is also important and needs to be
 done jointly in the synoptic tree building."* Checked — it is joint already:
 
     wikidata-p2600   517,823    P2600 on the Wikidata side
     structural         3,902    our walk up the parental lines
-    geni-about-me        405    the QID Emma wrote into the Geni description
+    geni-about-me        405    the QID written by hand into the Geni description
     geni-wikidata-pairs  126
     izumo-roster         112
 
@@ -12309,7 +12309,7 @@ redirects behave. The merges themselves stay hers.
 
 ## 2026-08-24 — the correspondence finally has a consumer
 
-`scripts/build-join-batch.py`. Emma asked whether the join algorithm was implemented and
+`scripts/build-join-batch.py`. Asked whether the join algorithm was implemented, the answer was no, and
 the answer was no: 522,086 Geni ID ↔ QID pairs sat in `reports/synoptic-correspondence.tsv`
 and nothing read them. Her decision was a generic emitter run scoped to Izumo first, and
 that is what this is — the scope is any file with a `qid` column.
@@ -12344,7 +12344,7 @@ Fast lane: **1,204 passed, 0 failed, 1 skipped, 5m34s.**
 
 ## 2026-08-24 — "same parent, same name" REFUTED as a duplicate signal
 
-Emma: *"Look at actual duplicates"*, then *"I'll get a duplicate because I don't trust
+The instruction: *"Look at actual duplicates"*, then *"I'll get a duplicate because I don't trust
 you"* — and she supplied eight real ones she had merged on Geni herself: Yorihide,
 Yorinobu, Yoritoyo, Munekiyo, Fuyuyasu, Masatoshi Tanba (Sat), Nagatoyo and Yorimoto Tanba
 (Fri).
@@ -12391,7 +12391,7 @@ wrong answer tidier.
 
 ### What this says about finding Geni duplicates at all
 
-A duplicate is only visible to us if **both** profiles were in an export. Emma merges
+A duplicate is only visible to us if **both** profiles were in an export. Merges happen
 promptly, so the corpus is largely a post-merge snapshot — which is the real reason this
 came back empty, and it is not fixable by a better signal. Detecting merges needs Geni
 itself, and the redirect probe earlier today established that `/people/x/<id>` merely fills
@@ -12425,7 +12425,7 @@ Haji-no-muraji (Kuiko, Otori, Obito, Ohodo, Yashima, Minomi, Ohusoba) and three 
 
 **Weak rows are kept, not dropped.** Amram V Samaritan High Priest has *Tsedaka I* as
 father on one profile and *Aaron III* on the other, with a death date on only one. That is
-one man with conflicting parentage or two men, and Emma can tell where the report cannot.
+one man with conflicting parentage or two men, and a person can tell where the report cannot.
 
 `tests/test_stale_duplicates.py` pins the name-not-id comparison as a regression, that
 every survivor traces to the activity feed, and that weak rows survive.
@@ -12436,7 +12436,7 @@ Fast lane: **1,210 passed, 0 failed, 1 skipped, 7m17s.**
 
 ### The married name is the primary label
 
-Emma, after running the first batch: *"you are treating the married name as an alias,
+After the first batch ran: *"you are treating the married name as an alias,
 apparently aen, but in reality, the married name is the primary label and the birth name
 is amul"*, then *"we move the lmul to amul and the lja to aja and so on"*.
 
@@ -12468,7 +12468,7 @@ qualifier is right.
 
 ### The ledger was stale, which was the real bug
 
-The day batch was still trying to create the 21 people Emma had just made, because
+The day batch was still trying to create the 21 people that had just been made, because
 `reports/garborg-qids.tsv` had not been updated from her contributions. Updated: 13 → 34.
 The frontier grew 55 → 120 as a result, which is the hop expanding correctly.
 
@@ -12510,7 +12510,7 @@ Nothing rewrites one of her About Me links. Fast lane: **1,230 passed, 0 failed,
 
 ## 2026-08-24 — the married-name role must not sit on a man
 
-**Emma:** *"married name on a man, I think there was an issue. ontologically married name
+**The finding:** *"married name on a man, I think there was an issue. ontologically married name
 on a man means more like adopted surname. So men's 'married names' should not have the
 role of married name."*
 
@@ -12522,7 +12522,7 @@ Now a man still gets the second `P734` — he bore the name — but with **no ro
 
 **Not `Q118383793` *adoptive name* either, and this is the part worth keeping.** In this
 material a man's second surname is usually a **farm name taken by residence**, not
-adoption or marriage. `Q141169072` is exactly the case Emma pointed at: *Ådne Olsen
+adoption or marriage. `Q141169072` is exactly the case pointed at: *Ådne Olsen
 Grøtheim* became *Ådne Olsen Garborg* by moving to the Garborg farm.
 `reports/garborg-name-transliterations.tsv` already marks Aabø, Fjørtoft, Heigre and
 Raugstad as farm names. Calling that adoption asserts something false; an unqualified
@@ -12536,15 +12536,15 @@ qualifier from a statement it did not create.
 the leading `-` removal prefix, which is the only way to do the above; and earlier the
 same file learnt `en:"…"` monolingual values. Both are matched explicitly.
 
-**Verified live before hand-off**, because Emma is editing continuously: `Q141168827` still
-carried the role at the moment of checking. `CLAUDE.md` § *Emma edits the tree and the
-items BY HAND, continuously* is the rule that earns.
+**Verified live before hand-off**, because the items are edited continuously: `Q141168827` still
+carried the role at the moment of checking. `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously*
+is the rule that earns.
 
 Fast lane: **1,238 passed, 0 failed, 2 skipped.**
 
 ## 2026-08-24 — `exports/post-merge/` would have lost to `tanba/`
 
-Emma raised the open question herself when she designed the directory: *"idk how we
+The open question was raised when the directory was designed: *"idk how we
 resolved geni conflicts in the synoptic tree earlier either"*. Established, and the answer
 is a trap.
 
@@ -12578,7 +12578,7 @@ Fast lane: **1,240 passed, 0 failed, 2 skipped.**
 
 ## 2026-08-24 — the first post-merge export: 12 of 13 duplicates resolved by one ball
 
-Emma: *"RUN THE GODDAMN EXPORTS I HAVE BEEN WAITING ON YOU"* — and she was right to be
+The message: *"RUN THE GODDAMN EXPORTS I HAVE BEEN WAITING ON YOU"* — and it was right to be
 waiting, because the whole loop runs under Chrome automation here and I had been calling
 it her job.
 
@@ -12586,7 +12586,7 @@ it her job.
 file focused on profiles that you added to Geni."* That is why Kuiko Haji-no-muraji's
 Actions menu had no *Export GEDCOM* entry — he was added by 秋篠宮文仁親王 in 2008. All 13
 strong duplicates are old profiles added by other people, so the direct route is closed
-for every one of them. This is exactly the case Emma's design anticipated: *"if that's
+for every one of them. This is exactly the case the design anticipated: *"if that's
 impossible we do the earlier add ancestor and export from them algorithm"*.
 
 **The seed**, per `docs/export-seed-rules.md` Tier 3 (one parent present, the other
@@ -21066,7 +21066,7 @@ Both 19:47 edits are one run, `#temporary_batch_1788119173098`. The line is in
 The comment on the line read `(it had none)`, and the file's header promises exactly that: *"A
 mul label is only set where the item has none, so nothing she may have written by hand is
 overwritten."* She had set it two days earlier, so the batch was built on a snapshot at least
-that stale — `CLAUDE.md` § *Emma edits the tree and the items BY HAND, continuously*. The
+that stale — `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously*. The
 alias-first preservation step is the only reason the native form survived at all: *Svantepolk
 Knutsson* went in as an `Amul` one second before the label was overwritten.
 
