@@ -180,11 +180,46 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   (`Ann Bincks (Benckes|Bench)`, 136 of them, already held separately). NOT to be interpreted
   here; yours.
 
-- **The other lowercase ranks.** You scoped the first batch to `noble` alone. The same artefact
-  covers **1,029** people — `knight` 53, `sir` 53, `ridder` 41, `baroness` 27, `captain` 25,
-  `farmer` 11, `esquire` 9, `skipper` 3, `mistress` 6 — all computed in
-  `reports/title-label-proposals.tsv` and all unemitted. `scripts/build-noble-label-batch.py`
-  widens by one constant.
+- **⛔ THE LOWERCASE RANKS: REMOVE THE PREFIX, AND NOTHING ELSE.** You, 2026-09-09, shown that
+  the proposals also truncated the territorial tail: *"Uhh bruh what? I'm asking you to remove
+  the prefix lol not the other stuff."*
+
+  **This is a correction of the artefact, not just of the un-run ranks, and it reaches the
+  `noble` batch that is already BUILT.** `reports/wikidata-noble-labels.qs` (1,648 lines) drops a
+  comma tail on **112 of its 457** rows and reduces **87** to a bare given name plus patronymic —
+  `noble Beata Henrikintytär, heiress of Hannola` → `Beata Henrikintytär`. **DO NOT RUN IT AS
+  BUILT.** `propose-title-label-fixes.py` computes
+  `tidy(drop_title_tail(drop_comma_tail(stripped)))`; under your ruling it is `tidy(stripped)`.
+
+  **Re-measure before regenerating.** Dropping the tail-cut changes which rows are HELD — 19
+  `prince` and 18 `princess` rows are held as `one-token` today precisely because the tail was
+  cut, so the emittable population grows and the rank verdicts below were given against the old
+  one. Measure what moves, then rebuild.
+
+  **Your verdicts, 2026-09-09, all meaning prefix-only:**
+
+  | rank | n | verdict |
+  | --- | ---: | --- |
+  | `knight` | 51 | drop it, every language |
+  | `ridder` | 40 | drop it, every language |
+  | `baroness` | 27 | drop it, every language |
+  | `captain` | 24 | drop it, every language |
+  | `countess` | 18 | drop it, every language |
+  | `count` | 14 | drop it, every language |
+  | `major` | 14 | drop it, every language |
+  | `baron` | 8 | drop it, every language |
+  | `farmer` | 11 | drop the word, **keep the farm** |
+  | `mistress` | 5 | drop the word, **keep the estate** |
+  | `esquire` | 9 | **not automated** — *"If there's 9 people we can do it manually lol"* |
+
+  **Still to put to you, and you asked for `AskUserQuestion` on every one:** `prince` 10,
+  `dona` 7, `lord` 4, `lady` 4, `consul` 4, `professor` 3, `skipper` 3, `princess` 3, `graf` 2,
+  `friherre` 2, `doña` 2, `baronesse` 2, `general` 2, `professor,` 2, and eight singletons —
+  `rabbi`, `dr.`, `mr.`, `nobile`, `knyaz`, `comtesse`, `conte`, `general,`, `freiherr`.
+
+  **Ten more ranks have nothing to ask about**: `stillborn` 9, `queen` 5, `heiress` 2, `infant`,
+  `princesse` 11, `don`, `marquis`, `king`, `rev.`, `herr` are all held at **zero emittable** by
+  other rules already.
 
 ---
 
