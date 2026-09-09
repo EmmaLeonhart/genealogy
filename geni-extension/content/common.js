@@ -246,4 +246,18 @@ GC.blocked = function () {
  * work was done agentically around it, and the question was answered by asking rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
-document.documentElement.setAttribute("data-geni-collector", "1.6.4");
+/* ⛔ **READ THE VERSION FROM THE MANIFEST. A HARDCODED ONE LIED FOR FOUR RELEASES.**
+ *
+ * This was the literal `"1.6.4"` and nobody bumped it with the manifest, so the page advertised
+ * 1.6.4 while 1.6.5, 1.6.6 and 1.6.7 were loaded and running. On 2026-09-09 that string was
+ * measured, believed, and reported to Emma as *"the running Chrome is three versions behind the
+ * disk"* -- then written into `queue.md`, tagged BLOCKED-ON-USER-ACTION in four status reports,
+ * and used to explain away a live in-law defect as *"1.6.7 fixes it and nothing is running it"*.
+ * Chrome had been loading the extension straight out of the repo directory the whole time.
+ *
+ * `CLAUDE.md` § *CHECK before raising an alarm*: a number that agrees with the story is the one
+ * to check hardest. `getManifest().version` cannot drift from the manifest because it IS the
+ * manifest. */
+document.documentElement.setAttribute(
+  "data-geni-collector",
+  (chrome.runtime && chrome.runtime.getManifest && chrome.runtime.getManifest().version) || "?");

@@ -70,16 +70,30 @@ document.addEventListener("geni-collector-run", async () => {
    *
    * Emma, 2026-09-09: *"the extension's supposed to do all of the work on its own. You should
    * never be able to see the queue at all."* This returns a receipt, not a queue. */
-  if (job && job.job === "walk") {
-    let reply;
+  /* ⛔ **`{job:"bg"}` IS A PROBE OF THE BACKGROUND, and it exists because a silent
+   * `sendMessage` resolving `undefined` is indistinguishable from a stale service worker, a
+   * handler that never ran, and a handler that threw before `sendResponse`. All three look like
+   * an empty receipt from here, and guessing between them cost a restart cycle. */
+  if (job && (job.job === "walk" || job.job === "bg")) {
+    const msg = job.job === "bg"
+      ? Object.assign({ type: job.type || "ping" }, job.msg || {})
+      : { type: "walk", geni_id: job.geni_id, label: job.label || "" };
+    let reply = null, failed = null;
     try {
-      reply = await chrome.runtime.sendMessage({ type: "walk", geni_id: job.geni_id,
-                                                 label: job.label || "" });
+      reply = await chrome.runtime.sendMessage(msg);
     } catch (e) {
-      reply = { error: "no background listening: " + String(e && e.message || e) };
+      failed = String(e && e.message || e);
     }
-    root.dataset.geniCollectorResult = JSON.stringify(
-      Object.assign({ job: "walk", geni_id: job.geni_id }, reply || {}));
+    const last = chrome.runtime.lastError ? String(chrome.runtime.lastError.message) : null;
+    root.dataset.geniCollectorResult = JSON.stringify({
+      job: job.job, geni_id: job.geni_id || "", sent: msg.type,
+      reply: reply === undefined ? null : reply,
+      replied: reply !== undefined && reply !== null,
+      threw: failed, lastError: last,
+      /* The manifest version of the CONTENT script. If the background reports a different one
+       * the service worker is stale, which is the case this probe was written to name. */
+      contentVersion: (chrome.runtime.getManifest && chrome.runtime.getManifest().version) || "?"
+    });
     root.dataset.geniCollectorBusy = "0";
     return;
   }

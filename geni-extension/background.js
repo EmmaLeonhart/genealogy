@@ -41,6 +41,15 @@ async function put(patch) { await chrome.storage.local.set(patch); }
  * service worker is torn down whenever it is idle, which is most of the time while a ten-minute
  * search runs. Anything kept only in memory is gone by the time the answer arrives. */
 
+/* ⛔ **A HANDLER THAT THROWS BEFORE `sendResponse` IS INVISIBLE, and that cost a restart cycle.**
+ *
+ * The listener returns `true` to keep the channel open, so the caller's promise stays pending
+ * until the channel closes and then resolves `undefined` -- with no rejection and no
+ * `lastError`. From the content script that is indistinguishable from a dead service worker, a
+ * stale one, and a handler that simply has no case for the message. On 2026-09-09 all four were
+ * guessed at in turn while the real fault was a throw somewhere above the reply.
+ *
+ * So every path answers. An error comes back AS the answer rather than as silence. */
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   (async () => {
     const s = await state();
@@ -135,7 +144,13 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     /* A probe with no purpose but to answer. If `ping` comes back null the running service
      * worker predates this line, whatever the content scripts report -- they reload on a browser
      * restart and the worker does not, which is the distinction that cost a day. */
-    if (msg.type === "ping") { sendResponse({ pong: "1.4.2", keys: Object.keys(s).length }); return; }
+    /* ⛔ **REPORT THE MANIFEST VERSION, NOT A LITERAL.** This answered `"1.4.2"` -- a hardcoded
+     * string, like the one in `common.js` that claimed 1.6.4 for four releases and was believed.
+     * A probe whose job is to reveal a stale worker must not itself be a stale literal. */
+    if (msg.type === "ping") {
+      sendResponse({ pong: chrome.runtime.getManifest().version, keys: Object.keys(s).length });
+      return;
+    }
     if (msg.type === "status") { sendResponse(s); return; }
     if (msg.type === "start") {
       await put({ running: true, startedAt: new Date().toISOString() });
@@ -179,7 +194,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       return;
     }
     sendResponse(null);
-  })();
+  })().catch((e) => {
+    try {
+      sendResponse({ error: String((e && e.stack) || (e && e.message) || e),
+                     failedOn: msg && msg.type });
+    } catch (_) { /* the channel is already gone; nothing left to say */ }
+  });
   return true;
 });
 

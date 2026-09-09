@@ -33381,3 +33381,52 @@ after they were written — **131 rows, 112 under the Charlemagne anchor, 25 hit
 with `via` now recorded on 25 of the 112. That is beyond the strict sweep, which removes
 completed instructions rather than refreshing numbers, and is noted as such rather than folded in
 quietly.
+
+## 2026-09-09 — the background driver is finished; the service worker will not run
+
+Your instruction: write the whole background driver, kill Chrome to reload the extension, test it
+on an individual. The driver is written and the restart authority is recorded. The test does not
+pass, for a reason that is not in our code.
+
+**⛔ FIRST, A CORRECTION THAT INVALIDATES YESTERDAY'S HEADLINE FINDING.** I reported that the
+running extension was **1.6.4**, three versions behind disk, tagged it BLOCKED-ON-USER-ACTION in
+four status reports, wrote it into `queue.md`, and used it to explain away a live in-law defect as
+*"1.6.7 fixes it and nothing is running it"*. It was false. `common.js` line 249 set the version
+with a **hardcoded string literal** that nobody bumped:
+
+    document.documentElement.setAttribute("data-geni-collector", "1.6.4");
+
+Chrome loads the extension from `C:\Users\Emma\Documents\GitHub\geni\geni-extension` — the exact
+directory being edited — so 1.6.5, 1.6.6 and 1.6.7 **were running all along**. The stamp now
+reads `chrome.runtime.getManifest().version`, which cannot drift because it is the manifest, and
+the page reports **1.6.8**. `background.js`'s `ping` had the same bug, answering a hardcoded
+`"1.4.2"`; it reports the manifest too now. This is § *CHECK before raising an alarm*: the number
+that agreed with the story was the one to check hardest, and I never asked what wrote it.
+
+**The Miroslava in-law-as-blood defect therefore has no explanation.** It was attributed to 1.6.7
+not running. 1.6.7 was running. Her file and ledger row are still correct — classified by hand
+from the relation words — but the cause is open again.
+
+**What the driver was missing, now written.** The queue, tabs and pacing already existed;
+`endId` was **set and read by nothing**, so a walk that found its slot created the person and
+stopped without the export that is the whole point of climbing. On `added` the queue is thrown
+away and an export job for the new pid is enqueued. `seed_walk` now starts the climb. And
+`{type:"walk"}` is an entry point the agent can actually reach — the popup is browser chrome and
+`chrome-extension://` is refused, so the driver was **unreachable**, which is why it looked
+unimplemented when it was merely unstartable.
+
+**⛔ AND THE SERVICE WORKER DOES NOT RUN.** Measured rather than assumed:
+
+* the code is correct — loaded under a stubbed `chrome` in node, `ping` answers
+  `{"pong":"1.6.8"}` and `walk` answers `{"started":"374311720270013613"}`;
+* content scripts are current and report 1.6.8;
+* `chrome.runtime.sendMessage({type:"ping"})` from the content script resolves **undefined**,
+  with no rejection and no `lastError`, after **four** Chrome restarts including one with
+  `--load-extension` pointed at the directory;
+* a catch-all was added so every handler path answers even on a throw — still silence, so the
+  code is not executing at all rather than failing inside;
+* `Secure Preferences` has the extension at `location: 4` with `disable_reasons: []`, but
+  `state`, `manifest` and `install_time` all absent.
+
+Killing and relaunching Chrome works and is now standing authority — it reloaded the content
+scripts from 1.6.4's literal to a real 1.6.8. It does not start the service worker.
