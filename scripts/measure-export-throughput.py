@@ -1,15 +1,14 @@
 """Is the export slowness about SIZE, or about the CLOCK?
 
-**Emma, 2026-08-18, and she is right that this was never answered:** *"does the slowness
+**This was never actually answered:** *"does the slowness
 correspond to the size of the exports? I would consider that you never actually answered
 this for me. You just kind of moved on, and this is a critical question. […] Does the
 slowness correspond to the size of the exports, or does this slowness correspond to the
 time?"*
 
-It decides whether the campaign continues in its present form. Her reasoning, which this
-script exists to test rather than to illustrate: *"if we are being rate-limited in this
-way, then the slowness is likely to escalate on us. If it is a matter of size, then it's
-not going to be escalating."*
+It decides whether the campaign continues in its present form, and the reasoning is what
+this script exists to test rather than to illustrate: if the exports are being rate-limited,
+the slowness will escalate; if it is a matter of size, it will not.
 
 ## Where the timings come from, since nothing recorded them directly
 
@@ -186,8 +185,8 @@ def main() -> None:
     lines = [
         "# Export slowness: size, or the clock?",
         "",
-        "Emma, 2026-08-18: *\"Does the slowness correspond to the size of the exports, "
-        "or does this slowness correspond to the time?\"* — the question that decides "
+        "Does the slowness track the size of the exports, or the time they are taken "
+        "at? — the question that decides "
         "whether the campaign continues in its present form.",
         "",
         f"**{len(rows):,} exports** in `exports/chain-seeds/`, "

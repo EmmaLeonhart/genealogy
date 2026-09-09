@@ -2,12 +2,12 @@
 
     python scripts/census-zipper-evidence.py
 
-**Emma, 2026-08-25, after judging sixteen sampled merges:** *"All of these seemed like easy ones
-lol I'm not sure if you're only choosing ones you consider 'ambiguous'... all of these look easy
-and I'm confused what a hard one will even look like."*
+**Sixteen sampled merges were judged and every one of them was easy**, which raised the
+question of whether the sample was being filtered to unambiguous cases and what a hard one
+would even look like.
 
-The sample was drawn at random and then **sorted easiest-first**, because she had asked for that
-ordering. So sixteen easy rows in a row says nothing about the population -- which is exactly the
+The sample was drawn at random and then **sorted easiest-first**, that ordering having been
+asked for. So sixteen easy rows in a row says nothing about the population -- which is exactly the
 thing this file measures instead of asserting.
 
 For every pair in `reports/zipper-pairs.tsv`, count what a human would have to go on:

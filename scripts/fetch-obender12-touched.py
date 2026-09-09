@@ -2,10 +2,9 @@
 
     python scripts/fetch-obender12-touched.py
 
-**Emma's control, 2026-08-30**, after the day in which one editor saw the same mistake from
+**The control set 2026-08-30**, after a day in which one editor saw the same mistake from
 this account repeatedly: *any item `OBender12` has touched is locked — our QuickStatements may
-not edit it.* Her decision of 2026-08-30 is where the reasoning
-sits, and the short form of it is that the live risk is not the errors but **an editor holding
+not edit it.* The reasoning behind it, in short, is that the live risk is not the errors but **an editor holding
 a recent memory of the account**. Recognition decays, but more slowly than duplicates clear, so
 the only variable worth controlling is how many more times that one person sees us.
 
