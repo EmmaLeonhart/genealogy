@@ -33313,3 +33313,51 @@ version of it was applied in prose here.
 
 18 relatives, fetched whole and checked rather than assumed truncated; `unlinked` records the 5
 the prose names that carry no `href`.
+
+## 2026-09-09 — the walk was allocated to the agent, and that was the point of failure
+
+You watched the first `job.create` run and found the defect in it before I did. Both halves of
+the switch worked: **NN `6000000227675436876` was created** as the mother of Hans Jørgensen
+Hiuler, and a Forest export from her came back at **5,000 people, 1,509 families**, filed to
+`exports/hiuler/export-Forest-6000000227675436876.ged`. What was wrong was everything between.
+
+**⛔ THE QUEUE WAS LEAVING THE EXTENSION.** `individual.js` did
+`out.walk_queue = seed.enqueue; return out;` — handing the walk to the agent. Your words:
+*"the extension's supposed to do all of the work on its own. You should never be able to see the
+queue at all."*
+
+**And the agent then lost it, exactly as that invites.** Given `[mother Malene, father Hans]` it
+took `enqueue[0]` and discarded the rest, then did the same at every level — so each new
+`enqueue` REPLACED the queue instead of extending it. Not a queue walk; a single-line climb.
+Hans, the father, was second in the very first queue and had an open mother slot **one step up**.
+He was thrown away at step one, and the climb went eight generations up a Danish line recorded
+continuously to 1561.
+
+**Your reading of how it got there was right, and the history says so.** `runSeed` has no loop,
+and nothing under `geni-extension/content/` has ever navigated — no `location.href` assignment
+anywhere. `871b3968`, 2026-09-08, is where `walk_queue` entered: `runIndividual` had been
+reporting `seed_failed` on the first `both_present`, which is a genuine bug, and the fix stopped
+at handing the queue out rather than implementing the traversal. *"You tried to make this happen,
+then it failed, and then you decided to make it somewhat agentic without telling me, and then
+created a point of failure."*
+
+**The split, as you specified it:**
+
+    background.js   owns the QUEUE, opens and navigates the TABS, paces with chrome.alarms
+    content/walk.js does ONE person on the page it is on and returns a verdict
+    the agent       opens a page from the repo's list and calls the extension. Nothing else.
+
+`content/walk.js` is new and holds `stepHere()` only — no queue, no navigation. `individual.js`
+now returns `walk_from: <one id>` instead of a list. Manifest at **1.6.8**.
+
+**Two of your constraints shaped where the queue lives.** You chose tab navigation over
+`fetch()`, and raised that an inactive tab has odd waiting behaviour. `background.js` already
+answers both: it opens tabs with `chrome.tabs.create({ active: false })` and paces with
+`chrome.alarms`, carrying a comment about the exact hazard — the worker is torn down and *"a
+pending `setTimeout` dies with it"*. An inactive tab throttles timers the same way, which is why
+the waiting belongs there and not in a content script.
+
+**⛔ NOT DONE: the background driver itself.** The queue, the tab loop and the parallel waiting
+on path searches and exports are specified above and not yet written. And **none of this has
+executed** — the running Chrome is still on **1.6.4**, so 1.6.5 through 1.6.8 are all on disk
+unrun until the extension is reloaded.

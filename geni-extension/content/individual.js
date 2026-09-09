@@ -181,9 +181,21 @@ GC.runIndividual = async function (job) {
   const seed = await GC.runSeed({ geni_id: id });
   out.seed = seed;
   if (seed.state === "both_present" || seed.state === "enqueued") {
+    /* ⛔ **THE QUEUE DOES NOT LEAVE THE EXTENSION.** Emma, 2026-09-09: *"the extension's
+     * supposed to do all of the work on its own. You should never be able to see the queue at
+     * all."*
+     *
+     * This used to set `out.walk_queue = seed.enqueue` and return, which handed the walk to the
+     * agent -- and on the first real run the agent took `enqueue[0]` each step and discarded the
+     * rest, climbing eight generations up one line while the open slot sat second in the very
+     * first queue. `content/walk.js` has the full account.
+     *
+     * The walk is the BACKGROUND's job now: it owns the queue, opens the tabs and paces itself
+     * with `chrome.alarms`, calling `GC.walk.stepHere` once per page. All this returns is the
+     * fact that a walk is needed and where it starts -- one id, not a list to be managed. */
     out.state = "seed_walk";
-    out.walk_queue = seed.enqueue || [];
-    out.export_decision += " -- walk up: " + (out.walk_queue.join(", ") || "(nothing enqueued)");
+    out.walk_from = id;
+    out.export_decision += " -- walk needed, from " + id;
     return out;
   }
   if (seed.state !== "added") { out.state = "seed_failed"; return out; }
