@@ -2,21 +2,19 @@
 
     python scripts/build-garborg-day.py
 
-**Emma, 2026-08-24, after running yesterday's file:** *"I only ran some of the quick
-statements because many of them required links that couldn't exist... The siblings all
-being connected to each other: they should be connected to each other, but they
-couldn't be connected to each other without things that required their QIDs, which we
-had just created. This means this is going to be the practical limitation of what our
-quick statements can do. With every day, we are kind of going through a full run of
-what we can do on the frontier like this."*
+**Established 2026-08-24, after running the previous day's file.** Only part of it could
+run: many statements needed links that could not exist yet — siblings that should be
+connected to each other but could not be, because the connection needed QIDs the same batch
+had just created. That is the practical limit of what a QuickStatements batch can do, and
+each day is one full run of what the frontier allows.
 
 So the rule is: **a statement goes in only if both ends already have a QID.** Nothing
 deferred, nothing commented out, nothing that fails. What could not run today becomes
 tomorrow's batch, because tomorrow those items exist.
 
-`reports/garborg-qids.tsv` is the ledger of who has one. It is filled from **Emma's
-Wikidata contributions**, not from a bulk download — her instruction: *"You should be
-looking at my contributions to see the new ones I've created."* Her account is 日巫女.
+`reports/garborg-qids.tsv` is the ledger of who has one. It is filled from **the account's
+Wikidata contributions**, not from a bulk download: the contributions are what say which
+items have just been created. The account is 日巫女.
 
 Each day therefore does three things, all runnable:
 
@@ -26,9 +24,8 @@ Each day therefore does three things, all runnable:
 3. **Link the new people to anything that already exists** — parents, spouses,
    siblings — but never to each other, because they are being minted right now.
 
-Labels come with `ja` and `zh` from `reports/garborg-name-transliterations.tsv`, per
-Emma 2026-08-24: *"we should also be adding their names in languages that are not
-English, or at least in Japanese... and Chinese."*
+Labels come with `ja` and `zh` from `reports/garborg-name-transliterations.tsv`: names go
+in languages other than English, Japanese and Chinese at a minimum (2026-08-24).
 
 Writes `reports/wikidata-garborg-day.txt` and `reports/garborg-carry-forward.tsv`.
 """
@@ -73,8 +70,8 @@ existing_state = _load_gaps()
 NEWLINE = chr(10)
 ROOT = Path(__file__).resolve().parent.parent
 
-#: **Emma, 2026-08-25:** *"sibling relationships are too numerous to send at once.
-#: We limit sibling relationship adding to 10 quickstatements a day."* This builder was
+#: **Ruled 2026-08-25:** sibling relationships are too numerous to send at once, so sibling
+#: adding is limited per day. This builder was
 #: emitting **162** `P3373` in one file. Siblings grow as the SQUARE of a family -- nine
 #: children is 72 statements by itself -- while parents grow linearly, so a batch that looks
 #: balanced by people is mostly sibling links by statement. The cap is per DAY across every
@@ -85,9 +82,9 @@ _siblings_emitted = []
 
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 
-#: **The only two people whose CJK labels were not written by us.** Emma, 2026-08-30:
-#: *"Arne Garborg and Johannes Bureus are the only people with cjk labels not added by us. So
-#: only those ones are to be taken as gospel."*
+#: **The only two people whose CJK labels were not written by us.** Ruled 2026-08-30: Arne
+#: Garborg and Johannes Bureus are the only ledger people whose CJK labels came from elsewhere,
+#: so only those two are taken as gospel.
 #:
 #: Checked live the same day, and both readings are visibly not ours -- our own transliterator
 #: would never produce either:
@@ -100,15 +97,14 @@ SEX = {"M": "Q6581097", "F": "Q6581072"}
 #: ledger item came from this pipeline, which is what makes redoing them safe.
 CJK_LABELS_NOT_OURS = {"Q467497", "Q633094"}
 
-#: **The Chinese overwrite is ON because the reason not to do it was fixed.** Emma,
-#: 2026-08-30: *"is 塞恩 right for sen? Sounds like you made coda -n its own character instead
-#: of merging them which sounds sussy for Chinese."* It was not right, and she named the cause:
-#: `translit_no` gave every coda consonant its own character, so a syllable-final nasal came
-#: out as a separate 恩 -- `sen` as 塞 + 恩 rather than 森. **1,701 rows carried the shape and
-#: 1,201 a standalone 恩.**
+#: **The Chinese overwrite is ON because the reason not to do it was fixed.** Queried
+#: 2026-08-30: was 塞恩 right for `sen`, or had the coda `-n` been given its own character
+#: instead of being merged? It had. `translit_no` gave every coda consonant its own character,
+#: so a syllable-final nasal came out as a separate 恩 -- `sen` as 塞 + 恩 rather than 森.
+#: **1,701 rows carried the shape and 1,201 a standalone 恩.**
 #:
-#: Her instruction on being shown a proposal to gate the Chinese half instead:
-#: *"don't gate it, fucking fix it and then do the overwrite."* `translit_no.NASAL_FINAL` is
+#: The ruling on a proposal to gate the Chinese half instead was to fix it rather than gate it,
+#: and then do the overwrite. `translit_no.NASAL_FINAL` is
 #: the fix; agreement with the rows the engine did not write went **11.7% -> 46.5%**, and
 #: 1,078 cached rows were re-derived by `refresh-rule-transliterations.py`.
 #:
@@ -121,11 +117,11 @@ ZH_OVERWRITE = True
 #: positives: the unmatched item is a NAMED OTHER PERSON, which the guard cannot see because it
 #: compares QIDs and not labels.
 #:
-#: Emma released both on 2026-08-26 when they were put to her.
+#: Both were released by hand on 2026-08-26 when they were put up for a decision.
 RELEASED_FROM_DUPLICATE_GUARD = {
     # Ramborg Knutsdotter Lejon. Her parent `Q5915800` has unmatched children `Q4955715`
-    # *Ingegerd Knutsdotter* and `Q16595443` *Katarina Knutsdotter* -- her sisters, both named,
-    # neither of them Ramborg.
+    # *Ingegerd Knutsdotter* and `Q16595443` *Katarina Knutsdotter* -- Ramborg's sisters, both
+    # named, neither of them Ramborg.
     "6000000004870648136": "the two unmatched children are her named sisters",
     # Algot Bryniolfsson. `Q101247444` has unmatched child `Q101247439` *NN Brynolvsdotter* --
     # a daughter, where Algot is a son. The patronymic settles it.
@@ -146,46 +142,44 @@ def qs(text):
 def ledger():
     """Geni id -> QID for everybody we can already point at an item.
 
-    **Her HAND identifications are folded in, and they have to be.**
-    `reports/manual-identifications.csv` is where a correspondence she recognised by hand lives,
+    **The HAND identifications are folded in, and they have to be.**
+    `reports/manual-identifications.csv` is where a correspondence recognised by hand lives,
     and it is the only thing that knows about an item carrying no `P2600` yet -- which is
-    exactly the shape of Emma's own. Without it
-    the spine walk reached step 1 of `paths/bergitte-to-emma.tsv`, which is HER, found her
-    in neither `garborg-qids.tsv` nor `p2600-all.tsv`, and emitted a `CREATE` that would
-    have minted her a SECOND item. `CLAUDE.md` says it plainly: she *"has her own item and
-    needs an id rather than a creation"*.
+    exactly the shape of the account owner's own item. Without it the spine walk reached step 1
+    of `paths/bergitte-to-emma.tsv`, found that person in neither `garborg-qids.tsv` nor
+    `p2600-all.tsv`, and emitted a `CREATE` that would have minted a SECOND item beside the
+    existing one. That person has an item already and needs an id added, not a creation.
     """
     out = {}
     with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             out[row["geni_id"]] = row["qid"]
 
-    # **Emma's own identity confirmations, and they have to be READ, not appended once.**
+    # **The hand identity confirmations have to be READ, not appended once.**
     #
-    # On 2026-08-31 she judged 13 blocked creations to be the same person as an existing
-    # Wikidata item, one `AskUserQuestion` each, and asked: *"these quickstatements are gonna be
-    # permanent right? Like the geni things aren't a random thing you added that will disappear
-    # next run right"*. They were exactly that — appended to `reports/wikidata-garborg-day.txt`,
-    # which this script rewrites from scratch every run. The next regeneration would have
-    # silently dropped all 13 and gone back to proposing the creations she had just ruled out.
+    # On 2026-08-31 thirteen blocked creations were judged to be the same person as an existing
+    # Wikidata item, one `AskUserQuestion` each. Those verdicts were appended to
+    # `reports/wikidata-garborg-day.txt`, which this script rewrites from scratch every run, so
+    # the next regeneration would have dropped all 13 and gone back to proposing the creations
+    # that had just been ruled out. A verdict has to be permanent, not a thing that disappears
+    # on the next run.
     #
     # `reports/emma-judgments.tsv` is the durable record — `CLAUDE.md` § *The chain of
-    # provenance* already calls it the place her hand verdicts live, and says they are nodes in
+    # provenance* calls it the place the hand verdicts live, and says they are nodes in
     # the provenance graph rather than a side note. Folding it in here makes a confirmation
     # permanent in the only way that counts: the person is never created again, the item becomes
     # something statements can point AT, and it anchors its neighbours.
     try:
         # **`reports/manual-identifications.csv` is the file now, and it is a superset.**
-        # Emma, 2026-09-01: *"we need to have the two identifications I did, and all other things
-        # as being from a manual identification csv"*, and *"the right verdicts need to be
-        # actually implemented"*.
+        # Ruled 2026-09-01: every hand identification comes from one manual-identification CSV,
+        # and the `RIGHT` verdicts have to be implemented too.
         #
         # This used to read `emma-judgments.tsv` and accept only `SAME`, which left **17 `RIGHT`
         # verdicts inert** -- all from the 2026-08-25 `zipper-sample` batch, all carrying both
-        # ids, every one an affirmation she made that nothing acted on. `RIGHT` is the older word
-        # from before the deck settled on `SAME`; the fold never learned it.
+        # ids, every one an affirmation nothing acted on. `RIGHT` is the older word from before
+        # the deck settled on `SAME`; the fold never learned it.
         #
-        # `build-manual-identifications.py` unions both verdicts with the pairs she gives
+        # `build-manual-identifications.py` unions both verdicts with the pairs given
         # directly in conversation, so there is one file to read and one place to append.
         manual = ROOT / "reports" / "manual-identifications.csv"
         if manual.exists():
@@ -205,7 +199,7 @@ def ledger():
                         out.setdefault(g, q)
     except Exception as exc:                                        # noqa: BLE001
         print(f"WARNING: emma-judgments.tsv not folded into the ledger ({exc}) -- "
-              f"a person she has confirmed could be created a second time")
+              f"a person already confirmed by hand could be created a second time")
     return out
 
 
@@ -213,10 +207,10 @@ def translit():
     """The token table. **A CURATED row beats a rule-minted one, whatever the file order.**
 
     The file holds two kinds of row and only the `note` column tells them apart: readings
-    somebody attested or Emma chose, and readings `_render_token` invented. This used to be a
+    somebody attested or chose by hand, and readings `_render_token` invented. This used to be a
     plain last-wins read, so a rule-minted row sitting later in the file silently overrode a
     curated one — which is exactly what happened on 2026-09-04, when `d.y.` reverted to `ドイ`
-    and `Jr.` to `イル` hours after she had chosen `ジュニア`. The writer now keeps one row per
+    and `Jr.` to `イル` hours after `ジュニア` had been chosen. The writer now keeps one row per
     token, and this is the second half of that: even a file that somehow carries both, the
     curated one wins.
     """
@@ -382,12 +376,12 @@ def describe_all(geni_id, facts, father, mother, labels, table,
     #: relative"*, and a child is one. The `WORDS` table already carried `parent_of`,
     #: `spouse_of` and `sibling_of` with the right word per sex and the right preposition per
     #: direction (`datter af` but `mor til`); nothing consulted them.
-    #: **SPOUSE BEATS CHILD.** Emma, 2026-09-07: *"Parents are the most significant identifier
-    #: of a person, then spouse, then child."* This tuple had child in second place, so it
+    #: **SPOUSE BEATS CHILD.** Ruled 2026-09-07: parents are the most significant identifier of
+    #: a person, then spouse, then child. This tuple had child in second place, so it
     #: disagreed with `build-nn-label-batch.nearest`, which has had parent -> spouse -> child
-    #: since it was written -- two emitters, one model, and they had drifted apart. Her
-    #: 2026-08-25 reliability ranking says the same thing from the other side: *"parents are
-    #: always most reliable"*, then spouses, then children.
+    #: since it was written -- two emitters, one model, and they had drifted apart. The
+    #: 2026-08-25 reliability ranking says the same thing from the other side: parents are
+    #: always the most reliable, then spouses, then children.
     #:
     #: **9,256 unnamed people are described by a different relative because of it** -- those
     #: with no named parent but both a named spouse and a named child. Reading them settles
@@ -422,7 +416,7 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                       "parent_of": {"M": "父", "F": "母", "": "父母"},
                       "spouse_of": {"M": "夫", "F": "妻", "": "配偶"},
                       "sibling_of": {"M": "兄弟", "F": "姐妹", "": "同胞"}}
-                # **Korean too.** Emma, 2026-09-01: *"cjk includes korean"*. Without this the
+                # **Korean too**, ruled 2026-09-01: CJK includes Korean. Without this the
                 # NN/relationship people were the one population still leaving Wikidata with two
                 # CJK labels out of three, which is what `queue.md` § *ABSOLUTE PREREQUISITE*
                 # exists to stop. Korean takes the genitive 의 and the relationship word after
@@ -464,7 +458,7 @@ def read_suppressed():
     **The edit war, 2026-08-30.** `OBender12` merged our duplicate name items and stripped the
     `P734` links pointing at the losers. The next build put them straight back, because the
     generator emits a name statement when the item does not have one — and his deletion is
-    exactly what "does not have one" looks like. Emma had to undo her own undos and then make
+    exactly what "does not have one" looks like. The undos then had to be undone by hand, with
     cosmetic edits to cover the trail.
 
     **It is not statefulness, it is the absence of it.** Nothing recorded that a human had
@@ -478,21 +472,22 @@ def read_suppressed():
 
     Built by `scripts/refresh-suppressed-statements.py`, which reads the contributions of
     editors *other than* the account and keeps their `wbremoveclaims` edits on ledger items.
-    **A removal by Emma herself is not in it** — she runs the batches, and her removing
-    something the batch re-adds is a conversation with her own pipeline, not an edit war.
+    **A removal by the account itself is not in it** — the account runs the batches, and it
+    removing something the batch re-adds is a conversation with its own pipeline, not an edit
+    war.
 
     **This sits ALONGSIDE `OBENDER_HOLD_EXPIRES`; neither supersedes the other.** The queue
     asked which, and they answer different questions:
 
     * the hold is **temporary, per ITEM, and one editor** — it buys time by controlling how
-      many further times that particular person sees the account, because *"recognition
-      decays but at a slower rate"* than the errors do. It expires on its own, 2026-09-30.
+      many further times that particular person sees the account: recognition decays more
+      slowly than the errors do. It expires on its own, 2026-09-30.
     * this is **permanent, per STATEMENT, and every editor** — it fixes the mechanism that
       caused the war rather than the exposure to one witness.
 
     If the hold superseded this, the war would simply restart on 2026-10-01 when it lapses.
     If this superseded the hold, the mechanism would be fixed while that editor kept seeing
-    the account in their batch through the month she wanted quiet. Both, therefore.
+    the account in their batch through the month meant to be quiet. Both, therefore.
     """
     out = set()
     path = ROOT / "reports" / "suppressed-statements.tsv"
@@ -510,9 +505,9 @@ def read_suppressed():
 def read_live_labels():
     """`{(qid, lang): label}` -- what each ledger item's label actually SAYS, live.
 
-    Emma, 2026-08-30: *"Every single label gets redone and if they disagree then they go onto
-    the quickstatements that are generated."* A disagreement needs the value, and
-    `live_state()` gives only which languages exist, from a store that predates her items.
+    Ruled 2026-08-30: every label gets redone, and where they disagree the disagreement goes
+    into the generated QuickStatements. A disagreement needs the value, and
+    `live_state()` gives only which languages exist, from a store that predates these items.
 
     Written by `refresh-live-values.py` off the same fetch as the statements. A missing file
     yields an empty map, which makes every label look absent -- so callers must treat "no live
@@ -533,10 +528,10 @@ def read_live_labels():
 def live_state():
     """`{qid: (label languages, properties)}` from the 2026-08-24 live read.
 
-    Ground truth, and it outranks the store: the store was downloaded before Emma made
-    most of these items, and the fallback in `absent` assumes an item outside the store
-    was made by our own batch and so carries no name statements. She edits by hand, so
-    that assumption is wrong exactly where it matters most.
+    Ground truth, and it outranks the store: the store was downloaded before most of these
+    items were made, and the fallback in `absent` assumes an item outside the store was made by
+    our own batch and so carries no name statements. Items are edited by hand, so that
+    assumption is wrong exactly where it matters most.
 
     A row marked `no` was **not** re-read and is deliberately omitted from the result,
     so it falls through to the store and then to the assumption rather than being
@@ -576,10 +571,9 @@ def live_state():
 FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 
 
-#: How many manual `P2600` statements go out per run. Her number, 2026-09-01: *"the pipeline
-#: generates 10 quickstatements adding the geni id to the individuals at the beginning of each
-#: generation. The 10 quickstatements are 10 of the ones from the csv that are found not to be
-#: present in the thing."*
+#: How many manual `P2600` statements go out per run. Specified 2026-09-01: the pipeline
+#: generates a fixed number of QuickStatements adding the Geni id to the individuals at the
+#: start of each generation, taken from the CSV rows found not to be present already.
 MANUAL_P2600_PER_RUN = 20
 
 
@@ -588,7 +582,7 @@ def manual_p2600_lines(priority_qids=()):
 
     **The ordering defect, found 2026-09-03.** This picked the first ten missing pairs in file
     order and had no idea which items the run was about to label. So `Q138582215` and
-    `Q29246906` -- both identified by Emma herself -- received `P735`, `P5056` and `ja`/`zh`/`ko`
+    `Q29246906` -- both identified by hand -- received `P735`, `P5056` and `ja`/`zh`/`ko`
     labels from the daily batch while their Geni id waited behind 7,000 others, and
     `Q138582215` had no `P2600` line generated anywhere at all.
 
@@ -599,17 +593,17 @@ def manual_p2600_lines(priority_qids=()):
     """
     """Up to ten `Q… P2600 "geni"` lines for identifications Wikidata does not yet hold.
 
-    **The candidates come from `reports/manual-identifications.csv`** -- her hand verdicts,
-    `SAME` and `RIGHT` both, plus the pairs she gives in conversation.
+    **The candidates come from `reports/manual-identifications.csv`** -- the hand verdicts,
+    `SAME` and `RIGHT` both, plus the pairs given in conversation.
 
     **"found not to be present" is checked LIVE**, in one batched request, not against
-    `out/wikidata/p2600-all.tsv`. That file was last refreshed 2026-08-30 and she adds `P2600`
-    statements by hand continuously; a stale check would keep re-proposing pairs she has already
-    made. `CLAUDE.md` § *The tree and the items are edited BY HAND* is explicit that a snapshot
+    `out/wikidata/p2600-all.tsv`. That file was last refreshed 2026-08-30 while `P2600`
+    statements are added by hand continuously; a stale check would keep re-proposing pairs
+    already made. `CLAUDE.md` § *The tree and the items are edited BY HAND* is explicit that a snapshot
     goes stale in minutes.
 
-    **No reference.** Emma, 2026-08-31: *"geni ids do not get sources you retard"* -- an `S2600`
-    citing the very id being added is circular.
+    **No reference**, ruled 2026-08-31: Geni ids do not get sources, because an `S2600` citing
+    the very id being added is circular.
 
     Returns `(lines, checked, already_held)`.
     """
@@ -639,7 +633,7 @@ def manual_p2600_lines(priority_qids=()):
             data = _json.loads(_ur.urlopen(rq, timeout=90).read().decode("utf-8"))
         except Exception as exc:                                    # noqa: BLE001
             # **Fail CLOSED here, unlike the pipeline gate.** Unknown means "might already be
-            # there", and re-adding a statement Wikidata holds is noise on her watchlist.
+            # there", and re-adding a statement Wikidata holds is noise on the watchlist.
             print(f"WARNING: manual P2600 check could not reach Wikidata ({exc}); "
                   f"emitting none this run")
             return [], 0, 0
@@ -660,7 +654,7 @@ def manual_p2600_lines(priority_qids=()):
     # real fix is `NAME_ADD_CAP`, which stops the run touching 1,269 items in the first place.
     for q, g, n in lead[:P2600_LEAD_CAP] + rest[:MANUAL_P2600_PER_RUN]:
         if n:
-            lines.append(f"#   {q} {n}: P2600 from her own identification")
+            lines.append(f"#   {q} {n}: P2600 from a hand identification")
         lines.append(f'{q}\tP2600\t"{g}"')
     return lines, len(want), len(want) - len(missing)
 
@@ -709,25 +703,25 @@ def read_tree():
 
 
 
-#: The path whose CJK labels Emma asked for by name on 2026-09-07 — *"the entire line from
-#: me/Arne to Charlemagne needs cjk labels"*, and *"Yes, next batch."* Read as DATA from the
+#: The path whose CJK labels were asked for by name on 2026-09-07: the entire line from Arne to
+#: Charlemagne needs CJK labels, in the next batch. Read as DATA from the
 #: file the repo already holds; this is not a resurrection of the spine machinery removed on
 #: 2026-09-02, and nothing else in the run consults it.
 CJK_PRIORITY_PATH = "paths/charlemagne-to-arne-garborg.tsv"
 
-#: **The QIDs Emma handed over directly, which outrank anything derived.** She sent photographs
-#: of nine items on 2026-09-07 and then said *"I gave the qids lol in the photos"* — and she was
-#: right that reading them beats deriving a set: `Q141205937` **Ragnhild Eyvindsdotter Byre** has
-#: no `ja`, `zh` or `ko` at all and is **not on the Charlemagne path**, so `CJK_PRIORITY_PATH`
-#: misses her entirely. A file, not a literal, so the next one she names is one line.
+#: **The QIDs handed over directly, which outrank anything derived.** Nine items were sent as
+#: photographs on 2026-09-07 with their QIDs, and reading those beats deriving a set:
+#: `Q141205937` **Ragnhild Eyvindsdotter Byre** has no `ja`, `zh` or `ko` at all and is **not on
+#: the Charlemagne path**, so `CJK_PRIORITY_PATH` misses her entirely. A file, not a literal, so
+#: the next one named is one line.
 CJK_PRIORITY_FILE = "reports/cjk-priority-qids.tsv"
 
 
 def _cjk_priority_qids(our_items):
     """QIDs of the people on `CJK_PRIORITY_PATH`, for the label cap to take first.
 
-    **Newest-QID-first puts this path LAST**, which is her own ordering working against her own
-    request: its people are `Q3044` Charlemagne and `Q43974` Louis the Pious, the oldest items
+    **Newest-QID-first puts this path LAST**, which is the standing ordering working against
+    this request: its people are `Q3044` Charlemagne and `Q43974` Louis the Pious, the oldest items
     in the ledger, and with 963 items waiting behind a cap of 30 "next batch" would have meant
     about a month. A missing file yields an empty set and the ordering is unchanged.
     """
@@ -748,10 +742,9 @@ def _cjk_priority_qids(our_items):
 def _missing_cjk_labels(our_items, labels, table, live_labels):
     """`Lja`/`Lzh`/`Lko` for a ledger item whose LATIN label is already right and that has none.
 
-    **Emma, 2026-09-07**, on the whole Arne → Charlemagne line reading with no Japanese label at
-    all: *"the entire line from me/Arne to Charlemagne needs cjk labels and idk if that's
-    scheduled. We need a lot of ones that are missing."* It was not scheduled. Asked whether to
-    ship the ones that render cleanly: *"Yes, next batch."*
+    **Raised 2026-09-07**, on the whole Arne → Charlemagne line reading with no Japanese label
+    at all: the entire line needs CJK labels, and a lot of them are missing. It was not
+    scheduled. The ones that render cleanly ship in the next batch.
 
     **Why nothing reached them.** `_label_corrections` emits CJK only as a SIDE EFFECT of a
     `mul`/`en` correction — its two grounds are an abbreviation expansion and the birth-name
@@ -760,7 +753,7 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
     it at all**, and the whole 1,717-line file carried 48 `Lja` lines.
 
     **PURELY ADDITIVE. It never rewrites a label that exists.** A language is emitted only where
-    `live_labels` has no value for it, so this cannot touch her hand-edits and cannot restate
+    `live_labels` has no value for it, so this cannot touch a hand-edit and cannot restate
     § *The purpose is to ADD to Wikidata, not to correct it*. A disagreement with an existing
     CJK label is a different question and stays with `_label_corrections`.
 
@@ -783,11 +776,11 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
         # **⛔ NEVER DERIVE CJK FROM A LATIN LABEL THAT DISAGREES WITH THE LIVE ONE.** The CJK
         # forms are a transliteration of the primary label, so emitting them while the two
         # disagree writes our disagreement into three more languages at once — and the
-        # disagreement is often OURS. Of the five items Emma photographed twice, three are
+        # disagreement is often OURS. Of the five items photographed twice, three are
         # blocked by exactly this:
         #
         #   Q6197518   ours `Svantepolk Knutsson Knutsson Skarsholmsätten` against live
-        #              `Svantepolk Knutsson` — the duplicated patronymic she reported herself
+        #              `Svantepolk Knutsson` — the duplicated patronymic reported by hand
         #   Q19842232  ours `Algot Bryniolfsson` against live `Algot Brynolfsson`
         #   Q141205942 ours `Tore II Gardson Gard` against live `Tore Gardsson`
         #
@@ -800,7 +793,7 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
             continue
         value = {"ja": ja, "zh": zh, "ko": ko}
         # **A WRONG CJK label is the other half of this, and the additive rule alone skips it.**
-        # Three of the nine items Emma photographed on 2026-09-07 -- `Q141336505` Carl August
+        # Three of the nine items photographed on 2026-09-07 -- `Q141336505` Carl August
         # Tigerstedt, `Q141313961` Helena Maria Linnerhielm and `Q141337174` NN Torbjørnsdotter
         # Skofteland -- HOLD all three languages and hold them wrong, built before the `-dt`
         # fix, before `ogift` came out of the label, and from a child-based description. An
@@ -808,7 +801,7 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
         #
         # Overwriting a CJK value is what `_label_corrections` already does whenever a Latin
         # correction fires; this reaches the same items when the Latin label needs nothing.
-        # `CJK_LABELS_NOT_OURS` is the guard for a value she has set by hand.
+        # `CJK_LABELS_NOT_OURS` is the guard for a value set by hand.
         todo = [c for c in ("ja", "zh", "ko")
                 if (live_labels.get((qid, c)) or "") != value[c]]
         if not todo:
@@ -826,8 +819,8 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
         out = ["", "# " + "-" * 72,
                "# MISSING CJK LABELS -- ledger items whose Latin label is already right and",
                "#   that carry no ja/zh/ko. Purely additive: a language already holding a",
-               "#   value is left alone. Emma, 2026-09-07, on the Charlemagne line: 'we need",
-               "#   a lot of ones that are missing'.",
+               "#   value is left alone. Raised 2026-09-07 on the Charlemagne line, where a",
+               "#   lot of them were missing.",
                "# " + "-" * 72] + out
     return out
 
@@ -863,7 +856,7 @@ def _birth_forms(label, alternates):
     return out
 
 
-#: Her hand-dictated label applications. See `_hand_label_applications`.
+#: The hand-dictated label applications. See `_hand_label_applications`.
 LABEL_APPLICATIONS_FILE = ROOT / "reports" / "label-applications.tsv"
 
 
@@ -907,8 +900,8 @@ def hand_label_applications(path=None):
                 continue
             if '"' in value:
                 # QuickStatements V1 cannot escape a double quote inside a string, and `qs()`
-                # would silently strip it -- which would emit a DIFFERENT name from the one she
-                # wrote. Refusing is the only honest option.
+                # would silently strip it -- which would emit a DIFFERENT name from the one
+                # that was written. Refusing is the only honest option.
                 print(f"REFUSING {qid} {kind}{lang}: the value contains a double quote, which "
                       f"QuickStatements V1 cannot carry")
                 continue
@@ -917,33 +910,32 @@ def hand_label_applications(path=None):
 
 
 def _hand_label_applications(live_labels=None, path=None):
-    """The labels and aliases EMMA DICTATES, straight into the batch. Verbatim, never derived.
+    """The labels and aliases DICTATED BY HAND, straight into the batch. Verbatim, never derived.
 
-    **Emma, 2026-09-08, giving the first four and saying what they are:**
+    **The first four, given 2026-09-08:**
 
         Q140568870|Lzh|"李命玥"
         Q140568870|Lja|"エマ・レオンハート"
         Q140568870|Aja|"閻魔獅心"
         Q140568870|Lko|"엠마 레온하트"
 
-    *"And so basically this will be one of many labels that gets applied over time through the
-    label correction systems ... here is one I am specifically proposing here to be wired into
-    the quickstatement generation and I think we probably have it but not sure if that is how we
-    did label corrections."*
+    They are the first of many labels to be applied over time through the label-correction
+    system, wired into the QuickStatements generation.
 
-    **We did not have it, and the file that sounds like it is a different thing.**
+    **The channel did not exist, and the file that sounds like it is a different thing.**
     `reports/label-corrections.tsv` is keyed on the **Geni id**, carries **one Latin label**, and
     is consumed by `derive-labels.py` at DERIVATION -- it corrects what our tree thinks a person
     is called, and reaches Wikidata only by whatever the ordinary emitters then make of it. It
     cannot express *this QID, this language, this exact string*, and it cannot express an alias
     at all. `_label_corrections` next to this is every ground we DERIVE -- an abbreviation we
     expanded, the birth-name flip, a description marker, a generation suffix -- and each is
-    computed from our own data by construction. Neither is a channel for a value she supplies.
+    computed from our own data by construction. Neither is a channel for a hand-supplied value.
 
     **So this is that channel, and its whole content is that it does not think.** No
-    transliteration, no consensus vote, no `label_in`, no title rule. The value she writes is the
-    value emitted. `CLAUDE.md` § *WIKIDATA'S LABEL BEATS OURS* protects an item somebody else
-    labelled from OUR derived proposal; a string she typed is not that -- she is the editor.
+    transliteration, no consensus vote, no `label_in`, no title rule. The value written by hand is
+    the value emitted. `CLAUDE.md` § *WIKIDATA'S LABEL BEATS OURS* protects an item somebody else
+    labelled from OUR derived proposal; a hand-typed string is not that -- it comes from the
+    editor running the batch.
 
     **Idempotence has two halves and they are different.**
 
@@ -955,11 +947,11 @@ def _hand_label_applications(live_labels=None, path=None):
       `reports/label-edits-emitted.tsv`, keyed on `(qid, slot, value)` -- is what stops it
       repeating. Re-adding an alias Wikidata already holds is a no-op anyway.
 
-    **It queues like any other label edit.** Emma, 2026-09-08: *"it should be like regular label
-    applications but just a stronger level of it. not taking priority doing just like anything
-    else."* The first version put these QIDs in `_cap_label_edits(priority=...)`; that is not
+    **It queues like any other label edit.** Ruled 2026-09-08: these are like regular label
+    applications but a stronger level of them — not taking priority, going out like anything
+    else. The first version put these QIDs in `_cap_label_edits(priority=...)`; that is not
     what stronger means. **Stronger is that it WINS ITS SLOT** — `_without_hand_covered` drops
-    the derived edit for a slot she sets — and when it goes out is the cap's business.
+    the derived edit for a slot set by hand — and when it goes out is the cap's business.
     """
     rows = hand_label_applications(path)
     if not rows:
@@ -996,13 +988,13 @@ def _hand_covered_slots(hand_lines):
 def _without_hand_covered(derived, covered):
     """Drop a DERIVED label edit that a hand application already sets for the same slot.
 
-    ⛔ **WITHOUT THIS, HER VALUE LOSES AND THE BATCH LOOKS FINE.** A hand row is typically
+    ⛔ **WITHOUT THIS, THE HAND VALUE LOSES AND THE BATCH LOOKS FINE.** A hand row is typically
     correcting a value the RULE wrote earlier -- that is the usual reason to write one at all --
     so the derived emitters go on proposing their own version of the same slot. Both
     the hand line and a derived one for the same slot would be emitted, `_cap_label_edits` sorts
     within a person by `(language_rank, rank, order)` — so they land adjacent, in that order —
     and a label REPLACES. The LAST one wins, which would be the derived one, and the file would
-    read as though her correction had been applied.
+    read as though the hand correction had been applied.
 
     A comment belongs to the edit below it, which is how the batch is written, so a dropped edit
     takes its comments with it — the same shape as the exclusion filter at the foot of `main`.
@@ -1030,14 +1022,13 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                        generation=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
 
-    **Emma, 2026-08-29:** *"You should be adding into the generated quick statements a block
-    that's just all of these corrections. Need all of these corrections on the existing
-    items."*
+    **Ruled 2026-08-29:** the generated QuickStatements need a block carrying all of these
+    corrections onto the existing items.
 
     `derive-labels.py` flipped 251,707 labels to the married form on 2026-08-29. Every item
     created before that carries the birth name in `mul` and `en` -- and, because `ja`/`zh`
-    are transliterated from `label_mul`, in Japanese and Chinese too. Her words: *"the CJK
-    names are being put in the birth name form"*.
+    are transliterated from `label_mul`, in Japanese and Chinese too — so the CJK names were
+    going out in the birth-name form as well.
 
     **The live label comes from `reports/garborg-qids.tsv`**, whose `label` column is written
     by the contributions refresh at the top of every run, so it is what Wikidata says today.
@@ -1059,12 +1050,12 @@ def _label_corrections(our_items, labels, table, state, fields=None,
         want_ids = set(our_items)
         for row in csv.DictReader(dl.open(encoding="utf-8")):
             if row["geni_id"] in want_ids:
-                # **`alias_names` alone could never fire for the case Emma sent.**
+                # **`alias_names` alone could never fire for the reported case.**
                 # `Q141198835` Bergitte Gunnbjørnsdatter — the hinge of the three lines — has
                 # `SURN Tengs` and `_MARNM Aukland`, so § *The MARRIED name is the real name*
                 # makes `Aukland` the label and `Tengs` the `Amul`. But `alias_names` holds
                 # what `alias_from_married_name` builds, which is the MARRIED form and so the
-                # label again; her birth form was only ever in `further_latin_names`.
+                # label again; the birth form was only ever in `further_latin_names`.
                 #
                 # **⛔ AND `further_latin_names` IS NOT THE FIX.** Taking that column whole
                 # re-creates the failure this ground was narrowed against: measured, it offered
@@ -1102,9 +1093,9 @@ def _label_corrections(our_items, labels, table, state, fields=None,
 
     out = []
     for geni_id, qid in sorted(our_items.items(), key=lambda kv: kv[1]):
-        # **The label we want is the EXPANDED one.** Emma, 2026-08-27: *"any abbreviations like
-        # -dtr … should be fixd since wikidata mul labels are supposed to have the full form.
-        # This is a part of the compliance stuff"*. `expand_abbreviations` ran only on the
+        # **The label we want is the EXPANDED one.** Ruled 2026-08-27: abbreviations like
+        # `-dtr` are fixed, because a Wikidata `mul` label is supposed to carry the full form.
+        # That is part of the compliance work. `expand_abbreviations` ran only on the
         # creation path, so an item created before the census covered its form keeps the
         # abbreviation forever and nothing here ever noticed.
         want = qs(expand_abbreviations(labels.get(geni_id, ""), geni_id))
@@ -1114,9 +1105,9 @@ def _label_corrections(our_items, labels, table, state, fields=None,
         # **An abbreviation expansion is its own ground for a correction**, alongside the
         # birth-name case below. It cannot rewrite anything else: the test is that the live
         # label expands to exactly what we want, so the only difference between the two IS the
-        # abbreviation. Emma fixed `Q141271379` by hand on 2026-09-04 — *"I changed her name to
-        # correct the issue of an abbreviation of Ormsdatter"* — and an item she has already
-        # fixed simply matches `want` and is skipped by the line above.
+        # abbreviation. `Q141271379` was fixed by hand on 2026-09-04, correcting an
+        # abbreviation of `Ormsdatter`, and an item already fixed simply matches `want` and is
+        # skipped by the line above.
         if expand_abbreviations(have, geni_id) == want:
             out.append(f"#   {qid}: holds the abbreviated {have!r}; the full form is {want!r}")
             out.append(f"#   {qid}: keep the outgoing label as an alias before it is replaced")
@@ -1131,10 +1122,10 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                     out.append(f"#   {qid}: set the {code} label")
                     out.append(f'{qid}\tL{code}\t"{value}"')
             continue
-        # **A MISSING GENERATION SUFFIX is its own ground.** Emma, 2026-09-07, shown
-        # `Q141242551` and `Q141219063` both labelled *Lars Osmundsen Nese*: *"These two people
-        # are clearly different but I think the I, II, Sr, Jr, d.y. suffixing was not done
-        # properly."* The younger carries `NSFX` = `d. y.` on a name record that is not the one
+        # **A MISSING GENERATION SUFFIX is its own ground.** Raised 2026-09-07 over
+        # `Q141242551` and `Q141219063`, both labelled *Lars Osmundsen Nese*: two clearly
+        # different people, with the `I`/`II`/`Sr`/`Jr`/`d.y.` suffixing not done properly on
+        # either. The younger carries `NSFX` = `d. y.` on a name record that is not the one
         # his label was built from, so it fell between them -- and this block had no ground for
         # it, though `CLAUDE.md` § *WIKIDATA'S LABEL BEATS OURS* has listed "a generation
         # suffix" among the narrow exceptions all along.
@@ -1216,20 +1207,19 @@ def _label_corrections(our_items, labels, table, state, fields=None,
     return out
 
 
-#: **Labels written onto items that ALREADY EXIST, per batch.** Emma, 2026-08-28: *"We are way
-#: too gung ho about adding cjk labels to existing items. You may have noticed that I am
-#: constantly removing them from the quickstatements. I consider them to be disruptive and
-#: suspicion raising. imo any label changes should occur at the beginning of the batch and be
-#: limited to a count of 15 labels added per batch."*
+#: **Labels written onto items that ALREADY EXIST, per batch.** Ruled 2026-08-28: adding CJK
+#: labels to existing items was far too aggressive and they were being removed from the
+#: QuickStatements by hand, as disruptive and suspicion-raising. Label changes go at the
+#: beginning of the batch and are limited to a fixed count per batch.
 #:
-#: **A label at CREATION time is not capped and is not counted.** Her distinction, same message:
-#: *"a label added after item creation is a risk and a label added during item creation is good."*
-#: So this counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
+#: **A label at CREATION time is not capped and is not counted.** The distinction, same message:
+#: a label added AFTER item creation is a risk, and one added DURING creation is good. So this
+#: counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
 LABEL_EDIT_CAP = 60
 
-#: **How many EXISTING people may gain name statements in one run.** Emma, 2026-09-09, reading a
-#: 4,081-statement batch: *"seemingly uncapped geni ids and some other things... They should be
-#: capped."*
+#: **How many EXISTING people may gain name statements in one run.** Ruled 2026-09-09, on a
+#: 4,081-statement batch carrying seemingly uncapped Geni ids and other things: they should be
+#: capped.
 #:
 #: **The additions pass iterates the WHOLE LEDGER and had no cap at all**, which was survivable
 #: only while `_has_given_name` was suppressing most of it. Removing that gate the same day --
@@ -1250,13 +1240,13 @@ NAME_ADD_CAP = 60
 P2600_LEAD_CAP = 40
 
 
-#: **The order label edits go out in, by LANGUAGE. Emma, 2026-09-04:**
+#: **The order label edits go out in, by LANGUAGE. Set 2026-09-04:**
 #:
 #:     En / Mul / Ja / Zh / Ko
 #:     Then any ordering of our actively supported languages
 #:     Then any other language labels that might be changed for some reason
 #:
-#: She gave it when told that the 15-a-batch cap was being spent before `mul` was reached, so it
+#: It was given after the 15-a-batch cap turned out to be spent before `mul` was reached, so it
 #: is both an ordering and a priority: the tiers are taken in turn until the budget runs out, so
 #: an `en` edit displaces a `hi` one rather than merely printing above it.
 #:
@@ -1287,7 +1277,7 @@ def _supported_languages():
 
 
 def _label_tiers():
-    """The slot-name sets to take in turn, in her order.
+    """The slot-name sets to take in turn, in the specified order.
 
     A slot is `Lmul`, `Amul`, `Lja`… so the language is everything after the first character.
     Both the label and the alias for one language sit in the same tier and keep the order they
@@ -1304,36 +1294,33 @@ def _label_tiers():
 def _cap_label_edits(lines, clan_block, corrections, priority=()):
     """Move label edits on existing items to the FRONT, capped at `LABEL_EDIT_CAP` QIDS.
 
-    **⛔ The cap counts PEOPLE, not lines, and everything for one person goes at once.** Emma,
-    2026-09-04: *"we do all at once per qid (15 qids) in descending order of qids"*. It counted
-    lines until then, which split a person across runs — an item could get its `mul` today and
+    **⛔ The cap counts PEOPLE, not lines, and everything for one person goes at once.** Ruled
+    2026-09-04: everything for one QID goes at once, a fixed number of QIDs, in descending QID
+    order. It counted lines until then, which split a person across runs — an item could get its `mul` today and
     its `ja` in a fortnight, and be wrong in the meantime in a way that reads as carelessness
     rather than as a queue.
 
-    **Descending QID: the newest items first, and she pre-empted the objection.** *"I am 100%
-    aware that descending qids can cause an issue of a backlog theoretically never going away
-    … I do not consider this to actually be a major concern"*, for two reasons she gave: *"making
-    an item very recently that has an error in it looks worse than an item that I made a long
-    time ago having an error in it"*, and the real answer is upstream — *"my expectation is that
-    we're going to ideally be never, ever, ever creating items with errors in them like this"*.
-    So the starvation is **intentional**, *"an intentional effect based off of live prioritization
-    of different things"*. Do not add a fairness pass, an age bonus or an oldest-first sweep: that
-    is the *"safety thing you made up"* she named in the same breath.
+    **Descending QID: the newest items first, and the backlog objection was pre-empted.** That
+    descending QIDs can theoretically starve a backlog forever is known and is not considered a
+    major concern, for two reasons: a very recently made item with an error in it looks worse
+    than a long-standing one with the same error, and the real answer is upstream — items should
+    ideally never be created with errors like this at all. So the starvation is **intentional**,
+    a deliberate effect of prioritising by recency. Do not add a fairness pass, an age bonus or
+    an oldest-first sweep: that is an invented safety mechanism nobody asked for.
 
-    **Within a person, her language order**, `LABEL_LANGUAGE_ORDER` then the supported set then
-    the rest — *"En / Mul / Ja / Zh / Ko / Then any ordering of our actively supported languages /
-    Then any other language labels that might be changed for some reason"*. With all of a QID's
+    **Within a person, the specified language order**, `LABEL_LANGUAGE_ORDER` then the supported
+    set then the rest — `en`, `mul`, `ja`, `zh`, `ko`, then any ordering of the actively
+    supported languages, then any other language that might be changed. With all of a QID's
     edits going out together this is a LAYOUT within the person, not a priority between people;
     it was read as a priority when the cap still counted lines, and this supersedes that.
 
-    **The cap itself is hers and unchanged.** 2026-08-28: *"We are way too gung ho about adding
-    cjk labels to existing items… any label changes should occur at the beginning of the batch
-    and be limited to a count of 15 labels added per batch."* A label at CREATION time is neither
-    counted nor capped — *"a label added during item creation is good"* — so this only ever sees
-    `Q… L…`/`Q… A…`, never `LAST L…`.
+    **The cap itself is unchanged.** Ruled 2026-08-28: adding CJK labels to existing items was
+    far too aggressive; label changes go at the beginning of the batch and are limited to a fixed
+    count per batch. A label at CREATION time is neither counted nor capped — a label added
+    during item creation is good — so this only ever sees `Q… L…`/`Q… A…`, never `LAST L…`.
 
-    **Corrections before the clan block, within a person.** *"Fixing something wrong outranks
-    adding something missing."*
+    **Corrections before the clan block, within a person.** Fixing something wrong outranks
+    adding something missing.
 
     **What has already gone out, so the cap DRAINS instead of repeating**, keyed on
     `(qid, slot, value)` — see the note at `done` below.
@@ -1383,7 +1370,7 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     every = [e for e in correction_edits + clan_edits + line_edits
              if (e["qid"], e["slot"], e["value"]) not in done]
 
-    #: Language rank inside a person. Anything she did not name sorts last, stably.
+    #: Language rank inside a person. Anything unnamed sorts last, stably.
     tiers = _label_tiers()
     def language_rank(slot):
         for i, tier in enumerate(tiers):
@@ -1395,10 +1382,10 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
     for edit in every:
         by_qid[edit["qid"]].append(edit)
 
-    # **THE SPINE JUMPS THE QUEUE, and only because she asked for it.** Emma, 2026-09-07, on
-    # the Arne → Charlemagne line having no Japanese label at all: *"Yes, next batch."* Newest
-    # QID first is her own ordering — *"making an item very recently that has an error in it
-    # looks worse"* — and it puts the spine LAST, because its people are `Q3044` Charlemagne
+    # **THE SPINE JUMPS THE QUEUE, and only because it was asked for.** Ruled 2026-09-07, on
+    # the Arne → Charlemagne line having no Japanese label at all: it goes in the next batch.
+    # Newest QID first is the standing ordering — a recent item with an error looks worse —
+    # and it puts the spine LAST, because its people are `Q3044` Charlemagne
     # and `Q43974` Louis the Pious, the oldest items in the ledger. With 963 items waiting and
     # a cap of 30, "next batch" would have meant about a month.
     #
@@ -1422,11 +1409,10 @@ def _cap_label_edits(lines, clan_block, corrections, priority=()):
         head = ["# " + "-" * 72,
                 "# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at "
                 f"{LABEL_EDIT_CAP} PEOPLE,",
-                "#   both her instruction: \"any label changes should occur at the beginning of",
-                "#   the batch and be limited to a count of 15 labels added per batch\", and",
-                "#   \"we do all at once per qid (15 qids) in descending order of qids\". A label",
-                "#   set at CREATION time is neither counted nor capped -- \"a label added during",
-                "#   item creation is good\".",
+                "#   both by instruction: label changes go at the beginning of the batch and",
+                "#   are limited per batch, and everything for one QID goes at once, in",
+                "#   descending QID order. A label set at CREATION time is neither counted nor",
+                "#   capped -- a label added during item creation is good.",
                 "#   Newest items first, deliberately: a recent item with an error in it looks",
                 "#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported",
                 "#   languages, then the rest.",
@@ -1457,9 +1443,9 @@ _ABBREV_EXPANSIONS = None
 def expand_abbreviations(label, geni_id):
     """`Guri Pedersdtr. Foss` -> `Guri Pedersdatter Foss`.
 
-    **Emma, 2026-08-27:** *"any abbreviations like -dtr (i.e. "Rasmusdtr." instead of
-    "Rasmusdatter") should be fixd since wikidata mul labels ae supposed to have the full form.
-    This is a part of the compliance stuff I mentioned earlier"*.
+    **Ruled 2026-08-27:** abbreviations like `-dtr` — `Rasmusdtr.` for `Rasmusdatter` — are
+    fixed, because a Wikidata `mul` label is supposed to carry the full form. That is part of
+    the compliance work.
 
     **The expansion is per person, not per abbreviation**, and the corpus is what says so:
     `-dtr` is Norwegian `-datter` or Swedish `-dotter`, 81,530 against 57,085 overall, and the
@@ -1468,7 +1454,8 @@ def expand_abbreviations(label, geni_id):
 
     `scripts/census-abbreviated-patronymics.py` decides each one and records **why** in a `basis`
     column: this person's own other `NAME` records first (588 of 10,923), the stem's corpus
-    majority second (10,100), and her own example where the corpus knows nothing (235). This
+    majority second (10,100), and the hand-given example where the corpus knows nothing (235).
+    This
     function only looks the answer up — the reasoning is in the CSV, where it can be read and
     disagreed with.
 
@@ -1527,11 +1514,10 @@ def nn_form(raw):
 def _cjk_follows_mul(table):
     """`Lja`/`Lzh` for items whose CJK label was transliterated from a SUPERSEDED `mul`.
 
-    **Emma, 2026-08-27, on `Q141180412`:** *"it appears that it has Japanese and presumably Chinese
-    label that are no derived from the mul label like we wanted. Remember that the mul lable takes
-    priority."*
+    **Raised 2026-08-27 on `Q141180412`:** its Japanese and Chinese labels are not derived from
+    the `mul` label as they should be, and the `mul` label takes priority.
 
-    She is exactly right and the item shows it: `mul` and `en` read `Marta Rasmusdatter Li` while
+    The item shows it: `mul` and `en` read `Marta Rasmusdatter Li` while
     `ja` reads `マルタ・ラスムスダッテル・ヘーレ` and `zh` `玛尔塔·拉斯穆斯达特·赫勒` — **Helle**,
     a different surname. The CJK was derived when `mul` held the other form, `mul` later changed,
     and nothing brought the CJK with it.
@@ -1543,13 +1529,13 @@ def _cjk_follows_mul(table):
     **The population is small and unambiguous: 24 items, 46 label rows**, measured over
     `reports/name-audit.csv` on 2026-08-29. Unambiguous because `mul` is agreed by *both* sides, so
     the CJK is not a judgement call — it follows from a string neither of us disputes. `CLAUDE.md`
-    already records one of them, `Q141168785`, and rules on it: *"the stale half was ours, not
-    hers."*
+    already records one of them, `Q141168785`, and rules on it: the stale half was ours, not
+    the hand-made one.
 
     **Reads the audit rather than re-fetching.** `scripts/audit-ledger-names.py` fetched all 508
     items live; doing it again inside every daily build would be eleven more requests a run for a
     number that moves slowly. The cost is that this is a **snapshot** — re-run the audit before
-    trusting it after she has been editing.
+    trusting it after any hand editing.
 
     Everything here is a label edit on an existing item, so `LABEL_EDIT_CAP` governs how many
     actually go out; at 15 a batch these 46 drain in four runs.
@@ -1574,9 +1560,9 @@ def _cjk_follows_mul(table):
     if out:
         out = ["", "# " + "-" * 72,
                "# CJK FOLLOWS mul -- items whose ja/zh came from a mul that has since changed.",
-               "#   Emma: \"the mul lable takes priority\". These are ours: mul is agreed by both",
+               "#   The mul label takes priority. These are ours: mul is agreed by both",
                "#   sides, so the CJK is not a judgement call, it follows from it.",
-               "#   Snapshot from reports/name-audit.csv -- re-run the audit after she edits.",
+               "#   Snapshot from reports/name-audit.csv -- re-run the audit after hand edits.",
                "# " + "-" * 72] + out
     return out
 
@@ -1585,7 +1571,7 @@ def _cjk_follows_mul(table):
 #:
 #: **`van`, `von`, `af` and `av` are deliberately NOT here, and the first draft had them.** They
 #: form surnames rather than designations -- `Reinoud I van Brederode` truncated to `Reinoud`,
-#: losing the family name, and `CLAUDE.md` § *A parenthesised token* records Emma's ruling that
+#: losing the family name, and `CLAUDE.md` § *A parenthesised token* records the ruling that
 #: particles are *"integral parts of what the people are called"* and belong in the label.
 #: `Hård af Segerstad` is a family in this corpus, not a man of Segerstad.
 #:
@@ -1639,7 +1625,7 @@ def _only_adds_a_title(current, proposed):
     That is a live label being made worse, at 15 a batch.
 
     **It does NOT stop a titled label being ADDED**, which is the other 7 of the 8 titled values
-    pending: those items have no `mul` at all, and a label with a title on it is a label. Emma's
+    pending: those items have no `mul` at all, and a label with a title on it is a label.
     § *A TITLE IS NOT A NAME* is about what becomes a `P735`/`P734` and says in terms that it
     *"does not touch the LABEL"* — so this stays as narrow as it can be and only refuses the
     replacement.
@@ -1661,13 +1647,10 @@ def _only_adds_a_title(current, proposed):
 def consensus_latin_label(labels):
     """The Latin name an item is called by, by a VOTE across its own languages. `''` when none.
 
-    **⛔ Emma's specification, 2026-09-04, correcting what was here:** *"in the event that just
-    the English exists as a Latin alphabet thing, the English name turns into the multi language
-    label. And if two or more Latin alphabet labels exist, then the Latin alphabet labels vote on
-    whichever one is going to be the multi language label. I guess in this sense you can say that
-    it even is the case if there's only English, because it's just, like, English ties or English
-    is a tiebreaker. So in that case there would just be a single Latin language one, and English
-    is just a single vote for that."*
+    **⛔ The specification of 2026-09-04, correcting what was here.** Where English is the only
+    Latin-script label, the English name becomes the `mul` label. Where two or more Latin-script
+    labels exist, they vote on which becomes the `mul` label. The single-English case is the same
+    rule: English is one vote, and it is also the tiebreaker.
 
     So it is one rule and not two, and English has **no special standing except as a tiebreaker**:
 
@@ -1680,11 +1663,11 @@ def consensus_latin_label(labels):
     `en` label immediately whenever it was Latin, so English did not vote, it decided — twelve
     languages agreeing on `Fredrik Elof Gyllenkrok` would have lost to one `en` reading
     `Baron Fredrik Elof Gyllenkrok`. And it required `n >= 2`, so an item whose only Latin label
-    was English got **no `mul` at all**, which is a large part of what she reported as *"many
-    people are just never given mul labels"*.
+    was English got **no `mul` at all**, which is a large part of why many people were never
+    given a `mul` label at all.
 
-    **`mul` itself does not vote**, and that is deliberate rather than an oversight in her
-    wording: `mul` is the output. Letting it vote for itself makes the rule self-reinforcing —
+    **`mul` itself does not vote**, and that is deliberate rather than an oversight in the
+    specification: `mul` is the output. Letting it vote for itself makes the rule self-reinforcing —
     a wrong `mul` would defend its own position against a single correcting label — and no
     correction could ever reach an item, which is the same shape as the emitted-labels set that
     froze 220 CJK labels until 2026-09-04.
@@ -1706,10 +1689,9 @@ def consensus_latin_label(labels):
     tied = sorted(v for v, n in votes.items() if n == best)
     if len(tied) == 1:
         return tied[0]
-    # **⛔ THE INCUMBENT `mul` BREAKS ITS OWN TIE, BEFORE ENGLISH.** Emma, 2026-09-07:
-    # *"wikidata labels beat our own that's a rule that's been violated a few times with
-    # different mul labels getting overwritten with the English. Most notably Svantepolk of
-    # Viby."*
+    # **⛔ THE INCUMBENT `mul` BREAKS ITS OWN TIE, BEFORE ENGLISH.** Ruled 2026-09-07: Wikidata's
+    # labels beat our own, a rule violated several times by `mul` labels being overwritten with
+    # the English one — most notably Svantepolk of Viby.
     #
     # `Q6197518` is the worked case and the vote is exactly 2–2:
     #
@@ -1751,21 +1733,20 @@ MINTED_TOKENS = {}
 def _render_token(token):
     """`(ja, zh, ko)` for a token nothing has read yet, or `(None, None, None)`.
 
-    Her standard is what makes an on-the-fly rendering acceptable: *"Incorrect romanization or
-    incorrect representations in katakana are totally acceptable. An incorrect name is not,
-    because half these words, nobody knows how they're pronounced anyway."* A rendering that a
-    native reader would spell differently is fine; dropping the label entirely is what the funnel
-    exists to stop.
+    The standard that makes an on-the-fly rendering acceptable: incorrect romanisation or an
+    incorrect katakana spelling is fine, because nobody knows how half these words are pronounced
+    anyway; an incorrect NAME is not. A rendering a native reader would spell differently is
+    acceptable; dropping the label entirely is what the funnel exists to stop.
 
     `translit_no` is the engine, the same one `extend-transliterations.py` uses, so a token
     rendered here and a token rendered by the batch step come out identical.
     """
     # **⛔ The funnel mints readings for NAMES. It was minting them for anything.**
     #
-    # Emma asked for the funnel and her standard is the docstring above: an approximate katakana
+    # The funnel was asked for and its standard is the docstring above: an approximate katakana
     # spelling of a name nobody can pronounce is fine. That standard is about NAMES. Applied to
     # a token that is not one it produces confident nonsense, and because the result is written
-    # into the shared table it becomes sticky — every defect she reported on 2026-09-04 came out
+    # into the shared table it becomes sticky — every defect reported on 2026-09-04 came out
     # of here: `III` as `イイイ`, `d.e.` as `ドエ`, `d.y.` as `ドイ`, `Jr.` as `イル`, `Sr.` as
     # `スル`, `St.` as `スト`, `F.` as `フ`, `J.` as `イ`.
     #
@@ -1813,13 +1794,13 @@ def _render_token(token):
 def label_in(label, table):
     """(ja, zh, ko) for a whole name, or (None, None, None) if any token is unknown.
 
-    **Korean is the third CJK language and was missing until 2026-09-01.** Emma: *"cjk includes
-    korean"*. All three are required together: a person with two of them is not a person whose
+    **Korean is the third CJK language and was missing until 2026-09-01** — CJK includes
+    Korean. All three are required together: a person with two of them is not a person whose
     CJK labels are done.
 
     Partial is worse than absent: half a name in katakana and half in Latin is not a
     Japanese label, it is a broken one. **A middle initial is the one exception** —
-    `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
+    `labels.transliterate_token` keeps `F` as `F` in every script, ruled 2026-08-27.
     """
     from labels import (ORDINAL_RE, FINAL_ORDINALS, transliterate_token,
                         transliterate_token_ko)
@@ -1847,9 +1828,8 @@ def label_in(label, table):
         return None, None, None
 
     # **A territorial designation is not part of the name, and transliterating it is how
-    # `Q6161733` got `カール・フレドリク・パイパー・ティル・クラゲホルム`.** Emma spotted it and
-    # corrected the item to `カール・フレドリク・パイパー`: *"why was the japanese label we added
-    # so weird?"*
+    # `Q6161733` got `カール・フレドリク・パイパー・ティル・クラゲホルム`.** It was caught and the
+    # item corrected by hand to `カール・フレドリク・パイパー`.
     #
     # `till Krageholm` is Swedish for *of Krageholm*, an estate he held. Read token by token it
     # becomes two more name syllables, so the label reads as a five-part personal name. The
@@ -1862,12 +1842,12 @@ def label_in(label, table):
     # part of their name.
     #
     # The Latin label keeps it -- that is how Geni renders the person and it is real
-    # information -- and only the CJK label truncates, which is exactly the edit Emma made.
+    # information -- and only the CJK label truncates, which is exactly the hand edit made.
     label = _drop_territorial(label)
 
-    # **A TITLE TAKES ITS NATIVE FORM, never a transliteration.** Emma, 2026-09-07, choosing
-    # between four readings: **イタリアのベレンガーリオ1世** — and *"Yeah like kings and dukes
-    # and such have Japanese names lol"*. Before this, `Berengar I, emperor of the Romans` came
+    # **A TITLE TAKES ITS NATIVE FORM, never a transliteration.** Ruled 2026-09-07 between four
+    # readings: **イタリアのベレンガーリオ1世**, because kings and dukes have Japanese names of
+    # their own. Before this, `Berengar I, emperor of the Romans` came
     # out `ベレンガル・I・エムペロル・オフ・テ・ロマンス`: `オフ` is the English word *of* in
     # katakana and `テ` is *the*, the same failure as the `ソン・オフ・` descriptions.
     #
@@ -1904,10 +1884,10 @@ def label_in(label, table):
     # Stripped for the LOOKUP only; the label itself is untouched, so a name that genuinely
     # carries punctuation still reads as it does.
     ja, zh, ko = [], [], []
-    # **An ordinal ATTACHES; every other token takes the separator.** Emma's hand-fix of
+    # **An ordinal ATTACHES; every other token takes the separator.** The hand fix of
     # `Q141223436` on 2026-09-04 reads `トーレ・ウンデルベルゲ3世` and `托雷·温德尔贝尔盖三世` -- the
     # `・` and the `·` stop before the ordinal. `ko` is unaffected because it separates every
-    # word with a space anyway, and hers reads `토레 운데르베르게 3세`.
+    # word with a space anyway, and that item reads `토레 운데르베르게 3세`.
     attached = []
     tokens = list(classify(label))
     for position, (token, _usage, _o) in enumerate(tokens):
@@ -1920,10 +1900,9 @@ def label_in(label, table):
         a, b = transliterate_token(clean, table, final=final)
         c = transliterate_token_ko(clean, table, final=final)
         if a is None or c is None:
-            # **THE FUNNEL, at the call rather than only in the pipeline.** Emma, 2026-08-29:
-            # *"If anything even remotely wants to generate without having katakana or Chinese
-            # characters, it goes through this thing and then adds the token to the library, and
-            # then continues on."*
+            # **THE FUNNEL, at the call rather than only in the pipeline.** Ruled 2026-08-29:
+            # anything that would otherwise generate without katakana or Chinese characters goes
+            # through the funnel, which adds the token to the library and then continues.
             #
             # It was wired as STEP 0d of `build-daily-batch.py`, which fills the table before
             # anything composes -- and that covers the pipeline and **not the builder**. Running
@@ -1973,7 +1952,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
                                 father_aka=father_aka, father_given=father_given)
     for prop, value, quals in lines:
         # `P1449` *nickname* never arrives: `namemodel.statements_for` stops modelling it,
-        # per Emma's 2026-08-29 ruling. The drop used to be here, and having it in the emitter
+        # per the 2026-08-29 ruling. The drop used to be here, and having it in the emitter
         # while the model still produced it is what gave `model-vs-reality.py` 66 phantom
         # "missing nickname" rows.
         parts = [f"LAST	{prop}	{value}"]
@@ -1988,21 +1967,20 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 
 
 # ---------------------------------------------------------------------------------
-# THE BATCH COMPOSITION -- `docs/batch-rules.md`, dictated by Emma 2026-08-25 and
-# clarified by her the same day.
+# THE BATCH COMPOSITION -- `docs/batch-rules.md`, dictated 2026-08-25 and clarified the
+# same day.
 #
 # **The subgraph is Arne's component ON WIKIDATA, as it currently stands.** Not a radius
-# over our Geni tree. Emma: *"Everyone within n hops of Arne as his family exists on
-# wikidata."* Asked what `n` should be over our tree she said *"you misunderstand it
-# completely if you're even asking the question"* -- and she is right: the ball is what
+# over our Geni tree: everyone within n hops of Arne whose family exists on Wikidata.
+# Asking what `n` should be over OUR tree misunderstands it completely -- the ball is what
 # the programme is building, so it is 42 items today and larger after every run. Each
 # run draws its random work from what exists and enlarges the pool the next run draws
 # from. That is what makes the thing self-bootstrapping and why it takes ~18 runs.
 #
-# This is also why Bure needs its own algorithm rather than a bigger `n`. Emma:
-# *"bure is a bunch of unlinked people with entity resolutions to geni, so it isn't
-# dense it's a different kind of area though which needs its own algorithm."* There the
-# items already exist and carry `P2600`; the work is linking, not creating.
+# This is also why Bure needs its own algorithm rather than a bigger `n`: Bure is a bunch
+# of unlinked people carrying entity resolutions to Geni, so it is not dense but a
+# different kind of area needing its own algorithm. There the items already exist and
+# carry `P2600`; the work is linking, not creating.
 #
 # One run is:
 #
@@ -2016,49 +1994,42 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 # already does labels, names, dates, sex, `S2600` references and the duplicate guard.
 # Components 2-4 differ only in how the people are chosen.
 #
-# **Emma's own reading of component 4, replacing what the spec called "Arne's side":**
-# *"this is just part of the add 4 sets of parents randomly in the neighborhood not its
-# own thing. But one thing that is worth doing imo is randomly choose an existing couple
-# and add all the children."*
+# **The reading of component 4, replacing what the spec called "Arne's side":** it is part
+# of adding four sets of parents randomly in the neighbourhood, not a thing of its own.
+# What is worth doing separately is choosing an existing couple at random and adding all
+# their children.
 #
-# **Solitary means an item with no `P26` spouse and no `P40` child** -- her wording,
-# *"Has an item and no SPOUSE or CHILD specifically"* -- and it explicitly counts the
-# people our own earlier runs created, since a fresh `CREATE` starts with neither.
+# **Solitary means an item with no `P26` spouse and no `P40` child**, specifically -- and it
+# explicitly counts the people our own earlier runs created, since a fresh `CREATE` starts
+# with neither.
 
 
-#: **Her revised caps, 2026-08-26**, after stopping a run of 50 creations partway:
-#: *"creating individuals with all of their children is just crazy talk... we essentially do
-#: 10 parents, 10 spouses, and 10 children."* Then, revising in the same message, she folded
-#: spouses into the children step -- *"spouses are only added through the 10 parents and 10
-#: children... you go to a person, and then it adds a child... If the person has a childless
-#: marriage, then it can generate their spouse instead. Otherwise, it generates their child,
-#: and then the next run it generates the child's parent."*
+#: **The revised caps, 2026-08-26**, after a run of 50 creations was stopped partway:
+#: creating individuals with all of their children is not a thing to do, so the shape is a
+#: fixed number of parents, spouses and children. Then, revising in the same message, spouses
+#: were folded into the children step -- spouses are added only through the parents and
+#: children buckets. A person gets a child added; if their marriage is childless their spouse
+#: is generated instead; and the next run generates that child's parent.
 #:
 #: So there is **no independent spouse bucket**. The later revision wins over the earlier
-#: "10 spouses", and the shape is two caps plus a substitution.
+#: separate spouse count, and the shape is two caps plus a substitution.
 #: Arne Olaus Fjørtoft Garborg — the centre the whole programme is measured from.
 ARNE_GENI = "6000000005607426327"
 
-#: **Never emitted, in any position, ever.** Emma, 2026-08-27: *"I should not be in the
-#: traversable graph and neither should any kitajima people."*
+#: **Never emitted, in any position, ever.** Ruled 2026-08-27: the Kitajima people are not in
+#: the traversable graph.
 #:
-#: The batch of 2026-08-27 created her parents and wrote a `P22` and a `P25` onto her own
-#: item, which attached it to the 1,339,227-person component that
-#: contains Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`,
-#: whose step 1 is her, so excluding her at one call site is not enough — this set is enforced
-#: at source *and* asserted over the finished file before it is written.
-#: **The Kitajima/Kitashima hold — MONTH-LONG, not permanent.** Emma, 2026-09-01:
-#: *"we're doing a month long exclusion on the other ones too"*. Same shape as
-#: `OBENDER_HOLD_EXPIRES` and for the same reason recorded there: a hold that has to be
-#: remembered to be lifted is a hold that stays forever.
+#: **The Kitajima/Kitashima hold — MONTH-LONG, not permanent.** Ruled 2026-09-01: a month-long
+#: exclusion. Same shape as `OBENDER_HOLD_EXPIRES` and for the same reason recorded there: a
+#: hold that has to be remembered to be lifted is a hold that stays forever.
 #:
-#: **Emma herself is NOT in these sets any more**, her instruction of the same day: *"Yeah remove
-#: it"*. She was excluded on 2026-08-27, removed by `9968793c`, and I put her back in `ad14619a`
-#: on 2026-08-31 because `build-missing-reciprocals.py` emitted two live edits to `Q232803`
-#: and a test went red — I reached for the nearest existing mechanism instead of asking which of
-#: her two instructions won, and then described it in the queue as *"they were not removed"*,
-#: which hid that I had re-added her. Her anonymisation instruction is the one that governs:
-#: **remove code that treats her item as special.**
+#: **The account owner is NOT in these sets any more**, ruled the same day. That exclusion was
+#: added on 2026-08-27, removed by `9968793c`, and put back in `ad14619a` on 2026-08-31 because
+#: `build-missing-reciprocals.py` emitted two live edits to `Q232803` and a test went red — the
+#: nearest existing mechanism was reached for instead of asking which of the two instructions
+#: won, and it was then described in the queue as though nothing had been re-added. The
+#: anonymisation instruction is the one that governs: **remove code that treats one person's
+#: item as special.**
 KITAJIMA_HOLD_EXPIRES = datetime.date(2026, 10, 1)
 
 KITAJIMA_GENI = {
@@ -2120,25 +2091,22 @@ NEVER_TOUCH_QID = set(KITAJIMA_QID) if datetime.date.today() < KITAJIMA_HOLD_EXP
 CHILDREN_PER_RUN = 40
 PARENTS_PER_RUN = 40
 
-#: **Free parents, and they do not count against `PARENTS_PER_RUN`.** Her rolling rule:
-#: *"if a child is present and it appears like they have a single mother or single father,
-#: then the next time they get their parents for free. Parents that are added for this reason
-#: do not count towards the total parents that we're adding."*
+#: **Free parents, and they do not count against `PARENTS_PER_RUN`.** The rolling rule: where a
+#: child is present and appears to have a single mother or single father, the next run gives them
+#: their parents for free, and parents added for that reason do not count against the total.
 #:
 #: A half-attached child is the structural wart the old algorithm left behind -- one parent
 #: linked, the other never created -- so this closes them as it goes rather than accumulating
 #: them. Capped anyway at a number far above what the corpus produces per run, because
-#: "uncapped" is what she stopped the last run for; the cap is reported when it bites.
-#: **Her formula, 2026-08-26: "10 free parents plus half of the remaining."** So of the
+#: "uncapped" is what stopped the last run; the cap is reported when it bites.
+#: **The formula, 2026-08-26: ten free parents plus half of the remainder.** So of the
 #: half-attached people eligible for one, the first `FREE_PARENTS_FREE` are free and half of
 #: whatever is left beyond that comes too. It bounds the step without stalling the backlog,
-#: and the rest wait for the next run. **The constant is 20 since 2026-09-07**, when she
-#: doubled every batch size again -- *"the daily batch is twice as large in all of the things
-#: it does... all numbers doubled basically"* -- so 34 eligible gives 20 + 7 = 27.
+#: and the rest wait for the next run. **The constant is 20 since 2026-09-07**, when every
+#: batch size was doubled again, so 34 eligible gives 20 + 7 = 27.
 #:
-#: Two earlier readings, both wrong and both hers to correct. A flat ceiling of 40 was mine.
-#: Scoping it to this run's children alone gave 5, which under-serves a backlog she wants
-#: worked down.
+#: Two earlier readings were wrong: a flat ceiling of 40, and scoping it to this run's children
+#: alone, which gave 5 and under-served the backlog.
 FREE_PARENTS_FREE = 20
 
 
@@ -2155,25 +2123,25 @@ from qscomment import annotate  # noqa: E402
 #: machinery -- they survived the 2026-09-02 spine removal because `subgraph_roots()`
 #: needs them: `CLAUDE.md` § *The seed set is the WIKIDATA SUBGRAPH from Arne*.
 ARNE_QID = "Q11959067"      # Arne Olaus Fjortoft Garborg
-#: **Johannes Bureus -- the second root.** Emma, 2026-08-28: *"it is supposed to do this
-#: from Johannes Bureus and Arne Garborg, subgraphs coming from both of them."*
+#: **Johannes Bureus -- the second root.** Specified 2026-08-28: subgraphs come from both
+#: Johannes Bureus and Arne Garborg.
 BUREUS_QID = "Q633094"
 
 
 def subgraph_roots():
     """**Arne, Bureus, and EVERY Bureätten person. 252 entry points, not 2.**
 
-    **Emma, 2026-08-29:** *"My idea was that there would be 252 entry points into the graph,
-    which would be all of the Bure people plus Arnie"*, and then, when told it was still two:
-    *"YES THE BURE PEOPLE ARE ALL ENTRY POINS."*
+    **Ruled 2026-08-29:** there are 252 entry points into the graph — all of the Bure people
+    plus Arne — and, restated when it turned out to still be two: every Bure person is an entry
+    point.
 
     They were in the `universe` -- walkable *through* -- but not roots, so they only joined the
     subgraph if a walk from Arne or Bureus happened to land on them. **113 of the 251 are islands
     of exactly one person**, so they were unreachable by construction, and 2 of 251 were inside.
 
-    **Her prediction was right and it is measured, not argued.** Two roots gave 284 Arne-side
-    against 36 Bureus-side. All 252 gives 284 against 281 -- **50/50**, which is what she said
-    it would be, for the reason she gave: the Bure people have far more entry points but each
+    **The prediction was right and it is measured, not argued.** Two roots gave 284 Arne-side
+    against 36 Bureus-side. All 252 gives 284 against 281 -- **50/50**, as predicted, for the
+    reason given: the Bure people have far more entry points but each
     reaches almost nothing, so the extra 250 roots buy only ~245 people. Subgraph 316 -> 565,
     and 565 of 614 ledger people seed instead of 316.
 
@@ -2183,22 +2151,20 @@ def subgraph_roots():
 
     **ARNE IS THE ONE EXCEPTION, and that is the design.** Checked 2026-09-03: of the 252 roots
     before the drip-in, **251 are Bure** -- Johannes Bureus is himself in `bureatten.csv` -- and
-    Arne is the only one who is not. Emma: *"Almost all of them are Bure people… Arne Garborg is
-    the one exception."*
+    Arne is the only one who is not: almost all of the roots are Bure people, and Arne Garborg
+    is the one exception.
 
-    **Why the two sides differ, in her words:** *"the family of Arne were precreated by me and are
-    generally pretty well connected to each other. Whereas this other family is in the interesting
-    situation where… a massive amount of them had Wikidata items because of having Swedish
-    Wikipedia articles, but nobody actually did genealogical work on Wikidata. So them as entry
-    points means they have a high level of activity in connecting to each other, whereas the
-    [Arne] people have been in large part added exclusively by me, and there's about the same
-    amount of them, probably a bit less surface area. And the [Arne] people primarily connect to
-    other groups."*
+    **Why the two sides differ.** Arne's family was pre-created by hand and is already well
+    connected internally. The Bure family is in a different situation: a large number of them
+    have Wikidata items from Swedish Wikipedia articles while nobody did any genealogical work
+    on Wikidata, so as entry points they have a high level of activity connecting to each other.
+    Arne's people were added almost entirely by one editor, there are about as many of them,
+    they carry slightly less surface area, and they primarily connect to other groups.
 
     So the imbalance is not lopsidedness to correct: an item that exists and states no
     relationships is the highest-yield entry point there is, which is exactly what a sv.wikipedia
-    article with no genealogical work leaves behind. The roster stays at **about 250** -- her
-    instruction, same day -- so `reports/entry-points.tsv` is a trickle, not a second campaign.
+    article with no genealogical work leaves behind. The roster stays at **about 250** --
+    instructed the same day -- so `reports/entry-points.tsv` is a trickle, not a second campaign.
     """
     roots = [ARNE_QID, BUREUS_QID]
     roster = ROOT / "reports" / "bureatten.csv"
@@ -2219,26 +2185,25 @@ ENTRY_POINTS = ROOT / "reports" / "entry-points.tsv"
 def entry_points():
     """Every row of `reports/entry-points.tsv`, as `(qid, geni_id, label, active_from, note)`.
 
-    **Emma, 2026-09-03, asking for this on a clock:** *"for entry points into the graph: I
-    actually want this as a timer: on October 1 George RR Martin is added as an entry point, and
-    Robert Ettinger is added as an entry point right now! I think there probably are other people
-    worthy of dripping in as entry points. But I'm not sure who."*
+    **Asked for on a clock, 2026-09-03:** entry points arrive on a timer. George R.R. Martin is
+    added on 1 October; Robert Ettinger is added now. Other people are probably worth dripping in
+    as entry points, and who they are is an open question.
 
     **The timer is a DATE COLUMN, not a scheduler**, and that is deliberate. A cron here is
     session-local and dies with the session --- `CLAUDE.md` § *A cron only fires while the session
     is idle* is the record of one starving for four hours, and every cron died in the 2026-08-28
     crash. An `active_from` date cannot be lost, needs nothing running on the day, and makes the
     switch-on a property of the repo rather than of whoever happened to be at a terminal. Adding
-    the next person she thinks of is one line in a TSV.
+    the next person is one line in a TSV.
 
-    **The two she named, resolved from our own tree rather than guessed** --- `CLAUDE.md` § *Do
+    **The two named, resolved from our own tree rather than guessed** --- `CLAUDE.md` § *Do
     not guess these* --- by joining `reports/derived-labels.csv` on the label and reading the qid
     column, since neither Wikidata nor Geni is reachable from a remote session:
 
     * `Q714044` **Robert Chester Wilson Ettinger**, Geni `6000000003022010249`, live now.
     * `Q181677` **George R.R. Martin**, Geni `6000000081001962237`, live 2026-10-01.
 
-    **Both are textbook service areas by her own specification.** Neither states a single `P22`,
+    **Both are textbook service areas by the specification.** Neither states a single `P22`,
     `P25`, `P40` or `P26` on Wikidata, so each reaches exactly itself there --- and § *THE EDIT
     ALGORITHM* wants precisely that: *"something that has a GeniID but is otherwise isolated."*
     In our Geni tree both are richly attached (Ettinger: parents, 2 spouses, 2 children; Martin:
@@ -2302,26 +2267,26 @@ ENTRY_POINT_GROUPS = ROOT / "reports" / "entry-point-groups.tsv"
 def entry_point_groups():
     """Every row of `reports/entry-point-groups.tsv`, sorted by group name.
 
-    **Emma, 2026-09-03, naming whole blocs at once:** *"Ancient Chinese bloc / All Samaritan high
-    priests / All Ethiopian Emperors / All Japanese Emperors / All Tanba people / All
-    Izumo/Senge/Kitajima people / All people with special geni gedcom recognition become entry
-    people."*
+    **Whole blocs named at once, 2026-09-03:** the ancient Chinese bloc, all Samaritan high
+    priests, all Ethiopian Emperors, all Japanese Emperors, all Tanba people, all
+    Izumo/Senge/Kitajima people, and everyone with special Geni-GEDCOM recognition become entry
+    people.
 
     **A group is a REFERENCE TO A ROSTER, not hundreds of pasted ids.** `subgraph_roots()` already
     reads `reports/bureatten.csv` for exactly this reason --- *"Reading the file rather than
     pasting the ids keeps one list of these people in the repo"* --- and the same holds here:
     these rosters are maintained by their own scripts, so a copy would go stale silently.
 
-    **Why this is not as reckless as it sounds, in her words:** *"the invariant graph structure
-    will probably mean they are cumulatively at most a quarter of edits. 1->251 got the 250 giving
-    ~50%."* That is the measured precedent: going from 2 roots to 252 took the subgraph 316 -> 565,
+    **Why this is not as reckless as it sounds.** The invariant graph structure probably means
+    they are cumulatively at most a quarter of edits: going from 1 root to 251 added the 250 that
+    gave about 50%. That is the measured precedent — 2 roots to 252 took the subgraph 316 -> 565,
     so 250 extra roots bought ~249 people. Roots have sharply diminishing returns because a root
-    only seeds what the Wikidata subgraph already connects. Her quarter is a **prediction**, and
+    only seeds what the Wikidata subgraph already connects. The quarter is a **prediction**, and
     the honest test is running it --- not arguing about it here.
 
     **A row with no `source` is a placeholder for a group we cannot yet build**, and it stays
     visible rather than being dropped: two of the seven have no roster in this repo at all, and
-    one is awaiting her definition. `CLAUDE.md` § *Code that is WRITTEN but never CALLED* is the
+    one is awaiting a definition. `CLAUDE.md` § *Code that is WRITTEN but never CALLED* is the
     same failure with a data file.
     """
     if not ENTRY_POINT_GROUPS.exists():
@@ -2362,9 +2327,9 @@ def group_pairs(row):
         if not part.strip() or not path.exists():
             continue
         if path.suffix == ".ged":
-            # **The "special geni gedcom recognition" group is a GEDCOM, not a table.** Emma,
-            # 2026-09-03: *"There's a specific gedcom that just links geni profiles to wikidata.
-            # It carries no relationship data just ids and bios with wikidata links in it."* That
+            # **The "special geni gedcom recognition" group is a GEDCOM, not a table.** Named
+            # 2026-09-03: one specific GEDCOM links Geni profiles to Wikidata, carrying no
+            # relationship data — just ids and bios with Wikidata links. That
             # is `exports/post-merge/wikidata-qid-links.ged`: `INDI` records holding nothing but a
             # `NOTE` with a Wikidata URL.
             import re
@@ -2479,12 +2444,12 @@ SUBGRAPH_ROOTS = subgraph_roots()
 
 #: **A KLUGE, and it is labelled one on purpose. Expires 2026-10-01.**
 #:
-#: **Emma, 2026-08-29:** *"A kluge is a specific programming thing which is designed to be an
-#: unscalable fix to a problem that's meant to be operating temporarily. Simply, it blocks all
-#: three of those people from being considered part of the universe until, let's say, October."*
+#: **Defined 2026-08-29:** a kluge is a deliberately unscalable fix meant to operate
+#: temporarily. This one blocks three people from being considered part of the universe until
+#: October.
 #:
-#: These three are her own Korean work -- Buyeo Deokjang and Buyeo Taebi are items she added a
-#: `P2600` to, and the wife was minted by the ring on 2026-08-27 at 17:41, **41 minutes before
+#: These three are hand-made Korean work -- Buyeo Deokjang and Buyeo Taebi are items that gained
+#: a `P2600` by hand, and the wife was minted by the ring on 2026-08-27 at 17:41, **41 minutes before
 #: the subgraph gate landed** (`ebf88d64` 18:22, `5ddf8560` 18:52). The gate already stops that
 #: recurring and none of the three is in the subgraph today. This is belt and braces over a
 #: mechanism that is already fixed, which is exactly why it is a kluge and not a rule: it does
@@ -2495,19 +2460,18 @@ SUBGRAPH_ROOTS = subgraph_roots()
 #: not their seeding.
 KLUGE_UNIVERSE_BLOCK = ("Q19657284", "Q12598947", "Q141198548")
 
-#: **The Asian people she named on 2026-08-29, plus Ame no Hohi.**
+#: **The Asian people named on 2026-08-29, plus Ame no Hohi.**
 #:
-#: **Emma, 2026-08-29:** *"It's best to overinclude all the Asian people from the […] file
-#: that were discussed earlier... The main thing would be Ame no Houhi and some other stuff."* Her reason, in her words: *"the idea is nothing is supposed
-#: to even know that I exist, but I'm a bit concerned that the existence is going to be
-#: figured out by other things."*
+#: **Ruled 2026-08-29:** overinclude all the Asian people from the side file discussed earlier,
+#: Ame no Hohi above all. The reason is linkage: the concern is that the connection is worked
+#: out from other things.
 #:
-#: The side file she was pointing at was deleted the same day; this list was read back out of
+#: The side file this pointed at was deleted the same day; this list was read back out of
 #: git (`12f3134a^`) rather than reconstructed from memory. It held nine Wikidata items. Four are
 #: already blocked -- Buyeo Deokjang and Buyeo Taebi above, Kitajima no Tokitaka `Q135579474`
-#: and Kitajima no Yasutaka `Q135579480` through `NEVER_TOUCH_QID`. One is **her own item and
-#: is deliberately left out**, on her instruction *"except for me"*. These are the remaining
-#: four, plus Ame no Hohi.
+#: and Kitajima no Yasutaka `Q135579480` through `NEVER_TOUCH_QID`. One is **the account owner's
+#: own item and is deliberately left out**, by instruction. These are the remaining four, plus
+#: Ame no Hohi.
 #:
 #: The first three are also the whole content of `exports/post-merge/wikidata-qid-links.ged`,
 #: the bio-link GEDCOM, which is the other place these pairings live.
@@ -2516,7 +2480,7 @@ KLUGE_ENTITY_RESOLUTION_ASIA = (
     "Q11078587",    # 播磨稲日大郎姫, geni 6000000001844033355
     "Q24890131",    # 物部伊莒弗 Mononobe, geni 6000000002039751362
     "Q11443857",    # 太媛 Futohime, geni 6000000001902786893
-    # Ame no Hohi 天穂日命 -- the one she named aloud, and he is not in that file by QID.
+    # Ame no Hohi 天穂日命 -- the one named aloud, and he is not in that file by QID.
     # Resolved offline against out/wikidata/labels.tsv, which carries him with the aliases
     # 天菩比神 / 天之菩卑能命 / 天穂日神 / アメノホヒ. He is the ancestor the Izumo line
     # descends from, so he is the doorway the Kitajima people would be reached through.
@@ -2527,10 +2491,9 @@ KLUGE_ENTITY_RESOLUTION_ASIA = (
 def kluge_blocked_from_universe():
     """The kluge's full set: the three Buyeo people **and the 178 CJK clan individuals**.
 
-    **Emma, 2026-08-29**, extending it: *"every single one of those clan individuals will
-    mechanically not go into the universe until October"*, and, drawing the line herself,
-    *"we probably are going to be changing their labelling in September, but being in the
-    universe is not going to happen until October."*
+    **Extended 2026-08-29:** every one of those clan individuals mechanically stays out of the
+    universe until October. Their labelling probably changes in September; universe membership
+    does not happen until October.
 
     So this blocks **universe membership only**. It does not touch labelling: `CJK_CLAN_BLOCK`
     is emitted through `_cap_label_edits` and never consults the subgraph, so the 15-a-day
@@ -2541,15 +2504,15 @@ def kluge_blocked_from_universe():
     """
     clan = set(re.findall(r"^(Q\d+)", CJK_CLAN_BLOCK, re.M))
 
-    # **Emma, 2026-08-29:** *"just add every single kitajima person into the klug too. It's
-    # better to include more people in it."*  So the Kitajima/Kitashima family joins, taken
-    # from `NEVER_TOUCH_QID` rather than restated.
+    # **Ruled 2026-08-29:** every Kitajima person goes into the kluge too, because it is better
+    # to include more people in it. So the Kitajima/Kitashima family joins, taken from
+    # `NEVER_TOUCH_QID` rather than restated.
     #
-    # **Her own item is deliberately NOT here, and is no longer named anywhere in this repo.**
-    # Emma, 2026-08-29: *"my QID should be nonexistent in the repository... It shouldn't be in
-    # the repo at all, simple as that."* `NEVER_TOUCH_QID` used to hold it alongside
-    # them, and she is not a Kitajima -- blocking her from the universe is a separate decision
-    # about her own duplicates, which is hers to make and not implied by this instruction.
+    # **The account owner's own item is deliberately NOT here, and is no longer named anywhere
+    # in this repo** -- ruled 2026-08-29, that QID is not to exist in the repository at all.
+    # `NEVER_TOUCH_QID` used to hold it alongside them, and that person is not a Kitajima --
+    # blocking them from the universe is a separate decision about their own duplicates, and is
+    # not implied by this instruction.
     #
     # The 25 ids in `NEVER_TOUCH_GENI` add nothing: **0 of them resolve to a QID** in
     # `out/wikidata/p2600-all.tsv`, because these items carry no `P2600` at all -- which is
@@ -2567,11 +2530,10 @@ CLAN_BLOCK_GATE = datetime.date(2026, 10, 1)
 
 #: The month-long hold on every item `OBender12` has touched.
 #:
-#: **Emma's control, 2026-08-30**, and the reasoning is in
-#: Emma's decision of 2026-08-30, and the live constraint after that day is
+#: **A hold set 2026-08-30.** The live constraint after that day is
 #: not the errors themselves -- those clear -- but **one editor holding a recent memory of the
-#: account**. Her words: *"the issue was specifically with this one editor and the fact they
-#: saw the same error many times."* Recognition decays more slowly than duplicates do, so the
+#: account**. The issue was specifically that one editor, and the fact that they saw the same
+#: error many times. Recognition decays more slowly than duplicates do, so the
 #: single variable worth controlling is how many further times that person sees us.
 #:
 #: The hold is on the FULL contributions list, not on its overlap with the ledger. Holding the
@@ -2589,7 +2551,7 @@ OBENDER_TOUCHED = ROOT / "reports" / "obender12-touched.tsv"
 def held_items(today=None):
     """Items our QuickStatements may not edit, because that editor has touched them.
 
-    **Subject only, never value.** Her control is *"our QuickStatements may not edit it"*, and
+    **Subject only, never value.** The control is that our QuickStatements may not edit it, and
     a QuickStatements line edits its SUBJECT. `Q1 P22 Q2` is an edit to `Q1`; `Q2` is only
     referenced, and appears on nobody's batch for it. Holding values as well would drop
     every statement pointing at a held person -- which is most of the ring, since the items
@@ -2625,28 +2587,29 @@ SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
 
 def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
-    """The connected group reachable from Arne and Bureus **through items Emma has edited**.
+    """The connected group reachable from Arne and Bureus **through the account's own items**.
 
-    **Emma, 2026-08-28:** *"my algorithm is entirely based on anyone on the continuous subgraph
-    currently on wikidata from Arne"*, then *"it is supposed to do this from Johannes Bureus and
-    Arne Garborg, subgraphs coming from both of them"*, and — the sentence that decides the
-    shape — *"The subgraph is stored and added to with my contributions."*
+    **Specified 2026-08-28:** the algorithm is based entirely on whoever is on the continuous
+    Wikidata subgraph from Arne, run from Johannes Bureus and Arne Garborg as two roots — and
+    the sentence that decides the shape: the subgraph is stored, and added to by the account's
+    contributions.
 
-    **The walk is restricted to her own items.** Unrestricted it is not a neighbourhood: Bureus
-    `Q633094` sits in Wikidata's 1,339,227-item genealogical component, so following every
-    `P22`/`P25`/`P26`/`P40`/`P3373` from him reaches **1.34 million** people and the ring becomes
-    the whole world tree. She listed the humans she has edited that are *outside* the contiguous
-    group — Buyeo Taebi `Q12598947`, Cecilie Ebbesdatter `Q116150300`, Buyeo Deokjang
-    `Q19657284`, Jon Jonsen `Q116150298`, Cecilie Jonsdatter `Q141189062`, Tøre Jonsen
-    `Q141189110`, Lave `Q141189080` — and the unrestricted walk puts four of those seven *inside*
-    it, which is how the mistake was caught.
+    **The walk is restricted to the account's own items.** Unrestricted it is not a
+    neighbourhood: Bureus `Q633094` sits in Wikidata's 1,339,227-item genealogical component, so
+    following every `P22`/`P25`/`P26`/`P40`/`P3373` from him reaches **1.34 million** people and
+    the ring becomes the whole world tree. The humans the account has edited that sit *outside*
+    the contiguous group were listed by hand — Buyeo Taebi `Q12598947`, Cecilie Ebbesdatter
+    `Q116150300`, Buyeo Deokjang `Q19657284`, Jon Jonsen `Q116150298`, Cecilie Jonsdatter
+    `Q141189062`, Tøre Jonsen `Q141189110`, Lave `Q141189080` — and the unrestricted walk puts
+    four of those seven *inside* it, which is how the mistake was caught.
 
-    So `universe` is the ledger: her items, plus the two roots. An edge counts only when both
-    ends are hers. That is what makes the group grow *with her contributions* rather than
-    swallow Wikidata the moment one of her items touches the world tree.
+    So `universe` is the ledger: the account's items, plus the two roots. An edge counts only
+    when both ends are in it. That is what makes the group grow *with the contributions* rather
+    than swallow Wikidata the moment one of those items touches the world tree.
 
     Two edge sources, because neither is current alone: the bulk `out/wikidata/relations.tsv`,
-    which predates most of her edits, and `reports/garborg-live-values.tsv`, refreshed each run.
+    which predates most of those edits, and `reports/garborg-live-values.tsv`, refreshed each
+    run.
     """
     universe = set(universe or ()) | set(roots)
     if datetime.date.today() < KLUGE_UNIVERSE_BLOCK_EXPIRES:
@@ -2739,10 +2702,9 @@ def _strip_markers(label):
 
 #: **Appended verbatim to the end of every batch. Hard-coded on purpose. Do not generalise it.**
 #:
-#: Emma, 2026-08-27, asking for exactly this and warning against what would otherwise happen to
-#: it: *"I have the biggest kludge of a solution: every quickstatement batch just adds these qids
-#: at the end... literally, there is a block of text with the quick statements hard-coded into
-#: the end of it. They stay in forever, adding the QIDs every single time."*
+#: Asked for exactly this on 2026-08-27, with a warning about what would otherwise happen to it:
+#: the solution is a deliberate kludge — every QuickStatements batch adds these QIDs at the end,
+#: as a hard-coded block of text that stays in forever and adds them every single time.
 #:
 #: **These are manual zipper merges.** Each line says *this Wikidata item is that Geni person*.
 #: The daily algorithm needs those eight pairings to exist on Wikidata for the Charlemagne chain
@@ -2754,20 +2716,18 @@ def _strip_markers(label):
 #: every run after that adds a duplicate, which QuickStatements merges away. Eight no-op lines a
 #: day, no state, no check, no dated logic. When the eight are done, delete the block.
 #:
-#: **Her explicit fear, recorded because it is the likely failure:** *"My fear with asking you to
-#: do this thing is that you are going to decide to over-engineer this into something that takes
-#: a gazillion years to make and has a high likelihood of later on being repurposed into
-#: something that's actively harmful... If you get any clever ideas about making it more
-#: scalable, then it's going to get shot down."* So: no lookup, no filtering, no *only emit if
-#: absent*, no reading it from a file. A literal string.
+#: **The explicit fear, recorded because it is the likely failure:** that this gets
+#: over-engineered into something slow to build and later repurposed into something actively
+#: harmful. Any clever idea about making it more scalable is refused. So: no lookup, no
+#: filtering, no *only emit if absent*, no reading it from a file. A literal string.
 #:
-#: **European only.** She ruled the Asian identifications out: *"for the Asian people I'm going
-#: to say no... the Asian people are long-term and there are potential concerns."*
+#: **European only.** The Asian identifications were ruled out: they are long-term and carry
+#: potential concerns.
 
 
 #: **The CJK clan labels, hard-coded and appended to every batch, exactly like
-#: the spine `P2600` block (since removed).** Emma, 2026-08-28: *"Fucking wire it in"*, after the formula was
-#: worked out on `Q10864996` and measured across the population.
+#: the spine `P2600` block (since removed).** Ordered wired in on 2026-08-28, after the formula
+#: was worked out on `Q10864996` and measured across the population.
 #:
 #: 177 people, 1,947 statement lines. Larger than the `P2600` block by two orders of
 #: magnitude, and the same mechanism for the same reason: the first run that reaches an
@@ -2780,8 +2740,8 @@ def _strip_markers(label):
 #: same reason the `P2600` block is a literal.
 CJK_CLAN_BLOCK = """
 # **15 of these people are NOT unnamed, and they are removed from this block.**
-# Emma, 2026-08-29: *"the entire idea of them having unknown names should not be part of the
-# pipeline at all if these names are remotely real, even if there are potentially errors."*
+# Ruled 2026-08-29: the idea of these people having unknown names should not be in the pipeline
+# at all if the names are remotely real, even where there may be errors.
 #
 # Measured by joining each item's P2600 to its Geni record. Three shapes, not one:
 #   162  BOTH say unknown -- Wikidata's `Li Mou` is the marker transliterated, since 李某 is
@@ -2790,8 +2750,7 @@ CJK_CLAN_BLOCK = """
 #        pipeline was reading the whole GIVN as a marker: `道古 某` -> Li Daogu, `鎮 某` ->
 #        Liu Zhen, `渠牟 某` -> Wei Qumou, `杲之 某` -> Cui Gaozhi.
 #     4  WIKIDATA has a name and Geni does not -- Wanshou, Guangde, Liu Yushi, Li Ru. Exactly
-#        the case she predicted: *"there might be instances where the Geni has an unknown name
-#        and the wikidata has a known name"*.
+#        the predicted case: Geni holds an unknown name while Wikidata holds a known one.
 #
 # Writing `Lmul "NN"` on the 15 would assert something one or both databases contradict, on an
 # item that already reads with a real name in English. Removed here rather than filtered at the
@@ -5540,22 +5499,22 @@ Q45700685	Lca	"home del clan Li, de Qinzhou Chengji"
 # -------------------------------------------------------------------------
 # THE CLAN PREFIX, on a NAMED person. Not one of the 177 above.
 #
-# Emma, 2026-08-29: "Put Futohime in the queued up clan block and just make sure
-# we are implementing the idea in question". The idea is the clan prefix, and it
-# is already carried by every other CJK person she named -- checked
-# live that day: Q24890131 reads "Mononobe no Ikofutsu", Q135579474 "Kitajima no
-# Tokitaka", Q135579480 "Kitajima no Yasutaka". Futohime is the one straggler.
+# Ruled 2026-08-29: put Futohime in the queued clan block and implement the idea
+# in question. The idea is the clan prefix, and it is already carried by every
+# other CJK person named -- checked live that day: Q24890131 reads "Mononobe no
+# Ikofutsu", Q135579474 "Kitajima no Tokitaka", Q135579480 "Kitajima no
+# Yasutaka". Futohime is the one straggler.
 #
-# Her instruction is older and unambiguous: "change her
-# name to 'Mononobe no Futohime'". Live 2026-08-29 the item read en "Futohime",
-# with mul, ja and zh all empty and no aliases.
+# The instruction is older and unambiguous: her name becomes
+# "Mononobe no Futohime". Live 2026-08-29 the item read en "Futohime", with mul,
+# ja and zh all empty and no aliases.
 #
 # The outgoing "Futohime" is kept as an Amul rather than lost: mul was empty, so
-# nothing of hers is overwritten and the bare given name stays searchable.
+# nothing is overwritten and the bare given name stays searchable.
 #
 # ja and zh are left alone for the same reason the block above leaves them alone.
 # Her Geni name is 太媛, so 物部太媛 is the obvious Japanese form -- and "obvious"
-# is not the standard here, and she has not been asked.
+# is not the standard here, and it has not been ruled on.
 # -------------------------------------------------------------------------
 #   Q11443857: keep the outgoing label as an alias before replacing it
 Q11443857	Amul	"Futohime"
@@ -5569,30 +5528,28 @@ Q11443857	Len	"Mononobe no Futohime"
 def compose(our_items, fam, rng, ring_seeds=None):
     """`{geni_id: why}` -- the people this run creates, per `docs/daily-algorithm.md`.
 
-    **Emma's revised algorithm, 2026-08-26**, written after she stopped a run of 50
-    creations partway through: *"creating individuals with all of their children is just
-    crazy talk."* The old shape drew 28 of its 50 from one component -- five couples with
-    their *entire* children, one of which had eleven.
+    **The revised algorithm, 2026-08-26**, written after a run of 50 creations was stopped
+    partway through: creating individuals with all of their children is not a thing to do.
+    The old shape drew 28 of its 50 from one component -- five couples with their *entire*
+    children, one of which had eleven.
 
     The new shape is two caps, one substitution and one free rule:
 
-    1. **The spine, always, outside the caps.** *"The ancestral couples between Bergitte,
-       going from Arne to Bergitte to Charlemagne, are always getting made."* Both saved
-       paths are walked, so the line down to her advances every run as well as the line up
-       to Charlemagne -- she doubted the last run produced the *"critical path going to
-       me"*, and it did not: all 16 steps of `paths/bergitte-to-emma.tsv` were uncreated.
+    1. **The spine, always, outside the caps.** The ancestral couples from Arne to Bergitte to
+       Charlemagne are always made. Both saved paths are walked, so the downward line advances
+       every run as well as the line up to Charlemagne -- the previous run was suspected of not
+       producing the critical downward path, and it had not: all 16 steps of
+       `paths/bergitte-to-emma.tsv` were uncreated.
     2. **`CHILDREN_PER_RUN` children.** A random person who has an uncreated child gets
        **one** child.
-       *"you go to a person, and then it adds a child."*
-    3. **The substitution.** *"If the person has a childless marriage, then it can generate
-       their spouse instead."* So a person picked in step 2 who has a spouse we lack and no
-       child to add contributes the spouse. There is **no independent spouse bucket** --
-       her earlier *"10 spouses"* was revised away in the same message.
-    4. **`PARENTS_PER_RUN` parents.** A random person missing a parent gets one. *"then the next run it
-       generates the child's parent."*
-    5. **Free parents, not counted against that cap.** *"if a child is present and it appears
-       like they have a single mother or single father, then the next time they get their
-       parents for free."*
+    3. **The substitution.** A person whose marriage is childless generates their spouse
+       instead. So a person picked in step 2 who has a spouse we lack and no child to add
+       contributes the spouse. There is **no independent spouse bucket** -- the earlier separate
+       spouse count was revised away in the same message.
+    4. **`PARENTS_PER_RUN` parents.** A random person missing a parent gets one, and the next
+       run generates that child's parent.
+    5. **Free parents, not counted against that cap.** Where a child is present and appears to
+       have a single mother or single father, the next run gives them their parents for free.
 
     `have` is the ball: every Geni id we can already point at a Wikidata item.
     `fam` is `reports/derived-family.csv` keyed by Geni id.
@@ -5648,11 +5605,11 @@ def compose(our_items, fam, rng, ring_seeds=None):
     why.append(f"4. {parents}/{PARENTS_PER_RUN} parents, one per person")
 
     # --- 5. free parents for anyone half-attached --------------------------------
-    # Her rolling rule. A person with one parent linked and the other never created is
+    # The rolling rule. A person with one parent linked and the other never created is
     # the structural wart the old algorithm left behind; this closes them as it goes.
     # **Every half-attached person is eligible; the budget is
     # `FREE_PARENTS_FREE + half the rest`.**
-    # Her formula. The eligible set is counted first and the budget derived from it, so the
+    # The specified formula. The eligible set is counted first and the budget derived from it, so the
     # number is a function of the backlog rather than of iteration order.
     eligible = []
     # Bounded the same way: a half-attached person 40 hops out is still a real wart,
@@ -5680,31 +5637,31 @@ def compose(our_items, fam, rng, ring_seeds=None):
 
 
 def main():
-    # `--skip-nn` is a per-run choice, not a rule. Emma, 2026-08-24: *"for this
-    # quickstatements run the NN people are not worth creating"* -- for THIS run. The
+    # `--skip-nn` is a per-run choice, not a rule. Ruled 2026-08-24 that the NN people were
+    # not worth creating -- for THAT run only. The
     # standing rule in `CLAUDE.md` is that redacted people go in, with the marker in
     # `mul` and a formulaic description elsewhere, so this must not become the default.
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-nn", action="store_true",
                     help="omit redacted/NN people from this batch (a per-run choice)")
-    # **Emma, 2026-08-25:** *"Since it is clear that there are way too many people to do
-    # everything, we focus on ancestry and in-laws that get to my item."* Without this the
-    # frontier is every edge out of every item that has a QID -- 138 creations in all
-    # directions on the day this was added -- and most of them lead away from her rather
-    # than toward Charlemagne or toward Arne.
+    # **Ruled 2026-08-25:** there are far too many people to do everything, so the focus is
+    # ancestry and the in-laws that reach the target item. Without this the frontier is every
+    # edge out of every item that has a QID -- 138 creations in all directions on the day this
+    # was added -- and most of them lead away from the target rather than toward Charlemagne or
+    # toward Arne.
     #
     # The roster is a file of Geni ids, one per line or in a `geni_id` column;
-    # `reports/charlemagne-route.csv` is the 399-step Emma-to-Charlemagne spine and
-    # `paths/isolate-geni-aadne-eivindson-garborg-1851-1924.tsv` is the Emma-to-Arne pair
-    # of paths. Spouses of roster members are kept too -- those are the in-laws she named.
+    # `reports/charlemagne-route.csv` is the 399-step spine to Charlemagne and
+    # `paths/isolate-geni-aadne-eivindson-garborg-1851-1924.tsv` is the pair of paths to Arne.
+    # Spouses of roster members are kept too -- those are the in-laws named.
     ap.add_argument("--roster", action="append", default=[], metavar="FILE",
                     help="restrict the ring to these Geni ids (repeatable)")
-    # **The ledger is only who EMMA created.** `reports/charlemagne-route.csv` carries 383
-    # people who already had a Wikidata item long before this programme, with their QIDs in
+    # **The ledger is only what the account created.** `reports/charlemagne-route.csv` carries
+    # 383 people who already had a Wikidata item long before this programme, with their QIDs in
     # a `qid` column — and the "both ends must exist" rule needs those to count as existing,
     # or the ring around them is empty and the route can never be worked. Without this the
-    # roster filter cut the ring to zero: the 41 items she has made are Arne's family, and
-    # the route is her own ancestry, which touches them only at the far end.
+    # roster filter cut the ring to zero: the 41 items made by hand are Arne's family, and
+    # the route is a separate ancestry that touches them only at the far end.
     ap.add_argument("--known", action="append", default=[], metavar="FILE",
                     help="CSV/TSV with geni_id and qid columns of items that already exist")
     # **In-laws are opt-in, because they are the bulk.** With the Charlemagne route as the
@@ -5730,9 +5687,9 @@ def main():
     ap.add_argument("--seed", type=int, default=0, metavar="N",
                     help="seed for --compose, so a run is reproducible.")
     ap.add_argument("--no-refresh", action="store_true",
-                    help="do NOT read her Wikidata contributions first. Only for offline "
+                    help="do NOT read the Wikidata contributions first. Only for offline "
                          "work: the batch is then built against whatever the ledger last "
-                         "recorded, which is how items she has already made get re-created.")
+                         "recorded, which is how already-made items get re-created.")
     ap.add_argument("--limit", type=int, default=0, metavar="N",
                     help="create only the N people closest to Arne (0 = no limit)")
     args = ap.parse_args()
@@ -5744,8 +5701,8 @@ def main():
     # `FREE_PARENTS_FREE` and `SIBLING_CAP` all live -- it emits **34**. The bare path is not a
     # smaller daily algorithm; it skips the algorithm.
     #
-    # Both write `reports/wikidata-garborg-day.txt`, so a bare run silently replaces a batch Emma
-    # may already have run, and `--compose` itself ADVANCES the sequence: it consumes and
+    # Both write `reports/wikidata-garborg-day.txt`, so a bare run silently replaces a batch that
+    # may already have been run, and `--compose` itself ADVANCES the sequence: it consumes and
     # rewrites `reports/garborg-carry-forward.tsv`, so re-running it on the same day produced a
     # batch differing by 19 people out and 17 in -- the next hop, not today's.
     #
@@ -5758,37 +5715,36 @@ def main():
             "  the daily batch:  python scripts/build-daily-batch.py\n"
             "  this script only: --compose (the daily algorithm) or --roster FILE")
 
-    # **Her contributions are read EVERY run, before anything else.**
+    # **The contributions are read EVERY run, before anything else.**
     #
-    # Emma, 2026-08-28: *"this is worrying since it seems to indicate that you might be
-    # building the ledger as a separate part from the script, when in reality the script is
-    # supposed to go through my contributions and update the ledger every time."* It was
-    # separate, and it cost exactly what she predicted: a batch built at 17:33 used a ledger
-    # refreshed hours earlier, so `Q141198835` Bergitte Gunnbjørnsdatter Aukland — the hinge of
-    # all three lines, which she had just created — read as missing, and the spine reported the
-    # Charlemagne path as unable to reach her.
+    # Ruled 2026-08-28: the ledger must not be built as a separate step; the script goes through
+    # the contributions and updates the ledger every time. It was separate, and it cost exactly
+    # what was predicted: a batch built at 17:33 used a ledger refreshed hours earlier, so
+    # `Q141198835` Bergitte Gunnbjørnsdatter Aukland — the hinge of all three lines, created
+    # minutes before — read as missing, and the spine reported the Charlemagne path as unable to
+    # reach her.
     #
     # It **fails the run** rather than falling back to the file on disk. A stale ledger does not
     # look like an error, it looks like work to do, and the work it invents is re-creating items
-    # she already made.
+    # that already exist.
     if args.compose and not args.no_refresh:
         r = subprocess.run([sys.executable, str(ROOT / "scripts" / "refresh-garborg-ledger.py")],
                            cwd=ROOT, capture_output=True, text=True,
                            encoding="utf-8", errors="replace")
         if r.returncode != 0:
             sys.exit("the ledger refresh failed, so the batch would be built against a stale "
-                     "picture of what Emma has already created:\n"
+                     "picture of what has already been created:\n"
                      + (r.stderr or r.stdout)[-800:])
         print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
               "ledger refreshed")
 
         # **And the live values, for the same reason.** `add()` drops a statement the item
         # already holds by checking `reports/garborg-live-values.tsv`; if that file is stale the
-        # check silently passes and the batch re-emits things she has already done. Measured
+        # check silently passes and the batch re-emits work already done. Measured
         # 2026-08-27: the file was 21 hours old and covered 131 of 209 ledger items, so 78
         # people had no dedupe at all. This is the same defect as the ledger being refreshed
-        # separately, which she ruled on the same day — *"the script is supposed to go through
-        # my contributions and update the ledger every time."*
+        # separately, ruled on the same day: the script goes through the contributions and
+        # updates the ledger every time.
         r = subprocess.run([sys.executable, str(ROOT / "scripts" / "refresh-live-values.py")],
                            cwd=ROOT, capture_output=True, text=True,
                            encoding="utf-8", errors="replace")
@@ -5799,16 +5755,16 @@ def main():
         print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
               "live values refreshed")
 
-        # **And the name items she has already created, which is the SAME BUG a third time.**
-        # Emma, 2026-09-05: *"the quickstatements I most recently ran tried to make duplicate
-        # surnames again lol"* -- `Låge-Håland`, refused by Wikidata because `Q141257135`
+        # **And the name items already created, which is the SAME BUG a third time.**
+        # Reported 2026-09-05: the most recently run QuickStatements tried to make duplicate
+        # surnames again -- `Låge-Håland`, refused by Wikidata because `Q141257135`
         # already held that label and description, which then broke the four `LAST` lines
         # after it.
         #
         # `refresh-created-name-items.py` was written on 2026-08-30 against exactly this and
         # **nothing ever called it**, so `reports/created-name-items.tsv` sat at 18 rows from a
         # hand-run while items kept being created. A name item has no `P2600`, so the ledger
-        # refresh above cannot see it; this reads her contributions for page creations whose
+        # refresh above cannot see it; this reads the contributions for page creations whose
         # `P31` is a name class, and follows redirects so a merged-away item resolves to its
         # survivor.
         #
@@ -5844,10 +5800,10 @@ def main():
     # not cover it: that fires when a PARENT has an unmatched child item, and here the person
     # themselves is already present.
     #
-    # This is the offline half of the check Emma rejected in its live form -- *"we are noy gonna
-    # do a fuckin glive P2600 check"* -- and it costs nothing, because the file is on disk. It
-    # is a floor, not the whole answer: the map predates every item she has made, which is why
-    # `scripts/refresh-garborg-ledger.py` reads her contributions separately.
+    # This is the offline half of the check that was refused in its live form -- no live
+    # `P2600` check -- and it costs nothing, because the file is on disk. It is a floor, not the
+    # whole answer: the map predates most of the hand-made items, which is why
+    # `scripts/refresh-garborg-ledger.py` reads the contributions separately.
     any_wikidata_item = {}
     p2600_all = ROOT / "out" / "wikidata" / "p2600-all.tsv"
     if p2600_all.exists():
@@ -5863,16 +5819,17 @@ def main():
     def father_item(dad):
         """The QID for a patronymic's `P144` *based on*, or `None`.
 
-        **Emma, 2026-09-02:** *"Patronymics are not getting the names they come from in the
-        logic lol that's actually essential to the real specified algorithm."* She is right and
-        the cause was scope, not a missing feature: `namemodel.statements_for` has taken a
-        `father_qid` since it was written, and both call sites passed one -- but they looked the
-        father up in `our_items`, **the 1,179-row ledger**, when 518,855 Geni ids carry a
-        `P2600` on Wikidata. So `P144` fired only when she happened to have made the father
-        herself. Measured before the change: 6 `P5056` statements, 2 with `P144`.
+        **Reported 2026-09-02:** patronymics were not getting the names they derive from, which
+        is essential to the specified algorithm. The cause was scope, not a missing feature:
+        `namemodel.statements_for` has taken a `father_qid` since it was written, and both call
+        sites passed one -- but they looked the father up in `our_items`, **the 1,179-row
+        ledger**, when 518,855 Geni ids carry a `P2600` on Wikidata. So `P144` fired only where
+        the father happened to have been made by hand. Measured before the change: 6 `P5056`
+        statements, 2 with `P144`.
 
         **The ledger first, then any `P2600` -- and the correspondence union NOT at all.** Those
-        first two are direct statements of identity: one she made, one Wikidata already holds.
+        first two are direct statements of identity: one made by hand, one Wikidata already
+        holds.
         `known_pair` is 568,535 wide and includes zipper-inferred pairs, which
         `reports/zipper-reliability.md` measures at 2.8-4.8% error. A wrong `P144` does not
         merely mis-rank something -- it asserts this patronymic derives from THAT man, which is
@@ -5884,9 +5841,8 @@ def main():
         return our_items.get(dad) or any_wikidata_item.get(dad)
 
     # **A P2600 is not the only way we know somebody already has an item -- and on 2026-09-01 it
-    # let a duplicate through.** Emma, on `Q550343` *Welf I, Duke of Bavaria*, an item with 27
-    # sitelinks that a batch re-created as `Q141249742`: *"this one was made as a new individual
-    # ... idk why but it was an error."*
+    # let a duplicate through.** `Q550343` *Welf I, Duke of Bavaria*, an item with 27 sitelinks,
+    # was re-created by a batch as `Q141249742` -- reported as an error with no obvious cause.
     #
     # Welf carried **no `P2600` at all**, so the map above could not see him. The zipper could,
     # and did: `4927821250240067090 -> Q550343` was in `reports/zipper-pairs.tsv` on 2026-08-26,
@@ -5895,15 +5851,15 @@ def main():
     #
     # **The rule was already known and applied in the wrong script.**
     # `scripts/build-parent-candidates.py` treats the correspondence as authoritative for "this
-    # person is spoken for", with a comment quoting her on exactly this failure:
-    # *"Most have identification already on wikidata lmao."* The script that CREATES items never
+    # person is spoken for", with a comment recording exactly this failure: most of them already
+    # have an identification on Wikidata. The script that CREATES items never
     # learned it. That is `CLAUDE.md` § *Code that is WRITTEN but never CALLED*, one level up --
     # the lesson landed, in one place only.
     #
     # **Held, not linked, matching how the `P2600` guard already behaves.** A zipper pair carries
     # a measured 2.8-4.8% error, so some of these will be wrong -- and the two outcomes are not
     # symmetric. Holding a creation costs a day, because tomorrow's batch runs again; creating a
-    # duplicate costs her a manual merge on Wikidata, which is what this is written against.
+    # duplicate costs a manual merge on Wikidata, which is what this is written against.
     correspondence = ROOT / "reports" / "synoptic-correspondence.tsv"
     known_pair = {}
     if correspondence.exists():
@@ -5964,12 +5920,11 @@ def main():
         print(f"{len(to_create)} people one edge away and not yet on Wikidata")
 
     # **There is no birth-year filter, deliberately.** `MODERN_CUTOFF = 1880` lived here
-    # from 2026-08-25 to 2026-08-27. It came from one objection to one person -- *"no we
-    # are no fuckin gmaking my father as a wikidata item right now lol"* -- generalised
-    # into a demographic exclusion nobody asked for, and it was dead code under
+    # from 2026-08-25 to 2026-08-27. It came from one objection to one person on one day,
+    # generalised into a demographic exclusion nobody asked for, and it was dead code under
     # `--compose` the whole time, filtering a ring that `compose()` then replaced while
-    # printing a reassuring "112 dropped". Emma, 2026-08-27: **"totally undesired"**, and
-    # *"Yes I explicitly want my father created"*. Do not reintroduce it in any form.
+    # printing a reassuring "112 dropped". Ruled **totally undesired** on 2026-08-27, and the
+    # person in question was explicitly wanted. Do not reintroduce it in any form.
 
     if args.roster:
         # **Find the ids by pattern, not by parsing the file's shape.** Two attempts
@@ -6009,15 +5964,18 @@ def main():
         # Seeded so a run is reproducible and reviewable. `Math.random`-style
         # irreproducibility would make a batch impossible to explain after the fact.
         rng = random.Random(args.seed)
-        # **The seed pool is the Wikidata subgraph reachable from Arne — her algorithm.**
+        # **The seed pool is the Wikidata subgraph reachable from Arne — the specified
+        # algorithm.**
         #
-        # Not the ledger, which is "every item Emma has made" and therefore includes her Izumo
-        # and Kitajima work; not a hop radius, which was my invention and cut a batch to 7.
+        # Not the ledger, which is "every item the account has made" and therefore includes the
+        # Izumo and Kitajima work; not a hop radius, which was invented here and cut a batch
+        # to 7.
         # A person seeds a ring when Wikidata already connects them to Arne by any chain of
         # relationship statements, however long.
         our_wikidata_subgraph = wikidata_subgraph(universe=set(our_items.values()))
         ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}
-        print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through her own "
+        print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through the "
+              f"account's own "
               f"items: {len(our_wikidata_subgraph)} items; {len(ring_seeds)} of {len(our_items)} ledger people seed")
         # **A timer that fires silently is a timer nobody can check.** Both lists print every
         # run, so the day one switches on is visible in the output rather than inferred.
@@ -6046,12 +6004,11 @@ def main():
 
     # **`--exclude` applies to EVERY batch shape, not only `--compose`.** It lived inside the
     # compose branch, so a `--roster` run ignored it completely -- which is how a roster batch
-    # came out re-creating two people an earlier batch the same day had already given Emma.
+    # came out re-creating two people an earlier batch the same day had already emitted.
     # A guard that silently does not run is worse than none, because it gets reported as
-    # protection. Her verdict on exactly that: *"you even said you deduplicated and then you
-    # just didn't."*
+    # protection -- a deduplication claimed and not actually done.
     #
-    # The ledger only catches up once she has actually run a file, so within a single day this
+    # The ledger only catches up once a file has actually been run, so within a single day this
     # is the only thing keeping two batches disjoint.
     # `carried` collects everyone held back, with the reason. Defined here rather than beside
     # `lines` because the exclusion and duplicate checks below both append to it.
@@ -6119,8 +6076,8 @@ def main():
                 # `other_script_names` (11,519); only 22,174 are genuinely nameless.
                 # Without this they reach the redacted branch and are created as a bare
                 # `NN`, losing a name Geni actually recorded --
-                # `6000000186285688241`, whose name is `부여융 무명`, is the case Emma's
-                # batch surfaced.
+                # `6000000186285688241`, whose name is `부여융 무명`, is the case a batch
+                # surfaced.
                 #
                 # `CLAUDE.md` § *Do not confuse redacted with unnamed* is exactly this
                 # distinction: the test is never "is the label bad", it is "is there
@@ -6133,7 +6090,7 @@ def main():
                 # `Sara /NN/` — given name Sara, surname field the marker `NN`, meaning the
                 # surname is unknown — and `display_name` concatenates the fields, so the label
                 # reached this batch as `Sara NN` and would have been written to Wikidata as
-                # what she is called. `NN` is a statement that a name is missing.
+                # the person's name. `NN` is a statement that a name is missing.
                 #
                 # Only stripped when a real name survives. A label that is nothing but markers
                 # is left exactly as it is, so the NN treatment below still fires and
@@ -6154,9 +6111,9 @@ def main():
                     dict.fromkeys(w.split()[0] for w in firsts if w.split()))
                 # **How a person is named when somebody ELSE's label refers to them.**
                 #
-                # Emma, 2026-08-29, on `Q141205933`: *"it appears that it uses the birth name
-                # of the wife. This is concerning and it may mean that a lot of places
-                # primarily use the birth names of women and this causes inconsistency"*.
+                # Reported 2026-08-29 on `Q141205933`: it used the wife's birth name, which
+                # suggested a lot of places were primarily using women's birth names and
+                # causing an inconsistency.
                 #
                 # It was an inconsistency between two layers of this one file.
                 # `derived-labels.csv` puts the BIRTH name in `label_mul` and the married one
@@ -6165,7 +6122,7 @@ def main():
                 # and correctly makes the married name primary, per § *The MARRIED name is the
                 # real name*. `describe_all` read `labels`, so one run created a woman as
                 # `Thelma Geraldine Bagby` while calling a man "husband of Mona Beth Tunheim",
-                # her BIRTH name -- two readings of one rule in a single file.
+                # the BIRTH name -- two readings of one rule in a single file.
                 #
                 # A SEPARATE dict rather than changing `labels`, because `labels` also feeds
                 # `name_lines`, where the birth surname and the married surname are DIFFERENT
@@ -6180,10 +6137,10 @@ def main():
                 # statements (`Q2507958` birth name, `Q28418670` married name).
                 referred_to_as[row["geni_id"]] = raw_label
 
-    # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
-    # 2026-08-24: *"I thought we were resolving name objects but now we're determining
-    # which name field to use as a source of the label?"* -- catching that the name
-    # model was re-parsing the rendered label. The first NAME record wins; later ones
+    # **The GEDCOM name FIELDS, which is where name objects come from.** Caught
+    # 2026-08-24: name objects are resolved from the fields, not by choosing which name
+    # field to use as a source of the label -- the name model was re-parsing the rendered
+    # label. The first NAME record wins; later ones
     # are alternate forms and `derive-labels.py` already owns those.
     fields = {}
     generation = {}
@@ -6191,9 +6148,9 @@ def main():
         for row in csv.DictReader(f):
             if row["geni_id"] in ids and row["geni_id"] not in fields:
                 # `display_name` is the name GENI renders, untouched by our married-name
-                # flip -- it is what `P1810` *subject named as* must carry. Emma, 2026-08-28:
-                # *"I want us to have the property P1810 with the specific name geni gives
-                # them."* Taking it from the same first row is the point: `derived-labels.csv`
+                # flip -- it is what `P1810` *subject named as* must carry, per the 2026-08-28
+                # rule that `P1810` holds the specific name Geni gives a person.
+                # Taking it from the same first row is the point: `derived-labels.csv`
                 # holds our derived label, which is a different claim.
                 # **`nsfx` is read so the name model can REFUSE it.** Geni puts a title in the
                 # name-suffix field -- `Queen of Sweden`, `Graf`, `Knight` -- and
@@ -6215,16 +6172,16 @@ def main():
             # **The generation suffix is read off EVERY record, not just the first.** It is a
             # fact about the person, and Geni files it on whichever name record carries it --
             # for `Q141219063` that is his Foss-Eikeland record, while his label comes from the
-            # one holding `_MARNM` = `Nese`, so it fell between them. Emma, 2026-09-07: *"the
-            # I, II, Sr, Jr, d.y. suffixing was not done properly."* This sits OUTSIDE the
+            # one holding `_MARNM` = `Nese`, so it fell between them. Reported 2026-09-07: the
+            # `I`/`II`/`Sr`/`Jr`/`d.y.` suffixing was not done properly. This sits OUTSIDE the
             # first-wins guard above on purpose; everything else there is per-record.
             if row["geni_id"] in ids and not generation.get(row["geni_id"]):
                 key = generation_suffix_key(row.get("nsfx", ""))
                 if key:
                     generation[row["geni_id"]] = key
-            # **⛔ THE FIRST NAME RECORD IS OFTEN THE ONE WITH NO COMPONENTS.** Emma,
-            # 2026-09-07: *"individuals are supposed to be created already having name links and
-            # this does not seem to be happening reliably."* Geni writes the bare rendered form
+            # **⛔ THE FIRST NAME RECORD IS OFTEN THE ONE WITH NO COMPONENTS.** Reported
+            # 2026-09-07: individuals are supposed to be created already carrying name links,
+            # and that was not happening reliably. Geni writes the bare rendered form
             # as one `NAME` record and the parsed one as another, and the bare one carries empty
             # `GIVN`, `SURN` and `_MARNM`:
             #
@@ -6236,8 +6193,8 @@ def main():
             # one of them somebody whose name Geni records perfectly well.
             #
             # **The components are backfilled; `display_name` is NOT.** That column is what
-            # `P1810` *subject named as* carries -- *"I want us to have the property P1810 with
-            # the specific name geni gives them"* -- and for `Anders Persson Hägg` the bare row
+            # `P1810` *subject named as* carries -- the specific name Geni gives a person --
+            # and for `Anders Persson Hägg` the bare row
             # is the fuller rendering. Two different questions off two different rows, which is
             # why this is a separate pass rather than a change to which row wins.
             held = fields.get(row["geni_id"])
@@ -6246,8 +6203,8 @@ def main():
                 for key in ("givn", "surn", "nick", "marnm", "nsfx"):
                     if (row.get(key) or "").strip():
                         held[key] = row[key]
-            # **⛔ A NAME FIELD THAT NAMES A RELATIVE IS EMPTIED, HERE, ONCE.** Emma,
-            # 2026-09-07: *"why are the NN people getting the names of their relatives"*.
+            # **⛔ A NAME FIELD THAT NAMES A RELATIVE IS EMPTIED, HERE, ONCE.** Reported
+            # 2026-09-07: the NN people were getting the names of their relatives.
             # `Q141352505` is recorded on Geni as `NN ektefelle Søren Jonson /Aukland/`, so her
             # `GIVN` holds her HUSBAND -- and she went out with his `P735` Søren, his `P5056`
             # Jonson and `P734` Aukland. See `names_a_relative`; **552 people**.
@@ -6320,9 +6277,8 @@ def main():
 
     lines = []
     # ---- THE DUPLICATE GUARD -------------------------------------------------------
-    # **Emma, 2026-08-25, after running a batch:** *"you also kinda immediately just fucked
-    # up with making a person who has an item see here
-    # https://www.wikidata.org/wiki/Q2183430"*.
+    # **Reported 2026-08-25, after running a batch:** a person who already had an item was
+    # created a second time -- https://www.wikidata.org/wiki/Q2183430
     #
     # `Q2183430` is *Benedicta Ebbesdotter of Hvide*, b.1165 d.1199, father `Q16063657`. The
     # batch created a second item for her -- same father, same death year, and it even wrote
@@ -6330,7 +6286,7 @@ def main():
     # the whole time with 30 properties on her.
     #
     # **Why nothing caught it.** The builder knew about existing items two ways only:
-    # `garborg-qids.tsv`, the 41 people Emma had made, and `p2600-all.tsv`, items carrying a
+    # `garborg-qids.tsv`, the 41 people made by hand, and `p2600-all.tsv`, items carrying a
     # `P2600`. `Q2183430` has no `P2600`, so it was invisible to both.
     #
     # **The check that does catch it is the parent's own child list.** `Q16063657`'s `P40` is
@@ -6341,14 +6297,13 @@ def main():
     #
     # This is conservative on purpose and will hold back people who really are new, whenever
     # a sibling of theirs has an unmatched item. Holding a real person back costs a day;
-    # creating a duplicate costs Emma a manual merge on a public database.
+    # creating a duplicate costs a manual merge on a public database.
     #
     # `out/wikidata/relations.tsv` (scripts/extract-wikidata-relations.py) carries `P40` for
     # every item in the store, so this is a dict lookup rather than a shard read.
     #
-    # **THE MIRROR, and it is the half Emma actually complained about.** 2026-08-29:
-    # *"you appear to be actively creating rival parent profiles in a way that is harmful. For
-    # eample this one had to be mered."*
+    # **THE MIRROR, and it is the half that was actually reported.** On 2026-08-29: rival
+    # parent profiles were being created in a way that is harmful, and one had to be merged.
     #
     # The `P40` check above is the CHILD direction: it holds a person whose parent already has
     # unclaimed children. It says nothing about the PARENT direction -- creating a father for a
@@ -6360,7 +6315,7 @@ def main():
     # refuse. The person being created may BE that item.
     #
     # Same conservatism and same trade as the child direction: holding a real person back costs
-    # a day, creating a rival costs Emma a manual merge on a public database.
+    # a day, creating a rival costs a manual merge on a public database.
     kids_of = {}
     parents_of = {}
     #: `P22`/`P25` kept apart, for the single-value guard at the end of the run.
@@ -6383,7 +6338,7 @@ def main():
               f"guard ({len(wd_fathers):,} with a father, {len(wd_mothers):,} with a "
               f"mother, for the single-value guard)")
 
-    # The store predates most of the ledger, so a person Emma created this week has no row in
+    # The store predates most of the ledger, so a person created this week has no row in
     # it. `reports/garborg-live-values.tsv` is refreshed every run and carries the current
     # statements for exactly those people, which is where a fresh rival would show up.
     live = ROOT / "reports" / "garborg-live-values.tsv"
@@ -6472,8 +6427,8 @@ def main():
             print(f"--skip-nn: {len(dropped)} redacted people held for a later run")
 
     # ---- order the ring by CLOSENESS TO ARNE ---------------------------------------
-    # Emma: *"I want to build more connected Arne Garborg individuals"* and
-    # *"we maybe make 10 people connected to Arne Garborg"*. The ring was emitted in label
+    # The goal is more connected Arne Garborg individuals, roughly ten a run. The ring was
+    # emitted in label
     # order, which is alphabetical and meaningless. Distance is measured over the same
     # parent/child/spouse edges the tree records.
     ARNE = "6000000003492005116"
@@ -6505,36 +6460,36 @@ def main():
         return f'\tS2600\t"{g}"'
 
     # ---- 1. everything missing from people who ALREADY have QIDs ------------
-    # Emma, 2026-08-24, asked whether to add properties to items that already exist:
-    # yes. This section used to close *links* only, so an item that existed was never
+    # Asked 2026-08-24 whether to add properties to items that already exist: yes.
+    # This section used to close *links* only, so an item that existed was never
     # asked whether it was missing a date, a name statement or a label -- which is a
     # large part of what "not remotely comprehensive" meant. `Q467497` Arne Garborg
     # had no `P22` father and no `P25` mother while both his parents had QIDs.
     state = existing_state(set(our_items.values()))
     # What the labels actually SAY, live, so a disagreement can be seen. See
-    # `read_live_labels` and Emma's rule of 2026-08-30.
+    # `read_live_labels` and the rule of 2026-08-30.
     live_labels = read_live_labels()
     # A live read beats both the store and the guess. `reports/garborg-live-state.tsv`
     # records what each item held on 2026-08-24; the store predates most of them and
-    # the fallback below assumes our own batch made them, which is wrong wherever Emma
-    # edited by hand. Eivind is the case: he carries P735/P734/P5056 she added herself.
+    # the fallback below assumes our own batch made them, which is wrong wherever an item was
+    # edited by hand. Eivind is the case: he carries P735/P734/P5056 added by hand.
     state.update(live_state())
     live_values = read_live_values()
     suppressed = read_suppressed()
     suppressed_hits = set()
-    # **The order of the two sections is her spec and it is structurally rigid.** Emma,
-    # 2026-08-26: *"Creation of individuals comes first, then creation of names, then the
-    # relationships between the individuals... The order itself is structurally rigid because
-    # it depends on certain things being capable of being referenced in certain situations."*
+    # **The order of the two sections is the spec and it is structurally rigid.** Set
+    # 2026-08-26: creation of individuals first, then creation of names, then the relationships
+    # between individuals. The order is structurally rigid because it depends on certain things
+    # being referenceable in certain situations.
     # This file emitted relationships first until 2026-08-26. Both sections are built in the
-    # order the code finds convenient and CONCATENATED in her order at the end -- see
+    # order the code finds convenient and CONCATENATED in the specified order at the end -- see
     # `preamble`, `rel_from` and `create_from` below.
     preamble = len(lines)
     lines += [
         "# RELATIONSHIPS between items that already exist -- the links yesterday's",
         "#    creations made possible, and the properties never emitted. Every subject",
         "#    and every value already has a QID, so this section depends on nothing above",
-        "#    it. It is emitted LAST, per her order: individuals, names, relationships.",
+        "#    it. It is emitted LAST, per the specified order: individuals, names, relationships.",
         "",
     ]
     rel_from = preamble
@@ -6543,23 +6498,21 @@ def main():
     def named_as(g):
         """The `\\tP1810\\t"..."` qualifier for this person, or `""` where there is nothing to say.
 
-        **Emma, 2026-08-28:** *"I want us to have the property P1810 with the specific name geni
-        gives them."* So the value is `display_name` from `display-names.csv` — the name GENI
+        **Set 2026-08-28:** `P1810` carries the specific name Geni gives a person. So the value
+        is `display_name` from `display-names.csv` — the name GENI
         renders — and never our own label, which since 2026-08-29 is the married form we chose.
         `P1810` is a plain `string` qualifier and it belongs on an external identifier: confirmed
         offline against `wikidata/items/`, where every `P1810` sits on one (`P396`, `P1280`,
         `P8034`, `P12458`). Hanging it on `P2600` is that shape, not an invention.
 
-        **NEITHER form of private gets a qualifier.** Emma, 2026-08-30, shown that
-        `Q141223549` carried `P1810 "Private"` while Geni's site displays `<private> Paulson`:
+        **NEITHER form of private gets a qualifier.** Ruled 2026-08-30, on
+        `Q141223549` carrying `P1810 "Private"` while Geni's site displays `<private> Paulson`:
 
-        > *"there are two different kinds of private on Jenny… this is some weird-ass backend
-        > difference that affects the Gedcom export, but they display identically. If this is
-        > the case, there's no way to get a consistent subject name as a thing from the Gedcom
-        > thing for these individuals, so neither form of private should be present as the
-        > qualifier."*
+        There are two kinds of `private` on Geni — a backend difference that affects the GEDCOM
+        export while displaying identically — so there is no consistent subject name to take from
+        the export for these people, and neither form belongs in the qualifier.
 
-        **This reverses her 2026-08-29 ruling that the marker went in verbatim**, and why that
+        **This reverses the 2026-08-29 ruling that the marker went in verbatim**, and why that
         one failed is the part worth keeping: it assumed the export and the web display agree.
         They do not. Both forms are in the corpus — `<private> /Surname/` **19,945** times and
         bare `Private` **99,645** — and Geni shows the same thing for both, so which one a
@@ -6580,9 +6533,8 @@ def main():
         # say what the source database called the person.
         if (q, prop, value) in seen:
             return
-        # **Never re-emit a statement the item already states.** Emma, 2026-08-27, on the
-        # relationship section never shrinking: *"the relationship one is questionable that
-        # it's always gonna be so huge and growing."* Measured that day: **229 of 306**
+        # **Never re-emit a statement the item already states.** Raised 2026-08-27, on the
+        # relationship section never shrinking and always being huge. Measured that day: **229 of 306**
         # statements on existing items were already on Wikidata, 75% of the section.
         #
         # `absent()` could not have caught them. It is property-level -- it knows an item has
@@ -6600,8 +6552,8 @@ def main():
             suppressed_hits.add((q, prop, value.strip('"')))
             return
         seen.add((q, prop, value))
-        # **An identifier is not sourced to itself.** Emma, 2026-08-31: *"geni ids do not get
-        # sources"*. `Q6014618 P2600 "4198641" S2600 "4198641"` cites the Geni id statement to
+        # **An identifier is not sourced to itself**, ruled 2026-08-31: Geni ids do not get
+        # sources. `Q6014618 P2600 "4198641" S2600 "4198641"` cites the Geni id statement to
         # the Geni id -- circular, and it says nothing a reader did not already have in the
         # value. `S2600` is right on every *derived* statement, because there the Geni profile
         # is external evidence for a claim; on `P2600` it IS the claim.
@@ -6615,7 +6567,7 @@ def main():
         """True when the item demonstrably lacks `prop`, or our own batch made it.
 
         The store answers exactly for an item it holds. For one it does not hold --
-        Emma's creations from the last two days -- what the item carries is what our
+        the last two days' creations -- what the item carries is what our
         `CREATE` block carried, and name statements were only added on 2026-08-24, so
         those are genuinely absent. Either way QuickStatements merges an identical
         statement rather than duplicating it, so a redundant line is a no-op.
@@ -6646,15 +6598,14 @@ def main():
 
         # **If we linked this person to anybody, write their Geni id too.**
         #
-        # Emma, 2026-08-27: *"we should have a thing that allows the algorithm to, when it's
-        # attaching people together, add in a Geni ID... Link a person to their parent who's an
-        # actual person in the tree, and add onto the parent the parent's geni ID."* Asked which
-        # people should get it, she chose **only when actually linked in that batch** rather
-        # than every ledger member — so it is self-limiting: an item gets its `P2600` at the
+        # Specified 2026-08-27: when the algorithm attaches people together it also adds the
+        # Geni id -- linking a person to a parent who is a real person in the tree, and putting
+        # that parent's Geni id onto them. Asked which people should get it, the ruling was
+        # **only when actually linked in that batch** rather than every ledger member — so it is self-limiting: an item gets its `P2600` at the
         # moment the algorithm asserts a relationship about it, and never otherwise.
         #
         # Why it matters beyond tidiness: a pairing that exists only in
-        # `reports/garborg-qids.tsv` is invisible to Wikidata, so a ledger rebuilt from her
+        # `reports/garborg-qids.tsv` is invisible to Wikidata, so a ledger rebuilt from the
         # contributions cannot recover it. Writing the statement makes the pairing resolvable
         # by anyone, including the next rebuild. `add()` drops it if the item already has it.
         if len(seen) > before_this_person:
@@ -6666,18 +6617,18 @@ def main():
         # carries `P735` Arne, and our label reads the parenthesised `(Arne)` as a
         # middle name -- emitting it would contradict a curated statement rather than
         # add to it. `CLAUDE.md`: the purpose is to ADD, not to correct.
-        # **A person with no name gets no name statements.** Emma, 2026-08-30, on
-        # `Q141224141`: *"please stop trying to assign names to this person who does not in
-        # fact have any names at all."* Geni records him `En dodfodd son Bielke` -- Swedish for
+        # **A person with no name gets no name statements.** Ruled 2026-08-30 on
+        # `Q141224141`: stop assigning names to a person who has no names at all. Geni records
+        # him `En dodfodd son Bielke` -- Swedish for
         # *a stillborn son* -- and this emitted `P735` given name `En`, the indefinite article,
         # carrying `P7452` *usual forename*. 505 people in the corpus carry a stillborn word.
         #
         # The label fix in `labels.strip_markers` is not enough on its own, because the name
         # model reads the raw `GIVN`/`SURN` fields rather than the label, which is exactly the
         # separation `namemodel` was built for. So the gate goes here as well.
-        # **⛔ NO GIVEN NAME IS NOT NO NAME.** Emma, 2026-09-09: *"you aren't linking peoples
-        # names as soon as they are created when the items very much exist and are ready"*.
-        # `_has_given_name` gated this WHOLE block, so `NN Andersson` and `Brita NN` -- and
+        # **⛔ NO GIVEN NAME IS NOT NO NAME.** Reported 2026-09-09: people's names were not
+        # being linked as soon as they were created, though the name items existed and were
+        # ready. `_has_given_name` gated this WHOLE block, so `NN Andersson` and `Brita NN` -- and
         # `En dodfodd son Bielke`, the case the function was written for -- went out with no
         # name statement at all, while `Q2817217` *Andersson* and `Q37547315` *Bielke* sat
         # there waiting. The function's own docstring promised the opposite: *"`Bielke` still
@@ -6695,7 +6646,7 @@ def main():
         if (absent(q, "P735") and absent(q, "P734")
                 and len(_name_added) < NAME_ADD_CAP):
             dad = father.get(g)
-            # The father's NAME, not just his QID: Emma's test reads his given name and
+            # The father's NAME, not just his QID: the test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
             # **`fields` was NOT passed here, and that is how `Queen` became a given name.**
             # Without it `statements_for` falls back to parsing the rendered label
@@ -6715,9 +6666,9 @@ def main():
                 # have no item yet -- 60 entered and 12 statements came out.
                 _name_added.add(q)
 
-        # **Every CJK label is redone, and a DISAGREEMENT is emitted.** Emma, 2026-08-30:
-        # *"Every single label gets redone and if they disagree then they go onto the
-        # quickstatements that are generated."*
+        # **Every CJK label is redone, and a DISAGREEMENT is emitted**, ruled 2026-08-30:
+        # every label gets redone, and where they disagree the disagreement goes into the
+        # generated QuickStatements.
         #
         # This used to emit only into a language the item did not have, on the reasoning that
         # `Lja`/`Lzh` REPLACE and overwriting is dangerous. That reasoning was right about
@@ -6727,15 +6678,15 @@ def main():
         # (`モルクク`) would have sat on every affected item forever.
         #
         # The absence check also could not work: `langs` comes from the offline store, which
-        # predates every item Emma has made, so an item she created yesterday looks label-less
+        # predates most of the hand-made items, so one created yesterday looks label-less
         # whatever it holds. `reports/garborg-live-labels.tsv` is the live value, from the same
         # fetch as the live statements.
         langs = state.get(q, (set(), set()))[0]
         # **Transliterate the item's OWN Latin label, not our Geni display string.**
         #
-        # Emma, 2026-08-30, on `Q6161733`: *"why was the japanese label we added so weird?"*
-        # then, cutting to it: *"The wikidata label doesn't have that in it… I think it's the
-        # geni display name."* She is right. The item reads `Carl Fredrik Piper` in both `en`
+        # Reported 2026-08-30 on `Q6161733`: the Japanese label we added read oddly, because
+        # it carried something the Wikidata label does not -- the Geni display name. The item
+        # reads `Carl Fredrik Piper` in both `en`
         # and `sv`; our derived label reads `Carl Fredrik Piper till Krageholm`, and reading
         # that token by token produced `カール・フレドリク・パイパー・ティル・クラゲホルム`.
         #
@@ -6753,20 +6704,16 @@ def main():
         # `_drop_territorial`.
         #
         # **The `mul` label is chosen by CONSENSUS across the item's own languages**, and
-        # everything else follows from it. Emma's specification, 2026-08-30:
+        # everything else follows from it. The specification, 2026-08-30:
         #
-        # > *"it would have observed that the person either has an English-language label that
-        # > is in Latin characters, or they have a consistent Latin label across two or more
-        # > languages. It would have assigned that one, whichever one is the most common, as
-        # > the multi-language label… and it would have also been assigned to the English
-        # > language if English language lacked it. The Chinese and Japanese would have been
-        # > derived from the multi-language label. The real multi-language label will be
-        # > assigned, and then the Geni one would have been added as the Geni display name, the
-        # > Geni display name qualifier subject named as, and it would have been added as a mul
-        # > alias."*
+        # > A person either has an English-language label in Latin characters, or a consistent
+        # > Latin label across two or more languages. Whichever is the most common is assigned
+        # > as the multi-language label, and also as the English label where English lacked one.
+        # > The Chinese and Japanese are derived from the multi-language label. The Geni form is
+        # > added as the `P1810` subject-named-as qualifier and as a `mul` alias.
         #
-        # And the one she closed explicitly: *"The transliteration of the Geni display name
-        # does not go into Japanese or Chinese aliases."* No `Aja`, no `Azh`.
+        # And the point closed explicitly: the transliteration of the Geni display name does
+        # NOT go into Japanese or Chinese aliases. No `Aja`, no `Azh`.
         mine = {lang: value for (qq, lang), value in live_labels.items() if qq == q}
         # **No live labels means we do not know what the item says, and a `Lmul` REPLACES.**
         # `Q19842232` got `Lmul "Algot Brynolfsson"` written over whatever it held, because an
@@ -6786,17 +6733,17 @@ def main():
         # **The consensus label carries whatever language Wikidata wrote it in**, and for a
         # generation suffix that is the wrong language for `mul`. `Q106206114` reads
         # `Elias Lagerheim den yngre` in `sv` and in `en`, so the consensus is the Swedish
-        # phrase; Emma wants `Elias Lagerheim II` in `mul` and `Elias Lagerheim Jr.` in `en`.
+        # phrase; `mul` takes `Elias Lagerheim II` and `en` takes `Elias Lagerheim Jr.`
         # See `namemodel.GENERATION_SUFFIX`.
         # **`en` is derived from the RAW consensus, never from the normalised `mul`.** Running
         # the normaliser twice is a no-op by design -- `II` is already a target form, so the
         # dedupe returns it untouched -- and the `en` line then came out `Lars Jonson Skrudland
-        # II` where Emma's ruling is `Jr.` Each style is computed from the same source string.
+        # II` where the ruling is `Jr.` Each style is computed from the same source string.
         raw_consensus = mul
         mul = normalise_generation_suffix(mul, "mul")
-        # **`ogift` is Swedish for *unmarried*, and it is on the live item.** Emma,
-        # 2026-09-07, on `Q141313961` *Helena Maria Linnerhielm ogift*: *"a suffix that
-        # shouldn't have been treated as part of the name."* The consensus is read off the
+        # **`ogift` is Swedish for *unmarried*, and it is on the live item.** Reported
+        # 2026-09-07 on `Q141313961` *Helena Maria Linnerhielm ogift*: a suffix that should
+        # never have been treated as part of the name. The consensus is read off the
         # LIVE labels, so an item created before the fix agrees with itself and nothing would
         # otherwise be emitted; dropping it here is what makes the marker its own ground for
         # a correction, the way an expanded abbreviation is.
@@ -6814,7 +6761,7 @@ def main():
         if mul:
             # A label REPLACES, so whatever `mul` currently reads goes out as an alias FIRST --
             # `CLAUDE.md` § *The MARRIED name is the real name*, where some of those values are
-            # Emma's own hand-edits and nothing else records them.
+            # hand-edits that nothing else records.
             current = mine.get("mul")
             if current and current != mul:
                 lines.append(f'{q}\tAmul\t"{qs(current)}"')
@@ -6844,9 +6791,9 @@ def main():
                     lines.append(f'{q}\tL{code}\t"{value}"')
 
         # **A generation suffix stays in the languages that USE it and is normalised in the
-        # rest.** Emma, 2026-09-05: *"the dy will be present wherever for the languages that use
-        # it but the suffixes we have will be always at the end"*, and on the same item earlier:
-        # *"the inappropriate languages it is on should go to 'Elias Lagerheim II'"*.
+        # rest.** Ruled 2026-09-05: the `d.y.` stays in the languages that use it, and the
+        # suffixes we emit always go at the end; in the languages it does not belong in, the
+        # label takes the `II` form.
         #
         # `Q106206114` is the case: `den yngre` is Swedish, correct in `sv`, and wrong in every
         # other language that inherited the string. So `sv` and the Norwegian and Danish codes
@@ -6889,8 +6836,8 @@ def main():
               "#    QIDs -- two items minted in one batch cannot point at each other.",
               ""]
     # **⛔ THE NAME-ITEM STEP CANNOT SEE WHO THIS STEP IS ABOUT TO CREATE, so it never mints
-    # their names.** Emma, 2026-09-07: *"individuals are supposed to be created already having
-    # name links and this does not seem to be happening reliably."*
+    # their names.** Reported 2026-09-07: individuals are supposed to be created already
+    # carrying name links, and that was not happening reliably.
     #
     # `build-garborg-name-items.py` draws its bearers from `garborg-qids.tsv` -- people who
     # ALREADY hold a QID -- and ranks by bearer count, so a token needed by somebody being
@@ -6945,13 +6892,13 @@ def main():
         low = label.lower()
         # **An unknown-name marker of ANY kind takes the NN treatment, not just `<private>`.**
         # This tested for Geni's redaction markers only, so `NN Jonsdotter` — whose Geni name
-        # is literally that — took the ordinary-name path and `NN` went out in her `en` label
+        # is literally that — took the ordinary-name path and `NN` went out in the `en` label
         # with no description. `reports/partial-nn.csv` counts **9,539** people with a marker
         # in one name field and a real name in the other; every one of them belongs here.
-        # **A BARE GIVEN NAME IS UNNAMED ON THE SURNAME SIDE, so it belongs here.** Emma,
-        # 2026-09-07: *"A single given name is generally not acceptable and we strongly prefer
-        # given name NN"*, and, asked which languages carry what: *"given NN for mul labels but
-        # the NN is replaced with prose in every language that isn't mul"*. That is exactly
+        # **A BARE GIVEN NAME IS UNNAMED ON THE SURNAME SIDE, so it belongs here.** Ruled
+        # 2026-09-07: a single given name is generally not acceptable, and `Given NN` is
+        # strongly preferred -- with `NN` in the `mul` label and prose in every other language.
+        # That is exactly
         # this branch — `CLAUDE.md` § *`NN` is PRESERVED in `mul`. Descriptive labels are ADDED
         # in other languages*, the `NN Garborg` shape with the halves swapped.
         #
@@ -6970,7 +6917,7 @@ def main():
         # **Both branches must leave these bound.** The alias block below reads them after
         # the branch, and the redacted branch never set them -- so creating a redacted
         # person crashed with `UnboundLocalError`. It went unseen because the unfiltered
-        # ring happened to contain no redacted people; restricting the ring to Emma's own
+        # ring happened to contain no redacted people; restricting the ring to one line of
         # ancestry surfaced it immediately. A redacted person has no married-name alias to
         # emit, so empty strings are the right values, not a guard around the block.
         primary, birth = _strip_markers(label) or label, ""
@@ -6978,8 +6925,8 @@ def main():
             # **NOT unlabelled.** `CLAUDE.md` § *`NN` is PRESERVED in `mul`.
             # Descriptive labels are ADDED in other languages* -- the marker stays in
             # `mul` and every local language gets a formulaic description built from
-            # the nearest named relative. Emma, 2026-08-16: *"NN and private are the
-            # same thing here"*. The surname survives redaction and is real data, so
+            # the nearest named relative -- `NN` and `private` are the same thing here,
+            # ruled 2026-08-16. The surname survives redaction and is real data, so
             # `mul` reads `NN Garborg`, not a bare `NN`.
             # The surname survives redaction and is real data -- CLAUDE.md measured
             # 3,605 such profiles. `<private> Garborg` -> `Garborg`.
@@ -6989,7 +6936,7 @@ def main():
             # it, so the whole chain produced `""` and the batch carried `LAST Lmul ""` --
             # creating an item with no label at all, which is not a person anyone can find and
             # is not what `CLAUDE.md` § *`NN` is PRESERVED in `mul`* asks for. The marker is
-            # the floor: *"NN is always preserved in the multi-language label."*
+            # the floor: `NN` is always preserved in the multi-language label.
             mul_value = _dms(nn_form(qs(labels.get(g, "")))) or UNNAMED_MARKER
             # **`Ånon` -> `Ånon NN`.** The marker sits where the unknown half is, which for
             # these people is the surname rather than the given name. A label that is already
@@ -6998,7 +6945,7 @@ def main():
 
             # **A married NN woman has TWO recorded surnames and was keeping one.**
             # This branch set `birth = ""` and never reached the alias block below, so
-            # `NN /Thaulow/` who married a Hahn went out as one label and her birth
+            # `NN /Thaulow/` who married a Hahn went out as one label and the birth
             # surname was dropped. **1,636 NN or redacted people carry a `SURN` and a
             # DIFFERENT `_MARNM`** -- measured over `display-names.csv`, not supposed.
             #
@@ -7025,11 +6972,11 @@ def main():
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:
             # **The MARRIED name is the primary label; the BIRTH name is an alias.**
-            # Emma, 2026-08-24, after running the first batch: *"the married name is
-            # the primary label and the birth name is amul"*, then *"we move the lmul
-            # to amul and the lja to aja and so on"*. The first version had it exactly
-            # backwards -- birth name in `en` and `mul`, married name pushed out as an
-            # `Aen` alias -- and cost her a corrective run over five items.
+            # Ruled 2026-08-24, after running the first batch: the married name is the
+            # primary label and the birth name is the `Amul`, with the outgoing `Lmul`
+            # becoming an `Amul`, the `Lja` an `Aja`, and so on. The first version had it
+            # exactly backwards -- birth name in `en` and `mul`, married name pushed out as
+            # an `Aen` alias -- and cost a corrective run over five items.
             f_ = fields.get(g, {})
             surn = " ".join((f_.get("surn") or "").split())
             marnm = " ".join((f_.get("marnm") or "").split())
@@ -7051,9 +6998,9 @@ def main():
             birth = expand_abbreviations(
                 " ".join(given + surn.split()), g) if is_married else ""
 
-            # **A marker in the SURNAME slot never reaches a label.** Emma, 2026-08-29, on
-            # `Q141217396` coming out *Maria No name*: *"I would say I just use it by its
-            # first name."* `is_marker_label` tests the whole label or a LEADING marker, so
+            # **A marker in the SURNAME slot never reaches a label.** Ruled 2026-08-29, on
+            # `Q141217396` coming out *Maria No name*: such a person is called by their first
+            # name alone. `is_marker_label` tests the whole label or a LEADING marker, so
             # `unknown Bloomfield` was caught and `Maria No name` was not -- and Geni puts
             # the marker in `SURN`, which is always the trailing position.
             from labels import drop_marker_surname
@@ -7066,17 +7013,17 @@ def main():
             # over -- it is not English, and `Help:Default values for labels and aliases`
             # says a name not in Latin script should not be a default label. `mul` is the
             # language-neutral slot and takes it.
-            # **A generation suffix is normalised HERE too, and it was not.** Emma,
-            # 2026-09-05, on `Q141283784` *Lars Jonson d.y. Skrudland*: *"this thing is a
-            # violation of the d.y. Rule"*. Her rule of the same day is `Lmul … II` and
+            # **A generation suffix is normalised HERE too, and it was not.** Reported
+            # 2026-09-05 on `Q141283784` *Lars Jonson d.y. Skrudland*, as a violation of the
+            # `d.y.` rule. That rule, set the same day, is `Lmul … II` and
             # `Len … Jr.`, and `namemodel.normalise_generation_suffix` implements it — but
             # it was wired into `derive-labels.py` and the corrections pass and **never into
             # this block**, which is where a new item's labels are actually written. So every
             # creation went out carrying the Norwegian abbreviation in every language, and
             # `label_in` below then transliterated it as a name: `…・ドイ・…`, `…디…`.
             #
-            # Her guess at the cause was the position — *"got through due to the letters not
-            # being at the end"* — and the position is fine: `_SUFFIX_RE` is unanchored and
+            # The suspected cause was the suffix's position, but the position is fine:
+            # `_SUFFIX_RE` is unanchored and
             # takes `Lars Jonson d.y. Skrudland` to `Lars Jonson II Skrudland`. Nothing here
             # called it. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
             # **And the same for a description marker, wired here at the same time rather
@@ -7095,9 +7042,9 @@ def main():
             if re.search(r"[A-Za-z]", primary):
                 lines.append(f'LAST\tLen\t"{qs(en_form)}"')
             lines.append(f'LAST\tLmul\t"{qs(mul_form)}"')
-            # **No `Aen`. Ever.** Emma, 2026-08-26: *"No aen are ever supposed to be
-            # added lol only ones in non-latin scripts get aliases for their birth names
-            # that are not in amul"*. The birth name is an `Amul` and nothing else; the
+            # **No `Aen`. Ever.** Ruled 2026-08-26: no `Aen` is ever added, and only
+            # non-Latin-script forms get aliases for a birth name that is not in `Amul`.
+            # The birth name is an `Amul` and nothing else; the
             # `Aja`/`Azh` below are the one exception, and only because a non-Latin form
             # cannot live in `mul`.
             if birth and qs(birth) != qs(mul_form):
@@ -7111,19 +7058,20 @@ def main():
             if ja:
                 lines.append(f'LAST\tLja\t"{ja}"')
                 lines.append(f'LAST\tLzh\t"{zh}"')
-                # **Korean is CJK and a creation carries it too.** Emma, 2026-09-01:
-                # *"cjk includes korean"*. Without this the gate could require `ko`
+                # **Korean is CJK and a creation carries it too**, ruled 2026-09-01: CJK
+                # includes Korean. Without this the gate could require `ko`
                 # while the CREATE block never wrote one.
                 lines.append(f'LAST\tLko\t"{ko}"')
-                # **A TRANSLITERATED birth name is not a `ja`/`zh` alias.** Emma, 2026-08-30:
-                # *"The transliteration of the Geni display name does not go into Japanese or
-                # Chinese aliases"*, and asked directly: *"No ja/zh alias at all."*
+                # **A TRANSLITERATED birth name is not a `ja`/`zh` alias**, ruled 2026-08-30:
+                # the transliteration of the Geni display name does not go into Japanese or
+                # Chinese aliases at all.
                 #
                 # The rule above was already narrower than what this did. `CLAUDE.md`
                 # § *The MARRIED name is the real name* allows `Aja`/`Azh` for **a non-Latin
                 # birth form**, *"which cannot live in `mul`"* -- a name already written in
                 # CJK. This emitted `ペルネル・ヴェライネ・スヘルン`, our own transliteration of
-                # a Latin name, which is a reading we invented rather than a form she has.
+                # a Latin name, which is a reading we invented rather than a form the person
+                # actually has.
                 #
                 # So the alias survives only where the birth name is genuinely non-Latin, and
                 # then it is the name itself, not a transliteration of it.
@@ -7131,18 +7079,18 @@ def main():
                     lines.append(f'LAST\tAja\t"{qs(birth)}"')
                     lines.append(f'LAST\tAzh\t"{qs(birth)}"')
             else:
-                # **THE GATE: no `ja`/`zh`, no creation.** Emma, 2026-08-31, asked whether the
-                # seven-language rule is still real given the daily batch creates people every
-                # day: *"Still a gate, and the daily batch is violating it."*
+                # **THE GATE: no `ja`/`zh`, no creation.** Confirmed 2026-08-31, when asked
+                # whether the seven-language rule is still real given that the daily batch
+                # creates people every day: still a gate, and the daily batch was violating it.
                 #
                 # It was. This carried the person forward AND emitted the `CREATE` anyway, so
                 # the carry-forward recorded a debt that was never owed while the person was
                 # made without their CJK labels regardless. Abandoning the block is what the
                 # carry always claimed to be doing.
                 #
-                # `queue.md` § *ABSOLUTE PREREQUISITE* is her earlier statement of the same rule
-                # -- *"an absolute prerequisite for the creation of any individual: that we have
-                # their CJK labels"* -- filed for later. Her ruling today moves it to now.
+                # `queue.md` § *ABSOLUTE PREREQUISITE* is the earlier statement of the same
+                # rule -- CJK labels are an absolute prerequisite for creating any individual --
+                # filed for later. The 2026-08-31 ruling moves it to now.
                 carried.append((g, label, "GATE: no ja/zh/ko label, so not created"))
                 del lines[block_start:]
                 continue
@@ -7150,8 +7098,8 @@ def main():
         if f["sex"] in SEX:
             lines.append(f"LAST\tP21\t{SEX[f['sex']]}")
         # **`P1810` *subject named as*, qualifying the Geni id with the name Geni renders.**
-        # Emma, 2026-08-28: *"I want us to have the property P1810 with the specific name geni
-        # gives them."* Datatype confirmed OFFLINE against the downloaded item store rather
+        # Set 2026-08-28: `P1810` carries the specific name Geni gives a person. Datatype
+        # confirmed OFFLINE against the downloaded item store rather
         # than guessed: every `P1810` in `wikidata/items/` is a plain `string` qualifier and
         # every one of them sits on an external identifier -- `P396`, `P1280`, `P8034`,
         # `P12458` -- so hanging it on `P2600` is the established shape, not an invention.
@@ -7162,9 +7110,8 @@ def main():
         # for.
         lines.append(f'LAST\tP2600\t"{g}"{named_as(g)}')
         # **A date carries its GEDCOM modifier as a qualifier, or it asserts something Geni
-        # does not.** Emma, 2026-08-29: *"we very much need to have those qualifiers, and I
-        # don't know why it is that you don't. That was almost a prerequisite for putting any
-        # Geni information on Wikidata."*
+        # does not.** Ruled 2026-08-29: the qualifiers are needed, and were close to a
+        # prerequisite for putting any Geni information on Wikidata at all.
         #
         # Every `ABT`, `BEF`, `AFT` and `BET x AND y` was being flattened to a bare value --
         # **70,665 `about`, 5,923 `after`, 5,907 `before`, 3,004 `between`** in
@@ -7182,19 +7129,19 @@ def main():
                              f"{date_quals(mod, iso, prec, end)}{ref(g)}")
         # **`LAST` IS valid as a VALUE, and this batch never used it.**
         #
-        # Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the
-        # creation of items that is completely possible but you just decide to fuck off and
-        # no do it because it goes QID PID LAST instead of LAST PID QID"*.
+        # Reported 2026-08-25: two-way relationship adding at creation time is completely
+        # possible and was never done, on the belief that a line had to go `LAST PID QID`
+        # rather than `QID PID LAST`.
         #
-        # She is right and the error was mine. `LAST` cannot be the value in a statement
-        # whose subject is *also* newly created -- two items minted in one run cannot point
-        # at each other, because `LAST` names only the most recent. That is a real limit and
-        # it is the one she described in the batch-rules dictation. **It says nothing about a
+        # That belief was an invented limit. `LAST` cannot be the value in a statement whose
+        # subject is *also* newly created -- two items minted in one run cannot point at each
+        # other, because `LAST` names only the most recent. That is the real limit, and it is
+        # the one the batch-rules dictation describes. **It says nothing about a
         # statement whose subject already exists**: `Q467497 P40 LAST` is ordinary
         # QuickStatements and resolves to the item this block just made.
         #
         # Generalising the narrow limit into "no reciprocals at all" is what produced the
-        # one-way links she has been having to fix by hand, and `build-missing-reciprocals.py`
+        # one-way links that then had to be fixed by hand, and `build-missing-reciprocals.py`
         # exists only because of it. Every relationship to somebody who ALREADY has a QID is
         # now emitted in both directions in the same run.
         reciprocal = []
@@ -7211,8 +7158,8 @@ def main():
         # `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"A builder emitting
         # siblings must count them and stop."* The additions pass counted; this one, on the
         # people being CREATED, did not -- so a run came out with 10 capped statements and
-        # **28 uncapped**, 38 in a file whose whole reason for the cap is that Emma finds
-        # sibling links too numerous on one batch. `_siblings_emitted` is shared module state
+        # **28 uncapped**, 38 in a file whose whole reason for the cap is that sibling links
+        # are too numerous to send in one batch. `_siblings_emitted` is shared module state
         # precisely so both sites draw on one budget.
         for sib in sorted(siblings.get(g, ())):
             if sib in our_items:
@@ -7235,8 +7182,8 @@ def main():
         for subject, prop, source in reciprocal:
             lines.append(f"{subject}\t{prop}\tLAST{ref(source)}")
 
-        # The name model. Emma, 2026-08-24: *"we should be modelling the names
-        # properly, which he didn't do."* Only tokens whose item ALREADY exists --
+        # The name model. Ruled 2026-08-24: the names are to be modelled properly, which
+        # the earlier version did not do. Only tokens whose item ALREADY exists --
         # the ones still to be made are in reports/wikidata-garborg-name-items.txt and
         # join the batch the day after that runs, same single-run rule as everyone.
         # **⛔ A REDACTED PERSON'S SURNAME IS REAL DATA AND BECOMES A `P734`.** `CLAUDE.md`
@@ -7244,8 +7191,8 @@ def main():
         # GIVEN name and not the family one, and the surname *"feeds the `P734` family-name
         # work"*. This gate withheld it -- so `NN Andersson`, `NN Skjelbrei` and every
         # `<private> Surname` went out with no name statement at all while their name items
-        # sat there. Emma, 2026-09-09: *"you aren't linking peoples names as soon as they are
-        # created when the items very much exist and are ready"*.
+        # sat there. Reported 2026-09-09: people's names were not being linked as soon as
+        # they were created, though the items existed and were ready.
         #
         # The reasoning it was built on was a redundancy argument over THREE people --
         # *"`Garborg` is their father's family name, which `P22` already says"* -- and
@@ -7268,15 +7215,15 @@ def main():
             father_aka=aka.get(dad, "") if dad else "",
             father_given=given_name.get(dad, "") if dad else "")
         lines.extend(name_statements)
-        # Aliases: the nickname, and the full name under a married surname. Emma
-        # asked for these alongside the second `P734` *family name*.
+        # Aliases: the nickname, and the full name under a married surname. These were
+        # asked for alongside the second `P734` *family name*.
         # An alias identical to the label is noise. Now that the married name is
         # the primary label, `aliases_for`'s married-full-name alias often
         # duplicates it exactly -- `Aen "Inger Kristoffersdatter"` sitting beside
         # `Len "Inger Kristoffersdatter"`. The birth-name alias is already emitted
         # with the labels above, so this carries only what those do not.
-        # **An alias is an `Amul` and nothing else.** Emma, 2026-08-26: *"No aen are
-        # ever supposed to be added"*. This block wrote both, and before 2026-08-25 it
+        # **An alias is an `Amul` and nothing else**, ruled 2026-08-26: no `Aen` is ever
+        # added. This block wrote both, and before 2026-08-25 it
         # wrote `Aen` alone — an alias that exists only in `en` is invisible to every
         # other language, which is why `mul` is the one that matters and `en` is the
         # one that never applies.
@@ -7290,10 +7237,10 @@ def main():
 
         # **A creation with NO relationship is not shipped. It is carried.**
         #
-        # Emma, 2026-08-29, on `Anders Persson`: *"where the fuck is this in the tree? why
-        # no relationships... relationships on creation is the thin that keeps items from
-        # being deleted"*. She is right, and a bare `instance of human` with a `P2600` and
-        # nothing else is exactly what gets nominated for deletion.
+        # Reported 2026-08-29 on `Anders Persson`: an item with no relationships and no
+        # place in the tree. Relationships at creation are what keep an item from being
+        # deleted, and a bare `instance of human` with a `P2600` and nothing else is exactly
+        # what gets nominated for deletion.
         #
         # The cause was a composition bug, not an emission one. Rule 3 picks a person **for**
         # a spouse — and when that spouse is also being created today, the same-run limit
@@ -7313,7 +7260,7 @@ def main():
         lines.append("")
         created += 1
 
-    # Her order, applied at the last moment so neither section's construction has to
+    # The specified order, applied at the last moment so neither section's construction has to
     # care: preamble, then the INDIVIDUALS this run creates, then the RELATIONSHIPS
     # between items that already existed. Names are the middle step and live in
     # `reports/wikidata-garborg-name-items.txt`, run between the two.
@@ -7350,7 +7297,7 @@ def main():
         for q, prop, value in sorted(suppressed_hits)[:10]:
             print(f"   {q} {prop} -> {value}")
 
-    # **A comment above every line.** Her format, 2026-08-26. `name_of` resolves either a
+    # **A comment above every line**, the format set 2026-08-26. `name_of` resolves either a
     # QID or a Geni id to a person, so the comments read as sentences rather than as pairs
     # of numbers; `qid_to_geni` inverts the ledger for that.
     qid_to_geni = {q: g for g, q in our_items.items()}
@@ -7372,14 +7319,14 @@ def main():
 
     lines = annotate(lines, name_of)
 
-    # **The last gate: nothing Emma has excluded may reach the file, in any position.**
+    # **The last gate: nothing excluded may reach the file, in any position.**
     #
     # Enforced here rather than only where statements are built, for the reason `qscomment`
     # gives about comments: this file emits from a dozen sites and a rule applied at each one
     # is a rule that will be missed at the thirteenth. It was — the batch of 2026-08-27 wrote
-    # a `P22` and a `P25` onto her own item, attaching it to the
-    # 1,339,227-person component containing Charlemagne, because her Geni id arrives through
-    # `paths/bergitte-to-emma.tsv` whose step 1 is her.
+    # a `P22` and a `P25` onto an excluded item, attaching it to the
+    # 1,339,227-person component containing Charlemagne, because that Geni id arrives through
+    # `paths/bergitte-to-emma.tsv`, whose step 1 is that person.
     #
     # **A statement line is DROPPED; a `CREATE` for an excluded person REFUSES the run.**
     # Dropping a statement cannot change which item a later `LAST` resolves to — only a
@@ -7387,9 +7334,8 @@ def main():
     # treated the same way. The preceding comment goes with the line it describes.
     # **The kluge is enforced HERE too, not only in the subgraph walk.**
     #
-    # **Emma, 2026-08-29:** *"im not assuming anything wrongly about the algorithm im assuming
-    # you fucked the algorithm up at some point and it might try to do something with these
-    # people."* That is the right premise, and removing them from the `universe` does not meet
+    # **The premise, stated 2026-08-29:** assume the algorithm was broken somewhere and might
+    # try to do something with these people anyway. That is the right premise, and removing them from the `universe` does not meet
     # it: `universe` only governs the subgraph walk, so it gates CREATIONS. The additions pass
     # iterates the whole ledger, and the three Buyeo people ARE in the ledger -- so a bug
     # anywhere upstream could still emit a statement about them.
@@ -7397,9 +7343,9 @@ def main():
     # This filter is the last thing that touches the file, so it holds whatever the rest of the
     # algorithm did.
     #
-    # **The 178 clan individuals are deliberately NOT here.** Her line, same day: *"we probably
-    # are going to be changing their labelling in September, but being in the universe is not
-    # going to happen until October."* They are blocked from the universe and their labels still
+    # **The 178 clan individuals are deliberately NOT here.** Ruled the same day: their
+    # labelling probably changes in September, but universe membership does not happen until
+    # October. They are blocked from the universe and their labels still
     # go out; excluding them here would silently drop the 15-a-day label drip.
     excluded = (NEVER_TOUCH_GENI | NEVER_TOUCH_QID
                 | set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA))
@@ -7412,8 +7358,8 @@ def main():
             block = "\n".join(lines[i:i + 40])
             if any(f'P2600\t"{g}"' in block for g in NEVER_TOUCH_GENI):
                 sys.exit(f"REFUSING to write: a CREATE at line {i + 1} would mint a new item "
-                         f"for an excluded person. Emma, 2026-08-27: \"I should not be in the "
-                         f"traversable graph.\"")
+                         f"for an excluded person, who is not in the traversable graph "
+                         f"(ruled 2026-08-27).")
 
     kept, dropped = [], 0
     for ln in lines:
@@ -7435,7 +7381,7 @@ def main():
     # `Q141216607 P5056 LAST` under the `Erikson` block, whose third "bearer" had no name to
     # put in the comment because it was the second profile of the second one.
     #
-    # `CLAUDE.md` § *Duplication is a DOUBLE-EDGED SWORD* is not in tension with this. Her
+    # `CLAUDE.md` § *Duplication is a DOUBLE-EDGED SWORD* is not in tension with this. That
     # duplication is deliberate and lives on ITEMS, where it attracts a bot. This is one file
     # saying the same thing twice, which is the unintentional repetition the same section names
     # as the actual failure -- and it is what a reader sees, not what a bot fixes.
@@ -7497,20 +7443,19 @@ def main():
 
     # ---- NEVER give an item a SECOND father or mother -------------------------------
     #
-    # **Emma, 2026-08-29, and her rule is narrower than "no duplicates":** *"my rule is not
-    # explicitly a rule saying that we can't create duplicates. It's a more specific one...
-    # We should not be adding the father property on something that already has a father
-    # linked, or the mother property, because the father property being duplicated or the
-    # mother property being duplicated gets flagged... this is the situation where it is
-    # intended to be flagged, and then the flagging can cause potential issues."*
+    # **The rule, 2026-08-29, and it is narrower than "no duplicates".** It is not a rule
+    # against creating duplicates: it is that the father property must not be added to
+    # something that already has a father linked, nor the mother property to something that
+    # already has a mother, because a duplicated `P22` or `P25` gets flagged -- that is what
+    # the constraint is for, and the flagging causes problems.
     #
     # So the thing to stop is the STATEMENT, not the person. `P22` and `P25` carry a
     # single-value constraint on Wikidata; a second one is what trips it, and a tripped
     # constraint is what gets our work noticed.
     #
-    # **No exception is built for two fathers.** She raised it and dismissed it herself --
-    # *"I think there's probably some exception for, I don't know, gay parents or something.
-    # This isn't it."* Adding an exception nobody asked for is the over-engineering this repo
+    # **No exception is built for two fathers.** It was raised and dismissed in the same
+    # breath: whatever exception may exist for same-sex parents, this is not it. Adding an
+    # exception nobody asked for is the over-engineering this repo
     # keeps having to undo.
     #
     # This sits beside the creation guard rather than replacing it. The guard holds the
@@ -7533,8 +7478,8 @@ def main():
     kept = survivors
     # **The drops are RECORDED, not just logged.** A `P22`/`P25` suppressed here leaves its
     # `P40` partner one-way, which is deliberate -- `P40` is multi-valued and states the same
-    # fact from the side that permits it -- but it looks identical to the one-way links Emma
-    # spent weeks repairing by hand. `test_every_link_to_an_existing_item_is_emitted_in_BOTH
+    # fact from the side that permits it -- but it looks identical to the one-way links that
+    # took weeks to repair by hand. `test_every_link_to_an_existing_item_is_emitted_in_BOTH
     # _directions` exempts exactly the pairs in this file and nothing else, so the exemption
     # cannot quietly widen into "one-way links are fine".
     drops = ROOT / "reports" / "single-value-drops.tsv"
@@ -7551,32 +7496,30 @@ def main():
     lines = kept
 
     # The CJK clan labels, same mechanism. See `CJK_CLAN_BLOCK`. **Removed on 2026-08-29 and
-    # put straight back** -- I read *"remove that particular section"* as this block when she
-    # meant the spine P2600 one. Emma: *"What the fuck the clan block is gone? Bring it the
-    # fuck back"*.
-    # **The clan block is GATED until October.** Emma, 2026-08-29: *"we block the clan name
-    # application stuff for one month. In October, once the October gate passes, then the quick
-    # statements generate with these clan names in them, but otherwise they do not, because I'm
-    # just too sceptical of the clan names."*
+    # put straight back** -- an instruction to remove "that particular section" was read as this
+    # block when it meant the spine `P2600` one, and the clan block had to be restored.
+    # **The clan block is GATED until October.** Ruled 2026-08-29: the clan-name application is
+    # blocked for one month, and once the October gate passes the QuickStatements generate with
+    # these clan names in them.
     #
-    # Her reason is doubt about the labels themselves, not their volume: *"I don't know if this
-    # clan stuff is right. If this clan stuff is wrong, it looks really bad."* So this suppresses
+    # The reason is doubt about the labels themselves, not their volume: if the clan material is
+    # wrong, it looks very bad. So this suppresses
     # the whole block rather than trimming it, and the date is the same 2026-10-01 the universe
     # kluge expires on.
     #
     # It appeared in every batch because it is hard-coded and appended unconditionally, NOT
-    # because everyone else's `ja`/`zh` was finished -- on the day she asked, 19 people in the
+    # because everyone else's `ja`/`zh` was finished -- on the day it was raised, 19 people in the
     # carry-forward still had no transliteration at all.
     clan_block = CJK_CLAN_BLOCK if datetime.date.today() >= CLAN_BLOCK_GATE else ""
     if not clan_block:
-        print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
-    # **A hand application is an ORDINARY label edit and queues like every other one.** Emma,
-    # 2026-09-08: *"it should be like regular label applications but just a stronger level of it.
-    # not taking priority doing just like anything else."* The first version put its QIDs in
+        print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (ruled 2026-08-29)")
+    # **A hand application is an ORDINARY label edit and queues like every other one.** Ruled
+    # 2026-09-08: it is like a regular label application but a stronger level of it, not taking
+    # priority and going out like anything else. The first version put its QIDs in
     # `_cap_label_edits(priority=…)` so they jumped the queue; that is not what stronger means.
     #
     # **Stronger means it WINS ITS SLOT**, which is `_without_hand_covered` below: the derived
-    # edit for a slot she sets by hand is dropped, so her value is the one that lands. When it
+    # edit for a slot set by hand is dropped, so the hand value is the one that lands. When it
     # goes out is the cap's business, the same as anything else.
     hand = _hand_label_applications(live_labels)
     hand_qids = {ln.split("\t", 1)[0] for ln in hand if ln.startswith("Q")}
@@ -7590,32 +7533,32 @@ def main():
     covered = _hand_covered_slots(hand)
     trimmed = _without_hand_covered(derived_labels, covered)
     if covered and len(trimmed) != len(derived_labels):
-        print(f"hand label applications: dropped derived edits for {len(covered)} slot(s) she "
-              f"sets by hand -- a label REPLACES, so the last one written would have won")
+        print(f"hand label applications: dropped derived edits for {len(covered)} slot(s) set "
+              f"by hand -- a label REPLACES, so the last one written would have won")
     lines = _cap_label_edits(
         lines, clan_block, hand + trimmed,
         priority=_cjk_priority_qids(our_items))
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
-    # **ONE file, names first.** Emma, 2026-08-30: *"One file, not two. Names first, then
-    # everything else. Today it is `wikidata-garborg-day.txt` plus
-    # `wikidata-garborg-name-items.txt` and a run order to remember."*
+    # **ONE file, names first**, ruled 2026-08-30: one file rather than two, names first and
+    # then everything else, in place of `wikidata-garborg-day.txt` plus
+    # `wikidata-garborg-name-items.txt` and a run order to remember.
     #
     # The two files are the same shape they always were; what changes is that the name items are
     # regenerated in this run and land at the TOP of the day file, so there is no order left to
     # remember and no way to run half of it. `CLAUDE.md` § *Code that is WRITTEN but never
-    # CALLED* is the reason this matters more than tidiness: her own diagnosis of why no name
-    # item was ever created is *"name creations were always segregated into a different Quick
-    # Statements generation pipeline that was never run."*
+    # CALLED* is the reason this matters more than tidiness: the diagnosis of why no name
+    # item was ever created is that name creations were segregated into a separate
+    # QuickStatements generation pipeline that was never run.
     #
     # The name items go first because a person's `P735` may point at one. That only works for
     # items that ALREADY exist -- `LAST` names the most recent creation and nothing else, so a
     # person created here cannot reference a name item created here. The ordering is therefore
     # correct rather than load-bearing, and the day after, the link lands.
     name_file = ROOT / "reports" / "wikidata-garborg-name-items.txt"
-    # **Her identifications go FIRST, before the name items.** Emma, 2026-09-01: *"the
-    # pipeline generates 10 quickstatements adding the geni id to the individuals at the
-    # beginning of each generation."* A `P2600` on an existing item needs nothing created, so
+    # **The hand identifications go FIRST, before the name items.** Specified 2026-09-01: the
+    # pipeline generates the Geni-id QuickStatements for the individuals at the beginning of
+    # each generation. A `P2600` on an existing item needs nothing created, so
     # it can lead; and putting it first means the ledger is truest at the moment the rest runs.
     # **Two blocks lead the file and they are kept SEPARATE**, because they were not and one
     # silently ate the other -- see the note at the name-items block below.
@@ -7626,7 +7569,7 @@ def main():
     man_lines, man_total, man_held = manual_p2600_lines(_touched)
     if man_lines:
         ident_block = ["# " + "=" * 72,
-                       "# HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
+                       "# HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
                        "# These lead the file: the Geni id is the FIRST edit on any individual,",
                        "# and a name item is not an exception to that.",
                        f"# {man_total} in reports/manual-identifications.csv, {man_held} already "
@@ -7654,14 +7597,12 @@ def main():
         sys.exit("the name-items generator failed, so the batch would be built on whatever "
                  "reports/wikidata-garborg-name-items.txt happens to hold -- a stale file "
                  "looks identical to a fresh one:\n" + (r.stderr or "")[-800:])
-    # **This block used to ASSIGN `head`, and that discarded every `P2600` above it.** Emma,
-    # 2026-09-04: *"It seems it is still messing with people's names without doing geni
-    # identifications. Like the name objects are being linked on people without geni ids, this
-    # should be categorically not allowed as the geni id must be applied as the first edit on
-    # any individual… Idk why it thinks name objects are an exception when the name data even
-    # comes from geni"*.
+    # **This block used to ASSIGN `head`, and that discarded every `P2600` above it.** Reported
+    # 2026-09-04: name objects were being linked onto people carrying no Geni id, which is
+    # categorically not allowed -- the Geni id must be the first edit on any individual, and a
+    # name object is no exception, since the name data comes from Geni in the first place.
     #
-    # She is right and the cause was one character. `manual_p2600_lines` ran, found the ids,
+    # The cause was one character. `manual_p2600_lines` ran, found the ids,
     # `head += …` collected them, `print` reported them as emitted -- and then `head = [ … ]`
     # here replaced the list. **Measured on the batch of 2026-09-04: 161 existing items received
     # `P735`/`P734`/`P5056`, and a live `wbgetentities` says 161 of 161 carry no `P2600`.** Every
@@ -7676,9 +7617,9 @@ def main():
         body = name_file.read_text(encoding="utf-8").strip()
         if body:
             name_block = ["# " + "=" * 72,
-                          "# NAME ITEMS. One file, her instruction of 2026-08-30 -- there is no",
+                          "# NAME ITEMS. One file, per the 2026-08-30 rule -- there is no",
                           "# longer a second batch to remember to run. They follow the Geni ids",
-                          "# above, per her 2026-09-04 correction.",
+                          "# above, per the 2026-09-04 correction.",
                           "# " + "=" * 72,
                           body, "",
                           "# " + "=" * 72,
@@ -7712,8 +7653,8 @@ def main():
             # **Read, merge, sort, replace -- never append.** Appending broke the file's
             # ordering, which `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC* is about, and it did
             # worse than that on 2026-09-04: the loader keeps the LAST row for a token, so five
-            # rule-minted rows sitting past the end silently overrode the readings Emma had just
-            # chosen. `d.y.` went back to `ドイ` and `Jr.` to `イル` after both had been fixed,
+            # rule-minted rows sitting past the end silently overrode the readings just
+            # chosen by hand. `d.y.` went back to `ドイ` and `Jr.` to `イル` after both had been fixed,
             # and the fix looked applied because the table's early rows said so.
             #
             # The `t not in known` guard was already there and is not enough on its own: a token
