@@ -2,11 +2,11 @@
 
     python scripts/census-correspondence-shapes.py
 
-**Emma, 2026-08-24:** *"You conflated wiki data items having two Jenny links on them...
-Now you're talking about wikidata items that link to the same Jenny item. That is a very
-different phenomenon... and there might be some other things that you have here."*
+**A Wikidata item carrying two Geni links and two Wikidata items pointing at the same Geni
+profile are DIFFERENT PHENOMENA**, and they had been conflated. There may well be further
+shapes besides those two.
 
-She is right on both counts, and the second half is why this script exists rather than a
+Both halves hold, and the second is why this script exists rather than a
 paragraph asserting there are three kinds. The shapes are **measured**.
 
 **The two directions are opposites with opposite fixes.**

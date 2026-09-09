@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Every store item that is a PERSON and whose Latin label carries a rank word or a `|`.
 
-**Emma, 2026-09-09, photographing `Q110731142` — `noble Nike|Victoria Soutzaina`:** *"there's a
-fuckton of people with the prefix 'noble' on wikidata that comes from the same guy in 2022... all
-of them have the title in their mul label which is more like an English label and I would like to
-use our completely present wikidata export that should contain all of these people and redo their
-labels agentically to be proper."*
+**`Q110731142` reads `noble Nike|Victoria Soutzaina`, and it is one of a great many.** A large
+number of people on Wikidata carry the prefix `noble`, all imported by one editor in 2022, and
+all of them have the title inside the `mul` label, where it reads as an English label rather
+than a language-neutral one. The local Wikidata export holds all of these people, so their
+labels can be redone properly from it.
 
 **Two artefacts, both on that one item.** `noble` is a RANK, not a name — Genealogics files it in
 its own column and `GZWDer`'s semi-automatic import of January 2022 carried it into the label

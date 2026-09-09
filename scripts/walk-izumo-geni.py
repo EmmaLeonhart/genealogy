@@ -1,8 +1,8 @@
 """Find the Izumo clan's Geni-side lineage by walking our own tree.
 
-Emma's seed, 6000000012789160423, is already in the merged tree, so the Geni
+The seed, 6000000012789160423, is already in the merged tree, so the Geni
 profiles for this clan do not have to be searched for one at a time -- they are
-reachable by walking outward from her seed.
+reachable by walking outward from it.
 
 Matching is by NAME against the roster, and that is only defensible here because
 the names are unique in a way `Adolf Ludvig Piper` was not: `Kushichitoriuminomikoto`
@@ -98,7 +98,7 @@ for d in range(1, HOPS + 1):
 print(f'{len(dist)} people within {HOPS} hops of the seed')
 
 # Index the WHOLE tree, not just the ball. The ball is only used to report how
-# far a match sits from Emma's seed -- restricting the search to it was the second
+# far a match sits from that seed -- restricting the search to it was the second
 # error of the first run: the Senge and Kitajima profiles are real and present but
 # are reached through the modern imperial line, not through the founder end, so no
 # radius around Tsusa 4 contains them.
