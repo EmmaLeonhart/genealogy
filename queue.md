@@ -145,6 +145,22 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   related eccentric graph points on geni."* Do not start it early and do not invent the gate's
   threshold — that is hers.
 
+- **How to read a `|` in an imported label.** Emma, 2026-09-09, asked whether
+  `noble Nike|Victoria Soutzaina` should become `Nike Soutzaina` with `Victoria Soutzaina` as an
+  `Amul`: *"bruh no the pipes are a bit more complicated, I am not 100% sure how to interpret it
+  lol."* **1,565 people carry one** and `reports/title-label-proposals.tsv` holds every one with
+  a computed reading, unemitted. Three shapes are in there and they may not want the same answer
+  — two given-name spellings (`Margaret|Margery Bulkeley`), two whole names
+  (`Conrad Hofmeister|Kornmann`), and a bracketed variant group inside one
+  (`Ann Bincks (Benckes|Bench)`, 136 of them, already held separately). NOT to be interpreted
+  here; hers.
+
+- **The other lowercase ranks.** She scoped the first batch to `noble` alone. The same artefact
+  covers **1,029** people — `knight` 53, `sir` 53, `ridder` 41, `baroness` 27, `captain` 25,
+  `farmer` 11, `esquire` 9, `skipper` 3, `mistress` 6 — all computed in
+  `reports/title-label-proposals.tsv` and all unemitted. `scripts/build-noble-label-batch.py`
+  widens by one constant.
+
 ---
 
 ## What this session settled, so it is not relitigated

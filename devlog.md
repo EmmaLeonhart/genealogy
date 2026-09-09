@@ -32703,3 +32703,34 @@ all 10 are stillborn records. And the `unbalanced` catch-all fires on **3** rows
 
 **Nothing is emitted.** The scope beyond `noble` — the other lowercase ranks, and whether the
 41,505 capitalised `Sir … , Nth Baronet` labels are in scope at all — is hers.
+
+## 2026-09-09 — the `noble` batch: 457 people, and both of her narrowings
+
+**Three rulings on the census above, and two of them narrow it.**
+
+* **`noble` only.** Offered every lowercase rank — 1,029 people, one artefact, one rule — she took
+  `noble` alone. The other 1,680 proposals stay computed in
+  `reports/title-label-proposals.tsv` and are not emitted; `build-noble-label-batch.py` widens
+  by one constant when she says so.
+* **⛔ THE PIPES ARE HELD.** *"bruh no the pipes are a bit more complicated, I am not 100% sure
+  how to interpret it lol."* So the **7** `noble` labels that also carry a `|` are excluded even
+  though the rank half is settled — removing the rank and leaving the pipe would commit to half
+  an interpretation she has not made. A queue item records the three shapes without reading them.
+* **Nothing in the rank's place**, which is § *A TITLE IS NOT A NAME* already. **No `Amul`
+  carrying the old string either**: the `Amul` preservation of § *The MARRIED name is the real
+  name* exists to protect a hand edit of HERS from being overwritten, and these are `GZWDer`'s
+  bot labels — keeping `noble Nike Soutzaina` searchable is exactly the *something in its place*
+  she refused.
+
+**`reports/wikidata-noble-labels.qs`: 457 people, 725 label edits — `Len` 454, `Lmul` 240,
+`Lnl` 31.**
+
+**`mul` is a MINORITY and that is the thing to notice.** A `mul`-only batch would have left the
+rank live in `en` for 454 people. It is the same shape as § *`NN` is PRESERVED in `mul`*, where
+emitting on one language would have erased the marker from the 1,271 items holding it in
+another: **which language a value sits in is measured, never assumed.** Checked the other way
+too — **0** of the 457 have an `en` that also opens with `noble` but differs from the corrected
+string, so nothing is left behind.
+
+Sanity over the emitted file: **0** `D<lang>` lines, **0** aliases, **0** labels still carrying
+`noble`, **0** carrying a `|`, **0** carrying a comma.
