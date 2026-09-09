@@ -5,8 +5,8 @@ the run is capped by `--limit` and refuses a batch that is not the reviewed file
 committed to the repo.
 
 Credentials come from the environment — `USERNAME`, `BOT_NAME` and
-`BOT_PASSWORD`, all three GitHub Actions secrets, named for what Emma actually
-created in the repo's secret store. A bot-password login name is
+`BOT_PASSWORD`, all three GitHub Actions secrets, named for what exists in the
+repo's secret store. A bot-password login name is
 `<account>@<botname>`, so the first two are joined with `@` to make `lgname`.
 They are never read from a file, never logged, and never written anywhere. If
 any is missing the run stops before touching the network.
@@ -22,7 +22,7 @@ object carries. `CLAUDE.md` leans on that ordering where it is most dangerous: t
 `NN` fix is two edits per item, the `mul` one declared as a dependency of the `en`
 one, *"so the marker is written before the slot holding it is reused"* — and on the
 1,271 items whose only `NN` lives in `en`, the wrong order erases the marker.
-`genimerge.editorder` now supplies the order, by Emma's design: a random pick from
+`genimerge.editorder` now supplies the order, as designed: a random pick from
 whatever is currently runnable.
 
 **A batch whose prerequisites live in another file refuses rather than half-running.**
@@ -53,9 +53,9 @@ sys.path.insert(0, str(REPO / "src"))
 from genimerge.editorder import Blocked, runnable_order  # noqa: E402
 API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 
-#: Emma's stated cadence was 10-100 edits a day; the ceiling has been doubled with every
-#: other batch size in the repo -- 100 -> 200 on 2026-09-05, 200 -> 400 on 2026-09-07,
-#: *"the daily batch is twice as large in all of the things it does"*. A run may never exceed
+#: The stated cadence was 10-100 edits a day; the ceiling has been doubled with every
+#: other batch size in the repo -- 100 -> 200 on 2026-09-05, 200 -> 400 on 2026-09-07, the
+#: daily batch being twice as large in everything it does. A run may never exceed
 #: it however it is invoked, and it has to keep pace with the batch it sends or a doubled
 #: batch simply arrives truncated.
 MAX_EDITS_PER_RUN = 400
@@ -66,9 +66,9 @@ REVIEWED_BATCHES = {
     "out/wikidata/unlinked-items.json",
     "out/wikidata/priority-chain.json",
     "out/wikidata/edits.json",
-    # The daily Garborg batch. Emma, 2026-09-05, choosing what starts running by
-    # itself on the 15th: "The daily Garborg batch", sent through the bot-password
-    # API. It qualifies as reviewed on the same terms as the others -- it is
+    # The daily Garborg batch: the thing that starts running by itself on the 15th,
+    # sent through the bot-password API. It qualifies as reviewed on the same terms
+    # as the others -- it is
     # committed to the repo by the pipeline and published on the site every day,
     # so what runs is a file that has been readable for as long as it existed.
     "reports/wikidata-garborg-day.txt",
@@ -258,7 +258,7 @@ def entity_data(edit: dict, minted: dict) -> dict:
     load-bearing rather than tidy. `wbeditentity` REPLACES a language's alias list
     when given one plainly, and `CLAUDE.md` § *The MARRIED name is the real name*
     has every `Lmul` preceded by an `Amul` preserving whatever the item already
-    read — *"Some of those are her hand-edits"*. A replacing alias write would
+    read, some of which are hand-edits. A replacing alias write would
     delete the thing the preceding line exists to save. A label is a replacement by
     definition, which is what `Lmul` means.
     """
@@ -424,14 +424,14 @@ def main() -> int:
               f"Re-run with --live to execute.")
         return 0
 
-    # THE START DATE. Emma, 2026-08-14: "no wikidata edits until September 1."
+    # THE START DATE: no Wikidata edits until September 1.
     # Checked only on the LIVE path — a dry run sends nothing, so it stays useful
     # before the date. FAILS CLOSED: an unreadable date == locked.
     #
-    # This used to read a lockout state file in another repo. Emma, 2026-08-23:
-    # "Shintowiki scripts and this one are not the same and not really
-    # coordinated" — and she is right that the coordination was invented here
-    # rather than observed. The date is this repo's own.
+    # This used to read a lockout state file in another repo. The shintowiki
+    # scripts and this one are not the same and are not coordinated; that
+    # coordination was invented here rather than observed. The date is this
+    # repo's own.
     allowed, why = wikidata_lockout.editing_allowed()
     if not allowed:
         print("")

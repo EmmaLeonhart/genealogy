@@ -1,7 +1,7 @@
 """The rules that keep the edit-object emitters from damaging Wikidata.
 
-Queue item 14d. Emma, 2026-08-16: *"Don't just test them before September 1st.
-Put them at the end of the queue."*
+Queue item 14d, placed at the tail of the queue rather than tested only ahead of
+the September 1st start.
 
 Six scripts now write JSON edit objects meant to run against Wikidata, and none
 had a test. That is the repo's normal pattern for `scripts/` — but a report being
@@ -12,7 +12,7 @@ rather than by a test:
 * the name-item planner treated only `resolved` as "already exists" and would
   have created a **tenth `Maria`**, on top of the nine Wikidata already has;
 * the Samaritan batch read only links Wikidata already stated, ignoring the QIDs
-  Emma wrote onto the Geni profiles, and would have created **`Jonathan I`** and
+  written by hand onto the Geni profiles, and would have created **`Jonathan I`** and
   **`Baba Rabba`** twice;
 * the source comparison called **69 people absent** and then **13 fathers in
   conflict**, both from name matching that was too strict and then too loose.
@@ -105,7 +105,7 @@ def test_the_samaritan_batch_creates_nobody_who_has_a_qid():
     """`Jonathan I` and `Baba Rabba` exist; the batch proposed creating them.
 
     The cause was reading only links Wikidata already stated and ignoring the
-    QIDs Emma wrote onto the Geni profiles. Both sources are read now.
+    QIDs written by hand onto the Geni profiles. Both sources are read now.
     """
     import csv
     pairs = REPORTS / "geni-wikidata-pairs.csv"
@@ -169,9 +169,8 @@ def test_a_geni_sourced_statement_cites_the_profile_it_came_from():
 def test_nothing_cites_a_source_wikidata_does_not_have():
     """A reference to a source that does not exist makes the statement unusable.
 
-    Emma, 2026-08-14: *"These JSONs aren't gonna fire because they're trying to
-    cite an order.life citation that doesn't exist."* So a person with no Geni ID
-    carries **no reference**, never a broken one.
+    A JSON citing an order.life reference that does not exist will not fire. So a
+    person with no Geni ID carries **no reference**, never a broken one.
     """
     for edit in _edits(REPORTS / "wikidata-orderlife.json"):
         gid = (edit.get("subject") or {}).get("geni_id")
@@ -215,18 +214,18 @@ def test_every_succession_entry_states_the_office():
 
 
 def test_no_created_person_carries_a_marker_as_a_local_label():
-    """`NN` lives in `mul` and nowhere else — Emma, 2026-08-16.
+    """`NN` lives in `mul` and nowhere else.
 
-    *"NN is always preserved in the multi-language label. It just has more
-    descriptive labels added in some languages for the relationships."* And *"no
-    local language should have it."* The structural placeholders were built by
+    `NN` is always preserved in the multi-language label, and gains more
+    descriptive labels in some languages for the relationships. No local language
+    holds the marker. The structural placeholders were built by
     copying `label_en` across from `derived-labels.csv` without reading it, which
     put `NN`, `NN NN` and `NN Hildesheim` into `en` for the people whose derived
     label is exactly that.
 
     Naming two files here was itself the bug the second time. `Unknown Wife` sat
     in **both** `mul` and `en` on five items of `wikidata-orderlife.json`, which
-    this test did not look at, so a marker Emma had just ruled on
+    this test did not look at, so a marker just ruled on
     (2026-08-18, *"Both are markers"*) went on passing. Every batch that emits
     `labels` is checked now, discovered by globbing rather than by a list somebody
     has to remember to extend — a new emitter is covered the day it lands.
@@ -245,10 +244,9 @@ def test_no_created_person_carries_a_marker_as_a_local_label():
             labels = edit.get("labels") or {}
             for language, value in labels.items():
                 if language == "mul":
-                    # `mul` is where the marker belongs, but the marker is `NN` —
-                    # her words: *"if there's a private individual whose name is
-                    # not exported, it comes out as an NN."* `Private` is not a
-                    # label in any slot.
+                    # `mul` is where the marker belongs, but the marker is `NN`:
+                    # a private individual whose name is not exported comes out
+                    # of Geni as an `NN`. `Private` is not a label in any slot.
                     assert "private" not in value.lower(), (
                         f"{edit['id']} writes a redaction marker as its mul label")
                     continue
@@ -279,7 +277,7 @@ def test_no_structural_correspondence_gives_one_profile_two_items():
         assert edit.get("adds_a_second_geni_id") == bool(already), (
             f"{edit['id']} mis-flags whether it adds a second Geni ID")
         assert edit["statements"][0]["property"] == "P2600", (
-            f"{edit['id']} emits something other than the identifier; her order "
+            f"{edit['id']} emits something other than the identifier; the order "
             "is the Geni ID first and everything derived from it after")
 
 

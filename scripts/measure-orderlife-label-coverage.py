@@ -1,23 +1,22 @@
 """How many of OUR people could take a label straight from order.life?
 
-**Queue item 13. Emma, 2026-08-15:** asked whether order.life feeds the
-seven-language work, and answered *"Yes — measure it properly first."*
+**Queue item 13.** Whether order.life feeds the seven-language work was answered
+*yes, measured properly first*.
 
-She had said order.life *"doesn't have a whole lot of them"*. Sampled over 40,000
+The first impression was that order.life does not carry many. Sampled over 40,000
 of its items it carries `ja` on 73%, plus `ko`, `he`, `zh`, `es` and `ru`. That is
 a lot, and it matters because **a copied label is free and a transliterated one is
 hand-built agentically**, name by name. If order.life covers a large share of the
 people item 1 has to label, item 1 gets much smaller.
 
 **What this does NOT do is reopen the rule.** The seven-language labels are
-*made*, not copied, for everybody order.life does not cover — Emma's ruling
-stands. This only measures the part that need not be made.
+*made*, not copied, for everybody order.life does not cover; that ruling stands.
+This only measures the part that need not be made.
 
 **Joined on BOTH identifiers.** `orderlife/analysis/persons.tsv` carries a
 `geni_id` column *and* a `wikidata_qid` column, and a row may have either, both or
-neither. Emma, 2026-08-15: *"WHY THE FUCK DID YOU JOIN ON THE GENI ID RATHER THAN
-JOINING ON THE WIKIDATA ID? THE ORDER.LIFE THING HAS WIKIDATA IDS AS A PROPERTY ON
-ITS OWN ITEMS."*
+neither. Joining on the Geni ID alone is wrong: order.life carries Wikidata ids as
+a property on its own items, so the QID join must run too.
 
 The first version joined on `geni_id` alone and reached **35,139** of the
 **87,802** joinable rows — 27,727 Geni-only, **52,663 QID-only**, 7,412 both.
@@ -54,7 +53,7 @@ OUT_CSV = REPO / "reports" / "orderlife-label-coverage.csv"
 
 csv.field_size_limit(10_000_000)
 
-#: The seven Emma named, plus `mul`. Everything else is counted but not reported
+#: The seven named languages, plus `mul`. Everything else is counted but not reported
 #: per-language, because it is not what item 1 needs.
 WANTED = ("en", "ja", "zh", "hi", "ar", "ru", "el", "mul")
 
@@ -155,8 +154,8 @@ def main() -> int:
     add = L.append
     add("# What order.life could label for us, for free")
     add("")
-    add("**Queue item 13.** Emma, 2026-08-15, on whether order.life feeds the")
-    add("seven-language work: *\"Yes — measure it properly first.\"*")
+    add("**Queue item 13.** Whether order.life feeds the seven-language work was")
+    add("answered yes, measured properly first.")
     add("")
     add("**Joined on the Geni ID where present and the Wikidata QID otherwise**,")
     add("never on names. Joining on the Geni ID alone reached 35,139 of 87,802")
@@ -179,7 +178,7 @@ def main() -> int:
         add(f"| `{lang}` | {per_lang[lang]:,} |")
     add("")
     add("**This does not reopen the rule.** The seven-language labels are *made*,")
-    add("not copied, for everybody order.life does not cover — Emma's ruling stands.")
+    add("not copied, for everybody order.life does not cover; that ruling stands.")
     add("This measures only the part that need not be made.")
     add("")
     add("Every shared person is a row in `reports/orderlife-label-coverage.csv`")
