@@ -280,7 +280,13 @@ def translit(token):
     # branch below then emitted the other. Collapsing here, the same way `ck` collapses above,
     # leaves the geminate branch to handle only the case it was written for -- `nn` BEFORE a
     # vowel, which is `Anna` -> `アンナ`.
-    s = re.sub(r"([nm])\1(?![aeiouyæøåöäü])", r"\1", s)
+    #
+    # **`n` ONLY, and `m` is deliberately NOT here.** You, 2026-09-09: *"mu is the cluster
+    # resolver lol not a geminate marker"*, with `Mommsen` -> `モンムセン`. For `n` the mora
+    # nasal and the coda are the SAME character, so collapsing is right and `Finn` -> `フィン`.
+    # For `m` they are two DIFFERENT characters -- `ン` marks the geminate and `ム` resolves
+    # the `mms` cluster -- so both belong, and collapsing here destroyed one of them.
+    s = re.sub(r"(?P<c>n)(?P=c)(?![aeiouyæøåöäü])", lambda m: m.group("c"), s)
     # **`dt` is ONE /t/**, in German, Danish, Norwegian and Swedish alike -- and the corpus
     # settles it rather than anyone's opinion: of the 24 `-dt` tokens carrying an ATTESTED
     # Wikidata rendering, **0 end in `ドト`** (`Schmidt` シュミット ja 33x, `Brandt` ブラント 14x,
@@ -323,11 +329,26 @@ def translit(token):
                         # values, undifferentiated emission scored WORSE than emitting nothing
                         # (803 against 809), which is what caught it.
                         #
-                        #   nasal      `nn` `mm`  -> `ン`   Anna  -> アンナ
+                        #   nasal      `nn` `mm`  -> `ン`   Anna -> アンナ, Emma -> エンマ
                         #   liquid     `ll` `rr`  -> nothing  Aall -> オール
                         #   otherwise             -> `ッ`   Abba  -> アッバ
+                        # ⛔ **`ム` IS THE CLUSTER RESOLVER, NOT A GEMINATE MARKER.** You,
+                        # 2026-09-09: *"mu is the cluster resolver lol not a geminate marker.
+                        # Mommsen should be もんむせん and Hammerstein はんめルすタイン"*, and
+                        # *"Emma would not be Emuma it would be Enma or Ema."*
+                        #
+                        # `CODA["m"]` is `ム`, which is right when an `m` has no vowel after it
+                        # and has to be resolved into its own mora -- `Momm|sen` -> `モンムセン`,
+                        # where the `ム` is resolving `mms` and the `ン` is the geminate. Reaching
+                        # for `CODA[c]` HERE emitted the resolver in the geminate's place, so
+                        # `Emma` came out `エムマ` -- a form that is neither of the two readings
+                        # you named.
+                        #
+                        # A nasal geminate is `ン` for BOTH letters. It is the same mora nasal
+                        # `nn` already took, and `mm` was only ever different by accident of
+                        # indexing into a table that answers a different question.
                         if c in "nm":
-                            ja.append(CODA[c][0])
+                            ja.append("ン")
                         elif c not in "lr":
                             ja.append("ッ")
                         i += 1

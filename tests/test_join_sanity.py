@@ -573,7 +573,32 @@ def test_the_ck_digraph_is_one_sound_not_two():
     assert translit("Sacken") == ("サケン", "萨肯"), (
         "ck in onset position. The Chinese was 萨凯恩 when this test was written, which "
         "encoded the coda-nasal bug caught on 2026-08-30: ken is 肯, one syllable.")
-    assert translit("Anna") == ("アナ", "阿纳"), "the geminate rule for identical letters stands"
+    # ⛔ **A NASAL GEMINATE IS `ン`, AND THIS LINE ASSERTED THE PRE-GEMINATE BASELINE.** It read
+    # `アナ` with the comment "the geminate rule for identical letters stands" -- describing a
+    # rule the repo had already replaced, and it held CI red from 2026-09-06.
+    #
+    # Settled by the attested column rather than by argument, which is what `CLAUDE.md`
+    # § *THE RULE IS VALIDATED AGAINST THE ATTESTED COLUMN* requires. Three independent
+    # Wikidata attestations of the same `nn`: Hanna ハンナ (ja 20x), Johanna ヨハンナ (19x),
+    # Benno ベンノ (11x). The other two arms corroborate in the same pass -- Abba アッバ (5x)
+    # for the non-nasal `ッ` branch and Alla アラ for the liquid one.
+    assert translit("Anna") == ("アンナ", "阿纳"), (
+        "a nasal geminate is ン -- attested on Hanna ハンナ, Johanna ヨハンナ, Benno ベンノ")
+
+    # **`mm` IS THE SAME NASAL GEMINATE**, and it was reaching for `CODA["m"]` -- `ム`, which is
+    # the CLUSTER RESOLVER. Emma, 2026-09-09: *"mu is the cluster resolver lol not a geminate
+    # marker"*, and *"Emma would not be Emuma it would be Enma or Ema."* Both characters appear
+    # in `Mommsen`: `ン` marks the geminate and `ム` resolves the `mms` cluster.
+    assert translit("Emma")[0] == "エンマ", "ン marks the geminate, not ム"
+    assert translit("Mommsen")[0] == "モンムセン", "ン the geminate, ム resolving mms"
+    assert translit("Rommel")[0] == "ロンメル", "attested on Wikidata"
+    assert translit("Muhammad")[0] == "ムハンマド", "attested on Wikidata"
+
+    # **`n` still collapses before a consonant and `m` must not.** For `n` the mora nasal and
+    # the coda are the same character, so `Finn` is one `ン`; for `m` they are two different
+    # characters and collapsing destroyed one. This pins the pair that regression would break.
+    assert translit("Finn")[0] == "フィン", "nn before a consonant is ONE mora nasal"
+    assert translit("Umm")[0] == "ウンム", "mm is not -- attested on Wikidata"
 
 
 def test_the_rule_refresh_never_rewrites_a_hand_checked_row():
@@ -614,8 +639,14 @@ def test_a_syllable_final_nasal_is_inside_the_chinese_syllable():
     assert translit("Absalon") == ("アブサロン", "阿布萨隆")
     assert translit("Hansen") == ("ハンセン", "汉森")
     assert translit("Bing")[1] == "宾", "-ng is a nasal final too"
-    # A nasal with a vowel after it is not final: `Anna` is `an` + `na`.
-    assert translit("Anna") == ("アナ", "阿纳")
+    # A nasal with a vowel after it is not final: `Anna` is `an` + `na`, so the Chinese keeps
+    # the nasal INSIDE the syllable -- 阿纳, which is what this test is about.
+    #
+    # **The katakana was `アナ` here and that half was stale**, for the same reason as the
+    # assertion ~60 lines above: it predates the geminate rule. A nasal geminate is `ン`,
+    # attested on Hanna ハンナ (ja 20x), Johanna ヨハンナ (19x) and Benno ベンノ (11x). The
+    # docstring's point survives unchanged -- `ン` is a real mora and is still asserted here.
+    assert translit("Anna") == ("アンナ", "阿纳")
 
 
 def test_the_hand_corrections_are_in_the_table():

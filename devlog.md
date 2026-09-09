@@ -33126,3 +33126,53 @@ is rebuilt here.
 `duplicate-name-items-we-made.html` were built by hand on 2026-09-07 and no script in the repo
 names them. They are findings pages — a measurement at a date — so there is nothing for CI to
 regenerate, and writing generators to make the table look complete would be inventing work.
+
+## 2026-09-09 — `ム` is the cluster resolver, not a geminate marker
+
+Your ruling, shown `translit("Emma")` → `エムマ`: *"Mm -> んま or whatever the vowel is, mu is the
+cluster resolver lol not a geminate marker. Mommsen should be もんむせん and Hammerstein should be
+はんめルすタイン"*, and *"Emma would not be Emuma it would be Enma or Ema."*
+
+**It was a category error, not a threshold.** The geminate branch's own comment already said
+`nasal 'nn' 'mm' -> ン`; the code under it wrote `ja.append(CODA[c][0])`, and `CODA["m"]` is `ム`
+— the character that resolves an `m` with no vowel after it. So the resolver was being emitted
+in the geminate's place. `CODA["n"]` happens to be `ン`, which is why `nn` looked correct and
+`mm` never did.
+
+**Both characters belong in one word, which is what makes the distinction concrete:**
+
+    Mommsen  ->  モンムセン        ン marks the geminate, ム resolves the `mms` cluster
+    Emma     ->  エンマ
+    Hammerstein -> ハンメルステイン
+
+**A second site had to move with it.** `nn`/`mm` before a consonant were collapsed by one regex,
+which is right for `n` — the mora nasal and the coda are the same character, so `Finn` is one
+`ン` — and wrong for `m`, where they are two different characters and collapsing destroyed one.
+Narrowed to `n`. `Finn` → フィン and `Gunnbjørn` → グンビョルン are unchanged, which is the
+regression that rule exists to prevent, and both are now pinned.
+
+**Scored against the attested column, per § *THE RULE IS VALIDATED AGAINST THE ATTESTED
+COLUMN*: 729 → 734 of 5,387.** Six gained, one lost, and every gain is the class the ruling
+names:
+
+    Crommelin  クロムメリン -> クロンメリン      Rommel    ロムメル -> ロンメル
+    Hummel     フムメル   -> フンメル          Muhammad  ムハムマド -> ムハンマド
+    Mimmi      ミムミ    -> ミンミ            Umm       ウム    -> ウンム
+
+    lost: Grimm グリム -> グリンム   word-final German single `m`, covered by its own attestation
+
+**And the `Anna` assertion that held CI red since 2026-09-06 was stale, in TWO places.** Both
+read `アナ` and predate the geminate rule; one carried the comment *"the geminate rule for
+identical letters stands"*, describing a rule the repo had replaced. Settled by attestation
+rather than argument — Hanna ハンナ 20×, Johanna ヨハンナ 19×, Benno ベンノ 11×, with Abba アッバ
+and Alla アラ corroborating the other two arms in the same pass. The second occurrence is inside
+the Chinese `NASAL_FINAL` test, whose point is 阿纳; only the katakana half moved.
+
+**Two traps worth keeping.** A `\1` backreference written through a shell heredoc became a
+literal `chr(1)` in the source — the regex silently matched nothing and `Finn` came out `フィンン`,
+which reads as a rule bug. Rewritten with a named group and no backslash-digit. And the console
+here is cp1252, so any check on non-ASCII output needs `PYTHONIOENCODING=utf-8` or it reports
+`??????` for a file that is perfectly good UTF-8.
+
+**Still open and yours:** the third CI failure, `alias_from_married_name` dropping
+`Duchess of Aquitaine` — *"Leave it — I'll decide later."*
