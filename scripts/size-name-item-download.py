@@ -1,7 +1,7 @@
 """How large is the approved name-item download, exactly?
 
-Emma approved a `wikidownload` pass fetching the items `P735` and `P734` point
-at, because the store holds *people* — the download walked P22/P25/P26/P40/P3373
+A `wikidownload` pass fetching the items `P735` and `P734` point at is approved,
+because the store holds *people* — the download walked P22/P25/P26/P40/P3373
 — so no name string can be resolved to an item offline today.
 
 **The only figure we have is a sample.** `queue.md` records 40 shards, 40,000
@@ -119,7 +119,7 @@ def main() -> int:
     add = L.append
     add("# Sizing the name-item download")
     add("")
-    add("Emma approved a `wikidownload` pass fetching the items `P735` and `P734` point")
+    add("A `wikidownload` pass fetching the items `P735` and `P734` point")
     add("at. The store holds *people* — the download walked P22/P25/P26/P40/P3373 — so no")
     add("name string resolves to an item offline today.")
     add("")

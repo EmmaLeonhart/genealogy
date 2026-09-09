@@ -2,14 +2,15 @@
 
     python scripts/census-synoptic-usages.py
 
-**Emma, 2026-08-29:** *"it is consistently conflated between the union of all the geni gedcoms
-and the union of that tree with all data sources."* Two meanings, one phrase:
+**The phrase is consistently conflated between the union of all the Geni GEDCOMs and the union
+of that tree with every data source.** Two meanings, one phrase:
 
 * **geni** — every `.ged` under `exports/` merged, i.e. `out/merged.ged`.
 * **full** — that tree joined to every other source, Wikidata above all. Does not exist yet.
 
-Her instruction is to put **every specific usage** to her rather than pick a definition and
-apply it everywhere. 181 occurrences across 26 files is too many questions to be answerable, so
+The instruction is that **every specific usage** is put up for a ruling rather than a single
+definition being picked and applied everywhere. 181 occurrences across 26 files is too many
+questions to be answerable, so
 this classifies each one first and leaves only the genuinely undecidable ones to ask about.
 
 ## How a usage is classified, and why it is keyword-based rather than clever

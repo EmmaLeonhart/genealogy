@@ -1,8 +1,10 @@
 """Every display name of every person in the merged tree, one row per NAME record.
 
-Emma, 2026-08-11: *"you're supposed to be making giant CSV files of all of these
-things that we are observing and then analysing them. You should be doing this,
-and you should be committing and pushing these CSV files. 1. CSV file: the display
+**One giant CSV of everything being observed, committed and pushed.** Here that is
+the display name of every single person: every display name a person has goes in as
+its own row.
+
+The original statement of it: *"1. CSV file: the display
 name of every single person. Every single display name that the person has goes
 into it as different entries in the CSV file. 2. You commit and push it.
 3. You analyse it."*
@@ -17,8 +19,8 @@ construct the name from this line rather than from the optional pieces. The
 pieces are carried alongside anyway, because the question of which field feeds
 what is exactly what is being modelled.
 
-Script is recorded, never language. Emma: *"we are sorting by scripts. We are not
-sorting by languages. We will sort by languages later."*
+Script is recorded, never language: the sort is by script, and sorting by language
+comes later.
 
 Offline: the merged GEDCOM plus the downloaded Wikidata store. Nothing is
 queried.

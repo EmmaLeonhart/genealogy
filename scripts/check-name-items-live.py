@@ -2,10 +2,8 @@
 
     python scripts/check-name-items-live.py [--usage family] [--limit N]
 
-**Emma, 2026-08-29:** *"certain names, for example Tunheim, I've noticed that some of these
-names got merged in with an existing item. I'm extremely confused how this happened, and it
-seems to me to indicate maybe you're not actually checking the existence of the names correctly
-in our data."*
+**Some created name items -- `Tunheim` among them -- were merged into an existing item**, which
+means the existence check on a name was not actually finding what was already there.
 
 She is right, and the cause is written in the resolver's own docstring.
 `measure-name-resolution.py`: *"A name item counts only if some person in our own store already

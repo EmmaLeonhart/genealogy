@@ -13,11 +13,11 @@ report nobody asked for here. This does the fetch, checks it, and writes the fil
 
 **The staleness it fixes was invisible, which is the point.** The committed copy was a
 **2026-08-09** rebuild — done offline from the local store because querying Wikidata was banned
-at the time, a ban Emma lifted on 2026-08-29. A join through a stale copy does not fail; it
+at the time, a ban lifted on 2026-08-29. A join through a stale copy does not fail; it
 silently returns fewer rows.
 
 **Measured on the first refresh, 2026-08-30: `reports/garborg-qids.tsv` went from 258 of 849
-items resolving to 849 of 849.** Five hundred and ninety-one of her own items were invisible to
+items resolving to 849 of 849.** Five hundred and ninety-one hand-made items were invisible to
 the forty scripts that read this file. The row count moved only +1,124 (517,851 → 518,975),
 which is why the staleness never announced itself — the file looked the same size and was
 missing most of the work of three weeks.
