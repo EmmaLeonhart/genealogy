@@ -146,6 +146,16 @@ def main():
             print(f"  shard {k}/{len(shards)}  items {scanned:,}  matched {len(rows):,}",
                   flush=True)
 
+    # **ONE ROW PER ITEM, and the store does not guarantee that on its own.** 6 items appear in
+    # two shards each -- an artefact of how the download was partitioned, not of the data: all 9
+    # duplicate rows are byte-identical. Left alone they emit each label edit twice and make the
+    # census report 44,099 items where there are 44,090.
+    seen = {}
+    for r in rows:
+        seen[r["qid"]] = r
+    dropped = len(rows) - len(seen)
+    rows = list(seen.values())
+
     # § *SORTING MUST BE DETERMINISTIC* -- the QID is unique, so numeric order on it is total.
     rows.sort(key=lambda r: (int(r["qid"][1:]) if r["qid"][1:].isdigit() else 0, r["qid"]))
 
@@ -157,6 +167,8 @@ def main():
     os.replace(tmp, dest)
 
     print(f"\nscanned {scanned:,} store items")
+    if dropped:
+        print(f"{dropped} duplicate shard row(s) collapsed -- the store holds these items twice")
     print(f"{len(rows):,} of them are `P31` Q5 human AND carry a rank word or a `|`")
     for kind, n in kinds.most_common():
         print(f"    {n:7,}  {kind}")

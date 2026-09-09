@@ -32776,3 +32776,43 @@ literals — `reports/emma-judgments.tsv`, `C:/Users/Emma/…`, `EmmaLeonhart`, 
 **Also: 101 open issues closed** — every one an auto-generated `Garborg batch` notification,
 `#36` through `#136`. Note the pipeline opens a fresh one on each run, so they accumulate again
 unless that step is turned off.
+
+## 2026-09-09 — the pipe batch: your hand fix on `Q105815062` is the rule
+
+**You, having relabelled it yourself:** *"There's a bunch of people on wikidata with pipe
+charters in their name. I relabelled this one but our archive should have the character and I
+want to fix all labels with it."*
+
+**Your edit settles the question you left open the day before.** Asked whether the first reading
+should become the label and the rest aliases, you said the pipes were *"a bit more complicated,
+I am not 100% sure how to interpret it lol"*, and they were held. `Q105815062` answers it:
+
+    was   Gerard|Gerald de Furnival
+    Lmul  Gerard de Furnival        <- the FIRST reading
+    Amul  Gerald de Furnival        <- the second, kept as an alias
+
+**`reports/wikidata-pipe-labels.qs`: 1,500 people, 3,309 label edits, 1,556 aliases** —
+`Len` 1,495, `Lmul` 1,130, `Lnl` 680, plus 4 stragglers. The generator reproduces your edit on
+`Q105815062` byte-identically, which is the check that the rule is yours and not mine.
+
+**⛔ TWO THINGS ARE DELIBERATELY NOT DONE, and both are scopes you set.**
+
+* **The 140 bracketed variant groups are held**, in `reports/pipe-labels-held.tsv`.
+  `Ann Bincks (Benckes|Bench)` puts the alternation inside a bracket rather than between two
+  readings of the whole name, and the minimal pipe fix — `Ann Bincks (Benckes)` plus
+  `Ann Bincks (Bench)` — is not obviously what anyone wants, while dropping the bracket is a
+  convention nobody has ruled on. What `Q105815062` demonstrates is the plain shape.
+* **The comma tail stays.** 373 of these also carry one, and removing it is the `noble` batch's
+  job under a scope you narrowed to `noble`. So `Gallehaut|Guillaume de Rougé, baron de Derval`
+  comes out `Gallehaut de Rougé, baron de Derval`: better than it was, and no decision taken
+  that was not asked for.
+
+**66 labels come out a single given name** — `Beatriz`, `Katherine`, `Margery`. Each was already
+a bare given name carrying a pipe, so the fix is strictly an improvement; § *A BARE GIVEN NAME IS
+NOT A LABEL* is a separate repair on a separate population.
+
+**And the census was counting nine items twice.** 6 QIDs sit in two store shards each — an
+artefact of how the download was partitioned, since all 9 duplicate rows are byte-identical — so
+the census reported **44,099** items where there are **44,090**, and the batch emitted those
+people's label edits twice. `census-imported-title-labels.py` now collapses on the QID and says
+how many it collapsed.
