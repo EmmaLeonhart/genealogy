@@ -80,12 +80,12 @@ historical direction, `Borsheim → Børsheim` the rarer hypercorrection.
 
 **This changes a candidate's standing rather than a family's.** `Elisabet Børsheim` in
 Arkansas is spelled with the ø — but a Norwegian-American writing ø is exactly where the
-hypercorrection lives, so the spelling is not evidence that she is *not* from the Borsheim
+hypercorrection lives, so the spelling is not evidence that she is *not* of the Borsheim
 line. Her spelling should be treated as unknown, not as third-ranked.
 
 The correction the first pass needed was not "stop folding". It was: **fold for people,
 separate for farms.** Folding hid that ranking; treating the spellings as two closed
-families would now hide the drift she is describing.
+families would now hide the drift described.
 
 ## Hoknes is the interesting one, and nobody supplied a candidate for it
 
@@ -229,4 +229,4 @@ descent. What is missing is the one edge that would give her a number.
 Whether any of these people is a relative, and whether living people belong in the tree at
 all, are hand rulings. This establishes that **none of the twenty-two is in the corpus
 today**, that the corpus stops one generation short of all of them, and that the two
-spellings she ranks separately are separate families in the data as well.
+spellings ranked separately are separate families in the data as well.

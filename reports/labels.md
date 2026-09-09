@@ -50,7 +50,7 @@ the 244,392 records carrying the tag.
 
 **That reading is an interpretation of one sentence and is flagged rather than
 settled.** The alternative — appending the married name to the full rendered
-name — produces a different string, and nothing she has said chooses between
+name — produces a different string, and nothing on record chooses between
 them.
 
 ## Against Wikidata, where both exist

@@ -63,7 +63,7 @@ not in the repo as finished work. They are the rebuilt queue.
 
 ## 3 · Things done that were never asked for
 
-This is §2 item I — the audit she asked for at 19:00, run here instead. The
+This is §2 item I — the audit asked for at 19:00, run here instead. The
 question in each case is narrow: **was this built on an instruction, or on my
 own initiative?** Being useful is not the test.
 
@@ -88,7 +88,7 @@ is how the 08-07 incident happened.
 
 The spec (#187, 08-12) is JSON edit objects with dependency ordering, ~100 a
 day. A QuickStatements emitter was built anyway; `build-edits.py` was deleted
-when she said so, but `src/genimerge/quickstatements.py`, the CLI command, and
+when instructed, but `src/genimerge/quickstatements.py`, the CLI command, and
 `reports/wikidata-add-geni-id.qs` / `reports/wikidata-samaritan-priests.qs`
 remain.
 
@@ -97,7 +97,7 @@ remain.
 `scripts/build-impossible-years-census.py`, `reports/impossible-years.md`,
 `reports/impossible-years.csv`. In an AskUserQuestion answer on 08-12:
 *"I have no clue what you're even talking about here… I never even asked you to
-do any kind of fixing of impossible dates."* She had asked to *"look over the
+do any kind of fixing of impossible dates."* The ask was to *"look over the
 future birth dates"* (08-10 #128) — looking is not a census plus a fix.
 
 ### 3.4 Normalisation inside the order.life batch
@@ -154,7 +154,7 @@ that no longer exists.
 
 **`missing-ancestors` specifically**, since it was named. The check ran on
 2026-08-13 over 186 exports and reported **0 absent** — the enumerated ancestors
-from the saved `missing ancestors/` HTML pages were all present. Since then she
+from the saved `missing ancestors/` HTML pages were all present. Since then the corpus
 has run further ancestor and blood-relative exports (08-14 #281). The report is
 not wrong so much as answering a question that closed: it says 0, and 0 is still
 the last measured value. Whether it is worth re-running over 203 exports is §5.

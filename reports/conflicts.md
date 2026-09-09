@@ -79,7 +79,7 @@ the lead worth following: 292 of these are structural conflicts, and 0.00Z
 showed a structural conflict can be a duplicate rather than a disagreement.
 
 **The merge rule.** The choice was a rule the code applies, which is the more
-committal of the two outputs she was offered. It should be generated from an
+committal of the two outputs offered. It should be generated from an
 adjudicated sample, not from the table above — citation coverage is not
 correctness, and a rule built on it would encode "Wikidata cites more sources"
 as "Wikidata is right", which this report does not show.

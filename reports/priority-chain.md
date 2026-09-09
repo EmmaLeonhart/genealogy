@@ -34,7 +34,7 @@ the 1,116,499-person component.
 
 The route search reported 16. The extra one — Bengta Ebbesdotter Galen, born
 1170 — sits **inside** the world-tree component, between two people who are both
-already in it. She is connected to Charlemagne by other edges regardless; the
+already in it. That node is connected to Charlemagne by other edges regardless; the
 search routed through that node on a cost tie. Only the unbroken run between the account owner and
 the first person already in the component is actually required.
 

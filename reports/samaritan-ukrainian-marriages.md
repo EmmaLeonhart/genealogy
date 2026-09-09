@@ -1,11 +1,11 @@
 # The Ukrainian marriages into the Samaritan community
 
-The line of enquiry, 2026-08-14, and she was ahead of it throughout.** She
+The line of enquiry, 2026-08-14, ahead of it throughout.** It
 named Yousef Cohen as the thread to pull, asked for the Ukrainian marriages
-specifically, and when four pages returned 403 she **downloaded all four
+specifically, and when four pages returned 403 **all four were downloaded
 herself**. Those saved pages are what settled the surname question and corrected
 two of my claims — the Altif attribution and the Elazar-as-father reading. This
-file is the write-up of a search she directed, not a discovery.
+file is the write-up of a directed search, not a discovery.
 
 Press research only — none of this is in Geni or in the local Wikidata store, and
 the point of writing it down is that these are the **only contemporary Samaritan

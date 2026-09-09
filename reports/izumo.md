@@ -50,7 +50,7 @@ What does not exist is any `P2600` connecting them to the 204 Wikidata items.
 ## So the work is resolution first, not creation
 
 Creating people on Geni before finding the ones already there would manufacture a fourth
-duplicate set on top of the three she already has to merge — and she has said the merges
+duplicate set on top of the three already awaiting a merge — and the merges
 are hers, not ours.
 
 The order that follows:
@@ -86,11 +86,11 @@ exports have never reached them.
 
 **Her 2026-08-19 browser warning no longer holds.** The Izumo tree renders cleanly now —
 Ameno-hohi 1, Takehinatori 2, Kushini 3, Tsusa 4, regnal numbers visible in the node
-labels exactly as she described. Whatever was failing that day was the *"high volume of
+labels exactly as described. Whatever was failing that day was the *"high volume of
 automated traffic"* banner, not something structural.
 
 **Her seed is not exportable directly** — `/gedcom/export/6000000012789160423` redirects to
-`/error`, so she does not manage it despite having built around it. A placeholder was
+`/error`, so the account does not manage it despite having built around it. A placeholder was
 created at Kushini-no-mikoto 3's open mother slot: `NN no Mikoto`
 (`6000000227389059850`), keeping Geni's suggested `no Mikoto` surname because that matches
 the `NN no Mikoto` already in her tree rather than the generic tier-3 rule.
@@ -117,7 +117,7 @@ priestly chain.
 **The correction: seed at the far end, not the founder.** The lineage runs 1 → 84 and the
 material we lack is the middle and modern end — the Izumo no Kuni no Miyatsuko proper, then
 the Senge and Kitajima branches after the 1340 split. That account points the same
-way: she built these *"as ancestors of the spouse of Noriko Senge"*, so the modern Senge
+way: these were built *"as ancestors of the spouse of Noriko Senge"*, so the modern Senge
 end is where her additions attach and where the chain is reachable without crossing the
 imperial mass first.
 
@@ -266,7 +266,7 @@ to ask, and the module docstring says why.
 ## RETRACTED, same day: the ancient-seat "resolutions" were junk
 
 Everything this section previously claimed about seats 1-18 is withdrawn. It was stopped
-and she was right to.
+and rightly so.
 
 **First, it was not asked for.** Her instruction on this clan was to build the tree the
 Shinto-wiki page shows onto Geni, carry the Wikidata links, and flag duplicate merges. The

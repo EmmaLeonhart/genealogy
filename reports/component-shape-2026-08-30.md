@@ -68,7 +68,7 @@ Lowest eccentricity, 18, is shared by a handful of obscure Rogaland farm people:
 | Arne Olaus Fjørtoft Garborg `Q11959067` | 7 | 22 | 8 |
 | Johannes Bureus `Q633094` | 8 | 24 | 11 |
 | Richard Wade Borsheim | 4 | 24 | 16 |
-| **Emma** `Q140568870` | **1** | **25** | **16** |
+| **the account owner** `Q140568870` | **1** | **25** | **16** |
 
 **That item is a degree-1 leaf at the maximum eccentricity of the graph, 16 hops from its centre.**
 One edge attaches her: her father. The two notable figures — a canonical Norwegian writer and a

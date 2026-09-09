@@ -2,7 +2,7 @@
 
 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is built. I will do the editing on geni for this."*
 
-**She does the Geni edits.** This file is the worklist, not an instruction to touch anything.
+**The Geni edits are done by hand.** This file is the worklist, not an instruction to touch anything.
 
 **11 placeholders** carry `father of <child>` where the child has a real surname the father should have taken. A further **36** were checked and left alone because the child's surname *is* their patronymic (`Barbro /Endresdatter/`, `Sigrid /Larsdotter/`), where tier 2 was correct --- tier 1 is explicit that the patronymic must not survive into the father's surname.
 

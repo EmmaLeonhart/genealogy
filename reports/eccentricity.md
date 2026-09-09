@@ -88,7 +88,7 @@ Samaritan and Chinese results above are exactly where it is not.
 **2026-09-03, on Ettinger:** *"I think Ettinger is high in eccentricity because of the fact
 that he… I only recently added him, basically."*
 
-She is right that this is the mechanism, and it is checkable. Over the **602** exports in the
+That is the mechanism, and it is checkable. Over the **602** exports in the
 corpus:
 
 | person | exports containing them | hops from Charlemagne |

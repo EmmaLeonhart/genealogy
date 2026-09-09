@@ -40,7 +40,7 @@ both ends exist on Wikidata, which the file makes checkable rather than assumed.
 ## The named case is 250 families
 
 `reports/invented-parents.csv` — **500 placeholders over 250 families**, two per
-family, labelled from the children exactly as she specified:
+family, labelled from the children exactly as specified:
 
     father of Mary Payne and Lucy Payne
     father of Frances Moncure and John Moncure Jr. and Ann Moncure
@@ -63,7 +63,7 @@ them and the sizes are lopsided.**
 - **40,884 families have exactly one recorded parent** — 36,097 father-only,
   4,787 mother-only. Her rule covers families with *no* parent. Whether a
   single-parent family gets its missing parent invented is not stated, and the
-  population is **163 times** the one she described.
+  population is **163 times** the one described.
 - **3,758 families have one child and no parent.** With a single child there is
   no sibling relationship, so by her wording — *"sibling relationships without
   parents"* — they are out of scope. Correct as written, and worth seeing.

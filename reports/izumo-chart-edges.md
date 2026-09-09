@@ -2,7 +2,7 @@
 
 **Read off screenshots of the rendered `{{familytree}}`, never from the page text.**
 2026-08-19: *"you can only look at it visually it's basically an image"*, and
-again on 2026-08-20 when she allowed the text for the roster: *"You just cannot use
+again on 2026-08-20 when the text was allowed for the roster: *"You just cannot use
 the text as a way to get the relationships."* So `reports/izumo-chart-roster.tsv`
 says who exists; this file says who descends from whom, and the two are built by
 different means on purpose.

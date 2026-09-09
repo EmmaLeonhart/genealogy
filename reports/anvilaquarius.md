@@ -2,7 +2,7 @@
 
 2026-09-03: *"Anvilaquarius is a user I want to study the behaviour of."* Then, pointing at
 her screen: *"Actually just this pastebin it"* — <https://pastebin.com/v4UcMx36>, which is the
-material she named.
+material named.
 
 **The pastebin resolves** (checked 2026-09-04) and is a **watchlist dump**, not a page about this
 user: recent changes by other editors across the items this project has created, late August into
@@ -44,7 +44,7 @@ And on the shape of the work itself: *"you're investigating the one part that yo
 that is impossible for you to investigate, and you're going to build some sort of report that is
 not useful."*
 
-She is right on both counts. `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI — never
+Right on both counts. `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI — never
 whether Geni is right* already settles it: the two spouses carry identical dates in
 `derived-facts.csv` because Geni records them that way, so our snapshot is current and there is
 nothing here to fix. § *The purpose is to ADD to Wikidata* keeps it out of her decision queue.

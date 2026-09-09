@@ -30,7 +30,7 @@ Every `.qs` in `reports/` is a relic of a hand-run.
 | `wikidata-siblings-oneoff.qs` | `build-sibling-batch.py` | 2026-08-27 |
 | `wikidata-regnal-ordinals.qs` | `build-regnal-ordinals.py` | 2026-09-01 |
 
-**These are the ones that matter**, because a generator nothing calls is the failure she named on
+**These are the ones that matter**, because a generator nothing calls is the failure named on
 2026-08-30 — *"name creations were always segregated into a different Quick Statements generation
 pipeline that was never run"* — and `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not
 done* is the rule. Whether each should be folded into the daily batch, run on its own schedule,
@@ -60,7 +60,7 @@ a different thing again.
 `scripts/audit-qs-generators.py`. A file counts as *produced* when some script under `scripts/`
 names it, and as *scheduled* when that script is named in `.github/workflows/*.yml`.
 
-## ⛔ SETTLED, 2026-09-06 — she ruled on all six
+## ⛔ SETTLED, 2026-09-06 — all six ruled on
 
 Put to her as an `AskUserQuestion` after four status reports had listed them as a blocker without
 anyone asking. Her rulings:
