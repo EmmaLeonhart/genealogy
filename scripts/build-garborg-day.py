@@ -838,7 +838,7 @@ def _birth_forms(label, alternates):
     Measured: it offered `Adolf Erik Nordenskiöld` -> `Nils Adolf Erik Nordenskiöld`,
     `Anders Chydenius` -> `Anders Jacobsson Chydenius` and `Stina Piper` ->
     `Christina Charlotta Piper` — Wikidata's labels being BETTER than ours — and
-    `Emma Leonhart` -> `Emma Himiko Leonhart`, the one middle name `CLAUDE.md` says in as many
+    and the account owner's own label gaining the one middle name `CLAUDE.md` says in as many
     words must never be emitted. 40 items, most of them wrong; 13 under this rule.
 
     Computed from the LABEL rather than from `fields`, because `fields` keeps a person's FIRST
@@ -1062,7 +1062,7 @@ def _label_corrections(our_items, labels, table, state, fields=None,
                 # `Adolf Erik Nordenskiöld` -> `Nils Adolf Erik Nordenskiöld`,
                 # `Anders Chydenius` -> `Anders Jacobsson Chydenius`, `Stina Piper` ->
                 # `Christina Charlotta Piper` — Wikidata's labels being BETTER than ours — and
-                # `Emma Leonhart` -> `Emma Himiko Leonhart`, the one middle name `CLAUDE.md`
+                # and the account owner's own label gaining the one middle name `CLAUDE.md`
                 # says in as many words must never be emitted. 40 items, most of them wrong.
                 #
                 # So the ground is the BIRTH FORM specifically: `givn + surn`, the rendering
