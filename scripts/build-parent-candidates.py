@@ -1,6 +1,6 @@
-"""The parent identifications the duplicate guard is sitting on, as a file she can answer.
+"""The parent identifications the duplicate guard is sitting on, as a file you can answer.
 
-THE RUNBOOK --- this is the deck Emma means by *"the artifact we used for identifying parents"*,
+THE RUNBOOK --- this is the deck you mean by *"the artifact we used for identifying parents"*,
 and it is regenerated on demand rather than served from the last commit:
 
     python scripts/pack-derived.py --unpack     # clean clone only; the derived CSVs are gitignored
@@ -8,7 +8,7 @@ and it is regenerated on demand rather than served from the last commit:
 
     -> reports/parent-candidates.tsv   one row per open case
     -> out/gui-data.json               the deck
-    -> out/parent-review.html          the deck rendered, which is what she opens
+    -> out/parent-review.html          the deck rendered, which is what you opens
 
 It is published, UNLINKED, at
 <https://emmaleonhart.github.io/genealogy/parent-review.html> --- `scripts/build-pages-site.py`
@@ -19,12 +19,12 @@ builds it on a runner and commits it to `main`, and that push republishes Pages.
 `.github/workflows/pipeline.yml` also rebuilds the deck on every push, but it does so downstream
 of a ledger refresh and a batch commit, either of which can fail and take the site job with it.
 
-Her verdicts come back in `reports/emma-judgments.tsv`. `SAME` and `DIFFERENT` retire a case; an
+Your verdicts come back in `reports/emma-judgments.tsv`. `SAME` and `DIFFERENT` retire a case; an
 `UNSURE` is *I cannot tell from this* and comes back on a later run with more evidence.
 
-**ALWAYS REGENERATE BEFORE HANDING IT OVER.** `CLAUDE.md` § *Emma edits the tree and the items BY
-HAND, continuously* --- the committed HTML is a photograph, and a card she has already answered
-costs her a turn.
+**ALWAYS REGENERATE BEFORE HANDING IT OVER.** `CLAUDE.md` § *you edit the tree and the items BY
+HAND, continuously* --- the committed HTML is a photograph, and a card you have already answered
+costs you a turn.
 
 **The check that catches a broken build is not the count, it is the page.** Three separate bugs
 published a deck of cards that named nobody while this script printed a healthy
@@ -35,15 +35,15 @@ shows a bare QID or an empty name box, the deck is broken, whatever the count sa
 one, and every helper both of them use lives in `genimerge.deck` --- one copy, because the three
 bugs above were each a helper that was right in one place and wrong in another.
 
-**Emma, 2026-08-31:** the generator should *"actively create merge candidates like our ones that
+**You, 2026-08-31:** the generator should *"actively create merge candidates like our ones that
 are files for potential geni identifications related to parents"*.
 
 **The problem this closes is delivery, not detection.** The guard already finds these: our person
 is the parent of somebody whose Wikidata item names a parent nothing accounts for, so creating
 them might duplicate that item. The guard refuses, prints a line, and the person falls into the
-carry-forward. Nothing ever put the question in front of her.
+carry-forward. Nothing ever put the question in front of you.
 
-**What makes a case answerable is the EVIDENCE, not the names.** Emma, shown a question carrying
+**What makes a case answerable is the EVIDENCE, not the names.** You, shown a question carrying
 neither: *"Fuck you no relationships means I can't make a judgment."* So each case carries the
 spouses and children of **both** sides plus the child whose item triggered the block. The shared
 words between the two sides are computed here and highlighted there; they are an aid to reading
@@ -77,10 +77,10 @@ def main():
     sys.stderr.write("%s items carry a P2600\n" % format(len(geni_of), ","))
 
     # **`P2600` is not the only thing that identifies somebody, and using it alone made the deck
-    # stale.** Emma, 2026-08-31: *"I think literally all these people were identified earlier and
-    # some are very stale."* Seven of nine cases she answered `SAME` were already in
-    # `reports/synoptic-correspondence.tsv`, known through the structural walk, the zipper, her
-    # bio links or her earlier verdicts -- none of which puts a `P2600` on Wikidata.
+    # stale.** You, 2026-08-31: *"I think literally all these people were identified earlier and
+    # some are very stale."* Seven of nine cases you answered `SAME` were already in
+    # `reports/synoptic-correspondence.tsv`, known through the structural walk, the zipper, your
+    # bio links or your earlier verdicts -- none of which puts a `P2600` on Wikidata.
     known_qid, known_geni, _syn = deck.load_correspondence()
     claimed |= known_qid
     print("%s items and %s profiles already identified somewhere"
@@ -104,12 +104,12 @@ def main():
         for g in parents:
             if g in qid_of or g in known_geni or g.startswith(("9995", "9990")):
                 continue
-            # **MATCH THE SLOT.** Emma, 2026-08-31, shown a case pairing
+            # **MATCH THE SLOT.** You, 2026-08-31, shown a case pairing
             # `Helena Mikontytar Schulin` with `Lars Henrik Keckman`: *"pretty sure this is the
-            # wife of the person lol."* She was right and it was systematic: the guard offered
+            # wife of the person lol."* You were right and it was systematic: the guard offered
             # whichever parent item was unaccounted for, without checking which slot **our**
             # person occupies -- so our mother was routinely paired with the child's father, who
-            # is her husband and is sitting in her own spouse list two lines above.
+            # is her husband and is sitting in your own spouse list two lines above.
             if g in our_fathers.get(child, ()):
                 candidates_q = father_of.get(cq, [])
             elif g in our_mothers.get(child, ()):
@@ -134,8 +134,8 @@ def main():
     for _, q, _ in unique:
         wanted.add(q)
         wanted |= set(kids_of.get(q, ())) | set(sp_of.get(q, ()))
-    # **Years above all, because she measured why:** in 1600-1900 the names are bilingual across
-    # the records and 71% of her own confirmed pairs spell them differently -- `CLAUDE.md`
+    # **Years above all, because you measured why:** in 1600-1900 the names are bilingual across
+    # the records and 71% of your own confirmed pairs spell them differently -- `CLAUDE.md`
     # § *1600-1900 is the band where NAMES LIE and YEARS decide*.
     wd_label, cand_sex, cand_life, gone = deck.wikidata_facts(wanted, {q for _, q, _ in unique})
     our_sex, our_life = deck.load_our_facts({g for g, _, _ in unique})
@@ -186,16 +186,16 @@ def main():
 
     deck.mark_also_offered(cases)
 
-    # **Most evidence first.** A case with children on both sides is one she can settle; a case
+    # **Most evidence first.** A case with children on both sides is one you can settle; a case
     # with nothing on either side is one nobody can, and leading with those is how a deck stops
     # being worked. This orders the deck; it judges nothing.
     cases.sort(key=lambda c: (len(c["shared_kid_words"]) + len(c["shared_spouse_words"]),
                               len(c["cand_fields"][1][1]) + len(c["our_fields"][1][1])),
                reverse=True)
-    # **The deck is every open candidate**, settled by what she did rather than by argument. It
+    # **The deck is every open candidate**, settled by what you did rather than by argument. It
     # was scoped to the ledger on 2026-08-31 -- *"just do all 47 in a run"* -- and by 2026-09-01
     # that filter selected **0 of 709**, so the page rendered empty while the work was still
-    # there. She then ruled on **207 of those 709** in one sitting. No cap either: `DECK = 60`
+    # there. You then ruled on **207 of those 709** in one sitting. No cap either: `DECK = 60`
     # was the other half of the same mistake.
     out = deck.render(cases, OUT_HTML, OUT_JSON,
                       title="Parent Adjudication",

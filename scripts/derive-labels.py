@@ -1,6 +1,6 @@
 """Plan item 1 — derive labels from the GEDCOM, and catalogue what we have.
 
-Emma, 2026-08-12: *"First thing is deriving labels from gedcom. Something that's
+You, 2026-08-12: *"First thing is deriving labels from gedcom. Something that's
 very easy."* And: *"Every individual needs an English, Japanese, and Chinese
 label but really we gotta catalogue these things a bit better too as a bulk
 operation."*
@@ -8,7 +8,7 @@ operation."*
 So this does both halves: derives what the rules already settle, and counts what
 is present per person so the cataloguing is a measurement rather than a guess.
 
-**The rules applied, each one hers and quoted where it was given:**
+**The rules applied, each one yours and quoted where it was given:**
 
 * The label is the `NAME` line **rendered** — slashes removed. GEDCOM 5.5.1 puts
   the name in spoken order with the surname in slashes, and says systems must
@@ -60,7 +60,7 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 SOURCE = REPO_ROOT / "reports" / "display-names.csv"
 OUT_CSV = REPO_ROOT / "reports" / "derived-labels.csv"
 OUT_MD = REPO_ROOT / "reports" / "labels.md"
-#: Emma's scratchpad. Holds identities and corrections no query here can produce.
+#: your scratchpad. Holds identities and corrections no query here can produce.
 
 csv.field_size_limit(10_000_000)
 
@@ -109,7 +109,7 @@ def clean(text: str) -> str:
 def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
     """The married name plugged into the name.
 
-    Emma: *"Married name plugs into name to produce an alias."* Read as: the
+    You: *"Married name plugs into name to produce an alias."* Read as: the
     married name takes the surname's place in the rendered name. `Judith
     /de France/` carrying `_MARNM Flandre` gives `Judith Flandre`.
 
@@ -138,8 +138,8 @@ def main() -> int:
     # only a correction recorded by hand can. Applying it here, at derivation,
     # leaves the exports untouched as the record of what Geni actually said.
     #
-    # **But nothing replaced it, so a correction of hers had nowhere to go.** This dict sat
-    # empty from that deletion until 2026-09-04, when Emma said of `Q141283774`: *"Name should
+    # **But nothing replaced it, so a correction of yours had nowhere to go.** This dict sat
+    # empty from that deletion until 2026-09-04, when you said of `Q141283774`: *"Name should
     # be … Jacobus Bothniensis"*. Geni records him as `Jakob` and no re-derivation can produce
     # anything else; only a recorded correction can. `reports/label-corrections.tsv` is that
     # file -- tracked, one row per person, carrying who said it and why.
@@ -157,7 +157,7 @@ def main() -> int:
                     corrected[gid] = label
         print(f"{len(corrected):,} hand-recorded label corrections")
 
-    # **Farm-name abbreviations, expanded only where the corpus attests the full form.** Emma,
+    # **Farm-name abbreviations, expanded only where the corpus attests the full form.** You,
     # 2026-09-04, on `Q141216388` *Jon Hansson St. Vatne*: *"I think in this one St. Stands for
     # Store"*, and *"St. Gives a misinpression"* -- it reads as *Saint*. `Store Vatne` is written
     # out 42 times in this tree, so the corpus settles it; `St. Laurent` and `St. Leger` are left
@@ -193,7 +193,7 @@ def main() -> int:
         labels: dict[str, list[str]] = defaultdict(list)
         aliases: list[str] = []
         # **The generation suffix is a fact about the PERSON, not about one name string.**
-        # Emma, 2026-09-07, on two items both labelled *Lars Osmundsen Nese*: *"these two
+        # You, 2026-09-07, on two items both labelled *Lars Osmundsen Nese*: *"these two
         # people are clearly different but I think the I, II, Sr, Jr, d.y. suffixing was not
         # done properly."* The younger carries `NSFX` = `d. y.` on his Foss-Eikeland record
         # and his label comes from the record holding `_MARNM` = `Nese`, so the suffix was
@@ -205,7 +205,7 @@ def main() -> int:
 
         for record in records:
             rendered = clean(record["display_name"])
-            # **`ogift` is Swedish for *unmarried* and is not part of anybody's name.** Emma,
+            # **`ogift` is Swedish for *unmarried* and is not part of anybody's name.** You,
             # 2026-09-07, on `Q141313961` *Helena Maria Linnerhielm ogift*. `display_name`
             # concatenates `givn + surn + NSFX`, so a marker Geni filed as a suffix arrives
             # glued to the label; `namemodel.drop_description_suffix` takes it off, matching
@@ -214,12 +214,12 @@ def main() -> int:
             # **The patronymic arrives twice and both mechanisms end here.** Geni writes it into
             # `GIVN` and `SURN` alike (`Tore Gardson /Gardsson/`), and the married-name flip puts
             # a `_MARNM` where the surname was when the `GIVN` already ends with it
-            # (`Svantepolk Knutsson /Viby/` with `_MARNM Knutsson`). Emma, 2026-09-07: *"Both of
+            # (`Svantepolk Knutsson /Viby/` with `_MARNM Knutsson`). You, 2026-09-07: *"Both of
             # these are replications of the patronymic."*
             rendered = drop_repeated_patronymic(rendered)
             # An *ätt* is a clan, not a name, and only where the person's own `NSFX` says so.
             rendered = drop_clan_suffix(rendered, clean(record["nsfx"]))
-            # **A TITLE MUST NOT END UP IN A `mul` LABEL.** Emma, 2026-09-07: *"the highest
+            # **A TITLE MUST NOT END UP IN A `mul` LABEL.** You, 2026-09-07: *"the highest
             # priority is to make sure that title names and such don't end up in mul labels
             # and dont get transliterated"*, and, asked whether a bare territorial counts:
             # **both** -- `Judith of Flanders` becomes `Judith`.
@@ -233,7 +233,7 @@ def main() -> int:
             # `labels.is_description` is the census-backed test and was already imported here.
             if not is_description(rendered):
                 # **A FARM NAME IS THE SURNAME, and truncating it left a bare given name.**
-                # Emma, 2026-09-07, on `Q141352187` *Ånon Byre*, which went out as `Ånon`:
+                # You, 2026-09-07, on `Q141352187` *Ånon Byre*, which went out as `Ånon`:
                 # *"this guy was not given an appropriate name originally lol."* Geni files
                 # him `Ånon i /Byre/` -- `SURN` **Byre** -- so the tail the territorial rule
                 # cuts is his own family name. 21 people; `namemodel.keep_own_surname` needs
@@ -291,7 +291,7 @@ def main() -> int:
 
         # **THE MARRIED NAME IS THE PRIMARY LABEL. The birth name is an alias.**
         #
-        # Emma, 2026-08-29: *"I don't know what I actually even want to use the birth names
+        # You, 2026-08-29: *"I don't know what I actually even want to use the birth names
         # of the women here. I feel like the only thing that I think has any business
         # actually using the birth name is the alias thing and certain things specifically
         # related to attaching names, like attaching the birth name vs. the surname."*
@@ -307,11 +307,11 @@ def main() -> int:
         #
         # **It also fixes the CJK complaint, which was the same bug wearing a hat.** The
         # `ja`/`zh` labels are transliterated from `label_mul`, so every woman was being
-        # rendered into Japanese and Chinese under her BIRTH name. Nothing about the
+        # rendered into Japanese and Chinese under your BIRTH name. Nothing about the
         # transliterator was wrong; it was handed the wrong string.
         #
         # **A hand correction still outranks everything.** `reports/label-corrections.tsv` carries
-        # names nothing here could reconstruct, and § *Emma edits the tree BY HAND* makes
+        # names nothing here could reconstruct, and § *you edit the tree BY HAND* makes
         # those decisions rather than drift -- so a corrected name stays primary and the
         # married form, if any, stays an alias beside it.
         # **Strip the nickname from the LABEL here, at the source.** `CLAUDE.md`
@@ -350,13 +350,13 @@ def main() -> int:
         #
         # **`normalise_marker_spelling`, not `strip_markers`, and the difference is 94,231
         # people.** The unscreened call also turns `Private` and `<private>` into `NN`, which is
-        # a redaction decision Emma has twice corrected an attempt to settle. The screened one
+        # a redaction decision you have twice corrected an attempt to settle. The screened one
         # changes **8,053** labels, every one a marker spelled inconsistently.
         latin = [normalise_marker_spelling(x) for x in latin]
         aliases = [normalise_marker_spelling(x) for x in aliases]
 
         # **Then remove a marker wedged INSIDE a name**, which is the second of the three marker
-        # populations and the only mechanical one — her words: *"strip the marker, keep the rest…
+        # populations and the only mechanical one — your words: *"strip the marker, keep the rest…
         # mechanical, no judgement."* `Hadaburg NN Gräfin im Saalgau` → `Hadaburg Gräfin im
         # Saalgau`, `Viki (Unknown)` → `Viki`.
         #
@@ -364,31 +364,31 @@ def main() -> int:
         # spelling first, so `n.n.` and `N.N.` are already `NN` when this looks for whole tokens.
         #
         # It never touches a HEAD marker — that is population one, `unknown Bloomfield` →
-        # `mul: NN Bloomfield`, which decides what the person is called and is Emma's ruling to
+        # `mul: NN Bloomfield`, which decides what the person is called and is your ruling to
         # make. `reports/marker-label-normalisation.tsv` is the report of what this does.
         latin = [strip_wedged_marker(x) for x in latin]
         aliases = [strip_wedged_marker(x) for x in aliases]
 
         # **A redaction marker is not a label, and this file was emitting one as the primary.**
-        # Emma, 2026-08-29, asked why `geni.com/people/private/6000000021223635839` "was added
-        # as Garborg" instead of the labels she had hand-added to `Q141199845`. The answer is
+        # You, 2026-08-29, asked why `geni.com/people/private/6000000021223635839` "was added
+        # as Garborg" instead of the labels you had hand-added to `Q141199845`. The answer is
         # here: this file took `clean(display_name)` and never called `labels.label_for`, which
         # `CLAUDE.md` § *Redacted people go in* calls **the single place that decides this** and
         # which returns `''` for `Private` and `<private>`. So `<private> /Garborg/` came out as
         # the literal label `<private> Garborg` -- for **14,449 people**, 12 of whom already had
-        # items, several of them hers.
+        # items, several of them yours.
         #
         # That is the *"logic that never gets in"* pattern in its purest form: the decider
         # existed, was correct, was documented as authoritative, and the generator feeding every
         # label emitter did not call it.
         #
         # **This drops the marker; it does not decide the `NN` question.** Emptying the label is
-        # exactly what `label_for` does and is her stated rule -- an item labelled `<private>`
+        # exactly what `label_for` does and is your stated rule -- an item labelled `<private>`
         # *"asserts something false while being impossible to find"*. Whether the person then
         # reads `NN Garborg` is `build-placeholder-label-batch.py`'s job, which already handles
         # this population and already keeps the surname. `normalise_marker_spelling` is left
-        # alone: whether a redaction marker BECOMES `NN` is a decision she has corrected twice
-        # and it stays hers.
+        # alone: whether a redaction marker BECOMES `NN` is a decision you have corrected twice
+        # and it stays yours.
         latin = [drop_marker_surname(x) for x in latin if label_for(x)]
         aliases = [drop_marker_surname(x) for x in aliases if label_for(x)]
 
@@ -403,9 +403,9 @@ def main() -> int:
 
         # **A RECONSTRUCTION never overrules a RECORDED rendering of the same name.** The
         # married-name flip is built from `GIVN + _MARNM + NSFX`, so any punctuation Geni put
-        # in the `NAME` line is lost -- Emma, 2026-09-04: *"Idk why the comma was actively
+        # in the `NAME` line is lost -- You, 2026-09-04: *"Idk why the comma was actively
         # dropped before the ordinal"*. `Q141223436` is recorded
-        # `Tore Underberge, III` and went out as `Tore Underberge III`; she has since set both
+        # `Tore Underberge, III` and went out as `Tore Underberge III`; you have since set both
         # `en` and `mul` back to the comma form by hand, which is what fixes the reading.
         #
         # Where the flip and a recorded name are the same tokens differing only in
@@ -426,15 +426,15 @@ def main() -> int:
             alias_out = ([birth] if birth else []) + aliases[1:]
 
         # **A description is not a name, so `mul` gets `NN` and the description stays in `en`.**
-        # Emma, 2026-08-17: *"And NN for mul there"* — plus the real surname where the description
+        # You, 2026-08-17: *"And NN for mul there"* — plus the real surname where the description
         # leaves one standing, `謝氏` → `NN 謝`, `信秀正室 織田` → `NN 織田`.
         #
-        # **The surname is only taken when it is HERS.** `Wife of William Ryves` gets a bare `NN`,
+        # **The surname is only taken when it is YOURS.** `Wife of William Ryves` gets a bare `NN`,
         # because `William Ryves` is her husband; `織田敏信娘` likewise, because those characters
         # are her father. `labels.mul_for_description` is the one place that knows the difference.
         mul_label = mul_for_description(primary) if is_description(primary) else primary
 
-        # **`mul` takes the Roman numeral and `en` the English abbreviation.** Emma, 2026-09-04,
+        # **`mul` takes the Roman numeral and `en` the English abbreviation.** You, 2026-09-04,
         # on `Q106206114`, whose Wikidata label is `Elias Lagerheim den yngre`:
         #
         #     Lmul  Elias Lagerheim II

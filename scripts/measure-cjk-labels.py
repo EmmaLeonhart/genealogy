@@ -1,6 +1,6 @@
 """Which of our people already have a `ja` or `zh` label on Wikidata?
 
-Emma, 2026-08-12: **"What the fuck we def have Japanese names?"** — after I
+You, 2026-08-12: **"What the fuck we def have Japanese names?"** — after I
 reported zero `ja` labels derivable.
 
 That report was wrong in a way worth writing down. I had bucketed Hiragana,

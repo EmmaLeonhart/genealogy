@@ -73,12 +73,12 @@ __all__ = [
 #: Individuals to model one Geni export as holding: **the largest export we have
 #: actually seen**, not a cap we know Geni enforces.
 #:
-#: **2026-08-06 — Emma states the mechanism, and it is not a Geni-side mystery:
-#: the bound is four times the number of profiles she has added.** That explains
+#: **2026-08-06 — You state the mechanism, and it is not a Geni-side mystery:
+#: the bound is four times the number of profiles you have added.** That explains
 #: what the measurements below could not. Every observed value is a multiple of
 #: four because the rule multiplies by four. It is not per-style and not
-#: per-seed because it is a property of her account's contributions. It rises
-#: across a session because she is adding profiles as she goes — which is also
+#: per-seed because it is a property of your account's contributions. It rises
+#: across a session because you are adding profiles as you go — which is also
 #: why each batch of exports has a higher ceiling than the last, and why seeding
 #: placeholders at the frontier raises it as a side effect.
 #:
@@ -213,7 +213,7 @@ __all__ = [
 #: Ignazio Malerba"). Five consecutive readings now, each exactly four higher
 #: than the last, across five different seeds within five hours: 4080, 4084,
 #: 4088, 4092, 4096. At this point "it steps by four" describes the afternoon
-#: better than any fixed limit does, and the spacing is roughly how long Emma
+#: better than any fixed limit does, and the spacing is roughly how long you
 #: takes between exports - so this may be tracking Geni's own growth rather
 #: than a cap at all. Not asserted, recorded: the next reading either continues
 #: the run or breaks it, and both are informative.
@@ -274,23 +274,23 @@ __all__ = [
 #: flat runs showed.
 #:
 #: **2026-08-14 — 4868**, a `Forest` export seeded on **Alexandra Krasuk**
-#: (`6000000227240691895`), a profile Emma created that day, taken at 16:08.
+#: (`6000000227240691895`), a profile you created that day, taken at 16:08.
 #: `exports/samaritans/export-Forest-6000000227240691895.ged`. That is a jump of
 #: **592** over the previous reading, the largest single step recorded here, and
 #: it is consistent with the stated mechanism rather than surprising under it:
-#: the ceiling is four times the profiles she has added, and she had been adding
+#: the ceiling is four times the profiles you have added, and you had been adding
 #: Samaritan profiles all day.
 #: **2026-08-15 — 4940**, a `Forest` export seeded on **Abram ben Yitzhaq**
 #: (`6000000178795709821`), taken at 02:30 and imported as export 204:
 #: `exports/samaritans/export-Forest-6000000178795709821.ged`. A step of **72**
 #: over the previous reading, and the seed is himself one of the 21 Samaritan
-#: high priests Emma had been building that night. Emma re-exported because one
+#: high priests you had been building that night. You re-exported because one
 #: individual — `Yitzhaq I ben Tsedaka`, `6000000227245553985` — had been left
 #: out of the earlier take; the ball came back 4940 rather than 4868 with him in
-#: it. Consistent with the ceiling tracking the profiles she has added, and not
+#: it. Consistent with the ceiling tracking the profiles you have added, and not
 #: evidence of a rule about the number.
 #: **2026-08-15, evening — 5000**, and it is a round number for the first time.
-#: Eight `Forest` exports in Emma's edge batch came back at exactly 5000:
+#: Eight `Forest` exports in your edge batch came back at exactly 5000:
 #: `6000000227254368832`, `…254335853`, `…254292863`, `…254162896`, `…254345871`,
 #: `…254292875`, `…254550821`, `…254397877`, plus a `BloodTree` of
 #: `6000000178918422849`. Nine readings on one flat number, from nine different
@@ -309,7 +309,7 @@ __all__ = [
 #: within minutes, the same style-and-seed independence every earlier flat run
 #: showed. The `Ancestors` take holding 348 exhausted its component rather than
 #: reaching the ceiling, which is the ordinary reason a reading comes in low.
-#: **2026-08-17 — 5000 again, four times, from a new kind of seed.** Emma's first
+#: **2026-08-17 — 5000 again, four times, from a new kind of seed.** Your first
 #: midpoint batch: `Forest` exports of `6000000227288930948` (`Wilchen /Tybekken/`),
 #: `…289663852` (`Øystein /father of Berta/`), `…289604840` (`Michel /Jude/`) and
 #: `…289792822` (`Björn /father of Prinsessan/`), all four at **exactly 5000**,

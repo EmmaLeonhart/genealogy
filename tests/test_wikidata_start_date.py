@@ -86,7 +86,7 @@ def test_nothing_in_the_gate_reaches_the_network():
 
 
 # ---------------------------------------------------------------------------
-# THE SECOND DATE. Emma, 2026-09-05: "I want to on the 15th start all of this
+# THE SECOND DATE. You, 2026-09-05: "I want to on the 15th start all of this
 # stuff automatically" — the daily Garborg batch, through the bot-password API.
 #
 # It is written twice for exactly the reason the first one is: the workflow's

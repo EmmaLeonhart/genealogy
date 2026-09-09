@@ -2,7 +2,7 @@
 
     python scripts/build-clan-p2600-pairs.py
 
-**Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
+**You, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
 rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
 rebuilding the correspondence before they exist rebuilds it from incomplete data.
 
@@ -10,7 +10,7 @@ rebuilding the correspondence before they exist rebuilds it from incomplete data
 rosters but no join, so their people were invisible to the synoptic tree even though they
 carry Wikidata items.
 
-**The join is the key Emma put there herself.** Every one of these profiles carries
+**The join is the key you put there yourself.** Every one of these profiles carries
 `1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q…` in the GEDCOM,
 extracted corpus-wide into `reports/geni-qid-links.tsv`. Nothing here matches on a name:
 `CLAUDE.md` § *Join on the Geni ID; do not search by name*, and the roster names differ
@@ -46,7 +46,7 @@ ROSTERS = [
 
 
 def main():
-    # geni_id -> qid, from the About Me link she wrote into each profile.
+    # geni_id -> qid, from the About Me link you wrote into each profile.
     qid_of = {}
     with open(ROOT / "reports" / "geni-qid-links.tsv", encoding="utf-8") as f:
         for line in f:

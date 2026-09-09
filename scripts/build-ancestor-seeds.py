@@ -1,6 +1,6 @@
 """The 1500s-and-later export seeds from `wikidata-ancestors` — queue item 2.A.
 
-Emma, 2026-08-09, choosing between the whole 2,123 and tighter cuts: seed the
+You, 2026-08-09, choosing between the whole 2,123 and tighter cuts: seed the
 campaign from the **829 targets born 1500s or later**.
 
 The reasoning that makes a backwards step worth taking, kept here because the
@@ -40,7 +40,7 @@ INDEX = ROOT / "out" / "wikidata" / "store-index.sqlite3"
 MERGED = ROOT / "out" / "merged.ged"
 PAIRS = ROOT / "out" / "wikidata" / "p2600-all.tsv"
 
-#: Emma's cut. A `Descendants` export from a 1400s parent lands in the 1400s.
+#: your cut. A `Descendants` export from a 1400s parent lands in the 1400s.
 EARLIEST = 1500
 
 

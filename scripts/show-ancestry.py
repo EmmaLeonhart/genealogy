@@ -18,11 +18,11 @@ LABELS = REPO_ROOT / "reports" / "derived-labels.csv"
 FACTS = REPO_ROOT / "reports" / "derived-facts.csv"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000001846508982"
+YOU = "6000000001846508982"
 
 
 def main() -> int:
-    start = sys.argv[1] if len(sys.argv) > 1 else EMMA
+    start = sys.argv[1] if len(sys.argv) > 1 else YOU
     depth = int(sys.argv[2]) if len(sys.argv) > 2 else 8
 
     fam = {r["geni_id"]: r for r in csv.DictReader(open(FAMILY, encoding="utf-8"))}

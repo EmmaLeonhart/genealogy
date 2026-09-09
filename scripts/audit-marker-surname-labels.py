@@ -1,6 +1,6 @@
 """How many people have we CREATED on Wikidata carrying a marker as their surname?
 
-**Emma, 2026-08-29**, on finding `Q141217396` labelled *Maria No name*:
+**You, 2026-08-29**, on finding `Q141217396` labelled *Maria No name*:
 *"Like us to do some level of audit to see the degree that we've created individuals with
 that error."*
 

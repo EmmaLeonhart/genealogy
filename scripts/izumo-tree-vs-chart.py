@@ -2,7 +2,7 @@
 
     python scripts/izumo-tree-vs-chart.py
 
-**Emma, 2026-08-24**, asked which source the relationship links should come from and
+**You, 2026-08-24**, asked which source the relationship links should come from and
 chose: *show me the disagreements first*. So this asserts nothing and emits no batch. It
 lines the two sources up on the roster and prints the rows where they differ.
 
@@ -11,7 +11,7 @@ Three sources meet here and each is joined by an identifier, never by a name:
 * `reports/izumo-chart-edges.tsv` — the chart's own parent/child edges, keyed on
   `<name>#<regnal>` because that is how the page identifies a seat-holder.
 * `reports/izumo-p2600-pairs.tsv` — the 111 QID↔Geni joins, built from the Wikidata link
-  Emma wrote into each Geni About Me. This is the join the whole programme rests on.
+  You wrote into each Geni About Me. This is the join the whole programme rests on.
 * `reports/derived-family.csv` — our merged tree's father and mother per Geni profile.
 
 **A disagreement is not automatically the chart being right.** Geni carries people the

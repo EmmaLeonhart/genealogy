@@ -1,6 +1,6 @@
 """How a person connects to Wikidata's family graph, and by what route.
 
-Emma asked for this by name, 2026-08-12: *"find the earliest one of my ancestors
+You asked for this by name, 2026-08-12: *"find the earliest one of my ancestors
 that has a Wikidata item … It would just be the least amount of hops in the
 family tree to somebody with a Wikidata item."* Then, after the first answer
 turned out to be an isolate: *"we will do a similar thing with other ancestors of
@@ -42,12 +42,12 @@ INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 OUT_MD = REPO_ROOT / "reports" / "path-to-wikidata.md"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000001846508982"
+YOU = "6000000001846508982"
 RELATION_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
 
 def main() -> int:
-    start = sys.argv[1] if len(sys.argv) > 1 else EMMA
+    start = sys.argv[1] if len(sys.argv) > 1 else YOU
     fam = {r["geni_id"]: r for r in csv.DictReader(open(FAMILY, encoding="utf-8"))}
     lab = {r["geni_id"]: r for r in csv.DictReader(open(LABELS, encoding="utf-8"))}
     fac = {r["geni_id"]: r for r in csv.DictReader(open(FACTS, encoding="utf-8"))}

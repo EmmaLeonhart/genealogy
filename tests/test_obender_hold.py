@@ -1,6 +1,6 @@
 """The month-long hold on items `OBender12` has touched.
 
-Emma's control, 2026-08-30
+Your control, 2026-08-30
 § *Decisions*: *any item `OBender12` has touched is locked — our QuickStatements may not edit
 it.* The hold is on the full contributions list rather than its overlap with the ledger, and it
 expires on its own so that nothing has to remember to lift it.
@@ -94,7 +94,7 @@ def test_the_name_item_cap_lifts_on_the_same_day_as_the_hold():
     spec.loader.exec_module(names)
 
     assert names.NAME_ITEM_HOLD_EXPIRES == bgd.OBENDER_HOLD_EXPIRES
-    # 12 and 40 since 2026-09-07, when Emma doubled every batch size a second time --
+    # 12 and 40 since 2026-09-07, when you doubled every batch size a second time --
     # *"change it so that the daily batch is twice as large in all of the things it does...
     # all numbers doubled basically"*. They were 6 and 20 from the 2026-09-05 doubling, and
     # 3 and 10 before that; `978bc7fe` moved the constants and left this test pinning the old

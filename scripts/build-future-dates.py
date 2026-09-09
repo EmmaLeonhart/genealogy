@@ -1,6 +1,6 @@
 """Every DATE line in the corpus whose year is later than this one.
 
-Emma, 2026-08-15, deleting the impossible-years work and replacing it:
+You, 2026-08-15, deleting the impossible-years work and replacing it:
 *"I want you to delete all of the reports and scripts and .md but run a new
 report on just future dates."*
 

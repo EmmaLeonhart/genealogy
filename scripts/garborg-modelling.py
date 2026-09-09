@@ -2,7 +2,7 @@
 
     python scripts/garborg-modelling.py
 
-**Emma, 2026-08-24:** *"you're supposed to download the full wikidata items for the
+**You, 2026-08-24:** *"you're supposed to download the full wikidata items for the
 people I've edited to get the modelling not look at my edit history to see what's in
 them."*
 
@@ -90,12 +90,12 @@ def main():
     print(f"wrote {OUT.relative_to(ROOT)}: {len(rows)} items, all complete\n")
 
     # -- which of our properties each item carries --------------------------
-    hers = [q for q in data if q.startswith("Q1411")]
-    print("Items Emma created (Q1411…):", len(hers))
+    yours = [q for q in data if q.startswith("Q1411")]
+    print("Items Emma created (Q1411…):", len(yours))
     header = ["P31", "P21", "P2600", "P569", "P570", "P22", "P25", "P26", "P40",
               "P3373", "P735", "P734", "P5056"]
     print("             " + " ".join(f"{p:>6}" for p in header))
-    for qid in ["Q467497", "Q3143008", "Q11959067"] + sorted(hers):
+    for qid in ["Q467497", "Q3143008", "Q11959067"] + sorted(yours):
         claims = data[qid].get("claims", {})
         marks = " ".join(f"{('yes' if p in claims else '-'):>6}" for p in header)
         print(f"{qid:<12} {marks}")
@@ -114,7 +114,7 @@ def main():
 
     print("\nProperties we emit that appear on NONE of her items:")
     used = set()
-    for qid in hers:
+    for qid in yours:
         used |= set(data[qid].get("claims", {}))
     for prop in OURS:
         if prop not in used:

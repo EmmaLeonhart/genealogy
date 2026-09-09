@@ -2,12 +2,12 @@
 
     py scripts/build-marker-normalisation.py
 
-**Her instruction, in `queue.md` § LABELS, IN HER ORDER**, on the second of three marker
+**Your instruction, in `queue.md` § LABELS, IN YOUR ORDER**, on the second of three marker
 populations: *"A real name with a marker wedged inside it — strip the marker, keep the rest.
 `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`, `Hadaburg N.N. Gräfin
 im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no judgement."*
 
-**This is the one of the three that needs no ruling from her**, which is why it goes first. The
+**This is the one of the three that needs no ruling from you**, which is why it goes first. The
 other two do:
 
 * a marker *leading* a real surname keeps the surname and puts the marker in `mul` —

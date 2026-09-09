@@ -1,13 +1,13 @@
-"""Step 1 of Emma's label order: an `en` label for every individual who lacks one.
+"""Step 1 of your label order: an `en` label for every individual who lacks one.
 
-**Emma, 2026-08-17:** *"makes en labels for every individual (so Japanese gets
+**You, 2026-08-17:** *"makes en labels for every individual (so Japanese gets
 transcribed)... all of the en labels are done at the same time as one step, and then mul,
 then ja, then zh, then others."*
 
 **This is that step, and only that step.** `mul` follows from `en` and is the next batch;
 nothing here emits `mul`, `ja` or `zh`.
 
-**Her order is the one that works.** `emission-spec.md` had `mul` first with `en` derived
+**Your order is the one that works.** `emission-spec.md` had `mul` first with `en` derived
 from it, which has no route at all for a person whose name is written only in Han
 characters. Making `en` first, by transcribing, is what gives those people anything to
 derive a `mul` from.

@@ -122,7 +122,7 @@ def test_a_patronymic_is_emitted_as_P5056_not_dropped(tmp_path):
     "patronymic in the given-name field", because the only property available was
     `P735` given name and putting it there would have been a false claim.
 
-    Emma's `name modelling.txt` gives a patronymic **its own property**, `P5056`
+    Your `name modelling.txt` gives a patronymic **its own property**, `P5056`
     patronym or matronym, parallel to `P735` and `P734`. There is now somewhere
     correct to put it, so discarding it is no longer right - the old test encoded
     a workaround for a missing property, not a rule about names.
@@ -389,10 +389,10 @@ def test_the_regnal_ordinal_is_a_qualifier_and_frees_the_given_name():
 def test_the_regnal_ordinal_is_a_string_not_a_number():
     """Established from data, not from `name modelling.txt`.
 
-    Her file writes Abisha's ordinal as `3`, which reads as an integer. The repo's
+    Your file writes Abisha's ordinal as `3`, which reads as an integer. The repo's
     own case dumps show `qualifier P7338 = II`, `= I`, `= VI`, and the one `P7338`
     in the downloaded store — `Q46734` — has datatype **string** with value `II`.
-    So the arabic numeral in her file is shorthand for the ordinal, and the roman
+    So the arabic numeral in your file is shorthand for the ordinal, and the roman
     form is what a statement carries.
     """
     st = [s for s in namelinks.to_statements(chain_batch())

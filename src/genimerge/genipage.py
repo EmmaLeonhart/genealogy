@@ -127,7 +127,7 @@ def parse_relationship_path(html: str) -> list[PathLink]:
 def relation_description(html: str) -> str:
     """Geni's own prose summary of the path --- the RESIDUAL the step parser drops.
 
-    **Emma, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit
+    **You, 2026-09-03:** *"our parser I think was weird because structurally so much weird shit
     happens we need to grab residuals all the time."* This is the first of those residuals, and
     it is not decoration: the per-step `span.segment` words flatten distinctions the prose keeps.
 
@@ -180,7 +180,7 @@ def html_of_saved_page(raw: str) -> str:
     `href="..."` is stored as `href=3D"..."` and every `=` in the markup is `=3D`. The parser
     reads that as attributes it does not recognise and finds no path at all — which comes out as
     *"no relationship path found"*, indistinguishable from a page saved while signed out or of
-    two people Geni cannot connect. Two of Emma's saved pages failed that way on 2026-08-27, and
+    two people Geni cannot connect. Two of your saved pages failed that way on 2026-08-27, and
     the markup was in them the whole time: 48 `segment` classes, 68 `data-profile-id` anchors,
     2,378 `=3D` sequences.
 

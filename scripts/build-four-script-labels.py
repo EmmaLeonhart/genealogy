@@ -2,7 +2,7 @@
 
     py scripts/build-four-script-labels.py
 
-**Emma, 2026-09-01: "Wire hi/ar/ru/el now."** `queue.md` § *Labels in seven languages* has had
+**You, 2026-09-01: "Wire hi/ar/ru/el now."** `queue.md` § *Labels in seven languages* has had
 them listed since the beginning — *"Devanagari, Arabic, Cyrillic and Greek chosen for script
 coverage"* — and nothing had ever emitted one.
 
@@ -10,11 +10,11 @@ coverage"* — and nothing had ever emitted one.
 
 The CJK batches refuse to transcribe a Latin name, because a Chinese or Japanese or Korean name
 may exist in its own script already and a transcription would be second-best. **These four have
-no such alternative.** Her own description of the job is *"English → the four remaining
+no such alternative.** Your own description of the job is *"English → the four remaining
 scripts"*: for a Norwegian farmer there is no Russian or Greek or Hindi or Arabic form of the
 name waiting to be found, and writing one is the whole task rather than a fallback.
 
-So the standard here is hers: *"incorrect romanization or incorrect representations in katakana
+So the standard here is yours: *"incorrect romanization or incorrect representations in katakana
 are totally acceptable. An incorrect name is not."* `Флйгаре` may not be how a Russian would
 spell *Flygare*, but it is that person's name in Cyrillic letters, and nothing invents a
 different name.

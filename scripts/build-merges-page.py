@@ -2,31 +2,31 @@
 
     py scripts/build-merges-page.py [--offline]
 
-**Emma, 2026-09-01:** *"merges put them at the end of the queue with an html page for them"*, and
+**You, 2026-09-01:** *"merges put them at the end of the queue with an html page for them"*, and
 then on 2026-09-02, asked whether to build it: *"Build it from the template"*.
 
-**Why a page at all, measured rather than assumed:** she cleared **207 pairs in one sitting** off
+**Why a page at all, measured rather than assumed:** You cleared **207 pairs in one sitting** off
 the parent-adjudication deck and had answered **none** off the equivalent TSV. The markdown
-`reports/merges-to-do.md` is 8 sections she reads by hand; this is the same content as cards.
+`reports/merges-to-do.md` is 8 sections you read by hand; this is the same content as cards.
 
-## Built FROM her template, not from scratch
+## Built FROM your template, not from scratch
 
-`out/review-deck.template.html` is hers and hand-approved --- it was
+`out/review-deck.template.html` is yours and hand-approved --- it was
 `out/parent-review.template.html` until 2026-09-09, when the child/sibling deck started sharing
 it and a name meaning one of its three pages stopped being true. Rebuilding a page from scratch
-instead of reusing it was a mistake she named: *"did you regenerate it from scratch instead of
+instead of reusing it was a mistake you named: *"did you regenerate it from scratch instead of
 using the template you used yesterday lol"*. So the palette, the three-state theme handling, the
 IBM Plex / Newsreader pairing, the keyboard flow and the `localStorage` key are taken from it.
 
 ## The card carries what actually decides a merge
 
-Her verdict on the first deck was *"the problem with that html is it didn't give that good
+Your verdict on the first deck was *"the problem with that html is it didn't give that good
 feedback"*, and the queue item spells out the fix: a card without **sex and dates** is not worth
 building. So each side shows label, description, sitelink count, statement count, and the Geni
 `P2600` — and the Geni tree's own sex and birth–death sit above them, from `derived-facts.csv`.
 
-**The live fetch is the point.** She merges by hand continuously, so a pair may already be done by
-the time she opens the page. `wbgetentities` in batches of 50 answers that: an item that is now a
+**The live fetch is the point.** You merges by hand continuously, so a pair may already be done by
+the time you opens the page. `wbgetentities` in batches of 50 answers that: an item that is now a
 **redirect** is shown as already merged and is not offered again. `--offline` skips the fetch and
 builds the page from the markdown alone, with the evidence columns blank.
 

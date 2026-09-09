@@ -1,6 +1,6 @@
 name: CI
 
-# The repo went PUBLIC on 2026-09-01 -- Emma: "The repo is public now lol" -- so Actions minutes
+# The repo went PUBLIC on 2026-09-01 -- You: "The repo is public now lol" -- so Actions minutes
 # are free and the old manual-only rule is retired. `CLAUDE.md` section *Cost* was written for a
 # private repo and no longer binds.
 #
@@ -77,7 +77,7 @@ jobs:
       # It is a contact address, not a secret -- it is in CLAUDE.md.
       # The extension is JavaScript that nothing here imports, so a syntax error in it is
       # invisible to pytest and to every reader -- it surfaces only when Chrome next loads the
-      # unpacked extension, which happens on HER machine, mid-run, silently. On 2026-09-07 a
+      # unpacked extension, which happens on YOUR machine, mid-run, silently. On 2026-09-07 a
       # generated header in `path.js` landed with a REAL newline inside a string literal instead
       # of a backslash-n escape; it was caught by reading the file, not by any check.
       # `node --check` parses without executing, so it costs nothing and cannot touch Geni.
@@ -105,10 +105,10 @@ jobs:
   # The slow lane is a separate job so a red fast lane is legible on its own. It re-merges the
   # whole 605-export corpus, which peaks near 17 GB -- above what a standard runner has -- so it
   # runs the ONE slow module a hosted runner can hold. **test_density.py and
-  # test_paths.py were removed 2026-09-01, her call, and the number is why:
+  # test_paths.py were removed 2026-09-01, your call, and the number is why:
   # a hosted runner has 16 GB and test_density pins it at 15.9 GB with 33 MB
   # free for ten minutes before the runner is reclaimed. Four jobs died that
-  # way. Both modules PASS on Emma's machine in 35m44 because it has 31 GB --
+  # way. Both modules PASS on your machine in 35m44 because it has 31 GB --
   # the tests are fine and the environment is half the size they need.
   #
   # A 64 GB runner is billable even on a public repo, and rewriting

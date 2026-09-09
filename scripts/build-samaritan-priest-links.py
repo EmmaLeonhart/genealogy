@@ -1,21 +1,21 @@
-"""Link the Samaritan high priests Emma listed by QID to their Geni profiles.
+"""Link the Samaritan high priests you listed by QID to their Geni profiles.
 
 **`samaritans/priests.txt` is the file this exists for, and it was missed.**
-Emma, 2026-08-16: *"I literally gave you a list of the QIDs, a list of names of
+You, 2026-08-16: *"I literally gave you a list of the QIDs, a list of names of
 High Priests and QIDs of them… It's in a text file called highpreests or
 something! It's kind of an isolated thing that just has a bunch of names and
 QIDs in it. You should have found it!"* Queue item 2 was reported as blocked on
 finding these QIDs while the file sat in `samaritans/` at the repo root, which was
 never searched. The blocker did not exist.
 
-**Her instruction for what to do with them**, `samaritans/wikidata.txt`: *"they
+**Your instruction for what to do with them**, `samaritans/wikidata.txt`: *"they
 both lack geni items and are kind of improperly linked. I want you to do manual
 links to the geni in the same way that we did on the Empress Jingū item."*
 
 **Matching by name here is correct, and is not the thing this repo forbids.**
 `correspondence.md` bans *searching Wikidata* for a name — an open-ended query
-over 100M items. This is the opposite: a **closed list of 21 people Emma wrote
-down herself**, matched against the Samaritan exports, which she pointed at
+over 100M items. This is the opposite: a **closed list of 21 people you wrote
+down yourself**, matched against the Samaritan exports, which you pointed at
 directly — *"In the small original 33-person High Priest gedcom, all of these
 individuals are present… You have the ability to look through the 33-person tree
 pretty easily to find which QIDs appear to match, and then just match them up."*
@@ -87,15 +87,15 @@ def samaritan_people() -> dict[str, str]:
     return people
 
 
-#: Links Emma gave directly, which no match over the exports could find.
+#: Links you gave directly, which no match over the exports could find.
 #:
 #: `Q137394557 Yitzhaq I ben Tsedaka` had no counterpart: the only Geni `Yitzhaq`
 #: in the Samaritan exports has `Shalma II ben Tabia` for a father, and no
-#: Yitzhaq with a Tsedaka father existed anywhere in them. Emma, 2026-08-16, with
+#: Yitzhaq with a Tsedaka father existed anywhere in them. You, 2026-08-16, with
 #: the profile: *"this is the person for the qid to correspond to."* The profile
-#: is **not in any of the 203 exports** — she created it on Geni after the last
+#: is **not in any of the 203 exports** — You created it on Geni after the last
 #: Samaritan export ran — so the link is recorded here and the person arrives
-#: with her next export. Hand-given identity, same standing as
+#: with your next export. Hand-given identity, same standing as
 #: a hand-recorded identification.
 GIVEN_BY_EMMA = {
     "Q137394557": ("6000000227245553985", "Yitzhaq I ben Tsedaka"),

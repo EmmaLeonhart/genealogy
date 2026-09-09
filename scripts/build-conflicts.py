@@ -6,14 +6,14 @@ right for reading and useless for measuring. This writes all of them to
 *which side is right* and can be answered without asking anyone.
 
 **This does not adjudicate.** It counts disagreements and attaches evidence.
-Emma's instruction for 2.D is to measure per property and assume no global
+Your instruction for 2.D is to measure per property and assume no global
 winner — Geni may be better at relationships and worse at dates — so nothing
 here decides a winner, and the columns are deliberately raw.
 
 The columns that are actually evidence:
 
 ``their_referenced``
-    Whether Wikidata's disputed statement carries a reference. Emma declined
+    Whether Wikidata's disputed statement carries a reference. You declined
     "whichever cites a source" as a *rule*, and it is still the strongest
     offline signal available about one side's confidence in its own claim.
 ``their_rank``

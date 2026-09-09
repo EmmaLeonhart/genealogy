@@ -1,9 +1,9 @@
-"""The channel for a label EMMA DICTATES, `reports/label-applications.tsv`.
+"""The channel for a label YOU DICTATES, `reports/label-applications.tsv`.
 
-**What is worth pinning is that her value is the one that lands.** A hand row is usually
+**What is worth pinning is that your value is the one that lands.** A hand row is usually
 correcting a value the rule wrote earlier, so the derived emitters go on proposing their own
-version of the same slot — and a derived edit emitted beside hers is applied second and silently
-wins, in a batch that reads as though her correction went out.
+version of the same slot — and a derived edit emitted beside yours is applied second and silently
+wins, in a batch that reads as though your correction went out.
 
 The other half is the format's own hazard: it could carry a `D` row, and `CLAUDE.md` § *NO
 descriptions and NO edit summaries* is categorical.
@@ -37,7 +37,7 @@ def test_the_shipped_file_parses_and_emits_verbatim():
     rows = mod.hand_label_applications()
     assert ("Q140568870", "L", "zh", "李命玥", rows[0][4]) == rows[0]
     lines = mod._hand_label_applications(live_labels={})
-    # Exactly what she wrote, with no transliteration, no title rule and no consensus vote.
+    # Exactly what you wrote, with no transliteration, no title rule and no consensus vote.
     assert 'Q140568870\tLzh\t"李命玥"' in lines
     assert 'Q140568870\tLja\t"エマ・レオンハート"' in lines
     assert 'Q140568870\tAja\t"閻魔獅心"' in lines

@@ -1,7 +1,7 @@
 """The unidentified CJK records, grouped into the families they actually form.
 
-Emma, 2026-08-19: *"I'll just try to identify them especially if they cluster it well
-likely help."* She is right, and the shape of the data says so: the **2,398** Han-only
+You, 2026-08-19: *"I'll just try to identify them especially if they cluster it well
+likely help."* You are right, and the shape of the data says so: the **2,398** Han-only
 records that no rule could give a culture are not scattered. They form **362 connected
 clusters**, and **84% of them sit in the 68 clusters of five or more** — so identifying one
 cluster settles dozens of records at once, and there are only a few dozen judgements to

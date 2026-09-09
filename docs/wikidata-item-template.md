@@ -1,11 +1,11 @@
-# What a person item looks like, taken from what Emma actually builds
+# What a person item looks like, taken from what you actually builds
 
 Read off `Q467497` and everything it links to. First captured 2026-08-22, re-read
-2026-08-23, **re-read again 2026-08-24 against the live items** — she is working through this by hand and the shape is the template for the
-whole expansion programme, so this file tracks what she is actually doing rather than what
+2026-08-23, **re-read again 2026-08-24 against the live items** — You are working through this by hand and the shape is the template for the
+whole expansion programme, so this file tracks what you are actually doing rather than what
 a generator assumed.
 
-## Where she has got to
+## Where you have got to
 
 | item | who | state |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Ole, Ane Oline "Lena".
 
 **Changed since 2026-08-22:** `Q467497` gained `P22`, `P25` and `P3373`; `Q141152614` was
 created and given `P22`/`P25`; `Q141152523` gained its third `P40`. The links the generated
-batch left as a commented second pass are the ones she has been doing by hand.
+batch left as a commented second pass are the ones you have been doing by hand.
 
 ## The shape
 
@@ -41,20 +41,20 @@ redundant.
 **Labels are `en` and `mul`, the same string. No descriptions at all** — every one of the
 five is description-empty.
 
-**The label is the name as used.** Geni holds `Stine "Stena" Eivindsdatter Garborg`; her
+**The label is the name as used.** Geni holds `Stine "Stena" Eivindsdatter Garborg`; your
 label is `Stena Eivindsdatter Garborg`. **This is not a shortening rule** — `Jon Eivindson
 Garborg` keeps his full name. What happened is that Geni wrapped the nickname in quotes and
-she took the nickname; where there is no nickname the name stands.
+You took the nickname; where there is no nickname the name stands.
 
 **Names are modelled, and this is the part a generator misses.** Eivind carries:
 
     P735  given name           Q3358418   Eivind      (existing item)
     P734  family name          Q30250555  Garborg     (existing item)
-    P5056 patronym or matronym Q141152710 Aadnesson   (SHE CREATED THIS)
+    P5056 patronym or matronym Q141152710 Aadnesson   (YOU CREATED THIS)
 
 The patronymic item is **minimal**: labels `en` and `mul`, `P31` → `Q110874` *patronymic*,
 nothing else. No `P1705`, no `P282`, no `P407` — the measurement in `CLAUDE.md` found those
-on most existing patronymic items, and she does not add them.
+on most existing patronymic items, and you do not add them.
 
 **Name modelling is applied incrementally, not uniformly.** Eivind has all three name
 properties; Ane Oline has none yet. Dates likewise — only Eivind has `P569`/`P570`. So the
@@ -64,12 +64,12 @@ absence of a property on a given item means *not yet*, not *deliberately omitted
 
 `reports/wikidata-garborg.qs`, built 2026-08-22, differed on six counts:
 
-- **Reference form** — it used `S854` + `S813`; she uses `P2600`.
+- **Reference form** — it used `S854` + `S813`; you us `P2600`.
 - **No name properties at all** — no `P735`, `P734`, `P5056`, and no creation of the
   patronymic item. The largest gap, and it is the whole of `name modelling.txt`.
-- **Argued against `P3373`** as redundant. She uses it, both ways.
+- **Argued against `P3373`** as redundant. You use it, both ways.
 - **One-directional relationships** — `P22`/`P25` on children only, no `P40` on parents.
-- **Suggested `en` descriptions.** She writes none.
+- **Suggested `en` descriptions.** You write none.
 - **Kept the full Geni string as the label**, rather than the name as used.
 
 
@@ -91,16 +91,16 @@ could not simply be left in place:
   carry `P569`/`P570`, and a second birth date with a different reference is noise.
 
 **Name properties are still not emitted, on purpose.** Eivind has `P735`, `P734` and the
-`P5056` patronym item Emma created (`Q141152710` *Aadnesson*). Doing the same for the others
+`P5056` patronym item you created (`Q141152710` *Aadnesson*). Doing the same for the others
 needs the QID of each given-name item and a new patronymic item per patronym —
 *Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*. Guessing a name-item QID is the
-error this repo keeps paying for, so they are listed in the file's trailer for Emma rather
+error this repo keeps paying for, so they are listed in the file's trailer for you rather
 than generated.
 
 
 ## Re-read 2026-08-24 from the FULL items — and a retraction
 
-**Emma:** *"you're supposed to download the full wikidata items for the people I've
+**You:** *"you're supposed to download the full wikidata items for the people I've
 edited to get the modelling not look at my edit history to see what's in them."*
 
 An earlier pass today read each item through a fetch-and-summarise channel and wrote its
@@ -129,7 +129,7 @@ decides what to emit gets read from the downloaded JSON.
 
 ### The modelling, counted from the full items
 
-**Every one of the eleven items she created carries exactly:** `P31`, `P21`, `P2600`,
+**Every one of the eleven items you created carries exactly:** `P31`, `P21`, `P2600`,
 `P569`, `P570`, and then `P22`/`P25`/`P3373` for a child or `P26`/`P40` for a parent. The
 shape is uniform — there is no partial item among them.
 
@@ -144,9 +144,9 @@ shape is uniform — there is no partial item among them.
 `P569` (×10), `P570` (×10), `P22` (×8), `P25` (×8), `P40` (×5), `P26` (×4). Never on
 `P31`, `P21`, `P2600`, `P735`, `P734` or `P5056`. The `P248`/`P813`/`P143` references that
 appear in the data are all on `Q467497`, `Q3143008` and `Q11959067` — community items —
-and are not hers.
+and are not yours.
 
-**No qualifier she added appears anywhere.** No `P1545` *series ordinal*, no `P7452`
+**No qualifier you added appears anywhere.** No `P1545` *series ordinal*, no `P7452`
 *reason for preferred rank*, no `P3831`, no `P144` *based on*. The only qualifiers in the
 14 items are on `Q467497` and `Q3143008`: `P580`/`P582`/`P12506` on `P26`, `P17` on
 `P19`/`P20`, and one `P7452` on each of `P569`/`P570` — all community-added.
@@ -160,7 +160,7 @@ sitelink on any of them. `Q467497` has 45 label languages including `ja` and `zh
 
 ### The nickname label
 
-| Geni | her label |
+| Geni | your label |
 | --- | --- |
 | `Stine "Stena" Eivindsdatter Garborg` | **`Stena Eivindsdatter Garborg`** — `Stine` dropped |
 | `Inger Marie "Mary" Eivindsdatter Garborg` | **`Inger Marie Mary Eivindsdatter Garborg`** — all kept |
@@ -176,14 +176,14 @@ judgement rather than a rule to automate.
 - **Names on ten of the eleven.** Only Eivind has any. This is the whole gap.
 - **`Q467497` needs `P3373` to six more siblings** (he has Stena and Jon) and has no
   `P5056`.
-- **No item carries `ja` or `zh`** except the three community ones, so her instruction to
+- **No item carries `ja` or `zh`** except the three community ones, so your instruction to
   add them is untouched work.
 
-## Measured again on 2026-08-26, over 48 items she has built
+## Measured again on 2026-08-26, over 48 items you have built
 
 The first version of this file was read off eleven items on 24 August. There are **48** now, and
 four things changed. Every figure below is counted from `out/model-vs-reality-items.json` —
-whole items through `full_entities`, with `Special:Contributions/日巫女` separating what she
+whole items through `full_entities`, with `Special:Contributions/日巫女` separating what you
 created from what already existed.
 
 | | 24 Aug (11 items) | 26 Aug (48 items) |
@@ -195,14 +195,14 @@ created from what already existed.
 | carry a **description** | 0 | **0** |
 
 **Descriptions are the one thing that has not moved, and it is not an oversight.** Zero of 48.
-Anything that proposes writing one is proposing something she has never once done.
+Anything that proposes writing one is proposing something you have never once done.
 
 **Always, on all 48:** `P31` *instance of*, `P21` *sex or gender*, `P2600` *Geni.com profile ID*,
 `P569` *date of birth*. `P570` on 47 — omitted only where Geni has no death date.
 
 **Sometimes, and the share is the point:** `P735` 73%, `P25` 58%, `P22` 52%, `P40` 38%,
 `P734` 35%, `P26` 27%, `P3373` 27%. Relationship properties appear only where the other end has
-an item, so their share measures the neighbourhood's coverage rather than her intent.
+an item, so their share measures the neighbourhood's coverage rather than you intent.
 
 **Rare in practice whatever the model permits:** `P1449` *nickname* on 2, `P5056` *patronym or
 matronym* on 1. `name modelling.txt` gives the patronymic elaborate treatment and it has been
@@ -215,7 +215,7 @@ Geni holds values for several of them.
 **Qualifiers, all four pairings:** `P735`+`P1545` ×33, `P734`+`P3831` ×10, `P735`+`P3831` ×8,
 `P735`+`P7452` ×3.
 
-**21 of the 33 `P1545` are on people with a single given name** — which she has said she does not
+**21 of the 33 `P1545` are on people with a single given name** — which you have said you do not
 want: *"they have consistently included things I did not want, such as the series orginal 1 on
 peoples given names when there is only one given name."* `scripts/namemodel.py` stopped emitting
 them on 2026-08-26; the 21 already live are **NEEDS-DECISION**, because QuickStatements removes a

@@ -1,6 +1,6 @@
 """Run edit objects in an order their own `requires` allows.
 
-**Emma's design, 2026-08-23, in her words:** *"it randomly selects an edit object,
+**your design, 2026-08-23, in your words:** *"it randomly selects an edit object,
 sees if its requirements are present, if they are then it runs, if no then randomly
 select and run another one."*
 
@@ -59,7 +59,7 @@ def runnable_order(edits: Iterable[dict], *, seed: int | None = None,
     dependencies sat unnoticed until 2026-08-23: the batches looked ordered
     because nothing checked.
 
-    **The pick is random, from the set that is ready.** Emma's design is *"randomly
+    **The pick is random, from the set that is ready.** Your design is *"randomly
     selects an edit object, sees if its requirements are present, if they are then it
     runs, if no then randomly select and run another one"* -- and a first
     implementation did exactly that literally, rescanning every pending edit on every

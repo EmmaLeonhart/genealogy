@@ -1,6 +1,6 @@
 """Plan item 5 — family links, and the parents that have to be invented.
 
-Emma, 2026-08-12: *"And family links. Noting that sibling relationships without
+You, 2026-08-12: *"And family links. Noting that sibling relationships without
 parents need to get two parents that are 'father of x and y' and 'mother of x and
 y' and geni linked if possible. Mother father spouse and child is easier."*
 
@@ -14,7 +14,7 @@ Two halves, and they are very different in kind:
   are counted before anything is generated, and the generated rows are kept in
   their own file rather than mixed in with derived ones.
 
-Matching is genealogical only — her governing rule — so nothing here uses a name
+Matching is genealogical only — your governing rule — so nothing here uses a name
 to decide anything. Names are used solely to *label* an invented parent.
 
 Writes `reports/derived-family.csv` (one row per person) and
@@ -47,7 +47,7 @@ csv.field_size_limit(10_000_000)
 def join_names(names: list[str]) -> str:
     """`a and b`, `a and b and c`, then `a, b, c and d`.
 
-    Emma gave the label format as *"father of x and y"*, which fixes the
+    You gave the label format as *"father of x and y"*, which fixes the
     two-child case and leaves the rest to follow. Extracted from ``main`` so the
     rule is testable: this string becomes the label of a **created** item, and a
     silent change to it changes data we are inventing.

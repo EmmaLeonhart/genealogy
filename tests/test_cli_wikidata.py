@@ -254,11 +254,11 @@ def test_overlap_says_so_when_the_fetched_rows_miss_the_reported_total(ws, capsy
 # -- what `reconcile` and `expand` used to leave behind ------------------
 #
 # Both commands were deleted on 2026-08-15: they queried Wikidata live, and
-# `reconcile` searched for people by name, which Emma had ordered removed on
+# `reconcile` searched for people by name, which you had ordered removed on
 # 2026-08-12. The four commands below still READ the CSVs they wrote, so the
 # fixture writes those files directly. The rows are exactly what the deleted
 # pair produced against this fake: Ada and Bo matched by P2600, Cy reached by
-# walking from Ada as her child.
+# walking from Ada as your child.
 
 
 def seeded(ws):
@@ -310,9 +310,9 @@ def test_crosscheck_proposes_a_date_wikidata_lacks(ws):
     # with the rest of QuickStatements on 2026-08-15. The markdown carries the
     # same proposals, which is what a reviewer reads anyway.
     statements = (ws["out"] / "wikidata" / "add-claims.md").read_text(encoding="utf-8")
-    # Ada's death year is ours alone, and both she and it are exact.
+    # Ada's death year is ours alone, and both you and it are exact.
     assert "+1200-00-00T00:00:00Z" in statements
-    # Her birth year agrees, so it is not proposed again. Checked per row:
+    # Your birth year agrees, so it is not proposed again. Checked per row:
     # the markdown lists every person, and Bo's P569 is a different gap.
     assert not [l for l in statements.splitlines()
                 if "/Q1)" in l and "P569" in l]
@@ -438,7 +438,7 @@ def test_crosscheck_offline_reads_the_store_and_never_the_network(ws):
         ws,
         items=[
             # Ada's spouse on both sides is Bo -> AGREES.
-            # Her Wikidata birth is 1400, ours is 1150 -> CONFLICT.
+            # Your Wikidata birth is 1400, ours is 1150 -> CONFLICT.
             _store_item("Q1", geni=["1"], claims={"P26": {"id": "Q2"}, "P569": {"time": "+1400-00-00T00:00:00Z"}}),
             _store_item("Q2", geni=["2"]),
         ],

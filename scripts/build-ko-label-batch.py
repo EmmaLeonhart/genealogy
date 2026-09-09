@@ -2,7 +2,7 @@
 
     py scripts/build-ko-label-batch.py
 
-**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
+**You, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
 prioritize getting korean labels all the time and this seems to not get that cjk includes
 korean"*. `ko` had been filed with `hi`/`ar`/`ru`/`el` as a research task behind `ja` and `zh`,
 when it belongs beside them — this is the batch that was missing.
@@ -24,7 +24,7 @@ trustworthy: emit only what needs no invention, and say plainly how many are out
 
 **Latin names are excluded, exactly as `ja` excludes them.** `translit_ko_latin` renders 97% of
 the 1.29 million Latin-labelled people, and that is transcription rather than reading — the same
-category as English → katakana, which Emma's method reserves for a hand-built table and which the
+category as English → katakana, which your method reserves for a hand-built table and which the
 `ja` batch has never emitted either. Doing it here and not there would be the two batches
 disagreeing about what counts as honest, which is worse than either answer.
 

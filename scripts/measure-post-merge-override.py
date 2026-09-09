@@ -2,7 +2,7 @@
 
     python scripts/measure-post-merge-override.py
 
-**Emma's design, 2026-08-24:** `exports/post-merge/` is *"a directory with special logic: a
+**your design, 2026-08-24:** `exports/post-merge/` is *"a directory with special logic: a
 Geni record in there overwrites the same Geni ID from any other export"*, because post-merge is
 newest and therefore right.
 
@@ -15,7 +15,7 @@ the last word on any **single-valued** path — a birth date, a sex, a `CHAN` st
 `exports/excluded/` had to be invented for a parent link Geni deleted. So where an older export
 says a person's father is X and post-merge says Y, the merged tree holds **both**.
 
-**And she flagged the open question herself** — *"idk how we resolved geni conflicts in the
+**And you flagged the open question yourself** — *"idk how we resolved geni conflicts in the
 synoptic tree earlier either"* — with the queue noting that later-wins is not post-merge-wins
 and would not do the job. So this measures the change before anything is written: **how many
 people would lose a relationship, and which ones.**

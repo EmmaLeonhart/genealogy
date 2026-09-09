@@ -1,6 +1,6 @@
 """How long Geni actually takes to build an export, measured not estimated.
 
-**Emma, 2026-08-18:** *"Does the slowness correspond to the size of the exports, or does
+**You, 2026-08-18:** *"Does the slowness correspond to the size of the exports, or does
 this slowness correspond to the time? […] do a comprehensive analysis of the rate limit
 timing and the export times corresponding to the size of the export file to determine
 whether it appears like we're being rate-limited."*

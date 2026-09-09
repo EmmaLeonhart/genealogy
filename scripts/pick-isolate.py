@@ -1,7 +1,7 @@
 """One random Wikidata isolate that our synoptic tree does not connect --- and it heals itself.
 
-**Emma, 2026-09-03**, after watching profile-picking take far too long: *"you probably should
-have a script that spits out a random one whenever you need one."* Her specification, in her
+**You, 2026-09-03**, after watching profile-picking take far too long: *"you probably should
+have a script that spits out a random one whenever you need one."* Your specification, in your
 words:
 
     my vision would be that you have some kind of a csv file storing all of the wikidata
@@ -72,9 +72,9 @@ FAMILY_GZ = REPO / "reports" / "derived-family.csv.gz"
 ROSTER = REPO / "reports" / "wikidata-isolate-roster.csv"
 COMPONENT = REPO / "out" / "main-component.txt.gz"
 
-#: `6000000002457013227` is `Q3044` Charlemagne --- her anchor, per
+#: `6000000002457013227` is `Q3044` Charlemagne --- your anchor, per
 #: `build-isolate-path-targets.py`: *"I believe Charlemagne is the most central person in the
-#: Jenny graph."* The component containing him is what she calls the big mass.
+#: Jenny graph."* The component containing him is what you call the big mass.
 CHARLEMAGNE = "6000000002457013227"
 
 #: The relationship columns of `out/wikidata/relations.tsv`. No `P3373`; see the docstring.

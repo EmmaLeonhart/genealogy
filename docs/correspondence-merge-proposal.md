@@ -1,6 +1,6 @@
 # Proposal: fold the correspondences into the synoptic tree as a gitignored GEDCOM
 
-**Emma's design, 2026-09-05, and this document is the proposal she asked for rather than a
+**Your design, 2026-09-05, and this document is the proposal you asked for rather than a
 decision:**
 
 > *"I think the manual zipper parents are wired in correctly and well, and I do not want to break
@@ -13,7 +13,7 @@ decision:**
 `scripts/build-correspondence-gedcom.py` writes `out/manual-parental-correspondences.ged` and
 `rebuild-everything.py` runs it in front of the merge, which consumes it with
 `genimerge merge --also`. **`build-garborg-day.ledger()` still reads the CSV directly** — that is
-her *"I do not want to break the pipeline"*, and it stays until the tree route is shown to carry
+Your *"I do not want to break the pipeline"*, and it stays until the tree route is shown to carry
 the same pairs. See § *What was built* and § *What blocks the second half* at the foot of this
 file.
 
@@ -34,7 +34,7 @@ proposal is to make them the same shape.
 Generate file 1 into a **gitignored GEDCOM** during the pipeline run, in the shape of file 2 —
 ids plus a `NOTE` carrying the Wikidata URL — and let the synoptic tree merge consume it.
 
-    reports/manual-identifications.csv          (stays: the deck writes here, she reads it)
+    reports/manual-identifications.csv          (stays: the deck writes here, you read it)
               |
               v  generated in the pipeline, gitignored
     out/manual-parental-correspondences.ged     ids + NOTE https://www.wikidata.org/wiki/Q…
@@ -62,7 +62,7 @@ ids plus a `NOTE` carrying the Wikidata URL — and let the synoptic tree merge 
 
 ### What it must NOT break
 
-- **The pipeline works now and she said so.** The GEDCOM is generated *in addition* first, with
+- **The pipeline works now and you said so.** The GEDCOM is generated *in addition* first, with
   `build-garborg-day.py` still reading the CSV, until the tree route is shown to carry the same
   314 pairs. Only then does the direct read go.
 - **`exports/` is the corpus and every `.ged` in it is committed.** This file is generated and
@@ -141,15 +141,15 @@ synoptic tree in Actions — runs `--slim`. So *"qids in bios being a fundamenta
 pipeline"* is **not true in CI today**, and this experiment did not make it so.
 
 **It was already not true, which is the part worth knowing.** The same drop applies to
-`exports/post-merge/wikidata-qid-links.ged`, her 29 hand-written pairs: the slimmed tree has
+`exports/post-merge/wikidata-qid-links.ged`, your 29 hand-written pairs: the slimmed tree has
 never carried a single bio QID, from any source. Nothing broke, because the two consumers that
 read `NOTE` out of the merged tree — `prepare-cases.py` and `samaritan_spine.py` — read the local
 full merge.
 
-**So the decision before the CSV read can go is a memory decision**, and it is hers or at least
+**So the decision before the CSV read can go is a memory decision**, and it is yours or at least
 needs measuring first: `NOTE` is most of what slim removes (Geni *About Me* text), so a blanket
 `KEEP_TAGS` widening puts the runner back at 13.30 GB and killed. The narrow form — keep a `NOTE`
 whose value is a `wikidata.org` URL — costs almost nothing and is a **value-conditional** rule,
 which is a different kind of thing from the tag whitelist slim is built out of. Neither was
 shipped here: quietly moving the correspondence onto a tag that happens to survive would be
-writing a more intuitive version of her program.
+writing a more intuitive version of your program.

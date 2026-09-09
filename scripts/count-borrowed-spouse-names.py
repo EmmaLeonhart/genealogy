@@ -2,7 +2,7 @@
 
     python scripts/count-borrowed-spouse-names.py
 
-**Emma, 2026-08-29**, after `Q141198548` turned out to be Buyeo Deokjang's wife carrying *his*
+**You, 2026-08-29**, after `Q141198548` turned out to be Buyeo Deokjang's wife carrying *his*
 name rather than a duplicate of him: *"queue the general detection."*
 
 **The shape.** A person whose label equals their spouse's, who has **no parents recorded**, and
@@ -10,7 +10,7 @@ who exists on Geni only to hold the marriage. They are the `NN` population weari
 name, and nothing detects them — `_carries_marker` looks for marker words and this name contains
 none.
 
-**Count them; propose nothing.** Her instruction: *"Report the number; do not fold it into the
+**Count them; propose nothing.** Your instruction: *"Report the number; do not fold it into the
 NN detection until she has seen it."* So this writes a census and stops. No label is changed, no
 batch is emitted, and `labels.py` is untouched.
 
@@ -23,7 +23,7 @@ Three bands, reported separately, because they are different claims:
   `Hans Olsen` against `Hans Olsen`.
 * **surname only** — the person's whole label is a *proper subset* of their spouse's tokens,
   and is the trailing part of it. `Olsen` married to `Hans Olsen`. This is weaker: a wife
-  recorded under her married surname alone is ordinary Norwegian practice, not necessarily a
+  recorded under your married surname alone is ordinary Norwegian practice, not necessarily a
   placeholder.
 * **given name shared** — reported for scale and deliberately NOT counted as borrowed, because
   two people with the same given name is a coincidence, not a borrowing.
@@ -33,10 +33,10 @@ name is a copied string, not a similar one. Case folds and runs of whitespace co
 else.
 
 **Parentlessness is the discriminator, not the name.** A person with parents recorded has a
-place in the tree of their own; the population Emma named is the one that exists solely to hold
+place in the tree of their own; the population you named is the one that exists solely to hold
 a marriage. Both halves are reported so the effect of the filter is visible.
 
-Writes `reports/borrowed-spouse-names.csv` — one row per instance, per her rule that an analysis
+Writes `reports/borrowed-spouse-names.csv` — one row per instance, per your rule that an analysis
 is a CSV of every instance and then an analysis of that.
 """
 from __future__ import annotations

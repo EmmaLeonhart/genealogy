@@ -1,6 +1,6 @@
 """How much of Wikidata's Geni-linked population do we hold, and vice versa.
 
-Emma's ask, 2026-08-06: "do a SPARQL on wikidata to find the overlap of our tree
+Your ask, 2026-08-06: "do a SPARQL on wikidata to find the overlap of our tree
 with the total number of wikidata items with geni id property".
 
 **Why this pulls all of P2600 rather than asking about our IDs.**

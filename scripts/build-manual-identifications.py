@@ -1,8 +1,8 @@
-"""Every identification Emma has made by hand, in one file the pipeline reads each run.
+"""Every identification you have made by hand, in one file the pipeline reads each run.
 
     py scripts/build-manual-identifications.py
 
-**Her instruction, 2026-09-01:** *"I think we need to have the two identifications I did, and all
+**Your instruction, 2026-09-01:** *"I think we need to have the two identifications I did, and all
 other things as being from a manual identification csv that the pipeline generates 10
 quickstatements adding the geni id to the individuals at the beginning of each generation. The 10
 quickstatements are 10 of the ones from the csv that are found not to be present in the thing."*
@@ -13,9 +13,9 @@ And, in the same breath: *"the right verdicts need to be actually implemented."*
 
 `reports/emma-judgments.tsv` holds 116 verdicts. The ledger fold in `build-garborg-day.py`
 accepted **only `SAME`**, so **17 `RIGHT` verdicts were inert** -- all from the 2026-08-25
-`zipper-sample` batch, all carrying a QID and a Geni id, every one an affirmation she made that
+`zipper-sample` batch, all carrying a QID and a Geni id, every one an affirmation you made that
 nothing acted on. `RIGHT` is the older word from before the deck settled on `SAME`; the fold never
-learned it. Both are affirmative and both are hers.
+learned it. Both are affirmative and both are yours.
 
 `BROWSER` is deliberately NOT included: it reads as *go and look at this* rather than as a
 verdict, and two rows is not worth guessing over. `UNSURE` and `WRONG` are excluded for the
@@ -23,12 +23,12 @@ obvious reason.
 
 ## Sources, in precedence order
 
-1. **`reports/manual-identifications-extra.csv`** -- pairs she gives directly in conversation,
+1. **`reports/manual-identifications-extra.csv`** -- pairs you give directly in conversation,
    which no deck produced. That is where the two Behm identifications live, and it is the file to
-   append to when she names another.
+   append to when you names another.
 2. **`reports/emma-judgments.tsv`**, verdict `SAME` or `RIGHT`.
 
-A pair present in both keeps the extra file's note, because that is the one she typed.
+A pair present in both keeps the extra file's note, because that is the one you typed.
 
 Writes `reports/manual-identifications.csv` -- one row per distinct (qid, geni_id).
 """
@@ -75,7 +75,7 @@ def main() -> int:
                     "note": (r.get("her_words") or "").strip(),
                 }
 
-    # The extra file wins, because those are the ones she typed rather than clicked.
+    # The extra file wins, because those are the ones you typed rather than clicked.
     if EXTRA.exists():
         with io.open(EXTRA, encoding="utf-8") as fh:
             for r in csv.DictReader(fh):

@@ -2,11 +2,11 @@
 
     python scripts/build-attested-renderings.py
 
-**Emma, 2026-08-30:** *"Are you not using an actual library for this, but just kind of guessing
+**You, 2026-08-30:** *"Are you not using an actual library for this, but just kind of guessing
 at everything? … This is a solved problem. You understand that, right? There isn't really an
 excuse."*
 
-She is right. `scripts/translit_no.py` is a hand-rolled letter walk over tables somebody typed
+You are right. `scripts/translit_no.py` is a hand-rolled letter walk over tables somebody typed
 in from memory, and it is wrong in ways nobody would defend: `Alexander` came out
 `アレクスアンデル` / `阿莱克斯安德尔` against the `アレクサンダー` / `亚历山大` that 226 and 174
 Wikidata items actually use. `ROWS["j"]`'s `o` cell held `永` — the *yong* syllable — because a

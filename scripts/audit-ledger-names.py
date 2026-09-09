@@ -1,25 +1,25 @@
-"""Every label on every item Emma has made, against what our tree now says.
+"""Every label on every item you have made, against what our tree now says.
 
     BOT_CONTACT=you@example.com python scripts/audit-ledger-names.py
 
-**Emma, 2026-08-28**, her last instruction before the crash: *"All the individuals that I've
+**You, 2026-08-28**, your last instruction before the crash: *"All the individuals that I've
 worked on and any individuals that they've been merged into should basically always be all the
 individuals that I've worked on, pretty much all of them. All the people that they've been merged
 into should have audits done on their names to figure out the degree that we've messed them up."*
 
 ## Why there is damage to measure
 
-Two changes landed on 2026-08-29, **after** most of her items were created:
+Two changes landed on 2026-08-29, **after** most of your items were created:
 
 * `derive-labels.py` made the **married** name the primary label — 251,707 labels flipped.
 * the transliteration table went 218 → 3,261 tokens, so `ja`/`zh` became derivable for names that
   previously produced nothing.
 
 An item created before either carries the **birth** name in `mul` and `en`, and — because `ja`/`zh`
-are transliterated from `label_mul` — in Japanese and Chinese too. Her words: *"the CJK names are
+are transliterated from `label_mul` — in Japanese and Chinese too. Your words: *"the CJK names are
 being put in the birth name form"*.
 
-## One row per item per language, which is the shape she asks for
+## One row per item per language, which is the shape you ask for
 
 `CLAUDE.md` § *"Analyse this" means build a CSV of every instance*: every instance, not a summary,
 then decide. So a person with `mul`, `en`, `ja` and `zh` is four rows, each carrying what Wikidata

@@ -2,7 +2,7 @@
 
     python scripts/backtest-edge-exports.py
 
-**Emma's complaint, 2026-08-15, and it is the whole reason this exists:** *"Finding these
+**your complaint, 2026-08-15, and it is the whole reason this exists:** *"Finding these
 sparse areas, which we kind of did, and I did exports based off of them, but it feels like you
 kind of forgot about them."* Thirty-one edge exports were run off
 `reports/export-entry-points.csv`, placed in `exports/edges/`, and **nothing ever checked what

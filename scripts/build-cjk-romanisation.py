@@ -1,12 +1,12 @@
 """Romanise Han-only names, from Wikidata's own name items.
 
-Emma, 2026-08-18: *"I am convinced we can actually do the romanization of the CJK pretty
+You, 2026-08-18: *"I am convinced we can actually do the romanization of the CJK pretty
 decently… if there's any listed place of birth, then you know which one it is. Chinese and
 Korean readings are all very straightforward. Japanese readings are not straightforward,
 but Chinese and Korean readings are very straightforward."*
 
 **Both halves of that are built here, and the second half is why this works without a
-transliteration library.** No `pypinyin`, no `hanja`, no `pykakasi` is installed, and her
+transliteration library.** No `pypinyin`, no `hanja`, no `pykakasi` is installed, and your
 standing instruction is against programmatic transliteration anyway — *"from CJK to English
 do not remotely try to do any kind of programmatic transliteration because they all suck."*
 
@@ -21,16 +21,16 @@ That is a *published* reading of that character as a name, not a guess, and it i
 per-culture because the item is per-culture — 李 as a Korean family name is `Lee`, and the
 Chinese item for the same character says `Li`.
 
-## Culture first, in her order of evidence
+## Culture first, in your order of evidence
 
-1. **Birth place.** Her words: *"if there's any listed place of birth, then you know which
+1. **Birth place.** Your words: *"if there's any listed place of birth, then you know which
    one it is."* Strongest and checked first.
 2. **Export provenance.** `reports/export-provenance.csv` plus the script mix of the
    exports a person appears in — a Han-only person inside a hangul-writing export is
    Korean. Built 2026-08-18 because the merge deliberately does not track it.
 3. **Neighbours.** The scripts used by parents, children and spouses.
 
-**Japanese is emitted separately and marked**, because she is right that its readings are
+**Japanese is emitted separately and marked**, because you are right that its readings are
 not straightforward: the same character takes different readings in different names, and a
 name item only gives the reading for *that* name. A Chinese or Korean character reading is
 effectively one-to-one; a Japanese one is not.
@@ -86,7 +86,7 @@ CHINESE = {"Q1093580"}          # Chinese family name
 JAPANESE = {"Q16919315", "Q17111581"}   # Japanese family name / given name
 KOREAN = {"Q11420694", "Q17300640"}     # Korean family name / given name
 
-#: Place words that settle the culture outright — her first rule.
+#: Place words that settle the culture outright — your first rule.
 PLACE = [
     ("zh", ("China", "Chinese", "Taiwan", "Hong Kong", "Beijing", "Shanghai", "Guangdong",
             "Fujian", "Zhejiang", "Jiangsu", "Shandong", "Sichuan", "Henan", "Hubei",
@@ -234,7 +234,7 @@ def main() -> int:
         limit = int(sys.argv[sys.argv.index("--limit") + 1])
 
     # **`--all-han` classifies EVERYONE with a Han name record, not just those needing
-    # romanisation.** Emma, 2026-09-02: *"Why can't we just do our cultural clarification
+    # romanisation.** You, 2026-09-02: *"Why can't we just do our cultural clarification
     # algorithm from earlier? What's so hard about the classification?"* Nothing is. The algorithm
     # — clan seat, place, name form, then the graph walk — was simply aimed at a different
     # population: the default `need` is built from `derived-labels.csv` and keeps whoever has a
@@ -261,7 +261,7 @@ def main() -> int:
             scripts[r["geni_id"]] = cjk
             # **"No Latin label", not "no label".** `derive-labels.py` sets `label_en` to
             # the CJK string itself for **13,872** people, so an emptiness test skipped every
-            # one of them -- the exact population this campaign is for. Emma's framing of it,
+            # one of them -- the exact population this campaign is for. Your framing of it,
             # 2026-08-29: *"people whose Geni name exists only in Han/kana/hangul and who
             # therefore have no English form anywhere."* A label that is Han characters is not
             # an English form, so it must not count as one.
@@ -316,7 +316,7 @@ def main() -> int:
     print(f"  settled by a listed place: {len(culture):,}")
 
     # ---- culture evidence 2: NOT export provenance ---------------------------
-    # **Removed on Emma's instruction, 2026-08-18: "don't fucking do export provenance,
+    # **Removed on your instruction, 2026-08-18: "don't fucking do export provenance,
     # do graph traversal."** It was in here and it was wrong, in a way the output showed
     # plainly: 大唐帝國, the Tang Empire, came out tagged Korean because the export it sits
     # in is Korean-rooted. A Korean-rooted tree is full of Chinese ancestors, so the
@@ -328,7 +328,7 @@ def main() -> int:
 
     # ---- culture evidence 2: the NAME's own form ----------------------------
     # Evidence carried by the name itself, which outranks the graph: a neighbour tells
-    # you where a family was reached from, a name tells you what it is.
+    # You where a family was reached from, a name tells you what it is.
     #
     # **This runs BEFORE the traversal, and that ordering is the point.** It used to
     # run after, so the walk voted only on kana, hangul and a listed place -- the
@@ -395,7 +395,7 @@ def main() -> int:
             culture[g] = "zh"
             why[g] = f"carries the clan seat {last}, which is Chinese"
     # ---- culture evidence 3: graph traversal ---------------------------------
-    # Emma, 2026-08-18: *"graph traversal for people with unknown country there will
+    # You, 2026-08-18: *"graph traversal for people with unknown country there will
     # probably work for inferring nationality"*. Immediate kin is not enough -- a
     # Han-only person's parents are often Han-only too -- so this walks outward and
     # takes the NEAREST evidence, which is what makes it an inference rather than a
@@ -571,10 +571,10 @@ def main() -> int:
             unsettled_why[g] = ("no evidence within %d hops, %d relative(s) reached"
                                 % (MAX_HOPS, reached))
     # ---- culture evidence 4: what the surname is, judged by the settled records ----
-    # Emma, 2026-08-19, reading `reports/unidentified-clusters.md`: *"Litteally all
+    # You, 2026-08-19, reading `reports/unidentified-clusters.md`: *"Litteally all
     # chinese and its obvious from wikidata names lol"* -- then *"Apply it lol"*.
     #
-    # She is right about the bulk and the clusters show why: the records left unsettled
+    # You are right about the bulk and the clusters show why: the records left unsettled
     # are overwhelmingly one Chinese lineage each, `曾` 656, `陳` 265, `張` 105,
     # `趙` 100, `孔` 64, with `世`-generation numbering straight out of a
     # 族譜. They have no culture only because their component is isolated -- no kana,
@@ -707,7 +707,7 @@ def main() -> int:
                 #
                 # **Where it IS Japanese, the reading is not one thing.** `都築` has **23**
                 # distinct readings across items -- Tochiku, Tokizu, Totsugi, Miyachiku
-                # and 19 more; `生方` has 18, `古閑` 17, `新保` 17. Emma: *"Japanese
+                # and 19 more; `生方` has 18, `古閑` 17, `新保` 17. You: *"Japanese
                 # readings are not straightforward."* Choosing one is not a better guess,
                 # it is a different person's name, which is the rule this file already
                 # follows for composition and which applies unchanged here.
@@ -770,7 +770,7 @@ def main() -> int:
     #: A given token ending in one of these is a **relationship, not a name**: `室` and
     #: `妻` are *wife of*, `母` *mother of*, `女` *daughter of*. So `信秀側室 織田`
     #: is not a person called Nobuhide-sokushitsu -- it is **Nobunaga's father's
-    #: concubine**, recorded by whose concubine she was because her own name was not.
+    #: concubine**, recorded by whose concubine you were because your own name was not.
     #: `室` 2,410, `妻` 113, `養女` 105, `母` 18, and 106 more of the form
     #: [personal name] + `女` such as `正光女`, *daughter of Masamitsu*.
     #:
@@ -848,7 +848,7 @@ def main() -> int:
             continue
         if len(tokens) > 1:
             done[f"{code} given+courtesy, took given"] += 1
-        # **Chinese and Korean compose per character; Japanese does not.** Emma said so
+        # **Chinese and Korean compose per character; Japanese does not.** You said so
         # -- *"Chinese and Korean readings are all very straightforward. Japanese readings
         # are not straightforward"* -- and composing anyway proved it: 文仁 came out
         # `Aya Masashi` when it is *Fumihito*, 信直 `Shin Tadashi` when it is *Nobunao*,

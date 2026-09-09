@@ -1,6 +1,6 @@
 """Read the immediate family out of a saved Geni profile page.
 
-**Emma, 2026-08-29**, on the 1,555 pages in `geni-scraping/` and the 698 files in `paths/`:
+**You, 2026-08-29**, on the 1,555 pages in `geni-scraping/` and the 698 files in `paths/`:
 *"My suggestion would be for us to convert these things into GEDCOM files that would go into a
 special GEDCOM directory... so that it will save both the paths and the saved pages because they
 are different. It turns them into things that are usable and would be merged into the Geni union — the synoptic
@@ -16,13 +16,13 @@ So every edge is an English phrase followed by the anchors it governs, and the a
 Geni id. That is what makes this an exact join rather than a name match, which is the same reason
 `genimerge.genipage` reads the relationship panel from `href`s instead of from the visible text.
 
-**Names arrive as one string and stay that way.** Emma is explicit that this is the cost:
+**Names arrive as one string and stay that way.** You are explicit that this is the cost:
 *"the names being present as strings makes things significantly harder"*, and *"You'd probably be
 using spacing to figure out what the last name is or something. It would work in most cases, but
 not all."* This module therefore emits `1 NAME <string>` and **no `GIVN`/`SURN` split at all** --
 guessing a surname from spacing is exactly the fuzzy inference this repo refuses everywhere else,
 and `reports/names-spec.md` shows how badly Geni's own fields behave. A later pass can split them
-with a rule she has approved; inventing one here would bake a guess into the corpus.
+with a rule you have approved; inventing one here would bake a guess into the corpus.
 
 `<li>` is never closed on these pages, so nesting-based scoping does not work and this reads the
 document linearly instead.

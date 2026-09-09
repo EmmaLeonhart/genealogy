@@ -73,10 +73,10 @@ _CJK = re.compile(r"[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF"
 def has_cjk(text):
     """True when the name is written in Han, kana or Hangul.
 
-    **A CJK case is not in any deck.** Emma, 2026-09-07: *"I'm making a firm ruling here that
+    **A CJK case is not in any deck.** You, 2026-09-07: *"I'm making a firm ruling here that
     effectively all these cjk people are undoable for me in my current situation."* A card is
-    judged by reading two people's spouses and children, which she cannot do for a Heian
-    courtier. They stay in the census TSV; only the deck she reads is filtered.
+    judged by reading two people's spouses and children, which you cannot do for a Heian
+    courtier. They stay in the census TSV; only the deck you read is filtered.
     """
     return bool(_CJK.search(text or ""))
 
@@ -142,11 +142,11 @@ def load_relations(props=("p22", "p25", "p40", "p26", "p3373")):
 def load_correspondence():
     """`(qids spoken for, geni ids spoken for, {geni_id: qid})` from the synoptic union.
 
-    **`P2600` is not the only thing that identifies somebody.** Emma, 2026-08-31, on nine cases
+    **`P2600` is not the only thing that identifies somebody.** You, 2026-08-31, on nine cases
     that survived a slot fix: *"I think literally all these people were identified earlier and
     some are very stale."* Seven of the nine were already in
-    `reports/synoptic-correspondence.tsv` --- known through the structural walk, the zipper, her
-    bio links or her own verdicts, none of which puts a `P2600` on Wikidata.
+    `reports/synoptic-correspondence.tsv` --- known through the structural walk, the zipper, your
+    bio links or your own verdicts, none of which puts a `P2600` on Wikidata.
     """
     qids, genis, qid_of = set(), set(), {}
     if not SYNOPTIC.exists():
@@ -453,7 +453,7 @@ def first_year(claims, prop):
 
     Precision is the whole point. Wikidata stores *17th century* as `+1650-00-00` at precision 7,
     and reading that as the year 1650 invents a disagreement with a real 1600 --- which an audit
-    of her verdicts did, flagging two clean pairs. A coarse date is rendered as coarse and never
+    of your verdicts did, flagging two clean pairs. A coarse date is rendered as coarse and never
     compared.
     """
     for st in claims.get(prop, ()):
@@ -523,7 +523,7 @@ def load_our_labels():
 
     **A CJK-only person has NO `label_en` and NO `label_mul`** --- their name is in `cjk_names`,
     ` | `-separated. Reading the first two columns only left the card blank on our side, which is
-    the one thing Emma says makes a case unanswerable: *"no relationships means I can't make a
+    the one thing you say makes a case unanswerable: *"no relationships means I can't make a
     judgment."*
     """
     out = {}
@@ -554,11 +554,11 @@ def load_our_facts(wanted=None):
 
 
 def answered_pairs():
-    """`{(geni_id, qid)}` she has settled, and the count still open.
+    """`{(geni_id, qid)}` you have settled, and the count still open.
 
     **A DECIDED pair never comes back. An UNSURE one does.** An `UNSURE` is *I cannot tell from
-    this*, and retiring it was something I invented and she did not ask for. Those come back, so
-    a later run with more evidence can put a better version of the same question to her.
+    this*, and retiring it was something I invented and you did not ask for. Those come back, so
+    a later run with more evidence can put a better version of the same question to you.
     """
     answered, unsure = set(), 0
     if not JUDGMENTS.exists():
@@ -579,7 +579,7 @@ def answered_pairs():
 def mark_also_offered(cases):
     """Say so on every card when one item is offered against more than one person.
 
-    **The Engeström shape, detectable with no name matching at all.** `Q5712230` was put to her
+    **The Engeström shape, detectable with no name matching at all.** `Q5712230` was put to you
     twice --- once for Johan Mattias von Engeström and once for his wife --- and only one of them
     can be it.
     """
@@ -603,7 +603,7 @@ def render(cases, html_path, json_path, title, sub, key):
     held = [c for c in cases if has_cjk(c.get("our")) or has_cjk(c.get("cand"))]
     deck = [c for c in cases if c not in held]
     if held:
-        print("%d CJK case(s) held out of the deck, per her ruling of 2026-09-07: %s"
+        print("%d CJK case(s) held out of the deck, per your ruling of 2026-09-07: %s"
               % (len(held), ", ".join(c["qid"] for c in held[:8])), file=sys.stderr)
     json_path.parent.mkdir(parents=True, exist_ok=True)
     json.dump(deck, io.open(json_path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -623,7 +623,7 @@ def nameless(deck):
     """The cards that name nobody on one side --- the tell a count never shows.
 
     Three separate bugs each published a deck whose cards were a name facing an empty box or a
-    bare QID, while the generator printed a healthy candidate count every run. Emma, 2026-09-04,
+    bare QID, while the generator printed a healthy candidate count every run. You, 2026-09-04,
     on what reached the site: *"a weird-ass page ... in a way that made it useless"*.
     """
     return [c for c in deck

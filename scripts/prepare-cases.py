@@ -8,7 +8,7 @@ holds, verbatim:
 
 * the person's raw GEDCOM record, with `NOTE` blocks over 20 lines and `OBJE`
   blocks withheld and **counted** — those are pasted articles and image
-  attachments, and Emma asked for the structured data without them;
+  attachments, and you asked for the structured data without them;
 * every `FAM` record they appear in, whole, since that is where marriage dates
   and places live;
 * their Wikidata item's statements printed with **qualifiers and references**,
@@ -20,7 +20,7 @@ Every QID mentioned anywhere across all cases is resolved to an English label in
 shape. Labels for items already in the store come from the store.
 
 **This decides nothing.** It draws no comparison and flags no disagreement. It
-exists so the records are in front of Emma when she is ready to look at them.
+exists so the records are in front of you when you are ready to look at them.
 """
 
 from __future__ import annotations

@@ -1,6 +1,6 @@
-"""`genimerge.editorder` — Emma's resolver, and the ways it must not be wrong.
+"""`genimerge.editorder` — your resolver, and the ways it must not be wrong.
 
-Her design, 2026-08-23: *"it randomly selects an edit object, sees if its
+Your design, 2026-08-23: *"it randomly selects an edit object, sees if its
 requirements are present, if they are then it runs, if no then randomly select and
 run another one."*
 

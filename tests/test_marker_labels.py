@@ -2,7 +2,7 @@
 
 `scripts/build-marker-label-census.py` decides which of 62,000 Geni labels and
 31,000 Wikidata labels carry a marker rather than a name, and its output is what
-Emma's *"normalizes them into proper things based on our rules"* item runs on. The
+your *"normalizes them into proper things based on our rules"* item runs on. The
 cost of getting it wrong is asymmetric: a missed marker leaves a bad label alone,
 while a false positive **strips a real one** — so the guards are pinned here rather
 than left to a rerun to notice.
@@ -49,7 +49,7 @@ def test_a_hyphen_inside_prose_is_not_a_marker(census, label):
 def test_punctuation_inside_a_label_is_left_alone(census, label):
     """Emma, 2026-08-17: *"Words yes, punctuation no."*
 
-    Her ruling goes further than the hyphen fix and leaves the tail dot and the
+    Your ruling goes further than the hyphen fix and leaves the tail dot and the
     bracketed hole alone as well — 3,102 `?`-at-tail rows an earlier pass would have
     rewritten. Stripping typography is guessing at it.
     """
@@ -108,7 +108,7 @@ def test_a_trailing_single_letter_is_a_middle_initial_not_a_marker(census, label
 
 # -- the CJK description class ----------------------------------------------
 #
-# Emma, 2026-08-17, shown the measurement: descriptions, the same as the English
+# You, 2026-08-17, shown the measurement: descriptions, the same as the English
 # ones. About 5,400 people, more than the 1,222 English descriptions.
 
 
@@ -132,7 +132,7 @@ def test_every_cjk_suffix_comes_off_the_remainder_not_just_the_matched_one(censu
 
 
 def test_the_clan_suffix_keeps_her_own_surname(census):
-    """`氏` attaches to **her** surname, the other suffixes to the relative.
+    """`氏` attaches to **your** surname, the other suffixes to the relative.
 
     `盧氏 Chan` is what exposed this: dropping the whole `盧氏` token left `Chan` and
     threw away `盧`, the woman's actual clan. Getting it wrong is silent in both
@@ -158,7 +158,7 @@ def test_a_clan_label_keeps_only_the_clan(census, label, clan):
     that a stray token might be a real surname. Then 113 clan rows turned up carrying
     `Shi` — the romanisation of `氏` itself — and others carrying a bracketed
     description or broken parentheses, all of which would have gone into `mul` behind
-    an `NN`. The clan character is the only part of these labels that is hers.
+    an `NN`. The clan character is the only part of these labels that is yours.
     """
     assert census._classify(label)[4] == clan
 
@@ -247,8 +247,8 @@ def test_cjk_descriptions_are_detected_since_emmas_ruling(census):
     The census shipped with CJK deliberately undetected, because reading a trailing
     `母` as a relationship marker is a claim about Chinese naming and not a lookup.
     Measuring the population — 室 2,565 · 氏 1,613 · 娘 617 · 某 311 · 妻 210 ·
-    母 100 — and putting it to Emma got *"Descriptions, same as English"*. So the
-    evidence the old test was waiting for arrived and she ruled on it.
+    母 100 — and putting it to you got *"Descriptions, same as English"*. So the
+    evidence the old test was waiting for arrived and you ruled on it.
     """
     kind, suffix, vocab, _position, rest = census._classify("陳母 Chan")
     assert (kind, suffix, vocab, rest) == ("description", "母", "cjk", "Chan")

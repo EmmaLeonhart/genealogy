@@ -1,11 +1,11 @@
 """Every profile in the corpus whose given name is a placeholder, one row each.
 
-**Census first, normalisation after.** Emma, 2026-08-14: *"I want you to actually
+**Census first, normalisation after.** You, 2026-08-14: *"I want you to actually
 be doing a serious analysis of the degree of things that have the NN thing with
 them before you do anything, before you do any of this."* So this measures and
 decides nothing. `scripts/labels.py` is untouched until the CSV has been read.
 
-The proposal it exists to test — Emma's, same message — is that all of these
+The proposal it exists to test — your, same message — is that all of these
 collapse to a single standard form:
 
     <private> -> NN
@@ -16,7 +16,7 @@ collapse to a single standard form:
     ?         -> undecided
 
 **and the surname is kept in every case**, so `<private> /Larsson/` becomes
-`NN Larsson` rather than losing the family name. The one exception she confirmed:
+`NN Larsson` rather than losing the family name. The one exception you confirmed:
 a surname of `.` becomes nothing, because a full stop is not a family name.
 
 **One row per NAME record, not per person.** A Geni profile carries several

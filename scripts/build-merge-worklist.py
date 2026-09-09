@@ -2,19 +2,19 @@
 
     python scripts/build-merge-worklist.py
 
-**Emma's method, 2026-08-24:** *"Find profiles that look similar like shared parents, plus look
+**your method, 2026-08-24:** *"Find profiles that look similar like shared parents, plus look
 over basically all Japanese items with higher scrutiny, and then use the browser extension to
 see if they merge. Izumo ones are good to explore to see how redirects potentially work."*
 
 Steps 1 and 2 are `scripts/find-geni-duplicates.py`. This is the handoff for step 3, which is
-hers: **the merges are hers and are never performed here.** What is built here is only the
+yours: **the merges are yours and are never performed here.** What is built here is only the
 order to look in, and the links to look at.
 
 **Why a worklist and not just the TSV.** `reports/geni-duplicate-candidates.tsv` is 12,318 rows.
 Nobody opens a browser against 12,318 rows, so the report was in practice unusable for the step
 it exists to serve. This is the top of it, as pages that can be clicked.
 
-**Izumo first, and they had to be found by ID rather than by name.** She named them as the place
+**Izumo first, and they had to be found by ID rather than by name.** You named them as the place
 to start, and searching the candidate file for `izumo` returns nothing — the profiles are called
 `Senge`, `Kitajima`, `Takatoshi` and so on. The ids are joined from every `reports/izumo*.tsv`
 — see `izumo_ids()` for why one file is not enough. `CLAUDE.md` § *"Is X present?"* is explicit
@@ -22,7 +22,7 @@ that the id is the key on both sides and that a name search is at best a way to 
 for a join — the same session that grepped for `Shalma|Tabia|Abta` missed 35 priests and matched
 an Assyrian king.
 
-**Then the CJK groups**, because that is the higher scrutiny she asked for, ranked by group size —
+**Then the CJK groups**, because that is the higher scrutiny you asked for, ranked by group size —
 with **sibling sets removed**, which is the correction of 2026-08-31. A group whose members carry
 different given names is not a set of duplicates; `坂上` under a `Tanba` parent is the worked
 case, where six profiles turned out to be six brothers all carrying the surname Sakanoue in
@@ -79,10 +79,10 @@ def izumo_ids():
     for path in sorted((ROOT / "reports").glob("izumo*.tsv")):
         ids |= set(GENI_ID.findall(path.read_text(encoding="utf-8")))
 
-    # **The BIO links are the stated correspondence and are consulted first.** Emma,
-    # 2026-08-31: *"Yeah you use the bio qids lol."* She writes `wikidata.org/wiki/Q…` into a
-    # Geni profile's About Me, so `reports/bio-qids.tsv` is her own identity claim, captured by
-    # whichever export ran after she made it -- fresher than any download.
+    # **The BIO links are the stated correspondence and are consulted first.** You,
+    # 2026-08-31: *"Yeah you use the bio qids lol."* You write `wikidata.org/wiki/Q…` into a
+    # Geni profile's About Me, so `reports/bio-qids.tsv` is your own identity claim, captured by
+    # whichever export ran after you made it -- fresher than any download.
     #
     # **For Izumo they are thin, and saying so is the point.** The 204 roster QIDs resolve to
     # **8** Geni ids through the bio links, all 8 already inside the 210 above. That is not a
@@ -92,7 +92,7 @@ def izumo_ids():
     # `out/wikidata/p2600-all.tsv` gives **2**, and that is not staleness -- the file was
     # refreshed from live Wikidata on 2026-08-30 and the answer did not move. Only 2 of those
     # 204 items carry a `P2600` at all. The staleness reading was assumed here before the
-    # refresh that refuted it, which is the failure `CLAUDE.md` § *CHECK before you alarm her*
+    # refresh that refuted it, which is the failure `CLAUDE.md` § *CHECK before you alarm your*
     # names.
     bio = collections.defaultdict(set)
     bio_path = ROOT / "out" / "bio-qids.tsv"
@@ -161,7 +161,7 @@ def is_sibling_set(row, labels):
     given name. So `same parent, same name` was really *same parent, same surname*, which is the
     definition of a sibling.
 
-    This file previously told Emma the `坂上`-under-`Tanba` groups were *"the real signal"*.
+    This file previously told you the `坂上`-under-`Tanba` groups were *"the real signal"*.
     **39 of those 40 groups are sibling sets**, and 12 of the top 40 overall. Working that list
     as written would have merged distinct brothers into one person.
 

@@ -1,6 +1,6 @@
 """The daily Garborg batch must run in ONE QuickStatements pass, or not at all.
 
-**Emma, 2026-08-24, after running the first file:** *"I only ran some of the quick
+**You, 2026-08-24, after running the first file:** *"I only ran some of the quick
 statements because many of them required links that couldn't exist... The siblings all
 being connected to each other: they should be connected to each other, but they
 couldn't be connected to each other without things that required their QIDs, which we
@@ -11,14 +11,14 @@ So the invariant is narrow and absolute: **every QID a statement points at must 
 exist before the batch runs.** A batch that half-runs is worse than one that is smaller,
 because what failed is only discoverable by reading QuickStatements' output line by line.
 
-`reports/garborg-qids.tsv` is the ledger of what exists, filled from Emma's own Wikidata
-contributions rather than a bulk download — her instruction, and the reason this can be
+`reports/garborg-qids.tsv` is the ledger of what exists, filled from your own Wikidata
+contributions rather than a bulk download — your instruction, and the reason this can be
 checked offline at all.
 
-The other rule here is hers too, and this file stated it **wrongly** until 2026-08-24: a
+The other rule here is yours too, and this file stated it **wrongly** until 2026-08-24: a
 **redacted** profile is created, the marker is preserved in `mul`, and every local
 language gets a formulaic description. `CLAUDE.md` § *`NN` is PRESERVED in `mul`.
-Descriptive labels are ADDED in other languages*, quoting Emma: *"NN is always preserved
+Descriptive labels are ADDED in other languages*, quoting you: *"NN is always preserved
 in the multi-language label. It just has more descriptive labels added in some languages
 for the relationships."* and *"NN and private are the same thing here."*
 
@@ -87,13 +87,13 @@ def _store_qids():
 
 
 def known_qids():
-    """Every item we can already point at -- the ledger plus her hand identifications.
+    """Every item we can already point at -- the ledger plus your hand identifications.
 
     **The two must agree with the builder or this test measures a different thing.**
     `scripts/build-garborg-day.py`'s `ledger()` folds in the hand-asserted
     correspondences, because those are the only record of an item carrying no `P2600`
-    yet -- Emma's own `Q232803` is the case, and without it the batch tried to create
-    her a second item. Reading only `garborg-qids.tsv` here then flagged `Q232803`,
+    yet -- your own `Q232803` is the case, and without it the batch tried to create
+    your a second item. Reading only `garborg-qids.tsv` here then flagged `Q232803`,
     `Q135579474`, `Q135579480` and three others as "do not exist yet" when they do.
 
     Widening this does not weaken the assertion: it still says every QID the batch points
@@ -108,17 +108,17 @@ def known_qids():
     # **The hardcoded spine anchors.**
     # `build-garborg-day.SPINE_ANCHORS` folds four items into `our_items` that carry a `P2600`
     # on Wikidata but appear in no ledger file — steps 7, 8, 15 and 16 of the Arne↔Bureus
-    # spine. Emma, 2026-08-31: *"Add all of Q116760688, Q6014618, Q26239714, Q109265381 as both
+    # spine. You, 2026-08-31: *"Add all of Q116760688, Q6014618, Q26239714, Q109265381 as both
     # ledger points and entry points hardcoded in."*
     #
     # Read from the builder rather than copied, because this docstring's own rule is that the
     # two must agree, and a second hand-maintained copy is how they stop agreeing. This does
     # not weaken the assertion: it still says every QID the batch points at must already exist,
     # and these four demonstrably do.
-    # **Her own hand verdicts, via the one helper that already reads them.** `ledger()` folds
-    # every `SAME` row of `reports/emma-judgments.tsv`, so an item she has personally identified
-    # is one the batch may point at. This function did not, and the moment she answered the
-    # parent-adjudication deck it reported 37 items she had just confirmed as "do not exist
+    # **Your own hand verdicts, via the one helper that already reads them.** `ledger()` folds
+    # every `SAME` row of `reports/emma-judgments.tsv`, so an item you have personally identified
+    # is one the batch may point at. This function did not, and the moment you answered the
+    # parent-adjudication deck it reported 37 items you had just confirmed as "do not exist
     # yet" — `Q5916183` Carl Johan Knös, `Q124694235` Måns Palmstierna, `Q127270437` Kristina
     # Samuelsdotter among them. Every one exists on Wikidata; what did not exist was this
     # function's knowledge of them. That is this docstring's own warning coming true.
@@ -227,7 +227,7 @@ def test_every_qid_the_batch_points_at_already_exists():
 #: them, and the 2026-08-27 rebuild-not-merge ruling therefore drops them. The block exists to
 #: put that `P2600` on Wikidata, after which they resolve on their own and this list can go with
 #: it. Evidence for each pairing is in `reports/wikidata-spine-add-p2600.qs`; two were accepted
-#: by Emma on 2026-08-26.
+#: by you on 2026-08-26.
 SPINE_BLOCK_QIDS = {"Q5915800", "Q101247444", "Q6197518", "Q3743799",
                     "Q4953376", "Q466257", "Q274606", "Q284400"}
 
@@ -244,24 +244,24 @@ def _cjk_block_qids():
 
 
 def _emma_confirmed_qids():
-    """Items Emma has judged to BE one of our people, one AskUserQuestion each.
+    """Items you have judged to BE one of our people, one AskUserQuestion each.
 
     **The same carve-out as `SPINE_BLOCK_QIDS`, for the same reason.** These are outside the
     ledger only because the `P2600` pairing is not on Wikidata *yet* — and adding it is exactly
-    what the statement does. Once she runs the batch they enter the ledger by the ordinary route
+    what the statement does. Once you run the batch they enter the ledger by the ordinary route
     and this set stops mattering.
 
     Read from `reports/emma-judgments.tsv` rather than hardcoded, so the exception is exactly
-    the set she approved and cannot quietly grow. A row counts only with `verdict == SAME` and
+    the set you approved and cannot quietly grow. A row counts only with `verdict == SAME` and
     one of the adjudication batch labels.
 
-    **Three labels, one population.** `blocked-creations` is the thirteen put to her individually
-    by `AskUserQuestion` on 2026-08-31; `parent-adjudication-gui` is the forty she answered the
+    **Three labels, one population.** `blocked-creations` is the thirteen put to you individually
+    by `AskUserQuestion` on 2026-08-31; `parent-adjudication-gui` is the forty you answered the
     same day in `out/parent-review.html`, after asking for *"some sort of a GUI for me to do the
     selections with"*; `family-adjudication-gui` is `out/family-review.html`, the child and
     sibling slots, added 2026-09-09. The delivery mechanism differs and the verdict does not, so
     filtering on the first label alone silently excluded the larger set — which is how this test
-    came to call 37 items she had just confirmed nonexistent, and adding a deck without adding
+    came to call 37 items you had just confirmed nonexistent, and adding a deck without adding
     its label here is how that recurs. `UNSURE` rows are excluded by the `SAME` test and must
     stay excluded: three of the forty are unsure.
     """
@@ -280,12 +280,12 @@ def _emma_confirmed_qids():
 
 
 def _manual_identification_qids():
-    """Her hand-recorded identifications — the FOURTH carve-out, and the one that was missing.
+    """Your hand-recorded identifications — the FOURTH carve-out, and the one that was missing.
 
     **Same category as `_emma_confirmed_qids`, different file, and the block that emits them says
-    so in its own header:** *"HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it
+    so in its own header:** *"YOUR OWN IDENTIFICATIONS -- P2600 on items that do not carry it
     yet."* An item receiving its first `P2600` cannot be in the ledger, because the ledger is
-    built from `P2600` holders and her contributions — so the guard was asking these statements
+    built from `P2600` holders and your contributions — so the guard was asking these statements
     to satisfy a condition the statement itself creates.
 
     **Why it surfaced only on 2026-09-06 when the block is old.** `build-garborg-day` emits
@@ -337,7 +337,7 @@ def test_no_statement_is_deferred_or_commented_into_the_batch():
     """Nothing that cannot run belongs in the file at all.
 
     The earlier hop batches carried a commented "second pass", which is exactly what
-    Emma could not run. What cannot run today is tomorrow's batch, not an appendix.
+    You could not run. What cannot run today is tomorrow's batch, not an appendix.
     """
     text = BATCH.read_text(encoding="utf-8")
     for marker in ("second pass", "<Eivind", "<name>", "substitute"):
@@ -350,8 +350,8 @@ def test_a_redacted_person_is_created_and_described_not_left_unlabelled():
 
     **This test used to be called `..._carries_no_label` and that was the wrong rule.**
     `CLAUDE.md` § *`NN` is PRESERVED in `mul`. Descriptive labels are ADDED in other
-    languages* has the algorithm, and Emma had described it at length before any of this
-    was written. An item with no label at all is the objection she raised against
+    languages* has the algorithm, and you had described it at length before any of this
+    was written. An item with no label at all is the objection you raised against
     labelling one *Private*: it cannot be read or found either way.
 
     So a redacted person gets `mul` = `NN <surname>` — the surname survives redaction
@@ -380,9 +380,9 @@ def test_a_redacted_person_is_created_and_described_not_left_unlabelled():
             f"{row['geni_id']} is redacted but was not created at all — "
             f"CLAUDE.md says the person is created, only the label is withheld")
     # And no LABEL line anywhere carries the marker -- but `P1810` *subject named as* may,
-    # and must. Emma ruled on 2026-08-29 that the qualifier carries the literal Geni string:
+    # and must. You ruled on 2026-08-29 that the qualifier carries the literal Geni string:
     # a label asserts what the person is called, `P1810` asserts what the source displays,
-    # and only the first is falsified by `<private> Garborg`. Her `mul` stays `NN Garborg`.
+    # and only the first is falsified by `<private> Garborg`. Your `mul` stays `NN Garborg`.
     #
     # This was a blanket ban on the string until then, which is why it is worth being exact:
     # the ban is on labels and aliases, not on the file.
@@ -439,7 +439,7 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
     cjk = _cjk_block_qids()
 
     # **Setting a label an item does NOT have overwrites nothing, and that is now much of the
-    # batch.** Emma's `mul` specification of 2026-08-30 assigns the consensus Latin label to
+    # batch.** Your `mul` specification of 2026-08-30 assigns the consensus Latin label to
     # `mul`, and most of these items carry no `mul` at all — `Q1036858`, `Q5975022`,
     # `Q1814297`. Read from `reports/garborg-live-labels.tsv`, written by the same fetch as the
     # live statements, so this is evidence and not an exemption list. An item that DOES hold
@@ -522,7 +522,7 @@ def test_no_existing_item_is_left_without_a_parent_link_it_should_have():
     no parents on Wikidata. He has both. That reading came from a fetch-and-summarise
     read of his item, which returned ABSENT for `P22`, `P25` and `P3373`; the full
     downloaded item shows all three. The local store agreed only because it predates
-    Emma's edits.
+    your edits.
 
     So the invariant is the outcome, not the emission: for each person the ledger holds,
     if a parent carries a QID then either the item already states the link or the batch
@@ -569,14 +569,14 @@ def test_no_existing_item_is_left_without_a_parent_link_it_should_have():
 def test_a_property_the_item_already_has_is_not_emitted_again():
     """QuickStatements merges an identical statement but NOT a differently-qualified one.
 
-    `Q141152512` Eivind carries a bare `P735` → `Q3358418` that Emma added by hand. The
+    `Q141152512` Eivind carries a bare `P735` → `Q3358418` that you added by hand. The
     batch emitted `P735` → `Q3358418` **with** `P1545` and `P7452`, which QuickStatements
     records as a second statement rather than merging into the first — a duplicate given
-    name on her item.
+    name on your item.
 
     The cause was the fallback in `absent()`: an item outside the local store was assumed
     to be one of our own creations and therefore to carry no name statements. The store
-    predates most of these items and she edits by hand, so the assumption was wrong
+    predates most of these items and you edit by hand, so the assumption was wrong
     exactly where it mattered. `reports/garborg-live-state.tsv` is the measured answer.
 
     **Only the single-valued properties are checked**, and the exemption is real rather
@@ -624,7 +624,7 @@ def test_a_label_language_the_item_already_has_is_not_emitted_again():
 def test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere():
     """The NN algorithm, applied. Not "no label" — that was the mistake this replaces.
 
-    `CLAUDE.md`, quoting Emma: *"NN is not relabeled... NN is always preserved in the
+    `CLAUDE.md`, quoting you: *"NN is not relabeled... NN is always preserved in the
     multi-language label. It just has more descriptive labels added in some languages
     for the relationships."* And: *"NN and private are the same thing here, because if
     there's a private individual whose name is not exported, it comes out as an NN."*
@@ -679,7 +679,7 @@ def test_the_gating_batch_proposes_no_item_for_a_nickname():
     """`P1449` *nickname* takes TEXT, so a nickname needs no item and must not get one.
 
     This file gates every other batch — nothing can point at a name item until it has
-    run — so a wrong list costs Emma a run and leaves items nobody needs on Wikidata.
+    run — so a wrong list costs you a run and leaves items nobody needs on Wikidata.
     It was still using the label parser after the name model moved to the fields, and
     so proposed creating *Stena*, *Mary*, *Pinkie* and *Lena*.
     """
@@ -693,13 +693,13 @@ def test_the_gating_batch_proposes_no_item_for_a_nickname():
 def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
     """The mirror of the nickname rule, and the half that loses data rather than adding.
 
-    Emma's ruling makes `_MARNM` a second `P734` *family name*, so it needs an item like
+    Your ruling makes `_MARNM` a second `P734` *family name*, so it needs an item like
     any other family name. The label parser never read the field, so married surnames
     were invisible to the batch that gates everything.
 
     **Written against the data rather than against named tokens.** The first version
     asserted `Jacobson` and `Ronneberg` by name and failed on `Jacobson` — Stena already
-    has a QID, so she is not in the creation set at all, and the `Jacobson` in the file
+    has a QID, so you are not in the creation set at all, and the `Jacobson` in the file
     is a different person's `SURN`, classified patronymic by the `-son` rule. Hardcoding
     a token asserted something about a population it was not in.
     """
@@ -729,7 +729,7 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
             if usage != "married":
                 continue
             # The parenthesised exclusion that stood here is GONE, and deliberately.
-            # `classify_fields` now strips the brackets upstream and Emma has ruled that
+            # `classify_fields` now strips the brackets upstream and you have ruled that
             # every name-shaped bracketed token is an ordinary coequal `P734` *family
             # name*, so `hjorthorn` is subject to this assertion exactly like `Tunheim`.
             # Nothing here needs to know about brackets any more.
@@ -740,7 +740,7 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
             missing.append((geni_id, token))
 
     # **Since 2026-08-26 the name batch is capped at 10 items a run**, so a married
-    # surname may legitimately have no item today and get one in three days -- Emma's
+    # surname may legitimately have no item today and get one in three days -- your
     # spec, `docs/daily-algorithm.md`. The claim this test makes is therefore not
     # "every surname has an item" but the stronger and still-checkable one: **a surname
     # that cannot be linked today must be RECORDED as carried, never silently dropped.**
@@ -764,14 +764,14 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
 def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
     """A created person's links to items that already exist must be two-way, same run.
 
-    **Emma, 2026-08-25:** *"you never actually did the 2-way relationship addin qith the
+    **You, 2026-08-25:** *"you never actually did the 2-way relationship addin qith the
     creation of items that is completely possible but you just decide to fuck off and no do
     it because it goes QID PID LAST instead of LAST PID QID."*
 
     `LAST` cannot be the value in a statement whose subject is **also** newly created --
     two items minted in one run cannot point at each other, because `LAST` names only the
     most recent. That narrow limit was generalised into "no reciprocals at all", which left
-    her repairing one-way links by hand for weeks.
+    your repairing one-way links by hand for weeks.
 
     `Q141178381 P22 LAST` is ordinary QuickStatements. This test pins that every
     `LAST<TAB>P<TAB>Q…` inside a CREATE block has its partner going the other way, so the
@@ -796,10 +796,10 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
             exempt.add(row["subject"])
 
     # **The second exemption: the `OBender12` hold, and it is the hold working as intended.**
-    # Emma's control of 2026-08-30 is *do not edit an item that editor has touched*, and it is
+    # your control of 2026-08-30 is *do not edit an item that editor has touched*, and it is
     # SUBJECT-only by design — `LAST P40 Q6001555` edits the new item, not his. So the forward
     # half of the link is emitted and the reciprocal `Q6001555 P22 LAST` is held, which is
-    # exactly a one-way link, and exactly what she asked for: *"a cludge to not step on the toes
+    # exactly a one-way link, and exactly what you asked for: *"a cludge to not step on the toes
     # of one guy"*. Suppressing the forward half too would forfeit a real statement and buy
     # nothing, since his item is not edited either way.
     #
@@ -838,13 +838,13 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
 
 
 def test_the_contiguous_group_matches_what_emma_says_is_outside_it():
-    """Her own knowledge, 2026-08-28, used as the fixture.
+    """Your own knowledge, 2026-08-28, used as the fixture.
 
-    She listed the humans she has edited that are **not** in the contiguous group. The
+    You listed the humans you have edited that are **not** in the contiguous group. The
     unrestricted walk — following Wikidata relationships wherever they lead — put four of the
     seven *inside* it, because Johannes Bureus `Q633094` sits in the 1,339,227-item world tree
-    and one edge into that swallows everything. Restricting the walk to items she has edited
-    (*"the subgraph is stored and added to with my contributions"*) reproduces her list exactly.
+    and one edge into that swallows everything. Restricting the walk to items you have edited
+    (*"the subgraph is stored and added to with my contributions"*) reproduces your list exactly.
 
     A test that only checked the roots were in would pass on the 1.34-million version too.
     """
@@ -893,7 +893,7 @@ def _carries_marker():
 
 
 @pytest.mark.parametrize("label", [
-    "nn Gunnarsdatter Frafjord",   # Q141198538 -- the one Emma caught
+    "nn Gunnarsdatter Frafjord",   # Q141198538 -- the one you caught
     "NN Gunnarsdatter Frafjord",
     "Nn Gunnarsdatter Frafjord",
     "NN Jonsdotter",
@@ -903,18 +903,18 @@ def _carries_marker():
 def test_a_marker_beside_a_real_name_still_takes_the_nn_path(label):
     """A marker plus a surname is an NN person, whatever the marker's case.
 
-    **Emma, 2026-08-27, on `Q141198538`:** *"clearly has 'nn' as its first name however it was
+    **You, 2026-08-27, on `Q141198538`:** *"clearly has 'nn' as its first name however it was
     not produced as an NN person, so what happened, can you please fix the algorithm so it does
     no do this in the future?"*
 
-    Her Geni name is `nn Gunnarsdatter /Frafjord/` — lowercase, and only the **first token** is
+    Your Geni name is `nn Gunnarsdatter /Frafjord/` — lowercase, and only the **first token** is
     the marker. The test that decided this once looked for Geni's redaction markers alone, so a
     label that merely *began* with one took the ordinary-name path and `nn` went out as part of
-    her label. She then fixed the item by hand to *Daughter of Gunnar Torsteinson Frafjord*.
+    your label. You then fixed the item by hand to *Daughter of Gunnar Torsteinson Frafjord*.
 
     `reports/partial-nn.csv` counts **9,539** people with a marker in one name field and a real
     name in the other, so this is a population rather than a curiosity. The fix landed in
-    `_carries_marker`; this is what stops it regressing, which is the half of her instruction a
+    `_carries_marker`; this is what stops it regressing, which is the half of your instruction a
     code change alone does not satisfy.
     """
     assert _carries_marker()(label), (
@@ -938,11 +938,11 @@ def test_an_ordinary_name_is_not_read_as_a_marker(label):
 
 
 def test_no_redaction_marker_reaches_the_P1810_qualifier():
-    """Neither form of private gets a `subject named as`. Emma, 2026-08-30.
+    """Neither form of private gets a `subject named as`. You, 2026-08-30.
 
-    She had ruled on 08-29 that the marker went in verbatim, because `P1810` records what the
+    You had ruled on 08-29 that the marker went in verbatim, because `P1810` records what the
     source *displays*. `Q141223549` broke that: it carried `P1810 "Private"` while Geni's site
-    shows `<private> Paulson` — a surname in none of the five exports holding her.
+    shows `<private> Paulson` — a surname in none of the five exports holding you.
 
     > *"there are two different kinds of private on Jenny… this is some weird-ass backend
     > difference that affects the Gedcom export, but they display identically… so neither form
@@ -982,7 +982,7 @@ def test_the_mul_consensus_puts_the_geni_form_in_an_alias_not_the_label():
     with `Amul "Elof Steuchius till Duveke"`, so the territorial form is findable and is not
     the name.
 
-    **And never a CJK alias** -- her answer when asked: *"No ja/zh alias at all."*
+    **And never a CJK alias** -- your answer when asked: *"No ja/zh alias at all."*
     """
     cjk_alias = [ln for ln in lines() if re.match(r'^(?:LAST|Q\d+)\tA(?:ja|zh|ko)\t', ln)]
     assert not cjk_alias, f"the Geni form must not become a ja/zh alias: {cjk_alias[:4]}"

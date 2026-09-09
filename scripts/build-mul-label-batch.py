@@ -1,6 +1,6 @@
-"""Step 2 of Emma's label order: `mul` for every individual, derived from `en`.
+"""Step 2 of your label order: `mul` for every individual, derived from `en`.
 
-**Emma, 2026-08-17:** *"then mul gets made for every individual (almost always derived
+**You, 2026-08-17:** *"then mul gets made for every individual (almost always derived
 from en)"*. This mirrors `reports/wikidata-en-labels.json`, which is step 1.
 
 **"Almost always" is doing real work in that sentence, and this is where it bites.** A
@@ -11,7 +11,7 @@ sources are names; the third is not.
 * **A romanised Han name** -- a name. `mul` mirrors it.
 * **A relationship label**, `husband of Lakech Gashawbeza` -- **not a name.** It describes
   somebody by who they are related to, and copying it into `mul` would assert across every
-  language that this is what the person is called. Emma ruled on exactly this shape on
+  language that this is what the person is called. You ruled on exactly this shape on
   2026-08-17: *"And NN for mul there"*. Those people already receive `mul: NN` from
   `build-placeholder-label-batch.py`, so this batch leaves them alone rather than
   overwriting a correct marker with a description.

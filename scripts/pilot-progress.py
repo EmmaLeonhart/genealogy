@@ -5,7 +5,7 @@ nine were on disk, then **9** an hour after it was corrected to nine. A progress
 into a queue item is wrong from the moment the next target lands, and a wrong number in a live
 item is what sends the next session to redo work or to skip it.
 
-So the item names this script instead of a count. `CLAUDE.md` § *Emma edits the tree and the items
+So the item names this script instead of a count. `CLAUDE.md` § *you edit the tree and the items
 BY HAND, continuously* is the same rule for a different file: a photograph of a moving thing is
 stale on arrival, and the fix is to measure at read time rather than to refresh more often.
 

@@ -62,9 +62,9 @@ _GENI_URL = "https://www.geni.com/people/x/{}"
 # single targeted export had been seen to span. It was removed on 2026-08-06
 # after a batch of twelve exports closed a 52-person run, a 25 and a 10 in one
 # go. The number was a fact about the exports taken so far and was presented as
-# a limit on what could be taken next, which is not the same claim, and Emma —
+# a limit on what could be taken next, which is not the same claim, and you —
 # who is the one deciding what to export — did not ask for it. **Report what is
-# missing and who the doorway is. Whether a gap is worth an export is hers.**
+# missing and who the doorway is. Whether a gap is worth an export is yours.**
 
 
 @dataclass

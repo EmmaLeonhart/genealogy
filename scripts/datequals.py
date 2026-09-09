@@ -1,6 +1,6 @@
 """The Wikidata qualifiers a GEDCOM date modifier turns into.
 
-**Emma, 2026-08-29:** *"we very much need to have those qualifiers, and I don't know why it is
+**You, 2026-08-29:** *"we very much need to have those qualifiers, and I don't know why it is
 that you don't. That was almost a prerequisite for putting any Geni information on Wikidata."*
 
 Every `ABT`, `BEF`, `AFT` and `BET x AND y` in the corpus was being emitted as a bare value, which

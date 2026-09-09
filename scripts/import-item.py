@@ -1,14 +1,14 @@
 """Fetch one Wikidata item into the local store.
 
-Emma, 2026-08-12: **"impprt Q232803 don't just acknowledge and not do it."**
+You, 2026-08-12: **"impprt Q232803 don't just acknowledge and not do it."**
 
-Her item is matched to a Geni profile by hand but carries no `P2600`, so the
-family walk that built the store never had a route to it. Nothing about her can
+Your item is matched to a Geni profile by hand but carries no `P2600`, so the
+family walk that built the store never had a route to it. Nothing about you can
 be checked — or emitted safely — while the item is absent.
 
 **This is a live Wikidata request**, which the repo permits only for the bulk
 download and for label lookups the store cannot answer. This is neither, and it
-is done because she asked for it directly and it is a single item.
+is done because you asked for it directly and it is a single item.
 
 The item is written as its own shard so nothing existing is rewritten, and the
 index is updated rather than rebuilt.

@@ -3,13 +3,13 @@
 Only work. An item is DELETED when done, never annotated. Bullets, never numbers —
 `CLAUDE.md` § *Queue items are BULLET POINTS*.
 
-**Read `docs/collector-run-loop.md` before touching the collector.** It is her dictation of the
+**Read `docs/collector-run-loop.md` before touching the collector.** It is your dictation of the
 whole run loop and it ends *"there's no discretion on your part at all"*, said three times.
 
 ---
 
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
-  item here.** Emma, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
+  item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:
 
       1. navigate to  https://www.geni.com/people/x/<geni id>
@@ -19,7 +19,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **The agent navigates and nothing else.** Every decision — whether the path resolved, whether
   the statistics justify an export, which ancestor to add — is inside
   `geni-extension/content/individual.js`. Do not re-derive any of it in prose; that reasoning is
-  the discretion she removed.
+  the discretion you removed.
 
   **Where the targets come from:**
 
@@ -39,7 +39,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   ⛔ **THE EIGHT THINGS THAT WILL WASTE A SESSION IF YOU REDISCOVER THEM:**
 
   * **Nothing downloads.** Roughly two files land per browser session and Chrome blocks the rest —
-    a per-origin permission needing an omnibox grant she cannot give from a phone. The job returns
+    a per-origin permission needing an omnibox grant you cannot give from a phone. The job returns
     the TSV on the data attribute; a **file tool** writes it. `saveBlob` has been deleted twice
     and must not come back.
   * **Never retype a scrape through a shell heredoc.** It double-encodes UTF-8 — `Wenström`
@@ -67,9 +67,9 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     A **miss** gives no warning at all — no chain, identical banner — so if a hit comes back
     viewer-anchored, treat every miss since the last verified capture as suspect.
     Re-set it with `docs/anchor-protocol.md`: check on Charlemagne's own page, click the pin,
-    verify on two real targets. Setting it is yours to do; she said so.
+    verify on two real targets. Setting it is yours to do; you said so.
   * ⛔⛔ **BLOOD IS NOT THE QUESTION. IN-LAW COUNTS, AND THERE IS AT LEAST A THIRD SEARCH.**
-    Emma, 2026-09-07: *"in-law connections are just as valid blood is no required lol"*. The loop
+    You, 2026-09-07: *"in-law connections are just as valid blood is no required lol"*. The loop
     asked Geni only for the blood path until 1.6.3, so **every `no` in `reports/isolates.csv`
     predating that means *no BLOOD path* and nothing more.** `GC.runInLaw` now clicks *Show Me*
     after a blood miss — and **only** after one: *"do not waste time redoing it on ones that have
@@ -115,13 +115,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   ⛔ **GENI HAS TWO MISS SHAPES AND ONLY ONE CAN BE ANSWERED.** Most profiles give the pair
   *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin Varga
   `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
-  in-law sentence and no button at all**, so no in-law verdict is obtainable for her. Her `via`
-  is blank rather than `neither`, which means she re-queues forever on the rule above. That
+  in-law sentence and no button at all**, so no in-law verdict is obtainable for you. Your `via`
+  is blank rather than `neither`, which means you re-queues forever on the rule above. That
   population is not yet sized and nothing addresses it.
 
   ⛔ **THE ANCHOR COLUMN IS WHAT MAKES THAT RATE MEAN ANYTHING**, and it earned its keep on
-  2026-09-06: the pin lapsed mid-run and four captures came back answering *related to Emma*.
-  Two were **hits that became misses** once re-run under Charlemagne. Rows taken under the Emma
+  2026-09-06: the pin lapsed mid-run and four captures came back answering *related to you*.
+  Two were **hits that became misses** once re-run under Charlemagne. Rows taken under the you
   anchor, and rows with no verdict yet, are excluded from the 92; a rate over all 111 answers a
   question nobody asked.
 
@@ -134,18 +134,18 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   and 3,918 sibling, in `reports/family-candidates.tsv`'s own run output. The common shape is
   `N x 1`, which asks *which of our N is this item?*, and a Same/Different card cannot say that:
   offering it as N yes/no cards invites N Sames. It needs a card that shows the sibship on both
-  sides and lets her pick one, or none. The export format must stay the five columns her *Copy
+  sides and lets you pick one, or none. The export format must stay the five columns your *Copy
   decisions* button already produces, so the paste-back into `reports/emma-judgments.tsv` does
   not change.
 
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
-  sufficiently gathered in the synoptic tree and a batch is on Wikidata. Emma, 2026-09-03: *"In
+  sufficiently gathered in the synoptic tree and a batch is on Wikidata. You, 2026-09-03: *"In
   the future after we've sufficiently gathered all the placeholder parents and added a bunch to
   wikidata we can do a parent-adding campaign, especially if we use forest exports in closely
   related eccentric graph points on geni."* Do not start it early and do not invent the gate's
-  threshold — that is hers.
+  threshold — that is yours.
 
-- **How to read a `|` in an imported label.** Emma, 2026-09-09, asked whether
+- **How to read a `|` in an imported label.** You, 2026-09-09, asked whether
   `noble Nike|Victoria Soutzaina` should become `Nike Soutzaina` with `Victoria Soutzaina` as an
   `Amul`: *"bruh no the pipes are a bit more complicated, I am not 100% sure how to interpret it
   lol."* **1,565 people carry one** and `reports/title-label-proposals.tsv` holds every one with
@@ -153,9 +153,9 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   — two given-name spellings (`Margaret|Margery Bulkeley`), two whole names
   (`Conrad Hofmeister|Kornmann`), and a bracketed variant group inside one
   (`Ann Bincks (Benckes|Bench)`, 136 of them, already held separately). NOT to be interpreted
-  here; hers.
+  here; yours.
 
-- **The other lowercase ranks.** She scoped the first batch to `noble` alone. The same artefact
+- **The other lowercase ranks.** You scoped the first batch to `noble` alone. The same artefact
   covers **1,029** people — `knight` 53, `sir` 53, `ridder` 41, `baroness` 27, `captain` 25,
   `farmer` 11, `esquire` 9, `skipper` 3, `mistress` 6 — all computed in
   `reports/title-label-proposals.tsv` and all unemitted. `scripts/build-noble-label-batch.py`
@@ -169,7 +169,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   even when both come off the same page. `exports/tiny-profiles/`, `exports/tiny-paths/`.
 * **An unknown parent is an ABSENT SLOT, never an `NN` person.** A sibling pair with no known
   parents is a `FAM` with two `CHIL` and no partners. `exports/0-scraped/` and
-  `build-scraped-gedcom.py` were deleted on her instruction for inventing 4,928 people.
+  `build-scraped-gedcom.py` were deleted on your instruction for inventing 4,928 people.
 * **The export gate is one floor of 300 on any statistics figure**, disjunctive, and it lives in
   the extension rather than in a script the agent applies.
 * **No Playwright, no headless.** `CLAUDE.md` § *PLAYWRIGHT AND HEADLESS ARE A NO-GO* — the
@@ -178,8 +178,8 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## Pointers
 
-`docs/collector-run-loop.md` — her dictation of the loop, and the no-discretion rule ·
+`docs/collector-run-loop.md` — your dictation of the loop, and the no-discretion rule ·
 `docs/final-wikidata-geni-scrape.md` — the campaign, its scale, and its settled deliverables ·
 `docs/per-individual-loop.md` — the phase order and the statistics gate ·
 `docs/anchor-protocol.md` — check, set, verify · `todo.md` § 3c and § 3d ·
-`devlog.md` — what happened and why · `questions.md` — open questions for her.
+`devlog.md` — what happened and why · `questions.md` — open questions for you.

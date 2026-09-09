@@ -293,9 +293,9 @@ def test_the_report_states_the_patronymic_heuristic_is_only_grouping():
 
 
 def test_a_chain_becomes_one_link_per_generation():
-    """Emma's worked example, reproduced exactly.
+    """your worked example, reproduced exactly.
 
-    `name modelling.txt`, and she is explicit it is not on Wikidata yet: *"It is
+    `name modelling.txt`, and you are explicit it is not on Wikidata yet: *"It is
     what I am saying it should be on Wikidata"*. Four generations in one string.
     """
     links = names.patronymic_chain("Abisha III ben Phinhas ben Yittzhaq ben Shalma")

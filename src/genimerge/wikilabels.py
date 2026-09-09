@@ -1,6 +1,6 @@
 """English labels for QIDs and property IDs, fetched once and cached on disk.
 
-Emma, 2026-08-11, looking at a raw Wikidata item: *"the Wikidata stuff is not
+You, 2026-08-11, looking at a raw Wikidata item: *"the Wikidata stuff is not
 human-readable at all. You absolutely need to fetch the English-language labels
 of the stuff it's referencing for both the properties and these other things."*
 

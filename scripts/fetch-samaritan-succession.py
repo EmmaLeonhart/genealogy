@@ -2,17 +2,17 @@
 
     python scripts/fetch-samaritan-succession.py
 
-**Emma, 2026-08-31**, asked which source she meant for the Samaritans and answering *the English
+**You, 2026-08-31**, asked which source you meant for the Samaritans and answering *the English
 Wikipedia list*: `Samaritan High Priest`, which `List of Samaritan High Priests` redirects to. It
 carries **133 numbered rows**, 1 to 133, which is the whole line from `Sashai ben Abishua` to
 `Aabed-El V ben Asher ben Matzliach`.
 
 **Why it is the easy source, having tried three that were not:**
 
-- `wdt:P39 wd:Q678510` returns **7 items**. That is the very inconsistency her `samaritans/
+- `wdt:P39 wd:Q678510` returns **7 items**. That is the very inconsistency your `samaritans/
   wikidata.txt` describes -- *"it doesn't even say who is the Samaritan high priest... they're
   not very well documented"* -- so the office property cannot enumerate the office.
-- `samaritans/wikidata.txt` is her dictation about the work, not a list.
+- `samaritans/wikidata.txt` is your dictation about the work, not a list.
 - `samaritans/The Samaritan Update.html` covers the **modern line only**, 20 priests. Useful for
   a different reason: its own prose says *"the 132nd High Priest since Aaron... for 112
   generations the high priesthood was inherited... till 1624 CE"*, which independently confirms

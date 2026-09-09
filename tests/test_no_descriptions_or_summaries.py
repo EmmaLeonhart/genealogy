@@ -1,6 +1,6 @@
 """No batch carries a description, and nothing anywhere sets an edit summary.
 
-**Emma, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* Then,
+**You, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* Then,
 widening it the same day to cover edit summaries: we categorically
 never use them.
 
@@ -35,7 +35,7 @@ SUMMARY = re.compile(r"&summary=|[?&]summary|summary\s*=\s*[\"']"
 LOCAL_FILE = re.compile(r"\.csv|\.tsv|\.json|\.md|reports/|out/|add_argument")
 
 
-#: **The one exception, and it is narrow.** Emma, 2026-09-01: *"All patronymics get the
+#: **The one exception, and it is narrow.** You, 2026-09-01: *"All patronymics get the
 #: description 'patronymic' so that they actually are properly deduplicated. We are still
 #: creating duplicate patronymics and it is at the point of intolerability."* Then: *"All
 #: surnames get 'family name', all matronymics (do we even have any) get 'matronymic'."*
@@ -78,5 +78,5 @@ def test_nothing_sets_an_edit_summary():
                 if SUMMARY.search(line) and not LOCAL_FILE.search(line):
                     offenders.append(f"{path.relative_to(REPO)}:{n}  {line.strip()[:80]}")
     assert not offenders, (
-        "an edit summary is never set. Emma, 2026-08-30, categorically. "
+        "an edit summary is never set. You, 2026-08-30, categorically. "
         f"{offenders[:8]}")

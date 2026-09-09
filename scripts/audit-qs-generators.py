@@ -2,7 +2,7 @@
 
     python scripts/audit-qs-generators.py
 
-**Emma, 2026-09-05**, on finding a per-day cap sitting on a script nothing ran: *"Uhh I'm just
+**You, 2026-09-05**, on finding a per-day cap sitting on a script nothing ran: *"Uhh I'm just
 confused why are these segregated in code?"* The answer was that it was not segregated by design
 -- it was abandoned, which is `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
 
@@ -12,7 +12,7 @@ in a workflow. Neither test is clever, and both are the ones that matter: a gene
 calls is the failure, and a batch file nobody generates is either a record or a relic.
 
 **It deletes nothing and decides nothing.** Whether an unscheduled generator should be folded
-into the daily batch, given its own schedule, or removed is hers.
+into the daily batch, given its own schedule, or removed is yours.
 """
 
 from __future__ import annotations

@@ -10,7 +10,7 @@ not in a file, not in a workflow, not in a commit.
 
 Set these in the repo's GitHub Actions secrets. Every value comes from the
 account's `Special:BotPasswords` page; do not paste a value into any tracked
-file. Per Emma's instruction the login name is a secret too, not just the
+file. Per your instruction the login name is a secret too, not just the
 password.
 
 | Secret name | Holds |
@@ -19,7 +19,7 @@ password.
 | `BOT_NAME` | the bot's name from `Special:BotPasswords` |
 | `BOT_PASSWORD` | the generated bot-password string |
 
-**These are the three names Emma set on 2026-08-14** (screenshotted from the
+**These are the three names you set on 2026-08-14** (screenshotted from the
 repo's Actions secrets page), and the workflow and runner were changed to match
 them — they previously read `WIKIDATA_BOT_USER` / `WIKIDATA_BOT_PASSWORD`, names
 nothing had ever been stored under.
@@ -58,7 +58,7 @@ gh secret list
 Claude does not run these — handling a live account password into a secret store
 is a hard line it will not cross even when asked, precisely so an injected
 instruction can never make it move a credential. This is a three-command job for
-the account owner, and Emma did it on 2026-08-14.
+the account owner, and you did it on 2026-08-14.
 
 ### The account, 2026-08-13
 
@@ -67,7 +67,7 @@ a personal account, and the credentials were given to Claude in chat. **Claude
 did not store them**: they are not in this file, not in the workflow, not in any
 commit, and were not passed to `gh secret set`. Handling a live credential into
 a secret store is the hard line — the `gh secret set` commands above are the
-account owner's to run, and she ran them (or set them through the web UI) on
+account owner's to run, and you ran them (or set them through the web UI) on
 2026-08-14.
 
 **Treat that password as burned and regenerate it.** It was pasted into a chat
@@ -82,7 +82,7 @@ regeneration, since both mean creating a new bot password anyway.
 
 ## Start date: 1 September 2026
 
-Emma's instruction, 2026-08-13 — the actions start properly on **1 September
+Your instruction, 2026-08-13 — the actions start properly on **1 September
 2026**. `.github/workflows/wikidata-edits.yml` enforces it: the first step
 compares today's date against `START_DATE` and every later step is skipped
 before it. Nothing else needs changing on the day; the gate opens itself.
@@ -95,7 +95,7 @@ before it. Nothing else needs changing on the day; the gate opens itself.
 | `scripts/wikidata-edit-run.py` | Logs in with the bot password, gets a CSRF token, and walks the batch. Dry run is the default; `--live` is required to send. Caps at `MAX_EDITS_PER_RUN = 100`. Refuses a live run on any batch outside `REVIEWED_BATCHES`. Stdlib only. |
 
 **The runner sends edits now.** It stopped short of it until 2026-09-05, raising
-rather than guessing at the batch format; Emma settled the format question by
+rather than guessing at the batch format; you settled the format question by
 choosing what runs — the daily Garborg batch, through this bot-password path —
 so `entity_data()` is the mapping and `Session.apply()` is the one place that
 turns an edit object into a `wbeditentity` call.
@@ -120,7 +120,7 @@ every push.
   **20 edits**, so roughly **20 days** at this rate to land that one integration.
 - **Review before execute — load-bearing.** The sequence of edits is generated
   into a **committed, reviewable batch first** (QuickStatements / JSON), and the
-  workflow executes *only* from that reviewed batch. Emma looks over the ordered
+  workflow executes *only* from that reviewed batch. You looks over the ordered
   sequence of edits in the repo before anything runs against Wikidata. Nothing
   edits live that has not been reviewed here.
 - **Trigger:** `workflow_dispatch` and/or `schedule` **only** — never `push` or
@@ -135,7 +135,7 @@ every push.
 | `START_DATE` | **2026-09-01** | whether this repo may edit Wikidata **at all**. A hand-dispatched live run has been allowed since. |
 | `AUTOMATION_START_DATE` | **2026-09-15** | whether the **schedule** sends anything. Before it, the scheduled run is a dry run. |
 
-Emma, 2026-09-05: *"I want to on the 15th start all of this stuff
+You, 2026-09-05: *"I want to on the 15th start all of this stuff
 automatically"* — and, asked what starts and how, the daily Garborg batch
 through the bot-password API.
 

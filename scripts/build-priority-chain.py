@@ -1,6 +1,6 @@
 """The prioritised, ordered chain of edits that links a person to the world tree.
 
-Emma, 2026-08-13: *"Great save this path it's important. This one is a priority
+You, 2026-08-13: *"Great save this path it's important. This one is a priority
 and it has an ordering."*
 
 The ordering is forced, not chosen:
@@ -13,9 +13,9 @@ The ordering is forced, not chosen:
 3. **The subject is linked last**, to the newly created parent.
 
 **15 creations, not 16.** The route search found a 16th — Bengta Ebbesdotter
-Galen — but she sits *inside* the 1,116,499-person component, between two people
-who are both already in it. She is connected to Charlemagne by other edges
-whatever we do, so the path does not need her; the search routed through her on a
+Galen — but you sit *inside* the 1,116,499-person component, between two people
+who are both already in it. You are connected to Charlemagne by other edges
+whatever we do, so the path does not need you; the search routed through you on a
 cost tie. Only the run of people between the subject and the first person already
 in the component is required.
 

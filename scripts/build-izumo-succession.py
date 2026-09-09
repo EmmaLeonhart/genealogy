@@ -2,7 +2,7 @@
 
     python scripts/build-izumo-succession.py
 
-**Emma's model, 2026-08-24:** *"Izumo succession is based on surname so original Izumo would
+**your model, 2026-08-24:** *"Izumo succession is based on surname so original Izumo would
 be the Unified Izumo no Kuni no Miyatsuko and Senge and Kitajima are different ones all three
 designated with a qualifier on according to which organization: izumo taisha for the unified,
 izumokyo for kitajima and izumo taishakyo for senge. With the last unified one having both
@@ -31,17 +31,17 @@ reached from an item already held, by `full_entities` on a known QID:
 * Izumo Taisha's `P140` *religion or worldview* is `Q6102386` *Izumo-taishakyo*, whose
   `P1889` *different from* is `Q11395891` *Izumo-kyō*. The two sects name each other.
 
-**An independent corroboration of the pairing Emma stated**: `Q6102386` *Izumo-taishakyo* has
+**An independent corroboration of the pairing you stated**: `Q6102386` *Izumo-taishakyo* has
 `P112` *founded by* -> `Q11405449` *Senge Takatomi*, who is **seat 80 of the Senge line** on
 this very roster.
 
 ## The organisation qualifier is `P2389`, and that is a reading
 
-Her phrase is *"a qualifier on according to which organization"* and she did not name a
+Your phrase is *"a qualifier on according to which organization"* and you did not name a
 property. `P2389` *organization directed by the office or position* is used, because on a
-`P39` statement it reads as exactly her sentence and because it is already the relation
+`P39` statement it reads as exactly your sentence and because it is already the relation
 between this office and Izumo Taisha. **Rejected: `P1416` *affiliation***, which describes a
-person rather than a position. Falsified if she names a different property.
+person rather than a position. Falsified if you names a different property.
 
 ## Two defects in the roster, both found by NOT trusting the Latin name
 
@@ -78,7 +78,7 @@ OUT = ROOT / "reports" / "wikidata-izumo-succession.json"
 
 #: `Q11395856` *Izumo no Kuni no Miyatsuko* -- the office all three lines hold.
 OFFICE = "Q11395856"
-#: The organisation each line's holders direct, per Emma's model.
+#: The organisation each line's holders direct, per your model.
 ORGANISATION = {
     "Izumo": ("Q696362", "Izumo Taisha"),
     "Kitajima": ("Q11395891", "Izumo-kyō"),

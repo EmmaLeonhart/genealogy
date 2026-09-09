@@ -1,6 +1,6 @@
 """Han characters to Hangul — the Korean label, which is CJK and was being skipped.
 
-**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
+**You, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
 prioritize getting korean labels all the time and this seems to not get that cjk includes
 korean"*, then *"more emphasis with the korean stuff there and changing some of the romanization
 pipeline queued stuff"*.

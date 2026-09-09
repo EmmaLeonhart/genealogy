@@ -2,7 +2,7 @@
 
     python scripts/extract-wikidata-dates.py
 
-**Emma, 2026-08-25, on how the zipper should resolve a sibling set that position alone cannot
+**You, 2026-08-25, on how the zipper should resolve a sibling set that position alone cannot
 separate:** *"Dates first then names but also bruh providence of zipper merges should be
 recorded."*
 

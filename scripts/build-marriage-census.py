@@ -1,6 +1,6 @@
-"""Marriages, both sides — the cases Emma asked for before any P26 shape is chosen.
+"""Marriages, both sides — the cases you asked for before any P26 shape is chosen.
 
-Emma, 2026-08-10: **"Marriage mapping: not decided. Show me marriage cases
+You, 2026-08-10: **"Marriage mapping: not decided. Show me marriage cases
 first."** Walk more `FAM` records before choosing any `P26`-qualifier shape.
 
 Still unfulfilled a day later, so this is it. Nothing here proposes a mapping.
@@ -81,7 +81,7 @@ def main() -> int:
     print(f"{len(linked):,} linked people", flush=True)
 
     # Only families where both spouses are named are comparable at all: with no
-    # spouse there is no P26 to qualify, which Emma already settled about the
+    # spouse there is no P26 to qualify, which you already settled about the
     # 16,229 spouse-less dated families.
     candidates = []
     for family in tree.families.values():

@@ -2,7 +2,7 @@
 
     python scripts/check-label-collisions.py [--batch reports/wikidata-garborg-day.txt]
 
-**Emma's rule, `queue.md` § *Wikidata person descriptions*:**
+**your rule, `queue.md` § *Wikidata person descriptions*:**
 
 > *"blank descriptions are not deduplicated, but descriptions are deduplicated… If there is an
 > unlabelled individual with the description 'Son of Jack' and you try to add the label 'John'
@@ -17,7 +17,7 @@ QuickStatements' output line by line.
 
 **This is a pre-flight check, not a fix.** It reports; it changes no batch and adds no
 description, in any language, ever. `CLAUDE.md` § *An item is NEVER created with a description*
--- Emma, 2026-08-30: *"It's a hard rule that we never create items with descriptions."* A
+-- You, 2026-08-30: *"It's a hard rule that we never create items with descriptions."* A
 collision is resolved by **holding the creation**, which is why this writes the Geni ids.
 
 ## What it asks, and why it has to be live

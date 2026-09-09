@@ -2,7 +2,7 @@
 
     python scripts/census-creation-opportunities.py
 
-**Emma, 2026-08-25, on the lopsided slots -- 2,484 where we hold two unmatched children and
+**You, 2026-08-25, on the lopsided slots -- 2,484 where we hold two unmatched children and
 Wikidata holds one, 2,012 where we hold five and they hold one:** *"Uhhhh yeah no shit it's an
 adding opportunity but we do need to figure out which person merges in if present lmfao lol like
 zipping has a direction. If we have entity resolved one of the children and the other 4 are absent

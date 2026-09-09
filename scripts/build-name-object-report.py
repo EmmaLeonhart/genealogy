@@ -1,11 +1,11 @@
 """The name objects: which exist, which do not, and what kind of names these are.
 
-Emma scheduled this, 2026-08-12: *"we are going to fire off the analysis of the
+You scheduled this, 2026-08-12: *"we are going to fire off the analysis of the
 names."* Three questions, plus the reason for the third: **name items get created
 for names fitting Western conventions**, so the report has to say which names
 those are, not merely how many are missing.
 
-Her framing of the structure: *"some of the names are relatively irregular, some
+Your framing of the structure: *"some of the names are relatively irregular, some
 of them are normal, and some of them are patronyms."*
 
 **The classification is heuristic and its failure modes are named in the report
@@ -47,7 +47,7 @@ ORDINAL = re.compile(r"^[ivxlcdm]{1,7}$", re.I)
 NUMERIC = re.compile(r"^[\d.,;:()\[\]/\\-]+$")
 
 #: Patronymic endings. Scandinavian first because that is most of this corpus,
-#: then the Slavic and Arabic forms Emma named.
+#: then the Slavic and Arabic forms you named.
 PATRONYMIC_SUFFIX = re.compile(
     r"(?:s?son|s?sen|sson|szen|zen|s?datter|s?dotter|sdtr|dtr|"
     r"ovich|evich|ovna|evna|ovic|evic)$", re.I)

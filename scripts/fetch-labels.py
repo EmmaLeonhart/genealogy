@@ -10,7 +10,7 @@ qualifier values — `Q5933` Westminster Abbey, `Q29265` Canterbury Cathedral, t
 items behind `P1534 end cause` — were never fetched and cannot be resolved
 offline at all.
 
-Emma, 2026-08-10: *"do a SPARQL query to get all of these ones at once. Wikidata
+You, 2026-08-10: *"do a SPARQL query to get all of these ones at once. Wikidata
 is great for getting large amounts of information all at once in sync, all at
 once in a single query, and it sucks ass at giving you lots of information in
 rapid sequential queries."*
@@ -54,7 +54,7 @@ def fetch(qids: list[str], attempt: int = 1) -> dict:
     **POST, not GET.** A GET puts the whole VALUES clause in the URL and
     Wikidata answers `HTTP 414: URI Too Long` somewhere past a few hundred
     QIDs — 366 was fine, 30 cases' worth was not. Chunking would have meant
-    several requests, which is the thing Emma asked this to avoid: *"Wikidata
+    several requests, which is the thing you asked this to avoid: *"Wikidata
     is great for getting large amounts of information all at once in a single
     query, and it sucks ass at giving you lots of information in rapid
     sequential queries."* The body has no such limit.

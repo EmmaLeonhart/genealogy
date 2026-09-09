@@ -45,10 +45,10 @@ GIVEN_NAME = "P735"          #: given name
 FAMILY_NAME = "P734"         #: family name
 SERIES_ORDINAL = "P1545"     #: series ordinal — qualifier, orders several names
 
-#: **`P5056` patronym or matronym — the property a patronymic uses.** Emma's
+#: **`P5056` patronym or matronym — the property a patronymic uses.** Your
 #: `name modelling.txt`, 2026-08-15, and it is a correction: this repo previously
 #: modelled a patronymic as a `P735` given name qualified with
-#: `P3831` object of statement has role → `Q110874` patronymic. Her model gives it
+#: `P3831` object of statement has role → `Q110874` patronymic. Your model gives it
 #: **its own property**, parallel to `P735` and `P734` rather than nested inside
 #: `P735`:
 #:
@@ -69,13 +69,13 @@ HAS_ROLE = "P3831"                #: object of statement has role
 MIDDLE_NAME = "Q245025"           #: middle name
 
 #: **`P144` based on, as a qualifier on `P5056`, pointing at the PERSON that link
-#: names** — the father, then the grandfather for a chained patronymic. Her note
+#: names** — the father, then the grandfather for a chained patronymic. Your note
 #: in the file: *"(his father, has the same name)"*. This supersedes the earlier
 #: reading of `P144` as a name-item-to-name-item link.
 BASED_ON = "P144"                 #: based on
 
 #: **`P7338` regnal ordinal — a qualifier on the GIVEN NAME, holding a string.**
-#: Emma, 2026-08-15: *"they should all have the regnal orders put on their names as
+#: you, 2026-08-15: *"they should all have the regnal orders put on their names as
 #: qualifiers"*, and **not only the Samaritans** — anyone whose name carries an
 #: ordering.
 #:
@@ -83,7 +83,7 @@ BASED_ON = "P144"                 #: based on
 #: assumed.** `name modelling.txt` writes Abisha's as `3`, which reads as an
 #: integer; the repo's own case dumps show `qualifier P7338 = II`, `= I`, `= VI`,
 #: and the one `P7338` in the downloaded store, `Q46734`, has datatype **string**
-#: with value `'II'`. So the arabic `3` in her file is shorthand for the ordinal,
+#: with value `'II'`. So the arabic `3` in your file is shorthand for the ordinal,
 #: not the literal to emit. Checked offline, per the no-live-queries rule.
 #:
 #: Distinct from `P1545` series ordinal, which orders a person's several given
@@ -149,7 +149,7 @@ class NameLink:
     #: True for the first given name, which takes
     #: `P7452` reason for preferred rank → `Q3409033` usual forename.
     is_first_given: bool = False
-    #: True for a given name after the first that is NOT a patronymic — Emma's
+    #: True for a given name after the first that is NOT a patronymic — your
     #: definition of a middle name, 2026-08-15.
     is_middle: bool = False
     #: `P7338` regnal ordinal, as the roman numeral string. Only ever set on the
@@ -184,7 +184,7 @@ def existing_name_claims_from_store(reader, qids: Iterable[str]) -> dict[str, se
     """Which of P735/P734 each item already states, from the downloaded store.
 
     This was the offline half of a pair; the SPARQL half, `_existing_name_claims`,
-    was deleted on 2026-08-15 when Emma chose *"make it offline, keep the logic"*
+    was deleted on 2026-08-15 when you chose *"make it offline, keep the logic"*
     for `name-links`. It is now the only implementation.
 
     `queue.md` 2.B, ported by question rather than by emulating SPARQL. The
@@ -304,7 +304,7 @@ def build_name_links(
         already = existing.get(qid, set())
 
         surname = primary.surname.strip()
-        # **Both fields, always.** Emma, `name modelling.txt`: *"The surname thing
+        # **Both fields, always.** You, `name modelling.txt`: *"The surname thing
         # on geni is not always something that clearly corresponds to a surname
         # versus a patronym particularly. We have to check in the given names and
         # in the surname whether it is a patronym."* Geni writes the Samaritans as
@@ -327,7 +327,7 @@ def build_name_links(
                         NameLink(qid, FAMILY_NAME, item, surname, geni_id, display)
                     )
 
-        # **A chained patronymic is read whole, before tokenising.** Emma's
+        # **A chained patronymic is read whole, before tokenising.** Your
         # `name modelling.txt`: `Abisha III ben Phinhas ben Yittzhaq ben Shalma`
         # is three `P5056` statements, not four given-name tokens. Splitting on
         # words first destroys the structure - `ben` and `Phinhas` become
@@ -375,7 +375,7 @@ def build_name_links(
                     # **Emitted as `P5056` patronym or matronym, not skipped.**
                     # Until 2026-08-15 this was dropped with "patronymic in the
                     # given-name field", because the only place to put it was a
-                    # `P735` given name and that would have been wrong. Emma's
+                    # `P735` given name and that would have been wrong. Your
                     # model gives it its own property, so there is somewhere
                     # correct to put it and no reason to discard it.
                     item, why = resolve(token)

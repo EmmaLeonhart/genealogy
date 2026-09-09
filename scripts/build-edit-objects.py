@@ -1,9 +1,9 @@
 """Emit the JSON edit objects. Nothing is sent.
 
-Emma's specification, 2026-08-12 — see `edit-objects.md`. Four kinds:
+Your specification, 2026-08-12 — see `edit-objects.md`. Four kinds:
 `add_geni_id`, `create_individual`, `link_siblings`, `add_statement`.
 
-The rules that shape the output, all hers:
+The rules that shape the output, all yours:
 
 * **The Geni ID goes on first.** Claims are cited to it, so an `add_statement`
   carrying a Geni reference `requires` the `add_geni_id` object. *"Not all of the
@@ -60,7 +60,7 @@ def label_slots(lab: dict) -> dict:
     either, and `walk-structural-merge.py` had a third copy that did have one --
     which is how the `ja`/`zh` branch came to emit 22 edits labelled `未知`.
 
-    `mul` carries `label_en`, not a marker. Emma, 2026-08-16: *"NN is always
+    `mul` carries `label_en`, not a marker. You, 2026-08-16: *"NN is always
     preserved in the multi-language label"* -- but the marker that belongs there is
     `NN` specifically, written by `build-nn-label-batch.py` from the full model.
     Copying whatever marker happened to sit in `label_en` -- `Private`, `Ukjent`,
@@ -147,10 +147,10 @@ def main() -> int:
     family = {r["geni_id"]: r for r in csv.DictReader(open(FAMILY, encoding="utf-8"))}
     linked = {g: r["qid"] for g, r in labels.items() if r["qid"]}
 
-    # Matches she recorded by hand. **Nothing about these is special.** They
+    # Matches you recorded by hand. **Nothing about these is special.** They
     # are Wikidata items that we have matched to a Geni profile and that do not
     # yet state the Geni ID — which is the ordinary output of a merge, and the
-    # ordinary starting state for a person. Emma, 2026-08-12: "it's just a
+    # ordinary starting state for a person. You, 2026-08-12: "it's just a
     # wikidata object … there should not be anything special about it."
     #
     # The merge along the family trees is meant to produce these; the file is one
@@ -294,7 +294,7 @@ def main() -> int:
                 })
 
     # --- 3. creations, for people with no item whose family is already there --
-    # Emma: "creating an individual with all their names and such and linking
+    # You: "creating an individual with all their names and such and linking
     # them to their parents or children who are already in the database".
     for geni_id, fam in family.items():
         if geni_id in linked:

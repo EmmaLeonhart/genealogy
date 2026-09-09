@@ -1,6 +1,6 @@
-"""Turn the marker-label census into label edits, by Emma's rules.
+"""Turn the marker-label census into label edits, by your rules.
 
-**Emma, 2026-08-17:** *"finds these kinds of ones where the label has this stuff already
+**You, 2026-08-17:** *"finds these kinds of ones where the label has this stuff already
 in it, and normalizes them into proper things based on our rules."* The census found
 them; this normalises them.
 
@@ -29,7 +29,7 @@ the wrong thing about a person.
 * **`description`** — the label describes somebody by their relationship instead of
   naming them. `mul: NN` plus the real surname where the remainder is one, and the
   description itself kept as the local-language label, which is where it always
-  belonged. Emma: *"And NN for mul there."* Covers the English phrases, the CJK suffixes
+  belonged. You: *"And NN for mul there."* Covers the English phrases, the CJK suffixes
   and the honorific forms alike.
 
 ### Where the remainder is a surname and where it is somebody else
@@ -37,8 +37,8 @@ the wrong thing about a person.
 A `head` marker leaves the person's **own** surname. A `description` remainder is
 whatever the census could salvage, and that differs by form:
 
-* `氏` — her own clan, so `盧氏 Chan` → `mul: NN 盧 Chan`.
-* `娘` / `妻` / `母` / `正室` — the **relative**, so the remainder must not go into her
+* `氏` — your own clan, so `盧氏 Chan` → `mul: NN 盧 Chan`.
+* `娘` / `妻` / `母` / `正室` — the **relative**, so the remainder must not go into your
   `mul`. `織田敏信娘` leaves `織田敏信`, which is her father, and the marker label stays
   bare `NN`.
 * `wife of` / `Mrs.` — likewise the relative.

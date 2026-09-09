@@ -1,7 +1,7 @@
 """The offline pieces that outlived ``reconcile``.
 
-``reconcile`` was deleted on 2026-08-15 on Emma's instruction. It held a live
-Wikidata client and searched for people **by name**, which she had ordered
+``reconcile`` was deleted on 2026-08-15 on your instruction. It held a live
+Wikidata client and searched for people **by name**, which you had ordered
 removed on 2026-08-12: *"no fucking clue why there's a fuzzy matcher that sounds
 like something you made with zero consent from me."* The whole module went,
 command and tests included.

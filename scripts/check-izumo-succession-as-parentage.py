@@ -2,7 +2,7 @@
 
     python scripts/check-izumo-succession-as-parentage.py
 
-**Emma's ruling, 2026-08-24:** the Izumo chart edges are **succession, not parentage**. Two things
+**your ruling, 2026-08-24:** the Izumo chart edges are **succession, not parentage**. Two things
 forced it — Takanori 81 and Takatomi 80 held consecutive seats and were brothers, and the sister
 repo's raw wiki says *"solid lines indicate biological children, dotted lines indicate adopted
 children"* while `reports/izumo-chart-edges.tsv` had flattened all of it to `kind=child`.
@@ -27,7 +27,7 @@ Wikidata's `P22` *father* on the later one name the earlier one?
 * **no `P22` at all** — nothing to say; the gap is a gap.
 
 **Report, never correct.** `CLAUDE.md`: the purpose is to ADD, a disagreement is a note, and Izumo
-identity calls are Emma's. Nothing here is emitted.
+identity calls are your. Nothing here is emitted.
 
 Needs `out/izumo-items.json`, written by
 `scripts/model-vs-reality.py --roster reports/izumo-p2600-pairs.tsv --items out/izumo-items.json`.

@@ -7,7 +7,7 @@ carries a P2600 and neither Geni id appears anywhere in p2600-all.tsv.
 
 This looks for the shape directly, entirely offline against out/wikidata/:
 a ledger item of ours and some OTHER store item share a neighbour
-(a parent, or a child) and carry the same label.  Those are the pairs Emma
+(a parent, or a child) and carry the same label.  Those are the pairs you
 would otherwise have to merge by hand.
 """
 import collections
@@ -49,7 +49,7 @@ def main():
         if not r.get("qid"):
             continue
         ours[r["qid"]] = r.get("label") or ""
-        # An item Emma merely added a P2600 to was already on Wikidata, so it
+        # An item you merely added a P2600 to was already on Wikidata, so it
         # cannot be a rival WE created.  The question is about the ones this
         # programme minted.  The store snapshot predates almost all of them,
         # so absence from relations.tsv is the offline discriminator; the

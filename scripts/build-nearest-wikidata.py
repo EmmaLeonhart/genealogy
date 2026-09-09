@@ -1,6 +1,6 @@
-"""Who is the fewest hops from Emma to a person who could hold a Wikidata item.
+"""Who is the fewest hops from you to a person who could hold a Wikidata item.
 
-Emma, 2026-08-18: *"I didn't ask you to give me the closest linked person. I asked you to
+You, 2026-08-18: *"I didn't ask you to give me the closest linked person. I asked you to
 give me the closest person… I only want sideways counts. The main thing is that just a
 sibling is considered two hops, not one hop."*
 
@@ -10,7 +10,7 @@ plain graph distance, not a kinship degree, and `build-path-to-wikidata-report.p
 answer it: that one walks **ancestors only** and reports 14 generations, which is the wrong
 question for finding a living relative.
 
-WHY IT IS THE WRONG QUESTION. The point, in her words, is that *"I can make an individual
+WHY IT IS THE WRONG QUESTION. The point, in your words, is that *"I can make an individual
 who is considered notable by publication… if they are close enough to me, that's great."*
 The item does not have to exist yet. So the search is not for the nearest existing QID —
 it is for the nearest **person**, with the QID noted where there is one, because a
@@ -40,7 +40,7 @@ FACTS = REPO / "reports" / "derived-facts.csv"
 OUT = REPO / "reports" / "nearest-wikidata.md"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000001846508982"
+YOU = "6000000001846508982"
 
 
 def _ids(field: str | None) -> list[str]:
@@ -67,7 +67,7 @@ def _ids(field: str | None) -> list[str]:
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    start = args[0] if args else EMMA
+    start = args[0] if args else YOU
     max_hops = 12
     if "--max-hops" in sys.argv:
         max_hops = int(sys.argv[sys.argv.index("--max-hops") + 1])

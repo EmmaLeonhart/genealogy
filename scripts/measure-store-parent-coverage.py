@@ -1,6 +1,6 @@
 """How often is an item's parent on Wikidata missing from our local store?
 
-**Emma's question, 2026-08-15:** *"I was under the assumption that, because of the
+**your question, 2026-08-15:** *"I was under the assumption that, because of the
 fact that we did such a large amount of wikidata exports, we would have
 effectively covered the entirety of the wikidata network that would ever run into
 this issue… How pervasive is this issue where, say, ancestors on wikidata are not
@@ -21,7 +21,7 @@ option.** We do not hold the parent — that is what missing means — so the pa
 has no date to read. The child's `P569` is the proxy, and it is a *lower* bound
 on the parent's era rather than an estimate of it: a parent of somebody born 1950
 belongs to the 20th century, a parent of somebody born 1200 does not. That is
-exactly the resolution Emma's question needs, and no date is ever inferred for
+exactly the resolution your question needs, and no date is ever inferred for
 the parent itself.
 
 **Undated children are reported as their own bucket, never distributed.** They

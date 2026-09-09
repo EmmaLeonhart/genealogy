@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Every person whose LABEL carries a `_DESCRIPTION` marker out of their own `NSFX`.
 
-**Emma, 2026-09-07**, shown `Q141313961` reading *Helena Maria Linnerhielm ogift*: *"ogift is
+**You, 2026-09-07**, shown `Q141313961` reading *Helena Maria Linnerhielm ogift*: *"ogift is
 some kind of suffix that shouldn't have been treated as part of the name, and as a result it
 needs to be corrected on everyone that has it in their labels."*
 
@@ -14,7 +14,7 @@ that the tail rule *"does not touch the LABEL"*, and left what the label should 
 open question. This is that question answered for one class of token.
 
 **The census matches the person's OWN `NSFX`, never a bare word list against a trailing
-token** -- the rule `drop_title_suffix` already carries, and the reason `Anna King` keeps her
+token** -- the rule `drop_title_suffix` already carries, and the reason `Anna King` keeps your
 surname. So a `Twin` or an `Infant` that Geni recorded as a *name* is untouched here; only a
 token the profile itself files as a suffix is counted.
 
@@ -52,7 +52,7 @@ def marker_tokens(nsfx: str) -> list[str]:
 
 
 def main() -> int:
-    # The ledger is what says a person is LIVE on Wikidata, and it is refreshed from her own
+    # The ledger is what says a person is LIVE on Wikidata, and it is refreshed from your own
     # contributions -- an item created since the last download is in here and in no store.
     ledger: dict[str, str] = {}
     ledger_path = REPO_ROOT / "reports" / "garborg-qids.tsv"

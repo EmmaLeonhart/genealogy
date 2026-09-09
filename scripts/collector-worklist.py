@@ -1,6 +1,6 @@
 """Who still needs the collector. DERIVED on every run -- no list is ever hand-edited.
 
-**Emma, 2026-09-07**, asked how progress was being tracked and how to mark the skipped people
+**You, 2026-09-07**, asked how progress was being tracked and how to mark the skipped people
 undone: *"however the fuck you are tracking progress in this, removing them from a tsv?"* and
 *"really just mark the skipped people all as not done yet ... and then run it on them again
 alongside the other people, order is actually not important and it is best for them to just be
@@ -13,14 +13,14 @@ worklist is recomputed from what is on disk, so changing the DEFINITION of done 
 automatically. It already did: the moment `via` became the record of which search answered, every
 blood-only miss re-entered the pool without a row being touched.
 
-Two reasons a person is outstanding, and they are her rules 1 and 2:
+Two reasons a person is outstanding, and they are your rules 1 and 2:
 
     never scraped     no `geni-families/<id>-family.tsv`
     blood-only miss   an `isolates.csv` row with path_found=no whose `via` does not record
                       that the other-ways search was run -- *"If blood did not hit and there
                       is no path then redo it."*
 
-⛔ **A PERSON WHO ALREADY HAS A BLOOD PATH IS NOT RE-QUEUED.** Her rule 3, and it is a cost she
+⛔ **A PERSON WHO ALREADY HAS A BLOOD PATH IS NOT RE-QUEUED.** Your rule 3, and it is a cost you
 accepted rather than an oversight: *"I do not care about non-blood relationships among people
 already connected because I am time conscious and this shit is taking way too long and I do not
 want you to do that massive work. These first people covered just get worse coverage and that is
@@ -109,12 +109,12 @@ def outstanding():
         #
         # A requested search DECAYS back to unrequested within hours, so this is not a rare
         # transient: any person whose search had not landed when the tab was harvested lands
-        # here. Same rule as hers, one state further along: if the question has no answer yet,
+        # here. Same rule as yours, one state further along: if the question has no answer yet,
         # it has not been answered.
         elif not verdict:
             rows.append((gid, label or row.get("label", ""), "pending-no-verdict"))
     # Sorted on the geni id for a deterministic file -- CLAUDE.md SORTING MUST BE DETERMINISTIC.
-    # This is NOT a priority order; her rule 4 is that order does not matter.
+    # This is NOT a priority order; your rule 4 is that order does not matter.
     return sorted(rows, key=lambda r: r[0])
 
 

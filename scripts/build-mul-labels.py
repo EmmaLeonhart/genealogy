@@ -2,7 +2,7 @@
 
     py scripts/build-mul-labels.py
 
-**Her order, `queue.md` § LABELS:** *"then mul gets made for every individual (almost always
+**Your order, `queue.md` § LABELS:** *"then mul gets made for every individual (almost always
 derived from en)"* — one step over the whole population, after the `en` step and before `ja`.
 
 **`mul` IS `en` for almost everybody, and that is measured rather than assumed.** Over
@@ -14,7 +14,7 @@ transformation; it is *carrying `en` across* and then naming the exceptions.
 ## The exceptions, which are the actual content of this step
 
 * **An unnamed person keeps the MARKER in `mul`.** `CLAUDE.md` § *`NN` is PRESERVED in `mul`* —
-  Emma: *"NN is always preserved in the multi-language label. It just has more descriptive labels
+  You: *"NN is always preserved in the multi-language label. It just has more descriptive labels
   added in some languages for the relationships."* So `mul` is `NN Garborg` while `en` is
   `son of Arne Olaus Fjørtoft Garborg`. These are the 2,298 rows where the two already differ,
   plus 548 with no label yet.
@@ -28,7 +28,7 @@ transformation; it is *carrying `en` across* and then naming the exceptions.
 
 22,010 people have no `NAME` record at all, and 33,982 have a name nothing has derived a label
 from — overwhelmingly CJK and Hangul forms outside the `en` step's reach (`光安正室 /斎藤/`,
-`씨 /이/`). Emma, 2026-09-02: *"just list these as unknowns if they are unclear"*. They are listed.
+`씨 /이/`). You, 2026-09-02: *"just list these as unknowns if they are unclear"*. They are listed.
 
 Writes `reports/label-mul.tsv`.
 """
@@ -102,7 +102,7 @@ def main() -> int:
                 state, value = "none: redacted, correctly has no label", ""
             elif name and L.is_unnamed(name):
                 # **The marker is preserved -- but punctuation is not a marker.** `CLAUDE.md`
-                # § *An obvious unknown-word marker goes straight in* draws the line in her
+                # § *An obvious unknown-word marker goes straight in* draws the line in your
                 # words: **words yes, punctuation no**. `label_for` empties only `Private` and
                 # `<private>`, so without this a bare `?` (228 people), `???` (148), `*` (29),
                 # `.` (8) and `--` (1) go out as labels -- an item asserting a person is called

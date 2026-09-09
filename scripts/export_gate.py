@@ -1,25 +1,25 @@
 """Does step 3b fire? The statistics block decides, and EVERY figure carries a threshold.
 
-**Emma, 2026-09-06**, on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10,
+**You, 2026-09-06**, on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10,
 Ancestors 5 -- whose Charlemagne search resolved to a genuine *"No path found"*:
 *"this guy has pretty much no relatives so he shouldn't get an export lol"*.
 
-**⛔ SHE NEVER ASKED FOR BLOOD RELATIVES. That was mine, twice over.** The question put to her
-offered four floors and every one of them was written in `blood_relatives`, so the only thing she
-chose out of it was the **number**, 1,000. Her replies: *"why the fuck did you choose blood
+**⛔ YOU NEVER ASKED FOR BLOOD RELATIVES. That was mine, twice over.** The question put to you
+offered four floors and every one of them was written in `blood_relatives`, so the only thing you
+chose out of it was the **number**, 1,000. Your replies: *"why the fuck did you choose blood
 relatives"*, and then *"All of them need thresholds not just blood relatives"* -- and afterwards,
-reading a report that described it as a gate she had struck out: *"I didn't tell you to do blood
+reading a report that described it as a gate you had struck out: *"I didn't tell you to do blood
 relatives."*
 
-She is right and the distinction matters for the record: a question whose options share a wrong
-premise does not become her decision because she answered it. `CLAUDE.md` § *She answers
-`AskUserQuestion`* says every option must be one she could actually pick; it needs the other half
-too -- **the axis is part of the question, and offering only one is choosing it for her.**
+You are right and the distinction matters for the record: a question whose options share a wrong
+premise does not become your decision because you answered it. `CLAUDE.md` § *You answer
+`AskUserQuestion`* says every option must be one you could actually pick; it needs the other half
+too -- **the axis is part of the question, and offering only one is choosing it for you.**
 
 ## Why this is the mirror of a rule that already existed
 
 `CLAUDE.md` § *THE STATISTICS BLOCK IS THE REAL INSTRUMENT* says a **saturated** figure beside a
-*"no relationship found"* means a database failure rather than a real negative -- her words,
+*"no relationship found"* means a database failure rather than a real negative -- your words,
 *"15,000 blood relatives or really any of these numbers being high on this scale indicates that
 they are in the world tree but it was a database failure."*
 
@@ -37,36 +37,36 @@ Requiring all five would gate on the smallest number, which is the one that says
 
 **`family_tree` is the component size and is the primary figure** -- that is what an export can
 actually reach, and a `Forest` export follows spouse links precisely to cross the in-law edges
-`blood_relatives` excludes. Her own Drouillard reading led with it.
+`blood_relatives` excludes. Your own Drouillard reading led with it.
 
-**A MISSING ROW MEANS ZERO, never unknown** -- Emma, 2026-09-03, on Dorothy Jeakins having no
+**A MISSING ROW MEANS ZERO, never unknown** -- You, 2026-09-03, on Dorothy Jeakins having no
 Ancestors row at all: *"geni is weird and gives zero as not an option there"*. So a `None` here
 is read as 0 and fails its threshold, which is the conservative direction: it withholds an
 export rather than spending one.
 
-**The numbers are hers where she gave one and a recorded guess where she did not.** She chose
+**The numbers are yours where you gave one and a recorded guess where you did not.** You chose
 1,000 for `blood_relatives` explicitly. The rest are set on the same scale as the figures they
 read, and every one is a threshold to be corrected by measurement rather than a law.
 """
 
 from __future__ import annotations
 
-#: ⛔ ONE FLOOR, ACROSS EVERY FIGURE. Emma, 2026-09-06: *"Any number over 1,000 is a sure export,
+#: ⛔ ONE FLOOR, ACROSS EVERY FIGURE. You, 2026-09-06: *"Any number over 1,000 is a sure export,
 #: i say even any number over 300 lol"*.
 #:
 #: This replaced five separate thresholds — 1,000 / 1,000 / 100 / 100 / 10, one per figure, which
-#: were mine. Her sentence collapses them: it is not a per-figure judgement at all, it is a single
+#: were mine. Your sentence collapses them: it is not a per-figure judgement at all, it is a single
 #: reading of when the statistics block says there is more there than the page shows. **Whichever
 #: figure carries the number, over 300 is enough.**
 #:
 #: Note what moved and what did not. The two big figures came DOWN from 1,000, which is the point
 #: — Valentine Eisner reads Family Tree 914 and was skipped by 86 under the old floor. The three
 #: small ones went UP, from 100 / 100 / 10, so a profile with 12 followers no longer clears on
-#: that alone; her sentence is a floor on the evidence, not a licence for the weakest figure.
+#: that alone; your sentence is a floor on the evidence, not a licence for the weakest figure.
 FLOOR = 300
 
 #: Geni's query ceilings. A figure at one of these is a FLOOR on the true value, not a count --
-#: Emma, 2026-09-03: *"15,000 on any number there is a flag that the query number exceeded the
+#: you, 2026-09-03: *"15,000 on any number there is a flag that the query number exceeded the
 #: maximum it can do"*. Recorded so a reading can say `saturated` rather than quoting a number
 #: as though it were measured.
 CEILINGS = (5000, 15000)

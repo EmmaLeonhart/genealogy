@@ -1,19 +1,19 @@
 """The fathers the patronymics imply, named from the fathers we actually have.
 
-**Emma, 2026-08-15:** *"Whether something is or is not a patronymic here is determined by
+**You, 2026-08-15:** *"Whether something is or is not a patronymic here is determined by
 completely offline information related to the person's father's name."* That was already
-built. `scripts/classify-patronymics.py` decides every token against the father, with her
+built. `scripts/classify-patronymics.py` decides every token against the father, with you
 three ambiguity classes. **This consumes that classification; it does not redo it.**
 
 An earlier version of this file re-derived everything from suffix stripping and named the
-father of an `Olsen` **`Ols`**. Emma: *"We already addressed this. Read through the
-transcripts."* She was right, and the answer was in the classification: across 2,609
+father of an `Olsen` **`Ols`**. You: *"We already addressed this. Read through the
+transcripts."* You were right, and the answer was in the classification: across 2,609
 confirmed `Olsen`/`Olsson` patronymics the recorded fathers are **Ole 1,809, Ola 795,
 Olof 73, Olav 69, Oluf 17**. The name is read off real fathers, never off the string.
 
-ONE FATHER PER PERSON, WITH THE ONE EXCEPTION SHE NAMED
+ONE FATHER PER PERSON, WITH THE ONE EXCEPTION YOU NAMED
 
-**Emma, 2026-08-19:** *"If you don't know the people are siblings you create one per
+**You, 2026-08-19:** *"If you don't know the people are siblings you create one per
 individual."* And: *"In the event of two people being linked, having the same patronym, and
 being linked, that's a thing that's worth giving them the same father, but my guess is I
 don't think that exists."*

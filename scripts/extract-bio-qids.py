@@ -1,14 +1,14 @@
-"""The Geni-to-Wikidata correspondence Emma wrote into the Geni BIOS.
+"""The Geni-to-Wikidata correspondence you wrote into the Geni BIOS.
 
     python scripts/extract-bio-qids.py
 
-**Emma, 2026-08-31, pointing at an Izumo join that had gone the long way round:** *"Yeah you use
+**You, 2026-08-31, pointing at an Izumo join that had gone the long way round:** *"Yeah you use
 the bio qids lol."*
 
 **These are the freshest correspondence in the repo and nothing was reading them.** A Geni
-profile's *About Me* can carry a `wikidata.org/wiki/Q…` link, and she puts them there. It shows
+profile's *About Me* can carry a `wikidata.org/wiki/Q…` link, and you put them there. It shows
 up in the export as text on the person's record, so **156 of the 600 exports carry at least
-one**. That is a Geni-side statement of identity, made by her, captured at the moment each
+one**. That is a Geni-side statement of identity, made by you, captured at the moment each
 export ran.
 
 **Why this beats the obvious alternatives, both of which were tried first and were wrong:**
@@ -29,7 +29,7 @@ level record and attributes every link found to it.
 **A person may carry more than one QID and that is not an error** -- `CLAUDE.md` § *A second
 Geni ID on one Wikidata item is NOT a conflict* is the mirror of it. All pairs are emitted.
 
-Writes **`out/bio-qids.tsv`, which is gitignored** -- Emma, 2026-09-06: *"it also
+Writes **`out/bio-qids.tsv`, which is gitignored** -- You, 2026-09-06: *"it also
 shouldn't exist lol because it's just garbage for agents to get confused about."* It sat in
 `reports/` looking like one of the two curated Geni-to-Wikidata correspondences and is not
 one: it is a machine extract of links already in Geni bios, read by the roster scripts.

@@ -2,14 +2,14 @@
 
     python scripts/list-rejected-parents.py
 
-**Emma, 2026-08-31:** *"this is solely around parent blockages… blocked because they're connected
+**You, 2026-08-31:** *"this is solely around parent blockages… blocked because they're connected
 as parents of an individual with p2600 on them but don't have a p2600 on them. Earlier algorithm
 would have made a nearly certain duplicate of the parent, I freaked out and you disabled any
 creation of parents… I'm trying to manually approve or reject all currently blocked parents and
-you can get a better sample size as to the rules and edge cases."*
+You can get a better sample size as to the rules and edge cases."*
 
 Then, on how to find them: *"you know you can use the mechanics of the algorithm to find the
-rejected parent inclusions"*. She is right, and it matters — I had re-derived the population by
+rejected parent inclusions"*. You are right, and it matters — I had re-derived the population by
 hand and got a different number three times. This runs **the guard's own second arm**, unchanged,
 over every candidate instead of over one day's ring:
 
@@ -22,8 +22,8 @@ carry-forward shows only the handful reached that day. The rule is the same; onl
 set is wider here.
 
 **A rejection is a QUESTION, not a verdict.** The guard cannot tell "our person IS that item"
-from "our person is a genuinely different parent". That is the judgement Emma is making by hand,
-and each answer she gives is a data point about where the line falls — which is why the output
+from "our person is a genuinely different parent". That is the judgement you are making by hand,
+and each answer you give is a data point about where the line falls — which is why the output
 carries the evidence rather than a recommendation.
 
 Writes `reports/rejected-parents.tsv`.

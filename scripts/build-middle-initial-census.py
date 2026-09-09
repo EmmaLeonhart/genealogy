@@ -1,6 +1,6 @@
 """Every person in the corpus whose given names include a bare single letter.
 
-**Why this exists.** Emma, 2026-08-18, on assembling person labels mechanically from
+**Why this exists.** You, 2026-08-18, on assembling person labels mechanically from
 Wikidata name items: *"As far as the middle initial people, I'm not really sure what to
 do with them, at least going into other languages."* That is an open question, and the
 rule here is that an open question gets a census rather than a proposed rule --
@@ -12,7 +12,7 @@ a name -- it is an abbreviation of one we were never told. So the mechanical tra
 path that works for `John` -> the standard katakana rendering has nothing to work with
 here, and the obvious outs -- drop the initial, transliterate the letter, or leave it in
 Latin inside a non-Latin label -- are all decisions about how a person's name is
-*presented*, which is hers to make.
+*presented*, which is yours to make.
 
 **This is a superset of the `single-letter` class in `build-regnal-ordinal-census.py`.**
 That script tests only `I V X L C D M`, because its question was Roman numerals; a

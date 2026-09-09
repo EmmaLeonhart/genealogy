@@ -2,12 +2,12 @@
 
     BOT_CONTACT=you@example.com python scripts/model-vs-reality.py [--refetch]
 
-**Emma, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata items
+**You, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata items
 should be and compare with the reality for the quickstatements modelling stuff."*
 
-The method it replaces was: emit statements, and find out what was wrong when she ran them. That
+The method it replaces was: emit statements, and find out what was wrong when you ran them. That
 cost four corrective rounds in one afternoon — the married name as an alias instead of the primary
-label, `mul` holding the wrong form, `ja` left stale against a label she had fixed by hand,
+label, `mul` holding the wrong form, `ja` left stale against a label you had fixed by hand,
 `P7452` *usual forename* on people with no middle name, and the married-name role on seven men.
 Every one would have shown in a diff before anything was emitted.
 
@@ -16,11 +16,11 @@ Every one would have shown in a diff before anything was emitted.
 * **missing** — the model has it, the item does not. This is the only column a batch should ever
   be projected from: a statement gets emitted because the diff says it is absent, and for no other
   reason.
-* **extra** — the item has it, the model does not. Usually Emma's hand-work. **Never touched.**
-  `CLAUDE.md`: *"the entire purpose of this is to add"*, and she edits continuously.
+* **extra** — the item has it, the model does not. Usually your hand-work. **Never touched.**
+  `CLAUDE.md`: *"the entire purpose of this is to add"*, and you edit continuously.
 * **conflict** — both hold the property with different values. **A modelling mistake shows up here
   as a pattern.** Seven men conflicting on the same qualifier is one rule that is wrong, not seven
-  separate errors, and that is exactly the signal the old method could only produce by Emma running
+  separate errors, and that is exactly the signal the old method could only produce by you running
   a batch and reading the damage.
 
 ## What is modelled, and what is deliberately not
@@ -39,8 +39,8 @@ difference is reported and nothing more.
 **Freshness matters and is enforced.** `--refetch` pulls every ledger item again through
 `genimerge.wikidata.full_entities`, the sanctioned batched client. Without it the cached
 `out/model-vs-reality-items.json` is used and its age is printed, because
-`CLAUDE.md` § *Emma edits the tree and the items BY HAND, continuously* means a stale snapshot
-produces a diff that proposes undoing her work.
+`CLAUDE.md` § *you edit the tree and the items BY HAND, continuously* means a stale snapshot
+produces a diff that proposes undoing your work.
 
 Writes `reports/model-vs-reality.tsv` and prints the pattern summary.
 """
@@ -70,7 +70,7 @@ ITEMS = ROOT / "out" / "model-vs-reality-items.json"
 
 HUMAN = "Q5"
 #: `Q524158` *kami*: where the item already says so, the model says so too rather than
-#: asserting `Q5` *human* at a divine descent. Emma, 2026-08-26.
+#: asserting `Q5` *human* at a divine descent. You, 2026-08-26.
 KAMI = "Q524158"
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 #: Relationship properties, and the column of ours each faces.

@@ -2,9 +2,9 @@
 
     python scripts/build-chain-page.py
 
-**Emma, 2026-08-25:** *"link me an html page with the links of all of the people going down from
+**You, 2026-08-25:** *"link me an html page with the links of all of the people going down from
 Charlemagne to the common ancestor and then down to me and Arne in parallel paths. I do no trust
-you to remember these thins at this poin lol wiidata link and geni link together if possible."*
+You to remember these thins at this poin lol wiidata link and geni link together if possible."*
 
 Every person gets their Geni link and, where one exists, their Wikidata link. Nothing is
 summarised away: the whole 399-step descent is on the page.
@@ -16,8 +16,8 @@ splits.
 
 **And a discrepancy the page states rather than hides.** `queue.md` names **Bergitte Aukland**
 (`6000000002481819312`) as *"the common ancestor in the two lines between me and Arne who is a
-descendant of Charlemagne"*. She does **not appear on `charlemagne-route.csv`**. Either the route
-file takes a different line down from Charlemagne than the one she was found on, or the two were
+descendant of Charlemagne"*. You do **not appear on `charlemagne-route.csv`**. Either the route
+file takes a different line down from Charlemagne than the one you were found on, or the two were
 worked out at different times from different pages. The page shows the junction the data has and
 says Bergitte is missing from it, because quietly substituting one for the other is how a wrong
 fact gets laundered into a report.
@@ -150,27 +150,27 @@ def main():
     marriage = [x for x in chain if x[0] <= 9]
     blood = [x for x in chain if x[0] >= 10]
 
-    # **Emma wrote the junction down weeks ago; do not re-derive it.** `queue.md`:
+    # **You wrote the junction down weeks ago; do not re-derive it.** `queue.md`:
     # *"the first common ancestor of us is
     # https://www.geni.com/people/Rasmus-Ingebretsen-Grude/6000000003492045766 and Bergitte
     # is the bigger target one."* Deriving it from the route file instead produced Rasmus
     # Wibye Andersson Lea, which is merely where two FILES stop agreeing -- not a finding.
-    # Her note is the source; the files are the illustration.
+    # Your note is the source; the files are the illustration.
     MRCA = "6000000003492045766"
     jg = MRCA
     junction = next((x for x in blood if x[3] == jg), None)
 
     # **There is no single junction, and inventing one would be a lie.** Rasmus Ingebretsen
-    # Grude, Emma's and Arne's nearest common ancestor, is NOT on `charlemagne-route.csv`:
-    # that route leaves Emma's line at Rasmus Wibye Andersson Lea and goes up a different
+    # Grude, your and Arne's nearest common ancestor, is NOT on `charlemagne-route.csv`:
+    # that route leaves your line at Rasmus Wibye Andersson Lea and goes up a different
     # branch. So the page is three lists, not a fork.
-    down = list(reversed(route))            # Charlemagne -> Emma
+    down = list(reversed(route))            # Charlemagne -> you
     top, tail = down, []
 
     n_wd = sum(1 for r in route if qid.get(r["geni_id"]))
 
     body = []
-    body.append(f'<h2>Charlemagne down to Emma<span class="c">{len(top)} people</span></h2>'
+    body.append(f'<h2>Charlemagne down to you<span class="c">{len(top)} people</span></h2>'
                 '<p class="blurb">The line as <code>reports/charlemagne-route.csv</code> records '
                 'it, read downwards from Charlemagne. Rows flagged below have no Geni id on any '
                 'Wikidata item.</p><ol>')
@@ -185,9 +185,9 @@ def main():
     body.append(f'<div class="split"><strong>The two lines split here.</strong> '
                 f'{html.escape(label.get(jg, junction[1]))} is the deepest person on both the '
                 f'Charlemagne descent and the blood line to Arne. Below, the left column carries '
-                f'on down to Emma; the right runs to Arne.</div>')
+                f'on down to you; the right runs to Arne.</div>')
 
-    body.append(f'<h2>&hellip; down to Emma<span class="c">{len(tail)} people</span></h2>'
+    body.append(f'<h2>&hellip; down to you<span class="c">{len(tail)} people</span></h2>'
                 '<p class="blurb">The remainder of the Charlemagne route.</p><ol>')
     for i, r in enumerate(tail, len(top) + 1):
         note = "no Geni id on any Wikidata item &mdash; check before creating" \
@@ -198,8 +198,8 @@ def main():
 
     body.append(f'<h2>&hellip; down to Arne, by blood<span class="c">'
                 f'{len(blood)} steps</span></h2>'
-                '<p class="blurb">Emma&rsquo;s fourth cousin five times removed. Read upward from '
-                'Emma to the shared ancestor, then down to Arne &mdash; the path as Geni traced '
+                '<p class="blurb">you&rsquo;s fourth cousin five times removed. Read upward from '
+                'you to the shared ancestor, then down to Arne &mdash; the path as Geni traced '
                 'it.</p><ul>')
     for s, name, rel, g in blood:
         mark = " &larr; the junction" if g == jg else ""
@@ -209,7 +209,7 @@ def main():
 
     body.append(f'<h2>&hellip; and to Arne, by marriage<span class="c">'
                 f'{len(marriage)} steps</span></h2>'
-                '<p class="blurb">The shorter link: Arne is Emma&rsquo;s great-grandfather&rsquo;s '
+                '<p class="blurb">The shorter link: Arne is you&rsquo;s great-grandfather&rsquo;s '
                 'wife&rsquo;s first cousin once removed. This one carries no blood.</p><ul>')
     for s, name, rel, g in marriage:
         body.append(person(g, label.get(g, name), qid, born, died, html.escape(rel), n=s))
@@ -224,7 +224,7 @@ def main():
         'family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&'
         'display=swap">\n'
         f"<style>{CSS}</style>\n"
-        '<div class="wrap"><header><h1>Charlemagne to Arne and Emma</h1>'
+        '<div class="wrap"><header><h1>Charlemagne to Arne and you</h1>'
         f'<p class="stand">Every person on the descent, with their Geni page and their Wikidata '
         f'item where one exists. <strong>{len(route)}</strong> people on the Charlemagne line, '
         f'<strong>{n_wd}</strong> of them already on Wikidata; the two lines to Arne run in '
@@ -232,12 +232,12 @@ def main():
         '<div class="warn"><strong>One thing does not line up.</strong> '
         '<code>queue.md</code> names <strong>Bergitte Aukland</strong> '
         '(<code>6000000002481819312</code>) as &ldquo;the common ancestor in the two lines between '
-        'me and Arne who is a descendant of Charlemagne&rdquo;. She does <strong>not appear on '
+        'me and Arne who is a descendant of Charlemagne&rdquo;. You do <strong>not appear on '
         '<code>charlemagne-route.csv</code></strong> at all. Either that route takes a different '
-        'line down from Charlemagne than the one she was found on, or the two were worked out at '
+        'line down from Charlemagne than the one you were found on, or the two were worked out at '
         'different times from different pages. The junction shown below is the one the data '
         'actually has &mdash; the deepest person on both the Charlemagne route and the blood line '
-        'to Arne. Bergitte is not it, and I have not substituted her for it.</div>'
+        'to Arne. Bergitte is not it, and I have not substituted your for it.</div>'
         "</header>\n" + "\n".join(body) +
         '\n<footer>Built by <code>scripts/build-chain-page.py</code> from '
         '<code>reports/charlemagne-route.csv</code>, '

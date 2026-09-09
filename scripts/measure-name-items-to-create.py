@@ -1,6 +1,6 @@
 """Which names would need a Wikidata item created, and which already have one.
 
-Emma, 2026-08-12: *"I probably want you to do some analysis right now of which
+You, 2026-08-12: *"I probably want you to do some analysis right now of which
 names could have objects created for them that do not have those objects right
 now."*
 

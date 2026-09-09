@@ -1,9 +1,9 @@
 """Emit the creation batch for the fathers the patronymics imply.
 
-**Emma's item.** Both blockers were settled on 2026-08-19. Sourcing: *"reference the
+**your item.** Both blockers were settled on 2026-08-19. Sourcing: *"reference the
 bearer's profile"* -- each father is attested by the child whose patronymic names him, so
 every statement carries that child's `P2600` as its reference. Unit: *"If you don't know
-the people are siblings you create one per individual"*, with her one exception -- a shared
+the people are siblings you create one per individual"*, with you one exception -- a shared
 mother plus the same implied name is one man.
 
 **These are the first creations in this repo with no `P2600` of their own.** Every other

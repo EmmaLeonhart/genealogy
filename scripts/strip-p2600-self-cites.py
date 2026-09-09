@@ -2,7 +2,7 @@
 
     python scripts/strip-p2600-self-cites.py <in.qs> [-o <out.qs>]
 
-**Emma, 2026-08-31:** *"geni ids do not get sources"*, and then *"Just have a script to remove
+**You, 2026-08-31:** *"geni ids do not get sources"*, and then *"Just have a script to remove
 the fucking self-cites"*.
 
 `Q6014618 P2600 "4198641" S2600 "4198641"` cites the Geni id statement to the Geni id. `S2600`

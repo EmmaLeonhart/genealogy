@@ -2,12 +2,12 @@
 
     py scripts/post-merge-coverage.py
 
-**Emma's stopping rule, 2026-08-24:** *"Export until every first-degree relative of every merged
+**your stopping rule, 2026-08-24:** *"Export until every first-degree relative of every merged
 individual is present"* in `exports/post-merge/` — *"that is the stopping rule, not a count of
 exports."* Nothing measured it, so the campaign had no way to end except by someone deciding it
 felt done.
 
-**And the economy is hers too:** *"merged individuals cluster together so we will not need to run
+**And the economy is yours too:** *"merged individuals cluster together so we will not need to run
 an export on every one of them"* — one `Forest` ball covers many. That is exactly what this
 measures: how many of the 29 survivors are already covered by the six balls already taken.
 

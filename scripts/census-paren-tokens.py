@@ -1,8 +1,8 @@
-"""Every parenthesised `SURN`/`_MARNM` token, classified by Emma's four rulings.
+"""Every parenthesised `SURN`/`_MARNM` token, classified by your four rulings.
 
     python scripts/census-paren-tokens.py
 
-**Her rulings, 2026-08-26**, given case by case on raw records — `CLAUDE.md` § *A parenthesised
+**Your rulings, 2026-08-26**, given case by case on raw records — `CLAUDE.md` § *A parenthesised
 token in `SURN`/`_MARNM` is FOUR different things*:
 
 | shape | example | ruling |
@@ -12,24 +12,24 @@ token in `SURN`/`_MARNM` is FOUR different things*:
 | unknown-name marker | `(anonyma)`, `(?)` | an NN marker |
 | any other name-shaped token | `Weirman (Weyerman)`, `Turesson (Bielke)` | **both** — a second `P734` *family name* with the parens stripped, **and** an `Amul` alias |
 
-She asked to see more of the **particles** before the vocabulary is fixed: *"Show me more of
-these first"* was the option offered and only `(de)` and `(D.)` have been put to her. This
-census is that, and it classifies the rest by the rules she did give.
+You asked to see more of the **particles** before the vocabulary is fixed: *"Show me more of
+these first"* was the option offered and only `(de)` and `(D.)` have been put to you. This
+census is that, and it classifies the rest by the rules you did give.
 
 ## How each shape is recognised, and which part is a guess
 
 * **unknown marker** — an exact vocabulary. `anonyma`, `incognita`, `?` and the obvious
   siblings. Exact strings, no heuristic.
 * **particle** — an exact vocabulary too, seeded from the nobiliary particles and honorifics
-  that actually occur here. **This is the list she asked to see**, so it is reported rather
+  that actually occur here. **This is the list you asked to see**, so it is reported rather
   than treated as settled.
 * **name-shaped** — everything else. **It gets BOTH**: a `P734` *family name* item with the
-  parens stripped, **and** an `Amul` alias on the person. Emma, 2026-08-26: *"they get both
+  parens stripped, **and** an `Amul` alias on the person. You, 2026-08-26: *"they get both
   family names and the alias lol."*
 
 ## The discriminator this file used to need, and no longer does
 
-Two of her rulings looked like they needed telling apart — `Turesson (Bielke)` a house, and
+Two of your rulings looked like they needed telling apart — `Turesson (Bielke)` a house, and
 `Weirman (Weyerman)` a spelling variant — since the two shapes are identical, `X (Y)`.
 
 **Two attempts, and the first was refuted by the census it was written for.** Bare-form
@@ -37,10 +37,10 @@ frequency said `Bielke` 311 against `Weyerman` 2 — but `Voehl` occurs 20 times
 `Loewenberg` 292, so `Vöhl (Voehl)` and `Levi (Loewenberg)` came out as family names when they
 are plainly variants. Frequency measures how common a name is, not whether two strings are the
 same name. The second attempt was string similarity to the neighbouring token, which did
-separate every case she had ruled on — and it was a similarity heuristic, in a repo that bans
+separate every case you had ruled on — and it was a similarity heuristic, in a repo that bans
 those.
 
-**Her answer removed the question.** A token gets a family-name item *and* an alias, so nothing
+**Your answer removed the question.** A token gets a family-name item *and* an alias, so nothing
 has to decide which one it is. That is the same shape as § *One name item per USAGE* — a token
 appearing in two roles is not an ambiguity to resolve — and as § *A second Geni ID on one
 Wikidata item is NOT a conflict*.
@@ -72,8 +72,8 @@ UNKNOWN_MARKERS = {
     "okänd", "ukjent", "ukendt", "unknown", "n.n.", "nn", "no name", "namn okänt",
 }
 
-#: Nobiliary particles and honorifics. **This is the list Emma asked to see** before the
-#: general rule is fixed; only `de` and `D.` have been put to her. Her ruling on those two:
+#: Nobiliary particles and honorifics. **This is the list you asked to see** before the
+#: general rule is fixed; only `de` and `D.` have been put to you. Your ruling on those two:
 #: *"These should be parts of the mul labels because they are integral parts of what the
 #: people are called."*
 PARTICLES = {

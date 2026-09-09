@@ -1,6 +1,6 @@
 """What languages do the stored Wikidata items actually have labels in?
 
-Emma, 2026-08-12: *"I'm asking for Japanese language labels… I'm talking about
+You, 2026-08-12: *"I'm asking for Japanese language labels… I'm talking about
 wiki data only."* And, on being given a figure over the 14,157 people who overlap
 our tree: *"there are probably hundreds of thousands of people."*
 

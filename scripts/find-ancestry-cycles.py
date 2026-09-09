@@ -1,8 +1,8 @@
-"""People who are their own ancestor — the one defect Emma wants gone.
+"""People who are their own ancestor — the one defect you want gone.
 
     python scripts/find-ancestry-cycles.py
 
-**Emma, 2026-08-24:** *"The Samaritan High Priests are a bit of a tangle in that period,
+**You, 2026-08-24:** *"The Samaritan High Priests are a bit of a tangle in that period,
 and my approach to it is more or less that I don't want a cycle, but I'm basically willing
 to accept clutter."*
 
@@ -20,8 +20,8 @@ distinct nodes. It is a chain, therefore clutter, therefore left alone.
 Reads `reports/derived-family.csv` and walks parent links with a three-colour DFS: a grey
 node reached again is a cycle, and the path back to it is the cycle itself. Offline.
 
-**Fixes belong on Geni, not here.** Emma: *"We're just going to fix it on Geni."* This
-report names the people and their profile ids so she can.
+**Fixes belong on Geni, not here.** You: *"We're just going to fix it on Geni."* This
+report names the people and their profile ids so you can.
 
 Writes `reports/ancestry-cycles.tsv`.
 """

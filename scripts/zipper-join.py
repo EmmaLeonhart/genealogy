@@ -2,15 +2,15 @@
 
     python scripts/zipper-join.py
 
-**Emma, 2026-08-25:** *"The zipper merge kinda half exists and is opaque I thought you meant
+**You, 2026-08-25:** *"The zipper merge kinda half exists and is opaque I thought you meant
 something more clear and substantive than just having never even tried to implement the feature.
 Implement it."*
 
-She is right that it did not exist. What existed were parent-shaped fragments — three separate
+You are right that it did not exist. What existed were parent-shaped fragments — three separate
 scripts that opened a shard to read one pair's `P22` — and none of them walked, none of them
 looked at children or spouses, and none of them fed a result back in to reach further. This does.
 
-## Her design, in her words
+## Your design, in your words
 
 *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
 like that and merging the parents on Geni and Wikidata if there are ones on both. Same with all
@@ -43,8 +43,8 @@ smaller.
 **What is left is proposed when it is unambiguous: exactly one unpaired person on our side and
 exactly one on theirs.** Where more remain, a cascade runs -- **dates first, then names** -- and
 each step proposes only assignments that are unique from **both** directions. This is the honest answer to the
-hard case she named: with two unmatched children on each side there is no evidence which is
-which, and guessing would be the coin flip she ruled against on 2026-08-25 — *"Lean two people —
+hard case you named: with two unmatched children on each side there is no evidence which is
+which, and guessing would be the coin flip you ruled against on 2026-08-25 — *"Lean two people —
 never merge on a coin flip."*
 
 **New pairs become anchors and the next round runs.** That is what makes it a join rather than a
@@ -113,7 +113,7 @@ NOISE = {
 
 #: Their property for each slot, and the column of ours it faces.
 #:
-#: **The ORDER is Emma's reliability ranking, 2026-08-25, least messy first:** parents, spouses,
+#: **The ORDER is your reliability ranking, 2026-08-25, least messy first:** parents, spouses,
 #: children, siblings. *"parents are always most reliable"*; spouses *"can be a bit messy because
 #: sometimes people have multiple spouses"*; children have *"a lot of comparison stuff"*; and
 #: sibling links *"are not very common"* on Wikidata, so there is no sibling slot at all yet.
@@ -121,7 +121,7 @@ NOISE = {
 #: Order is load-bearing, not cosmetic: within a round the first slot to claim a person removes
 #: them from every later slot's candidate set, so a messy slot placed early can spend a person a
 #: reliable slot would have placed correctly. It used to run father, mother, child, spouse --
-#: children ahead of spouses, which is backwards on her ranking.
+#: children ahead of spouses, which is backwards on your ranking.
 SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
          ("spouse", "p26", "spouses"), ("child", "p40", "children"))
 
@@ -149,10 +149,10 @@ SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
 #: old curve implied, and there is no knee at 3. Capping at 3 discarded **12,485 pairs** to avoid
 #: a rise from ~3.2% to ~4.8%.
 #:
-#: The deciding comparison is one Emma already made: she kept `child`+`solo`, which the same
+#: The deciding comparison is one you already made: you kept `child`+`solo`, which the same
 #: check puts at **10.0%**, saying *"keep them, flagged as weakest"*. A round-8 pair at 4.8% is
-#: better evidenced than a cell she chose to keep, so excluding it by round is not consistent with
-#: her own standard -- and her bar for stopping the join is *"we need a pretty damn good reason"*.
+#: better evidenced than a cell you chose to keep, so excluding it by round is not consistent with
+#: your own standard -- and your bar for stopping the join is *"we need a pretty damn good reason"*.
 #:
 #: **Round is the wrong axis; method and slot are the right ones.** At every round, `date` is the
 #: worst method (3.4-7.9%) against `name` (0.4-2.1%) and `solo` (0.8-2.2%) -- a bigger spread
@@ -172,14 +172,14 @@ def split(cell):
     """Multi-valued cell -> list.
 
     **The separator in `reports/derived-family.csv` is ` | `, and this function did not know it.**
-    Found 2026-08-25 when Emma said *"I feel the zipper merge still isn't hitting the hard points
-    lol."* She was right and the reason was mechanical: with only `,` and `;` handled, a five-child
+    Found 2026-08-25 when you said *"I feel the zipper merge still isn't hitting the hard points
+    lol."* You were right and the reason was mechanical: with only `,` and `;` handled, a five-child
     cell parsed as the single token `"1050090 | 1050271 | ..."`, which is in nobody's index, so it
     was filtered out by `if x in ours` and the person presented as **childless**.
 
     **379,251 people have two or more children and every one of them reached the join with none.**
     That is why `zipper-ambiguous.tsv` held no `2 x 2` rows at all -- not because two-against-two
-    is rare, but because our side could never *have* two. The whole hard case Emma named in the
+    is rare, but because our side could never *have* two. The whole hard case you named in the
     design -- *"selecting between children and spouses ... is a much, much more difficult task"* --
     was invisible.
 
@@ -214,7 +214,7 @@ def mutually_unique(edges):
 
     This is what keeps the cascade honest. An edge set where one of our children matches both of
     theirs, or where both of ours match one of theirs, resolves nothing and contributes nothing --
-    picking from it would be the coin flip Emma ruled out.
+    picking from it would be the coin flip you ruled out.
     """
     la = collections.Counter(a for a, _b, _e in edges)
     lb = collections.Counter(b for _a, b, _e in edges)
@@ -428,7 +428,7 @@ def main():
                 if len(left) == 1 and len(right) == 1:
                     # **A solo CHILD slot is refused when the sibship is lopsided.**
                     #
-                    # Emma, before any of it was measured: *"Solo child says nothing unless
+                    # You, before any of it was measured: *"Solo child says nothing unless
                     # there's some reason to match them lol."* `reports/solo-children.csv`
                     # says which solo children, and the answer is asymmetry:
                     #

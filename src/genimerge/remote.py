@@ -5,7 +5,7 @@ that are far apart" by running a double sweep and then retiring the whole
 neighbourhood of each pair it emits. That works, but the answer it gives depends
 on where the first sweep happened to land: pair 2 is whatever survived pair 1's
 retirement, pair 3 whatever survived pair 2, and so on down a list that visibly
-tails off. Emma read the result as arbitrary, which is a fair reading of a
+tails off. You read the result as arbitrary, which is a fair reading of a
 greedy sequence — nothing in it says *these* are the most remote people, only
 that they were far from each other in the order they were picked.
 

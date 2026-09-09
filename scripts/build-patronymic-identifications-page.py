@@ -1,6 +1,6 @@
 """Build the review page for every patronymic identification the name model makes.
 
-Emma, 2026-09-04: *"Can you give me the artifact for the identifications for me to go
+You, 2026-09-04: *"Can you give me the artifact for the identifications for me to go
 through?"* -- so this is a page to READ, one row per (form, token), grouped by form,
 carrying example bearers because spotting a wrong identification needs the person and
 not the token. `Ni Choon` is a Chinese name; `Ni` alone tells you nothing.
@@ -13,7 +13,7 @@ Input  reports/patronymic-identifications.tsv     one row per token per person
 Output out/patronymic-identifications.html        self-contained, no libraries
 
 Published unlinked beside the daily batch by `scripts/build-pages-site.py`, since
-GitHub Pages is the one place Emma can open a page without signing in.
+GitHub Pages is the one place you can open a page without signing in.
 """
 
 from __future__ import annotations

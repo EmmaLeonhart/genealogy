@@ -2,9 +2,9 @@
 
     python scripts/census-partial-nn.py
 
-**Emma, 2026-08-27**, on `Q141198538`: *"clearly has 'nn' as its first name however it was not
+**You, 2026-08-27**, on `Q141198538`: *"clearly has 'nn' as its first name however it was not
 produced as an NN person"*. The worked case is `Sara /NN/` — `GIVN Sara`, surname field the
-literal marker `NN` — where the fields concatenate to `Sara NN` and that went to Wikidata as her
+literal marker `NN` — where the fields concatenate to `Sara NN` and that went to Wikidata as your
 label. `nn Gunnarsdatter /Frafjord/` is the mirror image: the marker sits in `GIVN`, in front of
 a real patronymic.
 

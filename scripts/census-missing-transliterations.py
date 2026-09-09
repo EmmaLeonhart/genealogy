@@ -2,7 +2,7 @@
 
     python scripts/census-missing-transliterations.py
 
-**Emma, 2026-08-26:** *"I'm confused why the created individuals are not getting their names
+**You, 2026-08-26:** *"I'm confused why the created individuals are not getting their names
 across different languages. Chinese and Japanese should be mandatory on the creations."*
 
 **They are not getting them because the table is small and the rule is all-or-nothing.**

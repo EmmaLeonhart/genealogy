@@ -1,14 +1,14 @@
 """Who blocks the most paths, and who sits nearest the middle of one.
 
 **Both files this writes had no generator.** `reports/path-bridge-targets.csv` and
-`reports/path-midpoint-seeds.csv` are the artefacts Emma's first agenda item runs on
+`reports/path-midpoint-seeds.csv` are the artefacts your first agenda item runs on
 — *"find people that are in multiple bridges and are also not in"* our data — and
 they were produced by one-off code in a session that ended. Nothing in the repo could
 rebuild them, and `scripts/build-trunk-batch.py` reads one of them, so the trunk
 batch was derived from a file no command could reproduce. They were also measured
 over 560 paths and a smaller tree, before the corpus reached 586 and 448,665 people.
 
-**Positions are per chain, not per file.** Emma, 2026-08-16: *"as long as you treat
+**Positions are per chain, not per file.** You, 2026-08-16: *"as long as you treat
 it as being two paths and not one."* A saved page carries a blood path and an in-law
 path; `PathStep.chain` separates them. Measuring position within the file would put
 the head of the second path at the middle of the first, which is precisely the
@@ -20,10 +20,10 @@ One row per person named by any path, whether we hold them or not. The first fiv
 columns are the ones `build-trunk-batch.py` reads and keep their names and order.
 
 * `paths_through` — distinct path **chains** naming this person.
-* `held` / `bridges_through` — new, and they are what makes her question answerable
+* `held` / `bridges_through` — new, and they are what makes you question answerable
   from one file: *"in multiple bridges and… also not in"* our data is two conditions
-  and the old file only carried the first. **Emma is row 1** — 818 chains, because
-  *"You"* opens every path — with `held` yes and `bridges_through` 0, so she reads
+  and the old file only carried the first. **You are row 1** — 818 chains, because
+  *"You"* opens every path — with `held` yes and `bridges_through` 0, so you read
   correctly as the opposite of a bridge person.
 
   `held` is deliberately **not** a filter on creation: somebody we hold who has no
@@ -45,7 +45,7 @@ the three rows sampled from the file the lost code produced, `Alice de Lucy` cam
 0.423 against 0.422 here and `Joan Dacre` 0.412 against 0.407, while `Ingeborg
 Bengtsdotter Sparre över blad` moved 0.373 → 0.443. The two near-matches are what
 recommend the formula; the third moved in the direction the **chain split** predicts,
-since her position inside one path is not her position inside a file holding two. So
+since your position inside one path is not your position inside a file holding two. So
 this is a formula that agrees with the old numbers where the inputs agree, not a
 reproduction of them.
 

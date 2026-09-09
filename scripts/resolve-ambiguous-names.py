@@ -2,10 +2,10 @@
 
     python scripts/resolve-ambiguous-names.py
 
-**Emma, 2026-08-24**, asked how the batch should handle the tokens that resolve to more
+**You, 2026-08-24**, asked how the batch should handle the tokens that resolve to more
 than one Wikidata item: *resolve by the person's sex, emit*.
 
-**Her rule settles two of the seven, and the reason the other four resist it is worth
+**Your rule settles two of the seven, and the reason the other four resist it is worth
 stating rather than working around.** `Martin`, `Anton`, `Emil` and `Eliza` each have two
 candidates *of the same sex*, so sex has nothing to separate. What separates them is the
 `mul` label:

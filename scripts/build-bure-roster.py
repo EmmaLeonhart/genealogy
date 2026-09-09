@@ -2,9 +2,9 @@
 
     python scripts/build-bure-roster.py
 
-**Emma, 2026-08-25**, asked for *"bure kinship people (all of them)"* as random-walk start points,
+**You, 2026-08-25**, asked for *"bure kinship people (all of them)"* as random-walk start points,
 and would not choose between roster definitions when offered them — so both are built and the
-residue is the deliverable. Her framing of why this is a different job:
+residue is the deliverable. Your framing of why this is a different job:
 
 > *"bure is a bunch of unlinked people with entity resolutions to geni, so it isn't dense it's a
 > different kind of area though which needs its own algorithm... as so many people there have

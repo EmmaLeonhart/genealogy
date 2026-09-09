@@ -1,7 +1,7 @@
 """Write the Itamar → Tabia spine as a GEDCOM built for entering into Geni.
 
 **Itamar ben Aaron is the first record and Tabia ha'Abta'i is the last**, with
-every generation between them in descent order, one per record. Emma's
+every generation between them in descent order, one per record. Your
 instruction, 2026-08-14: that ordering is what makes the file straightforward to
 add to Geni, and Geni is the only one of these sites that will take a run of
 numbered generations at all.
@@ -125,7 +125,7 @@ def build(people: list[tuple[int, dict]]) -> str:
 
         # Each FAM goes immediately after the father it belongs to, rather than
         # in a block at the end. That is what keeps Tabia the LAST record in the
-        # file and Itamar the first, which is the ordering Emma asked for.
+        # file and Itamar the first, which is the ordering you asked for.
         if i < len(people):
             lines.append(f"0 @F{i}@ FAM")
             lines.append(f"1 HUSB @I{i}@")

@@ -6,7 +6,7 @@
 lose which name it qualifies"* — but nothing in the repo ever extracted or counted one.
 So the size of the population was unknown, and so were its forms.
 
-Emma's rule is that this is not a Samaritan special case. 2026-08-15: *"they should all
+Your rule is that this is not a Samaritan special case. 2026-08-15: *"they should all
 have the regnal orders put on their names as qualifiers"*, and **not only the
 Samaritans** — anyone whose name carries an ordering.
 

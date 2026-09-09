@@ -4,8 +4,8 @@
 downloaded name items carry labels in?" and the raw answer for Japanese is bleak: **9.0%**.
 That number is the wrong one to plan from, and this script computes the right one.
 
-Emma, 2026-08-18: *"I think in Japanese there's a standard katakana rendering of the name
-Jack. There's a standard katakana rendering of the name John."* She is right, and the raw
+You, 2026-08-18: *"I think in Japanese there's a standard katakana rendering of the name
+Jack. There's a standard katakana rendering of the name John."* You are right, and the raw
 share hides it — because the 824,358 name items are dominated by long-tail surnames that
 exist on Wikidata and are borne by nobody in this tree, while `John` and `Maria` are borne
 by thousands. **The question is per-person, not per-item**, so every figure here is
@@ -39,7 +39,7 @@ LANGS = ["mul", "en", "ja", "zh", "ko", "ar", "he", "ru",
 #: A verdict that names exactly one item. `ambiguous` is held out rather than
 #: guessed at: picking the first QID of several is the diacritic-folding mistake
 #: in a new place, and `CLAUDE.md` § *One name item per USAGE* says a real
-#: ambiguity is Emma's call.
+#: ambiguity is your call.
 RESOLVED = {"resolved"}
 
 csv.field_size_limit(min(sys.maxsize, 2**31 - 1))

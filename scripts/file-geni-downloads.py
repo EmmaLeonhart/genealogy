@@ -8,7 +8,7 @@ tidy-up, and it is the same shape as the proven manual method, which ended
     python scripts/file-geni-downloads.py [--downloads DIR] [--dry-run]
 
 **A `.ged`/`.zip` is NEVER touched.** `CLAUDE.md` § *Never overwrite an existing `.ged`* makes
-where an export goes her call, and § *Do not integrate as you go* keeps the zips in
+where an export goes your call, and § *Do not integrate as you go* keeps the zips in
 `~/Downloads` until a whole batch is down. This script files path captures and the results TSV
 and nothing else; it prints the exports it can see and leaves them alone.
 
@@ -89,7 +89,7 @@ def main() -> int:
 
     print("\n%d filed, %d left alone" % (moved, skipped))
     if zips:
-        # Named, never moved: filing an export is hers, and a batch is filed all at once.
+        # Named, never moved: filing an export is yours, and a batch is filed all at once.
         print("%d export zip(s) in %s, NOT touched: %s"
               % (len(zips), src, ", ".join(zips[:5]) + (" ..." if len(zips) > 5 else "")))
     return 0

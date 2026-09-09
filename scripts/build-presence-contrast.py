@@ -1,6 +1,6 @@
 """People imported far less often than the people standing next to them.
 
-Emma, 2026-08-22: "this isn't to say people very central to areas with only one
+You, 2026-08-22: "this isn't to say people very central to areas with only one
 export to them. It's just people central to areas with few exports and,
 particularly, people who are starkly imported less than the people around them.
 If there's a section in the medieval tree where there's a person born in the

@@ -1,10 +1,10 @@
 """Split a Norwegian name into the properties `name modelling.txt` asks for.
 
-Emma, 2026-08-24, on the Garborg batches: *"we should be modelling the names
+You, 2026-08-24, on the Garborg batches: *"we should be modelling the names
 properly, which he didn't do."* The batches carried labels and no `P735`, `P734` or
 `P5056` at all.
 
-**Her model, from `name modelling.txt`, not invented here:**
+**Your model, from `name modelling.txt`, not invented here:**
 
     P735  given name            first token, + P1545 ordinal 1
                                                 + P7452 -> Q3409033 usual forename
@@ -19,7 +19,7 @@ patronymic."* So the order of the tests matters — patronymic first, then posit
 
 **Both fields, always — and that means READING the fields.** Until 2026-08-24 this
 module took `label_en`, a rendered display string, and guessed by whitespace position.
-Emma caught it: *"I thought we were resolving name objects but now we're determining
+You caught it: *"I thought we were resolving name objects but now we're determining
 which name field to use as a source of the label?"* The GEDCOM fields are in
 `reports/display-names.csv` — `givn`, `surn`, `nick`, `marnm` — and the label is a
 separate output that happens to describe the same person.
@@ -33,11 +33,11 @@ What positional parsing got wrong, on four real people:
 * `marnm` was never read at all, so Stena's *Jacobson* and Inger Marie's *Ronneberg*
   did not exist to the model.
 
-**Emma's rulings, 2026-08-24.** A quoted token inside `givn` becomes `P1449`
+**your rulings, 2026-08-24.** A quoted token inside `givn` becomes `P1449`
 *nickname*. A `_MARNM` becomes a **second** `P734` *family name*, emitted only where it
 differs from `surn` and where `surn` is actually populated.
 
-**Sex screens the ROLE, not the statement.** She first said sex was not a screen, then
+**Sex screens the ROLE, not the statement.** You first said sex was not a screen, then
 corrected on seeing a man carrying `Q28418670` *married name*: *"ontologically married
 name on a man means more like adopted surname. So men's 'married names' should not have
 the role of married name."* So a man still gets the second `P734`; it simply carries no
@@ -80,7 +80,7 @@ NICKNAME = "P1449"           # nickname
 BIRTH_NAME_ROLE = "Q2507958"   # birth name
 MARRIED_NAME_ROLE = "Q28418670"  # married name
 
-#: `-sen`, `-son`, `-sson`, `-datter`, `-sdatter`. Emma, on the Norwegian material:
+#: `-sen`, `-son`, `-sson`, `-datter`, `-sdatter`. You, on the Norwegian material:
 #: *"The daughter and son would be the same thing"* — one category, not two.
 #: **`dotter` is the Swedish form and was missing.** `datter` is Norwegian and Danish;
 #: `-dotter` is Swedish and means the same thing. Leaving it out classified **60,085 people**
@@ -92,7 +92,7 @@ MARRIED_NAME_ROLE = "Q28418670"  # married name
 #: been reading the same token two different ways. Found because `PATRONYMIC_PARTS` below
 #: included it and this did not, and the father test disagreed with itself on
 #: `Jakobsdotter`.
-#: **Emma, 2026-09-04, and it is the diagnosis of the whole class of defect:** *"there is no
+#: **You, 2026-09-04, and it is the diagnosis of the whole class of defect:** *"there is no
 #: real standardized representation of [patronymics] in our data… so we needed to do some level
 #: of positional parsing… Names should not be positionally parsed lol, we should just be able to
 #: fix the patronymic issue by parsing patronymics lol. Patronymics are extremely simple but
@@ -117,25 +117,25 @@ PATRONYMIC = re.compile(
     r"[oe]vich|[oe]vna|ovi[cć]|wicz"           # Slavic
     r")\.?$", re.I)
 
-#: **A standalone token that makes the NEXT token a patronymic.** These are the forms her
+#: **A standalone token that makes the NEXT token a patronymic.** These are the forms your
 #: message names that carry no suffix at all — the name is the father's, and a particle in
 #: front says so. Measured: `ap` 6,702 · `verch` 1,881 · `ben` 1,558 · `bin` 1,477 · `ab` 1,261 ·
 #: `ferch` 1,234 · `ibn` 865 · `bint` 465 · `bat` 342 · `bar` 315 · `ua`/`uí`/`ní`/`nic` 161.
 #:
-#: **`Mac`, `Mc`, `Fitz` and `O'` are deliberately NOT here**, though her message lists `fitz_x`.
+#: **`Mac`, `Mc`, `Fitz` and `O'` are deliberately NOT here**, though your message lists `fitz_x`.
 #: In this corpus they are ATTACHED and inherited — `MacKinnon`, `McIntosh`, `Fitzalan`,
 #: `O'Neill`, 9,670 occurrences and not one of them a separate token. They are surnames by the
 #: time they reach us; treating them as live patronymics would put a `P5056` on people whose
 #: great-grandfather is the one it names. A separate `Fitz` token would qualify and none occurs.
 #: **The DAUGHTER forms alone**, which is a narrower question than `PATRONYMIC` and answers a
-#: different one: *can this token possibly be a married name?* It cannot. A woman takes her
+#: different one: *can this token possibly be a married name?* It cannot. A woman takes your
 #: husband's name, and no husband is called `-dotter`.
 #:
-#: **Emma pointed at `Q136376387` on 2026-09-04 -- *"Check this persons mul label for what I
-#: wanted"* -- and her `mul` reads `Ebba Kristina Siöblad`.** Ours read
+#: **You pointed at `Q136376387` on 2026-09-04 -- *"Check this persons mul label for what I
+#: wanted"* -- and your `mul` reads `Ebba Kristina Siöblad`.** Ours read
 #: `Ebba Kristina Carlsdotter`: her record is `Ebba Kristina /Siöblad/` with
 #: `_MARNM Carlsdotter`, and § *The MARRIED name is the real name* flipped the `_MARNM` into
-#: the primary label. But `Carlsdotter` is her PATRONYMIC -- her father is Carl -- mis-filed
+#: the primary label. But `Carlsdotter` is your PATRONYMIC -- her father is Carl -- mis-filed
 #: in the married-name field, so the flip replaced a real surname with a daughter-of form and
 #: then `ja`/`zh`/`ko` were transliterated from it.
 #:
@@ -168,7 +168,7 @@ def is_daughter_patronymic(token: str) -> bool:
     return bool(DAUGHTER_PATRONYMIC.match(token or ""))
 
 
-#: **A GENERATION SUFFIX, and the two forms Emma wants it written in.** Her ruling, 2026-09-04,
+#: **A GENERATION SUFFIX, and the two forms you want it written in.** Your ruling, 2026-09-04,
 #: with `Q106206114` as the worked example — Wikidata has him as `Elias Lagerheim den yngre`:
 #:
 #:     Lmul  Elias Lagerheim II
@@ -181,13 +181,13 @@ def is_daughter_patronymic(token: str) -> bool:
 #:
 #: **`mul` takes the Roman numeral because `mul` is language-neutral**, and the numeral says the
 #: same thing in every language: the junior is the SECOND of the name, so `Jr.` is `II` and `Sr.`
-#: is `I`. Her sentence listed the numerals and the abbreviations in the opposite order; the
+#: is `I`. Your sentence listed the numerals and the abbreviations in the opposite order; the
 #: worked example is what settles it and it is unambiguous.
 #:
 #: **It also makes the CJK labels fall out for free.** `mul` reading `II` goes through
-#: `labels.ordinal_readings` and becomes `2世` / `二世` / `2세` — the convention she set by hand on
+#: `labels.ordinal_readings` and becomes `2世` / `二世` / `2세` — the convention you set by hand on
 #: `Q141223436` — rather than the `ジュニア` that a transliteration of the Swedish would give. That
-#: earlier answer of hers is superseded by this one, and the table rows are left in place only as
+#: earlier answer of yours is superseded by this one, and the table rows are left in place only as
 #: a fallback for a label that still literally reads `Jr.`
 #:
 #: **Bare `de` is NOT here and never can be.** It is the particle, 102,336 occurrences, and
@@ -224,10 +224,10 @@ GENERATION_SUFFIX = {
     "vanhempi": ("I", "Sr."),     # 1 on Wikidata, Finnish
 }
 
-#: **Which languages a suffix form belongs to.** Emma, 2026-09-05: *"the dy will be present
+#: **Which languages a suffix form belongs to.** You, 2026-09-05: *"the dy will be present
 #: wherever for the languages that use it but the suffixes we have will be always at the end"*.
 #: So a `nb` label keeps `d.y.` where Norwegian puts it, and a language that does NOT use the
-#: form is one of the *"inappropriate languages"* she named on the same subject — those take the
+#: form is one of the *"inappropriate languages"* you named on the same subject — those take the
 #: `mul` form, `Elias Lagerheim II`.
 #:
 #: **Keyed on the form, not on a flat list of languages**, because the two Scandinavian pairs
@@ -294,7 +294,7 @@ def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
     `style` is `"mul"` or `"en"`. See `GENERATION_SUFFIX` for where both forms come from.
 
     **`nsfx` is the person's own suffix field, and it is how the suffix survives a label built
-    from a DIFFERENT name record.** Emma, 2026-09-07, on `Q141242551` and `Q141219063`, two
+    from a DIFFERENT name record.** You, 2026-09-07, on `Q141242551` and `Q141219063`, two
     items both labelled *Lars Osmundsen Nese*: *"These two people are clearly different but I
     think the I, II, Sr, Jr, d.y. suffixing was not done properly."*
 
@@ -309,7 +309,7 @@ def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
     `NSFX` counts — matching a suffix anywhere in a rendered name instead gives 515 and sweeps
     in `Señor de Campofrío` and a `King` left behind by a title truncation.
 
-    **THE SUFFIX GOES LAST. It is not rewritten where it stands.** Emma, 2026-09-05, on a first
+    **THE SUFFIX GOES LAST. It is not rewritten where it stands.** You, 2026-09-05, on a first
     version that substituted in place and produced `Lars Jonson II Skrudland`: *"Lars Jonson
     Skrudland Jr. I didn't tell you to do that. Regnal numbers can come after the first name,
     regular ones go Sr Jr III etc always as a suffix in English and in mul always as a suffix
@@ -401,7 +401,7 @@ PATRONYMIC_PARTICLE = frozenset({
 #: `Turesson (Bielke)`, `Weirman (Weyerman)`, `Levine (?)`.
 PAREN = re.compile(r"^\((.+)\)$")
 
-#: **Particles and honorifics go into the LABEL and never become items.** Emma, 2026-08-26:
+#: **Particles and honorifics go into the LABEL and never become items.** You, 2026-08-26:
 #: *"These should be parts of the mul labels because they are integral parts of what the
 #: people are called."* The nine bracketed ones are the whole bracketed population measured in
 #: `reports/paren-tokens.md`; the unbracketed forms are far commoner -- bare `de` occurs
@@ -414,7 +414,7 @@ PARTICLES = {
 }
 
 #: **Words meaning the name is not known.** They join `Private`/`NN`/`Ukjent`, which
-#: `scripts/labels.py` owns -- `CLAUDE.md` § *`NN` is PRESERVED in `mul`*. Emma, 2026-08-26,
+#: `scripts/labels.py` owns -- `CLAUDE.md` § *`NN` is PRESERVED in `mul`*. You, 2026-08-26,
 #: shown `(anonyma)`, `(incognita)` and `(?)`: *"Treat as NN markers."*
 #:
 #: **`ben` is in `PARTICLES`, not here.** It is the Samaritan patronymic particle --
@@ -426,7 +426,7 @@ UNKNOWN_MARKERS = {
 }
 
 #: **A stillborn child is DESCRIBED, not named, and the description is not a name.**
-#: Emma, 2026-08-30, on `Q141224141`: *"please stop trying to assign names to this person
+#: you, 2026-08-30, on `Q141224141`: *"please stop trying to assign names to this person
 #: who does not in fact have any names at all."* Geni records him as
 #: `En dödfödd son Bielke` -- Swedish for *a stillborn son* -- and the batch emitted
 #: `P735` *given name* `En`, the indefinite article, carrying `P7452` *usual forename*.
@@ -434,7 +434,7 @@ UNKNOWN_MARKERS = {
 #: **This is stronger than `UNKNOWN_MARKERS` and that is the point.** A marker suppresses
 #: its own token; a description marker suppresses the WHOLE given-name field, because the
 #: words around it -- `En`, `son`, `barn`, `gossebarn` -- are the rest of one phrase rather
-#: than names that happen to sit nearby. Her sentence is the authority for going that far:
+#: than names that happen to sit nearby. Your sentence is the authority for going that far:
 #: the person has no names at all.
 #:
 #: **Measured over `reports/display-names.csv`, 2026-08-31: 475 people.** `dødfød` 212,
@@ -453,14 +453,14 @@ DESCRIPTION_MARKERS = {
 }
 
 
-#: **A TITLE IS NOT A NAME, and Geni already says so -- in `NSFX`.** Emma, 2026-09-03, on
+#: **A TITLE IS NOT A NAME, and Geni already says so -- in `NSFX`.** You, 2026-09-03, on
 #: `Q2183430` *Benedicta Ebbesdotter of Hvide*: *"There was a bit of a disaster of her names in
-#: an earlier quickstatements batch where 'Queen' and 'Sweden' were treated as names."* She is
+#: an earlier quickstatements batch where 'Queen' and 'Sweden' were treated as names."* You are
 #: right and it was live: the batch carried
 #: `Q2183430 P735 Q20899047` -- given name **Queen**, as middle name 3 -- and
 #: `Q2183430 P734 Q37437749` for **Sweden**.
 #:
-#: **The GEDCOM was correct the whole way.** Her record reads
+#: **The GEDCOM was correct the whole way.** Your record reads
 #: `1 NAME Bengta Ebbesdotter /Ebbesdatter Galen/` with `2 NSFX Queen of Sweden` -- the title
 #: in the name-SUFFIX field, exactly where it belongs. `build-display-names.py` concatenates
 #: every piece into `display_name`, `derive-labels.py` appends `nsfx` again building the
@@ -497,7 +497,7 @@ TITLE_WORDS = {
 }
 
 #: What turns a title word into a title PHRASE, and what opens a territorial tail on its own.
-#: `till Krageholm` is Swedish for *of Krageholm*, an estate -- `CLAUDE.md` records Emma
+#: `till Krageholm` is Swedish for *of Krageholm*, an estate -- `CLAUDE.md` records you
 #: catching `カール・フレドリク・パイパー・ティル・クラゲホルム` and correcting the item by hand.
 TITLE_CONNECTIVES = {"of", "von", "van", "de", "des", "der", "du", "di", "da",
                      "af", "av", "zu", "the"}
@@ -510,12 +510,12 @@ TITLE_CONNECTIVES = {"of", "von", "van", "de", "des", "der", "du", "di", "da",
 #:
 #: It stays out of `build-garborg-day._drop_territorial`, which trims the label before
 #: transliteration — whether `Anne of Denmark` should read `アン・オフ・ダンマーク` is a question
-#: about her LABEL and is hers. This is only about what becomes a name item.
+#: about you LABEL and is yours. This is only about what becomes a name item.
 TERRITORIAL_OPENERS = {"till", "til", "i", "på", "paa", "of"}
 
 
 #: **A single-token `NSFX` is a TITLE or an ORDINAL, and only the titles are dropped.**
-#: Emma, 2026-09-04, choosing between four readings of the 30,730 single-token suffixes:
+#: you, 2026-09-04, choosing between four readings of the 30,730 single-token suffixes:
 #: *drop titles, keep ordinals*. So `Graf`, `Knight`, `Donna` and `Kt.` stop becoming `P735`
 #: *given name* and `P734` *family name* items, while `II`, `I`, `Jr.`, `Sr.`, `d.y.` and the
 #: CJK generation numerals stay in the name — the ordinals carry `P7338` *regnal ordinal* and
@@ -641,7 +641,7 @@ NAME_SUFFIX_TITLES = frozenset(
     for t in group)
 
 #: **`_PARTICLE` is deliberately absent here.** `Graf von Maltzahn` must lose `Graf` and keep
-#: `von Maltzahn`: `von` is *"an integral part of what the people are called"* — Emma,
+#: `von Maltzahn`: `von` is *"an integral part of what the people are called"* — You,
 #: 2026-08-26 — and `name_shape` already classifies it as a particle so it never becomes a
 #: `P734` *family name* of its own. Stripping it from the front would renumber the name
 #: instead of cleaning it.
@@ -653,12 +653,12 @@ _LEADING_TITLES = frozenset(
 #: **Titles that may be stripped from the FRONT of a LABEL.** Hand-curated, not derived from
 #: `_LEADING_TITLES`, and the difference is the whole point.
 #:
-#: **Emma, 2026-09-07:** *"most of these words that we've been transliterating… aren't that
+#: **You, 2026-09-07:** *"most of these words that we've been transliterating… aren't that
 #: common and that means we can do them much more manually than I think you give them credit
 #: for"*, and *"the highest priority is to make sure that title names and such don't end up in
 #: mul labels and dont get transliterated"*.
 #:
-#: She is right about the size: **128 distinct tokens open a label across all 1,295,228 labelled
+#: You are right about the size: **128 distinct tokens open a label across all 1,295,228 labelled
 #: people**, so this is a list somebody reads rather than a rule somebody trusts. Counts are the
 #: measured occurrences in that position.
 #:
@@ -713,7 +713,7 @@ def _patronymic_key(token: str) -> str:
 def drop_repeated_patronymic(label: str) -> str:
     """`label` with an adjacent repeat of one patronymic collapsed to a single token.
 
-    **Emma, 2026-09-07**, on `Q141205942` and `Q141205937`: *"Both of these are replications of
+    **You, 2026-09-07**, on `Q141205942` and `Q141205937`: *"Both of these are replications of
     the patronymic. Idk what's going on with them."* Two mechanisms produce it and both end here:
 
     * Geni writes the patronymic into `GIVN` **and** `SURN` -- `Tore Gardson /Gardsson/` --
@@ -775,7 +775,7 @@ def drop_label_title(label: str) -> str:
     """`label` with a leading title and a trailing title phrase removed. For a LABEL.
 
     **`CLAUDE.md` § *A TITLE IS NOT A NAME* said the tail rule "does not touch the LABEL" and
-    left what a label should read as an open question.** Emma closed it on 2026-09-07: titles
+    left what a label should read as an open question.** You closed it on 2026-09-07: titles
     must not end up in `mul` labels. This is that, and it is deliberately narrower than the
     name-field rules — `LABEL_LEADING_TITLES` is curated and `_LEADING_TITLES` is not.
 
@@ -814,7 +814,7 @@ def drop_label_title(label: str) -> str:
 
 #: The Scandinavian farm designations — `TERRITORIAL_OPENERS` without English `of`, which is
 #: the same set `build-garborg-day.TERRITORIAL` carries for the transliterated label.
-#: `of` is excluded because its tails are countries and duchies without exception, and Emma
+#: `of` is excluded because its tails are countries and duchies without exception, and you
 #: ruled on 2026-09-07 that `Judith of Flanders` becomes `Judith`.
 FARM_OPENERS = TERRITORIAL_OPENERS - {"of"}
 
@@ -822,9 +822,9 @@ FARM_OPENERS = TERRITORIAL_OPENERS - {"of"}
 def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = "") -> str:
     """Put back a farm surname the title rule cut away, when it leaves a bare given name.
 
-    **Emma, 2026-09-07, on `Q141352187`:** *"this guy was not given an appropriate name
+    **You, 2026-09-07, on `Q141352187`:** *"this guy was not given an appropriate name
     originally lol. A single given name is generally not acceptable and we strongly prefer
-    given name NN, but he has a surname anyway lol."* She had hand-corrected the item to
+    given name NN, but he has a surname anyway lol."* You had hand-corrected the item to
     **`Ånon Byre`**; the batch created him as **`Ånon`**.
 
     Geni records him `Ånon i /Byre/` — `GIVN` *Ånon i*, `SURN` **Byre** — so `Byre` is his
@@ -835,10 +835,10 @@ def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = ""
     **The discriminator is the person's OWN `SURN`/`_MARNM`, never a word list** — the same
     exactness `drop_title_suffix` and `drop_description_suffix` use, and for the same reason.
     A tail that merely looks like a farm is dropped; one the record itself files as the
-    surname is kept, without the preposition, which is the form she wrote by hand.
+    surname is kept, without the preposition, which is the form you wrote by hand.
 
     **Only when the truncation leaves ONE token.** `Ragnhild Toresdatter Håland i Gjesdal`
-    still becomes `Ragnhild Toresdatter Håland`: she has a name either way, and the rescue is
+    still becomes `Ragnhild Toresdatter Håland`: you have a name either way, and the rescue is
     for the case where the label would otherwise be a bare given name.
 
     **Measured over the corpus: 19 labels move.** `Ånon Byre`, `Henrik Hebnes`, `Peder Mælum`,
@@ -848,8 +848,8 @@ def keep_own_surname(label: str, truncated: str, surn: str = "", marnm: str = ""
     that itself opens with a territorial word is refused.
 
     **`Marina til Jylland` -> `Marina Jylland` is the one to watch.** Jylland is a Danish
-    region, so it is the `Judith of Flanders` shape her ruling excludes — but Geni files it in
-    her `SURN`, and nothing in the data separates a farm from a region without a gazetteer,
+    region, so it is the `Judith of Flanders` shape your ruling excludes — but Geni files it in
+    your `SURN`, and nothing in the data separates a farm from a region without a gazetteer,
     which is the inference this repo refuses everywhere else. The field is the evidence.
     """
     if not label or not truncated or truncated == label:
@@ -900,7 +900,7 @@ def drop_leading_title(field: str) -> str:
     have emptied the field. It emitted `P734` *family name* `Q1158367` **Graf**.
 
     **Never to empty.** A field whose only token is a title keeps it — `Anna King` has `King`
-    as her whole surname, and 17 people carry `King` as a suffix while far more carry it as a
+    as your whole surname, and 17 people carry `King` as a suffix while far more carry it as a
     name. One token left is where this stops.
     """
     toks = (field or "").split()
@@ -933,12 +933,12 @@ def drop_leading_territorial(field: str) -> str:
 def drop_name_suffix(label: str, nsfx: str) -> str:
     """`label` with its whole `NSFX` removed. The suffix is never a name component.
 
-    **Emma, 2026-09-04:** *"our general thing should be basically the name suffix never is
+    **You, 2026-09-04:** *"our general thing should be basically the name suffix never is
     anything involved… there never should be anything that is ever translated within the name
     suffix. It is just it in terms of, like, the father name, the middle name, the first name,
     last name."* Those four are the components; `NSFX` is none of them.
 
-    **This supersedes `drop_title_suffix`, which kept the ordinals in the name.** Her 09-04
+    **This supersedes `drop_title_suffix`, which kept the ordinals in the name.** Your 09-04
     ruling *drop titles, keep ordinals* is not contradicted: an ordinal stays available as
     `P7338` *regnal ordinal*, a QUALIFIER on the given name, and stays in the rendered label.
     What it stops being is a `P735` or `P734` of its own, which it never should have been —
@@ -967,7 +967,7 @@ def drop_title_suffix(label: str, nsfx: str) -> str:
     suffix and far more carry it as a surname.
 
     An ordinal in the suffix stays where it is — `Robert VII` keeps its `VII` — which is the
-    half of her 2026-09-04 ruling that says *keep ordinals*.
+    half of your 2026-09-04 ruling that says *keep ordinals*.
     """
     if not label or not nsfx:
         return label
@@ -984,7 +984,7 @@ def drop_title_suffix(label: str, nsfx: str) -> str:
 def drop_description_suffix(label: str, nsfx: str) -> str:
     """`label` with a DESCRIPTION marker out of its own `NSFX` removed. `ogift` and its kin.
 
-    **Emma, 2026-09-07**, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*:
+    **You, 2026-09-07**, shown `Q141313961` live as *Helena Maria Linnerhielm ogift*:
     *"ogift is some kind of suffix that shouldn't have been treated as part of the name, and
     as a result it needs to be corrected on everyone that has it in their labels."* `ogift`
     is Swedish for *unmarried*.
@@ -1000,7 +1000,7 @@ def drop_description_suffix(label: str, nsfx: str) -> str:
 
     **Scoped to `_DESCRIPTION`, deliberately.** `drop_title_suffix` would strip this label and
     also `Graf`, `Queen` and `Knight` from every label carrying one, which is a far larger
-    change than the one asked for and reverses a ruling of hers rather than extending it. A
+    change than the one asked for and reverses a ruling of yours rather than extending it. A
     title is a thing a person was; a description marker is an annotation about the record.
 
     **The person's OWN `NSFX`, never a bare word list** -- the same exactness that keeps
@@ -1130,7 +1130,7 @@ def latin_genitive_stems(token: str) -> list[str]:
 def latin_patronymic(token: str, father_given: str) -> bool:
     """Whether `token` is a Latin genitive patronymic, CONFIRMED by the father's given name.
 
-    **Emma, 2026-09-05**, having linked `Olofsson` and `Olai` by hand and been shown the model
+    **You, 2026-09-05**, having linked `Olofsson` and `Olai` by hand and been shown the model
     reading `Olai` as a family name: *"detect the form, then confirm it against the father's
     own given name so `Petri` on an Italian is not swept up."*
 
@@ -1157,7 +1157,7 @@ def latin_patronymic(token: str, father_given: str) -> bool:
 def given_name_run(words):
     """The father's GIVEN names — the only position a patronymic source may come from.
 
-    **Emma, 2026-09-07**, shown `Q141336969` and `Q141290188` carrying `P144` *based on*
+    **You, 2026-09-07**, shown `Q141336969` and `Q141290188` carrying `P144` *based on*
     `Q58785388` *Junna*: *"neither of these are based on Junna lol at least not the Junna you
     linked. Not sure how you even got that one or how you're defining the patronymic sources."*
 
@@ -1171,10 +1171,10 @@ def given_name_run(words):
     off **2,654 tokens**, because a token three people bear has at most three attesting fathers.
     A share floor drops mostly *good* pairs — `johnsen ← Johannes` (8 fathers), `henriksen ←
     Henrich` (38), `olsson ← Olaus` (4) are real spellings of one name, and dropping them is what
-    her multi-valued ruling exists to prevent. Even the tightest blend leaves 168, and reading
+    your multi-valued ruling exists to prevent. Even the tightest blend leaves 168, and reading
     all 168 shows `knutsen ← Canuti` and `mortensen ← Martinus` among them.
 
-    **This drops 64 pairs and 47 thin tokens lose their derivation**, and every pair she flagged
+    **This drops 64 pairs and 47 thin tokens lose their derivation**, and every pair you flagged
     is in the 64: `johansson ← Junna`, `larsson ← Luur` (from `Anders Andersson Luur`),
     `bjørnsen ← Brun`, `andersen ← Aanderaa`, `jensen ← in`. A second group falls out for free —
     `jesenhausen ← Jesenhaus`, `ekmansson ← Ekman`, `lüttringhausen` — inherited German and
@@ -1275,7 +1275,7 @@ def is_description(givn: str) -> bool:
 def name_shape(token):
     """`(bare_token, usage_or_None)` -- brackets stripped, particles and markers named.
 
-    Emma's rulings of 2026-08-26, `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is
+    Your rulings of 2026-08-26, `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is
     THREE different things*. A `usage` of `None` means "an ordinary name token, carry on";
     `particle` and `unknown` are terminal and never reach the name plan.
 
@@ -1304,7 +1304,7 @@ def load_plan(path: Path | None = None) -> dict:
 
     `reports/ambiguous-names-resolved.tsv` is overlaid on top, where it has an answer.
     Those are the tokens the plan marks AMBIGUOUS and therefore refuses to emit;
-    `scripts/resolve-ambiguous-names.py` settles them by the bearer's sex (Emma's rule)
+    `scripts/resolve-ambiguous-names.py` settles them by the bearer's sex (your rule)
     and then by which candidate's `mul` label is the token itself, which is what
     separates the Russian `Мартин` from the Latin `Martin`. A token it cannot settle
     stays AMBIGUOUS and is still not emitted.
@@ -1328,10 +1328,10 @@ def load_plan(path: Path | None = None) -> dict:
 
     # **Does WIKIDATA have this name item -- not, does one of OUR people already link to one.**
     #
-    # Emma, 2026-08-29 on Tunheim: *"some of these names got merged in with an existing item.
+    # You, 2026-08-29 on Tunheim: *"some of these names got merged in with an existing item.
     # I'm extremely confused how this happened, and it seems to me to indicate maybe you're not
-    # actually checking the existence of the names correctly in our data."* She was right, and
-    # it is measurable: of the **10 name items she has created**, `Tunheim`, `Ronneberg`, `Bø`,
+    # actually checking the existence of the names correctly in our data."* You were right, and
+    # it is measurable: of the **10 name items you have created**, `Tunheim`, `Ronneberg`, `Bø`,
     # `Heigre` and `Nyvold` were all merged away by other editors as duplicates. The five that
     # stood are patronymics and a farm name -- names that genuinely did not exist.
     #
@@ -1347,7 +1347,7 @@ def load_plan(path: Path | None = None) -> dict:
     # Kind is never collapsed, per `CLAUDE.md` § *One name item per USAGE*: a `Q202444` given
     # name sharing a label does not make a family-name creation a duplicate. Labels fold on
     # case only, per the `María`/`Mária`/`Marià` rule.
-    # Only entries with no QID yet: a hand resolution and Emma's ambiguity rulings still win.
+    # Only entries with no QID yet: a hand resolution and your ambiguity rulings still win.
     out.update(_store_name_items({k for k, (qid, _a) in out.items() if not qid}))
     return out
 
@@ -1366,7 +1366,7 @@ def store_name_item(token, usage):
     **This must answer ANY token, not only one the plan holds.** The first version filtered to
     plan entries and `Ronneberg` walked straight past it -- it is not in
     `reports/name-item-plan.csv` at all, so `load_plan` returned nothing and the generator
-    created a duplicate of `Q37504456` for the second time. Emma had already created it once
+    created a duplicate of `Q37504456` for the second time. You had already created it once
     and another editor had already merged it away.
 
     Kind is never collapsed (`CLAUDE.md` § *One name item per USAGE*) and labels fold on case
@@ -1379,14 +1379,14 @@ def store_name_item(token, usage):
 
 
 def _load_store_index():
-    """`{(folded label, kind): qid}` — name items Emma has CREATED, then the local store.
+    """`{(folded label, kind): qid}` — name items you have CREATED, then the local store.
 
-    **Her own creations come first, and leaving them out cost eleven duplicate items.** The
+    **Your own creations come first, and leaving them out cost eleven duplicate items.** The
     store is the offline Wikidata download, so an item created *today* is not in it, and the
     Garborg ledger tracks people (keyed on `P2600`, which a name item does not have). A token
     created in one run was therefore invisible to the next, and `CREATE` always mints a new
     item rather than checking — so running the same regenerated file three times made three
-    `Jonsdatter`s. Measured over her 581 creations: 29 name items, 18 distinct labels, **10
+    `Jonsdatter`s. Measured over your 581 creations: 29 name items, 18 distinct labels, **10
     labels created more than once**, all eleven duplicates merged away by another editor.
 
     Not only patronymics — `Gennäs`, `Morlanda` and `Sør-Reime` are family names.
@@ -1412,8 +1412,8 @@ def _load_store_index():
         print(f"WARNING: {path.name} missing -- the name plan cannot see the name items "
               f"already on disk and will propose duplicates. "
               f"Run scripts/extract-name-items.py", file=sys.stderr)
-        return index          # her creations still apply; do not discard them
-    # `setdefault` below, so a label she has already created is never overwritten by the
+        return index          # your creations still apply; do not discard them
+    # `setdefault` below, so a label you have already created is never overwritten by the
     # store's answer for the same label.
     with gzip.open(path, "rt", encoding="utf-8") as fh:
         next(fh, None)
@@ -1445,7 +1445,7 @@ def _store_name_items(planned):
 #: bynames, so removing the branch would have destroyed 900-odd real nicknames to fix a handful
 #: of French names.
 #:
-#: **Emma, 2026-08-29, named the actual discriminator:** *"d' can be an escaped substring lol"* —
+#: **You, 2026-08-29, named the actual discriminator:** *"d' can be an escaped substring lol"* —
 #: an apostrophe bound into a word is elision, not a delimiter. So a quoted span now requires:
 #:
 #: * the opening `'` at a word boundary — start of string or after whitespace. This rejects
@@ -1472,7 +1472,7 @@ PATRONYMIC_PARTS = re.compile(r"^(.+?)(sen|son|sson|datter|sdatter|dotter)$", re
 #:
 #: **`d`/`t` was added 2026-08-31 after measuring, not before.** It is the commonest remaining
 #: alternation -- `Peder`/`Petter`, `Mads`/`Mats`, `Laurids`/`Laurits`, `Godskalk`/`Gotskalk` --
-#: and it rescues **1,410** tokens wrongly classified as inherited surnames. Emma's objection was
+#: and it rescues **1,410** tokens wrongly classified as inherited surnames. Your objection was
 #: that folding it would also merge `Anders` with `Antti`, which are cognates and not one name.
 #: Checked: it does not. Their skeletons are `andrs` and `ant`, which the fold leaves apart, and
 #: 8 of 8 sampled rescues are genuine (`Pedersdatter` of `Petter Jacobsen Falch`, `Madsdotter` of
@@ -1543,7 +1543,7 @@ def _same_name(stem: str, given: str) -> bool:
 def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "") -> str:
     """`"patronymic"` or `"family"` for a `-sen`/`-son` token, using the FATHER.
 
-    **Emma's test, 2026-08-26:** *"If father has -son or -sen then it's a surname lol that's
+    **your test, 2026-08-26:** *"If father has -son or -sen then it's a surname lol that's
     the test same with other patronymic surnames."*
 
     **The literal reading of that is 91% wrong** and measuring it is what caught it. In a
@@ -1570,7 +1570,7 @@ def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "")
     already has.
 
     **`also_known_as` is EVERY OTHER SPELLING the father is recorded under, and it feeds the
-    given-name half ONLY.** Emma, 2026-09-05, on `Q141312682` *Zacharias Olai Plantin*:
+    given-name half ONLY.** You, 2026-09-05, on `Q141312682` *Zacharias Olai Plantin*:
     *"he got Olofsson as a fucking surname"*. His father is `Olaus Petri Niurenius` — the
     Latin form Swedish clergy are recorded under — and `_skeleton("olof")` is `olf` against
     `_skeleton("olaus")` `ols`, so the stem matched nothing and a textbook patronymic came out
@@ -1636,8 +1636,8 @@ def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "")
 def without_nickname(label, fields):
     """`Ingvold (Pinkie) Remmie` -> `Ingvold Remmie`. A nickname is not part of the label.
 
-    **Emma, 2026-08-27, on `Q141199868`:** *"analyze https://www.wikidata.org/wiki/Q141199868 and
-    why it came out as brackets instead of what it is supposed to be too"*. Geni records her as
+    **You, 2026-08-27, on `Q141199868`:** *"analyze https://www.wikidata.org/wiki/Q141199868 and
+    why it came out as brackets instead of what it is supposed to be too"*. Geni records your as
     `Ingvold (Pinkie) /Remmie/` and the brackets went straight into `mul` and `en`.
     `CLAUDE.md` § *A nickname alias carries the SURNAME*: *"quotes never go in a label"*.
 
@@ -1694,10 +1694,10 @@ def relationship_words() -> frozenset:
 def names_a_relative(field: str) -> bool:
     """True when a NAME FIELD is a sentence about somebody else, not this person's name.
 
-    **Emma, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
-    relatives"*. She is recorded on Geni as `NN ektefelle Søren Jonson /Aukland/`, so her
+    **You, 2026-09-07, on `Q141352505`:** *"why are the NN people getting the names of their
+    relatives"*. You are recorded on Geni as `NN ektefelle Søren Jonson /Aukland/`, so your
     `GIVN` reads `NN ektefelle Søren Jonson` -- `ektefelle` is Norwegian for *spouse* and the
-    rest is her HUSBAND. Parsed positionally that gives her his given name as `P735` and his
+    rest is your HUSBAND. Parsed positionally that gives you his given name as `P735` and his
     patronymic as `P5056`.
 
     **The tell is structural: an unknown-name MARKER, then a relationship WORD.** Neither
@@ -1707,9 +1707,9 @@ def names_a_relative(field: str) -> bool:
     **⛔ IT LIVES HERE, IN THE MODEL, BECAUSE ONE EMITTER IS NOT ALL OF THEM.** It was added
     on 2026-09-07 to `build-garborg-day`'s `fields` loader, and `build-garborg-name-items.py`
     -- which builds its own `fields` straight from `display-names.csv` and emits
-    `Q… P735 LAST` for every bearer of a token it creates -- never saw it. Emma, 2026-09-09,
+    `Q… P735 LAST` for every bearer of a token it creates -- never saw it. You, 2026-09-09,
     on `Q141353755`: *"youre still adding names from the generated things on NN people as
-    given names"*, and the batch on her screen carried
+    given names"*, and the batch on your screen carried
     `Q141353755 P735 LAST … P3831 Q245025` for **Tollak**, her husband's given name.
     `classify_fields` is the one place every emitter goes through, so the guard belongs
     here and a future emitter is covered without being told.
@@ -1753,8 +1753,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     * `married`    — `_MARNM`, only where it differs from `SURN`
     * `nickname`   — a quoted token inside `GIVN`, or the `NICK` field
 
-    Emma, 2026-08-24, on the quoted case: it becomes `P1449` *nickname*, not a given
-    name and not a middle name. `Stena` is what `Stine` was called, not her second
+    You, 2026-08-24, on the quoted case: it becomes `P1449` *nickname*, not a given
+    name and not a middle name. `Stena` is what `Stine` was called, not your second
     forename.
 
     The married name carries no ordinal. Sex does not decide whether it is emitted --
@@ -1840,7 +1840,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             if not shape and is_daughter_patronymic(token):
                 out.append((token, "patronymic", 0))
                 continue
-            # **`Olai Plantin` is a patronymic and a family name, in that order.** Emma's own
+            # **`Olai Plantin` is a patronymic and a family name, in that order.** Your own
             # `Q141312682` *Zacharias Olai Plantin* carries both in `_MARNM`, and without this
             # the Latin genitive became a second `P734`.
             if not shape and latin_patronymic(token, father_given):
@@ -1925,7 +1925,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     Omitted when the father has no item yet rather than guessed.
 
     A `nickname` produces an **alias only** and no statement -- see the block that handles it
-    for Emma's 2026-08-29 ruling and why the drop lives here rather than in a caller.
+    for your 2026-08-29 ruling and why the drop lives here rather than in a caller.
 
     `sex` is `"M"` or `"F"` and decides one thing only: whether a `_MARNM` family name
     carries `P3831` -> `Q28418670` *married name*. On a man it does not -- see below.
@@ -1953,7 +1953,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # `classify_fields` as `Son` and `Stillborn daughter 1` as `daughter 1` -- and
         # `classify_fields` recognises the phrase WHOLE, through `is_description`, so it never
         # saw one. That produced `P735` given name *Son*, *daughter* and *1* on **296**
-        # stillborn people. Emma, 2026-08-30: *"please stop trying to assign names to this
+        # stillborn people. You, 2026-08-30: *"please stop trying to assign names to this
         # person who does not in fact have any names at all."*
         #
         # It was invisible because `build-garborg-day` gated the whole name block on its own
@@ -1968,7 +1968,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
                 fields[_f] = drop_leading_territorial(
                     drop_leading_title(drop_title_tail(fields[_f])))
         # **`father_name` is what turns a `-sen` token into the right kind of statement.**
-        # Emma's test: the same token as the father means an inherited surname (`P734`), a
+        # your test: the same token as the father means an inherited surname (`P734`), a
         # stem matching the father's GIVEN name means a patronymic (`P5056`). Without it the
         # morphology alone decides, which is what every caller did until 2026-08-27 and is
         # still the answer when the father is unknown.
@@ -1982,7 +1982,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     given_count = sum(1 for _t, u, _o in tokens if u == "given")
 
     for token, usage, ordinal in tokens:
-        # **A particle and an unknown marker never reach the name plan.** Emma, 2026-08-26:
+        # **A particle and an unknown marker never reach the name plan.** You, 2026-08-26:
         # a particle is *"integral parts of what the people are called"* and so belongs in
         # the LABEL, and a marker joins the `NN` population `scripts/labels.py` owns. Looking
         # either up would find nothing and file a spurious "not in the plan" note; emitting
@@ -1990,7 +1990,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         if usage in ("particle", "unknown"):
             continue
 
-        # **A nickname produces an ALIAS and no statement. Emma, 2026-08-29:** *"the nicknames
+        # **A nickname produces an ALIAS and no statement. You, 2026-08-29:** *"the nicknames
         # (listed in English????) are not something that's good. Just drop the nickname
         # functionality because the nicknames being listed in English is unacceptable. Just
         # lmul vs amul."*
@@ -2010,7 +2010,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         # **The nickname is not lost and its classification is untouched.** The token is still
         # recognised, still kept out of the given names, and still reaches Wikidata through
         # `aliases_for` -- an `Amul` carrying the nickname form beside the `Lmul` carrying the
-        # primary name, which is exactly the *"just lmul vs amul"* she asked for.
+        # primary name, which is exactly the *"just lmul vs amul"* you asked for.
         if usage == "nickname":
             aliases.append(token)
             continue
@@ -2026,7 +2026,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
 
         if usage == "given":
             # **`P1545` *series ordinal* only where there is more than one given name.**
-            # Emma, 2026-08-25, on why she has been running batches only in part:
+            # You, 2026-08-25, on why you have been running batches only in part:
             # *"they have consistently included things I did not want, such as the series
             # orginal 1 on peoples given names when there is only one given name"*.
             #
@@ -2036,7 +2036,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
             # preferred rank* to people who have a middle name.
             quals = [(SERIES_ORDINAL, str(ordinal))] if given_count > 1 else []
             # **`P7452` -> `Q3409033` *usual forename* only where there IS a middle
-            # name.** Emma, 2026-08-24: *"usual forename only applies when there is a
+            # name.** You, 2026-08-24: *"usual forename only applies when there is a
             # middle name"*. It exists to say which of several given names is the one
             # actually used, so on a person with a single given name it distinguishes
             # nothing and asserts a contrast that does not exist.
@@ -2050,8 +2050,8 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
             quals = [("P144", father_qid)] if father_qid else []
             lines.append((PATRONYM, qid, quals))
         elif usage == "married":
-            # Emma, 2026-08-24: a SECOND `P734`, qualified married against birth.
-            # **`Q28418670` *married name* only on a woman.** Emma, 2026-08-24:
+            # You, 2026-08-24: a SECOND `P734`, qualified married against birth.
+            # **`Q28418670` *married name* only on a woman.** You, 2026-08-24:
             # *"married name on a man ... ontologically married name on a man means
             # more like adopted surname. So men's 'married names' should not have the
             # role of married name."*
@@ -2070,7 +2070,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
                 lines.append((FAMILY_NAME, qid, []))
         else:
             # Only qualify the birth family name when a married one sits beside it;
-            # a lone surname needs no role and none of her items carries one.
+            # a lone surname needs no role and none of your items carries one.
             has_married = any(u == "married" for _t, u, _o in tokens)
             quals = [(HAS_ROLE, BIRTH_NAME_ROLE)] if has_married else []
             lines.append((FAMILY_NAME, qid, quals))
@@ -2082,7 +2082,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     # went red the moment the father fix changed which token today's batch reached.
     #
     # **This is NOT the duplication `CLAUDE.md` protects.** That rule is about values on
-    # Wikidata Emma duplicates deliberately to attract bot edits, and about not adding a
+    # Wikidata you duplicates deliberately to attract bot edits, and about not adding a
     # general de-duplication pass over the data. This drops a byte-identical repeat of one
     # statement inside one generated batch, which asserts nothing the first did not.
     # Leaving it in was the call made earlier today and the suite was right to refuse it.
@@ -2099,7 +2099,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
 def aliases_for(fields, surn="", marnm=""):
     """Alias strings for an item: the nicknames, and the married full name.
 
-    Emma asked for aliases alongside the second `P734` *family name*. A married
+    You asked for aliases alongside the second `P734` *family name*. A married
     surname makes the person findable under a name no statement spells out, which is
     what an alias is for.
     """
@@ -2110,13 +2110,13 @@ def aliases_for(fields, surn="", marnm=""):
     marnm = marnm or fields.get("marnm", "")
     given = [t for t, u, _o in tokens if u == "given"]
 
-    # **A nickname alias carries the SURNAME, or it finds nobody.** Emma, 2026-08-26, on
+    # **A nickname alias carries the SURNAME, or it finds nobody.** You, 2026-08-26, on
     # `Q141189102`: *"this person was given an alias of 'Sally' instead of 'Sally Ekman'"*.
-    # Her record is `GIVN 'Sigrid "Sally" Manilva'`, `SURN Tunheim`, `_MARNM Ekman`, and a
-    # bare `Sally` is not a name anybody could look her up by.
+    # Your record is `GIVN 'Sigrid "Sally" Manilva'`, `SURN Tunheim`, `_MARNM Ekman`, and a
+    # bare `Sally` is not a name anybody could look your up by.
     #
     # The surname used is the **married** one where there is one, because § *The MARRIED
-    # name is the real name* makes that the form her primary label takes -- so the alias is
+    # name is the real name* makes that the form your primary label takes -- so the alias is
     # the same person's name with the nickname swapped in, not a different person's.
     #
     # `P1449` *nickname* keeps the BARE token, and must: `Sally` is the nickname. It is the
@@ -2131,13 +2131,13 @@ def aliases_for(fields, surn="", marnm=""):
     # `Johannes Nilsson Nilsson`, `Thorbjørn Lekve Magelssen Magelssen`.
     #
     # The test is `endswith`, not "contains": a nickname that merely mentions the surname
-    # somewhere still wants it appended in the ordinary position, and Emma's own case is
+    # somewhere still wants it appended in the ordinary position, and your own case is
     # untouched -- `Sally` does not end with `Ekman`, so it still becomes `Sally Ekman`, which
     # is the whole point of the alias.
-    # **The `NICK` FIELD is not a nickname and never takes the surname.** Emma,
+    # **The `NICK` FIELD is not a nickname and never takes the surname.** You,
     # 2026-09-04, on `Carolina Gustafsdotter Wittfooth`: *"This persons last name is
     # re[pe]ated twice in a mul alias"* -- the item went out carrying
-    # `Amul "Wittfoth Wittfooth"`. Her record is `NICK Karolina`, `NICK Wittfoth`,
+    # `Amul "Wittfoth Wittfooth"`. Your record is `NICK Karolina`, `NICK Wittfoth`,
     # `SURN Wittfooth`, `_MARNM Wittfooth`: the `NICK` holds an alternate SPELLING of the
     # surname, so appending the surname spells it twice.
     #
@@ -2149,8 +2149,8 @@ def aliases_for(fields, surn="", marnm=""):
     # `Ludvig II Änkyttäjä`, `Jägerhorn af Spurila`. Every one of those reads correctly
     # on its own and badly with a surname stapled on.
     #
-    # **Emma's own case is the OTHER source and is untouched.** `Q141189102` is
-    # `GIVN 'Sigrid "Sally" Manilva'`, `SURN Tunheim`, `_MARNM Ekman` -- and her `nick`
+    # **your own case is the OTHER source and is untouched.** `Q141189102` is
+    # `GIVN 'Sigrid "Sally" Manilva'`, `SURN Tunheim`, `_MARNM Ekman` -- and your `nick`
     # column is EMPTY. `Sally` is a quoted token inside `GIVN`, which is a genuine byname
     # and is not findable bare, so it still becomes `Sally Ekman`; that is what
     # `CLAUDE.md` § *A nickname alias carries the SURNAME* is about and it still holds.
@@ -2181,7 +2181,7 @@ def aliases_for(fields, surn="", marnm=""):
         if given:
             out.append(f"{' '.join(given)} {married}")
 
-    # **The bracketed form itself is an alias.** Emma, 2026-08-26: *"Amul for the brackets"*.
+    # **The bracketed form itself is an alias.** You, 2026-08-26: *"Amul for the brackets"*.
     # The two `P734` *family name* statements are coequal and unqualified, so nothing in the
     # statements records how Geni actually writes the name; the alias does, and it is what
     # makes the person findable by what is on their profile page.

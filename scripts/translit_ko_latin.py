@@ -5,7 +5,7 @@ the 1.39 million with a Latin one — including every person the Garborg ring cr
 gate is `ja` + `zh` + `ko` now, and `ja`/`zh` reach Latin names through `translit_no`, so `ko`
 needs the same road.
 
-**Emma's standard, which is what makes a rule-based rendering acceptable at all:** *"incorrect
+**your standard, which is what makes a rule-based rendering acceptable at all:** *"incorrect
 romanization or incorrect representations in katakana are totally acceptable. An incorrect name is
 not."* A Hangul spelling of `Garborg` may not be the one a Korean newspaper would choose; it is
 still that person's name, written in Korean letters. Inventing a different *name* is the thing
@@ -322,7 +322,7 @@ def render_word(word):
         # No vowel follows: the consonant takes 으 -- **and that syllable has a final slot
         # like any other.** It was composed without one, so a word-final cluster split into two
         # epenthetic syllables: `Abjörn` 압죄르느 where Korean writes 른, `Adsirn` 아드시르느.
-        # **1,245 tokens carried the 느 filler**, and Emma named the whole class:
+        # **1,245 tokens carried the 느 filler**, and you named the whole class:
         # *"we're improvising to get a faithfulness to the original languages that theoretically
         # is good but ends up just destroying stuff."*
         final = ""

@@ -2,10 +2,10 @@
 
     python scripts/check-post-merge-resolution.py
 
-**Emma's design, 2026-08-24.** Geni has merged people our corpus still holds twice. Rather
+**your design, 2026-08-24.** Geni has merged people our corpus still holds twice. Rather
 than throw away the earlier exports — they carry thousands of people the merge needs — a fresh
 export goes into `exports/post-merge/`, where **a Geni record overwrites the same Geni ID from
-any other export**, because post-merge is newest and therefore right. Her stopping rule is not
+any other export**, because post-merge is newest and therefore right. Your stopping rule is not
 a count of exports: *"export until every first-degree relative of every merged individual is
 present"*.
 

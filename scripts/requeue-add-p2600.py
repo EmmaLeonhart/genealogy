@@ -1,6 +1,6 @@
-"""Put the `build-add-p2600-batch` decision back in front of her, once, on 2026-09-13.
+"""Put the `build-add-p2600-batch` decision back in front of you, once, on 2026-09-13.
 
-**Emma, 2026-09-06, asked to rule on it:** *"Ngl I have so little context set up github actions
+**You, 2026-09-06, asked to rule on it:** *"Ngl I have so little context set up github actions
 to add asking this into the queue again a week from now (appending it) because I'm incapable of
 making a decision now."*
 
@@ -11,7 +11,7 @@ cron in this repo has died at least once — the 2026-08-28 crash took all of th
 survives all of that, needs nobody to remember anything, and moving the date is a one-line edit.
 
 **It appends ONCE.** The marker is checked first, so a daily schedule cannot append a duplicate
-every morning. If she defers again, move `WHEN` forward and delete the appended item.
+every morning. If you defers again, move `WHEN` forward and delete the appended item.
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ import pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 QUEUE = ROOT / "queue.md"
 
-#: A week after she deferred it.
+#: A week after you deferred it.
 WHEN = datetime.date(2026, 9, 13)
 
 #: Written into the appended item as an HTML comment, so the check is on the queue's own content
@@ -40,7 +40,7 @@ ITEM = """- **DECIDE: what happens to `build-add-p2600-batch`.** <!-- {marker} -
 
   The other five generators in that audit were settled on 2026-09-06 —
   `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
-  `build-sibling-batch` deleted at her instruction, `build-from-diff` given its own review item.
+  `build-sibling-batch` deleted at your instruction, `build-from-diff` given its own review item.
   This is the last one open.
 """
 

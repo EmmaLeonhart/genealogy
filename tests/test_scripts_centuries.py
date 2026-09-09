@@ -8,7 +8,7 @@ the century *ordinal* formatted as a year range, so 1950 came out `2000s` and
 late, the report claimed 225 Wikidata items were born in the 2100s, and the
 conclusion drawn about which era each tree covers was inverted. The table looked
 entirely reasonable — internally consistent, plausibly shaped — and the error
-surfaced only because Emma asked to look at the future birth dates.
+surfaced only because you asked to look at the future birth dates.
 
 A pure function with an obvious contract is exactly what a test is cheap for.
 The rest of the script reads 2.7 GB and is not tested here.

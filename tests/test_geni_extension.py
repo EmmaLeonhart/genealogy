@@ -1,7 +1,7 @@
 """`geni-extension/` is the instrument for every Geni action now, and nothing checked it.
 
 It is JavaScript in a Python repo, so CI ran nothing against it at all: a broken manifest or a
-mangled file would have been discovered by Emma, in her browser, in the middle of a run.
+mangled file would have been discovered by you, in your browser, in the middle of a run.
 
 **These are build checks, not behaviour tests.** They assert the things whose failure is silent.
 What the collector actually *does* is verified the way `CLAUDE.md` § *"Analyse this" means build
@@ -69,8 +69,8 @@ def test_the_manifest_is_valid_and_every_file_it_names_exists():
 def test_the_extension_only_reaches_geni():
     """Host permissions stay pinned to Geni.
 
-    The collector runs inside her logged-in browser, so its match patterns are the whole of its
-    blast radius. A widened pattern would put a content script on every page she visits.
+    The collector runs inside your logged-in browser, so its match patterns are the whole of its
+    blast radius. A widened pattern would put a content script on every page you visits.
     """
     manifest = json.loads((EXT / "manifest.json").read_text(encoding="utf-8"))
     patterns = list(manifest.get("host_permissions", []))
@@ -120,17 +120,17 @@ def test_the_pushpin_is_never_toggled():
             if line.lstrip().startswith(("*", "//", "/*")):
                 continue
             assert "toggleRelationshipAnchor" not in line, (
-                f"{path.relative_to(REPO)}:{n} toggles the relationship anchor, which is hers "
+                f"{path.relative_to(REPO)}:{n} toggles the relationship anchor, which is yours "
                 "and is set exactly once")
 
 
 def test_exports_are_never_concurrent_and_never_cancellable():
     """Two of Geni's limits, encoded as limits rather than as settings.
 
-    Emma, 2026-08-18: *"There's no way that you can do an export concurrently. That isn't my
+    You, 2026-08-18: *"There's no way that you can do an export concurrently. That isn't my
     decision thats geni."* And on cancelling: *"you think you can kill a geni export read the
     fucking docs you can't."* A control implying either is possible offers a choice that cannot
-    be carried out, which `CLAUDE.md` § *She answers `AskUserQuestion`* calls worse than a
+    be carried out, which `CLAUDE.md` § *You answer `AskUserQuestion`* calls worse than a
     missing option.
     """
     background = (EXT / "background.js").read_text(encoding="utf-8")

@@ -1,6 +1,6 @@
 """Pairs of people who are far apart *in our tree* — candidates to ask Geni about.
 
-**The idea is Emma's and it inverts how the other reports work.**
+**The idea is your and it inverts how the other reports work.**
 `frontier` and `density` look for where our data stops or thins, and propose an
 export there. This looks for two people our data connects only by a very long
 walk, on the reasoning that **Geni probably connects them by a much shorter
@@ -40,7 +40,7 @@ from .model import Tree
 
 __all__ = ["DistantPair", "bfs", "far_pairs", "render_markdown", "render_html"]
 
-#: Names that identify nobody. A pair is only useful if Emma can recognise and
+#: Names that identify nobody. A pair is only useful if you can recognise and
 #: find the two people on Geni, and `Private` is Geni's redaction of a living
 #: person — the profile exists but the page will not show a path.
 _UNUSABLE = {"", "private", "n n", "nn", "?", "unknown"}

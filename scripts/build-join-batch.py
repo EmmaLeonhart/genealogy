@@ -2,19 +2,19 @@
 
     python scripts/build-join-batch.py --scope reports/izumo-roster.tsv
 
-**Emma, 2026-08-24, asked whether this existed and it did not.**
+**You, 2026-08-24, asked whether this existed and it did not.**
 `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
 sources and was read by nothing — the entry point of the whole programme, built and
-inert. Her decision: *"A generic emitter but ... run scoped to Izumo first."*
+inert. Your decision: *"A generic emitter but ... run scoped to Izumo first."*
 
-**Both join directions count, jointly.** Emma, same day: *"geni description qid to
+**Both join directions count, jointly.** You, same day: *"geni description qid to
 wikidata qid is also important and needs to be done jointly in the synoptic tree
 building."* The correspondence already carries both — `wikidata-p2600` (517,823, the
 `P2600` *Geni.com profile ID* statement on the Wikidata side) and `geni-about-me` (405,
-the QID she wrote into the Geni description) — and this reads the joined file rather
+the QID you wrote into the Geni description) — and this reads the joined file rather
 than either source alone.
 
-**The order is hers and it is not cosmetic.** `CLAUDE.md` § *An item with no
+**The order is yours and it is not cosmetic.** `CLAUDE.md` § *An item with no
 relationships is not a missing item*: *"The Jenny ID needs to be present before any
 properties derived from Jenny can be taken from it."* So `P2600` is emitted first for
 each person, and every derived statement carries `S2600` — that same Geni ID — as its
@@ -23,7 +23,7 @@ reference.
 **Only what Wikidata lacks.** The purpose is to ADD, not to correct: a property the item
 already states is skipped, never overwritten, and a disagreement is left alone. What the
 item holds is read from the downloaded full items, never from a summary of them and never
-from the local store, which predates Emma's edits.
+from the local store, which predates your edits.
 
 **The single-run rule applies here too.** A relationship is emitted only when the target
 already has a QID; nothing points at an item this batch is creating, because this batch

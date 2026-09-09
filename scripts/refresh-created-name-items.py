@@ -1,4 +1,4 @@
-"""The name items Emma has ALREADY created, so the generator stops re-creating them.
+"""The name items you have ALREADY created, so the generator stops re-creating them.
 
     python scripts/refresh-created-name-items.py
 
@@ -8,7 +8,7 @@
 `P2600`, which a name item does not have). So a token created in one run was invisible to the
 next, and `CREATE` in QuickStatements always mints a new item rather than checking.
 
-Emma ran the same regenerated file three times. The result, measured over all 581 items she has
+You ran the same regenerated file three times. The result, measured over all 581 items you have
 created: **29 name items under 18 distinct labels, 10 of those labels created more than once** —
 `Jonsdatter` three times. Another editor, `OBender12`, merged all eleven duplicates away and
 stripped the `P734` links pointing at the losers.
@@ -16,7 +16,7 @@ stripped the `P734` links pointing at the losers.
 It is not only patronymics: `Gennäs`, `Morlanda` and `Sør-Reime` are family names.
 
 **Why the PEOPLE were safe and the name items were not.** A created person carries a `P2600`, so
-`refresh-garborg-ledger.py` finds them in her contributions and the batch never re-proposes them.
+`refresh-garborg-ledger.py` finds them in your contributions and the batch never re-proposes them.
 A name item has no Geni id and no such anchor. Exactly one person slipped through — Anna
 Andersdotter, `Q141199706` and `Q141199819`, same `P2600` ten minutes apart — and that is a
 different fault from this one.

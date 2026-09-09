@@ -1,6 +1,6 @@
-"""Build reports/merges-to-do.md - the file Emma works from by hand.
+"""Build reports/merges-to-do.md - the file you work from by hand.
 
-Emma, 2026-08-31: "Just make a 'merges to do' file that records these merges and the
+You, 2026-08-31: "Just make a 'merges to do' file that records these merges and the
 wikidata duplicates and all the other things we went over that's a file I'll use tomorrow
 to do merges manually on my own with the quickstatements session".
 
@@ -13,10 +13,10 @@ Three populations, and they are not the same kind of work:
     double-creation.
   * **Geni merges that cross a manager** - a real duplicate where the other profile belongs
     to somebody else, so merging is a request another editor sees.
-  * **Items to audit** - three she flagged as wrong rather than duplicated. Not merges, but
+  * **Items to audit** - three you flagged as wrong rather than duplicated. Not merges, but
     the same sitting.
 
-Labels come from her ledger where she has one and from the merged tree otherwise; nothing
+Labels come from you ledger where you have one and from the merged tree otherwise; nothing
 here is looked up over the network.
 """
 
@@ -82,15 +82,15 @@ def ledger_against_correspondence():
     """`[(geni_id, ours, {rival qid: sources})]` — an item we created beside an older one.
 
     **The shape section 1 cannot see.** That section needs BOTH items to carry a `P2600`, so it
-    finds double-creations by our own batches and nothing else. The duplicates Emma actually hit
+    finds double-creations by our own batches and nothing else. The duplicates you actually hit
     on 2026-09-01 were the opposite: the **pre-existing item carries no Geni id at all**, so no
     `P2600` join reaches it and a `P2600` search afterwards returns only the one we made.
     `Q550343` *Welf I, Duke of Bavaria*, 27 sitelinks, was created again as `Q141249742` for
-    exactly that reason, along with three others she merged by hand the same afternoon.
+    exactly that reason, along with three others you merged by hand the same afternoon.
 
     `reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural
     walk. Where the ledger says a Geni profile is one item and the correspondence says it is also
-    an older one, that is a probable double-creation and a merge for her.
+    an older one, that is a probable double-creation and a merge for you.
 
     **40 of them on 2026-09-01**, five spot-checked live that day: every one matched on sex, and
     on both dates wherever both sides carried them — `Johanna Catharina Burman` 1710–1778 against
@@ -131,7 +131,7 @@ def pair_lines(geni_id, qids, label):
 def main():
     dupes = wikidata_duplicates()
     led = ledger()
-    hers = {g: q for g, q in dupes.items() if g in led}
+    yours = {g: q for g, q in dupes.items() if g in led}
     theirs = {g: q for g, q in dupes.items() if g not in led}
     names = tree_labels(set(theirs))
 
@@ -154,7 +154,7 @@ def main():
         "fall where it should.\n"
     )
 
-    w.append("\n## 1. Wikidata duplicates in your own ledger - {}\n".format(len(hers)))
+    w.append("\n## 1. Wikidata duplicates in your own ledger - {}\n".format(len(yours)))
     w.append(
         "One Geni profile carrying two Wikidata items, where the ledger tracks that person. "
         "This is a double-creation, not the two-ids-on-one-item case CLAUDE.md says to leave "
@@ -167,7 +167,7 @@ def main():
         "`wbgetentities`, none is already a redirect, and each pair carries the same `P2600`. "
         "They are live duplicates, not an artefact of a stale download.\n"
     )
-    consecutive = [g for g, q in hers.items() if len(q) == 2 and qnum(q[1]) - qnum(q[0]) <= 3]
+    consecutive = [g for g, q in yours.items() if len(q) == 2 and qnum(q[1]) - qnum(q[0]) <= 3]
     if consecutive:
         w.append(
             "**{} of these are near-consecutive Q numbers**, which means one run created "
@@ -175,7 +175,7 @@ def main():
                 len(consecutive)
             )
         )
-    for geni_id, qids in sorted(hers.items(), key=lambda kv: qnum(kv[1][0])):
+    for geni_id, qids in sorted(yours.items(), key=lambda kv: qnum(kv[1][0])):
         w.append(pair_lines(geni_id, qids, led[geni_id].get("label", "")))
 
     w.append("\n## 2. Wikidata duplicates outside your ledger - {}\n".format(len(theirs)))
@@ -341,7 +341,7 @@ def main():
 
     OUT.write_text("\n".join(w) + "\n", encoding="utf-8")
     print("wrote {}".format(OUT))
-    print("  wikidata duplicates: {} yours, {} other".format(len(hers), len(theirs)))
+    print("  wikidata duplicates: {} yours, {} other".format(len(yours), len(theirs)))
     print("  created beside an older item: {}".format(len(rivals)))
 
     # **The page is regenerated with the file, in the same step.** The queue item asks for this

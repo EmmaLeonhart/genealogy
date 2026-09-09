@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Guard: may this repo edit Wikidata yet?
 
-**This repo's own date, and nothing else.** Emma, 2026-08-23: *"Shintowiki scripts
+**This repo's own date, and nothing else.** You, 2026-08-23: *"Shintowiki scripts
 uses a different lockdown period lol. This repo starts at sept 1"*, and then:
 *"Shintowiki scripts and this one are not the same and not really coordinated."*
 
@@ -32,13 +32,13 @@ import io
 import os
 import sys
 
-#: The date this repo may begin editing Wikidata. Emma, 2026-08-14: *"no wikidata
+#: The date this repo may begin editing Wikidata. You, 2026-08-14: *"no wikidata
 #: edits until September 1"*. It matches ``START_DATE`` in
 #: ``.github/workflows/wikidata-edits.yml``; `tests/test_wikidata_start_date.py`
 #: fails if the two ever disagree, which is the whole reason to write it twice.
 START_DATE = "2026-09-01"
 
-#: The date the daily batch starts running BY ITSELF. Emma, 2026-09-05: *"I want to
+#: The date the daily batch starts running BY ITSELF. You, 2026-09-05: *"I want to
 #: on the 15th start all of this stuff automatically"*, and asked what starts, "The
 #: daily Garborg batch", sent through the bot-password API.
 #:

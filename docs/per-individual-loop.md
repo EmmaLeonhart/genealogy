@@ -1,6 +1,6 @@
-# The per-individual loop — three things, in her order
+# The per-individual loop — three things, in your order
 
-**Emma, 2026-09-06, dictating the whole of it:**
+**You, 2026-09-06, dictating the whole of it:**
 
 > *"There's three things: forest from created individual, making a path from Charlemagne to the
 > individual, and getting the family members from the page only.*
@@ -27,7 +27,7 @@ yielded something.
 
 ## ⛔ STEP 3b IS GATED ON THE STATISTICS. A tiny profile gets NO export
 
-**Emma, 2026-09-06**, on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10, Ancestors 5,
+**You, 2026-09-06**, on bishop Camillo Ballin -- Family Tree 11, Blood Relatives 10, Ancestors 5,
 whose Charlemagne search resolved to a genuine *"No path found"*:
 *"this guy has pretty much no relatives so he shouldn't get an export lol"*.
 
@@ -37,9 +37,9 @@ export is worth spending. A **tiny** figure beside the same sentence means the m
 whole neighbourhood is the handful already on the page, and an export seeded there returns that
 handful. Ballin's would have come back with about eleven people.
 
-**Every figure carries a threshold, not just one, and `blood_relatives` was never her idea.**
-The question put to her offered four floors all written in blood relatives, so the **number**
-1,000 is hers and the **figure** was mine. Her replies: *"why the fuck did you choose blood
+**Every figure carries a threshold, not just one, and `blood_relatives` was never your idea.**
+The question put to you offered four floors all written in blood relatives, so the **number**
+1,000 is yours and the **figure** was mine. Your replies: *"why the fuck did you choose blood
 relatives"*, *"All of them need thresholds not just blood relatives"*, and *"I didn't tell you to
 do blood relatives."* `family_tree` is the component size -- what an export can actually reach --
 and a `Forest` export follows spouse links precisely to cross the in-law edges `blood_relatives`
@@ -49,9 +49,9 @@ excludes.
 the floor clears the gate, because they measure different things and a person can be evidently
 connected by any of them.
 
-**⛔ ONE FLOOR, 300, ACROSS EVERY FIGURE.** Emma, 2026-09-06: *"Any number over 1,000 is a sure
+**⛔ ONE FLOOR, 300, ACROSS EVERY FIGURE.** You, 2026-09-06: *"Any number over 1,000 is a sure
 export, i say even any number over 300 lol"*. That replaced five per-figure thresholds — 1,000 /
-1,000 / 100 / 100 / 10 — which were mine. Her sentence is not five judgements, it is one reading
+1,000 / 100 / 100 / 10 — which were mine. Your sentence is not five judgements, it is one reading
 of when the block says there is more there than the page shows, so whichever figure carries the
 number, over 300 is enough.
 
@@ -64,8 +64,8 @@ the weakest figure. Measured over the twelve readings held, **exactly one change
 Eisner, SKIP to EXPORT — and Ballin still skips at 11.
 
 **The case that proves `family_tree` is the right primary figure** is Dorothy Jeakins:
-Family Tree 1,405, Blood Relatives **1**. She is connected through in-laws, and a blood-relative
-gate would have thrown away the one export that could reach her. Of the eight readings we hold,
+Family Tree 1,405, Blood Relatives **1**. You are connected through in-laws, and a blood-relative
+gate would have thrown away the one export that could reach you. Of the eight readings we hold,
 Ballin is the only skip.
 
 **Step 3 is the expensive fallback and only fires on failure.** A `Forest` export costs a Geni
@@ -78,26 +78,26 @@ caution that goes with it — a *"no relationship found"* beside a saturated Blo
 is a database failure, not a negative result, which is why the statistics are read at step 1 and
 not inferred later.
 
-## ⛔ STEP 3b IS A `Forest` EXPORT. Her 2026-09-03 `Ancestors` instruction is WRONG
+## ⛔ STEP 3b IS A `Forest` EXPORT. Your 2026-09-03 `Ancestors` instruction is WRONG
 
-**Emma, 2026-09-06, ruling on the contradiction directly: _"9-03 is wrong"_.**
+**You, 2026-09-06, ruling on the contradiction directly: _"9-03 is wrong"_.**
 
 `queue.md`'s tail section, written 2026-09-03, gives a precedence order whose first case is
 *connected to Charlemagne, no relationship found after the query* → **run a full `Ancestors`
-export**, and calls it the common case. Her 2026-09-06 dictation says the opposite —
+export**, and calls it the common case. Your 2026-09-06 dictation says the opposite —
 *"if not then we do the forest thing out of the isolated geni individuals"* — and `Forest` is what
 the collector implements.
 
-**She has now settled it: `Forest`.** The reason it matters rather than being a label: `Forest`
+**You have now settled it: `Forest`.** The reason it matters rather than being a label: `Forest`
 follows spouse links and `Ancestors` walks straight up, so on a person connected through in-laws
-an `Ancestors` export goes past the join entirely. Her own tail notes name Moshe Bar Nissim as
+an `Ancestors` export goes past the join entirely. Your own tail notes name Moshe Bar Nissim as
 failing *"because of large in-law chains"* — exactly the case `Ancestors` cannot reach.
 
-The tail's precedence order is left as she wrote it; this supersedes its first case.
+The tail's precedence order is left as you wrote it; this supersedes its first case.
 
 ## ⛔ THE PHASE ORDER. The sibling scrape is LAST, and its input is the INTEGRATED tree
 
-**Emma, 2026-09-06, correcting a mass sibling scrape I had already started:**
+**You, 2026-09-06, correcting a mass sibling scrape I had already started:**
 
 > *"Run the wikidata isolate connecting operation on all wikidata isolates, then you will have a
 > very large number of paths plus immediate family object things from such people, with occasional
@@ -128,7 +128,7 @@ objects, its exports, and the merge. Scraping 2,525 people off today's path file
 2,525 page loads to answer a question that phase 2 was going to answer for free, on a list that
 phase 1 was going to shrink.
 
-**Four scrapes were taken before she stopped it** — Arne Garborg, Jon Eivindson Garborg, Maria
+**Four scrapes were taken before you stopped it** — Arne Garborg, Jon Eivindson Garborg, Maria
 Carlberg, Sara Carlberg. Read-only, and out of order.
 
 ## The second rule: sibling pairs in paths get the same scrape

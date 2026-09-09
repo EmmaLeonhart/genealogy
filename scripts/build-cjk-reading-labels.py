@@ -2,7 +2,7 @@
 
     py scripts/build-cjk-reading-labels.py
 
-**Emma, 2026-09-02**, on why these are aliases and not labels: *"there would be `Amul` labels for
+**You, 2026-09-02**, on why these are aliases and not labels: *"there would be `Amul` labels for
 the rest — for the other two, or even `Amul` for all of them — and the `mul` one is set later."*
 
 That is the whole design and it is what takes the culture classifier off the critical path. Every
@@ -81,10 +81,10 @@ DYNASTY_TOKENS = {"大唐帝國", "隋朝列祖列宗"}
 
 #: A token ending in one of these is a **relationship, not a name** — `室`/`妻` *wife of*,
 #: `母` *mother of*, `女` *daughter of*. `信秀側室 織田` is not a woman called
-#: Nobuhide-sokushitsu; it is Nobuhide's concubine, recorded by whose concubine she was.
+#: Nobuhide-sokushitsu; it is Nobuhide's concubine, recorded by whose concubine you were.
 RELATIONAL_SUFFIX = ("室", "妻", "母", "女")
 
-#: …except where the ending IS part of her own name. `刀自古郎女 蘇我` is Soga no Tojiko no
+#: …except where the ending IS part of your own name. `刀自古郎女 蘇我` is Soga no Tojiko no
 #: Iratsume and `手白香皇女` is Princess Tashiraka — `郎女` and `皇女` sit after a woman's own
 #: name where `室` and `妻` sit after her husband's.
 NAME_BEARING_SUFFIX = ("皇女", "郎女", "郞女", "采女")

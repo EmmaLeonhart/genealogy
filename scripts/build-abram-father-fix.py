@@ -1,6 +1,6 @@
 """Abram's father: Wikidata skips a generation and we can prove it.
 
-**Emma, 2026-08-16:** *"we are right, and Wikidata is wrong for the father. Deal
+**You, 2026-08-16:** *"we are right, and Wikidata is wrong for the father. Deal
 with it."*
 
 **The error, and it is the same one this project already fixed on the Geni side.**
@@ -13,7 +13,7 @@ So one item says Yitzhaq I preceded him in the priesthood while Tsedaka II
 fathered him — skipping a generation. Pummer's succession has Tsedaka II 113,
 Yitzhaq I 114, Abram 115, father to son to son.
 
-**Geni had the identical skip until Emma created Yitzhaq I** (`6000000227245553985`)
+**Geni had the identical skip until you created Yitzhaq I** (`6000000227245553985`)
 and re-exported. Four Samaritan exports still carried `Tsedaka II -> Abram`
 directly and are now in `exports/excluded/`; the merged tree says Abram's father is
 **Yitzhaq I**. That is the whole reason `exports/excluded/` exists.
@@ -25,12 +25,12 @@ The existing `P22` → Tsedaka II stays; a second `P22` → Yitzhaq I is emitted
 cited to Abram's Geni profile, which is the evidence we actually hold.
 
 **It depends on Yitzhaq I getting his Geni ID first.** `Q137394557` currently has
-**no claims at all** — Emma called it *"the worst modelled one (empty)"*. Her
+**no claims at all** — You called it *"the worst modelled one (empty)"*. Your
 ordering rule is that the Geni ID lands before anything derived from Geni, so this
 edit declares that dependency rather than assuming the target is ready.
 
 Writes `reports/wikidata-abram-father.json`. Nothing is executed; no Wikidata edits
-before 1 September, which is her own instruction of 2026-08-14.
+before 1 September, which is your own instruction of 2026-08-14.
 
     py scripts/build-abram-father-fix.py
 """

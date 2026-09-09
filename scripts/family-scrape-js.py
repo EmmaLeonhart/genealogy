@@ -2,7 +2,7 @@
 
 **Why this exists at all.** The collector's `family` job is the right implementation and it stays
 the right one. But an unpacked Chrome extension serves its cached copy until it is reloaded, and
-a reload is browser chrome -- unreachable from the automation surface, so it is Emma's action.
+a reload is browser chrome -- unreachable from the automation surface, so it is your action.
 Between an edit and that reload the extension in the tab is the OLD code, whose `family` result
 does not carry the payload.
 

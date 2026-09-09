@@ -1,6 +1,6 @@
 """Does Wikidata hold items for the eccentric clusters, and which pairs are solid enough to keep?
 
-**Emma, 2026-09-05, on the first version of `reports/eccentric-clusters.md`:** *"your measurement
+**You, 2026-09-05, on the first version of `reports/eccentric-clusters.md`:** *"your measurement
 of there being qids is a bit flawed. Both Chinese lines likely have wiki data items even if no
 connection. Pre dynastic Egypt definitely does… Axum certainly have qids lol… Third intermediate
 period def has qids lol"*. Then: *"write these ones into that identification gedcom thing that
@@ -46,7 +46,7 @@ decide* is the same finding from the other side. Every cluster this touches is a
 whose dates are modern is a stranger however well the string matches.
 
 **Nothing here writes a pair anywhere.** `scripts/build-qid-links-gedcom.py` holds an explicit
-constant, by her design — *"Do not let it become an architecture"* — and its own docstring says
+constant, by you design — *"Do not let it become an architecture"* — and its own docstring says
 widening it *"is a decision, not a default"*. This file is the evidence that decision is made on.
 
 Writes `reports/eccentric-cluster-candidates.tsv`.
@@ -76,8 +76,8 @@ OUT = ROOT / "reports" / "eccentric-cluster-candidates.tsv"
 
 API = "https://www.wikidata.org/w/api.php"
 #: ⛔ THE USER-AGENT IS THE CONTACT ADDRESS AND NOTHING ELSE, and it is never written here.
-#: Emma, 2026-08-18: *"no fucking github links in it either"* -- a repository URL in a constant
-#: names her repositories to anyone reading the code, and so does a description of what the
+#: you, 2026-08-18: *"no fucking github links in it either"* -- a repository URL in a constant
+#: names your repositories to anyone reading the code, and so does a description of what the
 #: project does. `tests/test_bot_identity.py::test_no_source_file_links_a_repository` scans every
 #: file under `scripts/` and `src/genimerge/` for the host and fails the suite; this script
 #: hardcoded one and is what turned CI red.

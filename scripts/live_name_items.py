@@ -1,6 +1,6 @@
 """Ask Wikidata, right now, whether a name item already exists. Reuse beats creation.
 
-**Emma, 2026-09-01:** *"I thought we reused name objects by default lol. The only hard situation
+**You, 2026-09-01:** *"I thought we reused name objects by default lol. The only hard situation
 is patronymics which have an elaborate logic to them lol. Fuck you for defaulting to the
 dangerous one lol."* And, 2026-08-29, on the same problem: *"Creating the name objects and having
 them merged by somebody else (and this is important) is a thing that gets attention in a bad
@@ -10,7 +10,7 @@ way."*
 
 `namemodel.store_name_item` resolves a token against `out/wikidata/name-items-in-store.tsv.gz`,
 the **offline** download, plus `reports/created-name-items.tsv`, which holds 18 rows. Both are
-snapshots. An item created since the download — by us, by her, or by anybody — is invisible to
+snapshots. An item created since the download — by us, by you, or by anybody — is invisible to
 them, and `CREATE` in QuickStatements never checks: it mints a new item every time.
 
 Measured live on 2026-09-01, on the three tokens that day's batch was about to create:
@@ -35,7 +35,7 @@ case folding and **`P31` is the class this usage needs**. Nothing else is accept
   alike are genuinely two items, so a `Q101352` *family name* is never offered to a given-name
   slot.
 * **Ambiguity is not resolved here.** Several qualifying candidates means the token is left to
-  the existing ambiguous path, which holds it for her. Picking one would be the coin flip this
+  the existing ambiguous path, which holds it for you. Picking one would be the coin flip this
   repo refuses everywhere else.
 
 ## ⛔ THIS CANNOT SEE AN ITEM CREATED MINUTES AGO, and those are the ones a daily batch duplicates
@@ -45,13 +45,13 @@ that exists is retrievable by `wbgetentities` immediately and may not be findabl
 some time after. So this check is blind in exactly the window that matters: the duplicate a daily
 cadence produces is one created by yesterday's batch or by an earlier run of today's.
 
-Emma, 2026-09-05: *"the quickstatements I most recently ran tried to make duplicate surnames
+You, 2026-09-05: *"the quickstatements I most recently ran tried to make duplicate surnames
 again lol"* — `Låge-Håland`, refused because `Q141257135` already held that label and
 description. All four lookups missed it, each for its own reason: the offline store predates the
 item, the bearers do not point at it yet, `created-name-items.tsv` was never being refreshed, and
 this function could not see it.
 
-**`refresh-created-name-items.py` is the source with no lag**, because it reads her contributions
+**`refresh-created-name-items.py` is the source with no lag**, because it reads your contributions
 rather than the index. It is now run as part of `build-garborg-day.py --compose`, beside the
 ledger refresh. This function stays as the last resort it always was — it catches items created
 by *other people*, which contributions cannot.
@@ -106,7 +106,7 @@ class LookupUnavailable(Exception):
 #: description check over 6,833 items, and then all 2 chunks of the `P144` check, which inherited
 #: the rate-limited state. So the whole existing-item enrichment emitted nothing: *"0 P144
 #: statement(s) to add; 89 item(s) held, the live read failed"*, and the same for `P460` and for
-#: the `P144` REMOVALS Emma asked for on the `Junna` items.
+#: the `P144` REMOVALS you asked for on the `Junna` items.
 #:
 #: `CLAUDE.md` § *Querying Wikidata is ALLOWED. Be polite about the rate* is the rule this broke:
 #: *"do not fan out one request per item when one request would do, and do not hammer to finish
@@ -162,7 +162,7 @@ def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing
     """The QID of an existing name item for `(token, usage)`, or `''`.
 
     Returns `''` both when nothing exists and when SEVERAL qualifying items do — an ambiguity
-    belongs on her deck, not in a guess made here.
+    belongs on your deck, not in a guess made here.
 
     **Raises `LookupUnavailable` when the question could not be asked at all**, which is a
     different thing from either and must not reach the caller as `''`. See that class.
