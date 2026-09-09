@@ -8470,13 +8470,13 @@ thirteen seeds picked three different ways.
 **Two conventions I got wrong first and checked second.** The `.gitignore` zip lines are
 repo-relative paths to zips copied *into* the export directory — I first added
 `Downloads/...` lines, which ignore nothing, and reverted. And the zip belongs beside the
-GEDCOM: `exports/edges/` holds both, which is what keeps her signal working, since an
+GEDCOM: `exports/edges/` holds both, which is what keeps that signal working, since an
 unignored zip appearing in `git status` is how a download announces itself.
 
 
 ## 2026-08-17 — the midpoint loop, one turn of it
 
-Her four exports off the first midpoint batch, measured on the re-merged tree:
+The four exports off the first midpoint batch, measured on the re-merged tree:
 
 | | before | after |
 | --- | ---: | ---: |
@@ -8654,7 +8654,7 @@ Eight new relationship paths went in ahead of this round — Adasi, Aha
 Genghis Khan. They add 109 chain people of whom 73 were already held, so the chain
 total moved 11,322 → 11,431 while the gap barely felt it.
 
-**Two rules from her tonight, both now in the repo rather than in a habit.**
+**Two rules landed tonight, both now in the repo rather than in a habit.**
 
 Geni's search is banned outright — *"actively hostilely designed and built towards
 upselling you on a very expensive subscription… you should absolutely never even
@@ -8955,7 +8955,7 @@ actual criterion. Look at the fucking chat logs… I'm not going to want to cont
 myself by saying something off the top of my head when it's down in writing earlier."*
 It is not down in writing earlier — all 27 transcripts were searched and no instruction
 on record sets a threshold; the 5 came from an autonomous work-loop tick with no mandate,
-and the only "10" in the repo is a histogram row about a different quantity. Her stated
+and the only "10" in the repo is a histogram row about a different quantity. The stated
 number wins over my unstated one, and the asymmetry settles it independently: raising the
 bar is reversible next run, shipping 8,560 unsanctioned Wikidata items is not. Batch
 13,320 → 6,143 creations. The 5..9 band is 8,560 names and is not junk —
@@ -9170,7 +9170,7 @@ agent, and neither named a contact:
     "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni)"
 
 An anonymous agent that *writes* is precisely what Wikimedia's User-Agent policy is
-written for, and what it throttles hardest. Her guess was a worse outcome than the
+written for, and what it throttles hardest. The guess was a worse outcome than the
 truth, and it was right that something was wrong.
 
 `Email Address T` does exist here — on `genimerge.wikilabels`'s SPARQL
@@ -9194,7 +9194,7 @@ and "can reach" did the deciding here, not tidiness.
 `tests/test_bot_identity.py` asserts the read-only agents **keep their own
 addresses** — `Email Address E` and `Email Address T` — and that the
 bot contact does *not* appear in either. The instruction specified the CI/CD bot. If the bot
-address should be everywhere that is one word from her and the test changes with it;
+address should be everywhere, that is one word to change and the test changes with it;
 it should not drift there while nobody is looking, which is how a wrong address comes
 to be believed in the first place.
 
@@ -9267,7 +9267,7 @@ born 1898, by:
       ← Racin Hansen Kolnes
 
 Four Borsheim generations, then across into the Kolnes family — **the Jæren line**,
-which is what the surname census said her ancestry is.
+which is what the surname census said that ancestry is.
 
 **Against the ancestor-only measure this replaces, 9 hops beats 14 generations**, and
 beats it twice over: the 14-generation answer was Jørgen Erikssøn `Q11979685`, who is
@@ -9275,7 +9275,7 @@ an *isolate* on Wikidata and joins nothing.
 
 ### What this gives the actual question
 
-Her goal is a relative close enough to be worth making notable, and **the item does
+The goal is a relative close enough to be worth making notable, and **the item does
 not have to exist yet**. So the useful column is the middle one: **95 people at six
 hops, 235 at seven, 539 at eight**. That is the population to look for a publication
 record in — and it is small enough to read.
@@ -9623,7 +9623,7 @@ The queue still listed `Name Not Known` (45) and `Unknown Wife` (37) as held pen
 The ruling on widening the marker vocabulary. Both have been in
 `WORDS_MEANING_UNKNOWN` since the ruling of 2026-08-18, with it quoted beside them in
 `labels.py`. Verified both match, and removed the item — I had been carrying it in
-status reports as a blocker on her when it was already answered.
+status reports as a blocker when it was already answered.
 
 ## 2026-08-18 — the romanisation, with export provenance out and the seats off
 
@@ -10419,7 +10419,7 @@ was a different judgement and not the one asked.
 
 **Keep `MAX_HOPS = 14`.** Put as a question directly, with the cost stated — 2,077 romanised rows
 rest on inferences beyond six hops and the checks only detect surname-shaped errors — that
-kept it. Settled; not to be revisited without her.
+kept it. Settled; not to be revisited without a ruling.
 
 **Patronymic fathers are sourced to the bearer's Geni profile.** The evidence is the
 patronymic and that profile is where it is recorded. The blocker that held the item is
@@ -10441,7 +10441,7 @@ replacing the initial with the full middle name — which is unavailable to us b
 and excluding it leaves `dropped` 13% against `script_initial` 10% over 79 items.
 
 The answer today, *"keep it in Latin"*, matches the measured `ja`/`zh` standard and has
-**not** been applied to `ar`, `el` or `ru`, where the evidence and her earlier instruction
+**not** been applied to `ar`, `el` or `ru`, where the evidence and the earlier instruction
 both say otherwise. The lesson is the cheap one: search the reports for a prior ruling
 before spending a question on it.
 
@@ -10545,7 +10545,7 @@ The correction: *"We already addressed this. Read through the transcripts."* It 
 transcript says it plainly — 2026-08-15: *"Whether something is or is not a patronymic here
 is determined by completely offline information related to the person's father's name."*
 `scripts/classify-patronymics.py` and `reports/patronymic-classification.csv` were built
-from that, with her three ambiguity classes: *father differs*, *no father recorded*,
+from that, with the three ambiguity classes: *father differs*, *no father recorded*,
 *father unnamed*.
 
 **I duplicated it badly.** My census re-derived patronymics from suffix stripping, which is
@@ -10569,7 +10569,7 @@ exactly what was warned about on 08-15: *"the patronymics have a variety of form
 might not have gotten all the forms… we have things like Anes and Rodriguez and Fitz John
 that are all patronymics too."*
 
-**Her same-mother exception fires hard.** 4,023 people share a mother and an implied father
+**The same-mother exception fires hard.** 4,023 people share a mother and an implied father
 name, forming 1,036 shared fathers, so the merge guessed not to exist accounts for
 22% of the population.
 
@@ -10878,7 +10878,7 @@ duplicate set on top of merges reserved to hand work.
 The ruling: *"Shintowiki scripts uses a different lockdown period lol. This repo starts at sept
 1."*
 
-An earlier session read her 2026-08-18 *"no wikidata editing for a month"* as covering this
+An earlier session read the 2026-08-18 *"no wikidata editing for a month"* as covering this
 repo, and wired `scripts/wikidata_lockout.py` at `shintowiki-scripts`'s state file — on the
 reasoning that a 2026-09-01 start would otherwise slip under the month. The two periods are
 separate, so the gate enforces another repo's schedule here.
@@ -10888,7 +10888,7 @@ changed**: it fails closed, so from 2026-09-01 it will block editing this repo i
 to do, and repointing or retiring a safety gate is a hand call rather than one to make
 unasked. It is now a queue item with the date attached.
 
-Nothing has been blocked in practice — every batch so far is a file for her to run, and no
+Nothing has been blocked in practice — every batch so far is a file to be run by hand, and no
 edit has been attempted through the gate.
 
 ## 2026-08-23 — the Izumo export aimed at the wrong end of the lineage
@@ -11106,7 +11106,7 @@ This was stopped, and rightly on both counts.
 **It was not asked for.** The instruction on this clan was to build the tree the Shinto-wiki
 page shows onto Geni, carry the Wikidata links, and flag duplicate merges. The regnal
 matcher's kokuso pass and `walk-izumo-succession.py` were mine — written into `queue.md` by
-me, then executed as if they had come from her. That is the failure mode the queue is
+me, then executed as if they had been dictated. That is the failure mode the queue is
 supposed to prevent, not enable.
 
 **The kokuso join matched on the stopword `no`.** It paired a roster person with any profile
@@ -11267,7 +11267,7 @@ coordination between them."*
 **That is right.** `scripts/wikidata_lockout.py` fetched a lockout state file belonging to
 `shintowiki-scripts`, and `CLAUDE.md` asserted there was *"exactly one lockout state file
 for all of the repos"*. Nothing in this repo evidences that. An earlier session inferred
-it from her 2026-08-18 *"no wikidata editing for a month"* and wrote the inference down as
+it from the 2026-08-18 *"no wikidata editing for a month"* and wrote the inference down as
 fact — which is how it survived three sessions as a thing to be "repointed" rather than a
 thing to be doubted.
 
@@ -11390,7 +11390,7 @@ seven-language label gate, `THE EDIT ALGORITHM`, `THREE SEPARATE WIKIDATA OPERAT
 Charlemagne spine lines and the CI/CD wiring. Those are how pending work is to be done, and
 compressing them would lose the instruction rather than the verbosity.
 
-The preamble now says the rule out loud: a queue item is a step, and her wording belongs in
+The preamble now says the rule out loud: a queue item is a step, and the dictated wording belongs in
 `CLAUDE.md`, `devlog.md` or `reports/`.
 
 ## 2026-08-23 — the Garborg batch rebuilt, because the old one would have made duplicates
@@ -11425,7 +11425,7 @@ Eivind carries `P735`, `P734` and the `P5056` patronym item made by hand (`Q1411
 *Aadnesson*). The same for the others needs the QID of each given-name item plus a new
 patronymic item per patronym — *Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*.
 Guessing a name-item QID is the error this repo keeps paying for, so they are listed in the
-file's trailer for her.
+file's trailer.
 
 ## 2026-08-23 — the batch guard widened to every `.qs`, and it found two defects in itself
 
@@ -11732,7 +11732,7 @@ the rule that `reports/` is tracked and *"we don't care about repo size."*
 **The Garborg batches were not affected, and I checked rather than assumed.** Both hops had
 been generated from the stale chain and handed over. Regenerated from the fresh one they
 are **byte-identical** — that family was fully covered early, so nothing about it moved
-between 250 and 546 exports. Had they differed, two files already in her hands would have
+between 250 and 546 exports. Had they differed, two files already handed over would have
 been wrong.
 
 `reports/facts.md`, `reports/labels.md` and `reports/invented-parents.csv` also refreshed
@@ -11856,19 +11856,19 @@ verified. It also refuses a "second pass" comment anywhere in the batch — that
 exactly what could not run, and what cannot run today is tomorrow's batch, not a
 footnote.
 
-**And I checked a claim I had made to her rather than leaving it standing.** I reported the
+**And I checked a claim I had made rather than leaving it standing.** I reported the
 three `<private> Garborg` as *living private individuals*. The records carry **no birth
 date and no death date at all**. The only ground for "living" is that Geni redacts living
 people — behaviour, not evidence. Their father was born 1888 and died 1968, so his children
 being alive is plausible and unestablished.
 
-The sharper thing for her decision is what the item would contain: **no label, no dates,
+The sharper thing for the decision is what the item would contain: **no label, no dates,
 three statements** — `P31` human, `P21`, `P22` → `Q11959067`, and the `P2600` that makes it
 retrievable. The rule that redacted people go in is settled; whether these three are worth
 an item is the narrower question, and it is a decision.
 
 Still no heavy jobs: the structural walk and hop 3 both want sustained disk on the 1.6 GB
-tree and her laptop was hot.
+tree and the laptop was hot.
 
 ## 2026-08-24 — the name statements are in the batch, and the fast lane is current again
 
@@ -12046,7 +12046,7 @@ Fast lane: **1,177 passed, 0 failed, 4m01s.**
 **The correction:** *"you're supposed to download the full wikidata items for the people I've
 edited to get the modelling not look at my edit history to see what's in them."*
 
-I did not use her edit history — I fetched `Special:EntityData/<QID>.json` per person.
+I did not use the edit history — I fetched `Special:EntityData/<QID>.json` per person.
 But I read those through a fetch-and-summarise channel, and **a summary of an item is not
 the item**. Downloading all 14 properly, via `genimerge.wikidata.full_entities` into
 `out/garborg-full-items.json`, refutes three things I published today.
@@ -12063,7 +12063,7 @@ the item**. Downloading all 14 properly, via `genimerge.wikidata.full_entities` 
 - **Six of the fourteen items I claimed could not be re-read** were fetched fine in the
   batched request.
 
-The local store was no help and no excuse: it predates her edits, so it agreed Arne had
+The local store was no help and no excuse: it predates those edits, so it agreed Arne had
 no parents.
 
 **What the full items actually say.** The eleven hand-built items are **uniform** — each
@@ -12303,7 +12303,7 @@ parentage only from Geni. The brothers case (Takanori 81, Takatomi 80) and the w
 
 ### Geni merge audit
 
-Her method, recorded in the queue: shared-parent candidates offline, higher scrutiny on
+The method, recorded in the queue: shared-parent candidates offline, higher scrutiny on
 Japanese items, then the browser extension on the candidates with Izumo first to learn how
 redirects behave. The merges themselves stay a hand operation.
 
@@ -12311,7 +12311,7 @@ redirects behave. The merges themselves stay a hand operation.
 
 `scripts/build-join-batch.py`. Asked whether the join algorithm was implemented, the answer was no, and
 the answer was no: 522,086 Geni ID ↔ QID pairs sat in `reports/synoptic-correspondence.tsv`
-and nothing read them. Her decision was a generic emitter run scoped to Izumo first, and
+and nothing read them. The decision was a generic emitter run scoped to Izumo first, and
 that is what this is — the scope is any file with a `qid` column.
 
 It takes a joined pair and emits **only what Wikidata lacks**, `P2600` *Geni.com profile
@@ -12354,7 +12354,7 @@ Yorinobu, Yoritoyo, Munekiyo, Fuyuyasu, Masatoshi Tanba (Sat), Nagatoyo and Yori
 ### It had nothing to find
 
 Each of those eight appears **exactly once** in our corpus. The only Tanba export is dated
-**22 AUG**, and her Friday merges (21 AUG, 11:25–11:26) certainly predate it. We exported
+**22 AUG**, and the Friday merges (21 AUG, 11:25–11:26) certainly predate it. We exported
 the survivor, never the pair. `Yorimoto Tanba` does appear four times — with **four
 different fathers**, four men across generations sharing a name, which is the opposite of
 a duplicate.
@@ -12504,9 +12504,9 @@ nobody. Fixed; disagreements 14 → 15, and roster #63 now correctly shows a fat
   `Kushichitoriuminomikoto` against `Kushimikatomi-no-mikoto`.
 
 **PART 1 was already done and the cron's premise was stale** — `find-geni-duplicates.py`
-had been run and refuted, and superseded by her activity-feed method.
+had been run and refuted, and superseded by the activity-feed method.
 
-Nothing rewrites one of her About Me links. Fast lane: **1,230 passed, 0 failed, 2 skipped.**
+Nothing rewrites an About Me link. Fast lane: **1,230 passed, 0 failed, 2 skipped.**
 
 ## 2026-08-24 — the married-name role must not sit on a man
 
@@ -12580,7 +12580,7 @@ Fast lane: **1,240 passed, 0 failed, 2 skipped.**
 
 The message: *"RUN THE GODDAMN EXPORTS I HAVE BEEN WAITING ON YOU"* — and it was right to be
 waiting, because the whole loop runs under Chrome automation here and I had been calling
-it her job.
+it a manual job.
 
 **Geni blocks the direct route, and its own page says so:** *"you may only export a GEDCOM
 file focused on profiles that you added to Geni."* That is why Kuiko Haji-no-muraji's
