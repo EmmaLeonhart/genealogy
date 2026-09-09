@@ -2271,7 +2271,7 @@ saying so.
 
 ## 2026-08-02 — the fifth export, and the tree turns out to be two trees
 
-Emma dropped `export-geni.zip` at the repo root: another `export-Forest.ged`,
+Another `export-geni.zip` was dropped at the repo root: another `export-Forest.ged`,
 so the style collided for the second time and it is filed by seed as
 `data_lake/export-Forest-6000000226989731860.ged`. The seed is that file's first
 `INDI` — "unknown grandfather" — whose child is *"Uknown father of Oshihomimi
@@ -2419,7 +2419,7 @@ Recorded in `queue.md`; neither export has been taken.
 
 ## 2026-08-04 — the IDs were in the repo, and the names had been lying
 
-Emma committed the saved Geni profile page in `f205f44` — "Added Emperor Jimmu
+The saved Geni profile page was committed in `f205f44` — "Added Emperor Jimmu
 geni page thing so that it can demonstrate my ink thing" — and said plainly in
 the commit message what it was for: convert the path's HTML into a dataset
 giving every individual in the chain "their Geni link, their name, whether
@@ -2461,7 +2461,7 @@ wrong one. Step 42 is `n n`, which 73 profiles share.
 Also: **`.claude/cron-jobs.md`**, because `CronCreate` jobs are session-local and
 in-memory, so a machine restart takes all three with it silently and the next
 session starts with none. The three prompts are now written down as the source to
-recreate them from. This was Emma's ask ahead of a restart, and it is the same
+recreate them from. This was asked for ahead of a restart, and it is the same
 class of failure as the lost path — work that existed only in a session.
 
 **637 passed** (was 622), Python 3.13.14. Not CI-verified — CI is
@@ -2516,7 +2516,7 @@ CI-verified; CI is `workflow_dispatch:` only here on purpose.
 
 ## 2026-08-04 — the Li Hong and n n exports, and the Jimmu gap cut from 21 steps to 6
 
-Emma took the two exports the standing note had been asking for — one from each
+The two exports the standing note had been asking for were taken — one from each
 end of the block missing from the Geni relationship path to Emperor Jimmu — plus
 a second Li Hong-adjacent one, and staged all three under a new `exports/`
 directory. Scope was **only** those three; the ~17 bulk exports accumulating in
@@ -2566,7 +2566,7 @@ is evidence the number sits still, not evidence it steps on a schedule.
   `range(37, 43)` and step 36, with the checkpoint at Elisabeth kept.
 - Two in `test_genipage.py` were a real bug this change exposed:
   `SAVED = next(glob("*.html"))` was correct while Jimmu was the only saved page
-  and silently wrong once Emma added nine more. The glob returned somebody
+  and silently wrong once nine more arrived. The glob returned somebody
   else's path and the test failed claiming the Jimmu path had 91 steps. Now
   selected by name.
 
@@ -2586,7 +2586,7 @@ whole reason the path files carry IDs. All six gap IDs are now tabulated in
 **`CLAUDE.md` gained the things that were true but unwritten**: the `exports/`
 staging layout and that `data_lake/` holding fewer files is normal rather than
 drift; that the zips are gitignored one line at a time *on purpose*, so nobody
-replaces them with `*.zip` and destroys Emma's "a download arrived" signal in
+replaces them with `*.zip` and destroys the "a download arrived" signal in
 `git status`; `Descendants` as a fourth export style; and that the seed is the
 file's first `INDI` but is usually **not** the person the export is named after
 in conversation — all three new files open on a placeholder profile created a
@@ -2601,7 +2601,7 @@ minute or two before the export ran.
 
 Asked whether the whole Jimmu path was present or a targeted export was still
 needed, the answer given was "one more, seeded in the six-person window". That
-was wrong in a specific and instructive way: **Emma had already taken it.**
+was wrong in a specific and instructive way: **It had already been taken.**
 
 **The scoping error.** She had said the exports to integrate were in
 `exports/Li Hong/` and `exports/n n/`, so those are the directories that got
@@ -2668,7 +2668,7 @@ target name and silently overwriting. Fixed to
 in the target name (`export-<style>-<seedID>.ged`) because one seed can be
 exported in several styles, which `exports/archive/` now demonstrates.
 
-**Conflicts now favour later sources.** Emma's call, and correct: Geni is live,
+**Conflicts now favour later sources.** The ruling, and correct: Geni is live,
 so two exports disagreeing on a single-valued path means the profile was edited
 between them and the newer export holds the correction. The first real conflicts
 appeared at this scale — there were none at 10 exports — and every one is
@@ -2703,12 +2703,12 @@ implausible 229 → 765, likely duplicates 13 → 20, possible duplicates 53 →
 The tree grew 2.75× and the impossible-date count grew 4.7×. Worth understanding
 before any of it reaches Wikidata; not investigated here.
 
-**`entity_resolution.md`** — Emma's own file, six manual Geni↔Wikidata matches
+**`entity_resolution.md`** — a hand-written file, six manual Geni↔Wikidata matches
 plus label edits she wants. All six Geni IDs verified present in the merged
 tree. Nothing in this repo consumes the file yet.
 
 **Not done, and deliberately:** the density measure described in `todo.md` § 3z.
-Emma is supportive of it and explicit that it is not wanted until the ~50 bulk
+It is supported, and explicitly not wanted until the ~50 bulk
 downloads are finished, since density measured now describes the download queue
 rather than the tree. Also corrected there: "region" means a neighbourhood in
 the family graph, never a geographic classification.
@@ -2720,7 +2720,7 @@ here on purpose.
 
 ## 2026-08-04 — `entity_resolution.md` becomes a batch
 
-Emma added `entity_resolution.md` — hand-made Geni-to-Wikidata identities plus
+`entity_resolution.md` was added — hand-made Geni-to-Wikidata identities plus
 label corrections — and queued "look over it and apply this stuff". Applied as
 far as this repo goes: `genimerge.entities` parses it and
 `python -m genimerge entity-resolution` writes
@@ -2736,7 +2736,7 @@ it**, which is the only way a free-form source file is safe to automate over.
 
 **The grouping rule is not blank lines, and finding that out is the whole
 story.** Splitting on blank lines is the obvious reading and it silently ate an
-entry: Emma's last one puts the item, the profile and the label instruction in
+entry: the last one puts the item, the profile and the label instruction in
 three separate blocks, so the item and the profile landed in different blocks
 and were both reported as unparsable halves of nothing. The rule is now "start a
 new entry when the next line would give this one a *second* Geni profile or a
@@ -2756,13 +2756,13 @@ and inventing a claim to hang it off would be a different edit than the one
 requested. The P2600 claims do carry S854/S813 as every other batch here does.
 
 **A resolution for a profile we do not hold is still emitted**, and flagged.
-Emma can recognise someone no export has reached; the assertion is hers and does
+a person can be recognised where no export has reached them; the assertion is hand-made and does
 not depend on our coverage. All six happen to be in the tree, all on the Jimmu
 path.
 
 `tests/test_entities.py` asserts the real file parses with **zero** unparsed
 entries, so an entry written in a shape the parser does not know fails the suite
-— and the fix is to teach the parser, never to reformat Emma's file.
+— and the fix is to teach the parser, never to reformat that file.
 
 **970 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:` only
 here on purpose.
@@ -2772,12 +2772,12 @@ here on purpose.
 ## 2026-08-04 — downloads done at 54 exports; the export-candidate list checked; density measure built
 
 **The tree is 105349 people, 56455 families, one connected component**, over 54
-exports. Nine more arrived and were ingested; Emma says she is done downloading
+exports. Nine more arrived and were ingested; downloading is done
 for now. The Jimmu path still reads 83 of 83.
 
 ### `individuals I can easily export.txt`, checked
 
-Emma added a list of 18 people she can export from and asked whether they are in
+A list of 18 people to export from was added, with the question whether they are in
 the tree. **17 of 18 are.** The exception:
 
 | | |
@@ -2792,7 +2792,7 @@ already touched, and `NN 高円宮` is the single entry certain to bring materia
 have none of. Queued as the next export.
 
 Worth recording how that check got cheap: grepping the ID across the whole repo,
-which Emma pointed out, answers both "is it in the tree" and "which exports hold
+which was pointed out, answers both "is it in the tree" and "which exports hold
 it" at once — a merged-tree lookup answers only the first.
 
 ### `genimerge.density` — where the tree is thin
@@ -2828,7 +2828,7 @@ there is the open question an export answers. A test asserts that caveat reaches
 the rendered report, because a reader who inverts it would conclude the opposite
 of the truth.
 
-**"Region" means a neighbourhood in the family graph.** Emma was explicit that
+**"Region" means a neighbourhood in the family graph.** It was explicit that
 people must not be classified geographically. The recognisable clusters above
 fall out of the graph on their own; nothing reads a birthplace, and nothing
 infers origin from a name.
@@ -3023,7 +3023,7 @@ checkout silently measured a smaller corpus than every committed report
 describes, while every local run kept working — the failure looked exactly like
 nothing being wrong.
 
-Emma's ruling was immediate and total: tracking the exports is what this repo is
+The ruling was immediate and total: tracking the exports is what this repo is
 for. `91cf363` removes the 41 lines and commits the files; `git ls-files
 'exports/**/*.ged'` and `find exports -name '*.ged'` both give 98. The zip lines
 stay, one per file, for the reason they always had.
@@ -3065,7 +3065,7 @@ than from a test:
   legitimately 37 hops from the last, all pointing at Makeda. Raised to 0.25.
   Against the 202,433-person merge that gives **18 rows, 77 hops apart**.
 
-**The instrument's own prediction failed twice out of three.** Emma saved three
+**The instrument's own prediction failed twice out of three.** Three pages were saved
 path pages before the session crashed. Makeda→Enlil-nirari held **225 of 225**
 and Makeda→Matthew **219 of 219** — Geni's chain between two people 164 hops
 apart in our tree ran entirely through people we already hold. A long in-tree
@@ -3081,7 +3081,7 @@ rather than Geni's gaps, and the effort belongs on `reports/density.md`.
 
 ## 2026-08-06 — the Hata clan is a thread, not a clan
 
-Emma's second priority, in her words: "Import the Hata clan. Surprised it is not
+The second priority: "Import the Hata clan. Surprised it is not
 all there already." `reports/hata.md` measures what the tree actually holds.
 
 **27 people, and 26 of them are in a marriage family with no other spouse in
@@ -3144,14 +3144,14 @@ Enlil-nirari 225/225, Makeda → Matthew 219/219, Makeda → Marguerite 148/155.
 
 **The Carolingian block is unchanged** — the same ten people (Louis I the Pious
 down through the Alemannian dukes) still block the same five paths, still 50 of
-the 134 missing steps. `todo.md` § 8 carries Emma's explanation, which no
+the 134 missing steps. `todo.md` § 8 carries the explanation, which no
 measurement here could have produced: she reaches a Geni cluster through nearby
 contributions, and a region already densely covered by other contributors is one
 she cannot add a profile to, so she cannot make the foothold an export needs.
 
 ## 2026-08-06 — two exports arrived; one was already held, one is the Hata clan
 
-Emma downloaded two. `export-geni.zip` is **byte-identical** to
+Two were downloaded. `export-geni.zip` is **byte-identical** to
 `exports/originals/export-Forest-6000000226989731860.ged`, the 02 Aug Japanese
 seed — not filed again. `genimerge.sources` drops byte-identical repeats in any
 case, so a second copy would buy nothing and would collide on a filename.
@@ -3165,7 +3165,7 @@ new-download signal.
 
 Neither of the two seeds `reports/hata.md` named, but a Hata person and the
 right style. It goes into the merge as the 99th export, and the measurement it
-settles is queued: **`reports/hata.md` predicts breadth appears; Emma predicts
+settles is queued: **`reports/hata.md` predicts breadth appears; the counter-prediction is
 "it is just a line".** Both are on the record before the answer is.
 
 ## 2026-08-06 — the Hata prediction is settled, against the prediction
@@ -3173,7 +3173,7 @@ settles is queued: **`reports/hata.md` predicts breadth appears; Emma predicts
 The 99th export merged: 203,323 people, 101,405 families over 99 exports. The
 Hata export contributed 988 new people.
 
-**Emma was right and `reports/hata.md` was wrong.** It predicted that a `Forest`
+**The counter-prediction was right and `reports/hata.md` was wrong.** It predicted that a `Forest`
 export seeded in the line would bring the breadth a blood-only walk had
 discarded. Her call, made before the export ran, was "likely definitively
 showing it is just a line".
@@ -3211,7 +3211,7 @@ that actually answered the question used no names at all.
 
 ## 2026-08-06 — the P2600 overlap, both ways: 4.44% and 1.75%
 
-Emma's ask: "do a SPARQL on wikidata to find the overlap of our tree with the
+The ask: "do a SPARQL on wikidata to find the overlap of our tree with the
 total number of wikidata items with geni id property". `genimerge overlap` and
 `reports/wikidata-overlap.md`.
 
@@ -3244,7 +3244,7 @@ against `Bracheslav Vasylkovich Polozki` is plainly one person in two languages,
 while `Scribonia` against `Clodia Pulchra` is plainly two of Octavian's wives and
 one of those P2600 statements is simply wrong. A review queue for a human, like
 the flags in `reports/wikidata-crosscheck.md`. None of the 44 are Japanese
-emperors, so this did not catch the Ojin duplicates Emma mentioned.
+emperors, so this did not catch the Ojin duplicates that were raised.
 
 Also surfaced: 67 Geni IDs sitting on two items (5 of them ours), 2,066 items
 with more than one Geni ID, and 28 P2600 values that are not a profile ID at all
@@ -3324,7 +3324,7 @@ described in their own entry.
 
 ## 2026-08-06 — the edge-people batch: four exports ingested, two repeats identified, cap 4008 → 4020
 
-Emma asked for a preservation check on six zips in `~/Downloads` — "all new
+A preservation check was asked for on six zips in `~/Downloads` — "all new
 except maybe one" — under a standing instruction to keep CPU down and prefer
 documenting to computing. `reports/audit-downloads-2026-08-06.md` is the long
 form; this is what changed.
@@ -3377,7 +3377,7 @@ assertion at risk is satisfied by construction — largest new export 4020, cap
 
 ## 2026-08-06 — all 26 paths checked present/absent: 92.3% held, and the gaps are two shared bridges
 
-Emma asked whether the newly converted chains had been checked for present and
+The question was whether the newly converted chains had been checked for present and
 absent profiles, and pointed out this is CPU-light: grep the IDs against the
 tree. Correct, and it is lighter still done as one streaming pass over
 `out/merged.ged` collecting `INDI` xrefs into a set, then an in-memory join per
@@ -3393,7 +3393,7 @@ on the grounds that gap-length equalled longest-run; that was wrong, and the
 doorway pass is what showed it. Equal lengths mean *one* run, not a run at the
 end.)
 
-**Emma's structural reading is supported.** She proposed that these chains cross
+**The structural reading is supported.** The proposal was that these chains cross
 sparse ancient networks whose links pass through a few critical individuals,
 unlike small-worlded modern data, and predicted strong diminishing returns for
 ancient figures. The concentration is there: 265 absent step-slots sit on 196
@@ -3424,7 +3424,7 @@ or Chinese runs while leaving the Alemannian ten untouched.
 
 ## 2026-08-06 (late) — the deferred compute, and a defect it uncovered
 
-Emma said the machine could be loud, which was the unblock signal on the queue's
+The machine being loud was cleared, which was the unblock signal on the queue's
 deferred-compute item. All four steps ran. Also `genimerge connectors`, new, in
 answer to "can you open an html thing linking all of the connectors we lack?".
 
@@ -3456,8 +3456,8 @@ So a person walked **twice on one path** was reported absent the second time. A
 saved Geni page can hold two relationship paths, and `path-from-html` writes both
 into one file, so the second chain restarts at "You" and re-walks the opening
 people. `paths/nn-basse.tsv` does exactly this at steps 36-44 — and the tool was
-therefore reporting **Emma Leonhart, the account owner and the seed of the first
-three exports, as a person missing from our tree**. `connectors` then read that
+therefore reporting **the account owner, the seed of the first three exports,
+as a person missing from our tree**. `connectors` then read that
 run as a nine-person bridge and ranked it as an export worth taking.
 
 `ABSENT` now means only "not in the tree"; a held repeat is `REPEAT`, which counts
@@ -3510,9 +3510,9 @@ explicit UTF-8 encoding.
 
 ## 2026-08-06 (later) — density gives a region as many seeds as it needs exports
 
-Queue item 7, done, and its "low priority, may not pay" caveat is spent: Emma is
-mid-batch on more exports and asked for areas to `Forest` from while this was in
-flight.
+Queue item 7, done, and its "low priority, may not pay" caveat is spent: more
+exports were mid-batch, with a request for areas to `Forest` from while this was
+in flight.
 
 A region larger than one export ball cannot be covered by one seed, and the
 report emitted exactly one however large the region was. Region 1 is 10 051
@@ -3553,7 +3553,7 @@ defensible ones.
 
 ## 2026-08-06 (night) — twelve gap-aimed exports, and the paths close
 
-Emma took twelve exports aimed at the gaps and said to incorporate them. Corpus
+Twelve exports aimed at the gaps were taken and are to be incorporated. Corpus
 103 → **115 GEDCOMs**; merge **208 089 → 228 673 people (+20 584)**, 114 600
 families, 61 conflicts, still 2 components (228 640 and 33).
 
@@ -3610,7 +3610,7 @@ Eight more exports (corpus 115 → 123), merge **228 673 → 239 552 people**,
 
 Paths: **3 459 of 3 464 held (99.9%), 25 of 26 complete, 2 bridges, 5 people.**
 
-**Both remaining gaps are on `hata`, and neither is Hata.** Emma asked, twice and
+**Both remaining gaps are on `hata`, and neither is Hata.** Asked twice, and
 with justified suspicion, whether Hata people were still missing after she took
 an export specifically for them. They are not. All 13 steps on that path named
 Hata are held; all 35 steps from 21 to 55 — the entire Japanese side — are held.
@@ -3630,7 +3630,7 @@ been mis-stated deserved it: each of the five was grepped against
 `out/merged.ged` and all 123 GEDCOMs. Zero hits each, not even as a relative
 referenced by somebody else.
 
-**The export size bound is no longer a mystery.** Emma states it: four times the
+**The export size bound is no longer a mystery.** It is stated: four times the
 number of profiles she has added. That accounts for the multiples of four, for
 its being neither per-style nor per-seed, and for its rising across a session.
 `GENI_EXPORT_CAP` 4056 → 4068, and its docstring now leads with the mechanism
@@ -3643,7 +3643,7 @@ Nothing enumerates them, so a sixth would land as silently as this one did.
 than nine people as too big to close, nine being the widest gap one targeted
 export had been seen to span. A batch of twelve exports then closed a 52-person
 run, a 25 and a 10. The number was a fact about exports already taken, dressed
-as a limit on what could be taken next. Emma had not asked for it and said so.
+as a limit on what could be taken next. It had not been asked for.
 Gone from the module, the tests, the markdown and the page.
 
 ## 2026-08-06 (late night, cont.) — one gap left, and the tree's shape in time
@@ -3652,10 +3652,10 @@ Four more exports (127 total), merge **244 790 people**, 122 340 families, 119
 conflicts, 2 components. Paths **3 460 of 3 464 (99.9%), 25 of 26 complete, one
 bridge, four people** — Stephen Merrill, Erastus Merrell, William H Merrell,
 Julia Eugenia Vories, steps 17-20, doorway Simeon Merrill
-`6000000008427171641`, `Forest` because step 17 is his brother. Emma's export
+`6000000008427171641`, `Forest` because step 17 is his brother. That export
 closed Enok Danielson at step 10.
 
-**Measured, at Emma's ask: when does this tree live?** Neither of the two
+**Measured, as asked: when does this tree live?** Neither of the two
 readings on the table was right. Hers-first was ancient/medieval bias; hers-
 revised was that 20th-21st century people would dominate. The dated population
 peaks hard in the early modern period:
@@ -3746,7 +3746,7 @@ export seeded on `6000000227087382828`. Confirmed two ways: the path checker
 reads `hata` at 55 of 55, and each of the four profile IDs greps to a real
 `INDI` record in `out/merged.ged`.
 
-**Emma was one export from abandoning that stretch**, on the reading that it was
+**That stretch was one export from being abandoned**, on the reading that it was
 "an extremely dense modern group even more impenetrable than the ancient ones".
 It went through. Both halves are worth keeping: density genuinely does obstruct
 *seeding* — `todo.md` item 8 records why, she cannot add a profile where other
@@ -3756,7 +3756,7 @@ Neither of us predicted the outcome, in either direction.
 **Tonight's arc, since the numbers moved a long way.** Corpus 103 → 130 GEDCOMs.
 Tree 203 323 → 250 137 people. Paths 92.1% → **100%**. Bridges 15 → 0. Along the
 way: a defect that reported people we hold as missing, including the account
-owner; a fifth export style; the export size bound explained by Emma as 4×
+owner; a fifth export style; the export size bound explained as 4×
 profiles added; and the `connectors` report itself, which did not exist this
 morning.
 
@@ -3765,7 +3765,7 @@ morning.
 Two more `Descendants` exports (132 GEDCOMs), merge **253 788 people**, 127 581
 families. Paths stay at 26 of 26.
 
-**`genimerge doubles`, built because Emma asked to see the list.** It reports the
+**`genimerge doubles`, built because the list was asked for.** It reports the
 Wikidata items whose P2600 statements name two or more Geni profiles that are
 *both* in our tree — something the merge cannot see, since it keys on the
 profile ID and two IDs are two people to it. Over this merge: **44 items, of
@@ -3819,7 +3819,7 @@ Final export of the night. Corpus **133 GEDCOMs**, merge **255 465 people**,
 128 325 families, 141 conflicts, 2 components (255 432 and 33). Paths stay at
 **26 of 26, 3 464 of 3 464**.
 
-**Which export style returns new material, measured.** Emma asked whether
+**Which export style returns new material, measured.** The question was whether
 `Descendants` is adding more than the `Ancestors` exports she was taking
 earlier. Counted as people held by *exactly one* export — order-independent, so
 it is not an artefact of merge sequence:
@@ -3851,7 +3851,7 @@ Wikidata-known. **505 391 Geni-linked people on Wikidata we still do not hold.**
 
 Corpus **134**, merge **257 219 people**, 129 348 families.
 
-**Emma changed the campaign and said so: future exports are descendant-adding,
+**The campaign changed: future exports are descendant-adding,
 not gap-filling.** The paths are complete, so there is nothing left to bridge
 and a new export is aimed at breadth in later generations. `exports/gaps/` is
 closed at the night it was named for; new exports go to `exports/descendants/`.
@@ -3876,7 +3876,7 @@ percentage point, which is 2 496 people Wikidata already knew about.
 
 ## 2026-08-07 — what is in the profiles: `genimerge profile-names`
 
-Emma is planning the next phases and asked to write down what the Geni profiles
+The next phases are being planned, and the ask was to write down what the Geni profiles
 actually contain, since it bounds what the Wikidata enrichment pipeline (todo
 items 4/6) can emit. New module `genimerge.profilenames` + `profile-names`
 command generate `reports/profile-names.md`: per-person field fill rates mapped
@@ -3909,7 +3909,7 @@ names; splitting `GIVN` on spaces emits wrong P735s. The real P1545 case is the
 Latin-script subset. (2) Geni's NAME is a display *label*; "Unknown Wife"/"NN"
 is a description that belongs in a label or alias, never a P735/P734 link.
 
-**todo.md items 4 and 8 refined with Emma's 2026-08-07 framing.** order.life is
+**todo.md items 4 and 8 refined with the 2026-08-07 framing.** order.life is
 a third source (on her PC, deliberately deferred, needs a different citation
 from the Geni-ID source); the phase order is descendant-search → large export
 campaign → Geni enrichment → offline Wikidata tree + superimposition →
@@ -3920,7 +3920,7 @@ queue, not a current task.
 
 ## 2026-08-07 — `chats/`, and § 8a corrected before any of it was built
 
-Emma saved a claude.ai conversation into the repo — a second model reviewing the
+A claude.ai conversation was saved into the repo — a second model reviewing the
 Wikidata-download plan that `todo.md` § 8a had been written down that same day.
 It found three things wrong with it, so § 8a is now followed by **§ 8a-revised**
 and one sentence inside § 8a is marked wrong in place.
@@ -3929,7 +3929,7 @@ and one sentence inside § 8a is marked wrong in place.
   `geni_pages/` keeps saved Geni pages: the browser's `.html` plus its `_files`
   directory, committed whole, with the extracted text beside it as `.md` because
   the HTML is a rendered app dump. `chats/README.md` says what belongs there.
-  The saved page does not preserve the transcript Emma pasted into that chat, so
+  The saved page does not preserve the transcript pasted into that chat, so
   the reviewing model was reading something this repo does not have; the extract
   says so rather than papering over it.
 - **The per-item commit is out.** 500k items would have been 500k commits. Write
@@ -3944,7 +3944,7 @@ and one sentence inside § 8a is marked wrong in place.
 - **SPARQL has its own limits** — 60-second query timeout and its own
   throttling, separate from the action API. "Cheap" was true per query and false
   per campaign.
-- **Emma's prediction, recorded to be scored:** the expansion frontier is small
+- **A prediction, recorded to be scored:** the expansion frontier is small
   and patchy, because most family edges out of a Geni-linked item land on
   another Geni-linked item. A large frontier is therefore a symptom to
   investigate, not a success.
@@ -3958,13 +3958,13 @@ whether a git repo can hold them. Both resolve in a **1000-item pilot**, now
 cheap to change. Nothing has been queried yet.
 
 
-## 2026-08-07 (later) — the Wikidata downloader, built to Emma's two-queue design
+## 2026-08-07 (later) — the Wikidata downloader, built to the two-queue design
 
 `genimerge wikidata-download` and `src/genimerge/wikidownload.py`, with 32 tests
 that never touch the network. Not yet run against Wikidata: the pilot is
 BLOCKED-ON-USER-ACTION in `queue.md` item 4.
 
-- **Two queues, Emma's design.** A fetch queue seeded with all 514,822 P2600
+- **Two queues, by design.** A fetch queue seeded with all 514,822 P2600
   QIDs, and an iteration queue of held items read for the relatives they name
   (P22/P25/P26/P40/P3373). Anything named and not already known joins the fetch
   queue; anything fetched joins the end of the iteration queue. BFS outward, and
@@ -3981,7 +3981,7 @@ BLOCKED-ON-USER-ACTION in `queue.md` item 4.
   `wbgetentities` request is ~10,300 requests rather than 500,000, which is what
   made the ~100 GB dump download unnecessary.
 - **No ad-hoc Wikidata queries, at all.** Now a standing rule in `CLAUDE.md`,
-  in Emma's words. Questions about Wikidata's contents go to `todo.md` § 8b and
+  as stated. Questions about Wikidata's contents go to `todo.md` § 8b and
   wait for the store — including her prediction, recorded before the data
   exists, that the Geni-linked items skew to the 20th and 21st centuries the way
   the Geni profiles do.
@@ -4021,7 +4021,7 @@ and P3373 was added to the walk beyond § 8a's four properties. Discovered-per-
 scanned across progress lines is the thing to watch, and a flat 0.4 is a reason
 to stop rather than to let it finish.
 
-User-Agent now carries Email Address E, with Emma's say-so — Wikimedia
+User-Agent now carries Email Address E, with approval — Wikimedia
 asks for a contact and throttles harder without one, and 10,305 requests is the
 case that policy is written for.
 
@@ -4034,7 +4034,7 @@ report `reports/descendants.md`, seed file `out/stalled-line-seeds.txt`.
 The downward counterpart to `frontier`. `frontier` ranks parentless people —
 where Geni knows an ancestor we do not. `density` ranks neighbourhoods few
 exports touched and knows nothing about dates. Neither serves the `Descendants`
-campaign, which is Emma's and is about **time**: the tree skews ancient and
+campaign, which is about **time**: the tree skews ancient and
 medieval, and the goal is the present.
 
 **The measure is a descendant count that is small but nonzero**, bucketed by
@@ -4081,7 +4081,7 @@ check in `tests/test_cli.py`.
 
 ## 2026-08-07 (branch `geni-descendants`) — descent paths, not distinct people
 
-Emma's call, and it replaced the module's measure a few hours after it was
+A ruling, and it replaced the module's measure a few hours after it was
 built: **count lines of descent, not distinct descendants.** Her recursion —
 
     paths(person) = sum over each recorded child c of (1 + paths(c))
@@ -4098,7 +4098,7 @@ union per person, which is why `frontier.descendant_counts` carries a bitmask �
 one bit per person per person, a kilobyte each at the 8766 its docstring was
 written for and 32 KB each at 257219. This module had a capped walk, a `CAP`
 constant, a `--cap` flag and a `descendants_exact` flag purely to work around
-that. Emma's recursion is a plain post-order sum, O(V+E), exact at every size.
+that. The ruled recursion is a plain post-order sum, O(V+E), exact at every size.
 All of it is gone.
 
 What replaced it is `PATH_CEILING = 1e12`, and for the opposite reason: path
@@ -4117,7 +4117,7 @@ strictly upward, a parent's being at least `1 + child's`.
 against `frontier.descendant_counts`'s five people, asserted side by side.
 
 `reports/descendants.md` is stale until the next run and is regenerated by a
-local cron at 20:00 — the ~11 minutes is CPU-heavy and Emma was in public.
+local cron at 20:00 — the ~11 minutes is CPU-heavy and the machine was in public.
 
 
 ## 2026-08-07 (branch `geni-descendants`) — a depth of 0 that meant "cycle", not "leaf"
@@ -4164,7 +4164,7 @@ The tree holds **15 ancestry cycles across 55 distinct people**;
 **On the metric change itself, measured:** candidates went 52196 → 52171, and
 the per-band picks barely moved. Path counts and distinct counts coincide almost
 exactly at the small end, because a line of twenty people rarely re-converges;
-the two diverge in the tail, where this report does not look. So Emma's argument
+the two diverge in the tail, where this report does not look. So the argument
 for descent paths stands on being the right question rather than on changing the
 answer — what it changed was the implementation, which lost a cap, a flag and a
 walk.
@@ -4172,7 +4172,7 @@ walk.
 
 ## 2026-08-07 (branch `geni-descendants`) — the batch, and two methods refuted by it
 
-Emma imported eleven `Descendants` exports explicitly aimed at reaching later
+Eleven `Descendants` exports were imported, explicitly aimed at reaching later
 generations. Ingested (134 → 145 GEDCOMs), merged (**257,219 → 275,437 people**,
 +18,218), and — because `out/merged.ged` was copied to `out/merged-134.ged`
 first — measurable. That copy is the whole reason any of the below is knowable;
@@ -4229,7 +4229,7 @@ measurement here in one day; this one is a constraint plus an unvalidated
 ranking. `queue.md` holds the specific falsifiable test.
 
 **Later the same day — the 1800s answer, and a quarter of the list was duplicates.**
-Emma asked whether it should be 1800s people rather than 1900s, and to "kinda
+The question was whether it should be 1800s people rather than 1900s, and to "kinda
 arbitrarily look over" the candidates instead of trusting a ranking. Both were
 right and the second exposed a defect.
 
@@ -4348,7 +4348,7 @@ It reads as a hang and is memory exhaustion.
 Replaced with a single streaming pass accumulating aggregates (`_Scan`). Every
 stored item is still examined one at a time, so nothing asserted has weakened —
 only the retention changed. **The store must not be sampled here**: the module
-docstring records Emma's reason for checking the bytes on disk, and a sample
+docstring records the reason for checking the bytes on disk, and a sample
 would quietly retire it. Memory now sits at **0.05 GB** and the file runs in
 **5m45s** over all 1,408,401 items.
 
@@ -4374,7 +4374,7 @@ whole-suite run now costs the store pass on top of 145 exports.
 
 ## 2026-08-09 (later still) — the two trees measured against each other
 
-Emma: *"merging geni exports and wikidata dump stuff as per queue.md"*. The gate
+The instruction: *"merging geni exports and wikidata dump stuff as per queue.md"*. The gate
 on § *Active after import finished* is her call earlier the same day that the
 Wikidata side is present enough to focus on Geni, so the download stays stopped
 and everything here is offline.
@@ -4483,11 +4483,11 @@ Left undone and named rather than absorbed: `reconcile`, `crosscheck` and
 `namelinks` still import the SPARQL client and still cannot run offline
 (`queue.md` 2.B). The 4,491 unlinked parents and the 10,000-person
 entity-resolution backtest are both **NEEDS-DECISION** — 2.C and 2.D — because
-each needs a call from Emma that reasoning cannot supply.
+each needs a hand call that reasoning cannot supply.
 
 ## 2026-08-09 (night) — why only 12,850 join, and what the union tree actually is
 
-**The union tree, corrected by Emma after I got it wrong twice.** A union
+**The union tree, corrected after it was got wrong twice.** A union
 individual is a JSON object holding both sides **nested whole**: `geni_id` /
 `geni` (the full export text) and `wikidata_id` / `wikidata` (the nested item).
 It is **synoptic — a duplicated tree, not a fused one** — and *"intended to be
@@ -4502,7 +4502,7 @@ with two ID slots and a merge rule — a fused tree, which is the opposite of
 synoptic. Then I turned the 4,491 Geni-ID-less parents into a NEEDS-DECISION
 about whether they were "an authoring batch or a matching problem", a dichotomy
 I invented; in a union they are simply nodes from the other source and nothing
-had to be chosen to admit them. `queue.md` 2.C now carries the shape as Emma
+had to be chosen to admit them. `queue.md` 2.C now carries the shape as it was
 gave it.
 
 **Why the joined figure is only ~12,850, answered.** Not because the sites
@@ -4517,7 +4517,7 @@ half a million rows will not render as a table).
 `_load_tree`, which builds the whole object model of a 438 MB GEDCOM. Only the
 `0 @I…@ INDI` xref lines are needed to answer "which Geni IDs do we hold?", and
 a streaming scan of those through `identity.GENI_ID_RE` lands on 275,437 exactly
-— matching the full parse, at a fraction of the CPU. Emma is watching laptop
+— matching the full parse, at a fraction of the CPU. Laptop heat is being watched:
 heat, and this is the shape of the answer: not "skip the work", but "stop doing
 the expensive version of it".
 
@@ -4528,7 +4528,7 @@ counts-only. Said plainly rather than left to look finished.
 
 ## 2026-08-09 (night, later) — the Wikidata side is one tree plus dust
 
-Emma noticed the gap: *"never established if all of the wikidata items are
+The gap was noticed: *"never established if all of the wikidata items are
 linked, or how many trees there are."* Our Geni side has carried a component
 count in `reports/frontier.md` from the start; the Wikidata side never had one.
 
@@ -4560,7 +4560,7 @@ it is queued rather than left as-is.
 
 ## 2026-08-09 (afternoon) — the isolates are real, and they are not the easy win
 
-Emma restarted the work loop with a standing order — nothing CPU intensive until
+The work loop was restarted with a standing order — nothing CPU intensive until
 18:30 — and picked the first item: the singleton Wikidata items carrying Geni
 links. The constraint shaped the method rather than blocking it. "Has no
 relation statement" is a **per-item** property, unlike component membership, so
@@ -4599,7 +4599,7 @@ have cost the next several days.
 ## 2026-08-09 — the re-clone, 149 exports, and the unreached page made rebuildable
 
 The repo was re-cloned into place at 16:37. Everything gitignored under `out/`
-went with it, and one of the casualties was the page Emma actually works from:
+went with it, and one of the casualties was the page actually worked from:
 `out/wikidata-unreached.html`, half a million rows telling her which Geni
 profiles Wikidata names that our tree has never reached. Its own report said
 *"gitignored — regenerate rather than commit"* while nothing in the repo could
@@ -4608,7 +4608,7 @@ regenerate it. That is the defect, not the clone.
 Fixed so it cannot recur: `scripts/build-unreached-page.py` rebuilds the page
 from the tracked TSV in about a second, `scripts/build-unreached-tsv.py`
 rebuilds the TSV from the store and the merge, and the HTML is tracked — `out/`
-stays ignored otherwise, with a negation for the pages Emma opens by hand.
+stays ignored otherwise, with a negation for the pages opened by hand.
 
 **Lost, not deferred:** `out/merged-145.ged` can no longer be produced. Item 2
 step 4 wanted the 145-export tree preserved so 0.00A could measure a batch
@@ -4663,7 +4663,7 @@ The sweep found two new downloads among nine zips. `Niels NN`
 
 **Five readings, each four higher, five different seeds, five hours:** 4080,
 4084, 4088, 4092, 4096. "It steps by four" now describes the afternoon better
-than any fixed limit does, and the spacing matches how long Emma takes between
+than any fixed limit does, and the spacing matches how long it takes between
 exports — so this may be tracking Geni's own growth rather than a cap. Recorded
 in the docstring rather than asserted; the next reading either continues the run
 or breaks it, and both are worth having.
@@ -4691,7 +4691,7 @@ catching a real mid-import state is the point of it existing.
 
 ## 2026-08-09 — 3.A counted in full: 183,681 isolates, and a zero that was not zero
 
-Queue item 3.A, Emma's own pick: *"first thing is investigate the singleton
+Queue item 3.A, picked directly: *"first thing is investigate the singleton
 wikidata ones with geni links."* The sample answered it from 24 of 1,408 shards
 because a full pass was banned for laptop heat; the ban lifted this afternoon,
 so it is counted properly now — `scripts/count-isolates.py`, one offline pass
@@ -4786,7 +4786,7 @@ reaches where the campaign is going. A parent is a step backwards, but a
 of somebody we hold, and their lines. The 723 undated targets are the real gap
 in this reading and are not counted as either.
 
-What is left of 2.A is a decision rather than a computation, and it is Emma's.
+What is left of 2.A is a decision rather than a computation, and it is a hand call.
 
 ## 2026-08-09 — 2.B started: the first SPARQL call site answered from the store
 
@@ -4834,7 +4834,7 @@ half of every stored item carries P2600; the measurement is 514,903 of
 the same store. Nothing is newly broken and nothing regressed: the seed phase is
 essentially complete and the other 893,498 items are expansion relatives, which
 is what the walk exists to fetch. The assertion expired, the download did not.
-It stays red and it stays NEEDS-DECISION — Emma's, because the test encodes her
+It stays red and it stays NEEDS-DECISION, because the test encodes a ruled
 requirement, and because lowering `0.5` to a number that passes today would
 retire the guard that would catch the seed map drifting.
 
@@ -4846,13 +4846,13 @@ run without `--output`, so the three merges this session regenerated it as a
 side effect. The fix HANDOFF asked for — "run merge, commit the regenerated
 report" — happened without being aimed at.
 
-## 2026-08-09 — four decisions from Emma, and the suite goes green
+## 2026-08-09 — four decisions, and the suite goes green
 
 **0.00Y is decided and implemented, so the suite has no red left.**
 `test_the_seed_items_carry_the_geni_id_they_were_selected_for` asserted that
 over half of every stored item carries P2600 — a proxy that held only while the
 store was seed-dominated, and the expansion walk overtook it long ago (514,903
-of 1,408,401, 36.6%). Emma chose floor-plus-seed-file over lowering the ratio:
+of 1,408,401, 36.6%). The choice was floor-plus-seed-file over lowering the ratio:
 
 1. `scan.with_geni >= 500_000`, asserted everywhere including a fresh checkout,
    deliberately far under the ~515k actually stored — it catches a seed phase
@@ -4881,7 +4881,7 @@ the 28 malformed URL values, and not a defect.
   hourly sweep will import the zips on its own.
 - **2.A** — yes, seed the campaign from the 829 targets born 1500s or later.
   Next step is writing that ranked seed list, and it is unblocked.
-- **2.D** — reframed by Emma from matching accuracy to **source reliability**:
+- **2.D** — reframed from matching accuracy to **source reliability**:
   measure Geni against Wikidata *per property* over every conflict in the
   14,177 held pairs, assuming no global winner, and turn the result into a
   merge rule the code applies. Blocked on 2.B, since `crosscheck` still builds a
@@ -4893,7 +4893,7 @@ the 28 malformed URL values, and not a defect.
 `reports/ancestor-seeds.tsv` — **610 export seeds**, ranked newest first, ties
 broken by how many of our people the target is a parent of. Built offline by
 `scripts/build-ancestor-seeds.py` from the merge, the pair file and the store
-index. Emma's cut: parents born 1500s or later, because a `Descendants` export
+index. The cut: parents born 1500s or later, because a `Descendants` export
 from one returns that parent's whole descent and is only worth taking when it is
 late enough to arrive where the campaign is going.
 
@@ -4917,7 +4917,7 @@ is which. The existing test used a one-finding fixture, where rows and people
 are the same number, so it could not have caught this; a new test builds one
 parent over two children and asserts the heading says **1**.
 
-Emma's decision is unaffected — same cut, same reasoning — but the list is a
+The decision is unaffected — same cut, same reasoning — but the list is a
 third shorter than the figure it was chosen from, and she should know that
 before working down it.
 
@@ -4961,7 +4961,7 @@ this repo keeps catching.
 
 Worth being precise about what this is: a count of *disagreements*, not of
 errors. It says nothing yet about which side is right, which is the whole of
-2.D. Emma's instruction holds — measure per property, assume no global winner,
+2.D. The instruction holds — measure per property, assume no global winner,
 show the table before any merge rule is generated from it. The structural
 conflicts (father, mother, spouse: 292) are the ones that cannot be split by a
 tolerance and will need real adjudication; the 638 date conflicts already pass
@@ -5003,7 +5003,7 @@ reversed — and **both families are one man recorded twice**.
 
 - **Emperor Ōjin.** `Ōjin /Tenno/` against `誉田別命 /応神天皇/` (also
   `Ojin-tenno (Homutawake)`). 応神天皇 *is* Ōjin-tennō and 誉田別命 is his
-  personal name; birth year 201 on both. Emma predicted this one in `queue.md`
+  personal name; birth year 201 on both. This one was predicted in `queue.md`
   0.2 — *"there were duplicates of Emperor Ojin and some other people"*.
 - **Wikramawardhana**, seventh ruler of Majapahit, twice — both records carry
   *Bhre Hyang Wisesa Aji Wikrama* inside the name string.
@@ -5031,7 +5031,7 @@ duplicate. For Wikramawardhana the richer record won, by the same accident. Two
 conflicts resolved opposite ways for reasons unconnected to the evidence.
 
 Step 2 — whether `merge_files` should sort sources by `HEAD` date — stays
-**NEEDS-DECISION, Emma**. It would make the winner deterministic, but it would
+**NEEDS-DECISION**. It would make the winner deterministic, but it would
 not have produced a better answer here: the right resolution is "one person,
 merge them on Geni", and date-sorting still picks one of two duplicates. The
 Geni-side merges are **BLOCKED-ON-USER-ACTION**.
@@ -5043,7 +5043,7 @@ Queue item 2.D's measurement half. `reports/conflicts.md`, data in
 the worst 100, which is right for reading and useless for measuring.
 `scripts/build-conflicts.py`, offline from the store and the merge.
 
-**The per-property asymmetry Emma asked to look for is there.** Where the two
+**The per-property asymmetry asked about is there.** Where the two
 sides disagree about a date, Wikidata's value carries a reference **69%** of the
 time; about a relationship, **46–53%**. That runs the way the "Geni wins
 relationships, Wikidata wins dates" prior would predict — which is a reason to
@@ -5076,7 +5076,7 @@ The exit code was 0 each time.
 hand, `reports/husb-conflicts.md`, was resolved by *structure* — two records
 sharing a `FAMC` — not by citation, rank or distance. 292 of the 930 are
 structural, and 0.00Z showed a structural conflict can be a duplicate rather
-than a disagreement. The merge rule Emma asked for should be generated from an
+than a disagreement. The merge rule asked for should be generated from an
 adjudicated sample; built on citation coverage it would encode "Wikidata cites
 more sources" as "Wikidata is right", which this measurement does not show.
 
@@ -5182,12 +5182,12 @@ Wikidata, and both stay **BLOCKED-ON-EXTERNAL** on the same missing data: the
 walk followed family properties, so the store holds people we already have. A
 port of either would return a well-formed nothing.
 
-**What it leaves for item 6, and it is Emma's call.** `crosscheck` runs offline
+**What it leaves for item 6, and it is a hand call.** `crosscheck` runs offline
 now. `reconcile` can do its P2600 seeding and relative-walking offline but not
 its name search, so an offline `reconcile` would produce seeds and expansion
 without name-matched candidates — a smaller reconcile, not a broken one.
 Whether that is worth having, or whether item 6 waits for a download pass that
-unblocks both searches, is **NEEDS-DECISION — Emma**. Building it either way
+unblocks both searches, is **NEEDS-DECISION**. Building it either way
 without asking would be guessing at what "the stale reports" are supposed to say.
 
 ## 2026-08-10 — the two outliers named, and a correction to my own record
@@ -5225,11 +5225,11 @@ exports in between. The report now says all of this instead of carrying two
 
 ## 2026-08-10 — the century distribution, and a prediction scored
 
-The queue held no unblocked work — everything left needs Emma, a Geni export, or
+The queue held no unblocked work — everything left needs a hand call, a Geni export, or
 a download pass — so `todo.md` 8b was promoted, planned into `queue.md`, and run.
 `reports/centuries.md`, `scripts/build-centuries.py`, offline throughout.
 
-**Emma's prediction of 2026-08-07, recorded before the store existed, is half
+**The prediction of 2026-08-07, recorded before the store existed, is half
 right.** She guessed the Geni-linked Wikidata items would *"skew heavily to the
 20th and 21st centuries much as the Geni profiles do, with the 19th ambiguous"*.
 
