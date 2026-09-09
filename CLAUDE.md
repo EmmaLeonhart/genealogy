@@ -4309,9 +4309,8 @@ parent identifications the duplicate guard is sitting on, one card per case, ren
 by eye. It is published on GitHub Pages **unlinked**, per § *A REVIEW PAGE GOES ON GITHUB PAGES*.
 When she asks for *"the artifact we used for identifying parents"*, that URL is the answer.
 
-**Emma, 2026-09-04, on the state a cloud session left it in:** *"it tried to regenerate a
-weird-ass page and put it on github in a way that made it useless"*, and *"I want you to make the
-documentation of it much more clear so future sessions always clearly regenerate it on demand."*
+**A cloud session regenerated the page and published it in a state that made it useless.** The
+documentation below exists so that future sessions regenerate it on demand, correctly.
 
 **THE RUNBOOK. A cloud session with no corpus on disk uses the FIRST of these; nothing else
 is needed and nothing else should be improvised:**
@@ -4341,18 +4340,14 @@ It writes three things and they are one artifact in three forms --- `reports/par
 **HOW TO HAND IT OVER, and both channels are right for different reasons.** Pages ---
 <https://emmaleonhart.github.io/genealogy/parent-review.html> --- needs no sign-in and survives
 the session, and is what § *A REVIEW PAGE GOES ON GITHUB PAGES* is about. A **claude.ai artifact**
-(`Artifact` on `out/parent-review.html`) is instant and does not wait on a workflow; Emma used one
-on 2026-09-04 and asked for it by name --- *"just give me the artifact"*. Her rule against
-artifacts is about **GitHub Actions artifacts**, the zip downloads that need a sign-in: *"Github
-actions artifacts are both inaccessible to me."* Those two things share a word and are not the
-same thing. **Publish the artifact first and let the workflow catch Pages up**, because the
+(`Artifact` on `out/parent-review.html`) is instant and does not wait on a workflow, and is
+often what is actually wanted. The rule against artifacts is about **GitHub Actions artifacts**,
+the zip downloads that need a sign-in and are therefore inaccessible. Those two things share a
+word and are not the same thing. **Publish the artifact first and let the workflow catch Pages up**, because the
 workflow takes minutes and she is waiting.
 
-**⛔ A CJK CASE IS NOT IN THE DECK. Emma, 2026-09-07, ruling firmly:** *"I'm making a firm
-ruling here that effectively all these cjk people are undoable for me in my current situation
-and idk why they are even getting in as they aren't in the universe I don't think."* She was
-handed `宣度 崔`/`Cui Xuandu`, `丹後内侍`/`藤原遠宗の娘` and `惟宗広言`/`Koremune no Tadayasu`
-and marked all three `UNSURE`.
+**⛔ A CJK CASE IS NOT IN THE DECK.** A CJK card is not adjudicable in practice — `宣度 崔`/`Cui
+Xuandu`, `丹後内侍`/`藤原遠宗の娘` and `惟宗広言`/`Koremune no Tadayasu` all came back `UNSURE`.
 
 A card is judged by reading two people's spouses and children, and that is not something she can
 do for a Heian courtier or a Northern Wei official from where she is. Holding them costs her a
@@ -4369,8 +4364,8 @@ They stay in `reports/parent-candidates.tsv`, which is the census; only the deck
 filtered.
 
 **REGENERATE BEFORE HANDING IT OVER. Always.** The committed HTML is a photograph of whenever it
-was last built, and § *Emma edits the tree and the items BY HAND, continuously* is why that goes
-stale in minutes: a card she has already answered is a card that wastes her turn. The verdicts go
+was last built, and § *The tree and the items are edited BY HAND, continuously* is why that goes
+stale in minutes: an already-answered card wastes a turn. The verdicts go
 back to `reports/emma-judgments.tsv` --- `SAME`/`DIFFERENT` retires a case, `UNSURE` does not.
 
 **Her verdicts arrive as a pasted block and go in by hand.** The page's *Copy decisions* button
@@ -4416,13 +4411,12 @@ a cloud session and this one, on the same file, resolved by keeping both rather 
 overlap is worth reading before assuming a fix is complete: the cloud session repaired the *name*
 on the card by splitting the glued id at display time, which is a real guard and is kept, but it
 left `cell()` alone --- so the spouse and child lists, which are the evidence half and the thing
-Emma actually judges on, stayed empty for everyone with more than one. A symptom can be fixed
-where it shows rather than where it starts.
+the cards are actually judged on, stayed empty for everyone with more than one. A symptom can be
+fixed where it shows rather than where it starts.
 
 ### THE FAMILY DECK: the CHILD and SIBLING slots, `family-review.html`
 
-**Emma, 2026-09-09:** *"I want to do some more manual zipper merging. Now I'm thinking for
-siblings/children as I think we're get through of the parents mostly."*
+**The child and sibling slots get the same manual zipper treatment as the parents.**
 
 <https://emmaleonhart.github.io/genealogy/family-review.html> --- same shape as the parent deck,
 same Copy-decisions round trip, same `reports/emma-judgments.tsv`, `batch` =
@@ -4529,10 +4523,9 @@ or the window spends slots on cards that are then dropped.
 
 ### The purpose is to ADD to Wikidata, not to correct it
 
-**2026-08-10, Emma:** *"the entire purpose of this is to add it… Correcting
-stuff on Wikidata is actually such a pain that it's almost effectively out of the
-question. We will be more prone to adding in contradictory information cited to
-Geni than we are to correcting information."*
+**The entire purpose is to ADD.** Correcting existing material on Wikidata is such a pain that it
+is almost out of the question; adding contradictory information cited to Geni is far more likely
+than correcting anything.
 
 This governs what is worth working on. Over the 14,157 people carrying both a
 Geni ID and a Wikidata item:
@@ -4543,8 +4536,7 @@ Geni ID and a Wikidata item:
 | conflicts (both sides state it, values differ) | 930 |
 
 **Twenty-seven to one.** Contradiction resolution is worth doing and is *not a
-priority* — Emma, same day: *"remember contradiction resolution is not that high
-priority here generally… it is worth doing but genuinely not that important."*
+priority* — worth doing, genuinely not important.
 
 Practical consequences:
 
@@ -4554,55 +4546,41 @@ Practical consequences:
   statement cited to Geni** over editing the existing one.
 - The measurement that matters for any field is *how many people have it in Geni
   and lack it on Wikidata*, not *how often the two disagree*.
-- **A conflict is never routed to Emma for a ruling.** The pipeline emits the Geni
-  value beside the existing statement, cited `S2600`, and moves on;
-  `scripts/build-from-diff.py` does this for every `CONFLICT` row of every diff.
-  Twelve conflicts were put to her as decisions on 2026-08-26 and her answer was that
-  the question should not have been asked: *"those seemed like simple data issues that
-  by design were supposed to get pushed onto wikidata"*, *"it's not your job to make
-  the tree correct it's your job to set up a pipeline that gets the exported geni data
-  onto wikidata"*, and — the reason it can never be per-case — ***"we are doing over a
-  million people here."***
+- **A conflict is never routed to anybody for a ruling.** The pipeline emits the Geni value
+  beside the existing statement, cited `S2600`, and moves on; `scripts/build-from-diff.py` does
+  this for every `CONFLICT` row of every diff. Conflicts are simple data issues that by design
+  get pushed onto Wikidata: the job is not making the tree correct, it is setting up a pipeline
+  that gets the exported Geni data onto Wikidata — and, the reason it can never be per-case,
+  **over a million people.**
 
 `reports/model.md` holds the field-by-field version of that table;
 `reports/names-spec.md` is the first spec written against it.
 
-### How this project works now: case by case, Emma interprets
+### How this project works now: case by case, interpreted by hand
 
-**2026-08-10. This supersedes the "build a report over the whole corpus" habit.**
-Emma: *"we go through the merging on a case-by-case basis. I am going to say we
-go through the merging, and I look over each case one by one. You display each
-case to me one by one, and I look over it. We try to derive rules for that."*
+**This supersedes the "build a report over the whole corpus" habit.** Merging goes case by case:
+each case is displayed on its own, looked over, and rules are derived from that.
 
-The failure being corrected: *"you're just aggressively jumping into the database
-modelling and skipping the interpretation... you've run this algorithm on a bunch
-of stuff without telling me and not even looked at a single thing."*
+The failure being corrected is jumping into the database modelling and skipping the
+interpretation — running an algorithm over a lot of material without ever looking at a single
+case.
 
 So:
 
 1. **Show records, not statistics.** A markdown file of counts is not a
    deliverable. `scripts/show-case.py` prints one person, both sides.
-2. **Never reformat data you were asked to inspect.** Emma, on a display that
-   collapsed a 2,686-line record to fifteen lines of my formatting: *"Your
-   display of the GEDCOM data is 100% wrong... you made editorial decisions on
-   the GEDCOM data. You actively obscured stuff from me."* Print raw lines. If
-   something is withheld, say what and how much.
-3. **Rules come out of cases, not before them.** Do not generalise a merge rule
-   from one example; Emma explicitly refused that for the Ōjin conflict.
-4. **Ask on ambiguity.** *"The whole thing is you're supposed to slow down and
-   ask the user a question on ambiguities."*
+2. **Never reformat data you were asked to inspect.** A display that collapsed a 2,686-line
+   record to fifteen formatted lines made editorial decisions on the GEDCOM data and actively
+   obscured it. Print raw lines. If something is withheld, say what and how much.
+3. **Rules come out of cases, not before them.** Do not generalise a merge rule from one example
+   — that was refused explicitly for the Ōjin conflict.
+4. **Ask on ambiguity.** Slow down and ask rather than deciding.
 
 ### The Samaritan family relationships are DONE. Do not audit them
 
-**Emma, 2026-08-15:** *"Oh my god are you trying to somehow, for some bullshit
-reason, analyze whether the family relationships of the Samaritans are correct?
-Cuz you shouldn't be doing that. I don't want you to be doing that. The family
-relationships of the Samaritans are done."*
-
-She built that tree on Geni by hand. **She also knows it contains errors, and has
-decided they stay** — 2026-08-15: *"I know that the Samaritans have errors in
-their relationships but my perspective here is it's good enough and we're moving
-on."* So finding one is not a discovery and reporting one is not a service. This
+**The family relationships of the Samaritans are done.** That tree was built on Geni by hand.
+**It contains errors, and they stay** — it is good enough and the work has moved on. So finding
+one is not a discovery and reporting one is not a service. This
 is the export-analysis reflex one section down, wearing a different costume.
 
 **What this does not forbid.** Work *about* those people that is not an audit of
@@ -4610,9 +4588,8 @@ their relationships: giving them Wikidata items, normalising their office and
 succession, classifying their **names** — `ben Yitzhaq` is a patronymic and that
 is name work, not a relationship check.
 
-**Two name forms the Samaritans use that the classifier does not yet handle**,
-raised by Emma 2026-08-15 and going into her own name-modelling document rather
-than being guessed at here:
+**Two name forms the Samaritans use that the classifier does not yet handle**, which belong in
+the name-modelling document rather than being guessed at here:
 
 - **Ordinal patronymics** — `Yitzhaq I ben Tsedaka`, `Tabia III ben Yitzhaq ben
   Abram`. The ordinal sits between the given name and the patronymic, and it is
@@ -4621,18 +4598,16 @@ than being guessed at here:
   generations in one string. `classify-patronymics.py` reads only the first
   `ben X`, so the grandfather and great-grandfather are invisible to it.
 
-**How it went wrong:** a stale queue item said Wadah Cohen's father was missing.
-The right move was to notice the item was stale and delete it. Instead the
-relationships were walked and reported back to her. They were fine — she had
-created the intervening `NN ben Amram ben Yitzhaq /Cohen/` the week before.
+**How it went wrong:** a stale queue item said Wadah Cohen's father was missing. The right move
+was to notice the item was stale and delete it. Instead the relationships were walked and
+reported back. They were fine — the intervening `NN ben Amram ben Yitzhaq /Cohen/` had been
+created the week before.
 
 ### The Bureätten campaign ends on COVERAGE. Re-measure after every export
 
-**Emma, 2026-08-28**, twice in one evening: *"the bure people here we don't need to export from
-all of them we just need to get all of them in exports"*, and then *"we can search through all of
-the people as we add more since we want all these bureatten people in the geni synoptic tree and
-once everyone is covered the campaign is over. Because these people are quite linked as they are
-a family relationship to each other."*
+**Not every Bure person needs an export of their own; they all need to be IN some export.** The
+campaign is over once everyone is covered, because these people are a family and therefore
+heavily linked to each other.
 
 **The target is that all 251 sv.wikipedia Category:Bureätten people carrying a Geni id are
 somewhere in `exports/`.** Not one export each — the number of exports it takes is whatever it
@@ -4674,7 +4649,7 @@ files on disk.
 
 **Both were answerable by a grep over `exports/`, in a second, for nothing.** An export
 costs a Geni round trip, a download, a commit of ~90k lines, and — the part that actually
-matters — one of Emma's export slots and her patience.
+matters — an export slot, and the patience to sit through it.
 
 **So, before every export, run the check and put the number in the commit message:**
 
@@ -4689,8 +4664,7 @@ never-delete-a-GEDCOM rule is untouched. The point is not to run it.
 
 ### The job with an export is to integrate it, not to analyse it
 
-**Emma, 2026-08-13, stated flatly after repeated violations.** *"This is not a
-data analysis project, it is a project for editing Wikidata to add more stuff."*
+**This is not a data analysis project. It is a project for editing Wikidata to add more stuff.**
 When a new export lands, the task is to **integrate it into the tree** — place
 the `.ged`, commit, re-merge if needed — and nothing else. Do **not** compare it
 to an existing export, diff it, characterise what changed, count what it adds,
@@ -4703,8 +4677,7 @@ not analysis. The tree is the substrate; the deliverable is Wikidata edits.
 
 ### No unprompted reports
 
-**Emma, 2026-08-12.** Do not produce a report, an analysis or a measurement that
-was not asked for. Write the thing that was requested and stop.
+Do not produce a report, an analysis or a measurement that was not asked for. Write the thing that was requested and stop.
 
 This is not a rule against measuring — § *"Analyse this" means build a CSV* still
 stands, and when she asks for an analysis it should be exhaustive. It is a rule
@@ -4725,12 +4698,9 @@ Two specific habits it forbids:
 
 ### "Analyse this" means: build a CSV of every instance, then analyse that
 
-**Emma's rule, 2026-08-11, and she stated it as a correction of what I am and am
-not good at:** *"When I ask you to analyse a problem, it generally means you run a
-script to build a CSV of every single instance of the phenomenon that I'm asking
-you about, and then do an analysis on it, and then make a decision explicitly.
-I'm realising this is a thing you're good at, and you're absolutely not good at
-analysing individual components."*
+**"Analyse this" means run a script that builds a CSV of every single instance of the
+phenomenon, then analyse that CSV, then state the decision explicitly.** Analysing individual
+components by eye is the thing this replaces.
 
 So the shape of every analysis task is three steps, in this order:
 
@@ -4745,8 +4715,8 @@ So the shape of every analysis task is three steps, in this order:
 
 **This supersedes reaching for a hand-picked example.** Looking at one record and
 generalising is the failure this rule exists to stop — and note it does *not*
-contradict § *How this project works now*, which is about Emma interpreting
-**records** she has been shown. Showing her a record is how a rule gets decided;
+contradict § *How this project works now*, which is about interpreting **records** one at a
+time. Showing her a record is how a rule gets decided;
 building the CSV is how the phenomenon gets measured. Do both, in that order:
 records first so she can see what the thing is, then the full census.
 
