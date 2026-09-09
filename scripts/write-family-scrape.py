@@ -146,8 +146,30 @@ def parse_block(text: str) -> dict:
     }
 
 
+def read_stdin() -> str:
+    """⛔ READ STDIN AS UTF-8 EXPLICITLY. `sys.stdin.read()` is the mojibake bug in a new place.
+
+    On Windows `sys.stdin` decodes with the LOCALE encoding -- cp1252 here -- so a scrape piped
+    in as UTF-8 arrives already wrong and is written back out as UTF-8, double-encoded.
+    Measured 2026-09-09 on Ellen Margrethe Charlotte Jessen: `Børge` became `BÃ¸rge` and
+    `Kröncke` became `KrÃ¶ncke`, in a file whose whole job is to preserve what Geni said.
+
+    This is the same failure `queue.md` warns about for shell heredocs --- *"it double-encodes
+    UTF-8 and silently destroyed 4 of 14 scrapes"* --- so the warning was right about the shape
+    and wrong about the cause being the shell. Anything that decodes by locale does it, and this
+    script was the one thing the loop is supposed to pipe a scrape THROUGH.
+
+    Nothing on disk was damaged by it: every family file written before today came from a file
+    tool rather than this pipe, so `geni-families/` had no mojibake in it when this was found.
+    """
+    buf = getattr(sys.stdin, "buffer", None)
+    if buf is not None:
+        return buf.read().decode("utf-8")
+    return sys.stdin.read()
+
+
 def main() -> int:
-    raw = sys.stdin.read()
+    raw = read_stdin()
     blob = json.loads(raw) if raw.lstrip().startswith("{") else parse_block(raw)
     ext, relatives = blob["ext"], blob["relatives"]
     gid, name = ext["geni_id"], ext.get("name", "")
