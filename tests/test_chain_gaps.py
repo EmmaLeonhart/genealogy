@@ -1,8 +1,7 @@
 """The gap finder, which answers presence without building the merged tree.
 
-Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
-is just going to create another tree that's going to become out of date pretty soon."*
-The rules pinned here are the ones that make the cheap answer the correct one.
+An unrequested rebuild of the synoptic tree only produces another tree that goes out of
+date shortly after. The rules pinned here are the ones that make the cheap answer the correct one.
 """
 
 from __future__ import annotations
@@ -32,7 +31,7 @@ def test_the_xref_pattern_reads_geni_ids_and_only_those(gaps):
     """
     text = (b"0 HEAD\n"
             b"0 @I6000000001846508982@ INDI\n"
-            b"1 NAME Emma /Leonhart/\n"
+            b"1 NAME Test /Person/\n"
             b"0 @F123@ FAM\n"
             b"1 NOTE see @I999@ INDI for details\n"
             b"0 @I42@ INDI\n"
@@ -42,9 +41,9 @@ def test_the_xref_pattern_reads_geni_ids_and_only_those(gaps):
 
 
 def test_the_url_is_the_family_tree_index_not_the_profile(gaps):
-    """Emma, 2026-08-17: the family-tree page is *"a better page to open up for them
-    rather than the pages you opened"*. The profile shows one person; the index shows
-    the neighbourhood she has to work in to place a placeholder and export."""
+    """The family-tree page is the better one to open, ruled 2026-08-17. The profile
+    shows one person; the index shows the neighbourhood a placeholder has to be placed
+    in before the export is run."""
     url = gaps.FAMILY_TREE_URL.format("6000000085113755501")
     assert url == "https://www.geni.com/family-tree/index/6000000085113755501"
     assert "/people/" not in url

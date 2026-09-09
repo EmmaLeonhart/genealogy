@@ -137,11 +137,9 @@ class PathStep:
     note: str = ""
     #: Which of the file's paths this row belongs to, 1-based.
     #:
-    #: **Emma, 2026-08-16:** *"You haven't been distinguishing the blood and
-    #: marriage things. You've been treating them as one gigantic tree, one
-    #: gigantic line? If so, that's really weird… It doesn't really matter that
-    #: much whether you're distinguishing them, as long as you treat it as being
-    #: two paths and not one."*
+    #: **A blood path and a marriage path are TWO PATHS, not one.** It does not
+    #: matter much whether the two are distinguished by name, as long as they are
+    #: treated as two paths rather than run together into one line.
     #:
     #: Geni shows a pair both a blood path and an in-law path, and
     #: `path-from-html` writes them into one file end to end. The boundary is
@@ -221,8 +219,8 @@ class PathReport:
     def chains(self) -> list["PathReport"]:
         """One report per path in the file, because a file can hold two.
 
-        Emma, 2026-08-16: *"as long as you treat it as being two paths and not
-        one."* Geni shows a pair a blood path and an in-law path and
+        A blood path and an in-law path are two paths, not one. Geni shows a pair
+        both and
         `path-from-html` writes both into one file; `PathStep.chain` marks which
         is which. Every property here is per chain once it is read off a member
         of this list, which is what makes the split cost nothing at the call
@@ -609,8 +607,8 @@ def render_markdown(report: PathReport, title: str) -> str:
 
     chains = report.chains
     if len(chains) > 1:
-        # Emma, 2026-08-16: "as long as you treat it as being two paths and not
-        # one." Geni gives a pair both a blood path and an in-law path and the
+        # A blood path and an in-law path are two paths, not one. Geni gives a
+        # pair both and the
         # saved page carries both, so the counts above span two chains of people
         # and every "the run stops at" sentence below is about the first.
         counts = "; ".join(

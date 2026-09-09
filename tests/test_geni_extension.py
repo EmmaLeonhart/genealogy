@@ -1,7 +1,7 @@
 """`geni-extension/` is the instrument for every Geni action now, and nothing checked it.
 
 It is JavaScript in a Python repo, so CI ran nothing against it at all: a broken manifest or a
-mangled file would have been discovered by Emma, in her browser, in the middle of a run.
+mangled file would have been discovered in a live browser, in the middle of a run.
 
 **These are build checks, not behaviour tests.** They assert the things whose failure is silent.
 What the collector actually *does* is verified the way `CLAUDE.md` § *"Analyse this" means build
@@ -69,8 +69,8 @@ def test_the_manifest_is_valid_and_every_file_it_names_exists():
 def test_the_extension_only_reaches_geni():
     """Host permissions stay pinned to Geni.
 
-    The collector runs inside her logged-in browser, so its match patterns are the whole of its
-    blast radius. A widened pattern would put a content script on every page she visits.
+    The collector runs inside a logged-in browser, so its match patterns are the whole of its
+    blast radius. A widened pattern would put a content script on every page that browser visits.
     """
     manifest = json.loads((EXT / "manifest.json").read_text(encoding="utf-8"))
     patterns = list(manifest.get("host_permissions", []))
@@ -106,8 +106,7 @@ def test_no_source_file_carries_a_control_character():
 
 
 def test_the_pushpin_is_never_toggled():
-    """Emma, 2026-09-03: *"You do not pin Charlemagne, it needs to be done exactly once and I
-    did it."*
+    """The pushpin is pinned to Charlemagne exactly once, by hand, out of band.
 
     Toggling the anchor mid-run silently re-anchors every later search to *"You"*, which is how
     a batch of profiles came to be queued against the wrong endpoint. The collector reads the
@@ -127,7 +126,7 @@ def test_the_pushpin_is_never_toggled():
 def test_exports_are_never_concurrent_and_never_cancellable():
     """Two of Geni's limits, encoded as limits rather than as settings.
 
-    Emma, 2026-08-18: *"There's no way that you can do an export concurrently. That isn't my
+    There is no way to run an export concurrently. As stated 2026-08-18: *"That isn't my
     decision thats geni."* And on cancelling: *"you think you can kill a geni export read the
     fucking docs you can't."* A control implying either is possible offers a choice that cannot
     be carried out, which `CLAUDE.md` § *Only `AskUserQuestion` gets answered* calls worse than a

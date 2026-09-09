@@ -1,6 +1,6 @@
 """The month-long hold on items `OBender12` has touched.
 
-Emma's control, 2026-08-30
+The control set 2026-08-30
 § *Decisions*: *any item `OBender12` has touched is locked — our QuickStatements may not edit
 it.* The hold is on the full contributions list rather than its overlap with the ledger, and it
 expires on its own so that nothing has to remember to lift it.
@@ -74,8 +74,7 @@ def test_the_hold_is_on_the_subject_and_never_on_the_value(touched):
 
 
 def test_the_name_item_cap_lifts_on_the_same_day_as_the_hold():
-    """Emma, 2026-08-30, asked what name-item creation should do while the hold runs:
-    *"Cut it to 2-3 a day."*
+    """Name-item creation is cut to 2-3 a day while the hold runs.
 
     Name-item creation is the highest-risk operation in the pipeline — the duplicates another
     editor merged were name items, and the people side has no comparable audience. Three keeps
@@ -94,9 +93,9 @@ def test_the_name_item_cap_lifts_on_the_same_day_as_the_hold():
     spec.loader.exec_module(names)
 
     assert names.NAME_ITEM_HOLD_EXPIRES == bgd.OBENDER_HOLD_EXPIRES
-    # 12 and 40 since 2026-09-07, when Emma doubled every batch size a second time --
-    # *"change it so that the daily batch is twice as large in all of the things it does...
-    # all numbers doubled basically"*. They were 6 and 20 from the 2026-09-05 doubling, and
+    # 12 and 40 since 2026-09-07, when every batch size was doubled a second time -- the
+    # daily batch does twice as much of everything, with all numbers doubled. They were 6
+    # and 20 from the 2026-09-05 doubling, and
     # 3 and 10 before that; `978bc7fe` moved the constants and left this test pinning the old
     # pair, so CI went red on the doubling rather than on anything wrong. The RATIO is what
     # this test is really about: the held cap stays below the normal one, and the effective

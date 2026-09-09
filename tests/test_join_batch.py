@@ -1,10 +1,10 @@
 """`scripts/build-join-batch.py` — the thing that consumes the synoptic correspondence.
 
-Emma asked on 2026-08-24 whether the join was implemented and it was not: 522,086
+Asked on 2026-08-24 whether the join was implemented, the answer was no: 522,086
 Geni ID ↔ QID pairs sat in a file nothing read. This is the consumer, and these are the
 rules it must not break.
 
-The rules are hers, not invented here:
+The rules are ruled, not invented here:
 
 * **`P2600` *Geni.com profile ID* comes first.** *"The Jenny ID needs to be present
   before any properties derived from Jenny can be taken from it, or before any
@@ -72,7 +72,7 @@ def test_every_subject_already_exists():
 
 
 def test_the_geni_id_is_emitted_before_anything_derived_from_it():
-    """Emma's ordering rule, and it is about meaning rather than tidiness.
+    """The ordering rule, and it is about meaning rather than tidiness.
 
     A statement cited to a Geni ID that the item does not yet carry is asserting a
     provenance the reader cannot follow. So for any person this batch adds a `P2600`
@@ -110,8 +110,8 @@ def test_nothing_restates_a_property_the_item_already_has():
 def test_every_derived_statement_cites_the_geni_profile():
     """`S2600` on everything except the `P2600` statement itself.
 
-    The Geni ID cannot cite itself, and `CLAUDE.md` records that Emma's own items never
-    reference `P2600` — it *is* the reference.
+    The Geni ID cannot cite itself, and `CLAUDE.md` records that the hand-made items
+    never reference `P2600` — it *is* the reference.
     """
     missing = [(s, p) for s, p, v in statements()
                if p != "P2600" and "S2600" not in v]
