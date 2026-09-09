@@ -32639,3 +32639,67 @@ repo is ours, nothing was waiting on anybody, and the not-done taxonomy's own lo
 — *if it fits none of these with a specifically-named blocker, DO IT NOW* — applied. Naming an
 external blocker for something self-inflicted is the failure `CLAUDE.md` § *NEVER SAY YOU CANNOT
 DO SOMETHING YOU HAVE NOT TRIED* is written against, one step removed.
+
+
+## 2026-09-09 — `noble` is a RANK in a name field, and the artefact is four times bigger than the word
+
+**Emma, photographing `Q110731142` — `noble Nike|Victoria Soutzaina`:** *"there's a fuckton of
+people with the prefix 'noble' on wikidata that comes from the same guy in 2022... all of them
+have the title in their mul label which is more like an English label and I would like to use our
+completely present wikidata export that should contain all of these people and redo their labels
+agentically to be proper."*
+
+**Two scripts, split on purpose.** `census-imported-title-labels.py` is the 20-minute pass over
+all 2,427 store shards and proposes nothing; `propose-title-label-fixes.py` reads its output in
+seconds and computes what each label should become. That split is what let the rule below be
+argued with six times without re-scanning 2.4M items.
+
+**The census: 2,426,152 items scanned, 44,099 are `P31` Q5 human AND carry a rank word or a `|`**
+— 42,458 rank, 1,565 pipe, 76 both. `P31` is the guard that matters: `Q113291098` *noble women*
+and `Q13417114` *noble family* open with the word and are nobody.
+
+**⛔ CASE IS THE DISCRIMINATOR AND A BARE WORD LIST WOULD HAVE RENAMED THOUSANDS.** Of the 42,534
+rank-led labels, **41,505 capitalise the word and 1,029 do not**:
+
+    miles     303 capitalised -- Miles Davis, Miles Teller     0 lower
+    don       956 capitalised -- Don Rosa, Don McLean          1 lower
+    king      158 capitalised -- King Vidor, King Levinsky     1 lower
+    major     148 capitalised -- Major Ridge, Major Lance      3 lower
+    noble      44 capitalised -- Noble Sissle, Noble Consort   608 lower
+    sir    20,551 capitalised -- Sir William Hamilton, 9th Bt   0 lower
+
+The importers that put a rank in the name field wrote it lower case — `noble`, `farmer`,
+`esquire`, `skipper`, `mistress`, `ridder`. **The 41,505 capitalised are somebody else's labels
+and are untouched**, § *WIKIDATA'S LABEL BEATS OURS*.
+
+**Five rules, every one measured before it shipped:**
+
+* **Cut at the first comma.** All **704 distinct tails** in this population were read and not one
+  is a name — `of Malpas`, `lord of Barritskov`, `heiress of Penttilä moiety of Neuvottoma`,
+  `beizadi`, `1.Count Cantacuzino-Vlasici`. `drop_title_tail` alone left `Detlof Heyke, master`.
+* **The comma goes BEFORE the pipe split.** `Johann|Hans, Freiherr von Aichberg zu Laberweinting`
+  split first keeps a rank in the label and leaves the bare word `Hans` as the alias.
+* **The `|` becomes an `Amul` alias**, never a discarded half.
+* **A bracketed alternation is held** — `Ann Bincks (Benckes|Bench)` expands to
+  `Ann Bincks (Benckes` and `Ann Bincks Bench)`. The test is on the READINGS: a per-token check
+  passed it, because `(Benckes|Bench)` is itself balanced. **136 rows.**
+* **⛔ `of Tawast` IS A FAMILY NAME.** `noble Anna Kristiina of Tawast, heiress of Haminalahti
+  manor` reduces to two given names and no surname. `CLAUDE.md` § *A BARE GIVEN NAME IS NOT A
+  LABEL* relies on the person's own `SURN`, which these people do not have, so the evidence is
+  `reports/given-name-attestation.tsv` instead. Read at floors 5, 20 and 50 — 26, 9 and 7 rows —
+  and the 17 that 5 adds are `of Svinhufvud`, `of Rosen`, `of Appelbom`, `of Liljakaivo`, every
+  one a Baltic noble family. **35 held.**
+
+**2,144 proposals, 4,357 label edits across `en` 2,133, `mul` 1,448, `nl` 762.** 464 of them are
+`noble`. **567 rows are held** under a named reason rather than dropped, so a proposal that
+vanishes cannot read as nothing to do.
+
+**Two false starts worth keeping, both caught by reading rather than by counting.** A
+description word matched anywhere in the label held `Sir Josiah Child, 1st Baronet` — `Child` is
+his surname, § *A TITLE IS NOT A NAME* exactly; narrowed to the first token it holds 10 rows and
+all 10 are stillborn records. And the `unbalanced` catch-all fires on **3** rows, one of them
+`lady from Tajihi clan (lady-in-waiting of Emperor Kōkō)` — a guard that fires on one row of
+2,300 is the shape a guard should have.
+
+**Nothing is emitted.** The scope beyond `noble` — the other lowercase ranks, and whether the
+41,505 capitalised `Sir … , Nth Baronet` labels are in scope at all — is hers.
