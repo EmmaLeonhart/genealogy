@@ -33035,3 +33035,43 @@ hard-coded: read the pin off a screenshot, or click by element ref.
 Charlotte Jessen reads *"Charlemagne's 35th great granddaughter"* and Louis d'Anjou
 *"Charlemagne's 15th great grandson"* — both matching the chains captured earlier today, so one
 check verifies the anchor and corroborates those two captures at once.
+
+## 2026-09-09 — the running extension is 1.6.4, and it calls an in-law chain blood
+
+Work-loop tick. The collector is unblocked and running; this is what the first capture after
+the anchor reset turned up.
+
+**⛔ THE RUNNING CHROME IS ON 1.6.4 — measured, not guessed.** The content script stamps its
+version on `documentElement.dataset.geniCollector`; its digits read `164`. `queue.md` has said
+*"still on 1.6.5"* and then *"1.6.6 on disk"* and then *"1.6.7 on disk"*, and none of that
+described what was executing. **1.6.5, 1.6.6 and 1.6.7 are all on disk and none has ever run.**
+So every defect those three fix is live, and has been through every capture taken since.
+
+**⛔ AND ONE OF THEM BIT IMMEDIATELY.** Miroslava, Princess of Bulgaria `371367105380011098`
+came back `via: blood`, `state: path_found`, with a `path_tsv` header reading `(blood)`. Her
+page states **both** *"Shortest in-law relationship"* **and** *"No blood relationship was
+found."* That is `6b2dee75` exactly — *"the in-law chain was returned as the blood result"* —
+which 1.6.7 fixes and which nothing is running.
+
+The chain says it without the banner: it leaves the Carolingian descent at Arnulf II through
+*"his wife"*, crosses to *"her brother"* Géza of Hungary, down to Marguerite, over *"her
+ex-husband"* Gavril Radomir and finally to *"his sister"*, the target. Four marriage or sibling
+steps. Filed as **IN-LAW**, `via=inlaw` in the ledger, with the correction written into the file
+header rather than left implicit. It is still a hit — *"in-law connections are just as valid
+blood is no required lol"*.
+
+**So `via` currently records WHICH SEARCH RAN, not what came back**, and every hit has to be
+classified by hand off the relation words and Geni's prose until the extension is reloaded.
+
+**The two hits already filed tonight were re-checked rather than assumed**, since the same
+defect could have mislabelled them. Louis d'Anjou's page reads *"Shortest blood relationship"*
+with no miss sentence — his `(blood)` header stands. Margareta Sanseverino's reads *"Shortest
+in-law relationship"*, and her file already documents both a 23-step blood descent through her
+father and the marriage chain to her husband, so `via=blood` is true of her even though Geni's
+shortest answer is the in-law one.
+
+**Also fixed: one of the three CI failures.** `reports/repo-freshness.csv` still listed
+`parked.md`, deleted in `339672bd`, which `tests/test_generated_inventories.py:80` asserts
+against by name. Regenerated. The other two are still open and still `NEEDS-INVESTIGATION` —
+the married-name alias title drop, and `translit("Anna")` giving `アンナ` where the test wants
+`アナ`. CI has been red since **2026-09-06**; last green sha is `710aaf89`.

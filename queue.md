@@ -103,11 +103,25 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **75 of the 84 misses are blood-only**, so they re-enter the pool under rule 2 of § *BOTH TIES,
   ALWAYS* and are not final misses.
 
-  ⛔ **THE RUNNING CHROME IS ON WHATEVER IT LOADED LAST, WHICH IS NOT 1.6.7.** An unpacked
-  extension does not pick up file changes on its own, and `chrome://extensions` is refused by the
-  automation surface the same way `chrome://` always is. One click in that page, or a Chrome
-  restart, loads it. Until then the loop still mis-handles the in-law verdicts 1.6.6 and 1.6.7
-  were written for, and the harvest has to apply the same rules by hand.
+  ⛔ **THE RUNNING CHROME IS ON 1.6.4 — MEASURED 2026-09-09, THREE VERSIONS BEHIND THE DISK.**
+  **Read it, do not guess it:** `documentElement.dataset.geniCollector` is stamped by the content
+  script; it is five characters and its digits are `164`. So **1.6.5, 1.6.6 and 1.6.7 are all on
+  disk and none of them has ever executed**, and every in-law defect they fix is still live. An
+  unpacked extension does not pick up file changes on its own, and `chrome://extensions` is
+  refused by the automation surface the same way `chrome://` always is. One click in that page,
+  or a Chrome restart, loads it.
+
+  ⛔ **AND 1.6.4 REPORTS AN IN-LAW CHAIN AS `via=blood`. Caught live on Miroslava, Princess of
+  Bulgaria `371367105380011098`, 2026-09-09.** Her page states BOTH *"Shortest in-law
+  relationship"* and *"No blood relationship was found."*, and the job still came back
+  `via: blood`, `state: path_found`, with a `path_tsv` header reading `(blood)`. That is
+  `6b2dee75` — *"the in-law chain was returned as the blood result"* — which 1.6.7 fixes and
+  which nothing is running.
+
+  **So until the extension is reloaded, `via` says WHICH SEARCH RAN and not what came back**, and
+  every hit must be classified by hand from two things the result already carries: the relation
+  words (hers crosses *"his wife"*, *"her brother"*, *"her ex-husband"*, *"his sister"*) and
+  Geni's prose. Her file and ledger row were corrected to `inlaw` by hand.
 
   **The Chrome that is running is the `Default` profile**, and the Claude extension is
   `1.0.91` there — Profile 4 carries the same build, so the two-different-versions note this
