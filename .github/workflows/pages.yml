@@ -1,7 +1,7 @@
 # Publish the documentation site to GitHub Pages.
 #
-# Emma, 2026-09-01: "a github pages site built with actions that documents generally what the
-# repo is doing with different things, its data modeling and algorithms and such."
+# A GitHub Pages site built with Actions, documenting what the repo is doing -- its data
+# modelling, its algorithms and the daily batch.
 #
 # **No `push:` trigger**, for the same reason `ci.yml` has none: this repo commits large
 # generated files many times a day, so a run per push queues behind itself and tells nobody
@@ -16,9 +16,9 @@ name: Pages
 
 on:
   workflow_dispatch:
-  # **Callable, so ONE dispatch of the pipeline produces all three.** Emma, 2026-09-01:
-  # *"the ci/cd run will make the archive (committed) and the pages and the
-  # quickstatements for me to run later"* -- "the ci/cd run", singular.
+  # **Callable, so ONE dispatch of the pipeline produces all three.** One CI run makes the
+  # archive (committed), the pages, and the QuickStatements to be run later -- one run,
+  # singular.
   #
   # **`ref` EXISTS BECAUSE `needs:` DOES NOT MOVE THE SHA.** A reusable workflow called with
   # `uses:` runs at the CALLER's `github.sha`, and `actions/checkout` with no `ref` takes that

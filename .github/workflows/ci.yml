@@ -1,7 +1,7 @@
 name: CI
 
-# The repo went PUBLIC on 2026-09-01 -- Emma: "The repo is public now lol" -- so Actions minutes
-# are free and the old manual-only rule is retired. `CLAUDE.md` section *Cost* was written for a
+# The repo went PUBLIC on 2026-09-01, so Actions minutes are free and the old manual-only rule
+# is retired. `CLAUDE.md` section *Cost* was written for a
 # private repo and no longer binds.
 #
 # Still no `push:` on every commit: this repo receives large generated files many times a day
@@ -105,10 +105,10 @@ jobs:
   # The slow lane is a separate job so a red fast lane is legible on its own. It re-merges the
   # whole 605-export corpus, which peaks near 17 GB -- above what a standard runner has -- so it
   # runs the ONE slow module a hosted runner can hold. **test_density.py and
-  # test_paths.py were removed 2026-09-01, her call, and the number is why:
+  # test_paths.py were removed 2026-09-01 by ruling, and the number is why:
   # a hosted runner has 16 GB and test_density pins it at 15.9 GB with 33 MB
   # free for ten minutes before the runner is reclaimed. Four jobs died that
-  # way. Both modules PASS on Emma's machine in 35m44 because it has 31 GB --
+  # way. Both modules PASS on a 31 GB local machine in 35m44 --
   # the tests are fine and the environment is half the size they need.
   #
   # A 64 GB runner is billable even on a public repo, and rewriting

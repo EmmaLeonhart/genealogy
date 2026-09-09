@@ -16,7 +16,7 @@
 # minutes and inheriting every way that batch commit can fail. On 2026-09-04 it failed exactly
 # that way: the deck rebuilt correctly, the batch commit hit a rebase conflict on
 # `reports/wikidata-garborg-day.txt`, the `site` job was skipped, and Pages went on serving a
-# deck whose cards named nobody. The deck is what Emma asked for and it should not be downstream
+# deck whose cards named nobody. The deck is the deliverable and it should not be downstream
 # of anything.
 #
 # **So a cloud session with no local corpus can produce the deck in one call:**

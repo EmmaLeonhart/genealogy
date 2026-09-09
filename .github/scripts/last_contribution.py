@@ -1,23 +1,23 @@
-"""How long ago Emma last edited Wikidata, so a workflow can decide whether to do real work.
+"""How long ago the account last edited Wikidata, so a workflow can decide whether to do real work.
 
     python .github/scripts/last_contribution.py            # prints hours, e.g. 2.4
     python .github/scripts/last_contribution.py --max 6    # also exits 0/1 on the threshold
 
-**Emma's design, 2026-09-01:** *"Every six hours it checks the time of my last contribution. If it
-is under six hours old then it does the full pipeline. Ledger refresh plus quickstatement rebuild.
-So basically it is intended as facilitating potentially quite intensive work like this."*
+**The design, 2026-09-01:** every six hours it checks the time of the account's last
+contribution. If that is under six hours old it runs the full pipeline -- ledger refresh plus
+QuickStatements rebuild. The point is to facilitate intensive work when there is work to do.
 
 **The gate is the point.** The pipeline it guards checks out ~5.7 GB and rebuilds the batch; run
 unconditionally every six hours that is four expensive runs a day whether or not anything changed.
-Her contributions are the signal that something *has* changed, because the ledger is built from
+Those contributions are the signal that something *has* changed, because the ledger is built from
 them — `scripts/refresh-garborg-ledger.py` reads the same `list=usercontribs` for the same account.
 
-**One request, no authentication.** `usercontribs` with `uclimit=1` returns her most recent edit
-and nothing else.
+**One request, no authentication.** `usercontribs` with `uclimit=1` returns the account's most
+recent edit and nothing else.
 
 **It fails OPEN, and that is deliberate.** If Wikidata cannot be reached the age is unknown, and
 the useful default is to run the pipeline rather than skip it: a wasted run costs minutes of free
-Actions time, a skipped run means she wakes to a stale batch. The reason is printed either way.
+Actions time, a skipped run means a stale batch in the morning. The reason is printed either way.
 """
 
 from __future__ import annotations
@@ -66,7 +66,7 @@ def main() -> int:
     hours, detail = hours_since_last_edit()
     if hours is None:
         # Fail open: unknown is treated as recent, because a wasted run is cheaper than a
-        # stale batch waiting for her in the morning.
+        # stale batch waiting in the morning.
         print(f"unknown ({detail}) -- treating as recent")
         print("hours=unknown")
         return 0

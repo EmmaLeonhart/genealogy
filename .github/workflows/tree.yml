@@ -1,7 +1,6 @@
 name: Rebuild the synoptic tree
 
-# **Emma, 2026-09-03:** *"I am going to want you to set it up to be built with actions and commit
-# and push to main."*
+# **The tree is built with Actions, committed and pushed to `main`.**
 #
 # **This is the thing that was never actually attempted.** `CLAUDE.md` said for weeks that the
 # merge could not run on a runner -- 409 MB output, a peak near 17 GB, against a 16 GB runner --
@@ -11,13 +10,13 @@ name: Rebuild the synoptic tree
 # extract committed so the daily pipeline could avoid the tree entirely. Both are workarounds
 # around a limit that was never tested.
 #
-# **It was tried, it was killed, and the fix is her rule.** Run 33808839371 died at 15,921 MB with
-# 67 MB free after seven minutes pinned at the ceiling. Emma: *"realistically anything that doesn't
-# go into the editing pipeline isn't needed in the synoptic tree."* `genimerge.slim` is that rule,
+# **It was tried, it was killed, and one rule fixed it.** Run 33808839371 died at 15,921 MB with
+# 67 MB free after seven minutes pinned at the ceiling. The rule: anything that does not go into
+# the editing pipeline is not needed in the synoptic tree. `genimerge.slim` is that rule,
 # and it is the whole difference: 8.79 GB and 7.7 minutes, same tree.
 #
-# So her machine is no longer required for anything but Geni, and the five derived tables stop
-# being a photograph dated whenever she last rebuilt locally.
+# So a local machine is no longer required for anything but Geni, and the five derived tables
+# stop being a photograph dated whenever somebody last rebuilt locally.
 #
 # **It rebuilds everything downstream, not just the merge.** `rebuild-everything.py` runs eight
 # steps whose order matters and fails silently when wrong; running the merge alone would leave
@@ -155,7 +154,7 @@ jobs:
             'Full rebuild-everything.py run on a GitHub runner: the merge over every .ged' \
             'under exports/, then the derived layer in its required order, then the batch.' \
             '' \
-            'This is the rebuild that used to need her machine. out/merged.ged is not' \
+            'This is the rebuild that used to need a local machine. out/merged.ged is not' \
             'committed -- it is 409 MB and over the file limit -- but everything derived' \
             'from it is, so the daily pipeline now reads a tree this run built rather than' \
             'a photograph taken locally.' \

@@ -1,8 +1,8 @@
 # **Ask Wikidata whether it holds items for the eccentric clusters.**
 #
 # `reports/eccentric-clusters.md` counts `P2600` *Geni.com profile ID* -- a **link** -- and the
-# first version of that report read a `0` as *"Wikidata does not have these people"*. Emma,
-# 2026-09-05: *"Pre dynastic Egypt definitely does… Axum certainly have qids lol"*. This runs the
+# first version of that report read a `0` as *"Wikidata does not have these people"*, which is
+# wrong: pre-dynastic Egypt certainly does, and so does Axum. This runs the
 # check that settles it, because the sandbox has no web egress and Actions does.
 #
 #     gh workflow run check-cluster-items.yml
