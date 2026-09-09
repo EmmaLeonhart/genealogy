@@ -98,12 +98,12 @@ GC.relationDescription = function () {
 
 /* The statistics block, for `reports/isolates.csv`.
  *
- * A MISSING ROW MEANS ZERO and must be recorded as 0 -- Emma, on Dorothy Jeakins: *"ancestors
- * are not mentioned at all because she has no ancestors and geni is weird and gives zero as not
- * an option there"*. A blank later reads as *we failed to scrape it*, which is the
+ * A MISSING ROW MEANS ZERO and must be recorded as 0. Dorothy Jeakins is the worked case:
+ * ancestors are not mentioned at all on her page because she has none, and Geni does not offer
+ * zero as a value. A blank later reads as *we failed to scrape it*, which is the
  * absent-versus-zero confusion that costs this repo real numbers elsewhere.
  *
- * 15,000 (or 5,000) is a CEILING, not a count. Her rule: any of these numbers at the cap means
+ * 15,000 (or 5,000) is a CEILING, not a count. Any of these numbers at the cap means
  * the query exceeded its maximum, and is the STRONGEST evidence of world-tree connection there
  * is -- so a "no path found" sitting beside one is a database failure, not a negative result. */
 GC.statistics = async function () {
@@ -116,9 +116,9 @@ GC.statistics = async function () {
    * regexes were right -- run again by hand a moment later they matched every one. It was
    * called too early: the sidebar renders after the relationship box does.
    *
-   * That is worse than an ordinary bug here, because of the rule it collides with. Emma, on
-   * Dorothy Jeakins: *"ancestors are not mentioned at all because she has no ancestors and geni
-   * is weird and gives zero as not an option there"* -- so a MISSING ROW MEANS ZERO and gets
+   * That is worse than an ordinary bug here, because of the rule it collides with. On Dorothy
+   * Jeakins, ancestors are not mentioned at all because she has none and Geni does not offer
+   * zero as a value -- so a MISSING ROW MEANS ZERO and gets
    * recorded as 0. An extractor that returns zeros because it ran early is therefore
    * indistinguishable from a person who genuinely has none, and the zeros go into
    * `reports/isolates.csv` as measurements. `CLAUDE.md` § *check the separator before believing
@@ -143,7 +143,7 @@ GC.statistics = async function () {
     const key = k.replace(/ /g, "_");
     const re = new RegExp(k.replace(/ /g, "[ ]") + "[^0-9]{0,20}([0-9][0-9,]*)", "i");
     const m = text.match(re);
-    /* Present block, absent row -> 0, which is her rule. Never blank: a blank later reads as
+    /* Present block, absent row -> 0, which is the rule. Never blank: a blank later reads as
      * "we failed to scrape it", which is the confusion this whole comment exists against. */
     out[key] = m ? parseInt(m[1].replace(/,/g, ""), 10) : 0;
   }
@@ -152,8 +152,8 @@ GC.statistics = async function () {
 
 /* ⛔ THE COLLECTOR DOES NOT DOWNLOAD FILES. It RETURNS them, and the caller writes the repo.
  *
- * **Emma, 2026-09-06:** *"we are not supposed to be saving pages lol ... Only the exports need
- * downloading because you write stuff into files in the repo you dummy."*
+ * Pages are not saved by the collector. Only the exports need downloading, because everything
+ * else is written into files in the repo by the caller.
  *
  * So `GC.saveBlob` is gone. Every job that produced a file now returns its text in the result,
  * the result crosses on a data attribute like everything else, and the agent writes it into
@@ -175,8 +175,8 @@ GC.statistics = async function () {
 
 /* ⛔ IS THIS A GENI PAGE AT ALL, OR AN INCAPSULA BLOCK? A CAPTCHA IS INVISIBLE TO EVERY OTHER CHECK.
  *
- * **Emma, 2026-09-06:** *"geni started wanting captchas again and that's why stuff was not
- * working."* Geni sits behind Imperva/Incapsula, and when it decides the traffic looks automated
+ * Geni started serving captchas again on 2026-09-06, which is why the collector stopped
+ * working. Geni sits behind Imperva/Incapsula, and when it decides the traffic looks automated
  * it serves *"Additional security check is required"* with an hCaptcha in place of the profile.
  *
  * **What makes it dangerous is that it looks like a person with no family.** Measured on target
@@ -217,13 +217,12 @@ GC.blocked = function () {
          && (document.body.innerText || "").trim().length < 40;
 };
 
-/* ⛔ NOTHING HERE DOWNLOADS. She said so at the start and was right twice over.
+/* ⛔ NOTHING HERE DOWNLOADS. That was the instruction from the start and it was right twice over.
  *
- * **Emma, 2026-09-06:** *"Only the exports need downloading because you write stuff into files in
- * the repo you dummy"*, and again after I re-added it: *"why are you downloading anything lol"*.
- *
- * `saveBlob` was deleted on her instruction, then restored when a probe blob landed on a freshly
- * loaded page and I concluded the block was per-page. **That was measured wrong too.** Two files
+ * Only the exports need downloading; everything else is written into files in the repo by the
+ * caller. `saveBlob` was deleted on that instruction, then restored when a probe blob landed on
+ * a freshly loaded page and the block was wrongly concluded to be per-page. **That was measured
+ * wrong too.** Two files
  * land per browser session and everything after is blocked: 2120676 and one probe landed, then
  * three consecutive scrapes and a second probe did not. It is Chrome's per-origin
  * *multiple automatic downloads* permission, which needs an omnibox grant -- a desktop action,
@@ -244,7 +243,7 @@ GC.blocked = function () {
  * extension either, and `chrome://extensions` is unreachable from the automation surface.
  *
  * That gap cost real time on 2026-09-05: the extension sat unloaded for a whole session while
- * work was done agentically around it, and the question was answered by asking Emma rather than
+ * work was done agentically around it, and the question was answered by asking rather than
  * by checking. An attribute on the documentElement crosses the isolated-world boundary, because
  * the DOM is shared. `document.documentElement.dataset.geniCollector` is now the check. */
 document.documentElement.setAttribute("data-geni-collector", "1.6.4");

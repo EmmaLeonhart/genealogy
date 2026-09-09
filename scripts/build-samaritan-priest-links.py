@@ -1,25 +1,22 @@
-"""Link the Samaritan high priests Emma listed by QID to their Geni profiles.
+"""Link the hand-listed Samaritan high priest QIDs to their Geni profiles.
 
-**`samaritans/priests.txt` is the file this exists for, and it was missed.**
-Emma, 2026-08-16: *"I literally gave you a list of the QIDs, a list of names of
-High Priests and QIDs of them… It's in a text file called highpreests or
-something! It's kind of an isolated thing that just has a bunch of names and
-QIDs in it. You should have found it!"* Queue item 2 was reported as blocked on
-finding these QIDs while the file sat in `samaritans/` at the repo root, which was
-never searched. The blocker did not exist.
+**`samaritans/priests.txt` is the file this exists for, and it was missed.** It is
+an isolated text file holding a list of high-priest names and their QIDs. Queue
+item 2 was reported as blocked on finding these QIDs while the file sat in
+`samaritans/` at the repo root, which was never searched. The blocker did not
+exist.
 
-**Her instruction for what to do with them**, `samaritans/wikidata.txt`: *"they
-both lack geni items and are kind of improperly linked. I want you to do manual
-links to the geni in the same way that we did on the Empress Jingū item."*
+**What to do with them**, per `samaritans/wikidata.txt`: they lack Geni items and
+are improperly linked, so they get hand links to Geni in the same way the
+`Q232803` *Empress Jingū* item did.
 
 **Matching by name here is correct, and is not the thing this repo forbids.**
 `correspondence.md` bans *searching Wikidata* for a name — an open-ended query
-over 100M items. This is the opposite: a **closed list of 21 people Emma wrote
-down herself**, matched against the Samaritan exports, which she pointed at
-directly — *"In the small original 33-person High Priest gedcom, all of these
-individuals are present… You have the ability to look through the 33-person tree
-pretty easily to find which QIDs appear to match, and then just match them up."*
-The candidate set is bounded and hand-curated on both sides.
+over 100M items. This is the opposite: a **closed, hand-written list of 21
+people**, matched against the Samaritan exports. All of these individuals are
+present in the small original 33-person high-priest GEDCOM, which is small enough
+to read through and match by eye. The candidate set is bounded and hand-curated on
+both sides.
 
 **The leading name must agree exactly.** A Samaritan name is
 `<own name> ben <father> ben <grandfather>`, so the first token is the person and
@@ -87,17 +84,16 @@ def samaritan_people() -> dict[str, str]:
     return people
 
 
-#: Links Emma gave directly, which no match over the exports could find.
+#: Links supplied by hand, which no match over the exports could find.
 #:
 #: `Q137394557 Yitzhaq I ben Tsedaka` had no counterpart: the only Geni `Yitzhaq`
 #: in the Samaritan exports has `Shalma II ben Tabia` for a father, and no
-#: Yitzhaq with a Tsedaka father existed anywhere in them. Emma, 2026-08-16, with
-#: the profile: *"this is the person for the qid to correspond to."* The profile
-#: is **not in any of the 203 exports** — she created it on Geni after the last
-#: Samaritan export ran — so the link is recorded here and the person arrives
-#: with her next export. Hand-given identity, same standing as
-#: a hand-recorded identification.
-GIVEN_BY_EMMA = {
+#: Yitzhaq with a Tsedaka father existed anywhere in them. The correspondence was
+#: supplied by hand on 2026-08-16 along with the profile. That profile is **not in
+#: any of the 203 exports** — it was created on Geni after the last Samaritan
+#: export ran — so the link is recorded here and the person arrives with the next
+#: export. Hand-given identity, same standing as a hand-recorded identification.
+GIVEN_BY_HAND = {
     "Q137394557": ("6000000227245553985", "Yitzhaq I ben Tsedaka"),
 }
 
@@ -151,8 +147,8 @@ def main() -> int:
         # this priest is genuinely absent rather than merely unmatched.
         if best is not None and best[3] < 2 and len(want) > 1:
             best = None
-        if best is None and qid in GIVEN_BY_EMMA:
-            gid, geni_name = GIVEN_BY_EMMA[qid]
+        if best is None and qid in GIVEN_BY_HAND:
+            gid, geni_name = GIVEN_BY_HAND[qid]
             best = ((0, 0), gid, geni_name, -1)   # -1 marks "not matched, given"
         if best is None:
             rows.append({"qid": qid, "wikidata_name": name, "geni_id": "",
@@ -167,7 +163,7 @@ def main() -> int:
                      "geni_name": geni_name,
                      "shared_tokens": "" if given else shared,
                      "verdict": "already linked" if already
-                     else ("add_geni_id (given by Emma, not in any export)"
+                     else ("add_geni_id (given by hand, not in any export)"
                            if given else "add_geni_id")})
         if already:
             continue

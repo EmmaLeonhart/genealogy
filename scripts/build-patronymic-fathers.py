@@ -1,22 +1,21 @@
 """The fathers the patronymics imply, named from the fathers we actually have.
 
-**Emma, 2026-08-15:** *"Whether something is or is not a patronymic here is determined by
-completely offline information related to the person's father's name."* That was already
-built. `scripts/classify-patronymics.py` decides every token against the father, with her
-three ambiguity classes. **This consumes that classification; it does not redo it.**
+**Whether something is or is not a patronymic is determined by completely offline
+information related to the person's father's name.** That was already built:
+`scripts/classify-patronymics.py` decides every token against the father, with the three
+ambiguity classes. **This consumes that classification; it does not redo it.**
 
 An earlier version of this file re-derived everything from suffix stripping and named the
-father of an `Olsen` **`Ols`**. Emma: *"We already addressed this. Read through the
-transcripts."* She was right, and the answer was in the classification: across 2,609
+father of an `Olsen` **`Ols`**. That question had already been answered, and the answer was
+in the classification: across 2,609
 confirmed `Olsen`/`Olsson` patronymics the recorded fathers are **Ole 1,809, Ola 795,
 Olof 73, Olav 69, Oluf 17**. The name is read off real fathers, never off the string.
 
-ONE FATHER PER PERSON, WITH THE ONE EXCEPTION SHE NAMED
+ONE FATHER PER PERSON, WITH ONE NAMED EXCEPTION
 
-**Emma, 2026-08-19:** *"If you don't know the people are siblings you create one per
-individual."* And: *"In the event of two people being linked, having the same patronym, and
-being linked, that's a thing that's worth giving them the same father, but my guess is I
-don't think that exists."*
+**Where it is not known that two people are siblings, one father is created per
+individual.** Two people who are linked, share a patronym and are linked to each other are
+worth giving the same father -- though that case was expected not to exist.
 
 **It exists.** Same mother, no father, same implied name -- 124 mothers and 404 people, one
 of them with eleven children all `Halvorsen`/`Halvorsdatter`. Where the implied names differ
@@ -100,27 +99,27 @@ def main():
     md = ["# The fathers the patronymics imply", "",
           "Built by `scripts/build-patronymic-fathers.py` on top of "
           "`reports/patronymic-classification.csv`, which decides what is a patronymic from "
-          "the father, per Emma 2026-08-15. **It emits no edit.**", "",
+          "the father. **It emits no edit.**", "",
           "- bearers classified `patronymic (inferred, no father recorded)`: **%d**" % len(inferred),
           "- of those, a name is available from confirmed fathers: **%d**" % len(rows),
           "- token has no confirmed father anywhere, so no name: **%d**" % sum(unnamed.values()),
           "- **fathers to create: %d**" % fathers,
-          "  (%d people merged into %d shared fathers under her same-mother rule)"
+          "  (%d people merged into %d shared fathers under the same-mother rule)"
           % (people_merged, shared), "",
           "## The name comes from real fathers, never from the string", "",
           "`Olsen` implies **Ole** because that is what 1,809 confirmed `Olsen` fathers are "
           "called. An earlier version stripped the suffix and produced a father called "
-          "**`Ols`**, which is what Emma meant by *\"we already addressed this\"*.", "",
+          "**`Ols`**, which is the question that had already been answered.", "",
           "| implied father | bearers |", "| --- | ---: |"]
     md += ["| %s | %d |" % (k, v) for k, v in top.most_common(25)]
-    md += ["", "## One per person, with the exception she named", "",
-           "*\"If you don't know the people are siblings you create one per individual.\"* "
-           "The exception is a shared mother plus the same implied name, and it fires for "
+    md += ["", "## One per person, with one named exception", "",
+           "Where it is not known that two people are siblings, one father is created per "
+           "individual. The exception is a shared mother plus the same implied name, and it fires for "
            "**%d people forming %d shared fathers**. Where the names differ under one "
            "mother they are not merged." % (people_merged, shared), "",
            "## Sourcing", "",
            "Each created father is sourced to **the Geni profile of the child whose "
-           "patronymic attests him** (Emma, 2026-08-19)."]
+           "patronymic attests him** (ruled 2026-08-19)."]
     OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
     print("  named from confirmed fathers: %d; no confirmed father for token: %d"
           % (len(rows), sum(unnamed.values())))
