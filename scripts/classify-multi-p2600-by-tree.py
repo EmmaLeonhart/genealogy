@@ -16,13 +16,13 @@ different in each case, and none of them needs a browser:
 | our tree says | reading |
 | --- | --- |
 | **same parents** | two siblings. Wikidata has merged them, or Geni has split one person into two — either way our snapshot matches Geni and there is nothing to do. |
-| **one is the other's parent** | a generation has been collapsed on one side. Worth Emma's eye: this is the shape that produced the Samaritan `exports/excluded/` case. |
+| **one is the other's parent** | a generation has been collapsed on one side. Worth reading by hand: this is the shape that produced the Samaritan `exports/excluded/` case. |
 | **spouses** | a couple merged into one item. Almost certainly a Wikidata error, and the loudest kind. |
 | **no relationship recorded** | the two are unconnected in our tree, which is the Zerubbabel shape — duplicate profiles that cannot be merged on Geni. Ordinary. |
 | **one or both absent from our corpus** | we cannot say anything, and saying so is the answer. |
 
 **Nothing here is resolved and nothing is emitted.** `CLAUDE.md` is explicit that duplicate
-merges are Emma's and that the question is only ever whether our snapshot matches Geni — never
+merges are made by hand and that the question is only ever whether our snapshot matches Geni — never
 whether Geni is right. This sorts the population so the residue that genuinely needs a page
 opened is small and named.
 
@@ -128,7 +128,7 @@ def main():
         if r["shape"] == "they are SPOUSES":
             print(f"   {r['label'][:44]:<44} {r['qid']}  {r['detail'][:70]}")
     print("\nwrote reports/multi-p2600-tree-shapes.tsv")
-    print("NOTHING IS RESOLVED. Duplicate merges are Emma's, and the only question "
+    print("NOTHING IS RESOLVED. Duplicate merges are made by hand, and the only question "
           "CLAUDE.md allows is whether our snapshot matches Geni.")
 
 

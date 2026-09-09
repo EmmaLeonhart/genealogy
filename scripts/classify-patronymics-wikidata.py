@@ -1,9 +1,7 @@
 """The patronymic classifier, run against Wikidata instead of the Geni corpus.
 
-**Queue item 11. Emma, 2026-08-15:** *"Of course we also should be running this
-processing on both the geni stuff and the wiki data stuff... have at the end of
-the queue a thing to run this same name analysis operation on the wiki data stuff
-at the end of this."*
+**Queue item 11:** run this same name analysis over the Wikidata side as well as
+the Geni side, at the end of the queue.
 
 **Same method, different fields.** `scripts/classify-patronymics.py` decides a
 patronymic from the **father's given name** — never from the token's shape — and
@@ -48,9 +46,8 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ITEMS = REPO / "wikidata" / "items"
 #: **Written in parts, because one file would be 194 MB and GitHub rejects
-#: anything over 100.** Emma's rule is that every instance is a row and repo size
-#: is not a constraint — *"We're not trying to make the repo small... We care
-#: about actually getting results"* — so the rows are all kept and the file is
+#: anything over 100.** Every instance is a row and repo size is not a constraint --
+#: the aim is not a small repo, it is results -- so the rows are all kept and the file is
 #: split rather than sampled or filtered. Each part repeats the header.
 OUT_CSV_STEM = REPO / "reports" / "patronymic-classification-wikidata"
 PART_LIMIT = 60 * 1024 * 1024
@@ -198,8 +195,8 @@ def main() -> int:
     add = L.append
     add("# Patronymics on the Wikidata side")
     add("")
-    add("**Queue item 11.** Emma, 2026-08-15: *\"we also should be running this")
-    add("processing on both the geni stuff and the wiki data stuff.\"*")
+    add("**Queue item 11:** run this processing over the Wikidata side as well as")
+    add("the Geni side.")
     add("")
     add("Same method as `reports/patronymic-classification.md` — the **father's**")
     add("given name decides, never the token's shape — reusing that script's form")

@@ -1,7 +1,6 @@
 """Plan item 6 — marriage date, place and end, per family.
 
-Emma, 2026-08-12: *"Marriage date and place and end and whatever will be
-easy-ish."*
+Marriage date, marriage place, and how the marriage ended.
 
 **"End" is measured rather than assumed.** The `FAM`-level tags in this corpus
 are exactly: `CHIL` 267,517, `HUSB` 126,894, `WIFE` 89,543, `MARR` 36,314,
@@ -155,8 +154,7 @@ def main() -> int:
     add = L.append
     add("# Marriage: date, place and end, derived")
     add("")
-    add("Plan item 6. Emma, 2026-08-12: *\"Marriage date and place and end and whatever")
-    add("will be easy-ish.\"*")
+    add("Plan item 6: marriage date, marriage place, and how the marriage ended.")
     add("")
     add(f"`reports/derived-marriages.csv` — **{len(rows):,} families** that say something")
     add(f"about a marriage, out of {families:,}.")
@@ -213,7 +211,7 @@ def main() -> int:
         add("")
     add("## Not done here")
     add("")
-    add("- **No `P26` shape chosen.** Emma asked to see cases before deciding and")
+    add("- **No `P26` shape chosen.** Cases are read before that is decided, and")
     add("  `reports/marriages.md` holds them; this is the derivation, not the mapping.")
     add("- **No place resolved to an item.**")
     add("- **The 30 families where Wikidata names a different spouse are untouched** —")

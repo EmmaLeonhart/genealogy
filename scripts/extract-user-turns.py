@@ -1,4 +1,4 @@
-"""Every turn Emma actually typed, across every transcript, newest first.
+"""Every turn a person actually typed, across every transcript, newest first.
 
     python scripts/extract-user-turns.py [--since 2026-08-15]
 
@@ -7,13 +7,13 @@ step: run it before executing the rest of the queue, because otherwise the rest 
 trustworthy. This is step 1 of it — *extract every user turn with its timestamp, and do not
 summarise while extracting, because that is where instructions get lost.*
 
-**Read BOTH record types, or the scan misses half of her.** A turn she typed while the model was
-idle is `{"type": "user", "message": {"role": "user"}}`. A turn she typed while a tool call was
+**Read BOTH record types, or the scan misses half the turns.** A turn typed while the model was
+idle is `{"type": "user", "message": {"role": "user"}}`. A turn typed while a tool call was
 running is `{"type": "queue-operation", "operation": "enqueue", "content": "..."}` and is **not**
 a user record. Measured 2026-08-16: 28 user records against 21 queue-operations, so a
-`role == "user"` scan finds 57% of what she said.
+`role == "user"` scan finds 57% of what was said.
 
-**What is dropped, and why each one is not her:**
+**What is dropped, and why each one is not a typed turn:**
 
 * tool results — a `user` record whose content is a `tool_result` block is the harness replying
   to the model, not a person typing;
@@ -44,14 +44,16 @@ csv.field_size_limit(1 << 30)
 TRANSCRIPTS = Path.home() / ".claude" / "projects" / "C--Users-Emma-Documents-GitHub-geni"
 OUT = ROOT / "reports" / "user-turns.tsv"
 
-#: Payloads that are the harness rather than Emma. Matched against the start of the text after
-#: stripping whitespace, except `system-reminder` which can be preceded by her own words.
+#: Payloads that are the harness rather than a typed turn. Matched against the start of the
+#: text after stripping whitespace, except `system-reminder`, which can be preceded by real
+#: typed words.
 HARNESS_PREFIXES = (
     "<task-notification", "<local-command", "<command-name", "<command-message",
     "[Request interrupted", "Caveat: The messages below",
 )
 
-#: A cron prompt reaches the queue as an enqueue and is not her. These are the opening words of
+#: A cron prompt reaches the queue as an enqueue and is not a typed turn. These are the
+#: opening words of
 #: the three work-loop crons and the daily rebuild; matching on the opening line is enough.
 CRON_OPENERS = (
     "Work-loop tick", "Auto-flush tick", "Status-report tick",
@@ -90,7 +92,7 @@ def is_harness(text):
         return True
     if any(stripped.startswith(opener) for opener in CRON_OPENERS):
         return True
-    # A compaction turn: narration reinserted at a context boundary, not something she wrote.
+    # A compaction turn: narration reinserted at a context boundary, not a typed turn.
     if stripped.startswith("This session is being continued from a previous conversation"):
         return True
     return False

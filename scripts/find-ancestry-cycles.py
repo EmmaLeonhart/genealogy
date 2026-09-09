@@ -1,10 +1,9 @@
-"""People who are their own ancestor — the one defect Emma wants gone.
+"""People who are their own ancestor — the one defect that is not tolerated.
 
     python scripts/find-ancestry-cycles.py
 
-**Emma, 2026-08-24:** *"The Samaritan High Priests are a bit of a tangle in that period,
-and my approach to it is more or less that I don't want a cycle, but I'm basically willing
-to accept clutter."*
+**The Samaritan high priests are a tangle in that period, and the approach to it is that a
+cycle is not acceptable while clutter is.**
 
 That is the whole rule, and it is sharper than it looks. **Duplicate profiles are
 clutter and stay.** A person appearing twice, a name recurring down a priestly line, two
@@ -20,8 +19,8 @@ distinct nodes. It is a chain, therefore clutter, therefore left alone.
 Reads `reports/derived-family.csv` and walks parent links with a three-colour DFS: a grey
 node reached again is a cycle, and the path back to it is the cycle itself. Offline.
 
-**Fixes belong on Geni, not here.** Emma: *"We're just going to fix it on Geni."* This
-report names the people and their profile ids so she can.
+**Fixes belong on Geni, not here.** This report names the people and their profile ids so
+the fix can be made there.
 
 Writes `reports/ancestry-cycles.tsv`.
 """
