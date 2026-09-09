@@ -172,8 +172,8 @@ split emits wrong `P735`s — but not for the stated reason.
 The hard shapes, recorded and unresolved:
 
 - **A toponym in the surname slot.** Record C: `SURN of Châtellerault`, which is
-  the town her own birth field names; Wikidata gives her no `P734` at all. 
-  asked to see more cases before any rule.
+  the town her own birth field names; Wikidata gives her no `P734` at all. More
+  cases were asked for before any rule.
 - **The CJK inversion**: `SURN 陳郡陽夏` (a Chinese place) against `_MARNM 謝`
   (the actual clan surname) — the wrong way round from what a `P734` mapping
   assumes.
