@@ -33527,3 +33527,33 @@ shape — **was running when it happened**, so either it does not cover her case
 causes it. The item now says *nothing explains it today* rather than naming a cause it does not
 have, and the rule that survives is unchanged: `via` records which search ran, not what came
 back, so every hit is classified against the page banner by hand.
+
+## 2026-09-09 — the Forest export lands, and "nothing downloads" has a fix
+
+`exports/turgesh-seljuq/export-Forest-6000000227676315909.ged` — **5,000 people, 2,422
+families**, seeded on the `NN` Emma created for the China-to-Europe line. The seed is the file's
+first `INDI`, checked. 5,000 equals `GENI_EXPORT_CAP` and does not exceed it, so no new reading
+goes in its docstring; the ball was cut off at the bound rather than exhausting the line.
+
+**⛔ AND THE DOWNLOAD BUTTON DOES NOT WORK. NAVIGATE TO THE ENDPOINT INSTEAD.**
+
+`queue.md` has carried *"Nothing downloads. Roughly two files land per browser session and Chrome
+blocks the rest — a per-origin permission needing an omnibox grant you cannot give from a phone"*
+as a standing hazard. That is the symptom; here is a fix.
+
+Four clicks on **Download My GEDCOM File** produced nothing — no zip, no `.crdownload`, no
+prompt, across a Chrome restart. Allowing `automatic_downloads` for `geni.com` in the profile's
+`Preferences` was tried first and **is not the cause**: the exception stuck across the restart
+and the click still did nothing.
+
+The link's own `href` is what works:
+
+    https://www.geni.com/gedcom/request_download?task_id=<task id>
+
+Navigating straight to it downloaded immediately. So the file was always reachable and it is the
+**click** that gets swallowed, not the download that is blocked — which is why a permission grant
+was never going to help. `find` on the page reports the `href`, so the task id is not needed from
+anywhere else.
+
+That also explains the intermittency recorded before, where a second click sometimes worked: a
+click landing is chance, and the endpoint is not.
