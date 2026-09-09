@@ -34,7 +34,7 @@ be a plain workflow `env:` value.
 ### Setting them
 
 Run locally after `gh auth login`. Pass no `--body` so `gh` reads the value from
-a prompt instead of your shell history:
+a prompt rather than from shell history:
 
 ```bash
 gh secret set USERNAME

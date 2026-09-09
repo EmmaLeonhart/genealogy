@@ -190,7 +190,7 @@ there is no search of any kind that works. The page is the only source.
 on anything that runs into issues. The ID comes off the page — click the newly created node in the tree and
 it opens the profile in a new tab whose URL carries the ID. If it does not come off
 the page, that individual is done: drop it and take the next one. Searching Geni for
-the name you just typed is the second route to the same person that the paragraph
+the name just typed is the second route to the same person that the paragraph
 below forbids, and it is slow *and* unreliable — `NN Holst` was searched 37 times in
 one session and 40 minutes later in the next, and never appeared, because Geni's
 search index lags profile creation by an unbounded amount.
@@ -207,8 +207,8 @@ patronymic, which is tier 2 — but tier 2 names the father `father of <the chil
 given name>`, and here the child's given name *is* the unknown-marker. The result
 would be `Per /father of NN/`, which names nobody.
 
-**What I did:** took the tier 3 slot in the same tree instead (`Ingrid Jönsdotter`,
-father present, mother absent) and created a plain `NN`. Nothing degenerate, same
+**What was done:** the tier 3 slot in the same tree instead (`Ingrid Jönsdotter`,
+father present, mother absent), and a plain `NN` created there. Nothing degenerate, same
 neighbourhood, one export either way.
 
 **Not yet a rule.** The alternatives are to use the child's full display name
@@ -421,7 +421,7 @@ qualify on significance, not on length.**
 
 **Read the place off the path FILENAME, not the path body.** Every path starts at the same
 profile and climbs through Norwegian ancestors, so scanning the file for Nordic place names
-fires on the path's own members and tells you nothing about the destination — it scored
+fires on the path's own members and says nothing about the destination — it scored
 Nelly Sachs and Burton Watson as strongly Scandinavian. The isolate slug carries the
 destination's own recorded place (`...-1879-1964-oslo`).
 

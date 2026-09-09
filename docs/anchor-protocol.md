@@ -6,7 +6,7 @@ Charlemagne*.
 The isolate pilot's whole deliverable is a reach rate **to Charlemagne**, so a run against the
 wrong anchor produces a number that answers a different question and looks identical.
 
-## ⛔ "SET EXACTLY ONCE" WAS A SHORTCUT, NOT A LAW. I wrote it down as a law and it cost a day
+## ⛔ "SET EXACTLY ONCE" WAS A SHORTCUT, NOT A LAW. Recorded as a law, it cost a day
 
 **A protocol can set the anchor on Charlemagne** — ruled 2026-09-06, correcting a rule invented
 from a shortcut.
@@ -58,7 +58,7 @@ three-way switch:
     on Lǐ Shìmín   --click-->  "Charlemagne is your 35th great grandfather"   (viewer)
     viewer         --click-->  "View other profiles to see their relationship to Charlemagne"
 
-So a single click from the third state lands on the state you were trying to leave. Read the
+So a single click from the third state lands on the state being left. Read the
 banner between the two clicks; do not fire them blind as a pair.
 
 ## ⛔ THE SCREENSHOT AND THE PAGE DISAGREE ON COORDINATES, AND THE FIRST CLICK MISSED
@@ -102,7 +102,7 @@ and it answers *how is this person related to the viewer*. Had the three been fi
 route they would have entered `reports/isolates.csv` stamped `charlemagne`, because
 `write-family-scrape.py` carries `ANCHOR` as a module constant and cannot see the page.
 
-**So the anchor is not a thing you set once a session either.** *"Set exactly once"* was already
+**So the anchor is not something set once a session either.** *"Set exactly once"* was already
 recorded above as a shortcut mistaken for a law; this is the same lesson one level down — set
 once **per run** is also wrong, because the anchor expires on its own.
 

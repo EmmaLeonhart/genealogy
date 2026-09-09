@@ -182,5 +182,5 @@ index/<id>` shows the open slots as *Add father* / *Add mother* boxes, which is 
 Two quirks of that canvas, both cost minutes on the first one: a click **pans the tree** rather
 than opening the box, so the same box has to be clicked twice at its new position; and clicking a
 node opens the profile in a **new tab that reports an empty URL for several seconds** before the
-id appears. Neither is an error. Wait, do not re-click, and never search for the person you just
+id appears. Neither is an error. Wait, do not re-click, and never search for the person just
 created.

@@ -6,24 +6,18 @@ this is how much of it moves per day.
 
 ## It is SLOW on purpose. This is the point that keeps being missed
 
-> *"I'm not trying to make all of them immediately. You do understand that, right? I would consider
-> maybe two links per day to be acceptable, but really, probably one link a day. This should be
-> taking about 18 days, or at least 18 quick statement generations."*
-
-And:
-
-> *"This isn't intended as being a quick thing that just establishes the connection. I think the
-> problem is you tend to think that it's supposed to be a quick thing. It's not a quick thing. It
-> is specifically built here in this form so that it runs slowly. It could theoretically be run
-> daily, not really making a big scene about itself."*
+**The rate is about one link a day, two at the outside**, so the spine takes about **18 days** —
+or at least 18 QuickStatements generations. The slowness is a design property and not a
+limitation to work around: the batch is built in this form *so that* it runs slowly, and can run
+daily without making a scene of itself. Reading it as a quick thing that establishes the
+connection is the recurring misreading.
 
 **18 runs, one a day, is the plan.** It can be shorter or longer, several batches in a day, or a
 day skipped. What it must not be is one big batch that does the lot.
 
-> *"The quick statements are part of our transitional period towards eventually moving towards more
-> full-on automation. The quick statements are intended as being bad. Our full-on automation is
-> intended as having roughly a similar form, but there are some notable characteristic
-> differences."*
+**QuickStatements is a TRANSITIONAL form and is meant to be bad.** The full automation that
+replaces it has roughly the same shape with some notable differences; the badness of the manual
+paste step is not a defect to fix here.
 
 ## The subgraph is Arne's component ON WIKIDATA — clarified 2026-08-25
 

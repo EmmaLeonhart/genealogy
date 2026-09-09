@@ -32936,7 +32936,7 @@ says it belongs, and no version of it was applied in prose here.
 
 ## 2026-09-09 — the second-person regex pass is REVERTED
 
-**The objection:** *"what the fuck even is this? Did you do some kind of retarded text replacement?"* Yes.
+**The objection was that this was a blind text replacement.** It was.
 Commit `5152291` was a regex over 354 files, and it is reverted.
 
 **What it got wrong, so the next attempt does not repeat it.** The mask covered `"..."` and
@@ -32947,29 +32947,29 @@ third-party references were rewritten before being read back: `Anna King` keeps 
 page-saving targets became *"you Watson"*. And `CHECK before raising an alarm` collapsed into
 `alarm you`, because the document then used *you* for two different referents.
 
-**The instruction behind it stands and is not what was reverted.** Same evening: *"the big
-issue again is too many things refer to me as 'her' or whatever and that is fucking stupid"*, and
-*"there is too much documentation that refers to me and it is weird"*. Asked what the underlying
-problem is, the answer was **too many rules and sections**. So the fix is editorial — less
-documentation *about the owner* — not a find-and-replace over the pronoun.
+**The instruction behind it stands and is not what was reverted.** The standing rule, restated
+the same evening, is that too much of this documentation refers to the account owner at all —
+in the third person and in the second alike. Asked what the underlying problem is, the answer
+was **too many rules and sections**. So the fix is editorial — less documentation *about the
+owner* — not a find-and-replace over the pronoun.
 
 **Kept from the reverted range:** `NAME_ADD_CAP` and `P2600_LEAD_CAP` with their `CLAUDE.md`
 section, and the pipe batch. Only the pronoun pass went.
 
 ## 2026-09-09 — a new seed at the top of the Turgesh line, and two exports from her
 
-You asked for an ancestor of `n n` `6000000035218690155` — a Seljuq matriarch, wife of Mika'il
-Seljuq and mother of Sultan Tughril I — and then a Descendants export from her followed by a
-Forest one.
+The request was for an ancestor of `n n` `6000000035218690155` — a Seljuq matriarch, wife of
+Mika'il Seljuq and mother of Sultan Tughril I — and then a Descendants export from her followed
+by a Forest one.
 
-**Two things in the request resolved differently from how they read.** The `?through=` in your
-URL is `6000000003075071669`, which is **Elizabeth II** — a relationship-path artefact rather
+**Two things in the request resolved differently from how they read.** The `?through=` in the
+supplied URL is `6000000003075071669`, which is **Elizabeth II** — a relationship-path artefact rather
 than a parent, so it named no line to seed on. And **`Kut Chor` is female**: Inal Kut Chor's
 page reads *"Son of Kut Chor"* and hers reads *"Daughter of Turgesh Khagan Kut Chor, Mother of
 Inal Kut Chor"*, so she is his mother and the slot missing on him is a FATHER.
 
 That left two open slots — Inal's father, or Kut Chor's mother. **Kut Chor's mother** was taken:
-female, which is what your *"a descendants export of her"* wants, and one generation higher, so
+female, which is what a Descendants export *of her* wants, and one generation higher, so
 strictly the better Descendants seed. Turgesh Khagan Kut Chor above her already holds both
 parents (Türgesh khagan Suluk and Princess Jinhe Ashina), so that is the highest open slot on
 the line.
@@ -32981,7 +32981,7 @@ a name for her.
     export-Descendants-6000000227668434852.ged   5000 people, 2913 families
     export-Forest-6000000227668434852.ged        5000 people, 2807 families
 
-Both filed into `exports/turgesh-seljuq/`, your choice of four offered. Both are the first
+Both filed into `exports/turgesh-seljuq/`, the chosen one of four offered. Both are the first
 `INDI` in their own file, which is the check that the seed is who it should be. **Both came back
 at exactly 5000**, which equals `GENI_EXPORT_CAP` and does not exceed it, so no new reading goes
 in its docstring — a ball cut off at the bound rather than one that exhausted its component.
@@ -33001,18 +33001,18 @@ last item warns about, where a session runs for hours and nobody notices. Work l
 :15, status :42, dead-item sweep :45, plus a temporary :07 poll for the Forest export, now
 deleted.
 
-## 2026-09-09 — the anchor was on a third person, and resetting it was never Emma's job
+## 2026-09-09 — the anchor was on a third person, and resetting it was never a decision to refer
 
 The collector is the top of `queue.md` and was blocked on the relationship pushpin having come
 off Charlemagne. It is unblocked.
 
-**The part worth keeping is that I got this wrong an hour earlier.** I told Emma *"setting it is
-yours"* — which is precisely the failure `docs/anchor-protocol.md` was written against, and that
-document says so in its own heading: *"SET EXACTLY ONCE WAS A SHORTCUT, NOT A LAW. I wrote it
-down as a law and it cost a day."* Her 2026-09-06 ruling is *"You can set up a protocol to get it
-set on Charlemagne lol"*, and the protocol exists. It was never a decision; it was a thing to
-check and set. Same shape as § *A SHORTCUT YOU TOOK TO UNBLOCK ME IS NOT A LAW I ENFORCE AGAINST
-YOU*, one instance later.
+**The part worth keeping is that this was got wrong an hour earlier**, by reporting the reset as
+something to be done at the other end — precisely the failure `docs/anchor-protocol.md` was
+written against, and that document says so in its own heading: *"SET EXACTLY ONCE" WAS A
+SHORTCUT, NOT A LAW*. The 2026-09-06 ruling is that a protocol may set the anchor on
+Charlemagne, and the protocol exists. It was never a decision; it was a thing to check and set.
+Same shape as § *A SHORTCUT TAKEN TO UNBLOCK A SESSION IS NOT A LAW TO ENFORCE BACK*, one
+instance later.
 
 **⛔ A THIRD ANCHOR STATE EXISTS.** The protocol names two — viewer, or Charlemagne. The pin was
 on **Lǐ Shìmín 李世民, Emperor Taizong of Tang**, so Charlemagne's own page read *"Charlemagne is
