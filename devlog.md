@@ -10454,11 +10454,11 @@ name containing it, so it never collides with a real name. Checked: `is_marker_l
 is True, `'子'` is still False, and `'某 陳'` leads with a marker so the surname survives —
 the `NN Hildesheim` rule doing its job.
 
-**`reports/export-provenance.csv` deleted.** 63 MB supporting a method she killed on 08-18.
+**`reports/export-provenance.csv` deleted.** 63 MB supporting a method killed on 08-18.
 `scripts/build-export-provenance.py` rebuilds it in one run, and it is now gitignored.
 
 **Hindi middle initials: keep the letter Latin.** Asked with the caveat that no Hindi item
-in the sample does this and it would be our own convention, she chose it anyway. `hi` now
+in the sample does this and it would be our own convention, it was chosen anyway. `hi` now
 follows `ja`/`zh` instead of the 13%-vs-10% coin flip the evidence offered.
 
 **The patronymic fathers: one per individual, and my question deserved the pushback it
@@ -10528,7 +10528,7 @@ Hamengkubuwana VII Raden Mas Murtejo`, and `14 R. Kadir Soemawilaga Koesoemah Ad
 
 **Titles in running text are untouched, deliberately.** `Kandjeng Pangeran` and `SINUHUN
 PAKU BUWANA XII` survive. Deciding that a Javanese title is not part of a name is a
-different judgement and was not the one she was asked.
+different judgement and was not the one asked.
 
 **Two names are entirely a parenthetical** — `(Bapaknya RM Surobo)` and `(7th Generation
 Amangkurat II)` — so trimming would leave an empty string and delete the only thing known
@@ -10570,7 +10570,7 @@ might not have gotten all the forms… we have things like Anes and Rodriguez an
 that are all patronymics too."*
 
 **Her same-mother exception fires hard.** 4,023 people share a mother and an implied father
-name, forming 1,036 shared fathers, so the merge she guessed would not exist accounts for
+name, forming 1,036 shared fathers, so the merge guessed not to exist accounts for
 22% of the population.
 
 Still to do: emit the creation batch — one item per `father_group`, no `P2600`, sourced to
@@ -10774,7 +10774,7 @@ only thing that reaches antiquity at all — which is a trade-off, not a failure
 *Presence contrast.* `reports/presence-contrast.md`, built as
 `scripts/build-presence-contrast.py`: rank people by how far below their neighbourhood's
 median presence they sit, rather than by absolute thinness. It found 25,839 such people,
-6,067 born before 1600, and the head of the list was Roman — which is exactly where she
+6,067 born before 1600, and the head of the list was Roman — which is exactly where it
 suspected coverage was missing. **The first probe killed it.** Rufius Festus (260,
 contrast 17) returned **35 new people out of 5000, 0.7%**. The premise was backwards: a
 well-covered neighbourhood means the region is exhausted and the low-presence person is a
@@ -10782,8 +10782,8 @@ leaf, not that the balls stopped short of a doorway. Third method refuted here, 
 proposed on reasoning alone.
 
 **The hand-made Wikidata items are now the template.** `docs/wikidata-item-template.md`, read off
-`Q467497` and the five items she built by hand. The generated QuickStatements batch was
-wrong in six ways — most importantly it emitted no name properties at all, where she uses
+`Q467497` and the five items built by hand. The generated QuickStatements batch was
+wrong in six ways — most importantly it emitted no name properties at all, where the hand items use
 `P735`, `P734` and `P5056` and created a patronymic item (`Q141152710`, `Aadnesson`).
 
 **Bureätten measured.** `reports/bureatten.md`. 104 people carry both a Wikidata item and
@@ -10871,7 +10871,7 @@ Wikidata side was built for this genealogy and is nearly complete; nothing joins
 
 That reorders the item: resolution before creation. The account is that the clan is
 already on Geni three times over, so creating profiles first would manufacture a fourth
-duplicate set on top of merges she has reserved to herself.
+duplicate set on top of merges reserved to hand work.
 
 ## 2026-08-23 — the two lockout periods were conflated, and this repo's is 2026-09-01
 
@@ -10941,10 +10941,10 @@ generated batch, done by hand.
 existing item still lacks, rather than ten people to create.
 
 **Where the page was wrong, and this is what the review was for.** It said the reference
-was `P854` *reference URL* + `P813` *retrieved*; she uses `P2600` *Geni.com profile ID*
+was `P854` *reference URL* + `P813` *retrieved*; the hand items use `P2600` *Geni.com profile ID*
 as the reference snak. It suggested English descriptions; all five of her items are
 description-empty. It argued against `P3373` *sibling* as redundant given shared parents;
-she uses it. It emitted no name properties at all; she creates name items, including a new
+the hand items use it. It emitted no name properties at all; the hand work creates name items, including a new
 one for a patronym. `reports/wikidata-garborg.qs` is superseded on all four counts and
 should not be run.
 
@@ -11141,7 +11141,7 @@ unresolved until ruled otherwise.
 The instruction: *"we have intentionally added actual join keys for the Samaritan high priests, Izumo
 clan, and Tanba clan... The wikidata items linked in the descriptions."*
 
-She is right and it is exact. Geni exports it as
+That is exact. Geni exports it as
 `1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q135579415#…`, so the
 profile carries its own Wikidata identity. `scripts/build-geni-qid-links.py` extracts it —
 **405 profiles across 545 exports**, 405 distinct QIDs, 3 of them on more than one profile
@@ -11264,7 +11264,7 @@ p2600? If it's geni id then I'll run manual quickstatements."* Then: *"Shintowik
 and this one are not the same and not really coordinated"*, and *"I think you hallucinated a
 coordination between them."*
 
-**She is right.** `scripts/wikidata_lockout.py` fetched a lockout state file belonging to
+**That is right.** `scripts/wikidata_lockout.py` fetched a lockout state file belonging to
 `shintowiki-scripts`, and `CLAUDE.md` asserted there was *"exactly one lockout state file
 for all of the repos"*. Nothing in this repo evidences that. An earlier session inferred
 it from her 2026-08-18 *"no wikidata editing for a month"* and wrote the inference down as
@@ -11288,11 +11288,11 @@ no `urllib` and no `LOCKOUT_STATE_URL` in it. Not sharing an agent because there
 to send beats sharing one.
 
 **And the answer to her question: `P2600` is *Geni.com profile ID*.** Every batch this gate
-guards says *this Wikidata item is that Geni profile*. She will run them by hand.
+guards says *this Wikidata item is that Geni profile*. They are run by hand.
 
 Also this tick, on her call: **`exports/chain-seeds/export-Forest-6000000227320885873.ged`
 deleted** — byte-identical to `…837821.ged` (sha256 `2a7f14ae…`), which `genimerge.sources`
-was already dropping. Same call she made for the Delldén duplicate on 08-16, and the same
+was already dropping. Same call as for the Delldén duplicate on 08-16, and the same
 reason: identity, not redundancy. `test_the_real_corpus_has_no_byte_identical_duplicates`
 is green for the first time in weeks.
 
@@ -11303,7 +11303,7 @@ end of the Shinto-wiki chart: *"Yes lol that's the point of why I made it? They 
 the geni individual creation pipeline."*
 
 Checked the records before building, which is now the rule. **Ten of the eleven already have
-items and she linked them herself** — Kitajima 69 `Q135579509`, 70 `Q135579512`,
+items and they were linked by hand** — Kitajima 69 `Q135579509`, 70 `Q135579512`,
 71 `Q135579516`, 72 `Q135579513`, 73 `Q135579514`, 74 `Q135579517`; Senge 77 `Q135579511`,
 78 `Q135579515`, 79 `Q135579518`, 80 `Q11405449`. All ten are already in
 `reports/wikidata-geni-qid-p2600.qs`. They were invisible to the roster join only because
@@ -11407,7 +11407,7 @@ Rebuilt to the model in `docs/wikidata-item-template.md`, which is read off her 
 - **Reference is `S2600 "<geni id>"`**, not `S854` *reference URL* + `S813` *retrieved*.
 - **Cited**: `P569`, `P570`, `P22`, `P25`, `P26`, `P40`. **Uncited**: `P31`, `P21`,
   `P2600`. No descriptions at all.
-- **`P3373` *sibling* both ways.** The old batch argued against it as redundant; she uses it.
+- **`P3373` *sibling* both ways.** The old batch argued against it as redundant; the hand items use it.
 - **No `CREATE` for anything that exists**, and dates only for the three items that lack
   them — Ane Oline, Stena, Jon. Eivind and Arne already carry `P569`/`P570`, and a second
   birth date with a different reference is noise.
@@ -11657,7 +11657,7 @@ run, so those go to the commented second pass rather than being guessed.
 
 **And the correspondence:** *"there was a tsv qid correspondence quickstatement thing
 is that represented in our data?… I'm afraid it isn't properly represented in our synoptic
-tree."* **She was right.** Five files held QID↔Geni pairings and nothing joined them —
+tree."* **That was right.** Five files held QID↔Geni pairings and nothing joined them —
 which is exactly the artefact `CLAUDE.md` says the synoptic tree is for.
 
 `scripts/build-synoptic-correspondence.py` → `reports/synoptic-correspondence.tsv`:
@@ -11816,9 +11816,9 @@ Mid-session: *"Are you causing the high temperature? Fan is super loud."* Yes. A
 546-export merge, four derive passes over the 1.6 GB tree, a 596 MiB gzip and repeated fast
 lanes, several of them running **concurrently**. None of that needed to overlap.
 
-Her machine is a laptop and the standing note is to keep CPU low when she is mobile. The
+The machine is a laptop and the standing note is to keep CPU low when it is mobile. The
 work was right; running it four-wide was not. From here: one heavy job at a time, and none
-at all when she says the fan is up.
+at all when the fan is reported up.
 
 No shutdown was needed — the jobs had finished and no Python process remained.
 
@@ -11853,7 +11853,7 @@ of sustained disk on the 1.6 GB tree. They wait.
 first file: **every QID a statement points at must already exist**. Checked against the
 real batch and the ledger rather than against a fixture, so it is the shipped file that is
 verified. It also refuses a "second pass" comment anywhere in the batch — that appendix is
-exactly what she could not run, and what cannot run today is tomorrow's batch, not a
+exactly what could not run, and what cannot run today is tomorrow's batch, not a
 footnote.
 
 **And I checked a claim I had made to her rather than leaving it standing.** I reported the
@@ -12020,7 +12020,7 @@ The re-read paid for itself immediately. `absent()` in `build-garborg-day.py` fa
 for an item the local store does not hold, to *"our own batch made it, so it carries no
 name statements"*. The store predates most of these items and **they are edited by hand**, so
 the assumption was wrong exactly where it mattered: `Q141152512` Eivind carries a bare
-`P735` → `Q3358418` she added herself, and the batch emitted `P735` → `Q3358418` **with**
+`P735` → `Q3358418` added by hand, and the batch emitted `P735` → `Q3358418` **with**
 `P1545` and `P7452`. QuickStatements merges an identical statement but records a
 differently-qualified one as a **new** statement — a duplicate given name on her item.
 
@@ -12066,7 +12066,7 @@ the item**. Downloading all 14 properly, via `genimerge.wikidata.full_entities` 
 The local store was no help and no excuse: it predates her edits, so it agreed Arne had
 no parents.
 
-**What the full items actually say.** The eleven items she built are **uniform** — each
+**What the full items actually say.** The eleven hand-built items are **uniform** — each
 carries `P31`, `P21`, `P2600`, `P569`, `P570`, then `P22`/`P25`/`P3373` for a child or
 `P26`/`P40` for a parent. `P735`, `P734` and `P5056` appear on **Eivind alone**.
 `P19`, `P20`, `P119` and `P1477` appear on none. **No qualifier of hers appears anywhere**
@@ -12141,7 +12141,7 @@ Fast lane: **1,177 passed, 0 failed, 1 skipped, 5m22s.**
 **The objection:** *"I thought we were resolving name objects but now we're determining which name
 field to use as a source of the label?"*
 
-She was right. `namemodel.classify()` took `label_en`, a rendered display string, and
+That was right. `namemodel.classify()` took `label_en`, a rendered display string, and
 guessed by whitespace position. The GEDCOM fields were in `reports/display-names.csv` all
 along — `givn`, `surn`, `nick`, `marnm` — and **field-based classifiers already existed**:
 `build-name-classes.py` over 560,432 `NAME` records, `classify-patronymics.py`,
@@ -12162,7 +12162,7 @@ along — `givn`, `surn`, `nick`, `marnm` — and **field-based classifiers alre
 *nickname*. A married name becomes a **second** `P734` *family name*, the pair
 distinguished by `P3831` *object of statement has role* → `Q2507958` *birth name* and
 `Q28418670` *married name*, plus an alias — only where it differs from `SURN`, and **sex
-is not a screen**; she overrode the corpus measurement that suggested one.
+is not a screen**; the corpus measurement that suggested one was overridden.
 
 `classify_fields(givn, surn, nick, marnm)` is the entry point now. `classify(label)`
 survives for callers holding only a display string, and its docstring says it guesses.
@@ -12217,7 +12217,7 @@ Fast lane: **1,189 passed, 0 failed, 1 skipped, 5m36s.**
 wikidata. This is because of an earlier creation run on them that created a lot of items
 from the page but didn't properly connect them."*
 
-Measured, and she is right. The local store could only see **45 of 204** — it was seeded
+Measured, and that is right. The local store could only see **45 of 204** — it was seeded
 from Geni-ID holders and their neighbours, so the disconnected ones are exactly what it
 cannot see. The 30 readable came out 100% carrying `P22` *father*, which would have been a
 completely misleading answer. Downloaded all 204 in full instead:
@@ -12241,7 +12241,7 @@ part of the algorithm we have been building for weeks... did you not actually im
 this?"*
 
 **No.** `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
-sources, including both directions she named — the Wikidata link in the Geni About Me, and
+sources, including both named directions — the Wikidata link in the Geni About Me, and
 `P2600` on the Wikidata side. It is written by `build-synoptic-correspondence.py` and
 **read by nothing**. The entry point exists and is a dead end.
 
@@ -12262,8 +12262,8 @@ records rather than a rule.**
 
 ### Scope note
 
-She asked which rosters to use and named Tanba and Izumo. I also counted **Onakatomi**,
-which she did not ask for. One line of output, no download, but it is the
+Tanba and Izumo were the named rosters. **Onakatomi** was also counted,
+which was not asked for. One line of output, no download, but it is the
 unprompted-analysis reflex and it is recorded here rather than quietly dropped.
 
 ## 2026-08-24 — all three clan rosters downloaded; four decisions taken
@@ -12290,7 +12290,7 @@ done jointly in the synoptic tree building."* Checked — it is joint already:
 the rebuild is for.
 
 **Cron `a9ffdec7`, daily at 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
-her instruction, because she runs QuickStatements on Wikidata first and the rebuild has to
+instruction, because QuickStatements run on Wikidata first and the rebuild has to
 see those edits. Session-only and expires after 7 days, so it needs recreating next
 session.
 
@@ -12345,7 +12345,7 @@ Fast lane: **1,204 passed, 0 failed, 1 skipped, 5m34s.**
 ## 2026-08-24 — "same parent, same name" REFUTED as a duplicate signal
 
 The instruction: *"Look at actual duplicates"*, then *"I'll get a duplicate because I don't trust
-you"* — and she supplied eight real ones she had merged on Geni herself: Yorihide,
+you"* — and eight real ones merged on Geni by hand were supplied: Yorihide,
 Yorinobu, Yoritoyo, Munekiyo, Fuyuyasu, Masatoshi Tanba (Sat), Nagatoyo and Yorimoto Tanba
 (Fri).
 
@@ -12447,7 +12447,7 @@ is amul"*, then *"we move the lmul to amul and the lja to aja and so on"*.
     Lja / Lzh    transliteration of the MARRIED form
     Aja / Azh    the birth form it replaces, preserved
 
-`reports/wikidata-garborg-label-fixes.qs` corrected the five items she named. The alias is
+`reports/wikidata-garborg-label-fixes.qs` corrected the five named items. The alias is
 written **before** the label, because a label edit replaces and nothing may be lost.
 
 **Two bugs caught before that file went out.** `Samuel Eivindsen Garborg` was read as
@@ -12478,7 +12478,7 @@ test that pins it skips rather than being deleted when the flag is on.
 
 ### `reports/wikidata-garborg-links.qs` — 127 links between existing items
 
-What she actually asked for once she gave up waiting: relationships between Garborg people
+What was actually asked for once the wait ran out: relationships between Garborg people
 who all already have QIDs. 106 `P3373` *sibling*, 17 `P40` *child*, 2 `P26` *spouse*, 1
 `P22`, 1 `P25`. Siblings dominate because 21 people were created today with nobody to link
 to at the time.
@@ -12727,7 +12727,7 @@ The real cause: **her activity feed gives only the SURVIVING profile id, never t
 one.** So the pair was never known. I guessed the partner by finding another profile with
 the same name and a same-named parent — and in the Samaritan lines, where numbered names
 recur as father and son (*Amram V*, *Aaron III*), that pairs people who were never the pair
-she merged. Her merges worked; my detector was looking at a different pair.
+were merged. Those merges worked; the detector was looking at a different pair.
 
 ### Exports 4 and 5
 
@@ -12835,10 +12835,10 @@ The privileged directory in merge order, which is export order:
 **Yorimoto was last for the wrong reason.** I had ranked him bottom because I had decided
 he was a "false positive" — the exact framing that was corrected. The export refreshes our
 record of him to Geni's current state, which is the point regardless of whether he was ever
-a duplicate. The ordering was mine and it was reasoning she had already ruled out.
+a duplicate. The ordering was invented here and it was reasoning already ruled out.
 
 The corpus re-merge is now running over all 553, **after** the exports rather than before —
-the mistake she objected to earlier, when I started it unasked and prematurely.
+the mistake objected to earlier, when it was started unasked and prematurely.
 
 ## 2026-08-24 — the synoptic tree is built
 
@@ -12937,7 +12937,7 @@ Fast lane: **1,245 passed, 0 failed, 2 skipped.**
 ## 2026-08-24 — the walk documented and validated, and TWO problems untangled
 
 The objection: *"it really feels like you just said there was one problem, and then you start
-talking about the opposite problem."* She is right. `synoptic-conflicts.tsv` is defined as
+talking about the opposite problem."* That is right. `synoptic-conflicts.tsv` is defined as
 *one Geni profile claiming several QIDs*, and **two completely unrelated causes produce
 that**:
 
@@ -12954,7 +12954,7 @@ The objection: *"you never really explain how it is that you're doing it."* It i
 upward walk**, not a zipper join:
 
 * it never touches children (`P40`) or spouses (`P26`) — those properties appear nowhere
-  in the script, so the hard cases she named are not done badly, they are **not done**;
+  in the script, so the named hard cases are not done badly, they are **not done**;
 * `father or mother` means a person with both parents has only the father's line walked;
 * `MERGE` asserts identity from **position alone** — no name, no date — so a source
   disagreement about who someone's father was reads as two names for one person.
@@ -13072,7 +13072,7 @@ one Geni ID and the Geni IDs match one but not the other, that zipper join thing
 
 `scripts/resolve-multi-geni-by-parents.py`. **31 removals over 30 items**, queued to
 `reports/wikidata-remove-wrong-p2600.json`, each carrying the reasoning that produced it. This is
-the zipper join on the half she called easy, and it is not the failing structural walk: nothing
+the zipper join on the half called easy, and it is not the failing structural walk: nothing
 here *proposes* a pairing. Both candidate ids are already asserted by Wikidata and the parents
 only choose between two of Wikidata's own claims.
 
@@ -13482,8 +13482,8 @@ common ancestor with him and the nearest common ancestor descended from Charlema
 the account owner to Charlemagne, and 383 of them already have Wikidata items. Only 16 need creating.**
 
 **The ledger was refreshed properly first.** `reports/garborg-qids.tsv` was from 12:57 yesterday
-and she created items until 20:03. The first attempt matched her contributions to yesterday's
-batch **by label** and got 7 of 108 — because the labels she ended up with differ from the ones
+and items were created until 20:03. The first attempt matched those contributions to yesterday's
+batch **by label** and got 7 of 108 — because the labels that ended up live differ from the ones
 proposed. `CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item* says to download the full
 items instead, so all 38 were fetched via `WikidataClient.full_entities` and their `P2600` read
 directly: **38 of 38 carry one**, exact mapping, no guessing. Ledger 34 → 41.
@@ -13493,7 +13493,7 @@ directly: **38 of 38 carry one**, exact mapping, no guessing. Ledger 34 → 41.
 - `--roster FILE` — the unrestricted ring was **138 creations in every direction**, mostly leading
   away. Restricted to the route plus the owner↔Arne paths.
 - `--known FILE` — with the roster alone the ring cut to **zero**, because the ledger holds only
-  the 41 items *she* created, which are Arne's family, while the route is her own ancestry whose
+  the 41 hand-created items, which are Arne's family, while the route is the account owner's own ancestry whose
   383 items long predate this programme. Their QIDs have to count as existing or the ring around
   them is empty.
 - `--in-laws` — opt-in, because spouses took the ring from 16 to **510**, far past the
@@ -13507,7 +13507,7 @@ Invisible until now because the unfiltered ring happened to contain none.
 are the substance — 350 `P40` *child*, 259 `P3373` *sibling*, 167 `P26` *spouse*, 15 `P22`
 *father*, 1 `P25` *mother*, plus 99 `P735` and 43 `P734` name statements. All of it between people
 who already have items, which is exactly the *"connections on wikidata that are currently absent"*
-she asked for.
+that were asked for.
 
 ### 2026-08-25 — the slow lane runs, and the BLOCKED tag was mine to withdraw
 
