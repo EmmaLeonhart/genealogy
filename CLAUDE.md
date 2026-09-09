@@ -4640,9 +4640,8 @@ never-delete-a-GEDCOM rule is untouched. The point is not to run it.
 When a new export lands, the task is to **integrate it into the tree** — place
 the `.ged`, commit, re-merge if needed — and nothing else. Do **not** compare it
 to an existing export, diff it, characterise what changed, count what it adds,
-or narrate any of that. She is not paying for unsolicited analysis, and every
-comparison of that kind cost her a turn to shut down (the 07-vs-13 AUG Ogasawara
-diff being the case that named this rule). The one exception is what integration
+or narrate any of that. Unsolicited analysis is not wanted, and every comparison of that kind
+costs a turn to shut down (the 07-vs-13 AUG Ogasawara diff being the case that named this rule). The one exception is what integration
 mechanically forces — checking a destination path does not already exist before
 placing (see *Never overwrite an existing `.ged`*) — which is a safety check,
 not analysis. The tree is the substrate; the deliverable is Wikidata edits.
@@ -4652,10 +4651,9 @@ not analysis. The tree is the substrate; the deliverable is Wikidata edits.
 Do not produce a report, an analysis or a measurement that was not asked for. Write the thing that was requested and stop.
 
 This is not a rule against measuring — § *"Analyse this" means build a CSV* still
-stands, and when she asks for an analysis it should be exhaustive. It is a rule
-against **answering an unasked question**, which in this session repeatedly cost
-her a turn to redirect: a name-item census produced straight after a charged
-exchange, a report on a fix written *instead of committing the fix*, three
+stands, and a requested analysis should be exhaustive. It is a rule against **answering an
+unasked question**, which repeatedly costs a turn to redirect: a name-item census produced
+straight after a charged exchange, a report on a fix written *instead of committing the fix*, three
 consecutive tables about Geni name scripts for a question about Wikidata labels.
 
 Two specific habits it forbids:
@@ -4665,8 +4663,7 @@ Two specific habits it forbids:
 - **Answering with whatever was most recently built.** Match on the *question*,
   not on vocabulary the question happens to share with the last thing measured.
 
-**She will ask when she wants a report, and those are worth doing properly.**
-`reports/geni-names.md` is one she asked for by name.
+**A requested report is worth doing properly.** `reports/geni-names.md` was asked for by name.
 
 ### "Analyse this" means: build a CSV of every instance, then analyse that
 
@@ -4688,9 +4685,9 @@ So the shape of every analysis task is three steps, in this order:
 **This supersedes reaching for a hand-picked example.** Looking at one record and
 generalising is the failure this rule exists to stop — and note it does *not*
 contradict § *How this project works now*, which is about interpreting **records** one at a
-time. Showing her a record is how a rule gets decided;
+time. Showing a record is how a rule gets decided;
 building the CSV is how the phenomenon gets measured. Do both, in that order:
-records first so she can see what the thing is, then the full census.
+records first, so the thing itself is visible, then the full census.
 
 ### The account owner's own profile: the middle name is intended on Geni and stays off Wikidata
 
@@ -4699,8 +4696,7 @@ Two separate facts, and the second is the rule. The middle name on that Geni pro
 be emitted**: no `P735` with `P3831` → `Q245025`, no
 appearance in a label, in any language.
 
-**It is in the corpus now.** When she first mentioned it no export held it; a
-later one did. `out/merged.ged` carries `1 NAME Emma Himiko /Leonhart/` as a second
+**It is in the corpus now.** No export held it when the rule was written; a later one did. `out/merged.ged` carries `1 NAME Emma Himiko /Leonhart/` as a second
 `NAME` record, and `reports/derived-labels.csv` shows it under
 `further_latin_names`.
 
@@ -4711,9 +4707,8 @@ The rule holds because the label emitters use `label_en`, which is the corrected
 single name, and never `further_latin_names`. It is written here rather than in the queue because
 it governs how the project works and has no step attached.
 
-This is the same shape as § *Her name is Empress Jingū*: what her profile says
-and what gets emitted are separate questions, and the emitter is where the
-answer lives.
+This is the same shape as § *The account owner's name is Empress Jingū*: what a profile says and
+what gets emitted are separate questions, and the emitter is where the answer lives.
 
 ### A cron only fires while the session is idle — never schedule a long job into active work
 
@@ -4727,10 +4722,10 @@ a twenty-minute merge is not. And **check the crons when a session resumes** —
 they are session-only, so they die with it, and a job that quietly never fires
 looks exactly like one that had nothing to do.
 
-### Her name is Empress Jingū
+### The account owner's name is Empress Jingū
 
-**Profile `6000000001846508982` is Empress Jingū** — the account owner, and the
-seed of the first exports. Geni was renamed; the exports taken before that were
+**Profile `6000000001846508982` is Empress Jingū** — the account owner, and the seed of the first
+exports. Geni was renamed; the exports taken before that were
 not, so the old name was in every GEDCOM, every derived report, and the prose
 that quoted them. It was removed from all 223 of them on 2026-08-12.
 
@@ -4885,7 +4880,7 @@ then identify.
 
 **Aliases carry `add`; labels and descriptions do not.** `wbeditentity` REPLACES a language's alias
 list when given one plainly, and § *The MARRIED name is the real name* has every `Lmul` preceded by
-an `Amul` preserving whatever the item already read — *"Some of those are her hand-edits"*. A
+an `Amul` preserving whatever the item already read, some of which are hand edits. A
 replacing alias write deletes the thing the preceding line exists to save.
 
 **⛔ THE RECEIPT IS WHAT MAKES A RE-SEND SAFE, and re-sending is the NORMAL case.**
@@ -4964,14 +4959,14 @@ seed for each step, and `scripts/census-paths.py` is the current-state snapshot.
 The queue is for work; these are specifications and standing processes, so they live here
 instead.
 
-### ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
+### ⛔ THE DAILY ALGORITHM — the full spec. SPECIFICATION, not a step
 
-`docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
+`docs/dictation/2026-08-26-daily-algorithm.md` is the dictation verbatim;
 `docs/daily-algorithm.md` is the reading. **The order is structurally rigid and the weirdness is
 intentional** — *"the weirdness isn't something to be sanded off"*.
 
 **One command**: `python scripts/build-daily-batch.py [--refresh-ledger]` runs step 0, then the
-three steps in her order, and prints the run order with each file's position. Step 0 is off by
+three steps in the specified order, and prints the run order with each file's position. Step 0 is off by
 default because it is the day's one network call.
 
 Steps 1, 1b, 2 and 3 live in `scripts/build-garborg-day.py` and
@@ -4979,7 +4974,7 @@ Steps 1, 1b, 2 and 3 live in `scripts/build-garborg-day.py` and
 their own values, not this section. `devlog.md` 2026-08-26 has how they were built.
 
 **The one thing still outstanding: the ideal state is what the item already holds on Wikidata
-plus what Geni supports** — her ruling, 2026-09-01, on a sentence that used to read *"the union of
+plus what Geni supports** — replacing a sentence that used to read *"the union of
 the synoptic tree and the Geni tree"* and was a tautology under either meaning of the term. That is the § *PREREQUISITE ORDER* item,
 not this one.
 
@@ -4989,9 +4984,9 @@ days.
 
 **Two readings taken rather than asked, both recorded where the code is:** which name items —
 most-borne first, so each earns the most links; and step 1b runs every time rather than behind a
-gate for *"once we get to a certain point"*, because she said it *"could be in the same line as
-the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
-a SEQUENCE* is written against.
+gate for *once we get to a certain point*, because it belongs in the same line as the descendants
+one, and an invented gate that never opens is the failure mode § *The batches are a SEQUENCE* is
+written against.
 
 
 ### The daily Garborg batch — one QuickStatements run per day
@@ -5018,18 +5013,16 @@ This item is the **standing daily process**, not a step to finish: one batch a d
 as the programme runs.
 
 
-### THE EDIT ALGORITHM — her specification, recorded verbatim in substance
+### THE EDIT ALGORITHM — the specification, recorded in substance
 
-**She raised this because she was worried it had been altered:** *"I don't think I
-expressed to you how much my version actually favours me, and I'm hoping that, as
-a result, you didn't decide to change something and go against specification to
-make it favour me less."*
+**The bias toward the account owner's own neighbourhood is deliberate.** The specification
+favours it heavily, and going against that to make it favour it less is the failure this section
+guards.
 
 **Checked 2026-08-15: nothing implements it yet.** `scripts/wikidata-edit-run.py`
 is a batch executor with `MAX_EDITS_PER_RUN = 100` and a reviewed-batch allowlist.
 There is no random selection and no service-area gate, so there was nothing to
-alter. **When it is built, it is built to this spec and the bias toward her
-neighbourhood is deliberate — do not normalise it away.**
+alter. **When it is built, it is built to this spec — do not normalise the bias away.**
 
 **The rate.** 100 JSONs executed per day, chosen at random from the eligible set.
 
@@ -5039,9 +5032,9 @@ that is getting one added. *"Something that, in our version, has a GeniID but on
 Wikidata gets it. That's a service area… particularly something that has a GeniID
 but is otherwise isolated."*
 
-**Why it favours her, and why that is the design.** Her own item can add a mother
-or a father with equal probability. Once one is added, **each of them can add the
-other**, either can add her brother, and her brother can add her back as a sibling.
+**Why it favours that neighbourhood, and why that is the design.** The owner's own item can add a
+mother or a father with equal probability. Once one is added, **each of them can add the other**,
+either can add the brother, and the brother can add back as a sibling.
 Each addition creates new surface area for the next.
 
 **So the growth rate depends on saturation, not on size.** *"There's a very large
@@ -5055,19 +5048,18 @@ region has nothing left to add; a cluster of near-but-unlinked people compounds.
 because they are ranked highest, but because *"the algorithm is most optimised to
 hit these people, because they are entry points for the algorithm to function."*
 
-**De-prioritise Geni-IDs-as-sources.** She expects most items to receive a Geni ID
-and nothing else, and if Geni IDs start being added as sources onto relationships
+**De-prioritise Geni-IDs-as-sources.** Most items are expected to receive a Geni ID and nothing
+else, and if Geni IDs start being added as sources onto relationships
 that already exist, **that class drops to roughly 5–25 edits a day** rather than
 competing for the 100.
 
 **Scheduled path-building runs alongside the random 100.** Deliberate edits that
-build a path from her outward, *"starting with the people close to me that have
-wiki data items"*, then filling the Charlemagne line from the medieval period
+build a path outward from the owner's own item, starting with the closest people who already have
+Wikidata items, then filling the Charlemagne line from the medieval period
 downward until it intercepts.
 
-**The end state she is describing:** a dense region around her, mostly of people
-she did not create, which keeps accumulating because each addition raises the
-surface area. *"It looks like established genealogical stuff"* — and the Samaritan
+**The end state:** a dense region around the owner's own item, mostly of people they did not
+create, which keeps accumulating because each addition raises the surface area. *"It looks like established genealogical stuff"* — and the Samaritan
 high priests and the antiquity work sit inside the same region rather than beside
 it.
 
@@ -5084,29 +5076,29 @@ down nowhere**). Steps 1 and 3 are scripts now — `scripts/extract-user-turns.p
 verbatim, `scripts/audit-turns-recorded.py` screens for directive shape and then for whether any
 six-word run of the turn appears in `CLAUDE.md`, `queue.md`, `devlog.md`, `name modelling.txt`
 or `docs/`. The screen was checked against rulings known to be recorded and flagged none of
-them. A miss is a **candidate to read**, never a finding — she repeats herself, and much of what
-she says is answered in the moment and needs no record.
+them. A miss is a **candidate to read**, never a finding — instructions repeat, and much of what
+is said is answered in the moment and needs no record.
 
 The previous run was 2026-08-15 → `reports/audit-transcripts-2026-08-15.md` (24 transcripts,
 311 user turns).
 
-Transcripts are the authority — they hold what Emma actually said, in order,
-including the corrections:
+Transcripts are the authority — they hold what was actually said, in order, including the
+corrections:
 `C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl`.
 Newest first by mtime. Each line is JSON.
 
-**Read BOTH record types, or the scan misses half of her.** A turn she typed while
-the model was idle is `{"type": "user", "message": {"role": "user"}}`. A turn she
-typed while a tool call was running is
+**Read BOTH record types, or the scan misses half the input.** A turn typed while the model was
+idle is `{"type": "user", "message": {"role": "user"}}`. A turn typed while a tool call was
+running is
 `{"type": "queue-operation", "operation": "enqueue", "content": "…"}`, and it is
 **not** a user record. On 2026-08-16 the split was 28 user records against 21
-queue-operations, so a `role == "user"` scan finds 57% of what she said. Skip the
+queue-operations, so a `role == "user"` scan finds 57% of the input. Skip the
 `enqueue` entries whose content is a cron prompt or a `<task-notification>`; those
-are the harness talking, not her. Found 2026-08-17.
+are the harness talking, not input.
 
 1. **Extract every user turn with its timestamp.** Do not summarise while
    extracting — that is where instructions get lost. A compaction turn is not
-   something Emma wrote: its quoted messages are evidence, its narration is not.
+   input: its quoted messages are evidence, its narration is not.
 2. **Classify:** instruction, decision, correction, or conversation. Only the
    first three matter. **Frustration is still an instruction** — *"just fucking
    run the census"* is a queue item.
@@ -5115,39 +5107,35 @@ are the harness talking, not her. Found 2026-08-17.
    concrete step here. A decision about how the project works → `CLAUDE.md`.
 4. **Corrections outrank what they correct.** The latest statement wins and the
    superseded one must not survive anywhere as if it were current.
-5. **Unrequested normalisation is its own category** — Emma: *"you have a
-   tendency to try to do exception handling for stuff that I do not consider to
-   be even necessarily errors."* Those go on the list to be **removed**.
+5. **Unrequested normalisation is its own category** — exception handling built for things that
+   are not considered errors. Those go on the list to be **removed**.
 
 ---
 
 
-### The chain of provenance — Emma, 2026-08-25
+### The chain of provenance
 
-**Her words:** *"providence is important in this, and ideally, a zipper merge will almost always
-be done with there being a relatively large chain of providence, not just a simple 'this was the
-justification,' but a potentially very large series of justifications."* And why the manual
-verdicts exist at all: *"That is the actual reason why I asked you to record my manual decisions,
-because of the fact that they entered into the province too."*
+**Provenance matters, and a zipper merge should almost always carry a relatively large chain of
+it** — not a single justification but a potentially very long series. That is also why the manual
+verdicts are recorded: they enter the provenance too.
 
 **BUILT — `scripts/zipper-provenance.py`, re-run 2026-08-31.** `reports/zipper-pairs.tsv` records
-one step; this walks them into the **transitive closure** she describes — a round-5 pair's
-justification being its own step plus every step beneath it, down to an anchor or to one of her
-own verdicts. Chain depth **max 8, mean 2.7** over 45,898 inferred pairs. Outputs
+one step; this walks them into the **transitive closure** — a round-5 pair's justification being
+its own step plus every step beneath it, down to an anchor or to a hand verdict. Chain depth **max 8, mean 2.7** over 45,898 inferred pairs. Outputs
 `reports/zipper-provenance.tsv` and `reports/zipper-provenance-chains.md`.
 
     25,723  CORROBORATED        7,306 pairs an independent source confirms
     20,008  INFERRED            88 an independent source contradicts
        167  POISONED
 
-Her hand verdicts are first-class nodes, as she asked: **103 independent pairs** from
+Hand verdicts are first-class nodes: **103 independent pairs** from
 `reports/emma-judgments.tsv`, alongside the structural walk (7,841), her Geni bio links (405) and
 the clan rosters.
 
 **This section stays as the SPECIFICATION** — the two propagation rules below are how it must keep
-behaving, and they are hers rather than derivable from the code.
+behaving, and they are specified rather than derivable from the code.
 
-Two things follow, and she stated both:
+Two things follow:
 
 - **Support propagates upward.** *"If you have a group of 100 people in one generation, all of
   their ancestors are all consistent. It's a really good sign... suddenly you go into the ancestors
@@ -5158,14 +5146,14 @@ Two things follow, and she stated both:
   resolution that clearly contradicts it, this indicates a clear contradiction... it goes both
   ways."*
 
-So the artefact is a provenance **graph** that can be walked in both directions, with her manual
+So the artefact is a provenance **graph** that can be walked in both directions, with the manual
 RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
 recorded `P2600` confirms or refutes.
 
 
 ### Link reliability order — parents, spouses, children, siblings
 
-**Emma, 2026-08-25, ranking them least messy first:**
+**Ranked least messy first:**
 
 1. **parents** — *"parents are always most reliable"*
 2. **spouses** — *"can be a bit messy because sometimes people have multiple spouses"*
