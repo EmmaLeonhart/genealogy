@@ -33623,3 +33623,24 @@ Verbatim, not looked up.
 Verbatim, not looked up. The `?through=` on her link is a relationship-path artefact and is not
 part of the id, so it is dropped — the same thing that made Elizabeth II look like a parent
 earlier today.
+
+## 2026-09-09 — Abul Hamza, export 1 of 3: Ancestors
+
+`exports/abul-hamza/export-Ancestors-6000000227676734863.ged` — **811 people, 685 families**,
+seed verified as the file's first `INDI`. Descendants is submitted, task `6000000227676792879`.
+
+**811 is under the 5,000 cap, and that is informative rather than a shortfall.** Every export
+filed today came back at exactly 5,000 — cut off at the bound with more to fetch. This one
+stopped on its own, so it holds **her entire recorded ancestry** as Geni has it. That is the half
+of her you called *"very important"*, and it is complete rather than sampled.
+
+**Two mechanical things cost time and are worth keeping.** The page renders at
+`devicePixelRatio` **1.25**, so screenshot coordinates and `getBoundingClientRect` disagree and
+several clicks missed the submit button — the same trap as the anchor pin this morning. And the
+submit is intermittent the way the download button is: a click that visibly lands on the button
+sometimes does nothing, and the second identical click works. `walk=Ancestors` was verified off
+the form's own radio state before submitting rather than from a screenshot, which is the check
+that makes a missed click harmless instead of silently exporting the wrong style.
+
+The export form is the SECOND form on the page — the first is site search — and it posts to
+`/gedcom/request_export`.
