@@ -2520,8 +2520,55 @@ siblings must count them and stop.
 them to send in one batch. The rest stay in the carry-forward and go out on later days, which is
 the same mechanism the daily cadence already uses.
 
-**Nothing else is capped.** `P22` *father*, `P25` *mother*, `P40` *child* and `P26` *spouse* are
-uncapped — they are few per person and each one is structurally load-bearing.
+**The RELATIONSHIP properties are not capped.** `P22` *father*, `P25` *mother*, `P40` *child*
+and `P26` *spouse* stay uncapped — they are few per person and each one is structurally
+load-bearing. This said *"nothing else is capped"* until 2026-09-09; the name statements and
+the `P2600` lead are capped now, § *THE ADDITIONS PASS IS CAPPED TOO*.
+
+### ⛔ THE ADDITIONS PASS IS CAPPED TOO. `NAME_ADD_CAP` and `P2600_LEAD_CAP`
+
+**You, 2026-09-09, reading a 4,081-statement batch:** *"seemingly uncapped geni ids and some
+other things... So the uncapped stuff feels weird and might be a problem. They should be
+capped."*
+
+**This supersedes the sentence in § *`P3373` sibling is capped at 40 PAIRS* that read "Nothing
+else is capped."** That was true and safe only while another guard happened to be suppressing
+the traffic.
+
+**What was uncapped, measured:** the additions pass iterates the **whole ledger**, and on
+2026-09-09 it emitted **2,033 name statements on 1,269 existing items in one batch** — 1,192
+`P735`, 748 `P734`, 93 `P5056`, **62% of the file** — plus 47 `P2600` where the cap says 20.
+
+**The cause was a fix made the same day, and that is the part worth knowing.** Removing
+`_has_given_name` was right — it was withholding 6,978 statements from people who were owed
+them — but the pass it unblocked had no pacing of its own, so a correct fix arrived as a flood.
+**A guard that suppresses volume is not a cap**, and removing one exposes whatever it was
+standing in for.
+
+| | cap | unit |
+| --- | ---: | --- |
+| `NAME_ADD_CAP` | **60** | people per run gaining `P735`/`P734`/`P5056` on an EXISTING item |
+| `P2600_LEAD_CAP` | **40** | the exempt `P2600` lead, on top of `MANUAL_P2600_PER_RUN` 20 |
+
+**60 people, the same unit and number as `LABEL_EDIT_CAP`**, because it is the same shape of
+work: a rolling window over the ledger that drains a little each run. Nothing is lost — what does
+not go today goes tomorrow, § *The batches are a SEQUENCE*.
+
+**⛔ THE CAP COUNTS PEOPLE WHO GAIN A STATEMENT, NEVER PEOPLE WHO REACH THE BLOCK.** Counted on
+arrival it burnt 48 of the 60 slots on people whose tokens have no name item yet: **60 people
+entered and 12 statements came out**, so the pass drained five times slower than the number says
+while looking correct from the outside.
+
+**The `P2600` lead stays exempt from `MANUAL_P2600_PER_RUN` and that is still right** — never
+label an item whose id is being withheld, § *An item with no relationships is not a missing
+item*. But exempt is not unbounded: the lead is *"every QID this run touches"*, so it grew as a
+function of the flood. Capping the pass fixes it at the cause and `P2600_LEAD_CAP` is the
+backstop.
+
+**Result on the same run: 3,272 statements → 1,359**, existing items touched 1,269 → 202,
+`P2600` on existing items 47 → 7. `P22`, `P25`, `P40` and `P26` stay uncapped — 149 statements
+between them, few per person and structurally load-bearing, which is the reason § *`P3373`
+sibling* gives and which still holds.
 
 ### A sibling step gets a PLACEHOLDER PARENT in our tree and NEVER on Wikidata
 
@@ -2976,7 +3023,7 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
-### CHECK before you alarm you. An unchecked scary claim is worse than silence
+### CHECK before raising an alarm. An unchecked scary claim is worse than silence
 
 **You, 2026-08-30:** *"Stop constantly trying to make me panic by not checking."*
 
@@ -3019,7 +3066,7 @@ give **8** Geni ids; through `out/wikidata/p2600-all.tsv` they give **2**. The h
 **And the 2 is NOT staleness — that was assumed and then refuted.** The file was refreshed from
 live Wikidata on 2026-08-30 and the Izumo answer did not move: only **2 of those 204 items carry
 a `P2600` at all**. The stale-file reasoning was written down here and in the script before
-anyone ran the refresh that would have tested it. § *CHECK before you alarm your* is the rule it
+anyone ran the refresh that would have tested it. § *CHECK before raising an alarm* is the rule it
 broke; a cause is not established by being plausible.
 
 **The refresh was worth doing for a different reason, and that one is measured.**

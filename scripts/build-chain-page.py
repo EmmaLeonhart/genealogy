@@ -198,7 +198,7 @@ def main():
 
     body.append(f'<h2>&hellip; down to Arne, by blood<span class="c">'
                 f'{len(blood)} steps</span></h2>'
-                '<p class="blurb">you&rsquo;s fourth cousin five times removed. Read upward from '
+                '<p class="blurb">your fourth cousin five times removed. Read upward from '
                 'you to the shared ancestor, then down to Arne &mdash; the path as Geni traced '
                 'it.</p><ul>')
     for s, name, rel, g in blood:
@@ -209,7 +209,7 @@ def main():
 
     body.append(f'<h2>&hellip; and to Arne, by marriage<span class="c">'
                 f'{len(marriage)} steps</span></h2>'
-                '<p class="blurb">The shorter link: Arne is you&rsquo;s great-grandfather&rsquo;s '
+                '<p class="blurb">The shorter link: Arne is your great-grandfather&rsquo;s '
                 'wife&rsquo;s first cousin once removed. This one carries no blood.</p><ul>')
     for s, name, rel, g in marriage:
         body.append(person(g, label.get(g, name), qid, born, died, html.escape(rel), n=s))
@@ -237,7 +237,7 @@ def main():
         'line down from Charlemagne than the one you were found on, or the two were worked out at '
         'different times from different pages. The junction shown below is the one the data '
         'actually has &mdash; the deepest person on both the Charlemagne route and the blood line '
-        'to Arne. Bergitte is not it, and I have not substituted your for it.</div>'
+        'to Arne. Bergitte is not it, and I have not substituted you for it.</div>'
         "</header>\n" + "\n".join(body) +
         '\n<footer>Built by <code>scripts/build-chain-page.py</code> from '
         '<code>reports/charlemagne-route.csv</code>, '

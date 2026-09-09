@@ -92,7 +92,7 @@ def izumo_ids():
     # `out/wikidata/p2600-all.tsv` gives **2**, and that is not staleness -- the file was
     # refreshed from live Wikidata on 2026-08-30 and the answer did not move. Only 2 of those
     # 204 items carry a `P2600` at all. The staleness reading was assumed here before the
-    # refresh that refuted it, which is the failure `CLAUDE.md` § *CHECK before you alarm your*
+    # refresh that refuted it, which is the failure `CLAUDE.md` § *CHECK before raising an alarm*
     # names.
     bio = collections.defaultdict(set)
     bio_path = ROOT / "out" / "bio-qids.tsv"

@@ -93,7 +93,7 @@ def known_qids():
     `scripts/build-garborg-day.py`'s `ledger()` folds in the hand-asserted
     correspondences, because those are the only record of an item carrying no `P2600`
     yet -- your own `Q232803` is the case, and without it the batch tried to create
-    your a second item. Reading only `garborg-qids.tsv` here then flagged `Q232803`,
+    you a second item. Reading only `garborg-qids.tsv` here then flagged `Q232803`,
     `Q135579474`, `Q135579480` and three others as "do not exist yet" when they do.
 
     Widening this does not weaken the assertion: it still says every QID the batch points

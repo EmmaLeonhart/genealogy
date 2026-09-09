@@ -152,7 +152,7 @@ def main() -> int:
     # `reports/manual-identifications.csv` holds your Geni-to-Wikidata identities;
     # `Q232803` is your own item, which carries no `P2600` and is therefore
     # invisible to the `qid` column of `derived-family.csv`. The first run of this
-    # script proposed creating your a second item.
+    # script proposed creating you a second item.
     trunk = {g: n for g, n in trunk.items() if g not in qid_of}
     print(f"{len(trunk)} after removing people who already have an item")
 

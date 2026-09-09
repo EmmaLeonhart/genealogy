@@ -92,7 +92,7 @@ last run produced. It had not.
 
 **Your hand identifications are folded into the ledger**, because they are the only record of an item
 that carries no `P2600` yet. Without it the spine walk hit step 1 of the Bergitte path — **You
-yourself** — and emitted a `CREATE` that would have minted your a second item beside `Q232803`.
+yourself** — and emitted a `CREATE` that would have minted you a second item beside `Q232803`.
 
 ## Step 2 — creation of names
 

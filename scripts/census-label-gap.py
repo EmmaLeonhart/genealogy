@@ -126,7 +126,7 @@ def main() -> int:
                 kin[s]["spouse"].append(g)
 
     # Siblings: everyone sharing a recorded parent. Geni records no sibling edge --
-    # `CLAUDE.md` section *CHECK before you alarm your* measures 2,126 of 30,361 path steps as
+    # `CLAUDE.md` section *CHECK before raising an alarm* measures 2,126 of 30,361 path steps as
     # sibling hops, so leaving them out would understate the reach by a real margin.
     bykid = collections.defaultdict(set)
     for g, (fa, mo) in parents_of.items():

@@ -18799,7 +18799,7 @@ whole point of refreshing the ledger inside the run rather than beside it.
 Also queued at the tail, without investigation: why `Q141205924`, *mother of Lars Gunnbjørnsen
 Mjølhus*, carries a non-normalised NN-style name in its `mul` label.
 
-## 2026-08-29 — `Q141198548` is Deokjang's wife, and I nearly called your a duplicate
+## 2026-08-29 — `Q141198548` is Deokjang's wife, and I nearly called you a duplicate
 
 You stopped before running `Q141198548|Lko|"부여덕장"` because the item looked like a near-duplicate
 of `Q19657284` *Buyeo Deokjang*. You were right to stop, and I was wrong first: I told you it looked
@@ -19865,7 +19865,7 @@ id `6000000186285688269` appears in the derived censuses and in nothing that emi
 The ledger has your from 2026-08-25 because that day's refresh found the item already live under
 your account.
 
-**What this repo did do is offer to create your a second time**, the next day. `3c9cfb16`
+**What this repo did do is offer to create you a second time**, the next day. `3c9cfb16`
 (2026-08-26) carries a full `CREATE` block for you — `mother of Taebi Buyeo` in ten languages,
 `P31`, `P21`, `P2600`, and both directions of the spouse and child links — and its own commit
 title records the catch: *"it nearly created her a second item"*.
@@ -20799,7 +20799,7 @@ Two of the candidates were real and both are now rules:
 
 **"Stop constantly trying to make me panic by not checking."** Every alarming claim this week —
 the Charlemagne spine 8 short, the Bureus link missing, Signe at 13/14 — came from a lookup that
-did not answer the question, and every one was wrong. `CLAUDE.md` § *CHECK before you alarm your*.
+did not answer the question, and every one was wrong. `CLAUDE.md` § *CHECK before raising an alarm*.
 
 **"geni chains often have situations where they skip between siblings."** You asked how common
 it is: **2,126 of the 30,361 relation steps in `paths/` — 7.0%**. Geni records no sibling edge,
@@ -20838,7 +20838,7 @@ querying Wikidata was banned — a ban you lifted on 2026-08-29.
 **A claim of mine was refuted by the refresh and is corrected in both places it was written.**
 I said the Izumo roster resolving to 2 Geni ids was staleness. It is not: after the refresh it is
 still 2, because only **2 of those 204 items carry a `P2600` at all**. I asserted a cause without
-running the test that would settle it, three commits after writing § *CHECK before you alarm your*
+running the test that would settle it, three commits after writing § *CHECK before raising an alarm*
 into `CLAUDE.md` for exactly that.
 
 **And the path-connection figure moved twice more, both times because the instrument was wrong.**
@@ -21031,7 +21031,7 @@ shape — `Q3120330` *William I of Garlande* is a long-standing item with 20 cla
 
 **Spot-checked live before writing it down.** 12 of the 16 fetched in one `wbgetentities` call:
 none is already a redirect and every pair carries the same `P2600`, so these are live duplicates
-rather than an artefact of a download. § *CHECK before you alarm your* is the rule — a list of 83
+rather than an artefact of a download. § *CHECK before raising an alarm* is the rule — a list of 83
 duplicates handed over unverified is exactly the unchecked scary claim it forbids.
 
 **67 more sit outside the ledger** and are listed separately, because some of those will be
@@ -22471,7 +22471,7 @@ for.
 `out/wikidata/p2600-all.tsv` alone and called step 5 *Gunnar Sahlin* open. He is in
 `reports/garborg-qids.tsv` — You created him, and `p2600-all` was last refreshed 08-30. Three
 oracles are needed and the builder already uses all three: Wikidata's own `P2600`, the ledger,
-and `SPINE_ANCHORS`. Using one is how § *CHECK before you alarm your* gets broken.
+and `SPINE_ANCHORS`. Using one is how § *CHECK before raising an alarm* gets broken.
 
 ## 2026-08-31 — "why does it appear absent": it never was. 22 merges, 0 disagreements
 
@@ -24874,7 +24874,7 @@ and returns `UNSURE`, so when you cannot tell you skips. 295 `SAME`, 17 `RIGHT`,
 and repeated it in a status report. The 18:59 UTC failure ran commit `b7b1f5d6`, which carried
 **none** of the three pieces that answer it — `out/family-structure.tsv.gz` was not committed,
 `pack-derived.py` did not list it, and `read_tree` had no fallback. All three landed afterwards
-and nobody re-ran it. § *CHECK before you alarm your* again: the alarming claim was about a stale
+and nobody re-ran it. § *CHECK before raising an alarm* again: the alarming claim was about a stale
 run, not about the code.
 
 **Queue tail reordered to your instruction**, 2026-09-01: *"have it after the pages item, between
@@ -27379,7 +27379,7 @@ fixed it was generated and discarded on every run since the priority mechanism w
 
 `reports/garborg-live-values.tsv` could not have established this and nearly did: it covers
 ledger items only, and none of the 161 is in the ledger, so its silence about them means *not
-asked*, not *not held*. That is § *CHECK before you alarm your* — the check that would falsify
+asked*, not *not held*. That is § *CHECK before raising an alarm* — the check that would falsify
 the claim had to be the live one.
 
 The two blocks are now separate lists concatenated in your order — identifications, then name
@@ -32816,3 +32816,48 @@ artefact of how the download was partitioned, since all 9 duplicate rows are byt
 the census reported **44,099** items where there are **44,090**, and the batch emitted those
 people's label edits twice. `census-imported-title-labels.py` now collapses on the QID and says
 how many it collapsed.
+
+## 2026-09-09 — the additions pass was uncapped, and my own fix that morning is what exposed it
+
+**You, reading a 4,081-statement batch:** *"seemingly uncapped geni ids and some other things...
+So the uncapped stuff feels weird and might be a problem. They should be capped."*
+
+**Measured on the same batch.** The additions pass iterates the **whole ledger** and had no cap
+at all:
+
+    2,033 name statements on 1,269 existing items   <- 1,192 P735, 748 P734, 93 P5056
+       47 P2600 on existing items                   <- the cap says 20
+                                                       62% of the whole file
+
+**The cause was this morning's fix, and that is the part worth recording.** Removing
+`_has_given_name` was right — it was withholding 6,978 statements from people who were owed
+them — but the pass it unblocked had no pacing of its own, so a correct fix arrived as a flood.
+**A guard that suppresses volume is not a cap**, and removing one exposes whatever it was
+standing in for.
+
+    NAME_ADD_CAP     60   people per run gaining P735/P734/P5056 on an EXISTING item
+    P2600_LEAD_CAP   40   the exempt P2600 lead, on top of MANUAL_P2600_PER_RUN 20
+
+60 people is the same unit and the same number as `LABEL_EDIT_CAP`, because it is the same shape
+of work: a rolling window over the ledger. Nothing is lost — § *The batches are a SEQUENCE*.
+
+**⛔ THE FIRST VERSION COUNTED THE WRONG THING and looked fine.** Counting people who *reach* the
+block burnt 48 of the 60 slots on people whose tokens have no name item yet: **60 entered, 12
+statements came out**. Moved inside the emit loop, so a person with nothing to emit costs
+nothing.
+
+**`P2600` needed no cap of its own in the end.** The lead is exempt from
+`MANUAL_P2600_PER_RUN` on purpose — never label an item whose id is being withheld — but it is
+*"every QID this run touches"*, so it grew as a function of the flood. Capping the pass fixed it
+at the cause: **47 → 7**. `P2600_LEAD_CAP` is only the backstop.
+
+**3,272 statements → 1,359**, existing items touched **1,269 → 202**. `P22`, `P25`, `P40` and
+`P26` stay uncapped: 149 between them, few per person and structurally load-bearing.
+
+**And the second-person pass left damage in user-visible strings, found while checking this.**
+Its quote mask covered `"..."` and **not `'...'`, which is most Python string literals** — so
+`build-chain-page.py` was emitting `you&rsquo;s fourth cousin five times removed` onto the
+published page, and five files carried `minted your a SECOND item`. All repaired. The heading
+`CHECK before you alarm her` also collapsed into `CHECK before you alarm you`, since the
+document now uses *you* for two different referents; renamed to **`CHECK before raising an
+alarm`** across all 10 references rather than left ambiguous.

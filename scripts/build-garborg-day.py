@@ -150,9 +150,9 @@ def ledger():
     `reports/manual-identifications.csv` is where a correspondence you recognised by hand lives,
     and it is the only thing that knows about an item carrying no `P2600` yet -- which is
     exactly the shape of your own. Without it
-    the spine walk reached step 1 of `paths/bergitte-to-emma.tsv`, which is YOUR, found your
+    the spine walk reached step 1 of `paths/bergitte-to-emma.tsv`, which is YOU, found you
     in neither `garborg-qids.tsv` nor `p2600-all.tsv`, and emitted a `CREATE` that would
-    have minted your a SECOND item. `CLAUDE.md` says it plainly: you *"has her own item and
+    have minted you a SECOND item. `CLAUDE.md` says it plainly: you *"have your own item and
     needs an id rather than a creation"*.
     """
     out = {}
@@ -256,6 +256,11 @@ def _words():
 
 
 WORDS = _words()
+
+
+#: QIDs that have gained a name statement on an EXISTING item this run -- the counter behind
+#: `NAME_ADD_CAP`, mirroring `_siblings_emitted` behind `SIBLING_CAP`.
+_name_added: set[str] = set()
 
 
 def _relationship_prefixes():
@@ -650,7 +655,10 @@ def manual_p2600_lines(priority_qids=()):
     lead = [t for t in missing if t[0] in pri]
     rest = [t for t in missing if t[0] not in pri]
     lines = []
-    for q, g, n in lead + rest[:MANUAL_P2600_PER_RUN]:
+    # The lead is exempt from `MANUAL_P2600_PER_RUN` on purpose -- never label an item whose id
+    # we are withholding -- but exempt is not unbounded. `P2600_LEAD_CAP` is the backstop; the
+    # real fix is `NAME_ADD_CAP`, which stops the run touching 1,269 items in the first place.
+    for q, g, n in lead[:P2600_LEAD_CAP] + rest[:MANUAL_P2600_PER_RUN]:
         if n:
             lines.append(f"#   {q} {n}: P2600 from your own identification")
         lines.append(f'{q}\tP2600\t"{g}"')
@@ -1218,6 +1226,28 @@ def _label_corrections(our_items, labels, table, state, fields=None,
 #: *"a label added after item creation is a risk and a label added during item creation is good."*
 #: So this counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
 LABEL_EDIT_CAP = 60
+
+#: **How many EXISTING people may gain name statements in one run.** You, 2026-09-09, reading a
+#: 4,081-statement batch: *"seemingly uncapped geni ids and some other things... They should be
+#: capped."*
+#:
+#: **The additions pass iterates the WHOLE LEDGER and had no cap at all**, which was survivable
+#: only while `_has_given_name` was suppressing most of it. Removing that gate the same day --
+#: correctly, it was withholding 6,978 statements people were owed -- turned the pass from a
+#: trickle into **2,033 name statements on 1,269 existing items in one batch**: 1,192 `P735`,
+#: 748 `P734`, 93 `P5056`, 62% of the whole file.
+#:
+#: **60 PEOPLE, the same unit and the same number as `LABEL_EDIT_CAP`**, because it is the same
+#: shape of work: a rolling window over the ledger that drains a little each run. Nothing is
+#: lost -- what does not go today goes tomorrow, § *The batches are a SEQUENCE*.
+NAME_ADD_CAP = 60
+
+#: **A ceiling on the `P2600` lead**, which was exempt from `MANUAL_P2600_PER_RUN` by design:
+#: an id must never be withheld from an item this run is labelling. That exemption is right and
+#: is kept -- but it made the id count a FUNCTION of how many items the run touched, so 1,269
+#: touched items produced 47 `P2600` where the cap says 20. Capping the pass above fixes it at
+#: the cause; this is the backstop, so the block cannot run away again on its own.
+P2600_LEAD_CAP = 40
 
 
 #: **The order label edits go out in, by LANGUAGE. You, 2026-09-04:**
@@ -6659,7 +6689,11 @@ def main():
         # `En dodfodd son Bielke` yields `P734` alone -- measured, not assumed. The gate was
         # a second guard for a case the model already handles, paid for with every family
         # name and patronymic those people should have had.
-        if absent(q, "P735") and absent(q, "P734"):
+        # **⛔ CAPPED AT `NAME_ADD_CAP` PEOPLE.** Uncapped this emitted 2,033 statements on
+        # 1,269 items in a single batch. The window rolls: the ledger is walked in a stable
+        # order, so the people held today are simply first in line tomorrow.
+        if (absent(q, "P735") and absent(q, "P734")
+                and len(_name_added) < NAME_ADD_CAP):
             dad = father.get(g)
             # The father's NAME, not just his QID: your test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
@@ -6676,6 +6710,12 @@ def main():
                                    father_aka=aka.get(dad, "") if dad else "",
                                    father_given=given_name.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
+                # **The cap counts people who actually GAIN a statement, not people who reach
+                # the block.** Counting arrivals burnt 48 of the 60 slots on people whose tokens
+                # have no item yet -- 60 people entered and 12 statements came out, so the pass
+                # drained five times slower than the cap says. Marked here, inside the loop, so
+                # a person with nothing to emit costs nothing.
+                _name_added.add(q)
 
         # **Every CJK label is redone, and a DISAGREEMENT is emitted.** You, 2026-08-30:
         # *"Every single label gets redone and if they disagree then they go onto the
