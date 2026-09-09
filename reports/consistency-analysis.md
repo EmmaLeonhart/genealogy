@@ -26,7 +26,7 @@ involve at least one date carrying `ABT`, `BEF`, `AFT` or `BET`.**
 only when the intervals cannot be reconciled at all.
 
 **The `ABT` tolerance is not chosen here.** Survival is given at four values so
-the sensitivity is visible and the choice is Emma's.
+the sensitivity is visible and the choice is not mine.
 
 | rule | kind | findings | all dates exact | ±0 | ±2 | ±5 | ±10 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |

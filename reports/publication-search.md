@@ -32,7 +32,7 @@ Stangelands and three Holbirds (7).
 **1 · OpenAlex indexes academic publishing and nothing else.** A relative notable as an
 author of books, a journalist, a politician, an athlete or a musician would not appear
 here at all. This search answers *is anyone an academic*, which is narrower than *is
-anyone notable* — it was chosen because Emma's own framing is that **publications are the
+anyone notable* — it was chosen because the framing is that **publications are the
 cheapest route to Wikidata notability**, not because it is the only route.
 
 **2 · Married names hide women.** Several of the 53 are recorded under a maiden name and
@@ -47,14 +47,14 @@ no data.**
 
 ## What this means for the objective
 
-Emma's goal is a relative close enough to be worth **creating** an item for. On this
+The goal is a relative close enough to be worth **creating** an item for. On this
 evidence there is no such person inside eight hops, and the standing best remains
 **Jonas Salte at 8 hops** — whose item already exists and who died in 1944, so he
 shortens the measured chain without advancing the objective at all.
 
 **What would change the answer, in order of cost:**
 
-1. **Emma naming relatives she knows publish.** She knows her own family; this search
+1. **Naming relatives known to publish.** The family is known from the inside; this search
    knows 53 names and no context. One name from her beats another sweep.
 2. **Exports seeded on the living generations**, which would populate the part of the
    tree this search found empty. That is the other session's job and not this branch's.

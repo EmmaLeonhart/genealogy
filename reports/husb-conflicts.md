@@ -29,7 +29,7 @@ second record spells out what the first abbreviates. They share a birth year,
 and **they share the same `FAMC`**: both profiles are children of the same
 family record. Two men who happen to share a name do not share a parent record.
 
-Emma already predicted this one. `queue.md` 0.2, in her words: *"there were some
+This one was already predicted. `queue.md` 0.2, verbatim: *"there were some
 profile merges and edits related to Japanese emperors, particularly Emperor
 Ojin … there were duplicates of Emperor Ojin and some other people."* This is
 that duplicate, surfacing structurally.
@@ -77,10 +77,10 @@ records differ most; parentage is where they agree exactly.
 deterministic and defensible, but it would *not* have produced a better answer
 here: the right resolution is not "the newer export wins", it is "these are one
 person, merge them on Geni". Date-sorting would still have picked one of two
-duplicates. **NEEDS-DECISION — Emma.**
+duplicates. **NEEDS-DECISION.**
 
 **The Geni-side merges themselves.** Merging two profiles is an edit on Geni and
-only Emma can make it. **BLOCKED-ON-USER-ACTION**, and it belongs with the
+only a human can make it. **BLOCKED-ON-USER-ACTION**, and it belongs with the
 postponed Geni-side merge queue rather than being done piecemeal.
 
 One artefact noticed in passing and not chased: `@F6000000179131721834@` carries

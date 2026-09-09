@@ -104,7 +104,7 @@ hole in the single most-connected region of European genealogy — which is
 precisely the region Wikidata already models best, and therefore the region
 where reconciliation would pay most per person.
 
-Emma's own explanation for why this hole persists is in `todo.md` § 8 and is not
+The explanation for why this hole persists is in `todo.md` § 8 and is not
 something any measurement here could have produced: she gains access to a Geni
 cluster through *nearby contributions*, and a region already densely covered by
 other contributors is one she cannot add a profile to — so she cannot create the

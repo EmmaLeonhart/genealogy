@@ -18,7 +18,7 @@ else traces to committed work.
 
 ## The audit method in `queue.md` was itself incomplete
 
-**A `type: "user"` record is not the only place Emma's words live.** The standing
+**A `type: "user"` record is not the only place the dictated words live.** The standing
 procedure says *"a user turn is `message.role == "user"`"*. On 08-16 that finds
 **28** of her **49** messages. The other 21 exist in the transcript only as
 `{"type": "queue-operation", "operation": "enqueue"}` records — what the harness
@@ -109,7 +109,7 @@ Aranibar*, *sister of Kenneth Chiu*, *nephew of Svanhild Haugvaldstad*.
 (Bupati Sumedang)* being the worst. 8,270 of the affected are one-hop `father` cases,
 so this predates the two-hop work rather than being caused by it.
 
-**It is not an error under Emma's own spec and nothing is being changed for it.**
+**It is not an error under the spec and nothing is being changed for it.**
 Wikidata does not require labels to be unique — label *plus description* is the unique
 pair — and her rule is that a created person gets labels and **no description**:
 *"We create the individual with their multi-language label, their English language

@@ -1,6 +1,6 @@
 # What `SUBM` is
 
-**The question.** Emma parked `SUBM` on 2026-08-11 — *"may theoretically exist,
+**The question.** `SUBM` was parked on 2026-08-11 — *"may theoretically exist,
 may theoretically be useful. I have no idea how it's going to be useful"* — then
 unparked it the same day: *"agentic RAG to figure it out."*
 
@@ -79,7 +79,7 @@ established** — a name in a `NAME` field is not an identification.
   into a third-party site. This is ingestion metadata, and the ignore rule for
   the individual's own record stands.
 
-## The thing worth Emma's attention
+## The thing worth attention
 
 **639 postal addresses of living people are in this corpus**, with cities,
 postcodes and countries — 187 United States, 99 Norway, 45 Sweden, 24 Canada, 20
@@ -89,7 +89,7 @@ Geni users.
 This is third-party personal data, and it is already committed — it arrived
 inside the GEDCOMs, which the repo tracks by design. The census does not disclose
 anything new, but it does make it trivially extractable, and that is a difference
-worth naming rather than leaving implicit. **NEEDS-DECISION — Emma:** whether
+worth naming rather than leaving implicit. **NEEDS-DECISION:** whether
 that matters given the repository is private, and whether anything derived from
 this corpus that ever becomes public must strip `SUBM`.
 

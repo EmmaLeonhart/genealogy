@@ -177,7 +177,7 @@ that the line was undocumented is superseded by this file.
 
 - *The High Priesthood and the Israelite Samaritan Priests*, Benyamim Tsedaka,
   A.B. — The Samaritan News / The Samaritan Update, March–April 2012.
-  `shomron0.tripod.com/2012/marchapril.html` — host unreachable; page saved by Emma.
+  `shomron0.tripod.com/2012/marchapril.html` — host unreachable; page saved by hand.
 - *Israel's Other Temple: Research Reveals Ancient Struggle over Holy Land
   Supremacy*, Matthias Schulz, Der Spiegel, 13 April 2012 — **reprinted in that
   same saved issue**, and the source of the "132 generations" quotation. It is in

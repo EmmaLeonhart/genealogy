@@ -102,7 +102,7 @@ The right-to-left marks are the awkward ones: in an Arabic or Hebrew name they
 may be doing real work, and stripping them is not obviously safe. The
 zero-width space, byte-order mark and soft hyphen are not.
 
-**NEEDS-DECISION — Emma:** whether ingestion normalises any of this. The Nordic
+**NEEDS-DECISION:** whether ingestion normalises any of this. The Nordic
 442 are reversible and the reconstruction is verified; the invisible characters
 are a policy question; the 93 mojibake lines are probably not worth machinery.
 Nothing has been changed.

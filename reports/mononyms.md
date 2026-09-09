@@ -12,7 +12,7 @@ The first version of this script measured only the second row, because it read a
 
 ## What they get
 
-Emma, same day: *"if it repeats, it's a name. If it repeats over 10 times, I think that was our actual criterion. […] People with mononyms get a first name if it's a repeated name."*
+Same day: *"if it repeats, it's a name. If it repeats over 10 times, I think that was our actual criterion. […] People with mononyms get a first name if it's a repeated name."*
 
 | | people |
 | --- | ---: |
@@ -23,7 +23,7 @@ Emma, same day: *"if it repeats, it's a name. If it repeats over 10 times, I thi
 
 The qualifying people share **76 distinct names**, which is why the rule is worth having: a few name items cover thousands of people. 54,739 of all these people have a single given token; the rest have several and still no surname, which is ordinary in the Indonesian and Javanese records this form is common in.
 
-**The marker vocabulary is imported from `scripts/labels.py`, not redefined.** The first version carried its own English-only list and ranked `Ukjent` (Norwegian) and `未知` (Chinese) among Anna, Anders and Lars as if they were names. `ukjent` was already in `labels.py` — Emma: *"I thought that was in the logic"* — and `未知` was the real gap, now added there at 204 occurrences. Those people are not discarded: *"Ukjent and 未知 get the mul NN treatment"*, so they keep `NN` in `mul` and gain descriptive labels in other languages. They are excluded here only from becoming a given name.
+**The marker vocabulary is imported from `scripts/labels.py`, not redefined.** The first version carried its own English-only list and ranked `Ukjent` (Norwegian) and `未知` (Chinese) among Anna, Anders and Lars as if they were names. `ukjent` was already in `labels.py` — *"I thought that was in the logic"* — and `未知` was the real gap, now added there at 204 occurrences. Those people are not discarded: *"Ukjent and 未知 get the mul NN treatment"*, so they keep `NN` in `mul` and gain descriptive labels in other languages. They are excluded here only from becoming a given name.
 
 ## The most common qualifying names
 

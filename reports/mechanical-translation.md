@@ -5,7 +5,7 @@
 | | name-uses | share |
 | --- | ---: | ---: |
 | resolve to exactly one name item | 366,502 | 37.8% |
-| resolve to several (held for Emma) | 64,569 | 6.7% |
+| resolve to several (held for a ruling) | 64,569 | 6.7% |
 | no name item on Wikidata at all | 538,672 | 55.5% |
 
 ## Renderable without transliterating anything

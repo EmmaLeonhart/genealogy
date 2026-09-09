@@ -1,4 +1,4 @@
-# The names on Emma's items, audited against our tree
+# The names on the hand-made items, audited against our tree
 
 **Her instruction, 2026-08-28**, the last one before the crash: *"All the individuals that I've
 worked on and any individuals that they've been merged into should basically always be all the

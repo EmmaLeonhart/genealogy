@@ -83,4 +83,4 @@ The column that matters for the culture question: a person present in **one** ex
 
 ## What this is for
 
-queue.md's romanisation item: 陳 is *Chen*, *Chin* or *Jin* depending on whether the person is Chinese, Japanese or Korean, and Emma's rule is that **the tree settles it — via neighbours and which exports they came from — never the name.** The neighbour half was already available. This is the other half, and without it the instruction could only be half-followed.
+queue.md's romanisation item: 陳 is *Chen*, *Chin* or *Jin* depending on whether the person is Chinese, Japanese or Korean, and the rule is that **the tree settles it — via neighbours and which exports they came from — never the name.** The neighbour half was already available. This is the other half, and without it the instruction could only be half-followed.

@@ -16,7 +16,7 @@ three sources, then said two by reclassifying one, and both were wrong. The meas
 
     overlap between the two channels: 0
 
-**The GEDCOM is not a third source — it is the FORCING MECHANISM of channel 1.** Emma: *"there's
+**The GEDCOM is not a third source — it is the FORCING MECHANISM of channel 1.** *"there's
 one special gedcom file that forces bio qids."* Proved by re-running the extractor: **29 of its
 29 pairs are now in `bio-qids.tsv`, where 3 were before.** They were missing because the extract
 was six days stale, not because they were separate.

@@ -1,6 +1,6 @@
 # Which paths are worth an export
 
-Emma's rule, 2026-08-18: a path earns a series of exports only if the destination is **Scandinavian**, a **pope**, or **weird and far out there**. Everything else goes to page-saving in `geni-scraping/`.
+The rule, 2026-08-18: a path earns a series of exports only if the destination is **Scandinavian**, a **pope**, or **weird and far out there**. Everything else goes to page-saving in `geni-scraping/`.
 
 Of the **446** paths still in the export band (4+ missing):
 

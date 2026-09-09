@@ -7,7 +7,7 @@ merge. Full pair list: `reports/wikidata-unreached.tsv`. Browsable page:
 network. It used to say "gitignored — regenerate rather than commit" here, with
 no script that could regenerate it; a fresh clone then took the page with it.
 
-**What it is for**, in Emma's words: *"a table that lets me click to the geni
+**What it is for**, verbatim: *"a table that lets me click to the geni
 ids and run exports that will contain them and resolve these things."* Each row
 links to the Wikidata item and to the Geni profile to export from.
 

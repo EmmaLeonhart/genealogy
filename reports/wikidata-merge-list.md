@@ -1,4 +1,4 @@
-# Wikidata items to merge — when Emma is physically able to edit
+# Wikidata items to merge — when hand editing is possible
 
 **2026-08-29:** *"merging these is a task for tomorrow... imo not worth potential ip
 related risks or whatever when I am not there. add to a merge list thing somewhere that we put

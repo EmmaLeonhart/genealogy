@@ -6,7 +6,7 @@ Asked for by 2026-08-12. Every `NAME` record is a row in
 **298,591 people, 444,874 `NAME` records.**
 
 **Nothing here is a label.** Geni names are language-agnostic strings. A Han
-name is not Chinese, it is Han — and per Emma, if a name is written solely in
+name is not Chinese, it is Han — and by the ruling, if a name is written solely in
 kanji the Japanese and Chinese labels are the *same string*, so there is nothing
 to decide. Only kana and Hangul resolve to a language, because only they are
 exclusive to one.
@@ -81,7 +81,7 @@ exclusive to one.
 
 ## The two mixed-script questions, which are different
 
-Emma: *"A mixed script name often indicates some sort of attempt at a
+*"A mixed script name often indicates some sort of attempt at a
 commentary or disambiguation within the name, whereas … a name that suggests
 multiple names and multiple scripts, just indicates multiple languages."*
 
@@ -152,7 +152,7 @@ Examples, which show the gloss-inside-the-name pattern:
 
 ## The first-listed name
 
-Emma: *"I believe that the first listed name in the files is usually the one
+*"I believe that the first listed name in the files is usually the one
 that is treated as being in English and taking priority, but Geni is weird about
 English names. A lot of stuff is recorded as being English when it's not."*
 

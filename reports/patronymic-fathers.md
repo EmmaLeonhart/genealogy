@@ -10,7 +10,7 @@ Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-cla
 
 ## The name comes from real fathers, never from the string
 
-`Olsen` implies **Ole** because that is what 1,809 confirmed `Olsen` fathers are called. An earlier version stripped the suffix and produced a father called **`Ols`**, which is what Emma meant by *"we already addressed this"*.
+`Olsen` implies **Ole** because that is what 1,809 confirmed `Olsen` fathers are called. An earlier version stripped the suffix and produced a father called **`Ols`**, which is what *"we already addressed this"* meant.
 
 | implied father | bearers |
 | --- | ---: |

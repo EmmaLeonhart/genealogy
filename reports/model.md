@@ -4,7 +4,7 @@ What every GEDCOM structure in the corpus is, how often it is filled, and what
 it would become on Wikidata. Counts are from the 151-export merge: **298,591
 people, 149,613 families**, every structure counted by its full tag path.
 
-Nothing here is applied to anything. Mappings marked **decided** are Emma's;
+Nothing here is applied to anything. Mappings marked **decided** are rulings;
 mappings marked **open** need her.
 
 ## The point is adding, not correcting
@@ -132,12 +132,12 @@ batched query.
 
 **`HUSB` outnumbers `WIFE` by 37,351.** Half of all families (74,773) name only
 one spouse, and 22,513 name one spouse with no children and no marriage event.
-Emma's reading: relationships Geni knows whose partner was not in the export's
+The reading: relationships Geni knows whose partner was not in the export's
 scope.
 
 **Marriage data with no spouse cannot be represented.** 16,229 of the 36,275
 dated marriages name no spouse at all. `P580` and `P2842` are qualifiers on
-`P26`, so with no spouse there is no statement to hang them on. Emma: *"These
+`P26`, so with no spouse there is no statement to hang them on. *"These
 aren't anything meaningful because they can't be represented on wikidata."*
 
 ## Provenance, and what is mostly volume
@@ -164,7 +164,7 @@ articles; the other 130 are short and carry real citations.
 - **`_MARNM`** at 82% is non-standard and undefined here. It is the second most
   filled name subtag and nothing says what it means in Geni's export.
 - **Language.** Zero `LANG` subtags corpus-wide. Names in four scripts with
-  nothing marking which is which. Parked by Emma.
+  nothing marking which is which. Parked.
 - **`BURI/DATE`** at 11,921 has no obvious Wikidata target.
 - **Ranked statements.** Wikidata expresses uncertainty with multiple values and
   ranks — `Q3056729` carries three `P569`s, one deprecated with `P1319`/`P1326`

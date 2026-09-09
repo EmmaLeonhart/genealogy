@@ -140,7 +140,7 @@ ethnographer working from conversation, which favours the institute.
 December 1969, and the A.B. Institute of Samaritan Studies archive. That is where
 a community this size records births and marriages. Its web home,
 `thesamaritanupdate.com` and the `shomron0.tripod.com` mirror, **refuses
-connections from here** — but it served the 2008 Tsedaka PDF to Emma's browser,
+connections from here** — but it served the 2008 Tsedaka PDF to a browser,
 so it is reachable from her machine and not from this tool.
 
 Two files worth pulling by hand:
@@ -149,7 +149,7 @@ Two files worth pulling by hand:
 - `https://shomron0.tripod.com/2012/marchapril.html` — the issue that carried the
   death notice for the last member of *Dar Elnimir*, 25 March 2012
 
-**The route Emma named — Israeli marriage and birth records to find one of the
+**The route named — Israeli marriage and birth records to find one of the
 four wives — is the right shape and is not open-web material.** Four women who
 married into a 700-person community between roughly 1960 and 1990, each from a
 documented Israeli Jewish family, is exactly the kind of link that reaches the
@@ -258,6 +258,6 @@ into branches. They are import material rather than connection material.
 - [Families — Israelite Samaritan Information Institute](https://www.israelite-samaritans.com/about-israelite-samaritans/families/) (Benyamim Tsedaka)
 - [Ratson Tsedaka — Israelite Samaritan Information Institute](https://www.israelite-samaritans.com/history/ratson-tsedaka/)
 - [Benyamim Tsedaka — Israelite Samaritan Information Institute](https://www.israelite-samaritans.com/benyamim-tsedaka/)
-- *The Tsedaka Family: One of the Most Active Elements in the Samaritan Community in the 20th Century*, theSamaritanUpdate.com, 2008 — `shomron0.tripod.com/articles/tsedakafamily.pdf` (host now dead; Emma has the PDF)
+- *The Tsedaka Family: One of the Most Active Elements in the Samaritan Community in the 20th Century*, theSamaritanUpdate.com, 2008 — `shomron0.tripod.com/articles/tsedakafamily.pdf` (host now dead; the PDF is held locally)
 - [Israelite Samaritan Torah — Yisrael ben Gamliel Tsedaka, Internet Archive](https://archive.org/details/IsraeliteSamaritanTorah)
 - [Sean Ireton, *The Samaritans — A Jewish Sect in Israel*](http://www.anthrobase.com/Txt/I/Ireton_S_01.htm)

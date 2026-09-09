@@ -1,6 +1,6 @@
 # Geni merge worklist
 
-**The merges are Emma's and are never performed here.** This is only the order to look in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
+**The merges are a hand operation and are never performed here.** This is only the order to look in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
 
 `reports/geni-duplicate-candidates.tsv` holds **12,542** groups, which is not something anyone opens a browser against. That is why this exists.
 

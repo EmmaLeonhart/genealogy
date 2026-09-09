@@ -20,7 +20,7 @@ Measured 2026-08-29. **She named the barrier correctly, and it is worse than a f
 By extension: `.gz` 4,448 MB, `.ged` 4,244 MB, `.download` 1,243 MB, `.css` 701 MB, `.csv` 539 MB.
 The `.css` and `.download` are saved-page furniture under `geni-scraping/`, not genealogy.
 
-**An earlier draft of this said the 5 GB figure blocked CI. It does not, and Emma caught it:**
+**An earlier draft of this said the 5 GB figure blocked CI. It does not, and that was caught:**
 *"the repo size can be larger as history isn't in it?"* — correct.
 
 - GitHub's 5 GB is a **soft limit on the hosted git database**, i.e. the 6.15 GB pack. It produces a

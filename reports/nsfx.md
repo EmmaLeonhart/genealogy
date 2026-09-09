@@ -71,7 +71,7 @@ so this is the specification holding, measured rather than assumed.
 
 ## Does Wikidata's own English label keep the suffix?
 
-Emma's rule, 2026-08-11, is that the Latin display name becomes the `en` label
+The rule, 2026-08-11, is that the Latin display name becomes the `en` label
 **with the suffix left in**, because a noble suffix is how the name is written
 in English. This measures what Wikidata did for the people carrying both IDs.
 
@@ -99,7 +99,7 @@ the bucket by whether the name *without* its suffix survives into the label:
 | suffix was the whole name | 29 | 0.7% |
 
 **This does not overturn the rule.** Wikidata's label is what Wikidata chose;
-Emma's rule is about what *we* produce for people who have no label yet, and
+That rule is about what *we* produce for people who have no label yet, and
 `correspondence.md` already records that labels are only in scope for people
 carrying both IDs and that Wikidata is definitive where it has one. What the
 table sizes is how far the two conventions differ where both exist.

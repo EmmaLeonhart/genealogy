@@ -1,6 +1,6 @@
 # People imported far less than the people standing next to them
 
-Emma's instrument, described 2026-08-22: *"this isn't to say people very central to
+The instrument, described 2026-08-22: *"this isn't to say people very central to
 areas with only one export to them. It's just people central to areas with few exports
 and, particularly, people who are starkly imported less than the people around them. If
 there's a section in the medieval tree where there's a person born in the year 500 that
@@ -49,7 +49,7 @@ Of the top thirty pre-1600 by contrast, a clear plurality are Roman or late-anti
 `Rufius Festus` (260, seen 4 times among neighbours seen 21), `Anicius Acilius Glabrio
 Faustus` (400, seen **once** among neighbours seen 16), `Tarrutenia` (405, once against
 16), `Marcus Cocceius Nerva` (−5, once against 15), `Julia Caesaris` (−76, three against
-16), `Juba` (−85, once against 16). Emma named the Roman neighbourhoods as one of the
+16), `Juba` (−85, once against 16). The Roman neighbourhoods were named as one of the
 three she thought had been missed; the instrument found them without being told to.
 
 `reports/presence-contrast-ancient.tsv` is the 392 pre-1600 people at contrast ≥ 6, with
@@ -81,7 +81,7 @@ hanging off it rather than a doorway into anything.
 birth −115, none after 100 AD, so contrast really does select ancient material. There is
 simply none of it left in that region to collect.
 
-Emma, on being shown it: *"Great I think this is settled. No more sparse area stuff."*
+On being shown it: *"Great I think this is settled. No more sparse area stuff."*
 
 **This is the third seed-choosing method refuted by measurement**, after "small but
 nonzero descent" and "the rim of a cut-off ball" in

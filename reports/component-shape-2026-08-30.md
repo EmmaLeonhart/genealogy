@@ -1,7 +1,7 @@
-# The shape of what we built, and where Emma sits in it
+# The shape of what we built, and where the account owner sits in it
 
 Measured live from Wikidata on 2026-08-30 by walking `P22`, `P25`, `P26`, `P40` and `P3373`
-outward from `Q11959067`. The question is Emma's: does this cluster read as a regional genealogy
+outward from `Q11959067`. The question: does this cluster read as a regional genealogy
 somebody built, or as a construction pointed at one person?
 
 ## It is not an island
@@ -70,7 +70,7 @@ Lowest eccentricity, 18, is shared by a handful of obscure Rogaland farm people:
 | Richard Wade Borsheim | 4 | 24 | 16 |
 | **Emma** `Q140568870` | **1** | **25** | **16** |
 
-**Emma is a degree-1 leaf at the maximum eccentricity of the graph, 16 hops from its centre.**
+**That item is a degree-1 leaf at the maximum eccentricity of the graph, 16 hops from its centre.**
 One edge attaches her: her father. The two notable figures — a canonical Norwegian writer and a
 Swedish antiquarian — are twice as central as she is and carry an order of magnitude more edges.
 
@@ -81,7 +81,7 @@ families, with two notable figures embedded in them**. The centre is a farm woma
 relatives. Arne Garborg is the most connected person in it.
 
 A construction pointed at one person has that person at or near its centre, with density falling
-away from them. This has the opposite shape: density peaks 8–12 hops away from Emma, and she sits
+away from them. This has the opposite shape: density peaks 8–12 hops away from it, and it sits
 on the rim with a single edge.
 
 `Q232803`, her other item, is **not in the component at all** — nothing on Wikidata connects it,
