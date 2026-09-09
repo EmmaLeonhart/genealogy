@@ -33501,3 +33501,29 @@ First entry is nine Geni profiles you called hinge people — *"people who seem 
 disjoint large numbers of descendants, and as such are good descendants export sources"* — for
 descendants exports later. Pasted verbatim. **Not looked up, not checked, not ranked, not turned
 into a plan.** One line in `queue.md` points at the file and says the same.
+
+## 2026-09-09 — sweep: no dead item, five false claims cut out of the collector
+
+All four queue items verified live against the files and stay — the collector (**2,589**
+outstanding), the gated parent-adding campaign (no artefacts, not started), the `|`-in-a-label
+question (**0** pipe labels in the emitted batch, correctly held), and `undigested.md`. **Nothing
+removed as a dead item.**
+
+**Five FALSE claims came out of the collector item**, all descending from one thing: the version
+literal I misread this afternoon. They are worse than stale — a session reading them would
+restart Chrome to fix a version problem that does not exist, and would trust an explanation that
+has collapsed.
+
+    "the running Chrome is 1.6.4, measured"                          -> it was a hardcoded literal
+    "its digits were 164 while 1.6.5 through 1.6.8 sat on disk unrun" -> they were all running
+    "AND 1.6.4 REPORTS AN IN-LAW CHAIN AS via=blood"                  -> not attributable to 1.6.4
+    "which 1.6.7 fixes and which nothing is running"                  -> 1.6.7 was running
+    "on disk and never executed, like 1.6.6"                          -> it had executed
+
+**The observation underneath survives and is kept, with its cause reopened.** Miroslava's page
+states both *"Shortest in-law relationship"* and *"No blood relationship was found."* and the job
+still returned `via: blood`. That happened, and `6b2dee75` — the fix written for exactly this
+shape — **was running when it happened**, so either it does not cover her case or something else
+causes it. The item now says *nothing explains it today* rather than naming a cause it does not
+have, and the rule that survives is unchanged: `via` records which search ran, not what came
+back, so every hit is classified against the page banner by hand.

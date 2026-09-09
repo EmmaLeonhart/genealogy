@@ -95,7 +95,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **State right now, measured 2026-09-09 15:1x PST:** the isolate pilot is **100 of 100,
   COMPLETE** · `reports/isolates.csv` **131 rows, 131 family scrapes on disk**, of which **112
   were taken under the Charlemagne anchor: 25 hits, 87 misses** · **zero invented people** ·
-  extension **1.6.8 on disk**, and the running Chrome is **1.6.4**, measured — see below.
+  extension **1.6.8**, running and confirmed.
 
   **The in-law verdict is recorded for 25 of the 112** — `via` reads `neither` 12, `blood` 9,
   `inlaw` 4, and is **blank on 87**, which is every row taken before the in-law search existed.
@@ -103,24 +103,24 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   ALWAYS* and are not final misses.
 
   ⛔ **CHECK THE RUNNING VERSION, AND KILL CHROME IF IT IS STALE.**
-  **Read it, do not guess it:** `documentElement.dataset.geniCollector` is stamped by the content
-  script — five characters, and its digits were `164` on 2026-09-09 while 1.6.5 through 1.6.8 sat
-  on disk unrun.
+  `documentElement.dataset.geniCollector` reports it, and since 2026-09-09 it reads
+  `chrome.runtime.getManifest().version` — it was a **hardcoded literal** until then, stuck at
+  `1.6.4` through four releases and believed. An unpacked extension does not pick up file changes
+  on its own and `chrome://extensions` is refused to the automation surface — **and that is not a
+  blocker.** `CLAUDE.md` § *KILL CHROME WHENEVER YOU NEED TO*: `kill -9`, force-open on any page,
+  the extension has reloaded. Standing authority. Never tag this BLOCKED-ON-USER-ACTION again.
 
-  An unpacked extension does not pick up file changes on its own and `chrome://extensions` is
-  refused to the automation surface — **and that is not a blocker.** `CLAUDE.md` § *KILL CHROME
-  WHENEVER YOU NEED TO*: `kill -9` the Chrome processes, force-open it again on any page, and the
-  extension has reloaded. Standing authority, given 2026-09-09. Never tag this
-  BLOCKED-ON-USER-ACTION again.
-
-  ⛔ **AND 1.6.4 REPORTS AN IN-LAW CHAIN AS `via=blood`. Caught live on Miroslava, Princess of
+  ⛔ **AN IN-LAW CHAIN CAME BACK AS `via=blood`, AND THE CAUSE IS UNKNOWN. Miroslava, Princess of
   Bulgaria `371367105380011098`, 2026-09-09.** Her page states BOTH *"Shortest in-law
-  relationship"* and *"No blood relationship was found."*, and the job still came back
-  `via: blood`, `state: path_found`, with a `path_tsv` header reading `(blood)`. That is
-  `6b2dee75` — *"the in-law chain was returned as the blood result"* — which 1.6.7 fixes and
-  which nothing is running.
+  relationship"* and *"No blood relationship was found."*, and the job still returned
+  `via: blood`, `state: path_found`, with a `path_tsv` header reading `(blood)`.
 
-  **So until the extension is reloaded, `via` says WHICH SEARCH RAN and not what came back**, and
+  **It was blamed on 1.6.7 not running. 1.6.7 WAS running** — that explanation rested on the
+  hardcoded version literal above and collapsed with it. `6b2dee75` is the fix for this shape and
+  it did not prevent this, so either it does not cover this case or something else does it.
+  **Nothing explains it today.**
+
+  **So `via` says WHICH SEARCH RAN and not what came back**, and
   every hit must be classified by hand from two things the result already carries: the relation
   words (hers crosses *"his wife"*, *"her brother"*, *"her ex-husband"*, *"his sister"*) and
   Geni's prose. Her file and ledger row were corrected to `inlaw` by hand.
@@ -136,13 +136,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   *never asked*, `via` stayed blank, and `collector-worklist.py` re-queued that person forever.
   Nobody could ever be finished. It now reads the sentence before looking for a button.
 
-  **AND THE SAME SHAPE FOR A HIT WAS CLOSED IN 1.6.7** — `6b2dee75`, *"the in-law chain was
+  **AND THE SAME SHAPE FOR A HIT WAS MEANT TO BE CLOSED IN 1.6.7** — `6b2dee75`, *"the in-law chain was
   returned as the blood result, and scored via=both"*. `runInLaw` settled on *the segment count
   going up*, so an in-law chain Geni had already rendered before the click — Ellen
   Christensdatter Thrane `309763264470008240`, 29 segments, prose reading *"Charlemagne's third
   great granddaughter's 19th great niece"* — changed nothing and waited out the full 600000 ms.
-  It compares against the chain already present now. **On disk and never executed**, like 1.6.6,
-  until the extension is reloaded.
+  It compares against the chain already present now — **and 1.6.7 was running when Miroslava
+  still came back mislabelled**, so this fix does not cover her case. See above.
 
   ⛔ **A HIT CAN COME BACK AS TWO CHAINS END TO END, numbered straight through.** Seen twice on
   2026-09-09 — Louis d'Anjou 37 rows over an 18-step and a 19-step chain, Margareta Sanseverino
