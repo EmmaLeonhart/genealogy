@@ -33616,3 +33616,10 @@ worker not receiving messages that stops any of it running.
 
 `https://www.geni.com/profile/index/6000000227676658979`, appended to the same queue item.
 Verbatim, not looked up.
+
+## 2026-09-09 — an eleventh profile on the descendants list
+
+`https://www.geni.com/people/NN-Ardzrouni/6000000227676802897`, appended to the same queue item.
+Verbatim, not looked up. The `?through=` on her link is a relationship-path artefact and is not
+part of the id, so it is dropped — the same thing that made Elizabeth II look like a parent
+earlier today.

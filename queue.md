@@ -228,6 +228,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       https://www.geni.com/people/NN-Volynskaya/6000000227676384979
       geni.com/profile/index/6000000227676454008
       https://www.geni.com/profile/index/6000000227676658979
+      https://www.geni.com/people/NN-Ardzrouni/6000000227676802897
 
   One at a time — Geni's limit, not a preference. The download button gets swallowed; navigate
   `https://www.geni.com/gedcom/request_download?task_id=<task id>` instead, and `/gedcom` lists
