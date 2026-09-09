@@ -51,6 +51,19 @@ async function put(patch) { await chrome.storage.local.set(patch); }
  *
  * So every path answers. An error comes back AS the answer rather than as silence. */
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  /* ⛔ **`ping` ANSWERS BEFORE ANY `await`, ON PURPOSE.** Everything below opens with
+   * `await state()`, i.e. `chrome.storage.local.get`. If that ever hangs or rejects, the async
+   * body never reaches `sendResponse`, the channel closes, and the caller's promise resolves
+   * `undefined` with no rejection and no `lastError` -- which is indistinguishable from a dead
+   * service worker and was read as one for most of an afternoon.
+   *
+   * A probe whose purpose is *is the worker alive* must therefore not depend on storage. This
+   * one touches nothing. If `ping` answers and the others do not, the fault is storage, and
+   * that is a diagnosis rather than another guess. */
+  if (msg && msg.type === "ping") {
+    sendResponse({ pong: chrome.runtime.getManifest().version, sync: true });
+    return true;
+  }
   (async () => {
     const s = await state();
     if (msg.type === "claim") {
