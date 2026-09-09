@@ -17369,9 +17369,9 @@ seeded for the inner ring and never extended. `label_in` refuses a partial name,
 41 new people use **74 tokens it has never seen**: `Olav`, `Olof`, `Andreas`, `Agnes`, `Maria`,
 `Rasmus`, `Erik`, `Daniel`. So it starves further with every ring outward — 1 of 41 today, 0 next.
 
-**And the pipeline inverts her rule.** She said a label at creation is good and a label after
+**And the pipeline inverts the rule.** A label at creation is good and a label after
 creation is a risk. Today's file: **2 label lines at creation, 1,580 after.** Diffed against the
-`.qs` she actually ran — every statement she ran was in the generated file, she added nothing, and
+`.qs` actually run — every statement run was in the generated file, nothing was added, and
 she hand-deleted **1,579 label lines** (the whole 177-item CJK clan block, plus 79 ja/zh edits on
 existing items), moved the 22 she kept to the top, and touched **not one structural statement**.
 All 41 creations and every `P22`/`P25`/`P26`/`P40`/`P3373`/`P2600`/`P569`/`P570`/`P735`/`P734`/
@@ -17392,9 +17392,9 @@ like a spine that had not moved. Only 3 path files carry an explicit `qid` colum
 
 On `Anders Persson` `375734886370012680` arriving as a bare item: *"where the fuck is this
 in the tree? why no relationships... relationships on creation is the thin that keeps items from
-being deleted"*. She is right on both counts.
+being deleted"*. Right on both counts.
 
-**She was wrong about the cause and it is worth recording, because the emitter was fine.** Her
+**The diagnosis of the cause was wrong, and it is worth recording, because the emitter was fine.** The
 read was that the reciprocal block at the end of the file had been taken as licence to skip
 relationships at creation. It had not — 37 of 39 creations in that run carried links, in both
 directions, `LAST P22 Q…` and `Q… P40 LAST`. The two bare ones came from a **composition** bug.
@@ -17448,7 +17448,7 @@ survivor and the live lookup still offering the redirect. That is the correct st
 
 The ask: *"investigate Q141205933 as it appears that it uses the birth name of the wife. This is
 concerning and it may mean that a lot of places primarily use the birth names of women and this
-causes inconsistency"*. She is right about the inconsistency and right about where it points.
+causes inconsistency"*. Right about the inconsistency and right about where it points.
 
 `Q141205933` was emitted as **"husband of Mona Beth Tunheim"**. `Tunheim` is her father's surname;
 her married form is `Carney Castro`, and the item had already been corrected by hand before this
@@ -18611,7 +18611,7 @@ then generate the quickstatements, and then after that is finished then continue
 am going to be going to run the quickstatements later."*
 
 **The review is closed but its unfinished half is not deleted with it.** It pinned the queue from
-2026-08-27. She walked through and ruled on steps 1, 2, 4, 5, 6, 7, 9 and 11 of
+2026-08-27. Steps 1, 2, 4, 5, 6, 7, 9 and 11 of it were walked through and ruled on in
 `build-garborg-day.py --compose`; **steps 3 (`linked`), 8, 10, 12, 13 and 14 were never reached.**
 Those are now their own tail item saying so, because closing a review is not the same as finishing
 it and nothing in those six has her sign-off. Her rulings on the covered steps are recorded
@@ -18638,8 +18638,8 @@ Sent to her with `SendUserFile` rather than left in the repo, since she said she
 
 ## 2026-08-29 — I deferred a live item by misreading one sentence
 
-Her item had three parts: `P1810` carrying Geni's exact name; always adding an English label; and,
-where Geni has no English name, writing one onto Geni first. She ended it *"For now, we're sticking
+The queue item had three parts: `P1810` carrying Geni's exact name; always adding an English label; and,
+where Geni has no English name, writing one onto Geni first. It ended *"For now, we're sticking
 to this being a primary Wikidata-based project, so we just do not add a label."*
 
 **I read that as deferring all three. It deferred the third.** Her correction: *"Only the
@@ -18663,8 +18663,8 @@ to transform into something crazy."*
 
 ## 2026-08-29 — four rulings from one AskUserQuestion, and a rule about asking
 
-**She answers the tool, not prose.** *"Again I'll only regularly answer if you use AskUserQuestion
-add that to claude.md"*. Now a `CLAUDE.md` section: a question in a paragraph is not a question she
+**The tool gets answered; prose does not.** *"Again I'll only regularly answer if you use AskUserQuestion
+add that to claude.md"*. Now a `CLAUDE.md` section: a question in a paragraph is not a question that
 has been asked, and § *NO REPLY MEANS CONTENT* then reads that silence as approval.
 
 **And an option she cannot pick is worse than no option.** My export-timeout question offered *"kill
@@ -18675,8 +18675,8 @@ fiction cannot be offered twice. Her ruling on the export itself: keep the four 
 
 **"Synoptic tree" means two things and the repo never says which.** *"it is consistently conflated
 between the union of all the geni gedcoms and the union of that tree with all data sources."* Queued
-at the tail, and deliberately **not** resolved by me picking one: her instruction is to
-`AskUserQuestion` on **every specific usage**. She also called the immediate question moot, because
+at the tail, and deliberately **not** resolved by me picking one: the instruction is to
+`AskUserQuestion` on **every specific usage**. The immediate question was also called moot, because
 `exports/post-merge/wikidata-qid-links.ged` puts the links in the corpus and the merge picks them up
 whichever definition applies.
 
@@ -18749,7 +18749,7 @@ left in place is another stale artifact for the next reader to trip over. Git ha
 
 ## 2026-08-29 — Arne to Charlemagne is one statement pair from continuous
 
-She ran the daily batch, then: *"Do this stuff to fix it up and then generate the quickstatements so
+The daily batch was run, then: *"Do this stuff to fix it up and then generate the quickstatements so
 I am able to get charlemagne properly connected."*
 
 **Her run created both missing people** — Ramborg Knutsdotter Lejon `Q141216350` (step 15) and
@@ -18764,8 +18764,8 @@ request: **32 of 33 consecutive pairs bonded**, one break, exactly where predict
 
 **And a correction I owe on my own framing.** I first told her the two creations would close the
 line *"end to end"*. They close **three of four** breaks. I found the fourth when building the batch
-and reported it then, but the first version is the one that stuck, and she asked directly whether
-she had been misled. She had been, by that sentence.
+and reported it then, but the first version is the one that stuck, and the direct question was
+whether that was misleading. It was, by that sentence.
 
 **Why the fourth needed a hand-written file** — not sequencing, which is what it looks like.
 `LAST P22 Q19061035` would have worked inside her batch; Guttorm has existed for years. The builder
@@ -18801,7 +18801,7 @@ Mjølhus*, carries a non-normalised NN-style name in its `mul` label.
 ## 2026-08-29 — `Q141198548` is Deokjang's wife, and I nearly called her a duplicate
 
 The run stopped before `Q141198548|Lko|"부여덕장"` because the item looked like a near-duplicate
-of `Q19657284` *Buyeo Deokjang*. She was right to stop, and I was wrong first: I told her it looked
+of `Q19657284` *Buyeo Deokjang*. Stopping was right, and I was wrong first: I said it looked
 like one person entered twice on Geni and married to themselves. That was inferred from the names
 being similar, which is the reasoning this repo bans everywhere else.
 
@@ -18907,8 +18907,8 @@ expected and is the point -- it is belt and braces over a mechanism the gate alr
 ## 2026-08-29 — the one stale entity test, and only that one
 
 `entity_resolution.md` was deleted this morning by instruction. One test read it without
-a guard -- `test_the_real_file_carries_the_correction` -- so the fast lane failed. She authorised
-removing it.
+a guard -- `test_the_real_file_carries_the_correction` -- so the fast lane failed. Removing it was
+authorised.
 
 **Scope matters here and the obvious reading was wrong.** Only 1 of the 15 tests in
 `tests/test_entities.py` touched the real file unguarded; a second already carried a `skipif`.
@@ -19039,7 +19039,7 @@ present, 289 passed / 32 skipped.
 eample this one had to be mered... This should be easy to put safeguards into the data for and I am
 surprised they do no exist already."*
 
-**She was right that it should have existed, and right that it did not.** A duplicate guard was
+**It should have existed, and it did not.** A duplicate guard was
 already in `build-garborg-day.py`, but it runs in one direction only: it holds a person whose
 **parent** has unmatched `P40` children. Nothing looked the other way. Only `p40` was ever read out
 of `relations.tsv`, so `P22`/`P25` were never consulted and a rival **parent** was invisible.
@@ -19081,7 +19081,7 @@ the subject already holds a *different* value is dropped with its comment. It si
 creation guard rather than replacing it -- the creation guard holds a person before minting, this
 holds a line whatever produced it, including the ledger-wide additions pass the guard never sees.
 
-**No exception for two fathers.** She raised it and dismissed it in the same breath -- *"I think
+**No exception for two fathers.** It was raised and dismissed in the same breath -- *"I think
 there's probably some exception for, I don't know, gay parents or something. This isn't it."*
 
 **It drops 0 today, and that is measured rather than assumed.** The lookups load **893,134** items
@@ -19392,8 +19392,8 @@ Four things removed from `build-garborg-day.py`, all of them deletions:
   there is no longer anything to subtract. That filter existed for one day.
 
 **Nothing blocks her now, and she is still not in the batch.** That is distance, not a safeguard:
-`paths/bergitte-to-emma.tsv` is in `SPINE_REVERSED`, so it walks from Bergitte **toward** her and
-is at step 8 of 16. She is step 1, so roughly seven more runs.
+`paths/bergitte-to-emma.tsv` is in `SPINE_REVERSED`, so it walks from Bergitte **toward** the account
+owner and is at step 8 of 16. That is step 1, so roughly seven more runs.
 
 **The identity scrubbing I started was wrong and is reverted.** Her words: *"We are not trying to
 remove my identity from the repo... removing the qid substitution was just fucking retarded."*
@@ -19426,7 +19426,7 @@ to Randolph. Recorded, not acted on.
 
 ## 2026-08-29 — the Geni-name-writing item goes to the tail
 
-She asked what *"half parked"* meant, which was my phrase and a poor one. The item is about
+Asked what *"half parked"* meant — my phrase, and a poor one. The item is about
 typing English names **onto Geni profiles**, and it splits: the label rule (our `mul`, the CJK-only
 people) is live work already in progress, while writing those names onto Geni is the part her
 *"we just do not add a label"* deferred.
@@ -19617,7 +19617,7 @@ for. Verified: 0 `P1449` lines on a fresh compose, aliases unchanged, 289 passed
 
 ## 2026-08-29 — could the repo be public, with Actions emailing a batch daily?
 
-Her queued question, answered in `reports/public-repo-analysis.md`. **She named the barrier
+The queued question, answered in `reports/public-repo-analysis.md`. **The barrier was named
 correctly — *"the synoptic tree file stuff"* — and it is worse than a file-size problem.**
 
 **The merge cannot run in Actions.** `genimerge merge` peaks near **17 GB**; a standard
@@ -20131,7 +20131,7 @@ rendering and is not a rule this engine can carry. Not touched.
 The objection: *"Are you not using an actual library for this, but just kind of guessing at everything?
 … This is a solved problem. You understand that, right? There isn't really an excuse."*
 
-She is right and there is no defence. `translit_no.py` is a hand-rolled letter walk over tables
+That is right and there is no defence. `translit_no.py` is a hand-rolled letter walk over tables
 somebody typed in from memory. `ROWS["j"]`'s `o` cell held `永` — the *yong* syllable — because a
 plausible character was put in a cell. `Alexander` came out `アレクスアンデル` / `阿莱克斯安德尔`.
 
@@ -20169,8 +20169,8 @@ is wrong about roughly three-quarters of the names Wikidata has actually written
 ## 2026-08-30 — the name-item duplicates: she created 10, five were merged away
 
 The correction: *"You cunt I did create name items and they got merged because they were duplicates."*
-She is right and I had said the opposite twice — first that none existed, then after checking
-her QIDs against the local store, which **cannot see a merged item** because it resolves to a
+That is right and I had said the opposite twice — first that none existed, then after checking
+the QIDs against the local store, which **cannot see a merged item** because it resolves to a
 redirect. That is the instrument failure `queue.md` § *A join that matches NOTHING must fail
 loudly* is written against, committed twice in five minutes.
 
@@ -20758,7 +20758,7 @@ to start it: the candidate report is **12,287 groups**, and nobody opens a brows
 **`reports/geni-merge-worklist.md`** (`scripts/build-merge-worklist.py`) is the handoff — the top
 of the list as clickable pages, the 3 Izumo groups first, then the 40 largest CJK groups.
 
-**Finding the Izumo ones needed the id, and one file was not enough.** She named them as the
+**Finding the Izumo ones needed the id, and one file was not enough.** They were named as the
 place to start; searching the candidate file for `izumo` finds nothing, because the profiles are
 called Senge, Kitajima and so on. `izumo-coverage.tsv` looks like the roster and **202 of its 214
 rows read `NO GENI ID`** — joining against it returns 2 ids and 0 groups, which is
@@ -20800,7 +20800,7 @@ Two of the candidates were real and both are now rules:
 the Charlemagne spine 8 short, the Bureus link missing, Signe at 13/14 — came from a lookup that
 did not answer the question, and every one was wrong. `CLAUDE.md` § *CHECK before you alarm her*.
 
-**"geni chains often have situations where they skip between siblings."** She asked how common
+**"geni chains often have situations where they skip between siblings."** How common
 it is: **2,126 of the 30,361 relation steps in `paths/` — 7.0%**. Geni records no sibling edge,
 so two siblings sit two hops apart in `derived-family.csv` while being one step apart on a path.
 
@@ -21064,7 +21064,7 @@ Both 19:47 edits are one run, `#temporary_batch_1788119173098`. The line is in
 
 The comment on the line read `(it had none)`, and the file's header promises exactly that: *"A
 mul label is only set where the item has none, so nothing she may have written by hand is
-overwritten."* She had set it two days earlier, so the batch was built on a snapshot at least
+overwritten."* It had been set by hand two days earlier, so the batch was built on a snapshot at least
 that stale — `CLAUDE.md` § *The tree and the items are edited BY HAND, continuously*. The
 alias-first preservation step is the only reason the native form survived at all: *Svantepolk
 Knutsson* went in as an `Amul` one second before the label was overwritten.
@@ -22115,7 +22115,7 @@ it fixed it: **299 passed** across `test_garborg_day_batch.py` and `test_p2600_b
 
 **Two corrections to my own conduct, both hers.**
 
-She asked for a ledger refresh and a batch; I reached for `rebuild-everything.py`, which rebuilds
+Asked for a ledger refresh and a batch, I reached for `rebuild-everything.py`, which rebuilds
 the whole synoptic tree. *"I did not ask you to make the synoptic tree just to refresh the
 ledger."* The rule I over-applied is real but narrower than I used it: *use the single script* is
 about not hand-picking flags **within** a job, not about running a bigger job than the one asked
@@ -22162,7 +22162,7 @@ is not.
 
 ## 2026-08-31 — 13 blocked creations confirmed, one question each
 
-She asked for the obvious unblock: *"just ask if geni == wikidata for all the blocked creations
+The obvious unblock was asked for: *"just ask if geni == wikidata for all the blocked creations
 from the current network. You should be adding the geni id and treating as an existing network
 member if I approve."*
 
@@ -22198,8 +22198,8 @@ created when it was 2, by grepping for the Geni id anywhere in the batch — whi
 source citations on link statements, not `CREATE` blocks. It was caught on review. Re-measured by parsing
 `LAST P2600` inside creation blocks: 2.
 
-**And a process failure.** She asked to see each person; I asked her to judge on my summary of the
-evidence instead, with a date column that looked like corroboration while our side had almost no
+**And a process failure.** The request was to see each person; I offered a summary of the
+evidence to judge on instead, with a date column that looked like corroboration while our side had almost no
 dates at all. `reports/blocked-13-raw.md` is the raw rows, both sides, unreformatted — which is
 what § *How this project works now* asks for and what I should have led with.
 
@@ -22378,8 +22378,8 @@ found **15 `P734` removals** on 2026-08-30. `EDITORS` and `WINDOW_DAYS = 30` rep
 
 **The P2600 statements from her adjudications are already in the day file — all 50 of them**,
 37 from the GUI deck and 13 from the individual questions, checked as
-`<QID> P2600 "<geni id>"` against `emma-judgments.tsv` rather than assumed. She asked whether a
-separate file was needed; it is not.
+`<QID> P2600 "<geni id>"` against `emma-judgments.tsv` rather than assumed. Asked whether a
+separate file was needed: it is not.
 
 **A freshness slip worth recording.** The day file was attached at 14:14 from a partial state and
 the run rewrote it at 14:32. Both files are now from the same run. The wrapper prints only step
@@ -22391,7 +22391,7 @@ does not appear in this log and is not quoted here; the figures from the earlier
 
 **The ruling:** *"geni ids do not get sources you retard"*, on seeing
 `Q6014618 P2600 "4198641" S2600 "4198641"` in the day batch — the Geni id statement cited to the
-Geni id. She is right and it is circular: `S2600` belongs on every statement *derived* from a
+Geni id. That is right and it is circular: `S2600` belongs on every statement *derived* from a
 Geni profile, where the profile is external evidence for a claim about the person. On `P2600` the
 profile **is** the claim, so the reference restates the value and says nothing.
 
@@ -22480,8 +22480,8 @@ them. All nine pairs I had flagged, and thirteen more, resolve the same way live
     6000000014196858070   ledger Q141225804 live | live Q141225805 -> Q141225804
     6000000087535357291   ledger Q140568870 live | live Q141224005 -> Q140568870
 
-**The ledger was right every time, and the "live" value is a redirect to it.** She merged the
-duplicates; her contributions still name the item she *created*, and that item is now a redirect
+**The ledger was right every time, and the "live" value is a redirect to it.** The
+duplicates were merged by hand; the contributions still name the item that was *created*, and that item is now a redirect
 to the survivor. `refresh-garborg-ledger.py` compared the two strings and called it a
 disagreement — which reads as *these people are absent*, which is what she asked about.
 
@@ -22516,7 +22516,7 @@ wins and the older section is cross-referenced so they are not solved twice.
 
 **The ruling:** *"patronymics aren't a middle name they are a specific thing our pipeline should
 generate based on the given name property on the father matching a substring. Idk how our
-pipeline works but I'm guessing it's way more primitive."* She is right, and it is worse than
+pipeline works but I'm guessing it's way more primitive."* That is right, and it is worse than
 primitive.
 
 **`namemodel.patronymic_or_surname` computes her substring test and throws the answer away.**
@@ -22559,8 +22559,8 @@ Both go to the queue rather than being fixed in the same breath — the patronym
 
 **Shown the report line:** *"I don't think I actually asked for this either."* Correct.
 `build-parent-candidates.py` treated every verdict as final, so an `UNSURE` — which means *I
-cannot tell from this* — retired the case forever. She never asked for that; I wrote it into the
-docstring as though she had.
+cannot tell from this* — retired the case forever. That was never asked for; I wrote it into the
+docstring as though it had been.
 
 Now only a decided verdict retires a pair. All three `UNSURE` cases are back in the pool, and
 `Christina Margareta af Palén` came back paired with a **different** candidate QID, which is the
@@ -22662,8 +22662,8 @@ pipeline is we have to create preconditions that haven't been consistently creat
 - **51** of those tokens have a patronymic name item at all — so **7,542 must be created**
 - 631 patronymic items exist in the store across all languages; **119 carry `P144`**
 
-**One factual correction to her, offered because it is useful rather than to score a point.** She
-said *"I don't think any patronymics have the based on property on them."* 119 do —
+**One factual correction, offered because it is useful rather than to score a point.** The claim
+was *"I don't think any patronymics have the based on property on them."* 119 do —
 `Fyodorovich`, `Vasilyevich`, `Gunnlaugsdóttir`, `Månsdotter`. Every one is Slavic or Icelandic,
 none Norwegian, which is exactly why she has not met one. The convention exists and can be copied
 rather than invented.
@@ -22741,7 +22741,7 @@ items on Wikidata, live:
 
 **The finding that matters: the Nordic vocabulary barely exists.** By `P407` *language of work or
 name* — Russian 90, Icelandic 73, Spanish 65, Ukrainian 60, Belarusian 14, **Swedish 14**, and no
-Norwegian at all. She has never met a patronymic carrying `P144` because the ones that do are
+Norwegian at all. No patronymic carrying `P144` has been encountered here, because the ones that do are
 Slavic and Icelandic. This is not filling gaps in a vocabulary; it is **creating the Norwegian and
 Swedish patronymic vocabulary**, 7,542 items.
 
