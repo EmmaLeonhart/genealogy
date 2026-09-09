@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Name items — QuickStatements</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f4f6f8;--surface:#fff;--ink:#141820;--muted:#5f6875;--line:#dce1e8;--accent:#2f4f8f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116;--surface:#161a21;--ink:#e7eaf0;--muted:#98a1b0;--line:#262d38;--accent:#8aa9e8}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:24px 20px 60px;
+  font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font:600 22px/1.2 "IBM Plex Sans",sans-serif;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+.bar{display:flex;gap:9px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+button,a.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 15px;
+  font:500 13.5px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;
+  overflow:auto;max-height:74vh;font:400 12.5px/1.5 "IBM Plex Mono",monospace;
+  white-space:pre;tab-size:8}
+a{color:var(--accent)}
+</style></head><body><div class="wrap">
+<h1>Name items</h1>
+<p class="sub">12 creations · 98 · the name items the daily batch links to statement lines · generated 2026-09-09 · paste into
+<a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
+(version 1 syntax, tab-separated)</p>
+<div class="bar">
+  <button id="copy">Copy all</button>
+  <button id="select">Select all</button>
+  <span class="sub" id="said"></span>
+</div>
+<pre id="qs"># Name items the Garborg batches need, AND the statements that use them.
+#
+# Each CREATE is followed by `Qperson  Pprop  LAST` for every bearer who
+# ALREADY holds a QID -- LAST is exactly how you point at what was just
+# created. A person this run is also CREATING cannot be linked here, because
+# LAST would then name the person; they wait for the next run.
+#
+# A patronymic is its own item even where the spelling exists as a given
+# name: CLAUDE.md, one name item per USAGE. Q141152710 Aadnesson is
+# the pattern -- labels and P31.
+#
+# A created PATRONYMIC also carries P144 based on: the given names it derives
+# from, one value for every such name the fathers who bear it actually carry.
+# That is what the resolution algorithm reads -- a person gets P5056 when their
+# father&#x27;s P735 item is among these values -- so an item minted without them
+# can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
+# them, and leaves out any given name whose label is ambiguous or has no item.
+
+# Tollaksdatter -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Tollaksdatter&quot;
+LAST	Len	&quot;Tollaksdatter&quot;
+#   set the mul label to &quot;Tollaksdatter&quot;
+LAST	Lmul	&quot;Tollaksdatter&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141283495 Birgitte Tollaksdatter Aukland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141250251 Tollak Jonson Aukland
+Q141283495	P5056	LAST	P144	Q141250251	S2600	&quot;6000000002425517089&quot;
+#   Q141336982 Anna Tollaksdatter Reve: P5056 patronym or matronym = the item just created
+Q141336982	P5056	LAST	S2600	&quot;6000000003492033746&quot;
+
+# Folkvår -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Folkvår&quot;
+LAST	Len	&quot;Folkvår&quot;
+#   set the mul label to &quot;Folkvår&quot;
+LAST	Lmul	&quot;Folkvår&quot;
+#   set the en description to &quot;family name&quot;
+LAST	Den	&quot;family name&quot;
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
+# Israelsdotter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to &quot;Israelsdotter&quot;
+LAST	Len	&quot;Israelsdotter&quot;
+#   set the mul label to &quot;Israelsdotter&quot;
+LAST	Lmul	&quot;Israelsdotter&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q19819746 Israel
+LAST	P144	Q19819746
+#   Q141336683 Ramborg Israelsdotter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141336549 Israel Andersson And
+Q141336683	P5056	LAST	P144	Q141336549	S2600	&quot;6000000003827763414&quot;
+
+# Joakimsdatter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Joakimsdatter&quot;
+LAST	Len	&quot;Joakimsdatter&quot;
+#   set the mul label to &quot;Joakimsdatter&quot;
+LAST	Lmul	&quot;Joakimsdatter&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q2307004 Joakim
+LAST	P144	Q2307004
+#   P144 based on = Q4926961 Joachim
+LAST	P144	Q4926961
+#   P144 based on = Q16429390 Jochum
+LAST	P144	Q16429390
+#   Q141250238 Marta Joakimsdatter Lea: P5056 patronym or matronym = the item just created, qualified P144 based on Q141250233 Joachim Johnson Lea
+Q141250238	P5056	LAST	P144	Q141250233	S2600	&quot;6000000025810442031&quot;
+
+# Knutsson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Knutsson&quot;
+LAST	Len	&quot;Knutsson&quot;
+#   set the mul label to &quot;Knutsson&quot;
+LAST	Lmul	&quot;Knutsson&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q943881 Knut
+LAST	P144	Q943881
+#   P144 based on = Q18565341 Knud
+LAST	P144	Q18565341
+#   P144 based on = Q28798237
+LAST	P144	Q28798237
+#   P144 based on = Q98669211 Knute
+LAST	P144	Q98669211
+#   Q6092396 Karl Knutsson Sandels: P5056 patronym or matronym = the item just created, qualified P144 based on Q110017817
+Q6092396	P5056	LAST	P144	Q110017817	S2600	&quot;6000000036292089942&quot;
+
+# Omundsdatter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Omundsdatter&quot;
+LAST	Len	&quot;Omundsdatter&quot;
+#   set the mul label to &quot;Omundsdatter&quot;
+LAST	Lmul	&quot;Omundsdatter&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q30817828 Omund
+LAST	P144	Q30817828
+#   P144 based on = Q30087127
+LAST	P144	Q30087127
+#   Q141216600 Astrid Omundsdatter Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223740 Omund Tjærandsen Opstad
+Q141216600	P5056	LAST	P144	Q141223740	S2600	&quot;6000000008176887325&quot;
+#   Q141283110 Tjøn Omundsdatter Ualand: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271437 Omund Børildsen Ualand
+Q141283110	P5056	LAST	P144	Q141271437	S2600	&quot;6000000034962072016&quot;
+
+# Pedersdotter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Pedersdotter&quot;
+LAST	Len	&quot;Pedersdotter&quot;
+#   set the mul label to &quot;Pedersdotter&quot;
+LAST	Lmul	&quot;Pedersdotter&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q10622039 Peder
+LAST	P144	Q10622039
+#   P144 based on = Q15897708 Petrus
+LAST	P144	Q15897708
+#   Q109191857 Elsa Pedersdotter Ryning: P5056 patronym or matronym = the item just created
+Q109191857	P5056	LAST	S2600	&quot;6000000006937657381&quot;
+
+# Sauss -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Sauss&quot;
+LAST	Len	&quot;Sauss&quot;
+#   set the mul label to &quot;Sauss&quot;
+LAST	Lmul	&quot;Sauss&quot;
+#   set the en description to &quot;family name&quot;
+LAST	Den	&quot;family name&quot;
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141244104 Magdalena Sofia Wrangel af Sauss: P734 family name = the item just created
+Q141244104	P734	LAST	S2600	&quot;6000000013022865578&quot;
+
+# Skas -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Skas&quot;
+LAST	Len	&quot;Skas&quot;
+#   set the mul label to &quot;Skas&quot;
+LAST	Lmul	&quot;Skas&quot;
+#   set the en description to &quot;family name&quot;
+LAST	Den	&quot;family name&quot;
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141337175 Ola Lauritsson Soma: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141337175	P734	LAST	P3831	Q2507958	S2600	&quot;6000000006776176722&quot;
+
+# Tollaksen -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Tollaksen&quot;
+LAST	Len	&quot;Tollaksen&quot;
+#   set the mul label to &quot;Tollaksen&quot;
+LAST	Lmul	&quot;Tollaksen&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q30088047 Tallak
+LAST	P144	Q30088047
+#   Q141382590 Tollak Tollaksen Kartevoll I: P5056 patronym or matronym = the item just created
+Q141382590	P5056	LAST	S2600	&quot;6000000002763206867&quot;
+
+# Toreson -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Toreson&quot;
+LAST	Len	&quot;Toreson&quot;
+#   set the mul label to &quot;Toreson&quot;
+LAST	Lmul	&quot;Toreson&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q1548096 Tore
+LAST	P144	Q1548096
+#   P144 based on = Q23047611 Thore
+LAST	P144	Q23047611
+#   P144 based on = Q130733980
+LAST	P144	Q130733980
+#   P144 based on = Q2428812 Thor
+LAST	P144	Q2428812
+#   Q141249611 Ivar Toreson Tjentland: P5056 patronym or matronym = the item just created
+Q141249611	P5056	LAST	S2600	&quot;6000000001169232790&quot;
+
+# Troil -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Troil&quot;
+LAST	Len	&quot;Troil&quot;
+#   set the mul label to &quot;Troil&quot;
+LAST	Lmul	&quot;Troil&quot;
+#   set the en description to &quot;family name&quot;
+LAST	Den	&quot;family name&quot;
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q943803 Uno von Troil: P734 family name = the item just created
+Q943803	P734	LAST	S2600	&quot;6000000002811012188&quot;
+
+# 900 more name items are needed and wait for a later
+# run -- 12 a day is the cap, not a limit of the data:
+#   Vashus (family), 2 bearer(s)
+#   Anfinnsdatter (patronymic), 1 bearer(s)
+#   Baltzersson (family), 1 bearer(s)
+#   Batolesen (patronymic), 1 bearer(s)
+#   Belest (given), 1 bearer(s)
+#   Bellestson (patronymic), 1 bearer(s)
+#   Bergersdatter (patronymic), 1 bearer(s)
+#   Enoksdatter (patronymic), 1 bearer(s)
+#   Eriana (given), 1 bearer(s)
+#   Finstaätten (family), 1 bearer(s)
+#   Fontelia (family), 1 bearer(s)
+#   Gestrinia (family), 1 bearer(s)
+#   ... and 888 more
+
+
+# ======================================================================
+# DESCRIPTIONS on name items that already exist and have none.
+# Label + description must be unique per language, so this is what
+# makes Wikidata refuse a duplicate of a name item already in use.
+# Name items only -- never people.
+# ======================================================================
+#   Q112261760: set the en description to &quot;family name&quot;
+Q112261760	Den	&quot;family name&quot;
+#   Q124785549: set the en description to &quot;family name&quot;
+Q124785549	Den	&quot;family name&quot;
+#   Q131994301: set the en description to &quot;family name&quot;
+Q131994301	Den	&quot;family name&quot;
+#   Q98139923: set the en description to &quot;family name&quot;
+Q98139923	Den	&quot;family name&quot;
+
+# ======================================================================
+# P460 SAID TO BE THE SAME AS, between spellings of one patronymic.
+# Both ways, as written by hand on Olofsson and Olai. Only
+# where the two items share a P144 source, a stem and a gendered
+# suffix -- a shared source alone matches Jonsdatter to Johansdotter.
+# ======================================================================
+#   Q109482873 Jacobsdatter: P460 said to be the same as = Q141383280
+Q109482873	P460	Q141383280
+#   Q141383280: P460 said to be the same as = Q109482873 Jacobsdatter
+Q141383280	P460	Q109482873
+#   Q122837798 Nilsdatter: P460 said to be the same as = Q141383169
+Q122837798	P460	Q141383169
+#   Q141383169: P460 said to be the same as = Q122837798 Nilsdatter
+Q141383169	P460	Q122837798
+</pre>
+<script>
+/* **The copy button did not work and this is three fixes, not one.** 2026-09-04:
+   *"fix the daily batch quickstatements page since the copy button does not work"*. The
+   screenshots come from an iPhone, and iOS Safari is where every one of these bites.
+
+   The old handler was one line of `navigator.clipboard.writeText(...).then(ok, fail)`:
+
+   1. **It went SILENT when `navigator.clipboard` was absent.** Reading `.writeText` off
+      `undefined` throws a TypeError before either callback exists, so the button did
+      nothing at all and said nothing either. A button with no feedback is
+      indistinguishable from a broken page.
+   2. **There was no fallback.** A rejected promise printed "select the text instead" and
+      left the reader to do it by hand on a 93 KB page.
+   3. **Nothing let her select the text without copying.** On iOS a selection gives the
+      native Copy menu, which works when everything else refuses.
+
+   So: try the async API, fall back to `execCommand` over a real textarea, and fall back
+   again to selecting the `<pre>` and saying so. `Select all` does that last step on
+   demand. iOS ignores `select()` on a `readonly` field, which is why the textarea is
+   plain and uses `setSelectionRange`. */
+(function () {
+  var said = document.getElementById("said");
+  var pre = document.getElementById("qs");
+
+  function report(msg) { said.textContent = msg; }
+  function lines(t) { return t.split("\n").length; }
+
+  function selectPre() {
+    var range = document.createRange();
+    range.selectNodeContents(pre);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  /* `execCommand` is deprecated and is still the only thing that works in an older
+     WebView. It needs a node that is in the document and visibly laid out, so the
+     textarea is moved off-screen rather than hidden -- `display:none` copies nothing. */
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("aria-hidden", "true");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    var ok = false;
+    try {
+      ta.focus();
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      ok = document.execCommand("copy");
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var text = pre.textContent;
+    var n = lines(text);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          report("copied " + n + " lines");
+        }, function () {
+          if (legacyCopy(text)) { report("copied " + n + " lines"); }
+          else { selectPre(); report("selected " + n + " lines - press Copy"); }
+        });
+        return;
+      }
+    } catch (e) { /* fall through to the same place a rejection goes */ }
+    if (legacyCopy(text)) { report("copied " + n + " lines"); }
+    else { selectPre(); report("selected " + n + " lines - press Copy"); }
+  });
+
+  document.getElementById("select").addEventListener("click", function () {
+    selectPre();
+    report("selected " + lines(pre.textContent) + " lines");
+  });
+})();
+</script>
+</div></body></html>

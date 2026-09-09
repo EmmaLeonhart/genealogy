@@ -169,6 +169,60 @@ def test_the_push_exemption_names_a_workflow_that_exists_and_uses_it():
         assert "pull_request_target" not in triggers
 
 
+@pytest.mark.skipif(not WORKFLOWS.exists(), reason="no .github/workflows in this checkout")
+def test_every_page_published_alongside_is_in_the_pages_sparse_checkout():
+    """A page in `ALONGSIDE` and not in `pages.yml`'s checkout is SILENTLY not published.
+
+    `CLAUDE.md` § *A REVIEW PAGE GOES ON GITHUB PAGES* names this exact failure: *"A page added
+    to that tuple and not to `pages.yml`'s sparse checkout is silently not published: the runner
+    never checks the file out and the copy is a no-op."* Nothing enforced it, and
+    `build-pages-site.py` prints `not published (absent here)` and carries on -- which is right
+    when a page genuinely has not been built, and indistinguishable from this when it has.
+
+    The two halves are edited in different files by different people at different times, so the
+    only thing that makes them agree is a check that reads both.
+    """
+    site = REPO_ROOT / "scripts" / "build-pages-site.py"
+    pages = WORKFLOWS / "pages.yml"
+    if not site.exists() or not pages.exists():
+        pytest.skip("sparse checkout: the builder or the workflow is not here")
+
+    source = site.read_text(encoding="utf-8")
+    block = source[source.index("ALONGSIDE"):]
+    block = block[:block.index(")") + 1]
+    alongside = re.findall(r'"([^"]+\.html)"', block)
+    assert alongside, "ALONGSIDE parsed to nothing -- the reader has drifted from the file"
+
+    checkout = pages.read_text(encoding="utf-8")
+    for name in alongside:
+        assert "/out/%s" % name in checkout, (
+            "%s is published alongside the batch but pages.yml does not check it out, so the "
+            "copy is a no-op and the page never reaches the site. Add /out/%s to the "
+            "sparse-checkout list." % (name, name)
+        )
+
+    # The same hole on the other list, and this one had actually opened: `pipeline.yml` linked
+    # `wikidata-garborg-name-items.html` in every issue it opened and nothing built the page.
+    block = source[source.index("BATCHES = ("):]
+    block = block[:block.index("\n)")]
+    for report in re.findall(r'"(reports)"\s*/\s*"([^"]+)"', block) or []:
+        path = "/%s/%s" % report
+        assert path in checkout, (
+            "%s is a batch the site publishes but pages.yml does not check it out, so the "
+            "runner has no file to render. Add %s to the sparse-checkout list." % (path, path)
+        )
+
+
+@pytest.mark.skipif(not WORKFLOWS.exists(), reason="no .github/workflows in this checkout")
+def test_the_alongside_reader_would_notice_a_page_that_was_not_checked_out():
+    """The guard above is only a guard if it can fail. A test that never observes its own
+    discriminator is what `CLAUDE.md` § *The NO-NEW-TESTS moratorium* warns about, so this
+    asserts the reader rejects the case it exists to catch.
+    """
+    pages = (WORKFLOWS / "pages.yml").read_text(encoding="utf-8")
+    assert "/out/nothing-checks-this-out.html" not in pages
+
+
 def test_the_trigger_reader_ignores_prose_about_triggers():
     """`ci.yml` explains why it has no `push:`; a naive search finds that text.
 

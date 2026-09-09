@@ -907,6 +907,42 @@ is the generator, and the page lands at `/patronymic-identifications.html` besid
 **without a link to it** — nothing competes with the daily batch, which is the whole of the
 site. A page added to that tuple and **not** to `pages.yml`'s sparse checkout is silently
 not published: the runner never checks the file out and the copy is a no-op.
+`tests/test_repo_invariants.py::test_every_page_published_alongside_is_in_the_pages_sparse_checkout`
+is that check now, over `ALONGSIDE` and over `BATCHES`, so the two files cannot drift apart
+unnoticed again.
+
+**⛔ AND THE GENERATOR HAS TO RUN ON THE AUTOMATIC PATH, or the page is a photograph.**
+`build-pages-site.py` COPIES `out/`; it generates nothing. So a page whose generator no workflow
+runs is published forever as whatever was last committed by hand. Measured 2026-09-09, before
+the fix: of the four pages with a generator, `pipeline.yml` ran **one**.
+
+    parent-review.html          build-parent-candidates.py                pipeline.yml
+    family-review.html          build-family-candidates.py                review-decks.yml ONLY
+    pick-one-review.html        build-pick-one-candidates.py              review-decks.yml ONLY
+    patronymic-identifications  build-patronymic-identifications-page.py  NOTHING RAN IT
+
+`review-decks.yml` is `workflow_dispatch` only, so two of the three decks refreshed exactly when
+somebody remembered to ask — and a deck retires what has been answered on every rebuild, so a
+deck that does not rebuild is a deck that **re-asks**. All four run in `pipeline.yml` now, one
+step each and every one `continue-on-error`, because the QuickStatements are the deliverable and
+a page riding along must not lose a run that has already produced them. `review-decks.yml` stays
+as the on-demand path, for the reason its own header gives.
+
+**⛔ THE SITE PUBLISHES TWO BATCH FILES, and the second one had no page at all.**
+`reports/wikidata-garborg-name-items.txt` is **not** folded into `wikidata-garborg-day.txt` —
+zero `Den "patronymic"` lines appear in the day batch, and the counts are 94 creations against
+12. `--compose` runs that generator as its own step and hard-fails without it. Meanwhile
+`pipeline.yml`'s issue body has offered *"[name items](…/wikidata-garborg-name-items.html)"* on
+every single run, to a **404**, because `build-pages-site.py`'s docstring asserted *"there is no
+second page to publish"* and nobody measured it. `BATCHES` is the list now; `index.html` is still
+the day batch and nothing else. A comment asserting a property nobody checked answers the
+question for the next reader, wrongly — the same failure as the `pages.yml` sha comment.
+
+**Two generator-less pages are FROZEN and that is not a defect to fix.**
+`duplicate-surnames.html` and `duplicate-name-items-we-made.html` were built by hand on
+2026-09-07 and no script in the repo names them. They are findings pages — a measurement at a
+date — so there is nothing for CI to regenerate. Do not write generators for them to make the
+table above look complete.
 
 **Rank the landing form by NEW BEARERS, never by whether any exist.** `-sen` gained seven tokens in
 the widening — trailing-dot spellings like `Simonsen.` — so "has a new token" landed the page on its

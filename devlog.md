@@ -33075,3 +33075,54 @@ shortest answer is the in-law one.
 against by name. Regenerated. The other two are still open and still `NEEDS-INVESTIGATION` —
 the married-name alias title drop, and `translit("Anna")` giving `アンナ` where the test wants
 `アナ`. CI has been red since **2026-09-06**; last green sha is `710aaf89`.
+## 2026-09-09 — every page the site publishes is now generated in CI
+
+`build-pages-site.py` **copies** `out/`; it generates nothing. So a page whose generator no
+workflow runs is published forever as whatever was last committed by hand. Measured before the
+change — of the four pages with a generator, `pipeline.yml` ran one:
+
+    parent-review.html          build-parent-candidates.py                pipeline.yml
+    family-review.html          build-family-candidates.py                review-decks.yml ONLY
+    pick-one-review.html        build-pick-one-candidates.py              review-decks.yml ONLY
+    patronymic-identifications  build-patronymic-identifications-page.py  NOTHING RAN IT
+
+`review-decks.yml` is `workflow_dispatch` only, so two of the three decks refreshed exactly when
+somebody remembered to ask — and a deck retires what has been answered on every rebuild, so a
+deck that does not rebuild is a deck that re-asks. All four now run in `pipeline.yml`, one step
+each, every one `continue-on-error`: the QuickStatements are the deliverable and a page riding
+along must not lose a run that has already produced them. `review-decks.yml` stays as the
+on-demand path, for the reason its own header gives — asking through the pipeline means waiting
+on a ledger refresh and a compose and inheriting every way that batch commit can fail.
+
+**The pick-one deck is the expensive one and the cost is stated rather than discovered later:**
+21,628 census rows over 5,469 distinct candidate items, and `deck.wikidata_facts` resolves names
+for the whole census *before* `DECK_CAP` windows it to 1,000 cards. `fetch_labels` batches 50 an
+request and sleeps 0.4s between them, so this is minutes. It runs last, so a failure there leaves
+the two decks before it already rebuilt.
+
+**The second batch file had no page at all, and the notification had been linking to it.**
+`reports/wikidata-garborg-name-items.txt` is not folded into `wikidata-garborg-day.txt` — zero
+`Den "patronymic"` lines in the day batch, 94 creations against 12 — and `--compose` runs its
+generator as its own step and hard-fails without it. `pipeline.yml`'s issue body has offered
+`[name items](…/wikidata-garborg-name-items.html)` on every run, to a 404, because
+`build-pages-site.py`'s docstring said *"there is no second page to publish"*. `BATCHES` is the
+list now and both render through the same template; `index.html` is still the day batch and
+nothing else. The docstring is the same failure as the `pages.yml` sha comment: a comment
+asserting a property nobody measured answers the question for the next reader, wrongly.
+
+**The silent half is guarded now.** A page in `ALONGSIDE`, or a source in `BATCHES`, that is not
+in `pages.yml`'s sparse checkout is never checked out and the copy is a no-op — `CLAUDE.md` has
+warned about it in prose and nothing enforced it.
+`test_every_page_published_alongside_is_in_the_pages_sparse_checkout` reads both files and
+compares them, with a companion asserting the reader rejects a path that is genuinely absent, so
+it is a check that can fail rather than one that only passes.
+
+**`out/site/` was a stale committed snapshot** holding five pages from 2026-09-07 with the two
+newest decks missing. Pages was correct anyway — the `site` job builds its own copy — but the
+committed snapshot is what anyone reading the repo sees. The pipeline refreshes it now, and it
+is rebuilt here.
+
+**Two pages stay frozen deliberately.** `duplicate-surnames.html` and
+`duplicate-name-items-we-made.html` were built by hand on 2026-09-07 and no script in the repo
+names them. They are findings pages — a measurement at a date — so there is nothing for CI to
+regenerate, and writing generators to make the table look complete would be inventing work.

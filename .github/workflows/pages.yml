@@ -65,9 +65,20 @@ jobs:
           # The site is one file now, so the checkout is two paths plus the builder.
           # It used to pull CLAUDE.md, src/, all of reports/, paths/ and exports/ because the
           # page counted GEDCOMs and republished rules; none of that is on the page any more.
+          #
+          # **TWO batch files, not one.** `build-garborg-day.py --compose` runs the name-item
+          # generator as its own step and its output is NOT folded into the day batch, so it
+          # gets its own page -- which `pipeline.yml`'s issue body has linked all along, to a
+          # 404, because nothing built it. A source listed in `build-pages-site.BATCHES` and
+          # missing here is checked out by nobody and the page silently does not appear, which
+          # is the same trap the ALONGSIDE list carries a warning about.
+          #
+          # No inline comments inside the list: these lines become gitignore-style patterns in
+          # `.git/info/sparse-checkout`, and there is no reason to find out the hard way.
           sparse-checkout: |
             /scripts
             /reports/wikidata-garborg-day.txt
+            /reports/wikidata-garborg-name-items.txt
             /out/parent-review.html
             /out/family-review.html
             /out/pick-one-review.html

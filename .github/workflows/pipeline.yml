@@ -202,19 +202,80 @@ jobs:
           python scripts/model-vs-reality.py --refetch || echo "diff refresh failed; from-diff will refuse"
           python scripts/build-from-diff.py || echo "from-diff skipped: needs a diff to read"
 
-      # **The adjudication deck, regenerated every run**, ruled 2026-09-01: the HTML is
-      # regenerated every time with the pipeline. Until then it refreshed only when
-      # somebody ran `refresh-drift.py` by hand, so it rendered 0 cards while 709 candidates
-      # waited and the raw TSV was being worked off instead. It makes ~15 batched Wikidata requests.
+      # ⛔ **EVERY PAGE THE SITE PUBLISHES IS REGENERATED HERE, and until 2026-09-09 only one
+      # of them was.** The `site` job below copies whatever `out/` holds at the sha this job
+      # pushes -- it generates nothing itself -- so a page whose generator no workflow runs is
+      # published forever as whatever was last committed by hand. Measured before the change:
       #
-      # `continue-on-error` because the deck is a convenience and the batch is the deliverable:
-      # a Wikidata hiccup here must not fail a run that has already produced the QuickStatements.
-      - name: Rebuild the adjudication deck
+      #     parent-review.html          build-parent-candidates.py          this pipeline
+      #     family-review.html          build-family-candidates.py          review-decks.yml ONLY
+      #     pick-one-review.html        build-pick-one-candidates.py        review-decks.yml ONLY
+      #     patronymic-identifications  build-patronymic-identifications    NOTHING RAN IT
+      #
+      # `review-decks.yml` is `workflow_dispatch` only, so two of the three decks refreshed
+      # exactly when somebody remembered to ask. That is the *"photograph, not a mirror"* failure
+      # `CLAUDE.md` names for the derived tables, in the one place a stale page is read by hand
+      # and acted on: `CLAUDE.md` § *THE PARENT DECK* -- *"an already-answered card wastes a
+      # turn"*. The decks retire what has been answered on every rebuild, so a deck that does not
+      # rebuild is a deck that re-asks.
+      #
+      # **`review-decks.yml` stays**, and is not made redundant by this. Its own header says why:
+      # asking for a deck through the pipeline means waiting on a ledger refresh and a
+      # QuickStatements compose and inheriting every way that batch commit can fail. This is the
+      # automatic path; that one is the on-demand path.
+      #
+      # **One step each, and `continue-on-error` on every one**, for the reason the parent deck
+      # already had it: the QuickStatements are the deliverable and a Wikidata hiccup in a page
+      # that rides along must not lose a run that has already produced them. Separate steps mean
+      # a failure in the widest deck still leaves the two before it rebuilt, which is the ordering
+      # `review-decks.yml` uses and for the same reason.
+      - name: Rebuild the parent deck
         continue-on-error: true
         env:
           BOT_CONTACT: emma@topazcomputing.com
           PYTHONPATH: src
         run: python scripts/build-parent-candidates.py
+
+      # The child and sibling slots. Thousands of cards against the parent deck's handful, so
+      # this is where the label fetch actually costs minutes.
+      - name: Rebuild the child and sibling deck
+        continue-on-error: true
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: python scripts/build-family-candidates.py
+
+      # The ambiguous shape of those same slots, and the widest of the three: 21,628 census rows
+      # over 5,469 distinct candidate items, and `wikidata_facts` resolves names for the WHOLE
+      # census before `DECK_CAP` windows it to 1,000 cards. `deck.fetch_labels` batches 50 an
+      # request and sleeps 0.4s between them -- `CLAUDE.md` § *Querying Wikidata is ALLOWED. Be
+      # polite about the rate* -- so this is minutes, not seconds. It runs last so a failure here
+      # leaves both decks above already rebuilt.
+      - name: Rebuild the pick-one deck
+        continue-on-error: true
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: python scripts/build-pick-one-candidates.py
+
+      # Pure local work -- it reads two tracked TSVs and writes the page, no network at all --
+      # so it is the cheapest thing in this block and the one that had never run in CI.
+      - name: Rebuild the patronymic identifications page
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-patronymic-identifications-page.py
+
+      # **`out/site/` is TRACKED, so it goes stale like any other committed derived file.** The
+      # `site` job builds its own copy from `out/` and publishes that, so Pages is correct either
+      # way -- but the committed snapshot is what anyone reading the repo sees, and on 2026-09-09
+      # it still held five pages from 2026-09-07 with the two newest decks missing entirely.
+      # Rebuilding it here is what makes `git status` the honest signal it is everywhere else.
+      - name: Refresh the committed site snapshot
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-pages-site.py
 
       - name: What changed
         id: batch
