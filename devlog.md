@@ -32290,3 +32290,68 @@ than half the census — which is the shape a systematic failure takes.
 dispatch, so a session handing one over is never handing over a photograph of the other.
 `tests/test_garborg_day_batch.py` learned the third batch label, `family-adjudication-gui` — its
 own docstring records that filtering on one label silently excluded the larger set once already.
+
+## 2026-09-08 — the collector threw away the in-law verdict on every person it finished
+
+**Five isolate targets run, and the run found a defect that made the campaign unable to finish
+anybody.** `runInLaw` looked for the **Show Me** button first and returned `not_offered` the
+instant it was absent. But Geni states the in-law miss in words — *"No in-law relationship was
+found."* — and once it has, the button is gone, because there is nothing left to press. So a
+stated verdict read as *never asked*.
+
+**3 of the first 3 targets, then 4 of 5 overall.** Constans Wilhelm Wenström `1605703`, Raymond
+Impanis `2205409`, Karl Olofsson `2398881` and Erika Sofia Wenström `3052917` each had the
+sentence on the page, no button, and came back `not_offered`.
+
+**It was silent, cumulative and self-perpetuating.** `individual.js` computes
+`asked = resolved_path || resolved_none`, so `not_offered` leaves `via` blank;
+`collector-worklist.py` re-queues on exactly a blank `via` — her rule 2, *"If blood did not hit
+and there is no path then redo it."* Every person the loop completed went back into the pool, and
+re-running them produced the same blank. The campaign could scrape indefinitely and never mark
+anybody done. `common.js` already listed that sentence in its miss regex and
+`write-family-scrape.py`'s `path_state()` already read the blood miss off the page the same way;
+the one place that refused to apply the rule was the one place it mattered.
+
+The fix reads the stated answer before looking for a button. **Only a miss** — a hit still cannot
+be read off the page, per the asymmetry rule, so nothing infers `resolved_path` from prose.
+Extension 1.6.5 → 1.6.6.
+
+**`requested_at` was a hard-coded literal.** `write-family-scrape.py` wrote `"2026-09-06"` into
+every row it ever produced, so today's rows claimed to have been observed two days ago — a column
+whose whole job is to say *when we asked*, unable to. 103 rows in the file carry that date. Now
+`datetime.date.today()`. Rows already carrying the literal are left alone; back-dating them would
+assert the opposite error.
+
+**The anchor had come off Charlemagne again**, with nobody touching it — the decay
+`docs/anchor-protocol.md` records. Charlemagne's own page read *"Charlemagne is your 35th great
+grandfather."* Re-set by the protocol and verified on a real target: Constans Wilhelm Wenström's
+page reads *"Charlemagne is connected to…"*, not *"your"*. All five rows carry `charlemagne`.
+
+**Geni has two different miss shapes and only one of them can be answered.** Four targets gave
+the pair *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin
+Varga `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
+in-law sentence and no Show Me button at all**, so no in-law verdict can be obtained for her
+through the current UI. Her `via` is left blank rather than written `neither`: blank costs a
+revisit, and `neither` would assert a search that was never offered. That population re-queues
+forever on the same rule, which is the same shape as the defect above and is not yet addressed.
+
+| target | family_tree | blood | verdict | gate |
+| --- | ---: | ---: | --- | --- |
+| Constans Wilhelm Wenström `1605703` | 1,088 | 330 | neither | export |
+| Raymond Impanis `2205409` | 63 | 49 | neither | **no export** — nothing reaches 300 |
+| Karl Olofsson `2398881` | **15,000** | **15,000** | neither | export |
+| Katalin Varga `291026634180003195` | 119 | 46 | *(unrecorded)* | no export |
+| Erika Sofia Wenström `3052917` | 471 | 330 | neither | export |
+
+Karl Olofsson is the strongest database-failure case since Anna Rood: both figures at the 15,000
+ceiling — which `common.js` records as *the query exceeded its maximum*, not a count — with Geni
+still answering that no blood relationship exists.
+
+Outstanding went 2,603 → 2,599; blood-only-miss 86 → 82. Nothing was retyped through a shell
+heredoc: every block went from the tool result through a file tool into
+`write-family-scrape.py` on stdin, and `Wenström` and `Bárdos` survive on disk.
+
+**The running Chrome still has 1.6.5.** An unpacked extension does not pick up file changes
+without a reload, so the fix is on disk and not yet in the browser; the five captures above had
+their `via` derived at harvest by the identical rule. Reloading it needs one click in
+`chrome://extensions`, which the automation surface cannot reach.

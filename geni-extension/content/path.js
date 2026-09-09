@@ -71,10 +71,41 @@ GC.toTsv = function (links, header) {
  * once and calling it empty.
  *
  * Returns `resolved_path` with the chain, `resolved_none` when Geni says
- * *"No in-law relationship was found."*, or `not_offered` when there is no button to press --
- * which is a real state and is not a miss. */
+ * *"No in-law relationship was found."*, or `not_offered` when there is neither a stated answer
+ * nor a button to press -- which is a real state and is not a miss. */
 GC.runInLaw = async function (job) {
   const id = String(job.geni_id);
+
+  /* ⛔ THE ANSWER IS READ BEFORE THE BUTTON IS LOOKED FOR, and getting that order wrong threw
+   * away the verdict on EVERY person this loop finished.
+   *
+   * Geni states the in-law miss in words -- *"No in-law relationship was found."* -- and once it
+   * has, the **Show Me** button is gone, because there is nothing left to press. This function
+   * looked for the button first and returned `not_offered` the instant it was absent, so a
+   * stated verdict read as *never asked*.
+   *
+   * That is not an edge case: measured 2026-09-08 on the first three targets of the run --
+   * Constans Wilhelm Wenström `1605703`, Raymond Impanis `2205409`, Karl Olofsson `2398881` --
+   * **3 of 3** had the sentence on the page, no button, and came back `not_offered`.
+   *
+   * And it is silent, cumulative and self-perpetuating. `individual.js` computes
+   * `asked = resolved_path || resolved_none`, so `not_offered` leaves `via` blank;
+   * `scripts/collector-worklist.py` re-queues on exactly a blank `via` -- *"If blood did not hit
+   * and there is no path then redo it."* So every person the loop completed returned to the pool
+   * forever, and re-running them would produce the same blank again. The campaign could scrape
+   * indefinitely and never mark anybody done.
+   *
+   * `common.js` already lists this sentence in its miss regex, and `write-family-scrape.py`'s
+   * `path_state()` already reads the blood miss off the page the same way. This is the same rule
+   * in the one place that was refusing to apply it.
+   *
+   * ⛔ ONLY A MISS. A HIT STILL CANNOT BE READ OFF THE PAGE -- `write-family-scrape.py`'s
+   * asymmetry rule -- so nothing here infers `resolved_path` from prose. A miss is stated; a hit
+   * needs the parsed chain below. */
+  const stated = () => /no in-law relationship was found/i.test(
+    document.body ? document.body.innerText : "");
+  if (stated()) return { state: "resolved_none" };
+
   const btn = GC.byText("a,button,input", /^\s*show me\s*$/i).find(GC.visible);
   if (!btn) return { state: "not_offered" };
 

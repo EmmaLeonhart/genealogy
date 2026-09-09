@@ -37,6 +37,7 @@ them with `blood` would assert that the other one had been tried. Anna Hørlück
 from __future__ import annotations
 
 import csv
+import datetime
 import json
 import pathlib
 import re
@@ -258,7 +259,15 @@ def main() -> int:
     # `297536201290008921`, the first person the two-search loop ever finished.
     if via not in ("blood", "inlaw", "both", "neither"):
         via = prior_via if (verdict and verdict == prior) else ""
-    body.append([gid, name] + figures + ["2026-09-06", verdict, anchor, via])
+    # ⛔ `requested_at` WAS A LITERAL, so every row ever written claimed to have been observed on
+    # 2026-09-06 whatever day it was written. 103 of the file's rows carry that date and three of
+    # them were written on 2026-09-08. A column whose whole job is to say *when we asked* cannot
+    # be a constant: it makes a fresh observation indistinguishable from a two-day-old one, which
+    # is the stale-photograph failure `CLAUDE.md` records against downloaded items and derived
+    # tables. Rows already carrying the literal are left alone -- back-dating them to today would
+    # assert the opposite error.
+    body.append([gid, name] + figures
+                + [datetime.date.today().isoformat(), verdict, anchor, via])
     body.sort(key=lambda r: r[0])
     with ISOLATES.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
