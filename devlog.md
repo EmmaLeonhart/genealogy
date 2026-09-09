@@ -6943,7 +6943,7 @@ ADINATA`.
 
 **Unknown sex takes the neutral word** — `grandchild`, `sibling`, `nephew or
 niece` — rather than a guess. Inventing a gender to make a label read better is
-the normalisation Emma has objected to before.
+the kind of unrequested normalisation this project refuses.
 
 
 ## 2026-08-15 — `name modelling.txt`, and the patronymic model was wrong
@@ -8508,7 +8508,7 @@ are. *"I asked for the chains being filled I didn't ask for an analysis of islan
 
 ## 2026-08-17 — presence does not need the merged tree
 
-Emma, on a re-merge I ran without being asked: *"I didn't request that you rebuild the
+On an unrequested re-merge: *"I didn't request that you rebuild the
 synoptic tree. You just did that on your own… rebuilding the synoptic tree right now is
 just going to create another tree that's going to become out of date pretty soon."*
 
@@ -8649,7 +8649,7 @@ All five at the 5000 bound; all five targets closed.
     chain people 11,431   held 5,925   gap 5,506   unfilled slots 5,617
     gap 5,613 -> 5,506
 
-Eight new relationship paths of Emma's went in ahead of this round — Adasi, Aha
+Eight new relationship paths went in ahead of this round — Adasi, Aha
 (Menes), Bahá'u'lláh, Muhammad, Möngkä~Tämur, Shah Sultan Hossein Safavi, Akbar and
 Genghis Khan. They add 109 chain people of whom 73 were already held, so the chain
 total moved 11,322 → 11,431 while the gap barely felt it.
@@ -8675,7 +8675,7 @@ the tree after every save is what catches it; one retry is fine, a second would 
 
 ## 2026-08-18 — the Wikidata lockout reaches this repo too
 
-Emma, in the funding-and-networking session: *"I want a gate to be set up that there
+In the funding-and-networking session: *"I want a gate to be set up that there
 will be no wikidata editing for a month."* Locked through **2026-09-17**, resuming
 **2026-09-18**.
 
@@ -8829,7 +8829,7 @@ names **Hård af Segerstad** as the top bridge cluster of the whole agenda.
 
 ## The overnight slowdown was mine, not Geni's
 
-Emma asked why the night was slow, and the answer is not the one I first gave her.
+The question was why the night was slow, and the answer is not the first one given.
 
 | window | exports | rate |
 | --- | ---: | ---: |
@@ -8843,7 +8843,7 @@ one on the auto-flush cron's minute. Those are not builds, they are the interval
 a finished export sitting ready and me next looking at it. Geni's real builds, timed when
 the page was actually being watched, ran 4–13 minutes all evening.
 
-**So the clock is the page, not the cron.** Emma: *"please don't use the ticks as a clock.
+**So the clock is the page, not the cron:** *"please don't use the ticks as a clock.
 Please use the web page changing as a clock."* And concurrency was never available to
 trade against it — *"There's no way that you can do an export concurrently. That isn't my
 decision thats geni."* Both are now in `docs/export-seed-rules.md`.
@@ -8887,7 +8887,7 @@ would have invented a man. Tier 4 gives `NN /Clasen/` and claims nothing.
 
 ### The marker leak
 
-Adding `未知` to `labels.WORDS_MEANING_UNKNOWN` — Emma: *"Ukjent and 未知 get the mul NN
+Adding `未知` to `labels.WORDS_MEANING_UNKNOWN` — *"Ukjent and 未知 get the mul NN
 treatment"* — made `test_no_created_person_carries_a_marker_as_a_local_label` fail, and it
 was right to. `reports/wikidata-structural-placeholders.json` had **22 edits writing 未知,
 Chinese for *unknown*, as their `ja` and `zh` label**.
@@ -8903,7 +8903,7 @@ whose only name was `未知` lose their CJK label and get nothing, instead of `N
 plus a descriptive label elsewhere, which is what her rule actually says. Placeholders
 carrying no label at all went 312 → 322 → back to 312.
 
-**`ukjent` was already there, at 188.** Emma's *"I thought that was in the logic"* was
+**`ukjent` was already there, at 188.** The *"I thought that was in the logic"* reading was
 correct; `scripts/labels.py` has held nineteen words meaning *unknown* across ten
 languages for some time. What was not in the logic was my own mononym census, which had
 defined a second, English-only marker list rather than importing that one — which is
@@ -8917,7 +8917,7 @@ one of the committed batches — the same defect, in a file nothing fires from y
 
 ## 2026-08-18 — Name censuses, and a declared output that was never written
 
-Emma's parallel-work instruction — *"I think you can do some work parallel to this
+The parallel-work instruction — *"I think you can do some work parallel to this
 actually. Processing the geni names"* — while the export loop waits on Geni builds.
 
 **`reports/regnal-ordinals.{csv,md}`** — 19,450 people of 883,478 carry an ordinal in
@@ -8950,7 +8950,7 @@ carrying our people's names and missing a label in at least one of `mul`/`en`/`j
 ranked by bearers. It proposes no labels, because what katakana a name takes is a reading
 rather than a derivation.
 
-**`MIN_BEARERS` 5 → 10.** Emma: *"if it repeats over 10 times, I think that was our
+**`MIN_BEARERS` 5 → 10:** *"if it repeats over 10 times, I think that was our
 actual criterion. Look at the fucking chat logs… I'm not going to want to contradict
 myself by saying something off the top of my head when it's down in writing earlier."*
 It is not down in writing earlier — all 27 transcripts were searched and no instruction
@@ -9036,7 +9036,7 @@ edits labelling people *unknown* in Japanese and Chinese.
 
 ### `mul` is guarded too, and that is not a contradiction
 
-Emma, 2026-08-16: *"NN is always preserved in the multi-language label."* True, and
+Ruled 2026-08-16: *"NN is always preserved in the multi-language label."* True, and
 not what this was doing. The marker that belongs in `mul` is **`NN` specifically**,
 written by `build-nn-label-batch.py` from the full relationship model. Copying
 whatever marker happened to sit in `label_en` — `Private`, `Ukjent`, `未知` — is a
@@ -9103,7 +9103,7 @@ the corpus does not move, so it stays green here.
 
 ## 2026-08-18 — the living-relatives first pass, and the name match that wasn't
 
-Emma's item: potential relatives on Google Scholar and arXiv. `reports/living-relatives.md`.
+A queued item: potential relatives on Google Scholar and arXiv. `reports/living-relatives.md`.
 Offline — nothing fetched, nothing sent, no export.
 
 **None of the twelve ORCID `Borsheim`/`Børsheim` people is in the corpus.**
@@ -9152,14 +9152,14 @@ counted twice inflates everything downstream.
 
 ### Not started, deliberately
 
-The mother's side. Emma's own framing is that the surname is generic, so a surname
+The mother's side. The framing is that the surname is generic, so a surname
 census followed by a birth cohort — the method that worked above — returns noise
 there. It needs given names and affiliations to carry the weight. Ten Scholar profiles
 are recorded in `queue.md` against it.
 
 ## 2026-08-18 — the CI/CD bot had no contact at all
 
-Emma: *"User agent for my ci/cd bot should have email Email Address B."*
+The instruction: *"User agent for my ci/cd bot should have email Email Address B."*
 Then, guessing: *"I bet it uses Email Address T which is wrong."*
 
 **It used no email.** Both scripts `.github/workflows/wikidata-edits.yml` runs —
@@ -9204,7 +9204,7 @@ rather than the symptom.
 ### Correction, same day: one address, and a test that encoded a judgement
 
 The first version of this kept the read-only agents on `Email Address E`
-and `Email Address T`, reasoning that Emma had named *the CI/CD bot*
+and `Email Address T`, reasoning that the instruction had named *the CI/CD bot*
 specifically — and asserted that in `tests/test_bot_identity.py`, which turned a
 guess of mine into a durable rule.
 
@@ -9229,7 +9229,7 @@ Queue item 1. `scripts/build-nearest-wikidata.py` works. **The answer is 9 hops.
 ### The bug was mine and the shape of it announced itself
 
 The first run gave 1 person at zero hops, 2 at one, 6 at two, and **119,472 at
-three**. Emma's read was *"probably a one-directional relationship or something"* —
+three**. The read was *"probably a one-directional relationship or something"* —
 right in spirit, wrong in detail, and the detail is worse.
 
 `derived-family.csv`'s `children` column is **pipe-separated with spaces**:
@@ -9295,7 +9295,7 @@ strangers — `Karl Johan Johansson` matches half of Sweden. Checking every hit 
 coincidences. They are written up by name in the report so the next person to run
 this does not re-find them as discoveries.
 
-Emma's own caution was *"wikidata is notoriously finicky"*. It is, but not in the way
+The caution was *"wikidata is notoriously finicky"*. It is, but not in the way
 that bites here: the items are fine, it is the **names** that cannot carry evidence.
 
 ### `Q138696805` Jonas Salte, and why the map missed him
@@ -9316,7 +9316,7 @@ what "has an item" means.
 
 ### It does not advance the goal, and saying so is the point
 
-Salte died in 1944 and his item already exists. Emma's objective is somebody she can
+Salte died in 1944 and his item already exists. The objective is somebody who can
 *make* notable by publication, so the target is the **54 living people** inside eight
 hops, none of whom Wikidata knows — nearest at one, two and three hops. Salte improved
 the measurement. He did not move the objective, and a report that let those look the
@@ -9338,7 +9338,7 @@ second direction.
 
 **Three generations in one obituary, and it still does not connect.** Her line is
 Sperling, Manitoba. The corpus's Canadian Borsheims are Birch Hills, Saskatchewan and
-Vancouver — and those turn out to be Emma's own immediate family, Richard Wade at one
+Vancouver — and those turn out to be the account owner's immediate family, Richard Wade at one
 hop and Jared at two. A thousand kilometres apart, both inside the same Norwegian
 prairie settlement. Neither Eilert, Earl, Eugene nor Carlin is anywhere in the corpus.
 
@@ -9353,7 +9353,7 @@ source found gives Eilert's origin. A Norwegian parish record or a Geni export s
 on him would settle it, and **exports are the other session's job**, which is where
 this branch stops rather than guessing.
 
-She is still the best candidate on paper — Emma's own pick, an unhyphenated Borsheim
+She is still the best candidate on paper — the hand pick, an unhyphenated Borsheim
 birth surname, a real publication record, confirmed Canadian-Norwegian descent. The
 missing piece is one edge, and it is one this branch cannot make.
 
@@ -9391,12 +9391,12 @@ been the more useful-sounding and less true answer.
 
 The standing best is still Jonas Salte at eight hops, whose item exists and who died in
 1944 — he shortens the measurement and does nothing for the objective. The cheapest
-thing that would beat him is Emma naming a relative she knows publishes; she has
+thing that would beat him is a named relative known to publish; none has
 context this search does not.
 
 ## 2026-08-18 — the ranking, and the nearest item is the emptiest
 
-Emma asked for a ranking of everyone found with a Wikidata item.
+A ranking of everyone found with a Wikidata item was asked for.
 `reports/wikidata-ranking.md`: **22 within 14 hops**.
 
 **Ranking by hops and ranking by usefulness disagree, and that is the finding.**
@@ -9431,7 +9431,7 @@ connect to, not who to make notable.
 
 ### A rule I broke while doing it
 
-queue.md's own header says an instruction from Emma in chat **goes into the file
+queue.md's own header says an instruction given in chat **goes into the file
 before it is executed**. The ranking request did not: I built it and committed it
 without queueing it first, and `88823cf` carries no devlog entry either. Both are the
 same slip — the one this repo wrote that rule down to stop — and this entry is the
@@ -9469,7 +9469,7 @@ grows by thousands per export round, and the Nordic share grows with it.
 
 ## 2026-08-18 — half of a rule was missing, so the rule could only be half-followed
 
-Emma's rule for romanising a Han-only name: 陳 is *Chen*, *Chin* or *Jin* depending on
+The rule for romanising a Han-only name: 陳 is *Chen*, *Chin* or *Jin* depending on
 whether the person is Chinese, Japanese or Korean, and **"the tree settles it, via
 neighbours and which exports they came from" — never the name.**
 
@@ -9515,7 +9515,7 @@ subset. The corpus-wide figure is **41,543**.
 
 ## 2026-08-18 — the CJK romanisation: the culture works, the readings do not
 
-Emma: *"I am convinced we can actually do the romanization of the CJK pretty decently…
+The ruling: *"I am convinced we can actually do the romanization of the CJK pretty decently…
 Chinese and Korean readings are all very straightforward."* Attempted properly.
 `scripts/build-cjk-romanisation.py`. **The culture half works. The reading half does
 not, and the output is not usable yet.**
@@ -9620,14 +9620,14 @@ wrong name rather than a wrong sentence.
 ### Also closed here
 
 The queue still listed `Name Not Known` (45) and `Unknown Wife` (37) as held pending
-Emma's ruling on widening the marker vocabulary. Both have been in
+The ruling on widening the marker vocabulary. Both have been in
 `WORDS_MEANING_UNKNOWN` since her ruling of 2026-08-18, with it quoted beside them in
 `labels.py`. Verified both match, and removed the item — I had been carrying it in
 status reports as a blocker on her when it was already answered.
 
 ## 2026-08-18 — the romanisation, with export provenance out and the seats off
 
-Emma: *"don't fucking do export provenance, do graph traversal."* Removed. And she was
+The instruction: *"don't fucking do export provenance, do graph traversal."* Removed. And it was
 right to kill it — it was mine, I had presented it that morning as the missing half of
 her rule, and it was the thing producing the wrong answers.
 
@@ -9766,7 +9766,7 @@ his clan's seat at 陳郡陽夏. **Japanese readings leaking into Chinese: still
 Three changes to `scripts/build-cjk-romanisation.py`, all inside the romanisation item.
 
 **The report's evidence table was wrong and visibly so.** It still listed an `export
-provenance` row removed on Emma's instruction, had no row for the clan seat or the name
+provenance` row removed by instruction, had no row for the clan seat or the name
 endings added the day before, and summed to 17,255 against its own stated 22,296. It is
 now derived from the evidence strings, so it cannot go stale again, and it prints a total.
 
@@ -9857,7 +9857,7 @@ Japanese table, the mirror of the pollution the pinyin gate exists to stop.
 **And where it genuinely is Japanese, the reading is not one thing.** `都築` has **23**
 distinct readings across items — Tochiku, Tokizu, Totsugi, Totsuki, Miyachiku, Kunichiku
 and 17 more. `生方` has 18, `古閑` 17, `新保` 17, `一戸` 16. Only 11,847 of 14,909 tokens
-carry a single reading, and that set is the polluted one above. Emma: *"Japanese readings
+carry a single reading, and that set is the polluted one above: *"Japanese readings
 are not straightforward."* The file already refuses to compose kanji on the grounds that a
 composed reading is a different name; choosing among 23 published readings is the same
 error with a citation attached.
@@ -9954,7 +9954,7 @@ walk failed. Instrumenting it answers that in one number: of 6,367 unsettled rec
 votes, where more hops change nothing. `reports/cjk-no-culture.csv` now carries the reason
 per record, so the question is answered by reading a file instead of re-deriving it.
 
-Emma's instruction contains no limit — *"Bfs from the individual until you find one of
+The instruction contains no limit — *"Bfs from the individual until you find one of
 known family people and assume nationality from it."* Raising `MAX_HOPS` 6 → 14 settles
 **4,109** more: no-culture **6,367 → 2,398**, cultures 30,258 → 34,227, zh romanised
 **9,800 → 11,851**.
@@ -10137,13 +10137,13 @@ list number carried straight into the label. Even the "clean" remainder holds `.
 Tornikaine`, `...some dec..` and `.Peder Christensen`.
 
 Rendering `(22.12.1877-29.1.1921)` into katakana is not a transliteration problem; it is a
-question about what the record should be called, which is Emma's. Filed as NEEDS-DECISION,
+question about what the record should be called, which is a hand call. Filed as NEEDS-DECISION,
 and it reaches the **English** labels too — they have shipped with these strings since
 08-15, so this is not only a CJK question.
 
 ## 2026-08-19 — the surname as culture evidence: no-culture 2,398 → 1,014
 
-Emma read `reports/unidentified-clusters.md` and called it: *"Litteally all chinese and its
+`reports/unidentified-clusters.md` was read and called: *"Litteally all chinese and its
 obvious from wikidata names lol"* — then *"Apply it lol"*.
 
 She was right about the bulk, and the clusters are why. The records no rule could settle
@@ -10347,7 +10347,7 @@ time. Where the competing items carry different Han forms and the bearer's own n
 one of them, the collision is settled for that person: `Tachibana no Moroe` is written 橘, so
 he is `Q16884158`.
 
-**Per bearer, not per string**, which is Emma's own `Maria` ruling — *"there's a male and a
+**Per bearer, not per string**, which is the `Maria` ruling — *"there's a male and a
 female Maria… settled by the person's sex"* — applied to a different signal.
 `scripts/build-name-resolved-by-han.py` → `reports/name-resolved-by-han.csv`.
 
@@ -10367,7 +10367,7 @@ points at.
 
 ## 2026-08-19 — the patronymic fathers, censused: 3,855 bearers, 492 fathers
 
-Emma's item, 2026-08-15: *"If they are patronymics I actually think I'm going to want to add
+A queued item, 2026-08-15: *"If they are patronymics I actually think I'm going to want to add
 items for the hypothetical fathers that are implied to exist from the patronymics."*
 `scripts/build-patronymic-fathers.py` → `reports/patronymic-fathers.{md,csv}`. **It emits
 nothing**, because the item states its own blocker and that blocker is hers.
@@ -10407,7 +10407,7 @@ modelling choice, not research.
 
 ## 2026-08-19 — four rulings recorded, and one question that should never have been asked
 
-Asked Emma the outstanding decisions. Three were genuinely open; the fourth was not.
+The outstanding decisions were put up. Three were genuinely open; the fourth was not.
 
 **Trim the name strings, and fix the English too.** The placeholder labels read `<relation>
 of <name>` and 2,732 of 12,661 distinct names carry titles, offices, dates or leading list
@@ -10427,7 +10427,7 @@ lifted. Next: the unit of creation is one father *per family*, not per name stri
 a count of names, and `Anders` implying 349 people is not one man — and the `Ols` spelling
 flaw has to be fixed before anything is emitted.
 
-**The middle initials were already confirmed, and asking again was a mistake.** Emma: *"we
+**The middle initials were already confirmed, and asking again was a mistake:** *"we
 had an extensive discussion of this"*, *"the initial thing was confirmed."* She is right.
 `reports/middle-initial-wikidata-practice.md` settled it on evidence over 19,250 items, per
 language, which is precisely what she required at the time — *"I want evidence of it being
@@ -10447,7 +10447,7 @@ before spending a question on it.
 
 ## 2026-08-19 — four more rulings, and the sibling question I had no business framing
 
-**`某` joins the shared marker vocabulary.** Emma: *"Add it."* It is now in
+**`某` joins the shared marker vocabulary**, on a one-word ruling. It is now in
 `scripts/labels.py` beside `NN`, `unbekannt` and `未知`, so it drives label emission
 repo-wide rather than only the romaniser. 252 records; there is no surname `某` and no given
 name containing it, so it never collides with a real name. Checked: `is_marker_label('某')`
@@ -10463,7 +10463,7 @@ follows `ja`/`zh` instead of the 13%-vs-10% coin flip the evidence offered.
 
 **The patronymic fathers: one per individual, and my question deserved the pushback it
 got.** I offered "one per family cluster" as though grouping siblings were available.
-Emma: *"Uhh what the fuck do you mean creates duplicates per sibling? How do you know they
+The objection: *"Uhh what the fuck do you mean creates duplicates per sibling? How do you know they
 are siblings."* I did not, and the premise made it unlikely — **these people have no
 recorded father**, so the ordinary sibling link is exactly what is missing.
 
@@ -10485,7 +10485,7 @@ is the one part of this that would be wrong on its face.
 
 ## 2026-08-19 — the queue was a record, not a queue. 2,188 lines → 971
 
-Emma, and she is right: *"The fact that you've only been appending to the queue and not
+And it is right: *"The fact that you've only been appending to the queue and not
 removing from the queue is the real problem here... The only stuff in the queue should be
 actionable things that we are queuing up, and we remove it from the queue once it's
 finished."*
