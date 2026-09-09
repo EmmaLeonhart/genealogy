@@ -2,8 +2,8 @@
 
     python scripts/extract-name-items.py
 
-**Emma, 2026-08-30, on Tunheim:** *"So did we have that name item downloaded and just decided
-not to use it because nobody in our store pointed to it?"* Yes. `Q36927172` *Tunheim* sits in
+**`Tunheim` was in the download the whole time and simply went unused, because nothing in the
+store pointed at it.** `Q36927172` *Tunheim* sits in
 `wikidata/items/items-01552.jsonl.gz` carrying `P31 Q101352` *family name*, and the resolver
 never looked at it.
 

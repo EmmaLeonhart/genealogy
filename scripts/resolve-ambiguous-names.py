@@ -2,10 +2,10 @@
 
     python scripts/resolve-ambiguous-names.py
 
-**Emma, 2026-08-24**, asked how the batch should handle the tokens that resolve to more
-than one Wikidata item: *resolve by the person's sex, emit*.
+**Tokens that resolve to more than one Wikidata item are resolved by the person's sex, and
+emitted.**
 
-**Her rule settles two of the seven, and the reason the other four resist it is worth
+**That rule settles two of the seven, and the reason the other four resist it is worth
 stating rather than working around.** `Martin`, `Anton`, `Emil` and `Eliza` each have two
 candidates *of the same sex*, so sex has nothing to separate. What separates them is the
 `mul` label:
@@ -64,7 +64,7 @@ def load_mul():
 
 
 def resolve(token, candidates, sex, classes, mul):
-    """`(qid, why)` or `(None, why not)`. Sex first — it is Emma's rule."""
+    """`(qid, why)` or `(None, why not)`. Sex first — that is the rule."""
     if sex in ("M", "F"):
         wanted = MALE_GIVEN if sex == "M" else FEMALE_GIVEN
         exact = [q for q in candidates if wanted in classes.get(q, set())]

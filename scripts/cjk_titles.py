@@ -1,8 +1,8 @@
 """Native CJK forms for a title or territorial tail. `イタリアのベレンガーリオ1世`.
 
-**Emma, 2026-09-07**, choosing between four readings of what to do with a title inside a label:
-**イタリアのベレンガーリオ1世** — the native form. And, on being shown the alternative:
-*"Yeah like kings and dukes and such have Japanese names lol"*.
+**Chosen from four readings of what to do with a title inside a label, 2026-09-07:**
+**イタリアのベレンガーリオ1世** — the native form. Kings, dukes and the rest have Japanese
+names of their own; they are not transliterated English words.
 
 **What it replaces.** `label_in` transliterated the whole label token by token, so
 `Berengar I, emperor of the Romans` came out `ベレンガル・I・エムペロル・オフ・テ・ロマンス` —
@@ -13,7 +13,8 @@ title tail** that `namemodel.drop_title_tail` already finds.
 
 **The shape is native, not translated word for word.** Japanese and Chinese put the territory
 and the title BEFORE the name — `フランドル伯ボードゥアン4世`, `埃及法老拉美西斯二世` — where
-Korean uses a space. With no title word it is her own example's form, `PLACE` + `の` + name.
+Korean uses a space. With no title word it takes the worked example's form, `PLACE` + `の` +
+name.
 
 **⛔ AN UNKNOWN PLACE OR TITLE IS REFUSED, never transliterated.** The whole reason the old
 output was wrong is that it rendered words it did not know as if they were names, and a
@@ -256,7 +257,7 @@ def render_tail(tail: str) -> tuple[str, str, str] | None:
 def is_bare_place(tail: str) -> bool:
     """True when the tail is a territory with NO title word -- `of Italy`.
 
-    That case takes her own example's form, `イタリアのベレンガーリオ1世`, rather than the
+    That case takes the worked example's form, `イタリアのベレンガーリオ1世`, rather than the
     place attaching straight to the name. **It follows the same comma recursion as
     `render_tail`**: `of Ivrea, king of Italy` opens with a bare connective but resolves to
     `king of Italy`, which has a title, and reading only the front gave `イタリア王のベレンガル
@@ -278,7 +279,7 @@ def compose(name: tuple[str, str, str], tail: tuple[str, str, str] | None,
             bare_place: bool) -> tuple[str, str, str]:
     """The finished `(ja, zh, ko)`. The title goes BEFORE the name in `ja` and `zh`.
 
-    `bare_place` is true when the tail was a territory with no title word, which takes her own
+    `bare_place` is true when the tail was a territory with no title word, which takes the worked
     example's form: `イタリア` + `の` + the name.
     """
     if tail is None:

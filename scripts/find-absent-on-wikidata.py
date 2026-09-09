@@ -2,9 +2,8 @@
 
     python scripts/find-absent-on-wikidata.py
 
-**Emma, 2026-08-25:** *"I want you to do a manual exploration to see in that line goin down from
-Charlemagne to Arne and me, which of the supposed absent members are actually just present on
-wikidata without ids."*
+**Explore by hand which of the supposedly absent members of the line down from Charlemagne to
+Arne and the account owner are in fact present on Wikidata, simply without ids.**
 
 `reports/charlemagne-route.csv` marks 16 of its 399 steps `create`, meaning no Geni id of theirs
 appears on any Wikidata item. **That is not the same as having no item.** `Q2183430` *Benedicta

@@ -1,9 +1,9 @@
-"""Surnames that are places — the spread Emma asked to see before any rule.
+"""Surnames that are places — the spread to be read before any rule is made.
 
-Emma, 2026-08-11, on Aénor of Châtellerault, whose `SURN` is `of Châtellerault`,
-whose birthplace field says Châtellerault, and whose Wikidata item carries no
-`P734` at all: **"Show me more cases first."** Her chosen option was to pull the
-cases where `SURN` looks toponymic and see the spread *before* any rule exists.
+Aénor of Châtellerault has `SURN` = `of Châtellerault`, a birthplace field saying
+Châtellerault, and no `P734` at all on her Wikidata item. **More cases come first:**
+the chosen option was to pull every case where `SURN` looks toponymic and read the
+spread *before* any rule exists.
 
 **No place-name list is used, because that would be the fuzzy matching this repo
 refuses everywhere else.** The evidence comes from the record itself:
