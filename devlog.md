@@ -16249,7 +16249,7 @@ one the builder happens to write.
 
 **Still open and stated rather than fixed:** the refreshed ledger does not contain Helen Frisk
 (`6000000177921459052`) or Richard Wade Borsheim (`6000000177921459056`), although both were
-created by the batch she ran and the refresh captured later items from that same batch up to
+created by the batch that was run, and the refresh captured later items from that same batch up to
 `Q141198548`. So the next run would create them a second time. Not investigated yet.
 
 **1,399 passed, 24 skipped, 0 failed** in 5m55s.
@@ -16260,7 +16260,7 @@ Two corrections, both architectural rather than a bug in a line.
 
 **"My algorithm is entirely based on anyone on the continuous subgraph currently on wikidata
 from Arne... no counting hops it literally should do a billion hops."** The seed set was the
-*ledger* — every item she has made, including her Izumo, Kitajima and Baekje work — so the ring
+*ledger* — every item made by hand, including the Izumo, Kitajima and Baekje work — so the ring
 grew around all of it. `wikidata_subgraph()` now walks `P22`/`P25`/`P26`/`P40`/`P3373` outward
 from `Q11959067` and the seed set is what that reaches: **97 items, 96 of 171 ledger people**.
 The other 75 keep their entry in `have` — the ledger still answers *does this person have an
@@ -16269,10 +16269,10 @@ case**, in her words: *"the spine people shouldn't play a role because they aren
 subgraph."* A medieval couple created yesterday has no path to Arne on Wikidata yet.
 
 Two of my inventions went in the bin on the way here. A **distance-from-Arne radius**, which
-appears nowhere in her spec and cut a batch from ~30 people to **7** because the caps stopped
-binding — 2 of 10 children, 0 of 10 parents. And an **exclusion list**, which she called
+appears nowhere in the spec and cut a batch from ~30 people to **7** because the caps stopped
+binding — 2 of 10 children, 0 of 10 parents. And an **exclusion list**, called
 correctly: *"If you just followed the algorithm then exclusions wouldn't be needed."* Under the
-subgraph she is not a seed and neither are the Kitajima people; the list now catches only 7
+subgraph the account owner is not a seed and neither are the Kitajima people; the list now catches only 7
 statement lines from the `bergitte-to-emma` spine walk, which is a question about where that
 walk stops, not about exclusions.
 
@@ -16284,7 +16284,7 @@ with `--limit`. There has never been a Wikidata-connectivity walk here.
 The correction: *"the script is supposed to go through my contributions and update the ledger every
 time."* It was a separate step, and the cost was immediate: a batch built at 17:33 used a ledger
 refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** — the hinge of all
-three lines, which she had just created — read as missing. With the refresh inside the run the
+three lines, just created by hand — read as missing. With the refresh inside the run the
 Charlemagne spine went from **step 8 to step 13 in one build**, walking past Bergitte. A stale
 ledger does not look like an error; it looks like work to do, and the work it invents is
 re-creating items already made.
@@ -17372,8 +17372,8 @@ seeded for the inner ring and never extended. `label_in` refuses a partial name,
 **And the pipeline inverts the rule.** A label at creation is good and a label after
 creation is a risk. Today's file: **2 label lines at creation, 1,580 after.** Diffed against the
 `.qs` actually run — every statement run was in the generated file, nothing was added, and
-she hand-deleted **1,579 label lines** (the whole 177-item CJK clan block, plus 79 ja/zh edits on
-existing items), moved the 22 she kept to the top, and touched **not one structural statement**.
+**1,579 label lines** were hand-deleted (the whole 177-item CJK clan block, plus 79 ja/zh edits on
+existing items), the 22 kept were moved to the top, and touched **not one structural statement**.
 All 41 creations and every `P22`/`P25`/`P26`/`P40`/`P3373`/`P2600`/`P569`/`P570`/`P735`/`P734`/
 `P1449`/`P5056` survived intact.
 
@@ -17486,7 +17486,7 @@ the alias thing and certain things specifically related to attaching names, like
 birth name vs. the surname."* And: *"the pipeline is so broken with married names right now that
 it's kind of worth just doing any of this stuff."*
 
-**The audit she asked for first.** 57 scripts read `derived-labels.csv`, not the 44 she remembered.
+**The audit asked for first.** 57 scripts read `derived-labels.csv`, not the 44 remembered.
 **48 read `label_en`/`label_mul`** — so flipping at the source reaches all of them in one change.
 **Only 4 read `aliases_from_married_name` at all**: `derive-labels.py`, `build-garborg-day.py`,
 `build-edit-objects.py`, `build-charlemagne-ancestry.py`. The other 53 had never seen a married
@@ -18601,10 +18601,10 @@ of the quick statement stuff by a lot, so this is worth leaving at the end."*
 individual is created without their CJK labels. Today the builder emits `ja`/`zh` when every token
 resolves and creates the person regardless when they do not; under the new rule that person is
 carried forward instead. It would bite rarely — 37 of 38 in the last batch already carry both — but
-she wants it absolute, not usual. Deliberately **not** applied now: *"Apply it at the end of the
+it is to be absolute, not usual. Deliberately **not** applied now: *"Apply it at the end of the
 queue because I don't want to interrupt whatever pipeline we're running right now."*
 
-## 2026-08-29 — the algorithm review is closed, and the batch she will run
+## 2026-08-29 — the algorithm review is closed, and the batch to be run
 
 Her instruction at 12:12 PST, via a one-shot cron 30 minutes later: *"consider the review over and
 then generate the quickstatements, and then after that is finished then continue with the queue, I
@@ -18621,7 +18621,7 @@ since deleting the whole file removed `Q232803` from `have` anyway.
 **The batch: 38 creations, 13 links.** 47 people composed, 672 carried forward, 15 label edits on
 existing items with 2,143 held and 45 already drained.
 
-**Four checks before it was sent, because she runs this file by hand:**
+**Four checks before it was sent, because this file is run by hand:**
 
 - **15** label edits on existing items — exactly the cap.
 - **38 of 38** `P2600` statements carry their `P1810`.
@@ -18634,7 +18634,7 @@ existing items with 2,143 held and 45 already drained.
 morning that nothing else would have noticed. Regenerated the report; the fix was the artifact, not
 the test. **279 passed, 0 failed** after.
 
-Sent to her with `SendUserFile` rather than left in the repo, since she said she would run it later.
+Sent with `SendUserFile` rather than left in the repo, since it was to be run later.
 
 ## 2026-08-29 — I deferred a live item by misreading one sentence
 
@@ -18667,7 +18667,7 @@ to transform into something crazy."*
 add that to claude.md"*. Now a `CLAUDE.md` section: a question in a paragraph is not a question that
 has been asked, and § *NO REPLY MEANS CONTENT* then reads that silence as approval.
 
-**And an option she cannot pick is worse than no option.** My export-timeout question offered *"kill
+**And an option that cannot be picked is worse than no option.** My export-timeout question offered *"kill
 and resubmit now"*. Geni has no cancel — `docs/export-seed-rules.md` only ever said one-at-a-time,
 and I extrapolated a stop button that does not exist. Her reply: *"you think you can kill a geni
 export read the fucking docs you can't."* The no-cancel fact is now in that file, so the same
@@ -18718,12 +18718,12 @@ of the queue, I ran five investigative commands before writing anything: the nam
 add it to the end of the queue. You did the exact opposite and immediately started working on the
 fucking problem."*
 
-`CLAUDE.md` now carries the rule in her words: **when she says add it to the end of the queue, write
-it down and stop.** No investigation, no questions, no gathering evidence to make the item better.
+`CLAUDE.md` now carries the rule verbatim: **when the instruction is to add it to the end of the
+queue, write it down and stop.** No investigation, no questions, no gathering evidence to make the item better.
 
 **The reason it is wrong even when the findings are good** — and they were heading somewhere — is
-that the tail of the queue is where she puts things she has decided are *not now*. Doing them
-immediately overrides that decision, spends the session on her lowest priority, and hands her a
+that the tail of the queue is where things decided to be *not now* go. Doing them
+immediately overrides that decision, spends the session on the lowest priority, and hands back a
 result she then has to read when the point of queueing it was to stop thinking about it.
 
 The only thing the rule allows is cross-referencing a related existing item so the same thing is not
@@ -18778,8 +18778,8 @@ taken here.
 
 ## 2026-08-29 — Arne Garborg is continuously linked to Charlemagne
 
-**33 of 33 consecutive pairs bonded**, measured over all 34 items in one batched request after she
-ran both files. It was 29 of 33 this morning.
+**33 of 33 consecutive pairs bonded**, measured over all 34 items in one batched request after both
+files were run. It was 29 of 33 this morning.
 
 Her daily batch created the two missing people — Ramborg Knutsdotter Lejon `Q141216350` and Ingrid
 Guttormsdotter `Q141216349` — and closed three breaks; the two-statement file closed the fourth,
@@ -18826,8 +18826,8 @@ Buyeo Deokjang* in thirteen languages. The ten Latin ones come from
 **`ja`, `zh` and `ko` are emitted, which that table normally omits**, and the condition is the one
 `CLAUDE.md` states: they are excluded *"only because the relative's name is usually not
 transliterated — where it is, they are emitted."* Here it is. His labels were supplied by hand —
-`ja`/`zh` 扶餘德璋, `ko` 부여덕장 — so 부여덕장의 아내 is the corrected form of the exact statement she
-was about to run.
+`ja`/`zh` 扶餘德璋, `ko` 부여덕장 — so 부여덕장의 아내 is the corrected form of the exact statement that
+was about to be run.
 
 The general case is queued at the tail as a count, not a rule: how many people carry their spouse's
 name and have no parents. `_carries_marker` cannot see them, because the name contains no marker
@@ -18839,9 +18839,9 @@ Her instruction: queue the `Q141198548` question, then *"generate the quickstate
 standard pipeline I am probably no gonna run them bu I want to examine them"*.
 
 **34 creations, 19 links, 15 label edits.** 43 composed, 721 carried forward, 2,203 label edits held
-and 90 already drained — the drip record is working through the backlog at the rate she set.
+and 90 already drained — the drip record is working through the backlog at the rate set.
 
-Verified before sending, on the same four checks as every batch she might run: exactly 15 label
+Verified before sending, on the same four checks as every runnable batch: exactly 15 label
 edits on existing items, 34 of 34 `P2600` carrying `P1810`, no redaction marker outside a `P1810`
 line, and **296 passed, 0 failed**.
 
@@ -18878,8 +18878,8 @@ label), which first reported 0 pairs; the repair then iterated a string instead 
 comparison intersected single *characters* and reported 1045 nonsense pairs. Both looked like
 results. The known merge — `Q110302791` — is what exposed the first one.
 
-The safeguard half stays open; she deferred its design, and `reports/rival-profiles.md` carries
-her three hand-merges as the ground truth any screen must retrodict.
+The safeguard half stays open; its design is deferred, and `reports/rival-profiles.md` carries
+the three hand-merges as the ground truth any screen must retrodict.
 
 ## 2026-08-29 — the Korean princess, diagnosed; and a dated kluge
 
@@ -18922,7 +18922,7 @@ So: one function removed, 14 kept. `tests/test_entities.py` is 16 passed, 1 skip
 ## 2026-08-29 — the kluge extends to the 178 clan individuals. Labelling is NOT touched
 
 **The ruling:** *"every single one of those clan individuals will mechanically not go into the universe
-until October"*, and the line she drew herself: *"we probably are going to be changing their
+until October"*, and the line drawn with it: *"we probably are going to be changing their
 labelling in September, but being in the universe is not going to happen until October."*
 
 `kluge_blocked_from_universe()` is now the three Buyeo people **plus the 178 CJK clan
@@ -18953,8 +18953,8 @@ block, and the 20 QIDs are the whole of what can be.
 
 **Her own `Q232803` is deliberately excluded**, and `EMMA_QID` now names it so the exclusion
 reads as meaning rather than as a bare string. It sits in `NEVER_TOUCH_QID` beside the Kitajima
-people, but she is not one of them, and blocking her item from the universe is a separate
-decision about her own duplicates -- hers to make, not implied by this instruction.
+people, but the account owner is not one of them, and blocking that item from the universe is a
+separate decision about the owner's own duplicates -- not implied by this instruction.
 
 Verified: 201 blocked, subgraph **316** (unchanged), 0 blocked people inside it, roots intact,
 clan label block still 3,051 lines so September labelling is untouched.
@@ -18975,17 +18975,16 @@ morning; `git show 12f3134a^:entity_resolution.md` gives it whole. It held **nin
 - the four now added: `Q11596350` 稚武彦命, `Q11078587` 播磨稲日大郎姫, `Q24890131` 物部伊莒弗,
   `Q11443857` 太媛 Futohime
 
-**Ame no Hohi is `Q10940685`** 天穂日命, and he is *not* in that file by QID -- she named him aloud.
+**Ame no Hohi is `Q10940685`** 天穂日命, and he is *not* in that file by QID -- he was named aloud.
 Resolved offline against `out/wikidata/labels.tsv` (aliases 天菩比神 / 天之菩卑能命 / アメノホヒ),
 never by a live query. He matters because the Izumo line descends from him, so he is the doorway
-the Kitajima people would be reached through -- which is precisely the reachability she is afraid
-of.
+the Kitajima people would be reached through -- which is precisely the reachability at issue.
 
 The first three are also the entire content of `exports/post-merge/wikidata-qid-links.ged`.
 
 Verified: **205 blocked**, her item excluded, subgraph **316** (unchanged), 0 blocked people
 inside it, roots intact. None of the five is in the ledger, so this is prophylactic rather than
-corrective -- which is what she asked for.
+corrective -- which is what was asked for.
 
 ## 2026-08-29 — batch regenerated after the kluge: 31 creations, 21 links
 
@@ -19027,7 +19026,7 @@ premise.
 
 **The 178 clan individuals are deliberately excluded from THIS half.** They stay out of the
 universe and their labels still go out; adding them here would have silently dropped the
-15-a-day label drip she wants running through September. Verified: 2 clan items in today's
+15-a-day label drip that is to run through September. Verified: 2 clan items in today's
 budget, 137 label lines in the batch.
 
 Verified after recompose: 31 creations, **0 occurrences** of any blocked QID, clan labels
@@ -19116,7 +19115,7 @@ Now: 30 creations, 21 links, 289 passed / 32 skipped.
 holds a `P22` -- `Q100029`, whose father is `Q55090998` -- and a line proposing a different one,
 the predicate returns `True`. That is the check that was missing the first time.
 
-## 2026-08-29 — 252 entry points. The Bure people are roots, as she specified
+## 2026-08-29 — 252 entry points. The Bure people are roots, as specified
 
 **The ruling:** *"YES THE BURE PEOPLE ARE ALL ENTRY POINS."* They were in the `universe` -- walkable
 *through* -- but not in `roots`, so they joined the subgraph only if a walk from Arne or Bureus
@@ -19127,8 +19126,8 @@ unreachable by construction, and 2 of 251 were inside.
 Bureätten person carrying a Geni id. Reading the file rather than pasting ids keeps one list of
 these people in the repo.
 
-**Her prediction was right, and it is measured.** Two roots gave 284 Arne-side against 36
-Bureus-side. 252 gives **314 against 285** -- the 50/50 she called, for the reason she gave: the
+**The prediction was right, and it is measured.** Two roots gave 284 Arne-side against 36
+Bureus-side. 252 gives **314 against 285** -- the 50/50 called, for the reason given: the
 Bure people have vastly more entry points but each reaches almost nothing, so 250 extra roots buy
 about 249 people. Subgraph **316 → 599**, and **599 of 614** ledger people now seed.
 
@@ -19170,9 +19169,9 @@ an obvious one."*
 
 Geni writes the marker into `SURN`, which is always the trailing position -- the one never tested.
 
-**The audit she asked for.** `scripts/audit-marker-surname-labels.py`,
+**The audit asked for.** `scripts/audit-marker-surname-labels.py`,
 `reports/marker-surname-audit.tsv`: **2,167** corpus people carry this shape; exactly **1** had
-reached Wikidata (`Q141217396`), ours, and she had already hand-corrected its label to *Maria*.
+reached Wikidata (`Q141217396`), ours, and its label had already been hand-corrected to *Maria*.
 So the damage is one item, self-repaired -- but the pending batch was about to emit
 `Lmul "Maria No name"` again, and 2,167 arrive at the rate the ring reaches them.
 
