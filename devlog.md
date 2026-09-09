@@ -18724,7 +18724,7 @@ queue, write it down and stop.** No investigation, no questions, no gathering ev
 **The reason it is wrong even when the findings are good** — and they were heading somewhere — is
 that the tail of the queue is where things decided to be *not now* go. Doing them
 immediately overrides that decision, spends the session on the lowest priority, and hands back a
-result she then has to read when the point of queueing it was to stop thinking about it.
+result that then has to be read when the point of queueing it was to stop thinking about it.
 
 The only thing the rule allows is cross-referencing a related existing item so the same thing is not
 solved twice.
@@ -32519,7 +32519,7 @@ now the blank that means *ask again* and was read as *nothing to do*.
 
 **Her report:** *"youre still adding names from the generated things on NN people as given
 names"*, and *"you aren't linking peoples names as soon as they are created when the items very
-much exist and are ready"*. The item she photographed is `Q141353755`, `mul` = `NN ektefelle
+much exist and are ready"*. The item photographed is `Q141353755`, `mul` = `NN ektefelle
 Tollak Jonsson III Aukland`, carrying `P735` given name **Tollak** — her husband.
 
 **Issue one: `names_a_relative` was defined in ONE emitter.** The 2026-09-07 fix went into
@@ -32710,16 +32710,16 @@ all 10 are stillborn records. And the `unbalanced` catch-all fires on **3** rows
 * **`noble` only.** Offered every lowercase rank — 1,029 people, one artefact, one rule — the ruling
   took `noble` alone. The other 1,680 proposals stay computed in
   `reports/title-label-proposals.tsv` and are not emitted; `build-noble-label-batch.py` widens
-  by one constant when she says so.
+  by one constant on instruction.
 * **⛔ THE PIPES ARE HELD.** *"bruh no the pipes are a bit more complicated, I am not 100% sure
   how to interpret it lol."* So the **7** `noble` labels that also carry a `|` are excluded even
   though the rank half is settled — removing the rank and leaving the pipe would commit to half
-  an interpretation she has not made. A queue item records the three shapes without reading them.
+  an interpretation nobody has made. A queue item records the three shapes without reading them.
 * **Nothing in the rank's place**, which is § *A TITLE IS NOT A NAME* already. **No `Amul`
   carrying the old string either**: the `Amul` preservation of § *The MARRIED name is the real
-  name* exists to protect a hand edit of HERS from being overwritten, and these are `GZWDer`'s
+  name* exists to protect a HAND edit from being overwritten, and these are `GZWDer`'s
   bot labels — keeping `noble Nike Soutzaina` searchable is exactly the *something in its place*
-  she refused.
+  that was refused.
 
 **`reports/wikidata-noble-labels.qs`: 457 people, 725 label edits — `Len` 454, `Lmul` 240,
 `Lnl` 31.**
@@ -32949,8 +32949,8 @@ page-saving targets became *"you Watson"*. And `CHECK before you alarm her` coll
 **The instruction behind it stands and is not what was reverted.** Same evening: *"the big
 issue again is too many things refer to me as 'her' or whatever and that is fucking stupid"*, and
 *"there is too much documentation that refers to me and it is weird"*. Asked what the underlying
-problem is, she answered **too many rules and sections**. So the fix is editorial — less
-documentation *about her* — not a find-and-replace over the pronoun.
+problem is, the answer was **too many rules and sections**. So the fix is editorial — less
+documentation *about the owner* — not a find-and-replace over the pronoun.
 
 **Kept from the reverted range:** `NAME_ADD_CAP` and `P2600_LEAD_CAP` with their `CLAUDE.md`
 section, and the pipe batch. Only the pronoun pass went.
