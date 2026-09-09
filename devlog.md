@@ -13712,7 +13712,7 @@ attempt and its `--check` score so the next try starts from a measured baseline.
 
 ### 2026-08-25 — which "absent" people on the Charlemagne line already have items
 
-Emma: *"which of the supposed absent members are actually just present on wikidata without ids."*
+The ask: *"which of the supposed absent members are actually just present on wikidata without ids."*
 
 `scripts/find-absent-on-wikidata.py`. The search is **structural, never a name lookup**: for an
 absent person, take the relatives who *do* have a QID and read the reciprocal slot on their item —
@@ -14331,7 +14331,7 @@ those are `ABT`.
 
 ## 2026-08-26 — `Q122925764` settled without the export it was waiting on
 
-Emma had said *"Needs an export before I judge it."* The export turns out to be both impossible
+The verdict had been *"Needs an export before I judge it."* The export turns out to be both impossible
 and unnecessary.
 
 **Impossible**: Geni offers *Export GEDCOM* only on profiles the account manages, and
@@ -14346,7 +14346,7 @@ and rejects `?id=`. Reaching a stranger's family means creating a placeholder th
 each is listed among the other's siblings, and both carry the same father in our corpus.
 
 So Wikidata holds one man where Geni holds two brothers. One item carrying two Geni ids is exactly
-what `CLAUDE.md` § *A second Geni ID on one Wikidata item is NOT a conflict* calls ordinary. Emma's
+what `CLAUDE.md` § *A second Geni ID on one Wikidata item is NOT a conflict* calls ordinary. The
 standing rule applies unchanged — *"Lean two people"* — and our snapshot already matches Geni, which
 is the only question that matters.
 
@@ -14382,7 +14382,7 @@ one Geni id. That is `p2600-all.tsv`, which keeps deprecated statements; `relati
 and counts **2,110**. So **751 of those second ids are already retracted on Wikidata**. Both
 numbers are right for what they measure and the difference is worth knowing before quoting either.
 
-Nothing resolved: duplicate merges are Emma's, and the only question is whether our snapshot
+Nothing resolved: duplicate merges are made by hand, and the only question is whether our snapshot
 matches Geni.
 
 ## 2026-08-26 — LINE 2 EXISTS. The third of the three lines is captured
@@ -14401,7 +14401,7 @@ data, which is what prompted looking at what was actually needed.
 every person is already in our corpus, so **line 2 needs no exports**, unlike lines 1 and 3 which
 took two.
 
-**It is 12 creations, not 16.** Emma is step 1 and `Q232803` already exists for her carrying no
+**It is 12 creations, not 16.** The account owner is step 1 and `Q232803` already exists carrying no
 `P2600` — an id to add, not a person to create. Steps 2–4 are all past the 1880 cutoff: her father
 b.1963 (whom she has separately forbidden creating), his father b.1926, and Reinhert Borsheim
 b.1891. The first creatable step is Rakel Rasmusdottir Borsheim, b.1866. Step 6 is an **adoptive**
@@ -14410,7 +14410,7 @@ mother, the one non-blood link on the line.
 **The whole spine is now 24 people**, Bergitte counted once across the three lines she is the hinge
 of.
 
-**Two `P2600` removals**, per Emma: *"Remove the son's P2600 from the item."* `Q104755784` *Ruben
+**Two `P2600` removals**, per the ruling: *"Remove the son's P2600 from the item."* `Q104755784` *Ruben
 Wulff* also claimed his son Wolf Rubensson, 48 years and a different family apart; `Q96985053`
 *John Loomis* also claimed his son of the same name. `reports/wikidata-remove-collapsed-generation-p2600.qs`.
 
@@ -14421,7 +14421,7 @@ together.
 
 ## 2026-08-26 — the pinned last queue item is built: the whole spine in one batch
 
-**Emma, 2026-08-25:** *"queue says to build the thing that makes a lot of them."* It only became
+**Ruled 2026-08-25:** *"queue says to build the thing that makes a lot of them."* It only became
 buildable once line 2 was captured an hour ago, because until then a third of the spine did not
 exist as data.
 
@@ -14434,7 +14434,7 @@ like "no work to do".
 bit: 49 people across the three lines, minus 5 in the ledger, 8 already judged to have items, 4
 born after 1880, 9 already carrying a `P2600` elsewhere, and 2 held by the duplicate guard.
 
-**21 + 2 held + Emma is 24** — the spine count in `reports/the-spine.md`, reached independently
+**21 + 2 held + the account owner is 24** — the spine count in `reports/the-spine.md`, reached independently
 from the other direction, which is the closest thing to a check this had.
 
 **One defect the run exposed.** `--known` read only a `qid` column, and
@@ -14470,7 +14470,7 @@ runs both. There is one live batch file.
 
 ## 2026-08-26 — the solo-children analysis, and what it found is asymmetry
 
-Emma queued this: *"solo child gives a bit of support but it's not gospel I'm gonna ask for a
+Queued: *"solo child gives a bit of support but it's not gospel I'm gonna ask for a
 queued up analysis on synoptic tree vs wikidata solo children situations like this."*
 
 `scripts/census-solo-children.py` builds `reports/solo-children.csv`, one row per solo-child
@@ -14501,7 +14501,7 @@ tracking date *softness*. The census now reads the refused file alongside the ke
 
 ## 2026-08-26 — model-vs-reality, and a diff whose first findings were about itself
 
-Emma queued this after four corrective rounds in one afternoon: *"we are supposed to generate
+Queued after four corrective rounds in one afternoon: *"we are supposed to generate
 complete models of what the wikidata items should be and compare with the reality."*
 
 `scripts/model-vs-reality.py` builds the intended item from the Geni record plus the rules —
@@ -14537,7 +14537,7 @@ back as `ITEM NOT FETCHED` — which reads like a network failure rather than a 
 
 `scripts/build-from-diff.py` → `reports/wikidata-from-diff.qs`: **74 statements over 42 items**,
 each present because `reports/model-vs-reality.tsv` says the item lacks it, and for no other
-reason. That is the second half of Emma's instruction, and it makes a whole class of error
+reason. That is the second half of the instruction, and it makes a whole class of error
 impossible: a projection cannot emit a statement the item already holds, because such a statement
 is not in the `missing` column by construction.
 
@@ -14598,7 +14598,7 @@ Wikidata rather than against us.
 Otoyama#26, so Hiroshima and Otoyama are **brothers**. Wikidata gives Otoyama's father as
 **Hiroshima**: his brother, and his immediate predecessor in the succession.
 
-That is exactly the shape Emma's 2026-08-24 ruling was made from — *"Takanori 81 and Takatomi 80
+That is exactly the shape the 2026-08-24 ruling was made from — *"Takanori 81 and Takatomi 80
 held consecutive seats and were brothers"* — recurring at seats 25/26, and this time it is
 Wikidata that has flattened it.
 
@@ -14667,7 +14667,7 @@ that does not exist; the snapshot one fires on the `{}` that double-unwrapping p
 
 **1,321 passed, 0 failed.**
 
-## 2026-08-26 — five blockers put to Emma, and four of them should not have been questions
+## 2026-08-26 — five blockers put up, and four of them should not have been questions
 
 The status report's blocker list was three `NEEDS-DECISION` bullets holding five decisions. She
 asked for an `AskUserQuestion` on each; she answered all five, and then said what the exercise was
@@ -14720,7 +14720,7 @@ traceback arrived after the work was done and read like a failure that was not o
 
 ## 2026-08-26 — the married name is the real name, and no batch adds an `Aen`
 
-**Emma:** *"married name is always the 'real' name and applied as the primary mul label (first
+**The ruling:** *"married name is always the 'real' name and applied as the primary mul label (first
 amul added if applicable) and then the birth name is next as an amul. No aen are ever supposed to
 be added lol only ones in non-latin scripts get aliases for their birth names that are not in
 amul."*
@@ -14766,7 +14766,7 @@ loudly rather than emitting nothing when the join yields no `P2600` at all.
 ## 2026-08-26 — the Izumo chart becomes three offices, and the surname screen was wrong
 
 `scripts/build-izumo-succession.py` → `reports/wikidata-izumo-succession.json`, **105 `P39`
-*position held* statements**. Emma's model, 2026-08-24: three offices distinguished by the
+*position held* statements**. The model, 2026-08-24: three offices distinguished by the
 organisation, not one succession.
 
 | holders | seats | organisation |
@@ -14815,7 +14815,7 @@ Rejected: `P1416` *affiliation*, which describes a person rather than a position
 
 ## 2026-08-26 — the Japanese duplicate pass had no Japanese in it
 
-Emma, 2026-08-24: *"Find profiles that look similar like shared parents, plus look over
+Ruled 2026-08-24: *"Find profiles that look similar like shared parents, plus look over
 basically all Japanese items with higher scrutiny."* `scripts/find-geni-duplicates.py` had a
 `script` column and a sort key putting `Han`/`Kana`/`mixed` first.
 
@@ -14858,7 +14858,7 @@ sibship.
 
 ## 2026-08-26 — `P1038` *relative* surveyed, and 71% of it is already in our tree
 
-Emma, 2026-08-25, after ranking parents / spouses / children / siblings, named a fifth:
+On 2026-08-25, after ranking parents / spouses / children / siblings, a fifth was named:
 *"there are other relationships there that are sometimes reported on Wikidata, like the relative
 role"*. The instruction was to **measure before building anything on it**.
 `scripts/survey-p1038-relative.py` → `reports/p1038-relative-survey.md` and
@@ -14904,7 +14904,7 @@ already fixed — `label_slots()` applies `labels.is_marker_label` at both emiss
 own, because QuickStatements V1 cannot point at an item a `CREATE` in the same batch has just
 minted."* That is false. Pointing at what was just created is precisely what `LAST` is for.
 
-**Emma, 2026-08-26:** *"For every missing name the daily quickstatements generation should
+**Ruled 2026-08-26:** *"For every missing name the daily quickstatements generation should
 generate the ones for existing items and in the generation run add it to the existing ones too
 lol. Just like with people being linked on their relatives through QID PID LAST inverted of the
 creation property setting LAST PID QID."* And the real limit, in her words: *"two things created
@@ -14941,7 +14941,7 @@ statement about the item just minted comes back — carrying `P3831` *married na
 **subject** is scoped to its block and did not know the same of `LAST` as a **value**. It still
 fails on a line genuinely repeated inside one block, checked by injecting one.
 
-**And this is a pattern, now written into `CLAUDE.md` § *The batches are a SEQUENCE*.** Emma:
+**And this is a pattern, now written into `CLAUDE.md` § *The batches are a SEQUENCE*:**
 *"You are often not respecting the fact that I do invariance-based algorithms. You just end up
 going towards a learned helplessness that we cannot do certain things, which we can."* Three
 invented limits are on record — `LAST`-as-value, this one, and exports "needing" her — and each
@@ -14952,7 +14952,7 @@ one had machinery built around it before anybody tried the thing.
 ## 2026-08-26 — the Aaron III export had already been run, twice
 
 The queue said *"Aaron III — one more export, seeded the same way in the Samaritan tree"*, and
-Emma authorised running it under Chrome automation. The mandatory pre-export grep found it was
+Running it under Chrome automation was authorised. The mandatory pre-export grep found it was
 not needed: `exports/post-merge/` holds **seven** exports, not the one the queue describes, and
 **two of them are seeded on Aaron III's own survivor** `6000000178918141824`. The later
 `-refresh` holds the survivor **without** the stale twin, which is the resolution condition.
@@ -15059,7 +15059,7 @@ documented flag set away.
 `6000000019384841547` *Martin Tollefson Tunheim* in both the live batch and
 `wikidata-garborg-day-1.qs`. The ledger was refreshed from `Special:Contributions/日巫女` that
 minute — **0 rows added, so current** — and says he has no item at all: day-1 was only partly
-run, which Emma said at the time. Spent records are now excluded by name, from the same
+run, as was said at the time. Spent records are now excluded by name, from the same
 `SPENT_BATCHES` list the `Aen` guard uses, and the exclusion was verified by planting a genuine
 clash between two live files. What actually protects against a duplicate creation is the ledger
 plus `p2600-all.tsv`, both consulted live inside `build-garborg-day.py`.
@@ -15069,7 +15069,7 @@ plus `p2600-all.tsv`, both consulted live inside `build-garborg-day.py`.
 name records, and they are two populations: `(Bielke)`, `(Ulv)`, `(Banner)`, `(Vasa)`,
 `(Sparre)`, `(Hvide)` are real noble houses; `(?)`, `(D.)`, `(de)` and `(hjorthorn)` are not
 names. Treating them all as names makes false name items; dropping them all discards real family
-names. `name modelling.txt` reserves edge cases for Emma, so the classifier is untouched and the
+names. `name modelling.txt` reserves edge cases for a hand ruling, so the classifier is untouched and the
 test excludes them **with the count stated** rather than silently.
 
 Also dropped a `NEEDS-DECISION` tag that was never one: `Olga` and the seven other ambiguous
@@ -15114,7 +15114,7 @@ script, because the first being refuted by its own census is the part worth keep
 
 Asked which qualifier the bracketed `P734` should carry, from four options confirmed offline —
 `P1932` *object named as*, `P3831` *object of statement has role* with `Q13417114` *noble
-family* or `Q212807` *Alias*, or both — Emma dropped it: *"Ehh both surnames are coequal
+family* or `Q212807` *Alias*, or both — it was dropped: *"Ehh both surnames are coequal
 properties and nvm about a qualifier just drop that. Both are coequal properties for the
 surname."*
 
@@ -15173,7 +15173,7 @@ sibling emission sites: the additions pass, which drew on `sibling_budget_left()
 that emits relationships onto people being **created**, which did not. 10 capped, **28
 uncapped**. `CLAUDE.md` is explicit — *"The cap is 10 `P3373` statements per day, across every
 batch, not per file. A builder emitting siblings must count them and stop"* — and the whole
-reason for the cap is that Emma finds sibling links too numerous on one batch, so 38 in one file is
+reason for the cap is that sibling links are too numerous for one batch, so 38 in one file is
 the exact failure it exists to prevent. Nothing caught it because every other guard on these
 files is about line shape, not volume.
 
@@ -15204,7 +15204,7 @@ name file returned 11 because a comment line contains the word.
 ## 2026-08-26 — the post-merge override would subtract 5,537 relationships and add none
 
 The `⛔ PREREQUISITE ORDER` item's step 1 turned out to rest on a piece of merge logic nobody
-had written, and Emma had flagged the open question herself: *"idk how we resolved geni
+had written, and the open question had already been flagged: *"idk how we resolved geni
 conflicts in the synoptic tree earlier either"*. So it was measured before being written.
 
 **Half the design already works.** `genimerge.sources._post_merge_last` sorts
@@ -15242,7 +15242,7 @@ first to be caught at the moment it happened.
 
 **1,360 passed, 0 failed.**
 
-## 2026-08-26 — a comment above every line, and three things Emma spotted in the output
+## 2026-08-26 — a comment above every line, and three things spotted in the output
 
 **Her format, adopted:** *"With comments as headings and comments. Every line has a comment the
 line above it saying what change is happening."* `scripts/qscomment.py` is the shared post-pass:
@@ -15294,7 +15294,7 @@ and says it is too much long-term. Left to her, since every count in it is hers.
 
 ## 2026-08-26 — `-sen`/`-son`: two components, two definitions, 31,259 people with no name
 
-Chasing Emma's observation that `Q141189052` *Anna Carine Gundersen* came out with no `P735`
+Chasing the observation that `Q141189052` *Anna Carine Gundersen* came out with no `P735`
 or `P734`, the cause is not a missing item. It is that **two components define *patronymic*
 differently, and both did it on purpose**:
 
@@ -15319,7 +15319,7 @@ The person gets no name statement at all.
 **Not fixed, because both fixes decide something that is hers.** Widening the plan mints a
 patronymic item for `Jefferson`; falling back to the family item contradicts § *One name item
 per USAGE*, under which a patronymic is a different object from a surname with the same
-spelling. `name modelling.txt` reserves edge cases for Emma.
+spelling. `name modelling.txt` reserves edge cases for a hand ruling.
 
 **Recorded as a strict `xfail`** in `tests/test_namemodel.py` rather than as a comment — so it
 is measured on every run, and fails loudly the moment somebody fixes it without updating the
@@ -15330,7 +15330,7 @@ never a loosened assertion.
 
 ## 2026-08-26 — a nickname alias without a surname finds nobody
 
-Emma, on `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given an alias of
+On `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given an alias of
 'Sally' instead of 'Sally Ekman'."* Her record is `GIVN 'Sigrid "Sally" Manilva'`,
 `SURN Tunheim`, `_MARNM Ekman`.
 
@@ -15391,7 +15391,7 @@ plus half of the remaining."*
 first uncreated step overall, so `bergitte-to-emma` never moved — which is why the *"critical
 path going to me"* stood at **0 of 16 steps**. One step per path now.
 
-*And then it tried to create Emma.* Step 1 of that path is her. `Q232803` is in neither
+*And then it tried to create the account owner.* Step 1 of that path is her. `Q232803` is in neither
 `garborg-qids.tsv` nor `p2600-all.tsv` — her item has no `P2600`, which is the whole point — so
 every guard was blind and the batch emitted a `CREATE` for a **second item beside her own**.
 `ledger()` now folds in `entity_resolution.md`, the only record of a hand-asserted item.
@@ -15411,7 +15411,7 @@ queued: a CJK-only person is created as `NN` and their recorded name is never co
 
 ## 2026-08-26 — Arne to Bureus, walked over our own tree with no browser at all
 
-Emma: *"Do the Arne -> Bureus thing, I think me and Bureus path is already there."* Her guess
+The ask: *"Do the Arne -> Bureus thing, I think me and Bureus path is already there."* That guess
 about the shape was right: *"both of them are going to be relatively clear-ish and likely not
 traverse over individuals that we don't have yet."* **Every person on all three paths is already
 in the corpus.**
@@ -15425,7 +15425,7 @@ both ends and everything between are already here, a saved page buys nothing.
 | --- | ---: | ---: |
 | Arne → `Q633094` *Johannes Bureus*, the antiquarian | 21 | 15 |
 | Arne → Johannes Jacobi Bureus | 19 | 12 |
-| Emma → Johannes Jacobi Bureus | 21 | 17 |
+| account owner → Johannes Jacobi Bureus | 21 | 17 |
 
 **There are two Bureuses and they are not the same man.** `Q633094` *Johannes Bureus* already
 carries `P2600` for `6000000004334763223` — *Johannes Tomasson*, matching its own alias
@@ -15433,7 +15433,7 @@ carries `P2600` for `6000000004334763223` — *Johannes Tomasson*, matching its 
 *Johannes **Jacobi** Bureus*, `Q5590208`, which carries no `P2600`. Patronymics apart, so is the
 person; not adjudicated here.
 
-**The Arne and Emma paths converge.** Both reach Jacobi Bureus through `Johannes Larsson`
+**The two paths converge.** Both reach Jacobi Bureus through `Johannes Larsson`
 `Q16649637` and `Jacobus Johannis Zebrozynthius` `Q6251491` — a shared tail of three steps, so
 the two lines are one line below that junction.
 
@@ -15454,7 +15454,7 @@ result as redacted. **55,547 people have both empty while carrying a name**: 44,
 `CLAUDE.md` § *Do not confuse redacted with unnamed* is exactly this: *"the test is never 'is
 the label bad', it is 'is there anything real underneath it'"*.
 
-The non-Latin name is now the fallback. `6000000186285688241` — the case Emma's own batch
+The non-Latin name is now the fallback. `6000000186285688241` — the case that batch
 surfaced — goes from `Lmul "NN"` to `Lmul "부여융 무명"`.
 
 **And then it landed in `Len` too, which is wrong twice over**: it is not English, and Wikidata's
@@ -15530,7 +15530,7 @@ would have been the same error as the Austria-Hungary one, with more rows. Folde
 
 ## 2026-08-26 — the transliteration table, and the Chinese was never a decision
 
-I had put "the Chinese characters are a judgement per name" on the blocker list. Emma: *"Chinese
+I had put "the Chinese characters are a judgement per name" on the blocker list. The ruling: *"Chinese
 transliteration is already done lol btw so why do I need to make a decision"* — and she is right.
 `reports/garborg-name-transliterations.tsv` already held **113 tokens with both columns filled**,
 so the method was settled and what remained was authoring, not a ruling. It came off the list.
@@ -15600,7 +15600,7 @@ changes; the item is gone.
 
 ## 2026-08-26 — the good transliterator existed and was never wired in
 
-Emma, on being told the table had been hand-extended: *"Uhh what? We have a transliteration."*
+On being told the table had been hand-extended: *"Uhh what? We have a transliteration."*
 She was right and I had not looked. `scripts/translit_no.py` and
 `scripts/extend-transliterations.py` both exist, landed 2026-08-25 in `11295af7`, written after
 she asked *"did you kinda bullshit these instead of selecting from an actual pipeline?"*
@@ -15640,7 +15640,7 @@ the strength of the wrong engine's output.
 
 ## 2026-08-26 — her father test is in, and it found a missing Swedish suffix
 
-`classify_fields` takes an optional `father_name`; `patronymic_or_surname()` applies Emma's
+`classify_fields` takes an optional `father_name`; `patronymic_or_surname()` applies the
 test. Without a father it keeps today's morphological answer, which all nine existing callers
 depend on, and two tests pin that.
 
@@ -15678,7 +15678,7 @@ well as** its given/family rows. `RELIABLE_PATRONYMIC` leaves those suffixes out
 `(Gundersen, patronymic)` and missed an item that exists.
 
 The token really is both, and `CLAUDE.md` § *One name item per USAGE* settles it: two usages,
-two items. Emma's father test then decides per person which one to link. This file is
+two items. The father test then decides per person which one to link. This file is
 token-level and **cannot** make that call — it has no fathers, and a token's usage varies by
 bearer, which is exactly why both items are needed.
 
@@ -15705,7 +15705,7 @@ fail, restoring them makes it pass.
 
 ## 2026-08-27 — the father reaches the emitter, and it recovers lost statements
 
-`classify_fields` gained Emma's father test yesterday and **nothing handed it a father**, so it
+`classify_fields` gained the father test yesterday and **nothing handed it a father**, so it
 was built and unused for a day. `statements_for` and `name_lines` now take `father_name`, and
 both call sites in `build-garborg-day.py` pass the father's label.
 
@@ -15734,7 +15734,7 @@ the shape, and this neighbourhood does not yet.
 
 ## 2026-08-27 — the relationship section was three-quarters duplicates
 
-Emma: *"the relationship one is questionable that it's always gonna be so huge and growing."*
+The objection: *"the relationship one is questionable that it's always gonna be so huge and growing."*
 She was right, and the cause was not that there is a lot of work. **229 of 306** statements on
 existing items in that day's batch were **already on Wikidata**. 77 were new.
 
@@ -15781,7 +15781,7 @@ exactly how the batch became three-quarters duplicates — `garborg-live-state.t
 2026-08-24 while the ledger was rebuilt daily. A run without the flag now prints the age of both
 files and what the second one is for.
 
-**The first full run of it shows Emma has been busy.** The ledger went **80 → 121 items** and
+**The first full run of it shows how much hand work has landed.** The ledger went **80 → 121 items** and
 the live values **1,409 → 1,798 statements over 130 items** — she has run batches since
 yesterday. Today's build: 36 creations, **48 links** (up from 16, because more people now hold a
 QID and so more links are genuinely new), 704 statement lines, **0 duplicates**.
@@ -15938,7 +15938,7 @@ That is why the count was 13. With writes judged by **mode** — an inline `open
 path constant later used as `OUT.open("w")`, `OUT.write_text(...)` or `open(OUT, "w")` — it is
 **95**. Nothing drifted overnight; the detector was blind.
 
-Two knock-on corrections. `reports/emma-judgments.tsv` is Emma's hand-written verdict file and
+Two knock-on corrections. `reports/emma-judgments.tsv` is the hand-written verdict file and
 was reported 35h behind `structural-correspondence.csv`, an input it does not have — the
 reader-is-not-a-generator skip could not fire while the read looked like a write. Same for
 `garborg-name-transliterations.tsv`, a hand-maintained table `build-garborg-day.py` reads.
@@ -15988,7 +15988,7 @@ does not. That is the `xfail`-that-never-ran mistake from last week, caught this
 was committed rather than after being cited in three status reports.
 
 The three: a read-mode `open` is not a write; `write_text`, `.open("w")`, `write_bytes` and an
-inline literal all are; and `reports/emma-judgments.tsv` — Emma's hand-verdict file, which
+inline literal all are; and `reports/emma-judgments.tsv` — the hand-verdict file, which
 nothing generates — is not claimed as an output by the two scripts that read it, and *is* still
 reported as their input.
 
@@ -16005,7 +16005,7 @@ What came out of them:
 
 - **`zipper-provenance.tsv`** — 45,898 inferred pairs, **7,302 corroborated by an independent
   source**: the structural walk 7,841, the About Me 405, Tanba 181, Izumo 111,
-  `geni-wikidata-pairs` 126, and **17 of Emma's own hand verdicts**, which are nodes in the
+  `geni-wikidata-pairs` 126, and **17 hand verdicts**, which are nodes in the
   provenance graph exactly as she said they were.
 - **`add-p2600-gate.tsv`** — 148 rejected with a reason, 139 of them `WITHHELD` because the
   candidates share a name and may be one person; **1,017 inferred candidates dropped because only
