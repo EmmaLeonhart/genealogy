@@ -32565,3 +32565,39 @@ person, against 1,259 in total. Created people with no name statement went **10 
 and both remainders are correct — a bare `NN`, and one whose entire `GIVN` is her husband's name
 and whose `SURN` is empty. `NN Andersson` → `P734` `Q2817217`, `NN Skjelbrei` → `P5056`
 `Q51885688`, `NN ektefelle Vebrand Halvorson Årstad` → `P734` `Q30884596` **Årstad**.
+### the mislabelled in-law chain is COMMON: 3 of 18 targets, not a one-off
+
+Three more targets, and two of them repeat the defect 1.6.7 was written for this afternoon — the
+job returning an in-law chain as the **blood** result on a page that states
+*"No blood relationship was found."* in words.
+
+| target | prose Geni prints | job said | truth |
+| --- | --- | --- | --- |
+| David Johansen Monrad `2120676` | *"…third great grandson's 22nd great nephew"* | `via=blood` | **in-law** |
+| Jón Magnússon `343426165890011185` | *"…8th great niece's **husband's** 9th great granddaughter's **husband's** father"* | `via=blood` | **in-law** |
+| Ludwig Ernst "Ludvig" Bramsen `356724097230011578` | *"…30th great grandson"* | `via=blood` | **blood**, correctly |
+
+**With Ellen Christensdatter Thrane that is 3 of 18 run today, so roughly one in six.** It is not
+an edge case, and every one of them would have gone into the ledger as a blood hit with a
+`-blood.tsv` that is not a blood path.
+
+**The relation words settle it without any prose parsing**, which is what makes these checkable
+rather than judged. A blood descent is *"his son"* / *"her daughter"* at every step; each of these
+leaves that pattern at a named edge:
+
+    Monrad   step  7  Luitgard von Dillingen         his wife      then  8  her brother
+    Jón      step  7  Gange-Hrólfr 'Rollo'           her husband   then  8  his brother
+             step 18  Sigurður "seltjörn"            her husband
+             step 30  Snorri Jónsson                 her husband
+             step 31  Jón Magnússon                  his father    <- reached UPWARD
+    Bramsen  no non-descent edge anywhere in 33 steps
+
+Jón is reached as the **father** of the last step rather than as anybody's descendant, so there is
+no descent to find and Geni is right to say so. He and Ellen cross the **same** Rollo marriage at
+step 7, from Gisèle — two independent captures landing on one edge.
+
+All three are filed with the verdict the page supports: Monrad and Jón as IN-LAW with `via=inlaw`,
+Bramsen as blood. Bramsen also carries *"No in-law relationship was found."*, so both his questions
+are answered and the ring's second tie does not exist for him.
+
+Pool 2,600 → 2,597; 111 tiny profile GEDCOMs, 715 tiny path GEDCOMs, **0 invented people**.
