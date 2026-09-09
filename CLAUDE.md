@@ -1863,16 +1863,14 @@ resolves on its own.
 
 ### A second Geni ID on one Wikidata item is NOT a conflict
 
-**Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
-that."*** Two Geni profiles for one person is a permanent, structural feature of
-Geni, not an error to resolve, and a second `P2600` on a Wikidata item is the
+**It is impossible to merge two Geni profiles.** Two profiles for one person is a permanent,
+structural feature of Geni, not an error to resolve, and a second `P2600` on a Wikidata item is the
 correct representation of it.
 
 **Why it happens:** Geni has rules against connecting biblical people to living
 people. So users who want their line to reach antiquity keep **creating fresh
 biblical profiles** and attaching to those instead. The duplicates accumulate and
-cannot be merged. Emma's words for what a second ID means: *"it usually means
-that the person just isn't properly done that way."*
+cannot be merged. A second ID usually means the person just is not properly done that way.
 
 Known pairs, both unmergeable:
 
@@ -2074,7 +2072,7 @@ can express.
 
 **`exports/` is the corpus and is read recursively — there is no ingest step.**
 Geni's downloads land as `export-geni (N).zip`, extracted beside themselves,
-grouped into a directory named for the person Emma exported from
+grouped into a directory named for the person exported from
 (`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/`,
 `exports/fleshing-out/` and `exports/edges/` for bulk takes. **103 GEDCOMs as of
 2026-08-06 evening.** In a bulk directory holding one style from several seeds,
@@ -2132,21 +2130,19 @@ disambiguator — the 3972 was a strict subset of the 4008, so keeping only the
 larger lost nothing.
 
 **Never overwrite an existing `.ged`. A new export is always a NEW file.**
-Emma's rule, stated 2026-08-13 after it was broken. `cp`-ing a freshly
+Stated after it was broken. `cp`-ing a freshly
 downloaded export **on top of** an existing tracked `.ged` clobbers a committed
 file, and that must never happen. When placing an export, if the destination
 path **already exists**, STOP — do not overwrite it. The download goes somewhere
-as its own new file (its own seed-named path, or the bulk directory Emma names,
-e.g. `fleshing-out/`), and where it goes is **her call, not a default to guess**.
-Ask. This was got wrong when a 13 AUG re-export of the Ogasawara Descendants
+as its own new file (its own seed-named path, or a named bulk directory such as
+`fleshing-out/`), and where it goes is **a decision, not a default to guess**. Ask. This was got wrong when a 13 AUG re-export of the Ogasawara Descendants
 seed was `cp`'d over `exports/descendants/export-Descendants-6000000227040613855.ged`
 — it belonged in `exports/fleshing-out/` as a new file, and the committed
 descendants copy had to be restored from git. Two exports sharing a seed *and* a
 style is a filing question to raise, never a licence to overwrite. **Before any
 `cp`/`mv`/`>` onto a path under `exports/`, check it does not already exist.**
 
-**The one exception, and it is narrow: a BYTE-IDENTICAL duplicate.** Emma
-authorised this on 2026-08-16 — *"Yes delete it"* — for
+**The one exception, and it is narrow: a BYTE-IDENTICAL duplicate.** Authorised for
 `export-Descendants-6000000178898487831.ged`, which existed twice with the same
 sha256 `2e2f87a6…`: the original in `exports/descendants/` from 13 AUG and a
 re-download filed into `exports/edges/` on 15 AUG. The `edges/` copy went.
@@ -2163,12 +2159,12 @@ the copy whose directory matches its style. `tests/test_sources.py::test_the_rea
 is what surfaces these, and it went green on this deletion.
 
 **Never delete a GEDCOM, and never add a zip.** The zips are gitignored **one
-line at a time**, deliberately: Emma wants an unignored zip to show up in
-`git status` so she can see a download has arrived. Do not replace those lines
+line at a time**, deliberately: an unignored zip shows up in `git status`, which is how a
+download announces itself. Do not replace those lines
 with a `*.zip` pattern — it would look tidier and would destroy the signal.
 
-**Never write a `*.ged` or `*.zip` pattern into `.gitignore`. Ever.** Emma's
-rule, stated 2026-08-06 after both halves of it had already been broken. The two
+**Never write a `*.ged` or `*.zip` pattern into `.gitignore`. Ever.** Stated after both halves
+of it had already been broken. The two
 file types are ignored in opposite ways and a pattern gets both wrong:
 
 - **`.ged` is never ignored at all.** Every GEDCOM under `exports/` is committed.
@@ -2189,14 +2185,13 @@ rather than after it arrives.
 
 ### NO descriptions and NO edit summaries. Categorical
 
-**Emma, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* She
-widened it the same day to cover edit summaries: **we categorically never use them.**
+**It is a hard rule that items are never created with descriptions**, and the same rule covers
+edit summaries: **they are categorically never used.**
 
 ### ⛔ THE ONE EXCEPTION: a PATRONYMIC name item carries `Den "patronymic"`. Do not remove it
 
-**Emma, 2026-09-01:** *"All patronymics get the description 'patronymic' so that they actually are
-properly deduplicated. We are still creating duplicate patronymics and it is at the point of
-intolerability."*
+**All patronymics get the description `patronymic`, so that they are properly deduplicated.**
+Without it, duplicate patronymics keep being created.
 
 **The description IS the deduplication mechanism**, which is why it overrides the rule above rather
 than breaking it. A label and description must be unique together per language, so two undescribed
@@ -2250,8 +2245,9 @@ rule intact.
 
 ### `P3373` sibling is capped at 40 PAIRS a day — doubled twice, 10 → 20 → 40
 
-**Emma, 2026-08-25:** sibling relationships are too numerous to send at once, so
-**sibling adding is limited to 10 QuickStatements a day.** **She doubled it to 20 on 2026-09-05** — *"update it to batches double the older size on all things"* — along with every other per-run batch size in the repo. The reasoning below is unchanged and is why there is a cap at all; only the number moved.
+Sibling relationships are too numerous to send at once, so sibling adding is capped. The cap
+started at 10 statements a day and has been doubled twice, along with every other per-run batch
+size in the repo. The reasoning below is why there is a cap at all; only the number moved.
 
 **The number that provoked it:** `reports/wikidata-reciprocals.qs` came out **257 statements, 160
 of them `P3373`** — 62% of a batch, all siblings. Sibling links grow as the *square* of a family's
@@ -2259,7 +2255,9 @@ size, because every child is a sibling of every other: one family of nine childr
 statements on its own. Parents grow linearly. So a batch that looks balanced by people is
 overwhelmingly sibling links by statement.
 
-**The cap is 40 `P3373` sibling PAIRS per day, across every batch**, not per file. Emma, 2026-09-05: *"We were supposed to emit 20 sibling pairs a day."* Both directions are emitted, so counting statements made a cap of 20 mean **10 pairs**; it counts the unordered pair now. She doubled it again on 2026-09-07 — *"change it so that the daily batch is twice as large in all of the things it does... all numbers doubled basically"* — so it is 40 pairs, and a full run comes out at about 79 lines. A builder emitting
+**The cap is 40 `P3373` sibling PAIRS per day, across every batch**, not per file. Both
+directions are emitted, so counting statements made a cap of 20 mean **10 pairs**; it counts the
+unordered pair now. A full run comes out at about 79 lines. A builder emitting
 siblings must count them and stop.
 
 **It is a pacing rule, not a correctness one.** The links are right; there are simply too many of
@@ -2273,9 +2271,8 @@ the `P2600` lead are capped now, § *THE ADDITIONS PASS IS CAPPED TOO*.
 
 ### ⛔ THE ADDITIONS PASS IS CAPPED TOO. `NAME_ADD_CAP` and `P2600_LEAD_CAP`
 
-**Emma, 2026-09-09, reading a 4,081-statement batch:** *"seemingly uncapped geni ids and some
-other things... So the uncapped stuff feels weird and might be a problem. They should be
-capped."*
+**A 4,081-statement batch carried uncapped Geni ids and uncapped name statements. They are
+capped now.**
 
 **This supersedes the sentence in § *`P3373` sibling is capped at 40 PAIRS* that read "Nothing
 else is capped."** That was true and safe only while another guard happened to be suppressing
@@ -2318,25 +2315,19 @@ sibling* gives and which still holds.
 
 ### A sibling step gets a PLACEHOLDER PARENT in our tree and NEVER on Wikidata
 
-**Emma, 2026-09-03:** *"Brother and sister here becomes kinda weird and imo actually wikidata
-modelling of them shouldn't use placeholder parents. Because we can on wikidata represent these
-people just with the sibling property. Instead of risking it with inventing placeholder parents.
-But I'm interested in them having placeholder profiles in our synoptic tree so I can look at
-their network positions."*
-
 **The two stores get different answers, and that is the whole ruling:**
 
 | store | a sibling step becomes |
 | --- | --- |
 | **Wikidata** | `P3373` *sibling*, directly between the two people. **No parent item is invented.** |
-| **the synoptic tree** (the Geni union) | a **placeholder parent profile**, because that is how she reads network positions |
+| **the synoptic tree** (the Geni union) | a **placeholder parent profile**, which is what makes the network position readable |
 
 **Why the split is not an inconsistency.** Geni records no sibling edge — `CLAUDE.md` § *A
 sibling step is the worked example* — so two siblings are joined only through a shared parent,
 and GEDCOM has no way to say *sibling* without one. Our tree therefore needs the placeholder to
 express the fact at all. Wikidata has `P3373` and needs no such prop, so inventing a parent item
 there is a claim about a person nobody has evidence for, in the one store § *The purpose is to
-ADD to Wikidata* makes hardest to undo. Her word for it is **"risking it"**.
+ADD to Wikidata* makes hardest to undo.
 
 **This is the same shape as § *Redacted people go in*:** the structure is what is informative,
 and you assert only the part the data supports. A placeholder parent in our tree is scaffolding
@@ -2348,64 +2339,51 @@ files.** So this governs nearly every path rather than an edge case. Note the in
 the section above: routing all of it through `P3373` puts it under the **20-a-day cap**, which
 is a pacing limit and not a reason to reach for parents instead.
 
-**The parent-adding campaign comes LATER and is hers to start.** *"In the future after we've
-sufficiently gathered all the placeholder parents and added a bunch to wikidata we can do a
-parent-adding campaign, especially if we use forest exports in closely related eccentric graph
-points on geni."* So the placeholders accumulate in our tree first; the campaign that turns them
+**The parent-adding campaign comes LATER and is not started here.** It runs once the placeholder
+parents have been gathered and a batch of them is on Wikidata, using `Forest` exports at closely
+related eccentric graph points. So the placeholders accumulate in our tree first; the campaign that turns them
 into real people is gated on that, and on `Forest` exports seeded at eccentric points — the same
 instrument § *"Not related to" does NOT mean not related* uses for eccentric targets.
 
 ### ⛔ BOTH TIES, ALWAYS. BLOOD **AND** MARRIAGE TO CHARLEMAGNE, PLUS THE IMMEDIATE FAMILY
 
-**Emma, 2026-09-07, typed out in Notepad because the phone app kept moving her keyboard.** This
-is the specification; nothing here is inferred.
+**The goal for each person is a blood tie AND a marriage tie to Charlemagne, plus their full
+immediate family.** That builds an interconnected graph on Wikidata with far more surface area
+for genealogical material to be grafted onto — from Geni above all, and from Genealogics,
+WikiTree and the rest.
 
-> *"In the future the goal is to ideally have for each person a blood and a marriage tie to
-> charlemagne, plus their full immediate family. This creates an interconnected graph on wikidata
-> that has much more surface area for more genealogical stuff to potentially be grafted onto it
-> from other things like geni most notably, but also other sources like genealogics wikitree
-> etc."*
-
-**⛔ THE REDUNDANCY IS THE POINT. It is not waste to be optimised away.**
-
-> *"The redundancy here is the point to be clear since the kind of 'ring' of the person to
-> charlemange with the blood and non-blood gives a maximum amount of relatives to go through for
-> a minimal cost of just clicking the button twice and waiting"*
+**⛔ THE REDUNDANCY IS THE POINT. It is not waste to be optimised away.** The ring of blood plus
+non-blood gives the maximum number of relatives to go through, for the minimal cost of clicking
+the button twice and waiting.
 
 So a person's deliverable is a **ring**: the blood chain to Charlemagne, the marriage/in-law
 chain to Charlemagne, and their immediate family. Two chains reach far more relatives than one,
 and the extra cost is one more click and one more wait. Do not treat the second chain as a
 fallback for when the first fails — that reading is what produced the bug this section replaces.
 
-### THE FOUR RULES, in her words
+### THE FOUR RULES
 
-1. **Both searches, always, on every person.** *"When requesting a blood relationship, you always
-   request the non-blood other ways too, and if no blood relationship found, you always look at
-   the other ways too."* Not in-law-as-fallback. Both, every time.
-2. **A blood miss with no path is NOT DONE.** *"If blood did not hit and there is no path then
-   redo it."*
-3. **⛔ DO NOT BACKFILL IN-LAW ONTO PEOPLE WHO ALREADY HAVE A BLOOD PATH.** *"I do not care about
-   non-blood relationships among people already connected because I am time conscious and this
-   shit is taking way too long and I do not want you to do that massive work. These first people
-   covered just get worse coverage and that is life."* The 12 already-resolved people keep their
-   worse coverage. This is a deliberate cost she has accepted, not an oversight to correct later.
-4. **The redone people are ORDINARY QUEUE MEMBERS.** *"it is best for them to just be normal
-   queue members in this thing lol"*, and *"order is actually not important"*. They are not a
-   separate backfill campaign — they go into the same pool as everyone else.
+1. **Both searches, always, on every person.** Requesting a blood relationship always requests the
+   non-blood ways too, and a blood miss always looks at the other ways. Not in-law-as-fallback.
+   Both, every time.
+2. **A blood miss with no path is NOT DONE.** If blood did not hit and there is no path, redo it.
+3. **⛔ DO NOT BACKFILL IN-LAW ONTO PEOPLE WHO ALREADY HAVE A BLOOD PATH.** The 12 already-resolved
+   people keep their worse coverage. That is a deliberate cost, accepted to avoid the massive
+   rework, not an oversight to correct later.
+4. **The redone people are ORDINARY QUEUE MEMBERS**, and their order does not matter. They are
+   not a separate backfill campaign — they go into the same pool as everyone else.
 
 ### ⛔ ANYTHING ODD ABOUT A PERSON -> FOREST EXPORT. Stop investigating
 
-**Emma, same message:** *"for Hørlück just do a full forest export by making an ancestor of him
-and exporting forest arond him, whatever the fuck this investigation thing is that you are
-planning if there is anything odd about him just forest, if anything odd occurs with any
-individual then forest export"*.
+**If anything odd occurs with any individual, run a `Forest` export**: make an ancestor of them
+and export around it, rather than planning an investigation.
 
 **This authorises `job.create`** — creating an ancestor and running the `Forest` export — as the
 STANDING response to an anomaly, in place of writing it up. `docs/export-seed-rules.md` is how
 the placeholder is made and `Forest` is the style, both already specified.
 
 **It replaces a habit, and that is the point.** A person who behaves oddly was becoming a
-NEEDS-INVESTIGATION line in a status report, which costs her a read and returns nothing. An
+NEEDS-INVESTIGATION line in a status report, which costs a read and returns nothing. An
 export costs one seed and returns up to 5,000 people around them — and `Forest` is precisely the
 style that follows spouse links, which is what the in-law half of the ring needs.
 
