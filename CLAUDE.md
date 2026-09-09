@@ -2605,7 +2605,7 @@ ran.
 | ID | label | datatype |
 | --- | --- | --- |
 | P2600 | Geni.com profile ID | external-id |
-| P1810 | subject named as | string — **qualifier on `P2600`**, carrying the name *Geni* renders, from `display_name` in `reports/display-names.csv` and never our own label. Datatype and placement confirmed offline against `wikidata/items/`, where every `P1810` is a `string` qualifier on an external identifier (`P396`, `P1280`, `P8034`, `P12458`). **A REDACTED person gets no `P1810` at all** — Emma, 2026-08-30, reversing her 08-29 ruling that the marker went in verbatim: *"there are two different kinds of private on Jenny… this is some weird-ass backend difference that affects the Gedcom export, but they display identically… so neither form of private should be present as the qualifier."* Both forms are in the corpus — `<private> /Surname/` **19,945** and bare `Private` **99,645** — and Geni displays the same thing for both, so which one a profile exports as says nothing about the person. `Q141223549` is the case: `P1810 "Private"` where the site shows `<private> Paulson`, a surname that is in none of the five exports holding her. `tests/test_garborg_day_batch.py` pins that no marker reaches the qualifier. |
+| P1810 | subject named as | string — **qualifier on `P2600`**, carrying the name *Geni* renders, from `display_name` in `reports/display-names.csv` and never our own label. Datatype and placement confirmed offline against `wikidata/items/`, where every `P1810` is a `string` qualifier on an external identifier (`P396`, `P1280`, `P8034`, `P12458`). **A REDACTED person gets no `P1810` at all.** There are two kinds of `private` on Geni — a backend difference that affects the GEDCOM export while displaying identically — so neither form belongs in the qualifier. Both forms are in the corpus — `<private> /Surname/` **19,945** and bare `Private` **99,645** — and Geni displays the same thing for both, so which one a profile exports as says nothing about the person. `Q141223549` is the case: `P1810 "Private"` where the site shows `<private> Paulson`, a surname that is in none of the five exports holding that profile. `tests/test_garborg_day_batch.py` pins that no marker reaches the qualifier. |
 | P31 | instance of | item — value `Q5` human |
 | P21 | sex or gender | item — `Q6581097` male, `Q6581072` female |
 | P22 / P25 | father / mother | item |
@@ -2824,7 +2824,7 @@ for queue execution specifically — it does not repeal § *One name item per US
 **What "recording it" means, because a guess that vanishes is just an unlogged
 decision:** write the reading you took and the reading you rejected next to the work —
 the queue item, the devlog entry, or the module docstring — plus what would falsify it.
-`queue.md` § *Mass export from every profile Emma has added* is the worked example: two readings
+`queue.md` § *Mass export from every added profile* is the worked example: two readings
 of one dictated phrase, the one chosen, and the observation that would switch it.
 
 The guess rule exists so that a twelve-hour window with nobody to ask is workable rather than a
@@ -3539,7 +3539,6 @@ of building up the synoptic tree. Start from somebody holding **both** a Geni ID
 that is a merge — **merged on whether something is the mother on both sides, unless the mothers
 really conflict.**
 
-**Labels confirm a position; they never choose one.** She said *"you basically
 **Labels confirm a position; they never choose one**, and that is **not** a reversal of *no name
 similarity, ever*. The structure picks the pair — Wikidata's `P22` of this item against our father of
 this Geni ID — and the label is read to check the pair is not absurd. Searching
@@ -3692,7 +3691,7 @@ section is about picking the wrong artifact, this one is about the wrong artifac
 recoverable by anyone who wants it; a stale file in the working tree is not recoverable from the
 confusion it causes.
 
-### ⛔ THE STUPIDER AND MORE SPECIFIC THE INSTRUCTION, THE HARDER SHE THOUGHT ABOUT IT
+### ⛔ THE STUPIDER AND MORE SPECIFIC THE INSTRUCTION, THE MORE THOUGHT WENT INTO IT
 
 **The more stupid and specific an instruction looks, the more thought went into it.**
 
@@ -3726,7 +3725,7 @@ If two readings of an instruction are possible, that is `AskUserQuestion` — §
 is ambiguous, ASK*. What is never right is quietly shipping the version that makes more sense:
 the designed-for property is lost, and it surfaces later as damage.
 
-### INCOMPLETE EARLIER WORK IS NOT THE THING SHE IS DESCRIBING. Its errors are not a finding
+### INCOMPLETE EARLIER WORK IS NOT THE THING BEING DESCRIBED. Its errors are not a finding
 
 **Incomplete earlier work toward a goal is not an implementation of that goal.** Finding
 something that vaguely resembles the described thing, measuring its errors, and reporting them as
@@ -4955,7 +4954,7 @@ begins.
 `scripts/classify-export-worth.py` decides which 39, `scripts/path-gap.py` names the
 seed for each step, and `scripts/census-paths.py` is the current-state snapshot.
 
-## HER ALGORITHMS, moved out of `queue.md` on 2026-09-01
+## THE ALGORITHMS, moved out of `queue.md` on 2026-09-01
 The queue is for work; these are specifications and standing processes, so they live here
 instead.
 
@@ -5129,7 +5128,7 @@ its own step plus every step beneath it, down to an anchor or to a hand verdict.
        167  POISONED
 
 Hand verdicts are first-class nodes: **103 independent pairs** from
-`reports/emma-judgments.tsv`, alongside the structural walk (7,841), her Geni bio links (405) and
+`reports/emma-judgments.tsv`, alongside the structural walk (7,841), the Geni bio links (405) and
 the clan rosters.
 
 **This section stays as the SPECIFICATION** — the two propagation rules below are how it must keep
@@ -5327,7 +5326,7 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### ⛔ HER RULINGS, 2026-09-01 — the interview. These OVERRIDE the sections below
+### ⛔ THE RULINGS OF 2026-09-01 — the interview. These OVERRIDE the sections below
 
 Every item was ruled on. Where a section below disagrees with this table, this table wins; the
 sections are kept for their detail, not their status.
@@ -5348,7 +5347,7 @@ as outstanding work rather than as a record of a night. What is left of it:
 
 | item | ruling | where it stands |
 | --- | --- | --- |
-| seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall | `hi`/`ar`/`ru`/`el` **done**, 151,320 labels. The `en` shortfall turned out to need in-law relation words she has not sanctioned — a decision, not arithmetic |
+| seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall | `hi`/`ar`/`ru`/`el` **done**, 151,320 labels. The `en` shortfall turned out to need in-law relation words that have not been sanctioned — a decision, not arithmetic |
 | `exports/post-merge/` | do the stale-duplicate resolution | graded: **408 of 412 are real deletions**. The standing ruling is to leave them and keep measuring |
 
 **Removed as done**, all verified by artifact rather than by memory: the `en` agreement rule ·
