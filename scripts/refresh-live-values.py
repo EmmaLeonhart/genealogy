@@ -2,10 +2,9 @@
 
     BOT_CONTACT=you@example.com python scripts/refresh-live-values.py
 
-**Emma, 2026-08-27**, on the relationship section never shrinking: *"the relationship one is
-questionable that it's always gonna be so huge and growing."* Measured the same day: **229 of
-306** statements on existing items in that day's batch were **already on Wikidata**. Only 77
-were new. The section is three-quarters noise.
+**The relationship section never shrinks, which is suspicious in itself.** Measured 2026-08-27:
+**229 of 306** statements on existing items in that day's batch were **already on Wikidata**.
+Only 77 were new. The section is three-quarters noise.
 
 ## Two defects, and the stale file is only one
 
@@ -14,15 +13,15 @@ were new. The section is three-quarters noise.
   else, so every child link the ledger implies went out every single run.
 * **`absent()` is property-level and stale.** `reports/garborg-live-state.tsv` records which
   *properties* an item carries, not which values, and was frozen at **2026-08-24**. Property
-  level cannot tell a second father from an existing one; a frozen file cannot tell that Emma
-  ran yesterday's batch.
+  level cannot tell a second father from an existing one; a frozen file cannot tell that
+  yesterday's batch has already run.
 
 This writes the missing half: `qid`, `property`, `value`, one row per statement actually on
 the item, read through `genimerge.wikidata.full_entities` — whole items, never a summary, per
 `CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item*.
 
 **QuickStatements merges a duplicate rather than failing on it**, which is exactly why this went
-unnoticed: nothing broke, the batches were simply three-quarters things she had already done.
+unnoticed: nothing broke, the batches were simply three-quarters things already done.
 
 Writes `reports/garborg-live-values.tsv`.
 """
@@ -46,11 +45,11 @@ OUT = ROOT / "reports" / "garborg-live-values.tsv"
 
 #: **The live LABEL of each ledger item, in the languages we write.**
 #:
-#: **Emma, 2026-08-30:** *"Every single label gets redone and if they disagree then they go
-#: onto the quickstatements that are generated."* A disagreement can only be seen against the
+#: **Every single label gets redone, and where they disagree the disagreement goes onto the
+#: generated QuickStatements.** A disagreement can only be seen against the
 #: value, and until now nothing recorded it: `garborg-existing-gaps.existing_state` reads the
 #: offline store and yields the label *languages* an item has, not what they say, and the store
-#: predates every item Emma has made. So the batch could only ever ask "is `ja` missing", never
+#: predates almost every item in the ledger. So the batch could only ever ask "is `ja` missing", never
 #: "is `ja` right".
 #:
 #: Same fetch, same items, no extra requests -- `full_entities` already returns labels and they
@@ -59,13 +58,13 @@ LABELS_OUT = ROOT / "reports" / "garborg-live-labels.tsv"
 
 #: **Every ledger item's WHOLE entity: ONE json file, overwritten, sorted, plain.**
 #:
-#: **Emma, 2026-09-04, specifying the shape:** *"Current revisions of all of them is intended as
-#: one json file that gets overwritten and as a result has clear diffs, everything sorted in it
-#: if that isn't a given to avoid garbage diffs from order changes"*.
+#: **The specified shape:** current revisions of all of them as ONE json file that gets
+#: overwritten, and so has clear diffs, with everything inside it sorted to avoid garbage diffs
+#: from order changes.
 #:
 #: So: not gzipped, not sharded, not line-oriented. **Gzip was the first attempt here and it is
-#: exactly wrong for what she wants it for** — a compressed file has no diff at all, and *"clear
-#: diffs"* is the whole point: the file is how anyone sees what changed on the ledger between one
+#: exactly wrong for what the file is for** — a compressed file has no diff at all, and clear
+#: diffs are the whole point: the file is how anyone sees what changed on the ledger between one
 #: run and the next.
 #:
 #: Sorted twice over, because either order alone would still churn: the top-level keys by qid,
@@ -94,9 +93,9 @@ def read_live_items(qids=None):
         return items
     return {q: items[q] for q in qids if q in items}
 
-#: **EVERY language, not the ones we write.** Emma, 2026-08-30, specifying how `mul` should be
-#: chosen: *"they have a consistent Latin label across two or more languages… whichever one is
-#: the most common"*. That is a count over all the item's labels, so restricting the capture to
+#: **EVERY language, not the ones we write.** `mul` is chosen as the consistent Latin label
+#: across two or more languages, whichever one is the most common.
+#: That is a count over all the item's labels, so restricting the capture to
 #: the fifteen languages this project emits would make the consensus a measure of our own
 #: output. `None` means no filter.
 LABEL_LANGS = None
@@ -110,7 +109,7 @@ def _every_item_the_batch_reasons_about():
     """Every QID `build-garborg-day.ledger()` returns, not just the rows of the ledger TSV.
 
     **⛔ These are two different sets and the difference is 172 items.** `reports/garborg-qids.tsv`
-    is one source; `ledger()` folds in her `SAME` verdicts from `reports/emma-judgments.tsv`, the
+    is one source; `ledger()` folds in the `SAME` verdicts from `reports/emma-judgments.tsv`, the
     entry-point roster and the correspondences. This script fetched the TSV, so **172 items the
     batch labels, links and reasons about were never read live at all**, and every check that
     consults the live files silently answered *not held* for them when it meant *not asked*.
@@ -198,10 +197,9 @@ def main():
     print(f"{len(label_rows):,} labels over {len(items)} items "
           f"-> {LABELS_OUT.resolve().relative_to(ROOT)}")
 
-    # **⛔ THE WHOLE ITEMS, COMMITTED. Emma, 2026-09-04:** *"Github actions is supposed to
-    # download jsons of the current revisions of the entire ledger all at once and commit them,
-    # so the information is supposed to always be present in the repository lol. My guess is you
-    # never actually added that functionality"*. Her guess was right.
+    # **⛔ THE WHOLE ITEMS, COMMITTED.** GitHub Actions is supposed to download JSONs of the
+    # current revisions of the entire ledger all at once and commit them, so the information is
+    # always present in the repository. That functionality had never been added.
     #
     # **The download was already happening and the JSON was being thrown away.** `full_entities`
     # above fetches whole items for every ledger qid, on every pipeline run, and the two TSVs
@@ -217,8 +215,8 @@ def main():
     # read?"* — every one of which is a question about the ledger, whose answer had been fetched
     # and discarded minutes earlier. With this file present those are a `zcat` and a grep.
     #
-    # **One file, overwritten, sorted, plain — her shape.** See `ITEMS_OUT` for her words and
-    # for why gzip, which this wrote first, is the wrong answer to *"clear diffs"*.
+    # **One file, overwritten, sorted, plain — the specified shape.** See `ITEMS_OUT` for it,
+    # and for why gzip, which this wrote first, is the wrong answer to "clear diffs".
     tmp = ITEMS_OUT.with_suffix(".json.tmp")
     with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
         json.dump(dict(sorted(items.items())), fh, ensure_ascii=False,

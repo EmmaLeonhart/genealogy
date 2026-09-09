@@ -2,19 +2,19 @@
 
     python scripts/zipper-provenance.py [GENI_ID ...]
 
-**Emma, 2026-08-25:** *"providence is important in this, and ideally, a zipper merge will almost
-always be done with there being a relatively large chain of providence, not just a simple 'this
-was the justification,' but a potentially very large series of justifications."*
+**Provenance is important here.** A zipper merge should almost always carry a relatively large
+chain of it -- not a single "this was the justification", but a potentially very large series of
+justifications.
 
-And the reason her own verdicts exist: *"That is the actual reason why I asked you to record my
-manual decisions, because of the fact that they entered into the province too."*
+That is also why the hand verdicts are recorded at all: they enter the provenance graph as
+first-class nodes.
 
 `reports/zipper-pairs.tsv` records **one step** — the slot, the method, the pair it hung off, and
 the evidence. That is a link. This walks the links into the chain: a round-6 pair's justification
 is its own step plus every step beneath it, all the way down to a Wikidata-stated `P2600`
-*Geni.com profile ID* or to a verdict Emma gave by hand.
+*Geni.com profile ID* or to a verdict given by hand.
 
-## Both directions, which is the part she was explicit about
+## Both directions, which is the explicit part of the specification
 
 **Support propagates upward from an independent resolution.** *"suddenly you go into the ancestors
 and you notice that somebody connected one of the ancestors. There's an entity resolution on one
@@ -26,8 +26,8 @@ resolution that clearly contradicts it, this indicates a clear contradiction... 
 ways."*
 
 So every pair the zipper inferred is checked against every *independent* correspondence this repo
-holds -- Emma's About Me links, her hand identifications, the structural walk, the Izumo and Tanba
-rosters, and her hand verdicts. An independent source that **agrees** is corroboration; one that
+holds -- the Geni About Me links, the hand identifications, the structural walk, the Izumo and
+Tanba rosters, and the hand verdicts. An independent source that **agrees** is corroboration; one that
 **disagrees** is a contradiction. Neither is applied only to the pair itself: both are pushed
 along the chain, because a chain is only as good as the step it rests on.
 
@@ -35,9 +35,8 @@ along the chain, because a chain is only as good as the step it rests on.
 
 A pair whose chain passes through a contradicted step is marked `POISONED`. That is a **reading**,
 not a deletion: `CLAUDE.md` is emphatic that the question is whether our snapshot matches Geni,
-never whether Geni is right, and Emma's own standard for stopping the join is high --
-*"we need a pretty damn good reason to stop it... This reasoning requires something pretty good."*
-So nothing is dropped here. The marking exists so that the reason is visible.
+never whether Geni is right, and the standard for stopping the join is high: it takes a very
+good reason. So nothing is dropped here. The marking exists so that the reason is visible.
 
 Writes `reports/zipper-provenance.tsv` (one row per pair, with chain depth, root, and status) and
 `reports/zipper-provenance-chains.md` (the full chains for the contradicted ones, plus any Geni
@@ -75,7 +74,7 @@ def read_pairs(path, qcol, gcol, delim):
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter=delim):
             q = (row.get(qcol) or "").strip()
-            # Emma's own file carries a verdict column; a WRONG is not a correspondence.
+            # The hand-verdict file carries a verdict column; a WRONG is not a correspondence.
             if row.get("verdict") in ("WRONG", "BROWSER"):
                 continue
             for g in re.split(r"[;,|]", row.get(gcol) or ""):
@@ -123,7 +122,7 @@ def main():
             n += 1
         print(f"  {label:<22} {n:>7,} independent pairs"
               + ("" if path.exists() else "   (missing)"))
-    # Her explicit WRONGs are the strongest contradiction there is.
+    # An explicit hand WRONG is the strongest contradiction there is.
     if (R / "emma-judgments.tsv").exists():
         with open(R / "emma-judgments.tsv", encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
@@ -138,11 +137,11 @@ def main():
             else:
                 contradicted.setdefault(g, f"{label} says {q}")
         if (g, row["qid"]) in manual_wrong:
-            contradicted[g] = "Emma judged this pair WRONG by hand"
+            contradicted[g] = "this pair was judged WRONG by hand"
     print(f"\n{len(supported):,} inferred pairs an INDEPENDENT source corroborates")
     print(f"{len(contradicted):,} an independent source contradicts")
 
-    # --- propagate along the chain, exactly as she described -------------------------
+    # --- propagate along the chain, exactly as specified -----------------------------
     status, reason = {}, {}
     for g in pairs:
         st, why = "INFERRED", ""
@@ -191,10 +190,10 @@ def main():
     wanted = [a for a in sys.argv[1:] if a in pairs]
     with open(md, "w", encoding="utf-8", newline="\n") as f:
         f.write("# Zipper provenance chains\n\n")
-        f.write("Generated by `scripts/zipper-provenance.py`. Emma, 2026-08-25: *\"ideally, a "
-                "zipper merge will almost always be done with there being a relatively large "
-                "chain of providence, not just a simple 'this was the justification,' but a "
-                "potentially very large series of justifications.\"*\n\n")
+        f.write("Generated by `scripts/zipper-provenance.py`. Ideally a zipper merge is done "
+                "with a relatively large chain of provenance behind it -- not a single 'this "
+                "was the justification', but a potentially very large series of "
+                "justifications.\n\n")
         f.write(f"{len(pairs):,} inferred pairs · max chain depth {max(depth.values())} · "
                 f"{counts.get('CORROBORATED', 0):,} corroborated · "
                 f"{counts.get('POISONED', 0):,} poisoned\n\n")

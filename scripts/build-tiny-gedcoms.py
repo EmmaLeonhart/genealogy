@@ -1,32 +1,31 @@
 """Two operations, both producing tiny GEDCOMs, and NEITHER invents a person.
 
-**Emma, 2026-09-06:** *"There's two distinct operations. Paths and profiles. Both ought to make
-tiny gedcoms for each path or individual. Both have similar information. Many saved pages have the
-info to make both tiny gedcoms from them."*
+**There are two distinct operations: paths and profiles.** Both make tiny GEDCOMs, one per path
+or per individual. Both carry similar information, and many saved pages hold enough to make both
+kinds from the one page.
 
     profiles   one .ged per PERSON  <- geni-families/*.tsv, geni-scraping/*.html
     paths      one .ged per PATH    <- paths/*.tsv
 
 ## The ruling that changed: an unknown parent is an ABSENT SLOT, not an `NN` person
 
-**Emma, 2026-09-06**, asked directly and choosing between placeholder people and empty slots:
-**absent slot, no person.** That supersedes her 2026-08-29 *"Both parents are 'NN' placeholders"*,
-which `scripts/build-scraped-gedcom.py` implements and which minted 4,928 of them.
+Asked directly, and choosing between placeholder people and empty slots: **absent slot, no
+person.** That supersedes the 2026-08-29 ruling that both parents are `NN` placeholders, which
+`scripts/build-scraped-gedcom.py` implements and which minted 4,928 of them.
 
 A GEDCOM `FAM` needs neither partner. Siblings with no known parents are a family with `CHIL` and
 no `HUSB`/`WIFE` -- which says *these people are siblings* and asserts nothing about who the
-parents were. That is the whole difference between the two emitters, and it is hers to have made:
+parents were. That is the whole difference between the two emitters:
 nothing here creates a human that was not named on a page.
 
 ## ⛔ WHY THE REDUNDANCY IS THE POINT, and it is an instruction rather than an accident
 
-**Emma, 2026-09-06, twice over:** *"every single sibling pair gets the small scrape done on it ...
-needs to be done on every single person, every single person in sibling pairs. And, yes, I know
-this is slightly redundant, but I'm telling you to do it. I'm telling you to do it."*
+**Every single sibling pair gets the small scrape done on it, on every single member.** The
+redundancy is instructed and deliberate.
 
-And the reason, in her words: *"it'll create a gedcom for each one of the members of the sibling
-pair, and then this links them as siblings with their parents in this new gedcom file, but they're
-also linked as siblings in the path gedcom files."*
+The reason: it creates a GEDCOM for each member of the sibling pair, and that links them as
+siblings *with their parents* in the new file, while they are also linked as siblings in the path
+GEDCOMs.
 
 So the two operations say different things about the same pair and both are wanted:
 
@@ -44,12 +43,11 @@ across 95% of paths. `scripts/sibling-pair-worklist.py` is the list of who still
 
 * **Every `INDI` xref is a real Geni id**, so the merge is an exact join -- `CLAUDE.md`: *"The
   Geni profile ID is the primary key for everything."*
-* **Names stay whole strings.** Emma, 2026-08-29: *"the names being present as strings makes
-  things significantly harder... You'd probably be using spacing to figure out what the last name
-  is."* No `GIVN`/`SURN` split.
+* **Names stay whole strings.** Splitting them would mean guessing from spacing which token is
+  the surname, which is significantly harder and is not done. No `GIVN`/`SURN` split.
 * **A family xref is a digest of its members**, so one family is one family in every file that
-  names it and re-running is byte-identical. Emma's own note on this: *"geni does not expose
-  family ids ... I'm not sure how much it matters as wikidata does not use families"* -- it is
+  names it and re-running is byte-identical. Geni does not expose family ids, and Wikidata does
+  not use families at all, so this matters little -- it is
   bookkeeping, kept because it costs nothing over a counter, not a headline property.
 * **A former marriage carries `1 DIV Y`, an engagement `1 ENGA Y`** -- kept from the script this
   supersedes, where it closed 58 of the 59 remaining broken path links.
@@ -168,7 +166,7 @@ def profile_gedcom(subject, name, rels):
     fams = []
     if parents or siblings:
         # The birth family. With no parents named this is CHIL-only -- siblinghood stated, and
-        # nothing claimed about who the parents were. Her ruling: absent slot, no person.
+        # nothing claimed about who the parents were. The ruling: absent slot, no person.
         fams.append({"husb": parents[0] if parents else None,
                      "wife": parents[1] if len(parents) > 1 else None,
                      "chil": [subject] + siblings})
@@ -221,8 +219,8 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
                          "div": former, "enga": word in ENGAGED})
         elif kind == "sibling":
             # ⛔ No parents are invented. The pair is a family with two children and no partners;
-            # their real parents arrive from each member's own profile scrape, which is why she
-            # requires the scrape on BOTH members of every sibling pair.
+            # their real parents arrive from each member's own profile scrape, which is why the
+            # scrape is required on BOTH members of every sibling pair.
             fams.append({"chil": [prev["gid"], cur["gid"]]})
     if not fams:
         return None
@@ -234,16 +232,16 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
 def saved_page_gedcom(subject, names, edges):
     """A tiny GEDCOM from one saved `geni-scraping/<id>.html`.
 
-    **Emma, 2026-09-06:** *"we save them on every saved geni html page to start."* The 1,555 pages
-    already on disk are the starting population -- no browser, no rate limit, no CAPTCHA.
+    **These are made from every saved Geni HTML page, to start with.** The 1,555 pages already
+    on disk are the starting population -- no browser, no rate limit, no CAPTCHA.
 
     Same rules as the extension's TSVs: every `INDI` is a real Geni profile, and an unknown parent
     is an absent slot. Where `build-scraped-gedcom.py` minted two `NN` parents to hold a sibling
     group, this writes the group as a `FAM` with `CHIL` and no partners.
 
-    **Half-siblings are still skipped**, which is hers and unchanged: two half-siblings share
-    exactly one parent, so giving them both would assert a marriage that did not happen. Her
-    ruling: *"If half siblings we go to both siblings to clarify."*
+    **Half-siblings are still skipped**, and that ruling is unchanged: two half-siblings share
+    exactly one parent, so giving them both would assert a marriage that did not happen. Where a
+    pair is half-siblings, both siblings are visited to clarify.
     """
     people = dict(names)
     people.setdefault(subject, names.get(subject, ""))
@@ -322,9 +320,9 @@ def main():
             out_path.write_text(text, encoding="utf-8")
             n_pages += 1
 
-    # ⛔ THE SAME PAGE YIELDS BOTH, INTO DIFFERENT DIRECTORIES. Emma, 2026-09-06:
-    # *"Path gedcoms and individual ones are different files in different directories even if they
-    # come from the same html page"*, and *"the paths can come from there"*. A saved profile page
+    # ⛔ THE SAME PAGE YIELDS BOTH, INTO DIFFERENT DIRECTORIES. Path GEDCOMs and individual ones
+    # are different files in different directories even when they come from the same HTML page,
+    # and the paths can come from there. A saved profile page
     # carries the relationship panel as well as the immediate-family block, so it produces a
     # profile GEDCOM above and a path GEDCOM here. `genimerge.genipage.read_relationship_path` is
     # the same extractor that produced `paths/*.tsv`, so the two readers cannot disagree.
