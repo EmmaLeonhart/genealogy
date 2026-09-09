@@ -2,9 +2,8 @@
 
     python scripts/backtest-edge-exports.py
 
-**Emma's complaint, 2026-08-15, and it is the whole reason this exists:** *"Finding these
-sparse areas, which we kind of did, and I did exports based off of them, but it feels like you
-kind of forgot about them."* Thirty-one edge exports were run off
+**The complaint this exists to answer, 2026-08-15: the sparse areas were found, exports were
+run off them, and then they were forgotten about.** Thirty-one edge exports were run off
 `reports/export-entry-points.csv`, placed in `exports/edges/`, and **nothing ever checked what
 they bought**.
 
@@ -117,9 +116,8 @@ def main():
     rest_edge = sum(1 for r in rest if r["in_an_edge_export"])
     with OUT_MD.open("w", encoding="utf-8") as fh:
         fh.write("# What the edge exports closed\n\n")
-        fh.write("**Emma, 2026-08-15:** *\"Finding these sparse areas, which we kind of did, "
-                 "and I did exports based off of them, but it feels like you kind of forgot "
-                 "about them.\"* This is the check that was never run.\n\n")
+        fh.write("**The sparse areas were found, exports were run off them, and then they "
+                 "were forgotten about.** This is the check that was never run.\n\n")
         fh.write(f"Every one of the **{len(rows):,}** people in "
                  "`reports/export-entry-points.csv` was in **exactly one** export when that "
                  "file was written — the file is drawn from clusters only one export ever "

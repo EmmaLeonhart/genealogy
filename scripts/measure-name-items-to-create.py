@@ -1,8 +1,6 @@
 """Which names would need a Wikidata item created, and which already have one.
 
-Emma, 2026-08-12: *"I probably want you to do some analysis right now of which
-names could have objects created for them that do not have those objects right
-now."*
+Which names could have items created for them that do not have one right now.
 
 **A name is not a label.** Geni names are language-agnostic strings; this is
 about the *name items* `P735` and `P734` point at, which are objects in their own
@@ -131,9 +129,7 @@ def main() -> int:
     add = L.append
     add("# Name items: which exist, which would have to be created")
     add("")
-    add("Emma, 2026-08-12: *\"I probably want you to do some analysis right now of which")
-    add("names could have objects created for them that do not have those objects right")
-    add("now.\"*")
+    add("Which names could have items created for them that do not have one right now.")
     add("")
     add("**A name is not a label.** This is about the *items* `P735` and `P734` point at.")
     add("")

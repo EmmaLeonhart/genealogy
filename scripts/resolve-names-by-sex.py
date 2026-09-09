@@ -2,8 +2,9 @@
 
     python scripts/resolve-names-by-sex.py
 
-**Emma's ruling, on `Maria`:** *"everything appears to be diacritics or stuff that's not actually
-it… there's a male and a female Maria"*, and *"That is settled by the person's sex."* So a token
+**The ruling, on `Maria`:** most of the apparent ambiguity is diacritics or items that are not
+the name at all, and the genuine residue is a male `Maria` and a female `Maria`, which is
+settled by the person's sex. So a token
 carried by two items is not an ambiguity to resolve once for the string — it resolves differently
 for each person who bears it.
 
@@ -15,7 +16,7 @@ for each person who bears it.
     the 33 that `reports/name-ambiguity-causes.md` left inside its *"231 · other. Mixed."* bucket,
     which was neither 231 nor mixed.
 
-Extending her rule to the second shape is a decision taken rather than asked, per `CLAUDE.md`
+Extending that rule to the second shape is a decision taken rather than asked, per `CLAUDE.md`
 § *Working the queue: GUESS. Do not ask*: **take the sexed item matching the bearer's recorded
 sex; where the bearer has no sex, take the generic item if one exists and resolve nothing
 otherwise.** A generic `given name` item is never wrong for a person whose sex we do not know,

@@ -2,10 +2,9 @@
 
     python scripts/survey-p1038-relative.py
 
-**Emma, 2026-08-25**, having ranked the four link kinds the zipper uses — parents, spouses,
-children, siblings — named a fifth: *"there are other relationships there that are sometimes
-reported on Wikidata, like the relative role"*. `queue.md` records the instruction attached to
-it: **measure how much of it exists before building anything on it.**
+Alongside the four link kinds the zipper uses — parents, spouses, children, siblings — there
+is a fifth relationship sometimes reported on Wikidata: the *relative* role. The instruction
+attached to it: **measure how much of it exists before building anything on it.**
 
 `P1038` *relative* is the catch-all: one property covering every kinship the specific
 properties do not, with `P1039` *kinship to subject* as a qualifier naming which. So the useful
@@ -137,9 +136,9 @@ def main():
     lines = [
         "# `P1038` *relative* in the local store — measured, not assumed",
         "",
-        "Emma, 2026-08-25, after ranking parents / spouses / children / siblings: *\"there are "
-        "other relationships there that are sometimes reported on Wikidata, like the relative "
-        "role\"*. The instruction attached to it was to **measure how much exists before "
+        "Alongside parents / spouses / children / siblings there is a fifth relationship "
+        "sometimes reported on Wikidata: the *relative* role. "
+        "The instruction attached to it was to **measure how much exists before "
         "building anything on it**. This is that measurement and nothing is built.",
         "",
         f"**The store is a Geni-shaped slice** — {items_seen:,} lines read from the shards, "
