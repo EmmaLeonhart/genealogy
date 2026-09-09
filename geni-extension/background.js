@@ -78,8 +78,35 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * The remaining seed jobs are dropped rather than kept: they were the search for a slot,
        * and the slot has been found. */
       if (msg.result && msg.result.state === "added") {
+        /* ⛔ **AND THE EXPORT IS REQUESTED FROM THE PARENT.** Emma, 2026-09-09: *"Once it has
+         * created the parent, then the queue gets thrown out, and the export is requested from
+         * the parent."* Both halves of that sentence, and only the first was here: `endId` was
+         * SET and then read by nothing, so a walk that found its slot created the person and
+         * stopped. The whole point of the climb is the export at the end of it. */
+        const pid = msg.result.pid || "";
         queue = s.queue.filter((q) => q.job !== "seed");
-        await put({ active, results, queue, endId: msg.result.pid || "" });
+        if (pid) {
+          queue = queue.concat([{ job: "export", geni_id: String(pid), kind: "forest",
+                                  walk: "forest", label: "created by the parent walk" }]);
+        }
+        await put({ active, results, queue, endId: pid });
+        try { await chrome.tabs.remove(tabId); } catch (e) {}
+        sendResponse(true);
+        pump();
+        return;
+      }
+
+      /* ⛔ **`seed_walk` IS WHERE THE CLIMB BEGINS.** `runIndividual` no longer hands out a
+       * queue -- it returns `walk_from`, one id -- so the background turns that into the first
+       * seed job and owns every step after it. Before this the individual job reported that a
+       * walk was needed and nothing started one. */
+      if (msg.result && msg.result.state === "seed_walk" && msg.result.walk_from) {
+        const from = String(msg.result.walk_from);
+        const held = new Set(s.queue.map((q) => String(q.geni_id)));
+        if (!held.has(from)) {
+          queue = s.queue.concat([{ job: "seed", geni_id: from, kind: "seed", label: "" }]);
+        }
+        await put({ active, results, queue });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -121,6 +148,29 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * Geni has no such operation, and offering one would be fiction. */
       await put({ running: false });
       sendResponse(true);
+      return;
+    }
+    /* ⛔ **THE ENTRY POINT THE AGENT CAN REACH.** The popup is browser chrome and
+     * `chrome-extension://` URLs are refused the same way `chrome://` ones are, so the popup's
+     * load/start pair cannot be driven from the automation surface. Without this the whole
+     * background driver -- queue, tabs, pacing, the walk -- was unreachable, and every run went
+     * down the DOM-trigger path instead, which has no queue at all. That is why the walk looked
+     * unimplemented when it was merely unreachable.
+     *
+     * One individual in, the full operation out: scrape, path, gate, climb, create, export.
+     * Emma, 2026-09-09: *"it's your job to open up the page and call the extension"*, and
+     * nothing else. */
+    if (msg.type === "walk") {
+      const id = String(msg.geni_id || "");
+      if (!id) { sendResponse({ error: "no geni_id" }); return; }
+      await put({
+        queue: [{ job: "individual", geni_id: id, kind: "individual",
+                  create: true, label: msg.label || "" }],
+        results: [], active: {}, endId: "", dryRun: false,
+        running: true, startedAt: new Date().toISOString()
+      });
+      sendResponse({ started: id });
+      pump();
       return;
     }
     if (msg.type === "load") {

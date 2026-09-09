@@ -2503,6 +2503,34 @@ mechanism's state reported as the task's ceiling.
 stopping, not a wrong technique. If the browser genuinely will not pair after all of that,
 say which mechanism failed and keep working on something else in the same turn.
 
+### ⛔ KILL CHROME WHENEVER YOU NEED TO. That is standing authority, not a blocker
+
+**You, 2026-09-09, on being told the extension could not be reloaded:** *"whatever the fuck this
+block on user action bullshit is, just fucking remove it. You have full authority to kill Chrome
+at any given moment in order to start this stuff again. It's not hard."* And: *"I'm asking you to
+kill Chrome, by the way."*
+
+**An unpacked extension does not pick up file changes on its own, and `chrome://extensions` is
+refused to the automation surface the same way every `chrome://` URL is.** That is true and it is
+NOT a blocker, because restarting the browser reloads the extension. The recipe you gave:
+
+    kill -9 the Chrome processes
+    force-open Chrome again from the command line on any page -- google.com will do
+    the extension has reloaded; drive it as normal
+
+**So a stale extension is never BLOCKED-ON-USER-ACTION and must not be tagged as one.** It was
+tagged that way in four status reports on 2026-09-09 while 1.6.5, 1.6.6, 1.6.7 and 1.6.8 sat on
+disk unrun — a mechanism's inconvenience reported as the task's ceiling, which is the exact
+failure § *NEVER SAY YOU CANNOT DO SOMETHING YOU HAVE NOT TRIED* names. The version the browser
+is running is measurable — `documentElement.dataset.geniCollector` — so there is no excuse for
+not knowing, and now none for not fixing it.
+
+**Two things worth keeping.** Killing Chrome loses whatever the browser was doing, so a Geni
+export mid-submit is worth landing first — a submitted export cannot be cancelled and the
+download page can be reopened by task id, but an unsaved form cannot. And the pairing with the
+Claude extension has to be re-established after a restart; § *AN EMPTY BROWSER LIST IS NOT A
+BLOCKER* is the procedure for that and it is also not a blocker.
+
 ### The working Geni capture call lives in ONE transcript. Name it, do not re-derive it
 
 **Do the way that already worked; look it up rather than being creative.** A session rebuilt a

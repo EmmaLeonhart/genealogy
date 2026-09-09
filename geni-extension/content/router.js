@@ -62,6 +62,27 @@ document.addEventListener("geni-collector-run", async () => {
     return;
   }
   root.dataset.geniCollectorBusy = "1";
+
+  /* ⛔ **`{job:"walk"}` HANDS OFF TO THE BACKGROUND AND RETURNS.** It is the agent's whole
+   * involvement: open a page from the repository's list, call this, stop. The background then
+   * owns the queue, opens the tabs, paces itself and runs the full operation -- scrape, path,
+   * gate, climb, create, export -- with nothing coming back out for anybody to manage.
+   *
+   * Emma, 2026-09-09: *"the extension's supposed to do all of the work on its own. You should
+   * never be able to see the queue at all."* This returns a receipt, not a queue. */
+  if (job && job.job === "walk") {
+    let reply;
+    try {
+      reply = await chrome.runtime.sendMessage({ type: "walk", geni_id: job.geni_id,
+                                                 label: job.label || "" });
+    } catch (e) {
+      reply = { error: "no background listening: " + String(e && e.message || e) };
+    }
+    root.dataset.geniCollectorResult = JSON.stringify(
+      Object.assign({ job: "walk", geni_id: job.geni_id }, reply || {}));
+    root.dataset.geniCollectorBusy = "0";
+    return;
+  }
   delete root.dataset.geniCollectorResult;
   let result;
   try {

@@ -102,13 +102,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **75 of the 87 misses are blood-only**, so they re-enter the pool under rule 2 of § *BOTH TIES,
   ALWAYS* and are not final misses.
 
-  ⛔ **THE RUNNING CHROME IS ON 1.6.4 — MEASURED 2026-09-09, THREE VERSIONS BEHIND THE DISK.**
+  ⛔ **CHECK THE RUNNING VERSION, AND KILL CHROME IF IT IS STALE.**
   **Read it, do not guess it:** `documentElement.dataset.geniCollector` is stamped by the content
-  script; it is five characters and its digits are `164`. So **1.6.5 through 1.6.8 are all on
-  disk and none of them has ever executed**, and every in-law defect they fix is still live. An
-  unpacked extension does not pick up file changes on its own, and `chrome://extensions` is
-  refused by the automation surface the same way `chrome://` always is. One click in that page,
-  or a Chrome restart, loads it.
+  script — five characters, and its digits were `164` on 2026-09-09 while 1.6.5 through 1.6.8 sat
+  on disk unrun.
+
+  An unpacked extension does not pick up file changes on its own and `chrome://extensions` is
+  refused to the automation surface — **and that is not a blocker.** `CLAUDE.md` § *KILL CHROME
+  WHENEVER YOU NEED TO*: `kill -9` the Chrome processes, force-open it again on any page, and the
+  extension has reloaded. Standing authority, given 2026-09-09. Never tag this
+  BLOCKED-ON-USER-ACTION again.
 
   ⛔ **AND 1.6.4 REPORTS AN IN-LAW CHAIN AS `via=blood`. Caught live on Miroslava, Princess of
   Bulgaria `371367105380011098`, 2026-09-09.** Her page states BOTH *"Shortest in-law
