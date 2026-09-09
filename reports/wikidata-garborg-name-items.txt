@@ -6,12 +6,12 @@
 # LAST would then name the person; they wait for the next run.
 #
 # A patronymic is its own item even where the spelling exists as a given
-# name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
+# name: CLAUDE.md, one name item per USAGE. Q141152710 Aadnesson is
 # the pattern -- labels and P31.
 #
 # A created PATRONYMIC also carries P144 based on: the given names it derives
 # from, one value for every such name the fathers who bear it actually carry.
-# That is what her resolution algorithm reads -- a person gets P5056 when their
+# That is what the resolution algorithm reads -- a person gets P5056 when their
 # father's P735 item is among these values -- so an item minted without them
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
@@ -220,8 +220,8 @@ LAST	P31	Q101352
 #   Q943803 Uno von Troil: P734 family name = the item just created
 Q943803	P734	LAST	S2600	"6000000002811012188"
 
-# 893 more name items are needed and wait for a later
-# run -- 12 a day is her cap, not a limit of the data:
+# 900 more name items are needed and wait for a later
+# run -- 12 a day is the cap, not a limit of the data:
 #   Vashus (family), 2 bearer(s)
 #   Anfinnsdatter (patronymic), 1 bearer(s)
 #   Baltzersson (family), 1 bearer(s)
@@ -234,7 +234,7 @@ Q943803	P734	LAST	S2600	"6000000002811012188"
 #   Finstaätten (family), 1 bearer(s)
 #   Fontelia (family), 1 bearer(s)
 #   Gestrinia (family), 1 bearer(s)
-#   ... and 881 more
+#   ... and 888 more
 
 
 # ======================================================================
@@ -254,7 +254,7 @@ Q98139923	Den	"family name"
 
 # ======================================================================
 # P460 SAID TO BE THE SAME AS, between spellings of one patronymic.
-# Both ways, as she wrote them by hand on Olofsson and Olai. Only
+# Both ways, as written by hand on Olofsson and Olai. Only
 # where the two items share a P144 source, a stem and a gendered
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================

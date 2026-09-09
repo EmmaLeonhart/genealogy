@@ -1,7 +1,7 @@
 # P7338 regnal ordinal, as a qualifier on the given name.
 #
-# Emma, 2026-08-15: "they should all have the regnal orders put on their names as
-# qualifiers", and name modelling.txt puts P7338 on the P735 given name rather than
+# Every such name carries its regnal order as a qualifier, and name modelling.txt
+# puts P7338 on the P735 given name rather than
 # on the person. The ordinal is the Roman numeral the source uses, because P7338 is a
 # string and the person is styled Abisha III, not Abisha 3.
 #

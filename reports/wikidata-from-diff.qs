@@ -3,8 +3,8 @@
 # Every line below exists because model-vs-reality.tsv says the item
 # does not hold it. No statement is here because a rule produced it.
 #
-# NOT emitted: `extra` (the item holds it and the model does not -- her hand
-# work), labels and aliases (they REPLACE, and hers are better).
+# NOT emitted: `extra` (the item holds it and the model does not -- hand
+# work), labels and aliases (they REPLACE, and the live ones are better).
 #
 # A CONFLICT IS emitted, as a SECOND statement BESIDE the existing one and never
 # in place of it. The item ends up recording both readings, ours cited to Geni.
