@@ -87,10 +87,11 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   * **The background service worker cannot be updated from here** and does not matter — it runs
     only the scheduler. `todo.md` § 3d has the measurement and five failed routes.
 
-  **State right now, measured 2026-09-09 01:20 PST:** the isolate pilot is **100 of 100,
-  COMPLETE** · `reports/isolates.csv` **124 rows, 124 family scrapes on disk**, of which **105
-  were taken under the Charlemagne anchor: 21 hits, 84 misses** · `reports/collector-worklist.tsv`
-  has **2,597 outstanding** · **zero invented people** · extension **1.6.7 on disk**.
+  **State right now, measured 2026-09-09 after five runs:** the isolate pilot is **100 of 100,
+  COMPLETE** · `reports/isolates.csv` **129 rows, 129 family scrapes on disk**, of which **110
+  were taken under the Charlemagne anchor: 24 hits, 86 misses** · **zero invented people** ·
+  extension **1.6.7 on disk**, and the running Chrome is at least 1.6.6 — a stated in-law miss
+  came back as `via=neither` rather than `not_offered` on both of the day's misses.
 
   **The in-law verdict is recorded for 18 of the 105** — `via` reads `neither` 9, `blood` 6,
   `inlaw` 3, and is **blank on 87**, which is every row taken before the in-law search existed.
@@ -121,6 +122,29 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   great granddaughter's 19th great niece"* — changed nothing and waited out the full 600000 ms.
   It compares against the chain already present now. **On disk and never executed**, like 1.6.6,
   until the extension is reloaded.
+
+  ⛔ **A HIT CAN COME BACK AS TWO CHAINS END TO END, numbered straight through.** Seen twice on
+  2026-09-09 — Louis d'Anjou 37 rows over an 18-step and a 19-step chain, Margareta Sanseverino
+  42 over 23 and 19, each second chain restarting on Charlemagne. **`path_steps` is a ROW COUNT
+  and not a chain length**, so reading it as one roughly doubles the descent. The shape is safe
+  — a person walked twice scores `REPEAT` — but it is new: all 11 path files the collector wrote
+  before that day carry exactly one chain. Say which rows are which in the file's header.
+
+  ⛔ **AND ONE OF THOSE SECOND CHAINS WAS THE MARRIAGE TIE, out of the BLOOD search.** Margareta's
+  steps 24-42 are the descent to her HUSBAND and then one step, *"his wife"*, onto her — the ring
+  § *BOTH TIES, ALWAYS* wants, with `inlaw_state` reading `not_offered` because rule 3 stops the
+  second search once blood resolves. So rule 3 is cheaper than it looks: Geni sometimes
+  volunteers the marriage route inside the blood answer. **This is an observation on two people,
+  not a rate** — nobody has counted how often it happens.
+
+  ⛔ **`write-family-scrape.py` WAS DOUBLE-ENCODING UTF-8 and it is the pipe this loop uses.**
+  `sys.stdin.read()` decodes by locale on Windows (cp1252), so `Børge` came back `BÃ¸rge`. Fixed
+  2026-09-09 with an explicit UTF-8 buffer read. **The heredoc warning above is right about the
+  shape and wrong about the cause**: it is not the shell, it is anything that decodes by locale.
+
+  **Poll in SHORT waits.** A `javascript_tool` call whose in-page `await` runs past ~45 s dies as
+  *"CDP … timed out … the renderer may be frozen"*. It is not frozen and the job is not lost —
+  check again in a separate call and the result is there.
 
   ⛔ **GENI HAS TWO MISS SHAPES AND ONLY ONE CAN BE ANSWERED.** Most profiles give the pair
   *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin Varga

@@ -32928,3 +32928,57 @@ One line in it was a mis-swept pronoun from `51522915`: *"no in-law verdict is o
 you… which means you re-queues forever"* is about **Katalin Varga**, a person in the tree, not
 about you. Restored to `her`. That is the trap `CLAUDE.md` § *WRITE TO HER IN THE SECOND PERSON*
 names in its own second exception, and the broken grammar is what made it findable.
+
+## 2026-09-09 — the collector ran again: five targets, three hits, and two defects found
+
+The browser paired mid-session, so the top queue item became executable. Five people off
+`reports/collector-worklist.tsv`, each one navigate → dispatch `{job:"individual"}` → read the
+result → write the files, with no decision taken outside the extension.
+
+    360492713900012510  Ellen Margrethe Charlotte Jessen  HIT   blood, 38-step single chain
+    365315518800010569  Brendan Robert Walsh              MISS  via=neither, below the floor
+    365471060260013162  Sarah Elizabeth Walsh             MISS  via=neither, below the floor
+    368713820640003185  Louis d'Anjou, comte de Gravina   HIT   blood, TWO chains
+    368714154710012201  Margareta Sanseverino             HIT   blood, TWO chains
+
+**The anchor was checked on every capture**, which is what § *CHECK THE ANCHOR ON EVERY CAPTURE*
+demands and it is free: step 1 is `geni:6000000002457013227` on all three hits, and Geni's prose
+reads *"is Charlemagne's Nth great grand…"* rather than *"is your …"*.
+
+**⛔ A HIT CAN COME BACK AS TWO CHAINS END TO END, and the numbering runs straight through them.**
+Louis is 37 rows over an 18-step and a 19-step chain; Margareta 42 over 23 and 19. So
+`path_steps` is a **row count and not a chain length**, and reading it as one overstates the
+descent by roughly double. The shape is known and safe — § *`ABSENT` on a path means "not in the
+tree"* scores a person walked twice as `REPEAT` — but it is **new for the collector**: all 11
+path files it had written before today carry exactly one chain. Both new files say so in their
+headers.
+
+**⛔ AND ON MARGARETA THE TWO CHAINS ARE THE BLOOD TIE AND THE MARRIAGE TIE, out of ONE search.**
+Steps 1-23 descend to her through her father Roberto Sanseverino; steps 24-42 are the
+Berengar/Flanders/Périgord descent to her **husband** Louis — byte-identical to steps 1-18 of his
+own file — and then one step, *"his wife"*, onto her. That is the ring § *BOTH TIES, ALWAYS* asks
+for, arriving with `inlaw_state` reading `not_offered`, because rule 3 stops the second search
+once blood resolves. Here that rule cost nothing: Geni volunteered the marriage route anyway.
+
+Louis's second chain is **not** a second descent — it crosses *"his ex-wife"* at step 32
+(Berenguela of Castile) and *"her sister"* at 33 (Blanche) into the Anjou kings of Naples and
+reaches the same man down his paternal line.
+
+**⛔ `write-family-scrape.py` WAS DOUBLE-ENCODING UTF-8 ON WINDOWS, and it is the pipe the loop
+runs everything through.** `sys.stdin.read()` decodes with the locale encoding — cp1252 — so a
+scrape piped in as UTF-8 arrived already wrong and was written back out mangled: `Børge` →
+`BÃ¸rge`, `Kröncke` → `KrÃ¶ncke`, in the one file whose whole job is preserving what Geni said.
+`queue.md` warns about this exact shape and blames the shell — *"never retype a scrape through a
+shell heredoc"* — which is right about the shape and wrong about the cause: **anything that
+decodes by locale does it.** `read_stdin()` decodes the buffer as UTF-8 explicitly. Nothing on
+disk was damaged, because every family file written before today came from a file tool rather
+than this pipe.
+
+**And the poll loop has a ceiling worth knowing:** a `javascript_tool` call whose in-page `await`
+runs past ~45 s dies as *"CDP … timed out … the renderer may be frozen"*, which reads as a hung
+page and is not one — the job was running fine and finished. Poll with short waits across
+separate calls.
+
+Two of the five were rejected for export by the extension itself, on `stats.read` being false for
+a private profile so no figure reaches 300. That decision is where `docs/collector-run-loop.md`
+says it belongs, and no version of it was applied in prose here.
