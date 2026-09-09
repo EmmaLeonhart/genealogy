@@ -5177,47 +5177,38 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 ---
 
 
-### ⛔ THE TAIL ALGORITHM — at the TAIL since 2026-08-30, her call
+### ⛔ THE TAIL ALGORITHM — at the TAIL since 2026-08-30
 
 *"put these at the end of the queue instead of dropping them and start on the first queue item."* **The gap-size routing below is written against a MISSING-PERSON count that now reads 0 on every path** — the scraped-page GEDCOMs were ingested, so every path member is present. Apply it to the broken-link count in `reports/broken-links.md` instead: 85 of 979 paths, 102 links.
 
-### The original method — Emma, 2026-08-18. Supersedes how the loop picks
+### The original method. Supersedes how the loop picks
 
-Her framing: *"I think we can get through this really really quickly if we change our
-approach here… I think a big part of it is the fact that our tail exports were just not
-working nearly as well as we [expected]."* And her estimate of what it buys: *"you'll be
-able to get through the tail maybe even just by the end of today."*
+The tail exports were not working nearly as well as expected, and changing the approach should
+get through the tail far faster.
 
-**What the loop was doing wrong.** It seeded a placeholder near a *missing* person and
-exported from there. She wants the export **centred on the destination person** — the
-isolate at the end of the chain — and the small gaps handled by a different mechanism
-entirely.
+**What the loop was doing wrong.** It seeded a placeholder near a *missing* person and exported
+from there. The export goes **centred on the destination person** — the isolate at the end of the
+chain — and the small gaps are handled by a different mechanism entirely.
 
 ### Work order: LONGEST paths first, then rebuild
 
-Emma, 2026-08-18: *"you should be trying to target it by going from the longest paths to
-the smallest paths… we can very easily run it with the top five longest paths having their
-exports done and then we rebuild and so on and so on."*
+**Target the longest paths first, then the smallest.** Run the top five longest paths, export
+for each, rebuild, repeat.
 
-**Her reasoning, and she has explicitly forbidden checking it.** *"the small paths are
-likely ones where there are significant diminishing returns on nearby exports whereas the
-large paths are likely ones that haven't had many exports and may be in very sparse
-areas… I'm gonna bet that the longer paths will tend to be in more sparse areas where
-there's more likelihood for it to just get the entire thing. Now I'm making this bet. I do
-not want you to actually check whether this is true."* Running the method **is** the test.
+**The reasoning, and checking it is explicitly forbidden.** Small paths are likely to be where
+nearby exports hit significant diminishing returns; large paths are likely to be ones that have
+had few exports and may be in very sparse areas, where an export is more likely to close the
+whole thing. That is a bet. Running the method **is** the test.
 
-**And it explains why the two-slot campaign underdelivered.** *"This was actually the
-entire reason why it is that we were trying to hit the people who were in multiple paths.
-The issue with the people in multiple paths was basically that… they were in multiple
-paths but they were oftentimes in dense enough areas that they didn't really give the
-extension that I was expecting."*
+**And it explains why the two-slot campaign underdelivered.** People in multiple paths were the
+target for exactly this reason, but they were often in areas dense enough that an export did not
+give the expected extension.
 
 ### Route by the size of the gap on that path
 
-**Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** Her words: *"a gap with one
-person or two people is actually basically useless as a deliverable… It is not worth six
-minutes to fill in something on the flat tail that is just covering one or two
-individuals."* Instead: **open the person's page, click open the relatives section and
+**Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** A gap of one or two people is
+basically useless as a deliverable; six minutes is not worth spending to fill in one or two
+individuals on the flat tail. Instead: **open the person's page, click open the relatives section and
 whatever else needs expanding, and save the page** into `geni-scraping/` — *not*
 `geni_pages/`. The profiles get built from those saved pages later. *"We later on build up
 the profiles from this separate thing, which won't really be a fallback thing. It'll be
@@ -5230,20 +5221,19 @@ another thing."*
    this is just going to fix it and it's going to get that person connected."*
 2. **If the destination is already present and already exported from, go to the midpoint**
    of the remaining chain and attempt there.
-3. **Recurse.** Her worked example, verbatim in substance: a seven-person chain → export
+3. **Recurse.** The worked example: a seven-person chain → export
    from the Wikidata target → it clears two → a five-chain remains → attempt at the
    midpoint → that gets the middle three → what is left is two chains of two → and those
    are finished by the page-saving method, not by more exports.
 
-**The point is not a complete family tree.** *"it doesn't matter that the entire family
-tree is all consistently there."* The deliverable is the chain being connected.
+**The point is not a complete family tree.** It does not matter that the whole family tree is
+consistently there; the deliverable is the chain being connected.
 
 ### Also instructed, same message
 
-- **Retry every person previously bailed on.** *"A locked profile almost never means that
-  every single individual in the tree is locked. The stuff is self-healing here but you
-  still have to actually attempt them again. I am instructing you to attempt these
-  people."* Four remain: Anna von Mecklenburg-Schwerin, Anna Charlotta Stenius, Ola R
+- **Retry every person previously bailed on.** A locked profile almost never means every
+  individual in the tree is locked; the situation is self-healing, but they have to be attempted
+  again. Four remain: Anna von Mecklenburg-Schwerin, Anna Charlotta Stenius, Ola R
   Sande (retry in flight), Artur Lidman.
 - The page-saving mechanism needs the **immediate relatives** of the person being
   connected to Wikidata, which is why the relatives section must be expanded before the
@@ -5256,38 +5246,33 @@ The 4+ paths are where exports go, seeded on the destination.
 ### Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
-covers lettering for the same reason it covers numbering, and she said so again on 2026-08-29.
+covers lettering for the same reason it covers numbering.
 
 - **Ensure the FOUR crons are running** — work-loop `3 * * * *`, auto-flush `15 * * * *`,
-  status-report `42 * * * *`, and the **dead-queue-item sweep `45 * * * *`**, which Emma added on
-  2026-08-31: *"Set up an hourly cron at :45 that says to remove dead queue items… Like items that
-  are simply completed."* They are **session-only**: they die when the session ends and must be
+  status-report `42 * * * *`, and the **dead-queue-item sweep `45 * * * *`**, which removes dead
+  queue items — ones that are simply completed. They are **session-only**: they die when the session ends and must be
   recreated at the start of the next one. This is not theoretical — every cron died in the
   2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
   2026-08-29. Live in the 2026-09-05 session as `7c8cc0c6`, `7fb9d24f`, `9f3125b0`, `caf417ce`; the
   2026-08-31 ids (`76ec2c05`, `f4332b23`, `cedb7fc4`, `21245a1a`) and the ones before them
   are dead sessions', which is the reason to check `CronList` rather than trust this line.
-  **On 2026-09-05 the session ran for hours with ZERO crons and nobody noticed until she
-  asked** — *"is the work loop not working lol"*. Recreating them is the first thing a
-  session does, not something to get to.
+  **A session once ran for hours with ZERO crons and nobody noticed.** Recreating them is the
+  first thing a session does, not something to get to.
 
-  **The status-report cron carries no `AskUserQuestion`.** She barred it for eight hours from
-  ~01:00 on 2026-08-31 — *"just move through the work and select the option that is consistent
-  with what I've said earlier"* — so the two-hourly blocker question in `CLAUDE.md` was taken out
-  of the cron text rather than left to fire while she slept. Restore it deliberately, not by
-  default.
+  **The status-report cron carries no `AskUserQuestion`.** It was barred overnight — move through
+  the work and pick the option consistent with what is already written — so the two-hourly blocker
+  question was taken out of the cron text rather than left to fire unattended. Restore it
+  deliberately, not by default.
 
-- **The three crons, as durable queue items.** Her instruction, 2026-08-27: *"For all of the cron
-  jobs that I set up in the session. They are good and continue on with them, but also add them
-  into the queue as actual items with he specification they are the cron jobs so they cget crossed
-  off if he cron job finishes, but are a bit more stable."* Cron text lives only in memory, so the
-  queue is the durable copy:
+- **The three crons, as durable queue items.** The crons are good and continue, and they are also
+  queue items specified as cron jobs, so they get crossed off when the job finishes but are more
+  stable than the cron itself. Cron text lives only in memory, so the queue is the durable copy:
 
   - **Work-loop, hourly at :03** — sync, take the top actionable item, do it, commit with a
     `devlog.md` entry, push, report one line. Rails: never loosen a test, never claim verified
     without running it, no live Wikidata beyond the ledger refresh and `full_entities` before a
-    correction, never generalise a named instruction into a mechanism, never invent a `.qs` she did
-    not ask for.
+    correction, never generalise a named instruction into a mechanism, never invent a `.qs`
+    nobody asked for.
   - **Auto-flush, hourly at :15** — commit and push anything pending, or report nothing pending.
     Never an empty commit.
   - **Status-report, hourly at :42** — reporting only. What advanced, queue state, whether the
@@ -5300,9 +5285,8 @@ covers lettering for the same reason it covers numbering, and she said so again 
 
 <https://www.wikidata.org/wiki/Wikidata:Database_reports/Constraint_violations/P2600>
 
-Emma, 2026-08-29: *"we are gonna do analysis at that time (no pre-analysis) of how to
-potentially elp wih wikidata genealogy with this stuff, it overlaps with some of our
-entity resolution stuff do no think on it"*
+The analysis happens **at that time**, with no pre-analysis: how this could help Wikidata
+genealogy, and it overlaps the entity-resolution work.
 
 So: nothing is to be investigated, measured or fetched about this before the item is
 reached. The analysis is of how the constraint-violations report could help Wikidata
@@ -5312,20 +5296,19 @@ genealogy, and it overlaps the entity-resolution work.
 
 <https://www.wikidata.org/wiki/Q45449130>
 
-Emma, 2026-08-29: *"I think that our clan things are much worse than you think, which is why I
-never acually ran them adn I think I am seein at least some evidence."*
+The clan labels are likely much worse than they look, which is why they were never run, and there
+is at least some evidence for it.
 
 An analysis. Nothing was investigated when this was written.
 
 ### How to read this file
 
-**Emma, 2026-08-27:** *"Organize the queue to make it usable again, currently it does no appear to
-be usable."* It was not, and the reason was structural rather than volume: **five sections declared
+The queue was not usable, and the reason was structural rather than volume: **five sections declared
 themselves the front** — the mass export campaign, the algorithm review, `THE EXPORT LOOP` (*"it is
 the top of this file"*), `THE AGENDA` (*"everything else is secondary"*) and `RUN ORDER` — while
 **ten declared themselves the tail**. With both ends contested there was no order to work in.
 
-**The order is now position, and nothing else.** Top to bottom. Two conventions, both hers:
+**The order is now position, and nothing else.** Top to bottom. Two conventions:
 
 - **Bullets, never numbers** — `CLAUDE.md` § *Queue items are BULLET POINTS*. A number is a promise
   the item will still be there.
@@ -5346,8 +5329,8 @@ These are supposed to be manually added to the queue and worked on, do no just p
 
 ### ⛔ HER RULINGS, 2026-09-01 — the interview. These OVERRIDE the sections below
 
-She went through every item and ruled on each. Where a section below disagrees with this table,
-this table wins; the sections are kept for their detail, not their status.
+Every item was ruled on. Where a section below disagrees with this table, this table wins; the
+sections are kept for their detail, not their status.
 
 **Deleted outright, already removed:** the eight Asian identities · Bure kinship random-walk ·
 the World-Tree review and its `universe` note · the chains as a SYSTEM · the six unwalked
@@ -5359,11 +5342,11 @@ identifying parents and that works, siblings are just freely made and merged lol
 scalable zipper thing much later"* · the `synoptic tree` vocabulary split · **creating the
 fathers patronymics imply — *"postpone for a month lol"***.
 
-**To do, in her words — the table was 20 rows and 18 are finished.** Each one's evidence is in
+**To do — the table was 20 rows and 18 are finished.** Each one's evidence is in
 `devlog.md` for 2026-09-01 and its artifact is on disk; they are removed here so the queue reads
 as outstanding work rather than as a record of a night. What is left of it:
 
-| item | her ruling | where it stands |
+| item | ruling | where it stands |
 | --- | --- | --- |
 | seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall | `hi`/`ar`/`ru`/`el` **done**, 151,320 labels. The `en` shortfall turned out to need in-law relation words she has not sanctioned — a decision, not arithmetic |
 | `exports/post-merge/` | do the stale-duplicate resolution | graded: **408 of 412 are real deletions**. Her standing ruling of 2026-08-29 is to leave them and keep measuring |
@@ -5377,16 +5360,15 @@ table · the succession CSV · `pykakasi`, `BET x AND y` and the 74 MB file · t
 
 ### Anonymisation is NOT redacting the tree. It is scrubbing the repo of strategy
 
-**The criterion, in her words, 2026-09-02:** *"because we don't show any more info than geni we
-consider it anonymized."*
+**The criterion: we show no more information than Geni does, so it is anonymised.**
 
 **So the tree is ALREADY anonymised, and it always was.** This repo republishes what Geni
 publishes and nothing beyond it — no field is derived that Geni does not itself display, and no
 profile is enriched from elsewhere. That is the whole test, and it is met by construction.
 
 **NOBODY IS EXCLUDED. No row is dropped, redacted or held back**, and a summary that leaves this
-ambiguous is wrong: on 2026-09-02 the sweep report said "your redefinition of anonymising" and she
-read it as implying the private people had been cut. They have not been. Checked the same day:
+ambiguous is wrong: a sweep report once said "your redefinition of anonymising", which reads as
+implying the private people had been cut. They have not been. Checked the same day:
 `reports/derived-labels.csv` carries **20,928 rows with a redaction marker** out of 1,451,964, and
 the corpus keeps all **94,071 `Private`** and **17,548 `<private>`** markers. § *Redacted people
 go in* is the governing rule and is untouched — the person is created, the marker never becomes a
@@ -5396,16 +5378,15 @@ label.
 substance rather than merely superseded: it treated the private profiles as a *gate* to be cleared
 before going public, when they were never an obstacle at all.
 
-Her instruction, 2026-09-01: cut the content in this repo that discusses **strategy around her
-own item and how the account's editing is perceived**, and remove **code that treats her item as
-special**. The spine is the Arne→Bureus one only, and a task for 2026-09-02 removes that and all
+Cut the content in this repo that discusses **strategy around the account owner's own item and
+how the account's editing is perceived**, and remove **code that treats that item as special**. The spine is the Arne→Bureus one only, and a task for 2026-09-02 removes that and all
 spine logic once it is complete.
 
 So three things, and none of them touches a person's data:
 
 - **Cut the strategy content.** Anything in `CLAUDE.md`, `queue.md`, `devlog.md` or the scripts
-  about how her item gets linked or how the account's editing reads to others.
-- **Remove code that treats her item as special.** `NEVER_TOUCH_QID`, the exclusion entries, and
+  about how that item gets linked or how the account's editing reads to others.
+- **Remove code that treats that item as special.** `NEVER_TOUCH_QID`, the exclusion entries, and
   anything else keyed on a specific person's ids. **Done 2026-09-01** — no exclusion set, banned
   list or test names an individual any more; the only hold left is the Kitajima one and it expires
   2026-10-01.
@@ -5417,17 +5398,14 @@ free and `CLAUDE.md` § *Cost* no longer binds.
 ### Pointers
 
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
-- Open questions for Emma: `questions.md`
+- Open questions: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-### ⛔ `exports/post-merge/` — MOVED TO THE TAIL, 2026-08-29, her call
+### ⛔ `exports/post-merge/` — MOVED TO THE TAIL, 2026-08-29
 
-**Emma, 2026-08-29**, shown that 408 of the 412 falsifiable drops are real deletions:
-*"For now leave these things and still run them, but put them at the end of the queue, I lean on
-the idea of saving them but do not have bandwidth to process this now."*
-
-So: **leave them in the tree, keep running the measurement, decide later.** She leans toward
-saving the 408 rather than dropping them. Nothing is applied and no override is written.
+408 of the 412 falsifiable drops are real deletions. **Leave them in the tree, keep running the
+measurement, decide later** — the lean is toward saving the 408 rather than dropping them, but
+there is no bandwidth to process it now. Nothing is applied and no override is written.
 
 `scripts/grade-post-merge-drops.py` → `reports/post-merge-falsifiable.tsv` is the standing
 measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 159 parents,
