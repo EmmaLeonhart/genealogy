@@ -13564,7 +13564,7 @@ download-state index on a restart and left the downloader believing all 514,876 
 unfetched while 1.4M items sat on disk. Only the four oversized rebuildable files are ignored.
 
 **The stale word was not harmless.** It was quoted back at her as grounds for adding `out/` to
-`.gitignore`, and she approved a change that would have undone her own instruction. The
+`.gitignore`, and a change was approved that would have undone the original instruction. The
 `.gitignore` was right and the documentation was wrong — which is the reverse of the usual
 assumption and is now written where the next reader will hit it.
 
@@ -13604,7 +13604,7 @@ rather than something to tune quietly.
 The objection: *"The zipper merge kinda half exists and is opaque I thought you meant something more clear
 and substantive than just having never even tried to implement the feature. Implement it."*
 
-**She is right and the diagnosis is precise.** What existed were parent-shaped fragments — three
+**That is right and the diagnosis is precise.** What existed were parent-shaped fragments — three
 separate scripts (`resolve-multi-geni-by-parents`, `corroborate-pairs-by-lineage`,
 `build-add-p2600-batch`) each opening a shard to read **one pair's** `P22`. None walked, none
 looked at children or spouses, and none fed a result back in to reach further. Calling any of
@@ -13638,19 +13638,19 @@ relations extract was still building when work stopped.
 
 ### 2026-08-25 — three errors in the Garborg batch, all caught on review
 
-She looked at the built file and found three things.
+Reading the built file turned up three things.
 
 **1. The roster was the wrong path entirely.** *"we only right now create individuals in the path
 from Arne to me, not from me to Arne, not from Charlemagne to Arne/me."* The batch had been built
-from `reports/charlemagne-route.csv` — her ancestry toward Charlemagne, which is the case she
+from `reports/charlemagne-route.csv` — the account owner's ancestry toward Charlemagne, which is the case that
 explicitly excluded. That is why its first creation was *Anna Fartegnsdatter Seim* (b.1510), who
 is not on Arne's path at all. The roster is now the Arne path, and the default build is the ring
-one hop out from the 41 items she has already made — which *is* "Arne's relatives", the thing
+one hop out from the 41 items already made — which *is* "Arne's relatives", the thing
 `queue.md` asks for a hop of per day.
 
 **2. `Aen` and `Amul` again.** *"you seem to be getting Aen and Amul confused again."* The
 married name reached `Len`+`Lmul` correctly, but the birth-name alias came through the generic
-alias block, which wrote **`Aen` alone**. The file she was looking at had **4 `Aen` and 1
+alias block, which wrote **`Aen` alone**. The file under review had **4 `Aen` and 1
 `Amul`**. `mul` is the language-neutral label, so an alias living only in `en` is invisible
 everywhere else. Every alias now gets both; the rebuilt file is 59 and 59.
 
@@ -13672,9 +13672,9 @@ to zero. It now finds ids by pattern and prints the count per file, so an unread
 ### 2026-08-25 — a duplicate reached Wikidata, and the guard that would have stopped it
 
 **The catch: *"you also kinda immediately just fucked up with making a person who has an item see here
-https://www.wikidata.org/wiki/Q2183430"*.** She is right and this is the worst failure of the
+https://www.wikidata.org/wiki/Q2183430"*.** That is right and this is the worst failure of the
 session: a batch I built created a second Wikidata item for a person who already had one, on a
-public database, and she has to merge it by hand.
+public database, and it has to be merged by hand.
 
 **`Q2183430` is *Benedicta Ebbesdotter of Hvide*, b.1165 d.1199, father `Q16063657`, thirty
 properties.** The batch created *Bengta Ebbesdotter Ebbesdatter Hvide*, b.1170 d.1199, `P22`
@@ -13795,7 +13795,7 @@ position alone with nothing testing it, and the unchecked share is not evenly sp
 
 ## The hard case named, measured
 
-**615 slots were too ambiguous to call**, and the distribution is exactly where she said it would
+**615 slots were too ambiguous to call**, and the distribution is exactly where it was said it would
 be:
 
 | slot | ambiguous |
@@ -13832,7 +13832,7 @@ re-derived: *"Arne Garborg is Bergitte Gunnbjørnsdatter Aukland's 9th great gra
 people from Bergitte down through Gunnbjørn Jonson Mjølhus, Lars Gunnbjørnsen Mjølhus, Peder
 Larsen Mjølhus, Lars Person Nedre Rossavik, Berit Larsdatter Nedre Rossavik, Lars Tormodsen Mele,
 Jon Larson Mæle, **Marta Jonsdatter Li**, **Jon Samuelsen Raustad**, Ane Oline Jonsdatter Raugstad,
-to **Arne**. It is not derived from our files on purpose — re-deriving what she had already
+to **Arne**. It is not derived from our files on purpose — re-deriving what had already been
 recorded produced a wrong answer earlier today.
 
 **Three of the twelve have items**: Marta `Q141178381` (made today), Jon `Q141168955`, Arne
@@ -13885,7 +13885,7 @@ doing... Yes it should be three lines lol: Charlemagne to Bergitte, Bergitte to 
 Arne."*
 
 **The chart existed and I had not opened it.** `paths/charlemagne-to-arne-garborg.tsv` — 34 steps,
-Arne up to Charlemagne, generated by `genimerge path-from-html` from a page she saved. It passes
+Arne up to Charlemagne, generated by `genimerge path-from-html` from a saved page. It passes
 through **Bergitte at step 12**, so it is lines 1 and 3 in one file. I had been reasoning from
 `reports/charlemagne-route.csv` instead, a **different** 399-step descent up another branch that
 does not contain Bergitte at all — which is exactly why the junction I derived came out wrong.
@@ -13919,7 +13919,7 @@ The objection: *"we didn't actually establish in any meaningful sense that the p
 chain... We might basically find that that one single daughter is the only person absent in the
 line in Wikidata, but it's just that the Wikidata ones are not genealogically linked."*
 
-**She was right, and the number lands on the one she named.**
+**That was right, and the number lands on the one named.**
 
 **First, the Geni-id cross-reference IS conclusive.** Checked against two independently produced
 extracts — the bulk `p2600-all.tsv` dump and the `p2600` column of `relations.tsv`, pulled from the
@@ -13947,7 +13947,7 @@ creations.**
 **So the spine is 18 creations and 4 additions, not 22 creations** — which is exactly the 18 runs
 was budgeted.
 
-**And the break is where she predicted.** Steps 23–25 — Guttorm Àsulfsson, Åsulv Skulesson, Skule
+**And the break is where it was predicted.** Steps 23–25 — Guttorm Àsulfsson, Åsulv Skulesson, Skule
 Torstigson — are all present. Step 22, **Guttorm's daughter Ingrid**, is not, and Wikidata records
 Guttorm as having two children, `Q1019325` Bård and `Q75292005` Rangrid, **neither of whom is
 her**. Her words: *"random daughters of somewhat obscure noblemen tend not to be the people who
@@ -14009,7 +14009,7 @@ Later rounds stay in `reports/zipper-pairs.tsv` with their round number; the fil
 | `izumo-roster` | 111 |
 
 **525,807 → 535,826 distinct pairs.** Both directions are present as required —
-`wikidata-p2600` for the Wikidata side and `geni-about-me` for the QID she wrote into the Geni
+`wikidata-p2600` for the Wikidata side and `geni-about-me` for the QID written by hand into the Geni
 description. Conflicts 332 → 356.
 
 **On the writing:** the first version of the cap carried a twenty-line comment justifying the
@@ -14044,7 +14044,7 @@ disagree by more than ten years **9.2%** of the time against **11.8%** for posit
 
 **Provenance is a chain now.** `scripts/zipper-provenance.py` — max depth 8, mean 2.7,
 walked to a stated `P2600` or one of her hand verdicts, with support and contradiction both
-propagating as she specified. 25,570 corroborated, 18,949 inferred, 187 poisoned; poisoned
+propagating as specified. 25,570 corroborated, 18,949 inferred, 187 poisoned; poisoned
 is a reading, never a deletion. It earned itself immediately, catching a name match of
 `shared: 7th` — an **ordinal**, which inside a sibling slot is a position in that family's
 own succession and matches brother to brother. Same class as the `Wachtmeister →
@@ -14055,7 +14055,7 @@ candidates it beat had missing data.
 load-bearing, since the first slot to claim a person in a round removes them from every
 later slot's candidates. It ran children ahead of spouses before.
 
-**`reports/emma-judgments.md` and `.tsv`** — twenty verdicts she gave by hand, kept
+**`reports/emma-judgments.md` and `.tsv`** — twenty verdicts given by hand, kept
 deliberately separate from anything generated at her instruction. 17 Right, 1 Wrong, 2 for
 browser resolution. Every kind of name variation put to her was accepted; the single
 rejection turned on the people, not the strings.
@@ -14102,7 +14102,7 @@ are now enumerable in `reports/multi-parents-crossed.tsv`.
 
 Also recorded so it is not repeated: both Sapiega profiles behind `Q122925764` are already
 in the corpus, and our records hold **nothing but the father** for either. The `Forest`
-export she asked for is genuinely warranted here, unlike Obitake 23.
+export asked for is genuinely warranted here, unlike Obitake 23.
 
 ## 2026-08-25 (late) — `LAST` works as a value, and the dictation is saved verbatim
 
@@ -14110,15 +14110,15 @@ export she asked for is genuinely warranted here, unlike Obitake 23.
 is completely possible but you just decide to fuck off and no do it because it goes QID PID LAST
 instead of LAST PID QID."*
 
-She is right. `LAST` cannot be the value in a statement whose subject is *also* newly created —
-two items minted in one run cannot point at each other. That is a real limit and the one she
+That is right. `LAST` cannot be the value in a statement whose subject is *also* newly created —
+two items minted in one run cannot point at each other. That is a real limit and the one that
 described in her batch dictation. **It says nothing about a subject that already exists**:
 `Q141178381 P22 LAST` is ordinary QuickStatements. I generalised the narrow limit into "no
 reciprocals at all", built a day-late carry-forward around it, and left her fixing one-way links
 by hand. Every relationship to somebody who already holds a QID is now emitted both ways in the
 same run.
 
-**`P1545` on a lone given name is gone**, which is part of why she has been running batches only
+**`P1545` on a lone given name is gone**, which is part of why batches have been running only
 in part: *"they have consistently included things I did not want, such as the series orginal 1 on
 peoples given names when there is only one given name."* The ordinal orders several given names
 against each other; with one there is nothing to order. Same objection that already restricted
@@ -14138,7 +14138,7 @@ protection.
 git records what a batch *offered*, not what exists. It found 11 missing rows, including both
 people the previous batch would have duplicated.
 
-Two tests updated to match instructions she gave today, neither weakened: the `P22` assertion now
+Two tests updated to match today's instructions, neither weakened: the `P22` assertion now
 accepts the reciprocal direction that did not exist when it was written, and the namemodel test
 now requires the absence of `P1545` on a lone given name where it previously required its
 presence.
@@ -14185,7 +14185,7 @@ rather than by a cap.
 **2. Cadence — today's run is complete and consumed.** Refreshing the ledger from her account
 added nine rows and showed **all four creations in today's batch now exist**: Ingeborg
 Gyntesdotter `Q141180406`, Magdalena Andersdotter `Q141180409`, Margareta Mårtensdotter Bång
-`Q141180410`, Thomas Matthiæ `Q141180413`. She ran it while this was being worked. No batch
+`Q141180410`, Thomas Matthiæ `Q141180413`. It ran while this was being worked. No batch
 generated for tomorrow.
 
 **3. Bure roster, both definitions.** Wikidata-side 258 with a Geni id; Geni-side 5,470 within 3
@@ -14194,7 +14194,7 @@ hops, of which **1,595 carry a Wikidata item** — six times as many. Residue: 5
 `P26`, and only 5% have nothing. That ratio is what makes it a different algorithm: the items
 exist, so the work is linking two QIDs and `LAST` never enters it.
 
-**4. The name search — three of sixteen look present after all.** Exactly the shape she predicted.
+**4. The name search — three of sixteen look present after all.** Exactly the predicted shape.
 `Helena Guttormsdatter` → `Q4953376` (**identical label**, plus Genealogics/Rodovid/Geneanet);
 `Svantepolk Knutsson Viby` → `Q6197518` *Svantepolk of Viby*; `Ingegerd Svantepolksdotter` →
 `Q101247444` *…of Viby*. The last two are father and daughter and both candidates carry *of Viby*,
@@ -14303,7 +14303,7 @@ reading made visible, which is the same standard `zipper-provenance.py` applies 
 
 ## 2026-08-26 — three decisions applied, and the date paradox resolved
 
-**The `P2600` gate is loosened: 1,665 → 7,168 additions.** Shown what it was actually doing, she
+**The `P2600` gate is loosened: 1,665 → 7,168 additions.** Shown what it was actually doing, the ruling
 said *"Loosen it — emit the ~7,000."* It required a parent anchor and rejected 5,651 of 7,320, of
 which **5,540 had no disagreement anywhere** — they were simply uncheckable. It refuses
 contradiction now and not silence: 148 rejected, every one a case where a parent is recorded on
@@ -14403,7 +14403,7 @@ took two.
 
 **It is 12 creations, not 16.** The account owner is step 1 and `Q232803` already exists carrying no
 `P2600` — an id to add, not a person to create. Steps 2–4 are all past the 1880 cutoff: her father
-b.1963 (whom she has separately forbidden creating), his father b.1926, and Reinhert Borsheim
+b.1963 (separately forbidden from being created), his father b.1926, and Reinhert Borsheim
 b.1891. The first creatable step is Rakel Rasmusdottir Borsheim, b.1866. Step 6 is an **adoptive**
 mother, the one non-blood link on the line.
 
@@ -14669,8 +14669,8 @@ that does not exist; the snapshot one fires on the `{}` that double-unwrapping p
 
 ## 2026-08-26 — five blockers put up, and four of them should not have been questions
 
-The status report's blocker list was three `NEEDS-DECISION` bullets holding five decisions. She
-asked for an `AskUserQuestion` on each; she answered all five, and then said what the exercise was
+The status report's blocker list was three `NEEDS-DECISION` bullets holding five decisions. An
+`AskUserQuestion` was asked for on each; all five came back, and then a statement of what the exercise was
 worth: *"those seemed like simple data issues that by design were supposed to get pushed onto
 wikidata"*, *"it's not your job to make the tree correct it's your job to set up a pipeline that
 gets the exported geni data onto wikidata"*, and ***"we are doing over a million people here."***
@@ -14697,7 +14697,7 @@ and was being applied by hand, one conflict at a time, to a corpus of 546 export
 
 **The `kami` rule removed two conflicts by fixing one thing.** Kushiyatama `Q86734749` and Raihita
 `Q123511663` are `Q524158` *kami* on Wikidata and the model was asserting `Q5` *human* at a divine
-descent. Izumo conflicts 8 → 6. The alternative she rejected was naming a seat in the Izumo no Kuni
+descent. Izumo conflicts 8 → 6. The rejected alternative was naming a seat in the Izumo no Kuni
 no Miyatsuko succession above which the line is divine — a judgement, where this is a lookup. It is
 deliberately narrow: only that one class is adopted, never whatever `P31` an item happens to carry.
 
@@ -14808,7 +14808,7 @@ Wiki, and a Geni profile says nothing about which seat a man held. Every other b
 `P2600` because every other batch emits a Geni-derived fact.
 
 `P2389` *organization directed by the office or position* as the organisation qualifier is a
-reading of her *"a qualifier on according to which organization"* — she named no property.
+reading of *"a qualifier on according to which organization"* — no property was named.
 Rejected: `P1416` *affiliation*, which describes a person rather than a position.
 
 **1,356 passed, 0 failed.**
@@ -15091,7 +15091,7 @@ them.
 
 The two vocabularies come to **17 tokens between them** — `(de)`, `(D.)`, `(du)`, `(von)`,
 `(Von)`, `(De)`, `(af)`, `(di)`, `(ben)`; `(anonyma)`, `(?)`, `(unknown)`, `(Ukjent)`,
-`(Unknown)`, `(NN)`, `(??)`, `(ukjent)`. That is the list she asked to see.
+`(Unknown)`, `(NN)`, `(??)`, `(ukjent)`. That is the list asked for.
 
 **Two discriminators were built and both are gone.** Her earlier answers ruled `Turesson
 (Bielke)` a family name and `Weirman (Weyerman)` an alias, and the shapes are identical:
@@ -15126,7 +15126,7 @@ data says one is.
 Three questions asked about this seam in one afternoon and each answer made the model **smaller**
 than the one before: four shapes became three, the house-versus-variant split became "both", and
 the qualifier became nothing. The lesson worth keeping is that every version I proposed was more
-elaborate than the one she wanted.
+elaborate than the one wanted.
 
 **1,359 passed, 0 failed.**
 
@@ -15165,7 +15165,7 @@ skipping wholly-parenthesised tokens as an unresolved modelling question. They a
 
 ## 2026-08-26 — today's batch, and the sibling cap had a hole in it
 
-Asked for today's QuickStatements against the algorithm she dictated at ~1pm, the compliance
+Asked for today's QuickStatements against the algorithm dictated at ~1pm, the compliance
 check was run before handing anything over rather than after. It found a real violation.
 
 **`P3373` *sibling* came out at 38 against a cap of 10.** `build-garborg-day.py` has **two**
@@ -15265,7 +15265,7 @@ Every QID in a comment carries its English label, resolved from `reports/wikidat
 in one pass over the ids actually present. An id the export does not hold stays bare rather
 than being invented.
 
-## What she found in the batch, all three confirmed
+## What the review found in the batch, all three confirmed
 
 **1. `Q141189052` Anna Carine Gundersen got no name statements.** Traced: all three of her
 tokens fail. `Anna` is AMBIGUOUS with 4,029 bearers and is never created; `Carine` and
@@ -15284,10 +15284,10 @@ rows so they can be created. Queued.
 
 **2. Bure was not covered today, and that is by design.** Zero Bure people in the batch; the
 five `grep` hits are comment text. `compose` draws the ring around people who already hold a
-QID, which is the Garborg neighbourhood; Bure is her mother's side, a separate campaign she
+QID, which is the Garborg neighbourhood; Bure is the mother's side, a separate campaign that
 postponed to the tail of the queue herself.
 
-**3. Volume.** 50 creations, 154 links, 10 name items, 33 name links. She is running it today
+**3. Volume.** 50 creations, 154 links, 10 name items, 33 name links. It is being run today
 and says it is too much long-term. Left to her, since every count in it is hers.
 
 **1,362 passed, 0 failed.**
