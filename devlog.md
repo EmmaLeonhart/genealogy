@@ -19228,10 +19228,10 @@ protects an unrelated item from edits nobody was making, which costs nothing, an
 now writes to `Q232803`. Verified after: `build-garborg-day.py` parses, the three JSON files still
 load, 289 passed / 32 skipped.
 
-**One thing this does NOT do, stated because she asked for the duplicate to happen.** The Geni id
+**One thing this does NOT do, stated because the duplicate was asked for.** The Geni id
 `6000000087535357291` is still in `NEVER_TOUCH_GENI`, and that is what the creation refusal keys
-on -- so the batch still will not mint an item for it. The QID replace was the whole of what she
-asked for here; removing the Geni id is a separate change and is hers to call.
+on -- so the batch still will not mint an item for it. The QID replace was the whole of what was
+asked for here; removing the Geni id is a separate change and is not this one's to make.
 
 ## 2026-08-29 — "no Latin label", not "no label": 13,872 people were invisible
 
@@ -19255,7 +19255,7 @@ reaching it -- luck rather than design. This is exactly the failure that module'
 names: *"a predicate copied per caller is a predicate that will disagree with itself."* `mul`
 still takes the CJK form, which is the language-neutral slot and the right home for it.
 
-The **Geni-writing** half of the queue item stays parked -- that is the part she deferred.
+The **Geni-writing** half of the queue item stays parked -- that is the deferred part.
 
 151 passed, 4 skipped over the tests covering both scripts.
 
@@ -19390,7 +19390,8 @@ Four things removed from `build-garborg-day.py`, all of them deletions:
 - `kitajima = {q for q in NEVER_TOUCH_QID if q != EMMA_QID}` becomes `set(NEVER_TOUCH_QID)`, since
   there is no longer anything to subtract. That filter existed for one day.
 
-**Nothing blocks her now, and she is still not in the batch.** That is distance, not a safeguard:
+**Nothing blocks the account owner now, and that item is still not in the batch.** That is distance,
+not a safeguard:
 `paths/bergitte-to-emma.tsv` is in `SPINE_REVERSED`, so it walks from Bergitte **toward** the account
 owner and is at step 8 of 16. That is step 1, so roughly seven more runs.
 
@@ -19414,7 +19415,7 @@ reasoning is borne out by the measurement: **6 of the Caroline path's 15 missing
 on `arne-to-signe-no-borsheim.tsv`**, which is in `SPINE_PATHS` and advances every run, so Caroline
 Signe Borsheim is reached without the file being wired in at all.
 
-**Arne → Signe checked, since she asked:** 8 of 15 held, contiguous from Arne down to step 8
+**Arne → Signe checked, as asked:** 8 of 15 held, contiguous from Arne down to step 8
 Kristine Sørensdatter Gjesdal `Q141217391`; step 9 Søren Sørenson Gjesdal is in the batch on disk.
 It is the only unfinished spine that **can** complete -- the other two terminate at the account owner, and while
 her Geni id is no longer excluded, they need her created before they close.
@@ -19505,7 +19506,7 @@ October gate passes, then the quick statements generate with these clan names in
 otherwise they do not, because I'm just too sceptical of the clan names."* `CLAN_BLOCK_GATE =
 2026-10-01`; the run prints `CJK clan labels suppressed until 2026-10-01`.
 
-**Why it kept appearing, which she had misdiagnosed and was right to question.** Not because
+**Why it kept appearing, misdiagnosed and rightly questioned.** Not because
 everyone else's `ja`/`zh` was finished. `_cap_label_edits` draws three sources against one budget
 of 15 **in priority order**: corrections, then the clan block, then everybody else. So the clan
 people were served *ahead* of ordinary ones every run. Moving label edits to the front of the file
@@ -19595,7 +19596,7 @@ which the pipeline `nn_form`s before this point, so these are likely an artefact
 raw `label_mul`), quoted nicknames and epithets (`"The`, `Victorious"`, `"Sally"`), and one
 genuinely non-Latin `Карлов`.
 
-**Also: `Q12598947` Buyeo Taebi and `Q19657284` Buyeo Deokjang, which she named in the item, are
+**Also: `Q12598947` Buyeo Taebi and `Q19657284` Buyeo Deokjang, named in the item, are
 inside the October kluge** and cannot be touched until then.
 
 ## 2026-08-29 — `P1449` nickname dropped; the nickname lives in the alias
@@ -19611,7 +19612,7 @@ per person is the inference this repo refuses everywhere else. So the property g
 being relabelled.
 
 **Nothing is lost.** The same batch already carries `LAST Amul "Byre"` beside `LAST Amul "Eivind
-Byre"` — the nickname reaches Wikidata as an alias, which is the *"just lmul vs amul"* she asked
+Byre"` — the nickname reaches Wikidata as an alias, which is the *"just lmul vs amul"* asked
 for. Verified: 0 `P1449` lines on a fresh compose, aliases unchanged, 289 passed / 32 skipped.
 
 ## 2026-08-29 — could the repo be public, with Actions emailing a batch daily?
@@ -19623,14 +19624,14 @@ correctly — *"the synoptic tree file stuff"* — and it is worse than a file-s
 `ubuntu-latest` runner has **16 GB**. So a daily job that rebuilds the tree before generating the
 batch does not fit, and no amount of pruning changes that. The compose step itself *would* run — it
 reads the committed derived CSVs, not the merge — so a daily emailed batch is feasible only while
-those CSVs are refreshed by hand somewhere else, which reintroduces the manual step she wants gone.
+those CSVs are refreshed by hand somewhere else, which reintroduces the manual step that is to go.
 
 **Size, measured:** 46,360 tracked files, **12.2 GB** of content, `.git` 6.3 GB. GitHub's soft
 limit is 5 GB and it warns above 1 GB, so this is already over regardless of visibility. `.gz`
 4,448 MB and `.ged` 4,244 MB dominate; `.css` 701 MB and `.download` 1,243 MB are saved-page
 furniture rather than genealogy.
 
-**The privacy exposure is not the kind she assumed.** Of 1,697,887 name rows: **79,795 `Private`**
+**The privacy exposure is not the kind assumed.** Of 1,697,887 name rows: **79,795 `Private`**
 and **16,190 `<private> Surname`** — ~96,000 rows about people Geni treats as private, mostly
 living. Her *"people who are digging can find stuff"* is about discoverability; publishing the
 corpus is bulk republication of Geni's private-profile structure outside Geni's access control.
@@ -19640,7 +19641,7 @@ Recorded as hers to decide, not flagged as a technical blocker.
 because Actions minutes are billable on private repos and free on public ones — so the change
 *removes* the constraint that made CI manual.
 
-## 2026-08-29 — correction: repo size does not block CI, and she caught it
+## 2026-08-29 — correction: repo size does not block CI, and that was caught
 
 *"Uhh 16GB memory but the repo size can be larger as history isn't in it?"* — right on both counts,
 and `reports/public-repo-analysis.md` is corrected.
@@ -19692,7 +19693,7 @@ minute."*
 
 `CLAUDE.md` § *Never query Wikidata to check something. Ever.* is replaced by § *Querying Wikidata
 is ALLOWED. Be polite about the rate*, and the memory that carried the same rule is rewritten —
-otherwise the ban would be re-imposed next session from a note she has overturned.
+otherwise the ban would be re-imposed next session from a note that has been overturned.
 
 **What the old rule was actually protecting.** Her 2026-08-07 instruction came after a task queried
 Wikidata *during a bulk download* and risked a 429 that would have cost hours of a run in progress.
@@ -19716,7 +19717,7 @@ labels → pack → `build-garborg-day.py --compose`.
 
 **The ordering is the point, and getting it wrong fails silently.** `derive-labels.py` reads
 `display-names.csv` and does **not** build it — `CLAUDE.md` records a correction that survived two
-regenerations for exactly that reason. Holding that in a human's head is what she is objecting to.
+regenerations for exactly that reason. Holding that in a human's head is the thing objected to.
 
 **It stops at the first failure** rather than running the rest against stale inputs, which is how a
 half-rebuilt chain produced `P1810 "Private"` for a man Geni now calls `<private> Dokken`.
@@ -19761,8 +19762,8 @@ run. `scripts/ledger-history.py` adds only the two halves that were missing:
 - **History** — a dated snapshot of all 657 `geni_id → qid` pairs appended to
   `reports/ledger-history.tsv`, so a pairing that changes can be traced rather than inferred.
 - **The query on disagreement** — asks Wikidata who currently holds the disputed `P2600` and
-  whether either QID redirects. This is what her *"run a query to find the wiki data mapping"*
-  meant, and it is only possible because she lifted the query ban today.
+  whether either QID redirects. This is what *"run a query to find the wiki data mapping"*
+  meant, and it is only possible because the query ban was lifted today.
 
 **The query path was tested rather than assumed, because the first snapshot has nothing to compare
 against and the branch would never have run.** Asked directly about the two known pairs:
@@ -19805,14 +19806,14 @@ person's geniID, matching their date of birth, by doing a web search of them on 
 separate geniID for this person would be useful. Of course, once we did that, we'd need to run an
 export."*
 
-**Both halves are already done, and she did the first one herself.**
+**Both halves are already done, and the first was done by hand.**
 
 - `Q10411463` carries **`P2600 = 6000000040951562251`**, in the ledger since 2026-08-25 with note
   *"from 日巫女 contributions (P2600 added to an existing item)"*.
-- The identification checks out on the date she named: the Geni profile's bio opens *"Andreas Olai,
+- The identification checks out on the date named: the Geni profile's bio opens *"Andreas Olai,
   född 1521 i Örebro, död 1560"*, against Wikidata's `P569` 1521 and `P570` 1560.
-- Her `P1889` *different from* points at `Q141199704`, the other Andreas Olai — the Bureätten one —
-  so the disambiguation she was worried about is recorded on the item.
+- The `P1889` *different from* points at `Q141199704`, the other Andreas Olai — the Bureätten one —
+  so the disambiguation at issue is recorded on the item.
 - The Forest export exists: `exports/bure-campaign/export-Forest-6000000227468650841.ged`.
 
 **What is not done is the same thing that is not done for everyone else.** He has **0 rows** in
@@ -19855,7 +19856,7 @@ ordering guard was **seen to fail** — moving the call after the generators fai
 
 ## 2026-08-30 — `Q141198548`: no batch in this repo ever created her
 
-Her queue item was *"I am concerned over why she was created on wikidata at all."*
+The queue item was *"I am concerned over why she was created on wikidata at all."*
 
 **This repo did not create her.** Checked every commit of `reports/wikidata-garborg-day.qs`
 on 2026-08-25 — ten of them — and every other file under `reports/` at those commits: her Geni
@@ -19957,8 +19958,8 @@ Kind is not collapsed, per § *One name item per USAGE*, and labels fold on case
 
 ## 2026-08-30 — the romanisation system: a rule fix has to reach the rows it already wrote
 
-Her item was *"we want to introduce a system to try to fix romanizaion errors"*, with one case:
-`Q141216408` came out **ウン・モルクク** and she corrected it to **ウン・モルク**.
+The queue item was *"we want to introduce a system to try to fix romanizaion errors"*, with one case:
+`Q141216408` came out **ウン・モルクク** and was corrected by hand to **ウン・モルク**.
 
 **It was never one name.** `translit_no.translit` walks letter by letter and has a geminate rule
 for *identical* adjacent letters — `nn` in `Anna` — but none for a digraph of *different* letters
@@ -19973,7 +19974,7 @@ her correction exactly, `Mørck` → `モルク` / `莫尔克`, and fixes onset 
 `extend-transliterations.py` only ADDS — *"the hand table always wins, every existing row is
 preserved untouched"* — which is right for hand rows and wrong for rule rows, because those are
 a cache of an engine that changes. Without a refresh the table keeps serving `モルクク` forever
-and the correction she made on one item never reaches the other 46.
+and the correction made on one item never reaches the other 46.
 
 `scripts/refresh-rule-transliterations.py` re-derives exactly the cached rows and nothing else.
 The split is the `note` column: `by rule` and `composed by rule: …` are recomputed; every other
@@ -20078,10 +20079,10 @@ rendering of *Garbo* against our `加尔博格` — which is the check on her cl
 claim.
 
 **3. Her Minnie correction.** `Minnie` was `ミニエ` / `米尼埃` by rule; it is now `ミニー` /
-`米妮`, noted as hers, and the engine still produces the old value — so a test fails the moment
-a refresh treats her row as cache.
+`米妮`, noted as a hand row, and the engine still produces the old value — so a test fails the moment
+a refresh treats that row as cache.
 
-**4. The Chinese engine was wrong for every name with a syllable-final nasal**, which she caught
+**4. The Chinese engine was wrong for every name with a syllable-final nasal**, caught
 on sight: *"is 塞恩 right for sen? Sounds like you made coda -n its own character instead of
 merging them which sounds sussy for Chinese."* It was. `translit_no` gave every coda its own
 character, so `sen` came out 塞 + 恩 rather than 森. **1,701 rows had the shape, 1,201 carried a
@@ -20165,7 +20166,7 @@ would have been invisible in the totals:
 not write — now including everything the corpus attests — it agrees **26% (ja) and 43% (zh)**. It
 is wrong about roughly three-quarters of the names Wikidata has actually written down.
 
-## 2026-08-30 — the name-item duplicates: she created 10, five were merged away
+## 2026-08-30 — the name-item duplicates: 10 created by hand, five merged away
 
 The correction: *"You cunt I did create name items and they got merged because they were duplicates."*
 That is right and I had said the opposite twice — first that none existed, then after checking
@@ -20255,12 +20256,12 @@ them."* `CLAUDE.md` § *NO descriptions and NO edit summaries* records both in h
 
 **Nothing had gone out.** Zero `D<lang>` lines in any batch, and nothing in `scripts/`,
 `src/genimerge/` or the workflows sets a summary. But `check-label-collisions.py` printed
-*"Fixing it is a description"* in its own output, which is what she saw, and when she asked
+*"Fixing it is a description"* in its own output, which is what was seen, and when asked
 whether I had added descriptions I answered only the narrow question — did any reach Wikidata —
 without saying I had written that plan down. The narrow answer was true and the omission was
 the problem. Both the line and the docstring are gone.
 
-**What prompted the check is a real defect in a batch she was about to run.** Wikidata enforces
+**What prompted the check is a real defect in a batch about to be run.** Wikidata enforces
 uniqueness on the label+description pair, so two items with the same label and no description
 are the same pair and the second `CREATE` is refused. **3 of 22 creations collide:**
 
@@ -20285,10 +20286,10 @@ been seen to fail is not known to guard*.
 ## 2026-08-30 — the CJK label was transliterating Geni's display string, not the item's label
 
 On `Q6161733`: *"why was the japanese label we added so weird? I fixed it but we added a
-weird one."* We had emitted `カール・フレドリク・パイパー・ティル・クラゲホルム`; she corrected it
+weird one."* We had emitted `カール・フレドリク・パイパー・ティル・クラゲホルム`; it was corrected by hand
 to `カール・フレドリク・パイパー`.
 
-**My first diagnosis was the narrow one and she corrected it.** I read `till Krageholm` as a
+**My first diagnosis was the narrow one and was corrected.** I read `till Krageholm` as a
 territorial designation to strip. Her answer: *"The wikidata label doesn't have that in it lol…
 I do not think it's a glitch… I think it's the geni display name."* The item reads
 `Carl Fredrik Piper` in both `en` and `sv`. The estate is in **our** derived label, and we hand
@@ -20373,8 +20374,8 @@ qualify; both are pinned.
 `Amul "Elof Steuchius till Duveke"` — the territorial form becomes findable instead of becoming
 the name. `Q469962`: `Lmul "Sophie Piper"`, `Amul "Eva Sophia Sofia von Fersen"`.
 
-**And she was right that this needs no network.** `Q6161733` is in the store with 18 labels,
-`en` and `sv` both `Carl Fredrik Piper`. Only items she created after the download — like
+**And this needs no network, rightly.** `Q6161733` is in the store with 18 labels,
+`en` and `sv` both `Carl Fredrik Piper`. Only items created after the download — like
 `Q141223549` — are absent from it, which is what the live refresh is for. My claim that I
 lacked all-language labels was wrong.
 
@@ -20483,7 +20484,7 @@ and husband are all uncreated or created in this same run), and Richard with `P2
 ## 2026-08-30 — the name-item generator was recreating its own output, eleven times over
 
 `OBender12` was spotted correcting these edits, raising whether the family-name work was still
-broken. It was, and not in the way she had reported — this is a duplicate-creation bug, mine.
+broken. It was, and not in the way reported — this is a duplicate-creation bug, mine.
 
 **What he was doing.** Merging duplicate name items and stripping the `P734` links to the loser:
 `Q141223707` → `Q141223480` (`Sør-Reime`), `Q141223719` → `Q141223490` (`Gennäs`),
@@ -20676,7 +20677,7 @@ a note rather than a work item.
 
 **The nickname is not lost and its classification is untouched** — still recognised, still kept
 out of the given names, still reaching Wikidata as the `Amul` alias, which is the *"just lmul vs
-amul"* she asked for. `CLAUDE.md` § *A nickname alias carries the SURNAME* said the opposite
+amul"* asked for. `CLAUDE.md` § *A nickname alias carries the SURNAME* said the opposite
 until today and now records the supersession, as does the `P1449` row of the property table.
 
 **Two tests rewritten to the contract rather than to the state they happened to observe.**
@@ -20729,7 +20730,7 @@ This is the third seed-choosing method put to a backtest here and **the first to
 Two answers, both acted on rather than recorded.
 
 **Name items: 10 a day → 3, and it restores itself.** Asked what name-item creation should do
-while the `OBender12` hold runs, she said *"Cut it to 2-3 a day."* The reasoning is in
+while the `OBender12` hold runs, the answer was *"Cut it to 2-3 a day."* The reasoning is in
 `reports/strategic-analysis-2026-08-30.md`: name-item creation is the highest-risk operation in
 the pipeline, because the duplicates that editor merged were name items and the people side has
 no comparable audience. `NAME_ITEMS_PER_RUN` is now derived from the date and lifts on
@@ -20766,8 +20767,8 @@ it is 210 ids and **3 groups**: `息長宿祢王` (also one of the ground-truth 
 recovered), `Munetoshi 71 Senge`, and `Shigeyasu Takaoka`. `CLAUDE.md` § *Do not grab the first
 artifact that vaguely matches* is exactly the failure that nearly happened.
 
-**And the finder was leaking her own markers.** `is_placeholder` consulted only a local
-`NOT_A_NAME` and never `scripts/labels.WORDS_MEANING_UNKNOWN`, so every marker she has already
+**And the finder was leaking the project's own markers.** `is_placeholder` consulted only a local
+`NOT_A_NAME` and never `scripts/labels.WORDS_MEANING_UNKNOWN`, so every marker already
 ruled on reached the candidate list. It cost **25 groups over 107 profiles, including BOTH of the
 two largest** — the biggest being 33 profiles called `某 李`, where `某` is Chinese for *a certain
 (unnamed) one* and was already in her set. That is the `<private> SOERIANAGARA` failure the
@@ -20831,7 +20832,7 @@ overwrite a good file.
 The real effect is elsewhere: `reports/garborg-qids.tsv` went from **258 of 849** items resolving
 to **849 of 849**. **591 of her own items were invisible** to the forty scripts and three modules
 that read this file, because the committed copy was a 2026-08-09 offline rebuild made while
-querying Wikidata was banned — a ban she lifted on 2026-08-29.
+querying Wikidata was banned — a ban lifted on 2026-08-29.
 
 **A claim of mine was refuted by the refresh and is corrected in both places it was written.**
 I said the Izumo roster resolving to 2 Geni ids was staleness. It is not: after the refresh it is
