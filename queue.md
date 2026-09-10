@@ -260,9 +260,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       https://www.geni.com/profile/index/6000000227676658979
       https://www.geni.com/people/NN-Ardzrouni/6000000227676802897
 
-  **State: 1 of 11 submitted** — `6000000227676582856`, task `6000000227677898825`. Filed into
-  `exports/circassian-hinge/`. A cron grinds the list one at a time; this is idle-time work and
-  no idle report should say "nothing pending" while any of it is outstanding.
+  **State: 1 of 11 DONE.** Filed into `exports/circassian-hinge/`.
+
+      DONE  6000000227676582856   2,304 people, 1,306 families
+      NOW   6000000227676362934   task 6000000227677901835
+
+  A cron grinds the list one at a time; this is idle-time work and no idle report should say
+  "nothing pending" while any of it is outstanding.
 
   One at a time — Geni's limit, not a preference. The download button gets swallowed; navigate
   `https://www.geni.com/gedcom/request_download?task_id=<task id>` instead, and `/gedcom` lists

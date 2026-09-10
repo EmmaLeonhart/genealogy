@@ -33880,3 +33880,10 @@ day.
 The extension already owns the export decision end to end — both searches miss, any statistic
 clears **300**, `job.create` walks up, creates one ancestor and runs a `Forest` from them. There
 is no discretion in it and none is wanted; the tail item says so rather than restating the rule.
+
+## 2026-09-09 — descendants list 1 of 11
+
+`exports/circassian-hinge/export-Descendants-6000000227676582856.ged` — **2,304 people, 1,306
+families**, seed verified as the file's first `INDI`. **Under the 5,000 cap**, so that line's
+descent is exhausted rather than truncated. Next submitted: `6000000227676362934`, task
+`6000000227677901835`.
