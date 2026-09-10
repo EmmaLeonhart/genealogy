@@ -35778,3 +35778,15 @@ prefiltered on `'"cbdb' in line` — with a leading quote — while the descript
 `Tang dynasty person CBDB = 27889`, where the token sits mid-string. It matched **6 items of
 71,474** and printed a clean-looking table of zeroes. A prefilter that silently reduces the
 population by four orders of magnitude produces a report, not an error.
+
+**CBDB: DROPPED, same day.** Emma, immediately after the entry above: *"if you are wasting time
+on the CBD lot being done for the sentinel date, just drop it ... we can lose, like, six seconds
+for a false negative on this. And you lose essentially no time in the long run for a false
+positive. So just fucking stop it."*
+
+So the component hypothesis is **not** queued and is not to be tested, and the sentence above
+saying it *"is queued rather than assumed"* was wrong when it was written — nothing had been put
+in `queue.md`. The parking stands as it is. Its precision was never worth buying: a person parked
+who should not have been costs one page visit, and a person missed costs nothing at all over the
+life of the campaign, so measuring the boundary more finely is spend against a rounding error.
+No further CBDB work.
