@@ -35361,3 +35361,44 @@ both read as done tonight and are NOT swept: they are standing procedures whose 
 *recreate these every session*, and deleting them would delete the instruction rather than the
 step. The six Abul Hamza exports are unfinished, the 15 hinge people are deprioritised rather
 than done, and the CJK verdicts are untouched.
+
+## 2026-09-10 — three connections off the isolate worklist, and the `via=blood` defect has four instances
+
+The batch of 24 drained: **21 results, 14 `miss_below_floor`, 4 `miss_export_warranted`, 3
+`path_found`.** All three hits carry `anchor=charlemagne`, verified the free way — step 1 reads
+`geni:6000000002457013227` and not `geni:6000000087535357291`, so every miss in the batch answers
+the right question too.
+
+    6000000003181980579  R' Chaim (Itzkowitz) Volozhiner   38 steps  blood
+    6000000038220851214  Wen Jifu 文及甫                    43 steps  INLAW, reported blood
+    6000000075398472169  Bai Jian 白建                      44 steps  INLAW, reported blood
+
+### ⛔ `via=blood` ON AN IN-LAW CHAIN: instances three and four, and they share a spine
+
+`queue.md` records this on Miroslava of Bulgaria and Elen ferch Eudaf Hen and says *"nothing
+explains it today."* Wen Jifu and Bai Jian are the third and fourth, and both were caught the way
+that item prescribes — off the relation words and Geni's own prose rather than off `via`:
+
+> Wen Jifu 文及甫 is Charlemagne's 6th great grandson's **fiancée's husband's** partner's
+> daughter's husband's 9th cousin thrice removed's **wife's** second cousin.
+
+**The new fact is that the two share steps 1–24.** Both run Charlemagne → Pépin → … → Otto III →
+**Zoe Porphyrogenita, his fiancée** → Constantine IX, her husband → Guarandukht, his partner → …
+→ Emperor Gaozu of Tang, and diverge only after that. So the marriage crossing is at **step 10**,
+a quarter of the way in, and everything downstream of it is in-law by construction. That is not a
+rendering race on one person's page: Geni is returning a chain that crosses marriage links *as
+the blood answer*, on two unrelated targets, from the same shared spine.
+
+`inlaw_state` reads `not_offered` on both, because rule 3 stops the second search once blood
+"resolves" — so the run never asks the question whose answer it is already holding.
+
+Both filed `via=inlaw` by hand. In-law counts as a connection, so both are real hits.
+
+### The family scraper mislabels on two shapes
+
+Found on the Volozhiner capture and recorded in its own commit: a sibling profile literally named
+`Daughter Of Gaon The` was read as a relation label, reclassifying the ten people after it from
+sibling to **parent**; and three curators — Adam Robert Brown, Edna Brandes, Randy Schoenberg —
+arrived as parents while appearing nowhere in the family prose. Written from the page instead.
+
+**136 tiny profiles, 725 paths, 0 invented people.**
