@@ -48,7 +48,9 @@ excludes.
 the floor clears the gate, because they measure different things and a person can be evidently
 connected by any of them.
 
-**⛔ ONE FLOOR, 300, ACROSS EVERY FIGURE.** Ruled 2026-09-06: any number over 1,000 is a sure
+**⛔ ONE FLOOR, 250, ACROSS EVERY FIGURE.** Lowered from 300 on 2026-09-10 — *"Rule goes to 250"* — because the Zhu lineage at the head of the isolate worklist carries `blood_relatives=250` on every member and a floor of 300 declined an export on all of them.
+
+**The original wording:** Ruled 2026-09-06: any number over 1,000 is a sure
 export, and even any number over 300. That replaced five invented per-figure thresholds — 1,000 /
 1,000 / 100 / 100 / 10. It is not five judgements, it is one reading of when the block says there is more there than the page shows, so whichever figure carries the
 number, over 300 is enough.

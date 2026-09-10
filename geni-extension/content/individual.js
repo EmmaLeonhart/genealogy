@@ -16,7 +16,11 @@
  * between calls. The gate lived in `scripts/export_gate.py` and I applied it in prose, per person.
  * That reasoning is the discretion that was removed; it is one rule here, applied identically.
  *
- * ⛔ **THE THRESHOLD IS 300, ON ANY FIGURE** -- the common threshold for whether the relatives
+ * ⛔ **THE THRESHOLD IS 250, ON ANY FIGURE** -- lowered from 300 on 2026-09-10, *"Rule goes
+ * to 250"*. The Tang-dynasty Zhu lineage at the head of the isolate worklist carries
+ * `blood_relatives=250` on every member, so a floor of 300 declined an export on all of them.
+ *
+ * **THE OLD WORDING** -- the common threshold for whether the relatives
  * numbers make a person worth doing. It
  * replaced five per-figure numbers that were mine. Disjunctive: the figures measure different
  * things and a person can be evidently connected by any of them.
@@ -31,7 +35,7 @@
 GC.individual = {};
 
 /** The statistics floor, and the one rule that reads it. */
-GC.individual.FLOOR = 300;
+GC.individual.FLOOR = 250;
 
 GC.individual.gate = function (stats) {
   const figures = ["family_tree", "blood_relatives", "ancestors", "descendants", "followers"];

@@ -359,7 +359,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   cunt at the end after other tasks are completed, this is an actual tail thing."*
 
   The extension already decides this itself: a person who misses both searches and clears the
-  **300** floor on any statistic gets `state: miss_export_warranted`, and with `job.create` set
+  **250** floor on any statistic gets `state: miss_export_warranted`, and with `job.create` set
   it walks up, creates one ancestor and runs a `Forest` export from them. `individual.js` owns
   every part of that; there is no discretion here and none is wanted.
 
@@ -547,7 +547,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 * **An unknown parent is an ABSENT SLOT, never an `NN` person.** A sibling pair with no known
   parents is a `FAM` with two `CHIL` and no partners. `exports/0-scraped/` and
   `build-scraped-gedcom.py` were deleted on your instruction for inventing 4,928 people.
-* **The export gate is one floor of 300 on any statistics figure**, disjunctive, and it lives in
+* **The export gate is one floor of 250 on any statistics figure**, disjunctive, and it lives in
   the extension rather than in a script the agent applies.
 * **No Playwright, no headless.** `CLAUDE.md` § *PLAYWRIGHT AND HEADLESS ARE A NO-GO* — the
   agentic navigation is overhead paid to keep the traffic acceptable, not a design to improve on.
