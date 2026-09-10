@@ -37,3 +37,23 @@ https://www.geni.com/people/%D0%A8%D0%BE%D0%BB%D0%BE%D1%85-%D0%90%D0%BA%D1%83%D0
 so a "hinge person" means basically these are people who seem to have clearly disjoint large numbers of descendants, and as such are good descendants export sources.
 
 like literally just make an "undigested text" file or something and put this text into it I do not want to have to do a fuckton of explanation
+
+---
+
+## 2026-09-09 — hinge people, WESTERN european tang
+
+okay now for additional things to add to that end of the queue thing for getting descendants of for hinge people, This is a new one old hinge was eastern european tang
+
+thjis is western european tang
+
+https://www.geni.com/people/Princess-Alix-de-Lampron/6000000006101354712?through=6000000006101354687
+https://www.geni.com/people/Constantine-I-lord-of-Lampron/6000000006101354653?through=6000000006101354687
+
+
+https://www.geni.com/people/Constantine-lord-of-Barbaron/6000000006101354662?through=6000000006101430416
+
+https://www.geni.com/people/Leo-I-the-Magnificent-king-of-Armenia/6000000006101430432?through=6000000006101354639
+
+https://www.geni.com/people/Tolita-Doleta-of-Armenia/6000000006101354628?through=6000000006101354639
+
+https://www.geni.com/people/Ruben-III-Rouponi-King-of-Armenia/6000000007086662766?through=6000000006101354639

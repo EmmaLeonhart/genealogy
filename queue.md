@@ -242,9 +242,15 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   so it does not quietly disappear. **But not yet, and not unprompted** — you, 2026-09-09: *"I do
   not want you to investigate"*. It rests until you say go.
 
-  Currently holding: nine Geni profiles you called **hinge people** — *"people who seem to have
-  clearly disjoint large numbers of descendants, and as such are good descendants export
-  sources"* — for descendants exports later.
+  Currently holding **two batches of hinge people** — *"people who seem to have clearly disjoint
+  large numbers of descendants, and as such are good descendants export sources"* — for
+  descendants exports later:
+
+  * **eastern european tang**, nine profiles, 2026-09-09
+  * **western european tang**, six profiles, 2026-09-09 — Cilician Armenia, Lampron and Barbaron
+
+  Her distinction, not an inferred one: *"This is a new one old hinge was eastern european tang
+  … thjis is western european tang"*.
 
 - **Export DESCENDANTS of these individuals I created.** Emma, 2026-09-09, adding them at the
   end of the queue and not parked: *"do not think about this at all just add it"*. Verbatim:

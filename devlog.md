@@ -33644,3 +33644,15 @@ that makes a missed click harmless instead of silently exporting the wrong style
 
 The export form is the SECOND form on the page — the first is site search — and it posts to
 `/gedcom/request_export`.
+
+## 2026-09-09 — sweep: nothing dead; and a second hinge batch, western european tang
+
+**Sweep: nothing removed.** All six queue items verified against the files and every one is live —
+Abul Hamza holds only the first of three exports, the collector has **2,589** outstanding, the
+parent-adding campaign has no artefacts and has not started, **0** pipe labels are emitted, and
+**0 of the 11** descendants exports on her list are done.
+
+**Second entry in `undigested.md`: six Cilician Armenian profiles** — Lampron, Barbaron, Leo I,
+Ruben III — pasted verbatim. Her distinction and not an inferred one: *"This is a new one old
+hinge was eastern european tang … thjis is western european tang"*. Nothing looked up, nothing
+checked; the queue pointer now names two batches rather than one.
