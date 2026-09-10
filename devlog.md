@@ -34130,3 +34130,44 @@ families**, task `6000000227678043855`. Seed verified as the file's first `INDI`
 Export 10 submitted: `6000000227676658979`, task **`6000000227677942052`**. Nine of eleven filed;
 two outstanding.
 
+
+## 2026-09-09 — the unconnected-`P2600` worklist: specification recorded, and the premise checked
+
+Dictated after a first attempt was lost to a flat phone battery, so it is written down in full
+before any of it is built: `docs/unconnected-worklist.md`, with a queue item at the front.
+
+**⛔ THE PREMISE IS TRUE AND THE SELF-CORRECTION WAS WRONG.** The dictation opens *"I don't think
+that the CI/CD currently combines the WikiData tree with the geni trees"* and then reverses
+itself mid-sentence. Checked rather than taken either way: `scripts/rebuild-everything.py` merges
+
+    genimerge merge --also out/manual-parental-correspondences.ged
+
+over `exports/**/*.ged` — the Geni corpus plus one small hand-correspondence GEDCOM.
+**Wikidata's 5,041,567 relationship edges across `P22`/`P25`/`P40`/`P26`/`P3373` are nowhere in
+`out/merged.ged`.** `scripts/p2600-connectivity.py`, written earlier today, does the union in
+memory with union-find and writes no tree. So the combination does not exist, and the first
+sentence was right.
+
+**The canonical form is natively a GEDCOM**, and the reason is structural: it preserves the
+family ids, which a union-find over edges destroys. So the Wikidata side gets rendered as a
+GEDCOM and merged rather than joined in memory — which also means the connectivity measurement I
+built today is a stand-in, not the thing.
+
+**The file, and the column order is part of the spec:** `qid`, `geni_id`, `neighbourhood_size`,
+`last_attempted`. Membership is *not linked to Charlemagne*, recalculated every run and never
+stored — a connected person simply stops being generated into it, so success needs no state and
+the tree build is what reports it. Neighbourhood size is **one** number over the combined tree,
+and it is the ranking key because connecting one person in a large neighbourhood connects the
+neighbourhood.
+
+**There is no second file.** The TSV carries its own state: qid and geni id fixed, size and
+membership recalculated, the date read from the previous committed version of the same file.
+
+**The order is deterministic**: eligible block on top, ineligible below ordered by when they
+become eligible; within either, neighbourhood size descending then QID ascending. A failure costs
+one attempt and a 30-day cooldown.
+
+Six pieces, none of which exists: the Wikidata GEDCOM in the merge, neighbourhood size, the TSV,
+the date carry-forward, the ordering, and the extension writing the date. The doc's last table
+says so explicitly rather than implying progress.
+

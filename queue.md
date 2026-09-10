@@ -8,6 +8,38 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+- **⛔ BUILD THE UNCONNECTED-`P2600` WORKLIST. `docs/unconnected-worklist.md` is the
+  specification, dictated 2026-09-09 and written down in full because the first attempt was lost
+  to a flat phone battery. Read it before touching this.**
+
+  **The premise was checked and is TRUE: the Wikidata tree does NOT go into the synoptic tree.**
+  `rebuild-everything.py` merges `exports/**/*.ged` plus one small correspondence GEDCOM;
+  Wikidata's 5,041,567 relationship edges are nowhere in `out/merged.ged`.
+  `scripts/p2600-connectivity.py` does the union in memory and writes no tree.
+
+  Six pieces, none of which exists, in dependency order:
+
+      1. Wikidata's tree AS A GEDCOM, merged into the synoptic tree. Natively a GEDCOM
+         because that preserves the family ids; a union-find over edges destroys them.
+      2. neighbourhood size -- ONE number, the combined Wikidata-and-Geni neighbourhood.
+      3. the TSV: qid, geni_id, neighbourhood_size, last_attempted -- in that column order.
+         Membership: not linked to Charlemagne. Recalculated every run, never stored.
+      4. the date carry-forward: qid and geni id fixed, size and membership recalculated,
+         the date read from the PREVIOUS VERSION OF THIS FILE. There is no second file.
+      5. the ordering: eligible block on top, ineligible below it ordered by when they
+         become eligible; within either, neighbourhood size DESC then qid ASC.
+         Eligibility is a 30-day cooldown after an attempt.
+      6. the extension writing `last_attempted` every time it runs on somebody.
+
+  Then CI runs it after the tree build.
+
+  **Seed dates are placeholders**: `2026-09-01` where a path capture has been attempted,
+  `2026-01-01` everywhere else.
+
+  **Nothing records success, deliberately** — a connected person simply stops being generated
+  into the file, and the tree build is what says so.
+
+
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
   item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:
