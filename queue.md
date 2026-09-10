@@ -127,6 +127,23 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   it did not prevent this, so either it does not cover this case or something else does it.
   **Nothing explains it today.**
 
+  ⛔ **THE MECHANISM, found by re-running her 2026-09-09: THE PAGE CHANGES UNDER THE JOB.**
+  Sampled at three moments in one run, her page read:
+
+      on load                  no verdict, no miss sentence
+      after the blood search   "No blood relationship was found." appears
+      after the in-law search  24 `span.segment`s, banner "Shortest in-law relationship"
+
+  `runPath` reads **the chain that is on the page when it looks**, and by then that is the
+  IN-LAW chain — not the one its own blood search produced. Nothing checks that the rendered
+  chain belongs to the search that was dispatched. That fits both instances, and it explains why
+  `6b2dee75` did not prevent them: it settles on *the segment count going up*, which is exactly
+  what the in-law render does.
+
+  It also explains the confusing detail from earlier — her page said *"No blood relationship was
+  found"* in the morning, `false` when re-loaded, then `true` again mid-run. That sentence is not
+  a property of the person; it is a **stage of the search**.
+
   **So `via` says WHICH SEARCH RAN and not what came back**, and
   every hit must be classified by hand from two things the result already carries: the relation
   words (hers crosses *"his wife"*, *"her brother"*, *"her ex-husband"*, *"his sister"*) and

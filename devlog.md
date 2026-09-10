@@ -33786,3 +33786,33 @@ Nothing removed, nothing changed.
 The Miroslava re-run Emma asked for is still on its in-law wait in the other tab; a cron collects
 it and then runs the service-worker beacon test, in that order, because a Chrome restart would
 kill the job.
+
+## 2026-09-09 — the `via=blood` defect has a mechanism: the page changes under the job
+
+Emma: *"literally reproduce it from one of the individuals you did it on earlier."* Re-ran
+Miroslava `371367105380011098`. The reproduction did not need the job to finish — **sampling the
+page at three moments during one run is the answer**:
+
+    on load                  no verdict, no miss sentence
+    after the blood search   "No blood relationship was found." appears
+    after the in-law search  24 span.segments, banner "Shortest in-law relationship"
+
+**`runPath` reads the chain that is on the page when it looks, and by then it is the IN-LAW
+chain** — not the one its own blood search produced. Nothing checks that the rendered chain
+belongs to the search that was dispatched.
+
+**That fits both instances and explains why `6b2dee75` did not prevent them.** That fix settles
+on *the segment count going up*, which is precisely what the in-law render does, so it confirms
+rather than catches the substitution.
+
+**And it resolves a detail that made no sense earlier today.** Her page said *"No blood
+relationship was found"* this morning, `false` when re-loaded this evening, and `true` again
+mid-run. That sentence is not a fact about the person — it is a **stage of the search**, which is
+why a single sample of it can say anything at all.
+
+**Her path and ledger row are untouched**, per *"These affected paths are considered finished
+lol."* The reproduction was for diagnosis and is recorded as such.
+
+**The rule that survives is unchanged and now has a reason**: classify every hit off the page
+banner rather than off `via`, because `via` names the search that ran and the chain may be the
+other one's.
