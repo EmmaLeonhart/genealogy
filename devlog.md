@@ -34320,3 +34320,44 @@ routine. A rule whose entire argument was cost does not survive the cost changin
 
 Still 273 lines.
 
+
+## 2026-09-09 — Abul Hamza's ball: no Scandinavians, and 263 titled people
+
+**The Scandinavian screen was chosen and it does not work on this ball.** Nordic name clusters
+fire **25** times at the rim and **all 25 are false positives** — `de Forbin Janson`,
+`Marquis de Rothelin`, `Dame de Salernes`, `Bourbon-Soisson`, `de Saulx de Tavannes` are French,
+`Arenberg` German, `Molin` Italian. French and Italian place-names end in `-son`/`-sen` as
+readily as Norwegian patronymics do.
+
+**Two unambiguous checks settle it over all 5,000 people:**
+
+    -datter / -dotter / -dóttir      2
+    names containing o-slash, ae, a-ring    0
+
+So the descent runs Armenian -> Caucasian/Persian -> Byzantine -> Italian/Provençal ->
+Venetian/Maltese -> Mexican, and never reaches Scandinavia. The one thread is **royal, not the
+farm families the corpus is built from**: the Polish Vasa at depth 24 — Sigismund III's children,
+`Katarina Sigismundsdotter Vasa`, `Jan Kasimir Vasa`, `Anna Catharina Constantia Vasa` — all at
+the rim with zero children inside the ball, so all cut off exactly at the cap.
+
+**The houses the ball actually reaches**, counted over the **263** people carrying a royal or
+princely title:
+
+    Bagration 51 · Georgia 36 · Trebizond 19 · Armenia 17 · Safavid 13 · Palaiologos 12
+    Lusignan 11 · Cyprus 9 · Bourbon 9 · Byzantine 7 · Lorraine 4 · Vasa 3 · Poland 2
+    Habsburg 2 · Naples 1 · Aragon 1 · Orléans 1 · Sweden 1
+
+**Titled doorways AT THE RIM** — cut off, so an export from one opens new ground: Henriette Marie
+de Bourbon (queen consort of England), James VII Stewart, Isabel Clara Eugenia Habsburg,
+Christine de Lorraine, Marie Françoise Élisabeth of Savoy, Jan Kasimir Vasa, the Safavid khans,
+the Jaqeli princes of Samtskhe.
+
+**Note what this says about the campaign's pick rule.** *One per largest family cluster* spreads
+the ten picks across Provençal, Nuevo León, Georgian, Venetian and Maltese families and picks up
+**none** of these — the royal doorways are single people, not clusters. A cluster rule and a
+"reach a particular region" goal are different instruments, and the Nordic screen will fail the
+same way on the next round for the same reason. Matching rim descendants against people already
+in the corpus by Geni id would not.
+
+**Nothing exported.** The campaign sits behind the Wikidata paths by its own queue placement.
+
