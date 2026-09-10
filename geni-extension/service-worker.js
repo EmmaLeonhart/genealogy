@@ -1,3 +1,28 @@
+/* ⛔ **THIS FILE WAS `background.js` AND WAS RENAMED TO BREAK A STALE SERVICE-WORKER CACHE.**
+ *
+ * 2026-09-09. The driver appeared dead for a whole afternoon: `sendMessage` from a content
+ * script resolved `undefined`, with no rejection and no `lastError`, across four Chrome
+ * restarts including one with `--load-extension`. Every hypothesis was wrong in turn -- a stale
+ * extension, a dead worker, a throw before `sendResponse`, a hung `chrome.storage`.
+ *
+ * A boot beacon settled it: this file writes `swBootedAt` to `chrome.storage.local` at module
+ * scope, and a content script can read that storage WITHOUT messaging. The beacon came back
+ * empty, which means the file was never executing -- not that messages were being lost.
+ *
+ * The cause is on disk. `Default/Service Worker/ScriptCache` held a **7,132-byte** copy stamped
+ * 15:12, against 12,190 bytes on disk: it contained `EXPORT_CONCURRENCY` but neither
+ * `swBootedAt` nor the `walk` handler. Chrome had cached the worker and was still serving that
+ * copy hours later.
+ *
+ * **Content scripts reload on a browser restart and the SERVICE WORKER DOES NOT** -- which is
+ * why `data-geni-collector` went 1.6.4 -> 1.6.8 on cue while the worker stayed at 15:12, and why
+ * restarting never helped. The cache is keyed on the SCRIPT URL, so bumping the manifest version
+ * does not invalidate it either. Renaming the file changes the URL and forces a fresh
+ * registration, which is the one lever reachable without `chrome://extensions`.
+ *
+ * If this ever recurs: read the beacon first. Absent means the file is not running, and the
+ * ScriptCache is the next place to look, not the messaging.
+ */
 /* The scheduler. Holds the queue, opens tabs, paces them, keeps the results.
  *
  * Two pacing rules, and they are different in kind:

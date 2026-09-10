@@ -33816,3 +33816,33 @@ lol."* The reproduction was for diagnosis and is recorded as such.
 **The rule that survives is unchanged and now has a reason**: classify every hit off the page
 banner rather than off `via`, because `via` names the search that ran and the chain may be the
 other one's.
+
+## 2026-09-09 — the service worker is ALIVE: Chrome was serving a script cached at 15:12
+
+**The driver works.** After renaming `background.js` → `service-worker.js`:
+
+    ping reply   {"pong":"1.6.9","sync":true}
+    beacon       {"swBootedAt":"2026-09-10T01:18:45Z","swVersion":"1.6.9"}
+    content      1.6.9
+
+**⛔ THE CAUSE: A STALE SERVICE-WORKER SCRIPT CACHE, and four restarts could not shift it.**
+`Default/Service Worker/ScriptCache` held a **7,132-byte** copy stamped **15:12** against 12,190
+bytes on disk. It contained `EXPORT_CONCURRENCY`, so it really was this file — but neither
+`swBootedAt` nor the `walk` handler. Chrome had been serving that copy for hours.
+
+**Content scripts reload on a browser restart and the service worker does not.** That is the
+whole trap: `data-geni-collector` went 1.6.4 → 1.6.8 exactly on cue, which read as *the extension
+reloaded, so everything reloaded*. It had not. And the cache is keyed on the **script URL**, so
+bumping the manifest version does not invalidate it — which is why 1.6.5 through 1.6.8 changed
+nothing. Renaming the file changes the URL and forces a fresh registration; it is the one lever
+reachable without `chrome://extensions`, which the automation surface refuses.
+
+**The beacon is what made it findable.** Every earlier hypothesis was wrong — a stale extension,
+a dead worker, a throw before `sendResponse`, a hung `chrome.storage` — and each was
+indistinguishable from the others through a `sendMessage` that resolves `undefined` with no
+rejection and no `lastError`. Writing to `chrome.storage.local` at module scope and reading it
+from a content script **without messaging** separates *the file never ran* from *the message was
+lost*, and it answered on the first try.
+
+The header on `service-worker.js` records this so the next person reads the beacon first and goes
+to the ScriptCache, not to the messaging.

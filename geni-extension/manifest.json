@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "geni collector",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "description": "Drives the Geni side of this repo: relationship paths, profile saves, placeholder individuals and Forest exports.",
   "permissions": [
     "tabs",
@@ -12,7 +12,7 @@
     "*://www.geni.com/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "service-worker.js"
   },
   "content_scripts": [
     {
