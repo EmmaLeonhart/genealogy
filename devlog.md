@@ -34645,3 +34645,31 @@ The overlay exists and the union tree builds locally (3,038,219 people, 516 MB);
 merge fits on a runner is unmeasured, and `CLAUDE.md` says it must not be wired in until it does.
 The stand-in gets the membership and the component size right and destroys the family ids, which
 is the one thing § 1 wants the GEDCOM form for.
+
+## 2026-09-09 — dead-queue-item sweep: the two finished anonymisation bullets
+
+**Two of the three bullets under § *Anonymisation is NOT redacting the tree* were done and one of
+them said so in place**, which is the thing the sweep exists to remove: `queue.md` only ever holds
+not-yet-done work, so a bullet reading `DONE 2026-09-09, completely` is a completed item wearing a
+label instead of being deleted.
+
+Checked before removing, rather than taken from the bullet's own word:
+
+    NEVER_TOUCH in scripts/*.py      one hit, and it is the COMMENT recording the deletion
+    KITAJIMA_HOLD_EXPIRES            gone; the only KITAJIMA left is tests/test_izumo_succession.py,
+                                     which is Kitajima no Sadataka, seat 55 — the succession, not
+                                     the hold
+    SPINE_PATHS defined anywhere     nowhere. Two comments say so and one docs line mentions it
+
+So *remove code that treats that item as special* and *`SPINE_PATHS` keeps only Arne → Bureus* are
+both deleted from `queue.md`. Their devlog entry already exists — § *the `NEVER_TOUCH` ban lists
+are deleted*, same day, which also recorded the `SPINE_PATHS` half as moot — so this entry records
+the sweep rather than restating it.
+
+**What is left of that section is one bullet: cut the strategy content.** `queue.md` and
+`docs/rules/wikidata-editing.md` still carry it, which the `NEVER_TOUCH` entry already said.
+
+**Nothing else in the queue is dead.** The wikidata-union item is in flight (the measurement
+dispatched, run 34439815071), the hinge-people exports and the collector runs have not been run,
+the crons and the transcript audit are standing procedures rather than steps, and the tail items
+are untouched by design.

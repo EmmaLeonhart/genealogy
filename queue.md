@@ -632,17 +632,10 @@ Cut the content in this repo that discusses **strategy around the account owner'
 how the account's editing is perceived**, and remove **code that treats that item as special**. The spine is the Arne→Bureus one only, and a task for 2026-09-02 removes that and all
 spine logic once it is complete.
 
-So three things, and none of them touches a person's data:
+**One thing is left of the three, and it does not touch a person's data either:**
 
 - **Cut the strategy content.** Anything in `CLAUDE.md`, `queue.md`, `devlog.md` or the scripts
   about how that item gets linked or how the account's editing reads to others.
-- **Remove code that treats that item as special. DONE 2026-09-09, completely.**
-  `NEVER_TOUCH_QID`, `NEVER_TOUCH_GENI`, the Kitajima id lists, `KITAJIMA_HOLD_EXPIRES`, the
-  write-time refusal and `test_no_batch_names_an_excluded_id` are all deleted. Ruled: *"the never
-  touch QID stuff is completely outdated and completely obsolete at this point... the algorithm
-  was rather poorly specified, and since we have specified it well with the entry points and the
-  universe being defined, it's all relatively good here."*
-- **`SPINE_PATHS` keeps only Arne → Bureus**, which is already true.
 
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
 free and `CLAUDE.md` § *Cost* no longer binds.
