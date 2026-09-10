@@ -1,17 +1,60 @@
 # Synoptic
 
-Merge Geni.com GEDCOM exports into one genealogy, reconcile it against Wikidata, and generate
-the edits that create the missing people on Wikidata.
+## What this project is
 
-1. Merge the exports into a single tree.
-2. Work out the Wikidata connections, joining on the Geni ID every record preserves.
-3. Expand the tree with more exports, seeded at good branch points.
-4. Create the absent people **on** Wikidata with their labels, Geni ID, sex and relationships.
+**A campaign to connect every `P2600` person on Wikidata into one comprehensive family tree,
+using Geni exports as the material.** Wikidata is often the better genealogy source; Geni is the
+better *reach*. Joined, one can connect people the other leaves stranded.
 
-**This file is RULES ONLY.** Every rule links to the page carrying its evidence — the
+**The repo generates QuickStatements every day through CI/CD**, and those go to Wikidata, where
+they are expanded. It is moving towards automated edits rather than pasted batches.
+
+**The synoptic tree is the thing everything runs on.** It has two meanings and both are in use:
+
+* **the Geni union** — every `.ged` under `exports/` merged into one tree, `out/merged.ged`.
+  *"Rebuild the synoptic tree"* always means this.
+* **the full union** — that tree joined to Wikidata, which is what the campaign actually needs
+  and **does not exist yet**.
+
+It is keyed on the Geni profile ID throughout, so merging is an exact join and never a name
+match. It is **slimmed**: anything not feeding the pipeline that ends at Wikidata is dropped on
+input, which is what made it buildable in Actions at all.
+
+## Where the pipeline is pointed right now
+
+**At the Bure kinship in Sweden and the surrounding Scandinavian genealogy.** That is deliberate
+and narrow. **On 2027-01-01 it broadens**, driven by
+`exports/post-merge/wikidata-qid-links.ged` — the file of Wikidata identifications that turns
+into entry points on that date.
+
+## What is left
+
+* **The Geni exports are mostly done.** A few are still running, and those are commanded rather
+  than routine — they were judged important individually.
+* **The descendant-gathering campaign.** Comprehensively export the descendants of named
+  individuals, because **the descendants of these people are poorly documented on Geni and other
+  sites and tend to be removed abruptly** — so gathering them is time-sensitive, and
+  representing them on Wikidata is the point. `queue.md` holds the roster and the order.
+* **The `P2600` connection campaign** — every holder either connected to Charlemagne or confirmed
+  impossible. 518,889 holders, 266,201 currently disconnected.
+
+## ⛔ The practical barrier: the zipper merge
+
+**The zipper merge is supposed to do entity resolution between Wikidata and Geni at scale** —
+assigning QIDs to people, so the synoptic tree knows who is who. **It is not doing that well, and
+the pipeline is effectively manual as a result.** That is an error caused by other
+complications, **not the intended long-term shape**. The intent is zipper merging doing the
+resolution over very large amounts of both sides, which is also what makes the tree efficient:
+the more people are identified with each other, the less duplication there is to carry.
+
+Treat manual adjudication as a stopgap. → [corpus-and-tree](docs/rules/corpus-and-tree.md)
+
+---
+
+**Below this line is RULES ONLY.** Every rule links to the page carrying its evidence — the
 measurement that established it, the failure that caused it, the counts it operates at. Cut from
-5,548 lines to this on 2026-09-09; nothing was deleted, it was moved. If a rule here looks
-arbitrary, the page says why, and § *the stupider and more specific the instruction* applies.
+5,548 lines on 2026-09-09; nothing was deleted, it was moved. If a rule looks arbitrary, the page
+says why, and § *the stupider and more specific the instruction* applies.
 
 | page | what it holds |
 | --- | --- |
@@ -230,8 +273,15 @@ accepted any letter, `@NI04461@` parsed as Geni ID `04461` and pointed at a stra
 
 - **The campaign is every `P2600` holder disconnected from Charlemagne** in the union of our
   exports and Wikidata — connected, or confirmed impossible. 518,889 holders, 266,201
-  disconnected. The old *183,674 isolates are LOW PRIORITY* rule is **deleted**: it governed 67%
-  of this population and said not to bother. → [unconnected-worklist](docs/unconnected-worklist.md)
+  disconnected. → [unconnected-worklist](docs/unconnected-worklist.md)
+- **The old *183,674 isolates are LOW PRIORITY* rule is DELETED**, and not only because it
+  governed 67% of that population. **The operating conditions changed underneath it**: it was
+  written when finding those people was manual labour, and browser automation has turned that
+  into something routine. A rule whose whole argument was cost does not survive the cost changing.
+- **The Geni trimming is not finished.** The slim keeps ~73% of corpus bytes; a
+  connectivity-only tree — `RFN`, `SEX`, `FAMC`, `FAMS`, `HUSB`, `WIFE`, `CHIL` — is ~19%.
+  Names, dates, places and titles are still carried and the Wikidata pipeline does not read them
+  to answer *is this person connected*.
 - **The Wikidata tree does NOT yet go into the synoptic tree.** `scripts/build-wikidata-gedcom.py`
   renders it as a mergeable GEDCOM; nothing wires it into CI yet, and it must not be wired in
   until it fits.

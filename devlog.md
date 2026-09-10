@@ -34299,3 +34299,24 @@ the audit landed and the cut did not. *"I gave you a series of instructions to g
 because of the way that you framed the instructions, you took it as being 'don't delete
 stuff.'"* The fix is not a rule; it is reading an ordered list as an ordered list.
 
+
+**Same day, second pass on `CLAUDE.md`:** it was cut to a rule list and that left out the part
+that actually orients a reader. It now opens with **what the project is** — a campaign to connect
+every `P2600` person into one comprehensive tree, using Geni exports as the material, with the
+repo generating QuickStatements daily through CI/CD and moving towards automated edits — **what
+the synoptic tree is** in both of its senses, **where the pipeline is pointed** (Bure kinship and
+Scandinavian genealogy, broadening 2027-01-01 off `wikidata-qid-links.ged`), **what is left**, and
+**the barrier**.
+
+**The barrier is named as a barrier: the zipper merge.** It is supposed to do entity resolution
+between Wikidata and Geni at scale and is not doing it well, so the pipeline is effectively
+manual. That is an error from other complications, not the intended shape, and manual
+adjudication is a stopgap.
+
+**And the LOW PRIORITY deletion has a second reason worth recording.** It was not only that the
+rule governed 67% of the campaign. **The operating conditions changed underneath it**: it was
+written when reaching those people was manual labour, and browser automation has made that
+routine. A rule whose entire argument was cost does not survive the cost changing.
+
+Still 273 lines.
+
