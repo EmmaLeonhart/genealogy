@@ -47,7 +47,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import (  # noqa: E402
     drop_clan_suffix, drop_description_suffix, drop_label_title,
-    drop_repeated_patronymic, generation_suffix_key, keep_own_surname, married_name_of,
+    drop_repeated_patronymic, generation_suffix_in_label, generation_suffix_key,
+    keep_own_surname, married_name_of,
     normalise_generation_suffix, without_nickname,
 )
 from labels import (  # noqa: E402
@@ -223,6 +224,22 @@ def main() -> int:
         qid = records[0]["qid"]
         wd_en = records[0]["wikidata_en"]
         wd_mul = records[0]["wikidata_mul"]
+        # ⛔ **AND WHERE GENI NEVER FILED ONE, WIKIDATA'S OWN LABEL IS THE ONLY RECORD OF IT.**
+        # `generation_suffix_key` reads the `NSFX` field, so a person whose suffix exists only
+        # inside a Wikidata label arrives here with `generation` empty -- and then every label
+        # this pipeline writes for them drops it.
+        #
+        # `Q5797554` *Detlof Heijkenskjöld den yngre*, 2026-09-09: Geni has `NAME Detlof
+        # /Heijkenskjöld/` and no `NSFX`, so our label was `Detlof Heijkenskjöld` and the
+        # `ja`/`zh`/`ko` labels THIS PIPELINE PUT ON THE ITEM read
+        # `デトロフ・ヘイイケンショルド`, `德特洛夫·赫伊伊肯肖尔德` and `데트로프 헤이즈켄쇨드` --
+        # the suffix gone in all three. Nothing downstream needed changing: `mul` and `en` go
+        # through `normalise_generation_suffix` below and the CJK readings already carry the
+        # established `2世` / `二世` / `2세` form.
+        #
+        # The `NSFX` field wins where both exist -- it is the person's own record.
+        if not generation:
+            generation = generation_suffix_in_label(wd_en, wd_mul)
 
         for record in records:
             rendered = clean(record["display_name"])

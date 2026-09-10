@@ -285,6 +285,31 @@ def generation_suffix_key(*values: str) -> str:
     return ""
 
 
+def generation_suffix_in_label(*labels: str) -> str:
+    """The `GENERATION_SUFFIX` key any of these LABELS carries, else `""`.
+
+    ⛔ **`generation_suffix_key` reads an `NSFX` FIELD and cannot see a suffix that only ever
+    existed inside a label.** It matches the whole field, which is right for Geni's name-suffix
+    slot and useless for `Detlof Heijkenskjöld den yngre`, a full label string.
+
+    **`Q5797554` is the worked case, 2026-09-09.** Geni files him `NAME Detlof
+    /Heijkenskjöld/` with no `NSFX` at all, so the suffix was known on the Wikidata side and
+    nowhere else -- `wikidata_en` reads `Detlof Heijkenskjöld den yngre` and
+    `matches_wikidata_en` reads `no`. Our derived label came out `Detlof Heijkenskjöld`, and the
+    `ja`/`zh`/`ko` labels this pipeline then WROTE onto the item dropped the suffix with it.
+
+    A generation suffix is a fact about the PERSON, not about one name string, and that does not
+    stop being true because the only record of it is Wikidata's own label.
+
+    `_SUFFIX_RE` is the same table, matched inside a string instead of over a whole field.
+    """
+    for label in labels:
+        match = _SUFFIX_RE.search(label or "")
+        if match:
+            return match.group(1).casefold()
+    return ""
+
+
 def normalise_generation_suffix(label: str, style: str, nsfx: str = "") -> str:
     """Move a generation suffix to the END of the label, in its `mul` or `en` form.
 

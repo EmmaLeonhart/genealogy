@@ -713,3 +713,53 @@ def test_both_corpus_spellings_of_oa_are_listed():
     """
     assert namemodel.drop_description_suffix(
         "Ester Frideborg Karlsson (o.ä) (ogift)", "(o.ä) (ogift)") == "Ester Frideborg Karlsson"
+
+# --- a generation suffix that exists ONLY inside a label -------------------------------
+
+
+def test_a_suffix_is_found_inside_a_full_label():
+    """`generation_suffix_key` reads an NSFX FIELD and matches the whole of it, so it cannot
+    see `den yngre` sitting at the end of a label. `Q5797554` is the worked case: Geni files
+    him `NAME Detlof /Heijkenskjold/` with NO `NSFX`, Wikidata's label is the only record that
+    he is the younger, and the ja/zh/ko labels this pipeline wrote dropped the suffix.
+    """
+    assert namemodel.generation_suffix_in_label(
+        "Detlof Heijkenskjold den yngre") == "den yngre"
+    assert namemodel.generation_suffix_key("Detlof Heijkenskjold den yngre") == ""
+
+
+def test_the_particle_de_is_not_a_suffix():
+    """⛔ The trap this table already paid for once: `d.e.` matched onto the particle `de`,
+    102,336 occurrences. Nothing here is dot-stripped, and a bare particle must not match.
+    """
+    assert namemodel.generation_suffix_in_label("Juan de Vega") == ""
+    assert namemodel.generation_suffix_in_label("Louise de Capels") == ""
+
+
+def test_a_clean_label_yields_nothing():
+    assert namemodel.generation_suffix_in_label("Detlof Heijkenskjold") == ""
+    assert namemodel.generation_suffix_in_label("") == ""
+    assert namemodel.generation_suffix_in_label(None) == ""
+
+
+def test_the_first_label_carrying_one_wins():
+    """It takes several labels, en then mul, and answers with the first that has a suffix."""
+    assert namemodel.generation_suffix_in_label(
+        "Detlof Heijkenskjold", "Detlof Heijkenskjold den yngre") == "den yngre"
+
+
+def test_the_found_key_drives_both_forms():
+    """The point of finding it: `mul` takes the Roman numeral and `en` the abbreviation,
+    which is the 2026-09-04 ruling on `Q106206114` and is unchanged here.
+    """
+    key = namemodel.generation_suffix_in_label("Detlof Heijkenskjold den yngre")
+    assert namemodel.normalise_generation_suffix(
+        "Detlof Heijkenskjold", "mul", key) == "Detlof Heijkenskjold II"
+    assert namemodel.normalise_generation_suffix(
+        "Detlof Heijkenskjold", "en", key) == "Detlof Heijkenskjold Jr."
+
+
+def test_the_english_surface_form_is_found_too():
+    """`the Younger` is in the same table and appears on Wikidata labels."""
+    assert namemodel.generation_suffix_in_label(
+        "Erik Benzelius the Younger") == "the younger"
