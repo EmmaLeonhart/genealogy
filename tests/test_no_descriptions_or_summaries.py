@@ -43,12 +43,25 @@ LOCAL_FILE = re.compile(r"\.csv|\.tsv|\.json|\.md|reports/|out/|add_argument")
 #: must be unique together per language. So this test is NARROWED rather than weakened: exactly
 #: these three strings, only in `Den`, and nothing else anywhere.
 ALLOWED_DESCRIPTIONS = {"patronymic", "family name", "matronymic"}
-DEN = re.compile(r'^LAST	Den	"([^"]*)"$')
+
+#: ⛔ **`Den` ON AN EXISTING ITEM COUNTS, NOT ONLY ON A `CREATE`.** This was `^LAST	Den	...`,
+#: which reads the exception too narrowly: a name item ALREADY on Wikidata is described now, and
+#: the four rows that do it -- `Q112261760`, `Q124785549`, `Q131994301`, `Q98139923` -- were ruled
+#: intentional on 2026-09-09, asked directly: *"both are intentional lol and matronymic too"*.
+DEN = re.compile(r'^(?:LAST|Q[1-9][0-9]*)	Den	"([^"]*)"$')
+
+#: ⛔ **THE DAILY BATCH IS NOT A `.qs` FILE, AND IT WAS OUTSIDE EVERY DESCRIPTION GUARD.**
+#: This test globbed `reports/*.qs`; the batch the pipeline actually composes and sends is
+#: `reports/wikidata-garborg-day.txt`, so a description in it -- intentional or not -- was
+#: unchecked. Found 2026-09-09 while reading why the batch carried `Den "family name"`.
+#: Measured before widening: all 16 `Den` lines in today's batch are already allowed, so this
+#: catches nothing today and would catch the next one.
+BATCHES = ["reports/*.qs", "reports/wikidata-garborg-day.txt"]
 
 
 def test_no_batch_carries_a_description():
     offenders = []
-    for path in sorted(REPO.glob("reports/*.qs")):
+    for path in sorted({p for pattern in BATCHES for p in REPO.glob(pattern)}):
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if line.lstrip().startswith("#"):
                 continue

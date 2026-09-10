@@ -164,8 +164,12 @@ of a loop, not a sample of anything.
 - **NO REPLY MEANS CONTENT.** Silence is never a block. Show the records and keep going.
 - **TESTS RUN IN CI/CD OR NOT AT ALL.** Never a local `pytest`, not even backgrounded. Test-suite
   health is *which sha CI last went green on* and nothing else. → [ci](docs/rules/ci-and-pipeline.md)
-- **NO descriptions and NO edit summaries, categorically.** One exception: a **patronymic** name
-  item carries `Den "patronymic"`, because that description IS the deduplication.
+- **NO descriptions and NO edit summaries, categorically.** The exception is **NAME ITEMS, and it
+  is three strings**: `Den "patronymic"`, `Den "matronymic"`, `Den "family name"` — because that
+  description IS the deduplication, and Wikidata refuses the duplicate on the label-plus-
+  description pair. It holds on an **existing** name item as much as on a `CREATE`: ruled
+  2026-09-09, *"both are intentional lol and matronymic too"*. `DESCRIPTION_FOR` in
+  `scripts/build-garborg-name-items.py` is the authority. Never strip one from a batch.
   → [wikidata](docs/rules/wikidata-editing.md)
 - **Wikidata editing starts 2026-09-01; the schedule sends from 2026-09-15.** Two dates, each
   written twice and pinned by a test. A start date is not a blocker.
@@ -186,9 +190,13 @@ of a loop, not a sample of anything.
 
 ## Working
 
-- **Only `AskUserQuestion` gets answered.** A question in prose was not asked. Every option must
-  be one that can actually be picked, and **the axis is part of the question** — four options on
-  one wrong premise is one option.
+- **⛔ IF AN ANSWER IS EXPECTED, IT IS AN `AskUserQuestion`. THERE IS NO OTHER WAY TO ASK.**
+  Ruled 2026-09-09, directly: *"if you expect an answer do AskUserQuestion I will not reliably
+  respond otherwise"*. A question in prose was not asked — not a question at the end of a report,
+  not an offer to do something *unless you say otherwise*, not *let me know*. Those read as
+  narration and go unanswered, and then the work stalls on an answer nobody was asked for.
+  Every option must be one that can actually be picked, and **the axis is part of the question** —
+  four options on one wrong premise is one option.
 - **If the instruction is ambiguous, ASK.** But **while working the queue, GUESS and record it**:
   ambiguity *inside* a specified item is guessed, ambiguity about *which thing is meant* is asked.
 - **"Add it to the end of the queue" means WRITE IT DOWN AND STOP.** No investigation, no

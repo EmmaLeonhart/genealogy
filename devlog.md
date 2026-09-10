@@ -34673,3 +34673,41 @@ the sweep rather than restating it.
 dispatched, run 34439815071), the hinge-people exports and the collector runs have not been run,
 the crons and the transcript audit are standing procedures rather than steps, and the tail items
 are untouched by design.
+
+## 2026-09-09 — the `Den` rows and the `P460` pairs are INTENTIONAL, and three guards were wrong about it
+
+Asked directly and answered: *"both are intentional lol and matronymic too"*. So the batch was
+right and the rules were behind it. Four things changed, none of them the batch.
+
+**`CLAUDE.md` said the exception was one string.** It read *"One exception: a **patronymic** name
+item carries `Den "patronymic"`"*. The exception is **name items, and three strings** —
+`patronymic`, `matronymic`, `family name` — which is what `DESCRIPTION_FOR` in
+`build-garborg-name-items.py` has emitted all along and what
+`tests/test_no_descriptions_or_summaries.py` has enforced all along. The one-line summary in
+`CLAUDE.md` was the only place that disagreed, and `docs/rules/wikidata-editing.md` still titled
+the section *THE ONE EXCEPTION: a PATRONYMIC name item*.
+
+**And it holds on an EXISTING item, not only on a `CREATE`.** `Q112261760`, `Q124785549`,
+`Q131994301` and `Q98139923` are name items already on Wikidata being described now.
+
+**The description guard was reading the wrong files.** It globbed `reports/*.qs`; the batch the
+pipeline composes and sends is `reports/wikidata-garborg-day.txt`, so **every description in the
+daily batch was outside every guard**, intentional or not. It now reads the batch as well, and
+its `DEN` pattern accepts a `Q…` subject and not only `LAST`. Measured before widening: all 16
+`Den` lines in today's batch are already allowed, so it catches nothing today and would catch the
+next one. 30 files scanned, 0 offenders.
+
+**The subject guard had no oracle that could ever vouch for a name item.**
+`test_every_explicit_subject_already_exists` failed on eight subjects, and the reason is
+structural rather than a data gap: `garborg-qids.tsv` is Geni id against QID, so a surname item
+cannot be in it, and `relations.tsv` holds items with genealogical edges, which a surname item
+does not have. All eight are attested on disk — six in `reports/name-item-qids.tsv` (824,498
+rows, qid → the name-item classes Wikidata itself puts on it) and two in
+`reports/created-name-items.tsv`. Ruled: both files count. **Unknown subjects: 8 → 0.**
+
+**And the rule that made this reachable at all.** Ruled the same day: *"if you expect an answer do
+AskUserQuestion I will not reliably respond otherwise"*. `CLAUDE.md` § *Only `AskUserQuestion`
+gets answered* now says that in her words, and names the three shapes that read as narration and
+go unanswered — a question at the end of a report, an offer to act *unless you say otherwise*, and
+*let me know*. Every one of the four decisions above came back inside a minute once they were
+options that could be picked.

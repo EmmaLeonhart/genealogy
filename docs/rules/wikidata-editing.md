@@ -123,10 +123,17 @@ as "conflicts" has regressed.
 **It is a hard rule that items are never created with descriptions**, and the same rule covers
 edit summaries: **they are categorically never used.**
 
-### ⛔ THE ONE EXCEPTION: a PATRONYMIC name item carries `Den "patronymic"`. Do not remove it
+### ⛔ THE EXCEPTION: a NAME ITEM carries `Den`, in three strings. Do not remove it
 
 **All patronymics get the description `patronymic`, so that they are properly deduplicated.**
-Without it, duplicate patronymics keep being created.
+Without it, duplicate patronymics keep being created. **Matronymics get `matronymic` and surnames
+get `family name`, on the same argument** — ruled 2026-09-09, asked directly about the four
+`Den "family name"` rows in the daily batch: *"both are intentional lol and matronymic too"*.
+
+**And it holds on an EXISTING item, not only on a `CREATE`.** The same ruling covered
+`Q112261760`, `Q124785549`, `Q131994301` and `Q98139923`, which are name items already on
+Wikidata being given the description now. A guard that allows `Den` only on `LAST` is reading the
+exception too narrowly.
 
 **The description IS the deduplication mechanism**, which is why it overrides the rule above rather
 than breaking it. A label and description must be unique together per language, so two undescribed

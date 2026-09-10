@@ -316,6 +316,45 @@ def _manual_identification_qids():
     return out
 
 
+@functools.lru_cache(maxsize=1)
+def _name_item_qids():
+    """Name items, which are edited as SUBJECTS and which no people-ledger will ever hold.
+
+    ⛔ **THE LEDGER IS A LEDGER OF PEOPLE.** `garborg-qids.tsv` is Geni id against QID, so a name
+    item cannot be in it by construction, and `relations.tsv` holds items with genealogical edges,
+    which a surname item does not have. Eight subjects fell through every oracle for that reason
+    alone -- four `P460` pairs between duplicate name items and four `Den "family name"` rows on
+    name items already on Wikidata -- and all eight are attested on disk.
+
+    Ruled 2026-09-09, asked directly: *"both are intentional lol and matronymic too"*, and both
+    files count.
+
+        reports/name-item-qids.tsv        824,359 rows, qid -> the name-item classes Wikidata
+                                          itself puts on it. Being in it IS being a name item
+                                          that exists.
+        reports/created-name-items.tsv    147 we created, which the offline store predates
+
+    This does not weaken the assertion: it still says every subject must already exist. What it
+    corrects is the set of things able to say so.
+    """
+    out = set()
+    qids = REPO / "reports" / "name-item-qids.tsv"
+    if qids.exists():
+        with open(qids, encoding="utf-8") as fh:
+            next(fh, None)
+            for line in fh:
+                q = line.split("	", 1)[0].strip()
+                if q.startswith("Q"):
+                    out.add(q)
+    created = REPO / "reports" / "created-name-items.tsv"
+    if created.exists():
+        with open(created, encoding="utf-8") as fh:
+            out |= {(row.get("qid") or "").strip()
+                    for row in csv.DictReader(fh, delimiter="	")
+                    if (row.get("qid") or "").strip().startswith("Q")}
+    return out
+
+
 def test_every_explicit_subject_already_exists():
     """A statement on `Q…` edits an existing item; on `LAST` it edits the new one.
 
@@ -327,7 +366,8 @@ def test_every_explicit_subject_already_exists():
     emptied the assertion tightens back to what it always was.
     """
     known = (known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids()
-             | _emma_confirmed_qids() | _manual_identification_qids())
+             | _emma_confirmed_qids() | _manual_identification_qids()
+             | _name_item_qids())
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"
