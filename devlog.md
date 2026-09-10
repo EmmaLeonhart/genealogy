@@ -35461,3 +35461,57 @@ either defect, and `path_found` is preserved across a revisit by design rather t
 
     R' Chaim Volozhiner   before   parent 9  spouse 1  child 5  sibling 7   + 3 curators
                           after    parent 2  spouse 1  child 5  sibling 14
+
+## 2026-09-10 — the 55 re-scrapes harvested out of `chrome.storage.local`; `geni-families/` deleted
+
+**The previous session left 55 family re-scrapes in `chrome.storage.local` and never wrote them
+to disk.** Emma, today: *"you also decided to fucking store something in Chrome local, whatever
+bullshit that was instead of committing and pushing, like a normal person."* They were the
+re-scrape of all 55 of today's captures — `35f575dc`, *"they predate both scraper fixes"* — so
+the corrected copies existed nowhere but a browser profile.
+
+**They were read straight off disk, not out of the browser.** `chrome.storage.local` is a
+LevelDB under the Chrome profile:
+`.../Default/Local Extension Settings/ofkjpckomefmmnihgfnclnaogjolpjcj/000018.log`, 3.9 MB.
+The browser transport was the obvious route and it is a bad one — `javascript_tool` truncates a
+result at roughly 1.3 KB, which is 75 round trips for 97 KB, and the tool's content filter
+refuses any line carrying `key=value`, which the scrape's own `# statistics` header is. Reading
+the write-ahead log directly costs one file copy: 32 KiB blocks, each record framed
+`crc32(4) + length(2) + type(1)`, fragments concatenated and then brace-matched for the records.
+`scratchpad/leveldb_extract.py` did it.
+
+**55 records, 55 distinct people, 19:14:53.205Z to 19:27:00.243Z** — the same count and the same
+timestamps the running extension reported for its own store, which is what says the extraction
+is complete rather than a prefix of it.
+
+**Zero encoding damage, checked rather than asserted.** No `U+FFFD` anywhere, no `Ã`/`Â`
+mojibake; `Bertel Jepsen Jepsen Møller` and `<private> אולסקר` both came through byte-intact.
+That mattered because the mojibake failure has now appeared three times in this pipe and every
+instance was something decoding by locale.
+
+**15 of the 55 were genuinely new.** 40 matched what was already on disk; 15 replaced stale
+pre-fix copies that the re-scrape had corrected and that had never landed. Those 15 are the whole
+value of the harvest. All 54 that appear in `reports/unconnected-p2600.tsv` were already stamped
+`2026-09-10`, so no date moved.
+
+**Then `geni-families/` was deleted — all 192 files.** Emma: *"they probably should have been
+deleted ... These are specifically, like, legacy things that I saved for this process, but did it
+in a bit of a different way that was not necessarily the best."* The content is preserved in the
+native format first: `build-tiny-gedcoms.py` was run over the corrected TSVs before the delete,
+writing 178 profiles and adding **16 new tiny profile GEDCOMs and 2 new tiny paths** to
+`exports/tiny-profiles/` and `exports/tiny-paths/`. Zero invented people. The TSVs themselves stay
+recoverable from git history, which is the restore path Emma named.
+
+**Two facts that follow from the delete and are not decisions taken here:**
+
+* `scripts/write-family-scrape.py` **writes** to `geni-families/` and will recreate the directory
+  on the next capture. Nothing was changed to stop it; retiring the TSV layer in the scraper is a
+  larger change than was asked for.
+* `build-tiny-gedcoms.py`, `collector-worklist.py`, `pilot-progress.py`,
+  `sibling-pair-worklist.py` and `file-geni-downloads.py` all read that path. They glob, so they
+  find nothing rather than failing, and the tiny GEDCOMs they already produced are committed.
+
+**The source HTML is not a fallback for these people, contrary to the presumption on the way in.**
+Checked before deleting: of the 192, only **7** had a saved page in `geni-scraping/` or
+`geni_pages/`. The other 184 exist only as the TSVs, now only in git history and as the tiny
+GEDCOMs derived from them.
