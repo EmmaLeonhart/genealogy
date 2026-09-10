@@ -33764,3 +33764,25 @@ and the two lists are a language boundary:
 Norwegian, Swedish and Danish **pronounce** that `e`, and they are the corpus majority. Same
 refutation as `dj`/`lj` — right for `Djupvik`, wrong for `AMIDJAJA` — and the same lesson:
 nothing in a token says which language it is. Recorded in `translit_no.py` so it is not retried.
+
+## 2026-09-09 — Jens Jacobsen Bull, a clean blood hit; sweep finds nothing dead
+
+**Work loop.** `paths/isolate-geni-jens-jacobsen-bull-1718.tsv` — **31 steps, one chain**,
+Charlemagne's 28th great grandson. Steps 1-9 are the Berengar and Flanders descent four other
+hits of this campaign share; it turns Norwegian at Judith of Flanders and stays there, through
+the Rein jarls and the Rosensverd line into the Bull family. 29 relatives scraped, 15 the prose
+names without links.
+
+**`via=blood` is correct here and was checked rather than assumed** — the banner reads *"Shortest
+blood relationship"* with no miss sentence, and every relation word from step 2 to 31 is a
+descent word. That check earned its keep twice today on Miroslava and Elen, where the collector
+said blood and the banner said in-law.
+
+**Sweep: nothing dead.** All five items verified live — the collector (**2,587** outstanding),
+the gated parent-adding campaign (no artefacts), the `|` question (0 pipe labels emitted),
+`undigested.md` (three entries, resting), and the eleven descendants exports (**0** done).
+Nothing removed, nothing changed.
+
+The Miroslava re-run Emma asked for is still on its in-law wait in the other tab; a cron collects
+it and then runs the service-worker beacon test, in that order, because a Chrome restart would
+kill the job.
