@@ -35667,3 +35667,65 @@ then render the result into a `<pre>` and read it out.
 1,555 saved pages exist and 11 have been checked. What would make this a proof rather than a
 sample is the extension doing the capture itself over the whole set — the agent driving it one
 page at a time costs about four tool calls per person, which is what bounds it today.
+
+## 2026-09-10 — the scheduler's first batch, and 0 of 51 disagreements attributable to the parser
+
+**The equivalence population went from 11 to 51, and the agent did not scrape any of it.** The
+bottleneck was never Geni, it was that every person cost about four browser tool calls of mine.
+Two facts removed that: the background scheduler can run a queue on its own, and its results land
+in `chrome.storage.local`, which is a LevelDB on disk that can be read with one file copy.
+
+**⛔ THE SCHEDULER RAN A BATCH FOR THE FIRST TIME.** `queue.md` records that it *"has never run
+once"* because it had no reachable control — the popup is browser chrome and
+`chrome-extension://` is refused to the automation surface — so every run had gone down the
+DOM-trigger path, which runs one job in one tab and has no queue at all. The
+`geni-collector-scheduler` bridge is that missing control, and `{type:"load", queue:[…],
+staggerMs, start:true}` is the whole invocation.
+
+    40 people, staggerMs 20000     20:28:41Z -> 20:41:41Z, 13 minutes
+    40 scraped, 40 carrying a tsv, 0 failures
+    cooldownUntil 0                no 429, no CAPTCHA at three page-opens a minute
+
+Then `scratchpad/leveldb_extract.py` over `000022.log` returned **40 records, 40 distinct**, the
+same count and the same timestamps the extension reports for its own store. **Marginal agent cost
+per person: one page open by the background worker, and nothing of mine.**
+
+**The result over 51 comparable people: 48 structurally identical, 3 differing, 0 parse errors —
+and all 3 differences were confirmed by inspection to be Geni edits, not parser defects.**
+
+    6000000040996845017   live has a father the saved page lacks   -> 0 occurrences in the saved
+                                                                      html; added since the save
+    6000000000694158525   saved has a wife the live page lacks     -> present in the saved html;
+                                                                      the tie was deleted on Geni
+    6000000003491988489   live has a half sister the saved lacks   -> the saved page lists her
+                                                                      ONLY under "Sister of"; the
+                                                                      live page lists her under
+                                                                      "Sister of" AND "Half sister
+                                                                      of". A tie was added.
+
+So **parser-attributable disagreements are 0 of 51**, and the honest phrasing of the result is
+that the offline reader agrees with the live scraper on every person whose page has not changed.
+
+**⛔ AND THE RUN FOUND A THIRD DEFECT, THE WORST ONE YET: `Ex-partner of` WAS READ AS `partner of`,
+WHICH INVENTS A MARRIAGE.** Christoffer Arntzen `6000000007210899736` reads *"Ex-partner of Hanna
+Marie Carstensdatter and Dorthea Johanna Hansdatter"*. `ex-partner of` is in **neither** table —
+not in `scraped_pages.py` and not in `GC.family.PHRASES` — and the two readers then disagreed in
+the most damaging possible direction:
+
+    live      /^partner of/i does not match the line, falls through to LOOKS_LIKE_OPENER,
+              and records both women with an EMPTY relation
+    offline   `\b(partner of)\s*$` matched MID-STRING, because a hyphen is a word boundary,
+              and called two ex-partners current partners
+
+`build-scraped-gedcom.py` was deleted for inventing people; this invents marriages. The match is
+now anchored with a `(?<![-\w])` lookbehind, which is what `^` does for the extension.
+
+**A second bug came out of fixing it, and it is the one worth remembering.** Making an unknown
+opener set the phrase to `""` — mirroring the live scraper, which records those people with a
+blank relation rather than dropping them — did nothing, because `if self._phrase and self.edges`
+treats the empty string as falsy and silently dropped every person under one. The test is
+`is not None`. That single character moved the result from 45/51 to 48/51.
+
+**Still not a proof, and the population is still the number to raise:** 51 of 1,555 saved pages.
+What today changed is the cost. At a 20-second stagger the whole set is about 8.6 hours of
+unattended background scraping in batches, with the harvest a file copy at the end.

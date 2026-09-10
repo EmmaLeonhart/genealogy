@@ -89,9 +89,21 @@ def _load_phrases() -> dict:
 #: The relationship phrases Geni writes, mapped to (role of the SUBJECT, role of the TARGET).
 #: `Son of A and B` makes the subject a child; `Mother of X` makes the subject a parent.
 PHRASES = _load_phrases()
+#: ⛔ `\b` IS THE WRONG BOUNDARY: A HYPHEN IS A WORD BOUNDARY, SO `Ex-partner of` MATCHED
+#: `partner of` AND TURNED AN EX-PARTNER INTO A SPOUSE.
+#:
+#: Found by the differential on Christoffer Arntzen `6000000007210899736`, whose page reads
+#: *"Ex-partner of Hanna Marie Carstensdatter and Dorthea Johanna Hansdatter"*. `ex-partner of` is
+#: in NEITHER table — not here and not in `family.js` — and the two readers then disagreed in the
+#: most damaging possible direction: the live scraper anchors its patterns with `/^partner of/i`
+#: against the line, so it did not match, fell through to `LOOKS_LIKE_OPENER` and recorded the two
+#: women with an EMPTY relation; this module matched mid-string and called them partners.
+#:
+#: Inventing a marriage is exactly what `build-scraped-gedcom.py` was deleted for. The lookbehind
+#: makes the match start at a real opener boundary, the way `^` does for the extension.
 _PHRASE_RE = re.compile(
-    r"\b(" + "|".join(sorted((re.escape(p) for p in PHRASES), key=len, reverse=True)) + r")\s*$",
-    re.I)
+    r"(?<![-\w])(" + "|".join(sorted((re.escape(p) for p in PHRASES), key=len, reverse=True))
+    + r")\s*$", re.I)
 
 #: ⛔ AN UNRECOGNISED OPENER MUST BREAK THE RUN, NOT INHERIT THE ONE ABOVE IT.
 #:
@@ -148,9 +160,15 @@ class _FamilyParser(HTMLParser):
                 self._phrase = m.group(1).lower()
                 self.edges.append((self._phrase, []))
             elif _LOOKS_LIKE_OPENER.search(tail):
-                # An opener the table does not know. Drop the run rather than letting these
-                # anchors inherit the phrase above them -- that is how a fiancee became a parent.
-                self._phrase = None
+                # ⛔ AN UNKNOWN OPENER STARTS AN EMPTY-PHRASE GROUP, exactly as `family.js` does.
+                # Not `None`: the live scraper *records* these people with an empty relation
+                # rather than dropping them — "an anchor before any phrase is recorded with an
+                # empty relation rather than guessed at" — so dropping them here would make the
+                # two readers differ about people they both saw. An empty phrase asserts no
+                # relationship, and `saved_page_gedcom` matches none of its cases against it, so
+                # nothing reaches the corpus either way.
+                self._phrase = ""
+                self.edges.append(("", []))
             self._pid = d["data-profile-id"]
             self._buf = []
         elif tag == "br":
@@ -180,7 +198,10 @@ class _FamilyParser(HTMLParser):
             name = " ".join("".join(self._buf).split())
             if name:
                 self.names[self._pid] = name
-                if self._phrase and self.edges:
+                # `is not None`, not truthiness: an unknown opener sets the phrase to the EMPTY
+                # STRING deliberately, and `if self._phrase` silently dropped every person under
+                # one -- which is the same people the live scraper records with a blank relation.
+                if self._phrase is not None and self.edges:
                     self.edges[-1][1].append((self._pid, name))
             self._pid = None
             self._text = []
