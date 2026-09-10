@@ -21,17 +21,31 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   `geni-extension/content/individual.js`. Do not re-derive any of it in prose; that reasoning is
   the discretion you removed.
 
-  **Where the targets come from:**
+  **⛔ WHERE THE TARGETS COME FROM — AND THE TWO PILOT ROSTERS WERE NEVER THE POPULATION.**
+  Emma, 2026-09-09, asked for the scope and gave it: *"Every p2600 holder who is disconnected from
+  Charlemagne in the synoptic tree (combination of our geni exports and what exists on wikidata).
+  The idea is that all p2600 people should either be confirmed impossible to connect, or
+  connected. Connection to Charlemagne is our proxy for connection to the main graph as
+  Charlemagne is one of the most central people."*
 
-      reports/isolate-path-pilot.tsv       ⛔ COMPLETE 2026-09-06, 100 of 100
-      reports/sibling-pair-worklist.tsv    the live list -- 2,526 people with no scrape yet
+      reports/p2600-disconnected.tsv       THE POPULATION -- 266,201 people
+      reports/sibling-pair-worklist.tsv    a pilot roster, 4,261 rows, kept
+      reports/isolate-path-pilot.tsv       a pilot roster, COMPLETE 2026-09-06, 100 of 100
 
-  The remaining count is any `geni_id` in the worklist with no `geni-families/<id>-family.tsv`:
+  `scripts/collector-worklist.py` drew its universe from the two pilot files alone until today
+  — **4,360 people between them**, against **518,889** `P2600` holders — so the campaign ran over
+  **0.8%** of the population, chosen by which roster happened to be on disk, and asked the wrong
+  question about them: a person already connected needs no capture at all.
+  `scripts/p2600-connectivity.py` computes the right one:
 
-      awk -F'	' 'NR>1{print $2}' reports/sibling-pair-worklist.tsv |
-        while read -r id; do [ -f "geni-families/$id-family.tsv" ] || echo "$id"; done | wc -l
+      P2600 holders            518,889
+      connected to Charlemagne 252,688   48.7%   (208,985 of them via Wikidata alone)
+      DISCONNECTED             266,201   51.3%   (266,195 never touched by any export)
 
-  `python scripts/pilot-progress.py` still prints the pilot's own count and should read 100/100.
+  **The outstanding count is `wc -l reports/collector-worklist.tsv`** — 268,686 today, recomputed
+  every run from what is on disk. The pilot rosters stay in `ROSTERS`: anyone in them who is
+  genuinely disconnected is in the new file anyway, `scraped()` filters captured people either
+  way, and dropping them would silently retire work in flight.
 
   **After each scrape:** `PYTHONPATH=src python scripts/build-tiny-gedcoms.py` turns everything on
   disk into tiny GEDCOMs. It is idempotent and safe to run repeatedly.

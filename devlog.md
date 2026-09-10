@@ -34091,3 +34091,11 @@ The submit is verified off the radio state before `form.submit()`, never from a 
 refuses if walk, id or max_profiles is not what was intended — the default walk on that form is
 **`BloodTree`**.
 
+
+**Dead-queue sweep, same hour:** nothing in `queue.md` is complete — all seven items are live,
+gated, or awaiting a ruling, so nothing was deleted. One stale *fact* inside the top item was
+corrected rather than removed: it named `reports/sibling-pair-worklist.tsv` as *"the live list --
+2,526 people"*, which this hour's measurement disproved. That is the shape the sweep exists
+against — a stale instruction that gets acted on again — and it now names
+`reports/p2600-disconnected.tsv` and the 266,201.
+
