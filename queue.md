@@ -290,6 +290,17 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   again. That is the design. Measured the same day: **20 of 43 misses, 47%**, take this shape,
   and it was written up as a blocker three times before being ruled on. It is not one.
 
+  **AND STAYING FOREVER IS THE POINT, not a cost the design tolerates.** *"The ideal
+  implementation of this is that things end up failing and going into the queue, and they just
+  stay there forever ... because that establishes a clear base of people who are isolated and of
+  which we have the ability to potentially try to connect through other ways, or I have the
+  ability to connect it. And other people might connect them, say, on Wikidata. And the people
+  disappear as we address it."* So the file is a **register of the isolated**, not a worklist
+  that ought to drain: a person leaves it by being CONNECTED, by anyone and by any route, and
+  membership is recomputed every build and never stored (§ 3) precisely so that leaving needs no
+  bookkeeping. A change that let people "finish" without being connected would delete the
+  register and answer a question nobody asked.
+
   ⛔ **AND THE CBDB CLUSTER IS THE SAME SHAPE OF NON-PROBLEM.** *"All they're supposed to be
   doing here is we just have set its dates ... we treat them as though we've done it. It's
   gonna be at least thirty days until they're addressed again. So that's it."* 224 people,
