@@ -422,9 +422,28 @@ async function pump() {
       }
       /* `stats` joins them: a census read costs a real page load, Geni served an Incapsula
        * CAPTCHA after roughly forty rapid ones, and the campaign needs sixty. One at a time. */
-      const limit = (next.job === "export" || next.job === "seed" || next.job === "stats")
-        ? 1 : s.concurrency;
-      if (inFlight >= limit) break;
+      /* ⛔⛔ **THERE IS NO TAB CAP. THE LIMIT IS ON OPENING, NOT ON HOLDING.**
+       *
+       * Ruled 2026-09-10: *"You're supposed to open like 500 tabs in the process of this (not at
+       * once though). No cap on tabs lol and the real thing is as soon as you request a path you
+       * open a new tab, but never open multiple tabs simultaneously."*
+       *
+       * Two different quantities, and only one of them is bounded:
+       *
+       *   OPENING   strictly one at a time, paced by `staggerMs`. The loop opens a single tab
+       *             and breaks, and that is the whole constraint.
+       *   HOLDING   unbounded. A tab whose path search is running costs RAM and nothing else,
+       *             and it MUST stay open -- closing it drops Geni's promise to notify.
+       *
+       * `s.concurrency` capped the HOLDING at 12, which is the wrong quantity entirely: the run
+       * stalled until a ten-minute search finished before the next page could be opened, so
+       * twelve searches ran and everything else waited. The searches are what is being
+       * accumulated; the opens are what is being rationed.
+       *
+       * Exports stay at 1 because that is GENI's limit rather than ours, and seeds stay at 1
+       * because a creation ends the walk and every parallel seed is work about to be discarded. */
+      const serial = (next.job === "export" || next.job === "seed" || next.job === "stats");
+      if (serial && inFlight >= 1) break;
 
       const queue = s.queue.slice(1);
       const job = Object.assign({ jobId: next.geni_id + ":" + (next.kind || next.job),
