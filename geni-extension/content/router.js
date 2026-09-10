@@ -92,7 +92,12 @@ document.addEventListener("geni-collector-run", async () => {
       threw: failed, lastError: last,
       /* The manifest version of the CONTENT script. If the background reports a different one
        * the service worker is stale, which is the case this probe was written to name. */
-      contentVersion: (chrome.runtime.getManifest && chrome.runtime.getManifest().version) || "?"
+      contentVersion: (chrome.runtime.getManifest && chrome.runtime.getManifest().version) || "?",
+      /* The boot beacon, read straight out of storage rather than asked for. See background.js. */
+      beacon: await new Promise((res) => {
+        try { chrome.storage.local.get(["swBootedAt", "swVersion"], (o) => res(o || null)); }
+        catch (e) { res({ error: String(e && e.message || e) }); }
+      })
     });
     root.dataset.geniCollectorBusy = "0";
     return;

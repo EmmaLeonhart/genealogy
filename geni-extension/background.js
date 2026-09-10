@@ -14,6 +14,25 @@
  *    minute; that is the default here and the popup can change it.
  */
 
+/* ⛔ **A BOOT BEACON, because "the worker never ran" and "the message never arrived" look
+ * identical from a content script.** Both present as `sendMessage` resolving `undefined` with
+ * no rejection and no `lastError`, and most of 2026-09-09 went on guessing between them.
+ *
+ * This writes to `chrome.storage.local` at module scope — the first thing the worker does, before
+ * any listener is registered. A content script can read that storage directly, without sending
+ * a message at all. So:
+ *
+ *     beacon present, ping unanswered  ->  the worker RUNS and messaging is broken
+ *     beacon absent                    ->  the worker never executed this file
+ *
+ * It is two lines and it distinguishes the only two hypotheses left. */
+try {
+  chrome.storage.local.set({
+    swBootedAt: new Date().toISOString(),
+    swVersion: chrome.runtime.getManifest().version
+  });
+} catch (e) { /* nothing to do: if this throws, the beacon is absent and that is the signal */ }
+
 const EXPORT_CONCURRENCY = 1;
 const PUMP_ALARM = "geni-collector-pump";
 
