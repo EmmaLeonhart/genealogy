@@ -250,7 +250,7 @@ LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
 
-# 929 more name items are needed and wait for a later
+# 930 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   Ekerman (family), 1 bearer(s)
 #   Ellingsdatr (given), 1 bearer(s)
@@ -264,7 +264,7 @@ LAST	P31	Q110874
 #   Iversen (patronymic), 1 bearer(s)
 #   Jørgensdatter (patronymic), 1 bearer(s)
 #   Kamberud (family), 1 bearer(s)
-#   ... and 917 more
+#   ... and 918 more
 
 
 # ======================================================================
@@ -310,257 +310,258 @@ Q141403363	P460	Q141352780
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 188 edits; 6597 edits held for a later run
-#   across 1640 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 189 edits; 6408 edits held for a later run
+#   across 1580 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q122361403: Joan|Jane Yonge -> Joan Yonge   + Jane Yonge
-Q122361403	Len	"Joan Yonge"
-Q122361403	Lmul	"Joan Yonge"
-Q122361403	Amul	"Jane Yonge"
-#   Q122361173: Eleanor|Helen Mytton -> Eleanor Mytton   + Helen Mytton
-Q122361173	Len	"Eleanor Mytton"
-Q122361173	Lmul	"Eleanor Mytton"
-Q122361173	Amul	"Helen Mytton"
-#   Q122361169: Joanna|Joan Hoord -> Joanna Hoord   + Joan Hoord
-Q122361169	Len	"Joanna Hoord"
-Q122361169	Lmul	"Joanna Hoord"
-Q122361169	Amul	"Joan Hoord"
-#   Q122360623: Cristina|Christian Mercer -> Cristina Mercer   + Christian Mercer
-Q122360623	Len	"Cristina Mercer"
-Q122360623	Lmul	"Cristina Mercer"
-Q122360623	Amul	"Christian Mercer"
-#   Q122360620: Egidia|Giles Moray (Murray), of Culbin -> Egidia Moray (Murray), of Culbin   + Giles Moray (Murray), of Culbin
-Q122360620	Len	"Egidia Moray (Murray), of Culbin"
-Q122360620	Lmul	"Egidia Moray (Murray), of Culbin"
-Q122360620	Amul	"Giles Moray (Murray), of Culbin"
-#   Q122260550: Dydvil|Maud ferch Thomas ap Gwilym ap Jenkin -> Dydvil ferch Thomas ap Gwilym ap Jenkin   + Maud ferch Thomas ap Gwilym ap Jenkin
-Q122260550	Len	"Dydvil ferch Thomas ap Gwilym ap Jenkin"
-Q122260550	Lmul	"Dydvil ferch Thomas ap Gwilym ap Jenkin"
-Q122260550	Amul	"Maud ferch Thomas ap Gwilym ap Jenkin"
-#   Q122260514: Margaret|Mary Herbert -> Margaret Herbert   + Mary Herbert
-Q122260514	Len	"Margaret Herbert"
-Q122260514	Lmul	"Margaret Herbert"
-Q122260514	Amul	"Mary Herbert"
-#   Q122260329: Thomasine Lovett (Lovell|Lyngward), of Shipdham -> Thomasine Lovett   + Thomasine Lovell | Thomasine Lyngward
-Q122260329	Len	"Thomasine Lovett, of Shipdham"
-Q122260329	Lmul	"Thomasine Lovett"
-Q122260329	Amul	"Thomasine Lovell"
-Q122260329	Amul	"Thomasine Lyngward"
-#   Q121344808: Isabel|Elizabeth de Harcourt -> Isabel de Harcourt   + Elizabeth de Harcourt
-Q121344808	Len	"Isabel de Harcourt"
-Q121344808	Lmul	"Isabel de Harcourt"
-Q121344808	Amul	"Elizabeth de Harcourt"
-#   Q121340516: Lewis|Ludowick Walker, of Bramshall -> Lewis Walker, of Bramshall   + Ludowick Walker, of Bramshall
-Q121340516	Len	"Lewis Walker, of Bramshall"
-Q121340516	Lmul	"Lewis Walker, of Bramshall"
-Q121340516	Amul	"Ludowick Walker, of Bramshall"
-#   Q118173835: Margaret|Mary Chute -> Margaret Chute   + Mary Chute
-Q118173835	Len	"Margaret Chute"
-Q118173835	Lmul	"Margaret Chute"
-Q118173835	Amul	"Mary Chute"
-#   Q117378853: Margred|Jane Dyer, of Boulston -> Margred Dyer, of Boulston   + Jane Dyer, of Boulston
-Q117378853	Len	"Margred Dyer, of Boulston"
-Q117378853	Lmul	"Margred Dyer, of Boulston"
-Q117378853	Amul	"Jane Dyer, of Boulston"
-#   Q117306988: Elsbeth|Elizabeth ferch John ap Humphrey Grey -> Elsbeth ferch John ap Humphrey Grey   + Elizabeth ferch John ap Humphrey Grey
-Q117306988	Len	"Elsbeth ferch John ap Humphrey Grey"
-Q117306988	Lmul	"Elsbeth ferch John ap Humphrey Grey"
-Q117306988	Amul	"Elizabeth ferch John ap Humphrey Grey"
-#   Q117306706: Dafydd|Deicws ap Madog ap Dafydd Gôch ap Dafydd Hên -> Dafydd ap Madog ap Dafydd Gôch ap Dafydd Hên   + Deicws ap Madog ap Dafydd Gôch ap Dafydd Hên
-Q117306706	Len	"Dafydd ap Madog ap Dafydd Gôch ap Dafydd Hên"
-Q117306706	Lmul	"Dafydd ap Madog ap Dafydd Gôch ap Dafydd Hên"
-Q117306706	Amul	"Deicws ap Madog ap Dafydd Gôch ap Dafydd Hên"
-#   Q117302950: Margaret|Margery Bostock -> Margaret Bostock   + Margery Bostock
-Q117302950	Len	"Margaret Bostock"
-Q117302950	Lmul	"Margaret Bostock"
-Q117302950	Amul	"Margery Bostock"
-#   Q117302948: Ralph Staveleigh (Staveley|Stayley) -> Ralph Staveleigh   + Ralph Staveley | Ralph Stayley
-Q117302948	Len	"Ralph Staveleigh"
-Q117302948	Lmul	"Ralph Staveleigh"
-Q117302948	Amul	"Ralph Staveley"
-Q117302948	Amul	"Ralph Stayley"
-#   Q117302656: Eleanor|Elinor Warren -> Eleanor Warren   + Elinor Warren
-Q117302656	Len	"Eleanor Warren"
-Q117302656	Lmul	"Eleanor Warren"
-Q117302656	Amul	"Elinor Warren"
-#   Q117245776: Philip Philipszoon Kuvel|Quivel|Quiveel -> Philip Philipszoon Kuvel   + Philip Philipszoon Quivel | Philip Philipszoon Quiveel
-Q117245776	Len	"Philip Philipszoon Kuvel"
-Q117245776	Lmul	"Philip Philipszoon Kuvel"
-Q117245776	Amul	"Philip Philipszoon Quivel"
-Q117245776	Amul	"Philip Philipszoon Quiveel"
-#   Q117243361: Hans|Johann Schwellengrebel -> Hans Schwellengrebel   + Johann Schwellengrebel
-Q117243361	Len	"Hans Schwellengrebel"
-Q117243361	Lmul	"Hans Schwellengrebel"
-Q117243361	Amul	"Johann Schwellengrebel"
-#   Q117243157: Balthasar|Filerectus Fademrecht -> Balthasar Fademrecht   + Filerectus Fademrecht
-Q117243157	Len	"Balthasar Fademrecht"
-Q117243157	Lmul	"Balthasar Fademrecht"
-Q117243157	Amul	"Filerectus Fademrecht"
-#   Q117243145: Johann|Hans Swellengrebel -> Johann Swellengrebel   + Hans Swellengrebel
-Q117243145	Len	"Johann Swellengrebel"
-Q117243145	Lmul	"Johann Swellengrebel"
-Q117243145	Amul	"Hans Swellengrebel"
-#   Q117024927: Anne|Agnes Huntington -> Anne Huntington   + Agnes Huntington
-Q117024927	Len	"Anne Huntington"
-Q117024927	Lmul	"Anne Huntington"
-Q117024927	Amul	"Agnes Huntington"
-#   Q116854564: Lady Mairi|Marjory Sinclair -> Lady Mairi Sinclair   + Lady Marjory Sinclair
-Q116854564	Len	"Lady Mairi Sinclair"
-Q116854564	Lmul	"Lady Mairi Sinclair"
-Q116854564	Amul	"Lady Marjory Sinclair"
-#   Q116812593: Margred|(Elizabeth) Giles, of Silstwn -> Margred Giles, of Silstwn   + (Elizabeth) Giles, of Silstwn
-Q116812593	Len	"Margred Giles, of Silstwn"
-Q116812593	Lmul	"Margred Giles, of Silstwn"
-Q116812593	Amul	"(Elizabeth) Giles, of Silstwn"
-#   Q116812565: Thomas|Gwilym Bawdrip, of Penmark -> Thomas Bawdrip, of Penmark   + Gwilym Bawdrip, of Penmark
-Q116812565	Len	"Thomas Bawdrip, of Penmark"
-Q116812565	Lmul	"Thomas Bawdrip, of Penmark"
-Q116812565	Amul	"Gwilym Bawdrip, of Penmark"
-#   Q116812564: Margred ferch Thomas|Gwilym Bawdrip -> Margred ferch Thomas Bawdrip   + Margred ferch Gwilym Bawdrip
-Q116812564	Len	"Margred ferch Thomas Bawdrip"
-Q116812564	Lmul	"Margred ferch Thomas Bawdrip"
-Q116812564	Amul	"Margred ferch Gwilym Bawdrip"
-#   Q116812456: Richard|Rhys ap Gruffudd Ddwn ab Iorwerth ap Maredudd of Mertyn Uwch Glan -> Richard ap Gruffudd Ddwn ab Iorwerth ap Maredudd of Mertyn Uwch Glan   + Rhys ap Gruffudd Ddwn ab Iorwerth ap Maredudd of Mertyn Uwch Glan
-Q116812456	Len	"Richard ap Gruffudd Ddwn ab Iorwerth ap Maredudd of Mertyn Uwch Glan"
-Q116812456	Lmul	"Richard ap Gruffudd Ddwn ab Iorwerth ap Maredudd of Mertyn Uwch Glan"
-Q116812456	Amul	"Rhys ap Gruffudd Ddwn ab Iorwerth ap Maredudd of Mertyn Uwch Glan"
-#   Q116812185: Julian|Joan Hawey, of St.Donat's -> Julian Hawey, of St.Donat's   + Joan Hawey, of St.Donat's
-Q116812185	Len	"Julian Hawey, of St.Donat's"
-Q116812185	Lmul	"Julian Hawey, of St.Donat's"
-Q116812185	Amul	"Joan Hawey, of St.Donat's"
-#   Q116812065: Jennet|Sionet ferch Lewys Raglan, of Vorganwg -> Jennet ferch Lewys Raglan, of Vorganwg   + Sionet ferch Lewys Raglan, of Vorganwg
-Q116812065	Len	"Jennet ferch Lewys Raglan, of Vorganwg"
-Q116812065	Lmul	"Jennet ferch Lewys Raglan, of Vorganwg"
-Q116812065	Amul	"Sionet ferch Lewys Raglan, of Vorganwg"
-#   Q116480345: Anne|Alice de Botreaux -> Anne de Botreaux   + Alice de Botreaux
-Q116480345	Len	"Anne de Botreaux"
-Q116480345	Lmul	"Anne de Botreaux"
-Q116480345	Amul	"Alice de Botreaux"
-#   Q116478989: Mali|Gwladus ferch Ieuan ap Llywelyn ap Gruffudd Llwyd -> Mali ferch Ieuan ap Llywelyn ap Gruffudd Llwyd   + Gwladus ferch Ieuan ap Llywelyn ap Gruffudd Llwyd
-Q116478989	Len	"Mali ferch Ieuan ap Llywelyn ap Gruffudd Llwyd"
-Q116478989	Lmul	"Mali ferch Ieuan ap Llywelyn ap Gruffudd Llwyd"
-Q116478989	Amul	"Gwladus ferch Ieuan ap Llywelyn ap Gruffudd Llwyd"
-#   Q116478775: Jonet|Elliw ferch Ieuan ap Llywelyn ap Gruffudd Llwyd -> Jonet ferch Ieuan ap Llywelyn ap Gruffudd Llwyd   + Elliw ferch Ieuan ap Llywelyn ap Gruffudd Llwyd
-Q116478775	Len	"Jonet ferch Ieuan ap Llywelyn ap Gruffudd Llwyd"
-Q116478775	Lmul	"Jonet ferch Ieuan ap Llywelyn ap Gruffudd Llwyd"
-Q116478775	Amul	"Elliw ferch Ieuan ap Llywelyn ap Gruffudd Llwyd"
-#   Q116478704: Nest|Annes ferch Gruffudd ap John ap Gruffudd -> Nest ferch Gruffudd ap John ap Gruffudd   + Annes ferch Gruffudd ap John ap Gruffudd
-Q116478704	Len	"Nest ferch Gruffudd ap John ap Gruffudd"
-Q116478704	Lmul	"Nest ferch Gruffudd ap John ap Gruffudd"
-Q116478704	Amul	"Annes ferch Gruffudd ap John ap Gruffudd"
-#   Q116478542: John ap Robin|Robert Fychan ap Gruffudd ap Hywel Wynn alias Whyte -> John ap Robin Fychan ap Gruffudd ap Hywel Wynn alias Whyte   + John ap Robert Fychan ap Gruffudd ap Hywel Wynn alias Whyte
-Q116478542	Len	"John ap Robin Fychan ap Gruffudd ap Hywel Wynn alias Whyte"
-Q116478542	Lmul	"John ap Robin Fychan ap Gruffudd ap Hywel Wynn alias Whyte"
-Q116478542	Amul	"John ap Robert Fychan ap Gruffudd ap Hywel Wynn alias Whyte"
-#   Q116478248: Sir John|Jenkin Donne, of Utkinton -> Sir John Donne, of Utkinton   + Sir Jenkin Donne, of Utkinton
-Q116478248	Len	"Sir John Donne, of Utkinton"
-Q116478248	Lmul	"Sir John Donne, of Utkinton"
-Q116478248	Amul	"Sir Jenkin Donne, of Utkinton"
-#   Q116478238: Gronwy Sais ap Richard|Rhys ap Gruffudd Ddwn ab Iorwerth -> Gronwy Sais ap Richard ap Gruffudd Ddwn ab Iorwerth   + Gronwy Sais ap Rhys ap Gruffudd Ddwn ab Iorwerth
-Q116478238	Len	"Gronwy Sais ap Richard ap Gruffudd Ddwn ab Iorwerth"
-Q116478238	Lmul	"Gronwy Sais ap Richard ap Gruffudd Ddwn ab Iorwerth"
-Q116478238	Amul	"Gronwy Sais ap Rhys ap Gruffudd Ddwn ab Iorwerth"
-#   Q116477674: Llywelyn Moel|Foel ap Hywel ap Tegwared Fychan ap Tegwared -> Llywelyn Moel ap Hywel ap Tegwared Fychan ap Tegwared   + Llywelyn Foel ap Hywel ap Tegwared Fychan ap Tegwared
-Q116477674	Len	"Llywelyn Moel ap Hywel ap Tegwared Fychan ap Tegwared"
-Q116477674	Lmul	"Llywelyn Moel ap Hywel ap Tegwared Fychan ap Tegwared"
-Q116477674	Amul	"Llywelyn Foel ap Hywel ap Tegwared Fychan ap Tegwared"
-#   Q116470910: Reynold|Rheinallt ap Gwilym Powell, of Perth-hir -> Reynold ap Gwilym Powell, of Perth-hir   + Rheinallt ap Gwilym Powell, of Perth-hir
-Q116470910	Len	"Reynold ap Gwilym Powell, of Perth-hir"
-Q116470910	Lmul	"Reynold ap Gwilym Powell, of Perth-hir"
-Q116470910	Amul	"Rheinallt ap Gwilym Powell, of Perth-hir"
-#   Q116470886: John|Jenkin ap Hywel ab Ieuan ap Meurig pf Llanover -> John ap Hywel ab Ieuan ap Meurig pf Llanover   + Jenkin ap Hywel ab Ieuan ap Meurig pf Llanover
-Q116470886	Len	"John ap Hywel ab Ieuan ap Meurig pf Llanover"
-Q116470886	Lmul	"John ap Hywel ab Ieuan ap Meurig pf Llanover"
-Q116470886	Amul	"Jenkin ap Hywel ab Ieuan ap Meurig pf Llanover"
-#   Q116470885: Rossor|Roger ap John|Jenkin ap Hywel ab Ieuan of Llanhenog -> Rossor ap John ap Hywel ab Ieuan of Llanhenog   + Roger ap Jenkin ap Hywel ab Ieuan of Llanhenog
-Q116470885	Len	"Rossor ap John ap Hywel ab Ieuan of Llanhenog"
-Q116470885	Lmul	"Rossor ap John ap Hywel ab Ieuan of Llanhenog"
-Q116470885	Amul	"Roger ap Jenkin ap Hywel ab Ieuan of Llanhenog"
-#   Q116469808: Wilcock|William Lewrch alias Clerke, of Knoyles Place, Llantwit -> Wilcock Lewrch alias Clerke, of Knoyles Place, Llantwit   + William Lewrch alias Clerke, of Knoyles Place, Llantwit
-Q116469808	Len	"Wilcock Lewrch alias Clerke, of Knoyles Place, Llantwit"
-Q116469808	Lmul	"Wilcock Lewrch alias Clerke, of Knoyles Place, Llantwit"
-Q116469808	Amul	"William Lewrch alias Clerke, of Knoyles Place, Llantwit"
-#   Q116469630: Denise Llychwr (Lougher|Loughor) -> Denise Llychwr   + Denise Lougher | Denise Loughor
-Q116469630	Len	"Denise Llychwr"
-Q116469630	Lmul	"Denise Llychwr"
-Q116469630	Amul	"Denise Lougher"
-Q116469630	Amul	"Denise Loughor"
-#   Q116454919: Richard|Raphe Flyer, of Uttoxeter, Staffs -> Richard Flyer, of Uttoxeter, Staffs   + Raphe Flyer, of Uttoxeter, Staffs
-Q116454919	Len	"Richard Flyer, of Uttoxeter, Staffs"
-Q116454919	Lmul	"Richard Flyer, of Uttoxeter, Staffs"
-Q116454919	Amul	"Raphe Flyer, of Uttoxeter, Staffs"
-#   Q116454884: Edmund|Edward Warneford, of Sevenhampton -> Edmund Warneford, of Sevenhampton   + Edward Warneford, of Sevenhampton
-Q116454884	Len	"Edmund Warneford, of Sevenhampton"
-Q116454884	Lmul	"Edmund Warneford, of Sevenhampton"
-Q116454884	Amul	"Edward Warneford, of Sevenhampton"
-#   Q116183868: Albrecht|Aberlin Volland, Vogt -> Albrecht Volland, Vogt   + Aberlin Volland, Vogt
-Q116183868	Len	"Albrecht Volland, Vogt"
-Q116183868	Lmul	"Albrecht Volland, Vogt"
-Q116183868	Amul	"Aberlin Volland, Vogt"
-#   Q116183134: Nikolaus|Klaus Märklin -> Nikolaus Märklin   + Klaus Märklin
-Q116183134	Len	"Nikolaus Märklin"
-Q116183134	Lmul	"Nikolaus Märklin"
-Q116183134	Amul	"Klaus Märklin"
-#   Q116183109: Eva|Ella Lösch -> Eva Lösch   + Ella Lösch
-Q116183109	Len	"Eva Lösch"
-Q116183109	Lmul	"Eva Lösch"
-Q116183109	Amul	"Ella Lösch"
-#   Q116182874: Kunz Osiander|Osanner -> Kunz Osiander   + Kunz Osanner
-Q116182874	Len	"Kunz Osiander"
-Q116182874	Lmul	"Kunz Osiander"
-Q116182874	Amul	"Kunz Osanner"
-#   Q116180032: Elizabeth|Edith Twinihoe (Twinyho), of Keyford -> Elizabeth Twinihoe (Twinyho), of Keyford   + Edith Twinihoe (Twinyho), of Keyford
-Q116180032	Len	"Elizabeth Twinihoe (Twinyho), of Keyford"
-Q116180032	Lmul	"Elizabeth Twinihoe (Twinyho), of Keyford"
-Q116180032	Amul	"Edith Twinihoe (Twinyho), of Keyford"
-#   Q116180009: Roger le Walshe (Waleys|Wallis|Walsh), of Langton Waleys -> Roger le Walshe   + Roger le Waleys | Roger le Wallis | Roger le Walsh
-Q116180009	Len	"Roger le Walshe, of Langton Waleys"
-Q116180009	Lmul	"Roger le Walshe"
-Q116180009	Amul	"Roger le Waleys"
-Q116180009	Amul	"Roger le Wallis"
-Q116180009	Amul	"Roger le Walsh"
-#   Q116180008: Margaret le Walshe (Walsh|Waleys|Wallis) -> Margaret le Walshe   + Margaret le Walsh | Margaret le Waleys | Margaret le Wallis
-Q116180008	Len	"Margaret le Walshe"
-Q116180008	Lmul	"Margaret le Walshe"
-Q116180008	Amul	"Margaret le Walsh"
-Q116180008	Amul	"Margaret le Waleys"
-Q116180008	Amul	"Margaret le Wallis"
-#   Q116178153: Watkin|Walter ap Richard Gunter -> Watkin ap Richard Gunter   + Walter ap Richard Gunter
-Q116178153	Len	"Watkin ap Richard Gunter"
-Q116178153	Lmul	"Watkin ap Richard Gunter"
-Q116178153	Amul	"Walter ap Richard Gunter"
-#   Q116177813: Margaret|Elizabeth Cobham -> Margaret Cobham   + Elizabeth Cobham
-Q116177813	Len	"Margaret Cobham"
-Q116177813	Lmul	"Margaret Cobham"
-Q116177813	Amul	"Elizabeth Cobham"
-#   Q116177783: William|Richard Carus, of Ashworth -> William Carus, of Ashworth   + Richard Carus, of Ashworth
-Q116177783	Len	"William Carus, of Ashworth"
-Q116177783	Lmul	"William Carus, of Ashworth"
-Q116177783	Amul	"Richard Carus, of Ashworth"
-#   Q116177782: William|Thomas Carus, of Ashworth -> William Carus, of Ashworth   + Thomas Carus, of Ashworth
-Q116177782	Len	"William Carus, of Ashworth"
-Q116177782	Lmul	"William Carus, of Ashworth"
-Q116177782	Amul	"Thomas Carus, of Ashworth"
-#   Q116177754: Alan|William Singleton, of the Tower -> Alan Singleton, of the Tower   + William Singleton, of the Tower
-Q116177754	Len	"Alan Singleton, of the Tower"
-Q116177754	Lmul	"Alan Singleton, of the Tower"
-Q116177754	Amul	"William Singleton, of the Tower"
-#   Q116177750: Elizabeth|Anne Balderston -> Elizabeth Balderston   + Anne Balderston
-Q116177750	Len	"Elizabeth Balderston"
-Q116177750	Lmul	"Elizabeth Balderston"
-Q116177750	Amul	"Anne Balderston"
-#   Q116177733: Marguerite|Mathilde de Thoyre (Thoire-Villars) -> Marguerite de Thoyre (Thoire-Villars)   + Mathilde de Thoyre (Thoire-Villars)
-Q116177733	Len	"Marguerite de Thoyre (Thoire-Villars)"
-Q116177733	Lmul	"Marguerite de Thoyre (Thoire-Villars)"
-Q116177733	Amul	"Mathilde de Thoyre (Thoire-Villars)"
-#   Q116177726: Jean|Guillaume de Saint-Armour, seigneur de Vincelles -> Jean de Saint-Armour, seigneur de Vincelles   + Guillaume de Saint-Armour, seigneur de Vincelles
-Q116177726	Len	"Jean de Saint-Armour, seigneur de Vincelles"
-Q116177726	Lmul	"Jean de Saint-Armour, seigneur de Vincelles"
-Q116177726	Amul	"Guillaume de Saint-Armour, seigneur de Vincelles"
-#   Q116177713: Jeannette|Jordane de Cossonay -> Jeannette de Cossonay   + Jordane de Cossonay
-Q116177713	Len	"Jeannette de Cossonay"
-Q116177713	Lmul	"Jeannette de Cossonay"
-Q116177713	Amul	"Jordane de Cossonay"
+#   Q116177694: Jacqueline|Jakobea de Duyns -> Jacqueline de Duyns   + Jakobea de Duyns
+Q116177694	Len	"Jacqueline de Duyns"
+Q116177694	Lmul	"Jacqueline de Duyns"
+Q116177694	Amul	"Jakobea de Duyns"
+#   Q116177685: Ancelis|Amphélise -> Ancelis   + Amphélise
+Q116177685	Len	"Ancelis"
+Q116177685	Lmul	"Ancelis"
+Q116177685	Amul	"Amphélise"
+#   Q116177680: Catherine|Marguerite de Vuillens -> Catherine de Vuillens   + Marguerite de Vuillens
+Q116177680	Len	"Catherine de Vuillens"
+Q116177680	Lmul	"Catherine de Vuillens"
+Q116177680	Amul	"Marguerite de Vuillens"
+#   Q116177576: Adelheid|Elisabeth Meiss -> Adelheid Meiss   + Elisabeth Meiss
+Q116177576	Len	"Adelheid Meiss"
+Q116177576	Lmul	"Adelheid Meiss"
+Q116177576	Amul	"Elisabeth Meiss"
+#   Q116177565: Urban|Ulrich von Mühleren, Herr von Burgistein -> Urban von Mühleren, Herr von Burgistein   + Ulrich von Mühleren, Herr von Burgistein
+Q116177565	Len	"Urban von Mühleren, Herr von Burgistein"
+Q116177565	Lmul	"Urban von Mühleren, Herr von Burgistein"
+Q116177565	Amul	"Ulrich von Mühleren, Herr von Burgistein"
+#   Q116177560: Nikolaus|Niklaus von Wattenwyl (Watteville) -> Nikolaus von Wattenwyl (Watteville)   + Niklaus von Wattenwyl (Watteville)
+Q116177560	Len	"Nikolaus von Wattenwyl (Watteville)"
+Q116177560	Lmul	"Nikolaus von Wattenwyl (Watteville)"
+Q116177560	Amul	"Niklaus von Wattenwyl (Watteville)"
+#   Q116177435: Kater|Katerina ze Hedcan -> Kater ze Hedcan   + Katerina ze Hedcan
+Q116177435	Len	"Kater ze Hedcan"
+Q116177435	Lmul	"Kater ze Hedcan"
+Q116177435	Amul	"Katerina ze Hedcan"
+#   Q116174227: Joan|Agnes|Eleanor Milbourn (Milborne) -> Joan Milbourn (Milborne)   + Agnes Milbourn (Milborne) | Eleanor Milbourn (Milborne)
+Q116174227	Len	"Joan Milbourn (Milborne)"
+Q116174227	Lmul	"Joan Milbourn (Milborne)"
+Q116174227	Amul	"Agnes Milbourn (Milborne)"
+Q116174227	Amul	"Eleanor Milbourn (Milborne)"
+#   Q116174056: Adelheid|Aleide von Wildenberg -> Adelheid von Wildenberg   + Aleide von Wildenberg
+Q116174056	Len	"Adelheid von Wildenberg"
+Q116174056	Lmul	"Adelheid von Wildenberg"
+Q116174056	Amul	"Aleide von Wildenberg"
+#   Q116173950: Irmgard|Irmesind von Daun zu Wolkringen -> Irmgard von Daun zu Wolkringen   + Irmesind von Daun zu Wolkringen
+Q116173950	Len	"Irmgard von Daun zu Wolkringen"
+Q116173950	Lmul	"Irmgard von Daun zu Wolkringen"
+Q116173950	Amul	"Irmesind von Daun zu Wolkringen"
+#   Q116172147: Ann|Joan Broughton -> Ann Broughton   + Joan Broughton
+Q116172147	Len	"Ann Broughton"
+Q116172147	Lmul	"Ann Broughton"
+Q116172147	Amul	"Joan Broughton"
+#   Q116171577: Margaret|Anne Laxham -> Margaret Laxham   + Anne Laxham
+Q116171577	Len	"Margaret Laxham"
+Q116171577	Lmul	"Margaret Laxham"
+Q116171577	Amul	"Anne Laxham"
+#   Q116171556: Alison|Alice Neville, of Liversedge -> Alison Neville, of Liversedge   + Alice Neville, of Liversedge
+Q116171556	Len	"Alison Neville, of Liversedge"
+Q116171556	Lmul	"Alison Neville, of Liversedge"
+Q116171556	Amul	"Alice Neville, of Liversedge"
+#   Q116169850: Anne Browe (Borrow|Broe) -> Anne Browe   + Anne Borrow | Anne Broe
+Q116169850	Len	"Anne Browe"
+Q116169850	Lmul	"Anne Browe"
+Q116169850	Amul	"Anne Borrow"
+Q116169850	Amul	"Anne Broe"
+#   Q116169815: Thomas|William Jennyns -> Thomas Jennyns   + William Jennyns
+Q116169815	Len	"Thomas Jennyns"
+Q116169815	Lmul	"Thomas Jennyns"
+Q116169815	Amul	"William Jennyns"
+#   Q116169749: Judith|Margery Bennet, of Stonehouse -> Judith Bennet, of Stonehouse   + Margery Bennet, of Stonehouse
+Q116169749	Len	"Judith Bennet, of Stonehouse"
+Q116169749	Lmul	"Judith Bennet, of Stonehouse"
+Q116169749	Amul	"Margery Bennet, of Stonehouse"
+#   Q116169746: Edward|Walter Fowler, of Stonehouse -> Edward Fowler, of Stonehouse   + Walter Fowler, of Stonehouse
+Q116169746	Len	"Edward Fowler, of Stonehouse"
+Q116169746	Lmul	"Edward Fowler, of Stonehouse"
+Q116169746	Amul	"Walter Fowler, of Stonehouse"
+#   Q116169737: Alexandra|Alice Lugg -> Alexandra Lugg   + Alice Lugg
+Q116169737	Len	"Alexandra Lugg"
+Q116169737	Lmul	"Alexandra Lugg"
+Q116169737	Amul	"Alice Lugg"
+#   Q116169036: Emoine|Edmunda le Boteler -> Emoine le Boteler   + Edmunda le Boteler
+Q116169036	Len	"Emoine le Boteler"
+Q116169036	Lmul	"Emoine le Boteler"
+Q116169036	Amul	"Edmunda le Boteler"
+#   Q116169015: Malgerus|Mauger -> Malgerus   + Mauger
+Q116169015	Len	"Malgerus"
+Q116169015	Lmul	"Malgerus"
+Q116169015	Amul	"Mauger"
+#   Q116169014: Geoffrey|Galfridus de Staunton -> Geoffrey de Staunton   + Galfridus de Staunton
+Q116169014	Len	"Geoffrey de Staunton"
+Q116169014	Lmul	"Geoffrey de Staunton"
+Q116169014	Amul	"Galfridus de Staunton"
+#   Q116168923: Jean|Joneta Barclay -> Jean Barclay   + Joneta Barclay
+Q116168923	Len	"Jean Barclay"
+Q116168923	Lmul	"Jean Barclay"
+Q116168923	Amul	"Joneta Barclay"
+#   Q116168892: Richard|Robert Turgis, of Melcombe, Dorset -> Richard Turgis, of Melcombe, Dorset   + Robert Turgis, of Melcombe, Dorset
+Q116168892	Len	"Richard Turgis, of Melcombe, Dorset"
+Q116168892	Lmul	"Richard Turgis, of Melcombe, Dorset"
+Q116168892	Amul	"Robert Turgis, of Melcombe, Dorset"
+#   Q116168884: Eleanor|Elizabeth Veale -> Eleanor Veale   + Elizabeth Veale
+Q116168884	Len	"Eleanor Veale"
+Q116168884	Lmul	"Eleanor Veale"
+Q116168884	Amul	"Elizabeth Veale"
+#   Q116168883: John Walshe (Welsh|Waleys|Wilday), Worle, Som -> John Walshe , Worle   + John Welsh , Worle | John Waleys , Worle | John Wilday , Worle
+Q116168883	Len	"John Walshe , Worle, Som"
+Q116168883	Lmul	"John Walshe , Worle"
+Q116168883	Amul	"John Welsh , Worle"
+Q116168883	Amul	"John Waleys , Worle"
+Q116168883	Amul	"John Wilday , Worle"
+#   Q116168882: Johanna Walsh (Welsh|Waleys|Wilday) -> Johanna Walsh   + Johanna Welsh | Johanna Waleys | Johanna Wilday
+Q116168882	Len	"Johanna Walsh"
+Q116168882	Lmul	"Johanna Walsh"
+Q116168882	Amul	"Johanna Welsh"
+Q116168882	Amul	"Johanna Waleys"
+Q116168882	Amul	"Johanna Wilday"
+#   Q116168675: Jacob de Rho|Rota -> Jacob de Rho   + Jacob de Rota
+Q116168675	Len	"Jacob de Rho"
+Q116168675	Lmul	"Jacob de Rho"
+Q116168675	Amul	"Jacob de Rota"
+#   Q116168305: Marguerite Coet (Coct|Cotée) -> Marguerite Coet   + Marguerite Coct | Marguerite Cotée
+Q116168305	Len	"Marguerite Coet"
+Q116168305	Lmul	"Marguerite Coet"
+Q116168305	Amul	"Marguerite Coct"
+Q116168305	Amul	"Marguerite Cotée"
+#   Q116160556: William|Henry de Kingscote, of Kingscote -> William de Kingscote, of Kingscote   + Henry de Kingscote, of Kingscote
+Q116160556	Len	"William de Kingscote, of Kingscote"
+Q116160556	Lmul	"William de Kingscote, of Kingscote"
+Q116160556	Amul	"Henry de Kingscote, of Kingscote"
+#   Q116160489: Jane|Margaret Drury -> Jane Drury   + Margaret Drury
+Q116160489	Len	"Jane Drury"
+Q116160489	Lmul	"Jane Drury"
+Q116160489	Amul	"Margaret Drury"
+#   Q116160044: Sir Giles|Gyles Bray, of Great Barrington -> Sir Giles Bray, of Great Barrington   + Sir Gyles Bray, of Great Barrington
+Q116160044	Len	"Sir Giles Bray, of Great Barrington"
+Q116160044	Lmul	"Sir Giles Bray, of Great Barrington"
+Q116160044	Amul	"Sir Gyles Bray, of Great Barrington"
+#   Q116159960: Patrick Barclay, of Gartley|Garntully -> Patrick Barclay, of Gartley   + Patrick Barclay, of Garntully
+Q116159960	Len	"Patrick Barclay, of Gartley"
+Q116159960	Lmul	"Patrick Barclay, of Gartley"
+Q116159960	Amul	"Patrick Barclay, of Garntully"
+#   Q116159881: Jane|Joan Sherston -> Jane Sherston   + Joan Sherston
+Q116159881	Len	"Jane Sherston"
+Q116159881	Lmul	"Jane Sherston"
+Q116159881	Amul	"Joan Sherston"
+#   Q116159871: Richard|Robert Carnesew -> Richard Carnesew   + Robert Carnesew
+Q116159871	Len	"Richard Carnesew"
+Q116159871	Lmul	"Richard Carnesew"
+Q116159871	Amul	"Robert Carnesew"
+#   Q116159775: Eleanor|Elen Davison (Davies) -> Eleanor Davison (Davies)   + Elen Davison (Davies)
+Q116159775	Len	"Eleanor Davison (Davies)"
+Q116159775	Lmul	"Eleanor Davison (Davies)"
+Q116159775	Amul	"Elen Davison (Davies)"
+#   Q116159116: Catherine|Katherine Pedwardine -> Catherine Pedwardine   + Katherine Pedwardine
+Q116159116	Len	"Catherine Pedwardine"
+Q116159116	Lmul	"Catherine Pedwardine"
+Q116159116	Amul	"Katherine Pedwardine"
+#   Q116159113: John|James Dene, of Barrowby -> John Dene, of Barrowby   + James Dene, of Barrowby
+Q116159113	Len	"John Dene, of Barrowby"
+Q116159113	Lmul	"John Dene, of Barrowby"
+Q116159113	Amul	"James Dene, of Barrowby"
+#   Q116159112: James|Thomas Dene, of Barrowby -> James Dene, of Barrowby   + Thomas Dene, of Barrowby
+Q116159112	Len	"James Dene, of Barrowby"
+Q116159112	Lmul	"James Dene, of Barrowby"
+Q116159112	Amul	"Thomas Dene, of Barrowby"
+#   Q116159111: Dorothy|Thomasine Dene -> Dorothy Dene   + Thomasine Dene
+Q116159111	Len	"Dorothy Dene"
+Q116159111	Lmul	"Dorothy Dene"
+Q116159111	Amul	"Thomasine Dene"
+#   Q116156568: Catrin|Gwenllian ferch Gruffudd Derwas -> Catrin ferch Gruffudd Derwas   + Gwenllian ferch Gruffudd Derwas
+Q116156568	Len	"Catrin ferch Gruffudd Derwas"
+Q116156568	Lmul	"Catrin ferch Gruffudd Derwas"
+Q116156568	Amul	"Gwenllian ferch Gruffudd Derwas"
+#   Q116155513: Alice|Joan ferch Gwilym ap Thomas ap Llywelyn -> Alice ferch Gwilym ap Thomas ap Llywelyn   + Joan ferch Gwilym ap Thomas ap Llywelyn
+Q116155513	Len	"Alice ferch Gwilym ap Thomas ap Llywelyn"
+Q116155513	Lmul	"Alice ferch Gwilym ap Thomas ap Llywelyn"
+Q116155513	Amul	"Joan ferch Gwilym ap Thomas ap Llywelyn"
+#   Q116151447: Margarete|Margareta von Mecklenburg (von Rostock) -> Margarete von Mecklenburg (von Rostock)   + Margareta von Mecklenburg (von Rostock)
+Q116151447	Len	"Margarete von Mecklenburg (von Rostock)"
+Q116151447	Lmul	"Margarete von Mecklenburg (von Rostock)"
+Q116151447	Amul	"Margareta von Mecklenburg (von Rostock)"
+#   Q116151212: Menze|Mechtild von Militz -> Menze von Militz   + Mechtild von Militz
+Q116151212	Len	"Menze von Militz"
+Q116151212	Lmul	"Menze von Militz"
+Q116151212	Amul	"Mechtild von Militz"
+#   Q116150957: noble Judit|Judith Becleanu, 'Bethlen de Bethlen' -> Judit Becleanu, 'Bethlen de Bethlen'   + Judith Becleanu, 'Bethlen de Bethlen'
+Q116150957	Len	"Judit Becleanu, 'Bethlen de Bethlen'"
+Q116150957	Lmul	"Judit Becleanu, 'Bethlen de Bethlen'"
+Q116150957	Amul	"Judith Becleanu, 'Bethlen de Bethlen'"
+#   Q116150950: Mircea|Marcu Becleanu, 'Bethlen de Bethlen' -> Mircea Becleanu, 'Bethlen de Bethlen'   + Marcu Becleanu, 'Bethlen de Bethlen'
+Q116150950	Len	"Mircea Becleanu, 'Bethlen de Bethlen'"
+Q116150950	Lmul	"Mircea Becleanu, 'Bethlen de Bethlen'"
+Q116150950	Amul	"Marcu Becleanu, 'Bethlen de Bethlen'"
+#   Q116150684: Farkas|Domokos Szeszármai -> Farkas Szeszármai   + Domokos Szeszármai
+Q116150684	Len	"Farkas Szeszármai"
+Q116150684	Lmul	"Farkas Szeszármai"
+Q116150684	Amul	"Domokos Szeszármai"
+#   Q116150307: Jens|Jon [Ulf] -> Jens [Ulf]   + Jon [Ulf]
+Q116150307	Len	"Jens [Ulf]"
+Q116150307	Lmul	"Jens [Ulf]"
+Q116150307	Amul	"Jon [Ulf]"
+#   Q116150304: Bengt|Benedict Ebbesen [Pik], Lord of Rossared -> Bengt Ebbesen [Pik], Lord of Rossared   + Benedict Ebbesen [Pik], Lord of Rossared
+Q116150304	Len	"Bengt Ebbesen [Pik], Lord of Rossared"
+Q116150304	Lmul	"Bengt Ebbesen [Pik], Lord of Rossared"
+Q116150304	Amul	"Benedict Ebbesen [Pik], Lord of Rossared"
+#   Q116150297: Lave|Lage Pedersen [Bielke] -> Lave Pedersen [Bielke]   + Lage Pedersen [Bielke]
+Q116150297	Len	"Lave Pedersen [Bielke]"
+Q116150297	Lmul	"Lave Pedersen [Bielke]"
+Q116150297	Amul	"Lage Pedersen [Bielke]"
+#   Q116150293: Mats|Mathais Gustafsson 'den Gamle' [Sparre av Vik] -> Mats Gustafsson 'den Gamle' [Sparre av Vik]   + Mathais Gustafsson 'den Gamle' [Sparre av Vik]
+Q116150293	Len	"Mats Gustafsson 'den Gamle' [Sparre av Vik]"
+Q116150293	Lmul	"Mats Gustafsson 'den Gamle' [Sparre av Vik]"
+Q116150293	Amul	"Mathais Gustafsson 'den Gamle' [Sparre av Vik]"
+#   Q116150186: Jutta|Gutta von Ellerbach -> Jutta von Ellerbach   + Gutta von Ellerbach
+Q116150186	Len	"Jutta von Ellerbach"
+Q116150186	Lmul	"Jutta von Ellerbach"
+Q116150186	Amul	"Gutta von Ellerbach"
+#   Q116150167: Anna|Margaretha|Maria von Nussdorf -> Anna von Nussdorf   + Margaretha von Nussdorf | Maria von Nussdorf
+Q116150167	Len	"Anna von Nussdorf"
+Q116150167	Lmul	"Anna von Nussdorf"
+Q116150167	Amul	"Margaretha von Nussdorf"
+Q116150167	Amul	"Maria von Nussdorf"
+#   Q116150164: Albrecht|Andreas, Herr von Zelking -> Albrecht Herr von Zelking   + Andreas, Herr von Zelking
+Q116150164	Len	"Albrecht Herr von Zelking"
+Q116150164	Lmul	"Albrecht Herr von Zelking"
+Q116150164	Amul	"Andreas, Herr von Zelking"
+#   Q116149839: Georg|Jiri z Kravar (Krawarz) -> Georg z Kravar (Krawarz)   + Jiri z Kravar (Krawarz)
+Q116149839	Len	"Georg z Kravar (Krawarz)"
+Q116149839	Lmul	"Georg z Kravar (Krawarz)"
+Q116149839	Amul	"Jiri z Kravar (Krawarz)"
+#   Q116148429: Arnould|Arnaud V de La Hamaide, Seigneur de Condé -> Arnould V de La Hamaide, Seigneur de Condé   + Arnaud V de La Hamaide, Seigneur de Condé
+Q116148429	Len	"Arnould V de La Hamaide, Seigneur de Condé"
+Q116148429	Lmul	"Arnould V de La Hamaide, Seigneur de Condé"
+Q116148429	Amul	"Arnaud V de La Hamaide, Seigneur de Condé"
+#   Q116148399: Magdalena|Elisabeth von Röder -> Magdalena von Röder   + Elisabeth von Röder
+Q116148399	Len	"Magdalena von Röder"
+Q116148399	Lmul	"Magdalena von Röder"
+Q116148399	Amul	"Elisabeth von Röder"
+#   Q116147998: Alice|Mallt ferch Gruffudd ap Rhys -> Alice ferch Gruffudd ap Rhys   + Mallt ferch Gruffudd ap Rhys
+Q116147998	Len	"Alice ferch Gruffudd ap Rhys"
+Q116147998	Lmul	"Alice ferch Gruffudd ap Rhys"
+Q116147998	Amul	"Mallt ferch Gruffudd ap Rhys"
+#   Q116147987: Patrick de Chaworth|Chaorces -> Patrick de Chaworth   + Patrick de Chaorces
+Q116147987	Len	"Patrick de Chaworth"
+Q116147987	Lmul	"Patrick de Chaworth"
+Q116147987	Amul	"Patrick de Chaorces"
+#   Q116147632: Mallt|Jonet ferch Llywelyn ap Bleddyn -> Mallt ferch Llywelyn ap Bleddyn   + Jonet ferch Llywelyn ap Bleddyn
+Q116147632	Len	"Mallt ferch Llywelyn ap Bleddyn"
+Q116147632	Lmul	"Mallt ferch Llywelyn ap Bleddyn"
+Q116147632	Amul	"Jonet ferch Llywelyn ap Bleddyn"
+#   Q116147609: Cadwaladyr ap John ap Cadwaladyr Wynn [Pryse|Prys], of Plâs yn Rhiwlas -> Cadwaladyr ap John ap Cadwaladyr Wynn   + Cadwaladyr ap John ap Cadwaladyr Pryse | Cadwaladyr ap John ap Cadwaladyr Prys
+Q116147609	Len	"Cadwaladyr ap John ap Cadwaladyr Wynn, of Plâs yn Rhiwlas"
+Q116147609	Lmul	"Cadwaladyr ap John ap Cadwaladyr Wynn"
+Q116147609	Amul	"Cadwaladyr ap John ap Cadwaladyr Pryse"
+Q116147609	Amul	"Cadwaladyr ap John ap Cadwaladyr Prys"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -609,38 +610,7 @@ LAST	P22	Q141169041	S2600	"6000000180041929821"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Albert Frisk"
-LAST	Len	"Albert Frisk"
-#   set the mul label to "Albert Frisk"
-LAST	Lmul	"Albert Frisk"
-#   set the ja label to "アルバート・フリスク"
-LAST	Lja	"アルバート・フリスク"
-#   set the zh label to "阿尔伯特·弗里斯克"
-LAST	Lzh	"阿尔伯特·弗里斯克"
-#   set the ko label to "알베르트 프리스크"
-LAST	Lko	"알베르트 프리스크"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000177920500890 Albert Frisk, qualified P1810 subject named as Albert Frisk
-LAST	P2600	"6000000177920500890"	P1810	"Albert Frisk"
-#   P22 father = Q141223733 Hans Bertil Frisk
-LAST	P22	Q141223733	S2600	"6000000177920500890"
-#   P25 mother = Q141223907 Elly Olivia Frisk
-LAST	P25	Q141223907	S2600	"6000000177920500890"
-#   Q141223733 Hans Bertil Frisk: P40 child = the item just created
-Q141223733	P40	LAST	S2600	"6000000177920500890"
-#   Q141223907 Elly Olivia Frisk: P40 child = the item just created
-Q141223907	P40	LAST	S2600	"6000000177920500890"
-#   the item just created: P735 given name = Q577011 Albert
-LAST	P735	Q577011
-#   P734 family name = Q27877507 Frisk
-LAST	P734	Q27877507
-
-# create a new item
-CREATE
-#   set the en label to "Alida Rikardine Moen"
+#   the item just created: set the en label to "Alida Rikardine Moen"
 LAST	Len	"Alida Rikardine Moen"
 #   set the mul label to "Alida Rikardine Moen"
 LAST	Lmul	"Alida Rikardine Moen"
@@ -1291,37 +1261,6 @@ LAST	P40	Q141403540	S2600	"6000000029577645457"
 Q141403540	P25	LAST	S2600	"6000000029577645457"
 #   the item just created: P735 given name = Q16423275 Elisabet
 LAST	P735	Q16423275
-
-# create a new item
-CREATE
-#   set the en label to "Emma Andersson"
-LAST	Len	"Emma Andersson"
-#   set the mul label to "Emma Andersson"
-LAST	Lmul	"Emma Andersson"
-#   set the ja label to "エマ・アンデション"
-LAST	Lja	"エマ・アンデション"
-#   set the zh label to "艾玛·安德松"
-LAST	Lzh	"艾玛·安德松"
-#   set the ko label to "엠마 안데르손"
-LAST	Lko	"엠마 안데르손"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000178279770847 Emma Andersson, qualified P1810 subject named as Emma Andersson
-LAST	P2600	"6000000178279770847"	P1810	"Emma Andersson"
-#   P26 spouse = Q141225694 Carl Andersson
-LAST	P26	Q141225694	S2600	"6000000178279770847"
-#   P40 child = Q141223907 Elly Olivia Frisk
-LAST	P40	Q141223907	S2600	"6000000178279770847"
-#   Q141225694 Carl Andersson: P26 spouse = the item just created
-Q141225694	P26	LAST	S2600	"6000000178279770847"
-#   Q141223907 Elly Olivia Frisk: P25 mother = the item just created
-Q141223907	P25	LAST	S2600	"6000000178279770847"
-#   the item just created: P735 given name = Q541194 Emma
-LAST	P735	Q541194
-#   P734 family name = Q2817217 Andersson, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q2817217	P3831	Q28418670
 
 # create a new item
 CREATE
@@ -2032,12 +1971,12 @@ LAST	P569	+1704-10-07T00:00:00Z/11	S2600	"6000000007367329418"
 LAST	P570	+1751-00-00T00:00:00Z/9	S2600	"6000000007367329418"
 #   P22 father = Q141224900 Samuel Samuelis Hornaeus
 LAST	P22	Q141224900	S2600	"6000000007367329418"
-#   P25 mother = Q141225773 Katarina Johansdotter Ståhlbom
-LAST	P25	Q141225773	S2600	"6000000007367329418"
+#   P25 mother = Q141225772 Katarina Johansdotter Ståhlbom
+LAST	P25	Q141225772	S2600	"6000000007367329418"
 #   Q141224900 Samuel Samuelis Hornaeus: P40 child = the item just created
 Q141224900	P40	LAST	S2600	"6000000007367329418"
-#   Q141225773 Katarina Johansdotter Ståhlbom: P40 child = the item just created
-Q141225773	P40	LAST	S2600	"6000000007367329418"
+#   Q141225772 Katarina Johansdotter Ståhlbom: P40 child = the item just created
+Q141225772	P40	LAST	S2600	"6000000007367329418"
 #   the item just created: P735 given name = Q19798802 Kristina
 LAST	P735	Q19798802
 #   P5056 patronym or matronym = Q141352777, qualified P144 based on Q141224900 Samuel Samuelis Hornaeus
@@ -3027,43 +2966,6 @@ LAST	P734	Q37328187
 
 # create a new item
 CREATE
-#   set the en label to "Sven Torsteinson Lima"
-LAST	Len	"Sven Torsteinson Lima"
-#   set the mul label to "Sven Torsteinson Lima"
-LAST	Lmul	"Sven Torsteinson Lima"
-#   set the ja label to "スヴェン・トルステインソン・リマ"
-LAST	Lja	"スヴェン・トルステインソン・リマ"
-#   set the zh label to "斯文·托尔斯特因松·利马"
-LAST	Lzh	"斯文·托尔斯特因松·利马"
-#   set the ko label to "스벤 토르스테인손 리마"
-LAST	Lko	"스벤 토르스테인손 리마"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000002836313613 Sven Torsteinson Lima, qualified P1810 subject named as Sven Torsteinson Lima
-LAST	P2600	"6000000002836313613"	P1810	"Sven Torsteinson Lima"
-#   P569 date of birth = +1681-00-00T00:00:00Z/9, qualified P1319 earliest date +1681-00-00T00:00:00Z/9, P1326 latest date +1685-00-00T00:00:00Z/9
-LAST	P569	+1681-00-00T00:00:00Z/9	P1319	+1681-00-00T00:00:00Z/9	P1326	+1685-00-00T00:00:00Z/9	S2600	"6000000002836313613"
-#   P570 date of death = +1740-00-00T00:00:00Z/9
-LAST	P570	+1740-00-00T00:00:00Z/9	S2600	"6000000002836313613"
-#   P26 spouse = Q141225714 Ingeborg Simonsdatter Ytre Lima
-LAST	P26	Q141225714	S2600	"6000000002836313613"
-#   P40 child = Q141223933 Ola Svenson Ytre Lima
-LAST	P40	Q141223933	S2600	"6000000002836313613"
-#   Q141225714 Ingeborg Simonsdatter Ytre Lima: P26 spouse = the item just created
-Q141225714	P26	LAST	S2600	"6000000002836313613"
-#   Q141223933 Ola Svenson Ytre Lima: P22 father = the item just created
-Q141223933	P22	LAST	S2600	"6000000002836313613"
-#   the item just created: P735 given name = Q2370957 Sven
-LAST	P735	Q2370957
-#   P5056 patronym or matronym = Q141313804
-LAST	P5056	Q141313804
-#   P734 family name = Q11255517 Lima
-LAST	P734	Q11255517
-
-# create a new item
-CREATE
 #   set the en label to "Søren Ådneson Helland"
 LAST	Len	"Søren Ådneson Helland"
 #   set the mul label to "Søren Ådneson Helland"
@@ -3206,57 +3108,6 @@ LAST	Amul	"Tolleiv Næsheim"
 
 # create a new item
 CREATE
-#   set the mul label to "Tore NN"
-LAST	Lmul	"Tore NN"
-#   set the ca label to "marit de Fru Tore"
-LAST	Lca	"marit de Fru Tore"
-#   set the da label to "ægtemand til Fru Tore"
-LAST	Lda	"ægtemand til Fru Tore"
-#   set the de label to "Ehemann von Fru Tore"
-LAST	Lde	"Ehemann von Fru Tore"
-#   set the en label to "husband of Fru Tore"
-LAST	Len	"husband of Fru Tore"
-#   set the es label to "esposo de Fru Tore"
-LAST	Les	"esposo de Fru Tore"
-#   set the fr label to "époux de Fru Tore"
-LAST	Lfr	"époux de Fru Tore"
-#   set the it label to "marito di Fru Tore"
-LAST	Lit	"marito di Fru Tore"
-#   set the ja label to "フル・トーレの夫"
-LAST	Lja	"フル・トーレの夫"
-#   set the ko label to "프루 토레의 남편"
-LAST	Lko	"프루 토레의 남편"
-#   set the nb label to "ektemann til Fru Tore"
-LAST	Lnb	"ektemann til Fru Tore"
-#   set the nl label to "echtgenoot van Fru Tore"
-LAST	Lnl	"echtgenoot van Fru Tore"
-#   set the pt label to "marido de Fru Tore"
-LAST	Lpt	"marido de Fru Tore"
-#   set the sv label to "make till Fru Tore"
-LAST	Lsv	"make till Fru Tore"
-#   set the zh label to "夫鲁·托雷之夫"
-LAST	Lzh	"夫鲁·托雷之夫"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000150599235822 Tore, qualified P1810 subject named as Tore
-LAST	P2600	"6000000150599235822"	P1810	"Tore"
-#   P569 date of birth = +1658-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P569	+1658-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000150599235822"
-#   P26 spouse = Q141225709 Fru Tore
-LAST	P26	Q141225709	S2600	"6000000150599235822"
-#   P40 child = Q141216507 Torborg Toresdatter Norheim
-LAST	P40	Q141216507	S2600	"6000000150599235822"
-#   Q141225709 Fru Tore: P26 spouse = the item just created
-Q141225709	P26	LAST	S2600	"6000000150599235822"
-#   Q141216507 Torborg Toresdatter Norheim: P22 father = the item just created
-Q141216507	P22	LAST	S2600	"6000000150599235822"
-#   the item just created: P735 given name = Q1548096 Tore
-LAST	P735	Q1548096
-
-# create a new item
-CREATE
 #   set the en label to "Truls Endresen Sveinsvoll"
 LAST	Len	"Truls Endresen Sveinsvoll"
 #   set the mul label to "Truls Endresen Sveinsvoll"
@@ -3388,98 +3239,38 @@ LAST	P735	Q1530266	P1545	"3"	P3831	Q245025
 Q141219059	P3373	Q141403589	S2600	"4143225"
 #   Q141313957 Eva Vilhelmina Charlotta Mannerheim: P3373 sibling = Q141403589 Johan Fridolf Mannerheim
 Q141313957	P3373	Q141403589	S2600	"4143333"
-#   Q141216397 Malin Andersdotter: P40 child = Q141199819 Anna Andersdotter
-Q141216397	P40	Q141199819	S2600	"6000000000305413766"
-#   Q141216349 Ingrid Guttormsdotter: P26 spouse = Q141216475 Guttorm Ostmannson
-Q141216349	P26	Q141216475	S2600	"6000000000771986019"
-#   Q141216357 Anders Jacobsson: P40 child = Q141199819 Anna Andersdotter
-Q141216357	P40	Q141199819	S2600	"6000000001138735296"
 #   Q141403481 Andreas: P26 spouse = Q141403579 Gölug
 Q141403481	P26	Q141403579	S2600	"6000000001138830586"
 #   Q141403505 Anna Pedersdotter Nesheim: P26 spouse = Q141403636 Olav Toreson Nesheim
 Q141403505	P26	Q141403636	S2600	"6000000001169317363"
-#   Q141250218 Brita Magdalena Eriksdotter Rahm: P26 spouse = Q141225741 Jakob Chydenius
-Q141250218	P26	Q141225741	S2600	"6000000001186122035"
 #   Q141403472 Agneta Henriksdotter Polviander: P26 spouse = Q141403629 Nils Simonsson Polviander
 Q141403472	P26	Q141403629	S2600	"6000000001966567998"
-#   Q141189104 Siri Kristine Ivarsdatter Garborg: P40 child = Q141198489 Sigrid Garborg
-Q141189104	P40	Q141198489	S2600	"6000000002954315535"
-#   Q141198831 Peder Larsen Mjølhus: P40 child = Q141225750 Jon Pedersen Trevland
-Q141198831	P40	Q141225750	S2600	"6000000003095034944"
 #   Q141403636 Olav Toreson Nesheim: P26 spouse = Q141403505 Anna Pedersdotter Nesheim
 Q141403636	P26	Q141403505	S2600	"6000000003095089978"
-#   Q141205932 Olof Timmerman: P40 child = Q141199808 Andreas Olai
-Q141205932	P40	Q141199808	S2600	"6000000003125391522"
-#   Q141199819 Anna Andersdotter: P40 child = Q141200016 Nils Andersson
-Q141199819	P40	Q141200016	S2600	"6000000003125438035"
-#   P26 spouse = Q141199808 Andreas Olai
-Q141199819	P26	Q141199808	S2600	"6000000003125438035"
-#   Q141189070 John Jonassen Hegre: P40 child = Q141205900 Bertrand Olav Olsen Vigdel
-Q141189070	P40	Q141205900	S2600	"6000000003491986951"
-#   Q141152614 Jon Eivindson Garborg: P40 child = Q141198489 Sigrid Garborg
-Q141152614	P40	Q141198489	S2600	"6000000003492005126"
 #   Q141403622 NN Israelsdotter (Finstaätten): P26 spouse = Q141403480 Anders Israelsson
 Q141403622	P26	Q141403480	S2600	"6000000003897531587"
-#   Q141199808 Andreas Olai: P40 child = Q141200016 Nils Andersson
-Q141199808	P40	Q141200016	S2600	"6000000004334566448"
-#   P26 spouse = Q141199819 Anna Andersdotter
-Q141199808	P26	Q141199819	S2600	"6000000004334566448"
 #   Q141403579 Gölug: P26 spouse = Q141403481 Andreas
 Q141403579	P26	Q141403481	S2600	"6000000004335151518"
-#   Q140192133 Sara Albrektsdotter Swedberg: P40 child = Q141223425 Hedvig Swedenborg
-Q140192133	P40	Q141223425	S2600	"6000000004577966933"
 #   Q141403590 Kari Klausdatter Stangeland: P26 spouse = Q141403569 Erik Ommundson Laland
 Q141403590	P26	Q141403569	S2600	"6000000005606916265"
 #   Q141403569 Erik Ommundson Laland: P26 spouse = Q141403590 Kari Klausdatter Stangeland
 Q141403569	P26	Q141403590	S2600	"6000000005607217105"
-#   Q141319255 Martha Kristine Jonsdatter Bore: P26 spouse = Q141225676 Anders Rasmusson Lea
-Q141319255	P26	Q141225676	S2600	"6000000005607296185"
-#   Q141223933 Ola Svenson Ytre Lima: P25 mother = Q141225714 Ingeborg Simonsdatter Ytre Lima
-Q141223933	P25	Q141225714	S2600	"6000000005607599800"
-#   Q141290203 Mons Evertson Stangaland: P40 child = Q141216393 Kristian Monsen Stangeland
-Q141290203	P40	Q141216393	S2600	"6000000005609287361"
-#   Q141312942 Ane Maria Kristoffersdatter Stangaland: P40 child = Q141216393 Kristian Monsen Stangeland
-Q141312942	P40	Q141216393	S2600	"6000000005609287370"
 #   Q141403616 Mons Torgersen Bjorland: P26 spouse = Q141403527 Berit Ormsdatter Bjorland Sr.
 Q141403616	P26	Q141403527	S2600	"6000000005609488627"
 #   Q141403527 Berit Ormsdatter Bjorland Sr.: P26 spouse = Q141403616 Mons Torgersen Bjorland
 Q141403527	P26	Q141403616	S2600	"6000000005609488636"
-#   Q141180409 Magdalena Andersdotter Bure: P22 father = Q141199808 Andreas Olai
-Q141180409	P22	Q141199808	S2600	"6000000006127859575"
-#   P25 mother = Q141199819 Anna Andersdotter
-Q141180409	P25	Q141199819	S2600	"6000000006127859575"
-#   P25 mother = Q141199819 Anna Andersdotter
-Q141219057	P25	Q141199819	S2600	"6000000006127859581"
-#   Q141205938 Ranveig Olsd Trevland: P40 child = Q141225750 Jon Pedersen Trevland
-Q141205938	P40	Q141225750	S2600	"6000000006358672581"
 #   Q141403650 Sigfrid Wolker: P26 spouse = Q141403497 Anna Gavelia
 Q141403650	P26	Q141403497	S2600	"6000000006595825517"
-#   Q141205926 NN: P40 child = Q141199808 Andreas Olai
-Q141205926	P40	Q141199808	S2600	"6000000006828575883"
-#   Q141200604 Anna Nilsdotter: P22 father = Q141200016 Nils Andersson
-Q141200604	P22	Q141200016	S2600	"6000000007020763500"
 #   Q141403480 Anders Israelsson: P26 spouse = Q141403622 NN Israelsdotter (Finstaätten)
 Q141403480	P26	Q141403622	S2600	"6000000007328933873"
-#   Q141224900 Samuel Samuelis Hornaeus: P26 spouse = Q141225773 Katarina Johansdotter Ståhlbom
-Q141224900	P26	Q141225773	S2600	"6000000007366595611"
 #   Q141403629 Nils Simonsson Polviander: P26 spouse = Q141403472 Agneta Henriksdotter Polviander
 Q141403629	P26	Q141403472	S2600	"6000000007367623313"
-#   Q5626148 Carl Wilhelm von Düben: P26 spouse = Q141242568 Ulrika von Düben
-Q5626148	P26	Q141242568	S2600	"6000000007680468910"
-#   Q141224012 Hedvig Chydenius: P25 mother = Q141225773 Katarina Johansdotter Ståhlbom
-Q141224012	P25	Q141225773	S2600	"6000000007774748338"
 #   Q141403560 Elisabet Adlerberg: P40 child = Q141403647 Per Linnerius Linnerhielm
 Q141403560	P40	Q141403647	S2600	"6000000007802050285"
-#   Q109835490 Catharina Eleonora Temminck: P40 child = Q141242568 Ulrika von Düben
-Q109835490	P40	Q141242568	S2600	"6000000008659258932"
 #   Q141403474 Amalia Charlotta von Hylteen: P26 spouse = Q141403628 Nils Silfverskiöld
 Q141403474	P26	Q141403628	S2600	"6000000008988950831"
 #   Q141403628 Nils Silfverskiöld: P26 spouse = Q141403474 Amalia Charlotta von Hylteen
 Q141403628	P26	Q141403474	S2600	"6000000008989149051"
-#   Q141216507 Torborg Toresdatter Norheim: P25 mother = Q141225709 Fru Tore
-Q141216507	P25	Q141225709	S2600	"6000000009152152523"
-#   Q6240337 Per Henrik Widmark RVO: P26 spouse = Q141225765 Karolina Andrietta Ström
-Q6240337	P26	Q141225765	S2600	"6000000009585266046"
 #   Q141403647 Per Linnerius Linnerhielm: P25 mother = Q141403560 Elisabet Adlerberg
 Q141403647	P25	Q141403560	S2600	"6000000013173722518"
 #   P26 spouse = Q141403567 Engel Fredrika Rothlieb
@@ -3490,14 +3281,6 @@ Q141403567	P26	Q141403647	S2600	"6000000013173753277"
 Q141403626	P26	Q141403558	S2600	"6000000013538823820"
 #   Q141403558 Elin Nilsdotter: P26 spouse = Q141403626 Nils Olofsson
 Q141403558	P26	Q141403626	S2600	"6000000013539030081"
-#   Q141223516 Hans Otto Kristian Jenssen: P40 child = Q141225805 Louise Helmine Jenssen
-Q141223516	P40	Q141225805	S2600	"6000000014188476819"
-#   Q141219307 Petrike Margrete Jenssen: P40 child = Q141225805 Louise Helmine Jenssen
-Q141219307	P40	Q141225805	S2600	"6000000014188713060"
-#   Q141205896 Ane Marie Konstanse Amanda Kristine Hegre: P40 child = Q141205900 Bertrand Olav Olsen Vigdel
-Q141205896	P40	Q141205900	S2600	"6000000018935780138"
-#   Q141244081 Anders Alstrin: P40 child = Q141225794 Laurentius Andreae Andreae Alstrinius
-Q141244081	P40	Q141225794	S2600	"6000000019263256732"
 #   Q141403638 Ole Knutsson Teig: P26 spouse = Q141403573 Gunhild Paalsdtr. Teig
 Q141403638	P26	Q141403573	S2600	"6000000020341721242"
 #   Q141403573 Gunhild Paalsdtr. Teig: P26 spouse = Q141403638 Ole Knutsson Teig
@@ -3510,52 +3293,18 @@ Q141403572	P26	Q141403582	S2600	"6000000021082340200"
 Q141403564	P26	Q141403552	S2600	"6000000023500505361"
 #   Q141403552 Eivind Pedersen Sveinsvoll: P26 spouse = Q141403564 Elisabeth Martine Anfinnsdatter Lea
 Q141403552	P26	Q141403564	S2600	"6000000023500670116"
-#   Q141225794 Laurentius Andreae Andreae Alstrinius: P26 spouse = Q141225780 Kristina Eriksdotter Ångerman
-Q141225794	P26	Q141225780	S2600	"6000000025011507008"
-#   Q141216494 NN Jacobsdtr. Koll: P22 father = Q141225730 Jacob Knutson Skiftun
-Q141216494	P22	Q141225730	S2600	"6000000030876120040"
 #   Q141403594 Lars Ingebretsen: P26 spouse = Q141403555 Elen Ingebretsen
 Q141403594	P26	Q141403555	S2600	"6000000037785091091"
 #   Q141403555 Elen Ingebretsen: P26 spouse = Q141403594 Lars Ingebretsen
 Q141403555	P26	Q141403594	S2600	"6000000037785615930"
-#   Q141225780 Kristina Eriksdotter Ångerman: P26 spouse = Q141225794 Laurentius Andreae Andreae Alstrinius
-Q141225780	P26	Q141225794	S2600	"6000000038458498753"
-#   Q141244096 Gunilla Nilsdotter: P40 child = Q141225794 Laurentius Andreae Andreae Alstrinius
-Q141244096	P40	Q141225794	S2600	"6000000040336826716"
-#   P40 child = Q141225703 Erik Guttormsson
-Q141223732	P40	Q141225703	S2600	"6000000040760707837"
-#   P26 spouse = Q141225788 Kristine
-Q141223732	P26	Q141225788	S2600	"6000000040760707837"
-#   Q141225788 Kristine: P40 child = Q141225703 Erik Guttormsson
-Q141225788	P40	Q141225703	S2600	"6000000040760740831"
 #   Q141403593 Lars Arvid Reinhold Sandels: P26 spouse = Q141403607 Maria Elisabeth Sandels
 Q141403593	P26	Q141403607	S2600	"6000000046683817496"
 #   Q141403607 Maria Elisabeth Sandels: P26 spouse = Q141403593 Lars Arvid Reinhold Sandels
 Q141403607	P26	Q141403593	S2600	"6000000046684407885"
 #   Q141403497 Anna Gavelia: P26 spouse = Q141403650 Sigfrid Wolker
 Q141403497	P26	Q141403650	S2600	"6000000046751478093"
-#   Q141200083 Sara: P26 spouse = Q141200016 Nils Andersson
-Q141200083	P26	Q141200016	S2600	"6000000059888596942"
 #   Q141403653 Tollef Tollaksen Ølberg: P40 child = Q141403635 Olav Tolleivsen Ølberg
 Q141403653	P40	Q141403635	S2600	"6000000116680092826"
-#   Q141223924 Helen Frisk: P40 child = Q141224006 Emma Himiko Leonhart
-Q141223924	P40	Q141224006	S2600	"6000000177921459052"
-#   Q141224814 Richard Wade Borsheim: P40 child = Q141224006 Emma Himiko Leonhart
-Q141224814	P40	Q141224006	S2600	"6000000177921459056"
-#   P26 spouse = Q141223924 Helen Frisk
-Q141224814	P26	Q141223924	S2600	"6000000177921459056"
-#   Q141223733 Hans Bertil Frisk: P40 child = Q141223924 Helen Frisk
-Q141223733	P40	Q141223924	S2600	"6000000177921459066"
-#   Q141223907 Elly Olivia Frisk: P22 father = Q141225694 Carl Andersson
-Q141223907	P22	Q141225694	S2600	"6000000178275437038"
-#   P40 child = Q141223924 Helen Frisk
-Q141223907	P40	Q141223924	S2600	"6000000178275437038"
 #   Q141403635 Olav Tolleivsen Ølberg: P22 father = Q141403653 Tollef Tollaksen Ølberg
 Q141403635	P22	Q141403653	S2600	"6000000207136098870"
-#   Q141319302 NN Andersson: P40 child = Q141225694 Carl Andersson
-Q141319302	P40	Q141225694	S2600	"6000000211987721869"
-#   Q141318607 NN Andersson: P40 child = Q141225694 Carl Andersson
-Q141318607	P40	Q141225694	S2600	"6000000211987743851"
-#   Q141216601 Austman Gustavson Gudfastarsson: P40 child = Q141216475 Guttorm Ostmannson
-Q141216601	P40	Q141216475	S2600	"6000000221197647828"
 
