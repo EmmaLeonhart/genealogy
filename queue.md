@@ -567,6 +567,15 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.
+  - **`6000000035218690155`** — <https://www.geni.com/people/n-n/6000000035218690155>. Added
+    2026-09-10: *"Abul Hamza is top priority but descendants of
+    https://www.geni.com/people/n-n/6000000035218690155 should be in there too"*.
+
+    **Its position in this order was NOT stated**, only that it belongs in the campaign and that
+    Abul Hamza outranks it. Recorded here rather than ranked, and nothing about the person is
+    investigated, measured, seeded or grepped — `CLAUDE.md` § *"Add it to the end of the queue"
+    means WRITE IT DOWN AND STOP*. The slug is `n-n`, so the profile is an `NN`.
+
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
