@@ -65,6 +65,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
 from genimerge.gedcom import parse_file
 from genimerge.identity import geni_id_of
 
+NL = chr(10)
+TAB = chr(9)
+
 
 def _gid(rec):
     try:
@@ -287,6 +290,33 @@ def cluster_key(name):
     return "".join(c for c in folded if not unicodedata.combining(c))
 
 
+def random_picks(children, names, born, seed, top, rng_seed=0):
+    """⛔ THE PICK RULE: RANDOM PEOPLE, then the CENSUS NUMBER decides. Ruled 2026-09-09.
+
+    *"stop with the large family clusters. Just randomly pick people in the graph and find out if
+    anybody has listed 5,000 descendants, and then you perform the operation on them."*
+
+    This supersedes `rim_picks`, which sorted the rim by family cluster and therefore **could
+    never select a single person** -- and every royal doorway in Abul Hamza's ball is a single
+    person: Henriette Marie de Bourbon, James VII Stewart, Isabel Clara Eugenia Habsburg, Jan
+    Kasimir Vasa, all sitting at the rim, none selectable by a rule that ranks families.
+
+    **The decision is not made here.** This emits candidates to LOOK UP; the Geni profile's
+    `descendants` statistic decides, and a **saturated** count (5,000 / 15,000) is the signal --
+    it means Geni knows there is more below that person than one export can hold, which is
+    exactly who is worth exporting from. A rule that picked on anything visible *inside* the ball
+    would be guessing at the thing the census already states.
+
+    Deterministic for a given `rng_seed`, per *SORTING MUST BE DETERMINISTIC*: the same ball and
+    the same seed give the same candidates, so a run is reproducible and a re-run is not a
+    different campaign.
+    """
+    import random
+    pool = sorted(g for g in children if g != seed)
+    rng = random.Random(rng_seed)
+    return rng.sample(pool, min(top, len(pool)))
+
+
 def rim_picks(children, names, born, desc, seed, top):
     """One representative per largest rim family cluster -- your rule, 2026-09-09.
 
@@ -320,9 +350,12 @@ def main() -> int:
     ap.add_argument("gedcom", nargs="+", help="the Descendants export(s) to rank inside")
     ap.add_argument("--seed", default="", help="the export seed, excluded from the ranking")
     ap.add_argument("--top", type=int, default=10, help="how many to pick (your 'top 10')")
-    ap.add_argument("--mode", choices=("rim", "split", "greedy"), default="rim",
-                    help="rim: one per largest cut-off family cluster, YOUR rule. "
-                         "split: an interior antichain. greedy: set-cover, refuted.")
+    ap.add_argument("--mode", choices=("random", "rim", "split", "greedy"), default="random",
+                    help="random: RANDOM people to look up, and the Geni census number decides "
+                         "-- the ruled pick rule. rim: one per cut-off family cluster, SUPERSEDED "
+                         "(cannot select a single person). split/greedy: refuted, kept as record.")
+    ap.add_argument("--rng-seed", type=int, default=0,
+                    help="deterministic sampling: same ball + same seed = same candidates")
     ap.add_argument("-o", "--out", default="", help="TSV to write")
     args = ap.parse_args()
 
@@ -330,6 +363,28 @@ def main() -> int:
     desc, index = descendant_sets(children)
     total = len(index)
     sys.stdout.reconfigure(encoding="utf-8")
+
+    if args.mode == "random":
+        picks = random_picks(children, names, born, args.seed, args.top, args.rng_seed)
+        rim, _ = rim_of(children, args.seed)
+        rimset = set(rim)
+        header = TAB.join(["n", "geni_id", "name", "born",
+                           "in_graph_descendants", "at_rim", "profile"])
+        lines = [header]
+        for n, gid in enumerate(picks, 1):
+            lines.append(TAB.join([
+                str(n), gid, names.get(gid, ""), born.get(gid, ""),
+                str(desc.get(gid, 0).bit_count()), "yes" if gid in rimset else "",
+                "https://www.geni.com/people/x/%s" % gid,
+            ]))
+        text = NL.join(lines) + NL
+        if args.out:
+            pathlib.Path(args.out).write_text(text, encoding="utf-8")
+        print(text)
+        print("%d people in the ball; %d RANDOM candidates to look up. The Geni `descendants` "
+              "statistic decides -- export from the SATURATED ones (5,000 / 15,000)."
+              % (total, len(picks)))
+        return 0
 
     if args.mode == "rim":
         picks, rim_n, cluster_n = rim_picks(children, names, born, desc, args.seed, args.top)
