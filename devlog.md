@@ -34451,3 +34451,24 @@ single-parent family unplaceable — which is most of what a `P40` edge produces
 `prune_stream`, `prune_record` and `_prune` take the tag set as an argument now and default to
 `KEEP_TAGS`, so every existing caller is unchanged.
 
+
+### The stopping condition is DIMINISHING RETURNS. The 15,000 floor was mine and is wrong
+
+The correction two entries up replaced one invented rule with another. *~15,000 descendants
+before the question is answerable* was **not** given — it was read into a remark and then written
+into `CLAUDE.md` and `queue.md` as a threshold.
+
+**The algorithm as actually specified:** Monte Carlo exports off the people already in the
+person's GEDCOM — sample, read the census, export from the saturated ones, merge, sample again —
+**run until it is clearly hitting significant diminishing returns.** Only at that point is it
+clear whether the approach works.
+
+**Why the difference is not pedantic.** A count answers *have we done enough arithmetic* and can
+be satisfied while the loop is still paying out; diminishing returns is a property of the loop
+itself and is the only thing that says *stop, this is what there is*. It also cannot be reported
+early: there is no number to reach and announce.
+
+This is the second time in one evening the same shape appeared — a long-horizon instruction
+compressed into a threshold that can be checked once. The first was concluding from a capped
+ball; this was inventing the floor that was supposed to replace it.
+

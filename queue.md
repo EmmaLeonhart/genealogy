@@ -378,10 +378,14 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   Henriette Marie de Bourbon, James VII Stewart, Jan Kasimir Vasa all sat at the rim and none
   could ever be picked.
 
-  **⛔ AND A CAPPED BALL SETTLES NOTHING.** ~15,000 descendants of the target have to be gathered
-  before a question about where their line reaches is answerable. One 5,000-person ball is the
-  first step, not a sample: `CLAUDE.md` § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE
-  FIRST SLICE*.
+  **⛔ RUN IT UNTIL DIMINISHING RETURNS. THERE IS NO TARGET COUNT.** Sample, census-check, export
+  from the saturated ones, merge, sample again — and keep going **until new exports are clearly
+  returning few new people**. That is when it becomes clear whether the approach works at all.
+
+  *~15,000 descendants* was invented here as a floor and is **NOT** the rule. A fixed number
+  answers *have we done enough arithmetic*; the question is whether the loop is still paying.
+  One 5,000-person ball is round one, not a sample of anything —
+  `CLAUDE.md` § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE FIRST SLICE*.
 
   The method is `scripts/descendant-frontier.py` and it is built and measured — see `devlog.md`
   2026-09-09. Per target: create an ancestor of theirs (`docs/export-seed-rules.md`), export
