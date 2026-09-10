@@ -197,6 +197,18 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       delete active[String(tabId)];
       const results = s.results.concat([Object.assign({ at: new Date().toISOString() }, msg.result)]);
 
+      /* ⛔ A CAPTCHA STOPS THE RUN. `GC.blocked()` reports it and nothing acted on it -- which
+       * did not matter while opening was pinned to the return rate, and matters a great deal now
+       * that the loop opens continuously. Geni served an Incapsula challenge after roughly forty
+       * rapid loads once already. A blocked page scrapes as a person with no family and reports
+       * success, so carrying on would write empty captures over real people. */
+      if (msg.result && msg.result.state === "blocked") {
+        await put({ active, results, running: false });
+        try { await chrome.tabs.remove(tabId); } catch (e) {}
+        sendResponse(true);
+        return;
+      }
+
       /* ⛔ THE ALGORITHM'S QUEUE, not ours. `docs/parent-walk-algorithm.md`: when both parents
        * already exist the walk adds neither and enqueues the MOTHER, then the FATHER, in that
        * order, and carries on up. The content script returns them already ordered; appending
@@ -365,7 +377,13 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       return;
     }
     if (msg.type === "load") {
-      await put(Object.assign({ queue: msg.queue, results: [], active: {} },
+      /* ⛔ THE STAGGER IS THE ONLY THROTTLE, so the caller sets it. `DEFAULTS.staggerMs` is
+       * 60000 -- the geni-scraping rate of one a minute -- and that was never the intended
+       * ceiling for a run that holds its tabs: opening is serial, holding is unbounded, so the
+       * gap between OPENS is the whole rate control. */
+      const extra = {};
+      if (msg.staggerMs) extra.staggerMs = Math.max(1000, msg.staggerMs | 0);
+      await put(Object.assign({ queue: msg.queue, results: [], active: {} }, extra,
                               msg.start ? { running: true, dryRun: false, creating: "",
                                             startedAt: new Date().toISOString() } : {}));
       sendResponse(msg.queue.length);
@@ -465,9 +483,23 @@ async function pump() {
        * worker happens to still be alive, because Chrome clamps alarms to 30s. Whichever fires
        * first wins, and a double fire is harmless: `pumping` and the re-read of the queue mean
        * the second one finds the work already taken. */
+      /* ⛔⛔ **THE OPEN LOOP MUST NOT WAIT FOR RESULTS, AND IT USED TO.**
+       *
+       * This opened ONE tab and broke out. `pump` was then re-entered only by a result arriving
+       * or by the 60s alarm -- so the rate of OPENING was pinned to the rate of RETURNING, and
+       * a run could never get ahead of its own searches. Measured 2026-09-10: 24 people took
+       * eight minutes, which is the return rate and nothing to do with how fast Geni will accept
+       * a page load.
+       *
+       * The design is the opposite: *"as soon as you request a path you open a new tab, but
+       * never open multiple tabs simultaneously."* Serial opening, unbounded holding. So the
+       * loop keeps opening, paced only by `staggerMs`, and the tabs pile up dormant.
+       *
+       * The alarm stays as the recovery path for a worker torn down mid-run; `pumping` and the
+       * queue re-read make a double fire harmless. */
       chrome.alarms.create(PUMP_ALARM, { when: Date.now() + Math.max(1000, s.staggerMs) });
-      setTimeout(pump, s.staggerMs);
-      break;
+      await new Promise((res) => setTimeout(res, Math.max(250, s.staggerMs)));
+      continue;
     }
   } finally {
     pumping = false;
