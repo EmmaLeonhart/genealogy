@@ -92,6 +92,9 @@ try {
 
 const EXPORT_CONCURRENCY = 1;
 const PUMP_ALARM = "geni-collector-pump";
+/* How long the run holds off after Geni answers 429. Long enough to matter, short enough that
+ * an overnight run recovers itself without anyone watching. */
+const BLOCK_COOLDOWN_MS = 180000;
 
 const DEFAULTS = {
   running: false,
@@ -105,6 +108,8 @@ const DEFAULTS = {
   startedAt: null,
   //: The id `addAncestor` returned: what the export runs from.
   endId: "",
+  /* Set when Geni answers 429; `pump` opens nothing until it passes. */
+  cooldownUntil: 0,
   /* ⛔ THE WALK THE EXPORT AT THE END OF THE CLIMB TAKES. `forest` is the default and stays it
    * -- `docs/export-seed-rules.md` fixes a seed-driven export at Forest/5000 and that file is
    * still the authority for the ordinary loop. The descendants campaign is the other case:
@@ -203,8 +208,27 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * rapid loads once already. A blocked page scrapes as a person with no family and reports
        * success, so carrying on would write empty captures over real people. */
       if (msg.result && msg.result.state === "blocked") {
-        await put({ active, results, running: false });
+        /* ⛔⛔ **A 429 BACKS THE RUN OFF. IT DOES NOT END IT, AND IT DOES NOT UN-ATTEMPT ANYBODY.**
+         *
+         * Ruled 2026-09-10: *"Every single individual that we ran this on gets added as being
+         * run... You aren't trying to do some sort of exception where you decide, oh, we didn't
+         * really do these people, and you don't list them as being attempted. They've been
+         * attempted."* The request went out and Geni answered; that is the attempt, and
+         * `attempt_ledger.py`'s own docstring already says so -- *"if we fail on an individual,
+         * we've attempted it and we move on"*.
+         *
+         * So the result is KEPT, with its blocked state, for the harvest to stamp. What changes
+         * is the rate: the stagger doubles, capped at a minute, and the next open waits out a
+         * cooldown. That is the extension rate-limiting itself at the point Geni asks it to,
+         * which is the whole of what a 429 means.
+         *
+         * Halting instead was the first version and it was wrong twice: it needed a human to
+         * restart, and it invited exactly the un-attempting this ruling forbids. */
+        const slower = Math.min(60000, Math.max(4000, (s.staggerMs || 4000) * 2));
+        await put({ active, results, staggerMs: slower,
+                    cooldownUntil: Date.now() + BLOCK_COOLDOWN_MS });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
+        chrome.alarms.create(PUMP_ALARM, { when: Date.now() + BLOCK_COOLDOWN_MS });
         sendResponse(true);
         return;
       }
@@ -460,6 +484,12 @@ async function pump() {
        *
        * Exports stay at 1 because that is GENI's limit rather than ours, and seeds stay at 1
        * because a creation ends the walk and every parallel seed is work about to be discarded. */
+      /* The 429 cooldown. Checked here, where tabs are opened, so it throttles the one thing
+       * Geni is complaining about and nothing else. */
+      if (s.cooldownUntil && Date.now() < s.cooldownUntil) {
+        chrome.alarms.create(PUMP_ALARM, { when: s.cooldownUntil + 500 });
+        break;
+      }
       const serial = (next.job === "export" || next.job === "seed" || next.job === "stats");
       if (serial && inFlight >= 1) break;
 
