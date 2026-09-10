@@ -97,8 +97,19 @@ def stamp(geni_ids, today=None, path=WORKLIST):
     # change nothing.
     with path.open(encoding="utf-8", newline="") as fh:
         header = fh.readline()
-    if fields(header) != COLUMNS:
-        raise SystemExit("⛔ %s does not carry the four columns of the spec: %r"
+    # ⛔ THE SPEC'S FOUR COLUMNS MUST BE THE FIRST FOUR, NOT THE ONLY FOUR.
+    #
+    # This demanded an exact match, and on 2026-09-10 the worklist gained six more --
+    # the five statistics figures and `exported`, ruled: *"list the statistics of everyone in the
+    # tsv as 200 and not exported."* Every capture then failed here, after the family file and
+    # the isolates row had already been written, so a run looked like it was working and was
+    # stamping nothing.
+    #
+    # The stamp only ever touches `last_attempted` and only ever by position, so extra columns to
+    # its right are none of its business. What must hold is that the first four are the spec's,
+    # in the spec's order.
+    if fields(header)[:len(COLUMNS)] != COLUMNS:
+        raise SystemExit("⛔ %s does not open with the four columns of the spec: %r"
                          % (path, header.rstrip(NL)))
 
     seen = set()
