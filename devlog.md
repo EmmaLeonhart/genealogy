@@ -34382,3 +34382,32 @@ What survives from the entry is what was actually measured: the 263 titled peopl
 counts, the rim doorways, and the fact that the cluster pick rule does not select single people.
 What does not survive is any claim about where the descent does or does not go.
 
+
+## 2026-09-09 — the pick rule is RANDOM SAMPLING plus the census number
+
+Ruled, superseding the one-per-largest-family-cluster answer given earlier the same day:
+*"stop with the large family clusters. Just randomly pick people in the graph and find out if
+anybody has listed 5,000 descendants, and then you perform the operation on them."*
+
+    1. pick people from the ball at RANDOM
+    2. read the Geni profile's `descendants` statistic on each
+    3. export from the ones whose count is SATURATED
+
+**Why the cluster rule had to go, and it is not just preference.** It sorted the rim by family
+and so **could never select a single person** — and every royal doorway in the ball is a single
+person: Henriette Marie de Bourbon, James VII Stewart, Isabel Clara Eugenia Habsburg, Jan Kasimir
+Vasa, all at the rim, none of them selectable by a rule that ranks families by size.
+
+`random_picks` in `scripts/descendant-frontier.py`, `--mode random`, deterministic on
+`--rng-seed` so a re-run is the same campaign rather than a different one.
+
+**⛔ THE CENSUS MUST BE READ FROM A NAVIGATED PAGE. `fetch` RETURNS ZEROS.** Geni renders the
+statistics block after load, so a `fetch` + `DOMParser` read finds no block at all and every
+field parses as absent — and *a missing statistics row is a real zero*, so the zeros look like
+data. **Six candidates in a row came back `0 | 0 | 0`**, which is the tell; the same profile read
+by navigating gives `Family Tree 438, Blood Relatives 15,000, Ancestors 2,498`.
+
+That is `CLAUDE.md` *check the separator before believing a distribution* in a new place: an
+instrument that quietly narrows its input and reports a clean number about itself. Nothing was
+concluded from the six.
+
