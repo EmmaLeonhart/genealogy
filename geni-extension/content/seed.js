@@ -393,6 +393,8 @@ GC.seed.addParent = async function (which, p) {
 
   step("find-add-link");
   const link = GC.byText("a", /^add family$/i).find(GC.visible);
+  /* The caller adds `enqueue` so the walk climbs past this locked door -- see the comment at the
+   * end of `runSeed`. A master profile is a skip, and a skip is not a stop. */
   if (!link) return { state: "no_add_link" };
 
   /* ⛔ `preventDefault` ON AN `href="#"` ANCHOR. Clicking it navigates to the `#` fragment, and
@@ -680,7 +682,27 @@ GC.runSeed = async function (job) {
    * and therefore that an unannounced write must not happen. */
   p.viaScheduler = !!job.jobId;
   const r = await GC.seed.addParent(which, p);
-  /* An add that fails is a skip, not a stop: the walk takes the next person off the queue. */
+
+  /* ⛔⛔ **A SKIP MUST STILL CLIMB. `enqueue: []` MADE EVERY FAILURE A DEAD END.**
+   *
+   * The comment below has said "an add that fails is a skip, not a stop" since this was written,
+   * and the code did the opposite: it returned an EMPTY enqueue, so the background had nothing
+   * to carry on with and the walk ended at the first person it could not add to.
+   *
+   * Measured 2026-09-10 on the CBDB cluster -- 224 people at the head of the isolate worklist,
+   * every one managed by `CBDB (China Biographical Database)`, no `Add Family` link, not even
+   * editable. Three were checked by hand. They were written off as unexportable by both routes,
+   * and that was wrong: a locked profile is a locked DOOR, not a locked TREE. Their parents may
+   * be perfectly addable, and the walk exists precisely to climb past a slot it cannot use.
+   *
+   * `docs/export-seed-rules.md` § *A master profile is a skip* -- *"move to the next slot"* --
+   * and `docs/parent-walk-algorithm.md` rule 5, *"an add that fails for any reason -> take the
+   * next person off the queue"*. Both were already the specification. This is the line that
+   * makes the code obey them.
+   *
+   * A creation still ends the walk: `added` is handled by the background before this matters. */
+  const climb = (r && r.state === "added") ? [] : fam.parents.map((x) => String(x.pid));
   return report(Object.assign({ which: which, tier: p.tier, first: p.first, last: p.last,
-                                why: p.why, name: nm.display, parents: n, enqueue: [] }, r));
+                                why: p.why, name: nm.display, parents: n, enqueue: climb }, r,
+                              (r && r.state === "added") ? {} : { enqueue: climb }));
 };

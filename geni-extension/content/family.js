@@ -153,6 +153,20 @@ GC.family.scrapeIn = function (block) {
   const walk = document.createTreeWalker(block, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
   for (let n = walk.nextNode(); n; n = walk.nextNode()) {
     if (n.nodeType === Node.TEXT_NODE) {
+      /* ⛔⛔ **TEXT INSIDE A LINK IS A NAME, NOT A RELATION OPENER.**
+       *
+       * Measured on R' Chaim (Itzkowitz) Volozhiner `6000000003181980579`, 2026-09-10. One of
+       * his siblings is a Geni profile literally named **`Daughter Of Gaon The`**. That string
+       * is the TEXT OF AN ANCHOR, and the walker classified it like any other text node -- so
+       * `classify` matched `daughter of`, `current` flipped to parent, and the ten relatives
+       * listed after it were recorded as his PARENTS. He came back with nine.
+       *
+       * `CLAUDE.md` § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME* is this in the mirror:
+       * there, Geni put a husband in a name field; here, a name reads as a relation. The rule
+       * that resolves both is the same -- a name is not a structural claim.
+       *
+       * Openers live in the text BETWEEN links. Anything inside one is somebody's name. */
+      if (n.parentElement && n.parentElement.closest("a[data-profile-id]")) continue;
       const hit = GC.family.classify(n.textContent);
       if (hit) { current = hit; continue; }
       /* An opener we do not recognise ENDS the previous relation rather than extending it.
