@@ -35256,3 +35256,41 @@ new run clears it.
 
 **Verified by behaviour on Constantine, lord of Barbaron:** four relation lines read, parents
 **1** — the nine children and three spouses excluded.
+
+### ⛔ TWO DISPATCH TABLES, ONE PATCHED: sixty census jobs asked Geni for a RELATIONSHIP PATH
+
+`content/router.js` routes a job in two places — once for a job the background handed the tab
+(the `claim` branch) and once for the DOM trigger — and they were two copies of the same ternary
+chain. A `stats` job was added to the second copy only. The first has no `stats` case, so every
+background-driven census job fell through the whole chain to its bare final `else`:
+**`GC.runPath`**. Sixty people were queued; four ran before it was stopped, and Emma saw them as
+*"We found the blood relationship path you requested to …"* banners.
+
+A ternary ending in a bare fallback does not fail when it meets something it does not know. It
+runs the last branch. That is `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD* — two copies
+of a rule is how the rule comes to mean two different things.
+
+`GC.dispatch(job)` is now the single table, both call sites use it, and the fallback returns
+`unknown_job` rather than quietly asking Geni for a path.
+
+### The Abul Hamza descendants campaign: sampled, and three exports queued
+
+Her `Descendants` ball is 5,000 people and capped. Sixty sampled at random — the ruled pick
+method, **not** `reports/descendant-frontier-abul-hamza.tsv`, which was built by the
+one-per-largest-family-cluster rule that was superseded on 2026-09-09.
+
+Of 19 read before the census was called off as overbuilt, **four clear 5,000**:
+
+    6000000008384075400  Sayaluna ata              15,000   (Geni's display ceiling)
+    6000000000746523797  Hélène de Corday          15,000   (ceiling)
+    6000000015633226273  Pietro Antonio di Capua   12,476
+    6000000015647948256  Jacques Grimaldi          11,468
+
+`Descendants` exports queued on three of them, one at a time, direct from the person — **not**
+from a created ancestor. Ruled 2026-09-10: *"Queue up descendant exports of all of these
+people."*
+
+**And the census was the wrong instrument for its own job.** The three numbers were already in
+hand when it was built; a sampling loop was constructed around a question that had already been
+answered. Emma: *"you aren't supposed to do a census job lol … You are going way the fuck
+overboard."*

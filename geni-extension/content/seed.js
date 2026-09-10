@@ -114,32 +114,56 @@ GC.seed.family = function () {
      * So the split is on `<br>`, and a parent is an anchor inside the `Son of` / `Daughter of`
      * segment and nowhere else. Both markups are handled: several `<p>`s, or one `<p>` full of
      * `<br>`s. */
-    const containers = td.querySelectorAll("p").length ? [...td.querySelectorAll("p")] : [td];
-    const blocks = [];
-    for (const c of containers) {
-      let cur = { text: "", anchors: [] };
-      for (const node of c.childNodes) {
-        if (node.nodeName === "BR") { blocks.push(cur); cur = { text: "", anchors: [] }; continue; }
-        cur.text += node.textContent || "";
-        if (node.nodeType === 1) {
-          if (node.matches && node.matches("a[data-profile-id]")) cur.anchors.push(node);
-          else cur.anchors.push(...node.querySelectorAll("a[data-profile-id]"));
+    /* ⛔⛔ **PARSE BY THE RELATION WORDS, NOT BY THE MARKUP.** Third attempt, and the first two
+     * both failed the same way: they assumed a separator.
+     *
+     *   - splitting on the ELEMENT took a whole `<p>`/`<td>`, which holds every relation
+     *   - splitting on `<br>` worked on a fully rendered page and failed on a half-rendered one,
+     *     where the relations arrive as one unseparated text run. Constantine, lord of Barbaron
+     *     then read as `both_present` with FOURTEEN parents -- one father, three wives, nine
+     *     children -- on a page whose own text says `Son of Vasak Pahlavuni` and nothing else.
+     *
+     * The separator that is always there is the SENTENCE: `Son of`, `Husband of`, `Father of`.
+     * So the block is flattened into document order and each anchor is assigned to whichever
+     * relation word was most recently seen in the text before it. That is true of every markup
+     * Geni has produced here, rendered or half-rendered, because it reads what the page SAYS
+     * rather than how it is wrapped. */
+    const REL = /(son|daughter|husband|wife|father|mother|brother|sister|partner|widow|widower)\s+of\b/ig;
+    const buckets = {};
+    let current = "";
+    const walk = (node) => {
+      for (const n of node.childNodes) {
+        if (n.nodeType === 3) {
+          const txt = n.textContent || "";
+          let m, last = null;
+          REL.lastIndex = 0;
+          while ((m = REL.exec(txt)) !== null) last = m[1].toLowerCase();
+          if (last) current = last;
+        } else if (n.nodeType === 1) {
+          if (n.matches && n.matches("a[data-profile-id]")) {
+            if (current) (buckets[current] = buckets[current] || []).push(n);
+          } else {
+            walk(n);
+          }
         }
       }
-      blocks.push(cur);
-    }
-    const lines = blocks
-      .map((b) => ({ text: b.text.replace(/\s+/g, " ").trim(), anchors: b.anchors }))
-      .filter((l) => l.text);
-    /* Rendered at least one relation. An empty `<td>` is a block that has not filled in yet, and
-     * it must never look like a person without parents. */
-    out.read = lines.length > 0;
-    out.lines = lines.map((l) => l.text.slice(0, 60));
-    const parentLine = lines.find((l) => /^(son|daughter) of/i.test(l.text));
-    if (parentLine) {
+    };
+    walk(td);
+
+    /* Rendered at least one relation. An empty block is one that has not filled in yet, and it
+     * must never look like a person without parents. */
+    out.read = Object.keys(buckets).length > 0 ||
+               REL.test((td.textContent || "").replace(/\s+/g, " "));
+    out.lines = Object.keys(buckets).map((k) => k + ":" + buckets[k].length);
+
+    /* ⛔ A PARENT IS `son of` / `daughter of` AND NOTHING ELSE. Not `husband of`, not `father
+     * of` -- those are the spouse and the children, and enqueueing them is what made the walk
+     * spread sideways and downwards through the family instead of climbing it. */
+    const parentAnchors = (buckets.son || []).concat(buckets.daughter || []);
+    if (parentAnchors.length) {
       out.found = true;
       const seen = new Set();
-      for (const a of parentLine.anchors) {
+      for (const a of parentAnchors) {
         const pid = a.getAttribute("data-profile-id");
         if (seen.has(pid)) continue;
         seen.add(pid);
@@ -511,13 +535,27 @@ GC.seed.addParent = async function (which, p) {
   /* The confirmation is the page itself showing the parent it did not show before. § *Never run a
    * search to recover an ID. Bail.* -- Geni's search is banned outright and lags creation by an
    * unbounded amount. */
-  const got = await GC.until(() => {
-    const f = GC.seed.family();
-    return !!f[which];
-  }, 25000);
-  if (!got) return { state: "add_not_confirmed" };
-  const f = GC.seed.family();
-  return { state: "added", pid: f[which] ? f[which].pid : "", first: p.first, last: p.last };
+  /* THE ID OF THE PERSON JUST CREATED, AND THE EXTENSION MUST RETURN IT.
+   *
+   * The background queues the export from `pid` and from nothing else, so a creation that comes
+   * back without one leaves the walk having written to Geni for no reason -- and leaves a human
+   * to find the new profile by hand and submit the export themselves, which is exactly the
+   * agentic step this whole design exists to remove. That happened on `NN Rouponi`
+   * `6000000227683654853` on 2026-09-10.
+   *
+   * The old confirmation watched `f[which]`, i.e. the LABELLED block -- the same widget that
+   * renders `Showing 12 of 14 people` and drops the parent off the end of the list. It is the
+   * wrong instrument twice over: it is truncated, and it is not where the parent count lives.
+   *
+   * The prose is. Take the parent pids from BEFORE the write, wait for a pid that was not among
+   * them, and that pid IS the person just created -- no search, no guessing, no second route to
+   * the same person, which `docs/export-seed-rules.md` bans outright. */
+  const before = new Set(p.beforePids || []);
+  const fresh = () => GC.seed.family().parents.filter((x) => !before.has(x.pid));
+  const got = await GC.until(() => fresh().length > 0, 60000);
+  if (!got) return { state: "add_not_confirmed", first: p.first, last: p.last };
+  const made = fresh()[0];
+  return { state: "added", pid: made.pid, name: made.name, first: p.first, last: p.last };
 };
 
 /* ---------------------------------------------------------------- one person */
@@ -615,6 +653,8 @@ GC.runSeed = async function (job) {
   p.stopBeforeSave = !!job.stopBeforeSave;
   /* Whose page the write happens on, so the background's pre-write flag names a person. */
   p.childId = String(job.geni_id);
+  /* The parents that existed BEFORE the write, so the one that appears after it can be named. */
+  p.beforePids = fam.parents.map((x) => x.pid);
   /* `jobId` is set by `pump` and by nothing else: it means the background is driving this walk,
    * and therefore that an unannounced write must not happen. */
   p.viaScheduler = !!job.jobId;

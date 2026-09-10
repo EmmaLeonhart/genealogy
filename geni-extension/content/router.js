@@ -5,6 +5,39 @@
  * before the redirect is a message to a page that is about to be replaced.
  */
 
+/* ⛔⛔ **ONE DISPATCH TABLE. THERE WERE TWO, AND ONLY ONE OF THEM GOT THE NEW JOB.**
+ *
+ * This file routes a job twice -- once for a job the BACKGROUND handed this tab (the `claim`
+ * branch at the top) and once for the DOM trigger. They were two copies of the same ternary, and
+ * on 2026-09-10 a `stats` job was added to the second one only. The first copy has no `stats`
+ * case, so every background-driven census job fell through the whole ternary to its final
+ * `else` -- `GC.runPath` -- and **asked Geni for a relationship path on each of sixty people**
+ * instead of reading a number off the page. Four ran before it was stopped; Emma saw them as
+ * *"We found the blood relationship path you requested to ..."* banners.
+ *
+ * A ternary chain ending in a bare fallback fails SILENTLY and fails LOUDLY at Geni: an
+ * unrecognised job does not error, it runs the last branch. That is the same shape as
+ * `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD* -- two copies of a rule is how the rule
+ * comes to mean two different things -- so there is now one table, and adding a job means adding
+ * it here, once.
+ *
+ * The fallback is gone with it: an unknown job returns `unknown_job` rather than quietly asking
+ * Geni for a path. */
+GC.dispatch = async function (job) {
+  switch (job.job) {
+    case "export":     return GC.runExport(job);
+    case "seed":       return GC.runSeed(job);
+    case "individual": return GC.runIndividual(job);
+    case "family":     return GC.runFamily(job);
+    case "path":       return GC.runPath(job);
+    /* The census read. `GC.statistics()` costs a real page load and returns the numbers only. */
+    case "stats":      return Object.assign({ job: "stats", geni_id: String(job.geni_id || "") },
+                                            await GC.statistics());
+    default:           return { job: String(job.job || ""), geni_id: String(job.geni_id || ""),
+                                state: "unknown_job" };
+  }
+};
+
 (async () => {
   if (!location.pathname.startsWith("/people/") &&
       !location.pathname.startsWith("/gedcom/")) return;
@@ -19,11 +52,7 @@
 
   let result;
   try {
-    result = job.job === "export" ? await GC.runExport(job)
-           : job.job === "seed" ? await GC.runSeed(job)
-           : job.job === "individual" ? await GC.runIndividual(job)
-           : job.job === "family" ? await GC.runFamily(job)
-           : await GC.runPath(job);
+    result = await GC.dispatch(job);
   } catch (e) {
     result = { job: job.job, geni_id: job.geni_id, state: "error", error: String(e && e.message || e) };
   }
@@ -110,11 +139,13 @@ document.addEventListener("geni-collector-run", async () => {
   delete root.dataset.geniCollectorResult;
   let result;
   try {
-    result = job.job === "export" ? await GC.runExport(job)
-           : job.job === "seed" ? await GC.runSeed(job)
-           : job.job === "individual" ? await GC.runIndividual(job)
-           : job.job === "family" ? await GC.runFamily(job)
-           : await GC.runPath(job);
+    /* ⛔ `stats` IS THE CENSUS READ AND IT IS A JOB, not something the agent does by hand.
+     * `GC.statistics()` has existed since the collector was written and nothing could call it on
+     * its own -- only `runIndividual`, which also asks Geni for a path and applies the export
+     * gate. The descendants campaign needs the number alone: *"randomly pick people in the graph
+     * and find out if anybody has listed 5,000 descendants."* A census read costs a real page
+     * load, so the agent opens the tab and this reads it. */
+    result = await GC.dispatch(job);
   } catch (e) {
     result = { state: "error", error: String((e && e.message) || e) };
   }

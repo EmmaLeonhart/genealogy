@@ -365,8 +365,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       return;
     }
     if (msg.type === "load") {
-      await put({ queue: msg.queue, results: [], active: {} });
+      await put(Object.assign({ queue: msg.queue, results: [], active: {} },
+                              msg.start ? { running: true, dryRun: false, creating: "",
+                                            startedAt: new Date().toISOString() } : {}));
       sendResponse(msg.queue.length);
+      if (msg.start) pump();
       return;
     }
     sendResponse(null);
@@ -417,7 +420,10 @@ async function pump() {
         await put({ queue: s.queue.filter((q) => q.job !== "seed") });
         continue;
       }
-      const limit = (next.job === "export" || next.job === "seed") ? 1 : s.concurrency;
+      /* `stats` joins them: a census read costs a real page load, Geni served an Incapsula
+       * CAPTCHA after roughly forty rapid ones, and the campaign needs sixty. One at a time. */
+      const limit = (next.job === "export" || next.job === "seed" || next.job === "stats")
+        ? 1 : s.concurrency;
       if (inFlight >= limit) break;
 
       const queue = s.queue.slice(1);
