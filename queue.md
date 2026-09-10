@@ -906,3 +906,48 @@ there is no bandwidth to process it now. Nothing is applied and no override is w
 `scripts/grade-post-merge-drops.py` → `reports/post-merge-falsifiable.tsv` is the standing
 measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 159 parents,
 159 children and 90 spouses.
+
+---
+
+## THE END OF THE QUEUE
+
+- **⛔ AN ANALYSIS OF THE FIVE ARTEFACTS SENT 2026-09-10.** *"Things to think about. But put at the
+  end of the queue an analysis of these"* — so this is the roster and **nothing here is
+  investigated, measured, fetched or queried.** `CLAUDE.md` § *"Add it to the end of the queue"
+  means WRITE IT DOWN AND STOP*. When it is reached, § *"Analyse this" means: build a CSV of every
+  instance* governs the shape of the answer.
+
+  **1. The `daughters` paste** — <https://pastebin.com/wP2dbrVf>, guest paste, **11.13 KB**,
+  posted **2026-09-10**, **365-day retention** so it expires 2027-09-10. One Wikidata item URL per
+  line. The fifteen legible on screen:
+
+      Q108655747  Q106472244  Q106535162  Q106472816  Q106683636
+      Q106540429  Q109927895  Q108779632  Q108655970  Q108891795
+      Q22694450   Q106240452  Q107239466  Q110573431  Q106240606
+
+  and two more partly visible below the fold, `Q106713074` and `Q75381643`. At ~46 bytes a line
+  the file is on the order of **240 items**; that is arithmetic off the byte count, not a count.
+
+  **2. `Q106583062` — "Daughter of Ito Nyudo"**, `mul` / `en` / `en-ca` / `en-us` / `fr` all
+  carrying that same string, no description in any language, `instance of` human,
+  `sex or gender` female with 1 reference.
+
+  **3. `Q116054588` — "NN ferch Iorwerth ab Owain Brogyntyn"**, the same string in all five
+  language slots, no description, human, female.
+
+  **4. `Q76006546` — "unknown son (?)"**, and this one disagrees with itself:
+
+      mul      NN                    en-ca   unknown son (?)
+      en       unknown son (?)       en-us   NN
+                                     fr      NN
+
+  Its **English description is `Peerage person ID=462780`** — an identifier used as a description.
+
+  **5. `Q141381269` — label `..`**, in every language slot, `instance of` **family name**, English
+  description `family name`. **Created by `日巫女` via QuickStatements**, revision 04:27
+  2026-09-09, edit summary `#quickstatements; #temporary_batch_1788927746966`.
+
+  **What connects them is not stated and is not to be assumed here.** Four of the five are
+  unnamed or relationally-named people — *Daughter of X*, *NN ferch Y*, *unknown son (?)* — and
+  the fifth is a name item whose label is two full stops. Whether the paste is a list of the same
+  shape is exactly the thing the analysis has to establish rather than take as read.
