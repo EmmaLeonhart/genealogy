@@ -416,6 +416,27 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+- **⛔ `den yngre` NEEDS THE PROPER NAME-CHANGE TREATMENT, AND THIS ONE CORRECTS EXISTING
+  WIKIDATA.** Enqueued 2026-09-09: *"this one and everything with den yngre needs the proper
+  name change stuff. This is correcting existing wikidata stuff though"* — so it is named as a
+  correction rather than an addition, against `CLAUDE.md` § *The purpose is to ADD, not to
+  correct*.
+
+  **The instance she sent** is `Q5797554` **Detlof Heijkenskjöld den yngre**. Off the screenshot,
+  nothing looked up:
+
+      mul                                  no label defined
+      en / en-ca / ast / nl / sv           Detlof Heijkenskjöld den yngre
+      en-us / fr                           no label defined
+      ja                                   デトロフ・ヘイイケンショルド
+      ko                                   데트로프 헤이즈켄쇨드
+      zh                                   德特洛夫·赫伊伊肯肖尔德
+      description                          none, in any language
+
+  **Not investigated, not measured, not scoped.** How many items carry `den yngre`, what the
+  treatment is, and whether the CJK labels dropping the suffix entirely is right or wrong are all
+  open — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
 ## What this session settled, so it is not relitigated
 
 * **Tiny GEDCOMs are the native format.** One per person, one per path, in different directories
