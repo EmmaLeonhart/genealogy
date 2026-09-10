@@ -99,6 +99,28 @@ GC.family.classify = function (text) {
  * first run and gained not one anchor. § *a fix that changes nothing is evidence, not
  * reassurance.* */
 GC.family.scrape = function () {
+  /* ⛔⛔ **THE BIOGRAPHY LINKS PEOPLE AND MUST BE IGNORED.**
+   *
+   * Measured on Mabel Tolkien `6000000009688582123`, 2026-09-10. Her About section reads
+   * *"Mother of J.R.R. Tolkien. Mabel Suffield was born in Birmingham, one of six children of
+   * John Suffield..."* -- so `classify()` matches a line INSIDE the biography, the common-ancestor
+   * climb below then has to span the immediate-family row AND the About section, and every
+   * profile link in the prose gets swept in under whatever relation word was last seen. Her
+   * HUSBAND and all seven siblings came back as `child Mother`: Arthur Reuel Tolkien would have
+   * been written into the corpus as her son.
+   *
+   * The block is separable and always has been. Geni renders it as its own table row --
+   * `<th>Immediate Family:</th><td>...</td>` -- and a `<td>` cannot contain the About section.
+   * Scoping to that cell is exact, needs no heuristic, and is what `seed.js` has read since it
+   * was fixed for the same class of bug.
+   *
+   * The common-ancestor climb stays as the fallback for pages that render no such header, and
+   * carries its own comment below about why it climbs. */
+  const th = [...document.querySelectorAll("th")]
+    .find((e) => /^immediate family/i.test((e.textContent || "").trim()));
+  const cell = th && th.parentElement ? th.parentElement.querySelector("td") : null;
+  if (cell) return GC.family.scrapeIn(cell);
+
   const lead = [...document.querySelectorAll("*")].filter(
     (e) => e.children.length === 0 && GC.family.classify(e.textContent));
   if (!lead.length) return { found: false, relatives: [] };
@@ -117,6 +139,13 @@ GC.family.scrape = function () {
   while (block && !block.contains(last) && guard++ < 12) block = block.parentElement;
   if (!block) return { found: false, relatives: [] };
 
+  return GC.family.scrapeIn(block);
+};
+
+/* The walk itself, over whatever root the caller scoped to. Split out so the
+ * `Immediate Family:` cell and the fallback climb share one implementation -- two copies of a
+ * rule is how the rule comes to mean two different things. */
+GC.family.scrapeIn = function (block) {
   const relatives = [];
   const seen = new Set();
   let current = null;

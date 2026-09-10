@@ -217,6 +217,19 @@ def main() -> int:
     header = rows[0]
     if "via" not in header:
         header = header + ["via"]
+    # ⛔ WHETHER AN EXPORT WAS RUN ON THIS PERSON, and it is a gap the ledger had from the start.
+    #
+    # Ruled 2026-09-10: *"The tsv file should save all of the statistics on the people and have a
+    # thing for whether a gedcom export was done on them."* The statistics were already here; the
+    # export was not, so nothing on disk distinguished a person the gate demanded an export from
+    # and got one, from a person it demanded an export from and never got. Over a 266,201-person
+    # campaign that is the difference between a backlog and a silence.
+    #
+    # Three values. `warranted` is written here, by the gate, on every capture that clears the
+    # floor -- so the backlog is a column query rather than a reconstruction. `done` is written
+    # when the export lands and is filed. Blank means the gate did not ask.
+    if "exported" not in header:
+        header = header + ["exported"]
     prior = next((r[8] for r in rows[1:] if r and r[0] == gid and len(r) > 8), "")
     body = [r for r in rows[1:] if r and r[0] != gid]
 
@@ -300,8 +313,16 @@ def main() -> int:
     # is the stale-photograph failure `CLAUDE.md` records against downloaded items and derived
     # tables. Rows already carrying the literal are left alone -- back-dating them to today would
     # assert the opposite error.
+    # The gate's verdict, so the row itself says whether an export is owed. A row that already
+    # reads `done` is never downgraded by a revisit, for the same reason a recorded path verdict
+    # is not: the export happened, and today's gate reading does not un-happen it.
+    prior_exported = next((r[11] for r in rows[1:] if r and r[0] == gid and len(r) > 11), "")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from export_gate import decide as _decide
+    exported = "done" if prior_exported == "done" else (
+        "warranted" if _decide(stats).get("export") else prior_exported)
     body.append([gid, name] + figures
-                + [datetime.date.today().isoformat(), verdict, anchor, via])
+                + [datetime.date.today().isoformat(), verdict, anchor, via, exported])
     body.sort(key=lambda r: r[0])
     with ISOLATES.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
