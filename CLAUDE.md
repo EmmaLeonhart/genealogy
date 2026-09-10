@@ -107,8 +107,24 @@ accepted any letter, `@NI04461@` parsed as Geni ID `04461` and pointed at a stra
 ## ⛔ The default when nothing else is running
 
 **Idle time goes to the disconnected list.** Whenever the queue is not producing work, go back to
-`reports/p2600-disconnected.tsv` and run the Chrome extension over it, linking unconnected
+`reports/unconnected-p2600.tsv` and run the Chrome extension over it, linking unconnected
 Wikidata people in through Geni. That is the standing fallback, not something to be asked about.
+**266,201 people, 266,101 eligible today.**
+
+**The order everything runs in, ruled 2026-09-09:**
+
+    1. the minor technical issues in flight
+    2. the eleven commanded exports            DONE 2026-09-09
+    3. digest `undigested.md`                  DONE 2026-09-09 -- 15 hinge people, now queued
+    4. a couple of collector runs, to prove the pipeline works
+    5. the mass descendants exports on those groups
+    6. THEN the 266,201, as the default whenever the queue is empty
+
+**⛔ THE 266,201 ARE NOT A LAST RESORT AND THE COLLECTOR RUNS HAVE NOT BEEN SYSTEMATIC ENOUGH.**
+The extension exists to make each one **mindless** — navigate, dispatch, write the files, next —
+and the failure has been doing them inconsistently or narrating them rather than running them.
+Run a couple deliberately and check the pipeline end to end before treating the number as a
+grind.
 
 **⛔ A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE FIRST SLICE.** The recurring failure here
 is taking a task that runs for hours over many rounds, drawing a conclusion from the first

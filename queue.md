@@ -40,6 +40,38 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   into the file, and the tree build is what says so.
 
 
+- **⛔ DESCENDANTS EXPORTS ON THE 15 HINGE PEOPLE — digested out of `undigested.md`,
+  2026-09-09.** A *hinge person* is defined there: *"people who seem to have clearly disjoint
+  large numbers of descendants, and as such are good descendants export sources."*
+
+  **EASTERN european tang — 9**
+
+      6000000146583752828  Елбуздуко Битуев
+      6000000008867333533  Князь Кабарды Камбулат Идарович Черкасский
+      6000000028522915307  Zhelegot Mirza Cherkassy
+      6000000191078589837  knyaz Kanshov of Cherkessia
+      6000000220167394834  Джамурза Джиляхстанов
+      6000000048540283061  Kamal Kara Musel Джилястханов, Shamkhal of Tarku
+      6000000144779499889  Alkas Jamurzin Dzhilyakhstanov
+      6000000146583752840  Князь Пшеапшоко Кайтукин Черкасский
+      6000000220167401825  Шолох Акуджба
+
+  **WESTERN european tang — 6**, the Cilician Armenian side
+
+      6000000006101354712  Princess Alix de Lampron
+      6000000006101354653  Constantine I, lord of Lampron
+      6000000006101354662  Constantine, lord of Barbaron
+      6000000006101430432  Leo I the Magnificent, king of Armenia
+      6000000006101354628  Tolita Doleta of Armenia
+      6000000007086662766  Ruben III Rouponi, King of Armenia
+
+  **Per person: create an ANCESTOR of them per `docs/export-seed-rules.md`, then run a
+  `Descendants` export on the created ancestor.** `Descendants`, **not** `Forest` — see the
+  campaign item below for why. One at a time; Geni's limit.
+
+  The OneTab page in `undigested.md` is **not** digested and stays there: still being worked on,
+  *"better for my judgment on this one."*
+
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
   item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:
