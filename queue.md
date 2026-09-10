@@ -36,8 +36,9 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **State:**
   * **Ancestors DONE** — 811 people, 685 families, `exports/abul-hamza/`. Under the 5,000 cap,
     so the walk exhausted her recorded ancestry rather than being cut off.
-  * **Descendants SUBMITTED**, task `6000000227676792879`.
-  * Forest not yet submitted.
+  * **Descendants DONE** — 5,000 people, 3,200 families, `exports/abul-hamza/`. At the cap, so
+    cut off with more below her: a second Descendants seeded lower would reach further.
+  * **Forest SUBMITTED**, task `6000000227677646861`.
 
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
   item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to

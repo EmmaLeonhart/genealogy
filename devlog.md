@@ -33692,3 +33692,18 @@ Her chain is unusual and worth having: it leaves the Carolingian descent at *"he
 Aethelwulf of Wessex, crosses two more marriages and a sibling step into the Welsh and Manx
 kings, then climbs **fathers** for eighteen consecutive steps back to the 3rd century — an
 ascent, not a descent, which no summary of "steps" would reveal.
+
+## 2026-09-09 — Abul Hamza, export 2 of 3: Descendants, and Forest submitted
+
+`exports/abul-hamza/export-Descendants-6000000227676734863.ged` — **5,000 people, 3,200
+families**, seed verified as the file's first `INDI`. **Forest submitted**, task
+`6000000227677646861`, building.
+
+**It came back AT the 5,000 cap, unlike her Ancestors.** Her ancestry stopped on its own at 811
+and is therefore complete; her descent was cut off with more below it. That is what you would
+expect of *"a gateway to a lot of europe"* — and it means a second Descendants export seeded
+lower down her line would reach further than this one does. Not done, and not implied to be
+needed; recorded because the two numbers together say something the pair of files does not.
+
+The download went through `/gedcom/request_download?task_id=...` rather than the button, which
+worked first time again — three for three now.
