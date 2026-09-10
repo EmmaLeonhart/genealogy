@@ -34411,3 +34411,14 @@ That is `CLAUDE.md` *check the separator before believing a distribution* in a n
 instrument that quietly narrows its input and reports a clean number about itself. Nothing was
 concluded from the six.
 
+
+## 2026-09-09 — descendants export 10 of 11: NN Barlais `6000000227676658979`
+
+`exports/circassian-hinge/export-Descendants-6000000227676658979.ged` — **5,000 people, 2,336
+families**, task `6000000227677942052`. Seed verified as the file's first `INDI`. **At the cap**,
+so this ball is cut off — the third of the eleven to fill, after `6000000227676617890` and
+`6000000227676384979`.
+
+Export 11, the last of the list, submitted: `6000000227676802897`, task
+**`6000000227678163950`**.
+
