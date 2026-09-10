@@ -466,10 +466,17 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     takes Tore Underberge III's place in this order and **Tore Underberge III
     `6000000005607672589` comes OFF the list.** Nothing about her is investigated, measured or
     seeded yet.
-  - **Gamle Olof** `5328189268700111491` — the other one you linked, placed *"after you've
-    comprehensively gotten the descendants of this particular individual"*, i.e. straight after
-    Abul Hamza; the numbered list you then gave puts the Chinese clusters second, so the two
-    readings differ by one slot and are not resolved here.
+  - **Gamle Olof** `5328189268700111491` — **BEFORE the Chinese clusters, ruled 2026-09-09.**
+    The two readings differed by exactly one position — *"after you've comprehensively gotten the
+    descendants of this particular individual"* put him straight after Abul Hamza, while the
+    numbered list put the Chinese clusters second — and the first reading won. So the head of the
+    order is settled end to end:
+
+        1  Abul Hamza  6000000227676734863     in flight
+        2  Bergitte Aukland  6000000002481819312   critical; took Tore Underberge III's slot
+        3  Gamle Olof  5328189268700111491
+        4  the two most eccentric ancient Chinese clusters
+
   - The two most eccentric ancient **Chinese** clusters
   - **Adasi**
   - **Genghis Khan**

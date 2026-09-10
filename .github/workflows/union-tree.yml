@@ -25,6 +25,11 @@ name: Measure the Wikidata union tree on a runner
 on:
   workflow_dispatch:
     inputs:
+      merge_mode:
+        description: "Which merge to measure. slim is the one that gates the wiring."
+        type: choice
+        options: [slim, connectivity]
+        default: slim
       upload:
         description: "Upload the union tree as an artifact (~516 MB)"
         type: boolean
@@ -104,7 +109,15 @@ jobs:
             done ) &
           SAMPLER=$!
           set +e
-          /usr/bin/time -v python -m genimerge merge --connectivity \
+          # ⛔ `--slim` IS THE ONE THAT GATES THE WIRING, and `--connectivity` never was.
+          # `--connectivity` keeps the primary key, the sex and the five structural pointers and
+          # drops names, dates and places -- the derive scripts cannot read that tree, so it can
+          # never be `out/merged.ged`. `rebuild-everything.py` runs `--slim`, which CARRIES them,
+          # peaks at 8.79 GB on this runner with the corpus alone, and was KILLED at 15,921 MB
+          # before slimming existed. `--slim` plus the overlay's 1.6M more people is the number
+          # that decides whether the overlay can go into the pipeline's own merge, and it is the
+          # default here for that reason.
+          /usr/bin/time -v python -m genimerge merge --${{ inputs.merge_mode }} \
             --also out/wikidata-tree.ged \
             -o out/union.ged 2> out/union-merge.err
           STATUS=$?
@@ -171,7 +184,11 @@ jobs:
       - name: Say what it cost
         if: always()
         run: |
+          echo "merge mode: --${{ inputs.merge_mode }}"
           echo "overlay: ${{ steps.overlay.outcome }} | union merge: ${{ steps.union.outcome }}"
+          echo "REFERENCE, measured here 2026-09-09: --connectivity peaked at 9.76 GB of 16 in"
+          echo "18m38s for 3,038,219 people. --slim carries names, dates and places as well, and"
+          echo "is the mode that decides whether the overlay can enter the pipeline's merge."
           echo "A kill shows as 'The runner has received a shutdown signal' and nothing else;"
           echo "the MEM lines are what turn that into a number. Local reference, 2026-09-09:"
           echo "3,038,219 people, 1,961,091 families, 516 MB, with --connectivity."
