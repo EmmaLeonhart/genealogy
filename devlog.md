@@ -35946,3 +35946,37 @@ failure was mine for hand-dispatching on the wrong page, not the extension's.
 
 **The corpus grep for this export**, per § *GREP THE CORPUS BEFORE RUNNING AN EXPORT*: Sayaluna
 ata `6000000008384075400` had **64** xref/RFN occurrences in `exports/` beforehand.
+
+## 2026-09-10 — ⛔ THE BACKGROUND SERVICE WORKER **CAN** BE UPDATED: RENAME THE SCRIPT FILE
+
+**`todo.md` § 3d says this is impossible and records five failed routes. It is wrong, and the
+sixth route is one line of the manifest.** Renaming `service-worker-1.7.19.js` to
+`service-worker-1.7.26.js` and pointing `manifest.json` at the new name makes Chrome fetch the
+script fresh on the next restart. The filename itself was the clue — it carries a version because
+somebody did this once at 1.7.19 and the worker has been frozen at that code ever since.
+
+**How it was caught, and it had been lying for hours.** `swVersion` is written from
+`chrome.runtime.getManifest().version`, which reads the **manifest file** — so every version bump
+made the worker *report* the new number while running the old code. The beacon said `1.7.26`, the
+`ping` answered `1.7.26`, and the `pending_create` handler added minutes earlier did not exist:
+
+    probe {job:"bg", type:"pending_create"}   ->  reply null      (fell through to the default)
+    after the rename + restart                ->  reply true, and the value was stored
+
+**⛔ SO THE `creating` FIX FROM 1.7.24 HAD NEVER RUN EITHER.** It was written, committed, tested
+against a live climb, and observed to "work" — the walk got further — while the code doing the
+work was still the old script. That is `CLAUDE.md` § *Code that is WRITTEN but never CALLED is
+not done* with a version number attached to make it look called. **Anything measured against a
+service-worker change before this rename has to be re-measured**; the only changes that were ever
+live are the content-script ones, because content scripts do reload on a browser restart.
+
+`todo.md` § 3d's conclusion — *"NOT NEEDED, recorded so nobody chases it"* — was reasonable when
+the scheduler was unreachable anyway. It is not true any more, and the scheduler is the thing the
+whole descendants campaign runs on.
+
+**One cost, seen once and recovered by itself:** the first restart after the rename logged
+`DidStartWorkerFail ... : 18`, the old registration pointing at a filename that no longer exists.
+The next page load started the new worker cleanly.
+
+**The confirm-create fix (1.7.26) is therefore only now actually running**, and so is everything
+else the background was supposed to have learned today.

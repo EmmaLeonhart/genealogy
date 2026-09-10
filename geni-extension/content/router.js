@@ -27,6 +27,8 @@ GC.dispatch = async function (job) {
   switch (job.job) {
     case "export":     return GC.runExport(job);
     case "seed":       return GC.runSeed(job);
+    /* Handed back by the background after a save navigated away. See `GC.seed.confirmCreate`. */
+    case "confirm_create": return GC.seed.confirmCreate(job);
     case "individual": return GC.runIndividual(job);
     case "family":     return GC.runFamily(job);
     case "path":       return GC.runPath(job);

@@ -133,7 +133,10 @@ const DEFAULTS = {
    * Anything other than empty means *a person may now exist because of this run*, and that is
    * enough to stop. It is deliberately not a count and deliberately not clearable by a result:
    * only a new run clears it. */
-  creating: ""
+  creating: "",
+  /* Set by `seed.js` immediately before it clicks save, cleared when the creation is confirmed or
+   * the run is restarted. Its whole purpose is to survive the navigation the save causes. */
+  pendingCreate: null
 };
 
 async function state() {
@@ -193,8 +196,26 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       sendResponse({ halted: true });
       return;
     }
+    if (msg.type === "pending_create") {
+      await put({ pendingCreate: { geni_id: String(msg.geni_id || ""),
+                                   before: (msg.before || []).map(String),
+                                   which: msg.which || "" } });
+      sendResponse(true);
+      return;
+    }
     if (msg.type === "claim") {
       const job = s.active[String(sender.tab && sender.tab.id)];
+      /* ⛔ A RE-CLAIM AFTER A SAVE IS NOT A RE-RUN. The save navigates, the content script loads
+       * again on the redirected page and claims the SAME job -- and running `seed` again from the
+       * top would re-read a profile that now has the parent it just made, and report
+       * `both_present` on its own work. Hand it the confirmation instead, which is the only thing
+       * left to do. */
+      const pc = s.pendingCreate;
+      if (job && pc && String(job.geni_id) === String(pc.geni_id)) {
+        sendResponse(Object.assign({}, job, { job: "confirm_create",
+                                              before: pc.before, which: pc.which }));
+        return;
+      }
       sendResponse(job || null);
       return;
     }
@@ -320,7 +341,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
          * climb, so it is let through -- and only it: `pump` will not open a seed while
          * `creating` is set, so `running` coming back on cannot restart the walk. With no `pid`
          * there is nothing to export from and the run simply stays stopped. */
-        await put({ active, results, attempted, queue, endId: pid, running: !!pid });
+        await put({ active, results, attempted, queue, endId: pid, running: !!pid,
+                    pendingCreate: null });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -413,6 +435,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         queue: [{ job: "individual", geni_id: id, kind: "individual",
                   create: true, label: msg.label || "" }],
         results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
+        pendingCreate: null,
         exportWalk: msg.exportWalk || "forest",
         running: true, startedAt: new Date().toISOString()
       });
@@ -444,6 +467,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       await put({
         queue: [{ job: "seed", geni_id: id, kind: "seed", label: msg.label || "" }],
         results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
+        pendingCreate: null,
         exportWalk: msg.exportWalk || "forest",
         /* ⛔ AN HOUR, NOT THE TEN-MINUTE DEFAULT. `DEFAULTS.waitMs` is 600000 and it is the
          * PATH search's budget; `runExport` takes the same field and a 5,000-person ball

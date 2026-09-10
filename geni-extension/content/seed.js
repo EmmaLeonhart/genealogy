@@ -381,6 +381,28 @@ GC.seed.correctSurname = function (suggested, patronymic) {
   return { surname: sug, changed: false };
 };
 
+/* ---------------------------------------------------------------- confirming a create
+ *
+ * Runs in the document Geni redirects to after the save, on the job the background re-hands to
+ * this tab. It does exactly what the old in-page confirmation meant to do -- take the parent pids
+ * from before the write, wait for one that was not there, and report it -- except from a document
+ * that is still alive when the answer arrives.
+ *
+ * `docs/export-seed-rules.md` bans a second route to the same person, so there is no search and
+ * no guess here: a pid that is present now and was not present before IS the person just made. */
+GC.seed.confirmCreate = async function (job) {
+  const before = new Set((job.before || []).map(String));
+  const fresh = () => GC.seed.family().parents.filter((x) => !before.has(String(x.pid)));
+  if (!fresh().length) await GC.until(() => fresh().length > 0, 30000);
+  const made = fresh()[0];
+  if (!made) {
+    return { job: "seed", geni_id: String(job.geni_id || ""), which: job.which || "",
+             state: "add_not_confirmed" };
+  }
+  return { job: "seed", geni_id: String(job.geni_id || ""), which: job.which || "",
+           state: "added", pid: String(made.pid), name: made.name || "" };
+};
+
 /* ---------------------------------------------------------------- creating */
 
 GC.seed.addParent = async function (which, p) {
@@ -551,6 +573,25 @@ GC.seed.addParent = async function (which, p) {
     step("announce-failed");
     return { state: "announce_failed", first: p.first, last: p.last };
   }
+
+  /* ⛔ THE SAVE NAVIGATES, SO THE CONFIRMATION CANNOT LIVE IN THIS DOCUMENT.
+   *
+   * Clicking `submit_ifs` posts the form and Geni redirects back to the child's profile. Every
+   * line after this point runs in a document that is being torn down, which is why the 60 s
+   * `GC.until` below has never once seen the parent it waits for: it times out, returns
+   * `add_not_confirmed`, and the pid is lost. The background queues the export from that pid and
+   * nothing else, so the walk writes a real person to Geni and then strands the export -- `NN
+   * Rouponi` `6000000227683654853` and `NN ?` `6000000227694017875`, both on 2026-09-10, both
+   * created successfully and both reported as failures.
+   *
+   * So the intent is handed to the background FIRST. The content script that loads on the page
+   * Geni redirects to re-claims the same job, the background hands it `confirm_create` instead,
+   * and the diff against `before` names the person who was just made. */
+  step("recording-pending-create");
+  try {
+    await chrome.runtime.sendMessage({ type: "pending_create", geni_id: String(p.childId || ""),
+                                       before: p.beforePids || [], which: which });
+  } catch (e) { /* no background: the write below still happens, it just cannot be confirmed */ }
 
   step("clicking-save");
   $("submit_ifs").click();
