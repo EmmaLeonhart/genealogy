@@ -34781,3 +34781,27 @@ bracket never reaches them. Writing a fresh `NN` rule here would have been a sec
 rule that already exists, which is how two rules start disagreeing.
 
 **Still not written: the emitter.** Everything above is specification.
+
+## 2026-09-09 -- dead-queue-item sweep: two items rewritten to what is left of them
+
+**Nothing was dead. Two were partly done, and a partly done item is not dead** -- it is rewritten
+to hold only what remains, which is the difference between a queue that shrinks and a queue that
+lies.
+
+**The Wikidata-tree item lost two of its three steps.** Step 1, measure the union merge on a
+runner, came back on run `34439815071`: **3,038,219 people, 1,961,091 families, 516 MB, peak RSS
+9.76 GB of 16, 18m38s.** Step 3, the neighbourhood measured on the merged tree rather than the
+union-find stand-in, is `c37d2558`.
+
+**Step 2 stays, and the item now says why the measurement does not authorise it.** What was
+measured is `--connectivity`, which drops names, dates and places; `rebuild-everything.py` runs
+`--slim`, which carries them, peaks at 8.79 GB on a runner with the corpus alone, and was killed
+at 15,921 MB before slimming existed. `--slim` plus the overlay's 1.6M extra people is the number
+that settles it and nobody has it. Recording *it fits* against the wrong merge is how a gate gets
+opened on a measurement of something else.
+
+**The `den yngre` item lost its algorithm half.** `b22afdf1` -- the suffix is now read off
+Wikidata's own label where Geni filed no `NSFX`. What remains is scope and delivery: how many
+items carry a suffix in a label but not in `NSFX` (unmeasured, and § *"Analyse this" means build
+a CSV of every instance* applies), the corrected labels actually reaching Wikidata, and whether
+the same hole exists for `d.y.`, `the younger`, `nuorempi` and the senior forms.

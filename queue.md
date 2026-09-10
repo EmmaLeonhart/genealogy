@@ -8,27 +8,29 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
-- **⛔ THE WIKIDATA TREE GOES INTO THE MERGE, AND THEN THE NEIGHBOURHOOD IS MEASURED ON IT.**
-  `docs/unconnected-worklist.md` §§ 0 and 1, and they are all that is left of that
-  specification: the other five pieces and the CI step were built 2026-09-09 and the file is
-  **266,201 rows with 266,100 eligible today**.
+- **⛔ THE OVERLAY INTO THE PIPELINE'S OWN MERGE. `docs/unconnected-worklist.md` § 0, and it is
+  the last piece of that specification.**
 
-  **The overlay EXISTS and the union tree BUILDS** — `scripts/build-wikidata-gedcom.py`, then
-  `genimerge merge --connectivity --also out/wikidata-tree.ged`: **3,038,219 people, 1,961,091
-  families, 516 MB**, run locally 2026-09-09. What does not exist is that merge happening in CI,
-  and `CLAUDE.md` § *The Wikidata tree does NOT yet go into the synoptic tree* is explicit that
-  **it must not be wired in until it fits**. Whether it fits on a runner is UNMEASURED: the
-  `--slim` merge peaks at 8.79 GB there and was killed at 15,921 MB before slimming, and
-  `--connectivity` is a different constant again.
+  **The union merge FITS ON A RUNNER** — measured 2026-09-09, run `34439815071`, and that
+  measurement is what `CLAUDE.md` § *it must not be wired in until it fits* was waiting for:
 
-      1. measure the union merge on a runner -- dispatch it, read the MEM sampler
-      2. only if it fits: `--also out/wikidata-tree.ged` in `rebuild-everything.py`
-      3. then `component_sizes` in `build-unconnected-worklist.py` comes off the merged
-         tree instead of the union-find stand-in, which is the one line that changes
+      3,038,219 people · 1,961,091 families · 516 MB
+      peak RSS 9.76 GB of 16 · 18m38s · genimerge merge --connectivity
 
-  **The stand-in is not wrong about the numbers** — same three edge sources, same membership,
-  same component size. What it destroys is the family ids, which is the whole reason § 1 asks for
-  a GEDCOM. Nothing downstream changes when the measurement is swapped.
+  **⛔ AND IT DOES NOT AUTHORISE THE WIRING, BECAUSE IT IS A DIFFERENT MERGE.**
+  `--connectivity` keeps the primary key, the sex and the five structural pointers and drops
+  names, dates and places — the derive scripts cannot read that tree. `rebuild-everything.py`
+  runs `--slim`, which CARRIES them, peaks at **8.79 GB** on a runner with the corpus alone, and
+  was **killed at 15,921 MB** before slimming existed. `--slim` plus the overlay's 1.6M more
+  people is the number nobody has, and it is the only one that settles this.
+
+      1. measure `--slim --also out/wikidata-tree.ged` on a runner. `union-tree.yml` is the
+         harness and takes one more step; it commits nothing.
+      2. only if THAT fits: `--also out/wikidata-tree.ged` in `rebuild-everything.py`
+
+  **The neighbourhood half is done** — `build-unconnected-worklist.py --tree out/union.ged`,
+  `c37d2558`, run in `union-tree.yml` against a scratch path. The union-find stand-in remains the
+  default because the merged tree is 516 MB and is not committed.
 
 - **⛔ DESCENDANTS EXPORTS ON THE 15 HINGE PEOPLE — digested out of `undigested.md`,
   2026-09-09.** A *hinge person* is defined there: *"people who seem to have clearly disjoint
@@ -433,9 +435,23 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       zh                                   德特洛夫·赫伊伊肯肖尔德
       description                          none, in any language
 
-  **Not investigated, not measured, not scoped.** How many items carry `den yngre`, what the
-  treatment is, and whether the CJK labels dropping the suffix entirely is right or wrong are all
-  open — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+  **THE ALGORITHM IS FIXED; THE SCOPE AND THE CORRECTION ARE NOT.** `b22afdf1`:
+  `generation_suffix_key` reads Geni's `NSFX` field and matches the whole of it, and Geni files
+  him `NAME Detlof /Heijkenskjöld/` with **no `NSFX` at all** — so the suffix existed only inside
+  Wikidata's own label, our derived label came out bare, and the `ja`/`zh`/`ko` labels **this
+  pipeline wrote onto the item** dropped it in all three.
+  `namemodel.generation_suffix_in_label` searches the same table inside a string;
+  `derive-labels.py` falls back to it on `wikidata_en`/`wikidata_mul`, with `NSFX` still winning
+  where both exist. Nothing downstream needed changing — `mul` and `en` already normalise to
+  `II` / `Jr.` and the CJK readings already carry the established `2世` / `二世` / `2세`.
+
+  **What remains:**
+
+      1. how many items carry `den yngre` and the rest of `GENERATION_SUFFIX`'s surface
+         forms in a label but no `NSFX` -- unmeasured, and it is a CSV of every instance
+      2. the corrected labels reaching Wikidata, which needs a rebuild and then a batch
+      3. whether the same hole exists for the other suffixes: `d.y.` 8 on Wikidata,
+         `the younger` 5, `nuorempi` 11, and every senior form
 
 ## What this session settled, so it is not relitigated
 
