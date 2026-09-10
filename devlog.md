@@ -33846,3 +33846,18 @@ lost*, and it answered on the first try.
 
 The header on `service-worker.js` records this so the next person reads the beacon first and goes
 to the ScriptCache, not to the messaging.
+
+## 2026-09-09 — the descendants list is being ground through, not reported as idle
+
+Emma: *"are you not working through the exports that you are supposed to do at any idle moment
+lol"*, and *"really the queue has a lot of stuff lol"*. She is right and the auto-flush answers
+were the giveaway: *"nothing pending"* was true of the git working tree and useless as a report,
+while eleven queued exports sat untouched and the export slot sat free.
+
+**Export 1 of 11 submitted** — `6000000227676582856`, task `6000000227677898825`. A cron now
+grinds the whole list: poll, download through `/gedcom/request_download?task_id=...`, verify the
+seed is the file's first `INDI`, file into `exports/circassian-hinge/`, submit the next. One at a
+time, Geni's limit.
+
+**The lesson worth keeping: an idle report is about the QUEUE, not about `git status`.** A clean
+working tree means the last thing was committed, not that there is nothing to do.
