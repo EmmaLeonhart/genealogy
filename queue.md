@@ -294,6 +294,40 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **Scale, so nobody starts it lightly:** 2,587 outstanding on the worklist today. Geni runs one
   export at a time and that is its limit, not a setting.
 
+- **⛔ THE DISJOINTNESS CAMPAIGN — YOUR PRIORITY ORDERING, 2026-09-09. AFTER THE WIKIDATA PATHS.**
+  You: *"Yeah listing people here in their priority ordering for after other stuff done"*, and on
+  the two profiles below: *"they are long term priorities... running it on them comes after the...
+  after we've done all the Wikidata people's paths"*.
+
+  The method is `scripts/descendant-frontier.py` and it is built and measured — see `devlog.md`
+  2026-09-09. Per target: create an ancestor of theirs (`docs/export-seed-rules.md`), export
+  `Descendants` from the created ancestor, then rank the RIM of the returned ball one pick per
+  largest family cluster, and repeat outward. Your correction, same day: *"Create an ancestor of
+  theirs using our algorithm, and then export descendants of them."*
+
+  **The order, verbatim:**
+
+  - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
+    down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
+    comprehensive yet, and the rest of the list waits on it.
+  - **Tore Underberge III** `6000000005607672589` and **Gamle Olof** `5328189268700111491` — the
+    two you linked. You placed them *"after you've comprehensively gotten the descendants of this
+    particular individual"*, i.e. straight after Abul Hamza; the numbered list you then gave puts
+    the Chinese clusters second, so the two readings differ by one slot and are not resolved here.
+  - The two most eccentric ancient **Chinese** clusters
+  - **Adasi**
+  - **Genghis Khan**
+  - **Aztec Emperors**
+  - **Inca Emperors**
+  - **Confucius**
+  - **Charlemagne**
+  - **Hermenegildo Gutteres**
+  - **Fihr**, ancestor of the Quraysh
+  - **Emperor Jimmu**
+
+  Nothing on this list is investigated, measured or seeded until the Wikidata paths are done —
+  `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
 ---
 
 ## What this session settled, so it is not relitigated

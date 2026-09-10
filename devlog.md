@@ -33928,3 +33928,60 @@ radio to `Descendants`, `max_profiles` 5000, `f.submit()`; it posts to
 `/gedcom/request_export` and lands on `/gedcom/download?task_id=…`. Worth recording because
 the default walk is **`BloodTree`**, not `Forest` and not `Descendants`.
 
+
+## 2026-09-09 — the disjointness algorithm: the rim is where it lives, and the interior has none
+
+Your algorithm, dictated today: to get someone's descendants comprehensively, export a
+`Descendants` ball, find the people in it with the largest **disjoint** descent, and export
+again from them — *"a kind of Monte Carlo-ish thing… we're trying to find more disjoint people,
+or more disjoint descendants."*
+
+`scripts/descendant-frontier.py` implements it. **Two readings were built and refuted before the
+right one, and both are kept in the file because the refutations are the finding:**
+
+| mode | what it picks | result on Abul Hamza's 5,000-person ball |
+| --- | --- | --- |
+| `greedy` | set-cover over descendant sets | **1 pick**, 4,998 of 5,000 |
+| `split` | an antichain past the chokepoints | 12 picks, exclusive 624 / 23 / 14 / 2 / 0 ×8 |
+| `rim` | one per cut-off family cluster | **10 picks**, from 621 clusters |
+
+A descent is **nested**, so set-cover always answers *"the top one, and nine that add nothing"* —
+the whole ball hangs off **Michke Ardzouni**, who holds 4,998 of the 5,000. Splitting past the
+chokepoints fixes the nesting and then meets the real obstacle: the interior is Cilician Armenian
+nobility marrying each other for two centuries, so **Smbat I** (3,844 descendants) and **Oshin**
+(3,234) overlap almost totally. Exporting from both buys one ball.
+
+**⛔ THE RIM IS DIFFERENT IN KIND, AND THE CUT IS VISIBLE FROM INSIDE THE FILE.** The export walks
+breadth-first, so it fills whole generations and stops mid-ring at the cap:
+
+    depth 23   881 people,   405 leaves
+    depth 24 1,440 people, 1,088 leaves
+    depth 25   871 people,   871 leaves   <- 100%, which is what a CUT ring looks like
+
+So **1,959 people at depth 24–25** have descent we cannot see, and a leaf's *depth* is what
+separates *"Geni records no children"* from *"the children did not fit"* — treating all 3,185
+leaves alike would have put 1,226 genuinely childless people in the pool.
+
+And the rim is no longer Armenian. 621 family clusters: Provençal (Glandevès 56, Castellane 29,
+Forbin 26), **Nuevo León** (Garza 37, Flores 31, Abrego 29, Guajardo 24), Georgian and Abkhazian
+(Bagrationi 38, Шервашидзе 29), Venetian, Maltese, Albanian, Canarian. A Garza and a Bagrationi
+share nothing below them. **That is the disjointness, and it is invisible to any measurement made
+inside the ball.**
+
+**Your pick rule, chosen from the measured options: one per largest family cluster** — disjoint
+by construction rather than by sampling luck. `reports/descendant-frontier-abul-hamza.tsv`.
+
+**The rim self-selects for the campaign's real target and nothing arranged that.** All ten picks
+are born **1595–1700**, which is exactly the band `CLAUDE.md` § *A `Descendants` export reaches
+about twelve generations forward* says a seed must sit in to deliver people born after 1900. It is
+just where twenty-five generations from a medieval seed lands.
+
+**Diacritics fold here, and that is the opposite of the Wikidata rule** — deliberately. `Glandevès`
+39 and `GLANDEVES` 15 are one house filed both ways and casefold *apart* on the `è`; left alone
+that is one family holding two of the ten picks. § *A diacritic makes a different name* governs
+**identifying** a name; this is **bucketing**, and nothing here is linked or created. Folding took
+665 clusters → 621 and moved rank 1 from Honoré (39) to Antoine de Glandeves (56).
+
+Also filed: the three **Abul Hamza** exports in the order you set — `Ancestors` **811** (exhausted,
+her ancestry is finite), `Descendants` **5,000** (capped), `Forest` **5,000** (capped).
+
