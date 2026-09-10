@@ -34043,3 +34043,30 @@ for **every** holder, so it was vacuously true. The corpus is `derived-family.cs
 figure is **6**. § *Our side could never have two children*, in a new place, caught before it was
 quoted.
 
+
+## 2026-09-09 — descendants exports 3, 4 and 5 of 11
+
+| seed | name | people | families |
+| --- | --- | ---: | ---: |
+| `6000000227676617890` | NN Dzhilyakhstanov | **5,000** (capped) | 2,270 |
+| `6000000227676697827` | NN Джилястханов | 3,216 | 1,678 |
+| `6000000227676392008` | NN Акуджба | 2,303 | 1,305 |
+
+All filed into `exports/circassian-hinge/`, seed verified as each file's first `INDI`. Export 6
+(`6000000227676257067`) submitted. Five of eleven down.
+
+**Two tool notes worth keeping**, both of which cost a wasted call:
+
+* **An async IIFE returns `{}` from `javascript_tool`.** The promise is not awaited, so
+  `(async () => …)()` silently yields an empty object — which reads exactly like a job that
+  produced no fields. Top-level `await` works; use that. This is what made the first read of the
+  Katalin Varga collector result look empty.
+* **A result line containing `k=v` is BLOCKED as query-string data.** Returning
+  `{"task_id=…": …}` or any `=`-bearing string gets `[BLOCKED: Cookie/query string data]`.
+  `CLAUDE.md` already records this for the collector's `@STATS` block; it applies to every
+  return value.
+
+And a check of mine that was too loose: *"is the task id anywhere in the `/gedcom` HTML"* also
+matches a task that is merely **requested**. The reliable test is the id inside a
+`downloadGedcom('<id>')` attribute, which is only written once the file is built.
+
