@@ -54,7 +54,18 @@ FIELDS = ["family_tree", "blood_relatives", "ancestors", "descendants", "followe
 #: 2026-09-06 via `docs/anchor-protocol.md`; everything captured before that is `viewer`. If the
 #: anchor is ever moved, this moves with it -- a row written under the wrong label is worse than
 #: no label, because it is silently counted in the wrong reach rate.
-ANCHOR = "charlemagne"
+#: ⛔ **NO PIN. PATHS GO TO WHOEVER GENI DEFAULTS TO.** Ruled 2026-09-10: *"We are not centering
+#: the paths on Charlemagne anymore ... We just request paths to whoever it defaults to."*
+#:
+#: The pin protocol is retired with it: `docs/anchor-protocol.md`'s check-set-verify, the
+#: two-click re-pin from a third person, and the per-capture rule that step 1 of a resolved chain
+#: must read `geni:6000000002457013227` or the capture answers a different question. None of that
+#: applies to a run that asks for the default and records what comes back.
+#:
+#: Rows already reading `charlemagne` or `viewer` were taken while a pin was live and keep their
+#: own value -- the anchor belongs to the observation that made it, which is why it was preserved
+#: across revisits in the first place. `@ANCHOR` overrides where a caller knows better.
+ANCHOR = "default"
 
 #: ⛔ THE BANNER CAN ONLY EVER PROVE A MISS. It cannot prove a hit, and the first version of this
 #: function claimed otherwise: anything that was neither the pending sentence nor the miss
@@ -144,6 +155,7 @@ def parse_block(text: str) -> dict:
         "banner": meta.get("banner", ""),
         "path": meta.get("path", ""),
         "via": meta.get("via", ""),
+        "anchor": meta.get("anchor", ""),
     }
 
 
@@ -281,7 +293,7 @@ def main() -> int:
     # preserved verdict keeps its own anchor rather than inheriting today's.
     prior_anchor = next((r[9] for r in rows[1:] if r and r[0] == gid and len(r) > 9), "")
     anchor = prior_anchor if (verdict and verdict == prior and prior_anchor) else (
-        ANCHOR if verdict else "")
+        (blob.get("anchor") or ANCHOR) if verdict else "")
     # ⛔ A BLOCK THAT NEVER RENDERED IS BLANK HERE, NOT ZERO.
     #
     # The rule is that a row MISSING FROM A PRESENT BLOCK is a real zero, because Geni does

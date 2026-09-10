@@ -124,6 +124,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     Charlemagne"*, and from a third-person state the pin takes **two** clicks: one back to the
     viewer, one onto Charlemagne. `docs/anchor-protocol.md` carries both that and the
     click-coordinate trap that made the first attempt look like a permission problem.
+  * ⛔⛔ **RETIRED 2026-09-10. THERE IS NO PIN.** *"We are not centering the paths on Charlemagne
+    anymore ... We just request paths to whoever it defaults to."* So the per-capture anchor
+    check below, the check-set-verify protocol in `docs/anchor-protocol.md`, and the two-click
+    re-pin from a third person are all gone: the run asks for the default path and records what
+    comes back. `write-family-scrape.py`'s `ANCHOR` is `default`, and rows already reading
+    `charlemagne` or `viewer` keep their own value because the anchor belongs to the observation
+    that made it.
+
+    **The superseded rule, kept for its detail only:**
+
   * ⛔⛔ **CHECK THE ANCHOR ON EVERY CAPTURE, NOT ONCE A SESSION. IT EXPIRES ON ITS OWN.**
     It came off Charlemagne mid-run on 2026-09-06 after ten good captures, with nobody touching
     it, and **a viewer-anchored hit looks exactly like a real one** — `resolved_path`, a full
