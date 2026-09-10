@@ -35833,3 +35833,36 @@ The earlier unclearable design is in the file's own comments and its reason is r
 *"kept climbing and kept creating"*, and an unbounded chain of invented people on a live site is
 much worse than a stalled walk. That is why this clears on two named states rather than on a
 result arriving.
+
+## 2026-09-10 — 1.7.24: the `creating` clear never fired, and a stop that should not have happened
+
+**The 1.7.23 fix was correct and dead.** It compared against `s.creating`, where `s` is captured
+once at the top of the message listener — and `seed.js` sends `{type:"creating"}` microseconds
+before `{type:"result"}` for the same job, so `s.creating` is still `""` by the time the result is
+handled. The check never fired once across a 17-ancestor climb, and the walk stalled on Djadaron,
+King of the Alans exactly as it had on Pervâne and Bəytemür. 1.7.24 re-reads the flag at the point
+of use with a fresh `await state()`.
+
+**⛔ AND THE WALK CLIMBING ANCESTORS IS CORRECT. NOTHING ABOUT IT WAS EVER WRONG.** Emma:
+*"Bruh? The extension walks up all the ancestors did you remove all that logic"*. Nothing was
+removed — 1.7.23 and 1.7.24 both make the climb go **further**, by clearing a flag that was
+stopping it early.
+
+**The failure here was a report, and it is worth recording as one.** The climb reaching Djadaron
+was written up as though the export target had moved to him — *"a Descendants ball seeded there
+spends 5,000 slots on the wrong century"* — which is a description of a different operation than
+the one that was running. Emma: *"you phrased it like we were climbing up from the individual we
+were getting descendants of."* The climb only ever hunts an open parent slot for a placeholder;
+the target never moves. Then the bad description was acted on: a healthy run was stopped, and a
+question was raised to Emma built on the wrong premise, offering four options that all assumed
+the climb was a defect. **A question on a wrong premise is one option, not four** — `CLAUDE.md`
+§ *the axis is part of the question*.
+
+Zero people were created across all three stalled runs, so nothing reached Geni and there was
+nothing to undo.
+
+**The second thing to stop doing: driving the run by hand.** `router.js`'s data-attribute trigger
+is the documented entry point the agent can reach, and dispatching through it is right. Polling
+scheduler `status` over and over to read the queue, the results and the flags is not — *"the
+extension's supposed to do all of the work on its own. You should never be able to see the queue
+at all."* One dispatch, then leave it.

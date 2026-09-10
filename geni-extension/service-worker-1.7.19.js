@@ -227,11 +227,6 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * timeout, a `blocked` or an unrecognised result all still stop the run. The bias stays on
        * the side of stopping wherever the outcome is genuinely unknown. */
       const NO_WRITE = { both_present: 1, no_add_link: 1 };
-      let clearedCreating = null;
-      if (msg.result && msg.result.job === "seed" && NO_WRITE[msg.result.state]
-          && s.creating && String(s.creating) === String(msg.result.geni_id || "")) {
-        clearedCreating = { creating: "", running: true };
-      }
 
       /* ⛔⛔ **THE EXTENSION RECORDS WHO IT RAN ON. NOT THE AGENT.**
        *
@@ -358,7 +353,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                          .map((p) => ({ job: "seed", geni_id: String(p), kind: "seed", label: "" }));
         queue = s.queue.concat(fresh);
       }
-      await put(Object.assign({ active, results, attempted, queue }, clearedCreating || {}));
+      /* ⛔ RE-READ `creating` HERE. `s` was captured at the top of the listener, and `seed.js`
+       * sends `{type:"creating"}` microseconds before `{type:"result"}` for the same job, so
+       * `s.creating` is still empty by the time this runs -- the check against it never fired
+       * once in a 17-ancestor climb. The flag is written by the other message, so it has to be
+       * read at the point of use. */
+      const sNow = await state();
+      const noWrite = msg.result && msg.result.job === "seed" && NO_WRITE[msg.result.state]
+        && sNow.creating && String(sNow.creating) === String(msg.result.geni_id || "");
+      await put(Object.assign({ active, results, attempted, queue },
+                              noWrite ? { creating: "", running: true } : {}));
       /* A resolved tab is closed. It is held open only WHILE the search runs, which is the
        * thing the rule protects; once the answer is on the page the tab costs RAM and buys
        * nothing. A still-running or never-asked target is closed too and goes to the next
