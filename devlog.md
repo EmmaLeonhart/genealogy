@@ -34528,3 +34528,27 @@ which existed only to keep the ban list from failing on batches written before t
 and `SPINE_PATHS keeps only Arne → Bureus` is moot. What is still outstanding is *cut the strategy
 content*: `queue.md` and `docs/rules/wikidata-editing.md` still carry it.
 
+
+## 2026-09-09 — descendants export 11 of 11: NN Ardzrouni `6000000227676802897`. THE LIST IS COMPLETE
+
+`exports/circassian-hinge/export-Descendants-6000000227676802897.ged` — **5,000 people, 3,199
+families**, task `6000000227678163950`. Seed verified as the file's first `INDI`. At the cap.
+
+**All eleven are filed and verified on disk**, seed-checked one at a time:
+
+    6000000227676582856   2,304        6000000227676704828      90
+    6000000227676362934   4,239        6000000227676384979   5,000  capped
+    6000000227676617890   5,000 capped 6000000227676454008   2,632
+    6000000227676697827   3,216        6000000227676658979   5,000  capped
+    6000000227676392008   2,303        6000000227676802897   5,000  capped
+    6000000227676257067     646
+
+**35,430 people across the eleven.** Four came back at the cap and are therefore truncated balls
+with unexplored rims; the other seven exhausted their line — 90 and 646 are whole descents, not
+slices.
+
+The queue item is deleted and the grind cron with it. What replaces it is the campaign proper:
+sample, census-check, create an ancestor, `Descendants` from the ancestor, merge, repeat until
+diminishing returns — `queue.md` § *THE DISJOINTNESS CAMPAIGN*, which sits behind the Wikidata
+paths by its own placement.
+
