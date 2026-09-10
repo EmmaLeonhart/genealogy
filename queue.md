@@ -370,35 +370,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **Nothing measures it yet**, which is the outstanding piece: the rate of new placeholder
   parents per run has to be reported somewhere before anyone can see it flatten.
 
-- **EMIT THE 1,640 PIPED LABELS. All three shapes were ruled 2026-09-09** and
-  `name modelling.txt` § *A PIPE IN AN IMPORTED LABEL* is the authority; that file beats
-  anything here. `reports/title-label-proposals.tsv` holds every one with `hold=pipe-shape`.
-
-      1,372   Mary|Maria Butler          first is the label, second an Amul, both get a P735
-        136   Daniel Tichenor|Titchenal  the same rule as it falls -- the bare alias was put
-                                         in front of the ruling and accepted
-        132   Ann Bincks (Benckes|Bench)  label unbracketed, each bracketed spelling an Amul
-                                          carrying the given name
-
-  **The READER is built and tested — `scripts/pipelabels.py`, `1f8a33d3`.** Over the real 1,640
-  rows it resolves **1,639** and holds one: `Q99707312` is truncated mid-bracket, an unclosed
-  bracket that is a fifteenth situation nobody ruled on. `read()` returns the `mul`, the `en`
-  where a comma tail makes it differ, and every `Amul`; `statements()` renders them as
-  `Lmul`/`Len`/`Amul`. 24 tests pin every ruled situation.
-
-  **⛔ WHAT IS OUTSTANDING IS THAT NOTHING CALLS IT.** `CLAUDE.md` § *Code that is WRITTEN but
-  never CALLED is not done* — the same failure the agreeing-Latin rule sat in for eight days.
-  Three steps:
-
-      1. a step in `rebuild-everything.py` that reads `title-label-proposals.tsv`,
-         calls `pipelabels.read`, and writes `proposed_label` / `proposed_aliases` back
-      2. clearing the `pipe-shape` hold on the rows that resolved, leaving `Q99707312` held
-      3. the daily batch picking them up, under the cap below
-
-  **They go out UNDER THE EXISTING `LABEL_EDIT_CAP` of 60 people per run — ruled 2026-09-09.**
-  No special batch and no queue-jumping: they join the normal label batch and drain over roughly
-  28 runs alongside everything else. The cap is not suspended for a backlog.
-
 - **PULL THE CJK CULTURE VERDICTS INTO THE REPO.** The queue is live —
   <https://claude.ai/code/artifact/f6b7d351-e367-4237-9c16-c9e3457d5fee> — **137 people**, each
   shown with their romanised relatives and the classifier's refusal sentence. Verdicts persist in

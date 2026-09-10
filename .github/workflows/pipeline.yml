@@ -140,6 +140,19 @@ jobs:
 
       # `--compose` refreshes the ledger itself — `CLAUDE.md`: regenerating the QuickStatements
       # ALWAYS regenerates the ledger — so there is no separate refresh step to forget.
+      # ⛔ **BEFORE THE COMPOSE, because the compose READS what this writes.**
+      # `build-garborg-day._piped_label_fixes` emits the resolved rows of
+      # `reports/title-label-proposals.tsv`; `apply-pipe-labels.py` is what resolves them, by
+      # calling `scripts/pipelabels.py` — the reader that was built, tested and then called by
+      # nothing. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
+      #
+      # It is here as well as in `rebuild-everything.py` because this workflow does NOT run that
+      # script — it composes the batch directly — so the step would otherwise reach the batch
+      # only on a hand rebuild. It reads one committed TSV, takes about a second, and is
+      # idempotent: it reads `live_mul`/`leading_title`, never its own `proposed_label`.
+      - name: Read the ruled pipe into the label proposals
+        run: python scripts/apply-pipe-labels.py
+
       - name: Ledger refresh and QuickStatements rebuild
         env:
           BOT_CONTACT: emma@topazcomputing.com

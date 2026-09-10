@@ -24,8 +24,10 @@ human should not be holding it in their head:
 6. The label chain — `relationship-label-preview.py` → `build-placeholder-label-batch.py` →
    `build-en-label-batch.py` → `build-mul-label-batch.py`. These consume `derived-family.csv`
    and `derived-labels.csv`, so they are downstream of the tree and belong here.
-7. `pack-derived.py` — gzips the four CSVs that exceed GitHub's 100 MiB limit.
-8. `build-garborg-day.py --compose` — the QuickStatements batch.
+7. `apply-pipe-labels.py` — reads the ruled `|` into `reports/title-label-proposals.tsv`, whose
+   resolved rows `build-garborg-day.py` emits. Before the batch, and after nothing in particular.
+8. `pack-derived.py` — gzips the four CSVs that exceed GitHub's 100 MiB limit.
+9. `build-garborg-day.py --compose` — the QuickStatements batch.
 
 **Step 3 used to run fourth, after the two `derive-*` steps, and that was a real bug.**
 `derive-family.py` line ~75 reads `reports/derived-labels.csv` to name the people it reports —
@@ -133,6 +135,19 @@ STEPS = [
      [sys.executable, os.path.join("scripts", "build-placeholder-label-batch.py")]),
     ("en labels", [sys.executable, os.path.join("scripts", "build-en-label-batch.py")]),
     ("mul labels", [sys.executable, os.path.join("scripts", "build-mul-label-batch.py")]),
+    # ⛔ **THE `|` READING, AND IT IS THE AGREEING-LATIN SHAPE ALL OVER AGAIN.** `pipelabels.py`
+    # was written and tested on 2026-09-09 -- 24 tests, every ruled situation of
+    # `name modelling.txt` § *A PIPE IN AN IMPORTED LABEL* -- and then called by nothing.
+    # `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
+    #
+    # It rewrites `reports/title-label-proposals.tsv` in place: 200 of the 201 rows held for
+    # the pipe resolve, and `Q99707312` stays held on an unclosed bracket. `build-garborg-day.py`
+    # reads the resolved rows in `_piped_label_fixes`, so this must run BEFORE the batch.
+    #
+    # It touches no derived CSV and reads no store, so it has no other ordering constraint. It
+    # is idempotent -- it reads `live_mul`/`leading_title`, never its own `proposed_label`.
+    ("the piped labels",
+     [sys.executable, os.path.join("scripts", "apply-pipe-labels.py")]),
     ("pack the big CSVs", [sys.executable, os.path.join("scripts", "pack-derived.py")]),
     ("the QuickStatements batch",
      [sys.executable, os.path.join("scripts", "build-garborg-day.py"), "--compose"]),

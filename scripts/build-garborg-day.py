@@ -1018,6 +1018,111 @@ def _without_hand_covered(derived, covered):
     return kept
 
 
+#: The proposals file, read for its piped rows. See `_piped_label_fixes`.
+PIPE_PROPOSALS_FILE = ROOT / "reports" / "title-label-proposals.tsv"
+
+
+def piped_label_rows(path=None):
+    """The rows of `title-label-proposals.tsv` whose live label carries a `|` and is resolved.
+
+    Split out from the emitter so the file can be read without composing a batch.
+    """
+    path = path or PIPE_PROPOSALS_FILE
+    if not path.exists():
+        return []
+    out = []
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            live = row.get("live_mul") or row.get("live_en") or ""
+            if "|" not in live or row.get("hold") or not row.get("proposed_label"):
+                continue
+            out.append(row)
+    return out
+
+
+def _piped_label_fixes(live_labels=None, path=None):
+    """`Lmul`/`L<lang>`/`Len`/`Amul` for every imported label carrying Genealogics' `|`.
+
+    **Genealogics separates two spellings of one name with a pipe**, and GZWDer's semi-automatic
+    import of January 2022 carried the separator into the label; Kristbaumbot then copied `en`
+    into `mul` in June 2025. `name modelling.txt` § *A PIPE IN AN IMPORTED LABEL* ruled all three
+    shapes on 2026-09-09 — 1,372 rows of two given names over one surname, 136 of a pipe inside
+    one name, and 132 bracketed variant groups whose fourteen situations were each ruled
+    separately. `scripts/pipelabels.py` is the reader and
+    `scripts/apply-pipe-labels.py` writes its output into `proposed_label`, `proposed_en` and
+    `proposed_aliases`.
+
+    ⛔ **THIS IS THE STEP THAT WAS MISSING, and it is why the ruling had not reached Wikidata.**
+    The reader was written and tested and called by nothing; the proposals file was computed and
+    read by nothing that emits. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not
+    done*.
+
+    **Every language carrying the string is corrected, measured rather than assumed** — the
+    `langs_carrying_live` column — for the reason § *`NN` is PRESERVED in `mul`* records:
+    emitting on one language while another holds the same value leaves the defect live. `mul` is
+    added to that set when the item has none, because the ruled output is an `Lmul` and an item
+    with no `mul` is not one whose label is being overwritten. § *Wikidata's label beats ours*
+    is not in play either way: the only labels touched are ones that still hold the pipe.
+
+    ⛔ **SO `Len` GOES OUT EVEN WHERE IT EQUALS `mul`, AND THAT CONTRADICTS `pipelabels.
+    statements`** — which renders `Len` on 36 rows only, *"everywhere else English inherits
+    `mul` and writing it again would be a second copy that can drift."* That reasoning holds for
+    an item with **no** `en` label. It does not hold here: `langs_carrying_live` says English
+    holds the piped string on 1,623 of these items, a language-specific label beats `mul`, and
+    an `Lmul` alone would leave `Mary|Maria Butler` sitting in `en` while `mul` read
+    `Mary Butler`. `statements()` renders a `Reading` in isolation and cannot see which languages
+    carry the defect; this can, so it decides. `build-pipe-label-batch.py` — written for this
+    same population the day the pipe was first ruled — emits every carrying language too.
+
+    **Where the comma tail makes English differ, `Len` takes the tail** — situation A, 36 rows.
+    `Isabel Fraunceys (Francis|Frauncis), Heiress of Giffords Hall` gives
+    `Lmul Isabel Fraunceys` and `Len Isabel Fraunceys, Heiress of Giffords Hall`.
+
+    **The alias is `Amul` and never `Aen`** — § *The MARRIED name is the real name*: a variant
+    spelling is not an English fact, it is another way the same person's name is written.
+
+    **It queues like any other label edit**, under `LABEL_EDIT_CAP` — ruled 2026-09-09. No
+    special batch and no queue-jumping: roughly 28 runs alongside everything else. The cap is not
+    suspended for a backlog. Measured 2026-09-10: **1,628 items, 5,802 edits** — the whole 1,640
+    less `Q99707312` and the 11 rows held for an unruled lowercase rank word — which is 27 runs
+    at 60 people, and that is where the queue item's *"roughly 28 runs"* comes from.
+    """
+    live = live_labels or {}
+    out, skipped = [], 0
+    for row in sorted(piped_label_rows(path),
+                      key=lambda r: (int(r["qid"][1:]) if r["qid"][1:].isdigit() else 0,
+                                     r["qid"])):
+        qid = row["qid"]
+        label = row["proposed_label"]
+        english = row.get("proposed_en") or ""
+        aliases = [a for a in (a.strip() for a in row["proposed_aliases"].split(" | ")) if a]
+        langs = set(row["langs_carrying_live"].split())
+        if not row.get("live_mul"):
+            langs.add("mul")
+        edits = []
+        for lang in sorted(langs):
+            value = english if (lang == "en" and english) else label
+            # A missing key means "do not know" rather than "the item has nothing" -- see
+            # `read_live_labels`. Not knowing emits the line, and a repeat is a no-op.
+            if live.get((qid, lang), object()) == value:
+                skipped += 1
+                continue
+            edits.append((f"L{lang}", value))
+        edits.extend(("Amul", alias) for alias in aliases)
+        if not edits:
+            continue
+        source = row.get("live_mul") or row.get("live_en") or ""
+        out.append(f"#   {qid}: {source} -> {label}"
+                   + (f"   + {' | '.join(aliases)}" if aliases else ""))
+        for slot, value in edits:
+            out.append(f'{qid}\t{slot}\t"{value}"')
+    if out:
+        print(f"piped labels: {len([ln for ln in out if ln[:1] == 'Q'])} edit(s) over "
+              f"{len([ln for ln in out if ln[:1] == '#'])} item(s)"
+              + (f"; {skipped} already live" if skipped else ""))
+    return out
+
+
 def _label_corrections(our_items, labels, table, state, fields=None,
                        generation=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
@@ -7454,8 +7559,16 @@ def main():
     if hand_qids:
         print(f"hand label applications: {len(hand) // 2} edit(s) over {len(hand_qids)} item(s), "
               f"queued like any other label edit")
+    # **The piped fixes go FIRST, so a derived correction after them WINS the slot.** Both sit
+    # in the same `corrections` list at rank 0, so `_cap_label_edits` breaks the tie on position
+    # and a label REPLACES — the last one written lands. Where the two disagree about one item's
+    # `Lmul` the derived one is the stronger claim: it is a fact about the person from our own
+    # tree — § *The MARRIED name is the real name* — while the pipe fix only knows how to read
+    # one broken string. 11 of the 201 resolved rows carry a Geni id at all, so the overlap is
+    # small; the ordering is what decides it when it happens.
     derived_labels = (
-        _label_corrections(our_items, labels, table, state, fields, generation)
+        _piped_label_fixes(live_labels)
+        + _label_corrections(our_items, labels, table, state, fields, generation)
         + _cjk_follows_mul(table)
         + _missing_cjk_labels(our_items, labels, table, live_labels))
     covered = _hand_covered_slots(hand)

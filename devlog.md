@@ -35007,3 +35007,85 @@ CJK culture verdicts have to be pulled out of the artifact's store and written i
 `reports/cjk-culture-manual.tsv` by hand, because that store is reachable from a session and not
 from a script. It cannot be a cron and it was recorded only in a devlog entry, which is where
 work goes to be forgotten.
+
+## 2026-09-10 — the 1,640 piped labels are wired into the batch
+
+`scripts/pipelabels.py` was written and tested on 2026-09-09 — 24 tests, every ruled situation
+of `name modelling.txt` § *A PIPE IN AN IMPORTED LABEL* — and then called by nothing, and the
+proposals it was meant to feed were read by nothing that emits. That is the same shape as the
+agreeing-Latin rule that sat unwired for eight days. It is wired now, in three places:
+
+    scripts/apply-pipe-labels.py           calls pipelabels.read, writes the proposals back
+    rebuild-everything.py                  a step, before the batch
+    .github/workflows/pipeline.yml         a step, because that workflow does not run the rebuild
+    build-garborg-day._piped_label_fixes   emits them, into the derived label block
+
+**1,640 labels carry a pipe and all 1,640 were the job**, not the 200 this session read. 1,428
+already had a proposal from `propose-title-label-fixes.split_pipe` and nothing emitted those
+either: `build-noble-label-batch.py` skips them as `carries-a-pipe`, and
+`build-pipe-label-batch.py` writes a `.qs` no workflow reads. The arithmetic closes —
+**1,640 = 1,628 emitted + `Q99707312` + 11 held for an unruled lowercase rank word** — and
+1,628 people at `LABEL_EDIT_CAP` 60 is 27 runs, which is where the queue item's *"roughly 28
+runs"* came from.
+
+**5,802 edits: 1,628 `Lmul`, 1,623 `Len`, 698 `Lnl`, 1,849 `Amul`, and four other languages.**
+
+### ⛔ Running `pipelabels.read` over all 1,640 was measured and it is wrong
+
+The queue item said to call it and write the columns back. Done literally over every piped row
+it changes **575** of them, and three of those changes are regressions against rulings:
+
+    knight Knud|Knut Gislason 'April'      the rank word comes BACK into the label.
+                                           pipelabels knows nothing about titles.
+    Roger|Robert Debden, of Brampton,      -> `Roger Debden, of Brampton`. COMMA_TAIL takes
+    Suffolk                                the LAST comma phrase only, so it half-cuts.
+    Joan|Julian (or Minell) Sambnel        -> `Joan or Minell Sambnel`. A bracket with no pipe
+                                           folds into the name; nobody ruled an editorial one.
+
+The comma-tail rule settles the scope. It was ruled — *"KEEP IT IN THE `en` LABEL, NOT IN
+`mul`"* — as **situation A of the bracketed shape, 34 rows**, and Emma ruled the other way for
+the title batch the same day: *"Uhh bruh what? I'm asking you to remove the prefix lol not the
+other stuff."* Restricted to the rows the older reader HOLDS for the pipe it stays inside the
+population it was ruled on; widened to all 1,640 it cuts a tail off 398 rows nobody asked about.
+
+**So the applier touches only `hold=pipe-shape` and `hold=one-token` — 201 rows. 200 resolve
+and `Q99707312` stays held**, which is exactly the count the queue item carried, and is the
+confirmation that this is the reading it meant. `one-token` is in scope because the ruling names
+`Beatriz|Beatrice` and `Katherine|Catherine` outright; `leading-lowercase` is not, because that
+hold is about a rank word and the pipe ruling says nothing about it.
+
+**Guessed, and recorded here rather than asked** — § *while working the queue, GUESS and record
+it*: the 10 `title+pipe` rows have their `leading_title` stripped before the pipe is read. Every
+other `proposed_label` in that file is built from the stripped string; making the piped rows the
+one place a `Sir` survives would be the inconsistency.
+
+### `proposed_en`, a new column, and `Len` going out even where it equals `mul`
+
+Situation A gives an item two labels and `proposed_label` can carry one, so the file gains
+`proposed_en`. 36 rows use it.
+
+**`Len` is emitted wherever English carries the pipe — 1,623 rows — and that contradicts
+`pipelabels.statements`**, which renders `Len` on the 36 alone, reasoning that English inherits
+`mul`. True for an item with no `en` label; these have one, holding the pipe, and a
+language-specific label beats `mul`. An `Lmul` alone would leave `Mary|Maria Butler` sitting in
+`en` while `mul` read `Mary Butler` — the half-fix § *`NN` is PRESERVED in `mul`* records.
+`statements()` renders a `Reading` in isolation and cannot see which languages carry the defect;
+the emitter reads `langs_carrying_live` and can, so it decides.
+
+The piped fixes go FIRST in the derived block, so a derived correction after them wins the slot:
+both sit at rank 0 and a label REPLACES, and where the two disagree the derived one is the
+stronger claim — § *The MARRIED name is the real name*. 11 of the 201 carry a Geni id at all.
+
+`tests/test_pipe_label_wiring.py` pins the wiring: the arithmetic, idempotence, the title strip,
+no leftover punctuation in any proposal, no `Aen`, no `D`, and that both steps exist.
+
+### Not done, and not touched
+
+**`scripts/build-pipe-label-batch.py` is now legacy** — its `readings()` is the pre-ruling
+column-wise split, it holds all 140 bracketed rows the ruling answers, and nothing calls it.
+§ *LEGACY CODE IS DELETED* says it goes; deleting is not mine to do unasked, so it stands and
+is on the blocker question instead.
+
+**The collector and the descendants exports are blocked**: Geni served an Incapsula hCaptcha on
+the first page load of the session, on Charlemagne's own profile. Completing one is not
+something I do. Nothing else in the session touched Geni.
