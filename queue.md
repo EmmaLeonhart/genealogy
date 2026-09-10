@@ -395,6 +395,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.
+  - **Bergitte Aukland** `6000000002481819312` — added by you 2026-09-09: *"as far as export
+    capture descendants people add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312
+    to it as well she is kinda critical"*. **Flagged critical in your words**, so she is placed at
+    the head of the linked people rather than at the tail of the list. **Her exact slot against
+    Tore Underberge III and Gamle Olof is not settled and is not guessed** — say the word and she
+    moves. Nothing about her is investigated, measured or seeded yet; the Wikidata-paths gate below
+    covers her the same as everyone else on this list.
   - **Tore Underberge III** `6000000005607672589` and **Gamle Olof** `5328189268700111491` — the
     two you linked. You placed them *"after you've comprehensively gotten the descendants of this
     particular individual"*, i.e. straight after Abul Hamza; the numbered list you then gave puts
