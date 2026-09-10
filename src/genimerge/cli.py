@@ -165,7 +165,9 @@ def _cmd_merge(args: argparse.Namespace) -> int:
             return 1
         paths.append(extra)
 
-    doc, report = merge_mod.merge_files(paths, slim=getattr(args, 'slim', False))
+    doc, report = merge_mod.merge_files(
+        paths, slim=getattr(args, 'slim', False),
+        connectivity=getattr(args, 'connectivity', False))
 
     output = args.output or ws.merged
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -1205,6 +1207,13 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="drop what the editing pipeline never reads (notes, media, sources). "
              "8.79 GB peak instead of 13.30 GB and killed; same people and families.",
+    )
+    p_merge.add_argument(
+        "--connectivity",
+        action="store_true",
+        help="slim HARDER: the primary key, sex and the five structural pointers only. "
+             "A different tree, not a smaller one — no names, dates or places, so the "
+             "derive scripts cannot read it. For the Wikidata union, where size binds.",
     )
     p_merge.set_defaults(func=_cmd_merge)
 

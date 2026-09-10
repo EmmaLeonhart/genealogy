@@ -320,7 +320,7 @@ class Merger:
 
 
 def merge_files(
-    paths: list[str | Path], slim: bool = False
+    paths: list[str | Path], slim: bool = False, connectivity: bool = False
 ) -> tuple[Gedcom, MergeReport]:
     """Merge exports in the given order. Later files win value conflicts.
 
@@ -330,12 +330,19 @@ def merge_files(
     for the same 1,451,993 people and 630,053 families. It is what makes the
     merge fit on a GitHub runner. Off by default: the complete tree is what
     ``prepare-cases.py`` and ``samaritan_spine.py`` read.
+
+    ``connectivity`` slims harder still, to :data:`genimerge.slim.CONNECTIVITY_TAGS` —
+    the primary key, the sex and the five structural pointers, and nothing else.
+    That is a **different tree**, not a smaller one: no names, dates or places, so
+    the derive scripts cannot run against it. It exists so the Wikidata union fits.
     """
     paths = [Path(p) for p in paths]
     merger = Merger(single_valued_paths(paths))
     for path in paths:
         records = gedcom.stream_file(path)
-        if slim:
+        if connectivity:
+            records = slim_mod.prune_stream(records, slim_mod.CONNECTIVITY_TAGS)
+        elif slim:
             records = slim_mod.prune_stream(records)
         merger.add_source(path.name, records)
     return merger.result(), merger.report

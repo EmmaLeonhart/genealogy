@@ -34422,3 +34422,32 @@ so this ball is cut off — the third of the eleven to fill, after `600000022767
 Export 11, the last of the list, submitted: `6000000227676802897`, task
 **`6000000227678163950`**.
 
+
+## 2026-09-09 — `--connectivity`: slimming to what the campaign's question actually needs
+
+The synoptic tree was believed to trim everything not feeding the Wikidata pipeline. **It does
+not** — the ordinary slim keeps **~73% of corpus bytes**, still carrying `DATE`, `NAME`, `TITL`,
+`GIVN`, `_MARNM`, `PLAC`, `STAE`, `CTRY`. So the third lever named in `CLAUDE.md` was never spent.
+
+`genimerge.slim.CONNECTIVITY_TAGS` is that lever: the primary key, the sex, and the five
+structural pointers.
+
+    RFN  REFN  SEX  FAMC  FAMS  HUSB  WIFE  CHIL
+
+Measured over a 60-export sample: raw 361.5 MB, ordinary slim ≤275.8 MB (**≤76%**),
+connectivity-only **68.0 MB (19%)** — about a four-fold reduction on top of the slim. The middle
+figure is an upper bound: a line-level count cannot model nesting, so it credits `CONT`/`CONC`
+that the real slim drops with their `NOTE` parents.
+
+**⛔ IT IS A DIFFERENT TREE, NOT A SMALLER ONE, and that is why it is its own flag rather than a
+tightening of `--slim`.** Names, dates, places, occupations and titles are gone, so
+`build-display-names.py`, `derive-labels.py` and `derive-facts.py` cannot run against it and no
+QuickStatements batch can be built from it. It exists to answer **is this person connected to
+Charlemagne** at a size where the Wikidata union fits; the derive scripts keep the ordinary slim.
+
+`SEX` is kept deliberately: `HUSB`/`WIFE` are sex-typed slots, so dropping it would make a
+single-parent family unplaceable — which is most of what a `P40` edge produces.
+
+`prune_stream`, `prune_record` and `_prune` take the tag set as an argument now and default to
+`KEEP_TAGS`, so every existing caller is unchanged.
+

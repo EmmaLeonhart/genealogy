@@ -72,30 +72,53 @@ KEEP_TAGS = frozenset({
 DROP_INSIDE = frozenset({"NOTE", "SOUR", "OBJE", "FILE", "TEXT", "REPO", "PAGE", "DATA"})
 
 
-def _prune(node: Node, inside_record: bool) -> None:
+#: ⛔ CONNECTIVITY ONLY -- the tightest the tree can be and still answer the campaign's question.
+#:
+#: The campaign asks one thing of the tree: **is this person connected to Charlemagne**. That
+#: needs the primary key, the sex (a `FAM` slot is sex-typed) and the five structural pointers,
+#: and nothing else. Measured over a 60-export sample: the ordinary slim keeps ~73% of corpus
+#: bytes and this keeps **~19%**, roughly a four-fold reduction on top of the slim.
+#:
+#: **It is a DIFFERENT TREE, not a smaller one, and that is why it is its own flag.** Names,
+#: dates, places, occupations and titles are gone, so `build-display-names.py`, `derive-labels.py`
+#: and `derive-facts.py` cannot run against it and the QuickStatements pipeline cannot be built
+#: from it. It exists to answer connectivity at a size where the Wikidata union fits, and the
+#: derive scripts keep using the ordinary slim.
+#:
+#: `SEX` is kept deliberately: `HUSB`/`WIFE` are sex-typed slots, so dropping it would make a
+#: single-parent family unplaceable.
+CONNECTIVITY_TAGS = frozenset({
+    "RFN", "REFN", "SEX",
+    "FAMC", "FAMS", "HUSB", "WIFE", "CHIL",
+    # header fields the parser expects to find
+    "SOUR", "VERS", "GEDC", "FORM", "CHAR", "LANG", "DEST", "FILE",
+})
+
+
+def _prune(node: Node, inside_record: bool, keep=KEEP_TAGS) -> None:
     """Drop non-whitelisted children, in place, depth first."""
     kept = []
     for child in node.children:
         if inside_record and child.tag in DROP_INSIDE:
             continue
-        if child.tag not in KEEP_TAGS:
+        if child.tag not in keep:
             continue
-        _prune(child, inside_record)
+        _prune(child, inside_record, keep)
         kept.append(child)
     node.children = kept
 
 
-def prune_record(record: Node) -> Node | None:
+def prune_record(record: Node, keep=KEEP_TAGS) -> Node | None:
     """The record with everything the pipeline never reads removed, or `None` to drop it."""
     if record.tag not in KEEP_RECORDS:
         return None
-    _prune(record, record.tag in ("INDI", "FAM"))
+    _prune(record, record.tag in ("INDI", "FAM"), keep)
     return record
 
 
-def prune_stream(records):
+def prune_stream(records, keep=KEEP_TAGS):
     """Wrap a record iterator, dropping what the pipeline never reads."""
     for record in records:
-        pruned = prune_record(record)
+        pruned = prune_record(record, keep)
         if pruned is not None:
             yield pruned
