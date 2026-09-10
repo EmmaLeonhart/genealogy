@@ -311,6 +311,26 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   visited, they fail, they are stamped, they come back in thirty days. No campaign is owed on
   them and none is to be started.
 
+  ⛔ **SUPERSEDED THE SAME DAY — THEY ARE PARKED AT `2026-10-31` RATHER THAN CYCLING.** Emma,
+  2026-09-10: *"As far as the cbdb people go I think the solution is creating someone and merging
+  them in. But honestly cbdb people can all get their date last edited set to October 31, 2026 so
+  that we don't need to deal with their bullshit. This means every wikidata item with 'cbdb' in
+  its English description."*
+
+  **The population is defined by the WIKIDATA DESCRIPTION, not by the Geni manager**, which is
+  what makes it computable without visiting anybody: every item whose `descriptions.en` contains
+  `cbdb`, case-insensitively. That is a wider and cleaner set than the 224 profiles above, and it
+  is measured rather than estimated — `scripts/scan-cbdb-items.py` over the offline store writes
+  `reports/cbdb-items.tsv`, one row per instance.
+
+  `last_attempted` is the one column that carries across a rebuild, so writing `2026-10-31` into
+  it is the whole mechanism — no flag, no register, no new state. It makes them eligible again on
+  **2026-11-30**, thirty days later, which is the cooldown doing what it already does.
+
+  **The real fix is named and NOT started:** *"creating someone and merging them in."* It is
+  written down here and nothing about it is to be investigated — `CLAUDE.md` § *"Add it to the
+  end of the queue" means WRITE IT DOWN AND STOP*.
+
   ⛔ **GENI HAS TWO MISS SHAPES AND ONLY ONE CAN BE ANSWERED.** Most profiles give the pair
   *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin Varga
   `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
