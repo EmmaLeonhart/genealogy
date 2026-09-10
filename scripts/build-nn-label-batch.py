@@ -31,7 +31,17 @@ treated "describe it in Dutch" as optional when the instruction is that **no loc
 language should have it**.
 
 **Long-range relationships count** — grandparents, grandchildren and siblings. So the search
-runs parent → spouse → child → **sibling → grandparent → grandchild**.
+runs **child → parent → spouse** → sibling → grandparent → grandchild.
+
+⛔ **CHILDREN FIRST, THEN PARENTS, THEN SPOUSE — ruled 2026-09-09, and it inverts what this
+said.** The order was parent → spouse → child, and `Q141403481` came out **husband of Gölug**
+when his daughter was right there: the right English is **`Andreas father of Malin`**. Malin's
+own surname is **Andersdotter**, so the child's patronymic states the father's given name
+outright, and a marriage says nothing about anybody's name.
+
+⛔ **AND THE PROSE CARRIES THE NAME.** Where `mul` reads `<given> NN` — the given name known and
+the surname missing — the given name goes in front of the clause. `father of Malin` throws away
+the one thing the record does say.
 
 **And the reach was measured on the synoptic tree, not on one store.** Using one source, either
 the Wikidata side or the Geni side, rather than the synoptic tree, is a named failure, and
@@ -103,6 +113,22 @@ SEX_LETTER = {"Q6581097": "M", "Q6581072": "F"}
 #: The marker itself. Narrow on purpose: `unknown` and `?` are somebody else's
 #: editorial choice and are not ours to move or delete.
 NN_LABEL = re.compile(r"^\s*N\.?\s?N\.?\s*$", re.I)
+
+#: A `mul` label that is a GIVEN NAME plus the marker -- `Sigrid NN`, `Andreas NN`. The given
+#: name is group 1, and it is the name the prose clause carries: ruled 2026-09-09 on
+#: `Q141403481`, where the right English is `Andreas father of Malin` rather than
+#: `father of Malin`.
+#:
+#: ⛔ **DELIBERATELY NOT `NN_LABEL` WITH SOMETHING IN FRONT.** `NN_LABEL` matches a BARE marker
+#: and is what says *this person has no name at all*; the two populations get different labels
+#: and conflating them would put a name on somebody who has none. A trailing marker only --
+#: `NN Garborg` is the other half of the protocol, surname known and given name missing, and it
+#: must not match here or the SURNAME would be emitted as though it were a given name.
+#: ⛔ **`(\S.*?)`, NOT `(.+?)`.** With `.+?` the padding around a bare `  nn  ` backtracks into
+#: a match whose group 1 is a SINGLE SPACE, so a fully unnamed person would be labelled
+#: `" father of Malin"` — a leading space and a name from nowhere. Caught by the test that
+#: asserts a bare marker yields no name.
+GIVEN_WITH_MARKER = re.compile(r"^\s*(\S.*?)\s+N\.?\s?N\.?\s*$", re.I)
 
 #: Rejects a *relative* as the thing to name somebody by. Wider than `NN_LABEL`,
 #: because "mother of unknown" names nobody either.
@@ -329,13 +355,29 @@ def main() -> int:
     def nearest(qid: str) -> tuple[str, str, str]:
         """`(relation, relative_qid, relative_name)` for the nearest named one.
 
-        Nearest-first: parent, spouse, child, sibling, then the long-range pair.
+        ⛔ **CHILDREN, PARENTS, SPOUSE — ruled 2026-09-09, and it INVERTS what was here.**
+        The order was parent, spouse, child, so `Q141403481` came out *husband of Gölug* when
+        his daughter was sitting right there and the right English is **`Andreas father of
+        Malin`**.
+
+        **Ruled twice in one minute and the second ruling is the one that stands**: children,
+        spouse, parents was said first and immediately replaced by *children, parents, spouse*.
+        The superseded version must not survive anywhere as if it were current —
+        `CLAUDE.md` § *Corrections outrank what they correct*.
+
+        **A child is the strongest naming evidence in this corpus and a marriage is the
+        weakest.** Malin's own surname is **Andersdotter** — *Anders' daughter* — so the child's
+        patronymic states the father's given name outright. `CLAUDE.md` § *A patronymic is
+        `P5056` … with `P144` pointing at the father, the person*. A spouse's name says nothing
+        whatever about yours, which is why it now sorts last of the three.
+
+        So: child, parent, spouse, sibling, then the long-range pair.
         """
         ent = items.get(qid, {})
         for key, candidates in (
+            ("parent_of", targets(ent, CHILD)),
             ("child_of", targets(ent, FATHER) + targets(ent, MOTHER)),
             ("spouse_of", targets(ent, SPOUSE)),
-            ("parent_of", targets(ent, CHILD)),
             ("sibling_of", targets(ent, SIBLING)),
         ):
             for target in candidates:
@@ -414,6 +456,26 @@ def main() -> int:
                 joiner = words["of"]
                 if isinstance(joiner, dict):
                     joiner = joiner.get(relation, joiner[""])
+                # ⛔ **THE PROSE CARRIES THE NAME WHERE THERE IS ONE.** Ruled 2026-09-09 on
+                # `Q141403481`: the right English is **`Andreas father of Malin`**, not
+                # `father of Malin`. His given name is KNOWN and only the surname is missing,
+                # so a bare relationship clause throws away the one thing the record does say.
+                #
+                # `mul` is where that name lives — § *`mul` GETS THE MARKER; EVERY OTHER
+                # LANGUAGE GETS PROSE* writes `Sigrid NN` there, given name plus the marker in
+                # the slot that is unknown. Stripping the marker off it gives the given name
+                # back, and a `mul` that is a bare `NN` gives nothing, which is the fully
+                # unnamed person and leaves the clause alone.
+                #
+                # **Name FIRST is safe across this table and only this table.** All eleven
+                # languages here are European and place an apposition ahead of the clause —
+                # `Andreas father of Malin`, `Andreas Vater von Malin`. There is no CJK in
+                # `WORDS`, so the Japanese word-order question this would otherwise raise
+                # cannot arise: `…の父アンドレアス` puts the name last, and nothing here emits it.
+                clause = _join(word, joiner, other)
+                known = GIVEN_WITH_MARKER.match(value("mul") or "")
+                if known:
+                    clause = "%s %s" % (known.group(1).strip(), clause)
                 edits.append({
                     "id": f"nn_label:{qid}:{lang}",
                     "type": "set_label",
@@ -421,7 +483,7 @@ def main() -> int:
                     "subject": {"qid": qid, "geni_id": row.get("geni_id") or None},
                     "requires": depends,
                     "label": {"language": lang,
-                              "value": _join(word, joiner, other)},
+                              "value": clause},
                     "replaces": current,
                     "kind": "change" if current else "add",
                     "via": {"qid": via, "relation": relation},

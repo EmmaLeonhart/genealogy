@@ -34837,3 +34837,42 @@ placeholder parents per run, so there is nothing to watch flatten.
 
 **And the piped labels go out under the ordinary cap**: 60 people a run, no special batch, no
 queue-jumping, roughly 28 runs. A backlog does not suspend a cap.
+
+## 2026-09-09 -- the `NN` prose names the CHILD first, and carries the name it knows
+
+`Q141403481` went live reading **husband of Gölug** when his daughter Malin was in the same
+graph. The right English is **`Andreas father of Malin`**, and the shipped code got both halves
+of that wrong.
+
+**The search order is now children, parents, spouse**, then sibling and the long-range pair. It
+was parent, spouse, child. **Ruled twice within a minute** -- children/spouse/parents first,
+replaced immediately by children/parents/spouse -- and the docstring records the supersession so
+the first version cannot come back looking current.
+
+**A child is the strongest naming evidence in this corpus and a marriage is the weakest.**
+Malin's own surname is **Andersdotter**, so the child's patronymic states the father's given
+name outright. A spouse's name says nothing whatever about yours.
+
+**And the prose carries the name.** `mul` reading `<given> NN` means the given name is known and
+only the surname is missing, so a bare clause throws away the one thing the record does say.
+
+**`GIVEN_WITH_MARKER` is deliberately not `NN_LABEL` with something in front.** The three forms
+are three populations: a bare `NN` is nobody named at all, `NN Garborg` is a known SURNAME, and
+`Andreas NN` is a known GIVEN name. Matching the leading form here would emit a surname as
+though it were a given name -- `Garborg father of Malin`.
+
+⛔ **Its first version used `(.+?)` and that was wrong in a way only a test found.** The padding
+around a bare `  nn  ` backtracks into a match whose group 1 is a SINGLE SPACE, so a fully
+unnamed person would be labelled `" father of Malin"` -- a leading space and a name from nowhere.
+`(\S.*?)` fixes it.
+
+**Ten tests**, including one that pins the relation keys against their meaning: `parent_of` takes
+`CHILD` targets and `child_of` takes `FATHER`/`MOTHER`, so swapping the two would leave the order
+test green while inverting the behaviour.
+
+**And an alarm that was checked before it was raised.** `needs_mul` is
+`not NN_LABEL.match(value("mul"))`, and `NN_LABEL` matches only the BARE marker -- so both
+informative forms read as *no marker present* and would be flattened to `NN`, destroying the
+known half. Measured over the whole population rather than asserted: of the 1,588 `NN` items,
+**1,307 have no `mul` at all, 278 are already a bare `NN`, 3 read `?` or `unknown`, and zero
+carry either informative form.** So it is latent, not live, and it is left alone here.
