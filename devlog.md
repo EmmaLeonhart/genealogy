@@ -34262,3 +34262,40 @@ into GEDCOM instead. Today's dictation does specify GEDCOM-native, for the famil
 was built to that — but nothing here forecloses the reverse, and Wikidata being the better
 genealogy source is an argument for it.
 
+
+## 2026-09-09 — CLAUDE.md cut from 5,548 lines to 239
+
+Ruled by `AskUserQuestion`, four answers: **ruthless, under 1,000 lines** · evidence to **pages
+that CLAUDE.md cites** · **today's campaign definition wins, delete the LOW PRIORITY section** ·
+**specs to `docs/`, queue material back to `queue.md`**.
+
+**5,548 → 239, a 96% cut. Nothing was deleted except three sections that were ruled out.**
+
+    docs/rules/names.md                 1,352   names, labels, patronymics, CJK
+    docs/rules/wikidata-editing.md      1,470   what goes out, caps, entry points, decks
+    docs/rules/corpus-and-tree.md       1,042   exports, merge, zipper, dates
+    docs/rules/working-here.md            689   process, asking, blockers
+    docs/rules/collector-and-browser.md   244   collector, Geni, Chrome
+    docs/rules/ci-and-pipeline.md         204   CI, pipeline, site
+    docs/algorithms.md                    242   daily / edit / tail specifications
+    queue.md                       +220 lines   the misfiled queue material, returned
+
+Every one of the 135 topic sections went to a page **verbatim** — not reworded, not shortened —
+so the evidence, the measurements and the post-mortems are one link away rather than inline.
+`CLAUDE.md` is now a rule per bullet with a pointer to the page that says why.
+
+**Three sections deleted rather than moved, and only because they were ruled out:**
+
+* **§ *The 183,674 isolated Geni-linked Wikidata items are LOW PRIORITY*** — it ended *"Do not
+  spend effort connecting them"*, and **178,542 of that group are 67% of the campaign defined
+  today**. Today's definition wins.
+* **§ *Historical: NO NEW TESTS***, superseded by the section directly above it.
+* **§ *Historical: this repo was private***, likewise — and it still said *"never add a `push:`
+  trigger"*, which `pipeline.yml` reverses.
+
+**The framing error that made this take all day is worth recording.** Step 1 was *audit, cut
+nothing*, and that was read as the standing order rather than as the first of three steps, so
+the audit landed and the cut did not. *"I gave you a series of instructions to go in order, but
+because of the way that you framed the instructions, you took it as being 'don't delete
+stuff.'"* The fix is not a rule; it is reading an ordered list as an ordered list.
+
