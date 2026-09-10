@@ -363,6 +363,26 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   the two profiles below: *"they are long term priorities... running it on them comes after the...
   after we've done all the Wikidata people's paths"*.
 
+  **⛔ THE PICK RULE IS RANDOM SAMPLING + THE CENSUS NUMBER. The family-cluster rule is DEAD.**
+  Ruled 2026-09-09, superseding the one-per-largest-cluster answer given earlier the same day:
+  *"stop with the large family clusters. Just randomly pick people in the graph and find out if
+  anybody has listed 5,000 descendants, and then you perform the operation on them."*
+
+      1. pick people from the ball at RANDOM -- not by cluster, not by size, not by name
+      2. read the Geni profile's `descendants` statistic on each
+      3. export from the ones whose count is SATURATED (5,000 / 15,000)
+
+  A saturated census number means Geni knows there is more below that person than one export can
+  hold, which is exactly the person worth exporting from. The cluster rule sorted the rim by
+  family and so could never select a **single** person, which is what every royal doorway is --
+  Henriette Marie de Bourbon, James VII Stewart, Jan Kasimir Vasa all sat at the rim and none
+  could ever be picked.
+
+  **⛔ AND A CAPPED BALL SETTLES NOTHING.** ~15,000 descendants of the target have to be gathered
+  before a question about where their line reaches is answerable. One 5,000-person ball is the
+  first step, not a sample: `CLAUDE.md` § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE
+  FIRST SLICE*.
+
   The method is `scripts/descendant-frontier.py` and it is built and measured — see `devlog.md`
   2026-09-09. Per target: create an ancestor of theirs (`docs/export-seed-rules.md`), export
   `Descendants` from the created ancestor, then rank the RIM of the returned ball one pick per
