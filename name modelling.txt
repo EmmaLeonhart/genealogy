@@ -58,3 +58,40 @@ Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
 ** based on (P144)  Shalma
 ** series ordinal (P1545) 3
 
+A PIPE IN AN IMPORTED LABEL -- ruled 2026-09-09, all three shapes
+================================================================
+
+1,640 imported labels carry a `|`. Three shapes, counted off
+`reports/title-label-proposals.tsv`, and each was ruled separately because they are
+not the same question.
+
+TWO GIVEN NAMES, ONE SURNAME -- 1,372 rows
+    Mary|Maria Butler   Margaret|Anne Skipwith   Hans|Johann Greiffenclau zu Vollrads
+
+    The FIRST is the label; the second becomes an `Amul`. Both given names are real
+    usages, so both get a `P735` name item -- one name item per USAGE.
+
+        Lmul  Mary Butler
+        Amul  Maria Butler
+        P735  Mary          P735  Maria          P734  Butler
+
+THE PIPE INSIDE ONE NAME, NOTHING ANCHORING IT -- 136 rows
+    Beatriz|Beatrice   Katherine|Catherine   Daniel Tichenor|Titchenal
+    Dietrich Metzler|Seckel|Buettel
+
+    THE SAME RULE, APPLIED AS IT FALLS. First token is the label, every later one an
+    `Amul`. This is stated flatly because the consequence was put in front of the
+    ruling and accepted: `Daniel Tichenor|Titchenal` yields the alias `Titchenal`,
+    a bare surname with no given name on it.
+
+A BRACKETED VARIANT GROUP -- 132 rows
+    Ann Bincks (Benckes|Bench)   Sarah Kilkam (Killem|Killum|Killam)
+    Elizabeth Paine (Payne|Penn)
+
+    The unbracketed name is the label; each bracketed spelling becomes an `Amul`
+    CARRYING THE GIVEN NAME. The parentheses never reach a label.
+
+        Lmul  Ann Bincks
+        Amul  Ann Benckes
+        Amul  Ann Bench
+        P734  Bincks

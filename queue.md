@@ -288,15 +288,20 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   related eccentric graph points on geni."* Do not start it early and do not invent the gate's
   threshold — that is yours.
 
-- **How to read a `|` in an imported label.** You, 2026-09-09, asked whether
-  `noble Nike|Victoria Soutzaina` should become `Nike Soutzaina` with `Victoria Soutzaina` as an
-  `Amul`: *"bruh no the pipes are a bit more complicated, I am not 100% sure how to interpret it
-  lol."* **1,565 people carry one** and `reports/title-label-proposals.tsv` holds every one with
-  a computed reading, unemitted. Three shapes are in there and they may not want the same answer
-  — two given-name spellings (`Margaret|Margery Bulkeley`), two whole names
-  (`Conrad Hofmeister|Kornmann`), and a bracketed variant group inside one
-  (`Ann Bincks (Benckes|Bench)`, 136 of them, already held separately). NOT to be interpreted
-  here; yours.
+- **EMIT THE 1,640 PIPED LABELS. All three shapes were ruled 2026-09-09** and
+  `name modelling.txt` § *A PIPE IN AN IMPORTED LABEL* is the authority; that file beats
+  anything here. `reports/title-label-proposals.tsv` holds every one with `hold=pipe-shape`.
+
+      1,372   Mary|Maria Butler          first is the label, second an Amul, both get a P735
+        136   Daniel Tichenor|Titchenal  the same rule as it falls -- the bare alias was put
+                                         in front of the ruling and accepted
+        132   Ann Bincks (Benckes|Bench)  label unbracketed, each bracketed spelling an Amul
+                                          carrying the given name
+
+  **Not started.** What is outstanding is the emitter: read the shape, write `proposed_label`
+  and `proposed_aliases`, clear the `pipe-shape` hold, and let the label batch carry them.
+  **How they go out against `LABEL_EDIT_CAP` 60 is NOT settled** — it is one of the three
+  questions postponed to 23:00 on 2026-09-09, cron `bae9b87e`.
 
 - **`undigested.md` — NEEDS-INVESTIGATION.** Raw text from you, verbatim and unprocessed.
   Investigating it is a real outstanding item and belongs in every status report under that tag,
@@ -385,17 +390,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.
-  - **Bergitte Aukland** `6000000002481819312` — added by you 2026-09-09: *"as far as export
-    capture descendants people add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312
-    to it as well she is kinda critical"*. **Flagged critical in your words**, so she is placed at
-    the head of the linked people rather than at the tail of the list. **Her exact slot against
-    Tore Underberge III and Gamle Olof is not settled and is not guessed** — say the word and she
-    moves. Nothing about her is investigated, measured or seeded yet; the Wikidata-paths gate below
-    covers her the same as everyone else on this list.
-  - **Tore Underberge III** `6000000005607672589` and **Gamle Olof** `5328189268700111491` — the
-    two you linked. You placed them *"after you've comprehensively gotten the descendants of this
-    particular individual"*, i.e. straight after Abul Hamza; the numbered list you then gave puts
-    the Chinese clusters second, so the two readings differ by one slot and are not resolved here.
+  - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
+    add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
+    kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
+    takes Tore Underberge III's place in this order and **Tore Underberge III
+    `6000000005607672589` comes OFF the list.** Nothing about her is investigated, measured or
+    seeded yet.
+  - **Gamle Olof** `5328189268700111491` — the other one you linked, placed *"after you've
+    comprehensively gotten the descendants of this particular individual"*, i.e. straight after
+    Abul Hamza; the numbered list you then gave puts the Chinese clusters second, so the two
+    readings differ by one slot and are not resolved here.
   - The two most eccentric ancient **Chinese** clusters
   - **Adasi**
   - **Genghis Khan**

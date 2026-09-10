@@ -34711,3 +34711,42 @@ gets answered* now says that in her words, and names the three shapes that read 
 go unanswered — a question at the end of a report, an offer to act *unless you say otherwise*, and
 *let me know*. Every one of the four decisions above came back inside a minute once they were
 options that could be picked.
+
+## 2026-09-09 — the pipe in an imported label: all three shapes ruled
+
+**1,640 imported labels carry a `|`**, and they were never one question. Counted off
+`reports/title-label-proposals.tsv` and ruled shape by shape:
+
+    1,372   Mary|Maria Butler            two given names, one surname
+      136   Daniel Tichenor|Titchenal    the pipe inside one name, nothing anchoring it
+      132   Ann Bincks (Benckes|Bench)   a bracketed variant group
+
+**The first is the label; later alternatives are `Amul`.** On the 1,372 both given names are real
+usages, so both get a `P735` name item — one name item per usage. On the 136 the same rule is
+applied as it falls, and the consequence was put in front of the ruling and accepted: `Daniel
+Tichenor|Titchenal` yields the bare alias `Titchenal`, a surname with no given name on it. On the
+132 the unbracketed name is the label and each bracketed spelling becomes an `Amul` **carrying the
+given name** — `Ann Bincks`, then `Ann Benckes` and `Ann Bench`. The parentheses never reach a
+label.
+
+`name modelling.txt` carries all three, because that file is the authority on how a name is
+modelled and beats anything in `CLAUDE.md` or the rules pages.
+
+**What is NOT settled and is not guessed:** how 1,640 labels go out against `LABEL_EDIT_CAP` of
+60 people per run. That is one of three questions postponed to 23:00 tonight, one-shot cron
+`bae9b87e`, along with the parent-adding campaign's gate threshold and whether the OneTab page in
+`undigested.md` is still held.
+
+**And a process failure worth the line, because it cost two rounds:** `Ann Blinks` in the ruling
+was a typo for `Ann Bincks`. Reading it as the record's spelling was right the first time; what
+was wrong was turning it into two more question rounds instead of taking the obvious reading and
+moving. *"Why the fuck are you trying so hard to move so fast"* is the other half of the same
+note — the rulings above were written into three files in one pass with no pause to show them.
+
+## 2026-09-09 — Bergitte Aukland replaces Tore Underberge III
+
+Her slot in the descendants order was open — *"her exact slot against Tore Underberge III and
+Gamle Olof is not settled and is not guessed"* — and it is settled now: **`Replaces Tore`**. She
+takes his place and **Tore Underberge III `6000000005607672589` comes off the list**. Gamle Olof
+`5328189268700111491` is untouched and still ambiguous by one slot against the Chinese clusters,
+which is recorded rather than resolved.
