@@ -35790,3 +35790,46 @@ in `queue.md`. The parking stands as it is. Its precision was never worth buying
 who should not have been costs one page visit, and a person missed costs nothing at all over the
 life of the campaign, so measuring the boundary more finely is spend against a rounding error.
 No further CBDB work.
+
+## 2026-09-10 — the descendants campaign on Abul Hamza: the seed climb stalls on an intention
+
+Started the export work on the first of the six people found in Abul Hamza's ball. Grepped the
+corpus first, as § *GREP THE CORPUS BEFORE RUNNING AN EXPORT* requires — all six are already
+present, between 12 and 64 xref/RFN occurrences: Sayaluna ata 64, Jacques Grimaldi 50, Pietro
+Antonio di Capua 27, Inês de Bettencourt 16, Hélène de Corday 12, Robert d'Esneval 12.
+
+**Sayaluna ata `6000000008384075400`, read live rather than trusted:** `family_tree` 392,
+`blood_relatives` 15000, `ancestors` 1753, **`descendants` 15000** — Geni's display ceiling, well
+over the 4,000 threshold. So the export is warranted and the climb was dispatched as
+`{job:"seedwalk", exportWalk:"descendants"}`, which is the handoff that starts the climb
+immediately and carries `Descendants` rather than `Forest` to the export at the end.
+
+**⛔ IT STALLED THE SAME WAY TWICE, AND THE CAUSE IS THAT `creating` RECORDS AN INTENTION.**
+
+    run 1   Sayaluna ata -> Pervâne 6000000003827859451
+            "creating" announced, same job then returned both_present, halted. 3 climbed.
+    run 2   ... -> Bəytemür 6000000031527770002
+            "creating" announced for the MOTHER slot, same job then returned both_present,
+            halted. 10 climbed, 7 both_present, 2 no_add_link.
+
+`seed.js` sends `{type:"creating"}` **before** the write, so the flag means *a person may now
+exist*. The background then sets `running:false` and drops every remaining seed job — correct
+when something was created, and a dead end when the very next message from the same job says
+`both_present`. Both runs ended with nothing created, nothing exported and `creating` set.
+
+**Emma ruled on the bias, 2026-09-10:** *"no deliberate bias to false stop lol we had a close call
+with creating a fuckton of wrong proof but this bias is wrong too — a bias towards making more
+people is genuinely better just not to the degree it was at."*
+
+**The fix, in 1.7.23:** a seed result of `both_present` or `no_add_link` for the id currently in
+`creating` clears the flag and resumes the run. Both states are read off the page *before* any
+form is submitted, so they are proof from the same job that nothing was written. It is
+deliberately narrow — a real creation still reports `added` and still stops the run exactly as
+before, and **any** other state (an error, a timeout, `blocked`, anything unrecognised) still
+leaves the flag set. The bias stays on the side of stopping wherever the outcome is genuinely
+unknown; it just stops counting intentions as creations.
+
+The earlier unclearable design is in the file's own comments and its reason is real — a run once
+*"kept climbing and kept creating"*, and an unbounded chain of invented people on a live site is
+much worse than a stalled walk. That is why this clears on two named states rather than on a
+result arriving.

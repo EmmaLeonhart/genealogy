@@ -204,6 +204,35 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       delete active[String(tabId)];
       const results = s.results.concat([Object.assign({ at: new Date().toISOString() }, msg.result)]);
 
+      /* ⛔ A `creating` THAT DID NOT CREATE ANYBODY IS CLEARED. Ruled 2026-09-10.
+       *
+       * Emma: *"no deliberate bias to false stop lol we had a close call with creating a fuckton
+       * of wrong proof but this bias is wrong too — a bias towards making more people is
+       * genuinely better just not to the degree it was at."*
+       *
+       * `creating` is announced by `seed.js` BEFORE the write, so it means *a person may now
+       * exist*. That was made deliberately unclearable after a run kept climbing and kept
+       * creating. But the flag also stops the run and drops every remaining seed job, so an
+       * announcement that is then contradicted by its own result strands the whole climb: on
+       * Sayaluna ata `6000000008384075400` the first run announced `creating` on Pervâne
+       * `6000000003827859451`, the same job returned `both_present`, and the walk halted two
+       * ancestors in with nothing created and nothing exported.
+       *
+       * `both_present` and `no_add_link` are PROOF FROM THE SAME JOB that no form was submitted:
+       * both are read off the page before any write is attempted. Clearing on those two is not
+       * a weakening of the one-creation rule -- a real creation reports `created` and still
+       * stops the run exactly as before. It only stops counting intentions as creations.
+       *
+       * Deliberately narrow: any state NOT in this list leaves `creating` set, so an error, a
+       * timeout, a `blocked` or an unrecognised result all still stop the run. The bias stays on
+       * the side of stopping wherever the outcome is genuinely unknown. */
+      const NO_WRITE = { both_present: 1, no_add_link: 1 };
+      let clearedCreating = null;
+      if (msg.result && msg.result.job === "seed" && NO_WRITE[msg.result.state]
+          && s.creating && String(s.creating) === String(msg.result.geni_id || "")) {
+        clearedCreating = { creating: "", running: true };
+      }
+
       /* ⛔⛔ **THE EXTENSION RECORDS WHO IT RAN ON. NOT THE AGENT.**
        *
        * Ruled 2026-09-10: *"the extension should be scraping the page and adding and basically
@@ -329,7 +358,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                          .map((p) => ({ job: "seed", geni_id: String(p), kind: "seed", label: "" }));
         queue = s.queue.concat(fresh);
       }
-      await put({ active, results, attempted, queue });
+      await put(Object.assign({ active, results, attempted, queue }, clearedCreating || {}));
       /* A resolved tab is closed. It is held open only WHILE the search runs, which is the
        * thing the rule protects; once the answer is on the page the tab costs RAM and buys
        * nothing. A still-running or never-asked target is closed too and goes to the next
