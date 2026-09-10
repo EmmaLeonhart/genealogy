@@ -537,8 +537,22 @@ async function pump() {
         chrome.alarms.create(PUMP_ALARM, { when: s.cooldownUntil + 500 });
         break;
       }
-      const serial = (next.job === "export" || next.job === "seed" || next.job === "stats");
-      if (serial && inFlight >= 1) break;
+      /* ⛔ **A SERIAL JOB WAITS ON OTHER SERIAL JOBS, NOT ON PATH SEARCHES.**
+       *
+       * This counted EVERY open tab, so a seed or an export could not start while any individual
+       * job was still resolving -- and an individual job holds its tab for up to ten minutes by
+       * design. Measured 2026-09-10: two mandatory exports sat queued behind three hung path
+       * searches with nothing else in the queue, and would have waited for every one of them.
+       * With captures running continuously there is always an open tab, so the exports would
+       * simply never have run.
+       *
+       * The reasons for serialising are specific and neither of them involves a path search:
+       * Geni runs ONE export at a time, and a creation ends the walk so parallel seeds are work
+       * about to be discarded. Path searches are the thing being accumulated. */
+      const SERIAL = { export: 1, seed: 1, stats: 1 };
+      const serial = !!SERIAL[next.job];
+      const serialInFlight = Object.values(active).filter((j) => j && SERIAL[j.job]).length;
+      if (serial && serialInFlight >= 1) break;
 
       const queue = s.queue.slice(1);
       const job = Object.assign({ jobId: next.geni_id + ":" + (next.kind || next.job),

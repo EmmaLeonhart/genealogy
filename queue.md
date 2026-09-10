@@ -40,6 +40,26 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   The OneTab page in `undigested.md` is **not** digested and stays there: still being worked on,
   *"better for my judgment on this one."*
 
+- **⛔ FOREST EXPORTS ON THESE TWO. QUEUED 2026-09-10, NOTHING ELSE FROM THIS BATCH.**
+
+      6000000025128512415  ONG Ewe Hai 王有海    family_tree 2575, blood_relatives 1359, descendants 1231
+      6000000009688582123  Mabel Tolkien        J. R. R. Tolkien's mother
+
+  **`Forest`.** ONG Ewe Hai is **mandatory** rather than a candidate — a figure at or above
+  **250** makes the export required, and thinking about whether he deserves one is itself the
+  error. Mabel Tolkien is exported by instruction.
+
+  **⛔ NOBODY ELSE FROM THIS BATCH.** Ruled the same day: *"Nobody we did this on gets a gedcom
+  export except mabel tolkien and that other guy."* The gate had flagged 110 rows `warranted` on
+  the backfill and all 110 were cleared. That is a ruling about THIS batch and not about the
+  gate: *"In the future many people will get exported"*, so `exported` keeps being written by
+  `export_gate.decide` on every capture whose real figures clear 250.
+
+  **The export runs from a created ancestor** where the account does not own the profile —
+  `docs/export-seed-rules.md`, and the refusal is real: `/gedcom/export/<id>` returns *"You are
+  not allowed to export that profile."* A direct export job is queued on both as well, so
+  whichever route Geni accepts is the one that lands.
+
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
   item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:
