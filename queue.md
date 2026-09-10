@@ -931,14 +931,25 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
 - **⛔ TESTING THE COMMITS STUFF — NOT BEFORE 21:00 TODAY, 2026-09-10.** *"Add testing the commits
   stuff to the queue lol with a condition that it can't be done until 9pm today."*
 
-  **The gate is the instruction; the scope is not pinned down and is not to be guessed at now.**
-  *"the commits stuff"* was said without elaboration, and the two readings differ enough to matter
-  — testing that today's commits are sound (which under `CLAUDE.md` § *TESTS RUN IN CI/CD OR NOT
-  AT ALL* means checking which sha CI last went green on, not a local `pytest`), or testing the
-  commit tooling itself. **Ask when the gate opens**, per § *ambiguity about which thing is meant
-  is asked*.
+  **THE SCOPE, given 2026-09-10 and no longer open:** *"it's about the pipeline committing and
+  issues with rebasing and merge conflicts and such in the github actions, you literally told me
+  about it."* So it is **the pipeline's own commit/rebase/push behaviour inside GitHub Actions**,
+  not the test suite and not the commit tooling on this machine.
 
-  Nothing about it is to be investigated, run or prepared before 21:00.
+  **⛔ WHERE TO LOOK, AND ONLY WHEN THE GATE OPENS:**
+
+      the GitHub Actions logs   the workflow runs' own output, where the rebase or merge failed
+      earlier chatlogs          `C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl`
+                                -- it was raised in an earlier session and described there
+
+  **⛔ DO NOT INVESTIGATE. NOT A LOG, NOT A RUN, NOT A TRANSCRIPT — NOTHING BEFORE 21:00.** Said
+  directly: *"so do not investigate at all"*. The two sources above are written down so the work
+  starts from the right place, not so it starts early. `CLAUDE.md` § *"Add it to the end of the
+  queue" means WRITE IT DOWN AND STOP*.
+
+  **The candidate reading recorded when the scope was still open — testing that today's commits
+  are sound, or testing the commit tooling — is WRONG and is deleted rather than kept beside the
+  real one.**
 
 - **⛔ AN ANALYSIS OF THE FIVE ARTEFACTS SENT 2026-09-10.** *"Things to think about. But put at the
   end of the queue an analysis of these"* — so this is the roster and **nothing here is
