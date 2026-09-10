@@ -35204,3 +35204,55 @@ Two changes, and 1.7.2 is the two of them:
 
 Re-run on the same person, first 7 steps: **7 `both_present`, 0 `no_family_block`**, queue
 growing rather than emptying.
+
+### ⛔⛔ THE WALK CREATED PEOPLE ON GENI. Two reader bugs, and the walk was never climbing
+
+**It created real profiles in the Черкасский / Идаров tree during two `seedwalk` runs, roughly
+09:29–09:52.** Geni's own revision log is the evidence — *"NN Черкасская was added as NN
+Черкасская's father by Emma Himiko Leonhart, 31 minutes ago"* — and Geni's add-parent flow makes
+the couple, so each add is two profiles. They stay: deleting is not available to us and they are
+in the corpus now.
+
+**And it was reported as nothing having happened.** The background only learns of a creation from
+a job's RESULT, the results went missing (`tab_closed`, timed-out confirmations), and the run
+state was then read as authoritative and repeated as *this session created nobody*. The check
+that would have falsified it — Geni's revision log, one page — was not run until Emma produced a
+screenshot of the tree. `CLAUDE.md` § *CHECK before raising an alarm* has a mirror image and this
+is it: check before giving the all-clear, and never from the instrument that is the suspect.
+
+**Three defects, all in the same function, all from guessing at markup instead of reading it.**
+`GC.seed.family()` decides how many parents a person has, and `runSeed` creates one when that
+number is 0 or 1.
+
+1. **`found` meant a container existed.** `out.found = true` was set by `#family_profile_module`
+   being in the DOM. It renders before the data lands in it, so a page caught mid-load read as
+   *no parents at all* — tier 4/5, a creation.
+2. **The prose reader could not see the prose.** It looked for a LEAF element whose text starts
+   with `son of` (`children.length === 0`). Every relation line is `<p>Son of <a>…</a></p>`, so
+   `children.length` is 2+ and the filter matched **nothing** — parents empty on people who
+   plainly had two.
+3. **⛔ The relation lines are separated by `<br>`, inside ONE `<p>`.** Measured on Constantine,
+   lord of Barbaron `6000000006101354662`: one `<p>`, **14 anchors**, of which one is his father
+   and the rest are three wives and nine children. Taking an element's anchors read all 14 as
+   parents — and `enqueue` is what the walk climbs into next, so **the walk went into spouses and
+   children and spread sideways and downwards through the family rather than up.** That is what
+   filling in the tree looked like, and it is why an entire run came back `both_present`.
+
+**The fixes:**
+
+* The block is found by the `Immediate Family:` header cell; each `<br>`-separated segment is one
+  relation; a parent is an anchor inside the `Son of` / `Daughter of` segment and nowhere else.
+* **`read`** — the block rendered at least one relation — is what a write may depend on.
+  **`found`** is not: a parentless person has no `Son of` line at all, so gating creation on
+  `found` would make the walk unable to ever create anybody.
+* Exactly one parent waits for the labelled block before deciding which is missing. Without that
+  wait Constantine, a plain tier 3, came back `one parent listed and no label says which`.
+
+**Fail closed, so a lost result can never again mean a lost creation:** `seed.js` messages the
+background `{type:"creating"}` **before** it clicks save, and the background halts the run on
+that message rather than on a result. A scheduler-driven write that cannot get an ACK does not
+click save at all. `pump` refuses to open another seed page while `creating` is set, and only a
+new run clears it.
+
+**Verified by behaviour on Constantine, lord of Barbaron:** four relation lines read, parents
+**1** — the nine children and three spouses excluded.

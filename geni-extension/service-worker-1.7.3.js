@@ -115,7 +115,18 @@ const DEFAULTS = {
    * It lives in the STATE rather than on the seed job because a creation throws the seed queue
    * away: the export is enqueued by the `added` handler, which has the result and the state and
    * no longer has the job that started the climb. */
-  exportWalk: "forest"
+  exportWalk: "forest",
+  /* ⛔⛔ **THE PRE-WRITE FLAG. A WALK MAY CREATE ONE PERSON AND THEN IT IS OVER.**
+   *
+   * `seed.js` sets this by message immediately BEFORE it clicks save, so it is set even when the
+   * job that set it never reports — a closed tab, a timed-out confirmation, a torn-down worker.
+   * On 2026-09-10 all three happened and every one of them left the background believing nothing
+   * had been created, so the walk kept climbing and kept creating.
+   *
+   * Anything other than empty means *a person may now exist because of this run*, and that is
+   * enough to stop. It is deliberately not a count and deliberately not clearable by a result:
+   * only a new run clears it. */
+  creating: ""
 };
 
 async function state() {
@@ -153,6 +164,28 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   }
   (async () => {
     const s = await state();
+    /* ⛔ **A WRITE IS ABOUT TO HAPPEN. STOP THE RUN NOW, BEFORE IT DOES.**
+     *
+     * This arrives from `seed.js` ahead of the save click and it is the only creation signal that
+     * does not depend on the job surviving. The run is halted here rather than in the `result`
+     * handler, so a lost result cannot leave the walk climbing.
+     *
+     * The remaining seed jobs go too: they were the search for a slot and the slot has been
+     * found. Any export the run has queued stays -- that is the point of the climb. */
+    if (msg.type === "creating") {
+      const s2 = await state();
+      await put({
+        creating: String(msg.geni_id || "unknown"),
+        running: false,
+        queue: (s2.queue || []).filter((q) => q.job !== "seed"),
+        results: (s2.results || []).concat([{ at: new Date().toISOString(), job: "seed",
+                                              geni_id: String(msg.geni_id || ""),
+                                              state: "creating", which: msg.which || "",
+                                              first: msg.first || "", last: msg.last || "" }])
+      });
+      sendResponse({ halted: true });
+      return;
+    }
     if (msg.type === "claim") {
       const job = s.active[String(sender.tab && sender.tab.id)];
       sendResponse(job || null);
@@ -199,7 +232,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           queue = queue.concat([{ job: "export", geni_id: String(pid), kind: w,
                                   walk: w, label: "created by the parent walk" }]);
         }
-        await put({ active, results, queue, endId: pid });
+        /* The `creating` flag has already stopped the run. The export is the whole point of the
+         * climb, so it is let through -- and only it: `pump` will not open a seed while
+         * `creating` is set, so `running` coming back on cannot restart the walk. With no `pid`
+         * there is nothing to export from and the run simply stays stopped. */
+        await put({ active, results, queue, endId: pid, running: !!pid });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -282,7 +319,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       await put({
         queue: [{ job: "individual", geni_id: id, kind: "individual",
                   create: true, label: msg.label || "" }],
-        results: [], active: {}, endId: "", dryRun: false,
+        results: [], active: {}, endId: "", dryRun: false, creating: "",
         exportWalk: msg.exportWalk || "forest",
         running: true, startedAt: new Date().toISOString()
       });
@@ -313,7 +350,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       if (!id) { sendResponse({ error: "no geni_id" }); return; }
       await put({
         queue: [{ job: "seed", geni_id: id, kind: "seed", label: msg.label || "" }],
-        results: [], active: {}, endId: "", dryRun: false,
+        results: [], active: {}, endId: "", dryRun: false, creating: "",
         exportWalk: msg.exportWalk || "forest",
         /* ⛔ AN HOUR, NOT THE TEN-MINUTE DEFAULT. `DEFAULTS.waitMs` is 600000 and it is the
          * PATH search's budget; `runExport` takes the same field and a 5,000-person ball
@@ -372,6 +409,14 @@ async function pump() {
        *
        * One at a time is also what `docs/parent-walk-algorithm.md`'s order actually describes:
        * the next person comes from this person's answer. */
+      /* ⛔ **ONE CREATION PER RUN, ENFORCED WHERE THE TAB IS OPENED.** `creating` is set before
+       * the write, never cleared by a result, and cleared only by starting a new run. So once a
+       * person may exist, no further seed page is ever opened -- whatever the queue says, and
+       * whatever happened to the job that set it. The export is still allowed through. */
+      if (next.job === "seed" && s.creating) {
+        await put({ queue: s.queue.filter((q) => q.job !== "seed") });
+        continue;
+      }
       const limit = (next.job === "export" || next.job === "seed") ? 1 : s.concurrency;
       if (inFlight >= limit) break;
 

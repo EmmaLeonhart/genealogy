@@ -44,18 +44,102 @@ GC.seed = {};
  * used only to say WHICH one a lone parent is. Two or more parents listed means the slot is
  * full, whatever any label says.
  */
+/* ⛔⛔ **`found` MEANS THE PROSE WAS READ. IT USED TO MEAN A CONTAINER EXISTED, AND THAT CREATED
+ * REAL PEOPLE ON A LIVE SITE.**
+ *
+ * 2026-09-10. `out.found = true` was set by `#family_profile_module` being present in the DOM.
+ * That element renders before the family data lands in it, so a page caught mid-load gave:
+ *
+ *     prose block   absent   ->  out.parents === []
+ *     the module    present  ->  out.found === true
+ *
+ * and `runSeed` reads that pair as *this person has no parents at all*, which is tier 4/5 and a
+ * creation. The walk then invented a father — and a mother beside him, because Geni's add-parent
+ * flow makes the couple — on page after page of the Черкасский / Идаров tree.
+ *
+ * The file already says the right thing one comment up: *the PROSE block is authoritative for
+ * how many parents exist, and the labelled block is used only to say WHICH one a lone parent
+ * is.* `found` was the one place that did not obey it. The labelled block can no longer make a
+ * page look read.
+ *
+ * **Absent prose is NOT zero parents. It is no answer**, and no answer must never reach a write.
+ */
 GC.seed.family = function () {
-  const out = { parents: [], father: null, mother: null, found: false };
+  const out = { parents: [], father: null, mother: null, found: false, read: false, module: false };
 
-  /* The prose: "Son of A" / "Daughter of A; B and C". Every anchor in it is a parent. */
-  const lead = [...document.querySelectorAll("*")]
-    .filter((e) => e.children.length === 0 && /^(son|daughter) of/i.test((e.textContent || "").trim()));
-  if (lead.length) {
-    const blk = lead[0].parentElement;
-    if (blk) {
+  /* ⛔⛔ **THE PROSE IS `<th>Immediate Family:</th><td><p>Son of <a>…</a> and <a>…</a></p>…</td>`,
+   * AND THE OLD READER COULD NOT SEE IT.**
+   *
+   * It looked for a LEAF element whose text starts with "son of" — `e.children.length === 0`.
+   * Every relation line is a `<p>` containing `<a>` elements, so `children.length` is 2 or more
+   * and the filter matched nothing. Measured on the live DOM 2026-09-10.
+   *
+   * That is the other half of the creations. With no prose match `out.parents` stayed empty
+   * while `out.found` was set true by the module merely existing, so `runSeed` read *no parents
+   * at all* on people who plainly had two, and created a father.
+   *
+   * And where the old filter DID match something, it then took **every** `a[data-profile-id]` in
+   * the matched element's PARENT — which is this `<td>`, holding the spouse and children lines
+   * too. So parents were over-counted from the wrong lines, which is a walk that climbs into
+   * somebody's wife and calls her a parent.
+   *
+   * Both faults come from guessing at the markup instead of reading it. This reads it:
+   *
+   *   - the `Immediate Family:` header cell finds the block, and its row's `<td>` is the block
+   *   - each `<p>` in it is ONE relation, and only the `Son of` / `Daughter of` one holds parents
+   *   - `read` is *this block has rendered at least one relation*, which is true for a
+   *     parentless person too — they still have a `Husband of` or `Father of` line
+   *
+   * **`read` is what a write is allowed to depend on, and `found` is not**: a person with no
+   * parents has no `Son of` line at all, so requiring `found` before creating would make the walk
+   * unable to ever create anybody — which is the entire point of it. */
+  const th = [...document.querySelectorAll("th")]
+    .find((e) => /^immediate family/i.test((e.textContent || "").trim()));
+  const td = th && th.parentElement ? th.parentElement.querySelector("td") : null;
+  if (td) {
+    /* ⛔⛔ **THE RELATION LINES ARE SEPARATED BY `<br>`, NOT BY ELEMENTS.** Measured on
+     * Constantine, lord of Barbaron `6000000006101354662`, 2026-09-10:
+     *
+     *     <td><p>Son of <a>Vasak Pahlavuni</a><br>
+     *            Husband of <a>Alix de Lampron</a>; <a>Beatrice</a><br>
+     *            Father of <a>…</a>, <a>…</a>, …</p></td>
+     *
+     * ONE `<p>`, fourteen anchors, and only the first is a parent. Taking a whole element's
+     * anchors -- any element, `<p>` or `<td>` -- reads his wives and his children as his parents.
+     * That is not a mis-count that makes the walk cautious: `enqueue` is what the walk climbs
+     * into next, so it walked into spouses and CHILDREN and spread sideways and downwards
+     * through the family instead of going up. Reading it as `parents: 14` also makes every such
+     * person `both_present`, which is why an entire run came back that way.
+     *
+     * So the split is on `<br>`, and a parent is an anchor inside the `Son of` / `Daughter of`
+     * segment and nowhere else. Both markups are handled: several `<p>`s, or one `<p>` full of
+     * `<br>`s. */
+    const containers = td.querySelectorAll("p").length ? [...td.querySelectorAll("p")] : [td];
+    const blocks = [];
+    for (const c of containers) {
+      let cur = { text: "", anchors: [] };
+      for (const node of c.childNodes) {
+        if (node.nodeName === "BR") { blocks.push(cur); cur = { text: "", anchors: [] }; continue; }
+        cur.text += node.textContent || "";
+        if (node.nodeType === 1) {
+          if (node.matches && node.matches("a[data-profile-id]")) cur.anchors.push(node);
+          else cur.anchors.push(...node.querySelectorAll("a[data-profile-id]"));
+        }
+      }
+      blocks.push(cur);
+    }
+    const lines = blocks
+      .map((b) => ({ text: b.text.replace(/\s+/g, " ").trim(), anchors: b.anchors }))
+      .filter((l) => l.text);
+    /* Rendered at least one relation. An empty `<td>` is a block that has not filled in yet, and
+     * it must never look like a person without parents. */
+    out.read = lines.length > 0;
+    out.lines = lines.map((l) => l.text.slice(0, 60));
+    const parentLine = lines.find((l) => /^(son|daughter) of/i.test(l.text));
+    if (parentLine) {
       out.found = true;
       const seen = new Set();
-      for (const a of blk.querySelectorAll("a[data-profile-id]")) {
+      for (const a of parentLine.anchors) {
         const pid = a.getAttribute("data-profile-id");
         if (seen.has(pid)) continue;
         seen.add(pid);
@@ -67,7 +151,9 @@ GC.seed.family = function () {
   /* The labels, for which-one-is-it when exactly one parent exists. */
   const fam = document.querySelector("#family_profile_module, .immediate-family, #immediate_family");
   if (fam) {
-    out.found = true;
+    /* NOT `found`. This block says which of a lone parent is the father, and nothing about how
+     * many there are -- see the comment above the function. */
+    out.module = true;
     for (const lbl of fam.querySelectorAll("*")) {
       if (lbl.children.length !== 0) continue;
       const t = (lbl.textContent || "").trim().toLowerCase();
@@ -380,6 +466,44 @@ GC.seed.addParent = async function (which, p) {
   await GC.until(() => ($("page_profile_names_en-US_last_name") || {}).value, 6000);
   step("form-settled");
 
+  /* ⛔⛔ **TELL THE BACKGROUND BEFORE THE WRITE, NOT AFTER IT.**
+   *
+   * A creation is supposed to END the walk. The background only learns of one from the job's
+   * RESULT, and on 2026-09-10 the results were the thing that went missing: tabs were closed
+   * mid-job, confirmations timed out, and every lost result left the background believing no
+   * creation had happened. It carried on climbing and carried on creating.
+   *
+   * A report that arrives after the write cannot cover the write. This one goes out first, so
+   * the background's record of *a person may now exist* does not depend on this job surviving to
+   * report. It is awaited: the click does not happen until the background has the flag.
+   *
+   * `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* has a sibling here -- a
+   * guard that only runs on the success path is not a guard. This one runs before the thing it
+   * guards against. */
+  let announced = false;
+  try {
+    const ack = await chrome.runtime.sendMessage({ type: "creating",
+                                                  geni_id: String(p.childId || ""),
+                                                  which: which, first: p.first, last: p.last });
+    announced = !!(ack && ack.halted);
+  } catch (e) { /* the ack stays false, and the next line decides what that means */ }
+
+  /* ⛔ **A SCHEDULED WRITE THAT COULD NOT ANNOUNCE ITSELF DOES NOT HAPPEN.**
+   *
+   * `jobId` is set by `pump` and by nothing else, so it is exactly *the background is driving
+   * this*. When it is driving, the halt is the thing that keeps a single creation from becoming
+   * a run of them — and an unacknowledged message means the halt is not in place. A torn-down
+   * worker resolves `sendMessage` as `undefined` with no rejection and no `lastError`
+   * (`service-worker`'s own header documents that), which is why the ACK is checked rather than
+   * the absence of a throw.
+   *
+   * The DOM-trigger path has no `jobId`: that is a person deliberately running one seed on one
+   * page, there is no walk to stop, and it proceeds. */
+  if (p.viaScheduler && !announced) {
+    step("announce-failed");
+    return { state: "announce_failed", first: p.first, last: p.last };
+  }
+
   step("clicking-save");
   $("submit_ifs").click();
   step("saved-clicked");
@@ -419,9 +543,18 @@ GC.runSeed = async function (job) {
    * So: wait for the load to FINISH first, and give the module its own budget after that. The
    * 25000 was written for a tab somebody was looking at. */
   await GC.until(() => document.readyState === "complete", 60000);
-  await GC.until(() => !!document.querySelector("#family_profile_module, .immediate-family"), 60000);
-  const fam = GC.seed.family();
-  if (!fam.found) return report({ state: "no_family_block" });
+  /* ⛔ WAIT FOR THE PROSE, NOT FOR THE CONTAINER. `GC.seed.family().found` is now the prose
+   * block and only the prose block, so this waits for the thing the parent count is read from.
+   * Waiting on `#family_profile_module` was waiting on an element that is present before it says
+   * anything, and every second of that gap was a window in which a page read as parentless. */
+  await GC.until(() => GC.seed.family().read, 60000);
+  let fam = GC.seed.family();
+  /* ⛔ `read`, NOT `found`. `found` means a `Son of` line exists, i.e. this person HAS parents --
+   * requiring it before proceeding would skip exactly the parentless people the walk exists to
+   * create on. `read` means the Immediate Family block rendered at least one relation, which is
+   * what distinguishes *no parents* from *not loaded yet*. An unrendered block is not a person
+   * with no family and must not reach `plan()`. */
+  if (!fam.read) return report({ state: "family_not_read", module: fam.module });
 
   const nm = GC.seed.name();
   const pat = GC.seed.patronymic(nm);
@@ -448,6 +581,17 @@ GC.runSeed = async function (job) {
    * here is exactly what creates a second father. */
   let which;
   if (n === 1) {
+    /* ⛔ **THE LABELLED BLOCK LOADS LATER THAN THE PROSE, AND WAITING FOR IT IS NOT OPTIONAL.**
+     * `read` is satisfied by the prose alone, which is right -- the prose is what the parent
+     * COUNT comes from. But with exactly one parent the prose cannot say which one it is
+     * (`Son of X` is the same sentence for a lone father and a lone mother), and that is the
+     * labelled block's one job. Deciding before it has rendered turned Constantine, lord of
+     * Barbaron -- a plain tier 3, father present -- into `one parent listed and no label says
+     * which`. A guard that fires on a page it did not wait for is a skip, not a safeguard. */
+    if (!fam.father && !fam.mother) {
+      await GC.until(() => { const f = GC.seed.family(); return !!(f.father || f.mother); }, 30000);
+      fam = GC.seed.family();
+    }
     if (fam.father && !fam.mother) which = "mother";
     else if (fam.mother && !fam.father) which = "father";
     else return report({ state: "skipped", reason: "one parent listed and no label says which",
@@ -469,6 +613,11 @@ GC.runSeed = async function (job) {
   }
   /* The job's dry-open flag rides on the plan, which is what `addParent` receives. */
   p.stopBeforeSave = !!job.stopBeforeSave;
+  /* Whose page the write happens on, so the background's pre-write flag names a person. */
+  p.childId = String(job.geni_id);
+  /* `jobId` is set by `pump` and by nothing else: it means the background is driving this walk,
+   * and therefore that an unannounced write must not happen. */
+  p.viaScheduler = !!job.jobId;
   const r = await GC.seed.addParent(which, p);
   /* An add that fails is a skip, not a stop: the walk takes the next person off the queue. */
   return report(Object.assign({ which: which, tier: p.tier, first: p.first, last: p.last,
