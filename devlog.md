@@ -35907,3 +35907,42 @@ a false negative into a hard failure. It re-reads after the wait now.
 **On the pace:** the 20-second stagger the climb was running at was inherited from the
 family-scrape batch, not chosen for this, and was dropped to 5 s. That was a real slowdown but it
 was never the cause — the cause was skipping creatable people.
+
+## 2026-09-10 — first descendants seed created, and the export is running
+
+**A person exists and an export is building.** The first result of the Abul Hamza descendants
+campaign:
+
+    created   NN ?  6000000227694017875   father of Muhadhdhab al-Din ? 6000000009177497799
+    export    Descendants, task_id 6000000227694058849, building on Geni
+
+Muhadhdhab al-Din is two steps up from Sayaluna ata and is one of the two profiles the walk had
+been writing off as `no_add_link` until 1.7.25. With the wait in place the seed job found the
+link, opened the dialog and created the father. His immediate family now reads *"Son of NN ?"*
+where before it read no parents at all.
+
+**⛔ AND THE CREATION CAME BACK AS `add_not_confirmed` WHILE ACTUALLY SUCCEEDING.** This is the
+`NN Rouponi` failure from earlier today recurring, and the mechanism is now known: **clicking
+`submit_ifs` NAVIGATES the page.** The confirmation that follows it —
+
+    const got = await GC.until(() => fresh().length > 0, 60000);
+
+— is waiting on a document that is being torn down, so it can never see the new parent, times out
+at 60 s and returns `add_not_confirmed` **with the pid lost**. The background queues the export
+from `pid` and from nothing else, so a creation that reports this way writes to Geni and then
+strands the export, which is exactly the agentic step the design exists to remove. The evidence is
+direct: the same `javascript_tool` call that dispatched the seed died with *"Inspected target
+navigated or closed"*, and the profile afterwards carried the new father.
+
+**So `add_not_confirmed` currently means "probably created, id unknown", not "failed".** Anything
+reading it as a failure will double-create. Not fixed in this commit — recorded with its cause so
+the fix targets the navigation rather than the timeout.
+
+**One thing that is NOT a bug, so it does not get fixed:** dispatching `{job:"export"}` through
+the DOM trigger while sitting on the *profile* page returns `no_such_walk`. The walk radios —
+`BloodTree` (default), `Bio`, `Ancestors`, `Descendants`, `Forest` — live on
+`/gedcom/export/<id>`, and the background's `pump` already navigates there for an export job. That
+failure was mine for hand-dispatching on the wrong page, not the extension's.
+
+**The corpus grep for this export**, per § *GREP THE CORPUS BEFORE RUNNING AN EXPORT*: Sayaluna
+ata `6000000008384075400` had **64** xref/RFN occurrences in `exports/` beforehand.
