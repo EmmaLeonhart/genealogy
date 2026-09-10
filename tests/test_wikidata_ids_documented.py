@@ -1,4 +1,4 @@
-"""Every Wikidata ID the code can emit must be documented in `CLAUDE.md`.
+"""Every Wikidata ID the code can emit must be documented in the RULES.
 
 `CLAUDE.md`'s property table exists because plausible-looking IDs are often
 something else entirely — P1288 reads like a genealogy identifier and is a
@@ -11,6 +11,17 @@ name, and it was found by grepping the source, not by anyone remembering the
 rule. `CLAUDE.md` then gained a sentence asking people to remember — which is
 what this file replaces, for the same reason `test_gedcom_real_exports.py`
 replaced "re-measure the xref prefixes when an export lands".
+
+⛔ **THE TABLE MOVED, AND THIS TEST WAS STILL READING THE OLD ADDRESS.** `CLAUDE.md` was cut
+from 5,548 lines to 239 on 2026-09-09 and the property table went with it, onto the pages the
+rules now link to — *"nothing was deleted, it was moved"*. This file read `CLAUDE.md` alone, so
+the first CI run on a post-cut sha reported **24 IDs as undocumented when every one of them is
+documented**, which is the same stale-path failure as `background.js` in
+`test_geni_extension.py`: a real invariant pointed at a file that no longer holds the thing.
+
+So the reference is the rules, all of them — `CLAUDE.md` plus `docs/rules/*.md`. `REFERENCE_FILES`
+is asserted to exist below, so a later move fails loudly here instead of silently widening what
+counts as documented.
 
 **This checks that an ID is documented. It cannot check that it is correct.**
 Confirming an ID means asking Wikidata, which is network, and this suite is
@@ -26,7 +37,16 @@ import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SOURCE = REPO_ROOT / "src" / "genimerge"
-REFERENCE = REPO_ROOT / "CLAUDE.md"
+
+#: The rules, which is where the property table lives since the 2026-09-09 cut. `CLAUDE.md`
+#: carries the ones its own rules name; the rest are on the page each rule links to.
+REFERENCE_FILES = [REPO_ROOT / "CLAUDE.md"] + sorted((REPO_ROOT / "docs" / "rules").glob("*.md"))
+
+
+def _reference() -> str:
+    """Every rules page concatenated. An ID documented on any of them is documented."""
+    return chr(10).join(p.read_text(encoding="utf-8") for p in REFERENCE_FILES if p.exists())
+
 
 #: A Wikidata property or item ID written as a string literal in the source.
 #: Quoted deliberately: bare `P123` in prose or a docstring is a mention, while
@@ -34,7 +54,7 @@ REFERENCE = REPO_ROOT / "CLAUDE.md"
 ID_LITERAL = re.compile(r"""["'](P\d+|Q\d+)["']""")
 
 pytestmark = pytest.mark.skipif(
-    not REFERENCE.exists(), reason="CLAUDE.md absent from this checkout"
+    not (REPO_ROOT / "CLAUDE.md").exists(), reason="CLAUDE.md absent from this checkout"
 )
 
 
@@ -62,14 +82,24 @@ def test_the_source_actually_contains_ids_to_check():
     assert len(found) > 10
 
 
+def test_the_reference_pages_are_all_present():
+    """The cut moved the table onto these pages; a rename must fail here, not pass quietly."""
+    missing = [p.name for p in REFERENCE_FILES if not p.exists()]
+    assert not missing, f"the rules pages this check reads are gone: {missing}"
+    assert len(REFERENCE_FILES) >= 2, (
+        "only CLAUDE.md was found -- docs/rules/ is where the property table lives"
+    )
+
+
 def test_every_wikidata_id_in_the_code_is_documented():
-    reference = REFERENCE.read_text(encoding="utf-8")
+    reference = _reference()
     found = _ids_in_source()
 
     undocumented = _undocumented(found, reference)
 
     assert not undocumented, (
-        "Wikidata IDs used in the code but missing from CLAUDE.md's table: "
+        "Wikidata IDs used in the code but missing from the rules' property table "
+        f"({', '.join(p.name for p in REFERENCE_FILES)}): "
         f"{undocumented}. The table is what stops a plausible-looking ID being "
         "the wrong one — P1288 looks like a genealogy identifier and is a German "
         "literature encyclopedia. Confirm the ID against live Wikidata with "

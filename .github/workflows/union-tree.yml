@@ -1,0 +1,150 @@
+name: Measure the Wikidata union tree on a runner
+
+# **THE MEASUREMENT, AND ONLY THE MEASUREMENT.** `CLAUDE.md` § *The Wikidata tree does NOT yet go
+# into the synoptic tree*: the overlay exists, it must not be wired into the merge until it FITS,
+# and whether it fits on a runner has never been measured. This workflow answers that one question
+# and changes nothing — it commits nothing and pushes nothing.
+#
+# **What is already known, and what is not.** The union merge ran LOCALLY on 2026-09-09:
+# 3,038,219 people, 1,961,091 families, 516 MB on disk, with `--connectivity`. What is unknown is
+# the runner, and the history says not to assume: the unslimmed merge was KILLED here at
+# 15,921 MB with 67 MB free (run 33808839371), `--slim` then did the same tree in 8.79 GB, and
+# `--connectivity` keeps the primary key, the sex and the five structural pointers only — a
+# different per-person constant again, on 3.0M people instead of 1.45M.
+#
+# **`--connectivity` is a DIFFERENT TREE, not a smaller one.** No names, dates or places, so the
+# derive scripts cannot read it. That is why this is its own workflow rather than a flag on
+# `tree.yml`: the union tree answers *is this person connected*, and `out/merged.ged` feeds the
+# editing pipeline. Wiring the overlay into that merge is a separate decision, and it comes after
+# this number exists.
+#
+# The union tree is NOT committed — 516 MB, far over GitHub's file limit, exactly as
+# `out/merged.ged` is not. It is uploaded as an artifact so the next step (the neighbourhood size
+# measured on the merged tree rather than on the union-find stand-in) has something to read.
+
+on:
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: "Upload the union tree as an artifact (~516 MB)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: union-tree
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      # The same sparse checkout as `tree.yml`, and for the same reason: `out/wikidata/` STAYS IN.
+      # `build-wikidata-gedcom.py` reads `relations.tsv` (77 MB) and `p2600-all.tsv` (16 MB), both
+      # tracked. Disk was never the constraint here — the runner reports ~79 GB free — memory was.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/paths_for_wikidata_isolates
+            !/geni-scraping
+            !/geni_pages
+            !/orderlife
+            !/chats
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Room to work
+        run: |
+          echo "MEMORY"; free -m
+          echo "DISK";   df -h / | tail -1
+          echo "CORPUS"; find exports -name '*.ged' | wc -l
+          echo "corpus bytes: $(du -sh exports | cut -f1)"
+
+      # `build-wikidata-gedcom.py` reads `reports/derived-facts.csv` for the sex of people whose
+      # own `P22`/`P25` edges do not settle it. That file is committed gzipped.
+      - name: Unpack the derived CSVs
+        run: python scripts/pack-derived.py --unpack || echo "nothing to unpack"
+
+      - name: Wikidata as a mergeable GEDCOM
+        id: overlay
+        env:
+          PYTHONPATH: src
+        run: |
+          ( while true; do
+              echo "MEM $(date -u +%H:%M:%S) $(free -m | awk '/^Mem:/{print "used="$3"MB avail="$7"MB"}')"
+              sleep 30
+            done ) &
+          SAMPLER=$!
+          set +e
+          python scripts/build-wikidata-gedcom.py
+          STATUS=$?
+          set -e
+          kill $SAMPLER 2>/dev/null || true
+          ls -la out/wikidata-tree.ged || true
+          exit $STATUS
+
+      # **THE QUESTION.** Every `.ged` under `exports/` plus the overlay LAST, so *Later sources
+      # win value conflicts* leaves Geni's own values in place on the Geni-keyed half.
+      - name: The union merge
+        id: union
+        env:
+          PYTHONPATH: src
+        run: |
+          ( while true; do
+              echo "MEM $(date -u +%H:%M:%S) $(free -m | awk '/^Mem:/{print "used="$3"MB avail="$7"MB"}') DISK=$(df -m / | awk 'NR==2{print $4"MB free"}')"
+              sleep 30
+            done ) &
+          SAMPLER=$!
+          set +e
+          /usr/bin/time -v python -m genimerge merge --connectivity \
+            --also out/wikidata-tree.ged \
+            -o out/union.ged 2> out/union-merge.err
+          STATUS=$?
+          set -e
+          kill $SAMPLER 2>/dev/null || true
+          echo "---- peak, off /usr/bin/time -v ----"
+          grep -E "Maximum resident set size|Elapsed \(wall clock\)" out/union-merge.err || true
+          tail -40 out/union-merge.err || true
+          exit $STATUS
+
+      - name: What the union tree is
+        if: always()
+        run: |
+          if [ -f out/union.ged ]; then
+            printf 'union tree: %s bytes\n' "$(wc -c < out/union.ged)"
+            printf 'INDI: %s\n' "$(grep -c '^0 @I' out/union.ged || true)"
+            printf 'FAM:  %s\n' "$(grep -c '^0 @F' out/union.ged || true)"
+            printf 'RFN (geni-keyed):  %s\n' "$(grep -c '^1 RFN geni:' out/union.ged || true)"
+            printf 'REFN (qid-only):   %s\n' "$(grep -c '^1 REFN Q' out/union.ged || true)"
+          else
+            echo "no union tree was produced -- read the MEM lines and union-merge.err above"
+          fi
+
+      # The tree itself is never committed. The artifact is so the next step -- the neighbourhood
+      # measured on the merged tree instead of the union-find stand-in -- has something to read.
+      - name: Keep the union tree as an artifact
+        if: ${{ always() && inputs.upload }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: union-tree
+          path: |
+            out/union.ged
+            out/union-merge.err
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Say what it cost
+        if: always()
+        run: |
+          echo "overlay: ${{ steps.overlay.outcome }} | union merge: ${{ steps.union.outcome }}"
+          echo "A kill shows as 'The runner has received a shutdown signal' and nothing else;"
+          echo "the MEM lines are what turn that into a number. Local reference, 2026-09-09:"
+          echo "3,038,219 people, 1,961,091 families, 516 MB, with --connectivity."
