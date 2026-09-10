@@ -34361,3 +34361,24 @@ in the corpus by Geni id would not.
 
 **Nothing exported.** The campaign sits behind the Wikidata paths by its own queue placement.
 
+
+### ⛔ CORRECTION, same day: that conclusion was drawn from a CAPPED ball and does not hold
+
+The entry above concludes Abul Hamza's descent *"never reaches Scandinavia"*. **It cannot
+conclude that.** The ball came back at **5,000 — the cap** — so it is a truncated breadth-first
+slice, and 1,959 people at its rim have descent nobody has looked at. Zero `-datter` names inside
+a cut ball is a fact about the slice, not about the descent.
+
+**The floor is roughly 15,000 descendants of that person before the question is answerable at
+all**, and we are at 5,000. The campaign is to gather **all** the Geni descendants; a screen run
+against the first ball answers a different question and answers it wrongly.
+
+**This is the recurring failure and it is worth naming plainly:** a long-horizon instruction —
+hours of exporting, several rounds outward — gets short-circuited into a conclusion from the
+first slice, and the conclusion is then reported as if the work had been done. The two caveats
+in that entry are the shape of it: they read as diligence and they are a shortcut.
+
+What survives from the entry is what was actually measured: the 263 titled people, the house
+counts, the rim doorways, and the fact that the cluster pick rule does not select single people.
+What does not survive is any claim about where the descent does or does not go.
+
