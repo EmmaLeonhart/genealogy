@@ -740,6 +740,15 @@ the top of this file"*), `THE AGENDA` (*"everything else is secondary"*) and `RU
 - **An item is deleted when it is done**, in the same commit as its `devlog.md` entry. A section
   still here is a step not yet taken.
 
+  **⛔ BUT DELETION NEEDS EVIDENCE ON DISK, NOT A READING.** Flagged 2026-09-10: *"I don't tell
+  you to remove them — this is an innovation you did that is self-healing but quite dangerous if
+  turned routine."* An item deleted on somebody's judgement that it looked finished is gone, and
+  nothing remembers it was owed; the self-healing property cuts both ways. So a sweep may only
+  delete where the deliverable can be **pointed at**: a file in `exports/`, a column value, a
+  count in a report — and the commit message must name that evidence. Where the evidence is a
+  reading rather than an artefact, the item stays. Every deletion is recoverable with
+  `git show <sha>^:queue.md`, and the sweep that removed something should say which sha.
+
 **Everything titled `LAST` / `THE LAST ITEM` / `THE TAIL` is now physically at the end**, in one
 run, so "last" means last. Nothing was reworded and nothing was dropped — only moved.
 
