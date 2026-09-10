@@ -27,28 +27,83 @@ document linearly instead.
 """
 from __future__ import annotations
 
+import pathlib
 import re
 from html.parser import HTMLParser
 
+#: ⛔ THE PHRASE TABLE IS NOT WRITTEN HERE. It is lifted out of `geni-extension/content/family.js`,
+#: which is the live scraper and therefore the authority on what a page says.
+#:
+#: **Two hand-maintained copies of one rule drift, and the drift is silent.** This module carried
+#: its own list of 12 phrases while `GC.family.PHRASES` carried 24, and the twelve missing ones
+#: were not obscure: `ex-husband of`, `ex-wife of`, `fiancé(e) of`, all six `step*`,
+#: `adopted son/daughter of` and `foster son/daughter of`. `scripts/family-scrape-js.py` already
+#: solved this for the injected snippet by parsing the extension source rather than restating it;
+#: this is the same fix for the offline reader, and it is what lets the two be *proved* equal
+#: instead of asserted equal -- `scripts/prove-saved-page-equivalence.py`.
+#:
+#: The subject/target roles stay here, because `family.js` maps a phrase to ONE token (`parent`,
+#: `sibling`) while this module needs both ends. A phrase in the extension table with no entry
+#: below is still recognised as an opener -- it just carries no role, which keeps an unknown
+#: phrase from being mis-attributed rather than silently classified.
+_ROLES = {
+    "parent": ("child", "parent"),          # "Son of A"      -> subject is the child
+    "child": ("parent", "child"),           # "Father of A"   -> subject is the parent
+    "spouse": ("spouse", "spouse"),
+    "partner": ("spouse", "spouse"),
+    "ex-spouse": ("ex-spouse", "ex-spouse"),
+    "fiance": ("fiance", "fiance"),
+    "sibling": ("sibling", "sibling"),
+    "half-sibling": ("sibling", "sibling"),
+    "step-parent": ("step-child", "step-parent"),
+    "step-child": ("step-parent", "step-child"),
+    "step-sibling": ("step-sibling", "step-sibling"),
+    "adoptive-parent": ("adopted-child", "adoptive-parent"),
+    "foster-parent": ("foster-child", "foster-parent"),
+}
+
+_FAMILY_JS = (pathlib.Path(__file__).resolve().parent.parent
+              / "geni-extension" / "content" / "family.js")
+#: `[/^son of/i, "parent"],` -- the entries of `GC.family.PHRASES`, in source order.
+_ENTRY_RE = re.compile(r"\[\s*/\^(?P<pat>[^/]+)/i\s*,\s*\"(?P<kind>[^\"]+)\"\s*\]")
+
+
+def _load_phrases() -> dict:
+    text = _FAMILY_JS.read_text(encoding="utf-8")
+    start = text.index("GC.family.PHRASES = [")
+    block = text[start:text.index("];", start)]
+    out = {}
+    for m in _ENTRY_RE.finditer(block):
+        # `fianc(é|e)e? of` is a real alternation in the extension table; expand it rather than
+        # dropping it, because a regex kept as a literal string would never match the page text.
+        pats = [m.group("pat")]
+        if "(" in m.group("pat"):
+            head, rest = m.group("pat").split("(", 1)
+            alts, tail = rest.split(")", 1)
+            pats = [head + a + tail for a in alts.split("|")]
+        for pat in pats:
+            out[pat.replace("?", "").lower()] = _ROLES.get(m.group("kind"), ())
+    return out
+
+
 #: The relationship phrases Geni writes, mapped to (role of the SUBJECT, role of the TARGET).
 #: `Son of A and B` makes the subject a child; `Mother of X` makes the subject a parent.
-PHRASES = {
-    "son of": ("child", "parent"),
-    "daughter of": ("child", "parent"),
-    "child of": ("child", "parent"),
-    "father of": ("parent", "child"),
-    "mother of": ("parent", "child"),
-    "husband of": ("spouse", "spouse"),
-    "wife of": ("spouse", "spouse"),
-    "partner of": ("spouse", "spouse"),
-    "brother of": ("sibling", "sibling"),
-    "sister of": ("sibling", "sibling"),
-    "half brother of": ("sibling", "sibling"),
-    "half sister of": ("sibling", "sibling"),
-}
+PHRASES = _load_phrases()
 _PHRASE_RE = re.compile(
     r"\b(" + "|".join(sorted((re.escape(p) for p in PHRASES), key=len, reverse=True)) + r")\s*$",
     re.I)
+
+#: ⛔ AN UNRECOGNISED OPENER MUST BREAK THE RUN, NOT INHERIT THE ONE ABOVE IT.
+#:
+#: Anchors are attributed to the nearest phrase above them, so an opener this table does not know
+#: leaves `_phrase` pointing at the previous line and hands that line's role to the wrong people.
+#: `family.js` records the worked case: Anna Throndsen `296165995120003655` reads "Daughter of A
+#: and B" then "Fiancée of James Hepburn", and Hepburn was scraped as her THIRD PARENT.
+#:
+#: `GC.family.LOOKS_LIKE_OPENER` is the extension's guard for the CLASS rather than the instance,
+#: and this is the same shape against the tail of the accumulated text: a short run of letters,
+#: spaces and hyphens ending in ` of`, which no name looks like.
+_LOOKS_LIKE_OPENER = re.compile(r"(?:^|[>.;]|\s)([A-Za-z][A-Za-zÀ-ɏ' -]{1,30} of)\s*$", re.I)
 
 
 class _FamilyParser(HTMLParser):
@@ -92,6 +147,10 @@ class _FamilyParser(HTMLParser):
             if m:
                 self._phrase = m.group(1).lower()
                 self.edges.append((self._phrase, []))
+            elif _LOOKS_LIKE_OPENER.search(tail):
+                # An opener the table does not know. Drop the run rather than letting these
+                # anchors inherit the phrase above them -- that is how a fiancee became a parent.
+                self._phrase = None
             self._pid = d["data-profile-id"]
             self._buf = []
         elif tag == "br":
@@ -99,6 +158,23 @@ class _FamilyParser(HTMLParser):
 
     def handle_endtag(self, tag: str) -> None:
         if not self._depth:
+            return
+        # ⛔ THE SCOPE ENDS AT `</td>`, AND CLOSING ONLY ON THE NEXT `<tr>` NEVER ENDED IT.
+        #
+        # `handle_starttag` drops out of the block when it meets the next `<tr>` START tag, and on
+        # a saved page there is not always another one: the family row is the last in its table,
+        # so the walk ran on through the rest of the document and handed every later anchor to
+        # the last opener it had seen. Measured on Brendan Robert Walsh `365315518800010569` --
+        # the block holds 6 relatives, the walk returned 11, and the 5 extras were his spouse,
+        # both parents and a child all re-emitted as `Brother`.
+        #
+        # `family.js` never had this: it scopes to the `<td>` beside `<th>Immediate Family:</th>`
+        # and reads only inside that cell. Closing here on `</td>` is that same boundary, and
+        # `</tr>` closes the row for any page that renders the block without a cell.
+        if tag in ("td", "tr"):
+            self._depth = 0
+            self._pid = None
+            self._phrase = None
             return
         if tag == "a" and self._pid:
             name = " ".join("".join(self._buf).split())
