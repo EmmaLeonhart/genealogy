@@ -156,6 +156,23 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   blocker.** `CLAUDE.md` § *KILL CHROME WHENEVER YOU NEED TO*: `kill -9`, force-open on any page,
   the extension has reloaded. Standing authority. Never tag this BLOCKED-ON-USER-ACTION again.
 
+  ⛔ **RULED TRIVIAL, 2026-09-10. DO NOT SPEND TIME ON IT.** *"If I understand the error, the
+  error is that it is treating the non-blood relationship as a blood relationship while storing
+  the path, but it still stores the path correctly. This is a bothersome error, but it's also an
+  error that I frankly don't care about if we actually get shit done."* **The path is the
+  deliverable and the path is correct.** A wrong `via` on somebody who has no blood relationship
+  at all costs nothing, and one recorded path per individual is enough — *"I'd be legitimately
+  cool with making it so that only one relationship path was kept for every single individual,
+  and we consistently get 5 people a minute."* Throughput beats this. The one case that would
+  matter is a person with BOTH a blood and an in-law path, where the labels would then disagree
+  about which was found; that is not what any of the five instances are.
+
+  **The five instances, kept as a record and not as an open question:** Miroslava of Bulgaria,
+  Elen ferch Eudaf Hen, Wen Jifu 文及甫, Bai Jian 白建, Bai Shitong 白士通. The last three share a
+  24-step spine whose marriage crossing is at step 10, and the last two are father and son.
+
+  **The superseded alarm, kept for its detail only:**
+
   ⛔ **AN IN-LAW CHAIN COMES BACK AS `via=blood`. TWICE ON 2026-09-09, SO IT IS REPRODUCIBLE, AND
   THE CAUSE IS UNKNOWN.** Miroslava, Princess of Bulgaria `371367105380011098`, and Elen ferch
   Eudaf Hen `377649183480004232`. Both filed as `inlaw` by hand off the page banner.

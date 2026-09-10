@@ -424,6 +424,29 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       pump();
       return;
     }
+    /* ⛔ **`enqueue` APPENDS. `load` REPLACES AND CLEARS.**
+     *
+     * `load` resets `results` and `attempted`, so queueing a new batch before the previous one
+     * is written out DESTROYS it -- nine captures went that way on 2026-09-10, nine page loads
+     * and their searches spent for nothing. The rule that followed was *harvest before loading*,
+     * and the cost of that rule is that the collector sits idle for the whole harvest, which is
+     * the slow half.
+     *
+     * This removes the tradeoff: top up the queue without touching results, so Geni keeps being
+     * asked while the writing happens. Ruled 2026-09-10 -- *"I'd be legitimately cool with ...
+     * consistently get 5 people a minute"*. Idle time is the thing to eliminate. */
+    if (msg.type === "enqueue") {
+      const add = (msg.queue || []).filter((j) => j && j.geni_id);
+      const held = new Set((s.queue || []).map((q) => String(q.geni_id)));
+      const fresh = add.filter((j) => !held.has(String(j.geni_id)));
+      const patch = { queue: (s.queue || []).concat(fresh) };
+      if (msg.staggerMs) patch.staggerMs = Math.max(1000, msg.staggerMs | 0);
+      if (!s.running) { patch.running = true; patch.dryRun = false; }
+      await put(patch);
+      sendResponse({ added: fresh.length, queued: patch.queue.length });
+      pump();
+      return;
+    }
     if (msg.type === "load") {
       /* ⛔ THE STAGGER IS THE ONLY THROTTLE, so the caller sets it. `DEFAULTS.staggerMs` is
        * 60000 -- the geni-scraping rate of one a minute -- and that was never the intended
