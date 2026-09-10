@@ -34099,3 +34099,14 @@ corrected rather than removed: it named `reports/sibling-pair-worklist.tsv` as *
 against — a stale instruction that gets acted on again — and it now names
 `reports/p2600-disconnected.tsv` and the 266,201.
 
+
+## 2026-09-09 — descendants export 7 of 11: NN Черкасская `6000000227676704828`
+
+`exports/circassian-hinge/export-Descendants-6000000227676704828.ged` — **90 people, 48
+families**, task `6000000227678049832`. Seed verified as the file's first `INDI`. Far under the
+5,000 cap, so this branch is exhausted rather than truncated — the third of the Circassian seeds
+to come back small (646, 2,303, 90).
+
+Export 8 submitted: `6000000227676384979`, task **`6000000227678007949`**. Seven of eleven filed;
+four outstanding.
+
