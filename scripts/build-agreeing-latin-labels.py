@@ -1,37 +1,56 @@
-"""Where a person's Latin name records AGREE, that agreement is the `en` and the `mul` label.
+"""Where an item's Latin-alphabet LABELS agree with each other, that agreement is the `mul`.
 
-    py scripts/build-agreeing-latin-labels.py
+    PYTHONPATH=src python scripts/build-agreeing-latin-labels.py
 
-**The rule, 2026-09-01:** where a person has no English label and several Latin-alphabet labels
-agree, that agreed string becomes both the `en` label and the `mul` label.
+**The rule:** where an item has no `mul` label and several of its Latin-alphabet language labels
+say the same thing, that agreed string becomes the `mul` label. Ruled *"the most important
+labelling thing here"*.
 
-**The population is the 36,592 people who still have no `en` label** after the 2026-09-01 rebuild.
-`build-en-label-batch.py` has three sources -- Wikidata's own English label, a romanised Han name,
-and a relationship label -- and a person with none of those falls through with nothing. This is a
-fourth source, and it needs no romanisation, no relative and no store lookup: it reads what the
-corpus already says about the person in the Latin alphabet.
+## ⛔ THE SOURCE IS THE ITEM'S OWN LABELS. IT WAS GENI NAME RECORDS AND THAT WAS THE DEFECT
 
-**Why agreement is the test, and why it is not a similarity heuristic.** A Geni profile carries
-several `NAME` records, one per export that saw it, and they disagree when the profile was edited
-between exports. `CLAUDE.md` section *Later sources win value conflicts* governs a single-valued
-path; a *label* is different, because two independent records saying the same string is positive
-evidence that the string is what the person is called. Nothing here compares two DIFFERENT strings
-for resemblance -- they are equal after case folding or they are not, which is the same bar
-`namemodel` uses and the same one `CLAUDE.md` section *A diacritic makes a different name* demands.
+This script used to read `display-names.csv` and count agreeing Geni `NAME` records. Ruled
+2026-09-09: *"geni names are confusing. I think we kinda agreed to not do anything with them for
+better or worse."* The evidence is on the Wikidata item -- ten languages spelling a person the
+same way is ten independent editors agreeing, and it needs no corpus join, no romanisation and
+no relative.
 
-    Anna Martensdotter | Anna Martensdotter | Anna Martensdotter   -> agreed, 3 records
-    Anna Martensdotter | Anna Mårtensdotter                        -> NOT agreed, a diacritic
-    Private            | Private                                   -> a marker, never a label
+**What the old source actually reached: ONE PERSON.** `reports/agreeing-latin-labels.tsv` had a
+single row when this was rewritten, dated 2026-09-01, and its label was `(unknown)` -- a marker,
+not a name -- with a null `qid`, so it could never have been applied to anything.
 
-**Markers are excluded before agreement is tested**, or every redacted person would come out
-labelled `Private` -- which `CLAUDE.md` section *Redacted people go in* forbids in the strongest
-terms it uses anywhere. `scripts/labels.label_for` is the single place that decides this and is
-imported rather than restated.
+**AND NOTHING RAN IT.** Not `rebuild-everything.py`, not a workflow, not the batch builder;
+nothing read its output either. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not
+done*. It is a step in `rebuild-everything.py` now.
 
-**A single record is not agreement.** One record agrees with itself trivially, and that is the
-`solo` failure `CLAUDE.md` section *The ONE place a name may choose* measures at 14.9% against
-0.7%: *"Solo child says nothing unless there's some reason to match them lol."* Two independent
-records are the minimum, and the count goes in the output so the weakest rows can be filtered.
+## THE POPULATION, measured over the ledger before this was written
+
+    ledger items                              2,758
+    ...with NO mul label at all               1,009
+    ...of those, >=2 agreeing Latin labels      853
+
+`Q102010` *Friedrich IV. von Oettingen* carries **ten** agreeing labels and no `mul`, which is
+the case that raised this. Two items agree across **84** languages.
+
+## WHAT COUNTS AS AGREEMENT
+
+**Two languages are the minimum.** One label agreeing with itself is not evidence -- the same
+`solo` bar the rest of the name work uses.
+
+**Case and whitespace fold; nothing else does.** `María`, `Mária` and `Marià` are three different
+names -- `CLAUDE.md` § *A diacritic makes a different name*.
+
+**If two different Latin strings are each attested, this DECLINES.** It does not pick the more
+frequent one. Picking would be the coin-flip that the uniqueness rule refuses everywhere else,
+and the disagreement is recorded in the TSV so it can be looked at.
+
+**Markers are excluded before agreement is tested**, or every unnamed person would come out
+labelled `NN` or `unknown` in `mul` -- which is the opposite of what `mul` is for.
+
+## ⛔ PURELY ADDITIVE
+
+A `mul` is emitted **only where the item has none**. This never overwrites a label, so it cannot
+touch a hand-edit and it restates `CLAUDE.md` § *The purpose is to ADD, not to correct* and
+§ *Wikidata's label beats ours* rather than bending either.
 
 Writes `reports/agreeing-latin-labels.tsv` and `reports/wikidata-agreeing-latin-labels.json`.
 """
@@ -41,6 +60,7 @@ from __future__ import annotations
 import collections
 import csv
 import json
+import re
 import sys
 import unicodedata
 from pathlib import Path
@@ -51,23 +71,31 @@ sys.path.insert(0, str(REPO / "scripts"))
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 csv.field_size_limit(1 << 30)
 
-from labels import label_for  # noqa: E402
+from genimerge import wikistore  # noqa: E402
 
-LABELS = REPO / "reports" / "derived-labels.csv"
-NAMES = REPO / "reports" / "display-names.csv"
+LEDGER = REPO / "reports" / "garborg-qids.tsv"
+STORE = REPO / "wikidata" / "items"
+INDEX = REPO / "out" / "wikidata" / "store-index.sqlite3"
 OUT_TSV = REPO / "reports" / "agreeing-latin-labels.tsv"
 OUT_JSON = REPO / "reports" / "wikidata-agreeing-latin-labels.json"
 
-#: Two records are the minimum. One record agreeing with itself is not evidence.
-MIN_RECORDS = 2
+#: Two languages are the minimum. One label agreeing with itself is not evidence.
+MIN_LANGUAGES = 2
+
+#: A label that is a placeholder rather than a name. Wider than the `NN` pattern on purpose:
+#: `mul` is the language-neutral REAL name, so nothing that means *we do not know* may land in
+#: it by this route. The NN protocol owns those people and puts the marker there deliberately.
+MARKER = re.compile(
+    r"^\s*(nn|n\.?\s?n\.?|\?+|\(?unknown\)?|anonymous|unnamed|no name|"
+    r"private|<private>|ukjent|okänd|ukendt)\s*$", re.I)
 
 
 def is_latin(text):
     """True when every letter in `text` is a Latin-script letter.
 
-    Digits, spaces and punctuation are ignored -- they carry no script -- but a single Han or
-    Cyrillic letter disqualifies the string, because this rule is explicitly about the *Latin
-    alphabet* labels and a mixed string is not one.
+    Digits, spaces and punctuation carry no script and are ignored, but a single Han or Cyrillic
+    letter disqualifies the string: this rule is explicitly about the Latin alphabet, and a mixed
+    string is not one.
     """
     letters = [c for c in text if c.isalpha()]
     if not letters:
@@ -75,96 +103,104 @@ def is_latin(text):
     return all("LATIN" in unicodedata.name(c, "") for c in letters)
 
 
-def main() -> int:
-    print("reading derived-labels.csv for who still lacks an en label ...")
-    need = set()
-    with LABELS.open(encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            if not (row["label_en"] or "").strip():
-                need.add(row["geni_id"])
-    print(f"  {len(need):,} people with no en label")
+def agreement(labels):
+    """`(value, languages, distinct)` for one item's labels, or `None` if there is no `mul` room.
 
-    print("reading display-names.csv ...")
-    seen = collections.defaultdict(collections.Counter)
-    for_geni = {}
-    with NAMES.open(encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            g = row["geni_id"]
-            if g not in need:
-                continue
-            raw = (row.get("display_name") or "").strip()
-            if not raw or not is_latin(raw):
-                continue
-            # A marker is not a label. `label_for` empties `Private` and `<private>` and
-            # nothing else, which is exactly the boundary wanted here.
-            if not label_for(raw).strip():
-                continue
-            seen[g][raw] += 1
-            for_geni[g] = row.get("qid") or ""
-    print(f"  {len(seen):,} of them have at least one usable Latin name record")
+    `labels` is Wikidata's `{lang: {"value": ...}}`. Returns `None` when the item already has a
+    `mul` -- this is additive and an existing label is not ours to touch.
+    """
+    if ((labels.get("mul") or {}).get("value") or "").strip():
+        return None
+    folded = collections.Counter()
+    display = {}
+    for lang, entry in labels.items():
+        if lang == "mul":
+            continue
+        text = " ".join(((entry or {}).get("value") or "").split())
+        if not text or not is_latin(text) or MARKER.match(text):
+            continue
+        key = text.casefold()
+        folded[key] += 1
+        display.setdefault(key, text)
+    if not folded:
+        return None
+    best, count = folded.most_common(1)[0]
+    return display[best], count, len(folded)
+
+
+def main() -> int:
+    qids = []
+    with LEDGER.open(encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            qid = (row.get("qid") or "").strip()
+            if qid.startswith("Q"):
+                qids.append(qid)
+    qids = sorted(set(qids))
+    print("%d ledger items" % len(qids), flush=True)
+
+    with wikistore.StoreReader(STORE, INDEX) as reader:
+        items = reader.entities(qids)
+    print("%d found in the store" % len(items), flush=True)
 
     rows, agreed = [], {}
-    for g, counter in seen.items():
-        # Fold on case only. `CLAUDE.md`: case and whitespace fold; nothing else does, because
-        # `María`, `Mária` and `Marià` are three different names with three different items.
-        folded = collections.Counter()
-        display = {}
-        for value, n in counter.items():
-            key = " ".join(value.split()).casefold()
-            folded[key] += n
-            display.setdefault(key, " ".join(value.split()))
-        best, n = folded.most_common(1)[0]
-        distinct = len(folded)
-        if n < MIN_RECORDS:
+    no_mul = 0
+    for qid in qids:
+        entity = items.get(qid)
+        if not entity:
             continue
-        # Agreement means the records that carry a Latin name say ONE thing. If two different
-        # Latin strings are each attested, the person does not have an agreed label and this
-        # rule declines rather than picking the more frequent -- picking would be exactly the
-        # coin-flip that `zipper-join`'s uniqueness rule refuses.
+        result = agreement(entity.get("labels") or {})
+        if result is None:
+            continue
+        no_mul += 1
+        value, count, distinct = result
+        if count < MIN_LANGUAGES:
+            rows.append({"qid": qid, "label": "", "languages": count,
+                         "distinct_latin": distinct, "verdict": "one language only"})
+            continue
         if distinct != 1:
-            rows.append({"geni_id": g, "qid": for_geni.get(g, ""), "label": "",
-                         "records": n, "distinct_latin": distinct,
-                         "verdict": "records disagree"})
+            rows.append({"qid": qid, "label": "", "languages": count,
+                         "distinct_latin": distinct, "verdict": "labels disagree"})
             continue
-        value = display[best]
-        agreed[g] = value
-        rows.append({"geni_id": g, "qid": for_geni.get(g, ""), "label": value,
-                     "records": n, "distinct_latin": 1, "verdict": "agreed"})
+        agreed[qid] = value
+        rows.append({"qid": qid, "label": value, "languages": count,
+                     "distinct_latin": 1, "verdict": "agreed"})
 
-    with OUT_TSV.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, delimiter="\t",
-                           fieldnames=["geni_id", "qid", "label", "records",
-                                       "distinct_latin", "verdict"])
-        w.writeheader()
-        w.writerows(sorted(rows, key=lambda r: (-r["records"], r["geni_id"])))
+    with OUT_TSV.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, delimiter="\t",
+                                fieldnames=["qid", "label", "languages",
+                                            "distinct_latin", "verdict"])
+        writer.writeheader()
+        writer.writerows(sorted(rows, key=lambda r: (-r["languages"], r["qid"])))
 
-    # Two edits per person: `en` and `mul` carry the same agreed string. The rule names both,
-    # and `CLAUDE.md` section *The MARRIED name is the real name* makes `mul` the real label --
-    # so this is not `en` with a copy, it is the label, written in both places.
+    # ⛔ `mul` ONLY. The old version wrote `en` as well, and that is a different claim: an item
+    # whose `en` is absent is a gap in English, while `mul` absent on an item ten languages agree
+    # about is the language-neutral label missing. `en` has its own emitters and its own sources.
     edits = []
-    for g, value in sorted(agreed.items()):
-        for lang in ("en", "mul"):
-            edits.append({
-                "id": f"{lang}_label_agreed:{g}",
-                "type": "set_label",
-                "source": "agreeing Latin name records (rule of 2026-09-01)",
-                "subject": {"qid": None, "geni_id": g},
-                "requires": [],
-                "label": {"language": lang, "value": value},
-                "kind": "add",
-                "derived_from": "two or more Latin NAME records that agree exactly",
-            })
+    for qid, value in sorted(agreed.items()):
+        edits.append({
+            "id": "mul_label_agreed:%s" % qid,
+            "type": "set_label",
+            "source": "agreeing Latin labels on the item itself",
+            "subject": {"qid": qid, "geni_id": None},
+            "requires": [],
+            "label": {"language": "mul", "value": value},
+            "kind": "add",
+            "derived_from": "two or more of the item's own Latin-alphabet labels, agreeing",
+        })
     OUT_JSON.write_text(json.dumps(edits, ensure_ascii=False, indent=1) + "\n",
                         encoding="utf-8")
 
-    disagree = sum(1 for r in rows if r["verdict"] == "records disagree")
-    print(f"\nwrote {OUT_TSV.relative_to(REPO)} and {OUT_JSON.relative_to(REPO)}")
-    print(f"  {len(agreed):,} people gain an en AND a mul label from agreeing records")
-    print(f"  {disagree:,} have several Latin names that disagree, so nothing is claimed")
-    print(f"  {len(edits):,} edits")
-    by = collections.Counter(r["records"] for r in rows if r["verdict"] == "agreed")
-    for n in sorted(by)[:6]:
-        print(f"    {by[n]:>7,} people agreed across {n} records")
+    disagree = sum(1 for r in rows if r["verdict"] == "labels disagree")
+    solo = sum(1 for r in rows if r["verdict"] == "one language only")
+    print()
+    print("wrote %s and %s" % (OUT_TSV.relative_to(REPO), OUT_JSON.relative_to(REPO)))
+    print("  %6d items carry no mul at all" % no_mul)
+    print("  %6d gain one from agreeing Latin labels" % len(agreed))
+    print("  %6d have Latin labels that disagree, so nothing is claimed" % disagree)
+    print("  %6d have only one Latin label, which is not agreement" % solo)
+    by = collections.Counter(r["languages"] for r in rows if r["verdict"] == "agreed")
+    for n in sorted(by, reverse=True)[:6]:
+        print("    %6d items agreed across %d languages" % (by[n], n))
     return 0
 
 

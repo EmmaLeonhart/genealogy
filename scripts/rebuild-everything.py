@@ -115,6 +115,20 @@ STEPS = [
     # is how the preview came to be twelve days older than the tree it describes.
     ("relationship label preview",
      [sys.executable, os.path.join("scripts", "build-relationship-label-preview.py")]),
+    # ⛔ **AGREEING LATIN LABELS -> `mul`, AND NOTHING RAN IT UNTIL NOW.** Ruled 2026-09-09 as
+    # *"the most important labelling thing here"*, and it was written, committed and then called
+    # by nothing: not this file, not a workflow, not the batch builder, and nothing read its
+    # output either. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*.
+    #
+    # Where an item has no `mul` and several of its own Latin-alphabet labels agree, that string
+    # is the language-neutral label. Measured over the ledger: 1,001 items carry no `mul` and
+    # **397 gain one** from labels already on the item -- `Q102010` agrees across ten languages,
+    # two items across eighty-four.
+    #
+    # It reads the Wikidata store, so it must follow `wikidata-index`; it touches no derived CSV,
+    # so it has no ordering constraint against the label chain around it.
+    ("agreeing latin labels",
+     [sys.executable, os.path.join("scripts", "build-agreeing-latin-labels.py")]),
     ("placeholder labels",
      [sys.executable, os.path.join("scripts", "build-placeholder-label-batch.py")]),
     ("en labels", [sys.executable, os.path.join("scripts", "build-en-label-batch.py")]),
