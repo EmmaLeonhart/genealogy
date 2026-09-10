@@ -490,8 +490,27 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
     takes Tore Underberge III's place in this order and **Tore Underberge III
-    `6000000005607672589` comes OFF the list.** Nothing about her is investigated, measured or
-    seeded yet.
+    `6000000005607672589` comes OFF the list.**
+
+    **⛔ AND THE EXPORT GOES FROM A DIFFERENT PERSON — `KNUT ALGOTSSON`, decided 2026-09-10:**
+    *"for Bergitte, I decided on a slightly different person to go from: Knut Algotsson"*.
+
+        geni  6000000002572699392      qid  Q5915800
+        Knut Algotsson, Geni MASTER PROFILE, curated by 78 people
+        b. circa 1330  Hammarö, Karlstad, Värmland, Sweden
+        d. after 1393  Rogaland, Norway
+        son of Algot Bryniolfsson (`Q19842232`) and Kristina Tolvesdotter Näs
+        husband of Märta Ulfsdotter (Ulvåsa) · partner of NN (Frille)
+        father of Ramborg Knutsdotter Lejon, Ingegerd Knutsdotter, Katarina, Ingrid Knutsdotter
+        brother of Bengt Algotsson · CHARLEMAGNE IS CONNECTED TO HIM, stated on the page
+
+    **He replaces Bergitte as the person to go from, not as the target** — the campaign is still
+    her descendants, and he is where the export starts. Whether the seed rule still applies on
+    top of him — create an ancestor of HIM and export `Descendants` from that ancestor — is
+    **not decided here**, because the two readings differ and this was written down rather than
+    interpreted.
+
+    Nothing about either of them is investigated, measured, seeded or grepped yet.
   - **Gamle Olof** `5328189268700111491` — **BEFORE the Chinese clusters, ruled 2026-09-09.**
     The two readings differed by exactly one position — *"after you've comprehensively gotten the
     descendants of this particular individual"* put him straight after Abul Hamza, while the
