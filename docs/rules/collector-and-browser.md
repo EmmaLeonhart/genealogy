@@ -242,3 +242,27 @@ quietly narrows its input and reports a clean number about itself.
 stopped at the block's first child, an expand/collapse image wrapper, so it returned whitespace
 and measured **0 of 200 pages** as having a description. Balancing `<div>` depth instead gives
 664 of 664. A terminator that is not the right terminator reads as absence.
+
+---
+
+## ⛔ GENI IS ACTIVELY HOSTILE. The pacing is the design, not a cost
+
+Stated plainly 2026-09-09: **Geni is actively hostile.** API access is heavily gated, and the
+site defends itself — an Incapsula CAPTCHA after roughly forty rapid page loads on 2026-09-06.
+
+**So every constraint below is the environment rather than an inconvenience to engineer around:**
+
+* **A census read costs a real page load.** `fetch` + `DOMParser` returns **zeros** for every
+  statistic, because Geni renders the statistics block after load. That is not a bug to work
+  around: it is the site declining to be read cheaply. Sampling is therefore paced by navigation,
+  which is the same thing that makes the traffic acceptable.
+* **One export at a time, and no cancelling.** Geni's limit, not a setting.
+* **Nothing downloads reliably.** Roughly two files land per browser session before Chrome blocks
+  the rest.
+* **No Playwright, no headless.** Driving the real logged-in browser is what makes this read as
+  proper traffic at all.
+
+**The failure this guards against is treating a defence as a defect.** Every one of these looks
+like something a cleverer client would solve, and solving it is what gets the account throttled
+or CAPTCHAd. Slowness here is the price of access, and the agentic navigation is overhead paid on
+purpose.

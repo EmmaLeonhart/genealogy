@@ -154,8 +154,12 @@ of a loop, not a sample of anything.
   version that makes more sense to you.
 - **KILL CHROME WHENEVER YOU NEED TO.** Standing authority. A stale extension is never
   BLOCKED-ON-USER-ACTION. → [collector](docs/rules/collector-and-browser.md)
-- **NO PLAYWRIGHT, NO HEADLESS.** The agentic navigation is overhead paid to keep Geni's traffic
-  acceptable, not a design to improve on.
+- **GENI IS ACTIVELY HOSTILE, so its constraints are the environment and not defects.** No
+  Playwright, no headless — driving the real logged-in browser is what makes the traffic read
+  as proper. A census read costs a real page load (`fetch` returns zeros: the stats block is
+  rendered after load), one export at a time, no cancelling, downloads mostly blocked.
+  Solving any of these cheaply is what gets the account CAPTCHAd.
+  → [collector](docs/rules/collector-and-browser.md)
 - **THE DOCUMENTATION DOES NOT REFER TO THE ACCOUNT OWNER** — not in the third person, not in the
   second. State rules impersonally. **A blind regex pass is banned**: it turned `Emma Watson`
   into `you Watson` and shipped. A woman in the tree is still `she`.
