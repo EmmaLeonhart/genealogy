@@ -34215,3 +34215,50 @@ recorded rather than resolved here.
 taken from **our own tree's** sex where known and the edge dropped where not — guessing would
 assert somebody's sex as a side effect of a relationship import.
 
+
+## 2026-09-09 — the union GEDCOM carries EVERY Wikidata person, and the first version did not
+
+**⛔ THE FIRST VERSION DEFEATED THE PURPOSE OF THE JOIN AND HAD TO BE REWRITTEN.** It emitted an
+edge only where **both** ends carried a `P2600`, discarding **3,423,982 edges and every
+Wikidata-only person**, on the grounds that a QID with no Geni id would be an invented person.
+
+**The rule cited does not cover that population.** `build-scraped-gedcom.py` was deleted for
+minting `NN` placeholders nobody had evidence for; a Wikidata item is a real, identified person
+with a stable identifier. § *Do not grab the first artifact that vaguely matches*, one level up —
+a rule about invented people applied to people who are not invented.
+
+**And the reason the join exists is exactly what it threw away.** The bridges are overwhelmingly
+people who exist ONLY on Wikidata — the shared father of two Geni-linked cousins, the medieval
+couple nobody has attached a profile to. Without them the Geni people the join was meant to
+connect stay exactly as disconnected as before, and the whole step does nothing.
+
+    people                     518,886  ->  1,603,736
+      keyed on a Geni id, fuse 518,886  ->    518,888
+      keyed on a QID, the bridges    0  ->  1,084,848
+    families                   175,976  ->  1,321,866
+    edges dropped, no P2600  3,423,982  ->          0
+    P40 edges dropped, no slot 246,251  ->          0
+
+**The sex problem dissolved instead of being worked around.** `P40` names no slot and
+`relations.tsv` carries no `P21`, so 246,251 edges were being dropped for want of one. Wikidata
+states the same fact from both ends: anybody who is somebody's `P22` anywhere in the file is
+male, anybody's `P25` is female. **854,204 sexes read straight off the input**, leaving **1,829**
+slot-guesses rather than 246,251 losses.
+
+**⛔ TWO XREF TRAPS, BOTH REINTRODUCED BY ME.** `identity.GENI_ID_RE` is `^@[IFNS](\d+)@$`:
+
+* the family xrefs were `@F9<n>@`, which **parses** as Geni family id `9<n>` — and small Geni ids
+  are real (`1015359` is a person in the corpus). They are `@FW<n>@` now.
+* a QID person is `@IQ<digits>@`, where the `Q` is what stops `@IQ12345@` being read as Geni
+  profile `12345`.
+
+That is the `@NI04461@` trap `CLAUDE.md` records, where a foreign xref parsed as a Geni id and
+would have produced a URL to a stranger's profile.
+
+**And the direction is backwards from the original intent, which is worth recording rather than
+leaving as a fait accompli.** The plan was for everything to go into the **Wikidata** format;
+GEDCOM-as-canonical came from sessions insisting on it, so what exists today converts Wikidata
+into GEDCOM instead. Today's dictation does specify GEDCOM-native, for the family ids, and this
+was built to that — but nothing here forecloses the reverse, and Wikidata being the better
+genealogy source is an argument for it.
+
