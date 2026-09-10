@@ -74,10 +74,15 @@ document.addEventListener("geni-collector-run", async () => {
    * `sendMessage` resolving `undefined` is indistinguishable from a stale service worker, a
    * handler that never ran, and a handler that threw before `sendResponse`. All three look like
    * an empty receipt from here, and guessing between them cost a restart cycle. */
-  if (job && (job.job === "walk" || job.job === "bg")) {
+  /* ⛔ **`{job:"seedwalk"}` IS THE SAME HANDOFF FOR THE DESCENDANTS CAMPAIGN.** It differs from
+   * `walk` in one thing and the background owns it: the climb starts immediately instead of
+   * behind the path-and-statistics gate, and the export at the end of it takes `exportWalk`.
+   * The campaigns rule `Descendants`; the ordinary loop's `Forest` stays the default. */
+  if (job && (job.job === "walk" || job.job === "seedwalk" || job.job === "bg")) {
     const msg = job.job === "bg"
       ? Object.assign({ type: job.type || "ping" }, job.msg || {})
-      : { type: "walk", geni_id: job.geni_id, label: job.label || "" };
+      : { type: job.job, geni_id: job.geni_id, label: job.label || "",
+          exportWalk: job.exportWalk || "forest" };
     let reply = null, failed = null;
     try {
       reply = await chrome.runtime.sendMessage(msg);

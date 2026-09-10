@@ -1,4 +1,36 @@
-/* ⛔ **THIS FILE WAS `background.js` AND WAS RENAMED TO BREAK A STALE SERVICE-WORKER CACHE.**
+/* ⛔⛔ **THE FILENAME CARRIES THE VERSION, AND IT MUST BE RENAMED ON EVERY EDIT TO THIS FILE.**
+ *
+ * `background.js` -> `service-worker.js` -> `service-worker-<version>.js`. The second rename was
+ * a one-off to break a stale cache; this is the same lever made routine, because the staleness
+ * is not a one-off and **bumping the manifest version does not touch it**.
+ *
+ * Measured 2026-09-10, which is what turned the one-off into a rule. `manifest.json` went
+ * 1.6.9 -> 1.7.0 -> 1.7.1 and Chrome was fully restarted between each:
+ *
+ *     data-geni-collector          1.7.1   the CONTENT scripts reloaded off disk
+ *     ping -> pong                 1.7.1   `getManifest().version`, so it reads the MANIFEST
+ *     swBootedAt                   fresh   the worker really did boot
+ *     status -> the new `exportWalk` key   ABSENT -- the worker was running the OLD BYTES
+ *
+ * So three of the four instruments agreed on 1.7.1 and all three were reading something other
+ * than this file's contents. **A version number is never evidence about the script**: only a
+ * behaviour that only the new code has -- here a new key in `status` -- distinguishes them.
+ * `CLAUDE.md` § *CHECK before raising an alarm*, in the direction nobody expects: the reassuring
+ * reading was the wrong one.
+ *
+ * The `ScriptCache` is keyed on the script URL and nothing reachable from the automation surface
+ * invalidates it -- `chrome://extensions` is refused, deleting the cache is refused, and
+ * `--load-extension` is ignored. Changing the URL is the only lever left, so the URL is where
+ * the version goes.
+ *
+ * **The routine, and skipping either half means the edit did not happen:**
+ *
+ *     1. rename this file to the new version, and point `manifest.json` at the new name
+ *     2. restart Chrome, then verify with a behaviour ONLY the new code has
+ *
+ * ---
+ *
+ * **THIS FILE WAS `background.js` AND WAS RENAMED TO BREAK A STALE SERVICE-WORKER CACHE.**
  *
  * 2026-09-09. The driver appeared dead for a whole afternoon: `sendMessage` from a content
  * script resolved `undefined`, with no rejection and no `lastError`, across four Chrome
@@ -72,7 +104,18 @@ const DEFAULTS = {
   results: [],
   startedAt: null,
   //: The id `addAncestor` returned: what the export runs from.
-  endId: ""
+  endId: "",
+  /* ⛔ THE WALK THE EXPORT AT THE END OF THE CLIMB TAKES. `forest` is the default and stays it
+   * -- `docs/export-seed-rules.md` fixes a seed-driven export at Forest/5000 and that file is
+   * still the authority for the ordinary loop. The descendants campaign is the other case:
+   * `queue.md` § *DESCENDANTS EXPORTS ON THE 15 HINGE PEOPLE* and § *THE DISJOINTNESS CAMPAIGN*
+   * both rule `Descendants`, NOT `Forest`, because Forest follows spouse links and spends the
+   * 5,000 slots sideways when the ball is wanted going down.
+   *
+   * It lives in the STATE rather than on the seed job because a creation throws the seed queue
+   * away: the export is enqueued by the `added` handler, which has the result and the state and
+   * no longer has the job that started the climb. */
+  exportWalk: "forest"
 };
 
 async function state() {
@@ -152,8 +195,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         const pid = msg.result.pid || "";
         queue = s.queue.filter((q) => q.job !== "seed");
         if (pid) {
-          queue = queue.concat([{ job: "export", geni_id: String(pid), kind: "forest",
-                                  walk: "forest", label: "created by the parent walk" }]);
+          const w = s.exportWalk || "forest";
+          queue = queue.concat([{ job: "export", geni_id: String(pid), kind: w,
+                                  walk: w, label: "created by the parent walk" }]);
         }
         await put({ active, results, queue, endId: pid });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
@@ -239,9 +283,47 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         queue: [{ job: "individual", geni_id: id, kind: "individual",
                   create: true, label: msg.label || "" }],
         results: [], active: {}, endId: "", dryRun: false,
+        exportWalk: msg.exportWalk || "forest",
         running: true, startedAt: new Date().toISOString()
       });
       sendResponse({ started: id });
+      pump();
+      return;
+    }
+    /* ⛔ **`seedwalk` IS THE DESCENDANTS CAMPAIGN'S ENTRY POINT, and it is `walk` WITHOUT THE
+     * PATH GATE.** `walk` starts on an `individual` job: scrape the family, ask Geni for the
+     * Charlemagne path, and climb only if the path misses AND the statistics clear 300. That
+     * gate is right for the isolate campaign, whose whole question is whether the person is
+     * connected -- and it is wrong here, because the hinge people and the disjointness targets
+     * are named in advance and an export is warranted on them by the naming, not by a census.
+     * Running them through `walk` would ask Geni a path question nobody asked and then decline
+     * the export on the answer.
+     *
+     * So this queues the CLIMB directly: `docs/parent-walk-algorithm.md`'s breadth-first walk,
+     * mother then father, ending the moment one ancestor is created -- and then the export from
+     * that created ancestor, in the walk this campaign rules.
+     *
+     * `queue.md`: *"Per person: create an ANCESTOR of them per `docs/export-seed-rules.md`, then
+     * run a `Descendants` export on the created ancestor."* That sentence is these two lines.
+     *
+     * The agent's involvement is unchanged and is still the whole of it: open a page from the
+     * repository's list, call this, stop. The queue stays here where it cannot be seen. */
+    if (msg.type === "seedwalk") {
+      const id = String(msg.geni_id || "");
+      if (!id) { sendResponse({ error: "no geni_id" }); return; }
+      await put({
+        queue: [{ job: "seed", geni_id: id, kind: "seed", label: msg.label || "" }],
+        results: [], active: {}, endId: "", dryRun: false,
+        exportWalk: msg.exportWalk || "forest",
+        /* ⛔ AN HOUR, NOT THE TEN-MINUTE DEFAULT. `DEFAULTS.waitMs` is 600000 and it is the
+         * PATH search's budget; `runExport` takes the same field and a 5,000-person ball
+         * routinely builds for longer than ten minutes. A timeout here is not a retry either --
+         * § *A SUBMITTED EXPORT CANNOT BE CANCELLED* means the build carries on regardless and
+         * the only thing a short budget buys is losing track of it. */
+        waitMs: msg.waitMs || 3600000,
+        running: true, startedAt: new Date().toISOString()
+      });
+      sendResponse({ started: id, exportWalk: msg.exportWalk || "forest" });
       pump();
       return;
     }

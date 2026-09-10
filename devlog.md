@@ -35101,3 +35101,69 @@ bigger runner were refused with it.
 So `docs/unconnected-worklist.md` § 0 is closed by ruling rather than by building, and the
 union-find stand-in is not a stand-in — it is the answer. `CLAUDE.md`'s *not yet* and *until it
 fits* are replaced: it is not a gate waiting on a measurement, it is the shape.
+
+
+## 2026-09-10 — the descendants campaign gets a climb it can reach, and the worker cache is a rule now
+
+`queue.md` § *DESCENDANTS EXPORTS ON THE 15 HINGE PEOPLE* asks for one thing per person: create
+an ancestor per `docs/export-seed-rules.md`, then run a `Descendants` export on the created
+ancestor. Hinge person 1, Елбуздуко Битуев `6000000146583752828`, has **both parents recorded**,
+so there is no slot on his own page and the climb is required before anything can be created.
+
+The climb already existed and was already reachable — `service-worker.js`'s `walk` handler, the
+breadth-first mother-then-father queue, the tab loop, the export at the end of it. Two things
+made it the wrong instrument:
+
+* **It ends in a `forest` export, hardcoded.** Both campaigns rule `Descendants` — Forest follows
+  spouse links and spends the 5,000 slots sideways when the ball is wanted going down.
+* **It starts behind the path gate.** `walk` queues an `individual` job: scrape, ask Geni for the
+  Charlemagne path, climb only on a miss that clears 300. That gate is the isolate campaign's
+  whole question and it is not this one's — a hinge person is named in advance and the export is
+  warranted by the naming, not by a census.
+
+So the walk the export takes is now the run's, carried in the background's state as `exportWalk`
+and defaulting to `forest`, and `seedwalk` is `walk` starting on the climb instead of on the
+gate. The agent's involvement is unchanged: open the page, call it, stop. Nothing about the queue
+came out of the extension.
+
+    {job:"seedwalk", geni_id:"...", exportWalk:"descendants"}
+
+`waitMs` on a `seedwalk` is an hour rather than `DEFAULTS.waitMs`'s ten minutes. That field is the
+path search's budget and `runExport` reads the same one; a 5,000-person ball routinely builds for
+longer, and § *A SUBMITTED EXPORT CANNOT BE CANCELLED* means a short budget does not stop
+anything, it only loses track of it.
+
+**Corpus grep before the export**, § *GREP THE CORPUS BEFORE RUNNING AN EXPORT* — all fifteen
+hinge ids are already present, 7 to 87 xref occurrences each:
+
+    6000000006101354662  87   6000000006101430432  74   6000000006101354712  59
+    6000000006101354653  58   6000000007086662766  56   6000000006101354628  55
+    6000000220167401825  17   6000000220167394834  17   6000000191078589837  17
+    6000000146583752840  17   6000000144779499889  17   6000000008867333533  16
+    6000000146583752828  14   6000000028522915307  13   6000000048540283061   7
+
+### ⛔ THE MANIFEST VERSION IS NOT EVIDENCE ABOUT THE SERVICE WORKER, and three instruments said it was
+
+`manifest.json` went 1.6.9 → 1.7.0 → 1.7.1 with a full Chrome restart between each. After the
+restart:
+
+    data-geni-collector          1.7.1   the CONTENT scripts had reloaded off disk
+    ping -> pong                 1.7.1   `getManifest().version` -- it reads the MANIFEST
+    swBootedAt                   fresh    the worker really had booted
+    status -> the new `exportWalk` key   ABSENT
+
+Three of the four agreed on 1.7.1 and every one of them was reading something other than the
+script's contents. The worker was serving cached bytes. `todo.md` § 3d's *unblock signal is a
+`ping` returning a `pong` instead of `null`* is therefore **wrong**: `ping` answered, from the
+old code, and would have answered from any code. Only a behaviour that exists solely in the new
+bytes — here a new key in the `status` reply — separates them.
+
+The `ScriptCache` is keyed on the script **URL**, and every route to invalidating it is refused
+from this surface: `chrome://extensions`, deleting the cache, `--load-extension`. Changing the
+URL is the only lever, so the version now lives in the filename:
+`service-worker.js` → **`service-worker-1.7.1.js`**, renamed on every edit to that file, with the
+manifest pointed at the new name. The 2026-09-09 `background.js` → `service-worker.js` rename was
+the same lever used once; this makes it routine, because the staleness is not a one-off.
+
+Verified by behaviour, not by version: `status` returns `exportWalk`, and `seedwalk` replies
+`{started, exportWalk:"descendants"}` rather than `undefined`.
