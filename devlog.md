@@ -33887,3 +33887,27 @@ is no discretion in it and none is wanted; the tail item says so rather than res
 families**, seed verified as the file's first `INDI`. **Under the 5,000 cap**, so that line's
 descent is exhausted rather than truncated. Next submitted: `6000000227676362934`, task
 `6000000227677901835`.
+
+## 2026-09-09 — Kirsten Vincentdatter Stoltenberg `3810361`: the second person to clear the export gate
+
+Collector capture on the **wife of Jens Jacobsen Bull** — the 31-step blood hit filed
+earlier today. He reaches Charlemagne and she does not, which is what a spouse-side
+miss looks like: her `ancestors` reads **24** against his 1,982.
+
+    state          miss_export_warranted
+    via            neither          both searches answered, both missed
+    path_state     resolved_none    noBlood: true
+    stats          family_tree=8769  blood_relatives=15000  ancestors=24
+                   descendants=5317  followers=15
+    relatives      18 linked, 6 the prose names with no link
+
+**She clears the export gate on three axes** — `family_tree` 8,769, `blood_relatives`
+15,000, `descendants` 5,317, each far past the 300 floor — so she is the second person
+to do so after Søren Hansen Hiuler. The export was not run because `job.create` was not
+set on the capture; § *ANYTHING ODD ABOUT A PERSON -> FOREST EXPORT* is what it wants.
+
+`geni-families/3810361-family.tsv` and row 37 of `reports/isolates.csv`, written through
+`scripts/write-family-scrape.py` — the UTF-8 stdin fix from this morning held, `Grønhoff`
+came through intact. Tiny GEDCOMs rebuilt (122 profiles, 722 paths, 0 invented people);
+the worklist is **2,586 outstanding**, down one.
+
