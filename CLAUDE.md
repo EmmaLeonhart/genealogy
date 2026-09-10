@@ -39,6 +39,12 @@ into entry points on that date.
 * **The `P2600` connection campaign** — every holder either connected to Charlemagne or confirmed
   impossible. 518,889 holders, 266,201 currently disconnected.
 
+**The first descendants target is the Cyprus person — Abul Hamza `6000000227676734863`** — and
+the specific interest is **finding descendants of hers living in Scandinavia**, because those
+would link into the people the tree already revolves around. Her Ancestors, Descendants and
+Forest exports are down; the descendants ball came back **at the cap**, so the gathering has
+barely started. `queue.md` holds the rest of the roster and its order.
+
 ## Not yet — the Wikidata update
 
 **Updating the Wikidata side properly is wanted, and it is not time.** It waits; the pipeline has
