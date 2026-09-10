@@ -35402,3 +35402,31 @@ sibling to **parent**; and three curators — Adam Robert Brown, Edna Brandes, R
 arrived as parents while appearing nowhere in the family prose. Written from the page instead.
 
 **136 tiny profiles, 725 paths, 0 invented people.**
+
+## 2026-09-10 — sweep: both Forest exports are done and filed
+
+`queue.md` § *FOREST EXPORTS ON THESE TWO* is deleted. Both landed:
+
+    exports/isolate-exports/export-Forest-6000000227690477821.ged   ONG Ewe Hai 王有海
+      5,000 people, 1,616 families, from the created ancestor `NN /ONG/`
+    exports/isolate-exports/export-Forest-6000000227690638845.ged   Mabel Tolkien
+      5,000 people, 3,040 families, from the created ancestor `NN Hamilton`
+
+Both at the cap, so both rims are unexplored. `reports/isolates.csv` carries
+`exported=done` on `6000000025128512415` and `6000000009688582123` — the first two
+`done` values the column has held since it was added this morning.
+
+**Neither could be exported directly.** `/gedcom/export/6000000025128512415` returns
+*"You are not allowed to export that profile."* — the created-ancestor route is what the
+seed rules are for, and the refusal is the reason rather than a formality on top of it.
+
+**And the seed walk could not reach ONG either**, which is worth keeping: his labelled
+family widget renders *"Showing 12 of 25 people"* and the father is not among the twelve,
+so no `father` label exists in the DOM and `runSeed` skipped him as *"one parent listed
+and no label says which"* — a mandatory export blocked by a widget's pagination.
+Constantine, lord of Barbaron was lost to the same thing earlier in the day. 1.7.20
+clicks the module's own `View All` first; waiting never fixed it, because the missing
+rows are not late, they are not requested.
+
+Nobody else from this batch is exported: the gate's backfill had flagged 110 rows
+`warranted` and all 110 were cleared by ruling. The gate keeps flagging future captures.
