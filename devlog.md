@@ -34070,3 +34070,24 @@ And a check of mine that was too loose: *"is the task id anywhere in the `/gedco
 matches a task that is merely **requested**. The reliable test is the id inside a
 `downloadGedcom('<id>')` attribute, which is only written once the file is built.
 
+
+## 2026-09-09 — descendants export 6 of 11: NN Черкасская `6000000227676257067`
+
+`exports/circassian-hinge/export-Descendants-6000000227676257067.ged` — **646 people, 338
+families**, task `6000000227677903027`. Seed verified as the file's first `INDI`. Well under the
+5,000 cap, so this line is exhausted rather than truncated.
+
+Export 7 submitted the moment the slot freed: `6000000227676704828`, task
+**`6000000227678049832`**. Six of eleven filed.
+
+**⛔ `downloadGedcom('<id>')` IS NOT ALWAYS IN THE DOM.** The queue item says `/gedcom` lists every
+task id in that attribute, and on this pass it did not — every row came back `href="#"` with the
+handler bound in JS, so a regex over `innerHTML` found **zero** ids on a page whose top row plainly
+carried the ready icon. The id has to be taken from the `/gedcom/download?task_id=…` URL that the
+submit redirects to, and recorded then. Reading the row's *text* still works: `cloud_download`
+against *"being created"* is the ready/building signal.
+
+The submit is verified off the radio state before `form.submit()`, never from a screenshot, and
+refuses if walk, id or max_profiles is not what was intended — the default walk on that form is
+**`BloodTree`**.
+

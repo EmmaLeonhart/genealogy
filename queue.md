@@ -260,17 +260,35 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       https://www.geni.com/profile/index/6000000227676658979
       https://www.geni.com/people/NN-Ardzrouni/6000000227676802897
 
-  **State: 1 of 11 DONE.** Filed into `exports/circassian-hinge/`.
+  **State: 6 of 11 DONE.** Filed into `exports/circassian-hinge/`.
 
       DONE  6000000227676582856   2,304 people, 1,306 families
-      NOW   6000000227676362934   task 6000000227677901835
+      DONE  6000000227676362934   4,239 people, 2,275 families
+      DONE  6000000227676617890   5,000 people, 2,270 families  (capped)
+      DONE  6000000227676697827   3,216 people, 1,678 families
+      DONE  6000000227676392008   2,303 people, 1,305 families
+      DONE  6000000227676257067     646 people,   338 families
+      NOW   6000000227676704828   task 6000000227678049832
+      TODO  6000000227676384979
+      TODO  6000000227676454008
+      TODO  6000000227676658979
+      TODO  6000000227676802897
 
   A cron grinds the list one at a time; this is idle-time work and no idle report should say
   "nothing pending" while any of it is outstanding.
 
   One at a time — Geni's limit, not a preference. The download button gets swallowed; navigate
   `https://www.geni.com/gedcom/request_download?task_id=<task id>` instead, and `/gedcom` lists
-  every task id in a `downloadGedcom('...')` attribute.
+  every task id in a `downloadGedcom('...')` attribute — **though that attribute is not always
+  in the rendered DOM**: on 2026-09-09 the rows came back with `href="#"` and the handler bound in
+  JS, so the id had to come from the `/gedcom/download?task_id=` URL the submit redirects to.
+  Record it at submit time rather than expecting to recover it later.
+
+  **Submitting is scripted**, and the default walk is `BloodTree`, not `Descendants`:
+
+      form index 1 -> input[name=walk][value=Descendants].checked = true
+                      input[name=max_profiles].value = 5000
+                      verify walk/id/max off the DOM, then form.submit()
 
 ---
 
