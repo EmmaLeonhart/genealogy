@@ -132,7 +132,12 @@ def test_exports_are_never_concurrent_and_never_cancellable():
     be carried out, which `CLAUDE.md` § *Only `AskUserQuestion` gets answered* calls worse than a
     missing option.
     """
-    background = (EXT / "background.js").read_text(encoding="utf-8")
+    # ⛔ THE FILE IS `service-worker.js`, AND THE RENAME WAS THE FIX rather than a tidy-up.
+    # Chrome's ScriptCache is keyed on the URL, so a manifest version bump does not invalidate
+    # it -- `f9f7eb24` renamed `background.js` to break the cache, and this test kept reading the
+    # dead path and failed with `FileNotFoundError`. The constant survived: it is line 61 of the
+    # new file, so this is a stale path and not a regression being papered over.
+    background = (EXT / "service-worker.js").read_text(encoding="utf-8")
     assert "EXPORT_CONCURRENCY = 1" in background, (
         "export concurrency is Geni's limit and is not a setting"
     )
