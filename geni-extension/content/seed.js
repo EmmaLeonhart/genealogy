@@ -392,9 +392,31 @@ GC.seed.addParent = async function (which, p) {
   const step = (s) => { document.documentElement.dataset.geniCollectorStep = s; };
 
   step("find-add-link");
-  const link = GC.byText("a", /^add family$/i).find(GC.visible);
-  /* The caller adds `enqueue` so the walk climbs past this locked door -- see the comment at the
-   * end of `runSeed`. A master profile is a skip, and a skip is not a stop. */
+  /* ⛔ WAIT FOR THE LINK. THIS WAS A BARE SYNCHRONOUS READ AND IT WROTE OFF CREATABLE PEOPLE.
+   *
+   * Every other stage in this function waits with `GC.until`; this one looked once, the instant
+   * the job started, and Geni renders the profile actions after load. A page that had not got
+   * there yet returned `no_add_link`, which the walk treats as a locked door and climbs past.
+   *
+   * Caught 2026-09-10 by Emma opening the tree view on two ancestors the walk had just skipped:
+   * `Muhadhdhab al-Din ?` `6000000009177497799` and `NN ?` `6000000227693203853` both show four
+   * empty parent boxes — `Add father` and `Add mother`, twice over — two steps up from Sayaluna
+   * ata. Re-checked on the profile page afterwards, `Add Family` is present and visible on both.
+   * The walk had climbed 17 ancestors looking for a slot while standing next to four of them.
+   *
+   * ⛔ SO `no_add_link` DID NOT MEAN WHAT IT SAID, AND IT IS QUOTED ELSEWHERE AS IF IT DID: the
+   * 224-person CBDB cluster was called *"no `Add Family` link, not editable"* on the strength of
+   * this same check. That conclusion was drawn with the same unwaited read and is not evidence
+   * any more. It is not re-opened here — Emma ruled the CBDB question closed — but the claim
+   * should not be repeated as a measurement.
+   *
+   * Genuinely locked profiles still report `no_add_link`; they simply have to spend the wait
+   * first. A skip is still not a stop, and the caller still adds `enqueue` so the walk climbs
+   * past a real locked door. */
+  const findAdd = () => GC.byText("a", /^add family$/i).find(GC.visible);
+  // GC.until resolves true/false, not the node, so re-read after it settles.
+  let link = findAdd();
+  if (!link) { await GC.until(findAdd, 8000); link = findAdd(); }
   if (!link) return { state: "no_add_link" };
 
   /* ⛔ `preventDefault` ON AN `href="#"` ANCHOR. Clicking it navigates to the `#` fragment, and

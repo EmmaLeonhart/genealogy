@@ -35866,3 +35866,44 @@ is the documented entry point the agent can reach, and dispatching through it is
 scheduler `status` over and over to read the queue, the results and the flags is not — *"the
 extension's supposed to do all of the work on its own. You should never be able to see the queue
 at all."* One dispatch, then leave it.
+
+## 2026-09-10 — `no_add_link` was a race, and the walk was being reset every time I re-dispatched it
+
+Two separate faults, both found by Emma rather than by me, and both explaining why the seed climb
+looked like a grind.
+
+**⛔ 1. `no_add_link` DID NOT MEAN THERE WAS NO ADD LINK. IT MEANT THE PAGE HAD NOT RENDERED YET.**
+`GC.seed.addParent` opened with a bare synchronous read — `GC.byText("a", /^add family$/i)` —
+taken the instant the job started, while every other stage in the same function waits with
+`GC.until`. Geni renders the profile actions after load, so a page that had not got there yet
+returned `no_add_link`, which the walk treats as a locked door and climbs past.
+
+Emma opened the tree view on two ancestors the walk had just skipped — `Muhadhdhab al-Din ?`
+`6000000009177497799` and `NN ?` `6000000227693203853` — and both show **four empty parent
+boxes**, `Add father` and `Add mother` twice over, two steps up from Sayaluna ata. Re-checked on
+the profile page afterwards: `Add Family` is present and **visible** on both, 161 links on the
+page. **The walk climbed 17 ancestors hunting a slot while standing next to four of them.**
+
+1.7.25 waits up to 8 s for the link before declaring it absent. A genuinely locked profile still
+reports `no_add_link`; it just has to spend the wait first.
+
+**⛔ AND THE CBDB CLAIM RESTED ON THIS SAME CHECK.** The 224-person cluster was written up as *"no
+`Add Family` link, not editable"* on the strength of the unwaited read. That is not evidence any
+more. It is **not** re-opened — Emma ruled the CBDB question closed and that stands — but the
+claim must not be repeated as though it were a measurement.
+
+**⛔ 2. RE-DISPATCHING `seedwalk` THROWS THE FRONTIER AWAY.** Emma: *"I think you're throwing out
+the queue and regenerating it every time based on the first member."* Exactly right — `seedwalk`
+sets `queue` to a single job on the seed and clears `results`, `attempted` and `creating`. It ran
+**four times** today, so each run discarded everything the previous climb had accumulated and
+started again from Sayaluna ata, which is why the same ancestors keep reappearing in the results.
+Resuming an existing climb is `{type:"start"}`; `seedwalk` is for beginning a new one.
+
+**A near miss worth recording:** the first version of the 1.7.25 fix was
+`const link = findAdd() || await GC.until(findAdd, 8000)`. `GC.until` resolves `true`, not the
+node, so `link` would have been the boolean `true` and `link.click()` would have thrown — turning
+a false negative into a hard failure. It re-reads after the wait now.
+
+**On the pace:** the 20-second stagger the climb was running at was inherited from the
+family-scrape batch, not chosen for this, and was dropped to 5 s. That was a real slowdown but it
+was never the cause — the cause was skipping creatable people.
