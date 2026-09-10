@@ -35608,3 +35608,20 @@ state.
 profiles that cannot be edited on Geni at all, and they now wait until **2026-11-30** — the
 30-day cooldown from the parked date — instead of cycling every thirty days from whenever they
 were last visited.
+
+## 2026-09-10 — `exports/tiny-profiles/` deleted, all 1,704
+
+The one-person tiny GEDCOMs — the scraped families — are out of the corpus. All 1,704 tracked
+files, deleted on instruction. `exports/tiny-paths/` is a different thing and is untouched: 1,185
+files, one per relationship path, still there.
+
+**They were not worth the corpus space they took.** Measured earlier today before the delete:
+the union of both tiny directories held 21,659 people, of whom 15,471 already appear in a real
+export. The whole marginal contribution of the tiny GEDCOMs was **6,188 people out of 1,482,490
+in `exports/` — 0.4%** — and 183 of the profile records were the spurious ones the unscoped
+parser had invented, which is what today's other work found.
+
+**They are re-derivable and nothing here is lost.** `scripts/build-tiny-gedcoms.py` rebuilds them
+from `geni-scraping/*.html` and `geni-families/*.tsv` whenever they are wanted, page scraping is
+cheap, and every file is in git history. The builder will recreate the directory on its next run;
+nothing was changed to stop it.
