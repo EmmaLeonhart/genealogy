@@ -35430,3 +35430,34 @@ rows are not late, they are not requested.
 
 Nobody else from this batch is exported: the gate's backfill had flagged 110 rows
 `warranted` and all 110 were cleared by ruling. The gate keeps flagging future captures.
+
+## 2026-09-10 — every capture written today is being re-scraped, because they predate the fix
+
+All 55 people captured today were scraped by a `GC.family.scrape` with two live defects, both
+found and fixed later the same day:
+
+* **the biography links people.** `classify()` matched relation phrases anywhere on the page and
+  the container was then the common ancestor of the first and last match, so an About section
+  containing *"Mother of J.R.R. Tolkien … one of six children of John Suffield"* dragged every
+  profile link in the prose into the family block. Mabel Tolkien's husband and seven siblings
+  came back as her children.
+* **a relative named like a relation.** The walker classified text nodes inside anchors, so a
+  sibling whose Geni name is literally `Daughter Of Gaon The` flipped `current` and the ten
+  people listed after her became parents. R' Chaim Volozhiner returned **nine** parents.
+
+Both were caught by hand on the two people who happened to be looked at closely. Neither is
+detectable from the capture itself: a wrong relation is a well-formed row.
+
+So the held results are not worth hand-correcting and the written ones are not worth trusting.
+55 `family` jobs re-queued under 1.7.21. A `family` job is a page load and a scrape with no path
+search, so the whole set is minutes rather than the ten-minute-per-person the `individual` job
+costs — and `write-family-scrape.py` overwrites a row in place, so the corrected relations simply
+replace the old ones.
+
+**What is NOT re-collected:** the path verdicts and statistics. Those were never touched by
+either defect, and `path_found` is preserved across a revisit by design rather than re-derived.
+
+**Verified before re-queueing**, on the person the second defect was found on:
+
+    R' Chaim Volozhiner   before   parent 9  spouse 1  child 5  sibling 7   + 3 curators
+                          after    parent 2  spouse 1  child 5  sibling 14
