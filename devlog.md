@@ -35980,3 +35980,44 @@ The next page load started the new worker cleanly.
 
 **The confirm-create fix (1.7.26) is therefore only now actually running**, and so is everything
 else the background was supposed to have learned today.
+
+## 2026-09-10 — the generation-suffix gap measured: 101 items, not one number but two
+
+`queue.md` § *`den yngre` NEEDS THE PROPER NAME-CHANGE TREATMENT* left its first piece
+unmeasured — *"how many items carry `den yngre` and the rest of `GENERATION_SUFFIX`'s surface
+forms in a label but no `NSFX`"*. `scripts/measure-generation-suffix-gap.py` →
+`reports/generation-suffix-gap.csv`, one row per instance.
+
+`NSFX` is read straight out of the corpus, because no derived CSV carries it: one pass over
+1,815 GEDCOMs tracking the current `INDI` xref, **81,531 people carrying any `NSFX`**. Reading it
+off a label instead would be circular, since the label is the thing under test.
+
+    rows in derived-labels.csv                1,451,993
+    carrying one of the 23 surface forms          6,910
+      Geni's NSFX carries it too                  6,121
+      NSFX does NOT                                 789
+
+**⛔ AND THE 789 IS TWO DIFFERENT THINGS. Quoting it as one number would be wrong.**
+
+    101   Wikidata's label carries the suffix and OURS DOES NOT   <- the Detlof shape
+    685   OUR label carries it and Wikidata has no label at all   <- a different thing
+      3   both sides carry it, NSFX still does not
+
+**The 101 are the actual defect**, and every one has a QID. `Q5797554` Detlof Heijkenskjöld den
+yngre is in the file, which is what says the measurement found the thing it was written for.
+By form: `the elder` 26, `the younger` 26, `sr.` 23, `jr.` 19, `den yngre` 5, `d.e.` 1, `jr` 1.
+
+**The 685 are not that defect and must not be swept in with it.** They are `jr.` 369 and `sr.` 316
+only, **22 have a QID and just 19 have any `wikidata_en` at all** — so there is no Wikidata label
+to disagree with. The suffix is sitting inside Geni's own `NAME` string rather than in `NSFX`, and
+our derived label picked it up from there. Whether that is even wrong is a separate question from
+the one the queue asked.
+
+**⛔ THE QUEUE'S EXISTING NUMBERS DO NOT MATCH AND THAT IS EXPECTED.** It records *"`d.y.` 8 on
+Wikidata, `the younger` 5, `nuorempi` 11"*, against `d.y.` 0, `the younger` 26 and `nuorempi` 0
+here. Those counted Wikidata items at large; this counts the joined population — people who are in
+`derived-labels.csv`, i.e. who have a Geni id we hold. The two answer different questions and
+neither supersedes the other.
+
+Piece 1 of that queue item is now measured. Pieces 2 and 3 — the corrected labels reaching
+Wikidata, and whether the same hole exists for the remaining senior forms — are untouched.

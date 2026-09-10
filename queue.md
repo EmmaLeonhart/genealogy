@@ -657,8 +657,9 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
   **What remains:**
 
-      1. how many items carry `den yngre` and the rest of `GENERATION_SUFFIX`'s surface
-         forms in a label but no `NSFX` -- unmeasured, and it is a CSV of every instance
+      1. MEASURED 2026-09-10 -- `reports/generation-suffix-gap.csv`, 101 items where
+         Wikidata's label carries the suffix and ours does not, all with a QID. A further
+         685 are the reverse and are a different question. See `devlog.md`.
       2. the corrected labels reaching Wikidata, which needs a rebuild and then a batch
       3. whether the same hole exists for the other suffixes: `d.y.` 8 on Wikidata,
          `the younger` 5, `nuorempi` 11, and every senior form
