@@ -40,6 +40,29 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   The OneTab page in `undigested.md` is **not** digested and stays there: still being worked on,
   *"better for my judgment on this one."*
 
+- **⛔ THE ALGORITHM IS STATELESS EXCEPT FOR TWO THINGS. Ruled 2026-09-10.**
+  *"This entire algorithm is completely stateless except for the actual connectivity graph of
+  which it is built off of, and the dates of attempts."*
+
+      the connectivity graph   rebuilt from the GEDCOMs in `exports/` every CI run
+      last_attempted           carried across the rebuild by `load_previous`, and NOTHING ELSE is
+      everything else          recomputed, or a placeholder rewritten every build
+
+  **An attempt produces exactly two things:** a GEDCOM file that exists or does not, and a date
+  in `reports/unconnected-p2600.tsv`. So *has this person been exported* is answered by looking
+  for the file, and *what are their statistics* by scraping them again. Membership needs no state
+  either — a person who gets connected stops being generated into the file, and nothing marks
+  them done.
+
+  **Verified 2026-09-10:** `load_previous` carries **266,201 dates** into a rebuild; the six
+  statistics/`exported` columns are rewritten as `200 200 200 200 200 no`.
+
+  ⛔ **DO NOT ADD STATE TO THIS.** A `load_extras` carrying those six columns across a rebuild was
+  written and removed the same day; it looked like protecting data from a from-scratch rewrite
+  and was really the introduction of state. Sweep rules, flags and registers proposed on top of
+  this are the same error — *"you don't need to come up with new ideas. In fact, you actively
+  shouldn't."*
+
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
   item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:

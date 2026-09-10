@@ -10,6 +10,32 @@ Piece 6 — the date being WRITTEN on every attempt — is `scripts/attempt_ledg
 place and leaves the ordering alone, because the ordering is this script's and CI runs it after
 the tree build.
 
+## ⛔ WHAT IS STATE AND WHAT IS NOT. THE WHOLE ALGORITHM IN FOUR LINES
+
+Ruled 2026-09-10, verbatim: *"This entire algorithm is completely stateless except for the actual
+connectivity graph of which it is built off of, and the dates of attempts."*
+
+    the connectivity graph   built from the GEDCOMs in `exports/`, every run, from scratch
+    last_attempted           carried from the previous file by `load_previous`. THE ONLY
+                             THING CARRIED. It cannot be recovered from anything else.
+    everything else          recomputed, or a placeholder rewritten on every build
+
+**An attempt produces exactly two things**, and neither of them is a flag somebody sets:
+
+    a GEDCOM file that exists in `exports/`, or does not
+    a date in this file
+
+So *"has this person been exported?"* is answered by looking for the file, and *"what are their
+statistics?"* by scraping them again. Neither is stored, because storing them would make this
+file authoritative for something it cannot verify.
+
+**Membership needs no state either** (§ 3): a person who gets connected simply stops being
+generated into the file. Nothing marks them done, and nothing has to.
+
+A `load_extras` that carried the six placeholder columns across a rebuild was written and removed
+on 2026-09-10. It looked like protecting data from a from-scratch rewrite and was really the
+introduction of state.
+
 ## The columns, in this order, because the order is part of the spec
 
     qid                 Wikidata QID
