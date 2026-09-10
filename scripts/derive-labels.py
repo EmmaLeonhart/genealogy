@@ -129,7 +129,28 @@ def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
     # label was fixed keeps `ogift` in the alias beside it.
     alias = drop_clan_suffix(drop_repeated_patronymic(
         drop_description_suffix(" ".join(p for p in parts if p), clean(nsfx))), clean(nsfx))
-    return alias if is_description(alias) else drop_label_title(alias)
+    # ⛔ **A TITLE STAYS IN THE ALIAS. It comes out of the LABEL and that is a different slot.**
+    #
+    # This called `drop_label_title(alias)` and so produced `Aénor Flandre`, breaking Emma's
+    # ruling of 2026-08-11 that a noble suffix stays in — `tests/test_derivation_scripts.py`
+    # pins it as `Aénor Flandre Duchess of Aquitaine`, and that assertion held CI red.
+    #
+    # **Two rulings look like they collide and do not.** 2026-09-07 closed the open question in
+    # `CLAUDE.md` § *A TITLE IS NOT A NAME* with *titles must not end up in `mul` labels*, which
+    # is what `drop_label_title` implements. 2026-08-11 was about the ALIAS. A label and an alias
+    # are different slots with different jobs: the label is what the person is called, and an
+    # alias exists **only to be found by** — `Help:Aliases`, quoted in § *A nickname alias
+    # carries the SURNAME*: *"the purpose of aliases is only to find entities in searches."*
+    #
+    # A title makes an alias MORE findable and a label wronger. So the title comes out of one and
+    # stays in the other, and neither ruling has to give.
+    #
+    # A DESCRIPTION MARKER still goes, above: § *A DESCRIPTION MARKER COMES OUT OF THE LABEL*
+    # names `derive-labels.py` *"(the label and the married-name alias)"* as two of its three
+    # call sites, so `ogift` is gone from both. Descriptions and titles were separated by her own
+    # ruling — *"a title is a thing the person was; a description marker is an annotation about
+    # the record"* — and that separation is exactly what this line was flattening.
+    return alias
 
 
 def main() -> int:

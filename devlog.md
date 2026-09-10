@@ -33730,3 +33730,37 @@ her line would reach further. Recorded, not acted on.
 
 **The queue item is deleted**, its work being on disk. The download went through
 `/gedcom/request_download?task_id=...` every time — four for four — and the button was never used.
+
+## 2026-09-09 — the alias keeps its title, and the silent-`e` rule is refuted
+
+**Two of your four answers, settled.**
+
+**`alias_from_married_name` keeps the title — the test was right and the code wrong.** You said
+*"just make something up to your best judgment"*, so: the code called `drop_label_title(alias)`
+and produced `Aénor Flandre`, breaking your ruling of 2026-08-11 that a noble suffix stays in.
+That assertion has held CI red.
+
+**Two rulings looked like they collided and do not.** 2026-09-07 closed § *A TITLE IS NOT A
+NAME*'s open question with *titles must not end up in `mul` labels* — which is what
+`drop_label_title` is for. 2026-08-11 was about the **alias**. They are different slots: a label
+is what the person is called, and an alias exists **only to be found by**, which is Wikidata's
+own wording in `Help:Aliases`. A title makes an alias more findable and a label wronger, so it
+comes out of one and stays in the other and neither ruling gives. A description marker still goes
+from both — `ogift` is gone — which is your own separation: *"a title is a thing the person was;
+a description marker is an annotation about the record."*
+
+**⛔ AND `Anne` NEEDED NO FIX, because the attested column already beats the rule.** You said
+*"fix just this token"*; the token is `アン` in the table and that is what emits. The rule is what
+says `アンネ`, and it is a class — 10 attested tokens where the rule adds a tail the attestation
+drops: `Christie` クリスティエ against クリスティ, `Lynne` リンネ against リン, `Amelie`,
+`Petrie`, `Holcombe`.
+
+**So the rule was tried and REFUTED: 734 → 733, worse than doing nothing.** 55 gained, 56 lost,
+and the two lists are a language boundary:
+
+    gained   Adele, Adeline, Anne, Babette, Belle, Berthe, Cecile, Clotilde   French/English
+    lost     Abbe, Andre, Arne, Atte, Bagge, Bakke, Beate, Birgitte, Bosse    Norwegian et al
+
+Norwegian, Swedish and Danish **pronounce** that `e`, and they are the corpus majority. Same
+refutation as `dj`/`lj` — right for `Djupvik`, wrong for `AMIDJAJA` — and the same lesson:
+nothing in a token says which language it is. Recorded in `translit_no.py` so it is not retried.

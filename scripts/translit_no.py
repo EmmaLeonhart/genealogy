@@ -294,6 +294,24 @@ def translit(token):
     # independently: of the 4 with a real `zh` attestation, 0 contain 德特.
     # Same shape as `ck` above -- two letters, one phoneme, normalised before the walk.
     s = s.replace("dt", "t")
+    # ⛔ **A SILENT WORD-FINAL `e` WAS TRIED AND REFUTED, 2026-09-09. Do not add it.**
+    #
+    # `Anne` renders `アンネ` where Wikidata attests `アン` 233x, and it is a whole class: 10
+    # attested tokens where the rule adds a tail the attestation drops — `Christie` クリスティエ
+    # against クリスティ 10x, `Lynne` リンネ against リン 5x, `Amelie`, `Petrie`, `Holcombe`.
+    #
+    # Dropping a word-final `e` after a consonant scores **733 against the current 734** — worse
+    # than doing nothing. 55 gained, 56 lost, and the two lists are a language boundary:
+    #
+    #     gained   Adele, Adeline, Anne, Babette, Belle, Berthe, Cecile, Clotilde   French/English
+    #     lost     Abbe, Andre, Arne, Atte, Bagge, Bakke, Beate, Birgitte, Bosse    Norwegian et al
+    #
+    # **Norwegian, Swedish and Danish PRONOUNCE that `e`**, and they are the corpus majority. This
+    # is the `dj`/`lj` refutation again — right for `Djupvik`, wrong for Indonesian `AMIDJAJA` —
+    # and its lesson is the same: nothing in the token says which language it belongs to.
+    #
+    # The 55 are already right in the emitted output, because the attested column beats the rule
+    # per token. So the class needs no rule; it needs attestations, which it has.
     if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxz-'’." for c in s):
         return None, None
     ja, zh, i = [], [], 0
