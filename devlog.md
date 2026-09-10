@@ -34121,3 +34121,12 @@ so this ball is cut off and there is more below its rim — the second of the el
 Export 9 submitted: `6000000227676454008`, task **`6000000227678043855`**. Eight of eleven filed;
 three outstanding.
 
+
+## 2026-09-09 — descendants export 9 of 11: NN Saltykov `6000000227676454008`
+
+`exports/circassian-hinge/export-Descendants-6000000227676454008.ged` — **2,632 people, 1,450
+families**, task `6000000227678043855`. Seed verified as the file's first `INDI`, under the cap.
+
+Export 10 submitted: `6000000227676658979`, task **`6000000227677942052`**. Nine of eleven filed;
+two outstanding.
+

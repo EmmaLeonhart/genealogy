@@ -274,7 +274,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       https://www.geni.com/profile/index/6000000227676658979
       https://www.geni.com/people/NN-Ardzrouni/6000000227676802897
 
-  **State: 8 of 11 DONE.** Filed into `exports/circassian-hinge/`.
+  **State: 9 of 11 DONE.** Filed into `exports/circassian-hinge/`.
 
       DONE  6000000227676582856   2,304 people, 1,306 families
       DONE  6000000227676362934   4,239 people, 2,275 families
@@ -284,8 +284,8 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       DONE  6000000227676257067     646 people,   338 families
       DONE  6000000227676704828      90 people,    48 families
       DONE  6000000227676384979   5,000 people, 2,807 families  (capped)
-      NOW   6000000227676454008   task 6000000227678043855
-      TODO  6000000227676658979
+      DONE  6000000227676454008   2,632 people, 1,450 families
+      NOW   6000000227676658979   task 6000000227677942052
       TODO  6000000227676802897
 
   A cron grinds the list one at a time; this is idle-time work and no idle report should say
