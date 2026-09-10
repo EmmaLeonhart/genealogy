@@ -51,8 +51,26 @@ KEEP_TAGS = frozenset({
     "SEX", "RFN", "REFN",
     # events and dates — derive-facts.py
     "BIRT", "DEAT", "BURI", "CHR", "CREM", "MARR", "DIV", "DATE",
-    # places — every one of these is read by derive-facts.py
-    "PLAC", "ADDR", "ADR1", "ADR2", "ADR3", "CITY", "CTRY", "POST", "STAE",
+    # ⛔ **THE STRUCTURED ADDRESS BLOCK IS GONE, 2026-09-10.** It was kept on the grounds that
+    # *"every one of these is read by derive-facts.py"* — true, and the wrong test. `derive-facts`
+    # reads them and writes `birth_address` / `death_address` / `burial_address`, and **NOTHING
+    # READS THOSE COLUMNS.** Nor does any place statement exist: `grep P19|P20|P119` over every
+    # `.qs` and the daily batch returns **nothing**, so a place has never reached Wikidata.
+    #
+    # Measured over 3,477 exports rather than guessed:
+    #
+    #     ADDR ADR1 ADR2 ADR3 CITY CTRY POST STAE   124,880,269 bytes  3.03%  8,741,947 lines
+    #     PLAC                                        42,280,646 bytes  1.02%  1,536,400 lines
+    #
+    # The address block is THREE TIMES the size of `PLAC` and has no consumer at all. Against the
+    # slim union merge's 15,428 MB peak that is roughly **467 MB** returned for nothing given up.
+    #
+    # ⛔ **`PLAC` STAYS, AND THE REASON IS NOT PLACES.** `build-cjk-romanisation.py` reads
+    # `birth_place` and `death_place` as **culture evidence** — the words in them are what decide
+    # whether a CJK person is classified `ja`, `zh` or `ko`, and `CLAUDE.md` § *The gate is `ja` +
+    # `zh` + `ko`* makes that gate load-bearing. Dropping `PLAC` would blind the classifier to
+    # save 1%, which is the trade this comment exists to refuse.
+    "PLAC",
     # what the Wikidata model emits: P106 occupation, P97 noble title
     "OCCU", "TITL",
     # relationships — derive-family.py
