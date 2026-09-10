@@ -627,7 +627,28 @@ GC.runSeed = async function (job) {
      * Barbaron -- a plain tier 3, father present -- into `one parent listed and no label says
      * which`. A guard that fires on a page it did not wait for is a skip, not a safeguard. */
     if (!fam.father && !fam.mother) {
-      await GC.until(() => { const f = GC.seed.family(); return !!(f.father || f.mother); }, 30000);
+      /* ⛔⛔ **THE WIDGET TRUNCATES AND THE PARENT FALLS OFF IT. CLICK `View All`.**
+       *
+       * Measured on ONG Ewe Hai `6000000025128512415`, 2026-09-10, and on Constantine, lord of
+       * Barbaron before him. The labelled block renders **"Showing 12 of 25 people"** and the
+       * father is simply not among the twelve, so there is no `father` label anywhere in the DOM
+       * and the guard below skips a person who is a plain tier 3. ONG is a MANDATORY export --
+       * a figure at or above 250 makes it required -- and he was being skipped by a widget's
+       * pagination.
+       *
+       * `View All` is the module's own control and expanding it renders every relative with its
+       * label. Waiting alone never fixes this: the missing rows are not late, they are not
+       * requested. */
+      const viewAll = [...document.querySelectorAll("#family_profile_module a, .immediate-family a,"
+                                                    + " #family_profile_module button")]
+        .find((a) => /^view all$/i.test(((a.textContent || "").trim())));
+      if (viewAll) {
+        viewAll.click();
+        await GC.until(() => { const f = GC.seed.family(); return !!(f.father || f.mother); }, 20000);
+      }
+      if (!GC.seed.family().father && !GC.seed.family().mother) {
+        await GC.until(() => { const f = GC.seed.family(); return !!(f.father || f.mother); }, 20000);
+      }
       fam = GC.seed.family();
     }
     if (fam.father && !fam.mother) which = "mother";
