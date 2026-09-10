@@ -372,6 +372,35 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   **Scale, so nobody starts it lightly:** 2,587 outstanding on the worklist today. Geni runs one
   export at a time and that is its limit, not a setting.
 
+- **⛔ EXPORT FROM THESE SIX FIRST — found in Abul Hamza's ball, 2026-09-10.** They cleared the
+  descendants threshold on a random pick and each one is an individual export to run **before**
+  the general descendants-of-Abul-Hamza process below.
+
+      6000000008384075400  Sayaluna ata                15,000   (Geni's display ceiling)
+      6000000000746523797  Hélène de Corday            15,000   (ceiling)
+      6000000026257912323  Robert d'Esneval, VI        15,000   (ceiling)
+      6000000001435366077  Inês de Bettencourt, I      15,000   (ceiling)
+      6000000015633226273  Pietro Antonio di Capua     12,476
+      6000000015647948256  Jacques Grimaldi            11,468
+
+  **⛔ YOU CANNOT EXPORT DIRECTLY FROM THE PERSON.** Measured on Jacques Grimaldi the same day:
+  `https://www.geni.com/gedcom/export/6000000015647948256` returns **"You are not allowed to
+  export that profile."** The account may only export from a profile it owns, which is what the
+  seed rule has always been for — *create an ANCESTOR of them per `docs/export-seed-rules.md`,
+  then run a `Descendants` export on the created ancestor.* A bare export job on somebody else's
+  profile is refused, and that refusal is the reason the ancestor step exists rather than a
+  formality on top of it.
+
+  **The threshold is 4,000**, ruled 2026-09-10: *"you choose a random person of the 5,000
+  available candidates and check if they have 5,000 descendants or more. I'm thinking,
+  realistically, 4,000."*
+
+  **⛔ AND THERE IS NO QUEUE.** *"There isn't even supposed to be a queue — the queue is only a
+  thing that exists because of the fact that you violated the principles."* Pick one person at
+  random, read the number, and if it passes go **immediately** into the export on them, finish it,
+  and only then look at anybody else. Do not sample ahead, do not tabulate, do not build a census.
+  These six are written down because they were already found, not as a batch to work through.
+
 - **⛔ THE DISJOINTNESS CAMPAIGN — YOUR PRIORITY ORDERING, 2026-09-09. AFTER THE WIKIDATA PATHS.**
   You: *"Yeah listing people here in their priority ordering for after other stuff done"*, and on
   the two profiles below: *"they are long term priorities... running it on them comes after the...
