@@ -402,7 +402,24 @@ GC.runSeed = async function (job) {
   const report = (o) => Object.assign({ job: "seed", geni_id: String(job.geni_id),
                                         url: location.href }, o);
 
-  await GC.until(() => !!document.querySelector("#family_profile_module, .immediate-family"), 25000);
+  /* ⛔ **`no_family_block` WAS A TIMEOUT, NOT A VERDICT, AND IT SILENTLY PRUNED THE FRONTIER.**
+   *
+   * Measured 2026-09-10 on the first `seedwalk`: 23 people walked, and **8 came back
+   * `no_family_block`** — a third of them. Tobuldu Mirza Kamisch `6000000090673721908` was one,
+   * and his page has the family module perfectly well when it is loaded in a FOREGROUND tab.
+   * Several of the eight reported `url` still reading `/people/x/<id>`, which is the pre-redirect
+   * URL: the page had not finished loading when the budget expired.
+   *
+   * The cost is not a missing row. A `no_family_block` enqueues nothing, so every one of those
+   * eight took its two parents out of a breadth-first walk — and the walk then emptied its queue
+   * and stopped without creating anybody. A state that reads as *this person has no family* was
+   * really *this page was still loading*, which is the shape `CLAUDE.md` § *A pending path search
+   * is NOT a miss* names in the other campaign.
+   *
+   * So: wait for the load to FINISH first, and give the module its own budget after that. The
+   * 25000 was written for a tab somebody was looking at. */
+  await GC.until(() => document.readyState === "complete", 60000);
+  await GC.until(() => !!document.querySelector("#family_profile_module, .immediate-family"), 60000);
   const fam = GC.seed.family();
   if (!fam.found) return report({ state: "no_family_block" });
 

@@ -35167,3 +35167,40 @@ the same lever used once; this makes it routine, because the staleness is not a 
 
 Verified by behaviour, not by version: `status` returns `exportWalk`, and `seedwalk` replies
 `{started, exportWalk:"descendants"}` rather than `undefined`.
+
+### ⛔ `no_family_block` was a TIMEOUT and it pruned the walk's frontier silently
+
+The first `seedwalk` run — hinge person 1, Елбуздуко Битуев — walked **23 people, created nobody,
+and stopped with an empty queue**. The breakdown says why:
+
+    both_present      11
+    no_family_block    8
+    tab_closed         4
+
+`no_family_block` reads as *this person has no family block*, and it is not that. Tobuldu Mirza
+Kamisch `6000000090673721908` was one of the eight and his page carries the module perfectly well
+when it is loaded in a **foreground** tab. Several of the eight reported a `url` still reading
+`/people/x/<id>` — the pre-redirect form — so the page had not finished loading when `runSeed`'s
+25-second budget expired.
+
+**The cost is the walk, not the row.** A `no_family_block` enqueues nothing, so each of the eight
+took its two parents out of a breadth-first frontier, and four closed tabs took four more. The
+queue emptied and the run ended without a creation. Same shape as § *A pending path search is NOT
+a miss* in the other campaign: a state that means *not answered yet* was being read as an answer.
+
+**The cause is twelve concurrent Geni loads.** `s.concurrency` is 12 and that number is the PATH
+search's — twelve tabs each waiting ten minutes on a search is the point there. A seed job waits
+on a page load instead, and running twelve is wrong twice over: a creation ends the walk and
+discards the rest of the seed queue, so every seed beside the one that finds a slot is spent on a
+queue about to be thrown away.
+
+Two changes, and 1.7.2 is the two of them:
+
+* **Seed jobs run one at a time**, like exports. That is also what
+  `docs/parent-walk-algorithm.md`'s order describes — the next person comes from this person's
+  answer.
+* **`runSeed` waits for the load to finish** (`readyState === "complete"`, 60 s) before giving
+  the family module its own 60 s. The 25000 was written for a tab somebody was looking at.
+
+Re-run on the same person, first 7 steps: **7 `both_present`, 0 `no_family_block`**, queue
+growing rather than emptying.

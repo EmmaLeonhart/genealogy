@@ -358,7 +358,21 @@ async function pump() {
         if (inFlight === 0) await put({ running: false });
         break;
       }
-      const limit = next.job === "export" ? EXPORT_CONCURRENCY : s.concurrency;
+      /* ⛔ **A CLIMB IS SEQUENTIAL, SO SEED JOBS RUN ONE AT A TIME.** `s.concurrency` is 12 and
+       * it is the PATH search's number — *"how many searches can be in flight at once"* — where
+       * twelve tabs each waiting ten minutes on Geni is the whole point. A seed job waits on a
+       * page load, not on a search, and two things make twelve of them actively harmful:
+       *
+       *  - **The work is thrown away.** A creation ends the walk and drops the rest of the seed
+       *    queue, so every seed running beside the one that finds a slot was spent on a queue
+       *    about to be discarded.
+       *  - **It broke the walk.** Twelve concurrent Geni loads on 2026-09-10 put 8 of 23 pages
+       *    past `runSeed`'s load budget and closed 4 tabs outright; each of those took its two
+       *    parents out of the frontier, and the walk stopped with nothing created.
+       *
+       * One at a time is also what `docs/parent-walk-algorithm.md`'s order actually describes:
+       * the next person comes from this person's answer. */
+      const limit = (next.job === "export" || next.job === "seed") ? 1 : s.concurrency;
       if (inFlight >= limit) break;
 
       const queue = s.queue.slice(1);
