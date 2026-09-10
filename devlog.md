@@ -35294,3 +35294,44 @@ people."*
 hand when it was built; a sampling loop was constructed around a question that had already been
 answered. Emma: *"you aren't supposed to do a census job lol … You are going way the fuck
 overboard."*
+
+## 2026-09-10 — the descendants loop runs end to end, and two things about exports
+
+**One creation, then the export.** Pietro Antonio di Capua `6000000015633226273` (12,476
+descendants) was picked at random out of Abul Hamza's ball and cleared the 4,000 threshold. The
+walk climbed **31 people**, every one of them fully parented, found the open slot on **Aniello
+Arcamone, Conte di Borello** `6000000185604973958`, created **`NN Arcamone`
+`6000000227683930832`** there, and halted itself. 26 `both_present`, 2 `no_add_link`, 2
+`family_not_read`, one creation. No spreading.
+
+`exports/abul-hamza-descendants/export-Descendants-6000000227683654853.ged` — **5,000 people,
+2,594 families**, seed verified as the file's first `INDI`. That is `NN Rouponi`, the ancestor
+created on Zabel Rouponi earlier in the session. **At the cap, so truncated.**
+
+### ⛔ YOU CANNOT EXPORT FROM A PROFILE THE ACCOUNT DOES NOT OWN
+
+`/gedcom/export/6000000015647948256` (Jacques Grimaldi) returns **"You are not allowed to export
+that profile."** Six export jobs were queued straight at the sampled people and this is why they
+produced nothing. The seed rule's *create an ancestor, export from the ancestor* step is the
+mechanism that makes an export possible at all, not a nicety layered on top of it — the created
+profile is one the account owns.
+
+### ⛔ A DOM-TRIGGER EXPORT JOB DIES AT ITS OWN SUBMIT
+
+`runExport` fills the form and clicks submit; the form NAVIGATES to `/gedcom/request_export`; the
+content script is destroyed and the job's promise dies with it, so nothing polls and nothing ever
+clicks *Download My GEDCOM File*. Only a BACKGROUND-driven export survives, because the router's
+`claim` branch runs again on the new page and the background still holds that tab's job — the job
+simply resumes, on the page that is now showing the build.
+
+So `{job:"export"}` through the DOM trigger submits and abandons. It must go through the
+background.
+
+### The refusal message is ambiguous and cost three duplicate downloads
+
+`/gedcom/request_export` shows *"There is currently a GEDCOM export being generated for you"* and
+*"NN Arcamone's GEDCOM File is Being Created"* **on the same page**, and only the first is true.
+Reading the second as acceptance, `/gedcom/download` was clicked three times and served the same
+779,002-byte file each time — `export-geni (23)` and `(24)` are duplicates of `(22)` and can be
+deleted. `/gedcom/export/<id>` showing the ordinary form is the reliable *no export in flight*
+signal.
