@@ -250,7 +250,7 @@ LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
 
-# 942 more name items are needed and wait for a later
+# 929 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   Ekerman (family), 1 bearer(s)
 #   Ellingsdatr (given), 1 bearer(s)
@@ -264,7 +264,7 @@ LAST	P31	Q110874
 #   Iversen (patronymic), 1 bearer(s)
 #   Jørgensdatter (patronymic), 1 bearer(s)
 #   Kamberud (family), 1 bearer(s)
-#   ... and 930 more
+#   ... and 917 more
 
 
 # ======================================================================
@@ -310,250 +310,257 @@ Q141403363	P460	Q141352780
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 181 edits; 7160 edits held for a later run
-#   across 1820 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 188 edits; 6972 edits held for a later run
+#   across 1760 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q136688654: Mary Stkison|Stikson -> Mary Stkison   + Mary Stikson
-Q136688654	Len	"Mary Stkison"
-Q136688654	Lmul	"Mary Stkison"
-Q136688654	Amul	"Mary Stikson"
-#   Q136481698: Margaret Layburne (Laburne|Leyburne) -> Margaret Layburne   + Margaret Laburne | Margaret Leyburne
-Q136481698	Len	"Margaret Layburne"
-Q136481698	Lmul	"Margaret Layburne"
-Q136481698	Amul	"Margaret Laburne"
-Q136481698	Amul	"Margaret Leyburne"
-#   Q136481689: Ellen|Eleanor Chator (Chaytor) -> Ellen Chator (Chaytor)   + Eleanor Chator (Chaytor)
-Q136481689	Len	"Ellen Chator (Chaytor)"
-Q136481689	Lmul	"Ellen Chator (Chaytor)"
-Q136481689	Amul	"Eleanor Chator (Chaytor)"
-#   Q136383973: Aleta|Adelheid Wrangell -> Aleta Wrangell   + Adelheid Wrangell
-Q136383973	Len	"Aleta Wrangell"
-Q136383973	Lmul	"Aleta Wrangell"
-Q136383973	Amul	"Adelheid Wrangell"
-#   Q136376438: Elisabeth of Kula|Lod -> Elisabeth of Kula   + Elisabeth of Lod
-Q136376438	Len	"Elisabeth of Kula"
-Q136376438	Lmul	"Elisabeth of Kula"
-Q136376438	Amul	"Elisabeth of Lod"
-#   Q136376266: Reiner|Reinholt Lehusen -> Reiner Lehusen   + Reinholt Lehusen
-Q136376266	Len	"Reiner Lehusen"
-Q136376266	Lmul	"Reiner Lehusen"
-Q136376266	Amul	"Reinholt Lehusen"
-#   Q136376261: Julius|Gillis Coyet -> Julius Coyet   + Gillis Coyet
-Q136376261	Len	"Julius Coyet"
-Q136376261	Lmul	"Julius Coyet"
-Q136376261	Amul	"Gillis Coyet"
-#   Q136376259: Baron Villem Gillis|Vilhelm Julius Coyet, 1.Friherre till Ljungby, lord of Årup -> Baron Villem Gillis Julius Coyet, 1.Friherre till Ljungby, lord of Årup   + Baron Villem Vilhelm Julius Coyet, 1.Friherre till Ljungby, lord of Årup
-Q136376259	Len	"Baron Villem Gillis Julius Coyet, 1.Friherre till Ljungby, lord of Årup"
-Q136376259	Lmul	"Baron Villem Gillis Julius Coyet, 1.Friherre till Ljungby, lord of Årup"
-Q136376259	Amul	"Baron Villem Vilhelm Julius Coyet, 1.Friherre till Ljungby, lord of Årup"
-#   Q136341075: Beste|Hessel van Brienen -> Beste van Brienen   + Hessel van Brienen
-Q136341075	Len	"Beste van Brienen"
-Q136341075	Lmul	"Beste van Brienen"
-Q136341075	Amul	"Hessel van Brienen"
-#   Q136336618: Angus|Aindalis O'Docherty -> Angus O'Docherty   + Aindalis O'Docherty
-Q136336618	Len	"Angus O'Docherty"
-Q136336618	Lmul	"Angus O'Docherty"
-Q136336618	Amul	"Aindalis O'Docherty"
-#   Q136336422: Margaret|Helen Mayne -> Margaret Mayne   + Helen Mayne
-Q136336422	Len	"Margaret Mayne"
-Q136336422	Lmul	"Margaret Mayne"
-Q136336422	Amul	"Helen Mayne"
-#   Q136336174: Jane|Anne Stokeham -> Jane Stokeham   + Anne Stokeham
-Q136336174	Len	"Jane Stokeham"
-Q136336174	Lmul	"Jane Stokeham"
-Q136336174	Amul	"Anne Stokeham"
-#   Q136311063: Maria|Marijcke van Teylingen -> Maria van Teylingen   + Marijcke van Teylingen
-Q136311063	Len	"Maria van Teylingen"
-Q136311063	Lmul	"Maria van Teylingen"
-Q136311063	Amul	"Marijcke van Teylingen"
-#   Q136247458: Hans Oeheim|Ehem, der Jüngere -> Hans Oeheim der Jüngere   + Hans Ehem, der Jüngere
-Q136247458	Len	"Hans Oeheim der Jüngere"
-Q136247458	Lmul	"Hans Oeheim der Jüngere"
-Q136247458	Amul	"Hans Ehem, der Jüngere"
-#   Q136207659: Margaret|Ann Cunningham -> Margaret Cunningham   + Ann Cunningham
-Q136207659	Len	"Margaret Cunningham"
-Q136207659	Lmul	"Margaret Cunningham"
-Q136207659	Amul	"Ann Cunningham"
-#   Q136140805: Judith|Juliana Brudenell -> Judith Brudenell   + Juliana Brudenell
-Q136140805	Len	"Judith Brudenell"
-Q136140805	Lmul	"Judith Brudenell"
-Q136140805	Amul	"Juliana Brudenell"
-#   Q136030919: Michelle|Albertine Imbert, Dame de Warenghien, de Grimaretz, de Martinsart -> Michelle Imbert, Dame de Warenghien, de Grimaretz, de Martinsart   + Albertine Imbert, Dame de Warenghien, de Grimaretz, de Martinsart
-Q136030919	Len	"Michelle Imbert, Dame de Warenghien, de Grimaretz, de Martinsart"
-Q136030919	Lmul	"Michelle Imbert, Dame de Warenghien, de Grimaretz, de Martinsart"
-Q136030919	Amul	"Albertine Imbert, Dame de Warenghien, de Grimaretz, de Martinsart"
-#   Q136028960: Margery|Margaret Conyers, of Thormanby, Yorks -> Margery Conyers, of Thormanby, Yorks   + Margaret Conyers, of Thormanby, Yorks
-Q136028960	Len	"Margery Conyers, of Thormanby, Yorks"
-Q136028960	Lmul	"Margery Conyers, of Thormanby, Yorks"
-Q136028960	Amul	"Margaret Conyers, of Thormanby, Yorks"
-#   Q136028340: Johanna Zeiler|Zailler -> Johanna Zeiler   + Johanna Zailler
-Q136028340	Len	"Johanna Zeiler"
-Q136028340	Lmul	"Johanna Zeiler"
-Q136028340	Amul	"Johanna Zailler"
-#   Q136027184: Anne|Agnès Green de Saint-Marsault -> Anne Green de Saint-Marsault   + Agnès Green de Saint-Marsault
-Q136027184	Len	"Anne Green de Saint-Marsault"
-Q136027184	Lmul	"Anne Green de Saint-Marsault"
-Q136027184	Amul	"Agnès Green de Saint-Marsault"
-#   Q136027179: Hélène|Jeanne de Marbré -> Hélène de Marbré   + Jeanne de Marbré
-Q136027179	Len	"Hélène de Marbré"
-Q136027179	Lmul	"Hélène de Marbré"
-Q136027179	Amul	"Jeanne de Marbré"
-#   Q136010154: Gottfried|Godart, Herr zu Wiltz und Hartelstein -> Gottfried Herr zu Wiltz und Hartelstein   + Godart, Herr zu Wiltz und Hartelstein
-Q136010154	Len	"Gottfried Herr zu Wiltz und Hartelstein"
-Q136010154	Lmul	"Gottfried Herr zu Wiltz und Hartelstein"
-Q136010154	Amul	"Godart, Herr zu Wiltz und Hartelstein"
-#   Q136010152: Margareta|Grete zu Wiltz -> Margareta zu Wiltz   + Grete zu Wiltz
-Q136010152	Len	"Margareta zu Wiltz"
-Q136010152	Lmul	"Margareta zu Wiltz"
-Q136010152	Amul	"Grete zu Wiltz"
-#   Q136006105: Agnes|Helen Walkinshaw -> Agnes Walkinshaw   + Helen Walkinshaw
-Q136006105	Len	"Agnes Walkinshaw"
-Q136006105	Lmul	"Agnes Walkinshaw"
-Q136006105	Amul	"Helen Walkinshaw"
-#   Q136005549: Jeanne Kautz|Kantoz -> Jeanne Kautz   + Jeanne Kantoz
-Q136005549	Len	"Jeanne Kautz"
-Q136005549	Lmul	"Jeanne Kautz"
-Q136005549	Amul	"Jeanne Kantoz"
-#   Q135855377: Indrek IndrekiPoeg Raute|Ruth, lord of Jogisuu and Alliku -> Indrek IndrekiPoeg Raute lord of Jogisuu and Alliku   + Indrek IndrekiPoeg Ruth, lord of Jogisuu and Alliku
-Q135855377	Len	"Indrek IndrekiPoeg Raute lord of Jogisuu and Alliku"
-Q135855377	Lmul	"Indrek IndrekiPoeg Raute lord of Jogisuu and Alliku"
-Q135855377	Amul	"Indrek IndrekiPoeg Ruth, lord of Jogisuu and Alliku"
-#   Q135683817: Nechit|Nachit -> Nechit   + Nachit
-Q135683817	Len	"Nechit"
-Q135683817	Lmul	"Nechit"
-Q135683817	Amul	"Nachit"
-#   Q135681510: Sahlitu|Sahalu Inqu -> Sahlitu Inqu   + Sahalu Inqu
-Q135681510	Len	"Sahlitu Inqu"
-Q135681510	Lmul	"Sahlitu Inqu"
-Q135681510	Amul	"Sahalu Inqu"
-#   Q135681066: Sanabait|Senebeit of Arademma & Metz -> Sanabait of Arademma & Metz   + Senebeit of Arademma & Metz
-Q135681066	Len	"Sanabait of Arademma & Metz"
-Q135681066	Lmul	"Sanabait of Arademma & Metz"
-Q135681066	Amul	"Senebeit of Arademma & Metz"
-#   Q135672123: John|Thomas Hatcher, of Careby -> John Hatcher, of Careby   + Thomas Hatcher, of Careby
-Q135672123	Len	"John Hatcher, of Careby"
-Q135672123	Lmul	"John Hatcher, of Careby"
-Q135672123	Amul	"Thomas Hatcher, of Careby"
-#   Q135669004: Persephone|Proserpina Manarys -> Persephone Manarys   + Proserpina Manarys
-Q135669004	Len	"Persephone Manarys"
-Q135669004	Lmul	"Persephone Manarys"
-Q135669004	Amul	"Proserpina Manarys"
-#   Q135663094: Katrine Magdalene|Maleene Kaass -> Katrine Magdalene Kaass   + Katrine Maleene Kaass
-Q135663094	Len	"Katrine Magdalene Kaass"
-Q135663094	Lmul	"Katrine Magdalene Kaass"
-Q135663094	Amul	"Katrine Maleene Kaass"
-#   Q135525179: Jonathan|George Oakley, of Carmarthen -> Jonathan Oakley, of Carmarthen   + George Oakley, of Carmarthen
-Q135525179	Len	"Jonathan Oakley, of Carmarthen"
-Q135525179	Lmul	"Jonathan Oakley, of Carmarthen"
-Q135525179	Amul	"George Oakley, of Carmarthen"
-#   Q135480198: Colonel Indrek|Henrikki Robert Burt, commandant of Stralsund, lord of Tohisoo & Noistvere -> Colonel Indrek Robert Burt, commandant of Stralsund, lord of Tohisoo & Noistvere   + Colonel Henrikki Robert Burt, commandant of Stralsund, lord of Tohisoo & Noistvere
-Q135480198	Len	"Colonel Indrek Robert Burt, commandant of Stralsund, lord of Tohisoo & Noistvere"
-Q135480198	Lmul	"Colonel Indrek Robert Burt, commandant of Stralsund, lord of Tohisoo & Noistvere"
-Q135480198	Amul	"Colonel Henrikki Robert Burt, commandant of Stralsund, lord of Tohisoo & Noistvere"
-#   Q135445414: Laurens ther Poirten|Poirtman -> Laurens ther Poirten   + Laurens ther Poirtman
-Q135445414	Len	"Laurens ther Poirten"
-Q135445414	Lmul	"Laurens ther Poirten"
-Q135445414	Amul	"Laurens ther Poirtman"
-#   Q134287405: Pieter Halling|Hallinc -> Pieter Halling   + Pieter Hallinc
-Q134287405	Len	"Pieter Halling"
-Q134287405	Lmul	"Pieter Halling"
-Q134287405	Amul	"Pieter Hallinc"
-#   Q134287275: Maycken|Makye Boulijn -> Maycken Boulijn   + Makye Boulijn
-Q134287275	Len	"Maycken Boulijn"
-Q134287275	Lmul	"Maycken Boulijn"
-Q134287275	Amul	"Makye Boulijn"
-#   Q134269546: Beren|Bernard Tweiseln|Zweifeln -> Beren Tweiseln   + Bernard Zweifeln
-Q134269546	Len	"Beren Tweiseln"
-Q134269546	Lmul	"Beren Tweiseln"
-Q134269546	Amul	"Bernard Zweifeln"
-#   Q134269493: noble Anna Tvisel|Zweifel, heiress of Ellivere manor -> Anna Tvisel heiress of Ellivere manor   + Anna Zweifel, heiress of Ellivere manor
-Q134269493	Len	"Anna Tvisel heiress of Ellivere manor"
-Q134269493	Lmul	"Anna Tvisel heiress of Ellivere manor"
-Q134269493	Amul	"Anna Zweifel, heiress of Ellivere manor"
-#   Q133864560: Sem IJsbrantsz. van Breene|van Brienen -> Sem IJsbrantsz. van Breene Brienen   + Sem IJsbrantsz. van van Brienen
-Q133864560	Len	"Sem IJsbrantsz. van Breene Brienen"
-Q133864560	Lmul	"Sem IJsbrantsz. van Breene Brienen"
-Q133864560	Amul	"Sem IJsbrantsz. van van Brienen"
-#   Q133864558: Elisabeth Semsdr. van Breene|van Brienen -> Elisabeth Semsdr. van Breene Brienen   + Elisabeth Semsdr. van van Brienen
-Q133864558	Len	"Elisabeth Semsdr. van Breene Brienen"
-Q133864558	Lmul	"Elisabeth Semsdr. van Breene Brienen"
-Q133864558	Amul	"Elisabeth Semsdr. van van Brienen"
-#   Q133860939: Frans de Pottere|Potters -> Frans de Pottere   + Frans de Potters
-Q133860939	Len	"Frans de Pottere"
-Q133860939	Lmul	"Frans de Pottere"
-Q133860939	Amul	"Frans de Potters"
-#   Q133461559: Madog ap Gwylawg|Gwallawe ab Eginir ap Llywelyn -> Madog ap Gwylawg ab Eginir ap Llywelyn   + Madog ap Gwallawe ab Eginir ap Llywelyn
-Q133461559	Len	"Madog ap Gwylawg ab Eginir ap Llywelyn"
-Q133461559	Lmul	"Madog ap Gwylawg ab Eginir ap Llywelyn"
-Q133461559	Amul	"Madog ap Gwallawe ab Eginir ap Llywelyn"
-#   Q133461548: Dafydd Ddû of Aber|Aberriw -> Dafydd Ddû of Aber   + Dafydd Ddû of Aberriw
-Q133461548	Len	"Dafydd Ddû of Aber"
-Q133461548	Lmul	"Dafydd Ddû of Aber"
-Q133461548	Amul	"Dafydd Ddû of Aberriw"
-#   Q133461036: Elis|Mallt ferch Dafydd Llwyd Blaeney -> Elis ferch Dafydd Llwyd Blaeney   + Mallt ferch Dafydd Llwyd Blaeney
-Q133461036	Len	"Elis ferch Dafydd Llwyd Blaeney"
-Q133461036	Lmul	"Elis ferch Dafydd Llwyd Blaeney"
-Q133461036	Amul	"Mallt ferch Dafydd Llwyd Blaeney"
-#   Q132174909: Susan|Susanna Howe -> Susan Howe   + Susanna Howe
-Q132174909	Len	"Susan Howe"
-Q132174909	Lmul	"Susan Howe"
-Q132174909	Amul	"Susanna Howe"
-#   Q131784501: Sir Saier|Saher Rochford, of Fenne, Boston, Lincs -> Sir Saier Rochford, of Fenne, Boston, Lincs   + Sir Saher Rochford, of Fenne, Boston, Lincs
-Q131784501	Len	"Sir Saier Rochford, of Fenne, Boston, Lincs"
-Q131784501	Lmul	"Sir Saier Rochford, of Fenne, Boston, Lincs"
-Q131784501	Amul	"Sir Saher Rochford, of Fenne, Boston, Lincs"
-#   Q131784445: Edmund|Thomas Thimblethorpe, of Foulsham -> Edmund Thimblethorpe, of Foulsham   + Thomas Thimblethorpe, of Foulsham
-Q131784445	Len	"Edmund Thimblethorpe, of Foulsham"
-Q131784445	Lmul	"Edmund Thimblethorpe, of Foulsham"
-Q131784445	Amul	"Thomas Thimblethorpe, of Foulsham"
-#   Q131741171: Margaret|Elizabeth Tamworth (Thomworth) -> Margaret Tamworth (Thomworth)   + Elizabeth Tamworth (Thomworth)
-Q131741171	Len	"Margaret Tamworth (Thomworth)"
-Q131741171	Lmul	"Margaret Tamworth (Thomworth)"
-Q131741171	Amul	"Elizabeth Tamworth (Thomworth)"
-#   Q131741074: Joan|Jane ferch Hugh Huntley -> Joan ferch Hugh Huntley   + Jane ferch Hugh Huntley
-Q131741074	Len	"Joan ferch Hugh Huntley"
-Q131741074	Lmul	"Joan ferch Hugh Huntley"
-Q131741074	Amul	"Jane ferch Hugh Huntley"
-#   Q131732860: Thady|Terence O'Conor, of Knockleg -> Thady O'Conor, of Knockleg   + Terence O'Conor, of Knockleg
-Q131732860	Len	"Thady O'Conor, of Knockleg"
-Q131732860	Lmul	"Thady O'Conor, of Knockleg"
-Q131732860	Amul	"Terence O'Conor, of Knockleg"
-#   Q131732625: Karl Friedrich|Hans Heinrich? von Gregorsdorff -> Karl Friedrich Heinrich? von Gregorsdorff   + Karl Hans Heinrich? von Gregorsdorff
-Q131732625	Len	"Karl Friedrich Heinrich? von Gregorsdorff"
-Q131732625	Lmul	"Karl Friedrich Heinrich? von Gregorsdorff"
-Q131732625	Amul	"Karl Hans Heinrich? von Gregorsdorff"
-#   Q131731322: Enno Sytzena|Cirksena, Burgrave in Norden -> Enno Sytzena Burgrave in Norden   + Enno Cirksena, Burgrave in Norden
-Q131731322	Len	"Enno Sytzena Burgrave in Norden"
-Q131731322	Lmul	"Enno Sytzena Burgrave in Norden"
-Q131731322	Amul	"Enno Cirksena, Burgrave in Norden"
-#   Q131731269: Margaret|Marian McGillivray -> Margaret McGillivray   + Marian McGillivray
-Q131731269	Len	"Margaret McGillivray"
-Q131731269	Lmul	"Margaret McGillivray"
-Q131731269	Amul	"Marian McGillivray"
-#   Q131730876: Captain Pavel|Pál de Bornemisa, de Petrelin & 'Bornemisza de Boros-Jenö' -> Captain Pavel de Bornemisa, de Petrelin & 'Bornemisza de Boros-Jenö'   + Captain Pál de Bornemisa, de Petrelin & 'Bornemisza de Boros-Jenö'
-Q131730876	Len	"Captain Pavel de Bornemisa, de Petrelin & 'Bornemisza de Boros-Jenö'"
-Q131730876	Lmul	"Captain Pavel de Bornemisa, de Petrelin & 'Bornemisza de Boros-Jenö'"
-Q131730876	Amul	"Captain Pál de Bornemisa, de Petrelin & 'Bornemisza de Boros-Jenö'"
-#   Q131726563: Gertrud|Gertraud von Neuhausen a.d.H Hofen -> Gertrud von Neuhausen a.d.H Hofen   + Gertraud von Neuhausen a.d.H Hofen
-Q131726563	Len	"Gertrud von Neuhausen a.d.H Hofen"
-Q131726563	Lmul	"Gertrud von Neuhausen a.d.H Hofen"
-Q131726563	Amul	"Gertraud von Neuhausen a.d.H Hofen"
-#   Q131726556: Hanns|Johann II von Degenfeld -> Hanns II von Degenfeld   + Johann II von Degenfeld
-Q131726556	Len	"Hanns II von Degenfeld"
-Q131726556	Lmul	"Hanns II von Degenfeld"
-Q131726556	Amul	"Johann II von Degenfeld"
-#   Q131554079: Karlis Ceege|Zoeges, bailiff of Piltene -> Karlis Ceege bailiff of Piltene   + Karlis Zoeges, bailiff of Piltene
-Q131554079	Len	"Karlis Ceege bailiff of Piltene"
-Q131554079	Lmul	"Karlis Ceege bailiff of Piltene"
-Q131554079	Amul	"Karlis Zoeges, bailiff of Piltene"
-#   Q131522293: Katharina von Weilzogen|Wolzogen -> Katharina von Weilzogen   + Katharina von Wolzogen
-Q131522293	Len	"Katharina von Weilzogen"
-Q131522293	Lmul	"Katharina von Weilzogen"
-Q131522293	Amul	"Katharina von Wolzogen"
-#   Q131447187: Vittoria|Violante Caetani dell'Aquila d'Aragona -> Vittoria Caetani dell'Aquila d'Aragona   + Violante Caetani dell'Aquila d'Aragona
-Q131447187	Len	"Vittoria Caetani dell'Aquila d'Aragona"
-Q131447187	Lmul	"Vittoria Caetani dell'Aquila d'Aragona"
-Q131447187	Amul	"Violante Caetani dell'Aquila d'Aragona"
+#   Q131369895: Oswin|Oswald Cresswell, of Cresswell -> Oswin Cresswell, of Cresswell   + Oswald Cresswell, of Cresswell
+Q131369895	Len	"Oswin Cresswell, of Cresswell"
+Q131369895	Lmul	"Oswin Cresswell, of Cresswell"
+Q131369895	Amul	"Oswald Cresswell, of Cresswell"
+#   Q131355534: Hamon|Hamo|Heimond le Gras (FitzRaymond) -> Hamon le Gras (FitzRaymond)   + Hamo le Gras (FitzRaymond) | Heimond le Gras (FitzRaymond)
+Q131355534	Len	"Hamon le Gras (FitzRaymond)"
+Q131355534	Lmul	"Hamon le Gras (FitzRaymond)"
+Q131355534	Amul	"Hamo le Gras (FitzRaymond)"
+Q131355534	Amul	"Heimond le Gras (FitzRaymond)"
+#   Q131347084: William|Henry Martin, of Trericet -> William Martin, of Trericet   + Henry Martin, of Trericet
+Q131347084	Len	"William Martin, of Trericet"
+Q131347084	Lmul	"William Martin, of Trericet"
+Q131347084	Amul	"Henry Martin, of Trericet"
+#   Q131346922: Fromand|Fermand Brown -> Fromand Brown   + Fermand Brown
+Q131346922	Len	"Fromand Brown"
+Q131346922	Lmul	"Fromand Brown"
+Q131346922	Amul	"Fermand Brown"
+#   Q131342794: Cecilia|Cecil ferch Edward Carne -> Cecilia ferch Edward Carne   + Cecil ferch Edward Carne
+Q131342794	Len	"Cecilia ferch Edward Carne"
+Q131342794	Lmul	"Cecilia ferch Edward Carne"
+Q131342794	Amul	"Cecil ferch Edward Carne"
+#   Q131342591: Elizabeth|Rose Wayte -> Elizabeth Wayte   + Rose Wayte
+Q131342591	Len	"Elizabeth Wayte"
+Q131342591	Lmul	"Elizabeth Wayte"
+Q131342591	Amul	"Rose Wayte"
+#   Q131332281: Johann V|Kraft von Mirlaer -> Johann V von Mirlaer   + Johann Kraft von Mirlaer
+Q131332281	Len	"Johann V von Mirlaer"
+Q131332281	Lmul	"Johann V von Mirlaer"
+Q131332281	Amul	"Johann Kraft von Mirlaer"
+#   Q131233922: Maud|Maude Tresithney -> Maud Tresithney   + Maude Tresithney
+Q131233922	Len	"Maud Tresithney"
+Q131233922	Lmul	"Maud Tresithney"
+Q131233922	Amul	"Maude Tresithney"
+#   Q131138772: Sir Richard|William Goodere, of London -> Sir Richard Goodere, of London   + Sir William Goodere, of London
+Q131138772	Len	"Sir Richard Goodere, of London"
+Q131138772	Lmul	"Sir Richard Goodere, of London"
+Q131138772	Amul	"Sir William Goodere, of London"
+#   Q131138770: Elery|Clara Goodere -> Elery Goodere   + Clara Goodere
+Q131138770	Len	"Elery Goodere"
+Q131138770	Lmul	"Elery Goodere"
+Q131138770	Amul	"Clara Goodere"
+#   Q131138002: Marke|Mark Flamoke, Lord of Flaemoke -> Marke Flamoke, Lord of Flaemoke   + Mark Flamoke, Lord of Flaemoke
+Q131138002	Len	"Marke Flamoke, Lord of Flaemoke"
+Q131138002	Lmul	"Marke Flamoke, Lord of Flaemoke"
+Q131138002	Amul	"Mark Flamoke, Lord of Flaemoke"
+#   Q131137948: Johanna|Jane Whitworth -> Johanna Whitworth   + Jane Whitworth
+Q131137948	Len	"Johanna Whitworth"
+Q131137948	Lmul	"Johanna Whitworth"
+Q131137948	Amul	"Jane Whitworth"
+#   Q130718046: Ann|Joane Burlegh, of Clanacombe (Chaucombe), Devon -> Ann Burlegh, of Clanacombe (Chaucombe), Devon   + Joane Burlegh, of Clanacombe (Chaucombe), Devon
+Q130718046	Len	"Ann Burlegh, of Clanacombe (Chaucombe), Devon"
+Q130718046	Lmul	"Ann Burlegh, of Clanacombe (Chaucombe), Devon"
+Q130718046	Amul	"Joane Burlegh, of Clanacombe (Chaucombe), Devon"
+#   Q130718035: Julia|Julian Martin -> Julia Martin   + Julian Martin
+Q130718035	Len	"Julia Martin"
+Q130718035	Lmul	"Julia Martin"
+Q130718035	Amul	"Julian Martin"
+#   Q130682209: noble Dordi of Fersam|Borsem -> Dordi of Fersam   + Dordi of Borsem
+Q130682209	Len	"Dordi of Fersam"
+Q130682209	Lmul	"Dordi of Fersam"
+Q130682209	Amul	"Dordi of Borsem"
+#   Q130648183: Cicely|Cecilia Hopkins -> Cicely Hopkins   + Cecilia Hopkins
+Q130648183	Len	"Cicely Hopkins"
+Q130648183	Lmul	"Cicely Hopkins"
+Q130648183	Amul	"Cecilia Hopkins"
+#   Q130648159: Katherine Briston (Birston|Broston) -> Katherine Briston   + Katherine Birston | Katherine Broston
+Q130648159	Len	"Katherine Briston"
+Q130648159	Lmul	"Katherine Briston"
+Q130648159	Amul	"Katherine Birston"
+Q130648159	Amul	"Katherine Broston"
+#   Q130648072: Elizabeth|Isabel Oldcastle -> Elizabeth Oldcastle   + Isabel Oldcastle
+Q130648072	Len	"Elizabeth Oldcastle"
+Q130648072	Lmul	"Elizabeth Oldcastle"
+Q130648072	Amul	"Isabel Oldcastle"
+#   Q130648019: Agnes|Anne Bowyer -> Agnes Bowyer   + Anne Bowyer
+Q130648019	Len	"Agnes Bowyer"
+Q130648019	Lmul	"Agnes Bowyer"
+Q130648019	Amul	"Anne Bowyer"
+#   Q130359032: Eleanor|Elizabeth Cornewall, of Burford -> Eleanor Cornewall, of Burford   + Elizabeth Cornewall, of Burford
+Q130359032	Len	"Eleanor Cornewall, of Burford"
+Q130359032	Lmul	"Eleanor Cornewall, of Burford"
+Q130359032	Amul	"Elizabeth Cornewall, of Burford"
+#   Q130358519: Cydifor|Cadwgan ap Gwaithfoed -> Cydifor ap Gwaithfoed   + Cadwgan ap Gwaithfoed
+Q130358519	Len	"Cydifor ap Gwaithfoed"
+Q130358519	Lmul	"Cydifor ap Gwaithfoed"
+Q130358519	Amul	"Cadwgan ap Gwaithfoed"
+#   Q130358353: Mary|Margaret ferch John Stedman -> Mary ferch John Stedman   + Margaret ferch John Stedman
+Q130358353	Len	"Mary ferch John Stedman"
+Q130358353	Lmul	"Mary ferch John Stedman"
+Q130358353	Amul	"Margaret ferch John Stedman"
+#   Q130354044: Joane|Joan Hedworth -> Joane Hedworth   + Joan Hedworth
+Q130354044	Len	"Joane Hedworth"
+Q130354044	Lmul	"Joane Hedworth"
+Q130354044	Amul	"Joan Hedworth"
+#   Q130353105: Alured|Alvery|Alfred Barwick (Beswick), of Bulcotes -> Alured Barwick (Beswick), of Bulcotes   + Alvery Barwick (Beswick), of Bulcotes | Alfred Barwick (Beswick), of Bulcotes
+Q130353105	Len	"Alured Barwick (Beswick), of Bulcotes"
+Q130353105	Lmul	"Alured Barwick (Beswick), of Bulcotes"
+Q130353105	Amul	"Alvery Barwick (Beswick), of Bulcotes"
+Q130353105	Amul	"Alfred Barwick (Beswick), of Bulcotes"
+#   Q130353041: Margery|Eleanor -> Margery   + Eleanor
+Q130353041	Len	"Margery"
+Q130353041	Lmul	"Margery"
+Q130353041	Amul	"Eleanor"
+#   Q130352957: Dorothy|Alice Everingham -> Dorothy Everingham   + Alice Everingham
+Q130352957	Len	"Dorothy Everingham"
+Q130352957	Lmul	"Dorothy Everingham"
+Q130352957	Amul	"Alice Everingham"
+#   Q130344139: Julian|Juliana Erpingham -> Julian Erpingham   + Juliana Erpingham
+Q130344139	Len	"Julian Erpingham"
+Q130344139	Lmul	"Julian Erpingham"
+Q130344139	Amul	"Juliana Erpingham"
+#   Q130341574: Rhyangen|Arianwen ferch Iorwerth ap Trahearn -> Rhyangen ferch Iorwerth ap Trahearn   + Arianwen ferch Iorwerth ap Trahearn
+Q130341574	Len	"Rhyangen ferch Iorwerth ap Trahearn"
+Q130341574	Lmul	"Rhyangen ferch Iorwerth ap Trahearn"
+Q130341574	Amul	"Arianwen ferch Iorwerth ap Trahearn"
+#   Q130341462: Anne|Angharad Vaughan -> Anne Vaughan   + Angharad Vaughan
+Q130341462	Len	"Anne Vaughan"
+Q130341462	Lmul	"Anne Vaughan"
+Q130341462	Amul	"Angharad Vaughan"
+#   Q130340910: Isabel|Sybil ferch Robert Cantelupe -> Isabel ferch Robert Cantelupe   + Sybil ferch Robert Cantelupe
+Q130340910	Len	"Isabel ferch Robert Cantelupe"
+Q130340910	Lmul	"Isabel ferch Robert Cantelupe"
+Q130340910	Amul	"Sybil ferch Robert Cantelupe"
+#   Q130340885: John|Jenkin Butler, of Dunraven -> John Butler, of Dunraven   + Jenkin Butler, of Dunraven
+Q130340885	Len	"John Butler, of Dunraven"
+Q130340885	Lmul	"John Butler, of Dunraven"
+Q130340885	Amul	"Jenkin Butler, of Dunraven"
+#   Q130340882: Mawd|Jane Broughton (Brochdyn) -> Mawd Broughton (Brochdyn)   + Jane Broughton (Brochdyn)
+Q130340882	Len	"Mawd Broughton (Brochdyn)"
+Q130340882	Lmul	"Mawd Broughton (Brochdyn)"
+Q130340882	Amul	"Jane Broughton (Brochdyn)"
+#   Q130340784: Henry|Hari ap Piers Scourfield, of New Moat -> Henry ap Piers Scourfield, of New Moat   + Hari ap Piers Scourfield, of New Moat
+Q130340784	Len	"Henry ap Piers Scourfield, of New Moat"
+Q130340784	Lmul	"Henry ap Piers Scourfield, of New Moat"
+Q130340784	Amul	"Hari ap Piers Scourfield, of New Moat"
+#   Q130340660: Robert|Roger de Manlegh -> Robert de Manlegh   + Roger de Manlegh
+Q130340660	Len	"Robert de Manlegh"
+Q130340660	Lmul	"Robert de Manlegh"
+Q130340660	Amul	"Roger de Manlegh"
+#   Q130340645: Jane|Joan Moreton -> Jane Moreton   + Joan Moreton
+Q130340645	Len	"Jane Moreton"
+Q130340645	Lmul	"Jane Moreton"
+Q130340645	Amul	"Joan Moreton"
+#   Q130340259: Madog of Llanferis|Llanferres -> Madog of Llanferis   + Madog of Llanferres
+Q130340259	Len	"Madog of Llanferis"
+Q130340259	Lmul	"Madog of Llanferis"
+Q130340259	Amul	"Madog of Llanferres"
+#   Q130339466: Robert de Pull (Poole|de la Pole) -> Robert de Pull   + Robert de Poole | Robert de de la Pole
+Q130339466	Len	"Robert de Pull"
+Q130339466	Lmul	"Robert de Pull"
+Q130339466	Amul	"Robert de Poole"
+Q130339466	Amul	"Robert de de la Pole"
+#   Q130339420: Joan|Margery Russell -> Joan Russell   + Margery Russell
+Q130339420	Len	"Joan Russell"
+Q130339420	Lmul	"Joan Russell"
+Q130339420	Amul	"Margery Russell"
+#   Q130338954: Gwenllian|Alice ferch Bleddyn ab Einion Fychan ab Einion -> Gwenllian ferch Bleddyn ab Einion Fychan ab Einion   + Alice ferch Bleddyn ab Einion Fychan ab Einion
+Q130338954	Len	"Gwenllian ferch Bleddyn ab Einion Fychan ab Einion"
+Q130338954	Lmul	"Gwenllian ferch Bleddyn ab Einion Fychan ab Einion"
+Q130338954	Amul	"Alice ferch Bleddyn ab Einion Fychan ab Einion"
+#   Q130338509: Purcirto (Artinide|Hartneid) de Attems -> Purcirto Artinide de Attems   + Purcirto Hartneid de Attems
+Q130338509	Len	"Purcirto Artinide de Attems"
+Q130338509	Lmul	"Purcirto Artinide de Attems"
+Q130338509	Amul	"Purcirto Hartneid de Attems"
+#   Q130338086: Richard|Robert Tuite, of Ballinsallagh -> Richard Tuite, of Ballinsallagh   + Robert Tuite, of Ballinsallagh
+Q130338086	Len	"Richard Tuite, of Ballinsallagh"
+Q130338086	Lmul	"Richard Tuite, of Ballinsallagh"
+Q130338086	Amul	"Robert Tuite, of Ballinsallagh"
+#   Q130338036: Cahir|Charles O'Dempsey, of Ballybrittas -> Cahir O'Dempsey, of Ballybrittas   + Charles O'Dempsey, of Ballybrittas
+Q130338036	Len	"Cahir O'Dempsey, of Ballybrittas"
+Q130338036	Lmul	"Cahir O'Dempsey, of Ballybrittas"
+Q130338036	Amul	"Charles O'Dempsey, of Ballybrittas"
+#   Q130338029: Thomasine|Catherine Tuite, of Ballinsallagh -> Thomasine Tuite, of Ballinsallagh   + Catherine Tuite, of Ballinsallagh
+Q130338029	Len	"Thomasine Tuite, of Ballinsallagh"
+Q130338029	Lmul	"Thomasine Tuite, of Ballinsallagh"
+Q130338029	Amul	"Catherine Tuite, of Ballinsallagh"
+#   Q130336863: Stephen Trejago (Treiago|Tregago), of Fentongollan, Cornwall -> Stephen Trejago , of Fentongollan   + Stephen Treiago , of Fentongollan | Stephen Tregago , of Fentongollan
+Q130336863	Len	"Stephen Trejago , of Fentongollan, Cornwall"
+Q130336863	Lmul	"Stephen Trejago , of Fentongollan"
+Q130336863	Amul	"Stephen Treiago , of Fentongollan"
+Q130336863	Amul	"Stephen Tregago , of Fentongollan"
+#   Q130336862: Jane Trejago (Treiago|Tregago) -> Jane Trejago   + Jane Treiago | Jane Tregago
+Q130336862	Len	"Jane Trejago"
+Q130336862	Lmul	"Jane Trejago"
+Q130336862	Amul	"Jane Treiago"
+Q130336862	Amul	"Jane Tregago"
+#   Q130336737: Julian Smyth|Smith -> Julian Smyth   + Julian Smith
+Q130336737	Len	"Julian Smyth"
+Q130336737	Lmul	"Julian Smyth"
+Q130336737	Amul	"Julian Smith"
+#   Q130335966: William Joudrell (Jaudrell|Jodrell) -> William Joudrell   + William Jaudrell | William Jodrell
+Q130335966	Len	"William Joudrell"
+Q130335966	Lmul	"William Joudrell"
+Q130335966	Amul	"William Jaudrell"
+Q130335966	Amul	"William Jodrell"
+#   Q130335654: Maud|Agnes Fairfax -> Maud Fairfax   + Agnes Fairfax
+Q130335654	Len	"Maud Fairfax"
+Q130335654	Lmul	"Maud Fairfax"
+Q130335654	Amul	"Agnes Fairfax"
+#   Q130335650: Sir Robert|John|Thomas Waterton, of Waterton Hall -> Sir Robert Waterton, of Waterton Hall   + Sir John Waterton, of Waterton Hall | Sir Thomas Waterton, of Waterton Hall
+Q130335650	Len	"Sir Robert Waterton, of Waterton Hall"
+Q130335650	Lmul	"Sir Robert Waterton, of Waterton Hall"
+Q130335650	Amul	"Sir John Waterton, of Waterton Hall"
+Q130335650	Amul	"Sir Thomas Waterton, of Waterton Hall"
+#   Q130335604: Richard|Thomas D'Oyley, of Ewden, Bucks -> Richard D'Oyley, of Ewden, Bucks   + Thomas D'Oyley, of Ewden, Bucks
+Q130335604	Len	"Richard D'Oyley, of Ewden, Bucks"
+Q130335604	Lmul	"Richard D'Oyley, of Ewden, Bucks"
+Q130335604	Amul	"Thomas D'Oyley, of Ewden, Bucks"
+#   Q130335600: William|Richard Stanley, of Pipe, Lancs -> William Stanley, of Pipe, Lancs   + Richard Stanley, of Pipe, Lancs
+Q130335600	Len	"William Stanley, of Pipe, Lancs"
+Q130335600	Lmul	"William Stanley, of Pipe, Lancs"
+Q130335600	Amul	"Richard Stanley, of Pipe, Lancs"
+#   Q130335568: Henry|John Gurney (Gourney), of Lymington, Suffolk -> Henry Gurney (Gourney), of Lymington, Suffolk   + John Gurney (Gourney), of Lymington, Suffolk
+Q130335568	Len	"Henry Gurney (Gourney), of Lymington, Suffolk"
+Q130335568	Lmul	"Henry Gurney (Gourney), of Lymington, Suffolk"
+Q130335568	Amul	"John Gurney (Gourney), of Lymington, Suffolk"
+#   Q130335548: Jorveth|Yarwit de Hulton -> Jorveth de Hulton   + Yarwit de Hulton
+Q130335548	Len	"Jorveth de Hulton"
+Q130335548	Lmul	"Jorveth de Hulton"
+Q130335548	Amul	"Yarwit de Hulton"
+#   Q130335481: Isabella|Elizabeth Atherton -> Isabella Atherton   + Elizabeth Atherton
+Q130335481	Len	"Isabella Atherton"
+Q130335481	Lmul	"Isabella Atherton"
+Q130335481	Amul	"Elizabeth Atherton"
+#   Q130335466: Agnes|Elizabeth -> Agnes   + Elizabeth
+Q130335466	Len	"Agnes"
+Q130335466	Lmul	"Agnes"
+Q130335466	Amul	"Elizabeth"
+#   Q130335456: William|Parkin Talbot, of Shuttleworth Hall -> William Talbot, of Shuttleworth Hall   + Parkin Talbot, of Shuttleworth Hall
+Q130335456	Len	"William Talbot, of Shuttleworth Hall"
+Q130335456	Lmul	"William Talbot, of Shuttleworth Hall"
+Q130335456	Amul	"Parkin Talbot, of Shuttleworth Hall"
+#   Q130335455: Lettice|Leticia Talbot -> Lettice Talbot   + Leticia Talbot
+Q130335455	Len	"Lettice Talbot"
+Q130335455	Lmul	"Lettice Talbot"
+Q130335455	Amul	"Leticia Talbot"
+#   Q130335378: Helen|Anne Parker -> Helen Parker   + Anne Parker
+Q130335378	Len	"Helen Parker"
+Q130335378	Lmul	"Helen Parker"
+Q130335378	Amul	"Anne Parker"
+#   Q130335373: Alice|Christiana Radcliffe -> Alice Radcliffe   + Christiana Radcliffe
+Q130335373	Len	"Alice Radcliffe"
+Q130335373	Lmul	"Alice Radcliffe"
+Q130335373	Amul	"Christiana Radcliffe"
+#   Q130335079: Agnes|Anne -> Agnes   + Anne
+Q130335079	Len	"Agnes"
+Q130335079	Lmul	"Agnes"
+Q130335079	Amul	"Anne"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
