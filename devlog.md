@@ -36021,3 +36021,31 @@ neither supersedes the other.
 
 Piece 1 of that queue item is now measured. Pieces 2 and 3 — the corrected labels reaching
 Wikidata, and whether the same hole exists for the remaining senior forms — are untouched.
+
+## 2026-09-10 — the first descendants ball is down and filed, at the cap
+
+`exports/abul-hamza-descendants/export-Descendants-6000000227694017875.ged` — **5,000 INDI,
+2,760 FAM, 5,401,836 bytes**, built by Geni 14:59:02. First `INDI` is `6000000227694017875`, the
+placeholder father the walk created, so the seed is the one intended.
+
+**⛔ IT CAME BACK AT THE CAP, WHICH MEANS TRUNCATED BY DEFINITION** — `CLAUDE.md` § *A
+`Descendants` ball that came back at the cap is truncated by definition* — so it says what is in
+it and nothing about what is absent from the descent below Sayaluna ata.
+
+**The corpus grep before filing returned 0 occurrences of the seed**, as it must for a profile
+created twenty minutes earlier, so all 5,000 are new material to merge rather than a re-export of
+ground already held.
+
+**⛔ AND THE SECOND EXPORT IS NEARLY THE SAME BALL, WHICH IS A LESSON ABOUT THE WALK RATHER THAN
+A FAILURE.** The run created a father *and* a mother on the same person, Muhadhdhab al-Din
+`6000000009177497799` — `6000000227694017875` and `6000000227694199890` — and queued a
+`Descendants` export from each. **Both are parents of the same child, so both descendant sets run
+through him and are near-identical.** One of the two exports is redundant by construction.
+
+That is worth knowing before the campaign scales: a seed pair created on one person buys one
+ball, not two, and the export slot spent on the second is a slot not spent somewhere else in the
+tree. Geni runs one export at a time, so the cost is real.
+
+The second export reported `export:timeout` — the extension's watch expired at its one-hour
+budget. A submitted export cannot be cancelled and keeps building regardless; the timeout loses
+track of it rather than stopping it, and its task id was never captured.
