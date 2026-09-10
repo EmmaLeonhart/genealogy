@@ -317,15 +317,9 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   that we don't need to deal with their bullshit. This means every wikidata item with 'cbdb' in
   its English description."*
 
-  **The population is defined by the WIKIDATA DESCRIPTION, not by the Geni manager**, which is
-  what makes it computable without visiting anybody: every item whose `descriptions.en` contains
-  `cbdb`, case-insensitively. That is a wider and cleaner set than the 224 profiles above, and it
-  is measured rather than estimated — `scripts/scan-cbdb-items.py` over the offline store writes
-  `reports/cbdb-items.tsv`, one row per instance.
-
-  `last_attempted` is the one column that carries across a rebuild, so writing `2026-10-31` into
-  it is the whole mechanism — no flag, no register, no new state. It makes them eligible again on
-  **2026-11-30**, thirty days later, which is the cooldown doing what it already does.
+  **DONE 2026-09-10 — 54,164 people parked.** `scripts/scan-cbdb-items.py` and
+  `scripts/park-cbdb-attempts.py`; see `devlog.md`. **41,373 of them were already in the
+  disconnected worklist, which is 15.5% of the 266,201.**
 
   **The real fix is named and NOT started:** *"creating someone and merging them in."* It is
   written down here and nothing about it is to be investigated — `CLAUDE.md` § *"Add it to the

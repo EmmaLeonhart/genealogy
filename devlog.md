@@ -35569,3 +35569,42 @@ has both a live scrape and a saved page. The number to raise is the size of the 
 not the percentage, and the next step is written into `queue.md`: capture the family cell's HTML
 and the extension's own result **in the same page load**, which removes the confound that a saved
 page and today's live page can legitimately differ.
+
+## 2026-09-10 — the CBDB population sized and parked at 2026-10-31
+
+Emma: *"As far as the cbdb people go I think the solution is creating someone and merging them
+in. But honestly cbdb people can all get their date last edited set to October 31, 2026 so that
+we don't need to deal with their bullshit. This means every wikidata item with 'cbdb' in its
+English description."*
+
+**The population is defined by the Wikidata description, not by the Geni manager**, which is what
+makes it computable without visiting anybody. `scripts/scan-cbdb-items.py` reads all 2,427 shards
+of the offline store — **2,426,152 items** — and matches `descriptions.en` case-insensitively,
+carrying `P2600` through so the worklist join needs no second pass.
+
+    cbdb items in the English description   71,474
+    of those, carrying a Geni id            54,169   -> reports/cbdb-items.tsv
+
+That is a far wider set than the **224** profiles the queue had been describing, and it is one
+row per instance rather than a count.
+
+**Parked with `scripts/park-cbdb-attempts.py`:**
+
+    already in the worklist, re-stamped   41,373      15.5% of the 266,201 disconnected
+    appended                              12,791
+    worklist rows now                    278,992      10 columns, no duplicate or blank ids
+
+**No filter was applied to the appended rows and none is wanted.** Emma, the same day: *"you can
+just add bullshit people into the tsv as long as the geni id and qid match and they will be
+removed lol while the cbdb people who belong will stay."* That is the statelessness contract doing
+the work — `last_attempted` is the only column `load_previous` carries, and membership, the
+neighbourhood size and the six statistics are all recomputed from the connectivity graph every
+run. A CBDB person who is not a disconnected `P2600` holder drops out of the next build; one who
+is keeps the date. The appended rows carry the builder's own `200 200 200 200 200 no`
+placeholders because those are recomputed, and inventing different filler would be inventing
+state.
+
+**41,373 is the number worth keeping.** Nearly a sixth of the disconnected campaign was CBDB
+profiles that cannot be edited on Geni at all, and they now wait until **2026-11-30** — the
+30-day cooldown from the parked date — instead of cycling every thirty days from whenever they
+were last visited.
