@@ -255,10 +255,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   people, filed to `exports/hiuler/`. What failed was the walk BETWEEN them, which had been
   handed out of the extension for the agent to hold; `content/walk.js` has the account.
 
-  ⛔ **What is outstanding is the BACKGROUND DRIVER**: the queue, the tab loop, and the parallel
-  waiting on path searches and exports. Until it exists the extension answers one person and
-  nothing drives the traversal.
-
 - **⛔ THE OneTab PAGE, DIGESTED 2026-09-09. 19 people off the Cilician Armenian side.**
   It was held on *"I do not want you to investigate"* and released the same day: digest it the
   way the 15 hinge people were digested, **without judging which are worth exporting**. So this

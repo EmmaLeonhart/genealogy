@@ -35335,3 +35335,29 @@ Reading the second as acceptance, `/gedcom/download` was clicked three times and
 779,002-byte file each time — `export-geni (23)` and `(24)` are duplicates of `(22)` and can be
 deleted. `/gedcom/export/<id>` showing the ordinary form is the reliable *no export in flight*
 signal.
+
+## 2026-09-10 — sweep: the background driver is no longer outstanding
+
+`queue.md` carried *"⛔ What is outstanding is the BACKGROUND DRIVER: the queue, the tab loop, and
+the parallel waiting on path searches and exports. Until it exists the extension answers one
+person and nothing drives the traversal."*
+
+All four parts ran tonight. A batch of 24 `individual` jobs was loaded into the background, which
+opened the tabs itself, held them open while their path searches ran, collected the results as
+they resolved, and paced the opens — 13 back while 5 tabs sat dormant and 6 waited in the queue.
+The traversal is driven; the agent opened one page and called it once.
+
+Two things had to be corrected before it worked and both are recorded in their own commits: the
+`stats` job fell through a duplicated dispatch table into `GC.runPath` and asked Geni for
+relationship paths on a census run, and `s.concurrency` capped the number of tabs HELD rather
+than the rate of tabs OPENED, so the run stalled on every ten-minute in-law search instead of
+accumulating them.
+
+The paragraph is deleted rather than annotated. What remains of that queue item — running the
+collector over the isolate targets — is live work and stays.
+
+**Nothing else in `queue.md` is simply completed.** The four-crons item and the three-crons item
+both read as done tonight and are NOT swept: they are standing procedures whose whole content is
+*recreate these every session*, and deleting them would delete the instruction rather than the
+step. The six Abul Hamza exports are unfinished, the 15 hinge people are deprioritised rather
+than done, and the CJK verdicts are untouched.
