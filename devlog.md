@@ -35729,3 +35729,52 @@ treats the empty string as falsy and silently dropped every person under one. Th
 **Still not a proof, and the population is still the number to raise:** 51 of 1,555 saved pages.
 What today changed is the cost. At a 20-second stagger the whole set is about 8.6 hours of
 unattended background scraping in batches, with the harvest a file copy at the end.
+
+## 2026-09-10 — the CBDB route measured: 69% already carry family statements on Wikidata
+
+Emma, on `Zhu Jingze` 朱敬則: *"I found the route into cbdb stuff. These people highly
+documented."* `scripts/measure-cbdb-route.py` over the offline store, one row per instance in
+`reports/cbdb-route.tsv`:
+
+    cbdb items                            71,474
+    with an English Wikipedia article        251    0.4%
+    with a Chinese Wikipedia article       6,122    8.6%
+    ALREADY carrying P22/P25/P40/P3373    49,339   69.0%
+    an article and no family yet           1,073    1.5%
+    carrying a Geni id (P2600)            54,169   75.8%
+
+**⛔ THE HEADLINE IS NOT THE ARTICLES, IT IS THE 69%.** These people are not short of genealogical
+data on Wikidata — most of them already have it, and the shape is exactly what a patrilineal
+Chinese source produces:
+
+    (none)          22,135        P22,P25            1,459
+    P22             20,157        P22,P25,P40          718
+    P22,P40         18,706        P22,P40,P3373        600
+    P40              6,620        P25                  423
+
+**So the CBDB people were never a data-poverty problem, and the reason they sit in
+`reports/unconnected-p2600.tsv` is not that nobody knows their parents.** 41,373 of them are in
+the disconnected worklist while 69% of the population carries a father, a child, or both. The
+remaining explanation is that their component does not REACH Charlemagne — a Tang-dynasty
+father-son lattice is connected to itself and disjoint from the European royal graph that the
+campaign measures against.
+
+**That is a hypothesis and it is stated as one.** It is also cheap to test offline from the
+family statements already in the store, and it is queued rather than assumed. If it holds, the
+CBDB question is not *"how do we document these people"* — it is answered — but *"is there any
+edge at all between the Chinese lattice and Charlemagne"*, which is a different campaign and may
+have the answer **no**, in which case `CLAUDE.md` § *confirmed impossible to connect* applies and
+they are done rather than parked.
+
+**A correction to something said earlier today.** `Zhu Jingze` himself is **not** in this
+population: his English description reads *"Tang dynasty historian"* with no CBDB mention, so the
+rule that parked 54,164 people — *every wikidata item with 'cbdb' in its English description* —
+does not cover the man in the screenshot. The two `Jingze` entries that are in it are `Dou
+Jingze` and `Du Jingze`. The parking is unaffected; what this says is that *"CBDB people"* and
+*"Chinese historical figures in the worklist"* are different sets, and only the first is parked.
+
+**And a bug worth naming because it looked like a finding.** The first run of this measurement
+prefiltered on `'"cbdb' in line` — with a leading quote — while the descriptions read
+`Tang dynasty person CBDB = 27889`, where the token sits mid-string. It matched **6 items of
+71,474** and printed a clean-looking table of zeroes. A prefilter that silently reduces the
+population by four orders of magnitude produces a report, not an error.
