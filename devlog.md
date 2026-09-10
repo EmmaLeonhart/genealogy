@@ -34472,3 +34472,27 @@ This is the second time in one evening the same shape appeared — a long-horizo
 compressed into a threshold that can be checked once. The first was concluding from a capped
 ball; this was inventing the floor that was supposed to replace it.
 
+
+### An "export" in the descendants campaign is `Descendants` on a created ANCESTOR — not `Forest`
+
+Ruled 2026-09-09: *"if the person has 5000 descendants then you create an ancestor of them
+according to the existing algorithm and run a descendants export on them instead of the typical
+forest."*
+
+    saturated census (5,000)
+      -> create an ANCESTOR of them, per docs/export-seed-rules.md
+      -> run a `Descendants` export on the created ancestor
+
+**⛔ THIS OVERRIDES TWO PLACES THAT SAY `Forest`.** `docs/export-seed-rules.md` fixes the export
+at *"`Forest`, size 5000, strictly one at a time"*, and `CLAUDE.md` § *ANYTHING ODD ABOUT A PERSON
+-> FOREST EXPORT* makes `Forest` the standing response. Neither applies to this campaign, and
+recording that matters because both would otherwise read as the rule and get "corrected" back.
+
+**The reason is what the two styles spend the 5,000 slots on.** `Forest` follows spouse links —
+which is exactly why it is right for the in-law half of a relationship ring — so it fans
+sideways, and every slot spent on somebody's spouse's family is a descendant not gathered. This
+campaign wants the ball to go **down**.
+
+Everything else in `docs/export-seed-rules.md` is untouched and is still the authority: where the
+placeholder goes, what it is named, the five-tier preference order with patronymics at the top.
+

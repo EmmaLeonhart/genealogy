@@ -370,7 +370,19 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
       1. pick people from the ball at RANDOM -- not by cluster, not by size, not by name
       2. read the Geni profile's `descendants` statistic on each
-      3. export from the ones whose count is SATURATED (5,000 / 15,000)
+      3. for each SATURATED one (5,000):
+           a. create an ANCESTOR of them, per `docs/export-seed-rules.md`
+           b. run a `Descendants` export on that created ancestor
+
+  **⛔ `Descendants`, NOT `Forest`. This overrides the style in `docs/export-seed-rules.md`.**
+  Ruled 2026-09-09: *"if the person has 5000 descendants then you create an ancestor of them
+  according to the existing algorithm and run a descendants export on them instead of the typical
+  forest."* That file fixes the export at `Forest`, size 5000, and `CLAUDE.md` § *ANYTHING ODD
+  ABOUT A PERSON -> FOREST EXPORT* reaches for `Forest` as the standing response — **neither
+  applies here.** `Forest` follows spouse links and spends the 5,000 slots sideways; this campaign
+  wants the ball to go **down**, so every slot spent on an in-law is a descendant not gathered.
+  Everything else about seed creation — where the placeholder goes, what it is named, the
+  five-tier preference order — is unchanged and that file is still the authority for it.
 
   A saturated census number means Geni knows there is more below that person than one export can
   hold, which is exactly the person worth exporting from. The cluster rule sorted the rim by

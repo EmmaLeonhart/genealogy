@@ -121,6 +121,12 @@ only say what is *in* it, never what is absent from the descent.
 export from the saturated ones, merge, sample again — **until it is clearly hitting significant
 diminishing returns.** Only then is it clear whether the thing works.
 
+**An "export" here means: create an ANCESTOR of the saturated person per
+`docs/export-seed-rules.md`, then run a `Descendants` export on that created ancestor.**
+**⛔ `Descendants`, NOT `Forest`** — this overrides both that file's fixed style and
+§ *anything odd about a person → `Forest` export*. `Forest` follows spouse links and spends the
+5,000 slots sideways; this campaign needs the ball to go down.
+
 **Do not substitute a number for that.** *15,000 descendants* was invented here as a floor and it
 is not the rule: a fixed target answers "have we done enough arithmetic", and the actual question
 is whether new exports are still returning new people. One 5,000-person ball is the first round
