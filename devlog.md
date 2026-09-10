@@ -35089,3 +35089,15 @@ is on the blocker question instead.
 **The collector and the descendants exports are blocked**: Geni served an Incapsula hCaptcha on
 the first page load of the session, on Charlemagne's own profile. Completing one is not
 something I do. Nothing else in the session touched Geni.
+
+## 2026-09-10 — the overlay is refused permanently, option `c`
+
+Ruled: *"the pipeline merges the corpus, and the union tree stays a separate `--connectivity`
+artifact that only the worklist reads."* `--slim` with `--also out/wikidata-tree.ged` was killed
+at **15,428 MB with 565 MB free** on run `34444557142`, and `--connectivity` fits only by
+dropping names, dates and places, which the derive scripts need. A middle slimming mode and a
+bigger runner were refused with it.
+
+So `docs/unconnected-worklist.md` § 0 is closed by ruling rather than by building, and the
+union-find stand-in is not a stand-in — it is the answer. `CLAUDE.md`'s *not yet* and *until it
+fits* are replaced: it is not a gate waiting on a measurement, it is the shape.

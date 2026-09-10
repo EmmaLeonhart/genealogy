@@ -5,7 +5,19 @@ before any of it is built, because that is the thing that was lost.**
 
 ---
 
-## 0. THE PREMISE THAT IS NOT YET TRUE
+## 0. THE PREMISE THAT IS FALSE ON PURPOSE — ruled 2026-09-10, option `c`
+
+**⛔ THE SPLIT IS PERMANENT AND THIS SECTION IS CLOSED.** *"the pipeline merges the corpus, and
+the union tree stays a separate `--connectivity` artifact that only the worklist reads."*
+`--slim` with the overlay was KILLED at **15,428 MB with 565 MB free**, run `34444557142`;
+`--connectivity` fits but drops names, dates and places and can never be `out/merged.ged`. A
+middle slimming mode and a bigger runner were refused with it.
+
+So the worklist reads the union tree as its own artifact and the pipeline never merges it. What
+follows is the diagnosis that led here, kept because it is still the accurate description of what
+the pipeline does and does not hold.
+
+## 0a. THE PREMISE THAT IS NOT TRUE
 
 > *"I don't think that the CI/CD currently combines the WikiData tree with the geni trees. The
 > WikiData tree doesn't go into the synoptic tree."*
@@ -19,8 +31,8 @@ over `exports/**/*.ged`. That is the Geni corpus plus one small hand-corresponde
 `P3373` — never enter `out/merged.ged`.** `scripts/p2600-connectivity.py` does the union in
 memory with union-find and writes no tree, so it is not that either.
 
-**So the first thing this needs is a build step that does not exist:** Wikidata's tree goes
-INTO the synoptic tree.
+**That is the shape and it stays.** The build step this used to call for — Wikidata's tree going
+INTO the synoptic tree — is the thing option `c` refused.
 
 ## 1. THE CANONICAL FORM IS NATIVELY A GEDCOM
 
@@ -152,13 +164,15 @@ one item, and it is the one § 0 opens with.
 | --- | --- |
 | the connected/disconnected split | **exists** — `scripts/p2600-connectivity.py`, in memory |
 | Wikidata as a GEDCOM | **exists** — `scripts/build-wikidata-gedcom.py`, and the union tree BUILDS: 3,038,219 people, 516 MB, locally |
-| Wikidata as a GEDCOM **in the merge** | **does not exist** — not wired into CI, per instruction |
+| Wikidata as a GEDCOM **in the merge** | **REFUSED, permanently** — ruled 2026-09-10 option `c` after `--slim` with the overlay was killed at 15,428 MB. Not a gap |
 | neighbourhood size | **exists as a STAND-IN** — a union-find over the same three edge sources, which gets the size right and destroys the family ids the GEDCOM form is for |
 | the TSV, its four columns, the ordering | **exists** — `scripts/build-unconnected-worklist.py`, 266,201 rows |
 | the date carry-forward | **exists** — the previous version of the file is the input, and there is no second file |
 | the extension writing a date on each attempt | **exists** — `scripts/attempt_ledger.py`, called from `scripts/write-family-scrape.py`, which is the one thing that runs once per person the collector runs on. The extension cannot write into the repo at all: nothing downloads |
 | CI running any of it | **exists** — `.github/workflows/tree.yml`, after the rebuild and committed with it |
 
-**So what is outstanding is § 0 and § 1 only:** the overlay going INTO the merge, and the
-neighbourhood then being measured on the merged tree rather than on the stand-in. Everything
-downstream of that is built and running, and swapping the one measurement changes nothing else.
+**So nothing is outstanding.** § 0 was closed on 2026-09-10 by ruling rather than by building:
+the overlay never enters the merge, and the union-find stand-in is therefore not a stand-in but
+the answer. `build-unconnected-worklist.py --tree` already reads the separate `--connectivity`
+artifact when one is handed to it — `c37d2558`, run in `union-tree.yml` — which is the whole of
+what option `c` asks for.

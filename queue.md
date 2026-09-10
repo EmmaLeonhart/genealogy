@@ -8,44 +8,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
-- **⛔ THE OVERLAY INTO THE PIPELINE'S OWN MERGE. `docs/unconnected-worklist.md` § 0, and it is
-  the last piece of that specification.**
-
-  **The union merge FITS ON A RUNNER** — measured 2026-09-09, run `34439815071`, and that
-  measurement is what `CLAUDE.md` § *it must not be wired in until it fits* was waiting for:
-
-      3,038,219 people · 1,961,091 families · 516 MB
-      peak RSS 9.76 GB of 16 · 18m38s · genimerge merge --connectivity
-
-  **⛔ AND `--slim` WITH THE OVERLAY WAS KILLED. MEASURED 2026-09-10, run `34444557142`.**
-  This is the number that was missing, and it says no:
-
-      MEM 06:42:42  used=12580MB  avail=3412MB
-      MEM 06:43:42  used=13392MB  avail=2601MB
-      MEM 06:44:12  used=15428MB  avail=565MB
-      06:44:30      The operation was canceled.
-
-  The climb is steady and it dies at **15,428 MB with 565 MB free** — the same shape as the
-  15,921 MB kill that `--slim` was invented to fix. So `--connectivity` fitting says nothing
-  about this: that mode drops names, dates and places, the derive scripts cannot read it, and it
-  can never be `out/merged.ged`.
-
-  **⛔ THE GATE STAYS CLOSED, AND NOW FOR A MEASURED REASON.** `CLAUDE.md` § *it must not be
-  wired in until it fits* is satisfied in the negative: it does not fit. Do not wire
-  `--also out/wikidata-tree.ged` into `rebuild-everything.py`.
-
-  **What is left is a choice nobody has made**, and it is not a guess to make here:
-
-      a. a slimming mode BETWEEN the two -- names but no dates or places, say -- and
-         measure that. Nobody has costed which fields the derive scripts actually read.
-      b. a bigger runner, which is a billing question and not a technical one
-      c. accept the split permanently: the pipeline merges the corpus, and the union tree
-         stays a separate `--connectivity` artifact that only the worklist reads
-
-  **The neighbourhood half is done** — `build-unconnected-worklist.py --tree out/union.ged`,
-  `c37d2558`, run in `union-tree.yml` against a scratch path. The union-find stand-in remains the
-  default because the merged tree is 516 MB and is not committed.
-
 - **⛔ DESCENDANTS EXPORTS ON THE 15 HINGE PEOPLE — digested out of `undigested.md`,
   2026-09-09.** A *hinge person* is defined there: *"people who seem to have clearly disjoint
   large numbers of descendants, and as such are good descendants export sources."*

@@ -354,8 +354,20 @@ of a loop, not a sample of anything.
   connectivity-only tree — `RFN`, `SEX`, `FAMC`, `FAMS`, `HUSB`, `WIFE`, `CHIL` — is ~19%.
   Names, dates, places and titles are still carried and the Wikidata pipeline does not read them
   to answer *is this person connected*.
-- **The Wikidata tree does NOT yet go into the synoptic tree.** `scripts/build-wikidata-gedcom.py`
-  renders it as a mergeable GEDCOM; nothing wires it into CI yet, and it must not be wired in
-  until it fits.
+- **⛔ THE WIKIDATA TREE NEVER GOES INTO THE SYNOPTIC TREE. THE SPLIT IS PERMANENT — ruled
+  2026-09-10, option `c`.** *"the pipeline merges the corpus, and the union tree stays a separate
+  `--connectivity` artifact that only the worklist reads."* This supersedes *not yet* and *until
+  it fits*: it is no longer a gate waiting on a measurement, it is the shape.
+
+  **The measurement that closed it**: `--slim` with `--also out/wikidata-tree.ged` was KILLED on
+  run `34444557142` at **15,428 MB with 565 MB free** — the same shape as the 15,921 MB kill
+  `--slim` was invented to fix. `--connectivity` fits (3,038,219 people, 9.76 GB peak, 18m38s,
+  run `34439815071`) and says nothing about this: it drops names, dates and places, the derive
+  scripts cannot read it, and it can never be `out/merged.ged`.
+
+  So `scripts/build-wikidata-gedcom.py` renders a mergeable GEDCOM that the PIPELINE does not
+  merge. **Do not wire `--also out/wikidata-tree.ged` into `rebuild-everything.py`** — not now
+  and not after a future measurement. The two other options were refused with it: a middle
+  slimming mode, and a bigger runner.
 - **Nameless routing nodes are the design.** A QID-only person exists so a Geni person can reach
   Charlemagne through Wikidata's structure; a router does not need a name.
