@@ -130,6 +130,16 @@ NN_LABEL = re.compile(r"^\s*N\.?\s?N\.?\s*$", re.I)
 #: asserts a bare marker yields no name.
 GIVEN_WITH_MARKER = re.compile(r"^\s*(\S.*?)\s+N\.?\s?N\.?\s*$", re.I)
 
+#: The MIRROR form: the marker leading a known SURNAME -- `NN Garborg`, `NN Andersson`. The
+#: surname is group 1.
+#:
+#: `docs/rules/names.md` opens the protocol with it -- `mul NN Garborg`, *"marker + the surname,
+#: which survives redaction"* -- and `Given NN` is described there as *"the mirror of
+#: `NN Garborg`"*. Three forms, one branch: neither half known, the surname known, the given
+#: name known. This exists so `needs_mul` can tell all three from an item that has no marker at
+#: all, instead of only recognising the bare one and overwriting the other two.
+SURNAME_WITH_MARKER = re.compile(r"^\s*N\.?\s?N\.?\s+(\S.*?)\s*$", re.I)
+
 #: Rejects a *relative* as the thing to name somebody by. Wider than `NN_LABEL`,
 #: because "mother of unknown" names nobody either.
 UNUSABLE = re.compile(r"^\s*(NN|N\.?\s?N\.?|\?+|unknown|anonymous|"
@@ -295,6 +305,28 @@ def _join(word, joiner, other):
     return f"{word} {joiner} {other}"
 
 
+
+def known_given_name(row, labels):
+    """The person's own given name, where the record holds one, else `""`.
+
+    ⛔ **ONLY FROM A LABEL THAT IS A NAME.** The prose forms this script itself writes --
+    `husband of Gölug`, `daughter of X` -- are descriptions, not names, and reading one back as
+    a given name would put a relative's name on the wrong person, which `CLAUDE.md`
+    § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME* records as a live defect elsewhere.
+    So a label is only read when it already carries the marker: `Andreas NN` yields `Andreas`,
+    and nothing else yields anything.
+
+    The `geni_id` column is the other source and it is deliberately not used here: our own tree
+    is where a given name would come from, and joining to it is a different job from this one.
+    Only 27 of the 1,588 carry a `P2600` at all, so it would answer for almost none of them.
+    """
+    for value in labels.values():
+        text = ((value or {}).get("value") or "").strip()
+        match = GIVEN_WITH_MARKER.match(text)
+        if match:
+            return match.group(1).strip()
+    return ""
+
 def main() -> int:
     rows = list(csv.DictReader(SOURCE.open(encoding="utf-8", newline="")))
     qids = [r["qid"] for r in rows]
@@ -414,7 +446,39 @@ def main() -> int:
             unnameable += 1
 
         # --- preserve: NN into `mul`, and it lands first -----------------------
-        needs_mul = not NN_LABEL.match(value("mul"))
+        # ⛔ **ALL THREE MARKER FORMS COUNT AS ALREADY-PRESERVED, AND ONLY THE BARE ONE DID.**
+        # `NN_LABEL` matches a bare marker, so `needs_mul` read `Andreas NN` and `NN Garborg` as
+        # *no marker present* and emitted `mul = "NN"` over them -- flattening the known half of
+        # somebody's name to nothing, as a `change` edit with `replaces` set.
+        #
+        # The spec has three forms and they are one branch: `NN Garborg` is marker plus the
+        # surname *"which survives redaction"*, `Given NN` is *"the mirror of `NN Garborg`"*
+        # with the halves swapped, and a bare `NN` is neither half known. Preserving the marker
+        # cannot mean destroying the name it is attached to.
+        #
+        # **Latent rather than live when it was found**, and that was measured rather than
+        # assumed: of the 1,588 items, 1,307 carry no `mul` at all, 278 are already a bare `NN`,
+        # 3 read `?` or `unknown`, and **zero** carry either informative form. So this fixes a
+        # trap rather than a live loss -- and the population is recomputed every run.
+        already = value("mul")
+        holds_marker = bool(NN_LABEL.match(already)
+                            or GIVEN_WITH_MARKER.match(already)
+                            or SURNAME_WITH_MARKER.match(already))
+        needs_mul = not holds_marker
+
+        # ⛔ **THE MARKER GOES IN THE SLOT THAT IS UNKNOWN, NOT ON ITS OWN.** A bare `NN` is the
+        # form for a person NEITHER of whose halves is known, and writing it for somebody whose
+        # given name we hold throws that name away -- which is exactly what happened on
+        # `Q141403481`: the mul had to be set to `Andreas NN` BY HAND because this emitted a
+        # bare marker and nothing else ever wrote the informative form.
+        #
+        # `docs/rules/names.md`: `mul NN Garborg` is *"marker + the surname, which survives
+        # redaction"*, and `Given NN` is *"the mirror"* of it. So where a given name is on the
+        # record, the marker takes the surname's place beside it.
+        marker_form = "NN"
+        given = known_given_name(row, labels)
+        if given:
+            marker_form = "%s NN" % given
         if needs_mul:
             preserved += 1
             edits.append({
@@ -423,7 +487,7 @@ def main() -> int:
                 "source": "move the NN marker into the multilingual label",
                 "subject": {"qid": qid, "geni_id": row.get("geni_id") or None},
                 "requires": [],
-                "label": {"language": "mul", "value": "NN"},
+                "label": {"language": "mul", "value": marker_form},
                 "kind": "add" if not value("mul") else "change",
                 "replaces": value("mul"),
                 "note": ("NN is nomen nescio and belongs in `mul` alone. Every "
