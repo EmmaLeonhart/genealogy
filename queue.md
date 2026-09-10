@@ -8,38 +8,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
-- **⛔ ABUL HAMZA `6000000227676734863` — THREE EXPORTS IN SEQUENCE. THIS IS THE FIRST ITEM.**
-  Emma, 2026-09-09: *"for this individual I created, I want you to do in sequence an ancestors
-  export, followed by a descendants export, followed by a forest export. This is a pretty
-  important person so it is critical that we get it working correctly. I created the individual
-  and I think geni might dislike this line so gotta do it quickly."*
-
-  <https://www.geni.com/people/Abul-Hamza/6000000227676734863>
-
-  **The order is hers and it is reasoned, so do not reorder it:**
-
-      1. Ancestors    "Her ancestry is very important"
-      2. Descendants  "she is a gateway to a lot of europe"
-      3. Forest       "to get the texture of the tree around her"
-
-  **One at a time — Geni's limit, not a preference**, so each goes in only once the previous zip
-  is on disk. **Speed matters**: she thinks Geni may dislike this line, and a profile that is
-  merged or deleted takes its exports with it.
-
-  **The download button gets swallowed.** Navigate
-  `https://www.geni.com/gedcom/request_download?task_id=<task id>` instead — measured 2026-09-09
-  after four dead clicks. `/gedcom` lists every task id in a `downloadGedcom('...')` attribute.
-
-  File as `exports/<dir>/export-<Style>-6000000227676734863.ged`, never overwriting. Check the
-  seed is the file's first `INDI`, and the `INDI` count against `GENI_EXPORT_CAP`.
-
-  **State:**
-  * **Ancestors DONE** — 811 people, 685 families, `exports/abul-hamza/`. Under the 5,000 cap,
-    so the walk exhausted her recorded ancestry rather than being cut off.
-  * **Descendants DONE** — 5,000 people, 3,200 families, `exports/abul-hamza/`. At the cap, so
-    cut off with more below her: a second Descendants seeded lower would reach further.
-  * **Forest SUBMITTED**, task `6000000227677646861`.
-
 - **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
   item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:

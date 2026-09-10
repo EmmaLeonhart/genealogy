@@ -33707,3 +33707,26 @@ needed; recorded because the two numbers together say something the pair of file
 
 The download went through `/gedcom/request_download?task_id=...` rather than the button, which
 worked first time again — three for three now.
+
+## 2026-09-09 — Abul Hamza: all three exports done, in her order
+
+`exports/abul-hamza/`, seeded on `6000000227676734863` and verified as the first `INDI` in all
+three files:
+
+    export-Ancestors-6000000227676734863.ged     811 people,   685 families
+    export-Descendants-6000000227676734863.ged  5000 people,  3200 families
+    export-Forest-6000000227676734863.ged       5000 people,  2857 families
+
+Her order, kept: *"Her ancestry is very important, and then after her descendants since she is a
+gateway to a lot of europe, and then afterwards the forest to get the texture of the tree around
+her."* Each went in only once the previous zip was on disk, one at a time being Geni's limit.
+Done inside about half an hour of her asking, which was the point — *"I think geni might dislike
+this line so gotta do it quickly."*
+
+**The three sizes say different things and are worth reading together.** Ancestors stopped on its
+own at 811, so her ancestry is **complete** as Geni holds it. Descendants and Forest both hit the
+5,000 bound, so both were cut off with more beyond them — a second Descendants seeded lower on
+her line would reach further. Recorded, not acted on.
+
+**The queue item is deleted**, its work being on disk. The download went through
+`/gedcom/request_download?task_id=...` every time — four for four — and the button was never used.
