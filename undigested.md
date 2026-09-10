@@ -60,9 +60,15 @@ https://www.geni.com/people/Ruben-III-Rouponi-King-of-Armenia/600000000708666276
 
 ---
 
-## 2026-09-09 — a OneTab page, hers to keep working on
+## 2026-09-09 — a OneTab page, DIGESTED
 
 and yeah https://www.one-tab.com/page/2msuxPNbTrOZicwGHbqiLQ just astore this thing I am gonna work on it a bit more since it is better for my judgment on this one
 
-**Not opened.** She is still working on it — *"better for my judgment on this one"* — so it is
-stored and nothing is read from it until she says.
+**Held, then released the same day.** It was stored unopened on *"better for my judgment on this
+one"*; asked again that evening, the ruling was to digest it now, the way the 15 hinge people
+were digested and without judging which are worth exporting.
+
+**Digested: 25 links, 19 distinct people**, every one a Geni profile on the Cilician Armenian
+side and every one reached `through=` one of the six western european tang hinge people already
+queued. The roster is in `queue.md`; nothing else was read out of the page and no export is
+proposed.

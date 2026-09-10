@@ -283,12 +283,78 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   waiting on path searches and exports. Until it exists the extension answers one person and
   nothing drives the traversal.
 
+- **⛔ THE OneTab PAGE, DIGESTED 2026-09-09. 19 people off the Cilician Armenian side.**
+  It was held on *"I do not want you to investigate"* and released the same day: digest it the
+  way the 15 hinge people were digested, **without judging which are worth exporting**. So this
+  is the roster and nothing about it is a recommendation.
+
+  `https://www.one-tab.com/page/2msuxPNbTrOZicwGHbqiLQ` — **25 links, 19 distinct people.** Every
+  one carries a `through=` parameter, and every one of those six is a WESTERN EUROPEAN TANG hinge
+  person, so the page is the neighbourhood of the six already queued rather than a new group.
+
+  **Through Constantine, lord of Barbaron `6000000006101354662`** — 9, the largest fan-out
+
+      6000000024948782278  Constantine, Lord of Neghir and Partzerpert   b. - 1308
+      6000000006101354658  Stephanie of Barbaron                         c.1200-1274   *
+      6000000006101430421  Hetum I, king of Armenia                      1215-1270     *
+      6000000008049080226  Stephanie of Barbaron, reine de Chypre        1217-1249     *
+      6000000011635945929  Maria de Barbaron                                           *
+      6000000006101354644  Auschin I                                     b. - 1265     *
+      6000000127383032880  Smbat, lord of Barbaron                       b. - 1275     *
+      6000000024948121730  Vacahk, Lord of Gantschi                      b. - 1285
+      6000000024948571097  Yovhanes, Archbishop of Sis                   b. - 1289
+
+  **Through Constantine I, lord of Lampron `6000000006101354653`** — 5
+
+      6000000224176114841  Oshin of Lampron, lord of Asgouras and Marnick  b. - c.1294
+      6000000006101354667  Hetum IV Lampron                                c.1220-1250
+      6000000006101354678  Schahandoukht                                   b. - c.1274
+      6000000006101354649  Alix
+      6000000006101354683  Kyranna of Lampron                              b. - 1274
+
+  **Through Ruben III Rouponi `6000000007086662766`** — 2
+
+      6000000007086577488  Alice of Armenia                              1182-c.1234
+      6000000006727876826  Philippa, princess of Armenia                 1183-c.1219
+
+  **Through Leo I the Magnificent `6000000006101430432`** — 2
+
+      6000000003146970482  Stephanie of Armenia (Rita)
+      6000000006101430426  Isabella I, queen of Cilician Armenia
+
+  **Through Tolita Doleta of Armenia `6000000006101354628`** — 1
+
+      6000000006101354617  Hugues l'Embriaco de Gibelet
+
+  **The six starred people are reached through BOTH Constantine of Barbaron and Princess Alix de
+  Lampron `6000000006101354712`**, which is the whole of Alix's fan-out — she adds no seventh
+  person of her own. That overlap is the reason 25 links are 19 people, and it is a fact about
+  the page, not an inference about the family.
+
+  **⛔ ALL NINETEEN ARE ALREADY IN THE CORPUS** — one pass of `grep -rhoE` over `exports/`,
+  2026-09-09, and every id is present, between **29 and 95 xref occurrences** each: Isabella I
+  95, Philippa 74, Alice of Armenia 67, Smbat 56, and no id below 29. So the page is a
+  neighbourhood the corpus has already gathered, not new material to fetch.
+
+  That is the grep § *GREP THE CORPUS BEFORE RUNNING AN EXPORT* asks for and it is stated as a
+  count, not as a verdict: whether an export is warranted on any of them is untouched here, per
+  *without judging which are worth exporting*.
+
 - **The parent-adding campaign.** GATED: it starts once the placeholder parents have been
   sufficiently gathered in the synoptic tree and a batch is on Wikidata. You, 2026-09-03: *"In
   the future after we've sufficiently gathered all the placeholder parents and added a bunch to
   wikidata we can do a parent-adding campaign, especially if we use forest exports in closely
-  related eccentric graph points on geni."* Do not start it early and do not invent the gate's
-  threshold — that is yours.
+  related eccentric graph points on geni."*
+
+  **⛔ THE GATE IS DIMINISHING RETURNS, NOT A COUNT — ruled 2026-09-09**, the same stopping
+  condition as the descendants campaign: it opens when a run stops finding many new placeholder
+  parents. **Do not invent a number**; a fixed target answers *have we done enough arithmetic*
+  and the question is whether the gathering is still paying. `CLAUDE.md` § *THE STOPPING
+  CONDITION IS DIMINISHING RETURNS, NOT A COUNT* is the same rule in the other campaign, and it
+  is now this one's too.
+
+  **Nothing measures it yet**, which is the outstanding piece: the rate of new placeholder
+  parents per run has to be reported somewhere before anyone can see it flatten.
 
 - **EMIT THE 1,640 PIPED LABELS. All three shapes were ruled 2026-09-09** and
   `name modelling.txt` § *A PIPE IN AN IMPORTED LABEL* is the authority; that file beats
@@ -302,8 +368,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
   **Not started.** What is outstanding is the emitter: read the shape, write `proposed_label`
   and `proposed_aliases`, clear the `pipe-shape` hold, and let the label batch carry them.
-  **How they go out against `LABEL_EDIT_CAP` 60 is NOT settled** — it is one of the three
-  questions postponed to 23:00 on 2026-09-09, cron `bae9b87e`.
+
+  **They go out UNDER THE EXISTING `LABEL_EDIT_CAP` of 60 people per run — ruled 2026-09-09.**
+  No special batch and no queue-jumping: they join the normal label batch and drain over roughly
+  28 runs alongside everything else. The cap is not suspended for a backlog.
 
 - **`undigested.md` — NEEDS-INVESTIGATION.** Raw text from you, verbatim and unprocessed.
   Investigating it is a real outstanding item and belongs in every status report under that tag,

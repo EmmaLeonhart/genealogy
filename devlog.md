@@ -34805,3 +34805,35 @@ Wikidata's own label where Geni filed no `NSFX`. What remains is scope and deliv
 items carry a suffix in a label but not in `NSFX` (unmeasured, and § *"Analyse this" means build
 a CSV of every instance* applies), the corrected labels actually reaching Wikidata, and whether
 the same hole exists for `d.y.`, `the younger`, `nuorempi` and the senior forms.
+
+## 2026-09-09 -- the OneTab page, digested; and the last two postponed rulings
+
+**Three questions were postponed to 23:00 on a one-shot cron** because they arrived while
+something else was being corrected. All three came back:
+
+    the parent-adding gate     DIMINISHING RETURNS, not a count
+    the OneTab page            digest it now
+    the 1,640 piped labels     under the existing LABEL_EDIT_CAP of 60
+
+**The OneTab page had been held on *"I do not want you to investigate"*** and was released the
+same evening, with the instruction to digest it the way the 15 hinge people were digested and
+**without judging which are worth exporting**. So the queue item is a roster and a grep count,
+and proposes nothing.
+
+**25 links, 19 distinct people**, every one a Geni profile on the Cilician Armenian side. Every
+link carries a `through=` parameter and **all six of those are western european tang hinge people
+already queued**, so the page is their neighbourhood rather than a new group. The 25-to-19 gap is
+overlap: six people are reached through both Constantine of Barbaron and Princess Alix de
+Lampron, and Alix adds nobody of her own.
+
+**⛔ ALL NINETEEN ARE ALREADY IN THE CORPUS**, one `grep -rhoE` pass over `exports/`: between 29
+and 95 xref occurrences each, Isabella I highest at 95 and Schahandoukht lowest at 29. The page
+is material the corpus has already gathered. That is the grep § *GREP THE CORPUS BEFORE RUNNING
+AN EXPORT* asks for, recorded as a count and not as a verdict.
+
+**The parent-adding gate now matches the descendants campaign's** -- diminishing returns, and
+explicitly no invented number. What is outstanding is that nothing measures the rate of new
+placeholder parents per run, so there is nothing to watch flatten.
+
+**And the piped labels go out under the ordinary cap**: 60 people a run, no special batch, no
+queue-jumping, roughly 28 runs. A backlog does not suspend a cap.
