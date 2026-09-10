@@ -208,6 +208,20 @@ GC.statistics = async function () {
  * A blocked page is `state: "blocked"` and writes nothing. The caller stops; it must never be
  * retried in a loop, which is what provoked the block in the first place. */
 GC.blocked = function () {
+  /* ⛔⛔ **HTTP 429 IS A BLOCK AND IT DOES NOT LOOK LIKE ONE.** Measured 2026-09-10 while
+   * running the open loop at a 4-second stagger: 14 of 56 results came back `no_panel` with
+   * `read: false`, no family, no statistics -- and `document.title` reading **"Too Many
+   * Requests"**. That is a person with no relatives and no path, which is exactly what a genuine
+   * isolate looks like, so all 14 would have been written as real captures over real people and
+   * their worklist rows stamped for thirty days.
+   *
+   * The CAPTCHA checks below did not fire because Geni throttles before it challenges: the 429
+   * page carries no Incapsula frame and no security-check text. It is the cheaper defence and it
+   * is the one that appears first, so it is the one worth detecting.
+   *
+   * A `blocked` result stops the run in `service-worker`; nothing is written and nothing is
+   * stamped. */
+  if (/^too many requests/i.test((document.title || "").trim())) return true;
   if (/Additional security check is required/i.test(document.documentElement.innerHTML || "")) {
     return true;
   }
