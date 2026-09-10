@@ -33911,3 +33911,20 @@ set on the capture; § *ANYTHING ODD ABOUT A PERSON -> FOREST EXPORT* is what it
 came through intact. Tiny GEDCOMs rebuilt (122 profiles, 722 paths, 0 invented people);
 the worklist is **2,586 outstanding**, down one.
 
+
+## 2026-09-09 — descendants export 2 of 11: NN Черкасский `6000000227676362934`
+
+`exports/circassian-hinge/export-Descendants-6000000227676362934.ged` — **4,239 people,
+2,275 families**, task `6000000227677901835`. Seed verified as the file's first `INDI`:
+`0 @I6000000227676362934@ INDI` / `1 NAME NN /Черкасский/`.
+
+The download button is still swallowed; `https://www.geni.com/gedcom/request_download?task_id=<id>`
+worked again — 6 for 6 now.
+
+Export 3 of 11 submitted the moment the zip landed: `6000000227676617890`, `Descendants`,
+size 5000, task **`6000000227677904901`**, building. The submit is scripted against the form
+at `https://www.geni.com/gedcom/export/<geni id>` — form index 1, `input[name=walk]`
+radio to `Descendants`, `max_profiles` 5000, `f.submit()`; it posts to
+`/gedcom/request_export` and lands on `/gedcom/download?task_id=…`. Worth recording because
+the default walk is **`BloodTree`**, not `Forest` and not `Descendants`.
+
