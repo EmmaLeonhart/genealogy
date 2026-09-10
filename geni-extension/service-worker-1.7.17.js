@@ -110,6 +110,8 @@ const DEFAULTS = {
   endId: "",
   /* Set when Geni answers 429; `pump` opens nothing until it passes. */
   cooldownUntil: 0,
+  /* Every id the extension has run on this run, whatever the outcome. See the result handler. */
+  attempted: [],
   /* ⛔ THE WALK THE EXPORT AT THE END OF THE CLIMB TAKES. `forest` is the default and stays it
    * -- `docs/export-seed-rules.md` fixes a seed-driven export at Forest/5000 and that file is
    * still the authority for the ordinary loop. The descendants campaign is the other case:
@@ -202,6 +204,28 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       delete active[String(tabId)];
       const results = s.results.concat([Object.assign({ at: new Date().toISOString() }, msg.result)]);
 
+      /* ⛔⛔ **THE EXTENSION RECORDS WHO IT RAN ON. NOT THE AGENT.**
+       *
+       * Ruled 2026-09-10: *"the extension should be scraping the page and adding and basically
+       * just writing into the file automatically whether it has tried the page. It's not
+       * agentic."*
+       *
+       * `attempt_ledger.py` exists as a script because **nothing downloads** -- the extension
+       * cannot write into the repo, and that constraint is not negotiable. But the part that was
+       * agentic is not the writing, it is the DECIDING: on 2026-09-10 fourteen rate-limited
+       * people were stamped by typing their ids into a command line, which means a person chose
+       * which attempts counted. That is the discretion the design removes everywhere else.
+       *
+       * So the extension keeps the list. Every result appends its id here, whatever the state --
+       * a hit, a miss, a 429, an error. The harvest dumps this list wholesale into
+       * `attempt_ledger.py`; nobody picks. `attempted` is append-only within a run and is reset
+       * by `load`, exactly like `results`. */
+      const attempted = (s.attempted || []).concat([{
+        geni_id: String((msg.result && msg.result.geni_id) || ""),
+        state: (msg.result && msg.result.state) || "",
+        at: new Date().toISOString()
+      }].filter((a) => a.geni_id));
+
       /* ⛔ A CAPTCHA STOPS THE RUN. `GC.blocked()` reports it and nothing acted on it -- which
        * did not matter while opening was pinned to the return rate, and matters a great deal now
        * that the loop opens continuously. Geni served an Incapsula challenge after roughly forty
@@ -225,7 +249,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
          * Halting instead was the first version and it was wrong twice: it needed a human to
          * restart, and it invited exactly the un-attempting this ruling forbids. */
         const slower = Math.min(60000, Math.max(4000, (s.staggerMs || 4000) * 2));
-        await put({ active, results, staggerMs: slower,
+        await put({ active, results, attempted, staggerMs: slower,
                     cooldownUntil: Date.now() + BLOCK_COOLDOWN_MS });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         chrome.alarms.create(PUMP_ALARM, { when: Date.now() + BLOCK_COOLDOWN_MS });
@@ -272,7 +296,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
          * climb, so it is let through -- and only it: `pump` will not open a seed while
          * `creating` is set, so `running` coming back on cannot restart the walk. With no `pid`
          * there is nothing to export from and the run simply stays stopped. */
-        await put({ active, results, queue, endId: pid, running: !!pid });
+        await put({ active, results, attempted, queue, endId: pid, running: !!pid });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -289,7 +313,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         if (!held.has(from)) {
           queue = s.queue.concat([{ job: "seed", geni_id: from, kind: "seed", label: "" }]);
         }
-        await put({ active, results, queue });
+        await put({ active, results, attempted, queue });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -305,7 +329,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                          .map((p) => ({ job: "seed", geni_id: String(p), kind: "seed", label: "" }));
         queue = s.queue.concat(fresh);
       }
-      await put({ active, results, queue });
+      await put({ active, results, attempted, queue });
       /* A resolved tab is closed. It is held open only WHILE the search runs, which is the
        * thing the rule protects; once the answer is on the page the tab costs RAM and buys
        * nothing. A still-running or never-asked target is closed too and goes to the next
@@ -355,7 +379,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       await put({
         queue: [{ job: "individual", geni_id: id, kind: "individual",
                   create: true, label: msg.label || "" }],
-        results: [], active: {}, endId: "", dryRun: false, creating: "",
+        results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
         exportWalk: msg.exportWalk || "forest",
         running: true, startedAt: new Date().toISOString()
       });
@@ -386,7 +410,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       if (!id) { sendResponse({ error: "no geni_id" }); return; }
       await put({
         queue: [{ job: "seed", geni_id: id, kind: "seed", label: msg.label || "" }],
-        results: [], active: {}, endId: "", dryRun: false, creating: "",
+        results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
         exportWalk: msg.exportWalk || "forest",
         /* ⛔ AN HOUR, NOT THE TEN-MINUTE DEFAULT. `DEFAULTS.waitMs` is 600000 and it is the
          * PATH search's budget; `runExport` takes the same field and a 5,000-person ball
@@ -407,7 +431,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * gap between OPENS is the whole rate control. */
       const extra = {};
       if (msg.staggerMs) extra.staggerMs = Math.max(1000, msg.staggerMs | 0);
-      await put(Object.assign({ queue: msg.queue, results: [], active: {} }, extra,
+      await put(Object.assign({ queue: msg.queue, results: [], attempted: [], active: {} }, extra,
                               msg.start ? { running: true, dryRun: false, creating: "",
                                             startedAt: new Date().toISOString() } : {}));
       sendResponse(msg.queue.length);
