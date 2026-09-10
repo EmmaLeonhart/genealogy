@@ -33985,3 +33985,61 @@ that is one family holding two of the ten picks. § *A diacritic makes a differe
 Also filed: the three **Abul Hamza** exports in the order you set — `Ancestors` **811** (exhausted,
 her ancestry is finite), `Descendants` **5,000** (capped), `Forest` **5,000** (capped).
 
+
+## 2026-09-09 — the campaign's population was wrong by two orders of magnitude
+
+You asked what I thought the scope of the path operation was, said *"I feel like you kinda don't
+understand it"*, and then gave the definition:
+
+> *"Every p2600 holder who is disconnected from Charlemagne in the synoptic tree (combination of
+> our geni exports and what exists on wikidata). The idea is that all p2600 people should either
+> be confirmed impossible to connect, or connected. Connection to Charlemagne is our proxy for
+> connection to the main graph as Charlemagne is one of the most central people."*
+
+**⛔ `reports/collector-worklist.tsv` NEVER ENUMERATED THAT POPULATION.**
+`scripts/collector-worklist.py` drew its universe from a hardcoded pair of files —
+`reports/sibling-pair-worklist.tsv` and `reports/isolate-path-pilot.tsv`, **4,360 people
+between them** — and asked *"have we scraped them?"*. You spotted the file itself as suspect
+before any of this was traced: *"I have no clue if this is the right thing here lol. Idk the
+origin of the file lol."*
+
+The commit that introduced it, `491b487c`, implemented your *both ties, always* ruling
+correctly. That ruling is about **what to do per person**; the **population** was never in it,
+and the roster on disk got used because it was on disk. § *Do not grab the first artifact that
+vaguely matches*, exactly.
+
+**`scripts/p2600-connectivity.py` computes the real one** — union-find over the union graph:
+our `derived-family.csv` (7,278,630 edges over 1,451,993 people), Wikidata's `relations.tsv`
+(5,041,567 edges from `P22`/`P25`/`P40`/`P26`/`P3373`), and `p2600-all.tsv` as the fusion.
+3,529,128 nodes. A **QID with no Geni id is still a node**, because two `P2600` people can be
+joined only through an unlinked item; and a **spouse edge counts**, per § *BOTH TIES, ALWAYS*.
+
+    P2600 holders                     518,889
+      in our Geni corpus               43,709   8.4%
+    connected to Charlemagne          252,688   48.7%
+      of those, in our corpus          43,703
+      connected via WIKIDATA ONLY     208,985
+    DISCONNECTED                      266,201   51.3%
+      in our corpus, separate comp.         6
+      absent from our corpus          266,195
+
+**43,703 of 43,709 independently reproduces the "merged tree is one component" fact**, which is
+the check that the graph is built right rather than merely built.
+
+**And it says what kind of job this is.** 266,195 of the 266,201 have never been touched by any
+export, so this is a **reach** problem, not a path-finding one — and it is precisely why the
+collector exists: Geni's World Tree can answer the relationship question for a profile our corpus
+has never seen.
+
+`reports/p2600-disconnected.tsv` is now the first entry in `ROSTERS`. The two pilot files stay —
+anyone genuinely disconnected in them is in the new file anyway, and `scraped()` filters captured
+people either way, so keeping them costs nothing and dropping them would retire work in flight.
+
+**The worklist goes 2,586 → 268,686.**
+
+⛔ **AND THE FIRST RUN REPORTED A NUMBER ABOUT ITSELF.** *"of those, present in our Geni tree at
+all: 266,201 of 266,201"* — the test was `("g:" + gid) in uf.id`, and `load_p2600` interns a node
+for **every** holder, so it was vacuously true. The corpus is `derived-family.csv` and the honest
+figure is **6**. § *Our side could never have two children*, in a new place, caught before it was
+quoted.
+

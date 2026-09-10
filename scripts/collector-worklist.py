@@ -42,7 +42,25 @@ ISOLATES = ROOT / "reports" / "isolates.csv"
 OUT = ROOT / "reports" / "collector-worklist.tsv"
 
 #: Every roster the collector draws targets from. A person in any of them is in scope.
+#:
+#: ⛔ **THE FIRST ENTRY IS THE POPULATION. THE OTHER TWO ARE PILOT ROSTERS AND WERE NEVER IT.**
+#: Emma, 2026-09-09, asked what the scope actually is: *"Every p2600 holder who is disconnected
+#: from Charlemagne in the synoptic tree (combination of our geni exports and what exists on
+#: wikidata). The idea is that all p2600 people should either be confirmed impossible to connect,
+#: or connected. Connection to Charlemagne is our proxy for connection to the main graph as
+#: Charlemagne is one of the most central people."*
+#:
+#: This tuple held ONLY the two pilot files until then -- 4,360 people between them -- so the
+#: campaign ran over **0.8%** of the population, chosen by which roster happened to be on disk.
+#: `scripts/p2600-connectivity.py` computes the real one: of **518,889** holders, 252,688 are
+#: already connected and **266,201 are not**. A connected person needs no capture at all, which
+#: is the half the old question could not ask.
+#:
+#: The pilot rosters STAY. Everyone in them who is genuinely disconnected is in the new file
+#: anyway, and a person already captured is filtered by `scraped()` either way -- so keeping them
+#: costs nothing and dropping them would silently retire work in flight.
 ROSTERS = (
+    ("reports/p2600-disconnected.tsv", "geni_id"),
     ("reports/sibling-pair-worklist.tsv", "geni_id"),
     ("reports/isolate-path-pilot.tsv", "geni_id"),
 )
