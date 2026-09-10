@@ -34908,3 +34908,44 @@ That is exactly the failure the agreeing-Latin rule sat in for eight days -- wri
 called by nothing, and reported as done. The queue item is rewritten to say so: what remains is a
 rebuild step that reads the proposals file, calls the reader, writes the columns back, and clears
 the `pipe-shape` hold on the rows that resolved.
+
+## 2026-09-10 -- places leave the synoptic tree entirely
+
+**Ruled:** *"I genuinely think keeping the places in the synoptic tree is a horrible idea"*, and
+on the one thing that read them, *"there was an algorithm, and it failed miserably"*.
+
+`--slim` no longer keeps `PLAC` or the structured address block. Measured over 3,477 exports:
+
+    ADDR ADR1 ADR2 ADR3 CITY CTRY POST STAE   124,880,269 bytes   8,741,947 lines
+    PLAC                                       42,280,646 bytes   1,536,400 lines
+                                              167,160,915 bytes  10,278,347 lines
+
+**The address block had no consumer at all.** It was kept because *"every one of these is read by
+derive-facts.py"* -- true, and the wrong test: `derive-facts` reads them and writes
+`birth_address`, `death_address` and `burial_address`, and nothing reads those columns. **No
+place statement has ever been emitted either**: `grep P19|P20|P119` over every `.qs` and the
+daily batch returns nothing.
+
+**`PLAC` had exactly one, and the person who owns it withdrew it.** It was culture evidence 1 in
+`build-cjk-romanisation.py` -- place words matched against country and region names to decide
+whether a CJK person is `ja`, `zh` or `ko`. I argued here for keeping it on that basis and the
+argument is gone: the classifier is judged not to have worked and the replacement is manual
+review. It is evidence 1 of five, so the classifier narrows rather than stops -- the `NAME`'s own
+form, graph traversal, the surname judged by settled records and export provenance are untouched,
+and its evidence 0 had already been withdrawn on 2026-08-19 for being wrong the same way.
+
+**`tests/test_slim.py` is the first test this whitelist has had**, and one of its assertions was
+inverted within the day -- `PLAC` kept, then `PLAC` gone. That is a rule changing, not a test
+being loosened to make a change pass, and the docstring says so where it will be read.
+
+⛔ **A CORRECTION TO A NUMBER I PUBLISHED AN HOUR AGO.** A per-tag byte census over the corpus
+put `CONT` at 39% and `CONC` at 25% of *what `--slim` holds*. **That method is wrong**: it counts
+every line whose tag is in `KEEP_TAGS`, and `_prune` drops a whole SUBTREE, so the `CONT`/`CONC`
+under a dropped `NOTE` or `SOUR` never survive to be held. The same flaw inflated an earlier
+"kept by --slim: 87.2% of corpus" figure. The tag-level numbers above are sound because `PLAC`
+and the address block hang directly off `INDI`/`FAM` events rather than under a dropped parent;
+nothing else from that census should be quoted.
+
+**167 MB of corpus text is not 167 MB of peak RSS** -- the merge holds parsed objects at 20-40x
+source text -- and this is the first cut rather than the fix. The union merge has not been
+re-measured since.

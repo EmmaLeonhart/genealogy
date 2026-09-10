@@ -65,20 +65,32 @@ KEEP_TAGS = frozenset({
     # The address block is THREE TIMES the size of `PLAC` and has no consumer at all. Against the
     # slim union merge's 15,428 MB peak that is roughly **467 MB** returned for nothing given up.
     #
-    # ⛔ **`PLAC` STAYS, AND THE REASON IS NOT PLACES.** `build-cjk-romanisation.py` reads
-    # `birth_place` and `death_place` as **culture evidence** — the words in them are what decide
-    # whether a CJK person is classified `ja`, `zh` or `ko`, and `CLAUDE.md` § *The gate is `ja` +
-    # `zh` + `ko`* makes that gate load-bearing. Dropping `PLAC` would blind the classifier to
-    # save 1%, which is the trade this comment exists to refuse.
-    "PLAC",
+    # ⛔ **AND `PLAC` GOES TOO. RULED 2026-09-10: places do not belong in the synoptic tree.**
+    # *"I genuinely think keeping the places in the synoptic tree is a horrible idea"*, and on
+    # the one thing that read them: *"there was an algorithm, and it failed miserably"*.
+    #
+    # The place words were **culture evidence 1** in `build-cjk-romanisation.py`, matched against
+    # country and region words to decide whether a CJK person is `ja`, `zh` or `ko`. Keeping
+    # `PLAC` for that was argued here yesterday and the argument is WITHDRAWN: the classifier is
+    # judged not to have worked, and the replacement is a person reading them --
+    # *"best thing will just be me manually reviewing these people"*.
+    #
+    # **It is evidence 1 of five and the other four are untouched** -- the `NAME`'s own form,
+    # graph traversal over relatives, what the surname is judged by the settled records, and
+    # export provenance. So this narrows the classifier rather than disabling it, and its
+    # evidence 0 was already withdrawn on 2026-08-19 for being wrong in the same way.
+    #
+    # 42,280,646 bytes over 1,536,400 lines. Nothing else reads a place at all: no `P19`, `P20`
+    # or `P119` statement has ever been emitted, which `tests/test_slim.py` pins.
     # what the Wikidata model emits: P106 occupation, P97 noble title
     "OCCU", "TITL",
     # relationships — derive-family.py
     "FAMC", "FAMS", "HUSB", "WIFE", "CHIL",
     # CLAUDE.md "Later sources win": INDI.CHAN.DATE is the tiebreaker
     "CHAN",
-    # continuation of a KEPT value only — a dropped node takes its children,
-    # so these survive under ADDR and never under NOTE
+    # continuation of a KEPT value only — a dropped node takes its children, so these survive
+    # under a kept value and never under NOTE. **They used to be described as surviving "under
+    # ADDR", and ADDR is gone**: what they hang off now is a long NAME or TITL.
     "CONT", "CONC",
     # header fields the parser expects to find
     "SOUR", "VERS", "GEDC", "FORM", "CHAR", "LANG", "DEST", "FILE",
