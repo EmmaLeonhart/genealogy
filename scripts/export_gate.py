@@ -62,7 +62,7 @@ from __future__ import annotations
 #: — Valentine Eisner reads Family Tree 914 and was skipped by 86 under the old floor. The three
 #: small ones went UP, from 100 / 100 / 10, so a profile with 12 followers no longer clears on
 #: that alone; it is a floor on the evidence, not a licence for the weakest figure.
-FLOOR = 300
+FLOOR = 250
 
 #: Geni's query ceilings. A figure at one of these is a FLOOR on the true value, not a count --
 #: established 2026-09-03: 15,000 on any of those numbers flags that the query exceeded its
