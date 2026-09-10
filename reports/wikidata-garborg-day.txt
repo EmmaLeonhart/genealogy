@@ -4,22 +4,46 @@
 # and a name item is not an exception to that.
 # 1428 in reports/manual-identifications.csv, 1118 already on Wikidata, 20 a run beyond the ones this run touches.
 # ========================================================================
-#   Q4832332 Willem van Beieren-Schagen: P2600 from a hand identification
-Q4832332	P2600	"6000000012419491711"
-#   Q4955696 Ingeborg Knutsdotter (Aspenäs): P2600 from a hand identification
-Q4955696	P2600	"4081817"
-#   Q4958315 Abbedissa Katarina Svantepolksdotter: P2600 from a hand identification
-Q4958315	P2600	"6000000011371153681"
-#   Q5022209 Callinicus: P2600 from a hand identification
-Q5022209	P2600	"6000000014322614698"
-#   Q5096056 Chichimecacihatzin II: P2600 from a hand identification
-Q5096056	P2600	"6000000129472670844"
-#   Q5325617 Eanswythe: P2600 from a hand identification
-Q5325617	P2600	"6000000000148442846"
-#   Q5345401 Edward Stafford Kt.: P2600 from a hand identification
-Q5345401	P2600	"6000000006444632113"
-#   Q5429464 Statira II: P2600 from a hand identification
-Q5429464	P2600	"6000000011472729400"
+#   Q3142578 Hugues de Châlon: P2600 from a hand identification
+Q3142578	P2600	"6000000008053617504"
+#   Q3180990 Raziye Osmanoğlu: P2600 from a hand identification
+Q3180990	P2600	"6000000060822328991"
+#   Q3186792 Jourdain de L'Isle-Jourdain Seigneur de Sainte-Bazeille & de Landerron: P2600 from a hand identification
+Q3186792	P2600	"6000000014271776367"
+#   Q3239153 Phithia: P2600 from a hand identification
+Q3239153	P2600	"6000000003513236861"
+#   Q3286784 Manuel Komnenos: P2600 from a hand identification
+Q3286784	P2600	"6000000002187823198"
+#   Q3298994 Mathilde: P2600 from a hand identification
+Q3298994	P2600	"6000000004533250087"
+#   Q3471698 Sanchet d'Abrichecourt KG: P2600 from a hand identification
+Q3471698	P2600	"6000000003887962291"
+#   Q3577177 Æðelswyð: P2600 from a hand identification
+Q3577177	P2600	"6000000000632011834"
+#   Q3623119 Mojsije Komitopulo: P2600 from a hand identification
+Q3623119	P2600	"371370707100003086"
+#   Q3694258 Corradino Malaspina il Giovane: P2600 from a hand identification
+Q3694258	P2600	"6000000082940316199"
+#   Q3717838 Æbba: P2600 from a hand identification
+Q3717838	P2600	"6000000017469723032"
+#   Q3721758 Helenus: P2600 from a hand identification
+Q3721758	P2600	"6000000041107288016"
+#   Q3741743 Federico Gonzaga signore di Bozzolo: P2600 from a hand identification
+Q3741743	P2600	"6000000083422536152"
+#   Q3744974 Filiberta di Savoia: P2600 from a hand identification
+Q3744974	P2600	"6000000007841176184"
+#   Q3768495 Giovanni di Piero de' Medici: P2600 from a hand identification
+Q3768495	P2600	"6000000011565342833"
+#   Q4127288 Vsevolod Sviatoslavich: P2600 from a hand identification
+Q4127288	P2600	"6000000009098863644"
+#   Q4130535 Viačeslav Jaroslavič Smolensko kun: P2600 from a hand identification
+Q4130535	P2600	"6000000016948836802"
+#   Q4250171 Margaretha Ratzeburg: P2600 from a hand identification
+Q4250171	P2600	"6000000015299843001"
+#   Q4368928 Eadwin: P2600 from a hand identification
+Q4368928	P2600	"6000000003232558406"
+#   Q4387970 Radulf bisbe d'Urgell: P2600 from a hand identification
+Q4387970	P2600	"6000000007215677278"
 #   Q113953794 Jacqueline de Caumont la Force: P2600 from a hand identification
 Q113953794	P2600	"6000000015700801914"
 #   Q116003424 Françoise DE CASTELLANE: P2600 from a hand identification
@@ -106,7 +130,7 @@ Q141353333	P5056	LAST	S2600	"6000000006776185092"
 #   Q141353765 Rasmus Rasmusson Stangeland: P5056 patronym or matronym = the item just created
 Q141353765	P5056	LAST	S2600	"6000000019668849058"
 
-# Knutsen -- patronymic, 2 bearer(s) in the batches
+# Knutsen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Knutsen"
@@ -126,7 +150,7 @@ Q141353676	P5056	LAST	P144	Q141216487	S2600	"6000000005474735001"
 #   Q141189088 Ola Knutsen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141199925 Knut Elvindson Garborg
 Q141189088	P5056	LAST	P144	Q141199925	S2600	"6000000007744588495"
 
-# Eliædotter -- patronymic, 1 bearer(s) in the batches
+# Eliædotter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Eliædotter"
@@ -142,23 +166,7 @@ LAST	P144	Q11878157
 #   Q141312975 Margareta Eliædotter Rhalambia: P5056 patronym or matronym = the item just created, qualified P144 based on Q141312962 Elias Erici Rhalambius
 Q141312975	P5056	LAST	P144	Q141312962	S2600	"6000000017247625449"
 
-# Gulbrandsdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gulbrandsdatter"
-LAST	Len	"Gulbrandsdatter"
-#   set the mul label to "Gulbrandsdatter"
-LAST	Lmul	"Gulbrandsdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q131579132 Gulbrand
-LAST	P144	Q131579132
-#   Q141180395 Maren Gulbrandsdatter Ommestad: P5056 patronym or matronym = the item just created
-Q141180395	P5056	LAST	S2600	"6000000020221673906"
-
-# Hornaeus -- family, 1 bearer(s) in the batches
+# Hornaeus -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Hornaeus"
@@ -172,25 +180,7 @@ LAST	P31	Q101352
 #   Q141224900 Samuel Samuelis Hornaeus: P734 family name = the item just created
 Q141224900	P734	LAST	S2600	"6000000007366595611"
 
-# Iversen -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Iversen"
-LAST	Len	"Iversen"
-#   set the mul label to "Iversen"
-LAST	Lmul	"Iversen"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q11977747 Iver
-LAST	P144	Q11977747
-#   P144 based on = Q127069 Ivar
-LAST	P144	Q127069
-#   Q141353714 Johannes Iversen Halvorsrud Kinge: P5056 patronym or matronym = the item just created
-Q141353714	P5056	LAST	S2600	"6000000015367765610"
-
-# Knudson -- patronymic, 1 bearer(s) in the batches
+# Knudson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Knudson"
@@ -208,25 +198,7 @@ LAST	P144	Q943881
 #   Q141353757 Ole Knudson Hidle: P5056 patronym or matronym = the item just created, qualified P144 based on Q141353723 Knud Olsson Nord Hidle
 Q141353757	P5056	LAST	P144	Q141353723	S2600	"6000000005607377598"
 
-# Knutson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Knutson"
-LAST	Len	"Knutson"
-#   set the mul label to "Knutson"
-LAST	Lmul	"Knutson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q943881 Knut
-LAST	P144	Q943881
-#   P144 based on = Q18565341 Knud
-LAST	P144	Q18565341
-#   Q141225729 Jacob Knutson Skiftun: P5056 patronym or matronym = the item just created
-Q141225729	P5056	LAST	S2600	"6000000177945982827"
-
-# Rhalambia -- family, 1 bearer(s) in the batches
+# Rhalambia -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Rhalambia"
@@ -240,7 +212,7 @@ LAST	P31	Q101352
 #   Q141312975 Margareta Eliædotter Rhalambia: P734 family name = the item just created
 Q141312975	P734	LAST	S2600	"6000000017247625449"
 
-# Søre -- family, 1 bearer(s) in the batches
+# Søre -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Søre"
@@ -254,7 +226,7 @@ LAST	P31	Q101352
 #   Q141318915 Ingeborg Olsdatter Søre Sunde: P734 family name = the item just created
 Q141318915	P734	LAST	S2600	"6000000116644886844"
 
-# Tolleivson -- patronymic, 1 bearer(s) in the batches
+# Tolleivson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Tolleivson"
@@ -268,39 +240,71 @@ LAST	P31	Q110874
 #   Q141336742 Øystein Tolleivson Joa: P5056 patronym or matronym = the item just created
 Q141336742	P5056	LAST	S2600	"6000000005609226806"
 
-# Tormodson -- patronymic, 1 bearer(s) in the batches
+# Wadsberg -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Tormodson"
-LAST	Len	"Tormodson"
-#   set the mul label to "Tormodson"
-LAST	Lmul	"Tormodson"
+#   the item just created: set the en label to "Wadsberg"
+LAST	Len	"Wadsberg"
+#   set the mul label to "Wadsberg"
+LAST	Lmul	"Wadsberg"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141353003 Anna Charlotta Wadsberg: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141353003	P734	LAST	P3831	Q28418670	S2600	"6000000019777641120"
+
+# Bång -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Bång"
+LAST	Len	"Bång"
+#   set the mul label to "Bång"
+LAST	Lmul	"Bång"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
+# Byrelia -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Byrelia"
+LAST	Len	"Byrelia"
+#   set the mul label to "Byrelia"
+LAST	Lmul	"Byrelia"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
+# Eivinsdatter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Eivinsdatter"
+LAST	Len	"Eivinsdatter"
+#   set the mul label to "Eivinsdatter"
+LAST	Lmul	"Eivinsdatter"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q7825922 Tormod
-LAST	P144	Q7825922
-#   P144 based on = Q30088066 Thormod
-LAST	P144	Q30088066
-#   Q141283096 Jon Tormodson Foss: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271445 Tormod Olavsen Foss
-Q141283096	P5056	LAST	P144	Q141271445	S2600	"6000000005607362479"
 
-# 880 more name items are needed and wait for a later
+# 933 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Wadsberg (family), 1 bearer(s)
-#   II (given), 17 bearer(s)
-#   III (given), 12 bearer(s)
-#   Of (given), 9 bearer(s)
-#   IV (given), 8 bearer(s)
-#   Count (given), 5 bearer(s)
-#   of (given), 5 bearer(s)
-#   und (family), 5 bearer(s)
-#   . (family), 4 bearer(s)
-#   V (given), 4 bearer(s)
-#   - (family), 3 bearer(s)
-#   / (family), 3 bearer(s)
-#   ... and 868 more
+#   Ekerman (family), 1 bearer(s)
+#   Ellingsdatr (given), 1 bearer(s)
+#   Endresen (patronymic), 1 bearer(s)
+#   Gulbrandsdatter (patronymic), 1 bearer(s)
+#   Gunbjørnsdatter (patronymic), 1 bearer(s)
+#   Himo (family), 1 bearer(s)
+#   Hoknes (family), 1 bearer(s)
+#   Håvardsdatter (patronymic), 1 bearer(s)
+#   Ingebrigtsen (patronymic), 1 bearer(s)
+#   Iversen (patronymic), 1 bearer(s)
+#   Jørgensdatter (patronymic), 1 bearer(s)
+#   Kamberud (family), 1 bearer(s)
+#   ... and 921 more
 
 
 # ======================================================================
@@ -346,450 +350,894 @@ Q141403363	P460	Q141352780
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 207 edits; 1949 edits held for a later run
-#   across 312 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 405 edits; 1544 edits held for a later run
+#   across 252 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   add a mul alias "Nils Silfverskiöld i Hanborg huset"
-Q141403628	Amul	"Nils Silfverskiöld i Hanborg huset"
-#   add a mul alias "Mons Torgersen Opstad"
-Q141403616	Amul	"Mons Torgersen Opstad"
-#   Q141403611 Marta Reiersdatter Stangeland: add a mul alias "Marta Reiersdatter Vashus"
-Q141403611	Amul	"Marta Reiersdatter Vashus"
-#   add a mul alias "Maria Elisabeth Kullberg"
-Q141403607	Amul	"Maria Elisabeth Kullberg"
-#   Q141403598 Malena Mattiasdatter Njærheim: add a mul alias "Malena Mattiasdatter Fotland"
-Q141403598	Amul	"Malena Mattiasdatter Fotland"
-#   Q141403592 Kirsti Omundsdatter Folkvår: add a mul alias "Kirsti Omundsdatter Ommundsdatter Folkvår"
-Q141403592	Amul	"Kirsti Omundsdatter Ommundsdatter Folkvår"
-#   set the ja label to "ゴルグ"
-Q141403579	Lja	"ゴルグ"
-#   set the zh label to "戈卢格"
-Q141403579	Lzh	"戈卢格"
-#   set the ko label to "괴룩"
-Q141403579	Lko	"괴룩"
-#   Q141403574 Guri Jonsdatter Lunde: add a mul alias "Guri Jonsdatter Tu"
-Q141403574	Amul	"Guri Jonsdatter Tu"
-#   add a mul alias "Gunhild Paalsdtr. Berkeland"
-Q141403573	Amul	"Gunhild Paalsdtr. Berkeland"
-#   add a mul alias "Erik Ommundson Kleppe"
-Q141403569	Amul	"Erik Ommundson Kleppe"
-#   add a mul alias "Elisabeth Martine Anfinnsdatter Skas"
-Q141403564	Amul	"Elisabeth Martine Anfinnsdatter Skas"
-#   Q141403563 Elisabeth Martin: add a mul alias "Elisabeth Fontelia"
-Q141403563	Amul	"Elisabeth Fontelia"
-#   add a mul alias "Elisabet Swebilia"
-Q141403560	Amul	"Elisabet Swebilia"
-#   add a mul alias "Elen Hansdatter"
-Q141403555	Amul	"Elen Hansdatter"
-#   Q141403529 Bror: set the ja label to "ブロル"
-Q141403529	Lja	"ブロル"
-#   set the zh label to "布罗尔"
-Q141403529	Lzh	"布罗尔"
-#   set the ko label to "브로르"
-Q141403529	Lko	"브로르"
-#   add a mul alias "Berit Ormsdatter Bjorland d.e."
-Q141403527	Amul	"Berit Ormsdatter Bjorland d.e."
-#   Q141403524 Belest Bellestson Lauvsnes Jr.: add a mul alias "Belest Bellestson Lauvsnes d.y"
-Q141403524	Amul	"Belest Bellestson Lauvsnes d.y"
-#   Q141403520 Beata Rosina Rosina Rosenstråle: add a mul alias "Beata Rosina Rosina Galle"
-Q141403520	Amul	"Beata Rosina Rosina Galle"
-#   Q141403515 Astrid Helgesdatter Opstad: add a mul alias "Astrid Helgesdatter Hegelstad"
-Q141403515	Amul	"Astrid Helgesdatter Hegelstad"
-#   Q141403507 Anna Toresdatter Risa: add a mul alias "Anna Toresdatter Gudmestad"
-Q141403507	Amul	"Anna Toresdatter Gudmestad"
-#   Q141403498 Anna Helena von Troil: add a mul alias "Anna Helena Troilius"
-Q141403498	Amul	"Anna Helena Troilius"
-#   Q141403485 Ane Kirstine Olsdatter Lura: add a mul alias "Ane Kirstine Olsdatter Heigre"
-Q141403485	Amul	"Ane Kirstine Olsdatter Heigre"
-#   add a mul alias "Andreas"
-Q141403481	Amul	"Andreas"
-#   add a mul alias "Agneta Henriksdotter Paulinus"
-Q141403472	Amul	"Agneta Henriksdotter Paulinus"
-#   Q141381876 Brita: add a mul alias "Brita .."
-Q141381876	Amul	"Brita .."
-#   Q135663209 Niels Nielsen: add a mul alias "Niels Nielsen Kaas"
-Q135663209	Amul	"Niels Nielsen Kaas"
-#   Q109835560 Ingeborg Hedvig Vogt: add a mul alias "Ingeborg Hedvig Vogt"
-Q109835560	Amul	"Ingeborg Hedvig Vogt"
-#   set the ja label to "ヘッダ・フォークト"
-Q109835560	Lja	"ヘッダ・フォークト"
-#   set the zh label to "赫达·沃格特"
-Q109835560	Lzh	"赫达·沃格特"
-#   set the ko label to "헤다 복트"
-Q109835560	Lko	"헤다 복트"
-#   Q5735890 Arvid Ernaldsson Forbus: add a mul alias "Arvid Ernaldsson Forbus"
-Q5735890	Amul	"Arvid Ernaldsson Forbus"
-#   set the mul label to "Arvid Forbus"
-Q5735890	Lmul	"Arvid Forbus"
-#   Q5544629 Stefan Mieszkowic książę: add a mul alias "Stefan Mieszkowic"
-Q5544629	Amul	"Stefan Mieszkowic"
-#   set the en label to "Alonso de Castro"
-Q5493305	Len	"Alonso de Castro"
-#   Q5493305 Afonso de Castro 3º senhor de Castro Verde: set the mul label to "Alonso de Castro"
-Q5493305	Lmul	"Alonso de Castro"
-#   add a mul alias "Afonso de Castro 3º senhor de Castro Verde"
-Q5493305	Amul	"Afonso de Castro 3º senhor de Castro Verde"
-#   set the ja label to "アロンソ・デ・カストロ"
-Q5493305	Lja	"アロンソ・デ・カストロ"
-#   set the zh label to "阿隆索·德·卡斯特罗"
-Q5493305	Lzh	"阿隆索·德·卡斯特罗"
-#   set the ko label to "아론소 데 카스트로"
-Q5493305	Lko	"아론소 데 카스트로"
-#   Q5429645 Faydive de Toulouse: set the mul label to "Faidiva of Toulouse"
-Q5429645	Lmul	"Faidiva of Toulouse"
-#   add a mul alias "Faydive Toulouse"
-Q5429645	Amul	"Faydive Toulouse"
-#   Q5429645: 'Faydive de Toulouse' has no zh/ko label
-#   Q5429645: holds 'フェイディヴァ・ド・トゥールーズ' in ja; ours is 'ファイディヴェ・デ・トゥールーズ'
-#   Q5429645: set the ja label
-Q5429645	Lja	"ファイディヴェ・デ・トゥールーズ"
-#   set the ja label to "ファイディヴァ"
-Q5429645	Lja	"ファイディヴァ"
-#   Q5429645: set the zh label
-Q5429645	Lzh	"法伊迪韦·德·托乌洛乌塞"
-#   set the zh label to "法伊迪瓦"
-Q5429645	Lzh	"法伊迪瓦"
-#   Q5429645: set the ko label
-Q5429645	Lko	"파이디베 데 투루세"
-#   set the ko label to "파이디바"
-Q5429645	Lko	"파이디바"
-#   Q5429464 Statira II: set the mul label to "Stateira"
-Q5429464	Lmul	"Stateira"
-#   add a mul alias "Statira II Princess of Persia"
-Q5429464	Amul	"Statira II Princess of Persia"
-#   Q5429464: holds 'スタテイラ' in ja; ours is 'スタティラ2世'
-#   Q5429464: set the ja label
-Q5429464	Lja	"スタティラ2世"
-#   Q5429464: holds '斯妲特拉二世' in zh; ours is '斯塔蒂拉二世'
-#   Q5429464: set the zh label
-Q5429464	Lzh	"斯塔蒂拉二世"
-#   set the zh label to "斯塔特伊拉"
-Q5429464	Lzh	"斯塔特伊拉"
-#   Q5429464: holds '스타테이라 2세' in ko; ours is '스타티라 2세'
-#   Q5429464: set the ko label
-Q5429464	Lko	"스타티라 2세"
-#   set the ko label to "스타테이라"
-Q5429464	Lko	"스타테이라"
-#   Q5362599 Elizabeth Fiennes-Clinton: set the mul label to "Elizabeth Clinton"
-Q5362599	Lmul	"Elizabeth Clinton"
-#   add a mul alias "Elizabeth Fitzgerald"
-Q5362599	Amul	"Elizabeth Fitzgerald"
-#   Q5362599: 'Elizabeth Fiennes-Clinton' has no ja/zh/ko label
-#   Q5362599: set the ja label
-Q5362599	Lja	"エリザベス・フィエンネスクリントン"
-#   set the ja label to "エリザベス・クリントン"
-Q5362599	Lja	"エリザベス・クリントン"
-#   Q5362599: set the zh label
-Q5362599	Lzh	"伊丽莎白·菲埃内斯克林通"
-#   set the zh label to "伊丽莎白·克林顿"
-Q5362599	Lzh	"伊丽莎白·克林顿"
-#   Q5362599: set the ko label
-Q5362599	Lko	"에리자베트 피엔네스크린톤"
-#   set the ko label to "에리자베트 크린톤"
-Q5362599	Lko	"에리자베트 크린톤"
-#   Q5345401 Edward Stafford Kt.: set the mul label to "Edward Stafford"
-Q5345401	Lmul	"Edward Stafford"
-#   add a mul alias "Edward Stafford Kt."
-Q5345401	Amul	"Edward Stafford Kt."
-#   Q5345401: 'Edward Stafford Kt.' has no zh/ko label
-#   Q5345401: holds 'エドワード・スタッフォード' in ja; ours is 'エドワード・スタッフォード・クト'
-#   Q5345401: set the ja label
-Q5345401	Lja	"エドワード・スタッフォード・クト"
-#   Q5345401: set the zh label
-Q5345401	Lzh	"爱德华·斯塔福德·克特"
-#   set the zh label to "爱德华·斯塔福德"
-Q5345401	Lzh	"爱德华·斯塔福德"
-#   Q5345401: set the ko label
-Q5345401	Lko	"에드와르드 스타포르드 크트"
-#   set the ko label to "에드와르드 스타포르드"
-Q5345401	Lko	"에드와르드 스타포르드"
-#   Q5325617 Eanswythe: set the mul label to "Eanswith"
-Q5325617	Lmul	"Eanswith"
-#   add a mul alias "Eanswythe"
-Q5325617	Amul	"Eanswythe"
-#   Q5325617: 'Eanswythe' has no ja/zh/ko label
-#   Q5325617: set the ja label
-Q5325617	Lja	"エアンスヴィテ"
-#   set the ja label to "エアンスヴィト"
-Q5325617	Lja	"エアンスヴィト"
-#   Q5325617: set the zh label
-Q5325617	Lzh	"埃安斯维特"
-#   set the zh label to "埃安斯维特"
-Q5325617	Lzh	"埃安斯维特"
-#   Q5325617: set the ko label
-Q5325617	Lko	"에안스위테"
-#   set the ko label to "에안스위트"
-Q5325617	Lko	"에안스위트"
-#   Q5290415 Mossen Juan Domingo de Borja y Doncel: set the mul label to "Domingo de Borja"
-Q5290415	Lmul	"Domingo de Borja"
-#   add a mul alias "Mossen Juan Domingo de Borja y Doncel"
-Q5290415	Amul	"Mossen Juan Domingo de Borja y Doncel"
-#   Q5290415: 'Mossen Juan Domingo de Borja y Doncel' has no ja/zh/ko label
-#   Q5290415: set the ja label
-Q5290415	Lja	"モセン・フアン・ドミンゴ・デ・ボルハ・イ・ドンセル"
-#   set the ja label to "ドミンゴ・デ・ボルハ"
-Q5290415	Lja	"ドミンゴ・デ・ボルハ"
-#   Q5290415: set the zh label
-Q5290415	Lzh	"莫森·胡安·多明戈·德·博尔雅·伊·东塞尔"
-#   set the zh label to "多明戈·德·博尔雅"
-Q5290415	Lzh	"多明戈·德·博尔雅"
-#   Q5290415: set the ko label
-Q5290415	Lko	"모센 좐 도미오 데 보르자 이 돈켈"
-#   set the ko label to "도미오 데 보르자"
-Q5290415	Lko	"도미오 데 보르자"
-#   Q5285452 Dimitrije Vukanovic Nemanjić: set the mul label to "Dmitar Nemanjić"
-Q5285452	Lmul	"Dmitar Nemanjić"
-#   add a mul alias "Dimitrije Vukanovic Vukanović"
-Q5285452	Amul	"Dimitrije Vukanovic Vukanović"
-#   Q5096056 Chichimecacihatzin II: set the mul label to "Chichimecacihuatzin II"
-Q5096056	Lmul	"Chichimecacihuatzin II"
-#   add a mul alias "Chichimecacihatzin II"
-Q5096056	Amul	"Chichimecacihatzin II"
-#   Q5096056: 'Chichimecacihatzin II' has no ja/zh/ko label
-#   Q5096056: set the ja label
-Q5096056	Lja	"キキメカシハトジン2世"
-#   set the ja label to "キキメカシフアトジン2世"
-Q5096056	Lja	"キキメカシフアトジン2世"
-#   Q5096056: set the zh label
-Q5096056	Lzh	"基基梅卡西哈特津二世"
-#   set the zh label to "基基梅卡西胡阿特津二世"
-Q5096056	Lzh	"基基梅卡西胡阿特津二世"
-#   Q5096056: set the ko label
-Q5096056	Lko	"치치메카키하친 2세"
-#   set the ko label to "치치메카키화친 2세"
-Q5096056	Lko	"치치메카키화친 2세"
-#   Q5040378: set the ko label
-Q5040378	Lko	"칼 제스페르 벤제류스"
-#   set the ko label to "칼 제스페르 벤제류스"
-Q5040378	Lko	"칼 제스페르 벤제류스"
-#   Q5022209 Callinicus: set the mul label to "Callinicus"
-Q5022209	Lmul	"Callinicus"
-#   Q5022209: 'Callinicus' has no zh/ko label
-#   Q5022209: holds 'カリニコス' in ja; ours is 'カリニクス'
-#   Q5022209: set the ja label
-Q5022209	Lja	"カリニクス"
-#   set the ja label to "カリニクス"
-Q5022209	Lja	"カリニクス"
-#   Q5022209: set the zh label
-Q5022209	Lzh	"卡利尼库斯"
-#   set the zh label to "卡利尼库斯"
-Q5022209	Lzh	"卡利尼库斯"
-#   Q5022209: set the ko label
-Q5022209	Lko	"칼리니쿠스"
-#   set the ko label to "칼리니쿠스"
-Q5022209	Lko	"칼리니쿠스"
-#   Q4993033: set the ko label
-Q4993033	Lko	"칼 구스타프 노르딘"
-#   set the ko label to "칼 구스타프 노르딘"
-Q4993033	Lko	"칼 구스타프 노르딘"
-#   Q4989818: 'Ulrika Eleonora Strömfelt' has no ja/zh/ko label
-#   Q4989818: set the ja label
-Q4989818	Lja	"ウルリカ・エレオノーラ・ストロムフェルト"
-#   Q4989818: set the zh label
-Q4989818	Lzh	"乌尔里卡·埃莱奥诺拉·斯特罗姆费尔特"
-#   Q4989818: set the ko label
-Q4989818	Lko	"울리카 에레오노라 스트룀펠트"
-#   Q4989142: set the ko label
-Q4989142	Lko	"에바 헤레나 뢰웬"
-#   set the ko label to "에바 헤레나 뢰웬"
-Q4989142	Lko	"에바 헤레나 뢰웬"
-#   Q4988935: 'Brita Hedvig Wijnbladh' has no ja/zh/ko label
-#   Q4988935: set the ja label
-Q4988935	Lja	"ブリッタ・ヘドヴィグ・ヴィインブラド"
-#   Q4988935: set the zh label
-Q4988935	Lzh	"布里塔·海德维格·维伊恩布拉德"
-#   Q4988935: set the ko label
-Q4988935	Lko	"브리타 헤드빅 위즌브라드흐"
-#   set the ja label to "ベネディクタ"
-Q4981287	Lja	"ベネディクタ"
-#   set the zh label to "贝内迪克塔"
-Q4981287	Lzh	"贝内迪克塔"
-#   set the ko label to "베네디크타"
-Q4981287	Lko	"베네디크타"
-#   Q4973002: 'Christina Charlotta Piper' has no ja/zh/ko label
-#   Q4973002: set the ja label
-Q4973002	Lja	"クリスティーナ・カルロッタ・パイパー"
-#   Q4973002: set the zh label
-Q4973002	Lzh	"克里斯蒂娜·卡尔洛塔·派珀"
-#   Q4973002: set the ko label
-Q4973002	Lko	"크리스티나 차로타 피페르"
-#   Q4972997: 'Christina Piper' has no ko label
-#   Q4972997: set the ko label
-Q4972997	Lko	"크리스티나 피페르"
-#   set the ko label to "크리스티나 피페르"
-Q4972997	Lko	"크리스티나 피페르"
-#   Q4971843 Papia Poppée Poppa de Enver: set the mul label to "Papia of Envermeu"
-Q4971843	Lmul	"Papia of Envermeu"
-#   add a mul alias "Papia Poppée Poppa de Enver Concubine"
-Q4971843	Amul	"Papia Poppée Poppa de Enver Concubine"
-#   Q4971843: 'Papia Poppée Poppa de Enver' has no ja/zh/ko label
-#   Q4971843: set the ja label
-Q4971843	Lja	"パピア・ポッペエ・ポッパ・デ・エンヴェル"
-#   set the ja label to "パピア"
-Q4971843	Lja	"パピア"
-#   Q4971843: set the zh label
-Q4971843	Lzh	"帕皮阿·波佩埃·波帕·德·恩韦尔"
-#   set the zh label to "帕皮阿"
-Q4971843	Lzh	"帕皮阿"
-#   Q4971843: set the ko label
-Q4971843	Lko	"파피아 포페에 포파 데 엔베르"
-#   set the ko label to "파피아"
-Q4971843	Lko	"파피아"
-#   Q4958315 Abbedissa Katarina Svantepolksdotter: set the mul label to "Katarina Svantepolksdotter"
-Q4958315	Lmul	"Katarina Svantepolksdotter"
-#   add a mul alias "Abbedissa Katarina Svantepolksdotter"
-Q4958315	Amul	"Abbedissa Katarina Svantepolksdotter"
-#   Q4958315: 'Abbedissa Katarina Svantepolksdotter' has no ja/zh/ko label
-#   Q4958315: set the ja label
-Q4958315	Lja	"アッベディッサ・カタリーナ・スヴァンテポルクスドッテル"
-#   set the ja label to "カタリーナ・スヴァンテポルクスドッテル"
-Q4958315	Lja	"カタリーナ・スヴァンテポルクスドッテル"
-#   Q4958315: set the zh label
-Q4958315	Lzh	"阿贝迪萨·卡塔里纳·斯万特波尔克斯多特"
-#   set the zh label to "卡塔里纳·斯万特波尔克斯多特"
-Q4958315	Lzh	"卡塔里纳·斯万特波尔克斯多特"
-#   Q4958315: set the ko label
-Q4958315	Lko	"아베디사 카타리나 스반테폴크스도테르"
-#   set the ko label to "카타리나 스반테폴크스도테르"
-Q4958315	Lko	"카타리나 스반테폴크스도테르"
-#   Q4955696 Ingeborg Knutsdotter (Aspenäs): set the mul label to "Ingeborg Knutsdotter"
-Q4955696	Lmul	"Ingeborg Knutsdotter"
-#   add a mul alias "Ingeborg Knutsdotter (Aspenäs)"
-Q4955696	Amul	"Ingeborg Knutsdotter (Aspenäs)"
-#   Q4955696: 'Ingeborg Knutsdotter (Aspenäs)' has no ja/zh/ko label
-#   Q4955696: set the ja label
-Q4955696	Lja	"インゲボルグ・クヌトスドッテル・アスペネス"
-#   set the ja label to "インゲボルグ・クヌトスドッテル"
-Q4955696	Lja	"インゲボルグ・クヌトスドッテル"
-#   Q4955696: set the zh label
-Q4955696	Lzh	"英格堡·克努特斯多特·阿斯佩内斯"
-#   set the zh label to "英格堡·克努特斯多特"
-Q4955696	Lzh	"英格堡·克努特斯多特"
-#   Q4955696: set the ko label
-Q4955696	Lko	"이에보륵 크누트스도테르 아스페네스"
-#   set the ko label to "이에보륵 크누트스도테르"
-Q4955696	Lko	"이에보륵 크누트스도테르"
-#   Q4953277: 'Margareta Charlotta Heijkenskjöld' has no ja/zh/ko label
-#   Q4953277: set the ja label
-Q4953277	Lja	"マルガレータ・カルロッタ・ヘイイケンショルド"
-#   Q4953277: set the zh label
-Q4953277	Lzh	"瑪格麗塔·卡尔洛塔·赫伊伊肯肖尔德"
-#   Q4953277: set the ko label
-Q4953277	Lko	"마르가레타 차로타 헤이즈켄쇨드"
-#   set the ja label to "カルロッタ・アウローラ・デ・ギア"
-Q4944366	Lja	"カルロッタ・アウローラ・デ・ギア"
-#   set the ko label to "차로타 아우로라 데 기르"
-Q4944366	Lko	"차로타 아우로라 데 기르"
-#   Q4942240 Catherine de Luxembourg: set the mul label to "Catherine of Luxembourg-Saint-Pol"
-Q4942240	Lmul	"Catherine of Luxembourg-Saint-Pol"
-#   add a mul alias "Catherine de Luxembourg"
-Q4942240	Amul	"Catherine de Luxembourg"
-#   Q4942240: 'Catherine de Luxembourg' has no ja/ko label
-#   Q4942240: set the ja label
-Q4942240	Lja	"キャサリン・デ・リュクサンブール"
-#   set the ja label to "キャサリン"
-Q4942240	Lja	"キャサリン"
-#   Q4942240: holds '盧森堡─聖波的凱瑟琳' in zh; ours is '凯瑟琳·德·卢克斯埃姆博乌尔格'
-#   Q4942240: set the zh label
-Q4942240	Lzh	"凯瑟琳·德·卢克斯埃姆博乌尔格"
-#   set the zh label to "凯瑟琳"
-Q4942240	Lzh	"凯瑟琳"
-#   Q4942240: set the ko label
-Q4942240	Lko	"카테리네 데 루그셈부륵"
-#   set the ko label to "카테리네"
-Q4942240	Lko	"카테리네"
-#   Q4938400: 'Christina Charlotta Cronhielm af Hakunge' has no ja/zh/ko label
-#   Q4938400: set the ja label
-Q4938400	Lja	"クリスティーナ・カルロッタ・クロンヒエルム・アフ・ハクンゲ"
-#   set the ja label to "カルロッタ・バーガー"
-Q4938400	Lja	"カルロッタ・バーガー"
-#   Q4938400: set the zh label
-Q4938400	Lzh	"克里斯蒂娜·卡尔洛塔·克龙希埃尔姆·阿夫·哈昆盖"
-#   Q4938400: set the ko label
-Q4938400	Lko	"크리스티나 차로타 크론히엘므 아프 하쿠에"
-#   set the ko label to "차로타 베르게르"
-Q4938400	Lko	"차로타 베르게르"
-#   Q4894932 Ramon IV de Pallars Jussà: set the mul label to "Raymond IV, Count of Pallars Jussà"
-Q4894932	Lmul	"Raymond IV, Count of Pallars Jussà"
-#   add a mul alias "Ramon IV de Pallars Jussà comte de Pallars Jussà"
-Q4894932	Amul	"Ramon IV de Pallars Jussà comte de Pallars Jussà"
-#   Q4894932: 'Ramon IV de Pallars Jussà' has no ja/zh/ko label
-#   Q4894932: set the ja label
-Q4894932	Lja	"ラモン4世・デ・パラルス・ユッサ"
-#   set the ja label to "レイモンド4世"
-Q4894932	Lja	"レイモンド4世"
-#   Q4894932: set the zh label
-Q4894932	Lzh	"拉蒙四世·德·帕拉尔斯·尤萨"
-#   set the zh label to "雷蒙四世"
-Q4894932	Lzh	"雷蒙四世"
-#   Q4894932: set the ko label
-Q4894932	Lko	"라몬 4세 데 팔라르스 주사"
-#   set the ko label to "라이몬드 4세"
-Q4894932	Lko	"라이몬드 4세"
-#   Q4893846 Jose Bernardino Fernández de Velasco y Mendoza I duque de Frías: set the mul label to "Bernardino Fernández de Velasco y Mendoza"
-Q4893846	Lmul	"Bernardino Fernández de Velasco y Mendoza"
-#   add a mul alias "Jose Bernardino Fernández de Velasco y Mendoza I duque de Frías"
-Q4893846	Amul	"Jose Bernardino Fernández de Velasco y Mendoza I duque de Frías"
-#   set the ja label to "ベルナルディーノ・フェルナンデス・デ・ベラスコ・イ・メンドーサ"
-Q4893846	Lja	"ベルナルディーノ・フェルナンデス・デ・ベラスコ・イ・メンドーサ"
-#   set the zh label to "贝尔纳尔迪诺·费尔南德斯·德·韦拉斯科·伊·门多萨"
-Q4893846	Lzh	"贝尔纳尔迪诺·费尔南德斯·德·韦拉斯科·伊·门多萨"
-#   set the ko label to "베르나르디노 페르난데즈 데 베라스코 이 멘도자"
-Q4893846	Lko	"베르나르디노 페르난데즈 데 베라스코 이 멘도자"
-#   Q4832332 Willem van Beieren-Schagen: set the mul label to "Willem I van Beieren-Burghorn"
-Q4832332	Lmul	"Willem I van Beieren-Burghorn"
-#   add a mul alias "Willem van Beieren-Schagen"
-Q4832332	Amul	"Willem van Beieren-Schagen"
-#   Q4832332: 'Willem van Beieren-Schagen' has no ja/zh/ko label
-#   Q4832332: set the ja label
-Q4832332	Lja	"ウィレム・ヴァン・ベイエレンシャゲン"
-#   set the ja label to "ウィレム・I・ヴァン・ベイエレンブルグホルン"
-Q4832332	Lja	"ウィレム・I・ヴァン・ベイエレンブルグホルン"
-#   Q4832332: set the zh label
-Q4832332	Lzh	"威廉·万·贝伊埃伦沙根"
-#   set the zh label to "威廉·I·万·贝伊埃伦布尔格霍尔恩"
-Q4832332	Lzh	"威廉·I·万·贝伊埃伦布尔格霍尔恩"
-#   Q4832332: set the ko label
-Q4832332	Lko	"윌렘 반 베이에렌사겐"
-#   set the ko label to "윌렘 I 반 베이에렌부르고른"
-Q4832332	Lko	"윌렘 I 반 베이에렌부르고른"
-#   Q4819209 Aubrey [IV] de Vere Oxford: set the mul label to "Aubrey de Vere"
-Q4819209	Lmul	"Aubrey de Vere"
-#   add a mul alias "Aubrey [IV] (Audley) de Vere Oxford"
-Q4819209	Amul	"Aubrey [IV] (Audley) de Vere Oxford"
-#   set the ja label to "オーブリー・デ・ヴィアー"
-Q4819209	Lja	"オーブリー・デ・ヴィアー"
-#   set the zh label to "奥伯利·德·维尔"
-Q4819209	Lzh	"奥伯利·德·维尔"
-#   set the ko label to "아웁레이 데 베레"
-Q4819209	Lko	"아웁레이 데 베레"
-#   Q4730963 Aisha Al-Taymi: add a mul alias "ʿĀʾiša"
-Q4730963	Amul	"ʿĀʾiša"
-#   set the mul label to "Aisha"
-Q4730963	Lmul	"Aisha"
-#   add a mul alias "Aisha Al-Taymi"
-Q4730963	Amul	"Aisha Al-Taymi"
-#   set the ja label to "アイシャ"
-Q4730963	Lja	"アイシャ"
-#   set the zh label to "艾斯哈"
-Q4730963	Lzh	"艾斯哈"
-#   set the ko label to "아이사"
-Q4730963	Lko	"아이사"
-#   Q4681828 Adelajda Kazimierzówna: set the mul label to "Adelaide of Poland"
-Q4681828	Lmul	"Adelaide of Poland"
-#   Q4681828: 'Adelajda Kazimierzówna' has no ja/zh/ko label
-#   Q4681828: set the ja label
-Q4681828	Lja	"アデライダ・カジミエルゾヴナ"
-#   set the ja label to "ポーランドのアデレイド"
-Q4681828	Lja	"ポーランドのアデレイド"
-#   Q4681828: set the zh label
-Q4681828	Lzh	"阿德拉伊达·卡吉米埃尔佐夫纳"
-#   set the zh label to "波兰的阿德莱德"
-Q4681828	Lzh	"波兰的阿德莱德"
-#   Q4681828: set the ko label
-Q4681828	Lko	"아데라즈다 카지미에조우나"
-#   set the ko label to "폴란드의 아데라이데"
-Q4681828	Lko	"폴란드의 아데라이데"
+#   Q4666520 Abel Abelsøn af Danmark: set the mul label to "Abel, Lord of Langeland"
+Q4666520	Lmul	"Abel, Lord of Langeland"
+#   add a mul alias "Abel Abelsøn af Danmark til Tranekær"
+Q4666520	Amul	"Abel Abelsøn af Danmark til Tranekær"
+#   Q4666520: 'Abel Abelsøn af Danmark' has no ja/zh/ko label
+#   Q4666520: set the ja label
+Q4666520	Lja	"アベル・アベルソン・アフ・ダンマーク"
+#   set the ja label to "アベル"
+Q4666520	Lja	"アベル"
+#   Q4666520: set the zh label
+Q4666520	Lzh	"阿贝尔·阿贝尔松·阿夫·丹马尔克"
+#   set the zh label to "阿贝尔"
+Q4666520	Lzh	"阿贝尔"
+#   Q4666520: set the ko label
+Q4666520	Lko	"아벨 아벨쇤 아프 단마르크"
+#   set the ko label to "아벨"
+Q4666520	Lko	"아벨"
+#   Q4495341 Humphrey Plantagenet: set the mul label to "Humphrey de Buckingham"
+Q4495341	Lmul	"Humphrey de Buckingham"
+#   add a mul alias "Humphrey Plantagenet 2nd Earl of Buckingham"
+Q4495341	Amul	"Humphrey Plantagenet 2nd Earl of Buckingham"
+#   Q4495341: 'Humphrey Plantagenet' has no zh/ko label
+#   Q4495341: holds 'ハンフリー・プランタジネット (第2代バッキンガム伯)' in ja; ours is 'ハンフリー・プランタジネット'
+#   Q4495341: set the ja label
+Q4495341	Lja	"ハンフリー・プランタジネット"
+#   set the ja label to "ハンフリー・デ・バッキンガム"
+Q4495341	Lja	"ハンフリー・デ・バッキンガム"
+#   Q4495341: set the zh label
+Q4495341	Lzh	"汉弗莱·普兰塔盖内特"
+#   set the zh label to "汉弗莱·德·白金汉"
+Q4495341	Lzh	"汉弗莱·德·白金汉"
+#   Q4495341: set the ko label
+Q4495341	Lko	"훔프레이 프란타게네트"
+#   set the ko label to "훔프레이 데 부킹함"
+Q4495341	Lko	"훔프레이 데 부킹함"
+#   Q4449521 Aka Begi Amir Timur Tamerlane: set the mul label to "Aka Begi"
+Q4449521	Lmul	"Aka Begi"
+#   add a mul alias "Aka Begi Amir Timur Tamerlane"
+Q4449521	Amul	"Aka Begi Amir Timur Tamerlane"
+#   Q4449521: 'Aka Begi Amir Timur "Tamerlane"' has no ja/zh/ko label
+#   Q4449521: set the ja label
+Q4449521	Lja	"アカ・ベギ・アミール・ティムール・タメルラネ"
+#   set the ja label to "アカ・ベギ"
+Q4449521	Lja	"アカ・ベギ"
+#   Q4449521: set the zh label
+Q4449521	Lzh	"阿卡·贝吉·阿米尔·蒂穆尔·塔梅尔拉内"
+#   set the zh label to "阿卡·贝吉"
+Q4449521	Lzh	"阿卡·贝吉"
+#   Q4449521: set the ko label
+Q4449521	Lko	"아카 베기 아미르 티무르 타메라네"
+#   set the ko label to "아카 베기"
+Q4449521	Lko	"아카 베기"
+#   Q4387970 Radulf bisbe d'Urgell: set the mul label to "Radulf of Barcelona"
+Q4387970	Lmul	"Radulf of Barcelona"
+#   add a mul alias "Radulf bisbe d'Urgell"
+Q4387970	Amul	"Radulf bisbe d'Urgell"
+#   Q4387970: "Radulf bisbe d'Urgell" has no ja/zh/ko label
+#   Q4387970: set the ja label
+Q4387970	Lja	"ラドルフ・ビスベ・ドウルゲル"
+#   set the ja label to "ラドルフ"
+Q4387970	Lja	"ラドルフ"
+#   Q4387970: set the zh label
+Q4387970	Lzh	"拉杜尔夫·比斯贝·德乌尔盖尔"
+#   set the zh label to "拉杜尔夫"
+Q4387970	Lzh	"拉杜尔夫"
+#   Q4387970: set the ko label
+Q4387970	Lko	"라둘프 비스베 두르겔"
+#   set the ko label to "라둘프"
+Q4387970	Lko	"라둘프"
+#   Q4368928 Eadwin: set the mul label to "Edwin"
+Q4368928	Lmul	"Edwin"
+#   add a mul alias "Eadwin"
+Q4368928	Amul	"Eadwin"
+#   Q4368928: 'Eadwin' has no ja/ko label
+#   Q4368928: set the ja label
+Q4368928	Lja	"エアドヴィン"
+#   set the ja label to "エドウィン"
+Q4368928	Lja	"エドウィン"
+#   Q4368928: holds '埃德温' in zh; ours is '埃阿德文'
+#   Q4368928: set the zh label
+Q4368928	Lzh	"埃阿德文"
+#   Q4368928: set the ko label
+Q4368928	Lko	"에아드윈"
+#   set the ko label to "에드윈"
+Q4368928	Lko	"에드윈"
+#   set the nl label to "Edwin son of Edward I"
+Q4368928	Lnl	"Edwin son of Edward I"
+#   Q4250171 Margaretha Ratzeburg: set the mul label to "Margaretha von Schlawe"
+Q4250171	Lmul	"Margaretha von Schlawe"
+#   Q4250171: 'Margaretha Ratzeburg' has no ja/zh/ko label
+#   Q4250171: set the ja label
+Q4250171	Lja	"マルガレータ・ラトゼブルグ"
+#   set the ja label to "マルガレータ・ヴォン・スクラヴェ"
+Q4250171	Lja	"マルガレータ・ヴォン・スクラヴェ"
+#   Q4250171: set the zh label
+Q4250171	Lzh	"马尔加雷塔·拉特泽布尔格"
+#   set the zh label to "马尔加雷塔·翁·斯克拉韦"
+Q4250171	Lzh	"马尔加雷塔·翁·斯克拉韦"
+#   Q4250171: set the ko label
+Q4250171	Lko	"마르가레타 라체부륵"
+#   set the ko label to "마르가레타 본 스라웨"
+Q4250171	Lko	"마르가레타 본 스라웨"
+#   Q4247739: set the ja label to "イヴァン・シメオノヴィク・クラキン"
+Q4247739	Lja	"イヴァン・シメオノヴィク・クラキン"
+#   set the zh label to "伊万·西梅奥诺维克·库拉金"
+Q4247739	Lzh	"伊万·西梅奥诺维克·库拉金"
+#   set the ko label to "이반 시메오노비츠 쿠라킨"
+Q4247739	Lko	"이반 시메오노비츠 쿠라킨"
+#   Q4165342 Muhsin Al-Hashemi: set the mul label to "Muhsin ibn Ali"
+Q4165342	Lmul	"Muhsin ibn Ali"
+#   add a mul alias "Muhsin Al-Hashemi"
+Q4165342	Amul	"Muhsin Al-Hashemi"
+#   Q4165342: 'Muhsin Al-Hashemi' has no ko label
+#   Q4165342: holds 'ムフシン・イブン・アリー' in ja; ours is 'ムシン・アルハスヘミ'
+#   Q4165342: set the ja label
+Q4165342	Lja	"ムシン・アルハスヘミ"
+#   Q4165342: holds '穆赫辛·本·阿里' in zh; ours is '穆辛·阿尔哈斯赫米'
+#   Q4165342: set the zh label
+Q4165342	Lzh	"穆辛·阿尔哈斯赫米"
+#   Q4165342: set the ko label
+Q4165342	Lko	"무흐신 알하세미"
+#   Q4130535 Viačeslav Jaroslavič Smolensko kun: set the mul label to "Vyacheslav Yaroslavich"
+Q4130535	Lmul	"Vyacheslav Yaroslavich"
+#   add a mul alias "Viačeslav Jaroslavič Smolensko kun"
+Q4130535	Amul	"Viačeslav Jaroslavič Smolensko kun"
+#   set the ko label to "뱌체스랍 야로스라비츠"
+Q4130535	Lko	"뱌체스랍 야로스라비츠"
+#   Q4127288 Vsevolod Sviatoslavich: set the mul label to "Vsevolod I Svyatoslavich"
+Q4127288	Lmul	"Vsevolod I Svyatoslavich"
+#   add a mul alias "Vsevolod Sviatoslavich of Kursk"
+Q4127288	Amul	"Vsevolod Sviatoslavich of Kursk"
+#   set the ja label to "フセヴォロド・I・スヴャトスラヴィチ"
+Q4127288	Lja	"フセヴォロド・I・スヴャトスラヴィチ"
+#   Q4127288: 'Vsevolod Sviatoslavich' has no zh/ko label
+#   Q4127288: set the zh label
+Q4127288	Lzh	"弗谢沃洛德·斯维阿托斯拉维克"
+#   set the zh label to "弗谢沃洛德·I·斯维阿托斯拉维克"
+Q4127288	Lzh	"弗谢沃洛德·I·斯维阿托斯拉维克"
+#   Q4127288: set the ko label
+Q4127288	Lko	"브세보로드 스비아토스라비츠"
+#   set the ko label to "브세보로드 I 스뱌토스라비츠"
+Q4127288	Lko	"브세보로드 I 스뱌토스라비츠"
+#   Q4113051 Vladimir Konstantinovich: set the mul label to "Vladimir Konstantinovich"
+Q4113051	Lmul	"Vladimir Konstantinovich"
+#   add a mul alias "Vladimir Konstantinovich of Uglich"
+Q4113051	Amul	"Vladimir Konstantinovich of Uglich"
+#   Q4113051: 'Vladimir Konstantinovich' has no zh/ko label
+#   Q4113051: set the zh label
+Q4113051	Lzh	"弗拉基米尔·康斯坦丁诺维奇"
+#   set the zh label to "弗拉基米尔·康斯坦丁诺维奇"
+Q4113051	Lzh	"弗拉基米尔·康斯坦丁诺维奇"
+#   Q4113051: set the ko label
+Q4113051	Lko	"브라디미르 콘스탄티노비츠"
+#   set the ko label to "브라디미르 콘스탄티노비츠"
+Q4113051	Lko	"브라디미르 콘스탄티노비츠"
+#   Q4104407 Vasily Alexandrovich: set the mul label to "Vassili Aleksandrovitch"
+Q4104407	Lmul	"Vassili Aleksandrovitch"
+#   add a mul alias "Vasily Alexandrovich of Novgorod"
+Q4104407	Amul	"Vasily Alexandrovich of Novgorod"
+#   Q4104407: 'Vasily Alexandrovich' has no ko label
+#   Q4104407: holds 'ヴァシリー・アレクサンドロヴィチ (ノヴゴロド公)' in ja; ours is 'ヴァシーリー・アレクサンドロヴィチ'
+#   Q4104407: set the ja label
+Q4104407	Lja	"ヴァシーリー・アレクサンドロヴィチ"
+#   set the ja label to "ヴァッシリ・アレクサンドロヴィトク"
+Q4104407	Lja	"ヴァッシリ・アレクサンドロヴィトク"
+#   Q4104407: holds '瓦西里·亚历山德罗维奇' in zh; ours is '瓦西里·阿莱克斯安德罗维克'
+#   Q4104407: set the zh label
+Q4104407	Lzh	"瓦西里·阿莱克斯安德罗维克"
+#   set the zh label to "瓦西利·阿莱克桑德罗维特克"
+Q4104407	Lzh	"瓦西利·阿莱克桑德罗维特克"
+#   Q4104407: set the ko label
+Q4104407	Lko	"바시리 아레그산드로비츠"
+#   set the ko label to "바시리 아레크산드로비트츠"
+Q4104407	Lko	"바시리 아레크산드로비트츠"
+#   Q4065823 Andrey Vsevolodovich: set the mul label to "Andrei Vsevolodovich"
+Q4065823	Lmul	"Andrei Vsevolodovich"
+#   add a mul alias "Andrey Vsevolodovich Rurikid"
+Q4065823	Amul	"Andrey Vsevolodovich Rurikid"
+#   Q4065823: 'Andrey Vsevolodovich' has no ko label
+#   Q4065823: holds '安德烈二世' in zh; ours is '安德烈·弗谢沃洛多维奇'
+#   Q4065823: set the zh label
+Q4065823	Lzh	"安德烈·弗谢沃洛多维奇"
+#   set the zh label to "安德烈·弗谢沃洛多维奇"
+Q4065823	Lzh	"安德烈·弗谢沃洛多维奇"
+#   Q4065823: set the ko label
+Q4065823	Lko	"안드레이 브세보로도비츠"
+#   set the ko label to "안드레이 브세보로도비츠"
+Q4065823	Lko	"안드레이 브세보로도비츠"
+#   Q4020195 William de Beaumont: set the mul label to "William de Beaumont"
+Q4020195	Lmul	"William de Beaumont"
+#   add a mul alias "William de Newburgh 3rd Earl of Warwick"
+Q4020195	Amul	"William de Newburgh 3rd Earl of Warwick"
+#   Q4020195: 'William de Beaumont' has no zh/ko label
+#   Q4020195: holds 'ウィリアム・ド・ボーモント' in ja; ours is 'ウィリアム・デ・ボーモント'
+#   Q4020195: set the ja label
+Q4020195	Lja	"ウィリアム・デ・ボーモント"
+#   set the ja label to "ウィリアム・デ・ボーモント"
+Q4020195	Lja	"ウィリアム・デ・ボーモント"
+#   Q4020195: set the zh label
+Q4020195	Lzh	"威廉·德·博蒙特"
+#   set the zh label to "威廉·德·博蒙特"
+Q4020195	Lzh	"威廉·德·博蒙特"
+#   Q4020195: set the ko label
+Q4020195	Lko	"윌리암 데 베아우몬트"
+#   set the ko label to "윌리암 데 베아우몬트"
+Q4020195	Lko	"윌리암 데 베아우몬트"
+#   Q3946660: 'Samuel af Ugglas' has no ja/zh/ko label
+#   Q3946660: set the ja label
+Q3946660	Lja	"サミュエル・アフ・ウッグラス"
+#   set the ja label to "サミュエル・アフ・ウッグラス"
+Q3946660	Lja	"サミュエル・アフ・ウッグラス"
+#   Q3880823 Oddon de Savoie: set the mul label to "Oddone III"
+Q3880823	Lmul	"Oddone III"
+#   add a mul alias "Oddon de Savoie"
+Q3880823	Amul	"Oddon de Savoie"
+#   Q3880823: 'Oddon de Savoie' has no ja/zh/ko label
+#   Q3880823: set the ja label
+Q3880823	Lja	"オッドン・デ・サヴォイエ"
+#   set the ja label to "オッドネ3世"
+Q3880823	Lja	"オッドネ3世"
+#   Q3880823: set the zh label
+Q3880823	Lzh	"奥东·德·萨沃伊埃"
+#   set the zh label to "奥多内三世"
+Q3880823	Lzh	"奥多内三世"
+#   Q3880823: set the ko label
+Q3880823	Lko	"오돈 데 사보이에"
+#   set the ko label to "오도네 3세"
+Q3880823	Lko	"오도네 3세"
+#   Q3879462 Nunila Iñiguez de Pamplona: set the mul label to "Nunilona Eneko"
+Q3879462	Lmul	"Nunilona Eneko"
+#   add a mul alias "Nunila Iñiguez de Pamplona"
+Q3879462	Amul	"Nunila Iñiguez de Pamplona"
+#   set the ja label to "ヌニロナ・エネコ"
+Q3879462	Lja	"ヌニロナ・エネコ"
+#   set the zh label to "努尼洛纳·埃内科"
+Q3879462	Lzh	"努尼洛纳·埃内科"
+#   set the ko label to "누니로나 에네코"
+Q3879462	Lko	"누니로나 에네코"
+#   Q3769176 Judith di Bassavilla: set the mul label to "Judith de Hauteville"
+Q3769176	Lmul	"Judith de Hauteville"
+#   add a mul alias "Judith de Hauteville of Sicily"
+Q3769176	Amul	"Judith de Hauteville of Sicily"
+#   Q3769176: 'Judith di Bassavilla' has no ja/zh/ko label
+#   Q3769176: set the ja label
+Q3769176	Lja	"ジュディス・ディ・バッサヴィラ"
+#   set the ja label to "ジュディス・デ・ハウテヴィレ"
+Q3769176	Lja	"ジュディス・デ・ハウテヴィレ"
+#   Q3769176: set the zh label
+Q3769176	Lzh	"朱迪斯·迪·巴萨维拉"
+#   set the zh label to "朱迪斯·德·哈乌特维莱"
+Q3769176	Lzh	"朱迪斯·德·哈乌特维莱"
+#   Q3769176: set the ko label
+Q3769176	Lko	"주디트 디 바사빌라"
+#   set the ko label to "주디트 데 하우테빌레"
+Q3769176	Lko	"주디트 데 하우테빌레"
+#   Q3768495 Giovanni di Piero de' Medici: set the mul label to "Giovanni de' Medici"
+Q3768495	Lmul	"Giovanni de' Medici"
+#   Q3768495: "Giovanni di Piero de' Medici" has no ja/zh/ko label
+#   Q3768495: set the ja label
+Q3768495	Lja	"ジョヴァンニ・ディ・ピエロ・デ・メディチ"
+#   set the ja label to "ジョヴァンニ・デ・メディチ"
+Q3768495	Lja	"ジョヴァンニ・デ・メディチ"
+#   Q3768495: set the zh label
+Q3768495	Lzh	"乔瓦尼·迪·皮耶罗·德·美第奇"
+#   set the zh label to "乔瓦尼·德·美第奇"
+Q3768495	Lzh	"乔瓦尼·德·美第奇"
+#   Q3768495: set the ko label
+Q3768495	Lko	"기오반니 디 피에로 데 메디키"
+#   set the ko label to "기오반니 데 메디키"
+Q3768495	Lko	"기오반니 데 메디키"
+#   Q3768239 Giovanni Tommaso Thomas Moncada: set the mul label to "Giovanni Tommaso Moncada"
+Q3768239	Lmul	"Giovanni Tommaso Moncada"
+#   add a mul alias "Giovanni Tommaso Thomas Moncada"
+Q3768239	Amul	"Giovanni Tommaso Thomas Moncada"
+#   Q3768239: 'Giovanni Tommaso Thomas Moncada' has no ja/zh/ko label
+#   Q3768239: set the ja label
+Q3768239	Lja	"ジョヴァンニ・トンマーゾ・トマス・モンカダ"
+#   set the ja label to "ジョヴァンニ・トンマーゾ・モンカダ"
+Q3768239	Lja	"ジョヴァンニ・トンマーゾ・モンカダ"
+#   Q3768239: set the zh label
+Q3768239	Lzh	"乔瓦尼·托马索·托马斯·蒙卡达"
+#   set the zh label to "乔瓦尼·托马索·蒙卡达"
+Q3768239	Lzh	"乔瓦尼·托马索·蒙卡达"
+#   Q3768239: set the ko label
+Q3768239	Lko	"기오반니 톰마소 토마스 몬카다"
+#   set the ko label to "기오반니 톰마소 몬카다"
+Q3768239	Lko	"기오반니 톰마소 몬카다"
+#   Q3762132 Giacomo Grimaldi Durazzo LXIX doge di Genova: set the mul label to "Giacomo Grimaldi Durazzo"
+Q3762132	Lmul	"Giacomo Grimaldi Durazzo"
+#   add a mul alias "Giacomo Grimaldi Durazzo LXIX doge di Genova"
+Q3762132	Amul	"Giacomo Grimaldi Durazzo LXIX doge di Genova"
+#   Q3762132: 'Giacomo Grimaldi Durazzo LXIX doge di Genova' has no ja/zh/ko label
+#   Q3762132: set the ja label
+Q3762132	Lja	"ジャコモ・グリマルディ・ドゥラッツォ69世・ドゲ・ディ・ゲノヴァ"
+#   set the ja label to "ジャコモ・グリマルディ・ドゥラッツォ"
+Q3762132	Lja	"ジャコモ・グリマルディ・ドゥラッツォ"
+#   Q3762132: set the zh label
+Q3762132	Lzh	"贾科莫·格里马尔迪·杜拉佐六十九世·多盖·迪·盖诺瓦"
+#   set the zh label to "贾科莫·格里马尔迪·杜拉佐"
+Q3762132	Lzh	"贾科莫·格里马尔迪·杜拉佐"
+#   Q3762132: set the ko label
+Q3762132	Lko	"기아코모 그리말디 두라조 69세 도게 디 게노바"
+#   set the ko label to "기아코모 그리말디 두라조"
+Q3762132	Lko	"기아코모 그리말디 두라조"
+#   Q3744974 Filiberta di Savoia: set the mul label to "Filiberta di Savoia"
+Q3744974	Lmul	"Filiberta di Savoia"
+#   Q3744974: 'Filiberta di Savoia' has no zh/ko label
+#   Q3744974: set the zh label
+Q3744974	Lzh	"菲利贝尔塔·迪·萨沃伊阿"
+#   set the zh label to "菲利贝尔塔·迪·萨沃伊阿"
+Q3744974	Lzh	"菲利贝尔塔·迪·萨沃伊阿"
+#   Q3744974: set the ko label
+Q3744974	Lko	"피리베르타 디 사보이아"
+#   set the ko label to "피리베르타 디 사보이아"
+Q3744974	Lko	"피리베르타 디 사보이아"
+#   Q3742711 Fernando de Castilla y León: set the mul label to "Ferdinando di Castiglia"
+Q3742711	Lmul	"Ferdinando di Castiglia"
+#   add a mul alias "Fernando de Castilla y León"
+Q3742711	Amul	"Fernando de Castilla y León"
+#   Q3742711: 'Fernando de Castilla y León' has no ja/zh/ko label
+#   Q3742711: set the ja label
+Q3742711	Lja	"フェルナンド・デ・カスティーリャ・イ・レオン"
+#   set the ja label to "フェルディナンド・ディ・カスティグリア"
+Q3742711	Lja	"フェルディナンド・ディ・カスティグリア"
+#   Q3742711: set the zh label
+Q3742711	Lzh	"费尔南多·德·卡斯蒂拉·伊·莱昂"
+#   set the zh label to "斐迪南多·迪·卡斯蒂格利阿"
+Q3742711	Lzh	"斐迪南多·迪·卡斯蒂格利阿"
+#   Q3742711: set the ko label
+Q3742711	Lko	"페르난도 데 카스틸라 이 레온"
+#   set the ko label to "페르디난도 디 카스티그리아"
+Q3742711	Lko	"페르디난도 디 카스티그리아"
+#   Q3741743 Federico Gonzaga signore di Bozzolo: set the mul label to "Federico Gonzaga"
+Q3741743	Lmul	"Federico Gonzaga"
+#   add a mul alias "Federico Gonzaga signore di Bozzolo"
+Q3741743	Amul	"Federico Gonzaga signore di Bozzolo"
+#   Q3741743: 'Federico Gonzaga signore di Bozzolo' has no zh/ko label
+#   Q3741743: holds 'フェデリーコ・ゴンザーガ' in ja; ours is 'フェデリコ・ゴンザーガ・シグノレ・ディ・ボッゾロ'
+#   Q3741743: set the ja label
+Q3741743	Lja	"フェデリコ・ゴンザーガ・シグノレ・ディ・ボッゾロ"
+#   set the ja label to "フェデリコ・ゴンザーガ"
+Q3741743	Lja	"フェデリコ・ゴンザーガ"
+#   Q3741743: set the zh label
+Q3741743	Lzh	"费德里科·貢扎加·西格诺雷·迪·博佐洛"
+#   set the zh label to "费德里科·貢扎加"
+Q3741743	Lzh	"费德里科·貢扎加"
+#   Q3741743: set the ko label
+Q3741743	Lko	"페데리코 곤자가 식노레 디 보조로"
+#   set the ko label to "페데리코 곤자가"
+Q3741743	Lko	"페데리코 곤자가"
+#   Q3738508 Fakhita Al-Hashemi: set the mul label to "Fakhitah bint Abi Talib"
+Q3738508	Lmul	"Fakhitah bint Abi Talib"
+#   add a mul alias "Fakhita Al-Hashemi"
+Q3738508	Amul	"Fakhita Al-Hashemi"
+#   Q3738508: 'Fakhita Al-Hashemi' has no ja label
+#   Q3738508: set the ja label
+Q3738508	Lja	"ファクヒタ・アルハスヘミ"
+#   Q3738508: holds '法齊塔·賓·阿比·塔利卜' in zh; ours is '法克希塔·阿尔哈斯赫米'
+#   Q3738508: set the zh label
+Q3738508	Lzh	"法克希塔·阿尔哈斯赫米"
+#   Q3738508: holds '파키타 빈트 아비 탈립' in ko; ours is '파키타 알하세미'
+#   Q3738508: set the ko label
+Q3738508	Lko	"파키타 알하세미"
+#   Q3721758 Helenus: set the mul label to "Helenos"
+Q3721758	Lmul	"Helenos"
+#   Q3721758: 'Helenus' has no zh label
+#   Q3721758: set the zh label
+Q3721758	Lzh	"赫莱努斯"
+#   set the zh label to "赫莱诺斯"
+Q3721758	Lzh	"赫莱诺斯"
+#   Q3721758: holds '헬레노스' in ko; ours is '헤레누스'
+#   Q3721758: set the ko label
+Q3721758	Lko	"헤레누스"
+#   set the ko label to "헤레노스"
+Q3721758	Lko	"헤레노스"
+#   Q3717838 Æbba: set the mul label to "Æbbe of Coldingham"
+Q3717838	Lmul	"Æbbe of Coldingham"
+#   add a mul alias "Æbba Princess of Bernicia"
+Q3717838	Amul	"Æbba Princess of Bernicia"
+#   Q3717838: 'Æbba' has no ja/zh/ko label
+#   Q3717838: set the ja label
+Q3717838	Lja	"エッバ"
+#   set the ja label to "エッベ"
+Q3717838	Lja	"エッベ"
+#   Q3717838: set the zh label
+Q3717838	Lzh	"埃巴"
+#   set the zh label to "埃贝"
+Q3717838	Lzh	"埃贝"
+#   Q3717838: set the ko label
+Q3717838	Lko	"애바"
+#   set the ko label to "애베"
+Q3717838	Lko	"애베"
+#   set the hu label to "Saint Æbbe I"
+Q3717838	Lhu	"Saint Æbbe I"
+#   Q3694258 Corradino Malaspina il Giovane: set the mul label to "Corrado Malaspina"
+Q3694258	Lmul	"Corrado Malaspina"
+#   add a mul alias "Corradino Malaspina il Giovane"
+Q3694258	Amul	"Corradino Malaspina il Giovane"
+#   Q3694258: 'Corradino Malaspina il Giovane' has no ja/zh/ko label
+#   Q3694258: set the ja label
+Q3694258	Lja	"コラディノ・マラスピーナ・イル・ギオヴァネ"
+#   set the ja label to "コッラード・マラスピーナ"
+Q3694258	Lja	"コッラード・マラスピーナ"
+#   Q3694258: set the zh label
+Q3694258	Lzh	"科拉迪诺·马拉斯皮纳·伊尔·吉奥瓦内"
+#   set the zh label to "科拉多·马拉斯皮纳"
+Q3694258	Lzh	"科拉多·马拉斯皮纳"
+#   Q3694258: set the ko label
+Q3694258	Lko	"코르라디노 마라스피나 일 기오바네"
+#   set the ko label to "코르라도 마라스피나"
+Q3694258	Lko	"코르라도 마라스피나"
+#   Q3656094 Sempronia Graccha Cornelia wife of Aemilianus: set the mul label to "Sempronia"
+Q3656094	Lmul	"Sempronia"
+#   add a mul alias "Sempronia Graccha Sempronia-Graccha wife of Aemilianus"
+Q3656094	Amul	"Sempronia Graccha Sempronia-Graccha wife of Aemilianus"
+#   Q3656094: 'Sempronia' has no zh/ko label
+#   Q3656094: holds 'センプロニア' in ja; ours is 'セムプロニア'
+#   Q3656094: set the ja label
+Q3656094	Lja	"セムプロニア"
+#   Q3656094: 'Sempronia Graccha Cornelia wife of Aemilianus' has no zh/ko label
+#   Q3656094: holds 'センプロニア' in ja; ours is 'セムプロニア・グラッカ・コーネリア・ヴィフェ'
+#   Q3656094: set the ja label
+Q3656094	Lja	"セムプロニア・グラッカ・コーネリア・ヴィフェ"
+#   set the ja label to "セムプロニア"
+Q3656094	Lja	"セムプロニア"
+#   Q3656094: set the zh label
+Q3656094	Lzh	"塞姆普罗尼阿"
+#   Q3656094: set the zh label
+Q3656094	Lzh	"塞姆普罗尼阿·格拉卡·科妮莉亚·维费"
+#   set the zh label to "塞姆普罗尼阿"
+Q3656094	Lzh	"塞姆普罗尼阿"
+#   Q3656094: set the ko label
+Q3656094	Lko	"셈프로니아"
+#   Q3656094: set the ko label
+Q3656094	Lko	"셈프로니아 그라차 코르네리아 위페"
+#   set the ko label to "셈프로니아"
+Q3656094	Lko	"셈프로니아"
+#   Q3623119 Mojsije Komitopulo: set the mul label to "Moses"
+Q3623119	Lmul	"Moses"
+#   add a mul alias "Mojsije Komitopulo"
+Q3623119	Amul	"Mojsije Komitopulo"
+#   Q3623119: 'Mojsije Komitopulo' has no ja/ko label
+#   Q3623119: set the ja label
+Q3623119	Lja	"モイシイェ・コミトプロ"
+#   set the ja label to "モーゼス"
+Q3623119	Lja	"モーゼス"
+#   Q3623119: holds '保加利亚的摩西' in zh; ours is '莫伊西耶·科米托普洛'
+#   Q3623119: set the zh label
+Q3623119	Lzh	"莫伊西耶·科米托普洛"
+#   set the zh label to "摩西"
+Q3623119	Lzh	"摩西"
+#   Q3623119: set the ko label
+Q3623119	Lko	"모즈시제 코미토푸로"
+#   set the ko label to "모세스"
+Q3623119	Lko	"모세스"
+#   Q3611830 Alisa Bonacolsi: set the mul label to "Alice d'Este"
+Q3611830	Lmul	"Alice d'Este"
+#   Q3611830: 'Alisa Bonacolsi' has no ja/zh/ko label
+#   Q3611830: set the ja label
+Q3611830	Lja	"アリーサ・ボナコルシ"
+#   set the ja label to "アリス・ドエステ"
+Q3611830	Lja	"アリス・ドエステ"
+#   Q3611830: set the zh label
+Q3611830	Lzh	"阿利萨·博纳科尔西"
+#   set the zh label to "爱丽丝·德埃斯特"
+Q3611830	Lzh	"爱丽丝·德埃斯特"
+#   Q3611830: set the ko label
+Q3611830	Lko	"아리사 보나콜시"
+#   set the ko label to "아리케 데스테"
+Q3611830	Lko	"아리케 데스테"
+#   Q3592414 Etienne III de Gévaudan: set the mul label to "Étienne de Gévaudan"
+Q3592414	Lmul	"Étienne de Gévaudan"
+#   add a mul alias "Etienne III de Gévaudan"
+Q3592414	Amul	"Etienne III de Gévaudan"
+#   Q3592414: 'Etienne III de Gévaudan' has no ja/zh/ko label
+#   Q3592414: set the ja label
+Q3592414	Lja	"エティエンヌ3世・デ・ゲヴァウダン"
+#   set the ja label to "エティエンヌ・デ・ゲヴァウダン"
+Q3592414	Lja	"エティエンヌ・デ・ゲヴァウダン"
+#   Q3592414: set the zh label
+Q3592414	Lzh	"埃蒂埃内三世·德·盖瓦乌丹"
+#   set the zh label to "艾蒂安·德·盖瓦乌丹"
+Q3592414	Lzh	"艾蒂安·德·盖瓦乌丹"
+#   Q3592414: set the ko label
+Q3592414	Lko	"에티엔네 3세 데 게바우단"
+#   set the ko label to "에티엔네 데 게바우단"
+Q3592414	Lko	"에티엔네 데 게바우단"
+#   Q3577177 Æðelswyð: set the mul label to "Æthelswith"
+Q3577177	Lmul	"Æthelswith"
+#   add a mul alias "Æðelswyð"
+Q3577177	Amul	"Æðelswyð"
+#   set the ja label to "エテルスヴィト"
+Q3577177	Lja	"エテルスヴィト"
+#   set the zh label to "埃特尔斯维特"
+Q3577177	Lzh	"埃特尔斯维特"
+#   set the ko label to "애텔스위트"
+Q3577177	Lko	"애텔스위트"
+#   Q3502241 Stephanie: set the mul label to "Stéphanie de Barbaron"
+Q3502241	Lmul	"Stéphanie de Barbaron"
+#   add a mul alias "Stephanie of Barbaron"
+Q3502241	Amul	"Stephanie of Barbaron"
+#   Q3502241: 'Stephanie' has no zh/ko label
+#   Q3502241: holds 'ステファニー・ド・ランプロン' in ja; ours is 'ステファニー'
+#   Q3502241: set the ja label
+Q3502241	Lja	"ステファニー"
+#   set the ja label to "ステファニー・デ・バルバロン"
+Q3502241	Lja	"ステファニー・デ・バルバロン"
+#   Q3502241: set the zh label
+Q3502241	Lzh	"斯蒂芬妮"
+#   set the zh label to "斯特普哈尼埃·德·巴尔巴龙"
+Q3502241	Lzh	"斯特普哈尼埃·德·巴尔巴龙"
+#   Q3502241: set the ko label
+Q3502241	Lko	"스테파니에"
+#   set the ko label to "스테파니에 데 바르바론"
+Q3502241	Lko	"스테파니에 데 바르바론"
+#   Q3492100 Jutta Eriksdotter: set the mul label to "Jutta av Danmark"
+Q3492100	Lmul	"Jutta av Danmark"
+#   add a mul alias "Jutta Eriksdotter of Denmark"
+Q3492100	Amul	"Jutta Eriksdotter of Denmark"
+#   Q3492100: 'Jutta Eriksdotter' has no ja/zh/ko label
+#   Q3492100: set the ja label
+Q3492100	Lja	"ユッタ・エリクスドッテル"
+#   set the ja label to "ユッタ・アヴ・ダンマーク"
+Q3492100	Lja	"ユッタ・アヴ・ダンマーク"
+#   Q3492100: set the zh label
+Q3492100	Lzh	"尤塔·埃里克斯多塔"
+#   set the zh label to "尤塔·阿夫·丹马尔克"
+Q3492100	Lzh	"尤塔·阿夫·丹马尔克"
+#   Q3492100: set the ko label
+Q3492100	Lko	"주타 에리크스도테르"
+#   set the ko label to "주타 압 단마르크"
+Q3492100	Lko	"주타 압 단마르크"
+#   Q3471698 Sanchet d'Abrichecourt KG: set the mul label to "Sanchet D'Abrichecourt"
+Q3471698	Lmul	"Sanchet D'Abrichecourt"
+#   add a mul alias "Sanchet d'Abrichecourt KG"
+Q3471698	Amul	"Sanchet d'Abrichecourt KG"
+#   Q3471698: "Sanchet d'Abrichecourt KG" has no ja/ko label
+#   Q3471698: set the ja label
+Q3471698	Lja	"サンケト・ドアブリケコウルト・クグ"
+#   set the ja label to "サンケト・ドアブリケコウルト"
+Q3471698	Lja	"サンケト・ドアブリケコウルト"
+#   Q3471698: holds '桑切特·德埃伯里切科特' in zh; ours is '桑凯特·德阿布里凯科乌尔特·克格'
+#   Q3471698: set the zh label
+Q3471698	Lzh	"桑凯特·德阿布里凯科乌尔特·克格"
+#   set the zh label to "桑凯特·德阿布里凯科乌尔特"
+Q3471698	Lzh	"桑凯特·德阿布里凯科乌尔特"
+#   Q3471698: set the ko label
+Q3471698	Lko	"산체트 다브리체쿠르트 큭"
+#   set the ko label to "산체트 다브리체쿠르트"
+Q3471698	Lko	"산체트 다브리체쿠르트"
+#   Q3428167: 'Olof Kolmodin Sr.' has no ja/zh/ko label
+#   Q3428167: set the ja label
+Q3428167	Lja	"オロフ・コルモディン・シニア"
+#   Q3428167: set the zh label
+Q3428167	Lzh	"奥洛夫·科尔莫丁·大"
+#   Q3428167: set the ko label
+Q3428167	Lko	"오로프 콜모딘 스르"
+#   Q3359192: 'Elsa Beata Wrede af Elimä' has no ja/zh/ko label
+#   Q3359192: set the ja label
+Q3359192	Lja	"エルザ・ベアタ・ヴレーデ・アフ・エリメ"
+#   Q3359192: set the zh label
+Q3359192	Lzh	"埃尔莎·贝阿塔·夫雷德·阿夫·埃利梅"
+#   Q3359192: set the ko label
+Q3359192	Lko	"엘사 베아타 우레데 아프 에리메"
+#   Q3337817 Nicolaas II van Bronckhorst: set the mul label to "Nicolaas II van Bronckhorst"
+Q3337817	Lmul	"Nicolaas II van Bronckhorst"
+#   Q3337817: 'Nicolaas II van Bronckhorst' has no ja/zh/ko label
+#   Q3337817: set the ja label
+Q3337817	Lja	"ニコラス2世・ヴァン・ブロンクホルスト"
+#   set the ja label to "ニコラス2世・ヴァン・ブロンクホルスト"
+Q3337817	Lja	"ニコラス2世・ヴァン・ブロンクホルスト"
+#   Q3337817: set the zh label
+Q3337817	Lzh	"尼古拉斯二世·万·布龙克霍尔斯特"
+#   set the zh label to "尼古拉斯二世·万·布龙克霍尔斯特"
+Q3337817	Lzh	"尼古拉斯二世·万·布龙克霍尔斯特"
+#   Q3337817: set the ko label
+Q3337817	Lko	"니코라아스 2세 반 브론크호르스트"
+#   set the ko label to "니코라아스 2세 반 브론크호르스트"
+Q3337817	Lko	"니코라아스 2세 반 브론크호르스트"
+#   Q3298994 Mathilde: set the mul label to "Mathilde de Rethel"
+Q3298994	Lmul	"Mathilde de Rethel"
+#   add a mul alias "Mathilde Countess de Rethel"
+Q3298994	Amul	"Mathilde Countess de Rethel"
+#   Q3298994: 'Mathilde' has no ja/zh/ko label
+#   Q3298994: set the ja label
+Q3298994	Lja	"マティルデ"
+#   set the ja label to "マティルデ・デ・レーテル"
+Q3298994	Lja	"マティルデ・デ・レーテル"
+#   Q3298994: set the zh label
+Q3298994	Lzh	"玛蒂尔德"
+#   set the zh label to "玛蒂尔德·德·雷特尔"
+Q3298994	Lzh	"玛蒂尔德·德·雷特尔"
+#   Q3298994: set the ko label
+Q3298994	Lko	"마틸데"
+#   set the ko label to "마틸데 데 레텔"
+Q3298994	Lko	"마틸데 데 레텔"
+#   Q3292894 Marie de Valois: set the mul label to "Marie de France"
+Q3292894	Lmul	"Marie de France"
+#   add a mul alias "Marie de Valois"
+Q3292894	Amul	"Marie de Valois"
+#   Q3292894: 'Marie de Valois' has no ja/zh/ko label
+#   Q3292894: set the ja label
+Q3292894	Lja	"マリー・デ・ヴァロワ"
+#   set the ja label to "マリー・デ・フランス"
+Q3292894	Lja	"マリー・デ・フランス"
+#   Q3292894: set the zh label
+Q3292894	Lzh	"玛丽·德·瓦洛伊斯"
+#   set the zh label to "玛丽·德·弗朗斯"
+Q3292894	Lzh	"玛丽·德·弗朗斯"
+#   Q3292894: set the ko label
+Q3292894	Lko	"마리에 데 바로이스"
+#   set the ko label to "마리에 데 프란케"
+Q3292894	Lko	"마리에 데 프란케"
+#   Q3290809 Margaret: set the mul label to "Margarida de Saboia"
+Q3290809	Lmul	"Margarida de Saboia"
+#   Q3290809: 'Margaret' has no ja/zh/ko label
+#   Q3290809: set the ja label
+Q3290809	Lja	"マーガレット"
+#   set the ja label to "マルガリダ・デ・サボイア"
+Q3290809	Lja	"マルガリダ・デ・サボイア"
+#   Q3290809: set the zh label
+Q3290809	Lzh	"玛格丽特"
+#   set the zh label to "马尔加里达·德·萨博伊阿"
+Q3290809	Lzh	"马尔加里达·德·萨博伊阿"
+#   Q3290809: set the ko label
+Q3290809	Lko	"마르가레트"
+#   set the ko label to "마르가리다 데 사보이아"
+Q3290809	Lko	"마르가리다 데 사보이아"
+#   Q3290761 Marguerite de Bourgogne: set the mul label to "Margarida da Borgonha"
+Q3290761	Lmul	"Margarida da Borgonha"
+#   Q3290761: 'Marguerite de Bourgogne' has no ja/zh/ko label
+#   Q3290761: set the ja label
+Q3290761	Lja	"マルグリット・デ・ボウルゴグネ"
+#   set the ja label to "マルガリダ・ダ・ボルゴンハ"
+Q3290761	Lja	"マルガリダ・ダ・ボルゴンハ"
+#   Q3290761: set the zh label
+Q3290761	Lzh	"玛格丽特·德·博乌尔戈格内"
+#   set the zh label to "马尔加里达·达·博尔贡哈"
+Q3290761	Lzh	"马尔加里达·达·博尔贡哈"
+#   Q3290761: set the ko label
+Q3290761	Lko	"마르궤리테 데 부르곡네"
+#   set the ko label to "마르가리다 다 보르곤하"
+Q3290761	Lko	"마르가리다 다 보르곤하"
+#   Q3290242 Polemon II: set the mul label to "Marcus Antonius Polemo I"
+Q3290242	Lmul	"Marcus Antonius Polemo I"
+#   add a mul alias "Polemon II, king of Pontus"
+Q3290242	Amul	"Polemon II, king of Pontus"
+#   Q3290242: 'Polemon II' has no ja/zh/ko label
+#   Q3290242: set the ja label
+Q3290242	Lja	"ポレモン2世"
+#   set the ja label to "マルクス・アントニウス・ポレモ1世"
+Q3290242	Lja	"マルクス・アントニウス・ポレモ1世"
+#   Q3290242: set the zh label
+Q3290242	Lzh	"波莱蒙二世"
+#   set the zh label to "马库斯·安东尼·波莱莫一世"
+Q3290242	Lzh	"马库斯·安东尼·波莱莫一世"
+#   Q3290242: set the ko label
+Q3290242	Lko	"포레몬 2세"
+#   set the ko label to "마르쿠스 안토뉴스 포레모 1세"
+Q3290242	Lko	"마르쿠스 안토뉴스 포레모 1세"
+#   Q3286784 Manuel Komnenos: set the mul label to "Manuel Komnenos"
+Q3286784	Lmul	"Manuel Komnenos"
+#   Q3286784: 'Manuel Komnenos' has no ko label
+#   Q3286784: holds '曼努埃尔·科穆宁 (宫殿负责人)' in zh; ours is '曼努埃尔·科穆宁'
+#   Q3286784: set the zh label
+Q3286784	Lzh	"曼努埃尔·科穆宁"
+#   set the zh label to "曼努埃尔·科穆宁"
+Q3286784	Lzh	"曼努埃尔·科穆宁"
+#   Q3286784: set the ko label
+Q3286784	Lko	"마뉄 콤네노스"
+#   set the ko label to "마뉄 콤네노스"
+Q3286784	Lko	"마뉄 콤네노스"
+#   Q3263567 Louis De Valois: set the mul label to "Louis of Valois"
+Q3263567	Lmul	"Louis of Valois"
+#   add a mul alias "Louis De Valois, Comte de Chartres"
+Q3263567	Amul	"Louis De Valois, Comte de Chartres"
+#   Q3263567: 'Louis De Valois' has no ja/ko label
+#   Q3263567: set the ja label
+Q3263567	Lja	"ルイ・デ・ヴァロワ"
+#   set the ja label to "ルイ"
+Q3263567	Lja	"ルイ"
+#   Q3263567: holds '讓' in zh; ours is '路易·德·瓦洛伊斯'
+#   Q3263567: set the zh label
+Q3263567	Lzh	"路易·德·瓦洛伊斯"
+#   set the zh label to "路易"
+Q3263567	Lzh	"路易"
+#   Q3263567: set the ko label
+Q3263567	Lko	"루이스 데 바로이스"
+#   set the ko label to "루이스"
+Q3263567	Lko	"루이스"
+#   Q3239153 Phithia: set the mul label to "Fítia"
+Q3239153	Lmul	"Fítia"
+#   add a mul alias "Phithia of Epirus"
+Q3239153	Amul	"Phithia of Epirus"
+#   Q3239153: 'Phithia' has no ja/ko label
+#   Q3239153: set the ja label
+Q3239153	Lja	"プヒティア"
+#   set the ja label to "フィティア"
+Q3239153	Lja	"フィティア"
+#   Q3239153: holds '馬其頓的佛提雅' in zh; ours is '普希蒂阿'
+#   Q3239153: set the zh label
+Q3239153	Lzh	"普希蒂阿"
+#   set the zh label to "菲蒂阿"
+Q3239153	Lzh	"菲蒂阿"
+#   Q3239153: set the ko label
+Q3239153	Lko	"피티아"
+#   set the ko label to "피티아"
+Q3239153	Lko	"피티아"
+#   Q3186792 Jourdain de L'Isle-Jourdain Seigneur de Sainte-Bazeille & de Landerron: set the mul label to "Jourdain de l'Isle"
+Q3186792	Lmul	"Jourdain de l'Isle"
+#   add a mul alias "Jourdain de L'Isle-Jourdain Seigneur de Sainte-Bazeille & de Landerron"
+Q3186792	Amul	"Jourdain de L'Isle-Jourdain Seigneur de Sainte-Bazeille & de Landerron"
+#   set the ja label to "ヨウルダイン・デ・ルイスレ"
+Q3186792	Lja	"ヨウルダイン・デ・ルイスレ"
+#   set the zh label to "约乌尔达因·德·尔伊斯莱"
+Q3186792	Lzh	"约乌尔达因·德·尔伊斯莱"
+#   set the ko label to "주르다인 데 리스레"
+Q3186792	Lko	"주르다인 데 리스레"
+#   Q3180990 Raziye Osmanoğlu: set the mul label to "Raziye Sultan"
+Q3180990	Lmul	"Raziye Sultan"
+#   add a mul alias "Raziye Osmanoğlu"
+Q3180990	Amul	"Raziye Osmanoğlu"
+#   set the ja label to "ラジイェ・スルタン"
+Q3180990	Lja	"ラジイェ・スルタン"
+#   set the zh label to "拉吉耶·蘇丹"
+Q3180990	Lzh	"拉吉耶·蘇丹"
+#   set the ko label to "라지예 술탄"
+Q3180990	Lko	"라지예 술탄"
+#   Q3175596 Jean de Montmirail vicomte de Meaux: set the mul label to "Jean de Montmirail"
+Q3175596	Lmul	"Jean de Montmirail"
+#   add a mul alias "Jean de Montmirail vicomte de Meaux"
+Q3175596	Amul	"Jean de Montmirail vicomte de Meaux"
+#   Q3175596: 'Jean de Montmirail vicomte de Meaux' has no ja/ko label
+#   Q3175596: set the ja label
+Q3175596	Lja	"ジャン・デ・モントミライル・ヴィコムテ・デ・モー"
+#   set the ja label to "ジャン・デ・モントミライル"
+Q3175596	Lja	"ジャン・デ・モントミライル"
+#   Q3175596: holds '蒙米拉伊的让' in zh; ours is '让·德·蒙特米拉伊尔·维科姆特·德·梅奥克斯'
+#   Q3175596: set the zh label
+Q3175596	Lzh	"让·德·蒙特米拉伊尔·维科姆特·德·梅奥克斯"
+#   set the zh label to "让·德·蒙特米拉伊尔"
+Q3175596	Lzh	"让·德·蒙特米拉伊尔"
+#   Q3175596: set the ko label
+Q3175596	Lko	"제안 데 몬트미라일 비콤테 데 메아우그스"
+#   set the ko label to "제안 데 몬트미라일"
+Q3175596	Lko	"제안 데 몬트미라일"
+#   Q3174389 Jean Rogier de Beaufort: add a mul alias "Jean Rogier de Beaufort"
+Q3174389	Amul	"Jean Rogier de Beaufort"
+#   set the ja label to "ジャン・ロジャー・デ・ボーフォート"
+Q3174389	Lja	"ジャン・ロジャー・デ・ボーフォート"
+#   set the zh label to "让·罗杰·德·博福特"
+Q3174389	Lzh	"让·罗杰·德·博福特"
+#   set the ko label to "제안 로게르 데 베아우포르트"
+Q3174389	Lko	"제안 로게르 데 베아우포르트"
+#   Q3172643 Juan de Borja y Enriquez de Luna III Duque de Gandía: set the mul label to "Jean II de Gandie"
+Q3172643	Lmul	"Jean II de Gandie"
+#   add a mul alias "Juan de Borja y Enriquez de Luna III Duque de Gandía"
+Q3172643	Amul	"Juan de Borja y Enriquez de Luna III Duque de Gandía"
+#   set the ja label to "ジャン2世・デ・ガンディエ"
+Q3172643	Lja	"ジャン2世・デ・ガンディエ"
+#   set the zh label to "让二世·德·甘迪埃"
+Q3172643	Lzh	"让二世·德·甘迪埃"
+#   set the ko label to "제안 2세 데 간디에"
+Q3172643	Lko	"제안 2세 데 간디에"
+#   Q3145021 Heribert Capet évêque d'Auxerre: set the mul label to "Erberto d'Auxerre"
+Q3145021	Lmul	"Erberto d'Auxerre"
+#   add a mul alias "Heribert Capet évêque d'Auxerre"
+Q3145021	Amul	"Heribert Capet évêque d'Auxerre"
+#   set the ja label to "エルベルト・ドアウクスエレ"
+Q3145021	Lja	"エルベルト・ドアウクスエレ"
+#   set the zh label to "埃尔贝尔托·德奥克斯埃雷"
+Q3145021	Lzh	"埃尔贝尔托·德奥克斯埃雷"
+#   set the ko label to "에르베르토 다우그세르레"
+Q3145021	Lko	"에르베르토 다우그세르레"
+#   Q3143008: holds 'フルダ・ガルボルグ' in ja; ours is 'カレン・フルダ・ガルボルグ'
+#   Q3143008: set the ja label
+Q3143008	Lja	"カレン・フルダ・ガルボルグ"
+#   Q3143008: holds '胡爾達·加博格' in zh; ours is '凯伦·胡尔达·加尔博格'
+#   Q3143008: set the zh label
+Q3143008	Lzh	"凯伦·胡尔达·加尔博格"
+#   Q3143008: holds '훌다 가르보르그' in ko; ours is '카렌 훌다 가르보륵'
+#   Q3143008: set the ko label
+Q3143008	Lko	"카렌 훌다 가르보륵"
+#   set the ko label to "훌다 가르보륵"
+Q3143008	Lko	"훌다 가르보륵"
+#   Q3142578 Hugues de Châlon: set the mul label to "Hugh II of Chalon-Arlay"
+Q3142578	Lmul	"Hugh II of Chalon-Arlay"
+#   add a mul alias "Hugues de Châlon"
+Q3142578	Amul	"Hugues de Châlon"
+#   Q3142578: 'Hugues de Châlon' has no ja/zh/ko label
+#   Q3142578: set the ja label
+Q3142578	Lja	"ユーグ・デ・カロン"
+#   set the ja label to "ヒュー2世"
+Q3142578	Lja	"ヒュー2世"
+#   Q3142578: set the zh label
+Q3142578	Lzh	"于格·德·卡隆"
+#   set the zh label to "休二世"
+Q3142578	Lzh	"休二世"
+#   Q3142578: set the ko label
+Q3142578	Lko	"후궤스 데 차론"
+#   set the ko label to "훅 2세"
+Q3142578	Lko	"훅 2세"
+#   Q3122357 Guy de Laval: set the mul label to "Guyonnet de Laval"
+Q3122357	Lmul	"Guyonnet de Laval"
+#   add a mul alias "Guy de Laval"
+Q3122357	Amul	"Guy de Laval"
+#   Q3122357: 'Guy de Laval' has no ja/zh/ko label
+#   Q3122357: set the ja label
+Q3122357	Lja	"ガイ・デ・ラヴァル"
+#   set the ja label to "グヨンネト・デ・ラヴァル"
+Q3122357	Lja	"グヨンネト・デ・ラヴァル"
+#   Q3122357: set the zh label
+Q3122357	Lzh	"盖伊·德·赖伐尔"
+#   set the zh label to "古约内特·德·赖伐尔"
+Q3122357	Lzh	"古约内特·德·赖伐尔"
+#   Q3122357: set the ko label
+Q3122357	Lko	"구이 데 라발"
+#   set the ko label to "구욘네트 데 라발"
+Q3122357	Lko	"구욘네트 데 라발"
+#   Q3107795 Gilbert de Roucy: set the mul label to "Gislebert de Roucy"
+Q3107795	Lmul	"Gislebert de Roucy"
+#   add a mul alias "Gilbert de Roucy comte de Roucy, Vicomte de Reims"
+Q3107795	Amul	"Gilbert de Roucy comte de Roucy, Vicomte de Reims"
+#   Q3107795: 'Gilbert de Roucy' has no ja/zh/ko label
+#   Q3107795: set the ja label
+Q3107795	Lja	"ギルバート・デ・ルシー"
+#   set the ja label to "ギスレベルト・デ・ルシー"
+Q3107795	Lja	"ギスレベルト・デ・ルシー"
+#   Q3107795: set the zh label
+Q3107795	Lzh	"吉尔伯特·德·罗乌西"
+#   set the zh label to "吉斯莱贝尔特·德·罗乌西"
+Q3107795	Lzh	"吉斯莱贝尔特·德·罗乌西"
+#   Q3107795: set the ko label
+Q3107795	Lko	"길베르트 데 루키"
+#   set the ko label to "기스레베르트 데 루키"
+Q3107795	Lko	"기스레베르트 데 루키"
+#   Q3101164 Godefroy de Boulogne: set the mul label to "Geoffroy de Boulogne"
+Q3101164	Lmul	"Geoffroy de Boulogne"
+#   Q3101164: 'Godefroy de Boulogne' has no ja/zh/ko label
+#   Q3101164: set the ja label
+Q3101164	Lja	"ゴドフロワ・デ・ブローニュ"
+#   set the ja label to "ジョフロア・デ・ブローニュ"
+Q3101164	Lja	"ジョフロア・デ・ブローニュ"
+#   Q3101164: set the zh label
+Q3101164	Lzh	"戈德夫罗伊·德·博乌洛格内"
+#   set the zh label to "盖奥夫罗伊·德·博乌洛格内"
+Q3101164	Lzh	"盖奥夫罗伊·德·博乌洛格内"
+#   Q3101164: set the ko label
+Q3101164	Lko	"고데프로이 데 부록네"
+#   set the ko label to "게오프로이 데 부록네"
+Q3101164	Lko	"게오프로이 데 부록네"
+#   Q3099363 Gaucher de Broyes-Commercy Seigneur de Commercy: set the mul label to "Gaucher Ier de Broyes-Commercy"
+Q3099363	Lmul	"Gaucher Ier de Broyes-Commercy"
+#   add a mul alias "Gaucher de Broyes-Commercy Seigneur de Commercy"
+Q3099363	Amul	"Gaucher de Broyes-Commercy Seigneur de Commercy"
+#   Q3099363: 'Gaucher de Broyes-Commercy Seigneur de Commercy' has no ja/zh/ko label
+#   Q3099363: set the ja label
+Q3099363	Lja	"ガウケル・デ・ブロイェスコムメルシ・セイグネウル・デ・コムメルシ"
+#   set the ja label to "ガウケル・ド・デ・ブロイェスコムメルシ"
+Q3099363	Lja	"ガウケル・ド・デ・ブロイェスコムメルシ"
+#   Q3099363: set the zh label
+Q3099363	Lzh	"加乌凯尔·德·布罗耶斯科梅尔西·塞伊格内乌尔·德·科梅尔西"
+#   set the zh label to "加乌凯尔·伊埃尔·德·布罗耶斯科梅尔西"
+Q3099363	Lzh	"加乌凯尔·伊埃尔·德·布罗耶斯科梅尔西"
+#   Q3099363: set the ko label
+Q3099363	Lko	"가우체르 데 브로예스콤메르키 세익뉴르 데 콤메르키"
+#   set the ko label to "가우체르 이에르 데 브로예스콤메르키"
+Q3099363	Lko	"가우체르 이에르 데 브로예스콤메르키"
+#   Q3071926 Tiberius Julius Rhoimetalkes: set the mul label to "Tiberius Julius Rhoemetalces"
+Q3071926	Lmul	"Tiberius Julius Rhoemetalces"
+#   add a mul alias "Tiberius Julius Rhoimetalkes"
+Q3071926	Amul	"Tiberius Julius Rhoimetalkes"
+#   Q3071926: 'Tiberius Julius Rhoimetalkes' has no ja/zh/ko label
+#   Q3071926: set the ja label
+Q3071926	Lja	"ティベリウス・ユリウス・ルホイメタルケス"
+#   set the ja label to "ティベリウス・ユリウス・ルホエメタルセス"
+Q3071926	Lja	"ティベリウス・ユリウス・ルホエメタルセス"
+#   Q3071926: set the zh label
+Q3071926	Lzh	"提比略·尤利乌斯·尔霍伊梅塔尔凯斯"
+#   set the zh label to "提比略·尤利乌斯·尔霍埃梅塔尔塞斯"
+Q3071926	Lzh	"提比略·尤利乌斯·尔霍埃梅塔尔塞斯"
+#   Q3071926: set the ko label
+Q3071926	Lko	"티베류스 주류스 르호이메탈케스"
+#   set the ko label to "티베류스 주류스 르회메탈케스"
+Q3071926	Lko	"티베류스 주류스 르회메탈케스"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
