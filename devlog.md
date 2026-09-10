@@ -34110,3 +34110,14 @@ to come back small (646, 2,303, 90).
 Export 8 submitted: `6000000227676384979`, task **`6000000227678007949`**. Seven of eleven filed;
 four outstanding.
 
+
+## 2026-09-09 — descendants export 8 of 11: NN Volynskaya `6000000227676384979`
+
+`exports/circassian-hinge/export-Descendants-6000000227676384979.ged` — **5,000 people, 2,807
+families**, task `6000000227678007949`. Seed verified as the file's first `INDI`. **At the cap**,
+so this ball is cut off and there is more below its rim — the second of the eleven to fill, after
+`6000000227676617890`.
+
+Export 9 submitted: `6000000227676454008`, task **`6000000227678043855`**. Eight of eleven filed;
+three outstanding.
+
