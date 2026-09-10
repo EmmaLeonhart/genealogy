@@ -141,8 +141,15 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   blocker.** `CLAUDE.md` § *KILL CHROME WHENEVER YOU NEED TO*: `kill -9`, force-open on any page,
   the extension has reloaded. Standing authority. Never tag this BLOCKED-ON-USER-ACTION again.
 
-  ⛔ **AN IN-LAW CHAIN CAME BACK AS `via=blood`, AND THE CAUSE IS UNKNOWN. Miroslava, Princess of
-  Bulgaria `371367105380011098`, 2026-09-09.** Her page states BOTH *"Shortest in-law
+  ⛔ **AN IN-LAW CHAIN COMES BACK AS `via=blood`. TWICE ON 2026-09-09, SO IT IS REPRODUCIBLE, AND
+  THE CAUSE IS UNKNOWN.** Miroslava, Princess of Bulgaria `371367105380011098`, and Elen ferch
+  Eudaf Hen `377649183480004232`. Both filed as `inlaw` by hand off the page banner.
+
+  **The two differ in one way worth knowing:** Miroslava's page also said *"No blood relationship
+  was found."*, Elen's did not — Geni simply returned the in-law chain as the SHORTEST. So the
+  defect is not confined to the no-blood case.
+
+  **Miroslava, the first instance:** Her page states BOTH *"Shortest in-law
   relationship"* and *"No blood relationship was found."*, and the job still returned
   `via: blood`, `state: path_found`, with a `path_tsv` header reading `(blood)`.
 

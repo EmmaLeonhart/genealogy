@@ -33663,3 +33663,32 @@ checked; the queue pointer now names two batches rather than one.
 thing I am gonna work on it a bit more since it is better for my judgment on this one"* — so it
 is not opened, not fetched and not summarised. A OneTab page is a list of tabs; reading it would
 be exactly the investigating she has twice told me not to do, and she is still forming a view.
+
+## 2026-09-09 — the in-law-as-blood defect is REPRODUCIBLE, and the anchor moved a third time
+
+Work-loop tick on the collector. Abul Hamza's Descendants export is still building — Geni's own
+build time, nothing to act on, and the cron holds it — so the collector was next.
+
+**⛔ THE ANCHOR HAD MOVED AGAIN, onto Lǐ Hēng 李亨, Emperor Suzong of Tang.** Third time today.
+Caught by the per-capture banner check before dispatch, reset by protocol (two clicks, read
+between), verified on the target. It fits what Emma has been doing — she is working the Tang
+line — and per her own correction this is her moving it, not a run hazard.
+
+**Elen ferch Eudaf Hen `377649183480004232` — a HIT, and the second instance of the
+in-law-as-blood defect.** The collector returned `via: blood`; Geni's banner reads **"Shortest
+in-law relationship"** and its prose is a chain of husbands — *"Charlemagne's great
+granddaughter's husband's great granddaughter's husband's first cousin's husband's 17th great
+grandmother"*. Filed as **in-law** by hand.
+
+**So it is reproducible rather than a one-off**, and `6b2dee75` — the fix written for exactly
+this shape — was running for both. Nothing explains it.
+
+**And the two instances differ in a way that widens it.** Miroslava's page also said *"No blood
+relationship was found."*; Elen's does not. Geni simply returned the in-law chain as the
+**shortest**, and a longer blood path may well exist. So the defect is not confined to the
+no-blood case, and `via` cannot be trusted on any hit.
+
+Her chain is unusual and worth having: it leaves the Carolingian descent at *"her husband"*
+Aethelwulf of Wessex, crosses two more marriages and a sibling step into the Welsh and Manx
+kings, then climbs **fathers** for eighteen consecutive steps back to the 3rd century — an
+ascent, not a descent, which no summary of "steps" would reveal.
