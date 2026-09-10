@@ -206,6 +206,64 @@ def cjk_of(row: dict) -> str:
     return (row.get("cjk_names") or "").split(" | ")[0].strip()
 
 
+#: Hand assignments from the CJK culture queue, the artifact that shows a person's CJK name
+#: beside their ROMANISED relatives and asks which reading language applies.
+#:
+#: Columns: `geni_id`, `culture`, `cjk`, `decided_at`. `culture` is `ja`, `zh`, `ko`, or `skip`
+#: for *looked at it and could not tell*.
+MANUAL_CULTURE = REPO / "reports" / "cjk-culture-manual.tsv"
+
+
+def _load_manual_culture(path):
+    """`geni_id -> culture`, including `skip`. Absent file means nothing has been reviewed yet."""
+    out = {}
+    if not path.exists():
+        return out
+    with io.open(path, encoding="utf-8", newline="") as fh:
+        rd = csv.DictReader(fh, delimiter="\t")
+        for row in rd:
+            g = (row.get("geni_id") or "").strip()
+            code = (row.get("culture") or "").strip().lower()
+            if g and code in ("ja", "zh", "ko", "skip"):
+                out[g] = code
+    return out
+
+
+def _apply_manual_culture(need, culture, why, unsettled_why, manual):
+    """⛔ **A HAND VERDICT OUTRANKS EVERY TIER, AND IT HAS TO BE APPLIED LAST TO DO SO.**
+
+    Every evidence tier writes into the same `culture` dict, and **evidence 2 overwrites
+    unconditionally** -- `culture[g] = "ja"` with no `if g not in culture` guard, on the stated
+    grounds that *"the script facts go first: they are properties of the characters themselves"*.
+    A hand assignment inserted before that would be silently overruled by a character rule, and
+    would look like it had been honoured. So this runs after all five tiers and overwrites.
+
+    **`skip` changes nothing.** It records *a person looked and could not tell*, which is not a
+    reason to discard whatever the classifier concluded, and not a culture either. It is carried
+    into the evidence column so the row is not re-queued as unreviewed.
+
+    Returns `(assigned, skipped, overruled)` -- `overruled` counts the ones where the hand
+    verdict DISAGREED with what the tiers had decided, which is the number worth watching: it is
+    the classifier's error rate on exactly the people it found hardest.
+    """
+    assigned = skipped = overruled = 0
+    for g, code in manual.items():
+        if g not in need:
+            continue
+        if code == "skip":
+            skipped += 1
+            if g not in culture:
+                unsettled_why[g] = "reviewed by hand: could not tell from the romanised relatives"
+            continue
+        if g in culture and culture[g] != code:
+            overruled += 1
+        assigned += 1
+        culture[g] = code
+        why[g] = "assigned by hand from the romanised relatives"
+        unsettled_why.pop(g, None)
+    return assigned, skipped, overruled
+
+
 def _write_culture(need, culture, why, unsettled_why):
     """`reports/cjk-culture.csv` — the classifier's real output, one row per record judged.
 
@@ -293,7 +351,17 @@ def main() -> int:
     SEATS_EARLY = {t for t, n in _tails.items() if len(t) == 4 and n >= 20}
     print(f"clan seats identified: {len(SEATS_EARLY)}")
 
-    # ---- culture evidence 1: birth place ------------------------------------
+    # ---- culture evidence 1: birth place -- ⛔ DEAD SINCE 2026-09-10 ---------
+    #
+    # Places were removed from the synoptic tree that day: `PLAC` and the whole address block
+    # are out of `genimerge.slim`, so `derived-facts.csv` carries no `birth_place` or
+    # `death_place` under a slimmed merge and this block matches nothing. Ruled directly --
+    # *"keeping the places in the synoptic tree is a horrible idea"*, and on this classifier,
+    # *"there was an algorithm, and it failed miserably"*.
+    #
+    # It is left in place rather than deleted because a FULL merge still carries places, and
+    # the loop is a no-op on empty columns rather than an error. What replaces it is evidence 5
+    # below: a person reading the record.
     culture = {}
     why = {}
     place_culture = {}
@@ -629,6 +697,17 @@ def main() -> int:
     print(f"  settled by a Japanese name ending: {by_ending:,}")
     print(f"  settled by graph traversal: {settled_by_neighbour:,}")
     print(f"  culture settled for {len(culture):,} of {len(need):,}")
+
+    # ---- culture evidence 5, and it beats the other four: a person read the record ----
+    manual = _load_manual_culture(MANUAL_CULTURE)
+    if manual:
+        _assigned, _skipped, _overruled = _apply_manual_culture(
+            need, culture, why, unsettled_why, manual)
+        print(f"  assigned BY HAND: {_assigned:,}"
+              f" ({_overruled:,} of them overruling the classifier), {_skipped:,} skipped")
+        print(f"  culture settled for {len(culture):,} of {len(need):,} after the hand pass")
+    else:
+        print(f"  no hand assignments on disk ({MANUAL_CULTURE.name})")
 
     # ---- the reading table, out of Wikidata's own name items ----------------
     qids = []

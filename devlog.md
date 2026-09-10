@@ -34949,3 +34949,42 @@ nothing else from that census should be quoted.
 **167 MB of corpus text is not 167 MB of peak RSS** -- the merge holds parsed objects at 20-40x
 source text -- and this is the first cut rather than the fix. The union merge has not been
 re-measured since.
+
+## 2026-09-10 -- the CJK culture queue, and hand verdicts wired in as evidence 5
+
+**The artifact:** https://claude.ai/code/artifact/f6b7d351-e367-4237-9c16-c9e3457d5fee
+
+`reports/cjk-no-culture.csv` holds **1,270 people the classifier refused**. Of those, **137 have
+at least one ROMANISED relative** to judge from, and those are the queue: the CJK name, the
+relatives with their relation labelled -- `child Hanzei-tenno`, `mother Kibitsu-hime` -- and the
+classifier's own refusal sentence, which is often the interesting part
+(*"万里小路 is a four-character clan name or seat, which is Japanese in 3 of 6,330 cases and wrong
+in all three"*). J/C/K to assign, S when it cannot be told. Decisions persist in the artifact's
+store and survive a reload, so the queue can be worked in pieces.
+
+**⛔ A HAND VERDICT IS APPLIED LAST, AND THAT IS NOT A STYLE CHOICE.** Every evidence tier writes
+into one `culture` dict, and **evidence 2 overwrites unconditionally** -- `culture[g] = "ja"` with
+no `if g not in culture` guard, on the stated grounds that *"the script facts go first: they are
+properties of the characters themselves, not inferences about the family"*. An override inserted
+before that is silently overruled by a character rule **and still looks honoured**. So
+`_apply_manual_culture` runs after all five tiers.
+
+**`skip` changes nothing, deliberately.** *Looked and could not tell* is not a culture, and it is
+not a reason to discard what the classifier concluded either. It only stops the row reading as
+unreviewed.
+
+**The run prints how many hand verdicts OVERRULED the classifier**, which is the number worth
+watching: it is the error rate on exactly the people it found hardest.
+
+**And evidence 1 is now dead.** Birth place was culture evidence 1, and places left the synoptic
+tree earlier today, so under a slimmed merge `derived-facts.csv` carries no `birth_place` and the
+block matches nothing. It is left in place -- a full merge still carries places and the loop is a
+no-op on empty columns -- and labelled, because a tier that silently stopped working is worse
+than one that says so.
+
+**Nine tests.** The one that matters pins the ordering: a classifier verdict of `zh` against a
+hand verdict of `ja` must come out `ja`, and `skip` must not wipe a verdict.
+
+`reports/cjk-culture-manual.tsv` is the file, committed with its header and no rows yet. Filling
+it means reading the artifact's store back and writing the rows in -- the store is reachable from
+a session, not from a script, so that is a step somebody takes rather than a cron.
