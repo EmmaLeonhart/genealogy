@@ -35625,3 +35625,45 @@ parser had invented, which is what today's other work found.
 from `geni-scraping/*.html` and `geni-families/*.tsv` whenever they are wanted, page scraping is
 cheap, and every file is in git history. The builder will recreate the directory on its next run;
 nothing was changed to stop it.
+
+## 2026-09-10 — the equivalence run: 11 of 11 structural, and the drift confound isolated
+
+Continues the entry above. Two things happened: the comparable population grew from 7 to 11 by
+capturing live scrapes in the browser, and the harness stopped conflating two different questions.
+
+**⛔ STRUCTURE AND NAMES ARE DIFFERENT QUESTIONS AND ARE NOW COUNTED SEPARATELY.** The parser's job
+is *who is related to this person, and how* — `(phrase, relative_geni_id)`. A relative's NAME is a
+label Geni owns and revises. Guttorm Nilssen `6000000001708363985` came back with the identical 11
+edges under identical phrases and two of the names had simply moved on:
+
+    6000000006183866418   saved: Nils Store Brandvik Ragnvaldsson   live: Nikulás Rögnvaldsson
+    6000000007980739327   saved: Herborg Baardsdatter Torsnes       live: Herborg Bárðardóttir
+
+Nothing was misparsed — the profiles were renamed. Reporting one number for both would have
+blamed the parser for Geni's edits, and `CLAUDE.md` § *Later sources win value conflicts* already
+says which name is right: the live one. So the run prints **structural agreement** and a separate
+**name drift** count, and `reports/saved-page-equivalence.tsv` carries a `name_drift` column.
+
+**The result over 11 people: 11 of 11 structurally identical, 0 differing, 0 parse errors, with 3
+drifted names across 2 of them.**
+
+**The capture takes both readings in one page load**, which is the whole point — comparing a saved
+page against a live scrape taken months later cannot distinguish a parser defect from a family
+that genuinely changed. Per person: navigate, dispatch `{job:"family"}`, poll `geniCollectorBusy`,
+then render the result into a `<pre>` and read it out.
+
+**Two transport facts, both measured today and both worth not rediscovering:**
+
+* **`get_page_text` carries ~18 KB where a `javascript_tool` result truncates at ~1.3 KB**, and
+  the JS result's content filter refuses any line containing `key=value` — which the scrape's own
+  `# statistics` header is. Substituting `=` for a sentinel and reading off a `<pre>` is what
+  makes the payload come back at all.
+* **⛔ `get_page_text` COLLAPSES A LITERAL TAB TO A SPACE.** The payload is a TSV, so the first
+  capture taken as raw text came back with every column boundary destroyed. It survived only
+  because the very first one happened to be JSON-encoded. The capture now always JSON-encodes, so
+  tabs cross as `\t`.
+
+**⛔ ELEVEN IS STILL NOT A PROOF, AND THE NUMBER TO RAISE IS THE POPULATION, NOT THE PERCENTAGE.**
+1,555 saved pages exist and 11 have been checked. What would make this a proof rather than a
+sample is the extension doing the capture itself over the whole set — the agent driving it one
+page at a time costs about four tool calls per person, which is what bounds it today.

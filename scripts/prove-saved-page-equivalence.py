@@ -20,6 +20,19 @@ Nothing else is touched. A mapping applied to both sides until they agree is how
 made to pass without meaning anything, so the ids and the names are compared exactly as each
 reader produced them -- and it is the ids and names, not the phrase, that carry the family.
 
+⛔ **STRUCTURE AND NAMES ARE TWO DIFFERENT QUESTIONS AND ARE COUNTED SEPARATELY.**
+
+The parser's job is to say *who is related to this person, and how* — `(phrase, relative_geni_id)`.
+A relative's NAME is a label Geni owns and changes: Guttorm Nilssen `6000000001708363985` came back
+with the identical 11 edges under identical phrases, and two of the eleven names had simply moved
+on — `Nils Store Brandvik Ragnvaldsson` is now `Nikulás Rögnvaldsson`, `Herborg Baardsdatter
+Torsnes` is now `Herborg Bárðardóttir`. Nothing was misparsed; the profiles were renamed.
+
+So `structure` is the equivalence claim, and `drift` is the count of edges where the two agree on
+the id and the phrase and disagree on the name. Reporting one number for both would blame the
+parser for Geni's edits, and `CLAUDE.md` § *Later sources win value conflicts* says which of the
+two names is right anyway: the live one.
+
 ⛔ **A PERSON IS ONLY COUNTED WHERE BOTH SIDES EXIST.** A missing saved page is not a mismatch and
 a missing scrape is not one either; both are simply outside the population that can be compared.
 The number this prints is the agreement rate over the comparable set and the size of that set,
@@ -76,7 +89,7 @@ def main() -> int:
     fam_dir = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "geni-families"
     pages = {p.stem: p for p in (ROOT / "geni-scraping").glob("*.html") if p.stem.isdigit()}
 
-    rows, exact, compared = [], 0, 0
+    rows, exact, compared, drifted = [], 0, 0, 0
     for fam in sorted(fam_dir.glob("*-family.tsv")):
         gid = fam.name.split("-family")[0]
         page = pages.get(gid)
@@ -86,17 +99,28 @@ def main() -> int:
         try:
             ref, cand = read_reference(fam), read_candidate(page)
         except Exception as exc:                       # a page that will not parse is a FAILURE
-            rows.append((gid, "parse-error", 0, 0, 0, 0, str(exc)[:120]))
+            rows.append((gid, "parse-error", 0, 0, 0, 0, 0, str(exc)[:120]))
             continue
-        missing, extra = ref - cand, cand - ref
+        # The family is `(phrase, id)`; the name is a label Geni owns and revises.
+        ref_s = {(a, b) for a, b, _ in ref}
+        cand_s = {(a, b) for a, b, _ in cand}
+        missing, extra = ref_s - cand_s, cand_s - ref_s
+        ref_n = {(a, b): c for a, b, c in ref}
+        drift = sorted(k for k in (ref_s & cand_s)
+                       if ref_n[k] != {(a, b): c for a, b, c in cand}[k])
         if not missing and not extra:
             exact += 1
-            rows.append((gid, "identical", len(ref), len(cand), 0, 0, ""))
+            drifted += len(drift)
+            verdict = "identical" if not drift else "identical-names-drifted"
+            detail = "; ".join("~%s|%s|%s -> %s" % (
+                k[0], k[1], ref_n[k], {(a, b): c for a, b, c in cand}[k]) for k in drift[:4])
+            rows.append((gid, verdict, len(ref), len(cand), 0, 0, len(drift), detail))
         else:
             detail = "; ".join(
-                ["-%s|%s|%s" % e for e in sorted(missing)][:4]
-                + ["+%s|%s|%s" % e for e in sorted(extra)][:4])
-            rows.append((gid, "differs", len(ref), len(cand), len(missing), len(extra), detail))
+                ["-%s|%s" % e for e in sorted(missing)][:4]
+                + ["+%s|%s" % e for e in sorted(extra)][:4])
+            rows.append((gid, "differs", len(ref), len(cand),
+                         len(missing), len(extra), len(drift), detail))
 
     OUT.parent.mkdir(exist_ok=True)
     with OUT.open("w", encoding="utf-8", newline="\n") as fh:
@@ -105,11 +129,14 @@ def main() -> int:
             fh.write("\t".join(str(x) for x in r) + "\n")
 
     print("comparable people (both a live scrape and a saved page): %d" % compared)
-    print("  identical      %d" % exact)
-    print("  differs        %d" % sum(1 for r in rows if r[1] == "differs"))
-    print("  parse-error    %d" % sum(1 for r in rows if r[1] == "parse-error"))
+    print("  structurally identical          %d" % exact)
+    print("    of those, with a drifted name %d"
+          % sum(1 for r in rows if r[1] == "identical-names-drifted"))
+    print("  differs                         %d" % sum(1 for r in rows if r[1] == "differs"))
+    print("  parse-error                     %d" % sum(1 for r in rows if r[1] == "parse-error"))
     if compared:
-        print("agreement: %d/%d = %.1f%%" % (exact, compared, 100.0 * exact / compared))
+        print("STRUCTURAL agreement: %d/%d = %.1f%%" % (exact, compared, 100.0 * exact / compared))
+    print("name drift: %d edges carry the same id and phrase with a different name" % drifted)
     print("-> %s" % OUT.relative_to(ROOT))
     return 0
 

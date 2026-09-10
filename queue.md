@@ -40,6 +40,36 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   The OneTab page in `undigested.md` is **not** digested and stays there: still being worked on,
   *"better for my judgment on this one."*
 
+- **⛔ PROVE THE SAVED-PAGE READER EQUALS THE LIVE SCRAPER, ON A POPULATION THAT MEANS SOMETHING.**
+  Emma, 2026-09-10, on the `geni_pages` HTML: *"imo we need something that we can prove gives 100%
+  identical results to scraping those ones. Undelete them and start working to get that result."*
+
+  **It stands at 7 of 7 and SEVEN IS THE WHOLE COMPARABLE POPULATION.** That is the number to
+  raise, not the percentage — `CLAUDE.md` § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE
+  FIRST SLICE*. `scripts/prove-saved-page-equivalence.py` is the differential and
+  `reports/saved-page-equivalence.tsv` is its output; `devlog.md` 2026-09-10 has the two defects
+  it already found.
+
+  **⛔ THE CAPTURE MUST TAKE BOTH READINGS IN ONE PAGE LOAD.** Comparing a saved page against a
+  live scrape taken months later confounds two different things: a parser defect, and a family
+  that genuinely changed on Geni. Those are indistinguishable after the fact, so the run captures
+  **the extension's own `family` result AND the `<td>` beside `<th>Immediate Family:</th>`, off
+  the same DOM, in the same visit.** The cell is parsed offline afterwards and the two compared.
+
+      1. navigate to  https://www.geni.com/people/x/<geni id>
+      2. dispatch     {job:"family", geni_id:"<geni id>"}
+      3. stash the job's `tsv` AND the family cell's `outerHTML`
+      4. render both into a `<pre>` and read them out with `get_page_text`
+
+  **The transport is `get_page_text`, not the JS result.** Measured today: a `javascript_tool`
+  result truncates at roughly **1.3 KB** and its content filter refuses any line carrying
+  `key=value` — which the scrape's own `# statistics` header is — while `get_page_text` carried
+  **18,529 characters** intact off a `<pre>`. That is the difference between 75 round trips and 6.
+
+  Targets come from `geni-scraping/*.html`, because those people yield a second free number
+  besides the equivalence: **saved page against today's page is the drift rate**, and it is the
+  thing that says how far the 1,555 pages on disk can be trusted at all.
+
 - **⛔ THE ALGORITHM IS STATELESS EXCEPT FOR TWO THINGS. Ruled 2026-09-10.**
   *"This entire algorithm is completely stateless except for the actual connectivity graph of
   which it is built off of, and the dates of attempts."*
