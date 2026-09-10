@@ -34552,3 +34552,44 @@ sample, census-check, create an ancestor, `Descendants` from the ancestor, merge
 diminishing returns — `queue.md` § *THE DISJOINTNESS CAMPAIGN*, which sits behind the Wikidata
 paths by its own placement.
 
+
+## 2026-09-09 — ⛔ THE UNION TREE BUILDS. 3,038,219 people, and `CLAUDE.md` said it would not
+
+`genimerge merge --connectivity --also out/wikidata-tree.ged` **completed locally**:
+
+    3,038,219 people
+    1,961,091 families
+      516 MB on disk
+
+**`CLAUDE.md` recorded that 3 million does NOT fit** — *"it would want ~18.2 GB"* against a
+13.3 GB local kill, fitted at 6.07 GB per million from four slim measurements. That figure was
+right about the **ordinary slim** and says nothing about this one: `--connectivity` keeps the
+primary key, the sex and the five structural pointers and drops everything else, so the per-person
+cost is a different constant entirely. The projection was not wrong, it was answering a different
+question — and the only way to find that out was to run it.
+
+So the union of Geni and Wikidata — 1,451,993 corpus people fused with 1,603,736 from the
+Wikidata overlay on the Geni id — **exists as a single GEDCOM**, which is what the campaign needs
+and what did not exist this morning. Not wired into CI, per instruction.
+
+## 2026-09-09 — the collector pipeline, proved end to end on the 266,201
+
+First person off `reports/unconnected-p2600.tsv`: **Zhu Jingze 朱敬則** `6000000074746020450`,
+Tang dynasty, 635–709. Navigate → dispatch `{job:"individual"}` → write the files → next, with
+every decision inside the extension.
+
+    state           miss_below_floor
+    stats           family_tree 77 · blood_relatives 250 · ancestors 1 · descendants 111
+    export_decision no figure clears its threshold; the miss is real and an export would
+                    return only what is already on the page
+    relatives       4 — father Zhu Cao, son Zhu Guangdi, brothers Zhu Rengui and Zhu Qimin
+
+The gate refused the export itself, which is the point: no discretion was exercised here.
+
+**⛔ AND IT CRASHED AFTER SUCCEEDING, WHICH IS THE WORST SHAPE OF FAILURE.**
+`write-family-scrape.py` wrote the family file and the `isolates.csv` row correctly — CJK intact —
+and then died with `UnicodeEncodeError` on its own summary `print`, because Windows gives stdout
+the locale codepage and `朱敬則` is not in cp1252. **A traceback that arrives after the work
+succeeded reads as a failed capture and invites a re-run**, and the 266,201-row population is full
+of CJK names. `sys.stdout.reconfigure(encoding="utf-8")` at the top of `main`.
+

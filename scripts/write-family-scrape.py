@@ -168,6 +168,16 @@ def read_stdin() -> str:
 
 
 def main() -> int:
+    # ⛔ THE FINAL `print` DIES ON A CJK NAME UNDER cp1252, AFTER THE FILES ARE WRITTEN.
+    # Windows gives stdout the locale codepage, so `Zhu Jingze 朱敬則` raises
+    # `UnicodeEncodeError` on the summary line — with the family file and the isolates row
+    # already on disk. A traceback that arrives AFTER the work succeeded reads as a failed
+    # capture and invites a re-run. Measured 2026-09-09 on the first CJK person off the
+    # 266,201-row worklist; that population is full of them.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
     raw = read_stdin()
     blob = json.loads(raw) if raw.lstrip().startswith("{") else parse_block(raw)
     ext, relatives = blob["ext"], blob["relatives"]
