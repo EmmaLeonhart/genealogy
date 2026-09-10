@@ -399,20 +399,25 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   No special batch and no queue-jumping: they join the normal label batch and drain over roughly
   28 runs alongside everything else. The cap is not suspended for a backlog.
 
-- **`undigested.md` — NEEDS-INVESTIGATION.** Raw text from you, verbatim and unprocessed.
-  Investigating it is a real outstanding item and belongs in every status report under that tag,
-  so it does not quietly disappear. **But not yet, and not unprompted** — you, 2026-09-09: *"I do
-  not want you to investigate"*. It rests until you say go.
+- **PULL THE CJK CULTURE VERDICTS INTO THE REPO.** The queue is live —
+  <https://claude.ai/code/artifact/f6b7d351-e367-4237-9c16-c9e3457d5fee> — **137 people**, each
+  shown with their romanised relatives and the classifier's refusal sentence. Verdicts persist in
+  the artifact's own store as they are made.
 
-  Currently holding **two batches of hinge people** — *"people who seem to have clearly disjoint
-  large numbers of descendants, and as such are good descendants export sources"* — for
-  descendants exports later:
+  **`reports/cjk-culture-manual.tsv` is committed with its header and no rows**, and
+  `build-cjk-romanisation.py` reads it every run as evidence 5, applied after all five tiers so a
+  character rule cannot silently overrule a person.
 
-  * **eastern european tang**, nine profiles, 2026-09-09
-  * **western european tang**, six profiles, 2026-09-09 — Cilician Armenia, Lampron and Barbaron
+  **⛔ THE STORE IS NOT REACHABLE FROM A SCRIPT.** It is read with the Artifact tool from inside a
+  session, so this is a step somebody takes and cannot be a cron:
 
-  Her distinction, not an inferred one: *"This is a new one old hinge was eastern european tang
-  … thjis is western european tang"*.
+      1. read the artifact's `cultures` collection
+      2. write the rows into `reports/cjk-culture-manual.tsv` — geni_id, culture, cjk, decided_at
+      3. commit, and the next rebuild picks them up
+
+  **The number to watch on that rebuild is how many verdicts OVERRULED the classifier**, which
+  the run prints. It is the error rate on exactly the people it found hardest, and it is the only
+  measurement that says whether the classifier is worth keeping at all.
 
 ## ALWAYS LAST — the tail
 

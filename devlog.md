@@ -34988,3 +34988,22 @@ hand verdict of `ja` must come out `ja`, and `skip` must not wipe a verdict.
 `reports/cjk-culture-manual.tsv` is the file, committed with its header and no rows yet. Filling
 it means reading the artifact's store back and writing the rows in -- the store is reachable from
 a session, not from a script, so that is a step somebody takes rather than a cron.
+
+## 2026-09-10 -- sweep: `undigested.md` holds nothing undigested
+
+**The item is deleted.** It was tagged NEEDS-INVESTIGATION and held *"until you say go"*, and all
+three things in the file have since been digested:
+
+    hinge people, eastern european tang   9 profiles   -> the hinge-people queue item, with ids
+    hinge people, WESTERN european tang   6 profiles   -> the same item
+    the OneTab page                       19 people    -> its own item, and the file says DIGESTED
+
+`undigested.md` stays on disk as the record of what was said and when. What it does not hold any
+more is undigested material, so a queue item whose whole content is *this needs investigating*
+is describing a state that no longer exists.
+
+**And a piece of live work had no queue item at all**, which is the other half of a sweep: the
+CJK culture verdicts have to be pulled out of the artifact's store and written into
+`reports/cjk-culture-manual.tsv` by hand, because that store is reachable from a session and not
+from a script. It cannot be a cron and it was recorded only in a devlog entry, which is where
+work goes to be forgotten.
