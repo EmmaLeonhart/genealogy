@@ -34750,3 +34750,34 @@ Gamle Olof is not settled and is not guessed"* — and it is settled now: **`Rep
 takes his place and **Tore Underberge III `6000000005607672589` comes off the list**. Gamle Olof
 `5328189268700111491` is untouched and still ambiguous by one slot against the Chinese clusters,
 which is recorded rather than resolved.
+
+## 2026-09-09 -- the bracketed-variant algorithm: all 14 situations, ruled one at a time
+
+The 132 bracketed rows were classified off the file rather than sampled, and they hold
+**fourteen distinct structural situations**. The base case covers 69 of them; the other
+thirteen were each put up as a pickable option with its output shown, and each was ruled.
+
+    69  Ann Bincks (Benckes|Bench)               the base case
+    34  ..., Heiress of Giffords Hall            comma phrase   -> en label only, not mul
+    14  (Killem|Killum|Killam)                   3+ variants    -> one alias each, no limit
+    10  Judith|Godith Bosom (Bozon|Bosun)        pipe + bracket -> CROSS PRODUCT
+     5  (Thorkild|Tyrgils)                       bracket is the whole name
+     5  (Maria|Antiza) Golescu                   bracket on the given name -> mirrored
+     5  NN de Haselrick (Hazelrigg|Hesilrige)    NN -> the EXISTING protocol, no new rule
+     1  Margaret (not Cecily) Francis (...)      a negation -> dropped, Cecily never emitted
+     1  Kone (|Kunigunda) of (Hastevere)         empty variant slot -> ruled on its own
+     1  (Teppana|Tahvana) of [Husu]              square brackets   -> ruled on its own
+
+**The comma is the tell, and it is the one thing generalising would have got wrong.** A
+comma-separated tail is a byname and stays out of `mul`; an un-comma'd `of X` is part of the
+name and stays in. Those were ruled in opposite directions on exactly that difference, in the
+same sitting.
+
+**`NN` needed no ruling at all.** Asked, the answer was that a protocol for an `NN` given name
+and an `NN` surname already exists somewhere in the documentation -- and it does:
+`docs/rules/names.md`, the NN/Private label algorithm. `mul` is marker plus surname, the other
+languages take the formulaic descriptive label from `scripts/build-nn-label-batch.py`, and the
+bracket never reaches them. Writing a fresh `NN` rule here would have been a second copy of a
+rule that already exists, which is how two rules start disagreeing.
+
+**Still not written: the emitter.** Everything above is specification.

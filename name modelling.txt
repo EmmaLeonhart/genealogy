@@ -84,14 +84,77 @@ THE PIPE INSIDE ONE NAME, NOTHING ANCHORING IT -- 136 rows
     ruling and accepted: `Daniel Tichenor|Titchenal` yields the alias `Titchenal`,
     a bare surname with no given name on it.
 
-A BRACKETED VARIANT GROUP -- 132 rows
-    Ann Bincks (Benckes|Bench)   Sarah Kilkam (Killem|Killum|Killam)
-    Elizabeth Paine (Payne|Penn)
+A BRACKETED VARIANT GROUP -- 132 rows, and all 14 of its situations are ruled
+---------------------------------------------------------------------------
 
-    The unbracketed name is the label; each bracketed spelling becomes an `Amul`
-    CARRYING THE GIVEN NAME. The parentheses never reach a label.
+THE BASE CASE -- 69 rows. The unbracketed name is the label; each bracketed spelling
+becomes an `Amul` CARRYING THE GIVEN NAME. The parentheses never reach a label.
 
-        Lmul  Ann Bincks
-        Amul  Ann Benckes
-        Amul  Ann Bench
-        P734  Bincks
+    Ann Bincks (Benckes|Bench)
+
+        Label:  Ann Bincks
+        Alias:  Ann Benckes
+        Alias:  Ann Bench
+
+The other thirteen situations were enumerated off the file and ruled ONE AT A TIME,
+because they are not the same question and guessing any of them would have been a
+positional parse.
+
+A. A COMMA PHRASE AFTER THE BRACKET -- 34 rows.
+   `Isabel Fraunceys (Francis|Frauncis), Heiress of Giffords Hall`
+   KEEP IT IN THE `en` LABEL, NOT IN `mul`.
+
+        Lmul   Isabel Fraunceys
+        Len    Isabel Fraunceys, Heiress of Giffords Hall
+
+   THE COMMA IS THE TELL. An un-comma'd `of X` is part of the name and stays -- see H1
+   and H2 below, which were ruled the other way on exactly that difference.
+
+B. A PIPE OUTSIDE THE BRACKET AS WELL AS INSIDE -- 10 rows. CROSS PRODUCT: every given
+   name against every surname spelling.
+
+        Judith|Godith Bosom (Bozon|Bosun)
+
+        Label:  Judith Bosom
+        Alias:  Judith Bozon      Alias:  Godith Bosom
+        Alias:  Judith Bosun      Alias:  Godith Bozon
+                                  Alias:  Godith Bosun
+
+C. THE BRACKET IS THE WHOLE NAME -- 5 rows. No surname anywhere. First is the label, the
+   rest are aliases. `(Thorkild|Tyrgils)` -> `Thorkild`, alias `Tyrgils`.
+
+D. THE BRACKET IS ON THE GIVEN NAME -- 5 rows. The same rule, mirrored.
+   `(Maria|Antiza) Golescu` -> `Maria Golescu`, alias `Antiza Golescu`.
+   `Purcirto (Artinide|Hartneid) de Attems` -> `Purcirto Artinide de Attems`,
+   alias `Purcirto Hartneid de Attems`.
+
+E. `NN` AS THE GIVEN NAME -- 5 rows. NO NEW RULE: the NN/Private label algorithm already
+   covers it -- `docs/rules/names.md`, THE NN/PRIVATE LABEL ALGORITHM APPLIES TO EVERY
+   UNNAMED PERSON. `mul` is the marker plus the surname and the variants are `Amul`
+   carrying the marker; the other languages take the FORMULAIC DESCRIPTIVE label built
+   from the nearest named relative, owned by `scripts/build-nn-label-batch.py`, and never
+   the bracket.
+
+        NN de Haselrick (Hazelrigg|Hesilrige)
+
+        Lmul   NN de Haselrick
+        Amul   NN Hazelrigg      Amul   NN Hesilrige
+        Len    <descriptive, from build-nn-label-batch.py>
+
+   `NN (Mary|Elizabeth) Verney` is NOT this case: a given name IS recorded, twice, so it is
+   situation D and the `NN` drops. -> `Mary Verney`, alias `Elizabeth Verney`.
+
+F. THREE OR MORE VARIANTS -- 14 rows. One alias each, NO LIMIT.
+   `Sarah Kilkam (Killem|Killum|Killam)` -> label plus three aliases.
+
+G. A NEGATION IN THE BRACKET -- 1 row.
+   `Margaret (not Cecily) Francis (Frauncis|Franceys|Frauncys)`
+   `(not Cecily)` is a DESCRIPTION MARKER and comes out of the label; the spelling bracket
+   behaves normally. Cecily is not emitted anywhere, as an alias or otherwise.
+
+H1. AN EMPTY VARIANT SLOT -- 1 row, ruled on its own.
+    `Kone (|Kunigunda) of (Hastevere)` -> `Kone of Hastevere`, alias `Kunigunda of
+    Hastevere`. The empty slot is ignored and the second bracket is read as part of the name.
+
+H2. SQUARE BRACKETS -- 1 row, ruled on its own.
+    `(Teppana|Tahvana) of [Husu]` -> `Teppana of Husu`, alias `Tahvana of Husu`.
