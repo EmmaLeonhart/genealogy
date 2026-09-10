@@ -92,6 +92,20 @@ accepted any letter, `@NI04461@` parsed as Geni ID `04461` and pointed at a stra
 
 # THE RULES
 
+## ⛔ The default when nothing else is running
+
+**Idle time goes to the disconnected list.** Whenever the queue is not producing work, go back to
+`reports/p2600-disconnected.tsv` and run the Chrome extension over it, linking unconnected
+Wikidata people in through Geni. That is the standing fallback, not something to be asked about.
+
+**⛔ A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE FIRST SLICE.** The recurring failure here
+is taking a task that runs for hours over many rounds, drawing a conclusion from the first
+result, and reporting it as though the work were done — dressed up as caveats, which reads as
+diligence. **A `Descendants` ball that came back at the cap is truncated by definition** and can
+only say what is *in* it, never what is absent from the descent. The descendants campaign needs
+roughly **15,000 descendants of a person** before a question about where their line reaches is
+answerable at all; one 5,000-person ball is not a sample of that, it is the first step of it.
+
 ## ⛔ The hard ones
 
 - **PUSH TO `main`. Always, without asking.** Standing grant. Open the PR, merge it, trigger the
