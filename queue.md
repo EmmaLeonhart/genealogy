@@ -284,6 +284,19 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   *"CDP … timed out … the renderer may be frozen"*. It is not frozen and the job is not lost —
   check again in a separate call and the result is there.
 
+  ⛔ **RULED 2026-09-10: THE THIRD MISS SHAPE IS NOT A DEFECT AND NOT A BLOCKER.** *"They are
+  supposed to go in the queue cycling forever."* A person Geni answers with *"No path found to
+  <name>."* keeps a blank `via`, gets stamped, waits out the 30-day cooldown and comes round
+  again. That is the design. Measured the same day: **20 of 43 misses, 47%**, take this shape,
+  and it was written up as a blocker three times before being ruled on. It is not one.
+
+  ⛔ **AND THE CBDB CLUSTER IS THE SAME SHAPE OF NON-PROBLEM.** *"All they're supposed to be
+  doing here is we just have set its dates ... we treat them as though we've done it. It's
+  gonna be at least thirty days until they're addressed again. So that's it."* 224 people,
+  managed by `CBDB (China Biographical Database)`, no `Add Family` link, not editable. They are
+  visited, they fail, they are stamped, they come back in thirty days. No campaign is owed on
+  them and none is to be started.
+
   ⛔ **GENI HAS TWO MISS SHAPES AND ONLY ONE CAN BE ANSWERED.** Most profiles give the pair
   *"No blood relationship was found."* + *"No in-law relationship was found."* Katalin Varga
   `291026634180003195` gave the third form — *"No path found to Katalin Varga."* — with **no
