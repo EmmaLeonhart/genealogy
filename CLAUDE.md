@@ -29,14 +29,20 @@ into entry points on that date.
 
 ## What is left
 
-* **The Geni exports are mostly done.** A few are still running, and those are commanded rather
-  than routine — they were judged important individually.
+* **The Geni exports are mostly done.** A few are still running. They are **commanded rather
+  than routine and they are a bit iffy** — run because those individuals were judged important,
+  not because a rule selected them.
 * **The descendant-gathering campaign.** Comprehensively export the descendants of named
   individuals, because **the descendants of these people are poorly documented on Geni and other
   sites and tend to be removed abruptly** — so gathering them is time-sensitive, and
   representing them on Wikidata is the point. `queue.md` holds the roster and the order.
 * **The `P2600` connection campaign** — every holder either connected to Charlemagne or confirmed
   impossible. 518,889 holders, 266,201 currently disconnected.
+
+## Not yet — the Wikidata update
+
+**Updating the Wikidata side properly is wanted, and it is not time.** It waits; the pipeline has
+to get further first. Do not start it, and do not treat its absence as a gap to close.
 
 ## ⛔ The practical barrier: the zipper merge
 
