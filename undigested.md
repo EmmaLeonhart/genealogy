@@ -57,3 +57,12 @@ https://www.geni.com/people/Leo-I-the-Magnificent-king-of-Armenia/60000000061014
 https://www.geni.com/people/Tolita-Doleta-of-Armenia/6000000006101354628?through=6000000006101354639
 
 https://www.geni.com/people/Ruben-III-Rouponi-King-of-Armenia/6000000007086662766?through=6000000006101354639
+
+---
+
+## 2026-09-09 — a OneTab page, hers to keep working on
+
+and yeah https://www.one-tab.com/page/2msuxPNbTrOZicwGHbqiLQ just astore this thing I am gonna work on it a bit more since it is better for my judgment on this one
+
+**Not opened.** She is still working on it — *"better for my judgment on this one"* — so it is
+stored and nothing is read from it until she says.

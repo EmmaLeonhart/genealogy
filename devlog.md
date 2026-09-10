@@ -33656,3 +33656,10 @@ parent-adding campaign has no artefacts and has not started, **0** pipe labels a
 Ruben III — pasted verbatim. Her distinction and not an inferred one: *"This is a new one old
 hinge was eastern european tang … thjis is western european tang"*. Nothing looked up, nothing
 checked; the queue pointer now names two batches rather than one.
+
+## 2026-09-09 — a OneTab page stored, unopened
+
+`https://www.one-tab.com/page/2msuxPNbTrOZicwGHbqiLQ` into `undigested.md`. *"just astore this
+thing I am gonna work on it a bit more since it is better for my judgment on this one"* — so it
+is not opened, not fetched and not summarised. A OneTab page is a list of tabs; reading it would
+be exactly the investigating she has twice told me not to do, and she is still forming a view.
