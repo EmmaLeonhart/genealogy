@@ -114,9 +114,17 @@ Wikidata people in through Geni. That is the standing fallback, not something to
 is taking a task that runs for hours over many rounds, drawing a conclusion from the first
 result, and reporting it as though the work were done — dressed up as caveats, which reads as
 diligence. **A `Descendants` ball that came back at the cap is truncated by definition** and can
-only say what is *in* it, never what is absent from the descent. The descendants campaign needs
-roughly **15,000 descendants of a person** before a question about where their line reaches is
-answerable at all; one 5,000-person ball is not a sample of that, it is the first step of it.
+only say what is *in* it, never what is absent from the descent.
+
+**⛔ THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT.** The descendants campaign runs
+**Monte Carlo exports off the people already in the person's GEDCOM** — sample, check the census,
+export from the saturated ones, merge, sample again — **until it is clearly hitting significant
+diminishing returns.** Only then is it clear whether the thing works.
+
+**Do not substitute a number for that.** *15,000 descendants* was invented here as a floor and it
+is not the rule: a fixed target answers "have we done enough arithmetic", and the actual question
+is whether new exports are still returning new people. One 5,000-person ball is the first round
+of a loop, not a sample of anything.
 
 ## ⛔ The hard ones
 
