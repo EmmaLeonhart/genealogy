@@ -912,6 +912,34 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
 
 ## THE END OF THE QUEUE
 
+- **⛔ A PUSH MORATORIUM UNTIL 18:00 TODAY, 2026-09-10.** Ruled at 16:24 PST: *"I want a
+  moratorium on pushing until 6pm, with a cron job that commands to commit and push then. If you
+  have really good changes right now commit and push them immediately as they are exempt from the
+  moratorium."*
+
+  **It is on PUSHING, not on committing.** Work carries on and lands in local commits; only the
+  push waits. A cron fires at 18:00 to commit and push everything that has accumulated.
+
+  **The exemption is narrow and it is for GOOD changes, not for convenience** — something that
+  would be bad to sit on. Nothing was pending when this was ruled: the tree was clean and
+  `origin/main` was level with `HEAD` at `0a37be16`, so nothing was pushed under it.
+
+  This item is deleted once the 18:00 push has run. It overrides `CLAUDE.md`
+  § *PUSH TO `main`. Always, without asking* **for these ninety minutes only** — that rule is the
+  standing default and resumes at 18:00.
+
+- **⛔ TESTING THE COMMITS STUFF — NOT BEFORE 21:00 TODAY, 2026-09-10.** *"Add testing the commits
+  stuff to the queue lol with a condition that it can't be done until 9pm today."*
+
+  **The gate is the instruction; the scope is not pinned down and is not to be guessed at now.**
+  *"the commits stuff"* was said without elaboration, and the two readings differ enough to matter
+  — testing that today's commits are sound (which under `CLAUDE.md` § *TESTS RUN IN CI/CD OR NOT
+  AT ALL* means checking which sha CI last went green on, not a local `pytest`), or testing the
+  commit tooling itself. **Ask when the gate opens**, per § *ambiguity about which thing is meant
+  is asked*.
+
+  Nothing about it is to be investigated, run or prepared before 21:00.
+
 - **⛔ AN ANALYSIS OF THE FIVE ARTEFACTS SENT 2026-09-10.** *"Things to think about. But put at the
   end of the queue an analysis of these"* — so this is the roster and **nothing here is
   investigated, measured, fetched or queried.** `CLAUDE.md` § *"Add it to the end of the queue"
