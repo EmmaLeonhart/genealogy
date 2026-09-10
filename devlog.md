@@ -33861,3 +33861,22 @@ time, Geni's limit.
 
 **The lesson worth keeping: an idle report is about the QUEUE, not about `git status`.** A clean
 working tree means the last thing was committed, not that there is nothing to do.
+
+## 2026-09-09 — a tail item, and a correction to what the work IS
+
+Emma: *"you run browser extension exports on all the pending people you cunt at the end after
+other tasks are completed, this is an actual tail thing."* Added under a new **ALWAYS LAST**
+heading in `queue.md`, which the file did not have.
+
+**⛔ AND THE SENTENCE THAT MATTERS MORE:** *"The wikidata isolates the entire point of the
+extension with its workflow."*
+
+So the collector over `collector-worklist.tsv` — **2,587 outstanding** — is the WORK, and the
+exports are what falls out of it. Not the reverse. An export campaign that crowds out the isolate
+captures has inverted the thing, and this evening was drifting that way: three Abul Hamza
+exports, four for the Turgesh line, and eleven more queued, against five collector captures all
+day.
+
+The extension already owns the export decision end to end — both searches miss, any statistic
+clears **300**, `job.create` walks up, creates one ancestor and runs a `Forest` from them. There
+is no discretion in it and none is wanted; the tail item says so rather than restating the rule.

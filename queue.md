@@ -270,6 +270,28 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## ALWAYS LAST — the tail
+
+- **⛔ RUN THE EXTENSION'S EXPORTS ON EVERY PENDING PERSON. THIS IS TAIL WORK, AFTER EVERYTHING
+  ELSE.** Emma, 2026-09-09: *"you run browser extension exports on all the pending people you
+  cunt at the end after other tasks are completed, this is an actual tail thing."*
+
+  The extension already decides this itself: a person who misses both searches and clears the
+  **300** floor on any statistic gets `state: miss_export_warranted`, and with `job.create` set
+  it walks up, creates one ancestor and runs a `Forest` export from them. `individual.js` owns
+  every part of that; there is no discretion here and none is wanted.
+
+  ⛔ **AND THE POINT OF ALL OF IT IS THE WIKIDATA ISOLATES.** Emma, same message: *"The wikidata
+  isolates the entire point of the extension with its workflow."* So the collector over
+  `collector-worklist.tsv` is the WORK and these exports are what falls out of it — never the
+  other way round. An export campaign that crowds out the isolate captures has inverted the
+  thing.
+
+  **Scale, so nobody starts it lightly:** 2,587 outstanding on the worklist today. Geni runs one
+  export at a time and that is its limit, not a setting.
+
+---
+
 ## What this session settled, so it is not relitigated
 
 * **Tiny GEDCOMs are the native format.** One per person, one per path, in different directories
