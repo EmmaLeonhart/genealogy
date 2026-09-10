@@ -136,6 +136,32 @@ jobs:
             [ -f "$f" ] && printf '%-40s %s\n' "$f" "$(wc -c < "$f")"
           done
 
+      # **The unconnected-`P2600` worklist, AFTER the tree build.** `docs/unconnected-worklist.md`
+      # § 6: the QID and the Geni id are fixed, the neighbourhood size and the membership are
+      # recalculated, and `last_attempted` is read from **the previous version of this same file**
+      # — which is the copy this checkout brought, carrying every date the collector stamped since
+      # the last run. ⛔ *THERE IS NO SECOND FILE*, so the step must run against the checked-out
+      # file and be committed below, in the same commit as the tree it was measured on.
+      #
+      # It runs here rather than as a step inside `rebuild-everything.py` for one reason: that
+      # script stops at the first failing step, so a failure here would abandon a merge that cost
+      # twenty minutes and the commit step would never run. `continue-on-error` shows the failure
+      # in red and lets the tree land; a stale worklist is recoverable and a lost rebuild is not.
+      #
+      # The graph is a union-find over `p2600-all.tsv`, `relations.tsv` and the freshly rebuilt
+      # `derived-family.csv` — a stand-in for measuring the neighbourhood on the merged tree,
+      # which waits on the Wikidata overlay being wired into the merge. The script's own docstring
+      # carries that, and the membership and the component size are the same either way.
+      - name: The unconnected-P2600 worklist
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: |
+          before=$(wc -l < reports/unconnected-p2600.tsv 2>/dev/null || echo 0)
+          python scripts/build-unconnected-worklist.py
+          echo "rows before: $before  after: $(wc -l < reports/unconnected-p2600.tsv)"
+          head -3 reports/unconnected-p2600.tsv
+
       # `pack-derived.py` gzips the four CSVs that exceed GitHub's 100 MiB limit; the plain files
       # are gitignored and the `.gz` are what is tracked. `out/merged.ged` is never committed.
       - name: Commit the rebuilt tree
@@ -158,6 +184,10 @@ jobs:
             'committed -- it is 409 MB and over the file limit -- but everything derived' \
             'from it is, so the daily pipeline now reads a tree this run built rather than' \
             'a photograph taken locally.' \
+            '' \
+            'reports/unconnected-p2600.tsv is regenerated in the same commit: membership and' \
+            'neighbourhood size recalculated against this tree, last_attempted carried forward' \
+            'from the version this run checked out.' \
             > /tmp/msg.txt
           git commit -F /tmp/msg.txt
           git pull --rebase origin main

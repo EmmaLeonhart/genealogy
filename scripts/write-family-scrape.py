@@ -5,11 +5,13 @@ This is the write-it-into-the-repo half. The collector returns
 the scrape on a data attribute; this puts it where it belongs and updates the isolate ledger in
 the same pass, so the two cannot drift.
 
-It writes two things per person:
+It writes three things per person:
 
   `geni-families/<geni id>-family.tsv`   step 1 of `docs/per-individual-loop.md`
   a row in `reports/isolates.csv`        the numbers are stored before a path is found or
                                          not, and the page is stayed on to request the path
+  `last_attempted` in the worklist       `reports/unconnected-p2600.tsv`, piece 6 of
+                                         `docs/unconnected-worklist.md` — see `attempt_ledger.py`
 
 **`path_found` is THREE-VALUED and the blank is load-bearing.** `yes` / `no` / empty-while-running.
 A pending search folded into the miss column is the failure `geni-paths/README.md` § *THE SEARCH
@@ -309,6 +311,20 @@ def main() -> int:
     sys.path.insert(0, str(ROOT / "scripts"))
     from export_gate import decide
     d = decide(stats)
+
+    # ⛔ THE ATTEMPT IS STAMPED HERE BECAUSE NOTHING ELSE CAN STAMP IT.
+    #
+    # `docs/unconnected-worklist.md` § 5 wants `last_attempted` written "by the extension,
+    # automatically, every time it runs on somebody" — and the extension cannot write into the
+    # repo at all (`queue.md` § *Nothing downloads*). This script is the one thing that runs
+    # exactly once per person the collector runs on, so this is where *every time* lives.
+    #
+    # An attempt is RUNNING ON SOMEBODY, not succeeding: a failure costs one attempt and 30 days,
+    # and a hit leaves the file at the next build because membership is recalculated. A Geni id
+    # the worklist holds no row for is reported, never invented — `scripts/attempt_ledger.py`.
+    from attempt_ledger import describe, stamp
+    today = datetime.date.today()
+    attempt = stamp([gid], today=today)
     # Print the verdict that was WRITTEN, not the one today's banner suggested. The first
     # version printed `fresh`, so a revisit that correctly preserved a recorded `no` announced
     # `pending` -- a summary contradicting the file it had just written, which is the shape of
@@ -317,6 +333,7 @@ def main() -> int:
     print("%s  %s | %d relatives | path=%r%s | %s" % (
         gid, name, len(relatives), verdict or "pending", kept,
         ("EXPORT if it misses: " + d["why"]) if d["export"] else ("NO EXPORT: " + d["why"])))
+    print("  worklist: %s" % describe(attempt, today.isoformat()))
     return 0
 
 

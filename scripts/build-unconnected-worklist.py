@@ -5,6 +5,11 @@
 `docs/unconnected-worklist.md` is the specification. This is pieces 2 through 5 of it —
 neighbourhood size, the four columns, the date carry-forward, and the ordering.
 
+Piece 6 — the date being WRITTEN on every attempt — is `scripts/attempt_ledger.py`, called from
+`scripts/write-family-scrape.py` once per person the collector runs on. It edits the one field in
+place and leaves the ordering alone, because the ordering is this script's and CI runs it after
+the tree build.
+
 ## The columns, in this order, because the order is part of the spec
 
     qid                 Wikidata QID
@@ -83,6 +88,31 @@ NL = chr(10)
 TAB = chr(9)
 
 
+def eligible_on(last):
+    """The date a row becomes eligible again: its attempt plus the 30-day cooldown.
+
+    An unparseable date sorts first rather than crashing the run: the column is written by the
+    collector pipe and a malformed value must not be able to stop the whole file being built.
+    """
+    try:
+        return datetime.date.fromisoformat(last) + COOLDOWN
+    except ValueError:
+        return datetime.date.min
+
+
+def sort_key(row, today):
+    """§ 7 of the spec, as one total key — `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*.
+
+    ELIGIBLE block first; the ineligible below it ordered by WHEN THEY BECOME ELIGIBLE. Within
+    either block, neighbourhood size DESCENDING then qid ASCENDING. Every component is a number,
+    a date or a string, so the same rows produce the same bytes on any machine.
+    """
+    qid, _gid, size, last = row
+    when = eligible_on(last)
+    ready = when <= today
+    return (0 if ready else 1, datetime.date.min if ready else when, -int(size), qid)
+
+
 def load_previous(path):
     """`geni_id -> last_attempted` from the previous committed version of THIS file."""
     if not path.exists():
@@ -159,21 +189,10 @@ def main() -> int:
         last = previous.get(gid) or (SEED_ATTEMPTED if gid in attempted else SEED_NEVER)
         rows.append((sorted(qids)[0], gid, sizes.get(gid, 1), last))
 
-    def eligible_on(last):
-        try:
-            return datetime.date.fromisoformat(last) + COOLDOWN
-        except ValueError:
-            return datetime.date.min
-
     # ELIGIBLE block first; then the ineligible, ordered by when they become eligible.
-    # Within either: neighbourhood size DESCENDING, then qid ASCENDING.
-    def key(r):
-        qid, gid, size, last = r
-        when = eligible_on(last)
-        ready = when <= today
-        return (0 if ready else 1, datetime.date.min if ready else when, -size, qid)
-
-    rows.sort(key=key)
+    # Within either: neighbourhood size DESCENDING, then qid ASCENDING. `sort_key` at module
+    # level, so the test suite pins the order rather than a closure nothing can reach.
+    rows.sort(key=lambda r: sort_key(r, today))
     ready = sum(1 for r in rows if eligible_on(r[3]) <= today)
 
     out = pathlib.Path(args.out)

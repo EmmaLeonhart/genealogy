@@ -145,12 +145,20 @@ order of magnitude the file starts at; the real number comes from the tree once 
 
 ## What exists, and what does not
 
+**Updated 2026-09-09, after the build.** Four of the seven rows moved; the two that did not are
+one item, and it is the one § 0 opens with.
+
 | | |
 | --- | --- |
 | the connected/disconnected split | **exists** — `scripts/p2600-connectivity.py`, in memory |
-| Wikidata as a GEDCOM in the merge | **does not exist** |
-| neighbourhood size | **does not exist** |
-| the TSV, its four columns, the ordering | **does not exist** |
-| the date carry-forward | **does not exist** |
-| the extension writing a date on each attempt | **does not exist** |
-| CI running any of it | **does not exist** |
+| Wikidata as a GEDCOM | **exists** — `scripts/build-wikidata-gedcom.py`, and the union tree BUILDS: 3,038,219 people, 516 MB, locally |
+| Wikidata as a GEDCOM **in the merge** | **does not exist** — not wired into CI, per instruction |
+| neighbourhood size | **exists as a STAND-IN** — a union-find over the same three edge sources, which gets the size right and destroys the family ids the GEDCOM form is for |
+| the TSV, its four columns, the ordering | **exists** — `scripts/build-unconnected-worklist.py`, 266,201 rows |
+| the date carry-forward | **exists** — the previous version of the file is the input, and there is no second file |
+| the extension writing a date on each attempt | **exists** — `scripts/attempt_ledger.py`, called from `scripts/write-family-scrape.py`, which is the one thing that runs once per person the collector runs on. The extension cannot write into the repo at all: nothing downloads |
+| CI running any of it | **exists** — `.github/workflows/tree.yml`, after the rebuild and committed with it |
+
+**So what is outstanding is § 0 and § 1 only:** the overlay going INTO the merge, and the
+neighbourhood then being measured on the merged tree rather than on the stand-in. Everything
+downstream of that is built and running, and swapping the one measurement changes nothing else.

@@ -34593,3 +34593,55 @@ the locale codepage and `朱敬則` is not in cp1252. **A traceback that arrives
 succeeded reads as a failed capture and invites a re-run**, and the 266,201-row population is full
 of CJK names. `sys.stdout.reconfigure(encoding="utf-8")` at the top of `main`.
 
+## 2026-09-09 — the unconnected-`P2600` worklist: the attempt stamp, and CI regenerating it
+
+**Pieces 6 and the CI step of `docs/unconnected-worklist.md`, which were the last two that did
+not exist.** Pieces 2 through 5 — neighbourhood size, the four columns, the carry-forward, the
+ordering — were already built in `scripts/build-unconnected-worklist.py`; what was missing was
+anything writing `last_attempted`, and anything running the build.
+
+**`scripts/attempt_ledger.py` is the stamp.** § 5 asks for it *"written by the extension,
+automatically, every time it runs on somebody"*, and the extension cannot write into the repo at
+all — nothing downloads, the job returns its result on a data attribute and a file tool writes
+it. So it is called from `scripts/write-family-scrape.py`, which is the one thing that runs
+exactly once per person the collector runs on. Every capture now prints a second line:
+
+    6000000074746020450  Zhu Jingze 朱敬則 | ... | NO EXPORT: ...
+      worklist: last_attempted=2026-09-09 on 1 row
+
+It edits one field and nothing else: it does **not** re-sort (§ 7's ordering belongs to the
+build, which CI reruns), and it **never adds a row** — membership is recalculated every run and
+never stored, so a Geni id the file holds no row for is a person already connected or not a
+`P2600` holder, and minting one would store the state the design removes. Ids that matched
+nothing are reported rather than swallowed. The write goes through a temp file and one `replace`,
+because § 6 means the only copy of 266,201 dates is the previous commit of that same file.
+
+**`tree.yml` regenerates the file after the rebuild and commits it in the same commit.** Not as a
+step inside `rebuild-everything.py`: that script stops at the first failing step, so a failure
+there would abandon a twenty-minute merge and the commit step would never run. `continue-on-error`
+makes a failure red and still lets the tree land.
+
+**101 rows were back-filled from `reports/isolates.csv`.** They carried the `2026-09-01`
+placeholder while the ledger records the attempt — 98 on 2026-09-06, two on 2026-09-08, one
+(Zhu Jingze, the first person off the worklist) on 2026-09-09. The placeholder was five days
+*early*, so those cooldowns would have expired early. **The caveat that goes with it:
+`requested_at` was a literal until 2026-09-09**, so the 2026-09-06 group is the date the column
+claimed rather than 98 separately observed days; it is still the observation rather than the
+placeholder, and all 101 are inside the 30-day window either way.
+
+**Rebuilt, `--today 2026-09-09`:** 518,889 holders, **266,201 disconnected**, 266,100 eligible
+now, 101 waiting out the cooldown, 266,201 dates carried forward. The top of the file moved from
+Q11094143 to **Q45383466**, neighbourhood 451, because the person who was at the top was attempted
+today.
+
+**`tests/test_unconnected_worklist.py`** pins the three things that fail silently: the order (the
+eligible block on top, then by when they become eligible, then size descending and qid ascending),
+the carry-forward, and the stamp's three refusals. `eligible_on` and `sort_key` moved out of
+`main()` to module level so the suite can reach them rather than a closure.
+
+**What is left of that queue item is §§ 0 and 1 only** — the Wikidata overlay going INTO the
+merge, and the neighbourhood then measured on the merged tree instead of the union-find stand-in.
+The overlay exists and the union tree builds locally (3,038,219 people, 516 MB); whether that
+merge fits on a runner is unmeasured, and `CLAUDE.md` says it must not be wired in until it does.
+The stand-in gets the membership and the component size right and destroys the family ids, which
+is the one thing § 1 wants the GEDCOM form for.
