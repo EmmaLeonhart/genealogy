@@ -28,7 +28,7 @@ effort, whose Wikidata items carry **no `P2600`**, so the pairing exists
 nowhere outside that scratchpad. Checked live 2026-08-29. The rest of the file's nine pairs are
 already handled and are deliberately absent here -- `Q11443857` Futohime is in `CJK_CLAN_BLOCK`,
 `Q19657284` and `Q12598947` already carry their `P2600`, the two Kitajima items are in
-`NEVER_TOUCH_QID`, and the ninth is the account owner, who must never enter the traversable graph.
+a ban list retired on 2026-09-09, and the ninth is the account owner.
 
 **Widening this to the full correspondence is a decision, not a default.** It is one constant
 below and the filtering already works, but 84,000 links is a different act from three and wants

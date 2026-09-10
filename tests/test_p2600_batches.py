@@ -579,67 +579,6 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
         + "; ".join(f"line {i}: {ln!r}" for i, ln in repeats[:4]))
 
 
-def test_no_batch_names_an_excluded_id():
-    """The held Kitajima ids must appear in no batch, in any position.
-
-    **The account owner is deliberately no longer banned here**, by instruction of 2026-09-01.
-    This test used to ban `Q232803` and `6000000001846508982`, and that is why it went red
-    on 2026-08-31 when `build-missing-reciprocals.py` edited that item — the red test was answered
-    by re-adding the ids to `NEVER_TOUCH`, which was reaching for the nearest mechanism rather
-    than asking which of the two instructions won. The anonymisation instruction governs: **remove
-    code that treats one person's item as special.** So those ids are gone from the banned set and
-    the item is editable like anyone else's.
-
-    **What is still guarded is the Kitajima/Kitashima hold**, and it is now month-long rather than
-    permanent — `KITAJIMA_HOLD_EXPIRES`, 2026-10-01, ruled the same day as a month-long
-    exclusion. After that date the sets are empty and this test
-    passes trivially, which is intended: a hold that has to be remembered to be lifted stays
-    forever.
-
-    Comments are exempt: `qscomment` names the people a line concerns, and a comment asserts
-    nothing on Wikidata.
-    """
-    import pathlib
-    root = pathlib.Path(__file__).resolve().parent.parent
-    import importlib.util
-    import pathlib
-    spec = importlib.util.spec_from_file_location(
-        "garborg_day", pathlib.Path(__file__).resolve().parent.parent / "scripts" / "build-garborg-day.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    banned = set(mod.NEVER_TOUCH_GENI) | set(mod.NEVER_TOUCH_QID)
-    if not banned:
-        return  # the hold has expired; nothing is excluded any more
-    bad = []
-    # **`wikidata-geni-qid-p2600.qs` is excluded, and the reason is a finding rather than a
-    # convenience.** That file is dated 2026-08-23, predates the Kitajima hold, is not produced by
-    # the daily pipeline (`build-qid-link-p2600.py` writes it), and **names 67 lines' worth of held
-    # Kitajima ids**. Widening this test from two ids to everything currently held is
-    # what surfaced it. The hold governs what the builder emits from now on; a batch written
-    # before the hold existed is a separate decision to run or not.
-    # **Two legacy files are excluded, and that is a finding rather than a convenience.** Both
-    # predate the Kitajima hold and neither is produced by the daily pipeline:
-    # `wikidata-join-izumo.qs` (2026-08-24, **56 lines**) and `wikidata-geni-qid-p2600.qs`
-    # (2026-08-23, **20 lines**, written by `build-qid-link-p2600.py`). Widening this test from
-    # two ids to everything currently held is what surfaced them. The hold governs what
-    # the builder emits from now on; a batch written before the hold existed is a separate
-    # decision to run or not,
-    # and the hold expires 2026-10-01 anyway.
-    legacy = {"wikidata-geni-qid-p2600.qs", "wikidata-join-izumo.qs"}
-    for path in sorted((root / "reports").glob("*.qs")):
-        if path.name in legacy:
-            continue
-        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-            if line.lstrip().startswith("#") or not line.strip():
-                continue
-            for token in banned:
-                if token in line:
-                    bad.append(f"{path.name}:{n}: {line[:80]}")
-    assert not bad, (
-        "a batch names an excluded id — it must not be in the traversable graph:\n  "
-        + "\n  ".join(bad[:10]))
-
-
 def test_no_geni_id_statement_is_sourced_to_its_own_geni_id():
     """`P2600` carries no reference. An identifier is not evidence for itself.
 

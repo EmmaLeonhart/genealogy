@@ -34496,3 +34496,35 @@ campaign wants the ball to go **down**.
 Everything else in `docs/export-seed-rules.md` is untouched and is still the authority: where the
 placeholder goes, what it is named, the five-tier preference order with patronymics at the top.
 
+
+## 2026-09-09 — the `NEVER_TOUCH` ban lists are deleted
+
+Ruled: *"the never touch QID stuff is completely outdated and completely obsolete at this point
+because the stuff was getting edited due to vague specifications of the diagrams and the spine
+paths... the algorithm was rather poorly specified, and since we have specified it well with the
+entry points and the universe being defined, it's all relatively good here."*
+
+**The defect it patched no longer exists, and that is checkable rather than asserted:
+`SPINE_PATHS` is defined nowhere in the repo.** The spine machinery that was editing items off
+vague paths is gone, and the universe is specified by entry points. A ban list that outlives the
+defect it patched is legacy code — § *LEGACY CODE IS DELETED*.
+
+Removed from `scripts/build-garborg-day.py`: `NEVER_TOUCH_GENI`, `NEVER_TOUCH_QID`,
+`KITAJIMA_GENI`, `KITAJIMA_QID`, `KITAJIMA_HOLD_EXPIRES`, the guard in the ledger reader, the
+fold into the universe kluge, and the write-time `REFUSING to write` refusal.
+
+**`tests/test_p2600_batches.py::test_no_batch_names_an_excluded_id` is deleted, 60 lines.** Its
+entire subject was the ban list, so with the list gone it would have raised `AttributeError` on
+`mod.NEVER_TOUCH_GENI` rather than asserting anything. That is removing a test of deleted code,
+not loosening a test — and it is worth being explicit, because the two look identical in a diff.
+The test had already documented its own end: *"After that date the sets are empty and this test
+passes trivially, which is intended."* The ruling brought that date forward.
+
+Two legacy-file exemptions died with it (`wikidata-geni-qid-p2600.qs`, `wikidata-join-izumo.qs`),
+which existed only to keep the ban list from failing on batches written before the hold.
+
+**And this closes the last live piece of the anonymisation queue item.** Of its three parts,
+*remove code that treats that item as special* is now complete rather than partially complete,
+and `SPINE_PATHS keeps only Arne → Bureus` is moot. What is still outstanding is *cut the strategy
+content*: `queue.md` and `docs/rules/wikidata-editing.md` still carry it.
+

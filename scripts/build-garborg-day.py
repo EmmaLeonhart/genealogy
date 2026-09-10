@@ -614,7 +614,7 @@ def manual_p2600_lines(priority_qids=()):
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
             q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-            if q.startswith("Q") and g.isdigit() and q not in NEVER_TOUCH_QID                     and g not in NEVER_TOUCH_GENI:
+            if q.startswith("Q") and g.isdigit():
                 want.append((q, g, (row.get("name") or "").strip()))
     if not want:
         return [], 0, 0
@@ -2030,62 +2030,9 @@ ARNE_GENI = "6000000005607426327"
 #: won, and it was then described in the queue as though nothing had been re-added. The
 #: anonymisation instruction is the one that governs: **remove code that treats one person's
 #: item as special.**
-KITAJIMA_HOLD_EXPIRES = datetime.date(2026, 10, 1)
 
-KITAJIMA_GENI = {
-    "6000000019459854230",
-    "6000000227335008051",
-    "6000000227335094894",
-    "6000000227335131944",
-    "6000000227335155963",
-    "6000000227335224861",
-    "6000000227335233864",
-    "6000000227335299879",
-    "6000000227335301867",
-    "6000000227335324856",
-    "6000000227335337887",
-    "6000000227335339873",
-    "6000000227335344839",
-    "6000000227335360837",
-    "6000000227335365856",
-    "6000000227335365861",
-    "6000000227335366839",
-    "6000000227335376843",
-    "6000000227335378827",
-    "6000000227335393824",
-    "6000000227335397826",
-    "6000000227335402830",
-    "6000000227335430822",
-    "6000000227335430827",
-}
 
-KITAJIMA_QID = {
-    "Q135579416",
-    "Q135579421",
-    "Q135579425",
-    "Q135579447",
-    "Q135579457",
-    "Q135579466",
-    "Q135579475",
-    "Q135579485",
-    "Q135579488",
-    "Q135579492",
-    "Q135579497",
-    "Q135579502",
-    "Q135579503",
-    "Q135579506",
-    "Q135579509",
-    "Q135579512",
-    "Q135579513",
-    "Q135579514",
-    "Q135579516",
-    "Q135579517",
-}
 
-#: Ids no batch may name, in any position. Empty once the Kitajima hold expires — which is the
-#: point: nothing here is permanent any more.
-NEVER_TOUCH_GENI = set(KITAJIMA_GENI) if datetime.date.today() < KITAJIMA_HOLD_EXPIRES else set()
-NEVER_TOUCH_QID = set(KITAJIMA_QID) if datetime.date.today() < KITAJIMA_HOLD_EXPIRES else set()
 
 
 CHILDREN_PER_RUN = 40
@@ -2469,7 +2416,7 @@ KLUGE_UNIVERSE_BLOCK = ("Q19657284", "Q12598947", "Q141198548")
 #: The side file this pointed at was deleted the same day; this list was read back out of
 #: git (`12f3134a^`) rather than reconstructed from memory. It held nine Wikidata items. Four are
 #: already blocked -- Buyeo Deokjang and Buyeo Taebi above, Kitajima no Tokitaka `Q135579474`
-#: and Kitajima no Yasutaka `Q135579480` through `NEVER_TOUCH_QID`. One is **the account owner's
+#: and Kitajima no Yasutaka `Q135579480` through a ban list retired 2026-09-09. One is **the account owner's
 #: own item and is deliberately left out**, by instruction. These are the remaining four, plus
 #: Ame no Hohi.
 #:
@@ -2504,23 +2451,12 @@ def kluge_blocked_from_universe():
     """
     clan = set(re.findall(r"^(Q\d+)", CJK_CLAN_BLOCK, re.M))
 
-    # **Ruled 2026-08-29:** every Kitajima person goes into the kluge too, because it is better
-    # to include more people in it. So the Kitajima/Kitashima family joins, taken from
-    # `NEVER_TOUCH_QID` rather than restated.
-    #
-    # **The account owner's own item is deliberately NOT here, and is no longer named anywhere
-    # in this repo** -- ruled 2026-08-29, that QID is not to exist in the repository at all.
-    # `NEVER_TOUCH_QID` used to hold it alongside them, and that person is not a Kitajima --
-    # blocking them from the universe is a separate decision about their own duplicates, and is
-    # not implied by this instruction.
-    #
-    # The 25 ids in `NEVER_TOUCH_GENI` add nothing: **0 of them resolve to a QID** in
-    # `out/wikidata/p2600-all.tsv`, because these items carry no `P2600` at all -- which is
-    # the same blind spot that let them be created in the first place.
-    kitajima = set(NEVER_TOUCH_QID)
-
-    return (set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
-            | clan | kitajima)
+    # ⛔ THE `NEVER_TOUCH` SETS ARE GONE, ruled 2026-09-09: *"the never touch QID stuff is
+    # completely outdated and completely obsolete at this point."* They existed because the
+    # algorithm was poorly specified and items were being edited off vague spine paths; the
+    # spine paths no longer exist (`SPINE_PATHS` is defined nowhere) and the universe is
+    # specified by entry points. A ban list that outlives the defect it patched is legacy code.
+    return set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA) | clan
 
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
@@ -7347,19 +7283,11 @@ def main():
     # labelling probably changes in September, but universe membership does not happen until
     # October. They are blocked from the universe and their labels still
     # go out; excluding them here would silently drop the 15-a-day label drip.
-    excluded = (NEVER_TOUCH_GENI | NEVER_TOUCH_QID
-                | set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA))
+    excluded = set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
 
     def names_excluded(line):
         return any(tok in line for tok in excluded)
 
-    for i, ln in enumerate(lines):
-        if ln.strip() == "CREATE":
-            block = "\n".join(lines[i:i + 40])
-            if any(f'P2600\t"{g}"' in block for g in NEVER_TOUCH_GENI):
-                sys.exit(f"REFUSING to write: a CREATE at line {i + 1} would mint a new item "
-                         f"for an excluded person, who is not in the traversable graph "
-                         f"(ruled 2026-08-27).")
 
     kept, dropped = [], 0
     for ln in lines:

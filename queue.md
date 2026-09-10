@@ -653,10 +653,12 @@ So three things, and none of them touches a person's data:
 
 - **Cut the strategy content.** Anything in `CLAUDE.md`, `queue.md`, `devlog.md` or the scripts
   about how that item gets linked or how the account's editing reads to others.
-- **Remove code that treats that item as special.** `NEVER_TOUCH_QID`, the exclusion entries, and
-  anything else keyed on a specific person's ids. **Done 2026-09-01** — no exclusion set, banned
-  list or test names an individual any more; the only hold left is the Kitajima one and it expires
-  2026-10-01.
+- **Remove code that treats that item as special. DONE 2026-09-09, completely.**
+  `NEVER_TOUCH_QID`, `NEVER_TOUCH_GENI`, the Kitajima id lists, `KITAJIMA_HOLD_EXPIRES`, the
+  write-time refusal and `test_no_batch_names_an_excluded_id` are all deleted. Ruled: *"the never
+  touch QID stuff is completely outdated and completely obsolete at this point... the algorithm
+  was rather poorly specified, and since we have specified it well with the entry points and the
+  universe being defined, it's all relatively good here."*
 - **`SPINE_PATHS` keeps only Arne → Bureus**, which is already true.
 
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
