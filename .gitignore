@@ -68,6 +68,11 @@ out/wikidata/labels.tsv
 # It is NOT under exports/, and that is deliberate: exports/ is the corpus and every .ged
 # there is committed, so a generated one fails tests/test_repo_invariants.py by existing.
 out/manual-parental-correspondences.ged
+# Wikidata's genealogy rendered as a mergeable GEDCOM by
+# scripts/build-wikidata-gedcom.py -- 57 MB, regenerated from relations.tsv and
+# p2600-all.tsv on every run, so tracking it would be a second copy that can disagree
+# with the first. Same reasoning as the correspondence overlay on the line above.
+out/wikidata-tree.ged
 
 # Coverage measurement leftovers
 .coverage

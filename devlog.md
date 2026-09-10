@@ -34171,3 +34171,47 @@ Six pieces, none of which exists: the Wikidata GEDCOM in the merge, neighbourhoo
 the date carry-forward, the ordering, and the extension writing the date. The doc's last table
 says so explicitly rather than implying progress.
 
+
+## 2026-09-09 — Wikidata as a mergeable GEDCOM: the overlap guess does not hold
+
+§ 0 and § 1 of `docs/unconnected-worklist.md` built and run locally, on the reasoning that the
+518k Wikidata people might overlap the corpus so heavily that the tree would grow by only ~10k.
+**Measured, and it does not:**
+
+    corpus people          1,451,993
+    wikidata-tree people     518,886
+      already in corpus       43,709   fuse on the Geni id, add 0
+      NEW to the tree        475,177
+    projected merged       1,927,170
+
+**Only 8.4% overlap.** Wikidata's `P2600` coverage and our export slice barely intersect — and
+that 43,709 is the same figure `p2600-connectivity.py` produced independently this afternoon, so
+it is not an artefact of one measurement. At the measured 6.07 GB per million that projects to
+**~11.7 GB**, under the 13.3 GB local kill point and well above the 8.79 GB the slim tree takes
+today.
+
+`scripts/build-wikidata-gedcom.py` writes **518,886 `INDI`, 175,976 `FAM`, 57.3 MB** to
+`out/wikidata-tree.ged`, gitignored by its own line beside the correspondence overlay and merged
+with `--also`. The xref is the Geni id with `1 RFN geni:<id>`, so the fuse is an exact join and
+nothing is name-matched. **Structure only** — no labels, dates or notes, because the merge takes
+it LAST and § *Later sources win value conflicts* would otherwise let it overwrite Geni's own
+values on the 43,709.
+
+**⛔ THREE POPULATIONS ARE DROPPED, AND THE FIRST IS THE ONE THAT MATTERS:**
+
+    3,423,982  edges to a QID with no P2600      -- cannot be an INDI without inventing a person
+      246,251  P40 edges with no known sex       -- P40 does not name the slot
+      418,004  P3373 siblings                    -- GEDCOM has no sibling edge
+
+**Most of Wikidata's genealogy hangs off people with no Geni id** — 3.4M of ~5M edges. A GEDCOM
+keyed on the Geni id structurally cannot carry them, and `build-scraped-gedcom.py` was deleted
+for inventing exactly that kind of placeholder. `p2600-connectivity.py` keeps them as connector
+nodes precisely because they join Geni-linked people to each other, so the two routes answer
+differently and the GEDCOM route loses connections the union-find finds. That is a real tension
+between *natively a GEDCOM so the family ids survive* and *no invented people*, and it is
+recorded rather than resolved here.
+
+`P40` says X is a parent of C and not which slot; `relations.tsv` carries no `P21`. The slot is
+taken from **our own tree's** sex where known and the edge dropped where not — guessing would
+assert somebody's sex as a side effect of a relationship import.
+
