@@ -34876,3 +34876,35 @@ informative forms read as *no marker present* and would be flattened to `NN`, de
 known half. Measured over the whole population rather than asserted: of the 1,588 `NN` items,
 **1,307 have no `mul` at all, 278 are already a bare `NN`, 3 read `?` or `unknown`, and zero
 carry either informative form.** So it is latent, not live, and it is left alone here.
+
+## 2026-09-10 -- the slim union merge is KILLED on a runner, and the gate stays shut
+
+**Run `34444557142`, `genimerge merge --slim --also out/wikidata-tree.ged`:** the sampler climbs
+steadily and the job dies at **15,428 MB with 565 MB free**, cancelled at 06:44:30 after
+seventeen minutes. That is the same shape as the 15,921 MB kill that `--slim` was invented to
+fix, and it is the number `CLAUDE.md` § *it must not be wired in until it fits* was waiting for.
+
+**It is satisfied in the negative: it does not fit.** `--connectivity` fitting at 9.76 GB says
+nothing about this one -- that mode keeps the primary key, the sex and the five structural
+pointers and drops names, dates and places, so the derive scripts cannot read it and it can never
+be `out/merged.ged`. Two different merges, and only the expensive one feeds the pipeline.
+
+**The overlay is NOT wired into `rebuild-everything.py`, and now that is a finding rather than
+caution.** What is left is a choice nobody has made: a slimming mode between the two, a bigger
+runner, or accepting the split permanently with the union tree staying a `--connectivity`
+artifact that only the worklist reads. The queue carries all three; none is guessed at here.
+
+**The measurement cost nothing to be wrong about**, which is the point of `union-tree.yml`
+committing nothing: a failed dispatch leaves no half-written state behind.
+
+
+## 2026-09-10 -- sweep: the pipe reader is built, and nothing calls it
+
+`scripts/pipelabels.py` resolves 1,639 of the 1,640 piped labels and holds one -- `Q99707312`,
+truncated mid-bracket. 24 tests pin every ruled situation, `statements()` renders `Lmul`/`Len`/
+`Amul` in protocol form, and **no step anywhere invokes any of it.**
+
+That is exactly the failure the agreeing-Latin rule sat in for eight days -- written, committed,
+called by nothing, and reported as done. The queue item is rewritten to say so: what remains is a
+rebuild step that reads the proposals file, calls the reader, writes the columns back, and clears
+the `pipe-shape` hold on the rows that resolved.

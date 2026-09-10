@@ -17,16 +17,30 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
       3,038,219 people · 1,961,091 families · 516 MB
       peak RSS 9.76 GB of 16 · 18m38s · genimerge merge --connectivity
 
-  **⛔ AND IT DOES NOT AUTHORISE THE WIRING, BECAUSE IT IS A DIFFERENT MERGE.**
-  `--connectivity` keeps the primary key, the sex and the five structural pointers and drops
-  names, dates and places — the derive scripts cannot read that tree. `rebuild-everything.py`
-  runs `--slim`, which CARRIES them, peaks at **8.79 GB** on a runner with the corpus alone, and
-  was **killed at 15,921 MB** before slimming existed. `--slim` plus the overlay's 1.6M more
-  people is the number nobody has, and it is the only one that settles this.
+  **⛔ AND `--slim` WITH THE OVERLAY WAS KILLED. MEASURED 2026-09-10, run `34444557142`.**
+  This is the number that was missing, and it says no:
 
-      1. measure `--slim --also out/wikidata-tree.ged` on a runner. `union-tree.yml` is the
-         harness and takes one more step; it commits nothing.
-      2. only if THAT fits: `--also out/wikidata-tree.ged` in `rebuild-everything.py`
+      MEM 06:42:42  used=12580MB  avail=3412MB
+      MEM 06:43:42  used=13392MB  avail=2601MB
+      MEM 06:44:12  used=15428MB  avail=565MB
+      06:44:30      The operation was canceled.
+
+  The climb is steady and it dies at **15,428 MB with 565 MB free** — the same shape as the
+  15,921 MB kill that `--slim` was invented to fix. So `--connectivity` fitting says nothing
+  about this: that mode drops names, dates and places, the derive scripts cannot read it, and it
+  can never be `out/merged.ged`.
+
+  **⛔ THE GATE STAYS CLOSED, AND NOW FOR A MEASURED REASON.** `CLAUDE.md` § *it must not be
+  wired in until it fits* is satisfied in the negative: it does not fit. Do not wire
+  `--also out/wikidata-tree.ged` into `rebuild-everything.py`.
+
+  **What is left is a choice nobody has made**, and it is not a guess to make here:
+
+      a. a slimming mode BETWEEN the two -- names but no dates or places, say -- and
+         measure that. Nobody has costed which fields the derive scripts actually read.
+      b. a bigger runner, which is a billing question and not a technical one
+      c. accept the split permanently: the pipeline merges the corpus, and the union tree
+         stays a separate `--connectivity` artifact that only the worklist reads
 
   **The neighbourhood half is done** — `build-unconnected-worklist.py --tree out/union.ged`,
   `c37d2558`, run in `union-tree.yml` against a scratch path. The union-find stand-in remains the
@@ -366,8 +380,20 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         132   Ann Bincks (Benckes|Bench)  label unbracketed, each bracketed spelling an Amul
                                           carrying the given name
 
-  **Not started.** What is outstanding is the emitter: read the shape, write `proposed_label`
-  and `proposed_aliases`, clear the `pipe-shape` hold, and let the label batch carry them.
+  **The READER is built and tested — `scripts/pipelabels.py`, `1f8a33d3`.** Over the real 1,640
+  rows it resolves **1,639** and holds one: `Q99707312` is truncated mid-bracket, an unclosed
+  bracket that is a fifteenth situation nobody ruled on. `read()` returns the `mul`, the `en`
+  where a comma tail makes it differ, and every `Amul`; `statements()` renders them as
+  `Lmul`/`Len`/`Amul`. 24 tests pin every ruled situation.
+
+  **⛔ WHAT IS OUTSTANDING IS THAT NOTHING CALLS IT.** `CLAUDE.md` § *Code that is WRITTEN but
+  never CALLED is not done* — the same failure the agreeing-Latin rule sat in for eight days.
+  Three steps:
+
+      1. a step in `rebuild-everything.py` that reads `title-label-proposals.tsv`,
+         calls `pipelabels.read`, and writes `proposed_label` / `proposed_aliases` back
+      2. clearing the `pipe-shape` hold on the rows that resolved, leaving `Q99707312` held
+      3. the daily batch picking them up, under the cap below
 
   **They go out UNDER THE EXISTING `LABEL_EDIT_CAP` of 60 people per run — ruled 2026-09-09.**
   No special batch and no queue-jumping: they join the normal label batch and drain over roughly
