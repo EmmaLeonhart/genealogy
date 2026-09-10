@@ -194,6 +194,40 @@ def load_previous(path):
     return out
 
 
+#: The five statistics figures plus the export flag, carried across a rebuild.
+STATS_COLUMNS = ["family_tree", "blood_relatives", "ancestors", "descendants", "followers"]
+EXTRA_COLUMNS = STATS_COLUMNS + ["exported"]
+#: ⛔ 200, DELIBERATELY. The export gate fires at 250, so a placeholder of 200 flags NOBODY --
+#: which is the point: the schema exists and holds data from the first run, and a person is only
+#: proposed for an export once a real capture has replaced these with what Geni actually says.
+#: Ruled 2026-09-10: *"list the statistics of everyone in the tsv as 200 and not exported. That
+#: way it will not flag anyone to be exported but we have placeholder data."*
+PLACEHOLDER = ["200"] * len(STATS_COLUMNS) + ["no"]
+
+
+def load_extras(path):
+    """`geni_id -> [the six extra columns]` from the previous committed version of THIS file.
+
+    ⛔ **A REBUILD MUST NOT WIPE THEM.** Membership is recomputed every run (§ 3) and the file is
+    rewritten from scratch, so any column this function does not carry is silently reset on the
+    next CI tree build -- the same way `last_attempted` would be without `load_previous`. The
+    statistics are real measurements off Geni and the export flag is a record that an export
+    happened; both are exactly the state a from-scratch rewrite destroys.
+    """
+    if not path.exists():
+        return {}
+    out = {}
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh, delimiter=TAB):
+            g = (row.get("geni_id") or "").strip()
+            if not g:
+                continue
+            vals = [(row.get(c) or "").strip() for c in EXTRA_COLUMNS]
+            if any(vals):
+                out[g] = [v or d for v, d in zip(vals, PLACEHOLDER)]
+    return out
+
+
 def attempted_geni_ids(path):
     """Anyone a path capture has already been run on, for the seed date."""
     if not path.exists():
@@ -283,15 +317,18 @@ def main() -> int:
     # ELIGIBLE block first; then the ineligible, ordered by when they become eligible.
     # Within either: neighbourhood size DESCENDING, then qid ASCENDING. `sort_key` at module
     # level, so the test suite pins the order rather than a closure nothing can reach.
+    extras = load_extras(pathlib.Path(args.out))
     rows.sort(key=lambda r: sort_key(r, today))
     ready = sum(1 for r in rows if eligible_on(r[3]) <= today)
 
     out = pathlib.Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w", encoding="utf-8", newline=NL) as fh:
-        fh.write(TAB.join(["qid", "geni_id", "neighbourhood_size", "last_attempted"]) + NL)
+        fh.write(TAB.join(["qid", "geni_id", "neighbourhood_size", "last_attempted"]
+                          + EXTRA_COLUMNS) + NL)
         for qid, gid, size, last in rows:
-            fh.write(TAB.join([qid, gid, str(size), last]) + NL)
+            fh.write(TAB.join([qid, gid, str(size), last]
+                              + extras.get(gid, PLACEHOLDER)) + NL)
 
     print("%d P2600 holders; %d DISCONNECTED -> %s" % (len(holders), len(rows), out))
     print("  eligible now                 %7d" % ready)
