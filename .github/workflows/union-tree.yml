@@ -128,6 +128,32 @@ jobs:
             echo "no union tree was produced -- read the MEM lines and union-merge.err above"
           fi
 
+      # **THE NEIGHBOURHOOD, MEASURED ON THE MERGED TREE.** `docs/unconnected-worklist.md` § 4
+      # asks for the size of the person's combined neighbourhood **in the synoptic tree**, and
+      # until this step the worklist answered it with a union-find over the three tracked edge
+      # sources -- right about the numbers, and it destroys the family ids, which is the one
+      # thing § 1 wants the GEDCOM form for.
+      #
+      # It writes to a SCRATCH path, never to `reports/unconnected-p2600.tsv`. This workflow
+      # commits nothing, and the committed file carries `last_attempted` for 266,201 people with
+      # no second copy anywhere -- § 6, *there is no second file*. Overwriting it from a job that
+      # cannot commit would strand every date.
+      - name: The neighbourhood, measured on the merged tree
+        if: ${{ always() && steps.union.outcome == 'success' }}
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/build-unconnected-worklist.py \
+            --tree out/union.ged -o out/unconnected-p2600-from-tree.tsv
+          echo "---- against the committed stand-in ----"
+          echo "stand-in rows: $(( $(wc -l < reports/unconnected-p2600.tsv) - 1 ))"
+          echo "tree rows:     $(( $(wc -l < out/unconnected-p2600-from-tree.tsv) - 1 ))"
+          echo "---- the top of each ----"
+          head -4 reports/unconnected-p2600.tsv
+          echo "----"
+          head -4 out/unconnected-p2600-from-tree.tsv
+
       # The tree itself is never committed. The artifact is so the next step -- the neighbourhood
       # measured on the merged tree instead of the union-find stand-in -- has something to read.
       - name: Keep the union tree as an artifact
@@ -138,6 +164,7 @@ jobs:
           path: |
             out/union.ged
             out/union-merge.err
+            out/unconnected-p2600-from-tree.tsv
           retention-days: 7
           if-no-files-found: warn
 

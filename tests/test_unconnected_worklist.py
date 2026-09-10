@@ -170,3 +170,86 @@ def test_the_write_path_stamps_every_capture():
     src = (REPO / "scripts" / "write-family-scrape.py").read_text(encoding="utf-8")
     assert "from attempt_ledger import" in src
     assert "stamp([gid]" in src
+
+# --- the neighbourhood measured ON THE MERGED TREE ------------------------------------
+#
+# `docs/unconnected-worklist.md` §§ 0 and 1 ask for exactly this: the neighbourhood measured in
+# the synoptic tree after Wikidata's tree is merged into it as a GEDCOM, because that form
+# preserves the family ids and a union-find over edges destroys them. The tree BUILDS on a runner
+# -- 3,038,219 people, 516 MB, peak 9.76 GB of 16 -- so `--tree` is no longer hypothetical.
+
+
+def union_find():
+    return load("conn", "p2600-connectivity.py").Union()
+
+
+def sample_tree(path, king):
+    """A union GEDCOM in the shape `build-wikidata-gedcom.py` writes: geni-keyed people on
+    `RFN geni:<id>`, Wikidata-only routing nodes on `REFN Q<digits>`."""
+    path.write_text(
+        "0 HEAD" + NL
+        + "0 @I" + king + "@ INDI" + NL + "1 RFN geni:" + king + NL + "1 FAMS @F1@" + NL
+        + "0 @I200@ INDI" + NL + "1 RFN geni:200" + NL + "1 FAMS @F1@" + NL
+        + "0 @I300@ INDI" + NL + "1 RFN geni:300" + NL + "1 FAMC @F1@" + NL
+        + "0 @IQ99@ INDI" + NL + "1 REFN Q99" + NL + "1 FAMC @F1@" + NL
+        + "0 @I400@ INDI" + NL + "1 RFN geni:400" + NL + "1 FAMS @F2@" + NL
+        + "0 @I500@ INDI" + NL + "1 RFN geni:500" + NL + "1 FAMS @F2@" + NL
+        + "0 @I600@ INDI" + NL + "1 RFN geni:600" + NL
+        + "0 @F1@ FAM" + NL + "1 HUSB @I" + king + "@" + NL + "1 WIFE @I200@" + NL
+        + "1 CHIL @I300@" + NL + "1 CHIL @IQ99@" + NL
+        + "0 @F2@ FAM" + NL + "1 HUSB @I400@" + NL + "1 WIFE @I500@" + NL
+        + "0 TRLR" + NL,
+        encoding="utf-8", newline="")
+
+
+def measure(build, tmp_path):
+    f = tmp_path / "union.ged"
+    sample_tree(f, build.CHARLEMAGNE_GENI)
+    uf = union_find()
+    by_geni, king = build.sizes_from_tree(str(f), uf)
+    root = uf.find(uf.id[king])
+
+    def size(gid):
+        return uf.size[uf.find(uf.id[by_geni[gid]])]
+
+    def connected(gid):
+        return uf.find(uf.id[by_geni[gid]]) == root
+
+    return by_geni, king, size, connected
+
+
+def test_charlemagne_is_found_by_his_geni_id(build, tmp_path):
+    by_geni, king, _, _ = measure(build, tmp_path)
+    assert king == "I" + build.CHARLEMAGNE_GENI
+    assert build.CHARLEMAGNE_GENI in by_geni
+
+
+def test_every_member_of_a_family_lands_in_one_component(build, tmp_path):
+    """Husband, wife and both children, the QID-only one included -- four."""
+    _, _, size, connected = measure(build, tmp_path)
+    assert size(build.CHARLEMAGNE_GENI) == 4
+    assert size("200") == 4 and size("300") == 4
+    assert connected("200") and connected("300")
+
+
+def test_a_spouse_edge_counts(build, tmp_path):
+    """⛔ *BOTH TIES, ALWAYS* -- in-law connections are just as valid, blood is not required.
+    A childless couple is a component of two, and it is the marriage that makes it one."""
+    _, _, size, connected = measure(build, tmp_path)
+    assert size("400") == 2 and size("500") == 2
+    assert not connected("400")
+
+
+def test_a_person_in_no_family_is_a_component_of_one(build, tmp_path):
+    """Not zero, and not absent: they are a real row with the smallest possible leverage."""
+    _, _, size, connected = measure(build, tmp_path)
+    assert size("600") == 1
+    assert not connected("600")
+
+
+def test_a_qid_only_node_routes_but_is_never_a_row(build, tmp_path):
+    """⛔ Nameless routing nodes are the design. It carries edges and has no Geni id, so it can
+    put two Geni people in one component and can never itself appear in the worklist."""
+    by_geni, _, _, _ = measure(build, tmp_path)
+    assert "Q99" not in by_geni
+    assert all(not g.startswith("Q") for g in by_geni)

@@ -47,17 +47,28 @@ fixed, the neighbourhood size and the membership are **recalculated**, and `last
 **read from the previous committed version of this same file**. Seeds, explicitly placeholders:
 `2026-09-01` where a path capture has been attempted, `2026-01-01` everywhere else.
 
-## ⛔ THE GRAPH HERE IS UNION-FIND, WHICH IS A STAND-IN AND IS NOT THE SPEC
+## THE GRAPH: THE MERGED TREE IF YOU HAVE ONE, THE UNION-FIND STAND-IN OTHERWISE
+
+    --tree out/union.ged     measure on the merged tree, which is what the spec asks for
+    (default)                the union-find over the three edge sources
 
 The specification says the neighbourhood is measured **in the synoptic tree**, after Wikidata's
 tree has been merged into it as a GEDCOM — *"the syntactic tree now has a canonical form that is
-natively a Gedcom because that means that it preserves the family IDs."* That merge does not
-exist yet (`scripts/build-wikidata-gedcom.py` renders the overlay; nothing wires it in).
+natively a Gedcom because that means that it preserves the family ids."*
 
-So this computes the same connectivity with a union-find over the same three edge sources, which
-gets the membership and the component size right and **destroys the family ids**, which is the
-one thing the GEDCOM form is for. Swap `component_sizes` onto the merged tree the moment it
-exists; nothing else here changes.
+**That tree now exists and it BUILDS ON A RUNNER**, measured 2026-09-09 in
+`.github/workflows/union-tree.yml`: 3,038,219 people, 1,961,091 families, 516 MB, peak RSS
+**9.76 GB of 16**, 18m38s. `--tree` reads it and the family ids survive, which is the one thing
+the GEDCOM form is for.
+
+**The stand-in stays, and is still the default**, because the merged tree is not committed —
+it is 516 MB — so a run without one has to answer the same question from the three tracked
+sources. The two agree on membership and component size by construction: the same edges, counted
+the same way. What the stand-in cannot do is keep a `FAM` id.
+
+⛔ **A SPOUSE EDGE COUNTS IN BOTH.** Every member of a `FAM` — `HUSB`, `WIFE` and every `CHIL` —
+lands in one component. `CLAUDE.md` § *BOTH TIES, ALWAYS*: in-law connections are just as valid,
+blood is not required, and this measures connection to the main graph rather than descent.
 """
 
 from __future__ import annotations
@@ -75,6 +86,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 OUT = ROOT / "reports" / "unconnected-p2600.tsv"
 ISOLATES = ROOT / "reports" / "isolates.csv"
 
+#: Charlemagne, by Geni id. `CLAUDE.md` § *Always write the English label next to an ID*,
+#: and the anchor protocol pins this one: it is NOT the viewer's profile.
+CHARLEMAGNE_GENI = "6000000002457013227"
+
 #: A failure costs one attempt and 30 days. Not a guess: the graph shifts underneath these
 #: people as tiny edges from other captures land, so a retry is worth something later and
 #: nothing immediately.
@@ -86,6 +101,58 @@ SEED_NEVER = "2026-01-01"
 
 NL = chr(10)
 TAB = chr(9)
+
+
+def sizes_from_tree(path, uf):
+    """Union every `FAM`'s members together, straight off a merged GEDCOM.
+
+    ⛔ **ONE PASS, AND IT UNIONS ON THE XREF RATHER THAN THE PRIMARY KEY.** A `FAM` can name an
+    `INDI` defined later in the file, so resolving members to Geni ids as they are read would
+    need a second pass or a held map of three million people. Union-find does not care what the
+    nodes are called: the component sizes are identical whatever the labels, and only the
+    HOLDERS have to be findable afterwards — which is what `by_geni` is for.
+
+    Returns `(by_geni, node_of_charlemagne)`: Geni id -> xref, and the xref Charlemagne sits on.
+
+    **`RFN geni:<id>` is the primary key** — `CLAUDE.md` § *The Geni profile ID is the primary
+    key for everything*. A Wikidata-only person carries `REFN Q<digits>` instead and is a
+    routing node: it has no Geni id, it is never a worklist row, and it still carries edges,
+    which is the entire reason the overlay exists.
+    """
+    by_geni = {}
+    charlemagne = None
+    current = None
+    members = []
+    kind = ""
+
+    def flush():
+        if kind == "FAM" and len(members) > 1:
+            first = uf.node(members[0])
+            for other in members[1:]:
+                uf.join(first, uf.node(other))
+
+    with open(path, encoding="utf-8", errors="replace") as fh:
+        for line in fh:
+            if line.startswith("0 "):
+                flush()
+                members = []
+                parts = line.split()
+                current = parts[1].strip("@") if len(parts) > 2 else None
+                kind = parts[2].strip() if len(parts) > 2 else ""
+                if kind == "INDI" and current:
+                    uf.node(current)          # a person with no family is a component of one
+            elif kind == "INDI" and line.startswith("1 RFN geni:"):
+                gid = line[len("1 RFN geni:"):].strip()
+                if gid:
+                    by_geni[gid] = current
+                    if gid == CHARLEMAGNE_GENI:
+                        charlemagne = current
+            elif kind == "FAM" and line[:1] == "1" and line[2:6] in ("HUSB", "WIFE", "CHIL"):
+                ref = line[6:].strip().strip("@")
+                if ref:
+                    members.append(ref)
+    flush()
+    return by_geni, charlemagne
 
 
 def eligible_on(last):
@@ -144,6 +211,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="the unconnected-P2600 worklist")
     ap.add_argument("-o", "--out", default=str(OUT))
     ap.add_argument("--today", default="", help="override today, for a reproducible run")
+    ap.add_argument("--tree", default="",
+                    help="a merged GEDCOM to measure the neighbourhood ON, which is what the spec asks for. Without it the union-find stand-in over the three tracked sources is used and answers the same question.")
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
 
@@ -158,24 +227,46 @@ def main() -> int:
     spec.loader.exec_module(conn)
 
     uf = conn.Union()
-    print("p2600-all.tsv ...", flush=True)
-    holders, _ = conn.load_p2600(uf, ROOT / "out/wikidata/p2600-all.tsv")
-    print("relations.tsv ...", flush=True)
-    conn.load_relations(uf, ROOT / "out/wikidata/relations.tsv")
-    print("derived-family.csv ...", flush=True)
-    conn.load_family(uf, ROOT / "reports/derived-family.csv", "geni")
 
-    root_key = "g:" + conn.CHARLEMAGNE_GENI
-    if root_key not in uf.id:
-        print("⛔ Charlemagne is not in the graph -- refusing to write a worklist")
-        return 1
-    root = uf.find(uf.id[root_key])
+    if args.tree:
+        # ⛔ THE SPEC'S OWN GRAPH. The holders still come from `p2600-all.tsv` -- that file is
+        # the fusion, this QID is that Geni profile, and the tree carries the edges rather than
+        # the identification.
+        print("holders from p2600-all.tsv ...", flush=True)
+        holders = {}
+        with open(ROOT / "out/wikidata/p2600-all.tsv", encoding="utf-8") as fh:
+            for line in fh:
+                parts = line.rstrip(NL).split(TAB)
+                if len(parts) >= 2 and parts[0].strip() and parts[1].strip():
+                    holders.setdefault(parts[1].strip(), set()).add(parts[0].strip())
+        print("%s ..." % args.tree, flush=True)
+        by_geni, charlemagne = sizes_from_tree(args.tree, uf)
+        print("%d people keyed on a Geni id in the tree" % len(by_geni), flush=True)
+        if charlemagne is None:
+            print("⛔ Charlemagne is not in %s -- refusing to write a worklist" % args.tree)
+            return 1
+        root = uf.find(uf.id[charlemagne])
+        lookup = lambda gid: uf.id.get(by_geni.get(gid, ""))      # noqa: E731
+    else:
+        print("p2600-all.tsv ...", flush=True)
+        holders, _ = conn.load_p2600(uf, ROOT / "out/wikidata/p2600-all.tsv")
+        print("relations.tsv ...", flush=True)
+        conn.load_relations(uf, ROOT / "out/wikidata/relations.tsv")
+        print("derived-family.csv ...", flush=True)
+        conn.load_family(uf, ROOT / "reports/derived-family.csv", "geni")
+
+        root_key = "g:" + conn.CHARLEMAGNE_GENI
+        if root_key not in uf.id:
+            print("⛔ Charlemagne is not in the graph -- refusing to write a worklist")
+            return 1
+        root = uf.find(uf.id[root_key])
+        lookup = lambda gid: uf.id.get("g:" + gid)                # noqa: E731
 
     # ⛔ NEIGHBOURHOOD SIZE IS THE COMPONENT SIZE, and the union-find already carries it:
     # `size[root]` is maintained by union-by-size on every join, so no second pass is needed.
     sizes = {}
     for gid in holders:
-        node = uf.id.get("g:" + gid)
+        node = lookup(gid)
         sizes[gid] = uf.size[uf.find(node)] if node is not None else 1
 
     previous = load_previous(pathlib.Path(args.out))
@@ -183,7 +274,7 @@ def main() -> int:
 
     rows = []
     for gid, qids in holders.items():
-        node = uf.id.get("g:" + gid)
+        node = lookup(gid)
         if node is not None and uf.find(node) == root:
             continue                      # connected -- not in the file, and never stored
         last = previous.get(gid) or (SEED_ATTEMPTED if gid in attempted else SEED_NEVER)
