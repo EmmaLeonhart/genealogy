@@ -36657,3 +36657,36 @@ resolved, and that is a real piece of work with a named cause rather than a flak
 **This is why nothing downstream has moved.** The connectivity graph, the P2600 counts, the
 worklist membership — all of it reflects the last rebuild that finished, whenever that was, not
 the corpus as it stands after today's exports.
+
+## 2026-09-10 — the tree rebuild's real blocker: two sibling scripts disagreed
+
+`build-parent-candidates.py` rendered **every** case and then failed the run if any card named
+nobody. `build-family-candidates.py` — the same kind of deck, built from the same `deck` module —
+has always **dropped** those cards with a count and failed only on the systematic case. That
+difference is what killed the rebuild at step 17 of 17 on runs `34516801861`, `34495919537` and
+`34483524907`, all with *"BROKEN DECK: 61 of 436 cards name nobody on one side"*.
+
+**The sibling already carries the reasoning, so the fix is to apply it rather than invent one:**
+
+* **No name on OUR side is DATA.** Geni redacts; `Private` and the unnamed arrive with an empty
+  label, and an empty box cannot be judged against a name. The card goes and is counted.
+* **A bare QID on the WIKIDATA side is the INSTRUMENT failing.** Unanswerable either way, so the
+  card goes too — but a systematic failure, the label file absent and the store excluded and the
+  API refused at once, must not quietly produce a small deck.
+
+**⛔ THE GUARD IS NOT LOOSENED, AND THAT MATTERS BECAUSE THE RAILS FORBID IT.** `deck.nameless`
+still runs; more than half the census unresolved still ends the run non-zero; an empty deck beside
+a non-empty census still ends it. What changed is that **61 unanswerable cards out of 439 no
+longer cost the corpus its rebuild.**
+
+**Exercised against the real numbers rather than asserted:**
+
+    439 cases,  61 bare QIDs   -> proceeds, deck of 378
+    439 cases, 300 bare QIDs   -> FAILS (systematic)
+    439 cases, 200 unnamed + 239 bare QIDs -> FAILS (systematic)
+
+**What this does NOT fix.** The 61 items whose Wikidata labels do not resolve are still
+unresolved — `Q101835940`, `Q103804793`, `Q103823433`, `Q104034330`, `Q104377079` and 56 others.
+They are now dropped and counted instead of being rendered as bare QIDs or taking the pipeline
+down, which is the ruled treatment, but the lookup gap behind them is untouched and is a separate
+piece of work.

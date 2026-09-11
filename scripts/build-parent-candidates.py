@@ -196,7 +196,52 @@ def main():
     # that filter selected **0 of 709**, so the page rendered empty while the work was still
     # there. **207 of those 709** were then ruled on in one sitting. No cap either: `DECK = 60`
     # was the other half of the same mistake.
-    out = deck.render(cases, OUT_HTML, OUT_JSON,
+    # ⛔ THE UNJUDGEABLE CARDS ARE DROPPED, NOT RENDERED AND THEN FAILED ON.
+    #
+    # This script rendered every case and then failed the run if ANY card named nobody, while its
+    # sibling `build-family-candidates.py` has always dropped them and failed only on the
+    # systematic case. That difference stopped the whole nightly rebuild: `tree.yml` died at
+    # step 17 of 17 with *"BROKEN DECK: 61 of 436 cards name nobody on one side"* on run
+    # `34516801861` and identically on `34495919537` and `34483524907` — and with 34 of the last
+    # 60 runs cancelled by push bursts and the rest failing here, **the tree had not rebuilt
+    # successfully in 60 attempts.**
+    #
+    # The two cases are different and the sibling's comments say why, so the same words apply:
+    #
+    #   * **No name on OUR side is DATA.** Geni redacts, so `Private` and the unnamed arrive with
+    #     an empty label. An empty box cannot be judged against a name; the card goes and is
+    #     counted.
+    #   * **A bare QID on the WIKIDATA side is the INSTRUMENT failing.** It is unanswerable either
+    #     way, so the card goes too — but a SYSTEMATIC failure, the label file absent and the
+    #     store excluded and the API refused all at once, must not quietly produce a small deck.
+    #     That is what the count below is for.
+    #
+    # ⛔ THE GUARD IS NOT LOOSENED. `deck.nameless` still runs, and more than half the census
+    # unresolved still ends the run non-zero. What changes is that 61 unanswerable cards out of
+    # 439 no longer cost the corpus its rebuild.
+    unnamed = [c for c in cases if not (c.get("our") or "").strip()]
+    if unnamed:
+        print("%s cards dropped: Geni records no name on our side, so there is nothing to judge"
+              % format(len(unnamed), ","), file=sys.stderr)
+    ready = [c for c in cases if c not in unnamed]
+    unresolved = deck.nameless(ready)
+    if unresolved:
+        print("%s cards dropped: the Wikidata name did not resolve, so the card would face a "
+              "bare QID" % format(len(unresolved), ","), file=sys.stderr)
+        ready = [c for c in ready if c not in unresolved]
+    if len(unresolved) > len(cases) // 2:
+        print("BROKEN DECK: %s of %s cards had no Wikidata name -- that is the lookup failing, "
+              "not the data. See CLAUDE.md section THE PARENT DECK."
+              % (format(len(unresolved), ","), format(len(cases), ",")), file=sys.stderr)
+        return 1
+    # An empty deck beside a non-empty census is a join that matched nothing, which is
+    # indistinguishable from an absence of data. Say so rather than publishing a blank page.
+    if cases and not ready:
+        print("BROKEN DECK: %s candidates and nothing reached the deck"
+              % format(len(cases), ","), file=sys.stderr)
+        return 1
+
+    out = deck.render(ready, OUT_HTML, OUT_JSON,
                       title="Parent Adjudication",
                       sub="Is our Geni person the same as the parent their child already "
                           "names on Wikidata?",
