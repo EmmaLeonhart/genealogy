@@ -36893,3 +36893,29 @@ nothing else this session has.
     filed     export-Descendants-6000000227694017875.ged   5,000 INDI
     filed     export-Descendants-6000000227696775867.ged   5,000 INDI, 3,297 FAM
     building  task 6000000227700638904, seed 6000000227699971846
+
+## 2026-09-11 — the third ball is filed, and what the campaign has actually added
+
+    task 6000000227700638904
+    exports/abul-hamza-descendants/export-Descendants-6000000227699971846.ged
+    5,000 INDI, 2,657 FAM, seed = Anne Lemois's created ancestor
+
+Corpus grep before filing: **0 occurrences of the seed**, as it must be for a profile created
+twenty minutes earlier.
+
+**⛔ THE CAMPAIGN'S REAL YIELD, MEASURED RATHER THAN COUNTED IN BALLS.** Four balls sit in
+`exports/abul-hamza-descendants/` — 20,000 rows, **19,771 distinct people**, so the overlap
+*between* the balls is small. Against the rest of `exports/`:
+
+    distinct people across the four balls          19,771
+    of those, in NO other export in the corpus      8,812
+
+**So the four balls are 44% new material and 56% ground already held.** That is the number the
+stopping condition needs — `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A
+COUNT* — and it is the first time this campaign has had one. It is not a verdict: four balls is
+too few to call a trend, and three of the four were seeded off the same person's descent, which
+would inflate overlap rather than reduce it.
+
+**What it does establish** is that an export is not worth 5,000 new people. It is worth about
+2,200 on this evidence, and the seeds that matter are the ones reaching parts of the tree the
+corpus has not already swept.
