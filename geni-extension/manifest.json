@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "geni collector",
-  "version": "1.7.30",
+  "version": "1.7.31",
   "description": "Drives the Geni side of this repo: relationship paths, profile saves, placeholder individuals and Forest exports.",
   "permissions": [
     "tabs",
@@ -26,6 +26,7 @@
         "content/seed.js",
         "content/family.js",
         "content/walk.js",
+        "content/descend.js",
         "content/individual.js",
         "content/router.js"
       ],

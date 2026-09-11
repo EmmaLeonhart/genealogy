@@ -36356,3 +36356,38 @@ about the real tree; a generation number is an artefact of which files were merg
 `reports/descent-from-6000000006101354745.csv` stays — *who descends from Alix de Lampron* is
 still the question that was asked, and 1,176 is still the answer. The `generation` column is a
 property of our merge and must not be read as position in the descent.
+
+## 2026-09-10 — Monte Carlo, actually run: a generator, no thinking, and the picks so far
+
+Emma: *"Monte Carlo means you write a script that spits out the ID and don't think at all ... My
+idea wasn't 'is this a good person to do a descendant export from?' My idea was: does this person
+have five thousand descendants? It can be a complete waste of time and I don't care, because
+statistically it's going to work."*
+
+**⛔ I HAD NEVER ACTUALLY RUN IT.** Every earlier round carried judgement: an exclusion set, names
+in the output, reading who looked promising, and — worst — declaring Sayaluna ata "exhausted" and
+Hélène "productive" and switching between them. That is choosing with extra steps. The method has
+one decision in it, `descendants` against the threshold, and everything else I added was me.
+
+`scripts/monte-carlo-pick.py` is the generator and its docstring forbids it getting cleverer: no
+exclusion lists, no ranking, no names, no skipping people who look unpromising, no avoiding
+repeats. A repeated pick is one wasted page load and that is cheaper than deciding.
+
+**The picks, second round of eight:** `0, 0, 5, 7, 0, 1, 0, 1406`. Across both honest rounds that
+is **16 draws, 0 clearing 4,000, highest 1,406**. Recorded as a tally, not read as a verdict —
+`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*, and 16 is not a rate.
+
+**And the selection is moving into the extension, where it belongs.** Emma: *"we are supposed to
+be doing this algorithmically with the Chrome extension selecting a person ... a random descendant
+of the person and then just going there."* `geni-extension/content/descend.js` (1.7.31) is a
+random walk DOWN: read the card grid, pick one `child` uniformly at random, report its id; the
+background enqueues the next page and the walk continues. A person with no children ends it and
+gets the census read. It reuses `GC.family.scrape`, so the walk cannot disagree with the scrape
+about who someone's child is.
+
+**⛔ ITS `steps` IS A SAFETY LIMIT, NOT A DEPTH PARAMETER.** Generation counts do not indicate
+position in this tree, and nothing downstream reads it as if they did.
+
+**Why this matters beyond tidiness:** the Python generator can only ever sample people some
+earlier export already put in a `.ged`. The walk down samples from **Geni**, which is where the
+people we do not have yet actually are.

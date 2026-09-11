@@ -31,6 +31,8 @@ GC.dispatch = async function (job) {
     case "confirm_create": return GC.seed.confirmCreate(job);
     case "individual": return GC.runIndividual(job);
     case "family":     return GC.runFamily(job);
+    /* The random walk DOWN. One step per page load; the background owns the sequence. */
+    case "descend":    return GC.runDescend(job);
     case "path":       return GC.runPath(job);
     /* The census read. `GC.statistics()` costs a real page load and returns the numbers only. */
     case "stats":      return Object.assign({ job: "stats", geni_id: String(job.geni_id || "") },

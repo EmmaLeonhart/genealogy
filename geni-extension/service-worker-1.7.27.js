@@ -377,6 +377,28 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         return;
       }
 
+      /* ⛔ **`descend_next` IS THE WALK DOWN, AND IT IS THE EXTENSION CHOOSING THE PERSON.**
+       *
+       * Ruled 2026-09-10: *"we are supposed to be doing this algorithmically with the Chrome
+       * extension selecting a person ... a random descendant of the person and then just going
+       * there."* The content script picks one child at random and reports its id; this turns that
+       * into the next page to open. Nothing outside the extension chooses anybody.
+       *
+       * `step` rides along so the walk can stop itself; it is a safety limit and NOT a depth
+       * measurement -- generation counts do not indicate position in this tree. */
+      if (msg.result && msg.result.state === "descend_next" && msg.result.next_id) {
+        const nxt = String(msg.result.next_id);
+        queue = s.queue.concat([{ job: "descend", geni_id: nxt, kind: "descend",
+                                  step: msg.result.step | 0,
+                                  steps: (s.active[String(tabId)] || {}).steps || 0,
+                                  label: msg.result.next_name || "" }]);
+        await put({ active, results, attempted, queue });
+        try { await chrome.tabs.remove(tabId); } catch (e) {}
+        sendResponse(true);
+        pump();
+        return;
+      }
+
       /* ⛔ **`seed_walk` IS WHERE THE CLIMB BEGINS.** `runIndividual` no longer hands out a
        * queue -- it returns `walk_from`, one id -- so the background turns that into the first
        * seed job and owns every step after it. Before this the individual job reported that a
