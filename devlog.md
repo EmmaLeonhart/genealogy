@@ -36862,3 +36862,34 @@ if a conflict marker survives into the index, and five push attempts before givi
 
 Shell-syntax checked with `bash -n` after extracting the step from the YAML; the YAML itself
 parses and the step list is unchanged.
+
+## 2026-09-11 — target 3: the climb is fixed, the export submit is not
+
+**Anne Lemois `6000000223955666822`, 15,000 descendants, Alix target 3 of 15.**
+
+**⛔ THE CLIMB IS TRANSFORMED: 3 ANCESTORS, AGAINST 291 FOR TARGET 2.** Same code, same
+`createdPids` guard — the difference is the line. Isabella of Savoy sits in a European royal
+lattice where almost everyone already has both parents; Anne Lemois had an open slot three steps
+up. Seed `6000000227699971846` created cleanly, no chain, no climbing into our own placeholders.
+
+**⛔ AND THE EXTENSION'S EXPORT SUBMIT STILL DOES NOT FIRE. CAUSE NOT ESTABLISHED.** The job held
+its tab for **27 minutes** with no result, against ~6 minutes for both exports that have worked.
+Stopping it and clicking the same control by hand navigated to
+`/gedcom/download?task_id=6000000227700638904` **instantly**.
+
+So Geni is not the problem and the control is not the problem. `runExport` looks correct on
+inspection — it finds `a.gedcom-export-form-sub`, which is the same anchor a text match finds, and
+the file's own comment records that selector being fixed on 2026-09-05 after a `no_submit`. **Why
+the click does not land from the content script is unknown, and is left unknown rather than
+guessed at again.** Three theories have already been spent on this step today and the pattern of
+the day is that each one cost more than the export it was meant to save.
+
+**The working arrangement, stated so it is not mistaken for the design:** the extension climbs and
+creates, the export is submitted by hand, and the task id goes into
+`reports/descendants-export-log.csv` at submit time. That is not where this is supposed to end up
+— *"the extension's supposed to do all of the work on its own"* — but it collects balls, and
+nothing else this session has.
+
+    filed     export-Descendants-6000000227694017875.ged   5,000 INDI
+    filed     export-Descendants-6000000227696775867.ged   5,000 INDI, 3,297 FAM
+    building  task 6000000227700638904, seed 6000000227699971846
