@@ -36690,3 +36690,19 @@ unresolved — `Q101835940`, `Q103804793`, `Q103823433`, `Q104034330`, `Q1043770
 They are now dropped and counted instead of being rendered as bare QIDs or taking the pipeline
 down, which is the ruled treatment, but the lookup gap behind them is untouched and is a separate
 piece of work.
+
+**⛔ THE 429 FIX IS VERIFIED IN CI, AND THE PARENT DECK IS CONFIRMED AS THE ONLY REMAINING
+BLOCKER.** Run `34565431253` — dispatched before the parent-deck change, so it carried the
+backoff and nothing else — **got past step 16 for the first time**. No `HTTP Error` and no 429
+anywhere in its log; the ledger refresh completed and the QuickStatements batch built. It then
+died at step 17 with `BROKEN DECK: 61 of 503 cards name nobody on one side`.
+
+That is the cleanest possible result for a one-variable change: the step that failed twice now
+passes, the next step fails for its own separate reason, and the prediction made before dispatch —
+*"clearing step 16 only moves the run to step 17, where 61 nameless cards are waiting"* — is what
+happened.
+
+**The census grew from 436 to 503 between runs while the 61 stayed 61**, which says the unresolved
+set is a fixed population of items whose labels do not resolve, not a proportion of a growing one.
+
+Run `34571724211` is dispatched with both fixes.
