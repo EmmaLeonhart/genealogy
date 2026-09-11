@@ -36969,3 +36969,20 @@ to match names and periods across until the descent is in the corpus. The three 
 **Target 4 seeded and submitted:** Sébastien de Luxembourg, vicomte de Martigues
 `6000000009524802456` — 28 ancestors climbed, seed `6000000227701083825` created, export
 submitted by hand as task `6000000227701038833`.
+
+## 2026-09-11 — target 4 filed; five balls in the campaign
+
+    task 6000000227701038833
+    exports/abul-hamza-descendants/export-Descendants-6000000227701083825.ged
+    5,000 INDI, 3,674 FAM, seed = Sébastien de Luxembourg's created ancestor
+
+Five balls now, 25,000 rows. The cycle has settled at roughly 10–15 minutes a target: the
+extension climbs and creates the seed, the export is submitted by hand, the task id goes into
+`reports/descendants-export-log.csv` at submit time, then download and file.
+
+**The climb cost varies by line and it is worth watching rather than averaging.** Anne Lemois
+took 3 ancestors, Sébastien de Luxembourg 28, Isabella of Savoy 291, and Maria Anna Victoria of
+Bavaria is past 53 and still going. A dense royal lattice where everyone already has both parents
+is expensive to seed; a thinner line is nearly free. Nothing is being changed on the strength of
+that — it is four observations — but the spread is large enough that it will matter if the
+campaign runs to fifteen targets.
