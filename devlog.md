@@ -37226,3 +37226,36 @@ Both of Lucrezia's parents were backfilled by hand; `createdPids` is now 13.
 **⛔ AND THIS IS THE SECOND TIME STOPPING A RUN HAS COST SOMETHING CONCRETE.** The first was losing
 182 climbs. This one silently created a profile on a live site and told nobody. A stopped run is
 not a free undo, and the reason to stop had better be worth a duplicate placeholder.
+
+## 2026-09-11 — target 5 filed: 1,795 people new to the corpus, and the cost of a royal seed
+
+    task 6000000227706970874
+    exports/abul-hamza-descendants/export-Descendants-6000000227707004886.ged
+    5,000 INDI, 3,006 FAM, seed = the parent created on Lucrezia Landriani
+
+    new against the rest of the campaign     2,341
+    new against the WHOLE corpus             1,795
+
+**⛔ THE COST SIDE, WHICH IS THE POINT OF RECORDING THIS ONE.** Target 5 took **197 ancestor page
+loads across two attempts** (182 in the stopped run, 197 in the resumed one — the first attempt's
+work was discarded when `seedwalk` reset) and produced an accidental duplicate parent along the
+way. For that it returned 1,795 people the corpus did not hold.
+
+Against the cheap seeds:
+
+    Anne Lemois              3 climbs
+    Sébastien de Luxembourg 28 climbs
+    Maria Anna Victoria    197 climbs, plus 182 discarded
+
+All three return a ball of the same size. **The climb is where a royal target costs, not the
+export**, and a Wittelsbach or Savoy line costs roughly seventy times what a thin line does to
+reach the same 5,000 people.
+
+**That is an observation about the targets, not a rule.** Nothing is being reordered on it: the
+target list is worked in order, and `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS*
+concerns what an export returns, not what it costs to set up. But if the remaining ten are
+similarly royal — and Alix de Lampron's descent is European nobility throughout — the climb is
+the campaign's real bottleneck and it is worth someone deciding whether a cheaper seeding rule
+exists.
+
+    twelve balls, 60,000 rows, 24,020 people not anywhere else in exports/
