@@ -102,8 +102,34 @@ GC.runExport = async function (job) {
      * are of questionable use right now was about what to spend an `addAncestor` result on, not
      * a ban -- and a later instruction naming one outranks it either way. */
     const want = new RegExp("^" + (job.walk || "forest"), "i");
-    const walk = radios.find((r) => want.test(labelOf(r)));
-    if (!walk) return report({ state: "no_such_walk", walk: job.walk || "forest" });
+
+    /* ⛔ **WAIT FOR THE RADIOS. READING THEM ON `complete` IS READING AN EMPTY FORM.**
+     *
+     * Geni serves base HTML and fills the page in afterwards, so `readyState === "complete"` says
+     * nothing about whether this form exists yet. Read too early, `querySelectorAll` returns an
+     * empty list, `find` returns `undefined`, and the job reports `no_such_walk` -- which reads as
+     * *Geni removed the Descendants option* and is actually *the page had not drawn yet*.
+     *
+     * **Measured 2026-09-11 on Eleonore d'Orleans `6000000015746688153`.** The climb ran 162 steps,
+     * created NN Crespin `6000000227709106861`, and threw the export away on `no_such_walk`. The
+     * same form, opened by hand seconds later, had all five radios. `1.7.41` made this failure
+     * FAST rather than parking for an hour, which is how it became visible at all -- the same bug
+     * as the submit anchor, one field earlier.
+     *
+     * `radios` is re-read inside the wait because the list is a snapshot, not live. */
+    const findWalk = () => [...document.querySelectorAll("input[type=radio]")]
+                             .find((r) => want.test(labelOf(r)));
+    if (!findWalk()) await GC.until(() => !!findWalk(), 25000);
+    const walk = findWalk();
+    if (!walk) {
+      /* ⛔ REPORT THE RADIO COUNT. Zero means the form never drew; a non-zero count with no
+       * match is the real *this walk is gone* and a different problem entirely. Without it the
+       * two are the same string. */
+      return report({ state: "no_such_walk", walk: job.walk || "forest",
+                      radios: document.querySelectorAll("input[type=radio]").length,
+                      labels: [...document.querySelectorAll("input[type=radio]")]
+                                .map(labelOf).slice(0, 8) });
+    }
     if (!walk.checked) walk.click();
 
     const size = document.querySelector("input[name*='size' i], select[name*='size' i], input#size");

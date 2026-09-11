@@ -37458,3 +37458,59 @@ roster for kinship before working it is a decision to put to somebody rather tha
     rows across the balls                  75,000
     distinct people                        44,440
     people not anywhere else in exports/   30,034
+
+## 2026-09-11 — 2,680 people recovered out of the inbox, and `no_such_walk` was the same bug one field earlier
+
+### Geni emails every finished export, and twenty-two of them had never been collected
+
+Emma: *"you can check my gmail for lost finished exports."* Geni sends a
+`Your GEDCOM export is ready at Geni.` mail carrying a `https://www.geni.com/c/<hash>` link for
+**every** export, and the link survives two weeks. One thread held **36** of them, 2026-09-09 to
+tonight — against **14** task ids in `reports/descendants-export-log.csv`.
+
+Resolving a link costs one `fetch`: `/c/<hash>` is a click-tracking redirect and `response.url`
+carries the `task_id`. Thirty-six fetches, no tabs. **22 of the 36 were not in the log.**
+
+Downloading them needed no clicking either — a hidden `<iframe>` pointed at
+`/gedcom/request_download?task_id=<n>` starts the download with no permission prompt, which is a
+cheaper answer than § *Nothing downloads* has had. All 22 landed.
+
+**Then the honest check: most were already held.** Comparing on the exact `export-<Style>-<seed>`
+filename rather than on the seed alone — a first pass matched on seed and claimed Abul Hamza's
+Descendants and Forest balls were missing, when what the directory holds is all three styles —
+left **two** genuinely new files:
+
+    export-Descendants-6000000227682842833.ged   4,071 INDI       1 new to the corpus
+    export-Descendants-6000000227694277862.ged   5,000 INDI   2,679 new to the corpus
+
+**2,680 people for no export and no climb** — work Geni had already done, sitting unread. The
+first ball is a near-duplicate of something already held and the second is not, which is the
+whole spread between a wasted recovery and a free one.
+
+Campaign now: **17 balls, 49,963 distinct people, 32,714 not anywhere else in `exports/`.**
+
+⛔ **THE INBOX IS A LEDGER OF EVERY EXPORT EVER BUILT, and it was never being read.** Two task ids
+were written off as lost on 2026-09-10 on the reasoning that *Geni shows no list anywhere in the
+UI* — true of the UI, and the mail was the list the whole time.
+
+### Target 9 climbed 162 steps and threw the export away on a false negative
+
+**Eléonore d'Orléans `6000000015746688153`.** The climb ran 162 steps and created
+**NN Crespin `6000000227709106861`** on subject `6000000014887140248`. Then the export reported
+`no_such_walk` — *Geni has no Descendants option* — and the same form, opened by hand seconds
+later, had all five radios.
+
+**It is the submit bug one field earlier.** `readyState === "complete"` says nothing about whether
+Geni's deferred fill has drawn the form, so `querySelectorAll("input[type=radio]")` returned an
+empty list, `find` returned `undefined`, and the job reported a missing option rather than an
+undrawn page. `1.7.41` is what made it visible: before it, this path parked for an hour instead of
+failing in a second.
+
+`1.7.42` waits for a radio whose label matches the wanted walk, up to 25s, and re-reads the list
+inside the wait because the snapshot is not live. **And it reports the radio count and the labels
+it did see**, so the next `no_such_walk` says which of the two things happened — zero radios is an
+undrawn page, a non-zero count with no match is the real *this walk is gone*.
+
+**Target 9's export is NOT yet submitted.** Emma has an export of her own building
+(`6000000227709071839`) and Geni runs one at a time, so the submit waits for hers rather than
+risking a refusal. The seed is created and persists; nothing about the 162 climbs is lost.
