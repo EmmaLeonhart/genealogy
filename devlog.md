@@ -36706,3 +36706,23 @@ happened.
 set is a fixed population of items whose labels do not resolve, not a proportion of a growing one.
 
 Run `34571724211` is dispatched with both fixes.
+
+**⛔ CORRECTION: THE "FIXED POPULATION" CLAIM ABOVE IS NOT SUPPORTED AND IS WITHDRAWN.** The entry
+says the census grew 436 -> 503 while the nameless count stayed 61, and concludes the unresolved
+set is *"a fixed population of items whose labels do not resolve"* and therefore *"a bounded piece
+of work"*.
+
+**That is two numbers and an inference, stated as a measurement.** `61 == 61` across two runs is
+consistent with a fixed set and equally consistent with coincidence. Worse, the five example QIDs
+matching in both messages was treated as corroboration, and it cannot be: the code prints
+`sorted(c["qid"] for c in bad)[:5]`, so the lowest five sort identically even if the other 56
+changed entirely.
+
+**What is actually known:** two runs each reported 61 nameless cards, against censuses of 436 and
+503. Whether it is the same 61 is unmeasured. Whether it grows with the corpus is unmeasured.
+*"Bounded piece of work"* was a prediction.
+
+**It is measurable and is not being measured here** — the deck writes
+`reports/parent-candidates.tsv` every run, so the unresolved ids could be diffed across two runs
+rather than guessed at from a count. Nobody asked for that, so it is not being started; what is
+recorded is that the claim was unearned, not a plan to earn it.
