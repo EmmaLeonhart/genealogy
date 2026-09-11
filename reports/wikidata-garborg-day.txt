@@ -386,72 +386,46 @@ Q141429564	P460	Q141336454
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 234 edits; 3952 edits held for a later run
+#   60 people, 201 edits; 3952 edits held for a later run
 #   across 882 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q110067686: Alice|Alswn Brereton, of Malpas -> Alice Brereton, of Malpas   + Alswn Brereton, of Malpas
-Q110067686	Len	"Alice Brereton, of Malpas"
-Q110067686	Lmul	"Alice Brereton, of Malpas"
-Q110067686	Amul	"Alswn Brereton, of Malpas"
-Q110067686	Lnl	"Alice Brereton, of Malpas"
-#   Q110067684: Randle|Raff ap Iorwerth Gôch ab Ednyfed ap Madog Broughton -> Randle ap Iorwerth Gôch ab Ednyfed ap Madog Broughton   + Raff ap Iorwerth Gôch ab Ednyfed ap Madog Broughton
-Q110067684	Len	"Randle ap Iorwerth Gôch ab Ednyfed ap Madog Broughton"
-Q110067684	Lmul	"Randle ap Iorwerth Gôch ab Ednyfed ap Madog Broughton"
-Q110067684	Amul	"Raff ap Iorwerth Gôch ab Ednyfed ap Madog Broughton"
-Q110067684	Lnl	"Randle ap Iorwerth Gôch ab Ednyfed ap Madog Broughton"
-#   Q110067505: Margaret Hewet (Hewett|Hewit), of Walsall -> Margaret Hewet   + Margaret Hewett | Margaret Hewit
-Q110067505	Len	"Margaret Hewet, of Walsall"
-Q110067505	Lmul	"Margaret Hewet"
-Q110067505	Amul	"Margaret Hewett"
-Q110067505	Amul	"Margaret Hewit"
-Q110067505	Lnl	"Margaret Hewet"
-#   Q110067497: Margaret|Mary Bromley -> Margaret Bromley   + Mary Bromley
-Q110067497	Len	"Margaret Bromley"
-Q110067497	Lmul	"Margaret Bromley"
-Q110067497	Amul	"Mary Bromley"
-Q110067497	Lnl	"Margaret Bromley"
-#   Q110067354: Jane|Joan Hill, of Buntingdale, Salop -> Jane Hill, of Buntingdale, Salop   + Joan Hill, of Buntingdale, Salop
-Q110067354	Len	"Jane Hill, of Buntingdale, Salop"
-Q110067354	Lmul	"Jane Hill, of Buntingdale, Salop"
-Q110067354	Amul	"Joan Hill, of Buntingdale, Salop"
-Q110067354	Lnl	"Jane Hill, of Buntingdale, Salop"
-#   Q110067314: John|Thomas Dale -> John Dale   + Thomas Dale
-Q110067314	Len	"John Dale"
-Q110067314	Lmul	"John Dale"
-Q110067314	Amul	"Thomas Dale"
-Q110067314	Lnl	"John Dale"
-#   Q110067101: Isabella|Sibell Lee (Leigh|Legh) -> Isabella Lee   + Isabella Leigh | Isabella Legh | Sibell Lee | Sibell Leigh | Sibell Legh
-Q110067101	Len	"Isabella Lee"
-Q110067101	Lmul	"Isabella Lee"
-Q110067101	Amul	"Isabella Leigh"
-Q110067101	Amul	"Isabella Legh"
-Q110067101	Amul	"Sibell Lee"
-Q110067101	Amul	"Sibell Leigh"
-Q110067101	Amul	"Sibell Legh"
-#   Q110067036: Jane|Joanna Dale -> Jane Dale   + Joanna Dale
-Q110067036	Len	"Jane Dale"
-Q110067036	Lmul	"Jane Dale"
-Q110067036	Amul	"Joanna Dale"
-Q110067036	Lnl	"Jane Dale"
-#   Q110067007: Nicholas|Francis Waring -> Nicholas Waring   + Francis Waring
-Q110067007	Len	"Nicholas Waring"
-Q110067007	Lmul	"Nicholas Waring"
-Q110067007	Amul	"Francis Waring"
-Q110067007	Lnl	"Nicholas Waring"
-#   Q110066993: NN (Mary|Elizabeth) Verney -> NN Mary Verney   + NN Elizabeth Verney
-Q110066993	Len	"NN Mary Verney"
-Q110066993	Lmul	"NN Mary Verney"
-Q110066993	Amul	"NN Elizabeth Verney"
-#   Q110066771: Arnold|Ralph St.Leger, of Ulcombe -> Arnold St.Leger, of Ulcombe   + Ralph St.Leger, of Ulcombe
-Q110066771	Len	"Arnold St.Leger, of Ulcombe"
-Q110066771	Lmul	"Arnold St.Leger, of Ulcombe"
-Q110066771	Amul	"Ralph St.Leger, of Ulcombe"
-Q110066771	Lnl	"Arnold St.Leger, of Ulcombe"
-#   Q109852969: Julian|Juliana de Bockland -> Julian de Bockland   + Juliana de Bockland
-Q109852969	Len	"Julian de Bockland"
-Q109852969	Lmul	"Julian de Bockland"
-Q109852969	Amul	"Juliana de Bockland"
-Q109852969	Lnl	"Julian de Bockland"
+#   Q141198393 Erik Erikson Stangeland: add a mul alias "Erik Erikson Time"
+Q141198393	Amul	"Erik Erikson Time"
+#   Q141189112 Wilhelmine Sophie Christiansen: add a mul alias "Wilhelmine Sophie Bergersen"
+Q141189112	Amul	"Wilhelmine Sophie Bergersen"
+#   Q141189104 Siri Kristine Ivarsdatter Garborg: add a mul alias "Siri Kristine Ivarsdatter Sandsmark"
+Q141189104	Amul	"Siri Kristine Ivarsdatter Sandsmark"
+#   Q141152600 Stine Eivindsdatter Jacobson: add a mul alias "Stine Stena Eivindsdatter Garborg"
+Q141152600	Amul	"Stine Stena Eivindsdatter Garborg"
+#   Q131631500 Johan Gustaf Bonde af Björnö: add a mul alias "Johan Gustaf Bonde af Björnö"
+Q131631500	Amul	"Johan Gustaf Bonde af Björnö"
+#   set the ja label to "ヨハン・グスタフ・ボンデ"
+Q131631500	Lja	"ヨハン・グスタフ・ボンデ"
+#   set the zh label to "约翰·古斯塔夫·邦德"
+Q131631500	Lzh	"约翰·古斯塔夫·邦德"
+#   set the ko label to "조한 구스타프 본데"
+Q131631500	Lko	"조한 구스타프 본데"
+#   Q129094825 Carlo Ruffo 3°conte di Montalto: add a mul alias "Carlo Ruffo 3°conte di Montalto"
+Q129094825	Amul	"Carlo Ruffo 3°conte di Montalto"
+#   add a mul alias "Bernat de Barcelona Infant de Barcelona"
+Q123252155	Amul	"Bernat de Barcelona Infant de Barcelona"
+#   Q123252155: 'Bernat de Barcelona Infant de Barcelona' has no ja/zh/ko label
+#   Q123252155: set the ja label
+Q123252155	Lja	"ベルナト・デ・バルセロナ・インファント・デ・バルセロナ"
+#   Q123252155: set the zh label
+Q123252155	Lzh	"贝尔纳特·德·巴尔塞洛纳·因凡特·德·巴尔塞洛纳"
+#   Q123252155: set the ko label
+Q123252155	Lko	"베르나트 데 바르케로나 인판트 데 바르케로나"
+#   Q116760688 Maria Amalia Nordenfeldt: add a mul alias "Maria Amalia Nordenfeldt"
+Q116760688	Amul	"Maria Amalia Nordenfeldt"
+#   Q110641098 Béatrix de Walcourt: add a mul alias "Béatrix de Walcourt dame de Houffalize"
+Q110641098	Amul	"Béatrix de Walcourt dame de Houffalize"
+#   Q110396647 Eleanor Venables: add a mul alias "Eleanor Cotton"
+Q110396647	Amul	"Eleanor Cotton"
+#   Q110396133 Cicely Talbot: add a mul alias "Cicely Venables"
+Q110396133	Amul	"Cicely Venables"
+#   Q110325932 Mechtild Von Papenheim: add a mul alias "Mechtild von Schönenberg"
+Q110325932	Amul	"Mechtild von Schönenberg"
 #   Q109852954: Katherine|Catherine de Drayton -> Katherine de Drayton   + Catherine de Drayton
 Q109852954	Len	"Katherine de Drayton"
 Q109852954	Lmul	"Katherine de Drayton"
