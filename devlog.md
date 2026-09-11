@@ -36756,3 +36756,37 @@ evidence would be the email, which is outside this session.
 `6000000227694017875` came down and is filed. Every export since has reported `timeout` with no
 id, and there is no way from here to tell a submitted-and-building export from one that never
 went.
+
+## 2026-09-11 — ⛔ `active: false` IS WHY ALMOST EVERYTHING FAILED. ONE SUCCESSFUL EXTENSION EXPORT ALL SESSION
+
+Asked directly: *"Did we have a successful extension export lol"* — **once.** The split is clean
+and was measured twice over, on two different jobs:
+
+    runExport   FOREGROUND  -> task 6000000227694058849, a 5,000-person ball, filed
+                BACKGROUND  -> timeout with no task_id, every single time
+    family      FOREGROUND  -> Gopikisan Piramal 6000000002024756674, 10 relatives
+                BACKGROUND  -> no_family_block, twice, same person and same version
+
+The one export that worked was `runExport` dispatched through the DOM trigger while the tab was
+in front; every export the pump opened for itself failed. The family scrape has the identical
+signature — the same person, on the same extension build, reads perfectly in front and returns
+nothing behind.
+
+**`pump` opened every tab with `chrome.tabs.create({ url, active: false })`.** Chrome throttles
+timers and defers rendering in a background tab; Geni serves base HTML and fills the page in
+afterwards. Either alone is survivable. Together, a reader that waits is waiting on a page that
+is never going to finish, and the wait expires.
+
+**⛔ SO MOST OF TODAY'S "BUGS" WERE ONE BUG.** The 20-of-60 `no_family_block`, the exports that
+reported `timeout` with no id, the 25-second wait that only recovered a third — all of it is this.
+The fixes made along the way were real and stay (the card grid, the generic relation words, the
+task-id capture, the `createdPids` guard), but they were treating symptoms of a cause that was
+never in the reader at all.
+
+1.7.37 opens the tab with `active: true`. It costs focus while the loop runs, which is the machine
+doing what it was told to do, and it is worth more than an export that never lands.
+
+**The honest count for the session: one collected export.** The ball from `6000000227694017875`,
+filed. A second is building now as task `6000000227698127919`, submitted by hand in a foreground
+tab, and `reports/descendants-export-log.csv` records task ids at submit time so the three already
+lost are visible rather than implied.

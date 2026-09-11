@@ -789,7 +789,22 @@ async function pump() {
       const url = next.job === "export"
         ? "https://www.geni.com/gedcom/export/" + next.geni_id
         : "https://www.geni.com/people/x/" + next.geni_id;
-      const tab = await chrome.tabs.create({ url, active: false });
+      /* ⛔ THE TAB IS ACTIVE. `active: false` IS WHY ALMOST EVERYTHING FAILED ON 2026-09-10-11.
+       *
+       * Chrome throttles timers and defers rendering in a background tab, and Geni serves base
+       * HTML and fills the page in afterwards — the two compound, so a reader that waits still
+       * waits on a page that is never going to finish.
+       *
+       * The split is clean and was measured twice:
+       *
+       *     runExport   foreground -> task 6000000227694058849, a 5,000-person ball, filed
+       *                 background -> timeout with no task_id, EVERY time
+       *     family      foreground -> Gopikisan Piramal 6000000002024756674, 10 relatives
+       *                 background -> no_family_block, twice, same person same version
+       *
+       * A focused tab costs the window stealing focus while the loop runs. That is the machine
+       * doing the work it was told to do, and it is worth more than an export that never lands. */
+      const tab = await chrome.tabs.create({ url, active: true });
       active[String(tab.id)] = job;
       await put({ queue, active });
 
