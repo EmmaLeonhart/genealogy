@@ -36499,3 +36499,34 @@ I had been treating as interchangeable with "somewhere in the ball".
 
 The 15 seed climbs are running now. Geni takes one export at a time at roughly six minutes each,
 so the exports are the long pole and the censuses were never the cost.
+
+## 2026-09-10 — the sweep produced 15 export targets and the run can only spend one of them
+
+The loop finished its 60 censuses, found **15 hits**, started the seed climbs, created
+`6000000227696410829` and put a `Descendants` export in flight from it. Then the queue emptied.
+
+**⛔ ONE RUN CREATES ONE PERSON, SO 14 OF THE 15 HITS WOULD HAVE BEEN LOST.** `creating` is set the
+moment a creation begins and `pump` then drops **every remaining seed job** — the one-creation-per-run
+rule, which exists because a run once *"kept climbing and kept creating"*. It is doing its job;
+the cost is that the other fourteen census reads, each a real page load against a hostile site,
+had nowhere to go.
+
+**So the hits are written down rather than re-derived.** `reports/descendants-export-targets.csv`
+holds all fifteen with their `descendants` figure and where they were found. Re-censusing them
+later would be spending the same page loads twice to learn the same thing, and the numbers are an
+observation about Geni that does not need repeating.
+
+    6000000004150889590  15000    6000000006428491389  15000    6000000003845495674  15000
+    6000000223955666822  15000    6000000004120195518  15000    6000000005607957168  14582
+    6000000009524802456  15000    6000000002915140855  13778    6000000006444307257  11652
+    6000000015628911730  10106    6000000012808241290   9154    6000000015341003638   7796
+    6000000037055354049   6932    6000000015746688153   6161    300372611270008118    5272
+
+**⛔ THIS IS A RECORD, NOT A QUEUE, AND MUST NOT BECOME STATE.** `CLAUDE.md` § *THE ALGORITHM IS
+STATELESS EXCEPT FOR TWO THINGS* is about the connectivity graph and the attempt dates; this file
+is neither. It is the output of one sweep, dated, and a later sweep may legitimately return
+different numbers because Geni is live. Nothing reads it to decide membership and nothing carries
+it forward across a rebuild.
+
+**The honest framing of the run:** 60 page loads bought 15 usable targets and one export. The
+remaining fourteen are now a one-line handoff instead of another 60 censuses.
