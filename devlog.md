@@ -37588,3 +37588,33 @@ for no export, no climb and no page load of Geni's tree.
 available for 2 weeks"*, so an uncollected export is not waiting indefinitely — the 2026-08-30
 links expire about 2026-09-13. Anything built and not filed is on a clock, and the sweep is
 cheap enough to be worth repeating rather than trusting that every export got collected.
+
+## 2026-09-11 — Alix target 9 filed: 4,026 new to the corpus, the best ball of the campaign
+
+**Eléonore d'Orléans `6000000015746688153`**, seeded on NN Crespin `6000000227709106861` after
+162 climbs, submitted by the extension under `1.7.42` and collected by task id.
+
+    ball                    5,000 INDI   2,213 FAM
+    new against the campaign                4,285
+    new against the WHOLE corpus            4,026
+
+**Nine targets in, the yield is still climbing:**
+
+    target 5   197 climbs   1,795 new to the corpus
+    target 6    64 climbs   2,058
+    target 7    10 climbs   3,290
+    target 8    95 climbs     666   <- 3,796 of its 5,000 were in target 6's ball; father and son
+    target 9   162 climbs   4,026
+
+`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT* watches this column and
+it has gone **up** across the sequence, with the one dip explained by kinship inside the roster
+rather than by saturation. There is no case for stopping and six targets remain.
+
+**Campaign totals, eighteen balls in:**
+
+    rows across the balls                  89,071
+    distinct people                        54,248
+    people not anywhere else in exports/   36,534
+
+**And the whole of target 9 ran without a hand on it except the download** — climb, seed creation,
+walk selection and submit, all inside the extension, which is what the last three builds were for.
