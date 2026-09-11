@@ -804,7 +804,25 @@ async function pump() {
        *
        * A focused tab costs the window stealing focus while the loop runs. That is the machine
        * doing the work it was told to do, and it is worth more than an export that never lands. */
-      const tab = await chrome.tabs.create({ url, active: true });
+      /* ⛔ BACKGROUND AGAIN, BUT ONLY BECAUSE CHROME IS NOW LAUNCHED WITH THE THROTTLING OFF.
+       *
+       * `active: false` was the cause of nearly every failure on 2026-09-10 — Chrome throttles
+       * timers and defers rendering in a background tab, Geni fills its pages in after load, and
+       * together a reader waits on a page that never finishes. 1.7.37 made the tab active, which
+       * worked and stole focus for the whole run.
+       *
+       * The flags remove the cause instead of working around it, so the tab goes back to being
+       * quiet. Chrome MUST be started with them or this regresses silently:
+       *
+       *     --disable-background-timer-throttling
+       *     --disable-renderer-backgrounding
+       *     --disable-backgrounding-occluded-windows
+       *     --disable-features=CalculateNativeWinOcclusion,IntensiveWakeUpThrottling
+       *
+       * `docs/rules/collector-and-browser.md` carries them. A run that starts reporting
+       * `no_family_block` or exports with no `task_id` on a healthy profile is this, not the
+       * reader. */
+      const tab = await chrome.tabs.create({ url, active: false });
       active[String(tab.id)] = job;
       await put({ queue, active });
 

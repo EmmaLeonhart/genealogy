@@ -36790,3 +36790,32 @@ doing what it was told to do, and it is worth more than an export that never lan
 filed. A second is building now as task `6000000227698127919`, submitted by hand in a foreground
 tab, and `reports/descendants-export-log.csv` records task ids at submit time so the three already
 lost are visible rather than implied.
+
+## 2026-09-11 — the Chrome flags fix it, and a second ball is down
+
+Emma: *"we need to change Chrome settings so this doesn't happen."* Correct, and better than the
+`active: true` workaround.
+
+**Verified against the failures themselves.** Eight profiles from the 20 that had returned
+`no_family_block` were re-run in **background** tabs, under a Chrome started with the throttling
+flags: **3 scraped — 10, 7 and 6 relatives — 2 `private_profile`, 0 `no_family_block`.**
+Gopikisan Piramal `6000000002024756674` is among the three, the same profile that failed twice in
+a background tab on the same extension build. The flags remove the cause, so 1.7.38 puts the tab
+back to `active: false` and the run stops stealing focus.
+
+The flags and the failure signature are written into
+`docs/rules/collector-and-browser.md` — `no_family_block` on a profile that plainly has a family,
+or an export reporting `timeout` with an empty `task_id`, means Chrome was started without them.
+
+**And the second ball is down and filed:**
+
+    task 6000000227698127919
+    exports/abul-hamza-descendants/export-Descendants-6000000227696775867.ged
+    5,000 INDI, 3,297 FAM, seed 6000000227696775867 (Isabella of Savoy's created ancestor)
+
+Corpus grep before filing: **0 occurrences**, so all 5,000 are new material.
+`reports/descendants-export-log.csv` records it against its task id, and still shows the three
+exports whose ids were lost before the log existed.
+
+**Two collected exports for the session.** That is the honest number, and the reason it is two
+rather than fifteen is the background-tab cause above, found only after it had cost most of a day.

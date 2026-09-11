@@ -290,3 +290,40 @@ the person is created, the marker never becomes a label.
 a page the reader simply failed to read both returned `no_family_block`, so "we do not chase
 private people" could not be implemented — there was no way to tell the two apart. `private_profile`
 is final; `no_family_block` is a person to look at again.
+
+## ⛔ CHROME MUST BE LAUNCHED WITH BACKGROUND THROTTLING OFF. Ruled 2026-09-11
+
+Emma: *"we need to change Chrome settings so this doesn't happen. Maybe opening a gazillion new
+windows, maybe something else."* The flags are the something else, and they are not optional.
+
+    chrome.exe --disable-background-timer-throttling \
+               --disable-renderer-backgrounding \
+               --disable-backgrounding-occluded-windows \
+               --disable-features=CalculateNativeWinOcclusion,IntensiveWakeUpThrottling
+
+**Why.** The collector opens its pages with `chrome.tabs.create({ active: false })`. Chrome
+throttles timers and defers rendering in a background tab; Geni serves base HTML and fills the
+page in afterwards with a database query. Either alone is survivable. Together, every reader that
+waits is waiting on a page that will never finish, and the wait expires.
+
+**The measurement that established it, 2026-09-10/11** — the same code, the same profiles, the
+only difference being which tab they ran in:
+
+    runExport   foreground  -> task 6000000227694058849, a 5,000-person ball, filed
+                background  -> timeout with no task_id, every single time
+    family      foreground  -> Gopikisan Piramal 6000000002024756674, 10 relatives
+                background  -> no_family_block, twice
+
+**And the flags were then verified against the failures themselves.** Eight profiles from the 20
+that had returned `no_family_block` were re-run in **background** tabs under the flags: **3
+scraped (10, 7 and 6 relatives), 2 `private_profile`, and zero `no_family_block`.** Gopikisan is
+among the three — the same profile that failed twice in a background tab on the same build.
+
+⛔ **THE FAILURE SIGNATURE, so a later run recognises it instead of re-debugging the reader:**
+`no_family_block` on profiles that plainly have families, or exports reporting `timeout` with an
+empty `task_id`. That is Chrome started without these flags. It is not the card-grid reader, not
+the wait, and not Geni.
+
+**This is why the tab stays `active: false`.** 1.7.37 made the tab active and it worked, at the
+cost of stealing window focus for every page in a run of hundreds. The flags remove the cause
+instead, so 1.7.38 put the tab back in the background.
