@@ -32,6 +32,33 @@ GC.runExport = async function (job) {
 
   const bodyText = () => (document.body ? document.body.innerText : "");
 
+  /* ⛔ THE SUBMIT NAVIGATES, AND THE TASK ID IS THE ONLY WAY BACK TO THE FILE.
+   *
+   * Clicking Export sends the tab to `/gedcom/download?task_id=<n>`, which tears down the content
+   * script — so the `GC.until` further down waits on a dying document, exactly as the seed
+   * confirmation did before `confirm_create`. The job then re-claims on the download page, and
+   * before this it had nothing to say there: it reported `timeout` carrying the EXPORT url, so
+   * the task id was lost.
+   *
+   * **Losing it means losing the export.** Geni mails the link and shows no list anywhere in the
+   * UI — checked on `/gedcom` and on the profile's own export page, both of which render a blank
+   * form — so an export whose task id was never captured cannot be collected at all. Two went
+   * that way on 2026-09-10 before this.
+   *
+   * The URL is the whole answer, so this needs no stored state: landing here at all means the
+   * submit succeeded, and the page says whether the file is built yet. */
+  const task = (location.search.match(/task_id=(\d+)/) || [])[1];
+  if (task) {
+    const ready = GC.byText("a,button,input", /download my gedcom file/i).find(GC.visible);
+    if (ready) {
+      ready.click();
+      return report({ state: "downloaded", task_id: task });
+    }
+    /* Still building. Not an error and not a retry: the build carries on without a tab held open,
+     * and `task_id` is what fetches it later. */
+    return report({ state: "building", task_id: task });
+  }
+
   /* Geni refuses some profiles outright -- *"You are not allowed to export that profile."*
    * That is a real answer, not a failure to retry. Three spine steps were refused this way on
    * 2026-08-30 and the right move was to stop asking. */
@@ -111,8 +138,13 @@ GC.runExport = async function (job) {
 
   /* WAIT FOR THE PAGE TO SAY SO. The budget is generous because the only alternative to waiting
    * is abandoning -- there is no cancel. */
+  /* A short wait only. The submit normally navigates, and when it does the answer arrives on the
+   * re-claim above rather than here; sitting on a dying document for an hour buys nothing. */
   const ok = await GC.until(() => !!readyLink(), job.waitMs || 3600000);
-  if (!ok) return report({ state: "timeout" });
+  if (!ok) {
+    return report({ state: "timeout",
+                    task_id: (location.search.match(/task_id=(\d+)/) || [])[1] || "" });
+  }
 
   readyLink().click();
   return report({ state: "downloaded" });

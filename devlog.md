@@ -36530,3 +36530,31 @@ it forward across a rebuild.
 
 **The honest framing of the run:** 60 page loads bought 15 usable targets and one export. The
 remaining fourteen are now a one-line handoff instead of another 60 censuses.
+
+## 2026-09-10 — 1.7.36: the export's task id was being thrown away, and that loses the export
+
+**The first export of the sweep reported `timeout` carrying the EXPORT page's url**, not the
+download page's — so no `task_id`, and no `task_id` means no way back to the file.
+
+**The mechanism is the navigation one again.** Clicking Export sends the tab to
+`/gedcom/download?task_id=<n>`, which tears down the content script, so the `GC.until` that waits
+for the download link is waiting on a dying document — the same shape as the seed confirmation
+before `confirm_create`, and the same shape as `no_add_link` and `no_family_block`. **That is four
+instances of one bug today.** The job then re-claims on the download page and, before this, had
+nothing to say there.
+
+**⛔ AND LOSING THE TASK ID LOSES THE EXPORT OUTRIGHT.** Geni mails the link and shows no list
+anywhere in the interface — checked on `/gedcom` and on the profile's own export page, both of
+which render a blank form. An export whose id was never captured cannot be collected. **Two went
+that way today** before this was found.
+
+**The fix needs no stored state, because the URL is the answer.** `runExport` now checks for
+`task_id` in its own location first: landing there at all means the submit succeeded, and the page
+says whether the file is built. `downloaded` and `building` both carry `task_id`, and even the
+`timeout` path reports whatever id it can see.
+
+**Target 2 of the 15 started:** Isabella of Savoy `6000000004150889590`, 15,000 descendants.
+
+**The record to keep:** the export from `6000000227696410829` was submitted and is building, and
+its task id is gone. It will arrive by email and can be filed from there; it is not lost material,
+only unreachable from here.
