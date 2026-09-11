@@ -611,6 +611,21 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     investigated, measured, seeded or grepped — `CLAUDE.md` § *"Add it to the end of the queue"
     means WRITE IT DOWN AND STOP*. The slug is `n-n`, so the profile is an `NN`.
 
+  - **⛔ `NN ben Ovadya` `6000000227708968860` — A NEW CAMPAIGN ROOT, ADDED 2026-09-11.**
+    Emma, running the export herself: *"Im exporting this one
+    https://www.geni.com/gedcom/download?task_id=6000000227709071839 ... And the descendants of
+    this person will be subject to a similar export descendant campaign."*
+
+    The ball she exported is filed at
+    `exports/ben-ovadya-descendants/export-Descendants-6000000227708968860.ged` — 5,000 INDI,
+    3,634 FAM, **1,340 new to the corpus** and sharing only **20 people** with the whole Alix
+    campaign. A disjoint population, which is what the hinge-person rule is for.
+
+    **Nothing here is investigated, measured, seeded or grepped** beyond filing the file she
+    named and counting it — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN
+    AND STOP*. Its position against Abul Hamza, Bergitte Aukland and Gamle Olof was **not
+    stated** and is not inferred here.
+
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She

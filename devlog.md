@@ -37514,3 +37514,39 @@ undrawn page, a non-zero count with no match is the real *this walk is gone*.
 **Target 9's export is NOT yet submitted.** Emma has an export of her own building
 (`6000000227709071839`) and Geni runs one at a time, so the submit waits for hers rather than
 risking a refusal. The seed is created and persists; nothing about the 162 climbs is lost.
+
+## 2026-09-11 — 1.7.42 verified on the export it was written for; a second campaign root arrives
+
+**`1.7.42` was confirmed on the exact job that had failed.** Target 9's seed —
+NN Crespin `6000000227709106861`, the one 162 climbs paid for — was re-queued as a bare `export`
+job after restarting Chrome onto the new build. Same profile, same walk, same form:
+
+    1.7.41   no_such_walk
+    1.7.42   building, task 6000000227709386920
+
+The radios were always there; `readyState === "complete"` was simply the wrong thing to wait on.
+Nothing about the climb was lost, because a created seed persists on Geni whatever the export
+does afterwards.
+
+**And the submit waited for Geni's queue rather than fighting it.** Emma had an export of her own
+building, and § *One export at a time is Geni's limit* is a limit, not a race to win — so target
+9 held until hers finished. That cost about twenty minutes of clock and nothing else.
+
+### A second campaign root: `NN ben Ovadya` `6000000227708968860`
+
+Emma, 2026-09-11: *"Im exporting this one ... And the descendants of this person will be subject
+to a similar export descendant campaign."* Her ball is filed at
+`exports/ben-ovadya-descendants/`:
+
+    5,000 INDI   3,634 FAM
+    new against the WHOLE corpus                  1,340
+    shared with the entire Alix campaign             20
+
+**Twenty people in common with seventeen balls and 49,963 people.** That is a genuinely disjoint
+population rather than another slice of the same descent, which is what
+`undigested.md`'s hinge-person definition is for — *"clearly disjoint large numbers of
+descendants, and as such are good descendants export sources."*
+
+It is recorded in `queue.md` and nothing more: its rank against Abul Hamza, Bergitte Aukland and
+Gamle Olof was not stated, and § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*
+governs the rest.
