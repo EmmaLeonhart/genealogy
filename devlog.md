@@ -37137,3 +37137,34 @@ fabricates above itself costs one export slot and returns one person.
 
 Two placeholders left, both from the `confirm_create` test and both parents of a **real** Geni
 person, so they are the parent-pair shape rather than the chain shape.
+
+## 2026-09-11 — the placeholder backlog, measured: the two lost seeds were worth it, the four mistakes were not
+
+Tenth ball filed — `6000000227694046920`, task `6000000227705031925`, 5,000 INDI, **2 new people
+against the whole corpus.**
+
+**The backlog splits cleanly into two kinds, and only now on evidence:**
+
+    RECOVERED REAL SEEDS -- worth it
+      6000000227695388934   Hélène de Corday's seed      5,000 INDI, 2,196 FAM
+      6000000227696410829   Alix sweep target 1's seed   5,000 INDI, 1,836 FAM
+      Both had been created by a proper climb onto a real person and both had a submitted
+      export whose task id was lost. Two complete exports recovered from work already done.
+
+    THE FOUR MISTAKES -- measured, and nearly empty
+      6000000227694199890   the father/mother pair        38 new
+      6000000227695384828   a placeholder on a placeholder 1 new
+      6000000227694046920   the confirm_create test         2 new
+      6000000227693965055   its partner                     building
+
+**⛔ THE INSTRUCTION WAS STILL RIGHT AND THE MEASUREMENT IS THE REASON.** *"Just queue up doing
+descendant exports on the created individuals lol"* recovered two full balls that were sitting
+there finished and unreachable, which no amount of reasoning would have found — and it converted
+four guesses about redundancy into four numbers. Before today the claim was *"redundant by
+construction"*; now it is 38, 1 and 2, and the shapes that produce each are named.
+
+**What it says about the cost of the mistakes:** the four bad placeholders are not merely
+untidy — each one occupies an export slot to discover it is worth about 1% of a real seed. Geni
+grants one export at a time. `createdPids` prevents the chain shape from recurring; nothing
+prevents a parent pair being created on one child, and on this evidence the second parent is worth
+38 people.
