@@ -36616,3 +36616,44 @@ verified locally with a stubbed `urlopen`, which proves the retry logic and noth
 pipeline. Run **`34565431253`** was dispatched on `tree.yml` to put it through the path that
 actually failed twice — `CLAUDE.md` § *TESTS RUN IN CI/CD OR NOT AT ALL* and *verify CI green, not
 just local*. The two prior runs of that workflow both died at step 16 of 17; this one is the test.
+
+## 2026-09-10 — ⛔ THE TREE WORKFLOW HAS NOT SUCCEEDED ONCE IN ITS LAST 60 RUNS
+
+Asked directly: *"Why isn't the tree workflow running?"* It is running. It has never finished.
+
+    last 60 runs of tree.yml    34 cancelled    25 failure    0 success    1 in flight
+
+**So `out/merged.ged` and everything derived from it are stale, and have been for a long time.**
+That includes `reports/unconnected-p2600.tsv`, which is the campaign's whole worklist.
+
+**1. It has no schedule.** `tree.yml` fires on `workflow_dispatch` and on `push` to `main`
+restricted to `paths: exports/**`. There is no `cron` anywhere in it. It runs only when the corpus
+changes or when somebody asks — so a quiet day is a day with no rebuild at all, by design rather
+than by fault.
+
+**2. The cancellations are the push bursts, and are expected.** `concurrency: group: tree,
+cancel-in-progress: false` queues rather than killing a running rebuild, and a third arrival
+cancels the one waiting in the middle — `CLAUDE.md` § *a burst of pushes does not queue, the
+pending run is cancelled*. 34 of 60 is what a day of frequent export commits looks like.
+
+**3. ⛔ AND THERE ARE TWO SEPARATE FAILURES, NOT ONE.**
+
+    step 16/17  the QuickStatements batch   HTTP 429 from refresh-garborg-ledger.py
+                                            the two most recent failures; fixed today
+    step 17/17  the adjudication deck       BROKEN DECK: 61 of 436 cards name nobody
+                                            on one side. The older failures, sampled
+                                            across runs 34516801861, 34495919537,
+                                            34483524907 -- all identical.
+
+**The deck guard is correct and must not be touched.** Its comment records why it exists: *"A CARD
+THAT NAMES NOBODY IS THE TELL, and a count never showed it. Three separate bugs each published a
+parent deck whose cards were a name facing an empty box or a bare QID, while the generator printed
+a healthy candidate count every run."* Loosening it would publish a broken deck and report success.
+
+**So fixing the 429 was necessary and is not sufficient.** Clearing step 16 only moves the run to
+step 17, where 61 nameless cards are waiting. The tree will not rebuild until those 61 are
+resolved, and that is a real piece of work with a named cause rather than a flake to retry.
+
+**This is why nothing downstream has moved.** The connectivity graph, the P2600 counts, the
+worklist membership — all of it reflects the last rebuild that finished, whenever that was, not
+the corpus as it stands after today's exports.
