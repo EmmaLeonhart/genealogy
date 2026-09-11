@@ -36049,3 +36049,39 @@ tree. Geni runs one export at a time, so the cost is real.
 The second export reported `export:timeout` — the extension's watch expired at its one-hour
 budget. A submitted export cannot be cancelled and keeps building regardless; the timeout loses
 track of it rather than stopping it, and its task id was never captured.
+
+## 2026-09-10 — 1.7.27: the walk was climbing into people it had created itself
+
+**The chain of invented people that `creating` was meant to prevent happened anyway, one
+generation per run.** `creating` stops it WITHIN a run. Nothing stopped it ACROSS runs, because
+`seedwalk` resets `creating`, `results` and `queue` to start clean — so the next run climbed back
+up, reached the placeholder the previous run had made, and found what looks like a perfect seed
+slot. A placeholder has no parents by construction, so **every tier in
+`docs/export-seed-rules.md` fires on it.**
+
+    run A   created 6000000227694017875 as Muhadhdhab al-Din's father
+    run B   climbed past Muhadhdhab al-Din, reached that placeholder,
+            created 6000000227695384828 as ITS father
+
+Verified on the page rather than inferred: `6000000227694017875` now reads
+*"Son of NN ? Husband of NN ? Father of Muhadhdhab al-Din ?"*. Two invented people stacked.
+
+**And the export from the second is the same ball as the first** — one fabricated generation
+higher over the identical descent. Left running it ascends forever, one invented generation per
+run, each costing an export slot Geni grants one at a time. That is three export slots spent
+today on what is substantially one ball: the father, the mother (near-identical by construction,
+recorded earlier), and now the father's father.
+
+**The fix is a list that outlives the run.** `createdPids` in the background's stored state is
+never cleared by `load` or `seedwalk`; every confirmed `added` appends its pid, and `pump` refuses
+to open a seed page on anybody in it — dropped at the point the tab would be opened, the same
+place the `creating` guard lives. A `note_created` message backfilled the three profiles created
+before the guard existed.
+
+This does **not** narrow the bias toward creating people that was ruled earlier today. It stops
+the walk feeding on its own output, which is not creating people so much as re-exporting the same
+descent under a new name.
+
+**⛔ AND THE RENAME WAS REQUIRED AGAIN.** `service-worker-1.7.26.js` → `service-worker-1.7.27.js`.
+Without it the file edit would have been invisible and the guard would have reported itself live
+while doing nothing, exactly as 1.7.24 did.

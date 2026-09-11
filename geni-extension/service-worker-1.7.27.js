@@ -136,7 +136,23 @@ const DEFAULTS = {
   creating: "",
   /* Set by `seed.js` immediately before it clicks save, cleared when the creation is confirmed or
    * the run is restarted. Its whole purpose is to survive the navigation the save causes. */
-  pendingCreate: null
+  pendingCreate: null,
+  /* ⛔ EVERY PROFILE THIS ACCOUNT HAS CREATED, AND NO RUN RESET MAY CLEAR IT.
+   *
+   * `creating` stops a chain of invented people WITHIN a run. Nothing stopped it ACROSS runs,
+   * because `seedwalk` and `load` both reset `creating`, `results` and `queue` to start clean --
+   * so the next run climbed straight back up and found the placeholder the previous run had made,
+   * which by construction has no parents and therefore looks exactly like a perfect seed slot.
+   *
+   * Measured 2026-09-10 on Sayaluna ata: run A created `6000000227694017875` as Muhadhdhab
+   * al-Din's father; run B climbed past Muhadhdhab al-Din, reached that placeholder, and created
+   * `6000000227695384828` as ITS father. Two invented people stacked, and the `Descendants`
+   * export from the second is the same ball as the first -- one generation higher over the same
+   * descent. Left alone it ascends forever, one fabricated generation per run, each costing an
+   * export slot Geni only grants one at a time.
+   *
+   * This is the list `results` cannot be: it outlives the run. */
+  createdPids: []
 };
 
 async function state() {
@@ -194,6 +210,16 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                                               first: msg.first || "", last: msg.last || "" }])
       });
       sendResponse({ halted: true });
+      return;
+    }
+    /* ⛔ RECORD CREATIONS THE GUARD DID NOT SEE. `createdPids` is populated by the `added`
+     * handler from now on, but three profiles were created before it existed and the walk will
+     * climb straight back into them. This is how they get told, and it is additive only. */
+    if (msg.type === "note_created") {
+      const add = (msg.pids || []).map(String).filter(Boolean);
+      const made = (s.createdPids || []).concat(add).filter((v, i, a) => a.indexOf(v) === i);
+      await put({ createdPids: made });
+      sendResponse({ createdPids: made.length });
       return;
     }
     if (msg.type === "pending_create") {
@@ -341,8 +367,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
          * climb, so it is let through -- and only it: `pump` will not open a seed while
          * `creating` is set, so `running` coming back on cannot restart the walk. With no `pid`
          * there is nothing to export from and the run simply stays stopped. */
+        const made = (s.createdPids || []).concat(pid ? [String(pid)] : [])
+          .filter((v, i, a) => a.indexOf(v) === i);
         await put({ active, results, attempted, queue, endId: pid, running: !!pid,
-                    pendingCreate: null });
+                    pendingCreate: null, createdPids: made });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -564,6 +592,16 @@ async function pump() {
        * whatever happened to the job that set it. The export is still allowed through. */
       if (next.job === "seed" && s.creating) {
         await put({ queue: s.queue.filter((q) => q.job !== "seed") });
+        continue;
+      }
+      /* ⛔ NEVER SEED FROM A PROFILE THIS ACCOUNT CREATED. See `createdPids` in DEFAULTS.
+       *
+       * A placeholder has no parents, so every tier in `docs/export-seed-rules.md` fires on it and
+       * it reads as the best slot the walk has ever seen. Climbing into one fabricates a
+       * generation and re-exports the descent it already holds. Dropped here, where the tab would
+       * be opened, for the same reason the `creating` guard lives here. */
+      if (next.job === "seed" && (s.createdPids || []).indexOf(String(next.geni_id)) !== -1) {
+        await put({ queue: s.queue.filter((q) => String(q.geni_id) !== String(next.geni_id)) });
         continue;
       }
       /* `stats` joins them: a census read costs a real page load, Geni served an Incapsula
