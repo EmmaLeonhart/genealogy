@@ -266,3 +266,27 @@ site defends itself — an Incapsula CAPTCHA after roughly forty rapid page load
 like something a cleverer client would solve, and solving it is what gets the account throttled
 or CAPTCHAd. Slowness here is the price of access, and the agentic navigation is overhead paid on
 purpose.
+
+## ⛔ A PRIVATE PROFILE IS A FINAL ANSWER. Ruled 2026-09-10
+
+Emma: *"private individuals ... they go into the category where, if you can't get the relationship
+based upon what it actually provides, then you don't do it. The way that we treat private
+individuals is that they exist as individuals ... we aren't trying to put them all in. They just
+end up coming in."*
+
+**So a `private_profile` result is DONE, not deferred.** Geni redirects such a person to
+`/people/private/<id>` and serves a page carrying no family at all. The page provides no
+relationship, therefore there is nothing to extract and nothing to retry. It is stamped like any
+other attempt — the extension appends **every** result to `attempted` whatever its state — and it
+is not an error, not a defect, and not a target to revisit for a better answer.
+
+**They exist as individuals and they arrive incidentally.** A private person enters the tree as
+somebody else's relative: Gopikisan Piramal's card grid carries `<private> Piramal` with a real
+Geni id under the label `spouse`, so that person is created, joined on the id, and counted —
+without ever being visited. That is `CLAUDE.md` § *Redacted people go in* working as designed:
+the person is created, the marker never becomes a label.
+
+**The distinction this rests on** is the one `1.7.30` introduced. Before it, a private profile and
+a page the reader simply failed to read both returned `no_family_block`, so "we do not chase
+private people" could not be implemented — there was no way to tell the two apart. `private_profile`
+is final; `no_family_block` is a person to look at again.
