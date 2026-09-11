@@ -36331,3 +36331,28 @@ those 378 people at the bottom edge, and the descent below them is unheld rather
 `CLAUDE.md` § *A `Descendants` ball that came back at the cap is truncated by definition*.
 
 `reports/descent-from-6000000006101354745.csv` is one row per descendant with its generation.
+
+**⛔ CORRECTION, same day: THE GENERATION COUNTS ABOVE ARE NOT A FRONTIER SIGNAL.** Emma:
+*"generation counts shouldn't actually matter in this algorithm because they do not necessarily
+indicate that somebody's on the frontier because of the ball shape. The exports do not take the
+form of a specifically generation limited thing. And especially if you're checking from all the
+different heterogeneous gedcoms."*
+
+The entry above reads *"the live frontier is those 378 people at the bottom edge"*. **That is
+wrong.** A `Descendants` export returns 5,000 people by Geni's own traversal and is not cut at a
+generation boundary, so a rising count at generation 12 is not evidence of a cut-off — it is just
+the shape of the ball. A person at generation 12 is not on the frontier by virtue of being there,
+and a person at generation 3 may well be.
+
+**It is worse across heterogeneous GEDCOMs, which is what the corpus is.** The number in that CSV
+is the shortest descent from ONE root through whatever families happen to be present in the files
+that were read. A different export covering a different region changes it. It measures our data,
+not the tree, and certainly not how explored a person's descent is.
+
+**The signal that does say it is the one the campaign already specifies:** the `descendants`
+statistic on the person's own Geni profile, against the 4,000 threshold. That is a census read
+about the real tree; a generation number is an artefact of which files were merged.
+
+`reports/descent-from-6000000006101354745.csv` stays — *who descends from Alix de Lampron* is
+still the question that was asked, and 1,176 is still the answer. The `generation` column is a
+property of our merge and must not be read as position in the descent.
