@@ -37342,3 +37342,66 @@ nine targets, and that is a decision to put to somebody rather than to invent.
 **And the yield is not falling.** Target 5 returned 1,795 new to the corpus and target 6 returned
 2,058 — the sixth ball off the same root is still bringing back more than the fifth did. That is
 the number the stopping condition actually watches, and it says keep going.
+
+## 2026-09-11 — Alix target 7 filed: 3,290 new to the corpus for 10 climbs, and the export submit finally explained
+
+**Elizabeth de Durfort `6000000012808241290`**, the seventh of fifteen.
+
+    climb                                   10 steps
+    created                 NN de Champagne 6000000227708168991  (on subject
+                                            6000000016723256510)
+    task                    6000000227708391893
+    ball                    5,000 INDI   2,028 FAM
+    new against the campaign                3,934
+    new against the WHOLE corpus            3,290
+
+**The best yield of the campaign so far, off the cheapest seed since Anne Lemois.** Seven balls
+in, the numbers are going the wrong way for anyone hoping to stop:
+
+    target 5   197 climbs   1,795 new to the corpus
+    target 6    64 climbs   2,058
+    target 7    10 climbs   3,290
+
+**`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*** is watching exactly
+this column, and it is rising, not falling. The climb cost now has five measurements — 3, 10, 28,
+64, 197 — and they are uncorrelated with the yield, which is what one would expect: the climb is
+how far up an attested line the walk goes before it finds a person missing a parent, and the ball
+is what hangs below whoever it lands on.
+
+**Campaign totals, fourteen balls in:**
+
+    rows across the balls                  70,000
+    distinct people                        43,571
+    people not anywhere else in exports/   29,368
+
+### And the export submit was diagnosed rather than worked around
+
+*"The extension's export submit does not fire unattended"* has stood since 2026-09-10 as an
+unexplained behaviour worked around by submitting each export by hand. It has a cause, and it was
+visible the moment the failure was watched rather than accepted: **the control is an anchor with
+no `href`.**
+
+    <a class="super blue button gedcom-export-form-sub">Export GEDCOM</a>
+
+Its only behaviour is a jQuery handler bound when Geni's bundle runs — which is *after*
+`readyState === "complete"`, because Geni serves base HTML and fills the page in afterwards. So
+`element.click()` on it does **nothing at all**: no navigation, no error, no exception. The same
+deferred-rendering behaviour behind the background-tab failures, one layer further in.
+
+**And the consequence was worse than a missed export.** The script then waited `waitMs` — an
+hour — for a build that had never been started, holding `active`; `pump`'s
+`if (serial && serialInFlight >= 1) break` hands the export slot to that tab, **so the next
+target cannot start either.** Today's run showed both halves at once: Elizabeth de Durfort's
+export tab sat parked with no result while the same export, submitted by hand in another tab,
+built and finished.
+
+`1.7.41` clicks, watches for the submit to take *effect* — the URL gains `task_id`, or the
+download link appears — and re-clicks if it did not, three times at fifteen seconds. Forty-five
+seconds to a real answer instead of an hour to none, and the answer has its own name:
+`no_submit_effect`, meaning the control was there and would not act, which is neither
+`no_submit` (never there) nor `timeout` (the build ran long). The re-click cannot double-submit:
+it fires only while `location.href` is unchanged and no `task_id` has appeared, and a click that
+worked navigates, tearing the content script down first.
+
+**Not yet verified end to end.** It is committed and the browser has not been restarted onto it —
+the next target is its first real test, and until then the by-hand submit stays the method.
