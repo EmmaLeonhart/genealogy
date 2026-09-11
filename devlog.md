@@ -37082,3 +37082,31 @@ Next of the seven submitted: `6000000227694199890` → task `6000000227703490834
 father/mother pair case — the one called *"redundant by construction"* earlier today and skipped
 on that reasoning. It is being exported now, and whether the ball genuinely overlaps its partner's
 is a thing to measure once both are on disk rather than a prediction to act on.
+
+## 2026-09-11 — the father/mother overlap, measured: 99.2%
+
+Eighth ball filed — `6000000227694199890`, task `6000000227703490834`, 5,000 INDI, 2,785 FAM. It is
+the partner of `6000000227694017875`, the two placeholders created as father and mother of the
+same child, and this morning that pair was called *"near-identical by construction"* and skipped
+on that reasoning.
+
+**The prediction was right, and it was still wrong to act on it:**
+
+    father ball                5,000
+    mother ball                5,000
+    shared                     4,962   = 99.2% of the mother ball
+    only in the mother ball       38
+
+**38 people.** Not zero — which is the whole argument. The reasoning said the two descents run
+through the same child and are therefore the same set; the data says 38 people reach the mother
+and not the father, presumably through her own other unions. A prediction that is 99.2% right is
+still a prediction, and the cost of checking was one export slot against the cost of never knowing.
+
+**⛔ THE RULE THIS SETTLES, and it is the one `CLAUDE.md` already states:** § *THE STOPPING
+CONDITION IS DIMINISHING RETURNS, NOT A COUNT* — returns are measured after the fact, never
+forecast before it. The father/mother pair is genuinely poor value at 38 new people for an export
+slot, and that is now a number rather than an intuition. **Nothing in the rule says to export the
+pair again**; what it says is that the skip should have been recorded as a measurement, not made
+as a guess.
+
+    eight balls, 40,000 rows in exports/abul-hamza-descendants/
