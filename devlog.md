@@ -36487,3 +36487,15 @@ statistics working; the rounds I spent deciding whether a person looked worth ex
 produced nothing and cost more.
 
 `mcRounds` 6, 55 candidates still queued, and the loop continues on its own.
+
+**The full sweep: 60 censuses, 15 hits, 25%.** Zero unread pages, so no sample was lost to an
+unrendered sidebar. The top six all sit at Geni's 15,000 display ceiling.
+
+**⛔ 25% AGAINST 0 OF 16, AND THE DIFFERENCE IS THE SAMPLING FRAME.** Drawing from Abul Hamza's
+undifferentiated ball earlier gave nothing above 1,406 in sixteen tries. Drawing from the
+descendants of the person Emma named gives one export target in four. Same threshold, same
+method, same code — the only change is which population is sampled, and that was the instruction
+I had been treating as interchangeable with "somewhere in the ball".
+
+The 15 seed climbs are running now. Geni takes one export at a time at roughly six minutes each,
+so the exports are the long pole and the censuses were never the cost.
