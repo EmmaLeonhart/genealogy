@@ -36986,3 +36986,32 @@ Bavaria is past 53 and still going. A dense royal lattice where everyone already
 is expensive to seed; a thinner line is nearly free. Nothing is being changed on the strength of
 that — it is four observations — but the spread is large enough that it will matter if the
 campaign runs to fifteen targets.
+
+## 2026-09-11 — export from every placeholder already created; the climb is the expensive half
+
+*"Just queue up doing descendant exports on the created individuals lol."* Obvious in hindsight
+and it converts the session's waste into material: **11 profiles have been created and only 4 have
+a ball.** The other seven need no climb at all — the expensive half is already paid — so each one
+is a submit, a wait and a file.
+
+    6000000227694199890   mother of Muhadhdhab al-Din; same descent as the father already exported
+    6000000227695384828   created on top of our own placeholder, before createdPids existed
+    6000000227696010826   the same, on the other test placeholder
+    6000000227694046920   from the confirm_create test
+    6000000227693965055   the same
+    6000000227695388934   Hélène de Corday's seed; export submitted, task id lost
+    6000000227696410829   Alix sweep target 1's seed; export submitted, task id lost
+
+**⛔ AND THE OVERLAP IS NOT A REASON TO SKIP ANY OF THEM.** Two of the seven are a parent pair on
+one child, and two are a placeholder's own created parent, so some of these balls will re-cover
+ground already held. That is arithmetic to measure afterwards, not a prediction to act on —
+§ *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*. Earlier today I called the
+father/mother pair "redundant by construction" and skipped it; that was a judgement where a
+measurement was available.
+
+**Target 5's climb was stopped to do this.** Maria Anna Victoria of Bavaria had reached **182
+ancestors visited with 109 still queued and no open slot** — a Wittelsbach lattice where the
+frontier grows faster than it drains. Seven exports off already-created profiles are worth more
+than one more climb through a royal line, and she stays on the target list.
+
+First of the seven submitted: `6000000227695388934` → task `6000000227701785854`.

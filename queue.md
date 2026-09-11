@@ -560,6 +560,29 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     the seam actually holds. Diminishing returns is relative to the alternative use of an export
     slot, never to a full ball.
 
+  - **⛔ DESCENDANTS EXPORT EVERY PROFILE THIS ACCOUNT HAS CREATED THAT HAS NO BALL YET.**
+    Ruled 2026-09-11: *"Just queue up doing descendant exports on the created individuals lol."*
+
+    **They are already created, so there is no climb** — the expensive half is done and these are
+    a submit, a wait and a file each. Seven of the eleven placeholders made on 2026-09-10/11 have
+    no ball:
+
+        6000000227694199890   mother of Muhadhdhab al-Din; same descent as the father already done
+        6000000227695384828   created on top of our own placeholder, before createdPids existed
+        6000000227696010826   the same, on the other test placeholder
+        6000000227694046920   from the confirm_create test
+        6000000227693965055   the same
+        6000000227695388934   Hélène de Corday's seed; export submitted, task id lost
+        6000000227696410829   Alix sweep target 1's seed; export submitted, task id lost
+
+    **⛔ THE OVERLAP IS NOT A REASON TO SKIP ANY OF THEM.** Two are a parent pair on one child and
+    two are a placeholder's own parent, so their balls will cover ground already held. That is
+    Geni's arithmetic, not a judgement to make in advance — and `CLAUDE.md`
+    § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT* says the returns are measured,
+    not predicted. Export all seven.
+
+    Log each task id in `reports/descendants-export-log.csv` at submit time.
+
   - **⛔ PHASE TWO, AFTER THE BULK: `Forest` EXPORTS ON THE SCANDINAVIAN PLACES ONLY.**
     Stated 2026-09-11: *"my vision would be that once we do the Monte Carlo stuff to gather a
     large bulk of people, and once that large bulk exists, then basically in the Scandinavian
