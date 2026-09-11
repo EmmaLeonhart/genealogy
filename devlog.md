@@ -36235,3 +36235,25 @@ table lifted from `family.js` into Python, the `Ex-partner of` mid-string match 
 ex-partners into spouses, the unknown-opener guard, the `</td>` scope, and the 51-person
 equivalence proof built to test it. That work was real and is now moot. The one fix that still
 matters is the unwaited `no_add_link` read in `seed.js`, which was never about the prose.
+
+## 2026-09-10 — the 457 path GEDCOMs restored: they were never immediate-family scraping
+
+Emma: *"what the fuck is tiny paths lol that sounds like not immediate family scraping"*. Correct,
+and they were deleted by mistake an hour earlier.
+
+**`exports/tiny-paths/` holds RELATIONSHIP PATHS** — a chain from one person to whoever Geni was
+asked about — not families. The `saved-*.ged` among them are read by
+`genimerge.genipage.read_relationship_path` off the **relationship panel**, which is a different
+panel, a different reader, and the same extractor that produced `paths/*.tsv`. None of the
+defects that got the family parser deleted — the 24-opener table, mid-string phrase matching, the
+unknown-opener guard, the `</td>` scope — exist in it.
+
+**The error was mechanical and worth naming.** The block cut out of `build-tiny-gedcoms.py`
+spanned BOTH saved-page sections, profiles and paths, and the path half went with the profile half
+because they sat next to each other in the file — not because anything about it was examined. The
+instruction was *"delete all the tiny gedcoms from the prose parsing thing"*, and a relationship
+path is not that thing.
+
+Restored: **457 `saved-*.ged`**, `exports/tiny-paths/` back to **1,185**, and the builder's path
+section put back with a comment saying why it stays. `exports/tiny-profiles/` and `geni-families/`
+remain deleted, which is what the instruction actually covered.

@@ -309,7 +309,35 @@ def main():
     # `scripts/family-scrape-js.py` are deleted with them, and so are the 457
     # `exports/tiny-paths/saved-*.ged` they produced. Emma: *"No rescraping just deleting them.
     # They will be rescraped later if determined by the algorithm."*
-    n_pages = n_bad = n_page_paths = 0
+    n_pages = n_bad = 0
+
+    # ⛔ THE PATH SECTION STAYS. It was deleted with the profile section on 2026-09-10 and put
+    # straight back: Emma, *"what the fuck is tiny paths lol that sounds like not immediate family
+    # scraping"*, and she is right. These are RELATIONSHIP PATHS -- a chain from the subject to
+    # whoever Geni was asked about -- read by `genimerge.genipage.read_relationship_path` from the
+    # relationship panel. That is a different panel and a different reader from the
+    # immediate-family prose, it has none of the opener/phrase-table problems that got the family
+    # parser deleted, and it is the same extractor that produced `paths/*.tsv`, so the two cannot
+    # disagree.
+    from genimerge.genipage import read_relationship_path
+    n_page_paths = 0
+    for p in sorted((ROOT / "geni-scraping").glob("*.html")):
+        if not p.stem.isdigit():
+            continue
+        out_path = PATH_OUT / ("saved-%s.ged" % p.stem)
+        if out_path.exists():
+            continue
+        try:
+            links = read_relationship_path(p)
+        except Exception:
+            continue
+        rows = [{"name": l.name, "rel": (l.relation or "").strip().lower(), "gid": l.geni_id}
+                for l in links if l.geni_id]
+        text = path_gedcom("saved-%s" % p.stem, rows,
+                           "one tiny GEDCOM per relationship path, read off a saved profile page")
+        if text:
+            out_path.write_text(text, encoding="utf-8")
+            n_page_paths += 1
 
     for p in sorted((ROOT / "paths").glob("*.tsv")):
         rows = read_path_tsv(p)
