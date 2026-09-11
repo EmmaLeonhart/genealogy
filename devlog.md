@@ -37550,3 +37550,41 @@ descendants, and as such are good descendants export sources."*
 It is recorded in `queue.md` and nothing more: its rank against Abul Hamza, Bergitte Aukland and
 Gamle Olof was not stated, and § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*
 governs the rest.
+
+## 2026-09-11 — the recovery extended back to 2026-08-30: one uncollected Forest ball held 4,787 new people
+
+The inbox sweep was run back through every `Your GEDCOM export is ready at Geni.` mail still
+inside its two-week window — eleven more links, 2026-08-30 to 2026-09-06, on top of the 36 from
+2026-09-09 onward.
+
+**Nine of the eleven were already filed.** Two were not:
+
+    export-Forest-6000000227610585972.ged   5,000 INDI       3 new to the corpus
+    export-Forest-6000000227578111916.ged   5,000 INDI   4,787 new to the corpus
+
+**The second is the largest single recovery of the campaign** — a `Forest` export built on
+2026-09-03, emailed, and never collected. 4,787 people that cost nothing but reading an email.
+
+**Where each belongs was measured, not guessed.** Overlapping each ball against every directory's
+population:
+
+    ball 6000000227610585972    4,996 of 5,000 in chain-seeds     -> exports/chain-seeds/
+    ball 6000000227578111916      206 of 5,000 anywhere at all    -> exports/gaps/
+
+The first is a near-duplicate of a campaign already on disk and its home is unambiguous. The
+second belongs to nothing already here, which is exactly why it is worth 4,787 people; it goes
+in `exports/gaps/` on the same grounds that directory has always been used. **Placement is
+organisational and nothing more** — `CLAUDE.md` § *`exports/` is the corpus, read recursively.
+There is no ingest step* — so the choice changes no merge and asserts no campaign membership the
+evidence does not carry.
+
+**Running total for the sweep: 7,470 people recovered from the inbox today**, across four files,
+for no export, no climb and no page load of Geni's tree.
+
+    from 2026-09-09 onward     2,680
+    from 2026-08-30 onward     4,790
+
+⛔ **AND THE TWO-WEEK WINDOW IS A DEADLINE.** Geni's mail says *"This export will only be
+available for 2 weeks"*, so an uncollected export is not waiting indefinitely — the 2026-08-30
+links expire about 2026-09-13. Anything built and not filed is on a clock, and the sweep is
+cheap enough to be worth repeating rather than trusting that every export got collected.
