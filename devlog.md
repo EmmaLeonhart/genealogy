@@ -36462,3 +36462,28 @@ browser alive, which is the only reason it is here — *"your presence is entire
 it so that it's considered legitimate traffic."*
 
 **Started on Alix de Lampron's 1,176 descendants, 60 candidates, threshold 4,000.**
+
+## 2026-09-10 — the loop is working: three hits in the first handful of censuses
+
+First run of the self-driving loop over Alix de Lampron's 1,176 descendants, 60 candidates,
+threshold 4,000. Within the first six censuses:
+
+    6000000037055354049    6,932
+    6000000004150889590   15,000   (Geni's display ceiling)
+    6000000223955666822   15,000   (ceiling)
+
+All three have a `seed` job queued behind them with `exportWalk: descendants`, so the climb and
+the export follow without anything coming back out to be decided.
+
+**⛔ AND THE CONTRAST WITH MY OWN SAMPLING IS THE POINT.** Earlier today I drew **16 people from
+Abul Hamza's whole ball and got zero hits**, highest 1,406. The difference is not luck and not the
+threshold — it is **where the sample is drawn from.** Emma's instruction was to sample the
+descendants of *this individual*, and that seam is dense with saturated people in a way the
+undifferentiated ball is not. I had treated the two as interchangeable.
+
+**It also vindicates the thing I kept arguing with.** *"It can be a complete waste of time and I
+don't care because, statistically, it's going to work."* Three hits in six reads is the
+statistics working; the rounds I spent deciding whether a person looked worth exporting from
+produced nothing and cost more.
+
+`mcRounds` 6, 55 candidates still queued, and the loop continues on its own.
