@@ -384,15 +384,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
          * there is nothing to export from and the run simply stays stopped. */
         const made = (s.createdPids || []).concat(pid ? [String(pid)] : [])
           .filter((v, i, a) => a.indexOf(v) === i);
-        /* ⛔ AND THEN SAMPLE AGAIN. Without this the loop stops at its first success: the climb
-         * ends, the export is queued, and nothing starts the next round. The campaign is *keep
-         * going until diminishing returns*, so the next sample is enqueued behind the export. */
-        if (s.mcRoot) {
-          queue = queue.concat([{ job: "descend", geni_id: String(s.mcRoot), kind: "descend",
-                                  step: 0, label: "" }]);
-        }
+        /* ⛔ THE RUN DOES NOT STOP AT ITS FIRST SUCCESS. `creating` set `running:false` and the
+         * climb has ended, so without this the remaining candidates would sit untouched. They are
+         * already in the queue -- nothing needs enqueueing, only restarting. */
         await put({ active, results, attempted, queue, endId: pid,
-                    running: !!pid || !!s.mcRoot,
+                    running: true,
                     pendingCreate: null, createdPids: made });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
@@ -413,40 +409,20 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * and a page whose sidebar never rendered returns zeros that are indistinguishable from a
        * person who genuinely has none. Sampling again costs one page load; treating an unread
        * page as a real zero costs the campaign a person it should have exported from. */
-      if (msg.result && msg.result.state === "landed" && s.mcRoot) {
-        const stats = msg.result.stats || {};
-        const n = stats.read ? (stats.descendants | 0) : -1;
+      if (msg.result && msg.result.job === "stats" && s.mcThreshold) {
+        /* `GC.statistics` reports `read`; an unrendered sidebar returns five zeros that look
+         * exactly like a person who genuinely has none, so an unread page scores -1 and is simply
+         * not a hit. It costs one page load and never loses a person to a fabricated zero. */
+        const n = msg.result.read ? (msg.result.descendants | 0) : -1;
         const rounds = (s.mcRounds | 0) + 1;
+        /* ⛔ ONE COMPARISON, AND IT IS THE WHOLE CAMPAIGN. Above the threshold the seed climb
+         * starts on this person and the `Descendants` export falls out of it. Below it, nothing
+         * happens -- the next candidate is already in the queue. */
         if (n >= (s.mcThreshold | 0)) {
           queue = s.queue.concat([{ job: "seed", geni_id: String(msg.result.geni_id),
-                                    kind: "seed", label: msg.result.name || "" }]);
-        } else {
-          queue = s.queue.concat([{ job: "descend", geni_id: String(s.mcRoot),
-                                    kind: "descend", step: 0, label: "" }]);
+                                    kind: "seed", label: "" }]);
         }
-        await put({ active, results, attempted, queue, mcRounds: rounds, running: true });
-        try { await chrome.tabs.remove(tabId); } catch (e) {}
-        sendResponse(true);
-        pump();
-        return;
-      }
-
-      /* ⛔ **`descend_next` IS THE WALK DOWN, AND IT IS THE EXTENSION CHOOSING THE PERSON.**
-       *
-       * Ruled 2026-09-10: *"we are supposed to be doing this algorithmically with the Chrome
-       * extension selecting a person ... a random descendant of the person and then just going
-       * there."* The content script picks one child at random and reports its id; this turns that
-       * into the next page to open. Nothing outside the extension chooses anybody.
-       *
-       * `step` rides along so the walk can stop itself; it is a safety limit and NOT a depth
-       * measurement -- generation counts do not indicate position in this tree. */
-      if (msg.result && msg.result.state === "descend_next" && msg.result.next_id) {
-        const nxt = String(msg.result.next_id);
-        queue = s.queue.concat([{ job: "descend", geni_id: nxt, kind: "descend",
-                                  step: msg.result.step | 0,
-                                  steps: (s.active[String(tabId)] || {}).steps || 0,
-                                  label: msg.result.next_name || "" }]);
-        await put({ active, results, attempted, queue });
+        await put({ active, results, attempted, queue, mcRounds: rounds });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -571,14 +547,70 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
      * A wasted sample is one page load. Emma: *"It can be a complete waste of time and I don't
      * care because, statistically, it's going to work."* So there is no cleverness here, no
      * memory of who has been sampled, and no avoiding a repeat. */
+    /* ⛔ THE EXTENSION READS ITS OWN CANDIDATES OFF DISK. Ruled 2026-09-10: *"keep in mind the
+     * chrome extension accesses the file system lol."*
+     *
+     * With `file:///*` in `host_permissions` AND *Allow access to file URLs* ticked for the
+     * unpacked extension, the background can `fetch` a repo file directly. That removes the last
+     * thing the agent was doing in this loop: pasting candidate ids through a data attribute. The
+     * campaign's roster lives in `reports/` and the extension takes it from there.
+     *
+     * Answers with `ok:false` and the error rather than throwing, because a refused file read and
+     * a missing file look identical from the caller and both need naming. */
+    if (msg.type === "readfile") {
+      try {
+        const res = await fetch(String(msg.url || ""));
+        const text = await res.text();
+        sendResponse({ ok: true, status: res.status, length: text.length,
+                       head: text.slice(0, 200) });
+      } catch (e) {
+        sendResponse({ ok: false, error: String((e && e.message) || e) });
+      }
+      return;
+    }
     if (msg.type === "montecarlo") {
-      const root = String(msg.geni_id || "");
-      if (!root) { sendResponse({ error: "no geni_id" }); return; }
+      /* ⛔ THE CANDIDATES COME FROM THE GEDCOM, NOT FROM WALKING THE BROWSER. Ruled 2026-09-10:
+       * *"reads her children in browser not offline fuck you gedcom random descendant and then
+       * browser with it."*
+       *
+       * The corpus already holds who descends from the root, so discovering it again a page at a
+       * time is pure cost: the browser walk spent **16 page loads to produce 4 samples** before it
+       * was stopped. `scripts/monte-carlo-pick.py` picks from the `.ged` instantly, and the
+       * browser is used for the one thing only Geni can answer -- the live `descendants` census. */
+      /* ⛔ THE ROSTER IS READ OFF DISK BY THE EXTENSION, NOT PASSED IN. Verified 2026-09-10:
+       * fetching `file:///.../reports/descent-from-<id>.csv` from here returned 200 and 61,412
+       * bytes. So the agent hands over a PATH, not a list, and the sampling happens in here.
+       *
+       * `candidates` still works and is the fallback for a roster that is not on disk. */
+      let cands = (msg.candidates || []).map(String).filter(Boolean);
+      if (!cands.length && msg.file) {
+        try {
+          const text = await (await fetch(String(msg.file))).text();
+          const lines = text.split(/\r?\n/).slice(1);
+          const all = [];
+          for (const ln of lines) {
+            const id = ln.split(",")[0].trim();
+            if (/^\d+$/.test(id)) all.push(id);
+          }
+          /* ⛔ SHUFFLE, DO NOT TAKE THE TOP. The file is sorted, so the first N would be one
+           * branch of one generation -- the opposite of a random sample. Fisher-Yates, then
+           * take however many were asked for. */
+          for (let i = all.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const tmp = all[i]; all[i] = all[j]; all[j] = tmp;
+          }
+          cands = all.slice(0, msg.n ? (msg.n | 0) : 40);
+        } catch (e) {
+          sendResponse({ error: "roster unreadable: " + String((e && e.message) || e) });
+          return;
+        }
+      }
+      if (!cands.length) { sendResponse({ error: "no candidates" }); return; }
       await put({
-        mcRoot: root,
+        mcRoot: String(msg.geni_id || ""),
         mcThreshold: msg.threshold ? (msg.threshold | 0) : 4000,
         mcRounds: 0,
-        queue: [{ job: "descend", geni_id: root, kind: "descend", step: 0, label: msg.label || "" }],
+        queue: cands.map((id) => ({ job: "stats", geni_id: id, kind: "stats", label: "" })),
         results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
         pendingCreate: null,
         exportWalk: "descendants",
@@ -586,7 +618,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         staggerMs: msg.staggerMs ? Math.max(1000, msg.staggerMs | 0) : 5000,
         running: true, startedAt: new Date().toISOString()
       });
-      sendResponse({ started: root, threshold: msg.threshold ? (msg.threshold | 0) : 4000 });
+      sendResponse({ candidates: cands.length,
+                     threshold: msg.threshold ? (msg.threshold | 0) : 4000 });
       pump();
       return;
     }

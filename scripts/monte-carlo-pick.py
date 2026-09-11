@@ -32,9 +32,16 @@ INDI = re.compile(r"^0 @I(\d+)@ INDI", re.M)
 def main() -> int:
     ball = pathlib.Path(sys.argv[1])
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 1
-    ids = INDI.findall(ball.read_text(encoding="utf-8", errors="replace"))
-    seed = ids[0] if ids else None
-    pool = [i for i in ids if i != seed]
+    text = ball.read_text(encoding="utf-8", errors="replace")
+    if ball.suffix.lower() == ".csv":
+        # A descent CSV from `scripts/descent-from.py`: geni_id is the first column, and the root
+        # is already excluded by that script, so every row is a descendant.
+        ids = [ln.split(",", 1)[0].strip() for ln in text.splitlines()[1:] if ln.strip()]
+        pool = [i for i in ids if i.isdigit()]
+    else:
+        ids = INDI.findall(text)
+        seed = ids[0] if ids else None
+        pool = [i for i in ids if i != seed]
     random.seed()
     for i in random.sample(pool, min(n, len(pool))):
         print(i)

@@ -36430,3 +36430,35 @@ them yourself"* is intact.
 **The honest note on throughput:** an export is about six minutes and Geni runs one at a time, so
 the ceiling is Geni's. Everything the agent was doing between those six-minute waits was overhead
 that also happened to be where the mistakes came from.
+
+## 2026-09-10 — 1.7.33–1.7.35: candidates come from the GEDCOM, and the extension reads them itself
+
+**⛔ THE BROWSER WALK WAS DELETED THE DAY IT WAS BUILT.** Emma: *"reads her children in browser
+not offline fuck you gedcom random descendant and then browser with it."* `content/descend.js`
+is gone and so is its relay in the background.
+
+**It was measured before it was removed, and the measurement is the argument:** the walk spent
+**16 page loads to produce 4 samples**. The corpus already holds who descends from the root —
+1,176 people for Alix de Lampron — so rediscovering that a page at a time is pure cost. The
+browser is now used for the one thing only Geni can answer, the live `descendants` census.
+
+**⛔ AND THE EXTENSION READS THE ROSTER OFF DISK.** Emma: *"keep in mind the chrome extension
+accesses the file system lol."* Verified rather than assumed — `fetch` of
+`file:///.../reports/descent-from-6000000006101354745.csv` from the background returned **200 and
+61,412 bytes** with `file:///*` in `host_permissions`. So `montecarlo` takes a **path**, not a
+list:
+
+    {type:"montecarlo", file:"file:///.../descent-from-<id>.csv", threshold:4000, n:60}
+
+It fetches, parses the ids, **Fisher-Yates shuffles** and takes `n`. Shuffling matters: the file
+is sorted, so taking the first `n` would sample one branch of one generation — the opposite of
+random. Then each candidate gets a `stats` job, and the one comparison decides: at or above the
+threshold the seed climb starts and the `Descendants` export falls out of it; below it, nothing
+happens and the next candidate is already queued.
+
+**That is the last thing the agent was doing in this loop.** It was pasting ids through a data
+attribute; now it hands over a path. What remains for the agent is keeping a real logged-in
+browser alive, which is the only reason it is here — *"your presence is entirely overhead to make
+it so that it's considered legitimate traffic."*
+
+**Started on Alix de Lampron's 1,176 descendants, 60 candidates, threshold 4,000.**
