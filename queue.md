@@ -564,6 +564,19 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
   **The order, verbatim:**
 
+  - **⛔ THE FOCUS INSIDE ABUL HAMZA IS ALIX DE LAMPRON `6000000006101354745`.** Ruled
+    2026-09-10: *"for descendants of Abul Hamza, imo focus on descendants of
+    https://www.geni.com/people/Alix-de-Lampron/6000000006101354745?through=6000000001500872848
+    ... the people I actually want are going to be descended from this individual."*
+
+    **⛔ DO NOT RUN A DESCENDANTS EXPORT ON HER.** Said twice: *"Do not try to run a descendant
+    export on them yourself. Please don't do that."* That is a prohibition on the export, not a
+    licence to do something else instead — anything beyond it is unruled.
+
+    **She is NOT the `Princess Alix de Lampron` already in this file.** That one is
+    `6000000006101354712`, in the WESTERN european tang list of fifteen hinge people. This is
+    `6000000006101354745`, a different profile, and the two must not be conflated.
+
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.

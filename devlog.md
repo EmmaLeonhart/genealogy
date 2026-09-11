@@ -36298,3 +36298,36 @@ them into `private_profile` and `no_family_block` and records `url` on both.
 **The honest state of the measurement:** of the 33 failures across both passes, exactly two are
 diagnosed — one private, one a timing miss. The rest are not classified, and the next batch under
 1.7.30 is what will say. The earlier "20 of 60" is not a defect rate; it is an unread instrument.
+
+## 2026-09-10 — the Abul Hamza focus is Alix de Lampron, and 1,176 of her descendants are already held
+
+Ruled: *"for descendants of Abul Hamza, imo focus on descendants of `6000000006101354745`
+[Alix de Lampron] ... the people I actually want are going to be descended from this individual"*,
+with *"Do not try to run a descendants export on them yourself. Please don't do that."*
+
+**⛔ SHE IS NOT THE `Princess Alix de Lampron` ALREADY IN THE QUEUE.** That is
+`6000000006101354712`, one of the fifteen hinge people in the WESTERN european tang list. This is
+`6000000006101354745` — a different profile, and conflating them would send the campaign at the
+wrong person.
+
+**No export was run and none will be.** The question *who descends from her* is answerable from
+what is already on disk, and `scripts/descent-from.py` answers it: read the `.ged` files, build
+`partner -> child` out of the `FAM` links, walk down breadth-first, keep the shortest generation
+where a person is reachable twice. It touches Geni not at all.
+
+**Over the two Abul Hamza directories — 5 files, 15,667 people, 12,096 families:**
+
+    root  6000000006101354745  Alix de Lampron
+    descendants already held   1,176
+
+    gen  1     5      gen  5    18      gen  9    122
+    gen  2    12      gen  6    20      gen 10    186
+    gen  3    15      gen  7    62      gen 11    273
+    gen  4    20      gen  8    65      gen 12    378
+
+**⛔ THE SHAPE IS THE POINT: the counts are still RISING at generation 12**, where the ball stops.
+That is the export cap cutting the descent off, not the family ending — so the live frontier is
+those 378 people at the bottom edge, and the descent below them is unheld rather than absent.
+`CLAUDE.md` § *A `Descendants` ball that came back at the cap is truncated by definition*.
+
+`reports/descent-from-6000000006101354745.csv` is one row per descendant with its generation.
