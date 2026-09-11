@@ -37015,3 +37015,16 @@ frontier grows faster than it drains. Seven exports off already-created profiles
 than one more climb through a royal line, and she stays on the target list.
 
 First of the seven submitted: `6000000227695388934` → task `6000000227701785854`.
+
+## 2026-09-11 — the sixth ball, off a seed whose export had been lost
+
+`6000000227695388934` — Hélène de Corday's seed, created hours ago, its first export submitted and
+its task id never captured. Resubmitted as task `6000000227701785854` and filed:
+**5,000 INDI, 2,196 FAM**. Six balls now.
+
+**That is the whole point of the instruction.** The placeholder was already on Geni; the climb that
+made it was already paid for; all that was missing was a submit. Two of the seven were in that
+state purely because the id was lost, and they were sitting there as finished work nobody had
+collected.
+
+Seventh of the seven submitted: `6000000227696410829` → task `6000000227702291837`.
