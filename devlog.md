@@ -37168,3 +37168,33 @@ untidy — each one occupies an export slot to discover it is worth about 1% of 
 grants one export at a time. `createdPids` prevents the chain shape from recurring; nothing
 prevents a parent pair being created on one child, and on this evidence the second parent is worth
 38 people.
+
+## 2026-09-11 — the placeholder backlog is cleared; eleven balls, 22,225 people new to the corpus
+
+Last of the seven filed — `6000000227693965055`, task `6000000227705377883`, 5,000 INDI, **1 new
+person.** Every profile this account has created now has a `Descendants` ball.
+
+    balls                                      11
+    rows                                   55,000
+    distinct people                        34,601
+    NOT anywhere else in exports/          22,225
+
+**The four mistakes, now fully measured: 38, 1, 2, 1.** Both confirm-create placeholders and both
+chain artifacts returned essentially nothing, and the father/mother pair returned 38. That is the
+complete answer to *"is a second parent on the same child worth an export"* and to *"is a
+placeholder above a placeholder worth one"* — and neither answer could have been had without
+spending the slots.
+
+**⛔ THE YIELD IS 22,225 PEOPLE, NOT 55,000.** Eleven balls at 5,000 rows each is 34,601 distinct
+people, of whom 22,225 are new to the corpus. **64% new** — against the 44% measured on the first
+four balls, which is the opposite of the direction a diminishing-returns story would predict. The
+later balls came from genuinely different seeds; the overlap-heavy ones were the four mistakes,
+not the real targets.
+
+**What that says about the campaign, carefully:** it does not say returns are increasing. It says
+the four low-yield balls were a known, named, self-inflicted category, and that the real seeds —
+Isabella of Savoy, Anne Lemois, Sébastien de Luxembourg, Hélène de Corday, the Alix sweep target —
+are each still bringing thousands of people the corpus did not hold. Eleven of the fifteen Alix
+targets remain unspent, and none of them need a climb that has already been paid for.
+
+The queue item is deleted: every created individual has its ball.
