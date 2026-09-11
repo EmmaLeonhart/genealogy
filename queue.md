@@ -534,6 +534,32 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
   **The order, verbatim:**
 
+  - **⛔ WHY ALIX DE LAMPRON, AND WHAT THE CAMPAIGN IS ACTUALLY FOR. Stated 2026-09-11.**
+    *"The reason behind this person is because I consider them to have a descent from antiquity
+    that is pretty valuable for Europe. And particularly I am hoping that me and my cluster
+    somehow connect in here. I'm not super optimistic, but I'm hoping so."*
+
+    **⛔ THE DELIVERABLE IS NOT PEOPLE GATHERED. IT IS A CONNECTION THAT DOES NOT YET EXIST
+    ANYWHERE.** *"This would involve comparatively novel genealogical research ... it would not
+    simply be something that is just the case based upon what the tree actually says, because I
+    know neither the Geni tree nor the Wikidata tree contain this information. But I am convinced
+    that there is entity resolution to be done that could relatively easily lead to a Swedish or
+    Norwegian line being discovered that links up to me through similarly named people at similar
+    times."*
+
+    So the exports are **material for entity resolution**, not an import. The thing being looked
+    for is a Scandinavian line inside this descent that matches the account owner's cluster on
+    **name and period** — which is the zipper's problem, and `CLAUDE.md` § *1600–1900 is the band
+    where names lie and years decide* is the standing warning about exactly that kind of match.
+
+    **⛔ AND THAT KILLS THE YIELD METRIC AS A STOPPING CONDITION.** *"I honestly don't even
+    consider it to be diminishing returns at this point ... the returns that come from the
+    original descendants of this one person are also relatively diminished. There are not five
+    thousand new individuals in the descendants of this person."* The 44%-new figure measured on
+    2026-09-11 was scored against a 5,000-new ball that does not exist; the denominator is what
+    the seam actually holds. Diminishing returns is relative to the alternative use of an export
+    slot, never to a full ball.
+
   - **⛔ THE FOCUS INSIDE ABUL HAMZA IS ALIX DE LAMPRON `6000000006101354745`.** Ruled
     2026-09-10: *"for descendants of Abul Hamza, imo focus on descendants of
     https://www.geni.com/people/Alix-de-Lampron/6000000006101354745?through=6000000001500872848

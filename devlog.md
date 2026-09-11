@@ -36919,3 +36919,23 @@ would inflate overlap rather than reduce it.
 **What it does establish** is that an export is not worth 5,000 new people. It is worth about
 2,200 on this evidence, and the seeds that matter are the ones reaching parts of the tree the
 corpus has not already swept.
+
+**⛔ CORRECTION TO THE YIELD FRAMING ABOVE.** Emma, 2026-09-11: *"I honestly don't even consider
+it to be diminishing returns at this point ... the returns that come from the original descendants
+of this one person are also relatively diminished. There are not five thousand new individuals in
+the descendants of this person."*
+
+The entry scores 8,812-of-19,771 as *"44% new material"* against an implicit ideal of a fully
+novel 5,000-person ball. **That denominator does not exist.** The seam holds what it holds, and a
+ball that is half already-known is not a degraded ball — it is what a descent already partly swept
+looks like. Diminishing returns has to be measured against **the alternative use of an export
+slot**, not against a hypothetical full one.
+
+**And the campaign's purpose is not bulk, which the entry also implies.** Alix de Lampron was
+chosen for a descent from antiquity valuable for Europe, and the thing hoped for is that the
+account owner's own cluster connects into it. That connection **is not in either tree** — not
+Geni's, not Wikidata's — so gathering people is not the deliverable. The deliverable is entity
+resolution over the gathered material: a Swedish or Norwegian line matched on similar names at
+similar times. `CLAUDE.md` § *1600–1900 is the band where names lie and years decide* is the
+standing caution on precisely that kind of match, and § *the zipper is not doing that well* is the
+standing state of the instrument that would do it.
