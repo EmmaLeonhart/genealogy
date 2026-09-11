@@ -37259,3 +37259,46 @@ the campaign's real bottleneck and it is worth someone deciding whether a cheape
 exists.
 
     twelve balls, 60,000 rows, 24,020 people not anywhere else in exports/
+
+## 2026-09-11 — 1.7.40: a browser restart wedged the queue with a dead tab, and 1.7.39 was never running
+
+**Two failures of the same kind: the build on disk was not the build being driven, and the
+restart that fixes that quietly broke the thing it was supposed to resume.**
+
+**1.7.39 had not run at all.** It was committed at `18:48:25Z` with its script renamed and
+`manifest.json` bumped — the two things this repo established are required — and at `20:20:37Z`,
+**ninety-two minutes later**, the boot beacon on a `seedwalk` dispatch still said `1.7.38`.
+Chrome holds an unpacked extension's files in memory and re-reads the directory only on reload,
+so the rename makes a build *loadable* and nothing makes it *loaded*. There is no error and no
+symptom: the old code answers every probe about itself honestly. Every job driven in that window
+ran the build the commit said had been replaced — including the `add_not_confirmed` duplicate-parent
+bug 1.7.39 exists to fix.
+
+Caught because the version was probed at dispatch time rather than an hour in, so the climb on
+Charles Emmanuel I of Savoy `6000000006428491389` cost twenty seconds to restart instead of two
+hundred page loads. `docs/rules/collector-and-browser.md` now carries the step: probe
+`beacon.swVersion` against `manifest.json` **before dispatching**, and treat a mismatch as an
+immediate restart.
+
+**Then the restart wedged the run.** `active` maps tabId -> job and is stored, so it outlives the
+browser it refers to. `chrome.tabs.onRemoved` releases a slot when a tab is *closed*, and a tab
+that died with the browser is never closed — no event fires, the entry stays, and
+`if (serial && serialInFlight >= 1) break` hands that phantom the one seed slot. `pump` then
+resumes on every alarm and every `onStartup` and breaks immediately, forever.
+
+    attempted 9   queue 9   staggerMs 3000   running true   active { 977871085: ... }
+
+Five minutes of checks, no movement, `active` naming a tab from the Chrome that no longer
+existed. It reads as slow rather than as wedged, which is the dangerous part.
+
+**1.7.40 adds `reconcileActive()`** — once per worker lifetime, at the top of `pump`, drop every
+`active` entry whose `chrome.tabs.get` rejects. A job in flight when the browser died is recorded
+as `tab_gone` and **put back at the front of the frontier**: its page was never read, so it is a
+person the walk still has to visit. Once per worker and not per loop iteration, because `pump`
+spins tightly and a browser round-trip per entry per iteration would sit in the hot path of a
+queue of thousands.
+
+**Verified live on the wedged run.** `6000000001976884495` went `tab_gone`, was re-queued, was
+visited on the next open as `both_present`, and the climb went from a frozen 9 to 11 attempted
+with 12 queued and `active` empty between opens. The restart the collector rules call cheap is
+only cheap if the resume resumes; now it does.

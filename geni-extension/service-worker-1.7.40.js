@@ -715,10 +715,70 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
 let pumping = false;
 
+/* ⛔ **A DEAD TAB HOLDS THE SERIAL SLOT FOREVER, AND A BROWSER RESTART MAKES DEAD TABS.**
+ *
+ * `active` maps tabId -> job and is stored, so it survives everything the worker does not --
+ * including the browser it refers to. `chrome.tabs.onRemoved` releases a slot when a tab is
+ * CLOSED, and a tab that died with the browser is never closed: no event fires, the entry stays,
+ * and `if (serial && serialInFlight >= 1) break` hands that phantom the one seed slot. `pump`
+ * then resumes on every alarm and every `onStartup` and breaks immediately, forever. The run
+ * reports `running: true` with a full queue and advances by nothing, which reads as slow rather
+ * than as wedged.
+ *
+ * **Measured 2026-09-11.** Chrome was killed to load `1.7.39` one minute into the climb on
+ * Charles Emmanuel I of Savoy `6000000006428491389`. It relaunched, `onStartup` pumped, and the
+ * climb sat at **9 attempted with 9 queued and `staggerMs` 3000** across five minutes of checks,
+ * `active` naming tab `977871085` from the Chrome that no longer existed.
+ *
+ * So the restart the collector rules call cheap is only cheap if the resume resumes. This drops
+ * every `active` entry whose tab is genuinely gone -- `chrome.tabs.get` rejects for a missing id
+ * -- once per worker lifetime, which is exactly when stale ids can appear. A job that was in
+ * flight when the browser died is recorded as `tab_gone` rather than silently forgotten: its
+ * page was never read, so it is a person the walk still has to visit.
+ *
+ * ⛔ It reconciles ONCE, not per loop iteration. `pump` spins tightly and a `tabs.get` per
+ * entry per iteration would put a browser round-trip in the hot path of a queue of thousands. */
+let reconciled = false;
+
+async function reconcileActive() {
+  const s = await state();
+  const ids = Object.keys(s.active || {});
+  if (!ids.length) return;
+  const dead = [];
+  for (const id of ids) {
+    try {
+      await chrome.tabs.get(Number(id));
+    } catch (e) {
+      dead.push(id);
+    }
+  }
+  if (!dead.length) return;
+  const active = Object.assign({}, s.active);
+  const lost = dead.map((id) => {
+    const job = active[id];
+    delete active[id];
+    return { at: new Date().toISOString(), job: job && job.job, geni_id: job && job.geni_id,
+             kind: job && job.kind, state: "tab_gone" };
+  });
+  /* The frontier keeps them: an unread page is not an answered one. A `seed` goes back to the
+   * FRONT so the climb continues from where it stopped rather than after everything queued
+   * behind it, and `enqueue`'s own de-duplication is not in play here because the job was taken
+   * off the queue before the tab was opened. */
+  const requeue = lost.filter((l) => l.job && l.geni_id)
+                      .map((l) => ({ job: l.job, geni_id: l.geni_id, kind: l.kind, label: "" }));
+  await put({ active,
+              queue: requeue.concat(s.queue || []),
+              results: (s.results || []).concat(lost) });
+}
+
 async function pump() {
   if (pumping) return;
   pumping = true;
   try {
+    if (!reconciled) {
+      reconciled = true;
+      try { await reconcileActive(); } catch (e) { /* never let the sweep stop the queue */ }
+    }
     for (;;) {
       const s = await state();
       if (!s.running) break;

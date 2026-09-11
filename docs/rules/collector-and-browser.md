@@ -157,6 +157,42 @@ download page can be reopened by task id, but an unsaved form cannot. And the pa
 Claude extension has to be re-established after a restart; § *AN EMPTY BROWSER LIST IS NOT A
 BLOCKER* is the procedure for that and it is also not a blocker.
 
+### ⛔ THE RENAME IS NECESSARY AND NOT SUFFICIENT. PROBE THE VERSION BEFORE EVERY DISPATCH
+
+**Renaming the service-worker file is what makes a new build *loadable*. It is not what makes it
+*loaded*.** Chrome holds an unpacked extension's files in memory and re-reads the directory only
+when the extension is reloaded, so a renamed script on disk changes nothing at all until the
+browser restarts. There is no error, no warning and no symptom: the old code keeps running and
+answers every probe about itself honestly.
+
+**Measured 2026-09-11.** `1.7.39` — the fix that stops `add_not_confirmed` making a duplicate
+parent — was committed at `18:48:25Z` with `service-worker-1.7.39.js` the only such file on disk
+and `manifest.json` reading `1.7.39`. At `20:20:37Z`, **ninety-two minutes later**, a `seedwalk`
+dispatch woke the worker and its boot beacon said:
+
+    swVersion      1.7.38
+    contentVersion 1.7.38
+
+Everything driven in that window ran the build the commit said had been replaced. Chrome was
+killed and relaunched with the throttling flags below; the same probe then returned `1.7.39`, and
+`createdPids` — 13 ids — came back intact out of `chrome.storage.local`, which survives a restart.
+
+**So the check is a step, not a courtesy.** Before dispatching any job, send `{job:"bg",
+type:"ping"}` and compare `beacon.swVersion` against the `version` in `geni-extension/manifest.json`:
+
+    grep '"version"' geni-extension/manifest.json
+
+A mismatch is a **restart**, immediately, per § *KILL CHROME WHENEVER YOU NEED TO* — not a note in
+a report and not something to work around. **Restart before the work, never during it**: an
+in-flight climb is cheap to lose in its first minute and expensive to lose in its two-hundredth,
+and this one cost twenty seconds only because the probe was read at dispatch time rather than an
+hour in.
+
+**And a resumed climb is not a re-dispatched one.** The worker boots with `running: true` and
+pumps the frontier left in storage, so the queue continues where it stopped and must not be sent
+again. `seedwalk` REPLACES the queue — a second dispatch throws the frontier away and restarts the
+climb from the root, which is how four dispatches produced one climb's progress on 2026-09-10.
+
 ### The working Geni capture call lives in ONE transcript. Name it, do not re-derive it
 
 **Do the way that already worked; look it up rather than being creative.** A session rebuilt a
