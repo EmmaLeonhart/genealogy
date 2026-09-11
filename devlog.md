@@ -37302,3 +37302,43 @@ queue of thousands.
 visited on the next open as `both_present`, and the climb went from a frozen 9 to 11 attempted
 with 12 queued and `active` empty between opens. The restart the collector rules call cheap is
 only cheap if the resume resumes; now it does.
+
+## 2026-09-11 — Alix target 6 filed: 2,058 new to the corpus for 64 climbs
+
+**Charles Emmanuel I of Savoy `6000000006428491389`**, the sixth of the fifteen targets in
+`reports/descendants-export-targets.csv`, and the first run under `1.7.40`.
+
+    climb                                   64 steps, every one both_present
+    created                 NN de Malleval  6000000227707589983  (father of NN Foret
+                                            6000000016581762668)
+    task                    6000000227708143829
+    ball                    5,000 INDI   3,061 FAM
+    new against the campaign                2,695
+    new against the WHOLE corpus            2,058
+
+**The climb cost lands mid-range, which is the first evidence that 197 was not the new normal.**
+Four measurements now exist and they span seventy-fold:
+
+    Anne Lemois                              3 climbs
+    Sebastien de Luxembourg                 28
+    Charles Emmanuel I of Savoy             64
+    Maria Anna Victoria of Bavaria         197   (plus 182 discarded)
+
+All four return a ball of the same 5,000, so the climb is the only thing that varies, and it
+varies by how far up a fully-attested line the walk has to go before it finds a person missing a
+parent. Royalty is attested further up; that is the whole of the effect. **Nothing is reordered
+on the strength of it** — the stopping condition is diminishing returns on what an export
+*returns*, never what it costs to set up, and `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING
+RETURNS, NOT A COUNT* is not about seeding cost. It is recorded because a seeding rule that
+reached a slot in three steps instead of sixty-four would pay for itself across the remaining
+nine targets, and that is a decision to put to somebody rather than to invent.
+
+**Campaign totals, thirteen balls in:**
+
+    rows across the balls                  65,000
+    distinct people                        39,637
+    people not anywhere else in exports/   26,078
+
+**And the yield is not falling.** Target 5 returned 1,795 new to the corpus and target 6 returned
+2,058 — the sixth ball off the same root is still bringing back more than the fifth did. That is
+the number the stopping condition actually watches, and it says keep going.
