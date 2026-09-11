@@ -36085,3 +36085,28 @@ descent under a new name.
 **⛔ AND THE RENAME WAS REQUIRED AGAIN.** `service-worker-1.7.26.js` → `service-worker-1.7.27.js`.
 Without it the file edit would have been invisible and the guard would have reported itself live
 while doing nothing, exactly as 1.7.24 did.
+
+**The backfill was incomplete and the walk found the gap immediately.** `createdPids` was seeded
+with three pids; the confirm-create test on `NN ? 6000000227693203853` had created **two more**
+that were never listed — `6000000227694046920` (father) and `6000000227693965055` (mother) — and
+the very next run climbed into the first of them and created `6000000227696010826` on top. Its
+page reads *"Son of NN ? Husband of NN ? Father of NN ?"*: an entirely fabricated chain. The
+guard behaved correctly; the list it was given was short. All **six** are recorded now.
+
+**⛔ AND SAYALUNA ATA IS DONE AS A SEED SOURCE, ON EVIDENCE RATHER THAN PATIENCE.** Four export
+slots have gone to her line today and they are substantially one ball:
+
+    6000000227694017875   father of Muhadhdhab al-Din      -> 5,000 people, filed
+    6000000227694199890   mother of the same person        -> near-identical by construction
+    6000000227695384828   father of the first placeholder  -> same descent, one invented
+                                                              generation higher
+    6000000227696010826   father of a test placeholder     -> same again
+
+Her ancestry is unusually complete — 17 ancestors checked over several runs, every one
+`both_present` except uneditable profiles — so the only open slots the walk can reach are `NN`
+placeholders, ours or Geni's own. Every export from one of those covers the descent already held.
+**Continuing to climb here buys nothing**, and Geni grants one export at a time, so each attempt
+costs a slot that a different branch would use better.
+
+The next target is one of the other five found in Abul Hamza's ball, which sit in different parts
+of the tree.
