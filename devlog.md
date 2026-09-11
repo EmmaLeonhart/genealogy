@@ -36110,3 +36110,41 @@ costs a slot that a different branch would use better.
 
 The next target is one of the other five found in Abul Hamza's ball, which sit in different parts
 of the tree.
+
+## 2026-09-10 — the method was wrong: one seed per sampled person, then RESAMPLE
+
+**⛔ I WAS TAKING MULTIPLE SEEDS FROM THE SAME PERSON.** Emma: *"why the fuck were you taking
+multiple seeds from the same person lol? The point was monte carlo each time to get a new
+descendant of that guy and export their descendants."*
+
+The loop is **sample → census → one seed → one export → sample again**, a fresh random descendant
+every round. Re-walking one person's ancestry is what produced the four near-identical balls
+recorded above, and no guard would have fixed that — the guard stops the walk eating its own
+placeholders, while the actual error was never resampling at all. `queue.md` states the method
+plainly and I ran a different one.
+
+**The first honest round of Monte Carlo, drawn uniformly from
+`exports/abul-hamza/export-Descendants-6000000227676734863.ged` (5,000 people):**
+
+    6000000009318937423  Valenza Loredan (Crispo)              descendants      0
+    6000000037148793801  Кайхосро Багратион-Мухранский                        474
+    6000000030991759165  Aghbugha Jaqeli                                        0
+    6000000018507340927  Anna Batonishvili (Bagrationi)                       339
+    6000000008660473146  Nicolasa Flores de Abrego y Ayala                    491
+    6000000014399604871  Maria Rose Galindo Caliz                               3
+    6000000036837546704  Claire de Blacas                                       3
+    6000000081222566829  Michael Palaiologos                                    0
+
+**Eight draws, zero clearing the 4,000 threshold, highest 491.** That is a real measurement of the
+ball and not a complaint about it: a descendants export reaches the LEAVES, so a uniform sample
+of one is dominated by people with no recorded descendants. The saturated people exist in there —
+the six already found came out of this ball — but they are rare enough that eight draws missed
+all of them.
+
+**This is the input the stopping condition needs** — `CLAUDE.md` § *THE STOPPING CONDITION IS
+DIMINISHING RETURNS, NOT A COUNT*. Eight draws is not enough to call it, and it is recorded rather
+than concluded from.
+
+**Hélène de St Germain (de Corday) `6000000000746523797` is productive**, read live:
+`descendants` 15,000, `ancestors` 5,327. The walk found an open slot in **4 ancestors** against
+Sayaluna ata's 17, created `6000000227695388934`, and a `Descendants` export is in flight from it.
