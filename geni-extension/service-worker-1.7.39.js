@@ -290,6 +290,29 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * the side of stopping wherever the outcome is genuinely unknown. */
       const NO_WRITE = { both_present: 1, no_add_link: 1 };
 
+      /* ⛔ A PROBABLE CREATION IS A CREATION FOR THE PURPOSE OF NEVER CLIMBING INTO IT.
+       *
+       * `createdPids` was only appended on `added`. `add_not_confirmed` means the save fired and
+       * the confirmation could not be read — *probably created, id unknown* — so the profile is
+       * very likely on Geni and nothing recorded it. Measured 2026-09-11 on Lucrezia Landriani
+       * `6000000003858585368`: the first target-5 run created `6000000227701543025` on her and was
+       * stopped before it reported; the resumed run had no memory of it, found her "missing" a
+       * parent again, and created `6000000227707004886`. **Two placeholders on one person, made by
+       * accident**, which is the father/mother shape the earlier measurement priced at 38 new
+       * people for a whole export slot.
+       *
+       * The id is unknown here, so the SUBJECT is recorded instead — the person the parent was
+       * created ON. `pump` already refuses to seed anyone in this list, and refusing to revisit
+       * the subject is what stops the second parent. It costs one skipped person and prevents a
+       * duplicate. */
+      if (msg.result && msg.result.job === "seed" && msg.result.state === "add_not_confirmed") {
+        const sNow2 = await state();
+        const subj = String(msg.result.geni_id || "");
+        if (subj && (sNow2.createdPids || []).indexOf(subj) === -1) {
+          await put({ createdPids: (sNow2.createdPids || []).concat([subj]) });
+        }
+      }
+
       /* ⛔⛔ **THE EXTENSION RECORDS WHO IT RAN ON. NOT THE AGENT.**
        *
        * Ruled 2026-09-10: *"the extension should be scraping the page and adding and basically

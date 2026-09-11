@@ -37198,3 +37198,31 @@ are each still bringing thousands of people the corpus did not hold. Eleven of t
 targets remain unspent, and none of them need a climb that has already been paid for.
 
 The queue item is deleted: every created individual has its ball.
+
+## 2026-09-11 — 1.7.39: `add_not_confirmed` now records the subject, because it made a duplicate parent
+
+**Target 5 finally seeded at 197 ancestors** — 178 `both_present`, 17 `family_not_read` — and the
+creation came back `add_not_confirmed`. Checking the page rather than the state:
+**Lucrezia Landriani `6000000003858585368` now has TWO NN parents**, `6000000227701543025` and
+`6000000227707004886`, both in the created-profile range and **neither in `createdPids`.**
+
+**⛔ THE WALK CREATED A SECOND PARENT ON ONE PERSON BECAUSE IT HAD NO MEMORY OF THE FIRST.**
+
+    first target-5 run    created 6000000227701543025 on her, then was stopped
+                          before reporting -- nothing recorded it
+    resumed run           no memory of that, found her "missing" a parent,
+                          created 6000000227707004886
+
+`createdPids` was only appended on an `added` result. `add_not_confirmed` means the save fired and
+the confirmation could not be read — *probably created, id unknown* — so the profile is very
+likely on Geni and nothing was written down. That is the father/mother shape, and the earlier
+measurement priced it at **38 new people for a whole export slot.**
+
+**The fix records the SUBJECT, since the new pid is by definition unknown.** `pump` already
+refuses to seed anyone in `createdPids`, so refusing to revisit the person the parent was created
+*on* is what prevents the second parent. It costs one skipped person and prevents a duplicate.
+Both of Lucrezia's parents were backfilled by hand; `createdPids` is now 13.
+
+**⛔ AND THIS IS THE SECOND TIME STOPPING A RUN HAS COST SOMETHING CONCRETE.** The first was losing
+182 climbs. This one silently created a profile on a live site and told nobody. A stopped run is
+not a free undo, and the reason to stop had better be worth a duplicate placeholder.
