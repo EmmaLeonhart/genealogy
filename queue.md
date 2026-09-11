@@ -991,3 +991,25 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   unnamed or relationally-named people — *Daughter of X*, *NN ferch Y*, *unknown son (?)* — and
   the fifth is a name item whose label is two full stops. Whether the paste is a list of the same
   shape is exactly the thing the analysis has to establish rather than take as read.
+
+- **⛔ WELSH PATRONYMIC CHAINS TAKE `P1545` (series ordinal).** Ruled 2026-09-10: *"For people
+  like this (mostly welsh on wikidata) we use series ordinal for patronymics."*
+
+  **The instance sent** is `Q116812067` **Margred ferch Llywelyn Gôch ab Ieuan ap Dafydd of
+  Rhydlafar** — one label carrying a chain of three generations, `ferch Llywelyn` / `ab Ieuan` /
+  `ap Dafydd`. No description in any language; `instance of` human, 0 references. The other tabs
+  open beside it were `Lewys ap Robert Raglan, of Vorc…`, `John Games, of Penfathrin`, so the
+  shape is a population rather than one person.
+
+  **Why the ordinal is the answer and not a second property:** a Welsh name names the father, the
+  grandfather and the great-grandfather in one string, so `P5056` (patronymic) has **several
+  values on one person** and nothing about the statement says which generation each belongs to.
+  `P1545` (series ordinal) is the qualifier that orders them.
+
+  `name modelling.txt` is the authority on how a name is modelled and beats `CLAUDE.md`, so this
+  rule belongs there once it is worked — `CLAUDE.md` § *`name modelling.txt` is the authority*.
+  It is recorded here first because that is where it was sent.
+
+  **Nothing is investigated, measured or queried**: not how many Welsh-chain labels exist, not
+  which already carry `P5056` (patronymic), not whether `P144` (based on) points anywhere.
+  `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
