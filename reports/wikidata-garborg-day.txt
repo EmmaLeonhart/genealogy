@@ -68,7 +68,7 @@ Q22674506	P2600	"6000000001789021838"
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Hoknes -- family, 8 bearer(s) in the batches
+# Hoknes -- family, 9 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Hoknes"
@@ -96,7 +96,7 @@ Q141290460	P734	LAST	S2600	"6000000177921459119"
 #   Q141419565 Elias Kahrs Ingebrigtsen Hoknes Himo: P734 family name = the item just created
 Q141419565	P734	LAST	S2600	"6000000177969361824"
 
-# Raunes -- family, 8 bearer(s) in the batches
+# Raunes -- family, 9 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Raunes"
@@ -124,7 +124,7 @@ Q141419819	P734	LAST	S2600	"6000000020930808953"
 #   Q141225175 Malene Larsdtr. Alvseike: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141225175	P734	LAST	P3831	Q2507958	S2600	"6000000030085852982"
 
-# Larsdotter -- patronymic, 4 bearer(s) in the batches
+# Larsdotter -- patronymic, 5 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Larsdotter"
@@ -184,7 +184,7 @@ Q104550167	P5056	LAST	S2600	"6000000007787563524"
 #   Q141318594 Hedvig Johanna Mattsdotter Sundwall: P5056 patronym or matronym = the item just created
 Q141318594	P5056	LAST	S2600	"6000000011871844439"
 
-# Eriksen -- patronymic, 2 bearer(s) in the batches
+# Eriksen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Eriksen"
@@ -206,37 +206,7 @@ LAST	P144	Q12788459
 #   Q9161062 Eiler Eriksen Bølle: P5056 patronym or matronym = the item just created
 Q9161062	P5056	LAST	S2600	"6000000002838116082"
 
-# Gabrielsdotter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gabrielsdotter"
-LAST	Len	"Gabrielsdotter"
-#   set the mul label to "Gabrielsdotter"
-LAST	Lmul	"Gabrielsdotter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q4925914 Gabriel
-LAST	P144	Q4925914
-#   Q135480259 Elsa Barbro Gabrielsdotter Leijonhufwudh: P5056 patronym or matronym = the item just created
-Q135480259	P5056	LAST	S2600	"6000000009693821507"
-
-# Olsdtr -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Olsdtr"
-LAST	Len	"Olsdtr"
-#   set the mul label to "Olsdtr"
-LAST	Lmul	"Olsdtr"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141352444 Marite Olsdtr: P5056 patronym or matronym = the item just created
-Q141352444	P5056	LAST	S2600	"6000000005609488533"
-
-# Ringja -- family, 2 bearer(s) in the batches
+# Ringja -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Ringja"
@@ -252,7 +222,7 @@ Q141318914	P734	LAST	P3831	Q28418670	S2600	"6000000001770176883"
 #   Q141216613 Karen Henriksdotter Raunes Våga: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141216613	P734	LAST	P3831	Q2507958	S2600	"6000000005607377021"
 
-# Ådneson -- patronymic, 2 bearer(s) in the batches
+# Ådneson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Ådneson"
@@ -270,7 +240,23 @@ Q141419904	P5056	LAST	S2600	"6000000003094961773"
 #   Q141382507 Nikolai Ådneson Kyllingstad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223972 Ådne Olsson Lima Kyllingstad. Lima
 Q141382507	P5056	LAST	P144	Q141223972	S2600	"6000000005607196880"
 
-# Henriksson -- patronymic, 1 bearer(s) in the batches
+# Gabrielsdotter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gabrielsdotter"
+LAST	Len	"Gabrielsdotter"
+#   set the mul label to "Gabrielsdotter"
+LAST	Lmul	"Gabrielsdotter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q4925914 Gabriel
+LAST	P144	Q4925914
+#   Q135480259 Elsa Barbro Gabrielsdotter Leijonhufwudh: P5056 patronym or matronym = the item just created
+Q135480259	P5056	LAST	S2600	"6000000009693821507"
+
+# Henriksson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Henriksson"
@@ -296,22 +282,10 @@ LAST	P144	Q1619450
 #   Q105499437 Anders Henriksson Frosterus: P5056 patronym or matronym = the item just created
 Q105499437	P5056	LAST	S2600	"6000000013338208452"
 
-# Ilsbodina -- family, 1 bearer(s) in the batches
+# Margeta -- given, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ilsbodina"
-LAST	Len	"Ilsbodina"
-#   set the mul label to "Ilsbodina"
-LAST	Lmul	"Ilsbodina"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-
-# Margeta -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Margeta"
+#   the item just created: set the en label to "Margeta"
 LAST	Len	"Margeta"
 #   set the mul label to "Margeta"
 LAST	Lmul	"Margeta"
@@ -320,21 +294,53 @@ LAST	P31	Q202444
 #   Q141336618 Margeta Johansdotter: P735 given name = the item just created
 Q141336618	P735	LAST	S2600	"6000000011078744023"
 
-# 1158 more name items are needed and wait for a later
+# Monsdatter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Monsdatter"
+LAST	Len	"Monsdatter"
+#   set the mul label to "Monsdatter"
+LAST	Lmul	"Monsdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q19799953 Mons
+LAST	P144	Q19799953
+#   Q141319194 Ingeborg Monsdatter Ølberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141290203 Mons Evertson Stangaland
+Q141319194	P5056	LAST	P144	Q141290203	S2600	"6000000207135266941"
+
+# Olason -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Olason"
+LAST	Len	"Olason"
+#   set the mul label to "Olason"
+LAST	Lmul	"Olason"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q2097883 Ole
+LAST	P144	Q2097883
+#   Q141283505 Jone Olason Tøtland: P5056 patronym or matronym = the item just created
+Q141283505	P5056	LAST	S2600	"6000000002390825722"
+
+# 1164 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Monsdatter (patronymic), 1 bearer(s)
-#   Olason (patronymic), 1 bearer(s)
-#   Stavnheim (family), 1 bearer(s)
-#   Stöök (family), 1 bearer(s)
-#   Tørresdatter (patronymic), 1 bearer(s)
-#   Øystre (family), 1 bearer(s)
-#   II (given), 20 bearer(s)
-#   III (given), 17 bearer(s)
-#   IV (given), 11 bearer(s)
-#   Of (given), 10 bearer(s)
-#   Raustad (family), 8 bearer(s)
-#   Talgje (family), 7 bearer(s)
-#   ... and 1146 more
+#   Olsdtr (patronymic), 2 bearer(s)
+#   Stavnheim (family), 2 bearer(s)
+#   Tørresdatter (patronymic), 2 bearer(s)
+#   Øystre (family), 2 bearer(s)
+#   Adlerbielke (family), 1 bearer(s)
+#   Alvson (patronymic), 1 bearer(s)
+#   Arctopolitanus (family), 1 bearer(s)
+#   Björnsdotter (patronymic), 1 bearer(s)
+#   Frigell (family), 1 bearer(s)
+#   Helmiksen (patronymic), 1 bearer(s)
+#   Ilsbodina (family), 1 bearer(s)
+#   Jakobsdatter (patronymic), 1 bearer(s)
+#   ... and 1152 more
 
 
 # ======================================================================
@@ -380,184 +386,135 @@ Q141429564	P460	Q141336454
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 81 edits; 4411 edits held for a later run
-#   across 1062 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 62 edits; 4349 edits held for a later run
+#   across 1002 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141198751 Lars Person Nedre Rossavik: add a mul alias "Lars Person Trevland"
-Q141198751	Amul	"Lars Person Trevland"
-#   Q141198382 Berita Larsdatter Rossavik: add a mul alias "Berita Larsdatter Nedre Rossavik"
-Q141198382	Amul	"Berita Larsdatter Nedre Rossavik"
-#   Q141180408 Jon Larsson Mæle: add a mul alias "Jon Larsson Li"
-Q141180408	Amul	"Jon Larsson Li"
-#   Q6197518 Svantepolk Knutsson: add a mul alias "Svantepolk Knutsson Viby Skarsholmsätten"
-Q6197518	Amul	"Svantepolk Knutsson Viby Skarsholmsätten"
-#   add a mul alias "Skule Tostigson kongsfostre"
-Q6180419	Amul	"Skule Tostigson kongsfostre"
-#   Q6180419: 'Skule Tostigson kongsfostre' has no ja/zh/ko label
-#   Q6180419: set the ja label
-Q6180419	Lja	"スクレ・トスティグソン・コングスフォストレ"
-#   Q6180419: set the zh label
-Q6180419	Lzh	"斯库莱·托斯蒂格松·孔斯福斯特雷"
-#   Q6180419: set the ko label
-Q6180419	Lko	"스쿠레 토스틱손 콩스포스트레"
-#   add a mul alias "Knut Valdemarsson Duke of Estland, Blekinge and Lolland"
-Q3743799	Amul	"Knut Valdemarsson Duke of Estland, Blekinge and Lolland"
-#   Q467497 Aadne Eivindson Garborg: add a mul alias "Aadne Eivindson Garborg"
-Q467497	Amul	"Aadne Eivindson Garborg"
-#   Q466257: "Rozala d'Ivrea" has no ko label
-#   Q466257: holds 'ロザーラ・ディタリー' in ja; ours is 'ロザラ・ディヴレーア'
-#   Q466257: set the ja label
-Q466257	Lja	"ロザラ・ディヴレーア"
-#   Q466257: holds '罗扎利娅' in zh; ours is '罗扎拉·迪弗雷亚'
-#   Q466257: set the zh label
-Q466257	Lzh	"罗扎拉·迪弗雷亚"
-#   Q466257: set the ko label
-Q466257	Lko	"로자라 디브레아"
-#   add a mul alias "Baldwin"
-Q378177	Amul	"Baldwin"
-#   Q378177: 'Baldwin' has no ko label
-#   Q378177: holds 'ボールドウィン・イヴ' in ja; ours is 'ボールドウィン'
-#   Q378177: set the ja label
-Q378177	Lja	"ボールドウィン"
-#   Q378177: holds '鲍德温·伊夫' in zh; ours is '鲍德温'
-#   Q378177: set the zh label
-Q378177	Lzh	"鲍德温"
-#   Q378177: set the ko label
-Q378177	Lko	"발드윈"
-#   add a mul alias "Berengar II of Ivrea king of Italy"
-Q314521	Amul	"Berengar II of Ivrea king of Italy"
-#   Q284400 Giséle de Cysoing: add a mul alias "Giséle de Cysoing"
-Q284400	Amul	"Giséle de Cysoing"
-#   add a mul alias "Berengar I margrave of Friuli, king of Italy"
-Q274606	Amul	"Berengar I margrave of Friuli, king of Italy"
-#   Q43974: holds 'ルートヴィヒ1世' in ja; ours is 'ルイ1世'
-#   Q43974: set the ja label
-Q43974	Lja	"ルイ1世"
-#   Q43974: holds '虔誠者路易' in zh; ours is '路易一世'
-#   Q43974: set the zh label
-Q43974	Lzh	"路易一世"
-#   Q43974: holds '루트비히 1세' in ko; ours is '루이스 1세'
-#   Q43974: set the ko label
-Q43974	Lko	"루이스 1세"
-#   add a mul alias "Carolus 'Magnus' Rex Francorum & Imperator Romanorum"
-Q3044	Amul	"Carolus 'Magnus' Rex Francorum & Imperator Romanorum"
-#   add a mul alias "Øystein Olsen Rønneberg"
-Q141430141	Amul	"Øystein Olsen Rønneberg"
-#   add a mul alias "Tørres Gabrielson Litlaland"
-Q141430137	Amul	"Tørres Gabrielson Litlaland"
-#   add a mul alias "Mathilda Bring"
-Q141430052	Amul	"Mathilda Bring"
-#   Q141430045 Mariet Olofsdotter: add a mul alias "Mariet (Margareta) Olofsdotter"
-Q141430045	Amul	"Mariet (Margareta) Olofsdotter"
-#   Q141430033 Malene Olsdatter Grannes: add a mul alias "Malene Olsdatter Nor-Kolnes"
-Q141430033	Amul	"Malene Olsdatter Nor-Kolnes"
-#   Q141430031 Lars Reiarsen Storhaug: add a mul alias "Lars Reiarsen Vashus"
-Q141430031	Amul	"Lars Reiarsen Vashus"
-#   add a mul alias "Kristian Olsen Vaule"
-Q141430014	Amul	"Kristian Olsen Vaule"
-#   add a mul alias "Johanna Fredrika Antoinetta Bassi Schön"
-Q141430005	Amul	"Johanna Fredrika Antoinetta Bassi Schön"
-#   add a mul alias "Johan Henrik Nauckhoff till Jäder"
-Q141429951	Amul	"Johan Henrik Nauckhoff till Jäder"
-#   Q141429947 Jakob Lagerstedt: add a mul alias "Jakob Gavelius"
-Q141429947	Amul	"Jakob Gavelius"
-#   add a mul alias "Giovanna Marcherita Bassi"
-Q141429933	Amul	"Giovanna Marcherita Bassi"
-#   Q141429884 Frans Fransson Franzén: add a mul alias "Frans Fransson Franzen"
-Q141429884	Amul	"Frans Fransson Franzen"
-#   add a mul alias "Elsa Margareta Hikeström"
-Q141429883	Amul	"Elsa Margareta Hikeström"
-#   Q141429880 Elsa Ebba Lindevald: add a mul alias "Elsa Ebba Transchiöld"
-Q141429880	Amul	"Elsa Ebba Transchiöld"
-#   Q141429870 Eivind Hognestad: add a mul alias "Eivind ? Hognestad"
-Q141429870	Amul	"Eivind ? Hognestad"
-#   Q141422352 Randi Borsheim: add a mul alias "Randi Birkland"
-Q141422352	Amul	"Randi Birkland"
-#   Q141422226 Karin Eriksdtr. Byre: add a mul alias "Karin Eriksdtr. Koll Byre"
-Q141422226	Amul	"Karin Eriksdtr. Koll Byre"
-#   Q141419904 Søren Ådneson Helland: add a mul alias "Søren Ådneson Haukamork"
-Q141419904	Amul	"Søren Ådneson Haukamork"
-#   Q141419525 Clara Amilia Hoknes: add a mul alias "Clara Amilia Knutson"
-Q141419525	Amul	"Clara Amilia Knutson"
-#   Q141403644 Peder Pedersen Holm: add a mul alias "Peder Pedersen Pedersen"
-Q141403644	Amul	"Peder Pedersen Pedersen"
-#   Q141403628: set the en label to 'Nils Silfverskiöld i Hanborg huset'
-Q141403628	Len	"Nils Silfverskiöld i Hanborg huset"
-#   Q141403628: holds 'Nils Silfverskiöld'; ours is 'Nils Silfverskiöld i Hanborg huset'
-#   Q141403628: keep the outgoing label as an alias before it is replaced
-Q141403628	Amul	"Nils Silfverskiöld"
-#   Q141403628: set the mul label to 'Nils Silfverskiöld i Hanborg huset'
-Q141403628	Lmul	"Nils Silfverskiöld i Hanborg huset"
-#   Q141403628: set the ja label
-Q141403628	Lja	"ニルス・シルフヴェルスキオルド"
-#   Q141403628: set the zh label
-Q141403628	Lzh	"尼尔斯·西尔夫韦尔斯基奥尔德"
-#   Q141403628: set the ko label
-Q141403628	Lko	"닐스 실프베르스키욀드"
-#   Q141382087 Dorthe Sofie Nilsdtr. Sofie Kyllingstad. Fosdal: add a mul alias "Dorthe Sofie Nilsdtr. Sofie Nilsdatter"
-Q141382087	Amul	"Dorthe Sofie Nilsdtr. Sofie Nilsdatter"
-#   Q141381873 Björn Burman: add a mul alias "Björn Olofsson"
-Q141381873	Amul	"Björn Olofsson"
-#   Q141381712 Anna Eklund: add a mul alias "Anna Sahlin"
-Q141381712	Amul	"Anna Sahlin"
-#   Q141353749 Mons Ljødeson Gjesdal: add a mul alias "Mons Ljødeson Kyllingstad"
-Q141353749	Amul	"Mons Ljødeson Kyllingstad"
-#   Q141353720 Kari Lindholm: add a mul alias "Kari Sahlin"
-Q141353720	Amul	"Kari Sahlin"
-#   Q141353709: set the en label to 'Johan Olofsson Ållongren i Östergötland'
-Q141353709	Len	"Johan Olofsson Ållongren i Östergötland"
-#   Q141353709: holds 'Johan Olofsson Ållongren'; ours is 'Johan Olofsson Ållongren i Östergötland'
-#   Q141353709: keep the outgoing label as an alias before it is replaced
-Q141353709	Amul	"Johan Olofsson Ållongren"
-#   Q141353709: set the mul label to 'Johan Olofsson Ållongren i Östergötland'
-Q141353709	Lmul	"Johan Olofsson Ållongren i Östergötland"
-#   Q141353709: set the ja label
-Q141353709	Lja	"ヨハン・オロフソン・オーロングレン"
-#   Q141353709: set the zh label
-Q141353709	Lzh	"约翰·奥洛夫松·奥隆伦"
-#   Q141353709: set the ko label
-Q141353709	Lko	"조한 오로프손 올롱렌"
-#   Q141353187 Brynhild Arnesdatter Aske: add a mul alias "Brynhild Arnesdatter Aga"
-Q141353187	Amul	"Brynhild Arnesdatter Aga"
-#   Q141352985 Anders Persson Hägg: add a mul alias "Anders Persson"
-Q141352985	Amul	"Anders Persson"
-#   Q141352514 Ragnhild Rasmusdatter Birkland: add a mul alias "Ragnhild Rasmusdatter Eikeland"
-Q141352514	Amul	"Ragnhild Rasmusdatter Eikeland"
-#   Q141352449 Møller Mikkelsen Birkeland: add a mul alias "Møller Mikkelsen Fuglestad"
-Q141352449	Amul	"Møller Mikkelsen Fuglestad"
-#   Q141337266 Øystein Olsen Reve: add a mul alias "Øystein Olsen Hodne"
-Q141337266	Amul	"Øystein Olsen Hodne"
-#   Q141336681 Anne Margrethe Kingo: add a mul alias "Anne Margrethe Hansdatter"
-Q141336681	Amul	"Anne Margrethe Hansdatter"
-#   Q141336680 Ola Jonson Folkvår: add a mul alias "Ola Jonson Raustad"
-Q141336680	Amul	"Ola Jonson Raustad"
-#   Q141336521 Eli Reiarsdatter Kyllingstad: add a mul alias "Eli Reiarsdatter Kydland"
-Q141336521	Amul	"Eli Reiarsdatter Kydland"
-#   Q141319197 Karin Lindeskog: add a mul alias "Karin Sahlin"
-Q141319197	Amul	"Karin Sahlin"
-#   Q141318974 Marta Olsdatter Gjesdal: add a mul alias "Marta Olsdatter Olsdotter"
-Q141318974	Amul	"Marta Olsdatter Olsdotter"
-#   Q141318957 Jared Borsheim: add a mul alias "Jared Borsheim"
-Q141318957	Amul	"Jared Borsheim"
-#   Q141318914 Helga Olavsdtr. Ringja: add a mul alias "Helga Olavsdtr. Vormestrand"
-Q141318914	Amul	"Helga Olavsdtr. Vormestrand"
-#   Q141318610 Olof Jonsson Bureus: add a mul alias "Olof Jonsson"
-Q141318610	Amul	"Olof Jonsson"
-#   Q141318604 Maria Wiking: add a mul alias "Maria (Maja) Sahlin"
-Q141318604	Amul	"Maria (Maja) Sahlin"
-#   Q141318602 Jon Larsson Sveinsvoll: add a mul alias "Jon Larsson Larsson"
-Q141318602	Amul	"Jon Larsson Larsson"
-#   Q141318590 Guri Birgitte Gabrielsdatter Tu: add a mul alias "Guri Birgitte Gabrielsdatter Gabrielsdatter"
-Q141318590	Amul	"Guri Birgitte Gabrielsdatter Gabrielsdatter"
-#   Q141314177 Øystein Ommundson Reve: add a mul alias "Øystein Ommundson Nese"
-Q141314177	Amul	"Øystein Ommundson Nese"
-#   Q141314163 Helga Jonsdatter Raustad: add a mul alias "Helga Jonsdatter Jonsdatter"
-Q141314163	Amul	"Helga Jonsdatter Jonsdatter"
-#   Q141313518: holds 'シセル・ラスムスダッテル・ヴァウレ' in ja; ours is 'シッセル・ラスムスダッテル・ヴァウレ'
-#   Q141313518: set the ja label
-Q141313518	Lja	"シッセル・ラスムスダッテル・ヴァウレ"
-#   Q141313518 Sissel Rasmusdatter Vaule: set the ja label to "シッセル・ラスムスダッテル・ヴァウレ"
-Q141313518	Lja	"シッセル・ラスムスダッテル・ヴァウレ"
+#   Q141313488: holds '콘라드 에리크 멜체르 팔켄베르그 아프 트리스토르프' in ko; ours is '콘라드 에리크 멜체르 팔켄베륵 아프 트리스토르프'
+#   Q141313488: set the ko label
+Q141313488	Lko	"콘라드 에리크 멜체르 팔켄베륵 아프 트리스토르프"
+#   Q141313488 Conrad Eric Melcher Falkenberg af Trystorp: set the ko label to "콘라드 에리크 멜체르 팔켄베륵 아프 트리스토르프"
+Q141313488	Lko	"콘라드 에리크 멜체르 팔켄베륵 아프 트리스토르프"
+#   Q141313483: holds '안나 마틸다 팔켄베르그 아프 트리스토르프' in ko; ours is '안나 마틸다 팔켄베륵 아프 트리스토르프'
+#   Q141313483: set the ko label
+Q141313483	Lko	"안나 마틸다 팔켄베륵 아프 트리스토르프"
+#   set the ko label to "안나 마틸다 팔켄베륵 아프 트리스토르프"
+Q141313483	Lko	"안나 마틸다 팔켄베륵 아프 트리스토르프"
+#   Q141312587 Gustaf Johan Johansson Söderberg: add a mul alias "Gustaf Johan Johansson Johansson Söderberg"
+Q141312587	Amul	"Gustaf Johan Johansson Johansson Söderberg"
+#   Q141312566 Brita Cajsa Söderberg: add a mul alias "Brita Cajsa (Catharina) Jonsdotter"
+Q141312566	Amul	"Brita Cajsa (Catharina) Jonsdotter"
+#   Q141290455 Anders Panna: add a mul alias "Anders Holgersson"
+Q141290455	Amul	"Anders Holgersson"
+#   Q141283850 Torbjørn Hallvardsson Nærstad: add a mul alias "Torbjørn Hallvardsson Randa"
+Q141283850	Amul	"Torbjørn Hallvardsson Randa"
+#   Q141283497 Eunice Nix: add a mul alias "Eunice Olson"
+Q141283497	Amul	"Eunice Olson"
+#   Q141283489 Astrid Juel Eneroth: add a mul alias "Astrid Juel Wendt"
+Q141283489	Amul	"Astrid Juel Wendt"
+#   Q141283103 Magnus Lagercrantz till Näs: add a mul alias "Magnus Gavelius till Näs"
+Q141283103	Amul	"Magnus Gavelius till Näs"
+#   Q141271416 Gabriel Jonson Malmeim: add a mul alias "Gabriel Jonson Raustad"
+Q141271416	Amul	"Gabriel Jonson Raustad"
+#   Q141271408 Catharina Löja: add a mul alias "Catharina Olofsdotter"
+Q141271408	Amul	"Catharina Olofsdotter"
+#   Q141268106 Stine Olsdatter Bore: add a mul alias "Stine Olsdatter Sørheim"
+Q141268106	Amul	"Stine Olsdatter Sørheim"
+#   Q141268103 Sofia Arendtsdotter Renmark: add a mul alias "Sofia Renmark"
+Q141268103	Amul	"Sofia Renmark"
+#   Q141268100 Rasmus Viby Andersson Øystre Bore: add a mul alias "Rasmus Viby Andersson Sør-Braut"
+Q141268100	Amul	"Rasmus Viby Andersson Sør-Braut"
+#   Q141257307 Torger Olsen Ålgård: add a mul alias "Torger Olsen Lima"
+Q141257307	Amul	"Torger Olsen Lima"
+#   Q141250247 Sara Carlberg: add a mul alias "Sara Johansdotter Carlberg"
+Q141250247	Amul	"Sara Johansdotter Carlberg"
+#   add a mul alias "Anna Barbara Magdalena Strauch"
+Q141249720	Amul	"Anna Barbara Magdalena Strauch"
+#   add a mul alias "Carl Åke Posse"
+Q141244212	Amul	"Carl Åke Posse"
+#   Q141244121 Ragnhild Jonsdatter Lea: add a mul alias "Ragnhild Jonsdatter Tu"
+Q141244121	Amul	"Ragnhild Jonsdatter Tu"
+#   Q141244110 Maria Carolina Elisabet Sahlin: add a mul alias "Maria Carolina Elisabet Kastman"
+Q141244110	Amul	"Maria Carolina Elisabet Kastman"
+#   Q141244103 Kristofer Jacob Sahlin: add a mul alias "Kristofer Jacob Sahlin"
+Q141244103	Amul	"Kristofer Jacob Sahlin"
+#   Q141244084 Anna Wilhelmina Nordenfeldt: add a mul alias "Anna Wilhelmina Wilhelmina Posse af Säby"
+Q141244084	Amul	"Anna Wilhelmina Wilhelmina Posse af Säby"
+#   Q141242569 Åsa Gunnbjørnsdotter Stordrange: add a mul alias "Åsa Gunnbjørnsdotter Tengs"
+Q141242569	Amul	"Åsa Gunnbjørnsdotter Tengs"
+#   Q141242522 Jørgine Bergitte Paulsdatter Orre: add a mul alias "Jørgine Bergitte Paulsdatter Borsheim"
+Q141242522	Amul	"Jørgine Bergitte Paulsdatter Borsheim"
+#   Q141242412 Peder Paulsen Borsok: add a mul alias "Peder Paulsen Vestly"
+Q141242412	Amul	"Peder Paulsen Vestly"
+#   Q141242383 Bjørn Gunnbjørnsson Kvåvig: add a mul alias "Bjørn Gunnbjørnsson Tengs"
+Q141242383	Amul	"Bjørn Gunnbjørnsson Tengs"
+#   Q141242379 Berte Karlsdatter Borsok: add a mul alias "Berte Karlsdatter Myklebust"
+Q141242379	Amul	"Berte Karlsdatter Myklebust"
+#   Q141225673 Anders Rasmusson Lea: add a mul alias "Anders Rasmusson Bore"
+Q141225673	Amul	"Anders Rasmusson Bore"
+#   Q141225175 Malene Larsdtr. Alvseike: add a mul alias "Malene Larsdtr. Raunes"
+Q141225175	Amul	"Malene Larsdtr. Raunes"
+#   Q141225080 Annie Stangeland: add a mul alias "Annie Borsheim"
+Q141225080	Amul	"Annie Borsheim"
+#   Q141224910 Theoline Henrika Borsheim: add a mul alias "Theoline Henrika Birkland"
+Q141224910	Amul	"Theoline Henrika Birkland"
+#   Q141224861 Paul Pederson Borsheim: add a mul alias "Paul Pederson Borsok"
+Q141224861	Amul	"Paul Pederson Borsok"
+#   Q141224812 Caroline Signe Borsheim: add a mul alias "Caroline Signe Hoknes"
+Q141224812	Amul	"Caroline Signe Hoknes"
+#   Q141224807 Sophia Borgit Hoknes: add a mul alias "Sophia Borgit Gunderson"
+Q141224807	Amul	"Sophia Borgit Gunderson"
+#   Q141224751 Berta Serina Rasmusdatter Borsheim: add a mul alias "Berta Serina Rasmusdatter Kolnes"
+Q141224751	Amul	"Berta Serina Rasmusdatter Kolnes"
+#   Q141224204 Inger Serine Lerma Gunderson: add a mul alias "Inger Serine Lerma Kyllingstad"
+Q141224204	Amul	"Inger Serine Lerma Kyllingstad"
+#   Q141224136 Dorte Sofie Nilsdatter Kyllingstad: add a mul alias "Dorte Sofie Nilsdatter Fosdal"
+Q141224136	Amul	"Dorte Sofie Nilsdatter Fosdal"
+#   Q141224012 Hedvig Chydenius: add a mul alias "Hedvig Hornaeus"
+Q141224012	Amul	"Hedvig Hornaeus"
+#   Q141223999 Anna Ådnesdatter Lima: add a mul alias "Anna Ådnesdatter Kråkedal"
+Q141223999	Amul	"Anna Ådnesdatter Kråkedal"
+#   Q141223972 Ådne Olsson Lima Kyllingstad. Lima: add a mul alias "Ådne Olsson Lima Lima"
+Q141223972	Amul	"Ådne Olsson Lima Lima"
+#   Q141223907 Elly Olivia Frisk: add a mul alias "Elly Olivia Andersson"
+Q141223907	Amul	"Elly Olivia Andersson"
+#   Q141223853 Rakel Rasmusdottir Borsheim: add a mul alias "Rakel Rasmusdottir Lea"
+Q141223853	Amul	"Rakel Rasmusdottir Lea"
+#   Q141223849 Ola Helgeson Lima: add a mul alias "Ola Helgeson Helgeson"
+Q141223849	Amul	"Ola Helgeson Helgeson"
+#   Q141223837 Gustav Petersson Lejon: add a mul alias "Gustav Petersson"
+Q141223837	Amul	"Gustav Petersson"
+#   Q141223742 Ragnhild Sofie Sahlin: add a mul alias "Ragnhild Sofie Wendt"
+Q141223742	Amul	"Ragnhild Sofie Wendt"
+#   Q141223553 Ragnhild Kristine Øystensdatter Nese: add a mul alias "Ragnhild Kristine Øystensdatter Reve"
+Q141223553	Amul	"Ragnhild Kristine Øystensdatter Reve"
+#   Q141223436 Tore Underberge, III: add a mul alias "Tore Toreson III"
+Q141223436	Amul	"Tore Toreson III"
+#   Q141219250 Inger Sørensdatter Lima: add a mul alias "Inger Sørensdatter Gjesdal"
+Q141219250	Amul	"Inger Sørensdatter Gjesdal"
+#   Q141219069 Søren Sørenson Gjesdal: add a mul alias "Søren Sørenson Helland"
+Q141219069	Amul	"Søren Sørenson Helland"
+#   Q141219063 Lars Osmundsen Nese Jr.: add a mul alias "Lars Osmundsen Foss-Eikeland d. y."
+Q141219063	Amul	"Lars Osmundsen Foss-Eikeland d. y."
+#   Q141219053 Barbro Reiersdatter Storhaug: add a mul alias "Barbro Reiersdatter Kydland"
+Q141219053	Amul	"Barbro Reiersdatter Kydland"
+#   Q141217433 Per Persson Hagman: add a mul alias "Per Persson"
+Q141217433	Amul	"Per Persson"
+#   Q141217431 Per Andersson Storskytt: add a mul alias "Per Andersson"
+Q141217431	Amul	"Per Andersson"
+#   Q141216622 Kristine Jonsdatter Malmeim: add a mul alias "Kristine Jonsdatter Raustad"
+Q141216622	Amul	"Kristine Jonsdatter Raustad"
+#   Q141216613 Karen Henriksdotter Raunes Våga: add a mul alias "Karen Henriksdotter Ringja"
+Q141216613	Amul	"Karen Henriksdotter Ringja"
+#   Q141216611 Jon Villumson Raunes: add a mul alias "Jon Villumson Gautun"
+Q141216611	Amul	"Jon Villumson Gautun"
+#   Q141216602 Berta Guria Davidsdatter Stokka: add a mul alias "Berta Guria Davidsdatter Edland"
+Q141216602	Amul	"Berta Guria Davidsdatter Edland"
+#   Q141216496 Nils Larsen Raunes: add a mul alias "Nils Larsen Landsnes"
+Q141216496	Amul	"Nils Larsen Landsnes"
+#   Q141216491 Margareta Lejon: add a mul alias "Margareta Bengtsdotter"
+Q141216491	Amul	"Margareta Bengtsdotter"
+#   Q141216488 Lars Jonsen Landsnes: add a mul alias "Lars Jonsen Raunes"
+Q141216488	Amul	"Lars Jonsen Raunes"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
