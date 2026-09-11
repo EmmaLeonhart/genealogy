@@ -37065,3 +37065,20 @@ reasoned about.
 **One thing the run reports that is worth not losing:** *"11 separate trees, not one: 1495030, 1,
 1, 1, 1, and 6 more people. Nothing is wrong with the merge — components do not conflict, they
 just never meet. Each one needs its own export seed to grow."*
+
+## 2026-09-11 — seventh ball; the placeholder backlog is paying
+
+`6000000227696410829` — the Alix sweep's first seed, another whose export had been submitted and
+whose task id was lost. Resubmitted as task `6000000227702291837` and filed: **5,000 INDI, 1,836
+FAM.**
+
+    seven balls, 35,000 rows in exports/abul-hamza-descendants/
+
+Both of the "lost id" placeholders have now produced their ball, which is two full exports
+recovered from work that was already done and simply unreachable. That is the instruction earning
+out twice over.
+
+Next of the seven submitted: `6000000227694199890` → task `6000000227703490834`. This is the
+father/mother pair case — the one called *"redundant by construction"* earlier today and skipped
+on that reasoning. It is being exported now, and whether the ball genuinely overlaps its partner's
+is a thing to measure once both are on disk rather than a prediction to act on.
