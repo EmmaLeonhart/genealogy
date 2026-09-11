@@ -36148,3 +36148,44 @@ than concluded from.
 **Hélène de St Germain (de Corday) `6000000000746523797` is productive**, read live:
 `descendants` 15,000, `ancestors` 5,327. The walk found an open slot in **4 ancestors** against
 Sayaluna ata's 17, created `6000000227695388934`, and a `Descendants` export is in flight from it.
+
+## 2026-09-10 — ⛔ THERE ARE TWO IMMEDIATE-FAMILY SECTIONS AND EVERY SCRAPER HERE READS THE HARD ONE
+
+Emma: *"There's the easy immediate family section and the hard one. This is the easy one. lol. I
+didn't catch that you were doing the hard one."*
+
+    HARD   the prose <td> beside <th>Immediate Family:</th>
+           "Son of Nikulás Rögnvaldsson and Herborg Bárðardóttir Husband of ... and 1 other"
+           -> GC.family.PHRASES, 24 openers; scraped_pages.py's parser; everything below
+
+    EASY   the card grid on the SAME page, already in the DOM, no click and no toggle
+           div.quiet carrying the relation word, paired to the card's a[data-profile-id]
+
+**Measured on Guttorm Nilssen `6000000001708363985`** — 11 pairs, identical to what the live
+prose scrape returned for him:
+
+    wife    6000000002726949480   son    6000000002238511185   father  6000000006183866418
+    son     6000000191498463826   son    6000000002325846610   mother  6000000007980739327
+    son     6000000001995109345   wife   6000000001995126727   brother 6000000003782918416
+    brother 6000000001995121578   sister 6000000005848082012
+
+**Every defect fixed today came from parsing the prose**, and none of them can occur in the
+structured section: the 24-phrase table and its drift, `Ex-partner of` matching `partner of`
+mid-string and inventing a marriage, the unknown-opener guard, the unwaited `no_add_link` read,
+and the `</td>` scope that swept the whole document. The relation is an attribute of each card
+rather than something inferred from a run of text under an opener.
+
+**⛔ AND IT ANSWERS A QUESTION THE PROSE CANNOT.** The prose says *"Son of A and B"* and never says
+which is the father. `seed.js` has a whole state for that — `skipped: "one parent listed and no
+label says which"` — and `docs/export-seed-rules.md` tier 3 turns on knowing it. The card grid
+states `father` and `mother` outright.
+
+**What this does NOT resolve, and must not be claimed to:** the *"Showing 12 of 17 people"* /
+`View All` shortfall is a property of the page in both views, and whether `View All` links the
+missing relatives is unmeasured. The prose's `# unlinked` count stays the honest record until it
+is.
+
+**It also changes what the equivalence work was proving.** `scripts/prove-saved-page-equivalence.py`
+compares the live prose scrape against an offline parse of the same prose — 51 people, 0
+parser-attributable disagreements. That result stands for what it measured and is now measuring
+the harder of two paths.
