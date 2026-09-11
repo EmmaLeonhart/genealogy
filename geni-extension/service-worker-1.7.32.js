@@ -152,7 +152,22 @@ const DEFAULTS = {
    * export slot Geni only grants one at a time.
    *
    * This is the list `results` cannot be: it outlives the run. */
-  createdPids: []
+  createdPids: [],
+  /* ⛔ THE MONTE CARLO LOOP'S OWN STATE, so it needs nobody outside the extension to continue.
+   *
+   * Emma, 2026-09-10: *"there is no judgment whatsoever in any of this process. Your presence is
+   * entirely overhead to make it so that it's considered legitimate traffic."* Every decision the
+   * agent was making by hand — which person to sample, whether the census cleared the bar,
+   * whether to climb, when to sample again — is one of these three fields and a comparison.
+   *
+   *     mcRoot       the person whose descendants are being sampled; each round starts here
+   *     mcThreshold  `descendants` at or above this and the person is exported from. 4000,
+   *                  ruled 2026-09-10. It is the WHOLE decision.
+   *     mcRounds     how many samples have been taken, for the record only. Nothing reads it
+   *                  to decide anything. */
+  mcRoot: "",
+  mcThreshold: 4000,
+  mcRounds: 0
 };
 
 async function state() {
@@ -369,8 +384,47 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
          * there is nothing to export from and the run simply stays stopped. */
         const made = (s.createdPids || []).concat(pid ? [String(pid)] : [])
           .filter((v, i, a) => a.indexOf(v) === i);
-        await put({ active, results, attempted, queue, endId: pid, running: !!pid,
+        /* ⛔ AND THEN SAMPLE AGAIN. Without this the loop stops at its first success: the climb
+         * ends, the export is queued, and nothing starts the next round. The campaign is *keep
+         * going until diminishing returns*, so the next sample is enqueued behind the export. */
+        if (s.mcRoot) {
+          queue = queue.concat([{ job: "descend", geni_id: String(s.mcRoot), kind: "descend",
+                                  step: 0, label: "" }]);
+        }
+        await put({ active, results, attempted, queue, endId: pid,
+                    running: !!pid || !!s.mcRoot,
                     pendingCreate: null, createdPids: made });
+        try { await chrome.tabs.remove(tabId); } catch (e) {}
+        sendResponse(true);
+        pump();
+        return;
+      }
+
+      /* ⛔ **THE LANDING IS THE ONLY DECISION IN THE CAMPAIGN, AND IT IS ONE COMPARISON.**
+       *
+       * `descendants` at or above `mcThreshold` and this person is worth an export, so the seed
+       * climb starts on them and the export falls out of it. Below it, sample again from the
+       * root. Nothing else is weighed -- not the name, not how the person looks, not whether an
+       * earlier round already touched that branch. Emma: *"My idea wasn't 'is this a good person
+       * to do a descendant export from?' My idea was: does this person have five thousand
+       * descendants?"*
+       *
+       * ⛔ A LANDING WITH NO STATISTICS IS A MISS, NOT A GUESS. `GC.statistics` reports `read`,
+       * and a page whose sidebar never rendered returns zeros that are indistinguishable from a
+       * person who genuinely has none. Sampling again costs one page load; treating an unread
+       * page as a real zero costs the campaign a person it should have exported from. */
+      if (msg.result && msg.result.state === "landed" && s.mcRoot) {
+        const stats = msg.result.stats || {};
+        const n = stats.read ? (stats.descendants | 0) : -1;
+        const rounds = (s.mcRounds | 0) + 1;
+        if (n >= (s.mcThreshold | 0)) {
+          queue = s.queue.concat([{ job: "seed", geni_id: String(msg.result.geni_id),
+                                    kind: "seed", label: msg.result.name || "" }]);
+        } else {
+          queue = s.queue.concat([{ job: "descend", geni_id: String(s.mcRoot),
+                                    kind: "descend", step: 0, label: "" }]);
+        }
+        await put({ active, results, attempted, queue, mcRounds: rounds, running: true });
         try { await chrome.tabs.remove(tabId); } catch (e) {}
         sendResponse(true);
         pump();
@@ -511,6 +565,31 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
      *
      * The agent's involvement is unchanged and is still the whole of it: open a page from the
      * repository's list, call this, stop. The queue stays here where it cannot be seen. */
+    /* ⛔ **START THE WHOLE LOOP AND WALK AWAY.** One message, then the extension samples, reads
+     * the census, climbs, creates and exports on its own until it is stopped. `stop` ends it.
+     *
+     * A wasted sample is one page load. Emma: *"It can be a complete waste of time and I don't
+     * care because, statistically, it's going to work."* So there is no cleverness here, no
+     * memory of who has been sampled, and no avoiding a repeat. */
+    if (msg.type === "montecarlo") {
+      const root = String(msg.geni_id || "");
+      if (!root) { sendResponse({ error: "no geni_id" }); return; }
+      await put({
+        mcRoot: root,
+        mcThreshold: msg.threshold ? (msg.threshold | 0) : 4000,
+        mcRounds: 0,
+        queue: [{ job: "descend", geni_id: root, kind: "descend", step: 0, label: msg.label || "" }],
+        results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
+        pendingCreate: null,
+        exportWalk: "descendants",
+        waitMs: msg.waitMs || 3600000,
+        staggerMs: msg.staggerMs ? Math.max(1000, msg.staggerMs | 0) : 5000,
+        running: true, startedAt: new Date().toISOString()
+      });
+      sendResponse({ started: root, threshold: msg.threshold ? (msg.threshold | 0) : 4000 });
+      pump();
+      return;
+    }
     if (msg.type === "seedwalk") {
       const id = String(msg.geni_id || "");
       if (!id) { sendResponse({ error: "no geni_id" }); return; }

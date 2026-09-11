@@ -36391,3 +36391,42 @@ position in this tree, and nothing downstream reads it as if they did.
 **Why this matters beyond tidiness:** the Python generator can only ever sample people some
 earlier export already put in a `.ged`. The walk down samples from **Geni**, which is where the
 people we do not have yet actually are.
+
+## 2026-09-10 — 1.7.32: the loop runs itself; the agent is traffic, not a decision-maker
+
+Emma: *"if I could run this operation non agentically, I would, and it would be faster. The agent
+is complete overhead, and it only exists because I can't find browser automation that will operate
+on my regular account ... there is no judgment whatsoever in any of this process. Your presence is
+entirely overhead to make it so that it's considered legitimate traffic."*
+
+**So every decision the agent was making by hand is now three stored fields and one comparison.**
+
+    mcRoot       the person whose descendants are sampled; each round starts there
+    mcThreshold  4000. `descendants` at or above it and the person is exported from.
+    mcRounds     a count, for the record. Nothing reads it to decide anything.
+
+`{type:"montecarlo", geni_id, threshold}` starts it and `stop` ends it. In between the background
+samples a random descendant, reads the census, and either starts the seed climb on that person —
+which creates one ancestor and queues the `Descendants` export off the back of it — or samples
+again. **Then it samples again after the export too**, which it did not do before: without that
+the loop halted at its first success, because the climb ended and nothing began the next round.
+
+**⛔ A LANDING WITH NO STATISTICS IS A MISS, NOT A ZERO.** `GC.statistics` reports `read`, and a
+page whose sidebar never rendered returns five zeros indistinguishable from a person who genuinely
+has none — the bug its own comment records from 2026-09-05. An unread page scores `-1` and the
+loop samples again. One wasted page load is cheaper than losing a person who should have been
+exported from.
+
+**No memory of who has been sampled, and that is deliberate.** Emma: *"It can be a complete waste
+of time and I don't care because, statistically, it's going to work."* A repeat costs one page
+load; the bookkeeping to avoid it costs more and is the kind of cleverness that has gone wrong all
+day.
+
+**Started on `6000000006101354745` Alix de Lampron, threshold 4,000.** It never exports from her:
+the first step reads her children and picks one, so every sample is a descendant, and the exports
+run from created ancestors of saturated descendants. *"Do not try to run a descendants export on
+them yourself"* is intact.
+
+**The honest note on throughput:** an export is about six minutes and Geni runs one at a time, so
+the ceiling is Geni's. Everything the agent was doing between those six-minute waits was overhead
+that also happened to be where the mistakes came from.
