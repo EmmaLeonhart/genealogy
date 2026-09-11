@@ -1,42 +1,41 @@
 # Derived facts: occupation, dates, places
 
-Plan items 3 and 4. 2026-08-12: *"Occupation can be done with string
-stuff"* and *"Birthplace birth date death date death place burial date burial
-place all can be done with string."*
+Plan items 3 and 4. Occupation is string work, and so are birthplace,
+birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **1,451,993 people**, 
-of whom 43,680 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **1,495,040 people**, 
+of whom 45,727 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,445,003 | 99.5% |
-| occupation | 185,464 | 12.8% |
-| birth date | 1,011,055 | 69.6% |
-| birth place | 378,013 | 26.0% |
-| death date | 809,089 | 55.7% |
-| death place | 264,362 | 18.2% |
-| burial date | 103,991 | 7.2% |
-| burial place | 99,329 | 6.8% |
+| sex | 1,488,977 | 99.6% |
+| occupation | 189,398 | 12.7% |
+| birth date | 1,040,797 | 69.6% |
+| birth place | 0 | 0.0% |
+| death date | 831,723 | 55.6% |
+| death place | 0 | 0.0% |
+| burial date | 105,995 | 7.1% |
+| burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
 
-2026-08-12: *"Do addresses with the address property (multilingual
-text)."* Wikidata's **`P6375` street address** is monolingual text, so an
+An address goes on the address property as text. Wikidata's **`P6375`
+street address** is monolingual text, so an
 address never has to become a place item. **This supersedes the `PLAC`-only
 rule of 2026-08-11**, which was chosen before its cost was known.
 
 | | events |
 | --- | ---: |
-| birth address | 605,378 |
-| death address | 452,978 |
-| burial address | 119,739 |
-| birth address, **no `PLAC` at all** | 410,256 |
-| death address, **no `PLAC` at all** | 318,875 |
-| burial address, **no `PLAC` at all** | 58,766 |
+| birth address | 0 |
+| death address | 0 |
+| burial address | 0 |
+| birth address, **no `PLAC` at all** | 0 |
+| death address, **no `PLAC` at all** | 0 |
+| burial address, **no `PLAC` at all** | 0 |
 
-**793,992 events would have had no location under the old rule** and now keep one.
+**0 events would have had no location under the old rule** and now keep one.
 
 **One thing to flag rather than decide.** `P6375` is documented as a *street*
 address — building number, locality, post code, and explicitly not country.
@@ -49,13 +48,14 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**30 date values**, 16 distinct, parsed to no year. They keep their raw
+**32 date values**, 16 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
-| `ABT` | 15 |
+| `ABT` | 16 |
+| `AFT` | 2 |
 | `BET 725 AND` | 1 |
 | `-538000000` | 1 |
 | `-1400000000` | 1 |
@@ -68,7 +68,6 @@ become a date we guessed.
 | `DEC 161728` | 1 |
 | `105 NOV 1743` | 1 |
 | `JUN 171862` | 1 |
-| `AFT` | 1 |
 | `BET 6 NOV 1432 AND` | 1 |
 
 `reports/impossible-years.md` has the full account of these: bare modifiers with

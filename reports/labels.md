@@ -1,47 +1,47 @@
 # Derived labels, and the catalogue behind them
 
-Plan item 1. 2026-08-12: *"First thing is deriving labels from gedcom.
-Something that's very easy."* And: *"Every individual needs an English,
-Japanese, and Chinese label but really we gotta catalogue these things a bit
+Plan item 1, specified 2026-08-12: deriving labels from the GEDCOM is the
+first thing and is easy. Every individual needs an English,
+Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,451,993 people**.
+One row per person in `reports/derived-labels.csv` — **1,495,038 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,371,110 | 94.4% |
-| CJK only — needs translation for en | 44,056 | 3.0% |
-| no usable name at all | 22,640 | 1.6% |
-| mixed-script only — no clean Latin label | 7,927 | 0.5% |
-| other script only — needs translation for en | 3,837 | 0.3% |
-| Latin and CJK | 2,423 | 0.2% |
+| Latin only | 1,401,475 | 93.7% |
+| CJK only — needs translation for en | 44,205 | 3.0% |
+| no usable name at all | 24,728 | 1.7% |
+| other script only — needs translation for en | 12,119 | 0.8% |
+| mixed-script only — no clean Latin label | 9,854 | 0.7% |
+| Latin and CJK | 2,657 | 0.2% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
 so everyone in a *needs translation* row has no derivable English label at all —
-that is the population the *"if there's only a name present in some sort of
-other script, we have to do a translation"* applies to, sized.
+that is the population the translation rule applies to, sized: where only a
+name in some other script is present, a translation is made.
 
 ## Name records by script group
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,650,062 |
-| CJK | 111,757 |
-| mixed | 28,257 |
-| other | 26,466 |
-| none | 454 |
+| Latin | 1,681,271 |
+| CJK | 112,416 |
+| other | 47,864 |
+| mixed | 31,345 |
+| none | 466 |
 
-Grouped by **script, never language** — the rule. `CJK` deliberately holds Han,
+Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
 attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 267,064 people
+## Aliases from married names — 286,519 people
 
-*"Married name plugs into name to produce an alias."*
+A married name plugs into the name to produce an alias.
 
 **Read as:** the married name takes the surname's place in the rendered name, so
 `Judith /de France/` carrying `_MARNM Flandre` yields the alias `Judith Flandre`.
@@ -50,13 +50,13 @@ the 244,392 records carrying the tag.
 
 **That reading is an interpretation of one sentence and is flagged rather than
 settled.** The alternative — appending the married name to the full rendered
-name — produces a different string, and nothing on record chooses between
+name — produces a different string, and no ruling chooses between
 them.
 
 ## Against Wikidata, where both exist
 
-40,898 people have both a derived Latin label and a Wikidata English
-label. **11,655 match exactly (28.5%).**
+43,164 people have both a derived Latin label and a Wikidata English
+label. **12,185 match exactly (28.2%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
