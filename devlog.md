@@ -37110,3 +37110,30 @@ pair again**; what it says is that the skip should have been recorded as a measu
 as a guess.
 
     eight balls, 40,000 rows in exports/abul-hamza-descendants/
+
+## 2026-09-11 — the chain artifact measured: ONE new person for an export slot
+
+Ninth ball filed — `6000000227695384828`, task `6000000227704727824`, 5,000 INDI. This is the
+placeholder created **on top of another placeholder** on 2026-09-10, before `createdPids` existed.
+
+    chain-artifact ball                          5,000
+    shared with the placeholder below it         4,962   99.2%
+    new against every other ball in the campaign     1
+
+**One person.** By construction: the artifact is one fabricated generation above
+`6000000227694017875`, so its descent is that placeholder's descent plus the placeholder itself.
+The single new person is the placeholder.
+
+**Set against the father/mother pair, which returned 38**, the two shapes are now separated by
+measurement rather than intuition:
+
+    a parent PAIR on one real child      38 new   -- her other unions reach people his do not
+    a placeholder ABOVE a placeholder     1 new   -- nothing exists up there but what we made
+
+**⛔ AND THIS IS WHAT MAKES `createdPids` WORTH ITS COMPLICATION.** The guard added in 1.7.27 stops
+the walk climbing into its own output. Before today that was argued from principle — *an unbounded
+chain of invented people on a live site* — and it is now arithmetic: every generation the walk
+fabricates above itself costs one export slot and returns one person.
+
+Two placeholders left, both from the `confirm_create` test and both parents of a **real** Geni
+person, so they are the parent-pair shape rather than the chain shape.
