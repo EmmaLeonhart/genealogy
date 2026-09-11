@@ -36939,3 +36939,33 @@ resolution over the gathered material: a Swedish or Norwegian line matched on si
 similar times. `CLAUDE.md` § *1600–1900 is the band where names lie and years decide* is the
 standing caution on precisely that kind of match, and § *the zipper is not doing that well* is the
 standing state of the instrument that would do it.
+
+## 2026-09-11 — phase two recorded: `Forest` on the Scandinavian pockets, and only those
+
+Stated as the plan the bulk is for: *"once we do the Monte Carlo stuff to gather a large bulk of
+people, and once that large bulk exists, then basically in the Scandinavian places and only the
+Scandinavian places, we would be doing additional Forest export work on those areas to try to
+expand these areas and find relationships."*
+
+**⛔ `Forest` IN PHASE TWO, WHICH IS THE EXACT OPPOSITE OF PHASE ONE.** The campaign rule is
+`Descendants` precisely because `Forest` spends its 5,000 slots sideways on spouse links. In phase
+two that is the point: the job stops being *go down a descent* and becomes *widen a region until
+relationships appear*. Written into `queue.md` with the instruction not to carry either rule into
+the other phase, because they read as contradictory out of context and one of them will be applied
+in the wrong place otherwise.
+
+**⛔ AND THE DETECTOR NEEDS NO CLASSIFIER.** *"Scandinavian people are extremely obvious in the
+data. They are extremely obvious because of the patronymics. I would say Scandinavian people are
+the most telltale people out there."* `-sson`, `-sdotter`, `-sen`, `-datter`; `namemodel` already
+parses patronymics by form, and `CLAUDE.md` § *PARSE PATRONYMICS BY FORM* is the standing rule for
+reading them.
+
+**And the correction that reframes this whole session's accounting:** *"you're acting like you
+haven't been making progress. In order to even do the entity resolution, we need to be getting a
+large bulk in."* The bulk is not a detour from the resolution, it is its input — there is nothing
+to match names and periods across until the descent is in the corpus. The three balls and their
+8,812 new people are phase one doing what phase one is for.
+
+**Target 4 seeded and submitted:** Sébastien de Luxembourg, vicomte de Martigues
+`6000000009524802456` — 28 ancestors climbed, seed `6000000227701083825` created, export
+submitted by hand as task `6000000227701038833`.

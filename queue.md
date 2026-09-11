@@ -560,6 +560,32 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     the seam actually holds. Diminishing returns is relative to the alternative use of an export
     slot, never to a full ball.
 
+  - **⛔ PHASE TWO, AFTER THE BULK: `Forest` EXPORTS ON THE SCANDINAVIAN PLACES ONLY.**
+    Stated 2026-09-11: *"my vision would be that once we do the Monte Carlo stuff to gather a
+    large bulk of people, and once that large bulk exists, then basically in the Scandinavian
+    places and only the Scandinavian places, we would be doing additional Forest export work on
+    those areas to try to expand these areas and find relationships."*
+
+    **⛔ `Forest`, NOT `Descendants` — AND THAT IS THE OPPOSITE OF PHASE ONE.** The campaign rule
+    above is `Descendants` precisely because `Forest` spends slots sideways on spouse links. In
+    phase two the sideways links are the point: the job is no longer to go DOWN a descent, it is
+    to widen a region until relationships appear. Do not carry the phase-one rule into phase two,
+    and do not carry this one back.
+
+    **⛔ THE DETECTOR IS THE PATRONYMIC.** *"Scandinavian people are extremely obvious in the
+    data. They are extremely obvious because of the patronymics. I would say Scandinavian people
+    are the most telltale people out there."* So finding the Scandinavian pockets inside the
+    gathered bulk needs no classifier and no judgement — `-sson`, `-sdotter`, `-sen`, `-datter`
+    and the rest are the signal, and `namemodel` already parses patronymics by form.
+
+    **The expectation, and it is stated as an expectation rather than a finding:** *"there's
+    going to be relationships there. They're not going to be the most easy, but they're going to
+    be there."* And on the goal: *"there's a reasonable chance of me being descended from
+    Scandinavian people who are in this, if they are present like that."*
+
+    ⛔ **NOT STARTED, AND NOT TO BE STARTED UNTIL THE BULK IS IN.** Phase one is the Monte Carlo
+    gathering and it is still running. Nothing here is investigated, measured or seeded now.
+
   - **⛔ THE FOCUS INSIDE ABUL HAMZA IS ALIX DE LAMPRON `6000000006101354745`.** Ruled
     2026-09-10: *"for descendants of Abul Hamza, imo focus on descendants of
     https://www.geni.com/people/Alix-de-Lampron/6000000006101354745?through=6000000001500872848
