@@ -37028,3 +37028,40 @@ state purely because the id was lost, and they were sitting there as finished wo
 collected.
 
 Seventh of the seven submitted: `6000000227696410829` → task `6000000227702291837`.
+
+## 2026-09-11 — ⛔ THE TREE REBUILT. FIRST SUCCESS IN OVER 60 RUNS
+
+Run `34583699140` completed and pushed `d603178f` — *rebuild the synoptic tree in Actions*. The
+last successful one was beyond the 60-run window measured yesterday, which showed **34 cancelled,
+25 failure, 0 success.**
+
+**All three blockers had to be cleared and each was a separate fault:**
+
+    step 16   HTTP 429 from refresh-garborg-ledger.py       backoff on Retry-After / 5-15-45s
+    step 17   BROKEN DECK: 61 of N cards name nobody        build-parent-candidates.py now drops
+                                                            the unjudgeable, as its sibling does
+    the push  merge conflicts in eight regenerated files    tree.yml now carries pipeline.yml's
+                                                            conflict-resolution loop
+
+The third was the one asked about at 21:00 and the one answered wrongly then — *"the rebase
+machinery works"* was measured on `pipeline.yml`, and the failure was in `tree.yml`.
+
+**The tree it built:** 1,451,993 people in `derived-labels.csv`, 1,495,040 people and 648,088
+families in the merge, 516,595 Wikidata items carrying `P2600`.
+
+**⛔ AND THE STATELESSNESS CONTRACT HELD EXACTLY AS RULED.** The worklist went **278,992 → 266,059
+rows**:
+
+    the 12,791 CBDB rows appended by hand   DROPPED, because they are not disconnected P2600
+                                            holders and membership is recomputed, never stored
+    the CBDB parking                        41,292 rows still at 2026-10-31
+    last_attempted everywhere else          carried forward
+
+Emma, 2026-09-10: *"you can just add bullshit people into the tsv as long as the geni id and qid
+match and they will be removed lol while the cbdb people who belong will stay."* That is precisely
+what happened, and it is the first time the mechanism has been observed end to end rather than
+reasoned about.
+
+**One thing the run reports that is worth not losing:** *"11 separate trees, not one: 1495030, 1,
+1, 1, 1, and 6 more people. Nothing is wrong with the merge — components do not conflict, they
+just never meet. Each one needs its own export seed to grow."*
