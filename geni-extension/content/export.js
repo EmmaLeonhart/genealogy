@@ -127,13 +127,58 @@ GC.runExport = async function (job) {
      * being a radio rather than a select, which this file already carries a comment about.
      * Both were selectors written from what the markup ought to be. The class is tried first
      * because it is the page's own name for the control; the text match is the fallback. */
-    const submit =
+    const findSubmit = () =>
       [...document.querySelectorAll("a.gedcom-export-form-sub")].find(GC.visible) ||
       [...document.querySelectorAll("a,button,input[type=submit],input[type=button]")]
         .find((b) => GC.visible(b) &&
                      /^export gedcom$/i.test(((b.textContent || b.value || "").trim())));
-    if (!submit) return report({ state: "no_submit" });
-    submit.click();
+    if (!findSubmit()) return report({ state: "no_submit" });
+
+    /* ⛔ **CLICKING THE ANCHOR IS NOT THE SAME AS SUBMITTING, AND THE DIFFERENCE WAS COSTING AN
+     * HOUR A TIME.** This is the cause of *"the export submit does not fire unattended"*, which
+     * stood unexplained from 2026-09-10 to 2026-09-11.
+     *
+     * The control is `<a class="super blue button gedcom-export-form-sub">Export GEDCOM</a>` --
+     * an anchor with **no `href`**. Its only behaviour is a jQuery handler bound when Geni's
+     * bundle runs, which is after `readyState === "complete"`, because Geni serves base HTML and
+     * fills the page in afterwards. `element.click()` on an anchor with no href and no handler
+     * yet bound does **nothing at all**: no navigation, no error, no exception to catch. The
+     * script then fell into the wait below and sat there for `waitMs`.
+     *
+     * ⛔ **AND `waitMs` IS THE BUILD'S BUDGET, WHICH IS MEANINGLESS ON THIS PAGE.** An hour is
+     * right for a 5,000-person ball being built -- and that build happens on
+     * `/gedcom/download?task_id=<n>`, which the job reaches by re-claiming after the navigation.
+     * On the export FORM there is nothing being built and nothing to wait for, so spending the
+     * build budget here buys silence. Worse than silence: the job holds `active`, and `pump`'s
+     * `if (serial && serialInFlight >= 1) break` gives the export slot to a tab doing nothing
+     * for a full hour, so the NEXT target cannot start either. Observed on Elizabeth de Durfort
+     * `6000000012808241290`, whose export tab was still parked with no result while the same
+     * export was submitted by hand in another tab and finished.
+     *
+     * So: click, watch for the submit to take EFFECT, and re-click if it did not. The effect is
+     * unambiguous -- the submit navigates to a URL carrying `task_id`, or the page is already
+     * showing the download link. Three attempts at fifteen seconds is forty-five seconds to a
+     * real answer instead of an hour to none.
+     *
+     * ⛔ The re-click cannot double-submit. It only fires while `location.href` is UNCHANGED
+     * and no `task_id` has appeared -- and a click that worked navigates, which tears this
+     * content script down before the loop can come round again. */
+    const fired = () => /task_id=\d+/.test(location.search) || !!readyLink();
+    const startedAt = location.href;
+    let clicks = 0;
+    while (clicks < 3 && !fired() && location.href === startedAt) {
+      const el = findSubmit();
+      if (!el) break;
+      el.click();
+      clicks += 1;
+      if (await GC.until(() => fired() || location.href !== startedAt, 15000)) break;
+    }
+    if (!fired() && location.href === startedAt && findSubmit()) {
+      /* A real, fast, diagnosable answer. The form was found and filled and the control would
+       * not act, which is a different thing from `no_submit` (the control was never there) and
+       * from `timeout` (the build ran long). */
+      return report({ state: "no_submit_effect", clicks: clicks });
+    }
   }
 
   /* WAIT FOR THE PAGE TO SAY SO. The budget is generous because the only alternative to waiting
