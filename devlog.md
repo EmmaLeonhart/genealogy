@@ -36189,3 +36189,49 @@ is.
 compares the live prose scrape against an offline parse of the same prose — 51 people, 0
 parser-attributable disagreements. That result stands for what it measured and is now measuring
 the harder of two paths.
+
+## 2026-09-10 — 1.7.28: the prose parser is deleted, the scraper reads the card grid
+
+Ruled: **structured only, delete the prose parser.**
+
+**`GC.family.scrape` now reads the card grid.** Each relative is a card carrying `div.quiet` with
+the relation word and an `a[data-profile-id]`; the label is scoped to its card by climbing to the
+nearest ancestor holding an anchor. `GC.family.RELATION` maps the word to the same relation token
+the old table produced — a card labelled `father` records that person as `parent`, exactly as
+`Son of A` used to — **so nothing downstream changed.**
+
+**Verified live on Guttorm Nilssen `6000000001708363985`:** `state: scraped`, 11 relatives,
+`spouse 2 / child 4 / parent 2 / sibling 3`, both parent pids, `unlinked 0` — identical to what
+the prose scrape returned for him earlier today.
+
+**⛔ NO FALLBACK TO THE PROSE.** A page with no card grid reports `found: false` and is a person to
+look at, not a person to guess at from a weaker source.
+
+**Deleted:**
+
+    GC.family.PHRASES / classify / LOOKS_LIKE_OPENER / scrapeIn   the 24-opener machinery
+    scripts/scraped_pages.py                                       the offline prose parser
+    scripts/prove-saved-page-equivalence.py                        proved the prose parser
+    scripts/family-scrape-js.py                                    lifted the phrase table
+    reports/saved-page-equivalence.tsv                             its output
+    exports/tiny-paths/saved-*.ged                                 457 files, read off saved prose
+    the saved-page sections of build-tiny-gedcoms.py
+
+Emma: *"No rescraping just deleting them. They will be rescraped later if determined by the
+algorithm."* So the 457 are gone and nothing was re-derived to replace them.
+`build-tiny-gedcoms.py` runs clean: **728 paths from `paths/*.tsv`, 0 from saved pages, 0 invented
+people.** The 728 come from path TSVs the extension captured, not from parsing a page, so they
+stay.
+
+**⛔ KEPT ON PURPOSE: `GC.family.unlinked`.** It reads the `and N others` count out of the prose,
+and the card grid does not state that shortfall anywhere — so the prose is the only place the gap
+is visible. Reading a COUNT out of prose is not parsing STRUCTURE out of it, and without it a row
+count implies a completeness Geni never offered. `CLAUDE.md` § *Grab the RESIDUALS*. Removing it
+with the rest broke the first test run with `GC.family.unlinked is not a function`, which is how
+it was caught.
+
+**What this cost.** Nearly every extension fix today was on the parser now deleted: the phrase
+table lifted from `family.js` into Python, the `Ex-partner of` mid-string match that turned two
+ex-partners into spouses, the unknown-opener guard, the `</td>` scope, and the 51-person
+equivalence proof built to test it. That work was real and is now moot. The one fix that still
+matters is the unwaited `no_add_link` read in `seed.js`, which was never about the prose.

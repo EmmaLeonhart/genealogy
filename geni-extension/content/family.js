@@ -23,175 +23,102 @@
 
 GC.family = {};
 
-/* The relationship phrases Geni opens each line of the immediate-family block with. Anchors are
- * attributed to the nearest phrase ABOVE them, which is how the block is actually laid out:
- * "Son of A and B", "Husband of C", "Father of D; E", "Brother of F". */
-GC.family.PHRASES = [
-  [/^son of/i, "parent"], [/^daughter of/i, "parent"],
-  [/^husband of/i, "spouse"], [/^wife of/i, "spouse"],
-  [/^partner of/i, "partner"], [/^ex-husband of/i, "ex-spouse"], [/^ex-wife of/i, "ex-spouse"],
-  /* ⛔ `Fiancé(e) of` WAS MISSING AND IT PUT A FALSE PARENT ON A LIVE PROFILE.
-   * Anna Throndsen `296165995120003655` reads "Daughter of A and B" then "Fiancée of James
-   * Hepburn, 4th Earl of Bothwell". `classify` did not know the phrase, so `current` stayed on
-   * `Daughter of` and Hepburn was scraped as her THIRD PARENT -- a relationship that does not
-   * exist, on its way into a tiny GEDCOM. The accented and unaccented spellings both occur. */
-  [/^fianc(é|e)e? of/i, "fiance"],
-  [/^father of/i, "child"], [/^mother of/i, "child"],
-  [/^brother of/i, "sibling"], [/^sister of/i, "sibling"],
-  [/^half brother of/i, "half-sibling"], [/^half sister of/i, "half-sibling"],
-  [/^stepson of/i, "step-parent"], [/^stepdaughter of/i, "step-parent"],
-  [/^stepfather of/i, "step-child"], [/^stepmother of/i, "step-child"],
-  [/^stepbrother of/i, "step-sibling"], [/^stepsister of/i, "step-sibling"],
-  [/^adopted son of/i, "adoptive-parent"], [/^adopted daughter of/i, "adoptive-parent"],
-  [/^foster son of/i, "foster-parent"], [/^foster daughter of/i, "foster-parent"]
-];
-
-/* ⛔ A LINE OPENER THIS TABLE DOES NOT KNOW MUST CLEAR THE RELATION, NEVER INHERIT IT.
+/* ⛔ THE RELATION IS READ OFF THE CARD, NOT INFERRED FROM PROSE. Ruled 2026-09-10.
  *
- * Adding `fiancée` fixes one phrase; this fixes the CLASS. The walk attributes each anchor to the
- * most recent phrase above it, so an unrecognised opener leaves `current` pointing at the line
- * BEFORE it and every name on the new line is filed under the wrong relationship. That is how a
- * fiancé became a parent, and the next unlisted phrase would do it again silently.
+ * Geni renders the immediate family TWICE on the same page and this file used to read the harder
+ * of the two. Emma: *"There's the easy immediate family section and the hard one ... I didn't
+ * catch that you were doing the hard one."*
  *
- * `Fiancée of James Hepburn` matches this shape, so even without its entry above it would now
- * produce an anchor with an EMPTY relation rather than a false `parent`. An unlabelled relative
- * is a gap; a wrongly labelled one is an invented fact, and this repo's whole rule about absent
- * slots is that the first is acceptable and the second is not.
+ *     HARD  the prose cell -- "Son of Nikulás Rögnvaldsson and Herborg Bárðardóttir Husband of
+ *           ... and 1 other". The relation is an OPENER governing a run of anchors after it, so
+ *           reading it needs a table of every phrase Geni writes, a guard for phrases not in the
+ *           table, and a scope that stops the run at the right place.
+ *     EASY  the card grid, already in the DOM with no click and no toggle: each relative is a
+ *           card carrying `div.quiet` with the relation word and an `a[data-profile-id]`.
  *
- * Kept narrow on purpose: a short run of letters, spaces and hyphens ending in ` of`, which is
- * the shape of every opener in the table and is not the shape of a name. */
-GC.family.LOOKS_LIKE_OPENER = /^[A-Za-z][A-Za-zÀ-ɏ' -]{1,30} of$/;
-
-GC.family.classify = function (text) {
-  const t = (text || "").trim();
-  for (const pair of GC.family.PHRASES) {
-    if (pair[0].test(t)) return { relation: pair[1], phrase: t.split(" of")[0].trim() };
-  }
-  return null;
+ * **Every defect this scraper had came from the prose and none of them can occur here.** The
+ * 24-opener table that drifted out of step with `scraped_pages.py`; `Ex-partner of` matching
+ * `partner of` mid-string and turning two ex-partners into spouses; an unrecognised opener
+ * silently extending the previous relation; and the worst of them, a profile literally named
+ * `Daughter Of Gaon The` whose NAME parsed as an opener and made ten people into R' Chaim
+ * Volozhiner's parents. A relation that is an attribute of a card cannot be any of those.
+ *
+ * ⛔ **AND IT ANSWERS WHAT THE PROSE CANNOT: WHICH PARENT IS THE FATHER.** The prose says
+ * "Son of A and B" and never says which is which -- `seed.js` carries a whole `skipped` state for
+ * it and `docs/export-seed-rules.md` tier 3 turns on knowing. The card says `father` and `mother`.
+ *
+ * The relation word describes the RELATIVE's role, which is the same convention the old phrase
+ * table produced: `Son of A` recorded A as `parent`, and a card labelled `father` records that
+ * person as `parent` too. Nothing downstream changes. */
+GC.family.RELATION = {
+  "father": "parent", "mother": "parent",
+  "son": "child", "daughter": "child",
+  "husband": "spouse", "wife": "spouse",
+  "ex-husband": "ex-spouse", "ex-wife": "ex-spouse",
+  "partner": "partner", "ex-partner": "ex-spouse",
+  "fiancé": "fiance", "fiancée": "fiance", "fiance": "fiance", "fiancee": "fiance",
+  "brother": "sibling", "sister": "sibling", "sibling": "sibling",
+  "half brother": "half-sibling", "half sister": "half-sibling",
+  "stepfather": "step-parent", "stepmother": "step-parent",
+  "stepson": "step-child", "stepdaughter": "step-child",
+  "stepbrother": "step-sibling", "stepsister": "step-sibling",
+  "adoptive father": "adoptive-parent", "adoptive mother": "adoptive-parent",
+  "adopted son": "adopted-child", "adopted daughter": "adopted-child",
+  "foster father": "foster-parent", "foster mother": "foster-parent",
+  "foster son": "foster-child", "foster daughter": "foster-child"
 };
 
-/* Every relative on the page, with the relationship each was listed under.
- *
- * Walks the block in document order and attributes each `data-profile-id` anchor to the most
- * recent relationship phrase seen. A phrase with no anchors after it contributes nothing, and an
- * anchor before any phrase is recorded with an empty relation rather than guessed at. */
-/* ⛔ "AND N OTHERS" IS NOT A COLLAPSED LIST. Those relatives have NO ANCHOR, and no click makes one.
- *
- * Geni renders a long line as `Hugo; Rosa; Elsa; Hermine; Margaretha and 1 other; and Laura`.
- * That reads like an expander, and a `GC.family.expand` was written on 2026-09-06 to click it.
- * **It was measured and it does nothing**, which is why it is not in this file:
- *
- *     Julius Hohenberger   6 anchors -> click "1 other"  -> 6 anchors, text unchanged
- *     Arne Garborg         8 anchors -> click "3 others" -> 8 anchors, text unchanged
- *
- * A real `MouseEvent` behaves the same, and **`« less` is already displayed on both** — the list
- * is expanded, and the missing people are named in the count while carrying no `href`. They are
- * relatives Geni will not link, which is what a redacted or private profile looks like in this
- * block.
- *
- * So the shortfall is a LIMIT OF THE SOURCE, not a defect to fix, and the honest thing is to make
- * it visible rather than to let a row count imply completeness. `toTsv` writes `# unlinked <n>`,
- * read out of the prose, so a consumer counting rows can see that `n` relatives exist and were
- * never linkable. `CLAUDE.md` § *Grab the RESIDUALS*: the prose keeps what the structured walk
- * drops, and here the prose is the only place the gap is stated at all.
- *
- * The clicking version is left out deliberately -- it clicked 18 toggles across the page on its
- * first run and gained not one anchor. § *a fix that changes nothing is evidence, not
- * reassurance.* */
-GC.family.scrape = function () {
-  /* ⛔⛔ **THE BIOGRAPHY LINKS PEOPLE AND MUST BE IGNORED.**
-   *
-   * Measured on Mabel Tolkien `6000000009688582123`, 2026-09-10. Her About section reads
-   * *"Mother of J.R.R. Tolkien. Mabel Suffield was born in Birmingham, one of six children of
-   * John Suffield..."* -- so `classify()` matches a line INSIDE the biography, the common-ancestor
-   * climb below then has to span the immediate-family row AND the About section, and every
-   * profile link in the prose gets swept in under whatever relation word was last seen. Her
-   * HUSBAND and all seven siblings came back as `child Mother`: Arthur Reuel Tolkien would have
-   * been written into the corpus as her son.
-   *
-   * The block is separable and always has been. Geni renders it as its own table row --
-   * `<th>Immediate Family:</th><td>...</td>` -- and a `<td>` cannot contain the About section.
-   * Scoping to that cell is exact, needs no heuristic, and is what `seed.js` has read since it
-   * was fixed for the same class of bug.
-   *
-   * The common-ancestor climb stays as the fallback for pages that render no such header, and
-   * carries its own comment below about why it climbs. */
+/* The prose cell is still READ, and only read. `CLAUDE.md` § *Grab the RESIDUALS*: it carries the
+ * "and N others" count for relatives Geni names but will not link, which the card grid does not
+ * state and which `toTsv` reports as `# unlinked`. It is a record, never a source of structure. */
+GC.family.proseText = function () {
   const th = [...document.querySelectorAll("th")]
     .find((e) => /^immediate family/i.test((e.textContent || "").trim()));
   const cell = th && th.parentElement ? th.parentElement.querySelector("td") : null;
-  if (cell) return GC.family.scrapeIn(cell);
-
-  const lead = [...document.querySelectorAll("*")].filter(
-    (e) => e.children.length === 0 && GC.family.classify(e.textContent));
-  if (!lead.length) return { found: false, relatives: [] };
-
-  /* ⛔ THE CONTAINER IS THE COMMON ANCESTOR OF ALL THE LINES, not the parent of the first.
-   *
-   * Each line of the block has its own parent element, so `lead[0].parentElement` is one line.
-   * Scoped that way the first run returned **parents only** on a man whose page also reads
-   * "Husband of Nicoline Rebekka Svensdatter Ramsvig" and "Father of Andreas Petrus Eliassen
-   * Hoknes" -- a scrape that looks like a complete answer and silently drops two thirds of the
-   * family. Climbing to the ancestor that contains the LAST phrase as well is what makes the
-   * walk cover every line. */
-  let block = lead[0].parentElement;
-  const last = lead[lead.length - 1];
-  let guard = 0;
-  while (block && !block.contains(last) && guard++ < 12) block = block.parentElement;
-  if (!block) return { found: false, relatives: [] };
-
-  return GC.family.scrapeIn(block);
+  return cell ? (cell.innerText || "").replace(/\s+/g, " ").trim() : "";
 };
 
-/* The walk itself, over whatever root the caller scoped to. Split out so the
- * `Immediate Family:` cell and the fallback climb share one implementation -- two copies of a
- * rule is how the rule comes to mean two different things. */
-GC.family.scrapeIn = function (block) {
+GC.family.scrape = function () {
   const relatives = [];
   const seen = new Set();
-  let current = null;
-
-  const walk = document.createTreeWalker(block, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
-  for (let n = walk.nextNode(); n; n = walk.nextNode()) {
-    if (n.nodeType === Node.TEXT_NODE) {
-      /* ⛔⛔ **TEXT INSIDE A LINK IS A NAME, NOT A RELATION OPENER.**
-       *
-       * Measured on R' Chaim (Itzkowitz) Volozhiner `6000000003181980579`, 2026-09-10. One of
-       * his siblings is a Geni profile literally named **`Daughter Of Gaon The`**. That string
-       * is the TEXT OF AN ANCHOR, and the walker classified it like any other text node -- so
-       * `classify` matched `daughter of`, `current` flipped to parent, and the ten relatives
-       * listed after it were recorded as his PARENTS. He came back with nine.
-       *
-       * `CLAUDE.md` § *A NAME FIELD THAT NAMES A RELATIVE IS NOT A NAME* is this in the mirror:
-       * there, Geni put a husband in a name field; here, a name reads as a relation. The rule
-       * that resolves both is the same -- a name is not a structural claim.
-       *
-       * Openers live in the text BETWEEN links. Anything inside one is somebody's name. */
-      if (n.parentElement && n.parentElement.closest("a[data-profile-id]")) continue;
-      const hit = GC.family.classify(n.textContent);
-      if (hit) { current = hit; continue; }
-      /* An opener we do not recognise ENDS the previous relation rather than extending it.
-       * See GC.family.LOOKS_LIKE_OPENER. */
-      if (GC.family.LOOKS_LIKE_OPENER.test((n.textContent || "").trim())) current = null;
-      continue;
+  /* A label node is a leaf `div.quiet` whose whole text is one relation word. Scoping to the
+   * label and climbing to the card it belongs to is exact: the card is the nearest ancestor that
+   * also holds a profile anchor, and there is one anchor per card. */
+  const labels = [...document.querySelectorAll("div.quiet")]
+    .filter((e) => e.children.length === 0
+                && GC.family.RELATION[(e.textContent || "").trim().toLowerCase()]);
+  for (const label of labels) {
+    const word = (label.textContent || "").trim().toLowerCase();
+    let n = label, a = null;
+    for (let i = 0; i < 5 && n && !a; i++) {
+      n = n.parentElement;
+      if (n) a = n.querySelector("a[data-profile-id]");
     }
-    if (n.tagName === "A" && n.hasAttribute("data-profile-id")) {
-      const pid = n.getAttribute("data-profile-id");
-      const key = (current ? current.relation : "") + "|" + pid;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      relatives.push({
-        relation: current ? current.relation : "",
-        phrase: current ? current.phrase : "",
-        geni_id: pid,
-        name: (n.textContent || "").trim()
-      });
-    }
+    if (!a) continue;
+    const pid = a.getAttribute("data-profile-id");
+    const key = word + "|" + pid;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    relatives.push({
+      relation: GC.family.RELATION[word],
+      phrase: word,
+      geni_id: pid,
+      name: (a.textContent || "").trim()
+    });
   }
-  return { found: true, relatives: relatives, prose: (block.innerText || "").replace(/\s+/g, " ").trim() };
+  /* ⛔ NO FALLBACK TO THE PROSE. Ruled 2026-09-10, "structured only, delete the prose parser". A
+   * page with no card grid reports `found: false` and is a person to look at, not a person to
+   * guess at from a weaker source. */
+  return { found: relatives.length > 0, relatives: relatives, prose: GC.family.proseText() };
 };
 
-/* How many relatives the prose NAMES but the block does not LINK -- the `and N others` counts,
- * summed. Zero for most people; 3 on Arne Garborg, 1 on Julius Hohenberger. */
+/* How many relatives the prose NAMES but does not LINK -- the `and N others` counts, summed.
+ *
+ * ⛔ KEPT WHEN THE PROSE PARSER WENT. The structured card grid does not state this shortfall at
+ * all, so the prose is the only place it is visible -- `CLAUDE.md` § *Grab the RESIDUALS*. Those
+ * relatives carry no `href` and no click reveals one (measured on Julius Hohenberger and Arne
+ * Garborg, 2026-09-06), so `# unlinked <n>` is what stops a row count implying completeness.
+ * Reading a COUNT out of the prose is not parsing structure out of it. */
 GC.family.unlinked = function (prose) {
   let n = 0;
   const re = /and (\d+) others?/gi;

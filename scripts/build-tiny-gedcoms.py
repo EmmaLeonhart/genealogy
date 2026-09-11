@@ -56,7 +56,6 @@ across 95% of paths. `scripts/sibling-pair-worklist.py` is the list of who still
 from __future__ import annotations
 
 import hashlib
-import io
 import pathlib
 import re
 import sys
@@ -298,53 +297,19 @@ def main():
         if text:
             (PROFILE_OUT / ("%s.ged" % subject)).write_text(text, encoding="utf-8")
             n_prof += 1
+    # `geni-families/` is deleted; this glob finds nothing until the collector writes there again.
 
-    from genimerge.genipage import html_of_saved_page
-    from scraped_pages import parse_family
-    n_pages = n_bad = 0
-    for p in sorted((ROOT / "geni-scraping").glob("*.html")):
-        subject = p.stem
-        if not subject.isdigit():
-            continue
-        out_path = PROFILE_OUT / ("%s.ged" % subject)
-        if out_path.exists():
-            continue          # an extension scrape is fresher; do not overwrite it
-        try:
-            names, edges = parse_family(
-                html_of_saved_page(io.open(p, encoding="utf-8", errors="replace").read()))
-            text = saved_page_gedcom(subject, names, edges)
-        except Exception:
-            n_bad += 1
-            continue
-        if text:
-            out_path.write_text(text, encoding="utf-8")
-            n_pages += 1
-
-    # ⛔ THE SAME PAGE YIELDS BOTH, INTO DIFFERENT DIRECTORIES. Path GEDCOMs and individual ones
-    # are different files in different directories even when they come from the same HTML page,
-    # and the paths can come from there. A saved profile page
-    # carries the relationship panel as well as the immediate-family block, so it produces a
-    # profile GEDCOM above and a path GEDCOM here. `genimerge.genipage.read_relationship_path` is
-    # the same extractor that produced `paths/*.tsv`, so the two readers cannot disagree.
-    from genimerge.genipage import read_relationship_path
-    n_page_paths = 0
-    for p in sorted((ROOT / "geni-scraping").glob("*.html")):
-        if not p.stem.isdigit():
-            continue
-        out_path = PATH_OUT / ("saved-%s.ged" % p.stem)
-        if out_path.exists():
-            continue
-        try:
-            links = read_relationship_path(p)
-        except Exception:
-            continue
-        rows = [{"name": l.name, "rel": (l.relation or "").strip().lower(), "gid": l.geni_id}
-                for l in links if l.geni_id]
-        text = path_gedcom("saved-%s" % p.stem, rows,
-                           "one tiny GEDCOM per relationship path, read off a saved profile page")
-        if text:
-            out_path.write_text(text, encoding="utf-8")
-            n_page_paths += 1
+    # ⛔ THE SAVED-PAGE SECTIONS ARE GONE. Ruled 2026-09-10, "structured only, delete the prose
+    # parser". Both of them read a saved page's PROSE -- the immediate-family cell for profiles,
+    # the relationship panel for paths -- and the relation was inferred from an opener governing a
+    # run of anchors. Every defect that reader had came from that shape, and the extension now
+    # reads the card grid, where the relation is an attribute of each card.
+    #
+    # `scripts/scraped_pages.py`, `scripts/prove-saved-page-equivalence.py` and
+    # `scripts/family-scrape-js.py` are deleted with them, and so are the 457
+    # `exports/tiny-paths/saved-*.ged` they produced. Emma: *"No rescraping just deleting them.
+    # They will be rescraped later if determined by the algorithm."*
+    n_pages = n_bad = n_page_paths = 0
 
     for p in sorted((ROOT / "paths").glob("*.tsv")):
         rows = read_path_tsv(p)
