@@ -44,6 +44,8 @@ import json
 import os
 import pathlib
 import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -97,11 +99,49 @@ def agent():
     return contact
 
 
+#: ⛔ A 429 IS A WAIT, NOT A FAILURE, AND IT WAS TAKING DOWN THE WHOLE NIGHTLY REBUILD.
+#:
+#: Run `34548939273` (2026-09-11 01:49) and `34525315639` (2026-09-10 20:25) both died here with
+#: `urllib.error.HTTPError: HTTP Error 429: Too Many Requests`. The caller is right to stop —
+#: `build-garborg-day.py` exits with *"the ledger refresh failed, so the batch would be built
+#: against a stale picture of what has already been created"*, and a stale ledger does not look
+#: like an error, it looks like work to do, and the work it invents is re-creating items that
+#: already exist. So failing closed is correct and stays.
+#:
+#: What was wrong is that a transient rate limit is not a reason to lose a rebuild that has
+#: already spent an hour on the corpus. Wikimedia sends `Retry-After` and expects it to be
+#: honoured; this waits that long, or backs off 5s/15s/45s when the header is absent, and only
+#: then gives up. `CLAUDE.md` memory: *querying Wikidata is allowed — be polite about the rate*,
+#: and waiting when told to is the polite behaviour rather than hammering.
+_RETRY_WAITS = (5, 15, 45)
+
+
 def get(params, ua):
-    req = urllib.request.Request(API + "?" + urllib.parse.urlencode(params),
-                                 headers={"User-Agent": ua})
-    with urllib.request.urlopen(req, timeout=90) as fh:
-        return json.load(fh)
+    last = None
+    for attempt in range(len(_RETRY_WAITS) + 1):
+        req = urllib.request.Request(API + "?" + urllib.parse.urlencode(params),
+                                     headers={"User-Agent": ua})
+        try:
+            with urllib.request.urlopen(req, timeout=90) as fh:
+                return json.load(fh)
+        except urllib.error.HTTPError as exc:
+            # 429 is the rate limit; 503 is Wikimedia shedding load. Both are "come back".
+            # Anything else is a real answer and is raised immediately.
+            if exc.code not in (429, 503) or attempt == len(_RETRY_WAITS):
+                raise
+            last = exc
+            wait = _RETRY_WAITS[attempt]
+            hdr = exc.headers.get("Retry-After") if exc.headers else None
+            if hdr:
+                try:
+                    wait = max(wait, min(int(hdr), 120))
+                except ValueError:
+                    pass
+            print("HTTP %d from Wikidata; waiting %ds then retrying (%d/%d)"
+                  % (exc.code, wait, attempt + 1, len(_RETRY_WAITS)),
+                  file=sys.stderr, flush=True)
+            time.sleep(wait)
+    raise last
 
 
 def main():
