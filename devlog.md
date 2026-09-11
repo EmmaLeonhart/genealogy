@@ -37405,3 +37405,56 @@ worked navigates, tearing the content script down first.
 
 **Not yet verified end to end.** It is committed and the browser has not been restarted onto it —
 the next target is its first real test, and until then the by-hand submit stays the method.
+
+## 2026-09-11 — Alix target 8: the extension ran the whole thing, and the first low ball has a cause
+
+**Victor Amadeus I of Savoy `6000000004120195518`**, the eighth of fifteen — and the first export
+of this campaign that **no human touched**.
+
+    22:08:05   creating   NN d´Aspremont on subject 6000000014152534333
+    22:08:09   added      seed 6000000227708798842
+    22:08:28   building   task 6000000227708903824
+
+**Nineteen seconds from creation to a submitted export, unattended**, after 95 climbs. Then the
+run ended by itself — `running: false`, `active` empty, the tab released rather than parked.
+Before `1.7.41` this step held a tab for an hour with no result and kept the serial slot, so the
+next target could not start either. That is the whole of *"the export submit does not fire
+unattended"*, closed.
+
+    ball                    5,000 INDI   2,163 FAM
+    new against the campaign                 869
+    new against the WHOLE corpus             666
+
+### The 666 is kinship, not saturation, and that was checked rather than asserted
+
+Target 7 returned 3,290 new and target 8 returned 666, which reads like the diminishing returns
+the stopping condition is waiting for. It is not, and the check that would have falsified the
+explanation was run first — `CLAUDE.md` § *CHECK before raising an alarm*:
+
+    target 8's overlap against each earlier ball
+       3,796   export-Descendants-6000000227707589983.ged   <- target 6
+       1,794   export-Descendants-6000000227707004886.ged
+       1,021   export-Descendants-6000000227701083825.ged
+         942   export-Descendants-6000000227696775867.ged
+
+**3,796 of the 5,000 are in target 6's ball. Victor Amadeus I is Charles Emmanuel I's son** —
+target 6 was the father, filed four hours earlier — so the two descendant balls are very nearly
+the same set of people, and a ball seeded above a ball already taken returns mostly that ball.
+
+**The roster is a descent walk, so it contains close relatives by construction.**
+`reports/descendants-export-targets.csv` was built by walking down from Alix de Lampron, and
+nothing in that walk avoids emitting a parent and a child. So a target's yield depends on whether
+somebody near them in the descent has already been exported, and the order the list is worked in
+decides how much of that is spent.
+
+**Written down, not acted on.** Nothing is reordered and no kinship rule is invented here —
+`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT* is about what the
+campaign returns overall, and one ball explained by a father-son pair is not that signal. It is
+recorded because the same pairing will recur in the remaining seven, and whether to check the
+roster for kinship before working it is a decision to put to somebody rather than to make here.
+
+**Campaign totals, fifteen balls in:**
+
+    rows across the balls                  75,000
+    distinct people                        44,440
+    people not anywhere else in exports/   30,034
