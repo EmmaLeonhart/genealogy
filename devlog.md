@@ -36591,3 +36591,28 @@ hour on the corpus. `get()` now honours `Retry-After` when Wikimedia sends it, o
 **Verified by exercising it, not by reading it:** with `urlopen` stubbed, two 429s carrying
 `Retry-After: 1` were retried and the third attempt returned the payload; a 404 raised after
 exactly one attempt. No request left the machine.
+
+## 2026-09-10 — a queue item that pointed at deleted code, and the 429 fix put to CI
+
+**⛔ THE TOP QUEUE ITEM INSTRUCTED WORK ON A SCRIPT THAT NO LONGER EXISTS.** *"PROVE THE
+SAVED-PAGE READER EQUALS THE LIVE SCRAPER"* named `scripts/prove-saved-page-equivalence.py` as its
+differential and `reports/saved-page-equivalence.tsv` as its output. Both were deleted hours
+earlier when the prose parser went, along with `scraped_pages.py` — which is the thing the item
+exists to test. **There is nothing left to prove equivalent to.**
+
+It is deleted rather than rewritten, because the question it asked is closed by the change that
+broke it: the scraper reads the card grid, where the relation is an attribute of each card, so
+there is no second reader whose agreement with the first needs measuring. Its result — 51 people,
+0 parser-attributable disagreements — stands in `devlog.md` as a record of the parser that was
+removed.
+
+**This is the shape `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* warns about,
+inverted:** an instruction that outlived its subject. A queue is delete-only and that cuts both
+ways — an item whose target is gone is not outstanding work, it is a trap for whoever reads
+fastest.
+
+**And the 429 fix is now in CI rather than asserted.** `refresh-garborg-ledger.py`'s backoff was
+verified locally with a stubbed `urlopen`, which proves the retry logic and nothing about the
+pipeline. Run **`34565431253`** was dispatched on `tree.yml` to put it through the path that
+actually failed twice — `CLAUDE.md` § *TESTS RUN IN CI/CD OR NOT AT ALL* and *verify CI green, not
+just local*. The two prior runs of that workflow both died at step 16 of 17; this one is the test.
