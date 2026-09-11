@@ -54,6 +54,14 @@ GC.family.RELATION = {
   "father": "parent", "mother": "parent",
   "son": "child", "daughter": "child",
   "husband": "spouse", "wife": "spouse",
+  /* ⛔ GENI USES GENERIC WORDS FOR REDACTED RELATIVES AND THEY ARE NOT OPTIONAL.
+   *
+   * Measured on Gopikisan Piramal `6000000002024756674`, 2026-09-10: his card grid reads
+   * `spouse`, `child`, `child`, `son`, `mother`, `father`, `brother`, `brother`, `sibling`,
+   * `sister`. The three generic ones are the `<private>` profiles -- Geni will not say `wife` or
+   * `daughter` about a living person it is hiding. Without these keys the table silently drops
+   * exactly the relatives `CLAUDE.md` § *Redacted people go in* says must be kept. */
+  "spouse": "spouse", "child": "child", "parent": "parent",
   "ex-husband": "ex-spouse", "ex-wife": "ex-spouse",
   "partner": "partner", "ex-partner": "ex-spouse",
   "fiancé": "fiance", "fiancée": "fiance", "fiance": "fiance", "fiancee": "fiance",
@@ -78,16 +86,33 @@ GC.family.proseText = function () {
   return cell ? (cell.innerText || "").replace(/\s+/g, " ").trim() : "";
 };
 
-GC.family.scrape = function () {
+GC.family.labelNodes = function () {
+  return [...document.querySelectorAll("div.quiet")]
+    .filter((e) => e.children.length === 0
+                && GC.family.RELATION[(e.textContent || "").trim().toLowerCase()]);
+};
+
+/* ⛔ WAIT FOR THE CARD GRID. IT RENDERS AFTER LOAD AND A SYNCHRONOUS READ MISSES IT.
+ *
+ * Measured on the first 60-person batch, 2026-09-10: **20 of 60 came back `no_family_block`**,
+ * and re-opening them showed a full card grid. `seed.js`'s `no_add_link` was the identical
+ * mistake on the identical page -- look once, the instant the job starts, at something Geni
+ * renders afterwards. Every reader in this extension has to wait.
+ *
+ * `found: false` after the wait is a real answer: that person has no card grid. */
+GC.family.scrape = async function () {
   const relatives = [];
   const seen = new Set();
+  /* ⛔ 8 s WAS NOT ENOUGH AND GENI IS THE REASON. Emma, 2026-09-10: *"you are really impatient
+   * with geni. It's a 20yo barely updated site ... it feeds you a base html and then does a
+   * jquery based database query and fills in the info after the page has loaded."* The collector
+   * also opens its tabs with `active: false`, and a background tab is throttled on top of that.
+   * 25 s matches what `runFamily` already allows for the container. */
+  if (!GC.family.labelNodes().length) await GC.until(() => GC.family.labelNodes().length > 0, 25000);
   /* A label node is a leaf `div.quiet` whose whole text is one relation word. Scoping to the
    * label and climbing to the card it belongs to is exact: the card is the nearest ancestor that
    * also holds a profile anchor, and there is one anchor per card. */
-  const labels = [...document.querySelectorAll("div.quiet")]
-    .filter((e) => e.children.length === 0
-                && GC.family.RELATION[(e.textContent || "").trim().toLowerCase()]);
-  for (const label of labels) {
+  for (const label of GC.family.labelNodes()) {
     const word = (label.textContent || "").trim().toLowerCase();
     let n = label, a = null;
     for (let i = 0; i < 5 && n && !a; i++) {
@@ -109,7 +134,14 @@ GC.family.scrape = function () {
   /* ⛔ NO FALLBACK TO THE PROSE. Ruled 2026-09-10, "structured only, delete the prose parser". A
    * page with no card grid reports `found: false` and is a person to look at, not a person to
    * guess at from a weaker source. */
-  return { found: relatives.length > 0, relatives: relatives, prose: GC.family.proseText() };
+  /* ⛔ A PRIVATE PROFILE IS NOT A FAILED READ, AND THE TWO WERE THE SAME STATE.
+   *
+   * Geni redirects a private person to `/people/private/<id>` and serves a page with no family at
+   * all. `6000000009584299569` is one: `no_family_block` is the RIGHT answer there and a wrong
+   * one for `6000000002024756674`, who has ten relatives and simply had not rendered yet. Both
+   * came back identical, so the batch's failure count could not be read. The URL says which. */
+  return { found: relatives.length > 0, relatives: relatives, prose: GC.family.proseText(),
+           url: location.href, private_profile: /\/people\/private\//.test(location.pathname) };
 };
 
 /* How many relatives the prose NAMES but does not LINK -- the `and N others` counts, summed.
@@ -157,15 +189,20 @@ GC.runFamily = async function (job) {
     () => !!document.querySelector("#family_profile_module, .immediate-family"), 25000);
 
   const subjectName = ((document.querySelector("h1") || {}).textContent || "").trim();
-  const scraped = GC.family.scrape();
+  const scraped = await GC.family.scrape();
   /* The statistics come from the same page load and are read here rather than inferred later:
    * a saturated Blood Relatives figure is what tells a genuine isolate from a query that
    * overflowed, and step 3 turns on that distinction. */
   const stats = await GC.statistics();
 
   if (!scraped.found) {
-    return { job: "family", geni_id: id, name: subjectName, state: "no_family_block",
-             relatives: 0, stats: stats };
+    /* ⛔ TWO DIFFERENT ANSWERS, NOT ONE. `private_profile` is Geni declining to show the family
+     * and is a FINAL answer for that person; `no_family_block` is this reader finding nothing on
+     * a page that should have had something, and is a person to look at again. Collapsing them
+     * made a batch's failure count unreadable. */
+    return { job: "family", geni_id: id, name: subjectName,
+             state: scraped.private_profile ? "private_profile" : "no_family_block",
+             url: scraped.url, relatives: 0, stats: stats };
   }
 
   /* RETURNED, never downloaded -- `common.js` § *THE COLLECTOR DOES NOT DOWNLOAD FILES*.

@@ -36257,3 +36257,44 @@ path is not that thing.
 Restored: **457 `saved-*.ged`**, `exports/tiny-paths/` back to **1,185**, and the builder's path
 section put back with a comment saying why it stays. `exports/tiny-profiles/` and `geni-families/`
 remain deleted, which is what the instruction actually covered.
+
+## 2026-09-10 — 1.7.29 / 1.7.30: Geni fills the page in AFTER load, and every reader must wait
+
+**Emma stated the general rule and it is the right frame:** *"you are really impatient with geni.
+It's a 20yo barely updated site that is likely using php with jquery or something where it feeds
+you a base html and then does a jquery based database query and fills in the info after the page
+has loaded."*
+
+**The first 60-person batch on the new structured scraper: 40 scraped, 20 `no_family_block`.**
+Re-opening the failures showed full card grids, so the reader was looking before Geni had filled
+anything in — a synchronous read, once, at document_idle.
+
+**⛔ AND THE EXTENSION ALREADY KNEW THIS.** `GC.statistics` waits, and its comment records the
+same bug found on 2026-09-05: it returned five zeros on a page plainly showing real numbers,
+because the sidebar renders after the relationship box. `runSeed` waits for `readyState` and for
+the prose. `path.js` waits at every step. `seed.js`'s `no_add_link` was this bug again and was
+fixed this morning. **I wrote a new reader today and did not follow the pattern the file already
+establishes in four places.** That is not a Geni defect; it is the house style being ignored.
+
+**Two fixes in 1.7.29, both verified on Gopikisan Piramal `6000000002024756674`:**
+
+* **Wait for the grid.** Raised to 25 s in 1.7.30 to match what `runFamily` already allows for the
+  container — 8 s recovered only about a third of the failures, and the collector opens its tabs
+  with `active: false`, which Chrome throttles on top of Geni being slow.
+* **⛔ GENERIC RELATION WORDS WERE MISSING AND WOULD HAVE DROPPED REDACTED PEOPLE.** His grid reads
+  `spouse`, `child`, `child` beside `son`, `mother`, `father` — Geni will not say `wife` or
+  `daughter` about a living person it is hiding. The table had only the specific words, so those
+  three would have been silently discarded, against `CLAUDE.md` § *Redacted people go in*.
+  `spouse`, `child` and `parent` are now keys. He scrapes as 10 relatives —
+  `spouse 1 / child 3 / parent 2 / sibling 4` — matching the prose's 10 anchors exactly.
+
+**⛔ AND `no_family_block` WAS TWO ANSWERS WEARING ONE NAME.** `6000000009584299569` redirects to
+`/people/private/<id>` and serves a page with no family at all: for that person the empty read is
+CORRECT and final. `6000000002024756674` has ten relatives and had merely not rendered. Both
+returned the identical state, so the batch's failure count could not be interpreted — and the
+stored results carried no URL, so it could not be reconstructed afterwards either. 1.7.30 splits
+them into `private_profile` and `no_family_block` and records `url` on both.
+
+**The honest state of the measurement:** of the 33 failures across both passes, exactly two are
+diagnosed — one private, one a timing miss. The rest are not classified, and the next batch under
+1.7.30 is what will say. The earlier "20 of 60" is not a defect rate; it is an unread instrument.
