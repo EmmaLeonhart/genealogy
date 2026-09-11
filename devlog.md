@@ -36726,3 +36726,33 @@ changed entirely.
 `reports/parent-candidates.tsv` every run, so the unresolved ids could be diffed across two runs
 rather than guessed at from a count. Nobody asked for that, so it is not being started; what is
 recorded is that the claim was unearned, not a plan to earn it.
+
+## 2026-09-11 — 291 page loads for one seed, and the export still has no task id
+
+**Target 2 of the Alix sweep, Isabella of Savoy `6000000004150889590`.** The seed climb ran
+**291 ancestors** before it found an open slot: 264 `both_present`, 25 `family_not_read`, then one
+creation — `6000000227696775867`.
+
+**⛔ 291 PAGE LOADS TO PLACE ONE PLACEHOLDER.** Emma's point about cost applies squarely here: the
+browser walk down was deleted for spending 16 loads on 4 samples, and this is the same shape an
+order of magnitude worse. A European royal line is dense with complete parent pairs, so the climb
+walks a very long way. It is not wrong — it found a slot and created there — but the price is
+recorded rather than assumed, and the whole Monte Carlo census sweep that preceded it cost 60.
+
+**⛔ AND THE EXPORT REPORTED `timeout` WITH AN EMPTY `task_id`, ON 1.7.36 WITH THE CAPTURE LIVE.**
+An empty id means `location.search` held none when the job gave up — so the tab was still on the
+export FORM, and never reached `/gedcom/download?task_id=<n>`. **The submit did not navigate.**
+
+That is a different fault from the one 1.7.36 fixed. 1.7.36 assumed the submit always navigates
+and the content script is torn down mid-wait; here the wait ran to its budget on a page that never
+moved. Either the submit never fired in a background tab, or Geni accepted it without redirecting.
+
+**What is NOT known, and must not be asserted either way:** whether an export was submitted at all
+for `6000000227696775867`. Geni shows no list of pending exports — `/gedcom` and the profile's own
+export page both render a blank form, checked twice — so the UI cannot answer it. The only
+evidence would be the email, which is outside this session.
+
+**So the running count of exports this campaign can actually collect is: one.** The ball from
+`6000000227694017875` came down and is filed. Every export since has reported `timeout` with no
+id, and there is no way from here to tell a submitted-and-building export from one that never
+went.
