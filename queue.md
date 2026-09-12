@@ -1057,3 +1057,18 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   that CSV — `CLAUDE.md` § *"Analyse this" means: build a CSV of every instance, commit it, then
   analyse that* — not a reading of nine screenshots. The screenshots are where the question comes
   from, not the evidence base.
+
+- **⛔ FIX THE GENI-ID APPLICATION: IT IS SUPPOSED TO FIRE ONLY ON THE BORDER, AND IT FIRES
+  EVERYWHERE.** Emma, 2026-09-11: *"fix our geni id application stuff, because it is only
+  supposed to add geni ids to people bordering the universe when a relationship is added to them,
+  right now it kinda just does it everywhere not in accordance with the algorithm"*.
+
+  So the rule it is meant to obey has two conditions and it is honouring neither:
+
+      the person is BORDERING THE UNIVERSE
+      a RELATIONSHIP IS BEING ADDED to them
+
+  **Nothing is investigated, measured, grepped or diagnosed.** Which emitter does it, whether
+  `docs/algorithms.md` states the border condition, how many statements went out that should not
+  have — none of that is looked at here, and no batch or emitter is touched on the strength of
+  it. `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
