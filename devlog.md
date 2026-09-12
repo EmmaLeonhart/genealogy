@@ -38928,3 +38928,35 @@ half of step 3 is still in Geni's queue.
 * **`Nārāyaṇa`, Adasi, Confucius, Hermenegildo, Fihr, Jimmu, Genghis/Aztec/Inca** — still to run.
 * **The crons item, the three-crons item, delete-on-done, § *How to read this file*** — standing
   procedures.
+
+## 2026-09-12 — the root that looked exhausted returned 79.4%, the best ball of the session
+
+**Chinese cluster 2 `6000000209595340830`**, all three steps:
+
+    step 1  Forest       task 6000000227722216841       39 new   ( 0.8%)
+    step 2  Descendants  task 6000000227722462840       33 new   ( 0.7%)
+    step 3  Monte Carlo  task 6000000227722494902    3,969 new   (79.4%)
+
+**⛔ AND "EXHAUSTED IN BOTH DIRECTIONS" WAS WRITTEN HERE ABOUT THIS ROOT, TWO ENTRIES AGO.**
+That was said on 72 new people across steps 1 and 2, and step 3 returned **3,969** — the largest
+ball of the session, ahead of NN Näf's 4,005 only by not quite reaching it.
+
+**Emma named the mechanism before the ball landed**, and it is the reason the sentence was wrong:
+
+> *"the general problem here as I think you saw is basically oftentimes we are starting from the
+> most densely documented clusters and moving down."*
+
+The `Forest` and the `Descendants` both start **at the root** and therefore both sit inside the
+part of the descent that is already gathered. Only the Monte Carlo samples the whole 109,440-person
+descent, so only it reaches the thin parts. **Steps 1 and 2 cannot measure what step 3 is for**,
+and a root cannot be called on them.
+
+**The two Chinese clusters, complete:**
+
+    cluster 1    595 ·  844 ·     0      1,439 new
+    cluster 2     39 ·   33 · 3,969      4,041 new
+
+**The one with the worse first two steps produced nearly three times as many people.** Cluster 2
+is also the one whose identity is unknown and which Emma was skeptical about including — recorded
+as her call being right, not as a general rule that low steps predict high sweeps, which two
+roots cannot establish.
