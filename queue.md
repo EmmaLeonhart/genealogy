@@ -740,10 +740,17 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - **⛔ THREE NORTHERN EUROPEAN DFA ROOTS, ADDED 2026-09-12.** *"This time focused more on
     Northern European dfa and having the same complications as the other things."*
 
-        6000000011830295477  NN Ulster        -> `Descendants` export
+        6000000227715492839  NN Ulster ANCESTOR -> `Descendants` export  <- USE THIS ONE
+        6000000011830295477  NN Ulster          -> REFUSED by Geni, superseded above
         6000000227226958932  NN Dál Fiatach   -> `Descendants` export
         6000000227714686873  NN               -> `Forest` export FIRST, then:
         6000000000183188387  no-name          -> attempts off their EXISTING descendants
+
+    **⛔ NN ULSTER WAS REFUSED AND SHE MADE AN ANCESTOR ABOVE HIM, 2026-09-12.**
+    *"do descendants of https://www.geni.com/people/NN-Ulster/6000000227715492839 I made an
+    ancestor above the person who you wrre unable to do."* So `6000000011830295477` is dead as an
+    export root — `https://www.geni.com/gedcom/export/6000000011830295477` returns *"You are not
+    allowed to export that profile"* — and `6000000227715492839` replaces it.
 
     **⛔ THE THIRD ONE IS TWO PROFILES AND AN ORDER, NOT ONE JOB.** Verbatim: *"from this person
     do attempts based on their existing desendants
