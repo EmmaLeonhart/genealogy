@@ -185,6 +185,25 @@ def ledger():
         if manual.exists():
             with open(manual, encoding="utf-8") as f:
                 for row in csv.DictReader(f):
+                    # ⛔ HONOUR THE VERDICT COLUMN. A HAND IDENTIFICATION MUST BE RETRACTABLE.
+                    #
+                    # This read the file for its ids and ignored `verdict` entirely, so every row
+                    # was emitted whatever it said. `build-manual-identifications.py` only ever
+                    # writes `SAME`/`RIGHT`, so nothing was wrong in practice -- and that is
+                    # exactly why it was load-bearing and invisible: **there was no way to take a
+                    # hand identification back.**
+                    #
+                    # Found 2026-09-11. `Q22678387` (`NN de Courtenay`) had been identified with
+                    # Geni `6000000009305096005` on 2026-09-09 and was wrong; Emma corrected it on
+                    # Wikidata -- *"is a wrong identification I fixed it on wikidata"* -- and the
+                    # next batch would have re-emitted `P2600` and undone the correction, because
+                    # the only retraction mechanism the repo has is a verdict this reader did not
+                    # read. The retraction now lives in `reports/emma-judgments.tsv` as `WRONG`,
+                    # the regenerated CSV drops the row, and this line makes that hold even if a
+                    # non-affirmative row reaches the CSV by some other route.
+                    v = (row.get("verdict") or "").strip().upper()
+                    if v and v not in ("SAME", "RIGHT"):
+                        continue
                     g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
                     if g.isdigit() and q.startswith("Q"):
                         out.setdefault(g, q)

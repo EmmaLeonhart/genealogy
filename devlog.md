@@ -37732,3 +37732,62 @@ is about what the campaign returns, and the campaign is still returning — the 
     target 8    95 climbs     666   cluster overlap
     target 9   162 climbs   4,026
     target 10  239 climbs     697   cluster overlap
+
+## 2026-09-11 — a wrong hand identification, and the discovery that a hand identification could not be taken back
+
+Emma: *"`Q22678387` `NN de Courtenay`: P2600 from a hand identification — is a wrong
+identification I fixed it on wikidata but this is making me wary of some of my manual
+identifications as well as how I think they may have been inappropriately applied against specs"*.
+
+### The correction would have been undone on the next run
+
+`reports/manual-identifications.csv` is read by `build-garborg-day.py` **for its ids only** — the
+`verdict` column was never looked at, so every row in the file was emitted whatever it said.
+`build-manual-identifications.py` only ever writes `SAME`/`RIGHT`, so nothing was wrong in
+practice, and that is precisely why it was invisible: **the repo had no way to retract a hand
+identification.** A fix made on Wikidata would have been overwritten by the next batch.
+
+Fixed in the mechanism the repo already has. The verdict vocabulary exists —
+`build-manual-identifications.py` defines `AFFIRMATIVE = {"SAME", "RIGHT"}` and excludes
+`UNSURE`/`WRONG` — so the retraction goes in `reports/emma-judgments.tsv`, which
+`CLAUDE.md` § *The chain of provenance* calls the durable record:
+
+    2026-09-09  family-adjudication-gui  6000000009305096005  NN de Courtenay
+                Q22678387  Hodierne of Courtenay  SAME  ->  WRONG
+
+The row is **retracted, not deleted** — the judgement is a node in the provenance graph and
+erasing it would lose the fact that it was ever made. Regenerating dropped it from the CSV
+(1,411 `SAME` → 1,410), and `build-garborg-day.py` now skips any non-affirmative verdict so the
+retraction holds even if such a row reaches the CSV by another route.
+
+### The shape of the error, measured: `reports/nn-manual-identifications.csv`
+
+`emma-judgments.tsv` carries both sides of every card, so the population is checkable.
+**Eleven of 1,411 affirmative identifications have `NN` on our side**, and they split into two
+kinds:
+
+    NINE are NN <-> NN, matched on family rather than on a given name
+        NN Baskerville          -> NN Baskerville
+        NN Von Frohburg         -> NN von Froburg
+        NN verch Iorwerth       -> NN ferch Iorwerth ab Owain Brogyntyn
+        NN ingen Cinead         -> daughter of Kennet I
+        NN Cameron              -> unknown daughter Cameron
+        NN van Valkenburg       -> unknown daughter von Kleve-Valkenburg
+        NN Komnenos             -> N. Megale Komnene
+        NN von Waldeck          -> of Schwalenberg
+        NN Woman de Caen ...    -> NN
+
+    TWO are NN against a NAMED Wikidata person -- and one of those is the confirmed error
+        Q22678387   NN de Courtenay             -> Hodierne of Courtenay      WRONG, retracted
+        Q1934051    NN Sverkerska Kungaatten    -> Helena of Sweden           UNVERIFIED
+
+**The dangerous class is the second one, not `NN` in general.** An unnamed person matched to
+another unnamed person of the same family is a claim about a relationship; an unnamed person
+matched to a *named* individual is a claim that this anonymous daughter is **that** daughter, and
+the only evidence on the card is a surname the family shares. `CLAUDE.md` § *No name on OUR side
+is DATA* and § *An empty box cannot be judged against a name* are the deck-filter rules, and they
+test for an **empty** label — `NN de Courtenay` is not empty, so it passed.
+
+⛔ **`Q1934051` is NOT touched.** It is the only other identification of the same shape and it is
+Emma's to rule on, not mine to retract on a resemblance. It is named here and in the CSV so the
+decision has somewhere to start.
