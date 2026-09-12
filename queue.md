@@ -1072,3 +1072,25 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   `docs/algorithms.md` states the border condition, how many statements went out that should not
   have — none of that is looked at here, and no batch or emitter is touched on the strength of
   it. `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
+- **⛔ WHY ARE `|` NAME CORRECTIONS LANDING ON NON-ADJACENT ITEMS?** Emma, 2026-09-11: *"look
+  over why name corrections with the | appear to be being done to non-adjacent items"*.
+
+  **Not investigated, not diagnosed, not traced to an emitter.** Which script writes the `|`
+  form, what "adjacent" is measured against, and how many such corrections went out are all
+  unexamined here. `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
+- **⛔ ONLY EVER EDIT THINGS IN THE UNIVERSE OR ONE STEP ADJACENT TO IT.** Emma, 2026-09-11:
+  *"making it so that we only ever edit things in the universe or one adjacent to it. We are
+  being way too non-local and it is drawing attention"*.
+
+  So the edit surface is bounded to two rings and nothing further:
+
+      in the universe
+      one step adjacent to it
+
+  **And the reason is OPSEC, not correctness** — *"it is drawing attention"* — which is the same
+  concern behind the caps in § *Caps* and behind the QuickStatements batching generally.
+
+  **Nothing is investigated, measured or changed.** No emitter is audited, no locality test is
+  written, and no batch is altered on the strength of this. It is written down where it was sent.
