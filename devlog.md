@@ -38905,3 +38905,26 @@ Skjalgsson, if the question ever comes up.
     NN Näf         441 ·  464 · 4,005 + 1,340     the producer
     NN Skjalgsson    3 ·  627 · 0 of 30           saturated sideways, open down
     Chinese 1      595 ·  844 · 0 of 30           partly open both ways
+
+## 2026-09-12 — sweep: Chinese cluster 1 comes off both rosters
+
+**`6000000227036719829`** — the 譚 Tan lineage entry point, removed from the supplied-seeds roster
+and from part 1 of § *THE WHOLE PROGRAM*. All three steps are filed:
+
+    Forest       task 6000000227721699884    595 new   (11.9%)
+    Descendants  task 6000000227721979831    844 new   (16.9%)
+    Monte Carlo  30 reads, 0 over 4,000, top 2,282
+
+**1,439 new people**, in `exports/chinese-clusters/`.
+
+**Cluster 2 stays** — its Monte Carlo export is building as task `6000000227722494902` and the
+root is not finished until that ball is filed. **The test is whether the work is finished**, and
+half of step 3 is still in Geni's queue.
+
+### Not swept, unchanged from the last three sweeps
+
+* **The six from Abul Hamza's ball** — no export-log row for any of them.
+* **The OneTab 19** — never ruled.
+* **`Nārāyaṇa`, Adasi, Confucius, Hermenegildo, Fihr, Jimmu, Genghis/Aztec/Inca** — still to run.
+* **The crons item, the three-crons item, delete-on-done, § *How to read this file*** — standing
+  procedures.

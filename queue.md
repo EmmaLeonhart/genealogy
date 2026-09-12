@@ -590,7 +590,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - **⛔ THE SEEDS FOR THE REST OF THE ROSTER, SUPPLIED 2026-09-12.** Every one is a profile to
     export FROM, so the create-an-ancestor step is already done and must not be repeated on them.
 
-        6000000227036719829  Chinese cluster 1     https://www.geni.com/people/NN/6000000227036719829
         6000000209595340830  Chinese cluster 2     supplied 2026-09-12
         6000000227712700862  Adasi
         6000000227039926826  Genghis Khan          NN Borjigin
@@ -633,7 +632,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **1. THE EIGHT UNTOUCHED SEEDS — FULL THREE-STEP EACH.** `Forest`, then `Descendants`, then
     Monte Carlo, per seed:
 
-        6000000227036719829  Chinese cluster 1
         6000000209595340830  Chinese cluster 2
         6000000227712700862  Adasi
         6000000227713034875  Confucius
