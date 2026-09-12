@@ -39033,3 +39033,42 @@ one script run.
 
 **Adasi is now measured from both sides of its bottleneck** and the campaign holds it either way:
 323 new above, 1 below, with the below-side already in `exports/abul-hamza/`.
+
+## 2026-09-12 — stacking ten exports at once fails eight of them: `no_such_walk`
+
+Asked why the crons were producing reports rather than work — *"uhh did you decide to not do any
+actual work over the crons lol"* — the response was to stack the whole remaining program into the
+collector queue in one `enqueue`: ten exports across Hermenegildo, Fihr, Jimmu, Nārāyaṇa and
+Forest-only on Genghis, Aztec and Inca.
+
+    built           3   Hermenegildo Forest · Nārāyaṇa Forest · Inca Forest
+    no_such_walk    8   everything else
+
+**`no_such_walk` means the export form's `input[name=walk]` radios were not in the DOM when the
+job read them.** Geni renders that form after load, and the jobs ran nose-to-tail with no gap, so
+each one arrived at a page that had not drawn. The by-hand path that has worked every time this
+session waits ~4 s before selecting the radio; the extension does not wait that long.
+
+**The failure is cheap in the one way that matters and expensive in another.** `no_such_walk`
+submits nothing, so **no export slot was consumed** — the cost is eight page loads against a
+hostile site, not eight lost balls. But eight jobs are simply not done, and the queue reports
+itself empty, which reads as completion.
+
+**⛔ SO SERIAL-WITH-A-WAIT IS THE METHOD, NOT A BATCH.** The idling the prompt objected to was
+real; the fix is not to remove the gaps between exports, because the gaps are what make the form
+render. What removes idling is doing offline work in the gaps — the seven descent enumerations
+built alongside these, which cost no Geni traffic at all.
+
+### And two of the seeds cannot have a Monte Carlo step yet
+
+    6000000211987119821  Hermenegildo   263,588 descendants in the corpus
+    6000000220876233832  Nārāyaṇa        23,520
+    6000000227039926826  Genghis         20,749
+    6000000209721868822  Aztec            5,714
+    6000000227714378863  Fihr                 0
+    6000000227713229918  Emperor Jimmu        0
+
+**Fihr and Jimmu enumerate to header-only files.** Their descendants are not in the corpus at all,
+so there is no candidate pool to sample and step 3 is impossible until steps 1 and 2 are merged.
+Their descent files have to be rebuilt **after** their balls land, not before — which is the
+opposite of the order used for every root so far.
