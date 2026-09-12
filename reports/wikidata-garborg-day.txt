@@ -276,11 +276,13 @@ LAST	P31	Q101352
 #   Q141318914 Helga Olavsdtr. Ringja: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141318914	P734	LAST	P3831	Q2507958	S2600	"6000000001770176883"
 
-# 1192 more name items are needed and wait for a later
+# 1197 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   Ysing (family), 2 bearer(s)
 #   Østensen (patronymic), 2 bearer(s)
 #   Bertilsdotter (patronymic), 1 bearer(s)
+#   Birgerus (given), 1 bearer(s)
+#   Cantherus (family), 1 bearer(s)
 #   Castorin (family), 1 bearer(s)
 #   Endresdatter (patronymic), 1 bearer(s)
 #   Hjeld (family), 1 bearer(s)
@@ -288,9 +290,7 @@ Q141318914	P734	LAST	P3831	Q2507958	S2600	"6000000001770176883"
 #   Honnon (family), 1 bearer(s)
 #   Ichten (family), 1 bearer(s)
 #   Jacobson (patronymic), 1 bearer(s)
-#   Johannesdtr. (patronymic), 1 bearer(s)
-#   Jonesen (patronymic), 1 bearer(s)
-#   ... and 1180 more
+#   ... and 1185 more
 
 
 # ======================================================================
@@ -336,296 +336,306 @@ Q83866230	P460	Q141436735
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 227 edits; 3110 edits held for a later run
-#   across 675 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 237 edits; 2873 edits held for a later run
+#   across 615 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141436692 Peder Larsson Raunes: add a mul alias "Peder Larsson Landsnes"
-Q141436692	Amul	"Peder Larsson Landsnes"
-#   Q141436691 Orm Pederson Hovda: add a mul alias "Orm Pederson Foss"
-Q141436691	Amul	"Orm Pederson Foss"
-#   Q141436684 Ola Henriksen Vågen: add a mul alias "Ola Henriksen Ringja"
-Q141436684	Amul	"Ola Henriksen Ringja"
-#   Q141436662 Kari Andersdatter Lunde: add a mul alias "Kari Andersdatter Auglend"
-Q141436662	Amul	"Kari Andersdatter Auglend"
-#   Q141436649 Gunnhild Rasmusdatter Kalberg: add a mul alias "Gunnhild Rasmusdatter Vatne"
-Q141436649	Amul	"Gunnhild Rasmusdatter Vatne"
-#   Q105815273: Margaret|(Isabel) Kiddall -> Margaret Kiddall   + (Isabel) Kiddall
-Q105815273	Len	"Margaret Kiddall"
-Q105815273	Lmul	"Margaret Kiddall"
-Q105815273	Amul	"(Isabel) Kiddall"
-#   Q105815264: William|John Sewarby (Sywardby), of Yorks -> William Sewarby (Sywardby), of Yorks   + John Sewarby (Sywardby), of Yorks
-Q105815264	Len	"William Sewarby (Sywardby), of Yorks"
-Q105815264	Lmul	"William Sewarby (Sywardby), of Yorks"
-Q105815264	Amul	"John Sewarby (Sywardby), of Yorks"
-Q105815264	Lnl	"William Sewarby (Sywardby), of Yorks"
-#   Q105815260: Agnes|Anne Pigott -> Agnes Pigott   + Anne Pigott
-Q105815260	Len	"Agnes Pigott"
-Q105815260	Lmul	"Agnes Pigott"
-Q105815260	Amul	"Anne Pigott"
-Q105815260	Lnl	"Agnes Pigott"
-#   Q105815186: Joan|Jane Northwood (Norwood) -> Joan Northwood (Norwood)   + Jane Northwood (Norwood)
-Q105815186	Len	"Joan Northwood (Norwood)"
-Q105815186	Lmul	"Joan Northwood (Norwood)"
-Q105815186	Amul	"Jane Northwood (Norwood)"
-#   Q105815184: Frideswide|Frisewide Norton -> Frideswide Norton   + Frisewide Norton
-Q105815184	Len	"Frideswide Norton"
-Q105815184	Lmul	"Frideswide Norton"
-Q105815184	Amul	"Frisewide Norton"
-Q105815184	Lnl	"Frideswide Norton"
-#   Q105815098: Cicely|Cecily Pelham, of Laughton -> Cicely Pelham, of Laughton   + Cecily Pelham, of Laughton
-Q105815098	Len	"Cicely Pelham, of Laughton"
-Q105815098	Lmul	"Cicely Pelham, of Laughton"
-Q105815098	Amul	"Cecily Pelham, of Laughton"
-Q105815098	Lnl	"Cicely Pelham, of Laughton"
-#   Q105815062: Gerard|Gerald de Furnival -> Gerard de Furnival   + Gerald de Furnival
-Q105815062	Amul	"Gerald de Furnival"
-#   Q105814966: Anne Frogenhall (Frognall|Frogenhale), of Buckland -> Anne Frogenhall   + Anne Frognall | Anne Frogenhale
-Q105814966	Len	"Anne Frogenhall, of Buckland"
-Q105814966	Lmul	"Anne Frogenhall"
-Q105814966	Amul	"Anne Frognall"
-Q105814966	Amul	"Anne Frogenhale"
-Q105814966	Lnl	"Anne Frogenhall"
-#   Q105814464: Elizabeth|Isabel Barley -> Elizabeth Barley   + Isabel Barley
-Q105814464	Len	"Elizabeth Barley"
-Q105814464	Lmul	"Elizabeth Barley"
-Q105814464	Amul	"Isabel Barley"
-Q105814464	Lnl	"Elizabeth Barley"
-#   Q105814419: Sionet|Jonet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan -> Sionet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan   + Jonet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan
-Q105814419	Len	"Sionet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan"
-Q105814419	Lmul	"Sionet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan"
-Q105814419	Amul	"Jonet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan"
-Q105814419	Lnl	"Sionet ferch Dafydd ab Ieuan ap Hywel ap Cynwrig Iorwerth Fychan"
-#   Q105806069: Isabella|Sabrina Jaquett -> Isabella Jaquett   + Sabrina Jaquett
-Q105806069	Len	"Isabella Jaquett"
-Q105806069	Lmul	"Isabella Jaquett"
-Q105806069	Amul	"Sabrina Jaquett"
-Q105806069	Lnl	"Isabella Jaquett"
-#   Q105805941: Joan|Jennetta Guise (Guys|Wise) -> Joan Guise   + Joan Guys | Joan Wise | Jennetta Guise | Jennetta Guys | Jennetta Wise
-Q105805941	Len	"Joan Guise"
-Q105805941	Lmul	"Joan Guise"
-Q105805941	Amul	"Joan Guys"
-Q105805941	Amul	"Joan Wise"
-Q105805941	Amul	"Jennetta Guise"
-Q105805941	Amul	"Jennetta Guys"
-Q105805941	Amul	"Jennetta Wise"
-#   Q105805264: John Farby (or Foreby|Farnby) -> John Farby   + John or Foreby | John Farnby
-Q105805264	Len	"John Farby"
-Q105805264	Lmul	"John Farby"
-Q105805264	Amul	"John or Foreby"
-Q105805264	Amul	"John Farnby"
-#   Q105805263: Agnes|Alice Farby (or Foreby) -> Agnes Farby (or Foreby)   + Alice Farby (or Foreby)
-Q105805263	Len	"Agnes Farby (or Foreby)"
-Q105805263	Lmul	"Agnes Farby (or Foreby)"
-Q105805263	Amul	"Alice Farby (or Foreby)"
-#   Q105805204: Margery Knolles (Knowles|Knollys) -> Margery Knolles   + Margery Knowles | Margery Knollys
-Q105805204	Len	"Margery Knolles"
-Q105805204	Lmul	"Margery Knolles"
-Q105805204	Amul	"Margery Knowles"
-Q105805204	Amul	"Margery Knollys"
-#   Q105805091: Janet|Jonet Bradshaw -> Janet Bradshaw   + Jonet Bradshaw
-Q105805091	Len	"Janet Bradshaw"
-Q105805091	Lmul	"Janet Bradshaw"
-Q105805091	Amul	"Jonet Bradshaw"
-Q105805091	Lnl	"Janet Bradshaw"
-#   Q105805053: Katherine|Catherine Mobberley -> Katherine Mobberley   + Catherine Mobberley
-Q105805053	Len	"Katherine Mobberley"
-Q105805053	Lmul	"Katherine Mobberley"
-Q105805053	Amul	"Catherine Mobberley"
-Q105805053	Lnl	"Katherine Mobberley"
-#   Q105802982: William|Robert Brouncker, of Melksham -> William Brouncker, of Melksham   + Robert Brouncker, of Melksham
-Q105802982	Len	"William Brouncker, of Melksham"
-Q105802982	Lmul	"William Brouncker, of Melksham"
-Q105802982	Amul	"Robert Brouncker, of Melksham"
-Q105802982	Lnl	"William Brouncker, of Melksham"
-#   Q105802790: NN Crews (Cruwys|Cruse) -> NN Crews   + NN Cruwys | NN Cruse
-Q105802790	Len	"NN Crews"
-Q105802790	Lmul	"NN Crews"
-Q105802790	Amul	"NN Cruwys"
-Q105802790	Amul	"NN Cruse"
-#   Q105802203: John|William|Edmund Beaumont, of Lascelles Hall -> John Beaumont, of Lascelles Hall   + William Beaumont, of Lascelles Hall | Edmund Beaumont, of Lascelles Hall
-Q105802203	Len	"John Beaumont, of Lascelles Hall"
-Q105802203	Lmul	"John Beaumont, of Lascelles Hall"
-Q105802203	Amul	"William Beaumont, of Lascelles Hall"
-Q105802203	Amul	"Edmund Beaumont, of Lascelles Hall"
-Q105802203	Lnl	"John Beaumont, of Lascelles Hall"
-#   Q105802202: Elizabeth|Anne Beaumont, of Lascelles Hall -> Elizabeth Beaumont, of Lascelles Hall   + Anne Beaumont, of Lascelles Hall
-Q105802202	Len	"Elizabeth Beaumont, of Lascelles Hall"
-Q105802202	Lmul	"Elizabeth Beaumont, of Lascelles Hall"
-Q105802202	Amul	"Anne Beaumont, of Lascelles Hall"
-Q105802202	Lnl	"Elizabeth Beaumont, of Lascelles Hall"
-#   Q105801355: Katherine|Margred Gwrgan (Wogan) -> Katherine Gwrgan (Wogan)   + Margred Gwrgan (Wogan)
-Q105801355	Len	"Katherine Gwrgan (Wogan)"
-Q105801355	Lmul	"Katherine Gwrgan (Wogan)"
-Q105801355	Amul	"Margred Gwrgan (Wogan)"
-#   Q105801340: Egidius|Giles Arden, of Drayton -> Egidius Arden, of Drayton   + Giles Arden, of Drayton
-Q105801340	Len	"Egidius Arden, of Drayton"
-Q105801340	Lmul	"Egidius Arden, of Drayton"
-Q105801340	Amul	"Giles Arden, of Drayton"
-Q105801340	Lnl	"Egidius Arden, of Drayton"
-#   Q105801251: Elizabeth|Eva Clipsby -> Elizabeth Clipsby   + Eva Clipsby
-Q105801251	Len	"Elizabeth Clipsby"
-Q105801251	Lmul	"Elizabeth Clipsby"
-Q105801251	Amul	"Eva Clipsby"
-Q105801251	Lnl	"Elizabeth Clipsby"
-#   Q105801192: Rose|Anne Bennett, of Rushall, Norfolk -> Rose Bennett, of Rushall, Norfolk   + Anne Bennett, of Rushall, Norfolk
-Q105801192	Len	"Rose Bennett, of Rushall, Norfolk"
-Q105801192	Lmul	"Rose Bennett, of Rushall, Norfolk"
-Q105801192	Amul	"Anne Bennett, of Rushall, Norfolk"
-Q105801192	Lnl	"Rose Bennett, of Rushall, Norfolk"
-#   Q105801168: Margaret Read (or Reade|Rede) -> Margaret Read   + Margaret or Reade | Margaret Rede
-Q105801168	Len	"Margaret Read"
-Q105801168	Lmul	"Margaret Read"
-Q105801168	Amul	"Margaret or Reade"
-Q105801168	Amul	"Margaret Rede"
-#   Q105801167: Margery|Margaret Wentworth -> Margery Wentworth   + Margaret Wentworth
-Q105801167	Len	"Margery Wentworth"
-Q105801167	Lmul	"Margery Wentworth"
-Q105801167	Amul	"Margaret Wentworth"
-Q105801167	Lnl	"Margery Wentworth"
-#   Q105800720: Agnes|Anne Baker -> Agnes Baker   + Anne Baker
-Q105800720	Len	"Agnes Baker"
-Q105800720	Lmul	"Agnes Baker"
-Q105800720	Amul	"Anne Baker"
-Q105800720	Lnl	"Agnes Baker"
-#   Q105800519: Jane Grenville (Granville|Grenfeld) -> Jane Grenville   + Jane Granville | Jane Grenfeld
-Q105800519	Len	"Jane Grenville"
-Q105800519	Lmul	"Jane Grenville"
-Q105800519	Amul	"Jane Granville"
-Q105800519	Amul	"Jane Grenfeld"
-#   Q105800518: Anne|Agnes Chichester -> Anne Chichester   + Agnes Chichester
-Q105800518	Len	"Anne Chichester"
-Q105800518	Lmul	"Anne Chichester"
-Q105800518	Amul	"Agnes Chichester"
-Q105800518	Lnl	"Anne Chichester"
-#   Q105800447: Joan|Jane Fowell -> Joan Fowell   + Jane Fowell
-Q105800447	Len	"Joan Fowell"
-Q105800447	Lmul	"Joan Fowell"
-Q105800447	Amul	"Jane Fowell"
-Q105800447	Lnl	"Joan Fowell"
-#   Q105800406: Elizabeth Stukeley (Stewkley|Stucley) -> Elizabeth Stukeley   + Elizabeth Stewkley | Elizabeth Stucley
-Q105800406	Len	"Elizabeth Stukeley"
-Q105800406	Lmul	"Elizabeth Stukeley"
-Q105800406	Amul	"Elizabeth Stewkley"
-Q105800406	Amul	"Elizabeth Stucley"
-#   Q105800402: Mary|May Wadham -> Mary Wadham   + May Wadham
-Q105800402	Len	"Mary Wadham"
-Q105800402	Lmul	"Mary Wadham"
-Q105800402	Amul	"May Wadham"
-Q105800402	Lnl	"Mary Wadham"
-#   Q105800017: James|John Hay, Provost of Dundee -> James Hay, Provost of Dundee   + John Hay, Provost of Dundee
-Q105800017	Len	"James Hay, Provost of Dundee"
-Q105800017	Lmul	"James Hay, Provost of Dundee"
-Q105800017	Amul	"John Hay, Provost of Dundee"
-Q105800017	Lnl	"James Hay, Provost of Dundee"
-#   Q105799099: William|Walter Cornew (Cornu|Carminow) -> William Cornew   + William Cornu | William Carminow | Walter Cornew | Walter Cornu | Walter Carminow
-Q105799099	Len	"William Cornew"
-Q105799099	Lmul	"William Cornew"
-Q105799099	Amul	"William Cornu"
-Q105799099	Amul	"William Carminow"
-Q105799099	Amul	"Walter Cornew"
-Q105799099	Amul	"Walter Cornu"
-Q105799099	Amul	"Walter Carminow"
-#   Q105799097: Elizabeth Cornew (Carnewe|Carminow?) -> Elizabeth Cornew   + Elizabeth Carnewe | Elizabeth Carminow?
-Q105799097	Len	"Elizabeth Cornew"
-Q105799097	Lmul	"Elizabeth Cornew"
-Q105799097	Amul	"Elizabeth Carnewe"
-Q105799097	Amul	"Elizabeth Carminow?"
-#   Q105798946: Jane|Maud Petit, of Ardevera -> Jane Petit, of Ardevera   + Maud Petit, of Ardevera
-Q105798946	Len	"Jane Petit, of Ardevera"
-Q105798946	Lmul	"Jane Petit, of Ardevera"
-Q105798946	Amul	"Maud Petit, of Ardevera"
-Q105798946	Lnl	"Jane Petit, of Ardevera"
-#   Q105797749: Gwenhwyfar|Gwenllian ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin -> Gwenhwyfar ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin   + Gwenllian ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin
-Q105797749	Len	"Gwenhwyfar ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin"
-Q105797749	Lmul	"Gwenhwyfar ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin"
-Q105797749	Amul	"Gwenllian ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin"
-Q105797749	Lnl	"Gwenhwyfar ferch Richard ap Rhys ap Morus Gethin ab Ieuan Gethin ap Magod Cyffin"
-#   Q105797673: Cynwrig|Kendrik Eyton, of Eyton -> Cynwrig Eyton, of Eyton   + Kendrik Eyton, of Eyton
-Q105797673	Len	"Cynwrig Eyton, of Eyton"
-Q105797673	Lmul	"Cynwrig Eyton, of Eyton"
-Q105797673	Amul	"Kendrik Eyton, of Eyton"
-Q105797673	Lnl	"Cynwrig Eyton, of Eyton"
-#   Q105796701: Mariot|Marion Dunbar, of Mochrum -> Mariot Dunbar, of Mochrum   + Marion Dunbar, of Mochrum
-Q105796701	Len	"Mariot Dunbar, of Mochrum"
-Q105796701	Lmul	"Mariot Dunbar, of Mochrum"
-Q105796701	Amul	"Marion Dunbar, of Mochrum"
-Q105796701	Lnl	"Mariot Dunbar, of Mochrum"
-#   Q105794928: Alice|Eleanor de Coggeshall -> Alice de Coggeshall   + Eleanor de Coggeshall
-Q105794928	Len	"Alice de Coggeshall"
-Q105794928	Lmul	"Alice de Coggeshall"
-Q105794928	Amul	"Eleanor de Coggeshall"
-Q105794928	Lnl	"Alice de Coggeshall"
-#   Q105794858: Sir? Thomas Squerry (Squiry|Squerries), of Westenham, Kent -> Sir? Thomas Squerry , of Westenham   + Sir? Thomas Squiry , of Westenham | Sir? Thomas Squerries , of Westenham
-Q105794858	Len	"Sir? Thomas Squerry , of Westenham, Kent"
-Q105794858	Lmul	"Sir? Thomas Squerry , of Westenham"
-Q105794858	Amul	"Sir? Thomas Squiry , of Westenham"
-Q105794858	Amul	"Sir? Thomas Squerries , of Westenham"
-Q105794858	Lnl	"Sir? Thomas Squerry , of Westenham"
-#   Q105794854: Margaret Squerrie (Squerry|Squiry) -> Margaret Squerrie   + Margaret Squerry | Margaret Squiry
-Q105794854	Len	"Margaret Squerrie"
-Q105794854	Lmul	"Margaret Squerrie"
-Q105794854	Amul	"Margaret Squerry"
-Q105794854	Amul	"Margaret Squiry"
-#   Q105794803: Alice|Anne Belknap -> Alice Belknap   + Anne Belknap
-Q105794803	Len	"Alice Belknap"
-Q105794803	Lmul	"Alice Belknap"
-Q105794803	Amul	"Anne Belknap"
-Q105794803	Lnl	"Alice Belknap"
-#   Q105794798: Walter|William Roo (Row|Rowe), of Dartford -> Walter Roo   + Walter Row | Walter Rowe | William Roo | William Row | William Rowe
-Q105794798	Len	"Walter Roo, of Dartford"
-Q105794798	Lmul	"Walter Roo"
-Q105794798	Amul	"Walter Row"
-Q105794798	Amul	"Walter Rowe"
-Q105794798	Amul	"William Roo"
-Q105794798	Amul	"William Row"
-Q105794798	Amul	"William Rowe"
-Q105794798	Lnl	"Walter Roo"
-#   Q105794793: Agnes Roo (Row|Rowe) -> Agnes Roo   + Agnes Row | Agnes Rowe
-Q105794793	Len	"Agnes Roo"
-Q105794793	Lmul	"Agnes Roo"
-Q105794793	Amul	"Agnes Row"
-Q105794793	Amul	"Agnes Rowe"
-#   Q105794202: Joanna|Joan Fineux (Fyneux) -> Joanna Fineux (Fyneux)   + Joan Fineux (Fyneux)
-Q105794202	Len	"Joanna Fineux (Fyneux)"
-Q105794202	Lmul	"Joanna Fineux (Fyneux)"
-Q105794202	Amul	"Joan Fineux (Fyneux)"
-#   Q105794198: Elizabeth|Alice Watno -> Elizabeth Watno   + Alice Watno
-Q105794198	Len	"Elizabeth Watno"
-Q105794198	Lmul	"Elizabeth Watno"
-Q105794198	Amul	"Alice Watno"
-Q105794198	Lnl	"Elizabeth Watno"
-#   Q105794039: Anne|Mary Twyneho (Twinyho) -> Anne Twyneho (Twinyho)   + Mary Twyneho (Twinyho)
-Q105794039	Len	"Anne Twyneho (Twinyho)"
-Q105794039	Lmul	"Anne Twyneho (Twinyho)"
-Q105794039	Amul	"Mary Twyneho (Twinyho)"
-#   Q105793189: Adam|Hamond Narborough (Narborow) -> Adam Narborough (Narborow)   + Hamond Narborough (Narborow)
-Q105793189	Len	"Adam Narborough (Narborow)"
-Q105793189	Lmul	"Adam Narborough (Narborow)"
-Q105793189	Amul	"Hamond Narborough (Narborow)"
-#   Q105793176: Stephen|Henry Spilman (Spelman), of Spelman's Place -> Stephen Spilman (Spelman), of Spelman's Place   + Henry Spilman (Spelman), of Spelman's Place
-Q105793176	Len	"Stephen Spilman (Spelman), of Spelman's Place"
-Q105793176	Lmul	"Stephen Spilman (Spelman), of Spelman's Place"
-Q105793176	Amul	"Henry Spilman (Spelman), of Spelman's Place"
-Q105793176	Lnl	"Stephen Spilman (Spelman), of Spelman's Place"
-#   Q105793143: Agnes|Jane Darell, of Cale Hill, Kent -> Agnes Darell, of Cale Hill, Kent   + Jane Darell, of Cale Hill, Kent
-Q105793143	Len	"Agnes Darell, of Cale Hill, Kent"
-Q105793143	Lmul	"Agnes Darell, of Cale Hill, Kent"
-Q105793143	Amul	"Jane Darell, of Cale Hill, Kent"
-Q105793143	Lnl	"Agnes Darell, of Cale Hill, Kent"
-#   Q105791239: Margaret|Mary Green (Greene) -> Margaret Green (Greene)   + Mary Green (Greene)
-Q105791239	Len	"Margaret Green (Greene)"
-Q105791239	Lmul	"Margaret Green (Greene)"
-Q105791239	Amul	"Mary Green (Greene)"
-#   Q105788077: Agnes|Anne Daundy -> Agnes Daundy   + Anne Daundy
-Q105788077	Len	"Agnes Daundy"
-Q105788077	Lmul	"Agnes Daundy"
-Q105788077	Amul	"Anne Daundy"
-Q105788077	Lnl	"Agnes Daundy"
-#   Q105787972: Avery|Alured Rawson -> Avery Rawson   + Alured Rawson
-Q105787972	Len	"Avery Rawson"
-Q105787972	Lmul	"Avery Rawson"
-Q105787972	Amul	"Alured Rawson"
-Q105787972	Lnl	"Avery Rawson"
+#   Q105776889: Margery|Margaret Throckmorton -> Margery Throckmorton   + Margaret Throckmorton
+Q105776889	Len	"Margery Throckmorton"
+Q105776889	Lmul	"Margery Throckmorton"
+Q105776889	Amul	"Margaret Throckmorton"
+Q105776889	Lnl	"Margery Throckmorton"
+#   Q105776871: Rose|Roesia Lucy, of Charlecote -> Rose Lucy, of Charlecote   + Roesia Lucy, of Charlecote
+Q105776871	Len	"Rose Lucy, of Charlecote"
+Q105776871	Lmul	"Rose Lucy, of Charlecote"
+Q105776871	Amul	"Roesia Lucy, of Charlecote"
+Q105776871	Lnl	"Rose Lucy, of Charlecote"
+#   Q105771289: Grisell|Julian Rivett, of Rowsden -> Grisell Rivett, of Rowsden   + Julian Rivett, of Rowsden
+Q105771289	Len	"Grisell Rivett, of Rowsden"
+Q105771289	Lmul	"Grisell Rivett, of Rowsden"
+Q105771289	Amul	"Julian Rivett, of Rowsden"
+Q105771289	Lnl	"Grisell Rivett, of Rowsden"
+#   Q105771252: Anne|Agnes Plumpton (or Plompton) -> Anne Plumpton (or Plompton)   + Agnes Plumpton (or Plompton)
+Q105771252	Len	"Anne Plumpton (or Plompton)"
+Q105771252	Lmul	"Anne Plumpton (or Plompton)"
+Q105771252	Amul	"Agnes Plumpton (or Plompton)"
+#   Q105770525: Joane|Joan de la More (Delamere) -> Joane de la More (Delamere)   + Joan de la More (Delamere)
+Q105770525	Len	"Joane de la More (Delamere)"
+Q105770525	Lmul	"Joane de la More (Delamere)"
+Q105770525	Amul	"Joan de la More (Delamere)"
+#   Q105770518: Ellen|Ele Mallett (Malet) -> Ellen Mallett (Malet)   + Ele Mallett (Malet)
+Q105770518	Len	"Ellen Mallett (Malet)"
+Q105770518	Lmul	"Ellen Mallett (Malet)"
+Q105770518	Amul	"Ele Mallett (Malet)"
+#   Q105770456: John|Richard Floyer -> John Floyer   + Richard Floyer
+Q105770456	Len	"John Floyer"
+Q105770456	Lmul	"John Floyer"
+Q105770456	Amul	"Richard Floyer"
+Q105770456	Lnl	"John Floyer"
+#   Q105770454: Joan|Margaret Cloford (Clawford) -> Joan Cloford (Clawford)   + Margaret Cloford (Clawford)
+Q105770454	Len	"Joan Cloford (Clawford)"
+Q105770454	Lmul	"Joan Cloford (Clawford)"
+Q105770454	Amul	"Margaret Cloford (Clawford)"
+#   Q105770439: Joan Penniles (Pennells|Pennalls) -> Joan Penniles   + Joan Pennells | Joan Pennalls
+Q105770439	Len	"Joan Penniles"
+Q105770439	Lmul	"Joan Penniles"
+Q105770439	Amul	"Joan Pennells"
+Q105770439	Amul	"Joan Pennalls"
+#   Q105770364: Joan|Jane Cheney (or Cheyne) -> Joan Cheney (or Cheyne)   + Jane Cheney (or Cheyne)
+Q105770364	Len	"Joan Cheney (or Cheyne)"
+Q105770364	Lmul	"Joan Cheney (or Cheyne)"
+Q105770364	Amul	"Jane Cheney (or Cheyne)"
+#   Q105768735: Hawise|Helwise de Stuteville -> Hawise de Stuteville   + Helwise de Stuteville
+Q105768735	Len	"Hawise de Stuteville"
+Q105768735	Lmul	"Hawise de Stuteville"
+Q105768735	Amul	"Helwise de Stuteville"
+Q105768735	Lnl	"Hawise de Stuteville"
+#   Q105768731: Hawise|Helwise de Lancaster, Baroness Kendal -> Hawise de Lancaster, Baroness Kendal   + Helwise de Lancaster, Baroness Kendal
+Q105768731	Len	"Hawise de Lancaster, Baroness Kendal"
+Q105768731	Lmul	"Hawise de Lancaster, Baroness Kendal"
+Q105768731	Amul	"Helwise de Lancaster, Baroness Kendal"
+Q105768731	Lnl	"Hawise de Lancaster, Baroness Kendal"
+#   Q105768384: Agnes|Alice de Grey -> Agnes de Grey   + Alice de Grey
+Q105768384	Len	"Agnes de Grey"
+Q105768384	Lmul	"Agnes de Grey"
+Q105768384	Amul	"Alice de Grey"
+Q105768384	Lnl	"Agnes de Grey"
+#   Q105768306: Jane|Elizabeth|Joan Beaumont -> Jane Beaumont   + Elizabeth Beaumont | Joan Beaumont
+Q105768306	Len	"Jane Beaumont"
+Q105768306	Lmul	"Jane Beaumont"
+Q105768306	Amul	"Elizabeth Beaumont"
+Q105768306	Amul	"Joan Beaumont"
+Q105768306	Lnl	"Jane Beaumont"
+#   Q105767160: Eden|Idonea Hunt -> Eden Hunt   + Idonea Hunt
+Q105767160	Len	"Eden Hunt"
+Q105767160	Lmul	"Eden Hunt"
+Q105767160	Amul	"Idonea Hunt"
+Q105767160	Lnl	"Eden Hunt"
+#   Q105726316 Irmgard von Schwarzburg Gräfin: add a mul alias "Irmgard von Weimar-Orlamünde Gräfin"
+Q105726316	Amul	"Irmgard von Weimar-Orlamünde Gräfin"
+#   Q105554455: Esther Griner|Crider -> Esther Griner   + Esther Crider
+Q105554455	Len	"Esther Griner"
+Q105554455	Lmul	"Esther Griner"
+Q105554455	Amul	"Esther Crider"
+Q105554455	Lnl	"Esther Griner"
+#   Q104799486: Joan|Jane Threlkeld (Thirkeld) -> Joan Threlkeld (Thirkeld)   + Jane Threlkeld (Thirkeld)
+Q104799486	Len	"Joan Threlkeld (Thirkeld)"
+Q104799486	Lmul	"Joan Threlkeld (Thirkeld)"
+Q104799486	Amul	"Jane Threlkeld (Thirkeld)"
+#   Q104785128: Roger|John|Thomas Heritage, of Burton Dasset -> Roger Heritage, of Burton Dasset   + John Heritage, of Burton Dasset | Thomas Heritage, of Burton Dasset
+Q104785128	Len	"Roger Heritage, of Burton Dasset"
+Q104785128	Lmul	"Roger Heritage, of Burton Dasset"
+Q104785128	Amul	"John Heritage, of Burton Dasset"
+Q104785128	Amul	"Thomas Heritage, of Burton Dasset"
+Q104785128	Lnl	"Roger Heritage, of Burton Dasset"
+#   Q104773030: Wenzel|Wentsch IV von Dohna zu Herwigsdorf und Wittgendorf -> Wenzel IV von Dohna zu Herwigsdorf und Wittgendorf   + Wentsch IV von Dohna zu Herwigsdorf und Wittgendorf
+Q104773030	Len	"Wenzel IV von Dohna zu Herwigsdorf und Wittgendorf"
+Q104773030	Lmul	"Wenzel IV von Dohna zu Herwigsdorf und Wittgendorf"
+Q104773030	Amul	"Wentsch IV von Dohna zu Herwigsdorf und Wittgendorf"
+Q104773030	Lnl	"Wenzel IV von Dohna zu Herwigsdorf und Wittgendorf"
+#   Q104773029: Wenzel|Wentsch von Dohna zu Radmeritz, herr von Grafenstein -> Wenzel von Dohna zu Radmeritz, herr von Grafenstein   + Wentsch von Dohna zu Radmeritz, herr von Grafenstein
+Q104773029	Len	"Wenzel von Dohna zu Radmeritz, herr von Grafenstein"
+Q104773029	Lmul	"Wenzel von Dohna zu Radmeritz, herr von Grafenstein"
+Q104773029	Amul	"Wentsch von Dohna zu Radmeritz, herr von Grafenstein"
+Q104773029	Lnl	"Wenzel von Dohna zu Radmeritz, herr von Grafenstein"
+#   Q104773019: Freiin Anna|Johanna von Wolharticz -> Freiin Anna von Wolharticz   + Freiin Johanna von Wolharticz
+Q104773019	Len	"Freiin Anna von Wolharticz"
+Q104773019	Lmul	"Freiin Anna von Wolharticz"
+Q104773019	Amul	"Freiin Johanna von Wolharticz"
+Q104773019	Lnl	"Freiin Anna von Wolharticz"
+#   Q104603612: Simon|Stephen de Peplesham -> Simon de Peplesham   + Stephen de Peplesham
+Q104603612	Len	"Simon de Peplesham"
+Q104603612	Lmul	"Simon de Peplesham"
+Q104603612	Amul	"Stephen de Peplesham"
+Q104603612	Lnl	"Simon de Peplesham"
+#   Q104550851: Elisabeth|Else von Maydell, Heiress of Joesse -> Elisabeth von Maydell, Heiress of Joesse   + Else von Maydell, Heiress of Joesse
+Q104550851	Len	"Elisabeth von Maydell, Heiress of Joesse"
+Q104550851	Lmul	"Elisabeth von Maydell, Heiress of Joesse"
+Q104550851	Amul	"Else von Maydell, Heiress of Joesse"
+Q104550851	Lnl	"Elisabeth von Maydell, Heiress of Joesse"
+#   Q104550087: Kerstin|Karin -> Kerstin   + Karin
+Q104550087	Len	"Kerstin"
+Q104550087	Lmul	"Kerstin"
+Q104550087	Amul	"Karin"
+Q104550087	Lnl	"Kerstin"
+#   Q104503644: Marion|Margery Mitford -> Marion Mitford   + Margery Mitford
+Q104503644	Len	"Marion Mitford"
+Q104503644	Lmul	"Marion Mitford"
+Q104503644	Amul	"Margery Mitford"
+Q104503644	Lnl	"Marion Mitford"
+#   Q104484515: Aynon de Ives (Ince|Ines) -> Aynon de Ives   + Aynon de Ince | Aynon de Ines
+Q104484515	Len	"Aynon de Ives"
+Q104484515	Lmul	"Aynon de Ives"
+Q104484515	Amul	"Aynon de Ince"
+Q104484515	Amul	"Aynon de Ines"
+#   Q104484513: Ellen de Ives (Ince|Ines) -> Ellen de Ives   + Ellen de Ince | Ellen de Ines
+Q104484513	Len	"Ellen de Ives"
+Q104484513	Lmul	"Ellen de Ives"
+Q104484513	Amul	"Ellen de Ince"
+Q104484513	Amul	"Ellen de Ines"
+#   Q104484426: Joan|Julian Hovel -> Joan Hovel   + Julian Hovel
+Q104484426	Len	"Joan Hovel"
+Q104484426	Lmul	"Joan Hovel"
+Q104484426	Amul	"Julian Hovel"
+Q104484426	Lnl	"Joan Hovel"
+#   Q104473674: Sir Roger|Robert Leche, of Chatsworth -> Sir Roger Leche, of Chatsworth   + Sir Robert Leche, of Chatsworth
+Q104473674	Len	"Sir Roger Leche, of Chatsworth"
+Q104473674	Lmul	"Sir Roger Leche, of Chatsworth"
+Q104473674	Amul	"Sir Robert Leche, of Chatsworth"
+Q104473674	Lnl	"Sir Roger Leche, of Chatsworth"
+#   Q104473578: Elizabeth|Beatrice Lewknor -> Elizabeth Lewknor   + Beatrice Lewknor
+Q104473578	Len	"Elizabeth Lewknor"
+Q104473578	Lmul	"Elizabeth Lewknor"
+Q104473578	Amul	"Beatrice Lewknor"
+Q104473578	Lnl	"Elizabeth Lewknor"
+#   Q104473559: Maud|Matilda -> Maud   + Matilda
+Q104473559	Len	"Maud"
+Q104473559	Lmul	"Maud"
+Q104473559	Amul	"Matilda"
+Q104473559	Lnl	"Maud"
+#   Q104473541: Agnes|Anne Stanhope -> Agnes Stanhope   + Anne Stanhope
+Q104473541	Len	"Agnes Stanhope"
+Q104473541	Lmul	"Agnes Stanhope"
+Q104473541	Amul	"Anne Stanhope"
+Q104473541	Lnl	"Agnes Stanhope"
+#   Q104473372: Robert de Grober (Grobere|Grobbere) -> Robert de Grober   + Robert de Grobere | Robert de Grobbere
+Q104473372	Len	"Robert de Grober"
+Q104473372	Lmul	"Robert de Grober"
+Q104473372	Amul	"Robert de Grobere"
+Q104473372	Amul	"Robert de Grobbere"
+#   Q104473370: William de Grobere (Grober|Grobbere), of Rushall -> William de Grobere   + William de Grober | William de Grobbere
+Q104473370	Len	"William de Grobere, of Rushall"
+Q104473370	Lmul	"William de Grobere"
+Q104473370	Amul	"William de Grober"
+Q104473370	Amul	"William de Grobbere"
+Q104473370	Lnl	"William de Grobere"
+#   Q104473158: William Kynardsley, of Loxton|Loxley -> William Kynardsley, of Loxton   + William Kynardsley, of Loxley
+Q104473158	Len	"William Kynardsley, of Loxton"
+Q104473158	Lmul	"William Kynardsley, of Loxton"
+Q104473158	Amul	"William Kynardsley, of Loxley"
+Q104473158	Lnl	"William Kynardsley, of Loxton"
+#   Q104473135: William|John|Roger Dethick, of Newhall, Derbs -> William Dethick, of Newhall, Derbs   + John Dethick, of Newhall, Derbs | Roger Dethick, of Newhall, Derbs
+Q104473135	Len	"William Dethick, of Newhall, Derbs"
+Q104473135	Lmul	"William Dethick, of Newhall, Derbs"
+Q104473135	Amul	"John Dethick, of Newhall, Derbs"
+Q104473135	Amul	"Roger Dethick, of Newhall, Derbs"
+Q104473135	Lnl	"William Dethick, of Newhall, Derbs"
+#   Q104473124: NN de Haselrick (Hazelrigg|Hesilrige) -> NN de Haselrick   + NN de Hazelrigg | NN de Hesilrige
+Q104473124	Len	"NN de Haselrick"
+Q104473124	Lmul	"NN de Haselrick"
+Q104473124	Amul	"NN de Hazelrigg"
+Q104473124	Amul	"NN de Hesilrige"
+#   Q104473012: Margery|Margaret Sulney -> Margery Sulney   + Margaret Sulney
+Q104473012	Len	"Margery Sulney"
+Q104473012	Lmul	"Margery Sulney"
+Q104473012	Amul	"Margaret Sulney"
+Q104473012	Lnl	"Margery Sulney"
+#   Q104473002: Alice|Margaret Deincourt -> Alice Deincourt   + Margaret Deincourt
+Q104473002	Len	"Alice Deincourt"
+Q104473002	Lmul	"Alice Deincourt"
+Q104473002	Amul	"Margaret Deincourt"
+Q104473002	Lnl	"Alice Deincourt"
+#   Q104472984: Helen|Ellen Longford -> Helen Longford   + Ellen Longford
+Q104472984	Len	"Helen Longford"
+Q104472984	Lmul	"Helen Longford"
+Q104472984	Amul	"Ellen Longford"
+Q104472984	Lnl	"Helen Longford"
+#   Q104472594: Anne|Agnes Knyvett -> Anne Knyvett   + Agnes Knyvett
+Q104472594	Len	"Anne Knyvett"
+Q104472594	Lmul	"Anne Knyvett"
+Q104472594	Amul	"Agnes Knyvett"
+Q104472594	Lnl	"Anne Knyvett"
+#   Q104472437: Thomas Wilde (Weild|Wylde), of Borasham -> Thomas Wilde   + Thomas Weild | Thomas Wylde
+Q104472437	Len	"Thomas Wilde, of Borasham"
+Q104472437	Lmul	"Thomas Wilde"
+Q104472437	Amul	"Thomas Weild"
+Q104472437	Amul	"Thomas Wylde"
+Q104472437	Lnl	"Thomas Wilde"
+#   Q104472345: Agnes|Joan Aston -> Agnes Aston   + Joan Aston
+Q104472345	Len	"Agnes Aston"
+Q104472345	Lmul	"Agnes Aston"
+Q104472345	Amul	"Joan Aston"
+Q104472345	Lnl	"Agnes Aston"
+#   Q104472175: Katherine|Catherine le Brett -> Katherine le Brett   + Catherine le Brett
+Q104472175	Len	"Katherine le Brett"
+Q104472175	Lmul	"Katherine le Brett"
+Q104472175	Amul	"Catherine le Brett"
+Q104472175	Lnl	"Katherine le Brett"
+#   Q104472165: Emma|Emeline -> Emma   + Emeline
+Q104472165	Len	"Emma"
+Q104472165	Lmul	"Emma"
+Q104472165	Amul	"Emeline"
+Q104472165	Lnl	"Emma"
+#   Q104472091: Eleanor|Ellen Limbury -> Eleanor Limbury   + Ellen Limbury
+Q104472091	Len	"Eleanor Limbury"
+Q104472091	Lmul	"Eleanor Limbury"
+Q104472091	Amul	"Ellen Limbury"
+Q104472091	Lnl	"Eleanor Limbury"
+#   Q104472089: Sir Nicholas de Bernake (Barnard|Bernard), of Hoffingham -> Nicholas de Bernake   + Nicholas de Barnard | Nicholas de Bernard
+Q104472089	Len	"Nicholas de Bernake, of Hoffingham"
+Q104472089	Lmul	"Nicholas de Bernake"
+Q104472089	Amul	"Nicholas de Barnard"
+Q104472089	Amul	"Nicholas de Bernard"
+Q104472089	Lnl	"Nicholas de Bernake"
+#   Q104472085: Margaret de Bernake (Barnard|Bernard|Bernack) -> Margaret de Bernake   + Margaret de Barnard | Margaret de Bernard | Margaret de Bernack
+Q104472085	Len	"Margaret de Bernake"
+Q104472085	Lmul	"Margaret de Bernake"
+Q104472085	Amul	"Margaret de Barnard"
+Q104472085	Amul	"Margaret de Bernard"
+Q104472085	Amul	"Margaret de Bernack"
+#   Q104472021: Maud|Margery Mablethorpe -> Maud Mablethorpe   + Margery Mablethorpe
+Q104472021	Len	"Maud Mablethorpe"
+Q104472021	Lmul	"Maud Mablethorpe"
+Q104472021	Amul	"Margery Mablethorpe"
+Q104472021	Lnl	"Maud Mablethorpe"
+#   Q104471997: Roger|Richard de Welby, of Moulton and Welby -> Roger de Welby, of Moulton and Welby   + Richard de Welby, of Moulton and Welby
+Q104471997	Len	"Roger de Welby, of Moulton and Welby"
+Q104471997	Lmul	"Roger de Welby, of Moulton and Welby"
+Q104471997	Amul	"Richard de Welby, of Moulton and Welby"
+Q104471997	Lnl	"Roger de Welby, of Moulton and Welby"
+#   Q104471993: Margaret|Katherine Welby -> Margaret Welby   + Katherine Welby
+Q104471993	Len	"Margaret Welby"
+Q104471993	Lmul	"Margaret Welby"
+Q104471993	Amul	"Katherine Welby"
+Q104471993	Lnl	"Margaret Welby"
+#   Q104471987: Joan|Jane Bawde -> Joan Bawde   + Jane Bawde
+Q104471987	Len	"Joan Bawde"
+Q104471987	Lmul	"Joan Bawde"
+Q104471987	Amul	"Jane Bawde"
+Q104471987	Lnl	"Joan Bawde"
+#   Q104471664: Mary|Elizabeth Port, of Etwall -> Mary Port, of Etwall   + Elizabeth Port, of Etwall
+Q104471664	Len	"Mary Port, of Etwall"
+Q104471664	Lmul	"Mary Port, of Etwall"
+Q104471664	Amul	"Elizabeth Port, of Etwall"
+Q104471664	Lnl	"Mary Port, of Etwall"
+#   Q104471578: Matilda|Maud Brereton -> Matilda Brereton   + Maud Brereton
+Q104471578	Len	"Matilda Brereton"
+Q104471578	Lmul	"Matilda Brereton"
+Q104471578	Amul	"Maud Brereton"
+Q104471578	Lnl	"Matilda Brereton"
+#   Q104074594: Magdalen|Janet Leslie, of Balquhain -> Magdalen Leslie, of Balquhain   + Janet Leslie, of Balquhain
+Q104074594	Len	"Magdalen Leslie, of Balquhain"
+Q104074594	Lmul	"Magdalen Leslie, of Balquhain"
+Q104074594	Amul	"Janet Leslie, of Balquhain"
+Q104074594	Lnl	"Magdalen Leslie, of Balquhain"
+#   Q104039110: Gilbert Haltoft (Holtoft|Haultost) -> Gilbert Haltoft   + Gilbert Holtoft | Gilbert Haultost
+Q104039110	Len	"Gilbert Haltoft"
+Q104039110	Lmul	"Gilbert Haltoft"
+Q104039110	Amul	"Gilbert Holtoft"
+Q104039110	Amul	"Gilbert Haultost"
+#   Q104038966: Margaret Lucolind (Lucombe|Luccombe) -> Margaret Lucolind   + Margaret Lucombe | Margaret Luccombe
+Q104038966	Len	"Margaret Lucolind"
+Q104038966	Lmul	"Margaret Lucolind"
+Q104038966	Amul	"Margaret Lucombe"
+Q104038966	Amul	"Margaret Luccombe"
+#   Q104038933: Elianor|Alice Bellers (Beler) -> Elianor Bellers (Beler)   + Alice Bellers (Beler)
+Q104038933	Len	"Elianor Bellers (Beler)"
+Q104038933	Lmul	"Elianor Bellers (Beler)"
+Q104038933	Amul	"Alice Bellers (Beler)"
+#   Q104038920: Anne|Alice Scott -> Anne Scott   + Alice Scott
+Q104038920	Len	"Anne Scott"
+Q104038920	Lmul	"Anne Scott"
+Q104038920	Amul	"Alice Scott"
+Q104038920	Lnl	"Anne Scott"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
