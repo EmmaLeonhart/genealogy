@@ -590,6 +590,18 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **⛔ AND THE EXPORT IS NOT COMPREHENSIVE.** *"we do not need to do nearly as comprehensive an
     export on them."*
 
+    **⛔ ONE MORE EXPORT AND THIS ROOT IS DONE. IT IS NOT IMPORTANT ENOUGH FOR MORE.**
+    Ruled 2026-09-12: *"The descendants of Abu Hamza are important. The descendants of this
+    person are less important ... they're already kinda partially exported in a weird way. So,
+    like, I just want one more export, and I don't wanna have to do much, like, thinking or
+    whatever on this."* Five exports total, then stop. **No overlap analysis, no cluster
+    reasoning, no write-up** — take the extension's next hit, export it, file it, leave.
+
+    ⛔ **AND THE EFFORT SPENT HERE WAS DISPROPORTIONATE.** Said in the same message and recorded
+    as the correction it is: this root got a census sweep, a frame change, four exports and four
+    devlog entries, against a stated importance well below Abul Hamza's. **Abul Hamza is the
+    priority and this was crowding it.**
+
     **⛔ THE GENERATION 13-25 BAND IS THIS ROOT ONLY, AND THE METHOD REVERTS AFTERWARDS.**
     Ruled 2026-09-12: *"Page views are cheap, but imo this is a special case and we return to
     monte carlo after it."* So `reports/descent-from-6000000035218690155-gen13-25.csv` — 1,649 of
