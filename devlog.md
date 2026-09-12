@@ -38711,3 +38711,33 @@ found no button.
 **The only reliable signal is the button**: `a,button,input` whose text matches
 `/download my gedcom/i`. Presence means built; absence means building. The text of the page says
 the opposite of what a substring search for `ready` returns.
+
+## 2026-09-12 — a second climb converged on the same subject and spent a slot on a duplicate ball
+
+**Enguerrand Le Portier de Marigny `6000000012697860316`**, a banked 15,000-descendant hit. The
+climb ended on **`6000000027492201090` — the same subject round 3 seeded** — and created the
+opposite parent.
+
+    seed 6000000227717534826   round 3, father   1,926 new
+    seed 6000000227720080850   this one, mother      1 new
+    shared                                        4,999 of 5,000
+
+**It was predicted before the ball was collected** and the prediction is recorded above: *"the
+climb landed on the same subject as round 3's seed … that's the duplicate-parent shape that made
+two Circassian balls share 4,999 of 5,000 people. Measuring rather than assuming."*
+
+**⛔ THIS IS THE SECOND INSTANCE, SO IT IS A SHAPE AND NOT AN ACCIDENT.** The first was hinge
+persons 2 and 3 on 2026-09-12, whose balls also shared 4,999 of 5,000 for the same reason.
+`createdPids` stops one run creating two placeholders for the same person; it does not stop **two
+different Monte Carlo hits climbing into the same open family** and taking the father slot and
+then the mother slot. Nothing in the walk can see that without walking first, which is why it
+costs a real export slot — this one took roughly forty minutes of build time to return one person.
+
+**The check that would catch it is free and is not implemented**: before exporting a created
+seed, ask whether the subject it was created on already appears as a subject in
+`reports/descendants-export-log.csv`. **Not built here** — it is a code change nobody asked for,
+and § *the stupider and more specific the instruction* cuts against inventing guards mid-run. It
+is written down so the decision is available rather than rediscovered a third time.
+
+**Filed anyway**, per the same rule as the Circassian duplicate: a submitted export cannot be
+cancelled and integrating it is the job.
