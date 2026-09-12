@@ -37646,3 +37646,45 @@ The item does carry one thing forward: when it is worked, the deliverable is a *
 instance, committed, then the analysis of that CSV** — `CLAUDE.md` § *"Analyse this" means: build
 a CSV of every instance, commit it, then analyse that*. Nine screenshots are where the question
 comes from, not the evidence base it gets answered from.
+
+## 2026-09-11 — target 10 cost 239 climbs and nearly lost them to a confirmation that was early, not wrong
+
+**Christine de'Medici (de Lorraine), duchess of Tuscany `6000000006444307257`** — the most
+expensive climb of the campaign, past Maria Anna Victoria's 197. Every one of the 239 steps came
+back `both_present`; a Medici–Lorraine line is attested about as far up as this tree goes.
+
+It ended on **`add_not_confirmed`**: a mother was created on Costanza Aldobrandeschi
+`6000000001084906154`, the save could not be read back, and with no `pid` the background had
+nothing to export from. The run stopped with a real person written to Geni and 239 climbs spent.
+
+**The creation had worked.** Loading the same profile by hand a few minutes later:
+
+    father   Nicola Aldobrandeschi   6000000017185976183   <- in pendingCreate.before
+    mother   NN Aldobrandeschi       6000000227710397834   <- the new one
+
+So `confirmCreate` was not wrong about the page, it was **early**. It waits 30s on the page Geni
+redirects to after the save, and nothing about that redirect guarantees the new parent is
+rendered by then. Backfilled into `createdPids` (19), enqueued the export on it, and the extension
+submitted it under `1.7.42` — task `6000000227709743032`.
+
+**`1.7.39`'s guard did its job in the middle of this.** The SUBJECT went into `createdPids` when
+the confirmation failed, so no later run can walk back to Costanza and make her a second mother —
+which is exactly the duplicate that happened to Lucrezia Landriani before that fix.
+
+### `1.7.43`: re-read on a fresh page load instead of giving up
+
+A fresh page load is what resolved this by hand, and the machinery for it already exists — a
+`seed` job on the subject re-claims, and `claim` hands back `confirm_create` whenever
+`pendingCreate` names that person. So `add_not_confirmed` now re-queues the subject and runs the
+same confirmation again on a page loaded from scratch. `pendingCreate` is deliberately kept: it is
+what makes the re-claim a confirmation rather than a second creation.
+
+⛔ **Bounded at three attempts, because the failure mode is writing people to a live site.**
+`creating` stays set throughout, so `pump` will not open any other seed page and the walk cannot
+restart — the only thing a retry can do is re-read one profile. After the third the run stops
+exactly as it does today, with the subject in `createdPids`.
+
+**Not verified yet.** It is committed and the browser has not been restarted onto it; the next
+`add_not_confirmed` is its first real test, and until then the by-hand recovery above is the
+method. The recovery is three steps and worth writing down: read the subject's card grid, diff
+against `pendingCreate.before`, then `note_created` the new pid and enqueue the export on it.

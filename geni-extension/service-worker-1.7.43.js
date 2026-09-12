@@ -108,6 +108,9 @@ const DEFAULTS = {
   startedAt: null,
   //: The id `addAncestor` returned: what the export runs from.
   endId: "",
+  /* How many times `add_not_confirmed` has been re-read on a fresh page load this run. Bounded
+   * at 3 where it is used; reset by every fresh walk, never carried across runs. */
+  confirmRetries: 0,
   /* Set when Geni answers 429; `pump` opens nothing until it passes. */
   cooldownUntil: 0,
   /* Every id the extension has run on this run, whatever the outcome. See the result handler. */
@@ -388,6 +391,46 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        *
        * The remaining seed jobs are dropped rather than kept: they were the search for a slot,
        * and the slot has been found. */
+      /* ⛔ **`add_not_confirmed` IS EARLY, NOT WRONG, AND IT WAS COSTING THE WHOLE CLIMB.**
+       *
+       * `confirmCreate` waits 30s on the page Geni redirects to after the save. When the parent
+       * has not appeared by then the run ends with no `pid`, no export, and a real person written
+       * to Geni -- **and the climb that found the slot is spent.** Target 10 cost **239 climbs**,
+       * the most of the campaign, and ended exactly there.
+       *
+       * **The creation had worked.** The same profile, loaded by hand a few minutes later, showed
+       * `NN Aldobrandeschi` `6000000227710397834` beside the father that was in `before`. So the
+       * confirmation was not wrong about the page, it was early: nothing on the redirect
+       * guarantees Geni has the new parent rendered within 30s of writing it.
+       *
+       * A FRESH PAGE LOAD is what resolves it, and the machinery for that already exists -- a
+       * `seed` job on the subject re-claims, and `claim` hands back `confirm_create` whenever
+       * `pendingCreate` names that person. So this re-queues the subject and lets the same path
+       * run again on a page loaded from scratch. `pendingCreate` is deliberately KEPT, because it
+       * is what turns the re-claim into a confirmation instead of a second creation.
+       *
+       * ⛔ **BOUNDED, BECAUSE THE FAILURE MODE IS WRITING PEOPLE TO A LIVE SITE.** Three
+       * attempts. `creating` stays set throughout, so `pump` will not open any other seed page
+       * and the walk cannot restart; the only thing this can do is re-read one profile. After the
+       * third the run stops exactly as it does today, with the subject in `createdPids` so no
+       * later run can make a second parent on them. */
+      if (msg.result && msg.result.state === "add_not_confirmed") {
+        const tries = (s.confirmRetries || 0) + 1;
+        const subject = String(msg.result.geni_id || "");
+        if (subject && s.pendingCreate && tries <= 3) {
+          await put({ active, results, attempted,
+                      queue: [{ job: "seed", geni_id: subject, kind: "confirm-retry", label: "" }]
+                               .concat(s.queue.filter((q) => q.job !== "seed")),
+                      confirmRetries: tries, running: true });
+          try { await chrome.tabs.remove(tabId); } catch (e) {}
+          sendResponse(true);
+          pump();
+          return;
+        }
+        /* Out of attempts. Fall through to the ordinary handling, which records the result and
+         * leaves the run stopped -- the subject is already in `createdPids`. */
+      }
+
       if (msg.result && msg.result.state === "added") {
         /* ⛔ **AND THE EXPORT IS REQUESTED FROM THE PARENT.** Emma, 2026-09-09: *"Once it has
          * created the parent, then the queue gets thrown out, and the export is requested from
@@ -538,6 +581,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         queue: [{ job: "individual", geni_id: id, kind: "individual",
                   create: true, label: msg.label || "" }],
         results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
+        confirmRetries: 0,
         pendingCreate: null,
         exportWalk: msg.exportWalk || "forest",
         running: true, startedAt: new Date().toISOString()
@@ -635,6 +679,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         mcRounds: 0,
         queue: cands.map((id) => ({ job: "stats", geni_id: id, kind: "stats", label: "" })),
         results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
+        confirmRetries: 0,
         pendingCreate: null,
         exportWalk: "descendants",
         waitMs: msg.waitMs || 3600000,
@@ -652,6 +697,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       await put({
         queue: [{ job: "seed", geni_id: id, kind: "seed", label: msg.label || "" }],
         results: [], attempted: [], active: {}, endId: "", dryRun: false, creating: "",
+        confirmRetries: 0,
         pendingCreate: null,
         exportWalk: msg.exportWalk || "forest",
         /* ⛔ AN HOUR, NOT THE TEN-MINUTE DEFAULT. `DEFAULTS.waitMs` is 600000 and it is the
