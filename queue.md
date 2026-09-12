@@ -691,16 +691,43 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     named and counting it — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN
     AND STOP*.
 
-  - The two most eccentric ancient **Chinese** clusters
-  - **Adasi**
-  - **Genghis Khan**
-  - **Aztec Emperors**
-  - **Inca Emperors**
-  - **Confucius**
-  - **Charlemagne**
-  - **Hermenegildo Gutteres**
-  - **Fihr**, ancestor of the Quraysh
-  - **Emperor Jimmu**
+  - **⛔ THE SEEDS FOR THE REST OF THE ROSTER, SUPPLIED 2026-09-12.** Every one is a profile to
+    export FROM, so the create-an-ancestor step is already done and must not be repeated on them.
+
+        6000000227036719829  Chinese cluster 1     https://www.geni.com/people/NN/6000000227036719829
+        ????                 Chinese cluster 2     SEE BELOW -- not identified
+        6000000227712700862  Adasi
+        6000000227039926826  Genghis Khan          NN Borjigin
+        6000000209721868822  Aztec Emperors        NN Mixcoamatzin
+        6000000209721822822  Inca Emperors
+        6000000227713034875  Confucius             NN 子姓
+        6000000211987119821  Hermenegildo Gutteres NN de Coimbra
+        6000000227714378863  Fihr / Quraysh        NN NN
+        6000000227713229918  Emperor Jimmu
+
+    **⛔ THREE OF THEM ALREADY HAVE BALLS ON DISK** — checked before spending an export slot:
+
+        6000000227039926826   exports/descendants/export-Descendants-…
+        6000000209721868822   two balls, exports/8-19 exports/ and exports/edges/
+        6000000209721822822   exports/edges/ — BOTH Descendants and Forest
+
+    **⛔ THE SECOND CHINESE ENTRY POINT IS NOT IDENTIFIED AND MUST NOT BE GUESSED.**
+    *"there is one other person, you can really look through the logs to see who they are, we
+    added them as entry points about a week ago when we were doing graph eccentricity analysis."*
+    Searched: `reports/entry-points.tsv` holds only **two** rows, George R.R. Martin and Robert
+    Ettinger, neither Chinese; `d0c6bc5d` says Shaohao, Zhuanxu, Nuxiu, Daye, Gaoyao and Bo Yi
+    went in as 2027 entry points but they are not in that file now; the known seed
+    `6000000227036719829` is a `NN` created 2026-08-04 sitting in **cluster rank 1** at every cut,
+    and the two other `NN` placeholders in rank 1 — `6000000209595340830`, `6000000227085766947` —
+    are in the SAME cluster, so neither is the second one.
+    **A wrong Geni id points at a stranger's profile** (`CLAUDE.md` § the `@NI04461@` failure), so
+    this is asked rather than picked.
+
+  - **⛔ CHARLEMAGNE `6000000002457013227` — COMPLETE 2026-09-12, ON HER OWN CONDITION.**
+    *"we cannot really export from him but if he has anywhere close to the descendant count that
+    Gamle Olof has then no need for this."* **456,723 descendants already in the corpus**, 49
+    generations — `reports/descent-from-6000000002457013227.csv`, walked offline. That is **6.5x**
+    Gamle Olof's 70,011, so the condition is met by a wide margin and no export is run.
 
   Nothing on this list is investigated, measured or seeded until the Wikidata paths are done —
   `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.

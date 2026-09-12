@@ -38402,3 +38402,47 @@ the real cost of the attempt; it was stopped once the refusal was read off the p
 
 **The queue item is removed and the enumeration stays.** `reports/descent-from-5328189268700111491.csv`
 is committed and is the artifact the detour was for.
+
+## 2026-09-12 — the roster gets its Geni ids, Charlemagne is complete, and three seeds already have balls
+
+**Emma supplied a seed for every remaining roster entry.** Each is a profile to export FROM, so
+the create-an-ancestor step is already done on all of them.
+
+### Charlemagne `6000000002457013227` — complete, on the condition she set
+
+*"we cannot really export from him but if he has anywhere close to the descendant count that
+Gamle Olof has then no need for this."*
+
+    456,723 descendants already in the corpus, 49 generations
+    against Gamle Olof's 70,011 -- 6.5x
+
+`reports/descent-from-6000000002457013227.csv`, walked offline out of the `.ged` files with no
+Geni traffic. The condition is met by a wide margin, so no export is attempted and the item is
+closed. That he cannot be exported from is separately true and was measured on Gamle Olof an hour
+earlier: an unowned profile returns *"You are not allowed to export that profile."*
+
+### Three of the ten seeds already have balls, checked before spending a slot
+
+    6000000227039926826  Genghis Khan     exports/descendants/export-Descendants-…
+    6000000209721868822  Aztec Emperors   two balls -- exports/8-19 exports/ and exports/edges/
+    6000000209721822822  Inca Emperors    exports/edges/ -- BOTH Descendants and Forest
+
+**One `ls` against `exports/` before each export is the cheapest check in the campaign**, and it
+is the one that was missing when the NN root spent three slots re-collecting the Circassian core.
+
+### ⛔ THE SECOND CHINESE ENTRY POINT WAS SEARCHED FOR AND IS NOT IDENTIFIED
+
+*"there is one other person, you can really look through the logs to see who they are."* The logs
+were searched and the answer is not in them:
+
+* `reports/entry-points.tsv` holds **two rows** — George R.R. Martin and Robert Ettinger. Neither
+  is Chinese.
+* `d0c6bc5d` (2026-09-03) says Shaohao, Zhuanxu, Nuxiu, Daye, Gaoyao and Bo Yi were added to that
+  file as 2027 entry points. **They are not in it now**, which is its own loose end.
+* The supplied seed `6000000227036719829` is an `NN` created 2026-08-04 and sits in **cluster
+  rank 1** at every cut. The only other `NN` placeholders in rank 1 —
+  `6000000209595340830` and `6000000227085766947` — are in the **same** cluster, so neither is
+  the seed for the second one.
+
+**Asked rather than picked.** `CLAUDE.md`'s `@NI04461@` failure is exactly this: a Geni id that
+looks right and points at a stranger.
