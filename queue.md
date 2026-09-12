@@ -1208,3 +1208,14 @@ please just get the pipeline to run all of the quickstatements as wikidata edits
 ## Additional item
 
 Given names and surnames should have our standardized cjk-izations attached to them. imo they should even be the source of it in the logic. update the old ones to this form and new ones are always gonna be created in this manner
+
+## Another item
+
+Export descendants of these people, idk their status, ancestor climb and then descendants export
+
+Sayaluna ata 6000000008384075400, 
+Hélène de Corday 6000000000746523797, 
+Robert d'Esneval VI 6000000026257912323, 
+Inês de Bettencourt I 6000000001435366077, 
+Pietro Antonio di Capua 6000000015633226273, 
+Jacques Grimaldi 6000000015647948256. 
