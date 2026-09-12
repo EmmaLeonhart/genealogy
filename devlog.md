@@ -39143,3 +39143,26 @@ and takes the same forced order: Forest, Descendants, rebuild the descent, then 
     Chinese 2      39 ·   33 · 3,969
     Adasi         141 ·  182 ·     0      (plus a reseed past the bottleneck, 1 new)
     Fihr          363 ·  266 · 1,238
+
+## 2026-09-12 — the two hand-submitted exports never emailed, and both need resubmitting
+
+**Four scheduled inbox checks — 15:45, 16:00, 16:30, 17:00 — found no GEDCOM-ready mail.** The
+newest *"Your GEDCOM export is ready at Geni"* in the account is still **2026-09-09**. Every Geni
+message from today is a relationship notification.
+
+    6000000227713034875  Confucius      Descendants, hand-submitted ~15:10, id lost
+    6000000211987119821  Hermenegildo   Descendants, hand-submitted ~16:1x, id lost
+
+**Two readings and this side cannot tell them apart.** Either the builds are simply slow — one
+export today took 75 minutes — or **the hand-submit never queued the job at all**. The page said
+*"Your GEDCOM file is being created"*, but that page renders off the request URL and is not proof
+a task exists; the honest position is that a submit which never produced a `task_id` also never
+produced evidence of a task.
+
+**Not resubmitted yet, deliberately.** A submitted export cannot be cancelled, so if the originals
+do land, a resubmit costs a second slot on each for nothing. The cheap resolution is one more
+inbox check later and a resubmit only if it is still empty — and by **single extension dispatch**,
+which has captured the id every time this session.
+
+**This is the second cost of the hand-submit**, after the lost ids themselves: it leaves work in a
+state where neither *done* nor *not done* can be established without waiting.
