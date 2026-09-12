@@ -665,7 +665,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     family tree a bit ... I'm going to look and probably make the person manually just because
     I'm trying to get a specific thing."* So the undecided question below — whether the seed rule
     applies on top of Knut — **is not for this side to answer and must not be guessed**. The
-    campaign skips to Gamle Olof and comes back only when she says the person exists.
+    campaign skipped past this until she made the person, which she has.
 
     **He replaces Bergitte as the person to go from, not as the target** — the campaign is still
     her descendants, and he is where the export starts. Whether the seed rule still applies on
@@ -674,37 +674,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     interpreted.
 
     Nothing about either of them is investigated, measured, seeded or grepped yet.
-  - **⛔ GAMLE OLOF IS A DETOUR NOW: HE IS TOO LOCKED UP TO WORK WITH DIRECTLY.**
-    Ruled 2026-09-12: *"I have needed to face the reality here that he is far too locked up to do
-    anything with directly."* <https://www.geni.com/people/Gamle-Olof/5328189268700111491>
-
-        1. `Forest` export of the individual   -> "a good account of the specific person and
-                                                   their nearby stuff"
-        2. THEN enumerate his descendants OFFLINE, out of the synoptic tree
-
-    On step 2, verbatim: *"then we create a synthetic gedcom of the descendants of Gamle Olof
-    ... from stripping off all of the descendants of him in the synoptic tree, or realistically
-    more like just enumerating their geni ids so we can attempt this with them."*
-
-    **`scripts/descent-from.py` already is step 2** — it walks `HUSB`/`WIFE` -> `FAM` -> `CHIL`
-    over the `.ged` files on disk and writes `reports/descent-from-<id>.csv`, touching Geni not
-    at all. So the *"synthetic gedcom"* is the id enumeration she then says is what is really
-    wanted, and no new script is needed.
-
-    ⛔ **AND SHE CALLED IT A DETOUR**, so it does not become the campaign.
-
-  - **Gamle Olof** `5328189268700111491` — **BEFORE the Chinese clusters, ruled 2026-09-09.**
-    The two readings differed by exactly one position — *"after you've comprehensively gotten the
-    descendants of this particular individual"* put him straight after Abul Hamza, while the
-    numbered list put the Chinese clusters second — and the first reading won. So the head of the
-    order is settled end to end:
-
-        1  Abul Hamza  6000000227676734863     in flight
-        2  Bergitte Aukland  6000000002481819312   critical; took Tore Underberge III's slot
-        3  Gamle Olof  5328189268700111491
-        4  NN ben Ovadya  6000000227708968860   ruled 2026-09-11, "after gamle olof"
-        5  the two most eccentric ancient Chinese clusters
-
   - **⛔ `NN ben Ovadya` `6000000227708968860` — A NEW CAMPAIGN ROOT, ADDED 2026-09-11.**
     Emma, running the export herself: *"Im exporting this one
     https://www.geni.com/gedcom/download?task_id=6000000227709071839 ... And the descendants of

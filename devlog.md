@@ -38370,3 +38370,35 @@ export was already building and covered the same descent one generation up.
 
 **Closed at five per the ruling.** *"I just want one more export, and I don't wanna have to do
 much, like, thinking or whatever on this."*
+
+## 2026-09-12 — Gamle Olof is complete: 70,011 of his descendants are already held
+
+**Ruled 2026-09-12** on being shown the count: *"yes he is complete."*
+
+    reports/descent-from-5328189268700111491.csv
+    70,011 distinct blood descendants   22 generations   peak 12,345 at generation 13
+
+`scripts/descent-from.py` walks him -> the families he is `HUSB`/`WIFE` in -> their `CHIL`, so
+**spouses are not counted** and every row is a blood descendant. 70,011 rows, 70,011 distinct
+ids, no duplicates. The top of the file reads `Anders Olofsson`, `Olof Olofsson`,
+`Jacob Andersson` — Swedish patronymics, which is what this descent should look like, and the
+generation curve widens smoothly (2, 10, 32, 103, 242, 404, 530, 992 …) rather than jumping,
+which is what a walk artefact would do.
+
+It is the largest descent file in the repo: **70,011 against 18,090 for ben Ovadya and 17,224 for
+the Seljuq NN.** He is a Bure-kinship root and the corpus is pointed at the Bure kinship, so the
+coverage is where the campaign has been aimed all along.
+
+### The `Forest` export asked for in step 1 cannot run, and that is Geni's answer not a choice
+
+`https://www.geni.com/gedcom/export/5328189268700111491` redirects to `/error`:
+
+    You are not allowed to export that profile.
+
+The account may only export profiles it owns — the same refusal measured on Jacques Grimaldi on
+2026-09-10, and the reason the create-an-ancestor rule exists at all. **The extension had accepted
+the job and was holding the export slot on that dead page for its full one-hour budget**, which is
+the real cost of the attempt; it was stopped once the refusal was read off the page.
+
+**The queue item is removed and the enumeration stays.** `reports/descent-from-5328189268700111491.csv`
+is committed and is the artifact the detour was for.
