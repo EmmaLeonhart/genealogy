@@ -5,17 +5,17 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,512,304 people**.
+One row per person in `reports/derived-labels.csv` — **1,518,940 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,418,365 | 93.8% |
+| Latin only | 1,424,598 | 93.8% |
 | CJK only — needs translation for en | 44,205 | 2.9% |
-| no usable name at all | 25,068 | 1.7% |
-| other script only — needs translation for en | 12,129 | 0.8% |
-| mixed-script only — no clean Latin label | 9,880 | 0.7% |
+| no usable name at all | 25,464 | 1.7% |
+| other script only — needs translation for en | 12,130 | 0.8% |
+| mixed-script only — no clean Latin label | 9,886 | 0.7% |
 | Latin and CJK | 2,657 | 0.2% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
@@ -27,10 +27,10 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,701,304 |
+| Latin | 1,709,170 |
 | CJK | 112,416 |
-| other | 48,207 |
-| mixed | 31,388 |
+| other | 48,247 |
+| mixed | 31,396 |
 | none | 466 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 288,759 people
+## Aliases from married names — 289,461 people
 
 A married name plugs into the name to produce an alias.
 
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-44,357 people have both a derived Latin label and a Wikidata English
-label. **12,326 match exactly (27.8%).**
+44,857 people have both a derived Latin label and a Wikidata English
+label. **12,381 match exactly (27.6%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
