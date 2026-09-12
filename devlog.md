@@ -37926,3 +37926,39 @@ that is found**, which is what the ball measures.
     people not anywhere else in exports/   43,267
 
 Two targets remain: `6000000005607957168` and `6000000015628911730`.
+
+## 2026-09-12 — Alix target 14 filed: 2,488 new for 90 climbs, and the climb crossed out of the royal line
+
+**Princess Palatine Benedicta Henrietta of the Palatinate `6000000005607957168`**, 14,582
+descendants on the census, seeded on **NN Portoneri `6000000227711041892`** — created as the
+father of **Libera Portoneri `6000000000641071492`** after **90 climbs**.
+
+    ball                    5,000 INDI   3,416 FAM
+    new against the campaign                2,695
+    new against the WHOLE corpus            2,488   (49.8%)
+
+**The climb started on a German Palatine princess and ended on an Italian one.** Eighty-one of
+the ninety were `both_present` and eight were `family_not_read`; the walk went up through the
+Wittelsbach line, which is attested end to end, and the first open parent slot it found was in a
+Portoneri family. That is the mechanism working as specified — the climb takes the first person
+missing a parent, not the first person of the right nationality — and it is worth recording
+because the seed's surname says nothing about where the ball comes from.
+
+**The ball is comparatively disjoint from the campaign.** Its largest overlap with any earlier
+ball is 1,154 people, against the 3,796 that made target 8 return 666:
+
+    1,154   export-Descendants-6000000227708798842.ged   <- target 8
+    1,118   export-Descendants-6000000227707589983.ged   <- target 6
+      752   export-Descendants-6000000227707004886.ged
+      372   export-Descendants-6000000227696775867.ged
+
+**The climb cost still predicts nothing.** Fourteen measurements now, 6 to 291, and 90 climbs
+returned 2,488 while 6 returned 2,010 and 239 returned 697.
+
+**Fourteen of fifteen. Campaign totals, 23 balls:**
+
+    rows across the balls                 114,071
+    distinct people                        68,416
+    people not anywhere else in exports/   45,755
+
+One target remains: `6000000015628911730`.
