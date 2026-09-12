@@ -38960,3 +38960,30 @@ and a root cannot be called on them.
 is also the one whose identity is unknown and which Emma was skeptical about including — recorded
 as her call being right, not as a general rule that low steps predict high sweeps, which two
 roots cannot establish.
+
+## 2026-09-12 — Adasi, all three steps: 141 · 182 · 0 of 30
+
+**`6000000227712700862`**, filed to `exports/adasi/`.
+
+    step 1  Forest       task 6000000227723127821    141 new   (2.8%)
+    step 2  Descendants  task 6000000227723187834    182 new   (3.6%)
+    step 3  Monte Carlo  30 reads, 0 over 4,000, top 225
+
+**323 new people**, and the sweep is the thinnest measured so far — **top reading 225** against
+Skjalgsson's 888, Chinese cluster 1's 2,282, and Chinese cluster 2's 15,000. Adasi's descent
+enumerates to 102,016 offline, comparable to cluster 2's 109,440, and produced nothing within an
+order of magnitude of the threshold.
+
+**Stated as what it is: one 30-pick sweep, not proof of absence.** The same standard was applied
+to cluster 2 and cluster 2 was wrong about — but cluster 2's sweep *found* a 15,000 and Adasi's
+top is 225, which is a different kind of result from the same number of reads. **No second sweep
+is run**, on the same grounds as Skjalgsson: five untouched seeds have never been measured at all
+and the slot is worth more there.
+
+**Four roots complete under the three-step:**
+
+    NN Näf        441 ·  464 · 4,005+1,340   sweep found 15,000s
+    Skjalgsson      3 ·  627 ·     0         sweep top   888
+    Chinese 1     595 ·  844 ·     0         sweep top 2,282
+    Chinese 2      39 ·   33 · 3,969         sweep found 15,000
+    Adasi         141 ·  182 ·     0         sweep top   225
