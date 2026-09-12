@@ -37962,3 +37962,62 @@ returned 2,488 while 6 returned 2,010 and 239 returned 697.
     people not anywhere else in exports/   45,755
 
 One target remains: `6000000015628911730`.
+
+## 2026-09-12 — Alix target 15 filed: the roster is spent, and it is not the campaign's stopping condition
+
+**Charlotte-Catherine de Montmorency-Fosseux, comtesse souveraine de Luxe
+`6000000015628911730`**, seeded on **NN de La Roche-Andry `6000000227711076875`** — created as
+the father of **Jeanne de La Roche-Andry, dame de Vernon `6000000016774370638`** after
+**8 climbs**.
+
+    ball                    5,000 INDI   2,225 FAM
+    new against the campaign                2,704
+    new against the WHOLE corpus            2,486   (49.7%)
+
+### The blank surname earned its rule on this one
+
+`seed.js` computed `last: "Vernon"` for the placeholder — the last token of *Jeanne de La
+Roche-Andry dame de Vernon*, which is a **title**, not a surname, and positional parsing is how
+it got there. The created profile is `NN /de La Roche-Andry/`, because
+§ *THE LAST NAME IS LEFT BLANK ON PURPOSE, so Geni's* Suggest surnames *fills it* means the
+computed value is never submitted. Geni's suggestion took the birth surname off the same page.
+
+So the guess was wrong, the design meant it never reached a profile, and the difference is
+visible only because `creating` records the computed name and `added` records the created one.
+Nothing is changed here — the rule already covers it — but it is the first observed case of the
+two disagreeing, and `CLAUDE.md` § *A TITLE IS NOT A NAME* is what the guess violated.
+
+### Fifteen of fifteen, and what the roster cost
+
+    target  6    64 climbs   2,058 new to the corpus
+    target  7    10 climbs   3,290
+    target  8    95 climbs     666
+    target  9   162 climbs   4,026
+    target 10   239 climbs     697
+    target 11   279 climbs   2,007
+    target 12    27 climbs   2,019
+    target 13     6 climbs   2,010
+    target 14    90 climbs   2,488
+    target 15     8 climbs   2,486
+
+**The climb cost spans 6 to 291 and correlates with nothing.** The two cheapest seeds of the
+campaign returned 2,010 and 2,486; the two most expensive returned 697 and 2,007. Where the
+walk finds an open parent slot says nothing about how many descendants hang below it.
+
+**Campaign totals, 24 balls:**
+
+    rows across the balls                 119,071
+    distinct people                        71,120
+    people not anywhere else in exports/   48,241
+
+### ⛔ THE ROSTER RUNNING OUT IS NOT DIMINISHING RETURNS
+
+`reports/descendants-export-targets.csv` was one sweep's output — 60 censuses on 2026-09-10 that
+found 15 people over the 4,000 threshold — and `CLAUDE.md` § *THIS IS A RECORD, NOT A QUEUE*
+says so. Spending the last row on it ends the record, not the campaign.
+
+**The last two balls returned 2,488 and 2,486 new people, 49.8% and 49.7%.** That is the yield
+holding flat at the top of the range, not falling, so § *THE STOPPING CONDITION IS DIMINISHING
+RETURNS, NOT A COUNT* is not met and the loop continues: sample the descendants of Alix de
+Lampron again, census the picks, seed the saturated ones. Nothing about *fifteen* was ever the
+condition.
