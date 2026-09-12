@@ -37688,3 +37688,47 @@ exactly as it does today, with the subject in `createdPids`.
 `add_not_confirmed` is its first real test, and until then the by-hand recovery above is the
 method. The recovery is three steps and worth writing down: read the subject's card grid, diff
 against `pendingCreate.before`, then `note_created` the new pid and enqueue the export on it.
+
+## 2026-09-11 — Alix target 10 filed: 697 new for 239 climbs, and the roster's clustering is now measurable
+
+**Christine de'Medici `6000000006444307257`**, seeded on NN Aldobrandeschi `6000000227710397834`.
+
+    ball                    5,000 INDI   3,345 FAM
+    new against the campaign                1,878
+    new against the WHOLE corpus              697
+
+**The worst return of the campaign, off its most expensive climb.** And, like target 8, the cause
+is kinship inside the roster rather than saturation — the check was run before the claim:
+
+    target 10's overlap against each earlier ball
+       2,716   target 2   Isabella of Savoy
+       1,734   target 5   Maria Anna Victoria of Bavaria
+         519   target 6   Charles Emmanuel I of Savoy
+         508   target 8   Victor Amadeus I of Savoy
+
+**Over half its ball is already held by the Savoy–Italian balls taken earlier today.** Christine
+de'Medici married Ferdinando I de'Medici and her daughter married into Savoy; targets 2, 5, 6 and
+8 are all in that same marriage cluster.
+
+**Two low balls, both the same shape.** Target 8 shared 3,796 with its own father; target 10
+shares 5,477 across four earlier balls from one cluster. `reports/descendants-export-targets.csv`
+was built by walking down from Alix de Lampron, and a descent walk emits whole marriage clusters —
+so **which targets are worked first decides how much of the later ones is already paid for.**
+
+⛔ **Recorded, not acted on. Nothing is reordered.** The remaining five are worked in list order as
+they always have been; `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*
+is about what the campaign returns, and the campaign is still returning — the same roster gave
+4,026 new people one target ago.
+
+**Ten of fifteen done. Campaign totals:**
+
+    rows across the balls                  94,071
+    distinct people                        56,126
+    people not anywhere else in exports/   37,231
+
+    target 5   197 climbs   1,795 new to the corpus
+    target 6    64 climbs   2,058
+    target 7    10 climbs   3,290
+    target 8    95 climbs     666   cluster overlap
+    target 9   162 climbs   4,026
+    target 10  239 climbs     697   cluster overlap
