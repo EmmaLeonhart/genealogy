@@ -590,6 +590,24 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **⛔ AND THE EXPORT IS NOT COMPREHENSIVE.** *"we do not need to do nearly as comprehensive an
     export on them."*
 
+    **⛔ THE GENERATION 13-25 BAND IS THIS ROOT ONLY, AND THE METHOD REVERTS AFTERWARDS.**
+    Ruled 2026-09-12: *"Page views are cheap, but imo this is a special case and we return to
+    monte carlo after it."* So `reports/descent-from-6000000035218690155-gen13-25.csv` — 1,649 of
+    the 17,224 rows — is a one-root exception and **not** a new pick rule. Plain uniform Monte
+    Carlo over the whole descent resumes on the next campaign root, and
+    `scripts/monte-carlo-pick.py` is not to be taught about generations.
+
+    **Why the band exists**, so it is not re-derived: a uniform pick over this descent lands at a
+    median of **generation 32** below a woman whose son was born in 990 — a modern leaf person
+    with nobody recorded beneath them — and produced **1 hit in 54 usable reads**. Alix's descent
+    file was 1,176 rows at generations 1-12 and hit 15 of 60 at the same threshold. The band
+    restores a frame of comparable size, 1,649 rows, above the modern leaves and below the
+    medieval core that already holds 13 filed balls.
+
+    ⛔ **AND WHETHER IT WORKS IS UNMEASURED.** It is a third seed-choosing method, chosen by
+    ruling rather than by evidence, and `CLAUDE.md` § *Two seed-choosing methods are refuted; do
+    not propose a third on reasoning alone* is why that distinction is written down.
+
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
