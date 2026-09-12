@@ -38021,3 +38021,53 @@ holding flat at the top of the range, not falling, so § *THE STOPPING CONDITION
 RETURNS, NOT A COUNT* is not met and the loop continues: sample the descendants of Alix de
 Lampron again, census the picks, seed the saturated ones. Nothing about *fifteen* was ever the
 condition.
+
+## 2026-09-12 — hinge person 1 returned 4 new people out of 4,074, and that measurement retires three more of the nine
+
+**Елбуздуко Битуев `6000000146583752828`**, the first of the fifteen hinge people, seeded on
+**NN Черкасская `6000000227711143943`** — created as the father of `6000000227682842840`, itself
+a placeholder from an earlier run — after **28 climbs**. Task `6000000227711234840`.
+
+    ball                    4,074 INDI   2,196 FAM     <- UNDER the 5,000 cap
+    new against the WHOLE corpus                4     (0.1%)
+
+**4,056 of the 4,074 are in `export-Descendants-6000000227676362934.ged`**, a circassian-hinge
+ball already on disk. The descent was gathered weeks ago and this export re-collected it.
+
+### ⛔ THE BALL IS UNCAPPED, SO THIS IS A BOUNDED STATEMENT AND NOT A SAMPLE
+
+`CLAUDE.md` § *A `Descendants` ball that came back at the cap is truncated by definition* is the
+warning about reading absence off a capped ball. **This one is not capped** — 4,074 against
+`GENI_EXPORT_CAP` 5000 — so it is the complete descent below that seed, and *this line adds four
+people* is a measurement rather than an impression.
+
+**And it gives the drift figure the whole check needs.** A ball exported weeks ago, re-exported
+today, differs by 4 people in 4,074. So *already in a complete ball* is not stale by any amount
+that matters.
+
+### The check that follows, run before spending the next eight export slots
+
+If a **complete** (uncapped) Descendants ball contains person P, it contains every descendant of
+P — a descendant of a descendant of the seed is a descendant of the seed. So membership in an
+uncapped ball settles the question for that person outright:
+
+    EASTERN TANG                                    in a complete ball?
+    6000000146583752828  Елбуздуко Битуев            YES  (…682842833, 4,071)  <- just proved
+    6000000048540283061  Kamal Kara Musel            YES  (…676697827, 3,216)
+    6000000146583752840  Князь Пшеапшоко Кайтукин    YES  (…676362934, 4,239)
+    6000000220167401825  Шолох Акуджба               YES  (…676582856, 2,304)
+    6000000008867333533  Камбулат Идарович           no -- capped balls only
+    6000000028522915307  Zhelegot Mirza Cherkassy    no
+    6000000191078589837  knyaz Kanshov               no
+    6000000220167394834  Джамурза Джиляхстанов       no
+    6000000144779499889  Alkas Jamurzin              no
+
+    WESTERN TANG -- all six appear only in capped balls, so all six stand.
+
+**Four of the nine eastern hinge people are already gathered and their exports are dropped.**
+Eleven of the fifteen remain: five eastern, six western. That is four export slots — roughly an
+hour of Geni's one-at-a-time limit — not spent re-collecting a tree the corpus already holds.
+
+**What this does NOT say.** Nothing here claims the four are finished as *people* — only that a
+`Descendants` export on them cannot return anything, which is the specific operation the queue
+item asks for. Their placement, names and Wikidata identifications are untouched by it.
