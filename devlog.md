@@ -37618,3 +37618,31 @@ rather than by saturation. There is no case for stopping and six targets remain.
 
 **And the whole of target 9 ran without a hand on it except the download** — climb, seed creation,
 walk selection and submit, all inside the extension, which is what the last three builds were for.
+
+## 2026-09-11 — two rulings recorded: ben Ovadya's slot, and nine screenshots queued unanalysed
+
+**`NN ben Ovadya` `6000000227708968860` goes after Gamle Olof.** Ruled 2026-09-11: *"Ben ovadaya
+goes after gamle olof"*. The entry moved from where it had been parked — deliberately unranked,
+because its position had not been stated — to fourth in the head of the descendants order, and
+the numbered list was renumbered with it:
+
+    1  Abul Hamza  6000000227676734863
+    2  Bergitte Aukland  6000000002481819312
+    3  Gamle Olof  5328189268700111491
+    4  NN ben Ovadya  6000000227708968860
+    5  the two most eccentric ancient Chinese clusters
+
+**Nine screenshots saved to `docs/queued-analysis/wikidata-reverts-2026-09-11/` and queued at the
+very end, unread.** Emma: *"add to the very end of the queue a task to analyze these images and
+issues I have with them, just save into a directory for this the task emerges from the images
+when you look at them do not ask questions or think about them carry on with your work"*.
+
+So the queue item names the nine files and nothing else. **No account of what they show is
+written anywhere** — not in the item, not here — because summarising them is the analysis, and
+the analysis was explicitly deferred. Nothing in any batch, emitter or script was changed on
+the strength of them.
+
+The item does carry one thing forward: when it is worked, the deliverable is a **CSV of every
+instance, committed, then the analysis of that CSV** — `CLAUDE.md` § *"Analyse this" means: build
+a CSV of every instance, commit it, then analyse that*. Nine screenshots are where the question
+comes from, not the evidence base it gets answered from.

@@ -611,21 +611,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     investigated, measured, seeded or grepped — `CLAUDE.md` § *"Add it to the end of the queue"
     means WRITE IT DOWN AND STOP*. The slug is `n-n`, so the profile is an `NN`.
 
-  - **⛔ `NN ben Ovadya` `6000000227708968860` — A NEW CAMPAIGN ROOT, ADDED 2026-09-11.**
-    Emma, running the export herself: *"Im exporting this one
-    https://www.geni.com/gedcom/download?task_id=6000000227709071839 ... And the descendants of
-    this person will be subject to a similar export descendant campaign."*
-
-    The ball she exported is filed at
-    `exports/ben-ovadya-descendants/export-Descendants-6000000227708968860.ged` — 5,000 INDI,
-    3,634 FAM, **1,340 new to the corpus** and sharing only **20 people** with the whole Alix
-    campaign. A disjoint population, which is what the hinge-person rule is for.
-
-    **Nothing here is investigated, measured, seeded or grepped** beyond filing the file she
-    named and counting it — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN
-    AND STOP*. Its position against Abul Hamza, Bergitte Aukland and Gamle Olof was **not
-    stated** and is not inferred here.
-
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
@@ -660,7 +645,25 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         1  Abul Hamza  6000000227676734863     in flight
         2  Bergitte Aukland  6000000002481819312   critical; took Tore Underberge III's slot
         3  Gamle Olof  5328189268700111491
-        4  the two most eccentric ancient Chinese clusters
+        4  NN ben Ovadya  6000000227708968860   ruled 2026-09-11, "after gamle olof"
+        5  the two most eccentric ancient Chinese clusters
+
+  - **⛔ `NN ben Ovadya` `6000000227708968860` — A NEW CAMPAIGN ROOT, ADDED 2026-09-11.**
+    Emma, running the export herself: *"Im exporting this one
+    https://www.geni.com/gedcom/download?task_id=6000000227709071839 ... And the descendants of
+    this person will be subject to a similar export descendant campaign."*
+
+    The ball she exported is filed at
+    `exports/ben-ovadya-descendants/export-Descendants-6000000227708968860.ged` — 5,000 INDI,
+    3,634 FAM, **1,340 new to the corpus** and sharing only **20 people** with the whole Alix
+    campaign. A disjoint population, which is what the hinge-person rule is for.
+
+    **⛔ ITS POSITION IS AFTER GAMLE OLOF. Ruled 2026-09-11:** *"Ben ovadaya goes after gamle
+    olof"*. So it is fourth, ahead of the Chinese clusters.
+
+    **Nothing here is investigated, measured, seeded or grepped** beyond filing the file she
+    named and counting it — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN
+    AND STOP*.
 
   - The two most eccentric ancient **Chinese** clusters
   - **Adasi**
@@ -1024,3 +1027,33 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   **Nothing is investigated, measured or queried**: not how many Welsh-chain labels exist, not
   which already carry `P5056` (patronymic), not whether `P144` (based on) points anywhere.
   `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
+- **⛔ ANALYSE THE NINE SCREENSHOTS SENT 2026-09-11 AND THE ISSUES IN THEM.**
+  `docs/queued-analysis/wikidata-reverts-2026-09-11/` — nine images, saved as sent:
+
+      01-pastebin-contributions.jpg          pastebin.com/uXm3P4yA, a contributions listing
+      02-Q3656094-Sempronia.jpg
+      03-Q176912-Philip.jpg
+      04-Q359687-Antigonus-II-Mattathias.jpg
+      05-Q313883-Alexandros-II-of-Macedon.jpg
+      06-Q1427539-Flavius-Hannibalianus.jpg
+      07-Q125542470-Joel-von-Brehmer.jpg
+      08-Q113006331-Johan-Leijel.jpg
+      09-Q64802-Engelbert-II-of-Berg.jpg
+
+  **The task emerges from the images; read them and work it out there.** Emma: *"add to the very
+  end of the queue a task to analyze these images and issues I have with them, just save into a
+  directory for this the task emerges from the images when you look at them do not ask questions
+  or think about them carry on with your work"*.
+
+  **⛔ NOT INVESTIGATED, NOT DIAGNOSED, NOT ACTED ON — and deliberately not summarised here
+  either.** The instruction was to save them and carry on, so no reading of what they show has
+  been written down: no account of who reverted what, no cause, no count, and above all **no
+  change to any batch or emitter on the strength of them.** `CLAUDE.md` § *"Add it to the end of
+  the queue" means WRITE IT DOWN AND STOP* and § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM
+  THE FIRST SLICE*.
+
+  When this is worked: the answer is a CSV of every instance, committed, and then the analysis of
+  that CSV — `CLAUDE.md` § *"Analyse this" means: build a CSV of every instance, commit it, then
+  analyse that* — not a reading of nine screenshots. The screenshots are where the question comes
+  from, not the evidence base.
