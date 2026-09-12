@@ -38880,3 +38880,28 @@ item repeats the error a second time, which is what happened here.
 * **`Nārāyaṇa`, the seven remaining untouched seeds, Genghis/Aztec/Inca** — still to run.
 * **The crons item, the three-crons item, the delete-on-done convention, § *How to read this
   file*** — standing procedures.
+
+## 2026-09-12 — Chinese cluster 1, all three steps: 595 · 844 · 0
+
+**`NN 6000000227036719829`**, the entry point Emma made in the 譚 Tan legendary lineage — the
+larger of the two most eccentric clusters from the 2026-09-05 graph analysis.
+
+    step 1  Forest       task 6000000227721699884    595 new   (11.9%)
+    step 2  Descendants  task 6000000227721979831    844 new   (16.9%)
+    step 3  Monte Carlo  30 reads, 0 over 4,000, top 2,282
+
+**1,439 new people**, and the split between the two exports is nearly flat — 595 against 844 —
+where Skjalgsson's was 3 against 627. **Two different shapes of neighbourhood**: the Norwegian one
+is saturated sideways and open downward, this one is partly open in both directions. The method
+carries both because it does not have to know which it is looking at in advance.
+
+**Step 3 found nothing over 4,000**, but its top reading is **2,282** against Skjalgsson's 888 —
+over halfway to the threshold rather than a fifth of it. That is not a hit and is not treated as
+one; it is recorded because a second sweep here would be a better bet than a second sweep on
+Skjalgsson, if the question ever comes up.
+
+**Three roots have now had the full three-step**, and no two behaved alike:
+
+    NN Näf         441 ·  464 · 4,005 + 1,340     the producer
+    NN Skjalgsson    3 ·  627 · 0 of 30           saturated sideways, open down
+    Chinese 1      595 ·  844 · 0 of 30           partly open both ways
