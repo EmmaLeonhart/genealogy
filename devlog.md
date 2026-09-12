@@ -38216,3 +38216,44 @@ covers precisely this move. The measurement is recorded and the choice goes to s
 **And the shallow band is not obviously the answer either.** Generations 1–12 of this descent are
 the medieval Seljuq and Circassian core, which is the region that already holds 13 filed
 `Descendants` balls — the same collision that made target 1 return one person.
+
+## 2026-09-12 — the band fixed the census and did not fix the export, and the reason is the cap
+
+**The generation 13-25 band works as a sampling frame.** One batch of 25 against it, beside the
+65 uniform picks that preceded it:
+
+    frame            picks   usable reads   hits >=4,000   readings >100   top non-hit
+    uniform (17,224)    65             54              1               3           643
+    band (1,649)        25             25              1               6         2,301
+
+**Every page read.** The uniform frame lost 11 of 65 to pages that rendered no census; the band
+lost none, which says those misses were modern private-ish profiles rather than a browser fault.
+
+### And the export returned two people
+
+**`daughter of Süleyman Bey 6000000204995704921`**, 15,000 descendants, climbed 3 steps and seeded
+on **NN Bey `6000000227711646877`**. Task `6000000227711605982`.
+
+    ball                    5,000 INDI   2,994 FAM     <- at the cap
+    new against the WHOLE corpus                2
+
+    overlap with NN target 1                            4,993
+    overlap with turgesh-seljuq/…-6000000227676315909    4,993
+
+**Two exports into this root, three new people between them.**
+
+### ⛔ THE CAP IS THE MECHANISM, NOT THE FRAME
+
+Both hits sit inside one already-exported cluster, and a `Descendants` export is capped at 5,000.
+So **every export seeded anywhere in that cluster returns the same top 5,000 people** — the ones
+nearest the seed — regardless of how much hangs below. The band changed which people get
+censused; it could not change what an export from a saturated core returns, because the cap
+decides that.
+
+**This is a different failure from the Alix campaign's low balls.** Target 8 there returned 666
+because its seed was a son of an earlier seed — one pair, explainable, and the next target
+returned 4,026. Here both independent hits, drawn from different frames a day apart, landed in
+the same cluster and returned the same 5,000 people.
+
+**Three exports remain under the ceiling of five.** The run continues; this is recorded as it
+stands rather than treated as the verdict.
