@@ -38257,3 +38257,44 @@ the same cluster and returned the same 5,000 people.
 
 **Three exports remain under the ceiling of five.** The run continues; this is recorded as it
 stands rather than treated as the verdict.
+
+## 2026-09-12 — target 3 returned one person, and the random sample rediscovered the hinge people by itself
+
+The band's second batch: **25 picks, 24 usable reads, 3 hits** — a 12.5% rate against the uniform
+frame's 1-in-54, and within reach of Alix's 25%.
+
+    6000000008867333533  Князь Камбулат Идарович      15,000   <- a former hinge person
+    6000000191078589837  knyaz Kanshov of Cherkessia   9,818   <- a former hinge person
+    6000000017921757042  Thamar Djaqeli                5,292
+    then 1,230 · 905 · 308 · 233
+
+**⛔ TWO OF THE THREE HITS ARE PEOPLE OFF THE ABOLISHED HINGE ROSTER, FOUND BY RANDOM SAMPLING.**
+That is worth stating in both directions. The roster was **not wrong about who is saturated** —
+uniform random picks over the same descent land on the same people, which is what a hinge person
+was defined to be. It was wrong as a **method**, because those people all sit in one Circassian
+cluster the corpus has already exported thirteen times, and naming them individually could not
+see that while sampling plus a census can.
+
+### Target 3
+
+**knyaz Kanshov Jilahstanov `6000000191078589837`**, seeded on **NN of Cherkessia
+`6000000227711941843`** at `6000000191078730829`. Task `6000000227711542104`.
+
+    ball                    5,000 INDI     <- at the cap
+    new against the WHOLE corpus                1
+
+**Three exports into this root, four new people between them: 1, 2, 1.**
+
+**It was predicted before it landed** — the seed is on Kanshov's line, inside the same cluster as
+targets 1 and 2 — and saying so first is the only thing that makes the third measurement worth
+more than the second.
+
+### What is left to try, and it is a different cluster
+
+**Thamar Djaqeli `6000000017921757042`, 5,292 descendants**, is Georgian — the same batch's climb
+walked through Qaikhosro II of Samtskhe and Dedisimedi Bagrationi. The uncapped-ball check says
+she is **in no complete ball**, so nothing bounds her descent yet, and she is the first hit of
+this campaign that is not obviously inside the Circassian core.
+
+Target 4 goes there rather than to another Circassian hit, because the question the remaining two
+export slots can still answer is whether this root has any unexported cluster at all.
