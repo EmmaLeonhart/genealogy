@@ -681,8 +681,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
         6000000227039926826  Genghis Khan
         6000000209721868822  Aztec Emperors
-        6000000209721822822  Inca Emperors        <- already has a Forest too; check before
-                                                     spending the slot
 
     **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
 

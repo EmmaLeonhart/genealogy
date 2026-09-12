@@ -39097,3 +39097,19 @@ profile the extension refuses twice, not a default.
 **Two exports are now recoverable only by email**: Confucius `6000000227713034875` and
 Hermenegildo `6000000211987119821`, both `Descendants`. The scheduled 16:00 / 16:30 / 17:00 checks
 cover either arriving.
+
+## 2026-09-12 — the Inca Forest was already on disk and the roster said so
+
+`exports/inca/export-Forest-6000000209721822822-refresh.ged`, task `6000000227723758834`,
+**7 new out of 5,000**. `exports/edges/export-Forest-6000000209721822822.ged` already existed.
+
+**The queue line carried the warning verbatim** — *"Inca Emperors ← already has a Forest too;
+check before spending the slot"* — written by this session earlier today, and the export went
+into the batch of ten without the check being run. **The check is one `ls`.**
+
+Filed as `-refresh` rather than overwriting, per § *Never overwrite an existing `.ged`*.
+
+**Genghis and Aztec are the same shape and have not been re-run yet.** Both already have
+`Descendants` balls, which is why part 2 asks only for `Forest` and Monte Carlo on them; whether
+either already has a `Forest` is the check to run before either is dispatched — Aztec has two
+balls filed and Genghis one, and neither was inspected for walk type.
