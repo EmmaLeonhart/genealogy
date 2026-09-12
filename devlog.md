@@ -38741,3 +38741,30 @@ is written down so the decision is available rather than rediscovered a third ti
 
 **Filed anyway**, per the same rule as the Circassian duplicate: a submitted export cannot be
 cancelled and integrating it is the job.
+
+## 2026-09-12 — the subject check, run by hand, turned a slot from 1 person into 2,552
+
+**Katharina von Honstein-Klettenberg `6000000003827467269`**, the last banked hit. 113 climbs —
+the longest since the Palatine walk — seed `6000000227720816948` on `6000000025377979357`.
+Task `6000000227720809985`.
+
+    ball                    5,000 INDI
+    new against the WHOLE corpus            2,552   (51.0%)
+
+**The check written down one entry earlier was run before collecting**: does the subject the
+climb created on already appear as a subject in `reports/descendants-export-log.csv`? It returned
+zero, so no duplicate-parent collision, and the ball came back half new.
+
+**Against the slot immediately before it**, where the same check was not available and the answer
+would have been *yes*:
+
+    de Marigny        subject already seeded    1 new       ~40 min of build
+    Honstein-Klettenberg  subject clean        2,552 new    ~15 min of build
+
+**One `grep` is the difference.** It is still not wired into the extension — that remains a code
+change nobody asked for — but running it by hand before each collection costs nothing and is now
+the practice.
+
+### The no-name root, nine balls
+
+    3,118 · 3,234 · 801 · 1,611 · 3,001 · 2,504 · 1,926 · 1 · 2,552   =  18,748 new
