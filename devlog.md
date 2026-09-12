@@ -38575,3 +38575,40 @@ form and it went through at once** — select the radio, click `Export GEDCOM`, 
 
 **Not fixed in the extension here.** The wait is `export.js`'s and changing it is a code change
 nobody asked for mid-run; the by-hand path is recorded so the next occurrence costs a minute.
+
+## 2026-09-12 — the no-name root: six balls, 14,269 new people, and it is not slowing
+
+**`no-name 6000000000183188387`** — 472,395 descendants already held, which is more than
+Charlemagne, and which I read as saturation. It is the most productive root of the session.
+
+    round 1   seed 6000000227715436831  NN de Guzmán Velasco      3,118   62.4%
+    round 2   seed 6000000227716065921                            3,234   64.7%
+    banked 1  seed 6000000227716239882  NN von Uexküll              801   16.0%
+    banked 2  seed 6000000227716657821  von Tiesenhausen          1,611   32.2%
+    banked 3  seed 6000000227716736847  de Wavrin, Flemish        3,001   60.0%
+    banked 4  seed 6000000227716879850  de Savoie Molettes        2,504   50.1%
+                                                                 ------
+                                                                 14,269
+
+**The two Baltic German targets are the two low ones** — 16% and 32%, against 50–65% for the
+Flemish, Savoyard and Iberian-named seeds. That is a property of which neighbourhood the pick
+lands in, not of the root: the corpus already holds the Baltic German nobility well. Round 2 was
+*higher* than round 1, so there is no downward trend to read here at all.
+
+**Round 2's sweep hit 5 of 25 — a 20% rate**, against the Alix descent's 25% and the Seljuq
+root's 1-in-54. Four of the five were banked in `reports/descendants-export-targets.csv` rather
+than re-censused, which is what made the last four exports cost no page loads at all.
+
+### What the session's roots look like side by side
+
+    no-name        6 balls   14,269 new    472,395 descendants held
+    NN Näf         4 balls    6,250 new    158,400
+    Alix 14-15     2 balls    4,974 new
+    Seljuq NN      5 balls    1,528 new     17,224
+    Dál Fiatach    1 ball     1,073 new
+
+**The Seljuq root and the no-name root are the two ends of the same lesson.** Both had large
+descents already in the corpus. One returned 1s and 2s because every saturated person the sample
+found sat in one already-exported cluster; the other returned 60%+ because its descent is wide
+and unevenly documented. **Neither outcome was predictable from the size of the descent**, which
+is the thing I twice tried to predict it from.
