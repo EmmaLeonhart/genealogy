@@ -674,6 +674,25 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     interpreted.
 
     Nothing about either of them is investigated, measured, seeded or grepped yet.
+  - **⛔ GAMLE OLOF IS A DETOUR NOW: HE IS TOO LOCKED UP TO WORK WITH DIRECTLY.**
+    Ruled 2026-09-12: *"I have needed to face the reality here that he is far too locked up to do
+    anything with directly."* <https://www.geni.com/people/Gamle-Olof/5328189268700111491>
+
+        1. `Forest` export of the individual   -> "a good account of the specific person and
+                                                   their nearby stuff"
+        2. THEN enumerate his descendants OFFLINE, out of the synoptic tree
+
+    On step 2, verbatim: *"then we create a synthetic gedcom of the descendants of Gamle Olof
+    ... from stripping off all of the descendants of him in the synoptic tree, or realistically
+    more like just enumerating their geni ids so we can attempt this with them."*
+
+    **`scripts/descent-from.py` already is step 2** — it walks `HUSB`/`WIFE` -> `FAM` -> `CHIL`
+    over the `.ged` files on disk and writes `reports/descent-from-<id>.csv`, touching Geni not
+    at all. So the *"synthetic gedcom"* is the id enumeration she then says is what is really
+    wanted, and no new script is needed.
+
+    ⛔ **AND SHE CALLED IT A DETOUR**, so it does not become the campaign.
+
   - **Gamle Olof** `5328189268700111491` — **BEFORE the Chinese clusters, ruled 2026-09-09.**
     The two readings differed by exactly one position — *"after you've comprehensively gotten the
     descendants of this particular individual"* put him straight after Abul Hamza, while the
