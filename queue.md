@@ -638,7 +638,29 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         father of Ramborg Knutsdotter Lejon, Ingegerd Knutsdotter, Katarina, Ingrid Knutsdotter
         brother of Bengt Algotsson · CHARLEMAGNE IS CONNECTED TO HIM, stated on the page
 
-    **⛔ EMMA IS DOING THIS ONE BY HAND. DO NOT SEED IT, DO NOT EXPORT IT.** Ruled 2026-09-12:
+    **⛔ THE PERSON EXISTS: `NN Näf` `6000000227712070008`, MADE BY HAND 2026-09-12.**
+    <https://www.geni.com/people/NN-N%C3%A4f/6000000227712070008>. So the undecided
+    Bergitte-versus-Knut question is settled by her making the person herself, and the seed rule
+    does not get applied on top of it — this IS the seed.
+
+    **⛔ THE THREE-STEP METHOD, AND IT IS GENERAL. Ruled 2026-09-12:** *"do a forest export on
+    them, then a descendants export on them, and then do the Monte Carlo on her descendants.
+    This is a well established way of collecting descendants of an individual that works, the
+    forest fleshes stuff out around them so that it isn't just spindles right next to them."*
+
+        1. `Forest` export on the seed      <- fleshes out the neighbourhood
+        2. `Descendants` export on the seed <- the ball itself
+        3. Monte Carlo over those descendants, per the campaign rule
+
+    ⛔ **STEP 1 IS NOT THE `Forest`-VERSUS-`Descendants` ARGUMENT AGAIN.** § *`Descendants`, NOT
+    `Forest`* governs the export taken FROM a Monte Carlo hit and is untouched. This is a
+    different position in the sequence: a `Forest` on the ROOT first, for the stated reason that
+    a bare descendants ball off a fresh placeholder is spindles.
+
+    **⛔ EMMA IS SUPPLYING THE REMAINING ROOTS.** *"I will get the other ones too"* — so the ten
+    roster entries with no Geni id are hers to fill in and are not to be searched for here.
+
+    **⛔ SHE MADE THIS ONE BY HAND. DO NOT SEED ABOVE IT.** Ruled 2026-09-12:
     *"this one's actually a bit of a challenging situation ... I'm going to actually look at the
     family tree a bit ... I'm going to look and probably make the person manually just because
     I'm trying to get a specific thing."* So the undecided question below — whether the seed rule
