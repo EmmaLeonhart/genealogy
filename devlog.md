@@ -38537,3 +38537,41 @@ the next `enqueue` restarts the pump into the same block. `load` resets `results
 So a refusal costs more than its own slot: **every export queued behind it waits out the dead
 job's `waitMs`, which is an hour on this state.** The exportability `fetch` recorded in the entry
 above prevents the refusal; this is what to do when one happens anyway.
+
+## 2026-09-12 — 3,118 new off the no-name root, and the Charlemagne reasoning does not transfer
+
+**`no-name 6000000000183188387`**, Monte Carlo round 1. Hit `6000000018776060167` at Geni's
+15,000 ceiling, seeded `NN de Guzmán Velasco 6000000227715436831`, task `6000000227716024841`.
+
+    ball                    5,000 INDI
+    new against the WHOLE corpus            3,118   (62.4%)
+
+**⛔ THIS WAS FLAGGED AS PROBABLY-SATURATED AND THE FLAG WAS WRONG.** Two entries ago:
+*"472,395 already held puts him in Charlemagne territory."* Emma ruled otherwise and gave the
+reason:
+
+> *"Charlemagne is a person who is very central and well documented. There is not a whole lot of
+> new stuff to add around him. A lot of these people with very large numbers of descendants are
+> not as well documented and often are sparse in some areas."*
+
+**The ball is 62.4% new.** So *descent size already held* is not a saturation measure — the
+second-largest descent in the repo returned the second-best ball of the session. What made
+Charlemagne complete was being central and documented, which is a property of the records, not of
+the count.
+
+### The NN Ulster ancestor returned one person
+
+**`6000000227715492839`**, the ancestor Emma made above the profile Geni refused, task
+`6000000227715842853`: **1 new out of 5,000**, and the one is the placeholder. That descent was
+already fully held, so the refusal cost nothing in material — only the slot.
+
+### `no_such_walk` is reproducible on one profile and is not a missing option
+
+`6000000227715436831` failed `no_such_walk` **twice**. Its export form was then read directly and
+carries every walk including `walk=Descendants`, so the option is present and the extension's
+wait is simply too short for a page whose radios render late. **Submitted by hand from the loaded
+form and it went through at once** — select the radio, click `Export GEDCOM`, and the tab lands on
+`/gedcom/download?task_id=…`.
+
+**Not fixed in the extension here.** The wait is `export.js`'s and changing it is a code change
+nobody asked for mid-run; the by-hand path is recorded so the next occurrence costs a minute.
