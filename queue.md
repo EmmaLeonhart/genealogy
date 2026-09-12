@@ -638,6 +638,21 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     skeptical about including it and included it anyway, on the grounds that not knowing what it
     is makes it worth gathering rather than less so.
 
+  - **⛔ ADASI'S FIRST SEED SAT ON THE WRONG SIDE OF A BOTTLENECK. Ruled 2026-09-12.**
+    *"For Adasi I think I get what happened and imo solution is this individual
+    …/6000000227723403845 … They have a particularly weird structure to them where the family
+    kind of fans out a lot, but it basically has at least one really, really significant
+    bottleneck."*
+
+    So the 141 / 182 / 0 on `6000000227712700862` is **not** a measurement of Adasi's descent —
+    both root-anchored exports stayed in the narrow part above the bottleneck, and 30 random
+    picks over a 102,016-person enumeration topped out at 225 for the same reason.
+
+    ⛔ **A BOTTLENECK IS A THIRD SHAPE, ALONGSIDE *saturated sideways* AND *saturated at the
+    root*.** It is not visible in any of the three steps' numbers — the exports simply return
+    what is above it — and nothing measured so far would have revealed it. **She read it off the
+    tree; it was not derived here.**
+
   - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
     Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
     the information we have right now, do now, postpone, or drop. So we can be clear about all of
@@ -653,6 +668,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **1. THE EIGHT UNTOUCHED SEEDS — FULL THREE-STEP EACH.** `Forest`, then `Descendants`, then
     Monte Carlo, per seed:
 
+        6000000227723403845  Adasi, PAST THE BOTTLENECK   supplied 2026-09-12
         6000000227713034875  Confucius
         6000000211987119821  Hermenegildo Gutteres
         6000000227714378863  Fihr
