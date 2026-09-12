@@ -38852,3 +38852,31 @@ produces no Monte Carlo target, and it is the opposite shape from `no-name`, who
 **No second round is run on this root.** One sweep is not proof of absence, but a 0-of-30 against
 a top of 888 is a long way from the 4,000 threshold, and the alternative use of the slot is the
 eight untouched seeds that have never been measured at all.
+
+## 2026-09-12 — sweep: Bergitte Aukland's root is finished
+
+**`Bergitte Aukland 6000000002481819312`** — removed, together with the correction note attached
+to it. Her campaign was *"as far as export capture descendants people add … she is kinda
+critical"*, 2026-09-09, and it ran through two seeds Emma made by hand rather than one:
+
+    NN Näf         6000000227712070008   Forest 441 · Descendants 464 · Monte Carlo 4,005 + 1,340
+    NN Skjalgsson  6000000227295848846   Forest   3 · Descendants 627 · Monte Carlo 0 of 30
+
+**7,180 new people between them.** Further Monte Carlo rounds on NN Näf are not lost with the
+item — they are part 3 of § *THE WHOLE PROGRAM*, which stays.
+
+**The correction note goes with it**, having done its job: the item had been tagged
+BLOCKED-ON-USER-ACTION when she said she would make the person by hand, and the tag was left on
+after she had made it. *"What the fuck Bergitte blocked on me? No lol"*. The lesson is recorded
+in the entry above rather than kept as a queue item — **a tag that somebody else's action clears
+has to be re-checked, not trusted**, and a sweep that reads the stale tag as grounds to skip the
+item repeats the error a second time, which is what happened here.
+
+### Still not swept, for the same reasons as the last two sweeps
+
+* **The six from Abul Hamza's ball** — no row in `reports/descendants-export-log.csv` for any of
+  them. The item looks dead because Abul Hamza is finished; the work was never done.
+* **The OneTab 19** — superseded-looking, never ruled.
+* **`Nārāyaṇa`, the seven remaining untouched seeds, Genghis/Aztec/Inca** — still to run.
+* **The crons item, the three-crons item, the delete-on-done convention, § *How to read this
+  file*** — standing procedures.
