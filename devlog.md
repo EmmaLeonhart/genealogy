@@ -38446,3 +38446,37 @@ were searched and the answer is not in them:
 
 **Asked rather than picked.** `CLAUDE.md`'s `@NI04461@` failure is exactly this: a Geni id that
 looks right and points at a stranger.
+
+## 2026-09-12 — 4,005 new out of 5,000: the best ball of the session, off the hand-made seed
+
+**NN Näf step 3.** The Monte Carlo over her 154,158 corpus descendants censused 25 picks, hit
+`6000000008239739335` at Geni's 15,000 ceiling, created `6000000227712832952` on it and exported.
+Task `6000000227714400853`.
+
+    ball                    5,000 INDI
+    new against the WHOLE corpus            4,005   (80.1%)
+
+**The three steps on one seed have returned 4,910 new people:**
+
+    Forest       441   ( 8.8%)
+    Descendants  464   ( 9.3%)
+    Monte Carlo  4,005 (80.1%)
+
+**Against everything else run today**, where the best was 2,488 at 49.8% and the Seljuq root's
+five exports produced 1, 2, 1, 562 and 862:
+
+    NN Näf Monte Carlo   4,005   80.1%
+    Alix target 14       2,488   49.8%
+    Alix target 15       2,486   49.7%
+    Seljuq NN target 5     862   17.2%
+    ben Ovadya Forest      140    2.8%
+
+**⛔ AND IT CONTRADICTS THE PREDICTION MADE BEFORE IT RAN.** Two entries ago: *"she is sampling a
+very well-covered population, and I'd expect a low new-people yield per export for the same
+reason the Seljuq root gave 1s and 2s."* **154,158 descendants already held predicted nothing** —
+the ball came back 80% new. The Seljuq root's low balls were a saturated *cluster*, and the size
+of a descent already in the corpus is not a measure of how saturated any part of it is.
+
+**The three-step method is doing what she said it does.** *"the forest fleshes stuff out around
+them so that it isn't just spindles right next to them"* — and the Monte Carlo that follows it is
+sampling a neighbourhood the Forest widened.

@@ -695,7 +695,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     export FROM, so the create-an-ancestor step is already done and must not be repeated on them.
 
         6000000227036719829  Chinese cluster 1     https://www.geni.com/people/NN/6000000227036719829
-        ????                 Chinese cluster 2     SEE BELOW -- not identified
+        6000000209595340830  Chinese cluster 2     supplied 2026-09-12
         6000000227712700862  Adasi
         6000000227039926826  Genghis Khan          NN Borjigin
         6000000209721868822  Aztec Emperors        NN Mixcoamatzin
@@ -711,17 +711,16 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         6000000209721868822   two balls, exports/8-19 exports/ and exports/edges/
         6000000209721822822   exports/edges/ — BOTH Descendants and Forest
 
-    **⛔ THE SECOND CHINESE ENTRY POINT IS NOT IDENTIFIED AND MUST NOT BE GUESSED.**
-    *"there is one other person, you can really look through the logs to see who they are, we
-    added them as entry points about a week ago when we were doing graph eccentricity analysis."*
-    Searched: `reports/entry-points.tsv` holds only **two** rows, George R.R. Martin and Robert
-    Ettinger, neither Chinese; `d0c6bc5d` says Shaohao, Zhuanxu, Nuxiu, Daye, Gaoyao and Bo Yi
-    went in as 2027 entry points but they are not in that file now; the known seed
-    `6000000227036719829` is a `NN` created 2026-08-04 sitting in **cluster rank 1** at every cut,
-    and the two other `NN` placeholders in rank 1 — `6000000209595340830`, `6000000227085766947` —
-    are in the SAME cluster, so neither is the second one.
-    **A wrong Geni id points at a stranger's profile** (`CLAUDE.md` § the `@NI04461@` failure), so
-    this is asked rather than picked.
+    **⛔ ON THE TWO CHINESE SEEDS, AND THE CAVEAT IS HERS.** Supplied 2026-09-12:
+    *"I think they are in the two most eccentric clusters possibly at least at one point were the
+    most eccentric individuals (the descendant export style may have stretched eccentricity
+    elsewhere though since descendant exports are more stringy)."*
+
+    **Measured now: both sit in cluster rank 1 at every cut** in
+    `reports/eccentric-cluster-members.tsv`, not one each in two clusters. That is consistent with
+    what she says rather than against it — the clustering is recomputed from a corpus that has
+    grown by many descendant balls since, and a stringy descent changes what the components are.
+    **The ids are hers and stand; the cluster reading is stale, not the seeds.**
 
   - **⛔ CHARLEMAGNE `6000000002457013227` — COMPLETE 2026-09-12, ON HER OWN CONDITION.**
     *"we cannot really export from him but if he has anywhere close to the descendant count that
