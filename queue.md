@@ -570,6 +570,14 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.
+  - **⛔ BERGITTE IS NOT BLOCKED, AND CALLING IT BLOCKED WAS WRONG. Ruled 2026-09-12:**
+    *"What the fuck Bergitte blocked on me? No lol export from this item …NN-Skjalgsson…"*
+    She made the seed by hand, which makes it **work to do, not work to wait on** — the
+    BLOCKED-ON-USER-ACTION tag was left on after the blocking condition had already been cleared.
+
+        6000000227295848846  NN Skjalgsson   -> the three-step: Forest, Descendants, Monte Carlo
+        6000000227712070008  NN Näf          -> already 4 balls, 6,250 new
+
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
@@ -609,13 +617,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
     **⛔ EMMA IS SUPPLYING THE REMAINING ROOTS.** *"I will get the other ones too"* — so the ten
     roster entries with no Geni id are hers to fill in and are not to be searched for here.
-
-    **⛔ SHE MADE THIS ONE BY HAND. DO NOT SEED ABOVE IT.** Ruled 2026-09-12:
-    *"this one's actually a bit of a challenging situation ... I'm going to actually look at the
-    family tree a bit ... I'm going to look and probably make the person manually just because
-    I'm trying to get a specific thing."* So the undecided question below — whether the seed rule
-    applies on top of Knut — **is not for this side to answer and must not be guessed**. The
-    campaign skipped past this until she made the person, which she has.
 
     **He replaces Bergitte as the person to go from, not as the target** — the campaign is still
     her descendants, and he is where the export starts. Whether the seed rule still applies on
