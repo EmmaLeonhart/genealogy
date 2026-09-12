@@ -39113,3 +39113,33 @@ Filed as `-refresh` rather than overwriting, per § *Never overwrite an existing
 `Descendants` balls, which is why part 2 asks only for `Forest` and Monte Carlo on them; whether
 either already has a `Forest` is the check to run before either is dispatched — Aztec has two
 balls filed and Genghis one, and neither was inspected for walk type.
+
+## 2026-09-12 — Fihr, all three steps: 363 · 266 · 1,238, from a descent that started at zero
+
+**`6000000227714378863`**, ancestor of the Quraysh, filed to `exports/fihr/`.
+
+    step 1  Forest       task 6000000227723537015      363 new   ( 7.3%)
+    step 2  Descendants  task 6000000227723761897      266 new   ( 5.3%)
+    step 3  Monte Carlo  task 6000000227723910865    1,238 new   (24.8%)
+
+**1,867 new people**, and the sequence is the interesting part rather than the total.
+`scripts/descent-from.py` returned a **header-only file** for Fihr before any of this — the corpus
+held not one of his descendants — so step 3 was not merely unpromising, it was **impossible**:
+there was no candidate pool to sample. The first two steps built the pool (0 → 11,395 rows) and
+the sweep then hit a 15,000-descendant person on its first 30 picks.
+
+**⛔ SO A ZERO ENUMERATION MEASURES US, NOT GENI.** It says the corpus holds none of this person's
+descendants, which is a fact about our coverage and says nothing about what is reachable. Reading
+it as *thin descent* would have retired Fihr before he returned 1,867.
+
+**Emperor Jimmu `6000000227713229918` is the identical case** — also a header-only enumeration —
+and takes the same forced order: Forest, Descendants, rebuild the descent, then sample.
+
+**Seven roots complete under the three-step:**
+
+    NN Näf        441 ·  464 · 4,005+1,340
+    Skjalgsson      3 ·  627 ·     0
+    Chinese 1     595 ·  844 ·     0
+    Chinese 2      39 ·   33 · 3,969
+    Adasi         141 ·  182 ·     0      (plus a reseed past the bottleneck, 1 new)
+    Fihr          363 ·  266 · 1,238

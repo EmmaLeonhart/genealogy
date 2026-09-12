@@ -671,7 +671,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         6000000227723403845  Adasi, PAST THE BOTTLENECK   supplied 2026-09-12
         6000000227713034875  Confucius
         6000000211987119821  Hermenegildo Gutteres
-        6000000227714378863  Fihr
         6000000227713229918  Emperor Jimmu
         6000000220876233832  Nārāyaṇa
 
