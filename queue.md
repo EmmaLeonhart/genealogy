@@ -722,6 +722,21 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     grown by many descendant balls since, and a stringy descent changes what the components are.
     **The ids are hers and stand; the cluster reading is stale, not the seeds.**
 
+  - **⛔ A POST-MERGE REFRESH AROUND ABUL HAMZA, ADDED 2026-09-12.** *"a lot of merges happened
+    around Abul Hamza, so queue up a forest export from
+    https://www.geni.com/people/NN/6000000227715260898?through=6000000054042438830 and put it in
+    the overwriting gedcoms section thing."*
+
+        6000000227715260898   `Forest`   -> exports/post-merge/
+
+    **`exports/post-merge/` is the overwriting section**, and
+    `docs/rules/corpus-and-tree.md` says what it is for: after Geni merges profiles our older
+    exports still assert the pre-merge shape, and a refresh brings our record to *what Geni says
+    today*. § *Later sources win value conflicts* is the mechanism that makes it overwrite.
+
+    ⛔ **DO NOT ADJUDICATE THE MERGES.** That file forbids grading a pair as *not really a
+    duplicate* and skipping it — the question is *are we current*, never *is Geni right*.
+
   - **⛔ THREE NORTHERN EUROPEAN DFA ROOTS, ADDED 2026-09-12.** *"This time focused more on
     Northern European dfa and having the same complications as the other things."*
 
