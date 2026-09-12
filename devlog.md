@@ -38798,3 +38798,31 @@ in and running.
 * **`Nārāyaṇa`, the eight supplied seeds, Genghis/Aztec/Inca** — all still to run.
 * **Bergitte Aukland** — blocked on user action.
 * **The crons item, the delete-on-done convention, the three-crons item** — standing procedures.
+
+## 2026-09-12 — 30 census reads destroyed by using `load` where `enqueue` was correct
+
+**The no-name round 4 sweep completed 30 census reads and they were never harvested.** Starting
+the NN Skjalgsson forest with `{type:"load"}` cleared `results` before anything was read off it.
+`stats: 0` on the next status call is the whole finding.
+
+**`queue.md` says this in capitals** — *⛔ `enqueue` APPENDS. `load` REPLACES AND CLEARS* — and
+records the precedent: *"nine captures went that way on 2026-09-10, nine page loads and their
+searches spent for nothing. The rule that followed was harvest before loading."* That paragraph
+was read earlier in this session.
+
+**⛔ AND `load` WAS NOT EVEN NEEDED HERE.** It had been adopted three hours earlier for a real
+reason — a refused export leaves a tab in `active` and only `load` clears it — and then applied
+by habit to a scheduler that was **idle**: `running: false`, `queued: 0`, `active` empty. `enqueue`
+would have appended the export and kept the 30 reads. **A workaround for one state was carried
+into a state that did not need it**, which is § *A shortcut taken to unblock a session is not a
+law to enforce back* in a new place.
+
+**The rule going forward, stated as the call rather than as prose:**
+
+    scheduler idle, nothing to harvest     -> either works; prefer `enqueue`
+    scheduler idle, results not written    -> `enqueue`. NEVER `load`.
+    a dead tab is holding the serial slot  -> `load`, and only then
+
+**Cost:** 30 page loads, and whatever hits were among them — unknown, because the reads are gone.
+Rounds 1-3 hit 5, 3 and 3 over the 4,000 threshold, so the expected loss is roughly three
+export targets that will have to be found again.
