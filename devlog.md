@@ -37791,3 +37791,39 @@ test for an **empty** label — `NN de Courtenay` is not empty, so it passed.
 ⛔ **`Q1934051` is NOT touched.** It is the only other identification of the same shape and it is
 Emma's to rule on, not mine to retract on a resemblance. It is named here and in the CSV so the
 decision has somewhere to start.
+
+## 2026-09-11 — 2,289 of the pipe-label batch's edits are language copies of the `mul` written beside them
+
+Emma, on `Q105872266` Eleanor Peshale: *"Many people like this have a very wrong thing done with
+their labels. Corrected this one though."* The item carried the same string in **six** places —
+`mul`, `en`, `en-ca`, `en-us`, `fr`, `nl` — where `mul` alone would show through all of them.
+
+**Measured against `reports/title-label-proposals.tsv`, the population the pipe-label emitter
+acts on:**
+
+    items acted on                                          1,628
+    items given >=1 language label identical to their mul    1,606
+    redundant language-label edits                           2,289
+    en labels that genuinely DIFFER from mul                    36
+
+    languages written:  mul 1,628   en 1,623   nl 698   es 2   nb 1   cs 1
+
+So of roughly 5,802 edits in that batch, **2,289 write a value into a language slot that the
+`Lmul` in the same batch already carries.** Only the 36 situation-A rows — where a comma tail
+makes English genuinely different, `Isabel Fraunceys, Heiress of Giffords Hall` — differ.
+
+**The overwrite itself is not the error, and `build-garborg-day.py` already says why**: a
+language-specific label beats `mul`, so an `Lmul` alone would leave `Mary|Maria Butler` sitting in
+`en` while `mul` read `Mary Butler`. Clearing the pipe out of `en` and `nl` requires writing them.
+
+**The error is the end state.** After the correction the language slot holds a copy of `mul`
+forever, and that copy is what an item shows six times over. `CLAUDE.md` § *The MARRIED name is
+the real name. `mul` carries it* and § *One name item per USAGE* both treat `mul` as the carrier;
+a per-language duplicate of it is not a fact about that language.
+
+⛔ **NOTHING IS CHANGED IN THE EMITTER.** Whether the right operation is *overwrite and accept the
+duplicate* or *overwrite and then remove the language label so `mul` shows through* turns on what
+QuickStatements can actually do to a label, which is not checked here and not guessed at. The
+measurement is committed as `reports/label-duplicates-of-mul.csv`, 1,606 rows naming the item, the
+`mul` value and which languages duplicate it, so whichever way it is ruled the population is
+already enumerated.
