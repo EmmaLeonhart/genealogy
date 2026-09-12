@@ -5,17 +5,17 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,547,941 people**.
+One row per person in `reports/derived-labels.csv` — **1,550,602 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,452,519 | 93.8% |
+| Latin only | 1,455,168 | 93.8% |
 | CJK only — needs translation for en | 44,205 | 2.9% |
-| no usable name at all | 26,111 | 1.7% |
-| other script only — needs translation for en | 12,463 | 0.8% |
-| mixed-script only — no clean Latin label | 9,985 | 0.6% |
+| no usable name at all | 26,121 | 1.7% |
+| other script only — needs translation for en | 12,464 | 0.8% |
+| mixed-script only — no clean Latin label | 9,986 | 0.6% |
 | Latin and CJK | 2,658 | 0.2% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
@@ -27,11 +27,11 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,741,835 |
+| Latin | 1,744,990 |
 | CJK | 112,417 |
-| other | 49,283 |
-| mixed | 31,553 |
-| none | 481 |
+| other | 49,316 |
+| mixed | 31,559 |
+| none | 483 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 294,519 people
+## Aliases from married names — 294,789 people
 
 A married name plugs into the name to produce an alias.
 
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-46,590 people have both a derived Latin label and a Wikidata English
-label. **12,686 match exactly (27.2%).**
+46,655 people have both a derived Latin label and a Wikidata English
+label. **12,704 match exactly (27.2%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the

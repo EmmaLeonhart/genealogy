@@ -1754,7 +1754,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 324196569650002716,bare NN,,F,NN,spouse_parent,,,2,,323900686070004411,daughter-in-law of Elsa Cooke,yes,0,1,1
 324733411860006408,bare NN,,F,NN,father,,,1,,323809908070001324,daughter of Olav Aadnøy,yes,2,0,0
 324733879770001637,bare NN,,M,NN,father,,,1,,323809908070001324,son of Olav Aadnøy,yes,2,0,0
-3249731,bare NN,,,NN,father,,,1,,3249768,child of Björn „Jórsalafari“ Einarsson,yes,1,0,1
 325341947020001767,bare NN,,F,NN,spouse,,,1,,325339170650004740,wife of Per Gunnar Sven Flitig,yes,0,1,1
 325344588390002027,bare NN,,F,NN,father,,,1,,325343369150007064,daughter of Ralf Söderkvist,yes,2,0,0
 325344731790001787,bare NN,,M,NN,father,,,1,,325343369150007064,son of Ralf Söderkvist,yes,2,0,0
@@ -3488,7 +3487,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 388523155240003234,bare NN,,F,NN,father,,,1,,388522540130005851,daughter of Elling Martin Ellingsen,yes,2,0,0
 388523332020012462,bare NN,,F,NN,father,,,1,,388522540130005851,daughter of Elling Martin Ellingsen,yes,2,0,0
 388613596210002012,bare NN,,,NN,child,,,1,,388450329300012525,parent of Björn Svennung,yes,0,0,1
-388635234970012477,bare NN,,F,NN,spouse,,,1,,6000000004586565238,wife of Harald III Halfdansson,yes,0,1,5
+388635234970012477,bare NN,,F,NN,father,,,1,,6000000051578623019,daughter of Gudfred Veidekonge Sigfredsson Konge af Danerne,yes,1,1,5
 389110429780006376,bare NN,,F,NN,spouse,,,1,,6000000003828345550,wife of Rostaing de Calian seigneur de Calian,yes,0,1,1
 389116210050012483,NN + surname,de Roussillon,F,NN de Roussillon,spouse,,,1,,389104531590004226,wife of Rostaing Arbald,yes,0,1,1
 3891203,bare NN,,M,NN,father,,,1,,3892005,son of Joseph Sladowsky,yes,2,0,0
@@ -8131,6 +8130,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000000133550399,NN + surname,Bardolf,F,NN Bardolf,spouse,,,1,,6000000000133550409,wife of John Peverell,yes,0,1,1
 6000000000133689969,bare NN,,,NN,father,,,1,,6000000013418900311,child of August Kriegsmann Gran,yes,1,1,0
 6000000000133832499,bare NN,,,NN,child,,,1,,6000000013419183223,parent of Margrethe Christopha Gran,yes,0,0,1
+6000000000135692986,NN + surname,de Montgomery,F,NN de Montgomery,father,,,1,,6000000008248621469,daughter of Hugh de Montgomery,yes,1,0,3
 6000000000136808476,bare NN,,F,NN,father,,,1,,6000000000136852068,daughter of Birger Klingsheim,yes,1,0,2
 6000000000136843231,bare NN,,M,NN,father,,,1,,6000000000136846086,son of Arne Klingsheim,yes,1,0,0
 6000000000136845476,bare NN,,M,NN,grandparent,,,2,,6000000005795685738,grandson of Jens Martin Martinius Klingsheim,yes,1,0,0
@@ -12722,6 +12722,10 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000001162615606,bare NN,,M,NN,mother,,,1,,6000000001162333203,son of Marisa Coop-Diatto,yes,1,0,2
 6000000001162615621,bare NN,,F,NN,mother,,,1,,6000000001162333203,daughter of Marisa Coop-Diatto,yes,1,0,1
 6000000001164027894,bare NN,,M,NN,father,,,1,,6000000001156504128,son of Thorleif Camillo Henriksen,yes,2,1,1
+6000000001164043627,bare NN,,M,NN,,,,,,,,,1,0,0
+6000000001164043634,bare NN,,M,NN,,,,,,,,,1,0,1
+6000000001164043643,bare NN,,M,NN,grandparent,,,2,,6000000001164043658,grandson of Havgrímur Sigmundarson,yes,1,0,1
+6000000001164043651,bare NN,,M,NN,father,,,1,,6000000001164043658,son of Havgrímur Sigmundarson,yes,1,0,1
 6000000001164043708,bare NN,,F,NN,child,,,1,,6000000003261687806,mother of Havgrímur í Hovi,yes,0,0,1
 6000000001164065421,bare NN,,F,NN,father,,,1,,6000000001164065438,daughter of Georges Kahn,yes,2,0,0
 6000000001164086836,bare NN,,M,NN,grandchild,,,2,,6000000001097750648,grandfather of Nikoline Augusta Henriksen,yes,0,0,3
@@ -16859,7 +16863,10 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000002006365267,bare NN,,M,NN,father,,,1,,4335794150670034057,son of Yvan Lellouche,yes,2,1,2
 6000000002006391074,bare NN,,F,NN,father,,,1,,4335794150670034057,daughter of Yvan Lellouche,yes,2,1,7
 6000000002006440650,bare NN,,M,NN,father,,,1,,4156541990700048245,son of William Curtis Lewis,yes,2,0,0
-6000000002006906409,NN + surname,MacMahon,M,NN MacMahon,father,,,1,,6000000002006906416,son of MacMahon,yes,1,0,0
+6000000002006906388,bare NN,,M,NN,grandparent,,,2,,6000000002006906402,grandson of MacMahon,yes,1,0,0
+6000000002006906395,bare NN,,M,NN,father,,,1,,6000000002006906402,son of MacMahon,yes,1,0,1
+6000000002006906402,NN + surname,MacMahon,M,NN MacMahon,father,,,1,,6000000002006906409,son of MacMahon,yes,1,0,1
+6000000002006906409,NN + surname,MacMahon,M,NN MacMahon,father,,,1,,6000000002006906416,son of MacMahon,yes,1,0,1
 6000000002006906416,NN + surname,MacMahon,M,NN MacMahon,father,,,1,,6000000002006906423,son of Diemold MacMahon,yes,1,0,1
 6000000002007380101,bare NN,,M,NN,father,,,1,,6000000001992475699,son of Guillermo Carlos Pinto d'Aguiar Vial,yes,1,0,0
 6000000002010250681,bare NN,,M,NN,,,,,,,,,2,0,0
@@ -24120,11 +24127,13 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000003299270668,NN + surname,Cobhthach,M,NN Cobhthach,father,,,1,,6000000003494770004,son of Colmán Már mac Coirpri Ó'Dúnlainge,yes,2,0,0
 6000000003299275090,NN + surname,Congal,M,NN Congal,father,,,1,,6000000003494770090,son of Murchad Mór mac Brain Muit Ó'Dúnlainge,yes,2,0,0
 6000000003299275904,NN + surname,Croanan,F,NN Croanan,father,,,1,,6000000009169151780,daughter of Conall Corc mac Luigthig,yes,2,0,0
+6000000003299279691,NN + surname,Dalbhach,M,NN Dalbhach,father,,,1,,6000000003299302936,son of Moroch Mor,yes,1,0,0
 6000000003299310465,NN + surname,Echtgaile,M,NN Echtgaile,father,,,1,,6000000003299392737,son of Miocain,yes,1,0,1
 6000000003299316148,NN + surname,EithneErc,F,NN EithneErc,father,,,1,,6000000003299275112,daughter of Brenaind Dall,yes,1,1,1
 6000000003299362165,NN + surname,Iomcadh,M,NN Iomcadh,father,,,1,,6000000003494770090,son of Murchad Mór mac Brain Muit Ó'Dúnlainge,yes,2,0,0
 6000000003299385283,NN + surname,MacBroic,M,NN MacBroic,father,,,1,,6000000009169151780,son of Conall Corc mac Luigthig,yes,2,0,0
 6000000003299385487,NN + surname,Mainchin,M,NN Mainchin,father,,,1,,6000000006727922137,son of Cairbre mac Cormac Ó'Dúnlainge,yes,2,0,0
+6000000003299385675,NN + surname,Maoilsheachlainn,M,NN Maoilsheachlainn,father,,,1,,6000000003299302936,son of Moroch Mor,yes,1,0,0
 6000000003299392737,NN + surname,Miocain,M,NN Miocain,child,,,1,,6000000003299310465,father of Echtgaile,yes,0,0,1
 6000000003299392892,NN + surname,Molumba,M,NN Molumba,father,,,1,,6000000003494770004,son of Colmán Már mac Coirpri Ó'Dúnlainge,yes,2,0,0
 6000000003299431412,NN + surname,St. Coman,M,NN St. Coman,father,,,1,,6000000006727922137,son of Cairbre mac Cormac Ó'Dúnlainge,yes,2,0,0
@@ -24857,7 +24866,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000003495300745,bare NN,,F,NN,spouse,,,1,,6000000000186410898,wife of Sveidi Heytirsson Sea King,yes,0,1,1
 6000000003495308364,bare NN,,,NN,father,,,1,,6000000007088594275,child of Emma Corbet,yes,1,0,1
 6000000003495332856,bare NN,,F,NN,spouse,,,1,,6000000003495329713,wife of Roger de Chandos I,yes,0,1,1
-6000000003495367551,bare NN,,F,NN,spouse,,,1,,6000000006209960107,"wife of Eymund Hringsson King of Novgorod, Russia",yes,0,1,1
+6000000003495367551,bare NN,,F,NN,spouse,,,1,placeholder,6000000006209960107,"wife of Eymund Hringsson King of Novgorod, Russia",yes,1,1,1
 6000000003495391972,bare NN,,F,NN,spouse,,,1,,6000000003494765927,wife of Robert II d'Umfreville Lord Tours Vian,yes,0,1,1
 6000000003495422241,NN + surname,de Bellew,F,NN de Bellew,spouse,,,1,,6000000003086962387,wife of Reginald de Skipwith Knight,yes,0,1,2
 6000000003496161799,bare NN,,F,NN,mother,,,1,,6000000003484021647,daughter of Kerstin Vera Lund Sundin,yes,2,0,0
@@ -25960,6 +25969,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000003796290520,NN + surname,Theodora,F,NN Theodora,father,,,1,,6000000002151830120,daughter of Flavius Julius Crispus Caesar,yes,2,0,0
 6000000003796315473,NN + surname,Hyde,F,NN Hyde,father,,,1,,6000000006444063707,daughter of Thomas Hyde,yes,2,0,0
 6000000003796387928,bare NN,,F,NN,spouse,,,1,,6000000002188028136,wife of Ludwig von Kärnten,yes,0,1,0
+6000000003796391454,NN + surname,Bardolf,F,NN Bardolf,mother,,,1,,6000000003243324914,daughter of Isabel De Aguillon,yes,1,0,0
 6000000003796429063,bare NN,,F,NN,spouse,,,1,,6000000002043219636,wife of Robert de Beauchamp,yes,0,1,0
 6000000003796459984,bare NN,,F,NN,spouse,,,1,,6000000001588414303,wife of Harald Reidgotaland King of Reidgotaland,yes,0,1,1
 6000000003796471443,bare NN,,F,NN,spouse,,,1,,6000000009688940756,wife of Lothar Dansson king of Denmark,yes,0,1,1
@@ -26001,6 +26011,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000003820943732,bare NN,,F,NN,spouse,,,1,,6000000007400621883,wife of Herlof Andersen Sandøya,yes,0,1,2
 6000000003820948410,bare NN,,F,NN,spouse,,,1,,6000000003820948401,wife of Gunnar Gardsson I,yes,0,1,1
 6000000003820948467,bare NN,,F,NN,spouse,,,1,,6000000003820948457,wife of Gunnar Gunnarson Gøysa IV,yes,0,1,2
+6000000003820948937,bare NN,,F,NN,spouse,,,1,,6000000001205077576,wife of Svåse finnekonge,yes,0,1,1
 6000000003820951082,NN + surname,Eriksdatter,F,NN Eriksdatter,spouse,,,1,,6000000003645672312,wife of Alv Agnarsson av Vestfold,yes,0,1,1
 6000000003820951930,bare NN,,F,NN,spouse,,,1,,6000000003645697335,wife of Agnar Bragesson,yes,0,1,1
 6000000003820953038,bare NN,,F,NN,spouse,,,1,,6000000004316053217,wife of Solve Solfarsson,yes,0,1,2
@@ -30948,6 +30959,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000005232689354,bare NN,,M,NN,father,,,1,,6000000005232593654,son of Paulo Leal Burlamaqui,yes,2,0,0
 6000000005232692579,bare NN,,F,NN,spouse_parent,,,2,,6000000005232589185,daughter-in-law of Carlos Leal Burlamaqui,yes,0,1,0
 6000000005233487168,bare NN,,F,NN,father,,,1,,6000000000118032454,daughter of Trygve Johannesen Maseng,yes,2,0,0
+6000000005234945087,bare NN,,F,NN,father,,,1,,6000000005223781223,daughter of Jørgen Holmer Koch,yes,1,0,0
 6000000005235325378,bare NN,,F,NN,father,,,1,,6000000007514431340,daughter of Edgar Mannheimer,yes,2,0,0
 6000000005235375465,bare NN,,M,NN,father,,,1,,6000000007514431340,son of Edgar Mannheimer,yes,2,0,0
 6000000005235426484,bare NN,,F,NN,father,,,1,,6000000007514431340,daughter of Edgar Mannheimer,yes,2,0,0
@@ -35443,7 +35455,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000006769728814,bare NN,,M,NN,father,,,1,,6000000007014824336,son of Yaakov Yoel Lopian,yes,2,0,0
 6000000006769907212,bare NN,,F,NN,spouse,,,1,,6000000006608534123,wife of Inge Mandelid,yes,0,1,1
 6000000006774274026,bare NN,,M,NN,child,,,1,,6000000006774177286,father of Eric Attali,yes,1,0,1
-6000000006775509122,bare NN,,,NN,father,,,1,,6000000006775312732,child of Börje Månsson Hammar,yes,1,0,1
 6000000006776067150,bare NN,,M,NN,mother,,,1,,6000000006702008001,son of Astrid Juell Rønnevik,yes,2,0,0
 6000000006776138012,bare NN,,F,NN,mother,,,1,,6000000006702008001,daughter of Astrid Juell Rønnevik,yes,2,0,0
 6000000006776171390,NN + surname,Hetland,F,NN Hetland,spouse,,,1,,6000000006776171381,wife of Lars Hallvardson Klingshei,yes,0,1,3
@@ -35544,6 +35555,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000006797597449,bare NN,,M,NN,father,,,1,,6000000004588649964,son of Harry Hirsh Jedeikin,yes,2,0,0
 6000000006797934613,bare NN,,F,NN,spouse,,,1,,6000000006797899567,wife of Hallbjörn Halvtroll Úlfsson,yes,0,1,1
 6000000006798090572,bare NN,,F,NN,spouse,,,1,,6000000001169174487,wife of Úlfur Óargi Óargi,yes,0,1,2
+6000000006798238224,bare NN,,F,NN,spouse,,,1,,6000000006797819719,wife of Hrafn Hængsson the first lawspeaker in Iceland,yes,0,1,0
 6000000006798329311,bare NN,,M,NN,mother,,,1,,6000000000144506202,son of Ella Geologica Tammelander,yes,1,0,4
 6000000006798499186,bare NN,,F,NN,sibling,,,2,,6000000015512043039,sister of Arnold Herbert Larson,yes,2,0,0
 6000000006799876534,bare NN,,F,NN,father,,,1,,6000000001428688388,"daughter of Wan Su bin Wan Yusuf, Dato' Bendahara Wan Yusuf",yes,2,0,0
@@ -35737,12 +35749,19 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000006850932185,bare NN,,F,NN,grandparent,,,2,,6000000022262382500,granddaughter of Einar Olai Lillevik,yes,1,1,2
 6000000006851983591,bare NN,,M,NN,father,,,1,,6000000006837469165,son of Roger Ray Oleson,yes,2,0,0
 6000000006852444818,bare NN,,F,NN,spouse,,,1,,6000000006851558098,wife of Ole Jensen Hals,yes,0,1,1
+6000000006852498924,bare NN,,F,NN,spouse,,,1,,6000000010431160538,wife of Úlfur hvassi Brandsson,yes,0,1,0
 6000000006852538158,bare NN,,M,NN,child,,,1,,6000000006852136876,father of Jo Ellen Calahan,yes,0,1,2
+6000000006852607992,bare NN,,F,NN,spouse,,,1,,6000000006852726479,wife of N. Vestarson,yes,0,1,0
 6000000006852812526,bare NN,,M,NN,pibling,,maternal,2,,6000000007160604250,nephew of Jaime Browne Soublette,yes,1,0,3
 6000000006852827757,bare NN,,F,NN,father,,,1,,6000000006853105074,daughter of Paul Theodor Kvaale,yes,2,1,1
 6000000006852835539,bare NN,,F,NN,child,,,1,,6000000009688378401,mother of Ana María Gause Swett,yes,1,0,3
 6000000006852900372,bare NN,,M,NN,pibling,,maternal,2,,6000000007160604250,nephew of Jaime Browne Soublette,yes,1,0,1
+6000000006852916225,bare NN,,M,NN,child,,,1,placeholder,6000000006763325794,father of Þorkell „Naumdælajarl“ Naumdøla,yes,0,1,1
+6000000006852924238,bare NN,,F,NN,child,,,1,placeholder,6000000006763325794,mother of Þorkell „Naumdælajarl“ Naumdøla,yes,0,1,1
+6000000006852939289,bare NN,,F,NN,child,,,1,placeholder,6000000010431160538,mother of Úlfur hvassi Brandsson,yes,0,1,1
+6000000006852993242,bare NN,,M,NN,child,,,1,placeholder,6000000010431160538,father of Úlfur hvassi Brandsson,yes,0,1,1
 6000000006853006207,bare NN,,F,NN,spouse,,,1,,6000000006853129048,wife of Haukur Teitsson,yes,0,1,1
+6000000006853026169,bare NN,,F,NN,spouse,,,1,,3120507,wife of Ormur „auðgi“ Úlfsson,yes,0,1,0
 6000000006853040324,bare NN,,M,NN,father,,,1,,6000000006853105074,son of Paul Theodor Kvaale,yes,2,0,0
 6000000006853091053,bare NN,,F,NN,spouse,,,1,,6000000006803156915,wife of Ølver Barnekar Einarsson,yes,0,1,4
 6000000006853162475,bare NN,,F,NN,father,,,1,,6000000006852876941,daughter of Olav Johannes Johannes Stray,yes,2,0,0
@@ -35990,6 +36009,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000006906376374,bare NN,,F,NN,spouse,,,1,,6000000006906376356,wife of Mundil Den Gamle Gyllaugsson,yes,0,1,1
 6000000006906376542,bare NN,,F,NN,spouse,,,1,,6000000002135095717,wife of Hraerek Ingjaldsson,yes,0,1,1
 6000000006906396100,bare NN,,F,NN,spouse,,,1,,6000000003243400291,wife of Vigebrand Hildibrandsson,yes,0,1,2
+6000000006906396350,bare NN,,F,NN,child,,,1,placeholder,6000000003086806873,mother of Signe fra Voss,yes,0,1,1
 6000000006906396815,bare NN,,F,NN,spouse,,,1,,6000000002527719897,wife of Harald Trygil Haavardsson av Hålogaland,yes,0,1,1
 6000000006906412678,bare NN,,F,NN,spouse,,,1,,6000000004840750234,wife of Dunghal Mac Fearghal,yes,0,1,3
 6000000006906495353,bare NN,,F,NN,spouse,,,1,,6000000003494770047,wife of Dúnlang I mac Muiredaig Ó Dúnlainge,yes,0,1,1
@@ -36293,7 +36313,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000006997731108,bare NN,,F,NN,spouse_parent,,,2,,6000000007335974610,daughter-in-law of Rolf Reksten,yes,0,1,2
 6000000006997857051,bare NN,,F,NN,spouse,,,1,,6000000004054433052,wife of Hilmar August Reksten,yes,0,1,1
 6000000006997941040,bare NN,,F,NN,spouse,,,1,,6000000007335974610,wife of Rolf Reksten,yes,0,1,3
-6000000006998273141,bare NN,,,NN,father,,,1,,3249731,"child of Kristín ""Vatnsfjarðar-Kristín"" Björnsdóttir",yes,1,0,1
+6000000006998273141,bare NN,,,NN,father,,,1,,3249731,child of Kristín Björnsdóttir,yes,1,0,1
 6000000006999199018,bare NN,,F,NN,father,,,1,,6000000004054433052,daughter of Hilmar August Reksten,yes,2,0,0
 6000000007000225601,bare NN,,M,NN,spouse,,,1,,4235831763030123528,husband of Karin Margit Etzler,yes,0,1,2
 6000000007001178097,bare NN,,F,NN,spouse,,,1,,6000000014453168474,wife of Iacob Tam ben David Ibn Yahya,yes,0,1,3
@@ -37601,6 +37621,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000007329359671,bare NN,,F,NN,spouse,,,1,,6000000002837369366,wife of Erp den kutryggige,yes,0,1,1
 6000000007329359947,bare NN,,F,NN,spouse,,,1,,6000000002837369992,wife of Frøygard Gardsson,yes,0,1,2
 6000000007329360123,bare NN,,F,NN,spouse,,,1,,6000000007329360118,wife of Vegard Gardsson,yes,0,1,1
+6000000007329368602,bare NN,,F,NN,spouse,,,1,,3139435,wife of Eylaugur Hirse,yes,0,1,0
 6000000007329368775,bare NN,,F,NN,spouse,,,1,,6000000001463705788,wife of Hrærekur Haraldsson,yes,0,1,2
 6000000007329382731,bare NN,,F,NN,spouse,,,1,,6000000008177335091,wife of Rurik Ingjaldsson,yes,0,1,1
 6000000007329382783,bare NN,,F,NN,spouse,,,1,,6000000007329382776,wife of Hugleik Dansson,yes,0,1,0
@@ -38002,6 +38023,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000007390837314,bare NN,,M,NN,grandparent,,,2,,6000000008707381900,grandson of Erik Alfred Alrik Hedvall,yes,2,1,2
 6000000007390867409,bare NN,,F,NN,father,,,1,,6000000000127807791,daughter of Wolter Selim Rafael Mangström,yes,2,0,0
 6000000007390893238,bare NN,,F,NN,spouse_parent,,,2,,6000000008707381900,daughter-in-law of Erik Alfred Alrik Hedvall,yes,0,1,2
+6000000007391108605,NN + surname,Eiriksson,M,NN Eiriksson,father,,,1,,6000000003949749785,son of Horik Godfredson King of the Danes,yes,2,1,1
 6000000007391334482,bare NN,,F,NN,spouse,,,1,,6000000007335928657,wife of Hans Inge Fagervik,yes,0,1,2
 6000000007391407300,bare NN,,M,NN,father,,,1,,6000000007335928657,son of Hans Inge Fagervik,yes,2,0,0
 6000000007391716777,bare NN,,M,NN,father,,,1,,6000000007370131287,son of Hugo Viktor Paavo Vienonen,yes,2,0,0
@@ -39393,7 +39415,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000007588648425,bare NN,,F,NN,child,,,1,,6000000007588717451,mother of Knut Arnljot Kaaresson Braa,yes,0,1,5
 6000000007589063398,bare NN,,F,NN,sibling,,,2,,6000000007588561286,sister of Kristel Tamm,yes,1,0,0
 6000000007590509743,bare NN,,,NN,child,,,1,,6000000022860417222,parent of Olaus Davidsen Vatne,yes,0,0,1
-6000000007590638406,NN + surname,Hammer,M,NN Hammer,father,,,1,,6000000007959419883,son of Knud Andersen Hammer,yes,1,0,0
+6000000007590638406,NN + surname,Hammer,M,NN Hammer,father,,,1,,6000000007959419883,son of Knud Andersen Hammer,yes,1,0,1
 6000000007592441445,bare NN,,M,NN,father,,,1,,6000000016262512782,son of Władimir Wałoć Trubecki h. Pogoń Litewska,yes,1,0,3
 6000000007592730594,bare NN,,F,NN,spouse,,,1,,6000000000945061958,wife of Hroy,yes,0,1,1
 6000000007599392285,bare NN,,M,NN,sibling,,,2,,6000000008744341737,brother of Ronnie Raff,yes,2,0,0
@@ -39921,7 +39943,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000007726203368,bare NN,,F,NN,father,,,1,,6000000005493710024,daughter of George Lee,yes,2,0,0
 6000000007726611426,bare NN,,F,NN,father,,,1,,4152868813820081355,daughter of Lars Svenson Helleren,yes,1,0,0
 6000000007727321274,bare NN,,F,NN,father,,,1,,6000000007726556087,daughter of Karl Hjalmar Fardal,yes,2,0,0
-6000000007732404644,bare NN,,,NN,father,,,1,,6000000006118261458,child of Greger Hansson Hammer,yes,1,0,1
 6000000007732495237,bare NN,,,NN,father,,,1,,6000000003589980236,child of Ida Olivia Ekman,yes,1,0,0
 6000000007734113818,bare NN,,M,NN,father,,,1,,6000000008723863656,son of Eduard Mihkel Kirss ← Kirsch,yes,2,0,0
 6000000007736348480,bare NN,,F,NN,spouse,,,1,,6000000015803189974,wife of Jon Gunvald Simlenes,yes,0,1,2
@@ -41405,7 +41426,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000008130545677,bare NN,,M,NN,father,,,1,,6000000008130460057,son of Rudolf of Austria,yes,1,0,0
 6000000008130613336,bare NN,,M,NN,father,,,1,,6000000002188370071,son of Felix Friedrich August Maria vom Siege Franz Joseph Peter Karl Anton Robert Otto Pius Michael Benedikt Sebastian Ignatius Marcus d'Aviano Habsburg-Lothringen,yes,2,0,0
 6000000008130619393,bare NN,,F,NN,father,,,1,,6000000002188370071,daughter of Felix Friedrich August Maria vom Siege Franz Joseph Peter Karl Anton Robert Otto Pius Michael Benedikt Sebastian Ignatius Marcus d'Aviano Habsburg-Lothringen,yes,2,0,0
-6000000008130628202,bare NN,,,NN,father,,,1,,6000000015377412822,child of Claes Göransson Prytz,yes,1,0,1
 6000000008130628264,bare NN,,F,NN,father,,,1,,6000000002188370071,daughter of Felix Friedrich August Maria vom Siege Franz Joseph Peter Karl Anton Robert Otto Pius Michael Benedikt Sebastian Ignatius Marcus d'Aviano Habsburg-Lothringen,yes,2,0,0
 6000000008130631499,bare NN,,F,NN,father,,,1,,5099757960090062883,daughter of Eugène Frédéric Marie Lamoral,yes,2,1,4
 6000000008130639368,bare NN,,M,NN,father,,,1,,6000000008130460057,son of Rudolf of Austria,yes,1,0,0
@@ -41641,6 +41661,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000008175441122,bare NN,,F,NN,grandparent,,,2,,6000000027654100612,granddaughter of Sverre Kvadsheim,yes,2,0,0
 6000000008177154488,bare NN,,F,NN,spouse,,,1,,6000000009534588102,wife of Thor Egede-Nissen,yes,0,1,2
 6000000008177274821,bare NN,,M,NN,father,,,1,,6000000006101366583,son of Arsanes of Persia,yes,2,0,0
+6000000008177297163,bare NN,,M,NN,sibling,,,2,,6000000008248188441,brother of Vethorm Vemundsson,yes,1,0,0
 6000000008177305386,bare NN,,M,NN,father,,,1,,6000000003243483256,son of Ragnvald «Straightleg» Haraldsson,yes,2,1,1
 6000000008177343748,bare NN,,M,NN,father,,,1,,6000000003665048100,son of Tore Ragnvaldsson,yes,2,1,1
 6000000008177384160,bare NN,,F,NN,spouse,,,1,,6000000008177296861,"wife of Eiliv Atlesson ""Ørn""",yes,0,1,0
@@ -42065,6 +42086,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000008248363936,bare NN,,F,NN,father,,,1,,6000000007329360118,daughter of Vegard Gardsson,yes,2,1,1
 6000000008248381422,bare NN,,F,NN,spouse,,,1,,6000000003243207084,wife of Brage Halvdansson av Valdres,yes,0,1,1
 6000000008248391532,NN + surname,Comyn,F,NN Comyn,father,,,1,,6000000008716865278,daughter of Walter de Valloniis Comyn,yes,2,1,0
+6000000008248421270,bare NN,,M,NN,grandchild,,,2,,6000000008177484813,grandfather of Adils Budlesson of Ranrike,yes,0,0,1
 6000000008248430276,bare NN,,F,NN,spouse,,,1,,6000000002187820571,wife of Andronikos Komnenos I,yes,0,1,3
 6000000008248436846,bare NN,,F,NN,father,,,1,,6000000039770731309,daughter of Rodrigo II Conde de Castilla,yes,1,1,4
 6000000008248467012,NN + surname,Murray,F,NN Murray,father,,,1,,6000000008248466993,daughter of David Murray,yes,2,1,1
@@ -42681,7 +42703,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000008405651509,bare NN,,F,NN,grandparent,,,2,,6000000079027949692,granddaughter of Julian Lorentsen,yes,2,0,0
 6000000008407055534,bare NN,,F,NN,spouse,,,1,,6000000004869003788,wife of Guaimario di Capua conte di Marsico,yes,0,1,0
 6000000008407207271,bare NN,,M,NN,spouse,,,1,,6000000008404689775,husband of Mildrid Beate Edøy,yes,0,1,2
-6000000008414767914,NN + surname,of Thurmond,F,NN of Thurmond,spouse,,,1,,6000000006727947933,wife of Edmond De Burgh,yes,0,1,4
+6000000008414767914,NN + surname,of Thurmond,F,NN of Thurmond,father,,,1,,6000000003219779311,daughter of Turlough Mor O'Brien,yes,1,1,4
 6000000008415892311,bare NN,,F,NN,father,,,1,,6000000000670279300,daughter of Manuel II Palaiologos byzantine emperor,yes,2,0,0
 6000000008416636567,bare NN,,M,NN,father,,,1,,6000000008418500775,son of Gunnar Jarnes,yes,2,0,0
 6000000008418375874,bare NN,,F,NN,spouse,,,1,,6000000008418592764,wife of Berendt Haas,yes,0,1,1
@@ -47615,7 +47637,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000010110800490,bare NN,,M,NN,spouse_parent,,,2,,6000000010110388838,son-in-law of Thorleif Storby,yes,0,1,4
 6000000010110844234,bare NN,,F,NN,child,,,1,,6000000010110619521,mother of Kari Mali Storby,yes,0,1,2
 6000000010111438069,bare NN,,F,NN,grandparent,,,2,,6000000020602143890,granddaughter of Carmen Gloria Carmen Bulnes Aldunate,yes,1,0,0
-6000000010113707757,bare NN,,,NN,father,,,1,,6000000006775509122,child of Nils Börjesson Hammar,yes,1,0,1
 6000000010116754092,bare NN,,F,NN,father,,,1,,4341494656060013838,daughter of Steeve Halimi,yes,2,0,0
 6000000010117238646,bare NN,,M,NN,spouse_parent,,,2,,4279496041560045061,son-in-law of James Halimi,yes,0,1,0
 6000000010118208231,bare NN,,,NN,father,,,1,,6000000000699877769,child of Daniel Jakobsson Åkerman,yes,1,0,1
@@ -47776,7 +47797,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000010178998418,bare NN,,M,NN,,,,,,,,,2,0,0
 6000000010179036856,bare NN,,M,NN,father,,,1,,6000000010179490406,son of Birger Gerdt Axel Olin,yes,2,1,3
 6000000010179047245,bare NN,,F,NN,spouse_parent,,,2,,6000000009691674270,daughter-in-law of Michael Hilary Reuel Tolkien,yes,0,2,1
-6000000010179418032,bare NN,,,NN,father,,,1,,6000000008130628202,child of Georgius Nicolai Prytz,yes,1,0,1
 6000000010179581889,bare NN,,M,NN,father,,,1,,6000000025851286795,"son of San Twee, adopted YEO",yes,2,0,0
 6000000010179645945,bare NN,,F,NN,father,,,1,,6000000024914172307,daughter of Leong Chuan CHIA,yes,2,0,0
 6000000010179732755,bare NN,,M,NN,father,,,1,,6000000024914172307,son of Leong Chuan CHIA,yes,2,0,0
@@ -48522,7 +48542,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000010388287327,bare NN,,M,NN,grandparent,,,2,,6000000010340223225,grandson of Henning Schörling,yes,2,0,0
 6000000010388304217,bare NN,,M,NN,mother,,,1,,6000000010339907623,son of Märta Schörling,yes,2,0,0
 6000000010388878373,bare NN,,F,NN,spouse_parent,,,2,,6000000010339533928,daughter-in-law of Gunilla Schörling Dagerhem,yes,0,1,2
-6000000010389558881,bare NN,,F,NN,spouse,,,1,,4018368046370120355,wife of Vigfús Magnússon,yes,0,1,0
+6000000010389558881,bare NN,,F,NN,mother,,,1,,6000000078924108752,daughter of Ásta Klængsdóttir,yes,1,1,0
 6000000010390288169,NN + surname,Agesdatter Steeg,F,NN Agesdatter Steeg,father,,,1,,6000000008048019222,daughter of Ove Aake Steeg II,yes,2,1,3
 6000000010391622978,bare NN,,M,NN,father,,,1,,6000000026575769347,son of Gudmund John Vilhelm Smith,yes,2,0,0
 6000000010395072008,bare NN,,F,NN,father,,,1,,6000000207089678884,daughter of Cecil Keith Kelleher,yes,2,0,0
@@ -54120,6 +54140,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000011920482542,bare NN,,M,NN,,,,,,,,,1,0,3
 6000000011920482546,bare NN,,M,NN,,,,,,,,,1,0,3
 6000000011920482550,bare NN,,F,NN,,,,,,,,,1,0,0
+6000000011920514756,bare NN,,F,NN,child,,,1,placeholder,6000000008248188441,mother of Vethorm Vemundsson,yes,0,0,3
 6000000011920606373,bare NN,,M,NN,grandparent,,,2,,6000000005606933123,grandson of Paul Pettersen Netland,yes,1,0,4
 6000000011920897983,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000011920897987,bare NN,,M,NN,,,,,,,,,1,0,0
@@ -58827,6 +58848,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000013668658543,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000013668674007,NN + surname,Æsa,F,NN Æsa,spouse,,,1,,6000000003852076897,wife of Óblauður Oblaud Otryggson Hjorleivsson,yes,0,1,1
 6000000013668705889,bare NN,,M,NN,,,,,,,,,1,0,0
+6000000013668813311,bare NN,,F,NN,child,,,1,placeholder,6000000005049052200,mother of Eirik II Eiriksson King of Jutland,yes,0,1,1
 6000000013668830784,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000013668939158,bare NN,,F,NN,,,,,,,,,1,0,0
 6000000013668939170,bare NN,,F,NN,,,,,,,,,1,0,0
@@ -60771,6 +60793,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000014618964353,bare NN,,,NN,father,,,1,,6000000014619125669,child of Helena Charlotta Nordstrom,yes,1,1,0
 6000000014619027420,bare NN,,,NN,spouse,,,1,,6000000014618964353,spouse of Rosalie Welander,yes,0,1,0
 6000000014619125669,bare NN,,,NN,child,,,1,,6000000014618964353,parent of Rosalie Welander,yes,0,0,1
+6000000014620314410,bare NN,,F,NN,mother,,,1,,6000000012153930327,daughter of Elisabeth Maria Sjöberg,yes,1,0,0
 6000000014620734448,bare NN,,F,NN,spouse,,,1,,6000000000944947338,wife of Audun Alvson Røde,yes,0,1,1
 6000000014621127530,bare NN,,F,NN,mother,,,1,,6000000003597431250,daughter of Marit Høie Hetland,yes,1,0,0
 6000000014621274608,bare NN,,F,NN,spouse,,,1,,6000000002892996332,wife of Erland Sigurdsson Sundbu,yes,0,1,3
@@ -62027,7 +62050,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000015302463003,bare NN,,,NN,father,,,1,,6000000013364016039,child of Jens Anderson Elton,yes,1,0,1
 6000000015302961005,bare NN,,F,NN,spouse,,,1,,6000000015302544591,wife of Rui Martins de Freitas,yes,0,1,2
 6000000015304146415,bare NN,,F,NN,spouse,,,1,,6000000001450599254,wife of Publius Seius Fuscianus,yes,0,1,2
-6000000015305839973,bare NN,,,NN,father,,,1,,6000000010179418032,child of Gabriel Jöransson Prytz,yes,1,0,1
 6000000015307268038,bare NN,,F,NN,father,,,1,,6000000177356034823,daughter of Martin Jonassen,yes,2,0,0
 6000000015307268041,bare NN,,M,NN,father,,,1,,6000000177356034823,son of Martin Jonassen,yes,2,0,0
 6000000015307268044,bare NN,,F,NN,father,,,1,,6000000177356034823,daughter of Martin Jonassen,yes,2,0,0
@@ -62647,7 +62669,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000015676961654,bare NN,,M,NN,grandparent,,,2,,6000000084667375877,grandson of Ulf Tave Johannes Hortlund,yes,2,0,0
 6000000015677099538,bare NN,,F,NN,spouse_parent,,,2,,6000000084667375877,daughter-in-law of Ulf Tave Johannes Hortlund,yes,0,1,3
 6000000015677373511,bare NN,,M,NN,spouse_parent,,,2,,6000000018168998957,son-in-law of Bernt Thorsteinsen Rusdal,yes,0,1,0
-6000000015677726093,bare NN,,F,NN,spouse,,,1,,6000000001635705288,wife of Peter den Ældre på Sponheim,yes,0,1,1
+6000000015677726093,bare NN,,F,NN,father,,,1,,6000000015677500609,daughter of Torgeir Ingemundsson,yes,1,1,1
 6000000015678890495,bare NN,,F,NN,grandparent,,,2,,6000000001721909261,granddaughter of Cecilia María Browne Ross,yes,1,0,0
 6000000015679012539,bare NN,,F,NN,grandparent,,,2,,6000000001721909261,granddaughter of Cecilia María Browne Ross,yes,1,0,0
 6000000015680891626,bare NN,,F,NN,father,,,1,,6000000018272279468,daughter of Gunnar Kjelsaas,yes,2,1,4
@@ -62891,6 +62913,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000015807003298,bare NN,,M,NN,father,,,1,,6000000007526885683,son of Wesley Ronald Wooden,yes,2,0,0
 6000000015807018140,bare NN,,F,NN,father,,,1,,6000000007526885683,daughter of Wesley Ronald Wooden,yes,2,0,0
 6000000015807063115,bare NN,,F,NN,father,,,1,,6000000007526885683,daughter of Wesley Ronald Wooden,yes,2,0,0
+6000000015808264039,NN + surname,Michaelsdotter,M,NN Michaelsdotter,mother,,,1,,6000000012730303408,son of Anna Eva Silfverhielm,yes,1,0,0
 6000000015808875405,bare NN,,M,NN,father,,,1,,6000000001499188150,son of Ole Tollef Kjendlie,yes,2,0,0
 6000000015809255584,bare NN,,M,NN,father,,,1,,6000000010301632380,son of Aksel Jentoft Jensen,yes,2,0,0
 6000000015809642004,bare NN,,,NN,spouse,,,1,,6000000015809314571,spouse of Katarina Fredrika Platan,yes,0,1,0
@@ -64421,6 +64444,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000016661658010,bare NN,,F,NN,spouse,,,1,,6000000000437016197,wife of Carthach Mac Nuadu O'Crimthinn,yes,0,1,1
 6000000016662777576,bare NN,,F,NN,spouse,,,1,,6000000004533522186,wife of Ugone Ebriaci di Pisa,yes,0,1,3
 6000000016670079339,bare NN,,F,NN,father,,,1,,6000000003805107380,daughter of Peder Johnson Hølleland,yes,2,1,0
+6000000016671693618,bare NN,,F,NN,spouse,,,1,,6000000008248159807,wife of Svipdag Siggeiring of Gøtaland,yes,0,1,2
 6000000016678532004,bare NN,,F,NN,spouse,,,1,,6000000006101366583,wife of Arsanes of Persia,yes,0,1,1
 6000000016678686222,bare NN,,F,NN,father,,,1,,6000000016678762117,daughter of Jon Sæther,yes,2,1,0
 6000000016678711988,bare NN,,M,NN,spouse_parent,,,2,,6000000016678762117,son-in-law of Jon Sæther,yes,0,1,0
@@ -70216,6 +70240,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000019684879792,bare NN,,M,NN,father,,,1,,6000000002471873569,son of Gunnar Bernhard Lihr,yes,2,0,0
 6000000019687407168,bare NN,,F,NN,father,,,1,,6000000019643029220,daughter of Povel Lauritzen,yes,2,0,0
 6000000019690188862,bare NN,,F,NN,spouse,,,1,,6000000013899636170,wife of Erik Jonsson,yes,0,1,2
+6000000019692093830,bare NN,,F,NN,spouse,,,1,,6000000003949749785,wife of Horik Godfredson King of the Danes,yes,0,1,4
 6000000019692933522,bare NN,,M,NN,child,,,1,,6000000018626805386,father of Jarosław Stefan Bornikowski,yes,0,1,3
 6000000019693137994,bare NN,,M,NN,grandparent,,,2,,6000000019693286086,grandson of Stefan Tuchołka h. Korzbok,yes,2,0,0
 6000000019693172334,bare NN,,M,NN,grandparent,,,2,,6000000019693286086,grandson of Stefan Tuchołka h. Korzbok,yes,2,0,0
@@ -70493,6 +70518,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000019856672565,bare NN,,F,NN,father,,,1,,6000000019845954455,daughter of Harold Dahl,yes,2,0,0
 6000000019857514617,bare NN,,F,NN,father,,,1,,6000000013193832465,daughter of Gunnar Oscar Gibson,yes,2,1,1
 6000000019857564953,bare NN,,F,NN,grandparent,,,2,,6000000013193832465,granddaughter of Gunnar Oscar Gibson,yes,2,0,0
+6000000019862132034,NN + surname,Le White,M,NN Le White,father,,,1,,6000000000953567882,son of Thomas White,yes,1,0,1
 6000000019865145782,bare NN,,M,NN,father,,,1,,6000000007450707339,son of Johannes Hatteland,yes,2,0,0
 6000000019865485083,NN + surname,壽州,F,NN 壽州,father,,,1,,6000000038071751861,daughter of 嘉問 望之 呂,yes,1,1,0
 6000000019865646330,bare NN,,F,NN,spouse,,,1,,6000000019864296888,wife of Maximilian Dietrich Franz Emilio Christopher Maria von Landsberg-Velen und Gemen,yes,0,1,4
@@ -70566,6 +70592,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000019897870487,bare NN,,F,NN,father,,,1,,6000000019898207057,daughter of Johannes Erga,yes,2,1,4
 6000000019897957244,bare NN,,F,NN,spouse,,,1,,6000000019897870282,wife of Martim Pereira senhor de Mazaferes,yes,0,1,1
 6000000019898001097,bare NN,,F,NN,spouse,,,1,,6000000019897698690,wife of Fernão Pereira senhor de Mazaferes,yes,0,1,1
+6000000019898123928,NN + surname,White,M,NN White,father,,,1,,6000000035639398026,son of Adam White,yes,1,0,0
 6000000019898421491,bare NN,,M,NN,grandparent,,,2,,6000000019306087510,grandson of Dag Bjørneby,yes,2,0,0
 6000000019898578645,bare NN,,,NN,child,,,1,,6000000019898652306,parent of Felix Guillaume Wittouck,yes,0,0,1
 6000000019898652306,bare NN,,,NN,father,,,1,,6000000019898578645,child of François Wittouck,yes,1,0,1
@@ -70819,7 +70846,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000020061891840,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000020062247899,bare NN,,F,NN,grandparent,,,2,,6000000020062985421,granddaughter of Nils Allan Berglund,yes,2,0,0
 6000000020062340877,bare NN,,F,NN,spouse_parent,,,2,,6000000020062773182,daughter-in-law of Nils Eliel Frantz,yes,0,1,1
-6000000020062373536,NN + surname,de Whyte,M,NN de Whyte,father,,,1,,6000000015181438069,son of William FitzMaurice de Whyte I,yes,1,0,0
+6000000020062373536,NN + surname,de Whyte,M,NN de Whyte,father,,,1,,6000000015181438069,son of William FitzMaurice de Whyte I,yes,1,0,1
 6000000020062413008,bare NN,,M,NN,,,,,,,,,0,1,2
 6000000020062568603,bare NN,,F,NN,spouse,,,1,,6000000020063054135,wife of John Anders Berglund,yes,0,1,0
 6000000020062590539,bare NN,,M,NN,grandparent,,,2,,6000000020062609421,grandson of Lars Fredrik Berglund,yes,2,0,0
@@ -71283,6 +71310,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000020333597081,bare NN,,M,NN,grandparent,,,2,,6000000012064872065,grandson of Barbara Lucile Friele,yes,2,0,0
 6000000020333658246,bare NN,,F,NN,spouse_parent,,,2,,6000000012064872065,daughter-in-law of Barbara Lucile Friele,yes,0,1,2
 6000000020336643817,bare NN,,F,NN,spouse_parent,,,2,,6000000020179415573,daughter-in-law of Glenn Ranheim,yes,0,1,0
+6000000020338023506,bare NN,,F,NN,father,,,1,,6000000008307007521,daughter of Carl von Mentzer,yes,1,0,3
 6000000020338229324,bare NN,,M,NN,spouse_parent,,,2,,6000000020338412418,son-in-law of José Moreira de Vasconcelos,yes,0,1,0
 6000000020338336309,bare NN,,F,NN,father,,,1,,6000000020338412418,daughter of José Moreira de Vasconcelos,yes,2,1,0
 6000000020338452152,bare NN,,F,NN,father,,,1,,6000000020338129131,daughter of Arvid von Mentzer,yes,2,0,0
@@ -73947,6 +73975,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000021946823180,bare NN,,M,NN,spouse,,,1,,6000000014572473305,husband of Marta de Melo Ulrich,yes,0,1,1
 6000000021946895863,bare NN,,M,NN,mother,,,1,,6000000014572473305,son of Marta de Melo Ulrich,yes,2,0,0
 6000000021948126297,bare NN,,M,NN,spouse,,,1,,6000000004533774599,husband of Methilde von Gleichen-Tonna,yes,0,1,0
+6000000021951056428,bare NN,,M,NN,child,,,1,placeholder,6000000003086806873,father of Signe fra Voss,yes,0,1,1
 6000000021951481397,bare NN,,F,NN,father,,,1,,6000000021951263814,daughter of Luis Alberto Gana Eguiguren,yes,1,0,0
 6000000021951590877,bare NN,,M,NN,father,,,1,,6000000021951263814,son of Luis Alberto Gana Eguiguren,yes,1,0,0
 6000000021952989632,bare NN,,M,NN,father,,,1,,6000000000850684740,son of José Fidel Clovis Urioste Arana,yes,2,0,0
@@ -74255,6 +74284,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000022173381988,bare NN,,F,NN,father,,,1,,6000000022173299037,daughter of Guy Régnier Charles Marie Ferdinand de Broglie,yes,1,0,0
 6000000022173789766,bare NN,,F,NN,spouse,,,1,,3140178,wife of Þorgrímur Grímólfsson,yes,0,1,1
 6000000022173795771,bare NN,,F,NN,spouse,,,1,,6000000022174278360,wife of Björn,yes,0,1,1
+6000000022173898778,bare NN,,F,NN,spouse,,,1,,3140024,wife of Atli Hundólfsson,yes,0,1,4
 6000000022174928528,NN + surname,Nera-Bruntveit,F,NN Nera-Bruntveit,spouse,,,1,,6000000007224270484,wife of Jørgen Jacobsson Hope,yes,0,1,1
 6000000022176041337,bare NN,,F,NN,spouse,,,1,,6000000021198354131,wife of D. Manuel Maria de Menezes Portugal da Silva,yes,0,1,1
 6000000022176115089,bare NN,,M,NN,father,,,1,,6000000022175989314,son of Carl Wilhelm Andreas Falck,yes,2,0,0
@@ -75517,8 +75547,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000023061120860,bare NN,,M,NN,father,,,1,,6000000002066397855,son of Berner Veggeberg,yes,2,0,0
 6000000023069291286,bare NN,,F,NN,spouse,,,1,,6000000001923837062,wife of Henrik Jensson Jönsson,yes,0,1,2
 6000000023073577915,bare NN,,M,NN,grandparent,,,2,,6000000043847027843,grandson of Kåre Ray Thorsen,yes,2,0,0
-6000000023073764369,bare NN,,,NN,father,,,1,,6000000015305839973,child of Johan Gabrielsson Prytz,yes,1,0,1
-6000000023074862141,bare NN,,,NN,father,,,1,,6000000023073764369,child of Anders Johansson Bernstén,yes,1,0,1
 6000000023075293768,bare NN,,M,NN,father,,,1,,6000000023075084938,son of Harald Orning Isdahl,yes,2,2,4
 6000000023076112823,bare NN,,F,NN,spouse,,,1,,6000000023075967034,wife of Hans Thelaus,yes,0,1,0
 6000000023076540027,bare NN,,M,NN,grandparent,,,2,,6000000023075084938,grandson of Harald Orning Isdahl,yes,2,0,0
@@ -75641,7 +75669,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000023167229821,bare NN,,F,NN,grandparent,,,2,,6000000188105995829,granddaughter of Maria Elisabet Vannas,yes,1,0,0
 6000000023167860793,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000023173135519,bare NN,,M,NN,father,,,1,,6000000021334420003,son of Johan Anders Johansson Linder,yes,1,0,0
-6000000023174528695,bare NN,,M,NN,father,,,1,,6000000023174859878,son of Matgamain MacMuirchertach,yes,1,0,0
+6000000023174528695,bare NN,,M,NN,father,,,1,,6000000023174859878,son of Matgamain MacMuirchertach,yes,1,0,1
 6000000023175554911,bare NN,,M,NN,sibling,,,2,,6000000001653402806,brother of María Isabel Barros Ariztía,yes,1,0,0
 6000000023175873979,bare NN,,M,NN,mother,,,1,,6000000023175509618,son of María Amelia Victoria Ariztía Ruiz,yes,1,0,0
 6000000023176014238,bare NN,,M,NN,grandparent,,,2,,6000000013185650204,grandson of 發 ‏‏‎ ‎,yes,1,0,1
@@ -76400,7 +76428,6 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000023943037927,bare NN,,M,NN,mother,,,1,,6000000007978125035,son of Karen Gundersen,yes,1,0,0
 6000000023949771666,bare NN,,F,NN,mother,,,1,,6000000004345949933,daughter of Catherine de Montigny,yes,1,0,0
 6000000023949794624,bare NN,,F,NN,father,,,1,,6000000004373997128,daughter of Emmanuel de Montalivet,yes,1,0,0
-6000000023949809322,bare NN,,,NN,father,,,1,,6000000007732404644,child of Christina Gregersdotter Hammar,yes,1,0,1
 6000000023949975470,bare NN,,M,NN,father,,,1,,6000000004345988933,son of Antoine de Lammerville,yes,1,0,0
 6000000023950005416,bare NN,,F,NN,father,,,1,,6000000004374104009,daughter of Jérome de Montalivet,yes,1,0,0
 6000000023950077090,bare NN,,M,NN,,,,,,,,,2,0,0
@@ -80272,7 +80299,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000027343835869,bare NN,,M,NN,father,,,1,,6000000027343577195,son of Sanford S. Rose,yes,2,0,0
 6000000027343933852,bare NN,,M,NN,spouse_parent,,,2,,6000000027343823221,son-in-law of Milton Lewis,yes,0,1,0
 6000000027343957951,bare NN,,F,NN,father,,,1,,6000000018435448980,daughter of Joseph Aaron Sussman,yes,2,1,3
-6000000027344407120,bare NN,,F,NN,spouse,,,1,,6000000199626005827,wife of Cynwrig ap Dafydd,yes,0,1,1
+6000000027344407120,bare NN,,F,NN,father,,,1,,6000000027344016576,daughter of John Fitz Thomas 1st Baron of Desmond,yes,1,1,1
 6000000027345508747,bare NN,,F,NN,grandparent,,,2,,6000000021990498255,granddaughter of María Gloria Eguiguren Hodgson,yes,1,0,0
 6000000027345730687,bare NN,,M,NN,grandparent,,,2,,6000000021990498255,grandson of María Gloria Eguiguren Hodgson,yes,1,0,0
 6000000027345911566,bare NN,,F,NN,grandparent,,,2,,6000000021990498255,granddaughter of María Gloria Eguiguren Hodgson,yes,1,0,0
@@ -81378,6 +81405,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000028876811962,bare NN,,F,NN,spouse,,,1,,6000000025805309228,wife of Gudmund Gudmundsson Ulfhedin af Glæsivollene,yes,0,1,0
 6000000028877756281,bare NN,,F,NN,spouse,,,1,,6000000001351784334,wife of Budli,yes,0,1,1
 6000000028877976714,bare NN,,M,NN,father,,,1,,6000000028878288016,son of Charlie Chia,yes,2,0,0
+6000000028878123861,bare NN,,F,NN,spouse,,,1,,6000000000957287491,wife of Drift av Sogn,yes,0,1,0
 6000000028878382904,bare NN,,F,NN,spouse,,,1,,6000000028878288016,wife of Charlie Chia,yes,0,1,4
 6000000028878413252,bare NN,,F,NN,spouse,,,1,,6000000002362175484,wife of Robert Graham Knight,yes,0,1,1
 6000000028878651738,bare NN,,F,NN,father,,,1,,6000000012031681647,daughter of Peder Olson Ræge,yes,1,0,0
@@ -82645,6 +82673,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000030641532672,bare NN,,,NN,child,,,1,,6000000030641999000,parent of Carl Stanley Glascock,yes,0,0,1
 6000000030641999000,bare NN,,,NN,father,,,1,,6000000030641532672,child of Ella Lanora Glascock,yes,1,1,0
 6000000030642929456,bare NN,,F,NN,father,,,1,,6000000000113839081,daughter of Kåre Alf Larsen,yes,2,0,0
+6000000030644972081,bare NN,,F,NN,father,,,1,,6000000003645772401,daughter of Jon Haldorson Koll,yes,1,1,0
 6000000030646126873,bare NN,,,NN,father,,,1,,6000000041904512448,child of Blenda Lydia Emma Gabriella Hoflund,yes,1,1,0
 6000000030649824740,bare NN,,M,NN,father,,,1,,6000000022844856440,son of Robert Douglas Peter Anker Dickson,yes,1,0,0
 6000000030649861581,bare NN,,F,NN,father,,,1,,6000000022844856440,daughter of Robert Douglas Peter Anker Dickson,yes,1,0,0
@@ -83371,6 +83400,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000031598862918,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000031601354630,bare NN,,,NN,father,,,1,,6000000029428548519,child of Henry Clay McIlvaine,yes,1,0,1
 6000000031602308920,bare NN,,F,NN,pibling,,paternal,2,,6000000177145356877,niece of Patrick Attali,yes,2,0,0
+6000000031611696734,NN + surname,Godfredson King of the Danes,M,NN Godfredson King of the Danes,father,,,1,,6000000003949749785,son of Horik Godfredson King of the Danes,yes,2,0,1
 6000000031613301065,bare NN,,M,NN,child,,,1,,6000000011401430293,father of Bertoude van Arkel,yes,0,0,1
 6000000031614657855,bare NN,,F,NN,spouse_parent,,,2,,6000000002587048373,daughter-in-law of Knut Martin Odland,yes,0,1,5
 6000000031615587750,NN + surname,von Finecke,F,NN von Finecke,spouse,,,1,,6000000031519192986,wife of Gerd von Eickstedt,yes,0,1,2
@@ -84053,6 +84083,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000032937939336,bare NN,,M,NN,father,,,1,,6000000032937680629,son of Rd. Noerhasan,yes,2,0,0
 6000000032939549389,bare NN,,M,NN,father,,,1,,6000000029330641519,son of Caleb R. Smith,yes,1,0,0
 6000000032939715286,bare NN,,F,NN,father,,,1,,6000000029330641519,daughter of Caleb R. Smith,yes,1,0,0
+6000000032939914943,NN + surname,de Carew,M,NN de Carew,father,,,1,,6000000001671342778,son of William de Carew,yes,1,0,1
 6000000032943388859,bare NN,,F,NN,spouse,,,1,,6000000032943413825,wife of Gumme Johansson,yes,0,1,5
 6000000032951775391,bare NN,,M,NN,father,,,1,,6000000030004370116,son of Hinko Dolenc,yes,2,0,0
 6000000032951893263,bare NN,,F,NN,father,,,1,,6000000030004370116,daughter of Hinko Dolenc,yes,2,0,0
@@ -84728,6 +84759,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000034121951891,bare NN,,,NN,father,,,1,,6000000034121728391,child of Masami Kuni,yes,1,0,1
 6000000034122327838,bare NN,,F,NN,spouse,,,1,,6000000034122025127,wife of Johannes de Myrby,yes,0,1,1
 6000000034124076874,bare NN,,F,NN,spouse,,,1,,6000000002024141807,wife of James Gould,yes,0,1,4
+6000000034140487174,NN + surname,de Burgh,F,NN de Burgh,father,,,1,,6000000012446706832,daughter of Edmond Albanach de Burgh,yes,1,0,0
 6000000034141289812,bare NN,,M,NN,grandparent,,,2,,6000000017579640234,grandson of Isabelle Marie Diane Françoise de Ligne Noailles,yes,1,0,2
 6000000034141650481,bare NN,,M,NN,mother,,,1,,6000000017579640234,son of Isabelle Marie Diane Françoise de Ligne Noailles,yes,1,0,3
 6000000034141793235,bare NN,,F,NN,grandparent,,,2,,6000000017579640234,granddaughter of Isabelle Marie Diane Françoise de Ligne Noailles,yes,1,0,3
@@ -85072,6 +85104,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000034954443976,NN + surname,陳郡陽夏,F,NN 陳郡陽夏,father,,,1,,6000000023615761629,daughter of 萬 萬石 謝,yes,2,1,6
 6000000034955246848,bare NN,,F,NN,child,,,1,,6000000034955105119,mother of Irina Felicia Björklund,yes,0,1,1
 6000000034955295861,bare NN,,M,NN,father,,,1,,6000000049394211873,son of Felix Richard Björklund,yes,2,1,1
+6000000034956106955,NN + surname,Åmundsdotter,F,NN Åmundsdotter,spouse,,,1,,6000000034955517668,wife of Kolbein Sigmundson,yes,0,1,1
 6000000034958259389,NN + surname,von Henneberg,F,NN von Henneberg,spouse,,,1,,6000000002187723148,"wife of Wilhelm I von Weimar Graf im Südthüringgau, Husitingau, Helmegau, Altgau",yes,0,1,0
 6000000034965105590,bare NN,,F,NN,spouse,,,1,,5260084573350057404,wife of John Hamilton,yes,0,1,2
 6000000034977005136,bare NN,,M,NN,father,,,1,,6000000034964503372,son of Jacinto Luciano Leguizamo y Escobar,yes,2,0,0
@@ -91033,6 +91066,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000041586365390,bare NN,,F,NN,,,,,,,,,2,0,0
 6000000041586375412,bare NN,,F,NN,,,,,,,,,0,1,1
 6000000041590715392,bare NN,,F,NN,father,,,1,,6000000041653601021,daughter of Kristian Johannessen Vassgaard,yes,2,0,0
+6000000041606366425,bare NN,,F,NN,father,,,1,,6000000041606775828,daughter of Richard ap Cadwaladr,yes,1,1,2
 6000000041606680216,NN + surname,Pulford,F,NN Pulford,spouse,,,1,,6000000040679972038,wife of Rhirid ab Iorwerth,yes,0,1,2
 6000000041609829204,bare NN,,F,NN,spouse,,,1,,6000000041606792141,wife of Madog ab Einion,yes,0,1,2
 6000000041610781165,bare NN,,F,NN,spouse,,,1,,6000000041608306982,wife of Ieuan ab Iorwerth,yes,0,1,1
@@ -94212,6 +94246,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000053045962823,bare NN,,,NN,child,,,1,,6000000053046008873,parent of Oscar Kofkin,yes,0,0,1
 6000000053046008873,bare NN,,,NN,father,,,1,,6000000053045962823,child of Leopold Kofkin,yes,1,1,0
 6000000053051112888,bare NN,,,NN,mother,,,1,,6000000007434848653,child of Christina Rosenholtz,yes,1,0,0
+6000000053081029914,NN + surname,verch Einion,F,NN verch Einion,father,,,1,,6000000041566250523,daughter of Einion ap Meilir,yes,1,0,0
 6000000053088325025,bare NN,,M,NN,child,,,1,,6000000053087819152,father of Kee Ngiap Low,yes,0,1,5
 6000000053088378266,bare NN,,M,NN,father,,,1,,6000000023033859089,son of Siew Thiam LOW,yes,2,0,0
 6000000053088587059,bare NN,,M,NN,father,,,1,,6000000023033859089,son of Siew Thiam LOW,yes,2,0,0
@@ -94611,8 +94646,11 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000054114441852,bare NN,,M,NN,father,,,1,,6000000019192159655,son of Guy Anthonie Maximiliaan van Renesse,yes,2,0,0
 6000000054116169002,NN + surname,河內溫縣,F,NN 河內溫縣,father,,,1,,6000000075327233108,daughter of 炎 安世 司馬,yes,2,1,1
 6000000054116395961,bare NN,,F,NN,spouse,,,1,,6000000075327233108,wife of 炎 安世 司馬,yes,0,1,4
-6000000054121336378,bare NN,,M,NN,father,,,1,,6000000054121967011,son of Þorvaldur,yes,1,0,0
+6000000054121284239,bare NN,,F,NN,grandparent,,,2,,6000000054121967011,granddaughter of Þorvaldur,yes,1,0,1
+6000000054121336378,bare NN,,M,NN,father,,,1,,6000000054121967011,son of Þorvaldur,yes,1,0,1
+6000000054121564054,bare NN,,M,NN,,,,,,,,,1,0,1
 6000000054121726926,bare NN,,M,NN,father,,,1,,6000000050638411984,son of Edwin e Phillips,yes,2,0,0
+6000000054121785861,bare NN,,M,NN,,,,,,,,,1,0,0
 6000000054121841130,NN + surname,彭城,F,NN 彭城,spouse,,,1,,6000000054121685037,wife of 瑩 奉光 王,yes,0,1,1
 6000000054122019030,bare NN,,F,NN,spouse,,,1,,6000000021138320696,wife of 衍 叔達 蕭,yes,0,1,4
 6000000054122903888,NN + surname,陳郡陽夏,F,NN 陳郡陽夏,father,,,1,,6000000054122785949,daughter of 昂 千里 袁,yes,1,1,1
@@ -96128,6 +96166,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000057571289845,bare NN,,M,NN,mother,,,1,,6000000007370212537,son of Jessica Margareta Jämsén,yes,2,0,0
 6000000057571289850,bare NN,,F,NN,mother,,,1,,6000000007370212537,daughter of Jessica Margareta Jämsén,yes,2,0,0
 6000000057576688869,bare NN,,F,NN,mother,,,1,,6000000020771795224,daughter of Maria Ballestrem,yes,1,0,0
+6000000057577040896,bare NN,,F,NN,mother,,,1,,6000000008342999374,daughter of Margareta Eriksdotter Lilliehöök,yes,1,0,0
 6000000057581230821,bare NN,,M,NN,spouse,,,1,,6000000042707791328,husband of Malin Alexandra Sandberg Kulhanek,yes,0,1,1
 6000000057601002111,NN + surname,隴西狄道,F,NN 隴西狄道,father,,,1,,6000000002188099860,daughter of 旦 李,yes,2,2,0
 6000000057601096418,NN + surname,Östman,F,NN Östman,spouse,,,1,,6000000057601609150,wife of Leevi Antero Kalervo Pitkänen,yes,0,1,1
@@ -96185,7 +96224,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000057723235821,bare NN,,F,NN,father,,,1,,6000000057722159046,daughter of Harvey Cropper,yes,2,0,0
 6000000057732924981,bare NN,,F,NN,spouse,,,1,,6000000006822288513,wife of Knut Bengtsson Duse till Källeryd,yes,0,1,1
 6000000057743227856,bare NN,,F,NN,father,,,1,,6000000057742765078,daughter of Iorwerth ap Gwylog,yes,1,1,0
-6000000057745210149,NN + surname,verch Einion Wyddel,F,NN verch Einion Wyddel,spouse,,,1,,6000000003649751584,wife of Heilin ap Tudur,yes,0,1,0
+6000000057745210149,NN + surname,verch Einion Wyddel,F,NN verch Einion Wyddel,father,,,1,,6000000007395178662,daughter of Einion Wyddel ap Gronwy,yes,1,1,0
 6000000057748403039,bare NN,,M,NN,father,,,1,,6000000057748733835,son of Martin Lobkowicz,yes,1,0,0
 6000000057748604952,bare NN,,F,NN,father,,,1,,6000000057748733835,daughter of Martin Lobkowicz,yes,1,0,0
 6000000057748702880,bare NN,,M,NN,father,,,1,,6000000057748733835,son of Martin Lobkowicz,yes,1,0,0
@@ -96198,6 +96237,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000057772882001,bare NN,,M,NN,spouse_parent,,,2,,6000000057771836199,son-in-law of Johannes Baptist Maria Rudolf David Peter Coronini von Cronberg,yes,0,1,1
 6000000057773040890,bare NN,,M,NN,grandparent,,,2,,6000000057771836199,grandson of Johannes Baptist Maria Rudolf David Peter Coronini von Cronberg,yes,2,0,0
 6000000057785554943,NN + surname,Tattersal,M,NN Tattersal,father,,,1,,6000000007510462399,son of John Tattersall,yes,2,0,0
+6000000057787515028,bare NN,,F,NN,father,,,1,,6000000040877865934,daughter of Ithel Fychan ab Ithel Llwyd,yes,1,0,0
 6000000057802303999,bare NN,,F,NN,father,,,1,,6000000015181232515,daughter of Jostein Markvard Opheim,yes,2,0,0
 6000000057803773821,bare NN,,F,NN,spouse,,,1,,6000000057803505931,wife of Torbjørn Herbjørnson Oma,yes,0,1,1
 6000000057826348858,bare NN,,F,NN,father,,,1,,6000000038793674012,daughter of Erik Einar Finne,yes,2,0,0
@@ -96458,7 +96498,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000058551782866,NN + surname,verch Owain,F,NN verch Owain,father,,,1,,6000000006404959017,daughter of Owain ap Gruffydd de la Pole Baron,yes,2,0,0
 6000000058552237052,bare NN,,F,NN,father,,,1,,6000000058552614821,daughter of Johan Einar Westby,yes,2,1,3
 6000000058553028032,NN + surname,verch Gruffudd Fychan,F,NN verch Gruffudd Fychan,father,,,1,,6000000003949925906,daughter of Gruffudd Fychan de la Pole,yes,2,0,0
-6000000058553514823,NN + surname,verch Gruffudd Fychan,F,NN verch Gruffudd Fychan,father,,,1,,6000000003949925906,daughter of Gruffudd Fychan de la Pole,yes,2,0,0
+6000000058553514823,NN + surname,verch Gruffudd Fychan,F,NN verch Gruffudd Fychan,father,,,1,,6000000003949925906,daughter of Gruffudd Fychan de la Pole,yes,2,1,0
 6000000058554292005,bare NN,,F,NN,spouse,,,1,,6000000012088495841,wife of Thomas Neville Kt.,yes,0,1,1
 6000000058567840077,bare NN,,M,NN,mother,,,1,,6000000003624587814,"son of Yam Peng, Gladys Kwan",yes,1,0,4
 6000000058569304884,bare NN,,M,NN,mother,,,1,,6000000003624587814,"son of Yam Peng, Gladys Kwan",yes,1,0,3
@@ -99349,6 +99389,8 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000073816917999,NN + surname,verch Dafydd,F,NN verch Dafydd,father,,,1,,6000000073815800117,daughter of Dafydd ap Morgan,yes,2,0,0
 6000000073830882851,bare NN,,M,NN,grandparent,,,2,,6000000171693383254,grandson of Abraham D. Yoder,yes,2,0,0
 6000000073833215887,bare NN,,F,NN,spouse,,,1,,6000000073833036880,wife of Willem Alphonse Mijsberg,yes,0,1,0
+6000000073842208087,NN + surname,von Eppingen,F,NN von Eppingen,mother,,,1,,6000000022451258838,daughter of Anna Holck Steensen,yes,1,0,0
+6000000073843158839,NN + surname,von Eppingen,F,NN von Eppingen,mother,,,1,,6000000022451258838,daughter of Anna Holck Steensen,yes,1,0,0
 6000000073850432961,bare NN,,M,NN,father,,,1,,6000000073808633967,son of Archie Swanson,yes,2,0,0
 6000000073862350877,bare NN,,F,NN,father,,,1,,6000000073773309910,daughter of Mario Sforza-Cesarini,yes,1,1,2
 6000000073862495912,bare NN,,F,NN,father,,,1,,6000000073862503881,daughter of Manfredo Pallavicino,yes,2,0,0
@@ -99826,7 +99868,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000074841193848,bare NN,,F,NN,mother,,,1,,6000000074841466024,daughter of María Manuela Correal,yes,2,0,0
 6000000074841820861,bare NN,,M,NN,father,,,1,,6000000024681183432,son of Ignacio García Urbina,yes,2,1,1
 6000000074842812848,bare NN,,F,NN,father,,,1,,6000000024681183432,daughter of Ignacio García Urbina,yes,2,0,0
-6000000074904369868,bare NN,,F,NN,spouse,,,1,,6000000041769479578,wife of Hundolf De Fjordum,yes,0,1,1
+6000000074904369868,bare NN,,F,NN,spouse,,,1,,6000000041769479578,wife of Hundolf De Fjordum,yes,0,1,3
 6000000074904961053,bare NN,,M,NN,spouse,,,1,,6000000022091344661,husband of Birgitte Schrøder,yes,0,1,3
 6000000074905083160,bare NN,,M,NN,father,,,1,,6000000074905564882,son of Karl Graugaard,yes,2,0,0
 6000000074905199065,bare NN,,F,NN,father,,,1,,6000000074905564882,daughter of Karl Graugaard,yes,2,0,0
@@ -107523,6 +107565,9 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000089484272019,bare NN,,F,NN,spouse,,,1,,6000000089481629821,wife of Castruccio Castracani degli Antelminelli duca di Lucca,yes,0,1,1
 6000000089491976018,bare NN,,M,NN,father,,,1,,6000000018432403722,son of Marie Armand Gaston de Gontaut-Biron,yes,1,0,0
 6000000089505331000,bare NN,,F,NN,mother,,,1,,6000000011515758505,daughter of Carmela Bulnes Correa,yes,1,0,1
+6000000089505514880,bare NN,,F,NN,father,,,1,,6000000089505514845,daughter of Heinrich Claassen,yes,1,0,0
+6000000089505514886,bare NN,,M,NN,father,,,1,,6000000089505514845,son of Heinrich Claassen,yes,1,0,0
+6000000089505514892,bare NN,,F,NN,father,,,1,,6000000089505514845,daughter of Heinrich Claassen,yes,1,0,0
 6000000089526909871,bare NN,,M,NN,father,,,1,,6000000088864487051,son of Franz Vincent George Dokonal,yes,1,0,0
 6000000089526984822,bare NN,,F,NN,father,,,1,,6000000088864487051,daughter of Franz Vincent George Dokonal,yes,1,0,0
 6000000089527918020,bare NN,,F,NN,father,,,1,,6000000007265335007,daughter of Herman Garmann Schanche Jr.,yes,2,0,0
@@ -108861,6 +108906,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000093269459830,bare NN,,M,NN,father,,,1,,6000000000653261197,son of Þorkell Þorsteinsson,yes,2,1,1
 6000000093269459834,bare NN,,F,NN,grandchild,,,2,,6000000093269435838,grandmother of Már Hamalsson,yes,0,1,1
 6000000093269459842,bare NN,,F,NN,spouse,,,1,,6000000000653261197,wife of Þorkell Þorsteinsson,yes,0,1,1
+6000000093269482834,bare NN,,F,NN,spouse,,,1,,6000000093269482830,wife of Ingólfur Arnarson,yes,0,1,1
 6000000093297330893,bare NN,,M,NN,father,,,1,,6000000020192545500,son of Maklouf Makhlouf Halimi,yes,2,0,0
 6000000093306286863,bare NN,,F,NN,spouse,,,1,,6000000082892110241,wife of Baldovino Ciocchi del Monte,yes,0,1,1
 6000000093318314878,bare NN,,F,NN,grandparent,,,2,,6000000010964427874,granddaughter of Isak Gustaf Clason,yes,2,0,0
@@ -115146,7 +115192,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000119046592854,bare NN,,,NN,father,,,1,,6000000118860057881,child of Olof Johansson Lindström,yes,2,0,0
 6000000119046881913,bare NN,,F,NN,father,,,1,,6000000118860057881,daughter of Olof Johansson Lindström,yes,2,0,0
 6000000119047135847,bare NN,,F,NN,father,,,1,,6000000118860057881,daughter of Olof Johansson Lindström,yes,2,0,0
-6000000119100397957,NN + surname,de Joinville,F,NN de Joinville,spouse,,,1,,6000000119099704117,wife of Gerald FitzMaurice FitzGerald Baron of Offaly,yes,0,1,0
+6000000119100397957,NN + surname,de Joinville,F,NN de Joinville,father,,,1,,6000000001501062846,daughter of Geoffroy de Joinville seigneur de Vaucouleurs,yes,2,1,0
 6000000119104399936,NN + surname,From,F,NN From,father,,,1,,6000000013503713707,daughter of Thomas Jepsen,yes,2,0,0
 6000000119114129972,bare NN,,F,NN,father,,,1,,6000000032278104669,daughter of Emil Oscar Blumensaadt,yes,2,0,0
 6000000119117552899,bare NN,,M,NN,child,,,1,placeholder,6000000119116986953,father of Anne Lucie Fischer,yes,0,1,2
@@ -116218,6 +116264,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000124799399879,bare NN,,F,NN,spouse,,,1,,6000000000628839767,wife of Aslak Fitjaskalle Horthaland,yes,0,1,1
 6000000124799477889,bare NN,,F,NN,spouse,,,1,,6000000001169266518,wife of Svein Bryggjefot,yes,0,1,1
 6000000124799479263,bare NN,,F,NN,father,,,1,,6000000124799541187,daughter of William Joseph Jarvis,yes,1,0,0
+6000000124799559849,bare NN,,F,NN,spouse,,,1,,6000000001169266501,wife of Bergtor Bukk,yes,0,1,1
 6000000124808016278,bare NN,,F,NN,father,,,1,,6000000038630933920,daughter of Frans Viktor Andersson Löf,yes,2,0,0
 6000000124808408888,bare NN,,F,NN,spouse,,,1,,6000000124808408884,wife of Leander Gustafsson Murmästar,yes,0,1,0
 6000000124808463027,bare NN,,F,NN,father,,,1,,6000000124808462910,daughter of Viktor Jonasson Hofslagar Löf,yes,2,0,0
@@ -118803,8 +118850,10 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000140448854882,bare NN,,F,NN,,,,,,,,,0,1,1
 6000000140449740031,bare NN,,F,NN,,,,,,,,,2,0,0
 6000000140453880833,bare NN,,M,NN,father,,,1,,6000000139294394940,son of Wilhelm Carl Seidenfaden,yes,2,0,0
+6000000140454777917,NN + surname,Hammar,F,NN Hammar,father,,,1,,6000000039671665500,daughter of Gustaf Hammar,yes,1,0,0
 6000000140456908140,bare NN,,M,NN,grandparent,,,2,,6000000007892089474,grandson of Piotr Petrovitch Sheremetev,yes,1,0,0
 6000000140458952890,bare NN,,F,NN,grandparent,,,2,,6000000007892089474,granddaughter of Piotr Petrovitch Sheremetev,yes,1,0,0
+6000000140462886833,bare NN,,M,NN,father,,,1,,6000000039671665500,son of Gustaf Hammar,yes,1,0,0
 6000000140464556979,bare NN,,F,NN,spouse,,,1,,6000000003307514099,wife of Per Seidenfaden,yes,0,1,1
 6000000140465603821,bare NN,,F,NN,father,,,1,,6000000003307514099,daughter of Per Seidenfaden,yes,2,0,0
 6000000140470745827,bare NN,,M,NN,father,,,1,,6000000140469255840,son of John Andersson Førland,yes,2,0,0
@@ -125008,6 +125057,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000176392268830,bare NN,,F,NN,father,,,1,,6000000176392711822,daughter of Frederick Brock Jensen,yes,2,0,0
 6000000176392921832,bare NN,,M,NN,spouse_parent,,,2,,6000000176392711822,son-in-law of Frederick Brock Jensen,yes,0,1,1
 6000000176394136864,bare NN,,M,NN,mother,,,1,,6000000165965818884,son of Erika Margreta Berggren,yes,1,0,0
+6000000176403770829,bare NN,,M,NN,mother,,,1,,6000000054113347863,son of Affric O'Neill,yes,1,0,0
 6000000176407567852,bare NN,,F,NN,father,,,1,,6000000080105171882,daughter of Frederick James Haisell,yes,2,0,0
 6000000176407606828,bare NN,,F,NN,father,,,1,,6000000080105171882,daughter of Frederick James Haisell,yes,2,0,0
 6000000176409529875,bare NN,,F,NN,father,,,1,,6000000013386146846,daughter of Joseph Edward Tickner,yes,2,0,0
@@ -134047,6 +134097,7 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000188363190853,bare NN,,M,NN,father,,,1,,6000000188289059832,son of Peder Pederson Hove,yes,2,0,0
 6000000188364534933,bare NN,,F,NN,father,,,1,,6000000188665365832,daughter of Anders Edvin Julius Svensson,yes,2,1,1
 6000000188368275831,bare NN,,F,NN,father,,,1,,6000000131393949839,daughter of Christian Bertelsen WIESE,yes,2,0,0
+6000000188377030831,bare NN,,M,NN,mother,,,1,,6000000007359952254,son of Ebba Margareta Banér,yes,1,0,0
 6000000188380531908,bare NN,,F,NN,spouse,,,1,,6000000002370924025,wife of Karl Ivar Inkapööl,yes,2,1,0
 6000000188380771929,bare NN,,M,NN,child,,,1,,6000000002370892158,father of Fredrik Ahston,yes,0,1,2
 6000000188382158833,bare NN,,F,NN,father,,,1,,6000000014872461216,daughter of Christen Dybwad Brochmann,yes,2,0,0
@@ -157393,6 +157444,8 @@ geni_id,population,surname,sex,mul_label,relation_used,inlaw_key,relation_side,h
 6000000227712094916,bare NN,,F,NN,spouse,,,1,placeholder,6000000008521744704,wife of Nikephoros Kantakouzenos,yes,1,1,1
 6000000227712197866,bare NN,,M,NN,grandchild,,,2,placeholder,6000000007951566399,grandfather of Theodora Kantakouzene empress-consort of Trebizond,yes,0,0,1
 6000000227712832952,bare NN,,F,NN,spouse,,,1,,6000000007559466690,wife of Hans Einarsen Vinningland,yes,0,1,3
+6000000227714398904,bare NN,,F,NN,spouse,,,1,,6000000024976299635,wife of Thorsten,yes,0,1,1
+6000000227714686873,bare NN,,M,NN,grandchild,,,2,placeholder,6000000005940172199,grandfather of Almveigu the Wise Eymundsdatter,yes,0,0,1
 658041,bare NN,,M,NN,father,,,1,,6000000007168006559,son of Jonas Alströmer,yes,2,0,0
 658043,bare NN,,F,NN,father,,,1,,6000000029919383352,daughter of William Gibson Kjellberg,yes,2,1,7
 658121,bare NN,,F,NN,father,,,1,,6000000007168006559,daughter of Jonas Alströmer,yes,2,0,0
