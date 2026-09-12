@@ -1228,3 +1228,7 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
 ## Final item
 
 please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
+
+## Additional item
+
+Given names and surnames should have our standardized cjk-izations attached to them. imo they should even be the source of it in the logic. update the old ones to this form and new ones are always gonna be created in this manner
