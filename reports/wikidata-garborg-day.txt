@@ -2,8 +2,10 @@
 # HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.
 # These lead the file: the Geni id is the FIRST edit on any individual,
 # and a name item is not an exception to that.
-# 1427 in reports/manual-identifications.csv, 1217 already on Wikidata, 20 a run beyond the ones this run touches.
+# 1428 in reports/manual-identifications.csv, 1217 already on Wikidata, 20 a run beyond the ones this run touches.
 # ========================================================================
+#   Q22678387 NN de Courtenay: P2600 from a hand identification
+Q22678387	P2600	"6000000009305096005"
 #   Q28374049 Federico Pico: P2600 from a hand identification
 Q28374049	P2600	"6000000108377333949"
 #   Q28374110 Aura Feltria Ubaldini: P2600 from a hand identification
@@ -42,8 +44,6 @@ Q3286784	P2600	"6000000002187823198"
 Q3298994	P2600	"6000000004533250087"
 #   Q3471698 Sanchet d'Abrichecourt KG: P2600 from a hand identification
 Q3471698	P2600	"6000000003887962291"
-#   Q347484 Adalbart II von Mainz von Saarbrücken Erzbischof: P2600 from a hand identification
-Q347484	P2600	"6000000008565564291"
 
 # ========================================================================
 # NAME ITEMS. One file, per the 2026-08-30 rule -- there is no
@@ -68,7 +68,31 @@ Q347484	P2600	"6000000008565564291"
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Osmundsdatter -- patronymic, 2 bearer(s) in the batches
+# Larsen -- patronymic, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Larsen"
+LAST	Len	"Larsen"
+#   set the mul label to "Larsen"
+LAST	Lmul	"Larsen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q15635262 Lars
+LAST	P144	Q15635262
+#   P144 based on = Q116659539 Laurs
+LAST	P144	Q116659539
+#   Q141216496 Nils Larsen Raunes: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216488 Lars Jonsen Landsnes
+Q141216496	P5056	LAST	P144	Q141216488	S2600	"6000000001770188397"
+#   Q141198831 Peder Larsen Mjølhus: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198832 Lars Gunnbjørnsen Mjølhus
+Q141198831	P5056	LAST	P144	Q141198832	S2600	"6000000003095034944"
+#   Q141217404 Osmund Larsen Raunes: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216627 Lars Nilsen Raunes
+Q141217404	P5056	LAST	P144	Q141216627	S2600	"6000000012587690898"
+#   Q141403582 Hans Larsen Tukkebøl: P5056 patronym or matronym = the item just created, qualified P144 based on Q141422255 Lars Knutsen Solberg
+Q141403582	P5056	LAST	P144	Q141422255	S2600	"6000000021082252305"
+
+# Osmundsdatter -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Osmundsdatter"
@@ -83,8 +107,66 @@ LAST	P31	Q110874
 LAST	P144	Q7107242
 #   Q141205914 Inger Osmundsdatter Risa: P5056 patronym or matronym = the item just created, qualified P144 based on Q141225230 Osmund Andersen Tunheim
 Q141205914	P5056	LAST	P144	Q141225230	S2600	"6000000003491951665"
+#   Q141223503 Anne Berta Osmundsdatter Nese: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223432 Osmund Larsson Nese
+Q141223503	P5056	LAST	P144	Q141223432	S2600	"6000000005609547544"
 #   Q141198390 Elisabet Marie Osmundsdatter Sør-Reime: P5056 patronym or matronym = the item just created
 Q141198390	P5056	LAST	S2600	"6000000224702448856"
+
+# Osmundsen -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Osmundsen"
+LAST	Len	"Osmundsen"
+#   set the mul label to "Osmundsen"
+LAST	Lmul	"Osmundsen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q7107242 Osmund
+LAST	P144	Q7107242
+#   Q141242551 Lars Osmundsen Nese: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223432 Osmund Larsson Nese
+Q141242551	P5056	LAST	P144	Q141223432	S2600	"6000000010480210324"
+#   Q141242389 Christian Osmundsen Nese: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223432 Osmund Larsson Nese
+Q141242389	P5056	LAST	P144	Q141223432	S2600	"6000000011329696852"
+#   Q141219063 Lars Osmundsen Nese Jr.: P5056 patronym or matronym = the item just created, qualified P144 based on Q141217404 Osmund Larsen Raunes
+Q141219063	P5056	LAST	P144	Q141217404	S2600	"6000000069466362236"
+
+# Henriksdotter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Henriksdotter"
+LAST	Len	"Henriksdotter"
+#   set the mul label to "Henriksdotter"
+LAST	Lmul	"Henriksdotter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q594279 Henrik
+LAST	P144	Q594279
+#   P144 based on = Q21147934 Henric
+LAST	P144	Q21147934
+#   P144 based on = Q16908634 Henricus
+LAST	P144	Q16908634
+#   P144 based on = Q2018484 Heinrich
+LAST	P144	Q2018484
+#   Q141403472 Agneta Henriksdotter Polviander: P5056 patronym or matronym = the item just created, qualified P144 based on Q141436654 Henrik Påhlsson Paulinus
+Q141403472	P5056	LAST	P144	Q141436654	S2600	"6000000001966567998"
+#   Q141216613 Karen Henriksdotter Raunes Våga: P5056 patronym or matronym = the item just created, qualified P144 based on Q141336543 Henrik Olavsen Blank
+Q141216613	P5056	LAST	P144	Q141336543	S2600	"6000000005607377021"
+
+# Anbjørn -- given, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Anbjørn"
+LAST	Len	"Anbjørn"
+#   set the mul label to "Anbjørn"
+LAST	Lmul	"Anbjørn"
+#   P31 instance of = Q202444 given name
+LAST	P31	Q202444
+#   Q141381654 Anbjørn Rejersen: P735 given name = the item just created
+Q141381654	P735	LAST	S2600	"6000000030868403829"
 
 # Delldén -- family, 1 bearer(s) in the batches
 # create a new item
@@ -130,45 +212,21 @@ LAST	P144	Q15646212
 #   Q141283745 Carolina Gustafsdotter Wittfooth: P5056 patronym or matronym = the item just created, qualified P144 based on Q141422149 Gustaf Carlsson Wittfooth
 Q141283745	P5056	LAST	P144	Q141422149	S2600	"6000000013285902007"
 
-# Henriksdotter -- patronymic, 1 bearer(s) in the batches
+# Monsson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Henriksdotter"
-LAST	Len	"Henriksdotter"
-#   set the mul label to "Henriksdotter"
-LAST	Lmul	"Henriksdotter"
+#   the item just created: set the en label to "Monsson"
+LAST	Len	"Monsson"
+#   set the mul label to "Monsson"
+LAST	Lmul	"Monsson"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q594279 Henrik
-LAST	P144	Q594279
-#   P144 based on = Q21147934 Henric
-LAST	P144	Q21147934
-#   P144 based on = Q16908634 Henricus
-LAST	P144	Q16908634
-#   P144 based on = Q2018484 Heinrich
-LAST	P144	Q2018484
-#   Q141403472 Agneta Henriksdotter Polviander: P5056 patronym or matronym = the item just created, qualified P144 based on Q141436654 Henrik Påhlsson Paulinus
-Q141403472	P5056	LAST	P144	Q141436654	S2600	"6000000001966567998"
-
-# Larsen -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Larsen"
-LAST	Len	"Larsen"
-#   set the mul label to "Larsen"
-LAST	Lmul	"Larsen"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q15635262 Lars
-LAST	P144	Q15635262
-#   P144 based on = Q116659539 Laurs
-LAST	P144	Q116659539
-#   Q141403582 Hans Larsen Tukkebøl: P5056 patronym or matronym = the item just created, qualified P144 based on Q141422255 Lars Knutsen Solberg
-Q141403582	P5056	LAST	P144	Q141422255	S2600	"6000000021082252305"
+#   P144 based on = Q19799953 Mons
+LAST	P144	Q19799953
+#   Q141318985 Torbjørn Monsson Gjesdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141353749 Mons Ljødeson Gjesdal
+Q141318985	P5056	LAST	P144	Q141353749	S2600	"6000000011043803107"
 
 # Njå -- family, 1 bearer(s) in the batches
 # create a new item
@@ -184,6 +242,20 @@ LAST	P31	Q101352
 #   Q141336495 Berdines Olson Njå: P734 family name = the item just created
 Q141336495	P734	LAST	S2600	"6000000003492074818"
 
+# Vormestrand -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Vormestrand"
+LAST	Len	"Vormestrand"
+#   set the mul label to "Vormestrand"
+LAST	Lmul	"Vormestrand"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141318914 Helga Olavsdtr. Ringja: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141318914	P734	LAST	P3831	Q2507958	S2600	"6000000001770176883"
+
 # Ysing -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
@@ -198,165 +270,21 @@ LAST	P31	Q101352
 #   Q141312958 Catharina Ysing: P734 family name = the item just created
 Q141312958	P734	LAST	S2600	"6000000007910838142"
 
-# Østensen -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Østensen"
-LAST	Len	"Østensen"
-#   set the mul label to "Østensen"
-LAST	Lmul	"Østensen"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q30826758 Østen
-LAST	P144	Q30826758
-#   P144 based on = Q317315 Øystein
-LAST	P144	Q317315
-#   Q141419958 Tolleiv Østensen Næsheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141430141 Øystein Olsen Næsheim
-Q141419958	P5056	LAST	P144	Q141430141	S2600	"6000000008864661057"
-
-# II -- given, 21 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "II"
-LAST	Len	"II"
-#   set the mul label to "II"
-LAST	Lmul	"II"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   Q2591886 Kazimierz II łęczycki książę: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2591886	P735	LAST	P1545	2	P3831	Q245025	S2600	"364522820420013688"
-#   Q504797 Ivan II, tsar of Bulgaria: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q504797	P735	LAST	P1545	2	P3831	Q245025	S2600	"4953790471090069116"
-#   Q475962 Ulrich II von Weimar Count: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q475962	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000002187723189"
-#   Q708932 Ferdinando II di Napoli re di Napoli: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q708932	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003369451241"
-#   Q2705969 Guaimar II of Salerno Gybbosus: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2705969	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003828110354"
-#   Q513087 Henryk II niemodliński książę: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q513087	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000005232268245"
-#   Q6259734 John II de Sutton Master of Dudley Castle: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q6259734	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000005598373985"
-#   Q2071583 Geoffroi II de Bretagne comte de Bretagne: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2071583	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000006100839430"
-#   Q873218 Otton II: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q873218	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000006727826781"
-#   Q359687 Antigonus II Mattathias [Last Hasmonean King of Judaea]: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q359687	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000006944289080"
-#   Q18214782 Fulk II Bishop of Amiens: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q18214782	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000007274283215"
-#   Q167200 Barnim II Duke of Pomerania: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q167200	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000008021045465"
-#   Q75247904 Dietrich II av Brehna Wettiner: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q75247904	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000008478182830"
-#   Q26813209 Heinrich II von Henneberg-Hartenberg: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q26813209	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000008485882320"
-#   Q2587965 Landulf II of Capua: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2587965	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000008630657256"
-#   Q942585 Leonardo II di Tocco conte di Zante: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q942585	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000014632150324"
-#   Q1542013 Hermann II von Salm Graf von Salm: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1542013	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000014849033732"
-#   Q98077086 Gerhard II im Nordgau, Graf von Egisheim: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q98077086	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000015471268805"
-#   Q1056804 Pino II Ordelaffi: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1056804	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000073161737843"
-#   Q3337817 Nicolaas II van Bronckhorst: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q3337817	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000197295129841"
-#   Q111652714 Konrad II von Plain: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q111652714	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000210257708843"
-
-# III -- given, 16 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "III"
-LAST	Len	"III"
-#   set the mul label to "III"
-LAST	Lmul	"III"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   Q1941773 Bernad III de Bearn comde de Bigòrra: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1941773	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000000709168438"
-#   Q1914050 Boudewijn III van Gent heer van Aalst en Wieze: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1914050	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003827520768"
-#   Q1616020 Hesso III von Sülichen Graf im Sülichgau: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1616020	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003827737009"
-#   Q106501356 Arnaud III de Roquefeuil: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q106501356	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000004868779945"
-#   Q2161741 Rogièr III de Carcassona comte de Carcassona: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2161741	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000011106061276"
-#   Q110602583 Thibault III de Neufchâtel vicomte de La Baume: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q110602583	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000011285814290"
-#   Q2512654 Hugues III de Meulan Comte de Meulan: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2512654	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000015117353789"
-#   Q113087385 Hélène III de Montmorency: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q113087385	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000015167106058"
-#   Q28940093 Jean III de la Baume Comte de Montrevel: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q28940093	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000017690820213"
-#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q110415677	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000019797018175"
-#   Q16170625 Arnau Roger III de Pallars Sobirà Comte de Pallars Sobirà: P735 given name = the item just created, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
-Q16170625	P735	LAST	P1545	3	P3831	Q245025	S2600	"6000000026122456049"
-#   Q107058328 François III d'Avaugour dit de Bretagne Comte de Vertus: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q107058328	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000097624451913"
-#   Q116871443 Obicino III Malaspina marchese di Filattiera: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q116871443	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000114724176241"
-#   Q55532780 Heinrich III von Burgau Markgraf von Burgau: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q55532780	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000194603982925"
-#   Q76122651 Eberhard III von Hengebach Graf von Heimbach: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q76122651	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000196292852828"
-#   Q3592414 Etienne III de Gévaudan: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q3592414	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000224444483854"
-
-# IV -- given, 11 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "IV"
-LAST	Len	"IV"
-#   set the mul label to "IV"
-LAST	Lmul	"IV"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-#   Q122479 Máel Coluim IV mac Eanric King of Scots: P735 given name = the item just created, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
-Q122479	P735	LAST	P1545	3	P3831	Q245025	S2600	"6000000000307274628"
-#   Q2477025 Ulrich IV von Kyburg Bishop of Chur: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q2477025	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000002187826453"
-#   Q1597828 Count Heinrich IV of Vaudemont: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1597828	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000002188578185"
-#   Q102859546 Raymond IV Pelet d'Alès co-seigneur d'Alès: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q102859546	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003122450472"
-#   Q1902258 Hélie IV de Bergerac Comte de Périgord: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1902258	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003827606089"
-#   Q4894932 Ramon IV de Pallars Jussà comte de Pallars Jussà: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q4894932	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000003827957293"
-#   Q110261685 Friedrich IV av Orlamünde: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q110261685	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000008684221093"
-#   Q116918815 Thomas IV de Coucy: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q116918815	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000009304988409"
-#   Q1521994 Hugues IV de Saint-Pol: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q1521994	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000081200314021"
-#   Q17362772 Ulrich IV Krautter: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q17362772	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000087038856861"
-#   Q110586778 Jean IV de Montboissier Beauffort Canillac Baron de Montboissier: P735 given name = the item just created, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q110586778	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000098117790876"
-
-# 998 more name items are needed and wait for a later
+# 1148 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Of (given), 9 bearer(s)
+#   Østensen (patronymic), 1 bearer(s)
+#   II (given), 23 bearer(s)
+#   III (given), 17 bearer(s)
+#   IV (given), 12 bearer(s)
+#   Of (given), 10 bearer(s)
+#   Raustad (family), 8 bearer(s)
+#   Talgje (family), 7 bearer(s)
 #   und (family), 6 bearer(s)
+#   . (family), 5 bearer(s)
 #   Count (given), 5 bearer(s)
 #   of (given), 5 bearer(s)
 #   - (family), 4 bearer(s)
-#   . (family), 4 bearer(s)
-#   Komnene (family), 4 bearer(s)
-#   V (given), 4 bearer(s)
-#   / (family), 3 bearer(s)
-#   Coucy (family), 3 bearer(s)
-#   Countess (given), 3 bearer(s)
-#   Margretelund (family), 3 bearer(s)
-#   ... and 986 more
+#   ... and 1136 more
 
 
 # ======================================================================
@@ -402,27 +330,35 @@ Q83866230	P460	Q141436735
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 190 edits; 3288 edits held for a later run
-#   across 705 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 180 edits; 3574 edits held for a later run
+#   across 791 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
 #   Q141436699 Ranveig Larsdatter Opstad: add a mul alias "Ranveig Larsdatter Helland"
 Q141436699	Amul	"Ranveig Larsdatter Helland"
 #   add a mul alias "Petrus Eriksson Stöök I Bishop of Härnösand"
 Q141436696	Amul	"Petrus Eriksson Stöök I Bishop of Härnösand"
+#   Q141436692 Peder Larsson Raunes: add a mul alias "Peder Larsson Landsnes"
+Q141436692	Amul	"Peder Larsson Landsnes"
+#   Q141436691 Orm Pederson Hovda: add a mul alias "Orm Pederson Foss"
+Q141436691	Amul	"Orm Pederson Foss"
 #   Q141436689 Ola Ådneson Re: add a mul alias "Ola Ådneson Garborg"
 Q141436689	Amul	"Ola Ådneson Garborg"
 #   Q141436685 Ola Jonson Aukland: add a mul alias "Ola Jonson Tøtland"
 Q141436685	Amul	"Ola Jonson Tøtland"
-#   Q141436684 Ola Henriksen Henriksen Vågen: add a mul alias "Ola Henriksen Vågen"
-Q141436684	Amul	"Ola Henriksen Vågen"
+#   Q141436684 Ola Henriksen Vågen: add a mul alias "Ola Henriksen Ringja"
+Q141436684	Amul	"Ola Henriksen Ringja"
 #   Q141436672 Maria Charlotta Lundberger: add a mul alias "Maria Charlotta Sidner"
 Q141436672	Amul	"Maria Charlotta Sidner"
 #   Q141436669 Malena Olsdatter Hana: add a mul alias "Malena Olsdatter Olsdtr"
 Q141436669	Amul	"Malena Olsdatter Olsdtr"
 #   Q141436667 Malena Monsdatter Stavnheim: add a mul alias "Malena Monsdatter Bjorland"
 Q141436667	Amul	"Malena Monsdatter Bjorland"
+#   Q141436662 Kari Andersdatter Lunde: add a mul alias "Kari Andersdatter Auglend"
+Q141436662	Amul	"Kari Andersdatter Auglend"
 #   add a mul alias "Henrik Påhlsson Raumannus"
 Q141436654	Amul	"Henrik Påhlsson Raumannus"
+#   Q141436649 Gunnhild Rasmusdatter Kalberg: add a mul alias "Gunnhild Rasmusdatter Vatne"
+Q141436649	Amul	"Gunnhild Rasmusdatter Vatne"
 #   Q141436636 Eli Tolleivsdatter Sørbø: add a mul alias "Eli Tolleivsdatter Øystre Bore"
 Q141436636	Amul	"Eli Tolleivsdatter Øystre Bore"
 #   add a mul alias "Eilef Taraldson Bore"
@@ -471,207 +407,185 @@ Q106704547	Lja	"アリス・サヴェージ"
 Q106704547	Lzh	"爱丽丝·萨维奇"
 #   set the ko label to "아리케 사바게"
 Q106704547	Lko	"아리케 사바게"
-#   Q105878035: set the ja label to "アンニス・バイフォルド"
-Q105878035	Lja	"アンニス・バイフォルド"
-#   set the zh label to "阿尼斯·巴伊福尔德"
-Q105878035	Lzh	"阿尼斯·巴伊福尔德"
-#   set the ko label to "안니스 바이포르드"
-Q105878035	Lko	"안니스 바이포르드"
-#   Q105877825: set the ja label to "リチャード・シーモア"
-Q105877825	Lja	"リチャード・シーモア"
-#   set the zh label to "理查德·西摩"
-Q105877825	Lzh	"理查德·西摩"
-#   set the ko label to "리차르드 세이무르"
-Q105877825	Lko	"리차르드 세이무르"
-#   Q105871961: Margred|Margred Talbot -> Margred Talbot
-Q105871961	Len	"Margred Talbot"
-Q105871961	Lmul	"Margred Talbot"
-Q105871961	Lnl	"Margred Talbot"
-#   Q105871948: Elen|Jonette ferch Thomas ap Rhys ap Cynwrig -> Elen ferch Thomas ap Rhys ap Cynwrig   + Jonette ferch Thomas ap Rhys ap Cynwrig
-Q105871948	Len	"Elen ferch Thomas ap Rhys ap Cynwrig"
-Q105871948	Lmul	"Elen ferch Thomas ap Rhys ap Cynwrig"
-Q105871948	Amul	"Jonette ferch Thomas ap Rhys ap Cynwrig"
-Q105871948	Lnl	"Elen ferch Thomas ap Rhys ap Cynwrig"
-#   Q105856648: Elizabeth|Alice Ansley (Apsley) -> Elizabeth Ansley (Apsley)   + Alice Ansley (Apsley)
-Q105856648	Len	"Elizabeth Ansley (Apsley)"
-Q105856648	Lmul	"Elizabeth Ansley (Apsley)"
-Q105856648	Amul	"Alice Ansley (Apsley)"
-#   Q105853668: Margaret|Mary Whitfield -> Margaret Whitfield   + Mary Whitfield
-Q105853668	Len	"Margaret Whitfield"
-Q105853668	Lmul	"Margaret Whitfield"
-Q105853668	Amul	"Mary Whitfield"
-Q105853668	Lnl	"Margaret Whitfield"
-#   Q105853236: Geoffrey|John Boydell, of Pulcroft -> Geoffrey Boydell, of Pulcroft   + John Boydell, of Pulcroft
-Q105853236	Len	"Geoffrey Boydell, of Pulcroft"
-Q105853236	Lmul	"Geoffrey Boydell, of Pulcroft"
-Q105853236	Amul	"John Boydell, of Pulcroft"
-Q105853236	Lnl	"Geoffrey Boydell, of Pulcroft"
-#   Q105826551: Agnes|Anne Morley -> Agnes Morley   + Anne Morley
-Q105826551	Len	"Agnes Morley"
-Q105826551	Lmul	"Agnes Morley"
-Q105826551	Amul	"Anne Morley"
-Q105826551	Lnl	"Agnes Morley"
-#   Q105826526: Lyonell|Lionel Tollemache -> Lyonell Tollemache   + Lionel Tollemache
-Q105826526	Len	"Lyonell Tollemache"
-Q105826526	Lmul	"Lyonell Tollemache"
-Q105826526	Amul	"Lionel Tollemache"
-Q105826526	Lnl	"Lyonell Tollemache"
-#   Q105826289: Robert Walcot (Walbyf|Walbeoffe), of Barholm, Lincs -> Robert Walcot , of Barholm   + Robert Walbyf , of Barholm | Robert Walbeoffe , of Barholm
-Q105826289	Len	"Robert Walcot , of Barholm, Lincs"
-Q105826289	Lmul	"Robert Walcot , of Barholm"
-Q105826289	Amul	"Robert Walbyf , of Barholm"
-Q105826289	Amul	"Robert Walbeoffe , of Barholm"
-Q105826289	Lnl	"Robert Walcot , of Barholm"
-#   Q105826278: Margaret|Isabel Browne, of Walcot, Northants -> Margaret Browne, of Walcot, Northants   + Isabel Browne, of Walcot, Northants
-Q105826278	Len	"Margaret Browne, of Walcot, Northants"
-Q105826278	Lmul	"Margaret Browne, of Walcot, Northants"
-Q105826278	Amul	"Isabel Browne, of Walcot, Northants"
-Q105826278	Lnl	"Margaret Browne, of Walcot, Northants"
-#   Q105826270: Sir Thomas|Robert Rokes, of Ascortt -> Sir Thomas Rokes, of Ascortt   + Sir Robert Rokes, of Ascortt
-Q105826270	Len	"Sir Thomas Rokes, of Ascortt"
-Q105826270	Lmul	"Sir Thomas Rokes, of Ascortt"
-Q105826270	Amul	"Sir Robert Rokes, of Ascortt"
-Q105826270	Lnl	"Sir Thomas Rokes, of Ascortt"
-#   Q105826149: Margery|Margaret Harewdon (Harrowden) -> Margery Harewdon (Harrowden)   + Margaret Harewdon (Harrowden)
-Q105826149	Len	"Margery Harewdon (Harrowden)"
-Q105826149	Lmul	"Margery Harewdon (Harrowden)"
-Q105826149	Amul	"Margaret Harewdon (Harrowden)"
-#   Q105826045: Anne|Alice Hoorde -> Anne Hoorde   + Alice Hoorde
-Q105826045	Len	"Anne Hoorde"
-Q105826045	Lmul	"Anne Hoorde"
-Q105826045	Amul	"Alice Hoorde"
-Q105826045	Lnl	"Anne Hoorde"
-#   Q105821248: Alice|Eleanor|Anne Cornewall -> Alice Cornewall   + Eleanor Cornewall | Anne Cornewall
-Q105821248	Len	"Alice Cornewall"
-Q105821248	Lmul	"Alice Cornewall"
-Q105821248	Amul	"Eleanor Cornewall"
-Q105821248	Amul	"Anne Cornewall"
-Q105821248	Lnl	"Alice Cornewall"
-#   Q105821245: Margaret Sprencheaux (Sprenchose|Sprencieulx) -> Margaret Sprencheaux   + Margaret Sprenchose | Margaret Sprencieulx
-Q105821245	Len	"Margaret Sprencheaux"
-Q105821245	Lmul	"Margaret Sprencheaux"
-Q105821245	Amul	"Margaret Sprenchose"
-Q105821245	Amul	"Margaret Sprencieulx"
-#   Q105821023: Elizabeth|Joan Sanders -> Elizabeth Sanders   + Joan Sanders
-Q105821023	Len	"Elizabeth Sanders"
-Q105821023	Lmul	"Elizabeth Sanders"
-Q105821023	Amul	"Joan Sanders"
-Q105821023	Lnl	"Elizabeth Sanders"
-#   Q105820872: Johanna|Elizabeth Greyndour -> Johanna Greyndour   + Elizabeth Greyndour
-Q105820872	Len	"Johanna Greyndour"
-Q105820872	Lmul	"Johanna Greyndour"
-Q105820872	Amul	"Elizabeth Greyndour"
-Q105820872	Lnl	"Johanna Greyndour"
-#   Q105820871: William|Thomas Walwyn, of Bickerton, Heref -> William Walwyn, of Bickerton, Heref   + Thomas Walwyn, of Bickerton, Heref
-Q105820871	Len	"William Walwyn, of Bickerton, Heref"
-Q105820871	Lmul	"William Walwyn, of Bickerton, Heref"
-Q105820871	Amul	"Thomas Walwyn, of Bickerton, Heref"
-Q105820871	Lnl	"William Walwyn, of Bickerton, Heref"
-#   Q105820869: Richard|Robert Abrahall -> Richard Abrahall   + Robert Abrahall
-Q105820869	Len	"Richard Abrahall"
-Q105820869	Lmul	"Richard Abrahall"
-Q105820869	Amul	"Robert Abrahall"
-Q105820869	Lnl	"Richard Abrahall"
-#   Q105820788: Sir John|Thomas Murdack, of Compton Murdack -> Sir John Murdack, of Compton Murdack   + Sir Thomas Murdack, of Compton Murdack
-Q105820788	Len	"Sir John Murdack, of Compton Murdack"
-Q105820788	Lmul	"Sir John Murdack, of Compton Murdack"
-Q105820788	Amul	"Sir Thomas Murdack, of Compton Murdack"
-Q105820788	Lnl	"Sir John Murdack, of Compton Murdack"
-#   Q105819578: Annes|Nest ferch Gwilym ap Gruffudd ap Trahaearn Llwyd -> Annes ferch Gwilym ap Gruffudd ap Trahaearn Llwyd   + Nest ferch Gwilym ap Gruffudd ap Trahaearn Llwyd
-Q105819578	Len	"Annes ferch Gwilym ap Gruffudd ap Trahaearn Llwyd"
-Q105819578	Lmul	"Annes ferch Gwilym ap Gruffudd ap Trahaearn Llwyd"
-Q105819578	Amul	"Nest ferch Gwilym ap Gruffudd ap Trahaearn Llwyd"
-Q105819578	Lnl	"Annes ferch Gwilym ap Gruffudd ap Trahaearn Llwyd"
-#   Q105819546: Elsbeth|Alis ferch Thomas ap Hywel ap Llywelyn -> Elsbeth ferch Thomas ap Hywel ap Llywelyn   + Alis ferch Thomas ap Hywel ap Llywelyn
-Q105819546	Len	"Elsbeth ferch Thomas ap Hywel ap Llywelyn"
-Q105819546	Lmul	"Elsbeth ferch Thomas ap Hywel ap Llywelyn"
-Q105819546	Amul	"Alis ferch Thomas ap Hywel ap Llywelyn"
-Q105819546	Lnl	"Elsbeth ferch Thomas ap Hywel ap Llywelyn"
-#   Q105819485: Sir John|William Booth, of Barton, Lancs -> Sir John Booth, of Barton, Lancs   + Sir William Booth, of Barton, Lancs
-Q105819485	Len	"Sir John Booth, of Barton, Lancs"
-Q105819485	Lmul	"Sir John Booth, of Barton, Lancs"
-Q105819485	Amul	"Sir William Booth, of Barton, Lancs"
-Q105819485	Lnl	"Sir John Booth, of Barton, Lancs"
-#   Q105819473: Sir Richard|John Rugge, of Rugge, Salop -> Sir Richard Rugge, of Rugge, Salop   + Sir John Rugge, of Rugge, Salop
-Q105819473	Len	"Sir Richard Rugge, of Rugge, Salop"
-Q105819473	Lmul	"Sir Richard Rugge, of Rugge, Salop"
-Q105819473	Amul	"Sir John Rugge, of Rugge, Salop"
-Q105819473	Lnl	"Sir Richard Rugge, of Rugge, Salop"
-#   Q105819302: Lucy|Lucia Warren -> Lucy Warren   + Lucia Warren
-Q105819302	Len	"Lucy Warren"
-Q105819302	Lmul	"Lucy Warren"
-Q105819302	Amul	"Lucia Warren"
-Q105819302	Lnl	"Lucy Warren"
-#   Q105819189: Elizabeth|Frances Malone, of Litter -> Elizabeth Malone, of Litter   + Frances Malone, of Litter
-Q105819189	Len	"Elizabeth Malone, of Litter"
-Q105819189	Lmul	"Elizabeth Malone, of Litter"
-Q105819189	Amul	"Frances Malone, of Litter"
-Q105819189	Lnl	"Elizabeth Malone, of Litter"
-#   Q105817888: William|Walter Wallis, of Cowden -> William Wallis, of Cowden   + Walter Wallis, of Cowden
-Q105817888	Len	"William Wallis, of Cowden"
-Q105817888	Lmul	"William Wallis, of Cowden"
-Q105817888	Amul	"Walter Wallis, of Cowden"
-Q105817888	Lnl	"William Wallis, of Cowden"
-#   Q105817881: Alice|Agnes Lidiard (Ledyard) -> Alice Lidiard (Ledyard)   + Agnes Lidiard (Ledyard)
-Q105817881	Len	"Alice Lidiard (Ledyard)"
-Q105817881	Lmul	"Alice Lidiard (Ledyard)"
-Q105817881	Amul	"Agnes Lidiard (Ledyard)"
-#   Q105817860: Jane|Joan Wandesford -> Jane Wandesford   + Joan Wandesford
-Q105817860	Len	"Jane Wandesford"
-Q105817860	Lmul	"Jane Wandesford"
-Q105817860	Amul	"Joan Wandesford"
-Q105817860	Lnl	"Jane Wandesford"
-#   Q105817851: Anne|Alice Hyde, of South Denchworth -> Anne Hyde, of South Denchworth   + Alice Hyde, of South Denchworth
-Q105817851	Len	"Anne Hyde, of South Denchworth"
-Q105817851	Lmul	"Anne Hyde, of South Denchworth"
-Q105817851	Amul	"Alice Hyde, of South Denchworth"
-Q105817851	Lnl	"Anne Hyde, of South Denchworth"
-#   Q105816960: Dorothy Hughson (Huson|Hewson|Hulse) -> Dorothy Hughson   + Dorothy Huson | Dorothy Hewson | Dorothy Hulse
-Q105816960	Len	"Dorothy Hughson"
-Q105816960	Lmul	"Dorothy Hughson"
-Q105816960	Amul	"Dorothy Huson"
-Q105816960	Amul	"Dorothy Hewson"
-Q105816960	Amul	"Dorothy Hulse"
-#   Q105816792: Margery|Margaret Danvers -> Margery Danvers   + Margaret Danvers
-Q105816792	Len	"Margery Danvers"
-Q105816792	Lmul	"Margery Danvers"
-Q105816792	Amul	"Margaret Danvers"
-Q105816792	Lnl	"Margery Danvers"
-#   Q105816787: Avice|Alice Wallop, of Nether Wallop, Hants -> Avice Wallop, of Nether Wallop, Hants   + Alice Wallop, of Nether Wallop, Hants
-Q105816787	Len	"Avice Wallop, of Nether Wallop, Hants"
-Q105816787	Lmul	"Avice Wallop, of Nether Wallop, Hants"
-Q105816787	Amul	"Alice Wallop, of Nether Wallop, Hants"
-Q105816787	Lnl	"Avice Wallop, of Nether Wallop, Hants"
-#   Q105816746: Elizabeth|Perceval Harington, of Westby -> Elizabeth Harington, of Westby   + Perceval Harington, of Westby
-Q105816746	Len	"Elizabeth Harington, of Westby"
-Q105816746	Lmul	"Elizabeth Harington, of Westby"
-Q105816746	Amul	"Perceval Harington, of Westby"
-Q105816746	Lnl	"Elizabeth Harington, of Westby"
-#   Q105816734: Jenkin|John Hollis (Hooks), of Flint -> Jenkin Hollis (Hooks), of Flint   + John Hollis (Hooks), of Flint
-Q105816734	Len	"Jenkin Hollis (Hooks), of Flint"
-Q105816734	Lmul	"Jenkin Hollis (Hooks), of Flint"
-Q105816734	Amul	"John Hollis (Hooks), of Flint"
-Q105816734	Lnl	"Jenkin Hollis (Hooks), of Flint"
-#   Q105816720: Alice|Katherine de Malpas -> Alice de Malpas   + Katherine de Malpas
-Q105816720	Len	"Alice de Malpas"
-Q105816720	Lmul	"Alice de Malpas"
-Q105816720	Amul	"Katherine de Malpas"
-Q105816720	Lnl	"Alice de Malpas"
-#   Q105816711: Hugh|Hugo Hull (Hill), of Hill, Salop -> Hugh Hull (Hill), of Hill, Salop   + Hugo Hull (Hill), of Hill, Salop
-Q105816711	Len	"Hugh Hull (Hill), of Hill, Salop"
-Q105816711	Lmul	"Hugh Hull (Hill), of Hill, Salop"
-Q105816711	Amul	"Hugo Hull (Hill), of Hill, Salop"
-Q105816711	Lnl	"Hugh Hull (Hill), of Hill, Salop"
-#   Q105815471: Hew Wallace, of Carnell|Cairnhill -> Hew Wallace, of Carnell   + Hew Wallace, of Cairnhill
-Q105815471	Len	"Hew Wallace, of Carnell"
-Q105815471	Lmul	"Hew Wallace, of Carnell"
-Q105815471	Amul	"Hew Wallace, of Cairnhill"
-Q105815471	Lnl	"Hew Wallace, of Carnell"
-#   Q105815314: Emota|Emma Middleton -> Emota Middleton   + Emma Middleton
-Q105815314	Len	"Emota Middleton"
-Q105815314	Lmul	"Emota Middleton"
-Q105815314	Amul	"Emma Middleton"
-Q105815314	Lnl	"Emota Middleton"
+#   Q106703837: Stephen Mudge (Mugg|Mugge) -> Stephen Mudge   + Stephen Mugg | Stephen Mugge
+Q106703837	Len	"Stephen Mudge"
+Q106703837	Lmul	"Stephen Mudge"
+Q106703837	Amul	"Stephen Mugg"
+Q106703837	Amul	"Stephen Mugge"
+#   Q106703836: Thomas Mudge (Mugg|Mugge) -> Thomas Mudge   + Thomas Mugg | Thomas Mugge
+Q106703836	Len	"Thomas Mudge"
+Q106703836	Lmul	"Thomas Mudge"
+Q106703836	Amul	"Thomas Mugg"
+Q106703836	Amul	"Thomas Mugge"
+#   Q106703813: Jean|John Lempriere, seigneur de Rozel -> Jean Lempriere, seigneur de Rozel   + John Lempriere, seigneur de Rozel
+Q106703813	Len	"Jean Lempriere, seigneur de Rozel"
+Q106703813	Lmul	"Jean Lempriere, seigneur de Rozel"
+Q106703813	Amul	"John Lempriere, seigneur de Rozel"
+Q106703813	Lnl	"Jean Lempriere, seigneur de Rozel"
+#   Q106703811: John|Jean Messervy, of St.Martin -> John Messervy, of St.Martin   + Jean Messervy, of St.Martin
+Q106703811	Len	"John Messervy, of St.Martin"
+Q106703811	Lmul	"John Messervy, of St.Martin"
+Q106703811	Amul	"Jean Messervy, of St.Martin"
+Q106703811	Lnl	"John Messervy, of St.Martin"
+#   Q106703787: Margaret Mudge|Mugge -> Margaret Mudge   + Margaret Mugge
+Q106703787	Len	"Margaret Mudge"
+Q106703787	Lmul	"Margaret Mudge"
+Q106703787	Amul	"Margaret Mugge"
+Q106703787	Lnl	"Margaret Mudge"
+#   Q106703744: John|Jean Aumont -> John Aumont   + Jean Aumont
+Q106703744	Len	"John Aumont"
+Q106703744	Lmul	"John Aumont"
+Q106703744	Amul	"Jean Aumont"
+Q106703744	Lnl	"John Aumont"
+#   Q106703657: Anthony|Antoise Larbalestier, seigneur d'Augres -> Anthony Larbalestier, seigneur d'Augres   + Antoise Larbalestier, seigneur d'Augres
+Q106703657	Len	"Anthony Larbalestier, seigneur d'Augres"
+Q106703657	Lmul	"Anthony Larbalestier, seigneur d'Augres"
+Q106703657	Amul	"Antoise Larbalestier, seigneur d'Augres"
+Q106703657	Lnl	"Anthony Larbalestier, seigneur d'Augres"
+#   Q106703528: Joan|Alice Besford -> Joan Besford   + Alice Besford
+Q106703528	Len	"Joan Besford"
+Q106703528	Lmul	"Joan Besford"
+Q106703528	Amul	"Alice Besford"
+Q106703528	Lnl	"Joan Besford"
+#   Q106703521: Elizabeth|Katherine Corbet -> Elizabeth Corbet   + Katherine Corbet
+Q106703521	Len	"Elizabeth Corbet"
+Q106703521	Lmul	"Elizabeth Corbet"
+Q106703521	Amul	"Katherine Corbet"
+Q106703521	Lnl	"Elizabeth Corbet"
+#   Q106703519: Elizabeth de la Pole (Mawddwy|Mowbray) -> Elizabeth de la Pole   + Elizabeth de la Mawddwy | Elizabeth de la Mowbray
+Q106703519	Len	"Elizabeth de la Pole"
+Q106703519	Lmul	"Elizabeth de la Pole"
+Q106703519	Amul	"Elizabeth de la Mawddwy"
+Q106703519	Amul	"Elizabeth de la Mowbray"
+#   Q106703189: Amice|Amicia de Arden (Arderne) -> Amice de Arden (Arderne)   + Amicia de Arden (Arderne)
+Q106703189	Len	"Amice de Arden (Arderne)"
+Q106703189	Lmul	"Amice de Arden (Arderne)"
+Q106703189	Amul	"Amicia de Arden (Arderne)"
+#   Q106703170: Isabel|Elizabeth Brocket -> Isabel Brocket   + Elizabeth Brocket
+Q106703170	Len	"Isabel Brocket"
+Q106703170	Lmul	"Isabel Brocket"
+Q106703170	Amul	"Elizabeth Brocket"
+Q106703170	Lnl	"Isabel Brocket"
+#   Q106703167: Thomas Haselrigge (Hesilrige|Hazelrigg), of Noseley -> Thomas Haselrigge   + Thomas Hesilrige | Thomas Hazelrigg
+Q106703167	Len	"Thomas Haselrigge, of Noseley"
+Q106703167	Lmul	"Thomas Haselrigge"
+Q106703167	Amul	"Thomas Hesilrige"
+Q106703167	Amul	"Thomas Hazelrigg"
+Q106703167	Lnl	"Thomas Haselrigge"
+#   Q106703166: Anne Haselrigge (Hesilrige|Hazelrigg) -> Anne Haselrigge   + Anne Hesilrige | Anne Hazelrigg
+Q106703166	Len	"Anne Haselrigge"
+Q106703166	Lmul	"Anne Haselrigge"
+Q106703166	Amul	"Anne Hesilrige"
+Q106703166	Amul	"Anne Hazelrigg"
+#   Q106703146: Edward|Edmund Catesby, of Seaton, Rutland -> Edward Catesby, of Seaton, Rutland   + Edmund Catesby, of Seaton, Rutland
+Q106703146	Len	"Edward Catesby, of Seaton, Rutland"
+Q106703146	Lmul	"Edward Catesby, of Seaton, Rutland"
+Q106703146	Amul	"Edmund Catesby, of Seaton, Rutland"
+Q106703146	Lnl	"Edward Catesby, of Seaton, Rutland"
+#   Q106703090: Dafydd ap Dafydd|Rhirid y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn -> Dafydd ap Dafydd y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn   + Dafydd ap Rhirid y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn
+Q106703090	Len	"Dafydd ap Dafydd y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn"
+Q106703090	Lmul	"Dafydd ap Dafydd y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn"
+Q106703090	Amul	"Dafydd ap Rhirid y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn"
+Q106703090	Lnl	"Dafydd ap Dafydd y Pothan Flaidd ap Rhirid Fychan ap Madog of Penllyn"
+#   Q106703064: Elsbeth|Elizabeth Conwy -> Elsbeth Conwy   + Elizabeth Conwy
+Q106703064	Len	"Elsbeth Conwy"
+Q106703064	Lmul	"Elsbeth Conwy"
+Q106703064	Amul	"Elizabeth Conwy"
+Q106703064	Lnl	"Elsbeth Conwy"
+#   Q106703056: Ales|Alswn|Alice ferch Gruffudd ap Jenkin Broughton -> Ales ferch Gruffudd ap Jenkin Broughton   + Alswn ferch Gruffudd ap Jenkin Broughton | Alice ferch Gruffudd ap Jenkin Broughton
+Q106703056	Len	"Ales ferch Gruffudd ap Jenkin Broughton"
+Q106703056	Lmul	"Ales ferch Gruffudd ap Jenkin Broughton"
+Q106703056	Amul	"Alswn ferch Gruffudd ap Jenkin Broughton"
+Q106703056	Amul	"Alice ferch Gruffudd ap Jenkin Broughton"
+Q106703056	Lnl	"Ales ferch Gruffudd ap Jenkin Broughton"
+#   Q106686236: Margaret|Matilda Vavasour -> Margaret Vavasour   + Matilda Vavasour
+Q106686236	Len	"Margaret Vavasour"
+Q106686236	Lmul	"Margaret Vavasour"
+Q106686236	Amul	"Matilda Vavasour"
+Q106686236	Lnl	"Margaret Vavasour"
+#   Q106686152: Eleanor|Ellen Harrington -> Eleanor Harrington   + Ellen Harrington
+Q106686152	Len	"Eleanor Harrington"
+Q106686152	Lmul	"Eleanor Harrington"
+Q106686152	Amul	"Ellen Harrington"
+Q106686152	Lnl	"Eleanor Harrington"
+#   Q106686149: Maud|Matilda Lascelles, of Scourby -> Maud Lascelles, of Scourby   + Matilda Lascelles, of Scourby
+Q106686149	Len	"Maud Lascelles, of Scourby"
+Q106686149	Lmul	"Maud Lascelles, of Scourby"
+Q106686149	Amul	"Matilda Lascelles, of Scourby"
+Q106686149	Lnl	"Maud Lascelles, of Scourby"
+#   Q106637473: Mary|Margaret St.John -> Mary St.John   + Margaret St.John
+Q106637473	Len	"Mary St.John"
+Q106637473	Lmul	"Mary St.John"
+Q106637473	Amul	"Margaret St.John"
+Q106637473	Lnl	"Mary St.John"
+#   Q106637451: Elizabeth|Agnes Aske -> Elizabeth Aske   + Agnes Aske
+Q106637451	Len	"Elizabeth Aske"
+Q106637451	Lmul	"Elizabeth Aske"
+Q106637451	Amul	"Agnes Aske"
+Q106637451	Lnl	"Elizabeth Aske"
+#   Q106509779: Maude|Eleanor Deincourt (Daucote) -> Maude Deincourt (Daucote)   + Eleanor Deincourt (Daucote)
+Q106509779	Len	"Maude Deincourt (Daucote)"
+Q106509779	Lmul	"Maude Deincourt (Daucote)"
+Q106509779	Amul	"Eleanor Deincourt (Daucote)"
+#   Q106509740: Margaret|Eleanor Beaumont -> Margaret Beaumont   + Eleanor Beaumont
+Q106509740	Len	"Margaret Beaumont"
+Q106509740	Lmul	"Margaret Beaumont"
+Q106509740	Amul	"Eleanor Beaumont"
+Q106509740	Lnl	"Margaret Beaumont"
+#   Q106509702: Thomas Hayton, of Botayles|Batailles -> Thomas Hayton, of Botayles   + Thomas Hayton, of Batailles
+Q106509702	Len	"Thomas Hayton, of Botayles"
+Q106509702	Lmul	"Thomas Hayton, of Botayles"
+Q106509702	Amul	"Thomas Hayton, of Batailles"
+Q106509702	Lnl	"Thomas Hayton, of Botayles"
+#   Q106509507: Agnes|Anne Yewings -> Agnes Yewings   + Anne Yewings
+Q106509507	Len	"Agnes Yewings"
+Q106509507	Lmul	"Agnes Yewings"
+Q106509507	Amul	"Anne Yewings"
+Q106509507	Lnl	"Agnes Yewings"
+#   Q106508150: Maud|Mabel Middleton, of Middleton -> Maud Middleton, of Middleton   + Mabel Middleton, of Middleton
+Q106508150	Len	"Maud Middleton, of Middleton"
+Q106508150	Lmul	"Maud Middleton, of Middleton"
+Q106508150	Amul	"Mabel Middleton, of Middleton"
+Q106508150	Lnl	"Maud Middleton, of Middleton"
+#   Q106508128: Thomas|John Sandford, of Askham, Westm -> Thomas Sandford, of Askham, Westm   + John Sandford, of Askham, Westm
+Q106508128	Len	"Thomas Sandford, of Askham, Westm"
+Q106508128	Lmul	"Thomas Sandford, of Askham, Westm"
+Q106508128	Amul	"John Sandford, of Askham, Westm"
+Q106508128	Lnl	"Thomas Sandford, of Askham, Westm"
+#   Q106506175: John|Ion Chalkhill, of Kingsbury -> John Chalkhill, of Kingsbury   + Ion Chalkhill, of Kingsbury
+Q106506175	Len	"John Chalkhill, of Kingsbury"
+Q106506175	Lmul	"John Chalkhill, of Kingsbury"
+Q106506175	Amul	"Ion Chalkhill, of Kingsbury"
+Q106506175	Lnl	"John Chalkhill, of Kingsbury"
+#   Q106504493: Ralph|Robert Danby, of Yafforth -> Ralph Danby, of Yafforth   + Robert Danby, of Yafforth
+Q106504493	Len	"Ralph Danby, of Yafforth"
+Q106504493	Lmul	"Ralph Danby, of Yafforth"
+Q106504493	Amul	"Robert Danby, of Yafforth"
+Q106504493	Lnl	"Ralph Danby, of Yafforth"
+#   Q106504492: Margaret|Margery Danby -> Margaret Danby   + Margery Danby
+Q106504492	Len	"Margaret Danby"
+Q106504492	Lmul	"Margaret Danby"
+Q106504492	Amul	"Margery Danby"
+Q106504492	Lnl	"Margaret Danby"
+#   Q106503776: Ralph|John Trenowith -> Ralph Trenowith   + John Trenowith
+Q106503776	Len	"Ralph Trenowith"
+Q106503776	Lmul	"Ralph Trenowith"
+Q106503776	Amul	"John Trenowith"
+Q106503776	Lnl	"Ralph Trenowith"
+#   Q106503764: Sir Renfry|Reinfrid de Arundell -> Sir Renfry de Arundell   + Sir Reinfrid de Arundell
+Q106503764	Len	"Sir Renfry de Arundell"
+Q106503764	Lmul	"Sir Renfry de Arundell"
+Q106503764	Amul	"Sir Reinfrid de Arundell"
+Q106503764	Lnl	"Sir Renfry de Arundell"
+#   Q106503748: Ralph|John Roscarrock -> Ralph Roscarrock   + John Roscarrock
+Q106503748	Len	"Ralph Roscarrock"
+Q106503748	Lmul	"Ralph Roscarrock"
+Q106503748	Amul	"John Roscarrock"
+Q106503748	Lnl	"Ralph Roscarrock"
+#   Q106503248: Isabel|Eleanor (Thomasine) Totham (Tatton) -> Isabel (Thomasine) Totham (Tatton)   + Eleanor (Thomasine) Totham (Tatton)
+Q106503248	Len	"Isabel (Thomasine) Totham (Tatton)"
+Q106503248	Lmul	"Isabel (Thomasine) Totham (Tatton)"
+Q106503248	Amul	"Eleanor (Thomasine) Totham (Tatton)"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -779,9 +693,9 @@ LAST	P21	Q6581097
 LAST	P2600	"6000000054168793935"	P1810	"Anbjørn Ogmundson Byre"
 #   P569 date of birth = +1460-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
 LAST	P569	+1460-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000054168793935"
-#   P40 child = Q141352187 Ånon i Byre
+#   P40 child = Q141352187 Ånon Byre
 LAST	P40	Q141352187	S2600	"6000000054168793935"
-#   Q141352187 Ånon i Byre: P22 father = the item just created
+#   Q141352187 Ånon Byre: P22 father = the item just created
 Q141352187	P22	LAST	S2600	"6000000054168793935"
 #   the item just created: P734 family name = Q37515983
 LAST	P734	Q37515983
@@ -1179,22 +1093,55 @@ LAST	P734	Q30087644
 
 # create a new item
 CREATE
-#   set the en label to "Carl Gustaf Söderberg"
-LAST	Len	"Carl Gustaf Söderberg"
-#   set the mul label to "Carl Gustaf Söderberg"
-LAST	Lmul	"Carl Gustaf Söderberg"
-#   set the ja label to "カール・グスタフ・ソデルベルグ"
-LAST	Lja	"カール・グスタフ・ソデルベルグ"
-#   set the zh label to "卡尔·古斯塔夫·索德尔贝尔格"
-LAST	Lzh	"卡尔·古斯塔夫·索德尔贝尔格"
-#   set the ko label to "칼 구스타프 쇠데르베륵"
-LAST	Lko	"칼 구스타프 쇠데르베륵"
+#   set the en label to "Birgerus Nicolai Cantherus Nericius"
+LAST	Len	"Birgerus Nicolai Cantherus Nericius"
+#   set the mul label to "Birgerus Nicolai Cantherus Nericius"
+LAST	Lmul	"Birgerus Nicolai Cantherus Nericius"
+#   add a mul alias "Birgerus Nilsson"
+LAST	Amul	"Birgerus Nilsson"
+#   set the ja label to "ビルゲルス・ニコライ・カンテルス・ネリシウス"
+LAST	Lja	"ビルゲルス・ニコライ・カンテルス・ネリシウス"
+#   set the zh label to "比尔盖鲁斯·尼古拉·坎特鲁斯·内里西乌斯"
+LAST	Lzh	"比尔盖鲁斯·尼古拉·坎特鲁斯·内里西乌斯"
+#   set the ko label to "비르게루스 니코라이 칸테루스 네리큐스"
+LAST	Lko	"비르게루스 니코라이 칸테루스 네리큐스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000161721983893 Carl Gustaf Söderberg, qualified P1810 subject named as Carl Gustaf Söderberg
-LAST	P2600	"6000000161721983893"	P1810	"Carl Gustaf Söderberg"
+#   P2600 Geni.com profile ID = 6000000007026167651 Birgerus Nicolai Cantherus Nericius, qualified P1810 subject named as Birgerus Nilsson
+LAST	P2600	"6000000007026167651"	P1810	"Birgerus Nilsson"
+#   P569 date of birth = +1525-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1525-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000007026167651"
+#   P570 date of death = +1615-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1615-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000007026167651"
+#   P40 child = Q141318597 Ingeborg Canthera
+LAST	P40	Q141318597	S2600	"6000000007026167651"
+#   Q141318597 Ingeborg Canthera: P22 father = the item just created
+Q141318597	P22	LAST	S2600	"6000000007026167651"
+#   the item just created: P5056 patronym or matronym = Q130233015 Nilsson
+LAST	P5056	Q130233015
+#   add a mul alias "Birger Nilsson"
+LAST	Amul	"Birger Nilsson"
+
+# create a new item
+CREATE
+#   set the en label to "Carl Gustaf Gustaf Söderberg"
+LAST	Len	"Carl Gustaf Gustaf Söderberg"
+#   set the mul label to "Carl Gustaf Gustaf Söderberg"
+LAST	Lmul	"Carl Gustaf Gustaf Söderberg"
+#   set the ja label to "カール・グスタフ・グスタフ・ソデルベルグ"
+LAST	Lja	"カール・グスタフ・グスタフ・ソデルベルグ"
+#   set the zh label to "卡尔·古斯塔夫·古斯塔夫·索德尔贝尔格"
+LAST	Lzh	"卡尔·古斯塔夫·古斯塔夫·索德尔贝尔格"
+#   set the ko label to "칼 구스타프 구스타프 쇠데르베륵"
+LAST	Lko	"칼 구스타프 구스타프 쇠데르베륵"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000161721983893 Carl Gustaf Gustaf Söderberg, qualified P1810 subject named as Carl Gustaf Gustaf Söderberg
+LAST	P2600	"6000000161721983893"	P1810	"Carl Gustaf Gustaf Söderberg"
 #   P569 date of birth = +1840-03-08T00:00:00Z/11
 LAST	P569	+1840-03-08T00:00:00Z/11	S2600	"6000000161721983893"
 #   P570 date of death = +1919-11-17T00:00:00Z/11
@@ -1341,6 +1288,41 @@ LAST	P40	Q141250213	S2600	"6000000008496890957"
 Q141250213	P25	LAST	S2600	"6000000008496890957"
 #   the item just created: P735 given name = Q16423275 Elisabet
 LAST	P735	Q16423275
+
+# create a new item
+CREATE
+#   set the en label to "Elisabeth Kingo"
+LAST	Len	"Elisabeth Kingo"
+#   set the mul label to "Elisabeth Kingo"
+LAST	Lmul	"Elisabeth Kingo"
+#   add a mul alias "Elisabeth Olesdatter"
+LAST	Amul	"Elisabeth Olesdatter"
+#   set the ja label to "エリーザベト・キンゴ"
+LAST	Lja	"エリーザベト・キンゴ"
+#   set the zh label to "伊丽莎白·金戈"
+LAST	Lzh	"伊丽莎白·金戈"
+#   set the ko label to "에리사베트 키오"
+LAST	Lko	"에리사베트 키오"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000002528811414 Elisabeth Kingo, qualified P1810 subject named as Elisabeth Olesdatter
+LAST	P2600	"6000000002528811414"	P1810	"Elisabeth Olesdatter"
+#   P569 date of birth = +1790-00-00T00:00:00Z/9
+LAST	P569	+1790-00-00T00:00:00Z/9	S2600	"6000000002528811414"
+#   P570 date of death = +1847-07-17T00:00:00Z/11
+LAST	P570	+1847-07-17T00:00:00Z/11	S2600	"6000000002528811414"
+#   P26 spouse = Q141318574 Salomon Kingo
+LAST	P26	Q141318574	S2600	"6000000002528811414"
+#   P40 child = Q141318575 Olina Salomonsdatter
+LAST	P40	Q141318575	S2600	"6000000002528811414"
+#   Q141318574 Salomon Kingo: P26 spouse = the item just created
+Q141318574	P26	LAST	S2600	"6000000002528811414"
+#   Q141318575 Olina Salomonsdatter: P25 mother = the item just created
+Q141318575	P25	LAST	S2600	"6000000002528811414"
+#   the item just created: P735 given name = Q63611044 Elisabeth
+LAST	P735	Q63611044
 
 # create a new item
 CREATE
@@ -1899,6 +1881,39 @@ Q141422220	P40	LAST	S2600	"6000000037454956902"
 LAST	P735	Q4120836	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 LAST	P735	Q325872	P1545	"2"	P3831	Q245025
+
+# create a new item
+CREATE
+#   set the en label to "Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius"
+LAST	Len	"Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius"
+#   set the mul label to "Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius"
+LAST	Lmul	"Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius"
+#   set the ja label to "ヨハネス・ペトリ・オストロゴトス・レフテリウス・ペトリ・オストロゴトス・レフテリウス"
+LAST	Lja	"ヨハネス・ペトリ・オストロゴトス・レフテリウス・ペトリ・オストロゴトス・レフテリウス"
+#   set the zh label to "约翰内斯·佩特里·奥斯特罗戈图斯·雷夫特利乌斯·佩特里·奥斯特罗戈图斯·雷夫特利乌斯"
+LAST	Lzh	"约翰内斯·佩特里·奥斯特罗戈图斯·雷夫特利乌斯·佩特里·奥斯特罗戈图斯·雷夫特利乌斯"
+#   set the ko label to "조한네스 페트리 오스트로고투스 레프테류스 페트리 오스트로고투스 레프테류스"
+LAST	Lko	"조한네스 페트리 오스트로고투스 레프테류스 페트리 오스트로고투스 레프테류스"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000205156265834 Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius, qualified P1810 subject named as Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius
+LAST	P2600	"6000000205156265834"	P1810	"Johannes Petri Ostrogothus Reftelius Petri Ostrogothus Reftelius"
+#   P569 date of birth = +1654-00-00T00:00:00Z/9
+LAST	P569	+1654-00-00T00:00:00Z/9	S2600	"6000000205156265834"
+#   P570 date of death = +1687-05-04T00:00:00Z/11
+LAST	P570	+1687-05-04T00:00:00Z/11	S2600	"6000000205156265834"
+#   P26 spouse = Q141283098 Justina Schultin
+LAST	P26	Q141283098	S2600	"6000000205156265834"
+#   Q141283098 Justina Schultin: P26 spouse = the item just created
+Q141283098	P26	LAST	S2600	"6000000205156265834"
+#   the item just created: P735 given name = Q2117521 Johannes, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+LAST	P735	Q2117521	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q10625184 Petri, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q10625184	P1545	"2"	P3831	Q245025
+#   P735 given name = Q10625184 Petri, qualified P1545 series ordinal 5, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q10625184	P1545	"5"	P3831	Q245025
 
 # create a new item
 CREATE
@@ -2605,34 +2620,34 @@ LAST	P734	Q27887927	P3831	Q28418670
 CREATE
 #   set the mul label to "NN Bertilsdotter"
 LAST	Lmul	"NN Bertilsdotter"
-#   set the ca label to "mare de Ingeborg Canthera"
-LAST	Lca	"mare de Ingeborg Canthera"
-#   set the da label to "mor til Ingeborg Canthera"
-LAST	Lda	"mor til Ingeborg Canthera"
-#   set the de label to "Mutter von Ingeborg Canthera"
-LAST	Lde	"Mutter von Ingeborg Canthera"
-#   set the en label to "mother of Ingeborg Canthera"
-LAST	Len	"mother of Ingeborg Canthera"
-#   set the es label to "madre de Ingeborg Canthera"
-LAST	Les	"madre de Ingeborg Canthera"
-#   set the fr label to "mère de Ingeborg Canthera"
-LAST	Lfr	"mère de Ingeborg Canthera"
-#   set the it label to "madre di Ingeborg Canthera"
-LAST	Lit	"madre di Ingeborg Canthera"
-#   set the ja label to "インゲボルグ・カンテラの母"
-LAST	Lja	"インゲボルグ・カンテラの母"
-#   set the ko label to "이에보륵 칸테라의 어머니"
-LAST	Lko	"이에보륵 칸테라의 어머니"
-#   set the nb label to "mor til Ingeborg Canthera"
-LAST	Lnb	"mor til Ingeborg Canthera"
-#   set the nl label to "moeder van Ingeborg Canthera"
-LAST	Lnl	"moeder van Ingeborg Canthera"
-#   set the pt label to "mãe de Ingeborg Canthera"
-LAST	Lpt	"mãe de Ingeborg Canthera"
-#   set the sv label to "mor till Ingeborg Canthera"
-LAST	Lsv	"mor till Ingeborg Canthera"
-#   set the zh label to "英格堡·坎特拉之母"
-LAST	Lzh	"英格堡·坎特拉之母"
+#   set the ca label to "esposa de Birgerus Nicolai Cantherus Nericius"
+LAST	Lca	"esposa de Birgerus Nicolai Cantherus Nericius"
+#   set the da label to "hustru til Birgerus Nicolai Cantherus Nericius"
+LAST	Lda	"hustru til Birgerus Nicolai Cantherus Nericius"
+#   set the de label to "Ehefrau von Birgerus Nicolai Cantherus Nericius"
+LAST	Lde	"Ehefrau von Birgerus Nicolai Cantherus Nericius"
+#   set the en label to "wife of Birgerus Nicolai Cantherus Nericius"
+LAST	Len	"wife of Birgerus Nicolai Cantherus Nericius"
+#   set the es label to "esposa de Birgerus Nicolai Cantherus Nericius"
+LAST	Les	"esposa de Birgerus Nicolai Cantherus Nericius"
+#   set the fr label to "épouse de Birgerus Nicolai Cantherus Nericius"
+LAST	Lfr	"épouse de Birgerus Nicolai Cantherus Nericius"
+#   set the it label to "moglie di Birgerus Nicolai Cantherus Nericius"
+LAST	Lit	"moglie di Birgerus Nicolai Cantherus Nericius"
+#   set the ja label to "ビルゲルス・ニコライ・カンテルス・ネリシウスの妻"
+LAST	Lja	"ビルゲルス・ニコライ・カンテルス・ネリシウスの妻"
+#   set the ko label to "비르게루스 니코라이 칸테루스 네리큐스의 아내"
+LAST	Lko	"비르게루스 니코라이 칸테루스 네리큐스의 아내"
+#   set the nb label to "hustru til Birgerus Nicolai Cantherus Nericius"
+LAST	Lnb	"hustru til Birgerus Nicolai Cantherus Nericius"
+#   set the nl label to "echtgenote van Birgerus Nicolai Cantherus Nericius"
+LAST	Lnl	"echtgenote van Birgerus Nicolai Cantherus Nericius"
+#   set the pt label to "esposa de Birgerus Nicolai Cantherus Nericius"
+LAST	Lpt	"esposa de Birgerus Nicolai Cantherus Nericius"
+#   set the sv label to "maka till Birgerus Nicolai Cantherus Nericius"
+LAST	Lsv	"maka till Birgerus Nicolai Cantherus Nericius"
+#   set the zh label to "比尔盖鲁斯·尼古拉·坎特鲁斯·内里西乌斯之妻"
+LAST	Lzh	"比尔盖鲁斯·尼古拉·坎特鲁斯·内里西乌斯之妻"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -2844,37 +2859,6 @@ LAST	P734	Q38999964
 
 # create a new item
 CREATE
-#   set the en label to "Peter Norn"
-LAST	Len	"Peter Norn"
-#   set the mul label to "Peter Norn"
-LAST	Lmul	"Peter Norn"
-#   set the ja label to "ピーター・ノルン"
-LAST	Lja	"ピーター・ノルン"
-#   set the zh label to "彼得·诺尔恩"
-LAST	Lzh	"彼得·诺尔恩"
-#   set the ko label to "페테르 노른"
-LAST	Lko	"페테르 노른"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000008496890952 Peter Norn, qualified P1810 subject named as Peter Norn
-LAST	P2600	"6000000008496890952"	P1810	"Peter Norn"
-#   P569 date of birth = +1679-12-19T00:00:00Z/11
-LAST	P569	+1679-12-19T00:00:00Z/11	S2600	"6000000008496890952"
-#   P570 date of death = +1724-01-18T00:00:00Z/11
-LAST	P570	+1724-01-18T00:00:00Z/11	S2600	"6000000008496890952"
-#   P40 child = Q141250213 Anna Maria Norn
-LAST	P40	Q141250213	S2600	"6000000008496890952"
-#   Q141250213 Anna Maria Norn: P22 father = the item just created
-Q141250213	P22	LAST	S2600	"6000000008496890952"
-#   the item just created: P735 given name = Q2793400 Peter
-LAST	P735	Q2793400
-#   add a mul alias "Pehr"
-LAST	Amul	"Pehr"
-
-# create a new item
-CREATE
 #   set the en label to "Rasmus Andersson Litle Vatne"
 LAST	Len	"Rasmus Andersson Litle Vatne"
 #   set the mul label to "Rasmus Andersson Litle Vatne"
@@ -2891,8 +2875,8 @@ LAST	Lko	"라스무스 안데르손 리트레 바트네"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000003094916337 Rasmus Andersson Litle Vatne, qualified P1810 subject named as Bonde Rasmus Andersson Litle Vatne
-LAST	P2600	"6000000003094916337"	P1810	"Bonde Rasmus Andersson Litle Vatne"
+#   P2600 Geni.com profile ID = 6000000003094916337 Rasmus Andersson Litle Vatne, qualified P1810 subject named as Rasmus Andersson Auglend
+LAST	P2600	"6000000003094916337"	P1810	"Rasmus Andersson Auglend"
 #   P569 date of birth = +1710-02-13T00:00:00Z/11
 LAST	P569	+1710-02-13T00:00:00Z/11	S2600	"6000000003094916337"
 #   P570 date of death = +1794-02-00T00:00:00Z/10
@@ -2982,6 +2966,45 @@ LAST	Amul	"Simon Polviander"
 
 # create a new item
 CREATE
+#   set the en label to "Siri Nilsdotter Midt-Fister"
+LAST	Len	"Siri Nilsdotter Midt-Fister"
+#   set the mul label to "Siri Nilsdotter Midt-Fister"
+LAST	Lmul	"Siri Nilsdotter Midt-Fister"
+#   set the ja label to "シリ・ニルスドッテル・ミトフィステル"
+LAST	Lja	"シリ・ニルスドッテル・ミトフィステル"
+#   set the zh label to "西里·尼尔斯多特·米特菲斯特尔"
+LAST	Lzh	"西里·尼尔斯多特·米特菲斯特尔"
+#   set the ko label to "시리 닐스도테르 미트피스테르"
+LAST	Lko	"시리 닐스도테르 미트피스테르"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000005608959310 Siri Nilsdotter Midt-Fister, qualified P1810 subject named as Siri Nilsdotter Midt-Fister
+LAST	P2600	"6000000005608959310"	P1810	"Siri Nilsdotter Midt-Fister"
+#   P569 date of birth = +1570-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1570-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000005608959310"
+#   P22 father = Q141244117 Nils Fister
+LAST	P22	Q141244117	S2600	"6000000005608959310"
+#   P25 mother = Q141205922 Marit Ormsd Byre
+LAST	P25	Q141205922	S2600	"6000000005608959310"
+#   P26 spouse = Q141353757 Ole Knudson Hidle
+LAST	P26	Q141353757	S2600	"6000000005608959310"
+#   Q141244117 Nils Fister: P40 child = the item just created
+Q141244117	P40	LAST	S2600	"6000000005608959310"
+#   Q141205922 Marit Ormsd Byre: P40 child = the item just created
+Q141205922	P40	LAST	S2600	"6000000005608959310"
+#   Q141353757 Ole Knudson Hidle: P26 spouse = the item just created
+Q141353757	P26	LAST	S2600	"6000000005608959310"
+#   the item just created: P735 given name = Q1772342 Siri
+LAST	P735	Q1772342
+#   P5056 patronym or matronym = Q141383169, qualified P144 based on Q141244117 Nils Fister
+LAST	P5056	Q141383169	P144	Q141244117
+#   add a mul alias "Siri Midt-Fister"
+LAST	Amul	"Siri Midt-Fister"
+
+# create a new item
+CREATE
 #   set the en label to "Sissel Mjølhus"
 LAST	Len	"Sissel Mjølhus"
 #   set the mul label to "Sissel Mjølhus"
@@ -3027,7 +3050,7 @@ LAST	Lko	"스벤 닐손"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000204862105894 Sven Nilsson tvilling, qualified P1810 subject named as Sven Nilsson tvilling
+#   P2600 Geni.com profile ID = 6000000204862105894 Sven Nilsson, qualified P1810 subject named as Sven Nilsson tvilling
 LAST	P2600	"6000000204862105894"	P1810	"Sven Nilsson tvilling"
 #   P569 date of birth = +1747-02-01T00:00:00Z/11
 LAST	P569	+1747-02-01T00:00:00Z/11	S2600	"6000000204862105894"
@@ -3091,8 +3114,8 @@ LAST	Lko	"토레 마트손 로스나"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000001169090995 Tore Matsson Losna, qualified P1810 subject named as Tore Matsson Losna
-LAST	P2600	"6000000001169090995"	P1810	"Tore Matsson Losna"
+#   P2600 Geni.com profile ID = 6000000001169090995 Tore Matsson Losna, qualified P1810 subject named as Tore Matsson Holter
+LAST	P2600	"6000000001169090995"	P1810	"Tore Matsson Holter"
 #   P569 date of birth = +1475-00-00T00:00:00Z/9
 LAST	P569	+1475-00-00T00:00:00Z/9	S2600	"6000000001169090995"
 #   P570 date of death = +1531-00-00T00:00:00Z/9
