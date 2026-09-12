@@ -22,7 +22,7 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 a{color:var(--accent)}
 </style></head><body><div class="wrap">
 <h1>The daily batch</h1>
-<p class="sub">88 creations · 1,656 · run this one first statement lines · generated 2026-09-12 · paste into
+<p class="sub">88 creations · 1,657 · run this one first statement lines · generated 2026-09-12 · paste into
 <a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
 (version 1 syntax, tab-separated)</p>
 <div class="bar">
@@ -308,7 +308,7 @@ LAST	P31	Q101352
 #   Q141318914 Helga Olavsdtr. Ringja: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141318914	P734	LAST	P3831	Q2507958	S2600	&quot;6000000001770176883&quot;
 
-# 1197 more name items are needed and wait for a later
+# 1202 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   Ysing (family), 2 bearer(s)
 #   Østensen (patronymic), 2 bearer(s)
@@ -322,7 +322,7 @@ Q141318914	P734	LAST	P3831	Q2507958	S2600	&quot;6000000001770176883&quot;
 #   Honnon (family), 1 bearer(s)
 #   Ichten (family), 1 bearer(s)
 #   Jacobson (patronymic), 1 bearer(s)
-#   ... and 1185 more
+#   ... and 1190 more
 
 
 # ======================================================================
@@ -368,9 +368,20 @@ Q83866230	P460	Q141436735
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 246 edits; 2156 edits held for a later run
-#   across 435 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 247 edits; 2164 edits held for a later run
+#   across 437 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
+#   Q100326474: Joan|Jane Orrell -&gt; Joan Orrell   + Jane Orrell
+Q100326474	Len	&quot;Joan Orrell&quot;
+Q100326474	Lmul	&quot;Joan Orrell&quot;
+Q100326474	Amul	&quot;Jane Orrell&quot;
+Q100326474	Lnl	&quot;Joan Orrell&quot;
+#   Q100326468: Ellen|Eleanor|Marion Holme -&gt; Ellen Holme   + Eleanor Holme | Marion Holme
+Q100326468	Len	&quot;Ellen Holme&quot;
+Q100326468	Lmul	&quot;Ellen Holme&quot;
+Q100326468	Amul	&quot;Eleanor Holme&quot;
+Q100326468	Amul	&quot;Marion Holme&quot;
+Q100326468	Lnl	&quot;Ellen Holme&quot;
 #   Q100326388: Sir Richard|Thomas Radcliffe (Radclyffe), of Winmarleigh -&gt; Sir Richard Radcliffe (Radclyffe), of Winmarleigh   + Sir Thomas Radcliffe (Radclyffe), of Winmarleigh
 Q100326388	Len	&quot;Sir Richard Radcliffe (Radclyffe), of Winmarleigh&quot;
 Q100326388	Lmul	&quot;Sir Richard Radcliffe (Radclyffe), of Winmarleigh&quot;
@@ -672,16 +683,6 @@ Q99204564	Len	&quot;Catherine Abarrow&quot;
 Q99204564	Lmul	&quot;Catherine Abarrow&quot;
 Q99204564	Amul	&quot;Catherine or Barrow&quot;
 Q99204564	Amul	&quot;Catherine Abarough&quot;
-#   Q99204339: Margaret|Margery Billingford -&gt; Margaret Billingford   + Margery Billingford
-Q99204339	Len	&quot;Margaret Billingford&quot;
-Q99204339	Lmul	&quot;Margaret Billingford&quot;
-Q99204339	Amul	&quot;Margery Billingford&quot;
-Q99204339	Lnl	&quot;Margaret Billingford&quot;
-#   Q99199164: Margery|Margaret -&gt; Margery   + Margaret
-Q99199164	Len	&quot;Margery&quot;
-Q99199164	Lmul	&quot;Margery&quot;
-Q99199164	Amul	&quot;Margaret&quot;
-Q99199164	Lnl	&quot;Margery&quot;
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
