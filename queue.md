@@ -1204,6 +1204,25 @@ read this https://pastebin.com/npAiDNLg using the chrome extension. View all of 
 
 Look over this guy's contributions https://www.wikidata.org/wiki/Special:Contributions/Marcus.linneberg I think we might be able to do a lot of geni identifications from them. That pastebin was my hasty ones. But we can do it systematically
 
+## Patronymic matronymic stuff
+
+We really should be always creating patronymics in pairs. Feminine and masculine version in a pair in the quickstatements
+
+So for example
+
+Bjornsdatter
+Bjornsson
+
+Would be made at the same time
+
+Honestly I am not 100% sure about all of this stuff. But I think the spelling equivalents are just regional and there is a clear distinction there
+
+### Other traditions
+
+I still think we do not have support for other languages like Semitic languages and celtic languages and their patronymics
+
+Romance languages should be there too but I think they are the hardest and the most dead
+
 ## Another Item
 
 I am just letting you know that this was in the quickstatements. It is not a surname lol
