@@ -38186,3 +38186,33 @@ hit rate says the other four would cost roughly **140 more page loads** to find.
 this NN, the Circassian and Turgesh-Seljuq trees below her have **13 `Descendants` balls already
 filed**, and the one saturated person the sample found sits inside one of them. The descent is
 not thin because Geni is missing people — it is thin *to us* because it is already gathered.
+
+## 2026-09-12 — 65 picks, 1 hit, and the two descent files say it is the sampling frame again
+
+Batch 3 of the NN sweep: **25 picks, 19 usable reads, 0 over 4,000**, highest 255.
+
+    running total   65 picks   54 usable reads   1 hit   ~1 in 54
+
+**`CLAUDE.md`'s Alix lesson was § *25% AGAINST 0 OF 16, AND THE DIFFERENCE IS THE SAMPLING
+FRAME*, and the two descent files differ on exactly that axis:**
+
+    reports/descent-from-6000000006101354745.csv   Alix    1,176 rows   gens 1-12    median 11
+    reports/descent-from-6000000035218690155.csv   NN     17,224 rows   gens 1-42    median 32
+
+**Only 210 of the NN file's 17,224 rows — 1.2% — sit at generation 12 or shallower.** A uniform
+random pick therefore lands at a median of **32 generations** below a woman whose son was born in
+990, which is a person alive in roughly the last two centuries with nobody recorded beneath them.
+That is why 30 of the first 35 reads came back between 0 and 64.
+
+**The Alix sweep never chose a shallow frame; it got one for free**, because the corpus only knew
+twelve generations below her. Sampling uniformly from a descent the corpus knows to depth 42 is
+not the same operation, and the 25% hit rate does not carry across.
+
+**Nothing is changed on this reasoning.** `scripts/monte-carlo-pick.py`'s docstring forbids the
+script getting cleverer — *"no ranking, no skipping people who look unpromising"* — and
+`CLAUDE.md` § *Two seed-choosing methods are refuted; do not propose a third on reasoning alone*
+covers precisely this move. The measurement is recorded and the choice goes to somebody else.
+
+**And the shallow band is not obviously the answer either.** Generations 1–12 of this descent are
+the medieval Seljuq and Circassian core, which is the region that already holds 13 filed
+`Descendants` balls — the same collision that made target 1 return one person.
