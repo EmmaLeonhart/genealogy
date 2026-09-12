@@ -38514,3 +38514,26 @@ the only thing that answers it is the request.
 **The check costs one page load and the failure costs an hour of held export slot**, because
 `waitMs` on this state is 3,600,000 and the job waits it out on a dead page. It should run before
 every export on a profile not created in this session.
+
+## 2026-09-12 — Dál Fiatach filed, and a refused export blocks every export after it
+
+**`NN Dál Fiatach 6000000227226958932`**, direct `Descendants` export, task
+`6000000227714385115`. Filed to a new `exports/northern-dfa/`.
+
+    ball                    5,000 INDI
+    new against the WHOLE corpus            1,073   (21.5%)
+
+### ⛔ A REFUSED EXPORT HOLDS THE SERIAL SLOT AND SILENTLY BLOCKS THE NEXT ONE
+
+The Dál Fiatach job was enqueued and then **sat for twelve minutes without submitting**. The
+status said `queued: 1, activeTabs: 1` — the active tab was the **NN Ulster** job, still parked on
+the `/error` page, and `pump`'s `if (serial && serialInFlight >= 1) break` will not start a second
+export while one is held.
+
+**`{type:"stop"}` does not clear it.** It sets `running: false` and leaves `active` populated, so
+the next `enqueue` restarts the pump into the same block. `load` resets `results`, `attempted`
+**and `active`**, and the export submitted immediately once it was sent.
+
+So a refusal costs more than its own slot: **every export queued behind it waits out the dead
+job's `waitMs`, which is an hour on this state.** The exportability `fetch` recorded in the entry
+above prevents the refusal; this is what to do when one happens anyway.
