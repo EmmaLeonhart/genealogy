@@ -38480,3 +38480,37 @@ of a descent already in the corpus is not a measure of how saturated any part of
 **The three-step method is doing what she said it does.** *"the forest fleshes stuff out around
 them so that it isn't just spindles right next to them"* — and the Monte Carlo that follows it is
 sampling a neighbourhood the Forest widened.
+
+## 2026-09-12 — the exportability check, and NN Ulster is refused
+
+**`NN Ulster 6000000011830295477` cannot be exported.** The job sat twelve minutes holding the
+export slot with no result — the same signature Gamle Olof gave — and
+`https://www.geni.com/gedcom/export/6000000011830295477` redirects to `/error`:
+
+    You are not allowed to export that profile.
+
+**So the check was run on every remaining seed before spending another slot.** A `fetch` of the
+export form, one page load each, 1.5 s apart:
+
+    ok        6000000227226958932  NN Dál Fiatach
+    ok        6000000227714686873  NN, the forest target
+    ok        6000000227712700862  Adasi
+    ok        6000000227713034875  Confucius
+    ok        6000000211987119821  Hermenegildo Gutteres
+    ok        6000000227714378863  Fihr
+    ok        6000000227713229918  Emperor Jimmu
+    ok        6000000227036719829  Chinese cluster 1
+    ok        6000000209595340830  Chinese cluster 2
+    ok        6000000220876233832  Nārāyaṇa
+    REFUSED   6000000011830295477  NN Ulster
+    REFUSED   6000000000183188387  no-name -- and it does not matter, he is a SAMPLING target
+
+**⛔ AND IT REFUTES THE THING WRITTEN DOWN TWO HOURS EARLIER.** The queue says of Nārāyaṇa:
+*"He is not an `NN` placeholder and that may matter … the export may be refused."* **Nārāyaṇa
+exports fine and `NN Ulster` does not.** Being an `NN` does not predict ownership in either
+direction — a named historical person can be exportable and a placeholder can be refused — so
+the only thing that answers it is the request.
+
+**The check costs one page load and the failure costs an hour of held export slot**, because
+`waitMs` on this state is 3,600,000 and the job waits it out on a dead page. It should run before
+every export on a profile not created in this session.
