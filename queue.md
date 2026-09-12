@@ -8,33 +8,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
-- **⛔ DESCENDANTS EXPORTS ON THE 15 HINGE PEOPLE — digested out of `undigested.md`,
-  2026-09-09.** A *hinge person* is defined there: *"people who seem to have clearly disjoint
-  large numbers of descendants, and as such are good descendants export sources."*
-
-  **EASTERN european tang — 4**
-
-      6000000028522915307  Zhelegot Mirza Cherkassy
-      6000000191078589837  knyaz Kanshov of Cherkessia
-      6000000220167394834  Джамурза Джиляхстанов
-      6000000144779499889  Alkas Jamurzin Dzhilyakhstanov
-
-  **WESTERN european tang — 6**, the Cilician Armenian side
-
-      6000000006101354712  Princess Alix de Lampron
-      6000000006101354653  Constantine I, lord of Lampron
-      6000000006101354662  Constantine, lord of Barbaron
-      6000000006101430432  Leo I the Magnificent, king of Armenia
-      6000000006101354628  Tolita Doleta of Armenia
-      6000000007086662766  Ruben III Rouponi, King of Armenia
-
-  **Per person: create an ANCESTOR of them per `docs/export-seed-rules.md`, then run a
-  `Descendants` export on the created ancestor.** `Descendants`, **not** `Forest` — see the
-  campaign item below for why. One at a time; Geni's limit.
-
-  The OneTab page in `undigested.md` is **not** digested and stays there: still being worked on,
-  *"better for my judgment on this one."*
-
 - **⛔ THE ALGORITHM IS STATELESS EXCEPT FOR TWO THINGS. Ruled 2026-09-10.**
   *"This entire algorithm is completely stateless except for the actual connectivity graph of
   which it is built off of, and the dates of attempts."*
@@ -597,14 +570,25 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.
-  - **`6000000035218690155`** — <https://www.geni.com/people/n-n/6000000035218690155>. Added
-    2026-09-10: *"Abul Hamza is top priority but descendants of
-    https://www.geni.com/people/n-n/6000000035218690155 should be in there too"*.
+  - **⛔ `NN` `6000000035218690155` — RUNNING NOW, AND IT REPLACED THE HINGE PEOPLE.**
+    <https://www.geni.com/people/n-n/6000000035218690155>. Added 2026-09-10: *"Abul Hamza is top
+    priority but descendants of https://www.geni.com/people/n-n/6000000035218690155 should be in
+    there too"*.
 
-    **Its position in this order was NOT stated**, only that it belongs in the campaign and that
-    Abul Hamza outranks it. Recorded here rather than ranked, and nothing about the person is
-    investigated, measured, seeded or grepped — `CLAUDE.md` § *"Add it to the end of the queue"
-    means WRITE IT DOWN AND STOP*. The slug is `n-n`, so the profile is an `NN`.
+    **⛔ THE HINGE PEOPLE WERE ALL DESCENDANTS OF THIS PERSON, AND THAT IS WHY THEY ARE GONE.**
+    Ruled 2026-09-12: *"they are all descendants of nn nn who I think is also listed here ... the
+    hinge people just don't exist anymore ... Pretend that the hinged people do not exist because
+    they're overdramatized"*. Naming them individually was the departure — the Abul Hamza / Alix
+    method samples a descent, it does not enumerate people inside one.
+
+    **⛔ FIVE PICKS, NOT SIXTY, AND STOP EARLY IF IT IS CLEARLY FLAT.** *"do, like, the Monte
+    Carlo thing for maybe, like, five people. And if you see clear diminishing returns at five
+    people, then just give up."* So this run is deliberately smaller than the 60-census sweep that
+    produced the Alix roster, and *give up* is an allowed outcome here — it is the one campaign
+    with a stated ceiling.
+
+    **⛔ AND THE EXPORT IS NOT COMPREHENSIVE.** *"we do not need to do nearly as comprehensive an
+    export on them."*
 
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is

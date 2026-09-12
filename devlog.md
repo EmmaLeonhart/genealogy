@@ -38089,3 +38089,48 @@ uncapped check could retire four people and cannot retire this one.
 previous entry settled are deleted rather than annotated, per § *An item is DELETED when done*.
 
 **Ten of fifteen remain: four eastern, six western.**
+
+## 2026-09-12 — the hinge people are abolished, and the last two exports show why the roster was the wrong shape
+
+**Ruled 2026-09-12:** *"they are all descendants of nn nn who I think is also listed here ... the
+hinge people just don't exist anymore ... Pretend that the hinged people do not exist because
+they're overdramatized."* The queue item is deleted. Ten names went with it — four eastern, six
+western — and none of them is a loss, because the population they described is reachable from one
+profile that was already in the queue: `NN 6000000035218690155`.
+
+**The departure is named in the ruling and it is worth writing down plainly.** The Abul Hamza /
+Alix method samples a descent at random and censuses the picks. The hinge roster enumerated ten
+people by hand and ran an export on each. Those are different methods, and only the first one has
+ever been ruled.
+
+### The two exports run before the ruling landed measure the cost of the wrong shape
+
+**Hinge person 2 — Камбулат Идарович Черкасский `6000000008867333533`**, 2 climbs, seed
+`NN Kaytuko-Kaytukin dynasty 6000000227711339822`, task `6000000227711157946`, 5,000 INDI at the
+cap, **538 new to the corpus.**
+
+**Hinge person 3 — Zhelegot Mirza Cherkassy `6000000028522915307`**, 2 climbs, seed
+`6000000227711294908`, task `6000000227711315851`, 5,000 INDI, **1 new to the corpus.**
+
+    the two balls share 4,999 of 5,000 people
+
+**Both climbs terminated on the same subject, `6000000091022919004`.** The first created its
+FATHER and the second its MOTHER, and a `Descendants` ball from either placeholder is the same
+child's descent with one extra person at the top. The zips differ by a single byte.
+
+**That is not a defect in the walk.** `createdPids` stops a second placeholder on the same
+person; it does not know that two different roster entries climb into the same open family, and
+nothing could know that without walking first. **It is a defect in the roster** — two named
+people two steps apart in one Circassian tree were always going to converge, and the sampling
+method the ruling restores does not have that failure mode because it never names anybody.
+
+**Filed anyway.** The exports were spent before the ruling arrived, a submitted export cannot be
+cancelled, and § *The job with an export is to integrate it, not to analyse it* does not have a
+clause about balls that turned out to be duplicates.
+
+### What replaces it
+
+The campaign on **`NN 6000000035218690155`** — Monte Carlo over that person's descendants, with
+a ceiling this time: *"do, like, the Monte Carlo thing for maybe, like, five people. And if you
+see clear diminishing returns at five people, then just give up."* Five picks, not the sixty that
+built the Alix roster, and *give up* is an allowed outcome.
