@@ -389,7 +389,8 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   shown with their romanised relatives and the classifier's refusal sentence. Verdicts persist in
   the artifact's own store as they are made.
 
-  **`reports/cjk-culture-manual.tsv` is committed with its header and no rows**, and
+  **`reports/cjk-culture-manual.tsv` holds 32 of the 137 verdicts as of 2026-09-12** — it was
+  committed with its header and no rows and has been partly filled since — and
   `build-cjk-romanisation.py` reads it every run as evidence 5, applied after all five tiers so a
   character rule cannot silently overrule a person.
 

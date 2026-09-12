@@ -38987,3 +38987,22 @@ and the slot is worth more there.
     Chinese 1     595 ·  844 ·     0         sweep top 2,282
     Chinese 2      39 ·   33 · 3,969         sweep found 15,000
     Adasi         141 ·  182 ·     0         sweep top   225
+
+## 2026-09-12 — sweep: nothing to delete, and one stale assertion corrected
+
+**No queue item was removed.** Chinese cluster 2 and Adasi were both swept in the commits that
+completed them, and Confucius is mid-flight at step 1. Manufacturing a deletion to make the sweep
+look productive is the opposite of what the sweep is for.
+
+**One correction made instead.** The CJK item asserted *"`reports/cjk-culture-manual.tsv` is
+committed with its header and no rows"*. The file holds **32 of the 137 verdicts**, entered from
+2026-09-10 onward. The item is not complete — 105 remain, and the artifact store is only readable
+from inside a session, so it cannot be a cron — but the line describing it was false, and a queue
+that states false facts about its own artifacts is worse than one that is merely long.
+
+**Checked and left alone**, all for reasons already recorded: the six from Abul Hamza's ball
+(never exported), the OneTab 19 (never ruled), the four remaining supplied seeds and
+Genghis/Aztec/Inca (never run), the parent-adding campaign (gated), the extension-exports tail
+item, the Wikidata items (`den yngre`, Welsh `P1545`, the nine screenshots, the geni-id border
+bug, the pipe corrections, universe adjacency, the label duplication, `Q1934051`) — none touched
+today — and the standing procedures.
