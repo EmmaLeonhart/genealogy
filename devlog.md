@@ -39006,3 +39006,30 @@ Genghis/Aztec/Inca (never run), the parent-adding campaign (gated), the extensio
 item, the Wikidata items (`den yngre`, Welsh `P1545`, the nine screenshots, the geni-id border
 bug, the pipe corrections, universe adjacency, the label duplication, `Q1934051`) — none touched
 today — and the standing procedures.
+
+## 2026-09-12 — the bottleneck read was right and the ball still returned one person
+
+**`6000000227723403845`**, the seed Emma supplied after diagnosing Adasi's structure:
+*"the family kind of fans out a lot, but it basically has at least one really, really significant
+bottleneck."* Task `6000000227723384825`.
+
+    ball                                    5,000 INDI
+    new against the WHOLE corpus                1
+    shared with the FIRST Adasi ball        1,465 of 5,000
+    shared with abul-hamza/…227676734863    4,772 of 5,000
+
+**Those two numbers say different things and only the first one tests her diagnosis.** The seed
+reached a population that is **70% disjoint from the first Adasi seed's ball** — so it did get
+past the bottleneck, exactly as described. It returned one new person because the far side had
+already been gathered, in a `Descendants` export off **Abul Hamza** filed long before this
+campaign started.
+
+**⛔ SO "1 NEW" IS NOT EVIDENCE ABOUT THE SEED.** Read alone it looks like the reseed failed;
+measured against the first ball it shows the reseed worked and the territory was simply already
+ours. **A yield of 1 has now meant three different things this session** — a duplicate parent on
+one subject (de Marigny), a descent already fully held (NN Ulster ancestor), and here a correct
+reseed into someone else's completed ball. The overlap breakdown is what separates them and costs
+one script run.
+
+**Adasi is now measured from both sides of its bottleneck** and the campaign holds it either way:
+323 new above, 1 below, with the below-side already in `exports/abul-hamza/`.
