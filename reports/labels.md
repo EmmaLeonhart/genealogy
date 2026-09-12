@@ -5,17 +5,17 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,529,793 people**.
+One row per person in `reports/derived-labels.csv` — **1,533,819 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,435,423 | 93.8% |
+| Latin only | 1,439,196 | 93.8% |
 | CJK only — needs translation for en | 44,205 | 2.9% |
-| no usable name at all | 25,480 | 1.7% |
+| no usable name at all | 25,732 | 1.7% |
 | other script only — needs translation for en | 12,140 | 0.8% |
-| mixed-script only — no clean Latin label | 9,888 | 0.6% |
+| mixed-script only — no clean Latin label | 9,889 | 0.6% |
 | Latin and CJK | 2,657 | 0.2% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
@@ -27,10 +27,10 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,721,467 |
+| Latin | 1,726,258 |
 | CJK | 112,416 |
-| other | 48,336 |
-| mixed | 31,424 |
+| other | 48,399 |
+| mixed | 31,427 |
 | none | 467 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 291,582 people
+## Aliases from married names — 292,074 people
 
 A married name plugs into the name to produce an alias.
 
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-45,455 people have both a derived Latin label and a Wikidata English
-label. **12,505 match exactly (27.5%).**
+45,752 people have both a derived Latin label and a Wikidata English
+label. **12,546 match exactly (27.4%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
