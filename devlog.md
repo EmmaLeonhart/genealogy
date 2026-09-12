@@ -38331,3 +38331,42 @@ Bagrationi — which is a guess that happened to be right, not a measurement.
 *"If you see clear diminishing returns at five people, then just give up."* Four in, the returns
 are **1, 2, 1, 562**, and the one large ball arrived by leaving a cluster rather than by sampling
 harder. That is not a flat curve and the give-up condition is not met on it.
+
+## 2026-09-12 — the NN root closes at five, and two dispatch mistakes are recorded with it
+
+**Target 5, twice.** The hit was `6000000007948054460` (10,070 descendants) and its climb ended in
+`add_not_confirmed` on Theodora Kantakouzene `6000000007951566399` — the parent **had** been
+created, `NN Cantacuzena 6000000227712094916`, and reading her family module said so.
+
+    export-Forest-6000000227712094916.ged        5,000 INDI    862 new  (17.2%)
+    export-Descendants-6000000227712197866.ged   5,000 INDI    117 new  ( 2.3%)
+
+**Mistake 1: `enqueue` does not carry the walk, so the export came back `Forest`.**
+`content/export.js` reads `job.walk` and defaults to `forest`; the `enqueue` message passes the
+job through untouched and nothing else sets it. `seedwalk` and `montecarlo` set `exportWalk` on
+the STATE, which is a different field. The ball is filed as the `Forest` it is and returned 862
+new people, so the slot was not wasted — but *"re-export a descendants one from her"* was needed
+because the first one answered a different question.
+
+**Mistake 2: `seedwalk` was the wrong way to redo it, and the stop was too late.**
+`seedwalk` climbs ABOVE the person given, so on a placeholder with no parents it creates another
+one. That was spotted and `{type:"stop"}` sent — **after the creation had already happened.**
+`6000000227712197866` exists on Geni because of it. The report at the time said the stop had
+prevented a creation; it had not, and the correction is here rather than left standing.
+
+**The right dispatch is `{type:"enqueue", queue:[{job:"export", walk:"descendants", geni_id}]}`**
+— `walk` on the JOB. That one returned `no_such_walk`, which `export.js` documents as *the page
+had not drawn yet* rather than *the option is gone*, and by then the accidental placeholder's
+export was already building and covered the same descent one generation up.
+
+### The root's five exports
+
+    1     1 new
+    2     2 new
+    3     1 new
+    4   562 new     Georgian, a different cluster
+    5   862 new     Forest, Trebizond/Kantakouzenos
+    5b  117 new     Descendants from the same place
+
+**Closed at five per the ruling.** *"I just want one more export, and I don't wanna have to do
+much, like, thinking or whatever on this."*
