@@ -38826,3 +38826,29 @@ law to enforce back* in a new place.
 **Cost:** 30 page loads, and whatever hits were among them — unknown, because the reads are gone.
 Rounds 1-3 hit 5, 3 and 3 over the 4,000 threshold, so the expected loss is roughly three
 export targets that will have to be found again.
+
+## 2026-09-12 — Bergitte's root, all three steps: 3 · 627 · 0
+
+**`NN Skjalgsson 6000000227295848846`**, the seed Emma made and then had to correct me about when
+I left it tagged blocked.
+
+    step 1  Forest       task 6000000227721322831      3 new   ( 0.1%)
+    step 2  Descendants  task 6000000227721537838    627 new   (12.5%)
+    step 3  Monte Carlo  30 reads, 0 over 4,000, top 888
+
+**Step 1 and step 2 on the same seed differ by a factor of 200**, and that is the clearest
+demonstration of why the method she specified carries both. *"the forest fleshes stuff out around
+them so that it isn't just spindles right next to them"* — here the fleshing-out found a
+neighbourhood the corpus already holds almost completely, which is what a Norwegian line should
+look like given the campaign has been pointed at Scandinavia all along. The descent **below** that
+neighbourhood was not held, and going down found 627.
+
+**Step 3 returned nothing and that is a result, not a failure.** Her descent enumerates to
+76,859 people offline, and 30 random picks over it found nobody at 4,000 descendants — the top
+reading was 888. A large descent made of individually modest people is exactly the shape that
+produces no Monte Carlo target, and it is the opposite shape from `no-name`, whose descent of
+472,395 produced three to five hits per sweep.
+
+**No second round is run on this root.** One sweep is not proof of absence, but a 0-of-30 against
+a top of 888 is a long way from the 4,000 threshold, and the alternative use of the slot is the
+eight untouched seeds that have never been measured at all.
