@@ -722,6 +722,48 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     grown by many descendant balls since, and a stringy descent changes what the components are.
     **The ids are hers and stand; the cluster reading is stale, not the seeds.**
 
+  - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
+    Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
+    the information we have right now, do now, postpone, or drop. So we can be clear about all of
+    these things."*
+
+    **⛔ AND THE REASON THE BIG ONES ARE WORTH IT IS HERS, NOT A YIELD NUMBER:**
+    *"Charlemagne is a person who is very central and well documented. There is not a whole lot of
+    new stuff to add around him. A lot of these people with very large numbers of descendants are
+    not as well documented and often are sparse in some areas. So I place them as worth a shot."*
+    So **a large descent already held is not evidence of saturation** — Charlemagne was ruled
+    complete for being *central and documented*, not for being large.
+
+    **1. THE EIGHT UNTOUCHED SEEDS — FULL THREE-STEP EACH.** `Forest`, then `Descendants`, then
+    Monte Carlo, per seed:
+
+        6000000227036719829  Chinese cluster 1
+        6000000209595340830  Chinese cluster 2
+        6000000227712700862  Adasi
+        6000000227713034875  Confucius
+        6000000211987119821  Hermenegildo Gutteres
+        6000000227714378863  Fihr
+        6000000227713229918  Emperor Jimmu
+        6000000220876233832  Nārāyaṇa
+
+    **2. GENGHIS / AZTEC / INCA — `Forest` AND MONTE CARLO, NO `Descendants`.** Verbatim:
+    *"we have descendant exports of them. No need to redo descendants exports of them, but we
+    need forest exports of them, and the Monte carlo stuff done on them."*
+
+        6000000227039926826  Genghis Khan
+        6000000209721868822  Aztec Emperors
+        6000000209721822822  Inca Emperors        <- already has a Forest too; check before
+                                                     spending the slot
+
+    **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
+
+        6000000227712070008  NN Näf         more Monte Carlo rounds (80.1% then 26.8%)
+        6000000227708968860  ben Ovadya     Monte Carlo, not yet started
+        6000000227226958932  Dál Fiatach    Monte Carlo, not yet started
+
+    **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
+    already held and that is not a reason to stop, per the ruling above.
+
   - **⛔ A POST-MERGE REFRESH AROUND ABUL HAMZA, ADDED 2026-09-12.** *"a lot of merges happened
     around Abul Hamza, so queue up a forest export from
     https://www.geni.com/people/NN/6000000227715260898?through=6000000054042438830 and put it in
