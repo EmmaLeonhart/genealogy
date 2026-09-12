@@ -38298,3 +38298,36 @@ this campaign that is not obviously inside the Circassian core.
 
 Target 4 goes there rather than to another Circassian hit, because the question the remaining two
 export slots can still answer is whether this root has any unexported cluster at all.
+
+## 2026-09-12 — target 4 returned 562, and the root is not exhausted: one cluster inside it was
+
+**Princess Tamar Djakeli `6000000017921757042`**, 5,292 descendants, Georgian, in no complete
+ball. Climbed 5 steps and seeded on **NN Shalikashvili `6000000227712032840`**.
+Task `6000000227711911927`.
+
+    ball                    5,000 INDI
+    new against the WHOLE corpus              562   (11.2%)
+
+    the four exports into this root      1 · 2 · 1 · 562
+
+**Overlap with the campaign's own earlier balls is 620 and 617**, against the 4,993 that targets
+1 and 2 shared with each other. It is a different population.
+
+### ⛔ SO *THE DESCENT IS ALREADY GATHERED* WAS WRONG, AND IT WAS WRITTEN DOWN TWICE
+
+Two entries above say the NN descent is thin *to us* because it is already exported. **What is
+already exported is the Circassian and Seljuq-Mamluk cluster inside it.** Targets 1, 2 and 3 all
+landed there — twice by collision with a profile a climb had skipped, once by a seed on a hinge
+person's own line — and three balls returning 1, 2 and 1 read as a property of the root when they
+were a property of one neighbourhood.
+
+**The check that separated them was cheap and was not run until target 4 was already chosen**: a
+hit's overlap against the corpus, before spending the export. Thamar Djakeli was picked because
+her line looked Georgian in the climb's own output — Qaikhosro II of Samtskhe, Dedisimedi
+Bagrationi — which is a guess that happened to be right, not a measurement.
+
+### The ceiling of five, with one slot left
+
+*"If you see clear diminishing returns at five people, then just give up."* Four in, the returns
+are **1, 2, 1, 562**, and the one large ball arrived by leaving a cluster rather than by sampling
+harder. That is not a flat curve and the give-up condition is not met on it.
