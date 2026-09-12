@@ -119,7 +119,13 @@ def stamp(geni_ids, today=None, path=WORKLIST):
         dst.write(src.readline())
         for line in src:
             row = fields(line)
-            if len(row) == len(COLUMNS) and row[1] in wanted:
+            # ⛔ `>=`, NOT `==`. The header check above was widened on 2026-09-10 when the
+            # worklist gained six columns; THIS line was not, so every capture since has
+            # stamped nothing while reporting success. Measured 2026-09-12: all 265,832
+            # rows carry 10 columns, so `== len(COLUMNS)` matched none of them and
+            # `last_attempted` -- one of the only two pieces of state the algorithm has --
+            # was never written. The 30-day cooldown was not applying.
+            if len(row) >= len(COLUMNS) and row[1] in wanted:
                 row[3] = day
                 seen.add(row[1])
                 out["stamped"] += 1

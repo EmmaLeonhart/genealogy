@@ -120,6 +120,34 @@ def test_the_stamp_writes_today_on_that_row_and_nothing_else(ledger, tmp_path):
     assert lines[3] == TAB.join(["Q3", "300", "3", "2026-09-01"])
 
 
+def test_the_stamp_works_on_the_TEN_column_file_the_repo_actually_has(ledger, tmp_path):
+    """⛔ THE REGRESSION THAT MADE EVERY CAPTURE A SILENT NO-OP.
+
+    `stamp` matched rows with `len(row) == len(COLUMNS)` -- exactly four. The worklist gained six
+    columns on 2026-09-10 (the five statistics figures and `exported`), so from that day no row
+    could match and `last_attempted` was never written, while the run still reported success.
+    Measured 2026-09-12: all 265,832 rows carry ten columns.
+
+    Every other test here builds a FOUR-column file, which is why the bug survived them. This one
+    builds what is on disk.
+    """
+    f = tmp_path / "unconnected-p2600.tsv"
+    head = ["qid", "geni_id", "neighbourhood_size", "last_attempted",
+            "family_tree", "blood_relatives", "ancestors", "descendants", "followers", "exported"]
+    rows = [["Q1", "100", "5", "2026-01-01", "200", "200", "200", "200", "200", "no"],
+            ["Q2", "200", "4", "2026-01-01", "200", "200", "200", "200", "200", "no"]]
+    f.write_text(TAB.join(head) + NL + "".join(TAB.join(r) + NL for r in rows),
+                 encoding="utf-8", newline="")
+    out = ledger.stamp(["200"], today=TODAY, path=f)
+    assert out["stamped"] == 1 and out["unmatched"] == []
+    lines = f.read_text(encoding="utf-8").split(NL)
+    assert lines[2].split(TAB)[3] == "2026-09-09"
+    #  the six columns to the right are untouched
+    assert lines[2].split(TAB)[4:] == ["200", "200", "200", "200", "200", "no"]
+    #  and the row that was not asked for is untouched
+    assert lines[1].split(TAB)[3] == "2026-01-01"
+
+
 def test_the_stamp_keeps_the_file_order_and_the_lf_endings(ledger, tmp_path):
     """It does not re-sort — that is the build's job — and it must not CRLF 266,201 lines."""
     f = tmp_path / "unconnected-p2600.tsv"
