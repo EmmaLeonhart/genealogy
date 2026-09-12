@@ -37862,3 +37862,35 @@ untouched, and inventing a general hold was itself corrected earlier the same ni
 **while a QuickStatements generation that was asked for is `in_progress`, commit locally and hold
 the push until it completes.** Nothing else waits — the work carries on, the commits accumulate,
 only the push is deferred, and only until that one run finishes.
+
+## 2026-09-12 — Alix target 12 filed: 2,019 new for 27 climbs, and the cluster prediction did not hold
+
+**Emmanuel Philibert Amedeo of Savoy-Carignano `300372611270008118`**, seeded on
+NN de Montafie `6000000227710521057` after **27 climbs** — the cheapest since target 7.
+
+    ball                    5,000 INDI   2,258 FAM
+    new against the campaign                2,567
+    new against the WHOLE corpus            2,019
+
+**A Savoy, and it did NOT behave like the other Savoys.** Targets 8 and 10 returned 666 and 697
+because their balls were already held by earlier Savoy–Italian exports; this one is another Savoy
+and returned 2,019. So *being in the cluster* does not predict the overlap — **which branch of it,
+and how far down, does.** That is worth knowing before anybody reorders the roster on the strength
+of surnames.
+
+**Twelve of fifteen. Campaign totals:**
+
+    rows across the balls                 104,071
+    distinct people                        61,931
+    people not anywhere else in exports/   41,257
+
+### The pipeline run that would not commit
+
+`34664703127` has now sat on **Commit the rebuilt batch for over two hours** with every prior step
+green. Its logs are unreadable while it runs and it has uploaded no artifacts, so what it is doing
+is genuinely unknown — stated as unknown rather than guessed at.
+
+**It is not cancelled.** Its output is superseded: the batch was rebuilt locally from the same
+inputs, delivered, and carries the `NN de Courtenay` retraction the committed one does not —
+**1,427 manual identifications against 1,428**. Killing someone else's run to tidy the queue is
+not a call to make unasked, and nothing depends on it any more.
