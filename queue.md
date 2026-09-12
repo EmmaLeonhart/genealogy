@@ -1186,3 +1186,5 @@ Jacques Grimaldi 6000000015647948256.
 ## Another item
 
 read this https://pastebin.com/npAiDNLg using the chrome extension. View all of the pages since this is not really optimally organized, but set these as qid identifications
+
+Look over this guy's contributions https://www.wikidata.org/wiki/Special:Contributions/Marcus.linneberg I think we might be able to do a lot of geni identifications from them. That pastebin was my hasty ones. But we can do it systematically
