@@ -570,56 +570,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - The person I made — **Abul Hamza** `6000000227676734863`. In flight: all three exports are
     down and `reports/descendant-frontier-abul-hamza.tsv` holds the first ten rim picks. Not
     comprehensive yet, and the rest of the list waits on it.
-  - **⛔ `NN` `6000000035218690155` — RUNNING NOW, AND IT REPLACED THE HINGE PEOPLE.**
-    <https://www.geni.com/people/n-n/6000000035218690155>. Added 2026-09-10: *"Abul Hamza is top
-    priority but descendants of https://www.geni.com/people/n-n/6000000035218690155 should be in
-    there too"*.
-
-    **⛔ THE HINGE PEOPLE WERE ALL DESCENDANTS OF THIS PERSON, AND THAT IS WHY THEY ARE GONE.**
-    Ruled 2026-09-12: *"they are all descendants of nn nn who I think is also listed here ... the
-    hinge people just don't exist anymore ... Pretend that the hinged people do not exist because
-    they're overdramatized"*. Naming them individually was the departure — the Abul Hamza / Alix
-    method samples a descent, it does not enumerate people inside one.
-
-    **⛔ FIVE PICKS, NOT SIXTY, AND STOP EARLY IF IT IS CLEARLY FLAT.** *"do, like, the Monte
-    Carlo thing for maybe, like, five people. And if you see clear diminishing returns at five
-    people, then just give up."* So this run is deliberately smaller than the 60-census sweep that
-    produced the Alix roster, and *give up* is an allowed outcome here — it is the one campaign
-    with a stated ceiling.
-
-    **⛔ AND THE EXPORT IS NOT COMPREHENSIVE.** *"we do not need to do nearly as comprehensive an
-    export on them."*
-
-    **⛔ ONE MORE EXPORT AND THIS ROOT IS DONE. IT IS NOT IMPORTANT ENOUGH FOR MORE.**
-    Ruled 2026-09-12: *"The descendants of Abu Hamza are important. The descendants of this
-    person are less important ... they're already kinda partially exported in a weird way. So,
-    like, I just want one more export, and I don't wanna have to do much, like, thinking or
-    whatever on this."* Five exports total, then stop. **No overlap analysis, no cluster
-    reasoning, no write-up** — take the extension's next hit, export it, file it, leave.
-
-    ⛔ **AND THE EFFORT SPENT HERE WAS DISPROPORTIONATE.** Said in the same message and recorded
-    as the correction it is: this root got a census sweep, a frame change, four exports and four
-    devlog entries, against a stated importance well below Abul Hamza's. **Abul Hamza is the
-    priority and this was crowding it.**
-
-    **⛔ THE GENERATION 13-25 BAND IS THIS ROOT ONLY, AND THE METHOD REVERTS AFTERWARDS.**
-    Ruled 2026-09-12: *"Page views are cheap, but imo this is a special case and we return to
-    monte carlo after it."* So `reports/descent-from-6000000035218690155-gen13-25.csv` — 1,649 of
-    the 17,224 rows — is a one-root exception and **not** a new pick rule. Plain uniform Monte
-    Carlo over the whole descent resumes on the next campaign root, and
-    `scripts/monte-carlo-pick.py` is not to be taught about generations.
-
-    **Why the band exists**, so it is not re-derived: a uniform pick over this descent lands at a
-    median of **generation 32** below a woman whose son was born in 990 — a modern leaf person
-    with nobody recorded beneath them — and produced **1 hit in 54 usable reads**. Alix's descent
-    file was 1,176 rows at generations 1-12 and hit 15 of 60 at the same threshold. The band
-    restores a frame of comparable size, 1,649 rows, above the modern leaves and below the
-    medieval core that already holds 13 filed balls.
-
-    ⛔ **AND WHETHER IT WORKS IS UNMEASURED.** It is a third seed-choosing method, chosen by
-    ruling rather than by evidence, and `CLAUDE.md` § *Two seed-choosing methods are refuted; do
-    not propose a third on reasoning alone* is why that distinction is written down.
-
   - **Bergitte Aukland** `6000000002481819312` — *"as far as export capture descendants people
     add https://www.geni.com/people/Bergitte-Aukland/6000000002481819312 to it as well she is
     kinda critical"*, 2026-09-09. **Her slot was settled the same day: `Replaces Tore`.** She
@@ -820,12 +770,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     seed rule is for, and whether to take it here is not decided.
 
     **Its position in the order was NOT stated.** Recorded, not ranked.
-
-  - **⛔ CHARLEMAGNE `6000000002457013227` — COMPLETE 2026-09-12, ON HER OWN CONDITION.**
-    *"we cannot really export from him but if he has anywhere close to the descendant count that
-    Gamle Olof has then no need for this."* **456,723 descendants already in the corpus**, 49
-    generations — `reports/descent-from-6000000002457013227.csv`, walked offline. That is **6.5x**
-    Gamle Olof's 70,011, so the condition is met by a wide margin and no export is run.
 
   Nothing on this list is investigated, measured or seeded until the Wikidata paths are done —
   `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.

@@ -38640,3 +38640,40 @@ it does. Row count fell 265,832 -> 265,614, so 218 people got connected in that 
 
 **The two findings are separate and both stand:** the crons were dead for nine hours, and the
 work committed in those nine hours is on disk and on origin.
+
+## 2026-09-12 — dead-queue-item sweep: two completed items removed
+
+**`CHARLEMAGNE 6000000002457013227`** — ruled complete earlier today on her own condition
+(*"if he has anywhere close to the descendant count that Gamle Olof has then no need for this"*):
+456,723 descendants already in the corpus against Gamle Olof's 70,011. **It was left in
+`queue.md` carrying the word COMPLETE**, which is the checked-box failure § *An item is deleted
+when it is done* exists to prevent, and it was written that way by this session. Deleted; the
+measurement lives in the 2026-09-12 entry above and in
+`reports/descent-from-6000000002457013227.csv`.
+
+**`NN 6000000035218690155`** — the Seljuq root, closed at five exports per *"I just want one more
+export, and I don't wanna have to do much, like, thinking or whatever on this."* Its five balls
+returned 1, 2, 1, 562 and 862/117 and are filed in `exports/nn-seljuq-descendants/`. Deleted.
+
+**Also removed:** the `Gamle Olof … COMPLETE` line from the campaign order list, for the same
+reason — he was swept earlier and the line was left behind as an annotation.
+
+### What was NOT swept, and why
+
+* **The six from Abul Hamza's ball** (`6000000008384075400` and five others). Abul Hamza is ruled
+  finished, so the item *looks* dead — but `reports/descendants-export-log.csv` holds **no row for
+  any of the six**, so the work was never done. The sweep's test is whether the work is finished,
+  not whether the item is old.
+* **The OneTab page's 19 Cilician Armenian people.** They are the neighbourhood of the abolished
+  western tang, so they look superseded, and that was never ruled. Left.
+* **The crons item and the delete-on-done convention** — standing procedures.
+* **Bergitte Aukland** — blocked on user action; she is making the person by hand.
+
+### ⛔ THE SWEEP'S OWN GUARD CAUGHT A DESTRUCTIVE CUT
+
+The first boundary chosen for the Seljuq item ran from its heading to the next TOP-level bullet,
+which spanned **six** items — Bergitte, ben Ovadya, the supplied-seeds roster, § *THE WHOLE
+PROGRAM* and the post-merge refresh. An assertion that the slice contains no further `  - **`
+bullet refused it. **A sweep that deletes queue items must assert what it is about to remove
+before removing it**, because the failure mode is silent and the file is the only record of what
+is outstanding.
