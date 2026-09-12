@@ -37894,3 +37894,35 @@ is genuinely unknown — stated as unknown rather than guessed at.
 inputs, delivered, and carries the `NN de Courtenay` retraction the committed one does not —
 **1,427 manual identifications against 1,428**. Killing someone else's run to tidy the queue is
 not a call to make unasked, and nothing depends on it any more.
+
+## 2026-09-12 — Alix target 13 filed: 2,010 new for 6 climbs, the cheapest seed of the campaign
+
+**Fabrizio Carafa, II duca di Andria `6000000015341003638`**, seeded on NN Pignatelli
+`6000000227710978823` after **6 climbs**.
+
+    ball                    5,000 INDI   1,744 FAM
+    new against the campaign                3,790
+    new against the WHOLE corpus            2,010
+
+**Six climbs for 2,010 people.** The climb cost across thirteen targets now spans **6 to 279**,
+a forty-six-fold range, and it still predicts nothing about the yield:
+
+    target  7    10 climbs   3,290 new
+    target 13     6 climbs   2,010
+    target 12    27 climbs   2,019
+    target  9   162 climbs   4,026
+    target 10   239 climbs     697
+    target 11   279 climbs   2,007
+
+The expensive climbs are the fully-attested royal lines, where the walk goes a long way up before
+finding a person missing a parent; the cheap ones are Italian nobility whose records thin out
+within a few generations. **Neither says anything about how many descendants hang below the slot
+that is found**, which is what the ball measures.
+
+**Thirteen of fifteen. Campaign totals:**
+
+    rows across the balls                 109,071
+    distinct people                        65,721
+    people not anywhere else in exports/   43,267
+
+Two targets remain: `6000000005607957168` and `6000000015628911730`.
