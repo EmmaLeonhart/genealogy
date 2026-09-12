@@ -1121,3 +1121,8 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   where an unnamed person on our side was matched to a **named** individual on Wikidata.
 
   **It is hers to rule on and is NOT retracted on a resemblance.** Written down, not acted on.
+
+
+## Final item
+
+please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
