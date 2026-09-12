@@ -38768,3 +38768,33 @@ the practice.
 ### The no-name root, nine balls
 
     3,118 · 3,234 · 801 · 1,611 · 3,001 · 2,504 · 1,926 · 1 · 2,552   =  18,748 new
+
+## 2026-09-12 — sweep: the post-merge refresh and two finished northern roots
+
+**`A POST-MERGE REFRESH AROUND ABUL HAMZA`** — removed. *"a lot of merges happened around Abul
+Hamza, so queue up a forest export from …6000000227715260898 and put it in the overwriting
+gedcoms section thing."* Done: task `6000000227715405867`, 5,000 INDI, **213 new (4.3%)**, filed
+to `exports/post-merge/export-Forest-6000000227715260898.ged`. A refresh returning mostly people
+already held is the expected shape — the point is being current, not being new.
+
+**Two of the three northern DFA roots** come out of that item's roster, the item itself staying
+because its third root's sampling is live:
+
+    6000000227226958932  Dál Fiatach        Descendants filed, 1,073 new (21.5%)
+    6000000227714686873  NN, forest target  Forest filed, 248 new (5.0%)
+    6000000227715492839  NN Ulster ancestor Descendants filed, 1 new — descent already held
+    6000000011830295477  NN Ulster          refused by Geni, superseded by the ancestor above
+
+The Ulster paragraph goes with them: the refusal was measured, Emma made the ancestor, its ball
+was filed, and the whole exchange is recorded above. **What remains in the item is the one live
+thing** — attempts off `no-name 6000000000183188387`'s existing descendants, which is nine balls
+in and running.
+
+### Not swept, and the reasons are unchanged
+
+* **The six from Abul Hamza's ball** — still no row for any of them in
+  `reports/descendants-export-log.csv`. Abul Hamza being ruled finished makes the item *look*
+  dead; the work was never done.
+* **`Nārāyaṇa`, the eight supplied seeds, Genghis/Aztec/Inca** — all still to run.
+* **Bergitte Aukland** — blocked on user action.
+* **The crons item, the delete-on-done convention, the three-crons item** — standing procedures.

@@ -714,35 +714,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
     already held and that is not a reason to stop, per the ruling above.
 
-  - **⛔ A POST-MERGE REFRESH AROUND ABUL HAMZA, ADDED 2026-09-12.** *"a lot of merges happened
-    around Abul Hamza, so queue up a forest export from
-    https://www.geni.com/people/NN/6000000227715260898?through=6000000054042438830 and put it in
-    the overwriting gedcoms section thing."*
-
-        6000000227715260898   `Forest`   -> exports/post-merge/
-
-    **`exports/post-merge/` is the overwriting section**, and
-    `docs/rules/corpus-and-tree.md` says what it is for: after Geni merges profiles our older
-    exports still assert the pre-merge shape, and a refresh brings our record to *what Geni says
-    today*. § *Later sources win value conflicts* is the mechanism that makes it overwrite.
-
-    ⛔ **DO NOT ADJUDICATE THE MERGES.** That file forbids grading a pair as *not really a
-    duplicate* and skipping it — the question is *are we current*, never *is Geni right*.
-
   - **⛔ THREE NORTHERN EUROPEAN DFA ROOTS, ADDED 2026-09-12.** *"This time focused more on
     Northern European dfa and having the same complications as the other things."*
 
-        6000000227715492839  NN Ulster ANCESTOR -> `Descendants` export  <- USE THIS ONE
-        6000000011830295477  NN Ulster          -> REFUSED by Geni, superseded above
-        6000000227226958932  NN Dál Fiatach   -> `Descendants` export
-        6000000227714686873  NN               -> `Forest` export FIRST, then:
         6000000000183188387  no-name          -> attempts off their EXISTING descendants
-
-    **⛔ NN ULSTER WAS REFUSED AND SHE MADE AN ANCESTOR ABOVE HIM, 2026-09-12.**
-    *"do descendants of https://www.geni.com/people/NN-Ulster/6000000227715492839 I made an
-    ancestor above the person who you wrre unable to do."* So `6000000011830295477` is dead as an
-    export root — `https://www.geni.com/gedcom/export/6000000011830295477` returns *"You are not
-    allowed to export that profile"* — and `6000000227715492839` replaces it.
 
     **⛔ THE THIRD ONE IS TWO PROFILES AND AN ORDER, NOT ONE JOB.** Verbatim: *"from this person
     do attempts based on their existing desendants
