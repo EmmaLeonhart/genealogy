@@ -47343,7 +47343,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Teresa Sarmiento de Eraso y Vargas IV condesa del Puerto"
+      ]
      ],
      [
       "Children",
@@ -47625,7 +47627,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Teresa Sarmiento de Eraso y Vargas IV condesa del Puerto"
+      ]
      ],
      [
       "Children",
@@ -97061,6 +97065,159 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|6000000017071478123|F|theirs",
+  "side": "theirs",
+  "slot": "sibling",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Marie Thérèse d' Humières de Crevant",
+   "id": "6000000012837185330",
+   "kind": "geni",
+   "sex": "F",
+   "life": [
+    "",
+    ""
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Louis de Crevant"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Anne Louise de Crevant d'Humières"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Jean Alphonse de Gand Vilain de Merode"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Alexandre Maximilien Balthasar de Gand Vilain de Merode",
+      "Louis de Gand de Mérode de Montmorency"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Marie Thérèse de Crévant d'Humières",
+    "id": "Q102536976",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Louis de Crevant, Duke of Humières",
+       "Louise Antoinette de la Châtre, Comtesse de Nancay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anne-Louise-Julie de Crévant d'Humières",
+       "Marie Louise de Crevant d'Humières",
+       "Anne Louise de Crévant d'Humières"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Jean Alphonse Antoine François de Gand-Vilain, Prince d'Isenghien"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Alexandre de Gand-Vilain, Comte de Middelburg",
+       "Louis de Gand de Mérode de Montmorency"
+      ]
+     ]
+    ],
+    "geni": "6000000012837185330",
+    "qid": "Q102536976",
+    "our": "Marie Thérèse d' Humières de Crevant",
+    "cand": "Marie Thérèse de Crévant d'Humières"
+   },
+   {
+    "name": "Anne-Louise-Julie de Crévant d'Humières",
+    "id": "Q114414254",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Louis de Crevant, Duke of Humières",
+       "Louise Antoinette de la Châtre, Comtesse de Nancay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anne Louise de Crévant d'Humières",
+       "Marie Louise de Crevant d'Humières",
+       "Marie Thérèse de Crévant d'Humières"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Louis François d’Aumont"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Louise Françoise d'Aumont de Crevant d'Humières"
+      ]
+     ]
+    ],
+    "geni": "6000000012837185330",
+    "qid": "Q114414254",
+    "our": "Marie Thérèse d' Humières de Crevant",
+    "cand": "Anne-Louise-Julie de Crévant d'Humières"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Anne Louise de Crevant d'Humières",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alexandre",
+   "alphonse",
+   "anne",
+   "crevant",
+   "dhumires",
+   "gand",
+   "jean",
+   "louis",
+   "louise",
+   "merode",
+   "montmorency"
+  ],
+  "our": "Marie Thérèse d' Humières de Crevant",
+  "cand": "Marie Thérèse de Crévant d'Humières"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000021365102967|F|ours",
   "side": "ours",
   "slot": "child",
@@ -99634,6 +99791,199 @@
   ],
   "our": "Enrichetta Ruffo",
   "cand": "Sofia Ruffo"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000017071478123|F|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Marie Thérèse d' Humières de Crevant",
+   "id": "6000000012837185330",
+   "kind": "geni",
+   "sex": "F",
+   "life": [
+    "",
+    ""
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Louis de Crevant"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Anne Louise de Crevant d'Humières"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Jean Alphonse de Gand Vilain de Merode"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Alexandre Maximilien Balthasar de Gand Vilain de Merode",
+      "Louis de Gand de Mérode de Montmorency"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Anne-Louise-Julie de Crévant d'Humières",
+    "id": "Q114414254",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Louis de Crevant, Duke of Humières",
+       "Louise Antoinette de la Châtre, Comtesse de Nancay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anne Louise de Crévant d'Humières",
+       "Marie Louise de Crevant d'Humières",
+       "Marie Thérèse de Crévant d'Humières"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Louis François d’Aumont"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Louise Françoise d'Aumont de Crevant d'Humières"
+      ]
+     ]
+    ],
+    "geni": "6000000012837185330",
+    "qid": "Q114414254",
+    "our": "Marie Thérèse d' Humières de Crevant",
+    "cand": "Anne-Louise-Julie de Crévant d'Humières"
+   },
+   {
+    "name": "Marie Thérèse de Crévant d'Humières",
+    "id": "Q102536976",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Louis de Crevant, Duke of Humières",
+       "Louise Antoinette de la Châtre, Comtesse de Nancay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anne-Louise-Julie de Crévant d'Humières",
+       "Marie Louise de Crevant d'Humières",
+       "Anne Louise de Crévant d'Humières"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Jean Alphonse Antoine François de Gand-Vilain, Prince d'Isenghien"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Alexandre de Gand-Vilain, Comte de Middelburg",
+       "Louis de Gand de Mérode de Montmorency"
+      ]
+     ]
+    ],
+    "geni": "6000000012837185330",
+    "qid": "Q102536976",
+    "our": "Marie Thérèse d' Humières de Crevant",
+    "cand": "Marie Thérèse de Crévant d'Humières"
+   },
+   {
+    "name": "Marie Louise de Crevant d'Humières",
+    "id": "Q88293431",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Louis de Crevant, Duke of Humières",
+       "Louise Antoinette de la Châtre, Comtesse de Nancay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anne-Louise-Julie de Crévant d'Humières",
+       "Anne Louise de Crévant d'Humières",
+       "Marie Thérèse de Crévant d'Humières"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000012837185330",
+    "qid": "Q88293431",
+    "our": "Marie Thérèse d' Humières de Crevant",
+    "cand": "Marie Louise de Crevant d'Humières"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Louis de Crevant",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "alexandre",
+   "alphonse",
+   "anne",
+   "crevant",
+   "dhumires",
+   "gand",
+   "jean",
+   "louis",
+   "louise",
+   "merode",
+   "montmorency"
+  ],
+  "our": "Marie Thérèse d' Humières de Crevant",
+  "cand": "Anne-Louise-Julie de Crévant d'Humières"
  },
  {
   "kind": "pick",
@@ -104171,6 +104521,378 @@
   ],
   "our": "Ana Enríquez de Azevedo y Valdés Osorio III Marquesa de Valdunquillo",
   "cand": "Ana Enríquez de Cabrera y Osorio"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000013060558013|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Leonor María de Guzmán",
+   "id": "Q33134388",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Enrique de Guzmán, 2nd Count of Olivares",
+      "María Pimentel de Fonseca y Zúñiga"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Gaspar de Guzmán, Count-Duke of Olivares"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Manuel de Acevedo y Zúñiga"
+     ]
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Francisca de Guzmán",
+    "id": "6000000013060596277",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles",
+       "María Pimentel de Fonseca y Zúñiga"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Gaspar de Guzmán Count-Duke",
+       "Inés Guzmán",
+       "Leonor María de Guzmán y Pimentel"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Luis Melchor Méndez de Haro y Guzmán VI Marqués del Carpio"
+      ]
+     ]
+    ],
+    "geni": "6000000013060596277",
+    "qid": "Q33134388",
+    "our": "Francisca de Guzmán",
+    "cand": "Leonor María de Guzmán"
+   },
+   {
+    "name": "Inés Guzmán",
+    "id": "6000000013175882748",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles",
+       "María Pimentel de Fonseca y Zúñiga"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Francisca de Guzmán",
+       "Gaspar de Guzmán Count-Duke",
+       "Leonor María de Guzmán y Pimentel"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Alvaro Enríquez de Almansa V marqués de Alcañices"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000013175882748",
+    "qid": "Q33134388",
+    "our": "Inés Guzmán",
+    "cand": "Leonor María de Guzmán"
+   },
+   {
+    "name": "Leonor María de Guzmán y Pimentel",
+    "id": "6000000031031808067",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles",
+       "María Pimentel de Fonseca y Zúñiga"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Francisca de Guzmán",
+       "Gaspar de Guzmán Count-Duke",
+       "Inés Guzmán"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Manuel Alonso de Acevedo Zúñiga y Ulloa VI conde de Monterrey, Virrey de Nápoles"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000031031808067",
+    "qid": "Q33134388",
+    "our": "Leonor María de Guzmán y Pimentel",
+    "cand": "Leonor María de Guzmán"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Gaspar de Guzmán Count-Duke",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "acevedo",
+   "countduke",
+   "enrique",
+   "fonseca",
+   "gaspar",
+   "guzmn",
+   "manuel",
+   "mara",
+   "olivares",
+   "pimentel",
+   "ziga"
+  ],
+  "our": "Francisca de Guzmán",
+  "cand": "Leonor María de Guzmán"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000013175640071|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Leonor María de Guzmán",
+   "id": "Q33134388",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Enrique de Guzmán, 2nd Count of Olivares",
+      "María Pimentel de Fonseca y Zúñiga"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Gaspar de Guzmán, Count-Duke of Olivares"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Manuel de Acevedo y Zúñiga"
+     ]
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Francisca de Guzmán",
+    "id": "6000000013060596277",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles",
+       "María Pimentel de Fonseca y Zúñiga"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Gaspar de Guzmán Count-Duke",
+       "Inés Guzmán",
+       "Leonor María de Guzmán y Pimentel"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Luis Melchor Méndez de Haro y Guzmán VI Marqués del Carpio"
+      ]
+     ]
+    ],
+    "geni": "6000000013060596277",
+    "qid": "Q33134388",
+    "our": "Francisca de Guzmán",
+    "cand": "Leonor María de Guzmán"
+   },
+   {
+    "name": "Inés Guzmán",
+    "id": "6000000013175882748",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles",
+       "María Pimentel de Fonseca y Zúñiga"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Francisca de Guzmán",
+       "Gaspar de Guzmán Count-Duke",
+       "Leonor María de Guzmán y Pimentel"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Alvaro Enríquez de Almansa V marqués de Alcañices"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000013175882748",
+    "qid": "Q33134388",
+    "our": "Inés Guzmán",
+    "cand": "Leonor María de Guzmán"
+   },
+   {
+    "name": "Leonor María de Guzmán y Pimentel",
+    "id": "6000000031031808067",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles",
+       "María Pimentel de Fonseca y Zúñiga"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Francisca de Guzmán",
+       "Gaspar de Guzmán Count-Duke",
+       "Inés Guzmán"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Manuel Alonso de Acevedo Zúñiga y Ulloa VI conde de Monterrey, Virrey de Nápoles"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000031031808067",
+    "qid": "Q33134388",
+    "our": "Leonor María de Guzmán y Pimentel",
+    "cand": "Leonor María de Guzmán"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Gaspar de Guzmán Count-Duke",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "acevedo",
+   "countduke",
+   "enrique",
+   "fonseca",
+   "gaspar",
+   "guzmn",
+   "manuel",
+   "mara",
+   "olivares",
+   "pimentel",
+   "ziga"
+  ],
+  "our": "Francisca de Guzmán",
+  "cand": "Leonor María de Guzmán"
  },
  {
   "kind": "pick",
@@ -145847,6 +146569,146 @@
  },
  {
   "kind": "pick",
+  "id": "child|5294726780490132221|F|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Margaretha Camilla Grimaldi",
+   "id": "6000000000129400285",
+   "kind": "geni",
+   "sex": "F",
+   "life": [
+    "1700",
+    "1758"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Antonio Grimaldi",
+      "Marie de Lorraine Princess of Monaco"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Luisa Ippòlita Grimaldi princesse de Mónaco"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Louis de Gand de Mérode de Montmorency"
+     ]
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Marguerite Camille Grimaldi",
+    "id": "Q10325593",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Antonio I, Prince of Monaco",
+       "Marie of Lorraine"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Marie-Pelline Grimaldi"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Louis de Gand de Mérode de Montmorency"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000000129400285",
+    "qid": "Q10325593",
+    "our": "Margaretha Camilla Grimaldi",
+    "cand": "Marguerite Camille Grimaldi"
+   },
+   {
+    "name": "Marie-Pelline Grimaldi",
+    "id": "Q55598538",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Antonio I, Prince of Monaco",
+       "Marie of Lorraine"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Louise Hippolyte I, Princess of Monaco",
+       "Marguerite Camille Grimaldi"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000000129400285",
+    "qid": "Q55598538",
+    "our": "Margaretha Camilla Grimaldi",
+    "cand": "Marie-Pelline Grimaldi"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Marie de Lorraine Princess of Monaco",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "antonio",
+   "gand",
+   "grimaldi",
+   "lorraine",
+   "louis",
+   "marie",
+   "merode",
+   "monaco",
+   "montmorency",
+   "princess"
+  ],
+  "our": "Margaretha Camilla Grimaldi",
+  "cand": "Marguerite Camille Grimaldi"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000001412918857|F|ours",
   "side": "ours",
   "slot": "child",
@@ -150240,186 +151102,6 @@
  },
  {
   "kind": "pick",
-  "id": "sibling|6000000013060558013|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Leonor María de Guzmán",
-   "id": "Q33134388",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Enrique de Guzmán, 2nd Count of Olivares",
-      "María Pimentel de Fonseca y Zúñiga"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Gaspar de Guzmán, Count-Duke of Olivares"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Manuel de Acevedo y Zúñiga"
-     ]
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Francisca de Guzmán",
-    "id": "6000000013060596277",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Gaspar de Guzmán Count-Duke",
-       "Inés Guzmán",
-       "Leonor María de Guzmán y Pimentel"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Luis Melchor Méndez de Haro y Guzmán VI Marqués del Carpio"
-      ]
-     ]
-    ],
-    "geni": "6000000013060596277",
-    "qid": "Q33134388",
-    "our": "Francisca de Guzmán",
-    "cand": "Leonor María de Guzmán"
-   },
-   {
-    "name": "Inés Guzmán",
-    "id": "6000000013175882748",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Francisca de Guzmán",
-       "Gaspar de Guzmán Count-Duke",
-       "Leonor María de Guzmán y Pimentel"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013175882748",
-    "qid": "Q33134388",
-    "our": "Inés Guzmán",
-    "cand": "Leonor María de Guzmán"
-   },
-   {
-    "name": "Leonor María de Guzmán y Pimentel",
-    "id": "6000000031031808067",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Enrique de Guzmán II conde de Olivares, virrey de Nápoles"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Francisca de Guzmán",
-       "Gaspar de Guzmán Count-Duke",
-       "Inés Guzmán"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Manuel Alonso de Acevedo Zúñiga y Ulloa VI conde de Monterrey, Virrey de Nápoles"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000031031808067",
-    "qid": "Q33134388",
-    "our": "Leonor María de Guzmán y Pimentel",
-    "cand": "Leonor María de Guzmán"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Gaspar de Guzmán Count-Duke",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "acevedo",
-   "countduke",
-   "enrique",
-   "gaspar",
-   "guzmn",
-   "manuel",
-   "mara",
-   "olivares",
-   "pimentel",
-   "ziga"
-  ],
-  "our": "Francisca de Guzmán",
-  "cand": "Leonor María de Guzmán"
- },
- {
-  "kind": "pick",
   "id": "child|6000000014808712856|M|ours",
   "side": "ours",
   "slot": "child",
@@ -152348,7 +153030,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Gian Andrea Doria"
+      ]
      ],
      [
       "Children",
@@ -152490,7 +153174,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Gian Andrea Doria"
+      ]
      ],
      [
       "Children",
@@ -153121,6 +153807,148 @@
   ],
   "our": "Dorothea Marie Amélie Caroline von Diebitsch",
   "cand": "Dorothea, Burggräfin und Gräfin zu Dohna-Schlodien"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000012408507349|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Melchora de la Trinidad Vélez de Guevara",
+   "id": "Q110586634",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Iñigo Manuel Velez Ladrón de Guevara",
+      "Claire Louise, Princesse de Ligne"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     [
+      "José de Guzmán y Guevara"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Melchora de la Trinidad Velez Ladrón de Guevara y Ligne III Marquesa de Guevara",
+    "id": "6000000012222936010",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     "1727"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Iñigo Manuel Vélez Ladrón de Guevara Tassis X conde de Oñate",
+       "Claire Louise de Ligne"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Diego Gaspar Vélez Ladrón de Guevara y Ligne XI conde de Oñate",
+       "María del Patrocinio Vélez Ladrón de Guevara y Ligne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Sebastián de Guzmán y Spinola V Marqués de Montealegre"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "José María Diego de Guzmán Vélez de Ladrón de Guevara XII Conde de Oñate y VI Marqués de Montealegre",
+       "Teresa Maria Clara de Guzmán y Guevara",
+       "Diego de Guzmán y Guevara señor de Fuente Almexia"
+      ]
+     ]
+    ],
+    "geni": "6000000012222936010",
+    "qid": "Q110586634",
+    "our": "Melchora de la Trinidad Velez Ladrón de Guevara y Ligne III Marquesa de Guevara",
+    "cand": "Melchora de la Trinidad Vélez de Guevara"
+   },
+   {
+    "name": "María del Patrocinio Vélez Ladrón de Guevara y Ligne",
+    "id": "6000000012408674509",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Iñigo Manuel Vélez Ladrón de Guevara Tassis X conde de Oñate",
+       "Claire Louise de Ligne"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Diego Gaspar Vélez Ladrón de Guevara y Ligne XI conde de Oñate",
+       "Melchora de la Trinidad Velez Ladrón de Guevara y Ligne III Marquesa de Guevara"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000012408674509",
+    "qid": "Q110586634",
+    "our": "María del Patrocinio Vélez Ladrón de Guevara y Ligne",
+    "cand": "Melchora de la Trinidad Vélez de Guevara"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Iñigo Manuel Vélez Ladrón de Guevara Tassis X conde de Oñate",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "claire",
+   "guevara",
+   "guzmn",
+   "iigo",
+   "jose",
+   "ladrn",
+   "ligne",
+   "louise",
+   "manuel",
+   "velez"
+  ],
+  "our": "Melchora de la Trinidad Velez Ladrón de Guevara y Ligne III Marquesa de Guevara",
+  "cand": "Melchora de la Trinidad Vélez de Guevara"
  },
  {
   "kind": "pick",
@@ -183085,6 +183913,150 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000003273396019|M|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Comte Louis Marie Victor de Béthune-Pologne",
+   "id": "Q113954026",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "François Gaston de Béthune",
+      "Louise Marie de La Grange d'Arquien"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     [
+      "Henriette d'Harcourt de Beuvron",
+      "Marie Françoise Potier"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Marie Casimire de Béthune",
+      "Joachim Casimir Léon, Comte de Béthune-Pologne, Marquis de Chabris"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Louis Marie Victor de Béthune comte de Béthune",
+    "id": "6000000001924490286",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "",
+     "1744"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Ludwika Maria de Bethune"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Joanna Maria Jabłonowska",
+       "Marie Christine Catherine Krystyna Katarzyna Radvilienė Sapiegienė",
+       "Louis de Béthune"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Marie Françoise Potier"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Marie Casimire Thérèse Geneviève Emmanuelle de Béthune",
+       "Joachim Casimir Leon de Béthune"
+      ]
+     ]
+    ],
+    "geni": "6000000001924490286",
+    "qid": "Q113954026",
+    "our": "Louis Marie Victor de Béthune comte de Béthune",
+    "cand": "Comte Louis Marie Victor de Béthune-Pologne"
+   },
+   {
+    "name": "Louis de Béthune",
+    "id": "6000000003273396756",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "",
+     "1704"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Ludwika Maria de Bethune"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Joanna Maria Jabłonowska",
+       "Marie Christine Catherine Krystyna Katarzyna Radvilienė Sapiegienė",
+       "Louis Marie Victor de Béthune comte de Béthune"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000003273396756",
+    "qid": "Q113954026",
+    "our": "Louis de Béthune",
+    "cand": "Comte Louis Marie Victor de Béthune-Pologne"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Ludwika Maria de Bethune",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "bethune",
+   "casimir",
+   "casimire",
+   "comte",
+   "franoise",
+   "joachim",
+   "leon",
+   "marie",
+   "potier"
+  ],
+  "our": "Louis Marie Victor de Béthune comte de Béthune",
+  "cand": "Comte Louis Marie Victor de Béthune-Pologne"
+ },
+ {
+  "kind": "pick",
   "id": "sibling|6000000007121575142|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -189909,6 +190881,419 @@
   ],
   "our": "Aemilia Mackenzie",
   "cand": "Lady Æmilia Mackenzie"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000014275649040|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Anne de Bourgogne",
+   "id": "Q107113661",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Adolf of Burgundy",
+      "Anna van Bergen"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     [
+      "Jacob III van Horne",
+      "Jean V. de Hénin"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Jacques de Henin-Liétard, Marquis de Vere et Vlissingen",
+      "Maximilien de Hénin-Liétard"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Anne Bourgogne de",
+    "id": "6000000014275541504",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1516",
+     "1551"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Adolphe de Bourgogne",
+       "Anna van Glymen van Bergen"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Philippe de Bourgogne",
+       "Maximilien II de Bourgogne heer van Beveren",
+       "Henri de Bourgogne",
+       "Jacqueline de Bourgogne",
+       "Antoinette de Bourgogne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Jacob van Horne"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Anthoine de Hennin-Lietard",
+       "Maximilien de Hénin-Liétard",
+       "Jacques de Hénin",
+       "Charles de Hénin",
+       "Philippes de Hennin-Lietard",
+       "Jacquet de Hennin-Lietard"
+      ]
+     ]
+    ],
+    "geni": "6000000014275541504",
+    "qid": "Q107113661",
+    "our": "Anne Bourgogne de",
+    "cand": "Anne de Bourgogne"
+   },
+   {
+    "name": "Jacqueline de Bourgogne",
+    "id": "6000000014918128701",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1523",
+     "1556"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Adolphe de Bourgogne",
+       "Anna van Glymen van Bergen"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Philippe de Bourgogne",
+       "Anne Bourgogne de",
+       "Maximilien II de Bourgogne heer van Beveren",
+       "Henri de Bourgogne",
+       "Antoinette de Bourgogne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Jan van Kruyningen"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Anna van Kruyningen",
+       "Maximilian van Kruyningen",
+       "Louisa van Kruyningen"
+      ]
+     ]
+    ],
+    "geni": "6000000014918128701",
+    "qid": "Q107113661",
+    "our": "Jacqueline de Bourgogne",
+    "cand": "Anne de Bourgogne"
+   },
+   {
+    "name": "Antoinette de Bourgogne",
+    "id": "6000000014918365389",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1529",
+     "1588"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Adolphe de Bourgogne",
+       "Anna van Glymen van Bergen"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Philippe de Bourgogne",
+       "Anne Bourgogne de",
+       "Maximilien II de Bourgogne heer van Beveren",
+       "Henri de Bourgogne",
+       "Jacqueline de Bourgogne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Charles de Croÿ"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Jacques d'Anneux"
+      ]
+     ]
+    ],
+    "geni": "6000000014918365389",
+    "qid": "Q107113661",
+    "our": "Antoinette de Bourgogne",
+    "cand": "Anne de Bourgogne"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Anna van Glymen van Bergen",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "anna",
+   "bergen",
+   "henin",
+   "heninlietard",
+   "horne",
+   "jacob",
+   "jacques",
+   "maximilien",
+   "van"
+  ],
+  "our": "Anne Bourgogne de",
+  "cand": "Anne de Bourgogne"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000014827258131|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Anne de Bourgogne",
+   "id": "Q107113661",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Adolf of Burgundy",
+      "Anna van Bergen"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     [
+      "Jacob III van Horne",
+      "Jean V. de Hénin"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Jacques de Henin-Liétard, Marquis de Vere et Vlissingen",
+      "Maximilien de Hénin-Liétard"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Anne Bourgogne de",
+    "id": "6000000014275541504",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1516",
+     "1551"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Adolphe de Bourgogne",
+       "Anna van Glymen van Bergen"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Philippe de Bourgogne",
+       "Maximilien II de Bourgogne heer van Beveren",
+       "Henri de Bourgogne",
+       "Jacqueline de Bourgogne",
+       "Antoinette de Bourgogne",
+       "Philippe de Bourgogne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Jacob van Horne"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Anthoine de Hennin-Lietard",
+       "Maximilien de Hénin-Liétard",
+       "Jacques de Hénin",
+       "Charles de Hénin",
+       "Philippes de Hennin-Lietard",
+       "Jacquet de Hennin-Lietard"
+      ]
+     ]
+    ],
+    "geni": "6000000014275541504",
+    "qid": "Q107113661",
+    "our": "Anne Bourgogne de",
+    "cand": "Anne de Bourgogne"
+   },
+   {
+    "name": "Jacqueline de Bourgogne",
+    "id": "6000000014918128701",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1523",
+     "1556"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Adolphe de Bourgogne",
+       "Anna van Glymen van Bergen"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Philippe de Bourgogne",
+       "Anne Bourgogne de",
+       "Maximilien II de Bourgogne heer van Beveren",
+       "Henri de Bourgogne",
+       "Antoinette de Bourgogne",
+       "Philippe de Bourgogne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Jan van Kruyningen"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Anna van Kruyningen",
+       "Maximilian van Kruyningen",
+       "Louisa van Kruyningen"
+      ]
+     ]
+    ],
+    "geni": "6000000014918128701",
+    "qid": "Q107113661",
+    "our": "Jacqueline de Bourgogne",
+    "cand": "Anne de Bourgogne"
+   },
+   {
+    "name": "Antoinette de Bourgogne",
+    "id": "6000000014918365389",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1529",
+     "1588"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Adolphe de Bourgogne",
+       "Anna van Glymen van Bergen"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Philippe de Bourgogne",
+       "Anne Bourgogne de",
+       "Maximilien II de Bourgogne heer van Beveren",
+       "Henri de Bourgogne",
+       "Jacqueline de Bourgogne",
+       "Philippe de Bourgogne"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Charles de Croÿ"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Jacques d'Anneux"
+      ]
+     ]
+    ],
+    "geni": "6000000014918365389",
+    "qid": "Q107113661",
+    "our": "Antoinette de Bourgogne",
+    "cand": "Anne de Bourgogne"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Adolphe de Bourgogne",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "anna",
+   "bergen",
+   "henin",
+   "heninlietard",
+   "horne",
+   "jacob",
+   "jacques",
+   "maximilien",
+   "van"
+  ],
+  "our": "Anne Bourgogne de",
+  "cand": "Anne de Bourgogne"
  },
  {
   "kind": "pick",
@@ -199765,7 +201150,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "María Çapata"
+      ]
      ],
      [
       "Children",
@@ -200177,3057 +201564,5 @@
   ],
   "our": "Llewelyn ab Ednyfed Gam",
   "cand": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000011358577436|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Álvaro de Bazán y Quiñones",
-   "id": "Q84568803",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Pedro III González de Bazán y Pimentel",
-      "Mencia de Quiñones y Toledo"
-     ]
-    ],
-    [
-     "Siblings",
-     []
-    ],
-    [
-     "Spouse",
-     [
-      "Maria de Solis"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Álvaro de Bazán el Viejo",
-      "Mencia de Bazán"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Juan Bazan Bazan y Quiñones II Vizconde de Palacios de Valduerna",
-    "id": "6000000015192788499",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1450",
-     "1488"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Pedro e Bazán de Bazán y Pimentel I vizconde Palacios de Valduerna",
-       "Mencía de Quiñones de Quiñones y Toledo Señora de Luna"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "María Bazán de Toledo I Vizcondesa de los Castillo de Valduerna",
-       "Teresa de Bazán y Quiñones",
-       "Álvaro I de Bazán y Quiñones Capitán General de la frontera de Baza, Señor de Finelas, Vél",
-       "Pedro de Bazán y Quiñones",
-       "Elvira de Bazán y Quiñones",
-       "Juana de Bazán y Quiñones",
-       "Sancho de Baçan y Quiñones"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Maria Bazán dama de la reina",
-       "Pedro de Bazán y Zapata III Vizconde de Palacios de Valduerna"
-      ]
-     ]
-    ],
-    "geni": "6000000015192788499",
-    "qid": "Q84568803",
-    "our": "Juan Bazan Bazan y Quiñones II Vizconde de Palacios de Valduerna",
-    "cand": "Álvaro de Bazán y Quiñones"
-   },
-   {
-    "name": "Álvaro I de Bazán y Quiñones Capitán General de la frontera de Baza, Señor de Finelas, Vél",
-    "id": "6000000008510142216",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1456",
-     "1491"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Pedro e Bazán de Bazán y Pimentel I vizconde Palacios de Valduerna",
-       "Mencía de Quiñones de Quiñones y Toledo Señora de Luna"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "María Bazán de Toledo I Vizcondesa de los Castillo de Valduerna",
-       "Teresa de Bazán y Quiñones",
-       "Juan Bazan Bazan y Quiñones II Vizconde de Palacios de Valduerna",
-       "Pedro de Bazán y Quiñones",
-       "Elvira de Bazán y Quiñones",
-       "Juana de Bazán y Quiñones",
-       "Sancho de Baçan y Quiñones"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "María Manuel y Gómez de Solís Duquesa de Badajoz"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Isabel Bazán y Guzmán",
-       "Mencía Manuel Bazán",
-       "Ana de Bazán y Guzmán",
-       "Álvaro Bazán y Solís el Viejo, Señor de Finelas y Gerafe",
-       "Pedro Bazán y Guzmán",
-       "Diego Bazán y Guzmán"
-      ]
-     ]
-    ],
-    "geni": "6000000008510142216",
-    "qid": "Q84568803",
-    "our": "Álvaro I de Bazán y Quiñones Capitán General de la frontera de Baza, Señor de Finelas, Vél",
-    "cand": "Álvaro de Bazán y Quiñones"
-   },
-   {
-    "name": "Pedro de Bazán y Quiñones",
-    "id": "6000000032910821069",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Pedro e Bazán de Bazán y Pimentel I vizconde Palacios de Valduerna",
-       "Mencía de Quiñones de Quiñones y Toledo Señora de Luna"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "María Bazán de Toledo I Vizcondesa de los Castillo de Valduerna",
-       "Teresa de Bazán y Quiñones",
-       "Juan Bazan Bazan y Quiñones II Vizconde de Palacios de Valduerna",
-       "Álvaro I de Bazán y Quiñones Capitán General de la frontera de Baza, Señor de Finelas, Vél",
-       "Elvira de Bazán y Quiñones",
-       "Juana de Bazán y Quiñones",
-       "Sancho de Baçan y Quiñones"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000032910821069",
-    "qid": "Q84568803",
-    "our": "Pedro de Bazán y Quiñones",
-    "cand": "Álvaro de Bazán y Quiñones"
-   },
-   {
-    "name": "Sancho de Baçan y Quiñones",
-    "id": "6000000015192788527",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1496"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Pedro e Bazán de Bazán y Pimentel I vizconde Palacios de Valduerna",
-       "Mencía de Quiñones de Quiñones y Toledo Señora de Luna"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "María Bazán de Toledo I Vizcondesa de los Castillo de Valduerna",
-       "Teresa de Bazán y Quiñones",
-       "Juan Bazan Bazan y Quiñones II Vizconde de Palacios de Valduerna",
-       "Álvaro I de Bazán y Quiñones Capitán General de la frontera de Baza, Señor de Finelas, Vél",
-       "Pedro de Bazán y Quiñones",
-       "Elvira de Bazán y Quiñones",
-       "Juana de Bazán y Quiñones"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000015192788527",
-    "qid": "Q84568803",
-    "our": "Sancho de Baçan y Quiñones",
-    "cand": "Álvaro de Bazán y Quiñones"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Pedro e Bazán de Bazán y Pimentel I vizconde Palacios de Valduerna",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "bazn",
-   "iii",
-   "lvaro",
-   "maria",
-   "pedro",
-   "pimentel",
-   "quiones",
-   "toledo",
-   "viejo"
-  ],
-  "our": "Juan Bazan Bazan y Quiñones II Vizconde de Palacios de Valduerna",
-  "cand": "Álvaro de Bazán y Quiñones"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000041612599292|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan",
-   "id": "Q99082491",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Ednyfed 'Gam' ab Iorwerth Foel",
-      "Gwladus ferch Llywelyn"
-     ]
-    ],
-    [
-     "Siblings",
-     []
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     [
-      "Margred ferch Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan",
-      "Madog ap Llywelyn ab Ednyfed Gam ab Iorwerth Foel of Halchdyn",
-      "Angharad ferch Llywelyn ab Ednyfed Gam an Iorwerth Foel"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Llewelyn ab Ednyfed Gam",
-    "id": "6000000036408425236",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1335",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ednyfed Gam ab Iorwerth Foel",
-       "Gwladys verch Llewelyn"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ieuan ab Ednyfed Gam",
-       "Iorwerth Ddu ab Ednyfed",
-       "Dafydd ab Ednyfed Gam",
-       "Rhys ab Ednyfed Gam",
-       "Maredudd ab Ednyfed Gam"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Annes Puleston"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Madog ap Llewelyn",
-       "Angharad ferch Llewelyn",
-       "Margred ferch Llewelyn"
-      ]
-     ]
-    ],
-    "geni": "6000000036408425236",
-    "qid": "Q99082491",
-    "our": "Llewelyn ab Ednyfed Gam",
-    "cand": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan"
-   },
-   {
-    "name": "Ieuan ab Ednyfed Gam",
-    "id": "6000000041190401849",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1340",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ednyfed Gam ab Iorwerth Foel",
-       "Gwladys verch Llewelyn"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Llewelyn ab Ednyfed Gam",
-       "Iorwerth Ddu ab Ednyfed",
-       "Dafydd ab Ednyfed Gam",
-       "Rhys ab Ednyfed Gam",
-       "Maredudd ab Ednyfed Gam"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Gwladys verch Madog Fychan"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Hywel ap Ieuan",
-       "Myfanwy ferch Ieuan",
-       "Tudur ab Ieuan"
-      ]
-     ]
-    ],
-    "geni": "6000000041190401849",
-    "qid": "Q99082491",
-    "our": "Ieuan ab Ednyfed Gam",
-    "cand": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan"
-   },
-   {
-    "name": "Rhys ab Ednyfed Gam",
-    "id": "6000000189495880890",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ednyfed Gam ab Iorwerth Foel",
-       "Gwladys verch Llewelyn"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Llewelyn ab Ednyfed Gam",
-       "Ieuan ab Ednyfed Gam",
-       "Iorwerth Ddu ab Ednyfed",
-       "Dafydd ab Ednyfed Gam",
-       "Maredudd ab Ednyfed Gam"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "NN ferch Gronwy Llwyd"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000189495880890",
-    "qid": "Q99082491",
-    "our": "Rhys ab Ednyfed Gam",
-    "cand": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan"
-   },
-   {
-    "name": "Maredudd ab Ednyfed Gam",
-    "id": "6000000189495992852",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ednyfed Gam ab Iorwerth Foel",
-       "Gwladys verch Llewelyn"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Llewelyn ab Ednyfed Gam",
-       "Ieuan ab Ednyfed Gam",
-       "Iorwerth Ddu ab Ednyfed",
-       "Dafydd ab Ednyfed Gam",
-       "Rhys ab Ednyfed Gam"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Annes ferch Maredudd",
-       "Gruffudd ap Maredudd"
-      ]
-     ]
-    ],
-    "geni": "6000000189495992852",
-    "qid": "Q99082491",
-    "our": "Maredudd ab Ednyfed Gam",
-    "cand": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Gwladys verch Llewelyn",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "angharad",
-   "ednyfed",
-   "ferch",
-   "foel",
-   "fychan",
-   "gam",
-   "iorwerth",
-   "madog",
-   "margred"
-  ],
-  "our": "Llewelyn ab Ednyfed Gam",
-  "cand": "Llywelyn ab Ednyfed Gam ab Iorwerth Foel ab Iorwerth Fychan"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000003086690861|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Elizabeth Vaughan",
-   "id": "Q108683873",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Roger Vaughan of Bredwardine",
-      "Gwladys ferch Dafydd Gam"
-     ]
-    ],
-    [
-     "Siblings",
-     []
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     [
-      "Thomas Morgan",
-      "Elsbeth ferch Morgan ap Jenkin ap Philip ap Morgan",
-      "Jonet ferch Morgan ap Jenkin ap Philip"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Elizabeth Vaughan",
-    "id": "6000000002603693472",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1410",
-     "1462"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Roger Vaughan",
-       "Gwladus Ddu ferch Dafydd Gam"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Thomas Vaughan",
-       "Roger Vaughan",
-       "Watkin Vaughan",
-       "Elizabeth ferch Sir Roger Vaughan",
-       "NN Vaughan",
-       "Mawd ferch Sir Roger Vaughan",
-       "NN verch Sir Roger Vaughan",
-       "Joan ferch Sir Roger Vaughan",
-       "John Vaughan"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Morgan ap Jenkin"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Elizabeth verch Morgan",
-       "Janet verch Morgan",
-       "Margred ferch Morgan",
-       "NN ferch Morgan",
-       "Thomas ap Morgan"
-      ]
-     ]
-    ],
-    "geni": "6000000002603693472",
-    "qid": "Q108683873",
-    "our": "Elizabeth Vaughan",
-    "cand": "Elizabeth Vaughan"
-   },
-   {
-    "name": "Elizabeth ferch Sir Roger Vaughan",
-    "id": "6000000162602887825",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Roger Vaughan",
-       "Gwladus Ddu ferch Dafydd Gam"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Thomas Vaughan",
-       "Elizabeth Vaughan",
-       "Roger Vaughan",
-       "Watkin Vaughan",
-       "NN Vaughan",
-       "Mawd ferch Sir Roger Vaughan",
-       "NN verch Sir Roger Vaughan",
-       "Joan ferch Sir Roger Vaughan",
-       "John Vaughan"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Gruffudd ab Einion"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Efa ferch Gruffudd"
-      ]
-     ]
-    ],
-    "geni": "6000000162602887825",
-    "qid": "Q108683873",
-    "our": "Elizabeth ferch Sir Roger Vaughan",
-    "cand": "Elizabeth Vaughan"
-   },
-   {
-    "name": "NN Vaughan",
-    "id": "6000000106700298989",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Roger Vaughan",
-       "Gwladus Ddu ferch Dafydd Gam"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Thomas Vaughan",
-       "Elizabeth Vaughan",
-       "Roger Vaughan",
-       "Watkin Vaughan",
-       "Elizabeth ferch Sir Roger Vaughan",
-       "Mawd ferch Sir Roger Vaughan",
-       "NN verch Sir Roger Vaughan",
-       "Joan ferch Sir Roger Vaughan",
-       "John Vaughan"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Hugh Fleming of Pen-carn"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "NN Fleming",
-       "Marsli Fleming",
-       "Elsbeth Fleming"
-      ]
-     ]
-    ],
-    "geni": "6000000106700298989",
-    "qid": "Q108683873",
-    "our": "NN Vaughan",
-    "cand": "Elizabeth Vaughan"
-   },
-   {
-    "name": "Mawd ferch Sir Roger Vaughan",
-    "id": "6000000221832494900",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Roger Vaughan",
-       "Gwladus Ddu ferch Dafydd Gam"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Thomas Vaughan",
-       "Elizabeth Vaughan",
-       "Roger Vaughan",
-       "Watkin Vaughan",
-       "Elizabeth ferch Sir Roger Vaughan",
-       "NN Vaughan",
-       "NN verch Sir Roger Vaughan",
-       "Joan ferch Sir Roger Vaughan",
-       "John Vaughan"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Richard Hacluyt"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000221832494900",
-    "qid": "Q108683873",
-    "our": "Mawd ferch Sir Roger Vaughan",
-    "cand": "Elizabeth Vaughan"
-   },
-   {
-    "name": "NN verch Sir Roger Vaughan",
-    "id": "6000000051299846135",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Roger Vaughan"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Thomas Vaughan",
-       "Elizabeth Vaughan",
-       "Roger Vaughan",
-       "Watkin Vaughan",
-       "Elizabeth ferch Sir Roger Vaughan",
-       "NN Vaughan",
-       "Mawd ferch Sir Roger Vaughan",
-       "Joan ferch Sir Roger Vaughan",
-       "John Vaughan"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000051299846135",
-    "qid": "Q108683873",
-    "our": "NN verch Sir Roger Vaughan",
-    "cand": "Elizabeth Vaughan"
-   },
-   {
-    "name": "Joan ferch Sir Roger Vaughan",
-    "id": "6000000218774513821",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Roger Vaughan"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Thomas Vaughan",
-       "Elizabeth Vaughan",
-       "Roger Vaughan",
-       "Watkin Vaughan",
-       "Elizabeth ferch Sir Roger Vaughan",
-       "NN Vaughan",
-       "Mawd ferch Sir Roger Vaughan",
-       "NN verch Sir Roger Vaughan",
-       "John Vaughan"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000218774513821",
-    "qid": "Q108683873",
-    "our": "Joan ferch Sir Roger Vaughan",
-    "cand": "Elizabeth Vaughan"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Roger Vaughan",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "dafydd",
-   "elsbeth",
-   "ferch",
-   "gam",
-   "jenkin",
-   "morgan",
-   "roger",
-   "thomas",
-   "vaughan"
-  ],
-  "our": "Elizabeth Vaughan",
-  "cand": "Elizabeth Vaughan"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000008584350731|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Sir Robert Maxwell of Spottis",
-   "id": "Q76096931",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "John Maxwell, 4th Lord Herries of Terregles",
-      "Agnes Herries, Lady Herries of Terregles"
-     ]
-    ],
-    [
-     "Siblings",
-     []
-    ],
-    [
-     "Spouse",
-     [
-      "Sara Johnstone",
-      "Elizabeth Gordon"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Sir Robert Maxwell of Orchardtoun, 1st Bt."
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Robert Maxwell",
-    "id": "6000000017005468598",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1556",
-     "1615"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Sara Grizell Maxwell",
-       "Elizabeth Maxwell Lady Gelston"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Thomas Maxwell",
-       "Robert Maxwell"
-      ]
-     ]
-    ],
-    "geni": "6000000017005468598",
-    "qid": "Q76096931",
-    "our": "Robert Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "James Maxwell",
-    "id": "6000000005940228375",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1567",
-     "1670"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005940228375",
-    "qid": "Q76096931",
-    "our": "James Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "John Maxwell",
-    "id": "6000000048892781609",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1575",
-     "1630"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Catharina Maxwell"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000048892781609",
-    "qid": "Q76096931",
-    "our": "John Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Alexander Maxwell",
-    "id": "6000000000628424936",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1582",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000628424936",
-    "qid": "Q76096931",
-    "our": "Alexander Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Edward Maxwell",
-    "id": "6000000000628424946",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1598"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Margaret Baillie"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "John Maxwell",
-       "William Baillie",
-       "Hew Maxwell",
-       "Margaret Maxwell"
-      ]
-     ]
-    ],
-    "geni": "6000000000628424946",
-    "qid": "Q76096931",
-    "our": "Edward Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Patrick Maxwell",
-    "id": "6000000000806371763",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1578",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Agnes Maxwell"
-      ]
-     ]
-    ],
-    "geni": "6000000000806371763",
-    "qid": "Q76096931",
-    "our": "Patrick Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Newlaw John Maxwell",
-    "id": "6000000038829633908",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1587"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000038829633908",
-    "qid": "Q76096931",
-    "our": "Newlaw John Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "John Maxwell",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "agnes",
-   "elizabeth",
-   "herries",
-   "john",
-   "lady",
-   "lord",
-   "maxwell",
-   "robert",
-   "sara"
-  ],
-  "our": "Robert Maxwell",
-  "cand": "Sir Robert Maxwell of Spottis"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000008584435355|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Sir Robert Maxwell of Spottis",
-   "id": "Q76096931",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "John Maxwell, 4th Lord Herries of Terregles",
-      "Agnes Herries, Lady Herries of Terregles"
-     ]
-    ],
-    [
-     "Siblings",
-     []
-    ],
-    [
-     "Spouse",
-     [
-      "Sara Johnstone",
-      "Elizabeth Gordon"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Sir Robert Maxwell of Orchardtoun, 1st Bt."
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Robert Maxwell",
-    "id": "6000000017005468598",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1556",
-     "1615"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Sara Grizell Maxwell",
-       "Elizabeth Maxwell Lady Gelston"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Thomas Maxwell",
-       "Robert Maxwell"
-      ]
-     ]
-    ],
-    "geni": "6000000017005468598",
-    "qid": "Q76096931",
-    "our": "Robert Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "James Maxwell",
-    "id": "6000000005940228375",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1567",
-     "1670"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005940228375",
-    "qid": "Q76096931",
-    "our": "James Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "John Maxwell",
-    "id": "6000000048892781609",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1575",
-     "1630"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Catharina Maxwell"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000048892781609",
-    "qid": "Q76096931",
-    "our": "John Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Alexander Maxwell",
-    "id": "6000000000628424936",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1582",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Edward Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000628424936",
-    "qid": "Q76096931",
-    "our": "Alexander Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Edward Maxwell",
-    "id": "6000000000628424946",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1598"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Patrick Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Margaret Baillie"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "John Maxwell",
-       "William Baillie",
-       "Hew Maxwell",
-       "Margaret Maxwell"
-      ]
-     ]
-    ],
-    "geni": "6000000000628424946",
-    "qid": "Q76096931",
-    "our": "Edward Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Patrick Maxwell",
-    "id": "6000000000806371763",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1578",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Newlaw John Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Agnes Maxwell"
-      ]
-     ]
-    ],
-    "geni": "6000000000806371763",
-    "qid": "Q76096931",
-    "our": "Patrick Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   },
-   {
-    "name": "Newlaw John Maxwell",
-    "id": "6000000038829633908",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1587"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Maxwell",
-       "Agnes Herries"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Agnes Maxwell",
-       "Elizabeth Maxwell",
-       "Margaret Maxwell",
-       "Grizell Maxwell",
-       "William Maxwell 5th Lord Herries",
-       "Robert Maxwell",
-       "Mary Maxwell",
-       "James Maxwell",
-       "John Maxwell",
-       "Sarah Maxwell",
-       "Nichola Grierson",
-       "Alexander Maxwell",
-       "Edward Maxwell",
-       "Patrick Maxwell"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000038829633908",
-    "qid": "Q76096931",
-    "our": "Newlaw John Maxwell",
-    "cand": "Sir Robert Maxwell of Spottis"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Agnes Herries",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "agnes",
-   "elizabeth",
-   "herries",
-   "john",
-   "lady",
-   "lord",
-   "maxwell",
-   "robert",
-   "sara"
-  ],
-  "our": "Robert Maxwell",
-  "cand": "Sir Robert Maxwell of Spottis"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000002909463921|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Margaretha van Brederode",
-   "id": "Q126902888",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Reinoud III van Brederode",
-      "Philippa von der Mark-Arenberg"
-     ]
-    ],
-    [
-     "Siblings",
-     []
-    ],
-    [
-     "Spouse",
-     [
-      "Peter Ernest I of Mansfeld-Vorderort"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Karl von Mansfeld",
-      "Polyxena von Mansfeld"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Sara van Brederode",
-    "id": "6000000009305600389",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1631"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Helena van Brederode",
-       "Johanna van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Albrecht VI van Egmond van Meerenstein Kenenburg"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Pieter Aalbertsz van Egmond van Meerestein"
-      ]
-     ]
-    ],
-    "geni": "6000000009305600389",
-    "qid": "Q126902888",
-    "our": "Sara van Brederode",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Margaretha van Brederode",
-    "id": "6000000014150253291",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1520",
-     "1554"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Helena van Brederode",
-       "Johanna van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Peter Ernst von Mansfeld"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Friedrich von Mansfeld",
-       "Polyxena von Mansfeld",
-       "Karl von Mansfeld"
-      ]
-     ]
-    ],
-    "geni": "6000000014150253291",
-    "qid": "Q126902888",
-    "our": "Margaretha van Brederode",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Antonie Penelope van Brederode Valkenburg Jutphaas",
-    "id": "6000000018267177180",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1535",
-     "1591"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Helena van Brederode",
-       "Johanna van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Peter van Ghistelles",
-       "Philips van Ghistelles"
-      ]
-     ]
-    ],
-    "geni": "6000000018267177180",
-    "qid": "Q126902888",
-    "our": "Antonie Penelope van Brederode Valkenburg Jutphaas",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Helena van Brederode",
-    "id": "6000000021499689903",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Johanna van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Peronne Perrenot",
-       "François Perrenot"
-      ]
-     ]
-    ],
-    "geni": "6000000021499689903",
-    "qid": "Q126902888",
-    "our": "Helena van Brederode",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Johanna van Brederode",
-    "id": "6000000018267485165",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1573"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Helena van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018267485165",
-    "qid": "Q126902888",
-    "our": "Johanna van Brederode",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Lucretia Van Haeften",
-    "id": "6000000018630076422",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1515",
-     "1544"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Helena van Brederode",
-       "Johanna van Brederode",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Jan van Haeften",
-       "Dirck van Haeften",
-       "Agnes van Haeften",
-       "Aleijt Van Haeften"
-      ]
-     ]
-    ],
-    "geni": "6000000018630076422",
-    "qid": "Q126902888",
-    "our": "Lucretia Van Haeften",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Sandrine van Brederode",
-    "id": "6000000018734272056",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1617"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Helena van Brederode",
-       "Johanna van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Anna van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018734272056",
-    "qid": "Q126902888",
-    "our": "Sandrine van Brederode",
-    "cand": "Margaretha van Brederode"
-   },
-   {
-    "name": "Anna van Brederode",
-    "id": "6000000019593527851",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Reinoud van Brederode heer van Vianen III"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Reinoud van Brederode",
-       "Sara van Brederode",
-       "Margaretha van Brederode",
-       "Hendrik van Brederode 12e heer van Brederode",
-       "Antonie Penelope van Brederode Valkenburg Jutphaas",
-       "Helena van Brederode",
-       "Johanna van Brederode",
-       "Lucretia Van Haeften",
-       "Artus van Brederode",
-       "Lancelot van Brederode van Cloetinge",
-       "Sandrine van Brederode"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019593527851",
-    "qid": "Q126902888",
-    "our": "Anna van Brederode",
-    "cand": "Margaretha van Brederode"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Reinoud van Brederode heer van Vianen III",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "brederode",
-   "iii",
-   "karl",
-   "mansfeld",
-   "peter",
-   "polyxena",
-   "reinoud",
-   "van",
-   "von"
-  ],
-  "our": "Sara van Brederode",
-  "cand": "Margaretha van Brederode"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000004150889590|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Rinaldo d'Este",
-   "id": "Q2633696",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Alfonso III d'Este, Duke of Modena",
-      "Isabella of Savoy, Hereditary Princess of Modena"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Francesco I d'Este, Duke of Modena",
-      "Anna Beatrice d'Este",
-      "Margherita d'Este"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Cesare d'Este",
-    "id": "6000000008851295871",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1609",
-     "1613"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008851295871",
-    "qid": "Q2633696",
-    "our": "Cesare d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Obizzo d'Este bishop of Modena",
-    "id": "6000000008851276069",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1611",
-     "1645"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008851276069",
-    "qid": "Q2633696",
-    "our": "Obizzo d'Este bishop of Modena",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Cesare d'Este",
-    "id": "6000000019231118418",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1614",
-     "1677"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231118418",
-    "qid": "Q2633696",
-    "our": "Cesare d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Alessandro d'Este",
-    "id": "6000000019231166412",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1615",
-     "1615"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231166412",
-    "qid": "Q2633696",
-    "our": "Alessandro d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Carlo Alessandro d'Este",
-    "id": "6000000019230537182",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1616",
-     "1679"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019230537182",
-    "qid": "Q2633696",
-    "our": "Carlo Alessandro d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Rinaldo d'Este",
-    "id": "6000000008850996059",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1618",
-     "1672"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008850996059",
-    "qid": "Q2633696",
-    "our": "Rinaldo d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Filiberto d'Este",
-    "id": "6000000019231123359",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1623",
-     "1645"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231123359",
-    "qid": "Q2633696",
-    "our": "Filiberto d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Bonifazio d'Este",
-    "id": "6000000019231429345",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1624",
-     "1624"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231429345",
-    "qid": "Q2633696",
-    "our": "Bonifazio d'Este",
-    "cand": "Rinaldo d'Este"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Francesco d'Este",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "alfonso",
-   "anna",
-   "beatrice",
-   "deste",
-   "francesco",
-   "iii",
-   "isabella",
-   "margherita",
-   "modena"
-  ],
-  "our": "Cesare d'Este",
-  "cand": "Rinaldo d'Este"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000004150911910|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Rinaldo d'Este",
-   "id": "Q2633696",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Alfonso III d'Este, Duke of Modena",
-      "Isabella of Savoy, Hereditary Princess of Modena"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Francesco I d'Este, Duke of Modena",
-      "Anna Beatrice d'Este",
-      "Margherita d'Este"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Cesare d'Este",
-    "id": "6000000008851295871",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1609",
-     "1613"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008851295871",
-    "qid": "Q2633696",
-    "our": "Cesare d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Obizzo d'Este bishop of Modena",
-    "id": "6000000008851276069",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1611",
-     "1645"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008851276069",
-    "qid": "Q2633696",
-    "our": "Obizzo d'Este bishop of Modena",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Cesare d'Este",
-    "id": "6000000019231118418",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1614",
-     "1677"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231118418",
-    "qid": "Q2633696",
-    "our": "Cesare d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Alessandro d'Este",
-    "id": "6000000019231166412",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1615",
-     "1615"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231166412",
-    "qid": "Q2633696",
-    "our": "Alessandro d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Carlo Alessandro d'Este",
-    "id": "6000000019230537182",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1616",
-     "1679"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019230537182",
-    "qid": "Q2633696",
-    "our": "Carlo Alessandro d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Rinaldo d'Este",
-    "id": "6000000008850996059",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1618",
-     "1672"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008850996059",
-    "qid": "Q2633696",
-    "our": "Rinaldo d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Filiberto d'Este",
-    "id": "6000000019231123359",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1623",
-     "1645"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Bonifazio d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231123359",
-    "qid": "Q2633696",
-    "our": "Filiberto d'Este",
-    "cand": "Rinaldo d'Este"
-   },
-   {
-    "name": "Bonifazio d'Este",
-    "id": "6000000019231429345",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1624",
-     "1624"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Alfonso III d'Este duca di Modena",
-       "Isabella"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Cesare d'Este",
-       "Francesco d'Este",
-       "Obizzo d'Este bishop of Modena",
-       "Caterina d'Este",
-       "Cesare d'Este",
-       "Alessandro d'Este",
-       "Carlo Alessandro d'Este",
-       "Rinaldo d'Este",
-       "Margherita Gonzaga",
-       "Beatrice d'Este",
-       "Beatrice d'Este",
-       "Filiberto d'Este",
-       "Anna Beatrice Pico principessa di Modena e Reggio"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000019231429345",
-    "qid": "Q2633696",
-    "our": "Bonifazio d'Este",
-    "cand": "Rinaldo d'Este"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Francesco d'Este",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "alfonso",
-   "anna",
-   "beatrice",
-   "deste",
-   "francesco",
-   "iii",
-   "isabella",
-   "margherita",
-   "modena"
-  ],
-  "our": "Cesare d'Este",
-  "cand": "Rinaldo d'Este"
  }
 ]
