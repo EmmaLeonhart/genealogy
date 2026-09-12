@@ -958,10 +958,17 @@ covers lettering for the same reason it covers numbering.
   queue items — ones that are simply completed. They are **session-only**: they die when the session ends and must be
   recreated at the start of the next one. This is not theoretical — every cron died in the
   2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
-  2026-08-29. Live in the 2026-09-09 session as `b6ad7ac1`, `2263d879`, `f09fcc7b`, `803b418d`, created at
-  the top of it against a `CronList` that read *no scheduled jobs*; the 2026-09-05 ids
-  (`7c8cc0c6`, `7fb9d24f`, `9f3125b0`, `caf417ce`) and everything before them are dead sessions',
-  which is the reason to check `CronList` rather than trust this line.
+  2026-08-29. Live in the 2026-09-12 session as `94cad21d` (:03), `9de407dd` (:15),
+  `94e6ea68` (:42), `8a7dd280` (:45). The 2026-09-09 ids (`b6ad7ac1`, `2263d879`, `f09fcc7b`,
+  `803b418d`) and the 2026-09-05 ids (`7c8cc0c6`, `7fb9d24f`, `9f3125b0`, `caf417ce`) are dead
+  sessions', which is the reason to check `CronList` rather than trust this line.
+
+  ⛔ **AND IT HAPPENED AGAIN ON 2026-09-12.** The session ran roughly nine hours with `CronList`
+  reading *no scheduled jobs* — through the whole Alix, Seljuq, NN Näf, Dál Fiatach and no-name
+  campaign — and **Emma noticed, not the session**: *"I think you kinda did nothing like the
+  crons may have messed up."* The line above — *recreating them is the first thing a session
+  does* — was already in this file and was not read. **Check `CronList` before the first export,
+  not after the fortieth.**
   **A session once ran for hours with ZERO crons and nobody noticed.** Recreating them is the
   first thing a session does, not something to get to.
 
