@@ -38071,3 +38071,21 @@ hour of Geni's one-at-a-time limit — not spent re-collecting a tree the corpus
 **What this does NOT say.** Nothing here claims the four are finished as *people* — only that a
 `Descendants` export on them cannot return anything, which is the specific operation the queue
 item asks for. Their placement, names and Wikidata identifications are untouched by it.
+
+## 2026-09-12 — hinge person 2 filed: 538 new, and the roster edit from the uncapped check
+
+**Князь Кабарды Камбулат Идарович Черкасский `6000000008867333533`**, seeded on
+**NN Kaytuko-Kaytukin dynasty `6000000227711339822`** — created as the father of
+`6000000091022919004` after **2 climbs**. Task `6000000227711157946`.
+
+    ball                    5,000 INDI   2,320 FAM     <- AT the cap
+    new against the WHOLE corpus              538   (10.8%)
+
+**This one is capped, so the ball says nothing about what is below it that it did not reach.**
+That is the difference from hinge person 1 an hour earlier and it is the whole reason the
+uncapped check could retire four people and cannot retire this one.
+
+`queue.md`'s eastern tang roster is cut from nine to five in this commit — the four names the
+previous entry settled are deleted rather than annotated, per § *An item is DELETED when done*.
+
+**Ten of fifteen remain: four eastern, six western.**

@@ -12,17 +12,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   2026-09-09.** A *hinge person* is defined there: *"people who seem to have clearly disjoint
   large numbers of descendants, and as such are good descendants export sources."*
 
-  **EASTERN european tang — 9**
+  **EASTERN european tang — 5**
 
-      6000000146583752828  Елбуздуко Битуев
       6000000008867333533  Князь Кабарды Камбулат Идарович Черкасский
       6000000028522915307  Zhelegot Mirza Cherkassy
       6000000191078589837  knyaz Kanshov of Cherkessia
       6000000220167394834  Джамурза Джиляхстанов
-      6000000048540283061  Kamal Kara Musel Джилястханов, Shamkhal of Tarku
       6000000144779499889  Alkas Jamurzin Dzhilyakhstanov
-      6000000146583752840  Князь Пшеапшоко Кайтукин Черкасский
-      6000000220167401825  Шолох Акуджба
 
   **WESTERN european tang — 6**, the Cilician Armenian side
 
