@@ -38134,3 +38134,55 @@ The campaign on **`NN 6000000035218690155`** — Monte Carlo over that person's 
 a ceiling this time: *"do, like, the Monte Carlo thing for maybe, like, five people. And if you
 see clear diminishing returns at five people, then just give up."* Five picks, not the sixty that
 built the Alix roster, and *give up* is an allowed outcome.
+
+## 2026-09-12 — the NN campaign's first export returned one person, and that person is its own placeholder
+
+**`NN 6000000035218690155`** — the mother of Tughril I, confirmed as the intended profile before
+any work started. `scripts/descent-from.py` walks **17,224 descendants** of hers out of the
+corpus, across 42 generations.
+
+### The census sweep: 40 picks, 35 usable reads, one hit
+
+    batch 1   20 picks   15 read   0 over 4,000   highest 438
+    batch 2   20 picks   16 read   1 over 4,000   Inal the Great, at Geni's 15,000 ceiling
+
+**Thirty of the thirty-five sat between 0 and 64 descendants.** The Alix descent, sampled the same
+way at the same threshold, hit **15 of 60**. This one hit **1 of 35**.
+
+### The one hit's ball
+
+**Inal the Great `6000000028522706362`**, climbed 5 steps to `6000000204995631831` and seeded
+there. Task `6000000227711480844`.
+
+    ball                    5,000 INDI   2,994 FAM     <- AT the cap
+    new against the WHOLE corpus                1
+
+**The one new person is the placeholder the climb created.** Nothing else in the ball is new.
+
+**4,991 of the 5,000 are in `exports/turgesh-seljuq/export-Descendants-6000000227676315909.ged`.**
+That seed id is not a coincidence: `6000000227676315909` is the profile this same climb **skipped
+three steps earlier**, with `reason: "no surname and the given name is a marker"`. The walk passed
+straight over a person who already had a `Descendants` export filed against them, kept climbing,
+created a second placeholder two steps away, and re-exported the same descent.
+
+### ⛔ A CREATED PROFILE ON GENI IS NAMED AFTER A FOOTNOTE
+
+The placeholder is **`NN Huart, Histoire des Arabes, II, 66)`**. Geni's *Suggest surnames* offered
+a bibliographic citation — trailing bracket included — and the seed rule takes Geni's suggestion
+by design, so it went in. § *A DESCRIPTION MARKER COMES OUT OF THE LABEL* is the rule it breaks,
+and it is now a live Geni profile carrying a footnote as a surname.
+
+**Not fixed here.** Renaming a Geni profile is an edit to somebody else's site made on a judgement
+call, and the same trailing-citation surname is presumably on the subject profile it was suggested
+from, so the fix is not one profile. Recorded, not acted on.
+
+### Where that leaves the ceiling of five
+
+*"Do, like, the Monte Carlo thing for maybe, like, five people. And if you see clear diminishing
+returns at five people, then just give up."* One export in, the return is **1 person**, and the
+hit rate says the other four would cost roughly **140 more page loads** to find.
+
+**And the reason is structural rather than bad luck.** The hinge people were all descendants of
+this NN, the Circassian and Turgesh-Seljuq trees below her have **13 `Descendants` balls already
+filed**, and the one saturated person the sample found sits inside one of them. The descent is
+not thin because Geni is missing people — it is thin *to us* because it is already gathered.
