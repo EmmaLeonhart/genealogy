@@ -590,7 +590,7 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - **⛔ THE SEEDS FOR THE REST OF THE ROSTER, SUPPLIED 2026-09-12.** Every one is a profile to
     export FROM, so the create-an-ancestor step is already done and must not be repeated on them.
 
-        6000000209595340830  Chinese cluster 2     supplied 2026-09-12
+        6000000209595340830  Chinese cluster 2     supplied 2026-09-12; identity UNKNOWN
         6000000227712700862  Adasi
         6000000227039926826  Genghis Khan          NN Borjigin
         6000000209721868822  Aztec Emperors        NN Mixcoamatzin
@@ -616,6 +616,28 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     what she says rather than against it — the clustering is recomputed from a corpus that has
     grown by many descendant balls since, and a stringy descent changes what the components are.
     **The ids are hers and stand; the cluster reading is stale, not the seeds.**
+
+  - **⛔ WHY THE LOW-YIELD ROOTS ARE STILL WORTH RUNNING, AND WHAT CLUSTER 2 ACTUALLY IS.**
+    Stated 2026-09-12, after cluster 2 returned 72 new people across two exports against cluster
+    1's 1,439:
+
+    *"the general problem here as I think you saw is basically oftentimes we are starting from the
+    most densely documented clusters and moving down."* So a low yield is the **expected** shape
+    at the start of a root, not a verdict on it — the campaign begins where the documentation is
+    thickest and works outward into the thin parts.
+
+    **⛔ CLUSTER 2'S IDENTITY IS UNKNOWN AND IS NOT TO BE LOOKED UP.** *"I don't even know what
+    this second cluster is … I'm not actually asking you right now to tell me what it is, or at
+    least in any way that would involve looking something up."* Her own reading, offered as a
+    guess and recorded as one: *"some kind of legendary lineage that might even be something
+    that's connected to the Yellow Emperor stuff later."* **Cluster 1 is the Yellow Emperor
+    material**; cluster 2 may join it further down.
+
+    *"The Chinese ones go really deep and they really go far down in a weird way."*
+
+    ⛔ **SO DO NOT IDENTIFY IT, AND DO NOT USE ITS LOW YIELD AS A REASON TO DROP IT.** She was
+    skeptical about including it and included it anyway, on the grounds that not knowing what it
+    is makes it worth gathering rather than less so.
 
   - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
     Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
