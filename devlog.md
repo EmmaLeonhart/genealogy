@@ -38612,3 +38612,31 @@ descents already in the corpus. One returned 1s and 2s because every saturated p
 found sat in one already-exported cluster; the other returned 60%+ because its descent is wide
 and unevenly documented. **Neither outcome was predictable from the size of the descent**, which
 is the thing I twice tried to predict it from.
+
+## 2026-09-12 — the session ran nine hours with no crons, and Emma noticed rather than the session
+
+**`CronList` read *no scheduled jobs*** for the whole of it — through the Alix targets, the
+Seljuq root, NN Näf, Dál Fiatach, the northern DFA roots and the no-name campaign. Recreated now:
+
+    94cad21d  :03  work-loop
+    9de407dd  :15  auto-flush
+    94e6ea68  :42  status-report   (no AskUserQuestion; it was barred overnight)
+    8a7dd280  :45  dead-queue-item sweep
+
+**`queue.md` already said this in as many words** — *"Recreating them is the first thing a session
+does, not something to get to"*, written after the 2026-08-28 crash left nothing running between
+00:03 and 06:00. The item was in the file the whole time and the check was never run.
+
+**What was NOT true, and was checked before saying so.** The prompt was *"I think you kinda did
+nothing"*, and the work did land. After pulling CI's two commits:
+
+    the 12 stamps          still on reports/unconnected-p2600.tsv at 2026-09-12
+    the attempt_ledger fix still at line 128, `len(row) >= len(COLUMNS)`
+    the balls              all committed and pushed
+
+The rebuild at 12:36 regenerated the worklist and `load_previous` carried the dates across, which
+is the carry-forward doing exactly what § *THE ALGORITHM IS STATELESS EXCEPT FOR TWO THINGS* says
+it does. Row count fell 265,832 -> 265,614, so 218 people got connected in that rebuild.
+
+**The two findings are separate and both stand:** the crons were dead for nine hours, and the
+work committed in those nine hours is on disk and on origin.
