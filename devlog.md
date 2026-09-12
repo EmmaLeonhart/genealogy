@@ -38677,3 +38677,37 @@ PROGRAM* and the post-merge refresh. An assertion that the slice contains no fur
 bullet refused it. **A sweep that deletes queue items must assert what it is about to remove
 before removing it**, because the failure mode is silent and the file is the only record of what
 is outstanding.
+
+## 2026-09-12 — Chrome at 18.4 GB killed a background task; the export survived the restart
+
+**Measured when a background timer was killed for memory:**
+
+    chrome processes   126
+    chrome working set 18.42 GB
+    free RAM            2.86 GB of 31.31
+
+**The cause is the seed climb.** `runSeed` opens a tab per ancestor and `pump` opens them
+`active: true` since 1.7.37; a climb of 90 or 291 ancestors leaves that many behind. Nothing
+releases them, so the cost accumulates across a session rather than across a run.
+
+**Killed and relaunched per `CLAUDE.md` § *KILL CHROME WHENEVER YOU NEED TO*.** Free RAM went
+`2.86 GB -> 14.25 GB`, an 11.4 GB reclaim.
+
+**The in-flight export was not lost and could not have been.** `6000000227720182827` builds on
+Geni's side; § *a submitted export cannot be cancelled and the download page can be reopened by
+task id* is exactly this case, and the page was still building when Chrome came back. The rule's
+caveat — *an unsaved form cannot* be recovered — did not apply because the submit had already
+navigated.
+
+**The pairing came back without user action**, on a fresh tab, running `1.7.43`.
+
+### ⛔ AND A FALSE READY SIGNAL WAS BEING READ FOR AN HOUR
+
+The build was checked with `/ready/i` against the page text. The still-building page says
+**"When it is ready, an email with a download link will be sent to you"** — so the test matched
+the *not ready* message and reported ready. Two collection attempts were made on that basis and
+found no button.
+
+**The only reliable signal is the button**: `a,button,input` whose text matches
+`/download my gedcom/i`. Presence means built; absence means building. The text of the page says
+the opposite of what a substring search for `ready` returns.
