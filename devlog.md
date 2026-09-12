@@ -39072,3 +39072,28 @@ built alongside these, which cost no Geni traffic at all.
 so there is no candidate pool to sample and step 3 is impossible until steps 1 and 2 are merged.
 Their descent files have to be rebuilt **after** their balls land, not before — which is the
 opposite of the order used for every root so far.
+
+## 2026-09-12 — the hand-submit loses the task id; single extension dispatch is the only method that does neither
+
+**Hermenegildo's `Descendants`, submitted by hand with the 4.5 s wait, stayed on
+`/gedcom/request_export?id=…&walk=Descendants&…` and never redirected.** Checked again 25 s
+later: same URL, no `task_id` anywhere. That is the **second** export today whose id was lost this
+way, after Confucius's.
+
+**Three methods, three behaviours:**
+
+    extension, dispatched SINGLY   lands on /gedcom/download?task_id= and captures the id
+    extension, ten stacked         8 of 10 no_such_walk -- the form has not drawn
+    hand-submit with a wait        form reads fine, but can stay on request_export, id lost
+
+**The hand-submit was adopted to beat `no_such_walk` and it trades one failure for another.** It
+was right the first two times it was used — `6000000227716024841` and `6000000227716154966` both
+came back with ids — which is exactly what made it look safe.
+
+⛔ **SO THE METHOD IS: ONE EXTENSION EXPORT AT A TIME, WITH THE GAP.** Every single dispatch this
+session captured its task id. The batch is what broke, and the hand-submit is a fallback for a
+profile the extension refuses twice, not a default.
+
+**Two exports are now recoverable only by email**: Confucius `6000000227713034875` and
+Hermenegildo `6000000211987119821`, both `Descendants`. The scheduled 16:00 / 16:30 / 17:00 checks
+cover either arriving.
