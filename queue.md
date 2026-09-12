@@ -638,6 +638,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         father of Ramborg Knutsdotter Lejon, Ingegerd Knutsdotter, Katarina, Ingrid Knutsdotter
         brother of Bengt Algotsson · CHARLEMAGNE IS CONNECTED TO HIM, stated on the page
 
+    **⛔ EMMA IS DOING THIS ONE BY HAND. DO NOT SEED IT, DO NOT EXPORT IT.** Ruled 2026-09-12:
+    *"this one's actually a bit of a challenging situation ... I'm going to actually look at the
+    family tree a bit ... I'm going to look and probably make the person manually just because
+    I'm trying to get a specific thing."* So the undecided question below — whether the seed rule
+    applies on top of Knut — **is not for this side to answer and must not be guessed**. The
+    campaign skips to Gamle Olof and comes back only when she says the person exists.
+
     **He replaces Bergitte as the person to go from, not as the target** — the campaign is still
     her descendants, and he is where the export starts. Whether the seed rule still applies on
     top of him — create an ancestor of HIM and export `Descendants` from that ancestor — is
