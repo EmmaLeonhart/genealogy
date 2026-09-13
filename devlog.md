@@ -40043,3 +40043,20 @@ restored. `reports/garborg-live-labels.tsv` holds the pre-batch values, so this 
 against one batched fetch of 45 items rather than 45 histories.
 
 Five tests, all on the reported case.
+
+## 2026-09-13 — the Bure clan's earliest ancestor becomes an entry point
+
+`Q50368774` **Olof Hersesson**, Geni `5328189268700111491`, live from today.
+
+*"They are the earliest recorded ancestor of the Bure clan. I manually added their geni id. They
+deserve to act as an entrypoint like any other ... This person should have been an entrypoint
+ages ago"* — and explicitly **not** the 2027-01-01 bloc: *"Not putting them in the Jan 1 dump of
+additional entrypoints."*
+
+That settles which file. `reports/entry-point-groups.tsv`'s own note says a person landing on
+2027-01-01 goes through `exports/post-merge/wikidata-qid-links.ged` and that
+`reports/entry-points.tsv` *"is only for a person needing their OWN date"*. This person needs
+today's, so it is the TSV — the third row it has ever carried, after Ettinger and Martin.
+
+The Geni id is not a `6000000…` one and does not need to be; it was added to the item by hand,
+and the loader reads the column rather than a pattern.

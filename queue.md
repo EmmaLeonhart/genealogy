@@ -91,16 +91,6 @@ I still think we do not have support for other languages like Semitic languages 
 
 Romance languages should be there too but I think they are the hardest and the most dead
 
-## Add to entry points
-
-I want to add this person to Bure entrypoints
-
-https://www.wikidata.org/wiki/Q50368774 https://www.geni.com/profile/index/5328189268700111491
-
-They are the earliest recorded ancestor of the Bure clan. I manually added their geni id. They deserve to act as an entrypoint like any other.
-
-So to be clear this is putting them in the bure clan entrypoint ledger thing. Not putting them in the Jan 1 dump of additional entrypoints. This person should have been an entrypoint ages ago
-
 ## another item
 
 address the problem in "address the problem in this image.png"
