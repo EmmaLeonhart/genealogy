@@ -39719,3 +39719,28 @@ file whose whole convention is that deletion means done.
 `reports/descendants-export-log.csv` against what its part asks for. It found Inca, it found the
 stale-subject collision, and it found this. **It costs one `grep -c` and it has been worth running
 every single time.**
+
+## 2026-09-13 — Dál Fiatach closes for real: six hits spent, 23,274 new people
+
+**Sophia Dorothea of Hanover `311769067160005759`**, hit 6, 72 climbs, seed
+`6000000227726280959`, task `6000000227726396983`: **4,091 new (81.8%)**. Seed id verified against
+the ball's first `INDI` before filing.
+
+    Descendants (root)     1,073
+    northern Forest          248
+    re-sweep hit 1         4,731  (94.6%)
+    re-sweep hit 2         4,803  (96.1%)
+    re-sweep hit 3             1  -- duplicate parent on hit 1's subject
+    re-sweep hit 4         3,892  (77.8%)
+    re-sweep hit 5         4,435  (88.7%)
+    re-sweep hit 6         4,091  (81.8%)
+                          ------
+                          23,274 new people
+
+**The root was closed at 1,321 people on a sweep that found nothing in thirty picks.** It has
+produced **23,274**, and every one of the 21,953 from the re-sweep would have been forgone.
+
+**Corpus 1,625,530**, from 1,535,829 at session start — **+89,701**.
+
+**Now it closes on completed work rather than a null result**: all six hits spent, nothing banked,
+and the line comes out. Three roots remain in the re-sweep item.

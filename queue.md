@@ -706,14 +706,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
 
         6000000227712070008  NN Näf         more Monte Carlo rounds (80.1% then 26.8%)
-        6000000227226958932  Dál Fiatach    RE-SWEEP, ruled 2026-09-13. The first sweep
-                                            read 0 of 30 on a 231,038-person pool, which
-                                            she reads as a low-probability draw rather
-                                            than a result: *"my guess is basically you hit
-                                            a low probability outcome ... I would suggest
-                                            that you do it again"*. Its line had been
-                                            removed on that first sweep; removing it was
-                                            premature for the second time today.
 
     **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
     already held and that is not a reason to stop, per the ruling above.
