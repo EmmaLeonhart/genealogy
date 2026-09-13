@@ -1249,3 +1249,11 @@ Q20498971	P734	LAST	P3831	Q2507958	S2600	"6000000002187818470"
 Q76238135	P734	LAST	S2600	"6000000006444239943"
 #   Q16206914 ბაგრატი / Bagrat ბაგრატიონი / Bagrationi: P734 family name = the item just created
 Q16206914	P734	LAST	S2600	"6000000035615176558"
+
+## Wikidata isolate connection
+
+Actually connect the wikidata isolates I think we can just zoom through them by this point with our pipeline we have
+
+## CICD
+
+Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements on the github page too. MAke them actually start running.
