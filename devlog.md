@@ -39744,3 +39744,20 @@ produced **23,274**, and every one of the 21,953 from the re-sweep would have be
 
 **Now it closes on completed work rather than a null result**: all six hits spent, nothing banked,
 and the line comes out. Three roots remain in the re-sweep item.
+
+## 2026-09-13 — Genghis re-swept: 0 of 40, and this one really is thin
+
+    sweep 1   30 reads   0 hits   top 415
+    sweep 2   40 reads   0 hits   top 410     pool grown 20,749 -> 28,960 (+40%)
+
+**Seventy reads across two sweeps, on a pool that grew forty per cent between them, and nothing
+above 410 against a threshold of 4,000.** Dál Fiatach's re-sweep went 0 of 30 to 6 of 40 with four
+at the ceiling; this is the opposite outcome from the same treatment.
+
+**So a re-sweep is a test that can come back either way, which is what makes it worth running.**
+The mistake earlier today was not that the empty sweeps were wrong — Genghis's was right — it was
+treating one of them as settled without the second reading. Two agreeing sweeps is evidence; one
+is a draw.
+
+**Genghis is now closed on two sweeps rather than one.** Chinese 1 is next, whose first sweep
+topped 2,282 — the closest to threshold of the four, and the one most likely to turn.
