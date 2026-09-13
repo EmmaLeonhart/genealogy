@@ -40450,3 +40450,34 @@ that returned `no_such_walk` three times at 11:00, 11:02 and 11:08. Nothing abou
 Step 2, the `Descendants` on the same root, is away as task `6000000227732913835`.
 
 Corpus: **1,634,302**.
+
+## 2026-09-13 — Chinese post-merge steps 1 and 2 filed, and 24 more trails, anchored properly
+
+**Step 2, `Descendants` on `NN Father of Huaxu`**, task `6000000227732913835`, filed as
+`exports/post-merge/export-Descendants-6000000227036719829.ged`: **164 new of 5,000, 3.3%** —
+and the same reading as step 1. The people are already in the corpus under pre-merge duplicate
+ids; the merged structure is what the ball carries and `exports/post-merge/` is what makes it
+win. Step 3, the Monte Carlo, needs the descent enumerated off the merged data, which is running.
+
+**24 more trails, and these are the first anchored on Charlemagne.**
+
+    21  miss_below_floor        both searches resolved_none, no statistic reaches 250
+     3  miss_export_warranted   over the floor, so a Forest export is warranted on them
+    22  family files
+
+`create: false` on this batch, deliberately: the export slot was busy with the Chinese
+`Descendants`, and a climb that creates a placeholder it cannot then export leaves a person on
+Geni for nothing. The three are flagged `exported=yes` in `reports/isolates.csv` as targets and
+lose nothing by waiting — `Kishore Kumar` `6000000008881347600` (632 in the family tree),
+`Madhuri Devi` `6000000038555523003` (498), `Satyajit Ray` `6000000038555630138` (481, and 301
+blood relatives).
+
+**The anchor column now carries two values and that is correct, not a defect.** `Sati Devi` reads
+`viewer` because her verdict was taken before the pin moved; everyone in this batch reads
+`6000000002457013227`. A row keeps the anchor its verdict was observed under —
+`docs/anchor-protocol.md` — so the mixture is the ledger doing its job.
+
+Running total for the night: **58 people attempted, 1 path found, 42 family files, 7 export
+targets flagged.**
+
+Corpus: **1,634,466**.
