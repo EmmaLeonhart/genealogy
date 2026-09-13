@@ -671,10 +671,8 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     *"my guess is basically you hit a low probability outcome ... I would suggest that you do it
     again"* — re-swept to **6 of 40** and has since produced **19,183 new people**.
 
-        6000000227036719829  Chinese 1     0 of 30, top 2,282   pool 103,363 -> 111,519  (+8,156)
         6000000227295848846  Skjalgsson    0 of 30, top   888   pool  76,859 ->  78,161  (+1,302)
         6000000227712700862  Adasi         0 of 30, top   225   pool 102,016 -> 103,239  (+1,223)
-        6000000227039926826  Genghis       0 of 30, top   415   pool  20,749 ->  28,960  (+8,211)
 
     **⛔ CHINESE 1 AND SKJALGSSON HAD NO QUEUE LINE AT ALL** — both were deleted when their empty
     sweeps "closed" them, so without this item their re-sweeps are not recorded anywhere. That is

@@ -39761,3 +39761,27 @@ is a draw.
 
 **Genghis is now closed on two sweeps rather than one.** Chinese 1 is next, whose first sweep
 topped 2,282 — the closest to threshold of the four, and the one most likely to turn.
+
+## 2026-09-13 — Chinese 1 re-swept: 2,930 new, and the four-root test has split two-two so far
+
+**`NN 6000000227036719829`**, re-sweep. Hit `6000000183594618879` at the 15,000 ceiling, seed
+`6000000227727097862`, task `6000000227727015882`: **2,930 new (58.6%)**.
+
+    the root, closed at              1,439 new  (595 forest + 844 descendants + 0 of 30)
+    re-sweep adds                    2,930
+                                     -----
+                                     4,369 new
+
+**The four re-sweeps so far:**
+
+    Dál Fiatach   0 of 30  ->  6 of 40    +21,953 people
+    Chinese 1     0 of 30  ->  1 of 40     +2,930
+    Genghis       0 of 30  ->  0 of 40      nothing — genuinely thin
+    Skjalgsson, Adasi                       not yet re-swept
+
+**Three retried, two turned.** The first-sweep top reading pointed the right way both times —
+Chinese 1 topped 2,282 and turned, Genghis topped 415 and did not — but two cases is a hint, not a
+rule, and it is recorded as one.
+
+**Both roots come out of the re-sweep item**, each now closed on two sweeps rather than one:
+Chinese 1 on a hit that was spent, Genghis on two agreeing nulls across 70 reads.
