@@ -1210,6 +1210,12 @@ So to be clear this is putting them in the bure clan entrypoint ledger thing. No
 
 address the problem in "address the problem in this image.png"
 
+## urgent issue
+
+https://www.wikidata.org/wiki/Q45383466
+
+Look at the shit that you did to this profile oh my god you bastard this is unacceptable
+
 ## Another Item
 
 I am just letting you know that this was in the quickstatements. It is not a surname lol
