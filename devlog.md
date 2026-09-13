@@ -40167,3 +40167,43 @@ from the roster:
 
 The eight untouched seeds of § THE WHOLE PROGRAM are down to **one** — Adasi's reseed — and the
 Abul Hamza six have **0 rows between them** in the export log.
+
+## 2026-09-13 — the label repair, got wrong at scale and then done properly
+
+**The first attempt was wrong and was withdrawn.** Asked for *"a force fix ... that fixes the
+label damage we did"*, I built a generator that removed **1,973 language labels on 1,335 items**
+— every language label that duplicated its item's own `mul` — wired it as an uncapped tail onto
+every future batch, and sent Emma the file. *"Why the fuck did you do this? ... you're just
+removing gazillions of labels here."*
+
+Two different things were run together. The duplication of `mul` is a **separate, unworked**
+queue item, measured 2026-09-11 and explicitly *"moved here rather than worked"* with the end
+state undecided. The damage is the `Q45383466` shape. Generator, output and the tail wiring are
+all deleted; nothing was sent to Wikidata.
+
+**The criterion, and the two readings of it that are not it.** Emma: *"you were supposed to just
+find that there may have been only a single label that we got wrong based off of this criteria."*
+
+    we wrote a value differing from what the item held        1,955 labels / 763 items
+    ...and we had never written the value we replaced           860 labels / 526 items
+    ...and the old value was NATIVE, ours a transliteration      24 labels /  18 items
+
+The first is the pipeline correcting **itself** — `カール・アウグスト・エーレンスヴァルド` ->
+`カルル・アウグスト・エレンスヴェルド` is the 2026-08-30 ruling working. The second still counts
+our own oldest labels as other people's, because the ledger does not reach back that far. The
+third is the damage, and every one of the 24 has the same shape: **a name already in the script
+it belongs to, replaced by a transcription of its own romanisation.**
+
+    朱操       -> ズフ・カオ            藤原乙麻呂  -> フイヴァラ・ノ・オトマロ
+    朱敬則     -> 兹胡·因泽             扶餘德璋    -> デオヒャング・プヨ
+    惟宗広言   -> コレムネ・ノ・ヒロコト   桂宮淑子内親王 -> マリア・スミコ
+
+**22 of the 24 had already been reverted by hand.** Two are still live, and Emma's guess of
+roughly one was very nearly the count:
+
+    Q2622061  zh  托勒密 -> 普托莱梅乌·德·埃皮罗   Ptolemy of Epirus, read syllable by syllable
+    Q2778853  zh  喬安   -> 英格兰的琼            Joan of England -- arguably ours is better
+
+`scripts/find-label-damage.py` is the detector and **prints only**; it emits no batch, because a
+repair that writes labels by itself is what caused this. `reports/wikidata-label-restore.txt` is
+two lines.

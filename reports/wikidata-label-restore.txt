@@ -1,0 +1,18 @@
+# ----------------------------------------------------------------------------
+# RESTORE THE TWO LABELS STILL CARRYING OUR DAMAGE. Found 2026-09-13.
+#
+# The criterion: a label this pipeline wrote OVER a value it had never written,
+# where the old value was a native-script name and ours is a phonetic rendering
+# of a Latin string. 24 such labels on 18 items exist in the emission ledger;
+# 22 have already been reverted by hand. These two have not.
+#
+# Q2622061 is Ptolemy of Epirus: 托勒密 is the established Chinese for Ptolemy,
+# and we replaced it with a syllable-by-syllable reading of "Ptolemeu de Epiro".
+#
+# Q2778853 is Joan of England. 喬安 is what the item had. Ours reads
+# "英格兰的琼" -- Joan of England -- which is arguably the better label, so this
+# line is a restoration of what was there rather than a claim that ours is wrong.
+# Drop this line if you would rather keep it.
+# ----------------------------------------------------------------------------
+Q2622061	Lzh	"托勒密"
+Q2778853	Lzh	"喬安"
