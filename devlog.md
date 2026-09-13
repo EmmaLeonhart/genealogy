@@ -40531,3 +40531,37 @@ Sampling the pre-merge roster would have sampled the duplicate ids the merge col
 the whole reason the descent was re-enumerated first.
 
 Night's running total: **88 people attempted, 1 path found, 71 family files, 7 export targets.**
+
+## 2026-09-13 — the Huaxu sweep was sampling leaves, and the descent shape says why
+
+**Step 3's first sweep read 24 census pages and the largest descent it found was 43.** Against a
+root holding 120,878 descendants that reads as a dead root — and it is not. It is the sampling
+frame.
+
+**The generation histogram, from the re-enumerated descent:**
+
+    gen <=40      712 people     0.6% of the descent
+    gen <=100  11,300 people     9.4%
+    gen <=120  32,925 people    27.2%
+    gen  130   11,277 people    78.6% cumulative -- ONE generation is over half the population
+    gen  156                   100%
+
+**So a uniform sample of 40 draws about one person from the top 40 generations and the rest from
+the fan-out.** Somebody at generation 130 of 156 has at most 26 generations beneath them in a
+sparse lineage: a reading of 12, 17, 22, 31, 43 is what such a person correctly has. The sweep
+was measuring the leaves of the tree and reporting that the tree is small.
+
+**This is a sixth property, and unlike the four discarded ones it is a property of the
+INSTRUMENT rather than of the root.** `descent-bottlenecks.csv`'s longest-run measure said Huaxu
+sits with `no-name` and `NN Näf`; the sweep said 0 of 24. Both are right, because they are not
+measuring the same thing — and the sweep is the one that can be fixed.
+
+**Fixed the way it was fixed before**: `reports/descent-from-6000000035218690155-gen13-25.csv`
+is the precedent, a generation-restricted roster built for Genghis. Huaxu's is
+`reports/descent-from-6000000227036719829-gen1-115.csv` — 19,279 people, 15.9% of the descent,
+everyone above the fan-out — and the sweep is re-running against it with the same threshold,
+the same 40 draws and the same denylist.
+
+The first sweep was stopped at 24 of 40 rather than run out. It is not a verdict being discarded:
+16 more reads of the same frame would have measured the same leaves, and those page loads are
+better spent on the trunk.
