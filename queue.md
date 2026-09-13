@@ -666,6 +666,26 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
     anything else is driven against it.
 
+  - **⛔ RE-SWEEP THE FOUR ROOTS CLOSED ON A SINGLE EMPTY SWEEP.** Ruled by demonstration
+    2026-09-13: Dál Fiatach read **0 of 30**, was closed, and on Emma's instruction —
+    *"my guess is basically you hit a low probability outcome ... I would suggest that you do it
+    again"* — re-swept to **6 of 40** and has since produced **19,183 new people**.
+
+        6000000227036719829  Chinese 1     0 of 30, top 2,282   pool 103,363 -> 111,519  (+8,156)
+        6000000227295848846  Skjalgsson    0 of 30, top   888   pool  76,859 ->  78,161  (+1,302)
+        6000000227712700862  Adasi         0 of 30, top   225   pool 102,016 -> 103,239  (+1,223)
+        6000000227039926826  Genghis       0 of 30, top   415   pool  20,749 ->  28,960  (+8,211)
+
+    **⛔ CHINESE 1 AND SKJALGSSON HAD NO QUEUE LINE AT ALL** — both were deleted when their empty
+    sweeps "closed" them, so without this item their re-sweeps are not recorded anywhere. That is
+    the third and fourth premature deletion today, after Inca and Dál Fiatach itself.
+
+    **Each pool has grown**, so a re-sweep samples people who were not in it at the time rather
+    than re-rolling the same dice. Genghis's has grown **40%**.
+
+    ⛔ **PACE THEM.** Emma hit an Incapsula CAPTCHA on 2026-09-13 after roughly five hundred
+    census loads in a day. One sweep at a time, not back to back.
+
   - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
     Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
     the information we have right now, do now, postpone, or drop. So we can be clear about all of

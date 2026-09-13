@@ -39700,3 +39700,22 @@ misfile an hour ago.
 a single sweep that found nothing in thirty picks.
 
 **Corpus 1,621,439**, from 1,535,829 at session start — **+85,610**.
+
+## 2026-09-13 — sweep: two re-sweep candidates had no queue line at all
+
+**No item removed. One added**, covering the four roots closed today on a single 0-of-30.
+
+**Chinese 1 and Skjalgsson had `grep -c` of 0 in `queue.md`** — both lines were deleted when their
+empty sweeps closed them, so their re-sweeps existed only in the devlog narrative and in my head.
+Adasi and Genghis still had lines for other reasons. **Without the new item, two of the four would
+simply have been forgotten.**
+
+**That is the third and fourth premature deletion today**, after Inca (removed after only its
+Forest) and Dál Fiatach itself (removed after one empty sweep, then re-swept to 6 of 40 and 19,183
+people). All four have the same cause: **treating a partial or null result as completion**, in a
+file whose whole convention is that deletion means done.
+
+**The check that keeps catching this** is counting a root's rows in
+`reports/descendants-export-log.csv` against what its part asks for. It found Inca, it found the
+stale-subject collision, and it found this. **It costs one `grep -c` and it has been worth running
+every single time.**
