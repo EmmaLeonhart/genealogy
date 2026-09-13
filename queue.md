@@ -1374,3 +1374,26 @@ https://www.geni.com/people/Emperor-Sh%C3%B9n-%E5%B8%9D%E8%88%9C-9-1G/6000000195
 
 https://www.geni.com/people/W%C3%B2-D%C4%93ng-%E6%8F%A1%E7%99%BB/6000000001272026560 https://www.wikidata.org/wiki/Q7878975
 
+https://www.geni.com/people/Gui-Shang-Jun-%E5%AA%AF%E5%95%86%E5%9D%87-10-2G/6000000000657386629 
+
+https://www.geni.com/people/N%C7%9A-Y%C4%ABng-%E5%A5%B3%E8%8B%B1/6000000189960169823 https://www.wikidata.org/wiki/Q7480137
+
+
+https://www.geni.com/people/%C3%89-Hu%C3%A1ng-%E5%A8%A5%E7%9A%87/6000000189960074826 https://www.wikidata.org/wiki/Q7991612
+
+https://www.geni.com/people/Emperor-Y%C3%A1o-%E5%B8%9D%E5%A0%AF-5/6000000003485847175 https://www.wikidata.org/wiki/Q819556
+
+https://www.geni.com/people/Zhu%C4%81n-X%C5%AB-%E9%A1%93%E9%A0%8A-3%E4%B8%96-DO-NOT-MERGE-PARENTS/6000000001381123265 https://www.wikidata.org/wiki/Q198180
+
+https://www.geni.com/people/D%C3%A0-Y%C3%A8-%E5%A4%A7%E4%B8%9A-5/6000000008004418918 https://www.wikidata.org/wiki/Q10933357
+
+https://www.geni.com/people/B%C3%B3-Y%C3%AC-%E5%AD%97-%E4%BC%AF%E7%9B%8A-8/6000000008004518685 https://www.wikidata.org/wiki/Q4243879
+
+https://www.geni.com/people/J%C4%AB-N%C7%9A-X%C4%ABu%E5%A7%AC%E5%A5%B3%E4%BF%AE-4/6000000020107122663 https://www.wikidata.org/wiki/Q4268330
+
+https://www.geni.com/people/Huaxu/6000000195149174838?through=6000000227036719829 https://www.wikidata.org/wiki/Q9511624
+
+https://www.geni.com/people/Emperor-K%C3%B9-%E5%B8%9D%E5%9A%B3-4/6000000002481253260 https://www.wikidata.org/wiki/Q721756
+
+https://www.geni.com/people/Q%C3%AC-%E5%A5%91-5/6000000003474166572 https://www.wikidata.org/wiki/Q1045160 
+
