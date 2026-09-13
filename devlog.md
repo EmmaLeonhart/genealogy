@@ -39812,3 +39812,22 @@ there is one, sits somewhere between 415 and 888, which is far too fine to read 
 **What holds is the cheap fact**: a re-sweep costs 40 page loads and has recovered **28,150
 people** across three roots that had been closed. The pattern-hunting has produced nothing usable
 all session; the retry has produced all of it.
+
+## 2026-09-13 — sweep: Skjalgsson's re-sweep line out, and five banked hits were tracked nowhere
+
+**Removed**: the Skjalgsson line from the re-sweep item. Its re-sweep ran, returned 2 hits, and
+one was spent for 3,267 new people. The re-sweep is what the line asked for and it is done.
+
+**Added**: an item for **five banked Monte Carlo hits, none of them spent**, from Nārāyaṇa, Inca,
+Skjalgsson, ben Ovadya and Aztec — 15,000, 15,000, 8,258, 5,708 and 5,086 descendants.
+
+**They were recorded only in `reports/descendants-export-targets.csv`.** That file is a record, not
+the queue, and **`queue.md` is what says what is outstanding** — so five people over threshold,
+each worth an export costing a climb and one slot with **no census loads at all**, were tracked
+nowhere in the file that governs the work. That is the same failure that lost Chinese 1 and
+Skjalgsson from the roster earlier today, and it would have been repeated by removing the
+Skjalgsson line without noticing what went with it.
+
+**The rule this keeps demonstrating**: a deletion is safe only once every part of the item has
+been located somewhere else. Checking that has now caught Inca, the northern-DFA roots, the two
+missing re-sweep candidates, and these five hits.

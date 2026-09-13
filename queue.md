@@ -666,13 +666,30 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
     anything else is driven against it.
 
+  - **⛔ FIVE BANKED MONTE CARLO HITS, NONE SPENT.** They live in
+    `reports/descendants-export-targets.csv` and **were tracked nowhere in this file**, which is
+    how Chinese 1 and Skjalgsson went missing from the roster earlier today.
+
+        6000000041015044009  15,000   from Nārāyaṇa's sweep
+        6000000001759017182  15,000   from Inca's sweep
+        6000000004828068793   8,258   from Skjalgsson's re-sweep
+        6000000011196793448   5,708   from ben Ovadya's sweep
+        6000000021665410212   5,086   from Aztec's sweep
+
+    Each is a person over the 4,000 threshold whose export costs a climb and one slot, with **no
+    census loads at all** — the sweep that found them is already paid for. Spend order is not
+    ruled; largest first is the obvious default and is not a rule.
+
+    ⛔ **CHECK THE SUBJECT AFTER THE CLIMB, NOT THE HIT BEFORE IT.** The collision that wasted a
+    slot on 2026-09-13 was a climb landing on a subject already seeded, and the hit id says
+    nothing about that — only the climb's `added` result does.
+
   - **⛔ RE-SWEEP THE FOUR ROOTS CLOSED ON A SINGLE EMPTY SWEEP.** Ruled by demonstration
     2026-09-13: Dál Fiatach read **0 of 30**, was closed, and on Emma's instruction —
     *"my guess is basically you hit a low probability outcome ... I would suggest that you do it
     again"* — re-swept to **6 of 40**, all six hits now spent, and produced **23,274 new people** against the
     1,321 it was closed at.
 
-        6000000227295848846  Skjalgsson    0 of 30, top   888   pool  76,859 ->  78,161  (+1,302)
         6000000227712700862  Adasi         0 of 30, top   225   pool 102,016 -> 103,239  (+1,223)
 
     **⛔ CHINESE 1 AND SKJALGSSON HAD NO QUEUE LINE AT ALL** — both were deleted when their empty
