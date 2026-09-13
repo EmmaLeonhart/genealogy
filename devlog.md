@@ -39973,3 +39973,38 @@ each time by a behaviour only the new bytes have — here `avoidLoaded: 10000`.
 Banked hit 4, ben Ovadya's `6000000011196793448`, is climbing under the guard.
 
 Corpus: **1,632,369** distinct people.
+
+## 2026-09-13 — the `/` family name, and the 15,530 people behind it
+
+Emma, off the QuickStatements themselves: *"I am just letting you know that this was in the
+quickstatements. It is not a surname lol"* — above a `CREATE` for a family name whose label was
+`/`, `P31` `Q101352`, with three real bearers pointed at it.
+
+**Geni writes two spellings of one surname into a single field, separated by a slash.** All three
+bearers are that shape:
+
+    Q20498971  Margareta von Thüringen   2 SURN Van Kleef / von Cleves
+    Q76238135  Elizabeth Latimer         2 SURN Latimer / de Latimer
+    Q16206914  Bagrat Bagrationi         1 NAME ბაგრატი / Bagrat /ბაგრატიონი / Bagrationi/
+
+`classify_fields` splits `SURN` on whitespace, which is right — it is what makes `de la Garza`
+work — and it leaves the separator standing as a token of its own. The separator is not a
+particle and not an unknown-name marker, so it fell through to `family` and minted an item.
+
+**The fix is in `name_shape`, and it is not slash-specific.** A token with no alphanumeric
+character **in any script** is `unknown`: already terminal, already skipped by every caller,
+and true of what it names — nobody is called `/`. `Bure`, `孔`, `Ærø`, `Ólafsdóttir`, `O'Brien`
+and `3` all still read as names, and the two real spellings still come through as `family`, so
+this is detection and not suppression.
+
+**Counted rather than assumed, per § *"Analyse this" means build a CSV of every instance*.**
+`reports/punctuation-only-name-tokens.csv`, 17,929 rows over **15,530 distinct people**:
+
+    GIVN 6,937   _MARNM 6,146   SURN 3,387   NICK 1,459
+    .  4,620     /  3,645     ?  2,217     -  1,863     ???  477     +  408
+
+So the three bearers Emma saw were the three that fit in one capped batch, not the population.
+`?` was already caught by the marker vocabulary; `.`, `/`, `-`, `+`, `&`, `@` and the bare
+brackets were not, and every one of them was eligible to become a name item.
+
+Three tests, all on the reported case.

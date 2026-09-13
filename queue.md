@@ -1234,28 +1234,6 @@ https://www.wikidata.org/wiki/Q45383466
 
 Look at the shit that you did to this profile oh my god you bastard this is unacceptable
 
-## Another Item
-
-I am just letting you know that this was in the quickstatements. It is not a surname lol
-
-# / -- family, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "/"
-LAST	Len	"/"
-#   set the mul label to "/"
-LAST	Lmul	"/"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q20498971 Margareta von Thüringen: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q20498971	P734	LAST	P3831	Q2507958	S2600	"6000000002187818470"
-#   Q76238135 Elizabeth Latimer de Latimer: P734 family name = the item just created
-Q76238135	P734	LAST	S2600	"6000000006444239943"
-#   Q16206914 ბაგრატი / Bagrat ბაგრატიონი / Bagrationi: P734 family name = the item just created
-Q16206914	P734	LAST	S2600	"6000000035615176558"
-
 ## Wikidata isolate connection
 
 Actually connect the wikidata isolates I think we can just zoom through them by this point with our pipeline we have

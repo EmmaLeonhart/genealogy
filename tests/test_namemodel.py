@@ -763,3 +763,33 @@ def test_the_english_surface_form_is_found_too():
     """`the Younger` is in the same table and appears on Wikidata labels."""
     assert namemodel.generation_suffix_in_label(
         "Erik Benzelius the Younger") == "the younger"
+
+
+# --------------------------------------------------------------------------------------
+# **THE `/` FAMILY NAME, REPORTED OFF THE QUICKSTATEMENTS THEMSELVES.** Emma, 2026-09-12:
+# *"I am just letting you know that this was in the quickstatements. It is not a surname
+# lol"* -- above a `CREATE` labelled `/`, `P31` *family name*, with three bearers pointed
+# at it: `Q20498971` Margareta von Thüringen, `Q76238135` Elizabeth Latimer, `Q16206914`
+# Bagrat Bagrationi. Geni files all three with two spellings of one surname in one field.
+# --------------------------------------------------------------------------------------
+
+def test_a_slash_between_two_spellings_is_not_a_family_name():
+    """`SURN` splits on whitespace, which leaves Geni's separator standing as a token."""
+    for surn in ("Latimer / de Latimer", "Van Kleef / von Cleves"):
+        usages = {(t, u) for t, u, _o in namemodel.classify_fields(givn="X", surn=surn)}
+        assert ("/", "family") not in usages, f"{surn!r} still mints a `/` family name"
+        assert ("/", "unknown") in usages, f"{surn!r} does not recognise the separator"
+
+
+def test_both_real_spellings_survive_the_separator():
+    """Detection is not suppression, the same way it is not for an `NN` marker."""
+    tokens = namemodel.classify_fields(givn="Elizabeth", surn="Latimer / de Latimer")
+    assert ("Latimer", "family", 0) in tokens
+
+
+def test_the_rule_is_punctuation_and_not_the_slash():
+    """Any token with no alphanumeric character in ANY script, and only those."""
+    for junk in ("/", "--", ".", "&", "()"):
+        assert namemodel.name_shape(junk)[1] == "unknown", f"{junk!r} reads as a name"
+    for real in ("Bure", "孔", "Ærø", "Ólafsdóttir", "O'Brien", "3"):
+        assert namemodel.name_shape(real)[1] != "unknown", f"{real!r} reads as punctuation"

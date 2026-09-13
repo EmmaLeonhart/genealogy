@@ -1303,6 +1303,23 @@ def name_shape(token):
     m = PAREN.match(token)
     bare = m.group(1) if m else token
     low = bare.casefold()
+    # **A TOKEN MADE ENTIRELY OF PUNCTUATION IS NOT A NAME.** Reported by Emma 2026-09-12 off
+    # the QuickStatements themselves: *"I am just letting you know that this was in the
+    # quickstatements. It is not a surname lol"*, above a `CREATE` for a family name whose
+    # label was `/` -- with three real bearers pointed at it.
+    #
+    # Geni writes two spellings of one surname into a single field separated by a slash --
+    # `Latimer / de Latimer`, `Van Kleef / von Cleves`, `bagrationi / Bagrationi` -- and
+    # `classify_fields` splits `SURN` on whitespace, which is right for `de la Garza` and
+    # leaves the separator standing as a token of its own. It is not a particle and not an
+    # unknown-name marker, so it fell through to `family` and minted an item.
+    #
+    # `unknown` rather than a new usage: it is already terminal, every caller already skips
+    # it, and the token genuinely names nobody. **Not a slash-specific rule** -- the test is
+    # that no character in the token is alphanumeric in ANY script, so a stray `-`, `.` or
+    # `--` is caught by the same line, and a Han or Cyrillic name is not.
+    if bare and not any(ch.isalnum() for ch in bare):
+        return bare, "unknown"
     # **⛔ ONE MARKER VOCABULARY, AND `scripts/labels` OWNS IT.** `CLAUDE.md` § *An obvious
     # unknown-word marker goes straight in* says a new marker is added to
     # `labels.WORDS_MEANING_UNKNOWN` and nothing else -- so this module keeping its own list
