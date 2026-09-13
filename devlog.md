@@ -41001,3 +41001,34 @@ were a fault; it is a different question with an equally usable answer. What mak
 meaningful is that the anchor is **recorded** — the `anchor` column — not that it is any
 particular person. That is also why the 29 viewer-anchored rows from this morning stand rather
 than needing a re-run.
+
+## 2026-09-13 — the anchor is not the root, and `anchor-protocol.md` said otherwise at the top
+
+*"Charlemagne is not the root, the root is just whoever geni wants to display. Could be
+Charlemagne, could be me, could be some random king. Doesn't matter. The pipeline will
+periodically update the linkedness of the people and figure out who is connected ... it will have
+a path but it is not connected to the world tree and the synoptic tree rebuild pipeline stuff
+will pick it up and consistently mark it as needing work."*
+
+**This is stronger than what I wrote an hour ago and it corrects it.** My version said the anchor
+is a choice that must be *recorded*. Hers is that the anchor **decides nothing**: a capture
+produces a chain of named people with Geni ids, those edges are worth the same whichever end Geni
+started from, and whether the person joins the world tree is settled downstream by the
+connectivity rebuild reading the merged corpus. A capture cannot be invalidated by its anchor.
+
+**`docs/anchor-protocol.md` opened by asserting the opposite** — *"The anchor decides what every
+path capture MEANS"*, and that a run against the wrong one *"produces a number that answers a
+different question and looks identical"*. That is true of a **reach-rate report** and false of a
+**capture**, and the page conflated them for a week. Rewritten at the top; the protocol, the
+Rudolf Beck measurement and the coordinates work are kept below, because moving the pin is still
+done that way when there is a reason to move it.
+
+**What it changes in practice**
+
+    do not check or set the pin before a run    it is page loads spent on nothing
+    record the anchor and move on               provenance, not a gate; `viewer` is not a re-run
+    a weird capture is self-correcting          the worklist is rebuilt from the corpus, so a
+                                                person who did not join keeps appearing as work
+
+That last line is the part I had been substituting my own vigilance for. The pipeline already
+marks these people as needing work, every rebuild, without being told.

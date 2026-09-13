@@ -1,10 +1,20 @@
-# The relationship anchor: check, set, verify
+# The relationship anchor
 
-**The anchor decides what every path capture MEANS.** With it on the viewer, a capture answers
-*how is this person related to the viewer*; on Charlemagne, *how is this person related to
-Charlemagne*.
-The isolate pilot's whole deliverable is a reach rate **to Charlemagne**, so a run against the
-wrong anchor produces a number that answers a different question and looks identical.
+**Superseded at the top, 2026-09-13, and the rest of the page is kept for its measurements.**
+This file used to open by saying the anchor *"decides what every path capture MEANS"* and that a
+run against the wrong one *"produces a number that answers a different question and looks
+identical"*. That is true of a REACH-RATE REPORT and false of a capture, and the two were
+conflated here for a week.
+
+**A capture is a chain of named people with Geni ids.** Those edges are worth the same whichever
+end Geni started the chain from, and whether the person joins the world tree is decided by the
+connectivity rebuild reading the merged corpus — later, elsewhere, and not by the pushpin. See
+the ruling below.
+
+The protocol further down is still the correct way to move the pin **when you have a reason to
+move it**, and the 2026-09-06 measurement on Rudolf Beck is still the evidence that moving it
+changes the question. What has changed is that moving it is no longer a precondition for doing
+the work.
 
 ## ⛔ "SET EXACTLY ONCE" WAS A SHORTCUT, NOT A LAW. Recorded as a law, it cost a day
 
@@ -21,26 +31,36 @@ left sitting. It was never a decision. It was a thing to check and set.
 became a constraint enforced against the person who took it.** When something is done by hand
 because the automation is stuck, the lesson is *automate it*, not *this is sacred*.
 
-## ⛔ CHARLEMAGNE IS A CHOICE, NOT A REQUIREMENT. Ruled 2026-09-13
+## ⛔ THE ANCHOR IS NOT THE ROOT, AND IT DOES NOT DECIDE ANYTHING. Ruled 2026-09-13
 
-*"I think you set the central individual to Charlemagne for this. Now Charlemagne is a good
-individual to keep here, but remember you do not need to have the central individual set to
-Charlemagne, you can just do it with whoever relationships are being displayed relative to."*
+*"Charlemagne is not the root, the root is just whoever geni wants to display. Could be
+Charlemagne, could be me, could be some random king. Doesn't matter. The pipeline will
+periodically update the linkedness of the people and figure out who is connected ... it will have
+a path but it is not connected to the world tree and the synoptic tree rebuild pipeline stuff
+will pick it up and consistently mark it as needing work."*
 
-**A path capture is valid relative to whatever the anchor is.** The thing that makes a verdict
-meaningful is that the anchor is RECORDED, which the `anchor` column in `reports/isolates.csv`
-does — not that it is any particular person. This page is written as *check, set, verify* and
-reads as though the viewer anchor were a fault to be corrected; it is not. It is a different
-question with a different, equally usable answer.
+**So a capture cannot be invalidated by its anchor.** What a path capture produces is a CHAIN OF
+NAMED PEOPLE WITH GENI IDS, and those edges are worth the same whichever end Geni started from.
+Whether the person ends up joined to the world tree is decided **later and elsewhere**, by the
+connectivity rebuild reading the merged corpus — not by which profile the pushpin was on when the
+page rendered.
 
-**Which is why the 29 viewer-anchored rows of 2026-09-13 were kept rather than re-run.** The
-viewer is *Charlemagne's 35th great grandchild* — the banner says so — so the viewer sits inside
-his component, and a path to one exists exactly when a path to the other does. Same answer,
-different route. The rows carry `anchor=viewer` and are as good as the rest.
+**This supersedes the framing of the rest of this page.** *Check, set, verify* is written as
+though a viewer anchor were a fault to be corrected before real work could happen, and the
+2026-09-06 entry treats a viewer-anchored capture as a run that "produces a number that answers a
+different question". That is too strong. The reach-rate REPORT wants a consistent anchor; the
+captures do not, and the two were conflated.
 
-**Set it deliberately, not reflexively.** Moving the pin costs a page load and invalidates
-nothing; leaving it costs nothing either. The failure is an UNRECORDED anchor, and the fix for
-that is the column, not the pin.
+**What follows in practice:**
+
+* **Do not spend page loads checking or setting the pin before a run.** Capture whatever Geni
+  displays. The pin is worth moving when a run is being taken specifically to report a reach rate
+  to one person, and not otherwise.
+* **Record the anchor and move on.** `reports/isolates.csv` has the `anchor` column; it is
+  provenance, not a gate. A row reading `viewer` is not a row to re-run.
+* **A weird or failed capture is self-correcting.** The worklist is rebuilt from the corpus every
+  run, so a person whose path did not join them to the tree simply keeps appearing as outstanding
+  work. Nothing has to be detected or retried by hand.
 
 ## The protocol
 
