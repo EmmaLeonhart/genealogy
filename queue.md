@@ -10,6 +10,39 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
+### ⛔⛔ FIRST ITEM: THE WIKIDATA TRAIL SCRAPE. Ruled 2026-09-13, and it runs ALL NIGHT.
+
+*"can you actually put a wikidata trail scraping thing as the first queue item and work on it all
+night?"*
+
+**This moves the isolate path campaign from last to FIRST.** It does not weaken the gate — the
+gate said the isolates must be attempted before Wikidata editing resumes, and doing them first
+satisfies that sooner. § *Wikidata isolate connection* at the end of this file is unchanged and
+still holds stage 3; what changed is that stages 1 and 2 swap.
+
+**The loop is `docs/collector-run-loop.md` and there is no discretion in it.** The agent lands on
+`https://www.geni.com/people/x/<geni id>` and dispatches `{job:"individual", geni_id}`. Everything
+after that — family scrape, path request, the watcher, expanding the short path, the statistics
+gate, whether an ancestor is created and a `Forest` export run — is inside
+`geni-extension/content/individual.js`. **Both ties, always**: a blood chain and a marriage chain,
+and a blood miss with no path is not done.
+
+**The roster and who is eligible.** `reports/unconnected-p2600.tsv`, 265,386 rows, rebuilt by
+`tree.yml`. `last_attempted` carries two placeholder dates rather than real ones —
+`2026-01-01` for never attempted, and a 30-day cooldown after a real attempt:
+
+    2026-01-01   223,952   eligible now -- THE POOL
+    2026-10-31    41,239   the CBDB people, PARKED ON PURPOSE by scripts/park-cbdb-attempts.py
+    real dates       195   attempted 2026-09-06 to 2026-09-12, inside the 30-day cooldown
+
+The future date is not a defect and was checked before it was treated as one: `park-cbdb-attempts.py`
+writes it deliberately and `PARK = "2026-10-31"` is its own constant. **Leave them parked.**
+
+⛔ **PACE IT.** A census read is a real page load and 500+ back-to-back on 2026-09-12 got the
+account CAPTCHAd — *"hold on we are getting throttled"*. The stagger is the throttle and it is
+the extension's, not a sleep in the agent.
+
+
 ### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
 
 *"you had no business having any submissions going through until everything was done. That's why

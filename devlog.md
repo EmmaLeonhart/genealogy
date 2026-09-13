@@ -40291,3 +40291,33 @@ exactly the shape of the mistake that put Wikidata batches out ahead of the queu
 Not deleted, because the loop it describes is still the procedure to follow when the gate is
 reached. The claim to priority is struck and the section now points at the gate: **this section
 is the HOW, the one at the end is the WHEN.**
+
+## 2026-09-13 — the Wikidata trail scrape becomes the first queue item, and runs overnight
+
+*"can you actually put a wikidata trail scraping thing as the first queue item and work on it all
+night?"* — so the isolate path campaign moves from **last** to **first**. The gate is not weakened
+by that: it said the isolates must be attempted before Wikidata editing resumes, and doing them
+first satisfies it sooner. § *Wikidata isolate connection* at the end of the file still holds
+stage 3.
+
+**The pool, and one thing checked before it was called a bug.** `reports/unconnected-p2600.tsv`
+holds 265,386 rows and `last_attempted` is almost entirely two placeholder dates:
+
+    2026-01-01   223,952   never attempted -- eligible now, and this is the pool
+    2026-10-31    41,239   the CBDB people
+    real dates       195   attempted 2026-09-06 to 2026-09-12, inside the 30-day cooldown
+
+**The 41,239 dated in the future are not a defect.** A future `last_attempted` cannot come from
+`attempt_ledger.stamp()`, which writes `today`, and it is not `SEED_ATTEMPTED` (`2026-09-01`) or
+`SEED_NEVER` (`2026-01-01`) — so it looked exactly like a bug excluding a quarter of the campaign.
+It is `scripts/park-cbdb-attempts.py`, which parks every CBDB person at `PARK = "2026-10-31"` on
+Emma's own instruction. I had already written it into the queue item as unexplained and had to
+take it back out; § *CHECK before raising an alarm* is the rule and one `grep` was the check.
+
+**Running.** `docs/collector-run-loop.md`, no discretion: land on
+`https://www.geni.com/people/x/<id>`, dispatch `{job:"individual", geni_id}`, and the extension
+does the family scrape, the path request, the watcher, the short-path expansion and the
+statistics gate. Both ties on every person. Stagger 9,000 ms — the throttle is the extension's,
+and 500+ back-to-back reads on 2026-09-12 is what got the account CAPTCHAd.
+
+First five dispatched from the top of the pool, all at neighbourhood size 344.
