@@ -29,8 +29,10 @@ census reads a descent that is really several copies of one.
   post-merge copies beat the pre-merge ones already in the corpus.
 * **The full three steps, in order**: `Forest`, then `Descendants`, then Monte Carlo off the
   descendants with a `Descendants` export on each hit — all of it filed post-merge.
-* **The seed id is Emma's to supply** and she said she would paste the link. Nothing starts
-  until it arrives; asked and answered by `AskUserQuestion` 2026-09-13.
+* **The seed is `NN Father of Huaxu` `6000000227036719829`**, supplied 2026-09-13:
+  <https://www.geni.com/people/NN-Father-of-Huaxu/6000000227036719829>. One seed for both
+  clusters — the merging campaign is what joined them, so a single root above Huaxu now reaches
+  what used to read as two tangles.
 
 ### ⛔ SKJALGSSON IS DROPPED. Ruled 2026-09-13: *"Drop skjalgsson please"*.
 
@@ -102,12 +104,6 @@ So to be clear this is putting them in the bure clan entrypoint ledger thing. No
 ## another item
 
 address the problem in "address the problem in this image.png"
-
-## urgent issue
-
-https://www.wikidata.org/wiki/Q45383466
-
-Look at the shit that you did to this profile oh my god you bastard this is unacceptable
 
 ## CICD
 

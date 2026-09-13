@@ -97,6 +97,61 @@ SEX = {"M": "Q6581097", "F": "Q6581072"}
 #: ledger item came from this pipeline, which is what makes redoing them safe.
 CJK_LABELS_NOT_OURS = {"Q467497", "Q633094"}
 
+
+def may_write_cjk_label(qid, code, live, value, cjk_ours):
+    """Is `value` allowed into `qid`'s `code` label?
+
+    **⛔ A LABEL THIS PIPELINE NEVER WROTE IS SOMEBODY ELSE'S AND IT STANDS.** The three cases,
+    and only the third is new:
+
+    * no live label, or the live label already says `value` — nothing is being taken away, so
+      yes. An absent live value means *we have not looked*, and the caller has already handled
+      that separately against the offline store's language list.
+    * a live label we emitted ourselves — yes, and this is the whole of the 2026-08-30 ruling:
+      a corrected rule has to be able to reach the items the old rule labelled.
+    * a live label we did NOT emit — **no**. `Q45383466` held `朱操` from 2022 and this branch
+      wrote a katakana transliteration of the Latin romanisation over it.
+    """
+    if live is None or live == value:
+        return True
+    return (qid, "L" + code) in cjk_ours
+
+
+def cjk_slots_we_have_emitted():
+    """`{(qid, slot)}` for every `Lja`/`Lzh`/`Lko` this pipeline has ever put in a batch.
+
+    **⛔ A CJK LABEL WE DID NOT WRITE IS NOT OURS TO OVERWRITE**, and `CJK_LABELS_NOT_OURS`
+    could only ever list the ones somebody happened to notice. Emma, 2026-09-12, on
+    `Q45383466`: *"Look at the shit that you did to this profile oh my god you bastard this is
+    unacceptable"*. The batch of 06:13 that morning replaced `朱操` — the Han name another editor
+    gave a Tang-dynasty Chinese man in 2022 — with `ズフ・カオ` and `兹胡·卡奥`: a katakana and a
+    Mandarin-phonetic transcription **of the Latin romanisation of his own name**. His son
+    `Q11094143` `朱敬則` was in the same batch.
+
+    **The 2026-08-30 ruling that turned the overwrite on is not reversed and does not need to
+    be.** It rests on one premise — *"we wrote essentially all of them, so declining to
+    overwrite meant a rule fix never reached the items the old rule had already labelled"* —
+    which is true of the 2,408 items in the ledger and false of an item whose CJK label arrived
+    with it. So the premise becomes the test, asked per item instead of assumed over the
+    population: a rule fix still reaches every label we emitted, and a label we never emitted
+    stands.
+
+    `reports/label-edits-emitted.tsv` is the record — 10,543 CJK rows on 2,408 items — and it is
+    keyed on `(qid, slot)` here deliberately, **not** on the value. The value key at
+    `_cap_label_edits` exists so a corrected rule can re-emit the same slot; this asks the
+    different question *has this pipeline ever labelled this item in this language*, which any
+    value answers.
+    """
+    path = ROOT / "reports" / "label-edits-emitted.tsv"
+    out = set()
+    if not path.exists():
+        return out
+    with path.open(encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="	"):
+            if row["slot"] in ("Lja", "Lzh", "Lko"):
+                out.add((row["qid"], row["slot"]))
+    return out
+
 #: **The Chinese overwrite is ON because the reason not to do it was fixed.** Queried
 #: 2026-08-30: was 塞恩 right for `sen`, or had the coda `-n` been given its own character
 #: instead of being merged? It had. `translit_no` gave every coda consonant its own character,
@@ -6529,6 +6584,9 @@ def main():
     # What the labels actually SAY, live, so a disagreement can be seen. See
     # `read_live_labels` and the rule of 2026-08-30.
     live_labels = read_live_labels()
+    # The CJK overwrite is allowed only where the label being overwritten is one this
+    # pipeline emitted -- see `cjk_slots_we_have_emitted` and `Q45383466`.
+    cjk_ours = cjk_slots_we_have_emitted()
     # A live read beats both the store and the guess. `reports/garborg-live-state.tsv`
     # records what each item held on 2026-08-24; the store predates most of them and
     # the fallback below assumes our own batch made them, which is wrong wherever an item was
@@ -6846,6 +6904,8 @@ def main():
                     # The store says the language exists but we do not know its value, and a
                     # blind overwrite is what this branch used to refuse to do. Leave it: the
                     # next live refresh gives the value and the disagreement is emitted then.
+                    continue
+                if not may_write_cjk_label(q, code, live, value, cjk_ours):
                     continue
                 if live != value:
                     lines.append(f'{q}\tL{code}\t"{value}"')

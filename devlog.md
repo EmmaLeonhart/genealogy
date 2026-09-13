@@ -40008,3 +40008,38 @@ So the three bearers Emma saw were the three that fit in one capped batch, not t
 brackets were not, and every one of them was eligible to become a name item.
 
 Three tests, all on the reported case.
+
+## 2026-09-13 — `Q45383466`: a Chinese man's name replaced by a transliteration of its own romanisation
+
+Emma, off the item: *"Look at the shit that you did to this profile oh my god you bastard this is
+unacceptable"*. The batch of 06:13Z that morning did this to Zhu Cao, a Tang-dynasty Chinese man:
+
+    Lja   朱操  ->  ズフ・カオ      katakana of the Latin romanisation
+    Lzh   朱操  ->  兹胡·卡奥      Mandarin phonetic transcription of the same
+    Lmul  (none) -> Zhu Cao
+
+`朱操` was put there by another editor in 2022. His son `Q11094143` `朱敬則` was in the same
+batch. **The values are not wrong as transliterations** — they are transliterations of a
+romanisation of a name the item already held correctly, in exactly the languages that name
+belongs to. She restored both labels herself, 40 seconds and 100 seconds after the batch landed.
+
+**It was deliberate, and the reasoning was sound when it was written.** Ruled 2026-08-30, the CJK
+overwrite was turned on because *"we wrote essentially all of them, so declining to overwrite
+meant a rule fix never reached the items the old rule had already labelled"* — the `ck` doubling
+in `モルクク` would have sat on every affected item forever. `CJK_LABELS_NOT_OURS` held the two
+exceptions somebody had noticed, `Q467497` and `Q633094`.
+
+**So the premise becomes the test.** `reports/label-edits-emitted.tsv` already records every
+label this pipeline has ever emitted — 10,543 CJK rows over 2,408 items — and
+`may_write_cjk_label` now asks it per item: a rule fix still reaches every label we wrote, and a
+label we never wrote stands. `Q45383466`'s CJK slots were first emitted **today**, so the ledger
+was empty for them and the guard refuses. Nothing about the 2026-08-30 ruling is reversed; a
+hand-maintained exception list is replaced by the record of what we actually did.
+
+**Checked before proposing a repair, and none is needed.** Of the 45 items given a `ja`/`zh`/`ko`
+label today, the number where a pre-existing different label was replaced and our value is
+**still live** is **zero** — `Q45383466` was the only overwrite in the batch, and it is already
+restored. `reports/garborg-live-labels.tsv` holds the pre-batch values, so this was answerable
+against one batched fetch of 45 items rather than 45 histories.
+
+Five tests, all on the reported case.
