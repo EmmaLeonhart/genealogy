@@ -1397,6 +1397,8 @@ https://www.geni.com/people/Emperor-K%C3%B9-%E5%B8%9D%E5%9A%B3-4/600000000248125
 
 https://www.geni.com/people/Q%C3%AC-%E5%A5%91-5/6000000003474166572 https://www.wikidata.org/wiki/Q1045160 
 
+https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823 https://www.wikidata.org/wiki/Q18028984
+
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
