@@ -1421,6 +1421,8 @@ I think I explained it decently but I want us to address how to solve this issue
 
 ## Questionable cjk-izations
 
-Fix these and establish general rules and corrections out of them as time goes on. This is the last item of the queue for a reason as this is a relatively long tail and not urgent
+Fix these and establish general rules and corrections out of them as time goes on. This is the last item of the queue for a reason as this is a relatively long tail and not urgent. Do not dismiss these go over them in full with your full attention at the end of the queue after addressing the other things lol.
 
 https://www.wikidata.org/wiki/Q141444659
+https://www.wikidata.org/wiki/Q141444720
+https://www.wikidata.org/wiki/Q141444564
