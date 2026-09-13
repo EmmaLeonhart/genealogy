@@ -1426,3 +1426,10 @@ Fix these and establish general rules and corrections out of them as time goes o
 https://www.wikidata.org/wiki/Q141444659
 https://www.wikidata.org/wiki/Q141444720
 https://www.wikidata.org/wiki/Q141444564
+https://www.wikidata.org/wiki/Q141444589 
+
+I think the -datter words might be systematically messed up. Possibly the -sson -ssen and general patronymics
+
+## Implementing non-Scandinavian Patronymics
+
+I keep on telling you to do this and you keep on not doing it. To be clear this is at the end of the queue and is to be done after the more urgent stuff at the end, but I really do not want you to just fuckign ignore it, since it seems like you always just kinda forget about it and don't do it because it is not urgent but remove it from the queue and it never gets done
