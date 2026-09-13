@@ -1319,3 +1319,8 @@ stage 3. **Nothing above it waits on it; it does not start while anything above 
   `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
   `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
   This is the last one open.
+
+
+## More items at the end
+
+Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
