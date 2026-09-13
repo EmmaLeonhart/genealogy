@@ -597,7 +597,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         6000000227713034875  Confucius             NN 子姓
         6000000211987119821  Hermenegildo Gutteres NN de Coimbra
         6000000227714378863  Fihr / Quraysh        NN NN
-        6000000227713229918  Emperor Jimmu
 
     **⛔ THREE OF THEM ALREADY HAVE BALLS ON DISK** — checked before spending an export slot:
 

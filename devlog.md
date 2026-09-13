@@ -39166,3 +39166,30 @@ which has captured the id every time this session.
 
 **This is the second cost of the hand-submit**, after the lost ids themselves: it leaves work in a
 state where neither *done* nor *not done* can be established without waiting.
+
+## 2026-09-12 — Emperor Jimmu, all three steps: 1 · 7 · 0 of 30
+
+**`6000000227713229918`**, filed to `exports/jimmu/`.
+
+    step 1  Forest       task 6000000227724028837    1 new
+    step 2  Descendants  task 6000000227724138821    7 new
+    step 3  Monte Carlo  30 reads, 0 over 4,000, top 1,808
+
+**Eight new people for three export slots — and 11,140 descendants linked to him that the corpus
+already held.** The enumeration went 0 → 11,140 on those eight people, which is the whole point of
+the root and is invisible in every yield number above.
+
+**Both zero-enumeration seeds are now done and they failed differently:**
+
+    Fihr    0 -> 11,395   629 new people    the PEOPLE were missing
+    Jimmu   0 -> 11,140     8 new people    the LINKAGE was missing
+
+**⛔ SO YIELD AND CONNECTIVITY ARE DIFFERENT MEASUREMENTS AND THIS CAMPAIGN IS ABOUT THE SECOND.**
+`CLAUDE.md` opens with it — *the campaign is every `P2600` holder disconnected from Charlemagne …
+connected, or confirmed impossible*. Jimmu's exports score 8 on the measure used all session and
+connected eleven thousand people to a root; Adasi's reseed scored 1 and connected nothing new,
+because that territory was already Abul Hamza's. **The two are told apart by rebuilding the
+enumeration after the balls land**, which costs one script run and has not been part of the loop
+until today.
+
+**Eight roots complete under the three-step**, five of the eight supplied seeds among them.
