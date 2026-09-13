@@ -40509,3 +40509,25 @@ export against a slot that is the scarcest thing in the campaign.
 And the collector was started on the next 30 before this sweep began, so the hour is not spent
 idle reading a file — `queue.md` § *the crons* and the 2026-09-12 complaint *"uhh did you decide
 to not do any actual work over the crons lol"*.
+
+## 2026-09-13 — 30 more trails, and the Chinese Monte Carlo is away
+
+**Batch 004: 30 people, 30 `miss_below_floor`, 29 family files, all anchored on Charlemagne.** A
+clean sweep of misses — no path either way and no statistic reaching 250, so nothing was spent
+beyond the page loads. That is the expected shape of this population and not a sign the run is
+doing nothing: 29 family files is 29 people's immediate relatives with Geni ids, which is the
+material the tree is built from whether or not a path exists today.
+
+**Step 3 of the Chinese post-merge is running** — `{type:"montecarlo"}` on
+`NN Father of Huaxu` `6000000227036719829`, 40 candidates sampled from the **re-enumerated**
+`reports/descent-from-6000000227036719829.csv`, threshold 4,000, stagger 9s.
+
+**The denylist was passed and verified, not assumed.** `ball-collision-check.py --list
+exports/post-merge > reports/avoid/post-merge.txt` — 5,000 subjects, and `status` reports
+`avoidSubjects: 5000`. A silent 0 is what that verification exists to catch; it caught one on
+2026-09-13 when the same edit went out under an unchanged filename.
+
+Sampling the pre-merge roster would have sampled the duplicate ids the merge collapsed, which is
+the whole reason the descent was re-enumerated first.
+
+Night's running total: **88 people attempted, 1 path found, 71 family files, 7 export targets.**
