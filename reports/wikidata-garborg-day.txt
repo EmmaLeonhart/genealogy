@@ -68,7 +68,7 @@ Q566463	P2600	"6000000217230885848"
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# / -- family, 5 bearer(s) in the batches
+# / -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "/"
@@ -88,7 +88,7 @@ Q16206914	P734	LAST	S2600	"6000000035615176558"
 #   Q141442312 Johan Philip Wilkens Wilhelmsen: P734 family name = the item just created
 Q141442312	P734	LAST	S2600	"6000000036726923436"
 
-# Braunjohan -- family, 3 bearer(s) in the batches
+# Braunjohan -- family, 4 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Braunjohan"
@@ -106,21 +106,7 @@ Q141250225	P734	LAST	S2600	"6000000006436219130"
 #   Q141249602 Fredrika Ulrika Eleonora von Braunjohan: P734 family name = the item just created
 Q141249602	P734	LAST	S2600	"6000000008508010957"
 
-# Gitlestad -- family, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gitlestad"
-LAST	Len	"Gitlestad"
-#   set the mul label to "Gitlestad"
-LAST	Lmul	"Gitlestad"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141442299 Guttorm Dyresson Gitlestad: P734 family name = the item just created
-Q141442299	P734	LAST	S2600	"6000000036337023200"
-
-# Johannessen -- patronymic, 2 bearer(s) in the batches
+# Johannessen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Johannessen"
@@ -142,7 +128,7 @@ Q141198428	P5056	LAST	P144	Q141224249	S2600	"6000000019384694298"
 #   Q141217390 Johan Johannessen Obrestad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216387 Johannes Svensen Obrestad
 Q141217390	P5056	LAST	P144	Q141216387	S2600	"6000000206974233871"
 
-# Syvertsen -- patronymic, 2 bearer(s) in the batches
+# Syvertsen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Syvertsen"
@@ -162,7 +148,7 @@ Q138474188	P5056	LAST	P144	Q141223961	S2600	"6000000021197598122"
 #   Q141353769 Tobias Kristian Syvertsen Nyvold: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223961 Syvert Kristian Hansen Nyvold
 Q141353769	P5056	LAST	P144	Q141223961	S2600	"6000000065232055905"
 
-# Broxvik -- family, 1 bearer(s) in the batches
+# Broxvik -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Broxvik"
@@ -176,7 +162,7 @@ LAST	P31	Q101352
 #   Q141224002 Brita Ulfsparre af Broxvik: P734 family name = the item just created
 Q141224002	P734	LAST	S2600	"6000000006127621094"
 
-# Eidland -- family, 1 bearer(s) in the batches
+# Eidland -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Eidland"
@@ -190,7 +176,21 @@ LAST	P31	Q101352
 #   Q141442273 Astrid Olsdatter Eidland: P734 family name = the item just created
 Q141442273	P734	LAST	S2600	"6000000003492072736"
 
-# Honnon -- family, 1 bearer(s) in the batches
+# Gitlestad -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gitlestad"
+LAST	Len	"Gitlestad"
+#   set the mul label to "Gitlestad"
+LAST	Lmul	"Gitlestad"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141442299 Guttorm Dyresson Gitlestad: P734 family name = the item just created
+Q141442299	P734	LAST	S2600	"6000000036337023200"
+
+# Honnon -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Honnon"
@@ -204,24 +204,10 @@ LAST	P31	Q101352
 #   Q141440534 Catharina Honnon: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141440534	P734	LAST	P3831	Q28418670	S2600	"6000000008206446135"
 
-# Osmundson -- patronymic, 1 bearer(s) in the batches
+# Sørenson -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Osmundson"
-LAST	Len	"Osmundson"
-#   set the mul label to "Osmundson"
-LAST	Lmul	"Osmundson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q7107242 Osmund
-LAST	P144	Q7107242
-
-# Sørenson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Sørenson"
+#   the item just created: set the en label to "Sørenson"
 LAST	Len	"Sørenson"
 #   set the mul label to "Sørenson"
 LAST	Lmul	"Sørenson"
@@ -236,24 +222,10 @@ LAST	P144	Q50875453
 #   Q141219069 Søren Sørenson Gjesdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141419904 Søren Ådneson Helland
 Q141219069	P5056	LAST	P144	Q141419904	S2600	"6000000003095047808"
 
-# Tjerandson -- patronymic, 1 bearer(s) in the batches
+# Tollefsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Tjerandson"
-LAST	Len	"Tjerandson"
-#   set the mul label to "Tjerandson"
-LAST	Lmul	"Tjerandson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q12006492
-LAST	P144	Q12006492
-
-# Tollefsdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Tollefsdatter"
+#   the item just created: set the en label to "Tollefsdatter"
 LAST	Len	"Tollefsdatter"
 #   set the mul label to "Tollefsdatter"
 LAST	Lmul	"Tollefsdatter"
@@ -268,21 +240,47 @@ LAST	P144	Q30640453
 #   Q141216406 Tabitha Tollefsdatter Johnson: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200112 Tollef Pederson Tunheim
 Q141216406	P5056	LAST	P144	Q141200112	S2600	"6000000008262061116"
 
-# 1253 more name items are needed and wait for a later
+# Anbjørnsen -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Anbjørnsen"
+LAST	Len	"Anbjørnsen"
+#   set the mul label to "Anbjørnsen"
+LAST	Lmul	"Anbjørnsen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+
+# Baltsarsson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Baltsarsson"
+LAST	Len	"Baltsarsson"
+#   set the mul label to "Baltsarsson"
+LAST	Lmul	"Baltsarsson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q23048884 Baltzar
+LAST	P144	Q23048884
+
+# 1254 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   III (given), 17 bearer(s)
-#   IV (given), 12 bearer(s)
-#   Of (given), 10 bearer(s)
-#   Raustad (family), 8 bearer(s)
-#   Talgje (family), 7 bearer(s)
-#   und (family), 7 bearer(s)
-#   . (family), 6 bearer(s)
-#   Count (given), 5 bearer(s)
-#   of (given), 5 bearer(s)
-#   - (family), 4 bearer(s)
-#   Borsok (family), 4 bearer(s)
-#   Komnene (family), 4 bearer(s)
-#   ... and 1241 more
+#   Friderichsdatter (patronymic), 1 bearer(s)
+#   Hieronymidotter (patronymic), 1 bearer(s)
+#   Jakobson (patronymic), 1 bearer(s)
+#   Jørgina (given), 1 bearer(s)
+#   Lennartsson (patronymic), 1 bearer(s)
+#   Olavsd (patronymic), 1 bearer(s)
+#   Ormson (patronymic), 1 bearer(s)
+#   Osmundson (patronymic), 1 bearer(s)
+#   Osten (given), 1 bearer(s)
+#   Pehrsdotter (patronymic), 1 bearer(s)
+#   Phragmenia (family), 1 bearer(s)
+#   Rabenia (family), 1 bearer(s)
+#   ... and 1242 more
 
 
 # ======================================================================
@@ -352,8 +350,8 @@ Q141442240	P460	Q141283710
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 181 edits; 1899 edits held for a later run
-#   across 368 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 251 edits; 1664 edits held for a later run
+#   across 312 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
 #   Q141442384 NN: set the ja label to "ヘルセ・ファレソン・ブレ"
 Q141442384	Lja	"ヘルセ・ファレソン・ブレ"
@@ -361,227 +359,6 @@ Q141442384	Lja	"ヘルセ・ファレソン・ブレ"
 Q141442384	Lzh	"赫尔塞·法莱松·布雷"
 #   set the ko label to "헤르세 파레손 부레"
 Q141442384	Lko	"헤르세 파레손 부레"
-#   Q141442362 Åsa Asbjørnsdotter Hestad: add a mul alias "Åsa Asbjørnsdotter Stordrange"
-Q141442362	Amul	"Åsa Asbjørnsdotter Stordrange"
-#   Q141442345 Torborg Johannesdatter Bratland: add a mul alias "Torborg Johannesdatter Johannesdatter"
-Q141442345	Amul	"Torborg Johannesdatter Johannesdatter"
-#   add a mul alias "Taletta Tollaksdatter Sørbø"
-Q141442344	Amul	"Taletta Tollaksdatter Sørbø"
-#   add a mul alias "Peder Pederson Folkvår"
-Q141442336	Amul	"Peder Pederson Folkvår"
-#   Q141442335 Peder Belestson Degn: add a mul alias "Peder Belestson Lauvsnes"
-Q141442335	Amul	"Peder Belestson Lauvsnes"
-#   Q141442332 Njell Larsson Edland: add a mul alias "Njell Larsson Oftedal"
-Q141442332	Amul	"Njell Larsson Oftedal"
-#   Q141442329 Marit Hansdatter Reiestad: add a mul alias "Marit Hansdatter Hansdatter"
-Q141442329	Amul	"Marit Hansdatter Hansdatter"
-#   Q141442321 Kirsten Jensdatter L Vatne i Høyland: add a mul alias "Kirsten Jensdatter Jensdatter"
-Q141442321	Amul	"Kirsten Jensdatter Jensdatter"
-#   Q141442319 Katarina Magdalena Snellman: add a mul alias "Katarina Magdalena Chydenius"
-Q141442319	Amul	"Katarina Magdalena Chydenius"
-#   add a mul alias "Herman Schlyter"
-Q141442305	Amul	"Herman Schlyter"
-#   Q141442301 Helena Andrietta Ström: add a mul alias "Helena Andrietta Grundén"
-Q141442301	Amul	"Helena Andrietta Grundén"
-#   add a mul alias "Eli Eriksdatter Eriksdatter"
-Q141442292	Amul	"Eli Eriksdatter Eriksdatter"
-#   add a mul alias "Carolus Månsson"
-Q141442287	Amul	"Carolus Månsson"
-#   add a mul alias "Carl Axel Rangel"
-Q141442283	Amul	"Carl Axel Rangel"
-#   add a mul alias "Berit Tjerandsdatter Tjerandsdatter"
-Q141442279	Amul	"Berit Tjerandsdatter Tjerandsdatter"
-#   Q141442275 Barbara Jeanne Bring: add a mul alias "Barbara Jeanne Hanson"
-Q141442275	Amul	"Barbara Jeanne Hanson"
-#   Q141442274 Aurora Sofia Kullberg: add a mul alias "Aurora Sofia Jacobsson"
-Q141442274	Amul	"Aurora Sofia Jacobsson"
-#   Q141442271 Anna Rasmusdtr. Li: add a mul alias "Anna Rasmusdtr. Li"
-Q141442271	Amul	"Anna Rasmusdtr. Li"
-#   add a mul alias "Alette Hansdatter"
-Q141442264	Amul	"Alette Hansdatter"
-#   Q98967470: Isabel Fraunceys (Francis|Frauncis), Heiress of Giffords Hall -> Isabel Fraunceys   + Isabel Francis | Isabel Frauncis
-Q98967470	Len	"Isabel Fraunceys, Heiress of Giffords Hall"
-Q98967470	Lmul	"Isabel Fraunceys"
-Q98967470	Amul	"Isabel Francis"
-Q98967470	Amul	"Isabel Frauncis"
-Q98967470	Lnl	"Isabel Fraunceys"
-#   Q98967461: Isabel|Elizabeth Bendysshe -> Isabel Bendysshe   + Elizabeth Bendysshe
-Q98967461	Len	"Isabel Bendysshe"
-Q98967461	Lmul	"Isabel Bendysshe"
-Q98967461	Amul	"Elizabeth Bendysshe"
-Q98967461	Lnl	"Isabel Bendysshe"
-#   Q98962450: Jos|Jodokus Alber -> Jos Alber   + Jodokus Alber
-Q98962450	Len	"Jos Alber"
-Q98962450	Lmul	"Jos Alber"
-Q98962450	Amul	"Jodokus Alber"
-Q98962450	Lnl	"Jos Alber"
-#   Q98961978: Jane|Joan Gifford, of Itchell -> Jane Gifford, of Itchell   + Joan Gifford, of Itchell
-Q98961978	Len	"Jane Gifford, of Itchell"
-Q98961978	Lmul	"Jane Gifford, of Itchell"
-Q98961978	Amul	"Joan Gifford, of Itchell"
-Q98961978	Lnl	"Jane Gifford, of Itchell"
-#   Q98961229: Agnes|Anne Parker -> Agnes Parker   + Anne Parker
-Q98961229	Len	"Agnes Parker"
-Q98961229	Lmul	"Agnes Parker"
-Q98961229	Amul	"Anne Parker"
-Q98961229	Lnl	"Agnes Parker"
-#   Q98961125: Anne|Ann Mellish -> Anne Mellish   + Ann Mellish
-Q98961125	Len	"Anne Mellish"
-Q98961125	Lmul	"Anne Mellish"
-Q98961125	Amul	"Ann Mellish"
-Q98961125	Lnl	"Anne Mellish"
-#   Q98960292: Grace|Gracia -> Grace   + Gracia
-Q98960292	Len	"Grace"
-Q98960292	Lmul	"Grace"
-Q98960292	Amul	"Gracia"
-Q98960292	Lnl	"Grace"
-#   Q98960285: Grace|Grecia -> Grace   + Grecia
-Q98960285	Len	"Grace"
-Q98960285	Lmul	"Grace"
-Q98960285	Amul	"Grecia"
-Q98960285	Lnl	"Grace"
-#   Q98960270: Godeheut|Godehold de Toeni -> Godeheut de Toeni   + Godehold de Toeni
-Q98960270	Len	"Godeheut de Toeni"
-Q98960270	Lmul	"Godeheut de Toeni"
-Q98960270	Amul	"Godehold de Toeni"
-Q98960270	Lnl	"Godeheut de Toeni"
-#   Q98698633: Eylart|Elert von Kruse -> Eylart von Kruse   + Elert von Kruse
-Q98698633	Len	"Eylart von Kruse"
-Q98698633	Lmul	"Eylart von Kruse"
-Q98698633	Amul	"Elert von Kruse"
-Q98698633	Lnl	"Eylart von Kruse"
-#   Q98698468: Maia|Maret Tuve -> Maia Tuve   + Maret Tuve
-Q98698468	Len	"Maia Tuve"
-Q98698468	Lmul	"Maia Tuve"
-Q98698468	Amul	"Maret Tuve"
-Q98698468	Lnl	"Maia Tuve"
-#   Q98698463: Hannes|Johannes Maydel, Lord of Valtu -> Hannes Maydel, Lord of Valtu   + Johannes Maydel, Lord of Valtu
-Q98698463	Len	"Hannes Maydel, Lord of Valtu"
-Q98698463	Lmul	"Hannes Maydel, Lord of Valtu"
-Q98698463	Amul	"Johannes Maydel, Lord of Valtu"
-Q98698463	Lnl	"Hannes Maydel, Lord of Valtu"
-#   Q98697811: (Johannes|Jon) -> Johannes   + Jon
-Q98697811	Len	"Johannes"
-Q98697811	Lmul	"Johannes"
-Q98697811	Amul	"Jon"
-#   Q98697729: Aage|Åke Ingvarsson [Bät], Lord of Bjerghusaholm -> Aage Ingvarsson [Bät], Lord of Bjerghusaholm   + Åke Ingvarsson [Bät], Lord of Bjerghusaholm
-Q98697729	Len	"Aage Ingvarsson [Bät], Lord of Bjerghusaholm"
-Q98697729	Lmul	"Aage Ingvarsson [Bät], Lord of Bjerghusaholm"
-Q98697729	Amul	"Åke Ingvarsson [Bät], Lord of Bjerghusaholm"
-Q98697729	Lnl	"Aage Ingvarsson [Bät], Lord of Bjerghusaholm"
-#   Q98697706: knight Knud|Knut Gislason 'April' -> Knud Gislason 'April'   + Knut Gislason 'April'
-Q98697706	Len	"Knud Gislason 'April'"
-Q98697706	Lmul	"Knud Gislason 'April'"
-Q98697706	Amul	"Knut Gislason 'April'"
-Q98697706	Lnl	"Knud Gislason 'April'"
-#   Q98697698: Merete|Margareta Pedersdotter af Dollefjelde -> Merete Pedersdotter af Dollefjelde   + Margareta Pedersdotter af Dollefjelde
-Q98697698	Len	"Merete Pedersdotter af Dollefjelde"
-Q98697698	Lmul	"Merete Pedersdotter af Dollefjelde"
-Q98697698	Amul	"Margareta Pedersdotter af Dollefjelde"
-Q98697698	Lnl	"Merete Pedersdotter af Dollefjelde"
-#   Q98697694: (Thorkild|Tyrgils) -> Thorkild   + Tyrgils
-Q98697694	Len	"Thorkild"
-Q98697694	Lmul	"Thorkild"
-Q98697694	Amul	"Tyrgils"
-#   Q98697686: Estrid|Sestrid Knudsdotter -> Estrid Knudsdotter   + Sestrid Knudsdotter
-Q98697686	Len	"Estrid Knudsdotter"
-Q98697686	Lmul	"Estrid Knudsdotter"
-Q98697686	Amul	"Sestrid Knudsdotter"
-Q98697686	Lnl	"Estrid Knudsdotter"
-#   Q98103245: Amy|Amicia Danvers -> Amy Danvers   + Amicia Danvers
-Q98103245	Len	"Amy Danvers"
-Q98103245	Lmul	"Amy Danvers"
-Q98103245	Amul	"Amicia Danvers"
-Q98103245	Lnl	"Amy Danvers"
-#   Q98101021: Phoebe|Phebe Hicks -> Phoebe Hicks   + Phebe Hicks
-Q98101021	Len	"Phoebe Hicks"
-Q98101021	Lmul	"Phoebe Hicks"
-Q98101021	Amul	"Phebe Hicks"
-Q98101021	Lnl	"Phoebe Hicks"
-#   Q98100982: Macuth|Matthew Pratt -> Macuth Pratt   + Matthew Pratt
-Q98100982	Len	"Macuth Pratt"
-Q98100982	Lmul	"Macuth Pratt"
-Q98100982	Amul	"Matthew Pratt"
-Q98100982	Lnl	"Macuth Pratt"
-#   Q98072377: Thomas Tue|Tew -> Thomas Tue   + Thomas Tew
-Q98072377	Len	"Thomas Tue"
-Q98072377	Lmul	"Thomas Tue"
-Q98072377	Amul	"Thomas Tew"
-Q98072377	Lnl	"Thomas Tue"
-#   Q98072376: Joan Tue|Tew -> Joan Tue   + Joan Tew
-Q98072376	Len	"Joan Tue"
-Q98072376	Lmul	"Joan Tue"
-Q98072376	Amul	"Joan Tew"
-Q98072376	Lnl	"Joan Tue"
-#   Q97783426: Susanna|Giovanna Tocco -> Susanna Tocco   + Giovanna Tocco
-Q97783426	Len	"Susanna Tocco"
-Q97783426	Lmul	"Susanna Tocco"
-Q97783426	Amul	"Giovanna Tocco"
-Q97783426	Lnl	"Susanna Tocco"
-#   Q97783235: Ysoul|Iseul de Sully, Dame de Varennes -> Ysoul de Sully, Dame de Varennes   + Iseul de Sully, Dame de Varennes
-Q97783235	Len	"Ysoul de Sully, Dame de Varennes"
-Q97783235	Lmul	"Ysoul de Sully, Dame de Varennes"
-Q97783235	Amul	"Iseul de Sully, Dame de Varennes"
-Q97783235	Lnl	"Ysoul de Sully, Dame de Varennes"
-#   Q97570404: Mary|Maria Clitheroe (Cliderow) -> Mary Clitheroe (Cliderow)   + Maria Clitheroe (Cliderow)
-Q97570404	Len	"Mary Clitheroe (Cliderow)"
-Q97570404	Lmul	"Mary Clitheroe (Cliderow)"
-Q97570404	Amul	"Maria Clitheroe (Cliderow)"
-#   Q97568633: Elizabeth|Alicia Clere, of Stokesby -> Elizabeth Clere, of Stokesby   + Alicia Clere, of Stokesby
-Q97568633	Len	"Elizabeth Clere, of Stokesby"
-Q97568633	Lmul	"Elizabeth Clere, of Stokesby"
-Q97568633	Amul	"Alicia Clere, of Stokesby"
-Q97568633	Lnl	"Elizabeth Clere, of Stokesby"
-#   Q97568630: Ellen|Ela Narborough (Narborow) -> Ellen Narborough (Narborow)   + Ela Narborough (Narborow)
-Q97568630	Len	"Ellen Narborough (Narborow)"
-Q97568630	Lmul	"Ellen Narborough (Narborow)"
-Q97568630	Amul	"Ela Narborough (Narborow)"
-#   Q97568624: Ela|Eleanor Spelman -> Ela Spelman   + Eleanor Spelman
-Q97568624	Len	"Ela Spelman"
-Q97568624	Lmul	"Ela Spelman"
-Q97568624	Amul	"Eleanor Spelman"
-Q97568624	Lnl	"Ela Spelman"
-#   Q97089419: Ellen|Eleanor|Helen Pell -> Ellen Pell   + Eleanor Pell | Helen Pell
-Q97089419	Len	"Ellen Pell"
-Q97089419	Lmul	"Ellen Pell"
-Q97089419	Amul	"Eleanor Pell"
-Q97089419	Amul	"Helen Pell"
-Q97089419	Lnl	"Ellen Pell"
-#   Q97088959: Robert Hazleton (Haselton|Haseltine) -> Robert Hazleton   + Robert Haselton | Robert Haseltine
-Q97088959	Len	"Robert Hazleton"
-Q97088959	Lmul	"Robert Hazleton"
-Q97088959	Amul	"Robert Haselton"
-Q97088959	Amul	"Robert Haseltine"
-#   Q97088949: Mercy Hazleton (Haselton|Haseltine) -> Mercy Hazleton   + Mercy Haselton | Mercy Haseltine
-Q97088949	Len	"Mercy Hazleton"
-Q97088949	Lmul	"Mercy Hazleton"
-Q97088949	Amul	"Mercy Haselton"
-Q97088949	Amul	"Mercy Haseltine"
-#   Q97014050: Gerotheus|Jerotheus von Rathsamhausen zum Stein -> Gerotheus von Rathsamhausen zum Stein   + Jerotheus von Rathsamhausen zum Stein
-Q97014050	Len	"Gerotheus von Rathsamhausen zum Stein"
-Q97014050	Lmul	"Gerotheus von Rathsamhausen zum Stein"
-Q97014050	Amul	"Jerotheus von Rathsamhausen zum Stein"
-Q97014050	Lnl	"Gerotheus von Rathsamhausen zum Stein"
-#   Q97008391: Helen|Ellen Skipwith -> Helen Skipwith   + Ellen Skipwith
-Q97008391	Len	"Helen Skipwith"
-Q97008391	Lmul	"Helen Skipwith"
-Q97008391	Amul	"Ellen Skipwith"
-Q97008391	Lnl	"Helen Skipwith"
-#   Q96778566: Isaak Lambert Thyssen|Thissen -> Isaak Lambert Thyssen   + Isaak Lambert Thissen
-Q96778566	Len	"Isaak Lambert Thyssen"
-Q96778566	Lmul	"Isaak Lambert Thyssen"
-Q96778566	Amul	"Isaak Lambert Thissen"
-Q96778566	Lnl	"Isaak Lambert Thyssen"
-#   Q96778115: John|Thomas Stottusbury, of Sulgrave -> John Stottusbury, of Sulgrave   + Thomas Stottusbury, of Sulgrave
-Q96778115	Len	"John Stottusbury, of Sulgrave"
-Q96778115	Lmul	"John Stottusbury, of Sulgrave"
-Q96778115	Amul	"Thomas Stottusbury, of Sulgrave"
-Q96778115	Lnl	"John Stottusbury, of Sulgrave"
-#   Q96776087: Elizabeth Paine (Payne|Penn) -> Elizabeth Paine   + Elizabeth Payne | Elizabeth Penn
-Q96776087	Len	"Elizabeth Paine"
-Q96776087	Lmul	"Elizabeth Paine"
-Q96776087	Amul	"Elizabeth Payne"
-Q96776087	Amul	"Elizabeth Penn"
 #   Q96739460: Michal|Michell|Micaell Jennison -> Michal Jennison   + Michell Jennison | Micaell Jennison
 Q96739460	Len	"Michal Jennison"
 Q96739460	Lmul	"Michal Jennison"
@@ -598,6 +375,306 @@ Q96621681	Len	"Mary Flood"
 Q96621681	Lmul	"Mary Flood"
 Q96621681	Amul	"Mary fford"
 Q96621681	Lnl	"Mary Flood"
+#   Q96480443: Sybill|Sibyl Fowler -> Sybill Fowler   + Sibyl Fowler
+Q96480443	Len	"Sybill Fowler"
+Q96480443	Lmul	"Sybill Fowler"
+Q96480443	Amul	"Sibyl Fowler"
+Q96480443	Lnl	"Sybill Fowler"
+#   Q96480441: Alexander|Stephen Cope -> Alexander Cope   + Stephen Cope
+Q96480441	Len	"Alexander Cope"
+Q96480441	Lmul	"Alexander Cope"
+Q96480441	Amul	"Stephen Cope"
+Q96480441	Lnl	"Alexander Cope"
+#   Q96375588: Anne|Agnes Welsh -> Anne Welsh   + Agnes Welsh
+Q96375588	Len	"Anne Welsh"
+Q96375588	Lmul	"Anne Welsh"
+Q96375588	Amul	"Agnes Welsh"
+Q96375588	Lnl	"Anne Welsh"
+#   Q96345503: NN Huls (Hulse|Holes), of Norbury -> NN Huls   + NN Hulse | NN Holes
+Q96345503	Len	"NN Huls, of Norbury"
+Q96345503	Lmul	"NN Huls"
+Q96345503	Amul	"NN Hulse"
+Q96345503	Amul	"NN Holes"
+Q96345503	Lnl	"NN Huls"
+#   Q96337610: Jane|Joanna Syms -> Jane Syms   + Joanna Syms
+Q96337610	Len	"Jane Syms"
+Q96337610	Lmul	"Jane Syms"
+Q96337610	Amul	"Joanna Syms"
+Q96337610	Lnl	"Jane Syms"
+#   Q96317839: Johann Ludwig Betulius|Birkner -> Johann Ludwig Betulius   + Johann Ludwig Birkner
+Q96317839	Len	"Johann Ludwig Betulius"
+Q96317839	Lmul	"Johann Ludwig Betulius"
+Q96317839	Amul	"Johann Ludwig Birkner"
+Q96317839	Lnl	"Johann Ludwig Betulius"
+#   Q96317833: Anna Margarete Werner|Woerner -> Anna Margarete Werner   + Anna Margarete Woerner
+Q96317833	Len	"Anna Margarete Werner"
+Q96317833	Lmul	"Anna Margarete Werner"
+Q96317833	Amul	"Anna Margarete Woerner"
+Q96317833	Lnl	"Anna Margarete Werner"
+Q96316545	Len	"Georg Philipp Sommerlath"
+Q96316545	Lmul	"Georg Philipp Sommerlath"
+Q96316545	Amul	"Georg Philipp Sommerlad"
+#   Q96316545: Georg Philipp Sommerlath|Sommerlad -> Georg Philipp Sommerlath   + Georg Philipp Sommerlad
+Q96316545	Lcs	"Georg Philipp Sommerlath"
+Q96316545	Lnl	"Georg Philipp Sommerlath"
+#   Q96305259: Urania|Lurany De Forest -> Urania De Forest   + Lurany De Forest
+Q96305259	Len	"Urania De Forest"
+Q96305259	Lmul	"Urania De Forest"
+Q96305259	Amul	"Lurany De Forest"
+Q96305259	Lnl	"Urania De Forest"
+#   Q96304881: Agnes|Anne Griffith of Plas Newydd -> Agnes Griffith of Plas Newydd   + Anne Griffith of Plas Newydd
+Q96304881	Len	"Agnes Griffith of Plas Newydd"
+Q96304881	Lmul	"Agnes Griffith of Plas Newydd"
+Q96304881	Amul	"Anne Griffith of Plas Newydd"
+Q96304881	Lnl	"Agnes Griffith of Plas Newydd"
+#   Q96290639: William|Wilhelmina Hathorn Stewart -> William Hathorn Stewart   + Wilhelmina Hathorn Stewart
+Q96290639	Len	"William Hathorn Stewart"
+Q96290639	Lmul	"William Hathorn Stewart"
+Q96290639	Amul	"Wilhelmina Hathorn Stewart"
+Q96290639	Lnl	"William Hathorn Stewart"
+#   Q96290622: Capt. Henry|John Davidge -> Capt. Henry Davidge   + Capt. John Davidge
+Q96290622	Len	"Capt. Henry Davidge"
+Q96290622	Lmul	"Capt. Henry Davidge"
+Q96290622	Amul	"Capt. John Davidge"
+Q96290622	Lnl	"Capt. Henry Davidge"
+#   Q96245029: Jolande|Yolande de Bar, Heiress of Ancerville -> Jolande de Bar, Heiress of Ancerville   + Yolande de Bar, Heiress of Ancerville
+Q96245029	Len	"Jolande de Bar, Heiress of Ancerville"
+Q96245029	Lmul	"Jolande de Bar, Heiress of Ancerville"
+Q96245029	Amul	"Yolande de Bar, Heiress of Ancerville"
+Q96245029	Lnl	"Jolande de Bar, Heiress of Ancerville"
+#   Q96244774: Louise|Lievine de Capels (Capelle|Capellen), dame de Westcaple -> Louise de Capels   + Louise de Capelle | Louise de Capellen | Lievine de Capels | Lievine de Capelle | Lievine de Capellen
+Q96244774	Len	"Louise de Capels, dame de Westcaple"
+Q96244774	Lmul	"Louise de Capels"
+Q96244774	Amul	"Louise de Capelle"
+Q96244774	Amul	"Louise de Capellen"
+Q96244774	Amul	"Lievine de Capels"
+Q96244774	Amul	"Lievine de Capelle"
+Q96244774	Amul	"Lievine de Capellen"
+Q96244774	Lnl	"Louise de Capels"
+#   Q96244770: Marguerite|Marie de Créquy -> Marguerite de Créquy   + Marie de Créquy
+Q96244770	Len	"Marguerite de Créquy"
+Q96244770	Lmul	"Marguerite de Créquy"
+Q96244770	Amul	"Marie de Créquy"
+Q96244770	Lnl	"Marguerite de Créquy"
+#   Q96243684: Béatrix|Isabelle de Clisson, Comtesse de Porhöet -> Béatrix de Clisson, Comtesse de Porhöet   + Isabelle de Clisson, Comtesse de Porhöet
+Q96243684	Len	"Béatrix de Clisson, Comtesse de Porhöet"
+Q96243684	Lmul	"Béatrix de Clisson, Comtesse de Porhöet"
+Q96243684	Amul	"Isabelle de Clisson, Comtesse de Porhöet"
+Q96243684	Lnl	"Béatrix de Clisson, Comtesse de Porhöet"
+#   Q96243432: Daniel Tichenor|Titchenal -> Daniel Tichenor   + Daniel Titchenal
+Q96243432	Len	"Daniel Tichenor"
+Q96243432	Lmul	"Daniel Tichenor"
+Q96243432	Amul	"Daniel Titchenal"
+Q96243432	Lnl	"Daniel Tichenor"
+#   Q96243012: Nicholas|John Bray, of Middlesex -> Nicholas Bray, of Middlesex   + John Bray, of Middlesex
+Q96243012	Len	"Nicholas Bray, of Middlesex"
+Q96243012	Lmul	"Nicholas Bray, of Middlesex"
+Q96243012	Amul	"John Bray, of Middlesex"
+Q96243012	Lnl	"Nicholas Bray, of Middlesex"
+#   Q96242393: Cuntz|Konrad von Gross gen. Pfersfelder -> Cuntz von Gross gen. Pfersfelder   + Konrad von Gross gen. Pfersfelder
+Q96242393	Len	"Cuntz von Gross gen. Pfersfelder"
+Q96242393	Lmul	"Cuntz von Gross gen. Pfersfelder"
+Q96242393	Amul	"Konrad von Gross gen. Pfersfelder"
+Q96242393	Lnl	"Cuntz von Gross gen. Pfersfelder"
+#   Q96242317: Hans|Quirin|Kaspar von Sack -> Hans von Sack   + Quirin von Sack | Kaspar von Sack
+Q96242317	Len	"Hans von Sack"
+Q96242317	Lmul	"Hans von Sack"
+Q96242317	Amul	"Quirin von Sack"
+Q96242317	Amul	"Kaspar von Sack"
+Q96242317	Lnl	"Hans von Sack"
+#   Q96241703: Nicolas|Claes van Aelteren -> Nicolas van Aelteren   + Claes van Aelteren
+Q96241703	Len	"Nicolas van Aelteren"
+Q96241703	Lmul	"Nicolas van Aelteren"
+Q96241703	Amul	"Claes van Aelteren"
+Q96241703	Lnl	"Nicolas van Aelteren"
+#   Q96241680: Ida|Aleydis Stas -> Ida Stas   + Aleydis Stas
+Q96241680	Len	"Ida Stas"
+Q96241680	Lmul	"Ida Stas"
+Q96241680	Amul	"Aleydis Stas"
+Q96241680	Lnl	"Ida Stas"
+#   Q96241643: Elisabeth|Lisbeth Smeyers alias de Meyere -> Elisabeth Smeyers alias de Meyere   + Lisbeth Smeyers alias de Meyere
+Q96241643	Len	"Elisabeth Smeyers alias de Meyere"
+Q96241643	Lmul	"Elisabeth Smeyers alias de Meyere"
+Q96241643	Amul	"Lisbeth Smeyers alias de Meyere"
+Q96241643	Lnl	"Elisabeth Smeyers alias de Meyere"
+#   Q96240837 Euphrosyne de Gdańsk: set the mul label to "Euphrosyne"
+Q96240837	Lmul	"Euphrosyne"
+#   add a mul alias "Euphrosyne of Poland"
+Q96240837	Amul	"Euphrosyne of Poland"
+#   add a mul alias "Euphrosyne de Gdańsk"
+Q96240837	Amul	"Euphrosyne de Gdańsk"
+#   Q96240837: 'Euphrosyne' has no ja/zh/ko label
+#   Q96240837: set the ja label
+Q96240837	Lja	"エウプロシネ"
+#   set the ja label to "エウプロシネ"
+Q96240837	Lja	"エウプロシネ"
+#   Q96240837: set the zh label
+Q96240837	Lzh	"厄普罗西内"
+#   set the zh label to "厄普罗西内"
+Q96240837	Lzh	"厄普罗西内"
+#   Q96240837: set the ko label
+Q96240837	Lko	"유프로시네"
+#   set the ko label to "유프로시네"
+Q96240837	Lko	"유프로시네"
+#   Q96240751: Kirstine|Christina de Ager (af Aagaard) -> Kirstine de Ager (af Aagaard)   + Christina de Ager (af Aagaard)
+Q96240751	Len	"Kirstine de Ager (af Aagaard)"
+Q96240751	Lmul	"Kirstine de Ager (af Aagaard)"
+Q96240751	Amul	"Christina de Ager (af Aagaard)"
+#   Q96240714: Berete|Birgitte til Krogholm -> Berete til Krogholm   + Birgitte til Krogholm
+Q96240714	Len	"Berete til Krogholm"
+Q96240714	Lmul	"Berete til Krogholm"
+Q96240714	Amul	"Birgitte til Krogholm"
+Q96240714	Lnb	"Berete til Krogholm"
+Q96240714	Lnl	"Berete til Krogholm"
+#   Q96238938: Mihály|Frank Héderváry de Hédervár -> Mihály Héderváry de Hédervár   + Frank Héderváry de Hédervár
+Q96238938	Len	"Mihály Héderváry de Hédervár"
+Q96238938	Lmul	"Mihály Héderváry de Hédervár"
+Q96238938	Amul	"Frank Héderváry de Hédervár"
+Q96238938	Lnl	"Mihály Héderváry de Hédervár"
+#   Q96238144: Joan|Julian (or Minell) Sambnel -> Joan (or Minell) Sambnel   + Julian (or Minell) Sambnel
+Q96238144	Len	"Joan (or Minell) Sambnel"
+Q96238144	Lmul	"Joan (or Minell) Sambnel"
+Q96238144	Amul	"Julian (or Minell) Sambnel"
+#   Q96238111: Elizabeth|Margaret Reynell -> Elizabeth Reynell   + Margaret Reynell
+Q96238111	Len	"Elizabeth Reynell"
+Q96238111	Lmul	"Elizabeth Reynell"
+Q96238111	Amul	"Margaret Reynell"
+Q96238111	Lnl	"Elizabeth Reynell"
+#   Q96238106: Margaret|Mary Hamley -> Margaret Hamley   + Mary Hamley
+Q96238106	Len	"Margaret Hamley"
+Q96238106	Lmul	"Margaret Hamley"
+Q96238106	Amul	"Mary Hamley"
+Q96238106	Lnl	"Margaret Hamley"
+#   Q96238052: Matilda|Mabilla Falwell (Fawell) -> Matilda Falwell (Fawell)   + Mabilla Falwell (Fawell)
+Q96238052	Len	"Matilda Falwell (Fawell)"
+Q96238052	Lmul	"Matilda Falwell (Fawell)"
+Q96238052	Amul	"Mabilla Falwell (Fawell)"
+#   Q96237703: Ellyne|Ellen -> Ellyne   + Ellen
+Q96237703	Len	"Ellyne"
+Q96237703	Lmul	"Ellyne"
+Q96237703	Amul	"Ellen"
+Q96237703	Lnl	"Ellyne"
+#   Q96235875: Katherine|Catherine -> Katherine   + Catherine
+Q96235875	Len	"Katherine"
+Q96235875	Lmul	"Katherine"
+Q96235875	Amul	"Catherine"
+Q96235875	Lnl	"Katherine"
+#   Q96235871: Katherine|Catherine Debnam -> Katherine Debnam   + Catherine Debnam
+Q96235871	Len	"Katherine Debnam"
+Q96235871	Lmul	"Katherine Debnam"
+Q96235871	Amul	"Catherine Debnam"
+Q96235871	Lnl	"Katherine Debnam"
+#   Q96224429: Mary|Joan Thomas -> Mary Thomas   + Joan Thomas
+Q96224429	Len	"Mary Thomas"
+Q96224429	Lmul	"Mary Thomas"
+Q96224429	Amul	"Joan Thomas"
+Q96224429	Lnl	"Mary Thomas"
+#   Q96224387: Joanne|Joyce White -> Joanne White   + Joyce White
+Q96224387	Len	"Joanne White"
+Q96224387	Lmul	"Joanne White"
+Q96224387	Amul	"Joyce White"
+Q96224387	Lnl	"Joanne White"
+#   Q96224299: Isabel|Anne -> Isabel   + Anne
+Q96224299	Len	"Isabel"
+Q96224299	Lmul	"Isabel"
+Q96224299	Amul	"Anne"
+Q96224299	Lnl	"Isabel"
+#   Q96224008: Austin|Augustine Kilham (Killam) -> Austin Kilham (Killam)   + Augustine Kilham (Killam)
+Q96224008	Len	"Austin Kilham (Killam)"
+Q96224008	Lmul	"Austin Kilham (Killam)"
+Q96224008	Amul	"Augustine Kilham (Killam)"
+#   Q96223839: Sarah Kilkam (Killem|Killum|Killam) -> Sarah Kilkam   + Sarah Killem | Sarah Killum | Sarah Killam
+Q96223839	Len	"Sarah Kilkam"
+Q96223839	Lmul	"Sarah Kilkam"
+Q96223839	Amul	"Sarah Killem"
+Q96223839	Amul	"Sarah Killum"
+Q96223839	Amul	"Sarah Killam"
+#   Q96223808: Sarah|Sally Whitcher (Whicher) -> Sarah Whitcher (Whicher)   + Sally Whitcher (Whicher)
+Q96223808	Len	"Sarah Whitcher (Whicher)"
+Q96223808	Lmul	"Sarah Whitcher (Whicher)"
+Q96223808	Amul	"Sally Whitcher (Whicher)"
+#   Q96223762: Louisa|Elizabeth Long -> Louisa Long   + Elizabeth Long
+Q96223762	Len	"Louisa Long"
+Q96223762	Lmul	"Louisa Long"
+Q96223762	Amul	"Elizabeth Long"
+Q96223762	Lnl	"Louisa Long"
+#   Q96223603: David|Samuel Stone -> David Stone   + Samuel Stone
+Q96223603	Len	"David Stone"
+Q96223603	Lmul	"David Stone"
+Q96223603	Amul	"Samuel Stone"
+Q96223603	Lnl	"David Stone"
+#   Q96221918: Dietrich Metzler|Seckel|Büttel -> Dietrich Metzler   + Dietrich Seckel | Dietrich Büttel
+Q96221918	Len	"Dietrich Metzler"
+Q96221918	Lmul	"Dietrich Metzler"
+Q96221918	Amul	"Dietrich Seckel"
+Q96221918	Amul	"Dietrich Büttel"
+Q96221918	Lnl	"Dietrich Metzler"
+#   Q96221454: Johannes|Hans Keller -> Johannes Keller   + Hans Keller
+Q96221454	Len	"Johannes Keller"
+Q96221454	Lmul	"Johannes Keller"
+Q96221454	Amul	"Hans Keller"
+Q96221454	Lnl	"Johannes Keller"
+#   Q96217392: Elizabeth|Alice Hall -> Elizabeth Hall   + Alice Hall
+Q96217392	Len	"Elizabeth Hall"
+Q96217392	Lmul	"Elizabeth Hall"
+Q96217392	Amul	"Alice Hall"
+Q96217392	Lnl	"Elizabeth Hall"
+#   Q96216881: Jane|Joane Newton -> Jane Newton   + Joane Newton
+Q96216881	Len	"Jane Newton"
+Q96216881	Lmul	"Jane Newton"
+Q96216881	Amul	"Joane Newton"
+Q96216881	Lnl	"Jane Newton"
+#   Q96213638: Ann Bincks (Benckes|Bench) -> Ann Bincks   + Ann Benckes | Ann Bench
+Q96213638	Len	"Ann Bincks"
+Q96213638	Lmul	"Ann Bincks"
+Q96213638	Amul	"Ann Benckes"
+Q96213638	Amul	"Ann Bench"
+#   Q96213566: Johanna|Joan Greeneslade -> Johanna Greeneslade   + Joan Greeneslade
+Q96213566	Len	"Johanna Greeneslade"
+Q96213566	Lmul	"Johanna Greeneslade"
+Q96213566	Amul	"Joan Greeneslade"
+Q96213566	Lnl	"Johanna Greeneslade"
+#   Q96213527: Ruthella Adelaide|Nettie Delande -> Ruthella Adelaide Delande   + Ruthella Nettie Delande
+Q96213527	Len	"Ruthella Adelaide Delande"
+Q96213527	Lmul	"Ruthella Adelaide Delande"
+Q96213527	Amul	"Ruthella Nettie Delande"
+Q96213527	Lnl	"Ruthella Adelaide Delande"
+#   Q96213497: Mercy|Mary Thomas -> Mercy Thomas   + Mary Thomas
+Q96213497	Len	"Mercy Thomas"
+Q96213497	Lmul	"Mercy Thomas"
+Q96213497	Amul	"Mary Thomas"
+Q96213497	Les	"Mercy Thomas"
+Q96213497	Lnl	"Mercy Thomas"
+#   Q96213483: Asahael|Ashael C. Denison -> Asahael C. Denison   + Ashael C. Denison
+Q96213483	Len	"Asahael C. Denison"
+Q96213483	Lmul	"Asahael C. Denison"
+Q96213483	Amul	"Ashael C. Denison"
+Q96213483	Lnl	"Asahael C. Denison"
+#   Q96210045: Mercy|Mary Littlefield -> Mercy Littlefield   + Mary Littlefield
+Q96210045	Len	"Mercy Littlefield"
+Q96210045	Lmul	"Mercy Littlefield"
+Q96210045	Amul	"Mary Littlefield"
+Q96210045	Lnl	"Mercy Littlefield"
+#   Q96209131: Thomas|Robert Thimbleby, of Polham-by-Horncastle -> Thomas Thimbleby, of Polham-by-Horncastle   + Robert Thimbleby, of Polham-by-Horncastle
+Q96209131	Len	"Thomas Thimbleby, of Polham-by-Horncastle"
+Q96209131	Lmul	"Thomas Thimbleby, of Polham-by-Horncastle"
+Q96209131	Amul	"Robert Thimbleby, of Polham-by-Horncastle"
+Q96209131	Lnl	"Thomas Thimbleby, of Polham-by-Horncastle"
+#   Q96209125: Margaret|Elizabeth Savage, of Kinderton -> Margaret Savage, of Kinderton   + Elizabeth Savage, of Kinderton
+Q96209125	Len	"Margaret Savage, of Kinderton"
+Q96209125	Lmul	"Margaret Savage, of Kinderton"
+Q96209125	Amul	"Elizabeth Savage, of Kinderton"
+Q96209125	Lnl	"Margaret Savage, of Kinderton"
+#   Q96209120: William|Richard Hill, of Blore & Court of Hill -> William Hill, of Blore & Court of Hill   + Richard Hill, of Blore & Court of Hill
+Q96209120	Len	"William Hill, of Blore & Court of Hill"
+Q96209120	Lmul	"William Hill, of Blore & Court of Hill"
+Q96209120	Amul	"Richard Hill, of Blore & Court of Hill"
+Q96209120	Lnl	"William Hill, of Blore & Court of Hill"
+#   Q96201964: Joseph|Moses LaFount -> Joseph LaFount   + Moses LaFount
+Q96201964	Len	"Joseph LaFount"
+Q96201964	Lmul	"Joseph LaFount"
+Q96201964	Amul	"Moses LaFount"
+Q96201964	Lnl	"Joseph LaFount"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
