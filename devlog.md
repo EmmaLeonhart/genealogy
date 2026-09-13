@@ -39423,3 +39423,19 @@ produced poor `Forest` and `Descendants` numbers, and the reason differs: a bott
 root-anchored export inside the narrow part, while sparseness gives it a thin ball everywhere.
 `scripts/descent-from.py` already prints this histogram on every run and it has been discarded
 each time. **It is the one property tried today that separates roots rather than failing to.**
+
+## 2026-09-12 — sweep: the three-northern-DFA-roots item is superseded and removed
+
+The item asked for three things and all three are settled:
+
+    6000000227715492839  NN Ulster ancestor   Descendants filed, 1 new -- descent already held
+    6000000227226958932  Dál Fiatach          Descendants filed, 1,073 new
+    6000000227714686873  NN, the forest target Forest filed, 248 new
+
+Its only remaining content was the fourth clause — *attempts off `no-name 6000000000183188387`'s
+existing descendants* — and that is **part 4 of § THE WHOLE PROGRAM**, which is nine balls and
+18,748 new people in. **Deleting the item loses nothing**, because part 4 carries the live half
+and `grep -c` confirms no-name is still tracked.
+
+**The check that made this safe** is the one the Inca un-deletion forced: before removing an item,
+establish where each of its parts now lives. Two were filed, one is elsewhere and still running.

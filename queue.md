@@ -702,24 +702,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
     already held and that is not a reason to stop, per the ruling above.
 
-  - **⛔ THREE NORTHERN EUROPEAN DFA ROOTS, ADDED 2026-09-12.** *"This time focused more on
-    Northern European dfa and having the same complications as the other things."*
-
-        6000000000183188387  no-name          -> attempts off their EXISTING descendants
-
-    **⛔ THE THIRD ONE IS TWO PROFILES AND AN ORDER, NOT ONE JOB.** Verbatim: *"from this person
-    do attempts based on their existing desendants
-    https://www.geni.com/people/no-name/6000000000183188387?through=6000000001233379149 after
-    doing a forest export on https://www.geni.com/people/NN/6000000227714686873"*. So the
-    `Forest` goes on `6000000227714686873` and the sampling is over
-    `6000000000183188387`'s descendants — **different people, and the Forest comes first.**
-
-    *"attempts based on their existing descendants"* is the Monte Carlo over
-    `scripts/descent-from.py`'s enumeration, which is what *existing* points at: the descendants
-    already in the corpus, not a fresh export of them.
-
-    **Positions in the order were NOT stated.** Recorded, not ranked.
-
   Nothing on this list is investigated, measured or seeded until the Wikidata paths are done —
   `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
 
