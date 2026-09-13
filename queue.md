@@ -1433,6 +1433,12 @@ https://www.geni.com/people/%EC%88%9C%ED%97%8C%ED%99%A9%EA%B7%80%EB%B9%84-%EC%97
 
 https://www.geni.com/people/private/6000000028895625641 https://www.wikidata.org/wiki/Q496421
 
+## Forest exports
+
+These are people for forest exports on that I think are underserved but I am not considering part of the main wikidata connections thing
+
+https://www.geni.com/people/NN-Fuca/6000000227739821875
+
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
