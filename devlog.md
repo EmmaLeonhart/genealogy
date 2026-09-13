@@ -40598,3 +40598,28 @@ of three hits climbed, no ball filed. Adasi's reseed Forest, the Aztec banked hi
 Forest, Genghis's Monte Carlo, the six Abul Hamza seeds and the OneTab 19 are all still open on
 the same checks as the last three sweeps, and the standing procedures are excluded by the sweep's
 own rule.
+
+## 2026-09-13 — step 3, hit 1: 1,236 new, from a person the old frame could not reach
+
+`exports/post-merge/export-Descendants-6000000227733569883.ged`, task `6000000227733801822`:
+**1,236 new of 5,000 — 24.7%.**
+
+**The number that matters is not 24.7%, it is that this hit did not exist an hour ago.** The
+uniform sweep read 24 census pages off the same root and its largest descent was 43; this subject
+reads **6,802**. Nothing about the root changed between the two sweeps — only which 40 people
+were drawn. A frame that samples a 156-generation descent uniformly cannot reach the trunk, and
+the trunk is where every exportable person is.
+
+**The three hits, and what each was worth:**
+
+    335866979610006042   9,265   clear against post-merge      -> climbing now
+    6000000054108706099  6,802   clear                         -> 1,236 new, filed
+    6000000023701612980  6,793   COLLISION against post-merge  -> declined
+
+The third is the guard working as designed and at full value: it now sits inside the ball hit 1
+produced, so exporting from it would have bought about one person for a slot. That is the ninth
+and tenth collisions' shape caught *before* the slot rather than after, which is what moving the
+check into the extension was for.
+
+The denylist was rebuilt between hits — `--list exports/post-merge` went 5,000 -> 9,993 as the
+new ball landed — and the climb on hit 2 loaded all 9,993, verified rather than assumed.
