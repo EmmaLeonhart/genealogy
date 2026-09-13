@@ -39193,3 +39193,32 @@ enumeration after the balls land**, which costs one script run and has not been 
 until today.
 
 **Eight roots complete under the three-step**, five of the eight supplied seeds among them.
+
+## 2026-09-12 — Confucius: 992 new, an UNCAPPED ball, and step 3 is provably unnecessary
+
+**`NN 子姓 6000000227713034875`**, filed to `exports/confucius/`.
+
+    step 1  Forest       task 6000000227723136927     105 new  ( 2.1%)
+    step 2  Descendants  task 6000000227724905843     992 new  (59.8%)  <- 1,660 INDI, UNCAPPED
+    step 3  Monte Carlo  NOT RUN, and cannot produce a hit
+
+**1,097 new people.** The Descendants ball came back at **1,660 against the 5,000 cap**, so it is
+the complete descent below the seed rather than a truncation — and `descent-from.py` now
+enumerates exactly **1,659**, agreeing with it.
+
+### ⛔ WHY THE SWEEP IS SKIPPED, AND IT IS A PROOF RATHER THAN A JUDGEMENT
+
+Every descendant of a person inside a complete descent ball is also a descendant of the ball's
+seed, so is also inside the ball. The ball holds 1,660 people. **No person in it can therefore
+have more than 1,658 descendants, against a threshold of 4,000.** A 30-pick sweep cannot return a
+hit, and running one would spend thirty page loads to confirm arithmetic.
+
+This is the same argument that retired four of the nine eastern hinge people this morning — a
+bounded statement off an uncapped ball — and it is the opposite of the guesses withdrawn earlier
+today, which were all inferences from *how much we already hold*.
+
+### And the resubmit settles the hand-submit question
+
+`6000000227724905843` came back from a **single extension dispatch** with its task id, on the same
+profile whose hand-submit produced no id and no email in two hours. **Hermenegildo
+`6000000211987119821` is the remaining one to resubmit the same way.**
