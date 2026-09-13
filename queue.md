@@ -684,24 +684,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     slot on 2026-09-13 was a climb landing on a subject already seeded, and the hit id says
     nothing about that — only the climb's `added` result does.
 
-  - **⛔ RE-SWEEP THE FOUR ROOTS CLOSED ON A SINGLE EMPTY SWEEP.** Ruled by demonstration
-    2026-09-13: Dál Fiatach read **0 of 30**, was closed, and on Emma's instruction —
-    *"my guess is basically you hit a low probability outcome ... I would suggest that you do it
-    again"* — re-swept to **6 of 40**, all six hits now spent, and produced **23,274 new people** against the
-    1,321 it was closed at.
-
-        6000000227712700862  Adasi         0 of 30, top   225   pool 102,016 -> 103,239  (+1,223)
-
-    **⛔ CHINESE 1 AND SKJALGSSON HAD NO QUEUE LINE AT ALL** — both were deleted when their empty
-    sweeps "closed" them, so without this item their re-sweeps are not recorded anywhere. That is
-    the third and fourth premature deletion today, after Inca and Dál Fiatach itself.
-
-    **Each pool has grown**, so a re-sweep samples people who were not in it at the time rather
-    than re-rolling the same dice. Genghis's has grown **40%**.
-
-    ⛔ **PACE THEM.** Emma hit an Incapsula CAPTCHA on 2026-09-13 after roughly five hundred
-    census loads in a day. One sweep at a time, not back to back.
-
   - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
     Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
     the information we have right now, do now, postpone, or drop. So we can be clear about all of

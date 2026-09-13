@@ -39831,3 +39831,34 @@ Skjalgsson line without noticing what went with it.
 **The rule this keeps demonstrating**: a deletion is safe only once every part of the item has
 been located somewhere else. Checking that has now caught Inca, the northern-DFA roots, the two
 missing re-sweep candidates, and these five hits.
+
+## 2026-09-13 — all four re-sweeps done: three turned, one confirmed thin
+
+    root          sweep 1            sweep 2            recovered
+    Dál Fiatach   0 of 30, top 2,869  6 of 40            +21,953
+    Skjalgsson    0 of 30, top   888  2 of 40             +3,267  (one hit still banked)
+    Chinese 1     0 of 30, top 2,282  1 of 40             +2,930
+    Adasi         0 of 30, top   225  0 of 40, top 961          0
+                                                         -------
+                                                          28,150 people
+
+**Three of four turned, and the fourth is now closed on two agreeing nulls across 70 reads rather
+than one.** Adasi's second sweep topped 961 against its first's 225 — a different sample of a pool
+that had grown by 1,223 — and still found nobody over 4,000.
+
+**28,150 people recovered from roots this session had already written off**, at a cost of roughly
+160 census page loads.
+
+### ⛔ WHAT THE FOUR RE-SWEEPS SETTLE, AND WHAT THEY DO NOT
+
+**Settled**: one empty sweep is a draw, not a verdict. Every root closed on a single 0-of-30 today
+was closed wrongly except Genghis and Adasi, and neither of those was known to be right until the
+second sweep.
+
+**Not settled, and four roots cannot settle it**: which roots are worth retrying. The first
+sweep's top reading looked predictive after two roots and stopped looking predictive after four —
+Skjalgsson turned from 888, Adasi did not from 961. **The tops of the turned and unturned roots
+now overlap**, which is as close to a refutation as four data points get.
+
+**The re-sweep item is removed**; all four are done. Five banked hits remain, tracked in their own
+item.
