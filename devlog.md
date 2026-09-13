@@ -40846,3 +40846,34 @@ account CAPTCHAd on 2026-09-12. The information was complete long before the que
 re-download and made a census count several copies of one person. After the merge a single root
 above Huaxu reached both clusters, held 120,878 descendants across 156 generations, and yielded
 1,667 people that were not in the corpus in any form.
+
+## 2026-09-13 — the pipe was corrupting the scrape, and the fix I tried first truncated the script
+
+Batch 005 died on `'utf-8' codec can't encode character '\udc8f': surrogates not allowed`, after
+several family files had already been written — a partial write that reads like a failed run.
+
+**I blamed the data and was wrong twice.** First fix: sanitise the three fields known to carry
+text. It died again on a fourth. Second fix: sanitise every string at ingest. It died again at
+the same character. Only then did I read the file from disk instead of through the pipe:
+
+    the same batch read from disk as UTF-8   ZERO lone surrogates
+
+**The corruption was entirely in `sys.stdin.read()`**, which decodes with Windows' console
+codepage; a name it cannot carry arrives as a lone surrogate that nothing downstream can encode.
+`CLAUDE.md` § *Never retype a scrape through a shell heredoc. It double-encodes UTF-8* is the
+same failure one layer down, and I had satisfied that rule's letter — a blob download, no
+heredoc — while walking into its substance at the next boundary.
+
+`sys.stdin.buffer.read().decode("utf-8")`. One line.
+
+**And the second fix truncated the script to 0 bytes.** `io.open(p, "w")` truncates on open and
+the write then raised on the surrogate, so the file was destroyed by the attempt to fix it. It
+was recoverable — `git checkout HEAD --` — only because the `--anchor` work had been committed an
+hour earlier. **A patch that opens for writing before it can encode its payload is a delete.**
+
+**The earlier batches are clean, checked rather than assumed**: 90 family files, **0** containing
+a replacement character, and only **1** containing CJK at all. The bug was latent for four
+batches because nothing had exercised it.
+
+Batch 005: 21 people, 19 family files, 8 below floor, **12 seed_walk** — an unusually rich batch,
+those twelve all cleared the 250 export floor.

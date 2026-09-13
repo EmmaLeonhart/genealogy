@@ -108,7 +108,11 @@ def main() -> int:
                          "(docs/anchor-protocol.md)")
     anchor_id = CHARLEMAGNE if anchor_arg == "charlemagne" else "viewer"
 
-    blob = json.loads(sys.stdin.read())
+    # READ STDIN AS BYTES. sys.stdin.read() decodes with Windows console codepage and
+    # turns CJK into lone surrogates that nothing downstream can encode. Measured
+    # 2026-09-13: the same file read from disk as UTF-8 has ZERO lone surrogates, so
+    # the corruption was entirely in the pipe.
+    blob = json.loads(sys.stdin.buffer.read().decode("utf-8"))
     results = blob if isinstance(blob, list) else [blob]
     results = [r for r in results if r.get("job") == "individual" and r.get("geni_id")]
     if not results:
