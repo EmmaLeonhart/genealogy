@@ -591,7 +591,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - **⛔ THE SEEDS FOR THE REST OF THE ROSTER, SUPPLIED 2026-09-12.** Every one is a profile to
     export FROM, so the create-an-ancestor step is already done and must not be repeated on them.
 
-        6000000209721868822  Aztec Emperors        NN Mixcoamatzin
         6000000209721822822  Inca Emperors
 
     **⛔ THREE OF THEM ALREADY HAVE BALLS ON DISK** — checked before spending an export slot:
@@ -688,8 +687,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     *"we have descendant exports of them. No need to redo descendants exports of them, but we
     need forest exports of them, and the Monte carlo stuff done on them."*
 
-        6000000209721868822  Aztec Emperors       Forest ALREADY EXISTS in exports/edges/ --
-                                                   Monte Carlo only, do not re-export
         6000000209721822822  Inca Emperors        Forest refreshed 2026-09-12 (7 new) --
                                                    MONTE CARLO STILL OUTSTANDING. It was
                                                    trimmed from this part after only the

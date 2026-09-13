@@ -39366,3 +39366,29 @@ costs.
 **His pool is 20,749 and its top reading was 415.** That is the fourth root whose sweep found
 nothing at all, against six where it found ceiling-height people, and no property measured so far
 separates the two groups in advance.
+
+## 2026-09-12 — the Aztec sweep returns 99.3% new, off the smallest pool sampled all session
+
+**`NN Mixcoamatzin 6000000209721868822`**, part 2, filed to `exports/aztec/`.
+
+    Forest       already existed in exports/edges/ -- not re-run, the check saved the slot
+    Descendants  already existed -- part 2 asks for neither
+    Monte Carlo  2 hits in 30 reads: 10,071 and 5,086
+    the 10,071   task 6000000227725471845    4,965 new of 5,000    99.3%
+
+**4,965 of 5,000 people were unknown to a corpus of 1.59 million.** That is the highest proportion
+of the session, ahead of Nārāyaṇa's 95.3% and Chinese cluster 2's 79.4%.
+
+**⛔ AND IT CAME OFF THE SMALLEST POOL SAMPLED ALL DAY — 5,714 people.** The other high-yield
+sweeps ran over pools of 109,440 (Chinese 2), 263,588 (Hermenegildo) and 23,554 (Nārāyaṇa). So
+**pool size does not predict sweep yield either**, and that is now the fourth property tried and
+discarded: not descent size already held, not the first two steps' returns, not the pool size,
+not the root's apparent prominence.
+
+**What actually distinguishes a productive sweep is unmeasured**, and saying so is more useful
+than the fifth guess. The one thing that has held all session is that a sweep is cheap — 30 page
+loads — and its hits are bankable, so running it is nearly always worth more than reasoning about
+whether to.
+
+**Aztec's line comes out of part 2**: its Forest already existed and its sweep is done. **Inca's
+sweep is the last of part 2.**
