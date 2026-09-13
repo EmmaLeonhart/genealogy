@@ -39246,3 +39246,32 @@ replace.
 (never ruled), Adasi's reseed (Descendants only, under a three-step heading), Hermenegildo and
 Nārāyaṇa (step 3 outstanding), Genghis (Forest outstanding), Aztec (Monte Carlo outstanding),
 parts 3 and 4, and the standing procedures.
+
+## 2026-09-12 — Hermenegildo, all three steps: 74 · 181 · 2,500, and four ceiling hits in one sweep
+
+**`NN de Coimbra 6000000211987119821`**, filed to `exports/hermenegildo/`.
+
+    step 1  Forest       task 6000000227723589845       74 new  ( 1.5%)
+    step 2  Descendants  task 6000000227724982826      181 new  ( 3.6%)   <- resubmitted by extension
+    step 3  Monte Carlo  task 6000000227725059822    2,500 new  (50.0%)
+
+**2,755 new people**, and the sweep is the richest of the session: **four hits in 30 reads, all
+four at Geni's 15,000 display ceiling.** One was spent on this ball; the other three are banked in
+`reports/descendants-export-targets.csv`.
+
+**It is the cluster-2 pattern at larger scale.** Steps 1 and 2 returned 255 people between them
+and step 3 returned 2,500 off a single hit, with three more of the same size still unspent. Both
+root-anchored exports measure the gathered region around the seed; only the sample reaches the
+263,588-person descent, which is the second-largest in the repo.
+
+**Seven roots complete under the three-step:**
+
+    NN Näf          441 ·  464 · 4,005+1,340
+    Skjalgsson        3 ·  627 ·     0
+    Chinese 1       595 ·  844 ·     0
+    Chinese 2        39 ·   33 · 3,969
+    Adasi           141 ·  182 ·     0
+    Fihr            363 ·  266 · 1,238
+    Jimmu             1 ·    7 ·     0        (11,140 linked)
+    Confucius       105 ·  992 ·  skipped on proof
+    Hermenegildo     74 ·  181 · 2,500

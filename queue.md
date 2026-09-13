@@ -594,7 +594,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         6000000227039926826  Genghis Khan          NN Borjigin
         6000000209721868822  Aztec Emperors        NN Mixcoamatzin
         6000000209721822822  Inca Emperors
-        6000000211987119821  Hermenegildo Gutteres NN de Coimbra
 
     **⛔ THREE OF THEM ALREADY HAVE BALLS ON DISK** — checked before spending an export slot:
 
@@ -666,7 +665,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     Monte Carlo, per seed:
 
         6000000227723403845  Adasi, PAST THE BOTTLENECK   supplied 2026-09-12
-        6000000211987119821  Hermenegildo Gutteres
         6000000220876233832  Nārāyaṇa
 
     **2. GENGHIS / AZTEC / INCA — `Forest` AND MONTE CARLO, NO `Descendants`.** Verbatim:
