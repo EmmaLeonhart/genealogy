@@ -1254,3 +1254,17 @@ campaign comes after everything else in the queue, maybe write that explicitly a
 is not clear enough"*. It is also `CLAUDE.md` § *The default when nothing else is running* — what
 idle time goes to — so it runs whenever nothing above it is live, and finishing it is what opens
 stage 3. **Nothing above it waits on it; it does not start while anything above it is live.**
+
+- **DECIDE: what happens to `build-add-p2600-batch`.** <!-- requeued-add-p2600-2026-09-13 -->
+  Deferred on 2026-09-06 for want of context to decide on, and re-queued on 2026-09-13 by
+  `.github/workflows/requeue-add-p2600.yml`.
+
+  It writes **7,166 `P2600` statements** inferred from parent-anchor proof into
+  `reports/wikidata-add-p2600.qs`, and **nothing runs it**. The four options as they stood: fold
+  it into the daily batch under a cap; give it its own scheduled workflow; delete it; or leave it
+  as a hand-run tool. `reports/qs-batch-audit.md` carries the measurement.
+
+  The other five generators in that audit were settled on 2026-09-06 —
+  `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
+  `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
+  This is the last one open.
