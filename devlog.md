@@ -39350,3 +39350,19 @@ Every one of these is a root whose `Forest` and `Descendants` looked poor. **The
 because both start at the seed and can only return what surrounds it**, and a seed placed on a
 deep descent is surrounded by the part already gathered. **Nothing about steps 1 and 2 forecasts
 step 3, and four wrong predictions today all ran the other way.**
+
+## 2026-09-12 — Genghis Khan done for part 2: forest 216, sweep 0 of 30
+
+**`NN Borjigin 6000000227039926826`**, filed to `exports/genghis/`.
+
+    Forest       task 6000000227725323849    216 new  (4.3%)
+    Monte Carlo  30 reads, 0 over 4,000, top 415
+    Descendants  NOT run -- one already exists in exports/descendants/
+
+Part 2 asks for `Forest` and Monte Carlo only, so **both halves are done and the line comes out**
+— checked with `grep -c` returning 0, after the Inca un-deletion showed what a premature trim
+costs.
+
+**His pool is 20,749 and its top reading was 415.** That is the fourth root whose sweep found
+nothing at all, against six where it found ceiling-height people, and no property measured so far
+separates the two groups in advance.
