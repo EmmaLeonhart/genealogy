@@ -55,6 +55,14 @@ permissions:
 
 env:
   WIKIDATA_API: https://www.wikidata.org/w/api.php
+  # HELD BY HAND, 2026-09-13. Not a date -- a stop order, lifted by a person.
+  # "disable any editing of Wikidata by this, uh, by the runner right now ...
+  # because we aren't ready for it. And the queue structure was supposed to make
+  # that be the case." The Wikidata work is at the END of queue.md and the isolate
+  # path connections come first; batches went out ahead of both.
+  # Mirrors HELD in scripts/wikidata_lockout.py; tests/test_wikidata_start_date.py
+  # fails if the two disagree. To lift: set both to no/False.
+  EDITS_HELD: "yes"
   START_DATE: "2026-09-01"
   AUTOMATION_START_DATE: "2026-09-15"
   # The daily batch: what runs by itself, chosen 2026-09-05.
@@ -72,7 +80,10 @@ jobs:
         id: gate
         run: |
           today=$(date -u +%F)
-          if [[ "$today" < "$START_DATE" ]]; then
+          if [[ "$EDITS_HELD" == "yes" ]]; then
+            echo "EDITS_HELD=yes - editing is held by hand, nothing runs (not even a dry run)"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$today" < "$START_DATE" ]]; then
             echo "today=$today is before START_DATE=$START_DATE — nothing to do"
             echo "go=false" >> "$GITHUB_OUTPUT"
           else

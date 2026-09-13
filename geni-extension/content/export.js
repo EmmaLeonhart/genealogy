@@ -74,8 +74,16 @@ GC.runExport = async function (job) {
    * and the caller can wait for the slot instead of retrying into it.
    */
   if (/\/gedcom\/request_export/.test(location.pathname)) {
-    return report({ state: "submit_no_task",
-                    note: "submitted, no task id -- another export is almost certainly building" });
+    /* **AND GENI SAYS SO IN WORDS, ON THIS PAGE.** Read 2026-09-13 by submitting the form by
+     * hand while `6000000227730918828` was building: *"There is currently a GEDCOM export being
+     * generated for you. Please wait for that export to be sent to you and try again."* So the
+     * refusal is not silent after all -- it is just not on the FORM, which renders in full with
+     * all five walks and no notice. Reading the sentence beats inferring it from the absent id. */
+    const busy = /currently a GEDCOM export being generated/i.test(bodyText());
+    return report({ state: busy ? "slot_busy" : "submit_no_task",
+                    note: busy
+                      ? "Geni: an export is already being generated -- wait, do not retry"
+                      : "submitted, no task id and no busy notice -- unexplained, do not retry" });
   }
 
   /* Geni refuses some profiles outright -- *"You are not allowed to export that profile."*

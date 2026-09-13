@@ -32,6 +32,31 @@ import io
 import os
 import sys
 
+#: ⛔ **EDITING IS HELD, AND THE DATES DO NOT MATTER WHILE IT IS.** Ruled 2026-09-13:
+#: *"disable any editing of Wikidata by this, uh, by the runner right now so that... because
+#: because we aren't ready for it. And the queue structure was supposed to make that be the
+#: case."*
+#:
+#: **The queue structure was already the rule and it was not honoured.** The Wikidata work sits
+#: at the END of `queue.md` — the isolate path campaign is pinned last, and the standing
+#: condition is that the Wikidata people get connected through the path search first. Batches
+#: went out anyway, which is how `Q45383466` had a Tang-dynasty Chinese man's name replaced by a
+#: katakana transliteration of its own romanisation. *"you had no business having any submissions
+#: going through until everything was done."*
+#:
+#: So this is not a date and must not be written as one. A date arrives on its own; a hold is
+#: lifted by a person. **Both gates consult it**, so neither the dispatched path nor the schedule
+#: can send while it is set, and `--dry-run` is unaffected because a dry run sends nothing.
+#:
+#: **To lift it:** set `HELD = False` here and `EDITS_HELD: "no"` in
+#: `.github/workflows/wikidata-edits.yml`. `tests/test_wikidata_start_date.py` fails if the two
+#: disagree, the same way it does for the two dates.
+HELD = True
+
+#: Why, in one line, printed by every refusal so a run never just says "locked".
+HELD_REASON = ("held by hand 2026-09-13 -- the Wikidata campaign runs AFTER the queue, and the "
+               "isolate path connections come first")
+
 #: The date this repo may begin editing Wikidata: no Wikidata edits until
 #: 1 September 2026. It matches ``START_DATE`` in
 #: ``.github/workflows/wikidata-edits.yml``; `tests/test_wikidata_start_date.py`
@@ -77,7 +102,14 @@ def _after(raw: str, today: datetime.date | None, what: str) -> tuple[bool, str]
 
 
 def editing_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
-    """(allowed, detail). Anything unreadable is LOCKED — see the module docstring."""
+    """(allowed, detail). Anything unreadable is LOCKED — see the module docstring.
+
+    The hand-set `HELD` flag is checked FIRST and no environment variable lifts it. The date
+    overrides exist so a dry run can be exercised against a date that has not arrived; a hold is
+    a stop order and an escape hatch through it would be the thing it is protecting against.
+    """
+    if HELD:
+        return False, f"HELD - {HELD_REASON}"
     return _after(os.environ.get(_OVERRIDE, "").strip() or START_DATE,
                   today, "editing")
 
@@ -86,8 +118,12 @@ def automation_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
     """(allowed, detail) for the SCHEDULED run, which starts later than the manual one.
 
     A caller must pass both gates: this one says the schedule may go live, and
-    `editing_allowed` still says whether editing is permitted at all.
+    `editing_allowed` still says whether editing is permitted at all. `HELD` is checked here too
+    rather than relying on that pairing: a future caller that forgets one of the two gates must
+    not be the thing that lets a held run through.
     """
+    if HELD:
+        return False, f"HELD - {HELD_REASON}"
     return _after(os.environ.get(_AUTOMATION_OVERRIDE, "").strip()
                   or AUTOMATION_START_DATE, today, "automation")
 

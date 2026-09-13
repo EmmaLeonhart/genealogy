@@ -5751,6 +5751,26 @@ def compose(our_items, fam, rng, ring_seeds=None):
     return picked, why
 
 
+def label_repair_tail():
+    """The force fix, appended to every batch: see `scripts/build-label-repair-tail.py`.
+
+    **⛔ IT IS A TAIL AND IT IS UNCAPPED, AND both halves of that are the ruling.** Emma,
+    2026-09-13: *"do a force fix thing at the end of all future quickstatements batches that
+    fixes the label damage we did"*. Last in the file, so a repair never competes with the day's
+    work for a slot; uncapped, because it REMOVES strings this pipeline wrote rather than adding
+    anything, and `LABEL_EDIT_CAP` exists to ration what we add.
+
+    The generator verifies every removal against the live item, so a stale file here cannot
+    delete a label somebody has since corrected — but a stale file can still be an old list, so
+    regenerate it with the generator rather than trusting the copy in the repo.
+    """
+    path = ROOT / "reports" / "wikidata-label-repair.txt"
+    if not path.exists():
+        return []
+    body = [ln for ln in path.read_text(encoding="utf-8").splitlines()]
+    return body if any(ln.strip() and not ln.startswith("#") for ln in body) else []
+
+
 def main():
     # `--skip-nn` is a per-run choice, not a rule. Ruled 2026-08-24 that the NN people were
     # not worth creating -- for THAT run only. The
@@ -7748,7 +7768,8 @@ def main():
             print(f"prepended {sum(1 for l in body.splitlines() if l.strip() and not l.startswith('#'))}"
                   f" name-item lines")
     head = ident_block + name_block
-    out.write_text(NEWLINE.join(head + lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
+    out.write_text(NEWLINE.join(head + lines + label_repair_tail()) + NEWLINE,
+                   encoding="utf-8", newline=NEWLINE)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 
     cf = ROOT / "reports" / "garborg-carry-forward.tsv"

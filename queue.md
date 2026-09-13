@@ -10,6 +10,35 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
+### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
+
+*"you had no business having any submissions going through until everything was done. That's why
+it was at the end of the queue. Really, the submission should even have a requirement that all of
+the Wikidata people get connected. Get connected with the path thing. So disable any editing of
+Wikidata by the runner right now ... because we aren't ready for it. And the queue structure was
+supposed to make that be the case."*
+
+`HELD = True` in `scripts/wikidata_lockout.py` and `EDITS_HELD: "yes"` in
+`.github/workflows/wikidata-edits.yml`, checked by both `editing_allowed` and
+`automation_allowed`, with no environment override — a date arrives on its own, a hold is lifted
+by a person. `tests/test_wikidata_start_date.py` fails if the two halves disagree.
+
+**The condition for lifting it is stated and is not a date either**: the Wikidata people are
+connected through the path search first. That campaign is at the END of this file.
+
+### ⛔ FAMILY NAMES MUST WORK IN EVERY SCRIPT. Ruled 2026-09-13, long term.
+
+*"Uhh family names need to be able to go for other scripts too long term"*. Written down, not
+worked — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
+The immediate cause is the punctuation rule shipped the same day: `name_shape` now refuses a
+token with no alphanumeric character **in any script**, which was deliberately written to be
+script-neutral, and `Bagrat Bagrationi`'s `ბაგრატიონი / Bagrationi` is the case that shows the
+surrounding machinery is not. A family name in Georgian, Han, Cyrillic or Devanagari has to reach
+a name item the same way a Latin one does, and today's `name-item-plan.csv` and the
+first-given-attestation census are both keyed on strings that are overwhelmingly Latin.
+
+
 ### ⛔ THE CHINESE CLUSTERS — POST-MERGE, INTO THE HIGHER-AUTHORITY DIRECTORY. Ruled 2026-09-13.
 
 *"I figured it out and apparently there was a gigantic tangle of duplicates in both. I did a

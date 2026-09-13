@@ -149,3 +149,30 @@ def test_the_scheduled_run_sends_the_daily_batch_and_a_receipt():
     assert 'DAILY_BATCH: reports/wikidata-garborg-day.txt' in text
     assert "--receipt" in text
     assert 'echo "batch=$DAILY_BATCH"' in text
+
+
+# --------------------------------------------------------------------------------------
+# **THE HOLD, 2026-09-13.** *"disable any editing of Wikidata by this, uh, by the runner
+# right now so that... because we aren't ready for it. And the queue structure was supposed
+# to make that be the case."* Written in two places for the same reason the dates are: the
+# workflow gates before it can check the repo out and cannot import the module.
+# --------------------------------------------------------------------------------------
+
+def test_the_hold_is_written_the_same_in_both_places():
+    """`HELD` and `EDITS_HELD` say the same thing, or the next lift only lifts half of it."""
+    import re
+    text = (REPO / ".github" / "workflows" / "wikidata-edits.yml").read_text(encoding="utf-8")
+    m = re.search(r'^\s*EDITS_HELD:\s*"(yes|no)"\s*$', text, re.M)
+    assert m, "wikidata-edits.yml has no EDITS_HELD line"
+    assert (m.group(1) == "yes") == wikidata_lockout.HELD, (
+        "the workflow and scripts/wikidata_lockout.py disagree about the hold")
+
+
+def test_a_hold_refuses_regardless_of_the_dates():
+    """No environment override lifts a hold — that is what makes it a stop order."""
+    if not wikidata_lockout.HELD:
+        return
+    allowed, why = wikidata_lockout.editing_allowed()
+    assert not allowed and "HELD" in why
+    allowed, why = wikidata_lockout.automation_allowed()
+    assert not allowed and "HELD" in why

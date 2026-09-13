@@ -40100,3 +40100,70 @@ between them in `reports/descendants-export-log.csv`, the CJK culture verdicts s
 hers to rule on, and the Alix items carry a note from an earlier sweep saying exactly this: *"The
 item looks dead because Abul Hamza is finished; the work was never done."* Today's completed
 items were each deleted in the commit that finished them.
+
+## 2026-09-13 — Wikidata editing held, the label repair, and Geni answering the export question itself
+
+**The export was not hung, and Geni says so in words.** Emma: *"I'm not convinced there's a hung
+export, and I would strongly prefer that you attempt other exports to see if they'll just work."*
+Attempted, on a different profile — Adasi's reseed `6000000227723403845`, submitted by hand so
+the landing could be read:
+
+> There is currently a GEDCOM export being generated for you. Please wait for that export to be
+> sent to you and try again.
+
+So the slot is genuinely held by `6000000227730918828`, and the refusal is **not** silent: the
+export FORM renders in full the whole time — five walk radios, the right person's name, no
+notice — and the sentence only appears on the page after a submit. That is why three attempts
+read as `no_such_walk` with `radios: 0`. `content/export.js` now reads the sentence and reports
+`slot_busy`; a `request_export` landing with no id and no notice is `submit_no_task`.
+`1.7.46 -> 1.7.47`.
+
+**Wikidata editing is held.** *"you had no business having any submissions going through until
+everything was done. That's why it was at the end of the queue ... disable any editing of
+Wikidata by the runner right now."* `HELD = True` in `scripts/wikidata_lockout.py` and
+`EDITS_HELD: "yes"` in the workflow, checked by both gates, with **no environment override** —
+the date overrides exist so a dry run can be exercised early, and an escape hatch through a stop
+order is the thing the stop order is against. The workflow gates before it checks out.
+
+This is the rule the queue already encoded and I did not honour: the Wikidata work sits at the
+end of `queue.md` and the path connections come first. Batches went out ahead of both, which is
+how `Q45383466` happened.
+
+**The force fix, at the end of every batch.** *"do a force fix thing at the end of all future
+quickstatements batches that fixes the label damage we did"*.
+`scripts/build-label-repair-tail.py` removes every language label that is only a copy of the
+item's own `mul` — the 2026-09-11 measurement, 1,606 items and 2,289 redundant edits, left open
+on *"whether the fix is overwrite-and-accept or overwrite-then-remove"*. It is removal:
+`Q…<TAB>L<lang><TAB>""`.
+
+**Verified live rather than from the snapshot**, because Emma corrected `Q105872266` by hand and
+a two-day-old file must not undo that. All 1,606 candidates were re-read from Wikidata and a
+removal is emitted only where the language label is still character-for-character the current
+`mul`: **1,973 labels on 1,335 items**, cached in `reports/label-repair-live.tsv`. Run it twice
+and the second run emits nothing.
+
+It is appended as a TAIL and is UNCAPPED — last in the file so a repair never competes with the
+day's work for a slot, and outside `LABEL_EDIT_CAP` because it removes strings this pipeline
+wrote rather than adding anything.
+
+**And what the descendants program actually still has open**, counted from `exports/` rather than
+from the roster:
+
+    root                       Forest  Desc  MC balls   what is missing
+    Chinese, NN Father of Huaxu   -      0      0       all three steps, post-merge
+    Adasi reseed                  1      2      1       more sampling
+    Genghis                       1      0      0       Monte Carlo only (no Descendants, ruled)
+    Aztec / Mixcoamatzin          0      1      0       Forest, then Monte Carlo
+    Inca                          1      2      1       Monte Carlo rounds
+    Confucius                     1      1      0       Monte Carlo
+    Jimmu                         1      1      0       Monte Carlo
+    NN Naf                        1      3      2       more rounds -- pool 174,821
+    no-name                       -      9      8       more rounds -- pool 541,546
+    Dal Fiatach                   1      8      7       more rounds
+    NN ben Ovadya                 1      2      1       one banked hit, in flight
+    Hermenegildo                  1      5      4       more rounds
+    Narayana                      1      3      2       thin: 33 consecutive width<=2 generations
+    Fihr                          1      2      1       sparse, not bottlenecked
+
+The eight untouched seeds of § THE WHOLE PROGRAM are down to **one** — Adasi's reseed — and the
+Abul Hamza six have **0 rows between them** in the export log.
