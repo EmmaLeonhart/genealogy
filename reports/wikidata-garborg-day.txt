@@ -350,31 +350,17 @@ Q141442240	P460	Q141283710
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   60 people, 251 edits; 1664 edits held for a later run
-#   across 312 more people. A repeat is a no-op, so nothing is lost.
+#   60 people, 246 edits; 1657 edits held for a later run
+#   across 309 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141442384 NN: set the ja label to "ヘルセ・ファレソン・ブレ"
-Q141442384	Lja	"ヘルセ・ファレソン・ブレ"
-#   set the zh label to "赫尔塞·法莱松·布雷"
-Q141442384	Lzh	"赫尔塞·法莱松·布雷"
-#   set the ko label to "헤르세 파레손 부레"
-Q141442384	Lko	"헤르세 파레손 부레"
-#   Q96739460: Michal|Michell|Micaell Jennison -> Michal Jennison   + Michell Jennison | Micaell Jennison
-Q96739460	Len	"Michal Jennison"
-Q96739460	Lmul	"Michal Jennison"
-Q96739460	Amul	"Michell Jennison"
-Q96739460	Amul	"Micaell Jennison"
-Q96739460	Lnl	"Michal Jennison"
-#   Q96621684: Elizabeth Bayinn|Bavin -> Elizabeth Bayinn   + Elizabeth Bavin
-Q96621684	Len	"Elizabeth Bayinn"
-Q96621684	Lmul	"Elizabeth Bayinn"
-Q96621684	Amul	"Elizabeth Bavin"
-Q96621684	Lnl	"Elizabeth Bayinn"
-#   Q96621681: Mary Flood|fford -> Mary Flood   + Mary fford
-Q96621681	Len	"Mary Flood"
-Q96621681	Lmul	"Mary Flood"
-Q96621681	Amul	"Mary fford"
-Q96621681	Lnl	"Mary Flood"
+#   set the mul label to "Sigrid Ingeborg Olofsdotter"
+Q141442592	Lmul	"Sigrid Ingeborg Olofsdotter"
+#   set the ja label to "シグリッド・インゲボルグ・オロフスドッテル"
+Q141442592	Lja	"シグリッド・インゲボルグ・オロフスドッテル"
+#   set the zh label to "西格丽·英格堡·奥洛夫斯多特"
+Q141442592	Lzh	"西格丽·英格堡·奥洛夫斯多特"
+#   set the ko label to "시그리드 이에보륵 오로프스도테르"
+Q141442592	Lko	"시그리드 이에보륵 오로프스도테르"
 #   Q96480443: Sybill|Sibyl Fowler -> Sybill Fowler   + Sibyl Fowler
 Q96480443	Len	"Sybill Fowler"
 Q96480443	Lmul	"Sybill Fowler"
@@ -675,6 +661,16 @@ Q96201964	Len	"Joseph LaFount"
 Q96201964	Lmul	"Joseph LaFount"
 Q96201964	Amul	"Moses LaFount"
 Q96201964	Lnl	"Joseph LaFount"
+#   Q96201734: Elizabeth|Hannah Wheeler -> Elizabeth Wheeler   + Hannah Wheeler
+Q96201734	Len	"Elizabeth Wheeler"
+Q96201734	Lmul	"Elizabeth Wheeler"
+Q96201734	Amul	"Hannah Wheeler"
+Q96201734	Lnl	"Elizabeth Wheeler"
+#   add a mul alias "Oda van Vlaanderen"
+Q76355972	Amul	"Oda van Vlaanderen"
+#   Q76337609: Margaret|Anne Skipwith -> Margaret Skipwith   + Anne Skipwith
+Q76337609	Lmul	"Margaret Skipwith"
+Q76337609	Amul	"Anne Skipwith"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -3202,6 +3198,8 @@ LAST	P735	Q5401576	P1545	"2"	P3831	Q245025
 Q141442316	P26	Q141442328	S2600	"1899630"
 #   Q141442328 Margret Olofsdotter: P26 spouse = Q141442316 Jonas Hansson
 Q141442328	P26	Q141442316	S2600	"1899631"
+#   Q50368774 Olof Hersesson: P26 spouse = Q141442592 NN
+Q50368774	P26	Q141442592	S2600	"5328189268700111491"
 #   Q141442358 Ursula Persdotter: P26 spouse = Q141442324 Lars Persson Bod
 Q141442358	P26	Q141442324	S2600	"6000000002549032224"
 #   Q141442324 Lars Persson Bod: P26 spouse = Q141442358 Ursula Persdotter
@@ -3242,6 +3240,8 @@ Q141442344	P40	Q141442342	S2600	"6000000010478680927"
 Q141442284	P26	Q141442327	S2600	"6000000012576708406"
 #   Q141442327 Margareta Botilla Montell: P26 spouse = Q141442284 Carl Johan Adlerbielke
 Q141442327	P26	Q141442284	S2600	"6000000012576849347"
+#   Q141442592 NN: P26 spouse = Q50368774 Olof Hersesson
+Q141442592	P26	Q50368774	S2600	"6000000015889703785"
 #   Q141442309 Jens Kjellsen Gillund: P26 spouse = Q141442317 Karen Gubia Hansdatter Grimelund
 Q141442309	P26	Q141442317	S2600	"6000000021080176264"
 #   Q141442317 Karen Gubia Hansdatter Grimelund: P26 spouse = Q141442309 Jens Kjellsen Gillund

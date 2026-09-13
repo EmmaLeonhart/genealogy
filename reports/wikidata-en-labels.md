@@ -4,14 +4,14 @@ Built by `scripts/build-en-label-batch.py`. **Emits nothing to Wikidata.**
 
 All the `en` labels are done at once, as one step, so Japanese gets transcribed -- then `mul`, then `ja`, then `zh`. This is that step and only that step.
 
-- individuals with no English label: **186074**
-- of those, an `en` is now available: **133280**
-- still without one: **52794**
+- individuals with no English label: **186773**
+- of those, an `en` is now available: **133815**
+- still without one: **52958**
 
 | where the label comes from | people |
 | --- | ---: |
-| relationship label | 126924 |
-| romanised from zh | 5932 |
+| relationship label | 127036 |
+| romanised from zh | 6355 |
 | wikidata's own English label | 230 |
 | romanised from ja | 194 |
 
