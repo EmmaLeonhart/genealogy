@@ -39477,3 +39477,22 @@ size does not predict sweep yield.
 **The line comes out of part 3.** Its top reading of 2,869 is closer to the threshold than
 Skjalgsson's 888 or Adasi's 225, so a second sweep here would be the better bet of the three if
 the question is ever revisited — recorded rather than acted on.
+
+## 2026-09-12 — ben Ovadya's sweep: 4,412 new (88.2%), and the corpus passes 1.6 million
+
+**`NN ben Ovadya 6000000227708968860`**, part 3.
+
+    Forest       filed earlier                140 new  ( 2.8%)
+    Descendants  Emma's own export          1,340 new
+    Monte Carlo  2 hits of 30: 10,676 and 5,708
+    the 10,676   task 6000000227725698822    4,412 new  (88.2%)
+
+**The corpus is 1,603,577 distinct people**, from 1,535,829 at session start — **+67,748**.
+
+**His pool was 18,811, the second-smallest sampled**, after Aztec's 5,714 which returned 99.3%.
+The two smallest pools of the day produced the two highest proportions. Dál Fiatach's 231,038 —
+the largest sampled — produced nothing. **That inverts the intuition rather than merely failing to
+support it**, and with four sweeps on each side it is worth stating as an observation even though
+the mechanism is unknown.
+
+**His line comes out of part 3.** The 5,708 hit is banked; four banked targets now stand unspent.
