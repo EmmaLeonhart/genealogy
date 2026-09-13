@@ -674,6 +674,11 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
         6000000227039926826  Genghis Khan
         6000000209721868822  Aztec Emperors       Forest ALREADY EXISTS in exports/edges/ --
                                                    Monte Carlo only, do not re-export
+        6000000209721822822  Inca Emperors        Forest refreshed 2026-09-12 (7 new) --
+                                                   MONTE CARLO STILL OUTSTANDING. It was
+                                                   trimmed from this part after only the
+                                                   Forest ran, which was premature: part 2
+                                                   asks for Forest AND Monte Carlo.
 
     **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
 

@@ -39275,3 +39275,27 @@ root-anchored exports measure the gathered region around the seed; only the samp
     Jimmu             1 ·    7 ·     0        (11,140 linked)
     Confucius       105 ·  992 ·  skipped on proof
     Hermenegildo     74 ·  181 · 2,500
+
+## 2026-09-12 — sweep: an un-deletion. Inca was removed from part 2 before it was finished
+
+**No item was deleted this tick. One was put back.**
+
+`6000000209721822822` **Inca Emperors** was trimmed out of part 2 of § *THE WHOLE PROGRAM* when
+its `Forest` refresh landed at 7 new. **Part 2 asks for `Forest` AND Monte Carlo** — *"we have
+descendant exports of them. No need to redo descendants exports of them, but we need forest
+exports of them, and the Monte carlo stuff done on them"* — and Inca's sweep has never run. The
+trim was premature and the line is restored with the reason on it.
+
+**The sweep's own test caught it**: for each remaining roster id, count its rows in
+`reports/descendants-export-log.csv` and compare against what the part asks for.
+
+    6000000227723403845  Adasi reseed   log 1   Descendants only, under a three-step heading
+    6000000220876233832  Nārāyaṇa       log 2   step 3 outstanding
+    6000000227039926826  Genghis        log 0   Forest outstanding
+    6000000209721868822  Aztec          log 0   Monte Carlo outstanding
+    6000000209721822822  Inca           log 1   Monte Carlo outstanding  <- had been removed
+
+**⛔ A DELETION IS A CLAIM AND THIS ONE WAS FALSE.** The delete-on-done rule makes `queue.md` the
+only record of what is outstanding, so a premature deletion does not leave a wrong note behind —
+it leaves nothing, and the work disappears. Checking the log against the part's requirement is
+what makes the claim checkable, and it costs one `grep -c` per id.
