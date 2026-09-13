@@ -1324,3 +1324,13 @@ stage 3. **Nothing above it waits on it; it does not start while anything above 
 ## More items at the end
 
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
+
+
+## Chinese gedcom identification/entry points
+
+I earlier talked about the entry point GETCOM like it was a well-established thing, with the Chinese people having consistent identifications that were easy to do for it. I realize this is not the case, and I am going to write out a bunch of my identifications because I do not want to fucking put them on Wikidata. We are putting way too many random, unconnected P2 600 items here. I don't want to draw more attention than I've been getting from being non-local. 
+
+
+https://www.geni.com/people/G%C5%8CNGS%C5%AAN-Sh%C7%8Eo-Di%C7%8En-%E5%B0%91%E5%85%B8-1%E4%B8%96/6000000026522778851 https://www.wikidata.org/wiki/Q4302144
+
+https://www.geni.com/people/Sh%C3%A9n-N%C3%B3ng-%E7%A5%9E%E5%86%9C-Y%C3%A1n-D%C3%AC-%E7%82%8E%E5%B8%9D-Y%C3%BA-Qu%C4%81n-%E6%A6%86%E5%9C%88-%E4%B8%80%E4%BB%BB%E5%B8%9D-2%E4%B8%96/6000000130192002822 https://www.wikidata.org/wiki/Q313336
