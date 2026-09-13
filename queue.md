@@ -666,11 +666,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
     anything else is driven against it.
 
-  - **⛔ FOUR BANKED MONTE CARLO HITS LEFT.** They live in
+  - **⛔ THREE BANKED MONTE CARLO HITS LEFT.** They live in
     `reports/descendants-export-targets.csv` and **were tracked nowhere in this file**, which is
     how Chinese 1 and Skjalgsson went missing from the roster earlier today.
 
-        6000000001759017182  15,000   from Inca's sweep            CLIMBING 2026-09-13 03:15
         6000000004828068793   8,258   from Skjalgsson's re-sweep
         6000000011196793448   5,708   from ben Ovadya's sweep
         6000000021665410212   5,086   from Aztec's sweep
@@ -679,9 +678,13 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     census loads at all** — the sweep that found them is already paid for. Spend order is not
     ruled; largest first is the obvious default and is not a rule.
 
-    ⛔ **CHECK THE SUBJECT AFTER THE CLIMB, NOT THE HIT BEFORE IT.** The collision that wasted a
-    slot on 2026-09-13 was a climb landing on a subject already seeded, and the hit id says
-    nothing about that — only the climb's `added` result does.
+    ⛔ **CHECK THE SUBJECT AFTER THE CLIMB, NOT THE HIT BEFORE IT**, and check it with
+    `python scripts/ball-collision-check.py <subject> <exports/root-dir>`, not by grepping the
+    export log. The log's first column is a task id; the subject is not a column at all, which is
+    why the old guard read 0 rows and cleared the ninth collision straight through. The script
+    asks the question that actually predicts the yield — *is the subject already inside a ball
+    filed under this root* — and over 65 balls it fired 9 times, 8 of which returned exactly 1
+    new person against a median of 1,626 for the rest. It exits 1 on a collision.
 
   - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
     Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on

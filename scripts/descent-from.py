@@ -10,6 +10,12 @@ and walks `FAM` links downward. The question *who descends from her* is answerab
 corpus, and an export is a different operation that was explicitly refused.
 
     python scripts/descent-from.py <geni id> [exports/subdir ...]
+    python scripts/descent-from.py --roots <id>,<id>,... [exports/subdir ...]
+
+The `--roots` form reads the corpus ONCE and walks each root against it. The corpus read is the
+whole cost of a single-root run, so asking about six roots one at a time costs six times what it
+has to; the generation histogram is the only property that has been shown to separate a root
+worth sweeping from one that is not, and it is wanted for several roots at a time.
 
 The walk is `HUSB`/`WIFE` -> `FAM` -> `CHIL`, breadth-first, recording the generation at which
 each person is first reached. A person reachable by two routes keeps the SHORTEST, because the
@@ -68,21 +74,8 @@ def read(paths):
     return names, fams
 
 
-def main() -> int:
-    sys.stdout.reconfigure(encoding="utf-8")
-    root_id = sys.argv[1]
-    subdirs = sys.argv[2:] or ["exports"]
-    paths = sorted({p for d in subdirs for p in (ROOT / d).rglob("*.ged")})
-    print("reading %d files ..." % len(paths), flush=True)
-    names, fams = read(paths)
-    print("people %d, families %d" % (len(names), len(fams)), flush=True)
-
-    children_of = collections.defaultdict(set)
-    for partners, children in fams:
-        for p in partners:
-            for c in children:
-                children_of[p].add(c)
-
+def descent(children_of, root_id):
+    """`{geni_id: generation}` for everyone below `root_id`, shortest generation kept."""
     gen = {root_id: 0}
     queue = collections.deque([root_id])
     while queue:
@@ -91,7 +84,11 @@ def main() -> int:
             if kid not in gen:
                 gen[kid] = gen[cur] + 1
                 queue.append(kid)
+    return gen
 
+
+def report(names, children_of, root_id):
+    gen = descent(children_of, root_id)
     out = ROOT / "reports" / ("descent-from-%s.csv" % root_id)
     rows = sorted(((g, k) for k, g in gen.items() if k != root_id))
     with out.open("w", encoding="utf-8", newline="") as fh:
@@ -107,6 +104,30 @@ def main() -> int:
     for g in sorted(by_gen):
         print("  generation %-2d %5d" % (g, by_gen[g]))
     print("-> %s" % out.relative_to(ROOT))
+
+
+def main() -> int:
+    sys.stdout.reconfigure(encoding="utf-8")
+    argv = sys.argv[1:]
+    if argv and argv[0] == "--roots":
+        root_ids = [x for x in argv[1].replace(",", " ").split() if x]
+        subdirs = argv[2:] or ["exports"]
+    else:
+        root_ids = [argv[0]]
+        subdirs = argv[1:] or ["exports"]
+    paths = sorted({p for d in subdirs for p in (ROOT / d).rglob("*.ged")})
+    print("reading %d files ..." % len(paths), flush=True)
+    names, fams = read(paths)
+    print("people %d, families %d" % (len(names), len(fams)), flush=True)
+
+    children_of = collections.defaultdict(set)
+    for partners, children in fams:
+        for p in partners:
+            for c in children:
+                children_of[p].add(c)
+
+    for root_id in root_ids:
+        report(names, children_of, root_id)
     return 0
 
 

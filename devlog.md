@@ -39891,3 +39891,51 @@ dispatch** — the delete is what turns a stale read into an honest `NO REPLY`.
 Banked hit 2, Inca's `6000000001759017182` (Mamma Tupi Oello, Coya), is climbing.
 
 Corpus: **1,632,367** distinct people.
+
+## 2026-09-13 — the ninth collision, a guard that actually predicts it, and the bottleneck instrument
+
+**Banked hit 2 of 5, Inca's `6000000001759017182` (Mamma Tupi Oello, Coya, 15,000).** Climbed to
+subject `6000000225021514890`, created ancestor `6000000227730506824`, ball at the cap:
+**1 new of 5,000.** The ninth duplicate-parent collision.
+
+**The guard that was supposed to catch this cannot, and never could.** It greps
+`reports/descendants-export-log.csv` for the subject. That file's first column is a **task id**;
+the subject is not a column at all, it lives in free text in the third. So the grep returned 0
+rows, which reads exactly like *clear*, and I recorded "no collision" before spending the slot.
+A guard that answers "clear" when it has looked at the wrong field is worse than none.
+
+**What does predict it, measured over all 65 balls in the corpus:** *is the subject already inside
+a `Descendants` ball filed under the same root directory?* The subject is recoverable
+mechanically — it is the sole `CHIL` of the created ancestor — so this needs no bookkeeping at
+all.
+
+    subject inside an earlier ball under that root:  n=9   new: 1,1,1,1,1,1,1,1  and one 1,238
+    subject not there:                               n=56  median new: 1,626
+
+Eight of nine returned **exactly one person**. `scripts/ball-collision-check.py <subject> <dir>`
+runs it and exits 1 on a collision. It fires on the Inca subject, so it would have saved this
+slot. It is a warning and not a refusal: the 1,238 exception is real.
+
+**And a second instrument, from the wait while the ball built.** `scripts/descent-from.py` gained
+a `--roots` form that reads the corpus once and walks several roots against it — the corpus read
+*is* the cost, so asking about six roots one at a time cost six times what it had to.
+
+Run over the six roots with outstanding work, it reproduces the Aztec bottleneck finding from the
+corpus alone and generalises it. Sorted by **the longest run of consecutive generations no wider
+than two** — `reports/descent-bottlenecks.csv`:
+
+    run  root                held      what the sweeps actually did
+     1   no-name             548,502   62-80% new
+     1   NN Näf              178,971   62-80% new
+     2   NN Skjalgsson        86,783   0 of 30, then the re-sweep turned: 3,267 new
+     7   NN ben Ovadya        28,124   one 5,708 hit, still banked
+     9   NN Mixcoamatzin      10,688   Aztec: the nine width-1 generations, then a fan at g22-25
+    33   Nārāyaṇa             29,741   the 640-new ball, the campaign low
+
+**The run length orders these correctly and the descent size does not.** Nārāyaṇa holds three
+times Aztec's descent and is the thinnest root of the six: 190 generations deep with 33 of them
+running at width one or two — a spindle, not a tree. This is the fifth property tried against
+sweep yield and the first that separates the roots, and it agrees with what Emma said the shape
+was before any of it was measured.
+
+Corpus: **1,632,368** distinct people.
