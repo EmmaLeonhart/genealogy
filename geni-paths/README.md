@@ -368,3 +368,42 @@ to get the data.
 Three datasets, three purposes. `geni_pages/` is profile pages saved for paths by hand;
 `geni-scraping/` is profile pages saved for their **immediate relatives** panel; this is the
 path page itself, and it carries nothing but the chain.
+
+## ⛔ A PATH FROM EMMA LASTS YEARS. A PATH BETWEEN TWO OTHER PEOPLE IS EPHEMERAL
+
+Discovered 2026-09-13: *"paths from me to someone else are highly robust and last years. Paths
+between other people are very ephemeral."*
+
+**That is the difference between the two kinds of capture in this directory, and it decides how
+each is treated.**
+
+* **Viewer-anchored** — Emma to X. Durable. Geni keeps them, and
+  <https://www.geni.com/paths> lists every one she has ever saved. **They do not need to be
+  raced.**
+* **Third-party anchored** — X to Y, where the pin is on somebody who is not the viewer. This is
+  everything captured off `NN Father of Huaxu` on 2026-09-13: Solomon 240, Liu Yao 236, Jacques I
+  225, Scorpion I 187, Kung Tsui-chang 130 + 122, Jimmu 109, Naruhito 97. **These decay.** The
+  same request a month later may return nothing, and there is no saved copy on Geni's side to go
+  back to.
+
+**So the urgency was real and it is on the third-party ones only.** A file in this directory is
+sometimes the only surviving copy of a chain; the viewer-anchored equivalents can be re-fetched
+from `/paths` whenever.
+
+## HOW THEY ARE CAPTURED, AND IT IS NOT BY ASKING GENI AGAIN
+
+⛔ **READ THE RENDERED PAGE.** `GC.runPath` opens a tab and makes Geni **recompute** the
+relationship — a server-side search that takes minutes and can return `resolved_none` while the
+chain is sitting on the profile page. Jimmu and Naruhito were both recorded as misses that way
+and both had chains on screen.
+
+The profile renders `#relationships` as alternating `div.path_description` and
+`div.relationship_card`, **one pair per walk**, so a single read gets the blood chain and the
+in-law chain together — which the job cannot do at all.
+
+## EMMA SAVES HER OWN, AND `emmas-files/` IS HERS
+
+She keeps interesting paths in `emmas-files/` by hand and changes the anchor as she goes:
+*"I am gonna be saving interesting paths, and changing the anchor relatively regularly. You do
+not care what the anchor is."* **Do not reconcile, rename or reorganise that directory**, and do
+not treat an anchor change as an event. Resolving those saves into this directory is a later job.

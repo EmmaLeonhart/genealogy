@@ -41293,3 +41293,31 @@ person reached two ways, which is what § *BOTH TIES, ALWAYS* is for.
 The lesson is the one Emma had already given twice and I kept missing: *"grab the already present
 path export thing"* means **read what is on the page**. I ran searches instead, and one of those
 misses is what led me to move the anchor.
+
+## 2026-09-13 — a path from Emma lasts years; a path between two other people does not
+
+*"New discovery: paths from me to someone else are highly robust and last years. Paths between
+other people are very ephemeral."*
+
+**This is the fact that makes today's captures worth the fight they caused.** Every chain taken
+off `NN Father of Huaxu` is third-party anchored — Solomon 240, Liu Yao 236, Jacques I 225,
+Scorpion I 187, Kung Tsui-chang 130 + 122, Jimmu 109, Naruhito 97 — and those decay. The file in
+`geni-paths/` may be the only surviving copy. The viewer-anchored ones do not decay at all:
+`https://www.geni.com/paths` lists every path Emma has saved from herself to someone else, and it
+will still be there later.
+
+**So the urgency was on exactly the ones we captured**, and my instinct to re-request rather than
+read was worse than slow — a recomputation of an ephemeral path can come back empty, and then the
+chain is simply gone.
+
+**Two standing consequences:**
+
+* **The isolate campaign is unchanged** — *"I want you to still do your regular path saving for
+  the wikidata isolates like normal."*
+* **The anchor is not an event.** She will change it as she works. *"You do not care what the
+  anchor is."* After today that needs no further comment from me.
+
+`emmas-files/` is hers, saved by hand, and got swept into a commit of mine this evening. Left in
+place rather than reverted — removing it would be a second unasked-for change to her directory —
+and `geni-paths/README.md` now says not to reconcile or reorganise it. Resolving those saves is
+queued as a later item alongside the `/paths` harvest.
