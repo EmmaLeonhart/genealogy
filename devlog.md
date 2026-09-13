@@ -41057,3 +41057,28 @@ export far faster than one serial slot can spend them, and the file is where tha
 visible instead of being scattered through scheduler state that dies with the browser.
 
 Corpus: **1,636,091**. Running total for the day: **130 isolate rows, 115 family files, 2 chains.**
+
+## 2026-09-13 — the six ARE climbable, and Sayaluna's climb declined 32 landings to find one
+
+Emma, on my reporting the six Abul Hamza seeds as owed-but-stuck: *"Can't you, like, climb up
+from all of them and grab them and grab the export targets? and then queue them up."*
+
+**Yes — and describing them as blocked was wrong.** *"Zero rows between them in the export log"*
+means none is done, not that none can be done; the climb is exactly the mechanism, and I had
+written the mechanism up as an obstacle. The refusal measured on Jacques Grimaldi — *"You are not
+allowed to export that profile"* — is the reason the ancestor step exists, not a reason to stop.
+
+**Sayaluna ata `6000000008384075400`, the first of the six:**
+
+    117,515 subjects on the denylist -- `--list-saturated exports/abul-hamza-descendants`
+    59 candidates walked, 32 declined as saturated
+    landed on 6000000031638493029, created 6000000227738946872
+
+**Thirty-two declines is the campaign's densest region refusing to be re-downloaded.** Abul Hamza
+has 24 balls filed under it, so almost everything above Sayaluna is already held — and every one
+of those 32 would have been a placeholder created and a slot spent on a ball we have, which is
+the shape that has cost 16 of 75 balls across the campaign. The guard is doing on one climb what
+took eleven collisions to learn.
+
+Six of the seven owed `Descendants` are this block, so the same denylist covers all of them and
+the remaining five climbs cost nothing to prepare.
