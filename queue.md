@@ -841,10 +841,15 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
     So **a large descent already held is not evidence of saturation** — Charlemagne was ruled
     complete for being *central and documented*, not for being large.
 
-    **1. THE EIGHT UNTOUCHED SEEDS — FULL THREE-STEP EACH.** `Forest`, then `Descendants`, then
-    Monte Carlo, per seed:
+    **1. THE EIGHT UNTOUCHED SEEDS — DOWN TO ONE STEP ON ONE SEED.** Seven are done; Adasi's
+    reseed `6000000227723403845` has its `Forest` (26 new) and its `Descendants` filed, so what
+    is left of the whole of part 1 is **the Monte Carlo on that reseed**.
 
-        6000000227723403845  Adasi, PAST THE BOTTLENECK   supplied 2026-09-12
+    ⛔ **SAMPLE PAST THE BOTTLENECK, WHICH IS THE ENTIRE POINT OF THE RESEED.** Emma read the
+    bottleneck off the tree; nothing measured here revealed it, and the first Adasi sweep's
+    30 picks topped out at 225 because they were drawn from above it. Enumerate the reseed's
+    descent, cut the frame the way `scripts/trunk-roster.py` does, and pass
+    `--list-saturated exports/adasi` as the denylist.
 
     **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
 

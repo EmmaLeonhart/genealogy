@@ -40914,3 +40914,30 @@ tests are rewritten around the ruling, and the one that asserted `3` was a name 
 letters *because they might be initials* — which let `I` and `V` through, the two commonest
 ordinals in the file — and a CJK test that missed `2世` because it required every character to
 be a CJK numeral rather than dropping the digits first.
+
+## 2026-09-13 — Adasi's reseed Forest filed, and part 1 is down to a single step
+
+`exports/adasi/export-Forest-6000000227723403845.ged`, task `6000000227737522828`: **26 new of
+5,000, 0.5%** — expected on a `Forest` over ground two earlier Adasi balls already cover, and the
+same reading as the Chinese post-merge pair. The reseed now has both root-anchored exports.
+
+**Deleted from § THE WHOLE PROGRAM part 1: the `Forest` and `Descendants` instructions.** Seven
+of the eight seeds were already done and Adasi's reseed was the last; both its root-anchored
+steps are now filed, so the whole of part 1 reduces to **one Monte Carlo on one seed**. Left in
+place, it would invite a second `Forest` against the scarcest thing in the campaign.
+
+**What the item keeps is the thing that would otherwise be repeated as an error.** The reseed
+exists because the first Adasi seed sat on the wrong side of a bottleneck — *"they have a
+particularly weird structure to them where the family kind of fans out a lot, but it basically
+has at least one really, really significant bottleneck"* — and its first sweep's 30 picks topped
+out at 225 for exactly that reason. A sweep that samples the same way will get the same answer,
+so the item now says to cut the frame with `trunk-roster.py` and pass
+`--list-saturated exports/adasi`.
+
+That bottleneck was read off the tree by Emma and derived by nothing here, which is worth keeping
+next to the sampling instruction rather than in a devlog entry nobody re-reads.
+
+**Nothing else is deletable**, on the same checks as the previous six sweeps: the six Abul Hamza
+seeds still have 0 rows between them, the OneTab 19 still 0 of 25, the Aztec banked hit has no
+log row, Genghis has a `Forest` and no Monte Carlo, and the four *"nothing is investigated"*
+items say so in their own text.
