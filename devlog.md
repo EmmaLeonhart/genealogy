@@ -40390,3 +40390,37 @@ Emma rather than through Charlemagne: kept as
 *"Charlemagne is your 35th great grandfather"*, viewer-anchored. Clicked the pin once, never
 blind. Verified on a real target: Baradanath Haldar's page no longer says *is your* anything.
 Every capture from here is anchored on him.
+
+## 2026-09-13 — banked hit 4 filed at 38.3%, the slot released, and the Chinese Forest away
+
+**Banked hit 4 of 5, ben Ovadya's `6000000011196793448`** (Marcos Flores de Abrego de la Garza,
+5,708). The climb ran 19 steps through a well-documented Spanish-colonial line where every person
+had both parents, landed on `6000000223869309416` NN Flores y Valdes de la Cueva, created
+`6000000227730970826`, and the ball came back **1,914 new of 5,000 — 38.3%**.
+
+**It is the first climb run under the 1.7.45 denylist**: 10,000 subjects loaded from
+`reports/avoid/ben-ovadya-descendants.txt`, the landing was clear, and the guard never had to
+fire. The offline check agreed. So the guard has now been exercised on a clear landing as well as
+on the collision it caught, which is the half that was untested.
+
+**It held Geni's serial slot for 6 hours 30 minutes** — 10:36Z to 17:0xZ — and that is the whole
+explanation of the three `no_such_walk` reports on the Chinese Forest. With the slot free, the
+same submission on the same profile redirected to `/gedcom/download?task_id=6000000227732606834`
+first time. Nothing about the profile, the walk or the form had changed; only the slot.
+
+**So the Chinese post-merge `Forest` is away** — `NN Father of Huaxu` `6000000227036719829`, task
+`6000000227732606834`, step 1 of the three, destined for `exports/post-merge/`.
+
+**Dead-queue sweep, third of the day: nothing to delete.** The only thing that completed since
+the last sweep is this ball, and its queue item — § *ONE BANKED MONTE CARLO HIT LEFT* — still
+holds Aztec `6000000021665410212`, so it stays. Everything else was re-tested against what is
+filed:
+
+    Adasi's reseed Forest        not on disk
+    Chinese post-merge Forest    not on disk -- submitted this minute, not filed
+    the six Abul Hamza seeds     still 0 rows between them
+    the OneTab 19                still 0 of 25 ids in the log
+    the five artefacts           "nothing here is investigated, measured, fetched or queried"
+    the nine screenshots         "the task emerges from the images", unread
+
+Corpus: **1,634,283** distinct people, up 1,914.
