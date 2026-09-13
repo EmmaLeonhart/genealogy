@@ -725,20 +725,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
     **Positions in the order were NOT stated.** Recorded, not ranked.
 
-  - **⛔ `Nārāyaṇa` `6000000220876233832` — INDIAN DESCENT FROM ANTIQUITY, ADDED 2026-09-12.**
-    <https://www.geni.com/people/N%C4%81r%C4%81ya%E1%B9%87a/6000000220876233832?through=6000000000206304213>
-    *"for Indian dfa is also a person to do the thing on."* **The thing** is the three-step
-    method above: `Forest` on the root, then `Descendants`, then Monte Carlo over those.
-
-    ⛔ **HE IS NOT AN `NN` PLACEHOLDER AND THAT MAY MATTER.** Every other seed she supplied today
-    is a profile she created, which is why they can be exported from. This is a named historical
-    person on somebody else's tree, so the export may be refused the way Gamle Olof's and Jacques
-    Grimaldi's were — *"You are not allowed to export that profile."* **Try it and read the
-    answer; do not assume either way.** If it refuses, the create-an-ancestor step is what the
-    seed rule is for, and whether to take it here is not decided.
-
-    **Its position in the order was NOT stated.** Recorded, not ranked.
-
   Nothing on this list is investigated, measured or seeded until the Wikidata paths are done —
   `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
 
