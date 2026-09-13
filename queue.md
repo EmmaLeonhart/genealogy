@@ -666,12 +666,11 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
     anything else is driven against it.
 
-  - **⛔ FIVE BANKED MONTE CARLO HITS, NONE SPENT.** They live in
+  - **⛔ FOUR BANKED MONTE CARLO HITS LEFT.** They live in
     `reports/descendants-export-targets.csv` and **were tracked nowhere in this file**, which is
     how Chinese 1 and Skjalgsson went missing from the roster earlier today.
 
-        6000000041015044009  15,000   from Nārāyaṇa's sweep
-        6000000001759017182  15,000   from Inca's sweep
+        6000000001759017182  15,000   from Inca's sweep            CLIMBING 2026-09-13 03:15
         6000000004828068793   8,258   from Skjalgsson's re-sweep
         6000000011196793448   5,708   from ben Ovadya's sweep
         6000000021665410212   5,086   from Aztec's sweep

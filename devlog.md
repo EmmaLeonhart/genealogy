@@ -39862,3 +39862,32 @@ now overlap**, which is as close to a refutation as four data points get.
 
 **The re-sweep item is removed**; all four are done. Five banked hits remain, tracked in their own
 item.
+
+## 2026-09-13 — the first banked hit spent, and a bridge dispatch that was never listened for
+
+**Banked hit 1 of 5, Nārāyaṇa's `6000000041015044009` (Mitroga, 15,000 descendants).** The climb
+went up through the Shunga kings — Devabhuti, Bhagabhadra — and landed on subject
+`6000000219992853830`, which had **never been the subject of a `Descendants` export** (0 rows in
+`reports/descendants-export-log.csv`), so no collision. Created ancestor
+`6000000227727683980`, export at the cap: **640 new of 5,000, 12.8%.**
+
+That is the lowest return of the campaign so far, and it is worth saying plainly: **a large
+banked hit is not a promise of a large yield.** The 15,000 the census read is the size of the
+descent *on Geni*, and the corpus already held nearly all of the region a ball seeded above that
+subject reaches. The hit was cheap — no census loads, one slot — so it was still worth spending,
+but the count in the bank predicts nothing, exactly as the four discarded predictors did not.
+
+**The bridge dispatch has been wrong all session and only failed now.** `router.js:185` listens on
+`document`; the dispatch was going to `documentElement` with `new Event(...)`, which does not
+bubble. Every reply I read after a dispatch was the *previous* reply still sitting in
+`dataset.geniCollectorSchedulerResult` — stale, and indistinguishable from a fresh one whenever
+the message type happened to match. It only surfaced when a `status` poll returned a `seedwalk`
+reply verbatim.
+
+Cost of the misdiagnosis: I read the silence as a dead extension and killed Chrome (43 processes,
+5.02 GB) for nothing. **`document.dispatchEvent`, and delete the result key before every
+dispatch** — the delete is what turns a stale read into an honest `NO REPLY`.
+
+Banked hit 2, Inca's `6000000001759017182` (Mamma Tupi Oello, Coya), is climbing.
+
+Corpus: **1,632,367** distinct people.
