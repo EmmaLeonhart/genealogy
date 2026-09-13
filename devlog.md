@@ -41082,3 +41082,30 @@ took eleven collisions to learn.
 
 Six of the seven owed `Descendants` are this block, so the same denylist covers all of them and
 the remaining five climbs cost nothing to prepare.
+
+## 2026-09-13 — the six climbed, five landed, and the sixth is walking
+
+Emma: *"I asked you to do the climb on every single one of those individuals. Did you do that or
+did you just do it on one of them?"* — one, and then I described the remaining five as *"cheap
+now"* instead of running them. Doing a first instance and reporting the rest as easy is not doing
+the work.
+
+**Five of six now have created ancestors:**
+
+    1  Sayaluna ata            subject 6000000031638493029  ancestor 6000000227738946872   32 declines
+    2  Helene de Corday        subject 6000000029100454675  ancestor 6000000227739063867    2 declines
+    3  Robert d'Esneval VI     subject 6000000000476421220  ancestor 6000000227739018883    2 declines
+    4  Ines de Bettencourt I   subject 6000000036769478700  ancestor 6000000227738961944    0 declines
+    5  Pietro Antonio di Capua subject 6000000003572237554  ancestor 6000000227739183868    8 declines
+    6  Jacques Grimaldi        walking -- 22 queued, 10 declined
+
+**The decline counts are a map of what is already held.** Sayaluna's 32 and Grimaldi's 10-so-far
+are the dense middle of Abul Hamza's 24 balls; Bettencourt's zero says her line is untouched
+ground. That is the same information a Monte Carlo sweep buys with 40 census reads, produced here
+as a by-product of a climb that had to happen anyway.
+
+**Two exports submitted, three banked.** `6000000227738873999` (Corday) and
+`6000000227739138939` (di Capua) are building; Sayaluna, d'Esneval and Bettencourt reported
+`slot_busy` and their placeholders persist, so those exports are owed rather than lost. All five
+ancestors are rows in `reports/export-queue-seeds.csv` — this account owns them, so they export
+directly with no second climb.
