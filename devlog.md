@@ -41243,3 +41243,21 @@ used; Jimmu's returned `resolved_none` and is outstanding.
 **Also filed:** `exports/post-merge/export-Ancestors-6000000227739381826.ged`, **678 new of
 5,000** — NN de Lusignan, run ahead of everything because the profile may be deleted. Its
 `Forest` is still owed.
+
+## 2026-09-13 — Grimaldi's ball, and the six are three-for-three where the descent check said GO
+
+`exports/abul-hamza-descendants/export-Descendants-6000000227739073017.ged`: **1,491 new of
+5,000, 29.8%.**
+
+**The six Abul Hamza seeds, all climbed, and the balls collected so far:**
+
+    Pietro di Capua     1,397 new (27.9%)   --descent said 0 held
+    Jacques Grimaldi    1,491 new (29.8%)
+    Helene de Corday        2 new  (0.0%)   --descent said 5,127 held, and --list-saturated missed it
+
+Two of the three that were descent-checked at zero returned ~1,400 each; the one the cheap guard
+cleared and the real one refused returned two people. Sayaluna, d'Esneval and Bettencourt are
+still banked with ancestors created and descent verified at zero.
+
+**And Lusignan's `Forest` is away as `6000000227739607852`**, completing the pair on the
+deletion-risk profile — `Ancestors` filed at 678 new earlier.
