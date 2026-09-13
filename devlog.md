@@ -40731,3 +40731,35 @@ The climb is away with the denylist at 11,636 loaded and verified.
 slot was gone; this one was measured before it was spent, which is the whole difference between
 a post-mortem and a guard — the same lesson the offline form of this script had already taught
 once today and that I had only half-applied.
+
+## 2026-09-13 — the twelfth collision: the right instrument, pointed at the wrong person
+
+`export-Descendants-6000000227735855842.ged`: **1 new of 5,000**, immediately after building a
+pre-flight designed to prevent exactly this.
+
+**The pre-flight was correct and I aimed it wrong.** `--descent` cleared 少典 Shǎo Diǎn
+`6000000198581146831` — 0 descendants held against 15,000 on Geni, a perfect target. But a climb
+walks **upward**: it left Shǎo Diǎn, skipped four denylisted subjects, and stopped on
+`6000000026566135156`, which holds **122,348** descendants — the same saturated region the
+eleventh collision landed in. The export is seeded above the landing subject, never above the
+hit.
+
+`queue.md` has said **CHECK THE SUBJECT AFTER THE CLIMB, NOT THE HIT BEFORE IT** in capitals
+since the ninth collision. I read it as a rule about *people* and it is a rule about *where in
+the sequence a check goes*; building a new instrument and pointing it at the pre-climb hit broke
+it again in a new form.
+
+**And checking after the climb cannot work either**, which is the part worth having learnt: the
+extension submits the export the moment it creates the ancestor, so by the time a subject is
+knowable the slot is gone. Any check that acts has to be inside the walk.
+
+**So the denylist absorbs it.** `--list-saturated` = everyone inside a ball **plus every ancestor
+of them**, walked upward through the merged corpus. Anyone above a held ball necessarily has that
+ball beneath them, so they are exactly who a climb must not stop on — and `avoidSubjects` is
+consulted at the moment of creation, which is the only moment that can act.
+
+    --list             11,636 ids   misses both collision subjects
+    --list-saturated   14,674 ids   contains both
+
+Two slots bought that rule. The campaign has spent twelve collisions total and the last two are
+the only ones that were preventable by something already built.

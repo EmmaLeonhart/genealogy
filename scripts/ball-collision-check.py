@@ -3,6 +3,7 @@
     python scripts/ball-collision-check.py <subject geni id> <exports/root-dir>
     python scripts/ball-collision-check.py --list <exports/root-dir>
     python scripts/ball-collision-check.py --descent <subject geni id>
+    python scripts/ball-collision-check.py --list-saturated <exports/root-dir>
 
 **Run this AFTER the climb, on the subject the climb landed on, and BEFORE spending the slot.**
 The hit id the Monte Carlo sweep reported says nothing about this: the climb walks upward from
@@ -34,6 +35,25 @@ nothing else — cheap against a slot that is the scarcest thing in the campaign
     near 5,000   the ball can only re-download what is held. Do not spend the slot.
     near 0       the descent is missing entirely. This is the best kind of target:
                  少典 (Shǎo Diǎn) `6000000198581146831` reads 15,000 on Geni and **0** here.
+
+## ⛔ `--list-saturated` IS THE ONE TO PASS TO A CLIMB, AND `--list` IS NOT
+
+`--list` names everyone INSIDE a ball. A climb walks UPWARD, so it lands on people ABOVE those
+balls — who are not in the list, and whose descent nonetheless contains the whole ball. That is
+the eleventh and twelfth collisions, both of which landed on subjects holding **122,348**
+descendants apiece and both of which returned **1 new person for a slot**.
+
+`--list-saturated` adds every ancestor of every ball member, walked upward through
+`FAMC`-equivalent links in the merged corpus. Anyone above a held ball necessarily has that ball
+beneath them, so the list is exactly the set a climb must not stop on — and because the extension
+consults `avoidSubjects` at the moment it is about to create, the skip happens during the walk
+rather than after the export.
+
+`--descent` remains the right check for a subject you already have in hand. It is not a
+substitute for this: on 2026-09-13 it was run on the HIT, cleanly, and the climb then walked up
+past the hit into saturated ground. `queue.md` says **CHECK THE SUBJECT AFTER THE CLIMB, NOT THE
+HIT BEFORE IT** in capitals, and this is that rule applying to an instrument rather than to a
+person.
 
 Exit status is 1 when a collision is found, so it can gate a shell step.
 
@@ -74,6 +94,32 @@ def everyone(subdir: str) -> set:
     return out
 
 
+def saturated(subdir: str) -> set:
+    """Everyone inside a ball under `subdir`, PLUS every ancestor of them in the corpus.
+
+    The ancestors are the half `--list` misses and the half a climb actually lands on.
+    """
+    inside = everyone(subdir)
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "descent_from", ROOT / "scripts" / "descent-from.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    _names, fams = module.read(sorted((ROOT / "exports").rglob("*.ged")))
+    parents_of = {}
+    for partners, children in fams:
+        for child in children:
+            parents_of.setdefault(child, set()).update(partners)
+    seen, queue = set(inside), list(inside)
+    while queue:
+        person = queue.pop()
+        for parent in parents_of.get(person, ()):
+            if parent not in seen:
+                seen.add(parent)
+                queue.append(parent)
+    return seen
+
+
 def descent_size(subject: str) -> int:
     """How many of the subject's descendants the merged corpus already holds.
 
@@ -96,6 +142,10 @@ def descent_size(subject: str) -> int:
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
+    if sys.argv[1] == "--list-saturated":
+        for pid in sorted(saturated(sys.argv[2])):
+            print(pid)
+        return 0
     if sys.argv[1] == "--descent":
         subject = sys.argv[2]
         held = descent_size(subject)

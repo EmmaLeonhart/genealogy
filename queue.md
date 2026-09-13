@@ -118,7 +118,14 @@ caught it is offline and costs no Geni traffic — **enumerate the subject's des
 with `scripts/descent-from.py` and refuse a slot when it is already near 5,000.** Build it as a
 pre-flight before the next hit is spent.
 
-⛔ **PASS THE DENYLIST, AND SCOPE IT TO `exports/post-merge` ONLY.**
+⛔ **PASS `--list-saturated`, NOT `--list`.** `reports/avoid/post-merge-saturated.txt`,
+rebuilt before every climb. `--list` names only who is INSIDE a ball; a climb walks UPWARD and
+lands ABOVE them, which is how collisions eleven and twelve both happened — both landed on
+subjects holding **122,348** descendants and both returned **1 new person for a slot**.
+`--list-saturated` adds every ancestor of every ball member and contains both of those subjects;
+it is 14,674 ids against `--list`'s 11,636.
+
+⛔ **SCOPE IT TO `exports/post-merge` ONLY.**
 `scripts/ball-collision-check.py --list exports/post-merge > reports/avoid/post-merge.txt`, then
 `avoidFile` on the sweep — see § *ONE BANKED MONTE CARLO HIT LEFT* for why, and verify
 `avoidSubjects` loaded rather than assuming it.
