@@ -39785,3 +39785,30 @@ rule, and it is recorded as one.
 
 **Both roots come out of the re-sweep item**, each now closed on two sweeps rather than one:
 Chinese 1 on a hit that was spent, Genghis on two agreeing nulls across 70 reads.
+
+## 2026-09-13 — Skjalgsson re-swept: 3,267 new, and the one pattern I had is weakened
+
+**`NN Skjalgsson 6000000227295848846`**, Bergitte's root. Re-sweep hit 2 of 40 — 11,496 and 8,258
+— against **0 of 30, top 888** the first time. Hit `6000000007255354036` spent: seed
+`6000000227727317863`, task `6000000227727320895`, **3,267 new (65.3%)**. One hit banked.
+
+    the root, closed at    630 new   (3 forest + 627 descendants + 0 of 30)
+    re-sweep adds        3,267
+                         -----
+                         3,897 new, with a banked 8,258-descendant hit unspent
+
+**Three of four re-sweeps have turned:**
+
+    Dál Fiatach   top 2,869  ->  6 hits   +21,953
+    Chinese 1     top 2,282  ->  1 hit     +2,930
+    Skjalgsson    top   888  ->  2 hits    +3,267
+    Genghis       top   415  ->  0 hits         0
+
+**⛔ AND THIS WEAKENS THE ONE PATTERN THAT LOOKED PROMISING.** After Chinese 1 and Genghis it
+looked like the first sweep's top reading might predict a turn — 2,282 turned, 415 did not.
+**Skjalgsson's top was 888 and it turned with two hits**, one of them 11,496. So the boundary, if
+there is one, sits somewhere between 415 and 888, which is far too fine to read off four roots.
+
+**What holds is the cheap fact**: a re-sweep costs 40 page loads and has recovered **28,150
+people** across three roots that had been closed. The pattern-hunting has produced nothing usable
+all session; the retry has produced all of it.
