@@ -1348,3 +1348,29 @@ https://www.geni.com/people/L%C3%A9i-Z%C7%94-%E5%AB%98%E7%A5%96/6000000002048439
 
 https://www.geni.com/people/Fuxi/6000000130191678854 https://www.wikidata.org/wiki/Q236972
 
+https://www.geni.com/people/Ji%C3%A1o-J%C3%AD-%E8%9F%9C%E6%A5%B5-3/6000000007213183226 https://www.wikidata.org/wiki/Q10514592
+
+https://www.geni.com/people/Xu%C3%A1n-Xi%C4%81o-%E7%8E%84%E5%9B%82-Sh%C7%8Eo-H%C3%A0o-%E5%B0%91%E6%98%8A-2/6000000002481254239 https://www.wikidata.org/wiki/Q1147250
+
+https://www.geni.com/people/T%C3%B3ng-Y%C3%BA-Sh%C3%AC-Wife-3-%E5%BD%A4%E9%AD%9A%E6%B0%8F/6000000002848066261 https://www.wikidata.org/wiki/Q28409803
+
+https://www.geni.com/people/M%C3%B3-M%C7%94-Wife-4-%E5%AB%AB%E6%AF%8D/6000000023167303575 https://www.wikidata.org/wiki/Q8262857
+
+https://www.geni.com/people/Zhu%C4%81n-X%C5%AB-%E9%A1%93%E9%A0%8A-3%E4%B8%96-DO-NOT-MERGE-PARENTS/6000000001381123265 https://www.wikidata.org/wiki/Q198180
+
+https://www.geni.com/people/Qi%C3%B3ng-Ch%C3%A1n-%E7%A9%B7%E8%9D%89-4/6000000001381046535 https://www.wikidata.org/wiki/Q10752092
+
+https://www.geni.com/people/Jing-Kang-%E6%95%AC%E5%BA%B7-5/6000000001381114215 https://www.wikidata.org/wiki/Q10299225
+
+https://www.geni.com/people/Ju-Mang-%E5%8F%A5%E8%8A%92-6/6000000001380828716 https://www.wikidata.org/wiki/Q9569181
+
+https://www.geni.com/people/Jiao-Niu-%E8%9F%9C%E7%89%9B-7/6000000001380983518 https://www.wikidata.org/wiki/Q7664534
+
+https://www.geni.com/people/Yu-Gu-Sou-%E7%9E%BD%E5%8F%9F-8/6000000001272831610 https://www.wikidata.org/wiki/Q10438384
+
+https://www.geni.com/people/Gui-Xiang-%E5%AA%AF%E8%B1%A1-9/6000000001272854603 https://www.wikidata.org/wiki/Q4499078
+
+https://www.geni.com/people/Emperor-Sh%C3%B9n-%E5%B8%9D%E8%88%9C-9-1G/6000000195149451825 https://www.wikidata.org/wiki/Q313342
+
+https://www.geni.com/people/W%C3%B2-D%C4%93ng-%E6%8F%A1%E7%99%BB/6000000001272026560 https://www.wikidata.org/wiki/Q7878975
+
