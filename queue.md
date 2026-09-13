@@ -1232,6 +1232,12 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
 
   **It is hers to rule on and is NOT retracted on a resemblance.** Written down, not acted on.
 
+## Names
+
+Remember that this is not something to be done out of order, it is the second last item in the queue for a reason
+
+We are still generating non-name items as names such as numbers, and I think https://www.wikidata.org/wiki/Special:Contributions/OBender12 is likely pretty pissed at this point, but no talk page messages yet. idk why you did not fix it and seem to have completely overlooked the error that he constantly corrects. There are plenty of non-name things that need to be parsed not as names.
+
 
 ## Wikidata isolate connection
 
