@@ -41032,3 +41032,28 @@ done that way when there is a reason to move it.
 
 That last line is the part I had been substituting my own vigilance for. The pipeline already
 marks these people as needing work, every rebuild, without being told.
+
+## 2026-09-13 — batch 006, and both extension fixes proving themselves in one run
+
+**25 people, 24 family files, and 20 of the 25 export-warranted** — against earlier batches that
+ran 27 and 30 below-floor with barely a `seed_walk` between them. This stretch of the worklist
+has much larger neighbourhoods; the pool is not uniform and the earlier 1-in-30 rate was a
+property of where the cursor was, not of the campaign.
+
+**Both of today's extension fixes did their job in this batch, visibly:**
+
+    exportWalk  forest    1.7.48 -- load no longer inherits "descendants" from a Monte Carlo run
+    slot_busy   x3        1.7.47 -- three climbs hit a busy slot and SAID SO
+
+The `slot_busy` trio is the one worth noting. Before 1.7.47 those three would have read
+`no_such_walk` with `radios: 0`, which is what sent me after Chrome's throttling flags this
+morning while the real cause was a six-and-a-half-hour build holding the serial queue. They now
+name the condition, and the placeholders they created are recorded as owed work rather than lost.
+
+**`reports/export-queue.csv` is now 45 owed of 47** — 38 `Forest` for the isolate campaign, 7
+`Descendants` for the descendants campaign. It went from 25 to 45 in one batch, which is the
+queue doing exactly what it was asked to do: the statistics gate keeps finding people worth an
+export far faster than one serial slot can spend them, and the file is where that backlog is
+visible instead of being scattered through scheduler state that dies with the browser.
+
+Corpus: **1,636,091**. Running total for the day: **130 isolate rows, 115 family files, 2 chains.**
