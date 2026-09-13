@@ -687,7 +687,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
         6000000227712070008  NN Näf         more Monte Carlo rounds (80.1% then 26.8%)
         6000000227708968860  ben Ovadya     Monte Carlo, not yet started
-        6000000227226958932  Dál Fiatach    Monte Carlo, not yet started
 
     **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
     already held and that is not a reason to stop, per the ruling above.

@@ -39462,3 +39462,18 @@ every other time; it simply was not made between the sweep starting and the repo
 
 **A build that finishes unobserved holds nothing up, but an export that finishes unobserved does**
 — it occupies Geni's serial slot in the report's account of the world while actually being free.
+
+## 2026-09-12 — Dál Fiatach's sweep: 0 of 30, and the root closes
+
+**`NN Dál Fiatach 6000000227226958932`**, part 3.
+
+    Descendants  filed earlier   1,073 new (21.5%)
+    Monte Carlo  30 reads, 0 over 4,000, top 2,869
+
+**Its pool is 231,038 — the third-largest in the repo — and it produced no hit.** Against Aztec's
+5,714-person pool producing two hits and 99.3% new, that is the clearest single pair showing pool
+size does not predict sweep yield.
+
+**The line comes out of part 3.** Its top reading of 2,869 is closer to the threshold than
+Skjalgsson's 888 or Adasi's 225, so a second sweep here would be the better bet of the three if
+the question is ever revisited — recorded rather than acted on.
