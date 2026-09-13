@@ -591,7 +591,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - **⛔ THE SEEDS FOR THE REST OF THE ROSTER, SUPPLIED 2026-09-12.** Every one is a profile to
     export FROM, so the create-an-ancestor step is already done and must not be repeated on them.
 
-        6000000227039926826  Genghis Khan          NN Borjigin
         6000000209721868822  Aztec Emperors        NN Mixcoamatzin
         6000000209721822822  Inca Emperors
 
