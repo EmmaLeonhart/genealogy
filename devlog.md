@@ -40565,3 +40565,36 @@ the same 40 draws and the same denylist.
 The first sweep was stopped at 24 of 40 rather than run out. It is not a verdict being discarded:
 16 more reads of the same frame would have measured the same leaves, and those page loads are
 better spent on the trunk.
+
+## 2026-09-13 — the trunk sweep hit three times, and a denylist has to be scoped
+
+**The frame fix is confirmed by the numbers, not by argument.** Same root, same threshold, same
+40 draws, the only change being which people were drawn:
+
+    uniform over the whole descent      24 reads, largest 43,     0 over 4,000
+    restricted to gen 1-115 (the trunk) 41 reads, largest 9,265,  3 over 4,000
+
+**9,265, 6,802 and 6,793.** The root was never thin. A uniform sample of a 156-generation descent
+whose mass sits at generation 130 measures leaves, and leaves correctly report tiny descents.
+
+**Step 3's first climb is away**: subject `6000000054108706099`, created ancestor
+`6000000227733569883`, export `6000000227733801822`.
+
+**And the collision check said something worth keeping.** The subject reads:
+
+    clear      against exports/post-merge     (1 ball)
+    COLLISION  against exports/chinese-clusters (4 balls)
+
+**The pre-merge collision is not a reason to skip — it is the reason to go.** Those are the
+duplicate-ridden balls the merging campaign collapsed and this campaign supersedes; refusing a
+landing because a pre-merge ball already covered that region would refuse precisely the work
+that was asked for. So the denylist is scoped to **the directory the new ball will be filed in**,
+which is also the question the 9-of-10 measurement was taken against. I passed `post-merge` alone
+and that turns out to be the correct scope rather than a lucky one; `queue.md` now says so, so
+the next session does not "improve" it by adding the pre-merge directory.
+
+**Dead-queue sweep: nothing to delete.** Chinese step 3 is in flight rather than finished — one
+of three hits climbed, no ball filed. Adasi's reseed Forest, the Aztec banked hit, Aztec's
+Forest, Genghis's Monte Carlo, the six Abul Hamza seeds and the OneTab 19 are all still open on
+the same checks as the last three sweeps, and the standing procedures are excluded by the sweep's
+own rule.

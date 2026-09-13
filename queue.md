@@ -94,9 +94,18 @@ pre-merge descent would sample duplicate ids. 120,878 descendants held, 156 gene
 has been shown to separate a root worth sweeping from one that is not, this sits with `no-name`
 and `NN Näf` rather than with Nārāyaṇa's 33. `reports/descent-bottlenecks.csv`.
 
-⛔ **PASS THE DENYLIST.** `scripts/ball-collision-check.py --list exports/post-merge >
-reports/avoid/post-merge.txt`, then `avoidFile` on the sweep — see § *ONE BANKED MONTE CARLO HIT
-LEFT* for why, and verify `avoidSubjects` loaded rather than assuming it.
+⛔ **PASS THE DENYLIST, AND SCOPE IT TO `exports/post-merge` ONLY.**
+`scripts/ball-collision-check.py --list exports/post-merge > reports/avoid/post-merge.txt`, then
+`avoidFile` on the sweep — see § *ONE BANKED MONTE CARLO HIT LEFT* for why, and verify
+`avoidSubjects` loaded rather than assuming it.
+
+**Do NOT add `exports/chinese-clusters` to it.** The first step-3 landing,
+`6000000054108706099`, reads *clear* against post-merge and *COLLISION* against the pre-merge
+balls — and the pre-merge collision is not a reason to skip, it is the reason to go. Those balls
+are the duplicate-ridden ones the merge collapsed and this campaign supersedes; declining a
+landing because a pre-merge ball already covered it would decline exactly the work Emma asked
+for. **The denylist is scoped to the directory the new ball will be FILED in**, which is the
+question it was measured against.
 
 ### ⛔ SKJALGSSON IS DROPPED. Ruled 2026-09-13: *"Drop skjalgsson please"*.
 
