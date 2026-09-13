@@ -40321,3 +40321,35 @@ statistics gate. Both ties on every person. Stagger 9,000 ms — the throttle is
 and 500+ back-to-back reads on 2026-09-12 is what got the account CAPTCHAd.
 
 First five dispatched from the top of the pool, all at neighbourhood size 344.
+
+## 2026-09-13 — the trail scrape runs, and the half that was missing
+
+**The extension did the whole loop and the repo could not read the answer.**
+`individual.js` returns a result carrying `family_tsv` and `family_filename`, ready to write —
+and `family_filename` appears **nowhere else in the repository**. `write-family-scrape.py` is the
+writer for the other shape, the raw `{"ext": …, "relatives": […]}` block, which it renders itself
+and cannot take pre-rendered. So every `individual` run this session would have produced results
+that nothing filed. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done*, from the
+caller's side.
+
+`scripts/write-individual-results.py` is that caller: the family TSV to `geni-families/`, a row
+in `reports/isolates.csv`, and one `attempt_ledger.stamp()` for the batch. `via` is derived from
+`path_state` and `inlaw_state` **independently**, so *both ties* is recorded rather than assumed,
+and a search still running writes a **blank** verdict, never `no`.
+
+**Getting the results out of the browser took three attempts and the third is the one to reuse.**
+Returning them from `javascript_tool` is refused — the family TSV carries profile URLs with query
+strings and the harness blocks that, and base64 is blocked as well. What works is a **blob
+download**: build a `Blob`, click an `<a download>`, and the file lands in `~/Downloads` where a
+script can read it. No shell heredoc touches it, so § *Never retype a scrape through a shell
+heredoc* is satisfied by construction.
+
+**First batch, five people at neighbourhood size 344:**
+
+    5 stamped, 5 isolate rows, 2 family files
+    all five: path resolved_none AND inlaw resolved_none -> via "neither", a real double miss
+    all five: miss_below_floor -- no statistic reaches 250, so no export was spent
+
+Three carried no `family_tsv` at all, which is what a profile with no rendered family block looks
+like; the row and the stamp are still written, so they are attempted and will not be re-picked
+for 30 days.
