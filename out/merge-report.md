@@ -1902,26 +1902,28 @@ Sources in merge order (later sources win value conflicts):
 1896. `export-Descendants-6000000227036719829.ged`
 1897. `export-Descendants-6000000227733569883.ged`
 1898. `export-Descendants-6000000227733837031.ged`
-1899. `export-Forest-6000000178918141824-refresh.ged`
-1900. `export-Forest-6000000178918141824.ged`
-1901. `export-Forest-6000000227036719829.ged`
-1902. `export-Forest-6000000227413001839.ged`
-1903. `export-Forest-6000000227413445871.ged`
-1904. `export-Forest-6000000227413852831.ged`
-1905. `export-Forest-6000000227414103872.ged`
-1906. `export-Forest-6000000227415008926.ged`
-1907. `export-Forest-6000000227558482822.ged`
-1908. `export-Forest-6000000227558664902.ged`
-1909. `export-Forest-6000000227715260898.ged`
-1910. `wikidata-qid-links.ged`
-1911. `manual-parental-correspondences.ged`
+1899. `export-Descendants-6000000227735175860.ged`
+1900. `export-Descendants-6000000227735855842.ged`
+1901. `export-Forest-6000000178918141824-refresh.ged`
+1902. `export-Forest-6000000178918141824.ged`
+1903. `export-Forest-6000000227036719829.ged`
+1904. `export-Forest-6000000227413001839.ged`
+1905. `export-Forest-6000000227413445871.ged`
+1906. `export-Forest-6000000227413852831.ged`
+1907. `export-Forest-6000000227414103872.ged`
+1908. `export-Forest-6000000227415008926.ged`
+1909. `export-Forest-6000000227558482822.ged`
+1910. `export-Forest-6000000227558664902.ged`
+1911. `export-Forest-6000000227715260898.ged`
+1912. `wikidata-qid-links.ged`
+1913. `manual-parental-correspondences.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 717117 |
-| INDI | 1635949 |
+| FAM | 717119 |
+| INDI | 1635951 |
 | SUBM | 56877 |
 
 ## What each source contributed
@@ -3826,6 +3828,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227036719829.ged` | 66 | 172 | 0 | 8307 | 162 |
 | `export-Descendants-6000000227733569883.ged` | 517 | 1236 | 23 | 5861 | 491 |
 | `export-Descendants-6000000227733837031.ged` | 118 | 247 | 0 | 7572 | 107 |
+| `export-Descendants-6000000227735175860.ged` | 1 | 1 | 0 | 8541 | 1 |
+| `export-Descendants-6000000227735855842.ged` | 1 | 1 | 0 | 8541 | 1 |
 | `export-Forest-6000000178918141824-refresh.ged` | 0 | 0 | 0 | 8332 | 0 |
 | `export-Forest-6000000178918141824.ged` | 0 | 0 | 0 | 8334 | 0 |
 | `export-Forest-6000000227036719829.ged` | 0 | 11 | 0 | 8219 | 12 |
