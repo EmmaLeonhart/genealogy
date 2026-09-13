@@ -39637,3 +39637,33 @@ which is a page load per ancestor.
 5 s; what has had no spacing at all is one sweep following another. **Sweeps get spaced from
 here**, and that is a change in how the work is paced rather than something to engineer around —
 solving it cheaply is what § *GENI IS ACTIVELY HOSTILE* says gets the account CAPTCHAd.
+
+## 2026-09-13 — a stale zip was filed under the wrong seed's name, and the check that catches it
+
+**Agnes Graham `6000000002188104813`**, Dál Fiatach re-sweep hit 4, seed
+`6000000227726348824`, task `6000000227726253880`: **3,892 new of 5,000 (77.8%)**.
+
+**But the first attempt filed the WRONG FILE.** The download had not landed, `ls -t` returned the
+previous ball's zip, and it was unzipped and copied to
+`export-Descendants-6000000227726348824.ged`. The measurement said **0 new**, which is what a
+duplicate of an already-filed ball looks like, and the file's first `INDI` read
+`6000000227725864059` — **the previous seed**.
+
+**The misfiled copy was deleted before anything else touched it.**
+
+### ⛔ THE SEED ID HAS BEEN PRINTED ON EVERY COLLECTION TODAY AND NEVER COMPARED
+
+Every collection this session runs `grep -m1 '^0 @I'` and prints the first `INDI`. **It has been
+printed and read past thirty-odd times.** § *The seed is the file's first `INDI`* exists so the
+ball can be identified, and identifying it means **comparing it to the seed that was expected**,
+which is a one-line test:
+
+    got=$(grep -m1 '^0 @I' "$f" | sed 's/^0 @I\([0-9]*\)@.*/\1/')
+    [ "$got" = "$EXPECT" ] || { echo "MISMATCH - not filing"; exit 1; }
+
+**A wrong ball filed under a right name is worse than a missing one**: it is a `.ged` in
+`exports/` whose filename asserts a provenance the contents do not have, and the merge is keyed on
+the ids *inside* the file, so nothing downstream would ever have flagged it. The only reason it
+was caught is that `0 new` was implausible enough to look at.
+
+**Every collection from here compares before copying.**
