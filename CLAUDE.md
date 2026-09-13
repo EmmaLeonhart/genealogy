@@ -289,6 +289,13 @@ of a loop, not a sample of anything.
 - **A generation suffix goes LAST; a regnal ordinal stays put.** It is a fact about the person,
   not about one name string, and it must not reach an item somebody else labelled.
 - **Wikidata's label beats ours.** An existing `mul` is not ours to overwrite.
+- **⛔ A LANGUAGE LABEL DUPLICATING `mul` IS NOT OUR PROBLEM. A BOT ALREADY DOES IT.** Ruled
+  2026-09-13: *"There is a bot that periodically takes language labels that duplicate the
+  multi-language label. It removes them. I don't give a shit about that bot ... The fact that it
+  has that job literally means that we don't care."* And it is **used on purpose** — *"I've even
+  actively exploited that bot by ... some of the ways that I standardize labels across
+  languages."* So writing a duplicate is a legitimate way to standardise, and cleaning one up is
+  doing another bot's work. Never measure it, never queue it, never emit a removal for it.
 - **A middle initial keeps its Latin letter in every language.** A bare lowercase letter is a word.
 
 ## Editing Wikidata → [wikidata-editing](docs/rules/wikidata-editing.md)

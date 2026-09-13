@@ -40207,3 +40207,22 @@ roughly one was very nearly the count:
 `scripts/find-label-damage.py` is the detector and **prints only**; it emits no batch, because a
 repair that writes labels by itself is what caused this. `reports/wikidata-label-restore.txt` is
 two lines.
+
+## 2026-09-13 — the `mul`-duplication item is deleted, and it should never have been one
+
+*"Why is there a queue item about language labels duplicating their MUL? ... Remove it. I don't
+want that thing. Another bot deals with that ... The fact that it has that job literally means
+that we don't care. And I've even actively exploited that bot by ... some of the ways that I
+standardize labels across languages."*
+
+So the 2026-09-11 measurement — 1,606 items, 2,289 redundant edits — was work nobody wanted, and
+it is the thing I then built a 1,973-label removal batch out of. Deleted: the queue item, and
+`reports/label-duplicates-of-mul.csv`, which no script read.
+
+**The part worth keeping is why it is not a defect.** A duplicate language label is not just
+harmless, it is a *tool*: a Wikidata bot sweeps them up, so writing one is a way to standardise a
+label across languages and let the sweep leave `mul` as the single place the name lives. Cleaning
+them ourselves removes a mechanism she is using deliberately.
+
+`CLAUDE.md` gains the rule next to § *Wikidata's label beats ours*, so the next session that
+measures this stops before it queues it.

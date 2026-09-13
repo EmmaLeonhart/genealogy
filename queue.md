@@ -1263,23 +1263,6 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   **Nothing is investigated, measured or changed.** No emitter is audited, no locality test is
   written, and no batch is altered on the strength of this. It is written down where it was sent.
 
-- **⛔ THE LABEL DUPLICATION: 2,289 EDITS COPY THEIR OWN `mul`.** Measured 2026-09-11 and moved
-  here rather than worked. `reports/label-duplicates-of-mul.csv` has all 1,606 items.
-
-      items acted on                                          1,628
-      items given >=1 language label identical to their mul    1,606
-      redundant language-label edits                           2,289
-      en labels that genuinely DIFFER from mul                    36
-
-  `Q105872266` Eleanor Peshale carried the same string in six places — `mul`, `en`, `en-ca`,
-  `en-us`, `fr`, `nl`. Emma corrected that one; *"many people like this have a very wrong thing
-  done with their labels."*
-
-  The overwrite is not the error — a language label beats `mul`, so an `Lmul` alone leaves
-  `Mary|Maria Butler` in `en`. **The end state is.** Whether the fix is overwrite-and-accept or
-  overwrite-then-remove turns on what QuickStatements can do to a label, which is **not checked
-  and not guessed at**. Nothing in the emitter is changed.
-
 - **⛔ `Q1934051` — THE ONE OTHER IDENTIFICATION SHAPED LIKE THE WRONG ONE.**
   `NN Sverkerska Kungaätten` `6000000031940461725` identified with **Helena of Sweden**.
 
