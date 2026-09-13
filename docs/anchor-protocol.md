@@ -21,6 +21,27 @@ left sitting. It was never a decision. It was a thing to check and set.
 became a constraint enforced against the person who took it.** When something is done by hand
 because the automation is stuck, the lesson is *automate it*, not *this is sacred*.
 
+## ⛔ CHARLEMAGNE IS A CHOICE, NOT A REQUIREMENT. Ruled 2026-09-13
+
+*"I think you set the central individual to Charlemagne for this. Now Charlemagne is a good
+individual to keep here, but remember you do not need to have the central individual set to
+Charlemagne, you can just do it with whoever relationships are being displayed relative to."*
+
+**A path capture is valid relative to whatever the anchor is.** The thing that makes a verdict
+meaningful is that the anchor is RECORDED, which the `anchor` column in `reports/isolates.csv`
+does — not that it is any particular person. This page is written as *check, set, verify* and
+reads as though the viewer anchor were a fault to be corrected; it is not. It is a different
+question with a different, equally usable answer.
+
+**Which is why the 29 viewer-anchored rows of 2026-09-13 were kept rather than re-run.** The
+viewer is *Charlemagne's 35th great grandchild* — the banner says so — so the viewer sits inside
+his component, and a path to one exists exactly when a path to the other does. Same answer,
+different route. The rows carry `anchor=viewer` and are as good as the rest.
+
+**Set it deliberately, not reflexively.** Moving the pin costs a page load and invalidates
+nothing; leaving it costs nothing either. The failure is an UNRECORDED anchor, and the fix for
+that is the column, not the pin.
+
 ## The protocol
 
 1. **CHECK, on evidence rather than on the pin's appearance.** Load Charlemagne

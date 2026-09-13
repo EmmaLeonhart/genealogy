@@ -40968,3 +40968,36 @@ neighbourhood a `Forest` would have swept sideways.
 inheriting; `enqueue` takes it only when told, since it appends to a run already in progress.
 Inheriting is never right here — the two campaigns want different walks and only one of them ever
 sets the field.
+
+## 2026-09-13 — George R.R. Martin's chain, an export queue, and the anchor is a choice
+
+**GRRM `6000000081001962237`: 41 steps, blood, `Charlemagne's 38th great grandson`.** Emma:
+*"his path seem to clearly exist right now lol"* — it does, and the chain is filed at
+`geni-paths/6000000081001962237-individual.tsv`. He is also `Q181677`, an entry point live from
+2026-10-01, so the chain is the sinew for a person the campaign is about to lean on. `stamped 0`
+because he is not on the unconnected worklist — he is not an isolate.
+
+**`reports/export-queue.csv`, asked for today:** *"I want us to have a set up queue of geni
+exports, a csv file, each one has the actual export target individual and specifies the type (we
+only do descendants and forest to my knowledge)."* Two walks, and she is right that they are the
+only two the campaigns use of the five Geni offers.
+
+    25 owed of 27 rows      Forest 18 (isolates)     Descendants 7 (descendants campaign)
+
+**Derived, not hand-kept** — `CLAUDE.md` § *Progress is DERIVED, never stored*. The isolate side
+comes from `reports/isolates.csv` rows the statistics gate flagged; the descendants side from
+`reports/export-queue-seeds.csv`, which is by hand because those seeds come from rulings rather
+than a measurement. A row flips to `done` when its ball appears, so the file cannot drift.
+
+**And the walk per campaign is now written where it will be read**: `Forest` for isolates, per
+`docs/collector-run-loop.md`, and `Descendants` for the descendants campaign, per `CLAUDE.md`'s
+capitals. Today's leak put three isolate exports out as `Descendants` and this is the file that
+would have said otherwise.
+
+**The anchor is a choice.** *"you do not need to have the central individual set to Charlemagne,
+you can just do it with whoever relationships are being displayed relative to."*
+`docs/anchor-protocol.md` was written as *check, set, verify* and read as though a viewer anchor
+were a fault; it is a different question with an equally usable answer. What makes a verdict
+meaningful is that the anchor is **recorded** — the `anchor` column — not that it is any
+particular person. That is also why the 29 viewer-anchored rows from this morning stand rather
+than needing a re-run.
