@@ -39392,3 +39392,34 @@ whether to.
 
 **Aztec's line comes out of part 2**: its Forest already existed and its sweep is done. **Inca's
 sweep is the last of part 2.**
+
+## 2026-09-12 — the Aztec bottleneck is visible in the generation histogram, and Fihr's is not
+
+Emma's reading, offered as a theory: *"the aztec line is abnormally bottlenecked for such an
+ancient lineage. Possibly similar to the Fihr situation. Although fihr isn't bottlenecked as much
+as sparse. I think the Aztec line fans out super dramatically at some point but it mine be recent
+enough that we don't get good descendant data"*.
+
+**The descent files already on disk carry the answer and it matches.**
+
+    Aztec  5,714 people, generations 1-35
+      1:1  2:1  3:1  4:1  5:1  6:1  7:1  8:1  9:1  10:3  11:3  12:2  13:6  14:18 …
+      … 21:110  22:331  23:767  24:1631  25:1924  26:316  27:77  28:58 …
+
+    Fihr  11,395 people, generations 1-56
+      1:1  2:1  3:3  4:6  5:12  6:18  7:23  8:30  9:27  10:39  11:49  12:106 …
+      … 20:341  21:348  22:354  23:331  24:301  25:276  26:263  27:243 …
+
+**Nine consecutive generations of width ONE in the Aztec line.** That is a single-file chain, not
+a narrow family, and it is the bottleneck named. The fan-out is at generations 22-25 — 331, 767,
+1,631, 1,924 — and it **collapses to 316 immediately after**, which is what a fan-out too recent
+to have recorded descendants looks like from inside the data.
+
+**Fihr has no such feature.** It widens from the first generation and holds 200-350 per generation
+for twenty of them. Sparse and broad, not narrow then wide.
+
+**⛔ SO THE TWO WEAK-ROOT SHAPES ARE DISTINGUISHABLE AND THE INSTRUMENT IS FREE.** Both roots
+produced poor `Forest` and `Descendants` numbers, and the reason differs: a bottleneck keeps a
+root-anchored export inside the narrow part, while sparseness gives it a thin ball everywhere.
+`scripts/descent-from.py` already prints this histogram on every run and it has been discarded
+each time. **It is the one property tried today that separates roots rather than failing to.**
