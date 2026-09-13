@@ -39529,3 +39529,25 @@ verdict five times.
 **What the number actually supports**: *this sweep found no one over 4,000*, and nothing more. A
 root is a candidate for retry until several sweeps agree, and the retry is 30-40 page loads
 against a bank of hits that cost nothing further to spend.
+
+## 2026-09-13 — the re-swept root returns 94.6%, and five hits are still banked from it
+
+**`NN Dál Fiatach`**, the ball from the re-sweep's first hit: task `6000000227725760932`,
+**4,731 new of 5,000 — 94.6%**.
+
+    the root, closed an hour earlier on 0 of 30
+    re-swept on Emma's ruling             6 hits of 40
+    first hit spent                       4,731 new
+    still banked                          5 hits, four of them at the 15,000 ceiling
+
+**The corpus is 1,608,308**, from 1,535,829 at session start — **+72,479**.
+
+**⛔ THE COST OF THE PREMATURE CLOSE WAS NOT ZERO AND IS NOW MEASURABLE.** Closing this root on
+one empty sweep would have forgone 4,731 people already collected plus five unspent
+ceiling-height targets. **Four other roots are sitting in exactly that state** — Skjalgsson,
+Chinese 1, Adasi and Genghis, each closed on a single 0-of-30 — and on this evidence each is a
+candidate for a re-sweep rather than a finished root.
+
+**A re-sweep costs 30-40 page loads.** Against a ball of 4,731 people that is the cheapest
+instrument in the campaign, and the reason it was not run four times today is that a null result
+was read as an answer.
