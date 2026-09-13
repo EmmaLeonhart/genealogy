@@ -40809,3 +40809,40 @@ spend an eleventh.
 If the walk runs out of candidates without a clear landing it will stop with **no export at all**,
 and that is the correct outcome rather than a failure — a slot not spent on a ball we have is the
 whole point of the guard.
+
+## 2026-09-13 — the Chinese post-merge campaign is done, all three steps
+
+**Deleted: § THE CHINESE CLUSTERS.** Emma, this morning: *"there was a gigantic tangle of
+duplicates in both. I did a merging campaign on geni and so I want you to do a post merge
+overwriting higher priority gedcom ... and do the triple exports thing centered on this
+individual. Forest, descendants, and then grabbing random desendants and exporting descendants on
+all of them, all in the higher authority section."* All three steps are run and filed in
+`exports/post-merge/`.
+
+    step 1  Forest        6000000227036719829         19 new (0.4%)
+    step 2  Descendants   6000000227036719829        164 new (3.3%)
+    step 3  round 1       3 hits of 40   ->  1,236 + 247 new, 1 declined by the guard
+            round 2       2 hits of 40   ->      1 new,       1 declined
+            round 3       1 hit  of 40   ->  no landing found, no export, 216 skips
+
+    5 balls, 1,667 people, one root that read 0 of 30 before the merge
+
+**The stopping condition is met and it is the ruled one, not a count.** `CLAUDE.md` § *THE
+STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*. The hit rate fell **3, 2, 1** across
+identical 40-draw sweeps, the last two balls returned one new person each, and round 3's climb
+declined **216** consecutive landings without finding unsaturated ground. Three independent
+readings of the same thing: the region above this root is now held.
+
+**Round 3 cost no export slot at all**, which is the guard's best outcome rather than a failure —
+before `--list-saturated` those 216 would have been 216 chances to create a placeholder and spend
+a slot on a ball we already have, and two of them did exactly that earlier today.
+
+**Stopped by hand at 216 rather than run out.** A walk that has refused two hundred candidates is
+answering a question it has already answered, and 200+ page loads is the shape that got the
+account CAPTCHAd on 2026-09-12. The information was complete long before the queue was.
+
+**What the merge actually bought, which is the thing the low percentages hide.** Cluster 1 read
+*0 of 30* on its first sweep and cluster 2 returned 0.7% and 0.8% — the tangle made every ball a
+re-download and made a census count several copies of one person. After the merge a single root
+above Huaxu reached both clusters, held 120,878 descendants across 156 generations, and yielded
+1,667 people that were not in the corpus in any form.
