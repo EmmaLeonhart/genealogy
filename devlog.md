@@ -39496,3 +39496,36 @@ support it**, and with four sweeps on each side it is worth stating as an observ
 the mechanism is unknown.
 
 **His line comes out of part 3.** The 5,708 hit is banked; four banked targets now stand unspent.
+
+## 2026-09-13 — ⛔ A SINGLE EMPTY SWEEP IS NOT EVIDENCE. Dál Fiatach: 0 of 30, then 6 of 40
+
+Emma, on the 0-of-30 that closed Dál Fiatach: *"my guess is basically you hit a low probability
+outcome ... I would suggest that you do it again."*
+
+    sweep 1   30 reads   0 hits            top 2,869
+    sweep 2   40 reads   6 hits            15,000 · 15,000 · 15,000 · 15,000 · 10,919 · 7,899
+
+**Four of the six are at Geni's display ceiling.** The pool is unchanged at 231,038 and no export
+ran between the two sweeps, so nothing about the root changed — **the first sweep simply missed**.
+
+### ⛔ AND FOUR ROOTS WERE CLOSED TODAY ON EXACTLY THAT EVIDENCE
+
+    Skjalgsson    0 of 30, top   888   closed
+    Chinese 1     0 of 30, top 2,282   closed
+    Adasi         0 of 30, top   225   closed
+    Genghis       0 of 30, top   415   closed
+    Dál Fiatach   0 of 30, top 2,869   closed — and it had six hits waiting
+
+Every one of those was written up as *the sweep found nothing*, which is true, and then treated as
+*the root has nothing*, which does not follow. **Chinese 1's top was 2,282 and Dál Fiatach's was
+2,869 — the two nearest the threshold, and the one that was retried had six hits.**
+
+**⛔ THE RULE THAT SHOULD HAVE APPLIED WAS ALREADY IN `CLAUDE.md`.** § *A LONG-HORIZON INSTRUCTION
+IS NOT ANSWERED FROM THE FIRST SLICE* — *"taking a task that runs for hours over many rounds,
+drawing a conclusion from the first result, and reporting it as though the work were done"*. A
+30-pick sample of a six-figure descent is a first slice by any reading, and it was used as a
+verdict five times.
+
+**What the number actually supports**: *this sweep found no one over 4,000*, and nothing more. A
+root is a candidate for retry until several sweeps agree, and the retry is 30-40 page loads
+against a bank of hits that cost nothing further to spend.
