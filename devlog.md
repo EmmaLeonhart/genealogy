@@ -41109,3 +41109,37 @@ as a by-product of a climb that had to happen anyway.
 `slot_busy` and their placeholders persist, so those exports are owed rather than lost. All five
 ancestors are rows in `reports/export-queue-seeds.csv` — this account owns them, so they export
 directly with no second climb.
+
+## 2026-09-13 — Corday's ball is a collision, and it refutes the claim I made an hour ago
+
+`exports/abul-hamza-descendants/export-Descendants-6000000227739063867.ged`: **2 new of 5,000.**
+
+**I said an hour ago that the decline counts were "a free map of what is already held"** — that
+Sayaluna's 32 marked dense ground and Bettencourt's zero meant her ball "should be the richest of
+the six". Corday's climb declined **2** and her ball returned **2 people**. The decline count is
+not a predictor of yield; it is the sixth property to fail as one, after descent size already
+held, the first two steps' returns, pool size, the first sweep's top reading, and the census
+count.
+
+**And the two guards disagree, with the cheap one wrong.**
+
+    --list-saturated   cleared subject 6000000029100454675
+    --descent          5,127 descendants already held -- REFUSE
+
+`--list-saturated` is people inside a ball under one directory plus their ancestors. Corday's
+subject is neither, and yet the corpus already holds 5,127 of their descent — reached through
+other directories and through `Forest` exports. That is the same blind spot the eleventh
+collision had, one level up: the list approximates *do we hold this descent* and `--descent`
+answers it.
+
+**So the four remaining subjects were descent-checked before their slots are spent** — one corpus
+read for all four rather than four reads:
+
+    Sayaluna ata           6000000031638493029        0 held   GO
+    Robert d'Esneval       6000000000476421220        0 held   GO
+    Ines de Bettencourt    6000000036769478700        0 held   GO
+    Pietro di Capua        6000000003572237554        0 held   GO
+
+All four are genuinely untouched. Corday was the outlier and the run is otherwise sound — but I
+would not have known that without checking, and an hour ago I was reporting a prediction as a
+finding.
