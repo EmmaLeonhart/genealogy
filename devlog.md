@@ -40353,3 +40353,40 @@ heredoc* is satisfied by construction.
 Three carried no `family_tsv` at all, which is what a profile with no rendered family block looks
 like; the row and the stamp are still written, so they are attempted and will not be re-picked
 for 30 days.
+
+## 2026-09-13 — 34 people scraped, one chain, and the anchor was on the wrong person
+
+**The run.** Two batches, 34 people off the top of the pool, both ties on every one:
+
+    27 + 5   miss_below_floor   both searches resolved_none, via "neither", no statistic reaches 250
+     1       path_found         Baradanath Haldar 6000000186886974842, a 29-step chain
+     1       seed_walk          Sati Devi 6000000009593804483 cleared the floor on family_tree
+                                and blood_relatives
+    22       family files       six named relatives on Mahadevi Piramal alone, with Geni ids
+
+**The chain was being thrown away.** The result carries `path_tsv` and `path_filename` as well as
+the family scrape, and my writer read neither: it recorded *a path exists* and dropped the path.
+`geni-paths/README.md` — *"A relationship path names people whether or not any export has reached
+them ... That chain is the sinew"* — so writing the verdict and discarding the chain throws away
+the entire deliverable of a **trail** scrape. Fixed and both batches replayed.
+
+**And then the chain said what the verdict could not: step 1 was `You`.** The pin was on the
+viewer, not Charlemagne, so every verdict tonight answered *how is this person related to Emma*.
+`write-individual-results.py` had `ANCHOR` as a **constant** reading Charlemagne's Geni id, so 29
+rows asserted an anchor that was not set — the precise mislabel `docs/anchor-protocol.md` § *A
+VERDICT IS MEANINGLESS WITHOUT THE ANCHOR IT WAS TAKEN UNDER* is written against. The default is
+what made it silent: `--anchor charlemagne|viewer` is now **required** and the run refuses
+without it.
+
+**The verdicts survive, and this is the reason rather than a hope.** The viewer is *Charlemagne's
+35th great grandchild* — the banner said so — so the viewer sits inside Charlemagne's component.
+A path to the viewer therefore implies a path to Charlemagne, and no path to the viewer implies
+no path to Charlemagne. **The two questions have the same answer**; only the route differs. So
+the 34 attempts stand and the stamps stand. What does not is the one chain, which routes through
+Emma rather than through Charlemagne: kept as
+`geni-paths/6000000186886974842-individual-viewer-anchored.tsv` and worth re-taking now.
+
+**Anchor set, by the protocol and not by the pin's appearance.** Checked on Charlemagne's page —
+*"Charlemagne is your 35th great grandfather"*, viewer-anchored. Clicked the pin once, never
+blind. Verified on a real target: Baradanath Haldar's page no longer says *is your* anything.
+Every capture from here is anchored on him.
