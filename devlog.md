@@ -41321,3 +41321,18 @@ chain is simply gone.
 place rather than reverted — removing it would be a second unasked-for change to her directory —
 and `geni-paths/README.md` now says not to reconcile or reorganise it. Resolving those saves is
 queued as a later item alongside the `/paths` harvest.
+
+## 2026-09-13 — Lusignan's pair is complete, and Sayaluna's slot is spent
+
+`exports/post-merge/export-Forest-6000000227739381826.ged`: **452 new of 5,000, 9.0%.** With the
+`Ancestors` at 678 new, **NN de Lusignan is fully captured** — 1,130 people secured off a profile
+Emma flagged as prone to deletion in a high-traffic area. That was the right thing to run out of
+order; every other item on the list can be run tomorrow and this one could not.
+
+**Sayaluna ata's export is away as `6000000227739852821`**, the first of the three banked
+ancestors. Her subject `6000000031638493029` was descent-checked at **0 held**, and her climb was
+the one that declined **32** saturated candidates to find that ground — the densest refusal of
+the campaign.
+
+Two banked after her: `6000000227739018883` (d'Esneval) and `6000000227738961944` (Bettencourt),
+both descent-verified at zero.
