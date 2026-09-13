@@ -48,6 +48,12 @@ import sys
 #: lifted by a person. **Both gates consult it**, so neither the dispatched path nor the schedule
 #: can send while it is set, and `--dry-run` is unaffected because a dry run sends nothing.
 #:
+#: **The condition for lifting it, ruled 2026-09-13:** *"between everything else in the queue and
+#: running stuff on wikidata you must attempt all the wikidata isolates."* Every isolate in
+#: `reports/unconnected-p2600.tsv` ATTEMPTED — tried, not necessarily connected, and stamped by
+#: `scripts/attempt_ledger.py` so it is a fact in a file. `queue.md` § *Wikidata isolate
+#: connection* is the gate and carries the three stages.
+#:
 #: **To lift it:** set `HELD = False` here and `EDITS_HELD: "no"` in
 #: `.github/workflows/wikidata-edits.yml`. `tests/test_wikidata_start_date.py` fails if the two
 #: disagree, the same way it does for the two dates.

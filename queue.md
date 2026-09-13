@@ -878,35 +878,6 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
       3. whether the same hole exists for the other suffixes: `d.y.` 8 on Wikidata,
          `the younger` 5, `nuorempi` 11, and every senior form
 
-## What this session settled, so it is not relitigated
-
-* **Tiny GEDCOMs are the native format.** One per person, one per path, in different directories
-  even when both come off the same page. `exports/tiny-profiles/`, `exports/tiny-paths/`.
-* **An unknown parent is an ABSENT SLOT, never an `NN` person.** A sibling pair with no known
-  parents is a `FAM` with two `CHIL` and no partners. `exports/0-scraped/` and
-  `build-scraped-gedcom.py` were deleted on your instruction for inventing 4,928 people.
-* **The export gate is one floor of 250 on any statistics figure**, disjunctive, and it lives in
-  the extension rather than in a script the agent applies.
-* **No Playwright, no headless.** `CLAUDE.md` § *PLAYWRIGHT AND HEADLESS ARE A NO-GO* — the
-  agentic navigation is overhead paid to keep the traffic acceptable, not a design to improve on.
-* **The anchor is on Charlemagne**, set 2026-09-06 by protocol. `docs/anchor-protocol.md`.
-
-## Pointers
-
-`docs/collector-run-loop.md` — your dictation of the loop, and the no-discretion rule ·
-`docs/final-wikidata-geni-scrape.md` — the campaign, its scale, and its settled deliverables ·
-`docs/per-individual-loop.md` — the phase order and the statistics gate ·
-`docs/anchor-protocol.md` — check, set, verify · `todo.md` § 3c and § 3d ·
-`devlog.md` — what happened and why · `questions.md` — open questions for you.
-
----
-
-## Returned from `CLAUDE.md`, 2026-09-09
-
-This material was moved into `CLAUDE.md` on 2026-09-01 and never re-homed. It still
-speaks in queue coordinates — *pinned to the very end of the file*, *the sections
-below* — which meant nothing where it was sitting. Verbatim, nothing reworded.
-
 ## THE ALGORITHMS, moved out of `queue.md` on 2026-09-01
 The queue is for work; these are specifications and standing processes, so they live here
 instead.
@@ -1024,28 +995,6 @@ is at least some evidence for it.
 
 An analysis. Nothing was investigated when this was written.
 
-### How to read this file
-
-The queue was not usable, and the reason was structural rather than volume: **five sections declared
-themselves the front** — the mass export campaign, the algorithm review, `THE EXPORT LOOP` (*"it is
-the top of this file"*), `THE AGENDA` (*"everything else is secondary"*) and `RUN ORDER` — while
-**ten declared themselves the tail**. With both ends contested there was no order to work in.
-
-**The order is now position, and nothing else.** Top to bottom. Two conventions:
-
-- **Bullets, never numbers** — `CLAUDE.md` § *Queue items are BULLET POINTS*. A number is a promise
-  the item will still be there.
-- **An item is deleted when it is done**, in the same commit as its `devlog.md` entry. A section
-  still here is a step not yet taken.
-
-**Everything titled `LAST` / `THE LAST ITEM` / `THE TAIL` is now physically at the end**, in one
-run, so "last" means last. Nothing was reworded and nothing was dropped — only moved.
-
-**Some sections are SPECIFICATIONS, not steps**, and are worth knowing about before working the
-ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITHM`,
-`Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
-`PREREQUISITE ORDER`. They describe how a thing is done rather than asking for it to be done.
-
 ### 0. Aug 28, 2026 manual adds
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
@@ -1112,12 +1061,6 @@ spine logic once it is complete.
 
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
 free and `CLAUDE.md` § *Cost* no longer binds.
-
-### Pointers
-
-- Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
-- Open questions: `questions.md`
-- The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
 ### ⛔ `exports/post-merge/` — MOVED TO THE TAIL, 2026-08-29
 
@@ -1278,9 +1221,29 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
 
 Actually connect the wikidata isolates I think we can just zoom through them by this point with our pipeline we have
 
-⛔ **AND THIS ONE IS LAST, AFTER EVERY OTHER ITEM IN THIS FILE.** Ruled 2026-09-13:
-*"remember that the wikidata isolate path capturing campaign comes after everything else in the
-queue, maybe write that explicitly at the end if it is not clear enough"*. It is the standing
-fallback in `CLAUDE.md` § *The default when nothing else is running* — the thing idle time goes
-to — and a fallback is not a queue item that competes. **Nothing above it waits on it, and it
-does not start while anything above it is live.**
+⛔ **THIS IS THE GATE BETWEEN THE QUEUE AND WIKIDATA, AND BOTH HALVES ARE LOAD-BEARING.**
+Ruled 2026-09-13: *"Make sure it's clear that between everything else in the queue and running
+stuff on wikidata you must attempt all the wikidata isolates."*
+
+So the order is three stages and nothing skips a stage:
+
+    1. everything else in this file, top to bottom
+    2. ATTEMPT EVERY WIKIDATA ISOLATE          <- this section
+    3. only then may Wikidata editing be unheld
+
+**`attempt` is the word and it is not `connect`.** An isolate that turns out to have no path is
+attempted and done; the gate is that every one has been tried, not that every one succeeded.
+`reports/unconnected-p2600.tsv` is the roster — **266,201 people, 266,100 eligible** — the
+extension does the work, and `scripts/attempt_ledger.py` stamps `last_attempted` so *attempted*
+is a fact in a file rather than a memory.
+
+**Stage 3 does not arrive on a date.** `HELD = True` in `scripts/wikidata_lockout.py` is lifted by
+hand, and the condition for lifting it is stage 2 being finished: *"the submission should even
+have a requirement that all of the Wikidata people get connected. Get connected with the path
+thing."* See § *WIKIDATA EDITING IS HELD* at the top of this file.
+
+⛔ **AND THIS SECTION IS STILL LAST.** *"remember that the wikidata isolate path capturing
+campaign comes after everything else in the queue, maybe write that explicitly at the end if it
+is not clear enough"*. It is also `CLAUDE.md` § *The default when nothing else is running* — what
+idle time goes to — so it runs whenever nothing above it is live, and finishing it is what opens
+stage 3. **Nothing above it waits on it; it does not start while anything above it is live.**

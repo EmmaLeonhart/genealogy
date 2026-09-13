@@ -40226,3 +40226,35 @@ them ourselves removes a mechanism she is using deliberately.
 
 `CLAUDE.md` gains the rule next to § *Wikidata's label beats ours*, so the next session that
 measures this stops before it queues it.
+
+## 2026-09-13 — the isolates become the gate, and 57 lines of meta leave the queue
+
+**The order is three stages now, written where it cannot be missed.** Ruled: *"Make sure it's
+clear that between everything else in the queue and running stuff on wikidata you must attempt
+all the wikidata isolates."*
+
+    1. everything else in queue.md, top to bottom
+    2. ATTEMPT EVERY WIKIDATA ISOLATE
+    3. only then may Wikidata editing be unheld
+
+**`attempt`, not `connect`** — an isolate with no path is attempted and done. The gate is that
+every one has been tried, and `scripts/attempt_ledger.py` stamping `last_attempted` is what makes
+that a fact in a file rather than a memory. `scripts/wikidata_lockout.py` now carries the same
+condition next to `HELD`, so the module that refuses the edit says what would lift it.
+
+This also resolves the tension the isolate section had been sitting in: it is both the standing
+fallback for idle time (`CLAUDE.md` § *The default when nothing else is running*) **and** the last
+item. Both are true — it runs whenever nothing above it is live, and finishing it is what opens
+stage 3.
+
+**Garbage cleared, 1,287 -> 1,230 lines.** Four sections that were not work:
+
+    -23  "What this session settled, so it is not relitigated" + its Pointers list
+    -22  "How to read this file" -- a note about the 2026-09-01 restructuring, superseded
+          by today's reordering, which put Emma's own items at the top
+    -6   "Returned from CLAUDE.md, 2026-09-09" -- an explanation of a move
+    -6   the second Pointers list
+
+Nothing with a task in it was touched. The two convention bullets stay — *Bullets, never numbers*
+and *An item is deleted when it is done* — because they govern how the file is edited, and the
+`0. Aug 28, 2026 manual adds` block stays because it says in as many words to keep it intact.
