@@ -82,7 +82,17 @@ random desendants and exporting descendants on all of them, all in the higher au
 `export-Descendants-6000000227036719829.ged` (164 new). Do not re-run either; grep the corpus
 first, as always.
 
-**What is left is the sampling**, off `NN Father of Huaxu` `6000000227036719829`:
+**ROUND 1 IS DONE: 40 draws off the trunk, 3 hits, 2 exported, 1 declined.**
+
+    335866979610006042  9,265  ->    247 new (4.9%)
+    6000000054108706099 6,802  ->  1,236 new (24.7%)
+    6000000023701612980 6,793  ->  declined: inside the ball hit 1 produced
+
+So **the census count does not predict the yield here either** — the largest hit returned the
+least. `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*: two rounds is
+not a trend, so round 2 is warranted before this closes.
+
+**What is left is more sampling**, off `NN Father of Huaxu` `6000000227036719829`:
 
     python scripts/monte-carlo-pick.py  /  the extension's {type:"montecarlo"} against
     file:///C:/Users/Emma/Documents/GitHub/geni/reports/descent-from-6000000227036719829.csv

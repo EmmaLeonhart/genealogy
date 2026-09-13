@@ -40623,3 +40623,28 @@ check into the extension was for.
 
 The denylist was rebuilt between hits — `--list exports/post-merge` went 5,000 -> 9,993 as the
 new ball landed — and the climb on hit 2 loaded all 9,993, verified rather than assumed.
+
+## 2026-09-13 — step 3 round 1 closes at 3 hits, and the biggest one was the worst
+
+`exports/post-merge/export-Descendants-6000000227733837031.ged`, task `6000000227734205859`:
+**247 new of 5,000 — 4.9%.**
+
+**Its subject read 9,265 descendants, the largest of the sweep, and it returned a fifth of what
+the 6,802 hit did.** That is a fifth property tried against yield and failed — after descent size
+already held, the first two steps' returns, pool size, and the first sweep's top reading. The
+census count says how big the descent is on Geni, never how much of it the corpus is missing.
+
+**Round 1 of step 3, complete:**
+
+    335866979610006042  9,265  ->    247 new (4.9%)
+    6000000054108706099 6,802  ->  1,236 new (24.7%)
+    6000000023701612980 6,793  ->  declined, inside the ball hit 1 produced
+
+1,483 people for two slots and 41 census reads. **Round 2 is warranted and the item says so** —
+`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*, and two readings are
+not a trend.
+
+**Dead-queue sweep: nothing to delete.** The Chinese item is one round in, not finished; its
+step-3 text now carries round 1's result so a later session neither re-runs it nor reads the item
+as unstarted. Adasi's reseed Forest, the Aztec banked hit, Aztec's Forest, Genghis's Monte Carlo,
+the six Abul Hamza seeds and the OneTab 19 fail the same checks as the previous four sweeps.
