@@ -1402,6 +1402,10 @@ https://www.geni.com/people/Q%C3%AC-%E5%A5%91-5/6000000003474166572 https://www.
 Just like the other things this is at the end for a reason
 
 I notice on this one https://www.wikidata.org/wiki/Q141447199 and many others that relational labels are using the geni labels and not the wikidata labels. This is a bit of a problem because well the geni labels are not always the best
+this rep
+### Update to this issue
+
+I noticed the 
 
 ## Remove abbrviations
 
@@ -1439,3 +1443,7 @@ I keep on telling you to do this and you keep on not doing it. To be clear this 
 This is the last queue item for a reason lol do not do it immediately
 
 I think I figured some stuff out about the CBDB people who I am just straight up unable to edit. My current working hypothesis is that these people all have the geni tree 100% present on wikidata due to the mass export coming from some external gedcom. So for the people for which we are not able to add ancestors, do not be too concerned with it. I think this might be a better thing to investigate using other things like familysearch and geni is just kinda a dead end there and wikidata has all of the geni information already for it. But searching the web for these things may be helpful so do it. 
+
+## Alix descendants
+
+Grok says that https://www.geni.com/people/Alix-de-Lampron/6000000006101354745 still has barely any descendants. I consider this to be a later campaign thing, after our bulk stuff is done but can you actually confirm whether this is true or not? I think it made some errors, but another descendant blitz on her might be good.
