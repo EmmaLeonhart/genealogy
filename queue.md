@@ -72,29 +72,31 @@ a name item the same way a Latin one does, and today's `name-item-plan.csv` and 
 first-given-attestation census are both keyed on strings that are overwhelmingly Latin.
 
 
-### ⛔ THE CHINESE CLUSTERS — POST-MERGE, INTO THE HIGHER-AUTHORITY DIRECTORY. Ruled 2026-09-13.
+### ⛔ THE CHINESE CLUSTERS — STEP 3 OF 3, THE MONTE CARLO. Ruled 2026-09-13.
 
-*"I figured it out and apparently there was a gigantic tangle of duplicates in both. I did a
-merging campaign on geni and so I want you to do a post merge overwriting higher priority gedcom
-(you know how there is a separate directory with higher authority) and do the triple exports
-thing centered on this individual. Forest, descendants, and then grabbing random desendants and
-exporting descendants on all of them, all in the higher authority section."*
+*"do the triple exports thing centered on this individual. Forest, descendants, and then grabbing
+random desendants and exporting descendants on all of them, all in the higher authority section."*
 
-**This answers the thing that was never understood about the Chinese roots** — cluster 1 read
-0 of 30 on its first sweep and 2,930 new on the re-sweep, cluster 2 returned 0.7% and 0.8% on
-its Forest and its Descendants. A tangle of duplicates on Geni's side produces exactly that:
-the same people arriving under different profile ids, so a ball is mostly a re-download and a
-census reads a descent that is really several copies of one.
+**Steps 1 and 2 are filed and are deleted from this item** — `exports/post-merge/`
+`export-Forest-6000000227036719829.ged` (19 new) and
+`export-Descendants-6000000227036719829.ged` (164 new). Do not re-run either; grep the corpus
+first, as always.
 
-* **Everything goes in `exports/post-merge/`**, not `exports/chinese-clusters/`. That directory
-  is the higher-authority one and `CLAUDE.md` § *Later sources win value conflicts* is why the
-  post-merge copies beat the pre-merge ones already in the corpus.
-* **The full three steps, in order**: `Forest`, then `Descendants`, then Monte Carlo off the
-  descendants with a `Descendants` export on each hit — all of it filed post-merge.
-* **The seed is `NN Father of Huaxu` `6000000227036719829`**, supplied 2026-09-13:
-  <https://www.geni.com/people/NN-Father-of-Huaxu/6000000227036719829>. One seed for both
-  clusters — the merging campaign is what joined them, so a single root above Huaxu now reaches
-  what used to read as two tangles.
+**What is left is the sampling**, off `NN Father of Huaxu` `6000000227036719829`:
+
+    python scripts/monte-carlo-pick.py  /  the extension's {type:"montecarlo"} against
+    file:///C:/Users/Emma/Documents/GitHub/geni/reports/descent-from-6000000227036719829.csv
+    threshold 4000, and a Descendants export on each hit, filed in exports/post-merge/
+
+**The roster is already re-enumerated off the MERGED data** — that matters, because sampling the
+pre-merge descent would sample duplicate ids. 120,878 descendants held, 156 generations, peak
+11,277 at generation 130, and a **longest run of width ≤2 of just 1**: by the only property that
+has been shown to separate a root worth sweeping from one that is not, this sits with `no-name`
+and `NN Näf` rather than with Nārāyaṇa's 33. `reports/descent-bottlenecks.csv`.
+
+⛔ **PASS THE DENYLIST.** `scripts/ball-collision-check.py --list exports/post-merge >
+reports/avoid/post-merge.txt`, then `avoidFile` on the sweep — see § *ONE BANKED MONTE CARLO HIT
+LEFT* for why, and verify `avoidSubjects` loaded rather than assuming it.
 
 ### ⛔ SKJALGSSON IS DROPPED. Ruled 2026-09-13: *"Drop skjalgsson please"*.
 

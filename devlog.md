@@ -40481,3 +40481,31 @@ Running total for the night: **58 people attempted, 1 path found, 42 family file
 targets flagged.**
 
 Corpus: **1,634,466**.
+
+## 2026-09-13 — dead-queue sweep: the Chinese item loses its finished two thirds
+
+**Deleted: steps 1 and 2 of § THE CHINESE CLUSTERS.** Both are filed —
+`exports/post-merge/export-Forest-6000000227036719829.ged` (19 new) and
+`export-Descendants-6000000227036719829.ged` (164 new) — so the instruction to run them is work
+already done and left in the file. What remains is step 3, the Monte Carlo, and the item now
+holds only that, plus the two things a later session would otherwise get wrong: **do not re-run
+the first two**, and **sample the re-enumerated descent** rather than the pre-merge one, because
+the pre-merge roster is full of the duplicate ids the merge collapsed.
+
+This is the delete-on-done convention at the right granularity. The item is a three-step task;
+deleting the whole thing would drop step 3, and leaving it whole would invite a second Forest
+export against a slot that is the scarcest thing in the campaign.
+
+**Nothing else is deletable, tested rather than eyeballed:**
+
+    Adasi reseed Forest              not on disk
+    Chinese Monte Carlo, step 3      no second Descendants ball under exports/post-merge/
+    Aztec banked hit 6000000021665410212  no row in the export log
+    Aztec Forest                     none on disk -- its item asks for Forest then Monte Carlo
+    Genghis                          Forest only, and Monte Carlo is what its item asks for
+    the six Abul Hamza seeds         still 0 rows between them
+    the OneTab 19                    still 0 of 25 in the log
+
+And the collector was started on the next 30 before this sweep began, so the hour is not spent
+idle reading a file — `queue.md` § *the crons* and the 2026-09-12 complaint *"uhh did you decide
+to not do any actual work over the crons lol"*.
