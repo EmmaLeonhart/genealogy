@@ -41143,3 +41143,34 @@ read for all four rather than four reads:
 All four are genuinely untouched. Corday was the outlier and the run is otherwise sound — but I
 would not have known that without checking, and an hour ago I was reporting a prediction as a
 finding.
+
+## 2026-09-13 — 98.3%, and the walk fix was worth more than it looked
+
+Two balls, and the second is the largest single return of the day.
+
+    di Capua's Descendants   1,397 new of 5,000   27.9%
+    an isolate Forest        4,917 new of 5,000   98.3%
+
+**The Forest is the first one run under the correct walk.** Three isolate exports went out this
+afternoon as `Descendants` because `exportWalk` leaked from a Monte Carlo run, and they returned
+107, 5 and 2 people — balls of 107 and 5, not 5,000, because a `Descendants` walk off a
+placeholder goes DOWN from an invented person with almost nobody beneath them. The same gate, the
+same kind of target, the correct walk: **4,917 new**. Emma called the leak from the yield alone —
+*"I think the batches were so fast because you accidentally did descendants not forest"* — and
+that is the size of what it was costing.
+
+**di Capua's 27.9% is the descent check paying for itself.** `--descent` read 0 held on his
+subject before the slot was spent; Corday's read 5,127 and her ball returned 2. Two balls, one
+guard, and the difference between them is 1,395 people.
+
+## 2026-09-13 — NN de Lusignan, out of order and ahead of everything
+
+*"I want your next export to be an ancestors export on this person ... and then a forest on them
+before going back to this scheduled stuff. Reason here is that I think I created someone who may
+be prone to deletion, so want to get them exported as soon as possible. They have the entire
+Georgian ancestry stuff. But this is a high traffic area."*
+
+`Ancestors` on `6000000227739381826` submitted as task `6000000227739536822`; the `Forest`
+follows the moment the slot frees. **A profile that may be deleted is the one case where waiting
+costs the data itself** rather than a slot — every other queue item can be run tomorrow and this
+one cannot.
