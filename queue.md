@@ -1344,3 +1344,7 @@ https://www.geni.com/people/Yellow-Emperor/6000000001381274001 https://www.wikid
 
 https://www.geni.com/people/Ch%C4%81ng-Y%C3%AC-%E6%98%8C%E6%84%8F-2/6000000001381063554 https://www.wikidata.org/wiki/Q6377648
 
+https://www.geni.com/people/L%C3%A9i-Z%C7%94-%E5%AB%98%E7%A5%96/6000000002048439278 https://www.wikidata.org/wiki/Q1441379
+
+https://www.geni.com/people/Fuxi/6000000130191678854 https://www.wikidata.org/wiki/Q236972
+
