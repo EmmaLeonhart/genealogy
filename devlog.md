@@ -39551,3 +39551,27 @@ candidate for a re-sweep rather than a finished root.
 **A re-sweep costs 30-40 page loads.** Against a ball of 4,731 people that is the cheapest
 instrument in the campaign, and the reason it was not run four times today is that a null result
 was read as an answer.
+
+## 2026-09-13 — the second re-sweep hit returns 96.1%: 9,534 people from a root that was "empty"
+
+**Eleanore Fitzalan of Betchworth `6000000003615460838`**, the second of the six hits from Dál
+Fiatach's re-sweep. Seed `6000000227725863956`, task `6000000227726029822`.
+
+    hit 1   4,731 new  (94.6%)
+    hit 2   4,803 new  (96.1%)
+                -----
+                9,534 new, with FOUR hits still banked
+
+**Corpus 1,613,111**, from 1,535,829 at session start — **+77,282**.
+
+**The root was closed on 0 of 30 roughly two hours ago.** Two of its six hits have now produced
+9,534 people at 94.6% and 96.1%, the two highest-proportion balls of the session after Aztec's
+99.3%. **Four more of its hits are unspent**, four of them at Geni's display ceiling.
+
+**And the pools of the other prematurely-closed roots have grown**, so their re-sweeps are not
+re-rolls of the same dice:
+
+    Chinese 1     103,363 -> 111,519   +8,156 people not in the pool when it read 0 of 30
+    Skjalgsson     76,859 ->  78,161   +1,302
+
+Adasi and Genghis are the remaining two of the four.
