@@ -40786,3 +40786,26 @@ That is the case for the guards being worth the two slots they cost to find, and
 `--list-saturated` over `--list`: the eleventh and twelfth collisions are the only two of the
 sixteen that something already built could have prevented, and both are now covered by the same
 mechanism at the only point in the sequence that can act on them.
+
+## 2026-09-13 — round 3: one hit in forty, and the saturated list earning its keep
+
+**Round 3, the first sweep behind `--list-saturated` (14,674 loaded and verified):**
+
+    40 census reads
+    1 hit -- 6000000008630612875 at 15,000, Geni's ceiling
+
+**The hit rate across the three rounds is 3, 2, 1.** That is the first genuine diminishment
+signal from this root — not the yield of any single ball, which has been noisy, but the rate at
+which the sweep finds anything at all. `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING
+RETURNS, NOT A COUNT* is about exactly this shape, and one more round should settle whether it is
+a trend or the same noise that made round 2 look bigger than round 1.
+
+**And the climb off that hit has skipped ten subjects so far.** Ten people the walk would
+otherwise have created a placeholder above, each of them an ancestor of a ball we already hold.
+Before `--list-saturated` those were invisible: `--list` names who is inside a ball, and a climb
+lands above them. Two slots were spent learning that; this climb alone declined ten chances to
+spend an eleventh.
+
+If the walk runs out of candidates without a clear landing it will stop with **no export at all**,
+and that is the correct outcome rather than a failure — a slot not spent on a ball we have is the
+whole point of the guard.
