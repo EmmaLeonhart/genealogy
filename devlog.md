@@ -40258,3 +40258,36 @@ stage 3.
 Nothing with a task in it was touched. The two convention bullets stay — *Bullets, never numbers*
 and *An item is deleted when it is done* — because they govern how the file is edited, and the
 `0. Aug 28, 2026 manual adds` block stays because it says in as many words to keep it intact.
+
+## 2026-09-13 — dead-queue sweep: nothing to delete, one contradiction reconciled
+
+Second sweep of the day, and the same result: **no item in `queue.md` is simply completed and
+left behind.** Every candidate was tested against what is filed rather than against how old it
+looks.
+
+    THE OneTab PAGE, 19 people            0 of the 25 listed ids appear in the export log
+    EXPORT FROM THESE SIX FIRST           0 rows between all six
+    NN ben Ovadya, a new campaign root    live -- its banked hit is the export in flight
+    ADASI'S FIRST SEED                    reseed's Descendants filed; Forest and sweep open
+    ONE BANKED MONTE CARLO HIT LEFT       live
+    FIX THE GENI-ID APPLICATION           "Nothing is investigated, measured, grepped"
+    WHY ARE `|` NAME CORRECTIONS...       "Not investigated, not diagnosed"
+    ONLY EVER EDIT THINGS IN THE UNIVERSE "Nothing is investigated, measured or changed"
+    `den yngre`                           the algorithm is fixed; the scope and correction are not
+    PULL THE CJK CULTURE VERDICTS         32 of 137
+    the crons / delete-on-done            standing procedures, excluded by the sweep's own rule
+    Q1934051                              hers to rule on
+    SKJALGSSON IS DROPPED                 a cancellation, kept so it cannot be re-derived
+
+Everything finished today was deleted in the commit that finished it — the `/` family name, the
+`Q45383466` repair, the entry point, the `mul`-duplication item, the re-sweeps.
+
+**What the sweep did find is a contradiction, and it is not a dead item.** § *RUN THE COLLECTOR
+OVER THE ISOLATE TARGETS* sits near the top of the file and opened with *"This is the work, and
+it is the only executable item here"* — which today's ruling overturns: the isolate campaign runs
+**after** everything else, and the gate at the end of the file says so. Left in place, that is
+exactly the shape of the mistake that put Wikidata batches out ahead of the queue.
+
+Not deleted, because the loop it describes is still the procedure to follow when the gate is
+reached. The claim to priority is struck and the section now points at the gate: **this section
+is the HOW, the one at the end is the WHEN.**

@@ -153,8 +153,15 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
   this are the same error — *"you don't need to come up with new ideas. In fact, you actively
   shouldn't."*
 
-- **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS. This is the work, and it is the only executable
-  item here.** You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
+- **⛔ RUN THE COLLECTOR OVER THE ISOLATE TARGETS.**
+  ⛔ **ITS POSITION IS THE END OF THE FILE, NOT HERE.** Ruled 2026-09-13 — see
+  § *Wikidata isolate connection*, which is the gate: everything else, then every isolate
+  attempted, then editing may be unheld. This section is the HOW and that one is the WHEN. The
+  line that used to open it — *"This is the work, and it is the only executable item here"* —
+  was true when it was the only executable item and is not true now; it is struck rather than
+  deleted because the loop below it is still the procedure to follow when the gate is reached.
+
+  You, 2026-09-06: *"all the queue did was just ask the browser agent to navigate to
   each page and run the stuff would be decent."* That is the entire loop:
 
       1. navigate to  https://www.geni.com/people/x/<geni id>
