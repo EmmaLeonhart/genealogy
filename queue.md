@@ -104,6 +104,20 @@ pre-merge descent would sample duplicate ids. 120,878 descendants held, 156 gene
 has been shown to separate a root worth sweeping from one that is not, this sits with `no-name`
 and `NN Näf` rather than with Nārāyaṇa's 33. `reports/descent-bottlenecks.csv`.
 
+⛔ **THE DENYLIST HAS A BLIND SPOT AND IT COST A SLOT ON 2026-09-13.** Round 2's first hit
+climbed past **six** denylisted subjects — the guard working — and landed on
+`6000000004868946389`, which is **clear against `exports/post-merge` and clear against
+`exports/chinese-clusters`: it is inside no `Descendants` ball at all.** The ball came back
+**1 new of 5,000**, because 4,483 of those 5,000 (89.7%) were already held through the pre-merge
+Chinese balls and every one but one was somewhere in the corpus.
+
+**So the question the guard asks is not quite the question that matters.** *Is the subject inside
+a ball we hold* catches 9 collisions in 10 and cannot see this one: a subject can sit outside
+every ball while their whole DESCENT is already held by other routes. The check that would have
+caught it is offline and costs no Geni traffic — **enumerate the subject's descent in the corpus
+with `scripts/descent-from.py` and refuse a slot when it is already near 5,000.** Build it as a
+pre-flight before the next hit is spent.
+
 ⛔ **PASS THE DENYLIST, AND SCOPE IT TO `exports/post-merge` ONLY.**
 `scripts/ball-collision-check.py --list exports/post-merge > reports/avoid/post-merge.txt`, then
 `avoidFile` on the sweep — see § *ONE BANKED MONTE CARLO HIT LEFT* for why, and verify

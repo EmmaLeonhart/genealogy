@@ -40675,3 +40675,34 @@ is the difference between a campaign that wastes a slot every tenth climb and on
 and it is now exercised on all three paths: a clear landing, a caught collision, and a walk-past.
 
 Export `6000000227735133862` on created ancestor `6000000227735175860` is building.
+
+## 2026-09-13 — the eleventh collision, and it is a blind spot rather than a mistake
+
+`exports/post-merge/export-Descendants-6000000227735175860.ged`: **1 new of 5,000.**
+
+**The climb did everything right.** It skipped **six** denylisted subjects — `collision_skipped`
+firing in production for the first time — and landed on `6000000004868946389`, which checks
+**clear against `exports/post-merge`** and **clear against `exports/chinese-clusters`**. It is
+inside no `Descendants` ball anywhere. And the ball is still 4,999 people we already had.
+
+**I expected the cause to be my scoping decision and it is not.** An hour ago I ruled that the
+denylist is scoped to the directory the ball gets filed in, and that a pre-merge collision is a
+reason to go rather than to skip. That reasoning is untouched here: adding
+`exports/chinese-clusters` to the denylist would **not** have caught this subject, because they
+are not in those balls either. Checked before writing it up, because the tidy story was that I
+had scoped it wrong.
+
+**What is actually wrong is the question the guard asks.** *Is the subject inside a ball we hold*
+is a proxy for *have we already got this person's descent*, and the two come apart exactly here:
+4,483 of the 5,000 (89.7%) sit in the pre-merge Chinese balls and all but one sit somewhere in
+the corpus, reached by Forest exports and other roots rather than by a ball seeded above this
+person.
+
+**The better check is offline and free.** `scripts/descent-from.py` already enumerates anyone's
+descent in the corpus; a subject whose corpus descent is already near 5,000 cannot yield a
+5,000-person ball worth having. That costs one corpus read and no Geni traffic, and it is now
+queued as a pre-flight ahead of the next hit — already running against the remaining round-2 hit
+`6000000198581146831` rather than spending its slot first and measuring afterwards.
+
+**Dead-queue sweep: nothing to delete.** Step 3 is two rounds in with round 2's second hit still
+unspent; every other candidate fails the same checks as the previous five sweeps.
