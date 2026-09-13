@@ -36,10 +36,22 @@ Q141205930	P5056	LAST	P144	Q141216487	S2600	"6000000003376377487"
 #   Q141225729 Jacob Knutson Skiftun: P5056 patronym or matronym = the item just created
 Q141225729	P5056	LAST	S2600	"6000000177945982827"
 
+# Stauden -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Stauden"
+LAST	Len	"Stauden"
+#   set the mul label to "Stauden"
+LAST	Lmul	"Stauden"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
 # Alvseike -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Alvseike"
+#   set the en label to "Alvseike"
 LAST	Len	"Alvseike"
 #   set the mul label to "Alvseike"
 LAST	Lmul	"Alvseike"
@@ -80,10 +92,22 @@ LAST	P144	Q1305819
 #   Q141283795 Siri Einarsdatter Opstad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141382090 Einar Toresen Kvia
 Q141283795	P5056	LAST	P144	Q141382090	S2600	"6000000008725770698"
 
+# Freijtag -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Freijtag"
+LAST	Len	"Freijtag"
+#   set the mul label to "Freijtag"
+LAST	Lmul	"Freijtag"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
 # Heerdhjelm -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Heerdhjelm"
+#   set the en label to "Heerdhjelm"
 LAST	Len	"Heerdhjelm"
 #   set the mul label to "Heerdhjelm"
 LAST	Lmul	"Heerdhjelm"
@@ -208,57 +232,21 @@ Q828346	P734	LAST	S2600	"6000000082813823834"
 #   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
 Q110410743	P734	LAST	S2600	"6000000105706792946"
 
-# Talgje -- family, 7 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Talgje"
-LAST	Len	"Talgje"
-#   set the mul label to "Talgje"
-LAST	Lmul	"Talgje"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141205909 Gudrun Sæbjørnsdatter Talgje: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141205909	P734	LAST	P3831	Q28418670	S2600	"6000000001169235389"
-#   Q141216648 Tore Toresson Talgje: P734 family name = the item just created
-Q141216648	P734	LAST	S2600	"6000000002452584590"
-#   Q141216369 Gard Toresson Talgje: P734 family name = the item just created
-Q141216369	P734	LAST	S2600	"6000000002572728015"
-#   Q141219336 Tore Sebjørnsson Talgje Jr.: P734 family name = the item just created
-Q141219336	P734	LAST	S2600	"6000000003043756033"
-#   Q141200111 Sæbjørn Toresson Talgje: P734 family name = the item just created
-Q141200111	P734	LAST	S2600	"6000000004213963966"
-#   Q141217434 Sissel Sæbjørnsdatter Talgje: P734 family name = the item just created
-Q141217434	P734	LAST	S2600	"6000000004214055821"
-#   Q141205929 Ola Toreson Randa: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141205929	P734	LAST	P3831	Q2507958	S2600	"6000000100130208752"
-
-# Count -- given, 5 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Count"
-LAST	Len	"Count"
-#   set the mul label to "Count"
-LAST	Lmul	"Count"
-#   P31 instance of = Q202444 given name
-LAST	P31	Q202444
-
-# 1289 more name items are needed and wait for a later
+# 1322 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
+#   Talgje (family), 7 bearer(s)
+#   Count (given), 6 bearer(s)
 #   V (given), 5 bearer(s)
 #   Borsok (family), 4 bearer(s)
 #   Graf (given), 4 bearer(s)
+#   Knutsdotter (patronymic), 4 bearer(s)
 #   Komnene (family), 4 bearer(s)
 #   Olavsdatter (patronymic), 4 bearer(s)
 #   Olavsen (patronymic), 4 bearer(s)
+#   Renmark (family), 4 bearer(s)
 #   Roucy (family), 4 bearer(s)
 #   Toresson (patronymic), 4 bearer(s)
-#   Björnsson (patronymic), 3 bearer(s)
-#   Châlon (family), 3 bearer(s)
-#   Coucy (family), 3 bearer(s)
-#   Countess (given), 3 bearer(s)
-#   ... and 1277 more
+#   ... and 1310 more
 
 
 # ======================================================================

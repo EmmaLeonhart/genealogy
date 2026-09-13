@@ -5,18 +5,18 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,634,466 people**.
+One row per person in `reports/derived-labels.csv` — **1,635,949 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,533,331 | 93.8% |
-| CJK only — needs translation for en | 47,085 | 2.9% |
-| no usable name at all | 28,227 | 1.7% |
+| Latin only | 1,533,828 | 93.8% |
+| CJK only — needs translation for en | 47,257 | 2.9% |
+| no usable name at all | 28,248 | 1.7% |
 | other script only — needs translation for en | 12,778 | 0.8% |
-| mixed-script only — no clean Latin label | 10,381 | 0.6% |
-| Latin and CJK | 2,664 | 0.2% |
+| mixed-script only — no clean Latin label | 11,097 | 0.7% |
+| Latin and CJK | 2,741 | 0.2% |
 
 **This is the catalogue.** The `en` and `mul` labels come from the Latin name,
 so everyone in a *needs translation* row has no derivable English label at all —
@@ -27,10 +27,10 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,836,850 |
-| CJK | 118,378 |
+| Latin | 1,837,441 |
+| CJK | 118,719 |
 | other | 52,533 |
-| mixed | 32,834 |
+| mixed | 34,453 |
 | none | 485 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 308,277 people
+## Aliases from married names — 308,316 people
 
 A married name plugs into the name to produce an alias.
 
@@ -55,7 +55,7 @@ them.
 
 ## Against Wikidata, where both exist
 
-50,645 people have both a derived Latin label and a Wikidata English
+50,647 people have both a derived Latin label and a Wikidata English
 label. **13,313 match exactly (26.3%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
