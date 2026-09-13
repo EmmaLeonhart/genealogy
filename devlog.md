@@ -40424,3 +40424,29 @@ filed:
     the nine screenshots         "the task emerges from the images", unread
 
 Corpus: **1,634,283** distinct people, up 1,914.
+
+## 2026-09-13 — the Chinese post-merge Forest is filed, and 0.4% is the right number
+
+Step 1 of the three, `NN Father of Huaxu` `6000000227036719829`, task `6000000227732606834`,
+filed as `exports/post-merge/export-Forest-6000000227036719829.ged`. **19 new of 5,000 — 0.4%.**
+
+**That is not a disappointing result, because newness does not measure what this export is for.**
+Emma: *"there was a gigantic tangle of duplicates in both. I did a merging campaign on geni and so
+I want you to do a post merge overwriting higher priority gedcom."* The people were already in the
+corpus — under several profile ids each, which is what the tangle was. What this ball carries is
+the merged structure, and `CLAUDE.md` § *Later sources win value conflicts* is what makes it
+count: it is filed in `exports/post-merge/`, so it beats the pre-merge copies in
+`exports/chinese-clusters/` wherever they disagree.
+
+Measuring it against the corpus as though it were a gathering export would report 0.4% and
+conclude the root is exhausted, which is exactly the wrong conclusion — the same shape as the
+four discarded predictors, one level up.
+
+**It also confirmed the slot diagnosis from the other side.** This is the identical submission
+that returned `no_such_walk` three times at 11:00, 11:02 and 11:08. Nothing about it changed;
+`6000000227730918828` finished and it went through first time, redirecting straight to
+`/gedcom/download?task_id=`.
+
+Step 2, the `Descendants` on the same root, is away as task `6000000227732913835`.
+
+Corpus: **1,634,302**.
