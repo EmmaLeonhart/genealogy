@@ -40941,3 +40941,30 @@ next to the sampling instruction rather than in a devlog entry nobody re-reads.
 seeds still have 0 rows between them, the OneTab 19 still 0 of 25, the Aztec banked hit has no
 log row, Genghis has a `Forest` and no Monte Carlo, and the four *"nothing is investigated"*
 items say so in their own text.
+
+## 2026-09-13 — the isolate collector was exporting the wrong walk, and `load` could not say otherwise
+
+Three balls came off batch 005's climbs and every one is a `Descendants` export.
+`docs/collector-run-loop.md` specifies **`Forest`** for the statistics-gate export, and Emma named
+it before I finished collecting them: *"I think the batches were so fast because you accidentally
+did descendants not forest. Descendants was only a thing we were doing for the descendants
+campaign and it is kinda useless for the wikidata isolates campaign."*
+
+**`exportWalk` is sticky and only three message types ever set it** — `walk`, `seedwalk`,
+`montecarlo`. `load` and `enqueue` do not, so the isolate collector inherited `descendants` from
+the Monte Carlo run that preceded it. I proved it rather than assumed it: a `load` carrying
+`exportWalk: "forest"` came back with `status.exportWalk` still reading `descendants`.
+
+    107 new of 107   100%
+      2 new of 104     1.9%
+      5 new of 5     100%
+
+The two 100% balls are worth keeping — 112 people who were in the corpus nowhere — but they are
+the wrong shape for this campaign. A `Descendants` ball off a placeholder above an isolate walks
+DOWN from an invented person, which is why two of them are 5 and 104 people rather than the
+neighbourhood a `Forest` would have swept sideways.
+
+**1.7.48**: `load` sets `exportWalk` from the message and **defaults it to `forest`** rather than
+inheriting; `enqueue` takes it only when told, since it appends to a run already in progress.
+Inheriting is never right here — the two campaigns want different walks and only one of them ever
+sets the field.

@@ -773,6 +773,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       const fresh = add.filter((j) => !held.has(String(j.geni_id)));
       const patch = { queue: (s.queue || []).concat(fresh) };
       if (msg.staggerMs) patch.staggerMs = Math.max(1000, msg.staggerMs | 0);
+      /* `enqueue` APPENDS to a run in progress, so it takes the walk only when told -- see the
+       * note in `load`, which resets it. Silence here means "keep what the run is using". */
+      if (msg.exportWalk) patch.exportWalk = msg.exportWalk;
       if (!s.running) { patch.running = true; patch.dryRun = false; }
       await put(patch);
       sendResponse({ added: fresh.length, queued: patch.queue.length });
@@ -786,6 +789,18 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * gap between OPENS is the whole rate control. */
       const extra = {};
       if (msg.staggerMs) extra.staggerMs = Math.max(1000, msg.staggerMs | 0);
+      /* ⛔ **`exportWalk` IS STICKY AND `load` COULD NOT CLEAR IT.** Only `walk`, `seedwalk` and
+       * `montecarlo` ever set it, so a `load` inherits whatever the LAST of those chose. Measured
+       * 2026-09-13: a Monte Carlo run left it `descendants`, the isolate collector was then
+       * loaded on top, and its statistics-gate exports went out as `Descendants` instead of the
+       * `Forest` that `docs/collector-run-loop.md` specifies. Emma: *"Descendants was only a
+       * thing we were doing for the descendants campaign and it is kinda useless for the wikidata
+       * isolates campaign."* Three balls of 107, 104 and 104 people went out that way.
+       *
+       * A run that does not say which walk it wants gets `forest`, which is the collector's own
+       * default and the one the run loop is written around -- inheriting is never right here,
+       * because the two campaigns want different walks and only one of them ever sets it. */
+      extra.exportWalk = msg.exportWalk || "forest";
       await put(Object.assign({ queue: msg.queue, results: [], attempted: [], active: {} }, extra,
                               msg.start ? { running: true, dryRun: false, creating: "",
                                             startedAt: new Date().toISOString() } : {}));
