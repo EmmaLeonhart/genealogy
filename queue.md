@@ -1405,7 +1405,14 @@ I notice on this one https://www.wikidata.org/wiki/Q141447199 and many others th
 this rep
 ### Update to this issue
 
-I noticed the 
+I noticed a weird thing where the person does not have all of their relatives, and it defaults to their mother. New rule: NN people with a mother and a father always get it from their father
+
+Father
+Mother
+Spouse
+Child
+
+Reason is that child and spouse both can mean multiple people. Parents are the most stable identifiers. Father is generally most stable
 
 ## Remove abbrviations
 
