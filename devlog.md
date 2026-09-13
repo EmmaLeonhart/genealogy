@@ -40060,3 +40060,43 @@ today's, so it is the TSV — the third row it has ever carried, after Ettinger 
 
 The Geni id is not a `6000000…` one and does not need to be; it was added to the item by hand,
 and the loader reads the column rather than a pattern.
+
+## 2026-09-13 — three exports that never happened, and the state that said the wrong thing
+
+The Chinese post-merge `Forest` on `NN Father of Huaxu` `6000000227036719829` was submitted
+**three times** in nine minutes and produced nothing. Each attempt reported:
+
+    state: no_such_walk    walk: forest    radios: 0
+
+**Which is not what happened.** `radios: 0` reads as *the form had not drawn* — the documented
+background-throttling failure — so I read it that way, checked the flags, found Chrome had
+indeed been relaunched three times today without them, restarted it properly, and got the same
+result. The flags were genuinely missing and putting them back was right; it was not this.
+
+The reported URL settles it. The tab was not on the export form at all — it was on
+`/gedcom/request_export?id=…&walk=…&max_profiles=…`, **the page after a submit**, which has no
+radios because it is not the form. And there is no `task_id` on it, which is the case measured
+on 2026-09-10 with Confucius and Hermenegildo: both landed there with no id and **neither ever
+emailed**. A `request_export` landing with no task is a submit Geni accepted and dropped, and
+the reason is the serial slot — `6000000227730918828` has been building since 10:36Z.
+
+**The form renders in full the whole time.** Five walk radios, no notice, no refusal, the header
+naming the right person. Nothing on the page says an export is already running, so the only
+signal is the missing task id, and it was being spent on the wrong diagnosis.
+
+`content/export.js` now names it: **`submit_no_task`**, with the note *submitted, no task id --
+another export is almost certainly building*. `1.7.45 -> 1.7.46`, filename renamed with the edit.
+The caller can wait for the slot rather than retry into it, which is what three attempts did.
+
+**Also corrected: Chrome's launch.** Three relaunches today used a bare `Start-Process` and lost
+`--disable-background-timer-throttling` and the other three flags that
+`docs/rules/collector-and-browser.md` § *CHROME MUST BE LAUNCHED WITH BACKGROUND THROTTLING OFF*
+requires. Nothing is known to have failed because of it, and it is fixed.
+
+**Dead-queue sweep, same day: nothing to remove.** Every candidate was checked against what is
+actually filed rather than against how old it looks — the six Abul Hamza seeds have **0 rows**
+between them in `reports/descendants-export-log.csv`, the CJK culture verdicts stand at 32 of
+137, the label-duplication item was explicitly *"moved here rather than worked"*, `Q1934051` is
+hers to rule on, and the Alix items carry a note from an earlier sweep saying exactly this: *"The
+item looks dead because Abul Hamza is finished; the work was never done."* Today's completed
+items were each deleted in the commit that finished them.

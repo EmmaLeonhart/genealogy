@@ -59,6 +59,25 @@ GC.runExport = async function (job) {
     return report({ state: "building", task_id: task });
   }
 
+  /* ⛔ **`/gedcom/request_export` WITH NO `task_id` MEANS THE EXPORT DID NOT HAPPEN.**
+   *
+   * The submit landed, and Geni handed back no task. Measured 2026-09-10 on Confucius and
+   * Hermenegildo: both stayed on this URL with no id and **neither ever emailed**, across four
+   * scheduled checks. Measured again 2026-09-13, three times in nine minutes on NN Father of
+   * Huaxu `6000000227036719829` while another ball was building — the serial slot is what
+   * refuses it, and the form still renders in full, so nothing on the page says no.
+   *
+   * **It was reported as `no_such_walk` with `radios: 0`**, which reads as *Geni removed the
+   * option* or *the page had not drawn*, and sent me chasing background throttling and a
+   * relaunch of Chrome. A post-submit page has no radios because it is not the form. Naming the
+   * landing is the whole fix: `submit_no_task` says the submit was accepted and produced nothing,
+   * and the caller can wait for the slot instead of retrying into it.
+   */
+  if (/\/gedcom\/request_export/.test(location.pathname)) {
+    return report({ state: "submit_no_task",
+                    note: "submitted, no task id -- another export is almost certainly building" });
+  }
+
   /* Geni refuses some profiles outright -- *"You are not allowed to export that profile."*
    * That is a real answer, not a failure to retry. Three spine steps were refused this way on
    * 2026-08-30 and the right move was to stop asking. */
