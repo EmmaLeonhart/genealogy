@@ -39320,3 +39320,33 @@ on a large descent: the sweep is cheap, the bank makes it cheaper still, and the
 exports are the part that measures ground already held.
 
 **Ten roots complete under the three-step.** Corpus **1,585,928**, from 1,535,829 at session start.
+
+## 2026-09-12 — Nārāyaṇa: 95.3% new, the best ball of the session, off 87 people in steps 1 and 2
+
+**`6000000220876233832`**, the Indian descent-from-antiquity root, filed to `exports/narayana/`.
+
+    step 1  Forest       task 6000000227723575831       53 new  ( 1.1%)
+    step 2  Descendants  task 6000000227724821855       34 new  ( 0.7%)
+    step 3  Monte Carlo  task 6000000227725132981    4,763 new  (95.3%)
+
+**4,850 new people, and 4,763 of them from one ball.** The sweep hit 2 of 30 — one at Geni's
+15,000 ceiling, one at 9,872 — and the 9,872 was spent; the ceiling hit is banked.
+
+**95.3% is the highest proportion measured all session**, against NN Näf's 80.1% and Chinese
+cluster 2's 79.4%, and it comes from the root with the *second-lowest* first-two-step total: 87
+people, ahead only of Jimmu's 8.
+
+**⛔ THE PATTERN IS NOW FIVE ROOTS DEEP AND WORTH STATING AS A RULE OF THUMB RATHER THAN A
+FINDING.**
+
+    root            steps 1+2      step 3 and its banked hits
+    Chinese 2              72                          3,969
+    Hermenegildo          255                          6,609
+    Nārāyaṇa               87                          4,763
+    NN Näf                905                          5,345
+    Fihr                  629                          1,238
+
+Every one of these is a root whose `Forest` and `Descendants` looked poor. **They look poor
+because both start at the seed and can only return what surrounds it**, and a seed placed on a
+deep descent is surrounded by the part already gathered. **Nothing about steps 1 and 2 forecasts
+step 3, and four wrong predictions today all ran the other way.**

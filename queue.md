@@ -684,7 +684,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     Monte Carlo, per seed:
 
         6000000227723403845  Adasi, PAST THE BOTTLENECK   supplied 2026-09-12
-        6000000220876233832  Nārāyaṇa
 
     **2. GENGHIS / AZTEC / INCA — `Forest` AND MONTE CARLO, NO `Descendants`.** Verbatim:
     *"we have descendant exports of them. No need to redo descendants exports of them, but we
