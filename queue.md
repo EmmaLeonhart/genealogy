@@ -669,7 +669,8 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
   - **⛔ RE-SWEEP THE FOUR ROOTS CLOSED ON A SINGLE EMPTY SWEEP.** Ruled by demonstration
     2026-09-13: Dál Fiatach read **0 of 30**, was closed, and on Emma's instruction —
     *"my guess is basically you hit a low probability outcome ... I would suggest that you do it
-    again"* — re-swept to **6 of 40** and has since produced **19,183 new people**.
+    again"* — re-swept to **6 of 40**, all six hits now spent, and produced **23,274 new people** against the
+    1,321 it was closed at.
 
         6000000227295848846  Skjalgsson    0 of 30, top   888   pool  76,859 ->  78,161  (+1,302)
         6000000227712700862  Adasi         0 of 30, top   225   pool 102,016 -> 103,239  (+1,223)
