@@ -1238,6 +1238,38 @@ Remember that this is not something to be done out of order, it is the second la
 
 We are still generating non-name items as names such as numbers, and I think https://www.wikidata.org/wiki/Special:Contributions/OBender12 is likely pretty pissed at this point, but no talk page messages yet. idk why you did not fix it and seem to have completely overlooked the error that he constantly corrects. There are plenty of non-name things that need to be parsed not as names.
 
+Read "address_this.html"
+
+### Examples
+
+Even in the current batch one exists lol
+
+# und -- family, 8 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "und"
+LAST	Len	"und"
+#   set the mul label to "und"
+LAST	Lmul	"und"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q61139384 Mangold von Thurgau und Nellenburg III: P734 family name = the item just created
+Q61139384	P734	LAST	S2600	"6000000004106003883"
+#   Q81827036 Adalbert von Saffenberg und Norvenich: P734 family name = the item just created
+Q81827036	P734	LAST	S2600	"6000000009305060696"
+#   Q55068638 Friedrich zu Schwarzenberg und Hohenlandsberg: P734 family name = the item just created
+Q55068638	P734	LAST	S2600	"6000000014784646061"
+#   Q110261972 Johann I von Tengen und Nellenburg: P734 family name = the item just created
+Q110261972	P734	LAST	S2600	"6000000017758205608"
+#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P734 family name = the item just created
+Q110415677	P734	LAST	S2600	"6000000019797018175"
+#   Q828346 Berthold Graf von Neuffen und Achalm: P734 family name = the item just created
+Q828346	P734	LAST	S2600	"6000000082813823834"
+#   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
+Q110410743	P734	LAST	S2600	"6000000105706792946"
+
 
 ## Wikidata isolate connection
 
