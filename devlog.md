@@ -39299,3 +39299,24 @@ trim was premature and the line is restored with the reason on it.
 only record of what is outstanding, so a premature deletion does not leave a wrong note behind —
 it leaves nothing, and the work disappears. Checking the log against the part's requirement is
 what makes the claim checkable, and it costs one `grep -c` per id.
+
+## 2026-09-12 — Hermenegildo's four ceiling hits are all spent: 6,864 new people from one root
+
+    step 1  Forest                                      74 new
+    step 2  Descendants                                181 new
+    step 3  Monte Carlo, hit 1  …725063822           2,500 new  (50.0%)
+    banked  hit 2  Ramiro Sánchez de Cifuentes        1,641 new  (32.8%)  Castilian
+    banked  hit 3  Ruy González de Cisneros           1,194 new  (23.9%)  Castilian
+    banked  hit 4  Hugues Dalmas, baron de Cousan     1,274 new  (25.5%)  French
+                                                      ---------
+                                                       6,864 new
+
+**Six balls off one root, and 6,609 of the 6,864 came from the sweep and its banked hits.** The
+two root-anchored exports produced 255 between them — **3.7%** of the root's total.
+
+**One 30-pick census bought four ceiling-height targets**, and spending them cost no further page
+loads because they were banked rather than re-censused. That is the whole economics of the method
+on a large descent: the sweep is cheap, the bank makes it cheaper still, and the root-anchored
+exports are the part that measures ground already held.
+
+**Ten roots complete under the three-step.** Corpus **1,585,928**, from 1,535,829 at session start.
