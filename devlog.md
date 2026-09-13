@@ -41174,3 +41174,39 @@ Georgian ancestry stuff. But this is a high traffic area."*
 follows the moment the slot frees. **A profile that may be deleted is the one case where waiting
 costs the data itself** rather than a slot — every other queue item can be run tomorrow and this
 one cannot.
+
+## 2026-09-13 — Jacques I of Cyprus: 113 steps, and the chain caught the anchor lying
+
+Asked for, and worth it: *"this one is interesting and worth preserving."*
+
+**113 steps, the longest chain captured** — `geni-paths/6000000006101354494-individual.tsv`. And
+the route is the interesting part:
+
+    1    NN Father of Huaxu              6000000227036719829
+    2    Huaxu
+    3    Fuxi
+    4    GŌNGSŪN Shǎo Diǎn 少典, 1世
+    49   Duke Xiao of Qin 秦孝公
+    53   Zichu, King Zhuangxiang of Qin 秦莊襄王
+    112  Alix d'Ibelin
+    113  Jacques I, King of Cyprus
+
+**The Chinese post-merge root reaches Cypriot royalty in 113 steps**, through the Qin kings and
+the Ibelins. That is the *"descent from antiquity"* the Alix campaign was named for, arriving
+from the opposite direction — and it exists because the merging campaign joined the two Chinese
+clusters under Huaxu three days ago.
+
+**⛔ AND STEP 1 IS NOT CHARLEMAGNE.** I ran the writer with `--anchor charlemagne` because I set
+the pin there this morning; the chain says the anchor was **NN Father of Huaxu**. Something moved
+it — most likely a Monte Carlo run on that root — and the flag went on asserting what I
+remembered.
+
+`anchor_from_chain` now reads step 1 of `path_tsv` and uses the flag only when there is no chain.
+**The flag is a memory; step 1 is evidence.** `docs/anchor-protocol.md` says the anchor decides
+nothing about validity and that what matters is that it is recorded — recording it from a flag
+records the belief.
+
+The row now reads `anchor=6000000227036719829`, which is true.
+
+**And all six of the Abul Hamza seeds are climbed.** Grimaldi landed on `4196128350220038579`
+after 16 declines; ancestor `6000000227739073017`, export `6000000227739405827` submitted.

@@ -82,6 +82,31 @@ FOUND = "resolved_path"
 NONE = "resolved_none"
 
 
+def anchor_from_chain(result, fallback):
+    """The anchor a capture was taken under, read off step 1 of its own chain.
+
+    ⛔ **THE FLAG IS A MEMORY AND THE CHAIN IS EVIDENCE.** `--anchor` is what the operator
+    believes the pushpin was on; step 1 of `path_tsv` is who Geni actually measured from. On
+    2026-09-13 they disagreed: the pin had been set to Charlemagne hours earlier, a Monte Carlo
+    run moved it, and `Jacques I, King of Cyprus` came back anchored on **NN Father of Huaxu**
+    `6000000227036719829` while the flag still said Charlemagne.
+
+    `docs/anchor-protocol.md` says the anchor decides nothing about a capture's validity and that
+    what matters is that it is RECORDED. Recording it from a flag records the belief; recording it
+    from the chain records the fact.
+
+    Falls back to the flag when there is no chain -- a miss has no step 1.
+    """
+    chain = result.get("path_tsv") or ""
+    for line in chain.splitlines():
+        parts = line.split("	")
+        if len(parts) >= 4 and parts[0].strip() == "1":
+            found = parts[3].strip()
+            if found.startswith("geni:"):
+                return found[len("geni:"):]
+    return fallback
+
+
 def verdict_and_via(result):
     """`(path_found, via)` from the two searches, read independently."""
     blood, inlaw = result.get("path_state", ""), result.get("inlaw_state", "")
@@ -151,9 +176,9 @@ def main() -> int:
         prior = by_id.get(gid)
         if prior and len(prior) > 8 and prior[8] == "yes" and found == "no":
             found, via = "yes", (prior[10] if len(prior) > 10 else via)
-            anchor = prior[9] if len(prior) > 9 else anchor_id
+            anchor = prior[9] if len(prior) > 9 else anchor_from_chain(result, anchor_id)
         else:
-            anchor = anchor_id if found else ""
+            anchor = anchor_from_chain(result, anchor_id) if found else ""
         by_id[gid] = [gid, result.get("name", ""), figure("family_tree"),
                       figure("blood_relatives"), figure("ancestors"), figure("descendants"),
                       figure("followers"), today, found, anchor, via,
