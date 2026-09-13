@@ -1399,6 +1399,8 @@ https://www.geni.com/people/Q%C3%AC-%E5%A5%91-5/6000000003474166572 https://www.
 
 https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823 https://www.wikidata.org/wiki/Q18028984
 
+https://www.geni.com/people/Wu-Zhao-%E6%AD%A6%E6%9B%8C-Zetian-Emperor/6000000002188099903 https://www.wikidata.org/wiki/Q9738
+
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
