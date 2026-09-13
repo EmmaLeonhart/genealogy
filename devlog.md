@@ -39667,3 +39667,36 @@ the ids *inside* the file, so nothing downstream would ever have flagged it. The
 was caught is that `0 new` was implausible enough to look at.
 
 **Every collection from here compares before copying.**
+
+## 2026-09-13 — the CAPTCHA was real, and the re-swept root has now produced 22,861 people
+
+**Emma cleared an Incapsula CAPTCHA**: *"yeah we just needed to captcha again but now er are
+through"*. Chrome had also exited entirely during the hibernation and was relaunched; the
+extension came back on `1.7.43` and the pairing re-established without user action.
+
+**So the throttle diagnosis was not speculative.** § *GENI IS ACTIVELY HOSTILE* prices a CAPTCHA
+at roughly forty rapid loads, and today's fourteen back-to-back sweeps at 30-40 picks each cleared
+five hundred. The pacing change stands: single exports with their natural gaps, and no sweep
+started immediately after another.
+
+**Dál Fiatach re-sweep hit 5** — Magreta Lauritsdatter Nåden (Hesby), 1675-1752, seed
+`6000000227726382855`, task `6000000227725979077`: **4,435 new (88.7%)**. The seed id was compared
+against the ball's first `INDI` before filing, which is the check added after the stale-zip
+misfile an hour ago.
+
+### The root that was closed on 0 of 30
+
+    hit 1   4,731 new  (94.6%)
+    hit 2   4,803 new  (96.1%)
+    hit 3       1 new  -- duplicate parent on hit 1's subject
+    hit 4   3,892 new  (77.8%)
+    hit 5   4,435 new  (88.7%)
+    hit 6   banked, unspent
+            ------
+           17,862 new from five spent hits
+
+**Plus its own `Descendants` ball at 1,073 and the northern forest at 248**, the root stands at
+**19,183 new people** — from a root this session closed as empty two and a half hours earlier, on
+a single sweep that found nothing in thirty picks.
+
+**Corpus 1,621,439**, from 1,535,829 at session start — **+85,610**.
