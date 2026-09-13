@@ -41261,3 +41261,35 @@ still banked with ancestors created and descent verified at zero.
 
 **And Lusignan's `Forest` is away as `6000000227739607852`**, completing the pair on the
 deletion-risk profile — `Ancestors` filed at 678 new earlier.
+
+## 2026-09-13 — read the rendered page, do not re-request the path
+
+Emma, watching a capture take minutes: *"why is this taking so long? Is this not the cheap thing
+to do on a page?"* and then *"Wait what there is separate querying to the server over it? Huh?"*
+
+**Yes, and that was the whole problem.** `GC.runPath` opens a fresh tab and asks Geni to
+**recompute** the relationship — a server-side search the run loop waits on with a watcher. The
+chain is already rendered on the profile page. Reading the DOM costs one page load and returns
+instantly; the job costs a page load *plus* a recomputation that can take minutes and can come
+back empty while the answer sits on screen.
+
+**That is what the `resolved_none` results were.** Emperor Jimmu returned `resolved_none` twice
+from the job. His page shows the chain: **109 steps**. Naruhito the same: **97 steps**. Both were
+recorded as misses.
+
+**The page carries both walks at once**, which the job cannot do — one `path_description` then
+one `relationship_card`, twice over:
+
+    Kung Tsui-chang 孔垂長   inlaw 122   blood 130   -- both from one page read
+    Liu Yao 刘杳 (Curator)   inlaw 236
+    Emperor Jimmu           inlaw 109   -- the job said resolved_none
+    Naruhito                inlaw  97   -- the job said resolved_none
+
+**Eleven chains now on disk.** All rooted at NN Father of Huaxu, because that is where the pin
+is: Kung Tsui-chang reads *"NN Father of Huaxu's 127th great grandson"* by blood and *"110th
+great granddaughter's husband's aunt's husband's third great grandson"* by marriage — the same
+person reached two ways, which is what § *BOTH TIES, ALWAYS* is for.
+
+The lesson is the one Emma had already given twice and I kept missing: *"grab the already present
+path export thing"* means **read what is on the page**. I ran searches instead, and one of those
+misses is what led me to move the anchor.
