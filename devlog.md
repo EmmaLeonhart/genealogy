@@ -39575,3 +39575,37 @@ re-rolls of the same dice:
     Skjalgsson     76,859 ->  78,161   +1,302
 
 Adasi and Genghis are the remaining two of the four.
+
+## 2026-09-13 — the fourth duplicate-parent collision, and this one was preventable
+
+**Åsa Sjursdatter Rogdo `6000000003496815741`**, the third Dál Fiatach re-sweep hit. Its climb
+landed on `6000000013170945910` — **the same subject the FIRST re-sweep hit seeded** — and took
+the opposite parent slot.
+
+    ball                                 5,000 INDI
+    shared with re-sweep hit 1           4,999
+    new to the corpus                        1
+
+**Fourth instance today**, after the Circassian pair, de Marigny, and now this.
+
+### ⛔ THE CHECK EXISTS AND IT FAILED BECAUSE THE LOG WAS INCOMPLETE
+
+The subject-collision check is `grep -c <subject> reports/descendants-export-log.csv`, and it
+returned **0** for `6000000013170945910`. It should have returned 1: the first re-sweep hit had
+seeded on that exact subject twenty minutes earlier. **The row for that ball did not record its
+subject** — some rows carry `seed on <id>` and some do not, because the note field is free text
+written by hand each time.
+
+So the guard was not defeated by a hard problem. **It was defeated by its own input being
+optional.** The row has been backfilled and the check now returns 1.
+
+**Two things follow and only the first is being done:**
+
+1. **Every row records `seed on <subject>` from here.** That is a discipline, not a code change.
+2. A `subject` column, so the check reads a field rather than grepping prose, is the actual fix.
+   **Not built** — it is a schema change to a file the campaign writes on every export, and
+   nobody asked for it.
+
+**And the check can only ever run after the climb**, because the subject is chosen by the walk.
+The order is: sweep → hit → climb → **read the subject** → check the log → only then let the
+export stand. Today it has been run before the climb, on the hit id, which tests the wrong thing.
