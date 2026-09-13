@@ -1270,6 +1270,10 @@ Q828346	P734	LAST	S2600	"6000000082813823834"
 #   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
 Q110410743	P734	LAST	S2600	"6000000105706792946"
 
+## Usual forrname
+
+Please stop adding this to the first name in the given names. I do not think it is actually accurate most of the time. Leave it lying around do not try to fix it do not assess anything related to the population affected just drop this item of the pipeline
+
 
 ## Wikidata isolate connection
 
