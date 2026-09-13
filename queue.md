@@ -8,6 +8,113 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ---
 
+## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
+
+### ⛔ THE CHINESE CLUSTERS — POST-MERGE, INTO THE HIGHER-AUTHORITY DIRECTORY. Ruled 2026-09-13.
+
+*"I figured it out and apparently there was a gigantic tangle of duplicates in both. I did a
+merging campaign on geni and so I want you to do a post merge overwriting higher priority gedcom
+(you know how there is a separate directory with higher authority) and do the triple exports
+thing centered on this individual. Forest, descendants, and then grabbing random desendants and
+exporting descendants on all of them, all in the higher authority section."*
+
+**This answers the thing that was never understood about the Chinese roots** — cluster 1 read
+0 of 30 on its first sweep and 2,930 new on the re-sweep, cluster 2 returned 0.7% and 0.8% on
+its Forest and its Descendants. A tangle of duplicates on Geni's side produces exactly that:
+the same people arriving under different profile ids, so a ball is mostly a re-download and a
+census reads a descent that is really several copies of one.
+
+* **Everything goes in `exports/post-merge/`**, not `exports/chinese-clusters/`. That directory
+  is the higher-authority one and `CLAUDE.md` § *Later sources win value conflicts* is why the
+  post-merge copies beat the pre-merge ones already in the corpus.
+* **The full three steps, in order**: `Forest`, then `Descendants`, then Monte Carlo off the
+  descendants with a `Descendants` export on each hit — all of it filed post-merge.
+* **The seed id is Emma's to supply** and she said she would paste the link. Nothing starts
+  until it arrives; asked and answered by `AskUserQuestion` 2026-09-13.
+
+### ⛔ SKJALGSSON IS DROPPED. Ruled 2026-09-13: *"Drop skjalgsson please"*.
+
+Not paused and not finished-by-measurement — dropped. Three balls are filed under
+`exports/skjalgsson/` and they stay in the corpus; nothing further is seeded, sampled or
+re-swept there, and its banked hit is spent. Do not re-derive it from `reports/density.md` or
+from any roster.
+
+
+They were sitting BELOW two sections headed *ALWAYS LAST* and *THE END OF THE
+QUEUE*, which is how a list gets ordered by when a thing was appended instead of by
+what it is. Ruled 2026-09-13: *"uhh why did you shit the bed so hard with queue
+ordering lol"*. Anything typed here by hand outranks anything derived.
+
+## Final item
+
+please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
+
+## Additional item
+
+Given names and surnames should have our standardized cjk-izations attached to them. imo they should even be the source of it in the logic. update the old ones to this form and new ones are always gonna be created in this manner
+
+## Another item
+
+Export descendants of these people, idk their status, ancestor climb and then descendants export
+
+Sayaluna ata 6000000008384075400, 
+Hélène de Corday 6000000000746523797, 
+Robert d'Esneval VI 6000000026257912323, 
+Inês de Bettencourt I 6000000001435366077, 
+Pietro Antonio di Capua 6000000015633226273, 
+Jacques Grimaldi 6000000015647948256. 
+
+## Another item
+
+read this https://pastebin.com/npAiDNLg using the chrome extension. View all of the pages since this is not really optimally organized, but set these as qid identifications
+
+Look over this guy's contributions https://www.wikidata.org/wiki/Special:Contributions/Marcus.linneberg I think we might be able to do a lot of geni identifications from them. That pastebin was my hasty ones. But we can do it systematically
+
+## Patronymic matronymic stuff
+
+We really should be always creating patronymics in pairs. Feminine and masculine version in a pair in the quickstatements
+
+So for example
+
+Bjornsdatter
+Bjornsson
+
+Would be made at the same time
+
+Honestly I am not 100% sure about all of this stuff. But I think the spelling equivalents are just regional and there is a clear distinction there
+
+### Other traditions
+
+I still think we do not have support for other languages like Semitic languages and celtic languages and their patronymics
+
+Romance languages should be there too but I think they are the hardest and the most dead
+
+## Add to entry points
+
+I want to add this person to Bure entrypoints
+
+https://www.wikidata.org/wiki/Q50368774 https://www.geni.com/profile/index/5328189268700111491
+
+They are the earliest recorded ancestor of the Bure clan. I manually added their geni id. They deserve to act as an entrypoint like any other.
+
+So to be clear this is putting them in the bure clan entrypoint ledger thing. Not putting them in the Jan 1 dump of additional entrypoints. This person should have been an entrypoint ages ago
+
+## another item
+
+address the problem in "address the problem in this image.png"
+
+## urgent issue
+
+https://www.wikidata.org/wiki/Q45383466
+
+Look at the shit that you did to this profile oh my god you bastard this is unacceptable
+
+## CICD
+
+Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements on the github page too. MAke them actually start running.
+
+---
+
 - **⛔ THE ALGORITHM IS STATELESS EXCEPT FOR TWO THINGS. Ruled 2026-09-10.**
   *"This entire algorithm is completely stateless except for the actual connectivity graph of
   which it is built off of, and the dates of attempts."*
@@ -666,11 +773,10 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
     anything else is driven against it.
 
-  - **⛔ TWO BANKED MONTE CARLO HITS LEFT.** They live in
+  - **⛔ ONE BANKED MONTE CARLO HIT LEFT.** They live in
     `reports/descendants-export-targets.csv` and **were tracked nowhere in this file**, which is
     how Chinese 1 and Skjalgsson went missing from the roster earlier today.
 
-        6000000011196793448   5,708   from ben Ovadya's sweep      CLIMBING 2026-09-13 03:50
         6000000021665410212   5,086   from Aztec's sweep
 
     Each is a person over the 4,000 threshold whose export costs a climb and one slot, with **no
@@ -1170,74 +1276,13 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
   **It is hers to rule on and is NOT retracted on a resemblance.** Written down, not acted on.
 
 
-## Final item
-
-please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
-
-## Additional item
-
-Given names and surnames should have our standardized cjk-izations attached to them. imo they should even be the source of it in the logic. update the old ones to this form and new ones are always gonna be created in this manner
-
-## Another item
-
-Export descendants of these people, idk their status, ancestor climb and then descendants export
-
-Sayaluna ata 6000000008384075400, 
-Hélène de Corday 6000000000746523797, 
-Robert d'Esneval VI 6000000026257912323, 
-Inês de Bettencourt I 6000000001435366077, 
-Pietro Antonio di Capua 6000000015633226273, 
-Jacques Grimaldi 6000000015647948256. 
-
-## Another item
-
-read this https://pastebin.com/npAiDNLg using the chrome extension. View all of the pages since this is not really optimally organized, but set these as qid identifications
-
-Look over this guy's contributions https://www.wikidata.org/wiki/Special:Contributions/Marcus.linneberg I think we might be able to do a lot of geni identifications from them. That pastebin was my hasty ones. But we can do it systematically
-
-## Patronymic matronymic stuff
-
-We really should be always creating patronymics in pairs. Feminine and masculine version in a pair in the quickstatements
-
-So for example
-
-Bjornsdatter
-Bjornsson
-
-Would be made at the same time
-
-Honestly I am not 100% sure about all of this stuff. But I think the spelling equivalents are just regional and there is a clear distinction there
-
-### Other traditions
-
-I still think we do not have support for other languages like Semitic languages and celtic languages and their patronymics
-
-Romance languages should be there too but I think they are the hardest and the most dead
-
-## Add to entry points
-
-I want to add this person to Bure entrypoints
-
-https://www.wikidata.org/wiki/Q50368774 https://www.geni.com/profile/index/5328189268700111491
-
-They are the earliest recorded ancestor of the Bure clan. I manually added their geni id. They deserve to act as an entrypoint like any other.
-
-So to be clear this is putting them in the bure clan entrypoint ledger thing. Not putting them in the Jan 1 dump of additional entrypoints. This person should have been an entrypoint ages ago
-
-## another item
-
-address the problem in "address the problem in this image.png"
-
-## urgent issue
-
-https://www.wikidata.org/wiki/Q45383466
-
-Look at the shit that you did to this profile oh my god you bastard this is unacceptable
-
 ## Wikidata isolate connection
 
 Actually connect the wikidata isolates I think we can just zoom through them by this point with our pipeline we have
 
-## CICD
-
-Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements on the github page too. MAke them actually start running.
+⛔ **AND THIS ONE IS LAST, AFTER EVERY OTHER ITEM IN THIS FILE.** Ruled 2026-09-13:
+*"remember that the wikidata isolate path capturing campaign comes after everything else in the
+queue, maybe write that explicitly at the end if it is not clear enough"*. It is the standing
+fallback in `CLAUDE.md` § *The default when nothing else is running* — the thing idle time goes
+to — and a fallback is not a queue item that competes. **Nothing above it waits on it, and it
+does not start while anything above it is live.**
