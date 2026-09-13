@@ -137,6 +137,14 @@ const DEFAULTS = {
    * enough to stop. It is deliberately not a count and deliberately not clearable by a result:
    * only a new run clears it. */
   creating: "",
+  /* ⛔ **SUBJECTS THE CLIMB MUST NOT LAND ON.** Ids supplied with `seedwalk`/`montecarlo`, of
+   * people already inside a `Descendants` ball this campaign holds. A climb that stops on one
+   * of them creates a placeholder and spends an export slot to re-download a ball we already
+   * have: measured over 65 balls on 2026-09-13, nine landed this way and eight returned exactly
+   * one new person out of 5,000, against a median of 1,626 for the rest. The corpus is the only
+   * thing that knows this, so the list is passed in -- `scripts/ball-collision-check.py` is the
+   * same question asked offline, after the fact. */
+  avoidSubjects: [],
   /* Set by `seed.js` immediately before it clicks save, cleared when the creation is confirmed or
    * the run is restarted. Its whole purpose is to survive the navigation the save causes. */
   pendingCreate: null,
@@ -192,6 +200,24 @@ async function put(patch) { await chrome.storage.local.set(patch); }
  * guessed at in turn while the real fault was a throw somewhere above the reply.
  *
  * So every path answers. An error comes back AS the answer rather than as silence. */
+/* ⛔ **THE DENYLIST IS READ OFF DISK, THE SAME WAY THE MONTE CARLO ROSTER IS.** A root with two
+ * balls filed under it is 10,000 ids, and passing that through the page's `data-` bridge as JSON
+ * is ~120 KB of message for something already sitting in a file. `scripts/ball-collision-check.py
+ * --list <dir> > <path>` writes it; the caller hands over `avoidFile` and this reads it.
+ *
+ * A file that cannot be read yields an EMPTY list and the run proceeds. That is deliberate: the
+ * denylist saves a slot when it works and an unreadable one must not cost the climb entirely. */
+async function readAvoid(msg) {
+  const inline = (msg.avoidSubjects || []).map(String).filter(Boolean);
+  if (inline.length || !msg.avoidFile) return inline;
+  try {
+    const text = await (await fetch(String(msg.avoidFile))).text();
+    return text.split(/\r?\n/).map((x) => x.trim()).filter((x) => /^\d+$/.test(x));
+  } catch (e) {
+    return [];
+  }
+}
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   /* ⛔ **`ping` ANSWERS BEFORE ANY `await`, ON PURPOSE.** Everything below opens with
    * `await state()`, i.e. `chrome.storage.local.get`. If that ever hangs or rejects, the async
@@ -218,6 +244,21 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
      * found. Any export the run has queued stays -- that is the point of the climb. */
     if (msg.type === "creating") {
       const s2 = await state();
+      /* ⛔ **A LANDING ON A KNOWN SUBJECT IS NOT A LANDING.** The write is announced before it
+       * happens precisely so it can be stopped here, and this is the one thing worth stopping:
+       * the run keeps its seed queue and climbs on to the next candidate instead. Nothing is
+       * created and no slot is spent. */
+      const avoid = (s2.avoidSubjects || []).map(String);
+      if (avoid.indexOf(String(msg.geni_id || "")) !== -1) {
+        await put({
+          results: (s2.results || []).concat([{ at: new Date().toISOString(), job: "seed",
+                                                geni_id: String(msg.geni_id || ""),
+                                                state: "collision_skipped",
+                                                which: msg.which || "" }])
+        });
+        sendResponse({ halted: false, collision: true });
+        return;
+      }
       await put({
         creating: String(msg.geni_id || "unknown"),
         running: false,
@@ -291,7 +332,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
        * Deliberately narrow: any state NOT in this list leaves `creating` set, so an error, a
        * timeout, a `blocked` or an unrecognised result all still stop the run. The bias stays on
        * the side of stopping wherever the outcome is genuinely unknown. */
-      const NO_WRITE = { both_present: 1, no_add_link: 1 };
+      const NO_WRITE = { both_present: 1, no_add_link: 1, collision_skipped: 1 };
 
       /* ⛔ A PROBABLE CREATION IS A CREATION FOR THE PURPOSE OF NEVER CLIMBING INTO IT.
        *
@@ -584,6 +625,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         confirmRetries: 0,
         pendingCreate: null,
         exportWalk: msg.exportWalk || "forest",
+        avoidSubjects: await readAvoid(msg),
         running: true, startedAt: new Date().toISOString()
       });
       sendResponse({ started: id });
@@ -682,6 +724,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         confirmRetries: 0,
         pendingCreate: null,
         exportWalk: "descendants",
+        avoidSubjects: await readAvoid(msg),
         waitMs: msg.waitMs || 3600000,
         staggerMs: msg.staggerMs ? Math.max(1000, msg.staggerMs | 0) : 5000,
         running: true, startedAt: new Date().toISOString()
@@ -700,6 +743,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         confirmRetries: 0,
         pendingCreate: null,
         exportWalk: msg.exportWalk || "forest",
+        avoidSubjects: await readAvoid(msg),
         /* ⛔ AN HOUR, NOT THE TEN-MINUTE DEFAULT. `DEFAULTS.waitMs` is 600000 and it is the
          * PATH search's budget; `runExport` takes the same field and a 5,000-person ball
          * routinely builds for longer than ten minutes. A timeout here is not a retry either --

@@ -39939,3 +39939,37 @@ sweep yield and the first that separates the roots, and it agrees with what Emma
 was before any of it was measured.
 
 Corpus: **1,632,368** distinct people.
+
+## 2026-09-13 — the tenth collision, then the guard moved inside the extension
+
+**Banked hit 3 of 5, Skjalgsson's `6000000004828068793` (Berte Atlaksdatter Tengs, 8,258).**
+Climbed to subject `6000000004140403567` — **the same subject the Skjalgsson re-sweep seeded on
+four hours earlier**, reached by the other parent slot. `scripts/ball-collision-check.py` fired
+on it while the ball was still building, and the ball came back **1 new of 5,000**. The guard is
+now 9 for 10.
+
+**But a guard that only runs after the export is submitted is a post-mortem, not a guard.** The
+climb creates the placeholder and queues the export itself, so by the time an offline script can
+see the subject the slot is gone — Geni does not cancel a submitted export. So the check moved
+to the only place it can act: `content/seed.js` announces the write to the worker *before*
+clicking save, and the worker now answers `{collision:true}` when the subject is on a denylist.
+The walk is **not** halted for that — it keeps its seed queue and climbs on to the next
+candidate. Nothing is written and no slot is spent.
+
+The denylist is read off disk, the way the Monte Carlo roster already is:
+`ball-collision-check.py --list <root dir>` writes it, `seedwalk`/`montecarlo`/`walk` take
+`avoidFile`. An unreadable file yields an empty list and the run proceeds — the denylist saves a
+slot when it works and must not cost the climb when it does not.
+
+**Two things this cost that were avoidable.** The `readfile` probe takes `url`, not `file`; called
+with `file` it fetched `""`, which resolves against the extension's own base and returned the
+service worker's bytes with `status: 200` — a passing-looking result that was reading the wrong
+thing entirely, the same shape as the export-log guard it was sent to diagnose. And the second
+edit went out under the **same filename**, so Chrome served the cached first version and
+`avoidSubjects` loaded 0 while the code on disk said otherwise. That is precisely what this
+file's own header says will happen. `1.7.43 -> 1.7.44 -> 1.7.45`, one rename per edit, verified
+each time by a behaviour only the new bytes have — here `avoidLoaded: 10000`.
+
+Banked hit 4, ben Ovadya's `6000000011196793448`, is climbing under the guard.
+
+Corpus: **1,632,369** distinct people.

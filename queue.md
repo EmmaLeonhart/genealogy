@@ -666,21 +666,27 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
     anything else is driven against it.
 
-  - **⛔ THREE BANKED MONTE CARLO HITS LEFT.** They live in
+  - **⛔ TWO BANKED MONTE CARLO HITS LEFT.** They live in
     `reports/descendants-export-targets.csv` and **were tracked nowhere in this file**, which is
     how Chinese 1 and Skjalgsson went missing from the roster earlier today.
 
-        6000000004828068793   8,258   from Skjalgsson's re-sweep
-        6000000011196793448   5,708   from ben Ovadya's sweep
+        6000000011196793448   5,708   from ben Ovadya's sweep      CLIMBING 2026-09-13 03:50
         6000000021665410212   5,086   from Aztec's sweep
 
     Each is a person over the 4,000 threshold whose export costs a climb and one slot, with **no
     census loads at all** — the sweep that found them is already paid for. Spend order is not
     ruled; largest first is the obvious default and is not a rule.
 
-    ⛔ **CHECK THE SUBJECT AFTER THE CLIMB, NOT THE HIT BEFORE IT**, and check it with
-    `python scripts/ball-collision-check.py <subject> <exports/root-dir>`, not by grepping the
-    export log. The log's first column is a task id; the subject is not a column at all, which is
+    ⛔ **THE CLIMB CHECKS ITS OWN LANDING FROM 1.7.45.** Write the denylist with
+    `python scripts/ball-collision-check.py --list <exports/root-dir> > reports/avoid/<root>.txt`
+    and pass it as `avoidFile:"file:///C:/Users/Emma/Documents/GitHub/geni/reports/avoid/<root>.txt"`
+    on the `seedwalk`. The worker answers the pre-write announcement with `{collision:true}` and
+    the walk climbs past that subject instead of creating on it. **Verify it loaded** — `status`
+    reports `avoidSubjects`, and a silent 0 means the file did not read.
+
+    The offline form, `ball-collision-check.py <subject> <exports/root-dir>`, is now only a
+    post-mortem: by the time it can see the subject the export is submitted and Geni does not
+    cancel. Do not grep the export log for this. The log's first column is a task id; the subject is not a column at all, which is
     why the old guard read 0 rows and cleared the ninth collision straight through. The script
     asks the question that actually predicts the yield — *is the subject already inside a ball
     filed under this root* — and over 65 balls it fired 9 times, 8 of which returned exactly 1

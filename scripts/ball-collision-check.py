@@ -1,6 +1,7 @@
 """Would a `Descendants` ball seeded above this subject repeat one we already hold?
 
     python scripts/ball-collision-check.py <subject geni id> <exports/root-dir>
+    python scripts/ball-collision-check.py --list <exports/root-dir>
 
 **Run this AFTER the climb, on the subject the climb landed on, and BEFORE spending the slot.**
 The hit id the Monte Carlo sweep reported says nothing about this: the climb walks upward from
@@ -18,6 +19,11 @@ two balls differ only in the parent slot the climb took, which is the duplicate-
 this repo has now hit nine times.
 
 Exit status is 1 when a collision is found, so it can gate a shell step.
+
+`--list` prints every id inside those balls, one per line, which is the `avoidSubjects` list the
+extension takes with `seedwalk` and `montecarlo` from 1.7.44. **That is the version of this check
+that is worth having**: asked here it is a post-mortem, asked by the climb it stops the landing
+before a placeholder is written and before a slot is spent.
 """
 
 from __future__ import annotations
@@ -39,8 +45,24 @@ def contains(path: pathlib.Path, subject: str) -> bool:
     return False
 
 
+def everyone(subdir: str) -> set:
+    """Every id inside the `Descendants` balls filed under `subdir`."""
+    out = set()
+    for ball in sorted((ROOT / subdir).glob("export-Descendants-*.ged")):
+        with ball.open(encoding="utf-8", errors="replace") as fh:
+            for line in fh:
+                m = INDI.match(line)
+                if m:
+                    out.add(m.group(1))
+    return out
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
+    if sys.argv[1] == "--list":
+        for pid in sorted(everyone(sys.argv[2])):
+            print(pid)
+        return 0
     subject, subdir = sys.argv[1], sys.argv[2]
     balls = sorted((ROOT / subdir).glob("export-Descendants-*.ged"))
     if not balls:

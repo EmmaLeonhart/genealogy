@@ -551,12 +551,24 @@ GC.seed.addParent = async function (which, p) {
    * guard that only runs on the success path is not a guard. This one runs before the thing it
    * guards against. */
   let announced = false;
+  let collision = false;
   try {
     const ack = await chrome.runtime.sendMessage({ type: "creating",
                                                   geni_id: String(p.childId || ""),
                                                   which: which, first: p.first, last: p.last });
     announced = !!(ack && ack.halted);
+    collision = !!(ack && ack.collision);
   } catch (e) { /* the ack stays false, and the next line decides what that means */ }
+
+  /* ⛔ **THE BACKGROUND SAYS THIS SUBJECT IS ALREADY COVERED, SO NOTHING IS WRITTEN.** The
+   * announcement exists to be answerable, and this is the answer that saves a slot: the person
+   * sits inside a `Descendants` ball the campaign already holds, so creating a parent above them
+   * would buy a ball we have. The walk is not halted -- it keeps its seed queue and climbs on.
+   * Returning BEFORE the click is the whole point; a check after it is a check of nothing. */
+  if (collision) {
+    step("collision-skipped");
+    return { state: "collision_skipped", first: p.first, last: p.last };
+  }
 
   /* ⛔ **A SCHEDULED WRITE THAT COULD NOT ANNOUNCE ITSELF DOES NOT HAPPEN.**
    *
