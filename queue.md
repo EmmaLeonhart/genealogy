@@ -1397,3 +1397,16 @@ https://www.geni.com/people/Emperor-K%C3%B9-%E5%B8%9D%E5%9A%B3-4/600000000248125
 
 https://www.geni.com/people/Q%C3%AC-%E5%A5%91-5/6000000003474166572 https://www.wikidata.org/wiki/Q1045160 
 
+## Relational labels issue
+
+Just like the other things this is at the end for a reason
+
+I notice on this one https://www.wikidata.org/wiki/Q141447199 and many others that relational labels are using the geni labels and not the wikidata labels. This is a bit of a problem because well the geni labels are not always the best
+
+## Remove abbrviations
+
+They have been in here way too long. Feminine patronymic abbreviations like "Olsdtr." really should at this point be only present at all in the "subject named as" in the geni id
+
+## subject named as in the geni id
+
+In our adding of geni ids we are not even doing the "subject named as" thing which really sucks. This is self-healing right? Like we do apply the geni ids after right?
