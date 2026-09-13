@@ -39222,3 +39222,27 @@ today, which were all inferences from *how much we already hold*.
 `6000000227724905843` came back from a **single extension dispatch** with its task id, on the same
 profile whose hand-submit produced no id and no email in two hours. **Hermenegildo
 `6000000211987119821` is the remaining one to resubmit the same way.**
+
+## 2026-09-12 — sweep: three completed roots were still listed in a second roster
+
+**Confucius, Fihr and Emperor Jimmu** were each trimmed from one roster when they completed and
+left in another. The seeds appear twice in `queue.md` — once in § *THE SEEDS FOR THE REST OF THE
+ROSTER* with their profile names, once in part 1 of § *THE WHOLE PROGRAM* — and each trim used a
+`replace(..., "", 1)` or matched only the part-1 spelling.
+
+    6000000227713034875  Confucius       105 ·  992 · skipped on proof     1,097 new
+    6000000227714378863  Fihr            363 ·  266 · 1,238                1,867 new
+    6000000227713229918  Emperor Jimmu     1 ·    7 · 0 of 30                  8 new, 11,140 linked
+
+All three are complete and filed; the lines were duplication, not outstanding work.
+
+**⛔ THE DUPLICATION IS THE POINT AND IS NOT TO BE "FIXED".** `CLAUDE.md` § *Duplication is
+deliberate here. Never "fix" it* — the two rosters serve different readers, one naming the seeds
+and one sequencing the program. **What has to change is the deletion**: a completed seed comes out
+of *both*, and the check is `grep -c <id> queue.md` returning 0 rather than a single successful
+replace.
+
+**Still not swept:** the six from Abul Hamza's ball (no export-log row for any), the OneTab 19
+(never ruled), Adasi's reseed (Descendants only, under a three-step heading), Hermenegildo and
+Nārāyaṇa (step 3 outstanding), Genghis (Forest outstanding), Aztec (Monte Carlo outstanding),
+parts 3 and 4, and the standing procedures.
