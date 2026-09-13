@@ -1222,7 +1222,9 @@ I want to add this person to Bure entrypoints
 
 https://www.wikidata.org/wiki/Q50368774 https://www.geni.com/profile/index/5328189268700111491
 
-They are the earliest recorded ancestor of the Bure clan. I manually added their geni id. They deserve to act as an entrypoint like any other
+They are the earliest recorded ancestor of the Bure clan. I manually added their geni id. They deserve to act as an entrypoint like any other.
+
+So to be clear this is putting them in the bure clan entrypoint ledger thing. Not putting them in the Jan 1 dump of additional entrypoints. This person should have been an entrypoint ages ago
 
 ## Another Item
 
