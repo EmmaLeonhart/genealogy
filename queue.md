@@ -1429,6 +1429,10 @@ https://www.geni.com/people/%EC%A1%B0%EC%84%A0-27%EB%8C%80-%EC%88%9C%EC%A2%85-%E
 
 https://www.geni.com/people/Yi-Un-Crown-Prince-of-Korea/6000000028856413461 https://www.wikidata.org/wiki/Q484866
 
+https://www.geni.com/people/%EC%88%9C%ED%97%8C%ED%99%A9%EA%B7%80%EB%B9%84-%EC%97%84%EC%94%A8/6000000028786845951 https://www.wikidata.org/wiki/Q7214248
+
+https://www.geni.com/people/private/6000000028895625641 https://www.wikidata.org/wiki/Q496421
+
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
