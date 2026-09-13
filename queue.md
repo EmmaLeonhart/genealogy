@@ -1206,6 +1206,10 @@ They are the earliest recorded ancestor of the Bure clan. I manually added their
 
 So to be clear this is putting them in the bure clan entrypoint ledger thing. Not putting them in the Jan 1 dump of additional entrypoints. This person should have been an entrypoint ages ago
 
+## another item
+
+address the problem in "address the problem in this image.png"
+
 ## Another Item
 
 I am just letting you know that this was in the quickstatements. It is not a surname lol
