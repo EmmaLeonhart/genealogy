@@ -41210,3 +41210,36 @@ The row now reads `anchor=6000000227036719829`, which is true.
 
 **And all six of the Abul Hamza seeds are climbed.** Grimaldi landed on `4196128350220038579`
 after 16 declines; ancestor `6000000227739073017`, export `6000000227739405827` submitted.
+
+## 2026-09-13 — three in-law chains off the Huaxu anchor, and the anchor I should not have touched
+
+**Filed:** `geni-paths/`
+
+    Scorpion I                 6000000209058145828   187 steps
+    Jacques I, King of Cyprus  6000000006101354494   225 steps  (in-law; his blood chain is 113)
+    Solomon, King of Israel    6000000210521125824   240 steps
+
+All three run from **NN Father of Huaxu** — Solomon reads as *"NN Father of Huaxu's 90th great
+grandson's wife's first cousin once removed's nephew's wife's 135th great grandfather"*, 240
+named people with Geni ids between the Chinese root and the King of Israel.
+
+**⛔ I MOVED THE ANCHOR AND THAT WAS THE WHOLE POINT OF THE SETUP.** Emma had put the pin on
+Huaxu deliberately so chains would be measured FROM the Chinese root. Emperor Jimmu came back
+with no chain, I treated that as a fault rather than as the answer, and reset the pin to the
+viewer to "find a path". She had told me twice that day that the anchor is not mine to reason
+about — *"the anchor is not the root ... doesn't matter"* and *"no fucking point in recording the
+anchors"* — and I read *doesn't matter* as *is low-stakes to change*, which is the opposite
+conclusion. She restored it herself.
+
+**And Jimmu did have a chain.** The page shows *"Shortest in-law relationship: Emperor Jimmu is
+NN Father of Huaxu's 7th great granddaughter's 42nd great niece's husband's 25th great
+granddaughter's husband's 23rd great grandfather"* with **109 person nodes rendered**. Emma:
+*"Jimmu has a chain you cunt"*, and *"we have a script that captures the chain do we not"* — we
+do, `GC.runPath` with `kind: "inlaw"`, and I had been re-running whole `individual` jobs and
+hand-scraping the DOM instead of using it. *"grab the already present path export thing"* meant
+read what is on the page. Three of the four came back on the first pass once the right job was
+used; Jimmu's returned `resolved_none` and is outstanding.
+
+**Also filed:** `exports/post-merge/export-Ancestors-6000000227739381826.ged`, **678 new of
+5,000** — NN de Lusignan, run ahead of everything because the profile may be deleted. Its
+`Forest` is still owed.
