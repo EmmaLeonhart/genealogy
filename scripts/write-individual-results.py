@@ -123,15 +123,20 @@ def main() -> int:
         sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
         pass
-    anchor_arg = ""
-    for i, arg in enumerate(sys.argv):
-        if arg == "--anchor" and i + 1 < len(sys.argv):
-            anchor_arg = sys.argv[i + 1]
-    if anchor_arg not in ("charlemagne", "viewer"):
-        raise SystemExit("⛔ --anchor charlemagne|viewer is required: this script cannot see the "
-                         "page, and a verdict without the anchor it was taken under is meaningless "
-                         "(docs/anchor-protocol.md)")
-    anchor_id = CHARLEMAGNE if anchor_arg == "charlemagne" else "viewer"
+    # ⛔ **THE ANCHOR IS NOT WORTH RECORDING AND `--anchor` IS NO LONGER REQUIRED.** Ruled
+    # 2026-09-13: *"Also no fucking point in recording the anchors lol"*, following from
+    # *"the anchor is not the root ... doesn't matter. The pipeline will periodically update the
+    # linkedness of the people and figure out who is connected."*
+    #
+    # It was required for one afternoon, on the reasoning that a verdict without its anchor is
+    # meaningless. That is true of a reach-rate report and false of a capture, and requiring it
+    # bought nothing except a flag I then got wrong: `--anchor charlemagne` was passed from memory
+    # on Jacques I of Cyprus while the pin had moved to NN Father of Huaxu.
+    #
+    # The column stays because `write-family-scrape.py` reads position 9 and a schema change is a
+    # separate job. It is filled from step 1 of the chain, which costs nothing and cannot be
+    # wrong; the flag is accepted and ignored so old invocations do not break.
+    anchor_id = ""
 
     # READ STDIN AS BYTES. sys.stdin.read() decodes with Windows console codepage and
     # turns CJK into lone surrogates that nothing downstream can encode. Measured

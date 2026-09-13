@@ -1401,6 +1401,12 @@ https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/60000001884
 
 https://www.geni.com/people/Wu-Zhao-%E6%AD%A6%E6%9B%8C-Zetian-Emperor/6000000002188099903 https://www.wikidata.org/wiki/Q9738
 
+https://www.geni.com/people/Scorpion-I/6000000209058145828 https://www.wikidata.org/wiki/Q318613
+
+https://www.geni.com/people/Iry-Hor-Pharaoh-of-Egypt/6000000009562419205 https://www.wikidata.org/wiki/Q314809
+
+
+
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
