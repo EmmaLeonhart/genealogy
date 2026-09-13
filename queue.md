@@ -683,16 +683,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
         6000000227723403845  Adasi, PAST THE BOTTLENECK   supplied 2026-09-12
 
-    **2. GENGHIS / AZTEC / INCA — `Forest` AND MONTE CARLO, NO `Descendants`.** Verbatim:
-    *"we have descendant exports of them. No need to redo descendants exports of them, but we
-    need forest exports of them, and the Monte carlo stuff done on them."*
-
-        6000000209721822822  Inca Emperors        Forest refreshed 2026-09-12 (7 new) --
-                                                   MONTE CARLO STILL OUTSTANDING. It was
-                                                   trimmed from this part after only the
-                                                   Forest ran, which was premature: part 2
-                                                   asks for Forest AND Monte Carlo.
-
     **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
 
         6000000227712070008  NN Näf         more Monte Carlo rounds (80.1% then 26.8%)

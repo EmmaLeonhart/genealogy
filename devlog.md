@@ -39439,3 +39439,26 @@ and `grep -c` confirms no-name is still tracked.
 
 **The check that made this safe** is the one the Inca un-deletion forced: before removing an item,
 establish where each of its parts now lives. Two were filed, one is elsewhere and still running.
+
+## 2026-09-12 — part 2 is complete: Genghis, Aztec and Inca
+
+    Genghis  Forest 216 new · sweep 0 of 30, top 415
+    Aztec    Forest already existed · sweep 2 hits · 4,965 new (99.3%)
+    Inca     Forest refresh 7 new · sweep 2 hits · 3,293 new (65.9%)
+
+**8,481 new people**, of which **8,258 came from the two sweeps** and 223 from the Forests. Part 2
+asked for `Forest` and Monte Carlo and no `Descendants`, and the Descendants were the right thing
+to skip: all three already had one.
+
+**Two ceiling-height targets are banked from these sweeps** and unspent —
+`6000000021665410212` (5,086, Aztec) and `6000000001759017182` (15,000, Inca).
+
+### ⛔ AND THE SWEEP HAD FINISHED WHILE IT WAS BEING REPORTED AS RUNNING
+
+Emma: *"I don't see anything happening"* — and she was right. Inca's 30 reads had completed, the
+seed was created and the export **had already built**, while the last status report said the
+collector was still censusing. The status call that would have caught it is the same one used
+every other time; it simply was not made between the sweep starting and the report going out.
+
+**A build that finishes unobserved holds nothing up, but an export that finishes unobserved does**
+— it occupies Geni's serial slot in the report's account of the world while actually being free.
