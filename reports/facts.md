@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **1,625,530 people**, 
-of whom 53,522 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **1,631,727 people**, 
+of whom 53,528 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,619,278 | 99.6% |
-| occupation | 197,648 | 12.2% |
-| birth date | 1,117,521 | 68.7% |
+| sex | 1,625,480 | 99.6% |
+| occupation | 198,027 | 12.1% |
+| birth date | 1,121,887 | 68.8% |
 | birth place | 0 | 0.0% |
-| death date | 890,971 | 54.8% |
+| death date | 892,964 | 54.7% |
 | death place | 0 | 0.0% |
-| burial date | 111,314 | 6.8% |
+| burial date | 111,539 | 6.8% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
