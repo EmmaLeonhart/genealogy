@@ -1339,3 +1339,8 @@ I earlier talked about the entry point GETCOM like it was a well-established thi
 https://www.geni.com/people/G%C5%8CNGS%C5%AAN-Sh%C7%8Eo-Di%C7%8En-%E5%B0%91%E5%85%B8-1%E4%B8%96/6000000026522778851 https://www.wikidata.org/wiki/Q4302144
 
 https://www.geni.com/people/Sh%C3%A9n-N%C3%B3ng-%E7%A5%9E%E5%86%9C-Y%C3%A1n-D%C3%AC-%E7%82%8E%E5%B8%9D-Y%C3%BA-Qu%C4%81n-%E6%A6%86%E5%9C%88-%E4%B8%80%E4%BB%BB%E5%B8%9D-2%E4%B8%96/6000000130192002822 https://www.wikidata.org/wiki/Q313336
+
+https://www.geni.com/people/Yellow-Emperor/6000000001381274001 https://www.wikidata.org/wiki/Q29201
+
+https://www.geni.com/people/Ch%C4%81ng-Y%C3%AC-%E6%98%8C%E6%84%8F-2/6000000001381063554 https://www.wikidata.org/wiki/Q6377648
+
