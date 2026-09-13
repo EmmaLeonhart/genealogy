@@ -40648,3 +40648,30 @@ not a trend.
 step-3 text now carries round 1's result so a later session neither re-runs it nor reads the item
 as unstarted. Adasi's reseed Forest, the Aztec banked hit, Aztec's Forest, Genghis's Monte Carlo,
 the six Abul Hamza seeds and the OneTab 19 fail the same checks as the previous four sweeps.
+
+## 2026-09-13 — round 2 is bigger than round 1, and the collision guard fired six times live
+
+**Round 2 of the Huaxu Monte Carlo, 40 draws off the same trunk roster:**
+
+    40 census reads, 1 unread
+    two hits at 15,000 -- Geni's display ceiling, the largest reading it will show
+    6000000198581146831   15,000   clear against post-merge
+    6000000000112111067   15,000   COLLISION -- already inside a ball we hold
+
+Round 1's best was 9,265. **Round 2 is not diminishing, it is bigger**, which settles the
+question `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS* asks: this root is not
+done. It also disposes of the reading that Huaxu was thin — the uniform frame's answer of *top
+43, nothing over 4,000* was an artefact of sampling a 156-generation descent whose mass sits at
+generation 130.
+
+**⛔ AND THE 1.7.45 GUARD FIRED IN PRODUCTION FOR THE FIRST TIME — SIX TIMES ON ONE CLIMB.**
+`collision_skipped` on `6000000026522622075` and five others: each was a subject already inside a
+ball under `exports/post-merge/`, each would have had a placeholder created above it, and the
+climb walked past every one and landed on `6000000004868946389` instead.
+
+Before 1.7.45 that was ten collisions, nine of which returned exactly one new person for a whole
+export slot, discovered only after the ball came down. This climb spent none of them. The guard
+is the difference between a campaign that wastes a slot every tenth climb and one that does not,
+and it is now exercised on all three paths: a clear landing, a caught collision, and a walk-past.
+
+Export `6000000227735133862` on created ancestor `6000000227735175860` is building.
