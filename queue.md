@@ -649,6 +649,25 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
     what is above it — and nothing measured so far would have revealed it. **She read it off the
     tree; it was not derived here.**
 
+  - **⛔ `L. Ron Hubbard` `6000000020167386805` — FOREST REFUSED, NEEDS AN ANCESTOR.**
+    Asked 2026-09-12: *"because he somehow has 15,000 recorded ancestors please do a forest export
+    on this profile lol"*. `https://www.geni.com/gedcom/export/6000000020167386805` returns
+    **"You are not allowed to export that profile"** — the same refusal as Gamle Olof and the
+    first NN Ulster, checked with one fetch and no slot spent.
+
+    **So it needs an ancestor created above him**, which is what she did for NN Ulster
+    (`6000000227715492839`). **Not created here** — every ancestor made on an unowned profile so
+    far in this campaign has been hers, and whether to make one on a modern person with living
+    descendants is not a call to take unasked.
+
+    **His path is saved** — `geni-paths/6000000020167386805-blood-and-inlaw.html`, 140 segments,
+    **no blood relationship at all**, in-law only, sharing its first nine hops with NN
+    Mixcoamatzin's chain off Iry-Hor.
+
+    ⛔ **AND HIS PROFILE FREEZES THE RENDERER.** The first tab went unresponsive to CDP for over
+    two minutes on that page and had to be closed; a fresh tab loaded it. Worth knowing before
+    anything else is driven against it.
+
   - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
     Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
     the information we have right now, do now, postpone, or drop. So we can be clear about all of
