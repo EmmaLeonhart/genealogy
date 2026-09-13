@@ -40763,3 +40763,26 @@ consulted at the moment of creation, which is the only moment that can act.
 
 Two slots bought that rule. The campaign has spent twelve collisions total and the last two are
 the only ones that were preventable by something already built.
+
+## 2026-09-13 — what the collisions have actually cost, counted
+
+Round 3 of the Huaxu sweep is the first to run behind `--list-saturated`, 14,674 subjects loaded
+and verified. Before its result comes in, the campaign's own log is worth totalling, because
+"twelve collisions" is a count of incidents and not a cost.
+
+**Every `Descendants` ball with a measurement, 75 of them:**
+
+    returning <=2 new -- a collision      16     21%
+    median new                         1,236
+    mean new                           1,589
+    total people gathered              119,190
+
+**So one export slot in five has been spent on a ball we already had.** At the median that is
+about 19,800 people not gathered — a sixth of everything these balls have produced — and the
+number is an undercount, because a slot is also an hour of Geni's serial queue and this session
+lost 6h30m of it to a single build.
+
+That is the case for the guards being worth the two slots they cost to find, and for
+`--list-saturated` over `--list`: the eleventh and twelfth collisions are the only two of the
+sixteen that something already built could have prevented, and both are now covered by the same
+mechanism at the only point in the sequence that can act on them.
