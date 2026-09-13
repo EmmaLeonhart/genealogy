@@ -40706,3 +40706,28 @@ queued as a pre-flight ahead of the next hit — already running against the rem
 
 **Dead-queue sweep: nothing to delete.** Step 3 is two rounds in with round 2's second hit still
 unspent; every other candidate fails the same checks as the previous five sweeps.
+
+## 2026-09-13 — the pre-flight is built, and it is right at both ends
+
+`ball-collision-check.py --descent <subject>` enumerates the subject's descent in the merged
+corpus and refuses a slot when it is already near the 5,000 cap. It imports `descent-from.py`'s
+walk rather than copying it, so the two cannot disagree about what a descent is.
+
+**Tested on the two subjects that make the case, and it separates them:**
+
+    6000000004868946389   122,348 already held   REFUSE -- this is the ball that returned 1 new
+    6000000198581146831         0 already held   GO     -- 少典 Shǎo Diǎn, 15,000 on Geni
+
+**The second one is the find of the night.** Shǎo Diǎn is the legendary father of the Yellow
+Emperor, he appears in five files in the corpus, and in every one of them he is **childless**.
+Geni reads 15,000 below him. So the corpus holds the person and none of his descent — which is
+exactly the shape Emma described the campaign as being for: *"A lot of these people with very
+large numbers of descendants are not as well documented and often are sparse in some areas."*
+Sparse here is total.
+
+The climb is away with the denylist at 11,636 loaded and verified.
+
+**And the ordering matters as much as the check.** The eleventh collision was measured after the
+slot was gone; this one was measured before it was spent, which is the whole difference between
+a post-mortem and a guard — the same lesson the offline form of this script had already taught
+once today and that I had only half-applied.

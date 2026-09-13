@@ -2,6 +2,7 @@
 
     python scripts/ball-collision-check.py <subject geni id> <exports/root-dir>
     python scripts/ball-collision-check.py --list <exports/root-dir>
+    python scripts/ball-collision-check.py --descent <subject geni id>
 
 **Run this AFTER the climb, on the subject the climb landed on, and BEFORE spending the slot.**
 The hit id the Monte Carlo sweep reported says nothing about this: the climb walks upward from
@@ -17,6 +18,22 @@ Why it works: a ball seeded on a created ancestor of P contains P and P's descen
 sits inside an earlier ball for this root, that earlier ball already walked down through P. The
 two balls differ only in the parent slot the climb took, which is the duplicate-parent collision
 this repo has now hit nine times.
+
+## ⛔ `--descent` ASKS THE QUESTION THE BALL TEST IS A PROXY FOR
+
+*Is the subject inside a ball we hold* catches 9 collisions in 10 and missed the eleventh:
+`6000000004868946389` was clear against every directory, sits inside no `Descendants` ball at all,
+and its ball came back **1 new of 5,000** because 89.7% of its descent was already held through
+Forest exports and other roots. A subject can be outside every ball while their whole descent is
+in the corpus.
+
+`--descent` enumerates the subject's descent in the merged corpus and reports it against the
+5,000 cap. It reads every `.ged` once and touches Geni not at all, so it costs a corpus read and
+nothing else — cheap against a slot that is the scarcest thing in the campaign.
+
+    near 5,000   the ball can only re-download what is held. Do not spend the slot.
+    near 0       the descent is missing entirely. This is the best kind of target:
+                 少典 (Shǎo Diǎn) `6000000198581146831` reads 15,000 on Geni and **0** here.
 
 Exit status is 1 when a collision is found, so it can gate a shell step.
 
@@ -57,8 +74,37 @@ def everyone(subdir: str) -> set:
     return out
 
 
+def descent_size(subject: str) -> int:
+    """How many of the subject's descendants the merged corpus already holds.
+
+    The walk is `scripts/descent-from.py`'s — `HUSB`/`WIFE` -> `FAM` -> `CHIL`, breadth-first —
+    and it is imported rather than copied so the two can never disagree about what a descent is.
+    """
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "descent_from", ROOT / "scripts" / "descent-from.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    paths = sorted((ROOT / "exports").rglob("*.ged"))
+    _names, fams = module.read(paths)
+    children_of = {}
+    for partners, children in fams:
+        for parent in partners:
+            children_of.setdefault(parent, set()).update(children)
+    return len(module.descent(children_of, subject)) - 1
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
+    if sys.argv[1] == "--descent":
+        subject = sys.argv[2]
+        held = descent_size(subject)
+        print("subject %s: %d descendant(s) already in the corpus" % (subject, held))
+        if held >= 4000:
+            print("-> the ball can only re-download what is held. Do not spend the slot.")
+            return 1
+        print("-> clear on descent (%d of the 5,000 cap)" % held)
+        return 0
     if sys.argv[1] == "--list":
         for pid in sorted(everyone(sys.argv[2])):
             print(pid)
