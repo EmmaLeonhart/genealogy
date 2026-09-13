@@ -1427,6 +1427,8 @@ https://www.geni.com/people/Iry-Hor-Pharaoh-of-Egypt/6000000009562419205 https:/
 
 https://www.geni.com/people/%EC%A1%B0%EC%84%A0-27%EB%8C%80-%EC%88%9C%EC%A2%85-%EC%B2%99/6000000028714712399 https://www.wikidata.org/wiki/Q334111
 
+https://www.geni.com/people/Yi-Un-Crown-Prince-of-Korea/6000000028856413461 https://www.wikidata.org/wiki/Q484866
+
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
@@ -1498,3 +1500,8 @@ try this one https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterber
 ## Possible leads
 
 I think connecting me to Alix via German people such as this person https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064 might be a good way to go about it. Since I do see a clear line of descent for this person and it may be the case for many others too
+
+
+## Jan 1 correspondences research
+
+Based on the fact you did not figure out that the Chinese tails were duplicates, I am convinced you do not in fact know at all anything on the Egyptian Pharaohs geni to wikidata correspondences and should probably figure them out
