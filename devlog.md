@@ -40877,3 +40877,40 @@ batches because nothing had exercised it.
 
 Batch 005: 21 people, 19 family files, 8 below floor, **12 seed_walk** — an unusually rich batch,
 those twelve all cleared the 250 export floor.
+
+## 2026-09-13 — no numeral gets a name item, in any notation
+
+Emma, on the `## Names` item she had just committed: *"why are you allowing any numerals at all?
+None of them are names."* And, when I kept reaching for labels to justify an exemption: *"This
+isn't even about what gets into labels. This is about what gets listed as a name and has an
+object made about it."*
+
+**She is right and the defect was mine from this morning.** The punctuation rule I shipped tested
+`isalnum`, which passes digits, and the test I wrote **asserted `3` was a name** — so the bug went
+in documented as intended behaviour. The justification was that a regnal ordinal must not be
+stripped, which is a claim about the LABEL and has nothing to do with whether `II` gets a
+`P734`. Verified rather than asserted: neither `derive-labels.py` nor `labels.py` references
+`name_shape` or `classify_fields`; every caller is on the name-item path.
+
+**Three notations, one rule, and the Roman half comes from the corpus rather than the alphabet.**
+A blanket *every character is one of `IVXLCDM`* is what I tried first, and counting the corpus
+killed it:
+
+    ordinals   I 33,450   II 31,776   III 15,436   IV 8,896   V 5,958   VI 3,543
+    initials   D 4,736    M 2,562     C 1,647      L 1,344
+    words      di 21,960  i 3,498     il 1,208     Li 1,047   Liv 521
+
+`di` is a particle, `Li` is a Chinese surname, and `D`/`M`/`C`/`L` are initials that are never
+ordinals in a name — nobody is styled the 500th. So the pattern is the ordinal **sequence**,
+uppercase, built from `I`/`V`/`X` alone: `I` through `XXXIX` and nothing else.
+
+    refused   3  42  1854  (1)  #2  I  II  III  IV  V  XIV  XXXIX  三  十  二世  2世
+    kept      di  Li  Di  il  im  ll  Liv  D  M  C  L  DILL  Bure  孔  Ærø  O'Brien
+
+**41,203 rows over 34,352 distinct people** carry one, `reports/numeral-name-tokens.csv`. The two
+tests are rewritten around the ruling, and the one that asserted `3` was a name is gone.
+
+**I also carved two exemptions before being told to stop**, and both were wrong: single Latin
+letters *because they might be initials* — which let `I` and `V` through, the two commonest
+ordinals in the file — and a CJK test that missed `2世` because it required every character to
+be a CJK numeral rather than dropping the digits first.

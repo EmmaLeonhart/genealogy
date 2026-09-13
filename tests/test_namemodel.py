@@ -787,9 +787,28 @@ def test_both_real_spellings_survive_the_separator():
     assert ("Latimer", "family", 0) in tokens
 
 
-def test_the_rule_is_punctuation_and_not_the_slash():
-    """Any token with no alphanumeric character in ANY script, and only those."""
-    for junk in ("/", "--", ".", "&", "()"):
-        assert namemodel.name_shape(junk)[1] == "unknown", f"{junk!r} reads as a name"
-    for real in ("Bure", "孔", "Ærø", "Ólafsdóttir", "O'Brien", "3"):
-        assert namemodel.name_shape(real)[1] != "unknown", f"{real!r} reads as punctuation"
+def test_no_numeral_gets_a_name_item_in_any_notation():
+    """Ruled 2026-09-13: *"why are you allowing any numerals at all? None of them are names."*
+
+    And the scope, ruled in the same breath — *"This isn't even about what gets into labels.
+    This is about what gets listed as a name and has an object made about it."* Neither
+    `derive-labels.py` nor `labels.py` calls `name_shape`, so a regnal ordinal keeps its place
+    in the label and loses only its `P734`/`P735` item.
+    """
+    for junk in ("/", "--", ".", "&", "()",           # punctuation
+                 "3", "42", "1854", "(1)", "#2",      # digits
+                 "I", "II", "III", "IV", "V", "XIV",  # Roman ordinals
+                 "三", "十", "二世", "2世"):            # CJK numerals
+        assert namemodel.name_shape(junk)[1] == "unknown", f"{junk!r} would get a name item"
+
+
+def test_the_roman_rule_is_the_ordinal_SEQUENCE_and_not_the_alphabet():
+    """`di` is 21,960 occurrences and `Li` is a Chinese surname — both are all-Roman letters.
+
+    A blanket *every character is one of IVXLCDM* refuses them, and refuses the single-letter
+    initials `D`, `M`, `C`, `L` which are 4,736 / 2,562 / 1,647 / 1,344 in the corpus and are
+    never ordinals in a name. The pattern is the ordinal sequence, uppercase, `I`/`V`/`X` only.
+    """
+    for real in ("di", "Li", "Di", "il", "im", "ll", "Liv", "D", "M", "C", "L", "DILL",
+                 "Bure", "孔", "Ærø", "Ólafsdóttir", "O'Brien"):
+        assert namemodel.name_shape(real)[1] != "unknown", f"{real!r} lost its name item"

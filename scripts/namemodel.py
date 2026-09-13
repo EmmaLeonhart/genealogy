@@ -1290,6 +1290,46 @@ def is_description(givn: str) -> bool:
                for t in re.split(r"\s+", (givn or "").strip()) if t)
 
 
+#: **⛔ A NUMERAL IS NOT A NAME, IN ANY NOTATION.** Ruled 2026-09-13: *"why are you allowing any
+#: numerals at all? None of them are names."* And the scope, ruled in the same breath: *"This
+#: isn't even about what gets into labels. This is about what gets listed as a name and has an
+#: object made about it."* So refusing one here removes a `P735`/`P734` name ITEM and touches no
+#: label -- a regnal ordinal keeps its place in `mul` exactly as before, because that is decided
+#: in `derive-labels.py` and not here.
+#:
+#: **The Roman form is drawn from the corpus rather than from the alphabet**, which matters: a
+#: blanket *"every character is one of IVXLCDM"* refuses `di` (21,960), `Li` (1,047), `il`,
+#: `im`, `ll` and `Liv` -- real particles and a real Chinese surname. Counted over every `.ged`,
+#: the split is by case and by shape:
+#:
+#:     ordinals   I 33,450   II 31,776   III 15,436   IV 8,896   V 5,958   VI 3,543 ...
+#:     initials   D 4,736    M 2,562     C 1,647      L 1,344
+#:     words      di 21,960  i 3,498     il 1,208     Li 1,047  Liv 521
+#:
+#: `D`/`M`/`C`/`L` are single-letter INITIALS -- they never appear as ordinals in a name, and
+#: 500/1000/100/50 are not numbers anyone is styled with. So the pattern is the ordinal
+#: sequence itself, uppercase, built only from `I`/`V`/`X`, which admits `I` through `XXXIX` and
+#: nothing else.
+ROMAN_ORDINAL = re.compile(r"^X{0,3}(IX|IV|V?I{0,3})$")
+
+#: The CJK numerals, and `世` -- the generation marker that pairs with them in `2世` / `二世`.
+CJK_NUMERALS = set("〇一二三四五六七八九十百千万億零壱弐参拾世")
+
+
+def is_numeral(token: str) -> bool:
+    """True when the token is a number written in digits, Roman letters or CJK characters."""
+    bare = (token or "").strip("().,-[]{}#")
+    if not bare:
+        return False
+    if not any(ch.isalpha() for ch in bare):
+        return True                                  # digits and punctuation only
+    if ROMAN_ORDINAL.match(bare):
+        return True                                  # I .. XXXIX, uppercase only
+    # `2世` mixes a digit with the marker, so the digits are dropped before the test rather
+    # than requiring every character to be in the CJK set.
+    return all(ch in CJK_NUMERALS for ch in bare if not ch.isdigit())
+
+
 def name_shape(token):
     """`(bare_token, usage_or_None)` -- brackets stripped, particles and markers named.
 
@@ -1316,9 +1356,20 @@ def name_shape(token):
     #
     # `unknown` rather than a new usage: it is already terminal, every caller already skips
     # it, and the token genuinely names nobody. **Not a slash-specific rule** -- the test is
-    # that no character in the token is alphanumeric in ANY script, so a stray `-`, `.` or
-    # `--` is caught by the same line, and a Han or Cyrillic name is not.
-    if bare and not any(ch.isalnum() for ch in bare):
+    # that the token contains no LETTER in any script, so a stray `-`, `.` or `--` is caught by
+    # the same line, and a Han or Cyrillic name is not.
+    #
+    # **AND A BARE NUMBER IS NOT A NAME EITHER.** This read `isalnum` for one day, which let a
+    # digit-only token through as a real name -- and the test shipped with it asserted `3` was a
+    # name, so the defect was written down as intended behaviour. Emma, 2026-09-13, on the
+    # standing complaint this belongs to: *"We are still generating non-name items as names such
+    # as numbers"*, and `Special:Contributions/OBender12` is an editor correcting them by hand.
+    #
+    # The reasoning for allowing digits was that a REGNAL ORDINAL must not be stripped, and that
+    # is a claim about `II` and `IV` -- which are letters and still pass -- not about a bare `3`
+    # reaching `P734`. `isalpha` keeps every ordinal this repo actually emits, keeps CJK numerals
+    # like `三` (Han, and alphabetic to Python), and refuses the digit strings.
+    if is_numeral(bare):
         return bare, "unknown"
     # **⛔ ONE MARKER VOCABULARY, AND `scripts/labels` OWNS IT.** `CLAUDE.md` § *An obvious
     # unknown-word marker goes straight in* says a new marker is added to
