@@ -1454,3 +1454,15 @@ I think I figured some stuff out about the CBDB people who I am just straight up
 ## Alix descendants
 
 Grok says that https://www.geni.com/people/Alix-de-Lampron/6000000006101354745 still has barely any descendants. I consider this to be a later campaign thing, after our bulk stuff is done but can you actually confirm whether this is true or not? I think it made some errors, but another descendant blitz on her might be good.
+
+## Ancestor Exports
+
+At the end of the queue after all other things are done I want to do some specific ancestor export campaigns. 
+
+Ancestor exports from certain specific people to get their ancestors
+
+try this one https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064
+
+## Possible leads
+
+I think connecting me to Alix via German people such as this person https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064 might be a good way to go about it. Since I do see a clear line of descent for this person and it may be the case for many others too
