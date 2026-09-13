@@ -1418,3 +1418,9 @@ In our adding of geni ids we are not even doing the "subject named as" thing whi
 ## Unintentional edit wars
 
 I think I explained it decently but I want us to address how to solve this issue. It has been a consistent issue where our algorithm is relatively resistant to editors fixing its mistakes and this is drawing attention.
+
+## Questionable cjk-izations
+
+Fix these and establish general rules and corrections out of them as time goes on. This is the last item of the queue for a reason as this is a relatively long tail and not urgent
+
+https://www.wikidata.org/wiki/Q141444659
