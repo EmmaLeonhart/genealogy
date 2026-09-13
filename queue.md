@@ -1425,6 +1425,7 @@ https://www.geni.com/people/Scorpion-I/6000000209058145828 https://www.wikidata.
 https://www.geni.com/people/Iry-Hor-Pharaoh-of-Egypt/6000000009562419205 https://www.wikidata.org/wiki/Q314809
 
 
+https://www.geni.com/people/%EC%A1%B0%EC%84%A0-27%EB%8C%80-%EC%88%9C%EC%A2%85-%EC%B2%99/6000000028714712399 https://www.wikidata.org/wiki/Q334111
 
 ## Relational labels issue
 
