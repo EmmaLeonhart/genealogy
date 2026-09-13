@@ -39609,3 +39609,31 @@ optional.** The row has been backfilled and the check now returns 1.
 **And the check can only ever run after the climb**, because the subject is chosen by the walk.
 The order is: sweep → hit → climb → **read the subject** → check the log → only then let the
 export stand. Today it has been run before the climb, on the hit id, which tests the wrong thing.
+
+## 2026-09-13 — throttled, hibernated, resumed clean
+
+Emma: *"hold on we are getting throttled"*, then *"I thik we're good hibernated the computer for a
+bit"*.
+
+**State after the break, measured rather than assumed:** the Agnes Graham seed climb had **resumed
+by itself** — `running: true`, 19 results, 13 queued, one active tab, extension `1.7.43`. The page
+carries **no CAPTCHA, no rate-limit text, and the session is still logged in**.
+
+**The climb is left alone rather than restarted.** § *`seedwalk` REPLACES the queue* — a second
+dispatch throws the frontier away and re-walks from the root, which is how four dispatches once
+produced one climb's progress.
+
+### ⛔ WHAT WAS DRIVING THE LOAD, AND IT WAS THE SWEEPS
+
+`CLAUDE.md` § *GENI IS ACTIVELY HOSTILE* prices this: *"A census read costs a real page load"*,
+and *"Geni served an Incapsula CAPTCHA earlier today after roughly forty rapid loads"*.
+
+Today's sweeps have run at **30 to 40 picks each, back to back**, across Chinese 1 and 2, Adasi,
+Fihr, Jimmu, Hermenegildo, Nārāyaṇa, Genghis, Aztec, Inca, Dál Fiatach twice, ben Ovadya and
+no-name four times — **well over five hundred census page loads**, on top of the climbs, each of
+which is a page load per ancestor.
+
+**So the throttle is not a mystery and not Geni misbehaving.** The stagger inside one sweep is
+5 s; what has had no spacing at all is one sweep following another. **Sweeps get spaced from
+here**, and that is a change in how the work is paced rather than something to engineer around —
+solving it cheaply is what § *GENI IS ACTIVELY HOSTILE* says gets the account CAPTCHAd.
