@@ -390,7 +390,22 @@ each is treated.**
 sometimes the only surviving copy of a chain; the viewer-anchored equivalents can be re-fetched
 from `/paths` whenever.
 
-## HOW THEY ARE CAPTURED, AND IT IS NOT BY ASKING GENI AGAIN
+## ⛔ THE RENDERED-PAGE READ IS FOR EMMA'S NAMED PATHS ONLY, NOT FOR THE ISOLATE CAMPAIGN
+
+Ruled 2026-09-13, correcting how I first wrote this section: *"the rendered page method is only
+something that applies to the specific paths that I was looking at between different
+individuals."*
+
+**The isolate campaign keeps using the collector job**, unchanged — `{job:"individual"}` per
+`docs/collector-run-loop.md`, which requests the path, waits on the watcher, and writes the
+family scrape and the chain together. That is a campaign over 223,000 people where the agent
+navigates and the extension decides; reading the DOM by hand does not scale to it and was never
+what it was for.
+
+**The read below is for the handful of chains Emma names**, between two specific individuals she
+is looking at, where the page is already open and already showing the answer.
+
+## HOW THE NAMED ONES ARE CAPTURED, AND IT IS NOT BY ASKING GENI AGAIN
 
 ⛔ **READ THE RENDERED PAGE.** `GC.runPath` opens a tab and makes Geni **recompute** the
 relationship — a server-side search that takes minutes and can return `resolved_none` while the

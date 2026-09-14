@@ -1435,9 +1435,11 @@ https://www.geni.com/people/private/6000000028895625641 https://www.wikidata.org
 
 ## Forest exports
 
-These are people for forest exports on that I think are underserved but I am not considering part of the main wikidata connections thing
+These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
 
-https://www.geni.com/people/NN-Fuca/6000000227739821875
+Forest https://www.geni.com/people/NN-Fuca/6000000227739821875
+
+Descendants https://www.geni.com/people/NN/6000000227739695943
 
 ## Relational labels issue
 

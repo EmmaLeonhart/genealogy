@@ -41336,3 +41336,38 @@ the campaign.
 
 Two banked after her: `6000000227739018883` (d'Esneval) and `6000000227738961944` (Bettencourt),
 both descent-verified at zero.
+
+## 2026-09-13 — the descent check has the same blind spot in reverse
+
+`exports/abul-hamza-descendants/export-Descendants-6000000227738946872.ged`: **20 new of 5,000**,
+and `--descent` had cleared this subject at **0 held**. So the guard I built this afternoon, and
+which correctly predicted di Capua at 1,397 and Grimaldi at 1,491, is wrong here.
+
+**Measured rather than guessed at:**
+
+    subject 6000000031638493029    in the corpus, FAMS 0, children 0 -- CHILDLESS
+    Geni's descent below them      5,000 (the ball came back at the cap)
+    of that ball                   4,980 (99.6%) already in the corpus by other routes
+
+**`--descent` counts descendants reachable through OUR links.** Zero can mean *we do not have
+these people* or it can mean *we have them and not the structure that connects them to this
+person*. It cannot tell the two apart, and this is the second reading — the same shape as Shǎo
+Diǎn, who sits in nine corpus files childless while Geni reads 15,000 below him.
+
+**That is the seventh property to fail as a predictor of yield**, after descent size already
+held, the first two steps' returns, pool size, the first sweep's top reading, the census count,
+and the climb's decline count. The score for the day: it called di Capua and Grimaldi right,
+Corday right where `--list-saturated` was wrong, and Sayaluna wrong.
+
+**What it is still good for** is the direction it was built for: a subject reading **122,348
+held** is genuinely saturated and that is not ambiguous. A zero is the ambiguous end.
+
+## 2026-09-13 — the rendered-page read is for named paths only
+
+Corrected on instruction: *"the rendered page method is only something that applies to the
+specific paths that I was looking at between different individuals."* I had written it into
+`geni-paths/README.md` as though it were the general method. **The isolate campaign keeps the
+collector job** — `docs/collector-run-loop.md`, unchanged — because that is 223,000 people where
+the agent navigates and the extension decides, and hand-reading the DOM does not scale to it.
+
+`emmas-files/` stays as it is and still needs explaining; that is a long way out.
