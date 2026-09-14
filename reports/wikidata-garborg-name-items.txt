@@ -16,50 +16,6 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Johannesson -- patronymic, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Johannesson"
-LAST	Len	"Johannesson"
-#   set the mul label to "Johannesson"
-LAST	Lmul	"Johannesson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q2117521 Johannes
-LAST	P144	Q2117521
-#   P144 based on = Q10989273 Johan
-LAST	P144	Q10989273
-#   P144 based on = Q20730411 Johannis
-LAST	P144	Q20730411
-#   P144 based on = Q14436586 Jone
-LAST	P144	Q14436586
-#   Q141219060 Halvor Johannesson Hobberstad: P5056 patronym or matronym = the item just created
-Q141219060	P5056	LAST	S2600	"6000000005609265668"
-
-# Torsteinsdatter -- patronymic, 3 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Torsteinsdatter"
-LAST	Len	"Torsteinsdatter"
-#   set the mul label to "Torsteinsdatter"
-LAST	Lmul	"Torsteinsdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q10993987 Torstein
-LAST	P144	Q10993987
-#   P144 based on = Q19688780 Torsten
-LAST	P144	Q19688780
-#   P144 based on = Q20681922 Thorstein
-LAST	P144	Q20681922
-#   P144 based on = Q19688775 Thorsten
-LAST	P144	Q19688775
-#   Q141352405 Lisbet Torsteinsdatter Lussi: P5056 patronym or matronym = the item just created
-Q141352405	P5056	LAST	S2600	"6000000014277595137"
-
 # father -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
@@ -71,170 +27,224 @@ LAST	Lmul	"father"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
+#   Q141448533 Skjalg father of Hallvard: P734 family name = the item just created
+Q141448533	P734	LAST	S2600	"6000000177944541850"
 #   Q141312985 Ole father of Kari: P734 family name = the item just created
 Q141312985	P734	LAST	S2600	"6000000227315643833"
 #   Q141313516 Lars father of Ole: P734 family name = the item just created
 Q141313516	P734	LAST	S2600	"6000000227315747834"
 
-# Arvidsdotter -- patronymic, 2 bearer(s) in the batches
+# Fabrell -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Arvidsdotter"
-LAST	Len	"Arvidsdotter"
-#   set the mul label to "Arvidsdotter"
-LAST	Lmul	"Arvidsdotter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q717011 Arvid
-LAST	P144	Q717011
-#   P144 based on = Q114928755
-LAST	P144	Q114928755
-#   P144 based on = Q23465091 Arved
-LAST	P144	Q23465091
-#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P5056 patronym or matronym = the item just created, qualified P144 based on Q717179 Arvid Bernhard Horn af Ekebyholm
-Q109296398	P5056	LAST	P144	Q717179	S2600	"6000000006127496847"
-
-# Endresdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Endresdatter"
-LAST	Len	"Endresdatter"
-#   set the mul label to "Endresdatter"
-LAST	Lmul	"Endresdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q280861 Endre
-LAST	P144	Q280861
-#   Q141440519 Berit Endresdatter Kjosavik: P5056 patronym or matronym = the item just created
-Q141440519	P5056	LAST	S2600	"4592505"
-
-# Samuelsdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Samuelsdatter"
-LAST	Len	"Samuelsdatter"
-#   set the mul label to "Samuelsdatter"
-LAST	Lmul	"Samuelsdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q629347 Samuel
-LAST	P144	Q629347
-#   Q141447077 Anna Malene Samuelsdatter Tunheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223434 Samuel Aslakson Tunheim
-Q141447077	P5056	LAST	P144	Q141223434	S2600	"6000000039329314296"
-
-# Torbjørnsdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Torbjørnsdatter"
-LAST	Len	"Torbjørnsdatter"
-#   set the mul label to "Torbjørnsdatter"
-LAST	Lmul	"Torbjørnsdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q19828989 Torbjørn
-LAST	P144	Q19828989
-#   P144 based on = Q30129148 Thorbjørn
-LAST	P144	Q30129148
-#   Q141283100 Katrina Torbjørnsdatter Måge: P5056 patronym or matronym = the item just created, qualified P144 based on Q141337248 Torbjørn Ormssønn Måge
-Q141283100	P5056	LAST	P144	Q141337248	S2600	"6000000003095255594"
-
-# Trulsdatter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Trulsdatter"
-LAST	Len	"Trulsdatter"
-#   set the mul label to "Trulsdatter"
-LAST	Lmul	"Trulsdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q2761338 Truls
-LAST	P144	Q2761338
-#   P144 based on = Q117321326
-LAST	P144	Q117321326
-#   Q141337118 Magle Trulsdatter Soma: P5056 patronym or matronym = the item just created, qualified P144 based on Q141419959 Truls Endresen Sveinsvoll
-Q141337118	P5056	LAST	P144	Q141419959	S2600	"6000000006776176729"
-
-# (Sparre -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "(Sparre"
-LAST	Len	"(Sparre"
-#   set the mul label to "(Sparre"
-LAST	Lmul	"(Sparre"
+#   the item just created: set the en label to "Fabrell"
+LAST	Len	"Fabrell"
+#   set the mul label to "Fabrell"
+LAST	Lmul	"Fabrell"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
+#   Q141353697 Johan Johansson Fabrell: P734 family name = the item just created
+Q141353697	P734	LAST	S2600	"6000000007365844728"
+#   Q141353690 Johan Johansson Fabrell: P734 family name = the item just created
+Q141353690	P734	LAST	S2600	"6000000007365942034"
 
-# Anderson -- patronymic, 1 bearer(s) in the batches
+# Abrahamsdatter -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Anderson"
-LAST	Len	"Anderson"
-#   set the mul label to "Anderson"
-LAST	Lmul	"Anderson"
+#   the item just created: set the en label to "Abrahamsdatter"
+LAST	Len	"Abrahamsdatter"
+#   set the mul label to "Abrahamsdatter"
+LAST	Lmul	"Abrahamsdatter"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q8843357 Anders
-LAST	P144	Q8843357
-#   P144 based on = Q4926263 Andreas
-LAST	P144	Q4926263
+#   P144 based on = Q17997608 Abraham
+LAST	P144	Q17997608
+#   Q141268078 Maren Wangelsten Abrahamsdatter Felthuus: P5056 patronym or matronym = the item just created
+Q141268078	P5056	LAST	S2600	"6000000013476826763"
 
-# Arnesen -- patronymic, 1 bearer(s) in the batches
+# Arnbjørnson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Arnesen"
-LAST	Len	"Arnesen"
-#   set the mul label to "Arnesen"
-LAST	Lmul	"Arnesen"
+#   the item just created: set the en label to "Arnbjørnson"
+LAST	Len	"Arnbjørnson"
+#   set the mul label to "Arnbjørnson"
+LAST	Lmul	"Arnbjørnson"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P144 based on = Q645757 Arne
-LAST	P144	Q645757
-#   P144 based on = Q19868586 Arn
-LAST	P144	Q19868586
+#   P144 based on = Q16419750
+LAST	P144	Q16419750
+#   Q141444583 Gunnar Arnbjørnson Øye: P5056 patronym or matronym = the item just created, qualified P144 based on Q141442929 Arnbjørn Tjerandson Mjølhus
+Q141444583	P5056	LAST	P144	Q141442929	S2600	"6000000007980617555"
 
-# Aurivillia -- family, 1 bearer(s) in the batches
+# Buscherus -- family, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   set the en label to "Aurivillia"
-LAST	Len	"Aurivillia"
-#   set the mul label to "Aurivillia"
-LAST	Lmul	"Aurivillia"
+#   the item just created: set the en label to "Buscherus"
+LAST	Len	"Buscherus"
+#   set the mul label to "Buscherus"
+LAST	Lmul	"Buscherus"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
+#   Q141448537 Sven Buscherus: P734 family name = the item just created
+Q141448537	P734	LAST	S2600	"6000000223593998823"
 
-# 1334 more name items are needed and wait for a later
+# Halvorsdatter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Halvorsdatter"
+LAST	Len	"Halvorsdatter"
+#   set the mul label to "Halvorsdatter"
+LAST	Lmul	"Halvorsdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q16276226 Halvor
+LAST	P144	Q16276226
+#   P144 based on = Q30190541 Halvar
+LAST	P144	Q30190541
+#   Q141199937 Maren Halvorsdatter Øksnevad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219060 Halvor Johannesson Hobberstad
+Q141199937	P5056	LAST	P144	Q141219060	S2600	"6000000005607155237"
+
+# Johansen -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Johansen"
+LAST	Len	"Johansen"
+#   set the mul label to "Johansen"
+LAST	Lmul	"Johansen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q10989273 Johan
+LAST	P144	Q10989273
+#   P144 based on = Q2117521 Johannes
+LAST	P144	Q2117521
+#   P144 based on = Q4925477 John
+LAST	P144	Q4925477
+#   P144 based on = Q2246251 Jens
+LAST	P144	Q2246251
+#   P144 based on = Q11122389 Johann
+LAST	P144	Q11122389
+#   P144 based on = Q20730411 Johannis
+LAST	P144	Q20730411
+#   P144 based on = Q11978684 Joen
+LAST	P144	Q11978684
+#   Q141267962 Gabriel Johansen Obrestad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216387 Johannes Svensen Obrestad
+Q141267962	P5056	LAST	P144	Q141216387	S2600	"6000000005606920993"
+
+# Karlsdotter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Karlsdotter"
+LAST	Len	"Karlsdotter"
+#   set the mul label to "Karlsdotter"
+LAST	Lmul	"Karlsdotter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q15731830
+LAST	P144	Q15731830
+#   P144 based on = Q2529610 Carl
+LAST	P144	Q2529610
+#   P144 based on = Q1044619 Carolus
+LAST	P144	Q1044619
+#   P144 based on = Q1719508 Kaarlo
+LAST	P144	Q1719508
+#   P144 based on = Q2958359 Charles
+LAST	P144	Q2958359
+#   P144 based on = Q4259083 Kaarle
+LAST	P144	Q4259083
+#   Q141353378 Gitlaug Karlsdotter Skorve: P5056 patronym or matronym = the item just created
+Q141353378	P5056	LAST	S2600	"6000000017616371368"
+
+# Larsdtr. -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Larsdtr."
+LAST	Len	"Larsdtr."
+#   set the mul label to "Larsdtr."
+LAST	Lmul	"Larsdtr."
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141225175 Malene Larsdtr. Alvseike: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216627 Lars Nilsen Raunes
+Q141225175	P5056	LAST	P144	Q141216627	S2600	"6000000030085852982"
+
+# Lauritsdatter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Lauritsdatter"
+LAST	Len	"Lauritsdatter"
+#   set the mul label to "Lauritsdatter"
+LAST	Lmul	"Lauritsdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q21061253 Laurits
+LAST	P144	Q21061253
+#   P144 based on = Q13695998 Lauritz
+LAST	P144	Q13695998
+#   P144 based on = Q107723833 Laurids
+LAST	P144	Q107723833
+#   Q141216400 Margreta Lauritsdatter Øvre Bjørheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216489 Laurits Leivson Bjørheim
+Q141216400	P5056	LAST	P144	Q141216489	S2600	"6000000016246443406"
+
+# Litlaland -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Litlaland"
+LAST	Len	"Litlaland"
+#   set the mul label to "Litlaland"
+LAST	Lmul	"Litlaland"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141430137 Tørres Gabrielson Joa: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
+Q141430137	P734	LAST	P3831	Q2507958	S2600	"6000000003491944378"
+
+# Silverlood -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Silverlood"
+LAST	Len	"Silverlood"
+#   set the mul label to "Silverlood"
+LAST	Lmul	"Silverlood"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141429941 Gustav Silverlood: P734 family name = the item just created
+Q141429941	P734	LAST	S2600	"6000000011468868446"
+
+# 1322 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Bandeberg (family), 1 bearer(s)
-#   Borgare (family), 1 bearer(s)
-#   Brynjulfsdatter (patronymic), 1 bearer(s)
-#   Buscherus (family), 1 bearer(s)
-#   Børgesd (patronymic), 1 bearer(s)
-#   Christensen (patronymic), 1 bearer(s)
-#   Fanuelsdtr. (patronymic), 1 bearer(s)
-#   Gudmundsen (patronymic), 1 bearer(s)
-#   Guthræa (family), 1 bearer(s)
-#   Gökman (family), 1 bearer(s)
-#   Hallvard (family), 1 bearer(s)
-#   Jørgenson (patronymic), 1 bearer(s)
-#   ... and 1322 more
+#   Ølver (given), 1 bearer(s)
+#   und (family), 8 bearer(s)
+#   Talgje (family), 7 bearer(s)
+#   . (family), 6 bearer(s)
+#   Count (given), 6 bearer(s)
+#   - (family), 4 bearer(s)
+#   Borsok (family), 4 bearer(s)
+#   Châlon (family), 4 bearer(s)
+#   Graf (given), 4 bearer(s)
+#   Komnene (family), 4 bearer(s)
+#   Olavsdatter (patronymic), 4 bearer(s)
+#   Olavsen (patronymic), 4 bearer(s)
+#   ... and 1310 more
 
 
 # ======================================================================
@@ -258,15 +268,19 @@ Q98139923	Den	"family name"
 # where the two items share a P144 source, a stem and a gendered
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
-#   Q141403300: P460 said to be the same as = Q141446952
-Q141403300	P460	Q141446952
-#   Q141446952: P460 said to be the same as = Q141403300
-Q141446952	P460	Q141403300
-#   Q141419268: P460 said to be the same as = Q141446952
-Q141419268	P460	Q141446952
-#   Q141446952: P460 said to be the same as = Q141419268
-Q141446952	P460	Q141419268
-#   Q141443241: P460 said to be the same as = Q141446967
-Q141443241	P460	Q141446967
-#   Q141446967: P460 said to be the same as = Q141443241
-Q141446967	P460	Q141443241
+#   Q141318548: P460 said to be the same as = Q141448438
+Q141318548	P460	Q141448438
+#   Q141448438: P460 said to be the same as = Q141318548
+Q141448438	P460	Q141318548
+#   Q141352777: P460 said to be the same as = Q141448434
+Q141352777	P460	Q141448434
+#   Q141448434: P460 said to be the same as = Q141352777
+Q141448434	P460	Q141352777
+#   Q141381264: P460 said to be the same as = Q141448430
+Q141381264	P460	Q141448430
+#   Q141448430: P460 said to be the same as = Q141381264
+Q141448430	P460	Q141381264
+#   Q141442901: P460 said to be the same as = Q141448430
+Q141442901	P460	Q141448430
+#   Q141448430: P460 said to be the same as = Q141442901
+Q141448430	P460	Q141442901

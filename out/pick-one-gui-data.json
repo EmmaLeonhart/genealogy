@@ -1537,6 +1537,257 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|6000000004051080234|M|theirs",
+  "side": "theirs",
+  "slot": "sibling",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Johann Christoph Friedrich Bach",
+   "id": "6000000215260020035",
+   "kind": "geni",
+   "sex": "M",
+   "life": [
+    "1732",
+    "1795"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Johann Sebastian Bach",
+      "Anna Magdalena Bach"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Christiana Sophia Henrietta Bach",
+      "Gottfried Heinrich Henrich Bach",
+      "Christian Gottlieb Bach",
+      "Elisabeth Juliana Fredrica Altnikol",
+      "Ernestus Andreas Bach",
+      "Regina Johanna Bach",
+      "Christiana Benedicta Louise Bach",
+      "Christiana Dorothea Bach",
+      "Johann Cristoph Friedrich Bach",
+      "Johann August Abraham Bach",
+      "Johann Christian Bach",
+      "Johanna Carolina Bach",
+      "Regina Susanna Bach"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Johann Christoph Bach",
+    "id": "Q11685154",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Johann Christoph Bach II"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Catharina Dorothea Bach",
+       "Elisabeth Juliana Friderica Bach",
+       "Maria Sophia Bach",
+       "Regina Susanna Bach",
+       "Johanna Carolina Bach",
+       "Christiana Dorothea Bach",
+       "Christiana Benedicta Louisa",
+       "Regina Johanna Bach",
+       "Johann Christoph Friedrich Bach",
+       "Johann Christian Bach",
+       "Wilhelm Friedemann Bach",
+       "Leopold Augustus Bach",
+       "Christiana Sophia Enrietta Bach",
+       "Johann August Abraham Bach",
+       "Ernestus Andreas Bach",
+       "Christian Gottlieb Bach",
+       "Johann Gottfried Bernhard Bach",
+       "Gottfried Heinrich Bach",
+       "Carl Philipp Emanuel Bach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000215260020035",
+    "qid": "Q11685154",
+    "our": "Johann Christoph Friedrich Bach",
+    "cand": "Johann Christoph Bach"
+   },
+   {
+    "name": "Leopold Augustus Bach",
+    "id": "Q21029016",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Johann Sebastian Bach",
+       "Maria Barbara Bach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Catharina Dorothea Bach",
+       "Elisabeth Juliana Friderica Bach",
+       "Maria Sophia Bach",
+       "Regina Susanna Bach",
+       "Johanna Carolina Bach",
+       "Christiana Dorothea Bach",
+       "Christiana Benedicta Louisa",
+       "Regina Johanna Bach",
+       "Johann Christoph Friedrich Bach",
+       "Johann Christian Bach",
+       "Wilhelm Friedemann Bach",
+       "Johann Christoph Bach",
+       "Christiana Sophia Enrietta Bach",
+       "Johann August Abraham Bach",
+       "Ernestus Andreas Bach",
+       "Christian Gottlieb Bach",
+       "Johann Gottfried Bernhard Bach",
+       "Gottfried Heinrich Bach",
+       "Carl Philipp Emanuel Bach",
+       "Johann Christoph Bach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000215260020035",
+    "qid": "Q21029016",
+    "our": "Johann Christoph Friedrich Bach",
+    "cand": "Leopold Augustus Bach"
+   },
+   {
+    "name": "Johann Christoph Bach",
+    "id": "Q30075271",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Johann Sebastian Bach",
+       "Maria Barbara Bach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Catharina Dorothea Bach",
+       "Wilhelm Friedemann Bach",
+       "Maria Sophia Bach",
+       "Carl Philipp Emanuel Bach",
+       "Johann Gottfried Bernhard Bach",
+       "Leopold Augustus Bach",
+       "Johann Christoph Friedrich Bach",
+       "Johann Christian Bach",
+       "Gottfried Heinrich Bach",
+       "Elisabeth Juliana Friderica Bach",
+       "Christiana Sophia Enrietta Bach",
+       "Regina Susanna Bach",
+       "Johanna Carolina Bach",
+       "Christiana Dorothea Bach",
+       "Christiana Benedicta Louisa",
+       "Regina Johanna Bach",
+       "Johann August Abraham Bach",
+       "Ernestus Andreas Bach",
+       "Christian Gottlieb Bach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000215260020035",
+    "qid": "Q30075271",
+    "our": "Johann Christoph Friedrich Bach",
+    "cand": "Johann Christoph Bach"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Gottfried Heinrich Henrich Bach",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "abraham",
+   "andreas",
+   "august",
+   "bach",
+   "benedicta",
+   "carolina",
+   "christian",
+   "christiana",
+   "dorothea",
+   "elisabeth",
+   "ernestus",
+   "friedrich",
+   "gottfried",
+   "gottlieb",
+   "heinrich",
+   "johann",
+   "johanna",
+   "juliana",
+   "regina",
+   "sebastian",
+   "sophia",
+   "susanna"
+  ],
+  "our": "Johann Christoph Friedrich Bach",
+  "cand": "Johann Christoph Bach"
+ },
+ {
+  "kind": "pick",
   "id": "sibling|6000000001069437500|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -21285,7 +21536,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Rosalia Filomarino"
+      ]
      ],
      [
       "Children",
@@ -79929,6 +80182,426 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000015805151512|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Sophie Luise Gräfin zu Windisch-Graetz",
+   "id": "Q61813768",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Prince Weriand, 1st Prince of Windisch-Graetz",
+      "Alfred I, Prince of Windisch-Grätz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Charles Thomas, Prince of Löwenstein-Wertheim-Rosenberg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Constantine, Hereditary Prince of Löwenstein-Wertheim-Rosenberg",
+      "Princess Adelheid zu Löwenstein-Wertheim-Rosenberg",
+      "Princess Maria of Löwenstein-Wertheim-Rosenberg",
+      "Princess Sophie Maria Theresia of Löwenstein-Wertheim-Rosenberg",
+      "Leopoldine zu Löwenstein-Wertheim"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "id": "6000000014721717929",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1784",
+     "1848"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Constantin zu Löwenstein-Wertheim-Rosenberg",
+       "Adelheid Eulalia Ludowika Maria von Löwenstein-Wertheim-Rosenberg",
+       "Sophia Maria Theresia Prinzessin zu Löwenstein-Wertheim-Rosenberg",
+       "Maria Kreszentia Oktavia von Löwenstein-Wertheim-Rosenberg Erbprinzessin zu Isenburg und Büdingen in Birstein",
+       "Sophie zu Löwenstein-Wertheim-Rosenberg"
+      ]
+     ]
+    ],
+    "geni": "6000000014721717929",
+    "qid": "Q61813768",
+    "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   },
+   {
+    "name": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "id": "6000000025819075944",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1786",
+     "1812"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819075944",
+    "qid": "Q61813768",
+    "our": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   },
+   {
+    "name": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
+    "id": "6000000025771392683",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1774",
+     "1841"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Ernst Engelbert Louis Marie Ludwig Maria Franz d'Arenberg"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025771392683",
+    "qid": "Q61813768",
+    "our": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "adelheid",
+   "alfred",
+   "darenberg",
+   "joseph",
+   "leopoldine",
+   "lowensteinwertheimrosenberg",
+   "maria",
+   "sophie",
+   "theresia",
+   "weriand",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+  "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000015805151512|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Sophie Luise Gräfin zu Windisch-Graetz",
+   "id": "Q61813768",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Prince Weriand, 1st Prince of Windisch-Graetz",
+      "Alfred I, Prince of Windisch-Grätz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Charles Thomas, Prince of Löwenstein-Wertheim-Rosenberg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Constantine, Hereditary Prince of Löwenstein-Wertheim-Rosenberg",
+      "Princess Adelheid zu Löwenstein-Wertheim-Rosenberg",
+      "Princess Maria of Löwenstein-Wertheim-Rosenberg",
+      "Princess Sophie Maria Theresia of Löwenstein-Wertheim-Rosenberg",
+      "Leopoldine zu Löwenstein-Wertheim"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "id": "6000000014721717929",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1784",
+     "1848"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Constantin zu Löwenstein-Wertheim-Rosenberg",
+       "Adelheid Eulalia Ludowika Maria von Löwenstein-Wertheim-Rosenberg",
+       "Sophia Maria Theresia Prinzessin zu Löwenstein-Wertheim-Rosenberg",
+       "Maria Kreszentia Oktavia von Löwenstein-Wertheim-Rosenberg Erbprinzessin zu Isenburg und Büdingen in Birstein",
+       "Sophie zu Löwenstein-Wertheim-Rosenberg"
+      ]
+     ]
+    ],
+    "geni": "6000000014721717929",
+    "qid": "Q61813768",
+    "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   },
+   {
+    "name": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "id": "6000000025819075944",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1786",
+     "1812"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819075944",
+    "qid": "Q61813768",
+    "our": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   },
+   {
+    "name": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
+    "id": "6000000025771392683",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1774",
+     "1841"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Ernst Engelbert Louis Marie Ludwig Maria Franz d'Arenberg"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025771392683",
+    "qid": "Q61813768",
+    "our": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "adelheid",
+   "alfred",
+   "darenberg",
+   "joseph",
+   "leopoldine",
+   "lowensteinwertheimrosenberg",
+   "maria",
+   "sophie",
+   "theresia",
+   "weriand",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+  "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+ },
+ {
+  "kind": "pick",
   "id": "child|323399779060006439|F|ours",
   "side": "ours",
   "slot": "child",
@@ -101301,6 +101974,436 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000016049697872|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Amalie, Gräfin von Thun und Hohenstein",
+   "id": "Q136221848",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Innocenz von Thun-Hohenstein-Castell Fondo",
+      "Maria Anna Luise, Gräfin Fugger von Nordendorf"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     [
+      "Ernst, Graf Khuen von Belasi, Graf zu Lichtenberg"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Maria Anna Emanuela",
+    "id": "6000000017112993100",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1794",
+     "1821"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Aloysia Maximiliana",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Leopold Von Arco Auf Valley"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Johann Baptist von Arco auf Valley"
+      ]
+     ]
+    ],
+    "geni": "6000000017112993100",
+    "qid": "Q136221848",
+    "our": "Maria Anna Emanuela",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Aloysia Maximiliana",
+    "id": "6000000017121883129",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1797",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000017121883129",
+    "qid": "Q136221848",
+    "our": "Aloysia Maximiliana",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Josefine",
+    "id": "6000000106978194821",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1798",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Aloysia Maximiliana",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000106978194821",
+    "qid": "Q136221848",
+    "our": "Josefine",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Sophia Marie Gräfin von Arco",
+    "id": "6000000106978281854",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1802",
+     "1861"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Aloysia Maximiliana",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Leopold Von Arco Auf Valley"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000106978281854",
+    "qid": "Q136221848",
+    "our": "Sophia Marie Gräfin von Arco",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+    "id": "6000000017121803625",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1804",
+     "1866"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Aloysia Maximiliana",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Karl Anton Khuen von Belasi zu Lichtenberg"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000017121803625",
+    "qid": "Q136221848",
+    "our": "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Karoline",
+    "id": "6000000017121642205",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1806",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Aloysia Maximiliana",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000017121642205",
+    "qid": "Q136221848",
+    "our": "Karoline",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Isabella",
+    "id": "6000000106983542833",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1812",
+     "1882"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Aloysia Maximiliana",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Johann"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000106983542833",
+    "qid": "Q136221848",
+    "our": "Isabella",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   },
+   {
+    "name": "Johann",
+    "id": "6000000106983259883",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1814",
+     "1817"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Maria Anna Emanuela",
+       "Aloysia Maximiliana",
+       "Josefine",
+       "Romedius Emanuel von Thun-Hohenstein-Castell Fondo",
+       "Sophia Marie Gräfin von Arco",
+       "Amalia Maria Maximiliana von Thun zu Hohenstein Castel Fondo",
+       "Karoline",
+       "Guidobald Maria Thun und Hohenstein",
+       "Georg Graf von Thun und Hohenstein",
+       "Isabella"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000106983259883",
+    "qid": "Q136221848",
+    "our": "Johann",
+    "cand": "Amalie, Gräfin von Thun und Hohenstein"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Joseph Innocenz Graf von Thun-Hohenstein-Castell Fondo",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "anna",
+   "belasi",
+   "fondo",
+   "graf",
+   "grafin",
+   "innocenz",
+   "joseph",
+   "khuen",
+   "lichtenberg",
+   "maria",
+   "thunhohensteincastell",
+   "von"
+  ],
+  "our": "Maria Anna Emanuela",
+  "cand": "Amalie, Gräfin von Thun und Hohenstein"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000000728299766|M|ours",
   "side": "ours",
   "slot": "child",
@@ -106693,6 +107796,318 @@
   ],
   "our": "David Home",
   "cand": "Sir David Home, 5th of Wedderburn"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000007378071757|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Sophie Luise Gräfin zu Windisch-Graetz",
+   "id": "Q61813768",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Prince Weriand, 1st Prince of Windisch-Graetz",
+      "Alfred I, Prince of Windisch-Grätz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Charles Thomas, Prince of Löwenstein-Wertheim-Rosenberg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Constantine, Hereditary Prince of Löwenstein-Wertheim-Rosenberg",
+      "Princess Adelheid zu Löwenstein-Wertheim-Rosenberg",
+      "Princess Maria of Löwenstein-Wertheim-Rosenberg",
+      "Princess Sophie Maria Theresia of Löwenstein-Wertheim-Rosenberg",
+      "Leopoldine zu Löwenstein-Wertheim"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "id": "6000000014721717929",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1784",
+     "1848"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Constantin zu Löwenstein-Wertheim-Rosenberg",
+       "Adelheid Eulalia Ludowika Maria von Löwenstein-Wertheim-Rosenberg",
+       "Sophia Maria Theresia Prinzessin zu Löwenstein-Wertheim-Rosenberg",
+       "Maria Kreszentia Oktavia von Löwenstein-Wertheim-Rosenberg Erbprinzessin zu Isenburg und Büdingen in Birstein",
+       "Sophie zu Löwenstein-Wertheim-Rosenberg"
+      ]
+     ]
+    ],
+    "geni": "6000000014721717929",
+    "qid": "Q61813768",
+    "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   },
+   {
+    "name": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "id": "6000000025819075944",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1786",
+     "1812"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819075944",
+    "qid": "Q61813768",
+    "our": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "adelheid",
+   "alfred",
+   "joseph",
+   "leopoldine",
+   "lowensteinwertheimrosenberg",
+   "maria",
+   "sophie",
+   "theresia",
+   "weriand",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+  "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000007378071757|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Sophie Luise Gräfin zu Windisch-Graetz",
+   "id": "Q61813768",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Prince Weriand, 1st Prince of Windisch-Graetz",
+      "Alfred I, Prince of Windisch-Grätz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Charles Thomas, Prince of Löwenstein-Wertheim-Rosenberg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Constantine, Hereditary Prince of Löwenstein-Wertheim-Rosenberg",
+      "Princess Adelheid zu Löwenstein-Wertheim-Rosenberg",
+      "Princess Maria of Löwenstein-Wertheim-Rosenberg",
+      "Princess Sophie Maria Theresia of Löwenstein-Wertheim-Rosenberg",
+      "Leopoldine zu Löwenstein-Wertheim"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "id": "6000000014721717929",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1784",
+     "1848"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Constantin zu Löwenstein-Wertheim-Rosenberg",
+       "Adelheid Eulalia Ludowika Maria von Löwenstein-Wertheim-Rosenberg",
+       "Sophia Maria Theresia Prinzessin zu Löwenstein-Wertheim-Rosenberg",
+       "Maria Kreszentia Oktavia von Löwenstein-Wertheim-Rosenberg Erbprinzessin zu Isenburg und Büdingen in Birstein",
+       "Sophie zu Löwenstein-Wertheim-Rosenberg"
+      ]
+     ]
+    ],
+    "geni": "6000000014721717929",
+    "qid": "Q61813768",
+    "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   },
+   {
+    "name": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "id": "6000000025819075944",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1786",
+     "1812"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819075944",
+    "qid": "Q61813768",
+    "our": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "adelheid",
+   "alfred",
+   "joseph",
+   "leopoldine",
+   "lowensteinwertheimrosenberg",
+   "maria",
+   "sophie",
+   "theresia",
+   "weriand",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+  "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
  },
  {
   "kind": "pick",
@@ -141402,6 +142817,305 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000026451823595|M|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Leopold von Waldburg-Wurzach",
+   "id": "Q59326221",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Eberhard Fürst von Waldburg zu Zeil-Wurzach",
+      "Maria Katharina von Waldburg-Wurzach"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     [
+      "Maria Carl Eberhard Fidel Alois Stephan Martin von Waldburg zu Zeil-Wurzach",
+      "Maria, Gräfin von Waldburg-Zeil-Wurzach"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+    "id": "6000000028429551052",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1769",
+     "1800"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Maria Walpurga Katharina von Waldburg-Zeil-Wurzach",
+       "Leopold Maria Carl Eberhard Fidel Alois Stephan Martin",
+       "Maximilian Joseph Leopold Carl",
+       "Maria Josepha von Waldburg-Zeil-Wurzach",
+       "Carl Fidel Franz Maria von Waldburg-Zeil-Wurzach",
+       "Maria Theresia Ludowica von Waldburg"
+      ]
+     ]
+    ],
+    "geni": "6000000028429551052",
+    "qid": "Q59326221",
+    "our": "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+    "cand": "Leopold von Waldburg-Wurzach"
+   },
+   {
+    "name": "Karl von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513268830",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1772",
+     "1840"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513268830",
+    "qid": "Q59326221",
+    "our": "Karl von Waldburg-Zeil-Wurzach",
+    "cand": "Leopold von Waldburg-Wurzach"
+   },
+   {
+    "name": "Joseph von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513178883",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1773",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513178883",
+    "qid": "Q59326221",
+    "our": "Joseph von Waldburg-Zeil-Wurzach",
+    "cand": "Leopold von Waldburg-Wurzach"
+   },
+   {
+    "name": "Friedrich von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513192904",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1775",
+     "1776"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513192904",
+    "qid": "Q59326221",
+    "our": "Friedrich von Waldburg-Zeil-Wurzach",
+    "cand": "Leopold von Waldburg-Wurzach"
+   },
+   {
+    "name": "Eberhard von Waldburg-Zeil-Wurzach",
+    "id": "6000000073602455270",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1778",
+     "1814"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000073602455270",
+    "qid": "Q59326221",
+    "our": "Eberhard von Waldburg-Zeil-Wurzach",
+    "cand": "Leopold von Waldburg-Wurzach"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Maria Katharina von Waldburg",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "alois",
+   "carl",
+   "eberhard",
+   "fidel",
+   "katharina",
+   "maria",
+   "martin",
+   "stephan",
+   "von",
+   "waldburg",
+   "waldburgzeilwurzach"
+  ],
+  "our": "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+  "cand": "Leopold von Waldburg-Wurzach"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000000728021079|F|ours",
   "side": "ours",
   "slot": "child",
@@ -141758,6 +143472,396 @@
   ],
   "our": "Dorthea von Taxis",
   "cand": "Anna Franziska, Prinzessin von Thurn und Taxis"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000026451823595|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach",
+   "id": "Q116775287",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Eberhard Fürst von Waldburg zu Zeil-Wurzach",
+      "Maria Katharina von Waldburg-Wurzach"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     [
+      "Anton Anselm Fugger von Babenhausen",
+      "Gräfin Maria Josepha Fugger von Babenhausen"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Elisabeth von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513246847",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1768",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513246847",
+    "qid": "Q116775287",
+    "our": "Elisabeth von Waldburg-Zeil-Wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   },
+   {
+    "name": "Theresia Josepha von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513051032",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1770",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513051032",
+    "qid": "Q116775287",
+    "our": "Theresia Josepha von Waldburg-Zeil-Wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   },
+   {
+    "name": "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+    "id": "6000000016328730878",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1774",
+     "1814"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Anton Anselm Fugger Von Babenhausen",
+       "Maria Josepha Gräfin Fugger von Babenhausen"
+      ]
+     ]
+    ],
+    "geni": "6000000016328730878",
+    "qid": "Q116775287",
+    "our": "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   },
+   {
+    "name": "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+    "id": "6000000030045755852",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1776",
+     "1836"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Ludwig Anton Reichsgraf Schenk von Castell",
+       "Philippine Krichtafovitch"
+      ]
+     ]
+    ],
+    "geni": "6000000030045755852",
+    "qid": "Q116775287",
+    "our": "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   },
+   {
+    "name": "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+    "id": "6000000225512844072",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1781",
+     "1842"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225512844072",
+    "qid": "Q116775287",
+    "our": "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   },
+   {
+    "name": "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513226839",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1782",
+     "1818"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513226839",
+    "qid": "Q116775287",
+    "our": "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   },
+   {
+    "name": "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach",
+    "id": "6000000225513040972",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1785",
+     "1806"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Maria Katharina von Waldburg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Elisabeth von Waldburg-Zeil-Wurzach",
+       "Leopold Erbgraf von Waldburg-Zeil-Wurzach",
+       "Theresia Josepha von Waldburg-Zeil-Wurzach",
+       "Karl von Waldburg-Zeil-Wurzach",
+       "Joseph von Waldburg-Zeil-Wurzach",
+       "Maria Antonia VON WALDBURG-ZEIL-wurzach",
+       "Friedrich von Waldburg-Zeil-Wurzach",
+       "Maximiliana Johanna von Waldburg-Zeil-Wurzach",
+       "Eberhard von Waldburg-Zeil-Wurzach",
+       "Maria Kunigunde Anna von Waldburg-Zeil-Wurzach",
+       "Maria Johanna Nepomucena von Waldburg-Zeil-Wurzach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000225513040972",
+    "qid": "Q116775287",
+    "our": "Maria Walpurga Crescentia von Waldburg-Zeil-Wurzach",
+    "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Maria Katharina von Waldburg",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "anselm",
+   "anton",
+   "babenhausen",
+   "eberhard",
+   "fugger",
+   "grafin",
+   "josepha",
+   "katharina",
+   "maria",
+   "von",
+   "waldburg"
+  ],
+  "our": "Elisabeth von Waldburg-Zeil-Wurzach",
+  "cand": "Maria Antonia, Gräfin von Waldburg zu Zeil-Wurzach"
  },
  {
   "kind": "pick",
@@ -153184,414 +155288,6 @@
  },
  {
   "kind": "pick",
-  "id": "child|6000000015805151512|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Sophie Luise Gräfin zu Windisch-Graetz",
-   "id": "Q61813768",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Joseph Nicholas of Windisch-Graetz",
-      "Princesse et Duchesse Leopoldine d'Arenberg"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Prince Weriand, 1st Prince of Windisch-Graetz",
-      "Alfred I, Prince of Windisch-Grätz"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Charles Thomas, Prince of Löwenstein-Wertheim-Rosenberg"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Constantine, Hereditary Prince of Löwenstein-Wertheim-Rosenberg",
-      "Princess Adelheid zu Löwenstein-Wertheim-Rosenberg",
-      "Princess Maria of Löwenstein-Wertheim-Rosenberg",
-      "Princess Sophie Maria Theresia of Löwenstein-Wertheim-Rosenberg",
-      "Leopoldine zu Löwenstein-Wertheim"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-    "id": "6000000014721717929",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1784",
-     "1848"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Constantin zu Löwenstein-Wertheim-Rosenberg",
-       "Adelheid Eulalia Ludowika Maria von Löwenstein-Wertheim-Rosenberg",
-       "Sophia Maria Theresia Prinzessin zu Löwenstein-Wertheim-Rosenberg",
-       "Maria Kreszentia Oktavia von Löwenstein-Wertheim-Rosenberg Erbprinzessin zu Isenburg und Büdingen in Birstein",
-       "Sophie zu Löwenstein-Wertheim-Rosenberg"
-      ]
-     ]
-    ],
-    "geni": "6000000014721717929",
-    "qid": "Q61813768",
-    "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
-   },
-   {
-    "name": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-    "id": "6000000025819075944",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1786",
-     "1812"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025819075944",
-    "qid": "Q61813768",
-    "our": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
-   },
-   {
-    "name": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
-    "id": "6000000025771392683",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1774",
-     "1841"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025771392683",
-    "qid": "Q61813768",
-    "our": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
-    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "adelheid",
-   "alfred",
-   "joseph",
-   "lowensteinwertheimrosenberg",
-   "maria",
-   "sophie",
-   "theresia",
-   "weriand",
-   "windischgraetz",
-   "windischgratz"
-  ],
-  "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-  "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000015805151512|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Sophie Luise Gräfin zu Windisch-Graetz",
-   "id": "Q61813768",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Joseph Nicholas of Windisch-Graetz",
-      "Princesse et Duchesse Leopoldine d'Arenberg"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Prince Weriand, 1st Prince of Windisch-Graetz",
-      "Alfred I, Prince of Windisch-Grätz"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Charles Thomas, Prince of Löwenstein-Wertheim-Rosenberg"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Constantine, Hereditary Prince of Löwenstein-Wertheim-Rosenberg",
-      "Princess Adelheid zu Löwenstein-Wertheim-Rosenberg",
-      "Princess Maria of Löwenstein-Wertheim-Rosenberg",
-      "Princess Sophie Maria Theresia of Löwenstein-Wertheim-Rosenberg",
-      "Leopoldine zu Löwenstein-Wertheim"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-    "id": "6000000014721717929",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1784",
-     "1848"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Constantin zu Löwenstein-Wertheim-Rosenberg",
-       "Adelheid Eulalia Ludowika Maria von Löwenstein-Wertheim-Rosenberg",
-       "Sophia Maria Theresia Prinzessin zu Löwenstein-Wertheim-Rosenberg",
-       "Maria Kreszentia Oktavia von Löwenstein-Wertheim-Rosenberg Erbprinzessin zu Isenburg und Büdingen in Birstein",
-       "Sophie zu Löwenstein-Wertheim-Rosenberg"
-      ]
-     ]
-    ],
-    "geni": "6000000014721717929",
-    "qid": "Q61813768",
-    "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
-   },
-   {
-    "name": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-    "id": "6000000025819075944",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1786",
-     "1812"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025819075944",
-    "qid": "Q61813768",
-    "our": "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
-   },
-   {
-    "name": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
-    "id": "6000000025771392683",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1774",
-     "1841"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025771392683",
-    "qid": "Q61813768",
-    "our": "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg",
-    "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "adelheid",
-   "alfred",
-   "joseph",
-   "lowensteinwertheimrosenberg",
-   "maria",
-   "sophie",
-   "theresia",
-   "weriand",
-   "windischgraetz",
-   "windischgratz"
-  ],
-  "our": "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-  "cand": "Sophie Luise Gräfin zu Windisch-Graetz"
- },
- {
-  "kind": "pick",
   "id": "sibling|362185222750011958|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -155430,6 +157126,318 @@
   ],
   "our": "William Ruthven",
   "cand": "Patrick Ruthven"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000007378071757|M|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Prince Weriand, 1st Prince of Windisch-Graetz",
+   "id": "Q97460482",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Alfred I, Prince of Windisch-Grätz",
+      "Sophie Luise Gräfin zu Windisch-Graetz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Marie Eleonore Windisch-Graetz"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Prince Karl, Hereditary Prince of Windisch-Graetz",
+      "Prince Hugo, 2nd Prince of Windisch-Graetz",
+      "Prince Ernest of Windisch-Grätz",
+      "Q134769573"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ludwig Robert zu Windisch-Graetz",
+    "id": "6000000025819076943",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1782",
+     "1783"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819076943",
+    "qid": "Q97460482",
+    "our": "Ludwig Robert zu Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Weriand Windisch-Graetz",
+    "id": "6000000016229119169",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1790",
+     "1867"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Marie Eléonore Windisch-Graetz"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Karl Vincenz Weriand Joseph Gabriel zu Windisch-Graetz",
+       "Hugo Alfred Adolf zu Windisch-Grätz",
+       "Gabriela Schönburg-Hinterglauchau",
+       "Ernst Windisch-Graetz",
+       "Robert Mecklenburg-Schwerin"
+      ]
+     ]
+    ],
+    "geni": "6000000016229119169",
+    "qid": "Q97460482",
+    "our": "Weriand Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "alfred",
+   "eleonore",
+   "hugo",
+   "joseph",
+   "karl",
+   "leopoldine",
+   "marie",
+   "sophie",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Ludwig Robert zu Windisch-Graetz",
+  "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000007378071757|M|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Prince Weriand, 1st Prince of Windisch-Graetz",
+   "id": "Q97460482",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Alfred I, Prince of Windisch-Grätz",
+      "Sophie Luise Gräfin zu Windisch-Graetz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Marie Eleonore Windisch-Graetz"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Prince Karl, Hereditary Prince of Windisch-Graetz",
+      "Prince Hugo, 2nd Prince of Windisch-Graetz",
+      "Prince Ernest of Windisch-Grätz",
+      "Q134769573"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ludwig Robert zu Windisch-Graetz",
+    "id": "6000000025819076943",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1782",
+     "1783"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819076943",
+    "qid": "Q97460482",
+    "our": "Ludwig Robert zu Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Weriand Windisch-Graetz",
+    "id": "6000000016229119169",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1790",
+     "1867"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Marie Eléonore Windisch-Graetz"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Karl Vincenz Weriand Joseph Gabriel zu Windisch-Graetz",
+       "Hugo Alfred Adolf zu Windisch-Grätz",
+       "Gabriela Schönburg-Hinterglauchau",
+       "Ernst Windisch-Graetz",
+       "Robert Mecklenburg-Schwerin"
+      ]
+     ]
+    ],
+    "geni": "6000000016229119169",
+    "qid": "Q97460482",
+    "our": "Weriand Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alfred",
+   "eleonore",
+   "hugo",
+   "joseph",
+   "karl",
+   "leopoldine",
+   "marie",
+   "sophie",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Ludwig Robert zu Windisch-Graetz",
+  "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
  },
  {
   "kind": "pick",
@@ -157951,6 +159959,592 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000015805151512|M|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Prince Weriand, 1st Prince of Windisch-Graetz",
+   "id": "Q97460482",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Alfred I, Prince of Windisch-Grätz",
+      "Sophie Luise Gräfin zu Windisch-Graetz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Marie Eleonore Windisch-Graetz"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Prince Karl, Hereditary Prince of Windisch-Graetz",
+      "Prince Hugo, 2nd Prince of Windisch-Graetz",
+      "Prince Ernest of Windisch-Grätz",
+      "Q134769573"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ludwig Robert zu Windisch-Graetz",
+    "id": "6000000025819076943",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1782",
+     "1783"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819076943",
+    "qid": "Q97460482",
+    "our": "Ludwig Robert zu Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Weriand Windisch-Graetz",
+    "id": "6000000016229119169",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1790",
+     "1867"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Marie Eléonore Windisch-Graetz"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Karl Vincenz Weriand Joseph Gabriel zu Windisch-Graetz",
+       "Hugo Alfred Adolf zu Windisch-Grätz",
+       "Gabriela Schönburg-Hinterglauchau",
+       "Ernst Windisch-Graetz",
+       "Robert Mecklenburg-Schwerin"
+      ]
+     ]
+    ],
+    "geni": "6000000016229119169",
+    "qid": "Q97460482",
+    "our": "Weriand Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+    "id": "6000000025777584776",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1770",
+     "1771"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025777584776",
+    "qid": "Q97460482",
+    "our": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+    "id": "6000000025778138426",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1767",
+     "1791"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025778138426",
+    "qid": "Q97460482",
+    "our": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+    "id": "6000000025778846051",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1769",
+     "1791"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025778846051",
+    "qid": "Q97460482",
+    "our": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "alfred",
+   "eleonore",
+   "hugo",
+   "joseph",
+   "karl",
+   "leopoldine",
+   "marie",
+   "sophie",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Ludwig Robert zu Windisch-Graetz",
+  "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000015805151512|M|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Prince Weriand, 1st Prince of Windisch-Graetz",
+   "id": "Q97460482",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Joseph Nicholas of Windisch-Graetz",
+      "Princesse et Duchesse Leopoldine d'Arenberg"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Alfred I, Prince of Windisch-Grätz",
+      "Sophie Luise Gräfin zu Windisch-Graetz"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Marie Eleonore Windisch-Graetz"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Prince Karl, Hereditary Prince of Windisch-Graetz",
+      "Prince Hugo, 2nd Prince of Windisch-Graetz",
+      "Prince Ernest of Windisch-Grätz",
+      "Q134769573"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ludwig Robert zu Windisch-Graetz",
+    "id": "6000000025819076943",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1782",
+     "1783"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025819076943",
+    "qid": "Q97460482",
+    "our": "Ludwig Robert zu Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Weriand Windisch-Graetz",
+    "id": "6000000016229119169",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1790",
+     "1867"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
+       "Marie Franziska Caroline Leopoldine Josèphe von Windisch Graetz"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Marie Eléonore Windisch-Graetz"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Karl Karl Vincenz Weriand Joseph Gabriel zu Windisch-Graetz",
+       "Hugo Alfred Adolf zu Windisch-Grätz",
+       "Gabriela Schönburg-Hinterglauchau",
+       "Ernst Windisch-Graetz",
+       "Robert Mecklenburg-Schwerin"
+      ]
+     ]
+    ],
+    "geni": "6000000016229119169",
+    "qid": "Q97460482",
+    "our": "Weriand Windisch-Graetz",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+    "id": "6000000025777584776",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1770",
+     "1771"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025777584776",
+    "qid": "Q97460482",
+    "our": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+    "id": "6000000025778138426",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1767",
+     "1791"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025778138426",
+    "qid": "Q97460482",
+    "our": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   },
+   {
+    "name": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+    "id": "6000000025778846051",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1769",
+     "1791"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ludwig Robert zu Windisch-Graetz",
+       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
+       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
+       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+       "Weriand Windisch-Graetz",
+       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
+       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
+       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025778846051",
+    "qid": "Q97460482",
+    "our": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
+    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alfred",
+   "eleonore",
+   "hugo",
+   "joseph",
+   "karl",
+   "leopoldine",
+   "marie",
+   "sophie",
+   "windischgraetz",
+   "windischgratz"
+  ],
+  "our": "Ludwig Robert zu Windisch-Graetz",
+  "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
+ },
+ {
+  "kind": "pick",
   "id": "sibling|6000000004543833413|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -159194,7 +161788,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Marie Louise Françoise Louise d'Arenberg"
+      ]
      ],
      [
       "Children",
@@ -207142,586 +209738,6 @@
  },
  {
   "kind": "pick",
-  "id": "child|6000000015805151512|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Prince Weriand, 1st Prince of Windisch-Graetz",
-   "id": "Q97460482",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Joseph Nicholas of Windisch-Graetz",
-      "Princesse et Duchesse Leopoldine d'Arenberg"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Alfred I, Prince of Windisch-Grätz",
-      "Sophie Luise Gräfin zu Windisch-Graetz"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Marie Eleonore Windisch-Graetz"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Prince Karl, Hereditary Prince of Windisch-Graetz",
-      "Prince Hugo, 2nd Prince of Windisch-Graetz",
-      "Prince Ernest of Windisch-Grätz",
-      "Q134769573"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ludwig Robert zu Windisch-Graetz",
-    "id": "6000000025819076943",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1782",
-     "1783"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025819076943",
-    "qid": "Q97460482",
-    "our": "Ludwig Robert zu Windisch-Graetz",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Weriand Windisch-Graetz",
-    "id": "6000000016229119169",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1790",
-     "1867"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Marie Eléonore Windisch-Graetz"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Karl Karl Vincenz Weriand Joseph Gabriel zu Windisch-Graetz",
-       "Hugo Alfred Adolf zu Windisch-Grätz",
-       "Gabriela Schönburg-Hinterglauchau",
-       "Ernst Windisch-Graetz",
-       "Robert Mecklenburg-Schwerin"
-      ]
-     ]
-    ],
-    "geni": "6000000016229119169",
-    "qid": "Q97460482",
-    "our": "Weriand Windisch-Graetz",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-    "id": "6000000025777584776",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1770",
-     "1771"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025777584776",
-    "qid": "Q97460482",
-    "our": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-    "id": "6000000025778138426",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1767",
-     "1791"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025778138426",
-    "qid": "Q97460482",
-    "our": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-    "id": "6000000025778846051",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1769",
-     "1791"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025778846051",
-    "qid": "Q97460482",
-    "our": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "alfred",
-   "eleonore",
-   "hugo",
-   "joseph",
-   "karl",
-   "marie",
-   "sophie",
-   "windischgraetz",
-   "windischgratz"
-  ],
-  "our": "Ludwig Robert zu Windisch-Graetz",
-  "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000015805151512|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Prince Weriand, 1st Prince of Windisch-Graetz",
-   "id": "Q97460482",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Joseph Nicholas of Windisch-Graetz",
-      "Princesse et Duchesse Leopoldine d'Arenberg"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Alfred I, Prince of Windisch-Grätz",
-      "Sophie Luise Gräfin zu Windisch-Graetz"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Marie Eleonore Windisch-Graetz"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Prince Karl, Hereditary Prince of Windisch-Graetz",
-      "Prince Hugo, 2nd Prince of Windisch-Graetz",
-      "Prince Ernest of Windisch-Grätz",
-      "Q134769573"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ludwig Robert zu Windisch-Graetz",
-    "id": "6000000025819076943",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1782",
-     "1783"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025819076943",
-    "qid": "Q97460482",
-    "our": "Ludwig Robert zu Windisch-Graetz",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Weriand Windisch-Graetz",
-    "id": "6000000016229119169",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1790",
-     "1867"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Marie Eléonore Windisch-Graetz"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Karl Karl Vincenz Weriand Joseph Gabriel zu Windisch-Graetz",
-       "Hugo Alfred Adolf zu Windisch-Grätz",
-       "Gabriela Schönburg-Hinterglauchau",
-       "Ernst Windisch-Graetz",
-       "Robert Mecklenburg-Schwerin"
-      ]
-     ]
-    ],
-    "geni": "6000000016229119169",
-    "qid": "Q97460482",
-    "our": "Weriand Windisch-Graetz",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-    "id": "6000000025777584776",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1770",
-     "1771"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025777584776",
-    "qid": "Q97460482",
-    "our": "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-    "id": "6000000025778138426",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1767",
-     "1791"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025778138426",
-    "qid": "Q97460482",
-    "our": "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   },
-   {
-    "name": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-    "id": "6000000025778846051",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1769",
-     "1791"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joseph Ludwig Nikolaus Anton de Paula Johannes Nepomuk Adam Raymund Erbfürst von Windisch Graetz Stammvater 2 ehelinien"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ludwig Robert zu Windisch-Graetz",
-       "Sophie Ludovica Wilhelmina zu Windisch-Graetz 6a)",
-       "Eulalie Flora Auguste zu Windisch-Graetz 7a)",
-       "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-       "Weriand Windisch-Graetz",
-       "Leopold Karl Viktorin Ignaz Josef Anton Grazian zu Windisch-Graetz 3a)",
-       "Karl Anton Joseph Raimund zu Windisch-Graetz 1a)",
-       "Maria Theresia Philippina Josepha Antonia Friderika de Ligne-von-Arenberg"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025778846051",
-    "qid": "Q97460482",
-    "our": "Joseph Ludwig Johann Neomuk Anton zu Windisch-Graetz 2a)",
-    "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Alfred Candidus Ferdinand zu Windisch-Grätz Fürst",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "alfred",
-   "eleonore",
-   "hugo",
-   "joseph",
-   "karl",
-   "marie",
-   "sophie",
-   "windischgraetz",
-   "windischgratz"
-  ],
-  "our": "Ludwig Robert zu Windisch-Graetz",
-  "cand": "Prince Weriand, 1st Prince of Windisch-Graetz"
- },
- {
-  "kind": "pick",
   "id": "sibling|6000000173483219101|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -208329,2053 +210345,5 @@
   ],
   "our": "Demetrios Kantakouzenos",
   "cand": "George Palaiologos Kantakouzenos"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000000831222922|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Joan of Navarre",
-   "id": "Q1039915",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Charles III of Navarre",
-      "Eleanor of Castile, Queen of Navarre"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Carlo di Navarra",
-      "Blanche I of Navarre",
-      "Beatrice of Navarre, Countess of La Marche",
-      "Isabella of Navarre, Countess of Armagnac",
-      "Luis of Navarre"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "John I, Count of Foix",
-      "Luis de Beaumont"
-     ]
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Jeanne d'Evreux",
-    "id": "6000000006101378579",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1386",
-     "1413"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlos III de Navarra rey de Navarra",
-       "Leonor de Castilla y León infanta de Castilla y León"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Blanca I de Navarra reina de Navarra",
-       "Beatrice",
-       "Jean",
-       "Marie de Navarre Princess",
-       "Marguerite de Navarre Princess",
-       "Isabella de Navarre",
-       "Charles de Navarre Prince",
-       "Louis de Navarre Prince",
-       "Isabelle de Navarre",
-       "Lancelot de Navarra",
-       "Juana de Navarra y Esparza Señora de Eslava y Sada",
-       "Godofredo de Navarra",
-       "Leonel de Navarra",
-       "María de Navarra"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Jean I VI de Foix"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000006101378579",
-    "qid": "Q1039915",
-    "our": "Jeanne d'Evreux",
-    "cand": "Joan of Navarre"
-   },
-   {
-    "name": "Marie de Navarre Princess",
-    "id": "6000000001500824818",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1388",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlos III de Navarra rey de Navarra",
-       "Leonor de Castilla y León infanta de Castilla y León"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Blanca I de Navarra reina de Navarra",
-       "Jeanne d'Evreux",
-       "Beatrice",
-       "Jean",
-       "Marguerite de Navarre Princess",
-       "Isabella de Navarre",
-       "Charles de Navarre Prince",
-       "Louis de Navarre Prince",
-       "Isabelle de Navarre",
-       "Lancelot de Navarra",
-       "Juana de Navarra y Esparza Señora de Eslava y Sada",
-       "Godofredo de Navarra",
-       "Leonel de Navarra",
-       "María de Navarra"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000001500824818",
-    "qid": "Q1039915",
-    "our": "Marie de Navarre Princess",
-    "cand": "Joan of Navarre"
-   },
-   {
-    "name": "Marguerite de Navarre Princess",
-    "id": "6000000001500824826",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1389",
-     "1403"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlos III de Navarra rey de Navarra",
-       "Leonor de Castilla y León infanta de Castilla y León"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Blanca I de Navarra reina de Navarra",
-       "Jeanne d'Evreux",
-       "Beatrice",
-       "Jean",
-       "Marie de Navarre Princess",
-       "Isabella de Navarre",
-       "Charles de Navarre Prince",
-       "Louis de Navarre Prince",
-       "Isabelle de Navarre",
-       "Lancelot de Navarra",
-       "Juana de Navarra y Esparza Señora de Eslava y Sada",
-       "Godofredo de Navarra",
-       "Leonel de Navarra",
-       "María de Navarra"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000001500824826",
-    "qid": "Q1039915",
-    "our": "Marguerite de Navarre Princess",
-    "cand": "Joan of Navarre"
-   },
-   {
-    "name": "Isabelle de Navarre",
-    "id": "6000000063657227833",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlos III de Navarra rey de Navarra",
-       "Leonor de Castilla y León infanta de Castilla y León"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Blanca I de Navarra reina de Navarra",
-       "Jeanne d'Evreux",
-       "Beatrice",
-       "Jean",
-       "Marie de Navarre Princess",
-       "Marguerite de Navarre Princess",
-       "Isabella de Navarre",
-       "Charles de Navarre Prince",
-       "Louis de Navarre Prince",
-       "Lancelot de Navarra",
-       "Juana de Navarra y Esparza Señora de Eslava y Sada",
-       "Godofredo de Navarra",
-       "Leonel de Navarra",
-       "María de Navarra"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000063657227833",
-    "qid": "Q1039915",
-    "our": "Isabelle de Navarre",
-    "cand": "Joan of Navarre"
-   },
-   {
-    "name": "Juana de Navarra y Esparza Señora de Eslava y Sada",
-    "id": "6000000009838320128",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1405",
-     "1456"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlos III de Navarra rey de Navarra",
-       "María Miguel de Esparza"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Blanca I de Navarra reina de Navarra",
-       "Jeanne d'Evreux",
-       "Beatrice",
-       "Jean",
-       "Marie de Navarre Princess",
-       "Marguerite de Navarre Princess",
-       "Isabella de Navarre",
-       "Charles de Navarre Prince",
-       "Louis de Navarre Prince",
-       "Isabelle de Navarre",
-       "Lancelot de Navarra",
-       "Godofredo de Navarra",
-       "Leonel de Navarra",
-       "María de Navarra"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Luis Beaumont Beaumont de Navarra I Conde de Lerin",
-       "Iñigo Ortiz de Zúñiga y Leiva I Señor de Lacarra"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Juan de Beaumont y Navarra I Vizconde de Arberoa",
-       "Guillén Beaumont y Navarra Vizconde de Erro",
-       "Phillipe Beaumont y Navarra Señor de Etxaleku",
-       "Luís de Beaumont conde de Lerín",
-       "Juana de Beaumont de Navarra",
-       "Thibaut Beaumont de Navarra y Esparza",
-       "Ana Beaumont de Aragón",
-       "Catalina Beaumont de Navarra y Aragón",
-       "Diego López de Zúñiga I conde de Nieva",
-       "Leonor de Zúñiga y Navarra",
-       "Isabel Enríquez de Zúñiga"
-      ]
-     ]
-    ],
-    "geni": "6000000009838320128",
-    "qid": "Q1039915",
-    "our": "Juana de Navarra y Esparza Señora de Eslava y Sada",
-    "cand": "Joan of Navarre"
-   },
-   {
-    "name": "María de Navarra",
-    "id": "6000000015615981201",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlos III de Navarra rey de Navarra",
-       "María Miguel de Esparza"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Blanca I de Navarra reina de Navarra",
-       "Jeanne d'Evreux",
-       "Beatrice",
-       "Jean",
-       "Marie de Navarre Princess",
-       "Marguerite de Navarre Princess",
-       "Isabella de Navarre",
-       "Charles de Navarre Prince",
-       "Louis de Navarre Prince",
-       "Isabelle de Navarre",
-       "Lancelot de Navarra",
-       "Juana de Navarra y Esparza Señora de Eslava y Sada",
-       "Godofredo de Navarra",
-       "Leonel de Navarra"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000015615981201",
-    "qid": "Q1039915",
-    "our": "María de Navarra",
-    "cand": "Joan of Navarre"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Blanca I de Navarra reina de Navarra",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "beatrice",
-   "beaumont",
-   "charles",
-   "foix",
-   "iii",
-   "isabella",
-   "luis",
-   "navarra",
-   "navarre"
-  ],
-  "our": "Jeanne d'Evreux",
-  "cand": "Joan of Navarre"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000002176509248|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Frederick Hamilton",
-   "id": "Q16840891",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Claud Hamilton, 1st Lord Paisley",
-      "Margaret Seton"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "James Hamilton, 1st Earl of Abercorn"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Sidney Vaughan",
-      "Agnes (?)"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Christiana Hamilton",
-      "Frederick Hamilton",
-      "James Hamilton",
-      "Gustavus Hamilton, 1st Viscount Boyne"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "John Hamilton",
-    "id": "6000000004385445923",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1576",
-     "1604"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000004385445923",
-    "qid": "Q16840891",
-    "our": "John Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "George Hamilton",
-    "id": "6000000005330638050",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1577",
-     "1657"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005330638050",
-    "qid": "Q16840891",
-    "our": "George Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Frederick Hamilton",
-    "id": "6000000013738812167",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1578",
-     "1647"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013738812167",
-    "qid": "Q16840891",
-    "our": "Frederick Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Henry Hamilton",
-    "id": "6000000013738856705",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1584",
-     "1585"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013738856705",
-    "qid": "Q16840891",
-    "our": "Henry Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Anthony Hamilton",
-    "id": "6000000032194034249",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1596",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000032194034249",
-    "qid": "Q16840891",
-    "our": "Anthony Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Claud Hamilton",
-    "id": "6000000013738786673",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1614"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013738786673",
-    "qid": "Q16840891",
-    "our": "Claud Hamilton",
-    "cand": "Frederick Hamilton"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "James Hamilton",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "1st",
-   "claud",
-   "frederick",
-   "hamilton",
-   "james",
-   "lord",
-   "margaret",
-   "paisley",
-   "seton"
-  ],
-  "our": "John Hamilton",
-  "cand": "Frederick Hamilton"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000005331024001|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Frederick Hamilton",
-   "id": "Q16840891",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Claud Hamilton, 1st Lord Paisley",
-      "Margaret Seton"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "James Hamilton, 1st Earl of Abercorn"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Sidney Vaughan",
-      "Agnes (?)"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Christiana Hamilton",
-      "Frederick Hamilton",
-      "James Hamilton",
-      "Gustavus Hamilton, 1st Viscount Boyne"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "John Hamilton",
-    "id": "6000000004385445923",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1576",
-     "1604"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000004385445923",
-    "qid": "Q16840891",
-    "our": "John Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "George Hamilton",
-    "id": "6000000005330638050",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1577",
-     "1657"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005330638050",
-    "qid": "Q16840891",
-    "our": "George Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Frederick Hamilton",
-    "id": "6000000013738812167",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1578",
-     "1647"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013738812167",
-    "qid": "Q16840891",
-    "our": "Frederick Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Henry Hamilton",
-    "id": "6000000013738856705",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1584",
-     "1585"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013738856705",
-    "qid": "Q16840891",
-    "our": "Henry Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Anthony Hamilton",
-    "id": "6000000032194034249",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1596",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton",
-       "Claud Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000032194034249",
-    "qid": "Q16840891",
-    "our": "Anthony Hamilton",
-    "cand": "Frederick Hamilton"
-   },
-   {
-    "name": "Claud Hamilton",
-    "id": "6000000013738786673",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1614"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Claude Claud Hamilton, 1st Lord Paisley Paisley",
-       "Margaret Seton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "James Hamilton",
-       "John Hamilton",
-       "George Hamilton",
-       "Frederick Hamilton",
-       "Henry Hamilton",
-       "Margaret Hamilton",
-       "Alexander Hamilton",
-       "Anthony Hamilton",
-       "Catherine Hamilton",
-       "Grizel Hamilton"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000013738786673",
-    "qid": "Q16840891",
-    "our": "Claud Hamilton",
-    "cand": "Frederick Hamilton"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "James Hamilton",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "1st",
-   "claud",
-   "frederick",
-   "hamilton",
-   "james",
-   "lord",
-   "margaret",
-   "paisley",
-   "seton"
-  ],
-  "our": "John Hamilton",
-  "cand": "Frederick Hamilton"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000005599183297|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Amalie Eleonore of Solms-Braunfels",
-   "id": "Q21914404",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Frederick William, Prince of Solms-Braunfels",
-      "Sophie Magdalene of Solms-Laubach"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Ulrike Louise of Solms-Braunfels"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Charles Louis, Prince of Anhalt-Bernburg-Schaumburg-Hoym"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Victor II, Prince of Anhalt-Bernburg-Schaumburg-Hoym",
-      "Wilhelm von Anhalt-Bernburg",
-      "Alexius von Anhalt-Bernburg-Schaumburg-Hoym",
-      "Sofie von Anhalt-Bernburg-Schaumburg-Hoym",
-      "Karoline von Anhalt-Bernburg-Schaumburg-Hoym"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-    "id": "6000000005599183399",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1728",
-     "1795"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich Wilhelm I von Solms-Braunfels Fürst"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Karl Ludwig Wilhelm von Solms-Braunfels prinz",
-       "Ulrike Louise von Solms Braunfels prinzessin",
-       "Wilhelm Christof von Solms-Braunfels prinz",
-       "Ludwig Rudolf Wilhelm von Solms-Braunfels prinz",
-       "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-       "Alexander Wilhelm von Solms-Braunfels prinz",
-       "Anton Ernst Wilhelm von Solms Braunfels prinz",
-       "Karoline Albertine von Solms-Braunfels prinzessin",
-       "Magdalene Sofie von Solms-Braunfels prinzessin von Anhalt-Bernburg-Schaumburg-Hoym",
-       "Christine Charlotte von Solms-Braunfels prinzessin",
-       "Friedrich Wilhelm Ernst zu Solms-Braunfels",
-       "Magdalena Polyxena Maria zu Solms-Braunfels",
-       "Charlotte Henriette Magdalene zu Solms-Braunfels"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005599183399",
-    "qid": "Q21914404",
-    "our": "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-    "cand": "Amalie Eleonore of Solms-Braunfels"
-   },
-   {
-    "name": "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-    "id": "6000000005599183290",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1734",
-     "1811"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich Wilhelm I von Solms-Braunfels Fürst"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Karl Ludwig Wilhelm von Solms-Braunfels prinz",
-       "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-       "Ulrike Louise von Solms Braunfels prinzessin",
-       "Wilhelm Christof von Solms-Braunfels prinz",
-       "Ludwig Rudolf Wilhelm von Solms-Braunfels prinz",
-       "Alexander Wilhelm von Solms-Braunfels prinz",
-       "Anton Ernst Wilhelm von Solms Braunfels prinz",
-       "Karoline Albertine von Solms-Braunfels prinzessin",
-       "Magdalene Sofie von Solms-Braunfels prinzessin von Anhalt-Bernburg-Schaumburg-Hoym",
-       "Christine Charlotte von Solms-Braunfels prinzessin",
-       "Friedrich Wilhelm Ernst zu Solms-Braunfels",
-       "Magdalena Polyxena Maria zu Solms-Braunfels",
-       "Charlotte Henriette Magdalene zu Solms-Braunfels"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005599183290",
-    "qid": "Q21914404",
-    "our": "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-    "cand": "Amalie Eleonore of Solms-Braunfels"
-   },
-   {
-    "name": "Karoline Albertine von Solms-Braunfels prinzessin",
-    "id": "6000000005599183417",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1740",
-     "1742"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich Wilhelm I von Solms-Braunfels Fürst"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Karl Ludwig Wilhelm von Solms-Braunfels prinz",
-       "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-       "Ulrike Louise von Solms Braunfels prinzessin",
-       "Wilhelm Christof von Solms-Braunfels prinz",
-       "Ludwig Rudolf Wilhelm von Solms-Braunfels prinz",
-       "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-       "Alexander Wilhelm von Solms-Braunfels prinz",
-       "Anton Ernst Wilhelm von Solms Braunfels prinz",
-       "Magdalene Sofie von Solms-Braunfels prinzessin von Anhalt-Bernburg-Schaumburg-Hoym",
-       "Christine Charlotte von Solms-Braunfels prinzessin",
-       "Friedrich Wilhelm Ernst zu Solms-Braunfels",
-       "Magdalena Polyxena Maria zu Solms-Braunfels",
-       "Charlotte Henriette Magdalene zu Solms-Braunfels"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005599183417",
-    "qid": "Q21914404",
-    "our": "Karoline Albertine von Solms-Braunfels prinzessin",
-    "cand": "Amalie Eleonore of Solms-Braunfels"
-   },
-   {
-    "name": "Christine Charlotte von Solms-Braunfels prinzessin",
-    "id": "6000000005599183284",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1744",
-     "1823"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich Wilhelm I von Solms-Braunfels Fürst"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Karl Ludwig Wilhelm von Solms-Braunfels prinz",
-       "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-       "Ulrike Louise von Solms Braunfels prinzessin",
-       "Wilhelm Christof von Solms-Braunfels prinz",
-       "Ludwig Rudolf Wilhelm von Solms-Braunfels prinz",
-       "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-       "Alexander Wilhelm von Solms-Braunfels prinz",
-       "Anton Ernst Wilhelm von Solms Braunfels prinz",
-       "Karoline Albertine von Solms-Braunfels prinzessin",
-       "Magdalene Sofie von Solms-Braunfels prinzessin von Anhalt-Bernburg-Schaumburg-Hoym",
-       "Friedrich Wilhelm Ernst zu Solms-Braunfels",
-       "Magdalena Polyxena Maria zu Solms-Braunfels",
-       "Charlotte Henriette Magdalene zu Solms-Braunfels"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000005599183284",
-    "qid": "Q21914404",
-    "our": "Christine Charlotte von Solms-Braunfels prinzessin",
-    "cand": "Amalie Eleonore of Solms-Braunfels"
-   },
-   {
-    "name": "Magdalena Polyxena Maria zu Solms-Braunfels",
-    "id": "6000000018996920041",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1722",
-     "1722"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich Wilhelm I von Solms-Braunfels Fürst"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Karl Ludwig Wilhelm von Solms-Braunfels prinz",
-       "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-       "Ulrike Louise von Solms Braunfels prinzessin",
-       "Wilhelm Christof von Solms-Braunfels prinz",
-       "Ludwig Rudolf Wilhelm von Solms-Braunfels prinz",
-       "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-       "Alexander Wilhelm von Solms-Braunfels prinz",
-       "Anton Ernst Wilhelm von Solms Braunfels prinz",
-       "Karoline Albertine von Solms-Braunfels prinzessin",
-       "Magdalene Sofie von Solms-Braunfels prinzessin von Anhalt-Bernburg-Schaumburg-Hoym",
-       "Christine Charlotte von Solms-Braunfels prinzessin",
-       "Friedrich Wilhelm Ernst zu Solms-Braunfels",
-       "Charlotte Henriette Magdalene zu Solms-Braunfels"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018996920041",
-    "qid": "Q21914404",
-    "our": "Magdalena Polyxena Maria zu Solms-Braunfels",
-    "cand": "Amalie Eleonore of Solms-Braunfels"
-   },
-   {
-    "name": "Charlotte Henriette Magdalene zu Solms-Braunfels",
-    "id": "6000000018996665192",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1725",
-     "1785"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Friedrich Wilhelm I von Solms-Braunfels Fürst"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Karl Ludwig Wilhelm von Solms-Braunfels prinz",
-       "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-       "Ulrike Louise von Solms Braunfels prinzessin",
-       "Wilhelm Christof von Solms-Braunfels prinz",
-       "Ludwig Rudolf Wilhelm von Solms-Braunfels prinz",
-       "Amalie Eleanore von Solms-Braunfels Fürstin zu Anhalt-Bernburg-Schaumburg-Hoym",
-       "Alexander Wilhelm von Solms-Braunfels prinz",
-       "Anton Ernst Wilhelm von Solms Braunfels prinz",
-       "Karoline Albertine von Solms-Braunfels prinzessin",
-       "Magdalene Sofie von Solms-Braunfels prinzessin von Anhalt-Bernburg-Schaumburg-Hoym",
-       "Christine Charlotte von Solms-Braunfels prinzessin",
-       "Friedrich Wilhelm Ernst zu Solms-Braunfels",
-       "Magdalena Polyxena Maria zu Solms-Braunfels"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018996665192",
-    "qid": "Q21914404",
-    "our": "Charlotte Henriette Magdalene zu Solms-Braunfels",
-    "cand": "Amalie Eleonore of Solms-Braunfels"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Ulrike Louise von Solms Braunfels prinzessin",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "anhaltbernburgschaumburghoym",
-   "karoline",
-   "louise",
-   "magdalene",
-   "sofie",
-   "solmsbraunfels",
-   "ulrike",
-   "von",
-   "wilhelm"
-  ],
-  "our": "Elisabeth Marie Benigne von Solms-Braunfels prinzessin",
-  "cand": "Amalie Eleonore of Solms-Braunfels"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000001877509735|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Christian Lindsay",
-   "id": "Q50824369",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "John Lindsay, 17th Earl of Crawford",
-      "Lady Margaret Hamilton"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Anne Crawford-Lindsay"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "John Hamilton, 4th Earl of Haddington"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Charles Hamilton, 5th Earl of Haddington",
-      "Lady Margaret Hamilton",
-      "Helen Hamilton",
-      "Susanna Hamilton"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Christian Christian Hamilton Countess of Haddington",
-    "id": "6000000006973180046",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1632",
-     "1704"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Lindsay",
-       "Margaret Hamilton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Anna Crawford Leslie Duchess of Rothes",
-       "Helen Sinclair",
-       "James Lindsay",
-       "John Lindsay",
-       "Elizabeth Lindsay",
-       "William William",
-       "Patrick"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "John Hamilton"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Charles Hamilton",
-       "Helen Hamilton",
-       "Susanna Hamilton",
-       "Margaret Hamilton"
-      ]
-     ]
-    ],
-    "geni": "6000000006973180046",
-    "qid": "Q50824369",
-    "our": "Christian Christian Hamilton Countess of Haddington",
-    "cand": "Christian Lindsay"
-   },
-   {
-    "name": "Helen Sinclair",
-    "id": "6000000081858215264",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1632",
-     "1669"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Lindsay",
-       "Margaret Hamilton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Anna Crawford Leslie Duchess of Rothes",
-       "Christian Christian Hamilton Countess of Haddington",
-       "James Lindsay",
-       "John Lindsay",
-       "Elizabeth Lindsay",
-       "William William",
-       "Patrick"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000081858215264",
-    "qid": "Q50824369",
-    "our": "Helen Sinclair",
-    "cand": "Christian Lindsay"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Anna Crawford Leslie Duchess of Rothes",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "charles",
-   "crawford",
-   "haddington",
-   "hamilton",
-   "helen",
-   "john",
-   "lindsay",
-   "margaret",
-   "susanna"
-  ],
-  "our": "Christian Christian Hamilton Countess of Haddington",
-  "cand": "Christian Lindsay"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000002106239618|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Decimus Junius Silanus Torquatus",
-   "id": "Q329271",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Marcus Junius Silanus Torquatus",
-      "Aemilia Lepida"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Junia Lepida",
-      "Junia Calvina",
-      "Marcus Junius Silanus",
-      "Lucius Junius Silanus Torquatus"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Julia Africana"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Junia Silana Torquata"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Marcus Aurelius Crispin Torquatus",
-    "id": "6000000000437882320",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Marcus Junius Silanus Torquatus",
-       "Aemilia Lepida Minor"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marcus Junius Silanus Torquatus",
-       "Junia Calvina",
-       "Junia Lepida",
-       "Marcus Appius Silanus Torquatus",
-       "Lucius Junius Silanus Torquatus",
-       "Servilla Claudia?"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Faustina II"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000437882320",
-    "qid": "Q329271",
-    "our": "Marcus Aurelius Crispin Torquatus",
-    "cand": "Decimus Junius Silanus Torquatus"
-   },
-   {
-    "name": "Marcus Appius Silanus Torquatus",
-    "id": "6000000012791552267",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Marcus Junius Silanus Torquatus",
-       "Aemilia Lepida Minor"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marcus Junius Silanus Torquatus",
-       "Junia Calvina",
-       "Junia Lepida",
-       "Marcus Aurelius Crispin Torquatus",
-       "Lucius Junius Silanus Torquatus",
-       "Servilla Claudia?"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000012791552267",
-    "qid": "Q329271",
-    "our": "Marcus Appius Silanus Torquatus",
-    "cand": "Decimus Junius Silanus Torquatus"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Marcus Junius Silanus Torquatus",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "aemilia",
-   "calvina",
-   "junia",
-   "junius",
-   "lepida",
-   "lucius",
-   "marcus",
-   "silanus",
-   "torquatus"
-  ],
-  "our": "Marcus Aurelius Crispin Torquatus",
-  "cand": "Decimus Junius Silanus Torquatus"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000002176556116|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Christian Lindsay",
-   "id": "Q50824369",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "John Lindsay, 17th Earl of Crawford",
-      "Lady Margaret Hamilton"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Anne Crawford-Lindsay"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "John Hamilton, 4th Earl of Haddington"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Charles Hamilton, 5th Earl of Haddington",
-      "Lady Margaret Hamilton",
-      "Helen Hamilton",
-      "Susanna Hamilton"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Christian Christian Hamilton Countess of Haddington",
-    "id": "6000000006973180046",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1632",
-     "1704"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Lindsay",
-       "Margaret Hamilton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Anna Crawford Leslie Duchess of Rothes",
-       "Helen Sinclair",
-       "James Lindsay",
-       "John Lindsay",
-       "Elizabeth Lindsay",
-       "William William",
-       "Patrick"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "John Hamilton"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Charles Hamilton",
-       "Helen Hamilton",
-       "Susanna Hamilton",
-       "Margaret Hamilton"
-      ]
-     ]
-    ],
-    "geni": "6000000006973180046",
-    "qid": "Q50824369",
-    "our": "Christian Christian Hamilton Countess of Haddington",
-    "cand": "Christian Lindsay"
-   },
-   {
-    "name": "Helen Sinclair",
-    "id": "6000000081858215264",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1632",
-     "1669"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Lindsay",
-       "Margaret Hamilton"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Anna Crawford Leslie Duchess of Rothes",
-       "Christian Christian Hamilton Countess of Haddington",
-       "James Lindsay",
-       "John Lindsay",
-       "Elizabeth Lindsay",
-       "William William",
-       "Patrick"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000081858215264",
-    "qid": "Q50824369",
-    "our": "Helen Sinclair",
-    "cand": "Christian Lindsay"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Anna Crawford Leslie Duchess of Rothes",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "charles",
-   "crawford",
-   "haddington",
-   "hamilton",
-   "helen",
-   "john",
-   "lindsay",
-   "margaret",
-   "susanna"
-  ],
-  "our": "Christian Christian Hamilton Countess of Haddington",
-  "cand": "Christian Lindsay"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000002267655245|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Eleanor de Montfort",
-   "id": "Q2998293",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Simon de Montfort, 6th Earl of Leicester",
-      "Eleanor of Leicester"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Simon VI de Montfort",
-      "Guy de Montfort, Count of Nola",
-      "Henry de Montfort",
-      "Amaury de Montfort, Canon of York"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Llywelyn ap Gruffudd"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Gwenllian of Wales"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Eleanor de Montfort",
-    "id": "6000000002047745232",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1252",
-     "1282"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Simon de Montfort",
-       "Eleanor"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Henry de Montfort",
-       "Simon Montfort VI",
-       "Amaury de Montfort Canon",
-       "Guy de Montfort",
-       "Richard de Montfort",
-       "Joanna de Montfort"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Llywelyn Ein Llyw Olaf ap Gruffyd"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Gwenllian verch Llewelyn"
-      ]
-     ]
-    ],
-    "geni": "6000000002047745232",
-    "qid": "Q2998293",
-    "our": "Eleanor de Montfort",
-    "cand": "Eleanor de Montfort"
-   },
-   {
-    "name": "Joanna de Montfort",
-    "id": "6000000069941528277",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Simon de Montfort",
-       "Eleanor"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Henry de Montfort",
-       "Simon Montfort VI",
-       "Amaury de Montfort Canon",
-       "Guy de Montfort",
-       "Richard de Montfort",
-       "Eleanor de Montfort"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000069941528277",
-    "qid": "Q2998293",
-    "our": "Joanna de Montfort",
-    "cand": "Eleanor de Montfort"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Eleanor",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "amaury",
-   "canon",
-   "eleanor",
-   "guy",
-   "gwenllian",
-   "henry",
-   "llywelyn",
-   "montfort",
-   "simon"
-  ],
-  "our": "Eleanor de Montfort",
-  "cand": "Eleanor de Montfort"
  }
 ]
