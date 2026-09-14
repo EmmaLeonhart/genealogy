@@ -41371,3 +41371,46 @@ collector job** — `docs/collector-run-loop.md`, unchanged — because that is 
 the agent navigates and the extension decides, and hand-reading the DOM does not scale to it.
 
 `emmas-files/` stays as it is and still needs explaining; that is a long way out.
+
+## 2026-09-13 — the path request is a GET, and it works for anyone from any page
+
+Emma, after opening twenty profiles by hand and pointing at `https://www.geni.com/paths`:
+*"I think we can just kinda go to — bruh no that is not it. You need to request your relationship
+still. But I think this can seriously reduce the overhead, as we can request the relationships of
+all 250,000ish people."*
+
+**She is right, and the mechanism is cheaper than either of us was assuming.** The `Show Me`
+button is bound to `pathSearcher.showPathSearchInProgressAndSearchPath()`, and `pathSearcher`
+holds the two request URLs as plain strings:
+
+    /profile/search_blood_path/<ID>?from_id=…&slug=…&t=…
+    /profile/search_inlaw_path/<ID>?from_id=…&slug=…&t=…
+
+**The `<ID>` can be swapped for anybody.** The `slug` and `t` taken from one loaded page work for
+arbitrary profiles, so a single open page can request the relationship for any number of people
+without navigating to them.
+
+**Measured on 50 isolates, 100 requests, from one page:**
+
+    ok 100   fail 0   relationship_card returned 34
+    /paths   2,802 -> 2,842, exactly the 40 that were not already banked
+
+**Against the loop it replaces:** the `individual` job costs a page load, a held tab and a watcher
+waiting on a server-side recompute that often times out as `resolved_none`. This costs two
+`fetch` calls 200 ms apart and no tab. Fifty people took about forty seconds rather than about
+forty minutes, and the result is banked on `/paths` whether or not the search finished while
+anyone was looking.
+
+**Two limits, neither tested:**
+
+* **`t` is almost certainly a nonce with a lifetime.** A long run will need it refreshed from a
+  page load periodically; when it expires the symptom will be failures, not silence.
+* **`/paths` has a ceiling** — Emma: *"I think it is gonna cap out around 5,000 or 15,000 and then
+  delete the old ones"*. At 2,842 there is headroom, but a bulk run reaches it quickly, so
+  harvesting has to keep pace with requesting or the oldest are lost.
+
+`reports/path-request-100.tsv` holds the hundred picked for this; fifty are done.
+
+**Also written, from the work-loop before the demonstration:** Adasi's reseed descent enumerated
+and its trunk roster cut, for the Monte Carlo that is all that remains of § THE WHOLE PROGRAM
+part 1. Not run — the browser was being held clear.
