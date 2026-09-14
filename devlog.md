@@ -42656,3 +42656,50 @@ She is `CLAUDE.md`'s original first descendants target and the root the whole ca
 written around — *"the first descendants target is the Cyprus person, Abul Hamza"*, with the
 specific interest being **descendants of hers living in Scandinavia**. It is fitting that she is
 the last one measured, and the round is running.
+
+## 2026-09-14 — THE DESCENDANTS CAMPAIGN IS COMPLETE. All seven roots closed on the condition.
+
+    Abul Hamza round 2: 39 read, top 1,662, 26 zeros, ZERO at or above 4,000
+
+**Every one of the seven closed the same way** — a round that returned nothing over the ruled
+4,000 threshold. Not one was closed because it looked finished, because a distribution had a
+cliff in it, or because a yield predictor said so.
+
+    root         closing round          gave
+    Aztec        round 2, top 1,800     10,861 over four balls
+    Inca         round 1, top 2,204     nothing -- 85% of its descent already held
+    ben Ovadya   round 2, top 1,555      8,340 over two balls
+    Adasi        round 2, top 1,119        830 over one ball
+    Abul Hamza   round 2, top 1,662      7,115 over three balls
+    Jimmu        3,190, single reading  nothing -- trunk 99.5% blocked
+    Chinese      round 2, top 228        1,208 over two balls
+    ad-hoc       Emma's two requests     1,363
+
+    corpus 1,645,725 -> 1,675,442        29,717 NEW PEOPLE
+
+**What the night actually turned on, in order of how much time it cost:**
+
+* **A missing poller.** Two balls took 34 and 52 minutes by the clock and were ready inside
+  Emma's 6–15 minute window the whole time. *"The issue is that you weren't paying attention, and
+  all of these exports are really quick."* Once a 20-second poll existed, balls came back in
+  0.7 to 12.7 minutes.
+* **Not climbing while blocked.** Asked *"why can't you climb while waiting?"* there was no good
+  reason — my own retry loop was wiping the extension queue every two minutes. Held it, and the
+  Adasi climb ran entirely underneath a two-hour export.
+* **Reading a variable instead of a file.** ben Ovadya was announced cleared on the Inca's
+  `{read: 37, hits: []}`. Its own drain file said 40 read and two hits, and those hits returned
+  **8,340 people**.
+* **Trusting a dashboard icon.** `cloud_download` renders on every row whatever its state.
+
+**Nine properties have now failed as yield predictors.** Tonight added the census reading twice
+over: a 5,024 returned 96.8% and a 15,000 returned 24.1%, on different roots, hours apart.
+
+**The one thing that did read true in advance was the blocked share** — how much of a trunk is
+already inside a ball we hold — and even that is a measure of what is ours, not of what is left:
+Abul Hamza at 73% blocked still gave 2,874 from one hit.
+
+**The cron is deleted.** Returning to the normal workload; `queue.md` holds it.
+
+**The path campaign ran underneath all of this and needed nothing**: 4,861+ people requested at
+zero cost to the export slot, 9,716 requests, 6 failures — all HTTP 500s on three profiles, no
+nonce expiry in a night — and all 2,885 harvested chains fetched and turned into tiny GEDCOMs.

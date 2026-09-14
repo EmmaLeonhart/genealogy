@@ -1,5 +1,25 @@
 # The descendants campaign — the only task
 
+**⛔ COMPLETE, 2026-09-14. ALL SEVEN ROOTS CLOSED ON THE STOPPING CONDITION.** Each one had a
+round of forty that returned **zero** candidates at or above 4,000 — the given condition, not a
+read of a distribution and not a judgement that a root looked finished.
+
+    root         closing round                     what it gave
+    Aztec        round 2, top 1,800                10,861 new over four balls
+    Inca         round 1, top 2,204                nothing -- 85% already held
+    ben Ovadya   round 2, top 1,555                 8,340 new over two balls
+    Adasi        round 2, top 1,119                   830 new over one ball
+    Abul Hamza   round 2, top 1,662                 4,241 + 2,874 = 7,115 new
+    Jimmu        one reading of 3,190               nothing -- trunk 99.5% blocked
+    Chinese      round 2, top 228                   1,208 new over two balls
+
+    plus Emma's two ad-hoc requests: NN Sanches 951, NN 6000000227739695943 412
+
+    corpus 1,645,725 -> 1,675,442        29,717 new people
+
+**The cron that drove this is deleted.** What follows is the record of how it ran, kept because
+the same loop will be wanted again.
+
 **Ruled 2026-09-13.** *"Your entire purpose is now to complete the descendants campaigns... All
 you are doing is the descendants campaign. And the descendants campaign is relatively simple, and
 it's something that should be done essentially without much intervention from me, without much
