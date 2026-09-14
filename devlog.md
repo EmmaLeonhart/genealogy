@@ -42416,3 +42416,21 @@ on the same root returned 3,501. Across tonight: 5,086 → 81.5%, 12,786 → 69.
 5,024 → 96.8%, 15,000 → 70.0%, 6,975 → 16.6%. The eighth property to fail.
 
 Tonight: **Aztec 10,861 + Sanches 951 + Adasi 830 + ben Ovadya 8,340 = 20,982 new people.**
+
+## 2026-09-14 — Abul Hamza's round: 38 read, one hit at 15,000
+
+`reports/abul-hamza-montecarlo-round.tsv`, and **checked against the file rather than the
+in-memory object**, which is the correction that came out of the ben Ovadya mistake. Both agreed
+this time; the point is that the file is what was consulted.
+
+    15,000  6000000013804873913
+     1,110 / 1,051 / 970 ... 19 zeros of 38
+    blocked 292 of 400 picks (73.0%)
+
+Her denylist is **123,893** people against a descent of 84,689 — the difference is the ancestors
+`--list-saturated` adds — and she has six balls filed against her already, so one hit out of
+forty is what a root this worked looks like.
+
+**Two things went out at once**: d'Esneval's banked ancestor `6000000227739018883` into the slot
+as task `6000000227747852008`, and the 15,000 hit into a climb beside it. That ancestor was
+created on 2026-09-13 and has been sitting unexported since.
