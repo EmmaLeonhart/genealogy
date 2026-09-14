@@ -846,6 +846,33 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
     the root stops when a round returns zero of them. Seven invented yield predictors are listed
     there, all refuted. Which root runs is this list, top to bottom, and never a choice.
 
+    ### ⛔ SLOT ORDER, RE-RULED 2026-09-13 (LATE)
+
+    *"the Aztec and the Inca are probably highest value added. And then after those ones are
+    complete, then the Jewish one, the ben Ovadya one."* And on the Chinese root, whose point has
+    already been served: *"the important part of the Chinese stuff was just putting all this
+    stuff into the privileged section... the Chinese stuff probably is not that valuable right
+    now."* Both its `Forest` and its `Descendants` are in `exports/post-merge/` as of tonight, so
+    that is done; its remaining Monte Carlo rounds drop below the others.
+
+        1  Aztec           Forest, then Monte Carlo; and the 5,086 banked hit
+        2  Inca            more Monte Carlo rounds -- moved up out of POSTPONED
+        3  NN ben Ovadya   more rounds, pool 28,124
+        4  Adasi           the 15,000 cap hit and the 6,975
+        5  Abul Hamza      d'Esneval and Bettencourt, then a Monte Carlo on her
+        6  Jimmu           its first Monte Carlo
+        7  Chinese root    further Monte Carlo rounds only
+
+    **⛔ AND THE EXPORTS ARE WORTH LESS THAN THE ATTENTION THEY HAVE BEEN GETTING.** *"the exports
+    are good, but they're not... I feel like these exports are probably worth a bit less than you
+    are putting attention onto them."* Do not let a ball's arrival become an event; file it,
+    measure it, move to the next thing.
+
+    **⛔ CONCURRENCY IS PART OF WHY THIS IS HARD.** *"if we got the GEDCOMs instantly and didn't
+    do anything concurrently, it wouldn't take that long."* Geni builds one ball at a time and
+    everything else — census sweeps, climbs, the path campaign — runs beside it, so the critical
+    path is easy to lose. **What is running stays running; what is next is this list, top down.**
+
     ### LIVE — in slot order
 
     **⛔ 1. THE CHINESE ROOT, `NN Father of Huaxu` `6000000227036719829` — FULL THREE-STEP, AND
