@@ -41821,3 +41821,40 @@ root, or choose a seed. On the Chinese root a 0%-new ball is a success.
 
 Linked from `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS* and from `queue.md`
 § *THE WHOLE PROGRAM*, so it is reachable from both places the work starts.
+
+## 2026-09-13 — dead-queue sweep: the Alix descendants item
+
+**`## Alix descendants`** — *"Grok says that Alix de Lampron still has barely any descendants...
+can you actually confirm whether this is true or not? I think it made some errors, but another
+descendant blitz on her might be good."* Both halves are done and filed.
+
+**Confirmed false, by measurement rather than by argument.**
+`reports/descent-from-6000000006101354745.csv` enumerates her descent — **1,176 rows over 12
+generations, median 11** — and `reports/descendants-export-targets.csv` holds the 34 people it
+turned up who cleared the threshold. *Barely any descendants* is not what that is.
+
+**And the blitz ran to the end of its roster: fifteen targets.**
+
+    target  6   2,058 new for 64 climbs        target 11   2,007 new for 279 climbs
+    target  7   3,290 new for 10 climbs        target 12   2,019 new for 27 climbs
+    target  8     666 new, run end to end      target 13   2,010 new for 6 climbs
+    target  9   4,026 new -- the best ball     target 14   2,488 new for 90 climbs
+    target 10     697 new for 239 climbs       target 15   the roster is spent
+
+**One thing survives the deletion and is recorded here rather than lost with the item.** Target
+15's entry says it plainly: *"the roster is spent, and that is not diminishing returns."* The
+campaign stopped because it ran out of enumerated roster, **not because it saturated**, and
+`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT* means those are
+different endings. A fresh roster off the newer corpus would continue it. That is not queued —
+it is written down at `f9076418` and here, and queueing it is Emma's call, not a sweep's.
+
+**Checked and NOT removed**, the test being whether the work is finished:
+
+* § *Usual forrname* — *"just drop this item of the pipeline"*. **Not done**: `namemodel.py` still
+  carries `PREFERRED_REASON = "P7452"` and `pipeline.yml` still runs
+  `scripts/build-regnal-ordinals.py`, which emits it.
+* § *Forest exports* — neither `6000000227739821875` nor `6000000227739695943` is on disk.
+* § *Ancestor Exports* — the Ursula von Münsterberg export `6000000188494434823` is not on disk.
+* § *Export from these six first* — d'Esneval and Bettencourt still owe their balls.
+* § *`Q1934051`*, § *`P2600` constraint violations*, § *clan labels* — blocked on user action or
+  explicitly *"nothing is investigated before the item is reached"*.

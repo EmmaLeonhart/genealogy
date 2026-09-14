@@ -1564,10 +1564,6 @@ This is the last queue item for a reason lol do not do it immediately
 
 I think I figured some stuff out about the CBDB people who I am just straight up unable to edit. My current working hypothesis is that these people all have the geni tree 100% present on wikidata due to the mass export coming from some external gedcom. So for the people for which we are not able to add ancestors, do not be too concerned with it. I think this might be a better thing to investigate using other things like familysearch and geni is just kinda a dead end there and wikidata has all of the geni information already for it. But searching the web for these things may be helpful so do it. 
 
-## Alix descendants
-
-Grok says that https://www.geni.com/people/Alix-de-Lampron/6000000006101354745 still has barely any descendants. I consider this to be a later campaign thing, after our bulk stuff is done but can you actually confirm whether this is true or not? I think it made some errors, but another descendant blitz on her might be good.
-
 ## Ancestor Exports
 
 At the end of the queue after all other things are done I want to do some specific ancestor export campaigns. 
