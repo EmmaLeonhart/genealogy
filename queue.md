@@ -1580,3 +1580,56 @@ I think connecting me to Alix via German people such as this person https://www.
 ## Jan 1 correspondences research
 
 Based on the fact you did not figure out that the Chinese tails were duplicates, I am convinced you do not in fact know at all anything on the Egyptian Pharaohs geni to wikidata correspondences and should probably figure them out
+
+## Tiny GEDCOMs: model every relationship off ATTESTED representations, never invention
+
+Ruled 2026-09-13, and **timeboxed to 20:45 the same evening, then sent here**: *"I would consider
+doing this to be a waste of time because the critical path is actually fucking getting the data
+we need... this task is over. Put it at the end of the queue."*
+
+**The problem.** `scripts/build-tiny-gedcoms.py` turns a relation string into a GEDCOM edge by
+taking **the last word** and looking it up in `PATH_REL`. Everything else in the string is
+discarded. Two consequences found the same evening:
+
+* `father` and `mother` both mapped to one `parent` kind and every parent was written `HUSB`, so
+  **every mother in all 1,007 files was a husband**. Fixed 2026-09-13; `WIFE` went 0 → 16,906
+  and 40,435 `SEX` records appeared where there had been none.
+* **`adoptive` is still discarded.** 136 rows say *her/his adoptive mother* or *adoptive father*
+  in `paths/*.tsv` and `reports/path-chains.tsv`, and **0** of the built GEDCOMs mention it. They
+  assert an adoptive parent as a birth parent.
+
+**⛔ THE REPRESENTATION IS READ OFF OUR OWN EXPORTS, NEVER INVENTED.** *"Don't make up some kind
+of a way of implementing the relationships. Use the actual relationships that are present within
+our data... No guessing on the representations."* And where a relationship is attested in only
+one place and cannot be read: *"we have to do a `Forest` export on that point in order to get
+that relationship so we know how to represent it."*
+
+**Already measured, 2026-09-13 — the corpus's entire relationship vocabulary.** Every
+qualifier tag present in `exports/` outside the tiny directories, and there are only four:
+
+    1 MARR    514,136        1 DIV     10,071
+    2 PEDI      2,966        1 ADOP     2,185 (and 3 ADOP 2,185)
+
+    2 PEDI adopted   2,185          3 ADOP BOTH   2,185   -- the only value attested
+    2 PEDI foster      781
+
+**Adoption's exact attested shape**, from `exports/8-19 exports/export-Ancestors-6000000227331261851.ged`,
+on the CHILD's `INDI`:
+
+    1 FAMC @F6000000001902863980@
+    2 PEDI adopted
+    1 ADOP
+    2 FAMC @F6000000001902863980@
+    3 ADOP BOTH
+
+**Divorce**, inside the `FAM`: `1 MARR` with its `DATE`/`ADDR`, then `1 DIV`.
+
+**What is left to do.** The 33 distinct relation strings are in
+`reports/path-chains.tsv` column 6, with counts. For each one, find the same pair in the real
+corpus and record the structure Geni itself used; build the CSV of every instance, commit it,
+then implement from it. `foster` is attested 781 times in the corpus and appears in **no** path
+string yet, so it needs no path handling until one shows up.
+
+**⛔ The capture is not the problem and must not be touched.** The relation string is
+`span.subtext`'s `textContent` — whitespace collapsed, parens stripped, nothing parsed. `q` would
+be stored as `q`. Every one of these is a re-run of the emitter, never a re-scrape.

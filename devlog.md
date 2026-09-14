@@ -42014,3 +42014,35 @@ distinct words** — while only the derived artefact was wrong.
     across all 1,007 files:  HUSB 33,494   WIFE 16,906   SEX 40,435   (was WIFE 0, SEX 0)
 
 40,435 `SEX` records where there were none, every one of them read off a word Geni wrote.
+
+## 2026-09-13 — the relationship-representation work is timeboxed and queued at the end
+
+*"I would consider doing this to be a waste of time because the critical path is actually fucking
+getting the data we need... I'm giving you until eight forty five... this task is over. Put it at
+the end of the queue."* Cron `4bc8ae1a` fires at 20:45 to stop it; the item is at the end of
+`queue.md` carrying everything already measured, so none of it is re-derived.
+
+**Banked before stopping — the corpus's entire relationship vocabulary.** Four qualifier tags
+exist across `exports/` outside the tiny directories and no others:
+
+    1 MARR  514,136     1 DIV  10,071     2 PEDI  2,966     1 ADOP  2,185
+
+    2 PEDI adopted  2,185      3 ADOP BOTH  2,185   -- the only ADOP value attested
+    2 PEDI foster     781
+
+**Adoption's attested shape**, on the child's `INDI`, read out of a real Geni export rather than
+composed:
+
+    1 FAMC @F...@
+    2 PEDI adopted
+    1 ADOP
+    2 FAMC @F...@
+    3 ADOP BOTH
+
+**Divorce** is `1 MARR` with its `DATE`/`ADDR` then `1 DIV`, inside the `FAM`.
+
+`foster` is attested 781 times in the corpus and appears in **zero** path strings, so it needs no
+handling until one turns up — which is the kind of thing only measuring the corpus tells you.
+
+**The critical path is the data**, and it is running: the Chinese root's `Descendants`, its three
+Monte Carlo hits, the rest of the program, and the path/chain campaign.
