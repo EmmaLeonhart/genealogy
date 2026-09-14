@@ -42315,3 +42315,24 @@ measured over 65 balls, 8 of the 9 subjects that were inside an existing ball re
 
 So the census number was real and the person is genuinely saturated; we simply already have them.
 Adasi's **second** hit, `6000000015507447504` at 6,975, is clear and is climbing now.
+
+## 2026-09-14 — ben Ovadya was NOT cleared: I read the Inca's result as its own
+
+**The round had two hits and I reported zero.**
+
+    15,000  6000000008671626582
+     5,024  6000000000756359120
+     1,555 / 1,298 / ... 18 zeros of 40
+
+`reports/ben-ovadya-montecarlo-round.tsv`, copied off the drain file that had been sitting in
+`Downloads` since 23:52 and that **I never opened**. What I read instead was `window.__sweep`,
+which still held the **Inca's** result — `{read: 37, hits: []}` — because the ben Ovadya drain
+had not finished when I looked. 37 is the Inca's count; ben Ovadya read 40.
+
+So a root with a 15,000 and a 5,024 sitting in it was announced as cleared on another root's
+numbers. **ben Ovadya is live and owes two climbs.**
+
+**The fix is to read the file, not the variable.** The drain writes the readings to disk
+precisely so there is an artefact to check, and then I checked the in-memory object instead —
+which is the same class of error as trusting the dashboard icon for readiness an hour earlier.
+Both times a durable artefact existed and I read a volatile proxy.
