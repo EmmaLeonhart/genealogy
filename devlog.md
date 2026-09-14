@@ -41577,3 +41577,35 @@ Münsterberg export and the campaign generally — is untouched and still owed.
 * § *Another item — export descendants of these six* — the climbs are 6/6 as of today, but
   Pietro Antonio di Capua and Jacques Grimaldi still owe their `Descendants` balls. Half-done is
   not done.
+
+## 2026-09-13 — the first 90 chains, and a correction to the harvest's oldest row
+
+**`reports/path-chains.tsv` — 3,220 steps over 90 chains, naming 1,208 distinct people.**
+`scripts/merge-path-chains.py` merges the browser's blob dumps into it, deduplicating on
+`(to_id, kind, step)` with the last dump winning, which is § *later sources win value conflicts*
+applied to a live source. **13.4 distinct people per chain** on the first ninety, against the
+20.7-per-path measured over the first hundred of the old method — the same order, and these cost
+one `fetch` each instead of a page load and a held tab.
+
+**The correction.** The last entry said the harvest's oldest rows were *18 April 2022*. That was
+a string sort, not a date sort, and it is wrong. 2022 in `reports/geni-paths-harvest.tsv` is
+**29 January, 57 February, 3 April** — 89 rows, and the oldest are **10 and 15 January 2022**.
+
+**The harvest itself is complete, and that was checked rather than assumed.** `/paths` has since
+grown to 98 pages, so the oldest rows now sit on a page that did not exist when it ran. All
+**19** ids on page 98 are present in the harvest. Nothing was missed and nothing has yet rolled
+off.
+
+**The bank rate is 31%, not 60%.** `/paths` went **2,885 → 2,929** while 141 people were
+requested: 44 new rows, so about three in ten requests produce a path Geni is willing to save.
+The rest either have no relationship it can find or it gives up. At that rate the ceiling is
+further off than feared — roughly 2,070 rows of headroom if the cap is 5,000, which is about
+6,700 more people and **17 hours** at the current pace.
+
+**Not done this tick, and it is a ruling and not a slip:** § *THE WHOLE PROGRAM* wants the eight
+untouched seeds at full three-step, Forest plus Monte Carlo on Genghis, the Aztec and the Inca,
+and more rounds on Näf, ben Ovadya and Dál Fiatach. **The export queue was closed hours ago** —
+*"I kind of want to finish all of the queued ones and not queue up anymore"*, then *"we are
+adding the Adasi one. I am not committing to anything more with this."* Those seeds are new
+queueing. They are not started. Pietro Antonio di Capua also still holds Geni's serial slot, so
+no export could start regardless.
