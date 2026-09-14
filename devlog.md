@@ -42392,3 +42392,27 @@ nearly a whole root.
 worked toward the next export rather than idling — which is the Sanches lesson applied.
 
 Tonight so far: **Aztec 10,861 + Sanches 951 + Adasi 830 + ben Ovadya 3,501 = 16,143 new people.**
+
+## 2026-09-14 — 96.8%: the best ball of the campaign, on the root that was written off
+
+    task     6000000227747207979, seed 6000000227747591836
+    subject  6000000000756359120, 5,024 on the census
+    filed    exports/ben-ovadya-descendants/export-Descendants-6000000227747591836.ged
+    newness  4,839 new (96.8%) out of 5000, corpus 1,661,868 -> 1,666,707
+
+**96.8% is the highest of any ball in this campaign**, past the Aztec banked hit's 81.5%. Nearly
+every person in a 5,000-person export was new to the tree.
+
+**Both of ben Ovadya's hits were live and both returned enormously** — 70.0% and 96.8%, 8,340
+people between them — on the root announced as cleared a few hours ago because
+`window.__sweep` still held the Inca's `{read: 37, hits: []}` when it was read. The file the
+drain had already written said 40 read and two hits.
+
+    a root declared finished on another root's numbers:  8,340 people
+    the cost of checking the file instead of the object:  one `cat`
+
+**And the census number still does not predict yield.** The 5,024 returned 4,839 new; the 15,000
+on the same root returned 3,501. Across tonight: 5,086 → 81.5%, 12,786 → 69.8%, 6,927 → 65.7%,
+5,024 → 96.8%, 15,000 → 70.0%, 6,975 → 16.6%. The eighth property to fail.
+
+Tonight: **Aztec 10,861 + Sanches 951 + Adasi 830 + ben Ovadya 8,340 = 20,982 new people.**
