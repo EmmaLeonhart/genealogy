@@ -42589,3 +42589,30 @@ exactly where a descent is small. The two Chinese hits make the contrast cleanly
 
 Recorded as an observation, **not** as a rule: one pair is not a measurement, and this repo has
 refuted nine properties that looked like predictors on similar evidence.
+
+## 2026-09-14 — the Chinese root closes, and four of seven roots are closed ON THE CONDITION
+
+    round 2: 39 read, top 228, 17 zeros, ZERO at or above 4,000
+
+`reports/chinese-montecarlo-round2.tsv`, confirmed from the file. Round 1 found two candidates at
+the 15,000 ceiling; round 2 found nothing over 228. The root closes.
+
+**Where the seven roots actually stand, by the stopping condition rather than by feel:**
+
+    CLOSED -- a round returned zero at or above 4,000
+      Aztec        round 2 empty        10,861 new over four balls
+      Inca         first round empty    nothing; 85% of its descent was already held
+      Jimmu        one reading of 3,190, and its other candidate would not load
+      Chinese      round 2 empty         1,208 new over two balls
+
+    NOT CLOSED -- their last round returned hits, and the condition is a round returning NONE
+      ben Ovadya   round returned 2, both spent (8,340 new)
+      Adasi        round returned 2, one spent (830 new), one a collision
+      Abul Hamza   round returned 1, spent (2,874 new)
+
+**Three roots owe a confirming round each.** Calling the campaign finished here would be exactly
+the failure `CLAUDE.md` § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED FROM THE FIRST SLICE*
+describes, and ben Ovadya has already demonstrated tonight what happens when a root is closed
+early: it was announced cleared on another root's numbers and then returned 8,340 people.
+
+Running those three rounds before the cron comes down.
