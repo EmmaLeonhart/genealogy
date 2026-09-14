@@ -42468,3 +42468,21 @@ how much of the trunk is already ours, not whether what remains is thin.
 left unexported — went into the slot immediately as task `6000000227748459031`.
 
 Tonight: **24,967 new people**, corpus 1,645,725 → 1,670,692.
+
+## 2026-09-14 — Bettencourt: 3,130 new (62.6%), and Abul Hamza's banked pair is finally spent
+
+    task     6000000227748459031, seed 6000000227738961944
+    filed    exports/abul-hamza-descendants/export-Descendants-6000000227738961944.ged
+    newness  3,130 new (62.6%), corpus 1,670,692 -> 1,673,822
+
+**Both ancestors climbed on 2026-09-13 and left unexported are now filed** — d'Esneval at 1,111
+and Bettencourt at 3,130, **4,241 people** that had been sitting behind a created profile for a
+day. Both had been `--descent`-verified at **0 held**, and both returned thousands, which is the
+Sayaluna finding twice over: zero held means the corpus lacks the structure, never that the
+people are not there.
+
+Emma's own request, `6000000227739695943`, went into the slot straight after as task
+`6000000227749006822`. It had been queued since the Sanches `Forest` seized the slot for two
+hours and was submitted the moment the campaign's own balls cleared out.
+
+Tonight: **28,097 new people**, corpus 1,645,725 → 1,673,822.
