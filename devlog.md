@@ -42703,3 +42703,33 @@ Abul Hamza at 73% blocked still gave 2,874 from one hit.
 **The path campaign ran underneath all of this and needed nothing**: 4,861+ people requested at
 zero cost to the export slot, 9,716 requests, 6 failures — all HTTP 500s on three profiles, no
 nonce expiry in a night — and all 2,885 harvested chains fetched and turned into tiny GEDCOMs.
+
+## 2026-09-14 — the `/paths` ceiling is REAL and it has started dropping rows
+
+**Emma's prediction was right and the harvest-before-requesting order is what saved the data.**
+*"I think it is gonna cap out around 5,000 or 15,000 and then delete the old ones."*
+
+    2026-09-13, first harvest    97 pages    2,885 rows
+    2026-09-14, second harvest  200 pages    6,198 rows
+    rows in the first that are GONE from the second:  132
+
+    the 132 by year:  2022 x17   2024 x85   2025 x9   2026 x6   undated x15
+
+**Seventeen 2022 rows and eighty-five 2024 rows have already rolled off**, and those are the
+category she named as the reason to harvest at all: *"there are some 3,000 in there dating back to
+2022 and I want to preserve those ones."* They exist now only in this repo.
+
+**`reports/geni-paths-harvest.tsv` is now CUMULATIVE, not a snapshot** — 6,107 rows carrying a
+`first_seen` column, 2,885 seen on the 13th and 3,222 new on the 14th, and the 132 that have since
+disappeared from Geni are still in it. A snapshot would have silently deleted them on this very
+re-harvest, which is the shape of mistake that would have been impossible to notice later.
+
+**The requester is what pushed it over.** 6,762 people requested at ~31 rows a page means the list
+grew by 3,313 entries while ~3,900 of the oldest were still in range, so the ceiling sits somewhere
+around **6,200 live entries** — the low end of the predicted band.
+
+**Re-harvest cadence is therefore not optional.** At the current rate the list turns over roughly
+every 6,000 requests, so a harvest has to land between every pair of chunk runs, not at the end.
+
+**5,813 chains are now queued for fetching** — every harvested permalink whose chain is not
+already in `reports/path-chains.tsv`, 20 chunks at one every 4 seconds.
