@@ -43092,3 +43092,46 @@ was false.
 **The fix is in the harvester, not in a file format:** dedupe on permalink and re-walk until a
 pass adds nothing, rather than trusting a single ordered sweep of a list that is being written to
 while it is read.
+
+## 2026-09-14 — the queue restructured: the path collection is background, the saved pages are first
+
+*"the paths collection being the first item made it so that you had a tendency to not do other
+stuff... make it be a background assumption that we are running the path collection."*
+
+**The diagnosis is correct and the evidence is this log.** Every work-loop tick for hours read the
+first item, found the path campaign, checked that it was still running, merged its output and
+stopped. That is a passive task dressed as the priority, and it crowded out everything else.
+
+**What changed in `queue.md`:**
+
+* § *THE WIKIDATA TRAIL SCRAPE* is gone as the first item. In its place, § *THE PATH COLLECTION IS
+  A BACKGROUND ASSUMPTION* — it runs, it needs no attention, checking on it is not work.
+* **Pinned as the very last item**: restart the path collection if it has stopped, with the
+  scratchpad chunk paths written down so a restart costs nothing. *"Its stopping is not an
+  emergency and not a reason to work on it."*
+* **The new first item is the saved pages** — extract, verify, delete.
+
+## `emmas-files/` — extracted and deleted
+
+    38 saved pages -> 4,596 steps, every one carrying its relation word
+    merged: reports/path-chains.tsv 75,613 -> 79,066 rows, 13,397 distinct people
+    manifest: reports/emmas-files-extraction-manifest.tsv, one row per file
+
+**The long ones Emma captured by hand are the point**: 孔垂長 at **252 steps**, Solomon at 240,
+`puyi nn tibet` at 231, Vidarbha at 171, Puyi at 131, Jimmu's 109. She saved them because the
+agent was failing to capture rendered chains — *"I am just gonna say I am saving them manually in
+a directory and you solve it later."* Solved.
+
+**`scripts/extract-saved-path-pages.py`** does it, and the bug worth recording is that the first
+attempt reported **zero relation words on all 38 files**. The markup nests the parentheses in
+`<span class="clipboard-only">` elements, so a pattern matching literal parens around the subtext
+matches nothing. Strip the tags inside the subtext instead of matching around them.
+
+**Deleted with `git rm`, so every file remains in history.** The manifest records per file how
+many steps came out and which target id, so the deletion is auditable rather than asserted —
+§ *VERIFY BEFORE DELETING, ALWAYS* is now written into the queue item.
+
+**`paths/` is NOT touched and must not be.** *"I'm pretty sure you found a random paths or a
+random directory called paths and then assumed that was our operating directory."*
+`scripts/build-tiny-gedcoms.py` does read `paths/*.tsv` and 692 of the 2,834 files predate this
+session — but whether that is the intended home is Emma's to say, and the queue item says ask.

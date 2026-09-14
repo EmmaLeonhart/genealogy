@@ -10,38 +10,51 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
-### ⛔⛔ FIRST ITEM: THE WIKIDATA TRAIL SCRAPE. Ruled 2026-09-13, and it runs ALL NIGHT.
+### ⛔ THE PATH COLLECTION IS A BACKGROUND ASSUMPTION, NOT THE FIRST ITEM. Ruled 2026-09-14
 
-*"can you actually put a wikidata trail scraping thing as the first queue item and work on it all
-night?"*
+*"I think the paths collection being the first item made it so that you had a tendency to not do
+other stuff... change up the queue item to make it be a background assumption that we are running
+the path collection."*
 
-**This moves the isolate path campaign from last to FIRST.** It does not weaken the gate — the
-gate said the isolates must be attempted before Wikidata editing resumes, and doing them first
-satisfies that sooner. § *Wikidata isolate connection* at the end of this file is unchanged and
-still holds stage 3; what changed is that stages 1 and 2 swap.
+**It runs. It needs no attention. It is not the thing you work on.** The requester and the chain
+fetcher live in the geni.com tab, read their target lists off disk in chunks, and resume
+themselves. Checking on them is not work; the only queue item about them is the restart check
+pinned at the very end of this file.
 
-**The loop is `docs/collector-run-loop.md` and there is no discretion in it.** The agent lands on
-`https://www.geni.com/people/x/<geni id>` and dispatches `{job:"individual", geni_id}`. Everything
-after that — family scrape, path request, the watcher, expanding the short path, the statistics
-gate, whether an ancestor is created and a `Forest` export run — is inside
-`geni-extension/content/individual.js`. **Both ties, always**: a blood chain and a marriage chain,
-and a blood miss with no path is not done.
+State as of 2026-09-14: 8,000+ people requested with 12 failures, 2,150 chains fetched, 2,807
+tiny path GEDCOMs, 773 isolates reached.
 
-**The roster and who is eligible.** `reports/unconnected-p2600.tsv`, 265,386 rows, rebuilt by
-`tree.yml`. `last_attempted` carries two placeholder dates rather than real ones —
-`2026-01-01` for never attempted, and a 30-day cooldown after a real attempt:
+⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
+is the extension's, never a sleep in the agent.
 
-    2026-01-01   223,952   eligible now -- THE POOL
-    2026-10-31    41,239   the CBDB people, PARKED ON PURPOSE by scripts/park-cbdb-attempts.py
-    real dates       195   attempted 2026-09-06 to 2026-09-12, inside the 30-day cooldown
+### ⛔ FIRST ITEM: THE SAVED PAGES — EXTRACT, VERIFY, DELETE
 
-The future date is not a defect and was checked before it was treated as one: `park-cbdb-attempts.py`
-writes it deliberately and `PARK = "2026-10-31"` is its own constant. **Leave them parked.**
+*"go on the actual page we were supposed to go to, to gather up all the paths and turn them into
+tiny GEDCOM files, and also to collect the paths from the emmas-files directory that I made
+because I was extremely frustrated with you. Once you have successfully gotten all of the paths
+from that particular directory, I would like you to just delete that directory wholesale... as
+opposed to getting the repository to be more clean in its structure."*
 
-⛔ **PACE IT.** A census read is a real page load and 500+ back-to-back on 2026-09-12 got the
-account CAPTCHAd — *"hold on we are getting throttled"*. The stagger is the throttle and it is
-the extension's, not a sleep in the agent.
+**a. `emmas-files/` — DONE 2026-09-14.** 38 saved pages, 4,596 steps, every one carrying its
+relation word, merged into `reports/path-chains.tsv`. `reports/emmas-files-extraction-manifest.tsv`
+records per file what came out of it. Directory deleted; the files remain in git history.
 
+**b. `geni-scraping/` — 1,555 saved profile pages.** Run the immediate-relatives scrape over every
+one, extract what they hold, verify per file the way `emmas-files/` was verified, then delete the
+directory. Emma: *"we definitely need to be on these items, on all these pages that we have
+locally saved, running the immediate relatives scraping thing on them, but we'd be deleting them."*
+
+**c. `paths/` — 2,834 `.tsv` files, AND EMMA DOUBTS IT IS OURS.** *"that paths directory is so
+stupid, I'm pretty sure you found a random paths or a random directory called paths and then
+assumed that that was our operating directory."* ⛔ **ASK BEFORE TOUCHING IT.**
+`scripts/build-tiny-gedcoms.py` reads `paths/*.tsv` and is documented as doing so, and 692 of the
+files predate this session — but whether that is the intended home, or something inherited and
+then built on, is hers to say and not to be resolved by inference.
+
+**d. Then the other queue items.**
+
+⛔ **VERIFY BEFORE DELETING, ALWAYS.** A directory deletion is not undone by an apology. Every
+file must be shown to have yielded its content, per file, in a committed manifest — not asserted.
 
 ### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
 
@@ -1729,3 +1742,20 @@ I would like us to just never actually apply names and given names to Roman peop
 This person https://www.geni.com/people/konenes-navn/6000000007645527815 had the wrong name applied
 
 Oh my god his name is Peter why did you not fucking update the naming shit after I asked you about it a million times https://www.wikidata.org/wiki/Q141451100
+
+## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
+
+Ruled 2026-09-14: *"have the very last queue item be one that would be to restart the path
+collection in the event that the path collection ended up stopping."*
+
+**This is the only queue item about the path collection.** Everything else about it is a
+background assumption, per the top of this file.
+
+    check   window.__pathrun.running and window.__chains.running in the geni.com tab
+    if the tab was lost, re-establish both from the scratchpad chunk files:
+      scratchpad/path-chunks/chunk-NNNN.txt   the requester's 2,000-id target lists
+      scratchpad/perma2/perma-NNNN.txt        the fetcher's permalink lists
+    the runner resumes from a chunk, so nothing already requested is requested again
+
+**Its stopping is not an emergency and not a reason to work on it.** Restart it, go back to the
+first item.
