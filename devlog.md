@@ -42733,3 +42733,26 @@ every 6,000 requests, so a harvest has to land between every pair of chunk runs,
 
 **5,813 chains are now queued for fetching** — every harvested permalink whose chain is not
 already in `reports/path-chains.tsv`, 20 chunks at one every 4 seconds.
+
+## 2026-09-14 — 938 chains, 1,621 tiny GEDCOMs, and the first measure of what this is FOR
+
+    path-chains.tsv    31,913 rows over 938 chains, 5,749 distinct people
+    tiny-paths         1,315 -> 1,621 .ged, still zero invented people
+    chain fetcher      643 of 5,813, chunk 3 of 20
+    requester          7,126 people, 10 failures, chunk 4 of 133
+
+**The number that matters is not the chain count, it is the reach into the worklist:**
+
+    chains fetched for                              900 distinct targets
+      of those, on the unconnected-P2600 worklist    201
+    distinct people named across all chains       5,749
+      of those, on the worklist                      250
+
+**201 isolates now have a saved relationship chain, and the chains name 250 worklist people in
+total** — 49 of them appearing as steps in somebody else's path rather than as the target of their
+own. That second group is free: they were reached without anyone requesting a path for them.
+
+That is the whole thesis of § *Wikidata isolate connection* — *"a Geni relationship path is the
+only evidence in this repo that comes from OUTSIDE our own data"* — showing its first measured
+return. Each of those 201 is a `P2600` holder who was disconnected and now has a named chain to
+the viewer, in a tiny GEDCOM keyed on the Geni id.
