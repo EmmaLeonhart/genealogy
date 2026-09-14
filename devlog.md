@@ -42983,3 +42983,75 @@ Tibetan kings, a Jurchen progenitor and six Manchu clans that the tree did not p
 A ball is judged by what it connects, not by how much it weighs.
 
 The `Forest` on the same person is queued behind it and fired automatically when the slot cleared.
+
+## 2026-09-14 — NN Qiao's Forest: 4,848 new (97.0%), the highest of the session
+
+    task     6000000227755426862, seed 6000000227755360902
+    filed    exports/qiao/export-Forest-6000000227755360902.ged
+    newness  4,848 new (97.0%), corpus 1,679,837 -> 1,684,685
+
+**The pair on one person is the finding:**
+
+    Ancestors   539 people,     123 new   22.8%
+    Forest    5,000 people,   4,848 new   97.0%
+
+**Climbing reached ancestry the corpus already had; spreading sideways reached a world it did
+not.** The Yarlung kings and the Purāṇic line above them are shared inheritance already present
+through other roots — hence 22.8%. The Qing and Manchu families around this person are not in
+this corpus at all — hence 97.0%. Same person, same day, four times the newness by walking a
+different direction.
+
+This is the sharpest case yet of `CLAUDE.md` § *`Forest` follows spouse links and spends the 5,000
+slots sideways*, which is written there as a **warning** for the descendants campaign. It is the
+opposite of a warning when the point is to reach an unrepresented population.
+
+## 2026-09-14 — the Qing descent from antiquity: NOT a duplication, and already complete
+
+Emma, on the line through `Vidarbha 6000000022631921351`: *"The Chinese line is a duplication, as
+in the Geni profiles would need to be merged. Is this one like that?"* and *"look down their
+descendants to see if there's a point that is more coherent. This is not an entity resolution
+problem, there's more factual semantic content than you give credit for."*
+
+**She was right on both counts. The answer is no, and name-matching would have got it wrong.**
+
+**The false lead.** Three profiles carry the name: `Vidarbha 6000000022631921351` (hers),
+`VIDARBHA JYAMAGHA 6000000021169189816`, and `Vidharbhan 6000000012741490408`, and the first two
+sit in one export file, which looks exactly like a duplicate. **It is not.** Jyāmagha's Vidarbha
+is a **Yādava**, descending Yayāti → Yadu → Kroṣṭu. Reading the descendants instead of the name
+shows this chain is **Paurava**, descending Yayāti → Puru. Different branch, different person.
+
+**What reading downward actually showed.** The chain below her is unbranched for twelve
+generations and is the Ādi Parva king-list verbatim:
+
+    Vidarbha -> Susraba -> Abacheen -> Ariha -> Mahabhauma -> Ayutanayin -> Akrodhana
+      -> Devatithi -> Ariha II -> RICHEYU (Raudrāśva) -> Andhirasti -> Matināra
+
+and then down through Tansu, Ilina, **Bharata (Sarvadamana)**, Bhūmanyu, Suhotra, **Hastin,
+founder of Hastināpura**, Ajamīḍha, Ṛkṣa, **Samvaraṇa** — Kuru's father — into living Bengali
+Brahmin families named Bhattacharya and Ghosh.
+
+**The convergence point, and there is nothing to merge.** `RICHEYU 6000000030132699374` is **one
+profile carrying three fathers**:
+
+    Ariha              6000000022631993097   <- the Qing/Tibet line arrives here
+    RAUDRĀŚVA Ahamyāti 6000000030134163999
+    PRAVĪRA Puru       6000000030133324338   <- and this one climbs to Brahma
+
+Identical ids across every export. These are **three variant Purāṇic traditions on one profile**,
+not duplicate people, so the merge Emma asked about does not exist and must not be performed.
+
+**And the descent is therefore already complete in this corpus:**
+
+    Qing / Aisin Gioro -> Manchu clans -> Mongol Borjigit -> Tibetan Yarlung
+      -> NN 6000000227739695943 -> Vidarbha -> ... -> RICHEYU
+      -> PRAVĪRA Puru -> PURU Yayati -> YAYĀTI -> NAHUSHA -> ... -> BRAHMA
+      -> Nārāyaṇa 6000000220876233832
+
+It terminates at **Nārāyaṇa, which is the `exports/narayana/` root** — one of the campaign's own.
+Nobody had traced it because the join sits nine generations below Vidarbha, on a figure with
+three competing fathers.
+
+**Two things corrected in the course of this.** *"The line terminates"* was true only inside the
+Qiao ball; across the corpus it does not terminate. And `VASISHTA 6000000085325210142`, the top of
+the Yādava climb, has **no parents in any file** — so the branch that looked authoritative is the
+one that actually dead-ends.
