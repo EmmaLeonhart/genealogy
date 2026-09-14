@@ -1531,6 +1531,8 @@ https://www.geni.com/people/%EC%88%9C%ED%97%8C%ED%99%A9%EA%B7%80%EB%B9%84-%EC%97
 
 https://www.geni.com/people/private/6000000028895625641 https://www.wikidata.org/wiki/Q496421
 
+https://www.geni.com/people/Umayya-bin-Abd-Shams/5152366561060066977 https://www.wikidata.org/wiki/Q2746812
+
 ## Forest exports
 
 These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
