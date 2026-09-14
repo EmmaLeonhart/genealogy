@@ -1537,6 +1537,13 @@ https://www.geni.com/people/Caliph-Marwan-II-bin-Muhammad/6000000008659107006 ht
 
 https://www.geni.com/people/Adam-the-First-Man/6000000201847373856 https://www.wikidata.org/wiki/Q2001710
 
+## These all have geni ids but make them entry points in the gedcom
+
+https://www.wikidata.org/wiki/Q7877879
+https://www.wikidata.org/wiki/Q141455323
+https://www.wikidata.org/wiki/Q141455107
+https://www.wikidata.org/wiki/Q141455100
+
 ## Forest exports
 
 These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear

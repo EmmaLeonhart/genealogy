@@ -42756,3 +42756,22 @@ That is the whole thesis of § *Wikidata isolate connection* — *"a Geni relati
 only evidence in this repo that comes from OUTSIDE our own data"* — showing its first measured
 return. Each of those 201 is a `P2600` holder who was disconnected and now has a named chain to
 the viewer, in a tiny GEDCOM keyed on the Geni id.
+
+## 2026-09-14 — a memory kill, and the chain buffer gets a watchdog
+
+A background task was killed for low memory. **Nothing was lost** — the in-page chain buffer was
+drained on the spot and merged: `reports/path-chains.tsv` is now **33,423 rows over 987 chains,
+5,938 distinct people**.
+
+**The pressure is not this session's.** 3.8 GB free of 31.3, and the top consumers are Firefox at
+about 4 GB across its processes with Chrome at 3.65. Firefox is Emma's and was left alone.
+
+**What was this session's fault is a slow leak with a sharp edge**: the chain fetcher accumulates
+rows in the page and only writes them out when someone remembers to call `dump()`. A tab killed
+between drains loses everything since the last one — and at 4 seconds a chain that can be
+thousands of rows.
+
+`window.__dumpWatch` now writes the buffer to disk every time it passes **1,500 rows**, checked
+every 20 seconds, independent of the fetch loop it does not touch. The worst case is now 1,500
+rows rather than "however long since I last looked", which is the same class of fix as the
+download poller: stop relying on remembering.
