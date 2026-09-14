@@ -42524,3 +42524,23 @@ frame — and `docs/monte-carlo-procedure.md` fixes the frame as the trunk cut p
 
 Remaining: **the Chinese root's further Monte Carlo rounds**, the last item in
 `docs/descendants-campaign-loop.md`.
+
+## 2026-09-14 — the Chinese root's round: two hits, both at the 15,000 ceiling
+
+`reports/chinese-montecarlo-round.tsv`, confirmed against the file.
+
+    15,000  6000000063819051026
+    15,000  6000000054042411822
+     2,281 / 442 / ... 21 zeros of 39
+
+**Two candidates at Geni's display ceiling out of thirty-nine draws**, which is the richest round
+of the night — the Aztec's best round found one 12,786 and one 6,927. It is also the only root
+left whose trunk is not mostly ours: **26.0% blocked**, against 47.8% Inca, 73.0% Abul Hamza,
+84.0% ben Ovadya and 99.5% Jimmu.
+
+Its descent is **141,027** people, up from 120,878 before tonight's two post-merge refreshes, and
+the trunk cut takes generations 1–118 of it. Emma moved this root to last on the grounds that
+*"the important part of the Chinese stuff was just putting all this stuff into the privileged
+section"* — which was done hours ago — so everything from here is surplus to that purpose.
+
+Hit 1 is climbing under the 14,693-person denylist.
