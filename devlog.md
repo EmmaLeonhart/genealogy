@@ -41858,3 +41858,38 @@ it is written down at `f9076418` and here, and queueing it is Emma's call, not a
 * § *Export from these six first* — d'Esneval and Bettencourt still owe their balls.
 * § *`Q1934051`*, § *`P2600` constraint violations*, § *clan labels* — blocked on user action or
   explicitly *"nothing is investigated before the item is reached"*.
+
+## 2026-09-13 — the paths are tiny GEDCOMs now
+
+Asked plainly: *"Idk if you actually got the paths into tiny gedcoms yet."* **They were not.**
+What existed was the index and the steps, and nothing had become a GEDCOM:
+
+    reports/geni-paths-harvest.tsv   2,885 rows    from, to, kind, when, permalink
+    reports/path-chains.tsv            294 chains  profile ids, names, relation words
+
+**`scripts/split-path-chains.py`** closes it, and it is a *shape change and nothing else*.
+`scripts/build-tiny-gedcoms.py` already turns a `paths/<name>.tsv` into
+`exports/tiny-paths/<name>.ged` and already knows the things that are easy to get wrong — a
+sibling hop is a `CHIL`-only family that **invents no parents**, an `ex-husband` is a divorced
+family, a `fiance` is an engagement. Writing a second emitter would have duplicated all of that
+and then drifted from it.
+
+**One thing had to be filled in.** Step 0 of every chain is the viewer, and the rendered page
+prints her name with no profile link, so the harvest carries no id for her. The id is in the
+permalink's `from=` on every row, and without it the writer skips that row for having no `geni:`
+field and **the first edge of every chain is lost**. It is filled from the harvest.
+
+**Built:**
+
+    294 chains -> paths/isolate-geni-<to id>-<kind>.tsv    0 skipped
+    1,007 tiny path GEDCOMs in exports/tiny-paths/         up from 713
+    13,594 distinct Geni profiles named across them
+    invented people: 0 -- an unknown parent is an absent slot
+
+The Alan Rickman one is 25 `INDI` and 24 `FAM` off a single `fetch`, starting at the viewer and
+ending on exactly the id in the permalink's `to=`.
+
+**The relation words come through as Geni renders them** and `PATH_REL` reads the last one, so
+*your father* and *his father* both map to `parent`. A distance phrase — *3rd great grandson* —
+maps on `grandson`, which is not in the table, so the edge is **skipped rather than guessed**.
+That is the existing behaviour and this change does not second-guess it.
