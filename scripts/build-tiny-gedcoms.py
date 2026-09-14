@@ -83,9 +83,13 @@ PATH_REL = {
     "son": "child", "daughter": "child",
     "husband": "spouse", "wife": "spouse", "partner": "spouse",
     "brother": "sibling", "sister": "sibling",
+    # Geni also renders the sexless forms, and they were being dropped: 7 `parent` and 4 `child`
+    # rows across the harvested paths, each one a lost link in an otherwise complete chain.
+    "parent": "parent", "child": "child",
 }
 FORMER = re.compile(r"^ex-(husband|wife|partner)$", re.I)
-ENGAGED = {"fiancee", "fiance"}
+# The accented spellings are what Geni actually renders; the ASCII pair alone missed 7 rows.
+ENGAGED = {"fiancee", "fiance", "fiancée", "fiancé"}
 
 
 def fam_xref(members):
