@@ -42046,3 +42046,30 @@ handling until one turns up — which is the kind of thing only measuring the co
 
 **The critical path is the data**, and it is running: the Chinese root's `Descendants`, its three
 Monte Carlo hits, the rest of the program, and the path/chain campaign.
+
+## 2026-09-13 — Chinese root step 2 filed, step 3 climbing
+
+    task     6000000227741127857
+    filed    exports/post-merge/export-Descendants-6000000227036719829-refresh-20260913.ged
+    size     5,000 -- at the cap, seed confirmed as the first INDI
+    newness  0 new (0.0%) out of 5000
+
+Both halves of the pair are now re-exported into the privileged directory at 0% new, which is the
+predicted and wanted result on this root: *"mostly the same people... but they are correcting
+errors in the people."*
+
+**Step 3 is running** — a climb on `6000000003481830022`, the 15,000-descendant hit from the
+round, with the 14,682-person saturated denylist loaded and `exportWalk: descendants`.
+
+**⛔ AND A CENSUS SWEEP'S RESULTS MUST BE DUMPED TO DISK THE MOMENT IT FINISHES.** The round read
+15,000 / 5,320 / 5,142 / **4,459** / 189, and then `{type:"load"}` for the Descendants export
+wiped `results`. The three ids at or above 5,000 survive only because they had been written into
+a status report by hand; **the 4,459 one is lost** and re-reading it costs the whole forty-page
+sweep again. `load` clearing `results` is documented and I used it anyway without draining first.
+
+**And the threshold in `docs/monte-carlo-procedure.md` was wrong: 5,000, where the ruling is
+4,000.** *"you choose a random person of the 5,000 available candidates and check if they have
+5,000 descendants or more. I'm thinking, realistically, 4,000."* The page had copied the opening
+figure rather than the revision in the same sentence — the exact re-derivation the page exists to
+prevent. Fixed in both places, and it is not academic: at 5,000 that 4,459 candidate is not an
+export at all.

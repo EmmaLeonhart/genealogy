@@ -61,7 +61,7 @@ I read the directory, found balls, and wrote that it "now means more Monte Carlo
                    load -- `fetch` returns zeros because the stats block renders after load --
                    so a round is about eight minutes of page loads and that is the floor.
 
-    5  EXPORT      every candidate reading >= 5000 descendants gets a climb and a `Descendants`
+    5  EXPORT      every candidate reading >= 4000 descendants gets a climb and a `Descendants`
                    export off the CREATED ANCESTOR, per docs/export-seed-rules.md. Not the
                    candidate. Every one of them, in census order, no selection.
 
@@ -71,9 +71,20 @@ I read the directory, found balls, and wrote that it "now means more Monte Carlo
     7  REPEAT      the next round runs with the denylist rebuilt from step 2. Nothing else
                    changes between rounds.
 
+## ⛔ THE THRESHOLD IS 4,000 AND IT WAS WRITTEN HERE AS 5,000
+
+Ruled 2026-09-10 and recorded in `queue.md` § *Export from these six first*: *"you choose a random
+person of the 5,000 available candidates and check if they have 5,000 descendants or more. I'm
+thinking, realistically, **4,000**."* The first draft of this page said 5,000 in both places,
+which is the opening figure she then revised down in the same sentence — exactly the kind of
+number this page exists to stop anyone re-deriving. **4,000.**
+
+It is not academic: the first Huaxu round read 15,000 / 5,320 / 5,142 / **4,459** / 189, and at
+5,000 that fourth candidate is not an export.
+
 ## ⛔ THE STOPPING CONDITION IS GIVEN, NOT DERIVED
 
-**A round stops the root when it returns ZERO candidates at or above 5000.** That is the whole
+**A round stops the root when it returns ZERO candidates at or above 4000.** That is the whole
 test. It is not "the distribution looks like a cliff", not "the top reading is down", not
 "the pool is exhausted", not a count of rounds — every one of those is a judgement and every
 judgement of that shape made here has been wrong.
