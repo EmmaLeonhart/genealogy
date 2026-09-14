@@ -41534,3 +41534,12 @@ verdict on the person.
 
 Not queued. The export queue was closed hours later, and whether that closure reaches the
 descendants campaign is Emma's to say, not mine to assume.
+
+**Ruled the same evening:** *"uhh we are adding the Adasi one. I am not committing to anything
+more with this."* So the closure holds and **one row joins it** — `6000000008826548841`, the
+15,000 cap hit, which is a truncated ball by definition. The 6,975 is left out. Read as the
+singular it was said as; the campaign is not reopened by it.
+
+The export runs the campaign's way and not on the person directly: climb to create an ancestor
+above them, then `Descendants` on the created profile. It waits for the serial slot, which
+Pietro Antonio di Capua is holding.
