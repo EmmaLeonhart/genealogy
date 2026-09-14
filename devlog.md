@@ -42486,3 +42486,21 @@ Emma's own request, `6000000227739695943`, went into the slot straight after as 
 hours and was submitted the moment the campaign's own balls cleared out.
 
 Tonight: **28,097 new people**, corpus 1,645,725 → 1,673,822.
+
+## 2026-09-14 — Emma's requested export filed, and Jimmu's trunk is exhausted
+
+    task     6000000227749006822, seed 6000000227739695943
+    filed    exports/emma-requested/export-Descendants-6000000227739695943.ged
+    newness  412 new (8.2%), corpus 1,673,822 -> 1,674,234
+
+**Jimmu cannot field a full round.** 400 picks off its trunk returned **398 blocked — 99.5%** —
+against 4.8% for the Aztec, 47.8% for the Inca, 73.0% for Abul Hamza and 84.0% for ben Ovadya.
+Its trunk is 2,122 people and the saturated denylist covers all but a handful.
+
+`docs/monte-carlo-procedure.md` says a round is 40 candidates and the frame is always the trunk
+cut. **Neither is available here**, and the honest response is to read the two candidates that
+exist rather than either invent a substitute frame or declare the root finished without
+measuring. The stopping condition is still the given one — a round returning nothing at or above
+4,000 — and two candidates can answer it as well as forty when two is all there is.
+
+Tonight: **28,509 new people**, corpus 1,645,725 → 1,674,234.
