@@ -20,7 +20,7 @@ Cadence, staggered so the ticks do not collide:
 
 | job | cron | what it does |
 | --- | --- | --- |
-| work-loop | `3 * * * *` | drains `queue.md`, refills from `todo.md` |
+| work-loop | `0,30 * * * *` | works the FIRST item in `queue.md`, named in the prompt |
 | auto-flush | `15 * * * *` | commit/push backstop |
 
 They also **auto-expire after 7 days** even in a session that stays alive, so
@@ -35,14 +35,14 @@ and `queue.md` § "Always last" for the pinned tail items.
 
 ---
 
-## 1. work-loop — `3 * * * *`
+## 1. work-loop — `0,30 * * * *`
 
 ```
 Work-loop tick for the geni repo (C:\Users\Emma\Documents\GitHub\geni). In order:
 
 (a) SYNC — `git fetch origin`, then fast-forward or rebase main. Never force-push, never `reset --hard`, never discard another machine's work.
 
-(b) WORK — take the top actionable item from `queue.md` and do it. If nothing there is actionable (all BLOCKED-ON-USER-ACTION / NEEDS-DECISION), promote the next genuinely-unblocked, bounded, verifiable item from `todo.md` — plan it into `queue.md` first, mirror to the task tool, then execute.
+(b) WORK THE FIRST ITEM — the FIRST item in `queue.md` by position, named in this prompt. Not "the top actionable item": that phrasing sends the reader scanning the file and coming out on something unrelated. Only a genuine BLOCKED-ON-USER-ACTION moves you down, and then say which item you moved to and why. If nothing there is actionable (all BLOCKED-ON-USER-ACTION / NEEDS-DECISION), promote the next genuinely-unblocked, bounded, verifiable item from `todo.md` — plan it into `queue.md` first, mirror to the task tool, then execute.
 
 (c) HARD RAILS — never fake anything; never weaken, skip or delete a test to make it pass; never claim "works"/"verified"/"passes" without having actually run it and measured. A real defect gets a strict xfail or a precisely documented blocker, never a loosened assertion. Don't implement what you don't fully understand — write the queue item instead. Name unbuilt or hard things plainly.
 
