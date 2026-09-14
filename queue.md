@@ -1633,3 +1633,40 @@ string yet, so it needs no path handling until one shows up.
 **⛔ The capture is not the problem and must not be touched.** The relation string is
 `span.subtext`'s `textContent` — whitespace collapsed, parens stripped, nothing parsed. `q` would
 be stored as `q`. Every one of these is a re-run of the emitter, never a re-scrape.
+
+## `Forest` exports centred on people carrying the TAIL relationships in the TSVs
+
+Ruled 2026-09-13: *"put it at the end of the queue that... to do forest exports centred on people
+with the tail relationships for the TSV files."* Written down and **not started**.
+
+**Why a `Forest` and not a lookup:** a relationship we have never seen in a real Geni export has
+no attested representation, and § *no guessing on the representations* forbids composing one.
+The export centred on a person who **has** that relationship is what shows how Geni writes it.
+
+**The tail, counted off `paths/harvested-path-geni-*.tsv` on 2026-09-13.** The whole distribution
+is 33 distinct strings; these are the ones below the common six and their gender variants:
+
+    134  her adoptive mother        3  her child            2  his/her father
+     18  her ex-husband             3  his ex-wife          2  his parent
+     15  your relative?             3  his fiancée          2  her ex-partner
+     11  his partner                1  his child            1  his adoptive mother
+      5  his/her parent             1  her partner          1  his adoptive father
+      4  her fiancé
+
+**⛔ THE URGENT ONES ARE THE UNATTESTED ONES, and there are two kinds.**
+
+* **fiancé / fiancée — 7 rows, and `ENGA` occurs ZERO times in this corpus.** There is no shape to
+  copy, so they are currently emitted as a couple with no marriage event. This is the case Emma
+  described exactly: *"if there's some relationship that is only present in one spot, we have to
+  do a `Forest` export on that point in order to get that relationship so we know how to
+  represent it."*
+* **`your relative?` — 15 rows.** Geni itself is not naming the relationship, so a `Forest` on
+  those people is the only way to find out what the link actually is.
+
+**Already attested and needing no export** (`devlog.md` 2026-09-13 carries the measurements):
+adoptive → `FAMC` + `2 PEDI adopted` + `1 ADOP` + `3 ADOP BOTH`; ex- → bare `1 MARR` with bare
+`1 DIV`; partner → a `FAM` with no `MARR`. `foster` is attested 781 times in the corpus and
+appears in **no** path string, so it needs nothing until one turns up.
+
+Pairs with these relations are in `reports/path-chains.tsv`; the person to centre the export on
+is the one the tail word describes.
