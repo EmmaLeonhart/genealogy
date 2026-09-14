@@ -1533,6 +1533,10 @@ https://www.geni.com/people/private/6000000028895625641 https://www.wikidata.org
 
 https://www.geni.com/people/Umayya-bin-Abd-Shams/5152366561060066977 https://www.wikidata.org/wiki/Q2746812
 
+https://www.geni.com/people/Caliph-Marwan-II-bin-Muhammad/6000000008659107006 https://www.wikidata.org/wiki/Q128371
+
+https://www.geni.com/people/Adam-the-First-Man/6000000201847373856 https://www.wikidata.org/wiki/Q2001710
+
 ## Forest exports
 
 These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
