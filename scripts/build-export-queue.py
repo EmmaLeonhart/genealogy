@@ -10,6 +10,22 @@ Writes `reports/export-queue.csv`: one row per export still owed, naming the per
 runs ON and the walk it runs. **Two walks and no others** — `Forest` and `Descendants` — which is
 what the campaigns actually use of the five Geni offers.
 
+## ⛔ THE QUEUE IS CLOSED. Ruled 2026-09-13
+
+Emma, once the path GET was running: *"I still wanna complete the gedcom downloads... but I kind
+of want to finish all of the queued ones and not queue up anymore, because this new method
+doesn't really save anything from the pages, and as a result it is not going to get the census
+information, and we don't really want the census information at this point."*
+
+**41 were owed when the ruling landed and 37 of them were `isolates` Forests** — the exact
+category the path GET makes redundant. They were queued before anyone knew the GET existed. They
+still run, because she values the GEDCOMs; **nothing new joins them.**
+
+So `reports/export-queue-seeds.csv` takes no new isolate rows. What replaces the isolates Forest
+is the relationship path, saved into a tiny GEDCOM per person, and the interesting output is
+then **who could not be connected** — that population is the subject of the investigation
+after this one, not another export roster.
+
 ## ⛔ DERIVED, NEVER HAND-EDITED
 
 `CLAUDE.md` § *Progress is DERIVED, never stored*. A row disappears when its ball appears in
