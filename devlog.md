@@ -41543,3 +41543,37 @@ singular it was said as; the campaign is not reopened by it.
 The export runs the campaign's way and not on the person directly: climb to create an ancestor
 above them, then `Descendants` on the created profile. It waits for the serial slot, which
 Pietro Antonio di Capua is holding.
+
+## 2026-09-13 — dead-queue sweep: two finished items deleted
+
+**`/paths` — harvest Emma's saved paths.** Filed as *"after the main operations"*, then pulled
+forward the same day: *"I want you to right now harvest all of the relationships in the path
+thing... there are some 3,000 in there dating back to 2022 and I want to preserve those ones."*
+Done — `reports/geni-paths-harvest.tsv`, 97 pages, **2,885 rows**, 1,621 blood and 1,264 in-law,
+424 of them predating this year and the oldest three from **18 April 2022**. The item is deleted.
+
+**One clause did NOT leave with it.** The item also carried *"she is also saving interesting
+paths by hand into `emmas-files/`... neither is to be reconciled, renamed or reorganised"*, and
+that was the **only** place in the repo the prohibition was written — `grep` finds it nowhere
+else, not in `CLAUDE.md` and not in `docs/rules/`. Deleting the item wholesale would have
+deleted a standing instruction as a side effect of filing a finished one, so it now stands as its
+own item.
+
+**The de Lusignan ancestors export** — *"an ancestors export on this person
+`6000000227739381826` and then a forest on them before going back to this scheduled stuff"*,
+asked for because she feared the profile would be removed. Both are on disk:
+
+    exports/post-merge/export-Ancestors-6000000227739381826.ged
+    exports/post-merge/export-Forest-6000000227739381826.ged
+
+That line is deleted from § *Ancestor Exports*; the rest of the item — the Ursula von
+Münsterberg export and the campaign generally — is untouched and still owed.
+
+**Checked and NOT removed**, because the test is whether the work is finished:
+
+* § *Skjalgsson is dropped* — reads like a finished item and is a standing prohibition
+  (*"do not re-derive it from `reports/density.md` or from any roster"*).
+* § *`Q1934051`* — *"it is hers to rule on"*. Blocked on user action.
+* § *Another item — export descendants of these six* — the climbs are 6/6 as of today, but
+  Pietro Antonio di Capua and Jacques Grimaldi still owe their `Descendants` balls. Half-done is
+  not done.

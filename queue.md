@@ -1280,24 +1280,15 @@ Q110410743	P734	LAST	S2600	"6000000105706792946"
 Please stop adding this to the first name in the given names. I do not think it is actually accurate most of the time. Leave it lying around do not try to fix it do not assess anything related to the population affected just drop this item of the pipeline
 
 
-## `https://www.geni.com/paths` — HARVEST EMMA'S SAVED PATHS. AFTER THE MAIN OPERATIONS
+## `emmas-files/` — HERS, AND NOT TO BE TOUCHED
 
-Ruled 2026-09-13: *"in the end after all of this stuff is over you can also use this page
-https://www.geni.com/paths to find all of the saved paths from me to other people. That is more
-of a long term thing but it is there and will be a great resource to look through after these
-main operations are completed."*
+She saves interesting paths by hand into `emmas-files/` and changes the anchor as she goes.
+**Neither is to be reconciled, renamed or reorganised**, and an anchor change is not an event.
+Explaining what is in there and how it relates to `geni-paths/` is still owed and is a long way
+out; the prohibition holds until then.
 
-**Not now.** It is listed here so it is not lost, and it sits above the isolate gate because it
-is a harvest of work already done rather than new collection.
-
-**Why it keeps:** a path from Emma to someone else is **durable** — *"paths from me to someone
-else are highly robust and last years"* — so `/paths` is a store that does not decay and cannot
-be raced. The ephemeral ones are third-party anchored, X to Y, and those are captured as they are
-found. `geni-paths/README.md` carries the distinction.
-
-She is also saving interesting paths by hand into `emmas-files/` and changing the anchor as she
-goes. **Neither is to be reconciled, renamed or reorganised until this item is reached**, and an
-anchor change is not an event.
+This clause used to live inside the `/paths` harvest item. That item is finished, and the
+prohibition is not, so it keeps its own place rather than leaving with it.
 
 ## Wikidata isolate connection
 
@@ -1504,8 +1495,6 @@ Grok says that https://www.geni.com/people/Alix-de-Lampron/6000000006101354745 s
 At the end of the queue after all other things are done I want to do some specific ancestor export campaigns. 
 
 Ancestor exports from certain specific people to get their ancestors
-
-Export from this one fast as I am afraid it will be removed soon https://www.geni.com/people/NN-de-Lusignan/6000000227739381826
 
 try this one https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064
 
