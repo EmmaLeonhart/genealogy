@@ -42294,3 +42294,24 @@ first was the 6h30m one that caused three misdiagnosed `no_such_walk` failures. 
 `Forest` walks. `Forest` follows spouse links, so its cost is the size of a connected component
 rather than of a descent, and NN Sanches sits in the Aztec/Inca region where tonight's work has
 just added ~11,000 people.
+
+## 2026-09-14 — climbing while the slot is blocked, and the Adasi cap hit is a collision
+
+**Asked directly: *"why can't you climb while waiting?"* There was no good reason.** A climb costs
+page loads and a profile creation; it does not touch Geni's export slot. What blocked it was my
+own retry loop, which resubmits the queued export every two minutes and whose `{type:"load"}`
+wipes the extension queue — so a climb started underneath it would be destroyed mid-walk.
+
+Fixed surgically rather than by restarting anything: `window.__ask` is wrapped to swallow **only**
+that one retry `load` while `__holdRetry` is set. The path requester kept its place (chunk 2,
+1,031 remaining, 2,969 people done) and the extension queue is free for climbs.
+
+**And the first climb attempted came straight back `collision_skipped`.**
+`6000000008826548841` — the 15,000 census reading, the one row Emma added to the closed queue
+with *"we are adding the Adasi one"* — **is already inside a `Descendants` ball under
+`exports/adasi`**. The guard refused to climb rather than spend a slot on it, which is right:
+measured over 65 balls, 8 of the 9 subjects that were inside an existing ball returned **exactly
+1 new person out of 5,000**.
+
+So the census number was real and the person is genuinely saturated; we simply already have them.
+Adasi's **second** hit, `6000000015507447504` at 6,975, is clear and is climbing now.
