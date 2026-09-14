@@ -41414,3 +41414,32 @@ anyone was looking.
 **Also written, from the work-loop before the demonstration:** Adasi's reseed descent enumerated
 and its trunk roster cut, for the Monte Carlo that is all that remains of § THE WHOLE PROGRAM
 part 1. Not run — the browser was being held clear.
+
+## 2026-09-13 — `/paths` harvested: 2,885 relationships, back to April 2022
+
+*"the paths thing does contain some relationships I cared about from a very long time ago, there
+are some 3,000 in there dating back to 2022 and I want to preserve those ones."*
+
+**`reports/geni-paths-harvest.tsv`** — every row of `https://www.geni.com/paths`, 97 pages at 30
+a page, read at one page per 700 ms. **2,885 rows, zero errors.**
+
+    blood    1,621        2022    89
+    in-law   1,264        2024   262
+                          2025    73
+                          2026 2,130
+                          undated 331
+
+    oldest: Johannes Osmundsen, Amund Jonsen Gabestad, Jon Gabestad -- April 18, 2022
+
+**424 rows predate this year**, and those are the irreplaceable ones: Emma's own saved paths,
+viewer-anchored and therefore durable on Geni's side — but only until the list rolls over, which
+she expects somewhere between 5,000 and 15,000 entries. At 2,885 the oldest are not yet at risk;
+after a bulk request run they would be.
+
+**Each row carries the permalink** (`https://www.geni.com/path/…`), so the chain itself can be
+fetched later per row. This harvest preserves *that a path exists, between whom, of which kind,
+and when it was taken* — the index, not the chains. Fetching 2,885 chains is a separate and much
+larger job, and the index is what stops them being lost to the rollover.
+
+**Ordering ruled:** preserve first, then request. *"once they are preserved then we barrel
+through and try to at a slow and steady (and thus fast) rate request paths on all the isolates."*
