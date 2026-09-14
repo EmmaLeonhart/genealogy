@@ -42842,3 +42842,41 @@ chains without ever having been requested.
 For scale: the whole descendants campaign last night added **29,717** people across 12 exports and
 about eight hours of Geni's serial slot. The path campaign has added **4,402** off `fetch` calls
 alone, with the slot untouched and 4,176 permalinks still to fetch.
+
+## 2026-09-14 — WHY the paths work, measured: a chain spans as much ground as a 5,000-person ball
+
+Emma: *"the specific reason why the paths are so good is, first of all, they export quickly. But
+it's not just that they export quickly. It's that the algorithmic way that the paths are done
+makes it so that they have a higher tendency to explore new ground."*
+
+**That is right, and here is the number.** Indexing 1,671,042 people by which of the **50** export
+directories contain them, then asking how many directories each artefact spans:
+
+    artefact              people touched   directories spanned   directories per person
+    a relationship chain              35            median 14                    0.40
+    a Descendants ball             5,000            median 14                  0.0028
+
+**Identical reach. 143x fewer people to get it.**
+
+**Two tests that did NOT separate them, run first:**
+
+* *Unique people.* 63.9% of the people in a chain appear in no other chain — but balls are the
+  same or better (aztec 80.8%, ben Ovadya 99.2%, Abul Hamza 66.4% unique to one ball). Both
+  methods mostly visit their own ground.
+* *Newness rate.* 40.2% of everyone the chains name is new to the corpus, which is inside the
+  range individual balls returned last night (0.0% to 96.8%).
+
+**The thing that separates them is shape.** A `Descendants` ball is a dense local blob: 5,000
+people who are all descendants of one person, so it exhausts a neighbourhood and stops. A chain is
+a thin line that **must** bridge two distant parts of the tree, so it crosses whatever lies
+between — and what lies between is, by definition, ground neither endpoint's neighbourhood covers.
+
+**This is also why the campaign's yield does not saturate.** § *build-isolate-path-targets* already
+recorded 20.7 new people per path over the first 100 and **13.8 over paths 501-600**; the
+directory-span number says why: each new chain is still crossing 14 regions no single ball would
+have connected.
+
+**And it explains Emma's other observation** — *"oftentimes these people do actually have
+genealogical ties on Wikidata. They just don't have connections to the world tree."* A ball can
+only find people below someone we already hold. A path finds the route, which is the thing that
+was missing.
