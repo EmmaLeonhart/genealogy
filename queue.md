@@ -845,31 +845,38 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
     IT IS THE MOST IMPORTANT ONE.** *"Full three-step lol this is the most important one, and all
     gedcoms from it are considered privileged due to the merge history."*
 
-    **⛔ AND MOST OF IT IS ALREADY DONE — the roster table in `devlog.md` reads `- 0 0, all three
-    steps` for this root and that is STALE.** Checked against
-    `reports/descendants-export-log.csv` and `exports/post-merge/` on 2026-09-13:
+    **⛔ NEWNESS IS THE WRONG YARDSTICK ON THIS ROOT, AND "ALREADY ON DISK" IS NOT A REASON TO
+    SKIP A STEP.** Ruled 2026-09-13, after I looked at what was filed and decided *full
+    three-step* must mean *more Monte Carlo rounds*:
 
-        step 1  Forest        6000000227732606834   filed, exports/post-merge/
-        step 2  Descendants   6000000227732913835   filed, exports/post-merge/
-        step 3  Monte Carlo   4 hit balls filed off the TRUNK-restricted roster
+    *"The forest export and descendants exports are both probably going to be mostly the same and
+    not introducing new people, but they are correcting errors in the people. So it is very
+    important to keep them, it is very important to do these, even though it may seem like it is
+    not useful, because the Chinese one is qualitatively different in its utility than the other
+    ones."*
 
-    Its pre-merge pair is filed separately under `exports/chinese-clusters/`, and the post-merge
-    pair overwrites it — *newness is the wrong yardstick for these*, because the corpus already
-    holds those people under pre-merge duplicate ids and the merged structure is the deliverable.
+    **So all three steps run, on the root, every time this root comes up** — `Forest`,
+    `Descendants`, Monte Carlo — and a 0%-new ball is a success here, not a wasted slot. The
+    deliverable is the corrected structure, not the count.
 
-    **So what "full three-step" now means for this root is MORE MONTE CARLO ROUNDS**, until
-    diminishing returns. The frame is built: `reports/descent-from-6000000227036719829.csv` and
-    its `-gen1-115` trunk cut.
+    **⛔ AND A LOT OF EXPORTS WERE ALREADY TAKEN OFF THIS ROOT, AND SOME OF THEM ARE WRONG.**
+    *"we did a large amount of exports off of this one person... and some of them are going to be
+    wrong."* What is on disk under this root is therefore **not evidence that a step is done** —
+    it is a mixture of correct and stale balls, and re-exporting is how the stale ones lose.
+    `exports/post-merge/` wins by `sources._post_merge_last`, which is the mechanism that makes
+    that work without anyone having to decide which id was absorbed.
 
-    **Its balls go in `exports/post-merge/`**, which is the privileged directory — records there
-    win by `sources._post_merge_last`, so the tree carries Geni's current state after the merges
-    rather than the pre-merge duplicates. `scripts/multi-geni-item-roster.py` is the authority on
-    what that directory is for.
+    What is currently on disk, for the record and NOT as a reason to skip anything:
 
-    **⛔ AND EVERY INFERENCE I DREW ABOUT STOPPING THIS ROOT WAS WRONG.** *"I think we are done
-    with the Chinese thing"* and *"the Chinese one is perfectly fine to stop"* were about **one
-    stuck 6h30m export holding the slot**, which she said in the same breath, and she then said
-    directly: *"Everything you inferred was bad there."* The root was never dropped.
+        pre-merge    exports/chinese-clusters/     Forest + Descendants, 2026-09-12
+        post-merge   exports/post-merge/           Forest 6000000227732606834
+                                                   Descendants 6000000227732913835
+                                                   4 Monte Carlo hit balls
+
+    **⛔ AND IT IS A DROP-EVERYTHING ITEM.** *"the Chinese one was specifically a drop everything
+    and do this thing. This is the most important thing... this is a really important thing to
+    make it clear that you have to obey my instructions when I give them."* It takes the serial
+    slot ahead of everything, including anything already climbed and ready.
 
     ⛔ **SAMPLE PAST THE BOTTLENECK.** Huaxu's descent is 156 generations with 78.6% at
     generation ≤130, so a uniform sample reads *top 43, zero hits* while a trunk-restricted one

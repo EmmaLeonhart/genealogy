@@ -119,11 +119,19 @@ def rows():
         with SEEDS.open(encoding="utf-8") as fh:
             for row in csv.DictReader(fh):
                 gid = row["geni_id"]
+                # ⛔ A `repeat` ROW IS NEVER MARKED DONE. Ruled 2026-09-13 on the Chinese
+                # root: *"the forest export and descendants exports are both probably going to
+                # be mostly the same and not introducing new people, but they are correcting
+                # errors in the people."* Its balls being on disk is what `already_exported`
+                # tests, and on this root that is a mixture of correct and stale ones -- so the
+                # presence of a ball is not evidence the step is done, and the derived state
+                # has to be told so rather than inferring it.
+                repeat = (row.get("repeat") or "").strip().lower() in ("yes", "y", "1", "true")
                 out.append([gid, row.get("label", ""), row.get("walk", "Descendants"),
                             "descendants",
                             int(row.get("priority") or DEFAULT_PRIORITY),
                             row.get("why", ""),
-                            "done" if gid in done else "owed"])
+                            "owed" if repeat or gid not in done else "done"])
     return out
 
 
