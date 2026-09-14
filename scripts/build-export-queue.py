@@ -10,21 +10,30 @@ Writes `reports/export-queue.csv`: one row per export still owed, naming the per
 runs ON and the walk it runs. **Two walks and no others** — `Forest` and `Descendants` — which is
 what the campaigns actually use of the five Geni offers.
 
-## ⛔ THE QUEUE IS CLOSED. Ruled 2026-09-13
+## ⛔ NO NEW *ISOLATE* ROWS, AND DESCENDANTS OUTRANK FOREST. Ruled 2026-09-13
 
 Emma, once the path GET was running: *"I still wanna complete the gedcom downloads... but I kind
 of want to finish all of the queued ones and not queue up anymore, because this new method
 doesn't really save anything from the pages, and as a result it is not going to get the census
 information, and we don't really want the census information at this point."*
 
-**41 were owed when the ruling landed and 37 of them were `isolates` Forests** — the exact
-category the path GET makes redundant. They were queued before anyone knew the GET existed. They
-still run, because she values the GEDCOMs; **nothing new joins them.**
+**That closes the ISOLATES side and nothing else.** 41 were owed when it landed and **37 of them
+were `isolates` Forests** — the exact category the path GET replaces. They still run, because she
+values the GEDCOMs; no new isolate row joins them, and what replaces the isolates Forest is the
+relationship path saved as a tiny GEDCOM per person.
 
-So `reports/export-queue-seeds.csv` takes no new isolate rows. What replaces the isolates Forest
-is the relationship path, saved into a tiny GEDCOM per person, and the interesting output is
-then **who could not be connected** — that population is the subject of the investigation
-after this one, not another export roster.
+**⛔ IT DOES NOT CLOSE THE DESCENDANTS CAMPAIGN, AND READING IT THAT WAY WAS AN ERROR.**
+Corrected the same evening, directly: *"This is not a ruling that I made. I did not make the
+whole program is not started ruling. You did that."* § *THE WHOLE PROGRAM* is live — the eight
+untouched seeds, Genghis, the Aztec, the Inca, more rounds on Näf, ben Ovadya and Dál Fiatach,
+and `no-name` across rounds. New descendants seeds are queued as they are found.
+
+**⛔ AND THE ORDER IS DESCENDANTS FIRST.** *"the descendants export things beat the forest people
+later, if that makes sense."* The serial slot is the scarcest thing in this whole operation and
+`Descendants` is the walk the time-sensitive campaign needs — the descendants of these people are
+poorly documented and get removed abruptly. A `Forest` for an isolate now has a cheap substitute
+and can wait; a `Descendants` ball does not. So the sort puts every `Descendants` row above every
+`Forest` row, whatever campaign it belongs to.
 
 ## ⛔ DERIVED, NEVER HAND-EDITED
 
@@ -103,6 +112,9 @@ def rows():
     return out
 
 
+WALK_RANK = {"Descendants": 0, "Forest": 1}
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     all_rows = rows()
@@ -110,7 +122,10 @@ def main() -> int:
     with io.open(OUT, "w", encoding="utf-8", newline="") as fh:
         writer = csv.writer(fh)
         writer.writerow(COLUMNS)
-        writer.writerows(sorted(all_rows, key=lambda r: (r[5] != "owed", r[3], r[0])))
+        # owed first, then DESCENDANTS BEFORE FOREST -- ruled 2026-09-13, see the header.
+        writer.writerows(sorted(
+            all_rows,
+            key=lambda r: (r[5] != "owed", WALK_RANK.get(r[2], 9), r[3], r[0])))
     by_walk = {}
     for r in owed:
         by_walk[r[2]] = by_walk.get(r[2], 0) + 1

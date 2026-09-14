@@ -41609,3 +41609,42 @@ and more rounds on Näf, ben Ovadya and Dál Fiatach. **The export queue was clo
 adding the Adasi one. I am not committing to anything more with this."* Those seeds are new
 queueing. They are not started. Pietro Antonio di Capua also still holds Geni's serial slot, so
 no export could start regardless.
+
+## 2026-09-13 — the descendants campaign was never closed, and the queue had lost half of it
+
+**Two corrections, and both are mine.**
+
+**First: there was no ruling that § THE WHOLE PROGRAM is not started.** *"This is not a ruling
+that I made. I did not make the whole program is not started ruling. You did that."* What was
+actually ruled that evening was about the **isolates** side — *"this new method doesn't really
+save anything from the pages, and as a result it is not going to get the census information, and
+we don't really want the census information at this point"* — which is the path GET replacing
+the isolate `Forest`. I read *"I am not committing to anything more with this"* as closing the
+descendants campaign too. It was not, and the campaign is live.
+
+**Second: half the program had fallen out of `queue.md`.** The roster in `devlog.md` carried
+fourteen roots; the queue carried **part 1, one line of part 3, and part 4**. Missing entirely:
+
+    2   Genghis (Monte Carlo only)      Aztec (Forest then MC)     Aztec banked hit
+        Inca (more MC rounds)
+    3   NN ben Ovadya    Dál Fiatach    Hermenegildo    Narayana    Fihr
+        Confucius (MC)   Jimmu (MC)
+
+That is *"a bunch of stuff that's either queued or should have been queued that is not queued"*,
+and it is restored.
+
+**Third, ruled: DESCENDANTS BEAT FOREST FOR THE SLOT.** *"the descendants campaign stuff
+generally gives us actually useful information about, like, descendants of figures."* The isolate
+`Forest`s are not abandoned — *"we probably shouldn't be completely abandoning them"* — they
+simply never take Geni's one serial slot while a `Descendants` is owed.
+`scripts/build-export-queue.py` now sorts `WALK_RANK` before campaign, so every `Descendants`
+row sits above every `Forest` row whatever campaign it came from. Regenerated: **27 owed of 41**,
+2 `Descendants` and 25 `Forest`.
+
+**And the slot is currently holding a duplicate, which is my error.** I submitted `Descendants`
+on Pietro Antonio di Capua `6000000015633226273` himself. The campaign's rule is `Descendants`
+on a **created ancestor**, and that had already been done — `6000000227739183868`, its ball filed
+at `exports/abul-hamza-descendants/`. Pietro's own ball is a strict subset of it. It cannot be
+cancelled, so it will be filed and the count will show what a duplicate is worth. **The check
+that would have caught it is regenerating the queue before taking from it**, not reading the copy
+on disk, because the copy was built before those climbs landed.

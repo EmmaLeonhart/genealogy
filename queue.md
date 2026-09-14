@@ -851,15 +851,41 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
     descent, cut the frame the way `scripts/trunk-roster.py` does, and pass
     `--list-saturated exports/adasi` as the denylist.
 
-    **3. THE THREE LIVE ROOTS — KEEP GOING ON ALL THREE.**
+    **2. GENGHIS, THE AZTEC AND THE INCA.** Part 2, and it went missing from this file — the
+    roster in `devlog.md` had it and the queue did not, which is exactly the *"stuff that should
+    have been queued that is not queued"* Emma named on 2026-09-13.
+
+        Genghis                       Forest filed, Descendants ruled OUT   -> Monte Carlo only
+        Aztec / NN Mixcoamatzin       6000000209721868822, no Forest on disk -> Forest, then MC
+        Aztec banked hit              6000000021665410212, 5086, unspent    -> Descendants
+        Inca                          Forest + 2 Descendants filed, 1 MC     -> more MC rounds
+
+    **3. THE LIVE ROOTS — KEEP GOING ON ALL OF THEM.** Two of these were lost from this file too.
 
         6000000227712070008  NN Näf         more Monte Carlo rounds (80.1% then 26.8%)
+        NN ben Ovadya                       28,124 pool; one 5,708 hit banked, climbed
+        Dál Fiatach                         1 Forest, 8 Descendants, 7 MC balls -> more rounds
+        Hermenegildo                        1 Forest, 5 Descendants, 4 MC balls -> more rounds
+        Narayana                            thin: 33 consecutive width<=2 generations
+        Fihr                                sparse, not bottlenecked
+        Confucius                           Forest + Descendants filed, 0 MC -> Monte Carlo
+        Jimmu                               Forest + Descendants filed, 0 MC -> Monte Carlo
 
     **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
     already held and that is not a reason to stop, per the ruling above.
 
-  Nothing on this list is investigated, measured or seeded until the Wikidata paths are done —
-  `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+    **⛔ THIS IS NOT GATED BEHIND THE PATHS, AND SAYING IT WAS WAS AN ERROR.** Ruled 2026-09-13:
+    *"This is not a ruling that I made. I did not make the whole program is not started ruling.
+    You did that."* The paths run in the browser and the descendants campaign runs in Geni's
+    serial export slot; they do not contend for the same resource and both run at once.
+
+    **⛔ AND DESCENDANTS BEAT FOREST FOR THE SLOT.** *"the descendants export things beat the
+    forest people later"*, and *"the forest exports on the paths ... we have this list of good
+    people to export, and in my eyes we probably shouldn't be completely abandoning them, but
+    they aren't that high a priority relative to the descendants campaign, because the
+    descendants campaign stuff generally gives us actually useful information about descendants
+    of figures."* So the isolate `Forest`s keep their place in the queue and never take the slot
+    while any `Descendants` is owed. `scripts/build-export-queue.py` sorts on it.
 
 ---
 
