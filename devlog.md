@@ -42357,3 +42357,21 @@ the page; the button on it needs a navigation, not a click.
 walks, whose cost is the size of a connected component rather than of a descent. The queued
 `Descendants` sat behind it the whole time, and the retry loop that was arranged to catch the
 moment it cleared is what made the wait cost nothing but time.
+
+## 2026-09-14 — Adasi's only ball: 830 new, and the parallel climb worked
+
+    task     6000000227746333956, seed 6000000227746863827
+    subject  6000000015507447504, 6,975 on the census
+    filed    exports/adasi/export-Descendants-6000000227746863827.ged
+    newness  830 new (16.6%) out of 5000, corpus 1,657,537 -> 1,658,367
+
+**The climb ran while the slot was blocked and that is the whole point.** It took 37 minutes —
+21 `both_present` declines and two `collision_skipped` — entirely underneath the two-hour Sanches
+export, so the moment Sanches released the slot this export went straight in. No slot time was
+spent waiting for a climb. Emma asked *"why can't you climb while waiting?"* and the answer was
+that my own retry loop was wiping the queue; with that held, the two ran in parallel.
+
+**Adasi gets one ball, not two.** The 15,000 cap hit was `collision_skipped` — already inside a
+ball under `exports/adasi` — so the root's whole return is these 830 people.
+
+Next: **ben Ovadya's two hits**, 15,000 and 5,024, which were wrongly written off earlier.
