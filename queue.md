@@ -1715,3 +1715,5 @@ I would like us to just never actually apply names and given names to Roman peop
 ## wrong name
 
 This person https://www.geni.com/people/konenes-navn/6000000007645527815 had the wrong name applied
+
+Oh my god his name is Peter why did you not fucking update the naming shit after I asked you about it a million times https://www.wikidata.org/wiki/Q141451100
