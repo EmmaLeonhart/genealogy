@@ -42562,3 +42562,30 @@ number does not predict yield: tonight it has produced 96.8% from a 5,024 and 24
 15,000.
 
 Hit 2 climbed beside this one and its export is next.
+
+## 2026-09-14 — Chinese root hit 2: 1 new of 5,000, and the guard did not fire
+
+    task     6000000227750322855, seed 6000000227750261857
+    subject  6000000054042411822, 15,000 on the census
+    filed    exports/post-merge/export-Descendants-6000000227750261857.ged
+    newness  1 new (0.0%) out of 5000
+
+**One new person out of five thousand is the collision signature exactly** — measured over 65
+balls, 8 of the 9 that hit a collision returned precisely 1. But `collision_skipped` **did not
+fire**: the subject is inside no `Descendants` ball under `exports/post-merge/`, so the guard had
+nothing to catch.
+
+**This is the eleventh-collision shape**, already documented on `6000000004868946389`: a subject
+outside every ball whose **descent** is nonetheless already held, through `Forest` exports and
+other roots. `--descent` is the check that answers it and the ball test is only a proxy.
+
+**The tell was in the climb, and it is a new one.** This climb took **1 decline** and finished
+almost instantly, where every productive climb tonight took 8 to 37. A climb that finds an
+attachment point immediately has found a part of the tree nobody has built out — which is
+exactly where a descent is small. The two Chinese hits make the contrast cleanly:
+
+    hit 1   8 declines, 29.8 min  ->  1,207 new (24.1%)
+    hit 2   1 decline,  29.9 min  ->      1 new  (0.0%)
+
+Recorded as an observation, **not** as a rule: one pair is not a measurement, and this repo has
+refuted nine properties that looked like predictors on similar evidence.
