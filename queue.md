@@ -1585,9 +1585,8 @@ Based on the fact you did not figure out that the Chinese tails were duplicates,
 
 Ruled 2026-09-13, and **timeboxed to 20:45 the same evening, then sent here**: *"I would consider
 doing this to be a waste of time because the critical path is actually fucking getting the data
-we need... this task is over. Put it at the end of the queue."* **"Over" was about the timebox,
-not the item** — it is last in order and it is still to be done. See the ruling on the item below
-this one: *"it's NOT parked. It's gonna be addressed later."*
+we need... this task is over. Put it at the end of the queue."* *"Over"* was the timebox, not the
+item: it is last in order and still to be done.
 
 **The problem.** `scripts/build-tiny-gedcoms.py` turns a relation string into a GEDCOM edge by
 taking **the last word** and looking it up in `PATH_REL`. Everything else in the string is
@@ -1641,12 +1640,8 @@ be stored as `q`. Every one of these is a re-run of the emitter, never a re-scra
 Ruled 2026-09-13: *"put it at the end of the queue that... to do forest exports centred on people
 with the tail relationships for the TSV files."* Written down and not started **yet**.
 
-**⛔ LAST IN ORDER IS NOT PARKED, AND THAT DISTINCTION IS THE RULING.** Emma, immediately after:
-*"you're writing it down at the end of the queue. Don't take this as some license to put it
-wherever — it's at the very terminal end of it. And it's NOT parked. It's gonna be addressed
-later."* So this sits at the terminal end of the file **and it gets done**. Position is not
-permission to drop it, and a later sweep must not read *not started* as *abandoned*: the test
-for removing an item is that the work is finished, never that it has been sitting there.
+**Last in order, and it gets done.** Emma, immediately after: *"it's at the very terminal end of
+it. And it's NOT parked. It's gonna be addressed later."*
 
 **Why a `Forest` and not a lookup:** a relationship we have never seen in a real Geni export has
 no attested representation, and § *no guessing on the representations* forbids composing one.
