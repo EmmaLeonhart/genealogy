@@ -42616,3 +42616,25 @@ describes, and ben Ovadya has already demonstrated tonight what happens when a r
 early: it was announced cleared on another root's numbers and then returned 8,340 people.
 
 Running those three rounds before the cron comes down.
+
+## 2026-09-14 — ben Ovadya closes properly, on its own confirming round
+
+    round 2: 40 read, top 1,555, 19 zeros, ZERO at or above 4,000
+
+`reports/ben-ovadya-montecarlo-round2.tsv`. **This is the root that was closed wrongly once
+already tonight**, on the Inca's numbers, and then returned 8,340 people when the mistake was
+caught. It is now closed the way the procedure says: a round of forty that returned nothing over
+the threshold.
+
+**Its frame moved more between rounds than any other root's**, and in the unintuitive direction:
+
+    descent          38,110 -> 47,612      the 8,340 its own hits added, plus their descents
+    denylist         36,402 -> 53,174
+    blocked share     84.0% -> 70.5%       DOWN, not up
+
+Filing 8,340 people below a root makes the *descent* grow faster than the denylist, so the
+blocked share falls. The share measures how much of the trunk is ours **relative to what is
+there**, and exporting adds to both sides.
+
+Adasi's confirming round is dispatched: descent 104,349, trunk 17,842, denylist 55,221, and
+**28.8% blocked** — much the freshest of the three that owed a round.
