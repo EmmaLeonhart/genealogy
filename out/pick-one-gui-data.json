@@ -112616,6 +112616,220 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|6000000000843042071|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Éléonore de Bourbon",
+   "id": "Q106655192",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Charles, Duke of Vendôme",
+      "Françoise d'Alençon"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Antoine of Navarre",
+      "Francis, Count of Enghien",
+      "Charles, Cardinal de Bourbon",
+      "Louis, Prince of Condé",
+      "Jean, Count of Soissons and Enghien",
+      "Mary of Bourbon",
+      "Marguerite de Vendôme"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Madeleine de Bourbon",
+    "id": "6000000007606332521",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1520",
+     "1561"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Charles de Bourbon",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Charles Cardinal and",
+       "Catherine de Bourbon",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Eléonore de Bourbon",
+       "Louis Count of Marle",
+       "Luigi of Alencon"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332521",
+    "qid": "Q106655192",
+    "our": "Madeleine de Bourbon",
+    "cand": "Éléonore de Bourbon"
+   },
+   {
+    "name": "Catherine de Bourbon",
+    "id": "6000000007606332450",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1525",
+     "1594"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Charles de Bourbon",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Madeleine de Bourbon",
+       "Charles Cardinal and",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Eléonore de Bourbon",
+       "Louis Count of Marle",
+       "Luigi of Alencon"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332450",
+    "qid": "Q106655192",
+    "our": "Catherine de Bourbon",
+    "cand": "Éléonore de Bourbon"
+   },
+   {
+    "name": "Eléonore de Bourbon",
+    "id": "6000000007606332489",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1531",
+     "1611"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Charles de Bourbon",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Madeleine de Bourbon",
+       "Charles Cardinal and",
+       "Catherine de Bourbon",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Louis Count of Marle",
+       "Luigi of Alencon"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332489",
+    "qid": "Q106655192",
+    "our": "Eléonore de Bourbon",
+    "cand": "Éléonore de Bourbon"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Marie of Alencon",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "and",
+   "antoine",
+   "bourbon",
+   "cardinal",
+   "charles",
+   "count",
+   "franoise",
+   "jean",
+   "louis",
+   "marguerite",
+   "navarre"
+  ],
+  "our": "Madeleine de Bourbon",
+  "cand": "Éléonore de Bourbon"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000005061492440|F|ours",
   "side": "ours",
   "slot": "child",
@@ -113248,6 +113462,277 @@
   ],
   "our": "NN Romanova",
   "cand": "Grand Duchess Elizabeth Nikolaevna of Russia"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000000856604272|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Éléonore de Bourbon",
+   "id": "Q106655192",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Charles, Duke of Vendôme",
+      "Françoise d'Alençon"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Antoine of Navarre",
+      "Francis, Count of Enghien",
+      "Charles, Cardinal de Bourbon",
+      "Louis, Prince of Condé",
+      "Jean, Count of Soissons and Enghien",
+      "Mary of Bourbon",
+      "Marguerite de Vendôme"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Madeleine de Bourbon",
+    "id": "6000000007606332521",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1520",
+     "1561"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Charles de Bourbon",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Charles Cardinal and",
+       "Catherine de Bourbon",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Eléonore de Bourbon",
+       "Louis Count of Marle",
+       "Luigi of Alencon",
+       "Renée d'Orleans",
+       "Jacques de Dunois"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332521",
+    "qid": "Q106655192",
+    "our": "Madeleine de Bourbon",
+    "cand": "Éléonore de Bourbon"
+   },
+   {
+    "name": "Catherine de Bourbon",
+    "id": "6000000007606332450",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1525",
+     "1594"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Charles de Bourbon",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Madeleine de Bourbon",
+       "Charles Cardinal and",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Eléonore de Bourbon",
+       "Louis Count of Marle",
+       "Luigi of Alencon",
+       "Renée d'Orleans",
+       "Jacques de Dunois"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332450",
+    "qid": "Q106655192",
+    "our": "Catherine de Bourbon",
+    "cand": "Éléonore de Bourbon"
+   },
+   {
+    "name": "Eléonore de Bourbon",
+    "id": "6000000007606332489",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1531",
+     "1611"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Charles de Bourbon",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Madeleine de Bourbon",
+       "Charles Cardinal and",
+       "Catherine de Bourbon",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Louis Count of Marle",
+       "Luigi of Alencon",
+       "Renée d'Orleans",
+       "Jacques de Dunois"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332489",
+    "qid": "Q106655192",
+    "our": "Eléonore de Bourbon",
+    "cand": "Éléonore de Bourbon"
+   },
+   {
+    "name": "Renée d'Orleans",
+    "id": "6000000007606332499",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1508",
+     "1515"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "François d'Orléans",
+       "Françoise de Bourbon duchesse de Beaumont"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Rene de Plour",
+       "Marie of Alencon",
+       "Marguerite of Vendome",
+       "Antoine de Bourbon king of Navarre",
+       "François",
+       "Madeleine de Bourbon",
+       "Charles Cardinal and",
+       "Catherine de Bourbon",
+       "Renée Abbess de Bourbon",
+       "Jean",
+       "Louis de Bourbon duc d'Enghien",
+       "Eléonore de Bourbon",
+       "Louis Count of Marle",
+       "Luigi of Alencon",
+       "Jacques de Dunois"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007606332499",
+    "qid": "Q106655192",
+    "our": "Renée d'Orleans",
+    "cand": "Éléonore de Bourbon"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Marie of Alencon",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "and",
+   "antoine",
+   "bourbon",
+   "cardinal",
+   "charles",
+   "count",
+   "franoise",
+   "jean",
+   "louis",
+   "marguerite",
+   "navarre"
+  ],
+  "our": "Madeleine de Bourbon",
+  "cand": "Éléonore de Bourbon"
  },
  {
   "kind": "pick",
@@ -152048,6 +152533,330 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000002240794985|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Margaret of Lorraine",
+   "id": "Q442619",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Frederick II of Lorraine, Count of Vaudémont",
+      "Yolande of Anjou"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "René II of Lorraine",
+      "Nicholas of Lorraine, Lord of Joinville",
+      "Pierre of Vaudemont",
+      "Jeanne of Lorraine",
+      "Yolande of Lorraine"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "René, Duke of Alençon"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Charles IV, Duke of Alençon",
+      "Françoise d'Alençon",
+      "Anne d'Alençon"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Marguerite de Lorraine",
+    "id": "6000000006444585186",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1463",
+     "1521"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Yolande de Bar d'Anjou Duchess of Lorraine"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "René II de Lorraine-Vaudémont",
+       "Jeanne de Lorraine",
+       "Nicolas de Lorraine",
+       "Pierre de Lorraine",
+       "Jolanthe",
+       "Karl",
+       "Johann",
+       "Yolande de Lorraine"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "René of Alençon"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Charles d'Alençon",
+       "Françoise de Bourbon duchesse de Beaumont",
+       "Anne de Valois"
+      ]
+     ]
+    ],
+    "geni": "6000000006444585186",
+    "qid": "Q442619",
+    "our": "Marguerite de Lorraine",
+    "cand": "Margaret of Lorraine"
+   },
+   {
+    "name": "Jolanthe",
+    "id": "6000000002188554315",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1461",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Yolande de Bar d'Anjou Duchess of Lorraine"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "René II de Lorraine-Vaudémont",
+       "Jeanne de Lorraine",
+       "Marguerite de Lorraine",
+       "Nicolas de Lorraine",
+       "Pierre de Lorraine",
+       "Karl",
+       "Johann",
+       "Yolande de Lorraine"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000002188554315",
+    "qid": "Q442619",
+    "our": "Jolanthe",
+    "cand": "Margaret of Lorraine"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Yolande de Bar d'Anjou Duchess of Lorraine",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "alenon",
+   "anne",
+   "charles",
+   "dalenon",
+   "franoise",
+   "jeanne",
+   "lorraine",
+   "pierre",
+   "rene",
+   "yolande"
+  ],
+  "our": "Marguerite de Lorraine",
+  "cand": "Margaret of Lorraine"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000002240794985|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Margaret of Lorraine",
+   "id": "Q442619",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Frederick II of Lorraine, Count of Vaudémont",
+      "Yolande of Anjou"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "René II of Lorraine",
+      "Nicholas of Lorraine, Lord of Joinville",
+      "Pierre of Vaudemont",
+      "Jeanne of Lorraine",
+      "Yolande of Lorraine"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "René, Duke of Alençon"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Charles IV, Duke of Alençon",
+      "Françoise d'Alençon",
+      "Anne d'Alençon"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Marguerite de Lorraine",
+    "id": "6000000006444585186",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1463",
+     "1521"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Yolande de Bar d'Anjou Duchess of Lorraine"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "René II de Lorraine-Vaudémont",
+       "Jeanne de Lorraine",
+       "Nicolas de Lorraine",
+       "Pierre de Lorraine",
+       "Jolanthe",
+       "Karl",
+       "Johann",
+       "Yolande de Lorraine"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "René of Alençon"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Charles d'Alençon",
+       "Françoise de Bourbon duchesse de Beaumont",
+       "Anne de Valois"
+      ]
+     ]
+    ],
+    "geni": "6000000006444585186",
+    "qid": "Q442619",
+    "our": "Marguerite de Lorraine",
+    "cand": "Margaret of Lorraine"
+   },
+   {
+    "name": "Jolanthe",
+    "id": "6000000002188554315",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1461",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Yolande de Bar d'Anjou Duchess of Lorraine"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "René II de Lorraine-Vaudémont",
+       "Jeanne de Lorraine",
+       "Marguerite de Lorraine",
+       "Nicolas de Lorraine",
+       "Pierre de Lorraine",
+       "Karl",
+       "Johann",
+       "Yolande de Lorraine"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000002188554315",
+    "qid": "Q442619",
+    "our": "Jolanthe",
+    "cand": "Margaret of Lorraine"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "René II de Lorraine-Vaudémont",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "alenon",
+   "anne",
+   "charles",
+   "dalenon",
+   "franoise",
+   "jeanne",
+   "lorraine",
+   "pierre",
+   "rene",
+   "yolande"
+  ],
+  "our": "Marguerite de Lorraine",
+  "cand": "Margaret of Lorraine"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000010782427706|F|ours",
   "side": "ours",
   "slot": "child",
@@ -157890,216 +158699,6 @@
   ],
   "our": "François XIII de La Rochefoucauld",
   "cand": "François de La Rochefoucauld, 8th Duke of La Rochefoucauld"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000000843042071|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Éléonore de Bourbon",
-   "id": "Q106655192",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Charles, Duke of Vendôme",
-      "Françoise d'Alençon"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Antoine of Navarre",
-      "Francis, Count of Enghien",
-      "Charles, Cardinal de Bourbon",
-      "Louis, Prince of Condé",
-      "Jean, Count of Soissons and Enghien",
-      "Mary of Bourbon",
-      "Marguerite de Vendôme"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Madeleine de Bourbon",
-    "id": "6000000007606332521",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1520",
-     "1561"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Charles de Bourbon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Rene de Plour",
-       "Marie of Alencon",
-       "Marguerite of Vendome",
-       "Antoine de Bourbon king of Navarre",
-       "François",
-       "Charles Cardinal and",
-       "Catherine de Bourbon",
-       "Renée Abbess de Bourbon",
-       "Jean",
-       "Louis de Bourbon duc d'Enghien",
-       "Eléonore de Bourbon",
-       "Louis Count of Marle",
-       "Luigi of Alencon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007606332521",
-    "qid": "Q106655192",
-    "our": "Madeleine de Bourbon",
-    "cand": "Éléonore de Bourbon"
-   },
-   {
-    "name": "Catherine de Bourbon",
-    "id": "6000000007606332450",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1525",
-     "1594"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Charles de Bourbon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Rene de Plour",
-       "Marie of Alencon",
-       "Marguerite of Vendome",
-       "Antoine de Bourbon king of Navarre",
-       "François",
-       "Madeleine de Bourbon",
-       "Charles Cardinal and",
-       "Renée Abbess de Bourbon",
-       "Jean",
-       "Louis de Bourbon duc d'Enghien",
-       "Eléonore de Bourbon",
-       "Louis Count of Marle",
-       "Luigi of Alencon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007606332450",
-    "qid": "Q106655192",
-    "our": "Catherine de Bourbon",
-    "cand": "Éléonore de Bourbon"
-   },
-   {
-    "name": "Eléonore de Bourbon",
-    "id": "6000000007606332489",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1531",
-     "1611"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Charles de Bourbon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Rene de Plour",
-       "Marie of Alencon",
-       "Marguerite of Vendome",
-       "Antoine de Bourbon king of Navarre",
-       "François",
-       "Madeleine de Bourbon",
-       "Charles Cardinal and",
-       "Catherine de Bourbon",
-       "Renée Abbess de Bourbon",
-       "Jean",
-       "Louis de Bourbon duc d'Enghien",
-       "Louis Count of Marle",
-       "Luigi of Alencon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007606332489",
-    "qid": "Q106655192",
-    "our": "Eléonore de Bourbon",
-    "cand": "Éléonore de Bourbon"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Marie of Alencon",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "and",
-   "antoine",
-   "bourbon",
-   "cardinal",
-   "charles",
-   "count",
-   "jean",
-   "louis",
-   "marguerite",
-   "navarre"
-  ],
-  "our": "Madeleine de Bourbon",
-  "cand": "Éléonore de Bourbon"
  },
  {
   "kind": "pick",
@@ -200658,6 +201257,157 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000001841099388|M|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Jacques de Bourbon",
+   "id": "6000000009710171486",
+   "kind": "geni",
+   "sex": "M",
+   "life": [
+    "1455",
+    "1524"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "John VIII de Bourbon",
+      "Philippine de Gournay"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Catherine de Bourbon",
+      "Jeanne de Bourbon",
+      "Francis de Bourbon count of Vendôme",
+      "Charlotte de Bourbon",
+      "Renee de Bourbon Abbesse de Fontevraud",
+      "Isabelle de Bourbon Abbesse de la Trinite de Caen",
+      "Louis de Bourbon"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Jeanne Bourbon Vendome"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Catherine d'Estrées",
+      "Claude de Bourbon",
+      "André de Bourbon",
+      "Jacques de Bourbon",
+      "Charles IV de Bourbon",
+      "Jean de Bourbon",
+      "Jeanne de Bourbon",
+      "Magdeleine de Bourbon"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Louis de Bourbon-Vendôme, évêque d'Avranches",
+    "id": "Q3263393",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "John VIII, Count of Vendôme"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000009710171486",
+    "qid": "Q3263393",
+    "our": "Jacques de Bourbon",
+    "cand": "Louis de Bourbon-Vendôme, évêque d'Avranches"
+   },
+   {
+    "name": "Jacques de Bourbon bâtard de Vendôme, Seigneur de Bonneval",
+    "id": "Q116003444",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "John VIII, Count of Vendôme",
+       "Philippine de Gournay"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      [
+       "Jeanne, Dame de Rubempré"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Catherine de Bourbon-Vendôme",
+       "André de Bourbon-Vendôme, Seigneur de Rubempré"
+      ]
+     ]
+    ],
+    "geni": "6000000009710171486",
+    "qid": "Q116003444",
+    "our": "Jacques de Bourbon",
+    "cand": "Jacques de Bourbon bâtard de Vendôme, Seigneur de Bonneval"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "John VIII de Bourbon",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "andre",
+   "catherine",
+   "count",
+   "gournay",
+   "jeanne",
+   "john",
+   "philippine",
+   "vendme",
+   "viii"
+  ],
+  "our": "Jacques de Bourbon",
+  "cand": "Louis de Bourbon-Vendôme, évêque d'Avranches"
+ },
+ {
+  "kind": "pick",
   "id": "sibling|4925425003710087812|M|theirs",
   "side": "theirs",
   "slot": "sibling",
@@ -209283,1067 +210033,5 @@
   ],
   "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
   "cand": "Leopoldine Prinzessin von Lobkowicz"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000006743788254|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Mary Butler, Duchess of Ormond",
-   "id": "Q21546812",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Henry Somerset, 1st Duke of Beaufort",
-      "Mary Somerset, Duchess of Beaufort"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Charles Somerset, Marquess of Worcester",
-      "Lord Arthur Somerset",
-      "Anne Coventry"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "James Butler, 2nd Duke of Ormonde"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Mary Butler",
-      "Lady Elizabeth Butler",
-      "Thomas Butler of Ormonde"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Mary Butler",
-    "id": "5580113324410085209",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1733"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Henry Somerset",
-       "Mary Somerset"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Charles Somerset",
-       "Arthur Somerset",
-       "Anne Anne Somerset Countess of Coventry",
-       "Henry Somerset Lord Herbert",
-       "Henrietta Somerset",
-       "Catherine Locke"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "5580113324410085209",
-    "qid": "Q21546812",
-    "our": "Mary Butler",
-    "cand": "Mary Butler, Duchess of Ormond"
-   },
-   {
-    "name": "Henrietta Somerset",
-    "id": "6000000030944246907",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1715"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Henry Somerset",
-       "Mary Somerset"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Charles Somerset",
-       "Arthur Somerset",
-       "Anne Anne Somerset Countess of Coventry",
-       "Mary Butler",
-       "Henry Somerset Lord Herbert",
-       "Catherine Locke"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Henry O'Brien"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000030944246907",
-    "qid": "Q21546812",
-    "our": "Henrietta Somerset",
-    "cand": "Mary Butler, Duchess of Ormond"
-   },
-   {
-    "name": "Catherine Locke",
-    "id": "6000000006444428263",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1631",
-     "1689"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Henry Somerset"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Charles Somerset",
-       "Arthur Somerset",
-       "Anne Anne Somerset Countess of Coventry",
-       "Mary Butler",
-       "Henry Somerset Lord Herbert",
-       "Henrietta Somerset"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Lewis Locke"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Christopher Lewis Locke"
-      ]
-     ]
-    ],
-    "geni": "6000000006444428263",
-    "qid": "Q21546812",
-    "our": "Catherine Locke",
-    "cand": "Mary Butler, Duchess of Ormond"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Charles Somerset",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "anne",
-   "arthur",
-   "butler",
-   "charles",
-   "coventry",
-   "henry",
-   "lord",
-   "mary",
-   "somerset"
-  ],
-  "our": "Mary Butler",
-  "cand": "Mary Butler, Duchess of Ormond"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000011173735576|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Lady Charlotte Hope",
-   "id": "Q75283324",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "John Hope, 2nd Earl of Hopetoun",
-      "Lady Elizabeth Leslie"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Alexander Hope"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Charles Hope"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Anne Wilhelmina Hope",
-      "John Hope",
-      "Charles Hope",
-      "James Hope",
-      "William Hope"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Elizabeth Kemp",
-    "id": "6000000021775644985",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1768",
-     "1801"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Hope",
-       "Elizabeth Hope Countess of Hopetoun"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Charles Hope",
-       "Alexander Hope GCB",
-       "Margaret Maclean",
-       "Charlotte Hope",
-       "Mary Anne Murray",
-       "Anne Hope",
-       "John Hope",
-       "Jane Hope",
-       "James Hope-Johnstone 3rd Earl of Hopetoun",
-       "Sophia Hope",
-       "Elizabeth Douglas"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000021775644985",
-    "qid": "Q75283324",
-    "our": "Elizabeth Kemp",
-    "cand": "Lady Charlotte Hope"
-   },
-   {
-    "name": "Charlotte Hope",
-    "id": "6000000018788989669",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1778",
-     "1834"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Hope",
-       "Elizabeth Hope Countess of Hopetoun"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Elizabeth Kemp",
-       "Charles Hope",
-       "Alexander Hope GCB",
-       "Margaret Maclean",
-       "Mary Anne Murray",
-       "Anne Hope",
-       "John Hope",
-       "Jane Hope",
-       "James Hope-Johnstone 3rd Earl of Hopetoun",
-       "Sophia Hope",
-       "Elizabeth Douglas"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018788989669",
-    "qid": "Q75283324",
-    "our": "Charlotte Hope",
-    "cand": "Lady Charlotte Hope"
-   },
-   {
-    "name": "Mary Anne Murray",
-    "id": "6000000017962393790",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1838"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Hope",
-       "Elizabeth Hope Countess of Hopetoun"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Elizabeth Kemp",
-       "Charles Hope",
-       "Alexander Hope GCB",
-       "Margaret Maclean",
-       "Charlotte Hope",
-       "Anne Hope",
-       "John Hope",
-       "Jane Hope",
-       "James Hope-Johnstone 3rd Earl of Hopetoun",
-       "Sophia Hope",
-       "Elizabeth Douglas"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000017962393790",
-    "qid": "Q75283324",
-    "our": "Mary Anne Murray",
-    "cand": "Lady Charlotte Hope"
-   },
-   {
-    "name": "Sophia Hope",
-    "id": "6000000003891035827",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1759",
-     "1813"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "John Hope"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Elizabeth Kemp",
-       "Charles Hope",
-       "Alexander Hope GCB",
-       "Margaret Maclean",
-       "Charlotte Hope",
-       "Mary Anne Murray",
-       "Anne Hope",
-       "John Hope",
-       "Jane Hope",
-       "James Hope-Johnstone 3rd Earl of Hopetoun",
-       "Elizabeth Douglas"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000003891035827",
-    "qid": "Q75283324",
-    "our": "Sophia Hope",
-    "cand": "Lady Charlotte Hope"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Alexander Hope GCB",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "alexander",
-   "anne",
-   "charles",
-   "earl",
-   "elizabeth",
-   "hope",
-   "hopetoun",
-   "james",
-   "john"
-  ],
-  "our": "Elizabeth Kemp",
-  "cand": "Lady Charlotte Hope"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000173483219101|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "George Palaiologos Kantakouzenos",
-   "id": "Q16200213",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Demetrios I Kantakouzenos"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Andronikos Palaiologos Kantakouzenos",
-      "Thomas Kantakouzenos",
-      "Irene Kantakouzene",
-      "Helena Kantakouzene, Empress of Trebizond",
-      "Theodora Kantakouzene"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     [
-      "Manuel Kantakouzenos",
-      "Anna Kantakouzene",
-      "NN"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Demetrios Kantakouzenos",
-    "id": "6000000173522237894",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Manuel Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Alexandra"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000173522237894",
-    "qid": "Q16200213",
-    "our": "Demetrios Kantakouzenos",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "Manuel Kantakouzenos",
-    "id": "6000000173521546088",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Andreas Kantakouzenos",
-       "Eudokia Komnenos"
-      ]
-     ]
-    ],
-    "geni": "6000000173521546088",
-    "qid": "Q16200213",
-    "our": "Manuel Kantakouzenos",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "Thomas Kantakuzen",
-    "id": "6000000046715147888",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1463"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Manuel Kantakouzenos",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000046715147888",
-    "qid": "Q16200213",
-    "our": "Thomas Kantakuzen",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "Andronikos Palaiologos Kantakouzenos",
-    "id": "4860189340190030074",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1453"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Manuel Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       ".... Кантакузин"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Theodoros Kantakouzenos",
-       ".... Kantakouzenos"
-      ]
-     ]
-    ],
-    "geni": "4860189340190030074",
-    "qid": "Q16200213",
-    "our": "Andronikos Palaiologos Kantakouzenos",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "George Palaiologos Kantakouzenos \"Sachatai\"",
-    "id": "6000000008309265431",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1385",
-     "1456"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Demetrius I Kantakouzenos despot of Morea",
-       "Theodore Palaiologos Kantakouzenos",
-       ".... Cantacuzino",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Manuel Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Maria Kantakouzenos"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Kira Ana Hercegović Kosača duchess of St.Sava",
-       "Zoe de Flory",
-       "Theodoros Kantakouzenos",
-       "Manuel Kantakouzenos “Ghin”",
-       "Thomas Kantakouzenos",
-       "Demetrios Kantakouzenos",
-       "N Palaiologos",
-       "N Kantakouzenos",
-       "Philippa Raoulaina"
-      ]
-     ]
-    ],
-    "geni": "6000000008309265431",
-    "qid": "Q16200213",
-    "our": "George Palaiologos Kantakouzenos \"Sachatai\"",
-    "cand": "George Palaiologos Kantakouzenos"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Theodora Kantakouzene",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "andronikos",
-   "demetrios",
-   "helena",
-   "kantakouzene",
-   "kantakouzenos",
-   "manuel",
-   "palaiologos",
-   "theodora",
-   "thomas"
-  ],
-  "our": "Demetrios Kantakouzenos",
-  "cand": "George Palaiologos Kantakouzenos"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000173483533910|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "George Palaiologos Kantakouzenos",
-   "id": "Q16200213",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Demetrios I Kantakouzenos"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Andronikos Palaiologos Kantakouzenos",
-      "Thomas Kantakouzenos",
-      "Irene Kantakouzene",
-      "Helena Kantakouzene, Empress of Trebizond",
-      "Theodora Kantakouzene"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     [
-      "Manuel Kantakouzenos",
-      "Anna Kantakouzene",
-      "NN"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Demetrios Kantakouzenos",
-    "id": "6000000173522237894",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Manuel Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Alexandra"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000173522237894",
-    "qid": "Q16200213",
-    "our": "Demetrios Kantakouzenos",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "Manuel Kantakouzenos",
-    "id": "6000000173521546088",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Andreas Kantakouzenos",
-       "Eudokia Komnenos"
-      ]
-     ]
-    ],
-    "geni": "6000000173521546088",
-    "qid": "Q16200213",
-    "our": "Manuel Kantakouzenos",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "Thomas Kantakuzen",
-    "id": "6000000046715147888",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1463"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Manuel Kantakouzenos",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000046715147888",
-    "qid": "Q16200213",
-    "our": "Thomas Kantakuzen",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "Andronikos Palaiologos Kantakouzenos",
-    "id": "4860189340190030074",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1453"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Theodore Palaiologos Kantakouzenos",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Manuel Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Maria Palaiologina",
-       "George Palaiologos Kantakouzenos \"Sachatai\""
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       ".... Кантакузин"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Theodoros Kantakouzenos",
-       ".... Kantakouzenos"
-      ]
-     ]
-    ],
-    "geni": "4860189340190030074",
-    "qid": "Q16200213",
-    "our": "Andronikos Palaiologos Kantakouzenos",
-    "cand": "George Palaiologos Kantakouzenos"
-   },
-   {
-    "name": "George Palaiologos Kantakouzenos \"Sachatai\"",
-    "id": "6000000008309265431",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1385",
-     "1456"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Demetrius I Kantakouzenos despot of Morea",
-       "Theodore Palaiologos Kantakouzenos",
-       ".... Cantacuzino",
-       "Helena Ouresina Palaiologina"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Theodora Kantakouzene",
-       "Eirene Branković",
-       "Demetrios Kantakouzenos",
-       "Manuel Kantakouzenos",
-       "Thomas Kantakuzen",
-       "Andronikos Palaiologos Kantakouzenos",
-       "Maria Palaiologina"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Maria Kantakouzenos"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Kira Ana Hercegović Kosača duchess of St.Sava",
-       "Zoe de Flory",
-       "Theodoros Kantakouzenos",
-       "Manuel Kantakouzenos “Ghin”",
-       "Thomas Kantakouzenos",
-       "Demetrios Kantakouzenos",
-       "N Palaiologos",
-       "N Kantakouzenos",
-       "Philippa Raoulaina"
-      ]
-     ]
-    ],
-    "geni": "6000000008309265431",
-    "qid": "Q16200213",
-    "our": "George Palaiologos Kantakouzenos \"Sachatai\"",
-    "cand": "George Palaiologos Kantakouzenos"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Theodora Kantakouzene",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "andronikos",
-   "demetrios",
-   "helena",
-   "kantakouzene",
-   "kantakouzenos",
-   "manuel",
-   "palaiologos",
-   "theodora",
-   "thomas"
-  ],
-  "our": "Demetrios Kantakouzenos",
-  "cand": "George Palaiologos Kantakouzenos"
  }
 ]
