@@ -59780,6 +59780,928 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000002348309254|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Juana de Saavedra y Sanabria",
+   "id": "Q104830918",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Martín Suárez de Toledo",
+      "María de Sanabria Calderón"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Hernando Arias de Saavedra",
+      "Fernando Trexo y Senabria"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Juan de Garay y Becerra"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Bernabé de Garay y Saavedra",
+      "Cristóbal de Garay y Saavedra",
+      "Mariana de Garay Saavedra",
+      "Isabel de Garay y Saavedra",
+      "Juan de Garay y Saavedra"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ana Beatriz Ocampo y Saavedra",
+    "id": "6000000000548363813",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Juana de Saavedra y Sanabria",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Beatriz de Añasco y Ocampos",
+       "Maria de Añasco y Ocampos",
+       "Leonor de Añasco y Ocampos",
+       "Potenciana Añasco Saavedra Sanabria"
+      ]
+     ]
+    ],
+    "geni": "6000000000548363813",
+    "qid": "Q104830918",
+    "our": "Ana Beatriz Ocampo y Saavedra",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Juana de Saavedra y Sanabria",
+    "id": "6000000007754037528",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     "1640"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Juan de Garay y Becerra General"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "María de Garay y Saavedra",
+       "Isabel de Garay y Saavedra Sanabria",
+       "Mariana de Garay y Saavedra"
+      ]
+     ]
+    ],
+    "geni": "6000000007754037528",
+    "qid": "Q104830918",
+    "our": "Juana de Saavedra y Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Beatriz Suárez de Figueroa Sanabria",
+    "id": "6000000018973085538",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Juana de Saavedra y Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Martín de Luna y Suárez de Toledo"
+      ]
+     ]
+    ],
+    "geni": "6000000018973085538",
+    "qid": "Q104830918",
+    "our": "Beatriz Suárez de Figueroa Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "María de Sanabria y Calderon",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "arias",
+   "becerra",
+   "garay",
+   "hernando",
+   "isabel",
+   "juan",
+   "mara",
+   "mariana",
+   "martn",
+   "saavedra",
+   "sanabria",
+   "surez",
+   "toledo"
+  ],
+  "our": "Ana Beatriz Ocampo y Saavedra",
+  "cand": "Juana de Saavedra y Sanabria"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000002348309254|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Juana de Saavedra y Sanabria",
+   "id": "Q104830918",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Martín Suárez de Toledo",
+      "María de Sanabria Calderón"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Hernando Arias de Saavedra",
+      "Fernando Trexo y Senabria"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Juan de Garay y Becerra"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Bernabé de Garay y Saavedra",
+      "Cristóbal de Garay y Saavedra",
+      "Mariana de Garay Saavedra",
+      "Isabel de Garay y Saavedra",
+      "Juan de Garay y Saavedra"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ana Beatriz Ocampo y Saavedra",
+    "id": "6000000000548363813",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Juana de Saavedra y Sanabria",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Beatriz de Añasco y Ocampos",
+       "Maria de Añasco y Ocampos",
+       "Leonor de Añasco y Ocampos",
+       "Potenciana Añasco Saavedra Sanabria"
+      ]
+     ]
+    ],
+    "geni": "6000000000548363813",
+    "qid": "Q104830918",
+    "our": "Ana Beatriz Ocampo y Saavedra",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Juana de Saavedra y Sanabria",
+    "id": "6000000007754037528",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     "1640"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Juan de Garay y Becerra General"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "María de Garay y Saavedra",
+       "Isabel de Garay y Saavedra Sanabria",
+       "Mariana de Garay y Saavedra"
+      ]
+     ]
+    ],
+    "geni": "6000000007754037528",
+    "qid": "Q104830918",
+    "our": "Juana de Saavedra y Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Beatriz Suárez de Figueroa Sanabria",
+    "id": "6000000018973085538",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Juana de Saavedra y Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Martín de Luna y Suárez de Toledo"
+      ]
+     ]
+    ],
+    "geni": "6000000018973085538",
+    "qid": "Q104830918",
+    "our": "Beatriz Suárez de Figueroa Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "arias",
+   "becerra",
+   "garay",
+   "hernando",
+   "isabel",
+   "juan",
+   "mara",
+   "mariana",
+   "martn",
+   "saavedra",
+   "sanabria",
+   "surez",
+   "toledo"
+  ],
+  "our": "Ana Beatriz Ocampo y Saavedra",
+  "cand": "Juana de Saavedra y Sanabria"
+ },
+ {
+  "kind": "pick",
+  "id": "child|5549506211080036645|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Juana de Saavedra y Sanabria",
+   "id": "Q104830918",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Martín Suárez de Toledo",
+      "María de Sanabria Calderón"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Hernando Arias de Saavedra",
+      "Fernando Trexo y Senabria"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Juan de Garay y Becerra"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Bernabé de Garay y Saavedra",
+      "Cristóbal de Garay y Saavedra",
+      "Mariana de Garay Saavedra",
+      "Isabel de Garay y Saavedra",
+      "Juan de Garay y Saavedra"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ana Beatriz Ocampo y Saavedra",
+    "id": "6000000000548363813",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Juana de Saavedra y Sanabria",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III",
+       "Inés Suarez de Toledo"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Beatriz de Añasco y Ocampos",
+       "Maria de Añasco y Ocampos",
+       "Leonor de Añasco y Ocampos",
+       "Potenciana Añasco Saavedra Sanabria"
+      ]
+     ]
+    ],
+    "geni": "6000000000548363813",
+    "qid": "Q104830918",
+    "our": "Ana Beatriz Ocampo y Saavedra",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Juana de Saavedra y Sanabria",
+    "id": "6000000007754037528",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     "1640"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III",
+       "Inés Suarez de Toledo"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Juan de Garay y Becerra General"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "María de Garay y Saavedra",
+       "Isabel de Garay y Saavedra Sanabria",
+       "Mariana de Garay y Saavedra"
+      ]
+     ]
+    ],
+    "geni": "6000000007754037528",
+    "qid": "Q104830918",
+    "our": "Juana de Saavedra y Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Beatriz Suárez de Figueroa Sanabria",
+    "id": "6000000018973085538",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Juana de Saavedra y Sanabria",
+       "Martín Suárez de Toledo Sanabria III",
+       "Inés Suarez de Toledo"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Martín de Luna y Suárez de Toledo"
+      ]
+     ]
+    ],
+    "geni": "6000000018973085538",
+    "qid": "Q104830918",
+    "our": "Beatriz Suárez de Figueroa Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Inés Suarez de Toledo",
+    "id": "5549491587190079297",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1556",
+     "1590"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Juana de Saavedra y Sanabria",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Alonso Escobar General"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "María de Escobar Suárez de Toledo",
+       "Tomás de Escobar",
+       "Beatriz de Escobar",
+       "Ana de Escobar Suárez de Toledo",
+       "Diego de Escobar"
+      ]
+     ]
+    ],
+    "geni": "5549491587190079297",
+    "qid": "Q104830918",
+    "our": "Inés Suarez de Toledo",
+    "cand": "Juana de Saavedra y Sanabria"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "arias",
+   "becerra",
+   "garay",
+   "hernando",
+   "isabel",
+   "juan",
+   "mara",
+   "mariana",
+   "martn",
+   "saavedra",
+   "sanabria",
+   "surez",
+   "toledo"
+  ],
+  "our": "Ana Beatriz Ocampo y Saavedra",
+  "cand": "Juana de Saavedra y Sanabria"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|5549506211080036645|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Juana de Saavedra y Sanabria",
+   "id": "Q104830918",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Martín Suárez de Toledo",
+      "María de Sanabria Calderón"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Hernando Arias de Saavedra",
+      "Fernando Trexo y Senabria"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Juan de Garay y Becerra"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Bernabé de Garay y Saavedra",
+      "Cristóbal de Garay y Saavedra",
+      "Mariana de Garay Saavedra",
+      "Isabel de Garay y Saavedra",
+      "Juan de Garay y Saavedra"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ana Beatriz Ocampo y Saavedra",
+    "id": "6000000000548363813",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Juana de Saavedra y Sanabria",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III",
+       "Inés Suarez de Toledo"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Beatriz de Añasco y Ocampos",
+       "Maria de Añasco y Ocampos",
+       "Leonor de Añasco y Ocampos",
+       "Potenciana Añasco Saavedra Sanabria"
+      ]
+     ]
+    ],
+    "geni": "6000000000548363813",
+    "qid": "Q104830918",
+    "our": "Ana Beatriz Ocampo y Saavedra",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Juana de Saavedra y Sanabria",
+    "id": "6000000007754037528",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     "1640"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III",
+       "Inés Suarez de Toledo"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Juan de Garay y Becerra General"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "María de Garay y Saavedra",
+       "Isabel de Garay y Saavedra Sanabria",
+       "Mariana de Garay y Saavedra"
+      ]
+     ]
+    ],
+    "geni": "6000000007754037528",
+    "qid": "Q104830918",
+    "our": "Juana de Saavedra y Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Beatriz Suárez de Figueroa Sanabria",
+    "id": "6000000018973085538",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "",
+     ""
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
+       "María de Sanabria y Calderon"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Juana de Saavedra y Sanabria",
+       "Martín Suárez de Toledo Sanabria III",
+       "Inés Suarez de Toledo"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Martín de Luna y Suárez de Toledo"
+      ]
+     ]
+    ],
+    "geni": "6000000018973085538",
+    "qid": "Q104830918",
+    "our": "Beatriz Suárez de Figueroa Sanabria",
+    "cand": "Juana de Saavedra y Sanabria"
+   },
+   {
+    "name": "Inés Suarez de Toledo",
+    "id": "5549491587190079297",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1556",
+     "1590"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+       "Ana Beatriz Ocampo y Saavedra",
+       "Juana de Saavedra y Sanabria",
+       "Beatriz Suárez de Figueroa Sanabria",
+       "Martín Suárez de Toledo Sanabria III"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Alonso Escobar General"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "María de Escobar Suárez de Toledo",
+       "Tomás de Escobar",
+       "Beatriz de Escobar",
+       "Ana de Escobar Suárez de Toledo",
+       "Diego de Escobar"
+      ]
+     ]
+    ],
+    "geni": "5549491587190079297",
+    "qid": "Q104830918",
+    "our": "Inés Suarez de Toledo",
+    "cand": "Juana de Saavedra y Sanabria"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "arias",
+   "becerra",
+   "garay",
+   "hernando",
+   "isabel",
+   "juan",
+   "mara",
+   "mariana",
+   "martn",
+   "saavedra",
+   "sanabria",
+   "surez",
+   "toledo"
+  ],
+  "our": "Ana Beatriz Ocampo y Saavedra",
+  "cand": "Juana de Saavedra y Sanabria"
+ },
+ {
+  "kind": "pick",
   "id": "child|5099757960090062883|F|ours",
   "side": "ours",
   "slot": "child",
@@ -108864,390 +109786,6 @@
  },
  {
   "kind": "pick",
-  "id": "child|5549506211080036645|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Juana de Saavedra y Sanabria",
-   "id": "Q104830918",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Martín Suárez de Toledo",
-      "María de Sanabria Calderón"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Hernando Arias de Saavedra",
-      "Fernando Trexo y Senabria"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Juan de Garay y Becerra"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Bernabé de Garay y Saavedra",
-      "Cristóbal de Garay y Saavedra",
-      "Mariana de Garay Saavedra",
-      "Isabel de Garay y Saavedra",
-      "Juan de Garay y Saavedra"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ana Beatriz Ocampo y Saavedra",
-    "id": "6000000000548363813",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Juana de Saavedra y Sanabria",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000548363813",
-    "qid": "Q104830918",
-    "our": "Ana Beatriz Ocampo y Saavedra",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Juana de Saavedra y Sanabria",
-    "id": "6000000007754037528",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1640"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Juan de Garay y Becerra General"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007754037528",
-    "qid": "Q104830918",
-    "our": "Juana de Saavedra y Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Beatriz Suárez de Figueroa Sanabria",
-    "id": "6000000018973085538",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Juana de Saavedra y Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018973085538",
-    "qid": "Q104830918",
-    "our": "Beatriz Suárez de Figueroa Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "arias",
-   "becerra",
-   "garay",
-   "hernando",
-   "juan",
-   "mara",
-   "martn",
-   "saavedra",
-   "sanabria",
-   "surez",
-   "toledo"
-  ],
-  "our": "Ana Beatriz Ocampo y Saavedra",
-  "cand": "Juana de Saavedra y Sanabria"
- },
- {
-  "kind": "pick",
-  "id": "sibling|5549506211080036645|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Juana de Saavedra y Sanabria",
-   "id": "Q104830918",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Martín Suárez de Toledo",
-      "María de Sanabria Calderón"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Hernando Arias de Saavedra",
-      "Fernando Trexo y Senabria"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Juan de Garay y Becerra"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Bernabé de Garay y Saavedra",
-      "Cristóbal de Garay y Saavedra",
-      "Mariana de Garay Saavedra",
-      "Isabel de Garay y Saavedra",
-      "Juan de Garay y Saavedra"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ana Beatriz Ocampo y Saavedra",
-    "id": "6000000000548363813",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Juana de Saavedra y Sanabria",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000548363813",
-    "qid": "Q104830918",
-    "our": "Ana Beatriz Ocampo y Saavedra",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Juana de Saavedra y Sanabria",
-    "id": "6000000007754037528",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1640"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Juan de Garay y Becerra General"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007754037528",
-    "qid": "Q104830918",
-    "our": "Juana de Saavedra y Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Beatriz Suárez de Figueroa Sanabria",
-    "id": "6000000018973085538",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Juana de Saavedra y Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018973085538",
-    "qid": "Q104830918",
-    "our": "Beatriz Suárez de Figueroa Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "arias",
-   "becerra",
-   "garay",
-   "hernando",
-   "juan",
-   "mara",
-   "martn",
-   "saavedra",
-   "sanabria",
-   "surez",
-   "toledo"
-  ],
-  "our": "Ana Beatriz Ocampo y Saavedra",
-  "cand": "Juana de Saavedra y Sanabria"
- },
- {
-  "kind": "pick",
   "id": "child|6000000002187881554|F|theirs",
   "side": "theirs",
   "slot": "child",
@@ -109429,390 +109967,6 @@
   ],
   "our": "Willibirg",
   "cand": "Willibirg Gräfin von Nellenburg"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000002348309254|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Juana de Saavedra y Sanabria",
-   "id": "Q104830918",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Martín Suárez de Toledo",
-      "María de Sanabria Calderón"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Hernando Arias de Saavedra",
-      "Fernando Trexo y Senabria"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Juan de Garay y Becerra"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Bernabé de Garay y Saavedra",
-      "Cristóbal de Garay y Saavedra",
-      "Mariana de Garay Saavedra",
-      "Isabel de Garay y Saavedra",
-      "Juan de Garay y Saavedra"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ana Beatriz Ocampo y Saavedra",
-    "id": "6000000000548363813",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Juana de Saavedra y Sanabria",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000548363813",
-    "qid": "Q104830918",
-    "our": "Ana Beatriz Ocampo y Saavedra",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Juana de Saavedra y Sanabria",
-    "id": "6000000007754037528",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1640"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Juan de Garay y Becerra General"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007754037528",
-    "qid": "Q104830918",
-    "our": "Juana de Saavedra y Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Beatriz Suárez de Figueroa Sanabria",
-    "id": "6000000018973085538",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Juana de Saavedra y Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018973085538",
-    "qid": "Q104830918",
-    "our": "Beatriz Suárez de Figueroa Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "María de Sanabria y Calderon",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "arias",
-   "becerra",
-   "garay",
-   "hernando",
-   "juan",
-   "mara",
-   "martn",
-   "saavedra",
-   "sanabria",
-   "surez",
-   "toledo"
-  ],
-  "our": "Ana Beatriz Ocampo y Saavedra",
-  "cand": "Juana de Saavedra y Sanabria"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000002348309254|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Juana de Saavedra y Sanabria",
-   "id": "Q104830918",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Martín Suárez de Toledo",
-      "María de Sanabria Calderón"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Hernando Arias de Saavedra",
-      "Fernando Trexo y Senabria"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Juan de Garay y Becerra"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Bernabé de Garay y Saavedra",
-      "Cristóbal de Garay y Saavedra",
-      "Mariana de Garay Saavedra",
-      "Isabel de Garay y Saavedra",
-      "Juan de Garay y Saavedra"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ana Beatriz Ocampo y Saavedra",
-    "id": "6000000000548363813",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Juana de Saavedra y Sanabria",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000000548363813",
-    "qid": "Q104830918",
-    "our": "Ana Beatriz Ocampo y Saavedra",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Juana de Saavedra y Sanabria",
-    "id": "6000000007754037528",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1640"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Beatriz Suárez de Figueroa Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Juan de Garay y Becerra General"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007754037528",
-    "qid": "Q104830918",
-    "our": "Juana de Saavedra y Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   },
-   {
-    "name": "Beatriz Suárez de Figueroa Sanabria",
-    "id": "6000000018973085538",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     ""
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Martin Suárez de Toledo y Saavedra 11° Gobernador del Río de la Plata y del Paraguay",
-       "María de Sanabria y Calderon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-       "Ana Beatriz Ocampo y Saavedra",
-       "Juana de Saavedra y Sanabria",
-       "Martín Suárez de Toledo Sanabria III"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000018973085538",
-    "qid": "Q104830918",
-    "our": "Beatriz Suárez de Figueroa Sanabria",
-    "cand": "Juana de Saavedra y Sanabria"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Hernando Arias de Saavedra Gobernador del Río de la Plata y del Paraguay",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "arias",
-   "becerra",
-   "garay",
-   "hernando",
-   "juan",
-   "mara",
-   "martn",
-   "saavedra",
-   "sanabria",
-   "surez",
-   "toledo"
-  ],
-  "our": "Ana Beatriz Ocampo y Saavedra",
-  "cand": "Juana de Saavedra y Sanabria"
  },
  {
   "kind": "pick",

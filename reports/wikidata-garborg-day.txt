@@ -258,7 +258,7 @@ LAST	P144	Q114928755
 #   P144 based on = Q23465091 Arved
 LAST	P144	Q23465091
 
-# 1377 more name items are needed and wait for a later
+# 1375 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   Christoffersen (patronymic), 1 bearer(s)
 #   Färla (family), 1 bearer(s)
@@ -272,7 +272,7 @@ LAST	P144	Q23465091
 #   Phragmenius (family), 1 bearer(s)
 #   Reiersdatter (patronymic), 1 bearer(s)
 #   Stenbit (family), 1 bearer(s)
-#   ... and 1365 more
+#   ... and 1363 more
 
 
 # ======================================================================
@@ -322,28 +322,11 @@ Q141450963	P460	Q141450961
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   4 people, 9 edits; 0 edits held for a later run
+#   1 people, 1 edits; 0 edits held for a later run
 #   across 0 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   add a mul alias "Christina Teet"
-Q135480146	Amul	"Christina Teet"
-#   set the mul label to "noble Kristina Henriksdotter of Teet"
-Q135480146	Lmul	"noble Kristina Henriksdotter of Teet"
-#   add a mul alias "Christina Teit"
-Q135480146	Amul	"Christina Teit"
-#   Q135480146: holds '츠리스티나 티트' in ko; ours is '크리스티나 티트'
-#   Q135480146: set the ko label
-Q135480146	Lko	"크리스티나 티트"
-#   Q124608919 Eric Ugla: add a mul alias "Eric Ugla"
-Q124608919	Amul	"Eric Ugla"
-#   add a mul alias "Petrus Persson"
-Q16650142	Amul	"Petrus Persson"
-#   Q6189847 Petrus Eriksson Steuchius I Bishop of Härnösand: add a mul alias "Petrus Eriksson Steuchius"
-Q6189847	Amul	"Petrus Eriksson Steuchius"
-#   set the mul label to "Petrus Erici Steuchius"
-Q6189847	Lmul	"Petrus Erici Steuchius"
-#   add a mul alias "Petrus Eriksson Stöök I Bishop of Härnösand"
-Q6189847	Amul	"Petrus Eriksson Stöök I Bishop of Härnösand"
+#   set the ko label to "노브레 크리스티나 헨리크스도테르"
+Q135480146	Lko	"노브레 크리스티나 헨리크스도테르"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
