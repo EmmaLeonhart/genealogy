@@ -42336,3 +42336,24 @@ numbers. **ben Ovadya is live and owes two climbs.**
 precisely so there is an artefact to check, and then I checked the in-memory object instead —
 which is the same class of error as trusting the dashboard icon for readiness an hour earlier.
 Both times a durable artefact existed and I read a volatile proxy.
+
+## 2026-09-14 — the Sanches Forest lands after ~2 hours, and the download needs a navigation not a click
+
+    task    6000000227743729899 on 6000000227743729884, Emma's request
+    built   ~2 hours, the longest single export of the campaign
+    filed   exports/sanches/export-Forest-6000000227743729884.ged
+    newness 951 new (19.0%) out of 5000, corpus 1,656,586 -> 1,657,537
+
+**The download button is a plain `<a href>` with no JavaScript handler**, and clicking it through
+the automation surface did nothing four times running — the coordinates were verified against a
+screenshot and were on target. What works is
+
+    location.href = <the button element>.href
+
+That is now the method. The earlier `downloadGedcom('<task id>')` finding stands for getting *to*
+the page; the button on it needs a navigation, not a click.
+
+**Two hours is the second Forest to block the slot for over an hour tonight.** Both were `Forest`
+walks, whose cost is the size of a connected component rather than of a descent. The queued
+`Descendants` sat behind it the whole time, and the retry loop that was arranged to catch the
+moment it cleared is what made the wait cost nothing but time.
