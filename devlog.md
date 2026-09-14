@@ -42216,3 +42216,30 @@ been added below this root.
 
 **The climbs remain the slow part**: 23 declines over 29.7 minutes, then 11 over 26.7. The balls
 themselves were ready in **0.7 minutes each**.
+
+## 2026-09-13 — the Aztec root CLOSES on the stopping condition, not on a judgement
+
+    round 2: 39 read, top 1,800 / 1,740 / 951 / 871, 23 zeros, ZERO at or above 4,000
+
+**That is the condition `docs/monte-carlo-procedure.md` gives** — *a round stops the root when it
+returns ZERO candidates at or above 4,000* — and it fired on its own. Nothing was read off the
+distribution, no diminishing return was argued, and no yield predictor was consulted. `1,800` is
+the highest thing left in a frame that two rounds ago held a 12,786.
+
+**The Aztec, complete:**
+
+    Forest      6000000209721868822        9 new (0.2%)   the sampling frame
+    banked hit  6000000227741310007    4,077 new (81.5%)
+    MC r1 hit1  6000000227741680915    3,491 new (69.8%)
+    MC r1 hit2  6000000227741840051    3,284 new (65.7%)
+    MC round 2  zero hits -- closes
+                                      ----------
+                                      10,861 new people, corpus 1,645,725 -> 1,656,586
+
+**Round 1 found two hits, round 2 found none**, which is what a root being worked out actually
+looks like: the denylist went 14,649 → 24,490 and the blocked share of 400 picks went 19 → 74,
+because the three balls filed between the rounds had swallowed the saturated part of the trunk.
+
+`reports/aztec-montecarlo-round1.tsv` and `-round2.tsv` carry both sets of readings.
+
+**Next root by the ruled order: the Inca.**
