@@ -41648,3 +41648,75 @@ at `exports/abul-hamza-descendants/`. Pietro's own ball is a strict subset of it
 cancelled, so it will be filed and the count will show what a duplicate is worth. **The check
 that would have caught it is regenerating the queue before taking from it**, not reading the copy
 on disk, because the copy was built before those climbs landed.
+
+## 2026-09-13 — the descendants program, re-ruled root by root
+
+*"AskUserQuestion on every descendant's campaign on what to do with it lol"*. Fifteen questions,
+fifteen answers. This replaces the four-answer ruling of 2026-09-12 outright.
+
+    LIVE, in slot order
+      1  Chinese root, NN Father of Huaxu   full three-step -- THE MOST IMPORTANT ONE
+      2  Adasi                              the 15,000 cap hit AND the 6,975
+      3  Aztec                              Forest first, then Monte Carlo
+      4  Jimmu                              run the Monte Carlo
+      5  NN ben Ovadya                      more rounds
+      6  Abul Hamza six                     finish d'Esneval and Bettencourt, then MC on her
+
+    POSTPONED -- never take the slot while anything above is owed
+      Inca, Hermenegildo, Narayana, Fihr
+
+    DROPPED -- not paused, and not to come back from any derived roster
+      Genghis, Confucius, NN Näf, no-name 6000000000183188387, Dál Fiatach
+
+**The Chinese root is privileged and I had inferred the opposite.** *"Full three-step lol this is
+the most important one, and all gedcoms from it are considered privileged due to the merge
+history."* On the 12th she said *"I think we are done with the Chinese thing"* — about a stuck
+6h30m export holding the slot, in the same breath — and then said plainly *"Everything you
+inferred was bad there."* It went into this file as a live root all the same, and now it is first.
+
+**`exports/post-merge/` is the privileged directory and it already exists** — asked as *"we have
+privileged gedcoms already in a special directory. If we don't then that's your fault."* It does:
+records there win by `sources._post_merge_last`, and `scripts/multi-geni-item-roster.py` is the
+authority on why. Huaxu's balls are already in it.
+
+**And the roster table in this log is stale on that root.** It reads `- 0 0, all three steps` for
+Huaxu. Checked against the export log and the directory:
+
+    step 1  Forest        6000000227732606834   filed
+    step 2  Descendants   6000000227732913835   filed
+    step 3  Monte Carlo   4 hit balls filed off the trunk-restricted roster
+
+So "full three-step" on this root now means **more Monte Carlo rounds**, and the frame is built.
+
+## The ordering axis was wrong and is fixed
+
+The first version sorted on the **walk**, which buried the Chinese root's `Forest` among the
+twenty-five isolate `Forest`s. The axis is the **campaign**: *"the forest exports on the paths...
+aren't that high a priority for us relative to the descendants campaign, because the descendants
+campaign stuff generally gives us actually useful information about, like, descendants of
+figures."* The key is now
+
+    owed  ->  priority  ->  campaign  ->  walk  ->  id
+
+with `priority` a new column on the seeds file, default 50, and the Chinese root at **0** so it
+heads the queue despite being a `Forest`. 28 owed of 43: 3 `Descendants`, 25 `Forest`.
+
+## Why so little Monte Carlo — the honest count
+
+*"Why the fuck was basically no monte carlo stuff done lol was it really hard"*. It was 27 balls,
+and 19 of them went to three roots:
+
+    no-name 8   Dál Fiatach 7   Hermenegildo 4   Näf 2   Narayana 2
+    Adasi 1     Inca 1          ben Ovadya 1     Fihr 1
+    Genghis 0   Aztec 0         Confucius 0      Jimmu 0
+
+**A census read costs a real page load** — `fetch` returns zeros because the stats block renders
+after load — so a 40-candidate sweep is 40 foreground loads with a stagger, about half an hour.
+That is why sweeps got started and abandoned rather than run out.
+
+**And the frame was wrong for the deep roots.** Uniform sampling of Huaxu's 156-generation
+descent read *top 43, zero hits*, because 78.6% of it sits at generation ≤130; the trunk cut read
+**9,265 / 6,802 / 6,793** off the same person. The early sweeps that found nothing were not
+measuring saturation. `scripts/trunk-roster.py` is now the frame for every deep root.
+
+Neither of those is difficulty. Slow, interrupted, and for a while aimed at the wrong generations.

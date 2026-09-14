@@ -829,63 +829,101 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
     filed under this root* — and over 65 balls it fired 9 times, 8 of which returned exactly 1
     new person against a median of 1,626 for the rest. It exits 1 on a collision.
 
-  - **⛔ THE WHOLE PROGRAM, RULED BY `AskUserQuestion` 2026-09-12. FOUR ANSWERS, ALL "DO".**
-    Asked because she said to: *"imo AskUserQuestion to me about for all of these things based on
-    the information we have right now, do now, postpone, or drop. So we can be clear about all of
-    these things."*
+  - **⛔ THE WHOLE PROGRAM, RE-RULED ROOT BY ROOT ON 2026-09-13.** Asked because she said to:
+    *"AskUserQuestion on every descendant's campaign on what to do with it lol"*. Fifteen
+    questions, fifteen answers. **This supersedes the 2026-09-12 four-answer ruling entirely.**
 
     **⛔ AND THE REASON THE BIG ONES ARE WORTH IT IS HERS, NOT A YIELD NUMBER:**
     *"Charlemagne is a person who is very central and well documented. There is not a whole lot of
     new stuff to add around him. A lot of these people with very large numbers of descendants are
     not as well documented and often are sparse in some areas. So I place them as worth a shot."*
-    So **a large descent already held is not evidence of saturation** — Charlemagne was ruled
-    complete for being *central and documented*, not for being large.
+    So **a large descent already held is not evidence of saturation.**
 
-    **1. THE EIGHT UNTOUCHED SEEDS — DOWN TO ONE STEP ON ONE SEED.** Seven are done; Adasi's
-    reseed `6000000227723403845` has its `Forest` (26 new) and its `Descendants` filed, so what
-    is left of the whole of part 1 is **the Monte Carlo on that reseed**.
+    ### LIVE — in slot order
 
-    ⛔ **SAMPLE PAST THE BOTTLENECK, WHICH IS THE ENTIRE POINT OF THE RESEED.** Emma read the
-    bottleneck off the tree; nothing measured here revealed it, and the first Adasi sweep's
-    30 picks topped out at 225 because they were drawn from above it. Enumerate the reseed's
-    descent, cut the frame the way `scripts/trunk-roster.py` does, and pass
-    `--list-saturated exports/adasi` as the denylist.
+    **⛔ 1. THE CHINESE ROOT, `NN Father of Huaxu` `6000000227036719829` — FULL THREE-STEP, AND
+    IT IS THE MOST IMPORTANT ONE.** *"Full three-step lol this is the most important one, and all
+    gedcoms from it are considered privileged due to the merge history."*
 
-    **2. GENGHIS, THE AZTEC AND THE INCA.** Part 2, and it went missing from this file — the
-    roster in `devlog.md` had it and the queue did not, which is exactly the *"stuff that should
-    have been queued that is not queued"* Emma named on 2026-09-13.
+    **⛔ AND MOST OF IT IS ALREADY DONE — the roster table in `devlog.md` reads `- 0 0, all three
+    steps` for this root and that is STALE.** Checked against
+    `reports/descendants-export-log.csv` and `exports/post-merge/` on 2026-09-13:
 
-        Genghis                       Forest filed, Descendants ruled OUT   -> Monte Carlo only
-        Aztec / NN Mixcoamatzin       6000000209721868822, no Forest on disk -> Forest, then MC
-        Aztec banked hit              6000000021665410212, 5086, unspent    -> Descendants
-        Inca                          Forest + 2 Descendants filed, 1 MC     -> more MC rounds
+        step 1  Forest        6000000227732606834   filed, exports/post-merge/
+        step 2  Descendants   6000000227732913835   filed, exports/post-merge/
+        step 3  Monte Carlo   4 hit balls filed off the TRUNK-restricted roster
 
-    **3. THE LIVE ROOTS — KEEP GOING ON ALL OF THEM.** Two of these were lost from this file too.
+    Its pre-merge pair is filed separately under `exports/chinese-clusters/`, and the post-merge
+    pair overwrites it — *newness is the wrong yardstick for these*, because the corpus already
+    holds those people under pre-merge duplicate ids and the merged structure is the deliverable.
 
-        6000000227712070008  NN Näf         more Monte Carlo rounds (80.1% then 26.8%)
-        NN ben Ovadya                       28,124 pool; one 5,708 hit banked, climbed
-        Dál Fiatach                         1 Forest, 8 Descendants, 7 MC balls -> more rounds
-        Hermenegildo                        1 Forest, 5 Descendants, 4 MC balls -> more rounds
-        Narayana                            thin: 33 consecutive width<=2 generations
-        Fihr                                sparse, not bottlenecked
-        Confucius                           Forest + Descendants filed, 0 MC -> Monte Carlo
-        Jimmu                               Forest + Descendants filed, 0 MC -> Monte Carlo
+    **So what "full three-step" now means for this root is MORE MONTE CARLO ROUNDS**, until
+    diminishing returns. The frame is built: `reports/descent-from-6000000227036719829.csv` and
+    its `-gen1-115` trunk cut.
 
-    **4. `no-name` `6000000000183188387` — RUN IT PROPERLY, ACROSS ROUNDS.** 472,395 descendants
-    already held and that is not a reason to stop, per the ruling above.
+    **Its balls go in `exports/post-merge/`**, which is the privileged directory — records there
+    win by `sources._post_merge_last`, so the tree carries Geni's current state after the merges
+    rather than the pre-merge duplicates. `scripts/multi-geni-item-roster.py` is the authority on
+    what that directory is for.
 
-    **⛔ THIS IS NOT GATED BEHIND THE PATHS, AND SAYING IT WAS WAS AN ERROR.** Ruled 2026-09-13:
-    *"This is not a ruling that I made. I did not make the whole program is not started ruling.
-    You did that."* The paths run in the browser and the descendants campaign runs in Geni's
-    serial export slot; they do not contend for the same resource and both run at once.
+    **⛔ AND EVERY INFERENCE I DREW ABOUT STOPPING THIS ROOT WAS WRONG.** *"I think we are done
+    with the Chinese thing"* and *"the Chinese one is perfectly fine to stop"* were about **one
+    stuck 6h30m export holding the slot**, which she said in the same breath, and she then said
+    directly: *"Everything you inferred was bad there."* The root was never dropped.
 
-    **⛔ AND DESCENDANTS BEAT FOREST FOR THE SLOT.** *"the descendants export things beat the
-    forest people later"*, and *"the forest exports on the paths ... we have this list of good
-    people to export, and in my eyes we probably shouldn't be completely abandoning them, but
-    they aren't that high a priority relative to the descendants campaign, because the
-    descendants campaign stuff generally gives us actually useful information about descendants
-    of figures."* So the isolate `Forest`s keep their place in the queue and never take the slot
-    while any `Descendants` is owed. `scripts/build-export-queue.py` sorts on it.
+    ⛔ **SAMPLE PAST THE BOTTLENECK.** Huaxu's descent is 156 generations with 78.6% at
+    generation ≤130, so a uniform sample reads *top 43, zero hits* while a trunk-restricted one
+    reads **9,265 / 6,802 / 6,793** off the same person. Cut the frame with
+    `scripts/trunk-roster.py` and pass the saturated denylist. This applies to every deep root.
+
+    **2. ADASI reseed `6000000227723403845` — THE CAP HIT AND THE 6,975.** Forest (26 new) and
+    Descendants filed; the Monte Carlo read all 40 on 2026-09-13.
+
+        6000000008826548841   15,000 -- at the cap, truncated by definition
+        6000000015507447504    6,975 -- well clear of the cliff at 1,417
+
+    Both get exports. No further rounds were asked for.
+
+    **3. THE AZTEC — FOREST FIRST, THEN MONTE CARLO.** *"Forest first, then Monte Carlo"* — the
+    Forest is the sampling frame, so building it first is what makes the sweep mean anything.
+
+        6000000209721868822  NN Mixcoamatzin   no Forest on disk   -> Forest, then Monte Carlo
+        6000000021665410212  banked hit, 5,086, never spent        -> still owed, unordered
+
+    **4. JIMMU — RUN THE MONTE CARLO.** `Forest` and `Descendants` are filed and it has never
+    been sampled.
+
+    **5. NN ben OVADYA — MORE ROUNDS.** Pool 28,124; its banked hit `6000000011196793448` is
+    climbed and spent, so the next thing is another sweep.
+
+    **6. THE ABUL HAMZA SIX — FINISH THE TWO, THEN A MONTE CARLO ON ABUL HAMZA HERSELF.**
+    All six are climbed. Two created ancestors are banked and never exported:
+
+        6000000227739018883   d'Esneval      -- both descent-verified at 0 held, which per
+        6000000227738961944   Bettencourt       Sayaluna means we lack the STRUCTURE, not people
+
+    Then sample **Abul Hamza `6000000227676734863`** again: the six were themselves hits off her
+    ball, and **her ball came back at the cap**, so it is truncated by definition and the descent
+    below it is not bounded by what is in it. She is `CLAUDE.md`'s first descendants target and
+    the specific interest is **descendants of hers living in Scandinavia**.
+
+    ### POSTPONED — live, but they never take the slot while anything above is owed
+
+        Inca            Forest + 2 Descendants + 1 MC ball   more MC rounds
+        Hermenegildo    1 Forest, 5 Descendants, 4 MC balls
+        Narayana        1 Forest, 3 Descendants, 2 balls -- 33 consecutive width<=2 generations
+        Fihr            1 Forest, 2 Descendants, 1 ball -- sparse, not bottlenecked
+
+    ### DROPPED 2026-09-13 — do not re-derive these from any roster
+
+        Genghis         Forest filed, Descendants already ruled out; the Monte Carlo goes too
+        Confucius       closed at Forest + Descendants, never sampled
+        NN Naf          closed at 6 balls; the rounds read 80.1% then 26.8%
+        no-name         6000000000183188387, closed at 9 Descendants and 8 MC balls
+        Dal Fiatach     closed at 16 balls, the most of any root
+
+    **A dropped root is dropped, not paused.** Nothing further is seeded, sampled or swept on it
+    and it is not to come back from `reports/density.md` or any other derived list.
 
 ---
 

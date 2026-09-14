@@ -28,12 +28,24 @@ whole program is not started ruling. You did that."* § *THE WHOLE PROGRAM* is l
 untouched seeds, Genghis, the Aztec, the Inca, more rounds on Näf, ben Ovadya and Dál Fiatach,
 and `no-name` across rounds. New descendants seeds are queued as they are found.
 
-**⛔ AND THE ORDER IS DESCENDANTS FIRST.** *"the descendants export things beat the forest people
-later, if that makes sense."* The serial slot is the scarcest thing in this whole operation and
-`Descendants` is the walk the time-sensitive campaign needs — the descendants of these people are
-poorly documented and get removed abruptly. A `Forest` for an isolate now has a cheap substitute
-and can wait; a `Descendants` ball does not. So the sort puts every `Descendants` row above every
-`Forest` row, whatever campaign it belongs to.
+**⛔ AND THE ORDER IS THE DESCENDANTS CAMPAIGN FIRST, NOT THE `Descendants` WALK FIRST.**
+*"the descendants export things beat the forest people later"*, then, when the first version of
+this sorted on the walk and buried the Chinese root's `Forest` among the isolates:
+*"the forest exports on the paths ... we have this list of good people to export, and in my eyes
+we probably shouldn't be completely abandoning them, but they aren't that high a priority for us
+relative to the descendants campaign, because the descendants campaign stuff generally gives us
+actually useful information about, like, descendants of figures."*
+
+**The axis is the CAMPAIGN.** A `Forest` that is step one of a three-step descendants root is not
+an isolate `Forest` and must not sort with them. So the key is
+
+    owed  ->  PRIORITY  ->  campaign  ->  walk  ->  id
+
+`PRIORITY` is a column on `reports/export-queue-seeds.csv`, default 50, and it exists for
+rulings that are not derivable — the Chinese root `NN Father of Huaxu` is **0**, because
+*"this is the most important one"*, and its `Forest` therefore heads the whole queue despite
+being a `Forest`. The isolate rows have no priority column and take the default, which puts them
+behind every descendants row of either walk.
 
 ## ⛔ DERIVED, NEVER HAND-EDITED
 
@@ -77,7 +89,7 @@ SEEDS = ROOT / "reports" / "export-queue-seeds.csv"
 LOG = ROOT / "reports" / "descendants-export-log.csv"
 OUT = ROOT / "reports" / "export-queue.csv"
 
-COLUMNS = ["geni_id", "label", "walk", "campaign", "why", "state"]
+COLUMNS = ["geni_id", "label", "walk", "campaign", "priority", "why", "state"]
 
 
 def already_exported():
@@ -99,6 +111,7 @@ def rows():
                     continue
                 gid = row["geni_id"]
                 out.append([gid, row.get("label", ""), "Forest", "isolates",
+                            DEFAULT_PRIORITY,
                             "cleared the 250 floor with no path either way",
                             "done" if gid in done else "owed"])
 
@@ -107,25 +120,30 @@ def rows():
             for row in csv.DictReader(fh):
                 gid = row["geni_id"]
                 out.append([gid, row.get("label", ""), row.get("walk", "Descendants"),
-                            "descendants", row.get("why", ""),
+                            "descendants",
+                            int(row.get("priority") or DEFAULT_PRIORITY),
+                            row.get("why", ""),
                             "done" if gid in done else "owed"])
     return out
 
 
 WALK_RANK = {"Descendants": 0, "Forest": 1}
+CAMPAIGN_RANK = {"descendants": 0, "isolates": 1}
+DEFAULT_PRIORITY = 50
 
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     all_rows = rows()
-    owed = [r for r in all_rows if r[5] == "owed"]
+    owed = [r for r in all_rows if r[6] == "owed"]
     with io.open(OUT, "w", encoding="utf-8", newline="") as fh:
         writer = csv.writer(fh)
         writer.writerow(COLUMNS)
         # owed first, then DESCENDANTS BEFORE FOREST -- ruled 2026-09-13, see the header.
         writer.writerows(sorted(
             all_rows,
-            key=lambda r: (r[5] != "owed", WALK_RANK.get(r[2], 9), r[3], r[0])))
+            key=lambda r: (r[6] != "owed", int(r[4]), CAMPAIGN_RANK.get(r[3], 9),
+                           WALK_RANK.get(r[2], 9), r[0])))
     by_walk = {}
     for r in owed:
         by_walk[r[2]] = by_walk.get(r[2], 0) + 1
