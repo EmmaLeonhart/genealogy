@@ -42120,3 +42120,30 @@ exactly as the corpus pairs them.
     MARR  2,687   ADOP    329   PEDI    329   DIV     216
 
 Every one of those tags appears in `exports/` in that form. Nothing else is written.
+
+## 2026-09-13 — Aztec Forest filed in 12.7 minutes, and the refusal check earned its keep
+
+**The poller works and it settles the timing question.**
+
+    task 6000000227741303014, Forest on NN Mixcoamatzin 6000000209721868822
+    submitted -> ready: 12.7 minutes, 34 polls at 20s
+    filed exports/aztec/export-Forest-6000000209721868822.ged, 5,000 at the cap, 9 new (0.2%)
+
+**12.7 minutes is dead centre of** *"exports are supposed to take about six to fifteen minutes"*.
+Today's earlier balls took 34 and 52 minutes by the clock and both were **ready long before they
+were fetched** — nothing polled after the `task_id` was captured. The export was never slow.
+
+**0.2% new is not the measure of this ball.** The Aztec item asks for `Forest` **then** Monte
+Carlo precisely because the Forest is the sampling frame; a sweep drawn from a partial ball
+samples the wrong population.
+
+**And the refusal check fired for the first time, on the very next export.**
+`https://www.geni.com/gedcom/export/6000000021665410212` returns *"You are not allowed to export
+that profile"* — the Aztec banked hit, 5,086 on the census, sitting in the queue as a plain
+`Descendants` row. Submitting it would have held Geni's single slot for an hour. The account may
+only export from profiles it owns, which is the whole reason the created-ancestor step exists
+rather than being a formality on top of it.
+
+So it went the campaign's way instead: a climb on `6000000021665410212` with the 14,682-person
+denylist, and a `Descendants` off whatever ancestor gets created. First step came back
+`both_present`, which is the climb declining and walking up.
