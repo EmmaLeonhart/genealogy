@@ -42189,3 +42189,30 @@ a `Descendants` off the created ancestor, in census order. The 12,786 is climbin
 **The frame was rebuilt before sampling, not reused.** The 4,077-person ball had just landed, so
 the descent went 10,713 → 14,785 over 35 generations; `trunk-roster.py` cut at generation 23
 (1,449 people) and 400 picks against the 14,649-person saturated denylist lost only 19.
+
+## 2026-09-13 — Aztec round 1 closes: 6,775 new from two hits, and the root is the best of the campaign
+
+    hit 1  subject 6000000001500764211 (12,786)  ->  3,491 new (69.8%)
+    hit 2  subject 6000000019458449590 ( 6,927)  ->  3,284 new (65.7%)
+
+    the Aztec tonight, four balls:
+      Forest      6000000209721868822        9 new (0.2%)  -- the sampling frame
+      banked hit  6000000227741310007    4,077 new (81.5%)
+      MC hit 1    6000000227741680915    3,491 new (69.8%)
+      MC hit 2    6000000227741840051    3,284 new (65.7%)
+                                        ----------
+                                        10,861 new people
+
+    corpus 1,645,725 -> 1,656,586
+
+**Emma's re-ruling put the Aztec first a few hours ago and it is by some distance the most
+productive root the campaign has had** — 81.5%, 69.8% and 65.7% against the previous best of
+29.8%. The census reading did not predict the order: the 12,786 returned less than the 5,086.
+
+**Round 1 does not close the root.** § *THE STOPPING CONDITION IS GIVEN, NOT DERIVED* — a round
+stops a root when it returns **zero** candidates at or above 4,000, and this one returned two.
+Round 2 is warranted and the frame will need rebuilding again, because 6,775 new people have just
+been added below this root.
+
+**The climbs remain the slow part**: 23 declines over 29.7 minutes, then 11 over 26.7. The balls
+themselves were ready in **0.7 minutes each**.
