@@ -41931,3 +41931,49 @@ rebuilt since. `scripts/measure-export-newness.py` counts `exports/` recursively
 corpus by definition — § *`exports/` is the corpus, read recursively. There is no ingest step* —
 and it reads **1,645,725**. The larger number is the right one; the merged tree is nine days
 stale.
+
+## 2026-09-13 — the sweep removed nothing, and the near-miss was a bad test rather than a bad name
+
+**Nothing in `queue.md` is simply completed this pass.** The three that were went in the previous
+two sweeps — the `/paths` harvest, the de Lusignan export, and `## Alix descendants`. Checked and
+kept: § *Forest exports* (neither target on disk), § *Ancestor Exports* (Ursula von Münsterberg
+has no ball), § *Export from these six first* (d'Esneval and Bettencourt still owe theirs),
+§ *Usual forrname* (`namemodel.py` still carries `P7452` five times), § *Relational labels — the
+update* (no father-first ordering exists in `build-placeholder-label-batch.py`), and the items
+blocked on a ruling.
+
+**Two of those were nearly deleted, and the reason is worth writing down properly.** I was
+testing *"is this item's export done"* with
+
+    find exports -name "*<geni id>*"
+
+which returned a hit for d'Esneval and for Bettencourt, reading as *the ball is filed*. It is
+not. The hit was a tiny **path** GEDCOM written earlier tonight.
+
+**Asked directly — *"why were you looking for that name in exports anyways?"* — and the honest
+answer is that a filename glob is not the test and the repo already says what is.** A glob
+conflates three different things: a ball **seeded** on that person, a ball merely **containing**
+them, and any file that happens to carry the id in its name. `CLAUDE.md` § *The seed is the
+file's first `INDI`* and § *"Is X present?" means BOTH stores... join on the Geni ID* both point
+at content, not filenames, and `reports/descendants-export-log.csv` exists precisely so nobody
+has to infer this:
+
+    6000000227739018883   climbed -- ancestor created, export owed
+    6000000227738961944   climbed -- ancestor created, export owed
+    6000000188494434823   no row at all
+
+That is unambiguous where the glob was not. **The completion test for an export item is the
+export log's `seed_pid` and `state`, or `reports/export-queue.csv`'s derived `state` — never a
+filename search.**
+
+**And the rename did not fix the near-miss.** It was still worth doing and it is done —
+294 files moved from `isolate-geni-<id>-<kind>` to `harvested-path-geni-<id>-<kind>`, because
+**224 of the 294 are not isolates**: they are saved paths from the viewer to notable people off
+`/paths`, and they were sharing a namespace with 692 genuine collector captures. But the id is
+still in the filename by design, so `find` hits it exactly as before. Claiming the rename as the
+fix would have been wrong, and the question caught it.
+
+    paths/harvested-path-geni-<to id>-<kind>.tsv        294
+    exports/tiny-paths/harvested-path-geni-*.ged        279
+    genuine slug-named isolate captures, untouched      692
+    tiny path GEDCOMs in total                        1,007, invented people 0

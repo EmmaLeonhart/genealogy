@@ -75,7 +75,13 @@ def main():
         if not rows[0]["profile_id"]:
             skipped += 1
             continue
-        name = "isolate-geni-%s-%s" % (to_id, kind.replace("-", ""))
+        # ⛔ NOT `isolate-geni-`. These are HARVESTED paths, and 224 of the first 294 are
+        # not isolates at all -- they are saved paths from the viewer to notable people, off
+        # `/paths`. Filing them under the isolate prefix put two populations in one namespace
+        # and a `find exports -name "*<id>*"` then reported d'Esneval and Bettencourt as having
+        # balls on disk when what it had found was these files. That misread came within one
+        # step of deleting two live queue items on 2026-09-13.
+        name = "harvested-path-geni-%s-%s" % (to_id, kind.replace("-", ""))
         body = [
             "# Geni relationship path to %s (%s)" % (to_id, kind),
             "#",
