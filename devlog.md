@@ -42073,3 +42073,50 @@ sweep again. `load` clearing `results` is documented and I used it anyway withou
 figure rather than the revision in the same sentence — the exact re-derivation the page exists to
 prevent. Fixed in both places, and it is not academic: at 5,000 that 4,459 candidate is not an
 export at all.
+
+## 2026-09-13 — the tiny GEDCOMs now use only tags this corpus attests
+
+*"Don't make up some kind of a way of implementing the relationships. Use the actual
+relationships that are present within our data... No guessing on the representations."*
+
+**The corpus's entire relationship vocabulary, measured over every `.ged` outside the tiny
+directories.** Four tags, and there is no fifth:
+
+    1 MARR  514,155      1 DIV  10,071      2 PEDI  2,966      1 ADOP  2,185
+    2 PEDI adopted 2,185 | foster 781       3 ADOP BOTH 2,185 -- the only ADOP value
+
+**Three things the emitter was writing were invented, and one real thing it never wrote.**
+
+    1 DIV Y     WRONG -- `1 DIV` is bare in all 10,071 corpus occurrences
+    1 ENGA Y    INVENTED -- `ENGA` occurs ZERO times in this corpus
+    (no MARR)   MISSING -- every real spouse family carries a bare `1 MARR`, 514,155 of them
+    (adoption)  MISSING -- 136 path rows say `adoptive` and not one GEDCOM said so
+
+**Adoption is now the shape Geni itself writes**, copied out of
+`exports/8-19 exports/export-Ancestors-6000000227331261851.ged` rather than composed — on the
+**child's** `INDI`:
+
+    1 FAMC @F...@
+    2 PEDI adopted
+    1 ADOP
+    2 FAMC @F...@
+    3 ADOP BOTH
+
+**An engagement gets nothing, and that is the honest answer rather than a gap.** `ENGA` is not in
+this corpus, so it is not ours to write. A fiancé pair is emitted as the couple with **no**
+marriage event, which is what a `FAM` without `MARR` already means. Learning a real
+representation needs a `Forest` export on a profile that has an engagement on it — Emma's own
+rule for exactly this case: *"if there's some relationship that is only present in one spot,
+we have to do a `Forest` export on that point in order to get that relationship so we know how to
+represent it."*
+
+**Which words assert a marriage is read off the word, not assumed.** `husband`/`wife` do;
+`partner` and a fiancé(e) do not; an `ex-` asserts one that ended, so `1 MARR` **and** `1 DIV`,
+exactly as the corpus pairs them.
+
+**Emitted now, across all 1,007 files:**
+
+    CHIL 50,226   SEX 40,435   HUSB 33,494   WIFE 16,906
+    MARR  2,687   ADOP    329   PEDI    329   DIV     216
+
+Every one of those tags appears in `exports/` in that form. Nothing else is written.

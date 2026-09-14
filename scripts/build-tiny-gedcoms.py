@@ -49,8 +49,9 @@ across 95% of paths. `scripts/sibling-pair-worklist.py` is the list of who still
   names it and re-running is byte-identical. Geni does not expose family ids, and Wikidata does
   not use families at all, so this matters little -- it is
   bookkeeping, kept because it costs nothing over a counter, not a headline property.
-* **A former marriage carries `1 DIV Y`, an engagement `1 ENGA Y`** -- kept from the script this
-  supersedes, where it closed 58 of the 59 remaining broken path links.
+* **A former marriage carries a bare `1 DIV` beside its `1 MARR`, both attested; an
+  engagement carries NOTHING** -- `ENGA` occurs zero times in the corpus, so it is not ours
+  to write. See the vocabulary note on `render`.
 """
 
 from __future__ import annotations
@@ -117,11 +118,34 @@ def render(subject_note, people, sex, fams, source):
         "Geni profile and an unknown parent is an absent slot." % source,
         "1 NOTE %s" % subject_note,
     ]
+    #: ⛔ EVERY TAG BELOW IS ATTESTED IN `exports/` AND NONE IS COMPOSED. Ruled 2026-09-13:
+    #: *"don't make up some kind of a way of implementing the relationships. Use the actual
+    #: relationships that are present within our data... No guessing on the representations."*
+    #: Measured across the corpus outside the tiny directories, the ENTIRE vocabulary is:
+    #:     1 MARR 514,155   1 DIV 10,071   2 PEDI 2,966   1 ADOP 2,185
+    #:     2 PEDI adopted 2,185 / foster 781      3 ADOP BOTH 2,185 -- the only ADOP value
+    adopt_famc = {}
+    for f in fams:
+        if not f.get("adopted"):
+            continue
+        members = [m for m in [f.get("husb"), f.get("wife")] + f.get("chil", []) if m]
+        if len(members) < 2:
+            continue
+        for c in f.get("chil", []):
+            adopt_famc.setdefault(c, []).append(fam_xref(members))
     for gid, nm in people.items():
         out.append("0 @I%s@ INDI" % gid)
         out.append("1 NAME %s" % (nm or "NN"))
         if gid in sex:
             out.append("1 SEX %s" % sex[gid])
+        # The attested adoption shape, copied from a real Geni export rather than composed --
+        # `exports/8-19 exports/export-Ancestors-6000000227331261851.ged` carries exactly this.
+        for fx in adopt_famc.get(gid, []):
+            out.append("1 FAMC @F%s@" % fx)
+            out.append("2 PEDI adopted")
+            out.append("1 ADOP")
+            out.append("2 FAMC @F%s@" % fx)
+            out.append("3 ADOP BOTH")
         out.append("1 RFN geni:%s" % gid)
     for f in fams:
         members = [m for m in [f.get("husb"), f.get("wife")] + f.get("chil", []) if m]
@@ -134,10 +158,16 @@ def render(subject_note, people, sex, fams, source):
             out.append("1 WIFE @I%s@" % f["wife"])
         for c in f.get("chil", []):
             out.append("1 CHIL @I%s@" % c)
+        # `1 MARR` is bare in every one of the corpus's 514,155 occurrences, and so is `1 DIV`
+        # in all 10,071. `DIV Y` was written here and is attested NOWHERE.
+        if f.get("marr"):
+            out.append("1 MARR")
         if f.get("div"):
-            out.append("1 DIV Y")
-        if f.get("enga"):
-            out.append("1 ENGA Y")
+            out.append("1 DIV")
+        # ⛔ NO `ENGA`. It does not occur once in the corpus, and `1 ENGA Y` was being emitted.
+        # An engagement therefore has NO attested representation and is written as the couple
+        # with no marriage event asserted, which is what a `FAM` without `MARR` already means.
+        # Learning a real one needs a `Forest` export on a profile that has an engagement.
     out.append("0 TRLR")
     return "\n".join(out) + "\n"
 
@@ -223,6 +253,9 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
         if former:
             word = word.split("-", 1)[1]
         kind, own_sex = PATH_REL.get(word, (None, None))
+        # 136 rows say *adoptive*, and the word was reaching this function and being dropped
+        # because only the LAST word was ever looked at.
+        adopted = "adoptive" in [w.lower() for w in parts]
         if kind is None and word in ENGAGED:
             kind, former = "spouse", False
         if kind is None:
@@ -233,18 +266,21 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
             sex.setdefault(prev["gid"], owner)
         if kind == "parent":
             slot = "wife" if own_sex == "F" else "husb"
-            fams.append({slot: cur["gid"], "chil": [prev["gid"]]})
+            fams.append({slot: cur["gid"], "chil": [prev["gid"]], "adopted": adopted})
         elif kind == "child":
             # The possessive states the PARENT's sex: *his son* -> the previous person is male.
             slot = "wife" if owner == "F" else "husb"
             fams.append({slot: prev["gid"], "chil": [cur["gid"]]})
         elif kind == "spouse":
+            # `partner` and a fiance(e) assert no marriage; `husband`/`wife` do, and an `ex-`
+            # asserts one that ended, which is `1 MARR` + `1 DIV` exactly as the corpus writes it.
+            married = word in ("husband", "wife")
             if own_sex == "M":
                 fams.append({"husb": cur["gid"], "wife": prev["gid"],
-                             "div": former, "enga": word in ENGAGED})
+                             "marr": married, "div": former})
             else:
                 fams.append({"husb": prev["gid"], "wife": cur["gid"],
-                             "div": former, "enga": word in ENGAGED})
+                             "marr": married, "div": former})
         elif kind == "sibling":
             # ⛔ No parents are invented. The pair is a family with two children and no partners;
             # their real parents arrive from each member's own profile scrape, which is why the
