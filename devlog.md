@@ -42504,3 +42504,23 @@ measuring. The stopping condition is still the given one — a round returning n
 4,000 — and two candidates can answer it as well as forty when two is all there is.
 
 Tonight: **28,509 new people**, corpus 1,645,725 → 1,674,234.
+
+## 2026-09-14 — Jimmu closes, on two candidates and an honest gap
+
+    trunk       2,122 people, 398 of 400 picks blocked (99.5%)
+    candidate 1 6000000012790269218 -- UNREAD. Its stats page hung the collector twice,
+                four minutes each against a ~12-second norm, on two separate dispatches
+    candidate 2 6000000012790174606 -- 3,190 descendants, below the 4,000 threshold
+
+**So the round returns zero candidates at or above 4,000 and the root closes** — but it closes on
+**one reading, not forty**, and one of its two candidates could not be read at all. That is a
+weaker basis than any other root got tonight and it is recorded as such rather than dressed up.
+Re-reading `6000000012790269218` would need whatever is wrong with that profile page to resolve.
+
+**What is not in doubt is that the trunk is spent.** 99.5% blocked means the saturated denylist
+covers all but a handful of the 2,122, so there is no fuller round to run without a different
+frame — and `docs/monte-carlo-procedure.md` fixes the frame as the trunk cut precisely so that
+"use a different frame" is not a move available when the answer is disappointing.
+
+Remaining: **the Chinese root's further Monte Carlo rounds**, the last item in
+`docs/descendants-campaign-loop.md`.
