@@ -42814,3 +42814,31 @@ measurements.
 
 **The median chain is 31 steps and the longest is 172.** A 31-step chain is 31 real Geni profiles
 with their relation words, from one `fetch`, for a person Wikidata had recorded as disconnected.
+
+## 2026-09-14 — 1,891 chains, and 4,402 people the corpus did not have
+
+    path-chains.tsv   66,075 rows over 1,891 chains, 10,938 distinct people
+    tiny-paths        2,254 -> 2,557 .ged, zero invented people
+    chain fetcher     1,637 of 5,813, chunk 6 of 20, 21 auto-dumps
+    requester         7,673 people, 12 failures
+
+    targets with a chain   1,853   of those on the worklist   622
+    people named          10,938   of those on the worklist   701
+
+**The measurement that answers whether any of this is worth doing:**
+
+    people named by the chains          10,938
+      already somewhere in exports/      6,536
+      NEW -- named ONLY by a path        4,402
+
+**4,402 people are in this repo because a relationship path named them and nothing else did.**
+That is the § *Wikidata isolate connection* thesis stated as a count rather than an argument — *"a
+Geni relationship path is the only evidence in this repo that comes from OUTSIDE our own data"* —
+and it is 40% of everyone the chains touch.
+
+**622 isolates hold a chain**, from 201 four ticks ago. 79 more worklist people appear inside
+chains without ever having been requested.
+
+For scale: the whole descendants campaign last night added **29,717** people across 12 exports and
+about eight hours of Geni's serial slot. The path campaign has added **4,402** off `fetch` calls
+alone, with the slot untouched and 4,176 permalinks still to fetch.
