@@ -78,15 +78,26 @@ SPOUSES = {"spouse", "partner", "ex-spouse"}
 SIBLINGS = {"sibling", "half-sibling"}
 
 #: The relation word on a path row, mapped to what it makes the row's person to the previous one.
+#: ⛔ THE SEX OF THE PARENT IS IN THE WORD AND IT WAS BEING THROWN AWAY. Fixed 2026-09-13.
+#: `father` and `mother` both mapped to one `parent` kind and `path_gedcom` wrote every parent as
+#: `HUSB`, so EVERY MOTHER in every tiny path GEDCOM was recorded as a husband -- 1,007 files with
+#: not one `WIFE` line among the parent edges. The TSV had it right the whole time (`his mother`),
+#: which is why this is a re-run and not a re-scrape.
 PATH_REL = {
-    "father": "parent", "mother": "parent",
-    "son": "child", "daughter": "child",
-    "husband": "spouse", "wife": "spouse", "partner": "spouse",
-    "brother": "sibling", "sister": "sibling",
-    # Geni also renders the sexless forms, and they were being dropped: 7 `parent` and 4 `child`
-    # rows across the harvested paths, each one a lost link in an otherwise complete chain.
-    "parent": "parent", "child": "child",
+    "father": ("parent", "M"), "mother": ("parent", "F"),
+    "son": ("child", "M"), "daughter": ("child", "F"),
+    "husband": ("spouse", "M"), "wife": ("spouse", "F"),
+    "partner": ("spouse", None),
+    "brother": ("sibling", "M"), "sister": ("sibling", "F"),
+    # Geni renders the sexless forms too. They carry no sex, so they make the edge and assert
+    # nothing about which slot the person belongs in.
+    "parent": ("parent", None), "child": ("child", None),
 }
+
+#: The possessive opens the row and states the sex of the PREVIOUS person -- *his mother* means
+#: the previous person is male. That is the only place a child-edge learns which parent slot to
+#: use, and it was being dropped with the rest.
+POSSESSIVE = {"his": "M", "her": "F"}
 FORMER = re.compile(r"^ex-(husband|wife|partner)$", re.I)
 # The accented spellings are what Geni actually renders; the ASCII pair alone missed 7 rows.
 ENGAGED = {"fiancee", "fiance", "fiancée", "fiancé"}
@@ -203,23 +214,37 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
         return None
     people = {r["gid"]: r["name"] for r in rows}
     fams = []
+    sex = {}
     for prev, cur in zip(rows, rows[1:]):
-        word = cur["rel"].split()[-1] if cur["rel"] else ""
+        parts = cur["rel"].split() if cur["rel"] else []
+        word = parts[-1] if parts else ""
+        owner = POSSESSIVE.get(parts[0].lower()) if parts else None
         former = bool(FORMER.match(word))
         if former:
             word = word.split("-", 1)[1]
-        kind = PATH_REL.get(word)
+        kind, own_sex = PATH_REL.get(word, (None, None))
         if kind is None and word in ENGAGED:
             kind, former = "spouse", False
         if kind is None:
             continue
+        if own_sex:
+            sex[cur["gid"]] = own_sex
+        if owner:
+            sex.setdefault(prev["gid"], owner)
         if kind == "parent":
-            fams.append({"husb": cur["gid"], "chil": [prev["gid"]]})
+            slot = "wife" if own_sex == "F" else "husb"
+            fams.append({slot: cur["gid"], "chil": [prev["gid"]]})
         elif kind == "child":
-            fams.append({"husb": prev["gid"], "chil": [cur["gid"]]})
+            # The possessive states the PARENT's sex: *his son* -> the previous person is male.
+            slot = "wife" if owner == "F" else "husb"
+            fams.append({slot: prev["gid"], "chil": [cur["gid"]]})
         elif kind == "spouse":
-            fams.append({"husb": prev["gid"], "wife": cur["gid"],
-                         "div": former, "enga": word in ENGAGED})
+            if own_sex == "M":
+                fams.append({"husb": cur["gid"], "wife": prev["gid"],
+                             "div": former, "enga": word in ENGAGED})
+            else:
+                fams.append({"husb": prev["gid"], "wife": cur["gid"],
+                             "div": former, "enga": word in ENGAGED})
         elif kind == "sibling":
             # ⛔ No parents are invented. The pair is a family with two children and no partners;
             # their real parents arrive from each member's own profile scrape, which is why the
@@ -227,7 +252,7 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
             fams.append({"chil": [prev["gid"], cur["gid"]]})
     if not fams:
         return None
-    return render("path %s" % name, people, {}, fams, source)
+    return render("path %s" % name, people, sex, fams, source)
 
 
 # ---------------------------------------------------------------- saved pages

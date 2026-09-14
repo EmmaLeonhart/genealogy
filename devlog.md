@@ -41977,3 +41977,40 @@ fix would have been wrong, and the question caught it.
     exports/tiny-paths/harvested-path-geni-*.ged        279
     genuine slug-named isolate captures, untouched      692
     tiny path GEDCOMs in total                        1,007, invented people 0
+
+## 2026-09-13 — every mother in every tiny path GEDCOM was written as a husband
+
+Caught by Emma: *"you didn't have relationships."* She was right.
+
+    the TSV said     5  Rakel Rasmusdottir Borsheim   his mother   geni:6000000020344732085
+    the GEDCOM said  1 HUSB @I6000000020344732085@
+    WIFE lines in that file, and in every other one: 0
+
+**`PATH_REL` collapsed `father` and `mother` into a single `parent` kind**, and `path_gedcom`
+then wrote every parent into `HUSB`. 1,007 files, not one `WIFE` on a parent edge. The
+possessive that opens each row — *his* mother, *her* son — states the **previous** person's sex
+and was thrown away with it, which is the only thing a child-edge has to tell it which parent
+slot to use.
+
+**⛔ AND I HAD ALREADY SEEN IT.** An hour earlier, while measuring the relation words, I noticed
+that mothers were going into `HUSB`, decided it was *"a pre-existing modelling choice, not
+something I should change tonight"*, and shipped. Noticing a correctness bug and reasoning past
+it is worse than not noticing.
+
+**The reason this is a re-run and not a re-scrape is the thing Emma named next:**
+*"the worst possible scenario would be if the string was parsed from the scrape as opposed to
+just taken from the DOM."* It is taken from the DOM — `span.subtext`'s `textContent`, whitespace
+collapsed and the parens stripped, nothing parsed, nothing inferred from position. So the truth
+sat unharmed in `paths/*.tsv` and `reports/path-chains.tsv` — **11,647 relation strings, 33
+distinct words** — while only the derived artefact was wrong.
+
+**Fixed.** `PATH_REL` carries a sex alongside the kind, `POSSESSIVE` reads the opening word, and
+`render` finally gets the `sex` map it always took as an argument and was always passed `{}`:
+
+    father -> HUSB   mother -> WIFE   son/daughter -> the possessive picks the parent's slot
+    husband/wife     -> the named side takes its own slot rather than always the second
+    parent / child   -> no sex stated, so the edge is made and no slot is asserted
+
+    across all 1,007 files:  HUSB 33,494   WIFE 16,906   SEX 40,435   (was WIFE 0, SEX 0)
+
+40,435 `SEX` records where there were none, every one of them read off a word Geni wrote.
