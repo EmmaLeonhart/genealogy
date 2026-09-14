@@ -5,15 +5,15 @@ first thing and is easy. Every individual needs an English,
 Japanese and Chinese label, and the material needs cataloguing a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,673,822 people**.
+One row per person in `reports/derived-labels.csv` — **1,675,442 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,570,973 | 93.9% |
+| Latin only | 1,572,529 | 93.9% |
 | CJK only — needs translation for en | 47,257 | 2.8% |
-| no usable name at all | 28,964 | 1.7% |
+| no usable name at all | 29,028 | 1.7% |
 | other script only — needs translation for en | 12,779 | 0.8% |
 | mixed-script only — no clean Latin label | 11,108 | 0.7% |
 | Latin and CJK | 2,741 | 0.2% |
@@ -27,11 +27,11 @@ name in some other script is present, a translation is made.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,878,540 |
+| Latin | 1,880,525 |
 | CJK | 118,729 |
-| other | 52,564 |
+| other | 52,565 |
 | mixed | 34,473 |
-| none | 492 |
+| none | 494 |
 
 Grouped by **script, never language**, by rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 311,771 people
+## Aliases from married names — 312,041 people
 
 A married name plugs into the name to produce an alias.
 
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-51,181 people have both a derived Latin label and a Wikidata English
-label. **13,508 match exactly (26.4%).**
+51,272 people have both a derived Latin label and a Wikidata English
+label. **13,539 match exactly (26.4%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
