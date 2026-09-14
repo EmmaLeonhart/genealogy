@@ -41720,3 +41720,22 @@ descent read *top 43, zero hits*, because 78.6% of it sits at generation ≤130;
 measuring saturation. `scripts/trunk-roster.py` is now the frame for every deep root.
 
 Neither of those is difficulty. Slow, interrupted, and for a while aimed at the wrong generations.
+
+## 2026-09-13 — the Huaxu Monte Carlo round is running, alongside the export
+
+`reports/avoid/huaxu-post-merge-saturated.txt` — **14,682 people**, every person inside the
+`exports/post-merge/` balls *and every one of their ancestors*, which is what
+`--list-saturated` adds over `--list` and the reason a pick that looks fresh is not.
+
+**40 candidates enqueued**, drawn from the trunk cut `descent-from-6000000227036719829-gen1-115`
+— 200 picks, 16 blocked by the denylist, 40 kept.
+
+**It went in through `enqueue`, not `montecarlo`, and that choice is load-bearing.** The
+`montecarlo` handler does `put({... results: [], active: {}, creating: "" ...})` — it **wipes
+`active`**, and `active` is where the watcher for the in-flight export lives. Dispatching it
+would have left Pietro's ball building on Geni with nothing watching for its task id. `enqueue`
+appends and leaves `active` alone, so the census sweep and the export run at once. The picker
+stays dumb, as § *THIS SCRIPT MUST NOT GET CLEVERER* requires: the denylist is applied outside
+it, which is exactly what `avoidFile` does inside the worker.
+
+Stagger 12 s, so about eight minutes for the forty.
