@@ -42171,3 +42171,21 @@ going to honour.
 **And the timings now match what they were always supposed to be**: 12.7 minutes for the Aztec
 `Forest`, **1.3 minutes** for this one. Nothing about Geni changed today. The 34- and 52-minute
 figures earlier were a missing poller.
+
+## 2026-09-13 — Aztec Monte Carlo round 1: 40 read, 2 hits
+
+`reports/aztec-montecarlo-round1.tsv`, and **the readings were drained to disk the moment the
+sweep finished**, which is the fix for losing the last round's.
+
+    12,786  6000000001500764211
+     6,927  6000000019458449590
+     2,726 / 2,252 / 1,968 / 1,820 / 1,231 ...
+         0  x17 of 40
+
+Two at or above the ruled **4,000** threshold — the number that had been written into
+`docs/monte-carlo-procedure.md` as 5,000 and was corrected earlier tonight. Both get a climb and
+a `Descendants` off the created ancestor, in census order. The 12,786 is climbing.
+
+**The frame was rebuilt before sampling, not reused.** The 4,077-person ball had just landed, so
+the descent went 10,713 → 14,785 over 35 generations; `trunk-roster.py` cut at generation 23
+(1,449 people) and 400 picks against the 14,649-person saturated denylist lost only 19.
