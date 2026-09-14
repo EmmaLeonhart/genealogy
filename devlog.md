@@ -42948,3 +42948,38 @@ Two things are therefore true at once and the earlier entry stated only one of t
 The operational conclusion does not change — **the cumulative harvest file is what protects the
 old rows, and re-harvesting has to keep pace** — but the number was asserted from one measurement
 and a second measurement refuted it. A third harvest is running now at 227 pages.
+
+## 2026-09-14 — NN Qiao's ancestry: 539 people, and the 123 new ones are Tibetan kings
+
+Emma: *"a real documented person that did not exist on Geni that I created that gives access to
+the ancestry of the Qing monarchs. And the Qing monarchs have at least one very unusual descent
+from antiquity line."* Then, on what to expect: *"a small amount of people is not the same thing
+as not important people... they seem to be descent from antiquity lines that are uniquely Qing and
+they're related to Tibet."*
+
+    task     6000000227755475835, seed 6000000227755360902
+    filed    exports/qiao/export-Ancestors-6000000227755360902.ged
+    size     539 people -- far under the 5,000 cap, so this is the COMPLETE ancestry
+    newness  123 new (22.8%)
+
+**Both predictions hold, and the second one is the reason the first does not matter.** The 123
+are not scattered individuals; they are lines:
+
+    Tibetan Yarlung dynasty   Thothori Nyantsen Yarlung, Zanam Zindé Jarlung,
+                              Tritsun Nam Jarlung, Detring Tsen Jarlung, Denöl Nam Jarlung
+    Qing imperial             Bukuri Yongson, chieftain of the Jianzhou Jurchens and
+                              progenitor of the Aisin Gioro; 歡 愛新覺羅; the Jiaqing Emperor
+    Manchu clans              佟佳 Tunggiya, 鈕祜祿 Niohuru, 葉赫納喇 Yehe Nara,
+                              喜塔臘 Hitara, 烏雅 Uya, 魏佳 Weigiya
+    Mongol                    博爾濟吉特 Borjigit -- Genghis Khan's own clan
+
+**The Yarlung kings are the Tibetan descent-from-antiquity line**, and they reached this corpus by
+no other route: every one of them is in this single ball and nowhere else in `exports/`. Same for
+Bukuri Yongson.
+
+**⛔ THE NEWNESS COLUMN IS THE WRONG YARDSTICK ON A LINE, the same way it was on the Chinese
+root.** 22.8% of 539 is 123 people, which reads as a small ball; what it actually is, is five
+Tibetan kings, a Jurchen progenitor and six Manchu clans that the tree did not previously reach.
+A ball is judged by what it connects, not by how much it weighs.
+
+The `Forest` on the same person is queued behind it and fired automatically when the slot cleared.
