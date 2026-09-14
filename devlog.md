@@ -41893,3 +41893,41 @@ ending on exactly the id in the permalink's `to=`.
 *your father* and *his father* both map to `parent`. A distance phrase — *3rd great grandson* —
 maps on `grandson`, which is not in the table, so the edge is **skipped rather than guessed**.
 That is the existing behaviour and this change does not second-guess it.
+
+## 2026-09-13 — the Chinese root's Forest is filed, and it is 0% new exactly as predicted
+
+    task        6000000227740976923
+    seed        6000000227036719829, first INDI, confirmed
+    filed       exports/post-merge/export-Forest-6000000227036719829-refresh-20260913.ged
+    size        5,000 individuals -- at the cap
+    newness     0 new (0.0%) out of 5000
+
+**That is the success case on this root and not a wasted slot.** *"The forest export and
+descendants exports are both probably going to be mostly the same and not introducing new people,
+but they are correcting errors in the people."* The prediction was exact. The ball goes into
+`exports/post-merge/`, which wins by `sources._post_merge_last`, so those 5,000 people now carry
+Geni's post-merge state rather than whatever the older balls asserted about them.
+
+**Never overwritten**, per § *Never overwrite an existing `.ged`*: the earlier
+`export-Forest-6000000227036719829.ged` is untouched and the new ball is a new file, dated. It
+was also checked byte-for-byte against the old one first — the one case where a duplicate is
+allowed to be skipped — and it differs.
+
+**`Descendants` submitted the moment the slot cleared**, step 2 of the three.
+
+**The download path is now known and it is a URL, not a hunt.** The dashboard's icon is bound to
+`downloadGedcom('<task_id>')` and resolves to
+
+    https://www.geni.com/gedcom/download?task_id=<task id>
+
+then one *Download My GEDCOM File* button. A JS `.click()` on either the icon `span` or its
+anchor does **nothing** — the handler is bound through `data-onclick-bound` and needs a real
+mouse event, which cost four attempts to establish. A future ball can be fetched by navigating
+straight to that URL.
+
+**And a count to correct.** The status reports have been giving the corpus as **1,451,993**
+distinct people from `out/merged.ged`. That file was built on **5 September** and has not been
+rebuilt since. `scripts/measure-export-newness.py` counts `exports/` recursively, which is the
+corpus by definition — § *`exports/` is the corpus, read recursively. There is no ingest step* —
+and it reads **1,645,725**. The larger number is the right one; the merged tree is nine days
+stale.
