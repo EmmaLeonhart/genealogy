@@ -839,6 +839,13 @@ Make the CICD do about half the edits every day automatically. Produce disjoint 
     not as well documented and often are sparse in some areas. So I place them as worth a shot."*
     So **a large descent already held is not evidence of saturation.**
 
+    **⛔ THE ROUND IS `docs/monte-carlo-procedure.md` AND THERE IS NO DISCRETION IN IT.**
+    Ruled 2026-09-13: *"the failure mode of the Monte Carlo campaign was that you did too much of
+    your own judgment, because it was supposed to be strictly organized and scope limited."*
+    40 candidates, trunk frame, `--list-saturated` denylist, every reading ≥ 5000 exported, and
+    the root stops when a round returns zero of them. Seven invented yield predictors are listed
+    there, all refuted. Which root runs is this list, top to bottom, and never a choice.
+
     ### LIVE — in slot order
 
     **⛔ 1. THE CHINESE ROOT, `NN Father of Huaxu` `6000000227036719829` — FULL THREE-STEP, AND

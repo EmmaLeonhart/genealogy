@@ -147,6 +147,16 @@ diminishing returns.** Only then is it clear whether the thing works.
 § *anything odd about a person → `Forest` export*. `Forest` follows spouse links and spends the
 5,000 slots sideways; this campaign needs the ball to go down.
 
+**⛔ AND THE ROUND ITSELF HAS NO DISCRETION IN IT — `docs/monte-carlo-procedure.md`.** Ruled
+2026-09-13: *"the failure mode of the Monte Carlo campaign was that you did too much of your own
+judgment, because it was supposed to be strictly organized and scope limited."* The picker was
+kept dumb by an explicit rule and **the judgment moved into the campaign around it**, where no
+rule was watching. 40 candidates a round, the trunk cut as the frame, `--list-saturated` as the
+denylist, every reading ≥ 5000 exported off a created ancestor, and **the root stops when a round
+returns zero of them** — a given condition, not a read of the distribution. Seven properties were
+invented here as yield predictors and all seven were refuted; they are listed on that page.
+**Which root runs is `queue.md` top to bottom and never a choice.**
+
 **Do not substitute a number for that.** *15,000 descendants* was invented here as a floor and it
 is not the rule: a fixed target answers "have we done enough arithmetic", and the actual question
 is whether new exports are still returning new people. One 5,000-person ball is the first round

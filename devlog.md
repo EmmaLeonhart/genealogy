@@ -41783,3 +41783,41 @@ lost its watcher; its ball is still building on Geni and its task id will have t
 `/gedcom` later. That is the right trade — the duplicate was mine and should not have been
 submitted, and the alternative was making a drop-everything item wait behind forty census reads.
 The forty stats jobs were carried across the `load` and sit behind the export.
+
+## 2026-09-13 — the Monte Carlo campaign's failure mode, named and closed
+
+*"I think the failure mode of the Monte Carlo campaign was that you did too much of your own
+judgment, because it was supposed to be strictly organized and scope limited."*
+
+**That is exactly right and the shape of it is specific.** `scripts/monte-carlo-pick.py` carries
+*⛔ THIS SCRIPT MUST NOT GET CLEVERER — no exclusion lists, no ranking, no skipping people who
+look unpromising*. The script obeyed it. **The judgment moved out of the script and into the
+campaign around it, where no rule was watching:**
+
+* **Seven invented yield predictors, all refuted** — descent already held, the first two steps'
+  returns, pool size, the first sweep's top reading, the census count, the climb's decline count,
+  and `--descent` reading zero. Each one was a reason to not run something.
+* **19 of 27 balls went to three roots** while Genghis, the Aztec, Confucius and Jimmu had zero —
+  because half the roster had fallen out of `queue.md` and nothing checked the file against it.
+* **Roots called finished off one slice**, which § *A LONG-HORIZON INSTRUCTION IS NOT ANSWERED
+  FROM THE FIRST SLICE* already forbids.
+* **An instruction replaced by a derivation** — told *full three-step*, I read the directory and
+  wrote that it meant *more rounds*.
+
+**`docs/monte-carlo-procedure.md`** is the answer, and it is the sibling of
+`docs/collector-run-loop.md`: every step fixed, every number given.
+
+    40 candidates a round -- not 30, not 60, not "until it looks done"
+    frame        the trunk cut, always; never the raw descent
+    denylist     --list-saturated, because --list misses the ancestors
+    pick         200, drop denylist and duplicates, take 40; filtered OUTSIDE the picker
+    census       40 stats jobs at 12s -- about eight minutes, and that is the floor
+    export       EVERY reading >= 5000, off a created ancestor, in census order, no selection
+    file         measured, logged, committed
+    stop         the round returns ZERO at or above 5000. Nothing else stops a root.
+
+**Newness is recorded on every ball and acted on nowhere** — it does not gate a round, end a
+root, or choose a seed. On the Chinese root a 0%-new ball is a success.
+
+Linked from `CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS* and from `queue.md`
+§ *THE WHOLE PROGRAM*, so it is reachable from both places the work starts.
