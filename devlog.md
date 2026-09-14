@@ -42638,3 +42638,21 @@ there**, and exporting adds to both sides.
 
 Adasi's confirming round is dispatched: descent 104,349, trunk 17,842, denylist 55,221, and
 **28.8% blocked** — much the freshest of the three that owed a round.
+
+## 2026-09-14 — Adasi closes; Abul Hamza's round is the last of the seven
+
+    Adasi round 2: 39 read, top 1,119, 21 zeros, ZERO at or above 4,000
+
+`reports/adasi-montecarlo-round2.tsv`. Six of the seven roots are now closed on the condition and
+only Abul Hamza's confirming round remains.
+
+Her frame, rebuilt after tonight's three balls:
+
+    descent    84,689 -> 104,152
+    denylist  123,893 -> 136,372
+    blocked      73.0% -> 74.0%
+
+She is `CLAUDE.md`'s original first descendants target and the root the whole campaign was
+written around — *"the first descendants target is the Cyprus person, Abul Hamza"*, with the
+specific interest being **descendants of hers living in Scandinavia**. It is fitting that she is
+the last one measured, and the round is running.
