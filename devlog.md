@@ -42270,3 +42270,27 @@ before the sweep rather than after it, and the two numbers are 4.8% against 47.8
 `reports/inca-montecarlo-round.tsv`. Next by the ruled order: **NN ben Ovadya**.
 
 **And the chain harvest finished while this ran: all 2,885 chains fetched, zero errors.**
+
+## 2026-09-14 — NN Sanches' Forest is stuck, and it was tested rather than assumed
+
+    submitted   task 6000000227743729899 on 6000000227743729884
+    at 70 min   the download page still reads "Your GEDCOM file is being created"
+    polls       138, so this is not the missing-poller failure of earlier tonight
+    test        a second export submitted anyway -> `slot_busy`
+
+**That last line is the point.** Emma's standing preference on a suspected hang is *"I'm not
+convinced there's a hung export, and I would strongly prefer that you attempt other exports to
+see if they'll just work."* So the queued `Descendants` on `6000000227739695943` was submitted
+rather than held back, and it came straight back `slot_busy` — which settles it: the slot really
+is held, and the campaign cannot submit anything until Geni finishes.
+
+**An export cannot be cancelled**, so the response is a retry rather than a wait:
+`window.__retrySubmit` resubmits every two minutes for up to six hours and arms the download
+poller the moment one takes. Nothing needs remembering and no slot time is lost to me not
+looking.
+
+**This is the second time a single export has blocked the serial slot for over an hour** — the
+first was the 6h30m one that caused three misdiagnosed `no_such_walk` failures. Both were
+`Forest` walks. `Forest` follows spouse links, so its cost is the size of a connected component
+rather than of a descent, and NN Sanches sits in the Aztec/Inca region where tonight's work has
+just added ~11,000 people.
