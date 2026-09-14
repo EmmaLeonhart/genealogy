@@ -21537,6 +21537,194 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000017600474648|F|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Prinzessin Henriette zu Salm-Salm",
+   "id": "6000000016671123061",
+   "kind": "geni",
+   "sex": "F",
+   "life": [
+    "1875",
+    ""
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Alfred Ferdinand Stephan Maria Ferdinand Stefan Maria zu Salm-Salm",
+      "Rose Margaret Karolina Isabella von Lutzow"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "EMANUEL Alfred",
+      "Franz Emanuel Konstantin zu Salm-Salm",
+      "Rosa Mathilde Charlotte Leopoldine",
+      "Auguste Flaminia Ferdinanda"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Carlo Lucchesi-Palli 12º principe di Campofranco, 7° Duca della Grazia"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Donna Elisabetta Lucchesi Palli dei Pcpi di Campofranco",
+      "Don Alfredo Conte Lucchesi Palli, Duca della Grazia, Principe di Campofranco"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Marie Prinzessin zu Salm-Salm",
+    "id": "Q75375141",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Alfred, 12th Prince of Salm, 7th Prince of Salm-Salm",
+       "Rosa Margaretha Karolina Isabella Gräfin von Lützow"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000016671123061",
+    "qid": "Q75375141",
+    "our": "Prinzessin Henriette zu Salm-Salm",
+    "cand": "Marie Prinzessin zu Salm-Salm"
+   },
+   {
+    "name": "Henriette Prinzessin zu Salm-Salm",
+    "id": "Q75369063",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Alfred, 12th Prince of Salm, 7th Prince of Salm-Salm",
+       "Rosa Margaretha Karolina Isabella Gräfin von Lützow"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      [
+       "Carlo Lucchesi Palli, 12th Prince of Campofranco and 7th Duke of the Grazia"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Elisabetta Lucchesi-Palli",
+       "Alfredo Lucchesi-Palli, Principe di Campofranco"
+      ]
+     ]
+    ],
+    "geni": "6000000016671123061",
+    "qid": "Q75369063",
+    "our": "Prinzessin Henriette zu Salm-Salm",
+    "cand": "Henriette Prinzessin zu Salm-Salm"
+   },
+   {
+    "name": "Eleonore Prinzessin zu Salm-Salm",
+    "id": "Q75375203",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Alfred, 12th Prince of Salm, 7th Prince of Salm-Salm",
+       "Rosa Margaretha Karolina Isabella Gräfin von Lützow"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      [
+       "Carl Rieniets"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000016671123061",
+    "qid": "Q75375203",
+    "our": "Prinzessin Henriette zu Salm-Salm",
+    "cand": "Eleonore Prinzessin zu Salm-Salm"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Rose Margaret Karolina Isabella von Lutzow",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "alfred",
+   "alfredo",
+   "campofranco",
+   "carlo",
+   "elisabetta",
+   "grazia",
+   "isabella",
+   "karolina",
+   "lucchesi",
+   "lucchesipalli",
+   "lutzow",
+   "palli",
+   "principe",
+   "rosa",
+   "salmsalm",
+   "von"
+  ],
+  "our": "Prinzessin Henriette zu Salm-Salm",
+  "cand": "Marie Prinzessin zu Salm-Salm"
+ },
+ {
+  "kind": "pick",
   "id": "sibling|6000000024368044533|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -72216,6 +72404,312 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000015985772944|M|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Max Karl zu Hohenlohe-Langenburg",
+   "id": "6000000025970499545",
+   "kind": "geni",
+   "sex": "M",
+   "life": [
+    "1861",
+    "1935"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Maria Gabriele Gräfin von Thun und Hohenstein"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Maria Isabella Gräfin d´Almeida Prinzessin",
+      "Gottfried Karl Joseph Prinz zu Hohenlohe-Langenburg",
+      "Gabriele Auersperg",
+      "Adelhaid Marie Therese"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg",
+    "id": "Q75351596",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Prince Ludwig zu Hohenlohe-Langenburg",
+       "Gabriele Gräfin von und zu Trauttmansdorff-Weinsberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Marie Isabella Prinzessin zu Hohenlohe-Langenburg",
+       "Gottfried Karl Joseph Prinz zu Hohenlohe-Langenburg",
+       "Gabriele Prinzessin zu Hohenlohe-Langenburg",
+       "Adelheid Prinzessin zu Hohenlohe-Langenburg",
+       "Karl Prinz zu Hohenlohe-Langenburg"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Karoline Gräfin zu Sayn-Wittgenstein-Berleburg"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Marie Therese Prinzessin zu Hohenlohe-Langenburg",
+       "Max Karl zu Hohenlohe-Langenburg"
+      ]
+     ]
+    ],
+    "geni": "6000000025970499545",
+    "qid": "Q75351596",
+    "our": "Max Karl zu Hohenlohe-Langenburg",
+    "cand": "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg"
+   },
+   {
+    "name": "Karl Prinz zu Hohenlohe-Langenburg",
+    "id": "Q75351613",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Prince Ludwig zu Hohenlohe-Langenburg",
+       "Gabriele Gräfin von und zu Trauttmansdorff-Weinsberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Marie Isabella Prinzessin zu Hohenlohe-Langenburg",
+       "Gottfried Karl Joseph Prinz zu Hohenlohe-Langenburg",
+       "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg",
+       "Gabriele Prinzessin zu Hohenlohe-Langenburg",
+       "Adelheid Prinzessin zu Hohenlohe-Langenburg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025970499545",
+    "qid": "Q75351613",
+    "our": "Max Karl zu Hohenlohe-Langenburg",
+    "cand": "Karl Prinz zu Hohenlohe-Langenburg"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Maria Gabriele Gräfin von Thun und Hohenstein",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "gabriele",
+   "gottfried",
+   "grafin",
+   "hohenlohelangenburg",
+   "isabella",
+   "joseph",
+   "karl",
+   "marie",
+   "prinz",
+   "prinzessin",
+   "therese",
+   "und",
+   "von"
+  ],
+  "our": "Max Karl zu Hohenlohe-Langenburg",
+  "cand": "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000015985772944|M|theirs",
+  "side": "theirs",
+  "slot": "sibling",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Max Karl zu Hohenlohe-Langenburg",
+   "id": "6000000025970499545",
+   "kind": "geni",
+   "sex": "M",
+   "life": [
+    "1861",
+    "1935"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Maria Gabriele Gräfin von Thun und Hohenstein"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Maria Isabella Gräfin d´Almeida Prinzessin",
+      "Gottfried Karl Joseph Prinz zu Hohenlohe-Langenburg",
+      "Gabriele Auersperg",
+      "Adelhaid Marie Therese"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg",
+    "id": "Q75351596",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Prince Ludwig zu Hohenlohe-Langenburg",
+       "Gabriele Gräfin von und zu Trauttmansdorff-Weinsberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Marie Isabella Prinzessin zu Hohenlohe-Langenburg",
+       "Gottfried Karl Joseph Prinz zu Hohenlohe-Langenburg",
+       "Gabriele Prinzessin zu Hohenlohe-Langenburg",
+       "Adelheid Prinzessin zu Hohenlohe-Langenburg",
+       "Karl Prinz zu Hohenlohe-Langenburg"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Karoline Gräfin zu Sayn-Wittgenstein-Berleburg"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Marie Therese Prinzessin zu Hohenlohe-Langenburg",
+       "Max Karl zu Hohenlohe-Langenburg"
+      ]
+     ]
+    ],
+    "geni": "6000000025970499545",
+    "qid": "Q75351596",
+    "our": "Max Karl zu Hohenlohe-Langenburg",
+    "cand": "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg"
+   },
+   {
+    "name": "Karl Prinz zu Hohenlohe-Langenburg",
+    "id": "Q75351613",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Prince Ludwig zu Hohenlohe-Langenburg",
+       "Gabriele Gräfin von und zu Trauttmansdorff-Weinsberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Marie Isabella Prinzessin zu Hohenlohe-Langenburg",
+       "Gottfried Karl Joseph Prinz zu Hohenlohe-Langenburg",
+       "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg",
+       "Gabriele Prinzessin zu Hohenlohe-Langenburg",
+       "Adelheid Prinzessin zu Hohenlohe-Langenburg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025970499545",
+    "qid": "Q75351613",
+    "our": "Max Karl zu Hohenlohe-Langenburg",
+    "cand": "Karl Prinz zu Hohenlohe-Langenburg"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Maria Isabella Gräfin d´Almeida Prinzessin",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "gabriele",
+   "gottfried",
+   "grafin",
+   "hohenlohelangenburg",
+   "isabella",
+   "joseph",
+   "karl",
+   "marie",
+   "prinz",
+   "prinzessin",
+   "therese",
+   "und",
+   "von"
+  ],
+  "our": "Max Karl zu Hohenlohe-Langenburg",
+  "cand": "Max Karl Rudolf Prinz zu Hohenlohe-Langenburg"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000024515908208|F|theirs",
   "side": "theirs",
   "slot": "child",
@@ -115165,6 +115659,314 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|6000000008042207499|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Countess Franziska Paar",
+   "id": "Q110370658",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Charles Borromeo of Paar",
+      "Princess Ida of Liechtenstein"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Eduard von Paar"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Leopold Podstatzky-Lichtenstein"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Ida Maria von Podstatzky-Lichtenstein",
+      "Aloys Podstatzky-Lichtenstein",
+      "Karl Podstatzky-Lichtenstein",
+      "Amalia Gräfin Podstatzky-Lichenstein",
+      "Marie Josephina Podstatzky-Lichtenstein"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Guidobaldine Paar",
+    "id": "6000000008042897282",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1833",
+     "1904"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Karl Paar"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Karl Paar",
+       "Eleonore Hoyos-Sprinzenstein",
+       "Rudolf Paar",
+       "Eduard Paar",
+       "Josephine Czernin",
+       "Alois Paar",
+       "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein",
+       "Maria Paar",
+       "Leontine Kielmansegg",
+       "Henriette Paar",
+       "Sophie Wallis-Karighmain"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000008042897282",
+    "qid": "Q110370658",
+    "our": "Guidobaldine Paar",
+    "cand": "Countess Franziska Paar"
+   },
+   {
+    "name": "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein",
+    "id": "6000000017002345337",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1842",
+     "1881"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Karl Paar"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Guidobaldine Paar",
+       "Karl Paar",
+       "Eleonore Hoyos-Sprinzenstein",
+       "Rudolf Paar",
+       "Eduard Paar",
+       "Josephine Czernin",
+       "Alois Paar",
+       "Maria Paar",
+       "Leontine Kielmansegg",
+       "Henriette Paar",
+       "Sophie Wallis-Karighmain"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Ida Maria Amalie Antonie Johanne Capistrana Lobkowicz",
+       "Amalia Theresia Maria Walpurga Spirida Nostitz-Rieneck",
+       "Gabriele Podstatzky-Liechtenstein",
+       "Aloys Maria Josef Adolf Gustav Leopold Hubert Simplicius Podstatzky-Lichtenstein",
+       "Karl Maria Leopold Joseph Ignatius Antonius Robert Podstatzky-Lichtenstein",
+       "Marie Josephine Franziska Leopoldine Benedikta Abensperg-Traun"
+      ]
+     ]
+    ],
+    "geni": "6000000017002345337",
+    "qid": "Q110370658",
+    "our": "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein",
+    "cand": "Countess Franziska Paar"
+   },
+   {
+    "name": "Maria Paar",
+    "id": "6000000077890311737",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1843",
+     "1914"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Karl Paar"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Guidobaldine Paar",
+       "Karl Paar",
+       "Eleonore Hoyos-Sprinzenstein",
+       "Rudolf Paar",
+       "Eduard Paar",
+       "Josephine Czernin",
+       "Alois Paar",
+       "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein",
+       "Leontine Kielmansegg",
+       "Henriette Paar",
+       "Sophie Wallis-Karighmain"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000077890311737",
+    "qid": "Q110370658",
+    "our": "Maria Paar",
+    "cand": "Countess Franziska Paar"
+   },
+   {
+    "name": "Henriette Paar",
+    "id": "6000000022411610547",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1848",
+     "1848"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Karl Paar"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Guidobaldine Paar",
+       "Karl Paar",
+       "Eleonore Hoyos-Sprinzenstein",
+       "Rudolf Paar",
+       "Eduard Paar",
+       "Josephine Czernin",
+       "Alois Paar",
+       "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein",
+       "Maria Paar",
+       "Leontine Kielmansegg",
+       "Sophie Wallis-Karighmain"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000022411610547",
+    "qid": "Q110370658",
+    "our": "Henriette Paar",
+    "cand": "Countess Franziska Paar"
+   },
+   {
+    "name": "Sophie Wallis-Karighmain",
+    "id": "6000000022411760008",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1850",
+     "1874"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Karl Paar"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Guidobaldine Paar",
+       "Karl Paar",
+       "Eleonore Hoyos-Sprinzenstein",
+       "Rudolf Paar",
+       "Eduard Paar",
+       "Josephine Czernin",
+       "Alois Paar",
+       "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein",
+       "Maria Paar",
+       "Leontine Kielmansegg",
+       "Henriette Paar"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Karl Olivier von Wallis-Karighmain"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000022411760008",
+    "qid": "Q110370658",
+    "our": "Sophie Wallis-Karighmain",
+    "cand": "Countess Franziska Paar"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Eduard Paar",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "aloys",
+   "amalia",
+   "eduard",
+   "ida",
+   "karl",
+   "leopold",
+   "maria",
+   "marie",
+   "paar",
+   "podstatzkylichtenstein",
+   "von"
+  ],
+  "our": "Guidobaldine Paar",
+  "cand": "Countess Franziska Paar"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000009164696440|M|ours",
   "side": "ours",
   "slot": "child",
@@ -118907,6 +119709,310 @@
   ],
   "our": "Leopold von Anhalt-Köthen Fürst",
   "cand": "Leopold, Prince of Anhalt-Köthen"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000019944275001|M|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Ottakar Clemens Graf Westphalen zu Fürstenburg",
+   "id": "Q75438380",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Friedrich Wilhelm Westphalen zu Fürstenberg",
+      "Rosina, Gräfin Czernin von Chudenitz"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Anna Maria von Westphalen zu Fürstenberg"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Josephine Gräfin von und zu Trauttmansdorff-Weinsberg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Ferdinand Alois von Westphalen",
+      "Theobald Graf von Westphalen zu Furstenberg",
+      "Eduard Klement Westphalen z Fürstenbergu",
+      "Josef Adolf Westphalen z Fürstenbergu"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+    "id": "6000000016391517204",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1866",
+     "1941"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Rosine Josefa von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Clemens Ottokar von Westphalen zu Fürstenberg",
+       "Kunigunde Rosine von Hoyos-Sprinzenstein",
+       "Anna Maria von Westphalen zu Fürstenberg",
+       "Theobald Clemens von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Marie Rosine Josefine von Westphalen zu Fürstenberg",
+       "FRIEDRICH Ferdinand Graf von Westphalen zu Fürstenberg zu Fürstenberg",
+       "FERDINAND Aloys von Westphalen zu Fürstenberg",
+       "Theobald Emanuel Josef Maria Vinzentius Antonius von Westphalen zu Furstenberg",
+       "Joseph Adolf* von Westphalen zu Fürstenberg Graf"
+      ]
+     ]
+    ],
+    "geni": "6000000016391517204",
+    "qid": "Q75438380",
+    "our": "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+    "cand": "Ottakar Clemens Graf Westphalen zu Fürstenburg"
+   },
+   {
+    "name": "Theobald Clemens von Westphalen zu Fürstenberg",
+    "id": "6000000047050700990",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1870",
+     "1948"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Rosine Josefa von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Clemens Ottokar von Westphalen zu Fürstenberg",
+       "Kunigunde Rosine von Hoyos-Sprinzenstein",
+       "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+       "Anna Maria von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000047050700990",
+    "qid": "Q75438380",
+    "our": "Theobald Clemens von Westphalen zu Fürstenberg",
+    "cand": "Ottakar Clemens Graf Westphalen zu Fürstenburg"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Rosine Josefa von Westphalen zu Fürstenberg",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "adolf",
+   "anna",
+   "ferdinand",
+   "friedrich",
+   "furstenberg",
+   "graf",
+   "josef",
+   "maria",
+   "theobald",
+   "von",
+   "westphalen"
+  ],
+  "our": "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+  "cand": "Ottakar Clemens Graf Westphalen zu Fürstenburg"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000019944275001|M|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Ottakar Clemens Graf Westphalen zu Fürstenburg",
+   "id": "Q75438380",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Friedrich Wilhelm Westphalen zu Fürstenberg",
+      "Rosina, Gräfin Czernin von Chudenitz"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Anna Maria von Westphalen zu Fürstenberg"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Josephine Gräfin von und zu Trauttmansdorff-Weinsberg"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Ferdinand Alois von Westphalen",
+      "Theobald Graf von Westphalen zu Furstenberg",
+      "Eduard Klement Westphalen z Fürstenbergu",
+      "Josef Adolf Westphalen z Fürstenbergu"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+    "id": "6000000016391517204",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1866",
+     "1941"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Rosine Josefa von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Clemens Ottokar von Westphalen zu Fürstenberg",
+       "Kunigunde Rosine von Hoyos-Sprinzenstein",
+       "Anna Maria von Westphalen zu Fürstenberg",
+       "Theobald Clemens von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Marie Rosine Josefine von Westphalen zu Fürstenberg",
+       "FRIEDRICH Ferdinand Graf von Westphalen zu Fürstenberg zu Fürstenberg",
+       "FERDINAND Aloys von Westphalen zu Fürstenberg",
+       "Theobald Emanuel Josef Maria Vinzentius Antonius von Westphalen zu Furstenberg",
+       "Joseph Adolf* von Westphalen zu Fürstenberg Graf"
+      ]
+     ]
+    ],
+    "geni": "6000000016391517204",
+    "qid": "Q75438380",
+    "our": "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+    "cand": "Ottakar Clemens Graf Westphalen zu Fürstenburg"
+   },
+   {
+    "name": "Theobald Clemens von Westphalen zu Fürstenberg",
+    "id": "6000000047050700990",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1870",
+     "1948"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Rosine Josefa von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Clemens Ottokar von Westphalen zu Fürstenberg",
+       "Kunigunde Rosine von Hoyos-Sprinzenstein",
+       "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+       "Anna Maria von Westphalen zu Fürstenberg"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000047050700990",
+    "qid": "Q75438380",
+    "our": "Theobald Clemens von Westphalen zu Fürstenberg",
+    "cand": "Ottakar Clemens Graf Westphalen zu Fürstenburg"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Anna Maria von Westphalen zu Fürstenberg",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "adolf",
+   "anna",
+   "ferdinand",
+   "friedrich",
+   "furstenberg",
+   "graf",
+   "josef",
+   "maria",
+   "theobald",
+   "von",
+   "westphalen"
+  ],
+  "our": "Ottokar* Klemens von Westphalen zu Fürstenberg zu Fürstenberg",
+  "cand": "Ottakar Clemens Graf Westphalen zu Fürstenburg"
  },
  {
   "kind": "pick",
@@ -129816,7 +130922,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Aurelia Vélez Sarsfield Velázquez"
+      ]
      ],
      [
       "Children",
@@ -130059,7 +131167,9 @@
      ],
      [
       "Spouse",
-      []
+      [
+       "Aurelia Vélez Sarsfield Velázquez"
+      ]
      ],
      [
       "Children",
@@ -154773,6 +155883,155 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|6000000017002345337|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Amalia Gräfin Podstatzky-Lichenstein",
+   "id": "Q75439195",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Leopold Podstatzky-Lichtenstein",
+      "Countess Franziska Paar"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Ida Maria von Podstatzky-Lichtenstein",
+      "Aloys Podstatzky-Lichtenstein",
+      "Karl Podstatzky-Lichtenstein",
+      "Marie Josephina Podstatzky-Lichtenstein"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Erwin Felix Maria Nostitz-Rieneck"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Friedrich Graf von Nostitz-Rieneck",
+      "Therese (Sita) Gabrielle Marie Cyrilla Methodia Amalia Gräfin von Wilczek",
+      "Erwein von Nostitz-Rieneck"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Amalia Theresia Maria Walpurga Spirida Nostitz-Rieneck",
+    "id": "6000000007388175329",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1867",
+     "1956"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ida Maria Amalie Antonie Johanne Capistrana Lobkowicz",
+       "Gabriele Podstatzky-Liechtenstein",
+       "Aloys Maria Josef Adolf Gustav Leopold Hubert Simplicius Podstatzky-Lichtenstein",
+       "Karl Maria Leopold Joseph Ignatius Antonius Robert Podstatzky-Lichtenstein",
+       "Marie Josephine Franziska Leopoldine Benedikta Abensperg-Traun"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000007388175329",
+    "qid": "Q75439195",
+    "our": "Amalia Theresia Maria Walpurga Spirida Nostitz-Rieneck",
+    "cand": "Amalia Gräfin Podstatzky-Lichenstein"
+   },
+   {
+    "name": "Gabriele Podstatzky-Liechtenstein",
+    "id": "6000000058023283944",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1870",
+     "1887"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Franziska de Paula Ida Maria Monica Podstatzky-Liechtenstein"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Ida Maria Amalie Antonie Johanne Capistrana Lobkowicz",
+       "Amalia Theresia Maria Walpurga Spirida Nostitz-Rieneck",
+       "Aloys Maria Josef Adolf Gustav Leopold Hubert Simplicius Podstatzky-Lichtenstein",
+       "Karl Maria Leopold Joseph Ignatius Antonius Robert Podstatzky-Lichtenstein",
+       "Marie Josephine Franziska Leopoldine Benedikta Abensperg-Traun"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000058023283944",
+    "qid": "Q75439195",
+    "our": "Gabriele Podstatzky-Liechtenstein",
+    "cand": "Amalia Gräfin Podstatzky-Lichenstein"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Ida Maria Amalie Antonie Johanne Capistrana Lobkowicz",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "aloys",
+   "amalia",
+   "franziska",
+   "ida",
+   "karl",
+   "leopold",
+   "maria",
+   "marie",
+   "nostitzrieneck",
+   "podstatzkylichtenstein"
+  ],
+  "our": "Amalia Theresia Maria Walpurga Spirida Nostitz-Rieneck",
+  "cand": "Amalia Gräfin Podstatzky-Lichenstein"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000042581179966|F|theirs",
   "side": "theirs",
   "slot": "child",
@@ -165854,6 +167113,196 @@
   ],
   "our": "Gruffudd ap Ifor Bach",
   "cand": "Gruffydd ab Ifor"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000016553702933|F|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Gräfin Rudolphine Kinsky von Wchinitz und Tettau",
+   "id": "Q110456537",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Rudolf, 6th Prince Kinsky of Wchinitz and Tettau",
+      "Wilhelmine, Gräfin von Colloredo-Mannsfeld"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Ferdinand Bonaventura, 7th Prince Kinsky of Wchinitz and Tettau"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Franz von Bellegarde"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Marie-Dorothea Gräfin von Bellegarde",
+      "Rudolf Graf von Bellegarde",
+      "Franz Bellegarde",
+      "Auguste Graf von Bellegarde"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Anna Kinsky von Wchinitz und Tettau",
+    "id": "6000000016252107026",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1827",
+     "1828"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Wilhelmina Maria Elisabeth Johanna Baptista"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Wilhelmine Elisabeth Kinsky von Wchinitz und Tettau",
+       "Marie Karoline Kinsky von Wchinitz und Tettau",
+       "Ferdinand Bonavontura Christian Josef Hieronymus Rudolf Rafael Kinsky von Wchinitz und Tettau",
+       "Rudolphine Karoline von Wchintz und Tettau"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000016252107026",
+    "qid": "Q110456537",
+    "our": "Anna Kinsky von Wchinitz und Tettau",
+    "cand": "Gräfin Rudolphine Kinsky von Wchinitz und Tettau"
+   },
+   {
+    "name": "Wilhelmine Elisabeth Kinsky von Wchinitz und Tettau",
+    "id": "6000000016251625897",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1831",
+     "1836"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Wilhelmina Maria Elisabeth Johanna Baptista"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anna Kinsky von Wchinitz und Tettau",
+       "Marie Karoline Kinsky von Wchinitz und Tettau",
+       "Ferdinand Bonavontura Christian Josef Hieronymus Rudolf Rafael Kinsky von Wchinitz und Tettau",
+       "Rudolphine Karoline von Wchintz und Tettau"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000016251625897",
+    "qid": "Q110456537",
+    "our": "Wilhelmine Elisabeth Kinsky von Wchinitz und Tettau",
+    "cand": "Gräfin Rudolphine Kinsky von Wchinitz und Tettau"
+   },
+   {
+    "name": "Rudolphine Karoline von Wchintz und Tettau",
+    "id": "6000000016554004211",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1836",
+     "1899"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Wilhelmina Maria Elisabeth Johanna Baptista"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Anna Kinsky von Wchinitz und Tettau",
+       "Wilhelmine Elisabeth Kinsky von Wchinitz und Tettau",
+       "Marie Karoline Kinsky von Wchinitz und Tettau",
+       "Ferdinand Bonavontura Christian Josef Hieronymus Rudolf Rafael Kinsky von Wchinitz und Tettau"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "August Maria Rudolf Emanuel Franz Bellegarde GR",
+       "Rudolf Graf von Bellegarde",
+       "Franz Joseph Vincenz Karl Emanuel",
+       "Felix Maria von Bellegarde",
+       "Marie Dorothea Wilhelmina Julie Paula"
+      ]
+     ]
+    ],
+    "geni": "6000000016554004211",
+    "qid": "Q110456537",
+    "our": "Rudolphine Karoline von Wchintz und Tettau",
+    "cand": "Gräfin Rudolphine Kinsky von Wchinitz und Tettau"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Ferdinand Bonavontura Christian Josef Hieronymus Rudolf Rafael Kinsky von Wchinitz und Tettau",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "bellegarde",
+   "ferdinand",
+   "franz",
+   "graf",
+   "kinsky",
+   "rudolf",
+   "tettau",
+   "von",
+   "wchinitz",
+   "wilhelmine"
+  ],
+  "our": "Anna Kinsky von Wchinitz und Tettau",
+  "cand": "Gräfin Rudolphine Kinsky von Wchinitz und Tettau"
  },
  {
   "kind": "pick",
@@ -183021,6 +184470,149 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000008583930387|M|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Roberto Zileri Dal Verme degli Obbizi",
+   "id": "6000000219478012830",
+   "kind": "geni",
+   "sex": "M",
+   "life": [
+    "1858",
+    "1937"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Donna Clementina Maria Lucchesi-Palli, dei Principi di Campofranco"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Enrico Zileri dal Verme degli Obbizi",
+      "Maria Graziella Zileri dal Verme",
+      "Maria Francesca Emo Capodilista"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Maria Gabriella Princess Massimo"
+     ]
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Luchino Zileri, Conte dal Verme degli Obbizi",
+    "id": "Q75369348",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Conte Camillo Zileri dal Verme",
+       "Clementina Lucchesi-Palli"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      [
+       "Chiara Barracco"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Camillo Zileri, Conte dal Verme degli Obbizi",
+       "Maria Zileri, Contessa dal Verme degli Obbizi",
+       "Graziella Zileri, Contessa dal Verme degli Obbizi",
+       "Alessandro Zileri, Conte dal Verme degli Obbizi"
+      ]
+     ]
+    ],
+    "geni": "6000000219478012830",
+    "qid": "Q75369348",
+    "our": "Roberto Zileri Dal Verme degli Obbizi",
+    "cand": "Luchino Zileri, Conte dal Verme degli Obbizi"
+   },
+   {
+    "name": "Alessandro Zileri, Conte dal Verme degli Obbizi",
+    "id": "Q75369399",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Conte Camillo Zileri dal Verme",
+       "Clementina Lucchesi-Palli"
+      ]
+     ],
+     [
+      "Siblings",
+      []
+     ],
+     [
+      "Spouse",
+      [
+       "Donna Bianca Maria Carrega Bertolini"
+      ]
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000219478012830",
+    "qid": "Q75369399",
+    "our": "Roberto Zileri Dal Verme degli Obbizi",
+    "cand": "Alessandro Zileri, Conte dal Verme degli Obbizi"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Donna Clementina Maria Lucchesi-Palli, dei Principi di Campofranco",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "clementina",
+   "dal",
+   "degli",
+   "donna",
+   "graziella",
+   "lucchesipalli",
+   "maria",
+   "obbizi",
+   "verme",
+   "zileri"
+  ],
+  "our": "Roberto Zileri Dal Verme degli Obbizi",
+  "cand": "Luchino Zileri, Conte dal Verme degli Obbizi"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000009127230847|M|ours",
   "side": "ours",
   "slot": "child",
@@ -192129,147 +193721,6 @@
   ],
   "our": "Helene von Lieven",
   "cand": "Helena von Lieven"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000008583930387|M|theirs",
-  "side": "theirs",
-  "slot": "child",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "Roberto Zileri Dal Verme degli Obbizi",
-   "id": "6000000219478012830",
-   "kind": "geni",
-   "sex": "M",
-   "life": [
-    "1858",
-    "1937"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "Donna Clementina Maria Lucchesi-Palli, dei Principi di Campofranco"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Enrico Zileri dal Verme degli Obbizi",
-      "Maria Graziella Zileri dal Verme",
-      "Maria Francesca Emo Capodilista"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Luchino Zileri, Conte dal Verme degli Obbizi",
-    "id": "Q75369348",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Conte Camillo Zileri dal Verme",
-       "Clementina Lucchesi-Palli"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Chiara Barracco"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Camillo Zileri, Conte dal Verme degli Obbizi",
-       "Maria Zileri, Contessa dal Verme degli Obbizi",
-       "Graziella Zileri, Contessa dal Verme degli Obbizi",
-       "Alessandro Zileri, Conte dal Verme degli Obbizi"
-      ]
-     ]
-    ],
-    "geni": "6000000219478012830",
-    "qid": "Q75369348",
-    "our": "Roberto Zileri Dal Verme degli Obbizi",
-    "cand": "Luchino Zileri, Conte dal Verme degli Obbizi"
-   },
-   {
-    "name": "Alessandro Zileri, Conte dal Verme degli Obbizi",
-    "id": "Q75369399",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Conte Camillo Zileri dal Verme",
-       "Clementina Lucchesi-Palli"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Donna Bianca Maria Carrega Bertolini"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000219478012830",
-    "qid": "Q75369399",
-    "our": "Roberto Zileri Dal Verme degli Obbizi",
-    "cand": "Alessandro Zileri, Conte dal Verme degli Obbizi"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Donna Clementina Maria Lucchesi-Palli, dei Principi di Campofranco",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "clementina",
-   "dal",
-   "degli",
-   "donna",
-   "graziella",
-   "lucchesipalli",
-   "maria",
-   "obbizi",
-   "verme",
-   "zileri"
-  ],
-  "our": "Roberto Zileri Dal Verme degli Obbizi",
-  "cand": "Luchino Zileri, Conte dal Verme degli Obbizi"
  },
  {
   "kind": "pick",
@@ -208933,1217 +210384,5 @@
   ],
   "our": "James Ogilvy",
   "cand": "James Ogilvy, Master of Ogilvy"
- },
- {
-  "kind": "pick",
-  "id": "child|4256545493770064385|F|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Elisabeth Magdalene von Brandenburg",
-   "id": "Q1330110",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Joachim II Hector, Elector of Brandenburg",
-      "Hedwig Jagiellon, Electress of Brandenburg"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Hedwig of Brandenburg, Duchess of Brunswick-Wolfenbüttel",
-      "Sophie of Brandenburg",
-      "Barbara of Brandenburg, Duchess of Brieg",
-      "Sigismund of Brandenburg",
-      "Frederick of Brandenberg",
-      "John George, Elector of Brandenburg"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Francis Otto, Duke of Brunswick-Lüneburg"
-     ]
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Joachim von Brandenburg markgraf",
-    "id": "6000000006727790319",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1543",
-     "1544"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joachim II Hector von Brandenburg Kurfürst",
-       "Hedwig Jagiellonica of Poland Prinzessin, Kurfürstin zu Brandenburg"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Johann John Georg I Ludwig von Brandenburg prince of Hohenzollern, Kurfurst Elector von Brandenburg",
-       "Barbara",
-       "Friedrich von Brandenburg Markgraf",
-       "Albrecht von Brandenburg Markgraf",
-       "Georg von Brandenburg Markgraf",
-       "Paul von Brandenburg Markgraf",
-       "Elisabeth von Brandenburg markgräfin",
-       "Sigismund von Brandenburg Markgraf, Erzbischof von Magdeburg und Bischof von Halberstadt",
-       "Hedwig von Brandenburg Herzogin zu Braunschweig-Wolfenbüttel",
-       "Sophie von Brandenburg Markgräfin, Burggräfin von Böhmen",
-       "Daughter von Brandenburg Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000006727790319",
-    "qid": "Q1330110",
-    "our": "Joachim von Brandenburg markgraf",
-    "cand": "Elisabeth Magdalene von Brandenburg"
-   },
-   {
-    "name": "Daughter von Brandenburg Markgräfin",
-    "id": "6000000006727790326",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1545",
-     "1545"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joachim II Hector von Brandenburg Kurfürst",
-       "Hedwig Jagiellonica of Poland Prinzessin, Kurfürstin zu Brandenburg"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Johann John Georg I Ludwig von Brandenburg prince of Hohenzollern, Kurfurst Elector von Brandenburg",
-       "Barbara",
-       "Friedrich von Brandenburg Markgraf",
-       "Albrecht von Brandenburg Markgraf",
-       "Georg von Brandenburg Markgraf",
-       "Paul von Brandenburg Markgraf",
-       "Elisabeth von Brandenburg markgräfin",
-       "Sigismund von Brandenburg Markgraf, Erzbischof von Magdeburg und Bischof von Halberstadt",
-       "Hedwig von Brandenburg Herzogin zu Braunschweig-Wolfenbüttel",
-       "Sophie von Brandenburg Markgräfin, Burggräfin von Böhmen",
-       "Joachim von Brandenburg markgraf"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000006727790326",
-    "qid": "Q1330110",
-    "our": "Daughter von Brandenburg Markgräfin",
-    "cand": "Elisabeth Magdalene von Brandenburg"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Joachim II Hector von Brandenburg Kurfürst",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "barbara",
-   "brandenburg",
-   "elector",
-   "hector",
-   "hedwig",
-   "joachim",
-   "john",
-   "sigismund",
-   "sophie"
-  ],
-  "our": "Joachim von Brandenburg markgraf",
-  "cand": "Elisabeth Magdalene von Brandenburg"
- },
- {
-  "kind": "pick",
-  "id": "sibling|4256545493770064385|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Elisabeth Magdalene von Brandenburg",
-   "id": "Q1330110",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Joachim II Hector, Elector of Brandenburg",
-      "Hedwig Jagiellon, Electress of Brandenburg"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Hedwig of Brandenburg, Duchess of Brunswick-Wolfenbüttel",
-      "Sophie of Brandenburg",
-      "Barbara of Brandenburg, Duchess of Brieg",
-      "Sigismund of Brandenburg",
-      "Frederick of Brandenberg",
-      "John George, Elector of Brandenburg"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Francis Otto, Duke of Brunswick-Lüneburg"
-     ]
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Joachim von Brandenburg markgraf",
-    "id": "6000000006727790319",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1543",
-     "1544"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joachim II Hector von Brandenburg Kurfürst",
-       "Hedwig Jagiellonica of Poland Prinzessin, Kurfürstin zu Brandenburg"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Johann John Georg I Ludwig von Brandenburg prince of Hohenzollern, Kurfurst Elector von Brandenburg",
-       "Barbara",
-       "Friedrich von Brandenburg Markgraf",
-       "Albrecht von Brandenburg Markgraf",
-       "Georg von Brandenburg Markgraf",
-       "Paul von Brandenburg Markgraf",
-       "Elisabeth von Brandenburg markgräfin",
-       "Sigismund von Brandenburg Markgraf, Erzbischof von Magdeburg und Bischof von Halberstadt",
-       "Hedwig von Brandenburg Herzogin zu Braunschweig-Wolfenbüttel",
-       "Sophie von Brandenburg Markgräfin, Burggräfin von Böhmen",
-       "Daughter von Brandenburg Markgräfin"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000006727790319",
-    "qid": "Q1330110",
-    "our": "Joachim von Brandenburg markgraf",
-    "cand": "Elisabeth Magdalene von Brandenburg"
-   },
-   {
-    "name": "Daughter von Brandenburg Markgräfin",
-    "id": "6000000006727790326",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1545",
-     "1545"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Joachim II Hector von Brandenburg Kurfürst",
-       "Hedwig Jagiellonica of Poland Prinzessin, Kurfürstin zu Brandenburg"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Johann John Georg I Ludwig von Brandenburg prince of Hohenzollern, Kurfurst Elector von Brandenburg",
-       "Barbara",
-       "Friedrich von Brandenburg Markgraf",
-       "Albrecht von Brandenburg Markgraf",
-       "Georg von Brandenburg Markgraf",
-       "Paul von Brandenburg Markgraf",
-       "Elisabeth von Brandenburg markgräfin",
-       "Sigismund von Brandenburg Markgraf, Erzbischof von Magdeburg und Bischof von Halberstadt",
-       "Hedwig von Brandenburg Herzogin zu Braunschweig-Wolfenbüttel",
-       "Sophie von Brandenburg Markgräfin, Burggräfin von Böhmen",
-       "Joachim von Brandenburg markgraf"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000006727790326",
-    "qid": "Q1330110",
-    "our": "Daughter von Brandenburg Markgräfin",
-    "cand": "Elisabeth Magdalene von Brandenburg"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Johann John Georg I Ludwig von Brandenburg prince of Hohenzollern, Kurfurst Elector von Brandenburg",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "barbara",
-   "brandenburg",
-   "elector",
-   "hector",
-   "hedwig",
-   "joachim",
-   "john",
-   "sigismund",
-   "sophie"
-  ],
-  "our": "Joachim von Brandenburg markgraf",
-  "cand": "Elisabeth Magdalene von Brandenburg"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000003827918985|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Ramon II de Tortosa",
-   "id": "Q9066414",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Ramon I de Montcada i de Montcada",
-      "Ramona de Tournemine"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "William Ramon II of Montcada",
-      "Philippa"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Galbors"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Ramon III de Montcada",
-      "Ramona de Montcada",
-      "Pere de Montcada",
-      "Guillem de Montcada, Senyor de Tortosa i Nules"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Guillem Ramon III de Montcada senescal de Catalunya",
-    "id": "6000000001500886349",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1175",
-     "1227"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ramon I de Moncada senyor de Tortosa",
-       "Ramona de Tornemira"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ramon de Montcada Señor de Tortosa",
-       "Aurembiaix de Cabrera"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Constanza d'Aragón baronesa d'Aitona"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Galbors de Moncada",
-       "Pere de Montcada senescal de Catalunya"
-      ]
-     ]
-    ],
-    "geni": "6000000001500886349",
-    "qid": "Q9066414",
-    "our": "Guillem Ramon III de Montcada senescal de Catalunya",
-    "cand": "Ramon II de Tortosa"
-   },
-   {
-    "name": "Ramon de Montcada Señor de Tortosa",
-    "id": "6000000015716470907",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1229"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ramon I de Moncada senyor de Tortosa",
-       "Ramona de Tornemira"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Guillem Ramon III de Montcada senescal de Catalunya",
-       "Aurembiaix de Cabrera"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000015716470907",
-    "qid": "Q9066414",
-    "our": "Ramon de Montcada Señor de Tortosa",
-    "cand": "Ramon II de Tortosa"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Ramon I de Moncada senyor de Tortosa",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "galbors",
-   "guillem",
-   "iii",
-   "montcada",
-   "pere",
-   "ramon",
-   "ramona",
-   "senyor",
-   "tortosa"
-  ],
-  "our": "Guillem Ramon III de Montcada senescal de Catalunya",
-  "cand": "Ramon II de Tortosa"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000003845707346|F|theirs",
-  "side": "theirs",
-  "slot": "child",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "Maria Francesca Apollonia di Savoia",
-   "id": "6000000008251412595",
-   "kind": "geni",
-   "sex": "F",
-   "life": [
-    "1594",
-    "1656"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "Charles Emmanuel I of Savoy the Great",
-      "Catherine Michelle of Savoy princess of Spain"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Phillip Emanuel",
-      "Victor Amadeus I of Savoy",
-      "Emanuel Filibert of Savoy viceroy of Sicily",
-      "Marguerita di Savoia",
-      "Isabella",
-      "Maurizio di Savoia cardinale",
-      "Thomas Francis of Savoy prince of Carignano"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Maria Apollonia of Savoy",
-    "id": "Q3847137",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlo Emanuele I, Duke of Savoy",
-       "Catalina Micaela of Spain"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Margaret of Savoy",
-       "Victor Amadeus I of Savoy",
-       "Tommaso Francesco, 1st Prince of Carignano",
-       "Prince Maurice of Savoy",
-       "Prince Emanuele Filiberto of Savoy",
-       "Isabella of Savoy, Hereditary Princess of Modena",
-       "Philip Emmanuel, Prince of Piedmont",
-       "Francesca Caterina of Savoy"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008251412595",
-    "qid": "Q3847137",
-    "our": "Maria Francesca Apollonia di Savoia",
-    "cand": "Maria Apollonia of Savoy"
-   },
-   {
-    "name": "Francesca Caterina of Savoy",
-    "id": "Q46098742",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlo Emanuele I, Duke of Savoy",
-       "Catalina Micaela of Spain"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Margaret of Savoy",
-       "Philip Emmanuel, Prince of Piedmont",
-       "Victor Amadeus I of Savoy",
-       "Maria Apollonia of Savoy",
-       "Prince Emanuele Filiberto of Savoy",
-       "Isabella of Savoy, Hereditary Princess of Modena",
-       "Prince Maurice of Savoy",
-       "Tommaso Francesco, 1st Prince of Carignano"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008251412595",
-    "qid": "Q46098742",
-    "our": "Maria Francesca Apollonia di Savoia",
-    "cand": "Francesca Caterina of Savoy"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Catherine Michelle of Savoy princess of Spain",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "amadeus",
-   "carignano",
-   "emmanuel",
-   "isabella",
-   "prince",
-   "princess",
-   "savoy",
-   "spain",
-   "victor"
-  ],
-  "our": "Maria Francesca Apollonia di Savoia",
-  "cand": "Maria Apollonia of Savoy"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000003845707346|F|theirs",
-  "side": "theirs",
-  "slot": "sibling",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "Maria Francesca Apollonia di Savoia",
-   "id": "6000000008251412595",
-   "kind": "geni",
-   "sex": "F",
-   "life": [
-    "1594",
-    "1656"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "Charles Emmanuel I of Savoy the Great",
-      "Catherine Michelle of Savoy princess of Spain"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Phillip Emanuel",
-      "Victor Amadeus I of Savoy",
-      "Emanuel Filibert of Savoy viceroy of Sicily",
-      "Marguerita di Savoia",
-      "Isabella",
-      "Maurizio di Savoia cardinale",
-      "Thomas Francis of Savoy prince of Carignano"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Maria Apollonia of Savoy",
-    "id": "Q3847137",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlo Emanuele I, Duke of Savoy",
-       "Catalina Micaela of Spain"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Margaret of Savoy",
-       "Victor Amadeus I of Savoy",
-       "Tommaso Francesco, 1st Prince of Carignano",
-       "Prince Maurice of Savoy",
-       "Prince Emanuele Filiberto of Savoy",
-       "Isabella of Savoy, Hereditary Princess of Modena",
-       "Philip Emmanuel, Prince of Piedmont",
-       "Francesca Caterina of Savoy"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008251412595",
-    "qid": "Q3847137",
-    "our": "Maria Francesca Apollonia di Savoia",
-    "cand": "Maria Apollonia of Savoy"
-   },
-   {
-    "name": "Francesca Caterina of Savoy",
-    "id": "Q46098742",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Carlo Emanuele I, Duke of Savoy",
-       "Catalina Micaela of Spain"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Margaret of Savoy",
-       "Philip Emmanuel, Prince of Piedmont",
-       "Victor Amadeus I of Savoy",
-       "Maria Apollonia of Savoy",
-       "Prince Emanuele Filiberto of Savoy",
-       "Isabella of Savoy, Hereditary Princess of Modena",
-       "Prince Maurice of Savoy",
-       "Tommaso Francesco, 1st Prince of Carignano"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008251412595",
-    "qid": "Q46098742",
-    "our": "Maria Francesca Apollonia di Savoia",
-    "cand": "Francesca Caterina of Savoy"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Victor Amadeus I of Savoy",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "amadeus",
-   "carignano",
-   "emmanuel",
-   "isabella",
-   "prince",
-   "princess",
-   "savoy",
-   "spain",
-   "victor"
-  ],
-  "our": "Maria Francesca Apollonia di Savoia",
-  "cand": "Maria Apollonia of Savoy"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000006277490715|M|ours",
-  "side": "ours",
-  "slot": "child",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Ramon II de Tortosa",
-   "id": "Q9066414",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Ramon I de Montcada i de Montcada",
-      "Ramona de Tournemine"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "William Ramon II of Montcada",
-      "Philippa"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Galbors"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Ramon III de Montcada",
-      "Ramona de Montcada",
-      "Pere de Montcada",
-      "Guillem de Montcada, Senyor de Tortosa i Nules"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Guillem Ramon III de Montcada senescal de Catalunya",
-    "id": "6000000001500886349",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1175",
-     "1227"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ramon I de Moncada senyor de Tortosa",
-       "Ramona de Tornemira"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Ramon de Montcada Señor de Tortosa",
-       "Aurembiaix de Cabrera"
-      ]
-     ],
-     [
-      "Spouse",
-      [
-       "Constanza d'Aragón baronesa d'Aitona"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Galbors de Moncada",
-       "Pere de Montcada senescal de Catalunya"
-      ]
-     ]
-    ],
-    "geni": "6000000001500886349",
-    "qid": "Q9066414",
-    "our": "Guillem Ramon III de Montcada senescal de Catalunya",
-    "cand": "Ramon II de Tortosa"
-   },
-   {
-    "name": "Ramon de Montcada Señor de Tortosa",
-    "id": "6000000015716470907",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "",
-     "1229"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Ramon I de Moncada senyor de Tortosa",
-       "Ramona de Tornemira"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Guillem Ramon III de Montcada senescal de Catalunya",
-       "Aurembiaix de Cabrera"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000015716470907",
-    "qid": "Q9066414",
-    "our": "Ramon de Montcada Señor de Tortosa",
-    "cand": "Ramon II de Tortosa"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Ramona de Tornemira",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "galbors",
-   "guillem",
-   "iii",
-   "montcada",
-   "pere",
-   "ramon",
-   "ramona",
-   "senyor",
-   "tortosa"
-  ],
-  "our": "Guillem Ramon III de Montcada senescal de Catalunya",
-  "cand": "Ramon II de Tortosa"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000014295174253|F|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Anne de Rohan-Chabot",
-   "id": "Q448589",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Henri Chabot",
-      "Marguerite, Duchess of Rohan"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Louis, Duke of Rohan",
-      "Jeanne Pélagie de Rohan-Chabot"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "François, Prince of Soubise"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Hercule Mériadec, Duke of Rohan-Rohan",
-      "Armand Gaston Maximilien de Rohan",
-      "Sophronie-Pélagie de Rohan",
-      "Constance Emilie de Rohan"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Anne Julie de Rohan-Chabot Princesa de Soubise",
-    "id": "6000000001925029720",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "1649",
-     "1709"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Henri Chabot Comte de St.Aulaye Duc de Rohan 2e duque de Rohan"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Louis de Rohan Chabot príncipe de León y duque de Rohan",
-       "Jeanne Pélagie de Rohan-Chabot",
-       "Marguerite de Rohan-Chabot"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000001925029720",
-    "qid": "Q448589",
-    "our": "Anne Julie de Rohan-Chabot Princesa de Soubise",
-    "cand": "Anne de Rohan-Chabot"
-   },
-   {
-    "name": "Marguerite de Rohan-Chabot",
-    "id": "6000000027249399989",
-    "kind": "geni",
-    "sex": "F",
-    "life": [
-     "",
-     "1720"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Henri Chabot Comte de St.Aulaye Duc de Rohan 2e duque de Rohan"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Anne Julie de Rohan-Chabot Princesa de Soubise",
-       "Louis de Rohan Chabot príncipe de León y duque de Rohan",
-       "Jeanne Pélagie de Rohan-Chabot"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000027249399989",
-    "qid": "Q448589",
-    "our": "Marguerite de Rohan-Chabot",
-    "cand": "Anne de Rohan-Chabot"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Louis de Rohan Chabot príncipe de León y duque de Rohan",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "chabot",
-   "henri",
-   "jeanne",
-   "louis",
-   "marguerite",
-   "pelagie",
-   "rohan",
-   "rohanchabot",
-   "soubise"
-  ],
-  "our": "Anne Julie de Rohan-Chabot Princesa de Soubise",
-  "cand": "Anne de Rohan-Chabot"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000015260647786|F|theirs",
-  "side": "theirs",
-  "slot": "child",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-   "id": "6000000017001643991",
-   "kind": "geni",
-   "sex": "F",
-   "life": [
-    "1926",
-    "2021"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "Leopold Prinz von Lobkowicz",
-      "FRANZISKA Paula rinzessin von Montenuovo"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Maria Julia Franziska Ida Kaspara Walpurga von Lobkowicz",
-      "Amalie Schwarzenberg"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     [
-      "Jan Josef Dobrzensky von Dobrzenicz IV",
-      "6000000218149461886",
-      "6000000218149567828",
-      "6000000218149600835",
-      "Karl Kunata Dobrzensky von Dobrzenicz"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Leopoldine Prinzessin von Lobkowicz",
-    "id": "Q75367092",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold von Lobkowicz",
-       "Franziska Prinzessin von Montenuovo"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Jan Maxmilián Dobrzenský"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Jan Dobrzenský z Dobrzenicz",
-       "Countess Zdislava Dobrzensky von Dobrzenicz",
-       "Countess Helene Dobrzensky von Dobrzenicz",
-       "Countess Margaret Dobrzensky von Dobrzenicz",
-       "Count Karl Dobrzensky von Dobrzenicz"
-      ]
-     ]
-    ],
-    "geni": "6000000017001643991",
-    "qid": "Q75367092",
-    "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-    "cand": "Leopoldine Prinzessin von Lobkowicz"
-   },
-   {
-    "name": "Rosa Prinzessin von Lobkowicz",
-    "id": "Q75367115",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold von Lobkowicz",
-       "Franziska Prinzessin von Montenuovo"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000017001643991",
-    "qid": "Q75367115",
-    "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-    "cand": "Rosa Prinzessin von Lobkowicz"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "FRANZISKA Paula rinzessin von Montenuovo",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "dobrzenicz",
-   "dobrzensky",
-   "franziska",
-   "jan",
-   "karl",
-   "leopold",
-   "lobkowicz",
-   "montenuovo",
-   "von"
-  ],
-  "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-  "cand": "Leopoldine Prinzessin von Lobkowicz"
  }
 ]

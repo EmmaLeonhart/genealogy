@@ -4,8 +4,6 @@
 # and a name item is not an exception to that.
 # 1427 in reports/manual-identifications.csv, 1383 already on Wikidata, 20 a run beyond the ones this run touches.
 # ========================================================================
-#   Q86052 Friedrich III V von Zollern: P2600 from a hand identification
-Q86052	P2600	"6000000007417306400"
 #   Q76148369 William Bateson: P2600 from a hand identification
 Q76148369	P2600	"6000000011264731331"
 #   Q76159120 William Abernethy: P2600 from a hand identification
@@ -70,7 +68,7 @@ Q76360503	P2600	"6000000002188035127"
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# father -- family, 4 bearer(s) in the batches
+# father -- family, 5 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "father"
@@ -90,7 +88,7 @@ Q141312985	P734	LAST	S2600	"6000000227315643833"
 #   Q141313516 Lars father of Ole: P734 family name = the item just created
 Q141313516	P734	LAST	S2600	"6000000227315747834"
 
-# Tolleivsen -- patronymic, 2 bearer(s) in the batches
+# Tolleivsen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Tolleivsen"
@@ -106,7 +104,7 @@ Q141444791	P5056	LAST	P144	Q141422414	S2600	"6000000003492033756"
 #   Q141444727 Ola Tolleivsen Joa: P5056 patronym or matronym = the item just created, qualified P144 based on Q141419958 Tolleiv Østensen Næsheim
 Q141444727	P5056	LAST	P144	Q141419958	S2600	"6000000009243824284"
 
-# Tvihaug -- family, 2 bearer(s) in the batches
+# Tvihaug -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Tvihaug"
@@ -122,7 +120,7 @@ Q141337117	P734	LAST	S2600	"6000000003492072945"
 #   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141216381	P734	LAST	P3831	Q2507958	S2600	"6000000009127934231"
 
-# Austre -- family, 1 bearer(s) in the batches
+# Austre -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Austre"
@@ -136,7 +134,7 @@ LAST	P31	Q101352
 #   Q141447225 Ragnhild Tøresdatter Sveinsvoll: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141447225	P734	LAST	P3831	Q2507958	S2600	"6000000003491976521"
 
-# Jakobsen -- patronymic, 1 bearer(s) in the batches
+# Jakobsen -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Jakobsen"
@@ -154,7 +152,7 @@ LAST	P144	Q25999604
 #   Q141268102 Reiar Jakobsen Bratt-Hetland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271420 Jakob Larsson Bratt-Hetland
 Q141268102	P5056	LAST	P144	Q141271420	S2600	"6000000010673340669"
 
-# Jørgensdatter -- patronymic, 1 bearer(s) in the batches
+# Jørgensdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Jørgensdatter"
@@ -170,7 +168,7 @@ LAST	P144	Q13409273
 #   Q141419772 Marie Jørgensdatter Moger: P5056 patronym or matronym = the item just created, qualified P144 based on Q141382151 Johan Jørgen Johannesen Heier
 Q141419772	P5056	LAST	P144	Q141382151	S2600	"6000000185416765822"
 
-# Mormand -- family, 1 bearer(s) in the batches
+# Mormand -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Mormand"
@@ -184,21 +182,7 @@ LAST	P31	Q101352
 #   Q141450203 Else Birgitte Mormand: P734 family name = the item just created
 Q141450203	P734	LAST	S2600	"6000000011514751496"
 
-# Reiersdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Reiersdatter"
-LAST	Len	"Reiersdatter"
-#   set the mul label to "Reiersdatter"
-LAST	Lmul	"Reiersdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141403611 Marta Reiersdatter Stangeland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244233 Reier Halvorson Vashus
-Q141403611	P5056	LAST	P144	Q141244233	S2600	"6000000006771426478"
-
-# Simonsdatter -- patronymic, 1 bearer(s) in the batches
+# Simonsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Simonsdatter"
@@ -214,97 +198,81 @@ LAST	P144	Q2287061
 #   Q141225713 Ingeborg Simonsdatter Ytre Lima: P5056 patronym or matronym = the item just created
 Q141225713	P5056	LAST	S2600	"6000000002836363103"
 
-# und -- family, 8 bearer(s) in the batches
+# Abrahamsen -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "und"
-LAST	Len	"und"
-#   set the mul label to "und"
-LAST	Lmul	"und"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q61139384 Mangold von Thurgau und Nellenburg III: P734 family name = the item just created
-Q61139384	P734	LAST	S2600	"6000000004106003883"
-#   Q81827036 Adalbert von Saffenberg und Norvenich: P734 family name = the item just created
-Q81827036	P734	LAST	S2600	"6000000009305060696"
-#   Q55068638 Friedrich zu Schwarzenberg und Hohenlandsberg: P734 family name = the item just created
-Q55068638	P734	LAST	S2600	"6000000014784646061"
-#   Q110261972 Johann I von Tengen und Nellenburg: P734 family name = the item just created
-Q110261972	P734	LAST	S2600	"6000000017758205608"
-#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P734 family name = the item just created
-Q110415677	P734	LAST	S2600	"6000000019797018175"
-#   Q828346 Berthold Graf von Neuffen und Achalm: P734 family name = the item just created
-Q828346	P734	LAST	S2600	"6000000082813823834"
-#   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
-Q110410743	P734	LAST	S2600	"6000000105706792946"
+#   the item just created: set the en label to "Abrahamsen"
+LAST	Len	"Abrahamsen"
+#   set the mul label to "Abrahamsen"
+LAST	Lmul	"Abrahamsen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q17997608 Abraham
+LAST	P144	Q17997608
 
-# Talgje -- family, 7 bearer(s) in the batches
+# Anfinnson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Talgje"
-LAST	Len	"Talgje"
-#   set the mul label to "Talgje"
-LAST	Lmul	"Talgje"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141205909 Gudrun Sæbjørnsdatter Talgje: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141205909	P734	LAST	P3831	Q28418670	S2600	"6000000001169235389"
-#   Q141216648 Tore Toresson Talgje: P734 family name = the item just created
-Q141216648	P734	LAST	S2600	"6000000002452584590"
-#   Q141216369 Gard Toresson Talgje: P734 family name = the item just created
-Q141216369	P734	LAST	S2600	"6000000002572728015"
-#   Q141219336 Tore Sebjørnsson Talgje Jr.: P734 family name = the item just created
-Q141219336	P734	LAST	S2600	"6000000003043756033"
-#   Q141200111 Sæbjørn Toresson Talgje: P734 family name = the item just created
-Q141200111	P734	LAST	S2600	"6000000004213963966"
-#   Q141217434 Sissel Sæbjørnsdatter Talgje: P734 family name = the item just created
-Q141217434	P734	LAST	S2600	"6000000004214055821"
-#   Q141205929 Ola Toreson Randa: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141205929	P734	LAST	P3831	Q2507958	S2600	"6000000100130208752"
+#   set the en label to "Anfinnson"
+LAST	Len	"Anfinnson"
+#   set the mul label to "Anfinnson"
+LAST	Lmul	"Anfinnson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q30132308 Anfinn
+LAST	P144	Q30132308
 
-# . -- family, 6 bearer(s) in the batches
+# Anfinsdatter -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "."
-LAST	Len	"."
-#   set the mul label to "."
-LAST	Lmul	"."
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q320139 Zerubbabel 3rd Exilarch: P734 family name = the item just created
-Q320139	P734	LAST	S2600	"6000000000961704850"
-#   Q10308667 Joseph: P734 family name = the item just created
-Q10308667	P734	LAST	S2600	"6000000002187718423"
-#   Q91361630 Valeria: P734 family name = the item just created
-Q91361630	P734	LAST	S2600	"6000000003828382547"
-#   Q298628 Antiochus Eupator V: P734 family name = the item just created
-Q298628	P734	LAST	S2600	"6000000006101240144"
-#   Q929593 Quintus Marcius Rex consul 118 BC: P734 family name = the item just created
-Q929593	P734	LAST	S2600	"6000000011352110987"
-#   Q1219183 Marcus Asinius Marcellus: P734 family name = the item just created
-Q1219183	P734	LAST	S2600	"6000000041258658600"
+#   set the en label to "Anfinsdatter"
+LAST	Len	"Anfinsdatter"
+#   set the mul label to "Anfinsdatter"
+LAST	Lmul	"Anfinsdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q30132308 Anfinn
+LAST	P144	Q30132308
 
-# 1345 more name items are needed and wait for a later
+# Arvidsson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Arvidsson"
+LAST	Len	"Arvidsson"
+#   set the mul label to "Arvidsson"
+LAST	Lmul	"Arvidsson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q717011 Arvid
+LAST	P144	Q717011
+#   P144 based on = Q114928755
+LAST	P144	Q114928755
+#   P144 based on = Q23465091 Arved
+LAST	P144	Q23465091
+
+# 1377 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Count (given), 6 bearer(s)
-#   - (family), 4 bearer(s)
-#   Borsok (family), 4 bearer(s)
-#   Châlon (family), 4 bearer(s)
-#   Graf (given), 4 bearer(s)
-#   Komnene (family), 4 bearer(s)
-#   Olavsen (patronymic), 4 bearer(s)
-#   Roucy (family), 4 bearer(s)
-#   Toresson (patronymic), 4 bearer(s)
-#   Björnsson (patronymic), 3 bearer(s)
-#   Coucy (family), 3 bearer(s)
-#   Countess (given), 3 bearer(s)
-#   ... and 1333 more
+#   Christoffersen (patronymic), 1 bearer(s)
+#   Färla (family), 1 bearer(s)
+#   Hananias (given), 1 bearer(s)
+#   Jansdatter (patronymic), 1 bearer(s)
+#   Jesperson (patronymic), 1 bearer(s)
+#   Margrethe (family), 1 bearer(s)
+#   Monson (patronymic), 1 bearer(s)
+#   Muncktelia (family), 1 bearer(s)
+#   Osaland (family), 1 bearer(s)
+#   Phragmenius (family), 1 bearer(s)
+#   Reiersdatter (patronymic), 1 bearer(s)
+#   Stenbit (family), 1 bearer(s)
+#   ... and 1365 more
 
 
 # ======================================================================
@@ -354,119 +322,28 @@ Q141450963	P460	Q141450961
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   41 people, 54 edits; 0 edits held for a later run
+#   4 people, 9 edits; 0 edits held for a later run
 #   across 0 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   add a mul alias "Tjøn Njellsdotter"
-Q141451115	Amul	"Tjøn Njellsdotter"
-#   add a mul alias "Sven Svensen Lende I"
-Q141451114	Amul	"Sven Svensen Lende I"
-#   add a mul alias "Sven Svensson"
-Q141451113	Amul	"Sven Svensson"
-#   Q141451111 Sigrid Olsdtr. Galta: add a mul alias "Sigrid Olsdtr. Nord-Hidle"
-Q141451111	Amul	"Sigrid Olsdtr. Nord-Hidle"
-#   Q141451104 Ruth Yausie: add a mul alias "Ruth Stangeland"
-Q141451104	Amul	"Ruth Stangeland"
-#   add a mul alias "Ragnhild Salmundsdatter Sømme"
-Q141451102	Amul	"Ragnhild Salmundsdatter Sømme"
-#   Q141451092 Ommund Larsen Næsse: add a mul alias "Ommund Larsen Nese"
-Q141451092	Amul	"Ommund Larsen Nese"
-#   Q141451087 Ola Larsson Sele: add a mul alias "Ola Larsson Nese"
-Q141451087	Amul	"Ola Larsson Nese"
-#   Q141451084 Ola Knutson Norheim: add a mul alias "Ola Knutson Atlatveit"
-Q141451084	Amul	"Ola Knutson Atlatveit"
-#   add a mul alias "Nils Sørenson Rott"
-Q141451081	Amul	"Nils Sørenson Rott"
-#   Q141451067 Mats Amundsen Ænes: add a mul alias "Mats Amundsen Holter"
-Q141451067	Amul	"Mats Amundsen Holter"
-#   Q141451065 Marta Larsdatter Åsland: add a mul alias "Marta Larsdatter Øksnevad"
-Q141451065	Amul	"Marta Larsdatter Øksnevad"
-#   add a mul alias "Marit Nilsdatter Eikeland"
-Q141451063	Amul	"Marit Nilsdatter Eikeland"
-#   Q141451057 Maren Gunnarsdatter Tjensvoll: add a mul alias "Maren Gunnarsdatter Låge-Håland"
-Q141451057	Amul	"Maren Gunnarsdatter Låge-Håland"
-#   add a mul alias "Lars Børildsen Lomeland"
-Q141451054	Amul	"Lars Børildsen Lomeland"
-#   Q141451049 Kirsti Olsdatter Skas: add a mul alias "Kirsti Olsdatter Sømme"
-Q141451049	Amul	"Kirsti Olsdatter Sømme"
-#   Q141451047 Kirsten Pedersdatter Nordbø: add a mul alias "Kirsten Pedersdatter Vestbø"
-Q141451047	Amul	"Kirsten Pedersdatter Vestbø"
-#   add a mul alias "Kelu (Kielu) Jonsdotter"
-Q141451042	Amul	"Kelu (Kielu) Jonsdotter"
-#   Q141451036 Kari Monsdotter Gjesdal: add a mul alias "Kari Monsdotter Kyllingstad"
-Q141451036	Amul	"Kari Monsdotter Kyllingstad"
-#   Q141451028 Ingeborg Berte Svensdtr.: add a mul alias "Ingeborg Berte Svensdtr."
-Q141451028	Amul	"Ingeborg Berte Svensdtr."
-#   Q141450999 Elen Larsdatter Sør-Kolnes: add a mul alias "Elen Larsdatter Ølberg"
-Q141450999	Amul	"Elen Larsdatter Ølberg"
-#   Q141450997 Dordi Olofsdotter: add a mul alias "Dordi (död som barn) Olofsdotter"
-Q141450997	Amul	"Dordi (död som barn) Olofsdotter"
-#   Q141450994 Christina Elisabeth Lisette Knös: add a mul alias "Christina Elisabeth Lisette Frigell"
-Q141450994	Amul	"Christina Elisabeth Lisette Frigell"
-#   add a mul alias "Barbara Heroldt"
-Q141450991	Amul	"Barbara Heroldt"
-#   Q141450975 Anne Olsdatter Thilo: add a mul alias "Anne Olsdatter Heigre"
-Q141450975	Amul	"Anne Olsdatter Heigre"
-#   Q76030378: set the en label to 'Margaret Hume / Home'
-Q76030378	Len	"Margaret Hume / Home"
-#   Q76030378: holds 'Margaret Blackadder'; ours is 'Margaret Hume / Home'
-#   Q76030378: keep the outgoing label as an alias before it is replaced
-Q76030378	Amul	"Margaret Blackadder"
-#   Q76030378: set the mul label to 'Margaret Hume / Home'
-Q76030378	Lmul	"Margaret Hume / Home"
-#   Q76016591: set the en label to 'John Arnot of Arnot'
-Q76016591	Len	"John Arnot of Arnot"
-#   Q76016591: holds 'John Arnot'; ours is 'John Arnot of Arnot'
-#   Q76016591: keep the outgoing label as an alias before it is replaced
-Q76016591	Amul	"John Arnot"
-#   Q76016591: set the mul label to 'John Arnot of Arnot'
-Q76016591	Lmul	"John Arnot of Arnot"
-#   set the ja label to "ヴァレラン1世"
-Q125989	Lja	"ヴァレラン1世"
-#   set the zh label to "瓦莱兰一世"
-Q125989	Lzh	"瓦莱兰一世"
-#   set the ja label to "マルコム・イヴ"
-Q122479	Lja	"マルコム・イヴ"
-#   set the zh label to "马尔科姆·伊夫"
-Q122479	Lzh	"马尔科姆·伊夫"
-#   set the ko label to "말콜므 입"
-Q122479	Lko	"말콜므 입"
-#   set the zh label to "克拉拉·翁·布拉温斯克韦伊格沃尔芬比特尔"
-Q101877	Lzh	"克拉拉·翁·布拉温斯克韦伊格沃尔芬比特尔"
-#   set the zh label to "阿尔伯特·伊伊·翁·萨克森维滕贝尔格"
-Q88207	Lzh	"阿尔伯特·伊伊·翁·萨克森维滕贝尔格"
-#   set the zh label to "弗雷德里克五世"
-Q86052	Lzh	"弗雷德里克五世"
-#   set the ja label to "ジョン3世"
-Q77601	Lja	"ジョン3世"
-#   set the zh label to "约翰三世"
-Q77601	Lzh	"约翰三世"
-#   set the ja label to "フレデリック1世"
-Q76081	Lja	"フレデリック1世"
-#   set the zh label to "弗雷德里克一世"
-Q76081	Lzh	"弗雷德里克一世"
-#   set the zh label to "恩盖尔贝尔特·伊伊伊·翁·德尔·马克"
-Q69947	Lzh	"恩盖尔贝尔特·伊伊伊·翁·德尔·马克"
-#   set the zh label to "菲利普二世·兰德格拉韦"
-Q68377	Lzh	"菲利普二世·兰德格拉韦"
-#   set the zh label to "赫尔曼二世"
-Q68247	Lzh	"赫尔曼二世"
-#   set the ja label to "エンゲルベルト・I・ヴォン・コルン"
-Q64802	Lja	"エンゲルベルト・I・ヴォン・コルン"
-#   set the zh label to "恩盖尔贝尔特·I·翁·科尔恩"
-Q64802	Lzh	"恩盖尔贝尔特·I·翁·科尔恩"
-#   set the ko label to "에엘베르트 I 본 쾰느"
-Q64802	Lko	"에엘베르트 I 본 쾰느"
-#   set the zh label to "玛蒂尔达"
-Q60366	Lzh	"玛蒂尔达"
-#   set the ja label to "ヒュー・マルグラヴェ"
-Q59588	Lja	"ヒュー・マルグラヴェ"
-#   set the zh label to "休·马尔格拉韦"
-Q59588	Lzh	"休·马尔格拉韦"
-#   set the zh label to "普托莱马伊奥斯十一世"
-Q39996	Lzh	"普托莱马伊奥斯十一世"
-#   set the ko label to "프토레마이오스 11세"
-Q39996	Lko	"프토레마이오스 11세"
+#   add a mul alias "Christina Teet"
+Q135480146	Amul	"Christina Teet"
+#   set the mul label to "noble Kristina Henriksdotter of Teet"
+Q135480146	Lmul	"noble Kristina Henriksdotter of Teet"
+#   add a mul alias "Christina Teit"
+Q135480146	Amul	"Christina Teit"
+#   Q135480146: holds '츠리스티나 티트' in ko; ours is '크리스티나 티트'
+#   Q135480146: set the ko label
+Q135480146	Lko	"크리스티나 티트"
+#   Q124608919 Eric Ugla: add a mul alias "Eric Ugla"
+Q124608919	Amul	"Eric Ugla"
+#   add a mul alias "Petrus Persson"
+Q16650142	Amul	"Petrus Persson"
+#   Q6189847 Petrus Eriksson Steuchius I Bishop of Härnösand: add a mul alias "Petrus Eriksson Steuchius"
+Q6189847	Amul	"Petrus Eriksson Steuchius"
+#   set the mul label to "Petrus Erici Steuchius"
+Q6189847	Lmul	"Petrus Erici Steuchius"
+#   add a mul alias "Petrus Eriksson Stöök I Bishop of Härnösand"
+Q6189847	Amul	"Petrus Eriksson Stöök I Bishop of Härnösand"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -2993,22 +2870,26 @@ LAST	P2600	"6000000212837869831"	P1810	"Ulvåse"
 LAST	P26	Q141443015	S2600	"6000000212837869831"
 #   Q141443015 Ramfrid Gustafsdotter: P26 spouse = the item just created
 Q141443015	P26	LAST	S2600	"6000000212837869831"
+#   Q135480146 Christina Teet: P26 spouse = Q16650142 Petrus Petri Gangius
+Q135480146	P26	Q16650142	S2600	"284133423960001043"
 #   Q141451042 Kelu Jonsdotter: P26 spouse = Q141451022 Hans Mikaelsson
 Q141451042	P26	Q141451022	S2600	"347821660360001380"
 #   Q141451078 NN Olavsdatter Fevoll: P5056 patronym or matronym = Q141450953, qualified P144 based on Q141205930 Olav Knutson Randa Håland
 Q141451078	P5056	Q141450953	P144	Q141205930
 #   P734 family name = Q141450959
 Q141451078	P734	Q141450959
-#   Q141448467 Gunnhild Torsteinsdatter Kjosavik: P5056 patronym or matronym = Q141448431
-Q141448467	P5056	Q141448431
 #   Q141451044 Kerstin Olofsdotter: P25 mother = Q141451045 Kerstin Olofsdotter
 Q141451044	P25	Q141451045	S2600	"5500448160640086284"
+#   Q141436613 Brigitta Mattsdotter Ilsbodina: P26 spouse = Q6189847 Petrus Eriksson Steuchius I Bishop of Härnösand
+Q141436613	P26	Q6189847	S2600	"6000000002999495543"
 #   Q141451114 Sven Svensen Risa I: P26 spouse = Q141451118 konenes navn
 Q141451114	P26	Q141451118	S2600	"6000000003491951682"
 #   Q141451102 Ragnhild Salmundsdatter Jåsund: P26 spouse = Q141451081 Nils Sørenson Jåsund
 Q141451102	P26	Q141451081	S2600	"6000000003492026950"
 #   Q141451115 Tjøn Ollestad: P26 spouse = Q141451113 Sven Ollestad
 Q141451115	P26	Q141451113	S2600	"6000000005049019671"
+#   Q16650142 Petrus Petri Gangius: P26 spouse = Q135480146 Christina Teet
+Q16650142	P26	Q135480146	S2600	"6000000005436732551"
 #   Q141451081 Nils Sørenson Jåsund: P26 spouse = Q141451102 Ragnhild Salmundsdatter Jåsund
 Q141451081	P26	Q141451102	S2600	"6000000005608892923"
 #   Q141451091 Ole Hauge: P26 spouse = Q141451075 NN Hauge
@@ -3027,6 +2908,10 @@ Q141451117	P26	Q141451054	S2600	"6000000013102068612"
 Q141451054	P26	Q141451117	S2600	"6000000013102190179"
 #   Q141451113 Sven Ollestad: P26 spouse = Q141451115 Tjøn Ollestad
 Q141451113	P26	Q141451115	S2600	"6000000014230534242"
+#   Q141249725 Christina Beata Uf: P40 child = Q124608919 Eric Ugla
+Q141249725	P40	Q124608919	S2600	"6000000018089322771"
+#   Q141249626 Samuel Ugla: P40 child = Q124608919 Eric Ugla
+Q141249626	P40	Q124608919	S2600	"6000000018089329158"
 #   Q141450991 Barbara Heerholdt: P26 spouse = Q141450992 Berent von Wolffradt
 Q141450991	P26	Q141450992	S2600	"6000000019172139485"
 #   Q141450992 Berent von Wolffradt: P26 spouse = Q141450991 Barbara Heerholdt
@@ -3051,4 +2936,6 @@ Q141451020	P26	Q141451063	S2600	"6000000038150140340"
 Q141451100	P26	Q141451069	S2600	"6000000108809086844"
 #   Q141451069 NN: P26 spouse = Q141451100 Peter
 Q141451069	P26	Q141451100	S2600	"6000000108809400821"
+#   Q141419898 Sara Catharina Hartzell: P26 spouse = Q124608919 Eric Ugla
+Q141419898	P26	Q124608919	S2600	"6000000205495377853"
 

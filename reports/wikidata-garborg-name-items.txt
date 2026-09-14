@@ -16,7 +16,7 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# father -- family, 4 bearer(s) in the batches
+# father -- family, 5 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "father"
@@ -36,7 +36,7 @@ Q141312985	P734	LAST	S2600	"6000000227315643833"
 #   Q141313516 Lars father of Ole: P734 family name = the item just created
 Q141313516	P734	LAST	S2600	"6000000227315747834"
 
-# Tolleivsen -- patronymic, 2 bearer(s) in the batches
+# Tolleivsen -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Tolleivsen"
@@ -52,7 +52,7 @@ Q141444791	P5056	LAST	P144	Q141422414	S2600	"6000000003492033756"
 #   Q141444727 Ola Tolleivsen Joa: P5056 patronym or matronym = the item just created, qualified P144 based on Q141419958 Tolleiv Østensen Næsheim
 Q141444727	P5056	LAST	P144	Q141419958	S2600	"6000000009243824284"
 
-# Tvihaug -- family, 2 bearer(s) in the batches
+# Tvihaug -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Tvihaug"
@@ -68,7 +68,7 @@ Q141337117	P734	LAST	S2600	"6000000003492072945"
 #   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141216381	P734	LAST	P3831	Q2507958	S2600	"6000000009127934231"
 
-# Austre -- family, 1 bearer(s) in the batches
+# Austre -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Austre"
@@ -82,7 +82,7 @@ LAST	P31	Q101352
 #   Q141447225 Ragnhild Tøresdatter Sveinsvoll: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
 Q141447225	P734	LAST	P3831	Q2507958	S2600	"6000000003491976521"
 
-# Jakobsen -- patronymic, 1 bearer(s) in the batches
+# Jakobsen -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Jakobsen"
@@ -100,7 +100,7 @@ LAST	P144	Q25999604
 #   Q141268102 Reiar Jakobsen Bratt-Hetland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141271420 Jakob Larsson Bratt-Hetland
 Q141268102	P5056	LAST	P144	Q141271420	S2600	"6000000010673340669"
 
-# Jørgensdatter -- patronymic, 1 bearer(s) in the batches
+# Jørgensdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Jørgensdatter"
@@ -116,7 +116,7 @@ LAST	P144	Q13409273
 #   Q141419772 Marie Jørgensdatter Moger: P5056 patronym or matronym = the item just created, qualified P144 based on Q141382151 Johan Jørgen Johannesen Heier
 Q141419772	P5056	LAST	P144	Q141382151	S2600	"6000000185416765822"
 
-# Mormand -- family, 1 bearer(s) in the batches
+# Mormand -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Mormand"
@@ -130,21 +130,7 @@ LAST	P31	Q101352
 #   Q141450203 Else Birgitte Mormand: P734 family name = the item just created
 Q141450203	P734	LAST	S2600	"6000000011514751496"
 
-# Reiersdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Reiersdatter"
-LAST	Len	"Reiersdatter"
-#   set the mul label to "Reiersdatter"
-LAST	Lmul	"Reiersdatter"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141403611 Marta Reiersdatter Stangeland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244233 Reier Halvorson Vashus
-Q141403611	P5056	LAST	P144	Q141244233	S2600	"6000000006771426478"
-
-# Simonsdatter -- patronymic, 1 bearer(s) in the batches
+# Simonsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Simonsdatter"
@@ -160,97 +146,81 @@ LAST	P144	Q2287061
 #   Q141225713 Ingeborg Simonsdatter Ytre Lima: P5056 patronym or matronym = the item just created
 Q141225713	P5056	LAST	S2600	"6000000002836363103"
 
-# und -- family, 8 bearer(s) in the batches
+# Abrahamsen -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "und"
-LAST	Len	"und"
-#   set the mul label to "und"
-LAST	Lmul	"und"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q61139384 Mangold von Thurgau und Nellenburg III: P734 family name = the item just created
-Q61139384	P734	LAST	S2600	"6000000004106003883"
-#   Q81827036 Adalbert von Saffenberg und Norvenich: P734 family name = the item just created
-Q81827036	P734	LAST	S2600	"6000000009305060696"
-#   Q55068638 Friedrich zu Schwarzenberg und Hohenlandsberg: P734 family name = the item just created
-Q55068638	P734	LAST	S2600	"6000000014784646061"
-#   Q110261972 Johann I von Tengen und Nellenburg: P734 family name = the item just created
-Q110261972	P734	LAST	S2600	"6000000017758205608"
-#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P734 family name = the item just created
-Q110415677	P734	LAST	S2600	"6000000019797018175"
-#   Q828346 Berthold Graf von Neuffen und Achalm: P734 family name = the item just created
-Q828346	P734	LAST	S2600	"6000000082813823834"
-#   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
-Q110410743	P734	LAST	S2600	"6000000105706792946"
+#   the item just created: set the en label to "Abrahamsen"
+LAST	Len	"Abrahamsen"
+#   set the mul label to "Abrahamsen"
+LAST	Lmul	"Abrahamsen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q17997608 Abraham
+LAST	P144	Q17997608
 
-# Talgje -- family, 7 bearer(s) in the batches
+# Anfinnson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Talgje"
-LAST	Len	"Talgje"
-#   set the mul label to "Talgje"
-LAST	Lmul	"Talgje"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141205909 Gudrun Sæbjørnsdatter Talgje: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141205909	P734	LAST	P3831	Q28418670	S2600	"6000000001169235389"
-#   Q141216648 Tore Toresson Talgje: P734 family name = the item just created
-Q141216648	P734	LAST	S2600	"6000000002452584590"
-#   Q141216369 Gard Toresson Talgje: P734 family name = the item just created
-Q141216369	P734	LAST	S2600	"6000000002572728015"
-#   Q141219336 Tore Sebjørnsson Talgje Jr.: P734 family name = the item just created
-Q141219336	P734	LAST	S2600	"6000000003043756033"
-#   Q141200111 Sæbjørn Toresson Talgje: P734 family name = the item just created
-Q141200111	P734	LAST	S2600	"6000000004213963966"
-#   Q141217434 Sissel Sæbjørnsdatter Talgje: P734 family name = the item just created
-Q141217434	P734	LAST	S2600	"6000000004214055821"
-#   Q141205929 Ola Toreson Randa: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141205929	P734	LAST	P3831	Q2507958	S2600	"6000000100130208752"
+#   set the en label to "Anfinnson"
+LAST	Len	"Anfinnson"
+#   set the mul label to "Anfinnson"
+LAST	Lmul	"Anfinnson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q30132308 Anfinn
+LAST	P144	Q30132308
 
-# . -- family, 6 bearer(s) in the batches
+# Anfinsdatter -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "."
-LAST	Len	"."
-#   set the mul label to "."
-LAST	Lmul	"."
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q320139 Zerubbabel 3rd Exilarch: P734 family name = the item just created
-Q320139	P734	LAST	S2600	"6000000000961704850"
-#   Q10308667 Joseph: P734 family name = the item just created
-Q10308667	P734	LAST	S2600	"6000000002187718423"
-#   Q91361630 Valeria: P734 family name = the item just created
-Q91361630	P734	LAST	S2600	"6000000003828382547"
-#   Q298628 Antiochus Eupator V: P734 family name = the item just created
-Q298628	P734	LAST	S2600	"6000000006101240144"
-#   Q929593 Quintus Marcius Rex consul 118 BC: P734 family name = the item just created
-Q929593	P734	LAST	S2600	"6000000011352110987"
-#   Q1219183 Marcus Asinius Marcellus: P734 family name = the item just created
-Q1219183	P734	LAST	S2600	"6000000041258658600"
+#   set the en label to "Anfinsdatter"
+LAST	Len	"Anfinsdatter"
+#   set the mul label to "Anfinsdatter"
+LAST	Lmul	"Anfinsdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q30132308 Anfinn
+LAST	P144	Q30132308
 
-# 1345 more name items are needed and wait for a later
+# Arvidsson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Arvidsson"
+LAST	Len	"Arvidsson"
+#   set the mul label to "Arvidsson"
+LAST	Lmul	"Arvidsson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q717011 Arvid
+LAST	P144	Q717011
+#   P144 based on = Q114928755
+LAST	P144	Q114928755
+#   P144 based on = Q23465091 Arved
+LAST	P144	Q23465091
+
+# 1377 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Count (given), 6 bearer(s)
-#   - (family), 4 bearer(s)
-#   Borsok (family), 4 bearer(s)
-#   Châlon (family), 4 bearer(s)
-#   Graf (given), 4 bearer(s)
-#   Komnene (family), 4 bearer(s)
-#   Olavsen (patronymic), 4 bearer(s)
-#   Roucy (family), 4 bearer(s)
-#   Toresson (patronymic), 4 bearer(s)
-#   Björnsson (patronymic), 3 bearer(s)
-#   Coucy (family), 3 bearer(s)
-#   Countess (given), 3 bearer(s)
-#   ... and 1333 more
+#   Christoffersen (patronymic), 1 bearer(s)
+#   Färla (family), 1 bearer(s)
+#   Hananias (given), 1 bearer(s)
+#   Jansdatter (patronymic), 1 bearer(s)
+#   Jesperson (patronymic), 1 bearer(s)
+#   Margrethe (family), 1 bearer(s)
+#   Monson (patronymic), 1 bearer(s)
+#   Muncktelia (family), 1 bearer(s)
+#   Osaland (family), 1 bearer(s)
+#   Phragmenius (family), 1 bearer(s)
+#   Reiersdatter (patronymic), 1 bearer(s)
+#   Stenbit (family), 1 bearer(s)
+#   ... and 1365 more
 
 
 # ======================================================================
