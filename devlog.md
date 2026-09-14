@@ -42147,3 +42147,27 @@ rather than being a formality on top of it.
 So it went the campaign's way instead: a climb on `6000000021665410212` with the 14,682-person
 denylist, and a `Descendants` off whatever ancestor gets created. First step came back
 `both_present`, which is the climb declining and walking up.
+
+## 2026-09-13 — the Aztec banked hit returns 4,077 new: the best ball of the campaign
+
+    task     6000000227741572821, ready in 1.3 minutes
+    seed     6000000227741310007, the ancestor created above the refused hit
+    filed    exports/aztec/export-Descendants-6000000227741310007.ged
+    newness  4,077 new (81.5%) out of 5000
+    corpus   1,645,734 -> 1,649,811
+
+**81.5% is the highest of any ball in this campaign**, against 29.8% for Grimaldi's, 24.7% for
+Huaxu's best Monte Carlo hit, and 0.4% for Sayaluna's. Emma's re-ruling of the slot order hours
+earlier — *"the Aztec and the Inca are probably highest value added"* — is vindicated by the
+first ball taken under it.
+
+**The route it had to take is the point.** The banked hit `6000000021665410212` sat in the queue
+as a plain `Descendants` row and the direct export was **refused**: the account may only export
+from profiles it owns. The climb then took **16 `both_present` declines over 10.9 minutes** to
+find somewhere to attach, created `6000000227741310007`, and the ball came off that. Had the
+refusal check not run, an hour of the serial slot would have gone to a request Geni was never
+going to honour.
+
+**And the timings now match what they were always supposed to be**: 12.7 minutes for the Aztec
+`Forest`, **1.3 minutes** for this one. Nothing about Geni changed today. The 34- and 52-minute
+figures earlier were a missing poller.
