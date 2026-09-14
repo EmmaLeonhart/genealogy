@@ -1535,14 +1535,13 @@ https://www.geni.com/people/Umayya-bin-Abd-Shams/5152366561060066977 https://www
 
 https://www.geni.com/people/Caliph-Marwan-II-bin-Muhammad/6000000008659107006 https://www.wikidata.org/wiki/Q128371
 
-https://www.geni.com/people/Adam-the-First-Man/6000000201847373856 https://www.wikidata.org/wiki/Q2001710
+https://www.geni.com/people/Adam-the-First-Man/6000000201847373856 https://www.wikidata.org/wiki/Q70899
 
-## These all have geni ids but make them entry points in the gedcom
 
-https://www.wikidata.org/wiki/Q7877879
-https://www.wikidata.org/wiki/Q141455323
-https://www.wikidata.org/wiki/Q141455107
-https://www.wikidata.org/wiki/Q141455100
+https://www.geni.com/profile/index/6000000004533522186 https://www.wikidata.org/wiki/Q7877879
+https://www.geni.com/profile/index/6000000020533302781 https://www.wikidata.org/wiki/Q141455323
+https://www.geni.com/profile/index/6000000009305030992 https://www.wikidata.org/wiki/Q141455107
+https://www.geni.com/profile/index/6000000009305036314 https://www.wikidata.org/wiki/Q141455100
 
 ## Forest exports
 

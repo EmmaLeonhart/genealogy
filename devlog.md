@@ -42775,3 +42775,22 @@ thousands of rows.
 every 20 seconds, independent of the fetch loop it does not touch. The worst case is now 1,500
 rows rather than "however long since I last looked", which is the same class of fix as the
 download poller: stop relying on remembering.
+
+## 2026-09-14 — 1,244 chains, 1,922 tiny GEDCOMs, 282 isolates reached
+
+    path-chains.tsv   41,188 rows over 1,244 chains, 6,802 distinct people
+    tiny-paths        1,621 -> 1,922 .ged, zero invented people
+    chain fetcher     976 of 5,813, chunk 4 of 20
+    requester         7,308 people, 12 failures, chunk 4 of 133
+
+    targets with a chain   1,206   of those on the worklist   282
+    people named           6,802   of those on the worklist   335
+
+**The watchdog earned itself immediately**: five auto-dumps this tick, the in-page buffer never
+above ~1,500 rows, and six files merged in one call. The previous arrangement would have held
+7,765 rows in a tab that had just been in a low-memory kill.
+
+**282 isolates now hold a relationship chain**, up from 201 an hour ago, and the chains name 335
+worklist people in total — **53 of whom were never requested**, appearing only as steps inside
+somebody else's path. That ratio has held steady across three measurements now (49/250, then
+53/335), which is the first quantity in this campaign that has repeated rather than moved.
