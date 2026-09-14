@@ -42434,3 +42434,21 @@ forty is what a root this worked looks like.
 **Two things went out at once**: d'Esneval's banked ancestor `6000000227739018883` into the slot
 as task `6000000227747852008`, and the 15,000 hit into a climb beside it. That ancestor was
 created on 2026-09-13 and has been sitting unexported since.
+
+## 2026-09-14 — d'Esneval's banked ancestor, filed at last: 1,111 new
+
+    task     6000000227747852008, seed 6000000227739018883
+    filed    exports/abul-hamza-descendants/export-Descendants-6000000227739018883.ged
+    newness  1,111 new (22.2%), corpus 1,666,707 -> 1,667,818
+
+**This ancestor was created on 2026-09-13 and had been sitting unexported ever since** — one of
+the two banked climbs § *Export from these six first* has been carrying. `--descent` had read it
+at **0 held**, which per the Sayaluna finding means the corpus lacked the structure rather than
+the people; the ball returning 1,111 confirms that reading.
+
+Abul Hamza's Monte Carlo hit climbed beside it (17 declines, 28.8 minutes), and its export
+**bounced off `slot_busy`** because d'Esneval's ball was still in the slot. It went in the moment
+that came down, as task `6000000227748507823`.
+
+Tonight: **Aztec 10,861 + Sanches 951 + Adasi 830 + ben Ovadya 8,340 + d'Esneval 1,111 = 22,093
+new people**, corpus 1,645,725 → 1,667,818.
