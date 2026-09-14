@@ -41481,3 +41481,56 @@ navigating the tab it lives in; twelve stop it. So expiry costs a few rows, not 
 between 5,000 and 15,000. At ~575 people an hour, with roughly six in ten banking, that is about
 1,000 hours of headroom if the cap is 15,000 and about **three and a half hours if it is 5,000** —
 so the harvest re-runs between chunks rather than at the end.
+
+## 2026-09-13 — a saved `/path/` permalink renders the whole chain to a plain `fetch`
+
+**This is the finding that makes the campaign cheap, and it needed a correction to a rule.**
+`scripts/build-isolate-path-targets.py` carries *"⛔ THE `/path/` URL DOES NOT WORK, AND IT FAILS
+AS A FALSE HIT"* — four probes redirected to Charlemagne and rendered his own 38-step chain, so a
+harvest scoring on step count read 100% reach made of one path repeated. **That refutation stands
+for a CONSTRUCTED `/path/` url and only for one.** A permalink taken off `/paths` is a different
+object: it is a saved path, and it comes back with the real chain in the raw HTML.
+
+    fetch <the saved permalink>   ->  80,418 bytes
+    span.segment                  ->  56
+    step 0   Emma Leonhart 命玥                       (no profile id -- the viewer)
+    step 1   Richard Wade Borsheim   6000000177921459056   your father
+    step 2   Randolph Paulus Borsheim 6000000177921459078  his father
+    ...
+    step 27  Alan Rickman            6000000039399701152   -- and `to=` says 6000000039399701152
+
+**No page load, no tab, no click, and the relation words are there** — `span.subtext` holds
+*your father*, *his father*, *his wife*, *her father*. That is an edge list with types, which is
+precisely what a tiny GEDCOM per person needs. The earlier method clicked *Show short path* on a
+held foreground tab and waited on a server-side recompute.
+
+So the campaign is three stages and all three are cheap:
+
+    request   /profile/search_blood_path/<id> + search_inlaw_path/<id>   202 Accepted
+    harvest   /paths, 30 rows a page                                     the index
+    chain     the saved permalink                                        the steps
+
+**`window.__chains` runs the third**, off 10 chunk files of 300 permalinks, one every 5 s,
+accumulating rows and blob-dumping them out. 2,885 chains is about four hours.
+
+**The pacing, both runners together.** The requester went to one person per 9.25 s so the pair
+sit at **~0.42 req/s**, under the ~0.55 that drew *"hold on a bit I think that we might be moving
+too fast."*
+
+## 2026-09-13 — Adasi's Monte Carlo: 40 read, two targets
+
+`reports/adasi-montecarlo-stats.tsv`. The sweep that had been halted at 25 finished.
+
+    15,000  6000000008826548841   at the cap
+     6,975  6000000015507447504
+     1,417 / 1,226 / 943 / 874 / 425 / 212 / 192 / 48 / 19 / 12 / 12 / 10 / 5 / 2 / 1
+         0  x23
+        --  x2 unread
+
+**One saturated hit and one substantial one, out of 40.** The distribution is the same shape as
+every earlier round: a cliff, then a long tail of zeros that says nothing — § *`--descent`
+cleared Sayaluna at 0 held and her ball returned 20 new* is the reason a zero here is not a
+verdict on the person.
+
+Not queued. The export queue was closed hours later, and whether that closure reaches the
+descendants campaign is Emma's to say, not mine to assume.
