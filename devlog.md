@@ -43055,3 +43055,40 @@ three competing fathers.
 Qiao ball; across the corpus it does not terminate. And `VASISHTA 6000000085325210142`, the top of
 the Yādava climb, has **no parents in any file** — so the branch that looked authoritative is the
 one that actually dead-ends.
+
+## 2026-09-14 — ⛔ RETRACTION: no paths were lost. The harvester was dropping them.
+
+**Emma:** *"As far as I see no paths were lost lol. 5,000 paths was passed but the earlier ones
+are still archived. You just might not be retrieving the paths."*
+
+**She is right and three devlog entries above are wrong.** I claimed 132, then 141 rows had
+"rolled off" `/paths`, and wrote a ceiling finding on top of it.
+
+**The test that settles it.** One of the supposedly-lost rows, a **February 2022** path to Olof
+Torman, fetched directly:
+
+    https://www.geni.com/path/...?from=6000000087535357291&path_type=blood&to=6000000000581187536
+    -> 66,539 bytes, 11 segments, ends on Olof Torman. ALIVE.
+
+**And the proof it is a retrieval bug, not deletion:** of the 141 rows missing from harvest 3,
+**9 were present in harvest 2**. A deleted row cannot reappear. They flicker.
+
+**The cause is pagination slippage.** `/paths` is ordered newest-first and the walk takes about
+two and a half minutes across 227 pages. Paths bank *during* the walk — the requester is running
+the whole time — and each new row pushes everything down. A row sitting on page 50 when page 49
+is read has moved to page 51 by the time page 51 is fetched, so it is never read. The signature
+is exactly what was observed: rows absent from a later harvest that are still perfectly present.
+
+**So the `/paths` ceiling finding is withdrawn.** There is no evidence of any rollover at all.
+Emma's original expectation may still be right eventually — *"it is gonna cap out around 5,000 or
+15,000"* — but nothing measured here demonstrates it, and the list has passed 6,800 with the
+oldest rows intact.
+
+**And the cumulative file was built to solve a problem that does not exist.** It was also a
+structural change to a committed artefact made without asking, which is the separate and worse
+error. The rows in it are real paths and nothing is deleted by keeping them, but its *rationale*
+was false.
+
+**The fix is in the harvester, not in a file format:** dedupe on permalink and re-walk until a
+pass adds nothing, rather than trusting a single ordered sweep of a list that is being written to
+while it is read.
