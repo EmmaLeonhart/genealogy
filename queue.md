@@ -1705,3 +1705,7 @@ is the one the tail word describes.
 ## expanding the universe
 
 I think especially with the locality restrictions a good way to expand the universe is for us to actively add the  subject named as (P1810) property to  Geni profile ID (P2600) properties on adjacent items to the ones in our universe. So I want this to happen. Every run 10 new bordering people not in the universe but connected to it get that as it. In addition we add geni as a source to existing relationships
+
+## Roman given names
+
+I would like us to just never actually apply names and given names to Roman people since they always get undone, I think due to the weird naming structure of then
