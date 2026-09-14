@@ -1,13 +1,20 @@
-# The three crons, written down so a restart costs nothing
+# The two crons, written down so a restart costs nothing
 
 `CronCreate` jobs are **session-local and in-memory**. Nothing is on disk, so
 they die when the session ends — a closed terminal, a crashed session, or a
-machine restart takes all three with it, silently. The next session starts with
+machine restart takes both with it, silently. The next session starts with
 none and no error is raised anywhere.
 
 That is the failure this file exists to prevent. It is not documentation of the
 crons; it is the **source** for them. On any fresh session in this repo, read
-this file and recreate all three with `CronCreate`, using the prompts verbatim.
+this file and recreate both with `CronCreate`, using the prompts verbatim.
+
+**⛔ TWO, NOT FOUR. Ruled 2026-09-14: *"Work-loop and auto-flush only"*.** The status-report and
+dead-queue-sweep crons are deleted and are not to be recreated. The status report was
+reporting-only, so every tick was a tick not spent on the queue; the sweep came within one step
+of deleting two live items whose balls then returned 1,111 and 3,130 people, because it tested
+"is this done" with a filename glob. Deleting a finished item is the work-loop's step (d) and
+needs no cron of its own.
 
 Cadence, staggered so the ticks do not collide:
 
@@ -15,10 +22,13 @@ Cadence, staggered so the ticks do not collide:
 | --- | --- | --- |
 | work-loop | `3 * * * *` | drains `queue.md`, refills from `todo.md` |
 | auto-flush | `15 * * * *` | commit/push backstop |
-| status-report | `42 * * * *` | heartbeat, reporting only |
 
 They also **auto-expire after 7 days** even in a session that stays alive, so
 this file is the recovery path for that too.
+
+**For a single task that will run for hours, replace both with ONE cron naming that task**, and
+restore these two when it is done — `docs/descendants-campaign-loop.md` is the worked example.
+A general-purpose cron sends the reader into `queue.md`, where they find something unrelated.
 
 See `.claude/skills/autonomous-loop/` for why the playbook is shaped this way,
 and `queue.md` § "Always last" for the pinned tail items.
@@ -46,21 +56,6 @@ Work-loop tick for the geni repo (C:\Users\Emma\Documents\GitHub\geni). In order
 ```
 Auto-flush backstop for the geni repo (C:\Users\Emma\Documents\GitHub\geni). Check for uncommitted or unpushed work. If there is any, run `python -m pytest` first, then commit it with a message explaining why (using `git commit -F <msgfile>`, not `-m`) and push. If `queue.md` has an item that the pending work completes, delete it and append the dated `devlog.md` entry in the same commit. If nothing is pending, do nothing and say "nothing pending" — never create an empty commit.
 ```
-
-## 3. status-report — `42 * * * *`
-
-```
-Status-report heartbeat for the geni repo (C:\Users\Emma\Documents\GitHub\geni). REPORTING ONLY — make no code changes, no commits, no pushes.
-
-Cover:
-- What advanced since the last report: commit shas with one line each.
-- Current `queue.md` state.
-- How the work held the hard rails, and any place it brushed one.
-- Blockers, each tagged with exactly one of: NEEDS-DECISION / BLOCKED-ON-USER-ACTION / BLOCKED-ON-EXTERNAL / NEEDS-INVESTIGATION / UNSAFE-TO-GUESS / OUT-OF-SCOPE — naming the specific decision, user action, external signal, risk or owner. If a not-done item fits none of these with a specifically-named blocker, it is not deferred: say so plainly and flag it for the next work-loop tick.
-- Test-suite health: the actual `python -m pytest` count, run rather than remembered.
-```
-
----
 
 ## What a restart does and does not lose
 

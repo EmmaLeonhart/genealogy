@@ -1079,12 +1079,14 @@ covers lettering for the same reason it covers numbering.
   **A session once ran for hours with ZERO crons and nobody noticed.** Recreating them is the
   first thing a session does, not something to get to.
 
-  **The status-report cron carries no `AskUserQuestion`.** It was barred overnight — move through
-  the work and pick the option consistent with what is already written — so the two-hourly blocker
-  question was taken out of the cron text rather than left to fire unattended. Restore it
-  deliberately, not by default.
+  **⛔ THE STATUS-REPORT AND DEAD-QUEUE-SWEEP CRONS ARE DELETED.** Ruled 2026-09-14:
+  *"Work-loop and auto-flush only"*. The status report was reporting-only, so each tick was a tick
+  not spent on the queue; the sweep nearly deleted two live items — d'Esneval and Bettencourt,
+  whose balls then returned 1,111 and 3,130 people — because it tested *is this done* with
+  `find exports -name "*<id>*"` and hit a tiny path GEDCOM. **Do not recreate either.** Deleting a
+  finished item is the work-loop's own step (d).
 
-- **The three crons, as durable queue items.** The crons are good and continue, and they are also
+- **The two crons, as durable queue items.** The crons are good and continue, and they are also
   queue items specified as cron jobs, so they get crossed off when the job finishes but are more
   stable than the cron itself. Cron text lives only in memory, so the queue is the durable copy:
 
