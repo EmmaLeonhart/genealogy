@@ -42919,3 +42919,32 @@ either the in-law search banks less often on `/paths` or it resolves more slowly
 **The trunk is exactly as described too** — the fourteen most-traversed people overall are Emma's
 own near ancestors, Richard Wade Borsheim on 1,632 of 1,891 chains. *"The paths tend to overlap
 with each other, particularly close to me. But they span over."*
+
+## 2026-09-14 — 2,124 chains, 773 isolates, and the ceiling claim was wrong
+
+    path-chains.tsv   75,613 rows over 2,124 chains, 12,406 distinct people
+    tiny-paths        2,557 -> 2,785 .ged, zero invented people
+    chain fetcher     1,968 of 5,813, chunk 7 of 20, 30 auto-dumps
+    requester         7,854 people, 12 failures
+
+    targets with a chain   2,086   of those on the worklist   773
+    people named          12,406   of those on the worklist   850
+
+**773 isolates hold a chain** — 201, 282, 436, 622, 773 over five ticks, and the rate is not
+falling.
+
+**⛔ CORRECTION: "the ceiling sits near 6,200 live entries" was wrong.** That was written when the
+second harvest read 200 pages / 6,198 rows and 132 rows from the first harvest had disappeared.
+`/paths` now reads **227 pages**, so the list has kept growing past the point where rows were
+already rolling off.
+
+Two things are therefore true at once and the earlier entry stated only one of them:
+
+* **132 rows did disappear** between the first and second harvests. That is a fact and the rows
+  survive only in `reports/geni-paths-harvest.tsv`.
+* **The list is still growing.** It is not a hard cap at 6,200; whatever drops rows is doing it
+  while the total rises, so it behaves like a rolling window with a soft edge rather than a wall.
+
+The operational conclusion does not change — **the cumulative harvest file is what protects the
+old rows, and re-harvesting has to keep pace** — but the number was asserted from one measurement
+and a second measurement refuted it. A third harvest is running now at 227 pages.
