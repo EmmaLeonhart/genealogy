@@ -42243,3 +42243,30 @@ because the three balls filed between the rounds had swallowed the saturated par
 `reports/aztec-montecarlo-round1.tsv` and `-round2.tsv` carry both sets of readings.
 
 **Next root by the ruled order: the Inca.**
+
+## 2026-09-13 — the Inca closes on its first round, and the reason is structural
+
+    37 read, top 2,204, then 312 / 174 / 160 / 159 / 156, mean 96, 22 zeros
+    ZERO at or above 4,000 -- the root closes
+
+**The Inca is not a poor root, it is an already-harvested one**, and that is visible in the frame
+rather than inferred from the yield:
+
+                            Inca                    Aztec
+    descent                 27,616                  14,785
+    saturated denylist      23,444  (85%)           14,649
+    picks blocked           191 of 400 (47.8%)      19 of 400 (4.8%)
+    top census reading       2,204                  12,786
+
+The Inca already carried a `Forest` and **two** `Descendants` balls before tonight, so 85% of its
+descent sits inside a ball already held. The Aztec came in untouched — its banked hit had never
+been spent and no Monte Carlo had ever run on it.
+
+**This is the first time the denylist's blocked share has been useful as a reading in advance.**
+It is not a yield predictor — § *seven properties have failed as yield predictors* stands, and
+this is not an eighth. It is a direct measurement of how much of a root is already ours, taken
+before the sweep rather than after it, and the two numbers are 4.8% against 47.8%.
+
+`reports/inca-montecarlo-round.tsv`. Next by the ruled order: **NN ben Ovadya**.
+
+**And the chain harvest finished while this ran: all 2,885 chains fetched, zero errors.**
