@@ -1711,3 +1711,7 @@ I think especially with the locality restrictions a good way to expand the unive
 ## Roman given names
 
 I would like us to just never actually apply names and given names to Roman people since they always get undone, I think due to the weird naming structure of then
+
+## wrong name
+
+This person https://www.geni.com/people/konenes-navn/6000000007645527815 had the wrong name applied
