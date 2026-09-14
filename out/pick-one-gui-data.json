@@ -1788,6 +1788,265 @@
  },
  {
   "kind": "pick",
+  "id": "sibling|6000000008174318768|F|theirs",
+  "side": "theirs",
+  "slot": "sibling",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Christiana Sophia Henrietta Bach",
+   "id": "6000000008177052700",
+   "kind": "geni",
+   "sex": "F",
+   "life": [
+    "1723",
+    "1726"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Johann Sebastian Bach",
+      "Anna Magdalena Bach",
+      "Maria Barbara Bach",
+      "Anna Magdalena Bach",
+      "Johann Sebastian Bach"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Catharina Dorothea Bach",
+      "Wilhelm Friedemann Bach",
+      "Maria Sophia Bach",
+      "Johann Christoph Bach",
+      "Carl Philipp Emanuel Bach",
+      "Johann Gottfried Bernhard Bach",
+      "Leopold Augustus Bach",
+      "Gottfried Heinrich Henrich Bach",
+      "Christian Gottlieb Bach"
+     ]
+    ],
+    [
+     "Spouse",
+     []
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Christiana Sophia Enrietta Bach",
+    "id": "Q21029017",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Johann Sebastian Bach",
+       "Anna Magdalena Bach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Catharina Dorothea Bach",
+       "Elisabeth Juliana Friderica Bach",
+       "Maria Sophia Bach",
+       "Regina Susanna Bach",
+       "Johanna Carolina Bach",
+       "Christiana Dorothea Bach",
+       "Christiana Benedicta Louisa",
+       "Regina Johanna Bach",
+       "Johann Christoph Friedrich Bach",
+       "Johann Christian Bach",
+       "Wilhelm Friedemann Bach",
+       "Johann Christoph Bach",
+       "Leopold Augustus Bach",
+       "Johann August Abraham Bach",
+       "Ernestus Andreas Bach",
+       "Christian Gottlieb Bach",
+       "Johann Gottfried Bernhard Bach",
+       "Gottfried Heinrich Bach",
+       "Carl Philipp Emanuel Bach",
+       "Johann Christoph Bach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000008177052700",
+    "qid": "Q21029017",
+    "our": "Christiana Sophia Henrietta Bach",
+    "cand": "Christiana Sophia Enrietta Bach"
+   },
+   {
+    "name": "Elisabeth Juliana Friderica Bach",
+    "id": "Q15735857",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Johann Sebastian Bach",
+       "Anna Magdalena Bach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Catharina Dorothea Bach",
+       "Maria Sophia Bach",
+       "Regina Susanna Bach",
+       "Johanna Carolina Bach",
+       "Christiana Dorothea Bach",
+       "Christiana Benedicta Louisa",
+       "Regina Johanna Bach",
+       "Wilhelm Friedemann Bach",
+       "Carl Philipp Emanuel Bach",
+       "Johann Gottfried Bernhard Bach",
+       "Gottfried Heinrich Bach",
+       "Johann Christoph Friedrich Bach",
+       "Johann Christian Bach",
+       "Johann Christoph Bach",
+       "Leopold Augustus Bach",
+       "Christiana Sophia Enrietta Bach",
+       "Johann August Abraham Bach",
+       "Ernestus Andreas Bach",
+       "Christian Gottlieb Bach",
+       "Johann Christoph Bach"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Johann Christoph Altnickol"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Johann Sebastian Altnickol",
+       "Augusta Magdalena Altnickol",
+       "Juliane Wilhelmine Altnickol"
+      ]
+     ]
+    ],
+    "geni": "6000000008177052700",
+    "qid": "Q15735857",
+    "our": "Christiana Sophia Henrietta Bach",
+    "cand": "Elisabeth Juliana Friderica Bach"
+   },
+   {
+    "name": "Christiana Benedicta Louisa",
+    "id": "Q21042280",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Johann Sebastian Bach",
+       "Anna Magdalena Bach"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Catharina Dorothea Bach",
+       "Elisabeth Juliana Friderica Bach",
+       "Maria Sophia Bach",
+       "Regina Susanna Bach",
+       "Johanna Carolina Bach",
+       "Christiana Dorothea Bach",
+       "Regina Johanna Bach",
+       "Johann Christoph Friedrich Bach",
+       "Johann Christian Bach",
+       "Wilhelm Friedemann Bach",
+       "Johann Christoph Bach",
+       "Leopold Augustus Bach",
+       "Christiana Sophia Enrietta Bach",
+       "Johann August Abraham Bach",
+       "Ernestus Andreas Bach",
+       "Christian Gottlieb Bach",
+       "Johann Gottfried Bernhard Bach",
+       "Gottfried Heinrich Bach",
+       "Carl Philipp Emanuel Bach",
+       "Johann Christoph Bach"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000008177052700",
+    "qid": "Q21042280",
+    "our": "Christiana Sophia Henrietta Bach",
+    "cand": "Christiana Benedicta Louisa"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Catharina Dorothea Bach",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "anna",
+   "augustus",
+   "bach",
+   "bernhard",
+   "carl",
+   "catharina",
+   "christian",
+   "christoph",
+   "dorothea",
+   "emanuel",
+   "friedemann",
+   "gottfried",
+   "gottlieb",
+   "heinrich",
+   "johann",
+   "leopold",
+   "magdalena",
+   "maria",
+   "philipp",
+   "sebastian",
+   "sophia",
+   "wilhelm"
+  ],
+  "our": "Christiana Sophia Henrietta Bach",
+  "cand": "Christiana Sophia Enrietta Bach"
+ },
+ {
+  "kind": "pick",
   "id": "sibling|6000000001069437500|M|ours",
   "side": "ours",
   "slot": "sibling",
@@ -11774,6 +12033,7 @@
       "Parents",
       [
        "Gundaker von und zu Liechtenstein",
+       "Agnes von Ostfriesland",
        "Agnes von Ostfriesland"
       ]
      ],
@@ -11960,6 +12220,7 @@
       "Parents",
       [
        "Gundaker von und zu Liechtenstein",
+       "Agnes von Ostfriesland",
        "Agnes von Ostfriesland"
       ]
      ],
@@ -63538,7 +63799,7 @@
        "Selvaggia da Romano",
        "Sister Blanchefleur Nun in Motargis",
        "Enzio Hohenstaufen king of Sardinia",
-       "Caterina del Carretto da Marano",
+       "Caterina del Carretto, da Marano",
        "Emma Ventimiglia",
        "Constance Hohenstaufen Anna",
        "Manfred Hohenstaufen king of Sicily",
@@ -63594,7 +63855,7 @@
        "Sister Blanchefleur Nun in Motargis",
        "Gerhard Gerhard",
        "Enzio Hohenstaufen king of Sardinia",
-       "Caterina del Carretto da Marano",
+       "Caterina del Carretto, da Marano",
        "Emma Ventimiglia",
        "Constance Hohenstaufen Anna",
        "Manfred Hohenstaufen king of Sicily",
@@ -93385,7 +93646,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Anna von Holstein-Gottorp Prinzessin, Gräfin zu Ostfriesland"
       ]
      ],
@@ -93428,7 +93689,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Anna von Holstein-Gottorp Prinzessin, Gräfin zu Ostfriesland"
       ]
      ],
@@ -93473,7 +93734,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Walburga von Rietberg"
       ]
      ],
@@ -93505,7 +93766,7 @@
    }
   ],
   "trigger_pre": "held because their parent ",
-  "trigger_bold": "Enno III van Oostfriesland Graaf",
+  "trigger_bold": "Enno III van Oostfriesland, Graaf",
   "trigger_post": " holds an item whose child list names more people than we can place",
   "highlight": [
    "agnes",
@@ -93582,7 +93843,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Anna von Holstein-Gottorp Prinzessin, Gräfin zu Ostfriesland"
       ]
      ],
@@ -93625,7 +93886,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Anna von Holstein-Gottorp Prinzessin, Gräfin zu Ostfriesland"
       ]
      ],
@@ -93670,7 +93931,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Walburga von Rietberg"
       ]
      ],
@@ -128079,7 +128340,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Anna von Holstein-Gottorp Prinzessin, Gräfin zu Ostfriesland"
       ]
      ],
@@ -128124,7 +128385,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Walburga von Rietberg"
       ]
      ],
@@ -128170,7 +128431,7 @@
    }
   ],
   "trigger_pre": "held because their parent ",
-  "trigger_bold": "Enno III van Oostfriesland Graaf",
+  "trigger_bold": "Enno III van Oostfriesland, Graaf",
   "trigger_post": " holds an item whose child list names more people than we can place",
   "highlight": [
    "anna",
@@ -128246,7 +128507,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Anna von Holstein-Gottorp Prinzessin, Gräfin zu Ostfriesland"
       ]
      ],
@@ -128291,7 +128552,7 @@
      [
       "Parents",
       [
-       "Enno III van Oostfriesland Graaf",
+       "Enno III van Oostfriesland, Graaf",
        "Walburga von Rietberg"
       ]
      ],
@@ -209874,151 +210135,6 @@
   ],
   "trigger_pre": "held because their parent ",
   "trigger_bold": "FRANZISKA Paula rinzessin von Montenuovo",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "dobrzenicz",
-   "dobrzensky",
-   "franziska",
-   "jan",
-   "karl",
-   "leopold",
-   "lobkowicz",
-   "montenuovo",
-   "von"
-  ],
-  "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-  "cand": "Leopoldine Prinzessin von Lobkowicz"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000015260678771|F|theirs",
-  "side": "theirs",
-  "slot": "child",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-   "id": "6000000017001643991",
-   "kind": "geni",
-   "sex": "F",
-   "life": [
-    "1926",
-    "2021"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "Leopold Prinz von Lobkowicz",
-      "FRANZISKA Paula rinzessin von Montenuovo"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Maria Julia Franziska Ida Kaspara Walpurga von Lobkowicz",
-      "Amalie Schwarzenberg"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     [
-      "Jan Josef Dobrzensky von Dobrzenicz IV",
-      "6000000218149461886",
-      "6000000218149567828",
-      "6000000218149600835",
-      "Karl Kunata Dobrzensky von Dobrzenicz"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Leopoldine Prinzessin von Lobkowicz",
-    "id": "Q75367092",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold von Lobkowicz",
-       "Franziska Prinzessin von Montenuovo"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Jan Maxmilián Dobrzenský"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Jan Dobrzenský z Dobrzenicz",
-       "Countess Zdislava Dobrzensky von Dobrzenicz",
-       "Countess Helene Dobrzensky von Dobrzenicz",
-       "Countess Margaret Dobrzensky von Dobrzenicz",
-       "Count Karl Dobrzensky von Dobrzenicz"
-      ]
-     ]
-    ],
-    "geni": "6000000017001643991",
-    "qid": "Q75367092",
-    "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-    "cand": "Leopoldine Prinzessin von Lobkowicz"
-   },
-   {
-    "name": "Rosa Prinzessin von Lobkowicz",
-    "id": "Q75367115",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Leopold von Lobkowicz",
-       "Franziska Prinzessin von Montenuovo"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000017001643991",
-    "qid": "Q75367115",
-    "our": "Leopoldine Bertha Marie Franziska Ida Balthasar Leonhardine Dobrzensky von Dobrzenicz",
-    "cand": "Rosa Prinzessin von Lobkowicz"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Leopold Prinz von Lobkowicz",
   "trigger_post": " holds an item whose child list names more people than we can place",
   "highlight": [
    "dobrzenicz",
