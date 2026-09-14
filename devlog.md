@@ -42544,3 +42544,21 @@ the trunk cut takes generations 1–118 of it. Emma moved this root to last on t
 section"* — which was done hours ago — so everything from here is surplus to that purpose.
 
 Hit 1 is climbing under the 14,693-person denylist.
+
+## 2026-09-14 — Chinese root hit 1: 1,207 new, filed into the privileged directory
+
+    task     6000000227750047826, seed 6000000227749221232
+    subject  6000000063819051026, 15,000 on the census
+    filed    exports/post-merge/export-Descendants-6000000227749221232.ged
+    newness  1,207 new (24.1%), corpus 1,674,234 -> 1,675,441
+
+**Into `exports/post-merge/`, because that is this root's rule**: *"all gedcoms from it are
+considered privileged due to the merge history."* Records there win by
+`sources._post_merge_last`, so this ball both adds 1,207 people and re-asserts the merged state of
+the 3,793 it re-covers.
+
+**A 15,000 census reading returned 24.1%.** The ninth consecutive demonstration that the census
+number does not predict yield: tonight it has produced 96.8% from a 5,024 and 24.1% from a
+15,000.
+
+Hit 2 climbed beside this one and its export is next.
