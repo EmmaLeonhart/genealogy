@@ -42880,3 +42880,42 @@ have connected.
 genealogical ties on Wikidata. They just don't have connections to the world tree."* A ball can
 only find people below someone we already hold. A path finds the route, which is the thing that
 was missing.
+
+## 2026-09-14 — the Lord of Wood effect, measured: the bridges are obscure people, not kings
+
+Emma: *"the Lord of Wood... seems to be a person who was on a lot of the paths, but they're not
+somebody who was present in a lot of [the exports]... the efficiency push for them takes them
+through individuals that we might not expect or get otherwise."*
+
+**Measured over 1,891 chains, restricted to step ≥ 12 so the trunk near the viewer is excluded:**
+
+    chains  export files  who
+       548             5  Aagota Johannesdatter Straume        110 chains per file
+       547             6  Johannes Johannesson Stamnes
+       546            11  Johannes Olsen Rød
+       534            10  Nikulás Rögnvaldsson
+       524            14  Baron Jon Hafthorsson av Sørum
+       519            19  Håkon V Magnusson, King of Norway
+       471            21  Queen Ingeborg Eriksdatter af Danmark
+       401            27  Erik IV Plovpenning, Konge af Danmark  15 chains per file
+
+**The ratio runs backwards from prominence.** A Norwegian farm woman carries more paths than any
+monarch on the list while sitting in five export files; Erik IV Plovpenning carries fewer and sits
+in twenty-seven.
+
+**Why, and it follows from the shape finding above.** A path takes the *shortest* route, so it
+crosses wherever the tree is narrow. Royal lines are densely documented and offer alternatives —
+a path through a king can route around him. The tree narrows at ordinary people, and an ordinary
+person with one documented marriage into another region becomes the only way through. **Nobody
+exports around them, which is exactly why they stay a bottleneck.**
+
+So the campaign is not merely collecting paths; it is **finding the articulation points of the
+world tree**, and they are not the people any roster of "important individuals" would have listed.
+
+**One number that does not match the description and is recorded as-is:** the fetched chains are
+**1,706 blood against 185 in-law**, 90% blood. The requester asks for both on every person, so
+either the in-law search banks less often on `/paths` or it resolves more slowly. Not investigated.
+
+**The trunk is exactly as described too** — the fourteen most-traversed people overall are Emma's
+own near ancestors, Richard Wade Borsheim on 1,632 of 1,891 chains. *"The paths tend to overlap
+with each other, particularly close to me. But they span over."*
