@@ -42375,3 +42375,20 @@ that my own retry loop was wiping the queue; with that held, the two ran in para
 ball under `exports/adasi` — so the root's whole return is these 830 people.
 
 Next: **ben Ovadya's two hits**, 15,000 and 5,024, which were wrongly written off earlier.
+
+## 2026-09-14 — ben Ovadya returns 3,501 new (70.0%), on the root that was wrongly written off
+
+    task     6000000227747300869, seed 6000000227746860113
+    subject  6000000008671626582, 15,000 on the census
+    filed    exports/ben-ovadya-descendants/export-Descendants-6000000227746860113.ged
+    newness  3,501 new (70.0%), corpus 1,658,367 -> 1,661,868
+
+**This is the root that was announced as cleared a few hours earlier on another root's numbers.**
+Had that stood, these 3,501 people would not be in the tree and a second hit at 5,024 would still
+be unqueued. The cost of reading `window.__sweep` instead of the file the drain wrote was very
+nearly a whole root.
+
+**Hit 2's climb started before this ball was even downloaded**, so the slot is already being
+worked toward the next export rather than idling — which is the Sanches lesson applied.
+
+Tonight so far: **Aztec 10,861 + Sanches 951 + Adasi 830 + ben Ovadya 3,501 = 16,143 new people.**
