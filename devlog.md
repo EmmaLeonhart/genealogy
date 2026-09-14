@@ -41443,3 +41443,41 @@ larger job, and the index is what stops them being lost to the rollover.
 
 **Ordering ruled:** preserve first, then request. *"once they are preserved then we barrel
 through and try to at a slow and steady (and thus fast) rate request paths on all the isolates."*
+
+## 2026-09-13 — the bulk path request is running, and `readfile` grew a `full` mode
+
+*"once they are preserved then we barrel through and try to at a slow and steady (and thus fast)
+rate request paths on all the isolates."*
+
+**`reports/path-request-roster.tsv` — 265,108 targets.** Every `geni_id` in
+`reports/unconnected-p2600.tsv`, minus the 238 that already hold a banked path (found by pulling
+`to=` out of each harvested permalink; only 238 of the 2,472 banked ids are isolates, which is
+what one would expect of a list mostly made of famous people).
+
+**`202`, not `200`, is the success status.** The first smoke run scored 16 failures out of 20 and
+was wrong: `search_blood_path` answers **202 Accepted** — the search is queued server-side, which
+is exactly the behaviour the whole method relies on. Six of the ten test ids appeared on
+`/paths` within a minute. The abort guard was counting those 202s toward a failure streak and
+came within one row of stopping a healthy run; it now tests `2xx`.
+
+**`readfile` answered `length` without answering `what`.** It returned a 200-character `head`, so
+a 2,000-id chunk could not come off disk — the roster would have had to go back through the
+agent's context, which is the exact cost the file read was built to remove. **1.7.49** adds
+`full: true`, which returns the whole text. The probe stays the default.
+
+**The runner is page-side and chunk-driven.** 133 chunks of 2,000 ids in the scratchpad,
+regenerable from the committed roster in seconds. It pulls the next chunk itself when the current
+one drains, so it advances without being fed.
+
+**Pacing: one person per 6.25 s** — a blood request, 250 ms, an in-law request, then the gap. That
+is ~575 people and ~1,150 requests an hour, **0.32 req/s**, against the ~0.55 req/s that drew
+*"hold on a bit I think that we might be moving too fast and doing too many requests."*
+
+**Self-healing on the nonce.** `t` is a nonce and its lifetime is unmeasured. Four consecutive
+failures make the runner pull a fresh `slug`/`t` out of a profile page's HTML by `fetch`, without
+navigating the tab it lives in; twelve stop it. So expiry costs a few rows, not a night.
+
+**The ceiling still governs the cadence.** `/paths` holds 2,885 and Emma expects it to roll over
+between 5,000 and 15,000. At ~575 people an hour, with roughly six in ten banking, that is about
+1,000 hours of headroom if the cap is 15,000 and about **three and a half hours if it is 5,000** —
+so the harvest re-runs between chunks rather than at the end.

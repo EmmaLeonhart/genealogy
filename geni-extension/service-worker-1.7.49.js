@@ -666,12 +666,19 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
      *
      * Answers with `ok:false` and the error rather than throwing, because a refused file read and
      * a missing file look identical from the caller and both need naming. */
+    /* `full: true` returns the WHOLE file rather than a 200-char probe. Added 1.7.49 for the
+     * mass path-request campaign: the page-side runner needs 2,000 ids per chunk, and a probe
+     * that answers `length` without answering `what` forces the roster back through the agent's
+     * context, which is the exact cost the file read was invented to remove. The probe stays the
+     * default because most callers only want to know a file is there and how big it is. */
     if (msg.type === "readfile") {
       try {
         const res = await fetch(String(msg.url || ""));
         const text = await res.text();
-        sendResponse({ ok: true, status: res.status, length: text.length,
-                       head: text.slice(0, 200) });
+        const out = { ok: true, status: res.status, length: text.length,
+                      head: text.slice(0, 200) };
+        if (msg.full) out.text = text;
+        sendResponse(out);
       } catch (e) {
         sendResponse({ ok: false, error: String((e && e.message) || e) });
       }
