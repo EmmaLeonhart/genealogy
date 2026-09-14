@@ -42794,3 +42794,23 @@ above ~1,500 rows, and six files merged in one call. The previous arrangement wo
 worklist people in total — **53 of whom were never requested**, appearing only as steps inside
 somebody else's path. That ratio has held steady across three measurements now (49/250, then
 53/335), which is the first quantity in this campaign that has repeated rather than moved.
+
+## 2026-09-14 — 1,582 chains, 2,254 tiny GEDCOMs, 436 isolates reached
+
+    path-chains.tsv   53,590 rows over 1,582 chains, 8,704 distinct people
+    tiny-paths        1,922 -> 2,254 .ged, zero invented people
+    chain fetcher     1,306 of 5,813, chunk 5 of 20, 13 auto-dumps
+    requester         7,491 people, 12 failures
+
+    targets with a chain   1,544   of those on the worklist   436
+    people named           8,704   of those on the worklist   490
+
+    chain length: median 31 steps, longest 172
+
+**436 isolates hold a chain now** — 201, then 282, then 436 over three ticks. The free-reach
+number moved with it: **54 worklist people are in the chains without ever having been requested**
+(490 named against 436 targets), and the ratio has now held at roughly one in nine across four
+measurements.
+
+**The median chain is 31 steps and the longest is 172.** A 31-step chain is 31 real Geni profiles
+with their relation words, from one `fetch`, for a person Wikidata had recorded as disconnected.
