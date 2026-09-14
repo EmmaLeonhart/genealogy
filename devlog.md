@@ -42452,3 +42452,19 @@ that came down, as task `6000000227748507823`.
 
 Tonight: **Aztec 10,861 + Sanches 951 + Adasi 830 + ben Ovadya 8,340 + d'Esneval 1,111 = 22,093
 new people**, corpus 1,645,725 → 1,667,818.
+
+## 2026-09-14 — Abul Hamza's hit: 2,874 new (57.5%), and Bettencourt goes in behind it
+
+    task     6000000227748507823, seed 6000000227748065851
+    subject  6000000013804873913, 15,000 on the census
+    filed    exports/abul-hamza-descendants/export-Descendants-6000000227748065851.ged
+    newness  2,874 new (57.5%), corpus 1,667,818 -> 1,670,692
+
+**A root with six balls against it and a 73% blocked rate still gave up 2,874 new people from one
+hit in forty draws.** That is the argument against reading a blocked share as exhaustion: it says
+how much of the trunk is already ours, not whether what remains is thin.
+
+`6000000227738961944` — Bettencourt, the second of the two ancestors climbed on 2026-09-13 and
+left unexported — went into the slot immediately as task `6000000227748459031`.
+
+Tonight: **24,967 new people**, corpus 1,645,725 → 1,670,692.
