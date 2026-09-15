@@ -10,6 +10,39 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
+### ⛔⛔ FIRST ITEM: CI IS RED ON `07fdb97e` — 4 FAILURES. Run `34922163324`
+
+Down from 11 to 4, so the red streak from 2026-09-10 is broken but not closed. **Three of the
+four were caused by my own fixes in the last hour**, which is the thing to notice: a fix that
+moves a file or tightens a rule has to carry the generated artefacts and the tests with it.
+
+* `test_generated_inventories.py::test_the_batch_inventory_names_exactly_the_batches_on_disk`
+  — *"reports/built-batches.tsv is stale ... Listed but gone"*. The INVERSE of this morning's
+  failure. Cause: `reports/bad-name-items-sample.qs` was moved to `reports/samples/` so it
+  would stop being linted as a sendable batch, and the inventory still names it at the old
+  path. Re-run `scripts/audit-built-batches.py` and commit the result.
+* `test_generated_inventories.py::test_the_freshness_report_names_no_file_that_has_been_deleted`
+  — *"reports/repo-freshness.csv lists files that no longer exist"*. Same cause, same move.
+  Re-run `scripts/build-repo-freshness.py`. **Both generators are now wired into
+  `pipeline.yml`, which is why they will not drift again — but the COMMITTED copies are still
+  the pre-move ones and CI reads those.**
+* `test_namemodel.py::test_the_pieces_of_a_split_name_are_not_names` — *"'das' would get a name
+  item"*. **My test is wrong, not the code.** `das` is in `PARTICLES`, and the particle-
+  precedence fix made `name_shape` answer `particle` for it rather than `unknown`. Both are
+  terminal and neither mints a name item, so the assertion should test *does this get an item*
+  and not *is the usage exactly `unknown`*.
+* `test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person` —
+  *"already on Wikidata and being created again"*, 63 ids. **NOT mine and not new.** The ledger
+  was refreshed by a tree rebuild after `reports/wikidata-garborg-day.txt` was composed, so the
+  committed batch offers to create 63 people who now hold QIDs. `wikidata-edit-run.load_batch`
+  already refuses all 63 at send time, so nothing can reach Wikidata — but the committed file
+  is still wrong and the test is right to say so. § *The ledger refresh is PART OF THE RUN*.
+  ⛔ Do NOT hand-edit `CREATE` blocks out of the batch: the following `LAST` lines bind to
+  them positionally. Recompose it, or leave it to `pipeline.yml` and say so.
+
+⛔ § *TESTS RUN IN CI/CD OR NOT AT ALL* — read the conclusion of a dispatched run, never a
+local `pytest`.
+
 ### ⛔ THE PATH COLLECTION IS A BACKGROUND ASSUMPTION, NOT THE FIRST ITEM. Ruled 2026-09-14
 
 *"I think the paths collection being the first item made it so that you had a tendency to not do

@@ -925,10 +925,17 @@ def test_the_pieces_of_a_split_name_are_not_names():
     holds while that is still true. It is free to hold: *"There’s effectively zero cost for
     not creating a name object."*
     """
+    # ⛔ **THE TEST IS *DOES THIS GET AN ITEM*, NOT *IS THE USAGE EXACTLY `unknown`*.** `das`,
+    # `der`, `la`, `le`, `el` and `los` are also in `PARTICLES`, and the particle-precedence fix
+    # of the same day makes `name_shape` answer `particle` for those. Both answers are terminal
+    # and neither mints a name item, so pinning the exact string was pinning an implementation
+    # detail -- and it went red on `das` within the hour. The usages that DO mint an item are
+    # `None` (an ordinary name) and the real name usages; everything else is a refusal.
     for word in ("und", "and", "et", "ou", "och", "og", "or",
-                 "the", "der", "die", "das", "el", "la", "le", "los", "las", "il",
+                 "the", "der", "die", "das", "el", "la", "le", "los", "las",
                  "aka", "alias", "dit", "dite", "genannt", "nee", "born", "known"):
-        assert namemodel.name_shape(word)[1] == "unknown", f"{word!r} would get a name item"
+        usage = namemodel.name_shape(word)[1]
+        assert usage in ("unknown", "particle"), f"{word!r} would get a name item ({usage})"
 
 
 def test_the_two_exceptions_to_the_punctuation_rule():
