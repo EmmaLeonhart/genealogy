@@ -56,12 +56,6 @@ QUEUE*, which is how a list gets ordered by when a thing was appended instead of
 what it is. Ruled 2026-09-13: *"uhh why did you shit the bed so hard with queue
 ordering lol"*. Anything typed here by hand outranks anything derived.
 
-## Read the pastebin and Marcus.linneberg contributions as QID identifications
-
-read this https://pastebin.com/npAiDNLg using the chrome extension. View all of the pages since this is not really optimally organized, but set these as qid identifications
-
-Look over this guy's contributions https://www.wikidata.org/wiki/Special:Contributions/Marcus.linneberg I think we might be able to do a lot of geni identifications from them. That pastebin was my hasty ones. But we can do it systematically
-
 ## Patronymic matronymic stuff
 
 We really should be always creating patronymics in pairs. Feminine and masculine version in a pair in the quickstatements

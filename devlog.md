@@ -16,6 +16,38 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — 229 Geni identifications: the pastebin, and Marcus.linneberg systematically
+
+*"read this pastebin ... set these as qid identifications. Look over this guy's contributions
+... I think we might be able to do a lot of geni identifications from them. That pastebin was my
+hasty ones. But we can do it systematically."*
+
+**The pastebin**, `npAiDNLg`: 11 links, 10 clean Geni-to-QID pairs, one orphan QID with no Geni
+link beside it (`Q24879235`, left alone — it identifies nobody on its own). Nine were new.
+
+**Marcus.linneberg, systematically.** His Contributions run to 20,000+ edits, so the API rather
+than the HTML: `list=usercontribs` paged 40 times gives **1,861 distinct items**, then
+`wbgetentities` reads `P2600` off each in batches of 50. **233 of the 1,861 already carry a Geni
+id — 16%**, which is what makes him worth mining rather than a hunch.
+
+    233  pairs found
+     10  already in reports/garborg-qids.tsv with the SAME qid
+      0  CONFLICTS — not one case where he and the ledger disagree about who somebody is
+      4  legacy short-form Geni ids (2853609 and friends), from before the 6000000... scheme.
+         Kept: they are real ids, and § *The Geni profile ID is the primary key* does not say
+         the key has a fixed width.
+    219  NEW
+
+Both sets go in `reports/manual-identifications-extra.csv` — the build script's own docstring
+calls that the place for *"pairs given directly in conversation"* — and
+`build-manual-identifications.py` was re-run, so they sit in the union file
+`build-garborg-day.py` actually reads. **Wired, not just filed**, per § *Code that is WRITTEN but
+never CALLED is not done*. The union goes 1,436 → 1,653 rows.
+
+**Zero conflicts across 243 pairs from two independent sources** is itself worth recording: it
+says the ledger and the Swedish genealogy community are not disagreeing about identity, they are
+simply covering different people.
+
 ## 2026-09-14 — Inês de Bettencourt I needed no seed: the Grolier ball already had her
 
 The last of the six looked like it needed a profile created — her open slot was found and
