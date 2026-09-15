@@ -329,6 +329,31 @@ jobs:
             echo "appended $(grep -c P1810 reports/wikidata-subject-named-as.qs) to the manual half"
           fi
 
+      # ⛔ THE SECOND VEHICLE FOR THE SAME PASS. Ruled 2026-09-14, alongside the first:
+      # *"adding sources on individuals for existing relationships for the people adjacent to
+      # the universe. That's another thing, because our universe doesn't really expand itself
+      # past the people we're creating and that's a bit of a problem."*
+      #
+      # Same locality, same 40/20 pace, same after-the-split append. It is STRICTER than the
+      # P1810 pass in one way and has to be: `S2600` says *Geni states this*, so every line is
+      # checked against our own tree first and a relationship Geni does not state is left
+      # alone rather than cited to Geni. See the script's docstring.
+      - name: Relationship-sources backfill, the universe-growth pass
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+          BOT_CONTACT: emma@topazcomputing.com
+        run: |
+          python scripts/build-relationship-sources-backfill.py
+          if [ -s reports/wikidata-relationship-sources-auto.qs ]; then
+            cat reports/wikidata-relationship-sources-auto.qs >> reports/wikidata-garborg-day-auto.txt
+            echo "appended $(grep -c S2600 reports/wikidata-relationship-sources-auto.qs) to the auto half"
+          fi
+          if [ -s reports/wikidata-relationship-sources.qs ]; then
+            cat reports/wikidata-relationship-sources.qs >> reports/wikidata-garborg-day-manual.txt
+            echo "appended $(grep -c S2600 reports/wikidata-relationship-sources.qs) to the manual half"
+          fi
+
       - name: Refresh the committed site snapshot
         continue-on-error: true
         env:

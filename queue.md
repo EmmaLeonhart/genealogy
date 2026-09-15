@@ -107,46 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## ⛔ THE UNIVERSE GROWS BY EDITING ITS NEIGHBOURS, AT A PACE. Ruled 2026-09-14
-
-*"we are applying this to adjacent individuals to the universe. And these adjacent individuals
-get added into the universe because of the fact that we just did an edit on it. That's the
-entire point."* And on scale: *"it's not supposed to be by a ring. By a ring is fucking insane
-... let's say 40 people in the quick statements batch and then 20 people in the CICD edits."*
-
-**Why it works.** `wikidata_subgraph` takes `reports/garborg-qids.tsv` — the account's own items
-— as the universe, and that ledger is filled from the account's contributions. So editing a
-neighbour puts it in our contributions, which puts it in the ledger, which makes it universe,
-and ITS neighbours become the next ring. The edit is what makes the item ours.
-
-**The vehicle does not need to matter.** *"it isn't even that important as a qualifier. It's
-just a thing that none of them have. And so it means we can add it to all of them and it's
-useful."* A true, harmless, missing statement is the ideal instrument.
-
-### 1. `P1810` subject named as — BUILT, `scripts/build-subject-named-as-backfill.py`
-
-40 a day to the pasted batch, 20 to the CI/CD run. Universe first, then the adjacent ring, so a
-short day spends its budget on our own items before claiming new ones.
-
-### 2. Sources on existing relationships — TO BUILD, same shape
-
-*"adding sources on individuals for existing relationships for the people adjacent to the
-universe. That's another thing, because our universe doesn't really expand itself past the
-people we're creating and that's a bit of a problem."*
-
-**Everything WE emit is already sourced** — checked 2026-09-14 on the live batch: `P22` 48/48,
-`P25` 48/48, `P40` 100/100, `P26` 52/52, `P3373` 6/6, every one carrying `S2600`. The gap is the
-other direction: relationships already on Wikidata, put there by somebody else or by us before
-the rule, that carry **no** source. Adding `S2600` to those is the same true-and-missing edit.
-
-Same locality, same 40/20 pace, same ordering. Reuse the backfill script's shape.
-
-### And sibling links were NOT abandoned
-
-*"Do we even add sibling relationships? I feel like we at one point just abandoned adding the
-sibling link."* They are live: **12 `P3373` lines in today's batch**, sourced, e.g.
-`Q141454656 P3373 Q141443314 S2600 "3960831"`, under `SIBLING_CAP` (60 since the 50% rise).
-
 ## Unintentional edit wars
 
 I think I explained it decently but I want us to address how to solve this issue. It has been a consistent issue where our algorithm is relatively resistant to editors fixing its mistakes and this is drawing attention.

@@ -44057,3 +44057,39 @@ through `classify_fields`, `build-name-item-batch` by its own guard, `build-name
 
 `tests/test_namemodel.py`: four tests — the predicate, the classifier refusal, the other
 predicates still matching, and the plan carrying none.
+
+## 2026-09-15 — Sources on existing relationships: the second universe-growth vehicle
+
+`## ⛔ THE UNIVERSE GROWS BY EDITING ITS NEIGHBOURS` closed. Part 1 (`P1810`) was already built;
+part 2 is `scripts/build-relationship-sources-backfill.py`, and it is now wired into
+`pipeline.yml` beside it.
+
+*"adding sources on individuals for existing relationships for the people adjacent to the
+universe. That's another thing, because our universe doesn't really expand itself past the people
+we're creating and that's a bit of a problem."*
+
+Everything we emit is already sourced — `P22` 48/48, `P25` 48/48, `P40` 100/100, `P26` 52/52,
+`P3373` 6/6 on the live batch. The gap runs the other way: relationships already on Wikidata,
+put there by somebody else or by us before the rule, carrying **no reference at all**.
+
+**First run: 73 unsourced statements our tree attests, found in the first 650 items.** 40 to the
+pasted file, 20 to the CI/CD run, 13 held. 1,880 already carried a reference.
+
+**The one place this is stricter than the `P1810` backfill, and it has to be.** `S2600` says
+*Geni states this*. Attaching it to a relationship Geni does not state is not a harmless missing
+statement, it is a false citation — and nobody can tell by looking, because the reference renders
+as a tidy Geni link either way. So every line is checked against `reports/derived-family.csv`
+first, joined on the Geni id. **4 were rejected on the first run** as relationships Wikidata holds
+and our tree does not; they are left alone rather than cited. 998 more were skipped for having no
+Geni id on one end, so there is nothing to cite them to.
+
+Siblings are computed, not read: `derived-family.csv` has no sibling column, so a sibling is
+somebody sharing a father or a mother — built from the parent maps rather than the `children`
+column so a half-sibling recorded on one side only is still found. 1,055,710 people have one.
+
+Locality, pace and ordering are unchanged from the `P1810` pass: the universe and one step out,
+40/20 a day, universe queried before the adjacent ring, early-stop once the quota is full.
+
+Verified through the actual delivery path rather than asserted: the emitted lines parse through
+`qs_v1` into 8 edit objects with `references: [{property: P2600, ...}]`, and all 8 survive
+`wikidata-edit-run.load_batch`'s gate.
