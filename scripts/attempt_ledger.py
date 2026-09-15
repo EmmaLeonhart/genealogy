@@ -89,7 +89,19 @@ def stamp(geni_ids, today=None, path=WORKLIST):
     out = {"present": path.exists(), "stamped": 0, "unmatched": sorted(wanted), "rows": 0}
     if not wanted or not out["present"]:
         return out
-    day = (today or datetime.date.today()).isoformat()
+    # ⛔ **A STAMP IS NEVER IN THE FUTURE.** The worklist was found carrying `2026-10-31` on
+    # 41,212 rows on 2026-09-15 — six weeks ahead, and `eligible_on` adds the 30-day cooldown to
+    # whatever it finds, so all of them were ineligible until 2026-11-30. 15.7% of the roster,
+    # silently, with nothing to show for it in any count.
+    #
+    # `today` is a parameter so the tests can pin a date, and a caller passing one from
+    # somewhere other than the clock is how a future value gets in. Refusing it here is the only
+    # place that can be sure: `build-unconnected-worklist.load_previous` cleans up afterwards,
+    # but cleaning up afterwards means a rebuild has to happen before anybody is eligible again.
+    stamp_day = today or datetime.date.today()
+    if stamp_day > datetime.date.today():
+        raise ValueError(f"refusing to stamp last_attempted in the future: {stamp_day}")
+    day = stamp_day.isoformat()
 
     # ⛔ THE HEADER IS CHECKED BEFORE THE TEMPORARY FILE IS OPENED, and the order matters on
     # Windows: a file that is still open cannot be unlinked there, so validating inside the

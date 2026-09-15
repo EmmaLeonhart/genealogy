@@ -206,17 +206,44 @@ def sort_key(row, today):
     return (0 if ready else 1, datetime.date.min if ready else when, -int(size), qid)
 
 
-def load_previous(path):
-    """`geni_id -> last_attempted` from the previous committed version of THIS file."""
+def load_previous(path, today=None):
+    """`geni_id -> last_attempted` from the previous committed version of THIS file.
+
+    ⛔ **A DATE IN THE FUTURE IS NOT AN ATTEMPT, AND 41,212 ROWS CARRIED ONE.** Found
+    2026-09-15: the file held `2026-10-31` on 41,212 people — a date this script never writes,
+    six weeks ahead of the day it was found. `eligible_on` adds the 30-day cooldown to it, so
+    every one of them was ineligible until **2026-11-30**: 15.7% of the roster quietly
+    unreachable for two and a half months, and nothing said so.
+
+    It is worse than a lockout. The gate between the queue and Wikidata is *every isolate
+    ATTEMPTED*, and `last_attempted` being non-empty is how that reads — so the roster reported
+    **262,908 of 262,908 attempted** while the genuine attempts, the ones carrying a real date,
+    numbered **248**. A sentinel and a stamp were indistinguishable.
+
+    `SEED_NEVER` is the honest value for these and it is what they get back, so the next rebuild
+    frees them. The stamp itself is guarded in `attempt_ledger.stamp`, which is where the bad
+    value could only have come from.
+    """
     if not path.exists():
         return {}
-    out = {}
+    today = today or datetime.date.today()
+    out, future = {}, 0
     with path.open(encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh, delimiter=TAB):
             g = (row.get("geni_id") or "").strip()
             d = (row.get("last_attempted") or "").strip()
-            if g and d:
-                out[g] = d
+            if not (g and d):
+                continue
+            try:
+                if datetime.date.fromisoformat(d) > today:
+                    future += 1
+                    d = SEED_NEVER
+            except ValueError:
+                d = SEED_NEVER
+            out[g] = d
+    if future:
+        print(f"   {future:,} rows carried a last_attempted in the FUTURE; reset to "
+              f"{SEED_NEVER} so they are eligible again")
     return out
 
 

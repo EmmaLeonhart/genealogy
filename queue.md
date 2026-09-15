@@ -68,44 +68,6 @@ they now live in `docs/queue-archive/`:
 Nothing was deleted. `queue.md` is work only — which is the whole reason § *Queue items are
 BULLET POINTS* and the delete-on-done rule exist, and a file that is half reference defeats both.
 
-## Names
-
-Remember that this is not something to be done out of order, it is the second last item in the queue for a reason
-
-We are still generating non-name items as names such as numbers, and I think https://www.wikidata.org/wiki/Special:Contributions/OBender12 is likely pretty pissed at this point, but no talk page messages yet. idk why you did not fix it and seem to have completely overlooked the error that he constantly corrects. There are plenty of non-name things that need to be parsed not as names.
-
-Read "address_this.html"
-
-### Examples
-
-Even in the current batch one exists lol
-
-# und -- family, 8 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "und"
-LAST	Len	"und"
-#   set the mul label to "und"
-LAST	Lmul	"und"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q61139384 Mangold von Thurgau und Nellenburg III: P734 family name = the item just created
-Q61139384	P734	LAST	S2600	"6000000004106003883"
-#   Q81827036 Adalbert von Saffenberg und Norvenich: P734 family name = the item just created
-Q81827036	P734	LAST	S2600	"6000000009305060696"
-#   Q55068638 Friedrich zu Schwarzenberg und Hohenlandsberg: P734 family name = the item just created
-Q55068638	P734	LAST	S2600	"6000000014784646061"
-#   Q110261972 Johann I von Tengen und Nellenburg: P734 family name = the item just created
-Q110261972	P734	LAST	S2600	"6000000017758205608"
-#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P734 family name = the item just created
-Q110415677	P734	LAST	S2600	"6000000019797018175"
-#   Q828346 Berthold Graf von Neuffen und Achalm: P734 family name = the item just created
-Q828346	P734	LAST	S2600	"6000000082813823834"
-#   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
-Q110410743	P734	LAST	S2600	"6000000105706792946"
-
 ## `emmas-files/` — HERS, AND NOT TO BE TOUCHED
 
 She saves interesting paths by hand into `emmas-files/` and changes the anchor as she goes.
@@ -116,51 +78,29 @@ out; the prohibition holds until then.
 This clause used to live inside the `/paths` harvest item. That item is finished, and the
 prohibition is not, so it keeps its own place rather than leaving with it.
 
-## Wikidata isolate connection
+## Wikidata isolate connection — the standing background job
 
-Actually connect the wikidata isolates I think we can just zoom through them by this point with our pipeline we have
+*"Actually connect the wikidata isolates I think we can just zoom through them by this point
+with our pipeline we have"*
 
-⛔ **THIS IS THE GATE BETWEEN THE QUEUE AND WIKIDATA, AND BOTH HALVES ARE LOAD-BEARING.**
-Ruled 2026-09-13: *"Make sure it's clear that between everything else in the queue and running
-stuff on wikidata you must attempt all the wikidata isolates."*
+**It runs continuously.** `scripts/pathrun.js` in the geni.com tab, topped up every work-loop
+tick; `CLAUDE.md` § *THE PATH CAMPAIGN RUNS IN EVERY SESSION, NO MATTER WHAT*. `attempt` is the
+word, not `connect`: an isolate with no path is attempted and done.
 
-So the order is three stages and nothing skips a stage:
+⛔ **THE STAGE-3 GATE IS SUPERSEDED.** This section used to say Wikidata editing stayed held
+until every isolate was attempted. Emma changed that 2026-09-14 — at ~900 requests an hour it is
+months, and the isolate sweep needs a browser while the edits do not, so it made the slow half
+the pacemaker for the fast one. The hold is lifted and CI/CD sends daily.
 
-    1. everything else in this file, top to bottom
-    2. ATTEMPT EVERY WIKIDATA ISOLATE          <- this section
-    3. only then may Wikidata editing be unheld
+⛔ **AND THE "ATTEMPTED" COUNT WAS FICTION UNTIL 2026-09-15.** The roster read **262,908 of
+262,908 attempted**; the real figure was **248**. `SEED_NEVER = 2026-01-01` marks *never
+attempted* and fills the column, so a non-empty `last_attempted` never meant what it looked like.
+Worse, 41,212 rows carried `2026-10-31` — a date the script never writes, six weeks in the
+future — and the 30-day cooldown made every one ineligible until 2026-11-30. Both fixed:
+`load_previous` resets a future date to `SEED_NEVER`, and `attempt_ledger.stamp` refuses to
+write one.
 
-**`attempt` is the word and it is not `connect`.** An isolate that turns out to have no path is
-attempted and done; the gate is that every one has been tried, not that every one succeeded.
-`reports/unconnected-p2600.tsv` is the roster — **266,201 people, 266,100 eligible** — the
-extension does the work, and `scripts/attempt_ledger.py` stamps `last_attempted` so *attempted*
-is a fact in a file rather than a memory.
-
-**Stage 3 does not arrive on a date.** `HELD = True` in `scripts/wikidata_lockout.py` is lifted by
-hand, and the condition for lifting it is stage 2 being finished: *"the submission should even
-have a requirement that all of the Wikidata people get connected. Get connected with the path
-thing."* See § *WIKIDATA EDITING IS HELD* at the top of this file.
-
-⛔ **AND THIS SECTION IS STILL LAST.** *"remember that the wikidata isolate path capturing
-campaign comes after everything else in the queue, maybe write that explicitly at the end if it
-is not clear enough"*. It is also `CLAUDE.md` § *The default when nothing else is running* — what
-idle time goes to — so it runs whenever nothing above it is live, and finishing it is what opens
-stage 3. **Nothing above it waits on it; it does not start while anything above it is live.**
-
-- **DECIDE: what happens to `build-add-p2600-batch`.** <!-- requeued-add-p2600-2026-09-13 -->
-  Deferred on 2026-09-06 for want of context to decide on, and re-queued on 2026-09-13 by
-  `.github/workflows/requeue-add-p2600.yml`.
-
-  It writes **7,166 `P2600` statements** inferred from parent-anchor proof into
-  `reports/wikidata-add-p2600.qs`, and **nothing runs it**. The four options as they stood: fold
-  it into the daily batch under a cap; give it its own scheduled workflow; delete it; or leave it
-  as a hand-run tool. `reports/qs-batch-audit.md` carries the measurement.
-
-  The other five generators in that audit were settled on 2026-09-06 —
-  `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
-  `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
-  This is the last one open.
-
+**Progress is measured by counting real dates, never by the column being filled.**
 
 ## More items at the end
 
@@ -529,6 +469,44 @@ appears in **no** path string, so it needs nothing until one turns up.
 
 Pairs with these relations are in `reports/path-chains.tsv`; the person to centre the export on
 is the one the tail word describes.
+
+## Names
+
+Remember that this is not something to be done out of order, it is the second last item in the queue for a reason
+
+We are still generating non-name items as names such as numbers, and I think https://www.wikidata.org/wiki/Special:Contributions/OBender12 is likely pretty pissed at this point, but no talk page messages yet. idk why you did not fix it and seem to have completely overlooked the error that he constantly corrects. There are plenty of non-name things that need to be parsed not as names.
+
+Read "address_this.html"
+
+### Examples
+
+Even in the current batch one exists lol
+
+# und -- family, 8 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "und"
+LAST	Len	"und"
+#   set the mul label to "und"
+LAST	Lmul	"und"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q61139384 Mangold von Thurgau und Nellenburg III: P734 family name = the item just created
+Q61139384	P734	LAST	S2600	"6000000004106003883"
+#   Q81827036 Adalbert von Saffenberg und Norvenich: P734 family name = the item just created
+Q81827036	P734	LAST	S2600	"6000000009305060696"
+#   Q55068638 Friedrich zu Schwarzenberg und Hohenlandsberg: P734 family name = the item just created
+Q55068638	P734	LAST	S2600	"6000000014784646061"
+#   Q110261972 Johann I von Tengen und Nellenburg: P734 family name = the item just created
+Q110261972	P734	LAST	S2600	"6000000017758205608"
+#   Q110415677 Georg III von der Leyen zu Eltz und Leiningen: P734 family name = the item just created
+Q110415677	P734	LAST	S2600	"6000000019797018175"
+#   Q828346 Berthold Graf von Neuffen und Achalm: P734 family name = the item just created
+Q828346	P734	LAST	S2600	"6000000082813823834"
+#   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
+Q110410743	P734	LAST	S2600	"6000000105706792946"
 
 ## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
 

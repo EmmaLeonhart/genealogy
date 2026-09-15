@@ -16,6 +16,35 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-15 — the isolate roster said 262,908 attempted. The real number was 248.
+
+The gate between the queue and Wikidata was *every isolate ATTEMPTED*, and
+`reports/unconnected-p2600.tsv` reported **262,908 of 262,908** — a filled `last_attempted`
+column on every row. Reading the dates instead of the emptiness:
+
+    2026-01-01   221,448   SEED_NEVER. It MEANS never attempted, and it fills the column.
+    2026-10-31    41,212   a date this script never writes, six weeks in the future
+    2026-09-06 to 09-13  248   the genuine attempts
+
+**A sentinel and a stamp were indistinguishable**, so the gate read as satisfied by 262,908 rows
+of which 248 were real. `SEED_ATTEMPTED = "2026-09-01"` exists in the script and nothing in the
+file carried it.
+
+⛔ **And the future date was worse than cosmetic.** `eligible_on` adds the 30-day cooldown to
+whatever it finds, so `2026-10-31` made those rows ineligible until **2026-11-30**: **41,460
+people — 15.7% of the roster — quietly unreachable for two and a half months**, with nothing
+anywhere saying so.
+
+Both ends fixed. `load_previous` resets a future `last_attempted` to `SEED_NEVER`, so the next
+rebuild frees all 41,212 — verified: *41,212 rows carried a last_attempted in the FUTURE; reset*,
+and zero remain. `attempt_ledger.stamp` now refuses to write a future date at all, which is the
+only place one could have come from: `today` is a parameter so tests can pin it, and a caller
+passing something other than the clock is how it got in.
+
+**The lesson is the measurement, not the fix.** *Attempted* was being counted by whether a column
+was non-empty, on a column that is never empty. Progress on this campaign is counted by real
+dates from here on.
+
 ## 2026-09-15 — Romance patronymics: three tokens, and `Johannes` was the trap
 
 *"Romance languages should be there too but I think they are the hardest and the most dead."*
