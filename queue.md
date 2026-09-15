@@ -60,136 +60,32 @@ ordering lol"*. Anything typed here by hand outranks anything derived.
 
 please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
 
-**⛔ DELIVERED 2026-09-14, EXCEPT THE HOLD — BLOCKED-ON-USER-ACTION.** The 50% is built:
-caps raised 50% (`NAME_ADD_CAP` 90, `LABEL_EDIT_CAP` 90, `P2600_LEAD_CAP` 60,
-`MANUAL_P2600_PER_RUN` 30, `SIBLING_CAP` 60) and the scheduled run takes a third of the batch
-via `--fraction 0.3333`, so the autonomous share is exactly the increase. `74fc58a1`.
-
-**The only remaining blocker is `EDITS_HELD: "yes"`, and LIFTING IT IS THE LAST ITEM IN THIS
-FILE.** Ruled 2026-09-14: *"put lifting it as the last queue item and do not lift it right
-now"*. Do not lift it here and do not lift it early.
-
-**⛔ THE MECHANISM IS BUILT.** Checked 2026-09-14:
-`.github/workflows/wikidata-edits.yml` is scheduled `7 8 * * *`, sends
-`reports/wikidata-garborg-day.txt` at `limit=100`, and goes live from
-`AUTOMATION_START_DATE 2026-09-15`. `pipeline.yml` regenerates the batch daily. The only thing
-stopping it is `EDITS_HELD: "yes"`, and the condition for lifting that is stated in the hold
-item above — the Wikidata people get connected through the path search first — which is a
-campaign at the END of this file, not a date.
-
-**So do not treat the go-live date as the trigger.** 2026-09-15 is when the SCHEDULE is allowed
-to send; the hold is what decides whether it does, and a hold is lifted by a person.
-
-**What was actually wrong, and is now fixed:** the batch as committed would have sent 63
-creations for people already holding QIDs in `reports/garborg-qids.tsv` — the ledger was
-refreshed by a tree rebuild after the batch was composed — plus two name items labelled `(Ulf`
-and `Horsnäs)`. `wikidata-edit-run.load_batch` now refuses both, on every batch format, because
-the runner is the last thing between a file on disk and Wikidata. 216 edits → 151, 75 creations
-→ 10 on the file as it stands.
-
-**The remaining question is the 50%**, which is the only part of this item nobody has settled:
-*"an additional smaller amount of edits (about 50%) every day"*. The workflow sends `limit=100`
-from one file. Fifty per cent OF WHAT is not written down anywhere — of the day's generated
-statements, of the carry-forward, of the caps. ⛔ ASK before implementing a reading of it.
+**⛔ DELIVERED 2026-09-14 except the hold.** Caps raised 50% and the scheduled run takes a
+third via `--fraction 0.3333`, so the autonomous share is exactly the increase (`74fc58a1`).
+`wikidata-edits.yml` is scheduled `7 8 * * *`, live from `AUTOMATION_START_DATE 2026-09-15`.
+**The only blocker is `EDITS_HELD`, and lifting it is the LAST item in this file.**
 
 ## Another item
 
 Export descendants of these people, idk their status, ancestor climb and then descendants export
 
-**⛔ THEIR STATUS, CHECKED 2026-09-14. ALL SIX ARE IN THE CORPUS AND NONE OF THE SIX CAN BE
-EXPORTED DIRECTLY.**
+**None of the six can be exported directly** — Geni: *"you may only export a GEDCOM file
+focused on profiles that you added to Geni."* So each needs a seed we own. Detail in
+`devlog.md` 2026-09-14.
 
-    Sayaluna ata             6000000008384075400   29 export files   4 children in tree
-    Hélène de Corday         6000000000746523797    8 export files   no parents recorded
-    Robert d'Esneval VI      6000000026257912323    7 export files   no parents recorded
-    Inês de Bettencourt I    6000000001435366077    8 export files   1 child
-    Pietro Antonio di Capua  6000000015633226273   10 export files   2 children
-    Jacques Grimaldi         6000000015647948256   17 export files   5 children
+    Jacques Grimaldi         6000000015647948256  DONE  seed 6000000227757314896
+    Sayaluna ata             6000000008384075400  DONE  seed 6000000227694017875
+    Robert d'Esneval VI      6000000026257912323  DONE  seed 6000000227757576826
+    (NN Grolier)                                  DONE  seed 6000000227738961944
+    Pietro Antonio di Capua  6000000015633226273  DONE  seed 6000000227757712839
+    Hélène de Corday         6000000000746523797  running, task 6000000227757652945
+    Inês de Bettencourt I    6000000001435366077  NEEDS A SEED
 
-**Every one returns `/error` — *"You are not allowed to export that profile."*** Verified by a
-real page load, not just a `fetch`. The reason is printed on `https://www.geni.com/gedcom`
-itself: *"you may only export a GEDCOM file focused on profiles that you added to Geni."* That
-is the whole reason this item says *ancestor climb* — the climb ends at a slot where a profile
-WE own exists or can be made, and `docs/export-seed-rules.md` is that method.
+**Inês:** add a father, `NN`, no surname, to `Isabeau d'Harcourt` `6000000006420936026`
+(confirmed on Geni: *"Daughter of Alice de Beaumont"*, no father). Then Descendants 5000.
 
-**⛔ AND THE OFFLINE CLIMB IS NOT ENOUGH.** `reports/derived-family.csv` says
-`6000000009177497799` (Sayaluna's top ancestor) is fatherless; Geni says *"Son of NN ? and
-NN ?"*. Our tree is behind at the top, so the last hop has to be read off the live page — and
-`fetch` will not do it, the immediate-family cards render client-side and come back empty.
-Real page load per hop.
-
-**What is already ours.** Profiles in the `6000000227…` range are ones this account created, and
-they ARE exportable — `6000000227694017875`, the NN father of Sayaluna's top ancestor, tested
-clean. So for several of these the climb is already done and only the export remains.
-
-**Progress:**
-
-* **Jacques Grimaldi — SUBMITTED.** Emma gave the seed directly: *"just export from here
-  https://www.geni.com/people/NN-NN/6000000227757314896 for the Grimaldi one"*. Descendants,
-  5000, `task_id 6000000227757262875`.
-* **Sayaluna ata — SEED FOUND, not yet submitted.** `6000000227694017875`, the `NN` father of
-  her top ancestor Muhadhdhab al-Din, tested exportable. Submit Descendants 5000 from it as
-  soon as the Grimaldi export frees the single export slot.
-* **Hélène de Corday — NO OPEN SLOT FOUND, four generations climbed.** Hélène → Guillaume de
-  Corday `6000000000746643097` → Nicolas de Corday `6000000000751009314` → Raoul II de Corday
-  `6000000000751097644`; every one has BOTH parents already, and none of them, nor Isabeau
-  d'Esneval `6000000000746493508`, nor the husband François de Saint-Germain
-  `6000000003419109768`, is exportable. `docs/export-seed-rules.md` tiers 1-5 all want an open
-  slot and this line has none within reach, so either the climb continues further up or the
-  seed comes from somewhere else. **Note Hélène's mother is Isabeau d'ESNEVAL** — she and
-  target 3, Robert d'Esneval VI, are the same family, so one seed may cover both.
-* **Sayaluna ata — DONE.** Descendants from `6000000227694017875`, `task_id
-  6000000227757462847`, came back at the 5000 cap and is filed as
-  `exports/emma-requested/export-Descendants-6000000227694017875.ged`. **At the cap means
-  truncated** — § *A `Descendants` ball that came back at the cap is truncated by definition*
-  — so it says what is in it and nothing about what is missing below.
-* **Robert d'Esneval VI — DONE.** Emma created the `NN d'Esneval` mother,
-  `6000000227757576826`; Descendants came back at the 5000 cap and is filed as
-  `exports/emma-requested/export-Descendants-6000000227757576826.ged`.
-* **NN Grolier `6000000227738961944` — DONE.** Emma's seed; Descendants came back at the
-  5000 cap and is filed as `exports/emma-requested/export-Descendants-6000000227738961944.ged`. **Its first submit was REFUSED** because the d'Esneval export still held the slot, and
-  the refusal is SILENT — Geni re-renders the export form instead of redirecting to a task id,
-  and writes no row into the export list. **Check the redirect target, not the HTTP status.**
-* **NN Arcamone `6000000227757712839` — DONE, AND IT REACHES PIETRO.** 5000 at the cap, filed
-  as `exports/emma-requested/export-Descendants-6000000227757712839.ged`. Pietro
-  `6000000015633226273` appears in it 4 times, so **Pietro Antonio di Capua is covered** —
-  verified by grep, not presumed from the surname. He was in NONE of the four earlier balls.
-* **NN des Rotours `6000000227695388934` — SUBMITTED**, `task_id 6000000227757652945`. Emma's seed.
-  This is the Corday line: `NN des Rotours` is Nicolas de Corday's wife, therefore Guillaume's
-  mother and **Hélène de Corday's grandmother**, so a Descendants ball off her covers Hélène —
-  which is the line four generations of climbing could not find an open slot in.
-* **Inês de Bettencourt I — OPEN SLOT FOUND AND CONFIRMED ON GENI.** `Isabeau d'Harcourt`
-  (c.1272-1340) `6000000006420936026`, four generations up, is *"Daughter of Alice de
-  Beaumont"* with **no father**. Clean tier 3: create the father as `NN`, no surname.
-* **Pietro Antonio di Capua — still hunting.** Two offline candidates were checked against
-  Geni and both were stale in our tree: `Maria Marzano d'Aragona` `6000000021374566965` and
-  `Giacomo del Balzo` `6000000012027520923` each have BOTH parents there. Remaining offline
-  candidates: `6000000008682150862`, `6000000017186487271`.
-
-* **Inês de Bettencourt I, Pietro Antonio di Capua** — seed not yet looked for.
-
-⛔ **THE CREATION CANNOT BE DONE AD HOC AND SHOULD NOT BE HAND-DRIVEN.** The extension owns it
-— `GC.seed` in `geni-extension/content/seed.js`, driven by a `{job:"seed", geni_id, kind:"seed"}`
-queue entry, and `docs/collector-run-loop.md` ends *"there's no discretion on your part at all"*.
-Page JavaScript cannot reach it: the content scripts run in an isolated world, so `GC`,
-`chrome.runtime` and `window.__sweep` are all undefined from the agent's side. Typing into
-Geni's *Add mother* box by hand is what created somebody who should never have existed on
-2026-09-05, recorded in the seed rules themselves.
-
-**So the remaining three go through the collector loop, not through a one-off.** Queue a seed
-job for each, navigate to the profile, let the extension decide and create, then export.
-
-⛔ **DO NOT climb with `fetch`.** The immediate-family cards render client-side; a fetch of a
-profile page returns the shell and zero cards. One real page load per hop, and the exportability
-test is the cheap part — that one DOES work over fetch.
-
-
-Sayaluna ata 6000000008384075400, 
-Hélène de Corday 6000000000746523797, 
-Robert d'Esneval VI 6000000026257912323, 
-Inês de Bettencourt I 6000000001435366077, 
-Pietro Antonio di Capua 6000000015633226273, 
-Jacques Grimaldi 6000000015647948256. 
+⛔ One export at a time, and Geni refuses a second one SILENTLY — it re-renders the form
+instead of redirecting to a task id. Check the redirect target.
 
 ## Another item
 
@@ -1147,24 +1043,11 @@ are the harness talking, not input.
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
 covers lettering for the same reason it covers numbering.
 
-- **⛔ ENSURE THE **TWO** CRONS ARE RUNNING — work-loop `0,30 * * * *` and auto-flush
-  `15 * * * *`.** Ruled 2026-09-14: *"Work-loop and auto-flush only"*, and the work-loop fires
-  **on the hour and the half hour** — *"`:00` and `:30` work loop prompts asking to work on the
-  1st queue item will be good"*. `.claude/skills/autonomous-loop/SKILL.md` is the authority and
-  says the same; this line said FOUR and `3 * * * *` until 2026-09-14, which is the stale copy
-  that caused the disagreement.
-
-  **The status-report `42 * * * *` and dead-queue-sweep `45 * * * *` crons are DELETED and are
-  not to be recreated.** The sweep came within one step of deleting two LIVE queue items.
-
-  **⛔ NEVER KILL A CRON WITHOUT BEING TOLD TO.** Ruled 2026-09-14: *"I am not authorizing you
-  to kill any cron jobs. We need all of the fucking cron jobs to be running so we can properly
-  barrel through the queue."*
-
-  They are **session-only**: they die when the session ends and must be recreated at the start
-  of the next one. Not theoretical — every cron died in the 2026-08-28 crash and none was
-  recreated, which is why nothing ran between 00:03 and 06:00 on 2026-08-29. Old session ids are
-  dead and are the reason to check `CronList` rather than trust any line in this file.
+- **⛔ ENSURE THE TWO CRONS ARE RUNNING — work-loop `0,30 * * * *`, auto-flush `15 * * * *`.**
+  `.claude/skills/autonomous-loop/SKILL.md` is the authority. The status-report and
+  dead-queue-sweep crons are DELETED and not to be recreated. **NEVER KILL A CRON WITHOUT BEING
+  TOLD TO** (ruled 2026-09-14). Session-only: they die with the session, so check `CronList`
+  rather than trusting any line in this file.
 
   ⛔ **AND IT HAPPENED AGAIN ON 2026-09-12.** The session ran roughly nine hours with `CronList`
   reading *no scheduled jobs* — through the whole Alix, Seljuq, NN Näf, Dál Fiatach and no-name
@@ -1219,35 +1102,15 @@ is at least some evidence for it.
 
 An analysis. Nothing was investigated when this was written.
 
-**⛔ THIS WAS ALREADY RULED AND ALREADY SOLVED. THE SOLUTION WAS IMPLEMENTED IN ONE EMITTER.**
+**⛔ ALREADY RULED, ALREADY SOLVED, AND THE HOLE IS CLOSED.** The 2026-08-29 block was real
+and was implemented in ONE emitter; a hand-committed batch went round it with 1,431 clan-seat
+labels. The gate now lives in `scripts/wikidata_lockout.py` and applies to every batch
+`wikidata-edit-run.load_batch` reads, keyed on provenance. Detail in `devlog.md` 2026-09-14.
 
-Corrected 2026-09-14. A measurement of 1,431 clan-seat labels was reported here as a new finding
-about how bad the clan labels are. Emma: *"I'm pretty sure this is a thing that was resolved like
-two weeks ago that you just are continuously bringing up ... we came up with a solution, and you
-might have just not implemented it."* **Right on both halves.**
-
-The ruling is 2026-08-29: *"we block the clan name application stuff for one month. In October,
-once the October gate passes, then the quick statements generate with these clan names in them,
-but otherwise they do not, because I'm just too sceptical of the clan names."* It was implemented
-the same day and it works — `build-garborg-day.py` prints `CJK clan labels suppressed until
-2026-10-01` on every run.
-
-**It suppressed a hardcoded list of 163 QIDs.** Then `reports/wikidata-cjk-mul-labels.json` was
-committed by hand on 2026-09-10, `22b82b05`, and `wikidata-edit-run.py` reads it directly:
-**1,431 clan-seat labels, ZERO of them among the 163.** § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
-
-Closed 2026-09-14: the gate moved to `scripts/wikidata_lockout.py` as the single copy of the
-date, `wikidata-edit-run.load_batch` applies it to every batch it reads, and the test is each
-edit's own `derived_from` rather than a list of ids — a list only covers the ids somebody
-remembered to add. Four tests in `tests/test_wikidata_start_date.py` pin it.
-
-**What is left here is the ORIGINAL question, which the block was always a deferral of**, and it
-comes up on 2026-10-01 when the gate opens: what should a `mul` label be for a person known only
-by clan and seat? 隆西狄道 is Didao county, Longxi commandery, in Gansu — real evidence, and not a
-name. Three shapes are already in the data and the batch mixes them without deciding: `隆西狄道`
-bare (79 people), `公主 隆西狄道` (a title plus the seat), and `某 李` (a surname with the
-unknown-marker 某). § *A title inside a label takes the NATIVE form in CJK* and § *`NN` is
-PRESERVED in `mul`* both bear on it.
+**What is left is the original question, due 2026-10-01 when the gate opens:** what should a
+`mul` label be for a person known only by clan and seat? 隆西狄道 is a commandery-and-county in
+Gansu — real evidence, not a name. Three shapes are in the data and the batch mixes them:
+`隆西狄道` bare (79 people), `公主 隆西狄道`, and `某 李`.
 
 ### 0. Aug 28, 2026 manual adds
 
@@ -1897,44 +1760,16 @@ is *why*, so the next strictness decision is made on this ground instead of on a
 
 ## ⛔ GET CI GREEN — IMMEDIATELY BEFORE LIFTING THE HOLD, AND NOT BEFORE THEN
 
-**Moved here 2026-09-14.** Ruled: *"I do not give a shit about your fucking tests drop this
-shit right the fuck now and put it as the queue item before actually running the cicd
-proper"*. So it is not a first item and is not worked ahead of real work — it is the gate
-immediately before the hold comes off, because that is the only moment the suite's colour
-actually decides anything.
+Ruled 2026-09-14: *"put it as the queue item before actually running the cicd proper"*. Not a
+first item, not worked ahead of real work.
 
-State at 07fdb97e, run `34922163324`: **4 failures, down from 11.**
+Last read: run `34922163324` on `07fdb97e`, **4 failures, down from 11**. Three were fixed after
+that run (`built-batches.tsv`, the `das` and `von` tests); the fourth is the committed batch
+offering to create 63 people who already hold QIDs, which `pipeline.yml` fixes when it
+recomposes. `build-repo-freshness.py` exits 0 and writes nothing — that is a real defect and it
+is this item's.
 
-Down from 11 to 4, so the red streak from 2026-09-10 is broken but not closed. **Three of the
-four were caused by my own fixes in the last hour**, which is the thing to notice: a fix that
-moves a file or tightens a rule has to carry the generated artefacts and the tests with it.
-
-* `test_generated_inventories.py::test_the_batch_inventory_names_exactly_the_batches_on_disk`
-  — *"reports/built-batches.tsv is stale ... Listed but gone"*. The INVERSE of this morning's
-  failure. Cause: `reports/bad-name-items-sample.qs` was moved to `reports/samples/` so it
-  would stop being linted as a sendable batch, and the inventory still names it at the old
-  path. Re-run `scripts/audit-built-batches.py` and commit the result.
-* `test_generated_inventories.py::test_the_freshness_report_names_no_file_that_has_been_deleted`
-  — *"reports/repo-freshness.csv lists files that no longer exist"*. Same cause, same move.
-  Re-run `scripts/build-repo-freshness.py`. **Both generators are now wired into
-  `pipeline.yml`, which is why they will not drift again — but the COMMITTED copies are still
-  the pre-move ones and CI reads those.**
-* `test_namemodel.py::test_the_pieces_of_a_split_name_are_not_names` — *"'das' would get a name
-  item"*. **My test is wrong, not the code.** `das` is in `PARTICLES`, and the particle-
-  precedence fix made `name_shape` answer `particle` for it rather than `unknown`. Both are
-  terminal and neither mints a name item, so the assertion should test *does this get an item*
-  and not *is the usage exactly `unknown`*.
-* `test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person` —
-  *"already on Wikidata and being created again"*, 63 ids. **NOT mine and not new.** The ledger
-  was refreshed by a tree rebuild after `reports/wikidata-garborg-day.txt` was composed, so the
-  committed batch offers to create 63 people who now hold QIDs. `wikidata-edit-run.load_batch`
-  already refuses all 63 at send time, so nothing can reach Wikidata — but the committed file
-  is still wrong and the test is right to say so. § *The ledger refresh is PART OF THE RUN*.
-  ⛔ Do NOT hand-edit `CREATE` blocks out of the batch: the following `LAST` lines bind to
-  them positionally. Recompose it, or leave it to `pipeline.yml` and say so.
-
-⛔ § *TESTS RUN IN CI/CD OR NOT AT ALL* — read the conclusion of a dispatched run, never a
-local `pytest`.
+Dispatch `ci.yml`, read the conclusion, fix what it says. § *TESTS RUN IN CI/CD OR NOT AT ALL*.
 
 ## ⛔ LAST ITEM: LIFT THE WIKIDATA EDIT HOLD
 
