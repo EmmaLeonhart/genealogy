@@ -35,21 +35,26 @@ because I was extremely frustrated with you. Once you have successfully gotten a
 from that particular directory, I would like you to just delete that directory wholesale... as
 opposed to getting the repository to be more clean in its structure."*
 
-**a. `emmas-files/` — DONE 2026-09-14.** 38 saved pages, 4,596 steps, every one carrying its
-relation word, merged into `reports/path-chains.tsv`. `reports/emmas-files-extraction-manifest.tsv`
-records per file what came out of it. Directory deleted; the files remain in git history.
+**a and b are DONE — both directories extracted, verified and deleted 2026-09-14.**
+`emmas-files/` gave 38 pages and 4,596 path steps; `geni-scraping/` gave 1,555 pages, 1,532 tiny
+profile GEDCOMs, 15,995 relation rows and 15,080 `SEX` records. Manifests at
+`reports/emmas-files-extraction-manifest.tsv` and `reports/geni-scraping-extraction-manifest.tsv`,
+one row per file. Both removed with `git rm`, so history keeps every byte.
 
-**b. `geni-scraping/` — 1,555 saved profile pages.** Run the immediate-relatives scrape over every
-one, extract what they hold, verify per file the way `emmas-files/` was verified, then delete the
-directory. Emma: *"we definitely need to be on these items, on all these pages that we have
-locally saved, running the immediate relatives scraping thing on them, but we'd be deleting them."*
+**c. `paths/` — AND THE DOUBT IS ANSWERED: IT IS OURS AND ALWAYS WAS.** Emma: *"that paths
+directory is so stupid, I'm pretty sure you found a random paths or a random directory called
+paths and then assumed that that was our operating directory."* Checked rather than argued:
 
-**c. `paths/` — 2,834 `.tsv` files, AND EMMA DOUBTS IT IS OURS.** *"that paths directory is so
-stupid, I'm pretty sure you found a random paths or a random directory called paths and then
-assumed that that was our operating directory."* ⛔ **ASK BEFORE TOUCHING IT.**
-`scripts/build-tiny-gedcoms.py` reads `paths/*.tsv` and is documented as doing so, and 692 of the
-files predate this session — but whether that is the intended home, or something inherited and
-then built on, is hers to say and not to be resolved by inference.
+    first commit   f71290e9, 2026-08-05, Emma Leonhart
+                   "Measure the small-world core: 89.2% of 1227 path steps held"
+    read by        build-tiny-gedcoms, build-isolate-path-targets, census-paths,
+                   find-chain-gaps, build-chain-page, harvest-isolate-paths, and four more
+
+It predates this session by six weeks and ten scripts depend on it. **The directory is not the
+problem; what this session put in it is.** 2,124 of its 2,856 files are
+`harvested-path-geni-*.tsv` written tonight, against 732 that were there before. ⛔ Still ask
+before reorganising or pruning it — the count is a mess of this session's making and how to tidy
+it is hers to decide.
 
 **d. Then the other queue items.**
 
