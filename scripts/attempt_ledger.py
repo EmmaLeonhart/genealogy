@@ -72,7 +72,7 @@ def fields(line):
     return line.rstrip(NL).rstrip(CR).split(TAB)
 
 
-def stamp(geni_ids, today=None, path=WORKLIST):
+def stamp(geni_ids, today=None, path=WORKLIST, allow_park=False):
     """Write `today` into `last_attempted` for every row naming one of `geni_ids`.
 
     Returns `{"present": bool, "stamped": n, "unmatched": [geni id], "rows": total}`.
@@ -100,7 +100,13 @@ def stamp(geni_ids, today=None, path=WORKLIST):
     # but cleaning up afterwards means a rebuild has to happen before anybody is eligible again.
     stamp_day = today or datetime.date.today()
     if stamp_day > datetime.date.today():
-        raise ValueError(f"refusing to stamp last_attempted in the future: {stamp_day}")
+        # ⛔ **A FUTURE DATE IS A PARK AND IT IS ALLOWED WHEN IT IS ASKED FOR.** Ruled
+        # 2026-09-15. `scripts/park-cbdb-attempts.py` holds the CBDB population out of the
+        # collector's reach until a date, and refusing the write here broke that. The guard
+        # stays for the ACCIDENTAL case -- a caller stamping "now" off a wrong clock -- which is
+        # what `allow_park=False` means.
+        if not allow_park:
+            raise ValueError(f"refusing to stamp last_attempted in the future: {stamp_day}")
     day = stamp_day.isoformat()
 
     # ⛔ THE HEADER IS CHECKED BEFORE THE TEMPORARY FILE IS OPENED, and the order matters on

@@ -80,6 +80,21 @@ ROOT = Path(__file__).resolve().parent.parent
 SIBLING_CAP = 60
 _siblings_emitted = []
 
+#: ⛔ **`P3448` STEPPARENT, ruled 2026-09-15:** *"our general relationship emitter stuff should be
+#: emitting distinguishing step parents on Wikidata, too."*
+#:
+#: **The relation is DERIVED from the family objects, never from a tag**, which is how GEDCOM
+#: models it and how Geni exports it: a step-parent is the other spouse of one of my parents, who
+#: is not my parent. Read off `exports/isolate-exports/export-Forest-6000000227738818838.ged` —
+#: Bach's child by his first marriage is `CHIL` of the first `FAM`, Anna Magdalena is `WIFE` of
+#: the second, both share the same `HUSB`, and no tag anywhere says *step*.
+#:
+#: **2,032 pairs derivable across the ledger, 291 with a QID on both ends.** Capped like the
+#: siblings, for the same reason: a new property appearing on hundreds of items in one day from
+#: an account that emitted none yesterday is the shape that draws attention.
+STEP_CAP = 40
+_steps_emitted = []
+
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 
 #: **The only two people whose CJK labels were not written by us.** Ruled 2026-08-30: Arne
@@ -186,6 +201,11 @@ RELEASED_FROM_DUPLICATE_GUARD = {
 
 def sibling_budget_left():
     return SIBLING_CAP - len(_siblings_emitted)
+
+
+def step_budget_left():
+    """How many `P3448` lines are left today."""
+    return STEP_CAP - len(_steps_emitted)
 HUMAN = "Q5"
 
 
@@ -6893,6 +6913,25 @@ def main():
         for sp in sorted(spouses.get(g, ())):
             if sp in our_items:
                 add(q, "P26", our_items[sp], g)
+        # ⛔ **`P3448` stepparent — derived from the family objects.** See `STEP_CAP`. A
+        # step-parent is the other spouse of one of my parents who is not my parent; there is no
+        # tag for it in GEDCOM and none is looked for.
+        _parents = [p for p in (father.get(g), mother.get(g)) if p]
+        _steps = set()
+        for _p in _parents:
+            for _s in spouses.get(_p, ()):
+                if _s not in _parents and _s != g:
+                    _steps.add(_s)
+        for _s in sorted(_steps):
+            if _s not in our_items:
+                continue
+            if step_budget_left() <= 0:
+                carried.append((g, labels.get(g, ""),
+                                f"P3448 stepparent {our_items[_s]} held: over the "
+                                f"{STEP_CAP}-a-day cap"))
+                continue
+            _steps_emitted.append((q, our_items[_s]))
+            add(q, "P3448", our_items[_s], g)
 
         # **If we linked this person to anybody, write their Geni id too.**
         #

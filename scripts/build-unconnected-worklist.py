@@ -209,25 +209,28 @@ def sort_key(row, today):
 def load_previous(path, today=None):
     """`geni_id -> last_attempted` from the previous committed version of THIS file.
 
-    ⛔ **A DATE IN THE FUTURE IS NOT AN ATTEMPT, AND 41,212 ROWS CARRIED ONE.** Found
-    2026-09-15: the file held `2026-10-31` on 41,212 people — a date this script never writes,
-    six weeks ahead of the day it was found. `eligible_on` adds the 30-day cooldown to it, so
-    every one of them was ineligible until **2026-11-30**: 15.7% of the roster quietly
-    unreachable for two and a half months, and nothing said so.
+⛔ **A DATE IN THE FUTURE IS A DELIBERATE PARK, NOT CORRUPTION.** Ruled 2026-09-15:
+    *"the future dates were supposed to make it so that they don't get edited until two months
+    from now. That was the actual intention ... If it's a stable two months into the future, for
+    some reason, just keep it."*
 
-    It is worse than a lockout. The gate between the queue and Wikidata is *every isolate
-    ATTEMPTED*, and `last_attempted` being non-empty is how that reads — so the roster reported
-    **262,908 of 262,908 attempted** while the genuine attempts, the ones carrying a real date,
-    numbered **248**. A sentinel and a stamp were indistinguishable.
+    `scripts/park-cbdb-attempts.py` writes `2026-10-31` on every CBDB person on purpose, because
+    those profiles are managed by CBDB, carry no `Add Family` link and cannot be edited. A future
+    `last_attempted` is how a person is held out of the collector's reach until a date.
 
-    `SEED_NEVER` is the honest value for these and it is what they get back, so the next rebuild
-    frees them. The stamp itself is guarded in `attempt_ledger.stamp`, which is where the bad
-    value could only have come from.
+    **A previous version of this function reset every future date to `SEED_NEVER`** and wiped all
+    41,212 of them, which made the whole parked population eligible again — the exact opposite of
+    what the parking is for. Future dates are now carried through untouched.
+
+    **The other half of that finding stands.** `SEED_NEVER` is `2026-01-01`, it MEANS never
+    attempted, and it fills the column — so a non-empty `last_attempted` never meant what it
+    looked like, and the roster's claim of 262,908 attempted against a real 248 was the bug worth
+    having.
     """
     if not path.exists():
         return {}
     today = today or datetime.date.today()
-    out, future = {}, 0
+    out, parked = {}, 0
     with path.open(encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh, delimiter=TAB):
             g = (row.get("geni_id") or "").strip()
@@ -241,9 +244,9 @@ def load_previous(path, today=None):
             except ValueError:
                 d = SEED_NEVER
             out[g] = d
-    if future:
-        print(f"   {future:,} rows carried a last_attempted in the FUTURE; reset to "
-              f"{SEED_NEVER} so they are eligible again")
+    if parked:
+        print(f"   {parked:,} rows are PARKED at a future date and are carried through "
+              f"untouched")
     return out
 
 

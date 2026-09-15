@@ -113,6 +113,7 @@ PATRONYMIC = re.compile(
     r"d[oó]ttir|"                              # Icelandic
     r"s(?:dtr|d|dr|dt|dtt|dttr)|"              # the abbreviations, genitive kept
     r"npoika|ntyt[äa]r|"                      # Finnish, genitive n -- see FINNISH_PATRONYMIC
+    r"s?zoon|s?[dt]ochter|"                    # Dutch/German -- see DUTCH_PATRONYMIC
     r"[oe]vich|[oe]vna|[oe]vi[cć]|wicz"        # Slavic -- see the note on -ević below
     r")\.?$", re.I)
 
@@ -158,7 +159,7 @@ PATRONYMIC = re.compile(
 #: name. `-poika` is deliberately absent, exactly as `-son` is -- a Finnish woman marrying a man
 #: called `Juhonpoika` does take it.
 DAUGHTER_PATRONYMIC = re.compile(
-    r".+?(?:s(?:datter|dotter|d[oó]ttir|dtr|dt|dtt|dttr|dr|d)|ntyt[äa]r)\.?$", re.I)
+    r".+?(?:s(?:datter|dotter|d[oó]ttir|dtr|dt|dtt|dttr|dr|d)|ntyt[äa]r|s?[dt]ochter)\.?$", re.I)
 
 
 #: ⛔ **AN ABBREVIATED PATRONYMIC IS NEVER A NAME OBJECT AND NEVER A LABEL.** Ruled 2026-09-15:
@@ -261,6 +262,32 @@ def patronymic_by_father(token: str, father_given: str) -> str:
         if len(g) > 1 and g[-1] in _SLAVIC_FINAL_VOWEL and g[:-1] == stem:
             return given
     return ""
+
+
+#: **DUTCH, ruled 2026-09-15.** *"if there's only 13 and 77 of them, it's like there's under 100
+#: total, do it."* — reversing an earlier decision to leave them out as too small, which is the
+#: conservative-by-default habit that ruling is against.
+#:
+#: **90 occurrences: `-szoon`/`-zoon` 13 and `-sdochter`/`-dochter` 77** — `Janszoon`,
+#: `Corneliszoon`, `Henrikzoon`, `Laureijszoon`; `Jansdochter`, `Simonstochter`, `Andreastochter`,
+#: `Peterstochter`. The genitive `s` behaves as in Scandinavian (`Jan` + `s` + `zoon`), so both
+#: the bare and the genitive form are accepted.
+#:
+#: **Both spellings, `-dochter` and `-tochter`.** The corpus carries the Dutch `d` and the German
+#: `t` side by side — `Jansdochter` beside `Simonstochter`, `Andreastochter`, `Peterstochter` —
+#: and refusing one would drop half of them. The bare word `Tochter` (31 occurrences) cannot
+#: match: the stem before the suffix must be at least one character.
+#:
+#: **`dochter` is why the `dr` abbreviations must not default to `-datter`.** The abbreviation
+#: census already refuses that: the `dr` family is largely Dutch (`Willemsdr`, `Cornelisdr`,
+#: `Jansdr`), where the full form is *dochter*, and defaulting them to `datter` would turn a Dutch
+#: woman into a Norwegian one. This is the other end of that rule.
+DUTCH_PATRONYMIC = re.compile(r".+?s?(zoon|[dt]ochter)$", re.I)
+
+
+def is_dutch_patronymic(token: str) -> bool:
+    """True for `Janszoon`, `Jansdochter`, `Simonstochter`."""
+    return bool(DUTCH_PATRONYMIC.match(token or ""))
 
 
 def is_daughter_patronymic(token: str) -> bool:
@@ -1805,6 +1832,10 @@ PATRONYMIC_PAIR = {
     "sdatter": "sen", "sdotter": "sson", "sdóttir": "sson",
     # Finnish, genitive `n` shared the way the Scandinavian genitive `s` is.
     "npoika": "ntytär", "ntytär": "npoika", "ntytar": "npoika",
+    # Dutch, genitive `s` shared exactly as the Scandinavian one is.
+    "szoon": "sdochter", "sdochter": "szoon",
+    "zoon": "dochter", "dochter": "zoon",
+    "stochter": "szoon", "tochter": "zoon",
 }
 
 

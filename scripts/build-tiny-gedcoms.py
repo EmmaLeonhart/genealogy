@@ -87,6 +87,7 @@ SEX_OF_PHRASE = {
 #: thing the whole item forbids. Queued as an export rather than guessed.
 PARENTS = {"parent"}
 ADOPTIVE_PARENTS = {"adoptive-parent"}
+STEP_PARENTS = {"step-parent"}
 CHILDREN = {"child"}
 ADOPTED_CHILDREN = {"adopted-child"}
 SPOUSES = {"spouse", "partner", "ex-spouse"}
@@ -97,6 +98,7 @@ SIBLINGS = {"sibling", "half-sibling"}
 #: which is what made the parent slots positional. Same table, one more caller.
 PHRASE_SEX = {
     "father": "M", "mother": "F", "adoptive father": "M", "adoptive mother": "F",
+    "stepfather": "M", "stepmother": "F", "stepson": "M", "stepdaughter": "F",
     "son": "M", "daughter": "F", "brother": "M", "sister": "F",
     "husband": "M", "wife": "F", "ex-husband": "M", "ex-wife": "F",
     "half brother": "M", "half sister": "F",
@@ -231,6 +233,7 @@ def profile_gedcom(subject, name, rels):
 
     parents = [r for r in rels if r["relation"] in PARENTS]
     adoptive = [r for r in rels if r["relation"] in ADOPTIVE_PARENTS]
+    step_parents = [r for r in rels if r["relation"] in STEP_PARENTS]
     children = [r["geni_id"] for r in rels if r["relation"] in CHILDREN]
     adopted_children = [r["geni_id"] for r in rels if r["relation"] in ADOPTED_CHILDREN]
     spouses = [r["geni_id"] for r in rels if r["relation"] in SPOUSES]
@@ -272,6 +275,44 @@ def profile_gedcom(subject, name, rels):
         # nothing claimed about who the parents were. The ruling: absent slot, no person.
         husb, wife = split_parents(parents)
         fams.append({"husb": husb, "wife": wife, "chil": [subject] + siblings})
+    # ⛔ **A STEP-PARENT IS STRUCTURAL. THE FAMILY OBJECTS SAY IT AND NO TAG DOES.** Ruled
+    # 2026-09-15: *"step parents are in the family object as the family object says that they
+    # are that"* — after an earlier pass searched for a `PEDI step` value, found none, and
+    # concluded the corpus attests no way to write one. That was looking for an invented tag and
+    # calling its absence evidence, which is the opposite of the instruction for paths: find the
+    # same pair in the real corpus and read the structure Geni used.
+    #
+    # **Read off the corpus, `exports/isolate-exports/export-Forest-6000000227738818838.ged`.**
+    # J.S. Bach's child by his first marriage is `CHIL` in `F6000000008174318773`
+    # (Bach + Maria Barbara); his second wife Anna Magdalena is `WIFE` in
+    # `F6000000004051080239` (Bach + Anna Magdalena). **Same `HUSB` in both, and the child is
+    # not `CHIL` of the second.** That is the whole representation: the step-parent is the other
+    # spouse in a different family that shares a parent with the child's own.
+    #
+    # So a step-parent edge is emitted as the MARRIAGE that makes them one — the subject's own
+    # parent married to the step-parent — and the subject is deliberately NOT a `CHIL` of it.
+    # Nothing false is asserted and nothing is invented.
+    if step_parents:
+        for r in step_parents:
+            s = phrase_sex(r)
+            # pair the step-parent with the subject's parent of the OTHER sex, which is the
+            # one they can have married.
+            if not s:
+                # Without the step-parent's sex there is no way to know which parent they
+                # married, and picking the first is a guess. Dropped instead.
+                continue
+            mate = None
+            for pr in parents:
+                if phrase_sex(pr) and phrase_sex(pr) != s:
+                    mate = pr["geni_id"]
+                    break
+            if not mate:
+                continue
+            if s == "F":
+                fams.append({"husb": mate, "wife": r["geni_id"], "chil": []})
+            else:
+                fams.append({"husb": r["geni_id"], "wife": mate, "chil": []})
+
     if adoptive:
         # The adoptive family is its OWN family, never merged with the birth one: the child is
         # `CHIL` of both, and the `PEDI adopted` / `ADOP BOTH` block on the child's `INDI` is what
