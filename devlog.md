@@ -44432,3 +44432,48 @@ anything. Each of those edits puts the item in the account's contributions, whic
 The second half of the ruling, *"we add geni as a source to existing relationships"*, is
 `build-relationship-sources-backfill.py`, built and wired earlier today; this item is what made it
 reach anyone new.
+
+## 2026-09-15 — CJK from name parts: the plan is early, and the source it names cannot be trusted whole
+
+`## Generate CJK names from the CJK labels on PARTS of the `mul` label` closed. The item asks to
+**investigate and propose an implementation**, and the write-up is `docs/cjk-from-name-parts.md`.
+
+It is the second half of a ruling whose first half is built: *"Given names and surnames should
+have our standardized cjk-izations attached to them. **imo they should even be the source of it in
+the logic.**"* Name items get readings today; making them the SOURCE a person's label is composed
+from is what was missing.
+
+**Coverage says the plan is EARLY, not blocked.** Over the 3,526 ledger people with a `mul` label,
+by token occurrence: **8%** have a name item carrying all three readings, **55%** have an item
+whose readings are missing, **32%** have no item at all, **4%** are particles. Only 9 of 3,526
+people could be composed today — but the 55% is exactly what `build-name-item-cjk.py` already
+exists to fill, so coverage rises on a pipeline that is already wired.
+
+**The cost of a missing name object is now measured rather than felt**, which is what `queue.md`
+asked for: it is the **32%**, and it costs the WHOLE label rather than a third of one, because
+`label_in` returns nothing if any token is unknown — partial is worse than absent. The junk in
+that 32% (`baroness`, `(Rollo),`, `of`) still costs nothing; the real names among them do.
+
+**⛔ And the investigation found a blocker that is not coverage: a name item's reading is not
+necessarily ours.** Over the 889 token occurrences that already have a full name-item reading,
+**684 agree with our transliterator and 200 disagree — and on the disagreements ours is usually
+the better one.**
+
+* `Q317315` has `mul` and `en` = `Øystein`, correct `zh` 奥伊斯坦 and `ko` 외위스테인, and a `ja`
+  of **パスクアーレ — the Italian name *Pasquale***.
+* `Q903741` `Ingrid` reads インフリット in `ja` and the truncated 잉리 in `ko`.
+* **`Fredrik` has two items**, `Q4926491` フリエドリック and `Q83349948` フレドリック, so which
+  reading you get depends on which one the join lands on.
+
+Composing from shared parts propagates a correction to everyone bearing the name — and it
+propagates an error exactly as widely. So the proposal trusts a name item's reading **only where
+we emitted it**, which is not a new rule: it is what `cjk_slots_we_have_emitted()` already does
+for a person's own label, applied one level down. Particle, then transliterator, as the fallbacks;
+no CJK label at all if any part yields nothing.
+
+**It can be wired before it is useful and that is the right order** — with an empty "ours" set it
+falls through to today's behaviour and changes no label, so the composition path can land inert
+and fill up as `build-name-item-cjk.py` runs.
+
+Not proposed, and recorded as refused: backfilling readings onto the 699,287 name items we did not
+make, and correcting `Q317315`. Both are outside the universe.
