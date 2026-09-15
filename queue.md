@@ -970,11 +970,6 @@ Q828346	P734	LAST	S2600	"6000000082813823834"
 #   Q110410743 Nicolaus* Andreas Graf von Maltzahn, Freiherr zu Wartenberg und Penzlin: P734 family name = the item just created
 Q110410743	P734	LAST	S2600	"6000000105706792946"
 
-## Usual forrname
-
-Please stop adding this to the first name in the given names. I do not think it is actually accurate most of the time. Leave it lying around do not try to fix it do not assess anything related to the population affected just drop this item of the pipeline
-
-
 ## `emmas-files/` — HERS, AND NOT TO BE TOUCHED
 
 She saves interesting paths by hand into `emmas-files/` and changes the anchor as she goes.
@@ -1155,10 +1150,6 @@ They have been in here way too long. Feminine patronymic abbreviations like "Ols
 Here is my proposed algorithm for resolving "Olsdtr" to "Olsdatter" or "Olsdotter": check the mother's patronymic. If the mother has one then great, if not then check paternal grandmother, if she does not have one then default to "-datter". 
 
 These are actively destructive since a lot of the time our deleted or redirected names end up getting recreated due to the statelessness of the algorithm. This is a strength of the algorithm overall but the tendency to do unintentional edit wars is not good. End queue item will discuss this more
-
-## subject named as in the geni id
-
-In our adding of geni ids we are not even doing the "subject named as" thing which really sucks. This is self-healing right? Like we do apply the geni ids after right?
 
 ## Unintentional edit wars
 

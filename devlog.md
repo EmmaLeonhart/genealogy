@@ -16,6 +16,38 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — usual forename dropped from the pipeline; "subject named as" was already done
+
+**Usual forename.** *"Please stop adding this to the first name in the given names. I do not
+think it is actually accurate most of the time. Leave it lying around do not try to fix it do not
+assess anything related to the population affected just drop this item of the pipeline."*
+
+`P7452` → `Q3409033` is no longer emitted at all, and **nothing already on Wikidata is
+corrected** — the instruction covers all three: stop, leave it, do not measure who is affected.
+
+The assertion in `tests/test_namemodel.py` has now said three different things, which is the
+history worth keeping. It first REQUIRED a lone given name to carry the qualifier, which was the
+generator's bug written down as intent. On 2026-08-24 it narrowed to *only where there is a
+middle name* — right as far as it went, since a lone given name contrasts with nothing. Still
+insufficient: **having two given names does not tell you which one the person went by**, and
+asserting it from position is § *Never parse a name positionally* wearing a qualifier. Now it
+asserts the qualifier is never emitted, middle name or not, while the `P3831` middle-name role
+and the `P1545` ordinal are untouched.
+
+`USUAL_FORENAME` stays defined: `build-regnal-ordinals.py` uses the same pair for a different and
+still-valid purpose.
+
+**"Subject named as" — the worry is out of date.** *"In our adding of geni ids we are not even
+doing the 'subject named as' thing which really sucks. This is self-healing right?"* It is being
+done, on **both** paths — `named_as(g)` is on the `CREATE` line and on the add-to-an-existing-item
+line, so `P1810` goes on at the same moment as `P2600` and there is nothing to heal.
+
+Measured on today's batch: **148 of 152 `P2600` lines carry `P1810`.** The four that do not are
+`NN` people — `named_as` returns nothing for a missing display name, for `<private>`, and for a
+marker-carrying name, which is the 2026-08-30 ruling that neither form of private gets a
+qualifier. Left as it is; widening it to `NN` would be inventing a ruling rather than applying
+one.
+
 ## 2026-09-14 — the Wikidata hold is LIFTED, and the condition that held it is superseded
 
 > *"the condition has changed ... I made the decision that this is going to take a long time, the

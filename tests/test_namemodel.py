@@ -114,15 +114,24 @@ PLAN = {
 }
 
 
-def test_usual_forename_is_emitted_ONLY_where_there_is_a_middle_name():
-    """Ruled 2026-08-24: usual forename applies only where there is a middle name.
+def test_usual_forename_is_never_emitted():
+    """⛔ Ruled 2026-09-14: *"Please stop adding this to the first name in the given names. I
+    do not think it is actually accurate most of the time ... just drop this item of the
+    pipeline."*
 
-    `P7452` → `Q3409033` exists to say which of several given names is the one actually
-    used. On a person with a single given name it distinguishes nothing and asserts a
-    contrast that does not exist.
+    **Dropped entirely, and nothing already on Wikidata is corrected** — the instruction covers
+    all three: stop emitting, leave what is there, and do not measure the population affected.
 
-    **This test previously asserted the opposite** — that a lone given name carries it —
-    which is exactly what the generator was doing when it was corrected.
+    This test has now asserted three different things, which is the history worth keeping. It
+    first required a lone given name to carry `P7452`; that was the generator's bug written
+    down as intent. On 2026-08-24 it was narrowed to *only where there is a middle name*, which
+    was right as far as it went — a lone given name contrasts with nothing. The narrowing was
+    still insufficient: having two given names does not tell you which one the person actually
+    went by either, and asserting it from POSITION is § *Never parse a name positionally*
+    wearing a qualifier.
+
+    `USUAL_FORENAME` stays defined. `build-regnal-ordinals.py` uses the same pair for a
+    different and still-valid purpose.
     """
     # One given name: NO ordinal and no usual-forename qualifier.
     #
@@ -142,10 +151,14 @@ def test_usual_forename_is_emitted_ONLY_where_there_is_a_middle_name():
         "a lone given name is not a *usual* forename — there is nothing to contrast it "
         "with")
 
-    # Two given names: the first genuinely is the usual one.
+    # Two given names: STILL not emitted. This is the assertion that flipped on 2026-09-14.
     lines, _notes = statements_for("Samuel Oline Garborg", PLAN, "1")
     first = [ln for ln in lines if ln[0] == GIVEN_NAME][0]
-    assert ("P7452", USUAL_FORENAME) in first[2]
+    assert ("P7452", USUAL_FORENAME) not in first[2], (
+        "usual forename is dropped from the pipeline, middle name or not")
+    # and the middle-name role is untouched by the drop
+    second = [ln for ln in lines if ln[0] == GIVEN_NAME][1]
+    assert ("P3831", MIDDLE_NAME) in second[2]
 
 
 def test_a_later_given_name_is_marked_a_middle_name():

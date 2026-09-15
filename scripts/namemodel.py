@@ -2380,15 +2380,27 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
             # not exist -- the same objection that already restricts `P7452` *reason for
             # preferred rank* to people who have a middle name.
             quals = [(SERIES_ORDINAL, str(ordinal))] if given_count > 1 else []
-            # **`P7452` -> `Q3409033` *usual forename* only where there IS a middle
-            # name.** Ruled 2026-08-24: usual forename applies only where there is a middle
-            # name. It exists to say which of several given names is the one
-            # actually used, so on a person with a single given name it distinguishes
-            # nothing and asserts a contrast that does not exist.
-            if ordinal == 1:
-                if given_count > 1:
-                    quals.append((PREFERRED_REASON, USUAL_FORENAME))
-            else:
+            # ⛔ **`P7452` -> `Q3409033` *usual forename* IS NO LONGER EMITTED AT ALL.**
+            # Ruled 2026-09-14: *"Please stop adding this to the first name in the given names.
+            # I do not think it is actually accurate most of the time. Leave it lying around do
+            # not try to fix it do not assess anything related to the population affected just
+            # drop this item of the pipeline."*
+            #
+            # So: dropped from the pipeline, and **nothing is corrected**. The instruction is
+            # explicit on all three counts — stop emitting, leave what is already on Wikidata
+            # where it is, and do not measure who is affected. It is not a defect being fixed,
+            # it is a claim we are no longer willing to make: which of several given names a
+            # person actually went by is not something the GEDCOM knows, and asserting it from
+            # position is § *Never parse a name positionally* wearing a qualifier.
+            #
+            # The 2026-08-24 rule it replaces only narrowed it to people with a middle name.
+            # That narrowing was right and still insufficient: having two given names does not
+            # tell you which one was used either.
+            #
+            # `PREFERRED_REASON` and `USUAL_FORENAME` stay defined — `build-regnal-ordinals.py`
+            # uses the same pair for a different and still-valid purpose, marking which regnal
+            # name is preferred.
+            if ordinal > 1:
                 quals.append((HAS_ROLE, MIDDLE_NAME))
             lines.append((GIVEN_NAME, qid, quals))
         elif usage == "patronymic":
