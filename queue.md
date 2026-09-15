@@ -60,6 +60,29 @@ ordering lol"*. Anything typed here by hand outranks anything derived.
 
 please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
 
+**⛔ THE MECHANISM IS BUILT. WHAT REMAINS IS EMMA'S TO LIFT.** Checked 2026-09-14:
+`.github/workflows/wikidata-edits.yml` is scheduled `7 8 * * *`, sends
+`reports/wikidata-garborg-day.txt` at `limit=100`, and goes live from
+`AUTOMATION_START_DATE 2026-09-15`. `pipeline.yml` regenerates the batch daily. The only thing
+stopping it is `EDITS_HELD: "yes"`, and the condition for lifting that is stated in the hold
+item above — the Wikidata people get connected through the path search first — which is a
+campaign at the END of this file, not a date.
+
+**So do not treat the go-live date as the trigger.** 2026-09-15 is when the SCHEDULE is allowed
+to send; the hold is what decides whether it does, and a hold is lifted by a person.
+
+**What was actually wrong, and is now fixed:** the batch as committed would have sent 63
+creations for people already holding QIDs in `reports/garborg-qids.tsv` — the ledger was
+refreshed by a tree rebuild after the batch was composed — plus two name items labelled `(Ulf`
+and `Horsnäs)`. `wikidata-edit-run.load_batch` now refuses both, on every batch format, because
+the runner is the last thing between a file on disk and Wikidata. 216 edits → 151, 75 creations
+→ 10 on the file as it stands.
+
+**The remaining question is the 50%**, which is the only part of this item nobody has settled:
+*"an additional smaller amount of edits (about 50%) every day"*. The workflow sends `limit=100`
+from one file. Fifty per cent OF WHAT is not written down anywhere — of the day's generated
+statements, of the carry-forward, of the caps. ⛔ ASK before implementing a reading of it.
+
 ## Additional item
 
 Given names and surnames should have our standardized cjk-izations attached to them. imo they should even be the source of it in the logic. update the old ones to this form and new ones are always gonna be created in this manner
