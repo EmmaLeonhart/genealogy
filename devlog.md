@@ -16,6 +16,39 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — the subject-named-as backfill runs, and it is the universe-growth pass
+
+*"I'm asking you to add the subject named as to existing P2600 properties within the universe and
+on adjacent items to the universe ... these adjacent individuals get added into the universe
+because of the fact that we just did an edit on it. That's the entire point."*
+
+**The measurement says the vehicle is well chosen.** Of the first 100 universe items checked,
+**90 need the qualifier and 6 already have it.** *"it isn't even that important as a qualifier.
+It's just a thing that none of them have. And so it means we can add it to all of them and it's
+useful."* — borne out.
+
+**Paced, not by the ring.** *"it's not supposed to be by a ring. By a ring is fucking insane ...
+40 people in the quick statements batch and then 20 people in the CICD edits."* The scope is
+4,354 universe items plus 6,601 adjacent, and taking all of them in a day would be thousands of
+annotations from an account that had touched none of them — the shape behind the *edit wars*
+queue item. Universe first, then the adjacent ring, so a short day spends its budget on our own
+items before it claims new ones.
+
+**Why it grows the universe.** `wikidata_subgraph` takes the ledger as the universe, and the
+ledger is filled from the account's contributions. Editing a neighbour puts it in the
+contributions, the ledger, and then the universe; its neighbours become the next ring. The edit
+is what makes the item ours.
+
+⛔ **A twenty-minute query for sixty rows was the first version, and it wrote nothing at all.**
+The Wikidata API answers a 50-id chunk in 5.4s, 220 chunks is ~20 minutes, and the run was killed
+at its timeout mid-query — Python had buffered every print away, so it exited 0 with no output
+and no files, looking exactly like a success. It now stops as soon as the day's 60 are found:
+**quota filled after 100 items, the other 10,855 not queried.**
+
+Appended to both halves after the split, in `pipeline.yml`, so the split's own arithmetic is
+undisturbed and the products stay separable. 82 + 20 = 102 edits in the automatic half, parsed to
+confirm no `LAST` binding was damaged across the join.
+
 ## 2026-09-14 — patronymics in pairs, and the two guards it took to make that safe
 
 *"We really should be always creating patronymics in pairs ... Honestly I am not 100% sure about

@@ -303,6 +303,32 @@ jobs:
           PYTHONPATH: src
         run: python scripts/split-daily-batch.py
 
+
+      # ⛔ THE UNIVERSE-GROWTH PASS, APPENDED TO BOTH HALVES AFTER THE SPLIT. Ruled
+      # 2026-09-14: adding `P1810` to existing `P2600` statements is a true, harmless, missing
+      # statement — and the point is that editing an item makes it OURS, so the universe grows
+      # by a paced number of neighbours a day. 40 into the file a person pastes, 20 into the
+      # run that goes out unattended, which is the pace Emma set: *"40 people in the quick
+      # statements batch and then 20 people in the CICD edits."*
+      #
+      # It runs AFTER the split so the split's own arithmetic is not disturbed, and appends
+      # rather than composing into the batch, so the two products stay separable.
+      - name: Subject-named-as backfill, the universe-growth pass
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+          BOT_CONTACT: emma@topazcomputing.com
+        run: |
+          python scripts/build-subject-named-as-backfill.py
+          if [ -s reports/wikidata-subject-named-as-auto.qs ]; then
+            cat reports/wikidata-subject-named-as-auto.qs >> reports/wikidata-garborg-day-auto.txt
+            echo "appended $(grep -c P1810 reports/wikidata-subject-named-as-auto.qs) to the auto half"
+          fi
+          if [ -s reports/wikidata-subject-named-as.qs ]; then
+            cat reports/wikidata-subject-named-as.qs >> reports/wikidata-garborg-day-manual.txt
+            echo "appended $(grep -c P1810 reports/wikidata-subject-named-as.qs) to the manual half"
+          fi
+
       - name: Refresh the committed site snapshot
         continue-on-error: true
         env:

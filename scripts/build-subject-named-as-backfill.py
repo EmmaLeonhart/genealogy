@@ -171,9 +171,21 @@ def main() -> int:
     print(f"universe: {len(core):,} items; adjacent: {len(near):,}; "
           f"display names: {len(names):,}")
 
+    # ⛔ **STOP AS SOON AS THE DAY'S QUOTA IS FULL.** The scope is 10,955 items and the pace is
+    # 60 a day, so querying everything to then discard 99% of it costs twenty minutes of
+    # Wikidata's time for nothing — measured at 5.4s per 50-id chunk, 220 chunks. The first run
+    # was killed at its timeout mid-query and wrote nothing at all, which is how this was found.
+    #
+    # The universe is queried before the adjacent ring, so a short day still spends its budget
+    # on our own items first.
+    need = MANUAL_CAP + AUTO_CAP
     ids = sorted(core) + sorted(near)
     rows, already, no_name, no_p2600 = [], 0, 0, 0
     for k in range(0, len(ids), 50):
+        if len(rows) >= need:
+            print(f"   quota of {need} filled after {k:,} items; not querying the other "
+                  f"{len(ids) - k:,}")
+            break
         chunk = ids[k:k + 50]
         try:
             data = api_get({"action": "wbgetentities", "format": "json",
