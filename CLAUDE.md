@@ -180,9 +180,20 @@ of a loop, not a sample of anything.
                                    → that is the job. Not the batches, not the labels.
 
     CI/CD, continuously            everything that needs no browser:
-                                   pipeline.yml   rebuild, compose the batch, split it,
-                                                  regenerate the inventories, publish Pages
+                                   tree.yml       rebuild the tree, REFRESH THE P2600
+                                                  POPULATION FROM LIVE WIKIDATA, rebuild the
+                                                  unconnected worklist from it
+                                   pipeline.yml   compose the batch, split it, regenerate the
+                                                  inventories, publish Pages
                                    wikidata-edits.yml  7 8 * * *  SEND the automatic half
+
+**⛔ AND THE LOOP FEEDS ITSELF NOW.** Ruled 2026-09-14: *"I also want the CI/CD to check wikidata
+to see if there's any new IDs that have been added that are also disjoint or disconnected, and
+these will then be added into the queue."* `out/wikidata/p2600-all.tsv` is the master
+QID-to-Geni correspondence that forty scripts read, and **nothing regenerated it** — every
+workflow consumed it, none refreshed it, so a person given a `P2600` yesterday never entered the
+worklist and never appeared anywhere as missing. `tree.yml` now refreshes it before building the
+worklist, so new holders arrive on their own.
 
 **⛔ SO DO NOT DO CI/CD's WORK BY HAND.** Composing a batch, regenerating an inventory or
 rebuilding the site in a session is duplicated effort at best and a merge conflict at worst —

@@ -152,6 +152,36 @@ jobs:
       # `derived-family.csv` — a stand-in for measuring the neighbourhood on the merged tree,
       # which waits on the Wikidata overlay being wired into the merge. The script's own docstring
       # carries that, and the membership and the component size are the same either way.
+      # ⛔ **PULL NEW `P2600` HOLDERS FROM WIKIDATA BEFORE BUILDING THE WORKLIST.** Ruled
+      # 2026-09-14: *"I also want the CI/CD to check wikidata to see if there's any new IDs that
+      # have been added that are also disjoint or disconnected, and these will then be added
+      # into the queue."*
+      #
+      # `out/wikidata/p2600-all.tsv` is the master QID-to-Geni correspondence that forty scripts
+      # read, and **nothing regenerated it.** Workflows consumed it; none refreshed it. So a
+      # person given a `P2600` on Wikidata yesterday never entered the worklist, never got
+      # attempted, and never appeared anywhere as missing.
+      #
+      # The staleness is invisible by design, which is why it lasted — the script's own
+      # docstring: *"A join through a stale copy does not fail; it silently returns fewer rows."*
+      # The first refresh, 2026-08-30, moved `garborg-qids.tsv` from 258 of 849 items resolving
+      # to 849 of 849 while the row count moved only +1,124, so nothing looked wrong at any
+      # point.
+      #
+      # `continue-on-error` for the same reason as the worklist below it: a Wikidata outage must
+      # not abandon a merge that cost twenty minutes. A stale copy is recoverable; the rebuild
+      # is not.
+      - name: Refresh the P2600 population from live Wikidata
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+          BOT_CONTACT: emma@topazcomputing.com
+        run: |
+          before=$(wc -l < out/wikidata/p2600-all.tsv 2>/dev/null || echo 0)
+          python scripts/refresh-p2600-all.py
+          after=$(wc -l < out/wikidata/p2600-all.tsv 2>/dev/null || echo 0)
+          echo "P2600 holders before: $before  after: $after  new: $((after - before))"
+
       - name: The unconnected-P2600 worklist
         continue-on-error: true
         env:
