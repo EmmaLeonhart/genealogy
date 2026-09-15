@@ -268,3 +268,69 @@ def test_every_batch_the_runner_reads_passes_the_clan_gate():
         "the JSON path must be gated"
     )
     assert "drop_clan_labels" in source
+
+
+# --------------------------------------------------------------------------------------
+# **THE SEND-TIME GATES, 2026-09-14.** The runner is the last thing between a file on disk
+# and Wikidata. A batch is read by a scheduled job hours or days after whatever wrote it, so
+# a guard that lives only in the generator does not protect the send.
+# --------------------------------------------------------------------------------------
+
+def _runner():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "wikidata_edit_run", str(REPO / "scripts" / "wikidata-edit-run.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_both_batch_formats_go_through_the_gates():
+    """⛔ The `.qs`/`.txt` branch returned EARLY for a day and skipped every gate.
+
+    That is the whole daily batch: `reports/wikidata-garborg-day.txt` is what the schedule
+    sends and nothing else. The docstring above it claimed *"the single point every batch passes
+    through, `.qs`, `.txt` and `.json` alike"* while the code did not, and it was caught by
+    running the live batch through `load_batch` rather than by reading the docstring.
+    """
+    source = (REPO / "scripts" / "wikidata-edit-run.py").read_text(encoding="utf-8")
+    body = source[source.index("def load_batch"):source.index("def _gate(")]
+    assert body.count("_gate(") == 2, (
+        "both the QuickStatements branch and the JSON branch must call the gates"
+    )
+
+
+def test_a_person_already_in_the_ledger_is_never_created_again():
+    """The one failure that cannot be undone by running it correctly next time.
+
+    Found live: all 63 `P2600` creations in the committed daily batch were already in
+    `reports/garborg-qids.tsv`. Neither file was wrong -- the ledger was refreshed by a tree
+    rebuild after the batch was composed.
+    """
+    run = _runner()
+    dupe = {"kind": "create", "labels": {"en": "Someone"},
+            "claims": [{"property": "P2600",
+                        "value": {"type": "string", "value": "6000000003021796768"}}]}
+    fresh = {"kind": "create", "labels": {"en": "Nobody"},
+             "claims": [{"property": "P2600",
+                         "value": {"type": "string", "value": "1"}}]}
+    kept = run._refuse_duplicate_people([dupe, fresh], REPO / "x.txt")
+    assert dupe not in kept
+    assert fresh in kept
+
+
+def test_a_name_item_whose_label_is_not_a_name_is_never_created():
+    """`namemodel`'s rule, consulted -- not a second copy of it.
+
+    The batch committed on 2026-09-14 had `(Ulf` as its FIRST creation, with
+    `Den "family name"` under it, because it was composed before the punctuation rule existed.
+    A source fix does not reach a file already on disk.
+    """
+    run = _runner()
+    bad = {"kind": "create", "labels": {"mul": "(Ulf"},
+           "claims": [{"property": "P31", "value": {"type": "item", "id": "Q101352"}}]}
+    good = {"kind": "create", "labels": {"mul": "Bure"},
+            "claims": [{"property": "P31", "value": {"type": "item", "id": "Q101352"}}]}
+    kept = run._refuse_unnameable_name_items([bad, good], REPO / "x.txt")
+    assert bad not in kept
+    assert good in kept

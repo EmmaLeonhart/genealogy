@@ -35,6 +35,7 @@ list of ids already applied so a resumed run is not blocked by work that is done
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import os
 import sys
@@ -305,7 +306,12 @@ def load_batch(path: Path) -> list[dict]:
     # knows QS syntax. Everything downstream sees ordinary edit objects, so the
     # `requires` ordering and the dry run work identically either way.
     if path.suffix in (".qs", ".txt"):
-        return qs_v1.edit_objects(qs_v1.parse(path.read_text(encoding="utf-8")))
+        # ⛔ BOTH BRANCHES ARE GATED. This one returned early for a day, which meant the gates
+        # below covered the `.json` batches and not the QuickStatements ones -- and the daily
+        # batch, the only thing the schedule ever sends, is `.txt`. Written while fixing the
+        # third *A GUARD IN ONE EMITTER IS NOT A GUARD* of 2026-09-14 and caught by running the
+        # live batch through it instead of trusting the docstring that said it was covered.
+        return _gate(qs_v1.edit_objects(qs_v1.parse(path.read_text(encoding="utf-8"))), path)
     data = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(data, dict):
         for key in ("edits", "items", "objects"):
@@ -314,10 +320,10 @@ def load_batch(path: Path) -> list[dict]:
                 break
     if not isinstance(data, list):
         raise SystemExit(f"{path}: expected a list of edit objects")
-    return _gate_clan_labels(data, path)
+    return _gate(data, path)
 
 
-def _gate_clan_labels(edits, path):
+def _gate(edits, path):
     """⛔ The 2026-10-01 clan-label block, applied to EVERY batch this runner reads.
 
     **It was implemented once and routed around once.** `build-garborg-day.py` has suppressed
@@ -334,6 +340,96 @@ def _gate_clan_labels(edits, path):
     if dropped:
         _allowed, why = wikidata_lockout.clan_labels_allowed()
         print(f"{path.name}: {len(dropped)} clan-seat labels withheld - {why}")
+    kept = _refuse_duplicate_people(kept, path)
+    kept = _refuse_unnameable_name_items(kept, path)
+    return kept
+
+
+#: The ledger of people who already have a Wikidata item.
+LEDGER = REPO / "reports" / "garborg-qids.tsv"
+
+
+def _geni_ids_claimed(edit) -> set:
+    """Every `P2600` Geni profile id this edit asserts."""
+    out = set()
+    for claim in edit.get("claims") or ():
+        if claim.get("property") != "P2600":
+            continue
+        value = claim.get("value")
+        raw = value.get("value") if isinstance(value, dict) else value
+        if isinstance(raw, str) and raw.isdigit():
+            out.add(raw)
+    return out
+
+
+def _refuse_duplicate_people(edits, path):
+    """⛔ **NEVER CREATE A PERSON WHO ALREADY HAS AN ITEM.** The one failure that cannot be
+    undone by running it correctly next time.
+
+    `tests/test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person`
+    went red on 2026-09-14 with **all 63 of the batch's `P2600` creations already in
+    `reports/garborg-qids.tsv`**. Nothing was wrong with either file: the ledger was refreshed
+    by a tree rebuild AFTER the batch was composed, so the batch is creating people it did not
+    know existed when it was written. `CLAUDE.md` § *The ledger refresh is PART OF THE RUN*
+    describes the intended coupling; this is what it looks like when the two come apart.
+
+    The composer can be fixed and the batch recomposed, and both should happen. This is here
+    anyway because **the runner is the last thing between a stale file and Wikidata**, and a
+    guard that lives only in the generator is the failure this repo has hit three times in one
+    day. A batch is read from disk by a scheduled job; whatever wrote it is long gone.
+    """
+    if not LEDGER.exists():
+        return edits
+    with LEDGER.open(encoding="utf-8", newline="") as fh:
+        have = {row["geni_id"] for row in csv.DictReader(fh, delimiter="	")
+                if row.get("geni_id")}
+    kept, refused = [], []
+    for e in edits:
+        if e.get("kind") == "create" and (_geni_ids_claimed(e) & have):
+            refused.append(e)
+        else:
+            kept.append(e)
+    if refused:
+        ids = sorted(next(iter(_geni_ids_claimed(e))) for e in refused)
+        print(f"{path.name}: {len(refused)} creations REFUSED - already on Wikidata "
+              f"per {LEDGER.name}: {', '.join(ids[:5])}"
+              + (" ..." if len(ids) > 5 else ""))
+    return kept
+
+
+def _refuse_unnameable_name_items(edits, path):
+    """⛔ **A NAME ITEM WHOSE LABEL IS NOT A NAME DOES NOT GET CREATED.**
+
+    `namemodel` gained the punctuation rule on 2026-09-14 and it works at the source. It does
+    not reach a batch that was composed before it: the daily file committed at that moment had
+    `(Ulf` as its FIRST creation, with `Den "family name"` under it, ready to send.
+
+    So the same test runs here, on the label of anything being created as a name item. It is
+    `namemodel`'s own function, not a copy -- § *A GUARD IN ONE EMITTER IS NOT A GUARD* means
+    one rule consulted from both places, never two implementations of it.
+    """
+    try:
+        import namemodel
+    except Exception:                                # namemodel is optional to this script
+        return edits
+    name_item = {"Q101352", "Q202444", "Q110874", "Q12308941", "Q11879590", "Q4116295"}
+    kept, refused = [], []
+    for e in edits:
+        label = ((e.get("labels") or {}).get("mul")
+                 or (e.get("labels") or {}).get("en") or "")
+        is_name_item = any(
+            c.get("property") == "P31"
+            and isinstance(c.get("value"), dict)
+            and c["value"].get("id") in name_item
+            for c in (e.get("claims") or ()))
+        if e.get("kind") == "create" and is_name_item and label                 and namemodel.not_a_name(label):
+            refused.append(label)
+        else:
+            kept.append(e)
+    if refused:
+        print(f"{path.name}: {len(refused)} name items REFUSED - the label is not a name: "
+              + ", ".join(repr(x) for x in refused[:5])
+              + (" ..." if len(refused) > 5 else ""))
     return kept
 
 
