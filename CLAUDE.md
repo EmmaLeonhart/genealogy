@@ -187,6 +187,13 @@ re-derived from Geni's own `pathSearcher`. Emma: *"Wait what the fuck the runner
 anywhere?"* **Anything driving the browser for hours belongs in `scripts/`, committed, before it
 is run.**
 
+**⛔ A DRAINED BATCH IS THE SAME AS A DEAD RUNNER, AND IT LOOKS LIKE SUCCESS.** The batch is
+inlined into the injection, so it is finite — `window.__pathrun.running` goes `false` and
+`finished` gets a timestamp, which reads like a job well done while nothing is being requested.
+It lapsed twice on 2026-09-14, once for an hour and once for fifteen minutes, both times
+noticed by Emma rather than by me: *"hold the fuck on, have you been requesting paths or not"*.
+**Top it up on every work-loop tick** — `scripts/build-pathrun-batch.py --skip <done so far>`.
+
 **202 Accepted is the success status** on the search endpoints, not 200.
 
 ## ⛔ The hard ones
