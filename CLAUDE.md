@@ -162,6 +162,33 @@ is not the rule: a fixed target answers "have we done enough arithmetic", and th
 is whether new exports are still returning new people. One 5,000-person ball is the first round
 of a loop, not a sample of anything.
 
+## ⛔ THE PATH CAMPAIGN RUNS IN EVERY SESSION, NO MATTER WHAT
+
+**Ruled 2026-09-14:** *"the path exporting campaign thing is always gonna run no matter what
+during sessions."* It is not optional, not a background nicety, and not something to be
+restarted only when somebody notices. **Start it at the top of every session and confirm it is
+alive before doing anything else with Chrome.**
+
+    scripts/pathrun.js               the requester -- derive the template, then run
+    scripts/build-pathrun-batch.py   the id list, minus everyone already harvested
+    window.__pathrun                 {running, i, ok, fail} in the geni.com tab
+
+**⛔ IT DIES SILENTLY AND NOTHING TELLS YOU.** It does not crash — it stops existing, because it
+lives in a page. On 2026-09-14 the tab was lost at 20:33 while Geni exports were being driven in
+neighbouring tabs, and the outage went unnoticed for an hour until Emma said *"I see no
+requested relationships in the past 30 min"*. The only external evidence is that
+`path-chains-NNN.tsv` stops appearing in Downloads. **Check the FILE timestamps, not the
+object** — the same rule as § *Read a sweep's results off the FILE a drain wrote*.
+
+**⛔ AND IT WAS SAVED NOWHERE, WHICH IS WHY THESE TWO FILES EXIST.** The runner and its target
+list were ad-hoc JavaScript in a tab. ~8,000 requests of infrastructure with no copy in the
+repo, the extension, or anywhere else; when the tab went, it was unrecoverable and had to be
+re-derived from Geni's own `pathSearcher`. Emma: *"Wait what the fuck the runner was not saved
+anywhere?"* **Anything driving the browser for hours belongs in `scripts/`, committed, before it
+is run.**
+
+**202 Accepted is the success status** on the search endpoints, not 200.
+
 ## ⛔ The hard ones
 
 - **PUSH TO `main`. Always, without asking.** Standing grant. Open the PR, merge it, trigger the

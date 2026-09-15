@@ -1779,17 +1779,14 @@ gates — run `wikidata-edit-run.py` against it and read the refusal counts.
 ## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
 
 Ruled 2026-09-14: *"have the very last queue item be one that would be to restart the path
-collection in the event that the path collection ended up stopping."*
+collection in the event that the path collection ended up stopping."* And the standing rule is
+now in `CLAUDE.md` § *THE PATH CAMPAIGN RUNS IN EVERY SESSION, NO MATTER WHAT*.
 
-**This is the only queue item about the path collection.** Everything else about it is a
-background assumption, per the top of this file.
-
-    check   window.__pathrun.running and window.__chains.running in the geni.com tab
-    if the tab was lost, re-establish both from the scratchpad chunk files:
-      scratchpad/path-chunks/chunk-NNNN.txt   the requester's 2,000-id target lists
-      scratchpad/perma2/perma-NNNN.txt        the fetcher's permalink lists
-    the runner resumes from a chunk, so nothing already requested is requested again
+    check    ls -lt ~/Downloads/path-chains-*.tsv  -- a gap means it is dead
+             window.__pathrun in the geni.com tab: {running, i, ok, fail}
+    restart  open an UNCONNECTED profile, paste the DERIVE block of scripts/pathrun.js,
+             then the RUN block with ids from scripts/build-pathrun-batch.py
+    stop     window.__pathrun.stop()
 
 **Its stopping is not an emergency and not a reason to work on it.** Restart it, go back to the
 first item.
-
