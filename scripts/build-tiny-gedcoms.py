@@ -119,13 +119,18 @@ PATH_REL = {
     # Geni renders the sexless forms too. They carry no sex, so they make the edge and assert
     # nothing about which slot the person belongs in.
     "parent": ("parent", None), "child": ("child", None),
+    # `spouse` asserts a marriage and NOT a sex, which is why it needs its own row rather than
+    # folding into `husband`/`wife`. Dropped entirely until 2026-09-15: `spouse` was in the
+    # profile-scrape's SPOUSES set but never in this table, so `his spouse` 7 and `her ex-spouse`
+    # 5 fell through `kind is None` and made no edge at all.
+    "spouse": ("spouse", None),
 }
 
 #: The possessive opens the row and states the sex of the PREVIOUS person -- *his mother* means
 #: the previous person is male. That is the only place a child-edge learns which parent slot to
 #: use, and it was being dropped with the rest.
 POSSESSIVE = {"his": "M", "her": "F"}
-FORMER = re.compile(r"^ex-(husband|wife|partner)$", re.I)
+FORMER = re.compile(r"^ex-(husband|wife|partner|spouse)$", re.I)
 # The accented spellings are what Geni actually renders; the ASCII pair alone missed 7 rows.
 ENGAGED = {"fiancee", "fiance", "fiancée", "fiancé"}
 
@@ -151,14 +156,26 @@ def render(subject_note, people, sex, fams, source):
     #:     1 MARR 514,155   1 DIV 10,071   2 PEDI 2,966   1 ADOP 2,185
     #:     2 PEDI adopted 2,185 / foster 781      3 ADOP BOTH 2,185 -- the only ADOP value
     adopt_famc = {}
+    #: ⛔ **`foster` TURNED UP, SO IT IS NO LONGER EXEMPT.** The tail item said foster was
+    #: attested 781 times in the corpus and appeared in NO path string, "so it needs nothing
+    #: until one turns up". After the 2026-09-15 harvest twelve turned up -- `his foster father`
+    #: 4, `her foster son` 4, `her foster daughter` 2, `his foster daughter` 1, `her foster
+    #: father` 1 -- and until now every one of them was written as a BIRTH parent, which is a
+    #: false statement rather than a missing one.
+    #:
+    #: The shape is copied, not composed: `1 FAMC` + `2 PEDI foster` and **no `ADOP` block**,
+    #: which is what distinguishes it from adoption. `exports/8-19 exports/
+    #: export-BloodTree-6000000227289508960.ged` carries exactly this.
+    foster_famc = {}
     for f in fams:
-        if not f.get("adopted"):
+        if not (f.get("adopted") or f.get("fostered")):
             continue
         members = [m for m in [f.get("husb"), f.get("wife")] + f.get("chil", []) if m]
         if len(members) < 2:
             continue
+        target = foster_famc if f.get("fostered") else adopt_famc
         for c in f.get("chil", []):
-            adopt_famc.setdefault(c, []).append(fam_xref(members))
+            target.setdefault(c, []).append(fam_xref(members))
     for gid, nm in people.items():
         out.append("0 @I%s@ INDI" % gid)
         out.append("1 NAME %s" % (nm or "NN"))
@@ -172,6 +189,10 @@ def render(subject_note, people, sex, fams, source):
             out.append("1 ADOP")
             out.append("2 FAMC @F%s@" % fx)
             out.append("3 ADOP BOTH")
+        # Foster carries the pedigree line and nothing else -- no `ADOP`, in all 781 corpus rows.
+        for fx in foster_famc.get(gid, []):
+            out.append("1 FAMC @F%s@" % fx)
+            out.append("2 PEDI foster")
         out.append("1 RFN geni:%s" % gid)
     for f in fams:
         members = [m for m in [f.get("husb"), f.get("wife")] + f.get("chil", []) if m]
@@ -355,7 +376,24 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
     people = {r["gid"]: r["name"] for r in rows}
     fams = []
     sex = {}
-    for prev, cur in zip(rows, rows[1:]):
+
+    def slot_for(s):
+        """Which `FAM` slot a parent takes, and **the edge is never dropped to avoid choosing.**
+
+        Tried the other way first on 2026-09-15: leave the slot empty when no row states a sex,
+        so nothing false is asserted. That deletes the family -- a `FAM` carrying one `CHIL` and
+        no partner has fewer than two members and `render` drops it -- and with it the edge.
+        **Connectivity is the entire purpose of these files**, so a lost edge costs more than a
+        slot that the merge will overwrite: the person's own export states their real sex, and
+        `CLAUDE.md` § *later sources win value conflicts* settles it in that export's favour.
+
+        So the fix is to stop deciding the slot from the possessive ALONE, not to stop deciding.
+        `his/her parent` is sexless, but the same person is usually sexed by another row of the
+        same chain, and that reading is now used before the fallback is ever reached.
+        """
+        return "wife" if s == "F" else "husb"
+
+    def parse(cur):
         parts = cur["rel"].split() if cur["rel"] else []
         word = parts[-1] if parts else ""
         owner = POSSESSIVE.get(parts[0].lower()) if parts else None
@@ -363,6 +401,34 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
         if former:
             word = word.split("-", 1)[1]
         kind, own_sex = PATH_REL.get(word, (None, None))
+        if kind is None and word in ENGAGED:
+            kind, former = "spouse", False
+        return parts, word, owner, former, kind, own_sex
+
+    #: ⛔ **THE SEX PASS RUNS FIRST, BECAUSE A SLOT WAS BEING DECIDED BEFORE IT WAS KNOWN.**
+    #: Geni renders sexless forms -- `his/her son` 16, `his/her parent` 10, `his/her wife` 7,
+    #: `his/her father` 4 -- and `POSSESSIVE.get("his/her")` is `None` for every one of them.
+    #: The slot line then read `"wife" if own_sex == "F" else "husb"`, so **every sexless form
+    #: fell through to `husb` and asserted a male parent Geni had explicitly declined to name.**
+    #: Same defect as the 2026-09-13 mother-as-husband bug, one `else` further down.
+    #:
+    #: Nothing is guessed to fix it. The chain usually states the same person's sex on ANOTHER
+    #: row -- `his father` two steps along names him male -- so the whole chain is read for sex
+    #: before any family is built, and that reading beats the fallback. Where no row sexes the
+    #: person at all the fallback still runs, for the reason `slot_for` gives.
+    for prev, cur in zip(rows, rows[1:]):
+        _, _, owner, _, kind, own_sex = parse(cur)
+        if kind is None:
+            continue
+        if own_sex:
+            sex.setdefault(cur["gid"], own_sex)
+        if owner:
+            sex.setdefault(prev["gid"], owner)
+
+    for prev, cur in zip(rows, rows[1:]):
+        parts, word, owner, former, kind, own_sex = parse(cur)
+        own_sex = own_sex or sex.get(cur["gid"])
+        owner = owner or sex.get(prev["gid"])
         # ⛔ **BOTH SPELLINGS, and only one was matched.** Measured 2026-09-15 over
         # `reports/path-chains.tsv`: **775 rows carry an adoption word**, not the 136 recorded
         # when this was written. `adoptive` covers 736 of them -- `her adoptive mother` alone is
@@ -370,27 +436,27 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
         # adopted son` 2, `his adopted daughter` 1. Those are all CHILD edges, which is the other
         # half of why they were missed: the child branch below never carried the flag either, so
         # an adopted child was written as a birth child.
-        adopted = bool({"adoptive", "adopted"} & {w.lower() for w in parts})
-        if kind is None and word in ENGAGED:
-            kind, former = "spouse", False
+        lowered = {w.lower() for w in parts}
+        adopted = bool({"adoptive", "adopted"} & lowered)
+        fostered = "foster" in lowered
         if kind is None:
             continue
-        if own_sex:
-            sex[cur["gid"]] = own_sex
-        if owner:
-            sex.setdefault(prev["gid"], owner)
         if kind == "parent":
-            slot = "wife" if own_sex == "F" else "husb"
-            fams.append({slot: cur["gid"], "chil": [prev["gid"]], "adopted": adopted})
+            fams.append({slot_for(own_sex): cur["gid"], "chil": [prev["gid"]],
+                         "adopted": adopted, "fostered": fostered})
         elif kind == "child":
             # The possessive states the PARENT's sex: *his son* -> the previous person is male.
-            slot = "wife" if owner == "F" else "husb"
-            fams.append({slot: prev["gid"], "chil": [cur["gid"]], "adopted": adopted})
+            fams.append({slot_for(owner): prev["gid"], "chil": [cur["gid"]],
+                         "adopted": adopted, "fostered": fostered})
         elif kind == "spouse":
             # `partner` and a fiance(e) assert no marriage; `husband`/`wife` do, and an `ex-`
             # asserts one that ended, which is `1 MARR` + `1 DIV` exactly as the corpus writes it.
-            married = word in ("husband", "wife")
-            if own_sex == "M":
+            married = word in ("husband", "wife", "spouse")
+            # A same-sex couple IS attested -- 4 `FAM`s in the first four corpus files carry two
+            # partners of the same `SEX` -- so Geni's own shape is HUSB/WIFE either way and this
+            # branch does not need a third slot. What it must not do is invent a sex: with none
+            # known the pair still makes the family, taking the slots in chain order.
+            if own_sex == "M" or (own_sex is None and sex.get(prev["gid"]) == "F"):
                 fams.append({"husb": cur["gid"], "wife": prev["gid"],
                              "marr": married, "div": former})
             else:

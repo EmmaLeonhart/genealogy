@@ -31,6 +31,16 @@
  * Treating 202 as failure once brought an abort guard within one row of stopping a healthy run.
  * The test is `2xx`.
  *
+ * ## ⛔ THE BATCH CANNOT BE FETCHED FROM THE REPO. IT HAS TO BE PASTED.
+ *
+ * Tried 2026-09-15 and refuted: a `fetch` from a geni.com page to
+ * `raw.githubusercontent.com` dies on `TypeError: Failed to fetch` — geni.com's CSP forbids the
+ * cross-origin connection, and it cannot be moved to a page that allows it, because the search
+ * requests need geni.com's own cookies. So `build-pathrun-batch.py` output goes into the console
+ * by hand, and a self-topping-up runner is not available however much the top-up rule wants one.
+ * `reports/pathrun-batch.js` is committed anyway, because the ONE thing that must never happen
+ * again is the target list existing only inside a tab.
+ *
  * ## Pace
  *
  * 1.1–1.8s jittered between requests, inside the runner. § *the stagger is the extension's,

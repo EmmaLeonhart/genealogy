@@ -44502,3 +44502,49 @@ that were already folded in costs nothing and re-running it is safe. The dumps a
 were the only evidence. Chrome was killed and restarted, the extension reconnected, and the
 first unconnected profile opened to an **Incapsula hCaptcha** rather than to `pathSearcher`.
 That gate is a person's to clear, so the restart is `BLOCKED-ON-USER-ACTION` on one click.
+
+## 2026-09-15 — the path tail, brought back: foster, the sexless forms, and the dropped spouses
+
+**The harvest changed the tail out of recognition, which is why this came first.** With 94 dumps
+merged the relation distribution is no longer the one `queue.md` was written against: `your
+relative?` is **105 rows over 102 people**, not 15; fiancé/fiancée is **57 rows over 11 people**,
+not 8. Both still need a `Forest` export and both stay in the queue, now with their rosters.
+
+**Three defects in `scripts/build-tiny-gedcoms.py`, all of them silent.**
+
+* **`foster` was being written as a birth parent.** The tail item exempted it — attested 781
+  times in the corpus, present in no path string, "needs nothing until one turns up". Twelve
+  turned up in this harvest (`his foster father` 4, `her foster son` 4, `her foster daughter` 2,
+  `his foster daughter` 1, `her foster father` 1) and every one became an ordinary `FAMC`. That
+  is a false statement, not a missing one. Now `1 FAMC` + `2 PEDI foster` and **no `ADOP`
+  block**, copied off `exports/8-19 exports/export-BloodTree-6000000227289508960.ged` rather
+  than composed. 17 tiny path GEDCOMs now carry it; before today, zero.
+* **The sexless forms were asserting a male parent.** Geni renders `his/her son` 16, `his/her
+  parent` 10, `his/her wife` 7, `his/her father` 4, and `POSSESSIVE.get("his/her")` is `None`
+  for all of them — so the slot line `"wife" if own_sex == "F" else "husb"` sent every one to
+  `husb`. The same defect as the 2026-09-13 mother-as-husband bug, one `else` further down. The
+  chain is now read for sex in full before any family is built, so `his/her parent` takes the
+  `WIFE` slot when another row of the same chain says she is female.
+* **`spouse` and `ex-spouse` made no edge at all.** `spouse` was in the profile scrape's
+  `SPOUSES` set but never in `PATH_REL`, so `his spouse` 7 and `her ex-spouse` 5 fell through
+  `kind is None` and vanished. Added, with `FORMER` extended to `ex-spouse`.
+
+**One thing tried and reverted, recorded because the reasoning is the useful part.** The first
+sexless-form fix left the slot empty when no row states a sex — assert nothing. That silently
+*deletes the family*: a `FAM` with one `CHIL` and no partner has fewer than two members and
+`render` drops it, so the edge goes too. Connectivity is the entire purpose of these files, so
+the fallback stays and `slot_for` carries the argument. A slot the merge will overwrite from the
+person's own export costs less than an edge that is gone.
+
+**Checked rather than assumed: a same-sex couple IS attested** — 4 `FAM`s in the first four
+corpus files carry two partners of the same `SEX`. So Geni's own shape is `HUSB`/`WIFE` either
+way, `his husband` needs no third slot, and that branch was left alone.
+
+**Rebuilt through the wired path, not a harness.** `split-path-chains.py` then
+`build-tiny-gedcoms.py`: 5,700 chains split, **6,780 tiny path GEDCOMs, up from 3,264**.
+
+**And the requester cannot fetch its own batch.** `reports/pathrun-batch.js` is committed so the
+target list never again exists only in a tab, but geni.com's CSP refuses a `fetch` to
+`raw.githubusercontent.com` outright, and the runner cannot move off geni.com because the search
+requests need geni.com's cookies. The refutation is in `scripts/pathrun.js` so it is not retried.
+The batch goes into the console by hand.

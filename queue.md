@@ -136,20 +136,21 @@ the other spouse of a parent, in a separate `FAM`, with the child not a `CHIL` o
 `exports/isolate-exports/export-Forest-6000000227738818838.ged` (Bach). Now emitted, and `P3448`
 *stepparent* goes to Wikidata too.
 
-**⛔ STILL DROPPED AND STILL OWED:**
+**⛔ STILL DROPPED AND STILL OWED — and the counts below are the post-harvest ones, which are
+much larger than the pre-harvest figures this item was written with.**
 
-* **`fiancé` / `fiancée`, 8 rows.** `ENGA` occurs **zero** times in the corpus. Currently emitted
-  as a couple with no marriage event, which is a guess. Needs a `Forest` on one of them.
-* **`your relative?`, 15 rows.** Geni itself is not naming the relation. Only a `Forest` on those
-  people shows what the link is.
-* **`his/her parent`, `his/her son`, `his/her father`** — the sexless forms, ~30 rows. They make
-  the edge but assert nothing about which slot, which may or may not be right.
-
-**⛔ AND THE HARVEST ITSELF IS BEHIND.** 94 `path-chains-NNN.tsv` files sit in `Downloads` and
-`reports/geni-paths-harvest.tsv` holds 6,946 rows. Requesting paths and **putting them in the
-repo** are two halves of the loop and only the first half has been running. Ruled 2026-09-15:
-*"the only thing that these sessions ever do is just automated grunge work of requesting paths and
-putting them into the repo and possibly doing descendant campaigns."*
+* **`fiancé` / `fiancée`, 57 rows over 11 people.** `ENGA` occurs **zero** times in the corpus.
+  Currently emitted as a couple with no marriage event, which is a guess. Needs a `Forest` on one
+  of them. The eleven: `359282548040006278` Constantine Doukas, `6000000000350860821` Napoléon I,
+  `6000000001723257706` James Hepburn, `6000000005931058360` Margaret of Geneva,
+  `6000000007061365126` Beatriz de Castilla, `6000000008579937191` Beatrice Komnene,
+  `6000000012442001730` Dante Alighieri, `6000000014829030443` Richenza,
+  `6000000023090769164` Mika Brzezinski, `6000000031546887817` Mariam Bagrationi,
+  `6000000077426598714` `<private>` Holmgren.
+* **`your relative?`, 105 rows over 102 people** — not the 15 recorded here. Geni itself is not
+  naming the relation. Only a `Forest` on those people shows what the link is. They are
+  overwhelmingly ancient or disputed: Constantine the Great, Peroz I of Persia, Balamber of the
+  Huns, Mattathias Maccabeus, and four US presidents.
 
 ## ⛔ RULINGS FROM 2026-09-15 — read these before working anything above
 
