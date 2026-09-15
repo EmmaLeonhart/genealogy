@@ -56,55 +56,11 @@ QUEUE*, which is how a list gets ordered by when a thing was appended instead of
 what it is. Ruled 2026-09-13: *"uhh why did you shit the bed so hard with queue
 ordering lol"*. Anything typed here by hand outranks anything derived.
 
-## Patronymic matronymic stuff — PAIRS, and why the obvious implementation is wrong
+## Patronymic pairs — DONE. Other traditions are the part that remains
 
-*"We really should be always creating patronymics in pairs. Feminine and masculine version in a
-pair in the quickstatements — Bjornsdatter / Bjornsson would be made at the same time. Honestly
-I am not 100% sure about all of this stuff. But I think the spelling equivalents are just
-regional and there is a clear distinction there."*
-
-**The regional distinction is real and it is measurable.** Lift over
-`reports/name-item-plan.csv`, which is `P(female form | male form) / P(female form)` and so
-strips out the fact that `-sdatter` is simply commoner than everything else:
-
-    sen   -> sdatter  x1.13     Dano-Norwegian
-    sson  -> sdotter  x1.49     Swedish
-    sson  -> sdóttir  x2.49     Icelandic
-    søn   -> sdottir  x49.91    16 bearers. Not trustworthy, left alone.
-
-1,882 patronymic tokens; **951 already have their counterpart** and 671 do not.
-
-⛔ **BUT MECHANICAL PAIRING MINTS NAMES THAT NEVER EXISTED, AND TWO DEFECTS ARE PROVEN.**
-Measured 2026-09-14 over the 401 that survive even a *stem-is-an-attested-given-name* guard:
-
-* **32 are a double-genitive error.** `Rasmussen` is `Rasmus` + `sen`, so stripping `sen` and
-  appending `sdatter` gives `Rasmussdatter`. The correct form is `Rasmusdatter` — the linking
-  `s` is already the last letter of the father's name. Same for `Johannessen`, `Andreassen`,
-  `Torjussen`, `Eliassen`, `Anderssen`.
-* **At least 10 are Anglo surnames that fossilised centuries ago.** `Williamson`,
-  `Richardson`, `Robinson`, `Jackson`, `Stephenson`, `Robertson`, `Mason`, `Wilson`,
-  `Thompson`, `Patterson`. `Williamsdotter` is not a name anyone bore. § *PARSE PATRONYMICS BY
-  FORM* does not save us here: the FORM `-son` is identical in Bergen and in Yorkshire, and
-  only the culture tells them apart.
-* And the form alone is worse than that: **`Sachsen` is Saxony** and parsed as a patronymic of
-  somebody called `Sach`.
-
-**So the guard has to be LOCALITY, which is the same thing that went wrong with the CJK
-labels** — *"the Scandinavian areas are places that we can really have a good idea of what good
-data looks like ... having stuff that leaks out from the universe and into just random areas is
-an intrinsic risk."*
-
-**What to implement when this comes up:**
-
-1. Split genitive-aware: father + linking `s` + suffix, so `Rasmus`+`s`+`en` pairs to
-   `Rasmus`+`s`+`datter`, never `Rasmuss`+`datter`.
-2. Emit a pair only where the bearer is inside the Scandinavian universe — not merely where the
-   stem looks like a given name, which is what let the Anglo ten through.
-3. Keep the register: `-sen`↔`-sdatter`, `-sson`↔`-sdotter`, `-sson`↔`-sdóttir` for Icelandic.
-4. Abbreviations (`Olsdtr`, `Larsdtr.`) are NOT pairs — they are § *Remove abbrviations*.
-
-`reports/patronymic-pairs-to-create.tsv` holds the 401 candidates with their bearer counts.
-**It is a worklist, not a batch. Nothing in it has been emitted.**
+`scripts/build-patronymic-pairs.py`, 40 a run. Both guards, the register mapping and the shared
+genitive `s` are in it and in `namemodel.patronymic_counterpart`; the reasoning is in
+`devlog.md` 2026-09-14.
 
 ### Other traditions
 

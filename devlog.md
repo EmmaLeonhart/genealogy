@@ -16,6 +16,50 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — patronymics in pairs, and the two guards it took to make that safe
+
+*"We really should be always creating patronymics in pairs ... Honestly I am not 100% sure about
+all of this stuff. But I think the spelling equivalents are just regional and there is a clear
+distinction there."*
+
+**The distinction is real and measurable.** Lift over `reports/name-item-plan.csv` —
+`P(female|male) / P(female)`, which strips out `-sdatter` merely being the commonest ending:
+
+    sen  -> sdatter  x1.13   Dano-Norwegian
+    sson -> sdotter  x1.49   Swedish
+    sson -> sdóttir  x2.49   Icelandic
+
+So `Bjornsdatter` pairs to `Bjornsen`, not to `Bjornsson` as the worked example had it — that
+example crossed registers, which is exactly the uncertainty the instruction flagged about itself.
+
+**And the uncertainty was warranted.** 1,882 patronymic tokens, 951 already paired, 671 not.
+Pairing those 671 mechanically produces `Williamsdotter`, `Jacksdotter`, `Watsdotter` — Anglo
+surnames fossilised for centuries — and `Sachsdatter`, because **`Sachsen` is Saxony**. § *PARSE
+PATRONYMICS BY FORM* cannot help: `-son` is identical in Bergen and in Yorkshire, and the form
+does not carry culture.
+
+**Two guards, and the second is the one that earns its keep:**
+
+    671  candidates
+     91  after LOCALITY — borne by somebody in the universe
+     52  after THE FATHER — the stem, minus the genitive s, is a GIVEN name borne here
+
+Locality alone still passed `Hessen`, `Meissen` and `Nelson`, because people in this universe
+have German and English ancestry, so a German place name genuinely is borne inside it. `Rasmus`
+is a given name here; `Sach`, `Mei`, `Nel`, `Wil` and `Thomp` are not.
+
+It also rejects `Tørresson`, `Estridsen` and `Brodersen`, whose stems are real names elsewhere
+but are not borne as given names here. Conservative, and the right direction — § *better to
+create no name object than a bad one*.
+
+**The genitive `s` is shared, not doubled:** `Rasmussen` is `Rasmus` + `sen`, so the counterpart
+is `Rasmusdatter`. 32 candidates had that fault. The proof it was a fault rather than a
+preference: `Rasmusdatter` and `Johannesdatter` **already exist**, so the `Rasmussdatter` forms a
+mechanical pass would have minted were never real.
+
+40 a run, `reports/wikidata-patronymic-pairs.qs`. `namemodel.patronymic_counterpart` owns the
+string rule so no future caller can disagree about it.
+
 ## 2026-09-14 — usual forename dropped from the pipeline; "subject named as" was already done
 
 **Usual forename.** *"Please stop adding this to the first name in the given names. I do not

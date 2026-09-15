@@ -1557,6 +1557,64 @@ NOT_NAME_WORDS = frozenset("""
 """.split())
 
 
+#: ⛔ **A PATRONYMIC IS CREATED IN A PAIR, AND THE PAIRING IS NOT MECHANICAL.** Ruled
+#: 2026-09-14: *"We really should be always creating patronymics in pairs. Feminine and masculine
+#: version in a pair in the quickstatements ... Bjornsdatter / Bjornsson would be made at the same
+#: time. Honestly I am not 100% sure about all of this stuff. But I think the spelling equivalents
+#: are just regional and there is a clear distinction there."*
+#:
+#: The regional distinction is real and was measured by LIFT over `reports/name-item-plan.csv`,
+#: `P(female form | male form) / P(female form)`, which strips out `-sdatter` merely being the
+#: commonest ending:
+#:
+#:     sen  -> sdatter  x1.13   Dano-Norwegian
+#:     sson -> sdotter  x1.49   Swedish
+#:     sson -> sdóttir  x2.49   Icelandic
+#:
+#: ⛔ **AND THE UNCERTAINTY WAS WARRANTED. Pairing every patronymic mints names nobody bore.**
+#: Of 671 tokens missing a counterpart, mechanical pairing produces `Williamsdotter`,
+#: `Jacksdotter`, `Watsdotter` — Anglo surnames that fossilised centuries ago — and
+#: `Sachsdatter`, because **`Sachsen` is Saxony**. § *PARSE PATRONYMICS BY FORM* cannot save it:
+#: the form `-son` is identical in Bergen and in Yorkshire and only the culture separates them.
+#:
+#: **Two guards, and both are needed.** Locality alone cuts 671 to 91 but still passes `Hessen`,
+#: `Meissen` and `Nelson`, because people in our universe have German and English ancestry:
+#:
+#:     1. LOCALITY  the token is borne by somebody in the universe — the ledger, per
+#:                  `CLAUDE.md` § *ONLY EVER EDIT THINGS IN THE UNIVERSE OR ONE STEP ADJACENT*
+#:     2. THE FATHER the stem, after the genitive `s` comes off, is itself a GIVEN name borne
+#:                  in the universe. `Rasmus` yes, `Sach` no, `Wil` no, `Mei` no.
+#:
+#: Together: **62 pairs**, every one a real Norwegian patronymic.
+#:
+#: ⛔ **THE GENITIVE `s` IS SHARED, NOT DOUBLED.** `Rasmussen` is `Rasmus` + `sen`, so the
+#: counterpart is `Rasmusdatter` and never `Rasmussdatter`. 32 of the candidates had this fault.
+PATRONYMIC_PAIR = {
+    "sen": "sdatter", "søn": "sdatter", "sønn": "sdatter",
+    "sson": "sdotter", "son": "sdotter",
+    "sdatter": "sen", "sdotter": "sson", "sdóttir": "sson",
+}
+
+
+def patronymic_counterpart(token):
+    """The opposite-sex form of a patronymic, in its own register, or `""`.
+
+    Register-preserving: `-sen` pairs to `-sdatter`, `-sson` to `-sdotter`. The genitive `s` is
+    shared rather than doubled. **This decides the STRING only** -- whether the pair should be
+    created at all is the two guards above, and the caller applies them.
+    """
+    low = (token or "").casefold()
+    for suf in sorted(PATRONYMIC_PAIR, key=len, reverse=True):
+        if not low.endswith(suf):
+            continue
+        base = token[:len(token) - len(suf)]
+        want = PATRONYMIC_PAIR[suf]
+        if base.casefold().endswith("s") and want.startswith("s"):
+            want = want[1:]                       # Rasmus + s|en -> Rasmus + datter
+        return base + want
+    return ""
+
+
 def name_shape(token):
     """`(bare_token, usage_or_None)` -- brackets stripped, particles and markers named.
 
