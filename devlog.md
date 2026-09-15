@@ -16,6 +16,43 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — five descendants balls, and the rule that none of the six could be exported
+
+Six commanded targets, *"idk their status, ancestor climb and then descendants export"*. The
+status, which was the first thing to establish: all six are in the corpus, 7 to 29 export files
+each, and **none of them can be exported at all**. Geni prints the reason on its own `/gedcom`
+page — *"you may only export a GEDCOM file focused on profiles that you added to Geni."* That is
+what *ancestor climb* is for: climb until a slot exists where a profile WE own can sit.
+
+Five balls filed, every one at the 5000 cap and therefore truncated by definition:
+
+    Jacques Grimaldi         seed 6000000227757314896   (Emma gave the seed directly)
+    Sayaluna ata             seed 6000000227694017875   (found: the NN father of her top
+                                                         ancestor Muhadhdhab al-Din)
+    Robert d'Esneval VI      seed 6000000227757576826   (Emma created it — clean tier 3, he
+                                                         had a father and no mother)
+    NN Grolier               seed 6000000227738961944
+    Pietro Antonio di Capua  seed 6000000227757712839   (Arcamone; Pietro appears in it 4
+                                                         times, grepped not presumed)
+
+Hélène de Corday is building off `NN des Rotours` `6000000227695388934`, Nicolas de Corday's
+wife and therefore her grandmother — the line four generations of climbing could not crack.
+Inês de Bettencourt I is the one left, and her slot is confirmed: `Isabeau d'Harcourt`
+`6000000006420936026`, *"Daughter of Alice de Beaumont"*, no father.
+
+**Three things learned that cost time and are worth not relearning:**
+
+* **Geni refuses a second concurrent export SILENTLY.** It re-renders the export form instead of
+  redirecting to a task id, and writes no row into the export list. The first Grolier submit
+  vanished that way. The check is the redirect target, never the HTTP status.
+* **`fetch` cannot read a profile's family.** The immediate-family cards render client-side, so
+  a fetch returns the shell with zero cards — the same rule that governs the census. One real
+  page load per climb hop. Exportability, by contrast, DOES work over fetch.
+* **Our own tree is unreliable at the top.** `derived-family.csv` called `6000000009177497799`
+  fatherless while Geni had *"Son of NN ? and NN ?"*, and both of Pietro's offline tier-3
+  candidates — Maria Marzano d'Aragona and Giacomo del Balzo — turned out to have both parents
+  there. Every candidate needs a real page load before it counts.
+
 ## 2026-09-14 — the name items carry our CJK readings, and the token table is the source
 
 Ruled: *"Given names and surnames should have our standardized cjk-izations attached to them.

@@ -56,36 +56,18 @@ QUEUE*, which is how a list gets ordered by when a thing was appended instead of
 what it is. Ruled 2026-09-13: *"uhh why did you shit the bed so hard with queue
 ordering lol"*. Anything typed here by hand outranks anything derived.
 
-## Final item
-
-please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
-
-**⛔ DELIVERED 2026-09-14 except the hold.** Caps raised 50% and the scheduled run takes a
-third via `--fraction 0.3333`, so the autonomous share is exactly the increase (`74fc58a1`).
-`wikidata-edits.yml` is scheduled `7 8 * * *`, live from `AUTOMATION_START_DATE 2026-09-15`.
-**The only blocker is `EDITS_HELD`, and lifting it is the LAST item in this file.**
-
 ## Another item
 
-Export descendants of these people, idk their status, ancestor climb and then descendants export
+Export descendants of Inês de Bettencourt I `6000000001435366077` — ancestor climb, then
+descendants export.
 
-**None of the six can be exported directly** — Geni: *"you may only export a GEDCOM file
-focused on profiles that you added to Geni."* So each needs a seed we own. Detail in
-`devlog.md` 2026-09-14.
+She cannot be exported directly: *"you may only export a GEDCOM file focused on profiles that
+you added to Geni."* The slot is confirmed on Geni — add a father, `NN`, no surname, to
+`Isabeau d'Harcourt` `6000000006420936026` (*"Daughter of Alice de Beaumont"*, no father), then
+Descendants 5000 off him.
 
-    Jacques Grimaldi         6000000015647948256  DONE  seed 6000000227757314896
-    Sayaluna ata             6000000008384075400  DONE  seed 6000000227694017875
-    Robert d'Esneval VI      6000000026257912323  DONE  seed 6000000227757576826
-    (NN Grolier)                                  DONE  seed 6000000227738961944
-    Pietro Antonio di Capua  6000000015633226273  DONE  seed 6000000227757712839
-    Hélène de Corday         6000000000746523797  running, task 6000000227757652945
-    Inês de Bettencourt I    6000000001435366077  NEEDS A SEED
-
-**Inês:** add a father, `NN`, no surname, to `Isabeau d'Harcourt` `6000000006420936026`
-(confirmed on Geni: *"Daughter of Alice de Beaumont"*, no father). Then Descendants 5000.
-
-⛔ One export at a time, and Geni refuses a second one SILENTLY — it re-renders the form
-instead of redirecting to a task id. Check the redirect target.
+⛔ One export at a time, and Geni refuses a second SILENTLY — it re-renders the form instead of
+redirecting to a task id. Check the redirect target.
 
 ## Another item
 
