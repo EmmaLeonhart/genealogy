@@ -27,40 +27,6 @@ tiny path GEDCOMs, 773 isolates reached.
 ⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
 is the extension's, never a sleep in the agent.
 
-### ⛔ FIRST ITEM: THE SAVED PAGES — EXTRACT, VERIFY, DELETE
-
-*"go on the actual page we were supposed to go to, to gather up all the paths and turn them into
-tiny GEDCOM files, and also to collect the paths from the emmas-files directory that I made
-because I was extremely frustrated with you. Once you have successfully gotten all of the paths
-from that particular directory, I would like you to just delete that directory wholesale... as
-opposed to getting the repository to be more clean in its structure."*
-
-**a and b are DONE — both directories extracted, verified and deleted 2026-09-14.**
-`emmas-files/` gave 38 pages and 4,596 path steps; `geni-scraping/` gave 1,555 pages, 1,532 tiny
-profile GEDCOMs, 15,995 relation rows and 15,080 `SEX` records. Manifests at
-`reports/emmas-files-extraction-manifest.tsv` and `reports/geni-scraping-extraction-manifest.tsv`,
-one row per file. Both removed with `git rm`, so history keeps every byte.
-
-**c. `paths/` — AND THE DOUBT IS ANSWERED: IT IS OURS AND ALWAYS WAS.** Emma: *"that paths
-directory is so stupid, I'm pretty sure you found a random paths or a random directory called
-paths and then assumed that that was our operating directory."* Checked rather than argued:
-
-    first commit   f71290e9, 2026-08-05, Emma Leonhart
-                   "Measure the small-world core: 89.2% of 1227 path steps held"
-    read by        build-tiny-gedcoms, build-isolate-path-targets, census-paths,
-                   find-chain-gaps, build-chain-page, harvest-isolate-paths, and four more
-
-It predates this session by six weeks and ten scripts depend on it. **The directory is not the
-problem; what this session put in it is.** 2,124 of its 2,856 files are
-`harvested-path-geni-*.tsv` written tonight, against 732 that were there before. ⛔ Still ask
-before reorganising or pruning it — the count is a mess of this session's making and how to tidy
-it is hers to decide.
-
-**d. Then the other queue items.**
-
-⛔ **VERIFY BEFORE DELETING, ALWAYS.** A directory deletion is not undone by an apology. Every
-file must be shown to have yielded its content, per file, in a committed manifest — not asserted.
-
 ### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
 
 *"you had no business having any submissions going through until everything was done. That's why
@@ -76,19 +42,6 @@ by a person. `tests/test_wikidata_start_date.py` fails if the two halves disagre
 
 **The condition for lifting it is stated and is not a date either**: the Wikidata people are
 connected through the path search first. That campaign is at the END of this file.
-
-### ⛔ FAMILY NAMES MUST WORK IN EVERY SCRIPT. Ruled 2026-09-13, long term.
-
-*"Uhh family names need to be able to go for other scripts too long term"*. Written down, not
-worked — `CLAUDE.md` § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
-
-The immediate cause is the punctuation rule shipped the same day: `name_shape` now refuses a
-token with no alphanumeric character **in any script**, which was deliberately written to be
-script-neutral, and `Bagrat Bagrationi`'s `ბაგრატიონი / Bagrationi` is the case that shows the
-surrounding machinery is not. A family name in Georgian, Han, Cyrillic or Devanagari has to reach
-a name item the same way a Latin one does, and today's `name-item-plan.csv` and the
-first-given-attestation census are both keyed on strings that are overwhelmingly Latin.
-
 
 ### ⛔ SKJALGSSON IS DROPPED. Ruled 2026-09-13: *"Drop skjalgsson please"*.
 

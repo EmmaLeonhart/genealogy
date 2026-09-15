@@ -65,6 +65,13 @@ def fold(text: str) -> str:
     return " ".join(text.casefold().split())
 
 
+#: U+3005 the ideographic iteration mark and the Kangxi radicals are named IDEOGRAPHIC and
+#: KANGXI rather than CJK, so a Han name carrying one split into two scripts and read as mixed.
+#: Found 2026-09-14; the same bug was in genimerge.profilenames.SCRIPT_RANGES, which did not
+#: cover U+3005 at all.
+_AS_CJK = {"IDEOGRAPHIC", "KANGXI"}
+
+
 def scripts_of(text: str) -> set[str]:
     found = set()
     for char in text:
@@ -72,7 +79,8 @@ def scripts_of(text: str) -> set[str]:
             continue
         name = unicodedata.name(char, "")
         if name:
-            found.add(name.split()[0])
+            word = name.split()[0]
+            found.add("CJK" if word in _AS_CJK else word)
     return found
 
 

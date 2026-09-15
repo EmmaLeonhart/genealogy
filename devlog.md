@@ -43182,3 +43182,47 @@ visit to Geni would get them. Recorded because Emma should not discover it later
 a shit about, as opposed to getting the repository to be more clean in its structure."*
 
 Deleted with `git rm`, so all 1,555 remain in history.
+
+## 2026-09-14 — family names in every script: the classifier knew seven, the corpus uses twelve
+
+*"Uhh family names need to be able to go for other scripts too long term"*, with
+`Bagrat Bagrationi`'s `ბაგრატიონი` as the case.
+
+**Measured first, over a 40-file sample of `1 NAME` lines, counting letters no range matched:**
+
+    TIBETAN      159   Tibetan names -- including the Qing/Tibet line worked the same day
+    IDEOGRAPHIC   56   the Han iteration mark U+3005, sitting INSIDE Han names
+    GEORGIAN      47   ბაგრატ V "დიდი" /ბაგრატიონები/ -- the case Emma named
+    LATIN         25   Ṭuġrīl, Solṭānšāh -- Latin Extended Additional, past U+024F
+    THAI           5
+    EGYPTIAN       3
+
+**Two of those are bugs rather than gaps, and both failed silently.** `Ṭuġrīl` is a Latin name
+that classified as **nothing**, because the Latin range stopped at `U+024F` and never reached
+Latin Extended Additional. `々` sits inside Han names and classified as nothing, because it is
+outside every CJK range. A name that classifies as `none` leaves the pipeline without a name item
+and without an error anywhere.
+
+**`genimerge.profilenames.SCRIPT_RANGES` goes from 7 scripts to 15** — Georgian, Armenian,
+Tibetan, Devanagari, Thai, Ethiopic, Mongolian and Egyptian added, CJK extended to cover the
+symbols block, Latin extended through Latin Extended Additional. Written as ASCII `\uXXXX`
+escapes throughout, per § *Write a Han range as ASCII escapes* — the literal form once ate the
+Hangul block and cost 5,338 Korean people.
+
+**⛔ AND THERE WERE THREE CLASSIFIERS, NOT ONE** — § *A GUARD IN ONE EMITTER IS NOT A GUARD*
+again. `build-display-names.py` and `build-name-object-report.py` each carry their own
+`scripts_of`, built on `unicodedata.name()` rather than ranges, so they already handled Georgian
+and Tibetan for free. **But both had the `々` bug**: its Unicode name begins `IDEOGRAPHIC`, not
+`CJK`, so a Han name carrying one split into `Han+Ideographic` and read as mixed-script — which
+is precisely how those reports flag a problem. Both now fold `IDEOGRAPHIC` and `KANGXI` into Han.
+
+    訶多々主命    -> Han        (was Han+Ideographic, and `none` in profilenames)
+    ბაგრატიონი   -> Georgian   (was `none` in profilenames)
+    Ṭuġrīl       -> Latin      (was `none` in profilenames)
+
+All three classifiers now agree on all three cases.
+
+**What this does NOT do**, and the item said so: `reports/name-item-plan.csv` is still keyed on
+strings that are overwhelmingly Latin — 8,413 Latin family names against 727 Han, 219 Cyrillic,
+210 Hebrew, 120 Arabic, 48 Hangul and **no Georgian at all**. The classifier no longer loses
+them; whether the plan now picks them up is the next measurement and needs a rebuild to answer.

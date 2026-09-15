@@ -76,6 +76,12 @@ COLUMNS = [
 SCRIPT_WORDS = {
     "LATIN": "Latin",
     "CJK": "Han",
+    # U+3005, the ideographic iteration mark, is named IDEOGRAPHIC rather than CJK, so a
+    # Han name containing it classified as "Han+Ideographic" -- mixed-script, which is how
+    # this report flags a problem. 56 NAME lines in a 40-file sample carry it. Found
+    # 2026-09-14 alongside the same bug in genimerge.profilenames.SCRIPT_RANGES.
+    "IDEOGRAPHIC": "Han",
+    "KANGXI": "Han",
     "HIRAGANA": "Hiragana",
     "KATAKANA": "Katakana",
     "HANGUL": "Hangul",

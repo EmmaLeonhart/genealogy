@@ -69,21 +69,52 @@ __all__ = [
     "render_markdown",
 ]
 
-#: Unicode ranges that decide which script a name form is written in, checked in
-#: order. CJK folds kana and the ideograph blocks together on purpose — a
-#: Japanese name mixing kana and kanji is one native form, not two — while
-#: Hangul is kept separate because Korean romanisation behaves differently
-#: again. "latin" is last of the writing systems so that a mostly-native string
-#: with a stray ASCII digit still classifies by its script, not by the digit.
+#: Unicode ranges that decide which script a name form is written in, checked in order.
+#:
+#: EVERY RANGE IS ASCII BACKSLASH-u ESCAPES, per CLAUDE.md "Write a Han range as ASCII escapes":
+#: the literal form once ate the Hangul block and cost 5,338 Korean people.
+#:
+#: CJK folds kana and the ideograph blocks together on purpose -- a Japanese name mixing kana
+#: and kanji is one native form, not two -- while Hangul stays separate because Korean
+#: romanisation behaves differently again. Latin is last of the writing systems so a mostly
+#: native string with a stray ASCII digit classifies by its script, not by the digit.
+#:
+#: THE LIST WAS SEVEN SCRIPTS LONG WHILE THE CORPUS USES TWELVE. Ruled 2026-09-13,
+#: "family names need to be able to go for other scripts too long term", and measured
+#: 2026-09-14 across a 40-file sample of `1 NAME` lines, counting letters no range matched:
+#:
+#:     TIBETAN      159   Tibetan names, including the Qing/Tibet line worked the same day
+#:     IDEOGRAPHIC   56   the Han iteration mark U+3005, which sits INSIDE Han names
+#:     GEORGIAN      47   Bagrationi -- the case Emma named
+#:     LATIN         25   Tugril, Soltansah -- Latin Extended Additional, past U+024F
+#:     THAI           5
+#:     EGYPTIAN       3
+#:
+#: Two of those were bugs rather than gaps. A Latin name classified as nothing because the
+#: Latin range stopped at U+024F, and U+3005 sits inside Han names but outside the CJK ranges.
+#: Both produced script `none` in silence, which is how a name leaves the pipeline with no name
+#: item and no error raised anywhere.
 SCRIPT_RANGES: tuple[tuple[str, str], ...] = (
     # name, character-class body (inside a [...])
-    ("cjk", r"぀-ヿ㐀-䶿一-鿿豈-﫿\U00020000-\U0002ffff"),
-    ("hangul", r"가-힣ᄀ-ᇿ㄰-㆏"),
-    ("cyrillic", r"Ѐ-ӿԀ-ԯ"),
-    ("arabic", r"؀-ۿݐ-ݿ"),
-    ("hebrew", r"֐-׿"),
-    ("greek", r"Ͱ-Ͽἀ-῿"),
-    ("latin", r"A-Za-zÀ-ɏ"),
+    # CJK: the symbols block (carrying the iteration mark U+3005), kana, the ideograph blocks,
+    # compatibility ideographs, and the supplementary plane.
+    ("cjk", "\u3000-\u303f\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff"
+            "\U00020000-\U0002ffff"),
+    ("hangul", "\uac00-\ud7a3\u1100-\u11ff\u3130-\u318f"),
+    ("cyrillic", "\u0400-\u04ff\u0500-\u052f"),
+    ("arabic", "\u0600-\u06ff\u0750-\u077f\ufb50-\ufdff\ufe70-\ufeff"),
+    ("hebrew", "\u0590-\u05ff"),
+    ("greek", "\u0370-\u03ff\u1f00-\u1fff"),
+    ("georgian", "\u10a0-\u10ff\u1c90-\u1cbf\u2d00-\u2d2f"),
+    ("armenian", "\u0530-\u058f"),
+    ("tibetan", "\u0f00-\u0fff"),
+    ("devanagari", "\u0900-\u097f\ua8e0-\ua8ff"),
+    ("thai", "\u0e00-\u0e7f"),
+    ("ethiopic", "\u1200-\u139f\u2d80-\u2ddf"),
+    ("mongolian", "\u1800-\u18af"),
+    ("egyptian", "\U00013000-\U0001342f"),
+    # Latin LAST, and reaching Latin Extended Additional so T-with-dot and friends are Latin.
+    ("latin", "A-Za-z\u00c0-\u024f\u1e00-\u1eff\u2c60-\u2c7f\ua720-\ua7ff"),
 )
 
 _SCRIPT_RES = {name: re.compile(f"[{body}]") for name, body in SCRIPT_RANGES}
