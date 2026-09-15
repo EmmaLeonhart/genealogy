@@ -16,6 +16,47 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-15 — `konenes navn ukjent`, Roman names, and 808 lines of reference out of the queue
+
+**The wrong name.** `6000000007645527815` / `Q141451100`. His `GIVN` on Geni is
+`konenes navn ukjent` — Norwegian for *the wife's name is unknown*. `ukjent` was refused
+correctly, and the other two tokens went out as `P735` given names: the man was given the
+forenames **`konenes`** and **`navn`**, *wives'* and *name*.
+
+The marker was removing its own token instead of condemning the field, which is exactly the
+objection `is_description` already answers for stillbirth wording — a field that says *we do not
+know* is a sentence about the record, not a list of names.
+
+**It suppresses given names only, and the measurement is why.** 3,460 `GIVN` fields carry a
+marker beside other tokens; in every common one the other token is either a descriptive word —
+`Unknown Wife` 41, `Ukendt hustru` 13, `nn ektefelle` 11, `NN Female` 12 — or a real patronymic:
+`NN Olsdatter` 18, `NN Pedersdatter` 17, `N.N. Nielsdatter` 11. Dropping the whole field would
+throw those patronymics away, and on a record whose given name is unknown they are the most
+useful thing on it.
+
+**Roman names.** *"never actually apply names and given names to Roman people since they always
+get undone, I think due to the weird naming structure of them."* The structure is the reason and
+it is not a quirk: `Gaius Julius Caesar` is praenomen, nomen and cognomen — a personal name, a
+CLAN name and a branch name — and none of the three is a given name or a surname in the sense
+`P735` and `P734` mean. Editors revert them because they are wrong.
+
+⛔ **The praenomen alone is not the test, and `Marcus` is why**: 116 people in the corpus are
+called simply `Marcus`, and `Marcus Marcusson` and `Marcus Olofsson` are Scandinavian men. The
+discriminator is the TRIA NOMINA shape — a praenomen followed by a nomen-shaped token:
+
+    1,630  praenomen + nomen  -> no name items. Appius Claudius Pulcher, Sextus Julius Caesar,
+                                 Lucius Calpurnius Piso, Marcus Aemilius Lepidus
+      616  praenomen alone    -> untouched. Marcus, Gaius, Marcus Olofsson
+
+Scope as ever: this removes name ITEMS. `derive-labels.py` does not call `classify_fields`, so a
+Roman keeps the name he is displayed under and loses only the claims that were being reverted.
+
+**And 808 lines of reference left `queue.md`.** *ALWAYS LAST — the tail* (461), *THE ALGORITHMS*
+(204) and *THE END OF THE QUEUE* (155) were **over half the file** and none of them was work.
+They are in `docs/queue-archive/` now, nothing deleted. 1,388 → 580 lines, and the items are
+finally legible — which is the point of § *Queue items are BULLET POINTS* and the delete-on-done
+rule, both of which a half-reference file defeats.
+
 ## 2026-09-15 — Celtic and Semitic patronymics: `mac` was missing, `abu` and `abd` were wrong
 
 *"I still think we do not have support for other languages like Semitic languages and celtic

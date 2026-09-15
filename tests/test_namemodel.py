@@ -1032,3 +1032,52 @@ def test_abu_and_abd_are_NOT_patronymic_particles():
     assert given.get("ibn Muhammad") == "patronymic", "the real particle still works"
     assert "abu" not in namemodel.PATRONYMIC_PARTICLE
     assert "abd" not in namemodel.PATRONYMIC_PARTICLE
+
+
+def test_a_marker_in_GIVN_means_the_field_holds_no_given_names():
+    """`6000000007645527815` / `Q141451100`: `GIVN` is `konenes navn ukjent`.
+
+    Norwegian for *the wife's name is unknown*. `ukjent` was refused correctly and the other two
+    tokens went out as `P735` given names, so the person was given the forenames **`konenes`**
+    and **`navn`** — *wives'* and *name*. The marker was removing its own token instead of
+    condemning the field.
+
+    **It suppresses GIVEN names only.** 3,460 fields carry a marker beside other tokens, and the
+    other token is either a descriptive word (`Unknown Wife` 41, `Ukendt hustru` 13) or a real
+    patronymic (`NN Olsdatter` 18, `N.N. Nielsdatter` 11). Dropping the whole field would throw
+    those patronymics away, and on a record whose given name is unknown they are the most useful
+    thing on it.
+    """
+    def usages(givn, surn=""):
+        return [(t, u) for t, u, _o in namemodel.classify_fields(givn=givn, surn=surn)]
+
+    assert not [u for _t, u in usages("konenes navn ukjent") if u == "given"]
+    assert not [u for _t, u in usages("Unknown Wife") if u == "given"]
+    assert not [u for _t, u in usages("nn ektefelle") if u == "given"]
+    # the patronymic survives
+    assert ("Olsdatter", "patronymic") in usages("NN Olsdatter")
+    # and an ordinary name is untouched
+    assert ("Ole", "given") in usages("Ole")
+    assert ("Peter", "given") in usages("Anders Peter", "Olsen")
+
+
+def test_a_roman_name_gets_no_name_items():
+    """Ruled 2026-09-14: *"never actually apply names and given names to Roman people since they
+    always get undone, I think due to the weird naming structure of them."*
+
+    `Gaius Julius Caesar` is praenomen, nomen and cognomen — a personal name, a CLAN name and a
+    branch name. None of the three is a given name or a surname in the sense `P735` and `P734`
+    mean, which is why editors revert them.
+
+    **The praenomen alone is not the test, and `Marcus` is why**: 116 people in the corpus are
+    called simply `Marcus`, and `Marcus Marcusson` and `Marcus Olofsson` are Scandinavian. The
+    discriminator is the tria nomina shape — 1,630 match it, 616 carry a praenomen without one.
+    """
+    for givn, surn in (("Gaius Julius", "Caesar"), ("Appius Claudius", "Pulcher"),
+                       ("Marcus Aemilius", "Lepidus"), ("Sextus Julius", "Caesar")):
+        assert namemodel.classify_fields(givn=givn, surn=surn) == [], f"{givn} {surn}"
+
+    # Scandinavians called Marcus keep everything
+    got = [(t, u) for t, u, _o in namemodel.classify_fields(givn="Marcus", surn="Olofsson")]
+    assert ("Marcus", "given") in got and ("Olofsson", "patronymic") in got
+    assert namemodel.classify_fields(givn="Marcus", surn="") != []

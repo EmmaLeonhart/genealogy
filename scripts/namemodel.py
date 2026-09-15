@@ -2156,6 +2156,51 @@ def _unknown_markers() -> frozenset:
     return _MARKERS
 
 
+#: ⛔ **A ROMAN NAME GETS NO NAME ITEMS AT ALL.** Ruled 2026-09-14: *"I would like us to just
+#: never actually apply names and given names to Roman people since they always get undone, I
+#: think due to the weird naming structure of them."*
+#:
+#: The structure is the reason and it is not a quirk: `Gaius Julius Caesar` is praenomen, nomen
+#: and cognomen — a personal name, a CLAN name and a branch name — and none of the three is a
+#: given name or a surname in the sense `P735` and `P734` mean. Editors undo them because they
+#: are wrong, not because they are unwelcome.
+#:
+#: **The praenomen alone is not enough**, and `Marcus` is why: 116 people in the corpus are
+#: called simply `Marcus`, and `Marcus Marcusson` and `Marcus Olofsson` are Scandinavian men.
+#: The discriminator is the TRIA NOMINA shape — a praenomen followed by a nomen-shaped token.
+#: Measured over `reports/display-names.csv`:
+#:
+#:     1,630  praenomen + a nomen-shaped token  -> Roman, no name items
+#:       616  praenomen alone                   -> left alone
+#:
+#: The 1,630 are `Appius Claudius Pulcher`, `Sextus Julius Caesar`, `Lucius Calpurnius Piso`,
+#: `Marcus Aemilius Lepidus`. The 616 are `Marcus`, `Gaius`, `Marcus Olofsson`.
+#:
+#: ⛔ Scope, as with every other rule in this group: it removes NAME ITEMS. The label is built
+#: in `derive-labels.py`, which does not call this, so a Roman keeps the name he is displayed
+#: under and loses only the `P735`/`P734` claims that were being reverted.
+ROMAN_PRAENOMEN = frozenset("""
+    gaius caius marcus lucius publius quintus titus aulus gnaeus cnaeus decimus servius
+    tiberius appius manius spurius numerius sextus kaeso caeso mamercus vibius statius salvius
+""".split())
+
+#: A Roman nomen or cognomen ending. `-ius` is the gentilicial ending proper; the others are the
+#: common cognomen shapes (`Pulcher` aside, which no ending catches).
+ROMAN_NOMEN = re.compile(r"(ius|ianus|inus|ulus|illa|ina)$", re.I)
+
+
+def is_roman_name(*fields) -> bool:
+    """True for the tria nomina shape: a praenomen followed by a nomen-shaped token."""
+    tokens = []
+    for field in fields:
+        tokens.extend((field or "").split())
+    if not tokens:
+        return False
+    if tokens[0].casefold().strip("().,") not in ROMAN_PRAENOMEN:
+        return False
+    return any(ROMAN_NOMEN.search(t.strip("().,")) for t in tokens[1:])
+
+
 def classify_fields(givn: str, surn: str, nick: str = "",
                     marnm: str = "", father_name: str = "",
                     father_aka: str = "",
@@ -2189,6 +2234,11 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     surn = "" if names_a_relative(surn) else surn
     marnm = "" if names_a_relative(marnm) else marnm
 
+    # ⛔ A Roman name yields nothing. See `is_roman_name`: the tria nomina is not a given name
+    # and a surname, and editors were undoing these as fast as they were emitted.
+    if is_roman_name(givn, surn):
+        return []
+
     out: list[tuple[str, str, int]] = []
     # **The Latin genitive test needs the father's GIVEN name and nothing else** -- see
     # `latin_patronymic`, where matching any token of his label let a Cypriot surname confirm
@@ -2209,9 +2259,29 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # **A stillbirth description yields no given names at all.** `DESCRIPTION_MARKERS`
     # carries the reasoning; `Bielke` still reaches `SURN` below, so the person keeps a
     # family name and an `NN` label and loses only the words that were never names.
+    # ⛔ **A MARKER ANYWHERE IN `GIVN` MEANS THE FIELD HOLDS NO GIVEN NAMES.** Reported
+    # 2026-09-14 on `6000000007645527815` / `Q141451100`, whose `GIVN` is
+    # `konenes navn ukjent` -- Norwegian for *the wife's name is unknown*. `ukjent` was refused
+    # correctly and the other two tokens were emitted as `P735` given names, so the person was
+    # given the forenames **`konenes`** and **`navn`**: *wives'* and *name*.
+    #
+    # The marker was removing its own token instead of condemning the field, which is the same
+    # objection `is_description` already answers for stillbirth wording -- a field that says
+    # *we do not know* is a sentence about the record, not a list of names.
+    #
+    # **It suppresses GIVEN names only, never the patronymic.** Measured over
+    # `reports/display-names.csv`: 3,460 fields carry a marker beside other tokens, and in every
+    # common one the other token is either a descriptive word -- `Unknown Wife` 41,
+    # `Ukendt hustru` 13, `nn ektefelle` 11, `NN Female` 12, `Unknown Daughter` 11 -- or a real
+    # patronymic: `NN Olsdatter` 18, `NN Pedersdatter` 17, `N.N. Nielsdatter` 11. Dropping the
+    # whole field would throw those patronymics away, and they are the most useful thing on a
+    # record whose given name is unknown.
+    _givn_tokens = [t for t in re.split(r"\s+", plain.strip()) if t]
+    _has_marker = any(name_shape(t)[1] == "unknown" for t in _givn_tokens)
+
     ordinal = 0
     for token in ([] if is_description(raw_givn)
-                  else join_particles([t for t in re.split(r"\s+", plain.strip()) if t])):
+                  else join_particles(_givn_tokens)):
         # **`name_shape` runs on `GIVN` too.** It did not until 2026-08-31, so every marker
         # already in `UNKNOWN_MARKERS` became a `given` name when it sat in the given-name
         # field: `NN`, `Unknown`, `okänd` and `anonyma` each produced a `P735` proposal.
@@ -2226,7 +2296,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             # `Nicolaus Iohannis Johansson`, `Magnus Jonæ Uhr`, `Georgius Andreae Troninus`:
             # the Latin genitive stands where a middle name would and is not one.
             out.append((token, "patronymic", 0))
-        else:
+        elif not _has_marker:
             ordinal += 1
             out.append((token, "given", ordinal))
 
