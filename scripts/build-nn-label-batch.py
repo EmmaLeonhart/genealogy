@@ -387,29 +387,50 @@ def main() -> int:
     def nearest(qid: str) -> tuple[str, str, str]:
         """`(relation, relative_qid, relative_name)` for the nearest named one.
 
-        ⛔ **CHILDREN, PARENTS, SPOUSE — ruled 2026-09-09, and it INVERTS what was here.**
-        The order was parent, spouse, child, so `Q141403481` came out *husband of Gölug* when
-        his daughter was sitting right there and the right English is **`Andreas father of
-        Malin`**.
+        ⛔ **FATHER, MOTHER, SPOUSE, CHILD — ruled 2026-09-15, and it supersedes the
+        2026-09-09 child-first order that stood here.** Written out by Emma as a list, with the
+        reason attached:
 
-        **Ruled twice in one minute and the second ruling is the one that stands**: children,
-        spouse, parents was said first and immediately replaced by *children, parents, spouse*.
-        The superseded version must not survive anywhere as if it were current —
-        `CLAUDE.md` § *Corrections outrank what they correct*.
+            Father
+            Mother
+            Spouse
+            Child
 
-        **A child is the strongest naming evidence in this corpus and a marriage is the
-        weakest.** Malin's own surname is **Andersdotter** — *Anders' daughter* — so the child's
-        patronymic states the father's given name outright. `CLAUDE.md` § *A patronymic is
-        `P5056` … with `P144` pointing at the father, the person*. A spouse's name says nothing
-        whatever about yours, which is why it now sorts last of the three.
+        > *"Reason is that child and spouse both can mean multiple people. Parents are the most
+        > stable identifiers. Father is generally most stable"*
 
-        So: child, parent, spouse, sibling, then the long-range pair.
+        **The superseded argument was not wrong, it was narrower.** 2026-09-09 put children
+        first because `Q141403481` came out *husband of Gölug* when his daughter Malin was
+        sitting there, and Malin's own surname **Andersdotter** states her father's given name
+        outright. That is true of a patronymic child and it is the best case for the rule;
+        `CLAUDE.md` § *Corrections outrank what they correct* settles which one is current.
+
+        **The new reason is about CARDINALITY, which the old one never addressed.** A person has
+        at most one father and one mother, and may have any number of children and spouses — so
+        *father of Malin* identifies a man only if Malin is his only child, while *son of Anna*
+        identifies its subject however many siblings he has. A description whose distinguishing
+        term is itself ambiguous does not distinguish, and this emitter writes the label a
+        reader sees before anything else.
+
+        **Father before mother inside the parent step**, which `CLAUDE.md` § *A patronymic is
+        `P5056` … with `P144` pointing at the father* already implies and which is Emma's
+        first sentence on the issue: *"NN people with a mother and a father always get it from
+        their father"*. `FATHER` was already ordered before `MOTHER` here; it is now the ruled
+        behaviour rather than an accident of how the tuple was typed.
+
+        This also ends a drift § *A GUARD IN ONE EMITTER IS NOT A GUARD* predicts: there are
+        three emitters of these descriptions and they disagreed.
+        `build-garborg-day.describe_all` has had parent -> spouse -> child since 2026-09-07 and
+        `build-orderlife-batch._describe_from_relatives` likewise; only this one was inverted.
+        All three now say the same thing.
+
+        So: father, mother, spouse, child, sibling, then the long-range pair.
         """
         ent = items.get(qid, {})
         for key, candidates in (
-            ("parent_of", targets(ent, CHILD)),
             ("child_of", targets(ent, FATHER) + targets(ent, MOTHER)),
             ("spouse_of", targets(ent, SPOUSE)),
+            ("parent_of", targets(ent, CHILD)),
             ("sibling_of", targets(ent, SIBLING)),
         ):
             for target in candidates:

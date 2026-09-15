@@ -43969,3 +43969,43 @@ emit sites, `reports/restore-cjk-labels.qs`, and a three-line Fuxi restore. **De
 the transliteration of romanised CJK, and `mul` and the CJK path reading different `NAME` records
 — are not fixed**, and the locality item is where they properly belong, because neither can occur
 inside the universe.
+
+## 2026-09-15 — Relational labels take the relative's WIKIDATA name, and parents outrank children
+
+`## Relational labels issue` closed. Two defects, one item, and the worked case is the one
+Emma named: `Q141447199`, whose `en` label read **`son of Anna Olsdtr. Atletveit`**.
+
+**1. The relative's name came from Geni even when Wikidata had a better one.**
+*"relational labels are using the geni labels and not the wikidata labels ... the geni labels
+are not always the best"*. The mother is `Q141444560` and her own Wikidata label has read
+`Anna Olsdatter Atletveit` all along — the abbreviation was already resolved on the item, and
+`describe_all` kept copying Geni's unresolved form back over it into ten languages at once.
+`CLAUDE.md` § *Wikidata's label beats ours* was being honoured for a person's OWN label and
+ignored for a relative's name inside somebody else's.
+
+`describe_all` now takes `qid_of` and `live_labels` and prefers the relative's `mul`, then `en`,
+falling back to Geni when Wikidata has no label or when the one it has names nobody. One
+`usable()` test gates both sources, so a bad Wikidata label falls back rather than winning.
+
+Measured, not asserted — `reports/relational-label-source-disagreements.csv`:
+**1,466** relatives whose Geni label differs from their Wikidata label, **73** of them where the
+Geni form carries an abbreviation. Live damage today is bounded and small:
+`reports/relational-labels-live-abbreviated.csv` holds **1 of the 115** relational labels
+currently on Wikidata — exactly the one Emma found. The generator, not the backlog, was the
+problem. Geni forms in that pool include `Judas Maccabaeus br. #3` against `Yehuda ha-Makabi`.
+
+**2. Three emitters of the same description disagreed on which relative to use.**
+Ruled 2026-09-15 as a list — Father, Mother, Spouse, Child — *"child and spouse both can mean
+multiple people. Parents are the most stable identifiers. Father is generally most stable"*.
+**Cardinality is the argument and the superseded 2026-09-09 ruling never addressed it**: a
+person has at most one father and one mother and may have any number of children and spouses,
+so *father of Malin* identifies a man only if Malin is his only child.
+
+`build-garborg-day.describe_all` and `build-orderlife-batch._describe_from_relatives` already had
+parents first; `build-nn-label-batch.nearest` had been inverted to children on 2026-09-09 and was
+the odd one out. Reordered, with the superseded ruling kept in its docstring marked as superseded
+rather than deleted. § *A GUARD IN ONE EMITTER IS NOT A GUARD*, three emitters this time.
+
+`tests/test_nn_label_batch.py`: the test pinning the child-first order is rewritten to pin the
+current one, plus two new tests — all three emitters agree on the order, and the father is
+preferred over the mother in both that have the distinction.

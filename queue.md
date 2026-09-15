@@ -107,30 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## Chinese gedcom entry points — DONE, recorded locally and never emitted
-
-39 identifications are in `reports/manual-identifications-extra.csv` and all 39 QIDs are in
-`EMMA_LOCAL_ONLY_IDENTIFICATIONS`, which joins the `excluded` filter on the finished batch — so
-the tree knows who they are and nothing about them ever reaches Wikidata. Zero conflicts with
-the existing ledger. `devlog.md` 2026-09-15.
-
-## Relational labels issue
-
-Just like the other things this is at the end for a reason
-
-I notice on this one https://www.wikidata.org/wiki/Q141447199 and many others that relational labels are using the geni labels and not the wikidata labels. This is a bit of a problem because well the geni labels are not always the best
-this rep
-### Update to this issue
-
-I noticed a weird thing where the person does not have all of their relatives, and it defaults to their mother. New rule: NN people with a mother and a father always get it from their father
-
-Father
-Mother
-Spouse
-Child
-
-Reason is that child and spouse both can mean multiple people. Parents are the most stable identifiers. Father is generally most stable
-
 ## Remove abbrviations
 
 They have been in here way too long. Feminine patronymic abbreviations like "Olsdtr." really should at this point be only present at all in the "subject named as" in the geni id. Imo fix this in every single gedcom that it is present in and only have it.

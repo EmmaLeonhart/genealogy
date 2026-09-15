@@ -34,13 +34,19 @@ def nn():
 # --- which relative names the person -------------------------------------------------
 
 
-def test_the_search_order_is_children_parents_spouse(nn):
-    """⛔ Ruled 2026-09-09, and it INVERTS what shipped: children, parents, spouse.
+def test_the_search_order_is_father_mother_spouse_child(nn):
+    """⛔ Ruled 2026-09-15, superseding the 2026-09-09 child-first order this used to pin.
 
-    The order was parent, spouse, child, which is how `Q141403481` came out *husband of
-    Gölug*. It was also ruled twice within a minute -- *children, spouse, parents* first,
-    replaced immediately by *children, parents, spouse* -- so this pins the SECOND one, and
-    a revert to either the original or the superseded version fails here.
+    Emma wrote the precedence out as a list -- Father, Mother, Spouse, Child -- with the
+    reason: *"child and spouse both can mean multiple people. Parents are the most stable
+    identifiers. Father is generally most stable"*. **Cardinality is the argument**, and the
+    superseded one never addressed it: a person has at most one father and one mother and may
+    have any number of children and spouses, so *father of Malin* identifies a man only if
+    Malin is his only child.
+
+    The 2026-09-09 ruling that stood here is not deleted from the record -- it is in
+    `nearest`'s own docstring, marked superseded -- but a test may only pin what is current,
+    and a revert to child-first fails here.
 
     Read off the source, because the order lives in a tuple inside a closure and there is no
     other way to reach it.
@@ -49,7 +55,39 @@ def test_the_search_order_is_children_parents_spouse(nn):
     block = source[source.index("def nearest("):]
     block = block[:block.index("# **The long-range pass.**")]
     seen = [key for key in re.findall(r'\("(\w+_of)",', block)]
-    assert seen[:4] == ["parent_of", "child_of", "spouse_of", "sibling_of"], seen
+    assert seen[:4] == ["child_of", "spouse_of", "parent_of", "sibling_of"], seen
+
+
+def test_all_three_emitters_of_a_description_agree_on_the_order(nn):
+    """⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD*, and here there are three.
+
+    `build-nn-label-batch.nearest`, `build-garborg-day.describe_all` and
+    `build-orderlife-batch._describe_from_relatives` all pick a relative to name somebody by,
+    and on 2026-09-15 they disagreed: two had parents first and this one had been inverted to
+    children on 2026-09-09. One model, three emitters, drifted apart exactly as the rule
+    predicts. Parents before spouse before child, in all three.
+    """
+    day = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    block = day[day.index("    BY = (("):]
+    block = block[:block.index(chr(10) + chr(10))]
+    assert [k for k in re.findall(r'\("(\w+_of)"', block)] == [
+        "child_of", "spouse_of", "parent_of", "sibling_of"], block
+
+    life = (REPO / "scripts" / "build-orderlife-batch.py").read_text(encoding="utf-8")
+    seq = re.search(r'for relation, table in \((.*?)\):', life, re.S).group(1)
+    assert [k for k in re.findall(r'"(\w+)"', seq)] == ["parent", "spouse", "child"], seq
+
+
+def test_the_father_is_preferred_over_the_mother(nn):
+    """*"NN people with a mother and a father always get it from their father"* -- 2026-09-15.
+
+    `FATHER` before `MOTHER` inside the parent step was already how the tuple happened to be
+    typed; this makes it the ruled behaviour rather than an accident, in both emitters.
+    """
+    for name in ("build-nn-label-batch.py", "build-garborg-day.py"):
+        source = (REPO / "scripts" / name).read_text(encoding="utf-8")
+        assert re.search(r"FATHER.*MOTHER|father\.get\(geni_id\), mother\.get\(geni_id\)",
+                         source), name
 
 
 def test_the_relation_keys_mean_what_the_order_says(nn):

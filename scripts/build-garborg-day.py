@@ -389,7 +389,8 @@ def is_relationship_description(text):
 
 
 def describe_all(geni_id, facts, father, mother, labels, table,
-                 children=None, spouses=None, siblings=None):
+                 children=None, spouses=None, siblings=None,
+                 qid_of=None, live_labels=None):
     """`{lang: "daughter of Arne Olaus Fjørtoft Garborg"}` for a redacted person.
 
     Built from the nearest named parent. `ja` and `zh` are included **here** where
@@ -402,6 +403,8 @@ def describe_all(geni_id, facts, father, mother, labels, table,
     children = children or {}
     spouses = spouses or {}
     siblings = siblings or {}
+    qid_of = qid_of or {}
+    live_labels = live_labels or {}
     sex = (facts.get(geni_id, {}).get("sex") or "")
 
     def named(gid):
@@ -424,22 +427,58 @@ def describe_all(geni_id, facts, father, mother, labels, table,
         `scripts/labels` as the one place that owns which words mean the name is unknown.
         """
         from labels import WORDS_MEANING_UNKNOWN
-        n = (labels.get(gid) or "").strip()
-        low = n.lower()
-        if not n or low in ("nn", "private", "unknown", "?") or "<private>" in low:
-            return ""
-        # A PREFIX test, not a head-token one: the set holds multi-word phrases
-        # (`name not known`, `no name`) as well as single words, so splitting on space
-        # would miss exactly the longest and most obvious markers.
-        markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {"nn", "unknown", "ukjent"}
-        if any(low == w or low.startswith(w + " ") for w in markers):
-            return ""
-        # **A relative whose own label is one of these descriptions names nobody either**, and
-        # it composes into nonsense rather than stopping: `daughter of father of`, and
-        # `wife of Son of Menon III Pharsalos`. 21 of those are sitting in
-        # `reports/wikidata-placeholder-labels.json`. Same fix as a marker -- fall through to
-        # the next relative, never reconstruct.
-        return "" if is_relationship_description(n) else n
+
+        def usable(n):
+            """The name if it names somebody, `""` if it names nobody.
+
+            One test, applied to BOTH sources below, so Wikidata's label and Geni's are held
+            to the same standard and a bad Wikidata label falls back rather than winning.
+            """
+            n = (n or "").strip()
+            low = n.lower()
+            if not n or low in ("nn", "private", "unknown", "?") or "<private>" in low:
+                return ""
+            # A PREFIX test, not a head-token one: the set holds multi-word phrases
+            # (`name not known`, `no name`) as well as single words, so splitting on space
+            # would miss exactly the longest and most obvious markers.
+            markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {"nn", "unknown", "ukjent"}
+            if any(low == w or low.startswith(w + " ") for w in markers):
+                return ""
+            # **A relative whose own label is one of these descriptions names nobody either**,
+            # and it composes into nonsense rather than stopping: `daughter of father of`, and
+            # `wife of Son of Menon III Pharsalos`. 21 of those are sitting in
+            # `reports/wikidata-placeholder-labels.json`. Same fix as a marker -- fall through
+            # to the next relative, never reconstruct.
+            return "" if is_relationship_description(n) else n
+
+        # ⛔ **WIKIDATA'S LABEL FOR THE RELATIVE BEATS GENI'S.** Ruled 2026-09-15:
+        # *"I notice on this one https://www.wikidata.org/wiki/Q141447199 and many others that
+        # relational labels are using the geni labels and not the wikidata labels. This is a bit
+        # of a problem because well the geni labels are not always the best"*.
+        #
+        # `Q141447199` is the case exactly. Its `en` reads **`son of Anna Olsdtr. Atletveit`**,
+        # built from Geni's spelling of his mother -- while that mother is `Q141444560` and her
+        # own Wikidata label has read **`Anna Olsdatter Atletveit`** all along. So the
+        # abbreviation had already been resolved on the item, and this emitter kept copying the
+        # unresolved Geni form back over it, into ten languages at once.
+        #
+        # It is `CLAUDE.md` § *Wikidata's label beats ours* applied one step out: the rule was
+        # being honoured for a person's OWN label and ignored for the name of their relative
+        # inside somebody else's -- the same one-place-only failure as § *A GUARD IN ONE EMITTER
+        # IS NOT A GUARD*. And it is what makes the next queue item (`Olsdtr.` -> `Olsdatter`)
+        # stick: fixing a mother's label is pointless while every child's description re-states
+        # the abbreviation.
+        #
+        # `mul` first, then `en`: `mul` is this project's primary label. A Wikidata label that
+        # names nobody -- a marker, or itself a relationship description -- falls through to
+        # Geni rather than being taken, which is why `usable` gates both.
+        q = qid_of.get(gid) or ""
+        if q:
+            for lang in ("mul", "en"):
+                from_wikidata = usable(live_labels.get((q, lang), ""))
+                if from_wikidata:
+                    return from_wikidata
+        return usable(labels.get(gid))
 
     #: Which relative to describe by, nearest first, and the `WORDS` group naming the
     #: relationship FROM this person TO them.
@@ -7155,7 +7194,8 @@ def main():
             if _nn_birth and _nn_birth != mul_value:
                 lines.append(f'LAST\tAmul\t"{_nn_birth}"')
             described = describe_all(g, facts, father, mother, referred_to_as, table,
-                                     children, spouses, siblings)
+                                     children, spouses, siblings,
+                                     qid_of=our_items, live_labels=live_labels)
             for code, value in sorted(described.items()):
                 lines.append(f'LAST\tL{code}\t"{value}"')
             if not described:
