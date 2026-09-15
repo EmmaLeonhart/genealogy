@@ -27,35 +27,6 @@ tiny path GEDCOMs, 773 isolates reached.
 ⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
 is the extension's, never a sleep in the agent.
 
-### ⛔⛔ FIRST ITEM: CI HAS BEEN RED ON `main` EVERY DAY SINCE AT LEAST 2026-09-10
-
-**This is the residue of Emma's *why do bad items keep getting created* item, and it inherits
-its slot because it is the answer to it.** The guard was written. A test asserting the guard
-works was written the same day. The test failed on its first run and has failed every run since,
-and the bad items kept being emitted for a day and a half underneath it.
-
-Run `34834596305`, both 3.10 and 3.13, **11 failed, 1627 passed**:
-
-    test_namemodel.py::test_no_numeral_gets_a_name_item_in_any_notation   FIXED 2026-09-14
-    test_pipe_label_wiring.py::test_no_resolved_proposal_still_carries_punctuation
-    test_edit_graph.py::test_no_two_edits_claim_the_same_id               6 dup cjk_mul ids
-    test_generated_inventories.py::...names_exactly_the_batches_on_disk   stale inventory
-    test_geni_extension.py::test_the_extension_only_reaches_geni          host `file:///*`
-    test_geni_extension.py::test_exports_are_never_concurrent...          missing file
-    test_unconnected_worklist.py::test_the_committed_worklist_has_the_spec_columns
-    test_wikidata_start_date.py  × 4                                     the HELD gate
-
-**The four `HELD` failures are red ON PURPOSE** while editing is held by hand, and they are the
-mechanism, not noise beside it: a suite that is permanently red teaches every reader that red
-means nothing, and then the seven real failures are invisible. **Fix the HELD four so that
-holding is a PASSING state** — the tests should assert the hold behaves correctly, not assert it
-is absent — and then fix the rest. `test_geni_extension`'s missing `service-worker.js` and the
-stale inventory look cheap; `test_pipe_label_wiring`'s punctuation failure is this same
-punctuation defect on the LABEL side and should be read next to what was just fixed.
-
-⛔ Per § *TESTS RUN IN CI/CD OR NOT AT ALL*, this is read from run conclusions, never a local
-`pytest`.
-
 ### ⛔ THE SPLITTER PARSES NAMES POSITIONALLY, AND THAT IS THE REMAINING HALF
 
 `und` and `(Ulf` came from `Mangold von Thurgau und Nellenburg` and `(Ulf af Horsnäs)` being
