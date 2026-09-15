@@ -16,6 +16,45 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — the Wikidata hold is LIFTED, and the condition that held it is superseded
+
+> *"the condition has changed ... I made the decision that this is going to take a long time, the
+> solution is that the agent is triggered to run this thing every single session, and all it does
+> is it just runs this script and commits and pushes it, and the CI/CD is going to be able to deal
+> with everything ... It should be wired in right now."*
+
+**The old condition was gating the wrong thing.** It read: attempt every isolate in
+`reports/unconnected-p2600.tsv` before any edit goes out. At the path runner's measured rate that
+is **261,084 people still to request at roughly 900 an hour** — months. And the two halves have
+nothing to do with each other: the isolate sweep needs a real logged-in browser and therefore an
+agent, while composing and sending edits needs neither. Holding the edits behind the sweep made
+the slow half the pacemaker for the fast one.
+
+**The division is now by what needs a browser:**
+
+    the agent, once a session   start the path runner, top it up, commit, push. Commanded
+                                exports if any are queued. That is the whole job.
+    CI/CD, continuously         rebuild, compose, split, regenerate the inventories, publish
+                                Pages, and SEND the automatic half at 07:08 daily.
+
+    HELD = False                scripts/wikidata_lockout.py
+    EDITS_HELD: "no"            .github/workflows/wikidata-edits.yml
+
+Both, together, because `tests/test_wikidata_start_date.py` fails if they disagree — which is the
+entire reason the flag is written twice.
+
+**Checked before flipping, not after.** The automatic half was run through the send-time gates:
+**82 edits, 41 creates, zero refused** — no creation for anybody already holding a QID, no name
+item whose label is not a name, no clan-seat label. The 63 stale creations that failed CI earlier
+were gone, the pipeline's recompose having fixed them. And the two halves are disjoint on parsed
+edit objects, so the page cannot tell anyone to re-send what the runner sent.
+
+`clan_labels_allowed` still answers *suppressed until 2026-10-01*, correctly untouched by any of
+this.
+
+Automation was already past its own date: `automation_allowed` reports *2026-09-15 is on or after
+2026-09-15*. The first scheduled send is 08:07.
+
 ## 2026-09-14 — the daily batch splits in two, and the halves are disjoint by construction
 
 *"Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements

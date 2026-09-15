@@ -61,8 +61,14 @@ env:
   # that be the case." The Wikidata work is at the END of queue.md and the isolate
   # path connections come first; batches went out ahead of both.
   # Mirrors HELD in scripts/wikidata_lockout.py; tests/test_wikidata_start_date.py
-  # fails if the two disagree. To lift: set both to no/False.
-  EDITS_HELD: "yes"
+  # fails if the two disagree. To put the hold back: set both to yes/True.
+  #
+  # LIFTED 2026-09-14. The condition was "attempt every isolate first", and that was gating
+  # the wrong thing: the isolate sweep needs a logged-in browser and therefore an agent, the
+  # edits need neither, and 261,084 people at ~900/hour made the slow half the pacemaker for
+  # the fast one. The agent now does the browser work once a session; CI/CD does the rest
+  # continuously. See the long note on HELD in scripts/wikidata_lockout.py.
+  EDITS_HELD: "no"
   START_DATE: "2026-09-01"
   AUTOMATION_START_DATE: "2026-09-15"
   # The daily batch: what runs by itself, chosen 2026-09-05.

@@ -54,10 +54,28 @@ import sys
 #: `scripts/attempt_ledger.py` so it is a fact in a file. `queue.md` § *Wikidata isolate
 #: connection* is the gate and carries the three stages.
 #:
-#: **To lift it:** set `HELD = False` here and `EDITS_HELD: "no"` in
-#: `.github/workflows/wikidata-edits.yml`. `tests/test_wikidata_start_date.py` fails if the two
-#: disagree, the same way it does for the two dates.
-HELD = True
+#: **⛔ LIFTED 2026-09-14, AND THE CONDITION ABOVE IS SUPERSEDED.** Ruled that evening:
+#:
+#: > *"the condition has changed ... I made the decision that this is going to take a long time,
+#: > the solution is that the agent is triggered to run this thing every single session, and all
+#: > it does is it just runs this script and commits and pushes it, and the CI/CD is going to be
+#: > able to deal with everything ... It should be wired in right now."*
+#:
+#: The old gate was *every isolate in `reports/unconnected-p2600.tsv` attempted first*. At the
+#: path runner's measured rate that is **261,084 people still to request at roughly 900 an
+#: hour** — months, not evenings. It was gating the wrong thing: the isolate sweep needs a real
+#: logged-in browser and therefore an agent, while the edits need neither, so holding the edits
+#: behind the sweep made the slow half the pacemaker for the fast one.
+#:
+#: **The division now:**
+#:
+#:     the agent, once a session   the browser-only work — run scripts/pathrun.js, commit, push
+#:     CI/CD, continuously         compose, split, publish and SEND
+#:
+#: **To put the hold back:** `HELD = True` here and `EDITS_HELD: "yes"` in
+#: `.github/workflows/wikidata-edits.yml`. Both, or the halves disagree and
+#: `tests/test_wikidata_start_date.py` fails — which is the whole reason it is written twice.
+HELD = False
 
 #: Why, in one line, printed by every refusal so a run never just says "locked".
 HELD_REASON = ("held by hand 2026-09-13 -- the Wikidata campaign runs AFTER the queue, and the "

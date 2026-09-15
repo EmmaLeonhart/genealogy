@@ -162,6 +162,38 @@ is not the rule: a fixed target answers "have we done enough arithmetic", and th
 is whether new exports are still returning new people. One 5,000-person ball is the first round
 of a loop, not a sample of anything.
 
+## ⛔ WHAT A SESSION IS FOR: THE BROWSER WORK. CI/CD DOES THE REST
+
+**Ruled 2026-09-14, and it is the shape of the whole project now:**
+
+> *"the condition has changed ... this is going to take a long time, the solution is that the
+> agent is triggered to run this thing every single session, and all it does is it just runs
+> this script and commits and pushes it, and the CI/CD is going to be able to deal with
+> everything ... I'll just be running the agent periodically, but the CI/CD should be able to do
+> all of the stuff."*
+
+**The division is by what needs a logged-in browser, and nothing else.**
+
+    THE AGENT, once a session      Geni needs a real logged-in browser and cannot be automated:
+                                   → start scripts/pathrun.js, top it up, commit, push
+                                   → run a commanded export if one is queued
+                                   → that is the job. Not the batches, not the labels.
+
+    CI/CD, continuously            everything that needs no browser:
+                                   pipeline.yml   rebuild, compose the batch, split it,
+                                                  regenerate the inventories, publish Pages
+                                   wikidata-edits.yml  7 8 * * *  SEND the automatic half
+
+**⛔ SO DO NOT DO CI/CD's WORK BY HAND.** Composing a batch, regenerating an inventory or
+rebuilding the site in a session is duplicated effort at best and a merge conflict at worst —
+`pipeline.yml` runs on push and does all three. The exception is a defect: fix the generator,
+push, and let the pipeline run it.
+
+**⛔ AND THE EDITS ARE LIVE.** `EDITS_HELD` was lifted the same evening. The schedule sends
+`reports/wikidata-garborg-day-auto.txt` — a third of the day's batch — by itself, every day at
+08:07. The Pages site publishes the disjoint remainder for a person to paste. Nobody has to
+start it.
+
 ## ⛔ THE PATH CAMPAIGN RUNS IN EVERY SESSION, NO MATTER WHAT
 
 **Ruled 2026-09-14:** *"the path exporting campaign thing is always gonna run no matter what
