@@ -408,7 +408,32 @@ PATRONYMIC_PARTICLE = frozenset({
     "ap", "ab", "ferch", "verch",              # Welsh
     "ben", "bin", "ibn", "bint", "bar", "bat",  # Semitic
     "ua", "uí", "ní", "nic",                   # Gaelic
+    "mac", "ó",                                # Gaelic, added 2026-09-15
 })
+#: **`mac` and `ó` were missing, and `mac` is the commonest Gaelic particle there is.** Ruled
+#: 2026-09-14: *"I still think we do not have support for other languages like Semitic languages
+#: and celtic languages and their patronymics."* Censused over `reports/display-names.csv`,
+#: 1,856,260 people, counting only a token that IS the particle with another name token after
+#: it: **`mac` 609, `ó` 95**.
+#:
+#: ⛔ **`abu` AND `abd` WERE ADDED IN THE SAME EDIT AND TAKEN STRAIGHT BACK OUT**, on 369 and 141
+#: occurrences, because neither means *son of*:
+#:
+#:     abd   "servant of". `Abd Allah`, `Abd al-Rahman` are GIVEN names, theophoric ones.
+#:           Classifying them patronymic renames the person after a father called Allah.
+#:     abu   "father of". `Abu Bakr` is a teknonym — it names his SON. It points the opposite
+#:           way down the line from every other particle here.
+#:
+#: Both were caught by running `classify_fields` on them rather than by reading the list: `Abd
+#: Allah` in `GIVN` came back `patronymic`, which is plainly wrong on sight. A particle set is
+#: the kind of thing that looks finished when it is merely plausible.
+#:
+#: **The test is the standalone token, which is what makes these safe.** `MacDonald` written as
+#: one word is a surname and is untouched; `Mac Donald` as two tokens is the construction, and
+#: the particle names the father. That is the same shape `ap` and `ben` already rely on, and it
+#: is why 609 is the count rather than the tens of thousands of `Mac…` surnames in the corpus.
+#:
+#: `ó` carries its accent for the reason `uí` and `ní` do: bare `o` heads far too much.
 #: **Unaccented `ni` and `ui` are NOT here, and the census is why.** Capitalised `Ni` heads
 #: `Ni Choon`, a Chinese name, as often as it heads a Gaelic one; the accented forms are
 #: unambiguous. It costs 17 occurrences and buys never renaming a Chinese person's father.

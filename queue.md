@@ -56,17 +56,29 @@ QUEUE*, which is how a list gets ordered by when a thing was appended instead of
 what it is. Ruled 2026-09-13: *"uhh why did you shit the bed so hard with queue
 ordering lol"*. Anything typed here by hand outranks anything derived.
 
-## Patronymic pairs — DONE. Other traditions are the part that remains
+## Romance patronymics — measured, and they need the locality guard
 
-`scripts/build-patronymic-pairs.py`, 40 a run. Both guards, the register mapping and the shared
-genitive `s` are in it and in `namemodel.patronymic_counterpart`; the reasoning is in
-`devlog.md` 2026-09-14.
+Celtic and Semitic are done: `mac` and `ó` added 2026-09-15, `ben`/`bin`/`ibn`/`bint`/`bar`/`bat`
+and `ap`/`ab`/`ferch`/`verch`/`ua`/`uí`/`ní`/`nic` were already there. `abu` and `abd` were tried
+and rejected — neither means *son of*. See `devlog.md` 2026-09-15.
 
-### Other traditions
+**Romance is what is left, and it is the hardest, exactly as the item said.** Censused over
+1,856,260 people:
 
-I still think we do not have support for other languages like Semitic languages and celtic languages and their patronymics
+    -es    50,863     Portuguese patronymic AND an ordinary plural in several languages
+    -ez    14,540     Spanish. Ruled a live patronymic 2026-08-18
+    -ian   14,281     Armenian, and also an ordinary English adjective ending
+    -iz     1,412     -oz  479     -az  332
+    Greek  -poulos 3, -idis 59, -akis 5  — too few to be worth a rule
 
-Romance languages should be there too but I think they are the hardest and the most dead
+⛔ **DO NOT ADD THESE ON FORM ALONE.** `-ez` is ruled live and is the safest of them, but
+14,540 tokens flipping from `P734` family name to `P5056` patronymic is a large behavioural
+change, and `-es` at 50,863 is mostly not a patronymic at all. This is the same trap the
+patronymic PAIRS hit on 2026-09-14: the form is identical across cultures and only the culture
+separates them, so the guard has to be locality plus an attested father, not the ending.
+
+Do it the way the pairs were done: locality first, then the father test, then measure what
+survives before emitting anything.
 
 ## ALWAYS LAST — the tail
 

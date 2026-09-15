@@ -992,3 +992,43 @@ def test_the_roman_rule_is_the_ordinal_SEQUENCE_and_not_the_alphabet():
     for real in ("di", "Li", "Di", "il", "im", "ll", "Liv", "D", "M", "C", "L", "DILL",
                  "Bure", "孔", "Ærø", "Ólafsdóttir", "O'Brien"):
         assert namemodel.name_shape(real)[1] != "unknown", f"{real!r} lost its name item"
+
+
+def test_the_gaelic_particles_mac_and_o():
+    """`mac` is the commonest Gaelic patronymic particle and was missing until 2026-09-15.
+
+    Censused over `reports/display-names.csv`, counting only a token that IS the particle with
+    another name after it: `mac` 609, `ó` 95.
+
+    **The standalone-token test is what makes this safe.** `MacDonald` written as one word is a
+    surname and is untouched; `Mac Donald` as two tokens is the construction. That is why the
+    count is 609 and not the tens of thousands of `Mac...` surnames in the corpus.
+    """
+    def usage(givn, surn):
+        return {t: u for t, u, _o in namemodel.classify_fields(givn=givn, surn=surn)}
+
+    assert usage("Domhnall", "Mac Cathail").get("Mac Cathail") == "patronymic"
+    assert usage("Sean", "Ó Briain").get("Ó Briain") == "patronymic"
+    # one word is a surname, not a construction
+    assert usage("Domhnall", "MacDonald").get("MacDonald") == "family"
+
+
+def test_abu_and_abd_are_NOT_patronymic_particles():
+    """Both were added on 2026-09-15 and taken back out in the same edit.
+
+    They are Semitic and they sit where a particle sits, which is exactly why they looked
+    right — and neither means *son of*:
+
+        abd   "servant of". `Abd Allah` and `Abd al-Rahman` are GIVEN names, theophoric ones.
+              Classifying them patronymic renames the person after a father called Allah.
+        abu   "father of". `Abu Bakr` is a teknonym: it names his SON, pointing the opposite
+              way down the line from every other particle in the set.
+
+    Caught by running `classify_fields` on them rather than by re-reading the list.
+    """
+    given = {t: u for t, u, _o in namemodel.classify_fields(givn="Abd Allah",
+                                                            surn="ibn Muhammad")}
+    assert given.get("Abd") == "given", "Abd is a given-name element, not a particle"
+    assert given.get("ibn Muhammad") == "patronymic", "the real particle still works"
+    assert "abu" not in namemodel.PATRONYMIC_PARTICLE
+    assert "abd" not in namemodel.PATRONYMIC_PARTICLE

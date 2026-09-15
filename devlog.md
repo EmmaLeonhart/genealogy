@@ -16,6 +16,41 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-15 — Celtic and Semitic patronymics: `mac` was missing, `abu` and `abd` were wrong
+
+*"I still think we do not have support for other languages like Semitic languages and celtic
+languages and their patronymics. Romance languages should be there too but I think they are the
+hardest and the most dead."*
+
+**Celtic had a hole, and it was the biggest one.** `ap`, `ab`, `ferch`, `verch`, `ua`, `uí`,
+`ní` and `nic` were all present — and `mac`, the commonest Gaelic patronymic particle there is,
+was not. Censused over `reports/display-names.csv`, 1,856,260 people, counting only a token that
+IS the particle with another name token after it: **`mac` 609, `ó` 95.** Both added.
+
+The standalone-token test is what makes that safe. `MacDonald` written as one word is a surname
+and stays one; `Mac Donald` as two tokens is the construction and the particle names the father.
+That is why the count is 609 rather than the tens of thousands of `Mac…` surnames in the corpus.
+
+⛔ **`abu` AND `abd` WERE ADDED IN THE SAME EDIT AND TAKEN STRAIGHT BACK OUT**, at 369 and 141
+occurrences. They are Semitic, they sit exactly where a particle sits, and neither means *son
+of*:
+
+    abd   "servant of". `Abd Allah`, `Abd al-Rahman` are GIVEN names, theophoric ones.
+          Classifying them patronymic renames the person after a father called Allah.
+    abu   "father of". `Abu Bakr` is a teknonym — it names his SON, pointing the opposite way
+          down the line from every other particle in the set.
+
+Caught by running `classify_fields` on them, not by re-reading the list: `Abd Allah` in `GIVN`
+came back `patronymic`, which is wrong on sight. **A particle set is the kind of thing that looks
+finished when it is merely plausible**, and the only test that works is putting a real name
+through it.
+
+**Romance is measured and deliberately not done** — `-es` 50,863, `-ez` 14,540, `-ian` 14,281,
+`-iz` 1,412, `-oz` 479, `-az` 332, Greek in single digits. `-ez` is ruled a live patronymic and
+is the safest, but flipping 14,540 tokens from `P734` to `P5056` on form alone is the same trap
+the pairs hit the day before: the ending is identical across cultures and only the culture
+separates them. It needs locality plus an attested father, the way the pairs got it.
+
 ## 2026-09-14 — the subject-named-as backfill runs, and it is the universe-growth pass
 
 *"I'm asking you to add the subject named as to existing P2600 properties within the universe and
