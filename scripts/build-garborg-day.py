@@ -77,7 +77,7 @@ ROOT = Path(__file__).resolve().parent.parent
 #: balanced by people is mostly sibling links by statement. The cap is per DAY across every
 #: batch, so it is shared with `build-missing-reciprocals.py`, and the overflow is carried
 #: rather than dropped: the statements are correct, there are just too many at once.
-SIBLING_CAP = 40
+SIBLING_CAP = 60
 _siblings_emitted = []
 
 SEX = {"M": "Q6581097", "F": "Q6581072"}
@@ -648,7 +648,7 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 #: How many manual `P2600` statements go out per run. Specified 2026-09-01: the pipeline
 #: generates a fixed number of QuickStatements adding the Geni id to the individuals at the
 #: start of each generation, taken from the CSV rows found not to be present already.
-MANUAL_P2600_PER_RUN = 20
+MANUAL_P2600_PER_RUN = 30
 
 
 def manual_p2600_lines(priority_qids=()):
@@ -1420,7 +1420,7 @@ def _label_corrections(our_items, labels, table, state, fields=None,
 #: **A label at CREATION time is not capped and is not counted.** The distinction, same message:
 #: a label added AFTER item creation is a risk, and one added DURING creation is good. So this
 #: counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
-LABEL_EDIT_CAP = 60
+LABEL_EDIT_CAP = 90
 
 #: **How many EXISTING people may gain name statements in one run.** Ruled 2026-09-09, on a
 #: 4,081-statement batch carrying seemingly uncapped Geni ids and other things: they should be
@@ -1435,14 +1435,23 @@ LABEL_EDIT_CAP = 60
 #: **60 PEOPLE, the same unit and the same number as `LABEL_EDIT_CAP`**, because it is the same
 #: shape of work: a rolling window over the ledger that drains a little each run. Nothing is
 #: lost -- what does not go today goes tomorrow.
-NAME_ADD_CAP = 60
+#: ⛔ **RAISED 50% ON 2026-09-14.** Ruled that day: *"the current amount of edits is the daily
+#: cap ... you are specifically making 50% more quickstatements and then segregating out a third
+#: of that to be run by cicd"*. So the caps ARE the daily volume, and the instruction is about
+#: generating more of it, not about sending a fraction of what already exists.
+#:
+#: The arithmetic is why a third: generate `cap x 1.5`, give CI/CD a third of the new total, and
+#: the third it takes is exactly the 50% that was added -- `1.5 / 3 = 0.5`. The hand-run keeps
+#: the volume it has today and the autonomous run is purely the increase, which is what
+#: *"an additional smaller amount of edits ... run autonomously"* asks for.
+NAME_ADD_CAP = 90
 
 #: **A ceiling on the `P2600` lead**, which is exempt from `MANUAL_P2600_PER_RUN` by design: an
 #: id must never be withheld from an item this run is labelling. That exemption is right and is
 #: kept -- but it made the id count a FUNCTION of how many items the run touched, so 1,269
 #: touched items produced 47 `P2600` where the cap says 20. Capping the pass above fixes it at
 #: the cause; this is the backstop.
-P2600_LEAD_CAP = 40
+P2600_LEAD_CAP = 60
 
 
 #: **The order label edits go out in, by LANGUAGE. Set 2026-09-04:**

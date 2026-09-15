@@ -63,7 +63,7 @@ R = ROOT / "reports"
 ITEMS = ROOT / "out" / "model-vs-reality-items.json"
 
 #: `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*.
-SIBLING_CAP = 40
+SIBLING_CAP = 60
 #: Refuse a diff older than this. The items are edited by hand between runs.
 MAX_AGE_HOURS = 24
 #: Never projected: these replace rather than add.

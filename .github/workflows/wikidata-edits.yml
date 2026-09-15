@@ -156,6 +156,12 @@ jobs:
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
             echo "batch=$DAILY_BATCH" >> "$GITHUB_OUTPUT"
             echo "limit=100" >> "$GITHUB_OUTPUT"
+            # A THIRD OF THE BATCH is the autonomous share -- ruled 2026-09-14, "making 50%
+            # more quickstatements and then segregating out a third of that to be run by
+            # cicd". The caps went up 50% the same day, so the third CI/CD takes is exactly
+            # the increase and the hand-run keeps the volume it had. `limit` stays as the
+            # hard ceiling on top of it.
+            echo "fraction=0.3333" >> "$GITHUB_OUTPUT"
             if [[ ! "$today" < "$AUTOMATION_START_DATE" ]]; then
               echo "mode=--live" >> "$GITHUB_OUTPUT"
               echo "::notice title=Automation live::$today is on or after $AUTOMATION_START_DATE"

@@ -1054,15 +1054,24 @@ are the harness talking, not input.
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
 covers lettering for the same reason it covers numbering.
 
-- **Ensure the FOUR crons are running** — work-loop `3 * * * *`, auto-flush `15 * * * *`,
-  status-report `42 * * * *`, and the **dead-queue-item sweep `45 * * * *`**, which removes dead
-  queue items — ones that are simply completed. They are **session-only**: they die when the session ends and must be
-  recreated at the start of the next one. This is not theoretical — every cron died in the
-  2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
-  2026-08-29. Live in the 2026-09-12 session as `94cad21d` (:03), `9de407dd` (:15),
-  `94e6ea68` (:42), `8a7dd280` (:45). The 2026-09-09 ids (`b6ad7ac1`, `2263d879`, `f09fcc7b`,
-  `803b418d`) and the 2026-09-05 ids (`7c8cc0c6`, `7fb9d24f`, `9f3125b0`, `caf417ce`) are dead
-  sessions', which is the reason to check `CronList` rather than trust this line.
+- **⛔ ENSURE THE **TWO** CRONS ARE RUNNING — work-loop `0,30 * * * *` and auto-flush
+  `15 * * * *`.** Ruled 2026-09-14: *"Work-loop and auto-flush only"*, and the work-loop fires
+  **on the hour and the half hour** — *"`:00` and `:30` work loop prompts asking to work on the
+  1st queue item will be good"*. `.claude/skills/autonomous-loop/SKILL.md` is the authority and
+  says the same; this line said FOUR and `3 * * * *` until 2026-09-14, which is the stale copy
+  that caused the disagreement.
+
+  **The status-report `42 * * * *` and dead-queue-sweep `45 * * * *` crons are DELETED and are
+  not to be recreated.** The sweep came within one step of deleting two LIVE queue items.
+
+  **⛔ NEVER KILL A CRON WITHOUT BEING TOLD TO.** Ruled 2026-09-14: *"I am not authorizing you
+  to kill any cron jobs. We need all of the fucking cron jobs to be running so we can properly
+  barrel through the queue."*
+
+  They are **session-only**: they die when the session ends and must be recreated at the start
+  of the next one. Not theoretical — every cron died in the 2026-08-28 crash and none was
+  recreated, which is why nothing ran between 00:03 and 06:00 on 2026-08-29. Old session ids are
+  dead and are the reason to check `CronList` rather than trust any line in this file.
 
   ⛔ **AND IT HAPPENED AGAIN ON 2026-09-12.** The session ran roughly nine hours with `CronList`
   reading *no scheduled jobs* — through the whole Alix, Seljuq, NN Näf, Dál Fiatach and no-name

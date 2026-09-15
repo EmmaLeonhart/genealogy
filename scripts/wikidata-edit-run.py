@@ -37,6 +37,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import os
 import sys
 import time
@@ -475,6 +476,16 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch", required=True)
     ap.add_argument("--limit", type=int, default=10)
+    # ⛔ **A THIRD OF THE BATCH IS WHAT CI/CD RUNS BY ITSELF.** Ruled 2026-09-14: *"you are
+    # specifically making 50% more quickstatements and then segregating out a third of that to
+    # be run by cicd"*. The caps were raised 50% the same day, so `1.5 / 3 = 0.5` -- the third
+    # CI/CD takes is exactly the increase, and the hand-run keeps the volume it always had.
+    #
+    # A FRACTION rather than a number because the batch size moves every day and a fixed
+    # `--limit 100` is a third of nothing in particular. `--limit` still applies on top as the
+    # hard ceiling, so the scheduled run sends `min(third of the batch, limit)`.
+    ap.add_argument("--fraction", type=float, default=None,
+                    help="send at most this fraction of the batch (0 < f <= 1)")
     ap.add_argument("--satisfied", help="file of edit ids already applied, one per "
                                         "line, so a resumed run is not blocked by "
                                         "work that is genuinely done")
@@ -499,6 +510,13 @@ def main() -> int:
         raise SystemExit(f"no such batch: {path}")
 
     limit = max(0, min(args.limit, MAX_EDITS_PER_RUN))
+    if args.fraction is not None:
+        if not 0 < args.fraction <= 1:
+            sys.exit(f"--fraction must be in (0, 1], got {args.fraction}")
+        share = math.ceil(len(edits) * args.fraction)
+        if share < limit:
+            print(f"--fraction {args.fraction:.4g} of {len(edits)} edits -> {share}")
+            limit = share
     edits = load_batch(path)
     print(f"batch {rel}: {len(edits)} edit objects, limit {limit}")
 
