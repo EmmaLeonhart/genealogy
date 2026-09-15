@@ -44271,3 +44271,43 @@ tens of thousands of items unrelated to the Bure kinship — the exact shape § 
 THINGS IN THE UNIVERSE OR ONE STEP ADJACENT TO IT* forbids, and the exact shape of *"I don't want
 to draw more attention than I've been getting from being non-local."* It belongs to the
 WikiProject that did the biographical import.
+
+## 2026-09-15 — The German lead is right, and what it finds is a missing branch rather than a missing connection
+
+`## Possible leads` closed. *"I think connecting me to Alix via German people such as this person
+[Ursula von Münsterberg] might be a good way to go about it. Since I do see a clear line of
+descent for this person and it may be the case for many others too."*
+
+**The `?through=` id in her link is the whole answer to what she was looking at.**
+`6000000003481830064` is **Guy d'Ibelin, sénéchal de Chypre, and his mother is Alix de Lampron.**
+So Geni was computing her relationship to Ursula through Alix's own son, which is exactly why the
+line of descent looked clear.
+
+**The German route is real in our own tree, and it runs through that same man.**
+`paths/sophie-of-teschen-to-alix-de-lampron.tsv`, 13 steps: Zofia Cieszyńska → the Cieszyn dukes →
+Masovia → Bavaria-Landshut → **Jacques de Lusignan, King of Cyprus** → Alix d'Ibelin → **Guy
+d'Ibelin** → Alix de Lampron. **The hinge is one marriage** — Agnes von Bayern-Landshut to a
+Lusignan king of Cyprus — and that is the structural reason *"it may be the case for many others
+too"* is right: any German line touching Bavaria-Landshut or the Cieszyn dukes reaches Alix the
+same way.
+
+**But connection was never the scarce thing, and that is the correction.** A path from Emma to
+Alix already exists over our own tree and needs no German people at all —
+`paths/emma-to-alix-de-lampron.tsv`, 30 steps through the Norwegian Borsheim/Nese/Raunes line, the
+Swedish Ulvåsa, then Naples and Taranto into Cyprus. More decisively: **4,386 of our 4,436 ledger
+people reach Alix**, median 21 steps, nearest 2.
+
+**What the lead actually finds is a MISSING BRANCH.** `Ursula von Münsterberg`
+`6000000188494434823` **is not in our tree at all** — which is also why
+`build-qid-links-gedcom.py` refused her on 2026-09-15 as one of four that would have been minted
+as new people. On Wikidata she is **2 steps from our universe**: her father `Q324242` Victor of
+Münsterberg is one step out, and her mother `Q9391904` **Sophie of Teschen is already ours**. So
+the German descent from Alix is under-represented in the corpus, and Emma spotted the gap from the
+Geni side.
+
+**17 people on the two lines hold no Wikidata item** — `reports/alix-line-missing-items.csv`.
+Those are the creations that would make both lines continuous, and they include Alix herself, Guy
+d'Ibelin, Agnes von Bayern-Landshut and Joanna I of Naples.
+
+The concrete follow-up is a Geni export seeded on Ursula's branch, which is browser work and is
+written into the export section rather than done here.

@@ -107,11 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## Possible leads
-
-I think connecting me to Alix via German people such as this person https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064 might be a good way to go about it. Since I do see a clear line of descent for this person and it may be the case for many others too
-
-
 ## Jan 1 correspondences research
 
 Based on the fact you did not figure out that the Chinese tails were duplicates, I am convinced you do not in fact know at all anything on the Egyptian Pharaohs geni to wikidata correspondences and should probably figure them out
@@ -222,6 +217,22 @@ fix important stuff."*
 They sit AFTER the hold lift on purpose, so a long-running export can never block it. Each one
 is a submit, a wait of 6-15 minutes, and a file — cheap to pick up whenever the browser is
 free, and they integrate on their own schedule.
+
+### Ursula von Münsterberg — the German branch of Alix's descent, missing from the corpus
+
+`6000000188494434823`. **Not in our tree**, and her mother `Sophie of Teschen`
+`6000000006727858370` already is — so this is one export away from closing a branch we know is
+there. Established 2026-09-15 from Emma's own lead: Geni computed her relationship through
+`6000000003481830064` **Guy d'Ibelin, whose mother is Alix de Lampron**, and the route from the
+German side runs Cieszyn → Bavaria-Landshut → Lusignan Cyprus → Guy → Alix, hinging on the
+marriage of Agnes von Bayern-Landshut to a Lusignan king.
+
+*"it may be the case for many others too"* — so the interest is the branch, not the individual.
+`Descendants` off a created ancestor per `docs/export-seed-rules.md`, not `Forest`.
+
+⛔ Check `https://www.geni.com/gedcom/export/6000000188494434823` for *"You are not allowed to
+export that profile"* first; she was not created by this account.
+
 
 ## Descendants export: Hélène de Corday
 
