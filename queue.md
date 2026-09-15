@@ -146,8 +146,8 @@ clean. So for several of these the climb is already done and only the export rem
 * **Robert d'Esneval VI — DONE.** Emma created the `NN d'Esneval` mother,
   `6000000227757576826`; Descendants came back at the 5000 cap and is filed as
   `exports/emma-requested/export-Descendants-6000000227757576826.ged`.
-* **NN Grolier `6000000227738961944` — SUBMITTED**, `task_id 6000000227757611838`. Emma's
-  seed. **Its first submit was REFUSED** because the d'Esneval export still held the slot, and
+* **NN Grolier `6000000227738961944` — DONE.** Emma's seed; Descendants came back at the
+  5000 cap and is filed as `exports/emma-requested/export-Descendants-6000000227738961944.ged`. **Its first submit was REFUSED** because the d'Esneval export still held the slot, and
   the refusal is SILENT — Geni re-renders the export form instead of redirecting to a task id,
   and writes no row into the export list. **Check the redirect target, not the HTTP status.**
 * **Inês de Bettencourt I — OPEN SLOT FOUND AND CONFIRMED ON GENI.** `Isabeau d'Harcourt`
