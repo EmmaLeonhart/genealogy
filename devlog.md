@@ -16,6 +16,36 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-15 — 39 identifications recorded locally, and blocked from ever being emitted
+
+*"I am going to write out a bunch of my identifications because I do not want to fucking put
+them on Wikidata. We are putting way too many random, unconnected P2600 items here. I don't want
+to draw more attention than I've been getting from being non-local."*
+
+**Both halves were the work.** The identifications are real and the tree needs them, so all 39
+are in `reports/manual-identifications-extra.csv` — the join knows who is who, and `to_create`
+can never mint a duplicate of one. What must not happen is the other thing: a `P2600` landing on
+Fuxi, the Yellow Emperor, a Korean crown prince or Scorpion I, from an account whose every other
+edit is Norwegian.
+
+So `EMMA_LOCAL_ONLY_IDENTIFICATIONS` joins `excluded`, which is a filter on the FINISHED batch —
+any line naming one of them is dropped whatever produced it. A guard at the end rather than at
+each emitter, because § *A GUARD IN ONE EMITTER IS NOT A GUARD* and there are several.
+
+**They are not all Chinese, despite the queue heading.** 少典, Shen Nong, the Yellow Emperor,
+Zhuan Xu, Emperor Shun, Wu Zetian — but also Iry Hor and Scorpion I, Korean royalty, Umayya bin
+Abd Shams, Marwan II, Ursula von Münsterberg and Adam. What they share is being far outside the
+universe, which is the property the block is actually about.
+
+**Zero conflicts** with `reports/garborg-qids.tsv` across all 39, and one was already known.
+
+⛔ **An unquoted heredoc ate the backticks.** The first write of this went in through `<<PYEOF`
+rather than `<<'PYEOF'`, so bash treated every `` `reports/...` `` in the comment as a command
+substitution and executed it — producing pages of *command not found* and silently deleting the
+filenames from the prose, leaving *"they are in , so the join knows who is who"*. The code was
+unharmed and parsed, which is what made it easy to miss. **Quote the delimiter whenever the body
+contains backticks**, and this codebase's comments are made of them.
+
 ## 2026-09-15 — the isolate roster said 262,908 attempted. The real number was 248.
 
 The gate between the queue and Wikidata was *every isolate ATTEMPTED*, and

@@ -2649,6 +2649,68 @@ KLUGE_ENTITY_RESOLUTION_ASIA = (
 )
 
 
+#: ⛔ **EMMA'S OWN IDENTIFICATIONS, RECORDED LOCALLY AND NEVER EMITTED.** Ruled 2026-09-14:
+#: *"I am going to write out a bunch of my identifications because I do not want to fucking put
+#: them on Wikidata. We are putting way too many random, unconnected P2600 items here. I don't
+#: want to draw more attention than I've been getting from being non-local."*
+#:
+#: **Both halves are the point.** The identifications are real and the tree needs them: they are
+#: in `reports/manual-identifications-extra.csv`, so the join knows who is who and `to_create`
+#: can never mint a duplicate of any of them. What must not happen is the other thing, a `P2600`
+#: landing on Fuxi, on the Yellow Emperor, on a Korean crown prince or on Scorpion I, from an
+#: account whose every other edit is Norwegian. That is the non-locality the ruling is about and
+#: it is the concern behind § *ONLY EVER EDIT THINGS IN THE UNIVERSE OR ONE STEP ADJACENT TO IT*.
+#:
+#: **39 items, and they are not all Chinese despite the queue heading** — 少典 and the Yellow
+#: Emperor, but also Iry Hor and Scorpion I, Korean royalty, Umayya bin Abd Shams, Marwan II,
+#: Ursula von Münsterberg and Adam. What they share is being far outside the universe.
+#:
+#: They join `excluded` at the bottom of the compose, which is a filter on the FINISHED batch:
+#: any line naming one of these is dropped, whatever produced it. A guard at the end rather than
+#: at each emitter, because § *A GUARD IN ONE EMITTER IS NOT A GUARD* and there are several.
+EMMA_LOCAL_ONLY_IDENTIFICATIONS = (
+    "Q10299225",
+    "Q10438384",
+    "Q1045160",
+    "Q10514592",
+    "Q10752092",
+    "Q10933357",
+    "Q1147250",
+    "Q128371",
+    "Q1441379",
+    "Q18028984",
+    "Q198180",
+    "Q236972",
+    "Q2746812",
+    "Q28409803",
+    "Q29201",
+    "Q313336",
+    "Q313342",
+    "Q314809",
+    "Q318613",
+    "Q334111",
+    "Q4243879",
+    "Q4268330",
+    "Q4302144",
+    "Q4499078",
+    "Q484866",
+    "Q496421",
+    "Q6377648",
+    "Q70899",
+    "Q7214248",
+    "Q721756",
+    "Q7480137",
+    "Q7664534",
+    "Q7878975",
+    "Q7991612",
+    "Q819556",
+    "Q8262857",
+    "Q9511624",
+    "Q9569181",
+    "Q9738",
+)
+
+
 def kluge_blocked_from_universe():
     """The kluge's full set: the three Buyeo people **and the 178 CJK clan individuals**.
 
@@ -7519,7 +7581,8 @@ def main():
     # labelling probably changes in September, but universe membership does not happen until
     # October. They are blocked from the universe and their labels still
     # go out; excluding them here would silently drop the 15-a-day label drip.
-    excluded = set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
+    excluded = (set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
+                | set(EMMA_LOCAL_ONLY_IDENTIFICATIONS))
 
     def names_excluded(line):
         return any(tok in line for tok in excluded)
