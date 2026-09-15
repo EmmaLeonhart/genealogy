@@ -615,8 +615,8 @@ def read_suppressed():
     return out
 
 
-#: ⛔ **ITEMS THAT NEVER TAKE A `mul` LABEL OR ALIAS.** Ruled per item, by hand, and this list is
-#: only ever extended on an instruction.
+#: ⛔ **ITEMS THAT TAKE NO `mul` LABEL OR ALIAS, FOR A YEAR.** Ruled per item, by hand, and this
+#: list is only ever extended on an instruction.
 #:
 #: `Q320139` **Zerubbabel**, 2026-09-15: *"Block Zerubabbel from getting mul labels or aliases."*
 #: Our batch set `Lmul "Zorobabel"` and `Amul "Zerubbabel . 3rd Exilarch"` on 2026-09-14; the
@@ -628,9 +628,20 @@ def read_suppressed():
 #: **This is stronger than `read_reverted_labels` on purpose.** That one is derived from revert
 #: tags and lapses if a tag is lost, a page is deleted, or the refresher does not run. A ruling
 #: does not lapse.
+#: **A YEAR, not forever.** Ruled 2026-09-15: *"Block lasts a year lol"*. Each entry carries the
+#: date it stops applying, and `mul_blocked_today()` is the only reader — so an expiry cannot be
+#: forgotten about, and re-blocking after it lapses is a fresh decision rather than an inherited
+#: one.
 MUL_BLOCKED = {
-    "Q320139",      # Zerubbabel -- ruled 2026-09-15
+    # Zerubbabel -- ruled 2026-09-15, lapses 2027-09-15
+    "Q320139": datetime.date(2027, 9, 15),
 }
+
+
+def mul_blocked_today(today=None):
+    """The QIDs whose `mul` block is still in force."""
+    today = today or datetime.date.today()
+    return {q for q, until in MUL_BLOCKED.items() if today < until}
 
 
 def read_reverted_labels():
@@ -7665,12 +7676,13 @@ def main():
     # ---- ⛔ THE HAND-RULED `mul` BLOCK ---------------------------------------------------
     # See `MUL_BLOCKED`. Blocks `Lmul`, `Amul` and `Dmul` alike -- the ruling says "labels or
     # aliases", and a description on one of these would be the same claim in a third slot.
-    if MUL_BLOCKED:
+    mul_block = mul_blocked_today()
+    if mul_block:
         mul_line = re.compile(r"^(Q\d+)\t[LAD]mul\t")
         kept_m, blocked = [], 0
         for ln in kept:
             m = mul_line.match(ln)
-            if m and m.group(1) in MUL_BLOCKED:
+            if m and m.group(1) in mul_block:
                 while kept_m and kept_m[-1].lstrip().startswith("#"):
                     kept_m.pop()
                 blocked += 1
@@ -7678,8 +7690,11 @@ def main():
             kept_m.append(ln)
         if blocked:
             print(f"mul blocked: {blocked} line(s) dropped for "
-                  f"{', '.join(sorted(MUL_BLOCKED))}")
+                  f"{', '.join(sorted(mul_block))}")
         kept = kept_m
+    lapsed = {q for q in MUL_BLOCKED if q not in mul_block}
+    if lapsed:
+        print(f"mul block LAPSED for {', '.join(sorted(lapsed))} — re-blocking is a new decision")
 
     reverted = read_reverted_labels()
     if reverted:
