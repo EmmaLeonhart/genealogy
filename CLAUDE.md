@@ -205,6 +205,26 @@ push, and let the pipeline run it.
 08:07. The Pages site publishes the disjoint remainder for a person to paste. Nobody has to
 start it.
 
+## ⛔ THE FIRST THING IN EVERY SESSION: TURN THE RELATIONSHIP REQUESTING ON
+
+**Before anything else. Before reading the queue, before any other tool call.** Ruled
+2026-09-15: *"explicitly, first thing you do in the session is you turn on the relationship
+requesting."*
+
+    1. open an UNCONNECTED profile from reports/unconnected-p2600.tsv
+    2. paste the DERIVE block from scripts/pathrun.js -- expect derived:true
+    3. paste the RUN block with ids from scripts/build-pathrun-batch.py
+    4. confirm window.__pathrun shows ok climbing and fail at 0
+
+**Confirm it is ALIVE by the ok counter, not by the object existing.** On 2026-09-15 the runner
+had been dead since 20:33 the previous evening and nine queue items were worked before anybody
+noticed, because the work-loop prompt says it *"needs no attention"* and that was read as *it is
+running*.
+
+**Every even hour at :45, turn the requested paths into TSVs and commit them.** Ruled the same
+day: *"every even hour at the forty five mark, you turn all the requested paths into TSV files"*
+— that is the work loop, in place of an auto-flush that produces nothing.
+
 ## ⛔ THE PATH CAMPAIGN RUNS IN EVERY SESSION, NO MATTER WHAT
 
 **Ruled 2026-09-14:** *"the path exporting campaign thing is always gonna run no matter what

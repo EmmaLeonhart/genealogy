@@ -248,15 +248,16 @@ PAIRS = {
     "6000000028856413461": "Q484866",   # Yi Un Crown Prince of Korea
     "6000000028895625641": "Q496421",   # private
     "6000000001381063554": "Q6377648",   # Chāng Yì 昌意 2
-    # ⛔ **`Q70899` Adam already carries `P2600 6000000003538706117` on Wikidata, which is NOT
-    # this id**, and NEITHER profile is in our merged tree. Checked 2026-09-15. So this pairing
-    # cannot be verified from the corpus and would assert a second Geni id on an item whose first
-    # one we cannot compare it against. § *A second Geni ID on one item is NOT a conflict* is
-    # about ids we can stand behind; this is one we cannot.
+    # **`Q70899` Adam carries a SECOND Geni id and that is DELIBERATE.** Ruled 2026-09-15, after
+    # this was written up as a discrepancy: *"biblical figures have intentionally duplicated Geni
+    # IDs because Geni ... just disconnects them. So people just had to periodically make new
+    # ones."* The item holds `6000000003538706117`; this is a different profile for the same man,
+    # added on purpose.
     #
-    # Kept rather than deleted because it is Emma's own identification and
-    # `reports/manual-identifications-extra.csv` is the record of it. It emits nothing either
-    # way: the builder's in-tree check refuses it, which is how the discrepancy surfaced.
+    # So § *A second Geni ID on one item is NOT a conflict* applies here exactly as it does to
+    # `Q9738` below, and the earlier reading of this as a MISMATCH was wrong. A biblical or
+    # legendary figure accumulating profiles is the normal state of that corner of Geni, not a
+    # defect to reconcile.
     "6000000201847373856": "Q70899",   # Adam the First Man
     "6000000028786845951": "Q7214248",   # 순헌황귀비 엄씨
     "6000000002481253260": "Q721756",   # Emperor Kù 帝嚳 4
