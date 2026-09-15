@@ -138,8 +138,24 @@ clean. So for several of these the climb is already done and only the export rem
   slot and this line has none within reach, so either the climb continues further up or the
   seed comes from somewhere else. **Note Hélène's mother is Isabeau d'ESNEVAL** — she and
   target 3, Robert d'Esneval VI, are the same family, so one seed may cover both.
-* **Robert d'Esneval VI, Inês de Bettencourt I, Pietro Antonio di Capua** — seed not yet
-  looked for.
+* **Sayaluna ata — SUBMITTED.** Descendants 5000 from `6000000227694017875`,
+  `task_id 6000000227757462847`.
+* **Robert d'Esneval VI — TIER 3, needs a profile CREATED.** *"Son of Robert V d'Esneval"* and
+  **no mother at all**, which is `docs/export-seed-rules.md` tier 3: create the missing parent
+  as `NN`, no surname. His father `6000000000751675327` is not exportable. Creating her is the
+  seed.
+* **Inês de Bettencourt I, Pietro Antonio di Capua** — seed not yet looked for.
+
+⛔ **THE CREATION CANNOT BE DONE AD HOC AND SHOULD NOT BE HAND-DRIVEN.** The extension owns it
+— `GC.seed` in `geni-extension/content/seed.js`, driven by a `{job:"seed", geni_id, kind:"seed"}`
+queue entry, and `docs/collector-run-loop.md` ends *"there's no discretion on your part at all"*.
+Page JavaScript cannot reach it: the content scripts run in an isolated world, so `GC`,
+`chrome.runtime` and `window.__sweep` are all undefined from the agent's side. Typing into
+Geni's *Add mother* box by hand is what created somebody who should never have existed on
+2026-09-05, recorded in the seed rules themselves.
+
+**So the remaining three go through the collector loop, not through a one-off.** Queue a seed
+job for each, navigate to the profile, let the extension decide and create, then export.
 
 ⛔ **DO NOT climb with `fetch`.** The immediate-family cards render client-side; a fetch of a
 profile page returns the shell and zero cards. One real page load per hop, and the exportability
