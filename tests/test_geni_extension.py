@@ -73,13 +73,37 @@ def test_the_extension_only_reaches_geni():
     blast radius. A widened pattern would put a content script on every page that browser visits.
     """
     manifest = json.loads((EXT / "manifest.json").read_text(encoding="utf-8"))
-    patterns = list(manifest.get("host_permissions", []))
+
+    # ⛔ **`file:///*` IS LOAD-BEARING AND IS NOT A WIDENING OF THE BLAST RADIUS.** It arrived
+    # in 1.7.35, `a7f3b15d`, *"the extension reads the roster off disk"*, and it is how the path
+    # requester and the chain fetcher read their target lists in chunks and resume themselves --
+    # the thing `queue.md` calls a background assumption. Removing it stops the collector.
+    #
+    # It is also not the risk this test is about. The blast radius is where a CONTENT SCRIPT
+    # runs, and those matches are asserted below and are Geni only; a `host_permissions` entry
+    # grants `fetch`, and the `file://` half of it additionally needs *Allow access to file
+    # URLs* ticked by hand in `chrome://extensions`. So it is allowed by name -- not by a
+    # loosened rule -- and anything else still has to be Geni.
+    #
+    # This test was red on `main` from at least 2026-09-10 to 2026-09-14 on
+    # `host pattern reaches beyond Geni: file:///*`, which is four days of a true assertion
+    # about a false premise, sitting in a suite that had eleven failures and therefore taught
+    # every reader to skip all of them.
+    ALLOWED_NON_GENI = {"file:///*"}
+
+    patterns = [p for p in manifest.get("host_permissions", [])
+                if p not in ALLOWED_NON_GENI]
+    content_matches = []
     for block in manifest.get("content_scripts", []):
-        patterns.extend(block.get("matches", []))
-    assert patterns, "no host patterns at all"
-    for p in patterns:
+        content_matches.extend(block.get("matches", []))
+    assert content_matches, "no content-script matches at all"
+
+    for p in patterns + content_matches:
         assert "geni.com" in p, f"host pattern reaches beyond Geni: {p}"
         assert not p.startswith("*://*/"), f"host pattern matches every site: {p}"
+    # the content scripts specifically may never reach a local file
+    for p in content_matches:
+        assert not p.startswith("file:"), f"a content script runs on local files: {p}"
 
 
 def test_no_source_file_carries_a_control_character():
@@ -132,12 +156,24 @@ def test_exports_are_never_concurrent_and_never_cancellable():
     be carried out, which `CLAUDE.md` § *Only `AskUserQuestion` gets answered* calls worse than a
     missing option.
     """
-    # ⛔ THE FILE IS `service-worker.js`, AND THE RENAME WAS THE FIX rather than a tidy-up.
+    # ⛔ **THE SERVICE WORKER'S FILENAME CARRIES THE VERSION AND CHANGES ON EVERY EDIT.**
     # Chrome's ScriptCache is keyed on the URL, so a manifest version bump does not invalidate
-    # it -- `f9f7eb24` renamed `background.js` to break the cache, and this test kept reading the
-    # dead path and failed with `FileNotFoundError`. The constant survived: it is line 61 of the
-    # new file, so this is a stale path and not a regression being papered over.
-    background = (EXT / "service-worker.js").read_text(encoding="utf-8")
+    # it -- `f9f7eb24` renamed `background.js` to break the cache, and the rename is now the
+    # standing procedure rather than a one-off, which is why the file on disk today is
+    # `service-worker-1.7.49.js`.
+    #
+    # **The comment that used to sit here diagnosed this exactly** -- *"this test kept reading
+    # the dead path and failed with `FileNotFoundError`"* -- and then went on reading the dead
+    # path. It was red on `main` from at least 2026-09-10 to 2026-09-14. A hardcoded name cannot
+    # survive a rule that renames the file on every edit, so the manifest is the authority:
+    # whatever `background.service_worker` points at is the service worker, and this follows
+    # every future bump without another edit.
+    manifest = json.loads((EXT / "manifest.json").read_text(encoding="utf-8"))
+    worker = manifest["background"]["service_worker"]
+    assert worker in {f.name for f in EXT.glob("service-worker-*.js")}, (
+        f"the manifest points at {worker!r}, which is not on disk"
+    )
+    background = (EXT / worker).read_text(encoding="utf-8")
     assert "EXPORT_CONCURRENCY = 1" in background, (
         "export concurrency is Geni's limit and is not a setting"
     )

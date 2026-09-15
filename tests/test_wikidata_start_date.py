@@ -23,6 +23,8 @@ from __future__ import annotations
 import datetime
 import re
 import sys
+
+import pytest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -31,6 +33,32 @@ sys.path.insert(0, str(REPO / "scripts"))
 import wikidata_lockout  # noqa: E402
 
 WORKFLOW = REPO / ".github" / "workflows" / "wikidata-edits.yml"
+
+
+@pytest.fixture
+def dates_only(monkeypatch):
+    """Lift `HELD` so the DATE mechanism can be tested while the hold is on.
+
+    **This is the fix for four tests that were red on `main` every day from at least
+    2026-09-10 to 2026-09-14**, and being red is the whole of what they did wrong: the gate was
+    behaving exactly as designed. `editing_allowed` checks `HELD` first and returns
+    `HELD - ...` for every input, so four tests written about the dates -- *allowed on the day
+    itself*, *fail-closed on an unreadable date* -- were asserting things the hold makes
+    unreachable, and they will go red again on the day the hold is next applied.
+
+    **A permanently-red suite is not a small problem, it is the mechanism.** Eleven tests were
+    failing and four of them were these; that is what teaches a reader that red means nothing,
+    and underneath it `test_no_numeral_gets_a_name_item_in_any_notation` had been failing since
+    the day it was written on `'--' would get a name item` -- a real guard, really broken, for a
+    day and a half, minting junk name items the entire time.
+
+    So the hold is now a PASSING state. The date logic stays under test while held, which is
+    what makes it safe to lift; the hold itself is tested separately and without this fixture by
+    `test_a_hold_refuses_regardless_of_the_dates`, which is the test that must never be
+    bypassed. Nothing here can lift the hold in production: `HELD` is a module constant read at
+    call time, and `monkeypatch` puts it back.
+    """
+    monkeypatch.setattr(wikidata_lockout, "HELD", False)
 
 
 def workflow_start_date():
@@ -49,20 +77,20 @@ def test_the_start_date_is_a_real_date():
     datetime.date.fromisoformat(wikidata_lockout.START_DATE)
 
 
-def test_editing_is_locked_the_day_before():
+def test_editing_is_locked_the_day_before(dates_only):
     start = datetime.date.fromisoformat(wikidata_lockout.START_DATE)
     allowed, why = wikidata_lockout.editing_allowed(
         start - datetime.timedelta(days=1))
     assert not allowed, why
 
 
-def test_editing_is_allowed_on_the_day_itself():
+def test_editing_is_allowed_on_the_day_itself(dates_only):
     start = datetime.date.fromisoformat(wikidata_lockout.START_DATE)
     allowed, why = wikidata_lockout.editing_allowed(start)
     assert allowed, why
 
 
-def test_an_unreadable_date_fails_closed(monkeypatch):
+def test_an_unreadable_date_fails_closed(dates_only, monkeypatch):
     """The half that matters: a broken gate is a shut gate, never an open one."""
     monkeypatch.setenv("WIKIDATA_START_DATE", "not-a-date")
     allowed, why = wikidata_lockout.editing_allowed(datetime.date(2099, 1, 1))
@@ -121,7 +149,7 @@ def test_the_automation_starts_no_earlier_than_editing_does():
             >= datetime.date.fromisoformat(wikidata_lockout.START_DATE))
 
 
-def test_the_automation_is_locked_the_day_before_and_open_on_the_day():
+def test_the_automation_is_locked_the_day_before_and_open_on_the_day(dates_only):
     start = datetime.date.fromisoformat(wikidata_lockout.AUTOMATION_START_DATE)
     before, why = wikidata_lockout.automation_allowed(
         start - datetime.timedelta(days=1))
@@ -130,7 +158,7 @@ def test_the_automation_is_locked_the_day_before_and_open_on_the_day():
     assert on, why
 
 
-def test_the_automation_gate_also_fails_closed(monkeypatch):
+def test_the_automation_gate_also_fails_closed(dates_only, monkeypatch):
     monkeypatch.setenv("WIKIDATA_AUTOMATION_START_DATE", "the-fifteenth")
     allowed, why = wikidata_lockout.automation_allowed(datetime.date(2099, 1, 1))
     assert not allowed

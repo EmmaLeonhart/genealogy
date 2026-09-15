@@ -1757,6 +1757,32 @@ This person https://www.geni.com/people/konenes-navn/6000000007645527815 had the
 
 Oh my god his name is Peter why did you not fucking update the naming shit after I asked you about it a million times https://www.wikidata.org/wiki/Q141451100
 
+## Generate CJK names from the CJK labels on PARTS of the `mul` label
+
+Emma's own plan, recorded 2026-09-14 and **deliberately not started**: *"I had a plan to generate
+cjk names from cjk labels on parts of the mul label. But don't bother with that now. Put at the
+end of the queue to investigate this and possible implementation but don't actually do anything
+on it now, it will be done at the end of the queue lol."*
+
+**Investigate and propose an implementation. Do not build it before this item comes up.**
+
+⛔ **AND THIS IS THE ONE WAY NOT CREATING A NAME OBJECT COULD HAVE BEEN COSTLY**, which is why it
+is written down here rather than left as a feeling. Ruled in the same breath, about the
+2026-09-14 punctuation work: *"there is a way not creating name objects could have been costly,
+but the problem is that you might have internalized that it 'could' have been costly without
+understanding why."*
+
+The reason is this plan and nothing else. A name object is not only a `P735`/`P734` target --
+under this plan the name items on the PARTS of a `mul` label are the input that CJK readings get
+generated from, so a part with no name object is a part that generates nothing. That is a real
+cost and it is specific.
+
+**It does not reopen anything decided on 2026-09-14.** *"There's effectively zero cost for not
+creating a name object"* stands as the rule for junk: `.`, `Rd.`, `(Wife`, `und`, `Count` are not
+parts of anybody's `mul` label and generate no reading in any language. The two live together --
+zero cost for a bad object, a real cost for a missing good one -- and the thing to carry forward
+is *why*, so the next strictness decision is made on this ground instead of on a vague worry.
+
 ## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
 
 Ruled 2026-09-14: *"have the very last queue item be one that would be to restart the path
