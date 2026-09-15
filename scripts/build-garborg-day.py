@@ -615,6 +615,24 @@ def read_suppressed():
     return out
 
 
+#: ⛔ **ITEMS THAT NEVER TAKE A `mul` LABEL OR ALIAS.** Ruled per item, by hand, and this list is
+#: only ever extended on an instruction.
+#:
+#: `Q320139` **Zerubbabel**, 2026-09-15: *"Block Zerubabbel from getting mul labels or aliases."*
+#: Our batch set `Lmul "Zorobabel"` and `Amul "Zerubbabel . 3rd Exilarch"` on 2026-09-14; the
+#: alias is malformed on its face -- a title glued on after a stray full stop -- and `Infovarius`
+#: reverted the lot on 2026-09-15 with *"Latin doesn't related to this item"*. A Hebrew biblical
+#: figure does not take a Latin `mul`, and this is the class of person where a language-neutral
+#: label is a claim rather than a convenience.
+#:
+#: **This is stronger than `read_reverted_labels` on purpose.** That one is derived from revert
+#: tags and lapses if a tag is lost, a page is deleted, or the refresher does not run. A ruling
+#: does not lapse.
+MUL_BLOCKED = {
+    "Q320139",      # Zerubbabel -- ruled 2026-09-15
+}
+
+
 def read_reverted_labels():
     """`{(qid, lang)}` -- label slots a human has already had an opinion about.
 
@@ -7644,6 +7662,25 @@ def main():
     # GUARD*. A reverted slot is by definition on an item that already exists, so it always
     # appears as an explicit `Q<id>` line -- a `LAST L<lang>` under a `CREATE` is a brand new
     # item nobody can have reverted yet, and is deliberately untouched.
+    # ---- ⛔ THE HAND-RULED `mul` BLOCK ---------------------------------------------------
+    # See `MUL_BLOCKED`. Blocks `Lmul`, `Amul` and `Dmul` alike -- the ruling says "labels or
+    # aliases", and a description on one of these would be the same claim in a third slot.
+    if MUL_BLOCKED:
+        mul_line = re.compile(r"^(Q\d+)\t[LAD]mul\t")
+        kept_m, blocked = [], 0
+        for ln in kept:
+            m = mul_line.match(ln)
+            if m and m.group(1) in MUL_BLOCKED:
+                while kept_m and kept_m[-1].lstrip().startswith("#"):
+                    kept_m.pop()
+                blocked += 1
+                continue
+            kept_m.append(ln)
+        if blocked:
+            print(f"mul blocked: {blocked} line(s) dropped for "
+                  f"{', '.join(sorted(MUL_BLOCKED))}")
+        kept = kept_m
+
     reverted = read_reverted_labels()
     if reverted:
         label_line = re.compile(r"^(Q\d+)	[LAD]([a-z][a-z0-9-]*)	")
