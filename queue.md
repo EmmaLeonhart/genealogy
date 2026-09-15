@@ -96,6 +96,41 @@ statements, of the carry-forward, of the caps. ⛔ ASK before implementing a rea
 
 Export descendants of these people, idk their status, ancestor climb and then descendants export
 
+**⛔ THEIR STATUS, CHECKED 2026-09-14. ALL SIX ARE IN THE CORPUS AND NONE OF THE SIX CAN BE
+EXPORTED DIRECTLY.**
+
+    Sayaluna ata             6000000008384075400   29 export files   4 children in tree
+    Hélène de Corday         6000000000746523797    8 export files   no parents recorded
+    Robert d'Esneval VI      6000000026257912323    7 export files   no parents recorded
+    Inês de Bettencourt I    6000000001435366077    8 export files   1 child
+    Pietro Antonio di Capua  6000000015633226273   10 export files   2 children
+    Jacques Grimaldi         6000000015647948256   17 export files   5 children
+
+**Every one returns `/error` — *"You are not allowed to export that profile."*** Verified by a
+real page load, not just a `fetch`. The reason is printed on `https://www.geni.com/gedcom`
+itself: *"you may only export a GEDCOM file focused on profiles that you added to Geni."* That
+is the whole reason this item says *ancestor climb* — the climb ends at a slot where a profile
+WE own exists or can be made, and `docs/export-seed-rules.md` is that method.
+
+**⛔ AND THE OFFLINE CLIMB IS NOT ENOUGH.** `reports/derived-family.csv` says
+`6000000009177497799` (Sayaluna's top ancestor) is fatherless; Geni says *"Son of NN ? and
+NN ?"*. Our tree is behind at the top, so the last hop has to be read off the live page — and
+`fetch` will not do it, the immediate-family cards render client-side and come back empty.
+Real page load per hop.
+
+**What is already ours.** Profiles in the `6000000227…` range are ones this account created, and
+they ARE exportable — `6000000227694017875`, the NN father of Sayaluna's top ancestor, tested
+clean. So for several of these the climb is already done and only the export remains.
+
+**Progress:**
+
+* **Jacques Grimaldi — SUBMITTED.** Emma gave the seed directly: *"just export from here
+  https://www.geni.com/people/NN-NN/6000000227757314896 for the Grimaldi one"*. Descendants,
+  5000, `task_id 6000000227757262875`.
+* The other five need their seed found the same way — climb to the nearest `6000000227…`
+  ancestor, or create one per `docs/export-seed-rules.md` if there is none.
+
+
 Sayaluna ata 6000000008384075400, 
 Hélène de Corday 6000000000746523797, 
 Robert d'Esneval VI 6000000026257912323, 
