@@ -1137,6 +1137,32 @@ is at least some evidence for it.
 
 An analysis. Nothing was investigated when this was written.
 
+**⛔ IT IS WORSE THAN WE THINK, AND HERE IS THE FIRST MEASUREMENT** — taken 2026-09-14 while
+fixing an unrelated CI failure, `test_no_two_edits_claim_the_same_id`, which is the only reason
+anybody looked. Over `reports/wikidata-cjk-mul-labels.json`, the reviewed batch of 1,998 CJK
+`mul` labels sitting ready to send:
+
+    1,431 of 1,988 edits -- 72% -- are derived_from "carries the clan seat <X>, which is Chinese"
+       79 people would be labelled 隆西狄道 exactly, with no personal name in the label at all
+       12 more 河南洛陽, 6 范陽涿縣, 5 鄭州管城, 4 琅邪臨沂, 4 滎陽開封, 4 河東聞喜 ...
+
+**隆西狄道 is a place** — Didao county, Longxi commandery, in Gansu. A 郡望 is the ancestral
+seat a clan is named for; it is not the person's name, and a `mul` label that is nothing but a
+commandery-and-county says only *somebody from Longxi*. The batch's own commit message,
+`22b82b05`, describes it as *"1,998 set_label edit objects, one per person"* — it was neither
+one per person (six ids collided) nor, for these, a name.
+
+**Nothing has gone out.** Wikidata editing is HELD, and the four self-contradicting items — one
+Wikidata item with two different proposed `mul` values, e.g. `Q15954845` offered both `某 李`
+and `隆西狄道` — are now withheld and recorded in `reports/cjk-mul-withheld.tsv`.
+
+**The 1,431 are NOT touched and are this item's work.** The question to answer here is what a
+`mul` label should be for a person known only by clan and seat: the seat is real evidence and
+deleting it loses information, but it is not a name. Three shapes are in the data already and
+the batch mixes them without deciding — `隆西狄道` bare, `公主 隆西狄道` (a title plus the seat),
+and `某 李` (a surname with the unknown-marker 某). § *A title inside a label takes the NATIVE
+form in CJK* and § *`NN` is PRESERVED in `mul`* both bear on it.
+
 ### 0. Aug 28, 2026 manual adds
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
