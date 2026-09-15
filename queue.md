@@ -10,6 +10,32 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
+### ⛔⛔ FIRST ITEM: IMPROPER LABELS ON ASIAN FIGURES. Ruled 2026-09-14, A CRISIS.
+
+*"the crisis of improper label being applied to asian figures needs to be addressed as the first
+thing in the queue"*, and the case: **Fuxi `Q236972` has a bad katakanization** —
+<https://www.wikidata.org/wiki/Q236972>.
+
+**This is NOT the script-classifier work, which is done.** That fixed which script a name is read
+as. This is about labels **already written to Wikidata**, which a classifier fix does not touch.
+
+**The question is provenance before correction.** Which run wrote it, from which input, under
+which rule. This pipeline produces `ja`/`zh`/`ko` readings for everyone —
+`CLAUDE.md` § *The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN* — so a Chinese mythological
+figure carrying a katakana `ja` label is very probably ours, and **if it is ours, the rule that
+produced it produced more than one.** Find the population before touching any single item.
+
+Relevant rules already on the books, which the fix must not violate:
+
+* § *A title inside a label takes the NATIVE form in CJK*, never a transliteration.
+* § *Transliterate the English reading* — faithfulness to the source language destroys more than
+  it saves, and every rule change is scored against the attested column.
+* § *Wikidata's label beats ours.* An existing `mul` is not ours to overwrite.
+* § *A LANGUAGE LABEL DUPLICATING `mul` IS NOT OUR PROBLEM* — another bot owns that, so do not
+  conflate a duplicate with a wrong one.
+* Wikidata editing is HELD, so the output of this is a measurement and a batch that waits, not an
+  edit that goes out.
+
 ### ⛔ THE PATH COLLECTION IS A BACKGROUND ASSUMPTION, NOT THE FIRST ITEM. Ruled 2026-09-14
 
 *"I think the paths collection being the first item made it so that you had a tendency to not do
@@ -1718,15 +1744,3 @@ background assumption, per the top of this file.
 **Its stopping is not an emergency and not a reason to work on it.** Restart it, go back to the
 first item.
 
-## Fuxi `Q236972` — where did the bad katakana come from
-
-Ruled 2026-09-14: *"we need to fucking figure out why the fuck Fuxi had this bad katakanization
-added to it"* — <https://www.wikidata.org/wiki/Q236972>.
-
-**Written down and NOT investigated**, per `CLAUDE.md` § *"Add it to the end of the queue" means
-WRITE IT DOWN AND STOP*.
-
-The question is **provenance, not correction**: which run put it there, from which input, under
-which rule. This pipeline writes `ja`/`zh`/`ko` readings for everyone — § *The gate is `ja` + `zh`
-+ `ko`* — so a Chinese mythological figure getting a katakana `ja` label is very likely ours
-rather than someone else's, and if it is, the rule that produced it will have produced more.
