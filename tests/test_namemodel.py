@@ -912,9 +912,17 @@ def test_a_title_is_not_a_name_and_the_title_list_is_actually_read():
     for title in ("Count", "Countess", "Graf", "Gräfin", "Freiin", "Pangeran", "Khatun",
                   "Saint", "Rabbi", "Capt", "Kung", "親王", "Stillborn", "Infant"):
         assert namemodel.name_shape(title)[1] == "unknown", f"{title!r} would get a name item"
-    # the lists are consulted, not copied: a token added to either must take effect here
+    # The lists are consulted, not copied: a token added to either must take effect here.
+    #
+    # ⛔ `particle` counts as refused, and `von` is why. It is in `_LEADING_TITLES` -- a
+    # nobiliary particle reasonably reads as a title -- AND in `PARTICLES`, which is consulted
+    # first, so it answers `particle`. Both are terminal and neither mints a name item. Pinning
+    # the exact string here is pinning an implementation detail, which is the same mistake that
+    # made `test_the_pieces_of_a_split_name_are_not_names` go red on `das` the same day.
     for token in list(namemodel._LEADING_TITLES)[:50] + list(namemodel.NAME_SUFFIX_TITLES)[:50]:
-        assert namemodel.name_shape(token)[1] == "unknown", f"{token!r} escaped the title list"
+        usage = namemodel.name_shape(token)[1]
+        assert usage in ("unknown", "particle"), (
+            f"{token!r} escaped the title list ({usage})")
 
 
 def test_the_pieces_of_a_split_name_are_not_names():
