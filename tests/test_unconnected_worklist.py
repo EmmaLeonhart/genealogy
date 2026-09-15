@@ -183,14 +183,35 @@ def test_the_stamp_refuses_a_file_that_is_not_this_file(ledger, tmp_path):
     assert not (tmp_path / "unconnected-p2600.tsv.tmp").exists()
 
 
-def test_the_committed_worklist_has_the_spec_columns():
-    """The real file, because every consumer joins on that column order."""
+SPEC_COLUMNS = ["qid", "geni_id", "neighbourhood_size", "last_attempted"]
+
+
+def test_the_committed_worklist_has_the_spec_columns(build):
+    """The real file, because every consumer joins on that column order.
+
+    **The invariant is the PREFIX, not the width**, and asserting the width is what made this
+    red on `main` from at least 2026-09-10 to 2026-09-14. `docs/unconnected-worklist.md` § 169
+    calls it *"the TSV, its four columns, the ordering"* and the builder has since appended
+    `EXTRA_COLUMNS` -- the census counts and `exported` -- which is an addition the spec's four
+    columns survive unchanged. A consumer joining on column order still gets what it expects;
+    one reading by name always did.
+
+    So the four are pinned in position, and the extras are read from the BUILDER rather than
+    copied here. A hardcoded second copy is what the service-worker test had, and it went stale
+    the first time the thing it named changed.
+    """
     f = REPO / "reports" / "unconnected-p2600.tsv"
     if not f.exists():
         pytest.skip("the worklist has not been built in this checkout")
     with f.open(encoding="utf-8") as fh:
-        assert fh.readline().rstrip(NL).split(TAB) == [
-            "qid", "geni_id", "neighbourhood_size", "last_attempted"]
+        header = fh.readline().rstrip(NL).split(TAB)
+    assert header[:len(SPEC_COLUMNS)] == SPEC_COLUMNS, (
+        "the spec columns must stay first and in order; extras are APPENDED"
+    )
+    assert header[len(SPEC_COLUMNS):] == list(build.EXTRA_COLUMNS), (
+        "the committed worklist's extra columns disagree with the builder -- re-run "
+        "scripts/build-unconnected-worklist.py"
+    )
 
 
 def test_the_write_path_stamps_every_capture():

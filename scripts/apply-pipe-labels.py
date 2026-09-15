@@ -74,6 +74,10 @@ PIPE_HOLDS = ("pipe-shape", "one-token")
 #: The column the comma-tail ruling needs, appended if the file predates it.
 EN_COLUMN = "proposed_en"
 
+#: A proposal that still carries a bracket was not understood. Separate from `PIPE_HOLDS`
+#: because the pipe ruling does not answer it -- see the note at the end of `apply`.
+UNPARSED_HOLD = "unparsed-punctuation"
+
 
 def _pipelabels():
     """`scripts/pipelabels.py`, loaded by path — the filename is not importable as a module."""
@@ -116,6 +120,38 @@ def apply(rows, pipes):
         row[EN_COLUMN] = reading.en or ""
         row["proposed_aliases"] = " | ".join(reading.aliases)
         resolved += 1
+
+    # ⛔ **A LEFTOVER BRACKET MEANS THE STRING WAS NOT UNDERSTOOD, SO PROPOSE NOTHING.**
+    #
+    # `tests/test_pipe_label_wiring.py` has said exactly this since it was written -- *"A
+    # leftover `|`, `(` or `[` means the string was not understood. Emitting one puts
+    # punctuation on Wikidata, and it looks like a success in every count"* -- and it was red on
+    # `main` from at least 2026-09-10 to 2026-09-14 with **181 of 44,090 proposals** carrying
+    # one: `Sarah Whitcher (Whicher)`, `Austin Kilham (Killam)`, `Joan (or Minell) Sambnel`,
+    # `[Antoine Gabrielle] Marie d'Ursel`, `Aage Ingvarsson [Bät], Lord of Bjerghusaholm`.
+    #
+    # The loop above never saw them. It only reads rows whose live label contains a `|`, and
+    # these carry a parenthesised alternate spelling with no pipe in it, so they came through
+    # from `propose-title-label-fixes.py` untouched and unexamined.
+    #
+    # **This holds them; it does not parse them.** A parenthesised alternate spelling probably
+    # wants the same treatment the pipe gets -- primary in `mul`, variant as an alias -- but
+    # that is a naming rule, it belongs to the `|` ruling's own vocabulary, and this is not the
+    # place to invent one. The same reasoning the name items got on 2026-09-14: *"it's better to
+    # create no name object than a bad one"*, and a label is the same trade. Held rows are
+    # counted in the run summary, so the number is visible rather than silently zero.
+    unparsed = 0
+    for row in rows:
+        if any(c in (row.get("proposed_label") or "") for c in "|()[]"):
+            row["hold"] = UNPARSED_HOLD
+            row["proposed_label"] = ""
+            row[EN_COLUMN] = ""
+            row["proposed_aliases"] = ""
+            unparsed += 1
+            held += 1
+    if unparsed:
+        print("%d proposals held: a bracket survived the read" % unparsed)
+
     return resolved, held
 
 
