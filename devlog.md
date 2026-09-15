@@ -44477,3 +44477,28 @@ and fill up as `build-name-item-cjk.py` runs.
 
 Not proposed, and recorded as refused: backfilling readings onto the 699,287 name items we did not
 make, and correcting `Q317315`. Both are outside the universe.
+
+## 2026-09-15 — the path harvest backlog, cleared: 2,150 chains to 5,728
+
+**The harvest half of the loop had not been running.** `queue.md` § *AND THE HARVEST ITSELF IS
+BEHIND* named it — requesting paths and putting them in the repo are two halves and only the
+first half was happening. 94 `path-chains-NNN.tsv` dumps had accumulated in `Downloads`, the
+oldest of them weeks old, against a committed `reports/path-chains.tsv` still sitting at the
+2026-09-14 figure of 2,150 chains.
+
+All 94 merged through `scripts/merge-path-chains.py`:
+
+    reports/path-chains.tsv   175,422 rows (+96,356)
+                                5,728 chains (+3,578)
+                               28,325 distinct people
+
+The merge is keyed `(to_id, kind, step)` with the last dump winning, so running it over dumps
+that were already folded in costs nothing and re-running it is safe. The dumps are left in
+`Downloads`; nothing was deleted.
+
+**The requester is dead and cannot be restarted this session.** Last chain file was
+`path-chains-094.tsv` at 2026-09-14 20:33 — an 18-hour outage, the exact silent-death shape
+`CLAUDE.md` § *IT DIES SILENTLY AND NOTHING TELLS YOU* describes, and again the file timestamps
+were the only evidence. Chrome was killed and restarted, the extension reconnected, and the
+first unconnected profile opened to an **Incapsula hCaptcha** rather than to `pathSearcher`.
+That gate is a person's to clear, so the restart is `BLOCKED-ON-USER-ACTION` on one click.
