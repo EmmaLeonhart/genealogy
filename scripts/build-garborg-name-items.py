@@ -433,6 +433,42 @@ def reuse_from_bearers(fields, have, live):
     return out
 
 
+_CJK_TABLE = None
+
+
+def _cjk_readings(token):
+    """`(ja, zh, ko)` for one name token, or `(None, None, None)`.
+
+    `label_in` belongs to `build-garborg-day.py` and STAYS there. § *A GUARD IN ONE EMITTER IS
+    NOT A GUARD* cuts both ways: a second transliterator here would be a second answer to one
+    question, and the whole point of this change is that there is one source. Loaded by path
+    because the filename is not importable as a module.
+
+    Read once. A failure to load is not fatal -- the name items are correct without CJK, and
+    refusing to emit them because a transliteration table would not open is the tail wagging
+    the dog.
+    """
+    global _CJK_TABLE
+    if _CJK_TABLE is None:
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location(
+                "garborg_day", str(ROOT / "scripts" / "build-garborg-day.py"))
+            day = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(day)
+            _CJK_TABLE = (day.label_in, day.translit())
+        except Exception as exc:                      # noqa: BLE001 -- see the docstring
+            print(f"# CJK readings unavailable ({exc}); name items emit without them")
+            _CJK_TABLE = (None, None)
+    label_in, table = _CJK_TABLE
+    if label_in is None:
+        return None, None, None
+    try:
+        return label_in(token, table)
+    except Exception:                                 # noqa: BLE001
+        return None, None, None
+
+
 def main():
     ids = people_in_batches()
     have = ledger()
@@ -715,6 +751,25 @@ def main():
         lines.append("CREATE")
         lines.append(f'LAST\tLen\t"{token}"')
         lines.append(f'LAST\tLmul\t"{token}"')
+        # ⛔ **THE CJK READINGS GO ON THE NAME ITEM, AND THE NAME ITEM IS THE RIGHT PLACE
+        # FOR THEM.** Ruled 2026-09-14: *"Given names and surnames should have our
+        # standardized cjk-izations attached to them. imo they should even be the source of
+        # it in the logic. update the old ones to this form and new ones are always gonna be
+        # created in this manner"*.
+        #
+        # It lines up exactly: `reports/garborg-name-transliterations.tsv` is keyed on the
+        # TOKEN, and a name item IS a token. Until now the two lived apart -- the table fed
+        # PERSON labels through `label_in` while the name items got `Len` and `Lmul` and
+        # nothing else, so the same string was cjk-ised for a person and left bare on the
+        # item that names the string. One source, one reading.
+        #
+        # § *The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN* -- `label_in` returns all
+        # three or none, and partial is worse than absent, so a token the table cannot read
+        # gets no CJK rather than half a label.
+        ja, zh, ko = _cjk_readings(token)
+        if ja:
+            for _code, _value in (("ja", ja), ("zh", zh), ("ko", ko)):
+                lines.append(f'LAST\tL{_code}\t"{_value}"')
         # **A PATRONYMIC carries a description, and it is the one exception to the hard rule.**
         # Ruled 2026-09-01: all patronymics get the description `patronymic` so that they
         # deduplicate properly, because duplicate patronymics were being created to the point

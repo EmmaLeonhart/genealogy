@@ -65,7 +65,9 @@ caps raised 50% (`NAME_ADD_CAP` 90, `LABEL_EDIT_CAP` 90, `P2600_LEAD_CAP` 60,
 `MANUAL_P2600_PER_RUN` 30, `SIBLING_CAP` 60) and the scheduled run takes a third of the batch
 via `--fraction 0.3333`, so the autonomous share is exactly the increase. `74fc58a1`.
 
-**The only remaining blocker is `EDITS_HELD: "yes"`, which a person lifts.**
+**The only remaining blocker is `EDITS_HELD: "yes"`, and LIFTING IT IS THE LAST ITEM IN THIS
+FILE.** Ruled 2026-09-14: *"put lifting it as the last queue item and do not lift it right
+now"*. Do not lift it here and do not lift it early.
 
 **⛔ THE MECHANISM IS BUILT.** Checked 2026-09-14:
 `.github/workflows/wikidata-edits.yml` is scheduled `7 8 * * *`, sends
@@ -1808,6 +1810,36 @@ creating a name object"* stands as the rule for junk: `.`, `Rd.`, `(Wife`, `und`
 parts of anybody's `mul` label and generate no reading in any language. The two live together --
 zero cost for a bad object, a real cost for a missing good one -- and the thing to carry forward
 is *why*, so the next strictness decision is made on this ground instead of on a vague worry.
+
+## ⛔ LAST ITEM: LIFT THE WIKIDATA EDIT HOLD
+
+**Ruled 2026-09-14: *"put lifting it as the last queue item and do not lift it right now"*.**
+
+⛔ **THIS IS THE LAST THING. Nothing above it may lift it, and it is not lifted early because
+the pipeline item looks finished.** The hold was always queue ORDERING rather than a verdict on
+the edits — 2026-09-13, *"you had no business having any submissions going through until
+everything was done. That's why it was at the end of the queue."* So it comes off when the
+queue is actually done, which is here.
+
+**How, and it is two files or neither** — `tests/test_wikidata_start_date.py` fails if the halves
+disagree:
+
+    scripts/wikidata_lockout.py            HELD = True      -> False
+    .github/workflows/wikidata-edits.yml   EDITS_HELD: "yes" -> "no"
+
+**What is already built and does not need doing again.** The mechanism has been ready since
+before this item existed, so lifting the flag is the whole of the work:
+
+* `wikidata-edits.yml` runs `7 8 * * *`, sends `reports/wikidata-garborg-day.txt`, `limit=100`,
+  live from `AUTOMATION_START_DATE 2026-09-15`
+* the autonomous share is `--fraction 0.3333` — a third of the batch, which after the 50% cap
+  rise is exactly the increase, so the hand-run keeps the volume it always had
+* `wikidata-edit-run.load_batch` gates every batch it reads, both formats: clan-seat labels
+  withheld until 2026-10-01, creations refused for anyone already in `reports/garborg-qids.tsv`,
+  and name items refused whose label fails `namemodel.not_a_name`
+
+**Check before flipping it:** that CI is green, and that the day's batch still passes those three
+gates — run `wikidata-edit-run.py` against it and read the refusal counts.
 
 ## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
 
