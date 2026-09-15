@@ -16,6 +16,23 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — Inês de Bettencourt I needed no seed: the Grolier ball already had her
+
+The last of the six looked like it needed a profile created — her open slot was found and
+confirmed on Geni, `Isabeau d'Harcourt` `6000000006420936026`, *"Daughter of Alice de
+Beaumont"* with no father. Before asking for it, the cheaper question: is she already inside a
+ball that exists?
+
+She is. `export-Descendants-6000000227738961944.ged`, the Grolier seed, carries her as a full
+`INDI` — `Inês /de Bettencourt/ I`, born ABT 1387 at Héricourt-en-Caux, her `about_me`
+intact, and a `FAM` where she is `WIFE` with a child. Her mother `6000000006420704264` is in
+it too. So her descendants are already in the corpus and no seed, no creation and no sixth
+export were needed.
+
+**The check is the same one that confirmed Arcamone reached Pietro**, and it is worth making a
+habit: after each ball lands, grep the remaining targets against every ball already filed. Two
+of the six were closed that way rather than by running another export.
+
 ## 2026-09-14 — five descendants balls, and the rule that none of the six could be exported
 
 Six commanded targets, *"idk their status, ancestor climb and then descendants export"*. The

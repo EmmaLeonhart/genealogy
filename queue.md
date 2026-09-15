@@ -58,16 +58,9 @@ ordering lol"*. Anything typed here by hand outranks anything derived.
 
 ## Another item
 
-Export descendants of Inês de Bettencourt I `6000000001435366077` — ancestor climb, then
-descendants export.
-
-She cannot be exported directly: *"you may only export a GEDCOM file focused on profiles that
-you added to Geni."* The slot is confirmed on Geni — add a father, `NN`, no surname, to
-`Isabeau d'Harcourt` `6000000006420936026` (*"Daughter of Alice de Beaumont"*, no father), then
-Descendants 5000 off him.
-
-⛔ One export at a time, and Geni refuses a second SILENTLY — it re-renders the form instead of
-redirecting to a task id. Check the redirect target.
+Export descendants of Hélène de Corday `6000000000746523797` — running off
+`NN des Rotours` `6000000227695388934`, `task_id 6000000227757652945`. Download, file as
+`exports/emma-requested/export-Descendants-6000000227695388934.ged`, done.
 
 ## Another item
 
