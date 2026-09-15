@@ -152,8 +152,11 @@ geni_id	qid	name	property	verdict	model	reality
 2853609	Q131729972	Olof Eriksson Spak	P569	missing	+1575-05-21/11	
 2853609	Q131729972	Olof Eriksson Spak	P734	extra		Q37140936
 285884854200005085	Q141244207	Anna M. Ekman	P3373	extra		Q141205908;Q141223423;Q141352125
+285884854200005085	Q141244207	Anna M. Ekman	P735	extra	Q666578	Q19803510
 285885625540008539	Q141352125	Adolf E. Ekman	P3373	extra		Q141205908;Q141223423;Q141244207
+285885625540008539	Q141352125	Adolf E. Ekman	P735	extra	Q18145837	Q19803501
 285886949080005081	Q141223423	Harlverg B. Ekman	P3373	extra		Q141205908;Q141244207;Q141352125
+285886949080005081	Q141223423	Harlverg B. Ekman	P735	extra		Q19803497
 302204346420006438	Q12278990	Domitia Faustina	P1343	extra		Q1138524
 302204346420006438	Q12278990	Domitia Faustina	P22	extra		Q1430
 302204346420006438	Q12278990	Domitia Faustina	P25	extra		Q236936
@@ -470,17 +473,15 @@ geni_id	qid	name	property	verdict	model	reality
 4258970970100070152	Q466257	Rozala d'Ivrea	P7929	extra		p=rozala;n=d italia
 4258970970100070152	Q466257	Rozala d'Ivrea	P8172	extra		sw.129428
 4258970970100070152	Q466257	Rozala d'Ivrea	P97	extra		Q5177051;Q719039
-4259064	Q5290415		P1819	extra		I00085619
-4259064	Q5290415		P21	extra		Q6581097
-4259064	Q5290415		P26	extra		Q97783170
-4259064	Q5290415		P27	extra		Q204920
-4259064	Q5290415		P2949	extra		De_Borja_y_Cavanilles-2
-4259064	Q5290415		P40	extra		Q104519750;Q160369;Q18156578
-4259064	Q5290415		P53	extra		Q237599
-4259064	Q5290415		P646	extra		/m/0j7lmmf
-4259064	Q5290415		P734	extra		Q94695533
-4259064	Q5290415		P735	extra		Q79607860
-4259064	Q5290415		P97	extra		Q17018591
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P1819	extra		I00085619
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P27	extra		Q204920
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P2949	extra		De_Borja_y_Cavanilles-2
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P40	extra		Q104519750;Q160369;Q18156578
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P53	extra		Q237599
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P646	extra		/m/0j7lmmf
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P734	extra		Q94695533
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P735	extra		Q79607860
+4259064	Q5290415	Mossen Juan Domingo de Borja y Doncel	P97	extra		Q17018591
 4336098268660050248	Q116053620	Afonso de Castro Alvarez Osorio Heredero del Condado de Lemos	P1819	extra		I00092126
 4336098268660050248	Q116053620	Afonso de Castro Alvarez Osorio Heredero del Condado de Lemos	P22	extra		Q2690477
 4336098268660050248	Q116053620	Afonso de Castro Alvarez Osorio Heredero del Condado de Lemos	P25	extra		Q5724136
@@ -1608,6 +1609,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000000320798442	Q441547	Wisigarda dei Langobardi	P7929	extra		p=wisigarde;n=dei longobardi
 6000000000320798442	Q441547	Wisigarda dei Langobardi	P97	extra		Q22967677;Q22976614
 6000000000325079856	Q141224767	Helena Mikontytär Schulin	P2949	extra		Schulin-18
+6000000000325081072	Q141319025	Anna Michelsdotter Wacklin	P5056	extra		Q141456534
 6000000000334635878	Q75275047	John Fleming	P1819	extra		I00089589
 6000000000334635878	Q75275047	John Fleming	P22	extra		Q43915175
 6000000000334635878	Q75275047	John Fleming	P25	extra		Q75276083
@@ -1828,6 +1830,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000000436378898	Q75322562	Liudger Graf von Sachsen	P4159	extra		Lludger_Billung_(1)
 6000000000436378898	Q75322562	Liudger Graf von Sachsen	P4638	extra		p6243.htm#i62429
 6000000000436378898	Q75322562	Liudger Graf von Sachsen	P569	extra		+0950-00-00/9
+6000000000436378898	Q75322562	Liudger Graf von Sachsen	P734	extra	Q106072047;Q16262105;Q55293747	Q1158367
 6000000000436378898	Q75322562	Liudger Graf von Sachsen	P7902	extra		18944035X
 6000000000436378898	Q75322562	Liudger Graf von Sachsen	P97	extra		Q28989
 6000000000436981227	Q75290437	Tommasia de Montfort	P1819	extra		I00121975
@@ -2889,11 +2892,9 @@ geni_id	qid	name	property	verdict	model	reality
 6000000001009241218	Q225212	Harald III Svendsøn af Danmark Konge af Danmark	P8341	extra		Harald_Hen
 6000000001009241218	Q225212	Harald III Svendsøn af Danmark Konge af Danmark	P937	extra		Q35
 6000000001009241218	Q225212	Harald III Svendsøn af Danmark Konge af Danmark	P97	extra		Q12097
-6000000001062599699	Q97783170		P1819	extra		I00085620
-6000000001062599699	Q97783170		P21	extra		Q6581072
-6000000001062599699	Q97783170		P26	extra		Q5290415
-6000000001062599699	Q97783170		P40	extra		Q104519750;Q160369;Q18156578
-6000000001062599699	Q97783170		P735	extra		Q15208593
+6000000001062599699	Q97783170	Francina Marti Llançol	P1819	extra		I00085620
+6000000001062599699	Q97783170	Francina Marti Llançol	P40	extra		Q104519750;Q160369;Q18156578
+6000000001062599699	Q97783170	Francina Marti Llançol	P735	extra		Q15208593
 6000000001065696635	Q75387333	Blanche fitzJohn	P1819	extra		I00005208
 6000000001065696635	Q75387333	Blanche fitzJohn	P22	extra		Q193752
 6000000001065696635	Q75387333	Blanche fitzJohn	P25	extra		Q75387335
@@ -3969,6 +3970,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000001882580286	Q110386164	Ulrika Christina Mörner af Morlanda	P25	extra		Q109802279
 6000000001882580286	Q110386164	Ulrika Christina Mörner af Morlanda	P2949	extra		Mörner-21
 6000000001882580286	Q110386164	Ulrika Christina Mörner af Morlanda	P40	extra	Q4973002	Q15695129;Q6050268
+6000000001882580286	Q110386164	Ulrika Christina Mörner af Morlanda	P734	extra		Q141223484
 6000000001883008064	Q6161733	Carl Fredrik Piper	P106	extra		Q212238;Q82955
 6000000001883008064	Q6161733	Carl Fredrik Piper	P10832	extra		E39PBJpDHqC9xtytPJhyBR48YP
 6000000001883008064	Q6161733	Carl Fredrik Piper	P119	extra		Q10689276
@@ -4031,6 +4033,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000001951142201	Q6188549	Sten Bosson Natt och Dag till Ekhult	P40	extra		Q5569995;Q5580035;Q6008830
 6000000001951142201	Q6188549	Sten Bosson Natt och Dag till Ekhult	P4159	extra		Sten_Natt_Och_Dag_(1)
 6000000001951142201	Q6188549	Sten Bosson Natt och Dag till Ekhult	P53	extra		Q1130105
+6000000001951142201	Q6188549	Sten Bosson Natt och Dag till Ekhult	P734	extra	Q6980316	Q37523137
 6000000001962224550	Q324783	Erik Valdemarsson Folkungaätt	P106	extra		Q82955
 6000000001962224550	Q324783	Erik Valdemarsson Folkungaätt	P119	extra		Q657118
 6000000001962224550	Q324783	Erik Valdemarsson Folkungaätt	P1343	extra		Q379406
@@ -4103,7 +4106,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000001982124908	Q5953788	Juana Fernández de Córdoba y Enríquez de Ribera	P3716	extra		Q16744001
 6000000001982124908	Q5953788	Juana Fernández de Córdoba y Enríquez de Ribera	P40	extra		Q3816449
 6000000001994951163	Q141244084	Anna Wilhelmina Nordenfeldt	P26	missing	Q141244084	
-6000000001994951163	Q141244084	Anna Wilhelmina Nordenfeldt	P734	extra	Q31018327	Q141443216
+6000000001994951163	Q141244084	Anna Wilhelmina Nordenfeldt	P734	extra		Q141443216;Q31018327
 6000000002043219592	Q75940772	Loretta la Zouche	P1185	extra		261316
 6000000002043219592	Q75940772	Loretta la Zouche	P1819	extra		I00177425
 6000000002043219592	Q75940772	Loretta la Zouche	P22	extra		Q21034939
@@ -5743,7 +5746,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000002572701505	Q141205942	Tore II Gardson Gard	P1449	extra		Garå
 6000000002572701505	Q141205942	Tore II Gardson Gard	P734	extra		Q37475140
 6000000002572728015	Q141216369	Gard Toresson Talgje	P1449	extra		Toresson
-6000000002572728015	Q141216369	Gard Toresson Talgje	P734	extra		Q141444384
+6000000002572728015	Q141216369	Gard Toresson Talgje	P734	extra	Q141456536	Q141444384
 6000000002598234929	Q127598480		P21	extra		Q6581097
 6000000002598234929	Q127598480		P22	extra		Q127598463
 6000000002598234929	Q127598480		P25	extra		Q127598465
@@ -6347,9 +6350,9 @@ geni_id	qid	name	property	verdict	model	reality
 6000000003094912440	Q141448539	Torstein Anderson Lussi	P5056	missing	Q141448438	
 6000000003094971035	Q141223905	Eli Helgesdatter Auestad	P26	missing	Q141223905	Q141223933
 6000000003095006116	Q141447234	Siri Olesdatter Assheim	P5056	missing	Q141446968	
-6000000003095034926	Q141442271	Anna Rasmusdtr. Li	P5056	missing	Q141442244	
 6000000003095047761	Q141442942	Elling Sørenson Helland	P5056	missing	Q141442908	
 6000000003095060379	Q141456412	Merete Sigvardsdotter Frøyland	P26	missing	Q141456355	
+6000000003095172404	Q141200094	Siri Rasmusdtr. Erevik	P5056	extra		Q141442244
 6000000003095255586	Q141456371	Jon Ivarson Dall Hovland	P40	missing	Q141456431	
 6000000003095255625	Q141456431	Svein Jonson Hovland	P22	missing	Q141456371	
 6000000003097932979	Q324234	Ernst von Babenberg	P1006	extra		075172119
@@ -6798,6 +6801,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000003491951682	Q141451114	Sven Svensen Risa I	P5056	missing	Q141450961	
 6000000003491967424	Q141451057	Maren Gunnarsdatter Tjensvoll	P5056	missing	Q141450954	
 6000000003491976521	Q141447225	Ragnhild Tøresdatter Sveinsvoll	P5056	missing	Q141446969	
+6000000003491978043	Q141451028	Ingeborg Berte Svensdtr.	P5056	extra		Q141456535
 6000000003491978760	Q141440613	Mari Osmundsdatter Tunheim	P5056	missing	Q141440449	
 6000000003491986771	Q141168957	Jonas Jonson Heigre	P5056	missing	Q141249667	
 6000000003491986806	Q141216510	Torger Torgerson Stokka	P5056	missing	Q141352782	
@@ -7796,6 +7800,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P2671	extra		/g/12170_r4
 6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P2949	extra		Aalst-3
 6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P40	extra		Q113456791
+6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P734	extra		Q36920926
 6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P735	extra	Q576970	Q141444401;Q21056393
 6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P7929	extra		p=baudouin;n=de gand;oc=3
 6000000003827520768	Q1914050	Boudewijn III van Gent heer van Aalst en Wieze	P97	extra		Q65036772
@@ -8643,7 +8648,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P569	extra	+1495-01-00/10	+1493-00-00/9
 6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P607	extra		Q8244222
 6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P691	extra		jo20241228220
-6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P734	extra	Q27897338;Q28810939;Q893835	Q94695533
+6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P734	extra	Q27897338	Q28810939;Q893835;Q94695533
 6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P735	extra	Q475210	Q16652258
 6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P7929	extra		p=juan;n=de borja;oc=2
 6000000004269718450	Q3172643	Juan de Borja y Enriquez de Luna III Duque de Gandía	P937	extra		Q33532
@@ -9039,6 +9044,8 @@ geni_id	qid	name	property	verdict	model	reality
 6000000004594967673	Q6188777	Arvid Nils Gustafsson Stenbock	P94	extra		COA family sv Stenbock (grevliga ätten).svg
 6000000004594967673	Q6188777	Arvid Nils Gustafsson Stenbock	P9495	extra		person/2E08A585-996C-435E-AC99-50060FA284A6
 6000000004645401302	Q141216495	NN	P734	extra		Q54366191
+6000000004648375564	Q141456573	Astrid Gunvor Nilsen	P5056	missing	Q141455639	
+6000000004648375564	Q141456573	Astrid Gunvor Nilsen	P734	extra		Q21449502
 6000000004648609906	Q141456421	Olina Marta Pettersdotter Storenes	P26	missing	Q141456353	
 6000000004648609906	Q141456421	Olina Marta Pettersdotter Storenes	P5056	missing	Q141456297	
 6000000004648809570	Q141456353	Hans Nikolai Nilsen	P26	missing	Q141456421	
@@ -9219,6 +9226,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000005264351012	Q110302791	Anna Fartegnsdatter Seim	P22	extra		Q110302792
 6000000005264351012	Q110302791	Anna Fartegnsdatter Seim	P40	extra		Q110302785
 6000000005381997903	Q141448450	Anna Børgesd Aubø	P26	missing	Q141448450	Q141448514
+6000000005382299298	Q141456590	Birgitte Fartegnsd Bagge	P26	missing	Q141456590	Q141454320
 6000000005393641057	Q6003542	Henrik Johan Nauckhoff	P106	extra		Q10669499;Q47064
 6000000005393641057	Q6003542	Henrik Johan Nauckhoff	P1343	extra		Q379406
 6000000005393641057	Q6003542	Henrik Johan Nauckhoff	P1412	extra		Q9027
@@ -9368,6 +9376,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000005598872395	Q3880823	Oddon de Savoie	P8168	extra		Q20839
 6000000005606851268	Q141219269	Kari Tollaksdatter Kartevoll	P5056	missing	Q141403245	
 6000000005606860573	Q141318977	Rasmus Rasmussen Bø	P734	extra	Q30253098	Q1634177
+6000000005606916346	Q141456586	Berit Enoksdatter Stangeland	P5056	missing	Q141456530	
 6000000005606976626	Q141456401	Malena Sørensdatter Helland	P734	missing	Q141456289	Q30085478
 6000000005606976813	Q3143008	Karen Hulda Garborg	P1006	extra		100027776
 6000000005606976813	Q3143008	Karen Hulda Garborg	P1015	extra		90103600
@@ -9626,6 +9635,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006098056564	Q99301905	Jöns Tordsson Bonde	P27	extra		Q34
 6000000006098056564	Q99301905	Jöns Tordsson Bonde	P40	extra		Q111442894;Q125976738;Q99301904;Q99302112
 6000000006098056564	Q99301905	Jöns Tordsson Bonde	P569	missing	+1518-00-00/9	
+6000000006098056564	Q99301905	Jöns Tordsson Bonde	P734	extra		Q27133759
 6000000006098056564	Q99301905	Jöns Tordsson Bonde	P94	extra		House of Bonde Crest.png
 6000000006100839430	Q2071583	Geoffroi II de Bretagne	P106	extra		Q2478141
 6000000006100839430	Q2071583	Geoffroi II de Bretagne	P1185	extra		147581
@@ -9792,6 +9802,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006101366655	Q6048491	Ochos	P3373	extra		Q5429464
 6000000006101366655	Q6048491	Ochos	P570	extra		-0330-00-00/9
 6000000006101366655	Q6048491	Ochos	P97	extra		Q2747456
+6000000006110815389	Q141456542	Anfinn Halvardsen Skas	P5056	missing	Q141456531	
 6000000006127108986	Q2624238	Wilhelm Mauritz Klingspor	P103	extra		Q9027
 6000000006127108986	Q2624238	Wilhelm Mauritz Klingspor	P106	extra		Q47064;Q7820253;Q82955
 6000000006127108986	Q2624238	Wilhelm Mauritz Klingspor	P10713	extra		4121-1416928956727
@@ -9889,7 +9900,9 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127120913	Q5580888	Erik Gustaf Boije af Gennäs	P410	extra		Q104680
 6000000006127120913	Q5580888	Erik Gustaf Boije af Gennäs	P53	extra		Q4090354
 6000000006127120913	Q5580888	Erik Gustaf Boije af Gennäs	P5587	extra		dbqt24zx25z5mbh
+6000000006127120913	Q5580888	Erik Gustaf Boije af Gennäs	P734	extra		Q141223490;Q28149669
 6000000006127120913	Q5580888	Erik Gustaf Boije af Gennäs	P906	extra		383458
+6000000006127120919	Q141382150	Johan Gustaf Boije af Gennäs	P734	extra		Q141223490;Q28149669
 6000000006127147310	Q130564935	Christoph Ernst von Platen	P106	extra		Q514725
 6000000006127147310	Q130564935	Christoph Ernst von Platen	P22	extra		Q131727095
 6000000006127147310	Q130564935	Christoph Ernst von Platen	P27	extra		Q34
@@ -9937,6 +9950,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127291667	Q108914600	Gustaf Leonardsson Ribbing af Zernava	P53	extra		Q108911321
 6000000006127291667	Q108914600	Gustaf Leonardsson Ribbing af Zernava	P569	extra		+1673-05-22/11
 6000000006127291667	Q108914600	Gustaf Leonardsson Ribbing af Zernava	P69	extra		Q185246
+6000000006127291667	Q108914600	Gustaf Leonardsson Ribbing af Zernava	P734	extra		Q37134374
 6000000006127346098	Q6184934	Erik Samuel Sparre af Söfdeborg	P106	extra		Q212238
 6000000006127346098	Q6184934	Erik Samuel Sparre af Söfdeborg	P1343	extra		Q110246666;Q44181938
 6000000006127346098	Q6184934	Erik Samuel Sparre af Söfdeborg	P1412	extra		Q9027
@@ -9964,6 +9978,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127355736	Q130755124	Johan Gustav Boije af Gennäs	P20	extra		Q10498027
 6000000006127355736	Q130755124	Johan Gustav Boije af Gennäs	P22	extra		Q112973884
 6000000006127355736	Q130755124	Johan Gustav Boije af Gennäs	P27	extra		Q34
+6000000006127355736	Q130755124	Johan Gustav Boije af Gennäs	P734	extra		Q141223490;Q28149669
 6000000006127355736	Q130755124	Johan Gustav Boije af Gennäs	P735	extra	Q10989273;Q746076	Q15646212
 6000000006127401147	Q120499021	Nils Nilsson Duréel	P106	extra		Q47064
 6000000006127401147	Q120499021	Nils Nilsson Duréel	P19	extra		Q25724
@@ -9987,6 +10002,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127423825	Q108914778	Agneta Christina Leonardsdotter Ribbing af Zernava	P53	extra		Q108911321
 6000000006127423825	Q108914778	Agneta Christina Leonardsdotter Ribbing af Zernava	P569	extra		+1675-03-08/11
 6000000006127423825	Q108914778	Agneta Christina Leonardsdotter Ribbing af Zernava	P570	extra	+1701-09-19/11	+1701-09-14/11
+6000000006127423825	Q108914778	Agneta Christina Leonardsdotter Ribbing af Zernava	P734	extra		Q37134374
 6000000006127453696	Q5898100	Peter Petersson Kalling till Myrö	P106	extra		Q47064
 6000000006127453696	Q5898100	Peter Petersson Kalling till Myrö	P1299	extra		Q18585169
 6000000006127453696	Q5898100	Peter Petersson Kalling till Myrö	P1343	extra		Q379406;Q385990
@@ -10037,7 +10053,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P2949	extra		Horn_af_Ekebyholm-1
 6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P3373	extra		Q19678400;Q5813616
 6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P40	extra	Q6188777	Q133823793;Q19006898
-6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P734	extra	Q735211	Q141249585
+6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P734	extra		Q141249585;Q735211
 6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P94	extra		Horn af Ekebyholm - Grevlig - Nr. 53.jpg
 6000000006127496847	Q109296398	Fredrika Eleonora Arvidsdotter Horn af Ekebyholm	P9495	extra		person/F9E94731-883F-4ED5-B230-F513D2FCBA85
 6000000006127523222	Q110303165	Sofia Elisabeth Augusta von Buchwaldt	P1819	extra		I00493447
@@ -10240,6 +10256,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127529405	Q110304545	Charlotta Lovisa Gyllenkrok	P26	extra		Q110304532
 6000000006127529405	Q110304545	Charlotta Lovisa Gyllenkrok	P40	extra	Q141312676	Q320135
 6000000006127529405	Q110304545	Charlotta Lovisa Gyllenkrok	P8168	extra		Q1200696
+6000000006127529490	Q141352309	Hans Johan Mörner af Morlanda	P734	extra		Q141223484
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P106	extra		Q212238;Q47064
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P19	extra		Q10571908
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P214	extra		9834148122917395200007
@@ -10252,7 +10269,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P410	extra		Q493898
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P53	extra		Q10593672
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P5587	extra		xv8cl7kg4l6s428
-6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P734	extra	Q141223484	Q21507205
+6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P734	extra		Q141223484;Q21507205
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P906	extra		398804
 6000000006127542348	Q6001555	Carl Claes Mörner af Morlanda	P97	extra		Q1338119
 6000000006127550611	Q6001608	Hampus Elof Mörner af Morlanda	P106	extra		Q47064
@@ -10320,7 +10337,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127570365	Q19828095	Carl Mörner af Morlanda	P27	extra		Q34
 6000000006127570365	Q19828095	Carl Mörner af Morlanda	P39	extra		Q131997961;Q81718041
 6000000006127570365	Q19828095	Carl Mörner af Morlanda	P53	extra		Q10593672
-6000000006127570365	Q19828095	Carl Mörner af Morlanda	P734	extra	Q141223484	Q21507205
+6000000006127570365	Q19828095	Carl Mörner af Morlanda	P734	extra		Q141223484;Q21507205
 6000000006127570851	Q6175928	Aron Gustaf Silfversparre	P106	extra		Q639669
 6000000006127570851	Q6175928	Aron Gustaf Silfversparre	P1343	extra		Q110246666
 6000000006127570851	Q6175928	Aron Gustaf Silfversparre	P1412	extra		Q9027
@@ -10406,6 +10423,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006127651347	Q130684369	Agneta Johansdotter Ållongren	P27	extra		Q34
 6000000006127651347	Q130684369	Agneta Johansdotter Ållongren	P569	extra	+1649-00-00/9	+1647-00-00/9
 6000000006127651347	Q130684369	Agneta Johansdotter Ållongren	P734	extra		Q141381261
+6000000006127651691	Q141447202	Nils Mauritz Carlsson Posse af Säby	P734	extra		Q31018327
 6000000006127657041	Q5813639	Claes Fredrik Claesson Horn af Åminne	P106	extra		Q82955
 6000000006127657041	Q5813639	Claes Fredrik Claesson Horn af Åminne	P1343	extra		Q379406
 6000000006127657041	Q5813639	Claes Fredrik Claesson Horn af Åminne	P18	extra		Horn af Åminne, Claes Fredrik-1834.jpg
@@ -11646,7 +11664,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000006704094498	Q124219072	Anna Christina Gyllenstierna af Björksund och Helgö	P2949	extra		Gyllenstierna-17
 6000000006704094498	Q124219072	Anna Christina Gyllenstierna af Björksund och Helgö	P3373	extra		Q56300908;Q5779529
 6000000006704094498	Q124219072	Anna Christina Gyllenstierna af Björksund och Helgö	P4602	extra		+1715-08-29/11
-6000000006704094498	Q124219072	Anna Christina Gyllenstierna af Björksund och Helgö	P734	extra	Q37523137;Q47456776	Q141352784
+6000000006704094498	Q124219072	Anna Christina Gyllenstierna af Björksund och Helgö	P734	extra	Q47456776	Q141352784;Q37523137
 6000000006704094498	Q124219072	Anna Christina Gyllenstierna af Björksund och Helgö	P9495	extra		person/ECC3FC3D-CF2B-4306-A822-CDF975E1A006
 6000000006713354346	Q185832	Emanuel Swedenborg	P1005	extra		99252
 6000000006713354346	Q185832	Emanuel Swedenborg	P1006	extra		070466556
@@ -13137,7 +13155,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P2949	extra		Horn-6754
 6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P3373	extra		Q109296398;Q5813616
 6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P40	extra	Q141313713;Q141440513;Q4989142	Q141313521
-6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P734	extra	Q735211	Q141249585
+6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P734	extra		Q141249585;Q735211
 6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P735	extra	Q64412279	Q829665
 6000000007286110282	Q19678400	Eva Horn af Ekebyholm	P94	extra		Horn af Ekebyholm - Grevlig - Nr. 53.jpg
 6000000007289863298	Q110621422	Anna Andersdotter Björnram	P1819	extra		I00720192
@@ -13354,6 +13372,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000007334156256	Q103773586	Anna Sinclair	P3373	extra		Q95972040
 6000000007334156256	Q103773586	Anna Sinclair	P40	extra		Q103771916;Q103779517
 6000000007334156256	Q103773586	Anna Sinclair	P569	extra	+1653-00-00/9	+1652-01-01/9
+6000000007336196339	Q141403502	Anna Margareta Wrangel af Sauss	P734	extra		Q35930488
 6000000007337390586	Q31181694	Helène Lazarević	P19	extra		Q128087
 6000000007337390586	Q31181694	Helène Lazarević	P22	extra		Q1441077
 6000000007337390586	Q31181694	Helène Lazarević	P26	extra		Q336531
@@ -13522,6 +13541,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000007412720498	Q178823	Carl von Linné Jr.	P94	extra		Von Linne Coat of Arms.png
 6000000007412720498	Q178823	Carl von Linné Jr.	P9964	extra		118573330
 6000000007412720498	Q178823	Carl von Linné Jr.	P9984	extra		981058608951806706
+6000000007415230885	Q141319251	Margareta Christina Charlotta Hampusdotter Mörner af Morlanda	P734	extra		Q141223484
 6000000007415466872	Q141353117	Bleckert Gustaf Vilhelm Wachtmeister af Björkö	P734	extra		Q141381252
 6000000007417306400	Q86052	Friedrich III V von Zollern	P106	extra		Q2478141
 6000000007417306400	Q86052	Friedrich III V von Zollern	P1185	extra		120091
@@ -13806,6 +13826,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000007511906560	Q127270688	Beata Kristersdotter Bonde	P22	extra		Q5598267
 6000000007511906560	Q127270688	Beata Kristersdotter Bonde	P25	extra		Q127270689
 6000000007511906560	Q127270688	Beata Kristersdotter Bonde	P40	extra		Q6079861
+6000000007511906560	Q127270688	Beata Kristersdotter Bonde	P734	extra		Q27133759
 6000000007511965790	Q5931284	Olof Elias Lagerheim	P106	extra		Q16533;Q212238
 6000000007511965790	Q5931284	Olof Elias Lagerheim	P1343	extra		Q385990;Q678259
 6000000007511965790	Q5931284	Olof Elias Lagerheim	P1477	extra		Olof Elias Weidman
@@ -14268,7 +14289,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P373	extra		Charlotta Aurora De Geer
 6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P40	extra	Q5779125	Q111288745;Q431364
 6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P646	extra		/m/05n_5s4
-6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P734	extra	Q28605695	Q42181347
+6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P734	extra		Q28605695;Q42181347
 6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P7902	extra		1025368258
 6000000007753195350	Q4944366	Charlotta Aurora De Geer af Finspång	P94	extra		Coat of arms of De Geer af Finspång.jpg
 6000000007753308375	Q110548896	Ebba Lidman	P1819	extra		I00487249
@@ -14505,6 +14526,8 @@ geni_id	qid	name	property	verdict	model	reality
 6000000007900343922	Q4355686	August Gustaf Nordenskjöld	P937	extra		Q1754;Q207295;Q38511
 6000000007910835508	Q141312965	Georg Jürgen Brandt	P2949	extra		Brandt-1479
 6000000007910838142	Q141312958	Catharina Ysing	P2949	extra		Ysing-2
+6000000007910838142	Q141312958	Catharina Ysing	P734	extra		Q141456529
+6000000007910983221	Q141440589	Jonas Ysing	P734	extra		Q141456529
 6000000007915298090	Q116004568	Isabel de Castañeda Guzmán	P1819	extra		I00444333
 6000000007915298090	Q116004568	Isabel de Castañeda Guzmán	P22	extra		Q116004569
 6000000007915298090	Q116004568	Isabel de Castañeda Guzmán	P25	extra		Q116004570
@@ -14983,6 +15006,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000008207725329	Q9157762	Antonia Hybrida Major	P569	extra		null
 6000000008207725329	Q9157762	Antonia Hybrida Major	P570	extra		null
 6000000008207725329	Q9157762	Antonia Hybrida Major	P6863	extra		4341
+6000000008207725329	Q9157762	Antonia Hybrida Major	P735	extra	Q2363857	Q19902046
 6000000008233772338	Q75394062	Vratislav of Bohemia	P1185	extra		909588
 6000000008233772338	Q75394062	Vratislav of Bohemia	P22	extra		Q703833
 6000000008233772338	Q75394062	Vratislav of Bohemia	P25	extra		Q2520202
@@ -15370,6 +15394,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000008521840258	Q6141740	Theodora Megala Komnene	P570	extra		+1400-00-00/7
 6000000008521840258	Q6141740	Theodora Megala Komnene	P735	CONFLICT	Q98545291	Q19962796
 6000000008529326355	Q141271437	Omund Børildsen Ualand	P5056	extra		Q141450957
+6000000008529438221	Q141283104	Marta Svensdotter Ueland	P5056	missing	Q141456535	
 6000000008529620579	Q131726981	Renata Elisabet Blum	P1819	extra		I00492915
 6000000008529620579	Q131726981	Renata Elisabet Blum	P22	extra		Q131726982
 6000000008529620579	Q131726981	Renata Elisabet Blum	P25	extra		Q131726983
@@ -16429,7 +16454,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000009098863644	Q4127288	Vsevolod Sviatoslavich of Kursk	P646	extra		/m/05t0l4t
 6000000009098863644	Q4127288	Vsevolod Sviatoslavich of Kursk	P7929	extra		p=vsevolod;n=rurikides;oc=10
 6000000009098863644	Q4127288	Vsevolod Sviatoslavich of Kursk	P97	extra		Q273613
-6000000009119902271	Q141268088	Nils Carlsson Posse af Säby	P734	extra	Q31018327	Q141443216
+6000000009119902271	Q141268088	Nils Carlsson Posse af Säby	P734	extra		Q141443216;Q31018327
 6000000009126235990	Q141178201	Marie Petrine Simensdatter Bergersen	P5056	extra		Q141189030
 6000000009126453497	Q141168797	Christian Frederik Bergersen	P734	extra		Q27824335
 6000000009144912137	Q7810305	Titus Flavius Titianus Consul c200	P106	extra		Q82955
@@ -16798,7 +16823,6 @@ geni_id	qid	name	property	verdict	model	reality
 6000000009514160940	Q191114	SĪTĀ aka JĀNAKI aka MYTHILI Rāma	P5063	extra		i86736
 6000000009514160940	Q191114	SĪTĀ aka JĀNAKI aka MYTHILI Rāma	P646	extra		/m/06l277
 6000000009514160940	Q191114	SĪTĀ aka JĀNAKI aka MYTHILI Rāma	P7012	extra		sita
-6000000009514160940	Q191114	SĪTĀ aka JĀNAKI aka MYTHILI Rāma	P735	missing	Q99399809	
 6000000009514160940	Q191114	SĪTĀ aka JĀNAKI aka MYTHILI Rāma	P8189	extra		987007414395205171
 6000000009514160940	Q191114	SĪTĀ aka JĀNAKI aka MYTHILI Rāma	P8814	extra		09554428-n
 6000000009552944193	Q113559872	Marcus Antonius Agrippa	P22	extra		Q316915
@@ -16940,6 +16964,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000009693821507	Q135480259	Elsa Barbro Gabrielsdotter Leijonhufwudh	P1819	extra		I00533293
 6000000009693821507	Q135480259	Elsa Barbro Gabrielsdotter Leijonhufwudh	P2949	extra		Oxenstierna_af_Croneborg-6
 6000000009693821507	Q135480259	Elsa Barbro Gabrielsdotter Leijonhufwudh	P40	extra		Q52575026;Q5563907
+6000000009693821507	Q135480259	Elsa Barbro Gabrielsdotter Leijonhufwudh	P734	extra		Q41905671
 6000000009693938328	Q135480258	Carl Leonard Leijonhufvud	P1819	extra		I00533292
 6000000009693938328	Q135480258	Carl Leonard Leijonhufvud	P40	extra		Q52575026;Q5563907
 6000000009695333621	Q77601	Jean de Châlon	P106	extra		Q2478141
@@ -17744,7 +17769,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P443	extra		LL-Q9027 (swe)-Moonhouse-Carl Georg Sparre.wav
 6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P53	extra		Q10674451
 6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P5587	extra		64jlpfpq52w61sk
-6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P734	extra	Q30136491	Q141313470
+6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P734	extra		Q141313470;Q30136491
 6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P906	extra		262792
 6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P94	extra		Sparre-af-Söfdeborg.jpg
 6000000010894303789	Q6184896	Grev Carl Georg Georg Sparre af Söfdeborg	P97	extra		Q3519259
@@ -18212,7 +18237,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P53	extra		Q10593672
 6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P5587	extra		20dhlqxl2sc9cvd
 6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P607	extra		Q870196
-6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P734	extra	Q141223484	Q21507205
+6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P734	extra		Q141223484;Q21507205
 6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P735	extra	Q2529610	Q2801895
 6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P906	extra		273918
 6000000011399399424	Q6001589	Carl Stellan Mörner af Morlanda	P97	extra		Q3519259
@@ -18441,6 +18466,8 @@ geni_id	qid	name	property	verdict	model	reality
 6000000011593945394	Q5570931	Lars Benzelstierna	P6821	extra		alvin-person:58451;alvin-person:8140
 6000000011593945394	Q5570931	Lars Benzelstierna	P734	extra		Q110570971
 6000000011593945394	Q5570931	Lars Benzelstierna	P906	extra		259173
+6000000011601412945	Q141456562	Anna Maria Gavelius	P25	missing	Q141456604	
+6000000011601412945	Q141456562	Anna Maria Gavelius	P26	missing	Q141456562	
 6000000011604374639	Q38156577	Jacob Sahlgren	P1343	extra		Q379406
 6000000011604374639	Q38156577	Jacob Sahlgren	P20	extra		Q10475816
 6000000011604374639	Q38156577	Jacob Sahlgren	P26	extra		Q16285614
@@ -18824,7 +18851,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P4459	extra		15745/juan-tellez-giron-y-enriquez-de-ribera
 6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P569	CONFLICT	+1580-00-00/9	+1597-11-15/11
 6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P646	extra		/m/0w5wycr
-6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P734	CONFLICT	Q144724;Q16796605;Q37159923;Q41582594	Q54810015
+6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P734	CONFLICT	Q144724;Q37159923	Q54810015
 6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P950	extra		XX4792782
 6000000011789536603	Q16863793	Juan Téllez Girón y Enríquez de Ribera VI Duque de Osuna	P97	extra		Q112062572;Q112062604;Q112062745
 6000000011809154022	Q130698173	Per Strömfelt	P106	extra		Q47064
@@ -18853,6 +18880,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000011851454732	Q101247028	Anna Catharina Fleming af Liebelitz	P26	extra		Q1346525
 6000000011851454732	Q101247028	Anna Catharina Fleming af Liebelitz	P40	extra		Q101247025;Q6192693
 6000000011851454732	Q101247028	Anna Catharina Fleming af Liebelitz	P6821	extra		alvin-person:54427
+6000000011851454732	Q101247028	Anna Catharina Fleming af Liebelitz	P734	extra		Q1427982
 6000000011851554953	Q135661264	Elisabet Charlotta In de Betou	P1819	extra		I00565070
 6000000011851554953	Q135661264	Elisabet Charlotta In de Betou	P22	extra		Q135661267
 6000000011851554953	Q135661264	Elisabet Charlotta In de Betou	P25	extra		Q135661268
@@ -19462,7 +19490,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000012641171021	Q135480235	Maria Rebecca Munck af Rosenschôld	P569	missing	+1778-08-25/11	
 6000000012641171021	Q135480235	Maria Rebecca Munck af Rosenschôld	P570	missing	+1862-07-10/11	
 6000000012641171021	Q135480235	Maria Rebecca Munck af Rosenschôld	P735	extra	Q21148400;Q325872	Q503607
-6000000012641210385	Q141224102	Catharina Charlotta Falkenberg af Trystorp	P734	extra	Q16869887	Q141290424
+6000000012641210385	Q141224102	Catharina Charlotta Falkenberg af Trystorp	P734	extra		Q141290424;Q16869887
 6000000012648547676	Q3428167	Olof Kolmodin Sr.	P1015	extra		3035088
 6000000012648547676	Q3428167	Olof Kolmodin Sr.	P106	extra		Q2259532;Q36180;Q49757;Q96236305
 6000000012648547676	Q3428167	Olof Kolmodin Sr.	P10832	extra		E39PBJbtrPfJp4d676YJ4F8Hmd
@@ -19861,7 +19889,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013020967973	Q16649958	Johan Otto Nauckhoff	P410	extra		Q104680
 6000000013020967973	Q16649958	Johan Otto Nauckhoff	P443	extra		LL-Q9027 (swe)-Moonhouse-Johan Otto Nauckhoff.wav
 6000000013020967973	Q16649958	Johan Otto Nauckhoff	P734	extra		Q47461747
-6000000013022865578	Q141244104	Magdalena Sofia Wrangel af Sauss	P734	extra	Q35930488	Q141403308
+6000000013022865578	Q141244104	Magdalena Sofia Wrangel af Sauss	P734	extra		Q141403308;Q35930488
 6000000013040071447	Q63049344	García Garcés	P22	extra		Q358396
 6000000013040071447	Q63049344	García Garcés	P25	extra		Q3807743
 6000000013040071447	Q63049344	García Garcés	P4159	extra		Garcia_De_Navarre_(2)
@@ -19890,7 +19918,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P3373	extra		Q111383681
 6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P39	extra		Q12221235;Q62535283
 6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P40	extra		Q8776146
-6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P734	missing	Q16796605;Q16884761	Q41173901
+6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P734	extra	Q16881234	Q41173901
 6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P735	extra	Q7141520	Q19801054
 6000000013060789938	Q2891442	Antonio Pimentel Enríquez y Toledo IV marqués de Távara, Virrey de Valencia y Sicilia	P97	extra		Q3519259
 6000000013071012314	Q113251690		P18	extra		Karl Ferdinand Wrangel.png
@@ -20017,6 +20045,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013175410922	Q135480148	Hedvig Hindrichdotter Wegelin	P40	extra	Q109335354	Q78289463
 6000000013175410922	Q135480148	Hedvig Hindrichdotter Wegelin	P569	missing	+1737-00-00/9	
 6000000013175410922	Q135480148	Hedvig Hindrichdotter Wegelin	P570	missing	+1794-08-18/11	
+6000000013192986169	Q141381985	Catharina Mariana Ulrika Sparre af Söfdeborg	P734	extra		Q30136491
 6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P1185	extra		1609623
 6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P22	extra		Q2058139
 6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P26	extra		Q94105827
@@ -20024,7 +20053,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P40	extra		Q2566217
 6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P569	missing	+1590-00-00/9	
 6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P570	missing	+1648-00-00/9	
-6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P734	missing	Q16796605;Q37159923	
+6000000013193943601	Q110868159	Antonia Téllez-Girón y Enríquez de Ribera	P734	missing	Q37159923	
 6000000013207216147	Q124568714	Carl Johan Mörner af Morlanda	P106	extra		Q47064
 6000000013207216147	Q124568714	Carl Johan Mörner af Morlanda	P20	extra		Q1754
 6000000013207216147	Q124568714	Carl Johan Mörner af Morlanda	P27	extra		Q34
@@ -20299,7 +20328,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013383710566	Q110588144	Diego Gómez de Sandoval y de la Cerda conde de Saldaña	P373	extra		Diego Gómez de Sandoval de la Cerda
 6000000013383710566	Q110588144	Diego Gómez de Sandoval y de la Cerda conde de Saldaña	P4459	extra		49482/diego-de-sandoval-y-rojas-de-la-cerda
 6000000013383710566	Q110588144	Diego Gómez de Sandoval y de la Cerda conde de Saldaña	P569	CONFLICT	+1580-00-00/9	+1587-00-00/9
-6000000013383710566	Q110588144	Diego Gómez de Sandoval y de la Cerda conde de Saldaña	P734	missing	Q1559123;Q356559;Q37559300	
+6000000013383710566	Q110588144	Diego Gómez de Sandoval y de la Cerda conde de Saldaña	P734	missing	Q1559123;Q37559300	
 6000000013383710566	Q110588144	Diego Gómez de Sandoval y de la Cerda conde de Saldaña	P735	missing	Q3579048	
 6000000013397856067	Q110457060	Gertrud Helgers	P1819	extra		I00748615
 6000000013397856067	Q110457060	Gertrud Helgers	P26	extra		Q109557733
@@ -20438,7 +20467,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013401050327	Q5779529	Nils Gyllenstierna af Björksund och Helgö	P410	extra		Q152951
 6000000013401050327	Q5779529	Nils Gyllenstierna af Björksund och Helgö	P5101	extra		GyllenstiernaN
 6000000013401050327	Q5779529	Nils Gyllenstierna af Björksund och Helgö	P607	extra		Q151616
-6000000013401050327	Q5779529	Nils Gyllenstierna af Björksund och Helgö	P734	extra	Q37523137;Q47456776	Q141352784
+6000000013401050327	Q5779529	Nils Gyllenstierna af Björksund och Helgö	P734	extra	Q47456776	Q141352784;Q37523137
 6000000013401050327	Q5779529	Nils Gyllenstierna af Björksund och Helgö	P94	extra		Gyllenstierna Björkesund G45.jpg
 6000000013402027084	Q110303080	Louis De Geer	P1343	extra		Q110246590
 6000000013402027084	Q110303080	Louis De Geer	P1412	extra		Q9027
@@ -20473,6 +20502,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000013482854614	Q110303124	Helena Tott af Skedebo	P27	extra		Q34
 6000000013482854614	Q110303124	Helena Tott af Skedebo	P40	extra		Q792450
 6000000013482854614	Q110303124	Helena Tott af Skedebo	P53	extra		Q118180681
+6000000013482854614	Q110303124	Helena Tott af Skedebo	P734	extra		Q45854140
 6000000013502803868	Q64829391	Abraham Johansson Fought Sr.	P106	extra		Q2259532
 6000000013502803868	Q64829391	Abraham Johansson Fought Sr.	P213	extra		0000000054912946
 6000000013502803868	Q64829391	Abraham Johansson Fought Sr.	P214	extra		64343884
@@ -20721,7 +20751,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000014032409455	Q16650430	Per Gustaf G. Svedelius	P53	extra		Q10684633
 6000000014032409455	Q16650430	Per Gustaf G. Svedelius	P5587	extra		97mqtdbt5vcf61l
 6000000014032409455	Q16650430	Per Gustaf G. Svedelius	P734	extra		Q27436718
-6000000014032409455	Q16650430	Per Gustaf G. Svedelius	P735	extra	Q13582800;Q15646212;Q19803504	Q18606368
+6000000014032409455	Q16650430	Per Gustaf G. Svedelius	P735	extra	Q13582800;Q15646212	Q18606368;Q19803504
 6000000014032409455	Q16650430	Per Gustaf G. Svedelius	P906	extra		285775
 6000000014037796607	Q520568	Hendrik van Brabant IV	P11835	extra		4469
 6000000014037796607	Q520568	Hendrik van Brabant IV	P1185	extra		912703
@@ -21296,6 +21326,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000015119243250	Q6079124	Axel Pontus von Rosen	P906	extra		355519
 6000000015119243250	Q6079124	Axel Pontus von Rosen	P94	extra		Von Rosen - Grevlig - Nr. 85.jpg
 6000000015119243250	Q6079124	Axel Pontus von Rosen	P97	extra		Q3519259
+6000000015119258311	Q141257181	Johanna Henrietta Turesdotter Ribbing af Koberg	P734	extra		Q37134374
 6000000015137126039	Q20732053	Jacques d'Harcourt	P10864	extra		81508
 6000000015137126039	Q20732053	Jacques d'Harcourt	P1185	extra		959363
 6000000015137126039	Q20732053	Jacques d'Harcourt	P1819	extra		I00115623
@@ -21738,7 +21769,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P40	extra		Q13048353
 6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P569	missing	+1329-00-00/9	
 6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P570	missing	+1384-00-00/9	
-6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P734	CONFLICT	Q164892;Q37535804;Q47034637	Q61669115
+6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P734	CONFLICT	Q164892	Q61669115
 6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P735	CONFLICT	Q15897419	Q13567058
 6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P7929	extra		p=pedro;n=fernandez de hijar;oc=1
 6000000015863392432	Q13049838	Pedro VII Fernández de Hijar y Alagón Barón de Hijar	P97	extra		Q59307416
@@ -21832,7 +21863,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000016104394435	Q99803157	Ana Maria de Bragança e Ligne de Sousa Tavares Mascarenhas da Silva 3.ª Duquesa de Lafões	P569	missing	+1797-09-21/11	
 6000000016104394435	Q99803157	Ana Maria de Bragança e Ligne de Sousa Tavares Mascarenhas da Silva 3.ª Duquesa de Lafões	P570	missing	+1851-09-12/11	
 6000000016104394435	Q99803157	Ana Maria de Bragança e Ligne de Sousa Tavares Mascarenhas da Silva 3.ª Duquesa de Lafões	P646	extra		/m/0bvrq46
-6000000016104394435	Q99803157	Ana Maria de Bragança e Ligne de Sousa Tavares Mascarenhas da Silva 3.ª Duquesa de Lafões	P734	missing	Q13582530;Q2304853;Q28800783;Q37086008;Q4529419;Q56244955;Q6327150	
+6000000016104394435	Q99803157	Ana Maria de Bragança e Ligne de Sousa Tavares Mascarenhas da Silva 3.ª Duquesa de Lafões	P734	missing	Q13582530;Q2304853;Q28800783;Q6327150	
 6000000016104394435	Q99803157	Ana Maria de Bragança e Ligne de Sousa Tavares Mascarenhas da Silva 3.ª Duquesa de Lafões	P735	missing	Q325872	Q482671
 6000000016162051363	Q129094470	Giovanni Tommaso Sanseverino	P1819	extra		I00263589
 6000000016162051363	Q129094470	Giovanni Tommaso Sanseverino	P22	extra		Q129094474
@@ -22205,6 +22236,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000017370088965	Q75421259	John John Leslie	P4638	extra		p13126.htm#i131251
 6000000017370088965	Q75421259	John John Leslie	P511	extra		Q209690
 6000000017377514353	Q141429803	Anna Svensdotter	P26	missing	Q141429803	Q141430064
+6000000017377514353	Q141429803	Anna Svensdotter	P5056	missing	Q141456535	
 6000000017424989989	Q16945159	Nils Abraham Bruncrona	P106	extra		Q47064;Q82955
 6000000017424989989	Q16945159	Nils Abraham Bruncrona	P1260	extra		LSH/agents/2996
 6000000017424989989	Q16945159	Nils Abraham Bruncrona	P1343	extra		Q379406
@@ -22492,7 +22524,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P646	extra		/m/0jk_c5f
 6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P650	extra		275861
 6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P6821	extra		alvin-person:27831
-6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P734	extra	Q141223484	Q21507205
+6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P734	extra		Q141223484;Q21507205
 6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P735	missing	Q18029644	Q5407300
 6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P7545	extra		11118962
 6000000017999766001	Q792307	Axel Otto Mörner af Morlanda	P7704	extra		agent/base/57132
@@ -22991,15 +23023,15 @@ geni_id	qid	name	property	verdict	model	reality
 6000000019266411640	Q106206114	Hans Gustaf Vilhelm Elias Lagerheim	P27	extra		Q34
 6000000019266411640	Q106206114	Hans Gustaf Vilhelm Elias Lagerheim	P40	extra		Q126956174
 6000000019266411640	Q106206114	Hans Gustaf Vilhelm Elias Lagerheim	P7847	extra		0210314004503
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P106	extra		Q2478141
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P1185	extra		891606
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P22	extra		Q2585459
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P25	extra		Q21499445
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P4159	extra		Waldemar_II,_Prince_of_Anhalt-Zerbst_(1)
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P53	extra		Q124061987
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P569	missing	+1330-00-00/9	
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P646	extra		/m/04jjl24
-6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst Fürst	P97	extra		Q2747456
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P106	extra		Q2478141
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P1185	extra		891606
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P22	extra		Q2585459
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P25	extra		Q21499445
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P4159	extra		Waldemar_II,_Prince_of_Anhalt-Zerbst_(1)
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P53	extra		Q124061987
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P569	missing	+1330-00-00/9	
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P646	extra		/m/04jjl24
+6000000019270360342	Q7961411	Waldemar II von Anhalt-Zerbst, Fürst	P97	extra		Q2747456
 6000000019271045023	Q5628179	Pehr Jacob von Ehrenheim	P1015	extra		1078218
 6000000019271045023	Q5628179	Pehr Jacob von Ehrenheim	P102	extra		Q10480339;Q10501500
 6000000019271045023	Q5628179	Pehr Jacob von Ehrenheim	P103	extra		Q9027
@@ -23476,6 +23508,8 @@ geni_id	qid	name	property	verdict	model	reality
 6000000019797018175	Q110415677	Georg III von der Leyen zu Eltz und Leiningen	P570	missing	+1611-00-00/9	
 6000000019797018175	Q110415677	Georg III von der Leyen zu Eltz und Leiningen	P734	missing	Q68241403	
 6000000019797018175	Q110415677	Georg III von der Leyen zu Eltz und Leiningen	P735	CONFLICT	Q1985538	Q141444401
+6000000019854758008	Q141450186	Ebba Christina Wrangel af Sage och Waschel	P734	extra	Q35930488	Q37523137
+6000000019855422352	Q141451017	Gustaf Ulrik Wrangel af Sage och Waschel	P734	extra		Q35930488;Q37523137
 6000000019898259071	Q110221372	Berndt Ulrik von Knorring	P1038	extra		Q20913752;Q2356491;Q4491023
 6000000019898259071	Q110221372	Berndt Ulrik von Knorring	P106	extra		Q47064
 6000000019898259071	Q110221372	Berndt Ulrik von Knorring	P22	extra		Q112968255
@@ -24181,6 +24215,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000021631656168	Q116004914	Élisabeth von Lichtenberg	P570	missing	+1427-00-00/9	
 6000000021631656168	Q116004914	Élisabeth von Lichtenberg	P735	missing	Q18093037	
 6000000021631656168	Q116004914	Élisabeth von Lichtenberg	P7929	extra		p=elisabeth;n=von lichtenberg;oc=2
+6000000021651776645	Q141451023	Hedvig Christina Carlsdotter	P40	missing	Q141223506	Q141450170
 6000000021791256532	Q60844648	Johann lll Confessio Augustana von Gleichen B5	P10832	extra		E39PBJB8rgjJmhvYb8GHhK7rbd
 6000000021791256532	Q60844648	Johann lll Confessio Augustana von Gleichen B5	P1871	extra		cnp00366871
 6000000021791256532	Q60844648	Johann lll Confessio Augustana von Gleichen B5	P214	extra		61985955
@@ -24241,6 +24276,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000021967409410	Q2007274	Raoul de Brienne comte d'Eu	P9371	extra		861377567
 6000000021967409410	Q2007274	Raoul de Brienne comte d'Eu	P97	extra		Q3519259
 6000000022100441611	Q141450317	Ulrika Sofia Karlsdotter Polviander	P5056	missing	Q141450140	
+6000000022144716985	Q141456584	Bereta Enoksdatter Meling	P5056	missing	Q141456530	
 6000000022150015255	Q75360474	Maria Enrichetta Salviati	P22	extra		Q18812244
 6000000022150015255	Q75360474	Maria Enrichetta Salviati	P25	extra		Q75360313
 6000000022150015255	Q75360474	Maria Enrichetta Salviati	P4638	extra		p8756.htm#i87558
@@ -24497,6 +24533,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000023024127836	Q5779412	Göran Gyllenstierna af Lundholm	P463	extra		Q3395778
 6000000023024127836	Q5779412	Göran Gyllenstierna af Lundholm	P569	CONFLICT	+1876-07-31/11	+1876-02-14/11
 6000000023024127836	Q5779412	Göran Gyllenstierna af Lundholm	P570	CONFLICT	+1968-02-14/11	+1968-12-06/11
+6000000023024127836	Q5779412	Göran Gyllenstierna af Lundholm	P734	extra		Q47456776
 6000000023024127836	Q5779412	Göran Gyllenstierna af Lundholm	P7847	extra		0210313966714
 6000000023024127836	Q5779412	Göran Gyllenstierna af Lundholm	P97	extra		Q1338119
 6000000023025260921	Q16466645	Olena Ida Teresia Falkman	P106	extra		Q177220
@@ -24717,9 +24754,9 @@ geni_id	qid	name	property	verdict	model	reality
 6000000025096315132	Q106631309	Carl Herman Vilhelm Leuhusen	P570	missing	+1916-10-10/11	
 6000000025096315132	Q106631309	Carl Herman Vilhelm Leuhusen	P734	extra		Q96193593
 6000000025096315132	Q106631309	Carl Herman Vilhelm Leuhusen	P735	CONFLICT	Q12805716;Q16276646;Q2529610	Q11027623
-6000000025112067876	Q12981477	Umar bin 'Aasim bin Umar al-Farooq	P22	extra		Q4806987
-6000000025112067876	Q12981477	Umar bin 'Aasim bin Umar al-Farooq	P3373	extra		Q12237883;Q12713068
-6000000025112067876	Q12981477	Umar bin 'Aasim bin Umar al-Farooq	P735	CONFLICT	Q11955913	Q19817027
+6000000025112067876	Q12981477	Umar Al-Adawi	P22	extra		Q4806987
+6000000025112067876	Q12981477	Umar Al-Adawi	P3373	extra		Q12237883;Q12713068
+6000000025112067876	Q12981477	Umar Al-Adawi	P735	CONFLICT	Q11955913	Q19817027
 6000000025295444003	Q55850075	Wulff Wolff Joachim Friedländer	P106	extra		Q215536
 6000000025295444003	Q55850075	Wulff Wolff Joachim Friedländer	P1871	extra		cnp01149189
 6000000025295444003	Q55850075	Wulff Wolff Joachim Friedländer	P19	extra		Q1829
@@ -24929,7 +24966,6 @@ geni_id	qid	name	property	verdict	model	reality
 6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P373	extra		Luisa de Padilla y Manrique
 6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P569	extra		+1590-00-00/9
 6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P570	extra		+1646-07-02/11
-6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P734	missing	Q37099831;Q6057135	
 6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P7578	extra		luisa-padilla
 6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P8034	extra		495/227524
 6000000026106957516	Q42846888	Luisa de Padilla y Manrique	P950	extra		XX1057480
@@ -25737,6 +25773,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000033750703542	Q131934986	Yelena Ivanovna	P26	extra		Q66438379
 6000000033750703542	Q131934986	Yelena Ivanovna	P40	extra		Q108411523;Q131935071;Q131935085
 6000000033750703542	Q131934986	Yelena Ivanovna	P569	missing	+1310-00-00/9	
+6000000033773801550	Q141198472	Olga E. Garborg Oswald	P735	extra	Q20187	Q19803501
 6000000033773881611	Q141169062	Thoralf Tunheim	P26	missing	Q141283095	
 6000000033773881611	Q141169062	Thoralf Tunheim	P40	missing	Q141283107	
 6000000033773881611	Q141169062	Thoralf Tunheim	P735	extra		Q1649964
@@ -25856,6 +25893,8 @@ geni_id	qid	name	property	verdict	model	reality
 6000000036467908923	Q75930651	Walter FitzRobert FitzWalter	P4638	extra		p41019.htm#i410189
 6000000036726923436	Q141442312	Johan Philip Wilkens Wilhelmsen	P734	extra	Q30080218	Q141442897
 6000000036746925255	Q141216453	Aagot Garborg Koloboff	P734	extra	Q30250555	Q5377462
+6000000037195979044	Q141442285	Carl Magnus Drake af Hagelsrum	P734	extra		Q16869662
+6000000037196407874	Q141442282	Carl Adolph Drake af Hagelsrum	P734	extra		Q16869662
 6000000037259458193	Q15079473	Alexander Johann Peterson	P1185	extra		265220
 6000000037259458193	Q15079473	Alexander Johann Peterson	P12439	extra		Q2623484
 6000000037259458193	Q15079473	Alexander Johann Peterson	P166	extra		Q14905810
@@ -26379,7 +26418,6 @@ geni_id	qid	name	property	verdict	model	reality
 6000000042728516756	Q3038291	Dowlandi Khatun daughter of Oljeitu (Khodabandeh)	P2671	extra		/g/122x8d_l
 6000000042728516756	Q3038291	Dowlandi Khatun daughter of Oljeitu (Khodabandeh)	P3373	extra		Q335301
 6000000042728516756	Q3038291	Dowlandi Khatun daughter of Oljeitu (Khodabandeh)	P734	missing	Q37562125	
-6000000042728516756	Q3038291	Dowlandi Khatun daughter of Oljeitu (Khodabandeh)	P735	missing	Q2272188	
 6000000042728516756	Q3038291	Dowlandi Khatun daughter of Oljeitu (Khodabandeh)	P97	extra		Q863048
 6000000043114039541	Q75292365	Gerhard von Jülich-Berg	P22	extra		Q90387
 6000000043114039541	Q75292365	Gerhard von Jülich-Berg	P25	extra		Q124108
@@ -26564,6 +26602,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000052261325928	Q110459726	Argentina Brigida Imperiali	P735	missing	Q16739659	
 6000000053155539975	Q141206058	Bertha Bakke	P1449	extra		Betsy
 6000000053155539975	Q141206058	Bertha Bakke	P735	extra	Q16420820	Q832242
+6000000053155754864	Q141216359	Andrew J. Bakke	P735	extra	Q18042461	Q19803507
 6000000054168793935	Q141440501	Anbjørn Ogmundson Byre	P735	missing	Q141440457	
 6000000054235169012	Q5698210	Samuel Chydenius	P1015	extra		15017804
 6000000054235169012	Q5698210	Samuel Chydenius	P106	extra		Q13416354;Q593644
@@ -27313,7 +27352,6 @@ geni_id	qid	name	property	verdict	model	reality
 6000000086017388413	Q4449521	"Aka Begi Amir Timur ""Tamerlane"""	P40	extra		Q61984578
 6000000086017388413	Q4449521	"Aka Begi Amir Timur ""Tamerlane"""	P569	extra		+1363-00-00/9
 6000000086017388413	Q4449521	"Aka Begi Amir Timur ""Tamerlane"""	P570	extra		+1381-00-00/9
-6000000086017388413	Q4449521	"Aka Begi Amir Timur ""Tamerlane"""	P735	missing	Q99399809	
 6000000086017388413	Q4449521	"Aka Begi Amir Timur ""Tamerlane"""	P97	extra		Q814407;Q863048
 6000000087038856861	Q17362772	Ulrich IV Krautter	P10553	extra		690702930
 6000000087038856861	Q17362772	Ulrich IV Krautter	P106	extra		Q1237385
@@ -27903,6 +27941,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000140060798830	Q1680654	James Justinian Morier	P9918	extra		PE00003341
 6000000140060798830	Q1680654	James Justinian Morier	P9964	extra		115342419
 6000000141887372877	Q141454676	Per Arvidsson	P5056	missing	Q141454281	
+6000000147108941872	Q141336615	Margareta Elisabet Mörner af Morlanda	P734	extra		Q141223484
 6000000147121329863	Q106466498	João Henriques de Noronha	P106	extra		Q189290
 6000000147121329863	Q106466498	João Henriques de Noronha	P1196	extra		Q198
 6000000147121329863	Q106466498	João Henriques de Noronha	P1317	extra		+1415-08-21/11
@@ -27953,6 +27992,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000156536322887	Q141442325	Lovise Augusta Constance Engebretsen	P734	extra		Q5377462
 6000000156537163875	Q141448490	Lovise Lenjé Lotheé Engebretsen	P734	extra		Q5377462
 6000000161721983869	Q141271415	Fredrika Lovisa Söderberg	P26	missing	Q141271415	Q141271410
+6000000161721983869	Q141271415	Fredrika Lovisa Söderberg	P40	missing	Q141422021;Q141442298	Q141223523;Q141450172
 6000000165356138858	Q130358565	Llewelyn ap Hywel	P1819	extra		I00708697
 6000000165356138858	Q130358565	Llewelyn ap Hywel	P22	extra		Q116052906
 6000000165356138858	Q130358565	Llewelyn ap Hywel	P40	extra		Q130358564
@@ -28107,6 +28147,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000177920129831	Q141219071	Ulrika Persdotter	P5056	missing	Q141429564	
 6000000177921458833	Q141223506	Beda Elvira Wedberg	P26	missing	Q141223506	Q141223736
 6000000177921458863	Q141223427	Johanna Matilda Carlsdotter	P26	missing	Q141223427	Q141223523
+6000000177921458863	Q141223427	Johanna Matilda Carlsdotter	P40	missing	Q141450170	Q141223506
 6000000177921459028	Q141223507	Carl, Johan Ersson	P734	extra		Q20856684
 6000000177921459033	Q141219160	Christina, Sofia Carlsdotter	P26	missing	Q141219160	Q141223507
 6000000177921459052	Q141223923	Helen Frisk	P26	missing	Q141223923	Q141224814
@@ -28119,6 +28160,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000177921459114	Q141419525	Clara Amilia Hoknes	P5056	missing	Q141446952	
 6000000177921459129	Q141224204	Inger Serine Lerma Gunderson	P26	missing	Q141224204	Q141225200
 6000000177921459134	Q141456425	Rasmus Pedersen Eikeland	P26	missing	Q141456432	
+6000000177921459159	Q141450197	Ella N. Hoknes	P735	extra	Q988912	Q19803511
 6000000177921459179	Q141314157	Clarence Gunderson	P5056	missing	Q141443240	
 6000000177921459179	Q141314157	Clarence Gunderson	P734	extra		Q37172102
 6000000177921459184	Q141443347	Gunder Gunderson	P5056	missing	Q141443240	
@@ -28128,6 +28170,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000177968473841	Q141318572	Nicoline Rebekka Svensdatter Ramsvig	P5056	missing	Q141314143	
 6000000177968473841	Q141318572	Nicoline Rebekka Svensdatter Ramsvig	P569	missing	+1847-00-00/9	
 6000000177968473841	Q141318572	Nicoline Rebekka Svensdatter Ramsvig	P734	extra		Q141421832
+6000000177969361824	Q141419565	Elias Kahrs Ingebrigtsen Hoknes Himo	P734	extra	Q141436513	Q141456533
 6000000178119626821	Q141318983	Svend Christiansen Sellag	P734	extra		Q141421832
 6000000178119644821	Q141318575	Olina Salomonsdatter	P569	missing	+1818-11-02/11	
 6000000178119644821	Q141318575	Olina Salomonsdatter	P570	missing	+1914-01-24/11	
@@ -28196,6 +28239,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000182232565850	Q3492100	Jutta Eriksdotter of Denmark	P7939	extra		Jutta
 6000000182232565850	Q3492100	Jutta Eriksdotter of Denmark	P8172	extra		dw.1194
 6000000182232565850	Q3492100	Jutta Eriksdotter of Denmark	P8341	extra		Jutta_-_kongedatter
+6000000182475332878	Q141456604	Cecilia Gavelius	P40	missing	Q141456562	
 6000000182593254821	Q86058502	Shahr Banu Begum	P1038	extra		Q797848
 6000000182593254821	Q86058502	Shahr Banu Begum	P20	extra		Q45313
 6000000182593254821	Q86058502	Shahr Banu Begum	P22	extra		Q1192519
@@ -28217,6 +28261,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000184286585868	Q110910336	Maria del Giudice	P735	missing	Q325872	
 6000000184286585868	Q110910336	Maria del Giudice	P7929	extra		p=marie;n=d albret;oc=2
 6000000185209530863	Q141422161	Ingrid Elsa Charlotta Allerbrand	P22	CONFLICT	Q141313488	Q141313683
+6000000185209530863	Q141422161	Ingrid Elsa Charlotta Allerbrand	P734	extra		Q16869887
 6000000185210320830	Q141382385	Margit Rut Falkenberg	P26	extra	Q141313488	Q141313683
 6000000185210463827	Q141381599		P22	CONFLICT	Q141313488	Q141313683
 6000000185645519992	Q66722417	Anna Christina von Wedderkop	P22	extra		Q97647
@@ -28785,7 +28830,7 @@ geni_id	qid	name	property	verdict	model	reality
 6000000227048492827	Q225212	Harald III King of Denmark	P569	CONFLICT	+1042-00-00/9	+1041-01-01/9
 6000000227048492827	Q225212	Harald III King of Denmark	P646	extra		/m/079d65
 6000000227048492827	Q225212	Harald III King of Denmark	P6821	extra		alvin-person:67645
-6000000227048492827	Q225212	Harald III King of Denmark	P734	CONFLICT	Q535214	Q16276568
+6000000227048492827	Q225212	Harald III King of Denmark	P734	extra		Q16276568
 6000000227048492827	Q225212	Harald III King of Denmark	P735	extra	Q1530266	Q141444401
 6000000227048492827	Q225212	Harald III King of Denmark	P7929	extra		p=harald;n=de danemark;oc=3
 6000000227048492827	Q225212	Harald III King of Denmark	P8172	extra		dw.267

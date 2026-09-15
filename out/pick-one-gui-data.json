@@ -30034,6 +30034,7 @@
      [
       "Parents",
       [
+       "James Stewart IV",
        "Anne Gordon"
       ]
      ],
@@ -104439,6 +104440,7 @@
       "Parents",
       [
        "Sancho I «o Povoador» Afonso Rei de Portugal",
+       "Dulcía de Aragón reina consorte de Portugal",
        "Dulcía de Aragón reina consorte de Portugal"
       ]
      ],
@@ -104486,6 +104488,7 @@
       "Parents",
       [
        "Sancho I «o Povoador» Afonso Rei de Portugal",
+       "Dulcía de Aragón reina consorte de Portugal",
        "Dulcía de Aragón reina consorte de Portugal"
       ]
      ],
@@ -105087,6 +105090,161 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000002572783163|M|theirs",
+  "side": "theirs",
+  "slot": "child",
+  "ask": "Which of these items is our person?",
+  "anchor": {
+   "name": "Arvid Sigvidsson Ribbing",
+   "id": "6000000006904681554",
+   "kind": "geni",
+   "sex": "M",
+   "life": [
+    "1340",
+    "1390"
+   ],
+   "fields": [
+    [
+     "Parents",
+     [
+      "Sigvid Sigvidsen Ribbing",
+      "Märta Ulfsdotter (Ulvåsa)",
+      "Knut Algotsson",
+      "Märta Ulfsdotter (Ulvåsa)"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Ingegerd Knutsdotter (Bengt Hafridssons ätt)",
+      "Katarina Knutsdotter Bengt Hafridssons ätt",
+      "Ingrid Knutsdotter Bengt Hafridssons ätt",
+      "Ingeborg Sigvidsdotter (Sjöblad)",
+      "Peter Sigvidsson Ribbing"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Ingeborg Larsdotter (Marinasons ätt)",
+      "Ingeborg Magnusdotter Sture",
+      "Brita Petersdotter Bååt"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Arvid Arvidsson Ribbing",
+      "Peter Arvidsson Ribbing"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Peter Sigvidsson Ribbing",
+    "id": "Q6044383",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Sigvid Ribbing",
+       "Märta Ulfsdotter"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Arvid Ribbing",
+       "Katarina Knutsdotter",
+       "Ingegerd Knutsdotter"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000006904681554",
+    "qid": "Q6044383",
+    "our": "Arvid Sigvidsson Ribbing",
+    "cand": "Peter Sigvidsson Ribbing"
+   },
+   {
+    "name": "Arvid Ribbing",
+    "id": "Q6070009",
+    "kind": "qid",
+    "sex": "",
+    "life": [
+     "",
+     ""
+    ],
+    "gone": false,
+    "fields": [
+     [
+      "Parents",
+      [
+       "Sigvid Ribbing",
+       "Märta Ulfsdotter"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Peter Sigvidsson Ribbing",
+       "Ingegerd Knutsdotter",
+       "Katarina Knutsdotter"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Peder Arvidsson Ribbing"
+      ]
+     ]
+    ],
+    "geni": "6000000006904681554",
+    "qid": "Q6070009",
+    "our": "Arvid Sigvidsson Ribbing",
+    "cand": "Arvid Ribbing"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Märta Ulfsdotter (Ulvåsa)",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "arvid",
+   "arvidsson",
+   "ingegerd",
+   "katarina",
+   "knutsdotter",
+   "marta",
+   "peter",
+   "ribbing",
+   "sigvid",
+   "sigvidsson",
+   "ulfsdotter"
+  ],
+  "our": "Arvid Sigvidsson Ribbing",
+  "cand": "Peter Sigvidsson Ribbing"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000000119700254|F|theirs",
   "side": "theirs",
   "slot": "child",
@@ -105427,159 +105585,6 @@
   ],
   "our": "Johanna Jean Skene",
   "cand": "Margaret Douglas"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000002572783163|M|theirs",
-  "side": "theirs",
-  "slot": "child",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "Arvid Sigvidsson Ribbing",
-   "id": "6000000006904681554",
-   "kind": "geni",
-   "sex": "M",
-   "life": [
-    "1340",
-    "1390"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "Sigvid Sigvidsen Ribbing",
-      "Märta Ulfsdotter (Ulvåsa)"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Ingegerd Knutsdotter (Bengt Hafridssons ätt)",
-      "Katarina Knutsdotter Bengt Hafridssons ätt",
-      "Ingrid Knutsdotter Bengt Hafridssons ätt",
-      "Ingeborg Sigvidsdotter (Sjöblad)",
-      "Peter Sigvidsson Ribbing"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Ingeborg Larsdotter (Marinasons ätt)",
-      "Ingeborg Magnusdotter Sture",
-      "Brita Petersdotter Bååt"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "Arvid Arvidsson Ribbing",
-      "Peter Arvidsson Ribbing"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Peter Sigvidsson Ribbing",
-    "id": "Q6044383",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Sigvid Ribbing",
-       "Märta Ulfsdotter"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Arvid Ribbing",
-       "Katarina Knutsdotter",
-       "Ingegerd Knutsdotter"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000006904681554",
-    "qid": "Q6044383",
-    "our": "Arvid Sigvidsson Ribbing",
-    "cand": "Peter Sigvidsson Ribbing"
-   },
-   {
-    "name": "Arvid Ribbing",
-    "id": "Q6070009",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "Sigvid Ribbing",
-       "Märta Ulfsdotter"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Peter Sigvidsson Ribbing",
-       "Ingegerd Knutsdotter",
-       "Katarina Knutsdotter"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      [
-       "Peder Arvidsson Ribbing"
-      ]
-     ]
-    ],
-    "geni": "6000000006904681554",
-    "qid": "Q6070009",
-    "our": "Arvid Sigvidsson Ribbing",
-    "cand": "Arvid Ribbing"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "Märta Ulfsdotter (Ulvåsa)",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "arvid",
-   "arvidsson",
-   "ingegerd",
-   "katarina",
-   "knutsdotter",
-   "marta",
-   "peter",
-   "ribbing",
-   "sigvid",
-   "sigvidsson",
-   "ulfsdotter"
-  ],
-  "our": "Arvid Sigvidsson Ribbing",
-  "cand": "Peter Sigvidsson Ribbing"
  },
  {
   "kind": "pick",
@@ -122232,6 +122237,162 @@
   ],
   "our": "Mary Keith",
   "cand": "Lady Mary Keith"
+ },
+ {
+  "kind": "pick",
+  "id": "child|6000000003321265158|F|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Lady Emily FitzGerald",
+   "id": "Q75278538",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "William FitzGerald, 2nd Duke of Leinster",
+      "Emilia St. George"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     [
+      "John Joseph Henry"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Charles John Henry",
+      "Olivia Henry",
+      "Emily Elizabeth Henry",
+      "Hastings Yelverton"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Emily Elizabeth Henry",
+    "id": "6000000003904573533",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1778",
+     "1856"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "William Robert FitzGerald"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Mary Rebecca Fitzgerald of Leinster",
+       "Elizabeth Mary nee Baker",
+       "George FitzGerald",
+       "Isabella Charlotte FitzGerald",
+       "Cecilia Olivia Geraldine Foley",
+       "Olivia Kinnaird",
+       "Augustus Frederick FitzGerald 3rd Duke of Leinster",
+       "William FitzGerald",
+       "Fitz Gerald"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      [
+       "Admiral Sir Hastings Reginald Yelverton"
+      ]
+     ]
+    ],
+    "geni": "6000000003904573533",
+    "qid": "Q75278538",
+    "our": "Emily Elizabeth Henry",
+    "cand": "Lady Emily FitzGerald"
+   },
+   {
+    "name": "Fitz Gerald",
+    "id": "6000000003904573783",
+    "kind": "geni",
+    "sex": "F",
+    "life": [
+     "1734",
+     "1734"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "William Robert FitzGerald"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Mary Rebecca Fitzgerald of Leinster",
+       "Emily Elizabeth Henry",
+       "Elizabeth Mary nee Baker",
+       "George FitzGerald",
+       "Isabella Charlotte FitzGerald",
+       "Cecilia Olivia Geraldine Foley",
+       "Olivia Kinnaird",
+       "Augustus Frederick FitzGerald 3rd Duke of Leinster",
+       "William FitzGerald"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000003904573783",
+    "qid": "Q75278538",
+    "our": "Fitz Gerald",
+    "cand": "Lady Emily FitzGerald"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "William Robert FitzGerald",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "duke",
+   "elizabeth",
+   "emily",
+   "fitzgerald",
+   "george",
+   "hastings",
+   "henry",
+   "leinster",
+   "olivia",
+   "william",
+   "yelverton"
+  ],
+  "our": "Emily Elizabeth Henry",
+  "cand": "Lady Emily FitzGerald"
  },
  {
   "kind": "pick",
@@ -146766,7 +146927,7 @@
      [
       "Siblings",
       [
-       "Branca de Melo senhora de Barbacena",
+       "Branca de Melo, senhora de Barbacena",
        "João melo de Melo alcaide-mór de Serpa",
        "Diogo de Melo alcaide-mór de Serpa",
        "Violante de Melo",
@@ -146819,7 +146980,7 @@
       "Siblings",
       [
        "Vasco Martins de Mello alcaide-mór de Évora e Castelo de Vide",
-       "Branca de Melo senhora de Barbacena",
+       "Branca de Melo, senhora de Barbacena",
        "Diogo de Melo alcaide-mór de Serpa",
        "Violante de Melo",
        "Beatriz de Melo"
@@ -146874,7 +147035,7 @@
       "Siblings",
       [
        "Vasco Martins de Mello alcaide-mór de Évora e Castelo de Vide",
-       "Branca de Melo senhora de Barbacena",
+       "Branca de Melo, senhora de Barbacena",
        "João melo de Melo alcaide-mór de Serpa",
        "Violante de Melo",
        "Beatriz de Melo"
@@ -146980,7 +147141,7 @@
      [
       "Siblings",
       [
-       "Branca de Melo senhora de Barbacena",
+       "Branca de Melo, senhora de Barbacena",
        "João melo de Melo alcaide-mór de Serpa",
        "Diogo de Melo alcaide-mór de Serpa",
        "Violante de Melo",
@@ -147037,7 +147198,7 @@
       "Siblings",
       [
        "Vasco Martins de Mello alcaide-mór de Évora e Castelo de Vide",
-       "Branca de Melo senhora de Barbacena",
+       "Branca de Melo, senhora de Barbacena",
        "Diogo de Melo alcaide-mór de Serpa",
        "Violante de Melo",
        "Beatriz de Melo",
@@ -147096,7 +147257,7 @@
       "Siblings",
       [
        "Vasco Martins de Mello alcaide-mór de Évora e Castelo de Vide",
-       "Branca de Melo senhora de Barbacena",
+       "Branca de Melo, senhora de Barbacena",
        "João melo de Melo alcaide-mór de Serpa",
        "Violante de Melo",
        "Beatriz de Melo",
@@ -210108,315 +210269,5 @@
   ],
   "our": "James Ogilvy",
   "cand": "James Ogilvy, Master of Ogilvy"
- },
- {
-  "kind": "pick",
-  "id": "sibling|6000000000843260345|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Xavier",
-   "id": "Q2527822",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Louis, Dauphin of France",
-      "Marie Josèphe of Saxony"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Louis XVI of France",
-      "Louis XVIII of France",
-      "Charles X of France",
-      "Princess Élisabeth of France",
-      "Marie Clotilde of France",
-      "Marie Thérèse of France",
-      "Marie Zéphyrine of France",
-      "Prince Louis, Duke of Burgundy"
-     ]
-    ],
-    [
-     "Spouse",
-     []
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Auguste d'Adonville",
-    "id": "6000000002188496243",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1758",
-     "1794"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Louis Ferdinand de Bourbon"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marie Thérèse de Bourbon",
-       "NN de France",
-       "Marie Zéphyrine de France",
-       "Louis Joseph Xavier de Bourbon",
-       "NN Bourbon",
-       "Xavier Marie Joseph de Bourbon",
-       "Louis-Auguste de Bourbon",
-       "Louis XVIII Stanislas Xavier de Bourbon",
-       "NN de France",
-       "Charles Philippe de Bourbon",
-       "Marie Adelaïde Clotilde Savière Clotilde de France",
-       "Fils de France",
-       "Elisabeth Philippine Marie Helene de Bourbon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000002188496243",
-    "qid": "Q2527822",
-    "our": "Auguste d'Adonville",
-    "cand": "Xavier"
-   },
-   {
-    "name": "NN de France",
-    "id": "6000000008472869324",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1748",
-     "1749"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Louis Ferdinand de Bourbon",
-       "Maria Josepha Karolina Eleonore Franziska Xaveria of Saxe Crownpincess of France"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marie Thérèse de Bourbon",
-       "Auguste d'Adonville",
-       "Marie Zéphyrine de France",
-       "Louis Joseph Xavier de Bourbon",
-       "NN Bourbon",
-       "Xavier Marie Joseph de Bourbon",
-       "Louis-Auguste de Bourbon",
-       "Louis XVIII Stanislas Xavier de Bourbon",
-       "NN de France",
-       "Charles Philippe de Bourbon",
-       "Marie Adelaïde Clotilde Savière Clotilde de France",
-       "Fils de France",
-       "Elisabeth Philippine Marie Helene de Bourbon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008472869324",
-    "qid": "Q2527822",
-    "our": "NN de France",
-    "cand": "Xavier"
-   },
-   {
-    "name": "Xavier Marie Joseph de Bourbon",
-    "id": "6000000008472870482",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1753",
-     "1754"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Louis Ferdinand de Bourbon",
-       "Maria Josepha Karolina Eleonore Franziska Xaveria of Saxe Crownpincess of France"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marie Thérèse de Bourbon",
-       "Auguste d'Adonville",
-       "NN de France",
-       "Marie Zéphyrine de France",
-       "Louis Joseph Xavier de Bourbon",
-       "NN Bourbon",
-       "Louis-Auguste de Bourbon",
-       "Louis XVIII Stanislas Xavier de Bourbon",
-       "NN de France",
-       "Charles Philippe de Bourbon",
-       "Marie Adelaïde Clotilde Savière Clotilde de France",
-       "Fils de France",
-       "Elisabeth Philippine Marie Helene de Bourbon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008472870482",
-    "qid": "Q2527822",
-    "our": "Xavier Marie Joseph de Bourbon",
-    "cand": "Xavier"
-   },
-   {
-    "name": "NN de France",
-    "id": "6000000008481963084",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1756",
-     "1756"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Louis Ferdinand de Bourbon",
-       "Maria Josepha Karolina Eleonore Franziska Xaveria of Saxe Crownpincess of France"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marie Thérèse de Bourbon",
-       "Auguste d'Adonville",
-       "NN de France",
-       "Marie Zéphyrine de France",
-       "Louis Joseph Xavier de Bourbon",
-       "NN Bourbon",
-       "Xavier Marie Joseph de Bourbon",
-       "Louis-Auguste de Bourbon",
-       "Louis XVIII Stanislas Xavier de Bourbon",
-       "Charles Philippe de Bourbon",
-       "Marie Adelaïde Clotilde Savière Clotilde de France",
-       "Fils de France",
-       "Elisabeth Philippine Marie Helene de Bourbon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008481963084",
-    "qid": "Q2527822",
-    "our": "NN de France",
-    "cand": "Xavier"
-   },
-   {
-    "name": "Fils de France",
-    "id": "6000000007521534733",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1762",
-     "1762"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Louis Ferdinand de Bourbon",
-       "Maria Josepha Karolina Eleonore Franziska Xaveria of Saxe Crownpincess of France"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Marie Thérèse de Bourbon",
-       "Auguste d'Adonville",
-       "NN de France",
-       "Marie Zéphyrine de France",
-       "Louis Joseph Xavier de Bourbon",
-       "NN Bourbon",
-       "Xavier Marie Joseph de Bourbon",
-       "Louis-Auguste de Bourbon",
-       "Louis XVIII Stanislas Xavier de Bourbon",
-       "NN de France",
-       "Charles Philippe de Bourbon",
-       "Marie Adelaïde Clotilde Savière Clotilde de France",
-       "Elisabeth Philippine Marie Helene de Bourbon"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000007521534733",
-    "qid": "Q2527822",
-    "our": "Fils de France",
-    "cand": "Xavier"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Marie Zéphyrine de France",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "charles",
-   "clotilde",
-   "elisabeth",
-   "france",
-   "louis",
-   "marie",
-   "therse",
-   "xviii",
-   "zephyrine"
-  ],
-  "our": "Auguste d'Adonville",
-  "cand": "Xavier"
  }
 ]
