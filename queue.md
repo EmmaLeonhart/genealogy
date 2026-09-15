@@ -127,8 +127,23 @@ clean. So for several of these the climb is already done and only the export rem
 * **Jacques Grimaldi — SUBMITTED.** Emma gave the seed directly: *"just export from here
   https://www.geni.com/people/NN-NN/6000000227757314896 for the Grimaldi one"*. Descendants,
   5000, `task_id 6000000227757262875`.
-* The other five need their seed found the same way — climb to the nearest `6000000227…`
-  ancestor, or create one per `docs/export-seed-rules.md` if there is none.
+* **Sayaluna ata — SEED FOUND, not yet submitted.** `6000000227694017875`, the `NN` father of
+  her top ancestor Muhadhdhab al-Din, tested exportable. Submit Descendants 5000 from it as
+  soon as the Grimaldi export frees the single export slot.
+* **Hélène de Corday — NO OPEN SLOT FOUND, four generations climbed.** Hélène → Guillaume de
+  Corday `6000000000746643097` → Nicolas de Corday `6000000000751009314` → Raoul II de Corday
+  `6000000000751097644`; every one has BOTH parents already, and none of them, nor Isabeau
+  d'Esneval `6000000000746493508`, nor the husband François de Saint-Germain
+  `6000000003419109768`, is exportable. `docs/export-seed-rules.md` tiers 1-5 all want an open
+  slot and this line has none within reach, so either the climb continues further up or the
+  seed comes from somewhere else. **Note Hélène's mother is Isabeau d'ESNEVAL** — she and
+  target 3, Robert d'Esneval VI, are the same family, so one seed may cover both.
+* **Robert d'Esneval VI, Inês de Bettencourt I, Pietro Antonio di Capua** — seed not yet
+  looked for.
+
+⛔ **DO NOT climb with `fetch`.** The immediate-family cards render client-side; a fetch of a
+profile page returns the shell and zero cards. One real page load per hop, and the exportability
+test is the cheap part — that one DOES work over fetch.
 
 
 Sayaluna ata 6000000008384075400, 
