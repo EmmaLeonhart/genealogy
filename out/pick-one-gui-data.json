@@ -130818,6 +130818,157 @@
  },
  {
   "kind": "pick",
+  "id": "child|6000000022143978955|M|ours",
+  "side": "ours",
+  "slot": "child",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Louis, Duke of Blacas",
+   "id": "Q6686371",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Pierre Louis Jean Casimir de Blacas",
+      "Henriette Marie du Bouchet de Sourches, de Montsoreau"
+     ]
+    ],
+    [
+     "Siblings",
+     []
+    ],
+    [
+     "Spouse",
+     [
+      "Marie de Perusse des Cars"
+     ]
+    ],
+    [
+     "Children",
+     [
+      "Marie Auguste Yvonne de Blacas d'Aulps",
+      "Pierre de Blacas d'Aulps",
+      "Comtesse Louise de Blacas d'Aulps"
+     ]
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Louis Charles Pierre Casimir de Blacas d'Aulps",
+    "id": "6000000022143911304",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1815",
+     "1866"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Pierre Louis Jean Casimir de Blacas d'Aulps"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Pierre Etienne François Armand Xavier de Blacas d'Aulps"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Marie Paule de Blacas d'Aulps",
+       "Alix Laurence Marie de Damas"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Casimir de Blacas d'Aulps",
+       "Louise Henriette Marie de Blacas d'Aulps",
+       "Marie Auguste Yvonne de Blacas d'Aulps",
+       "Guy Marie Pierre de Blacas d'Aulps",
+       "Marie Therese Paule de Blacas d'Aulps"
+      ]
+     ]
+    ],
+    "geni": "6000000022143911304",
+    "qid": "Q6686371",
+    "our": "Louis Charles Pierre Casimir de Blacas d'Aulps",
+    "cand": "Louis, Duke of Blacas"
+   },
+   {
+    "name": "Pierre Etienne François Armand Xavier de Blacas d'Aulps",
+    "id": "6000000027250110327",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1819",
+     "1876"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Pierre Louis Jean Casimir de Blacas d'Aulps"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Louis Charles Pierre Casimir de Blacas d'Aulps"
+      ]
+     ],
+     [
+      "Spouse",
+      [
+       "Félicie Georgine de Chastellux de Rauzan"
+      ]
+     ],
+     [
+      "Children",
+      [
+       "Bertrand Louis Pierre Marie de Blacas d'Aulps",
+       "Béatrix Henriette Marie de Blacas d'Aulps"
+      ]
+     ]
+    ],
+    "geni": "6000000027250110327",
+    "qid": "Q6686371",
+    "our": "Pierre Etienne François Armand Xavier de Blacas d'Aulps",
+    "cand": "Louis, Duke of Blacas"
+   }
+  ],
+  "trigger_pre": "held because their parent ",
+  "trigger_bold": "Pierre Louis Jean Casimir de Blacas d'Aulps",
+  "trigger_post": " holds an item whose child list names more people than we can place",
+  "highlight": [
+   "auguste",
+   "blacas",
+   "casimir",
+   "daulps",
+   "henriette",
+   "jean",
+   "louis",
+   "louise",
+   "marie",
+   "pierre",
+   "yvonne"
+  ],
+  "our": "Louis Charles Pierre Casimir de Blacas d'Aulps",
+  "cand": "Louis, Duke of Blacas"
+ },
+ {
+  "kind": "pick",
   "id": "child|6000000033941496942|F|ours",
   "side": "ours",
   "slot": "child",
@@ -210000,274 +210151,5 @@
   ],
   "our": "Thomas Howard",
   "cand": "Lord Thomas Howard"
- },
- {
-  "kind": "pick",
-  "id": "child|6000000000405561715|M|theirs",
-  "side": "theirs",
-  "slot": "child",
-  "ask": "Which of these items is our person?",
-  "anchor": {
-   "name": "James Ogilvy",
-   "id": "6000000008248262202",
-   "kind": "geni",
-   "sex": "M",
-   "life": [
-    "1516",
-    "1547"
-   ],
-   "fields": [
-    [
-     "Parents",
-     [
-      "James Ogilvy",
-      "Helen Sinclair"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Agnes Ogilvy",
-      "Marion Ogilvy",
-      "Margaret Ogilvy",
-      "Helen Ogilvy"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Katherine Campbell"
-     ]
-    ],
-    [
-     "Children",
-     [
-      "James Ogilvy",
-      "Alexander Ogilvy",
-      "Walter Ogilvy"
-     ]
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "James Ogilvy, Master of Ogilvy",
-    "id": "Q75262469",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "James Ogilvy, 4th Lord Ogilvy of Airlie",
-       "Helen Sinclair"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Katherine Campbell, Countess of Crawford"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Helen Ogilvy",
-       "Archibald Ogilvy",
-       "Alexander Ogilvy",
-       "Agnes Ogilvy",
-       "James Ogilvy, 5th Lord Ogilvy of Airlie"
-      ]
-     ]
-    ],
-    "geni": "6000000008248262202",
-    "qid": "Q75262469",
-    "our": "James Ogilvy",
-    "cand": "James Ogilvy, Master of Ogilvy"
-   },
-   {
-    "name": "John Ogilvy of Inverkeiler",
-    "id": "Q76007704",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "James Ogilvy, 4th Lord Ogilvy of Airlie",
-       "Helen Sinclair"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Katherine Strachan"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "John Ogilvy"
-      ]
-     ]
-    ],
-    "geni": "6000000008248262202",
-    "qid": "Q76007704",
-    "our": "James Ogilvy",
-    "cand": "John Ogilvy of Inverkeiler"
-   },
-   {
-    "name": "Archibald Ogilvy",
-    "id": "Q76007715",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "James Ogilvy, 4th Lord Ogilvy of Airlie",
-       "Helen Sinclair"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008248262202",
-    "qid": "Q76007715",
-    "our": "James Ogilvy",
-    "cand": "Archibald Ogilvy"
-   },
-   {
-    "name": "Thomas Ogilvy of Westercraig",
-    "id": "Q75240543",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "James Ogilvy, 4th Lord Ogilvy of Airlie",
-       "Helen Sinclair"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Janet Fraser",
-       "Beatrix Chisholm"
-      ]
-     ],
-     [
-      "Children",
-      [
-       "Thomas Ogilvy of Craigis",
-       "John Ogilvy of Westercraig",
-       "Janet Ogilvy",
-       "Archibald Ogilvy"
-      ]
-     ]
-    ],
-    "geni": "6000000008248262202",
-    "qid": "Q75240543",
-    "our": "James Ogilvy",
-    "cand": "Thomas Ogilvy of Westercraig"
-   },
-   {
-    "name": "Alexander Ogilvy",
-    "id": "Q76007716",
-    "kind": "qid",
-    "sex": "",
-    "life": [
-     "",
-     ""
-    ],
-    "gone": false,
-    "fields": [
-     [
-      "Parents",
-      [
-       "James Ogilvy, 4th Lord Ogilvy of Airlie",
-       "Helen Sinclair"
-      ]
-     ],
-     [
-      "Siblings",
-      []
-     ],
-     [
-      "Spouse",
-      [
-       "Margaret Monypenny"
-      ]
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000008248262202",
-    "qid": "Q76007716",
-    "our": "James Ogilvy",
-    "cand": "Alexander Ogilvy"
-   }
-  ],
-  "trigger_pre": "held because their parent ",
-  "trigger_bold": "James Ogilvy",
-  "trigger_post": " holds an item whose child list names more people than we can place",
-  "highlight": [
-   "agnes",
-   "alexander",
-   "campbell",
-   "helen",
-   "james",
-   "katherine",
-   "margaret",
-   "ogilvy",
-   "sinclair"
-  ],
-  "our": "James Ogilvy",
-  "cand": "James Ogilvy, Master of Ogilvy"
  }
 ]
