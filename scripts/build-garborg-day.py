@@ -629,9 +629,12 @@ def read_suppressed():
 #: tags and lapses if a tag is lost, a page is deleted, or the refresher does not run. A ruling
 #: does not lapse.
 #: **A YEAR, not forever.** Ruled 2026-09-15: *"Block lasts a year lol"*. Each entry carries the
-#: date it stops applying, and `mul_blocked_today()` is the only reader — so an expiry cannot be
-#: forgotten about, and re-blocking after it lapses is a fresh decision rather than an inherited
-#: one.
+#: date it stops applying and `mul_blocked_today()` is the only reader.
+#:
+#: **The lapse is SILENT and that is deliberate.** A first version printed a notice when a block
+#: expired; ruled the same day: *"You think there's going to be a session active a year from now?
+#: It'll pass unnoticed, and that's intentional."* The date arrives, the block stops, nothing
+#: announces it.
 MUL_BLOCKED = {
     # Zerubbabel -- ruled 2026-09-15, lapses 2027-09-15
     "Q320139": datetime.date(2027, 9, 15),
@@ -7692,9 +7695,6 @@ def main():
             print(f"mul blocked: {blocked} line(s) dropped for "
                   f"{', '.join(sorted(mul_block))}")
         kept = kept_m
-    lapsed = {q for q in MUL_BLOCKED if q not in mul_block}
-    if lapsed:
-        print(f"mul block LAPSED for {', '.join(sorted(lapsed))} — re-blocking is a new decision")
 
     reverted = read_reverted_labels()
     if reverted:
