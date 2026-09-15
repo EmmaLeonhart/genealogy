@@ -27,39 +27,48 @@ tiny path GEDCOMs, 773 isolates reached.
 ⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
 is the extension's, never a sleep in the agent.
 
-### ⛔⛔ FIRST ITEM: WHY DO BAD ITEMS KEEP GETTING CREATED. Ruled 2026-09-14
+### ⛔⛔ FIRST ITEM: CI HAS BEEN RED ON `main` EVERY DAY SINCE AT LEAST 2026-09-10
 
-*"analyze why some really bad things keep on being tried to be created."*
+**This is the residue of Emma's *why do bad items keep getting created* item, and it inherits
+its slot because it is the answer to it.** The guard was written. A test asserting the guard
+works was written the same day. The test failed on its first run and has failed every run since,
+and the bad items kept being emitted for a day and a half underneath it.
 
-**The evidence Emma attached**, five `CREATE`s from one batch, every one of them wrong:
+Run `34834596305`, both 3.10 and 3.13, **11 failed, 1627 passed**:
 
-    Svensdtr.   patronymic, 1 bearer    an ABBREVIATION -- should be Svensdatter
-    und         family, 8 bearers       German for "and": "Thurgau und Nellenburg"
-    Count       given, 7 bearers        a TITLE, and CLAUDE.md says a title is not a name
-    .           family, 6 bearers       a bare full stop, on Zerubbabel and five others
-    (Ulf        family, 5 bearers       a truncated parenthetical, "(Ulf af Horsnäs)" cut at
-                                        the space
+    test_namemodel.py::test_no_numeral_gets_a_name_item_in_any_notation   FIXED 2026-09-14
+    test_pipe_label_wiring.py::test_no_resolved_proposal_still_carries_punctuation
+    test_edit_graph.py::test_no_two_edits_claim_the_same_id               6 dup cjk_mul ids
+    test_generated_inventories.py::...names_exactly_the_batches_on_disk   stale inventory
+    test_geni_extension.py::test_the_extension_only_reaches_geni          host `file:///*`
+    test_geni_extension.py::test_exports_are_never_concurrent...          missing file
+    test_unconnected_worklist.py::test_the_committed_worklist_has_the_spec_columns
+    test_wikidata_start_date.py  × 4                                     the HELD gate
 
-**These are CREATIONS, not overwrites** — a different failure from the CJK one, and worse in one
-respect: an overwrite can be reverted to a known previous value, while a created junk item has to
-be found and deleted.
+**The four `HELD` failures are red ON PURPOSE** while editing is held by hand, and they are the
+mechanism, not noise beside it: a suite that is permanently red teaches every reader that red
+means nothing, and then the seven real failures are invisible. **Fix the HELD four so that
+holding is a PASSING state** — the tests should assert the hold behaves correctly, not assert it
+is absent — and then fix the rest. `test_geni_extension`'s missing `service-worker.js` and the
+stale inventory look cheap; `test_pipe_label_wiring`'s punctuation failure is this same
+punctuation defect on the LABEL side and should be read next to what was just fixed.
 
-**The question is why the guards did not catch them**, one by one, because the rules already
-exist and each of these violates one:
+⛔ Per § *TESTS RUN IN CI/CD OR NOT AT ALL*, this is read from run conclusions, never a local
+`pytest`.
 
-* § *A TITLE IS NOT A NAME* — `Count`.
-* § *Remove abbreviations* — `Svensdtr.`, already its own queue item.
-* § *a token made only of punctuation is not a name*, shipped 2026-09-13 — `.` should be dead
-  already, so **either the guard is not on this path or the batch predates it.** Establish which
-  before anything else; it decides whether this is one bug or several.
-* `und` and `(Ulf` are the same defect in two coats: **a multi-token name was split on
-  whitespace** and the pieces treated as names. `von Thurgau und Nellenburg` is one family name;
-  `(Ulf af Horsnäs)` is a parenthetical. § *PARSE PATRONYMICS BY FORM. Never parse a name
-  positionally* is the governing rule and it is being broken by the splitter, not by the emitter.
+### ⛔ THE SPLITTER PARSES NAMES POSITIONALLY, AND THAT IS THE REMAINING HALF
 
-**⛔ FIND THE BATCH AND THE EMITTER FIRST.** Which run produced the attached file, whether any of
-it reached Wikidata, and which of the two emitters wrote it — § *A GUARD IN ONE EMITTER IS NOT A
-GUARD* has already been the answer twice this session. Only then fix.
+`und` and `(Ulf` came from `Mangold von Thurgau und Nellenburg` and `(Ulf af Horsnäs)` being
+**split on whitespace and the pieces treated as names** — § *PARSE PATRONYMICS BY FORM. Never
+parse a name positionally*.
+
+`NOT_NAME_WORDS` and the punctuation rule now refuse the pieces, and **that is a guard, not a
+fix**: the surname `von Thurgau und Nellenburg` is still not being read as one name, it is being
+read as four tokens of which two are now silently dropped. The people keep losing their real
+family name either way.
+
+Find what splits `SURN`, and make it read a parenthetical and a conjunction-joined compound as
+one unit before tokenising. 854 tokens in `reports/name-item-plan.csv` carry the evidence.
 
 ### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
 

@@ -16,6 +16,60 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — why bad name items keep being created: four bugs, not one
+
+Emma read a QuickStatements batch and found five `CREATE`s, every one wrong: `Svensdtr.`, `und`,
+`Count`, `.` (a family name whose label is a full stop, six bearers, Zerubbabel 3rd Exilarch
+among them) and `(Ulf`. The item asked why the guards did not catch them.
+
+**Four separate faults, and the queue item's own hypothesis was half right.**
+
+1. **`is_numeral` had an empty-after-strip hole.** It stripped `().,-[]{}#` so `(3)` and `#1`
+   read as numbers, and returned `False` when nothing was left — and `False` means *not a
+   numeral* means *an ordinary name token, carry on*. Eighteen tokens escaped: `.` `..` `...`
+   `-` `--` `(` `)` `,` `[` `]` `{` `}` `#` `(.)` `-.-` `()` `.,` `#.` The punctuation guard
+   shipped 2026-09-13 existed, so the batch does not predate it; it caught `/` in September
+   only because `/` is not in the strip set.
+2. **Even working, the rule was too narrow.** It refused a token that was punctuation END TO
+   END, so `Rd.` (1,112 bearers), `NR.` (839), `h.` (393), `Mrs.` (244), `(Wife` (287), `"the`
+   (189) and `[65]` all passed on the strength of the letters sitting next to the junk.
+3. **`Count` is in `_LEADING_TITLES` and in `NAME_SUFFIX_TITLES`** — 292 and 298 entries, both
+   written for § *A TITLE IS NOT A NAME* — and `name_shape` read neither. 113 title tokens,
+   3,555 bearers: `Pangeran` (681), `Graf`, `Countess`, `Khatun`, `Saint`, `Rabbi`, `Stillborn`,
+   `親王`, `Rurikid`. § *Code that is WRITTEN but never CALLED is not done*.
+4. **CI has been red on `main` every day since at least 2026-09-10**, and one of the eleven
+   failures is `'--' would get a name item` — the test for guard 1, failing since the day the
+   guard was written. Four of the eleven are the HELD gate, red on purpose, which is what
+   teaches a reader that red means nothing. This is the actual answer to *why do these keep
+   getting created*, and it is now the first queue item.
+
+**The rule Emma then gave**: *"The only valid punctuation in a name at all is a dash for a
+doible barred name"*, and the posture, *"There's effectively zero cost for not creating a name
+object."* `not_a_name` is therefore an allowlist — letters, digits, combining marks, and a
+hyphen or apostrophe only with a **letter on each side**. A denylist is how this went wrong the
+first time.
+
+Two exceptions, both measured over all 23,196 rows of `reports/name-item-plan.csv` first:
+
+* **the interior apostrophe**, put to Emma with the counts and ruled *allow it INSIDE a word
+  only* — keeps `d'Aragona` (90), `d'Auvergne` (88), `Ja'far` (77); refuses `R'` (179), `'el`.
+* **combining marks**, which are letters, not punctuation. NFC composes the Latin ones so
+  `A`+U+030A becomes `Å`, but Arabic harakat have no composed form and `عَبْدُ` arrived as five
+  letters and four marks. Normalising also settles a defect nobody had named: the same surname
+  was two tokens, and so two items, depending on how Geni encoded it.
+
+`NOT_NAME_WORDS` refuses the leftovers of a whitespace-split name — `und` (111), `or` (185),
+`the` (173), `los` (233), `dit` (102), `aka`, `alias`, `née`. **That is a guard, not a fix**: the
+splitter is still parsing positionally and `von Thurgau und Nellenburg` is still not read as one
+family name. Queued.
+
+**926 of 14,556 `create` actions now refused, 24,037 bearers behind them**, and nothing in the
+real-name set lost. Scope unchanged from the numeral rule: this removes a `P735`/`P734` ITEM and
+touches no label, because `derive-labels.py` does not call `name_shape`.
+
+Emma ruled the Wikidata-side check off: *"this area is too aggressively policed for any damage
+to still be on wikidata."* `17a2d571`.
+
 ## 2026-07-30 — cleanvibe onboarding started
 
 Onboarded with `cleanvibe clone` (cleanvibe v1.17.0). This is an
