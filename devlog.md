@@ -44354,3 +44354,42 @@ Osorkon II — every label matches the person claimed, and **not one of them car
 **The three cases are three different things and only one was a defect** — a duplicate key, an
 unverifiable pairing, and a legitimate second id. Reading them as one class is how the wrong one
 gets "fixed".
+
+## 2026-09-15 — Tiny GEDCOMs: the profile emitter had the mother-as-husband bug the path one was fixed for
+
+`## Tiny GEDCOMs: model every relationship off ATTESTED representations, never invention` closed.
+
+**The census the item asks for is `reports/tiny-gedcom-relation-vocabulary.csv`** — every relation
+string in `reports/path-chains.tsv` with its count, its kind, and the attested structure it is
+written as. **40 strings, not the 33 recorded**, and the adoption population is **775 rows, not
+136**: `her adoptive mother` alone is 726.
+
+**Three defects, and the first is the one the item was written about, in the other emitter.**
+
+- **`profile_gedcom` assigned parent slots POSITIONALLY** — `parents[0]` to `HUSB`,
+  `parents[1]` to `WIFE` — so which slot a parent landed in was whichever order the scrape
+  happened to list them. `292373984150002914` lists the mother first, and she was written as the
+  husband. **That is the same defect fixed on the PATH side on 2026-09-13**, where it had made
+  every mother in 1,007 files a husband; nobody looked at the profile side.
+  § *A GUARD IN ONE EMITTER IS NOT A GUARD*. The `phrase` column said `father` or `mother` the
+  whole time, so this is a re-run of the emitter and not a re-scrape. **32 profile files corrected.**
+
+- **`adopted` was never matched, only `adoptive`.** 39 path rows say *his adopted son*, *her
+  adopted daughter*, *her adopted son*, *his adopted daughter* — all CHILD edges, and the child
+  branch never carried the flag either, so an adopted child was written as a birth child.
+  **`tiny-paths` files carrying the adoption block: 906 → 933.**
+
+- **The profile scrape says more than the emitter read.** Over the 120 files in
+  `geni-families/`, the `relation` column carries `step-parent` 12, `adoptive-parent` 6,
+  `step-child` 3 and `adopted-child` 1 — **22 edges in no set at all**, so they were dropped
+  rather than mis-stated. `adoptive-parent` and `adopted-child` are now read, as their own family
+  carrying the attested block. **`tiny-profiles` files with the adoption block: 0 → 4.**
+
+**`step-parent` and `step-child` are deliberately NOT implemented.** Measured across every corpus
+GEDCOM outside the tiny directories: `PEDI adopted` 2,473, `PEDI foster` 805, `PEDI birth` 555,
+`ADOP BOTH` 2,355, `MARR` 536,812, `DIV` 10,260 — and **no `PEDI step`, anywhere**. There is no
+reading of a step-relationship to copy, and the ruling for exactly this case is *"we have to do a
+`Forest` export on that point in order to get that relationship so we know how to represent it."*
+Queued as an export rather than guessed, which is the whole point of the item.
+
+69 files changed on the re-run, 350 insertions against 60 deletions. Nothing was re-scraped.

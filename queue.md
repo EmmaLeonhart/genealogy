@@ -107,60 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## Tiny GEDCOMs: model every relationship off ATTESTED representations, never invention
-
-Ruled 2026-09-13, and **timeboxed to 20:45 the same evening, then sent here**: *"I would consider
-doing this to be a waste of time because the critical path is actually fucking getting the data
-we need... this task is over. Put it at the end of the queue."* *"Over"* was the timebox, not the
-item: it is last in order and still to be done.
-
-**The problem.** `scripts/build-tiny-gedcoms.py` turns a relation string into a GEDCOM edge by
-taking **the last word** and looking it up in `PATH_REL`. Everything else in the string is
-discarded. Two consequences found the same evening:
-
-* `father` and `mother` both mapped to one `parent` kind and every parent was written `HUSB`, so
-  **every mother in all 1,007 files was a husband**. Fixed 2026-09-13; `WIFE` went 0 → 16,906
-  and 40,435 `SEX` records appeared where there had been none.
-* **`adoptive` is still discarded.** 136 rows say *her/his adoptive mother* or *adoptive father*
-  in `paths/*.tsv` and `reports/path-chains.tsv`, and **0** of the built GEDCOMs mention it. They
-  assert an adoptive parent as a birth parent.
-
-**⛔ THE REPRESENTATION IS READ OFF OUR OWN EXPORTS, NEVER INVENTED.** *"Don't make up some kind
-of a way of implementing the relationships. Use the actual relationships that are present within
-our data... No guessing on the representations."* And where a relationship is attested in only
-one place and cannot be read: *"we have to do a `Forest` export on that point in order to get
-that relationship so we know how to represent it."*
-
-**Already measured, 2026-09-13 — the corpus's entire relationship vocabulary.** Every
-qualifier tag present in `exports/` outside the tiny directories, and there are only four:
-
-    1 MARR    514,136        1 DIV     10,071
-    2 PEDI      2,966        1 ADOP     2,185 (and 3 ADOP 2,185)
-
-    2 PEDI adopted   2,185          3 ADOP BOTH   2,185   -- the only value attested
-    2 PEDI foster      781
-
-**Adoption's exact attested shape**, from `exports/8-19 exports/export-Ancestors-6000000227331261851.ged`,
-on the CHILD's `INDI`:
-
-    1 FAMC @F6000000001902863980@
-    2 PEDI adopted
-    1 ADOP
-    2 FAMC @F6000000001902863980@
-    3 ADOP BOTH
-
-**Divorce**, inside the `FAM`: `1 MARR` with its `DATE`/`ADDR`, then `1 DIV`.
-
-**What is left to do.** The 33 distinct relation strings are in
-`reports/path-chains.tsv` column 6, with counts. For each one, find the same pair in the real
-corpus and record the structure Geni itself used; build the CSV of every instance, commit it,
-then implement from it. `foster` is attested 781 times in the corpus and appears in **no** path
-string yet, so it needs no path handling until one shows up.
-
-**⛔ The capture is not the problem and must not be touched.** The relation string is
-`span.subtext`'s `textContent` — whitespace collapsed, parens stripped, nothing parsed. `q` would
-be stored as `q`. Every one of these is a re-run of the emitter, never a re-scrape.
-
 ## expanding the universe
 
 I think especially with the locality restrictions a good way to expand the universe is for us to actively add the  subject named as (P1810) property to  Geni profile ID (P2600) properties on adjacent items to the ones in our universe. So I want this to happen. Every run 10 new bordering people not in the universe but connected to it get that as it. In addition we add geni as a source to existing relationships
@@ -228,6 +174,24 @@ marriage of Agnes von Bayern-Landshut to a Lusignan king.
 
 ⛔ Check `https://www.geni.com/gedcom/export/6000000188494434823` for *"You are not allowed to
 export that profile"* first; she was not created by this account.
+
+
+### `Forest` export for a STEP relationship — the one representation the corpus does not attest
+
+The profile scrape carries `step-parent` 12 and `step-child` 3, and **the corpus attests no way to
+write one**: every `PEDI` value in `exports/` outside the tiny directories is `adopted` 2,473,
+`foster` 805 or `birth` 555, and there is no `PEDI step`. So `build-tiny-gedcoms.py` drops those 15
+edges rather than invent a shape for them.
+
+Ruled 2026-09-13 for this exact case: *"we have to do a `Forest` export on that point in order to
+get that relationship so we know how to represent it."*
+
+A seed is in `geni-families/292373984150002914-family.tsv` — subject `292373984150002914`, whose
+`step-parent` row is `Ratanbai Tata`. `Forest`, because the point of the export is to cross the
+step link rather than descend.
+
+⛔ Check `https://www.geni.com/gedcom/export/292373984150002914` for *"You are not allowed to export
+that profile"* first.
 
 
 ## Descendants export: Hélène de Corday

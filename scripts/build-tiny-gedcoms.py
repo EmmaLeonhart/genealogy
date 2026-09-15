@@ -73,10 +73,34 @@ SEX_OF_PHRASE = {
     "daughter": "F", "wife": "F", "mother": "F", "sister": "F", "half sister": "F",
 }
 
+#: ⛔ **THE SCRAPE SAYS MORE THAN THIS READ.** Measured 2026-09-15 over the 120 files in
+#: `geni-families/`: the `relation` column carries `child` 270, `sibling` 232, `parent` 171,
+#: `spouse` 103, **`step-parent` 12**, `half-sibling` 7, **`adoptive-parent` 6**, `ex-spouse` 5,
+#: **`step-child` 3** and **`adopted-child` 1**. Four of those were in no set here, so 22 edges
+#: were dropped on the floor -- not mis-stated, simply absent from the output.
+#:
+#: `adoptive-parent` and `adopted-child` are added, and they carry the attested adoption shape.
+#: **`step-parent` and `step-child` are deliberately NOT added**: the corpus attests `PEDI
+#: adopted` and `PEDI foster` and nothing else, so there is no reading of a step-relationship to
+#: copy. Ruled 2026-09-13 for exactly this case -- *"we have to do a `Forest` export on that point
+#: in order to get that relationship so we know how to represent it"* -- and inventing one is the
+#: thing the whole item forbids. Queued as an export rather than guessed.
 PARENTS = {"parent"}
+ADOPTIVE_PARENTS = {"adoptive-parent"}
 CHILDREN = {"child"}
+ADOPTED_CHILDREN = {"adopted-child"}
 SPOUSES = {"spouse", "partner", "ex-spouse"}
 SIBLINGS = {"sibling", "half-sibling"}
+
+#: The `phrase` column names the RELATIVE and states their sex outright -- `father`, `mother`,
+#: `son`, `daughter`. It was read only for the SUBJECT's sex and thrown away for everyone else,
+#: which is what made the parent slots positional. Same table, one more caller.
+PHRASE_SEX = {
+    "father": "M", "mother": "F", "adoptive father": "M", "adoptive mother": "F",
+    "son": "M", "daughter": "F", "brother": "M", "sister": "F",
+    "husband": "M", "wife": "F", "ex-husband": "M", "ex-wife": "F",
+    "half brother": "M", "half sister": "F",
+}
 
 #: The relation word on a path row, mapped to what it makes the row's person to the previous one.
 #: ⛔ THE SEX OF THE PARENT IS IN THE WORD AND IT WAS BEING THROWN AWAY. Fixed 2026-09-13.
@@ -202,18 +226,63 @@ def profile_gedcom(subject, name, rels):
             sex[subject] = s
             break
 
-    parents = [r["geni_id"] for r in rels if r["relation"] in PARENTS]
+    def phrase_sex(r):
+        return PHRASE_SEX.get((r.get("phrase") or "").strip().lower())
+
+    parents = [r for r in rels if r["relation"] in PARENTS]
+    adoptive = [r for r in rels if r["relation"] in ADOPTIVE_PARENTS]
     children = [r["geni_id"] for r in rels if r["relation"] in CHILDREN]
+    adopted_children = [r["geni_id"] for r in rels if r["relation"] in ADOPTED_CHILDREN]
     spouses = [r["geni_id"] for r in rels if r["relation"] in SPOUSES]
     siblings = [r["geni_id"] for r in rels if r["relation"] in SIBLINGS]
+
+    # ⛔ **THE PARENT SLOT COMES FROM THE PHRASE, NEVER FROM THE POSITION.** This read
+    # `parents[0]` into `HUSB` and `parents[1]` into `WIFE`, so which slot a parent landed in was
+    # whichever order the scrape happened to list them -- a mother first made her the husband.
+    # That is the same defect fixed on the PATH side on 2026-09-13, where it had made *every*
+    # mother in 1,007 files a husband; the profile side was never touched, and § *A GUARD IN ONE
+    # EMITTER IS NOT A GUARD* is the reason to expect that.
+    #
+    # The `phrase` column said `father` or `mother` the whole time, which is why this is a re-run
+    # of the emitter and not a re-scrape.
+    def split_parents(rows):
+        husb = wife = None
+        unplaced = []
+        for r in rows:
+            s = phrase_sex(r)
+            if s == "M" and husb is None:
+                husb = r["geni_id"]
+            elif s == "F" and wife is None:
+                wife = r["geni_id"]
+            else:
+                unplaced.append(r["geni_id"])
+        # A parent whose phrase names no sex fills whichever slot is still empty. It asserts the
+        # PARENTHOOD, which is attested, and the slot is the only thing being guessed -- and an
+        # absent slot would lose the edge entirely.
+        for gid in unplaced:
+            if husb is None:
+                husb = gid
+            elif wife is None:
+                wife = gid
+        return husb, wife
 
     fams = []
     if parents or siblings:
         # The birth family. With no parents named this is CHIL-only -- siblinghood stated, and
         # nothing claimed about who the parents were. The ruling: absent slot, no person.
-        fams.append({"husb": parents[0] if parents else None,
-                     "wife": parents[1] if len(parents) > 1 else None,
-                     "chil": [subject] + siblings})
+        husb, wife = split_parents(parents)
+        fams.append({"husb": husb, "wife": wife, "chil": [subject] + siblings})
+    if adoptive:
+        # The adoptive family is its OWN family, never merged with the birth one: the child is
+        # `CHIL` of both, and the `PEDI adopted` / `ADOP BOTH` block on the child's `INDI` is what
+        # says which is which. That is the shape `render` already emits, copied from
+        # `exports/8-19 exports/export-Ancestors-6000000227331261851.ged`.
+        a_husb, a_wife = split_parents(adoptive)
+        fams.append({"husb": a_husb, "wife": a_wife, "chil": [subject], "adopted": True})
+    if adopted_children:
+        fams.append({"husb": subject if sex.get(subject) != "F" else None,
+                     "wife": subject if sex.get(subject) == "F" else None,
+                     "chil": adopted_children, "adopted": True})
     if spouses or children:
         for i, sp in enumerate(spouses or [None]):
             if sex.get(subject) == "F":
@@ -253,9 +322,14 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
         if former:
             word = word.split("-", 1)[1]
         kind, own_sex = PATH_REL.get(word, (None, None))
-        # 136 rows say *adoptive*, and the word was reaching this function and being dropped
-        # because only the LAST word was ever looked at.
-        adopted = "adoptive" in [w.lower() for w in parts]
+        # ⛔ **BOTH SPELLINGS, and only one was matched.** Measured 2026-09-15 over
+        # `reports/path-chains.tsv`: **775 rows carry an adoption word**, not the 136 recorded
+        # when this was written. `adoptive` covers 736 of them -- `her adoptive mother` alone is
+        # 726 -- but **39 say `adopted`**: `his adopted son` 29, `her adopted daughter` 7, `her
+        # adopted son` 2, `his adopted daughter` 1. Those are all CHILD edges, which is the other
+        # half of why they were missed: the child branch below never carried the flag either, so
+        # an adopted child was written as a birth child.
+        adopted = bool({"adoptive", "adopted"} & {w.lower() for w in parts})
         if kind is None and word in ENGAGED:
             kind, former = "spouse", False
         if kind is None:
@@ -270,7 +344,7 @@ def path_gedcom(name, rows, source="one tiny GEDCOM per Geni relationship path")
         elif kind == "child":
             # The possessive states the PARENT's sex: *his son* -> the previous person is male.
             slot = "wife" if owner == "F" else "husb"
-            fams.append({slot: prev["gid"], "chil": [cur["gid"]]})
+            fams.append({slot: prev["gid"], "chil": [cur["gid"]], "adopted": adopted})
         elif kind == "spouse":
             # `partner` and a fiance(e) assert no marriage; `husband`/`wife` do, and an `ex-`
             # asserts one that ended, which is `1 MARR` + `1 DIV` exactly as the corpus writes it.
