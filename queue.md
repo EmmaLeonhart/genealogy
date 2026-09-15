@@ -56,13 +56,7 @@ QUEUE*, which is how a list gets ordered by when a thing was appended instead of
 what it is. Ruled 2026-09-13: *"uhh why did you shit the bed so hard with queue
 ordering lol"*. Anything typed here by hand outranks anything derived.
 
-## Another item
-
-Export descendants of Hélène de Corday `6000000000746523797` — running off
-`NN des Rotours` `6000000227695388934`, `task_id 6000000227757652945`. Download, file as
-`exports/emma-requested/export-Descendants-6000000227695388934.ged`, done.
-
-## Another item
+## Read the pastebin and Marcus.linneberg contributions as QID identifications
 
 read this https://pastebin.com/npAiDNLg using the chrome extension. View all of the pages since this is not really optimally organized, but set these as qid identifications
 
@@ -1520,14 +1514,6 @@ https://www.geni.com/profile/index/6000000020533302781 https://www.wikidata.org/
 https://www.geni.com/profile/index/6000000009305030992 https://www.wikidata.org/wiki/Q141455107
 https://www.geni.com/profile/index/6000000009305036314 https://www.wikidata.org/wiki/Q141455100
 
-## Forest exports
-
-These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
-
-Forest https://www.geni.com/people/NN-Fuca/6000000227739821875
-
-Descendants https://www.geni.com/people/NN/6000000227739695943
-
 ## Relational labels issue
 
 Just like the other things this is at the end for a reason
@@ -1581,14 +1567,6 @@ I keep on telling you to do this and you keep on not doing it. To be clear this 
 This is the last queue item for a reason lol do not do it immediately
 
 I think I figured some stuff out about the CBDB people who I am just straight up unable to edit. My current working hypothesis is that these people all have the geni tree 100% present on wikidata due to the mass export coming from some external gedcom. So for the people for which we are not able to add ancestors, do not be too concerned with it. I think this might be a better thing to investigate using other things like familysearch and geni is just kinda a dead end there and wikidata has all of the geni information already for it. But searching the web for these things may be helpful so do it. 
-
-## Ancestor Exports
-
-At the end of the queue after all other things are done I want to do some specific ancestor export campaigns. 
-
-Ancestor exports from certain specific people to get their ancestors
-
-try this one https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064
 
 ## Possible leads
 
@@ -1652,46 +1630,6 @@ string yet, so it needs no path handling until one shows up.
 **⛔ The capture is not the problem and must not be touched.** The relation string is
 `span.subtext`'s `textContent` — whitespace collapsed, parens stripped, nothing parsed. `q` would
 be stored as `q`. Every one of these is a re-run of the emitter, never a re-scrape.
-
-## `Forest` exports centred on people carrying the TAIL relationships in the TSVs
-
-Ruled 2026-09-13: *"put it at the end of the queue that... to do forest exports centred on people
-with the tail relationships for the TSV files."* Written down and not started **yet**.
-
-**Last in order, and it gets done.** Emma, immediately after: *"it's at the very terminal end of
-it. And it's NOT parked. It's gonna be addressed later."*
-
-**Why a `Forest` and not a lookup:** a relationship we have never seen in a real Geni export has
-no attested representation, and § *no guessing on the representations* forbids composing one.
-The export centred on a person who **has** that relationship is what shows how Geni writes it.
-
-**The tail, counted off `paths/harvested-path-geni-*.tsv` on 2026-09-13.** The whole distribution
-is 33 distinct strings; these are the ones below the common six and their gender variants:
-
-    134  her adoptive mother        3  her child            2  his/her father
-     18  her ex-husband             3  his ex-wife          2  his parent
-     15  your relative?             3  his fiancée          2  her ex-partner
-     11  his partner                1  his child            1  his adoptive mother
-      5  his/her parent             1  her partner          1  his adoptive father
-      4  her fiancé
-
-**⛔ THE URGENT ONES ARE THE UNATTESTED ONES, and there are two kinds.**
-
-* **fiancé / fiancée — 7 rows, and `ENGA` occurs ZERO times in this corpus.** There is no shape to
-  copy, so they are currently emitted as a couple with no marriage event. This is the case Emma
-  described exactly: *"if there's some relationship that is only present in one spot, we have to
-  do a `Forest` export on that point in order to get that relationship so we know how to
-  represent it."*
-* **`your relative?` — 15 rows.** Geni itself is not naming the relationship, so a `Forest` on
-  those people is the only way to find out what the link actually is.
-
-**Already attested and needing no export** (`devlog.md` 2026-09-13 carries the measurements):
-adoptive → `FAMC` + `2 PEDI adopted` + `1 ADOP` + `3 ADOP BOTH`; ex- → bare `1 MARR` with bare
-`1 DIV`; partner → a `FAM` with no `MARR`. `foster` is attested 781 times in the corpus and
-appears in **no** path string, so it needs nothing until one turns up.
-
-Pairs with these relations are in `reports/path-chains.tsv`; the person to centre the export on
-is the one the tail word describes.
 
 ## expanding the universe
 
@@ -1775,6 +1713,78 @@ before this item existed, so lifting the flag is the whole of the work:
 
 **Check before flipping it:** that CI is green, and that the day's batch still passes those three
 gates — run `wikidata-edit-run.py` against it and read the refusal counts.
+
+## ⛔ GEDCOM EXPORTS — MOVED TO THE VERY END, 2026-09-14
+
+Ruled: *"these gedcom descendant exports are best moved to the very end of the queue so we can
+focus on other stuff since they can be done and integrated on a more long term basis while we
+fix important stuff."*
+
+They sit AFTER the hold lift on purpose, so a long-running export can never block it. Each one
+is a submit, a wait of 6-15 minutes, and a file — cheap to pick up whenever the browser is
+free, and they integrate on their own schedule.
+
+## Descendants export: Hélène de Corday
+
+Export descendants of Hélène de Corday `6000000000746523797` — running off
+`NN des Rotours` `6000000227695388934`, `task_id 6000000227757652945`. Download, file as
+`exports/emma-requested/export-Descendants-6000000227695388934.ged`, done.
+
+## Forest exports
+
+These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
+
+Forest https://www.geni.com/people/NN-Fuca/6000000227739821875
+
+Descendants https://www.geni.com/people/NN/6000000227739695943
+
+## Ancestor Exports
+
+At the end of the queue after all other things are done I want to do some specific ancestor export campaigns. 
+
+Ancestor exports from certain specific people to get their ancestors
+
+try this one https://www.geni.com/people/Reformatorin-Ursula-von-M%C3%BCnsterberg/6000000188494434823?through=6000000003481830064
+
+## `Forest` exports centred on people carrying the TAIL relationships in the TSVs
+
+Ruled 2026-09-13: *"put it at the end of the queue that... to do forest exports centred on people
+with the tail relationships for the TSV files."* Written down and not started **yet**.
+
+**Last in order, and it gets done.** Emma, immediately after: *"it's at the very terminal end of
+it. And it's NOT parked. It's gonna be addressed later."*
+
+**Why a `Forest` and not a lookup:** a relationship we have never seen in a real Geni export has
+no attested representation, and § *no guessing on the representations* forbids composing one.
+The export centred on a person who **has** that relationship is what shows how Geni writes it.
+
+**The tail, counted off `paths/harvested-path-geni-*.tsv` on 2026-09-13.** The whole distribution
+is 33 distinct strings; these are the ones below the common six and their gender variants:
+
+    134  her adoptive mother        3  her child            2  his/her father
+     18  her ex-husband             3  his ex-wife          2  his parent
+     15  your relative?             3  his fiancée          2  her ex-partner
+     11  his partner                1  his child            1  his adoptive mother
+      5  his/her parent             1  her partner          1  his adoptive father
+      4  her fiancé
+
+**⛔ THE URGENT ONES ARE THE UNATTESTED ONES, and there are two kinds.**
+
+* **fiancé / fiancée — 7 rows, and `ENGA` occurs ZERO times in this corpus.** There is no shape to
+  copy, so they are currently emitted as a couple with no marriage event. This is the case Emma
+  described exactly: *"if there's some relationship that is only present in one spot, we have to
+  do a `Forest` export on that point in order to get that relationship so we know how to
+  represent it."*
+* **`your relative?` — 15 rows.** Geni itself is not naming the relationship, so a `Forest` on
+  those people is the only way to find out what the link actually is.
+
+**Already attested and needing no export** (`devlog.md` 2026-09-13 carries the measurements):
+adoptive → `FAMC` + `2 PEDI adopted` + `1 ADOP` + `3 ADOP BOTH`; ex- → bare `1 MARR` with bare
+`1 DIV`; partner → a `FAM` with no `MARR`. `foster` is attested 781 times in the corpus and
+appears in **no** path string, so it needs nothing until one turns up.
+
+Pairs with these relations are in `reports/path-chains.tsv`; the person to centre the export on
+is the one the tail word describes.
 
 ## PINNED LAST -- RESTART THE PATH COLLECTION IF IT HAS STOPPED
 
