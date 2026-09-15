@@ -27,6 +27,40 @@ tiny path GEDCOMs, 773 isolates reached.
 ⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
 is the extension's, never a sleep in the agent.
 
+### ⛔⛔ FIRST ITEM: WHY DO BAD ITEMS KEEP GETTING CREATED. Ruled 2026-09-14
+
+*"analyze why some really bad things keep on being tried to be created."*
+
+**The evidence Emma attached**, five `CREATE`s from one batch, every one of them wrong:
+
+    Svensdtr.   patronymic, 1 bearer    an ABBREVIATION -- should be Svensdatter
+    und         family, 8 bearers       German for "and": "Thurgau und Nellenburg"
+    Count       given, 7 bearers        a TITLE, and CLAUDE.md says a title is not a name
+    .           family, 6 bearers       a bare full stop, on Zerubbabel and five others
+    (Ulf        family, 5 bearers       a truncated parenthetical, "(Ulf af Horsnäs)" cut at
+                                        the space
+
+**These are CREATIONS, not overwrites** — a different failure from the CJK one, and worse in one
+respect: an overwrite can be reverted to a known previous value, while a created junk item has to
+be found and deleted.
+
+**The question is why the guards did not catch them**, one by one, because the rules already
+exist and each of these violates one:
+
+* § *A TITLE IS NOT A NAME* — `Count`.
+* § *Remove abbreviations* — `Svensdtr.`, already its own queue item.
+* § *a token made only of punctuation is not a name*, shipped 2026-09-13 — `.` should be dead
+  already, so **either the guard is not on this path or the batch predates it.** Establish which
+  before anything else; it decides whether this is one bug or several.
+* `und` and `(Ulf` are the same defect in two coats: **a multi-token name was split on
+  whitespace** and the pieces treated as names. `von Thurgau und Nellenburg` is one family name;
+  `(Ulf af Horsnäs)` is a parenthetical. § *PARSE PATRONYMICS BY FORM. Never parse a name
+  positionally* is the governing rule and it is being broken by the splitter, not by the emitter.
+
+**⛔ FIND THE BATCH AND THE EMITTER FIRST.** Which run produced the attached file, whether any of
+it reached Wikidata, and which of the two emitters wrote it — § *A GUARD IN ONE EMITTER IS NOT A
+GUARD* has already been the answer twice this session. Only then fix.
+
 ### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
 
 *"you had no business having any submissions going through until everything was done. That's why
