@@ -5689,7 +5689,7 @@ Sources in merge order (later sources win value conflicts):
 
 | record | count |
 | --- | ---: |
-| FAM | 754824 |
+| FAM | 754828 |
 | INDI | 1687509 |
 | SUBM | 57965 |
 
@@ -6778,7 +6778,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000001827582117-blood.ged` | 0 | 0 | 0 | 29 | 0 |
 | `harvested-path-geni-6000000001827610153-blood.ged` | 2 | 0 | 0 | 23 | 2 |
 | `harvested-path-geni-6000000001828782619-blood.ged` | 11 | 5 | 0 | 71 | 3 |
-| `harvested-path-geni-6000000001829589817-blood.ged` | 78 | 0 | 0 | 139 | 40 |
+| `harvested-path-geni-6000000001829589817-blood.ged` | 78 | 0 | 0 | 139 | 43 |
 | `harvested-path-geni-6000000001838588451-blood.ged` | 1 | 0 | 0 | 28 | 0 |
 | `harvested-path-geni-6000000001838607806-blood.ged` | 0 | 0 | 0 | 27 | 0 |
 | `harvested-path-geni-6000000001838879990-blood.ged` | 1 | 0 | 0 | 26 | 1 |
@@ -6972,7 +6972,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000003101980999-blood.ged` | 0 | 0 | 0 | 27 | 0 |
 | `harvested-path-geni-6000000003102253400-blood.ged` | 0 | 0 | 0 | 31 | 0 |
 | `harvested-path-geni-6000000003102295068-blood.ged` | 0 | 0 | 0 | 33 | 0 |
-| `harvested-path-geni-6000000003122354841-blood.ged` | 16 | 0 | 0 | 81 | 10 |
+| `harvested-path-geni-6000000003122354841-blood.ged` | 16 | 0 | 0 | 81 | 11 |
 | `harvested-path-geni-6000000003125122695-blood.ged` | 0 | 0 | 0 | 29 | 0 |
 | `harvested-path-geni-6000000003125391522-blood.ged` | 2 | 0 | 0 | 29 | 2 |
 | `harvested-path-geni-6000000003125438035-blood.ged` | 0 | 0 | 0 | 29 | 0 |
@@ -7073,7 +7073,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000003692266132-blood.ged` | 0 | 0 | 0 | 111 | 0 |
 | `harvested-path-geni-6000000003715297906-blood.ged` | 0 | 0 | 0 | 75 | 0 |
 | `harvested-path-geni-6000000003742102823-blood.ged` | 1 | 0 | 0 | 84 | 0 |
-| `harvested-path-geni-6000000003758378211-blood.ged` | 13 | 0 | 0 | 66 | 12 |
+| `harvested-path-geni-6000000003758378211-blood.ged` | 13 | 0 | 0 | 66 | 13 |
 | `harvested-path-geni-6000000003768386624-blood.ged` | 1 | 0 | 0 | 70 | 0 |
 | `harvested-path-geni-6000000003768392839-blood.ged` | 0 | 0 | 0 | 69 | 0 |
 | `harvested-path-geni-6000000003783022260-blood.ged` | 0 | 0 | 0 | 39 | 0 |
@@ -7647,7 +7647,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000009784009742-blood.ged` | 10 | 9 | 0 | 64 | 0 |
 | `harvested-path-geni-6000000009784255616-blood.ged` | 1 | 1 | 0 | 83 | 0 |
 | `harvested-path-geni-6000000009795931530-blood.ged` | 7 | 0 | 0 | 74 | 6 |
-| `harvested-path-geni-6000000009796535956-blood.ged` | 173 | 5 | 0 | 247 | 114 |
+| `harvested-path-geni-6000000009796535956-blood.ged` | 173 | 5 | 0 | 247 | 117 |
 | `harvested-path-geni-6000000009796654866-blood.ged` | 2 | 0 | 0 | 179 | 1 |
 | `harvested-path-geni-6000000009796689882-blood.ged` | 2 | 0 | 0 | 179 | 2 |
 | `harvested-path-geni-6000000009838073531-blood.ged` | 1 | 1 | 0 | 61 | 0 |
@@ -8174,7 +8174,7 @@ Sources in merge order (later sources win value conflicts):
 | `harvested-path-geni-6000000022566012139-blood.ged` | 1 | 1 | 0 | 81 | 0 |
 | `harvested-path-geni-6000000022566078181-blood.ged` | 16 | 5 | 0 | 48 | 10 |
 | `harvested-path-geni-6000000022603165074-blood.ged` | 8 | 4 | 0 | 109 | 4 |
-| `harvested-path-geni-6000000022631921351-blood.ged` | 4 | 0 | 0 | 337 | 4 |
+| `harvested-path-geni-6000000022631921351-blood.ged` | 4 | 0 | 0 | 337 | 2 |
 | `harvested-path-geni-6000000022643237816-blood.ged` | 16 | 8 | 0 | 71 | 7 |
 | `harvested-path-geni-6000000022689294346-blood.ged` | 1 | 1 | 0 | 89 | 0 |
 | `harvested-path-geni-6000000026037299440-blood.ged` | 20 | 0 | 0 | 65 | 13 |
@@ -8571,7 +8571,7 @@ Sources in merge order (later sources win value conflicts):
 | `isolate-geni-archiatre-nils-christian-edgar-oker-blom-1919-1995-hels.ged` | 7 | 2 | 0 | 95 | 5 |
 | `isolate-geni-arie-noordtzij-1871-1944-lutry.ged` | 0 | 0 | 0 | 103 | 0 |
 | `isolate-geni-armas-emanuel-launis-lindberg-1884-1959-nice.ged` | 3 | 1 | 0 | 29 | 1 |
-| `isolate-geni-arnaldo-deodato-da-fonseca-rozeira-1912-1984-lordelo-do.ged` | 20 | 3 | 0 | 32 | 14 |
+| `isolate-geni-arnaldo-deodato-da-fonseca-rozeira-1912-1984-lordelo-do.ged` | 20 | 3 | 0 | 32 | 15 |
 | `isolate-geni-arne-carl-august-beurling-1905-1986-princeton.ged` | 12 | 7 | 0 | 74 | 4 |
 | `isolate-geni-arne-oddvar-d-rumsgaard-1921-2006-marzio.ged` | 14 | 0 | 0 | 104 | 13 |
 | `isolate-geni-arne-rettedal-1926-2001-stavanger.ged` | 7 | 0 | 0 | 50 | 6 |
@@ -9102,7 +9102,7 @@ Sources in merge order (later sources win value conflicts):
 | `isolate-geni-professor-axel-thue-1863-1922-oslo.ged` | 10 | 1 | 0 | 114 | 6 |
 | `isolate-geni-professor-stig-fredrik-sigurd-lindberg-1916-1982-circeo.ged` | 9 | 1 | 0 | 45 | 7 |
 | `isolate-geni-professori-leo-eino-aario-engman-1906-1998-espoo.ged` | 9 | 6 | 0 | 28 | 2 |
-| `isolate-geni-qin-shi-huang-259-210.ged` | 2 | 0 | 0 | 141 | 8 |
+| `isolate-geni-qin-shi-huang-259-210.ged` | 2 | 0 | 0 | 141 | 7 |
 | `isolate-geni-ragnar-schreiner-1915-d.ged` | 6 | 0 | 0 | 73 | 5 |
 | `isolate-geni-ramon-prieto-bances-1889-1972-oviedo.ged` | 25 | 21 | 0 | 19 | 4 |
 | `isolate-geni-raphael-jan-h-egh-krohn-krohn-1938-1988-b-rum.ged` | 9 | 2 | 0 | 72 | 6 |
@@ -9698,9 +9698,9 @@ Sources in merge order (later sources win value conflicts):
 | `292375614100003130.ged` | 2 | 8 | 0 | 0 | 0 |
 | `292375719740008518.ged` | 1 | 1 | 0 | 9 | 1 |
 | `292376429810004785.ged` | 2 | 6 | 0 | 1 | 0 |
-| `292391597660006813.ged` | 1 | 2 | 0 | 6 | 1 |
+| `292391597660006813.ged` | 2 | 2 | 0 | 6 | 2 |
 | `3724849.ged` | 3 | 12 | 0 | 0 | 0 |
-| `3724940.ged` | 1 | 3 | 0 | 5 | 1 |
+| `3724940.ged` | 1 | 3 | 0 | 5 | 2 |
 | `3724946.ged` | 1 | 4 | 0 | 5 | 2 |
 | `6000000000785786199.ged` | 1 | 0 | 0 | 5 | 3 |
 | `6000000000872878006.ged` | 2 | 0 | 0 | 13 | 10 |
@@ -9716,7 +9716,7 @@ Sources in merge order (later sources win value conflicts):
 | `6000000008177059370.ged` | 1 | 1 | 0 | 10 | 0 |
 | `6000000008209329558.ged` | 1 | 0 | 0 | 13 | 0 |
 | `6000000008209364679.ged` | 2 | 0 | 0 | 13 | 3 |
-| `6000000008209406512.ged` | 0 | 0 | 0 | 14 | 0 |
+| `6000000008209406512.ged` | 0 | 0 | 0 | 14 | 1 |
 | `6000000008209471202.ged` | 0 | 0 | 0 | 14 | 0 |
 | `6000000008209474398.ged` | 0 | 0 | 0 | 14 | 0 |
 | `6000000008209478282.ged` | 1 | 0 | 0 | 13 | 0 |
@@ -9730,7 +9730,7 @@ Sources in merge order (later sources win value conflicts):
 | `6000000008881365723.ged` | 1 | 4 | 0 | 9 | 1 |
 | `6000000008881370696.ged` | 1 | 5 | 0 | 1 | 0 |
 | `6000000008881398025.ged` | 1 | 2 | 0 | 7 | 1 |
-| `6000000008881463848.ged` | 1 | 1 | 0 | 13 | 1 |
+| `6000000008881463848.ged` | 1 | 1 | 0 | 13 | 2 |
 | `6000000009583760174.ged` | 1 | 1 | 0 | 4 | 2 |
 | `6000000009584254696.ged` | 2 | 10 | 0 | 1 | 0 |
 | `6000000009584324661.ged` | 1 | 0 | 0 | 7 | 1 |
@@ -9740,11 +9740,11 @@ Sources in merge order (later sources win value conflicts):
 | `6000000009593804483.ged` | 2 | 8 | 0 | 0 | 0 |
 | `6000000009602576325.ged` | 1 | 6 | 0 | 1 | 0 |
 | `6000000009749349185.ged` | 2 | 11 | 0 | 0 | 0 |
-| `6000000009750181705.ged` | 1 | 3 | 0 | 5 | 1 |
+| `6000000009750181705.ged` | 1 | 3 | 0 | 5 | 2 |
 | `6000000011489518934.ged` | 1 | 3 | 0 | 0 | 0 |
 | `6000000015251760335.ged` | 3 | 10 | 0 | 0 | 0 |
 | `6000000015251864613.ged` | 2 | 4 | 0 | 6 | 1 |
-| `6000000017598776819.ged` | 3 | 8 | 0 | 3 | 1 |
+| `6000000017598776819.ged` | 4 | 8 | 0 | 3 | 2 |
 | `6000000017599430239.ged` | 1 | 1 | 0 | 5 | 1 |
 | `6000000017599452029.ged` | 1 | 0 | 0 | 4 | 1 |
 | `6000000017601292551.ged` | 0 | 0 | 0 | 13 | 2 |
@@ -9752,14 +9752,14 @@ Sources in merge order (later sources win value conflicts):
 | `6000000017602416858.ged` | 0 | 0 | 0 | 9 | 1 |
 | `6000000017602461524.ged` | 0 | 0 | 0 | 7 | 1 |
 | `6000000017602541883.ged` | 1 | 4 | 0 | 0 | 0 |
-| `6000000017602671987.ged` | 1 | 2 | 0 | 8 | 1 |
-| `6000000017602752341.ged` | 1 | 0 | 0 | 12 | 1 |
+| `6000000017602671987.ged` | 1 | 2 | 0 | 8 | 2 |
+| `6000000017602752341.ged` | 1 | 0 | 0 | 12 | 2 |
 | `6000000017602840367.ged` | 1 | 1 | 0 | 9 | 1 |
 | `6000000017602871867.ged` | 2 | 3 | 0 | 2 | 0 |
 | `6000000017602909346.ged` | 0 | 0 | 0 | 12 | 1 |
 | `6000000017603017344.ged` | 1 | 1 | 0 | 2 | 0 |
 | `6000000017603043149.ged` | 1 | 5 | 0 | 8 | 1 |
-| `6000000017603108393.ged` | 1 | 1 | 0 | 5 | 1 |
+| `6000000017603108393.ged` | 1 | 1 | 0 | 5 | 2 |
 | `6000000017603116673.ged` | 0 | 0 | 0 | 5 | 1 |
 | `6000000017603119240.ged` | 0 | 0 | 0 | 7 | 1 |
 | `6000000017603127342.ged` | 0 | 0 | 0 | 9 | 2 |
@@ -9775,8 +9775,8 @@ Sources in merge order (later sources win value conflicts):
 | `6000000036854711943.ged` | 0 | 0 | 0 | 6 | 0 |
 | `6000000038555523003.ged` | 1 | 1 | 0 | 10 | 2 |
 | `6000000038555630138.ged` | 2 | 4 | 0 | 1 | 0 |
-| `6000000039315561835.ged` | 1 | 3 | 0 | 9 | 1 |
-| `6000000039319367337.ged` | 2 | 6 | 0 | 2 | 0 |
+| `6000000039315561835.ged` | 2 | 3 | 0 | 9 | 3 |
+| `6000000039319367337.ged` | 3 | 6 | 0 | 2 | 0 |
 | `6000000041985855247.ged` | 1 | 1 | 0 | 4 | 1 |
 | `6000000041985856069.ged` | 1 | 3 | 0 | 5 | 1 |
 | `6000000041985978113.ged` | 1 | 1 | 0 | 5 | 1 |
@@ -11388,14 +11388,14 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**6448** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**6461** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
 | `INDI.CHAN.DATE` | 5518 |
-| `FAM.HUSB` | 423 |
+| `FAM.HUSB` | 436 |
 | `INDI.BIRT.DATE` | 261 |
 | `INDI.DEAT.DATE` | 138 |
 | `INDI.SEX` | 47 |
@@ -17228,6 +17228,8 @@ By path:
 | `@F9990269538383972493@` | `FAM.HUSB` | @I6000000174847323565@ | saved-6000000178670150833.ged | @I6000000174849656050@ | isolate-geni-bartolomeo-prignano-c-1318-1389-roma.ged |
 | `@F9990085242313314920@` | `FAM.HUSB` | @I6000000044128793940@ | saved-6000000184169690842.ged | @I6000000010449454103@ | isolate-geni-pope-john-sicco-954-1003-rome.ged |
 | `@F9990133571571155893@` | `FAM.HUSB` | @I6000000011433727968@ | saved-6000000184169690842.ged | @I6000000115668584966@ | isolate-geni-pope-john-sicco-954-1003-rome.ged |
+| `@F9990090816390266922@` | `FAM.HUSB` | @I6000000017601292551@ | 292391597660006813.ged | @I292376429810004785@ | 292376429810004785.ged |
+| `@F9990034357307736156@` | `FAM.HUSB` | @I3724849@ | 3724940.ged | @I3724843@ | 3724849.ged |
 | `@F9990256918356059255@` | `FAM.HUSB` | @I3724946@ | 3724946.ged | @I3724940@ | 3724940.ged |
 | `@I6000000000872878006@` | `INDI.SEX` | F | 6000000000872878006.ged | M | export-Forest-6000000227738818838.ged |
 | `@I6000000001517526463@` | `INDI.SEX` | F | 6000000001517526463.ged | M | export-Descendants-6000000227737257915.ged |
@@ -17239,20 +17241,31 @@ By path:
 | `@I6000000008176934493@` | `INDI.SEX` | F | 6000000008176934493.ged | M | harvested-path-geni-6000000008176934493-inlaw.ged |
 | `@I6000000008177059370@` | `INDI.SEX` | M | 6000000008177059370.ged | F | harvested-path-geni-6000000008177059370-inlaw.ged |
 | `@I6000000008209364679@` | `INDI.SEX` | F | 6000000008209364679.ged | M | export-Forest-6000000227738818838.ged |
+| `@F9990250669318122264@` | `FAM.HUSB` | @I6000000008174402366@ | 6000000008209406512.ged | @I6000000004051080234@ | 6000000008174402366.ged |
 | `@I6000000008209474398@` | `INDI.SEX` | F | 6000000008209474398.ged | M | export-Forest-6000000227738818838.ged |
 | `@I6000000008239556189@` | `INDI.SEX` | M | 6000000008239556189.ged | F | export-Descendants-6000000227737387875.ged |
 | `@I6000000008239559135@` | `INDI.SEX` | M | 6000000008239559135.ged | F | export-Descendants-6000000227737387875.ged |
 | `@F9990019718153097836@` | `FAM.HUSB` | @I6000000008176622061@ | 6000000008239559135.ged | @I6000000008239556189@ | 6000000008176622061.ged |
 | `@I6000000008239590629@` | `INDI.SEX` | M | 6000000008239590629.ged | F | export-Forest-6000000227738818838.ged |
+| `@F9990135368333788219@` | `FAM.HUSB` | @I6000000008881463848@ | 6000000008881463848.ged | @I6000000008881365723@ | 6000000008881168092.ged |
 | `@F9990273695614379416@` | `FAM.HUSB` | @I6000000009583760174@ | 6000000009583760174.ged | @I6000000082417150189@ | 6000000008881398025.ged |
+| `@F9990090184676791975@` | `FAM.HUSB` | @I6000000009749349185@ | 6000000009750181705.ged | @I6000000009748646876@ | 6000000009749349185.ged |
 | `@F9990247324114813396@` | `FAM.HUSB` | @I292375614100003130@ | 6000000017601292551.ged | @I292375719740008518@ | 292375614100003130.ged |
+| `@F9990090816390266922@` | `FAM.HUSB` | @I292376429810004785@ | 6000000017601292551.ged | @I6000000017601292551@ | 292391597660006813.ged |
+| `@F9990090816390266922@` | `FAM.HUSB` | @I6000000017601292551@ | 6000000017602027283.ged | @I292376429810004785@ | 6000000017601292551.ged |
+| `@F9990151484517957576@` | `FAM.HUSB` | @I6000000017602671987@ | 6000000017602671987.ged | @I6000000017602752341@ | 292373984150002914.ged |
+| `@F9990142702777871755@` | `FAM.HUSB` | @I6000000017602461524@ | 6000000017602752341.ged | @I292375499530004720@ | 292375499530004720.ged |
+| `@F9990151484517957576@` | `FAM.HUSB` | @I6000000017602752341@ | 6000000017602840367.ged | @I6000000017602671987@ | 6000000017602671987.ged |
+| `@F9990153663669706841@` | `FAM.HUSB` | @I6000000017603127342@ | 6000000017603108393.ged | @I6000000017602541883@ | 6000000017602541883.ged |
 | `@F9990278260057648154@` | `FAM.HUSB` | @I6000000017602871867@ | 6000000017603127342.ged | @I6000000017602909346@ | 6000000017602871867.ged |
+| `@F9990153663669706841@` | `FAM.HUSB` | @I6000000017602541883@ | 6000000017603127342.ged | @I6000000017603127342@ | 6000000017603108393.ged |
 | `@F9990191954055683433@` | `FAM.HUSB` | @I6000000041985978113@ | 6000000018394859816.ged | @I6000000018394859816@ | 6000000018391674002.ged |
 | `@F9990238525066899643@` | `FAM.HUSB` | @I6000000041985855247@ | 6000000018395600056.ged | @I6000000018395600056@ | 6000000018394859816.ged |
 | `@I6000000036853250505@` | `INDI.SEX` | M | 6000000036853250505.ged | F | export-Forest-6000000227738818838.ged |
 | `@I6000000036854364270@` | `INDI.SEX` | M | 6000000036854364270.ged | F | export-Forest-6000000227738818838.ged |
 | `@I6000000036854711943@` | `INDI.SEX` | M | 6000000036854711943.ged | F | export-Forest-6000000227738818838.ged |
 | `@F9990014265608862373@` | `FAM.HUSB` | @I6000000038555523003@ | 6000000038555523003.ged | @I6000000038555301448@ | 6000000009593804483.ged |
+| `@F9990016419144218886@` | `FAM.HUSB` | @I6000000039317504113@ | 6000000039315561835.ged | @I6000000039315561835@ | 6000000009749349185.ged |
 | `@F9990191954055683433@` | `FAM.HUSB` | @I6000000018394859816@ | 6000000041985856069.ged | @I6000000041985978113@ | 6000000018394859816.ged |
 | `@F9990191954055683433@` | `FAM.HUSB` | @I6000000041985978113@ | 6000000041985978113.ged | @I6000000018394859816@ | 6000000041985856069.ged |
 | `@F9990144178243008137@` | `FAM.HUSB` | @I6000000041985856069@ | 6000000041988800141.ged | @I6000000083040500385@ | 6000000041985856069.ged |
