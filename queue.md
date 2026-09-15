@@ -60,7 +60,14 @@ ordering lol"*. Anything typed here by hand outranks anything derived.
 
 please just get the pipeline to run all of the quickstatements as wikidata edits directly. Or really generate the quickstatements file every day and an additional smaller amount of edits (about 50%) every day run autonomously connected to wikidata
 
-**⛔ THE MECHANISM IS BUILT. WHAT REMAINS IS EMMA'S TO LIFT.** Checked 2026-09-14:
+**⛔ DELIVERED 2026-09-14, EXCEPT THE HOLD — BLOCKED-ON-USER-ACTION.** The 50% is built:
+caps raised 50% (`NAME_ADD_CAP` 90, `LABEL_EDIT_CAP` 90, `P2600_LEAD_CAP` 60,
+`MANUAL_P2600_PER_RUN` 30, `SIBLING_CAP` 60) and the scheduled run takes a third of the batch
+via `--fraction 0.3333`, so the autonomous share is exactly the increase. `74fc58a1`.
+
+**The only remaining blocker is `EDITS_HELD: "yes"`, which a person lifts.**
+
+**⛔ THE MECHANISM IS BUILT.** Checked 2026-09-14:
 `.github/workflows/wikidata-edits.yml` is scheduled `7 8 * * *`, sends
 `reports/wikidata-garborg-day.txt` at `limit=100`, and goes live from
 `AUTOMATION_START_DATE 2026-09-15`. `pipeline.yml` regenerates the batch daily. The only thing
