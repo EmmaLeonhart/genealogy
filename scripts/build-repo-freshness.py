@@ -56,10 +56,32 @@ def tracked() -> list[str]:
     return keep
 
 
-def last_commit(path: str) -> str:
-    r = subprocess.run(["git", "log", "-1", "--format=%ad", "--date=short",
-                        "--", path], cwd=REPO, capture_output=True, text=True)
-    return r.stdout.strip()
+def last_commit_index() -> dict[str, str]:
+    """`{path: YYYY-MM-DD}` for every tracked file, from ONE walk of the history.
+
+    ⛔ **THIS WAS ONE `git log` SUBPROCESS PER FILE AND THAT IS WHY THE STEP PRODUCED NOTHING.**
+    Ruled this item's defect 2026-09-14: *"`build-repo-freshness.py` exits 0 and writes nothing
+    -- that is a real defect and it is this item's."* The cause is cost, not logic: the scope is
+    **1,914 tracked files**, each got its own `git log -1 -- <path>`, and each of those walks the
+    history of a **52,901-file** repository. It ran for over seven minutes locally and never
+    finished; in `pipeline.yml` the step carries `continue-on-error: true`, so being killed looks
+    exactly like succeeding quietly.
+
+    **`git log --name-only` visits the history once** and names the files each commit touched.
+    The log is newest-first, so the FIRST time a path appears is the last commit that touched it
+    -- `setdefault` is the whole algorithm.
+    """
+    r = subprocess.run(["git", "log", "--format=%x00%ad", "--date=short", "--name-only"],
+                       cwd=REPO, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
+    out: dict[str, str] = {}
+    date = ""
+    for line in (r.stdout or "").splitlines():
+        if line.startswith(chr(0)):
+            date = line[1:].strip()
+        elif line.strip():
+            out.setdefault(line.strip(), date)
+    return out
 
 
 def source_index() -> dict[str, str]:
@@ -201,6 +223,9 @@ def main() -> None:
     live_exports = len(list((REPO / "exports").rglob("*.ged")))
     gens = source_index()
     rows = []
+    # ONE history walk for every file; see `last_commit_index`.
+    commit_dates = last_commit_index()
+    print(f"   git history indexed: {len(commit_dates):,} paths")
     for rel in tracked():
         p = REPO / rel
         try:
@@ -209,7 +234,7 @@ def main() -> None:
             text = ""
         claims = [int(m.group(1)) for m in CLAIM_RE.finditer(text)]
         claim = max(claims) if claims else ""
-        date = last_commit(rel)
+        date = commit_dates.get(rel, "")
         stale = ""
         if date:
             y, m, d = (int(x) for x in date.split("-"))
