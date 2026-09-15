@@ -44093,3 +44093,49 @@ Locality, pace and ordering are unchanged from the `P1810` pass: the universe an
 Verified through the actual delivery path rather than asserted: the emitted lines parse through
 `qs_v1` into 8 edit objects with `references: [{property: P2600, ...}]`, and all 8 survive
 `wikidata-edit-run.load_batch`'s gate.
+
+## 2026-09-15 — Unintentional edit wars: the guard existed for statements and not for labels
+
+`## Unintentional edit wars` closed. *"our algorithm is relatively resistant to editors fixing its
+mistakes and this is drawing attention."*
+
+**Measured first, and the measurement moved the whole answer.** Over the last 15,000 of the
+account's mainspace edits, **43 contested label slots on 19 items — `zh` 15, `ja` 14, `ko` 14**.
+Almost perfectly balanced across the three, which is the signature of the CJK label path rather
+than of anything about those particular people. **17 of the 43 are `mw-manual-revert`: our own
+batch restoring its earlier value, undoing a human.** A bot being reverted is ordinary; a bot that
+reverts a human back on a schedule is what gets noticed, and being noticed is the complaint.
+
+`read_suppressed` closed exactly this hole for STATEMENTS on 2026-08-30 and **labels were left
+open**, which is where the war moved. The generator emits `L<lang>` when the live label differs
+from ours — and an editor's correction is precisely what *differs from ours* looks like.
+
+`scripts/refresh-reverted-labels.py` writes `reports/reverted-labels.tsv`;
+`build-garborg-day.read_reverted_labels` reads it and **one filter on the finished batch** drops
+any `Q<id> L<lang>` line on a contested slot. One filter rather than a check in each emitter
+because there are eleven places a label line is appended. A `LAST L<lang>` under a `CREATE` is
+deliberately untouched: a brand-new item is one nobody can have reverted yet.
+
+Verified against the real data: the contested slot drops; another language on the same item,
+another item in the same language, a new item under `CREATE`, and a statement line all survive.
+
+**Two things checked rather than assumed, and both were wrong the first way round:**
+
+- **`refresh-suppressed-statements.py` is wired into nothing.** `suppressed-statements.tsv` was
+  last written 2026-09-01 — 15 rows, one editor — so every statement removal in the two weeks
+  since was invisible. The mechanism was right and frozen. **But its own docstring rules against
+  scheduling it**: *"It is extremely stupid that you wrote it as something that actively watches
+  the editor's edits ... I want to watch their edits once and then leave it."* So it stays a
+  one-shot, and the new script reads the account's OWN contributions instead, naming nobody —
+  which is not the thing that was ruled against. The new one IS wired, because a guard that is
+  not refreshed is a guard that expires, and that is the failure this whole item is about.
+- **The refresh step was first placed after the split, which is after compose** — so the guard
+  would have read yesterday's file every single run. Moved to step 5, immediately before the
+  compose at step 6.
+
+**A rejected approach, recorded so it is not tried again.** Deriving removals from git history of
+`reports/wikidata-garborg-day.txt` gives 3,558 statements proposed-then-absent, and the number is
+useless: a batch is a *proposal*, only part of which is pasted or sent each day, so
+proposed-and-absent conflates *never applied* with *removed*. A precise version needs a receipt of
+what was actually applied — `reports/wikidata-edits-applied.tsv`, which the live CI run writes and
+which does not exist yet.

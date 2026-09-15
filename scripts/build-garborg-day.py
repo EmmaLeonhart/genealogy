@@ -615,6 +615,45 @@ def read_suppressed():
     return out
 
 
+def read_reverted_labels():
+    """`{(qid, lang)}` -- label slots a human has already had an opinion about.
+
+    ⛔ **THE LABEL HALF OF THE EDIT-WAR FIX, ruled 2026-09-15.** `queue.md` section
+    *Unintentional edit wars*: *"our algorithm is relatively resistant to editors fixing its
+    mistakes and this is drawing attention."*
+
+    `read_suppressed` closed the same hole for STATEMENTS on 2026-08-30 and labels were left
+    open, which is where the war actually moved. The generator emits `L<lang>` when the live
+    label differs from ours -- and an editor's correction is exactly what "differs from ours"
+    looks like, so every rebuild undoes it again.
+
+    **Measured over the last 15,000 of the account's edits: 43 contested slots on 19 items,
+    `zh` 15, `ja` 14, `ko` 14** -- almost perfectly balanced across the three, which is the
+    signature of the CJK label path rather than of anything about those particular people.
+    **17 of the 43 are `mw-manual-revert`: our own batch restoring its earlier value, undoing a
+    human.** A bot being reverted is ordinary; a bot that reverts a human back on a schedule is
+    what gets noticed, and being noticed is the complaint.
+
+    Built by `scripts/refresh-reverted-labels.py`, which reads the ACCOUNT'S OWN contributions.
+    That is not the thing ruled against in `refresh-suppressed-statements.py` -- that ruling is
+    about watching another editor continuously, and this names nobody.
+
+    **Missing file means an empty set and today's behaviour**, with a warning. The safe
+    direction is the same as `read_suppressed`: a suppressed slot costs one label we might have
+    been right about, an unsuppressed one costs another round of the war.
+    """
+    out = set()
+    path = ROOT / "reports" / "reverted-labels.tsv"
+    if not path.exists():
+        print("WARNING: reports/reverted-labels.tsv missing - the batch may re-assert labels "
+              "an editor already reverted. Run scripts/refresh-reverted-labels.py")
+        return out
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="	"):
+            out.add((row["qid"], row["lang"]))
+    return out
+
+
 def read_live_labels():
     """`{(qid, lang): label}` -- what each ledger item's label actually SAYS, live.
 
@@ -7594,6 +7633,33 @@ def main():
     if dropped:
         print(f"excluded ids: {dropped} statement line(s) dropped "
               f"({', '.join(sorted(excluded))}) — never emitted, in any position")
+
+    # ---- ⛔ A LABEL SLOT A HUMAN HAS RULED ON IS NEVER RE-ASSERTED ----------------------
+    #
+    # Ruled 2026-09-15, `queue.md` section *Unintentional edit wars*. See `read_reverted_labels`
+    # for the measurement: 43 contested slots, 17 of them our own batch reverting a person.
+    #
+    # **It is ONE filter on the finished batch rather than a check in each emitter**, because
+    # there are eleven places a label line is appended and § *A GUARD IN ONE EMITTER IS NOT A
+    # GUARD*. A reverted slot is by definition on an item that already exists, so it always
+    # appears as an explicit `Q<id>` line -- a `LAST L<lang>` under a `CREATE` is a brand new
+    # item nobody can have reverted yet, and is deliberately untouched.
+    reverted = read_reverted_labels()
+    if reverted:
+        label_line = re.compile(r"^(Q\d+)	[LAD]([a-z][a-z0-9-]*)	")
+        kept2, undone = [], 0
+        for ln in kept:
+            m = label_line.match(ln)
+            if m and (m.group(1), m.group(2)) in reverted:
+                while kept2 and kept2[-1].lstrip().startswith("#"):
+                    kept2.pop()
+                undone += 1
+                continue
+            kept2.append(ln)
+        if undone:
+            print(f"reverted labels: {undone} line(s) dropped — a human has already ruled on "
+                  f"{len(reverted)} slot(s); we do not re-assert them")
+        kept = kept2
 
     # ---- NEVER emit the same statement twice in one CREATE block ------------------------
     #

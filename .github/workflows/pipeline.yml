@@ -153,6 +153,32 @@ jobs:
       - name: Read the ruled pipe into the label proposals
         run: python scripts/apply-pipe-labels.py
 
+      # ⛔ THE LABEL SLOTS A HUMAN HAS ALREADY RULED ON, refreshed BEFORE the batch is
+      # composed. Ruled 2026-09-15, queue.md § *Unintentional edit wars*:
+      # *"our algorithm is relatively resistant to editors fixing its mistakes and this is
+      # drawing attention."*
+      #
+      # **Staleness is the failure this is written against, and it is not hypothetical.**
+      # reports/suppressed-statements.tsv is the statement-level equivalent and it is wired into
+      # nothing: last written 2026-09-01, 15 rows, one editor. The mechanism was right and
+      # frozen, so every removal since was invisible and the batch re-added all of them. A guard
+      # that is not refreshed is a guard that expires.
+      #
+      # **Order matters and is the whole point of this step's position**: it must run BEFORE the
+      # compose below, or the guard reads yesterday's file and the war continues for a day
+      # longer than it needs to. It was first written after the split, which is after compose,
+      # and that was wrong.
+      #
+      # It reads the ACCOUNT'S OWN contributions and names nobody, so it is not the thing ruled
+      # against in refresh-suppressed-statements.py -- that ruling is about watching another
+      # editor continuously.
+      - name: Refresh the reverted label slots
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+          BOT_CONTACT: emma@topazcomputing.com
+        run: python scripts/refresh-reverted-labels.py
+
       - name: Ledger refresh and QuickStatements rebuild
         env:
           BOT_CONTACT: emma@topazcomputing.com
