@@ -192,6 +192,69 @@ PAIRS = {
     # to start with"*, expanded to take people who already hold a proper QID. Both do.
     "6000000031527612551": "Q144565",   # Sultan Tughril I -- Tughril, first Seljuq sultan
     "6000000031528142916": "Q870223",   # Dawud Chaghri Bey, Lord of Khorasan -- Chaghri Beg
+
+    # ⛔ **THE 39 HAND IDENTIFICATIONS, 2026-09-15 — AND THEY ARE NOT BLOCKED.** Ruled that day,
+    # correcting the previous session exactly: *"The identification one goes into the gedcom it
+    # isn't blocked but they are added to the entry ponys and universe and p2600 can be added
+    # there at Jan 1 no blocking lol"*.
+    #
+    # The session before had read *"I do not want to draw more attention than I've been getting
+    # from being non-local"* as a reason to DROP every line naming one of them, and added a
+    # 39-QID tuple to `build-garborg-day.py` that filtered the finished batch. That inverted the
+    # design. **Being far from the universe is what this file is for** — its own § *WHAT
+    # `wikidata-qid-links.ged` IS FOR* is *"far off genealogical people who are too far away in
+    # the regular clusters to be ones to start with"* — and the answer to non-locality here has
+    # never been a ban, it is the DATE. `special-geni-gedcom-recognition` carries
+    # `active_from 2027-01-01`, so a pair written here is inert until then and becomes an entry
+    # point on the day, which is the mechanism Emma specified on 2026-09-05: *"write these ones
+    # into that identification gedcom thing ... which is scheduled to at Jan 1, 2027 become a
+    # thing that turns every qid there into an entry point for editing"*.
+    #
+    # So the identification is recorded, the tree knows who is who and `to_create` cannot mint a
+    # duplicate, the QIDs join the universe on 2027-01-01, and **`P2600` can be added to them
+    # then** — none of which a block permits. A blocked pairing is one that expires into nothing.
+    #
+    # 38 pairs, not 39: `Q236972` Fuxi was in that tuple with no Geni id recorded against it, and
+    # it is already in the ledger (`reports/garborg-carry-forward.tsv` holds a `P3373` for it), so
+    # it needs no row here and simply stops being excluded.
+    "6000000001381114215": "Q10299225",   # Jing Kang 敬康 5
+    "6000000001272831610": "Q10438384",   # Yu Gu Sou 瞽叟 8
+    "6000000003474166572": "Q1045160",   # Qì 契 5
+    "6000000007213183226": "Q10514592",   # Jiáo Jí 蟜極 3
+    "6000000001381046535": "Q10752092",   # Qióng Chán 穷蝉 4
+    "6000000008004418918": "Q10933357",   # Dà Yè 大业 5
+    "6000000002481254239": "Q1147250",   # Xuán Xiāo 玄囂 Shǎo Hào 少昊 2
+    "6000000008659107006": "Q128371",   # Caliph Marwan II bin Muhammad
+    "6000000002048439278": "Q1441379",   # Léi Zǔ 嫘祖
+    "6000000188494434823": "Q18028984",   # Reformatorin Ursula von Münsterberg
+    "6000000001381123265": "Q198180",   # Zhuān Xū 顓頊 3世 DO NOT MERGE PARENTS
+    "5152366561060066977": "Q2746812",   # Umayya bin Abd Shams
+    "6000000002848066261": "Q28409803",   # Tóng Yú Shì Wife 3 彤魚氏
+    "6000000001381274001": "Q29201",   # Yellow Emperor
+    "6000000130192002822": "Q313336",   # Shén Nóng 神农 Yán Dì 炎帝 Yú Quān 榆圈 一任帝 2世
+    "6000000195149451825": "Q313342",   # Emperor Shùn 帝舜 9 1G
+    "6000000009562419205": "Q314809",   # Iry Hor Pharaoh of Egypt
+    "6000000209058145828": "Q318613",   # Scorpion I
+    "6000000028714712399": "Q334111",   # 조선 27대 순종 척
+    "6000000008004518685": "Q4243879",   # Bó Yì 字 伯益 8
+    "6000000020107122663": "Q4268330",   # Jī Nǚ Xīu姬女修 4
+    "6000000026522778851": "Q4302144",   # GŌNGSŪN Shǎo Diǎn 少典 1世
+    "6000000001272854603": "Q4499078",   # Gui Xiang 媯象 9
+    "6000000028856413461": "Q484866",   # Yi Un Crown Prince of Korea
+    "6000000028895625641": "Q496421",   # private
+    "6000000001381063554": "Q6377648",   # Chāng Yì 昌意 2
+    "6000000201847373856": "Q70899",   # Adam the First Man
+    "6000000028786845951": "Q7214248",   # 순헌황귀비 엄씨
+    "6000000002481253260": "Q721756",   # Emperor Kù 帝嚳 4
+    "6000000189960169823": "Q7480137",   # Nǚ Yīng 女英
+    "6000000001380983518": "Q7664534",   # Jiao Niu 蟜牛 7
+    "6000000001272026560": "Q7878975",   # Wò Dēng 握登
+    "6000000189960074826": "Q7991612",   # É Huáng 娥皇
+    "6000000003485847175": "Q819556",   # Emperor Yáo 帝堯 5
+    "6000000023167303575": "Q8262857",   # Mó Mǔ Wife 4 嫫母
+    "6000000195149174838": "Q9511624",   # Huaxu
+    "6000000001380828716": "Q9569181",   # Ju Mang 句芒 6
+    "6000000002188099903": "Q9738",   # Wu Zhao 武曌 Zetian Emperor
 }
 ONLY = set(PAIRS)
 
