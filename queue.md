@@ -150,11 +150,11 @@ clean. So for several of these the climb is already done and only the export rem
   5000 cap and is filed as `exports/emma-requested/export-Descendants-6000000227738961944.ged`. **Its first submit was REFUSED** because the d'Esneval export still held the slot, and
   the refusal is SILENT — Geni re-renders the export form instead of redirecting to a task id,
   and writes no row into the export list. **Check the redirect target, not the HTTP status.**
-* **NN Arcamone `6000000227757712839` — SUBMITTED**, `task_id 6000000227757721844`. Emma's
-  seed, Neapolitan, so presumed the Pietro Antonio di Capua line. **Pietro
-  `6000000015633226273` is in NONE of the four balls filed tonight**, checked by grep, so this
-  one is genuinely needed rather than redundant.
-* **NN des Rotours `6000000227695388934` — QUEUED**, waiting on the export slot. Emma's seed.
+* **NN Arcamone `6000000227757712839` — DONE, AND IT REACHES PIETRO.** 5000 at the cap, filed
+  as `exports/emma-requested/export-Descendants-6000000227757712839.ged`. Pietro
+  `6000000015633226273` appears in it 4 times, so **Pietro Antonio di Capua is covered** —
+  verified by grep, not presumed from the surname. He was in NONE of the four earlier balls.
+* **NN des Rotours `6000000227695388934` — SUBMITTED**, `task_id 6000000227757652945`. Emma's seed.
   This is the Corday line: `NN des Rotours` is Nicolas de Corday's wife, therefore Guillaume's
   mother and **Hélène de Corday's grandmother**, so a Descendants ball off her covers Hélène —
   which is the line four generations of climbing could not find an open slot in.
