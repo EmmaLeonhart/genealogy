@@ -802,6 +802,86 @@ def test_no_numeral_gets_a_name_item_in_any_notation():
         assert namemodel.name_shape(junk)[1] == "unknown", f"{junk!r} would get a name item"
 
 
+def test_the_only_punctuation_in_a_name_is_a_hyphen():
+    """Ruled 2026-09-14: *"The only valid punctuation in a name at all is a dash for a doible
+    barred name."*
+
+    **The test above this one has been RED since the day it was written**, 2026-09-13, on
+    `'--' would get a name item` -- and eleven tests were red on `main` every day from at least
+    2026-09-10, four of them the `HELD` gate, which is red on purpose while editing is held by
+    hand. That is the mechanism the queue item was asking about: the guard was written, a test
+    asserting the guard works was written, the test failed on its first run, and a suite with
+    four permanently-red tests in it trains every reader to stop looking. Nothing was wrong with
+    the reasoning in `namemodel`; what was missing was anyone reading the red.
+
+    So this covers the classes by what they ARE, from the measurement over all 23,196 rows of
+    `reports/name-item-plan.csv`, not by the five tokens that happened to be in the batch Emma
+    read.
+    """
+    for junk in (".", "..", "-", "--", "(", ")", "[", "]", "{", "}", "#", ",", "()", ".,",
+                 "Rd.", "NR.", "h.", "Mrs.", "кн.", "Svensdtr.", "Olsdtr.",   # trailing stop
+                 "(Ulf", "(Wife", "(ou", "(Bupati", "[Versi", "II)", "?)",     # unmatched bracket
+                 '"the', '"der', "«el", "“dit", "„gamli“",                # quote marks
+                 "N/A", "vitad/Unknown", "1:", "Surname:", "#2", "[65]",       # separators
+                 "&", "@", "+", "=", "…", "(?)", "孛兒只斤·",                 # the rest
+                 "‎", "‏", "‎‏",                                           # INVISIBLE tokens
+                 "R'", "'el", "ר'", "d´",                                   # edge apostrophe
+                 "Chavez-", "Rodriguez-", "Romo-", "De-", "Nord-"):            # half a name
+        assert namemodel.name_shape(junk)[1] == "unknown", f"{junk!r} would get a name item"
+
+
+def test_a_title_is_not_a_name_and_the_title_list_is_actually_read():
+    """`Count` is in `_LEADING_TITLES` AND in `NAME_SUFFIX_TITLES` and had 226 bearers.
+
+    Both lists were written for § *A TITLE IS NOT A NAME* and `name_shape` read neither, so the
+    rule was true in the vocabulary and false in the code -- § *Code that is WRITTEN but never
+    CALLED is not done*. 113 title tokens, 3,555 bearers.
+    """
+    for title in ("Count", "Countess", "Graf", "Gräfin", "Freiin", "Pangeran", "Khatun",
+                  "Saint", "Rabbi", "Capt", "Kung", "親王", "Stillborn", "Infant"):
+        assert namemodel.name_shape(title)[1] == "unknown", f"{title!r} would get a name item"
+    # the lists are consulted, not copied: a token added to either must take effect here
+    for token in list(namemodel._LEADING_TITLES)[:50] + list(namemodel.NAME_SUFFIX_TITLES)[:50]:
+        assert namemodel.name_shape(token)[1] == "unknown", f"{token!r} escaped the title list"
+
+
+def test_the_pieces_of_a_split_name_are_not_names():
+    """`Mangold von Thurgau und Nellenburg` split on whitespace and `und` became a family name.
+
+    Eight bearers pointed at it in the batch Emma read. The real fault is positional parsing in
+    whatever splits the field -- § *PARSE PATRONYMICS BY FORM* -- and this is the guard that
+    holds while that is still true. It is free to hold: *"There’s effectively zero cost for
+    not creating a name object."*
+    """
+    for word in ("und", "and", "et", "ou", "och", "og", "or",
+                 "the", "der", "die", "das", "el", "la", "le", "los", "las", "il",
+                 "aka", "alias", "dit", "dite", "genannt", "nee", "born", "known"):
+        assert namemodel.name_shape(word)[1] == "unknown", f"{word!r} would get a name item"
+
+
+def test_the_two_exceptions_to_the_punctuation_rule():
+    """The apostrophe inside a word, and combining marks, which are letters and not punctuation.
+
+    The apostrophe was put to Emma with the counts -- 196 tokens, about half of them real --
+    and ruled *allow it INSIDE a word only*: a letter on each side keeps `d'Aragona` (90
+    bearers), `Ja'far` (77) and `O'Brien`, while `R'` (179) and `'el` (74) stay refused by the
+    test above.
+
+    The combining marks are not a carve-out but a correct classification. NFC composes the
+    Latin ones, so `A`+U+030A really is `Å` -- but Arabic harakat have no composed form, and
+    `عَبْدُ` arrived as five letters and four marks. Both spellings of `Ådneson` must also
+    reach the SAME token, or Geni's encoding decides how many name items a surname gets.
+    """
+    for real in ("d'Aragona", "d'Auvergne", "Ja'far", "O'Brien", "Rabi'a", "d’Ardres",
+                 "Anne-Marie", "عَبْدُ", "بْن", "Strömberg", "María", "Oñate", "伏羲"):
+        assert namemodel.name_shape(real)[1] != "unknown", f"{real!r} lost its name item"
+
+    composed, decomposed = "Ådneson", "Ådneson"
+    assert composed != decomposed                       # genuinely two different strings
+    assert namemodel.name_shape(composed)[1] is None
+    assert namemodel.name_shape(decomposed)[1] is None
+
+
 def test_the_roman_rule_is_the_ordinal_SEQUENCE_and_not_the_alphabet():
     """`di` is 21,960 occurrences and `Li` is a Chinese surname — both are all-Roman letters.
 

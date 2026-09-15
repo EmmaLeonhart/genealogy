@@ -1317,10 +1317,25 @@ CJK_NUMERALS = set("〇一二三四五六七八九十百千万億零壱弐参拾
 
 
 def is_numeral(token: str) -> bool:
-    """True when the token is a number written in digits, Roman letters or CJK characters."""
+    """True when the token is a number written in digits, Roman letters or CJK characters.
+
+    **THE EMPTY-AFTER-STRIP HOLE, found 2026-09-14.** The strip set is there so `(3)` and `#1`
+    read as the numbers they are. A token made ENTIRELY of those characters stripped to `""`,
+    and `""` returned `False` -- *not a numeral* -- which every caller reads as *an ordinary
+    name token, carry on*. Eighteen tokens escaped that way: `.` `..` `...` `-` `--` `(` `)`
+    `,` `[` `]` `{` `}` `#` `(.)` `-.-` `()` `.,` `#.`
+
+    `.` is the one that surfaced it, in a batch Emma read: a `CREATE` for a family name whose
+    label is a full stop, six bearers pointed at it, Zerubbabel 3rd Exilarch among them. The
+    2026-09-12 slash rule below was the same bug in a different character and caught `/` only
+    because `/` is not in the strip set.
+
+    `not_a_name` now refuses all eighteen before this is ever reached, so this branch is
+    belt-and-braces -- but it is `is_numeral`'s own bug and other callers use it directly.
+    """
     bare = (token or "").strip("().,-[]{}#")
     if not bare:
-        return False
+        return True                                  # nothing but punctuation
     if not any(ch.isalpha() for ch in bare):
         return True                                  # digits and punctuation only
     if ROMAN_ORDINAL.match(bare):
@@ -1328,6 +1343,116 @@ def is_numeral(token: str) -> bool:
     # `2世` mixes a digit with the marker, so the digits are dropped before the test rather
     # than requiring every character to be in the CJK set.
     return all(ch in CJK_NUMERALS for ch in bare if not ch.isdigit())
+
+
+#: **⛔ THE ONLY PUNCTUATION A NAME MAY CARRY IS A HYPHEN, FOR A DOUBLE-BARRELLED NAME.**
+#: Ruled 2026-09-14: *"I thought we had specific logic against punctuation. The only valid
+#: punctuation in a name at all is a dash for a doible barred name."* And on why it kept
+#: shipping anyway: *"this area is too aggressively policed for any damage to still be on
+#: wikidata ... I constantly told you that names were very heavily policed and over and over
+#: again told you to change the fuckinh logic."*
+#:
+#: There WAS specific logic, and it was too narrow twice over. The note inside `name_shape`
+#: below already claimed *"a stray `-`, `.` or `--` is caught by the same line"* -- false,
+#: because `is_numeral` answered `False` for a token that stripped to nothing. And even working,
+#: it only refused a token that was punctuation END TO END, so `Rd.`, `Mrs.`, `(Wife`, `"the`
+#: and `[65]` passed as names on the strength of the letters sitting next to the junk.
+#:
+#: Measured over all 23,196 rows of `reports/name-item-plan.csv`: **854 tokens carry non-hyphen
+#: punctuation and about a thousand `create` actions hang off them.** By class, every one of
+#: which was going to get an item made about it:
+#:
+#:     .  316   Rd. (1,112 bearers)  NR. (839)  h. (393)  Mrs. (244)
+#:     (  222   (Wife (287)  (ou (105)  (Istri (65)  (Kai (55)  (Bupati (44)
+#:     '  196   d'Aragona (90)  d'Auvergne (88)  Ja'far (77)  -- and R' (179)  'el (74)
+#:     )  180   )  (1)  (2)  (II)  (incognita)
+#:     "   70   "the (189)  "der (146)  "le (97)
+#:     []  52   [Versi (110)  [65] (57)  [Sigurdarson] (19)
+#:     /   10   / (1,501 bearers)  N/A  vitad/Unknown
+#:     :   10   1:  2:  Surname:
+#:     #    8   #2 (125)  #1 (121)
+#:     rest 35   ? , + & @ = ... and four INVISIBLE tokens of U+200E/U+200F alone
+#:
+#: **THE APOSTROPHE IS THE ONE PLACE THE RULE COLLIDES WITH REAL NAMES**, so it went to Emma
+#: with those counts and was ruled the same day: *allow it INSIDE a word only*. A letter on both
+#: sides keeps `d'Aragona`, `Ja'far`, `O'Brien`; leading or trailing refuses `R'`, `'el`, `ר'`
+#: and `d´`. Same shape as the load-bearing apostrophe branch further down this file, which
+#: already requires a letter on both sides before reading an apostrophe as a delimiter.
+#:
+#: **AND THE TOKEN IS NFC-NORMALISED FIRST, WHICH IS NOT A CARVE-OUT.** Seven tokens look
+#: punctuated only because Geni wrote them decomposed -- `Ådneson`, `Håland`, `Strömberg`, `María`,
+#: `Oñate`, `عَبْدُ` -- where the ring, diaeresis, acute or tilde is a separate combining
+#: codepoint. Those are letters. Composing first is the correct classification, and it settles a
+#: second defect nobody had named: the same surname was two different tokens, and so two
+#: different name items, depending on how Geni happened to encode it.
+#:
+#: Scope is unchanged from the numeral rule above, and it is the reason this is safe to make
+#: strict: refusing a token here removes a `P735`/`P734` name ITEM and touches no label.
+#: `derive-labels.py` does not call this.
+_APOSTROPHES = "'’ʼ´"
+
+
+def not_a_name(token: str) -> bool:
+    """True when the token carries punctuation a name may not carry.
+
+    Everything is refused except letters, digits and combining marks; of punctuation only a
+    hyphen or an apostrophe, and only with a LETTER ON EACH SIDE. Digits are left to
+    `is_numeral`, which is a separate rule with its own reasoning -- this one must not start
+    refusing `2世`.
+
+    **THE SHAPE IS AN ALLOWLIST AND THAT IS DELIBERATE.** Ruled 2026-09-14: *"for name objects
+    it’s better to create no name object than a bad one."* A denylist of known-bad characters
+    is how this went wrong the first time -- `is_numeral`’s strip set named thirteen characters
+    and `/` walked past it. A character nobody has thought about yet has to come out refused.
+
+    The hyphen takes the same letter-on-each-side test as the apostrophe because the ruling is
+    *"a dash for a doible barred name"* -- the dash is licensed by joining two names, not by
+    being a dash. Six tokens in the plan are the other shape and all six are a double-barrelled
+    surname that got cut in half: `Chavez-`, `Rodriguez-`, `Romo-`, `De-`, `Nord-` (15, 12, 9,
+    6+6, 12 bearers). An item labelled `Chavez-` is worse than no item.
+    """
+    t = unicodedata.normalize("NFC", token or "")
+    if not t:
+        return True
+    for i, ch in enumerate(t):
+        # A COMBINING MARK IS PART OF THE LETTER IT SITS ON, and NFC does not always fold it in.
+        # Latin and Cyrillic compose, so `A`+ring really does become `Å` -- but Arabic harakat
+        # have no composed form at all, and `عَبْدُ` stayed five letters and four marks. Reading
+        # those marks as punctuation refused a real Arabic given name, which is why the category
+        # test is here as well as the normalisation: `Mn` non-spacing, `Mc` spacing, `Me`
+        # enclosing. Found in this rule's own first test run, 2026-09-14.
+        if ch.isalpha() or ch.isdigit()                 or unicodedata.category(ch) in ("Mn", "Mc", "Me"):
+            continue
+        if (ch == "-" or ch in _APOSTROPHES) and 0 < i < len(t) - 1                 and t[i - 1].isalpha() and t[i + 1].isalpha():
+            continue
+        return True
+    return not any(ch.isalpha() for ch in t)
+
+
+#: **⛔ A CONJUNCTION, AN ARTICLE AND AN ALIAS MARKER ARE NOT NAMES.** These are the leftovers
+#: of a MULTI-TOKEN NAME SPLIT ON WHITESPACE -- `Mangold von Thurgau und Nellenburg` split into
+#: pieces and `und` treated as one of them, which is § *PARSE PATRONYMICS BY FORM. Never parse a
+#: name positionally* landing on a different field. The real fix is in whatever splits the
+#: field; refusing the pieces here is the guard that holds while that is true, and it is free:
+#: ruled 2026-09-14, *"There’s effectively zero cost for not creating a name object."*
+#:
+#: Every token below is a `create` in `reports/name-item-plan.csv` today, with its bearer count:
+#:
+#:     articles     los 233+77  the 173+133  las 83+21  el  la  le  lo  les  il  der die das
+#:     conjunctions or 185+19   und 111+9    ou 106+12  and 66+29  et 28+6  og 17  och 5
+#:     alias marks  dit 102+18  dite 43      aka 42     alias 17  born 10  known 8  nee 5
+#:
+#: `los` and `las` belong in `PARTICLES` on the merits -- `de los Santos`, `de las Casas` -- but
+#: they are NOT added there, because `PARTICLES` is read when labels are built and this rule is
+#: about what gets an object made about it. Same scope as every other rule in this group.
+#: The two title vocabularies folded once, because `name_shape` runs per token per person.
+_TITLE_TOKENS = frozenset(t.casefold() for t in (set(_LEADING_TITLES) | set(NAME_SUFFIX_TITLES)))
+
+NOT_NAME_WORDS = frozenset("""
+    und and et ou och og oder eller or
+    the der die das den dem el la le lo los las les il
+    aka alias dit dite genannt called known nee born
+""".split())
 
 
 def name_shape(token):
@@ -1369,7 +1494,24 @@ def name_shape(token):
     # is a claim about `II` and `IV` -- which are letters and still pass -- not about a bare `3`
     # reaching `P734`. `isalpha` keeps every ordinal this repo actually emits, keeps CJK numerals
     # like `三` (Han, and alphabetic to Python), and refuses the digit strings.
+    # ⛔ The punctuation rule, ruled 2026-09-14. `not_a_name` above carries the ruling, the
+    # measurement and why the apostrophe and the combining marks are the only two exceptions.
+    # It runs AFTER `PAREN` has stripped a matched pair, so `(de)` is still read as `de`.
+    if not_a_name(bare):
+        return bare, "unknown"
     if is_numeral(bare):
+        return bare, "unknown"
+    # ⛔ **A TITLE IS NOT A NAME, AND THE LIST SAYING SO WAS NEVER READ FROM HERE.** `Count` is
+    # in `_LEADING_TITLES` and in `NAME_SUFFIX_TITLES` -- 292 and 298 entries, both written for
+    # this repo's own rule -- and `name_shape` consulted neither, so `Count` had 226 bearers
+    # pointed at a `P735` given name. § *Code that is WRITTEN but never CALLED is not done*,
+    # found 2026-09-14 off a batch Emma read. 113 title tokens and 3,555 bearers: `Pangeran`
+    # (681), `Graf`, `Countess`, `Khatun`, `Saint`, `Rabbi`, `Stillborn`, `親王`, `Rurikid`.
+    #
+    # `HaLevi`, `HaKohen` and `Rurikid` read as family names to some eyes. They are in the title
+    # vocabulary, which is this repo's standing judgement about them, and one vocabulary
+    # answering one question is the point -- a second opinion here is how `Count` survived.
+    if low in _TITLE_TOKENS or low in NOT_NAME_WORDS:
         return bare, "unknown"
     # **⛔ ONE MARKER VOCABULARY, AND `scripts/labels` OWNS IT.** `CLAUDE.md` § *An obvious
     # unknown-word marker goes straight in* says a new marker is added to
