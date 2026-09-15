@@ -112,6 +112,7 @@ PATRONYMIC = re.compile(
     r"datter|sdatter|dotter|sdotter|"          # Scandinavian female
     r"d[oó]ttir|"                              # Icelandic
     r"s(?:dtr|d|dr|dt|dtt|dttr)|"              # the abbreviations, genitive kept
+    r"npoika|ntyt[äa]r|"                      # Finnish, genitive n -- see FINNISH_PATRONYMIC
     r"[oe]vich|[oe]vna|ovi[cć]|wicz"           # Slavic
     r")\.?$", re.I)
 
@@ -152,8 +153,12 @@ PATRONYMIC = re.compile(
 #: `Petersson` does take `Petersson`, so `-son` in `_MARNM` is genuinely ambiguous and stays
 #: with `patronymic_or_surname`, which has the father's name to go on. Only the daughter forms
 #: are impossible.
+#: **`-tytär` joins the daughter forms for the same reason `-datter` is here**: a woman takes her
+#: husband's name and no husband is called *daughter of*, so the form is impossible as a married
+#: name. `-poika` is deliberately absent, exactly as `-son` is -- a Finnish woman marrying a man
+#: called `Juhonpoika` does take it.
 DAUGHTER_PATRONYMIC = re.compile(
-    r".+?s(?:datter|dotter|d[oó]ttir|dtr|dt|dtt|dttr|dr|d)\.?$", re.I)
+    r".+?(?:s(?:datter|dotter|d[oó]ttir|dtr|dt|dtt|dttr|dr|d)|ntyt[äa]r)\.?$", re.I)
 
 
 #: ⛔ **AN ABBREVIATED PATRONYMIC IS NEVER A NAME OBJECT AND NEVER A LABEL.** Ruled 2026-09-15:
@@ -1699,10 +1704,54 @@ NOT_NAME_WORDS = frozenset("""
 #:
 #: ⛔ **THE GENITIVE `s` IS SHARED, NOT DOUBLED.** `Rasmussen` is `Rasmus` + `sen`, so the
 #: counterpart is `Rasmusdatter` and never `Rasmussdatter`. 32 of the candidates had this fault.
+#: ⛔ **FINNISH IS THE BIGGEST NON-SCANDINAVIAN PATRONYMIC IN THIS CORPUS BY AN ORDER OF
+#: MAGNITUDE.** Ruled 2026-09-15, `queue.md` section *Implementing non-Scandinavian Patronymics*:
+#: *"I keep on telling you to do this and you keep on not doing it ... it seems like you always
+#: just kinda forget about it and don't do it because it is not urgent."*
+#:
+#: **Measured over 5,417,037 name tokens: `-poika` 22,632 and `-tytär` 22,555 — 45,187
+#: occurrences, and `PATRONYMIC` matched none of them.** For scale, Icelandic `-dóttir` is 1,424
+#: in the same corpus and has been modelled from the start. `Juhonpoika` 3,228, `Matinpoika`
+#: 2,211, `Antinpoika` 1,816, `Juhontytär` 3,249, `Matintytär` 2,149.
+#:
+#: **It is the exact parallel of the Scandinavian rule, with `n` where Scandinavian has `s`.**
+#: Finnish forms a patronymic from the father's given name in the GENITIVE plus `poika` (son) or
+#: `tytär` (daughter): `Juho` -> `Juhon` + `poika`. So the genitive is required here for the same
+#: reason § *is_daughter_patronymic* requires the `s`, and the measurement says it is safe:
+#: **22,605 of 22,632 `-poika` tokens and 22,530 of 22,555 `-tytär` tokens carry the `n`, which
+#: is 100% to the rounding.**
+#:
+#: **The 27 that do not are the bare words `Poika` (12), `poika` (5), `tytär` (12), `Tytär` (2)**
+#: — Finnish for *son* and *daughter*, which is a relation word and not a name at all, the same
+#: category `labels.py` already handles for `son`, `datter`, `daughter`, `barn` and `child`.
+#: Requiring the `n` excludes them without a second rule.
+#:
+#: **402 stems carry BOTH forms**, so `patronymic_counterpart` works on them unchanged once the
+#: pair is declared — and the genitive `n` is SHARED exactly as the genitive `s` is:
+#: `Juhonpoika` -> `Juhontytär`, never `Juhonntytär`.
+#:
+#: **The other families were measured and are NOT here**, because the census is contaminated
+#: rather than thin: Slavic `-ić` 8,179 unmatched is `Eric` 1,864, `Henric` 1,205 and `Fredric`
+#: 748 — given names; Greek `-ides` 784 is `Benavides` 438 and `Benevides` 85, Spanish surnames;
+#: Hungarian `-fi` 727 is `Al-Thaqafi` 130 and `Al-Hanafi` 62, Arabic nisbas, plus Italian
+#: `Ridolfi`. Dutch `-szoon` (13) and `-sdochter` (77) are real and correct but three orders of
+#: magnitude smaller, and `-sz` (825) is mostly `Tomasz`, `Wasz` and `Hersz`. Georgian, Turkish,
+#: Greek `-opoulos`, Romanian and Ukrainian are all under 25 occurrences each. § *A small
+#: component is IGNORED* and § *it's better to create no name object than a bad one*.
+FINNISH_PATRONYMIC = re.compile(r".+?n(poika|tyt[äa]r)$", re.I)
+
+
+def is_finnish_patronymic(token: str) -> bool:
+    """True for `Juhonpoika`, `Matintytär`; False for the bare `poika` and `tytär`."""
+    return bool(FINNISH_PATRONYMIC.match(token or ""))
+
+
 PATRONYMIC_PAIR = {
     "sen": "sdatter", "søn": "sdatter", "sønn": "sdatter",
     "sson": "sdotter", "son": "sdotter",
     "sdatter": "sen", "sdotter": "sson", "sdóttir": "sson",
+    # Finnish, genitive `n` shared the way the Scandinavian genitive `s` is.
+    "npoika": "ntytär", "ntytär": "npoika", "ntytar": "npoika",
 }
 
 

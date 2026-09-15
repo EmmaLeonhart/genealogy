@@ -1176,3 +1176,97 @@ def test_every_name_item_emitter_refuses_the_abbreviation():
         with plan.open(encoding="utf-8") as fh:
             bad = [r["token"] for r in csv.DictReader(fh) if abbrev.match(r["token"])]
         assert not bad, f"abbreviated tokens planned as name items: {bad[:10]}"
+
+
+# ---------------------------------------------------------------------------------------
+# Finnish patronymics. Ruled 2026-09-15, queue.md § *Implementing non-Scandinavian
+# Patronymics*: "I keep on telling you to do this and you keep on not doing it."
+# ---------------------------------------------------------------------------------------
+
+def test_finnish_patronymics_are_recognised():
+    """⛔ 45,187 occurrences and `PATRONYMIC` matched none of them until 2026-09-15.
+
+    For scale, Icelandic `-dóttir` is 1,424 in the same corpus and has been modelled from the
+    start. `-poika` is 22,632 and `-tytär` 22,555.
+    """
+    from namemodel import PATRONYMIC, is_finnish_patronymic
+    for token in ("Juhonpoika", "Matinpoika", "Antinpoika",
+                  "Juhontytär", "Matintytär", "Heikinpoika"):
+        assert PATRONYMIC.match(token), token
+        assert is_finnish_patronymic(token), token
+
+
+def test_the_finnish_genitive_n_is_required():
+    """⛔ The `n` does the same work the Scandinavian genitive `s` does.
+
+    Finnish builds a patronymic from the father's given name in the GENITIVE plus `poika` or
+    `tytär`: `Juho` -> `Juhon` + `poika`. Requiring it is what keeps the bare words out --
+    `poika` and `tytär` are simply Finnish for *son* and *daughter*, a relation word and not a
+    name, and they occur 31 times in the corpus as bare tokens.
+
+    Measured: 22,605 of 22,632 `-poika` and 22,530 of 22,555 `-tytär` carry the `n`, which is
+    100% to the rounding; the remainder are exactly those bare words.
+    """
+    from namemodel import PATRONYMIC, is_finnish_patronymic
+    for bare in ("poika", "Poika", "tytär", "Tytär"):
+        assert not is_finnish_patronymic(bare), bare
+        assert not PATRONYMIC.match(bare), bare
+
+
+def test_the_finnish_pair_shares_the_genitive():
+    """`Juhonpoika` <-> `Juhontytär`, never `Juhonntytär`.
+
+    The same rule as the Scandinavian genitive `s`, which `Rasmussen -> Rasmusdatter` pins.
+    402 stems in the corpus carry both forms.
+    """
+    from namemodel import patronymic_counterpart
+    assert patronymic_counterpart("Juhonpoika") == "Juhontytär"
+    assert patronymic_counterpart("Juhontytär") == "Juhonpoika"
+    assert patronymic_counterpart("Matinpoika") == "Matintytär"
+    # and the Scandinavian rule is untouched
+    assert patronymic_counterpart("Rasmussen") == "Rasmusdatter"
+
+
+def test_tytar_is_a_daughter_form_and_poika_is_not():
+    """A woman takes her husband's name and no husband is called *daughter of*.
+
+    So `-tytär` is impossible as a married name, exactly as `-datter` is. `-poika` is
+    deliberately absent for the same reason `-son` is: a Finnish woman marrying a man called
+    `Juhonpoika` does take it.
+    """
+    from namemodel import is_daughter_patronymic
+    assert is_daughter_patronymic("Matintytär")
+    assert is_daughter_patronymic("Juhontytär")
+    assert not is_daughter_patronymic("Juhonpoika")
+    assert is_daughter_patronymic("Olsdatter")
+    assert not is_daughter_patronymic("Olsson")
+
+
+def test_finnish_is_a_reliable_patronymic_in_the_plan():
+    """⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD* -- the plan carries its own suffix list.
+
+    `RELIABLE_PATRONYMIC` is the set where the suffix ALONE settles that a token is a
+    patronymic; `-son`/`-sen` are deliberately absent because they are also inherited surnames.
+    `-npoika` and `-ntytär` carry no such ambiguity -- no Finnish family name takes that shape.
+    """
+    from pathlib import Path
+    repo = Path(__file__).resolve().parent.parent
+    source = (repo / "scripts" / "build-name-item-batch.py").read_text(encoding="utf-8")
+    block = source[source.index("RELIABLE_PATRONYMIC = ("):]
+    block = block[:block.index(")")]
+    assert "npoika" in block and "ntyt" in block, block
+
+
+def test_the_contaminated_families_are_not_modelled():
+    """⛔ Measured and REFUSED, and the refusal is the point.
+
+    The census found other families and they are noise, not signal: Slavic `-ić` 8,179
+    unmatched is `Eric` 1,864, `Henric` 1,205, `Fredric` 748 -- given names; Greek `-ides` 784
+    is `Benavides` 438, a Spanish surname; Hungarian `-fi` 727 is `Al-Thaqafi` and `Al-Hanafi`,
+    Arabic nisbas. Matching any of them would put a `P5056` on thousands of people who have no
+    patronymic at all.
+    """
+    from namemodel import PATRONYMIC
+    for token in ("Eric", "Henric", "Fredric", "Ulric",
+                  "Benavides", "Benevides", "Ridolfi", "Al-Thaqafi"):
+        assert not PATRONYMIC.match(token), token

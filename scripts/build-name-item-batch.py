@@ -103,9 +103,15 @@ INSTANCE_OF, BASED_ON = "P31", "P144"
 #: guard, and it caught this.
 PATRONYMIC_ALSO = PATRONYMIC
 
+#: **Finnish joins the RELIABLE list, ruled 2026-09-15.** This is the set where the suffix alone
+#: settles that a token is a patronymic -- `-son`/`-sen` are deliberately absent because they are
+#: also inherited surnames. `-npoika` and `-ntytär` carry no such ambiguity: they are the Finnish
+#: words for *son* and *daughter* attached to a genitive, and no Finnish family name takes that
+#: shape. 45,187 occurrences in the corpus; see `namemodel.FINNISH_PATRONYMIC`.
 RELIABLE_PATRONYMIC = ("sdottir", "sdóttir", "sdatter", "sdotter", "dottir",
                        "dóttir", "datter", "dotter", "ovich", "evich", "ovna",
-                       "evna", "ivna", "ovych", "yevich")
+                       "evna", "ivna", "ovych", "yevich",
+                       "npoika", "ntytär", "ntytar")
 
 PARTICLES = {"de", "di", "da", "del", "della", "des", "du", "van", "von", "der",
              "den", "ten", "ter", "la", "le", "y", "i", "of", "af", "av", "til",

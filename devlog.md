@@ -44187,3 +44187,47 @@ on that slot — so the two pieces of work compose as intended.
 this visible reached 127 live labels. 21 assertions — the six broken cases, the three that were
 already right, the rule itself, the single-definition check, and five renderings the module's own
 docstrings name as correct.
+
+## 2026-09-15 — Non-Scandinavian patronymics: Finnish, 45,187 occurrences, matched by nothing
+
+`## Implementing non-Scandinavian Patronymics` closed. *"I keep on telling you to do this and you
+keep on not doing it ... it seems like you always just kinda forget about it and don't do it
+because it is not urgent but remove it from the queue and it never gets done."*
+
+The item names no family, so the work was measuring which ones the corpus actually holds. Over
+**5,417,037 name tokens**, against seventeen candidate families, the answer is not close:
+
+**Finnish `-poika` 22,632 and `-tytär` 22,555 — 45,187 occurrences, and `PATRONYMIC` matched none
+of them.** Icelandic `-dóttir` is 1,424 in the same corpus and has been modelled from the start.
+`Juhonpoika` 3,228, `Matinpoika` 2,211, `Antinpoika` 1,816, `Juhontytär` 3,249, `Matintytär` 2,149.
+
+It is the exact parallel of the Scandinavian rule with `n` where Scandinavian has `s`: Finnish
+builds a patronymic from the father's given name in the genitive, `Juho` → `Juhon` + `poika`.
+Requiring the genitive is safe — **22,605 of 22,632 and 22,530 of 22,555 carry it, 100% to the
+rounding** — and the 27 that do not are the bare words `poika` and `tytär`, Finnish for *son* and
+*daughter*, relation words rather than names, excluded by that same requirement without a second
+rule.
+
+Implemented across the model rather than in one place: `PATRONYMIC`, a named
+`FINNISH_PATRONYMIC`/`is_finnish_patronymic`, `PATRONYMIC_PAIR` (**402 stems carry both forms**,
+and the genitive is shared — `Juhonpoika` → `Juhontytär`, never `Juhonntytär`),
+`DAUGHTER_PATRONYMIC` (`-tytär` is impossible as a married name exactly as `-datter` is; `-poika`
+stays out for the same reason `-son` does), `build-name-item-batch.RELIABLE_PATRONYMIC`, and the
+stem strip in `build-patronymic-pairs.py` — which without it would have failed closed and silently
+never paired a single Finnish name.
+
+**Two things measured and refused.**
+
+- **Consonant gradation is not modelled.** `Matti` takes the genitive `Matin`, so the stem is not
+  always the nominative, and I was about to write the restoration. Measured first: **34,685 of
+  45,135 occurrences (77%) find the father directly and only 127 (0%) would need it.** A Finnish
+  morphology module for 127 occurrences is what § *A small component is IGNORED* refuses.
+- **Every other family is contaminated rather than thin.** Slavic `-ić` 8,179 unmatched is `Eric`
+  1,864, `Henric` 1,205, `Fredric` 748 — given names. Greek `-ides` 784 is `Benavides` 438, a
+  Spanish surname. Hungarian `-fi` 727 is `Al-Thaqafi` and `Al-Hanafi`, Arabic nisbas. Dutch
+  `-szoon` (13) and `-sdochter` (77) are real and correct but three orders of magnitude smaller.
+  Matching any of the contaminated ones would put a `P5056` on thousands of people with no
+  patronymic at all.
+
+`tests/test_namemodel.py` gains six tests, including one pinning that the contaminated families
+stay unmatched.

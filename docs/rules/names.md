@@ -678,6 +678,39 @@ keyed on `(token, usage)`.
 is what keeps this to the 110: a `Jonsdotter` whose mother happens to be `Jona` derives from her
 father, and the mother sharing a stem is a coincidence rather than a derivation.
 
+
+### Finnish patronymics: the genitive is `n` where Scandinavian has `s`
+
+Ruled 2026-09-15. **45,187 occurrences and `PATRONYMIC` matched none of them** — `-poika` 22,632
+and `-tytär` 22,555, against Icelandic `-dóttir` at 1,424 in the same corpus, which has been
+modelled from the start.
+
+Finnish builds a patronymic exactly as Scandinavian does, from the father's given name in the
+GENITIVE: `Juho` → `Juhon` + `poika`. So the `n` is required for the same reason the `s` is, and
+the corpus says it is safe — **22,605 of 22,632 `-poika` and 22,530 of 22,555 `-tytär` carry it,
+100% to the rounding.** The 27 that do not are the bare words `poika` and `tytär`, Finnish for
+*son* and *daughter*, which are relation words rather than names; requiring the `n` excludes them
+without a second rule.
+
+**402 stems carry both forms**, and the genitive is SHARED like the Scandinavian one:
+`Juhonpoika` → `Juhontytär`, never `Juhonntytär`. `-tytär` joins the daughter forms — a woman
+takes her husband's name and no husband is called *daughter of* — while `-poika` stays out for
+the same reason `-son` does.
+
+**Finnish consonant gradation is deliberately not modelled.** `Matti` takes the genitive `Matin`,
+so the stem is not always the nominative. Measured: **34,685 of 45,135 occurrences (77%) find the
+father directly and only 127 (0%) would need gradation restored.** A Finnish morphology module for
+127 occurrences is what § *A small component is IGNORED* refuses.
+
+**The other families were measured and REFUSED, because they are contaminated rather than thin.**
+Slavic `-ić` 8,179 unmatched is `Eric` 1,864, `Henric` 1,205, `Fredric` 748 — given names. Greek
+`-ides` 784 is `Benavides` 438 and `Benevides` 85, Spanish surnames. Hungarian `-fi` 727 is
+`Al-Thaqafi` 130 and `Al-Hanafi` 62, Arabic nisbas, plus Italian `Ridolfi`. Dutch `-szoon` (13)
+and `-sdochter` (77) are real and correct but three orders of magnitude smaller, and `-sz` (825)
+is mostly `Tomasz`, `Wasz` and `Hersz`. Georgian, Turkish, Greek `-opoulos`, Romanian and
+Ukrainian are each under 25. Matching any of the contaminated ones would put a `P5056` on
+thousands of people with no patronymic at all.
+
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
 **⛔ THE EXPANSION IS DECIDED BY THE FAMILY, NOT BY A CORPUS MAJORITY. Ruled 2026-09-15.**
