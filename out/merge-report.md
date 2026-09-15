@@ -11375,8 +11375,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227715260898.ged` | 43 | 182 | 0 | 7631 | 93 |
 | `export-Forest-6000000227739381826.ged` | 111 | 446 | 1 | 7274 | 672 |
 | `export-Forest-6000000227755683825.ged` | 8 | 51 | 0 | 7569 | 62 |
-| `wikidata-qid-links.ged` | 0 | 0 | 0 | 31 | 0 |
-| `manual-parental-correspondences.ged` | 0 | 0 | 0 | 1426 | 0 |
+| `wikidata-qid-links.ged` | 0 | 0 | 0 | 64 | 0 |
+| `manual-parental-correspondences.ged` | 0 | 0 | 0 | 1583 | 0 |
 
 ## Pointers to records we do not have
 
