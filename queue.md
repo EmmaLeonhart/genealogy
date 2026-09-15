@@ -143,10 +143,21 @@ clean. So for several of these the climb is already done and only the export rem
   `exports/emma-requested/export-Descendants-6000000227694017875.ged`. **At the cap means
   truncated** — § *A `Descendants` ball that came back at the cap is truncated by definition*
   — so it says what is in it and nothing about what is missing below.
-* **Robert d'Esneval VI — TIER 3, needs a profile CREATED.** *"Son of Robert V d'Esneval"* and
-  **no mother at all**, which is `docs/export-seed-rules.md` tier 3: create the missing parent
-  as `NN`, no surname. His father `6000000000751675327` is not exportable. Creating her is the
-  seed.
+* **Robert d'Esneval VI — DONE.** Emma created the `NN d'Esneval` mother,
+  `6000000227757576826`; Descendants came back at the 5000 cap and is filed as
+  `exports/emma-requested/export-Descendants-6000000227757576826.ged`.
+* **NN Grolier `6000000227738961944` — SUBMITTED**, `task_id 6000000227757611838`. Emma's
+  seed. **Its first submit was REFUSED** because the d'Esneval export still held the slot, and
+  the refusal is SILENT — Geni re-renders the export form instead of redirecting to a task id,
+  and writes no row into the export list. **Check the redirect target, not the HTTP status.**
+* **Inês de Bettencourt I — OPEN SLOT FOUND AND CONFIRMED ON GENI.** `Isabeau d'Harcourt`
+  (c.1272-1340) `6000000006420936026`, four generations up, is *"Daughter of Alice de
+  Beaumont"* with **no father**. Clean tier 3: create the father as `NN`, no surname.
+* **Pietro Antonio di Capua — still hunting.** Two offline candidates were checked against
+  Geni and both were stale in our tree: `Maria Marzano d'Aragona` `6000000021374566965` and
+  `Giacomo del Balzo` `6000000012027520923` each have BOTH parents there. Remaining offline
+  candidates: `6000000008682150862`, `6000000017186487271`.
+
 * **Inês de Bettencourt I, Pietro Antonio di Capua** — seed not yet looked for.
 
 ⛔ **THE CREATION CANNOT BE DONE AD HOC AND SHOULD NOT BE HAND-DRIVEN.** The extension owns it
