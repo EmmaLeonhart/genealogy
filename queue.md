@@ -107,14 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## Remove abbrviations
-
-They have been in here way too long. Feminine patronymic abbreviations like "Olsdtr." really should at this point be only present at all in the "subject named as" in the geni id. Imo fix this in every single gedcom that it is present in and only have it.
-
-Here is my proposed algorithm for resolving "Olsdtr" to "Olsdatter" or "Olsdotter": check the mother's patronymic. If the mother has one then great, if not then check paternal grandmother, if she does not have one then default to "-datter". 
-
-These are actively destructive since a lot of the time our deleted or redirected names end up getting recreated due to the statelessness of the algorithm. This is a strength of the algorithm overall but the tendency to do unintentional edit wars is not good. End queue item will discuss this more
-
 ## ⛔ THE UNIVERSE GROWS BY EDITING ITS NEIGHBOURS, AT A PACE. Ruled 2026-09-14
 
 *"we are applying this to adjacent individuals to the universe. And these adjacent individuals

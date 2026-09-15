@@ -1111,3 +1111,68 @@ def test_romance_patronymics_are_a_curated_set_and_Johannes_is_not_one():
     # the one that matters: Johannes stays a given name
     got = [(t, u) for t, u, _o in namemodel.classify_fields(givn="Johannes", surn="Olsen")]
     assert ("Johannes", "given") in got
+
+
+# ---------------------------------------------------------------------------------------
+# An abbreviated patronymic is never written down as a name. Ruled 2026-09-15.
+# ---------------------------------------------------------------------------------------
+
+def test_an_abbreviated_patronymic_is_not_a_name():
+    """⛔ *"Feminine patronymic abbreviations like "Olsdtr." really should at this point be only
+    present at all in the "subject named as" in the geni id."* Ruled 2026-09-15.
+
+    298 of these were planned as permanent name items, 108 of them classified `given` and 41
+    `family` -- `Olsdtr` is not a given name in any register. A name item's label IS its
+    identity, so § *it's better to create no name object than a bad one* applies at its
+    strongest.
+    """
+    from namemodel import is_abbreviated_patronymic as abbrev
+    for token in ("Olsdtr", "Olsdtr.", "Ormsd", "Johansdr", "Larsdtr.", "Pedersdt"):
+        assert abbrev(token), token
+    for token in ("Olsdatter", "Olsdotter", "Jónsdóttir", "Willemsdochter",
+                  "Olsen", "Olsson", "Svend", "Halvard", "Hand", "David", "Ingrid"):
+        assert not abbrev(token), token
+
+
+def test_the_abbreviation_is_refused_at_the_classifier():
+    """`classify_fields` is the choke point every emitter that classifies goes through."""
+    from namemodel import name_shape
+    assert name_shape("Olsdtr") == ("Olsdtr", "unknown")
+    assert name_shape("Olsdtr.") == ("Olsdtr.", "unknown")
+    # A full form is untouched -- the refusal must not widen.
+    assert name_shape("Olsdatter") != ("Olsdatter", "unknown")
+
+
+def test_the_patronymic_predicates_still_match_abbreviations():
+    """⛔ The refusal is a SEPARATE question and must not leak into the others.
+
+    `PATRONYMIC` and `is_daughter_patronymic` answer *is this token a patronymic*, and
+    `patronymic_or_surname` and the `_MARNM` rule both depend on them still matching the
+    abbreviated forms. Only *may this string be written down as a name* is refused.
+    """
+    from namemodel import PATRONYMIC, is_daughter_patronymic
+    assert PATRONYMIC.match("Olsdtr")
+    assert is_daughter_patronymic("Ljødelsdtr.")
+
+
+def test_every_name_item_emitter_refuses_the_abbreviation():
+    """⛔ § *A GUARD IN ONE EMITTER IS NOT A GUARD* -- and it caught this one.
+
+    The guard went into `classify_fields` first; `build-name-item-batch.py` does not call it,
+    reads `namemodel.PATRONYMIC` directly and builds its own usages, so all 298 abbreviated
+    tokens were still in the plan on the re-run. The other two emitters read the plan and are
+    covered by it being clean.
+    """
+    import re
+    from pathlib import Path
+    repo = Path(__file__).resolve().parent.parent
+    batch = (repo / "scripts" / "build-name-item-batch.py").read_text(encoding="utf-8")
+    assert "is_abbreviated_patronymic" in batch, "the plan builder has no guard"
+
+    plan = repo / "reports" / "name-item-plan.csv"
+    if plan.exists():
+        import csv
+        abbrev = re.compile(r"^(.+?)s(dtr|dt|dtt|dttr|dr|d)\.?$", re.I)
+        with plan.open(encoding="utf-8") as fh:
+            bad = [r["token"] for r in csv.DictReader(fh) if abbrev.match(r["token"])]
+        assert not bad, f"abbreviated tokens planned as name items: {bad[:10]}"

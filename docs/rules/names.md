@@ -680,6 +680,48 @@ father, and the mother sharing a stem is a coincidence rather than a derivation.
 
 ### An abbreviated patronymic is EXPANDED, and `dtr` was never the only form
 
+**⛔ THE EXPANSION IS DECIDED BY THE FAMILY, NOT BY A CORPUS MAJORITY. Ruled 2026-09-15.**
+
+> *"Here is my proposed algorithm for resolving "Olsdtr" to "Olsdatter" or "Olsdotter": check the
+> mother's patronymic. If the mother has one then great, if not then check paternal grandmother,
+> if she does not have one then default to "-datter"."*
+
+    1. own name record          the person's own other NAME records -- attestation, not inference
+    2. the mother               her attested ending, via reports/derived-family.csv
+    3. the paternal grandmother mother[father[x]]
+    4. -datter                  the given default; a terminal default is what makes it total
+
+**It replaced the stem majority, which decided 93% of the rows.** `-datter` against `-dotter` is a
+fact about a family's register, Norwegian against Swedish, and a stem majority is a fact about
+every family at once: on `Andersdtr` it is `dotter` 5,172 to 3,126, a 62/38 split applied
+identically to a Norwegian woman and a Swedish one. Measured after the change — **the mother
+5,155, the default 4,670, the paternal grandmother 1,323, own name record 583**, so 55% are now
+decided by a relative, and **2,771 of 11,650 rows changed their answer**, 9 of them on people who
+already hold an item. `reports/abbreviation-resolution-changes.csv` is every one.
+
+**The father is not consulted and cannot be.** He is `-son`; a male patronymic says nothing about
+which female ending his daughter takes.
+
+**⛔ AND THE ABBREVIATION MAY ONLY EVER REACH `P1810`.** *"Feminine patronymic abbreviations like
+"Olsdtr." really should at this point be only present at all in the "subject named as" in the geni
+id."* It gets there on its own — `named_as()` takes Geni's `display_name` verbatim — so nothing
+has to allow it. Every other destination takes the expanded form or nothing, and
+`namemodel.is_abbreviated_patronymic` refuses the form outright at `classify_fields`.
+
+**298 abbreviated tokens were planned as NAME ITEMS** — `Olsdtr` 152 bearers, `Olsdtr.` 136,
+`Larsdtr.`, `Hansdtr`, `Andersdtr` — and **108 of them as `given`, 41 as `family`**, which is
+worse than the abbreviation: `Olsdtr` is not a given name in any register, so those were a parse
+failure wearing a plausible label. A name item's label IS its identity and the item is permanent.
+Now 0. § *it's better to create no name object than a bad one*.
+
+**The guard went into `classify_fields` first and `build-name-item-batch.py` does not call it** —
+it reads `namemodel.PATRONYMIC` directly and builds its own usages, so all 298 were still there on
+the re-run. § *A GUARD IN ONE EMITTER IS NOT A GUARD*, found by re-running rather than by reading.
+`is_abbreviated_patronymic` is deliberately separate from `PATRONYMIC` and
+`DAUGHTER_PATRONYMIC`, which must keep matching the abbreviations: those answer *is this a
+patronymic*, this answers *may this string be written down as a name*.
+
+
 **An abbreviation in a `mul` label is a compliance defect.** Wikidata `mul` labels take the full
 form, so `Anna Ormsd Byre` is `Anna Ormsdatter Byre`.
 

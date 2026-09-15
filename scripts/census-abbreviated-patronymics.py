@@ -19,13 +19,38 @@ person, not about the abbreviation. Measured over `reports/derived-labels.csv`: 
 So a global "always `-datter`" would be wrong several thousand times, and the worked example
 (`Rasmusdtr.` → `Rasmusdatter`) happens to be one of the stems where `-datter` wins 10:1.
 
-## Evidence per person first, population second
+## ⛔ THE RESOLUTION IS GENEALOGICAL, NOT STATISTICAL. Ruled 2026-09-15
 
-1. **The person's own other name records.** Geni gives many people several `NAME` records, and the
-   abbreviation usually appears beside a full spelling. That is this person's own evidence and it
-   outranks everything.
-2. **The stem's dominant form across the corpus**, only when the person offers nothing. Recorded in
-   the `basis` column so a row settled this way is visibly weaker than one settled by (1).
+Emma gave the algorithm outright, and it REPLACES the corpus stem majority that decided 93% of
+these rows:
+
+> *"Here is my proposed algorithm for resolving "Olsdtr" to "Olsdatter" or "Olsdotter": check the
+> mother's patronymic. If the mother has one then great, if not then check paternal grandmother,
+> if she does not have one then default to "-datter"."*
+
+**Why it beats the majority, and the numbers here are the argument against the old rule.**
+`-datter` or `-dotter` is a fact about a FAMILY's register — Norwegian against Swedish — and the
+corpus majority is a fact about a STEM across every family at once. On `Andersdtr` that majority
+is `dotter` 5,172 to 3,126: a 62/38 split applied identically to a Norwegian woman and a Swedish
+one, so it is wrong about four in ten of them and cannot be right about which. Her mother's
+attested spelling is evidence about *her* family, and a woman's mother is the person most likely
+to have been recorded in the same parish register by the same hand.
+
+**The order, and each step is weaker than the one above it:**
+
+    1. own name record          the person's own other NAME records carry the full spelling.
+                                Not inference at all -- attestation -- so it stays above her
+                                chain rather than being replaced by it.
+    2. the mother               her patronymic's ending, from `reports/derived-family.csv`.
+    3. the paternal grandmother `mother[father[x]]` -- the father's mother.
+    4. `-datter`                the given default. Not a measurement and not to be replaced by
+                                one; a terminal default is what makes the algorithm total.
+
+**`-dóttir` is taken from a relative when a relative is what attests it**, though the ruling names
+only the two Scandinavian forms. Guessed under § *while working the queue, GUESS and record it*:
+the whole force of the rule is that the family's register decides, and expanding an Icelandic
+woman's `Olsdtr.` to `Olsdatter` because her mother is `Jónsdóttir` would invert the reason for
+consulting the mother. It is never the DEFAULT — step 4 is `-datter` exactly as ruled.
 
 Nothing is guessed silently: every row carries `basis` and the counts behind it.
 
@@ -79,6 +104,77 @@ NEW_FORMS = ("sd", "sdr", "sdt", "sdtt", "sdttr")
 FULL = re.compile(r"\b(\w+?)(datter|dotter)\b", re.I)
 
 
+FAMILY = ROOT / "reports" / "derived-family.csv"
+
+#: The full female endings a RELATIVE can attest, longest first so `sdóttir` is not read as
+#: `sdotter`'s neighbour. `dochter` is deliberately absent: the Dutch `dr` family is handled by
+#: `NEW_FORMS` being skipped outright, and a Dutch relative must not decide a Scandinavian form.
+RELATIVE_ENDING = re.compile(r"s(datter|dotter|d[oó]ttir)\.?$", re.I)
+
+
+def read_parents():
+    """`(father, mother)` as two `{geni_id: geni_id}` maps.
+
+    `reports/derived-family.csv` carries one row per person with `father` and `mother` already
+    resolved, so the paternal grandmother is `mother[father[x]]` and needs no second pass.
+    Reads the gzipped copy when the plain one is absent -- § *The four big derived CSVs are
+    committed gzipped*.
+    """
+    father, mother = {}, {}
+    if FAMILY.exists():
+        fh = FAMILY.open(encoding="utf-8")
+    else:
+        import gzip
+        import io as _io
+        fh = _io.TextIOWrapper(gzip.open(str(FAMILY) + ".gz"), encoding="utf-8")
+    with fh:
+        for row in csv.DictReader(fh):
+            g = row["geni_id"]
+            if row.get("father"):
+                father[g] = row["father"]
+            if row.get("mother"):
+                mother[g] = row["mother"]
+    return father, mother
+
+
+def attested_ending(gid, own, labels_by_id):
+    """`"datter"` / `"dotter"` / `"dottir"` if this person's OWN name carries one, else `""`.
+
+    Used on a RELATIVE, never on the person being resolved -- the person being resolved is the
+    one whose spelling is abbreviated, so by definition they attest nothing here.
+    """
+    seen = list(own.get(gid, ())) + [labels_by_id.get(gid, "")]
+    for text in seen:
+        for token in (text or "").split():
+            m = RELATIVE_ENDING.search(token)
+            if m:
+                return m.group(1).lower()
+    return ""
+
+
+def from_the_family(gid, father, mother, own, labels_by_id):
+    """`(ending, basis)` per the 2026-09-15 chain: mother, then paternal grandmother.
+
+    `("", "")` when neither attests one, which is what sends the caller to the `-datter`
+    default. The father is NOT consulted and cannot be: he is `-son`, and a male patronymic
+    says nothing about which female ending his daughter takes.
+    """
+    mum = mother.get(gid)
+    if mum:
+        ending = attested_ending(mum, own, labels_by_id)
+        if ending:
+            return ending, "the mother"
+    dad = father.get(gid)
+    if dad:
+        gran = mother.get(dad)
+        if gran:
+            ending = attested_ending(gran, own, labels_by_id)
+            if ending:
+                return ending, "the paternal grandmother"
+    return "", ""
+
+
+
 def main():
     stem_full = collections.Counter()
     with LABELS.open(encoding="utf-8") as fh:
@@ -94,6 +190,15 @@ def main():
         for row in csv.DictReader(fh):
             if row.get("display_name"):
                 own[row["geni_id"]].append(row["display_name"])
+
+    # The 2026-09-15 chain needs the parents and the labels of relatives who are not
+    # themselves in this census.
+    father, mother = read_parents()
+    labels_by_id = {}
+    with LABELS.open(encoding="utf-8") as fh:
+        for row in csv.DictReader(fh):
+            labels_by_id[row["geni_id"]] = row.get("label_mul") or ""
+    print(f"{len(father):,} fathers and {len(mother):,} mothers for the family chain")
 
     rows = []
     by_basis = collections.Counter()
@@ -118,8 +223,16 @@ def main():
                 if mine:
                     suffix, basis = mine.most_common(1)[0][0], "own name record"
                 else:
+                    # ⛔ **THE FAMILY DECIDES, NOT THE STEM.** Ruled 2026-09-15; see the module
+                    # docstring. This replaces the corpus stem majority, which settled 93% of
+                    # these rows from a population statistic that knows nothing about the
+                    # person's family or parish.
+                    ending, why = from_the_family(row["geni_id"], father, mother,
+                                                  own, labels_by_id)
                     d, o = stem_full.get((low, "datter"), 0), stem_full.get((low, "dotter"), 0)
-                    if not d and not o:
+                    if ending:
+                        suffix, basis = ending, why
+                    elif not d and not o:
                         # **A NEW form with no evidence is skipped, not guessed.** The `dr`
                         # family is largely DUTCH — `Willemsdr`, `Cornelisdr`, `Jansdr`,
                         # `Bruijstensdr` — where the full form is `dochter`, and defaulting to
@@ -128,9 +241,14 @@ def main():
                         # because it predates this and is Norwegian by construction.
                         if m.group(2).lower() in NEW_FORMS:
                             continue
-                        suffix, basis = "datter", "no evidence; the worked example"
+                        suffix, basis = "datter", "the default; no family evidence"
                     else:
-                        suffix, basis = ("datter" if d >= o else "dotter"), "corpus stem majority"
+                        # **The ruled default, and the corpus counts are no longer consulted
+                        # to pick.** They stay in the CSV's two count columns as context a
+                        # reader can disagree with, but they decide nothing: a stem majority
+                        # is a fact about every family at once and this is a question about
+                        # one family.
+                        suffix, basis = "datter", "the default; no family evidence"
                 by_basis[basis] += 1
                 rows.append({
                     "geni_id": row["geni_id"], "qid": row.get("qid", ""),

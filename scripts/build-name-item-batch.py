@@ -73,7 +73,7 @@ CLASSES = REPO / "reports" / "name-classes.csv"
 RESOLUTION = REPO / "reports" / "name-resolution.csv"
 PATRONYMICS = REPO / "reports" / "patronymic-items.csv"
 
-from namemodel import PATRONYMIC                            # noqa: E402 - after sys.path
+from namemodel import PATRONYMIC, is_abbreviated_patronymic  # noqa: E402 - after sys.path
 JSON_OUT = REPO / "reports" / "wikidata-name-items.json"
 CSV_OUT = REPO / "reports" / "name-item-plan.csv"
 
@@ -192,6 +192,23 @@ def main() -> int:
             continue
         if low in PARTICLES or token in ORDINALS:
             counts["excluded: particle or ordinal"] += 1
+            continue
+        # ⛔ **AN ABBREVIATED PATRONYMIC NEVER BECOMES A NAME ITEM.** Ruled 2026-09-15:
+        # *"Feminine patronymic abbreviations like "Olsdtr." really should at this point be only
+        # present at all in the "subject named as" in the geni id."*
+        #
+        # **298 of them were planned here** -- `Olsdtr` 152 bearers, `Olsdtr.` 136, `Larsdtr.`,
+        # `Hansdtr`, `Andersdtr` -- and 149 as `patronymic`, 108 as `given`, 41 as `family`. A
+        # name item's label IS its identity and the item is permanent, so `Olsdtr` is a wrong
+        # thing other people then link to. § *it's better to create no name object than a bad
+        # one*; § *There's effectively zero cost for not creating one*.
+        #
+        # **The guard was put in `classify_fields` first and this script does not call it** --
+        # it reads `namemodel.PATRONYMIC` directly and builds its own usages. That is
+        # § *A GUARD IN ONE EMITTER IS NOT A GUARD* exactly, caught by re-running the plan and
+        # finding all 298 still there. The predicate is imported, never restated.
+        if is_abbreviated_patronymic(token):
+            counts["excluded: abbreviated patronymic"] += 1
             continue
 
         marker = patronymic_marker(token)

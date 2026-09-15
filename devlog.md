@@ -44009,3 +44009,51 @@ rather than deleted. § *A GUARD IN ONE EMITTER IS NOT A GUARD*, three emitters 
 `tests/test_nn_label_batch.py`: the test pinning the child-first order is rewritten to pin the
 current one, plus two new tests — all three emitters agree on the order, and the father is
 preferred over the mother in both that have the distinction.
+
+## 2026-09-15 — Abbreviated patronymics: the family decides, and the form never becomes a name
+
+`## Remove abbrviations` closed. Two halves, both ruled that day.
+
+**1. The expansion is genealogical, not statistical.** *"check the mother's patronymic. If the
+mother has one then great, if not then check paternal grandmother, if she does not have one then
+default to `-datter`."* This replaced the corpus stem majority, which had decided **93%** of the
+rows. `-datter` against `-dotter` is a fact about a family's register — Norwegian against Swedish
+— and a stem majority is a fact about every family at once: on `Andersdtr` it is `dotter` 5,172
+to 3,126, a 62/38 split applied identically to a Norwegian woman and a Swedish one.
+
+The chain, each step weaker than the one above: own name record (attestation, not inference) →
+the mother → the paternal grandmother `mother[father[x]]` → `-datter`. The father is not
+consulted and cannot be: he is `-son`, and a male patronymic says nothing about which female
+ending his daughter takes.
+
+After: **the mother 5,155, the default 4,670, the paternal grandmother 1,323, own name record
+583** — 55% decided by an actual relative. **2,771 of 11,650 rows changed their answer**, 9 on
+people who already hold an item; `reports/abbreviation-resolution-changes.csv` is every one.
+Spot-checked against the real relatives: `Ellen Mauritzdtr.` → `Mauritzdatter` via her mother
+`Berta Maria Torgersdatter Øren`; `Sissel Ljødelsdtr.` → `Ljødelsdotter` via `Åsa Mauitsdotter`.
+
+`-dóttir` is taken from a relative that attests it though the ruling names only two forms —
+guessed and recorded, per § *while working the queue, GUESS and record it*. It is never the
+default; step 4 is `-datter` exactly as ruled.
+
+**2. The abbreviation may only ever reach `P1810`.** It gets there on its own — `named_as()`
+takes Geni's `display_name` verbatim — so nothing had to allow it. What had to be stopped was
+everywhere else: **298 abbreviated tokens were planned as permanent NAME ITEMS**, `Olsdtr` with
+152 bearers, `Olsdtr.` with 136, and **108 of them classified `given`, 41 `family`** — worse than
+the abbreviation, since `Olsdtr` is not a given name in any register, so those rows were a parse
+failure wearing a plausible label. Now **0**, and 298 fewer creations planned.
+
+`namemodel.is_abbreviated_patronymic` is the rule, deliberately separate from `PATRONYMIC` and
+`DAUGHTER_PATRONYMIC`, which must keep matching the abbreviations — `patronymic_or_surname` and
+the `_MARNM` rule depend on it. Those answer *is this a patronymic*; this answers *may this string
+be written down as a name*.
+
+**The guard went into `classify_fields` first and that was not enough.** `build-name-item-batch.py`
+does not call it — it reads `namemodel.PATRONYMIC` directly and builds its own usages — so all 298
+were still in the plan on the re-run. § *A GUARD IN ONE EMITTER IS NOT A GUARD*, found by
+re-running rather than by reading it. All four emitters are covered now: `build-garborg-name-items`
+through `classify_fields`, `build-name-item-batch` by its own guard, `build-name-item-cjk` and
+`build-patronymic-pairs` by reading a plan that is clean.
+
+`tests/test_namemodel.py`: four tests — the predicate, the classifier refusal, the other
+predicates still matching, and the plan carrying none.

@@ -156,6 +156,55 @@ DAUGHTER_PATRONYMIC = re.compile(
     r".+?s(?:datter|dotter|d[oó]ttir|dtr|dt|dtt|dttr|dr|d)\.?$", re.I)
 
 
+#: ⛔ **AN ABBREVIATED PATRONYMIC IS NEVER A NAME OBJECT AND NEVER A LABEL.** Ruled 2026-09-15:
+#: *"Feminine patronymic abbreviations like "Olsdtr." really should at this point be only present
+#: at all in the "subject named as" in the geni id."*
+#:
+#: **`P1810` is the one place it belongs**, and it gets there on its own: `named_as()` takes
+#: Geni's `display_name` verbatim, so the abbreviated form is preserved there without anything
+#: having to allow it. Every OTHER destination -- the `mul` label, `P735`, `P734`, `P5056`, and
+#: above all a created name ITEM -- takes the expanded form or nothing.
+#:
+#: **298 abbreviated tokens were planned as name items** when this was measured over
+#: `reports/name-item-plan.csv`: `Olsdtr` with 152 bearers, `Olsdtr.` with 136, `Larsdtr.`,
+#: `Hansdtr`, `Andersdtr`. A name item is permanent and its label IS its identity, so an item
+#: called `Olsdtr` is a wrong thing that other people then link to. § *it's better to create no
+#: name object than a bad one*, and § *There's effectively zero cost for not creating one*.
+#:
+#: **108 of them were classified `given` and 41 `family`**, which is worse than the abbreviation:
+#: `Olsdtr` is not a given name in any register, so those rows were a parse failure wearing a
+#: plausible label. Refusing the FORM at `classify_fields` kills all three usages at once.
+#:
+#: This is deliberately NOT `PATRONYMIC` or `DAUGHTER_PATRONYMIC`. Those answer *is this token a
+#: patronymic* and must keep matching the abbreviations -- `patronymic_or_surname` and the
+#: `_MARNM` rule both depend on it. This answers a different question: *may this exact string be
+#: written down as a name*. One form, two questions, two predicates.
+ABBREVIATED_PATRONYMIC = re.compile(r".+?s(?:dtr|dttr|dtt|dt|dr|d)\.?$", re.I)
+
+
+def is_abbreviated_patronymic(token: str) -> bool:
+    """True for `Olsdtr`, `Olsdtr.`, `Ormsd`, `Johansdr` -- an unexpanded patronymic.
+
+    False for every full form: `Olsdatter`, `Olsdotter`, `Jónsdóttir`, `Olsen`, `Olsson`. The
+    genitive `s` is required for the same reason `is_daughter_patronymic` requires it -- without
+    it a bare `d` matches `Svend`, `Halvard` and `Hand`, which are given names.
+
+    `scripts/census-abbreviated-patronymics.py` resolves these per person; this only says that
+    the unresolved form may not be written down.
+    """
+    token = (token or "").strip()
+    if not token:
+        return False
+    if FULL_FEMALE_PATRONYMIC.search(token):
+        return False
+    return bool(ABBREVIATED_PATRONYMIC.match(token))
+
+
+#: The full forms, so an expanded token is never mistaken for an abbreviation of itself:
+#: `Olsdatter` ends in `...sd` + `atter`, and a lazy abbreviation test would match the `sd`.
+FULL_FEMALE_PATRONYMIC = re.compile(r"s(?:datter|dotter|d[oó]ttir|dochter)\.?$", re.I)
+
+
 def is_daughter_patronymic(token: str) -> bool:
     """True for `Carlsdotter`, `Ormsdatter`, `Vigfúsdóttir`, `Ljødelsdtr.`
 
@@ -1721,6 +1770,12 @@ def name_shape(token):
     if not_a_name(bare):
         return bare, "unknown"
     if is_numeral(bare):
+        return bare, "unknown"
+    # ⛔ An ABBREVIATED patronymic is refused here, ruled 2026-09-15 -- see
+    # `is_abbreviated_patronymic` for the ruling and the 298 name items it was about to mint.
+    # `unknown` rather than `patronymic`: the usage is not in doubt, but a token classified into
+    # any nameable usage becomes a name object, and the abbreviation must not become one.
+    if is_abbreviated_patronymic(bare):
         return bare, "unknown"
     # ⛔ **A TITLE IS NOT A NAME, AND THE LIST SAYING SO WAS NEVER READ FROM HERE.** `Count` is
     # in `_LEADING_TITLES` and in `NAME_SUFFIX_TITLES` -- 292 and 298 entries, both written for
