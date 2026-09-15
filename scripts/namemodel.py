@@ -1238,6 +1238,84 @@ def latin_patronymic_source(token: str, father_given: str) -> str:
     return ""
 
 
+#: ⛔ **A CONJUNCTION JOINS TWO HALVES OF ONE FAMILY NAME. IT DOES NOT SEPARATE TWO NAMES.**
+#:
+#: `Mangold von Thurgau und Nellenburg` split on whitespace and `und` became a `P734` *family
+#: name* with 8 bearers. Refusing `und` as a name -- which `NOT_NAME_WORDS` now does -- stops the
+#: junk item and does nothing for the person, who still ends up with `Thurgau` and `Nellenburg`
+#: as two unrelated surnames instead of the one he has. § *PARSE PATRONYMICS BY FORM. Never
+#: parse a name positionally* is the rule being broken, and it is broken in the SPLITTER.
+#:
+#: **Censused over `reports/display-names.csv`, 1,020,983 non-empty `SURN` fields: 10,741 are
+#: conjunction-joined.** They are not noise and they are not errors:
+#:
+#:     167  Natt och Dag                      the Swedish noble house, *Night and Day*
+#:      49  Oxenstierna af Korsholm och Wasa
+#:      43  Durán y Chávez                    43  Reuß zu Weida
+#:      40  Lillieheök af Gälared och Kolbäck  29  de Castilla y León
+#:      22  Riedesel zu Eisenbach             20  von Thurn und Valsassina
+#:      19  von Regenstein und Blankenburg    17  von und zu Daun
+#:      15  Grant of Freuchie                 14  de Thoire et Villars
+#:      14  Fernández de Córdoba y Enríquez de Ribera
+#:
+#: **The connector must have a name on BOTH sides.** That is what separates `Natt och Dag` from
+#: a trailing `och` naming nobody, and it is the same letter-on-each-side shape the punctuation
+#: rule uses for the hyphen and the apostrophe. A leading or trailing connector is left exactly
+#: where it is, to be refused by `NOT_NAME_WORDS` as before.
+#:
+#: **This runs on `SURN` only.** `und` also occurs 9 times in `GIVN`, but a given-name field is
+#: a list of given names and joining across it would fuse two real forenames. The compound is a
+#: property of a family name.
+#: `af`/`av` are here for the same reason `of` and `zu` are: in `Oxenstierna af Korsholm och
+#: Wasa` (49) and `Lillieheök af Gälared och Kolbäck` (40) the territorial particle is INSIDE
+#: the family name, not a prefix to be dropped off the front of it. They join only between two
+#: names, so a two-token `af Sweden` is untouched and `af` stays the particle it is there.
+SURN_CONNECTORS = frozenset("""
+    und and et ou och og oder y e of zu af av
+""".split())
+
+
+def _unwrap_surn(field: str) -> str:
+    """A `SURN` that is ENTIRELY one bracketed span, unwrapped; anything else unchanged.
+
+    `(Ulf af Horsnäs)` is the family name `Ulf af Horsnäs` written in brackets. Split on
+    whitespace first and it becomes `(Ulf`, `af`, `Horsnäs)` -- and `(Ulf` was a `P734` with 5
+    bearers, Christer, Johan, Erik, Johan and Märta Gudmundsson of Horsnäs among them.
+    3,471 of 1,020,983 `SURN` fields carry a bracket.
+
+    **Only the whole-field case.** `Høeg (Banner)` and `Janse(n) van Rensburg` are a different
+    question -- is the bracketed part a variant, a second family, or an optional letter -- and
+    answering it here would be inventing a naming rule in the splitter. Left alone.
+    """
+    f = (field or "").strip()
+    for opener, closer in (("(", ")"), ("[", "]")):
+        if f.startswith(opener) and f.endswith(closer) and closer not in f[1:-1]:
+            return f[1:-1].strip()
+    return f
+
+
+def join_compound_surname(tokens: list[str]) -> list[str]:
+    """`['Natt', 'och', 'Dag']` -> `['Natt och Dag']` -- one family name, not two plus a word.
+
+    Joins greedily, so `Korsholm och Wasa` and a chain like `A y B y C` each come out whole.
+    """
+    if len(tokens) < 3:
+        return list(tokens)
+    out: list[str] = []
+    i = 0
+    while i < len(tokens):
+        j = i
+        # extend while the NEXT token is a connector with something after it
+        while (j + 2 < len(tokens) + 0
+               and j + 1 < len(tokens)
+               and tokens[j + 1].strip(".,").casefold() in SURN_CONNECTORS
+               and j + 2 < len(tokens)):
+            j += 2
+        out.append(" ".join(tokens[i:j + 1]))
+        i = j + 1
+    return out
+
+
 def join_particles(tokens: list[str]) -> list[str]:
     """`['ap', 'Thomas']` -> `['ap Thomas']`, so a particle patronymic is ONE token.
 
@@ -1411,9 +1489,24 @@ def not_a_name(token: str) -> bool:
     surname that got cut in half: `Chavez-`, `Rodriguez-`, `Romo-`, `De-`, `Nord-` (15, 12, 9,
     6+6, 12 bearers). An item labelled `Chavez-` is worse than no item.
     """
-    t = unicodedata.normalize("NFC", token or "")
+    t = unicodedata.normalize("NFC", token or "").strip()
     if not t:
         return True
+    # ⛔ **A TOKEN HERE CAN LEGITIMATELY BE SEVERAL WORDS, AND THIS RULE NEARLY KILLED THEM.**
+    # `join_particles` has produced multi-word tokens since it was written -- `ben Phinhas`,
+    # `bin Haji Muhammad`, `ap Thomas`, which is `name modelling.txt`'s own worked example --
+    # and `join_compound_surname` now adds `Natt och Dag`. The first version of this rule walked
+    # characters and refused the space, so every one of them came back `unknown`: the patronymic
+    # chain the joiner exists to preserve, silently dropped. Caught 2026-09-14 the same hour it
+    # shipped, by running the joiner's own examples through `classify_fields`.
+    #
+    # Each word is judged on its own and the whole is a name only if every part is. That keeps
+    # the rule exactly as strict per word while letting a joined token through.
+    parts = t.split()
+    if len(parts) > 1:
+        if all(part.casefold() in NOT_NAME_WORDS for part in parts):
+            return True                              # `und und` names nobody
+        return any(not_a_name(part) for part in parts)
     for i, ch in enumerate(t):
         # A COMBINING MARK IS PART OF THE LETTER IT SITS ON, and NFC does not always fold it in.
         # Latin and Cyrillic compose, so `A`+ring really does become `Å` -- but Arabic harakat
@@ -1442,6 +1535,15 @@ def not_a_name(token: str) -> bool:
 #:     conjunctions or 185+19   und 111+9    ou 106+12  and 66+29  et 28+6  og 17  och 5
 #:     alias marks  dit 102+18  dite 43      aka 42     alias 17  born 10  known 8  nee 5
 #:
+#: ⛔ **`il` IS NOT HERE, AND THE CORPUS IS WHY.** It was, for about an hour on 2026-09-14, and
+#: `test_the_roman_rule_is_the_ordinal_SEQUENCE_and_not_the_alphabet` caught it -- *"'il' lost
+#: its name item"*. That test guards a count already recorded a few lines below `ROMAN_ORDINAL`:
+#: `il` occurs **1,208** times as a real word in this corpus, beside `di` 21,960 and `Li` 1,047.
+#: A word that is an article in one language is a name in another, and the corpus is the
+#: arbiter, not the grammar. The same reasoning keeps `e` and `y` out of the refusals while
+#: leaving them in `SURN_CONNECTORS`, where they are read POSITIONALLY -- between two names --
+#: rather than refused wherever they appear.
+#:
 #: `los` and `las` belong in `PARTICLES` on the merits -- `de los Santos`, `de las Casas` -- but
 #: they are NOT added there, because `PARTICLES` is read when labels are built and this rule is
 #: about what gets an object made about it. Same scope as every other rule in this group.
@@ -1450,7 +1552,7 @@ _TITLE_TOKENS = frozenset(t.casefold() for t in (set(_LEADING_TITLES) | set(NAME
 
 NOT_NAME_WORDS = frozenset("""
     und and et ou och og oder eller or
-    the der die das den dem el la le lo los las les il
+    the der die das den dem el la le lo los las les
     aka alias dit dite genannt called known nee born
 """.split())
 
@@ -1511,6 +1613,15 @@ def name_shape(token):
     # `HaLevi`, `HaKohen` and `Rurikid` read as family names to some eyes. They are in the title
     # vocabulary, which is this repo's standing judgement about them, and one vocabulary
     # answering one question is the point -- a second opinion here is how `Count` survived.
+    # ⛔ **A PARTICLE STAYS A PARTICLE.** `PARTICLES` is consulted before both refusal lists,
+    # not after. `von` is in `_LEADING_TITLES` -- reasonably, it is a nobiliary particle -- and
+    # wiring that list in here reclassified it from `particle` to `unknown` across **125,328**
+    # occurrences. Both are terminal and neither mints a name item, so nothing reached Wikidata;
+    # but `particle` is what it IS, callers read the difference, and a refusal list quietly
+    # eating the most common particle in the corpus is not a thing to leave standing. Caught by
+    # diffing `name_shape` against `17a2d571~1` while doing the splitter, 2026-09-14.
+    if low in PARTICLES:
+        return bare, "particle"
     if low in _TITLE_TOKENS or low in NOT_NAME_WORDS:
         return bare, "unknown"
     # **⛔ ONE MARKER VOCABULARY, AND `scripts/labels` OWNS IT.** `CLAUDE.md` § *An obvious
@@ -2039,7 +2150,17 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # `SURN` is data, not the last whitespace token of anything. It can still hold a
     # patronym -- `name modelling.txt`: *"We have to check in the given names and in
     # the surname whether it is a patronym"* -- so the same test runs on it.
-    for raw in join_particles([t for t in re.split(r"\s+", (surn or "").strip()) if t]):
+    # ⛔ **THE FIELD IS READ AS A WHOLE BEFORE IT IS CUT UP.** Two passes, both added
+    # 2026-09-14 for the defect that produced the `und` and `(Ulf` name items:
+    #   * `_unwrap_surn` -- a field that is ENTIRELY one bracketed span is that span.
+    #     `(Ulf af Horsnäs)` is a family name in brackets, not an open bracket followed by
+    #     two words, and splitting it first produced the token `(Ulf` with 5 bearers.
+    #   * `join_compound_surname` -- a connector with a name on each side joins them.
+    # Only then whitespace-split and `join_particles`, which is unchanged.
+    surn_field = _unwrap_surn(surn or "")
+    surn_tokens = join_compound_surname(
+        [t for t in re.split(r"\s+", surn_field.strip()) if t])
+    for raw in join_particles(surn_tokens):
         token, shape = name_shape(raw)
         if shape:
             out.append((token, shape, 0))

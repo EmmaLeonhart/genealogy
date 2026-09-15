@@ -830,6 +830,78 @@ def test_the_only_punctuation_in_a_name_is_a_hyphen():
         assert namemodel.name_shape(junk)[1] == "unknown", f"{junk!r} would get a name item"
 
 
+def test_a_conjunction_joins_one_family_name_rather_than_separating_two():
+    """`Mangold von Thurgau und Nellenburg` is ONE family name, and `und` is not a surname.
+
+    Refusing `und` stops the junk item and does nothing for the man, who still ends up with
+    `Thurgau` and `Nellenburg` as two unrelated surnames instead of the one he has. Censused
+    over `reports/display-names.csv`: **10,741 of 1,020,983 non-empty `SURN` fields are
+    conjunction-joined**, and they are real houses -- `Natt och Dag` 167, `Oxenstierna af
+    Korsholm och Wasa` 49, `Durán y Chávez` 43, `de Castilla y León` 29.
+    """
+    def families(surn):
+        return [t for t, usage, _o in namemodel.classify_fields(givn="X", surn=surn)
+                if usage == "family"]
+
+    assert families("von Thurgau und Nellenburg") == ["Thurgau und Nellenburg"]
+    assert families("Natt och Dag") == ["Natt och Dag"]
+    assert families("Durán y Chávez") == ["Durán y Chávez"]
+    assert families("Grant of Freuchie") == ["Grant of Freuchie"]
+    assert families("Oxenstierna af Korsholm och Wasa") == ["Oxenstierna af Korsholm och Wasa"]
+    # a connector needs a name on BOTH sides; a trailing one joins nothing
+    assert families("Natt och") == ["Natt"]
+    assert families("af Sweden") == ["Sweden"]
+
+
+def test_a_surn_that_is_entirely_bracketed_is_the_name_inside_the_brackets():
+    """`(Ulf af Horsnäs)` is a family name in brackets, not `(Ulf` plus two words.
+
+    `(Ulf` was a `P734` with five bearers -- Christer, Johan, Erik, Johan and Märta -- because
+    the field was whitespace-split before anything looked at it. 3,471 `SURN` fields carry a
+    bracket. Only the whole-field case is unwrapped: `Høeg (Banner)` asks whether the bracketed
+    half is a variant or a second family, and that is a naming question, not a splitting one.
+    """
+    def families(surn):
+        return [t for t, usage, _o in namemodel.classify_fields(givn="X", surn=surn)
+                if usage == "family"]
+
+    assert families("(Ulf af Horsnäs)") == ["Ulf af Horsnäs"]
+    assert families("Høeg (Banner)") == ["Høeg", "Banner"]     # left alone, deliberately
+
+    # the brackets come off whatever the content turns out to BE: `Sigurðarson` unwraps and is
+    # then read by form, which makes it a patronymic and not a family name at all.
+    assert ("Sigurðarson", "patronymic", 0) in namemodel.classify_fields(
+        givn="X", surn="[Sigurðarson]")
+
+
+def test_a_joined_token_is_several_words_and_that_is_allowed():
+    """The punctuation rule walked characters and refused the space, for about an hour.
+
+    `join_particles` has produced multi-word tokens since it was written, and
+    `name modelling.txt`'s own worked example is one: `Abisha III ben Phinhas ben Yittzhaq`,
+    one `P5056` per link. Refusing the space turned every one of them into `unknown` -- the
+    patronymic chain the joiner exists to preserve, dropped silently.
+    """
+    for joined in ("ben Phinhas", "ap Thomas", "bin Haji Muhammad", "Natt och Dag"):
+        assert namemodel.name_shape(joined)[1] != "unknown", f"{joined!r} lost to the space"
+    got = namemodel.classify_fields(givn="Abisha", surn="ben Phinhas")
+    assert ("ben Phinhas", "patronymic", 0) in got
+    # but a compound of nothing but non-name words still names nobody
+    assert namemodel.name_shape("und und")[1] == "unknown"
+
+
+def test_a_particle_stays_a_particle():
+    """`von` is in `_LEADING_TITLES`, and wiring that list into `name_shape` reclassified it.
+
+    125,328 occurrences moved from `particle` to `unknown`. Both are terminal and neither mints
+    a name item, so nothing reached Wikidata -- but `particle` is what it is, and a refusal list
+    swallowing the corpus's commonest particle is not a thing to leave standing. `PARTICLES` is
+    consulted before both refusal lists.
+    """
+    for particle in ("von", "de", "van", "af", "di", "ben"):
+        assert namemodel.name_shape(particle)[1] == "particle", particle
+
+
 def test_a_title_is_not_a_name_and_the_title_list_is_actually_read():
     """`Count` is in `_LEADING_TITLES` AND in `NAME_SUFFIX_TITLES` and had 226 bearers.
 

@@ -27,20 +27,6 @@ tiny path GEDCOMs, 773 isolates reached.
 ⛔ **PACE IT.** 500+ back-to-back census reads got the account CAPTCHAd on 2026-09-12. The stagger
 is the extension's, never a sleep in the agent.
 
-### ⛔ THE SPLITTER PARSES NAMES POSITIONALLY, AND THAT IS THE REMAINING HALF
-
-`und` and `(Ulf` came from `Mangold von Thurgau und Nellenburg` and `(Ulf af Horsnäs)` being
-**split on whitespace and the pieces treated as names** — § *PARSE PATRONYMICS BY FORM. Never
-parse a name positionally*.
-
-`NOT_NAME_WORDS` and the punctuation rule now refuse the pieces, and **that is a guard, not a
-fix**: the surname `von Thurgau und Nellenburg` is still not being read as one name, it is being
-read as four tokens of which two are now silently dropped. The people keep losing their real
-family name either way.
-
-Find what splits `SURN`, and make it read a parenthetical and a conjunction-joined compound as
-one unit before tokenising. 854 tokens in `reports/name-item-plan.csv` carry the evidence.
-
 ### ⛔ WIKIDATA EDITING IS HELD. Ruled 2026-09-13, and it is a STOP ORDER, not a date.
 
 *"you had no business having any submissions going through until everything was done. That's why

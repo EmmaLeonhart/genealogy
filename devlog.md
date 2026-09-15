@@ -16,6 +16,55 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — the splitter reads a compound surname as one name
+
+`und` and `(Ulf` became `P734` *family name* items because `classify_fields` whitespace-split
+`SURN` and read the pieces. Refusing the pieces was a guard; this is the fix. § *PARSE
+PATRONYMICS BY FORM. Never parse a name positionally*.
+
+**Censused first, over `reports/display-names.csv`** — 1,020,983 non-empty `SURN` fields:
+
+    10,741  conjunction-joined     Natt och Dag 167 · Oxenstierna af Korsholm och Wasa 49
+                                   Durán y Chávez 43 · de Castilla y León 29
+                                   von Thurn und Valsassina 20 · Grant of Freuchie 15
+     3,471  carrying a bracket     (Ulf af Horsnäs) · Høeg (Banner) · Janse(n) van Rensburg
+
+`Natt och Dag` is a Swedish noble house — *Night and Day* — and it was being stored as two
+unrelated surnames plus a refused word.
+
+Two passes now run before the field is cut up. `_unwrap_surn` takes the brackets off a field
+that is ENTIRELY one bracketed span, so `(Ulf af Horsnäs)` is the name inside them.
+`join_compound_surname` joins across a connector that has a name on **both** sides — the same
+letter-on-each-side discipline the punctuation rule uses for the hyphen. `af`/`av` are
+connectors beside `of` and `zu`, because in `Oxenstierna af Korsholm och Wasa` the territorial
+particle is inside the name, not a prefix to drop.
+
+`Høeg (Banner)` is deliberately left alone: whether a bracketed half is a variant, a second
+family or an optional letter is a naming question, and answering it in the splitter is how the
+last two defects happened.
+
+**Three bugs of my own, found by diffing `name_shape` against `17a2d571~1` over all 23,196 plan
+tokens rather than by reasoning about the change:**
+
+* **The punctuation rule refused the SPACE**, so every multi-word token came back `unknown` —
+  `ben Phinhas`, `ap Thomas`, `bin Haji Muhammad`. That is `name modelling.txt`'s own worked
+  example and the entire reason `join_particles` exists, and it had been broken since that rule
+  shipped a few hours earlier. Each word is now judged separately and the whole passes only if
+  every part does.
+* **`von` moved from `particle` to `unknown`** across 125,328 occurrences, because `von` is in
+  `_LEADING_TITLES` and wiring that list in put it ahead of `PARTICLES`. Nothing reached
+  Wikidata — both are terminal — but `PARTICLES` is now consulted first.
+* **`il` was refused**, and `test_the_roman_rule_is_the_ordinal_SEQUENCE_and_not_the_alphabet`
+  caught it. `il` occurs 1,208 times as a real word in this corpus beside `di` 21,960 and `Li`
+  1,047. A word that is an article in one language is a name in another; the corpus decides.
+
+Final diff over the plan: 808 tokens `None` → `unknown`, 5 `particle` → `unknown` (`St.`, `D.`,
+`d.` — abbreviations with a trailing period, which the punctuation ruling refuses), and **nothing
+widened**.
+
+`reports/bad-name-items-sample.qs` moved to `reports/samples/` — it is Emma's evidence of bad
+output and `tests/test_p2600_batches.py` globs `reports/*.qs`, so it was being linted as a batch.
+
 ## 2026-09-14 — the eleven CI failures, fixed; verification deferred to a 20:30 reassessment
 
 `main` had been red every day since at least 2026-09-10 — **11 failed, 1627 passed** on both 3.10
