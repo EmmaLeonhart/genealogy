@@ -107,6 +107,124 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
+## ⛔ THE PATH TAIL — I DROPPED IT, AND IT HAS TO COME BACK. Ruled 2026-09-15
+
+*"it's clear that the path stuff was dropped. It's clear that the path tail was just dropped by
+you, and it needs to be brought back."*
+
+**What the path tail IS.** Every relationship path Geni returns is a chain of steps, and each step
+carries a relation word — *his father*, *her mother*, *his son*. Counted over
+`reports/path-chains.tsv` there are **40 distinct relation strings**, and six of them are almost
+all of the volume (`his father` 16,848, `his mother` 11,345, `her father` 10,704, `his son` 9,789,
+`her mother` 7,275, `her daughter` 4,553). **The TAIL is everything below those six:**
+
+    726  her adoptive mother       15  his child            4  her fiancé
+     18  her ex-husband            14  his partner          3  her child
+     15  your relative?            10  his/her parent       3  his ex-wife
+     29  his adopted son            8  his adoptive father  2  her ex-partner
+
+**Why the tail matters more than its size suggests.** A relation we have never seen written in a
+real Geni export has **no attested representation**, and § *no guessing on the representations*
+forbids composing one. So each tail relation has to be learned from a `Forest` export centred on
+somebody who actually has it — that is the whole reason the export item exists.
+
+**What I did to it, plainly.** Working `## Tiny GEDCOMs` I implemented the common cases, and then
+for `step-parent`/`step-child` I searched the corpus for a `PEDI step` value, found none, and
+**wrote them off as having no attested representation**. That was inventing a tag and treating its
+absence as evidence. Corrected 2026-09-15 after Emma pointed at the family object: a step-parent is
+the other spouse of a parent, in a separate `FAM`, with the child not a `CHIL` of it — read off
+`exports/isolate-exports/export-Forest-6000000227738818838.ged` (Bach). Now emitted, and `P3448`
+*stepparent* goes to Wikidata too.
+
+**⛔ STILL DROPPED AND STILL OWED:**
+
+* **`fiancé` / `fiancée`, 8 rows.** `ENGA` occurs **zero** times in the corpus. Currently emitted
+  as a couple with no marriage event, which is a guess. Needs a `Forest` on one of them.
+* **`your relative?`, 15 rows.** Geni itself is not naming the relation. Only a `Forest` on those
+  people shows what the link is.
+* **`his/her parent`, `his/her son`, `his/her father`** — the sexless forms, ~30 rows. They make
+  the edge but assert nothing about which slot, which may or may not be right.
+
+**⛔ AND THE HARVEST ITSELF IS BEHIND.** 94 `path-chains-NNN.tsv` files sit in `Downloads` and
+`reports/geni-paths-harvest.tsv` holds 6,946 rows. Requesting paths and **putting them in the
+repo** are two halves of the loop and only the first half has been running. Ruled 2026-09-15:
+*"the only thing that these sessions ever do is just automated grunge work of requesting paths and
+putting them into the repo and possibly doing descendant campaigns."*
+
+## ⛔ RULINGS FROM 2026-09-15 — read these before working anything above
+
+**⛔ DO NOT MEASURE THE VOLUME BEFORE DOING A SMALL THING.** *"don't measure the volume. We don't
+need to measure the volume, and you measuring the volume is just going to waste time and cause
+stress."* A census is for a question somebody asked, not a warm-up before every change.
+
+**⛔ STOP GUESSING CONSERVATIVELY.** *"generally speaking, for most of your guesses, you've tended
+to always guess the more conservative thing that I don't really fucking care about."* The Dutch
+patronymics are the worked example: 90 occurrences, refused as too small, and the ruling was
+*"under 100 total, do it."* When the choice is do-it or leave-it, do it.
+
+**⛔ PATRONYMICS ARE DECIDED FROM THE FAMILY TREE, NOT FROM THE FORM.** *"patronymics are actually
+extremely difficult to get wrong if you actually audit them ... I've been constantly telling you
+that we have to be doing modeling based upon the family tree ... you just kind of never did it."*
+`Eric` is a patronymic only if the father is `Er`, and he never is; `Nemanjić` is one because the
+father is `Nemanja`. Refusing a whole family because its FORM is ambiguous is the error — 160 real
+Slavic patronymics were being thrown away that way.
+
+**⛔ A FUTURE `last_attempted` IS A DELIBERATE PARK, NOT CORRUPTION.** `park-cbdb-attempts.py`
+writes `2026-10-31` on every CBDB person on purpose, because those profiles cannot be edited.
+A previous version of `build-unconnected-worklist.load_previous` reset every future date to
+`SEED_NEVER` and wiped all 41,212. Restored and re-parked 2026-09-15. *"If it's a stable two
+months into the future, for some reason, just keep it."*
+
+**⛔ DO NOT PANIC ABOUT ITEMS WE GOT WRONG.** *"it kind of sucks that we got some stuff wrong. It
+would be nice if we make stuff self-healing, but don't fucking panic about it. These things can be
+healed by other people."*
+
+**⛔ TESTS DO NOT COUNT UNTIL THE QUEUE IS FINISHED.** *"literally test passing doesn't count, that
+doesn't matter."* Do not dispatch CI, do not wait on it, do not report on it.
+
+**⛔ THE FIRST THING IN A SESSION IS TURNING ON THE RELATIONSHIP REQUESTING**, and every even hour
+at :45 the requested paths become TSVs in the repo. Both are in `CLAUDE.md`.
+
+**⛔ `Q320139` ZERUBBABEL TAKES NO `mul` LABEL OR ALIAS** until 2027-09-15. `MUL_BLOCKED` in
+`build-garborg-day.py`. The lapse is silent and that is intentional.
+
+**⛔ `Q70899` ADAM HAS TWO GENI IDS ON PURPOSE.** `6000000201847373856` is qualified `P2868`
+*subject has role* `Q2001710` **Adam in Islam**. Biblical figures accumulate profiles because Geni
+disconnects them. We hold one profile; that one IS the profile and the other is never a conflict.
+
+**CJK FROM THE PARTS OF A `mul` LABEL IS ON HOLD.** *"probably we put a lot of the CJK from parts
+on hold generally. Because I don't think it's worth it."* The investigation is
+`docs/cjk-from-name-parts.md`; do not build it.
+
+## Owed explanations, 2026-09-15
+
+Two answers Emma asked for and did not get:
+
+* **Why the relationship-source backfill is stricter than the `P1810` one.** `S2600` means *Geni
+  states this*. `P1810` copies a name Geni already gave, so it cannot be false. A source on a
+  relationship Geni does not record WOULD be false, and it renders as a tidy Geni link either way,
+  so nobody can see it is wrong. That is why every line is checked against `derived-family.csv`
+  first.
+* **What `ADJACENT_FLOOR` is.** The universe grows by editing its neighbours, and the pass queried
+  our own 4,430 items before the neighbours — so the 60-a-day quota filled before a single
+  neighbour was ever reached, and all four emitted files contained **zero**. The floor reserves 10
+  neighbours per run so "our own items first" cannot mean "our own items only".
+
+## Edit the abbreviations out of the GEDCOM data itself
+
+Ruled 2026-09-15, and NOT what was done: *"you're supposed to fucking change the data so that it
+doesn't do it ... you are literally supposed to edit the gedcom files to replace all instances of
+the abbreviated form with the non-abbreviated forms."*
+
+What was done instead was refusing `Olsdtr` as a name ITEM and expanding it at emission.
+`reports/abbreviated-patronymics.csv` already holds the resolved form for 11,731 tokens, decided
+per person from the mother and paternal grandmother. This item is applying that to the `.ged`
+files.
+
+⛔ `CLAUDE.md` § *Never overwrite an existing `.ged`* stands against this and has to be settled
+first — the instruction is explicit, the rule is explicit, and they disagree.
+
+
 ## ⛔ GET CI GREEN — IMMEDIATELY BEFORE LIFTING THE HOLD, AND NOT BEFORE THEN
 
 Ruled 2026-09-14: *"put it as the queue item before actually running the cicd proper"*. Not a
