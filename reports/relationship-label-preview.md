@@ -9,8 +9,8 @@ Both populations were asked for before deciding whether the generated label runs
 | | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
 | people | 171,374 | 8,257 |
-| a label can be generated | **158,320** (92%) | **7,025** (85%) |
-| no relative with a real name | 13,054 | 1,232 |
+| a label can be generated | **158,322** (92%) | **7,025** (85%) |
+| no relative with a real name | 13,052 | 1,232 |
 
 ## Which relative ends up naming them
 
@@ -18,7 +18,7 @@ Both populations were asked for before deciding whether the generated label runs
 | --- | ---: | ---: |
 | father | 74,890 | 4,628 |
 | mother | 17,473 | 208 |
-| spouse | 16,913 | 1,515 |
+| spouse | 16,915 | 1,515 |
 | child | 3,256 | 180 |
 
 ## The rules applied here, and what they cost
@@ -28,7 +28,7 @@ Both of these were ruled on 2026-08-15 after seeing the first version of this pr
 1. **A redacted or placeholder relative is skipped**, and the precedence falls through to the next one — *"skip, fall through to the next relative"*. The first version put the marker into somebody else's label: *"husband of `<private>` Gaya Pereira"*, 2,730 times. Now **0** do. 832 people had a relative skipped and **757 of them (90%) still get a label** from a later relative. That is a minority: for the rest the skipped relative was the only one with a real name, so the skip costs the label outright. Every spouse and child is tried rather than only the first, which is what recovers the share that is recovered.
 2. **A surname that is itself placeholder vocabulary collapses to bare `NN`** — `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people moved from the surname population to the bare one, which is why the two totals here differ from the first version.
 
-1,472 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
+1,474 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
 
 
 ## Bare `NN` — what it would say
