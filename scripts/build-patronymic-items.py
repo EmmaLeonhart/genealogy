@@ -218,6 +218,14 @@ def main():
             # languages. The source is the father's own given name, exactly as above.
             if not nm.PATRONYMIC.match(tok):
                 src = nm.latin_patronymic_source(tok, dad_given)
+                # **The bare Slavic `-ić` takes the same branch and for the same reason.**
+                # `PATRONYMIC` cannot match it -- the form collides with `Eric`, `Henric`,
+                # `Fredric` -- so the FATHER decides instead, exactly as he does for `Olai`.
+                # 160 real ones the form alone was discarding: `Radoslavić` 23, `Nemanjić` 8,
+                # `Ostojić` 6. Ruled 2026-09-15: *"we have to be doing modeling based upon the
+                # family tree to figure out what is and is not a patronymic."*
+                if not src:
+                    src = nm.patronymic_by_father(tok, dad_given)
                 if src:
                     bearers[tok.casefold()] += 1
                     sources[tok.casefold()][src] += 1

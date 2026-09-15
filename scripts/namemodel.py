@@ -113,7 +113,7 @@ PATRONYMIC = re.compile(
     r"d[oó]ttir|"                              # Icelandic
     r"s(?:dtr|d|dr|dt|dtt|dttr)|"              # the abbreviations, genitive kept
     r"npoika|ntyt[äa]r|"                      # Finnish, genitive n -- see FINNISH_PATRONYMIC
-    r"[oe]vich|[oe]vna|ovi[cć]|wicz"           # Slavic
+    r"[oe]vich|[oe]vna|[oe]vi[cć]|wicz"        # Slavic -- see the note on -ević below
     r")\.?$", re.I)
 
 #: **A standalone token that makes the NEXT token a patronymic.** These are the named forms
@@ -208,6 +208,59 @@ def is_abbreviated_patronymic(token: str) -> bool:
 #: The full forms, so an expanded token is never mistaken for an abbreviation of itself:
 #: `Olsdatter` ends in `...sd` + `atter`, and a lazy abbreviation test would match the `sd`.
 FULL_FEMALE_PATRONYMIC = re.compile(r"s(?:datter|dotter|d[oó]ttir|dochter)\.?$", re.I)
+
+
+#: ⛔ **A FORM THE FATHER HAS TO DECIDE, AND THE TREE IS WHAT DECIDES IT.** Ruled 2026-09-15:
+#: *"patronymics are actually extremely difficult to get wrong if you actually audit them ... we
+#: have to be doing modeling based upon the family tree to figure out what is and is not a
+#: patronymic, you just kind of never did it."*
+#:
+#: **Bare `-ić` cannot go in `PATRONYMIC`**, because `.+?i[cć]$` also matches `Eric` 1,864,
+#: `Henric` 1,205, `Fredric` 748, `Ulric` 129 and `Frédéric` — given names, not patronymics.
+#: That collision was used once as a reason to refuse the whole Slavic family, and **that was the
+#: mistake**: the form is ambiguous, the FATHER is not. `Eric` is a patronymic only if the father
+#: is `Er`, and he never is; `Nemanjić` is one because the father is `Nemanja`.
+#:
+#: **Measured over the corpus, with the stem required to BE the father's given name:** 282 real
+#: Slavic patronymics, of which `PATRONYMIC` already caught 122 and **160 were missed** —
+#: `Radoslavić` 23, `Nemanjić` 8, `Ostojić` 6, `Nikšić` 5, `Wojsławic` 5. Not one of `Eric`,
+#: `Henric`, `Fredric` or `Ulric` passes, because no father attests them.
+#:
+#: **Greek `-ides` and Hungarian `-fi` are measured and stay out**, and now for a reason rather
+#: than a worry: under the same father test Greek yields **3** (`Vlostides`, `Samborides`) and
+#: Hungarian **0** — `Al-Thaqafi`, `Al-Hanafi` and `Ridolfi` are all correctly refused. A family
+#: that the tree attests three times is § *A small component is IGNORED*.
+FATHER_GATED_PATRONYMIC = re.compile(r".+?i[cć]$", re.I)
+
+#: A Slavic patronymic drops the father's final vowel: `Nemanja` + `ić`, `Zavida` + `ović`.
+_SLAVIC_FINAL_VOWEL = "aeiouáéíóúåäöæøеиоа"
+
+
+def patronymic_by_father(token: str, father_given: str) -> str:
+    """The father's given name a bare `-ić` derives from, or `""`.
+
+    Returns the NAME rather than a boolean for the same reason `latin_patronymic_source` does:
+    the caller needs the source to record what attested the patronymic, and truthiness still
+    works for the callers that only ask whether it is one.
+
+    The one test, and it is the tree rather than the form: strip the suffix, and the remainder
+    must be the father's given name, allowing only a dropped final vowel (`Nemanja` -> `Nemanj`).
+    Anything looser re-admits `Eric` against a father called `Erik`, which is the false positive
+    this exists to refuse.
+    """
+    m = FATHER_GATED_PATRONYMIC.match(token or "")
+    if not m or not father_given:
+        return ""
+    stem = token[:len(token) - 2].casefold()          # drop the final `ić`/`ic`
+    if not stem:
+        return ""
+    for given in str(father_given).split():
+        g = given.casefold()
+        if g == stem:
+            return given
+        if len(g) > 1 and g[-1] in _SLAVIC_FINAL_VOWEL and g[:-1] == stem:
+            return given
+    return ""
 
 
 def is_daughter_patronymic(token: str) -> bool:
@@ -2153,6 +2206,12 @@ def patronymic_or_surname(token: str, father_name: str, also_known_as: str = "")
     `Johannes Benedicti` (also `Hans`), `Cnut Sweynsson` of `Svend Haraldssøn` (also `Sweyn`).
     """
     if not father_name:
+        return "patronymic"
+    # ⛔ **THE BARE `-ić` IS DECIDED HERE AND NOWHERE ELSE.** `PATRONYMIC` cannot match it -- the
+    # form collides with `Eric`, `Henric`, `Fredric` -- so `FATHER_GATED_PATRONYMIC` is answered
+    # by the tree instead: the stem must BE the father's given name. 160 real Slavic patronymics
+    # that the form alone was throwing away; see `patronymic_by_father`.
+    if patronymic_by_father(token, father_name):
         return "patronymic"
     parts = [t for t in re.split(r"\s+", father_name.strip()) if t]
     fathers_patronymics = {t.casefold() for t in parts if is_patronymic(t)}
