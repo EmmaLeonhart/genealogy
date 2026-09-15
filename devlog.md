@@ -16,6 +16,42 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — the daily batch splits in two, and the halves are disjoint by construction
+
+*"Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements
+on the github page too."*
+
+**Disjoint was the hard word.** The Pages site published the whole daily batch, and the schedule
+was about to start sending part of it — so anyone pasting the page would re-send what the runner
+had already done. Duplicate statements are mostly harmless; **a duplicate `CREATE` mints a second
+item for somebody who now exists**, which is the one failure in this design that running it
+correctly next time does not undo.
+
+`scripts/split-daily-batch.py` writes both halves, and that is the point: the split is computed
+ONCE rather than as a fraction applied in two places. A `--fraction` on the runner plus its
+complement in the page builder would agree only while the arithmetic, the file and the ordering
+stayed identical in three places — the exact shape of every drift bug hit today: two copies of
+the start date, a clan gate in one emitter, an inventory nothing regenerated.
+
+    reports/wikidata-garborg-day-auto.txt     what the schedule sends  (DAILY_BATCH)
+    reports/wikidata-garborg-day-manual.txt   what Pages publishes     (index.html)
+
+Today: **244 edits → 82 automatic, 162 for the page. Overlap zero**, checked by comparing the
+parsed edit objects rather than by trusting the arithmetic. 41 creates automatic, 47 manual.
+
+⛔ **A `CREATE` BLOCK IS NOT ONE LINE, and the first attempt proved it.** Grouping ended a block
+at the first line not starting with `LAST` — which cut the bearer lines away, because
+`Q141451028 P5056 LAST` starts with `Q`. Parsed alone that is *"LAST as a value with no CREATE
+above it"*, and had it not raised, the tail would have bound to whatever `CREATE` preceded it in
+the other half: one person's name silently attached to another. A block runs from one `CREATE`
+to the next, and nothing between them may be separated.
+
+The split runs in `pipeline.yml` before the site build, since the page serves a file that has to
+exist by then.
+
+**What is left of the item is only *"make them actually start running"*, which is `EDITS_HELD`
+— the last item in the queue and nobody else's to lift.**
+
 ## 2026-09-14 — the refused descriptions were duplicate name items announcing themselves
 
 Emma's screenshot: a QuickStatements run rejecting `Den "family name"` row after row, at least

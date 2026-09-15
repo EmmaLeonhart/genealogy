@@ -295,6 +295,14 @@ jobs:
       # way -- but the committed snapshot is what anyone reading the repo sees, and on 2026-09-09
       # it still held five pages from 2026-09-07 with the two newest decks missing entirely.
       # Rebuilding it here is what makes `git status` the honest signal it is everywhere else.
+      # ⛔ SPLIT BEFORE THE SITE IS BUILT. The page serves the manual half, so the split has
+      # to exist by the time `build-pages-site.py` runs. Ruled 2026-09-14: *"Produce disjoint
+      # quickstatements on the github page too."*
+      - name: Split the daily batch into the automatic and manual halves
+        env:
+          PYTHONPATH: src
+        run: python scripts/split-daily-batch.py
+
       - name: Refresh the committed site snapshot
         continue-on-error: true
         env:

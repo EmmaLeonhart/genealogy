@@ -49,8 +49,14 @@ OUT = ROOT / "out" / "site" / "index.html"
 #: The batch files the site exists to serve: (report, page name, title, subtitle).
 #: The first is `index.html`, so the bare site URL is the daily batch and nothing else.
 BATCHES = (
-    (ROOT / "reports" / "wikidata-garborg-day.txt", "index.html",
-     "The daily batch", "run this one first"),
+    # ⛔ THE MANUAL HALF, NOT THE WHOLE BATCH. Ruled 2026-09-14: *"Produce disjoint
+    # quickstatements on the github page too."* The scheduled run sends
+    # `wikidata-garborg-day-auto.txt` by itself; publishing the whole batch here would tell a
+    # person to paste what the runner already sent, and a duplicate `CREATE` mints a second
+    # item for somebody who now exists. `scripts/split-daily-batch.py` writes both halves and
+    # asserts they are disjoint and complete.
+    (ROOT / "reports" / "wikidata-garborg-day-manual.txt", "index.html",
+     "The daily batch", "the half CI/CD does not send — run this one"),
     (ROOT / "reports" / "wikidata-garborg-name-items.txt",
      "wikidata-garborg-name-items.html",
      "Name items", "the name items the daily batch links to"),

@@ -112,9 +112,13 @@ I still think we do not have support for other languages like Semitic languages 
 
 Romance languages should be there too but I think they are the hardest and the most dead
 
-## CICD
+## CICD — DONE except "make them actually start running", which is the hold
 
-Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements on the github page too. MAke them actually start running.
+*"Make the CICD do about half the edits every day automatically. Produce disjoint
+quickstatements on the github page too. MAke them actually start running."*
+
+Two of the three are delivered. **The third is `EDITS_HELD`, and lifting it is the LAST item in
+this file** — nothing here should lift it early.
 
 ---
 

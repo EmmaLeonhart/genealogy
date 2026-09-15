@@ -66,7 +66,10 @@ env:
   START_DATE: "2026-09-01"
   AUTOMATION_START_DATE: "2026-09-15"
   # The daily batch: what runs by itself, chosen 2026-09-05.
-  DAILY_BATCH: reports/wikidata-garborg-day.txt
+  # ⛔ The AUTO half, not the whole batch. scripts/split-daily-batch.py writes the two
+  # halves and they are disjoint by construction; the Pages site serves the other one.
+  # Sending the whole file here would re-send what the page tells a person to paste.
+  DAILY_BATCH: reports/wikidata-garborg-day-auto.txt
   # What a live run has already applied, so a re-sent batch does not create the
   # same people twice. Committed after every live run.
   RECEIPT: reports/wikidata-edits-applied.tsv
@@ -161,7 +164,7 @@ jobs:
             # cicd". The caps went up 50% the same day, so the third CI/CD takes is exactly
             # the increase and the hand-run keeps the volume it had. `limit` stays as the
             # hard ceiling on top of it.
-            echo "fraction=0.3333" >> "$GITHUB_OUTPUT"
+            # no fraction: the batch file IS the share. One place computes the split.
             if [[ ! "$today" < "$AUTOMATION_START_DATE" ]]; then
               echo "mode=--live" >> "$GITHUB_OUTPUT"
               echo "::notice title=Automation live::$today is on or after $AUTOMATION_START_DATE"
