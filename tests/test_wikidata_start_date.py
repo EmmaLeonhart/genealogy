@@ -172,9 +172,21 @@ def test_the_scheduled_run_sends_the_daily_batch_and_a_receipt():
     and the receipt must be passed — without it a re-sent batch mints the same
     people again, which is the one failure of this design that cannot be undone
     by running it correctly next time.
+
+    ⛔ **THE AUTO HALF, NOT THE WHOLE BATCH.** This pinned
+    `reports/wikidata-garborg-day.txt` until 2026-09-15 and the workflow had moved to
+    `-auto.txt` on the 14th, so the test was asserting a value the design had deliberately
+    left behind.
+
+    The change is not cosmetic and the test must pin the new one rather than be relaxed:
+    `scripts/split-daily-batch.py` writes two disjoint halves, the Pages site publishes the
+    manual one for a person to paste, and **sending the whole file here would re-send exactly
+    what that page tells them to paste** -- which for a `CREATE` means a second item for
+    somebody who now exists.
     """
     text = WORKFLOW.read_text(encoding="utf-8")
-    assert 'DAILY_BATCH: reports/wikidata-garborg-day.txt' in text
+    assert 'DAILY_BATCH: reports/wikidata-garborg-day-auto.txt' in text, (
+        "the schedule must send the AUTO half; the manual half is what the Pages site publishes")
     assert "--receipt" in text
     assert 'echo "batch=$DAILY_BATCH"' in text
 
@@ -261,12 +273,16 @@ def test_every_batch_the_runner_reads_passes_the_clan_gate():
     `load_batch` is the single point every batch passes through, `.qs`, `.txt` and `.json`
     alike. A gate anywhere narrower is a gate one hand-committed file walks around, which is
     exactly what happened.
+
+    **The function is `_gate`, renamed from `_gate_clan_labels` when it grew.** It no longer
+    only drops clan labels: it also refuses a duplicate person and an unnameable name item, so
+    the narrower name became a lie about what the gate does. This test pinned the old name until
+    2026-09-15 and was failing on a rename rather than on a defect.
     """
     source = (REPO / "scripts" / "wikidata-edit-run.py").read_text(encoding="utf-8")
-    assert "_gate_clan_labels" in source
-    assert "return _gate_clan_labels(data, path)" in source, (
-        "the JSON path must be gated"
-    )
+    assert "def _gate(edits, path):" in source
+    assert "return _gate(data, path)" in source, "the JSON path must be gated"
+    assert "_gate(qs_v1.edit_objects(" in source, "the QuickStatements path must be gated"
     assert "drop_clan_labels" in source
 
 
