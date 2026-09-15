@@ -43135,3 +43135,50 @@ many steps came out and which target id, so the deletion is auditable rather tha
 random directory called paths and then assumed that was our operating directory."*
 `scripts/build-tiny-gedcoms.py` does read `paths/*.tsv` and 692 of the 2,834 files predate this
 session — but whether that is the intended home is Emma's to say, and the queue item says ask.
+
+## 2026-09-14 — `geni-scraping/` extracted and deleted: 232 MB out, 1,532 GEDCOMs in
+
+*"we definitely need to be on these items, on all these pages that we have locally saved, running
+the immediate relatives scraping thing on them, but we'd be deleting them."*
+
+    1,555 saved pages, 232 MB
+      1,532 yielded family cards  ->  1,532 tiny profile GEDCOMs
+         23 yielded nothing       ->  all private profiles with no family block
+          0 had cards but no GEDCOM
+    15,995 relation rows, 15,080 SEX records derived from relation words
+
+`reports/geni-scraping-extraction-manifest.tsv` has a row per page; the verification is that
+every page with cards produced a GEDCOM, checked before anything was deleted, not asserted after.
+
+## ⛔ WHY THIS DOES NOT REOPEN THE PARSER THAT WAS DELETED
+
+`build-tiny-gedcoms.py` carries *⛔ THE SAVED-PAGE SECTIONS ARE GONE. Ruled 2026-09-10,
+"structured only, delete the prose parser"*, and that ruling was right: the old reader took **an
+opener phrase governing a run of anchors** — *son of X and Y, brother of A, B, C* — and every
+defect it had came from that shape.
+
+**The card grid is a different object and it is in these files.** One card, one person, one
+relation, no opener:
+
+    <li class="unit size_1of3 media small" itemscope>
+      <a data-profile-id="6000000001333348128">Johan Mathesius</a>
+      <div class="quiet">husband</div>
+    </li>
+
+`scripts/read-saved-family-cards.py` reads that. The relation is an attribute of the card, which
+is exactly the structured form the 2026-09-10 ruling asked for and the extension already uses. The
+relation vocabulary that came out is clean and small — `son`, `daughter`, `brother`, `sister`,
+`husband`, `wife`, `father`, `mother`, `child`, `stepmother`, `half sister`, `ex-husband` — and
+`half` relations are skipped, since two half-siblings share one parent and pairing them would
+assert a marriage that did not happen.
+
+## ⛔ THE SAVED PAGES WERE TRUNCATED AND THE NUMBER IS 6,477
+
+**860 of the 964 pages carrying a counter say "Showing 12 of N"**, and the grid caps at twelve.
+**6,477 relatives were never rendered into the HTML at all.** They are not lost by the deletion —
+they were never in the files — but the extraction is short by that many people and only a return
+visit to Geni would get them. Recorded because Emma should not discover it later:
+*"I guess we could scrape them generally... but that's not something I actually give that much of
+a shit about, as opposed to getting the repository to be more clean in its structure."*
+
+Deleted with `git rm`, so all 1,555 remain in history.
