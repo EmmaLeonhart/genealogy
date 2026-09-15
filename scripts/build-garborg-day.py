@@ -1198,7 +1198,7 @@ def _piped_label_fixes(live_labels=None, path=None):
 
 
 def _label_corrections(our_items, labels, table, state, fields=None,
-                       generation=None):
+                       generation=None, live_labels=None):
     """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
 
     **Ruled 2026-08-29:** the generated QuickStatements need a block carrying all of these
@@ -1298,6 +1298,9 @@ def _label_corrections(our_items, labels, table, state, fields=None,
             ja, zh, ko = label_in(want, table)
             if ja:
                 for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
+                    # ADDITIVE ONLY -- see the note on the birth-name branch below.
+                    if (live_labels or {}).get((qid, code)):
+                        continue
                     out.append(f"#   {qid}: set the {code} label")
                     out.append(f'{qid}\tL{code}\t"{value}"')
             continue
@@ -1367,14 +1370,37 @@ def _label_corrections(our_items, labels, table, state, fields=None,
         out.append(f'{qid}	Lmul	"{want}"')
         out.append(f"#   {qid}: set the en label to {want!r}")
         out.append(f'{qid}	Len	"{want}"')
+        # THE CJK HERE IS ADDITIVE ONLY, AND THIS GUARD IS THE WHOLE POINT OF IT.
+        #
+        # **What happened without it, 2026-09-14.** A Latin-label correction dragged
+        # `ja`/`zh`/`ko` along as a side effect and wrote them with `L`, which REPLACES.
+        # One batch, `#temporary_batch_1789348401596`, ran 01:14-01:25 UTC and did
+        # `set ja` 32 times, `set ko` 32 and `set zh` 31 -- 110 live CJK labels
+        # overwritten in eleven minutes.
+        #
+        # The case Emma found: Q236972 Fuxi held the correct `ja` and this wrote a
+        # katakana string over it. That string was `Yuxiong` -- the profile's SECOND
+        # `1 NAME` record -- transliterated letter by letter as though it were European.
+        # A bot restored the right one the next day; reports/restore-cjk-labels.qs puts
+        # the other 79 back.
+        #
+        # CLAUDE.md *Wikidata's label beats ours* is written about `mul`; it plainly
+        # governs these too. `_missing_cjk_labels` has said so in its own docstring since
+        # it was written -- *PURELY ADDITIVE, it never rewrites a label that exists* --
+        # and this path simply never had the same guard.
+        #
+        # AND THIS IS A GUARD, NOT A FIX FOR THE TRANSLITERATION. `label_in()` still
+        # renders any Latin string phonetically into katakana, which is right for a
+        # European name and wrong for a romanised Chinese one. The guard means it can no
+        # longer destroy a correct label; it does not mean it produces a correct one where
+        # none exists. That is the second defect in the queue item.
         ja, zh, ko = label_in(want, table)
         if ja:
-            out.append(f"#   {qid}: set the ja label")
-            out.append(f'{qid}	Lja	"{ja}"')
-            out.append(f"#   {qid}: set the zh label")
-            out.append(f'{qid}	Lzh	"{zh}"')
-            out.append(f"#   {qid}: set the ko label")
-            out.append(f'{qid}	Lko	"{ko}"')
+            for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
+                if (live_labels or {}).get((qid, code)):
+                    continue
+                out.append(f"#   {qid}: set the {code} label")
+                out.append(f'{qid}	L{code}	"{value}"')
     if out:
         out = ["", "# " + "-" * 72,
                "# LABEL CORRECTIONS -- existing items whose label is not what our tree now",
@@ -7647,7 +7673,8 @@ def main():
     # small; the ordering is what decides it when it happens.
     derived_labels = (
         _piped_label_fixes(live_labels)
-        + _label_corrections(our_items, labels, table, state, fields, generation)
+        + _label_corrections(our_items, labels, table, state, fields, generation,
+                             live_labels)
         + _cjk_follows_mul(table)
         + _missing_cjk_labels(our_items, labels, table, live_labels))
     covered = _hand_covered_slots(hand)

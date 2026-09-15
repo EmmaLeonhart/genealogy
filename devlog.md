@@ -43226,3 +43226,32 @@ All three classifiers now agree on all three cases.
 strings that are overwhelmingly Latin — 8,413 Latin family names against 727 Han, 219 Cyrillic,
 210 Hebrew, 120 Arabic, 48 Hangul and **no Georgian at all**. The classifier no longer loses
 them; whether the plan now picks them up is the next measurement and needs a rebuild to answer.
+
+## 2026-09-14 — the CJK overwrite is closed at the source
+
+`_label_corrections` in `scripts/build-garborg-day.py` emitted `Lja`/`Lzh`/`Lko` as a side effect
+of a Latin-label correction, with no check that a label was already there. `L` **replaces**. That
+is how batch `#temporary_batch_1789348401596` overwrote **110 live CJK labels between 01:14 and
+01:25 UTC** on 2026-09-14 — `set ja` 32, `set ko` 32, `set zh` 31.
+
+**Both emit sites now skip any language the item already has**, using the `live_labels` map the
+function previously was not even passed. It is the same guard `_missing_cjk_labels` has carried in
+its own docstring since it was written — *"PURELY ADDITIVE. It never rewrites a label that
+exists"* — and the only reason the two paths differed is that nobody had noticed the second one
+wrote CJK at all.
+
+**`_cjk_follows_mul` is deliberately left alone.** It also writes CJK over existing labels, and
+that one is correct: a bounded 24-item population where the CJK was derived from a superseded
+`mul` that both sides now agree on, so it is our own stale output being corrected, not someone
+else's work being destroyed.
+
+**⛔ THIS IS A GUARD, NOT A FIX FOR THE TRANSLITERATION, and the difference matters.**
+`label_in()` still renders any Latin string phonetically into katakana. That is right for
+`Carl von Linné` → カール・ヴォン・リンネ and wrong for `Yuxiong`, which is pinyin and whose
+Japanese form is Han. The guard means the pipeline can no longer destroy a correct label; it does
+not mean it writes a correct one where none exists. **Defects 2 and 3 in the queue item — the
+transliteration, and `mul` and the CJK path reading different `NAME` records for one person —
+are still open.**
+
+`reports/restore-cjk-labels.qs` puts back the 80 that had a recoverable previous value; 30 more
+were additions rather than overwrites and are listed there uncorrected rather than guessed at.
