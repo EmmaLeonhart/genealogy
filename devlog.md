@@ -44231,3 +44231,43 @@ never paired a single Finnish name.
 
 `tests/test_namemodel.py` gains six tests, including one pinning that the contaminated families
 stay unmatched.
+
+## 2026-09-15 — CBDB: the disjointness hypothesis is refuted, and kinship was never imported
+
+`## CBDB people` closed. Full write-up in `docs/cbdb.md`.
+
+**Emma's reading was right on both halves it asserted.** Geni is a dead end — the profiles are
+managed by CBDB, carry no `Add Family` link and are not editable — and the people are not
+data-poor on Wikidata: 49,339 of 71,474 (69%) already carry `P22`/`P25`/`P40`/`P3373`.
+
+**The standing hypothesis about WHY they stay disconnected is refuted.** `devlog.md` 2026-09-10
+left it explicitly queued rather than assumed: *"a Tang-dynasty father-son lattice is connected to
+itself and disjoint from the European royal graph ... If it holds ... they are done rather than
+parked."* Over `out/wikidata/relations.tsv`, Charlemagne's component holds 1,549,441 people and
+**23,137 of the 71,469 CBDB items (32%) are inside it.**
+
+**The bridge is the Golden Horde and the path traces cleanly in 20 steps** — Charlemagne →
+Vermandois → Otto III → Merania → Béla IV of Hungary → Constance → Yury of Moscow → **Konchaka**,
+the Mongol princess he married → Öz Beg Khan → the Chinese lattice. Ordinary history, not a bad
+edge. **So `confirmed impossible` does not apply and they must not be closed as such.**
+
+**The worklist is correct, checked rather than trusted: 0 of the 23,137 connected CBDB people are
+in `reports/unconnected-p2600.tsv`.**
+
+**And the remaining 48,332 are not one lattice.** They fall into **25,169 separate components**,
+of which **20,133 are singletons with no family edge at all**; the largest is 518 people.
+`reports/cbdb-connectivity.csv` is one row per item. 20,133 people with no recorded relative is an
+absence, not a connectivity problem — there is nothing to traverse, and Geni cannot supply it.
+
+**The web search she asked for found the cause.** The Wikidata CBDB import took *basic
+biographical data only — gender, dynasty, English name*; over 300,000 records matched through
+Mix'n'Match, and **kinship was never part of it**. CBDB itself holds **482,953 kinship records**
+over ~657,909 people and is freely downloadable. So the empty items are empty because nobody
+imported the half of CBDB with the families in it. The join key is free: `P497`, and **69,516 of
+71,469 (97%) carry the CBDB number in their English description** already.
+
+**⛔ Recording the route is not proposing it.** A CBDB kinship import is a mass non-local edit over
+tens of thousands of items unrelated to the Bure kinship — the exact shape § *ONLY EVER EDIT
+THINGS IN THE UNIVERSE OR ONE STEP ADJACENT TO IT* forbids, and the exact shape of *"I don't want
+to draw more attention than I've been getting from being non-local."* It belongs to the
+WikiProject that did the biographical import.
