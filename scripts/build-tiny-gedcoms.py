@@ -404,7 +404,10 @@ def main():
             out_path.write_text(text, encoding="utf-8")
             n_page_paths += 1
 
-    for p in sorted((ROOT / "paths").glob("*.tsv")):
+    # Both directories: `paths/` is Emma's, from 2026-08-05; `harvested-paths/` is where
+    # scripts/split-path-chains.py puts the machine-written ones, separated 2026-09-14.
+    for p in sorted(list((ROOT / "paths").glob("*.tsv"))
+                    + list((ROOT / "harvested-paths").glob("*.tsv"))):
         rows = read_path_tsv(p)
         text = path_gedcom(p.stem, rows)
         if text:

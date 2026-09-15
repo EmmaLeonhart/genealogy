@@ -1764,3 +1764,16 @@ background assumption, per the top of this file.
 
 **Its stopping is not an emergency and not a reason to work on it.** Restart it, go back to the
 first item.
+
+## Fuxi `Q236972` — where did the bad katakana come from
+
+Ruled 2026-09-14: *"we need to fucking figure out why the fuck Fuxi had this bad katakanization
+added to it"* — <https://www.wikidata.org/wiki/Q236972>.
+
+**Written down and NOT investigated**, per `CLAUDE.md` § *"Add it to the end of the queue" means
+WRITE IT DOWN AND STOP*.
+
+The question is **provenance, not correction**: which run put it there, from which input, under
+which rule. This pipeline writes `ja`/`zh`/`ko` readings for everyone — § *The gate is `ja` + `zh`
++ `ko`* — so a Chinese mythological figure getting a katakana `ja` label is very likely ours
+rather than someone else's, and if it is, the rule that produced it will have produced more.

@@ -32,7 +32,10 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHAINS = os.path.join(ROOT, "reports", "path-chains.tsv")
 HARVEST = os.path.join(ROOT, "reports", "geni-paths-harvest.tsv")
-OUT = os.path.join(ROOT, "paths")
+#: ⛔ NOT `paths/`. Ruled 2026-09-14: that directory is Emma's, first committed
+#: 2026-08-05, and this session dumped 2,124 machine-written TSVs into it. Its own 731
+#: files stay where they are; everything this script writes goes here instead.
+OUT = os.path.join(ROOT, "harvested-paths")
 
 SLUG = re.compile(r"[^a-z0-9]+")
 
