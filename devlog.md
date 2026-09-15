@@ -16,6 +16,50 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — the refused descriptions were duplicate name items announcing themselves
+
+Emma's screenshot: a QuickStatements run rejecting `Den "family name"` row after row, at least
+79 in one batch —
+
+> Item [[Q1556775]] already has label "Sigtryggsson" associated with language code en, using
+> the same description text.
+
+Östensson, Naharro, Križić, Olsen, all the same.
+
+**The pass asked the wrong question.** It asked *does this item lack an English description?*
+and, finding none, added one. It never asked *does another item already hold this label plus
+this description?* Wikidata enforces uniqueness on the pair — and that uniqueness is the entire
+mechanism `CLAUDE.md` § *NO descriptions ... the exception is NAME ITEMS* depends on. So the add
+could not possibly succeed. Every one of those rows was a guaranteed failure, composed and
+shipped.
+
+**And the refusal was worth more than the description.** It says a name item for that string
+already exists under a different QID: ours and theirs are duplicates, and the bearers belong on
+the established one. Thrown away as an error, it is noise; caught, it is a finding.
+
+`_twin_holding` now asks first, via `wbsearchentities` — the only cheap way, since there is no
+index on the pair. It compares the label exactly afterwards, because the search matches aliases
+too and `Olsen` returns a great many people called Olsen, none of them the name item. A lookup
+failure returns `""` and the description is emitted as before: an outage must not silently stop
+descriptions being added.
+
+Verified against the four cases in the screenshot, and it names the same twins QuickStatements
+named:
+
+    Sigtryggsson  ours Q112261760  ->  Q1556775
+    Östensson     ours Q124785549  ->  Q131703803
+    Naharro       ours Q131994301  ->  Q137783891
+    Križić        ours Q98139923   ->  Q110526758
+
+A control string returns nothing, so it is not simply matching anything.
+
+Collisions go to `reports/duplicate-name-items-found.tsv` instead of into the batch.
+
+**Also learned, and it wasted a patch:** `python3` on this machine is the Windows Store stub at
+`WindowsApps/python3`. It exits 0, prints nothing and does nothing. A patch script run through
+it reported success while changing the file not at all, and the syntax check that followed
+passed because it was reading the unmodified file. **Use `python`.**
+
 ## 2026-09-14 — 229 Geni identifications: the pastebin, and Marcus.linneberg systematically
 
 *"read this pastebin ... set these as qid identifications. Look over this guy's contributions

@@ -469,6 +469,37 @@ def _cjk_readings(token):
         return None, None, None
 
 
+def _twin_holding(label, description, ours):
+    """The QID of another item already holding this exact `en` label+description, or `""`.
+
+    Wikidata enforces uniqueness on the pair, so an add that collides can only fail. Asking
+    first turns a guaranteed-failed row into a duplicate-item finding.
+
+    `wbsearchentities` is the only cheap way to ask -- there is no index on the pair itself.
+    It matches aliases as well as labels, so the label is compared exactly afterwards: a search
+    for `Olsen` returns a great many people called Olsen and none of them is the name item.
+
+    A failure returns `""`, meaning *emit the description and let QuickStatements decide*. That
+    is the old behaviour, and it is the right way to fail -- a lookup outage must not silently
+    stop descriptions being added.
+    """
+    try:
+        data = api_get({"action": "wbsearchentities", "format": "json", "language": "en",
+                        "uselang": "en", "type": "item", "limit": "20",
+                        "search": label}, AGENT)
+    except Exception:                                          # noqa: BLE001
+        return ""
+    for hit in (data.get("search") or []):
+        qid = hit.get("id") or ""
+        if not qid or qid == ours:
+            continue
+        if (hit.get("label") or "") != label:
+            continue
+        if (hit.get("description") or "") == description:
+            return qid
+    return ""
+
+
 def main():
     ids = people_in_batches()
     have = ledger()
@@ -879,6 +910,7 @@ def main():
     # the two cost a scare on 2026-09-02 when I deleted this mechanism over a description another
     # editor had put on a person.
     described = []
+    collisions = []
     want = {}
     for (token, usage), (existing, _action) in plan.items():
         q = (existing or "").strip()
@@ -910,6 +942,27 @@ def main():
                 if (ent.get("descriptions") or {}).get("en"):
                     continue
                 token, usage = want[q]
+                # ⛔ **A LABEL+DESCRIPTION PAIR ALREADY IN USE MEANS THIS IS A DUPLICATE.**
+                #
+                # Emma photographed a QuickStatements run refusing these over and over:
+                # *"Item [[Q1556775]] already has label 'Sigtryggsson' associated with
+                # language code en, using the same description text."* At least 79 in one
+                # batch -- Sigtryggsson, Östensson, Naharro, Križić, Olsen.
+                #
+                # The item genuinely has no description, so the old test said ADD ONE. But
+                # label plus description must be unique per language, and that uniqueness is
+                # the entire mechanism § *NO descriptions ... the exception is NAME ITEMS*
+                # relies on. The add could never succeed: every one of those rows was a
+                # guaranteed failure, shipped in a batch.
+                #
+                # **And the refusal is worth more than the description was.** It says a name
+                # item for this string ALREADY EXISTS under another QID, so the two are
+                # duplicates and the bearers belong on the established one. A discovery, so
+                # it is written out rather than thrown away.
+                twin = _twin_holding(token, DESCRIPTION_FOR[usage], q)
+                if twin:
+                    collisions.append((token, usage, q, twin))
+                    continue
                 missing += 1
                 described.append(f'{q}	Den	"{DESCRIPTION_FOR[usage]}"')
         if described:
@@ -923,6 +976,14 @@ def main():
             lines.extend(described)
         print(f"   {missing:,} of them have no English description; "
               f"{len(ids) - missing:,} already do")
+        if collisions:
+            out = ROOT / "reports" / "duplicate-name-items-found.tsv"
+            with out.open("w", encoding="utf-8", newline="\n") as fh:
+                fh.write("token\tusage\tours\talready_holds_the_pair\n")
+                for token, usage, ours, twin in sorted(collisions):
+                    fh.write(f"{token}\t{usage}\t{ours}\t{twin}\n")
+            print(f"   {len(collisions):,} are DUPLICATES of an existing name item -- the "
+                  f"description was refused, not emitted; see {out.name}")
 
     # ---- P144 based on, on patronymic items that ALREADY EXIST ---------------------
     #

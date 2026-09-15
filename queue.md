@@ -112,10 +112,6 @@ I still think we do not have support for other languages like Semitic languages 
 
 Romance languages should be there too but I think they are the hardest and the most dead
 
-## another item
-
-address the problem in "address the problem in this image.png"
-
 ## CICD
 
 Make the CICD do about half the edits every day automatically. Produce disjoint quickstatements on the github page too. MAke them actually start running.
