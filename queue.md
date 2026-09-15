@@ -19,6 +19,61 @@ thing in the queue"*, and the case: **Fuxi `Q236972` has a bad katakanization** 
 **This is NOT the script-classifier work, which is done.** That fixed which script a name is read
 as. This is about labels **already written to Wikidata**, which a classifier fix does not touch.
 
+**⛔ DIAGNOSED 2026-09-14. IT IS OURS, IT IS NOT ONE ITEM, AND IT IS AN OVERWRITE.**
+
+Emma: *"you can fucking look through my goddamn contributions and figure this shit out."* Done —
+the contributions are what answered it.
+
+**The edit.** `Q236972` Fuxi, 2026-09-14T01:21:36, batch `#temporary_batch_1789348401596`:
+
+    ja = ユクスイオング      set  (overwrote 伏羲)
+    zh = 尤克斯伊翁         set
+    ko = 유그시옹           set
+    mul = Fuxi             add
+    2026-09-15  RinrinBot put ja back to 伏羲
+
+**The input.** The Geni profile `6000000130191678854` carries TWO name records —
+`1 NAME Fuxi` and `1 NAME Yuxiong`. `mul` took the first; **`ja`/`zh`/`ko` transliterated the
+second, letter by letter, as if `Yuxiong` were a European name**: Y-u-ks-i-o-n-g →
+ユクスイオング.
+
+**The scale, from the same batch.** In thirty minutes, 500 edits:
+
+    set ja   32      OVERWROTE an existing Japanese label
+    set ko   32      OVERWROTE an existing Korean label
+    set zh   31      OVERWROTE an existing Chinese label
+    add mul  32      correct -- add only writes where absent
+
+**95 existing CJK labels overwritten in half an hour**, against `CLAUDE.md` § *Wikidata's label
+beats ours*. The rule is written about `mul`; the practice overwrites `ja`/`zh`/`ko` too.
+
+**The code.** `scripts/build-garborg-day.py`, `_label_corrections`:
+
+    ja, zh, ko = label_in(want, table)
+    if ja:
+        out.append(f'{qid}	Lja	"{ja}"')      # <- no live_labels check
+        out.append(f'{qid}	Lzh	"{zh}"')
+        out.append(f'{qid}	Lko	"{ko}"')
+
+Its sibling `_missing_cjk_labels` is guarded and says so in its own docstring — *"PURELY
+ADDITIVE. It never rewrites a label that exists"*, and returns nothing at all when `live_labels`
+is absent, because *"an absent live-labels file means we do not know"*. **This path has no
+guard.** A Latin-label correction drags CJK along with it as a side effect.
+
+**Three separate defects, and a fix must address all three:**
+
+1. **The overwrite.** CJK labels must be emitted only where `live_labels` shows none, the way
+   `_missing_cjk_labels` already does. A correction to a Latin label is not grounds to touch a
+   Japanese one.
+2. **The transliteration of romanised CJK.** `label_in()` renders any Latin string phonetically
+   into katakana, which is right for `Carl von Linné` → カール・ヴォン・リンネ and catastrophic
+   for `Yuxiong`. A person whose native form is Han must not be katakana-ised from pinyin.
+3. **Which `NAME` record is chosen.** `mul` took `Fuxi`, the CJK path took `Yuxiong`. One person,
+   two records, two different answers within a single batch.
+
+**Wikidata editing is HELD, so the deliverable is the measurement and a held batch, not an edit.**
+The 95 overwrites of 2026-09-14 are already live and a bot has reverted at least one of them.
+
 **The question is provenance before correction.** Which run wrote it, from which input, under
 which rule. This pipeline produces `ja`/`zh`/`ko` readings for everyone —
 `CLAUDE.md` § *The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN* — so a Chinese mythological
