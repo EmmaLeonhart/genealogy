@@ -91,6 +91,9 @@ AGENT = "geni-wikidata-backfill"
 #: A newline, named so the writers below read cleanly.
 NLJ = chr(10)
 
+#: A tab, for splitting an emitted line back into its subject.
+TAB = chr(9)
+
 #: The relationship properties that make an item *adjacent* to the universe.
 ADJACENT_VIA = ("P22", "P25", "P26", "P40", "P3373")
 
@@ -108,6 +111,21 @@ ADJACENT_VIA = ("P22", "P25", "P26", "P40", "P3373")
 #: the smaller for the run that goes out unattended.
 MANUAL_CAP = 40
 AUTO_CAP = 20
+
+#: ⛔ **A FLOOR OF NEW BORDERING PEOPLE, EVERY RUN. Ruled 2026-09-14 and it is the POINT of the
+#: pass, not a detail of it:** *"Every run 10 new bordering people not in the universe but
+#: connected to it get that as it."*
+#:
+#: **Without it the ring is never reached and the universe never grows.** The caps are 40 + 20 and
+#: the universe is queried first, so on any day with sixty spare rows among our own items the
+#: quota fills before a single neighbour is looked at. Measured 2026-09-15 over all four emitted
+#: files -- `subject-named-as` 39 people, `-auto` 20, `relationship-sources` 32, `-auto` 8 --
+#: **adjacent people: 0, 0, 0 and 0.** The growth mechanism was doing nothing at all.
+#:
+#: Ordering our own items first is still right: they are the ones we are certainly entitled to
+#: edit. The floor is what stops "first" meaning "only". Counted in PEOPLE, not statements,
+#: because the ruling says people and one item can need several lines.
+ADJACENT_FLOOR = 10
 
 
 def qs(value: str) -> str:
@@ -179,48 +197,87 @@ def main() -> int:
     # The universe is queried before the adjacent ring, so a short day still spends its budget
     # on our own items first.
     need = MANUAL_CAP + AUTO_CAP
-    ids = sorted(core) + sorted(near)
     rows, already, no_name, no_p2600 = [], 0, 0, 0
-    for k in range(0, len(ids), 50):
-        if len(rows) >= need:
-            print(f"   quota of {need} filled after {k:,} items; not querying the other "
-                  f"{len(ids) - k:,}")
-            break
-        chunk = ids[k:k + 50]
-        try:
-            data = api_get({"action": "wbgetentities", "format": "json",
-                            "props": "claims", "ids": "|".join(chunk)}, AGENT)
-        except Exception as exc:                                   # noqa: BLE001
-            print(f"   chunk at {k} failed ({exc}); left alone")
-            continue
-        for qid, ent in (data.get("entities") or {}).items():
-            claims = (ent.get("claims") or {}).get("P2600") or []
-            if not claims:
-                no_p2600 += 1
+    counters = {"already": 0, "no_name": 0, "no_p2600": 0}
+
+    def sweep(ids, stop):
+        """Query `ids` in chunks until `stop(rows)` says the pass is done."""
+        for k in range(0, len(ids), 50):
+            if stop(rows):
+                print(f"      pass satisfied after {k:,} of {len(ids):,} items")
+                return
+            chunk = ids[k:k + 50]
+            try:
+                data = api_get({"action": "wbgetentities", "format": "json",
+                                "props": "claims", "ids": "|".join(chunk)}, AGENT)
+            except Exception as exc:                               # noqa: BLE001
+                print(f"      chunk at {k} failed ({exc}); left alone")
                 continue
-            for st in claims:
-                snak = st.get("mainsnak") or {}
-                gid = ((snak.get("datavalue") or {}).get("value") or "")
-                if not isinstance(gid, str) or not gid:
+            for qid, ent in (data.get("entities") or {}).items():
+                claims = (ent.get("claims") or {}).get("P2600") or []
+                if not claims:
+                    counters["no_p2600"] += 1
                     continue
-                if "P1810" in (st.get("qualifiers") or {}):
-                    already += 1
-                    continue
-                name = names.get(gid, "")
-                if not name or carries_marker(name):
-                    no_name += 1
-                    continue
-                rows.append(f'{qid}\tP2600\t"{gid}"\tP1810\t"{qs(name)}"')
+                for st in claims:
+                    snak = st.get("mainsnak") or {}
+                    gid = ((snak.get("datavalue") or {}).get("value") or "")
+                    if not isinstance(gid, str) or not gid:
+                        continue
+                    if "P1810" in (st.get("qualifiers") or {}):
+                        counters["already"] += 1
+                        continue
+                    name = names.get(gid, "")
+                    if not name or carries_marker(name):
+                        counters["no_name"] += 1
+                        continue
+                    rows.append(f'{qid}\tP2600\t"{gid}"\tP1810\t"{qs(name)}"')
+
+    def adjacent_people():
+        return len({r.split(TAB)[0] for r in rows} - set(core))
+
+    # **Our own items first, but only up to `need - ADJACENT_FLOOR`.** They are the ones we are
+    # certainly entitled to edit, so they get the bulk; the remainder is held open for the ring.
+    print(f"   pass 1, the universe (up to {need - ADJACENT_FLOOR}):")
+    sweep(sorted(core), lambda r: len(r) >= need - ADJACENT_FLOOR)
+    # **Then the ring, until the floor of new bordering PEOPLE is met.** This is the growth
+    # mechanism and it is the reason the pass exists at all.
+    print(f"   pass 2, the adjacent ring (floor of {ADJACENT_FLOOR} people):")
+    # ⛔ **The stop condition here is the FLOOR ALONE, never the total.** Written first as
+    # `... or len(rows) >= need`, which defeated the whole thing: one 50-id chunk yields many
+    # rows at once, so pass 1 overshoots its own limit -- 90 rows against a budget of 50 -- and
+    # the total was already past `need` before pass 2 looked at anything. It reported
+    # `pass satisfied after 0 items` and reached zero neighbours, exactly the state this floor
+    # was added to fix.
+    sweep(sorted(near), lambda r: adjacent_people() >= ADJACENT_FLOOR)
+    print(f"   new bordering people reached: {adjacent_people()}")
+    already, no_name, no_p2600 = (counters["already"], counters["no_name"],
+                                  counters["no_p2600"])
 
     # The universe first, then the adjacent ring, so a short day spends its budget on our own
     # items before it spends it claiming new ones.
     tab = chr(9)
     core_rows = [r for r in rows if r.split(tab)[0] in core]
     near_rows = [r for r in rows if r.split(tab)[0] not in core]
-    ordered = core_rows + near_rows
+
+    # ⛔ **COLLECTING THE NEIGHBOURS IS NOT ENOUGH; THE SLOTS HAVE TO BE RESERVED.** Ordering
+    # `core_rows + near_rows` and slicing put our own items in every slot whenever there were
+    # sixty of them, so the ring was gathered and then cut. The floor is taken out of the total
+    # FIRST, and it is a floor of PEOPLE -- one neighbour can need several lines and still
+    # counts once.
+    reserved, seen_people = [], set()
+    for r in near_rows:
+        who = r.split(tab)[0]
+        if who not in seen_people and len(seen_people) >= ADJACENT_FLOOR:
+            continue
+        seen_people.add(who)
+        reserved.append(r)
+    rest = [r for r in near_rows if r not in reserved]
+    ordered = core_rows[:max(0, need - len(reserved))] + reserved + rest + core_rows[
+        max(0, need - len(reserved)):]
     manual = ordered[:MANUAL_CAP]
     auto = ordered[MANUAL_CAP:MANUAL_CAP + AUTO_CAP]
     held = len(ordered) - len(manual) - len(auto)
+    print(f"   reserved {len(seen_people)} new bordering people ({len(reserved)} line(s))")
 
     header = [
         "# P1810 subject named as, backfilled onto P2600 statements that already exist.",

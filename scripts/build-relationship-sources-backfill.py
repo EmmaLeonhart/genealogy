@@ -111,6 +111,21 @@ ADJACENT_VIA = tuple(RELATIONSHIPS)
 MANUAL_CAP = 40
 AUTO_CAP = 20
 
+#: ⛔ **A FLOOR OF NEW BORDERING PEOPLE, EVERY RUN. Ruled 2026-09-14, and it is the POINT of the
+#: pass rather than a detail of it:** *"Every run 10 new bordering people not in the universe but
+#: connected to it get that as it."*
+#:
+#: **Without it the ring is never reached and the universe never grows.** The caps are 40 + 20
+#: and the universe is queried first, so on any day with sixty spare rows among our own items the
+#: quota fills before a single neighbour is looked at. Measured 2026-09-15 over all four emitted
+#: files -- `subject-named-as` 39 people, `-auto` 20, `relationship-sources` 32, `-auto` 8 --
+#: **adjacent people: 0, 0, 0 and 0.** The growth mechanism was doing nothing at all.
+#:
+#: Ordering our own items first is still right; the floor is what stops *first* meaning *only*.
+#: Counted in PEOPLE, not statements, because the ruling says people and one item can need
+#: several lines.
+ADJACENT_FLOOR = 10
+
 
 def qs(value: str) -> str:
     """A QuickStatements string literal."""
@@ -225,19 +240,36 @@ def main() -> int:
 
     # **STOP AS SOON AS THE DAY'S QUOTA IS FULL**, the same rule as the `P1810` backfill and for
     # the same reason: the scope is ten thousand items and the pace is 60 a day, so querying
-    # everything to discard 99% of it spends twenty minutes of Wikidata's time for nothing. The
-    # universe is queried before the adjacent ring, so a short day spends its budget on our own
-    # items first.
+    # everything to discard 99% of it spends twenty minutes of Wikidata's time for nothing.
+    #
+    # ⛔ **BUT IT RUNS AS TWO PASSES, AND THE SECOND ONE IS THE GROWTH MECHANISM.** Our own items
+    # are queried first -- they are the ones we are certainly entitled to edit -- but only up to
+    # `need - ADJACENT_FLOOR`, so the remainder is held open for the ring. A single pass over
+    # `core + near` never reaches the ring at all: see `ADJACENT_FLOOR` for the measurement that
+    # found all four emitted files at zero adjacent people.
     need = MANUAL_CAP + AUTO_CAP
-    ids = sorted(core) + sorted(near)
     rows = []
     sourced = unattested = no_geni = no_value = 0
-    for k in range(0, len(ids), 50):
-        if len(rows) >= need:
-            print(f"   quota of {need} filled after {k:,} items; not querying the other "
-                  f"{len(ids) - k:,}")
+
+    def adjacent_people():
+        return len({r[0] for r in rows} - set(core))
+
+    plan = [("the universe", sorted(core),
+             lambda: len(rows) >= need - ADJACENT_FLOOR),
+            # ⛔ The ring's stop condition is the FLOOR ALONE, never the total. A 50-id chunk
+            # yields many rows at once, so pass 1 overshoots its own limit and the total is
+            # already past `need` before this pass looks at anything -- which made it stop after
+            # 0 items and reach 0 neighbours, the exact state the floor exists to prevent.
+            ("the adjacent ring", sorted(near),
+             lambda: adjacent_people() >= ADJACENT_FLOOR)]
+
+    for _label, _ids, _done in plan:
+      print(f"   pass over {_label} ({len(_ids):,} items):")
+      for k in range(0, len(_ids), 50):
+        if _done():
+            print(f"      pass satisfied after {k:,} of {len(_ids):,} items")
             break
-        chunk = ids[k:k + 50]
+        chunk = _ids[k:k + 50]
         try:
             data = api_get({"action": "wbgetentities", "format": "json",
                             "props": "claims", "ids": "|".join(chunk)}, AGENT)
@@ -297,10 +329,24 @@ def main() -> int:
     # items before it spends it claiming new ones.
     core_rows = [r for r in rows if r[0] in core]
     near_rows = [r for r in rows if r[0] not in core]
-    ordered = [r[3] for r in core_rows + near_rows]
+
+    # ⛔ **COLLECTING THE NEIGHBOURS IS NOT ENOUGH; THE SLOTS HAVE TO BE RESERVED.** Ordering
+    # `core_rows + near_rows` and slicing put our own items in every slot whenever there were
+    # sixty of them, so the ring was gathered and then cut. The floor comes out of the total
+    # FIRST, and it is a floor of PEOPLE -- one neighbour can need several lines and counts once.
+    reserved, seen_people = [], set()
+    for r in near_rows:
+        if r[0] not in seen_people and len(seen_people) >= ADJACENT_FLOOR:
+            continue
+        seen_people.add(r[0])
+        reserved.append(r)
+    rest = [r for r in near_rows if r not in reserved]
+    keep = max(0, need - len(reserved))
+    ordered = [r[3] for r in core_rows[:keep] + reserved + rest + core_rows[keep:]]
     manual = ordered[:MANUAL_CAP]
     auto = ordered[MANUAL_CAP:MANUAL_CAP + AUTO_CAP]
     held = len(ordered) - len(manual) - len(auto)
+    print(f"   reserved {len(seen_people)} new bordering people ({len(reserved)} line(s))")
 
     header = [
         "# S2600 sources, backfilled onto relationship statements that already exist without",

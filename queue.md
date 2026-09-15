@@ -107,10 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## expanding the universe
-
-I think especially with the locality restrictions a good way to expand the universe is for us to actively add the  subject named as (P1810) property to  Geni profile ID (P2600) properties on adjacent items to the ones in our universe. So I want this to happen. Every run 10 new bordering people not in the universe but connected to it get that as it. In addition we add geni as a source to existing relationships
-
 ## Generate CJK names from the CJK labels on PARTS of the `mul` label
 
 Emma's own plan, recorded 2026-09-14 and **deliberately not started**: *"I had a plan to generate

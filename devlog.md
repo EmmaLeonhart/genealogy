@@ -44393,3 +44393,42 @@ reading of a step-relationship to copy, and the ruling for exactly this case is 
 Queued as an export rather than guessed, which is the whole point of the item.
 
 69 files changed on the re-run, 350 insertions against 60 deletions. Nothing was re-scraped.
+
+## 2026-09-15 — Expanding the universe: both vehicles existed and neither ever touched a neighbour
+
+`## expanding the universe` closed. *"a good way to expand the universe is for us to actively add
+the subject named as (P1810) property to Geni profile ID (P2600) properties on adjacent items to
+the ones in our universe. So I want this to happen. Every run 10 new bordering people not in the
+universe but connected to it get that as it. In addition we add geni as a source to existing
+relationships."*
+
+**Both vehicles were built earlier today** — `build-subject-named-as-backfill.py` and
+`build-relationship-sources-backfill.py`, 40 to the pasted file and 20 to the CI/CD run each.
+**And the sentence I did not implement is the one that makes them work.**
+
+**Measured before touching anything: adjacent people in the four emitted files were 0, 0, 0 and
+0.** Every row went to an item already in the universe, so the universe never grew — which is the
+entire purpose of the pass. The cause was my own pacing: the universe is queried first and the
+quota is 60, so on any day with sixty spare rows among our own 4,430 items the run fills up before
+a single neighbour is looked at.
+
+**`ADJACENT_FLOOR = 10` in both scripts, and it took two fixes rather than one.**
+
+- **The collection**: a second pass over the ring, stopping on the floor **alone**. Written first
+  as `... or len(rows) >= need`, which defeated it completely — one 50-id chunk yields many rows
+  at once, so pass 1 overshoots its own budget (90 rows against 50) and the total is already past
+  `need` before pass 2 looks at anything. It printed `pass satisfied after 0 items` and reached
+  zero neighbours, the exact state the floor was added to fix.
+- **The selection**: ordering `core_rows + near_rows` and slicing put our own items in every slot
+  whenever there were sixty of them, so the ring was gathered and then cut. The floor is now taken
+  out of the total first, and it is a floor of **people** — one neighbour can need several lines
+  and counts once.
+
+**After: 14 distinct new bordering people in a run**, 10 reserved in each script. They land in the
+auto halves, which CI sends daily at 08:07, so *"every run"* holds without anybody pasting
+anything. Each of those edits puts the item in the account's contributions, which puts it in
+`garborg-qids.tsv`, which makes it universe — and its neighbours become the next ring.
+
+The second half of the ruling, *"we add geni as a source to existing relationships"*, is
+`build-relationship-sources-backfill.py`, built and wired earlier today; this item is what made it
+reach anyone new.
