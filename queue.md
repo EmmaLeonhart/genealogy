@@ -138,8 +138,11 @@ clean. So for several of these the climb is already done and only the export rem
   slot and this line has none within reach, so either the climb continues further up or the
   seed comes from somewhere else. **Note Hélène's mother is Isabeau d'ESNEVAL** — she and
   target 3, Robert d'Esneval VI, are the same family, so one seed may cover both.
-* **Sayaluna ata — SUBMITTED.** Descendants 5000 from `6000000227694017875`,
-  `task_id 6000000227757462847`.
+* **Sayaluna ata — DONE.** Descendants from `6000000227694017875`, `task_id
+  6000000227757462847`, came back at the 5000 cap and is filed as
+  `exports/emma-requested/export-Descendants-6000000227694017875.ged`. **At the cap means
+  truncated** — § *A `Descendants` ball that came back at the cap is truncated by definition*
+  — so it says what is in it and nothing about what is missing below.
 * **Robert d'Esneval VI — TIER 3, needs a profile CREATED.** *"Son of Robert V d'Esneval"* and
   **no mother at all**, which is `docs/export-seed-rules.md` tier 3: create the missing parent
   as `NN`, no surname. His father `6000000000751675327` is not exportable. Creating her is the
