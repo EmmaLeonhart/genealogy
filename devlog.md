@@ -16,6 +16,36 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-15 — Romance patronymics: three tokens, and `Johannes` was the trap
+
+*"Romance languages should be there too but I think they are the hardest and the most dead."*
+Both halves were right.
+
+The endings are common and not diagnostic — `-es` 50,863, `-ez` 14,540, `-ian` 14,281 over
+1,856,260 people. So the same guards the patronymic PAIRS needed, and every one is load-bearing:
+
+    3,381  distinct Romance-ending tokens
+       93  after LOCALITY — borne by somebody in the universe
+       10  after THE FATHER — stem plus nominative vowel is a given name here
+        3  after THE RATIO
+
+⛔ **The ratio guard is the one this case needed and the pairs did not.** `Johannes` passes the
+first two: it ends `-es` and `Johann` is a given name in the universe. And it is used **as a
+given name 10,742 times against once as a surname**. A rule making it a patronymic would have
+renamed ten thousand people after a father called Johann.
+
+    alvarez     33 given / 296 surname   10%   patronymic
+    fernandez   43 / 343                 11%   patronymic
+    fernandes  135 / 185                 42%   patronymic
+    hughes      39 / 43                  48%   REFUSED — English, fossilised, same class as
+                                               the `Williamson` the pairs rejected
+    johannes 10742 / 1                  100%   REFUSED — a given name
+
+**Three tokens is the honest answer and it is why this is a set, not a regex.** The universe is
+Scandinavian, so Iberian patronymics barely occur in it; a rule would carry all the risk of
+`-es` for no more coverage than naming the three. `ROMANCE_PATRONYMIC` takes a fourth when one
+actually appears, with the same three tests run against it.
+
 ## 2026-09-15 — `konenes navn ukjent`, Roman names, and 808 lines of reference out of the queue
 
 **The wrong name.** `6000000007645527815` / `Q141451100`. His `GIVN` on Geni is

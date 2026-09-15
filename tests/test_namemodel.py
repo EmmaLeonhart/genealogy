@@ -1081,3 +1081,33 @@ def test_a_roman_name_gets_no_name_items():
     got = [(t, u) for t, u, _o in namemodel.classify_fields(givn="Marcus", surn="Olofsson")]
     assert ("Marcus", "given") in got and ("Olofsson", "patronymic") in got
     assert namemodel.classify_fields(givn="Marcus", surn="") != []
+
+
+def test_romance_patronymics_are_a_curated_set_and_Johannes_is_not_one():
+    """Ruled 2026-09-14 that Romance support was missing and *"they are the hardest and the most
+    dead"*. Measured 2026-09-15; right on both counts.
+
+    3,381 distinct Romance-ending tokens -> 93 after locality -> 10 after the father test -> 3
+    after the ratio. **The ratio guard is the one this case needed and the pairs did not.**
+
+    `Johannes` passes the first two: it ends `-es`, and `Johann` is a given name in the universe.
+    And it is used as a given name **10,742 times against once as a surname**. A rule making it a
+    patronymic would rename ten thousand people after a father called Johann.
+
+    `Hughes` is refused at 48% — English, fossilised, the same class as the `Williamson` the
+    pairs rejected.
+
+    Three tokens is why this is a set and not a regex: the universe is Scandinavian, so Iberian
+    patronymics barely occur in it, and a rule would carry all the risk of `-es` for no more
+    coverage than naming them.
+    """
+    for real in ("Fernandez", "Alvarez", "Fernandes", "fernandez"):
+        assert namemodel.is_patronymic(real), real
+    for refused in ("Johannes", "Hughes", "Mendes", "Torres"):
+        assert not namemodel.is_patronymic(refused), refused
+
+    got = [(t, u) for t, u, _o in namemodel.classify_fields(givn="Diego", surn="Fernandez")]
+    assert ("Fernandez", "patronymic") in got
+    # the one that matters: Johannes stays a given name
+    got = [(t, u) for t, u, _o in namemodel.classify_fields(givn="Johannes", surn="Olsen")]
+    assert ("Johannes", "given") in got

@@ -1116,12 +1116,48 @@ def drop_title_tail(label: str) -> str:
 
 
 
+#: ⛔ **ROMANCE PATRONYMICS ARE A CURATED SET, NOT A RULE, AND THE MEASUREMENT IS WHY.**
+#: Ruled 2026-09-14 that Romance support was missing and *"they are the hardest and the most
+#: dead"*. Measured 2026-09-15, and the instruction was right on both counts.
+#:
+#: The endings are common and they are not diagnostic. Over 1,856,260 people: **`-es` 50,863,
+#: `-ez` 14,540, `-ian` 14,281**, `-iz` 1,412, `-oz` 479, `-az` 332. So the same three guards
+#: the patronymic PAIRS needed were applied, and each one is load-bearing:
+#:
+#:     3,381  distinct Romance-ending tokens in the corpus
+#:        93  after LOCALITY -- borne by somebody in the universe
+#:        10  after THE FATHER -- the stem, with its nominative vowel restored, is a given
+#:            name borne here: Fernandez -> Fernando, Alvarez -> Alvaro
+#:         3  after THE RATIO
+#:
+#: **The ratio guard is the one this case needed and the pairs did not.** `Johannes` passes the
+#: first two — it ends `-es`, and `Johann` is a given name here — and `Johannes` is **used as a
+#: given name 10,742 times against once as a surname**. A rule that made it a patronymic would
+#: rename ten thousand people after a father called Johann. So a token used as a given name more
+#: often than as a surname is a given name, whatever it ends in.
+#:
+#:     alvarez     33 given / 296 surname   10%   patronymic
+#:     fernandez   43 / 343                 11%   patronymic
+#:     fernandes  135 / 185                 42%   patronymic
+#:     hughes      39 / 43                  48%   REFUSED -- English, fossilised, and the same
+#:                                                class as the Williamson the pairs rejected
+#:     johannes 10742 / 1                  100%   REFUSED -- a given name
+#:
+#: **Three tokens is the honest answer**, and it is why this is a set and not a regex: the
+#: universe is Scandinavian, so Iberian patronymics barely occur in it. A rule would carry all
+#: the risk of `-es` for no more coverage than naming the three. Add to this list when a fourth
+#: actually appears, with the same three tests run against it.
+ROMANCE_PATRONYMIC = frozenset({"alvarez", "fernandez", "fernandes"})
+
+
 def is_patronymic(token: str) -> bool:
     """True for a suffix form (`Jonsdatter`) or a joined particle form (`ben Phinhas`)."""
     if not token:
         return False
     if " " in token:
         return token.split(" ", 1)[0].casefold() in PATRONYMIC_PARTICLE
+    if token.casefold() in ROMANCE_PATRONYMIC:
+        return True
     return bool(PATRONYMIC.match(token))
 
 

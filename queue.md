@@ -68,30 +68,6 @@ they now live in `docs/queue-archive/`:
 Nothing was deleted. `queue.md` is work only — which is the whole reason § *Queue items are
 BULLET POINTS* and the delete-on-done rule exist, and a file that is half reference defeats both.
 
-## Romance patronymics — measured, and they need the locality guard
-
-Celtic and Semitic are done: `mac` and `ó` added 2026-09-15, `ben`/`bin`/`ibn`/`bint`/`bar`/`bat`
-and `ap`/`ab`/`ferch`/`verch`/`ua`/`uí`/`ní`/`nic` were already there. `abu` and `abd` were tried
-and rejected — neither means *son of*. See `devlog.md` 2026-09-15.
-
-**Romance is what is left, and it is the hardest, exactly as the item said.** Censused over
-1,856,260 people:
-
-    -es    50,863     Portuguese patronymic AND an ordinary plural in several languages
-    -ez    14,540     Spanish. Ruled a live patronymic 2026-08-18
-    -ian   14,281     Armenian, and also an ordinary English adjective ending
-    -iz     1,412     -oz  479     -az  332
-    Greek  -poulos 3, -idis 59, -akis 5  — too few to be worth a rule
-
-⛔ **DO NOT ADD THESE ON FORM ALONE.** `-ez` is ruled live and is the safest of them, but
-14,540 tokens flipping from `P734` family name to `P5056` patronymic is a large behavioural
-change, and `-es` at 50,863 is mostly not a patronymic at all. This is the same trap the
-patronymic PAIRS hit on 2026-09-14: the form is identical across cultures and only the culture
-separates them, so the guard has to be locality plus an attested father, not the ending.
-
-Do it the way the pairs were done: locality first, then the father test, then measure what
-survives before emitting anything.
-
 ## Names
 
 Remember that this is not something to be done out of order, it is the second last item in the queue for a reason
