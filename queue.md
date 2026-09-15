@@ -107,10 +107,6 @@ write one.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## Jan 1 correspondences research
-
-Based on the fact you did not figure out that the Chinese tails were duplicates, I am convinced you do not in fact know at all anything on the Egyptian Pharaohs geni to wikidata correspondences and should probably figure them out
-
 ## Tiny GEDCOMs: model every relationship off ATTESTED representations, never invention
 
 Ruled 2026-09-13, and **timeboxed to 20:45 the same evening, then sent here**: *"I would consider

@@ -44311,3 +44311,46 @@ d'Ibelin, Agnes von Bayern-Landshut and Joanna I of Naples.
 
 The concrete follow-up is a Geni export seeded on Ursula's branch, which is browser work and is
 written into the export section rather than done here.
+
+## 2026-09-15 — The Egyptian correspondences audit clean; the duplicate was Scorpion I
+
+`## Jan 1 correspondences research` closed. *"Based on the fact you did not figure out that the
+Chinese tails were duplicates, I am convinced you do not in fact know at all anything on the
+Egyptian Pharaohs geni to wikidata correspondences and should probably figure them out."*
+
+**All 69 pairs in `build-qid-links-gedcom.PAIRS` were fetched live from Wikidata and checked on
+three things: does the label match what we claim, does the item already carry a `P2600`, and is
+the pairing repeated.** `reports/qid-links-pair-audit.csv` holds the three that failed.
+
+**The twenty Egyptian pairs are sound.** Scorpion I, Iry-Hor, Neithotep, Djer, Merneith, Khenthap,
+Betrest, Qa'a, Semerkhet, Nakhtneith, Herneith, Serethor, Shesh I, Neferkasokar, Seth-Peribsen,
+Nebra, Merenre Nemtyemsaf II, Ankhesenpepi III and IV, Nefer, Shoshenq I, Osorkon I, Takelot I,
+Osorkon II — every label matches the person claimed, and **not one of them carries a conflicting
+`P2600`.** The suspicion was reasonable and the answer is that these are right.
+
+**But the fault she named was there, one row away from the pharaohs.**
+
+- **`Q318613` Scorpion I was listed TWICE**, with the same Geni id: once as a Cluster 3 pair from
+  the 2026-09-05 eccentric-cluster reading, and again in the 2026-09-15 identification block I
+  added this morning. A duplicate key in a Python dict literal — **Python keeps the last one
+  silently**, so there was no error, no warning, and every count of this file was one too high.
+  That is exactly *"you did not figure out that the Chinese tails were duplicates"*, committed by
+  me a few hours before she said it. Removed; 69 pair lines become 68 and the emitted GEDCOM is
+  byte-identical, which is what makes the fault invisible.
+
+- **`Q70899` Adam already carries `P2600 6000000003538706117` on Wikidata, and that is not our
+  id.** Neither profile is in our merged tree, so the pairing cannot be verified from the corpus
+  at all. Kept rather than deleted — it is Emma's own identification and
+  `reports/manual-identifications-extra.csv` is its record — but annotated, and it emits nothing
+  either way because the builder's in-tree check already refuses it. That refusal is how the
+  discrepancy surfaced.
+
+- **`Q9738` Wu Zetian also carries a different `P2600`, `6000000074771352821`, and here OURS is
+  the better one.** Our profile is in the merged tree with a father, a mother, five children and
+  three spouses, labelled 曌 武; Wikidata's is in the corpus nowhere. Two Geni profiles for one
+  person is the ordinary unmergeable duplicate, so § *A second Geni ID on one item is NOT a
+  conflict* applies squarely: self-healing, not to be reported or fixed.
+
+**The three cases are three different things and only one was a defect** — a duplicate key, an
+unverifiable pairing, and a legitimate second id. Reading them as one class is how the wrong one
+gets "fixed".

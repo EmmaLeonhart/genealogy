@@ -234,7 +234,12 @@ PAIRS = {
     "6000000130192002822": "Q313336",   # Shén Nóng 神农 Yán Dì 炎帝 Yú Quān 榆圈 一任帝 2世
     "6000000195149451825": "Q313342",   # Emperor Shùn 帝舜 9 1G
     "6000000009562419205": "Q314809",   # Iry Hor Pharaoh of Egypt
-    "6000000209058145828": "Q318613",   # Scorpion I
+    # ⛔ `Q318613` Scorpion I is NOT repeated here. He was already a Cluster 3 pair above, from
+    # the 2026-09-05 eccentric-cluster reading, with this same Geni id -- and the 2026-09-15
+    # identification block restated him, giving this dict a DUPLICATE KEY. Python keeps the last
+    # silently: no error, no warning, and every count of this file was one too high. Found by
+    # auditing for exactly the fault Emma named -- *"you did not figure out that the Chinese
+    # tails were duplicates"*.
     "6000000028714712399": "Q334111",   # 조선 27대 순종 척
     "6000000008004518685": "Q4243879",   # Bó Yì 字 伯益 8
     "6000000020107122663": "Q4268330",   # Jī Nǚ Xīu姬女修 4
@@ -243,6 +248,15 @@ PAIRS = {
     "6000000028856413461": "Q484866",   # Yi Un Crown Prince of Korea
     "6000000028895625641": "Q496421",   # private
     "6000000001381063554": "Q6377648",   # Chāng Yì 昌意 2
+    # ⛔ **`Q70899` Adam already carries `P2600 6000000003538706117` on Wikidata, which is NOT
+    # this id**, and NEITHER profile is in our merged tree. Checked 2026-09-15. So this pairing
+    # cannot be verified from the corpus and would assert a second Geni id on an item whose first
+    # one we cannot compare it against. § *A second Geni ID on one item is NOT a conflict* is
+    # about ids we can stand behind; this is one we cannot.
+    #
+    # Kept rather than deleted because it is Emma's own identification and
+    # `reports/manual-identifications-extra.csv` is the record of it. It emits nothing either
+    # way: the builder's in-tree check refuses it, which is how the discrepancy surfaced.
     "6000000201847373856": "Q70899",   # Adam the First Man
     "6000000028786845951": "Q7214248",   # 순헌황귀비 엄씨
     "6000000002481253260": "Q721756",   # Emperor Kù 帝嚳 4
@@ -254,6 +268,12 @@ PAIRS = {
     "6000000023167303575": "Q8262857",   # Mó Mǔ Wife 4 嫫母
     "6000000195149174838": "Q9511624",   # Huaxu
     "6000000001380828716": "Q9569181",   # Ju Mang 句芒 6
+    # **`Q9738` Wu Zetian also carries a different `P2600` on Wikidata -- `6000000074771352821`
+    # -- and here OURS is the better one.** Checked 2026-09-15: this profile is in the merged
+    # tree with a father, a mother, five children and three spouses, labelled 曌 武; Wikidata's
+    # is in the corpus nowhere. Two Geni profiles for one person is the ordinary unmergeable
+    # duplicate, and § *A second Geni ID on one item is NOT a conflict* applies squarely -- it
+    # is self-healing and is not to be reported or fixed.
     "6000000002188099903": "Q9738",   # Wu Zhao 武曌 Zetian Emperor
 }
 ONLY = set(PAIRS)
