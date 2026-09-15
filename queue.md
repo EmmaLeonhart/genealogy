@@ -1137,31 +1137,35 @@ is at least some evidence for it.
 
 An analysis. Nothing was investigated when this was written.
 
-**⛔ IT IS WORSE THAN WE THINK, AND HERE IS THE FIRST MEASUREMENT** — taken 2026-09-14 while
-fixing an unrelated CI failure, `test_no_two_edits_claim_the_same_id`, which is the only reason
-anybody looked. Over `reports/wikidata-cjk-mul-labels.json`, the reviewed batch of 1,998 CJK
-`mul` labels sitting ready to send:
+**⛔ THIS WAS ALREADY RULED AND ALREADY SOLVED. THE SOLUTION WAS IMPLEMENTED IN ONE EMITTER.**
 
-    1,431 of 1,988 edits -- 72% -- are derived_from "carries the clan seat <X>, which is Chinese"
-       79 people would be labelled 隆西狄道 exactly, with no personal name in the label at all
-       12 more 河南洛陽, 6 范陽涿縣, 5 鄭州管城, 4 琅邪臨沂, 4 滎陽開封, 4 河東聞喜 ...
+Corrected 2026-09-14. A measurement of 1,431 clan-seat labels was reported here as a new finding
+about how bad the clan labels are. Emma: *"I'm pretty sure this is a thing that was resolved like
+two weeks ago that you just are continuously bringing up ... we came up with a solution, and you
+might have just not implemented it."* **Right on both halves.**
 
-**隆西狄道 is a place** — Didao county, Longxi commandery, in Gansu. A 郡望 is the ancestral
-seat a clan is named for; it is not the person's name, and a `mul` label that is nothing but a
-commandery-and-county says only *somebody from Longxi*. The batch's own commit message,
-`22b82b05`, describes it as *"1,998 set_label edit objects, one per person"* — it was neither
-one per person (six ids collided) nor, for these, a name.
+The ruling is 2026-08-29: *"we block the clan name application stuff for one month. In October,
+once the October gate passes, then the quick statements generate with these clan names in them,
+but otherwise they do not, because I'm just too sceptical of the clan names."* It was implemented
+the same day and it works — `build-garborg-day.py` prints `CJK clan labels suppressed until
+2026-10-01` on every run.
 
-**Nothing has gone out.** Wikidata editing is HELD, and the four self-contradicting items — one
-Wikidata item with two different proposed `mul` values, e.g. `Q15954845` offered both `某 李`
-and `隆西狄道` — are now withheld and recorded in `reports/cjk-mul-withheld.tsv`.
+**It suppressed a hardcoded list of 163 QIDs.** Then `reports/wikidata-cjk-mul-labels.json` was
+committed by hand on 2026-09-10, `22b82b05`, and `wikidata-edit-run.py` reads it directly:
+**1,431 clan-seat labels, ZERO of them among the 163.** § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
 
-**The 1,431 are NOT touched and are this item's work.** The question to answer here is what a
-`mul` label should be for a person known only by clan and seat: the seat is real evidence and
-deleting it loses information, but it is not a name. Three shapes are in the data already and
-the batch mixes them without deciding — `隆西狄道` bare, `公主 隆西狄道` (a title plus the seat),
-and `某 李` (a surname with the unknown-marker 某). § *A title inside a label takes the NATIVE
-form in CJK* and § *`NN` is PRESERVED in `mul`* both bear on it.
+Closed 2026-09-14: the gate moved to `scripts/wikidata_lockout.py` as the single copy of the
+date, `wikidata-edit-run.load_batch` applies it to every batch it reads, and the test is each
+edit's own `derived_from` rather than a list of ids — a list only covers the ids somebody
+remembered to add. Four tests in `tests/test_wikidata_start_date.py` pin it.
+
+**What is left here is the ORIGINAL question, which the block was always a deferral of**, and it
+comes up on 2026-10-01 when the gate opens: what should a `mul` label be for a person known only
+by clan and seat? 隆西狄道 is Didao county, Longxi commandery, in Gansu — real evidence, and not a
+name. Three shapes are already in the data and the batch mixes them without deciding: `隆西狄道`
+bare (79 people), `公主 隆西狄道` (a title plus the seat), and `某 李` (a surname with the
+unknown-marker 某). § *A title inside a label takes the NATIVE form in CJK* and § *`NN` is
+PRESERVED in `mul`* both bear on it.
 
 ### 0. Aug 28, 2026 manual adds
 

@@ -204,3 +204,67 @@ def test_a_hold_refuses_regardless_of_the_dates():
     assert not allowed and "HELD" in why
     allowed, why = wikidata_lockout.automation_allowed()
     assert not allowed and "HELD" in why
+
+
+# --------------------------------------------------------------------------------------
+# **THE CLAN-LABEL GATE, 2026-08-29.** *"we block the clan name application stuff for one
+# month. In October, once the October gate passes, then the quick statements generate with
+# these clan names in them, but otherwise they do not, because I'm just too sceptical of the
+# clan names."*
+# --------------------------------------------------------------------------------------
+
+def test_the_clan_gate_is_shut_before_october_and_open_on_the_day():
+    gate = wikidata_lockout.CLAN_BLOCK_GATE
+    before, why = wikidata_lockout.clan_labels_allowed(
+        gate - datetime.timedelta(days=1))
+    assert not before and "suppressed" in why
+    on, _why = wikidata_lockout.clan_labels_allowed(gate)
+    assert on
+
+
+def test_the_clan_gate_is_keyed_on_PROVENANCE_not_on_a_list_of_qids():
+    """A list of ids only ever covers the ids somebody remembered to add.
+
+    That is not hypothetical here. `build-garborg-day.py` gated the clan labels correctly from
+    the day they were ruled, by a hardcoded `CJK_CLAN_BLOCK` of 163 QIDs -- and then
+    `reports/wikidata-cjk-mul-labels.json` was committed by hand on 2026-09-10 carrying 1,431
+    clan-seat labels, NONE of them among the 163, read straight by `wikidata-edit-run.py`.
+    """
+    gate = wikidata_lockout.CLAN_BLOCK_GATE
+    shut = gate - datetime.timedelta(days=1)
+    seat = {"id": "x", "derived_from": "culture zh: carries the clan seat X, which is Chinese"}
+    plain = {"id": "y", "derived_from": "culture zh: graph traversal, 1 hop(s)"}
+    assert wikidata_lockout.is_clan_seat_edit(seat)
+    assert not wikidata_lockout.is_clan_seat_edit(plain)
+    kept, dropped = wikidata_lockout.drop_clan_labels([seat, plain], shut)
+    assert kept == [plain] and dropped == [seat]
+    kept, dropped = wikidata_lockout.drop_clan_labels([seat, plain], gate)
+    assert dropped == [] and len(kept) == 2
+
+
+def test_the_gate_date_has_exactly_one_copy():
+    """Two copies of one date is the bug this whole module exists for.
+
+    `build-garborg-day.CLAN_BLOCK_GATE` must READ `wikidata_lockout.CLAN_BLOCK_GATE`, not
+    restate it -- the composer and the runner lifting the block on different days is precisely
+    the failure that let 1,431 clan labels past a gate that was working.
+    """
+    source = (REPO / "scripts" / "build-garborg-day.py").read_text(encoding="utf-8")
+    assert "CLAN_BLOCK_GATE = _clan_gate_date()" in source, (
+        "build-garborg-day.py must read the gate date rather than keep its own copy"
+    )
+
+
+def test_every_batch_the_runner_reads_passes_the_clan_gate():
+    """§ *Code that is WRITTEN but never CALLED is not done* -- the filter must be in load_batch.
+
+    `load_batch` is the single point every batch passes through, `.qs`, `.txt` and `.json`
+    alike. A gate anywhere narrower is a gate one hand-committed file walks around, which is
+    exactly what happened.
+    """
+    source = (REPO / "scripts" / "wikidata-edit-run.py").read_text(encoding="utf-8")
+    assert "_gate_clan_labels" in source
+    assert "return _gate_clan_labels(data, path)" in source, (
+        "the JSON path must be gated"
+    )
+    assert "drop_clan_labels" in source

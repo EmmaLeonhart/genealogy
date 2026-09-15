@@ -314,7 +314,27 @@ def load_batch(path: Path) -> list[dict]:
                 break
     if not isinstance(data, list):
         raise SystemExit(f"{path}: expected a list of edit objects")
-    return data
+    return _gate_clan_labels(data, path)
+
+
+def _gate_clan_labels(edits, path):
+    """⛔ The 2026-10-01 clan-label block, applied to EVERY batch this runner reads.
+
+    **It was implemented once and routed around once.** `build-garborg-day.py` has suppressed
+    clan labels since the day it was ruled, 2026-08-29 -- but by a hardcoded list of 163 QIDs,
+    and only in the batch it composes. `reports/wikidata-cjk-mul-labels.json` was committed by
+    hand on 2026-09-10 and comes straight here, carrying **1,431 clan-seat labels of which none
+    are among the 163**. § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
+
+    So it is applied at `load_batch`, which is the single point every batch passes through --
+    `.qs`, `.txt` and `.json` alike -- and keyed on each edit's own `derived_from` rather than on
+    a list of ids, because a list only covers the ids somebody remembered to add.
+    """
+    kept, dropped = wikidata_lockout.drop_clan_labels(edits)
+    if dropped:
+        _allowed, why = wikidata_lockout.clan_labels_allowed()
+        print(f"{path.name}: {len(dropped)} clan-seat labels withheld - {why}")
+    return kept
 
 
 def _providers(missing: set) -> dict:

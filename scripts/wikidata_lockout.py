@@ -134,6 +134,65 @@ def automation_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
                   or AUTOMATION_START_DATE, today, "automation")
 
 
+#: ⛔ **THE CLAN LABELS DO NOT GO OUT BEFORE THIS DATE.** Ruled 2026-08-29: *"we block the clan
+#: name application stuff for one month. In October, once the October gate passes, then the quick
+#: statements generate with these clan names in them, but otherwise they do not, because I'm just
+#: too sceptical of the clan names."*
+#:
+#: **It lives here because it was implemented in ONE emitter and a second one routed around it.**
+#: `build-garborg-day.py` has had this gate working since the day it was ruled -- it prints
+#: `CJK clan labels suppressed until 2026-10-01` on every run -- and it suppresses a hardcoded
+#: list of **163 QIDs**. Then `reports/wikidata-cjk-mul-labels.json` was committed by hand on
+#: 2026-09-10, `22b82b05`, and `wikidata-edit-run.py` reads it directly: **1,431 clan-seat
+#: labels, none of the 163, gate not consulted.** § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
+#:
+#: Emma, 2026-09-14, on being shown the 1,431 as though they were news: *"I'm pretty sure this is
+#: a thing that was resolved like two weeks ago ... we came up with a solution, and you might have
+#: just not implemented it."* Correct on both halves -- the solution was real and it was
+#: implemented in one place.
+#:
+#: So the test is PROVENANCE, not a QID list. An edit that says it was derived from a clan seat
+#: is a clan label whatever batch it arrives in and whoever wrote it, and a list of ids can only
+#: ever cover the ids somebody remembered to add. `build-garborg-day.CLAN_BLOCK_GATE` reads this
+#: date rather than keeping a second copy -- two copies of one date is the bug this module exists
+#: for.
+CLAN_BLOCK_GATE = datetime.date(2026, 10, 1)
+
+#: What a clan-seat label says about itself in its `derived_from`. The batch's own wording is
+#: `carries the clan seat 隆西狄道, which is Chinese`; matching the stable part of it.
+_CLAN_SEAT_MARK = "clan seat"
+
+
+def is_clan_seat_edit(edit) -> bool:
+    """True when this edit object is a label derived from a Chinese clan seat (郡望)."""
+    if not isinstance(edit, dict):
+        return False
+    return _CLAN_SEAT_MARK in str(edit.get("derived_from") or "")
+
+
+def clan_labels_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
+    """Whether clan-seat labels may be emitted yet.
+
+    Independent of `HELD` on purpose: this answers *is this KIND of edit ready*, while `HELD`
+    answers *is editing open at all*. A caller needs both and they lift on different days.
+    """
+    today = today or datetime.date.today()
+    if today >= CLAN_BLOCK_GATE:
+        return True, f"clan labels allowed - {today} is on or after {CLAN_BLOCK_GATE}"
+    return False, f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (ruled 2026-08-29)"
+
+
+def drop_clan_labels(edits, today: datetime.date | None = None):
+    """`(kept, dropped)` -- the clan-seat labels removed while the gate is shut."""
+    allowed, _why = clan_labels_allowed(today)
+    if allowed:
+        return list(edits), []
+    kept, dropped = [], []
+    for e in edits:
+        (dropped if is_clan_seat_edit(e) else kept).append(e)
+    return kept, dropped
+
+
 def main() -> int:
     # The detail string is ASCII, but a cp1252 console has crashed on this output
     # before; the wrapper stays.

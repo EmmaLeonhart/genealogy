@@ -2666,8 +2666,25 @@ def kluge_blocked_from_universe():
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
 
+
+def _clan_gate_date():
+    """`wikidata_lockout.CLAN_BLOCK_GATE`, which is the only copy of that date."""
+    import importlib.util
+    path = Path(__file__).resolve().parent / "wikidata_lockout.py"
+    spec = importlib.util.spec_from_file_location("wikidata_lockout", str(path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.CLAN_BLOCK_GATE
+
 #: The clan labels do not go out before this date. See the gate at its use site.
-CLAN_BLOCK_GATE = datetime.date(2026, 10, 1)
+#:
+#: **ONE COPY, IN `scripts/wikidata_lockout.py`.** It moved there on 2026-09-14 because this
+#: gate was real and working here while a hand-committed batch went round it to
+#: `wikidata-edit-run.py` with 1,431 clan-seat labels -- § *A GUARD IN ONE EMITTER IS NOT A
+#: GUARD*. The runner now applies it to every batch it reads, keyed on provenance rather than on
+#: the 163 QIDs `CJK_CLAN_BLOCK` happens to name, and a second copy of the date here is the
+#: exact shape `tests/test_wikidata_start_date.py` was written to prevent.
+CLAN_BLOCK_GATE = _clan_gate_date()
 
 #: The month-long hold on every item `OBender12` has touched.
 #:
