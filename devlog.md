@@ -44139,3 +44139,51 @@ useless: a batch is a *proposal*, only part of which is pasted or sent each day,
 proposed-and-absent conflates *never applied* with *removed*. A precise version needs a receipt of
 what was actually applied — `reports/wikidata-edits-applied.tsv`, which the live CI run writes and
 which does not exist yet.
+
+## 2026-09-15 — Questionable cjk-izations: the patronymics were right, Korean was dropping ŋ
+
+`## Questionable cjk-izations` closed. Four items raised, with the hypothesis *"I think the
+-datter words might be systematically messed up. Possibly the -sson -ssen and general
+patronymics."*
+
+**The patronymics are correct, and the attested column is what settled it** — § *Every rule
+change is scored against the attested column*.
+
+* `-datter`/`-dotter` → 达特/多特. 特 is the standard Chinese rendering of *-ter* (卡特 = Carter),
+  so the ending is not truncated. 647 items use it and none use anything else.
+* `-sson` → 松. Scored strictly, on tokens carrying the genitive `s`: attested 松 10
+  (约翰松 Johansson, 卡尔松 Karlsson, 雅各布松 Jakobsson) against 森 6, which are the `-ssen`
+  ones. **A first, looser cut read 森 75 to 松 10 and pointed the other way** — it was
+  contaminated by English names (Alison 艾莉森, Addison, Acheson) that are not Scandinavian
+  patronymics and follow English convention. The strict cut reverses it.
+* `-sen` → 森 (阿蒙森 Amundsen, 安德森 Andersen). Attested 34 of 35; we emit 森 218 of 229.
+
+**What is actually wrong is Korean, and two of her four items are it: the ŋ was being dropped
+before a vowel.** `Inger` rendered 이에르 for 잉에르, `Bunge` 부에 for 붕에, `Stangaland`
+스타아란드, `Tengesdal` 텡에스달. **127 of the 225 `ko` labels whose name contains `ng` had lost
+the nasal** — `reports/cjk-korean-dropped-ng.csv`.
+
+**The cause is placement, not the table.** `ng` is in `_CAN_BE_FINAL` and renders correctly when a
+consonant follows or the word ends — `Ingrid` was already 잉리드 and `Lang` 랑. But the shared
+rule is *a consonant followed by a vowel becomes the next syllable's initial rather than this
+one's final*, which is right for everything except `ng`: **Korean has no ŋ onset**, ㅇ initial is
+silent and `ng` is not in `_I` at all, so a following vowel gave it neither slot and it vanished.
+
+That test was written out inline **five times** in `render_word`. It is now `_takes_final_slot`
+and the branches call it — § *A GUARD IN ONE EMITTER IS NOT A GUARD*, and a sixth branch added
+later must not be able to disagree with the other five. The `Sigrid` clause (a stop before a
+liquid: 시그리드, never 식리드) rides alongside rather than inside it, since `ng` is not a stop.
+
+**Measured as the difference the change itself makes**, not as a re-render: **126 labels change,
+2,422 are identical, and 0 of the changes are unattributable to `ng`**. A first measurement said
+144 and was wrong — it re-rendered whole labels from scratch and so surfaced differences with
+nothing to do with this, including hanja names like `Xie of Shang` that never go through the Latin
+path at all. `reports/cjk-korean-ng-corrections.csv` is every one.
+
+**One of the 126 is already suppressed by yesterday's reverted-label guard** — a human has ruled
+on that slot — so the two pieces of work compose as intended.
+
+`tests/test_translit_ko_latin.py` is new: the module had no test file at all, which is how a defect
+this visible reached 127 live labels. 21 assertions — the six broken cases, the three that were
+already right, the rule itself, the single-definition check, and five renderings the module's own
+docstrings name as correct.

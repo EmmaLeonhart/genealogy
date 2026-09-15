@@ -63,6 +63,40 @@ _F = {name: i for i, name in enumerate(_FINALS)}
 #: its own syllable with the epenthetic vowel 으, which is what makes `Garborg` four syllables.
 _CAN_BE_FINAL = {"g", "n", "l", "m", "b", "ng"}   # note: "r_" is deliberately absent
 
+
+def _takes_final_slot(c, after):
+    """May consonant `c` close this syllable, given what follows?
+
+    ⛔ **`ng` IS THE EXCEPTION AND THE REST OF THE RULE IS RIGHT.** Ruled 2026-09-15 from
+    `queue.md` section *Questionable cjk-izations*.
+
+    Normally a consonant followed by a vowel becomes the NEXT syllable's initial rather than this
+    one's final -- `Peter` is 피터, not 핏어. **But Korean has no `ng` onset.** ㅇ in initial
+    position is silent, `ng` is not in `_I` at all, so when `ng` is followed by a vowel the
+    general rule strands it: it takes neither slot and is silently dropped.
+
+    **Measured over `reports/garborg-live-labels.tsv`: 127 of the 225 `ko` labels whose name
+    contains `ng` had lost the nasal** -- `Inger` 이에르 for 잉에르, `Bunge` 부에 for 붕에,
+    `Stangaland` 스타아란드, `Tengesdal` 테에스달, `Ingeborg` 이에보륵. Emma raised four items
+    and two of them are this; `reports/cjk-korean-dropped-ng.csv` is every one.
+
+    **The contrast is what proves it is placement and not the table.** `Ingrid` already rendered
+    잉리드 and `Lang` 랑, both correct -- there `ng` is followed by a consonant or by nothing, so
+    the general rule already put it in the final slot. Only a following vowel broke it.
+
+    So `ng` always takes the final slot, and the following vowel opens a new syllable with the
+    silent ㅇ, which is what `_compose("", v, ...)` already does. `Inger` becomes 잉에르.
+
+    **One helper rather than five edited conditions.** This test was written out five times in
+    `render_word`; § *A GUARD IN ONE EMITTER IS NOT A GUARD* is the same shape, and a sixth
+    branch added later must not be able to disagree with the other five.
+    """
+    if c not in _CAN_BE_FINAL:
+        return False
+    if c == "ng":
+        return True
+    return not (after and after[0] == "V")
+
 #: A stop before a liquid does NOT close the syllable -- 외래어 표기법 gives it 으.
 #: `Sigrid` is 시그리드, not 식리드, and the same applies to `Ingrid` and every -gr-,
 #: -br- and -dr- cluster, which are common in this corpus.
@@ -226,7 +260,7 @@ def render_word(word):
             if j < len(units) and units[j][0] == "C":
                 c = units[j][1]
                 after = units[j + 1] if j + 1 < len(units) else None
-                if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+                if _takes_final_slot(c, after):
                     final = c
                     j += 1
             # The final belongs to the LAST piece. Attaching it only when the vowel did not
@@ -251,7 +285,7 @@ def render_word(word):
                     if j < len(units) and units[j][0] == "C":
                         c = units[j][1]
                         after = units[j + 1] if j + 1 < len(units) else None
-                        if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+                        if _takes_final_slot(c, after):
                             final = c
                             j += 1
                     out.append(_compose("", merged, final))
@@ -272,7 +306,7 @@ def render_word(word):
                     if j < len(units) and units[j][0] == "C":
                         c = units[j][1]
                         after = units[j + 1] if j + 1 < len(units) else None
-                        if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+                        if _takes_final_slot(c, after):
                             final = c
                             j += 1
                     out.append(_compose("", merged, final))
@@ -306,7 +340,10 @@ def render_word(word):
             if j < len(units) and units[j][0] == "C":
                 c = units[j][1]
                 after = units[j + 1] if j + 1 < len(units) else None
-                if (c in _CAN_BE_FINAL and not (after and after[0] == "V")
+                # The `Sigrid` clause rides alongside the shared test rather than inside it:
+                # it is about a STOP before a liquid (시그리드, not 식리드) and `ng` is not a
+                # stop, so the two rules never contend.
+                if (_takes_final_slot(c, after)
                         and not (c in _STOPS and after and after[1] in _LIQUIDS)):
                     final = c
                     j += 1
@@ -330,7 +367,7 @@ def render_word(word):
         if j < len(units) and units[j][0] == "C":
             c = units[j][1]
             after = units[j + 1] if j + 1 < len(units) else None
-            if c in _CAN_BE_FINAL and not (after and after[0] == "V"):
+            if _takes_final_slot(c, after):
                 final = c
                 j += 1
         syl = _compose(initial, "eu", final)
