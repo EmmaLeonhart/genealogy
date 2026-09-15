@@ -92,10 +92,6 @@ the runner is the last thing between a file on disk and Wikidata. 216 edits → 
 from one file. Fifty per cent OF WHAT is not written down anywhere — of the day's generated
 statements, of the carry-forward, of the caps. ⛔ ASK before implementing a reading of it.
 
-## Additional item
-
-Given names and surnames should have our standardized cjk-izations attached to them. imo they should even be the source of it in the logic. update the old ones to this form and new ones are always gonna be created in this manner
-
 ## Another item
 
 Export descendants of these people, idk their status, ancestor climb and then descendants export

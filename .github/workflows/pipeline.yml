@@ -312,6 +312,15 @@ jobs:
       # correct, because staying correct depends on a person remembering. It runs here, after
       # every batch this job writes and before `Commit the rebuilt batch` picks it up with
       # `git add -A`.
+      # § *Code that is WRITTEN but never CALLED is not done.* The CJK backfill for existing
+      # name items runs every pipeline, capped at LABEL_EDIT_CAP, so the 7,516 items missing a
+      # reading drain steadily instead of waiting for someone to remember the script.
+      - name: CJK readings for the name items this corpus bears
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-name-item-cjk.py
+
       - name: Refresh the batch inventory
         continue-on-error: true
         env:

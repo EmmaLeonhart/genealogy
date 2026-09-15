@@ -16,6 +16,52 @@ See `CLAUDE.md` § "Workflow Rules" and `queue.md`'s preamble.
 
 ---
 
+## 2026-09-14 — the name items carry our CJK readings, and the token table is the source
+
+Ruled: *"Given names and surnames should have our standardized cjk-izations attached to them.
+imo they should even be the source of it in the logic. update the old ones to this form and new
+ones are always gonna be created in this manner"*.
+
+They line up exactly and had been kept apart for no reason:
+`reports/garborg-name-transliterations.tsv` is keyed on the TOKEN, and **a name item IS a
+token**. The table fed PERSON labels through `label_in` while the name items got `Len` and
+`Lmul` and nothing else — so the same string was cjk-ised for a person and left bare on the item
+that names the string.
+
+**New ones.** `build-garborg-name-items.py` emits `Lja`/`Lzh`/`Lko` on every `CREATE`:
+
+    Mjolhus    ミョルフス        莫尔胡斯     몰후스
+    Olsdatter  オルスダッテル    奥尔斯达特   올스다테르
+    Garborg    ガルボルグ        加尔博格     가르보륨
+
+`label_in` is loaded by path rather than reimplemented — § *A GUARD IN ONE EMITTER IS NOT A
+GUARD* cuts both ways, and one source is the whole point of the ruling.
+
+**Old ones.** `scripts/build-name-item-cjk.py`, wired into `pipeline.yml` so it drains rather
+than waiting to be remembered.
+
+⛔ **LOCAL, and deliberately so.** `reports/name-item-languages.csv` knows 823,907 name items
+and **699,287 carry no CJK at all** — backfilling that set is exactly the leak Emma named the
+same day: *"the quickstatements that are generated are supposed to be local, but they're not
+local ... having stuff that leaks out from the universe and into just random areas ... is an
+intrinsic risk."* So the scope is the items **this corpus bears**: the plan rows with an
+`existing_qid`, **8,006 items, 7,516 missing at least one reading**.
+
+    missing ko only      3108      missing zh,ko         867
+    missing ja,zh,ko     2486      missing zh only        24
+    missing ja,ko        1003      missing ja only        18
+
+Korean being the biggest single gap follows from § *CJK INCLUDES KOREAN* arriving 2026-09-01,
+after most of these items existed.
+
+⛔ **PURELY ADDITIVE.** A language already holding a label is never written. `Lja` REPLACES, and
+replacing is how 110 live CJK labels were overwritten earlier the same day, Fuxi's correct
+伏羲 among them. Writing only into an empty slot is what makes `L` safe here. All three or
+none per the gate; an item holding `ja` but missing `ko` gets only its `ko`.
+
+First run: 90 written, which is `LABEL_EDIT_CAP`, highest-bearer first — `Olsdatter` (1,622
+bearers) taking all three, `JOSEPH` (2,403) and `Ole` (1,440) taking Korean.
+
 ## 2026-09-14 — the splitter reads a compound surname as one name
 
 `und` and `(Ulf` became `P734` *family name* items because `classify_fields` whitespace-split
