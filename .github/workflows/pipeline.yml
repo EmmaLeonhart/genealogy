@@ -301,6 +301,36 @@ jobs:
           PYTHONPATH: src
         run: python scripts/build-pages-site.py
 
+      # ⛔ THE INVENTORY IS GENERATED, SO CI GENERATES IT. `tests/test_generated_inventories.py`
+      # asserts `reports/built-batches.tsv` names exactly the batch files on disk, and nothing ran
+      # the generator -- so the file went stale the moment any batch was added and the test went
+      # red and stayed red. It failed from at least 2026-09-10 to 2026-09-14 on
+      # `On disk but unlisted: ['reports/wikidata-cjk-mul-labels.json']`.
+      #
+      # § *A page whose generator no workflow runs is published as a photograph*, with a red
+      # build attached: a generated artefact that a test polices and no job rebuilds cannot stay
+      # correct, because staying correct depends on a person remembering. It runs here, after
+      # every batch this job writes and before `Commit the rebuilt batch` picks it up with
+      # `git add -A`.
+      - name: Refresh the batch inventory
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/audit-built-batches.py
+
+      # The SAME trap, one file over, and green today only by luck. Two tests police
+      # `reports/repo-freshness.csv` -- that it names no deleted file, and that every generator
+      # it names still exists -- and nothing regenerated it either. It goes red the first time
+      # a report or a script it lists is deleted, which is a thing this repo does routinely
+      # (§ *LEGACY CODE IS DELETED*). Wired at the same time rather than waiting for it to fail,
+      # because the answer to *is this something that should be in CI but isn't* is the whole
+      # category, not the one instance that happened to go red first.
+      - name: Refresh the repo freshness census
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-repo-freshness.py
+
       - name: What changed
         id: batch
         run: |
