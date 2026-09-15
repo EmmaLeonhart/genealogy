@@ -43255,3 +43255,37 @@ are still open.**
 
 `reports/restore-cjk-labels.qs` puts back the 80 that had a recoverable previous value; 30 more
 were additions rather than overwrites and are listed there uncorrected rather than guessed at.
+
+## 2026-09-14 — the Asian-label crisis closes, and the root cause is locality
+
+**Emma's diagnosis, and it outranks the symptom I found:** *"the core of this really is based
+upon something later in the queue related to how the quickstatements that are generated are
+supposed to be local, but they're not local... the Scandinavian areas are places where we really
+have a good idea of what good data looks like and what the edge cases are, but stuff that leaks
+out of the universe into just random areas is an intrinsic risk."*
+
+**Fuxi is a Chinese mythological figure.** Nothing about him is near the Bure kinship in Sweden.
+The transliteration bug is real and its guard shipped the same day, but **a correct
+transliterator pointed at Chinese mythology is still the wrong pipeline aimed at the wrong
+people.** § *ONLY EVER EDIT THINGS IN THE UNIVERSE OR ONE STEP ADJACENT TO IT* would have
+prevented it without knowing anything about katakana, and that item now carries this as its first
+measured cost.
+
+**And the scale I reported was wrong in the way that mattered.** I found 110 CJK overwrites and
+built a restore for all of them. Emma: *"was Fuxi the only person that actually was Asian?...
+the quickstatements you gave me only are Europeans."* Checked:
+
+    items whose previous `ja` was native Han -- a genuine East Asian name:   1   (Fuxi)
+    items whose previous `ja` was katakana -- a European already transliterated:  37
+
+**One item is the crisis. The other 109 overwrites are a rule violation without damage** — we
+replaced one katakana transliteration of a European name with another. Some of theirs were
+better: `ハーラル3世 (デンマーク王)` follows Japanese Wikipedia convention where our
+`デンマーク王ハラルド3世` does not. Restoring them is churn, not repair, and the file stays in the
+repo unrun.
+
+**What actually shipped for this item:** the `live_labels` guard on both `_label_corrections`
+emit sites, `reports/restore-cjk-labels.qs`, and a three-line Fuxi restore. **Defects 2 and 3 —
+the transliteration of romanised CJK, and `mul` and the CJK path reading different `NAME` records
+— are not fixed**, and the locality item is where they properly belong, because neither can occur
+inside the universe.

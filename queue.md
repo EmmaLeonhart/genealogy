@@ -10,87 +10,6 @@ whole run loop and it ends *"there's no discretion on your part at all"*, said t
 
 ## ⛔ EMMA'S OWN ITEMS, AND THEY COME FIRST
 
-### ⛔⛔ FIRST ITEM: IMPROPER LABELS ON ASIAN FIGURES. Ruled 2026-09-14, A CRISIS.
-
-*"the crisis of improper label being applied to asian figures needs to be addressed as the first
-thing in the queue"*, and the case: **Fuxi `Q236972` has a bad katakanization** —
-<https://www.wikidata.org/wiki/Q236972>.
-
-**This is NOT the script-classifier work, which is done.** That fixed which script a name is read
-as. This is about labels **already written to Wikidata**, which a classifier fix does not touch.
-
-**⛔ DIAGNOSED 2026-09-14. IT IS OURS, IT IS NOT ONE ITEM, AND IT IS AN OVERWRITE.**
-
-Emma: *"you can fucking look through my goddamn contributions and figure this shit out."* Done —
-the contributions are what answered it.
-
-**The edit.** `Q236972` Fuxi, 2026-09-14T01:21:36, batch `#temporary_batch_1789348401596`:
-
-    ja = ユクスイオング      set  (overwrote 伏羲)
-    zh = 尤克斯伊翁         set
-    ko = 유그시옹           set
-    mul = Fuxi             add
-    2026-09-15  RinrinBot put ja back to 伏羲
-
-**The input.** The Geni profile `6000000130191678854` carries TWO name records —
-`1 NAME Fuxi` and `1 NAME Yuxiong`. `mul` took the first; **`ja`/`zh`/`ko` transliterated the
-second, letter by letter, as if `Yuxiong` were a European name**: Y-u-ks-i-o-n-g →
-ユクスイオング.
-
-**The scale, from the same batch.** In thirty minutes, 500 edits:
-
-    set ja   32      OVERWROTE an existing Japanese label
-    set ko   32      OVERWROTE an existing Korean label
-    set zh   31      OVERWROTE an existing Chinese label
-    add mul  32      correct -- add only writes where absent
-
-**95 existing CJK labels overwritten in half an hour**, against `CLAUDE.md` § *Wikidata's label
-beats ours*. The rule is written about `mul`; the practice overwrites `ja`/`zh`/`ko` too.
-
-**The code.** `scripts/build-garborg-day.py`, `_label_corrections`:
-
-    ja, zh, ko = label_in(want, table)
-    if ja:
-        out.append(f'{qid}	Lja	"{ja}"')      # <- no live_labels check
-        out.append(f'{qid}	Lzh	"{zh}"')
-        out.append(f'{qid}	Lko	"{ko}"')
-
-Its sibling `_missing_cjk_labels` is guarded and says so in its own docstring — *"PURELY
-ADDITIVE. It never rewrites a label that exists"*, and returns nothing at all when `live_labels`
-is absent, because *"an absent live-labels file means we do not know"*. **This path has no
-guard.** A Latin-label correction drags CJK along with it as a side effect.
-
-**Three separate defects, and a fix must address all three:**
-
-1. **The overwrite.** CJK labels must be emitted only where `live_labels` shows none, the way
-   `_missing_cjk_labels` already does. A correction to a Latin label is not grounds to touch a
-   Japanese one.
-2. **The transliteration of romanised CJK.** `label_in()` renders any Latin string phonetically
-   into katakana, which is right for `Carl von Linné` → カール・ヴォン・リンネ and catastrophic
-   for `Yuxiong`. A person whose native form is Han must not be katakana-ised from pinyin.
-3. **Which `NAME` record is chosen.** `mul` took `Fuxi`, the CJK path took `Yuxiong`. One person,
-   two records, two different answers within a single batch.
-
-**Wikidata editing is HELD, so the deliverable is the measurement and a held batch, not an edit.**
-The 95 overwrites of 2026-09-14 are already live and a bot has reverted at least one of them.
-
-**The question is provenance before correction.** Which run wrote it, from which input, under
-which rule. This pipeline produces `ja`/`zh`/`ko` readings for everyone —
-`CLAUDE.md` § *The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN* — so a Chinese mythological
-figure carrying a katakana `ja` label is very probably ours, and **if it is ours, the rule that
-produced it produced more than one.** Find the population before touching any single item.
-
-Relevant rules already on the books, which the fix must not violate:
-
-* § *A title inside a label takes the NATIVE form in CJK*, never a transliteration.
-* § *Transliterate the English reading* — faithfulness to the source language destroys more than
-  it saves, and every rule change is scored against the attested column.
-* § *Wikidata's label beats ours.* An existing `mul` is not ours to overwrite.
-* § *A LANGUAGE LABEL DUPLICATING `mul` IS NOT OUR PROBLEM* — another bot owns that, so do not
-  conflate a duplicate with a wrong one.
-* Wikidata editing is HELD, so the output of this is a measurement and a batch that waits, not an
-  edit that goes out.
-
 ### ⛔ THE PATH COLLECTION IS A BACKGROUND ASSUMPTION, NOT THE FIRST ITEM. Ruled 2026-09-14
 
 *"I think the paths collection being the first item made it so that you had a tendency to not do
@@ -1382,6 +1301,19 @@ measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 1
 
   **And the reason is OPSEC, not correctness** — *"it is drawing attention"* — which is the same
   concern behind the caps in § *Caps* and behind the QuickStatements batching generally.
+
+  **⛔ AND THE FUXI CASE IS THIS RULE'S FIRST MEASURED COST, 2026-09-14.** A Chinese
+  mythological figure, `Q236972`, nowhere near the universe, got a phonetic katakana label
+  written over its correct 伏羲 — because a batch reached him at all. Emma: *"the core of this
+  really is based upon something later in the queue related to how the quickstatements that are
+  generated are supposed to be local, but they're not local... the Scandinavian areas are places
+  where we really have a good idea of what good data looks like and what the edge cases are, but
+  stuff that leaks out of the universe into just random areas is an intrinsic risk."*
+
+  That is the diagnosis and it outranks the symptom. The transliteration bug is real — the guard
+  for it went in the same day — but **a correct transliterator pointed at Chinese mythology is
+  still the wrong pipeline aimed at the wrong people.** Locality is what would have prevented it,
+  and it is a stronger fix than any amount of per-script special-casing.
 
   **Nothing is investigated, measured or changed.** No emitter is audited, no locality test is
   written, and no batch is altered on the strength of this. It is written down where it was sent.
