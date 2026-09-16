@@ -54,12 +54,35 @@ def viewer_ids():
     return seen
 
 
+def default_viewer(seen):
+    """⛔ **A CHAIN IS NOT DROPPED FOR WANT OF A VIEWER ID.**
+
+    `from=` is the account owner on **every** harvested permalink -- 6,945 of 6,945 carry the one
+    id -- so a chain the harvest happens to have no row for was being skipped over a value that
+    has never once varied. That is the whole of the `no viewer id` skip count, and it grows with
+    every chain the fetcher writes ahead of the harvest index rather than behind it: 28 were lost
+    that way on 2026-09-15.
+
+    The fallback is the id the harvest ITSELF attests, never a constant typed in here. With an
+    empty harvest there is no fallback and the skip stands, which is the right answer -- inventing
+    a viewer would put somebody else at the head of every chain.
+    """
+    counts = {}
+    for v in seen.values():
+        counts[v] = counts.get(v, 0) + 1
+    if not counts:
+        return None
+    # Sorted first, so ties break the same way on every run -- § *SORTING MUST BE DETERMINISTIC*.
+    return max(sorted(counts), key=lambda v: counts[v])
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if not os.path.exists(CHAINS):
         print("no %s" % CHAINS)
         return 2
     froms = viewer_ids()
+    fallback = default_viewer(froms)
     chains = {}
     with io.open(CHAINS, encoding="utf-8") as fh:
         for row in csv.DictReader(fh, delimiter="\t"):
@@ -74,7 +97,7 @@ def main():
             skipped += 1
             continue
         if not rows[0]["profile_id"]:
-            rows[0]["profile_id"] = froms.get((to_id, kind), "")
+            rows[0]["profile_id"] = froms.get((to_id, kind), "") or fallback or ""
         if not rows[0]["profile_id"]:
             skipped += 1
             continue
