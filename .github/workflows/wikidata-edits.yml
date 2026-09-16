@@ -99,6 +99,18 @@ jobs:
             echo "go=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # ⛔ THE BATCH GLOB, NOT ONE NAME, AND THIS COST EVERY EDIT THE PROJECT EVER SENT.
+      # This list said /reports/wikidata-garborg-day.txt while DAILY_BATCH said
+      # reports/wikidata-garborg-day-auto.txt, so the file the run reads was never checked out.
+      # The first live morning -- 2026-09-15, the day AUTOMATION_START_DATE names -- died on
+      # `no such batch: /home/runner/.../reports/wikidata-garborg-day-auto.txt`, and NOT ONE
+      # EDIT HAS EVER GONE OUT FROM THE ACCOUNT. Emma: "why the fuck have I never seen any
+      # edits from the account". The run went red on the schedule and nobody looked, because a
+      # red wikidata-edits run had been ordinary all through the hold.
+      # The -auto/-manual split landed 2026-09-14 and this line was not moved with it. The glob
+      # covers whichever half a run asks for, and "The batch has to be on disk" below refuses to
+      # continue rather than letting the mismatch fail 200 lines into a log.
+      #
       # Sparse, because this repo is 13+ GB tracked and this job reads four paths.
       # A full checkout is minutes of runner time every morning for nothing, and
       # `sparse-checkout-cone-mode: false` is what lets a single FILE be named
@@ -111,7 +123,7 @@ jobs:
           sparse-checkout: |
             /scripts
             /src
-            /reports/wikidata-garborg-day.txt
+            /reports/wikidata-garborg-day*.txt
             /reports/wikidata-edits-applied.tsv
 
       - uses: actions/setup-python@v5
@@ -183,6 +195,20 @@ jobs:
             echo "limit=${{ inputs.limit || '10' }}" >> "$GITHUB_OUTPUT"
             echo "mode=${{ (inputs.dry_run == false) && '--live' || '--dry-run' }}" >> "$GITHUB_OUTPUT"
           fi
+
+      # The failure this guards is silent in the worst way: the batch path is a string in two
+      # places, and when they disagree the run dies inside the python with a one-line message
+      # 200 lines down a log nobody opens. Say it at the top, in the words of the mistake.
+      - name: The batch has to be on disk
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
+        run: |
+          batch="${{ steps.plan.outputs.batch }}"
+          if [[ ! -f "$batch" ]]; then
+            echo "::error title=Batch not checked out::$batch is not on disk. It is either not"                 " committed, or not covered by the sparse-checkout list in this workflow."
+            ls -la reports/ 2>/dev/null | head -40
+            exit 1
+          fi
+          echo "$batch: $(grep -c '^' "$batch") lines"
 
       - name: Run the batch
         if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
