@@ -176,13 +176,31 @@ the other spouse of a parent, in a separate `FAM`, with the child not a `CHIL` o
 much larger than the pre-harvest figures this item was written with.**
 
 * **`fiancé` / `fiancée`, 57 rows over 11 people.** `ENGA` occurs **zero** times in the corpus.
-  Currently emitted as a couple with no marriage event, which is a guess. Needs a `Forest` on one
-  of them. The eleven: `359282548040006278` Constantine Doukas, `6000000000350860821` Napoléon I,
-  `6000000001723257706` James Hepburn, `6000000005931058360` Margaret of Geneva,
-  `6000000007061365126` Beatriz de Castilla, `6000000008579937191` Beatrice Komnene,
-  `6000000012442001730` Dante Alighieri, `6000000014829030443` Richenza,
-  `6000000023090769164` Mika Brzezinski, `6000000031546887817` Mariam Bagrationi,
-  `6000000077426598714` `<private>` Holmgren.
+  Currently emitted as a couple with no marriage event, which is a guess.
+
+  ⛔ **AND THE EXPORT ROUTE IS CLOSED ON ALL ELEVEN. Checked 2026-09-16, every one of them.**
+  `https://www.geni.com/gedcom/export/<id>` redirects to `/error` with *"You are not allowed to
+  export that profile"* for the whole list -- none was created by this account. So *"needs a
+  `Forest` on one of them"* cannot be done as written, and re-running the check is spending
+  eleven page loads to learn this again.
+
+      359282548040006278   Constantine Doukas        denied
+      6000000000350860821  Napoléon I                denied
+      6000000001723257706  James Hepburn             denied
+      6000000005931058360  Margaret of Geneva        denied
+      6000000007061365126  Beatriz de Castilla       denied
+      6000000008579937191  Beatrice Komnene          denied
+      6000000012442001730  Dante Alighieri           denied
+      6000000014829030443  Richenza                  denied
+      6000000023090769164  Mika Brzezinski           denied
+      6000000031546887817  Mariam Bagrationi         denied
+      6000000077426598714  <private> Holmgren        denied
+
+  **What is left is the seed rule, and it has not been tried here.** `docs/export-seed-rules.md`
+  creates an ANCESTOR and exports off that, which is how the descendants campaign gets round a
+  profile it may not export. An engagement is not a descent, so the created person has to be
+  joined to one of the eleven some other way before a `Forest` off them crosses the `fiancé`
+  edge -- that is the open question, and it is a decision rather than a command.
 * **`your relative?`, 105 rows over 102 people** — not the 15 recorded here. Geni itself is not
   naming the relation. Only a `Forest` on those people shows what the link is. They are
   overwhelmingly ancient or disputed: Constantine the Great, Peroz I of Persia, Balamber of the
