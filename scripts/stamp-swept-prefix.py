@@ -56,11 +56,6 @@ WORKLIST = ROOT / "reports" / "unconnected-p2600.tsv"
 sys.path.insert(0, str(ROOT / "scripts"))
 import attempt_ledger  # noqa: E402
 
-#: The sentinel `build-unconnected-worklist.py` fills the column with; it means NEVER attempted,
-#: and the whole reason progress is counted by real dates rather than by the column being full.
-SEED_NEVER = "2026-01-01"
-
-
 def main() -> int:
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -85,14 +80,20 @@ def main() -> int:
 
     today = datetime.date.today()
     prefix = rows[: boundary + 1]
+    # ⛔ **A DATE IS A DATE AND THIS SCRIPT DOES NOT JUDGE WHICH ONES ARE "REAL".** An earlier
+    # version counted rows carrying the seed value separately from rows carrying any other date,
+    # and reported the difference as progress. Ruled 2026-09-16: *"I don't give a shit about
+    # whether attempt dates are 'real' so that information shouldn't even be accessible to you.
+    # The fact it is is alarming."* Code that knows which dates are less real than others is one
+    # step from code that decides to fix them. The only distinction drawn here is the one the
+    # park rule requires -- a date in the FUTURE is a hold and is not overwritten -- and that is
+    # about time, not about authenticity.
     parked = [gid for gid, last in prefix if last and last > today.isoformat()]
-    already = [gid for gid, last in prefix
-               if last and last <= today.isoformat() and last != SEED_NEVER]
     wanted = [gid for gid, last in prefix if not (last and last > today.isoformat())]
 
     print("boundary: position %d (%s)" % (boundary, args.through))
-    print("prefix: %d rows | parked and left alone: %d | already dated: %d | to stamp: %d"
-          % (len(prefix), len(parked), len(already), len(wanted)))
+    print("prefix: %d rows | parked, left alone: %d | to stamp: %d"
+          % (len(prefix), len(parked), len(wanted)))
     if not args.apply:
         print("dry run; pass --apply to write")
         return 0

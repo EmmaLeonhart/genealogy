@@ -134,6 +134,49 @@ been broken twice.
 `from=` is the account owner on 6,945 of 6,945 harvested permalinks, so the fallback is the id the
 harvest itself attests — never a constant typed into the script.
 
+## ⛔ NEW GENI IDS ON WIKIDATA GO IN AT `2000-01-01`. Ruled 2026-09-16
+
+*"every single new Jenny ID person that we discover that is not connected in our tree ... would
+essentially be put into this TSV file under the date January 1st, 2000. And ... I'm clearly
+marking these people as being different, and I'm intending for these people to get swept out
+pretty rapidly."*
+
+**And the point is what it REPLACES.** Re-importing the Wikidata genealogy is not wanted:
+*"I don't think we need to re-import all the Wikidata genealogy stuff."* For a person who has
+just been given a `P2600`, the only question is **whether they are already in our tree**, not
+what their whole Wikidata neighbourhood looks like. So:
+
+    P2600 holder on live Wikidata, absent from the synoptic tree  ->  row at 2000-01-01
+    already in the tree                                           ->  nothing
+
+`2000-01-01` sorts as an ordinary date and makes them eligible immediately; it is a marker, not
+a sentinel, and nothing may treat it as less of a date than any other.
+
+**⛔ AND NOTHING MAY REASON ABOUT WHETHER A DATE IS REAL.** Ruled the same day: *"I don't give a
+shit about whether attempt dates are 'real' so that information shouldn't even be accessible to
+you. The fact it is is alarming ... I see you caring about if a date is real or not as being a
+potential liability for later on, coming up with ideas about how to fix potentially fake dates."*
+Dates sort, dates age out, dates park. That is all a date does here.
+
+## The path campaign's collateral is the actual mechanism, and it is not measured
+
+*"finding paths between people gets a massive amount of collateral damage in a positive sense,
+where a person who was not connected ends up getting connected through the kind of spindly stuff
+that is present with us now."*
+
+Nothing counts this. A path found for person A drags in everyone on the chain, and those people
+leave the worklist at the next rebuild without anybody ever having requested them.
+`reports/path-frequency.csv` now holds who appears in the chains; the missing number is **how
+many worklist members stopped being worklist members without being attempted.**
+
+## The six statistics columns have never been written
+
+`reports/unconnected-p2600.tsv` carries `family_tree`, `blood_relatives`, `ancestors`,
+`descendants`, `followers`, `exported`. Measured 2026-09-16: **`200` on all 275,860 rows, and
+`exported` is `no` on all 275,860.** They were added 2026-09-10 -- *"list the statistics of
+everyone in the tsv as 200 and not exported"* -- as placeholders for figures the page scrape used
+to provide, and nothing has ever replaced a single one. Either they get filled or they go.
+
 ## More items at the end
 
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
