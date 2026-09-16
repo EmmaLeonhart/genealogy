@@ -193,17 +193,35 @@ def eligible_on(last):
         return datetime.date.min
 
 
+def qid_num(qid):
+    """`Q106577793` -> 106577793, for ordering. An unparseable qid sorts last rather than
+    crashing: this column is built from live Wikidata and a surprise must not stop the file."""
+    tail = str(qid)[1:]
+    return int(tail) if tail.isdigit() else (1 << 62)
+
+
 def sort_key(row, today):
     """§ 7 of the spec, as one total key — `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*.
 
     ELIGIBLE block first; the ineligible below it ordered by WHEN THEY BECOME ELIGIBLE. Within
     either block, neighbourhood size DESCENDING then qid ASCENDING. Every component is a number,
     a date or a string, so the same rows produce the same bytes on any machine.
+
+    ⛔ **`qid ASCENDING` MEANS NUMERICALLY, AND FOR A LONG TIME IT DID NOT.** The key compared the
+    qid as a STRING, so `Q106577793` sorted before `Q107277` — **35,969 adjacent pairs ran
+    backwards** by number inside a single neighbourhood-size group. That is deterministic, and it
+    is still wrong: the campaign is described and driven as *ascending QID*, `--skip N` is read as
+    a position in that order, and lexical order is not that order. Emma, 2026-09-16: *"was the
+    ordering deterministic as I told you to do"* — reproducible, yes; ascending, no.
+
+    `geni_id` is the final component because 244 qids appear on more than one row, and a key that
+    leaves ties to sort stability is not a total key.
     """
-    qid, _gid, size, last = row
+    qid, gid, size, last = row
     when = eligible_on(last)
     ready = when <= today
-    return (0 if ready else 1, datetime.date.min if ready else when, -int(size), qid)
+    return (0 if ready else 1, datetime.date.min if ready else when, -int(size),
+            qid_num(qid), str(gid))
 
 
 def load_previous(path, today=None):
@@ -355,7 +373,9 @@ def main() -> int:
         if node is not None and uf.find(node) == root:
             continue                      # connected -- not in the file, and never stored
         last = previous.get(gid) or (SEED_ATTEMPTED if gid in attempted else SEED_NEVER)
-        rows.append((sorted(qids)[0], gid, sizes.get(gid, 1), last))
+        # The smallest QID NUMERICALLY, not the lexically smallest string: sorted() on
+        # ["Q9","Q100"] answers "Q100", which picks a different item for the same person.
+        rows.append((min(qids, key=qid_num), gid, sizes.get(gid, 1), last))
 
     # ELIGIBLE block first; then the ineligible, ordered by when they become eligible.
     # Within either: neighbourhood size DESCENDING, then qid ASCENDING. `sort_key` at module
