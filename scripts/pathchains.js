@@ -44,15 +44,35 @@
  * the viewer, with a name and no profile id.** That row is KEPT: a chain that does not say where
  * it starts is not a chain, and `scripts/split-path-chains.py` fills the id from `from=`.
  *
+ * ## ⛔ IT RUNS IN THE FOREGROUND TAB, AND IN A BACKGROUND TAB IT LOOKS FINE AND DOES NOTHING
+ *
+ * Measured 2026-09-15. The fetcher was started in its own `/paths` tab while the requester held
+ * the foreground, and it managed **10 chains in 7 minutes** -- against the 1.5s a chain that
+ * `path-chains-090..094` were written at on 2026-09-14, five minutes apart to the file. Nothing
+ * was wrong with it: `alive` was true, `fail` was 0, every counter moved. **Chrome throttles
+ * `setTimeout` in a background tab**, so the 1.1-1.8s stagger became tens of seconds and a 3.5
+ * hour pass became 35 hours.
+ *
+ * This is the worst shape a fault can take here -- every instrument green, the work not getting
+ * done -- and it is the same shape as `ok` climbing while nothing was requested. So: **both
+ * halves live in ONE tab, the foreground one.** `queue.md` says so in the singular, *"the
+ * requester and the chain fetcher live in the geni.com tab"*, and this is why.
+ *
+ * `save()` and `load()` are what make moving tabs cheap. The url list costs 28 minutes of
+ * `/paths` walking to rebuild and both tabs are geni.com, so it goes through `localStorage`
+ * rather than being collected again.
+ *
  * ## Pace
  *
  * 1.1–1.8s jittered, the same as the requester and for the same reason: Geni served an Incapsula
  * CAPTCHA on 2026-09-12 after roughly 500 back-to-back reads, and another on 2026-09-15. The
  * stagger is in here, never a sleep in the agent.
  *
- *     step 1   paste this file into the console of any geni.com page
+ *     step 1   paste this file into the console of the FOREGROUND geni.com tab
  *     step 2   await window.__chains.collect()   -- walk /paths, gather permalinks
+ *              or window.__chains.load()         -- take them off localStorage instead
  *     step 3   window.__chains.go()              -- fetch each, dump every 200 chains
+ *     move it  window.__chains.save() in the old tab, load() in the new one
  *     status   window.__chains.health()  ->  {alive, ok, fail, i, of, part}
  *     stop     window.__chains.stop()
  */
@@ -97,6 +117,33 @@ window.__chains = window.__chains || {};
       collectPage: C.collectPage || 0, collectDone: !!C.collectDone,
       finished: C.finished || null,
     };
+  };
+
+  /* ---------- carry the state between tabs; both tabs are geni.com ---------- */
+  C.save = function () {
+    try {
+      localStorage.setItem("chains_urls", JSON.stringify(C.urls));
+      localStorage.setItem("chains_rows", JSON.stringify(C.rows));
+      localStorage.setItem("chains_i", String(C.i));
+      localStorage.setItem("chains_part", String(C.part));
+      return C.urls.length;
+    } catch (e) { console.log("[chains] save failed: " + e); return -1; }
+  };
+  C.load = function () {
+    try {
+      const u = localStorage.getItem("chains_urls");
+      if (u) C.urls = JSON.parse(u);
+      const r = localStorage.getItem("chains_rows");
+      if (r) C.rows = JSON.parse(r);
+      const i = localStorage.getItem("chains_i");
+      if (i) C.i = parseInt(i, 10) || 0;
+      const p = localStorage.getItem("chains_part");
+      if (p) C.part = parseInt(p, 10) || 0;
+      /* The collect phase is over by definition if a url list came back, and `alive` reads
+       * collectPage/collectDone -- so say so, or a loaded fetcher reports collectPage 0. */
+      if (C.urls.length) { C.collectPage = C.collectPage || 1; C.collectDone = true; }
+      return { urls: C.urls.length, rows: C.rows.length, i: C.i, part: C.part };
+    } catch (e) { console.log("[chains] load failed: " + e); return null; }
   };
 
   /* ---------- collect the permalinks off /paths, 30 to a page ---------- */
