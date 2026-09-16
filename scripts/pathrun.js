@@ -76,7 +76,33 @@
  *     step 2   paste the DERIVE block, check it reports derived:true
  *     step 3   paste the RUN block with an id list from scripts/build-pathrun-batch.py
  *     status   window.__pathrun.health()  ->  {alive, queued, notfound, fail, ...}
+ *     drain    window.__pathrun.drain()   -> JSON for scripts/stamp-attempts.py
  *     stop     window.__pathrun.stop()
+ *
+ * ## ⛔ IT HAS TO RECORD WHAT IT ASKED, AND FOR ~9,500 REQUESTS IT DID NOT
+ *
+ * Emma, 2026-09-16: *"why the fuck are old qids being requested? Was it not saved what was
+ * requested?"* It was not. Measured the same minute: `reports/unconnected-p2600.tsv` carried
+ * **248 real attempt dates** against 221,448 rows still reading `SEED_NEVER`, and every one of
+ * those 248 came from the extension. The path requester wrote `pathrun_cursor` to localStorage
+ * and nothing else, so the ~8,000 requests before 2026-09-15 and the ~1,600 after left no trace
+ * anywhere in the repo.
+ *
+ * **The consequence is that the campaign re-asks the same people every session.**
+ * `build-pathrun-batch.py` differences out `reports/geni-paths-harvest.tsv` -- the people a path
+ * was FOUND for -- and honours a 30-day cooldown on `last_attempted`. For this population the
+ * answer is overwhelmingly *not found*, so the harvest never grows and the cooldown never
+ * engages: an id answered *no path* is eligible again immediately, forever.
+ *
+ * The machinery to stop that already existed. `scripts/stamp-attempts.py` reads a JSON dump and
+ * hands every id to `attempt_ledger.py`; the EXTENSION had been feeding it since 2026-09-10 and
+ * the requester never did. So `R.done` accumulates one record per id -- **whatever the outcome**,
+ * because § *a state this script refused to stamp would be a state somebody chose to un-attempt*
+ * -- and `drain()` hands it over.
+ *
+ * ⛔ **THE ~9,500 ALREADY SPENT ARE NOT RECOVERABLE.** A found path is in the harvest and a
+ * not-found answer was never written down. They will be re-asked once more, be recorded this
+ * time, and then fall under the cooldown.
  */
 
 /* ---------- DERIVE: run this first, on a profile that has NO known path ---------- */
@@ -112,6 +138,15 @@ window.__pathrun = window.__pathrun || {};
   R.notfound = 0;               // 200 not-found -- attempted, and the answer is no
   R.found = 0;                  // 200 that is neither -- something came back inline
   R.lastAt = null;              // ⛔ a TIMESTAMP, because no counter can say "stalled"
+  /* One record per id, whatever Geni answered. This is the thing whose absence made the
+   * campaign re-ask the same people every session -- see the header. */
+  R.done = [];
+  R.drain = function () {
+    const out = JSON.stringify(R.done);
+    R.done = [];
+    try { localStorage.removeItem("pathrun_attempted"); } catch (e) {}
+    return out;
+  };
   R.stop = () => { R.running = false; };
   R.tpl = window.__tpl;
 
@@ -141,6 +176,7 @@ window.__pathrun = window.__pathrun || {};
     const mine = R.gen;
     while (R.running && R.gen === mine && R.i < R.ids.length) {
       const id = R.ids[R.i];
+      const outcome = [];
       for (const which of ["blood", "inlaw"]) {
         if (!R.running || R.gen !== mine) break;
         try {
@@ -148,17 +184,23 @@ window.__pathrun = window.__pathrun || {};
                                   { credentials: "include", redirect: "follow" });
           const body = await res.text();
           // ⛔ 202 and 200 are DIFFERENT ANSWERS AND BOTH ARE SUCCESS. See the header.
-          if (res.status === 202) { R.queued++; R.ok++; }
-          else if (res.status === 200 && /not-found/.test(body)) { R.notfound++; R.ok++; }
-          else if (res.status >= 200 && res.status < 300) { R.found++; R.ok++; }
-          else R.fail++;
+          if (res.status === 202) { R.queued++; R.ok++; outcome.push("queued"); }
+          else if (res.status === 200 && /not-found/.test(body)) { R.notfound++; R.ok++; outcome.push("notfound"); }
+          else if (res.status >= 200 && res.status < 300) { R.found++; R.ok++; outcome.push("found"); }
+          else { R.fail++; outcome.push("http" + res.status); }
           R.lastAt = Date.now();
-        } catch (e) { R.fail++; }
+        } catch (e) { R.fail++; outcome.push("error"); }
         await new Promise(s => setTimeout(s, 1100 + Math.random() * 700));
       }
       R.i++;
-      // Survives a reload: the cursor is the only state worth keeping.
-      try { localStorage.setItem("pathrun_cursor", String(R.i)); } catch (e) {}
+      /* ⛔ ATTEMPTED IS ATTEMPTED. No filter on `state`: `stamp-attempts.py` is explicit that a
+       * state the writer refuses to stamp is a state somebody chose to un-attempt. */
+      R.done.push({ geni_id: id, state: outcome.join("/") });
+      // Survives a reload: the cursor, and the attempts not yet stamped into the worklist.
+      try {
+        localStorage.setItem("pathrun_cursor", String(R.i));
+        localStorage.setItem("pathrun_attempted", JSON.stringify(R.done));
+      } catch (e) {}
     }
     if (R.gen === mine) {
       R.running = false;
