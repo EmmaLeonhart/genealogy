@@ -74,6 +74,20 @@ REVIEWED_BATCHES = {
     # committed to the repo by the pipeline and published on the site every day,
     # so what runs is a file that has been readable for as long as it existed.
     "reports/wikidata-garborg-day.txt",
+    # ⛔ THE TWO HALVES OF THAT FILE, AND LEAVING THEM OUT COST EVERY EDIT THE PROJECT EVER SENT.
+    # `scripts/split-daily-batch.py` cut the daily batch into an AUTO half the schedule sends and
+    # a MANUAL half the Pages site publishes for a person to paste -- ruled 2026-09-14, "a third
+    # of that to be run by cicd". The split updated `DAILY_BATCH` in wikidata-edits.yml and
+    # neither of the two other places that name the batch: the workflow's sparse-checkout, and
+    # this set. So the first live morning failed twice over, and 2026-09-16 08:23 still read
+    # "refusing a live run on reports/wikidata-garborg-day-auto.txt: not one of the reviewed
+    # batches" after the checkout half was fixed.
+    #
+    # They qualify on exactly the terms the whole file does, and no others: each is a SUBSET of
+    # `wikidata-garborg-day.txt` cut by a committed script, committed by the pipeline, and
+    # published on the site. Nothing is in a half that was not in the reviewed whole.
+    "reports/wikidata-garborg-day-auto.txt",
+    "reports/wikidata-garborg-day-manual.txt",
 }
 
 #: The Gregorian calendar, which every date in this project's batches uses.
