@@ -69,6 +69,11 @@ import pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WORKLIST = ROOT / "reports" / "sibling-pair-worklist.tsv"
 ATTEMPTS = ROOT / "reports" / "unconnected-p2600.tsv"
+FAMILIES = ROOT / "geni-families"
+#: This campaign's own attempts. `write-sibling-scrapes.py` writes it, and it exists because
+#: `attempt_ledger` covers only `P2600` holders -- see that file. Without it a private profile,
+#: which times out and writes no family file, returns in every batch for ever.
+LEDGER = ROOT / "reports" / "sibling-scrape-attempts.tsv"
 
 #: The same 30 days `build-unconnected-worklist.py` uses. One constant's worth of duplication
 #: against importing a hyphenated module by path; `CLAUDE.md` § *Duplication is deliberate here*.
@@ -113,6 +118,20 @@ def targets(path=None, today=None):
     column = "parent_in_tree" if rows and "parent_in_tree" in rows[0] else "scraped"
     stamped = last_attempted()
 
+    # ⛔ THE COLUMNS ARE A SNAPSHOT AND THE DIRECTORY IS NOW. `scraped` and `parent_in_tree` are
+    # computed when `tree.yml` builds the worklist, so everybody scraped SINCE that build still
+    # reads as needing one -- and the batch hands back the same ten people every time it is run,
+    # for as long as it takes CI to come round. Measured the first sitting it was used on: ten
+    # people scraped, and the next batch printed the same ten.
+    #
+    # The file on disk is the authoritative answer to *has this person been scraped*, it is free
+    # to ask, and asking it makes the batch self-healing between rebuilds rather than dependent
+    # on one.
+    have_file = {q.name.split("-")[0] for q in FAMILIES.glob("*-family.tsv")} \
+        if FAMILIES.exists() else set()
+    # The campaign's own cooldown, for everyone the P2600 ledger has no row for.
+    ours = last_attempted(LEDGER)
+
     out, seen = [], set()
     for row in rows:
         gid = (row.get("geni_id") or "").strip()
@@ -120,7 +139,9 @@ def targets(path=None, today=None):
             continue
         if (row.get(column) or "").strip():
             continue                       # the tree already knows, or it has been scraped
-        when = stamped.get(gid)
+        if gid in have_file:
+            continue                       # scraped since the worklist was last built
+        when = stamped.get(gid) or ours.get(gid)
         if when is not None and when + COOLDOWN > today:
             continue                       # inside the 30-day window
         seen.add(gid)
@@ -138,8 +159,8 @@ def main() -> int:
     ids, column = targets()
     batch = ids[args.skip:args.skip + args.count]
 
-    print("# %d still need a scrape, by %s; printing %d from offset %d"
-          % (len(ids), column, len(batch), args.skip))
+    print("# %d still need a scrape, by %s and the live geni-families/ directory; "
+          "printing %d from offset %d" % (len(ids), column, len(batch), args.skip))
     if column == "scraped":
         print("# ⛔ FALLING BACK to `scraped`: this worklist has no `parent_in_tree` column, so "
               "tree.yml has not rebuilt since 2026-09-16. The list is wider than the real queue.")

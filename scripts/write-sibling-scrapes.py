@@ -39,6 +39,7 @@ out 30 days having never been looked at. They are counted and reported, and the 
 """
 from __future__ import annotations
 
+import csv
 import importlib.util
 import json
 import pathlib
@@ -46,6 +47,23 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FAMILIES = ROOT / "geni-families"
+
+#: ⛔ THE CAMPAIGN'S OWN ATTEMPT LEDGER, AND IT EXISTS BECAUSE `attempt_ledger` CANNOT COVER IT.
+#:
+#: `attempt_ledger.stamp` writes into `reports/unconnected-p2600.tsv`, which holds one row per
+#: disconnected **`P2600` holder**. Sibling-worklist members are mostly not `P2600` holders: the
+#: first sitting stamped **0 of 12**, with 10 ids the worklist had no row for. That is correct
+#: behaviour there and it leaves this campaign with no cooldown at all.
+#:
+#: A person with a family file is kept out of the next batch by the file existing. **A person
+#: without one is not**, and the answer for them is often permanent -- a private profile carries
+#: no family container, so it times out, writes nothing, and comes back in the very next batch
+#: for ever. Two of the first twelve were exactly that.
+#:
+#: So every attempt is recorded here, whatever it returned, and `build-sibling-scrape-batch.py`
+#: applies the same 30-day cooldown to it. ⛔ Nothing reasons about whether a date is real:
+#: it sorts, it ages out, it parks.
+LEDGER = ROOT / "reports" / "sibling-scrape-attempts.tsv"
 
 #: `attempt_ledger.py` is an ordinary module name, but it lives in `scripts/` beside this file
 #: rather than on the path.
@@ -56,6 +74,8 @@ _spec.loader.exec_module(attempt_ledger)
 
 #: Not an attempt: the page was never shown. See the docstring.
 NOT_AN_ATTEMPT = {"blocked", "no_extension"}
+
+TAB = chr(9)
 
 
 def records(raw):
@@ -92,6 +112,35 @@ def write_family(rec):
     return path
 
 
+def record_attempts(rows, today=None):
+    """Append one row per attempt to `LEDGER`, newest last, one row per person per day.
+
+    Re-reading and rewriting keeps the file one row per `geni_id`: the LATEST attempt is the one
+    the cooldown cares about, and an append-only log would grow a row per sitting and make the
+    read ambiguous.
+    """
+    import datetime
+    today = today or datetime.date.today()
+    held = {}
+    if LEDGER.exists():
+        with LEDGER.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter=TAB):
+                gid = (row.get("geni_id") or "").strip()
+                if gid:
+                    held[gid] = (row.get("last_attempted", ""), row.get("state", ""))
+    for gid, state in rows:
+        held[gid] = (today.isoformat(), state)
+
+    LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    # Deterministic and total: the geni id is unique per row. LF and UTF-8, as everywhere here.
+    with LEDGER.open("w", encoding="utf-8", newline=chr(10)) as fh:
+        fh.write(TAB.join(["geni_id", "last_attempted", "state"]) + chr(10))
+        for gid in sorted(held, key=lambda g: (len(g), g)):
+            when, state = held[gid]
+            fh.write(TAB.join([gid, when, state]) + chr(10))
+    return len(held)
+
+
 def main() -> int:
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -103,6 +152,7 @@ def main() -> int:
     recs = records(sys.stdin.read())
 
     written, by_state, to_stamp, blocked = [], {}, [], 0
+    ledger_rows = []
     for rec in recs:
         state = str(rec.get("state") or "unknown")
         by_state[state] = by_state.get(state, 0) + 1
@@ -116,16 +166,20 @@ def main() -> int:
             blocked += 1
             continue
         to_stamp.append(gid)
+        ledger_rows.append((gid, state))
 
     result = attempt_ledger.stamp(to_stamp) if to_stamp else {
         "present": False, "stamped": 0, "unmatched": [], "rows": 0}
+    total = record_attempts(ledger_rows)
 
     print("%d records" % len(recs))
     for state in sorted(by_state):
         print("  %-18s %d" % (state, by_state[state]))
     print("%d family files written to %s" % (len(written), FAMILIES.relative_to(ROOT)))
-    print("%d attempts stamped (%d rows in the worklist, %d ids it has no row for)"
+    print("%d attempts stamped in the P2600 worklist (%d rows, %d ids it has no row for)"
           % (result.get("stamped", 0), result.get("rows", 0), len(result.get("unmatched", []))))
+    print("%d people in %s -- the cooldown this campaign actually runs on"
+          % (total, LEDGER.relative_to(ROOT)))
     if blocked:
         # ⛔ Loud, and last, so it is the thing left on the screen.
         print("⛔ %d records were BLOCKED or had no extension -- NOT stamped, and the run should "
