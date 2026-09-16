@@ -76,7 +76,8 @@
  *     step 2   paste the DERIVE block, check it reports derived:true
  *     step 3   paste the RUN block with an id list from scripts/build-pathrun-batch.py
  *     status   window.__pathrun.health()  ->  {alive, queued, notfound, fail, ...}
- *     drain    window.__pathrun.drain()   -> JSON for scripts/stamp-attempts.py
+ *     drain    window.__pathrun.dumpAttempts()  -> pathrun-attempted-NNN.json in Downloads,
+ *              which goes straight into `python scripts/stamp-attempts.py < <file>`
  *     stop     window.__pathrun.stop()
  *
  * ## ⛔ IT HAS TO RECORD WHAT IT ASKED, AND FOR ~9,500 REQUESTS IT DID NOT
@@ -146,6 +147,23 @@ window.__pathrun = window.__pathrun || {};
     R.done = [];
     try { localStorage.removeItem("pathrun_attempted"); } catch (e) {}
     return out;
+  };
+
+  /* ⛔ **THE DRAIN GOES OUT AS A FILE, NOT THROUGH THE AGENT.** Returning the JSON from
+   * `javascript_tool` works and costs the whole batch in context every hour, which is the same
+   * reason `pathchains.dump()` blob-downloads instead of returning rows. `stamp-attempts.py`
+   * already reads a dump from stdin, so the loop is: dump here, pipe the file there. Nothing
+   * about which ids counted is decided on the way. */
+  R.dumpAttempts = function () {
+    if (!R.done.length) return 0;
+    const n = R.done.length;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([R.drain()], { type: "application/json" }));
+    R.part = (R.part || 0) + 1;
+    a.download = "pathrun-attempted-" + String(R.part).padStart(3, "0") + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+    console.log("[pathrun] wrote attempts part " + R.part + ", " + n + " ids");
+    return n;
   };
   R.stop = () => { R.running = false; };
   R.tpl = window.__tpl;
