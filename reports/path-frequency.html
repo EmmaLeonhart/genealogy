@@ -1,178 +1,151 @@
-<!doctype html><html><head><meta charset="utf-8">
-<title>Who the paths run through</title>
+<!doctype html><html><head><meta charset="utf-8"><title>Who the paths run through</title>
 <style>
   @page { size: A4; margin: 16mm 14mm; }
   body { font: 10pt/1.45 "Charter","Georgia",serif; color:#16181d; }
-  h1 { font-size: 20pt; margin: 0 0 2pt; letter-spacing:-0.3pt; }
-  .sub { color:#5b6270; font-size:9pt; margin-bottom:14pt; }
-  h2 { font-size: 13pt; margin: 20pt 0 2pt; border-bottom:1.5px solid #16181d; padding-bottom:3pt; }
+  h1 { font-size: 20pt; margin:0 0 2pt; letter-spacing:-0.3pt; }
+  .sub { color:#5b6270; font-size:9pt; margin-bottom:12pt; }
+  h2 { font-size:13pt; margin:18pt 0 2pt; border-bottom:1.5px solid #16181d; padding-bottom:3pt; }
   h2 .n { float:right; font-weight:400; color:#5b6270; font-size:10pt; }
-  p.lede { margin: 6pt 0 9pt; }
+  p.lede { margin:6pt 0 9pt; }
   table { width:100%; border-collapse:collapse; font-size:8.5pt; }
-  th { text-align:left; font-size:7.5pt; text-transform:uppercase; letter-spacing:0.6pt;
+  th { text-align:left; font-size:7.5pt; text-transform:uppercase; letter-spacing:.6pt;
         color:#5b6270; border-bottom:1px solid #c9cdd4; padding:3pt 5pt; font-weight:600; }
   td { padding:2.6pt 5pt; border-bottom:1px solid #eceef1; }
   td.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
-  td.id { font-family:"Consolas",monospace; font-size:7.5pt; color:#5b6270; }
+  td.id { font-family:Consolas,monospace; font-size:7.5pt; color:#5b6270; }
   td.nm { font-weight:600; }
   .box { background:#f5f6f8; border-left:3px solid #16181d; padding:8pt 11pt; margin:10pt 0; font-size:9pt; }
   .box b { display:block; margin-bottom:3pt; }
-  .cols { display:flex; gap:14pt; margin:10pt 0 4pt; }
-  .stat { flex:1; background:#f5f6f8; padding:8pt 10pt; }
-  .stat .v { font-size:17pt; font-weight:700; font-variant-numeric:tabular-nums; }
-  .stat .k { font-size:7.5pt; text-transform:uppercase; letter-spacing:0.6pt; color:#5b6270; }
-  .pb { page-break-before: always; }
+  .box.warn { border-left-color:#8a1f11; }
+  pre { font:8pt/1.5 Consolas,monospace; background:#f5f6f8; padding:7pt 10pt; margin:7pt 0; }
+  .pb { page-break-before:always; }
 </style></head><body>
 
 <h1>Who the paths run through</h1>
 <div class="sub">12,905 relationship chains · 83,441 distinct people ·
 from <code>reports/path-chains.tsv</code> · 2026-09-16</div>
 
-<div class="cols">
-  <div class="stat"><div class="v">1,235</div><div class="k">junctions</div></div>
-  <div class="stat"><div class="v">4,610</div><div class="k">corridors</div></div>
-  <div class="stat"><div class="v">77,596</div><div class="k">trunk</div></div>
-</div>
+<div class="box warn"><b>What this does not say, and an earlier version of it did</b>
+The first cut of this report sorted people into trunk / junction / corridor by how many distinct
+step-depths they were reached at, on the reasoning that several depths meant several branches
+converging. That was measuring the searcher, not the graph. Geni returns <b>one shortest chain
+per destination per kind</b>, and every chain starts at the same person, so depth is distance
+from that root and is near enough fixed:
+<pre>77,596  appear at exactly one depth           one shortest path each
+ 4,646  vary only between blood and in-law    two searches, not two branches
+ 1,199  vary within a single kind             and mostly by 1-3 steps</pre>
+So there is no hub-versus-trunk distinction to be had here. What follows ranks by
+<b>reach</b> instead.</div>
 
-<div class="box"><b>Why raw frequency is useless, and what replaces it</b>
-Every chain starts at the same person, so her father, grandfather and their line appear in almost
-every path and top any plain count. They are not connectors — they are the only road out.
-The separator is <b>depth spread</b>: how many different step-depths a person is reached at.
-Always reached at the same depth means one route in. Reached at several depths means several
-branches arrive there, and that is what a connector is.</div>
+<div class="box"><b>Reach, and why it is worth having</b>
+<b>Reach</b> is the number of destinations whose chain passes through a person. It is a fact
+about the shortest-path tree rather than the underlying graph — and that is what makes it useful.
+A high-reach person is a <b>cut vertex on the routes we actually have</b>: if their record is
+wrong, or they come unconnected, every path behind them goes with them. Berengária of Portugal
+carries a tenth of everything found.
+<b>6,184</b> people appear on both a blood and an in-law chain, which is the one split the
+data genuinely offers.</div>
 
-<h2>Junctions<span class="n">1,235 people · spread 1–5</span></h2>
-<p class="lede">A few branches converging. <b>These are the super-connectors.</b> Connecting one
-buys every branch that meets there, which is why they are worth more than their count suggests.
-Note what they are: the points where the Norwegian line meets European royalty, and a handful of
-Swedish and Pomeranian families doing the same job at shallower depth.</p>
-<table><thead><tr><th>Name</th><th>Geni id</th><th>Reach</th><th>of chains</th><th>Steps</th><th>Spread</th><th>Usual relation</th></tr></thead><tbody>
-<tr><td class="nm">Berengária af Portugal, Dronning af Danmark</td><td class="id">6000000003805720033</td><td class="num">1271</td><td class="num">9.8%</td><td class="num">25–27</td><td class="num">2</td><td>his mother</td></tr>
-<tr><td class="nm">Erik IV Plovpenning, Konge af Danmark</td><td class="id">6000000001651460598</td><td class="num">1268</td><td class="num">9.8%</td><td class="num">25–26</td><td class="num">1</td><td>her father</td></tr>
-<tr><td class="nm">Sancho I, o Povoador, rei de Portugal</td><td class="id">6000000001196257237</td><td class="num">700</td><td class="num">5.4%</td><td class="num">26–28</td><td class="num">2</td><td>her father</td></tr>
-<tr><td class="nm">Heinrich Gyntersberg til Mel</td><td class="id">6000000001770214435</td><td class="num">341</td><td class="num">2.6%</td><td class="num">15–18</td><td class="num">3</td><td>his father</td></tr>
-<tr><td class="nm">Jacob von Gûntersberg, Til Callies</td><td class="id">6000000003505812453</td><td class="num">340</td><td class="num">2.6%</td><td class="num">16–19</td><td class="num">3</td><td>his father</td></tr>
-<tr><td class="nm">Afonso II, o Gordo, rei de Portugal</td><td class="id">6000000001412881746</td><td class="num">340</td><td class="num">2.6%</td><td class="num">26–28</td><td class="num">2</td><td>her brother</td></tr>
-<tr><td class="nm">Alfonso III of Portugal</td><td class="id">6000000000796891248</td><td class="num">339</td><td class="num">2.6%</td><td class="num">27–29</td><td class="num">2</td><td>his son</td></tr>
-<tr><td class="nm">Afonso I, &quot;the Conqueror&quot;, king of Portugal</td><td class="id">6000000002244370573</td><td class="num">263</td><td class="num">2.0%</td><td class="num">27–29</td><td class="num">2</td><td>his father</td></tr>
-<tr><td class="nm">Daniel Olofsson</td><td class="id">6000000001139071013</td><td class="num">235</td><td class="num">1.8%</td><td class="num">11–13</td><td class="num">2</td><td>her father</td></tr>
-<tr><td class="nm">Dulce de Aragão, rainha-consorte de Portugal</td><td class="id">6000000000728299766</td><td class="num">225</td><td class="num">1.7%</td><td class="num">26–28</td><td class="num">2</td><td>her mother</td></tr>
-<tr><td class="nm">Anna Nilsdotter</td><td class="id">6000000007020763500</td><td class="num">224</td><td class="num">1.7%</td><td class="num">12–15</td><td class="num">3</td><td>his mother</td></tr>
-<tr><td class="nm">Nils Andersson</td><td class="id">6000000006127859612</td><td class="num">222</td><td class="num">1.7%</td><td class="num">13–16</td><td class="num">3</td><td>her father</td></tr>
-<tr><td class="nm">Margareta von Flemming</td><td class="id">6000000002893736112</td><td class="num">193</td><td class="num">1.5%</td><td class="num">17–20</td><td class="num">3</td><td>his mother</td></tr>
-<tr><td class="nm">Ingeborg of Norway</td><td class="id">4077210</td><td class="num">166</td><td class="num">1.3%</td><td class="num">25–26</td><td class="num">1</td><td>his daughter</td></tr>
-<tr><td class="nm">Princess Eufemia Eriksdotter von Sweden</td><td class="id">4077390</td><td class="num">164</td><td class="num">1.3%</td><td class="num">26–27</td><td class="num">1</td><td>her daughter</td></tr>
-<tr><td class="nm">Gerhard VI von Holstein, Herzog von Schleswig-Holstein</td><td class="id">4079111</td><td class="num">146</td><td class="num">1.1%</td><td class="num">28–29</td><td class="num">1</td><td>her son</td></tr>
-<tr><td class="nm">Heilwig von Holstein-Rendsburg</td><td class="id">6000000000679344754</td><td class="num">146</td><td class="num">1.1%</td><td class="num">29–30</td><td class="num">1</td><td>his daughter</td></tr>
-<tr><td class="nm">Ingeburg von Mecklenburg</td><td class="id">6000000003858749453</td><td class="num">146</td><td class="num">1.1%</td><td class="num">27–28</td><td class="num">1</td><td>her daughter</td></tr>
-<tr><td class="nm">Christian I King of Denmark, Norway and Sweden</td><td class="id">4103872</td><td class="num">143</td><td class="num">1.1%</td><td class="num">30–31</td><td class="num">1</td><td>her son</td></tr>
-<tr><td class="nm">Anna Andersdotter</td><td class="id">6000000003125438035</td><td class="num">127</td><td class="num">1.0%</td><td class="num">14–19</td><td class="num">5</td><td>his mother</td></tr>
-<tr><td class="nm">Anders Jacobsson</td><td class="id">6000000001138735296</td><td class="num">121</td><td class="num">0.9%</td><td class="num">15–18</td><td class="num">3</td><td>her father</td></tr>
-<tr><td class="nm">Ingebret Pederson Ølberg</td><td class="id">6000000035525972877</td><td class="num">89</td><td class="num">0.7%</td><td class="num">6–8</td><td class="num">2</td><td>his brother</td></tr>
-<tr><td class="nm">Mariet (Maria) Jakobsdotter</td><td class="id">6000000003355801643</td><td class="num">87</td><td class="num">0.7%</td><td class="num">16–18</td><td class="num">2</td><td>his sister</td></tr>
-<tr><td class="nm">Jorina Toresdotter Ølberg</td><td class="id">6000000077297672317</td><td class="num">72</td><td class="num">0.6%</td><td class="num">7–8</td><td class="num">1</td><td>his wife</td></tr>
-<tr><td class="nm">Elisabeth Andersdotter</td><td class="id">6000000003125122695</td><td class="num">67</td><td class="num">0.5%</td><td class="num">14–17</td><td class="num">3</td><td>his sister</td></tr>
-<tr><td class="nm">Musa Al-Qasi</td><td class="id">6000000012229586298</td><td class="num">64</td><td class="num">0.5%</td><td class="num">38–42</td><td class="num">4</td><td>his father</td></tr>
-<tr><td class="nm">Musa bin Musa Al-Qasi</td><td class="id">6000000012263275369</td><td class="num">64</td><td class="num">0.5%</td><td class="num">37–41</td><td class="num">4</td><td>his father</td></tr>
-<tr><td class="nm">Martim Afonso Chichorro, governador de Chaves</td><td class="id">6000000003056522441</td><td class="num">56</td><td class="num">0.4%</td><td class="num">28–30</td><td class="num">2</td><td>his son</td></tr>
-<tr><td class="nm">Alfonso II, count of Provence</td><td class="id">6000000000120326597</td><td class="num">51</td><td class="num">0.4%</td><td class="num">30–31</td><td class="num">1</td><td>his son</td></tr>
-<tr><td class="nm">Henrik Gjertsen Gjertsen Miltzow</td><td class="id">6000000008115048412</td><td class="num">50</td><td class="num">0.4%</td><td class="num">12–13</td><td class="num">1</td><td>his father</td></tr>
-<tr><td class="nm">Ramon Berenguer IV &quot;the Saint&quot; count of Barcelona</td><td class="id">6000000010463529059</td><td class="num">46</td><td class="num">0.4%</td><td class="num">27–29</td><td class="num">2</td><td>her father</td></tr>
-<tr><td class="nm">Ramon Berenguer IV/V, count of Provence</td><td class="id">6000000000119295074</td><td class="num">45</td><td class="num">0.3%</td><td class="num">31–32</td><td class="num">1</td><td>his son</td></tr>
-<tr><td class="nm">Princess Margaret von Brieg, Duchess of Bavaria</td><td class="id">6000000003858771852</td><td class="num">44</td><td class="num">0.3%</td><td class="num">31–33</td><td class="num">2</td><td>her daughter</td></tr>
-<tr><td class="nm">Eleanor of Provence, Queen Consort of England</td><td class="id">6000000007386881233</td><td class="num">43</td><td class="num">0.3%</td><td class="num">32–33</td><td class="num">1</td><td>his daughter</td></tr>
-<tr><td class="nm">Cristina de Noruega, infanta consorte de Castilla</td><td class="id">6000000012724604098</td><td class="num">42</td><td class="num">0.3%</td><td class="num">25–26</td><td class="num">1</td><td>his daughter</td></tr>
-<tr><td class="nm">Margarethe von Bayern</td><td class="id">6000000006444597314</td><td class="num">40</td><td class="num">0.3%</td><td class="num">32–34</td><td class="num">2</td><td>her daughter</td></tr>
-<tr><td class="nm">Samuel Toresen Haaland</td><td class="id">6000000012491323586</td><td class="num">39</td><td class="num">0.3%</td><td class="num">9–12</td><td class="num">3</td><td>his father</td></tr>
-<tr><td class="nm">Marie Anne de Coninck</td><td class="id">6000000011146172193</td><td class="num">36</td><td class="num">0.3%</td><td class="num">15–18</td><td class="num">3</td><td>his wife</td></tr>
-<tr><td class="nm">Mary of Burgundy</td><td class="id">6000000005394256371</td><td class="num">33</td><td class="num">0.3%</td><td class="num">33–35</td><td class="num">2</td><td>her daughter</td></tr>
-<tr><td class="nm">Branca Manoel de Vilhena</td><td class="id">6000000000010307115</td><td class="num">29</td><td class="num">0.2%</td><td class="num">30–33</td><td class="num">3</td><td>his daughter</td></tr>
-</tbody></table>
-
-<div class="pb"></div>
-<h2>Corridors<span class="n">4,610 people · spread 6+</span></h2>
-<p class="lede">A long line entered at many different points — a dynasty walked from both ends.
-Big numbers, low leverage per person: they are links in a chain rather than a meeting of
-branches, so connecting one moves only the line it belongs to.</p>
-<table><thead><tr><th>Name</th><th>Geni id</th><th>Reach</th><th>of chains</th><th>Steps</th><th>Spread</th><th>Usual relation</th></tr></thead><tbody>
-<tr><td class="nm">Sultan Alp Arslan</td><td class="id">6000000031528209013</td><td class="num">230</td><td class="num">1.8%</td><td class="num">32–92</td><td class="num">60</td><td>her husband</td></tr>
-<tr><td class="nm">Dawud Chaghri Bey, Lord of Khorasan</td><td class="id">6000000031528142916</td><td class="num">175</td><td class="num">1.4%</td><td class="num">33–91</td><td class="num">58</td><td>his father</td></tr>
-<tr><td class="nm">n n</td><td class="id">6000000035218690155</td><td class="num">171</td><td class="num">1.3%</td><td class="num">34–90</td><td class="num">56</td><td>his mother</td></tr>
-<tr><td class="nm">Inal Kut Chor</td><td class="id">6000000035218736073</td><td class="num">170</td><td class="num">1.3%</td><td class="num">35–89</td><td class="num">54</td><td>her father</td></tr>
-<tr><td class="nm">Turgesh Khagan Kut Chor</td><td class="id">6000000115311392405</td><td class="num">170</td><td class="num">1.3%</td><td class="num">37–87</td><td class="num">50</td><td>her father</td></tr>
-<tr><td class="nm">Kut Chor</td><td class="id">6000000115311613394</td><td class="num">170</td><td class="num">1.3%</td><td class="num">36–88</td><td class="num">52</td><td>his mother</td></tr>
-<tr><td class="nm">Princess Hengyang of Tang China</td><td class="id">6000000115311622874</td><td class="num">170</td><td class="num">1.3%</td><td class="num">41–83</td><td class="num">42</td><td>his mother</td></tr>
-<tr><td class="nm">Huseluo Ashina</td><td class="id">6000000115312653996</td><td class="num">170</td><td class="num">1.3%</td><td class="num">40–84</td><td class="num">44</td><td>his father</td></tr>
-<tr><td class="nm">Princess Jinhe Ashina</td><td class="id">6000000115313244880</td><td class="num">170</td><td class="num">1.3%</td><td class="num">38–86</td><td class="num">48</td><td>his mother</td></tr>
-<tr><td class="nm">Huaidao Ashina</td><td class="id">6000000115313276887</td><td class="num">170</td><td class="num">1.3%</td><td class="num">39–85</td><td class="num">46</td><td>her father</td></tr>
-<tr><td class="nm">Daniel Danielson Nerabø</td><td class="id">6000000004105285975</td><td class="num">119</td><td class="num">0.9%</td><td class="num">8–14</td><td class="num">6</td><td>her father</td></tr>
-<tr><td class="nm">Li Yuanfeng 李元鳳</td><td class="id">6000000075060870921</td><td class="num">110</td><td class="num">0.9%</td><td class="num">42–49</td><td class="num">7</td><td>her brother</td></tr>
-<tr><td class="nm">Li Hong 李宏</td><td class="id">6000000075061019879</td><td class="num">109</td><td class="num">0.8%</td><td class="num">43–50</td><td class="num">7</td><td>his son</td></tr>
-<tr><td class="nm">Li Yong 李邕</td><td class="id">6000000075060923880</td><td class="num">108</td><td class="num">0.8%</td><td class="num">44–51</td><td class="num">7</td><td>his son</td></tr>
-<tr><td class="nm">Buyeo Taebi</td><td class="id">6000000186285688286</td><td class="num">107</td><td class="num">0.8%</td><td class="num">45–52</td><td class="num">7</td><td>his wife</td></tr>
-<tr><td class="nm">Buyeo Deokjang</td><td class="id">6000000186285688253</td><td class="num">106</td><td class="num">0.8%</td><td class="num">46–53</td><td class="num">7</td><td>her father</td></tr>
-<tr><td class="nm">Yung Buyeo</td><td class="id">6000000012925092093</td><td class="num">105</td><td class="num">0.8%</td><td class="num">47–54</td><td class="num">7</td><td>his father</td></tr>
-<tr><td class="nm">Izyaslav II, Grand Duke of Kiev</td><td class="id">6000000006727873134</td><td class="num">94</td><td class="num">0.7%</td><td class="num">27–38</td><td class="num">11</td><td>her brother</td></tr>
-<tr><td class="nm">Princess of Georgia</td><td class="id">6000000008092041322</td><td class="num">93</td><td class="num">0.7%</td><td class="num">28–39</td><td class="num">11</td><td>his wife</td></tr>
-<tr><td class="nm">Edward III, king of England</td><td class="id">6000000000202115160</td><td class="num">81</td><td class="num">0.6%</td><td class="num">27–34</td><td class="num">7</td><td>his son</td></tr>
-<tr><td class="nm">Mononobe no Futohime</td><td class="id">6000000001902786893</td><td class="num">78</td><td class="num">0.6%</td><td class="num">66–90</td><td class="num">24</td><td>his adoptive mother</td></tr>
-<tr><td class="nm">Soga no Umako</td><td class="id">6000000001902965288</td><td class="num">78</td><td class="num">0.6%</td><td class="num">65–89</td><td class="num">24</td><td>his father</td></tr>
-<tr><td class="nm">Soga no Shoshi</td><td class="id">6000000010702248921</td><td class="num">78</td><td class="num">0.6%</td><td class="num">63–87</td><td class="num">24</td><td>his mother</td></tr>
-<tr><td class="nm">Soga no Murajiko</td><td class="id">6000000012052214898</td><td class="num">78</td><td class="num">0.6%</td><td class="num">64–88</td><td class="num">24</td><td>her father</td></tr>
-<tr><td class="nm">Arayama Mononobe</td><td class="id">6000000002039711104</td><td class="num">77</td><td class="num">0.6%</td><td class="num">68–92</td><td class="num">24</td><td>his father</td></tr>
-<tr><td class="nm">Mononobe no Me</td><td class="id">6000000002039711241</td><td class="num">77</td><td class="num">0.6%</td><td class="num">69–93</td><td class="num">24</td><td>his father</td></tr>
-<tr><td class="nm">Okoshi Mononobe</td><td class="id">6000000002039745463</td><td class="num">77</td><td class="num">0.6%</td><td class="num">67–91</td><td class="num">24</td><td>her father</td></tr>
-<tr><td class="nm">Mononobe no Ikofutsu</td><td class="id">6000000002039751362</td><td class="num">77</td><td class="num">0.6%</td><td class="num">70–94</td><td class="num">24</td><td>his father</td></tr>
-<tr><td class="nm">Mononobe no Ikoto</td><td class="id">6000000002039880063</td><td class="num">76</td><td class="num">0.6%</td><td class="num">71–95</td><td class="num">24</td><td>his father</td></tr>
-<tr><td class="nm">Harima no Inabi no Ōiratsume</td><td class="id">6000000001844033355</td><td class="num">75</td><td class="num">0.6%</td><td class="num">74–100</td><td class="num">26</td><td>his wife</td></tr>
-<tr><td class="nm">Prince Wakatakehiko</td><td class="id">6000000001835522164</td><td class="num">73</td><td class="num">0.6%</td><td class="num">75–101</td><td class="num">26</td><td>her father</td></tr>
-<tr><td class="nm">Emperor Jimmu</td><td class="id">6000000001829589817</td><td class="num">71</td><td class="num">0.6%</td><td class="num">82–108</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">Itoku-tenno (Oyamatohikosukitomo)</td><td class="id">6000000001829616346</td><td class="num">71</td><td class="num">0.6%</td><td class="num">79–105</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">Kosho-tenno (Mimatsuhikokaeshine)</td><td class="id">6000000001829628406</td><td class="num">71</td><td class="num">0.6%</td><td class="num">78–104</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">Suizei-tenno (Kamununakawamimi)</td><td class="id">6000000001829632570</td><td class="num">71</td><td class="num">0.6%</td><td class="num">81–107</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">Kourei-tenno (Oyamatonekohikofutoni)</td><td class="id">6000000001829634518</td><td class="num">71</td><td class="num">0.6%</td><td class="num">76–102</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">Koan-tenno (Yamatotarashihikokuni...</td><td class="id">6000000001829735102</td><td class="num">71</td><td class="num">0.6%</td><td class="num">77–103</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">An&#x27;nei-tenno (Shikitsuhikotamatemi)</td><td class="id">6000000001829763097</td><td class="num">71</td><td class="num">0.6%</td><td class="num">80–106</td><td class="num">26</td><td>his father</td></tr>
-<tr><td class="nm">Ame-no-oshihomimi</td><td class="id">6000000011630077286</td><td class="num">68</td><td class="num">0.5%</td><td class="num">81–105</td><td class="num">24</td><td>his father</td></tr>
-<tr><td class="nm">Rusudan of Georgia</td><td class="id">6000000008091983321</td><td class="num">64</td><td class="num">0.5%</td><td class="num">29–40</td><td class="num">11</td><td>her sister</td></tr>
-</tbody></table>
+<h2>By reach<span class="n">top 45 of 83,441</span></h2>
+<p class="lede">The opening names are the account owner's own line and are unavoidable — every
+path leaves through them. They are here because the top of this list is the sanity check on the
+whole harvest: if these are wrong, every chain is wrong.</p>
+<table><thead><tr><th>Name</th><th>Geni id</th><th>Reach</th><th>of chains</th><th>Blood</th><th>In-law</th><th>Depth</th><th>Usual relation</th></tr></thead><tbody><tr><td class="nm">Richard Wade Borsheim</td><td class="id">6000000177921459056</td><td class="num">9,005</td><td class="num">69.8%</td><td class="num">4,587</td><td class="num">6,007</td><td class="num">1</td><td>your father</td></tr>
+<tr><td class="nm">Randolph Paulus Borsheim</td><td class="id">6000000177921459078</td><td class="num">6,245</td><td class="num">48.4%</td><td class="num">2,324</td><td class="num">4,627</td><td class="num">2</td><td>his father</td></tr>
+<tr><td class="nm">Reinhert Borsheim</td><td class="id">6000000032068841409</td><td class="num">5,531</td><td class="num">42.9%</td><td class="num">2,249</td><td class="num">3,853</td><td class="num">3</td><td>his father</td></tr>
+<tr><td class="nm">Caroline Signe Borsheim</td><td class="id">6000000177921459072</td><td class="num">3,429</td><td class="num">26.6%</td><td class="num">2,264</td><td class="num">1,380</td><td class="num">2</td><td>his mother</td></tr>
+<tr><td class="nm">Rakel Rasmusdottir Borsheim</td><td class="id">6000000020344732085</td><td class="num">3,203</td><td class="num">24.8%</td><td class="num">2,153</td><td class="num">1,217</td><td class="num">4</td><td>his mother</td></tr>
+<tr><td class="nm">Alfred Ingerman Hoknes</td><td class="id">6000000015117490925</td><td class="num">3,069</td><td class="num">23.8%</td><td class="num">2,181</td><td class="num">1,054</td><td class="num">3</td><td>her father</td></tr>
+<tr><td class="nm">Clara Amilia Hoknes</td><td class="id">6000000177921459114</td><td class="num">3,004</td><td class="num">23.3%</td><td class="num">2,177</td><td class="num">986</td><td class="num">4</td><td>his mother</td></tr>
+<tr><td class="nm">Kasbar L Knutson</td><td class="id">6000000177921459169</td><td class="num">3,003</td><td class="num">23.3%</td><td class="num">2,176</td><td class="num">986</td><td class="num">5</td><td>her father</td></tr>
+<tr><td class="nm">Anne Berta Osmundsdatter Nese</td><td class="id">6000000005609547544</td><td class="num">2,557</td><td class="num">19.8%</td><td class="num">1,992</td><td class="num">642</td><td class="num">5</td><td>her adoptive mother</td></tr>
+<tr><td class="nm">Osmund Larsson Nese</td><td class="id">6000000002744891329</td><td class="num">2,399</td><td class="num">18.6%</td><td class="num">1,984</td><td class="num">466</td><td class="num">6</td><td>her father</td></tr>
+<tr><td class="nm">Lars Osmundsen Foss-Eikeland, d. y.</td><td class="id">6000000069466362236</td><td class="num">2,358</td><td class="num">18.3%</td><td class="num">1,971</td><td class="num">432</td><td class="num">7</td><td>his father</td></tr>
+<tr><td class="nm">Osmund Larsen Raunes</td><td class="id">6000000012587690898</td><td class="num">2,337</td><td class="num">18.1%</td><td class="num">1,966</td><td class="num">416</td><td class="num">8</td><td>his father</td></tr>
+<tr><td class="nm">Helen Frisk</td><td class="id">6000000177921459052</td><td class="num">1,972</td><td class="num">15.3%</td><td class="num">471</td><td class="num">1,657</td><td class="num">1</td><td>your mother</td></tr>
+<tr><td class="nm">Hans Bertil Frisk</td><td class="id">6000000177921459066</td><td class="num">1,972</td><td class="num">15.3%</td><td class="num">471</td><td class="num">1,657</td><td class="num">2</td><td>her father</td></tr>
+<tr><td class="nm">Knut Knutsson Bjorgo</td><td class="id">6000000003887729856</td><td class="num">1,940</td><td class="num">15.0%</td><td class="num">1,599</td><td class="num">367</td><td class="num">6</td><td>his father</td></tr>
+<tr><td class="nm">Gunhild Knutsdotter Bjorgo</td><td class="id">6000000026534693043</td><td class="num">1,883</td><td class="num">14.6%</td><td class="num">1,593</td><td class="num">305</td><td class="num">7</td><td>his mother</td></tr>
+<tr><td class="nm">Synneva Hendricksdatter Bergstad</td><td class="id">6000000100733843835</td><td class="num">1,881</td><td class="num">14.6%</td><td class="num">1,591</td><td class="num">305</td><td class="num">8</td><td>her mother</td></tr>
+<tr><td class="nm">Gunnhild Johannesdatter Fadnes</td><td class="id">6000000000866353020</td><td class="num">1,870</td><td class="num">14.5%</td><td class="num">1,585</td><td class="num">300</td><td class="num">9</td><td>her mother</td></tr>
+<tr><td class="nm">Johannes Gulleikson Tyssen</td><td class="id">6000000007304150583</td><td class="num">1,863</td><td class="num">14.4%</td><td class="num">1,578</td><td class="num">300</td><td class="num">10</td><td>her father</td></tr>
+<tr><td class="nm">Gulleik Jakobsson Øye</td><td class="id">6000000007058802262</td><td class="num">1,862</td><td class="num">14.4%</td><td class="num">1,577</td><td class="num">300</td><td class="num">11</td><td>his father</td></tr>
+<tr><td class="nm">Aagota Johannesdatter Straume</td><td class="id">6000000007114444629</td><td class="num">1,860</td><td class="num">14.4%</td><td class="num">1,575</td><td class="num">300</td><td class="num">12</td><td>his mother</td></tr>
+<tr><td class="nm">Johannes Johannesson Stamnes</td><td class="id">6000000024431778428</td><td class="num">1,859</td><td class="num">14.4%</td><td class="num">1,574</td><td class="num">300</td><td class="num">13</td><td>her father</td></tr>
+<tr><td class="nm">Johannes Olsen Rød</td><td class="id">6000000024431753429</td><td class="num">1,851</td><td class="num">14.3%</td><td class="num">1,567</td><td class="num">298</td><td class="num">14</td><td>his father</td></tr>
+<tr><td class="nm">Karine Nilsdatter Torsnes</td><td class="id">6000000013618082642</td><td class="num">1,846</td><td class="num">14.3%</td><td class="num">1,562</td><td class="num">298</td><td class="num">15</td><td>his mother</td></tr>
+<tr><td class="nm">Nils Guttormson Torsnes</td><td class="id">6000000001995109345</td><td class="num">1,842</td><td class="num">14.3%</td><td class="num">1,558</td><td class="num">298</td><td class="num">16</td><td>her father</td></tr>
+<tr><td class="nm">Guttorm Nilssen</td><td class="id">6000000001708363985</td><td class="num">1,837</td><td class="num">14.2%</td><td class="num">1,553</td><td class="num">298</td><td class="num">17</td><td>his father</td></tr>
+<tr><td class="nm">Nikulás Rögnvaldsson</td><td class="id">6000000006183866418</td><td class="num">1,831</td><td class="num">14.2%</td><td class="num">1,547</td><td class="num">298</td><td class="num">18</td><td>his father</td></tr>
+<tr><td class="nm">Rögnvaldur Keniksson</td><td class="id">6000000003783022260</td><td class="num">1,830</td><td class="num">14.2%</td><td class="num">1,546</td><td class="num">298</td><td class="num">19</td><td>his father</td></tr>
+<tr><td class="nm">Snefrid Håkonsdotter</td><td class="id">6000000010222435520</td><td class="num">1,829</td><td class="num">14.2%</td><td class="num">1,545</td><td class="num">298</td><td class="num">20</td><td>his mother</td></tr>
+<tr><td class="nm">Haakon Jonsson Rose, til Sudrheim</td><td class="id">6000000007549309545</td><td class="num">1,828</td><td class="num">14.2%</td><td class="num">1,544</td><td class="num">298</td><td class="num">21</td><td>her father</td></tr>
+<tr><td class="nm">Baron Jon Hafthorsson av Sørum</td><td class="id">6000000003869622559</td><td class="num">1,798</td><td class="num">13.9%</td><td class="num">1,514</td><td class="num">298</td><td class="num">22</td><td>his father</td></tr>
+<tr><td class="nm">Agnes Haakonsdatter</td><td class="id">6000000018752060667</td><td class="num">1,793</td><td class="num">13.9%</td><td class="num">1,510</td><td class="num">299</td><td class="num">23</td><td>his mother</td></tr>
+<tr><td class="nm">Håkon V Magnusson, King of Norway</td><td class="id">6000000000351087662</td><td class="num">1,792</td><td class="num">13.9%</td><td class="num">1,509</td><td class="num">299</td><td class="num">24</td><td>her father</td></tr>
+<tr><td class="nm">Beda Elvira Wedberg</td><td class="id">6000000177921458833</td><td class="num">1,776</td><td class="num">13.8%</td><td class="num">331</td><td class="num">1,593</td><td class="num">3</td><td>his mother</td></tr>
+<tr><td class="nm">Queen Ingeborg Eriksdatter af Danmark</td><td class="id">6000000001651502714</td><td class="num">1,614</td><td class="num">12.5%</td><td class="num">1,344</td><td class="num">277</td><td class="num">25</td><td>his mother</td></tr>
+<tr><td class="nm">Selma Pedersdtr. Borsheim</td><td class="id">6000000003491988619</td><td class="num">1,582</td><td class="num">12.3%</td><td class="num">0</td><td class="num">1,582</td><td class="num">4</td><td>his wife</td></tr>
+<tr><td class="nm">Lars Nilsen Raunes</td><td class="id">6000000005609304829</td><td class="num">1,567</td><td class="num">12.1%</td><td class="num">1,284</td><td class="num">316</td><td class="num">9</td><td>his father</td></tr>
+<tr><td class="nm">Nils Larsen Raunes</td><td class="id">6000000001770188397</td><td class="num">1,529</td><td class="num">11.8%</td><td class="num">1,248</td><td class="num">310</td><td class="num">10</td><td>his father</td></tr>
+<tr><td class="nm">Guri Pedersdatter Foss</td><td class="id">6000000002482084257</td><td class="num">1,304</td><td class="num">10.1%</td><td class="num">1,095</td><td class="num">228</td><td class="num">11</td><td>his mother</td></tr>
+<tr><td class="nm">Cecilie Olsdatter Håland</td><td class="id">6000000002482165558</td><td class="num">1,299</td><td class="num">10.1%</td><td class="num">1,091</td><td class="num">227</td><td class="num">12</td><td>her mother</td></tr>
+<tr><td class="nm">Gudrun Sæbjørnsdatter Talgje</td><td class="id">6000000001169235389</td><td class="num">1,296</td><td class="num">10.0%</td><td class="num">1,088</td><td class="num">227</td><td class="num">13</td><td>her mother</td></tr>
+<tr><td class="nm">Sissel Jonsdatter Talje</td><td class="id">6000000003043806217</td><td class="num">1,293</td><td class="num">10.0%</td><td class="num">1,085</td><td class="num">227</td><td class="num">14</td><td>her mother</td></tr>
+<tr><td class="nm">Bergitte Gunnbjørnsdatter Aukland</td><td class="id">6000000002481819312</td><td class="num">1,286</td><td class="num">10.0%</td><td class="num">1,078</td><td class="num">227</td><td class="num">15</td><td>her mother</td></tr>
+<tr><td class="nm">Lagmann Gunnbjørn Toresson Tengs</td><td class="id">6000000002463510938</td><td class="num">1,281</td><td class="num">9.9%</td><td class="num">1,073</td><td class="num">227</td><td class="num">16</td><td>her father</td></tr>
+<tr><td class="nm">Berengária af Portugal, Dronning af Danmark</td><td class="id">6000000003805720033</td><td class="num">1,271</td><td class="num">9.8%</td><td class="num">1,183</td><td class="num">109</td><td class="num">25</td><td>his mother</td></tr></tbody></table>
 
 <div class="pb"></div>
-<h2>Trunk<span class="n">77,596 people · spread 0</span></h2>
-<p class="lede">One fixed position in every chain they appear in — the account owner's own
-ancestral line and what hangs off it. Listed because the top of it is the sanity check on the
-whole harvest: if these names are wrong, every chain is wrong.</p>
-<table><thead><tr><th>Name</th><th>Geni id</th><th>Reach</th><th>of chains</th><th>Steps</th><th>Spread</th><th>Usual relation</th></tr></thead><tbody>
-<tr><td class="nm">Richard Wade Borsheim</td><td class="id">6000000177921459056</td><td class="num">9005</td><td class="num">69.8%</td><td class="num">1–1</td><td class="num">0</td><td>your father</td></tr>
-<tr><td class="nm">Randolph Paulus Borsheim</td><td class="id">6000000177921459078</td><td class="num">6245</td><td class="num">48.4%</td><td class="num">2–2</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Reinhert Borsheim</td><td class="id">6000000032068841409</td><td class="num">5531</td><td class="num">42.9%</td><td class="num">3–3</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Caroline Signe Borsheim</td><td class="id">6000000177921459072</td><td class="num">3429</td><td class="num">26.6%</td><td class="num">2–2</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Rakel Rasmusdottir Borsheim</td><td class="id">6000000020344732085</td><td class="num">3203</td><td class="num">24.8%</td><td class="num">4–4</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Alfred Ingerman Hoknes</td><td class="id">6000000015117490925</td><td class="num">3069</td><td class="num">23.8%</td><td class="num">3–3</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Clara Amilia Hoknes</td><td class="id">6000000177921459114</td><td class="num">3004</td><td class="num">23.3%</td><td class="num">4–4</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Kasbar L Knutson</td><td class="id">6000000177921459169</td><td class="num">3003</td><td class="num">23.3%</td><td class="num">5–5</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Anne Berta Osmundsdatter Nese</td><td class="id">6000000005609547544</td><td class="num">2557</td><td class="num">19.8%</td><td class="num">5–5</td><td class="num">0</td><td>her adoptive mother</td></tr>
-<tr><td class="nm">Osmund Larsson Nese</td><td class="id">6000000002744891329</td><td class="num">2399</td><td class="num">18.6%</td><td class="num">6–6</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Lars Osmundsen Foss-Eikeland, d. y.</td><td class="id">6000000069466362236</td><td class="num">2358</td><td class="num">18.3%</td><td class="num">7–7</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Osmund Larsen Raunes</td><td class="id">6000000012587690898</td><td class="num">2337</td><td class="num">18.1%</td><td class="num">8–8</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Helen Frisk</td><td class="id">6000000177921459052</td><td class="num">1972</td><td class="num">15.3%</td><td class="num">1–1</td><td class="num">0</td><td>your mother</td></tr>
-<tr><td class="nm">Hans Bertil Frisk</td><td class="id">6000000177921459066</td><td class="num">1972</td><td class="num">15.3%</td><td class="num">2–2</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Knut Knutsson Bjorgo</td><td class="id">6000000003887729856</td><td class="num">1940</td><td class="num">15.0%</td><td class="num">6–6</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Gunhild Knutsdotter Bjorgo</td><td class="id">6000000026534693043</td><td class="num">1883</td><td class="num">14.6%</td><td class="num">7–7</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Synneva Hendricksdatter Bergstad</td><td class="id">6000000100733843835</td><td class="num">1881</td><td class="num">14.6%</td><td class="num">8–8</td><td class="num">0</td><td>her mother</td></tr>
-<tr><td class="nm">Gunnhild Johannesdatter Fadnes</td><td class="id">6000000000866353020</td><td class="num">1870</td><td class="num">14.5%</td><td class="num">9–9</td><td class="num">0</td><td>her mother</td></tr>
-<tr><td class="nm">Johannes Gulleikson Tyssen</td><td class="id">6000000007304150583</td><td class="num">1863</td><td class="num">14.4%</td><td class="num">10–10</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Gulleik Jakobsson Øye</td><td class="id">6000000007058802262</td><td class="num">1862</td><td class="num">14.4%</td><td class="num">11–11</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Aagota Johannesdatter Straume</td><td class="id">6000000007114444629</td><td class="num">1860</td><td class="num">14.4%</td><td class="num">12–12</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Johannes Johannesson Stamnes</td><td class="id">6000000024431778428</td><td class="num">1859</td><td class="num">14.4%</td><td class="num">13–13</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Johannes Olsen Rød</td><td class="id">6000000024431753429</td><td class="num">1851</td><td class="num">14.3%</td><td class="num">14–14</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Karine Nilsdatter Torsnes</td><td class="id">6000000013618082642</td><td class="num">1846</td><td class="num">14.3%</td><td class="num">15–15</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Nils Guttormson Torsnes</td><td class="id">6000000001995109345</td><td class="num">1842</td><td class="num">14.3%</td><td class="num">16–16</td><td class="num">0</td><td>her father</td></tr>
-<tr><td class="nm">Guttorm Nilssen</td><td class="id">6000000001708363985</td><td class="num">1837</td><td class="num">14.2%</td><td class="num">17–17</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Nikulás Rögnvaldsson</td><td class="id">6000000006183866418</td><td class="num">1831</td><td class="num">14.2%</td><td class="num">18–18</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Rögnvaldur Keniksson</td><td class="id">6000000003783022260</td><td class="num">1830</td><td class="num">14.2%</td><td class="num">19–19</td><td class="num">0</td><td>his father</td></tr>
-<tr><td class="nm">Snefrid Håkonsdotter</td><td class="id">6000000010222435520</td><td class="num">1829</td><td class="num">14.2%</td><td class="num">20–20</td><td class="num">0</td><td>his mother</td></tr>
-<tr><td class="nm">Haakon Jonsson Rose, til Sudrheim</td><td class="id">6000000007549309545</td><td class="num">1828</td><td class="num">14.2%</td><td class="num">21–21</td><td class="num">0</td><td>her father</td></tr>
-</tbody></table>
+<h2>By reach, eight steps out and beyond<span class="n">82,773 people</span></h2>
+<p class="lede">The same ranking with the immediate family dropped, which is the nearest honest
+version of the question "who are the super-connectors". These are the people the searcher routes
+through most once it has left the household: the Danish and Portuguese royal line at twenty-five
+to twenty-nine steps, and the Gyntersberg and Flemming families closer in.</p>
+<table><thead><tr><th>Name</th><th>Geni id</th><th>Reach</th><th>of chains</th><th>Blood</th><th>In-law</th><th>Depth</th><th>Usual relation</th></tr></thead><tbody><tr><td class="nm">Osmund Larsen Raunes</td><td class="id">6000000012587690898</td><td class="num">2,337</td><td class="num">18.1%</td><td class="num">1,966</td><td class="num">416</td><td class="num">8</td><td>his father</td></tr>
+<tr><td class="nm">Synneva Hendricksdatter Bergstad</td><td class="id">6000000100733843835</td><td class="num">1,881</td><td class="num">14.6%</td><td class="num">1,591</td><td class="num">305</td><td class="num">8</td><td>her mother</td></tr>
+<tr><td class="nm">Gunnhild Johannesdatter Fadnes</td><td class="id">6000000000866353020</td><td class="num">1,870</td><td class="num">14.5%</td><td class="num">1,585</td><td class="num">300</td><td class="num">9</td><td>her mother</td></tr>
+<tr><td class="nm">Johannes Gulleikson Tyssen</td><td class="id">6000000007304150583</td><td class="num">1,863</td><td class="num">14.4%</td><td class="num">1,578</td><td class="num">300</td><td class="num">10</td><td>her father</td></tr>
+<tr><td class="nm">Gulleik Jakobsson Øye</td><td class="id">6000000007058802262</td><td class="num">1,862</td><td class="num">14.4%</td><td class="num">1,577</td><td class="num">300</td><td class="num">11</td><td>his father</td></tr>
+<tr><td class="nm">Aagota Johannesdatter Straume</td><td class="id">6000000007114444629</td><td class="num">1,860</td><td class="num">14.4%</td><td class="num">1,575</td><td class="num">300</td><td class="num">12</td><td>his mother</td></tr>
+<tr><td class="nm">Johannes Johannesson Stamnes</td><td class="id">6000000024431778428</td><td class="num">1,859</td><td class="num">14.4%</td><td class="num">1,574</td><td class="num">300</td><td class="num">13</td><td>her father</td></tr>
+<tr><td class="nm">Johannes Olsen Rød</td><td class="id">6000000024431753429</td><td class="num">1,851</td><td class="num">14.3%</td><td class="num">1,567</td><td class="num">298</td><td class="num">14</td><td>his father</td></tr>
+<tr><td class="nm">Karine Nilsdatter Torsnes</td><td class="id">6000000013618082642</td><td class="num">1,846</td><td class="num">14.3%</td><td class="num">1,562</td><td class="num">298</td><td class="num">15</td><td>his mother</td></tr>
+<tr><td class="nm">Nils Guttormson Torsnes</td><td class="id">6000000001995109345</td><td class="num">1,842</td><td class="num">14.3%</td><td class="num">1,558</td><td class="num">298</td><td class="num">16</td><td>her father</td></tr>
+<tr><td class="nm">Guttorm Nilssen</td><td class="id">6000000001708363985</td><td class="num">1,837</td><td class="num">14.2%</td><td class="num">1,553</td><td class="num">298</td><td class="num">17</td><td>his father</td></tr>
+<tr><td class="nm">Nikulás Rögnvaldsson</td><td class="id">6000000006183866418</td><td class="num">1,831</td><td class="num">14.2%</td><td class="num">1,547</td><td class="num">298</td><td class="num">18</td><td>his father</td></tr>
+<tr><td class="nm">Rögnvaldur Keniksson</td><td class="id">6000000003783022260</td><td class="num">1,830</td><td class="num">14.2%</td><td class="num">1,546</td><td class="num">298</td><td class="num">19</td><td>his father</td></tr>
+<tr><td class="nm">Snefrid Håkonsdotter</td><td class="id">6000000010222435520</td><td class="num">1,829</td><td class="num">14.2%</td><td class="num">1,545</td><td class="num">298</td><td class="num">20</td><td>his mother</td></tr>
+<tr><td class="nm">Haakon Jonsson Rose, til Sudrheim</td><td class="id">6000000007549309545</td><td class="num">1,828</td><td class="num">14.2%</td><td class="num">1,544</td><td class="num">298</td><td class="num">21</td><td>her father</td></tr>
+<tr><td class="nm">Baron Jon Hafthorsson av Sørum</td><td class="id">6000000003869622559</td><td class="num">1,798</td><td class="num">13.9%</td><td class="num">1,514</td><td class="num">298</td><td class="num">22</td><td>his father</td></tr>
+<tr><td class="nm">Agnes Haakonsdatter</td><td class="id">6000000018752060667</td><td class="num">1,793</td><td class="num">13.9%</td><td class="num">1,510</td><td class="num">299</td><td class="num">23</td><td>his mother</td></tr>
+<tr><td class="nm">Håkon V Magnusson, King of Norway</td><td class="id">6000000000351087662</td><td class="num">1,792</td><td class="num">13.9%</td><td class="num">1,509</td><td class="num">299</td><td class="num">24</td><td>her father</td></tr>
+<tr><td class="nm">Queen Ingeborg Eriksdatter af Danmark</td><td class="id">6000000001651502714</td><td class="num">1,614</td><td class="num">12.5%</td><td class="num">1,344</td><td class="num">277</td><td class="num">25</td><td>his mother</td></tr>
+<tr><td class="nm">Lars Nilsen Raunes</td><td class="id">6000000005609304829</td><td class="num">1,567</td><td class="num">12.1%</td><td class="num">1,284</td><td class="num">316</td><td class="num">9</td><td>his father</td></tr>
+<tr><td class="nm">Nils Larsen Raunes</td><td class="id">6000000001770188397</td><td class="num">1,529</td><td class="num">11.8%</td><td class="num">1,248</td><td class="num">310</td><td class="num">10</td><td>his father</td></tr>
+<tr><td class="nm">Guri Pedersdatter Foss</td><td class="id">6000000002482084257</td><td class="num">1,304</td><td class="num">10.1%</td><td class="num">1,095</td><td class="num">228</td><td class="num">11</td><td>his mother</td></tr>
+<tr><td class="nm">Cecilie Olsdatter Håland</td><td class="id">6000000002482165558</td><td class="num">1,299</td><td class="num">10.1%</td><td class="num">1,091</td><td class="num">227</td><td class="num">12</td><td>her mother</td></tr>
+<tr><td class="nm">Gudrun Sæbjørnsdatter Talgje</td><td class="id">6000000001169235389</td><td class="num">1,296</td><td class="num">10.0%</td><td class="num">1,088</td><td class="num">227</td><td class="num">13</td><td>her mother</td></tr>
+<tr><td class="nm">Sissel Jonsdatter Talje</td><td class="id">6000000003043806217</td><td class="num">1,293</td><td class="num">10.0%</td><td class="num">1,085</td><td class="num">227</td><td class="num">14</td><td>her mother</td></tr>
+<tr><td class="nm">Bergitte Gunnbjørnsdatter Aukland</td><td class="id">6000000002481819312</td><td class="num">1,286</td><td class="num">10.0%</td><td class="num">1,078</td><td class="num">227</td><td class="num">15</td><td>her mother</td></tr>
+<tr><td class="nm">Lagmann Gunnbjørn Toresson Tengs</td><td class="id">6000000002463510938</td><td class="num">1,281</td><td class="num">9.9%</td><td class="num">1,073</td><td class="num">227</td><td class="num">16</td><td>her father</td></tr>
+<tr><td class="nm">Berengária af Portugal, Dronning af Danmark</td><td class="id">6000000003805720033</td><td class="num">1,271</td><td class="num">9.8%</td><td class="num">1,183</td><td class="num">109</td><td class="num">25</td><td>his mother</td></tr>
+<tr><td class="nm">Erik IV Plovpenning, Konge af Danmark</td><td class="id">6000000001651460598</td><td class="num">1,268</td><td class="num">9.8%</td><td class="num">1,190</td><td class="num">80</td><td class="num">25</td><td>her father</td></tr>
+<tr><td class="nm">Knight Tore Gardsson</td><td class="id">6000000002572701505</td><td class="num">1,265</td><td class="num">9.8%</td><td class="num">1,057</td><td class="num">227</td><td class="num">17</td><td>his father</td></tr>
+<tr><td class="nm">Ramborg Knutsdotter Lejon</td><td class="id">6000000004870648136</td><td class="num">1,264</td><td class="num">9.8%</td><td class="num">1,056</td><td class="num">227</td><td class="num">18</td><td>his mother</td></tr>
+<tr><td class="nm">Knut Algotsson</td><td class="id">6000000002572699392</td><td class="num">1,262</td><td class="num">9.8%</td><td class="num">1,054</td><td class="num">227</td><td class="num">19</td><td>her father</td></tr>
+<tr><td class="nm">Algot Bryniolfsson</td><td class="id">6000000005795638082</td><td class="num">1,242</td><td class="num">9.6%</td><td class="num">1,044</td><td class="num">214</td><td class="num">20</td><td>his father</td></tr>
+<tr><td class="nm">Ingegerd Svantepolksdotter</td><td class="id">6000000011239201122</td><td class="num">1,047</td><td class="num">8.1%</td><td class="num">851</td><td class="num">206</td><td class="num">21</td><td>his mother</td></tr>
+<tr><td class="nm">Svantepolk Knutsson Viby, Skarsholmsätten</td><td class="id">6000000003418900347</td><td class="num">929</td><td class="num">7.2%</td><td class="num">735</td><td class="num">198</td><td class="num">22</td><td>her father</td></tr>
+<tr><td class="nm">Knut Valdemarsson, Duke of Estland, Blekinge and Lolland</td><td class="id">6000000003076221220</td><td class="num">913</td><td class="num">7.1%</td><td class="num">719</td><td class="num">198</td><td class="num">23</td><td>his father</td></tr>
+<tr><td class="nm">Valdemar II &quot;The Victorious&quot;, King of Denmark</td><td class="id">6000000000891680343</td><td class="num">876</td><td class="num">6.8%</td><td class="num">682</td><td class="num">198</td><td class="num">24</td><td>his father</td></tr>
+<tr><td class="nm">Gjertrud Torbjørnsdatter Sæve</td><td class="id">6000000005744994427</td><td class="num">868</td><td class="num">6.7%</td><td class="num">556</td><td class="num">366</td><td class="num">8</td><td>her mother</td></tr>
+<tr><td class="nm">Gudve Knudsdatter</td><td class="id">6000000005744994368</td><td class="num">847</td><td class="num">6.6%</td><td class="num">550</td><td class="num">350</td><td class="num">9</td><td>her mother</td></tr>
+<tr><td class="nm">Ingjerd Clausdatter Miltzow</td><td class="id">6000000000694158525</td><td class="num">843</td><td class="num">6.5%</td><td class="num">547</td><td class="num">349</td><td class="num">10</td><td>her mother</td></tr>
+<tr><td class="nm">Anna Osmundsd Stokka</td><td class="id">6000000005609304839</td><td class="num">773</td><td class="num">6.0%</td><td class="num">681</td><td class="num">93</td><td class="num">9</td><td>his mother</td></tr>
+<tr><td class="nm">Inger Lauritsdatter Heiberg</td><td class="id">6000000002078126382</td><td class="num">750</td><td class="num">5.8%</td><td class="num">499</td><td class="num">291</td><td class="num">11</td><td>her mother</td></tr>
+<tr><td class="nm">Anna Børgesd Aubø</td><td class="id">6000000005381997903</td><td class="num">707</td><td class="num">5.5%</td><td class="num">670</td><td class="num">38</td><td class="num">10</td><td>her mother</td></tr>
+<tr><td class="nm">Sancho I, o Povoador, rei de Portugal</td><td class="id">6000000001196257237</td><td class="num">700</td><td class="num">5.4%</td><td class="num">695</td><td class="num">24</td><td class="num">26</td><td>her father</td></tr>
+<tr><td class="nm">Birgitte Fartegnsd Bagge</td><td class="id">6000000005382299298</td><td class="num">675</td><td class="num">5.2%</td><td class="num">666</td><td class="num">10</td><td class="num">11</td><td>her mother</td></tr></tbody></table>
 
 </body></html>
