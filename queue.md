@@ -102,6 +102,38 @@ write one.
 
 **Progress is measured by counting real dates, never by the column being filled.**
 
+## ⛔ THE CHAIN FETCHER IS SAVED NOWHERE. IT IS THE OTHER HALF AND IT IS THE 2026-09-14 FAILURE AGAIN
+
+The requester was rescued into `scripts/pathrun.js` on 2026-09-14 after the tab that held it was
+lost. **The fetcher was left in the tab.** Half the lesson was applied, and on 2026-09-15 the
+other half came due exactly as it had to: the requester was restarted and ran correctly, and not
+one new `path-chains-NNN.tsv` appeared, because the half that WRITES them does not exist anywhere
+in the repo. Emma: *"what the fuck did you just not request paths"*. Paths were being requested.
+Nothing was collecting the answers.
+
+    scripts/pathrun.js        ASKS Geni for a path.      health() reports queued/notfound
+    <does not exist>          COLLECTS the answers.      path-chains-NNN.tsv in Downloads
+
+**What it has to do**, all of it already described in `scripts/merge-path-chains.py`'s docstring
+and implemented in Python in `scripts/extract-saved-path-pages.py`:
+
+* read the permalinks off `/paths`, Geni's own *Recently Requested Relationships*, 30 to a page —
+  ⛔ **NOT a constructed `/path/` URL**, which redirects to Charlemagne and renders his chain
+* fetch each one, parse `span.segment` -> `span.name`, `[data-profile-id]`,
+  `span.subtext:not(.clipboard-hide)` — with `DOMParser`, since the parentheses are nested spans
+  and a regex for them matches nothing
+* write the six columns `to_id, kind, step, profile_id, name, relation`, keep step 0 (the viewer,
+  no id) and record an empty render as `step -1` / `EMPTY` so the absence is bounded
+* blob-download every ~200 chains, jittered 1.1–1.8s, and carry the `R.gen` restart guard
+
+**⛔ COMMIT IT BEFORE RUNNING IT** — `CLAUDE.md` § *Anything driving the browser for hours belongs
+in `scripts/`, committed, before it is run*. That rule was written for this exact file and has now
+been broken twice.
+
+**And `split-path-chains.py` drops a chain it has no `from=` for.** 28 were skipped on 2026-09-15.
+`from=` is the account owner on 6,945 of 6,945 harvested permalinks, so the fallback is the id the
+harvest itself attests — never a constant typed into the script.
+
 ## More items at the end
 
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
