@@ -50,11 +50,34 @@
  *     document.dispatchEvent(new Event("geni-collector-run"))
  *     documentElement.dataset.geniCollectorResult   <- the answer, as a string
  *
+ * ## ⛔ DO NOT `await` `one()` FROM THE AGENT. FIRE IT AND POLL.
+ *
+ * `javascript_tool` is a CDP `Runtime.evaluate` and it gives up after **45000 ms**, which is the
+ * same 45 s this file waits by default. Awaiting the call therefore fails on exactly the people
+ * it is waiting for -- the slow ones -- and reports
+ * *"The renderer may be frozen or unresponsive"* about a renderer that is working perfectly.
+ *
+ * **The work still lands**, because the promise keeps running in the page after the tool call
+ * gives up, which is what makes the fix simple. The loop per person is:
+ *
+ *     navigate                                        <- the agent's only job
+ *     window.__sibscrape.one(id, 60000)               <- NOT awaited; returns at once
+ *     wait ~20 s
+ *     read localStorage                               <- short call, always answers
+ *
+ * ⛔ **AND DO NOT SHORTEN THE WAIT TO MAKE IT FIT.** `GC.runFamily` allows the family
+ * container 25 s by itself, and reads the statistics block after that. A 20 s wait passed here
+ * records `timeout` on a page that was about to answer -- measured on `1434896`, where the only
+ * thing the short wait produced was a wasted page load and a wrong state.
+ *
  * ## What a state means
  *
  *     scraped            the family block was read. `tsv` is the file to write.
  *     private_profile    Geni declines to show the family. A FINAL answer for that person.
  *     no_family_block    nothing found on a page that should have had something. Look again.
+ *     timeout            the wait ran out. Usually a PRIVATE profile, whose page carries no
+ *                        family container at all, so the extension's own 25 s wait expires
+ *                        before it can say `private_profile`. An attempt either way.
  *     blocked            ⛔ A CAPTCHA. It scrapes as a person with no family and reports
  *                        success, which is why `GC.blocked()` is checked before anything else.
  *                        STOP THE RUN on this one; it does not get better by continuing.
