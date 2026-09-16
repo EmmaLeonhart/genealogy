@@ -192,6 +192,10 @@ PAIRS = {
     # to start with"*, expanded to take people who already hold a proper QID. Both do.
     "6000000031527612551": "Q144565",   # Sultan Tughril I -- Tughril, first Seljuq sultan
     "6000000031528142916": "Q870223",   # Dawud Chaghri Bey, Lord of Khorasan -- Chaghri Beg
+    # **Their FATHER, given by Emma 2026-09-16** with both links in her own message:
+    # `Q6040326` *Mikail of Kinik tribe*, `P40` child = `Q870223` and `Q144565`, the two above.
+    # No `P2600`, so the pairing lives nowhere else -- this file's own category exactly.
+    "6000000031528058919": "Q6040326",   # Mika'il Seljuq -- Mikail of Kinik tribe
 
     # ⛔ **THE 39 HAND IDENTIFICATIONS, 2026-09-15 — AND THEY ARE NOT BLOCKED.** Ruled that day,
     # correcting the previous session exactly: *"The identification one goes into the gedcom it
