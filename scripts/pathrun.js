@@ -25,11 +25,36 @@
  * would rot the first time Geni changed it, and it would put a session-scoped URL in a public
  * repo.
  *
- * ## 202 IS SUCCESS
+ * ## ⛔ 202 AND 200 ARE DIFFERENT ANSWERS AND BOTH ARE SUCCESS
  *
- * The search endpoints answer **202 Accepted**, not 200 — the search is queued, not completed.
+ * This is the thing that made a healthy runner look dead, so it is written out in full.
+ *
+ *     202  ok / task 6000000227772636072      a real search was QUEUED on Geni's side
+ *     200  data-result="not-found-blood"      answered at once: this person has NO blood path
+ *     200  data-result="not-found-inlaw"      the same for the in-law search
+ *
+ * The old counter called both of them `ok`, so a climbing `ok` meant only *the endpoint
+ * replied*. On 2026-09-15 that produced 253 cheerful successes against almost nothing new on
+ * `/paths`, and the reasonable conclusion — that the requester was broken — was wrong.
+ * **Most of this population genuinely has no path.** These are disconnected `P2600` holders;
+ * that is what disconnected MEANS, and § *an isolate with no path is attempted and done*
+ * already said so. A `/paths` row appears only when a path is actually FOUND, so `/paths` is
+ * not the instrument for *is it running* and never was.
+ *
+ * So the counters are the outcomes themselves — `queued`, `notfound`, `fail` — and
+ * `window.__pathrun.health()` is what a check reads. **A run where `notfound` climbs and
+ * `queued` stays near zero is working correctly.** Only `fail` climbing, or nothing moving at
+ * all, is a fault.
+ *
  * Treating 202 as failure once brought an abort guard within one row of stopping a healthy run.
- * The test is `2xx`.
+ *
+ * ## ⛔ THE STALE `slug` IS NOT A BUG, AND IT WAS ACCUSED OF BEING ONE
+ *
+ * The derive swaps the page's numeric id and leaves its slug, so every request carries the slug
+ * of whatever profile the template came from — `&slug=Johann-Bach` for hundreds of strangers.
+ * Tested directly 2026-09-15 on two fresh ids, no-slug first and stale-slug first: **the
+ * responses are byte-identical.** The id in the PATH governs and the slug is decoration. Do not
+ * "fix" it, and do not re-derive on its account.
  *
  * ## ⛔ THE BATCH CANNOT BE FETCHED FROM THE REPO. IT HAS TO BE PASTED.
  *
@@ -50,7 +75,7 @@
  *     step 1   open an UNCONNECTED profile
  *     step 2   paste the DERIVE block, check it reports derived:true
  *     step 3   paste the RUN block with an id list from scripts/build-pathrun-batch.py
- *     status   window.__pathrun  ->  {running, i, ok, fail}
+ *     status   window.__pathrun.health()  ->  {alive, queued, notfound, fail, ...}
  *     stop     window.__pathrun.stop()
  */
 
@@ -83,19 +108,51 @@ window.__pathrun = window.__pathrun || {};
   R.i = 0; R.ok = 0; R.fail = 0;
   R.running = true;
   R.started = new Date().toISOString();
+  R.queued = 0;                 // 202 -- a real search is now running on Geni's side
+  R.notfound = 0;               // 200 not-found -- attempted, and the answer is no
+  R.found = 0;                  // 200 that is neither -- something came back inline
+  R.lastAt = null;              // ⛔ a TIMESTAMP, because no counter can say "stalled"
   R.stop = () => { R.running = false; };
   R.tpl = window.__tpl;
 
+  /* What the hourly check reads. `alive` is the only field that matters and it is TIME-based:
+   * a runner that stopped existing leaves `running:true` frozen behind it, so the question is
+   * never "is the flag still set" but "did anything actually happen in the last two minutes". */
+  R.health = function () {
+    const age = R.lastAt ? (Date.now() - R.lastAt) / 1000 : null;
+    return {
+      alive: !!(R.running && age !== null && age < 120),
+      secondsSinceLastRequest: age === null ? null : Math.round(age),
+      i: R.i, of: R.ids.length,
+      queued: R.queued, notfound: R.notfound, found: R.found, fail: R.fail,
+      started: R.started, finished: R.finished || null,
+    };
+  };
+
+  /* ⛔ **A RESTART MUST NOT LEAVE THE OLD LOOP RUNNING, AND ONCE IT DID.** Pasting this block
+   * over a paused runner restarted it while the previous loop was still parked in its own
+   * `await sleep()`; that loop then woke, saw `running` true again and carried on, so TWO loops
+   * drove one cursor. `i` advanced 65 people in 14 seconds — a third of the proper pace, double
+   * the request rate at Geni, and five failures where there had been none. The generation token
+   * is the fix: a loop only continues while it is still the newest one. */
+  R.gen = (R.gen || 0) + 1;
+
   R.go = async function () {
-    while (R.running && R.i < R.ids.length) {
+    const mine = R.gen;
+    while (R.running && R.gen === mine && R.i < R.ids.length) {
       const id = R.ids[R.i];
       for (const which of ["blood", "inlaw"]) {
-        if (!R.running) break;
+        if (!R.running || R.gen !== mine) break;
         try {
           const res = await fetch(R.tpl[which].split("%ID%").join(id),
                                   { credentials: "include", redirect: "follow" });
-          // 202 Accepted is the success status here, not 200.
-          if (res.status >= 200 && res.status < 300) R.ok++; else R.fail++;
+          const body = await res.text();
+          // ⛔ 202 and 200 are DIFFERENT ANSWERS AND BOTH ARE SUCCESS. See the header.
+          if (res.status === 202) { R.queued++; R.ok++; }
+          else if (res.status === 200 && /not-found/.test(body)) { R.notfound++; R.ok++; }
+          else if (res.status >= 200 && res.status < 300) { R.found++; R.ok++; }
+          else R.fail++;
+          R.lastAt = Date.now();
         } catch (e) { R.fail++; }
         await new Promise(s => setTimeout(s, 1100 + Math.random() * 700));
       }
@@ -103,8 +160,10 @@ window.__pathrun = window.__pathrun || {};
       // Survives a reload: the cursor is the only state worth keeping.
       try { localStorage.setItem("pathrun_cursor", String(R.i)); } catch (e) {}
     }
-    R.running = false;
-    R.finished = new Date().toISOString();
+    if (R.gen === mine) {
+      R.running = false;
+      R.finished = new Date().toISOString();
+    }
   };
   R.go();
 })();

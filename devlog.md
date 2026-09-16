@@ -44548,3 +44548,43 @@ target list never again exists only in a tab, but geni.com's CSP refuses a `fetc
 `raw.githubusercontent.com` outright, and the runner cannot move off geni.com because the search
 requests need geni.com's cookies. The refutation is in `scripts/pathrun.js` so it is not retried.
 The batch goes into the console by hand.
+
+## 2026-09-15 — the requester was working; the counter was not
+
+**The alarm was right and the diagnosis was wrong, and the instrument is why.** `/paths` showed
+almost nothing new while `window.__pathrun.ok` climbed to 253, which reads as a requester firing
+into the void. It was not. Tested directly against the endpoint:
+
+    202  ok / task 6000000227772636072      a real search was QUEUED on Geni's side
+    200  data-result="not-found-blood"      answered at once: this person has NO blood path
+
+`ok` counted both, so it only ever meant *the endpoint replied*. **A `/paths` row appears only
+when a path is FOUND**, and the population being requested is disconnected `P2600` holders — most
+of them correctly return *not found* and correctly produce no row. An empty-looking `/paths` is
+consistent with a perfectly healthy run, and reading it as a liveness check cost an hour.
+
+Counters are now the outcomes themselves — `queued`, `notfound`, `found`, `fail` — and
+`health()` reports `alive` from **seconds since the last request**, because a runner that stops
+existing leaves `running:true` frozen behind it. On the clean restart: `queued` 7, `notfound` 1,
+`fail` 0. Most of these are producing real searches.
+
+**The stale `slug` was accused and acquitted.** The derive swaps the page's numeric id and leaves
+its slug, so every request carried `&slug=Johann-Bach`. Tested on two fresh ids, no-slug first
+and stale-slug first: the responses are byte-identical. The id in the path governs. Written into
+`scripts/pathrun.js` so it is not "fixed" later.
+
+**And restarting it twice ran it twice.** Pasting the RUN block over a paused runner woke the old
+loop too — it had been parked in its own `await sleep()` — so two loops drove one cursor: 65
+people in 14 seconds, double the request rate at Geni, and five failures where there had been
+none. `R.gen` now guards it; a loop continues only while it is the newest.
+
+**Hourly check, as instructed** — *"Every hour there should be a check to make sure that the
+thing is actually running."* A local cron at :23 reads `health()` and acts: dead runner ->
+re-derive and restart; `i >= of` -> the batch drained, which looks like success; `fail` climbing
+-> stop and look before requesting more. `CLAUDE.md` § *CHECK IT EVERY HOUR* carries the rule,
+and § *THE FIRST THING IN EVERY SESSION* no longer tells anyone to trust `ok`.
+
+**What was NOT done, and it is the other half of the loop.** The chain FETCHER — the thing that
+turns requested paths into `path-chains-NNN.tsv` — is still saved nowhere, exactly as the
+requester was before 2026-09-14. Half the lesson was applied that day and the other half came due
+today. It is queued, not done.

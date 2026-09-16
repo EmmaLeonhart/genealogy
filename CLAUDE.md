@@ -214,12 +214,48 @@ requesting."*
     1. open an UNCONNECTED profile from reports/unconnected-p2600.tsv
     2. paste the DERIVE block from scripts/pathrun.js -- expect derived:true
     3. paste the RUN block with ids from scripts/build-pathrun-batch.py
-    4. confirm window.__pathrun shows ok climbing and fail at 0
+    4. confirm window.__pathrun.health() reports alive:true with fail at 0
 
-**Confirm it is ALIVE by the ok counter, not by the object existing.** On 2026-09-15 the runner
-had been dead since 20:33 the previous evening and nine queue items were worked before anybody
-noticed, because the work-loop prompt says it *"needs no attention"* and that was read as *it is
-running*.
+**Confirm it is ALIVE by `health()`, not by the object existing and not by `ok`.** On 2026-09-15
+the runner had been dead since 20:33 the previous evening and nine queue items were worked before
+anybody noticed, because the work-loop prompt says it *"needs no attention"* and that was read as
+*it is running*.
+
+**⛔ AND `ok` IS NOT AN INSTRUMENT. IT ANSWERS A QUESTION NOBODY ASKED.** Ruled by measurement
+the same day: `ok` counted *the endpoint replied*, so it climbed to 253 while conveying nothing,
+and the conclusion drawn from it — that the requester was broken — was wrong in the other
+direction. The endpoint gives **two different successful answers** and they mean opposite things:
+
+    202  ok / task <id>                  a real search was QUEUED
+    200  data-result="not-found-blood"   answered at once: this person has NO path
+
+`health()` separates them into `queued` / `notfound` / `found` / `fail`, and `alive` is
+**time-based** — seconds since the last request — because a runner that stopped existing leaves
+`running:true` frozen behind it and a counter cannot say *stalled*.
+
+**⛔ `/paths` IS NOT THE INSTRUMENT FOR *IS IT RUNNING*, AND READING IT AS ONE COSTS AN HOUR.**
+A `/paths` row appears only when a path is actually FOUND. The population being requested is
+disconnected `P2600` holders, so most of them correctly return *not found* and correctly produce
+no row. An empty-looking `/paths` is consistent with a perfectly healthy run. § *CHECK before
+raising an alarm* applies to this exact page.
+
+**⛔ RESTARTING IT TWICE RUNS IT TWICE.** Pasting the RUN block over a paused runner woke the old
+loop as well, and two loops drove one cursor at double the request rate — the way to get
+CAPTCHAd. `R.gen` is the guard and it is in the committed file; never hand-roll a restart that
+skips it.
+
+### ⛔ CHECK IT EVERY HOUR, AND THE CHECK IS `health()`
+
+Ruled 2026-09-15: *"Every hour there should be a check to make sure that the thing is actually
+running."* A local cron does it — § *A cron only fires while the session is idle* — and it reads
+`window.__pathrun.health()` in the geni.com tab:
+
+    alive:false or no tab    -> re-derive and restart from scripts/pathrun.js, top the batch up
+    i >= of                  -> the batch DRAINED, which looks like success: top it up
+    fail climbing            -> stop, look at lastFail / lastErr before requesting anything more
+
+**The batch draining and the runner dying are the same event from outside**, and both were
+noticed by Emma rather than by any check. That is what this cron is for.
 
 **Every even hour at :45, turn the requested paths into TSVs and commit them.** Ruled the same
 day: *"every even hour at the forty five mark, you turn all the requested paths into TSV files"*
