@@ -159,7 +159,7 @@ class Session:
     def claims(self, qid: str) -> dict:
         """The item's existing statements, `{property: [claim, ...]}`. Empty on any failure.
 
-        Read before every statement edit. See `merge_into_existing`.
+        Read before every statement edit. See `plan_attachments`.
         """
         try:
             res = self._call(action="wbgetclaims", entity=qid)
@@ -182,18 +182,27 @@ class Session:
         call"*. The absence is deliberate; do not add one.
         """
         data = entity_data(edit, minted)
+        plans = []
         if edit["kind"] == "create":
             params = {"action": "wbeditentity", "token": token, "maxlag": "5",
                       "new": "item",
                       "data": json.dumps(data, ensure_ascii=False)}
         else:
             # One extra GET per statement edit, and it is what stops a qualifier turning into
-            # a duplicate statement. See `merge_into_existing`.
+            # a duplicate statement. See `plan_attachments`.
             if data.get("claims"):
-                merge_into_existing(data, self.claims(edit["qid"]))
+                plans = plan_attachments(data, self.claims(edit["qid"]))
             params = {"action": "wbeditentity", "token": token, "maxlag": "5",
                       "id": edit["qid"],
                       "data": json.dumps(data, ensure_ascii=False)}
+            # EVERY CLAIM ALREADY HELD MEANS THERE IS NOTHING TO wbeditentity. Sending the
+            # empty payload anyway is a null edit that still spends a write, and it would
+            # report the object as changed when the change is entirely in the attachments.
+            if not any(k in data for k in ("claims", "labels", "aliases",
+                                           "descriptions", "sitelinks")):
+                for plan in plans:
+                    self.attach(plan, token, delay=delay)
+                return edit["qid"]
 
         for attempt in range(4):
             res = self._call(action="wbeditentity", _post=params)
@@ -216,8 +225,42 @@ class Session:
             raise EditFailed(f"{edit['id']}: no entity id came back: {res}")
         if edit["kind"] == "create":
             minted[edit["id"]] = qid
+        for plan in plans:
+            self.attach(plan, token, delay=delay)
         time.sleep(delay)
         return qid
+
+    def attach(self, plan: dict, token: str, *, delay: float) -> None:
+        """Put one statement's qualifiers and references on it BY GUID.
+
+        `wbsetqualifier` and `wbsetreference` add; they cannot replace the set, which is the
+        whole reason the attachment does not ride along in the `wbeditentity` payload. See
+        `plan_attachments`.
+
+        **No `summary`.** `CLAUDE.md` § *NO descriptions and NO edit summaries* covers the API
+        path explicitly, and it covers these two calls as much as the object write.
+        """
+        for qprop, snaks in (plan.get("qualifiers") or {}).items():
+            for snak in snaks:
+                post = {"claim": plan["guid"], "property": qprop,
+                        "snaktype": snak.get("snaktype", "value"), "token": token}
+                if post["snaktype"] == "value":
+                    post["value"] = json.dumps((snak.get("datavalue") or {}).get("value"),
+                                               ensure_ascii=False)
+                self._attach_call("wbsetqualifier", post, delay)
+        for ref in plan.get("references") or []:
+            self._attach_call("wbsetreference", {
+                "statement": plan["guid"],
+                "snaks": json.dumps(ref.get("snaks") or {}, ensure_ascii=False),
+                "token": token,
+            }, delay)
+
+    def _attach_call(self, action: str, post: dict, delay: float) -> None:
+        res = self._call(action=action, _post={**post, "bot": "1"})
+        err = res.get("error")
+        if err and not is_already_present(err.get("info") or ""):
+            raise EditFailed(f"{action}: {err.get('code')}: {err.get('info')}")
+        time.sleep(delay)
 
 
 class EditFailed(RuntimeError):
@@ -324,66 +367,99 @@ def snak_key(snak: dict):
     return dv
 
 
-def merge_into_existing(data: dict, existing: dict) -> list:
-    """Point each outgoing claim at the statement the item already holds, if it holds one.
+#: Wikidata refuses a qualifier or a reference that the statement already carries, and the
+#: refusal is a SUCCESS: the thing we wanted on the statement is on the statement. Vendored
+#: from `shintowiki-scripts/modern-quickstatements/direct_daily_edits.py`, which measured it
+#: on its 2026-09-12 run -- **23 of 26 reported failures were this** and only 3 were real.
+#: A run that reports 26 failures when it has 3 trains everyone to ignore the number.
+#:
+#: Matched on the message rather than the code because `modification-failed` covers genuinely
+#: different refusals too; this text is the specific one.
+_ALREADY_PRESENT = ("already a qualifier with hash", "already a reference with hash")
 
-    ⛔ **WITHOUT THIS, A QUALIFIER MAKES A DUPLICATE STATEMENT.** Reported 2026-09-16 from
-    `Q...` carrying `P2600 6000000009968757483` **twice** -- once bare and once qualified
-    `subject named as "Heinrich VI von Plauen III"` -- both written by this pipeline. Emma:
-    *"it didn't add a qualifier it just added a full duplicate property"*.
 
-    The cause is `wbeditentity` semantics, not the batch. A claim object with no `id` is a NEW
-    statement, always; the API has no notion that a statement with the same mainsnak is "the
-    same one". `build-garborg-day.add()` does hold a `live_values` guard, and it is the wrong
-    shape for this case twice over: it SKIPS rather than merges, so an existing bare statement
-    would never gain its qualifier at all, and it only sees what the offline store knew.
+def is_already_present(info: str) -> bool:
+    """True when Wikidata's refusal means *this is already on the statement*."""
+    text = (info or "").lower()
+    return any(marker in text for marker in _ALREADY_PRESENT)
 
-    So the claim id is read from the live item and set on the outgoing claim, which turns the
-    call into an update of that statement.
 
-    ⛔ **AND THE MERGE ADDS, IT DOES NOT REPLACE.** Passing `qualifiers` on a claim that carries
-    an `id` REPLACES the whole qualifier set, which would silently delete a qualifier a human
-    put there -- against `CLAUDE.md` § *The purpose is to ADD, not to correct*. So the existing
-    qualifiers are the base and ours go in beside them, and a qualifier property we already
-    match on value is left exactly as it is. References likewise.
+def plan_attachments(data: dict, existing: dict) -> list:
+    """Take every outgoing claim the item ALREADY holds out of the payload, and return the
+    qualifiers and references to attach to those statements by GUID instead.
 
-    Returns the ids of the claims it attached to, for the caller to report.
+    WITHOUT THIS, A QUALIFIER MAKES A DUPLICATE STATEMENT. Reported 2026-09-16 from an item
+    carrying `P2600 6000000009968757483` **twice** -- once bare and once qualified `subject
+    named as "Heinrich VI von Plauen III"` -- both written by this pipeline. Emma: *"it didn't
+    add a qualifier it just added a full duplicate property"*.
+
+    The cause is `wbeditentity` semantics. A claim object with no `id` is a NEW statement,
+    always; the API has no notion that a statement with the same mainsnak is "the same one".
+
+    AND THE FIX IS NOT TO SET THE CLAIM ID AND SEND THE MERGED SET. That was written here on
+    2026-09-16 and it is the wrong mechanism, which is the half Emma pointed at: *"there's logic
+    in shintowiki-scripts that was intentionally added to implement this that you didn't do"*.
+    `wbeditentity` on a claim carrying an `id` REPLACES that claim's whole qualifier and
+    reference set. Reconstructing the set from a live read makes every write depend on that read
+    being complete and current -- and a human qualifier added between the read and the write is
+    silently deleted, against `CLAUDE.md` § *The purpose is to ADD, not to correct*.
+
+    `wbsetqualifier` and `wbsetreference` cannot do that. They take a statement GUID and one
+    thing to put on it, so the operation is additive BY CONSTRUCTION rather than by our
+    arithmetic being right. That is the logic `direct_daily_edits.execute_line` uses, and its
+    file register says so in as many words: *"A qualifier-bearing line makes execute_line find
+    the existing claim and add to it rather than create a second one."*
+
+    VENDORED, NOT COUPLED. `CLAUDE.md` records a session that invented a shared lockout between
+    the two repos and would have blocked editing this repo is entitled to do -- *"I think you
+    hallucinated a coordination between them"*. So the shape is copied and nothing is imported,
+    fetched or shared: no runtime dependency, no shared state, no network call.
+
+    Returns ``[{"guid", "qualifiers", "references"}, ...]``, carrying only what the live
+    statement does not already hold. `data["claims"]` is left holding the genuinely new
+    statements, and is removed entirely when none remain.
     """
-    attached = []
+    def ref_key(ref):
+        return {pp: [snak_key(x) for x in sn]
+                for pp, sn in (ref.get("snaks") or {}).items()}
+
+    plans = []
+    keep = []
     for claim in data.get("claims") or []:
         prop = claim.get("mainsnak", {}).get("property")
         want = snak_key(claim.get("mainsnak") or {})
-        if not prop or want is None:
+        live = None
+        if prop and want is not None:
+            for candidate in existing.get(prop) or []:
+                if snak_key(candidate.get("mainsnak") or {}) == want:
+                    live = candidate
+                    break
+        if live is None:
+            # A value the item does not hold is a NEW statement, qualifiers and all, and one
+            # `wbeditentity` writes it whole. A DIFFERENT GENI ID IS A DIFFERENT STATEMENT --
+            # `CLAUDE.md` § *A second Geni ID on one item is NOT a conflict*.
+            keep.append(claim)
             continue
-        for live in existing.get(prop) or []:
-            if snak_key(live.get("mainsnak") or {}) != want:
-                continue
-            claim["id"] = live["id"]
-            attached.append(live["id"])
 
-            merged = {k: list(v) for k, v in (live.get("qualifiers") or {}).items()}
-            for qprop, snaks in (claim.get("qualifiers") or {}).items():
-                have = {snak_key(x) for x in merged.get(qprop, [])}
-                for snak in snaks:
-                    if snak_key(snak) not in have:
-                        merged.setdefault(qprop, []).append(snak)
-            if merged:
-                claim["qualifiers"] = merged
-            elif "qualifiers" in claim:
-                del claim["qualifiers"]
+        held = {k: {snak_key(x) for x in v}
+                for k, v in (live.get("qualifiers") or {}).items()}
+        quals = {}
+        for qprop, snaks in (claim.get("qualifiers") or {}).items():
+            fresh = [x for x in snaks if snak_key(x) not in held.get(qprop, set())]
+            if fresh:
+                quals[qprop] = fresh
 
-            live_refs = live.get("references") or []
-            if claim.get("references"):
-                seen = [{p: [snak_key(x) for x in sn]
-                         for p, sn in (r.get("snaks") or {}).items()} for r in live_refs]
-                fresh = [r for r in claim["references"]
-                         if {p: [snak_key(x) for x in sn]
-                             for p, sn in (r.get("snaks") or {}).items()} not in seen]
-                claim["references"] = live_refs + fresh
-            elif live_refs:
-                claim["references"] = live_refs
-            break
-    return attached
+        held_refs = [ref_key(r) for r in (live.get("references") or [])]
+        refs = [r for r in (claim.get("references") or []) if ref_key(r) not in held_refs]
+
+        if quals or refs:
+            plans.append({"guid": live["id"], "qualifiers": quals, "references": refs})
+
+    if keep:
+        data["claims"] = keep
+    elif "claims" in data:
+        del data["claims"]
+    return plans
 
 
 def entity_data(edit: dict, minted: dict) -> dict:

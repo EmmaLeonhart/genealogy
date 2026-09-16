@@ -4,8 +4,15 @@
 once qualified `subject named as "Heinrich VI von Plauen III"` -- both written by this pipeline.
 
 The cause is `wbeditentity` semantics. A claim object with no `id` is a NEW statement, always;
-the API has no notion that a statement with the same mainsnak is the same one. So the live claim
-id has to be read off the item and set on the outgoing claim.
+the API has no notion that a statement with the same mainsnak is the same one.
+
+⛔ **AND THE FIRST FIX WAS THE WRONG MECHANISM.** It set the live claim id on the outgoing claim
+and sent the merged qualifier set. `wbeditentity` on a claim carrying an `id` REPLACES that set,
+so every write depended on our reconstruction being complete and current, and a human qualifier
+added between the read and the write would be silently deleted. Emma pointed at the logic that
+already existed: *"there's logic in shintowiki-scripts that was intentionally added to implement
+this that you didn't do"* -- `find_claim` then `wbsetqualifier`/`wbsetreference` by GUID, which
+is additive by construction. These tests are on that mechanism.
 """
 
 from __future__ import annotations
@@ -46,41 +53,67 @@ def live(value="6000000009968757483", qualifiers=None, refs=None):
     return {"P2600": [claim]}
 
 
-def test_qualifier_attaches_to_the_existing_statement():
+def test_qualifier_goes_to_the_existing_statement_by_guid():
+    """The claim leaves the payload entirely; the qualifier is attached to its GUID."""
     data = outgoing()
-    assert edit_run.merge_into_existing(data, live()) == ["Q1$abc-123"]
-    claim = data["claims"][0]
-    assert claim["id"] == "Q1$abc-123", "no id means wbeditentity makes a second statement"
-    assert claim["qualifiers"]["P1810"][0]["datavalue"]["value"] == "Heinrich VI von Plauen III"
+    plans = edit_run.plan_attachments(data, live())
+    assert [p["guid"] for p in plans] == ["Q1$abc-123"]
+    assert plans[0]["qualifiers"]["P1810"][0]["datavalue"]["value"] \
+        == "Heinrich VI von Plauen III"
+    assert "claims" not in data, "a claim left in the payload is written a second time"
 
 
 def test_a_different_value_is_left_as_a_new_statement():
     """A SECOND Geni id is not a duplicate -- `CLAUDE.md` says so explicitly."""
     data = outgoing()
-    assert edit_run.merge_into_existing(data, live(value="4198641")) == []
+    assert edit_run.plan_attachments(data, live(value="4198641")) == []
+    assert len(data["claims"]) == 1
     assert "id" not in data["claims"][0]
 
 
-def test_an_existing_qualifier_is_not_replaced():
-    """Passing `qualifiers` on a claim with an `id` REPLACES the set, which would delete a
-    human's qualifier. § *The purpose is to ADD, not to correct*."""
+def test_someone_elses_qualifier_is_never_touched():
+    """The set is never sent, so there is nothing that could replace it: only OUR qualifier
+    is attached, and by a call that cannot remove anything."""
     theirs = {"P585": [string_snak("P585", "somebody else's qualifier")]}
     data = outgoing()
-    edit_run.merge_into_existing(data, live(qualifiers=theirs))
-    merged = data["claims"][0]["qualifiers"]
-    assert "P585" in merged, "the existing qualifier was dropped"
-    assert "P1810" in merged, "ours was not added"
+    plans = edit_run.plan_attachments(data, live(qualifiers=theirs))
+    assert list(plans[0]["qualifiers"]) == ["P1810"], "their qualifier is not ours to resend"
 
 
-def test_the_same_qualifier_twice_is_not_doubled():
+def test_a_qualifier_already_present_is_not_sent_again():
     mine = {"P1810": [string_snak("P1810", "Heinrich VI von Plauen III")]}
     data = outgoing()
-    edit_run.merge_into_existing(data, live(qualifiers=mine))
-    assert len(data["claims"][0]["qualifiers"]["P1810"]) == 1
+    assert edit_run.plan_attachments(data, live(qualifiers=mine)) == []
+    assert "claims" not in data
 
 
-def test_existing_references_survive():
+def test_a_reference_already_present_is_not_sent_again():
     theirs = [{"snaks": {"P248": [string_snak("P248", "a source")]}}]
-    data = outgoing()
-    edit_run.merge_into_existing(data, live(refs=theirs))
-    assert data["claims"][0]["references"] == theirs
+    data = {"claims": [{
+        "type": "statement", "rank": "normal",
+        "mainsnak": string_snak("P2600", "6000000009968757483"),
+        "references": theirs,
+    }]}
+    assert edit_run.plan_attachments(data, live(refs=theirs)) == []
+
+
+def test_a_new_reference_is_attached_and_the_old_one_left_alone():
+    theirs = [{"snaks": {"P248": [string_snak("P248", "a source")]}}]
+    ours = [{"snaks": {"P248": [string_snak("P248", "Geni")]}}]
+    data = {"claims": [{
+        "type": "statement", "rank": "normal",
+        "mainsnak": string_snak("P2600", "6000000009968757483"),
+        "references": ours,
+    }]}
+    plans = edit_run.plan_attachments(data, live(refs=theirs))
+    assert plans[0]["references"] == ours
+
+
+def test_already_present_is_a_success_not_a_failure():
+    """Measured in shintowiki-scripts on 2026-09-12: 23 of 26 reported failures were this."""
+    assert edit_run.is_already_present(
+        "The statement has already a qualifier with hash 1a2b3c")
+    assert edit_run.is_already_present(
+        "The statement has already a reference with hash 1a2b3c")
+    assert not edit_run.is_already_present("The save has failed.")
+    assert not edit_run.is_already_present("")

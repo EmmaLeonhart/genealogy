@@ -44607,3 +44607,66 @@ at merge.
 **`downloadGedcom()` called from the console does nothing.** It needs a trusted user gesture, so
 the click goes through the cloud icon on `/gedcom` and then the button on
 `/gedcom/download?task_id=...`. Worth knowing before concluding that downloads are blocked.
+
+## 2026-09-16 — the qualifier fix used the wrong mechanism, and the right one already existed
+
+The duplicate-property report on 2026-09-16 — an item carrying `P2600 6000000009968757483`
+twice, once bare and once qualified `subject named as "Heinrich VI von Plauen III"` — was
+answered the same evening by setting the live claim id on the outgoing claim and sending the
+merged qualifier set through `wbeditentity`. That stopped the duplicate. **It was not what was
+asked for**, and the second half of the message said so: *"there's logic in shintowiki-scripts
+that was intentionally added to implement this that you didn't do"*. Nobody looked.
+
+**What is there.** `modern-quickstatements/direct_daily_edits.py` holds `find_claim`, which
+returns a statement GUID, and `execute_set_qualifier` / `execute_set_reference`, which call
+`wbsetqualifier` and `wbsetreference` against it. Its own file register states the rule:
+*"A qualifier-bearing line makes execute_line find the existing claim and add to it rather than
+create a second one."*
+
+**Why the mechanism matters and is not a preference.** `wbeditentity` on a claim carrying an
+`id` **replaces** that claim's whole qualifier and reference set. Reconstructing the set from a
+live read makes every write depend on that read being complete and current, and a qualifier a
+human adds between the read and the write is deleted without anything reporting it — against
+§ *The purpose is to ADD, not to correct*. `wbsetqualifier` takes a GUID and one thing to put on
+it and cannot remove anything, so the property holds **by construction** rather than by our
+arithmetic being right. The previous fix was one stale read away from destroying someone's work.
+
+`scripts/wikidata-edit-run.py` now plans attachments instead of merging sets: a claim whose
+value the item already holds leaves the `wbeditentity` payload entirely, and its new qualifiers
+and references go on by GUID afterwards. When every claim in an object is already held and there
+is nothing else to write, the `wbeditentity` call is skipped rather than sent empty.
+
+**And one measured thing came with it.** `is_already_present` — Wikidata's *"already a qualifier
+with hash"* refusal is a success, because the thing we wanted on the statement is on the
+statement. Measured there on the 2026-09-12 run: **23 of 26 reported failures were this** and
+three were real. A run that reports 26 failures when it has 3 trains everyone to ignore the
+number.
+
+**Vendored, not coupled**, which the queue item for this repo's use of `shintowiki-scripts` has
+always required: the shape is copied, nothing is imported, fetched or shared. No runtime
+dependency, no shared state, no network call. `CLAUDE.md` records the session that invented a
+shared lockout between the two repos — *"I think you hallucinated a coordination between them"*.
+
+Existing duplicate statements are left alone; this is the code, not a correction pass.
+
+## 2026-09-16 — parentless means parentless in the tree
+
+`scripts/sibling-pair-worklist.py` tested `geni-families/<id>-family.tsv` for existence and
+called that the work queue. *"it does not just need to read the tiny-paths, it needs the entire
+synoptic tree to ensure that the parents are not present anywhere."* A sibling pair's parents
+arrive from any ordinary export under `exports/`, from a Wikidata identification, or from another
+path entirely, and none of those leaves a file in `geni-families/` — so the proxy would have sent
+the collector to re-scrape people the tree already had parents for, at a real page load each.
+
+`reports/derived-family.csv` is the test now: `father` and `mother`, derived from
+`out/merged.ged`. Empty in both means nobody in the union tree knows. An absent derived layer
+raises rather than calling everybody parentless. `scraped` stays as an informational column and
+`parent_in_tree` is the queue.
+
+## 2026-09-16 — the Seljuq father goes into the identifications GEDCOM
+
+`Mika'il Seljuq` `6000000031528058919` ↔ `Q6040326`, given with both links. He is the father of
+the two already in the Seljuq block of `scripts/build-qid-links-gedcom.py`: the item carries
+`P40` *child* `Q870223` Chaghri Beg and `Q144565` Tughril. No `P2600` on it, so the pairing
+existed nowhere else — this file's own category. Inert until 2027-01-01, when it becomes an entry
+point.
