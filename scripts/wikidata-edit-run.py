@@ -145,6 +145,17 @@ class Session:
             raise SystemExit(f"login failed: {result!r} (credentials not shown)")
         print(f"logged in as {res['login'].get('lgusername', '<unknown>')}")
 
+    def whoami(self) -> dict:
+        """What this SESSION may actually do, which is not what the account may do.
+
+        A bot-password session holds the INTERSECTION of the account's rights and the grants
+        ticked on that password, so `meta=userinfo` is the only thing that settles an argument
+        about whether a `permissiondenied` is the credential, the account or the grant. Asking
+        costs one GET and it is the difference between a diagnosis and a guess.
+        """
+        return self._call(action="query", meta="userinfo",
+                          uiprop="groups|rights|blockinfo")["query"]["userinfo"]
+
     def csrf(self) -> str:
         return self._call(action="query", meta="tokens")["query"]["tokens"]["csrftoken"]
 
@@ -624,6 +635,20 @@ def main() -> int:
 
     session = Session(API)
     session.login(user, password)
+
+    # ⛔ SAY WHAT THE SESSION MAY DO, BEFORE TRYING TO DO IT. On 2026-09-16 a run failed five
+    # times with `permissiondenied` and the honest answer to "is the secret outdated or unused?"
+    # was not in the log: a successful login proves the credential works, and nothing printed
+    # said whether `edit` was among the rights this session actually holds.
+    info = session.whoami()
+    rights = set(info.get("rights") or ())
+    print("session: %s | groups: %s" % (info.get("name", "?"),
+                                        ",".join(info.get("groups") or ()) or "none"))
+    for needed in ("edit", "createpage", "writeapi"):
+        print("  right %-12s %s" % (needed, "yes" if needed in rights else "NO"))
+    if info.get("blockid"):
+        print("  ACCOUNT IS BLOCKED: %s" % info.get("blockreason", ""))
+
     token = session.csrf()
     print(f"csrf token acquired; executing up to {limit} edits\n")
 
