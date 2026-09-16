@@ -156,6 +156,17 @@ class Session:
         return self._call(action="query", meta="userinfo",
                           uiprop="groups|rights|blockinfo")["query"]["userinfo"]
 
+    def claims(self, qid: str) -> dict:
+        """The item's existing statements, `{property: [claim, ...]}`. Empty on any failure.
+
+        Read before every statement edit. See `merge_into_existing`.
+        """
+        try:
+            res = self._call(action="wbgetclaims", entity=qid)
+        except Exception:
+            return {}
+        return res.get("claims") or {}
+
     def csrf(self) -> str:
         return self._call(action="query", meta="tokens")["query"]["tokens"]["csrftoken"]
 
@@ -171,12 +182,18 @@ class Session:
         call"*. The absence is deliberate; do not add one.
         """
         data = entity_data(edit, minted)
-        params = {"action": "wbeditentity", "token": token, "maxlag": "5",
-                  "data": json.dumps(data, ensure_ascii=False)}
         if edit["kind"] == "create":
-            params["new"] = "item"
+            params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+                      "new": "item",
+                      "data": json.dumps(data, ensure_ascii=False)}
         else:
-            params["id"] = edit["qid"]
+            # One extra GET per statement edit, and it is what stops a qualifier turning into
+            # a duplicate statement. See `merge_into_existing`.
+            if data.get("claims"):
+                merge_into_existing(data, self.claims(edit["qid"]))
+            params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+                      "id": edit["qid"],
+                      "data": json.dumps(data, ensure_ascii=False)}
 
         for attempt in range(4):
             res = self._call(action="wbeditentity", _post=params)
@@ -291,6 +308,82 @@ def _datavalue(value: dict, minted: dict, edit: dict) -> dict:
 def _snak(prop: str, value: dict, minted: dict, edit: dict) -> dict:
     return {"snaktype": "value", "property": prop,
             "datavalue": _datavalue(value, minted, edit)}
+
+
+def snak_key(snak: dict):
+    """A comparable value for a mainsnak, or None when there is nothing to compare.
+
+    `wikibase-entityid` is compared on the id and everything else on the datavalue, which is
+    what makes `P2600 "6000000009968757483"` match whatever shape the item stores it in.
+    """
+    if snak.get("snaktype") != "value":
+        return None
+    dv = (snak.get("datavalue") or {}).get("value")
+    if isinstance(dv, dict):
+        return dv.get("id") or dv.get("time") or json.dumps(dv, sort_keys=True)
+    return dv
+
+
+def merge_into_existing(data: dict, existing: dict) -> list:
+    """Point each outgoing claim at the statement the item already holds, if it holds one.
+
+    ⛔ **WITHOUT THIS, A QUALIFIER MAKES A DUPLICATE STATEMENT.** Reported 2026-09-16 from
+    `Q...` carrying `P2600 6000000009968757483` **twice** -- once bare and once qualified
+    `subject named as "Heinrich VI von Plauen III"` -- both written by this pipeline. Emma:
+    *"it didn't add a qualifier it just added a full duplicate property"*.
+
+    The cause is `wbeditentity` semantics, not the batch. A claim object with no `id` is a NEW
+    statement, always; the API has no notion that a statement with the same mainsnak is "the
+    same one". `build-garborg-day.add()` does hold a `live_values` guard, and it is the wrong
+    shape for this case twice over: it SKIPS rather than merges, so an existing bare statement
+    would never gain its qualifier at all, and it only sees what the offline store knew.
+
+    So the claim id is read from the live item and set on the outgoing claim, which turns the
+    call into an update of that statement.
+
+    ⛔ **AND THE MERGE ADDS, IT DOES NOT REPLACE.** Passing `qualifiers` on a claim that carries
+    an `id` REPLACES the whole qualifier set, which would silently delete a qualifier a human
+    put there -- against `CLAUDE.md` § *The purpose is to ADD, not to correct*. So the existing
+    qualifiers are the base and ours go in beside them, and a qualifier property we already
+    match on value is left exactly as it is. References likewise.
+
+    Returns the ids of the claims it attached to, for the caller to report.
+    """
+    attached = []
+    for claim in data.get("claims") or []:
+        prop = claim.get("mainsnak", {}).get("property")
+        want = snak_key(claim.get("mainsnak") or {})
+        if not prop or want is None:
+            continue
+        for live in existing.get(prop) or []:
+            if snak_key(live.get("mainsnak") or {}) != want:
+                continue
+            claim["id"] = live["id"]
+            attached.append(live["id"])
+
+            merged = {k: list(v) for k, v in (live.get("qualifiers") or {}).items()}
+            for qprop, snaks in (claim.get("qualifiers") or {}).items():
+                have = {snak_key(x) for x in merged.get(qprop, [])}
+                for snak in snaks:
+                    if snak_key(snak) not in have:
+                        merged.setdefault(qprop, []).append(snak)
+            if merged:
+                claim["qualifiers"] = merged
+            elif "qualifiers" in claim:
+                del claim["qualifiers"]
+
+            live_refs = live.get("references") or []
+            if claim.get("references"):
+                seen = [{p: [snak_key(x) for x in sn]
+                         for p, sn in (r.get("snaks") or {}).items()} for r in live_refs]
+                fresh = [r for r in claim["references"]
+                         if {p: [snak_key(x) for x in sn]
+                             for p, sn in (r.get("snaks") or {}).items()} not in seen]
+                claim["references"] = live_refs + fresh
+            elif live_refs:
+                claim["references"] = live_refs
+            break
+    return attached
 
 
 def entity_data(edit: dict, minted: dict) -> dict:
