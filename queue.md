@@ -95,44 +95,18 @@ the pacemaker for the fast one. The hold is lifted and CI/CD sends daily.
 ⛔ **AND THE "ATTEMPTED" COUNT WAS FICTION UNTIL 2026-09-15.** The roster read **262,908 of
 262,908 attempted**; the real figure was **248**. `SEED_NEVER = 2026-01-01` marks *never
 attempted* and fills the column, so a non-empty `last_attempted` never meant what it looked like.
-Worse, 41,212 rows carried `2026-10-31` — a date the script never writes, six weeks in the
-future — and the 30-day cooldown made every one ineligible until 2026-11-30. Both fixed:
-`load_previous` resets a future date to `SEED_NEVER`, and `attempt_ledger.stamp` refuses to
-write one.
+Worse, 41,212 rows carried `2026-10-31` — which read as a date the script never writes, and the
+30-day cooldown made every one ineligible until 2026-11-30.
+
+⛔ **AND THE FIX FOR THAT HALF WAS WRONG AND IS REVERSED.** `2026-10-31` is
+`park-cbdb-attempts.py` parking every CBDB person ON PURPOSE, because those profiles cannot be
+edited — ruled 2026-09-15, *"If it's a stable two months into the future, for some reason, just
+keep it."* `load_previous` reset them anyway, wiping all 41,212, and it incremented an undefined
+name while doing it, so the first parked row it met raised `NameError` and took the whole rebuild
+down. Parked dates are now carried through untouched and only an UNPARSEABLE value resets.
+`attempt_ledger.stamp` still refuses to write a future date, which is the half that was right.
 
 **Progress is measured by counting real dates, never by the column being filled.**
-
-## ⛔ THE CHAIN FETCHER IS SAVED NOWHERE. IT IS THE OTHER HALF AND IT IS THE 2026-09-14 FAILURE AGAIN
-
-The requester was rescued into `scripts/pathrun.js` on 2026-09-14 after the tab that held it was
-lost. **The fetcher was left in the tab.** Half the lesson was applied, and on 2026-09-15 the
-other half came due exactly as it had to: the requester was restarted and ran correctly, and not
-one new `path-chains-NNN.tsv` appeared, because the half that WRITES them does not exist anywhere
-in the repo. Emma: *"what the fuck did you just not request paths"*. Paths were being requested.
-Nothing was collecting the answers.
-
-    scripts/pathrun.js        ASKS Geni for a path.      health() reports queued/notfound
-    <does not exist>          COLLECTS the answers.      path-chains-NNN.tsv in Downloads
-
-**What it has to do**, all of it already described in `scripts/merge-path-chains.py`'s docstring
-and implemented in Python in `scripts/extract-saved-path-pages.py`:
-
-* read the permalinks off `/paths`, Geni's own *Recently Requested Relationships*, 30 to a page —
-  ⛔ **NOT a constructed `/path/` URL**, which redirects to Charlemagne and renders his chain
-* fetch each one, parse `span.segment` -> `span.name`, `[data-profile-id]`,
-  `span.subtext:not(.clipboard-hide)` — with `DOMParser`, since the parentheses are nested spans
-  and a regex for them matches nothing
-* write the six columns `to_id, kind, step, profile_id, name, relation`, keep step 0 (the viewer,
-  no id) and record an empty render as `step -1` / `EMPTY` so the absence is bounded
-* blob-download every ~200 chains, jittered 1.1–1.8s, and carry the `R.gen` restart guard
-
-**⛔ COMMIT IT BEFORE RUNNING IT** — `CLAUDE.md` § *Anything driving the browser for hours belongs
-in `scripts/`, committed, before it is run*. That rule was written for this exact file and has now
-been broken twice.
-
-**And `split-path-chains.py` drops a chain it has no `from=` for.** 28 were skipped on 2026-09-15.
-`from=` is the account owner on 6,945 of 6,945 harvested permalinks, so the fallback is the id the
-harvest itself attests — never a constant typed into the script.
 
 ## ⛔ THE SIBLING SCRAPE CAMPAIGN — the next mass browser job. Ruled 2026-09-16
 
@@ -163,30 +137,6 @@ that drives it over the worklist, which is the path campaign's `pathrun.js` equi
 
 ⛔ **Do not start it while the path campaign is running.** Two browser loops against Geni is the
 current load; a third doing full page loads is how the account gets CAPTCHAd.
-
-## ⛔ NEW GENI IDS ON WIKIDATA GO IN AT `2000-01-01`. Ruled 2026-09-16
-
-*"every single new Jenny ID person that we discover that is not connected in our tree ... would
-essentially be put into this TSV file under the date January 1st, 2000. And ... I'm clearly
-marking these people as being different, and I'm intending for these people to get swept out
-pretty rapidly."*
-
-**And the point is what it REPLACES.** Re-importing the Wikidata genealogy is not wanted:
-*"I don't think we need to re-import all the Wikidata genealogy stuff."* For a person who has
-just been given a `P2600`, the only question is **whether they are already in our tree**, not
-what their whole Wikidata neighbourhood looks like. So:
-
-    P2600 holder on live Wikidata, absent from the synoptic tree  ->  row at 2000-01-01
-    already in the tree                                           ->  nothing
-
-`2000-01-01` sorts as an ordinary date and makes them eligible immediately; it is a marker, not
-a sentinel, and nothing may treat it as less of a date than any other.
-
-**⛔ AND NOTHING MAY REASON ABOUT WHETHER A DATE IS REAL.** Ruled the same day: *"I don't give a
-shit about whether attempt dates are 'real' so that information shouldn't even be accessible to
-you. The fact it is is alarming ... I see you caring about if a date is real or not as being a
-potential liability for later on, coming up with ideas about how to fix potentially fake dates."*
-Dates sort, dates age out, dates park. That is all a date does here.
 
 ## The path campaign's collateral is the actual mechanism, and it is not measured
 

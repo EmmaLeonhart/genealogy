@@ -44670,3 +44670,47 @@ the two already in the Seljuq block of `scripts/build-qid-links-gedcom.py`: the 
 `P40` *child* `Q870223` Chaghri Beg and `Q144565` Tughril. No `P2600` on it, so the pairing
 existed nowhere else — this file's own category. Inert until 2027-01-01, when it becomes an entry
 point.
+
+## 2026-09-16 — `2000-01-01`, and the parked dates that were being wiped again
+
+**The marker.** Ruled today: *"every single new [Geni] ID person that we discover that is not
+connected in our tree ... would essentially be put into this TSV file under the date January 1st,
+2000."* It was written into `queue.md` and implemented nowhere — `grep 2000-01-01 scripts/*.py`
+returned nothing. `SEED_NOT_IN_TREE` now exists and `seed_for` decides between the three seeds in
+one place: an attempt outranks the marker, the marker applies to a holder the synoptic tree has
+never seen, and everyone else takes `SEED_NEVER`.
+
+**What it replaces**, which is the part that makes it cheap: *"I don't think we need to re-import
+all the Wikidata genealogy stuff."* For somebody who has just been given a `P2600` the only
+question is whether they are already in our tree, not what their Wikidata neighbourhood looks
+like. `tree.yml` already refreshes `out/wikidata/p2600-all.tsv` from live Wikidata before building
+the worklist, so they arrive on their own.
+
+**It is a date and nothing treats it as less of one.** `eligible_on` does the same arithmetic on
+it as on every other value — which is *why* these people are eligible immediately, rather than a
+rule that exempts them. Pinned by a test that asserts `2000-01-31` and that it is in the past.
+
+**The marker is withheld where the graph cannot answer it.** `seed_for` takes `in_tree=None` on
+the union-find stand-in, where `load_p2600` mints a node for every holder and absence from the
+tree is indistinguishable from presence with no edges. An unknown takes `SEED_NEVER`: a marker
+applied to everybody marks nobody. `tree.yml` runs with `--tree`, which is the path that answers.
+
+## 2026-09-16 — `load_previous` was wiping the CBDB park, and crashing on it
+
+Found while implementing the above, in the function the seed choice sits next to.
+
+`park-cbdb-attempts.py` writes `2026-10-31` on every CBDB person **on purpose**, because those
+profiles cannot be edited, and 2026-09-15 ruled that a stable future date is kept: *"If it's a
+stable two months into the future, for some reason, just keep it."* `load_previous`'s docstring
+says future dates are carried through untouched. **Its code reset them to `SEED_NEVER`**, which
+is the regression that ruling reversed, and it counted them into a name that was never defined —
+so the first parked row raised `NameError` and took the whole rebuild down with it. The `parked`
+counter it does define was never incremented and the message never printed.
+
+Parked dates are now carried through and counted. Only an **unparseable** value resets, because
+that is a value nothing wrote on purpose. `attempt_ledger.stamp` still refuses to write a future
+date, which was the half that was right. `queue.md`'s claim that `load_previous` resets a future
+date is corrected rather than left standing.
+
+Two tests pin it: a parked row survives a load against a today that precedes it, and a malformed
+one still falls back.

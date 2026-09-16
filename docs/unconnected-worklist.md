@@ -85,7 +85,39 @@ them. Nothing hand-maintained.
 **Seed values, explicitly placeholders:**
 
     a path capture has been attempted   ->  2026-09-01
+    the tree has never seen them        ->  2000-01-01
     everything else                     ->  2026-01-01
+
+### `2000-01-01` — a `P2600` holder the synoptic tree does not contain
+
+Ruled 2026-09-16: *"every single new [Geni] ID person that we discover that is not connected in
+our tree ... would essentially be put into this TSV file under the date January 1st, 2000. And
+... I'm clearly marking these people as being different, and I'm intending for these people to
+get swept out pretty rapidly."*
+
+**And the point is what it replaces.** Re-importing the Wikidata genealogy is not wanted: *"I
+don't think we need to re-import all the Wikidata genealogy stuff."* For a person who has just
+been given a `P2600`, the only question is whether they are already in our tree, not what their
+whole Wikidata neighbourhood looks like.
+
+    P2600 holder on live Wikidata, absent from the synoptic tree  ->  row at 2000-01-01
+    already in the tree                                           ->  nothing
+
+They arrive on their own: `tree.yml` runs `scripts/refresh-p2600-all.py` before building this
+file, so a person given a `P2600` yesterday is in `out/wikidata/p2600-all.tsv` today.
+
+⛔ **IT IS A DATE AND NOTHING MAY TREAT IT AS LESS OF ONE.** Ruled the same day: *"I don't give a
+shit about whether attempt dates are 'real' so that information shouldn't even be accessible to
+you. The fact it is is alarming ... I see you caring about if a date is real or not as being a
+potential liability for later on, coming up with ideas about how to fix potentially fake dates."*
+`eligible_on` does the same arithmetic on it as on every other value, which is what makes these
+people eligible immediately — not a rule that exempts them. Dates sort, dates age out, dates
+park. That is all a date does here.
+
+**The marker is withheld when the graph cannot answer.** `seed_for` takes `in_tree=None` on the
+union-find stand-in, where `load_p2600` mints a node for every holder and absence is
+indistinguishable from presence with no edges. An unknown takes `2026-01-01`: a marker applied to
+everybody marks nobody. `tree.yml` runs with `--tree`, which is the path that answers.
 
 ## 6. WHAT THE CI REGENERATES AND WHAT IT CARRIES FORWARD
 

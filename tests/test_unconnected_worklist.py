@@ -57,6 +57,34 @@ def test_the_seeds_are_the_two_placeholders(build):
     assert build.SEED_NEVER == "2026-01-01"
 
 
+def test_a_holder_the_tree_has_never_seen_is_marked_2000_01_01(build):
+    """Ruled 2026-09-16: *"every single new [Geni] ID person that we discover that is not
+    connected in our tree ... would essentially be put into this TSV file under the date
+    January 1st, 2000."* A holder the tree already contains gets nothing special."""
+    assert build.SEED_NOT_IN_TREE == "2000-01-01"
+    in_tree = {"100"}
+    assert build.seed_for("200", set(), in_tree) == build.SEED_NOT_IN_TREE
+    assert build.seed_for("100", set(), in_tree) == build.SEED_NEVER
+
+
+def test_an_attempt_outranks_the_not_in_tree_marker(build):
+    """The column is for attempts. A person the collector reached carries that, marker or not."""
+    assert build.seed_for("200", {"200"}, {"100"}) == build.SEED_ATTEMPTED
+
+
+def test_the_marker_is_withheld_when_the_graph_cannot_answer(build):
+    """`in_tree is None` is the stand-in graph, where `load_p2600` mints a node for every holder
+    so absence is indistinguishable from presence. A marker applied to everybody marks nobody."""
+    assert build.seed_for("200", set(), None) == build.SEED_NEVER
+
+
+def test_2000_01_01_is_an_ordinary_date_and_is_eligible_at_once(build):
+    """⛔ *"I don't give a shit about whether attempt dates are 'real'"* — it sorts, it ages out,
+    it parks, and `eligible_on` does the same arithmetic on it as on anything else."""
+    assert build.eligible_on(build.SEED_NOT_IN_TREE) == datetime.date(2000, 1, 31)
+    assert build.eligible_on(build.SEED_NOT_IN_TREE) < datetime.date.today()
+
+
 def test_eligible_block_comes_first_then_by_when_they_become_eligible(build):
     """§ 7. A huge neighbourhood does not promote somebody out of their cooldown."""
     rows = [
@@ -105,6 +133,27 @@ def test_dates_are_carried_forward_from_the_file_itself(build, tmp_path):
     write_worklist(f, [("Q1", "100", 5, "2026-09-02"), ("Q2", "200", 4, "2026-01-01")])
     assert build.load_previous(f) == {"100": "2026-09-02", "200": "2026-01-01"}
     assert build.load_previous(tmp_path / "absent.tsv") == {}
+
+
+def test_a_parked_future_date_is_carried_through_untouched(build, tmp_path):
+    """⛔ `park-cbdb-attempts.py` writes `2026-10-31` on every CBDB person ON PURPOSE, because
+    those profiles cannot be edited. An earlier version reset every future date to `SEED_NEVER`
+    and wiped all 41,212. Ruled 2026-09-15: *"If it's a stable two months into the future, for
+    some reason, just keep it."*
+
+    It also incremented an undefined name while doing it, so the first parked row raised
+    `NameError` and took the whole rebuild down."""
+    f = tmp_path / "unconnected-p2600.tsv"
+    write_worklist(f, [("Q1", "100", 5, "2026-10-31"), ("Q2", "200", 4, "2026-01-01")])
+    today = datetime.date(2026, 9, 16)
+    assert build.load_previous(f, today) == {"100": "2026-10-31", "200": "2026-01-01"}
+
+
+def test_an_unparseable_date_is_not_a_park(build, tmp_path):
+    """Unparseable is a value nothing wrote on purpose, so it resets. Parked is deliberate."""
+    f = tmp_path / "unconnected-p2600.tsv"
+    write_worklist(f, [("Q1", "100", 5, "not-a-date")])
+    assert build.load_previous(f, datetime.date(2026, 9, 16)) == {"100": build.SEED_NEVER}
 
 
 def test_the_stamp_writes_today_on_that_row_and_nothing_else(ledger, tmp_path):

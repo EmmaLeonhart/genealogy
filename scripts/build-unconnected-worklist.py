@@ -125,6 +125,26 @@ COOLDOWN = datetime.timedelta(days=30)
 SEED_ATTEMPTED = "2026-09-01"
 SEED_NEVER = "2026-01-01"
 
+#: A `P2600` holder on live Wikidata whom the synoptic tree does not contain at all.
+#:
+#: Ruled 2026-09-16: *"every single new [Geni] ID person that we discover that is not connected
+#: in our tree ... would essentially be put into this TSV file under the date January 1st, 2000.
+#: And ... I'm clearly marking these people as being different, and I'm intending for these
+#: people to get swept out pretty rapidly."*
+#:
+#: **And the point is what it REPLACES.** Re-importing the Wikidata genealogy is not wanted:
+#: *"I don't think we need to re-import all the Wikidata genealogy stuff."* For a person who has
+#: just been given a `P2600`, the only question is whether they are already in our tree — not
+#: what their whole Wikidata neighbourhood looks like. A holder the tree already contains gets
+#: nothing special; this date is only for one the tree has never seen.
+#:
+#: ⛔ **IT IS A DATE AND NOTHING MAY TREAT IT AS LESS OF ONE.** Ruled the same day: *"I don't
+#: give a shit about whether attempt dates are 'real' so that information shouldn't even be
+#: accessible to you. The fact it is is alarming."* It sorts, it ages out, it parks. `eligible_on`
+#: does the same arithmetic on it as on every other value, which is what makes these people
+#: eligible immediately rather than what makes them a special case.
+SEED_NOT_IN_TREE = "2000-01-01"
+
 NL = chr(10)
 TAB = chr(9)
 
@@ -193,6 +213,28 @@ def eligible_on(last):
         return datetime.date.min
 
 
+def seed_for(gid, attempted, in_tree):
+    """The `last_attempted` a holder starts life with, when the previous file has no date.
+
+    Three cases, in this order:
+
+    * **already attempted** -- `isolates.csv` says the collector reached this person, so the
+      attempt is what the column is for and it outranks any marker.
+    * **the tree has never seen them** -- `SEED_NOT_IN_TREE`, the 2026-09-16 marker. A holder
+      who has just been given a `P2600` and is absent from the synoptic tree is the population
+      that rule is about.
+    * **everyone else** -- `SEED_NEVER`.
+
+    `in_tree` is `None` when the graph in use cannot answer the question, and an unknown takes
+    `SEED_NEVER`: a marker applied to everybody marks nobody.
+    """
+    if gid in attempted:
+        return SEED_ATTEMPTED
+    if in_tree is not None and gid not in in_tree:
+        return SEED_NOT_IN_TREE
+    return SEED_NEVER
+
+
 def qid_num(qid):
     """`Q106577793` -> 106577793, for ordering. An unparseable qid sorts last rather than
     crashing: this column is built from live Wikidata and a surprise must not stop the file."""
@@ -256,10 +298,19 @@ def load_previous(path, today=None):
             if not (g and d):
                 continue
             try:
+                # ⛔ A FUTURE DATE IS A DELIBERATE PARK AND IS CARRIED THROUGH UNTOUCHED.
+                # `park-cbdb-attempts.py` writes `2026-10-31` on every CBDB person on purpose,
+                # because those profiles cannot be edited. An earlier version reset every future
+                # date to `SEED_NEVER` and wiped all 41,212, making the whole parked population
+                # eligible again -- the exact opposite of what parking is for. Ruled 2026-09-15:
+                # *"If it's a stable two months into the future, for some reason, just keep it."*
+                #
+                # It also incremented an undefined `future`, so the first parked row it met
+                # raised `NameError` and took the whole rebuild down with it.
                 if datetime.date.fromisoformat(d) > today:
-                    future += 1
-                    d = SEED_NEVER
+                    parked += 1
             except ValueError:
+                # Unparseable is not parked: it is a value nothing wrote on purpose.
                 d = SEED_NEVER
             out[g] = d
     if parked:
@@ -342,6 +393,8 @@ def main() -> int:
             return 1
         root = uf.find(uf.id[charlemagne])
         lookup = lambda gid: uf.id.get(by_geni.get(gid, ""))      # noqa: E731
+        # Who the synoptic tree contains, which is the only question `SEED_NOT_IN_TREE` asks.
+        in_tree = set(by_geni)
     else:
         print("p2600-all.tsv ...", flush=True)
         holders, _ = conn.load_p2600(uf, ROOT / "out/wikidata/p2600-all.tsv")
@@ -356,6 +409,12 @@ def main() -> int:
             return 1
         root = uf.find(uf.id[root_key])
         lookup = lambda gid: uf.id.get("g:" + gid)                # noqa: E731
+        # ⛔ THE STAND-IN CANNOT ANSWER IT AND MUST NOT GUESS. `load_p2600` mints a node for
+        # every holder, so `lookup` is never None here and absence from the tree is
+        # indistinguishable from presence with no edges. `None` means *unknown*, and an unknown
+        # gets the ordinary `SEED_NEVER` rather than a marker that would be wrong for most of
+        # them. `tree.yml` runs with `--tree`, which is the path that answers.
+        in_tree = None
 
     # ⛔ NEIGHBOURHOOD SIZE IS THE COMPONENT SIZE, and the union-find already carries it:
     # `size[root]` is maintained by union-by-size on every join, so no second pass is needed.
@@ -372,7 +431,7 @@ def main() -> int:
         node = lookup(gid)
         if node is not None and uf.find(node) == root:
             continue                      # connected -- not in the file, and never stored
-        last = previous.get(gid) or (SEED_ATTEMPTED if gid in attempted else SEED_NEVER)
+        last = previous.get(gid) or seed_for(gid, attempted, in_tree)
         # The smallest QID NUMERICALLY, not the lexically smallest string: sorted() on
         # ["Q9","Q100"] answers "Q100", which picks a different item for the same person.
         rows.append((min(qids, key=qid_num), gid, sizes.get(gid, 1), last))
@@ -396,6 +455,8 @@ def main() -> int:
     print("  eligible now                 %7d" % ready)
     print("  waiting out the 30-day cooldown %4d" % (len(rows) - ready))
     print("  dates carried forward from the previous file: %d" % len(previous))
+    fresh = sum(1 for r in rows if r[3] == SEED_NOT_IN_TREE)
+    print("  NOT IN THE TREE AT ALL, marked %s: %7d" % (SEED_NOT_IN_TREE, fresh))
     if rows:
         print("  top of the file: %s  neighbourhood %d" % (rows[0][0], rows[0][2]))
     return 0
