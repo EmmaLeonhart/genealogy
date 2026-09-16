@@ -315,12 +315,6 @@ step link rather than descend.
 that profile"* first.
 
 
-## Descendants export: Hélène de Corday
-
-Export descendants of Hélène de Corday `6000000000746523797` — running off
-`NN des Rotours` `6000000227695388934`, `task_id 6000000227757652945`. Download, file as
-`exports/emma-requested/export-Descendants-6000000227695388934.ged`, done.
-
 ## Forest exports
 
 These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear

@@ -44588,3 +44588,22 @@ and § *THE FIRST THING IN EVERY SESSION* no longer tells anyone to trust `ok`.
 turns requested paths into `path-chains-NNN.tsv` — is still saved nowhere, exactly as the
 requester was before 2026-09-14. Half the lesson was applied that day and the other half came due
 today. It is queued, not done.
+
+## 2026-09-15 — Hélène de Corday's descendants, filed
+
+The `Descendants` ball off `NN des Rotours` `6000000227695388934` — `task_id`
+`6000000227757652945`, requested 2026-09-14 21:30 and sitting finished on `/gedcom` ever since —
+is downloaded and filed as
+`exports/emma-requested/export-Descendants-6000000227695388934.ged`. 5,000 people, **at the cap**,
+which per § *a `Descendants` ball that came back at the cap is truncated by definition* says what
+is in it and nothing about what is absent from the descent.
+
+**The corpus already held the same seed** as
+`exports/abul-hamza-descendants/export-Descendants-6000000227695388934.ged`, exported 2026-09-11.
+Not a byte-identical duplicate and so not the overwrite exception: same line count, **3,493 lines
+changed** in three days. Both stay, and § *later sources win value conflicts* decides between them
+at merge.
+
+**`downloadGedcom()` called from the console does nothing.** It needs a trusted user gesture, so
+the click goes through the cloud icon on `/gedcom` and then the button on
+`/gedcom/download?task_id=...`. Worth knowing before concluding that downloads are blocked.
