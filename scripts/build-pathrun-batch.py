@@ -51,8 +51,8 @@ ID = re.compile(r"\d{10,}")
 WORKLIST = REPO / "reports" / "unconnected-p2600.tsv"
 
 
-def worklist_ids() -> list[str]:
-    """Every disconnected `P2600` holder's Geni id, in worklist order.
+def worklist_ids() -> list:
+    """Every disconnected `P2600` holder as `(qid, geni_id)`, in worklist order.
 
     ⛔ **NOTHING THE CAMPAIGN NEEDS MAY LIVE IN THE SESSION SCRATCHPAD.** Ruled 2026-09-15:
     *"Session scratchpad should never be used everything should be committed"*.
@@ -77,6 +77,8 @@ def worklist_ids() -> list[str]:
     """
     if not WORKLIST.exists():
         return []
+    #: Pairs, not bare ids, because `--order qid` needs the QID and the worklist is the only
+    #: place that carries it. Callers that want ids alone take the second element.
     cutoff = (dt.date.today() - dt.timedelta(days=30)).isoformat()
     out = []
     with WORKLIST.open(encoding="utf-8") as fh:
@@ -87,7 +89,7 @@ def worklist_ids() -> list[str]:
             when = (row.get("last_attempted") or "").strip()
             if when and when > cutoff:
                 continue
-            out.append(gid)
+            out.append((row.get("qid") or "", gid))
     return out
 
 
@@ -107,6 +109,10 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=800, help="how many ids to emit")
     ap.add_argument("--skip", type=int, default=0, help="how many to pass over first")
+    ap.add_argument("--order", choices=("worklist", "qid"), default="worklist",
+                    help="worklist order, or ascending numeric QID")
+    ap.add_argument("--half", action="store_true",
+                    help="start at the midpoint of the order instead of the front")
     args = ap.parse_args()
 
     every = worklist_ids()
@@ -114,12 +120,22 @@ def main() -> int:
         raise SystemExit("reports/unconnected-p2600.tsv yielded no ids -- rebuild it with "
                          "scripts/build-unconnected-worklist.py")
     done = harvested()
-    todo = [gid for gid in every if gid not in done]
+    todo = [(qid, gid) for qid, gid in every if gid not in done]
 
-    batch = todo[args.skip:args.skip + args.count]
+    #: ⛔ **THE WORKLIST IS NOT IN QID ORDER AND THE CAMPAIGN ASSUMED IT WAS.** It is grouped by
+    #: `neighbourhood_size` descending and only ascends by QID *within* a group -- row 2 is
+    #: Q106577730, row 100,000 is Q104657505, row 262,908 is Q65799194. Requesting from offset 0
+    #: therefore grinds the same end of the population every session. `--order qid` imposes the
+    #: order the campaign was described as having, so `--half` lands somewhere untouched.
+    if args.order == "qid":
+        todo.sort(key=lambda row: (int(row[0][1:]) if row[0][1:].isdigit() else 1 << 62, row[1]))
+
+    skip = args.skip or (len(todo) // 2 if args.half else 0)
+    batch = [gid for _, gid in todo[skip:skip + args.count]]
     print("// %d eligible in the worklist, %d already harvested, %d to go"
           % (len(every), len(done), len(todo)))
-    print("// this batch: %d, starting at offset %d" % (len(batch), args.skip))
+    print("// order: %s%s" % (args.order, ", starting at the midpoint" if args.half else ""))
+    print("// this batch: %d, starting at offset %d" % (len(batch), skip))
     print("R.ids = " + repr(batch).replace("'", '"') + ";")
     return 0
 
