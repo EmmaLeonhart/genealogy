@@ -79,6 +79,32 @@ read the bot name; something like `genimerge` describes what the edits are and
 makes them defensible on a talk page. Worth changing at the same time as the
 regeneration, since both mean creating a new bot password anyway.
 
+## The grants, and they are not the account's rights
+
+Ruled by measurement 2026-09-16, on the first run that ever got as far as trying to edit. It
+logged in, took a CSRF token, ordered 168 edit objects, attempted five term edits, and got
+`permissiondenied` on every one:
+
+    qs-terms-d5a64b0ce9d5  terms  FAILED: permissiondenied: You do not have the
+                                  permissions needed to carry out this action.
+
+**A `permissiondenied` after a successful login is never the batch and never the account.** The
+login proves the credentials are good and the account is not blocked. What is missing is a
+**grant**, and grants are ticked per bot password at `Special:BotPasswords`: they are a subset of
+what the account may do, chosen when the password is created.
+
+This project's batches need, at minimum:
+
+| grant | what needs it |
+| --- | --- |
+| **Edit existing pages** | every `Lxx` / `Dxx` / `Axx` term edit, and every statement |
+| **Create, edit, and move pages** | the `CREATE` lines that mint name items |
+
+**A grant cannot be added to an existing bot password.** Changing them means generating a new
+password and putting it into the `BOT_PASSWORD` secret, which is the account owner's job and never
+Claude's, exactly as the rest of this page says. Worth doing at the same time as the regeneration
+this page already asks for and the rename off `test`.
+
 ## Start date: 1 September 2026
 
 Set 2026-08-13 — the actions start properly on **1 September 2026**. `.github/workflows/wikidata-edits.yml` enforces it: the first step

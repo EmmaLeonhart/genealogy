@@ -90,6 +90,21 @@ REVIEWED_BATCHES = {
     "reports/wikidata-garborg-day-manual.txt",
 }
 
+#: Printed when EVERY failure in a run is `permissiondenied`. That combination is diagnostic and
+#: the old message was not: a run that logged in and took a CSRF token has good credentials and an
+#: unblocked account, so what is missing is a GRANT -- and grants belong to the bot password, not
+#: to the account, and are fixed at the moment the password is created.
+PERMISSION_HINT = (
+    "",
+    "  Every failure is permissiondenied and the login succeeded, so this is the bot",
+    "  password's GRANTS -- not the batch, and not the account. At Special:BotPasswords",
+    "  the bot needs at minimum:",
+    "      Edit existing pages           labels, descriptions, aliases, statements",
+    "      Create, edit, and move pages  the CREATE lines that mint name items",
+    "  Grants cannot be added to an existing bot password: it means generating a NEW one",
+    "  and putting it in the BOT_PASSWORD secret. See docs/wikidata-bot.md.",
+)
+
 #: The Gregorian calendar, which every date in this project's batches uses.
 GREGORIAN = "http://www.wikidata.org/entity/Q1985727"
 
@@ -643,6 +658,15 @@ def main() -> int:
             if consecutive >= 5:
                 print(f"\nSTOPPED: {consecutive} failures in a row — this is not "
                       "about the individual edits.", file=sys.stderr)
+                # NAME THE CAUSE. "this is not about the individual edits" is true and tells
+                # nobody what to do. `permissiondenied` from a run that logged in and took a
+                # CSRF token is never the batch: the login worked, so it is the bot password's
+                # GRANTS at Special:BotPasswords, which are ticked per bot password and are not
+                # the account's own rights. Seen 2026-09-16 on the first run that got as far as
+                # trying to edit: five `qs-terms-*` edits, all permissiondenied.
+                if failed and all("permissiondenied" in m for m in failed.values()):
+                    for line in PERMISSION_HINT:
+                        print(line, file=sys.stderr)
                 break
             continue
         consecutive = 0
