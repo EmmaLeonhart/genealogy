@@ -86,10 +86,15 @@ window.__chains = window.__chains || {};
   C.health = function () {
     const age = C.lastAt ? (Date.now() - C.lastAt) / 1000 : null;
     return {
-      alive: !!(C.running && age !== null && age < 120),
+      /* ⛔ `alive` HAS TO COVER THE COLLECT PHASE, and in its first form it did not: `running` is
+       * set by `go()` alone, so a fetcher ten minutes into its `/paths` walk reported
+       * `alive:false` -- the same false negative `health()` was written to abolish. The collect
+       * phase is derived, not a fourth flag: a page counter that has started and not finished. */
+      alive: !!((C.running || (C.collectPage && !C.collectDone)) && age !== null && age < 120),
       secondsSinceLastRequest: age === null ? null : Math.round(age),
       i: C.i, of: C.urls.length, ok: C.ok, fail: C.fail,
       part: C.part, pending: C.rows.length,
+      collectPage: C.collectPage || 0, collectDone: !!C.collectDone,
       finished: C.finished || null,
     };
   };
@@ -113,10 +118,17 @@ window.__chains = window.__chains || {};
         const abs = new URL(h, location.origin).href;
         if (!seen.has(abs)) { seen.add(abs); C.urls.push(abs); added++; }
       }
+      /* ⛔ **`collect()` HAS TO BE INSTRUMENTED TOO.** It is a ten-minute walk and it runs
+       * unawaited, so without these three fields the fetcher spends its first ten minutes
+       * indistinguishable from a fetcher that never started -- the exact ambiguity `health()`
+       * exists to remove. `lastAt` is stamped here, and `alive` reads the pair. */
+      C.collectPage = p;
+      C.lastAt = Date.now();
       if (p % 10 === 0) console.log("[chains] page " + p + ", " + C.urls.length + " permalinks");
       await sleep();
     }
     console.log("[chains] collect done: +" + added + ", " + C.urls.length + " total");
+    C.collectDone = true;
     return added;
   };
 
