@@ -6,8 +6,6 @@
 # ========================================================================
 #   Q1147250 Xuán Xiāo 玄囂 Shǎo Hào 少昊 2: P2600 from a hand identification
 Q1147250	P2600	"6000000002481254239"
-#   Q128371 Caliph Marwan II bin Muhammad: P2600 from a hand identification
-Q128371	P2600	"6000000008659107006"
 #   Q198180 Zhuān Xū 顓頊 3世 DO NOT MERGE PARENTS: P2600 from a hand identification
 Q198180	P2600	"6000000001381123265"
 #   Q29201 Yellow Emperor: P2600 from a hand identification
@@ -44,6 +42,8 @@ Q10514592	P2600	"6000000007213183226"
 Q10752092	P2600	"6000000001381046535"
 #   Q10933357 Dà Yè 大业 5: P2600 from a hand identification
 Q10933357	P2600	"6000000008004418918"
+#   Q128371 Caliph Marwan II bin Muhammad: P2600 from a hand identification
+Q128371	P2600	"6000000008659107006"
 #   Q1441379 Léi Zǔ 嫘祖: P2600 from a hand identification
 Q1441379	P2600	"6000000002048439278"
 #   Q18028984 Reformatorin Ursula von Münsterberg: P2600 from a hand identification
@@ -82,8 +82,6 @@ Q819556	P2600	"6000000003485847175"
 Q8262857	P2600	"6000000023167303575"
 #   Q9511624 Huaxu: P2600 from a hand identification
 Q9511624	P2600	"6000000195149174838"
-#   Q9569181 Ju Mang 句芒 6: P2600 from a hand identification
-Q9569181	P2600	"6000000001380828716"
 
 # ========================================================================
 # NAME ITEMS. One file, per the 2026-08-30 rule -- there is no
@@ -306,10 +304,48 @@ LAST	P144	Q15897788
 #   Q141352446 Mette Petersdotter Weijer: P5056 patronym or matronym = the item just created
 Q141352446	P5056	LAST	S2600	"6000000003626215705"
 
+# Taraldsdatter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Taraldsdatter"
+LAST	Len	"Taraldsdatter"
+#   set the mul label to "Taraldsdatter"
+LAST	Lmul	"Taraldsdatter"
+#   set the ja label to "タラルドスダッテル"
+LAST	Lja	"タラルドスダッテル"
+#   set the zh label to "塔拉尔德斯达特"
+LAST	Lzh	"塔拉尔德斯达特"
+#   set the ko label to "타랄드스다테르"
+LAST	Lko	"타랄드스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q12718900 Tarald
+LAST	P144	Q12718900
+
+# Tugurin -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Tugurin"
+LAST	Len	"Tugurin"
+#   set the mul label to "Tugurin"
+LAST	Lmul	"Tugurin"
+#   set the ja label to "トグリン"
+LAST	Lja	"トグリン"
+#   set the zh label to "图古林"
+LAST	Lzh	"图古林"
+#   set the ko label to "투구린"
+LAST	Lko	"투구린"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
 # Andranaf -- given, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Andranaf"
+#   set the en label to "Andranaf"
 LAST	Len	"Andranaf"
 #   set the mul label to "Andranaf"
 LAST	Lmul	"Andranaf"
@@ -322,44 +358,10 @@ LAST	Lko	"안드라나프"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
 
-# Anthelia -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Anthelia"
-LAST	Len	"Anthelia"
-#   set the mul label to "Anthelia"
-LAST	Lmul	"Anthelia"
-#   set the ja label to "アンテリア"
-LAST	Lja	"アンテリア"
-#   set the zh label to "安特利阿"
-LAST	Lzh	"安特利阿"
-#   set the ko label to "안테리아"
-LAST	Lko	"안테리아"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-
-# Axelsdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Axelsdatter"
-LAST	Len	"Axelsdatter"
-#   set the mul label to "Axelsdatter"
-LAST	Lmul	"Axelsdatter"
-#   set the ja label to "アクスエルスダッテル"
-LAST	Lja	"アクスエルスダッテル"
-#   set the zh label to "阿克斯埃尔斯达特"
-LAST	Lzh	"阿克斯埃尔斯达特"
-#   set the ko label to "아그셀스다테르"
-LAST	Lko	"아그셀스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-
-# 1322 more name items are needed and wait for a later
+# 1320 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
+#   Anthelia (family), 1 bearer(s)
+#   Axelsdatter (patronymic), 1 bearer(s)
 #   Bergesdatter (patronymic), 1 bearer(s)
 #   Djupædia (family), 1 bearer(s)
 #   Flystveit (family), 1 bearer(s)
@@ -370,9 +372,7 @@ LAST	P31	Q110874
 #   Nordinamn (given), 1 bearer(s)
 #   Olasdatter (patronymic), 1 bearer(s)
 #   Olavson (patronymic), 1 bearer(s)
-#   P (given), 1 bearer(s)
-#   Plotnikoff (family), 1 bearer(s)
-#   ... and 1310 more
+#   ... and 1308 more
 
 
 # ======================================================================
@@ -397,25 +397,6 @@ Q141457235	P460	Q141448438
 # ========================================================================
 # THE DAY'S PEOPLE
 # ========================================================================
-
-# ------------------------------------------------------------------------
-# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 90 PEOPLE,
-#   both by instruction: label changes go at the beginning of the batch and
-#   are limited per batch, and everything for one QID goes at once, in
-#   descending QID order. A label set at CREATION time is neither counted nor
-#   capped -- a label added during item creation is good.
-#   Newest items first, deliberately: a recent item with an error in it looks
-#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
-#   languages, then the rest.
-#   3 people, 3 edits; 0 edits held for a later run
-#   across 0 more people. A repeat is a no-op, so nothing is lost.
-# ------------------------------------------------------------------------
-#   set the ja label to "ルズヴィ・ダグラス"
-Q5624121	Lja	"ルズヴィ・ダグラス"
-#   set the ja label to "マグヌス・フッス"
-Q603365	Lja	"マグヌス・フッス"
-#   set the zh label to "马尔万二世"
-Q128371	Lzh	"马尔万二世"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have

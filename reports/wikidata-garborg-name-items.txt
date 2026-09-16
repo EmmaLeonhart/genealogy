@@ -214,10 +214,48 @@ LAST	P144	Q15897788
 #   Q141352446 Mette Petersdotter Weijer: P5056 patronym or matronym = the item just created
 Q141352446	P5056	LAST	S2600	"6000000003626215705"
 
+# Taraldsdatter -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Taraldsdatter"
+LAST	Len	"Taraldsdatter"
+#   set the mul label to "Taraldsdatter"
+LAST	Lmul	"Taraldsdatter"
+#   set the ja label to "タラルドスダッテル"
+LAST	Lja	"タラルドスダッテル"
+#   set the zh label to "塔拉尔德斯达特"
+LAST	Lzh	"塔拉尔德斯达特"
+#   set the ko label to "타랄드스다테르"
+LAST	Lko	"타랄드스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P144 based on = Q12718900 Tarald
+LAST	P144	Q12718900
+
+# Tugurin -- family, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Tugurin"
+LAST	Len	"Tugurin"
+#   set the mul label to "Tugurin"
+LAST	Lmul	"Tugurin"
+#   set the ja label to "トグリン"
+LAST	Lja	"トグリン"
+#   set the zh label to "图古林"
+LAST	Lzh	"图古林"
+#   set the ko label to "투구린"
+LAST	Lko	"투구린"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
 # Andranaf -- given, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Andranaf"
+#   set the en label to "Andranaf"
 LAST	Len	"Andranaf"
 #   set the mul label to "Andranaf"
 LAST	Lmul	"Andranaf"
@@ -230,44 +268,10 @@ LAST	Lko	"안드라나프"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
 
-# Anthelia -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Anthelia"
-LAST	Len	"Anthelia"
-#   set the mul label to "Anthelia"
-LAST	Lmul	"Anthelia"
-#   set the ja label to "アンテリア"
-LAST	Lja	"アンテリア"
-#   set the zh label to "安特利阿"
-LAST	Lzh	"安特利阿"
-#   set the ko label to "안테리아"
-LAST	Lko	"안테리아"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-
-# Axelsdatter -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Axelsdatter"
-LAST	Len	"Axelsdatter"
-#   set the mul label to "Axelsdatter"
-LAST	Lmul	"Axelsdatter"
-#   set the ja label to "アクスエルスダッテル"
-LAST	Lja	"アクスエルスダッテル"
-#   set the zh label to "阿克斯埃尔斯达特"
-LAST	Lzh	"阿克斯埃尔斯达特"
-#   set the ko label to "아그셀스다테르"
-LAST	Lko	"아그셀스다테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-
-# 1322 more name items are needed and wait for a later
+# 1320 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
+#   Anthelia (family), 1 bearer(s)
+#   Axelsdatter (patronymic), 1 bearer(s)
 #   Bergesdatter (patronymic), 1 bearer(s)
 #   Djupædia (family), 1 bearer(s)
 #   Flystveit (family), 1 bearer(s)
@@ -278,9 +282,7 @@ LAST	P31	Q110874
 #   Nordinamn (given), 1 bearer(s)
 #   Olasdatter (patronymic), 1 bearer(s)
 #   Olavson (patronymic), 1 bearer(s)
-#   P (given), 1 bearer(s)
-#   Plotnikoff (family), 1 bearer(s)
-#   ... and 1310 more
+#   ... and 1308 more
 
 
 # ======================================================================
