@@ -104,6 +104,7 @@ import collections
 import csv
 import datetime
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -339,6 +340,102 @@ EXTRA_COLUMNS = STATS_COLUMNS + ["exported"]
 #: is why it is the one thing `load_previous` carries.
 PLACEHOLDER = ["200"] * len(STATS_COLUMNS) + ["no"]
 
+#: Where the extension puts a census it has already read. `geni-extension/content/family.js`
+#: writes the line; `docs/per-individual-loop.md` is what the figures gate.
+FAMILIES = ROOT / "geni-families"
+EXPORTS = ROOT / "exports"
+
+
+#: `export-<Style>-<seed id>` -- § *an export is named for its style, so disambiguate with the
+#: seed id*. The style is letters, the seed is the digits straight after it, and anything
+#: further along the name (`-refresh`, a date) is not an id.
+SEED_IN_NAME = re.compile(r"^export-[A-Za-z]+-(\d{7,})")
+
+
+def captured_statistics(directory=None):
+    """The censuses the collector has ALREADY read, off disk. `{geni_id: [five figures]}`.
+
+    ⛔ **THE SIX COLUMNS HAD NEVER BEEN WRITTEN.** Measured 2026-09-16: `200` on all 275,860 rows
+    and `exported` `no` on all 275,860. They were added 2026-09-10 as placeholders for figures
+    the page scrape used to provide -- *"list the statistics of everyone in the tsv as 200 and not
+    exported. That way it will not flag anyone to be exported but we have placeholder data"* --
+    and nothing ever replaced one.
+
+    **Nothing needed scraping to replace them.** `PLACEHOLDER`'s own note says where the answers
+    live: *"Whether an export exists is answered by whether the GEDCOM exists in `exports/`; what
+    a person's statistics are is answered by scraping them again."* The second half was already
+    done for everyone the collector has visited -- `write-family-scrape.py` has been writing
+
+        # statistics	family_tree=190	blood_relatives=36	ancestors=7	descendants=0	followers=3
+
+    into `geni-families/<id>-family.tsv` on every capture. The figures were on disk and the file
+    that needs them was writing `200` over the top.
+
+    ⛔ **AND IT STAYS STATELESS.** *"This entire algorithm is completely stateless except for the
+    actual connectivity graph ... and the dates of attempts."* This is read fresh from the
+    captures on every build and carried forward from nothing, which is the same property
+    `load_extras` was deleted for breaking.
+
+    A person with no capture keeps `200` -- Emma's deliberate no-flag placeholder, because the
+    export gate fires at 250 and 200 flags nobody.
+    """
+    directory = directory or FAMILIES
+    out = {}
+    if not directory.exists():
+        return out
+    for path in directory.glob("*-family.tsv"):
+        gid = path.name.split("-")[0]
+        if not gid.isdigit():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for line in text.splitlines():
+            if not line.startswith("# statistics"):
+                continue
+            figures = {}
+            for cell in line.split(TAB)[1:]:
+                key, _, value = cell.partition("=")
+                figures[key.strip()] = value.strip()
+            row = [figures.get(c, "") for c in STATS_COLUMNS]
+            # A capture that parsed to nothing is not a capture: leave the placeholder rather
+            # than write five empty cells over it.
+            if any(v for v in row):
+                out[gid] = [v if v else "0" for v in row]
+            break
+    return out
+
+
+def exported_geni_ids(directory=None):
+    """Every Geni id an export in `exports/` is SEEDED on, read off the file names.
+
+    `PLACEHOLDER`'s note again: *"Whether an export exists is answered by whether the GEDCOM
+    exists in `exports/`"*. `exports/` is the corpus and is read recursively -- `CLAUDE.md`
+    § *`exports/` is the corpus, read recursively. There is no ingest step*.
+
+    The name is the source and not the first `INDI`, because a seed id in the name is what
+    § *an export is named for its style, so disambiguate with the seed id* put there, and
+    opening 291,439 records to answer a yes/no is the expensive way to be no more right.
+    """
+    directory = directory or EXPORTS
+    out = set()
+    if not directory.exists():
+        return out
+    # ⛔ ONLY `export-*.ged`. `exports/tiny-profiles/<id>.ged` and `exports/tiny-paths/*.ged` are
+    # written BY this pipeline -- a profile scrape and a path chain -- and counting them would
+    # report `exported yes` for 12,000-odd people no Geni export has ever been run on, which is
+    # the opposite of what the column gates. A Geni export is named for its style and its seed:
+    # `export-Descendants-6000000227036719829.ged`.
+    # ⛔ THE SEED SLOT, NOT EVERY NUMBER IN THE NAME. `export-Descendants-<id>-refresh-20260913`
+    # carries a DATE as its last chunk, and a blanket digit scan adds `20260913` to the set as
+    # though it were somebody's Geni id.
+    for path in directory.rglob("export-*.ged"):
+        seed = SEED_IN_NAME.match(path.name)
+        if seed:
+            out.add(seed.group(1))
+    return out
+
 
 def attempted_geni_ids(path):
     """Anyone a path capture has already been run on, for the seed date."""
@@ -425,6 +522,10 @@ def main() -> int:
 
     previous = load_previous(pathlib.Path(args.out))
     attempted = attempted_geni_ids(ISOLATES)
+    captured = captured_statistics()
+    exported = exported_geni_ids()
+    print("  censuses already captured on disk: %d" % len(captured))
+    print("  geni ids an export is seeded on:   %d" % len(exported))
 
     rows = []
     for gid, qids in holders.items():
@@ -448,8 +549,9 @@ def main() -> int:
         fh.write(TAB.join(["qid", "geni_id", "neighbourhood_size", "last_attempted"]
                           + EXTRA_COLUMNS) + NL)
         for qid, gid, size, last in rows:
-            fh.write(TAB.join([qid, gid, str(size), last]
-                              + PLACEHOLDER) + NL)
+            extras = captured.get(gid, PLACEHOLDER[:len(STATS_COLUMNS)]) + [
+                "yes" if gid in exported else "no"]
+            fh.write(TAB.join([qid, gid, str(size), last] + extras) + NL)
 
     print("%d P2600 holders; %d DISCONNECTED -> %s" % (len(holders), len(rows), out))
     print("  eligible now                 %7d" % ready)

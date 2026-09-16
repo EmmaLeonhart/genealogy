@@ -138,25 +138,6 @@ that drives it over the worklist, which is the path campaign's `pathrun.js` equi
 ⛔ **Do not start it while the path campaign is running.** Two browser loops against Geni is the
 current load; a third doing full page loads is how the account gets CAPTCHAd.
 
-## The path campaign's collateral is the actual mechanism, and it is not measured
-
-*"finding paths between people gets a massive amount of collateral damage in a positive sense,
-where a person who was not connected ends up getting connected through the kind of spindly stuff
-that is present with us now."*
-
-Nothing counts this. A path found for person A drags in everyone on the chain, and those people
-leave the worklist at the next rebuild without anybody ever having requested them.
-`reports/path-frequency.csv` now holds who appears in the chains; the missing number is **how
-many worklist members stopped being worklist members without being attempted.**
-
-## The six statistics columns have never been written
-
-`reports/unconnected-p2600.tsv` carries `family_tree`, `blood_relatives`, `ancestors`,
-`descendants`, `followers`, `exported`. Measured 2026-09-16: **`200` on all 275,860 rows, and
-`exported` is `no` on all 275,860.** They were added 2026-09-10 -- *"list the statistics of
-everyone in the tsv as 200 and not exported"* -- as placeholders for figures the page scrape used
-to provide, and nothing has ever replaced a single one. Either they get filled or they go.
-
 ## More items at the end
 
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.

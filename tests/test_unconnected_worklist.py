@@ -235,6 +235,56 @@ def test_the_stamp_refuses_a_file_that_is_not_this_file(ledger, tmp_path):
 SPEC_COLUMNS = ["qid", "geni_id", "neighbourhood_size", "last_attempted"]
 
 
+def test_the_statistics_come_off_the_captures_the_collector_already_wrote(build, tmp_path):
+    """⛔ Measured 2026-09-16: `200` on all 275,860 rows, and nothing had ever replaced one.
+    The figures were on disk the whole time -- `write-family-scrape.py` writes a `# statistics`
+    line into `geni-families/<id>-family.tsv` on every capture."""
+    (tmp_path / "6000000000000000001-family.tsv").write_text(
+        "# statistics" + TAB + "family_tree=190" + TAB + "blood_relatives=36" + TAB
+        + "ancestors=7" + TAB + "descendants=0" + TAB + "followers=3" + TAB + "read=1" + NL,
+        encoding="utf-8")
+    got = build.captured_statistics(tmp_path)
+    assert got == {"6000000000000000001": ["190", "36", "7", "0", "3"]}
+
+
+def test_a_capture_with_no_figures_leaves_the_placeholder(build, tmp_path):
+    """200 flags nobody, which is what Emma asked the placeholder to do. Five empty cells over
+    the top of it would be worse than the placeholder, not better."""
+    (tmp_path / "6000000000000000002-family.tsv").write_text(
+        "# statistics" + TAB + "read=1" + NL, encoding="utf-8")
+    assert build.captured_statistics(tmp_path) == {}
+
+
+def test_exported_reads_the_seed_slot_and_not_every_number(build, tmp_path):
+    """⛔ `export-Descendants-<id>-refresh-20260913.ged` carries a DATE as its last chunk. A
+    blanket digit scan puts `20260913` in the set as though it were somebody's Geni id."""
+    (tmp_path / "export-Descendants-6000000227036719829-refresh-20260913.ged").write_text(
+        "", encoding="utf-8")
+    assert build.exported_geni_ids(tmp_path) == {"6000000227036719829"}
+
+
+def test_a_tiny_gedcom_is_not_an_export(build, tmp_path):
+    """`exports/tiny-profiles/<id>.ged` and `exports/tiny-paths/*.ged` are written BY this
+    pipeline. Counting them reports `exported yes` for 12,000-odd people no Geni export has ever
+    been run on -- the opposite of what the column gates."""
+    (tmp_path / "tiny-profiles").mkdir()
+    (tmp_path / "tiny-profiles" / "292373984150002914.ged").write_text("", encoding="utf-8")
+    (tmp_path / "tiny-paths").mkdir()
+    (tmp_path / "tiny-paths" / "bai-jian.ged").write_text("", encoding="utf-8")
+    assert build.exported_geni_ids(tmp_path) == set()
+
+
+def test_neither_derivation_is_carried_forward(build):
+    """⛔ *"This entire algorithm is completely stateless except for the actual connectivity
+    graph ... and the dates of attempts."* `load_previous` reads `last_attempted` and nothing
+    else, which is what makes both of these safe to derive fresh every build."""
+    assert build.load_previous.__doc__
+    import inspect
+    body = inspect.getsource(build.load_previous)
+    for column in build.STATS_COLUMNS + ["exported"]:
+        assert column not in body, f"{column} is being carried forward again"
+
+
 def test_the_committed_worklist_has_the_spec_columns(build):
     """The real file, because every consumer joins on that column order.
 

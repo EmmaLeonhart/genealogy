@@ -44714,3 +44714,47 @@ date is corrected rather than left standing.
 
 Two tests pin it: a parked row survives a load against a today that precedes it, and a malformed
 one still falls back.
+
+## 2026-09-16 — the six statistics columns, filled from what was already on disk
+
+`reports/unconnected-p2600.tsv` carries `family_tree`, `blood_relatives`, `ancestors`,
+`descendants`, `followers` and `exported`. Measured this morning: **`200` on all 275,860 rows and
+`exported` `no` on all 275,860**, since 2026-09-10. The queue item said they either get filled or
+they go.
+
+**They are filled, and nothing had to be scraped to do it.** `PLACEHOLDER`'s own note said where
+the answers were: *"Whether an export exists is answered by whether the GEDCOM exists in
+`exports/`; what a person's statistics are is answered by scraping them again."* The second half
+was already done for everyone the collector had visited — `write-family-scrape.py` has been
+writing
+
+    # statistics	family_tree=190	blood_relatives=36	ancestors=7	descendants=0	followers=3
+
+into `geni-families/<id>-family.tsv` on every capture since 2026-09-10. **119 censuses were
+sitting on disk and the file that wanted them was writing `200` over the top.** `exported` comes
+off the export file names: **535 Geni ids an export is seeded on.**
+
+**Both stay stateless**, which is the property `load_extras` was deleted for breaking on
+2026-09-10: *"This entire algorithm is completely stateless except for the actual connectivity
+graph ... and the dates of attempts."* Neither is carried forward from the previous file; both
+are re-derived on every build, and a test reads `load_previous`'s source to hold that.
+
+**A person with no capture keeps `200`**, which is Emma's deliberate no-flag placeholder — the
+export gate fires at 250 and 200 flags nobody. Five empty cells would be worse than the
+placeholder, not better, so a `# statistics` line that parses to nothing is not treated as a
+capture.
+
+**Two things that would have been quietly wrong.** `export-Descendants-<id>-refresh-20260913.ged`
+carries a date as its last numeric chunk, so a blanket digit scan put `20260913` in the set as
+somebody's Geni id; the seed slot is parsed instead. And `exports/tiny-profiles/<id>.ged` and
+`exports/tiny-paths/*.ged` are written **by** this pipeline — counting them reported
+`exported yes` for 12,384 people no Geni export had ever been run on, against 535 real ones.
+
+## 2026-09-16 — the collateral measurement is deleted, not deferred
+
+The queue carried *"the missing number is how many worklist members stopped being worklist
+members without being attempted"*. Ruled the same day, twice: *"Do not measure this."* and *"I'm
+afraid that you might try to measure and waste a bunch of time on. I don't give a shit about uh,
+you trying to measure it."* The effect is real and expected — a path found for one person drags
+in everyone on the chain — and counting it is not wanted. Removed from the queue rather than left
+sitting there to be picked up by a later session that reads it as work.
