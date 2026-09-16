@@ -56,6 +56,22 @@
  * responses are byte-identical.** The id in the PATH governs and the slug is decoration. Do not
  * "fix" it, and do not re-derive on its account.
  *
+ * ## ⛔ THE BATCH GOES IN AS A FILE, NOT AS A PASTE
+ *
+ * Superseding the section below, which stands as the record of what was refuted and why.
+ * Pasting 800 ids is ~17KB of console input and 1,600 is ~32KB, spent again at every top-up --
+ * and the batch drains in about 45 minutes, so it is spent roughly hourly. The same channel the
+ * chain fetcher already uses in the other direction works here: a `<input type=file>` on the
+ * page, and the agent hands it the file.
+ *
+ *     python scripts/build-pathrun-batch.py --count 1600 --order qid   -> ids as JSON
+ *     create <input type=file id=batchinput> on the geni.com tab
+ *     upload the JSON to it; the change handler parses it into window.__batchLoaded
+ *     R.ids = window.__batchLoaded, then the RUN block
+ *
+ * `reports/pathrun-batch.js` is still committed, and for the same reason as ever: the ONE thing
+ * that must never happen again is the target list existing only inside a tab.
+ *
  * ## ⛔ THE BATCH CANNOT BE FETCHED FROM THE REPO. IT HAS TO BE PASTED.
  *
  * Tried 2026-09-15 and refuted: a `fetch` from a geni.com page to
