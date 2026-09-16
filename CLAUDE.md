@@ -321,6 +321,22 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   version that makes more sense to you.
 - **KILL CHROME WHENEVER YOU NEED TO.** Standing authority. A stale extension is never
   BLOCKED-ON-USER-ACTION. → [collector](docs/rules/collector-and-browser.md)
+- **⛔ AND START IT WITH THE THROTTLING FLAGS. EVERY TIME. YOU KNOW THE DRILL.** Chrome throttles
+  `setTimeout` in a background tab, so a loop pasted into a tab that is not on top keeps every
+  counter green and does a twentieth of the work. Measured 2026-09-15: the chain fetcher managed
+  **10 chains in 7 minutes** against the 1.5s a chain it runs at in front, `alive:true` and
+  `fail:0` throughout. Two loops means two tabs and only one can be in front, so the flags are
+  not a nicety — they are the thing that makes the pair of them possible at all.
+
+        --disable-background-timer-throttling
+        --disable-backgrounding-occluded-windows
+        --disable-renderer-backgrounding
+        --disable-features=CalculateNativeWinOcclusion
+
+  `scripts/start-chrome.ps1` is the launcher; never start Chrome by hand instead.
+  **Do not diagnose a slow loop before checking the browser was started this way** — the symptom
+  is indistinguishable from a healthy run, which is exactly why it is a launch rule and not a
+  debugging step.
 - **GENI IS ACTIVELY HOSTILE, so its constraints are the environment and not defects.** No
   Playwright, no headless — driving the real logged-in browser is what makes the traffic read
   as proper. A census read costs a real page load (`fetch` returns zeros: the stats block is
