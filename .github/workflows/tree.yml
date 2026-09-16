@@ -192,6 +192,28 @@ jobs:
           echo "rows before: $before  after: $(wc -l < reports/unconnected-p2600.tsv)"
           head -3 reports/unconnected-p2600.tsv
 
+      # ⛔ THE PARENTLESS-SIBLING WORKLIST, AND IT WAS NEVER WIRED TO ANYTHING.
+      #
+      # `scripts/sibling-pair-worklist.py` has existed since 2026-09-06 and no workflow had ever
+      # called it, so `reports/sibling-pair-worklist.tsv` was a photograph of that day: 2,130
+      # pairs, taken when the corpus held a few hundred paths against today's 13,000-plus.
+      # `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* — and § *A page whose
+      # generator no workflow runs is published as a photograph*, which is exactly what it was.
+      #
+      # It belongs HERE rather than in `pipeline.yml` because it reads `exports/tiny-paths/`, and
+      # this is the workflow that fires when `exports/**` changes. A path GEDCOM writes a sibling
+      # pair as a family with two `CHIL` and no partners — Geni records no sibling edge, so a path
+      # can only say *these two are siblings* — and the parents arrive from the members' own
+      # profile pages. This list is who still needs that.
+      - name: The parentless-sibling worklist
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: |
+          before=$(wc -l < reports/sibling-pair-worklist.tsv 2>/dev/null || echo 0)
+          python scripts/sibling-pair-worklist.py
+          echo "rows before: $before  after: $(wc -l < reports/sibling-pair-worklist.tsv)"
+
       # `pack-derived.py` gzips the four CSVs that exceed GitHub's 100 MiB limit; the plain files
       # are gitignored and the `.gz` are what is tracked. `out/merged.ged` is never committed.
       - name: Commit the rebuilt tree
