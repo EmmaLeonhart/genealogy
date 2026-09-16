@@ -244,7 +244,7 @@ loop as well, and two loops drove one cursor at double the request rate — the 
 CAPTCHAd. `R.gen` is the guard and it is in the committed file; never hand-roll a restart that
 skips it.
 
-### ⛔ CHECK IT EVERY HOUR, AND THE CHECK IS `health()`
+### ⛔ CHECK IT EVERY 45 MINUTES, AND THE CHECK IS `health()`
 
 Ruled 2026-09-15: *"Every hour there should be a check to make sure that the thing is actually
 running."* A local cron does it — § *A cron only fires while the session is idle* — and it reads
@@ -256,6 +256,20 @@ running."* A local cron does it — § *A cron only fires while the session is i
 
 **The batch draining and the runner dying are the same event from outside**, and both were
 noticed by Emma rather than by any check. That is what this cron is for.
+
+**⛔ AND THE BATCH MUST OUTLAST THE GAP, OR THE CHECK INTERVAL BECOMES THE THROUGHPUT.** Measured
+2026-09-16 across five consecutive batches: 1,600 people in 90-94 minutes, about **1,040 an
+hour** while running. On an hourly check that batch drained at ~92 minutes and then sat dead
+until the next tick — a 78% duty cycle, and the difference between 1,040 an hour and 800.
+
+So two numbers move together and neither is arbitrary: the check is **every 45 minutes** and a
+batch is **2,400**, which is 2.3 hours of work against a 45-minute gap. A batch that can drain
+between two checks is a batch sized wrong. The check also tops up at `i > of - 300` rather than
+waiting for the drain, because arriving after it is already idle has cost the same time as
+arriving late.
+
+At that rate the 203,678 never-attempted are **~8 days of continuous running**, and the 30-day
+cooldown means the first people stamped come back round well after the sweep has finished.
 
 **Every even hour at :45, turn the requested paths into TSVs and commit them.** Ruled the same
 day: *"every even hour at the forty five mark, you turn all the requested paths into TSV files"*
