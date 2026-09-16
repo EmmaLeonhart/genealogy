@@ -148,7 +148,12 @@ window.__chains = window.__chains || {};
 
   /* ---------- collect the permalinks off /paths, 30 to a page ---------- */
   C.collect = async function (maxPages) {
-    maxPages = maxPages || 400;
+    /* ⛔ THE CAP HAS TO CLEAR THE LIST, AND ON 2026-09-16 IT STOPPED CLEARING IT. `/paths` is
+     * 30 to a page, so 400 pages is 12,000 permalinks -- and the list passed 11,532 that
+     * evening, with `collectPage` coming back as exactly 400. The walk is newest-first, so a
+     * truncated one still finds every NEW permalink and only clips an already-collected tail;
+     * that is why this was harmless rather than a silent loss. It will not stay harmless. */
+    maxPages = maxPages || 900;
     const seen = new Set(C.urls);
     let added = 0;
     for (let p = 1; p <= maxPages; p++) {
