@@ -644,10 +644,18 @@ def main() -> int:
     rights = set(info.get("rights") or ())
     print("session: %s | groups: %s" % (info.get("name", "?"),
                                         ",".join(info.get("groups") or ()) or "none"))
-    for needed in ("edit", "createpage", "writeapi"):
-        print("  right %-12s %s" % (needed, "yes" if needed in rights else "NO"))
+    # ⛔ WIKIBASE HAS ITS OWN RIGHTS AND THEY ARE THE ONES THAT BITE. `edit` and `createpage`
+    # are MediaWiki's and they were BOTH present on the run that failed every write, which is
+    # what refuted the first diagnosis here -- "the Edit existing pages grant is missing" was
+    # wrong. Wikibase adds `item-term`, `item-create`, `item-merge`, `item-redirect` and the
+    # property equivalents, and a term edit checks `item-term`, not `edit`. So print both sets,
+    # and print the whole list when something is missing rather than guessing which.
+    for needed in ("edit", "createpage", "item-term", "item-create",
+                   "item-merge", "item-redirect", "property-term"):
+        print("  right %-14s %s" % (needed, "yes" if needed in rights else "NO"))
     if info.get("blockid"):
         print("  ACCOUNT IS BLOCKED: %s" % info.get("blockreason", ""))
+    print("  all rights: %s" % " ".join(sorted(rights)))
 
     token = session.csrf()
     print(f"csrf token acquired; executing up to {limit} edits\n")
