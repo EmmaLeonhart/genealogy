@@ -387,7 +387,7 @@ jobs:
       # another editor merges it into the existing item, THAT merge does the entity resolution
       # the zipper is not managing. Do not add a label-search gate here; it removes the
       # mechanism.
-      - name: One ancestor creation a run, up the owner's own line
+      - name: Two ancestor creations a run, up the owner's own line
         continue-on-error: true
         env:
           PYTHONPATH: src

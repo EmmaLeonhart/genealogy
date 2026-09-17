@@ -2,8 +2,8 @@
 
     PYTHONPATH=src python scripts/build-ancestor-creations.py
 
-Writes `reports/wikidata-ancestor-creations-auto.qs` (one creation, for the scheduled run) and
-`reports/wikidata-ancestor-creations.qs` (two, for the QuickStatements half).
+Writes `reports/wikidata-ancestor-creations-auto.qs` (two creations, for the scheduled run) and
+`reports/wikidata-ancestor-creations.qs` (four, for the QuickStatements half).
 
 ## What it does, and the words it was asked in
 
@@ -25,6 +25,10 @@ generation at a time without anybody choosing who.
 `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC* is not a veto on randomness; it is a veto on the
 same inputs giving different bytes. The daily batch is **regenerated several times a day** —
 `pipeline.yml` runs on every push — and an unseeded choice would pick different people each time.
+RAISED THE SAME DAY to two and four: *"Add 2 ancestors of mine everyday with the cicd and 4 in
+the quickstatements"*. The 1:2 ratio is unchanged -- it is the share the daily batch is dealt
+at -- and everything below about eligibility, the date seed and the refusals is untouched.
+
 That is not "one a run": it is one per regeneration, several a day, and the receipt in
 `wikidata-edit-run.py` cannot save us because each pick is a genuinely new person.
 
@@ -93,9 +97,11 @@ HUMAN = "Q5"               # instance of -> human
 MALE = "Q6581097"          # sex or gender -> male
 FEMALE = "Q6581072"        # sex or gender -> female
 
-#: One for the scheduled run, two for the hand-pasted half.
-AUTO_CREATIONS = 1
-MANUAL_CREATIONS = 2
+#: ⛔ TWO a day from the scheduled run, FOUR in the QuickStatements half. Raised from 1 and 2 on
+#: 2026-09-17: *"Add 2 ancestors of mine everyday with the cicd and 4 in the quickstatements"*.
+#: The ratio stays 1:2, the same share the daily batch is dealt at.
+AUTO_CREATIONS = 2
+MANUAL_CREATIONS = 4
 
 #: ⛔ A PLACEHOLDER PARENT IS OURS AND NEVER WIKIDATA'S. `CLAUDE.md` § *A sibling step gets a
 #: placeholder parent in OUR TREE and never on Wikidata*. `build-family-candidates.py` writes
