@@ -119,6 +119,29 @@ window.__chains = window.__chains || {};
     };
   };
 
+  /* ⛔ **A `fetch` WITH NO TIMEOUT HANGS THIS LOOP, AND IT HANGS IT SILENTLY.** Measured on
+   * the requester the same evening -- `scripts/pathrun.js` had the identical defect and one
+   * request that never settled stopped the campaign for 13 minutes with every flag still saying
+   * it was running. This half is worse, because `collect()` stamps `lastAt` as it walks: a
+   * fetcher parked inside `one()` while a walk is in progress reports `alive:true` and fetches
+   * nothing, which is exactly what it did for 45 minutes on 2026-09-17.
+   *
+   * A browser `fetch` has NO default timeout at all. Without an AbortController the promise can
+   * stay pending for ever.
+   *
+   * 25s is past a slow `/paths` render and well under the 120s `alive` allows, so a stuck
+   * request is recorded and stepped over rather than ending the run between two checks. */
+  const TIMEOUT_MS = 25000;
+  async function fetchText(url) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
+    try {
+      const r = await fetch(url, { credentials: "include", redirect: "follow",
+                                   signal: ctl.signal });
+      return await r.text();
+    } finally { clearTimeout(timer); }
+  }
+
   /* ---------- carry the state between tabs; both tabs are geni.com ---------- */
   C.save = function () {
     try {
@@ -159,9 +182,15 @@ window.__chains = window.__chains || {};
     for (let p = 1; p <= maxPages; p++) {
       let doc;
       try {
-        const html = await fetch("/paths?page=" + p, { credentials: "include" }).then(r => r.text());
+        const html = await fetchText("/paths?page=" + p);
         doc = new DOMParser().parseFromString(html, "text/html");
-      } catch (e) { break; }
+      } catch (e) {
+        /* ⛔ A TIMEOUT IS NOT THE END OF THE LIST. `break` here treats one stuck page as
+         * "past the last page", which silently truncates the walk and loses every permalink
+         * after it. Only an EMPTY page means the end; a failure skips to the next one. */
+        if (e && e.name === "AbortError") { C.lastAt = Date.now(); continue; }
+        break;
+      }
       const hrefs = [...doc.querySelectorAll('a[href*="/path/"]')]
         .map(a => a.getAttribute("href"))
         .filter(h => h && /[?&]to=/.test(h));
@@ -188,7 +217,7 @@ window.__chains = window.__chains || {};
   C.one = async function (url) {
     const to_id = qp(url, "to");
     const kind = (qp(url, "path_type") || "blood").replace("inlaw", "in-law");
-    const html = await fetch(url, { credentials: "include", redirect: "follow" }).then(r => r.text());
+    const html = await fetchText(url);
     const doc = new DOMParser().parseFromString(html, "text/html");
     const out = [];
     let step = 0;
