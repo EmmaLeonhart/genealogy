@@ -292,8 +292,28 @@ What was done instead was refusing `Olsdtr` as a name ITEM and expanding it at e
 per person from the mother and paternal grandmother. This item is applying that to the `.ged`
 files.
 
+⛔ **AND THE REASON FOR IT WAS PREVENTION, WHICH 2026-09-17 PROVED.** Emma, that day:
+*"when I had in the queue the instruction to modify the source gedcoms, this kind of scenario was
+the reason why I asked for them to be replaced like this. My expectation is that the abbreviation
+was certainly going to break shit."* It did.
+
+**The worked example.** `Q141488174` was created as a human called **`Askvik`** with an alias
+**`Raunes`** — two farm names and no person — where Geni records `Guri Nilsdtr. Askvik (Raunes)`.
+`name_shape` calls the ABBREVIATED patronymics unknown and the written-out ones fine, so
+`classify_fields` armed the `NN Olsdatter` marker rule, threw `Guri` away, and short-circuited
+`Nilsdtr.` to `unknown` before `is_patronymic` could see it. The caller keeps only `given` and
+`patronymic`, so both tokens vanished and the label collapsed to the married surname alone.
+
+**Expanding at emission cannot prevent this and never could.** `classify_fields` runs UPSTREAM of
+`expand_abbreviations`, so it meets the raw `Nilsdtr.`; by the time anything expands, the tokens
+are already gone. Fixing the string at source is a guarantee — no code path can meet the
+abbreviated form — where expanding late only protects the paths somebody remembered to route
+through it. `db57fc43` repairs this one path; it does not close the class.
+
 ⛔ `CLAUDE.md` § *Never overwrite an existing `.ged`* stands against this and has to be settled
-first — the instruction is explicit, the rule is explicit, and they disagree.
+first — the instruction is explicit, the rule is explicit, and they disagree. **The options are a
+new file beside each original, or lifting the rule for this pass; the agent does not get to pick
+which of the two rules loses.**
 
 
 ## ⛔ GET CI GREEN — IMMEDIATELY BEFORE LIFTING THE HOLD, AND NOT BEFORE THEN
