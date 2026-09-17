@@ -65,12 +65,18 @@ AUTO = REPO / "reports" / "wikidata-garborg-day-auto.txt"
 MANUAL = REPO / "reports" / "wikidata-garborg-day-manual.txt"
 
 #: The share the schedule sends by itself. One third; see the module docstring for why.
-AUTO_SHARE = 1.0 / 3.0
+#: ⛔ **THE RUNNER SENDS EVERYTHING. Ruled 2026-09-17: "Run all 411".**
+#: This was 1/3 and the remainder was published for a person to paste -- 311 edits a day
+#: waiting on a human for no reason anyone could defend when asked. The share is the whole
+#: batch now; the manual half comes out empty and the Pages site has nothing to carry.
+AUTO_SHARE = 1.0
 
 #: The scheduled run's own ceiling, mirrored so the split never hands it more than it will send.
 #: If it did, the surplus would be in neither file: the runner would stop at its limit and the
 #: page would not carry the remainder.
-RUN_LIMIT = 100
+#: Mirrors `wikidata-edit-run.MAX_EDITS_PER_RUN`. It is a ceiling, not a share: raised with
+#: it on 2026-09-17 so a composed batch is never larger than the run that sends it.
+RUN_LIMIT = 1000
 
 
 def blocks(text):
@@ -283,7 +289,7 @@ def main() -> int:
     MANUAL.write_text(m_text, encoding="utf-8", newline="\n")
     print(f"{len(edits)} edits -> {len(a_edits)} automatic ({AUTO.name}), "
           f"{len(m_edits)} for the page ({MANUAL.name})")
-    print(f"   share asked for: {share} (a third, capped at RUN_LIMIT {RUN_LIMIT})")
+    print(f"   share asked for: {share} (the whole batch, capped at RUN_LIMIT {RUN_LIMIT})")
     return 0
 
 

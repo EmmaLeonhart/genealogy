@@ -60,7 +60,10 @@ API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 #: daily batch being twice as large in everything it does. A run may never exceed
 #: it however it is invoked, and it has to keep pace with the batch it sends or a doubled
 #: batch simply arrives truncated.
-MAX_EDITS_PER_RUN = 400
+#: 400 -> 1000 on 2026-09-17, because the batch outgrew it: 411 composed against a 400
+#: ceiling and a 100 limit, so two thirds of every day was handed to a person. Ruled that
+#: day: *"Run all 411"*. The ceiling exists to stop a runaway, not to ration the work.
+MAX_EDITS_PER_RUN = 1000
 
 #: A live run may only execute a batch that is committed and reviewable. Anything
 #: generated on the fly is a dry run at best.
