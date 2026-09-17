@@ -99,10 +99,49 @@ def harvested() -> set:
     Deliberately loose: over-matching only skips a person who would have cost a cheap 202, while
     under-matching re-requests somebody. The asymmetry favours the loose read.
     """
-    if not HARVEST.exists():
+    found = set()
+    if HARVEST.exists():
+        with HARVEST.open(encoding="utf-8") as fh:
+            found.update(gid for line in fh for gid in ID.findall(line))
+    found.update(tiny_path_ids())
+    return found
+
+
+#: Where `build-tiny-gedcoms.py` writes one GEDCOM per harvested relationship path. The file is
+#: named for the person the chain ENDS at, so its existence is the fact this function wants.
+TINY_PATHS = REPO / "exports" / "tiny-paths"
+TINY_NAME = re.compile(r"^harvested-path-geni-(\d{10,})-(?:blood|inlaw)\.ged$")
+
+
+def tiny_path_ids() -> set:
+    """Every person a path chain is already held for, read off the filenames in `exports/tiny-paths/`.
+
+    ⛔ **THE TWO RECORDS OF "A PATH WAS FOUND" DISAGREED, AND ONLY THE SMALLER ONE WAS READ.**
+    Measured 2026-09-17: **15,606** ids have a chain on disk and `reports/geni-paths-harvest.tsv`
+    mentions **5,912**, so **9,802 people whose path this repo already holds were absent from the
+    difference** -- eligible for a fresh request every time a batch is built, forever. That is the
+    same *re-asks the same people every session* failure the header of `scripts/pathrun.js`
+    records, arriving by the other door: that one was about never writing down an ATTEMPT, this
+    one is about never writing down a HIT.
+
+    Caught on two collector runs. Jerzy Kreczmar `6000000031564034073` holds a blood chain AND an
+    in-law chain and Justyna Kreczmarowa `6000000043823009103` holds an in-law chain; neither id
+    appears anywhere in the harvest index.
+
+    Reading the filename rather than the file is deliberate and is the same asymmetry this
+    module's `harvested()` already runs on: **over-matching skips somebody, under-matching
+    re-requests them**, and the loose read is the cheap side of that trade. Parsing 15,606
+    GEDCOMs to learn a fact their names already state would be the expensive way to be no more
+    right.
+    """
+    if not TINY_PATHS.is_dir():
         return set()
-    with HARVEST.open(encoding="utf-8") as fh:
-        return {gid for line in fh for gid in ID.findall(line)}
+    out = set()
+    for entry in TINY_PATHS.iterdir():
+        m = TINY_NAME.match(entry.name)
+        if m:
+            out.add(m.group(1))
+    return out
 
 
 def main() -> int:

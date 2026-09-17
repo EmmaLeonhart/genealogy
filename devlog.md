@@ -44888,3 +44888,99 @@ and writes nothing"*. Run before repeating it: 96,546 paths indexed, 1,885 track
 written to `reports/repo-freshness.csv`, 34 files named as claiming a corpus smaller than the
 live one. § *CHECK before raising an alarm* — the check is cheap and the claim was a year of
 somebody else's session talking.
+
+## 2026-09-17 — two collector runs, and both records of "a path was found" were wrong
+
+`CLAUDE.md`'s order item 4 is *"a couple of collector runs, to prove the pipeline works"*. Two
+runs, and the pipeline failed twice in two different places. Both are fixed; neither was
+visible from inside.
+
+### 1. The run loop had nowhere to put its answer
+
+`GC.runIndividual` performs the whole dictated loop correctly — family scrape, blood search, wait
+on the page rather than a clock, in-law search, statistics, gate. Then the capture arrived and
+`scripts/write-family-scrape.py` died on `KeyError: 'ext'`.
+
+**The one producer and the one writer did not meet.** The writer was built against the older
+PANEL envelope — a `family` job handing back `ext` plus a list of relative rows. The run loop
+hands back something else: the family TSV already rendered by `GC.family.toTsv`, a relatives
+COUNT rather than rows, and the path verdict split across `state` and `via`. Nothing in the repo
+could read the shape the extension now produces, so the loop meant to run 2,527 times could not
+deposit the first one. `from_run_loop()` normalises it and takes the verdict from the extension's
+own `state` and `via` rather than re-reading `path_state` and `inlaw_state` —
+`docs/collector-run-loop.md` § *THERE IS NO DISCRETION ON THE AGENT'S PART AT ALL* governs this
+script as much as it governs a session.
+
+### 2. ⛔ 9,802 people whose path this repo already holds were invisible to the batch builder
+
+**The two records of *a path was found* disagreed, and only the smaller one was ever read.**
+
+    chains on disk, exports/tiny-paths/       15,606   blood 4,047 · inlaw 8,223 · both 3,336
+    ids named in reports/geni-paths-harvest.tsv 5,912
+    holding a chain but absent from the index  9,802
+
+`build-pathrun-batch.py` differences out the harvest index and nothing else, so those 9,802 stay
+eligible for a fresh request every time a batch is built — forever. That is the same *re-asks the
+same people every session* failure the header of `scripts/pathrun.js` records, arriving by the
+other door: **that one was about never writing down an ATTEMPT, this one is about never writing
+down a HIT.** `tiny_path_ids()` reads the filenames, which is where the fact already is; parsing
+15,606 GEDCOMs to learn something their names state would be the expensive way to be no more
+right.
+
+**And the same blindness wrote two wrong verdicts.** This file already rules that *a chain we
+hold is evidence; today's miss banner does not retract it* — but it tested that against
+`isolates.csv` alone, so it only ever protected somebody captured BEFORE. A person met for the
+first time, whose chain has been on disk for weeks, had no prior row and took a fresh `no`.
+`chain_on_disk()` is that guard against the other record, and `via` is taken from the held chain
+rather than left at today's `neither`, which would be a row contradicting itself.
+
+### What the two runs actually say
+
+    6000000031564034073  Jerzy Kreczmar       324/15000/5367/5/2  10 rel  path=yes  via=both
+    6000000043823009103  Justyna Kreczmarowa  297/7/0/6/2          3 rel  path=yes  via=inlaw
+
+Written first as `no` / `via=neither` and corrected by re-running the captures through the fixed
+writer. Both hold chains anchored on the account owner; Geni's live searches had decayed back to
+unrequested, which is the decay this file already documents for Rudolf Beck and Hilde Kann.
+
+**Ruth Maier `6000000022323463570` is the cleaner case and not decay at all.** Her page renders
+`pathSearcher`, and a blood search on her returns `not-found-blood` — while an in-law chain for
+her has been on disk all along. Both answers are true; they answer different questions. That is
+§ *BOTH TIES, ALWAYS* seen from the reporting end.
+
+Of the 8,000 ids in the batch now running, 72 hold a chain already — 0.9%, so the runner was left
+alone rather than restarted mid-batch over it. The fix takes effect at the next top-up.
+
+### What was not done
+
+Neither export was run: `job.create` was not set, so the loop stopped where it is supposed to.
+Creating the placeholder ancestor is a live-site write against `docs/export-seed-rules.md` and
+stays a decision. Both people are flagged `warranted`, which is the column the backlog is queried
+from.
+
+**The worklist's figures are seed placeholders and are not measurements.** Every row at the head
+of `reports/unconnected-p2600.tsv` reads `200/200/200/200/200`; the live reads were
+324/15000/5367/5/2 and 297/7/0/6/2. The gate reads the page, so nothing was decided on the
+placeholder — but a census answered off that column would be answering about a constant.
+
+### Recovered: 682 path attempts that existed only in localStorage
+
+The requester was restarted for this session and the previous run had left 682 records in
+`localStorage.pathrun_attempted` that no dump had collected. Re-pasting the RUN block clears that
+key, so they would have gone the way of the ~9,500 the header of `scripts/pathrun.js` describes.
+Drained first, then stamped: 679 `queued/queued`, one `queued/timeout`, one `http404/http404`,
+one `notfound/notfound`.
+
+`reports/pathrun-batch.js` is regenerated at 8,000 rather than 2,400. The check moved to six hours
+on 2026-09-17 and the batch did not move with it; at ~1,040 an hour a 2,400 batch drains four
+times over between two checks. Measured this session at ~820 ids an hour, so 8,000 is about ten
+hours of work against a six-hour gap.
+
+### The anchor is not Charlemagne
+
+Reported here as *"no path to Charlemagne"*, corrected the same minute: the pushpin is on the
+account owner, and every chain in those tiny-path GEDCOMs starts at her.
+`docs/anchor-protocol.md` already ruled that it decides nothing — *"Charlemagne is not the root,
+the root is just whoever geni wants to display"* — and whether these people join the world tree is
+the connectivity rebuild's call off the merged corpus. The ledger writes `anchor=default` and
+asserts neither.

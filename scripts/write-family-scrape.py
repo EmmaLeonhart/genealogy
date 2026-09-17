@@ -47,6 +47,37 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FAMILIES = ROOT / "geni-families"
 ISOLATES = ROOT / "reports" / "isolates.csv"
+#: Where `build-tiny-gedcoms.py` writes one GEDCOM per harvested relationship path, named for the
+#: person the chain ENDS at.
+TINY_PATHS = ROOT / "exports" / "tiny-paths"
+
+
+def chain_on_disk(gid: str) -> str:
+    """Which searches this repo already holds a chain for: `both`, `blood`, `inlaw` or `""`.
+
+    ⛔ **A CHAIN WE HOLD IS EVIDENCE, AND THE GUARD THAT SAYS SO COULD NOT SEE IT.** This file
+    already rules that *a chain we hold is evidence; today's miss banner does not retract it* --
+    but it tested that against `isolates.csv` alone, so it only protected somebody who had been
+    captured BEFORE. A person met for the first time, whose chain has been sitting in
+    `exports/tiny-paths/` for weeks, had no prior row and got a fresh `no` written over a path
+    this repo can print.
+
+    Measured 2026-09-17 on the first two collector runs of the session. Jerzy Kreczmar
+    `6000000031564034073` holds a blood chain and an in-law chain, Justyna Kreczmarowa
+    `6000000043823009103` holds an in-law chain, both anchored on the account owner, and both were
+    written `path_found=no  via=neither` because Geni's searches had DECAYED back to unrequested
+    -- the same decay this file documents for Rudolf Beck and Hilde Kann.
+
+    That is the exact failure recorded a few lines below as the mirror error: *a hit recorded as
+    pending deflates the reach rate and queues a revisit for a person whose chain is already on
+    disk*. The verdict was being taken from the live page only, and the live page is the one
+    source that forgets.
+    """
+    if not TINY_PATHS.is_dir():
+        return ""
+    kinds = [k for k in ("blood", "inlaw")
+             if (TINY_PATHS / ("harvested-path-geni-%s-%s.ged" % (gid, k))).exists()]
+    return "both" if len(kinds) == 2 else (kinds[0] if kinds else "")
 
 FIELDS = ["family_tree", "blood_relatives", "ancestors", "descendants", "followers"]
 
@@ -181,6 +212,59 @@ def read_stdin() -> str:
     return sys.stdin.read()
 
 
+def from_run_loop(blob: dict) -> dict:
+    """Normalise the `individual` job's own result into the envelope this script reads.
+
+    ⛔ **THE RUN LOOP PRODUCED A SHAPE NOTHING COULD READ, AND A COLLECTOR RUN ENDED IN A
+    `KeyError: 'ext'`.** `docs/collector-run-loop.md` is dictated around one job per individual
+    with every decision inside it, and `GC.runIndividual` is that job -- but this script was
+    written against the older PANEL envelope, where a `family` job handed back `ext` plus a list
+    of relative rows. The run loop hands back something else: the family TSV already rendered by
+    `GC.family.toTsv`, a relatives COUNT rather than rows, and the path verdict split across
+    `state` and `via`. So the one producer and the one writer did not meet, and the loop that is
+    meant to run 2,527 times could not deposit the first one. Measured 2026-09-17 on Jerzy
+    Kreczmar `6000000031564034073`, whose capture arrived complete and went nowhere.
+
+    ⛔ **THE VERDICT IS THE EXTENSION'S, NOT RE-DERIVED HERE.** `state` and `via` are already
+    the answer -- `via` even distinguishes `neither`, the both-searches-missed verdict a blank
+    would lose -- and `docs/collector-run-loop.md` § *THERE IS NO DISCRETION ON THE AGENT'S PART
+    AT ALL* governs this script as much as it governs a session. Reading `path_state` and
+    `inlaw_state` again here would be a second copy of a rule that already has one, which is the
+    shape of `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
+
+    A blob that is not an `individual` result is returned untouched, so the panel envelope and
+    every block written by hand keep working.
+    """
+    if blob.get("job") != "individual":
+        return blob
+    state = str(blob.get("state") or "")
+    #: ⛔ `path_found` MEANS *ANY* PATH -- in-law counts -- which is why all three hit states
+    #: map to `yes`. Anything that is neither a hit nor a resolved miss is PENDING and stays
+    #: blank: a deferred or still-running search folded into the miss column is the failure this
+    #: file's own header records against.
+    if state in ("path_found", "path_found_inlaw", "path_found_both"):
+        found = "yes"
+    elif state in ("miss_below_floor", "miss_export_warranted"):
+        found = "no"
+    else:
+        found = ""
+    return {
+        "ext": {"geni_id": str(blob.get("geni_id") or ""),
+                "name": blob.get("name") or "",
+                "stats": blob.get("stats") or {}},
+        #: No rows: the run loop counts them and renders the file itself, and `family_tsv` is
+        #: what gets written, so nothing here rebuilds the body.
+        "relatives": [],
+        "relatives_count": int(blob.get("relatives") or 0),
+        "family_tsv": blob.get("family_tsv") or "",
+        "path": found,
+        "via": blob.get("via") or "",
+        "anchor": blob.get("anchor") or "",
+        "prose": "",
+        "banner": "",
+    }
+
+
 def main() -> int:
     # ⛔ THE FINAL `print` DIES ON A CJK NAME UNDER cp1252, AFTER THE FILES ARE WRITTEN.
     # Windows gives stdout the locale codepage, so `Zhu Jingze 朱敬則` raises
@@ -194,6 +278,7 @@ def main() -> int:
         pass
     raw = read_stdin()
     blob = json.loads(raw) if raw.lstrip().startswith("{") else parse_block(raw)
+    blob = from_run_loop(blob)
     ext, relatives = blob["ext"], blob["relatives"]
     gid, name = ext["geni_id"], ext.get("name", "")
     stats = ext.get("stats", {})
@@ -223,7 +308,14 @@ def main() -> int:
     for r in relatives:
         head.append("\t".join([gid, r["relation"], r["phrase"], r["geni_id"], r["name"]]))
     FAMILIES.mkdir(exist_ok=True)
-    (FAMILIES / ("%s-family.tsv" % gid)).write_text("\n".join(head) + "\n", encoding="utf-8")
+    # ⛔ THE RUN LOOP ALREADY RENDERED THIS FILE, so it is written rather than rebuilt.
+    # `head` above and `GC.family.toTsv` are two emitters of one format, and
+    # § *A GUARD IN ONE EMITTER IS NOT A GUARD* is the same argument: the copy that gets
+    # written is the one that saw the page. `head` stays for the panel envelope, which carries
+    # rows and no rendered file.
+    (FAMILIES / ("%s-family.tsv" % gid)).write_text(
+        blob["family_tsv"] if blob.get("family_tsv") else "\n".join(head) + "\n",
+        encoding="utf-8")
 
     rows = list(csv.reader(ISOLATES.open(encoding="utf-8")))
     header = rows[0]
@@ -277,9 +369,13 @@ def main() -> int:
     # banner decides exactly as before, so every block written before today is unaffected.
     declared = (blob.get("path") or "").strip().lower()
     fresh = declared if declared in ("yes", "no") else path_state(blob.get("banner", ""))
+    held = chain_on_disk(gid)
     verdict = fresh if fresh else prior
     if prior == "yes" and fresh == "no":
         verdict = "yes"   # a chain we hold is evidence; today's miss banner does not retract it
+    if held and verdict != "yes":
+        # ⛔ The same rule, against the OTHER record of a hit. See `chain_on_disk`.
+        verdict = "yes"
     # ⛔ A VERDICT IS MEANINGLESS WITHOUT THE ANCHOR IT WAS TAKEN UNDER.
     #
     # With the pushpin on the viewer a capture answers *how is this person related to the
@@ -318,6 +414,11 @@ def main() -> int:
     # `297536201290008921`, the first person the two-search loop ever finished.
     if via not in ("blood", "inlaw", "both", "neither"):
         via = prior_via if (verdict and verdict == prior) else ""
+    # ⛔ `neither` CANNOT STAND BESIDE A HELD CHAIN. Today's searches both decayed to unrequested,
+    # which is what `neither` records -- but the file on disk says which question was answered,
+    # and leaving `neither` next to `path_found=yes` is a row that contradicts itself.
+    if held:
+        via = held if via in ("", "neither") else via
     # ⛔ `requested_at` WAS A LITERAL, so every row ever written claimed to have been observed on
     # 2026-09-06 whatever day it was written. 103 of the file's rows carry that date and three of
     # them were written on 2026-09-08. A column whose whole job is to say *when we asked* cannot
@@ -364,7 +465,8 @@ def main() -> int:
     # every instrument failure in `CLAUDE.md`. `kept` says so explicitly rather than hiding it.
     kept = "" if fresh or not verdict else "  (kept, today's page shows no request)"
     print("%s  %s | %d relatives | path=%r%s | %s" % (
-        gid, name, len(relatives), verdict or "pending", kept,
+        gid, name, len(relatives) or blob.get("relatives_count", 0),
+        verdict or "pending", kept,
         ("EXPORT if it misses: " + d["why"]) if d["export"] else ("NO EXPORT: " + d["why"])))
     print("  worklist: %s" % describe(attempt, today.isoformat()))
     return 0
