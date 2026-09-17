@@ -208,20 +208,51 @@ def main() -> int:
     # statements land in both halves is untidy -- half sent at 08:07, half pasted later -- but
     # both halves DO get sent and the item ends up whole. So it is counted and reported, not
     # refused.
+    # ⛔ **A SUBJECT GOES WHOLE, OR THE GRAPH COMES OUT HALF-LINKED.** Reported 2026-09-17:
+    # *"the individuals are not getting linked"*. Measured on that day's batch: `requires` was
+    # never split -- 0 cases, so `LAST` always resolved -- but **25 subjects had statements in
+    # both halves**, and 273 of the 337 relationship claims sat in the manual half.
+    #
+    # The comment that used to sit here accepted that as untidy-but-harmless *"because both
+    # halves DO get sent and the item ends up whole"*. **That premise is false.** The manual
+    # half is published for a person to paste; the automatic half goes out on a schedule. So a
+    # `P40` can be sent today while its reciprocal `P22` waits days for a human -- which is
+    # exactly the half-linked shape found on `Q141488165` the same evening.
+    #
+    # Grouping by SUBJECT is narrow enough to be safe. An earlier attempt welded anything
+    # sharing a unit and collapsed all 98 creations into one group, because creates carry no
+    # QID yet and chained through their `LAST` lines. Keying strictly on the explicit QID
+    # subject leaves every create its own unit and welds only what genuinely belongs to one item.
+    by_subject = {}
+    for _i, _u in enumerate(units):
+        _j = chr(10).join(_u)
+        if not _j.strip():
+            continue
+        for _e in qs_v1.edit_objects(qs_v1.parse(_j)):
+            _q = _e.get("qid")
+            if _q:
+                by_subject.setdefault(_q, set()).add(_i)
+    welded = {}
+    for _q, _idxs in by_subject.items():
+        if len(_idxs) > 1:
+            for _i in _idxs:
+                welded.setdefault(_i, set()).update(_idxs)
+
     step = max(1, round(1.0 / AUTO_SHARE))
     chosen, taken = set(), 0
     # Stride first, so the auto half samples identifications, name items and creations alike
     # rather than taking the top of the file; then fill any remaining room in order.
     for order_pass in (range(0, len(units), step), range(len(units))):
         for i in order_pass:
-            if i in chosen:
+            group = sorted(welded.get(i, {i}))
+            if any(j in chosen for j in group):
                 continue
-            joined = "\n".join(units[i])
+            joined = chr(10).join(chr(10).join(units[j]) for j in group)
             if not joined.strip():
                 continue
             n = len(qs_v1.edit_objects(qs_v1.parse(joined)))
             if n and taken + n <= share:
-                chosen.add(i)
+                chosen.update(group)
                 taken += n
 
     auto, manual = [], []

@@ -1720,6 +1720,23 @@ def not_a_name(token: str) -> bool:
     t = unicodedata.normalize("NFC", token or "").strip()
     if not t:
         return True
+    # ⛔ **A SINGLE LATIN LETTER IS AN INITIAL, NOT A NAME, AND IT WAS MINTING ITEMS.**
+    # Reported 2026-09-17 off the batch's own output: a `CREATE` for a `given name` item labelled
+    # **`L`**, with `Len`/`Lmul`/`Lja`/`Lzh`/`Lko` all `"L"`, attached to `Hans L Stålbom` as
+    # `P735` qualified `P3831` *middle name*. The comment above it read *"L -- given, 2 bearer(s)
+    # in the batches"* -- two people share a middle initial, which is not two bearers of a name.
+    #
+    # The same hole produced `Q141488014`, created as a human labelled **`n`** with `ㄴ`, `恩` and
+    # `ン` as its CJK readings: a single letter transliterated into three scripts, for a person
+    # Geni records as `NN`. `not_a_name("n")` was False, so every guard in the repo passed it.
+    #
+    # ⛔ **`NN` IS NOT CAUGHT BY THIS AND MUST NOT BE.** `CLAUDE.md` § *`NN` is PRESERVED in
+    # `mul`* is explicit, and this rule is length-one only. Nor does it touch CJK: a single Han
+    # or kana character IS a name, and `CLAUDE.md` § *A middle initial keeps its Latin letter in
+    # every language* keeps `L` as `L` wherever it legitimately appears **inside** a label. What
+    # is refused is a single Latin letter standing alone AS one.
+    if len(t.rstrip(".")) == 1 and t.rstrip(".").isascii() and t.rstrip(".").isalpha():
+        return True
     # ⛔ **A TOKEN HERE CAN LEGITIMATELY BE SEVERAL WORDS, AND THIS RULE NEARLY KILLED THEM.**
     # `join_particles` has produced multi-word tokens since it was written -- `ben Phinhas`,
     # `bin Haji Muhammad`, `ap Thomas`, which is `name modelling.txt`'s own worked example --
