@@ -257,6 +257,12 @@ running."* A local cron does it — § *A cron only fires while the session is i
 **The batch draining and the runner dying are the same event from outside**, and both were
 noticed by Emma rather than by any check. That is what this cron is for.
 
+**⛔ THE CHECK IS EVERY SIX HOURS, NOT 45 MINUTES. Changed 2026-09-17:** *"45 min path tick? Turn
+it to 6 hours path tick lol."* The 45-minute figure was paired with a 2,400 batch; at six hours
+that batch drains four times over and the runner sits idle between checks. **So the top-up is
+~8,000, not 2,400** — the number that moves with the interval is the batch, not the cadence.
+The reasoning below is kept because it is what makes that arithmetic checkable.
+
 **⛔ AND THE BATCH MUST OUTLAST THE GAP, OR THE CHECK INTERVAL BECOMES THE THROUGHPUT.** Measured
 2026-09-16 across five consecutive batches: 1,600 people in 90-94 minutes, about **1,040 an
 hour** while running. On an hourly check that batch drained at ~92 minutes and then sat dead
@@ -397,16 +403,6 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   **It is queued, not started** — *"I want to actually see the repo editing in the current state
   before you torch the current state"* — and § *NOTHING IN THE PIPELINE IS TRIVIAL* governs the
   whole pass.
-- **⛔ NOTHING IN THE PIPELINE IS TRIVIAL, INCLUDING ORDER.** Ruled 2026-09-17: *"There is
-  absolutely nothing that is trivial in the entire pipeline. And even if I tell you something is
-  trivial, it is probably not trivial ... Almost everything in this repository is very rigorously
-  defined and the entire pipeline breaks if any single thing is changed flippantly."* The worked
-  example is the daily batch's ORDER: the composer writes a person and then every edge that
-  person can take, adjacently, so a prefix cut leaves each person whole. That order was read as
-  cosmetic and replaced with a stride, and **22 people shipped a link automatically while its
-  reciprocal waited for a human**. It looked like an implementation detail and it was the logic.
-  **And anything that makes the pipeline SLOWER is intentional** — *"you should not change it, or
-  if you do change it, only after a very very consistent explanation as to why it is bad."*
 - **LEGACY CODE IS DELETED.** The test is *does the pipeline read this*, not *might this be useful*.
 - **Do not grab the first artifact that vaguely matches.** Find the one that is meant.
 - **Incomplete earlier work is not the thing being described.** Its errors describe where it
