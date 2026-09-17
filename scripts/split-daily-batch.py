@@ -233,8 +233,21 @@ def main() -> int:
     #    running it correctly next time -- a duplicate mints a second item for somebody who now
     #    exists. Blocks move whole, so this should be impossible; it is asserted because the
     #    cost of being wrong is unbounded.
-    if a_text.count("\nCREATE") + m_text.count("\nCREATE") != text.count("\nCREATE"):
-        raise SystemExit("a CREATE block was split or duplicated across the two halves")
+    # ⛔ **COUNT THE CREATE LINE, NOT A SUBSTRING WITH A NEWLINE IN FRONT OF IT.** The old
+    # form missed a CREATE that is the FIRST line of a half, because nothing precedes it --
+    # and the stride puts a creation first in the auto half routinely. The assertion read
+    # 32 + 65 against 98 and refused a split that was CORRECT, which took `pipeline.yml` down
+    # on 2026-09-17 and with it every regeneration of the daily batch. The scheduled edit run
+    # then kept sending the same stale file -- 74 objects of which 70 were already applied --
+    # so it ended "nothing applied", exited 1, and looked like an editing failure for a day.
+    #
+    # The check itself is right and stays. § *CHECK before raising an alarm* cuts both ways:
+    # an assertion that cries wolf costs as much as one that never fires.
+    def _creates(t):
+        return sum(1 for ln in t.splitlines() if ln.strip().upper() == "CREATE")
+    if _creates(a_text) + _creates(m_text) != _creates(text):
+        raise SystemExit("a CREATE block was split or duplicated across the two halves: "
+                         f"{_creates(a_text)} + {_creates(m_text)} != {_creates(text)}")
 
     # 3. ⛔ NO `LAST` LINE MAY PRECEDE ITS `CREATE`. `LAST` binds BACKWARDS, so a `LAST` line
     #    that ends up above every `CREATE` in its half attaches to nothing -- and one that ends
