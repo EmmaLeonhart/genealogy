@@ -140,6 +140,19 @@ OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 #: So they live here as a constant, which is what `queue.md` already says: *"widening this beyond
 #: the three is a decision and is one constant."*
 PAIRS = {
+    # **George R.R. Martin, moved here 2026-09-17 by instruction:** *"put George RR Martin in
+    # the Jan 1 group since the dating stuff is too complicated we just have immediate people
+    # ... and the Jan 1 group"*.
+    #
+    # He was the one row in `reports/entry-points.tsv` carrying a FUTURE date -- `2026-10-01`,
+    # from *"on October 1 George RR Martin is added as an entry point"*, rationale *"interesting
+    # due to his eccentricity"*. That third date is what made the scheme complicated: immediate,
+    # October, and January. Two buckets now, and he is in the later one.
+    #
+    # ⛔ **SO `reports/entry-points.tsv` IS NOW IMMEDIATE-ONLY** -- every remaining row carries a
+    # date already past. A future date in that file means the two-bucket model has drifted back.
+    "6000000081001962237": "Q181677",   # George R.R. Martin
+
     "6000000001835522164": "Q11596350",   # 稚武彦命 Wakatakehiko
     "6000000001844033355": "Q11078587",   # 播磨稲日大郎姫 Harima no Inabi, his daughter
     "6000000002039751362": "Q24890131",   # 物部伊莒弗 Mononobe no Ikofutsu

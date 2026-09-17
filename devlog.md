@@ -45070,3 +45070,44 @@ GUARD*: the design assumed a key that nothing was actually matching on.
 
 Not established: who created `Q141493359`. The API rate-limited while the generator was running
 its own live lookups, and the question does not change the mechanism.
+
+## 2026-09-17 — two buckets of entry point, and George R.R. Martin moved into the later one
+
+*"she is a new entry point as of right now"* — `Q141493463` **Kristine Trondsdatter Benkestok**,
+b. 1530 d. 1572, father `Q7845461`, Geni `4976573922110117540` read off the item's own `P2600`.
+Benkestok is a Norwegian noble family, so she lands in the Scandinavian genealogy the pipeline is
+actually pointed at.
+
+**Asked which bucket, because the answer changed what happened**: adding her to the
+identifications GEDCOM would have made her live on 2027-01-01, three and a half months out, while
+*"as of right now"* reads as today. Ruled: *"she alone is a new entry point ngl put George RR
+Martin in the Jan 1 group since the dating stuff is too complicated we just have immediate people
+of which she is a part of and the Jan 1 group."*
+
+**So there are exactly two buckets now, and the third date is gone.**
+
+    reports/entry-points.tsv                    IMMEDIATE. A person's OWN date, already past.
+    exports/post-merge/wikidata-qid-links.ged   THE JAN 1 GROUP. 442 people, active_from
+                                                2027-01-01 via entry-point-groups.tsv.
+
+George R.R. Martin was the one row carrying a FUTURE date — `2026-10-01`, from *"on October 1
+George RR Martin is added as an entry point"*. That third date is what made the scheme
+complicated, so he moves to the Jan 1 group and `entry-points.tsv` becomes immediate-only:
+
+    LIVE  2026-09-03  Q714044     Robert Chester Wilson Ettinger
+    LIVE  2026-09-13  Q50368774   Olof Hersesson
+    LIVE  2026-09-17  Q792154     Axel Gyntersberg
+    LIVE  2026-09-17  Q141493463  Kristine Trondsdatter Benkestok
+
+**A future date in `entry-points.tsv` now means the two-bucket model has drifted back**, and that
+is written into the generator beside George's pair rather than only here.
+
+**Kristine is deliberately NOT also in the GEDCOM.** She was added there first, before the
+question was asked, and taken out again: each person belongs to exactly one bucket, and the
+GEDCOM's other job — a bio link doing entity resolution where the item carries no `P2600` — does
+not apply to her, because her item already carries one. The GEDCOM stays at 442 either way;
+George replaced her in it.
+
+No new file, and no per-person scheduler: `active_from` is a date column compared against today,
+which is the same reasoning that put it there originally — a cron dies with the session, a date
+in the repo does not.
