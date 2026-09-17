@@ -301,11 +301,27 @@ def main():
 
     absent = sorted(g for g in pairs if g not in in_tree)
     if absent:
-        # Never silently: emitting one of these would CREATE the person rather than annotate
-        # them, which is the failure the tree filter exists to stop.
-        print(f"REFUSING -- not in the merged tree, would be minted as new people: {absent}")
-        for g in absent:
-            pairs.pop(g)
+        # ⛔ **THEY GO IN ANYWAY, AND DROPPING THEM WAS THE DEFECT.** Ruled 2026-09-17:
+        # *"They need to be in the GEDCOM. The GEDCOM plays a significant role, and it is not a
+        # role related to adding the QIDs."*
+        #
+        # Four pairs sat in `PAIRS` and never reached the artifact -- `Sunjong of the Korean
+        # Empire`, `Imperial Consort Sunheon`, `Ursula of Münsterberg` and `Adam` -- because this
+        # filter dropped every id the merged tree had not already seen. **That is backwards for
+        # this file.** It is the ENTRY POINT file: its job is to put named people INTO the
+        # universe on 2027-01-01, so a person the tree does not hold yet is the normal case here,
+        # not an error. A filter that keeps out everyone the tree is missing can only ever emit
+        # people who needed no entry point.
+        #
+        # The thing the filter was guarding against is `CLAUDE.md` § *Nameless routing nodes are
+        # the design*: an `INDI` carrying nothing but a `NOTE` is exactly a routing node, and a
+        # router does not need a name. `exports/post-merge/` merges last as an overlay and `NOTE`
+        # is in `merge.ALWAYS_REPEATABLE`, so a record that does meet its person joins them and
+        # one that does not stands on its own until the person arrives.
+        #
+        # Still printed, because which ones the tree is missing is worth knowing -- as a
+        # FINDING, which is what the old comment said it was, rather than as a deletion.
+        print(f"not yet in the merged tree, emitted anyway as entry points: {absent}")
     for g in sorted(ONLY - set(pairs)):
         print(f"not emitted: {g}")
 
