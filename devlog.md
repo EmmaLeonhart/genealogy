@@ -44835,5 +44835,7 @@ manual half, 5 in the full batch. All bare `Qxxx<TAB>P2600<TAB>"id"` with explic
 `CREATE` was split and no `LAST` lost its referent. Stripped in `165bd06f`, gated in `93ba24bc`.
 
 Queried live afterwards: **39 of the 68 Jan-1 pairs already carry the `P2600` on Wikidata**,
-accumulated over several days rather than in one run. What to do with those is Emma's call and is
-in `queue.md`.
+accumulated over several days rather than in one run. Asked what to do with those, and ruled the same
+day: **leave them standing.** The only thing wrong with them is the date, and 2027-01-01 makes
+them right; removing them would be churn against a correctness that is arriving anyway. No
+removal batch, and nothing further goes to Wikidata over this.
