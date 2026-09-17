@@ -135,6 +135,10 @@ window.__chains = window.__chains || {};
    * 25s is past a slow `/paths` render and well under the 120s `alive` allows, so a stuck
    * request is recorded and stepped over rather than ending the run between two checks. */
   const TIMEOUT_MS = 25000;
+  //: How long to wait when the list is exhausted, and how many of those waits before the held
+  //: rows are written out. 15s x 4 = one minute of nothing arriving before a file is cut.
+  const IDLE_MS = 15000;
+  const IDLE_FLUSH = 4;
   async function fetchText(url) {
     const ctl = new AbortController();
     const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
@@ -280,10 +284,18 @@ window.__chains = window.__chains || {};
        * The tail is flushed before waiting, so a pause never leaves rows sitting in the page --
        * the same reason the old exit called `dump()`. */
       if (C.i >= C.urls.length) {
-        if (since) { C.dump(); since = 0; }
         C.idle = (C.idle || 0) + 1;
+        /* ⛔ **FLUSH ONCE THE PAUSE LOOKS REAL, NOT THE MOMENT IT CATCHES UP.** Flushing on
+         * every catch-up wrote a file per handful: parts 196-207 came out at 2-15 KB against
+         * the 500 KB a full part is, because the loop was fetching three or four chains, running
+         * out, and dumping again fifteen seconds later.
+         *
+         * `IDLE_FLUSH` ticks of nothing to do means the trickle has genuinely stopped, and
+         * `since` is zeroed after, so a long wait produces exactly one file rather than one per
+         * tick. Work arriving before then simply carries on accumulating. */
+        if (since && C.idle >= IDLE_FLUSH) { C.dump(); since = 0; }
         C.lastAt = Date.now();
-        await new Promise((r) => setTimeout(r, 15000));
+        await new Promise((r) => setTimeout(r, IDLE_MS));
         continue;
       }
       C.idle = 0;
