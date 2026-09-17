@@ -841,7 +841,16 @@ def main() -> int:
     # wrong. Wikibase adds `item-term`, `item-create`, `item-merge`, `item-redirect` and the
     # property equivalents, and a term edit checks `item-term`, not `edit`. So print both sets,
     # and print the whole list when something is missing rather than guessing which.
-    for needed in ("edit", "createpage", "item-term", "item-create",
+    # ⛔ `item-create` IS NOT ON THIS LIST AND MUST NOT GO BACK ON IT. It was, and it reported
+    # NO on every run -- including the 2026-09-16 08:34 run that MINTED SIX ITEMS in the same
+    # minutes (`Q141474261`, `Q141474269`, `Q141474270`, `Q141474271`, `Q141474276`,
+    # `Q141474278`). Wikidata does not grant a right by that name for ordinary creation: an item
+    # is created with `createpage` + `edit`, both of which are held.
+    #
+    # So the line was a permanent false alarm sitting next to real ones, and it was read twice
+    # as "creations cannot land" when creations were landing. A check that is always NO teaches
+    # the reader to discount the whole list.
+    for needed in ("edit", "createpage", "item-term",
                    "item-merge", "item-redirect", "property-term"):
         print("  right %-14s %s" % (needed, "yes" if needed in rights else "NO"))
     blocked = bool(info.get("blockid"))
@@ -852,7 +861,7 @@ def main() -> int:
     globals()["_SESSION_BLOCKED"] = blocked
     globals()["_SESSION_BLOCK_REASON"] = info.get("blockreason", "")
     globals()["_SESSION_MISSING"] = [r for r in ("edit", "createpage", "item-term",
-                                                 "item-create", "item-merge", "item-redirect",
+                                                 "item-merge", "item-redirect",
                                                  "property-term") if r not in rights]
     print("  all rights: %s" % " ".join(sorted(rights)))
 
