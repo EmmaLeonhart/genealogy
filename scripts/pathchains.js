@@ -112,7 +112,10 @@ window.__chains = window.__chains || {};
        * phase is derived, not a fourth flag: a page counter that has started and not finished. */
       alive: !!((C.running || (C.collectPage && !C.collectDone)) && age !== null && age < 120),
       secondsSinceLastRequest: age === null ? null : Math.round(age),
-      i: C.i, of: C.urls.length, ok: C.ok, fail: C.fail,
+      i: C.i, of: C.urls.length,
+      /* Caught up and waiting for `collect()` to add more, rather than dead. `alive` stays true
+       * because the loop is stamping `lastAt` -- this says WHY nothing is moving. */
+      idling: !!C.idle, ok: C.ok, fail: C.fail,
       part: C.part, pending: C.rows.length,
       collectPage: C.collectPage || 0, collectDone: !!C.collectDone,
       finished: C.finished || null,
@@ -262,7 +265,28 @@ window.__chains = window.__chains || {};
     C.running = true;
     C.finished = null;
     let since = 0;
-    while (C.running && C.gen === mine && C.i < C.urls.length) {
+    while (C.running && C.gen === mine) {
+      /* ⛔ **CATCHING UP IS NOT FINISHING, AND EXITING HERE COSTS A RESTART EVERY TICK.**
+       * The requester queues searches far faster than Geni resolves them, so this loop reaches
+       * the end of the list routinely -- it drained on three consecutive 45-minute checks on
+       * 2026-09-17, each time setting `finished` and reporting `alive:false`, which reads as a
+       * dead fetcher and cost a manual restart every time.
+       *
+       * The list is not a fixed job. It GROWS underneath this loop whenever `collect()` walks
+       * `/paths` again, so the honest behaviour at the end is to WAIT, not to stop. `lastAt` is
+       * stamped while waiting so `alive` keeps telling the truth: the loop is up, there is
+       * simply nothing to fetch this second.
+       *
+       * The tail is flushed before waiting, so a pause never leaves rows sitting in the page --
+       * the same reason the old exit called `dump()`. */
+      if (C.i >= C.urls.length) {
+        if (since) { C.dump(); since = 0; }
+        C.idle = (C.idle || 0) + 1;
+        C.lastAt = Date.now();
+        await new Promise((r) => setTimeout(r, 15000));
+        continue;
+      }
+      C.idle = 0;
       try {
         C.rows.push(...await C.one(C.urls[C.i]));
         C.ok++;
@@ -278,7 +302,7 @@ window.__chains = window.__chains || {};
       C.dump();                              // never leave the tail sitting in the page
       C.running = false;
       C.finished = new Date().toISOString();
-      console.log("[chains] done at " + C.i + "/" + C.urls.length);
+      console.log("[chains] stopped at " + C.i + "/" + C.urls.length);
     }
   };
 })();
