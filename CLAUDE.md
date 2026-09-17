@@ -469,6 +469,14 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   actively exploited that bot by ... some of the ways that I standardize labels across
   languages."* So writing a duplicate is a legitimate way to standardise, and cleaning one up is
   doing another bot's work. Never measure it, never queue it, never emit a removal for it.
+- **⛔ A MIXED-SCRIPT LABEL IS NOT A CAMPAIGN. `mul` AGREEMENT SORTS IT OUT.** Ruled 2026-09-17:
+  *"mul label agreement and all of that stuff should sort it out"*. `Q2575818` held
+  `Robert Henrik Иванович Rehbinder till Viksberg` — a Russian patronymic spliced into a Latin
+  name, written by our own batch on 2026-09-13 and corrected by hand on 2026-09-17. A scan of all
+  1,451,994 derived labels found **622 mixing Latin and Cyrillic** (`Ivan Ivanovich Рюрикович`,
+  `Tautvilas Кейстутович of Lithuania`). **That count is not a work item.** The label-agreement
+  machinery is what resolves them, the same way the duplicate-label bot above is. Do not queue
+  the 622, do not emit corrections for them, and do not count them again.
 - **A middle initial keeps its Latin letter in every language.** A bare lowercase letter is a word.
 
 ## Editing Wikidata → [wikidata-editing](docs/rules/wikidata-editing.md)
