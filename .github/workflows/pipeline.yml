@@ -324,10 +324,27 @@ jobs:
       # ⛔ SPLIT BEFORE THE SITE IS BUILT. The page serves the manual half, so the split has
       # to exist by the time `build-pages-site.py` runs. Ruled 2026-09-14: *"Produce disjoint
       # quickstatements on the github page too."*
-      - name: Split the daily batch into the automatic and manual halves
+      # ⛔ **TWO PARALLEL GENERATIONS, NOT ONE FILE CUT IN TWO.** Ruled 2026-09-17: *"a third of
+      # them go into the automatic, two thirds of them go into the quick statements, and that is
+      # what occurs at the very fucking beginning of the pipeline ... they are basically two
+      # parallel generations of all of the same stuff."* And on being offered the end-of-pipeline
+      # splitter as equivalent: *"you need to have a thoroughly split pipeline. No half
+      # measures."*
+      #
+      # `--half` deals the individual CREATIONS -- a third to auto, two thirds to manual -- and
+      # generates everything else in full on BOTH sides, because only a duplicated person
+      # creation is unrecoverable. `split-daily-batch.py` is still run afterwards and now finds
+      # nothing to do; it stays until its assertions have been ported, so the cut it used to make
+      # is checked rather than simply removed.
+      - name: Generate the automatic half
         env:
           PYTHONPATH: src
-        run: python scripts/split-daily-batch.py
+        run: python scripts/build-garborg-day.py --compose --half auto
+
+      - name: Generate the QuickStatements half
+        env:
+          PYTHONPATH: src
+        run: python scripts/build-garborg-day.py --compose --half manual
 
 
       # ⛔ THE UNIVERSE-GROWTH PASS, APPENDED TO BOTH HALVES AFTER THE SPLIT. Ruled
