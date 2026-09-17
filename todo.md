@@ -868,3 +868,10 @@ is `Q1` (Aster). `reports/orderlife-properties.md` documented only `P31`.
 but also caught **`Q1` Aster and `Q5` Hesper, who are people**. The rule that
 works: a class is pointed at as a class **and** carries no genealogy of its own.
 `tests/test_edit_emitters.py` pins both directions.
+
+## Research `6000000000757999620`
+
+<https://www.geni.com/people/index/6000000000757999620>
+
+Added 2026-09-17 by instruction. Written down and not investigated — § *"Add it to the end of
+the queue" means WRITE IT DOWN AND STOP*.
