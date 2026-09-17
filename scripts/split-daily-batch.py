@@ -65,11 +65,21 @@ AUTO = REPO / "reports" / "wikidata-garborg-day-auto.txt"
 MANUAL = REPO / "reports" / "wikidata-garborg-day-manual.txt"
 
 #: The share the schedule sends by itself. One third; see the module docstring for why.
-#: ⛔ **THE RUNNER SENDS EVERYTHING. Ruled 2026-09-17: "Run all 411".**
-#: This was 1/3 and the remainder was published for a person to paste -- 311 edits a day
-#: waiting on a human for no reason anyone could defend when asked. The share is the whole
-#: batch now; the manual half comes out empty and the Pages site has nothing to carry.
-AUTO_SHARE = 1.0
+#: ⛔ **A THIRD IS A SHARE OF WHATEVER IS COMPOSED, NEVER A CAP.** Ruled 2026-09-14 --
+#: *"making 50% more quickstatements and then segregating out a third of that to be run by
+#: cicd"* -- and restated 2026-09-17 when it came out wrong: *"I wasn't intending for there to be
+#: a cap, I was intending for 50% of the edits to be done. I was intending for a third of the
+#: edits to be automatic and two-thirds of the edits to be done by quick statements."*
+#:
+#: **Both halves get done.** The third is the autonomous share; the rest is pasted. What broke it
+#: was not this number but a second ceiling stacked on it: `RUN_LIMIT` at 100 and the workflow's
+#: `limit=100` bound BELOW the share, so a batch of 411 sent 100 where a third is 137, and
+#: everything above 100 silently became somebody's homework. A share recomputes as the batch
+#: grows; a ceiling does not, and nothing re-derived it as the batch grew.
+#:
+#: The ceilings stay raised (1000) so they can never bind below the share again. They exist to
+#: stop a runaway, not to ration the work.
+AUTO_SHARE = 1.0 / 3.0
 
 #: The scheduled run's own ceiling, mirrored so the split never hands it more than it will send.
 #: If it did, the surplus would be in neither file: the runner would stop at its limit and the
@@ -289,7 +299,7 @@ def main() -> int:
     MANUAL.write_text(m_text, encoding="utf-8", newline="\n")
     print(f"{len(edits)} edits -> {len(a_edits)} automatic ({AUTO.name}), "
           f"{len(m_edits)} for the page ({MANUAL.name})")
-    print(f"   share asked for: {share} (the whole batch, capped at RUN_LIMIT {RUN_LIMIT})")
+    print(f"   share asked for: {share} (a third, capped at RUN_LIMIT {RUN_LIMIT})")
     return 0
 
 
