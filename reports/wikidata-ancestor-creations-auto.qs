@@ -1,6 +1,6 @@
 # ========================================================================
 # ONE PARENT A RUN, UP THE ACCOUNT OWNER'S OWN ANCESTRY -- the scheduled run, 2 creation(s).
-# 619 eligible: an ancestor of 6000000087535357291 who carries a QID and whose parent the tree
+# 620 eligible: an ancestor of 6000000087535357291 who carries a QID and whose parent the tree
 # knows and Wikidata does not. Chosen at random, seeded on 2026-09-17 so the pick is
 # stable for the day -- the batch is recomposed several times a day and an
 # unseeded choice would create a different person on each recomposition.
