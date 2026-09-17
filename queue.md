@@ -218,10 +218,28 @@ much larger than the pre-harvest figures this item was written with.**
   ⛔ **THE FORM DEFAULTS TO `Family Tree Builder 8.0` AND THE CORPUS IS `5.5.1`.** Every
   `.ged` under `exports/` carries `1 GEDC` / `2 VERS 5.5.1`. A `Forest` can take days, so the
   Type has to be set before submitting or the wait is spent on the wrong format.
-* **`your relative?`, 105 rows over 102 people** — not the 15 recorded here. Geni itself is not
-  naming the relation. Only a `Forest` on those people shows what the link is. They are
-  overwhelmingly ancient or disputed: Constantine the Great, Peroz I of Persia, Balamber of the
-  Huns, Mattathias Maccabeus, and four US presidents.
+* ⛔ **`your relative?` IS NOT A RELATIONSHIP AND THIS ITEM IS DELETED.** Ruled 2026-09-17:
+  *"uhh yeah I do not think 'your relative?' is a thing at all."* Correct, and the repo already
+  said so -- `scripts/harvest-isolate-paths.py` carries
+
+      UNRESOLVED_RELATION = "relative?"
+      #: Geni's own marker for *I did not resolve this*.
+
+  It is what Geni renders on a page it has NOT resolved, or one whose path search is still
+  running: `You` and the target with `(your relative?)` between them and nothing in between.
+  So there is no edge to represent, and a `Forest` centred on one of those people would learn
+  nothing -- the export cannot show a link that Geni is saying it does not have.
+
+  **Measured the same day, and it is the miss shape exactly.** Of the 160 chains in
+  `reports/path-chains.tsv` carrying the word, **159 are exactly 2 steps** -- the viewer plus the
+  target, which is the shape `MIN_STEPS = 3` exists to reject. The 160th is a real 49-step chain
+  with one unresolved segment inside it.
+
+  **Nothing reached the corpus**: 0 of the 159 have a GEDCOM under `exports/tiny-paths/`, because
+  a two-row chain names nobody in between and `split-path-chains.py` drops it. They do each have
+  a `harvested-paths/*.tsv`, which is a record of a miss and is what that directory is for.
+
+  So the only unmodelled relationship left is `fiancé`/`fiancée`.
 
 ## ⛔ RULINGS FROM 2026-09-15 — read these before working anything above
 
