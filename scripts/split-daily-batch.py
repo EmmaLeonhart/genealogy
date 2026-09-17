@@ -238,22 +238,36 @@ def main() -> int:
             for _i in _idxs:
                 welded.setdefault(_i, set()).update(_idxs)
 
-    step = max(1, round(1.0 / AUTO_SHARE))
+    # ⛔ **NO SAMPLING. THE AUTOMATIC HALF IS THE FIRST N EDITS IN COMPOSED ORDER.**
+    # Ruled 2026-09-17: *"I didn't ask for you to do an approximation of the quick statements
+    # edits. I asked for you to do literally the exact quick statements edits."* And the reason,
+    # said the same hour: *"you have to immediately connect the person to everybody that you can
+    # connect them to as soon as they are created. That is how it is that the regular logic
+    # works."*
+    #
+    # **The composed order IS the logic.** `build-garborg-day` writes a person, then every edge
+    # that person can take, adjacently. A prefix cut leaves everything before it whole. A stride
+    # walks across those groups and separates a creation from the edges that belong to it --
+    # measured on this batch, **22 people had their relationship edges on both sides of the cut**,
+    # one shipping today and the rest waiting for a human to paste. `Q141488174` was 1 and 3.
+    #
+    # The stride was introduced this morning to fix a real defect: with `RUN_LIMIT` at 100 the
+    # prefix was always the top of the file -- 12 creations, all name items, zero humans. **That
+    # defect was the CAP, not the prefix.** The cap is gone, the share is a true third of
+    # whatever is composed, and the prefix now takes 137 of 411 in the order they were written.
+    # If the file opens with name items then the first third is name items and tomorrow's third
+    # moves on; that is the sequence working, not a bias to correct for.
     chosen, taken = set(), 0
-    # Stride first, so the auto half samples identifications, name items and creations alike
-    # rather than taking the top of the file; then fill any remaining room in order.
-    for order_pass in (range(0, len(units), step), range(len(units))):
-        for i in order_pass:
-            group = sorted(welded.get(i, {i}))
-            if any(j in chosen for j in group):
-                continue
-            joined = chr(10).join(chr(10).join(units[j]) for j in group)
-            if not joined.strip():
-                continue
-            n = len(qs_v1.edit_objects(qs_v1.parse(joined)))
-            if n and taken + n <= share:
-                chosen.update(group)
-                taken += n
+    for i in range(len(units)):
+        joined = chr(10).join(units[i])
+        if not joined.strip():
+            chosen.add(i)
+            continue
+        n = len(qs_v1.edit_objects(qs_v1.parse(joined)))
+        if taken + n > share:
+            break
+        chosen.add(i)
+        taken += n
 
     auto, manual = [], []
     for i, u in enumerate(units):
