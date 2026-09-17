@@ -1735,8 +1735,21 @@ def not_a_name(token: str) -> bool:
     # or kana character IS a name, and `CLAUDE.md` § *A middle initial keeps its Latin letter in
     # every language* keeps `L` as `L` wherever it legitimately appears **inside** a label. What
     # is refused is a single Latin letter standing alone AS one.
-    if len(t.rstrip(".")) == 1 and t.rstrip(".").isascii() and t.rstrip(".").isalpha():
+    # ⛔ **`L.` WITH THE PERIOD IS A LEGITIMATE NAME AND THE FIRST VERSION OF THIS REFUSED IT.**
+    # Corrected 2026-09-17 within the hour: *"keep in mind 'L.' straight up is a legit wikidata
+    # name you just fucked it up"*. The period is what makes it an abbreviated name rather than a
+    # stray letter, and Wikidata models it as one. The rule stripped the period before testing,
+    # so `L` and `L.` collapsed to the same token and both came back refused.
+    #
+    # So the test is length ONE, with nothing stripped: `L` is refused, `L.` passes.
+    if len(t) == 1 and t.isascii() and t.isalpha():
         return True
+    # And the period has to be LICENSED here, not merely tolerated: the allowlist below refuses
+    # all punctuation except a hyphen or apostrophe between letters, so `L.` was already being
+    # refused before the single-letter rule existed. One letter followed by a period is an
+    # abbreviated name and Wikidata carries items for exactly that shape.
+    if len(t) == 2 and t[1] == "." and t[0].isascii() and t[0].isalpha():
+        return False
     # ⛔ **A TOKEN HERE CAN LEGITIMATELY BE SEVERAL WORDS, AND THIS RULE NEARLY KILLED THEM.**
     # `join_particles` has produced multi-word tokens since it was written -- `ben Phinhas`,
     # `bin Haji Muhammad`, `ap Thomas`, which is `name modelling.txt`'s own worked example --
