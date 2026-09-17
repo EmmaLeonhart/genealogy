@@ -16,7 +16,7 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Ivarsdatter -- patronymic, 2 bearer(s) in the batches
+# Ivarsdatter -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Ivarsdatter"
@@ -39,6 +39,8 @@ LAST	P144	Q127069
 LAST	P144	Q11977747
 #   Q141189104 Siri Kristine Ivarsdatter Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198422 Iver Pedersen Sandsmark
 Q141189104	P5056	LAST	P144	Q141198422	S2600	"6000000002954315535"
+#   Q141216598 Anna Ivarsdatter Stokka: P5056 patronym or matronym = the item just created, qualified P144 based on Q141217387 Ivar Stokka
+Q141216598	P5056	LAST	P144	Q141217387	S2600	"6000000003830468150"
 #   Q141205899 Bergitte Ivarsdatter Tjentland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141249611 Ivar Toreson Tjentland
 Q141205899	P5056	LAST	P144	Q141249611	S2600	"6000000007980617734"
 
@@ -288,7 +290,7 @@ LAST	P31	Q101352
 #   Q141488014 n: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141488014	P734	LAST	P3831	Q28418670	S2600	"6000000011389885383"
 
-# 1331 more name items are needed and wait for a later
+# 1342 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   father (family), 5 bearer(s)
 #   Björnsson (patronymic), 4 bearer(s)
@@ -302,7 +304,7 @@ Q141488014	P734	LAST	P3831	Q28418670	S2600	"6000000011389885383"
 #   Al-Umawi (family), 3 bearer(s)
 #   Coucy (family), 3 bearer(s)
 #   Gdańsk (family), 3 bearer(s)
-#   ... and 1319 more
+#   ... and 1330 more
 
 
 # ======================================================================

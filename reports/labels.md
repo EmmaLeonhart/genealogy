@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 315,103 people
+## Aliases from married names — 315,083 people
 
 A married name plugs into the name to produce an alias.
 
@@ -56,7 +56,7 @@ them.
 ## Against Wikidata, where both exist
 
 67,690 people have both a derived Latin label and a Wikidata English
-label. **20,728 match exactly (30.6%).**
+label. **20,720 match exactly (30.6%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the

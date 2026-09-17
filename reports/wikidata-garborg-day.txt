@@ -21,7 +21,7 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Ivarsdatter -- patronymic, 2 bearer(s) in the batches
+# Ivarsdatter -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
 #   the item just created: set the en label to "Ivarsdatter"
@@ -44,6 +44,8 @@ LAST	P144	Q127069
 LAST	P144	Q11977747
 #   Q141189104 Siri Kristine Ivarsdatter Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198422 Iver Pedersen Sandsmark
 Q141189104	P5056	LAST	P144	Q141198422	S2600	"6000000002954315535"
+#   Q141216598 Anna Ivarsdatter Stokka: P5056 patronym or matronym = the item just created, qualified P144 based on Q141217387 Ivar Stokka
+Q141216598	P5056	LAST	P144	Q141217387	S2600	"6000000003830468150"
 #   Q141205899 Bergitte Ivarsdatter Tjentland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141249611 Ivar Toreson Tjentland
 Q141205899	P5056	LAST	P144	Q141249611	S2600	"6000000007980617734"
 
@@ -293,7 +295,7 @@ LAST	P31	Q101352
 #   Q141488014 n: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
 Q141488014	P734	LAST	P3831	Q28418670	S2600	"6000000011389885383"
 
-# 1331 more name items are needed and wait for a later
+# 1342 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   father (family), 5 bearer(s)
 #   Björnsson (patronymic), 4 bearer(s)
@@ -307,7 +309,7 @@ Q141488014	P734	LAST	P3831	Q28418670	S2600	"6000000011389885383"
 #   Al-Umawi (family), 3 bearer(s)
 #   Coucy (family), 3 bearer(s)
 #   Gdańsk (family), 3 bearer(s)
-#   ... and 1319 more
+#   ... and 1330 more
 
 
 # ======================================================================
@@ -347,7 +349,7 @@ Q141457235	P460	Q141448438
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   27 people, 40 edits; 0 edits held for a later run
+#   68 people, 116 edits; 0 edits held for a later run
 #   across 0 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
 #   Q141488446 Hedvig Schlytern: add a mul alias "Hedvig Hermansdotter"
@@ -358,12 +360,19 @@ Q141488206	Amul	"Torkel Halvardsen Flystveit"
 Q141488203	Amul	"Johannes Alvsson Alvseike"
 #   Q141488193 Mattias von Hartmansdorff: add a mul alias "Mattias Hartman"
 Q141488193	Amul	"Mattias Hartman"
-#   add a mul alias "Guri Nilsdtr. Raunes"
-Q141488174	Amul	"Guri Nilsdtr. Raunes"
+#   add a mul alias "Guri Nilsdatter Raunes"
+Q141488174	Amul	"Guri Nilsdatter Raunes"
+#   Q141488174: 'Guri Nilsdatter Askvik' has no ja/zh/ko label
+#   Q141488174: set the ja label
+Q141488174	Lja	"グリ・ニルスダッテル・アスクヴィク"
 #   set the ja label to "グリ・ニルスダッテル・アスクヴィク"
 Q141488174	Lja	"グリ・ニルスダッテル・アスクヴィク"
+#   Q141488174: set the zh label
+Q141488174	Lzh	"古里·尼尔斯达特·阿斯克维克"
 #   set the zh label to "古里·尼尔斯达特·阿斯克维克"
 Q141488174	Lzh	"古里·尼尔斯达特·阿斯克维克"
+#   Q141488174: set the ko label
+Q141488174	Lko	"구리 닐스다테르 아스크비크"
 #   set the ko label to "구리 닐스다테르 아스크비크"
 Q141488174	Lko	"구리 닐스다테르 아스크비크"
 #   Q141488167 Magnhild Endresdatter Eidland: add a mul alias "Magnhild Endresdatter Eidland *"
@@ -394,8 +403,8 @@ Q141487967	Amul	"(E)Lise Karoline Maehle"
 Q141487966	Amul	"Knut Halvorsson Måge"
 #   add a mul alias "Katarina Törner"
 Q141487963	Amul	"Katarina Törner"
-#   add a mul alias "Kari Oddsdtr. Hauge"
-Q141487959	Amul	"Kari Oddsdtr. Hauge"
+#   add a mul alias "Kari Oddsdatter Hauge"
+Q141487959	Amul	"Kari Oddsdatter Hauge"
 #   add a mul alias "Karen Kristensdatter Austrått"
 Q141487957	Amul	"Karen Kristensdatter Austrått"
 #   Q141487946 Ingeborg Olsdatter Olimb: add a mul alias "Ingeborg Olsdatter Grumstad"
@@ -412,8 +421,164 @@ Q141487909	Amul	"Anna Maria Siberg"
 Q141487906	Amul	"Anna Larsdatter Ølberg"
 #   Q141487905 Anna Grubb: add a mul alias "Anna Jönsdotter"
 Q141487905	Amul	"Anna Jönsdotter"
+#   Q141457330 Regina Rasmusdatter Johansen Oswald: add a mul alias "Regina Rasmusdatter Johansen Lea"
+Q141457330	Amul	"Regina Rasmusdatter Johansen Lea"
+#   Q141457306 Marta Svensdatter: add a mul alias "Marta Svensdatter"
+Q141457306	Amul	"Marta Svensdatter"
+#   Q141456610: set the en label to 'Elen Pallesdatteratter Trane'
+Q141456610	Len	"Elen Pallesdatteratter Trane"
+#   Q141456610: holds the abbreviated 'Elen Pallesdatter Trane'; the full form is 'Elen Pallesdatteratter Trane'
+#   Q141456610: keep the outgoing label as an alias before it is replaced
+Q141456610	Amul	"Elen Pallesdatter Trane"
+#   Q141456610: set the mul label to 'Elen Pallesdatteratter Trane'
+Q141456610	Lmul	"Elen Pallesdatteratter Trane"
+#   Q141456599 Brynhild Osmundsdatter Ile: add a mul alias "Brynhild Osmundsdatter Stokka"
+Q141456599	Amul	"Brynhild Osmundsdatter Stokka"
+#   Q141456590: set the en label to 'Birgitte Fartegnsdatteratter Bagge'
+Q141456590	Len	"Birgitte Fartegnsdatteratter Bagge"
+#   Q141456590: holds the abbreviated 'Birgitte Fartegnsdatter Bagge'; the full form is 'Birgitte Fartegnsdatteratter Bagge'
+#   Q141456590: keep the outgoing label as an alias before it is replaced
+Q141456590	Amul	"Birgitte Fartegnsdatter Bagge"
+#   Q141456590: set the mul label to 'Birgitte Fartegnsdatteratter Bagge'
+Q141456590	Lmul	"Birgitte Fartegnsdatteratter Bagge"
+#   Q141451111 Sigrid Olsdotter Galta: add a mul alias "Sigrid Olsdotter Nord-Hidle"
+Q141451111	Amul	"Sigrid Olsdotter Nord-Hidle"
+#   Q141451028 Ingeborg Berte Svensdatter: add a mul alias "Ingeborg Berte Svensdatter"
+Q141451028	Amul	"Ingeborg Berte Svensdatter"
+#   Q141450293 Marte Larsdotter Raunes: add a mul alias "Marte Larsdotter Raunes"
+Q141450293	Amul	"Marte Larsdotter Raunes"
+#   Q141448491 Malena Fanuelsdotter Mork: add a mul alias "Malena Fanuelsdotter Mork"
+Q141448491	Amul	"Malena Fanuelsdotter Mork"
+#   Q141448450: set the en label to 'Anna Børgesdatteratter Aubø'
+Q141448450	Len	"Anna Børgesdatteratter Aubø"
+#   Q141448450: holds the abbreviated 'Anna Børgesdatter Aubø'; the full form is 'Anna Børgesdatteratter Aubø'
+#   Q141448450: keep the outgoing label as an alias before it is replaced
+Q141448450	Amul	"Anna Børgesdatter Aubø"
+#   Q141448450: set the mul label to 'Anna Børgesdatteratter Aubø'
+Q141448450	Lmul	"Anna Børgesdatteratter Aubø"
+#   Q141444560 Anna Olsdatter Atletveit: add a mul alias "Anna Olsdatter Blanch"
+Q141444560	Amul	"Anna Olsdatter Blanch"
+#   Q141443308 Annikken Nilsdatter Vik: add a mul alias "Annikken Nilsdatter Hidle"
+Q141443308	Amul	"Annikken Nilsdatter Hidle"
+#   Q141442982: set the en label to 'Magnhild Olavsdatteratter Foss'
+Q141442982	Len	"Magnhild Olavsdatteratter Foss"
+#   Q141442982: holds the abbreviated 'Magnhild Olavsdatter Foss'; the full form is 'Magnhild Olavsdatteratter Foss'
+#   Q141442982: keep the outgoing label as an alias before it is replaced
+Q141442982	Amul	"Magnhild Olavsdatter Foss"
+#   Q141442982: set the mul label to 'Magnhild Olavsdatteratter Foss'
+Q141442982	Lmul	"Magnhild Olavsdatteratter Foss"
+#   Q141440592 Kari Johannesdatter Vormestrand: add a mul alias "Kari Johannesdatter Stokka"
+Q141440592	Amul	"Kari Johannesdatter Stokka"
+#   Q141422226 Karin Eriksdatter Byre: add a mul alias "Karin Eriksdatter Koll Byre"
+Q141422226	Amul	"Karin Eriksdatter Koll Byre"
+#   Q141403573 Gunhild Paalsdatter Teig: add a mul alias "Gunhild Paalsdatter Berkeland"
+Q141403573	Amul	"Gunhild Paalsdatter Berkeland"
+#   Q141382087 Dorthe Sofie Nilsdatter Sofie Kyllingstad. Fosdal: add a mul alias "Dorthe Sofie Nilsdatter Sofie Nilsdatter"
+Q141382087	Amul	"Dorthe Sofie Nilsdatter Sofie Nilsdatter"
+#   Q141353042 Anne Marie Nilsdatter Talle: add a mul alias "Anne Marie Nilsdatter Hillestad"
+Q141353042	Amul	"Anne Marie Nilsdatter Hillestad"
+#   Q141352317 Helga Tårnsdatter Aubø Sjernarøy: add a mul alias "Helga Tårnsdatter Aubø"
+Q141352317	Amul	"Helga Tårnsdatter Aubø"
+#   Q141318914 Helga Olavsdotter Ringja: add a mul alias "Helga Olavsdotter Vormestrand"
+Q141318914	Amul	"Helga Olavsdotter Vormestrand"
+#   Q141271379: set the en label to 'Anna Ormsdatteratter Byre'
+Q141271379	Len	"Anna Ormsdatteratter Byre"
+#   Q141271379: holds the abbreviated 'Anna Ormsdatter Byre'; the full form is 'Anna Ormsdatteratter Byre'
+#   Q141271379: keep the outgoing label as an alias before it is replaced
+Q141271379	Amul	"Anna Ormsdatter Byre"
+#   Q141271379: set the mul label to 'Anna Ormsdatteratter Byre'
+Q141271379	Lmul	"Anna Ormsdatteratter Byre"
+#   Q141271379: set the ja label
+Q141271379	Lja	"アンナ・オルムスダッテラッテル・ビレ"
+#   Q141271379: set the zh label
+Q141271379	Lzh	"安娜·奥尔姆斯达特拉特尔·比雷"
+#   Q141225175 Malene Larsdotter Alvseike: add a mul alias "Malene Larsdotter Raunes"
+Q141225175	Amul	"Malene Larsdotter Raunes"
+#   Q141223851: set the en label to 'Ragnhild Østensdatteratter Stokka'
+Q141223851	Len	"Ragnhild Østensdatteratter Stokka"
+#   Q141223851: holds the abbreviated 'Ragnhild Østensdatter Stokka'; the full form is 'Ragnhild Østensdatteratter Stokka'
+#   Q141223851: keep the outgoing label as an alias before it is replaced
+Q141223851	Amul	"Ragnhild Østensdatter Stokka"
+#   Q141223851: set the mul label to 'Ragnhild Østensdatteratter Stokka'
+Q141223851	Lmul	"Ragnhild Østensdatteratter Stokka"
+#   Q141223851 Ragnhild Østensdatter Stokka: add a mul alias "Ragnhild Østensdatter Egenes"
+Q141223851	Amul	"Ragnhild Østensdatter Egenes"
+#   Q141223417 Elen Malena Halvorsdatter Tunheim: add a mul alias "Elen Malena Halvorsdatter Mossige"
+Q141223417	Amul	"Elen Malena Halvorsdatter Mossige"
+#   Q141217369: set the en label to 'Anna Osmundsdatteratter Stokka'
+Q141217369	Len	"Anna Osmundsdatteratter Stokka"
+#   Q141217369: holds the abbreviated 'Anna Osmundsdatter Stokka'; the full form is 'Anna Osmundsdatteratter Stokka'
+#   Q141217369: keep the outgoing label as an alias before it is replaced
+Q141217369	Amul	"Anna Osmundsdatter Stokka"
+#   Q141217369: set the mul label to 'Anna Osmundsdatteratter Stokka'
+Q141217369	Lmul	"Anna Osmundsdatteratter Stokka"
+#   Q141217369: set the ja label
+Q141217369	Lja	"アンナ・オスムンドスダッテラッテル・ストッカ"
+#   Q141217369: set the zh label
+Q141217369	Lzh	"安娜·奥斯蒙德斯达特拉特尔·斯托卡"
+#   Q141216632 Magdalena Lauritsdatter Hogganvik: add a mul alias "Magdalena Lauritsdatter Hogganvik"
+Q141216632	Amul	"Magdalena Lauritsdatter Hogganvik"
+#   Q141216598 Anna Ivarsdatter Stokka: add a mul alias "Anna Ivarsdatter Stokka"
+Q141216598	Amul	"Anna Ivarsdatter Stokka"
+#   Q141216467 Eldrid Jonsdatter Blindheim: add a mul alias "Eldrid Jonsdatter Blindheim"
+Q141216467	Amul	"Eldrid Jonsdatter Blindheim"
+#   Q141216363 Anne Govertsdatter Bratland: add a mul alias "Anne Govertsdatter Årsvoll"
+Q141216363	Amul	"Anne Govertsdatter Årsvoll"
+#   Q141205938 Ranveig Olsdatter Trevland: add a mul alias "Ranveig Olsdatter Trevland"
+Q141205938	Amul	"Ranveig Olsdatter Trevland"
+#   Q141205922 Marit Ormsdatter Byre: add a mul alias "Marit Ormsdatter Byre"
+Q141205922	Amul	"Marit Ormsdatter Byre"
+#   Q141200094 Siri Rasmusdatter Erevik: add a mul alias "Siri Rasmusdatter Erevik"
+Q141200094	Amul	"Siri Rasmusdatter Erevik"
+#   Q124429892: set the en label to 'Lage Meijendorff von Yxkull till Skattmansö'
+Q124429892	Len	"Lage Meijendorff von Yxkull till Skattmansö"
+#   Q124429892: holds 'Lage Meijendorff von Yxkull'; ours is 'Lage Meijendorff von Yxkull till Skattmansö'
+#   Q124429892: keep the outgoing label as an alias before it is replaced
+Q124429892	Amul	"Lage Meijendorff von Yxkull"
+#   Q124429892: set the mul label to 'Lage Meijendorff von Yxkull till Skattmansö'
+Q124429892	Lmul	"Lage Meijendorff von Yxkull till Skattmansö"
+#   Q124429892 Lage Meijendorff von Yxkull till Skattmansö: add a mul alias "Lage Meijendorff von Yxkull till Skattmansö"
+Q124429892	Amul	"Lage Meijendorff von Yxkull till Skattmansö"
+#   Q123652483 Christoffer Svante Von Hartmansdorff: set the en label to "Christoffer Svante von Hartmansdorff"
+Q123652483	Len	"Christoffer Svante von Hartmansdorff"
+#   add a mul alias "Christoffer Svante Von Hartmansdorff"
+Q123652483	Amul	"Christoffer Svante Von Hartmansdorff"
+#   Q123411329 Christoffer Ulrik Freijtag: add a mul alias "Christoffer Ulrik Freijtag"
+Q123411329	Amul	"Christoffer Ulrik Freijtag"
+#   Q106072786 Johanna Andriesdatter Heijmans: add a mul alias "Johanna Andriesdatter Heijmans"
+Q106072786	Amul	"Johanna Andriesdatter Heijmans"
 #   Q96776087 Elizabeth Hammond: add a mul alias "Elizabeth Hammond"
 Q96776087	Amul	"Elizabeth Hammond"
+#   Q73762646 Barbara Josefsdatter Pipping: add a mul alias "Barbara Josefsdatter Pipping"
+Q73762646	Amul	"Barbara Josefsdatter Pipping"
+#   Q61278559: set the en label to 'Didrik Henning Meijendorff von Yxkull till Virsbo'
+Q61278559	Len	"Didrik Henning Meijendorff von Yxkull till Virsbo"
+#   Q61278559: holds 'Didrik Henning Meijendorff von Yxkull'; ours is 'Didrik Henning Meijendorff von Yxkull till Virsbo'
+#   Q61278559: keep the outgoing label as an alias before it is replaced
+Q61278559	Amul	"Didrik Henning Meijendorff von Yxkull"
+#   Q61278559: set the mul label to 'Didrik Henning Meijendorff von Yxkull till Virsbo'
+Q61278559	Lmul	"Didrik Henning Meijendorff von Yxkull till Virsbo"
+#   Q61278559 Didrik Henning Meijendorff von Yxkull till Virsbo: add a mul alias "Didrik Henning Meijendorff von Yxkull till Virsbo"
+Q61278559	Amul	"Didrik Henning Meijendorff von Yxkull till Virsbo"
+#   Q16649272 Carl Genberg: add a mul alias "Carl Genberg"
+Q16649272	Amul	"Carl Genberg"
+#   Q6241170 Sven Herman Wikblad: add a mul alias "Sven Herman Wikblad"
+Q6241170	Amul	"Sven Herman Wikblad"
+#   Q6007251 Laurentius Nicolai Blackstadius: set the mul label to "Laurentius Nicolai Blackstadius"
+Q6007251	Lmul	"Laurentius Nicolai Blackstadius"
+#   Q6007251: 'Laurentius Nicolai Blackstadius' has no ja/zh/ko label
+#   Q6007251: set the ja label
+Q6007251	Lja	"ラウレンティウス・ニコライ・ブラクスタディウス"
+#   set the ja label to "ラウレンティウス・ニコライ・ブラクスタディウス"
+Q6007251	Lja	"ラウレンティウス・ニコライ・ブラクスタディウス"
+#   Q6007251: set the zh label
+Q6007251	Lzh	"拉乌伦蒂乌斯·尼古拉·布拉克斯塔迪乌斯"
+#   set the zh label to "拉乌伦蒂乌斯·尼古拉·布拉克斯塔迪乌斯"
+Q6007251	Lzh	"拉乌伦蒂乌斯·尼古拉·布拉克斯塔迪乌斯"
+#   Q6007251: set the ko label
+Q6007251	Lko	"라우렌튜스 니코라이 브라크스타듀스"
+#   set the ko label to "라우렌튜스 니코라이 브라크스타듀스"
+Q6007251	Lko	"라우렌튜스 니코라이 브라크스타듀스"
 #   Q792154 Axel Heinrichssen: set the mul label to "Axel Gyntersberg"
 Q792154	Lmul	"Axel Gyntersberg"
 #   add a mul alias "Axel Güntersberg"
@@ -769,10 +934,10 @@ LAST	P2600	"6000000015794241288"	P1810	"August Edvard von Hartmansdorff"
 LAST	P569	+1815-00-00T00:00:00Z/9	S2600	"6000000015794241288"
 #   P570 date of death = +1879-00-00T00:00:00Z/9
 LAST	P570	+1879-00-00T00:00:00Z/9	S2600	"6000000015794241288"
-#   P22 father = Q141454328 Christoffer Svante Von Hartmansdorff
-LAST	P22	Q141454328	S2600	"6000000015794241288"
-#   Q141454328 Christoffer Svante Von Hartmansdorff: P40 child = the item just created
-Q141454328	P40	LAST	S2600	"6000000015794241288"
+#   P22 father = Q123652483 Christoffer Svante Von Hartmansdorff
+LAST	P22	Q123652483	S2600	"6000000015794241288"
+#   Q123652483 Christoffer Svante Von Hartmansdorff: P40 child = the item just created
+Q123652483	P40	LAST	S2600	"6000000015794241288"
 #   the item just created: P735 given name = Q370731 August, qualified P1545 series ordinal 1
 LAST	P735	Q370731	P1545	"1"
 #   P735 given name = Q278835 Edward, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1097,10 +1262,10 @@ LAST	P2600	"6000000174987114175"	P1810	"Carolina Ulrika Taube af Odenkat"
 LAST	P569	+1779-00-00T00:00:00Z/9	S2600	"6000000174987114175"
 #   P570 date of death = +1815-06-06T00:00:00Z/11
 LAST	P570	+1815-06-06T00:00:00Z/11	S2600	"6000000174987114175"
-#   P26 spouse = Q141454328 Christoffer Svante Von Hartmansdorff
-LAST	P26	Q141454328	S2600	"6000000174987114175"
-#   Q141454328 Christoffer Svante Von Hartmansdorff: P26 spouse = the item just created
-Q141454328	P26	LAST	S2600	"6000000174987114175"
+#   P26 spouse = Q123652483 Christoffer Svante Von Hartmansdorff
+LAST	P26	Q123652483	S2600	"6000000174987114175"
+#   Q123652483 Christoffer Svante Von Hartmansdorff: P26 spouse = the item just created
+Q123652483	P26	LAST	S2600	"6000000174987114175"
 #   the item just created: P735 given name = Q5044762 Carolina, qualified P1545 series ordinal 1
 LAST	P735	Q5044762	P1545	"1"
 #   P735 given name = Q18924998 Ulrika, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -2294,24 +2459,28 @@ LAST	Lko	"카리 크누트스다테르 오프살"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000002430053148 Kari Knutsdtr. Opsal, qualified P1810 subject named as Kari Knutsdtr. Atletveit
-LAST	P2600	"6000000002430053148"	P1810	"Kari Knutsdtr. Atletveit"
+#   P2600 Geni.com profile ID = 6000000002430053148 Kari Knutsdatter Opsal, qualified P1810 subject named as Kari Knutsdatter Atletveit
+LAST	P2600	"6000000002430053148"	P1810	"Kari Knutsdatter Atletveit"
 #   P569 date of birth = +1660-00-00T00:00:00Z/9
 LAST	P569	+1660-00-00T00:00:00Z/9	S2600	"6000000002430053148"
 #   P570 date of death = +1742-00-00T00:00:00Z/9
 LAST	P570	+1742-00-00T00:00:00Z/9	S2600	"6000000002430053148"
 #   P22 father = Q141448488 Knud Olson Olsen
 LAST	P22	Q141448488	S2600	"6000000002430053148"
-#   P25 mother = Q141444560 Anna Olsdtr. Atletveit
+#   P25 mother = Q141444560 Anna Olsdatter Atletveit
 LAST	P25	Q141444560	S2600	"6000000002430053148"
 #   Q141448488 Knud Olson Olsen: P40 child = the item just created
 Q141448488	P40	LAST	S2600	"6000000002430053148"
-#   Q141444560 Anna Olsdtr. Atletveit: P40 child = the item just created
+#   Q141444560 Anna Olsdatter Atletveit: P40 child = the item just created
 Q141444560	P40	LAST	S2600	"6000000002430053148"
+#   the item just created: P735 given name = Q1333594 Kari
+LAST	P735	Q1333594
+#   P5056 patronym or matronym = Q141283474, qualified P144 based on Q141448488 Knud Olson Olsen
+LAST	P5056	Q141283474	P144	Q141448488
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Kerstin Andersdotter Bånge"
+#   set the en label to "Kerstin Andersdotter Bånge"
 LAST	Len	"Kerstin Andersdotter Bånge"
 #   set the mul label to "Kerstin Andersdotter Bånge"
 LAST	Lmul	"Kerstin Andersdotter Bånge"
@@ -3245,11 +3414,11 @@ LAST	P569	+1638-00-00T00:00:00Z/9	S2600	"6000000005607373546"
 LAST	P570	+1695-00-00T00:00:00Z/9	S2600	"6000000005607373546"
 #   P26 spouse = Q141216496 Nils Larsen Raunes
 LAST	P26	Q141216496	S2600	"6000000005607373546"
-#   P40 child = Q141488174 Guri Nilsdtr. Askvik
+#   P40 child = Q141488174 Guri Nilsdatter Askvik
 LAST	P40	Q141488174	S2600	"6000000005607373546"
 #   Q141216496 Nils Larsen Raunes: P26 spouse = the item just created
 Q141216496	P26	LAST	S2600	"6000000005607373546"
-#   Q141488174 Guri Nilsdtr. Askvik: P25 mother = the item just created
+#   Q141488174 Guri Nilsdatter Askvik: P25 mother = the item just created
 Q141488174	P25	LAST	S2600	"6000000005607373546"
 #   the item just created: P735 given name = Q33101446 Torborg
 LAST	P735	Q33101446
@@ -3403,8 +3572,8 @@ LAST	Amul	"Wiesendorff"
 Q141244224	P3448	Q125542470	S2600	"1609740"
 #   Q135480146 Christina Teet: P3448 stepparent = Q6082487 Nicolaus Iohannis Rudbeckius Jr.
 Q135480146	P3448	Q6082487	S2600	"284133423960001043"
-#   P3448 stepparent = Q141454401 Laurentius Nicolai Blackstadius
-Q135480146	P3448	Q141454401	S2600	"284133423960001043"
+#   P3448 stepparent = Q6007251 Laurentius Nicolai Blackstadius
+Q135480146	P3448	Q6007251	S2600	"284133423960001043"
 #   Q141244118 Nils Nilsson Midt-Fister Jr.: P3448 stepparent = Q141353676 Jakob Knutsen Jørstad
 Q141244118	P3448	Q141353676	S2600	"328122852240006970"
 #   P3448 stepparent = Q141198832 Lars Gunnbjørnsen Mjølhus
@@ -3439,8 +3608,12 @@ Q141283486	P3448	Q141290204	S2600	"6000000001169233297"
 Q141205909	P3448	Q141199891	S2600	"6000000001169235389"
 #   P3448 stepparent = Q141283100 Katrina Torbjørnsdatter Måge
 Q141205909	P3448	Q141283100	S2600	"6000000001169235389"
-#   Q141249739 Peter Chydenius: P3448 stepparent = Q141436695 Peter Henriksson Pelander
+#   Q141249739 Peter Chydenius: P40 child = Q11859944 Frans Jakob Chydenius
+Q141249739	P40	Q11859944	S2600	"6000000001190443752"
+#   P3448 stepparent = Q141436695 Peter Henriksson Pelander
 Q141249739	P3448	Q141436695	S2600	"6000000001190443752"
+#   Q141430130 Sofia Amalia Kellander: P40 child = Q11859944 Frans Jakob Chydenius
+Q141430130	P40	Q11859944	S2600	"6000000001190574251"
 #   Q7878975 Wo Deng 握登: P40 child = Q4499078 象 媯
 Q7878975	P40	Q4499078	S2600	"6000000001272026560"
 #   Q4499078 象 媯: P25 mother = Q7878975 Wo Deng 握登
@@ -3455,7 +3628,7 @@ Q198180	P40	Q4268330	S2600	"6000000001381123265"
 Q198180	P3448	Q1147250	S2600	"6000000001381123265"
 #   Q29201 Xuanyuan 有熊氏: P40 child = Q4302144 少典 (Shǎo Diǎn)
 Q29201	P40	Q4302144	S2600	"6000000001381274001"
-#   Q141488174 Guri Nilsdtr. Askvik: P3448 stepparent = Q141216613 Karen Henriksdotter Raunes Våga
+#   Q141488174 Guri Nilsdatter Askvik: P3448 stepparent = Q141216613 Karen Henriksdotter Raunes Våga
 Q141488174	P3448	Q141216613	S2600	"6000000001770188374"
 #   Q5575580 Gustaf Ture Bielke: P3448 stepparent = Q4945294 Ulrika Eleonora von Düben
 Q5575580	P3448	Q4945294	S2600	"6000000001801796027"
@@ -3511,18 +3684,24 @@ Q141488004	P40	Q141488003	S2600	"6000000003491933893"
 Q141488003	P25	Q141488004	S2600	"6000000003492064416"
 #   Q141487910 Axel Gabriel Eriksson Leijonhufvud: P26 spouse = Q141487928 Elsa Ebba Claesdottter Bielkenstierna
 Q141487910	P26	Q141487928	S2600	"6000000003903158482"
+#   Q131727109 Anna Troilia: P26 spouse = Q6007251 Laurentius Nicolai Blackstadius
+Q131727109	P26	Q6007251	S2600	"6000000005436567477"
 #   Q141488011 Ursula Bellander: P26 spouse = Q141487985 Nils Gökman
 Q141488011	P26	Q141487985	S2600	"6000000005441595007"
-#   Q141487959 Kari Oddsdtr. Foss: P40 child = Q141488006 Sissela Olsdatter Foss
+#   Q141487959 Kari Oddsdatter Foss: P40 child = Q141488006 Sissela Olsdatter Foss
 Q141487959	P40	Q141488006	S2600	"6000000005441682204"
 #   Q141487969 Magdalena Svendsdatter Hognestad: P26 spouse = Q141487997 Peder Jensen
 Q141487969	P26	Q141487997	S2600	"6000000005591056052"
-#   Q141488006 Sissela Olsdatter Foss: P25 mother = Q141487959 Kari Oddsdtr. Foss
+#   Q141488006 Sissela Olsdatter Foss: P25 mother = Q141487959 Kari Oddsdatter Foss
 Q141488006	P25	Q141487959	S2600	"6000000005609458314"
 #   Q141488172 Ulrika Christina Cronstedt af Fullerö: P26 spouse = Q141487994 Otto Johan Löwen
 Q141488172	P26	Q141487994	S2600	"6000000006127737792"
 #   Q141487994 Otto Johan Löwen: P26 spouse = Q141488172 Ulrika Christina Cronstedt af Fullerö
 Q141487994	P26	Q141488172	S2600	"6000000006127737796"
+#   Q141447245 Ulrika Freijtag: P40 child = Q123411329 Christoffer Ulrik Freijtag
+Q141447245	P40	Q123411329	S2600	"6000000006128083653"
+#   Q141450234 Johan Christoffer Freijtag: P40 child = Q123411329 Christoffer Ulrik Freijtag
+Q141450234	P40	Q123411329	S2600	"6000000006128083744"
 #   Q141487984 Nils Björnsson: P26 spouse = Q141488001 Sigrid Andersdotter
 Q141487984	P26	Q141488001	S2600	"6000000006590150248"
 #   Q141488001 Sigrid Andersdotter: P26 spouse = Q141487984 Nils Björnsson
@@ -3545,6 +3724,10 @@ Q141219054	P40	Q5613471	S2600	"6000000008178453589"
 Q141487963	P26	Q141487940	S2600	"6000000008309068745"
 #   Q141487940 Herman Gideon Jonatan de Rogier: P26 spouse = Q141487963 Katarina Thörner
 Q141487940	P26	Q141487963	S2600	"6000000008309068814"
+#   Q141440668 Ulrika Catharina Castorin: P40 child = Q121172577 Ulrika Charlotta Geijer
+Q141440668	P40	Q121172577	S2600	"6000000008331508306"
+#   Q5754581 Bengt Reinhold Geijer: P40 child = Q121172577 Ulrika Charlotta Geijer
+Q5754581	P40	Q121172577	S2600	"6000000008331521234"
 #   Q141487928 Elsa Ebba Claesdottter Bielkenstierna: P26 spouse = Q141487910 Axel Gabriel Eriksson Leijonhufvud
 Q141487928	P26	Q141487910	S2600	"6000000008467465707"
 #   Q141457259 Carin Magnusdotter: P26 spouse = Q141474059 Abraham Kula
@@ -3555,10 +3738,18 @@ Q141474059	P40	Q141487923	S2600	"6000000008978536291"
 Q141474059	P26	Q141457259	S2600	"6000000008978536291"
 #   Q141455107 Pagano Ebriaci, di Pisa: P40 child = Q7877879 Ugone Ebriaci di Pisa
 Q141455107	P40	Q7877879	S2600	"6000000009305030992"
+#   Q141225681 Anna Margareta von Walcker: P26 spouse = Q61278559 Didrik Henning Meijendorff von Yxkull till Virsbo
+Q141225681	P26	Q61278559	S2600	"6000000009813973540"
 #   Q6175446 Anders Sidner: P40 child = Q101422208 Anna Linnéa Elisabeth Bucht
 Q6175446	P40	Q101422208	S2600	"6000000012044161205"
 #   Q141419573 Elisabet Charlotta Edin: P26 spouse = Q140521178 Henrik Jakob Berlin
 Q141419573	P26	Q140521178	S2600	"6000000012044213797"
+#   Q141454304 Beata Christina Leijonhufvud: P40 child = Q61278559 Didrik Henning Meijendorff von Yxkull till Virsbo
+Q141454304	P40	Q61278559	S2600	"6000000013282017261"
+#   P26 spouse = Q124429892 Lage Meijendorff von Yxkull till Skattmansö
+Q141454304	P26	Q124429892	S2600	"6000000013282017261"
+#   Q141456409 Margaretha Olofsdotter Kenzelia: P26 spouse = Q16649272 Carl Genberg
+Q141456409	P26	Q16649272	S2600	"6000000014182255535"
 #   Q141488164 Jacob Walteri Guthræus: P26 spouse = Q141488162 Christina Anthelia
 Q141488164	P26	Q141488162	S2600	"6000000014547786440"
 #   Q141448460 Brita Unæa: P40 child = Q140521178 Henrik Jakob Berlin
@@ -3579,16 +3770,28 @@ Q140521240	P25	Q141448460	S2600	"6000000022324181158"
 Q4302144	P40	Q313336	S2600	"6000000026522778851"
 #   Q141487978 NN: P26 spouse = Q141487986 Olof Olofsson
 Q141487978	P26	Q141487986	S2600	"6000000028682440318"
+#   Q141442979 Lars Herman Wikblad: P40 child = Q20652942 Lars Herman Wikblad
+Q141442979	P40	Q20652942	S2600	"6000000031561325065"
+#   Q141436621 Catharina Margareta Amalia Wikblad: P40 child = Q6241170 Sven Herman Wikblad
+Q141436621	P40	Q6241170	S2600	"6000000031998285012"
+#   P26 spouse = Q20652942 Lars Herman Wikblad
+Q141436621	P26	Q20652942	S2600	"6000000031998285012"
 #   Q141314162 Hedvig Kristina Charlotta Norinder: P40 child = Q101422208 Anna Linnéa Elisabeth Bucht
 Q141314162	P40	Q101422208	S2600	"6000000033511536910"
 #   Q141487985 Nils Gökman: P26 spouse = Q141488011 Ursula Bellander
 Q141487985	P26	Q141488011	S2600	"6000000036860756971"
+#   Q141442957 Gustava Maria Wikblad: P40 child = Q20652942 Lars Herman Wikblad
+Q141442957	P40	Q20652942	S2600	"6000000068480360957"
 #   Q236972 Yuxiong: P40 child = Q4302144 少典 (Shǎo Diǎn)
 Q236972	P40	Q4302144	S2600	"6000000130191678854"
 #   Q313336 炎帝 (Yán Dì): P22 father = Q4302144 少典 (Shǎo Diǎn)
 Q313336	P22	Q4302144	S2600	"6000000130192002822"
 #   Q141442305 Herman Schlytern: P40 child = Q141487943 Herman Schlytern
 Q141442305	P40	Q141487943	S2600	"6000000136103471847"
+#   Q141352983 Adolf Fredrik von Hartmansdorff: P40 child = Q123652483 Christoffer Svante Von Hartmansdorff
+Q141352983	P40	Q123652483	S2600	"6000000174987897303"
+#   Q141456324 Barbara Christina von Hartmannsdorf: P40 child = Q123652483 Christoffer Svante Von Hartmansdorff
+Q141456324	P40	Q123652483	S2600	"6000000174987948084"
 #   Q141488206 Torkel Halvardsen Sinnes: P26 spouse = Q141488441 Astrid Knutsdatter Sinnes
 Q141488206	P26	Q141488441	S2600	"6000000178321476863"
 #   Q141488441 Astrid Knutsdatter Sinnes: P26 spouse = Q141488206 Torkel Halvardsen Sinnes
