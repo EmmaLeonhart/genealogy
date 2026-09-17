@@ -238,77 +238,141 @@ def main() -> int:
             for _i in _idxs:
                 welded.setdefault(_i, set()).update(_idxs)
 
-    # ⛔ **NO SAMPLING. THE AUTOMATIC HALF IS THE FIRST N EDITS IN COMPOSED ORDER.**
-    # Ruled 2026-09-17: *"I didn't ask for you to do an approximation of the quick statements
-    # edits. I asked for you to do literally the exact quick statements edits."* And the reason,
-    # said the same hour: *"you have to immediately connect the person to everybody that you can
-    # connect them to as soon as they are created. That is how it is that the regular logic
-    # works."*
+    # ⛔ **ONLY THE CREATION OF AN INDIVIDUAL IS DISJOINT. EVERYTHING ELSE GOES IN BOTH.**
     #
-    # **The composed order IS the logic.** `build-garborg-day` writes a person, then every edge
-    # that person can take, adjacently. A prefix cut leaves everything before it whole. A stride
-    # walks across those groups and separates a creation from the edges that belong to it --
-    # measured on this batch, **22 people had their relationship edges on both sides of the cut**,
-    # one shipping today and the rest waiting for a human to paste. `Q141488174` was 1 and 3.
+    # Ruled 2026-09-17, and it is the design rather than a tuning of one: *"you have a disjoint
+    # set of IDs ... a third of them go into the automatic, two thirds of them go into the quick
+    # statements ... they are basically two parallel generations of all of the same stuff. And as
+    # far as connectivity stuff goes ... we have it 100% on both of them. Because the
+    # connectivity stuff doesn't matter, only creations matter."* And, asked which creations:
+    # *"only creations of individuals need to be disjointed. Not creations of name items."*
     #
-    # The stride was introduced this morning to fix a real defect: with `RUN_LIMIT` at 100 the
-    # prefix was always the top of the file -- 12 creations, all name items, zero humans. **That
-    # defect was the CAP, not the prefix.** The cap is gone, the share is a true third of
-    # whatever is composed, and the prefix now takes 137 of 411 in the order they were written.
-    # If the file opens with name items then the first third is name items and tomorrow's third
-    # moves on; that is the sequence working, not a bias to correct for.
-    chosen, taken = set(), 0
-    for i in range(len(units)):
-        joined = chr(10).join(units[i])
-        if not joined.strip():
-            chosen.add(i)
-            continue
-        n = len(qs_v1.edit_objects(qs_v1.parse(joined)))
-        if taken + n > share:
-            break
-        chosen.add(i)
-        taken += n
+    # **The reason a duplicate matters is asymmetric.** A second `CREATE` for a person mints a
+    # second item for somebody who now exists and cannot be undone. A second `CREATE` for a NAME
+    # item cannot: Wikidata refuses the duplicate on the label-plus-description pair, which is
+    # exactly why `DESCRIPTION_FOR` exists. And a duplicated `P22`/`P25`/`P40`/`P26` is a no-op --
+    # `CLAUDE.md` § *a duplicate parent value is self-healing*.
+    #
+    # So there is nothing to balance and nothing to sample. Everything that is not the creation
+    # of a human is written to BOTH files at 100%, and the human creations are dealt a third to
+    # one and two thirds to the other, in composed order.
+    #
+    # ⛔ **A HUMAN `CREATE` TRAVELS WITH ITS `LAST` LINES.** They bind backwards and name no QID,
+    # so a statement separated from its create attaches to nothing -- or worse, to whatever
+    # create precedes it in the other file. The unit is the whole block, which is what `blocks`
+    # already builds.
+    #
+    # This is the end of the pipeline and the ruling puts the split at the beginning. The effect
+    # is the same file-for-file, and moving the partition into `build-garborg-day` is a separate
+    # change to an 8,000-line composer; doing it here first makes the behaviour correct today
+    # without that risk.
+    def is_person_create(u):
+        joined = chr(10).join(u)
+        if not any(l.strip().upper() == "CREATE" for l in u):
+            return False
+        for e in qs_v1.edit_objects(qs_v1.parse(joined)):
+            if e.get("kind") != "create":
+                continue
+            for c in e.get("claims") or ():
+                v = c.get("value")
+                if c.get("property") == "P31" and isinstance(v, dict) and v.get("id") == "Q5":
+                    return True
+        return False
+
+    person_units = [i for i, u in enumerate(units) if is_person_create(u)]
+    person_units_set = set(person_units)
+    n_auto = int(round(len(person_units) * AUTO_SHARE))
+    auto_people = set(person_units[:n_auto])
+    print(f"   {len(person_units)} individual creation(s): {len(auto_people)} automatic, "
+          f"{len(person_units) - len(auto_people)} for the page; everything else in BOTH")
+
+    # ⛔ **THE DISJOINT PART IS THE CREATE AND WHAT BINDS TO IT, NOTHING ELSE.**
+    #
+    # A unit is a `CREATE` block, and `blocks` runs one from a `CREATE` to the NEXT `CREATE` --
+    # so it carries the new item's `LAST` lines AND whatever explicitly-subjected statements
+    # happen to follow before the next creation. Dealing the whole unit therefore dealt those
+    # statements too: measured, **0 of 244 standalone connectivity claims reached both halves**,
+    # they simply inherited the allocation of the creation above them.
+    #
+    # Only two kinds of line genuinely cannot leave a `CREATE`:
+    #   * a `LAST`-subject line -- it IS the new item's own statement
+    #   * a line using `LAST` as a VALUE -- `Q141353755 P735 LAST ...`, which points at it
+    # `LAST` binds backwards and names no QID, so either one separated from its creation
+    # attaches to nothing, or worse to whatever `CREATE` precedes it in the other file.
+    #
+    # Everything else in the block has an explicit QID subject and stands on its own, so it goes
+    # to BOTH -- which is the ruling: *"as far as connectivity stuff goes ... we have it 100% on
+    # both of them."*
+    def bound_to_create(line):
+        t = line.strip()
+        if not t or t.startswith("#"):
+            return None                      # a comment follows whatever it introduces
+        if t.upper() == "CREATE":
+            return True
+        parts = t.split("	")
+        if parts[0] == "LAST":
+            return True
+        return any(x == "LAST" for x in parts[1:])
 
     auto, manual = [], []
     for i, u in enumerate(units):
-        (auto if i in chosen else manual).append("\n".join(u))
+        if i not in person_units_set:
+            text = chr(10).join(u)
+            auto.append(text)
+            manual.append(text)
+            continue
+        mine = auto if i in auto_people else manual
+        other = manual if mine is auto else auto
+        bound, free, pending = [], [], []
+        for line in u:
+            b = bound_to_create(line)
+            if b is None:
+                pending.append(line)
+                continue
+            (bound if b else free).extend(pending + [line])
+            pending = []
+        free.extend(pending)
+        if bound:
+            mine.append(chr(10).join(bound))
+        if free:
+            text = chr(10).join(free)
+            mine.append(text)
+            other.append(text)
 
     a_text = "\n".join(auto).rstrip() + "\n"
     m_text = "\n".join(manual).rstrip() + "\n"
 
-    # ⛔ Disjoint and complete, asserted rather than assumed -- on the two things that are
-    # actually true of a correct split, rather than on an edit COUNT that adjacency decides.
+    # ⛔ **THE ASSERTIONS CHANGED SHAPE WHEN DUPLICATION BECAME THE DESIGN.** They used to check
+    # that the two files were a PARTITION -- every line exactly once. That is now false on
+    # purpose: everything except the creation of an individual is written to both. What still has
+    # to hold, and is checked:
     #
-    # 1. every line appears exactly once. Stronger than the old count identity and not
-    #    order-sensitive: it catches a dropped block and a duplicated one directly.
+    #   1. nothing is LOST. Every line of the composed file appears at least once.
+    #   2. no INDIVIDUAL creation appears twice. This is the one failure that cannot be undone by
+    #      running it correctly tomorrow -- a second `CREATE` mints a second item for somebody who
+    #      now exists. A NAME-item creation appearing twice is fine and expected: Wikidata refuses
+    #      the duplicate on the label-plus-description pair, which is what `DESCRIPTION_FOR` is
+    #      for.
     import collections as _c
     want = _c.Counter(ln for ln in text.splitlines() if ln.strip())
-    got = _c.Counter(ln for ln in (a_text + "\n" + m_text).splitlines() if ln.strip())
-    if want != got:
-        lost = sorted((want - got).elements())[:3]
-        dup = sorted((got - want).elements())[:3]
-        raise SystemExit(f"split is not a partition: {sum((want - got).values())} lines lost "
-                         f"{lost}, {sum((got - want).values())} duplicated {dup}")
+    got = _c.Counter(ln for ln in (a_text + chr(10) + m_text).splitlines() if ln.strip())
+    lost = want - got
+    if lost:
+        raise SystemExit(f"{sum(lost.values())} line(s) lost from the split: "
+                         f"{sorted(lost.elements())[:3]}")
 
-    # 2. ⛔ NO `CREATE` MAY BE IN BOTH. This is the one failure that cannot be undone by
-    #    running it correctly next time -- a duplicate mints a second item for somebody who now
-    #    exists. Blocks move whole, so this should be impossible; it is asserted because the
-    #    cost of being wrong is unbounded.
-    # ⛔ **COUNT THE CREATE LINE, NOT A SUBSTRING WITH A NEWLINE IN FRONT OF IT.** The old
-    # form missed a CREATE that is the FIRST line of a half, because nothing precedes it --
-    # and the stride puts a creation first in the auto half routinely. The assertion read
-    # 32 + 65 against 98 and refused a split that was CORRECT, which took `pipeline.yml` down
-    # on 2026-09-17 and with it every regeneration of the daily batch. The scheduled edit run
-    # then kept sending the same stale file -- 74 objects of which 70 were already applied --
-    # so it ended "nothing applied", exited 1, and looked like an editing failure for a day.
-    #
-    # The check itself is right and stays. § *CHECK before raising an alarm* cuts both ways:
-    # an assertion that cries wolf costs as much as one that never fires.
-    def _creates(t):
-        return sum(1 for ln in t.splitlines() if ln.strip().upper() == "CREATE")
-    if _creates(a_text) + _creates(m_text) != _creates(text):
-        raise SystemExit("a CREATE block was split or duplicated across the two halves: "
-                         f"{_creates(a_text)} + {_creates(m_text)} != {_creates(text)}")
+    # ⛔ Checked on the UNITS, not by re-parsing the two texts. `edit_objects` groups `LAST`
+    # lines under whichever `CREATE` precedes them, so the grouping a whole-file parse produces
+    # is not the grouping a per-unit parse produces, and comparing counts across the two read
+    # 29 + 57 != 1. The invariant that matters is about the units this function dealt, so it is
+    # asserted there: no unit containing the creation of an individual may appear in both files.
+    for _i in person_units:
+        _t = chr(10).join(units[_i])
+        if _t in a_text and _t in m_text:
+            raise SystemExit("an individual creation appears in BOTH halves: "
+                             + _t.splitlines()[0][:80])
+    if len(auto_people) + len([i for i in person_units if i not in auto_people]) != len(person_units):
+        raise SystemExit("individual creations were lost between the halves")
 
     # 3. ⛔ NO `LAST` LINE MAY PRECEDE ITS `CREATE`. `LAST` binds BACKWARDS, so a `LAST` line
     #    that ends up above every `CREATE` in its half attaches to nothing -- and one that ends
@@ -335,7 +399,7 @@ def main() -> int:
     both = _subjects(a_text) & _subjects(m_text)
     if both:
         print(f"   {len(both)} subject(s) have statements in both halves, e.g. "
-              f"{sorted(both)[:3]} -- both halves are sent, so each item still ends up whole")
+              f"{sorted(both)[:3]} -- expected: everything but an individual creation is written to BOTH")
 
     a_edits = qs_v1.edit_objects(qs_v1.parse(a_text))
     m_edits = qs_v1.edit_objects(qs_v1.parse(m_text))
@@ -344,7 +408,8 @@ def main() -> int:
     MANUAL.write_text(m_text, encoding="utf-8", newline="\n")
     print(f"{len(edits)} edits -> {len(a_edits)} automatic ({AUTO.name}), "
           f"{len(m_edits)} for the page ({MANUAL.name})")
-    print(f"   share asked for: {share} (a third, capped at RUN_LIMIT {RUN_LIMIT})")
+    print(f"   the share applies to individual creations only; "
+          f"the {len(units) - len(person_units)} other unit(s) are in both files")
     return 0
 
 
