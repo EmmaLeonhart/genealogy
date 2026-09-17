@@ -96,6 +96,21 @@
  *              which goes straight into `python scripts/stamp-attempts.py < <file>`
  *     stop     window.__pathrun.stop()
  *
+ * ## ⛔ RESTARTING A LOOP THAT STALLED MID-BATCH: RESUME, DO NOT RE-PASTE
+ *
+ * The RUN block sets `R.i = 0`. Re-pasting it over a batch that is half done therefore re-asks
+ * everyone already done in it -- 2,420 people, on the run this was written for. The cursor is in
+ * `localStorage.pathrun_cursor` and survives, so a mid-batch restart is:
+ *
+ *     R.gen = (R.gen || 0) + 1;                                  // the old loop stands down
+ *     R.i = parseInt(localStorage.getItem("pathrun_cursor"), 10);
+ *     R.running = true; R.lastAt = Date.now(); R.finished = null;
+ *     R.go();
+ *
+ * `R.gen` is what makes this safe: the stalled loop is parked inside an `await`, and when that
+ * finally settles it sees the generation has moved and stops instead of driving the cursor
+ * alongside the new one.
+ *
  * ## ⛔ IT HAS TO RECORD WHAT IT ASKED, AND FOR ~9,500 REQUESTS IT DID NOT
  *
  * Emma, 2026-09-16: *"why the fuck are old qids being requested? Was it not saved what was
@@ -214,16 +229,45 @@ window.__pathrun = window.__pathrun || {};
       for (const which of ["blood", "inlaw"]) {
         if (!R.running || R.gen !== mine) break;
         try {
-          const res = await fetch(R.tpl[which].split("%ID%").join(id),
-                                  { credentials: "include", redirect: "follow" });
-          const body = await res.text();
+          /* ⛔ **A FETCH WITH NO TIMEOUT HANGS THE WHOLE CAMPAIGN, SILENTLY.** Measured
+           * 2026-09-17: one request never settled, and because the loop was parked inside its
+           * `await` the flags kept saying the run was healthy -- `running` true, `finished`
+           * null, `i` frozen -- for 13 minutes until the next check. `health()` caught it only
+           * because `alive` is time-based; no counter could have.
+           *
+           * The record before the hang was `queued/error`, so the endpoint was already refusing
+           * one of the pair. A browser `fetch` has no default timeout at all: without an
+           * AbortController the promise can stay pending indefinitely.
+           *
+           * 20s is well past a normal reply (these answer in well under a second) and well
+           * under the 120s `alive` allows, so a timeout is recorded and the loop moves on
+           * rather than the run dying between two checks. */
+          const ctl = new AbortController();
+          const timer = setTimeout(() => ctl.abort(), 20000);
+          let res, body;
+          try {
+            res = await fetch(R.tpl[which].split("%ID%").join(id),
+                              { credentials: "include", redirect: "follow", signal: ctl.signal });
+            body = await res.text();
+          } finally { clearTimeout(timer); }
           // ⛔ 202 and 200 are DIFFERENT ANSWERS AND BOTH ARE SUCCESS. See the header.
           if (res.status === 202) { R.queued++; R.ok++; outcome.push("queued"); }
           else if (res.status === 200 && /not-found/.test(body)) { R.notfound++; R.ok++; outcome.push("notfound"); }
           else if (res.status >= 200 && res.status < 300) { R.found++; R.ok++; outcome.push("found"); }
           else { R.fail++; outcome.push("http" + res.status); }
           R.lastAt = Date.now();
-        } catch (e) { R.fail++; outcome.push("error"); }
+        } catch (e) {
+          R.fail++;
+          /* `timeout` and `error` are kept apart: a timeout is this guard firing, an error is
+           * the request failing on its own. Collapsing them would hide whether the guard is
+           * doing anything. */
+          outcome.push(e && e.name === "AbortError" ? "timeout" : "error");
+          /* ⛔ STAMP IT HERE TOO. `lastAt` was only touched on the success path, so a run
+           * failing every request looked STALLED rather than failing -- `alive:false` with
+           * `fail` climbing, which reads as "the tab died" and sends the next check off to
+           * restart something that is actually running. */
+          R.lastAt = Date.now();
+        }
         await new Promise(s => setTimeout(s, 1100 + Math.random() * 700));
       }
       R.i++;
