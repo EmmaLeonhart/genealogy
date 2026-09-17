@@ -70,6 +70,39 @@ GIVEN_NAME = "P735"          # given name
 FAMILY_NAME = "P734"         # family name
 PATRONYM = "P5056"           # patronym or matronym
 SERIES_ORDINAL = "P1545"     # series ordinal
+
+
+#: Qualifier properties whose value is a STRING and must therefore be quoted in QuickStatements.
+#: `P1545` *series ordinal* is the only one the name model emits; everything else it qualifies
+#: with is an item.
+STRING_QUALIFIERS = (SERIES_ORDINAL,)
+
+
+def qualifier_value(prop, value):
+    """A qualifier value as QuickStatements needs it written.
+
+    ⛔ **A GUARD IN ONE EMITTER IS NOT A GUARD, AND THIS IS THAT RULE'S OWN BUG.**
+    `CLAUDE.md` says it in as many words -- *there are two emitters; rules live in `namemodel`* --
+    and the quoting lived in only one of them. `build-garborg-day.py` wrote
+    `P1545<TAB>"2"`; `build-garborg-name-items.py` wrote the qualifiers raw and produced
+
+        Q141457280	P735	LAST	P1545	2	P3831	Q245025	S2600	"6000000007367715355"
+
+    **One unquoted character broke the whole batch.** `qs_v1` refuses `2` as a value, so
+    `qs_v1.parse` failed on the FILE, so `split-daily-batch.py` raised before writing anything --
+    and the auto/manual split silently stopped updating, leaving the scheduled run sending a
+    stale file. A parse error in one line of 3,482 took out the whole day's composition.
+
+    Idempotent: a value already quoted is returned untouched, so a caller that used to quote can
+    route through here without doubling up.
+    """
+    v = str(value)
+    if prop not in STRING_QUALIFIERS:
+        return v
+    if len(v) >= 2 and v[0] == '"' and v[-1] == '"':
+        return v
+    return '"' + v + '"'
+
 PREFERRED_REASON = "P7452"   # reason for preferred rank
 USUAL_FORENAME = "Q3409033"  # usual forename
 HAS_ROLE = "P3831"           # object of statement has role

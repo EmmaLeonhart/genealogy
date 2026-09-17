@@ -21,6 +21,16 @@ batch inventory nothing regenerated. So:
 Together they are exactly the input, in order, with no edit in both and none dropped — which
 this script asserts before writing anything.
 
+## ⛔ It is a STRIDE, not a prefix
+
+The batch is not homogeneous and the cut cannot be a prefix. Hand identifications lead the file,
+name items follow, and person creations sit below both -- so taking the first third gave the
+scheduled run every identification, some surnames, and **not one human**, every day. Measured
+2026-09-17: twelve creations in the auto half and all twelve were name items.
+
+Every `step`-th block goes to the auto half instead, `step` being `round(1 / AUTO_SHARE)`. That
+samples each kind in proportion, stays deterministic, and still never splits a `CREATE` block.
+
 ## Why a third
 
 The caps were raised 50% on 2026-09-14 and CI/CD takes a third of the result, so the share it
@@ -98,26 +108,163 @@ def main() -> int:
     share = min(math.ceil(len(edits) * AUTO_SHARE), RUN_LIMIT)
 
     bs = blocks(text)
-    # Walk blocks until the auto half holds `share` edits. A block is never split.
-    auto, manual, taken = [], [], 0
+    # ⛔ **A PREFIX IS NOT A THIRD, AND FOR DAYS IT MEANT CI/CD CREATED NOBODY.**
+    #
+    # This walked blocks in file order and stopped once the auto half held `share` edits, so the
+    # automatic half was simply the TOP of the file. The batch is not homogeneous: the hand
+    # identifications lead it by design -- *"These lead the file: the Geni id is the FIRST edit on
+    # any individual"* -- then the name items, and the person creations sit below both. The cut
+    # therefore landed above every `CREATE` of a human, every single day.
+    #
+    # Measured 2026-09-17: `wikidata-garborg-day-auto.txt` held **12 creations and all twelve were
+    # name items** -- `Kristiernsdotter`, `Næsmoen`, `Petersdotter` -- against 98 creations in the
+    # full batch. Emma: *"why the fuck are you not creating people"* and *"It is not creating
+    # anything"*. The scheduled run had been making surnames and no humans.
+    #
+    # So the auto half is taken as a STRIDE across the whole file rather than a prefix: every
+    # `step`-th block, which samples identifications, name items and creations in proportion.
+    # Deterministic, and a block still moves whole -- `LAST` binds backwards inside a block and
+    # nothing here splits one.
+    # ⛔ **THE STRIDE IS OVER SUBJECTS, NOT BLOCKS.** `qs_v1.edit_objects` groups CONSECUTIVE
+    # lines with the same subject into one edit, so striding over raw blocks cuts an item's
+    # statements in half and the two halves then count as two edits: the completeness assertion
+    # came back `83 + 266 != 347` on the first attempt, which is the same item counted twice
+    # rather than anything lost. Worse than the count, it would send a person's `P735` in the
+    # morning and leave their `P734` on the web page.
+    #
+    # So consecutive blocks about the same subject are welded into one unit first, and the
+    # stride runs over units.
+    def subject_of(block):
+        for line in block:
+            t = line.strip()
+            if not t or t.startswith("#"):
+                continue
+            if t.upper() == "CREATE":
+                return None                  # a creation is its own unit, always
+            return t.split("\t", 1)[0]
+        return ""                            # comment-only: belongs with whatever it precedes
+
+    def last_subject_of(block):
+        """The subject of the LAST statement line in a block.
+
+        ⛔ Not the first. A `CREATE` block runs to the next `CREATE`, so it carries the new
+        item's `LAST` lines AND the bearer lines that point at it -- `Q141353755 P735 LAST ...`
+        -- and those end the block under a different subject. Comparing first subjects left one
+        item straddling the cut and the assertion came back one over.
+        """
+        for line in reversed(block):
+            t = line.strip()
+            if not t or t.startswith("#") or t.upper() == "CREATE":
+                continue
+            return t.split("	", 1)[0]
+        return None
+
+    units, cur, cur_tail = [], [], None
     for b in bs:
-        joined = "\n".join(b)
-        n = len(qs_v1.edit_objects(qs_v1.parse(joined))) if joined.strip() else 0
-        if taken < share:
-            auto.append(joined)
-            taken += n
+        subj = subject_of(b)
+        # A comment-only run joins the unit it introduces rather than ending one; a block whose
+        # first subject continues the previous unit's last subject is the same item still.
+        same = cur and subj is not None and (subj == "" or subj == cur_tail)
+        if same:
+            cur.extend(b)
         else:
-            manual.append(joined)
+            if cur:
+                units.append(cur)
+            cur = list(b)
+        t = last_subject_of(b)
+        if t is not None:
+            cur_tail = t
+    if cur:
+        units.append(cur)
+
+    # \u26d4 **THE STRIDE IS OVER UNITS, AND IT FILLS GREEDILY.**
+    #
+    # An earlier attempt welded every unit that shares a subject into one group so that no
+    # subject could straddle the cut. That constraint is too strong for this data and the reason
+    # is structural: a person bears several name items, so the name-item `CREATE` blocks chain
+    # through their shared bearer lines and **all 98 creations collapse into a single group**.
+    # One group cannot fit under the share, so the automatic half came out at 14 lines and zero
+    # creations -- worse than the prefix it replaced.
+    #
+    # It was also the wrong property to enforce. The danger this script exists for is a
+    # DUPLICATED `CREATE`, which mints a second item for somebody who now exists and cannot be
+    # undone; that is guaranteed by the line-partition assertion below. A subject whose
+    # statements land in both halves is untidy -- half sent at 08:07, half pasted later -- but
+    # both halves DO get sent and the item ends up whole. So it is counted and reported, not
+    # refused.
+    step = max(1, round(1.0 / AUTO_SHARE))
+    chosen, taken = set(), 0
+    # Stride first, so the auto half samples identifications, name items and creations alike
+    # rather than taking the top of the file; then fill any remaining room in order.
+    for order_pass in (range(0, len(units), step), range(len(units))):
+        for i in order_pass:
+            if i in chosen:
+                continue
+            joined = "\n".join(units[i])
+            if not joined.strip():
+                continue
+            n = len(qs_v1.edit_objects(qs_v1.parse(joined)))
+            if n and taken + n <= share:
+                chosen.add(i)
+                taken += n
+
+    auto, manual = [], []
+    for i, u in enumerate(units):
+        (auto if i in chosen else manual).append("\n".join(u))
 
     a_text = "\n".join(auto).rstrip() + "\n"
     m_text = "\n".join(manual).rstrip() + "\n"
 
-    # ⛔ Disjoint and complete, asserted rather than assumed.
+    # ⛔ Disjoint and complete, asserted rather than assumed -- on the two things that are
+    # actually true of a correct split, rather than on an edit COUNT that adjacency decides.
+    #
+    # 1. every line appears exactly once. Stronger than the old count identity and not
+    #    order-sensitive: it catches a dropped block and a duplicated one directly.
+    import collections as _c
+    want = _c.Counter(ln for ln in text.splitlines() if ln.strip())
+    got = _c.Counter(ln for ln in (a_text + "\n" + m_text).splitlines() if ln.strip())
+    if want != got:
+        lost = sorted((want - got).elements())[:3]
+        dup = sorted((got - want).elements())[:3]
+        raise SystemExit(f"split is not a partition: {sum((want - got).values())} lines lost "
+                         f"{lost}, {sum((got - want).values())} duplicated {dup}")
+
+    # 2. ⛔ NO `CREATE` MAY BE IN BOTH. This is the one failure that cannot be undone by
+    #    running it correctly next time -- a duplicate mints a second item for somebody who now
+    #    exists. Blocks move whole, so this should be impossible; it is asserted because the
+    #    cost of being wrong is unbounded.
+    if a_text.count("\nCREATE") + m_text.count("\nCREATE") != text.count("\nCREATE"):
+        raise SystemExit("a CREATE block was split or duplicated across the two halves")
+
+    # 3. ⛔ NO `LAST` LINE MAY PRECEDE ITS `CREATE`. `LAST` binds BACKWARDS, so a `LAST` line
+    #    that ends up above every `CREATE` in its half attaches to nothing -- and one that ends
+    #    up under the WRONG `CREATE` silently writes a person's name onto another item. This is
+    #    the failure the block rule exists to prevent, and it is now checked rather than trusted.
+    for name, txt in (("auto", a_text), ("manual", m_text)):
+        seen_create = False
+        for ln in txt.splitlines():
+            t = ln.strip()
+            if not t or t.startswith("#"):
+                continue
+            if t.upper() == "CREATE":
+                seen_create = True
+                continue
+            if t.split("	", 1)[0] == "LAST" and not seen_create:
+                raise SystemExit(f"{name} half has a LAST line before any CREATE: {t[:70]}")
+
+    # 4. A subject in both halves is reported, not refused: both halves are sent, so the item
+    #    ends up whole. See the note above the stride.
+    def _subjects(txt):
+        return {ln.split("\t", 1)[0] for ln in txt.splitlines()
+                if ln.strip() and not ln.lstrip().startswith("#")
+                and ln.strip().upper() != "CREATE" and "\t" in ln} - {"LAST"}
+    both = _subjects(a_text) & _subjects(m_text)
+    if both:
+        print(f"   {len(both)} subject(s) have statements in both halves, e.g. "
+              f"{sorted(both)[:3]} -- both halves are sent, so each item still ends up whole")
+
     a_edits = qs_v1.edit_objects(qs_v1.parse(a_text))
     m_edits = qs_v1.edit_objects(qs_v1.parse(m_text))
-    if len(a_edits) + len(m_edits) != len(edits):
-        raise SystemExit(f"split lost or duplicated edits: {len(a_edits)} + {len(m_edits)} "
-                         f"!= {len(edits)}")
 
     AUTO.write_text(a_text, encoding="utf-8", newline="\n")
     MANUAL.write_text(m_text, encoding="utf-8", newline="\n")

@@ -73,6 +73,7 @@ csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
+    qualifier_value,
     PATRONYMIC_CLASS, PATRONYMIC_PARTS, classify_fields, load_plan, statements_for,
     store_name_item)
 from live_name_items import (LookupUnavailable,                   # noqa: E402
@@ -866,7 +867,10 @@ def main():
             for prop, value, quals in sts:
                 if value != "LAST":
                     continue
-                tail = "".join(f"\t{qp}\t{qv}" for qp, qv in quals)
+                # ⛔ THE QUALIFIER VALUES ARE NOT RAW. A `P1545` series ordinal is a string and
+                # QuickStatements needs it quoted; emitting `2` here broke the parse of the
+                # entire daily batch and stopped the auto/manual split running at all.
+                tail = "".join(f"\t{qp}\t{qualifier_value(qp, qv)}" for qp, qv in quals)
                 lines.append(f'{qid}\t{prop}\tLAST{tail}\tS2600\t"{geni_id}"')
                 linked_now += 1
         lines.append("")

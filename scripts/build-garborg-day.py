@@ -48,6 +48,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
+    qualifier_value,
     aliases_for, classify, classify_fields, load_plan,
     names_a_relative as _namemodel_names_a_relative,
     drop_description_suffix, generation_suffix_key,
@@ -2331,9 +2332,10 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
         # "missing nickname" rows.
         parts = [f"LAST	{prop}	{value}"]
         for qprop, qvalue in quals:
-            # A series ordinal is a string; everything else here is an item.
-            qv = f'"{qvalue}"' if qprop == "P1545" else qvalue
-            parts.append(f"{qprop}	{qv}")
+            # The rule lives in `namemodel` -- § *A GUARD IN ONE EMITTER IS NOT A GUARD*. It used
+            # to be inline here and nowhere else, which is how an unquoted ordinal reached the
+            # batch from the other emitter.
+            parts.append(f"{qprop}	{qualifier_value(qprop, qvalue)}")
         out.append("	".join(parts))
     notes.extend(why)
     return out, notes
