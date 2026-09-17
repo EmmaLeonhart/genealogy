@@ -75,9 +75,10 @@
  *     scraped            the family block was read. `tsv` is the file to write.
  *     private_profile    Geni declines to show the family. A FINAL answer for that person.
  *     no_family_block    nothing found on a page that should have had something. Look again.
- *     timeout            the wait ran out. Usually a PRIVATE profile, whose page carries no
- *                        family container at all, so the extension's own 25 s wait expires
- *                        before it can say `private_profile`. An attempt either way.
+ *     private_profile    Geni will not show this one. Detected from the URL before anything
+ *                        else, because the redirect to `/people/private/<id>` has already
+ *                        happened and waiting 60 s to discover it is a minute per person.
+ *     timeout            the wait ran out on a page that is not private. An attempt either way.
  *     blocked            ⛔ A CAPTCHA. It scrapes as a person with no family and reports
  *                        success, which is why `GC.blocked()` is checked before anything else.
  *                        STOP THE RUN on this one; it does not get better by continuing.
@@ -95,6 +96,23 @@ window.__sibscrape.one = async function (id, waitMs) {
 
   if (!root.getAttribute("data-geni-collector")) {
     return { geni_id: id, state: "no_extension" };
+  }
+
+  /* ⛔ **A PRIVATE PROFILE IS ANSWERED BY THE URL, FOR FREE, AND WAITING ON ONE COSTS A MINUTE.**
+   * Geni redirects `/people/x/<id>` to `/people/private/<id>` when it will not show the profile,
+   * and that page carries no family container at all -- so `GC.runFamily` sits out its own 25 s
+   * wait, this file sits out the rest of its 60 s, and the answer that comes back is `timeout`,
+   * which says "ask again later" about a person whose answer is final.
+   *
+   * Measured: three of the first twenty were private, and each one spent a minute of the sitting
+   * to record the wrong state. The redirect has already happened by the time this runs. */
+  if (/\/people\/private\//.test(location.pathname)) {
+    const rec = { geni_id: String(id), state: "private_profile", at: new Date().toISOString() };
+    let h = [];
+    try { h = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { h = []; }
+    h.push(rec);
+    try { localStorage.setItem(KEY, JSON.stringify(h)); } catch (e) {}
+    return { geni_id: rec.geni_id, state: rec.state, parents: 0, siblings: 0, held: h.length };
   }
 
   delete root.dataset.geniCollectorResult;
