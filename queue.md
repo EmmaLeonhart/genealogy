@@ -383,3 +383,34 @@ first item.
   `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
   `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
   This is the last one open.
+
+## ⛔ MAKE THE REPO MINIMALIST. NOT YET — SEE THE PIPELINE RUN FIRST
+
+Ruled 2026-09-17: *"this repo ought to be extremely minimalist. Smallest it can possibly be."*
+And immediately after, on being shown the first measurement: *"Hold the fuck off on this. Add the
+item to the queue to work on making it more minimalist. I want to actually see the repo editing
+in the current state before you torch the current state."*
+
+**So this is queued, not started.** The current state has to be observed running before anything
+is removed — a thing nobody has watched work is a thing nobody can tell was load-bearing.
+
+What is known so far, and it is one measurement, not a plan:
+
+    scripts    342 .py/.js
+    reports  1,805 files
+    docs        41
+    workflows   12
+
+`CLAUDE.md` § *LEGACY CODE IS DELETED* already gives the test — *does the pipeline read this*,
+not *might this be useful* — so the work is applying it, not deciding it.
+
+⛔ **AND THE OBVIOUS FIRST CUT IS NOT OBVIOUS.** The roster TSVs look like the thing to scrub now
+that `5feda3d6` folded all 441 pairs into the identifications GEDCOM — but they are still READ,
+by `build-qid-links-gedcom.py`, so by the repo's own test they are not legacy. Making them legacy
+means moving their pairs into the generator's constant first. That is a decision with an order to
+it, which is exactly why it is queued rather than done.
+
+⛔ **NOTHING IN THE PIPELINE IS TRIVIAL**, ruled the same day: *"even if I tell you something is
+trivial, it is probably not trivial"*, and *"if there's anything in the pipeline that makes it
+slower, that is intentional."* A minimalism pass is the most dangerous possible shape for that
+failure, so it does not start until the pipeline has been watched end to end in its current form.
