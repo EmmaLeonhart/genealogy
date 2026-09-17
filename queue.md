@@ -495,3 +495,7 @@ first item.
   `build-missing-reciprocals`, `build-qid-link-p2600`, `build-label-corrections` and
   `build-sibling-batch` deleted by instruction, `build-from-diff` given its own review item.
   This is the last one open.
+
+- The 39 Jan-1 pairs that already carry a live `P2600` on Wikidata — NEEDS-DECISION: remove them
+  now, or leave them standing because they become legitimate on 2027-01-01 anyway. Listed by
+  query in the 2026-09-17 devlog entry; the emission itself is closed (`93ba24bc`).

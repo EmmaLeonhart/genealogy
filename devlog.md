@@ -44804,3 +44804,36 @@ export as occupying the slot.
 **Why the clicks missed, which cost several attempts today**: `devicePixelRatio` is **1.25** on
 this machine. Click coordinates are device pixels and `getBoundingClientRect` is CSS pixels, so
 every rect-derived coordinate landed short by a fifth.
+
+## 2026-09-17 — a hand identification never leaves this machine
+
+Reported from the contributions page: `Yi Un (Q484866)`, `Emperor Ku (Q721756)`, `Huaxu
+(Q9511624)` and `Imperial Consort Sunheon (Q7214248)` were each given a `P2600` at 10:39 by run
+`35211492862`. Korean and Chinese entry points, nowhere near Arne's subgraph, and every one of
+them a row in `reports/manual-identifications.csv` — the file whose whole point is that it is
+**local**.
+
+Ruled, plainly: *"manual identifications should not occur non-locally either"*.
+
+**Two gates had already been written today and both were the wrong shape.** `37275ef8` withheld
+rows whose note says *local only / never emit / gedcom entry point*; a second gate withheld pairs
+in `build-qid-links-gedcom.PAIRS`. Each is a rule about **which rows are safe to emit**, and the
+answer is none of them. The rows meant for Wikidata travel through
+`exports/post-merge/wikidata-qid-links.ged` and become entry points on **2027-01-01**.
+
+**And a generator fix does not unship an artifact.** Both gates were committed before the run;
+the run sent `reports/wikidata-garborg-day-auto.txt`, composed before either existed. That is the
+mechanism of all three emissions today, and it is why the rule now sits in two places:
+
+* `build-garborg-day.manual_p2600_lines` emits **nothing**, and still prints what it withheld.
+* `wikidata-edit-run._refuse_hand_identifications` reads the CSV itself at `load_batch` — the one
+  point every `.qs`, `.txt` and `.json` batch passes through — and drops any edit asserting a
+  `P2600` for a Geni id the file names, whoever composed the batch. 1,647 ids covered.
+
+Measured on the three committed halves before the fix: 26 such lines in the auto half, 5 in the
+manual half, 5 in the full batch. All bare `Qxxx<TAB>P2600<TAB>"id"` with explicit QIDs, so no
+`CREATE` was split and no `LAST` lost its referent. Stripped in `165bd06f`, gated in `93ba24bc`.
+
+Queried live afterwards: **39 of the 68 Jan-1 pairs already carry the `P2600` on Wikidata**,
+accumulated over several days rather than in one run. What to do with those is Emma's call and is
+in `queue.md`.
