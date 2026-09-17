@@ -44758,3 +44758,49 @@ afraid that you might try to measure and waste a bunch of time on. I don't give 
 you trying to measure it."* The effect is real and expected — a path found for one person drags
 in everyone on the chain — and counting it is not wanted. Removed from the queue rather than left
 sitting there to be picked up by a later session that reads it as work.
+
+## 2026-09-17 — the last unmodelled relationship, and Geni simply has no engagement
+
+`fiancé`/`fiancée` was the only relation left with no attested representation. `ENGA` occurs zero
+times in the corpus, so the pipeline emitted a couple with no marriage event and called it a
+guess.
+
+**The guess was right, and it is now attested.** Read off
+`exports/isolate-exports/export-Forest-6000000227787716121.ged`, the `Forest` from `Nn от Осетия`
+— the ancestor Emma created, because § *never ever even attempt to export these people directly*
+and all eleven bearers are denied.
+
+**Geni has no engagement concept at all.** 5,000 people, **1,138 `MARR` events, zero `ENGA`**.
+Four of the eleven bearers are in the file and every one carries at least one `FAM` with a partner
+and no `MARR`.
+
+**The cap does not weaken this.** The ball came back at 5,000 and is truncated by definition, but
+truncation only removes people, and a family whose other member fell outside is still emitted with
+the member it has — Richenza has three `FAM` records holding only `WIFE`. An `ENGA` on a clipped
+couple would still have shown. None did.
+
+**So `fiancé` and `partner` are indistinguishable in Geni's GEDCOM**, both being a `FAM` with no
+`MARR`. That is Geni's modelling and nothing here should try to tell them apart.
+
+**No unmodelled relationships remain.** `your relative?` was deleted the same evening — it is
+Geni's marker for *I did not resolve this*, not a relation.
+
+## 2026-09-17 — the download did not need a human, and I said it did
+
+The finished Forest sat undownloaded and I reported it as needing Emma's click, citing the known
+"downloads mostly blocked" constraint. She asked why. The answer was that I had stopped early:
+a `ref` click and a coordinate click had both missed, and **navigating straight to the anchor's
+own `href` — `/gedcom/request_download?task_id=...` — downloads it**. 9.3 MB arrived immediately.
+
+§ *NEVER SAY YOU CANNOT DO SOMETHING YOU HAVE NOT TRIED* — the mechanism that failed was two
+clicks, not the download.
+
+**And the uncollected file was holding the export slot.** The second `Forest`, on
+`NN degli Abati` `6000000227787932122`, had been silently refused all evening — the form submitted
+cleanly and bounced back to itself. It went through the moment the first file was collected:
+`task_id` `6000000227788536850`. So *one export at a time* counts a FINISHED-BUT-UNCOLLECTED
+export as occupying the slot.
+
+**Why the clicks missed, which cost several attempts today**: `devicePixelRatio` is **1.25** on
+this machine. Click coordinates are device pixels and `getBoundingClientRect` is CSS pixels, so
+every rect-derived coordinate landed short by a fifth.

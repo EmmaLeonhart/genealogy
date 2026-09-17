@@ -175,49 +175,30 @@ the other spouse of a parent, in a separate `FAM`, with the child not a `CHIL` o
 **⛔ STILL DROPPED AND STILL OWED — and the counts below are the post-harvest ones, which are
 much larger than the pre-harvest figures this item was written with.**
 
-* **`fiancé` / `fiancée`, 57 rows over 11 people.** `ENGA` occurs **zero** times in the corpus.
-  Currently emitted as a couple with no marriage event, which is a guess.
+* ✅ **`fiancé` / `fiancée` IS ANSWERED, 2026-09-17. GENI HAS NO ENGAGEMENT CONCEPT.**
+  Read off `exports/isolate-exports/export-Forest-6000000227787716121.ged` -- the `Forest` run
+  from `Nn от Осетия`, the ancestor Emma created for the climb.
 
-  ⛔ **AND THE EXPORT ROUTE IS CLOSED ON ALL ELEVEN. Checked 2026-09-16, every one of them.**
-  `https://www.geni.com/gedcom/export/<id>` redirects to `/error` with *"You are not allowed to
-  export that profile"* for the whole list -- none was created by this account. So *"needs a
-  `Forest` on one of them"* cannot be done as written, and re-running the check is spending
-  eleven page loads to learn this again.
+  **An engagement is exported as a couple with no marriage event**: a `FAM` carrying `HUSB` and
+  `WIFE` and no `MARR`. That is what this pipeline was already emitting as a GUESS, so the guess
+  was right and it is now attested. Nothing to change in the emitter.
 
-      359282548040006278   Constantine Doukas        denied
-      6000000000350860821  Napoléon I                denied
-      6000000001723257706  James Hepburn             denied
-      6000000005931058360  Margaret of Geneva        denied
-      6000000007061365126  Beatriz de Castilla       denied
-      6000000008579937191  Beatrice Komnene          denied
-      6000000012442001730  Dante Alighieri           denied
-      6000000014829030443  Richenza                  denied
-      6000000023090769164  Mika Brzezinski           denied
-      6000000031546887817  Mariam Bagrationi         denied
-      6000000077426598714  <private> Holmgren        denied
+  **The evidence, and it is a property of the whole file rather than of one person.** The export
+  holds 5,000 people and **1,138 `MARR` events with ZERO `ENGA` lines** -- `ENGA` is not merely
+  absent from our corpus, Geni never writes it. Four of the eleven bearers are in the file
+  (`359282548040006278` Constantine Doukas, `6000000005931058360` Margaret of Geneva,
+  `6000000008579937191` Beatrice Komnene, `6000000014829030443` Richenza) and **every one of them
+  has at least one `FAM` with a partner and no `MARR`**.
 
-  ⛔ **AND THE ROUTE IS THE CLIMB, COMMANDED 2026-09-17.** *"never ever even attempt to export
-  these people directly. Jump straight to the climbing from one of the parties in the
-  relationship, I command you to do this right now."* An ancestor is CREATED off one of the
-  parties and the `Forest` runs off the created person, per `docs/export-seed-rules.md`. The
-  agent never opens `/gedcom/export/<id>` on one of the eleven -- not to export, and not to check
-  whether it could.
+  ⛔ **THE CAP DOES NOT WEAKEN IT.** The ball came back at 5,000, so it is truncated -- but
+  truncation only REMOVES people, and a family whose other member fell outside the cap is still
+  emitted with the one member it has: Richenza carries three `FAM` records holding only `WIFE`.
+  So an `ENGA` on a clipped couple would still have appeared. None did.
 
-  ⛔ **AND THIS IS NOT AN END-OF-QUEUE ITEM.** Ruled the same day: *"These are not limited to
-  the end, you just didnt explain what you were doing enough for me to make an informed
-  decision."* It was being treated as parked behind § *GEDCOM EXPORTS -- MOVED TO THE VERY END*.
+  **The consequence worth writing down: `fiancé` and `partner` are INDISTINGUISHABLE in Geni's
+  GEDCOM.** Both are a `FAM` with no `MARR`. That is Geni's modelling, not ours, and nothing here
+  should try to tell them apart.
 
-  **Emma creates the people; the agent pastes the links.** *"just paste into chat all of the
-  links to each member of an unrepresentated relationship so I can make them"* -- the eleven
-  above, as links, and nothing recomputed from `reports/path-chains.tsv`. That was done and it
-  returned 223 people, which is not what was asked for: *"use the 11 in queue.md"*.
-
-  **First one done, 2026-09-17.** `Nn от Осетия` `6000000227787716121`, created by Emma, `Forest`
-  submitted as `task_id` `6000000227787758013` -- GEDCOM 5.5.1, 5,000, BOM on.
-
-  ⛔ **THE FORM DEFAULTS TO `Family Tree Builder 8.0` AND THE CORPUS IS `5.5.1`.** Every
-  `.ged` under `exports/` carries `1 GEDC` / `2 VERS 5.5.1`. A `Forest` can take days, so the
-  Type has to be set before submitting or the wait is spent on the wrong format.
 * ⛔ **`your relative?` IS NOT A RELATIONSHIP AND THIS ITEM IS DELETED.** Ruled 2026-09-17:
   *"uhh yeah I do not think 'your relative?' is a thing at all."* Correct, and the repo already
   said so -- `scripts/harvest-isolate-paths.py` carries
