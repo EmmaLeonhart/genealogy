@@ -891,7 +891,25 @@ def main() -> int:
             qid = session.apply(e, token, minted, delay=args.delay)
         except EditFailed as exc:
             failed[e["id"]] = str(exc)
-            consecutive += 1
+            # ⛔ **`maxlag` IS BACK-PRESSURE, NOT A FAILURE, AND COUNTING IT STRANDS
+            # HALF-WRITTEN PEOPLE.** Measured 2026-09-17: a run of 100 objects hit five
+            # consecutive `maxlag` refusals -- the query servers were 5-7 seconds behind and
+            # asked the bot to wait -- the stop below fired, and **38 objects never ran**. The
+            # creations among the first 57 had already landed, so `Q141488165 Kasbar L` went
+            # live asserting `P40` a child while `Q141419525` never got the reciprocal `P22`
+            # that anchors him. The item floats: from the child's page he does not exist.
+            #
+            # Wikidata asks every bot to back off when replication lags; it clears by itself
+            # and says nothing about the account, the batch or the API. The stop exists for a
+            # broken credential or a block, where every edit fails for the same permanent
+            # reason. Counting lag toward it turns a thirty-second wobble into an abandoned
+            # run.
+            #
+            # `apply()` already retries maxlag four times with its own backoff, so reaching
+            # here means the wobble outlasted that -- still a reason to skip this edit and
+            # carry on, never a reason to abandon the ones behind it.
+            if "maxlag" not in str(exc):
+                consecutive += 1
             print(f"       {e['id']}  {e['kind']:<9} FAILED: {exc}", file=sys.stderr)
             # A run where everything fails is not a batch with a bad edit in it; it
             # is a broken account, a changed API or a block. Grinding through the
