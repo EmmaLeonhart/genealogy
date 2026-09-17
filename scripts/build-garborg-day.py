@@ -876,18 +876,23 @@ def manual_p2600_lines(priority_qids=(), subgraph=None):
     # Gated twice on purpose, because one of the two is a free-text note a typo could break:
     #   1. the note says local-only / never emit / gedcom entry point
     #   2. the pair is in `build-qid-links-gedcom.PAIRS`, the authoritative Jan-1 list
-    local_only = re.compile(r"local only|never emit|do not emit|gedcom entry point", re.I)
-    jan1 = _jan1_pairs()
+    # ⛔ **NONE OF THEM GO OUT. THE WHOLE FILE IS LOCAL.** Ruled 2026-09-17 after the third
+    # emission in one day: *"manual identifications should not occur non-locally either"*.
+    #
+    # Two narrower gates were written before this one -- the note text, then
+    # `build-qid-links-gedcom.PAIRS` -- and each was a rule about WHICH rows were safe. There
+    # are none. `reports/manual-identifications.csv` is adjudication for the local tree; the
+    # rows that are meant for Wikidata travel through
+    # `exports/post-merge/wikidata-qid-links.ged` and become entry points on **2027-01-01**.
+    # Picking a subset to emit today is the thing that keeps going wrong, so the subset is empty.
+    #
+    # The counting below is kept so the run still says out loud what it is holding back.
     want, withheld = [], 0
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
             q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-            if not (q.startswith("Q") and g.isdigit()):
-                continue
-            if local_only.search(row.get("note") or "") or jan1.get(g) == q:
+            if q.startswith("Q") and g.isdigit():
                 withheld += 1
-                continue
-            want.append((q, g, (row.get("name") or "").strip()))
     if withheld:
         print(f"hand identifications: {withheld} WITHHELD -- they belong to the 2027-01-01 "
               f"identifications gedcom, not to a P2600 today")

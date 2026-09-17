@@ -574,6 +574,59 @@ def _gate(edits, path):
         print(f"{path.name}: {len(dropped)} clan-seat labels withheld - {why}")
     kept = _refuse_duplicate_people(kept, path)
     kept = _refuse_unnameable_name_items(kept, path)
+    kept = _refuse_hand_identifications(kept, path)
+    return kept
+
+
+#: The hand-adjudicated Geni-to-QID pairs. **LOCAL ONLY.**
+MANUAL_IDS = REPO / "reports" / "manual-identifications.csv"
+
+
+def _hand_identified_geni_ids() -> set:
+    """Every Geni id `reports/manual-identifications.csv` names."""
+    if not MANUAL_IDS.exists():
+        return set()
+    with MANUAL_IDS.open(encoding="utf-8", newline="") as fh:
+        return {(row.get("geni_id") or "").strip() for row in csv.DictReader(fh)
+                if (row.get("geni_id") or "").strip().isdigit()}
+
+
+def _refuse_hand_identifications(edits, path):
+    """⛔ **A HAND IDENTIFICATION NEVER LEAVES THIS MACHINE.** Ruled 2026-09-17, plainly:
+    *"manual identifications should not occur non-locally either"*.
+
+    `reports/manual-identifications.csv` is adjudication, not a source. Its rows exist so the
+    local tree knows who is who; the ones that are meant for Wikidata go through
+    `exports/post-merge/wikidata-qid-links.ged` and become entry points on **2027-01-01**, which
+    is what `queue.md` says and what the rows themselves say in words -- 38 of them carry
+    *"LOCAL ONLY, never emitted to Wikidata"* in their own note column.
+
+    They were emitted anyway, three times on 2026-09-17. The first fix gated
+    `manual_p2600_lines` on the note text; the second gated it on
+    `build-qid-links-gedcom.PAIRS`. Both are generator fixes, and **a generator fix does not
+    unship an artifact**: run `35211492862` sent a batch composed before either of them and put
+    a `P2600` on `Yi Un (Q484866)`, `Emperor Ku (Q721756)`, `Huaxu (Q9511624)` and
+    `Imperial Consort Sunheon (Q7214248)`.
+
+    So the rule moves to where it cannot be routed around: the runner is the last thing between
+    a file on disk and Wikidata, and it reads the CSV itself rather than trusting whoever wrote
+    the batch. Keyed on the Geni id, which is § *the primary key*, so it holds whatever QID the
+    batch paired it with.
+    """
+    local = _hand_identified_geni_ids()
+    if not local:
+        return edits
+    kept, refused = [], []
+    for e in edits:
+        hit = _geni_ids_claimed(e) & local
+        if hit:
+            refused.append(sorted(hit)[0])
+        else:
+            kept.append(e)
+    if refused:
+        print(f"{path.name}: {len(refused)} P2600 edits REFUSED - hand identifications are "
+              f"LOCAL ONLY ({MANUAL_IDS.name}); they become entry points on 2027-01-01: "
+              + ", ".join(refused[:5]) + (" ..." if len(refused) > 5 else ""))
     return kept
 
 
