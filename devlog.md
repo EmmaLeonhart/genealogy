@@ -44984,3 +44984,20 @@ account owner, and every chain in those tiny-path GEDCOMs starts at her.
 the root is just whoever geni wants to display"* — and whether these people join the world tree is
 the connectivity rebuild's call off the merged corpus. The ledger writes `anchor=default` and
 asserts neither.
+
+### The 404 was a dead identifier, not a dead Geni
+
+`6000000037349680798` returned `http404/http404` — both searches — in the first 190 ids of the
+batch. It is `Q313559` **Jerry Cantrell**, the American guitarist, and the profile the item's
+`P2600` points at is simply gone from Geni. The identifier on Wikidata is dangling, not the site
+misbehaving.
+
+Emma supplied the live profile: `6000000037347655783`. Recorded in
+`reports/manual-identifications.csv` as `SAME`, batch `given in conversation`, appended rather
+than sorted in — the file is batch-blocks each sorted internally, and re-sorting the whole thing
+churned 1,072 rows on the first attempt before it was reverted.
+
+**This is a category the campaign does not yet count.** A dead `P2600` is not a disconnected
+person: he will come back after the 30-day cooldown and 404 again, every sweep. `http404/http404`
+is already a distinct recorded state, so the population is countable once enough attempts are
+stamped. Not started — it is a new work item, not part of the collector runs.
