@@ -3002,7 +3002,14 @@ def aliases_for(fields, surn="", marnm=""):
     for field in ("surn", "marnm"):
         raw = " ".join((fields.get(field) or "").split())
         if raw and any(PAREN.match(t) for t in raw.split()):
-            full = f"{' '.join(given)} {raw}".strip() if given else raw
+            # ⛔ **A BARE SURNAME IS NOT A NAME, AND `else raw` EMITTED ONE.** Reported
+            # 2026-09-17 off the batch: a created item carrying `mul:"Øverland"` as an alias,
+            # with no given name in front of it. § *A bare given name is not a label* is the same
+            # rule from the other end -- a farm name alone identifies a farm, not a person -- and
+            # § *No given name is not no name* says the answer is `NN`, never silence and never
+            # the surname standing in for the whole person. `NN` is preserved in `mul` on purpose
+            # so the gap shows.
+            full = f"{' '.join(given) if given else 'NN'} {raw}".strip()
             if full not in out:
                 out.append(full)
     return out
