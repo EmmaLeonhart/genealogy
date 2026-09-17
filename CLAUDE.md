@@ -495,6 +495,19 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   `P3373` and needs no invented parent.
 - **A second Geni ID on one item is NOT a conflict**, and a duplicate parent value is
   self-healing. Do not report or fix either.
+- **⛔ AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS, NO EXCEPTIONS.**
+  Ruled 2026-09-17: *"the hand identification is supposed to fucking go to Wikidata. It just is
+  supposed to go to things that actually are allowed to have valid edits put on them ... That
+  means they must be in the universe or one step beyond the universe. **As all edits go.**"*
+  The universe is the contiguous Wikidata subgraph from Arne and Bureus — no hop counts inside
+  it, a billion hops if that is what it takes — and the ring is the items one relationship
+  removes from it, which is the same reach `compose` builds creations from.
+  **A hand identification is not exempt and is not withheld**: it goes out like everything else,
+  gated on where the item sits and on nothing else. Two over-corrections are refuted and must not
+  return — gating on the CSV's free-text note, and withholding the file wholesale.
+  `build-garborg-day.py` writes `out/wikidata/edit-universe.json` and `wikidata-edit-run.py`
+  reads it, because the sender talks to Wikidata hours later with no tree to check against and
+  **a gate that lives only in the composer is one stale artifact away from being no gate**.
 - **The seed set is the Wikidata subgraph from Arne** — no hop counts, a billion hops if that is
   what it takes. ⛔ **AND IT GATES `P2600` TOO, NOT JUST CREATIONS. Ruled 2026-09-17:** *"why the
   fuck were geni ids added to so many people who are not 1 hop away from the universe"* and, of

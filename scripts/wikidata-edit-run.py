@@ -574,59 +574,64 @@ def _gate(edits, path):
         print(f"{path.name}: {len(dropped)} clan-seat labels withheld - {why}")
     kept = _refuse_duplicate_people(kept, path)
     kept = _refuse_unnameable_name_items(kept, path)
-    kept = _refuse_hand_identifications(kept, path)
+    kept = _refuse_outside_the_universe(kept, path)
     return kept
 
 
-#: The hand-adjudicated Geni-to-QID pairs. **LOCAL ONLY.**
-MANUAL_IDS = REPO / "reports" / "manual-identifications.csv"
+#: ⛔ Written by `build-garborg-day.py`, which is the only place that can compute it: the
+#: contiguous Wikidata group from Arne and Bureus, plus the items one relationship step beyond
+#: it. ONE rule, two readers -- never a second implementation here.
+EDIT_UNIVERSE = REPO / "out" / "wikidata" / "edit-universe.json"
 
 
-def _hand_identified_geni_ids() -> set:
-    """Every Geni id `reports/manual-identifications.csv` names."""
-    if not MANUAL_IDS.exists():
+def _edit_universe() -> set:
+    """Every QID an edit may be made on: the universe, plus one step beyond it."""
+    try:
+        data = json.loads(EDIT_UNIVERSE.read_text(encoding="utf-8"))
+    except Exception:                                    # noqa: BLE001 -- absent or unreadable
         return set()
-    with MANUAL_IDS.open(encoding="utf-8", newline="") as fh:
-        return {(row.get("geni_id") or "").strip() for row in csv.DictReader(fh)
-                if (row.get("geni_id") or "").strip().isdigit()}
+    return set(data.get("universe") or ()) | set(data.get("one_step") or ())
 
 
-def _refuse_hand_identifications(edits, path):
-    """⛔ **A HAND IDENTIFICATION NEVER LEAVES THIS MACHINE.** Ruled 2026-09-17, plainly:
-    *"manual identifications should not occur non-locally either"*.
+def _refuse_outside_the_universe(edits, path):
+    """⛔ **AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS.**
 
-    `reports/manual-identifications.csv` is adjudication, not a source. Its rows exist so the
-    local tree knows who is who; the ones that are meant for Wikidata go through
-    `exports/post-merge/wikidata-qid-links.ged` and become entry points on **2027-01-01**, which
-    is what `queue.md` says and what the rows themselves say in words -- 38 of them carry
-    *"LOCAL ONLY, never emitted to Wikidata"* in their own note column.
+    Ruled 2026-09-17, and it is the general rule rather than a patch for one file:
 
-    They were emitted anyway, three times on 2026-09-17. The first fix gated
-    `manual_p2600_lines` on the note text; the second gated it on
-    `build-qid-links-gedcom.PAIRS`. Both are generator fixes, and **a generator fix does not
-    unship an artifact**: run `35211492862` sent a batch composed before either of them and put
-    a `P2600` on `Yi Un (Q484866)`, `Emperor Ku (Q721756)`, `Huaxu (Q9511624)` and
-    `Imperial Consort Sunheon (Q7214248)`.
+        "the hand identification is supposed to fucking go to Wikidata. It just is supposed to
+         go to things that actually are allowed to have valid edits put on them ... That means
+         they must be in the universe or one step beyond the universe. As all edits go."
 
-    So the rule moves to where it cannot be routed around: the runner is the last thing between
-    a file on disk and Wikidata, and it reads the CSV itself rather than trusting whoever wrote
-    the batch. Keyed on the Geni id, which is § *the primary key*, so it holds whatever QID the
-    batch paired it with.
+    The composer gates what it emits. That was never enough, because **this** is what talks to
+    Wikidata, and it reads a file off disk hours later in a workflow with no tree and no
+    subgraph to check against. On 2026-09-17 a batch composed before the gate existed put a
+    `P2600` on `Yi Un (Q484866)`, `Emperor Ku (Q721756)`, `Huaxu (Q9511624)` and
+    `Imperial Consort Sunheon (Q7214248)` -- Korean and Chinese royalty nothing in the run
+    touches. Three separate generator fixes went in that day and not one of them could have
+    stopped it, because a generator fix does not unship an artifact.
+
+    So the composer writes `out/wikidata/edit-universe.json` and this reads it. Creations are
+    not gated here: they carry no QID yet and `compose` already picks them from inside the
+    universe by construction.
+
+    **Fails OPEN when the file is missing**, deliberately: a clean checkout or an older batch
+    should not silently post nothing and look like a quiet day. The composer prints the counts
+    every run, so an absent file is visible there.
     """
-    local = _hand_identified_geni_ids()
-    if not local:
+    allowed = _edit_universe()
+    if not allowed:
         return edits
     kept, refused = [], []
     for e in edits:
-        hit = _geni_ids_claimed(e) & local
-        if hit:
-            refused.append(sorted(hit)[0])
+        qid = e.get("qid")
+        if e.get("kind") != "create" and qid and qid not in allowed:
+            refused.append(qid)
         else:
             kept.append(e)
     if refused:
-        print(f"{path.name}: {len(refused)} P2600 edits REFUSED - hand identifications are "
-              f"LOCAL ONLY ({MANUAL_IDS.name}); they become entry points on 2027-01-01: "
-              + ", ".join(refused[:5]) + (" ..." if len(refused) > 5 else ""))
+        print(f"{path.name}: {len(refused)} edits REFUSED - neither in the universe nor one "
+              f"step beyond it: " + ", ".join(sorted(set(refused))[:5])
+              + (" ..." if len(set(refused)) > 5 else ""))
     return kept
 
 

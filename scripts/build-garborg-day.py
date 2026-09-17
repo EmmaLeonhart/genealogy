@@ -35,6 +35,7 @@ import argparse
 import collections
 import datetime
 import csv
+import json
 import os
 import random
 import re
@@ -803,7 +804,7 @@ def _jan1_pairs():
     return out
 
 
-def manual_p2600_lines(priority_qids=(), subgraph=None):
+def manual_p2600_lines(priority_qids=(), subgraph=None, ring=None):
     """PRIORITY: items this run is about to touch come first and are NOT capped.
 
     **The ordering defect, found 2026-09-03.** This picked the first ten missing pairs in file
@@ -876,33 +877,39 @@ def manual_p2600_lines(priority_qids=(), subgraph=None):
     # Gated twice on purpose, because one of the two is a free-text note a typo could break:
     #   1. the note says local-only / never emit / gedcom entry point
     #   2. the pair is in `build-qid-links-gedcom.PAIRS`, the authoritative Jan-1 list
-    # ⛔ **NONE OF THEM GO OUT. THE WHOLE FILE IS LOCAL.** Ruled 2026-09-17 after the third
-    # emission in one day: *"manual identifications should not occur non-locally either"*.
+    # ⛔ **A HAND IDENTIFICATION DOES GO TO WIKIDATA. THE GATE IS WHERE THE ITEM SITS.**
+    # Ruled 2026-09-17, and it settles three wrong readings of this file in one day:
     #
-    # Two narrower gates were written before this one -- the note text, then
-    # `build-qid-links-gedcom.PAIRS` -- and each was a rule about WHICH rows were safe. There
-    # are none. `reports/manual-identifications.csv` is adjudication for the local tree; the
-    # rows that are meant for Wikidata travel through
-    # `exports/post-merge/wikidata-qid-links.ged` and become entry points on **2027-01-01**.
-    # Picking a subset to emit today is the thing that keeps going wrong, so the subset is empty.
+    #     "the hand identification is supposed to fucking go to Wikidata. It just is supposed to
+    #      go to things that actually are allowed to have valid edits put on them ... That means
+    #      they must be in the universe or one step beyond the universe. As all edits go."
     #
-    # The counting below is kept so the run still says out loud what it is holding back.
-    want, withheld = [], 0
+    # So this is not a special rule for this file. It is **the** rule, the one every other
+    # emitter here already obeys, finally asked by this one. What went wrong was never that the
+    # rows are unfit to send -- they are hand-adjudicated and they are the best identifications
+    # in the repo -- it was that this function sent them **anywhere**, up to 90 a day, unattended,
+    # onto items nothing else in the run touches. `Yi Un`, `Emperor Ku`, `Huaxu` and
+    # `Imperial Consort Sunheon` are what that looks like from the contributions page.
+    #
+    # Two over-corrections are also refuted and must not come back: gating on the note text, and
+    # withholding the file wholesale. Neither is about where the item sits, which is the only
+    # thing that decides whether an edit is ours to make.
+    want = []
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
             q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
             if q.startswith("Q") and g.isdigit():
-                withheld += 1
-    if withheld:
-        print(f"hand identifications: {withheld} WITHHELD -- they belong to the 2027-01-01 "
-              f"identifications gedcom, not to a P2600 today")
+                want.append((q, g, (row.get("name") or "").strip()))
     if not want:
         return [], 0, 0, 0
 
-    # ⛔ THE GATE. Outside Arne's contiguous group is not ours to label.
+    # ⛔ THE GATE: in the universe, or ONE STEP BEYOND IT. `subgraph` is Arne's contiguous group
+    # and `ring` is the items a single relationship removes from it -- the same reach `compose`
+    # already builds from for creations, consulted here rather than reimplemented.
     refused = 0
     if subgraph is not None:
-        keep = [t for t in want if t[0] in subgraph]
+        allowed = set(subgraph) | set(ring or ())
+        keep = [t for t in want if t[0] in allowed]
         refused = len(want) - len(keep)
         want = keep
     if not want:
@@ -6375,6 +6382,37 @@ def main():
         # relationship statements, however long.
         our_wikidata_subgraph = wikidata_subgraph(universe=set(our_items.values()))
         ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}
+        # ⛔ **ONE STEP BEYOND THE UNIVERSE IS PART OF THE RULE, NOT AN EXTENSION OF IT.** Ruled
+        # 2026-09-17: edits go *"to things that actually are allowed to have valid edits put on
+        # them ... they must be in the universe or one step beyond the universe. As all edits
+        # go."* `compose` already reaches exactly one relationship out of `ring_seeds` when it
+        # picks creations; this names that same reach as a set of QIDs so the other emitters can
+        # ask the question instead of each inventing an answer.
+        _ring_cols = ("father", "mother", "children", "spouse")
+        one_step_qids = set()
+        for _g in ring_seeds:
+            _row = fam_rows.get(_g) or {}
+            for _col in _ring_cols:
+                for _k in re.split(r"[,;|]", _row.get(_col) or ""):
+                    _k = _k.strip()
+                    _q = our_items.get(_k)
+                    if _q and _q not in our_wikidata_subgraph:
+                        one_step_qids.add(_q)
+        print(f"one step beyond the universe: {len(one_step_qids)} items")
+        # ⛔ **THE SENDER HAS TO BE ABLE TO ASK THE SAME QUESTION.** `wikidata-edit-run.py` reads
+        # a batch off disk hours later, in a workflow, with no tree and no subgraph, so it cannot
+        # recompute this -- and a gate that exists only in the composer is one stale artifact
+        # away from being no gate at all, which is exactly how 2026-09-17 went. Writing it out
+        # makes it **one** rule with two readers rather than two implementations, which is
+        # `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
+        _universe_out = ROOT / "out" / "wikidata" / "edit-universe.json"
+        _universe_out.parent.mkdir(parents=True, exist_ok=True)
+        _universe_out.write_text(json.dumps({
+            "universe": sorted(our_wikidata_subgraph),
+            "one_step": sorted(one_step_qids),
+        }), encoding="utf-8")
+        print(f"wrote {_universe_out.relative_to(ROOT)} "
+              f"({len(our_wikidata_subgraph):,} + {len(one_step_qids):,} QIDs)")
         print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through the "
               f"account's own "
               f"items: {len(our_wikidata_subgraph)} items; {len(ring_seeds)} of {len(our_items)} ledger people seed")
@@ -8041,10 +8079,10 @@ def main():
     _touched = {ln.split("	", 1)[0] for ln in lines
                 if ln[:1] == "Q" and "	" in ln}
     man_lines, man_total, man_held, man_refused = manual_p2600_lines(
-        _touched, subgraph=our_wikidata_subgraph)
+        _touched, subgraph=our_wikidata_subgraph, ring=one_step_qids)
     if man_refused:
-        print(f"hand identifications: {man_refused} REFUSED as outside Arne's subgraph "
-              f"-- a P2600 is not ours to add to an item we do not otherwise touch")
+        print(f"hand identifications: {man_refused} REFUSED -- neither in the universe nor one "
+              f"step beyond it, and an edit there is not ours to make")
     if man_lines:
         ident_block = ["# " + "=" * 72,
                        "# HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
