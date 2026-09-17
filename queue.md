@@ -143,85 +143,6 @@ current load; a third doing full page loads is how the account gets CAPTCHAd.
 Do not fucking do this until after everything else is done but I want to review middle initial items since there are roman numeral related confusions with it. Middle initials do actually deserve their own items, but we are only gonna analyze this after everything else is done, so we can focus solely on this. Losses are a bigger threat than the gains are positive here.
 
 
-## ⛔ THE PATH TAIL — I DROPPED IT, AND IT HAS TO COME BACK. Ruled 2026-09-15
-
-*"it's clear that the path stuff was dropped. It's clear that the path tail was just dropped by
-you, and it needs to be brought back."*
-
-**What the path tail IS.** Every relationship path Geni returns is a chain of steps, and each step
-carries a relation word — *his father*, *her mother*, *his son*. Counted over
-`reports/path-chains.tsv` there are **40 distinct relation strings**, and six of them are almost
-all of the volume (`his father` 16,848, `his mother` 11,345, `her father` 10,704, `his son` 9,789,
-`her mother` 7,275, `her daughter` 4,553). **The TAIL is everything below those six:**
-
-    726  her adoptive mother       15  his child            4  her fiancé
-     18  her ex-husband            14  his partner          3  her child
-     15  your relative?            10  his/her parent       3  his ex-wife
-     29  his adopted son            8  his adoptive father  2  her ex-partner
-
-**Why the tail matters more than its size suggests.** A relation we have never seen written in a
-real Geni export has **no attested representation**, and § *no guessing on the representations*
-forbids composing one. So each tail relation has to be learned from a `Forest` export centred on
-somebody who actually has it — that is the whole reason the export item exists.
-
-**What I did to it, plainly.** Working `## Tiny GEDCOMs` I implemented the common cases, and then
-for `step-parent`/`step-child` I searched the corpus for a `PEDI step` value, found none, and
-**wrote them off as having no attested representation**. That was inventing a tag and treating its
-absence as evidence. Corrected 2026-09-15 after Emma pointed at the family object: a step-parent is
-the other spouse of a parent, in a separate `FAM`, with the child not a `CHIL` of it — read off
-`exports/isolate-exports/export-Forest-6000000227738818838.ged` (Bach). Now emitted, and `P3448`
-*stepparent* goes to Wikidata too.
-
-**⛔ STILL DROPPED AND STILL OWED — and the counts below are the post-harvest ones, which are
-much larger than the pre-harvest figures this item was written with.**
-
-* ✅ **`fiancé` / `fiancée` IS ANSWERED, 2026-09-17. GENI HAS NO ENGAGEMENT CONCEPT.**
-  Read off `exports/isolate-exports/export-Forest-6000000227787716121.ged` -- the `Forest` run
-  from `Nn от Осетия`, the ancestor Emma created for the climb.
-
-  **An engagement is exported as a couple with no marriage event**: a `FAM` carrying `HUSB` and
-  `WIFE` and no `MARR`. That is what this pipeline was already emitting as a GUESS, so the guess
-  was right and it is now attested. Nothing to change in the emitter.
-
-  **The evidence, and it is a property of the whole file rather than of one person.** The export
-  holds 5,000 people and **1,138 `MARR` events with ZERO `ENGA` lines** -- `ENGA` is not merely
-  absent from our corpus, Geni never writes it. Four of the eleven bearers are in the file
-  (`359282548040006278` Constantine Doukas, `6000000005931058360` Margaret of Geneva,
-  `6000000008579937191` Beatrice Komnene, `6000000014829030443` Richenza) and **every one of them
-  has at least one `FAM` with a partner and no `MARR`**.
-
-  ⛔ **THE CAP DOES NOT WEAKEN IT.** The ball came back at 5,000, so it is truncated -- but
-  truncation only REMOVES people, and a family whose other member fell outside the cap is still
-  emitted with the one member it has: Richenza carries three `FAM` records holding only `WIFE`.
-  So an `ENGA` on a clipped couple would still have appeared. None did.
-
-  **The consequence worth writing down: `fiancé` and `partner` are INDISTINGUISHABLE in Geni's
-  GEDCOM.** Both are a `FAM` with no `MARR`. That is Geni's modelling, not ours, and nothing here
-  should try to tell them apart.
-
-* ⛔ **`your relative?` IS NOT A RELATIONSHIP AND THIS ITEM IS DELETED.** Ruled 2026-09-17:
-  *"uhh yeah I do not think 'your relative?' is a thing at all."* Correct, and the repo already
-  said so -- `scripts/harvest-isolate-paths.py` carries
-
-      UNRESOLVED_RELATION = "relative?"
-      #: Geni's own marker for *I did not resolve this*.
-
-  It is what Geni renders on a page it has NOT resolved, or one whose path search is still
-  running: `You` and the target with `(your relative?)` between them and nothing in between.
-  So there is no edge to represent, and a `Forest` centred on one of those people would learn
-  nothing -- the export cannot show a link that Geni is saying it does not have.
-
-  **Measured the same day, and it is the miss shape exactly.** Of the 160 chains in
-  `reports/path-chains.tsv` carrying the word, **159 are exactly 2 steps** -- the viewer plus the
-  target, which is the shape `MIN_STEPS = 3` exists to reject. The 160th is a real 49-step chain
-  with one unresolved segment inside it.
-
-  **Nothing reached the corpus**: 0 of the 159 have a GEDCOM under `exports/tiny-paths/`, because
-  a two-row chain names nobody in between and `split-path-chains.py` drops it. They do each have
-  a `harvested-paths/*.tsv`, which is a record of a miss and is what that directory is for.
-
-  So the only unmodelled relationship left is `fiancé`/`fiancée`.
-
 ## ⛔ RULINGS FROM 2026-09-15 — read these before working anything above
 
 **⛔ DO NOT MEASURE THE VOLUME BEFORE DOING A SMALL THING.** *"don't measure the volume. We don't
@@ -281,41 +202,6 @@ Two answers Emma asked for and did not get:
   neighbour was ever reached, and all four emitted files contained **zero**. The floor reserves 10
   neighbours per run so "our own items first" cannot mean "our own items only".
 
-## Edit the abbreviations out of the GEDCOM data itself
-
-Ruled 2026-09-15, and NOT what was done: *"you're supposed to fucking change the data so that it
-doesn't do it ... you are literally supposed to edit the gedcom files to replace all instances of
-the abbreviated form with the non-abbreviated forms."*
-
-What was done instead was refusing `Olsdtr` as a name ITEM and expanding it at emission.
-`reports/abbreviated-patronymics.csv` already holds the resolved form for 11,731 tokens, decided
-per person from the mother and paternal grandmother. This item is applying that to the `.ged`
-files.
-
-⛔ **AND THE REASON FOR IT WAS PREVENTION, WHICH 2026-09-17 PROVED.** Emma, that day:
-*"when I had in the queue the instruction to modify the source gedcoms, this kind of scenario was
-the reason why I asked for them to be replaced like this. My expectation is that the abbreviation
-was certainly going to break shit."* It did.
-
-**The worked example.** `Q141488174` was created as a human called **`Askvik`** with an alias
-**`Raunes`** — two farm names and no person — where Geni records `Guri Nilsdtr. Askvik (Raunes)`.
-`name_shape` calls the ABBREVIATED patronymics unknown and the written-out ones fine, so
-`classify_fields` armed the `NN Olsdatter` marker rule, threw `Guri` away, and short-circuited
-`Nilsdtr.` to `unknown` before `is_patronymic` could see it. The caller keeps only `given` and
-`patronymic`, so both tokens vanished and the label collapsed to the married surname alone.
-
-**Expanding at emission cannot prevent this and never could.** `classify_fields` runs UPSTREAM of
-`expand_abbreviations`, so it meets the raw `Nilsdtr.`; by the time anything expands, the tokens
-are already gone. Fixing the string at source is a guarantee — no code path can meet the
-abbreviated form — where expanding late only protects the paths somebody remembered to route
-through it. `db57fc43` repairs this one path; it does not close the class.
-
-⛔ `CLAUDE.md` § *Never overwrite an existing `.ged`* stands against this and has to be settled
-first — the instruction is explicit, the rule is explicit, and they disagree. **The options are a
-new file beside each original, or lifting the rule for this pass; the agent does not get to pick
-which of the two rules loses.**
-
-
 ## ⛔ GET CI GREEN — IMMEDIATELY BEFORE LIFTING THE HOLD, AND NOT BEFORE THEN
 
 Ruled 2026-09-14: *"put it as the queue item before actually running the cicd proper"*. Not a
@@ -324,8 +210,10 @@ first item, not worked ahead of real work.
 Last read: run `34922163324` on `07fdb97e`, **4 failures, down from 11**. Three were fixed after
 that run (`built-batches.tsv`, the `das` and `von` tests); the fourth is the committed batch
 offering to create 63 people who already hold QIDs, which `pipeline.yml` fixes when it
-recomposes. `build-repo-freshness.py` exits 0 and writes nothing — that is a real defect and it
-is this item's.
+recomposes. `build-repo-freshness.py` is NOT a defect any more: run 2026-09-17 it indexed 96,546 paths,
+wrote 1,885 tracked artifacts to `reports/repo-freshness.csv` and named 34 files claiming a
+corpus smaller than the live one. Checked before being repeated — § *CHECK before raising an
+alarm*.
 
 Dispatch `ci.yml`, read the conclusion, fix what it says. § *TESTS RUN IN CI/CD OR NOT AT ALL*.
 

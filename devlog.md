@@ -44866,3 +44866,25 @@ something that feeds Wikidata. It does not. It resolves identity locally, and it
 
 What stands from today is `93ba24bc`: no hand identification goes to Wikidata, at the generator
 and at the sender. What does not stand is anything that moved rows between these two files.
+
+### Two queue items closed, and one stale defect falsified
+
+**The path tail is finished.** Its own text said *"the only unmodelled relationship left is
+`fiancé`/`fiancée`"*, and that was answered the same day off
+`exports/isolate-exports/export-Forest-6000000227787716121.ged`: 5,000 people, 1,138 `MARR`
+events, **zero `ENGA`**. Geni has no engagement concept — an engagement exports as a `FAM` with a
+partner and no `MARR`, which is what the emitter already guessed, so the guess is now attested and
+nothing changes. `your relative?` was deleted the same day as not a relationship at all. Item
+deleted, not annotated.
+
+**The abbreviation rewrite is finished.** `9eb9ec4c` rewrote 6,910 `.ged` files, 61,290 name
+lines, 11,688 people, keyed on the xref and handled as bytes so the BOM and CRLF survived. The
+`CLAUDE.md` conflict the item said had to be settled first was settled by the ruling *"overwrite
+in place"*, and the suspension was added and removed around the pass in `7c7008f5` / `da2f412f`.
+Item deleted.
+
+**And one defect in the CI item does not exist.** It claimed *"`build-repo-freshness.py` exits 0
+and writes nothing"*. Run before repeating it: 96,546 paths indexed, 1,885 tracked artifacts
+written to `reports/repo-freshness.csv`, 34 files named as claiming a corpus smaller than the
+live one. § *CHECK before raising an alarm* — the check is cheap and the claim was a year of
+somebody else's session talking.
