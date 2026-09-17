@@ -196,11 +196,28 @@ much larger than the pre-harvest figures this item was written with.**
       6000000031546887817  Mariam Bagrationi         denied
       6000000077426598714  <private> Holmgren        denied
 
-  **What is left is the seed rule, and it has not been tried here.** `docs/export-seed-rules.md`
-  creates an ANCESTOR and exports off that, which is how the descendants campaign gets round a
-  profile it may not export. An engagement is not a descent, so the created person has to be
-  joined to one of the eleven some other way before a `Forest` off them crosses the `fiancé`
-  edge -- that is the open question, and it is a decision rather than a command.
+  ⛔ **AND THE ROUTE IS THE CLIMB, COMMANDED 2026-09-17.** *"never ever even attempt to export
+  these people directly. Jump straight to the climbing from one of the parties in the
+  relationship, I command you to do this right now."* An ancestor is CREATED off one of the
+  parties and the `Forest` runs off the created person, per `docs/export-seed-rules.md`. The
+  agent never opens `/gedcom/export/<id>` on one of the eleven -- not to export, and not to check
+  whether it could.
+
+  ⛔ **AND THIS IS NOT AN END-OF-QUEUE ITEM.** Ruled the same day: *"These are not limited to
+  the end, you just didnt explain what you were doing enough for me to make an informed
+  decision."* It was being treated as parked behind § *GEDCOM EXPORTS -- MOVED TO THE VERY END*.
+
+  **Emma creates the people; the agent pastes the links.** *"just paste into chat all of the
+  links to each member of an unrepresentated relationship so I can make them"* -- the eleven
+  above, as links, and nothing recomputed from `reports/path-chains.tsv`. That was done and it
+  returned 223 people, which is not what was asked for: *"use the 11 in queue.md"*.
+
+  **First one done, 2026-09-17.** `Nn от Осетия` `6000000227787716121`, created by Emma, `Forest`
+  submitted as `task_id` `6000000227787758013` -- GEDCOM 5.5.1, 5,000, BOM on.
+
+  ⛔ **THE FORM DEFAULTS TO `Family Tree Builder 8.0` AND THE CORPUS IS `5.5.1`.** Every
+  `.ged` under `exports/` carries `1 GEDC` / `2 VERS 5.5.1`. A `Forest` can take days, so the
+  Type has to be set before submitting or the wait is spent on the wrong format.
 * **`your relative?`, 105 rows over 102 people** — not the 15 recorded here. Geni itself is not
   naming the relation. Only a `Forest` on those people shows what the link is. They are
   overwhelmingly ancient or disputed: Constantine the Great, Peroz I of Persia, Balamber of the
