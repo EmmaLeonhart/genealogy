@@ -406,6 +406,15 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   committed; **never gitignore a `.ged`**, and never write a `*.ged` or `*.zip` pattern.
 - **Never overwrite an existing `.ged`.** A new export is always a new file. If the path exists,
   STOP. The one exception is a byte-identical duplicate.
+- ⛔ **SUSPENDED FOR ONE PASS, 2026-09-17: the abbreviation rewrite overwrites in place.**
+  `scripts/expand-gedcom-abbreviations.py` replaces the abbreviated patronymics with the resolved
+  forms in `reports/abbreviated-patronymics.csv`, **in the source files**. Asked which way it
+  should go — overwrite, a file beside each original, corrected copies with the originals moved
+  aside, or leave the data alone — the ruling was **overwrite in place**, because it is the only
+  one that removes the abbreviated string from the corpus: `exports/` is read recursively, so a
+  file beside the original leaves the old spelling readable.
+  **This bullet is removed the moment that pass has run.** It authorises exactly one rewrite and
+  nothing else; the rule above is otherwise absolute, and the originals are in git.
 - **`exports/excluded/` is the one part that is not corpus** — for when Geni has *deleted a
   relationship* a merged export still asserts. Checked now, never predicted.
 - **Later sources win value conflicts.** Geni is live; the newer export holds the correction.
