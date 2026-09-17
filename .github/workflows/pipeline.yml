@@ -333,9 +333,8 @@ jobs:
       #
       # `--half` deals the individual CREATIONS -- a third to auto, two thirds to manual -- and
       # generates everything else in full on BOTH sides, because only a duplicated person
-      # creation is unrecoverable. `split-daily-batch.py` is still run afterwards and now finds
-      # nothing to do; it stays until its assertions have been ported, so the cut it used to make
-      # is checked rather than simply removed.
+      # creation is unrecoverable. `split-daily-batch.py` no longer CUTS anything; it runs below
+      # as `--verify` and checks the two files the generations produced.
       - name: Generate the automatic half
         env:
           PYTHONPATH: src
@@ -345,6 +344,21 @@ jobs:
         env:
           PYTHONPATH: src
         run: python scripts/build-garborg-day.py --compose --half manual
+
+      # ⛔ **THIS STEP WAS DELETED AND THE COMMENT ABOVE CLAIMED IT WAS NOT.** `3767c4ef` replaced
+      # it with the two generations and said in the same breath that it *"is still run afterwards
+      # and now finds nothing to do"*. It was not run at all. Restored within the minute.
+      #
+      # It stays because its ASSERTIONS are the only thing checking the invariants: that no line
+      # is lost, that no individual creation appears in both halves, and that no `LAST` precedes
+      # its `CREATE`. Those are properties of the two files however they were produced, and
+      # deleting the producer of a cut is not a reason to stop checking the cut. Ruled the same
+      # hour: *"if there's anything in the pipeline that makes it slower, that is intentional,
+      # and you should not change it."*
+      - name: Check the two halves
+        env:
+          PYTHONPATH: src
+        run: python scripts/split-daily-batch.py --verify
 
 
       # ⛔ THE UNIVERSE-GROWTH PASS, APPENDED TO BOTH HALVES AFTER THE SPLIT. Ruled

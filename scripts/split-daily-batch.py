@@ -413,5 +413,73 @@ def main() -> int:
     return 0
 
 
+def verify() -> int:
+    """⛔ Check the two halves WITHOUT rewriting them.
+
+    `build-garborg-day.py --half auto|manual` now generates each side itself, so there is no cut
+    left for this script to make -- but the invariants it asserted are properties of the two
+    files however they were produced, and they still have to hold:
+
+      * nothing is lost: every line of the composed batch appears in at least one half
+      * no INDIVIDUAL creation appears in both -- the one failure that cannot be undone
+      * no `LAST` line precedes its `CREATE` in either half, because `LAST` binds backwards and
+        a statement above every `CREATE` in its file attaches to nothing
+
+    Deleting the producer of a cut is not a reason to stop checking the cut. That deletion
+    happened once already, in `3767c4ef`, under a comment claiming it had not.
+    """
+    if not (AUTO.exists() and MANUAL.exists()):
+        print("one or both halves are missing; nothing to verify")
+        return 0
+    text = SRC.read_text(encoding="utf-8")
+    a_text = AUTO.read_text(encoding="utf-8")
+    m_text = MANUAL.read_text(encoding="utf-8")
+
+    import collections as _c
+    want = _c.Counter(ln for ln in text.splitlines() if ln.strip())
+    got = _c.Counter(ln for ln in (a_text + chr(10) + m_text).splitlines() if ln.strip())
+    lost = want - got
+    if lost:
+        raise SystemExit("%d line(s) of the composed batch are in NEITHER half: %s"
+                         % (sum(lost.values()), sorted(lost.elements())[:3]))
+
+    def people(t):
+        out = set()
+        for e in qs_v1.edit_objects(qs_v1.parse(t)):
+            if e.get("kind") != "create":
+                continue
+            for c in e.get("claims") or ():
+                v = c.get("value")
+                if c.get("property") == "P31" and isinstance(v, dict) and v.get("id") == "Q5":
+                    out.add(e["id"])
+                    break
+        return out
+    both = people(a_text) & people(m_text)
+    if both:
+        raise SystemExit("%d individual creation(s) appear in BOTH halves: %s"
+                         % (len(both), sorted(both)[:3]))
+
+    for name, txt in (("auto", a_text), ("manual", m_text)):
+        seen = False
+        for ln in txt.splitlines():
+            t = ln.strip()
+            if not t or t.startswith("#"):
+                continue
+            if t.upper() == "CREATE":
+                seen = True
+            elif t.split(chr(9))[0] == "LAST" and not seen:
+                raise SystemExit("%s: a LAST line precedes every CREATE in its half" % name)
+
+    print("both halves verified: nothing lost, no individual creation duplicated, "
+          "no LAST above its CREATE")
+    print("   auto %d line(s), manual %d line(s), composed %d"
+          % (len([l for l in a_text.splitlines() if l.strip()]),
+             len([l for l in m_text.splitlines() if l.strip()]),
+             len([l for l in text.splitlines() if l.strip()])))
+    return 0
+
+
 if __name__ == "__main__":
+    if "--verify" in sys.argv[1:]:
+        raise SystemExit(verify())
     raise SystemExit(main())
