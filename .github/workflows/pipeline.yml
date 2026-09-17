@@ -355,6 +355,39 @@ jobs:
             echo "appended $(grep -c P1810 reports/wikidata-subject-named-as.qs) to the manual half"
           fi
 
+      # ⛔ ONE PARENT A RUN, UP THE ACCOUNT OWNER'S OWN ANCESTRY. Ruled 2026-09-17:
+      # *"I want the cicd to automatically add one randomly selected eligible ancestor of
+      # 6000000087535357291 to wikidata every time and the quickstatements to add 2 more in the
+      # same way. Randomly selected eligible means adding a parent to the ancestors in the
+      # universe."*
+      #
+      # It climbs by construction: each creation gives an in-universe person a parent, so that
+      # new item is in the universe next run and its own parents become eligible. Nobody picks
+      # who; the ancestry grows a generation at a time on its own.
+      #
+      # AFTER THE SPLIT and appending, like the two passes above, so the split's own arithmetic
+      # is untouched and the two products stay separable. The script writes the halves itself
+      # rather than emitting one file for something else to divide.
+      #
+      # ⛔ IT WILL SOMETIMES CREATE SOMEBODY WIKIDATA ALREADY HAS. Eligibility is *our tree
+      # holds no QID*, which cannot see an item carrying no `P2600`; two of the first three
+      # picks existed unlinked. Ruled the same day: *"Create anyway — duplicates get merged."*
+      # Do not add a label-search gate here.
+      - name: One ancestor creation a run, up the owner's own line
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: |
+          python scripts/build-ancestor-creations.py
+          if [ -s reports/wikidata-ancestor-creations-auto.qs ]; then
+            cat reports/wikidata-ancestor-creations-auto.qs >> reports/wikidata-garborg-day-auto.txt
+            echo "appended $(grep -c '^CREATE' reports/wikidata-ancestor-creations-auto.qs) creation(s) to the auto half"
+          fi
+          if [ -s reports/wikidata-ancestor-creations.qs ]; then
+            cat reports/wikidata-ancestor-creations.qs >> reports/wikidata-garborg-day-manual.txt
+            echo "appended $(grep -c '^CREATE' reports/wikidata-ancestor-creations.qs) creation(s) to the manual half"
+          fi
+
       # ⛔ THE SECOND VEHICLE FOR THE SAME PASS. Ruled 2026-09-14, alongside the first:
       # *"adding sources on individuals for existing relationships for the people adjacent to
       # the universe. That's another thing, because our universe doesn't really expand itself
