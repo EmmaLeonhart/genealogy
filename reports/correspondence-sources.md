@@ -23,7 +23,7 @@ was six days stale, not because they were separate.
 
 **And it has a second job**: on **2027-01-01** everyone in it becomes an entry point and by
 extension a ledger item — *"opening up the way for edits in certain eccentric clusters of the
-tree."* Registered in `reports/entry-point-groups.tsv` as `special-geni-gedcom-recognition` with
+tree."* Registered in `reports/entry-point-groups.tsv` as `identifications-gedcom` with
 `active_from = 2027-01-01`.
 
 ## ⛔ THE NAME OF CHANNEL 2, which is the thing asked to be fixed

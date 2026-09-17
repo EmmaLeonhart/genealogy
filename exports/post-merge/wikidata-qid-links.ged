@@ -1,6 +1,10 @@
 0 HEAD
 1 SOUR genimerge
 2 NAME scripts/build-qid-links-gedcom.py
+1 NOTE THE IDENTIFICATIONS GEDCOM: the single source of truth for Geni-to-Wikidata identifications.
+2 CONT Each INDI is a Geni profile id carrying one NOTE per Wikidata item. It holds no relationship data.
+2 CONT Two jobs, one mechanism: the bio link does entity resolution in the merged tree, and every QID here becomes an ENTRY POINT for editing on
+2 CONT 2027-01-01, through the identifications-gedcom row of reports/entry-point-groups.tsv -- now the only row in that file.
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED

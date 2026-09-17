@@ -876,7 +876,7 @@ def manual_p2600_lines(priority_qids=(), subgraph=None, ring=None):
     # and every one was a candidate on every run.
     #
     # `queue.md` is explicit about where they go: the identifications GEDCOM,
-    # `exports/post-merge/wikidata-qid-links.ged`, whose `special-geni-gedcom-recognition` row
+    # `exports/post-merge/wikidata-qid-links.ged`, whose `identifications-gedcom` row
     # carries `active_from 2027-01-01` -- *"they are added to the entry ponys and universe and
     # p2600 can be added there at Jan 1 no blocking lol"*. AT JAN 1. Not today.
     #
@@ -2890,7 +2890,7 @@ KLUGE_ENTITY_RESOLUTION_ASIA = (
 #
 # The 38 with a Geni id are now pairs in `scripts/build-qid-links-gedcom.py`, which writes
 # `exports/post-merge/wikidata-qid-links.ged`. `reports/entry-point-groups.tsv` reads that file
-# through `special-geni-gedcom-recognition` at `active_from 2027-01-01`, so they are inert today,
+# through `identifications-gedcom` at `active_from 2027-01-01`, so they are inert today,
 # join the universe on the day, and **can take a `P2600` then.** `Q236972` Fuxi had no Geni id
 # recorded against it and is already in the ledger, so it needed no row and simply stops being
 # excluded. § *LEGACY CODE IS DELETED*.

@@ -242,7 +242,7 @@ PAIRS = {
     # design. **Being far from the universe is what this file is for** — its own § *WHAT
     # `wikidata-qid-links.ged` IS FOR* is *"far off genealogical people who are too far away in
     # the regular clusters to be ones to start with"* — and the answer to non-locality here has
-    # never been a ban, it is the DATE. `special-geni-gedcom-recognition` carries
+    # never been a ban, it is the DATE. `identifications-gedcom` carries
     # `active_from 2027-01-01`, so a pair written here is inert until then and becomes an entry
     # point on the day, which is the mechanism Emma specified on 2026-09-05: *"write these ones
     # into that identification gedcom thing ... which is scheduled to at Jan 1, 2027 become a
@@ -388,6 +388,21 @@ def main():
         out.write("0 HEAD\n")
         out.write("1 SOUR genimerge\n")
         out.write("2 NAME scripts/build-qid-links-gedcom.py\n")
+        # ⛔ The file has to say what it IS. Asked 2026-09-17, of a row called
+        # `special-geni-gedcom-recognition` pointing at a bare path: *"the gedcom? What is
+        # that"*. The answer was buried in a note column of another file, and a store nobody
+        # can name from the outside is the same failure as a roster nobody reads.
+        for _line in (
+            "1 NOTE THE IDENTIFICATIONS GEDCOM: the single source of truth for "
+            "Geni-to-Wikidata identifications.",
+            "2 CONT Each INDI is a Geni profile id carrying one NOTE per Wikidata item. "
+            "It holds no relationship data.",
+            "2 CONT Two jobs, one mechanism: the bio link does entity resolution in the "
+            "merged tree, and every QID here becomes an ENTRY POINT for editing on",
+            "2 CONT 2027-01-01, through the identifications-gedcom row of "
+            "reports/entry-point-groups.tsv -- now the only row in that file.",
+        ):
+            out.write(_line + "\n")
         out.write("1 GEDC\n")
         out.write("2 VERS 5.5.1\n")
         out.write("2 FORM LINEAGE-LINKED\n")

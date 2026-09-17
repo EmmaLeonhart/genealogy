@@ -876,7 +876,7 @@ bloc is.
 **The mechanism is the GEDCOM, and it already existed** — keyed on the entity-resolution GEDCOM
 for the new ones. It looks like stupid spaghetti code at first glance and it reduces redundancy.
 A new entry point is added
-by putting its pair in `exports/post-merge/wikidata-qid-links.ged` — the `special-geni-gedcom-recognition`
+by putting its pair in `exports/post-merge/wikidata-qid-links.ged` — the `identifications-gedcom`
 group reads it and switches on **2027-01-01**, the same date the bloc wanted. **One mechanism, two
 purposes**: the bio link does entity resolution inside the merged tree *and* makes the QID an entry
 point. Hand-listing six people duplicated a mechanism that was already there, which is the exact
@@ -953,7 +953,7 @@ State as of 2026-09-03:
 | ancient-chinese-bloc | 6 | held as individuals; **none carries a QID in our data** |
 | ethiopian-emperors | 0 | **NO ROSTER EXISTS** |
 | japanese-emperors | 0 | **NO ROSTER EXISTS** |
-| special-geni-gedcom-recognition | 0 | **awaiting a definition** |
+| identifications-gedcom | 0 | **awaiting a definition** |
 
 **⛔ MEASURED, AND IT IS THE THING TO KNOW: a root that is not in the ledger contributes
 NOTHING as `compose()` is wired.** `ring_seeds = {g for g, q in our_items.items() if q in
@@ -978,7 +978,7 @@ Geni id, so an entry point without one cannot become a row. Resolving the QIDs t
 (`izumo-p2600-pairs.tsv`, `tanba-p2600-pairs.tsv`) gives **316 of 330**. Same rule as reading
 `bureatten.csv` rather than re-deriving it.
 
-**`special-geni-gedcom-recognition` is `exports/post-merge/wikidata-qid-links.ged`** — a specific
+**`identifications-gedcom` is `exports/post-merge/wikidata-qid-links.ged`** — a specific
 GEDCOM that just links Geni profiles to Wikidata, carrying no relationship data, only ids and
 bios with Wikidata links. **29** `INDI` records, each an id and a `NOTE`
 with a Wikidata URL, **28** distinct QIDs -- counted 2026-09-05. This said *five records, four
