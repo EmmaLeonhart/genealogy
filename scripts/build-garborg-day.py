@@ -782,6 +782,27 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 MANUAL_P2600_PER_RUN = 30
 
 
+def _jan1_pairs():
+    """`{geni_id: qid}` from `build-qid-links-gedcom.PAIRS` -- the pairs that become entry
+    points on 2027-01-01 and must not be emitted as a `P2600` before then.
+
+    Read by PARSING rather than importing: the file's name is hyphenated, and importing it
+    would run its `main()` guard-free on some paths. A missing or unreadable file yields an
+    empty map, which fails OPEN -- the note test above is the other gate and the one the data
+    itself carries.
+    """
+    src = ROOT / "scripts" / "build-qid-links-gedcom.py"
+    out = {}
+    try:
+        text = src.read_text(encoding="utf-8")
+    except OSError:
+        return out
+    body = text.partition("PAIRS = {")[2].partition("}")[0]
+    for g, q in re.findall(r'"(\d+)"\s*:\s*"(Q\d+)"', body):
+        out[g] = q
+    return out
+
+
 def manual_p2600_lines(priority_qids=(), subgraph=None):
     """PRIORITY: items this run is about to touch come first and are NOT capped.
 
@@ -836,12 +857,40 @@ def manual_p2600_lines(priority_qids=(), subgraph=None):
     path = ROOT / "reports" / "manual-identifications.csv"
     if not path.exists():
         return [], 0, 0, 0
-    want = []
+    # ⛔ **THE JAN-1 PAIRS ARE NOT OURS TO EMIT, AND THE FILE ALREADY SAID SO.** Reported
+    # 2026-09-17 from `Q1045160` *Xie of Shang*, which this gave a `P2600` on the morning of
+    # 2026-09-17. Its own row in the CSV reads:
+    #
+    #     Q1045160,6000000003474166572,Qì 契 5,SAME,...,"queue: Chinese gedcom entry points;
+    #     LOCAL ONLY, never emitted to Wikidata"
+    #
+    # This function read `qid` and `geni_id` and **ignored the note column entirely**, so a row
+    # that says in words that it must never be emitted was emitted. 38 rows carry that marking
+    # and every one was a candidate on every run.
+    #
+    # `queue.md` is explicit about where they go: the identifications GEDCOM,
+    # `exports/post-merge/wikidata-qid-links.ged`, whose `special-geni-gedcom-recognition` row
+    # carries `active_from 2027-01-01` -- *"they are added to the entry ponys and universe and
+    # p2600 can be added there at Jan 1 no blocking lol"*. AT JAN 1. Not today.
+    #
+    # Gated twice on purpose, because one of the two is a free-text note a typo could break:
+    #   1. the note says local-only / never emit / gedcom entry point
+    #   2. the pair is in `build-qid-links-gedcom.PAIRS`, the authoritative Jan-1 list
+    local_only = re.compile(r"local only|never emit|do not emit|gedcom entry point", re.I)
+    jan1 = _jan1_pairs()
+    want, withheld = [], 0
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
             q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-            if q.startswith("Q") and g.isdigit():
-                want.append((q, g, (row.get("name") or "").strip()))
+            if not (q.startswith("Q") and g.isdigit()):
+                continue
+            if local_only.search(row.get("note") or "") or jan1.get(g) == q:
+                withheld += 1
+                continue
+            want.append((q, g, (row.get("name") or "").strip()))
+    if withheld:
+        print(f"hand identifications: {withheld} WITHHELD -- they belong to the 2027-01-01 "
+              f"identifications gedcom, not to a P2600 today")
     if not want:
         return [], 0, 0, 0
 
