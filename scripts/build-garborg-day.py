@@ -6388,16 +6388,29 @@ def main():
         # go."* `compose` already reaches exactly one relationship out of `ring_seeds` when it
         # picks creations; this names that same reach as a set of QIDs so the other emitters can
         # ask the question instead of each inventing an answer.
-        _ring_cols = ("father", "mother", "children", "spouse")
+        # ⛔ **THE QIDs ARE ALREADY IN THE TABLE. THE FIRST VERSION WENT ROUND THEM AND GOT 0.**
+        # `derived-family.csv` carries `father_qid`, `mother_qid` and `spouse_qids` directly, and
+        # the first attempt ignored them, mapped `father`/`mother`/`children`/`spouse` through
+        # the ledger, and asked for a column named **`spouse`** when the file says **`spouses`**.
+        # It wrote `one_step: 0`, so the gate became universe-only -- stricter than the rule it
+        # was implementing -- and **refused 223 legitimate targets**. Found by recomputing it by
+        # hand against the same file: 3,237 in the universe, 857 of them present here, 223
+        # relatives outside it.
+        #
+        # Children are the exception and still go through the ledger: the file has `children` as
+        # Geni ids and a `child_count`, but no `child_qids` column to read.
         one_step_qids = set()
         for _g in ring_seeds:
             _row = fam_rows.get(_g) or {}
-            for _col in _ring_cols:
-                for _k in re.split(r"[,;|]", _row.get(_col) or ""):
-                    _k = _k.strip()
-                    _q = our_items.get(_k)
-                    if _q and _q not in our_wikidata_subgraph:
+            for _col in ("father_qid", "mother_qid", "spouse_qids"):
+                for _q in re.split(r"[,;|\s]+", _row.get(_col) or ""):
+                    _q = _q.strip()
+                    if _q.startswith("Q") and _q not in our_wikidata_subgraph:
                         one_step_qids.add(_q)
+            for _k in re.split(r"[,;|]", _row.get("children") or ""):
+                _q = our_items.get(_k.strip())
+                if _q and _q not in our_wikidata_subgraph:
+                    one_step_qids.add(_q)
         print(f"one step beyond the universe: {len(one_step_qids)} items")
         # ⛔ **THE SENDER HAS TO BE ABLE TO ASK THE SAME QUESTION.** `wikidata-edit-run.py` reads
         # a batch off disk hours later, in a workflow, with no tree and no subgraph, so it cannot
