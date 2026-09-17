@@ -781,7 +781,7 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 MANUAL_P2600_PER_RUN = 30
 
 
-def manual_p2600_lines(priority_qids=()):
+def manual_p2600_lines(priority_qids=(), subgraph=None):
     """PRIORITY: items this run is about to touch come first and are NOT capped.
 
     **The ordering defect, found 2026-09-03.** This picked the first ten missing pairs in file
@@ -809,11 +809,32 @@ def manual_p2600_lines(priority_qids=()):
     **No reference**, ruled 2026-08-31: Geni ids do not get sources, because an `S2600` citing
     the very id being added is circular.
 
-    Returns `(lines, checked, already_held)`.
+    ⛔ **AND IT IS GATED ON THE SUBGRAPH, 2026-09-17.** *"why the fuck were geni ids added to so
+    many people who are not 1 hop away from the universe"*. They were, because nothing here ever
+    asked. This function read `reports/manual-identifications.csv` -- **1,691 rows** -- and emitted
+    a `P2600` for every one Wikidata did not already hold, up to 90 a run, wherever in the world
+    tree the item happened to sit. `wikidata-edits.yml` sends that unattended every morning.
+
+    Two things allowed it and both are worth naming:
+
+    * `CLAUDE.md` § *The subgraph gates CREATIONS only; filling in existing items is ledger-wide*.
+      A `P2600` onto an existing item is "filling in", so this path was ungated **by rule**. The
+      rule is about not withholding facts from items we already work on; it was never a licence
+      to spray ids across the whole of Wikidata.
+    * The roster is exactly what `CLAUDE.md` § *"MANUAL ENTITY RESOLUTION" IS A MISLEADING NAME*
+      predicted: *"a later agent will put anything hand-checked into it"*. At 1,691 rows it had
+      become the dumping ground that warning describes, and this function treated every row as a
+      licence to write.
+
+    So `subgraph` is now required in practice: a QID outside Arne's contiguous group is REFUSED
+    and counted. Passing `None` keeps the old behaviour and is only for callers that have no
+    subgraph to hand -- `main()` always has one.
+
+    Returns `(lines, checked, already_held, refused)`.
     """
     path = ROOT / "reports" / "manual-identifications.csv"
     if not path.exists():
-        return [], 0, 0
+        return [], 0, 0, 0
     want = []
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f):
@@ -821,7 +842,16 @@ def manual_p2600_lines(priority_qids=()):
             if q.startswith("Q") and g.isdigit():
                 want.append((q, g, (row.get("name") or "").strip()))
     if not want:
-        return [], 0, 0
+        return [], 0, 0, 0
+
+    # ⛔ THE GATE. Outside Arne's contiguous group is not ours to label.
+    refused = 0
+    if subgraph is not None:
+        keep = [t for t in want if t[0] in subgraph]
+        refused = len(want) - len(keep)
+        want = keep
+    if not want:
+        return [], 0, 0, refused
     held = set()
     import json as _json
     import urllib.parse as _up
@@ -840,7 +870,7 @@ def manual_p2600_lines(priority_qids=()):
             # there", and re-adding a statement Wikidata holds is noise on the watchlist.
             print(f"WARNING: manual P2600 check could not reach Wikidata ({exc}); "
                   f"emitting none this run")
-            return [], 0, 0
+            return [], 0, 0, refused
         for qid, ent in (data.get("entities") or {}).items():
             for st in (ent.get("claims") or {}).get("P2600", []):
                 v = st.get("mainsnak", {}).get("datavalue", {}).get("value")
@@ -860,7 +890,7 @@ def manual_p2600_lines(priority_qids=()):
         if n:
             lines.append(f"#   {q} {n}: P2600 from a hand identification")
         lines.append(f'{q}\tP2600\t"{g}"')
-    return lines, len(want), len(want) - len(missing)
+    return lines, len(want), len(want) - len(missing), refused
 
 
 def read_tree():
@@ -7954,7 +7984,11 @@ def main():
     # Every QID this run emits anything for -- so its Geni id leads the file.
     _touched = {ln.split("	", 1)[0] for ln in lines
                 if ln[:1] == "Q" and "	" in ln}
-    man_lines, man_total, man_held = manual_p2600_lines(_touched)
+    man_lines, man_total, man_held, man_refused = manual_p2600_lines(
+        _touched, subgraph=our_wikidata_subgraph)
+    if man_refused:
+        print(f"hand identifications: {man_refused} REFUSED as outside Arne's subgraph "
+              f"-- a P2600 is not ours to add to an item we do not otherwise touch")
     if man_lines:
         ident_block = ["# " + "=" * 72,
                        "# HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.",

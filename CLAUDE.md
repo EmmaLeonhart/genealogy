@@ -488,7 +488,13 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **A second Geni ID on one item is NOT a conflict**, and a duplicate parent value is
   self-healing. Do not report or fix either.
 - **The seed set is the Wikidata subgraph from Arne** — no hop counts, a billion hops if that is
-  what it takes. The subgraph gates **creations** only; filling in existing items is ledger-wide.
+  what it takes. ⛔ **AND IT GATES `P2600` TOO, NOT JUST CREATIONS. Ruled 2026-09-17:** *"why the
+  fuck were geni ids added to so many people who are not 1 hop away from the universe"* and, of
+  the old rule, *"claude.md is wrong"*. This line used to end *"the subgraph gates creations only;
+  filling in existing items is ledger-wide"*, and that sentence is what sprayed Geni ids across
+  Wikidata: `manual_p2600_lines` read all **1,691** rows of `reports/manual-identifications.csv`
+  and emitted up to 90 a day onto items anywhere in the world tree, unattended. Filling in an item
+  we already work on is still ledger-wide; **putting our identifier on a stranger is not**.
 - **A BLOC IS A ROSTER REFERENCE, never pasted ids.** Entry points drip in on a date column, not
   a cron; the roster stays at about 250.
 - **A SUMMARY of a Wikidata item is not the item.** Download the full JSON; a summariser gets

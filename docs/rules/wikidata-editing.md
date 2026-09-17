@@ -991,6 +991,22 @@ architecture"*, which is worth knowing before it is grown. The other reading is
 corpus — and it is recorded in the group's `note` rather than silently dropped, because the
 instruction names a specific gedcom.
 
+### ⛔ SUPERSEDED 2026-09-17: the subgraph gates `P2600` as well, and this section is why it did not
+
+*"claude.md is wrong"* — and so was this page. Everything below was the argument for leaving
+additions ungated, and it is kept because it is the reasoning that has to be answered, not
+deleted. **What it got wrong is scope.** It reasons about *"improving the state of items already
+created"*, which is fine and still holds. It was then read as licence for
+`manual_p2600_lines` to walk a 1,691-row hand roster and stamp **our identifier** onto any item
+in it, up to 90 a day, sent unattended — people nowhere near the universe. That is not filling in
+an item we work on; it is claiming strangers.
+
+**The rule now**: a `P2600` goes only to a QID inside Arne's contiguous subgraph. Other additions
+to ledger items are unchanged. The gate is in `manual_p2600_lines(..., subgraph=)` and it counts
+what it refuses rather than dropping it silently.
+
+#### The original argument, superseded but kept
+
 ### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
 
 **It is fine for the subgraph guard not to apply to additions.** Adding statements to people we
