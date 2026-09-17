@@ -37,22 +37,29 @@ Carrying a QID. Not the Arne subgraph test `build-garborg-day.py` uses for its r
 the account owner's own ancestors, they are the universe's origin rather than candidates for
 admission to it, and gating them on the subgraph would be circular.
 
-## ⛔ IT WILL SOMETIMES CREATE SOMEBODY WIKIDATA ALREADY HAS, AND THAT IS RULED ACCEPTABLE
+## ⛔ CREATING SOMEBODY WIKIDATA ALREADY HAS IS THE POINT, NOT A DEFECT
 
-Eligibility is *our tree holds no QID for this parent*, which is **not** the same as *Wikidata
-does not have them*. Neither `derived-family.csv` nor `out/wikidata/p2600-all.tsv` can see an item
-that simply carries no `P2600`, and a notable medieval figure is exactly where one exists
-unlinked. Measured on the first real run: of three picks, **two already existed** —
-`Willa of Tuscany` as `Q2054995`, `Q60040644` and `Q4019888`, and `Sunifred I de Barcelona` as
-`Q1342360` *Sunifred, Count of Barcelona*. Only `Sakse Vik` was genuinely new.
+Ruled 2026-09-17, and this is the whole design rather than a tolerated cost: *"the idea is that
+duplicates are intended behaviour lol ... The reasoning here is specifically that adding all of
+them may over time lead to other editors merging in the duplicates and that specifically is
+likely gonna help with my brandenburg ancestry"*.
 
-Raised 2026-09-17 with the alternatives — refuse on a label match, link the existing item instead
-of creating, or emit candidates for review. Ruled: **"Create anyway — duplicates get merged."**
-Geni already holds duplicates and Wikidata has a merge process.
+**The duplicate is the bait.** A new item carrying a `P2600` and a parent link sits next to an
+existing unlinked item for the same person; other Wikidata editors notice the pair and merge
+them, and **the merge is what does the entity resolution** — it brings their item's statements
+and sitelinks together with our Geni id and our parent edge, on one item, without us having
+identified anything. That is the zipper's job being done by other people, at their pace, for
+free. `CLAUDE.md` § *the zipper merge* records that our own resolution *"is not doing that well"*;
+this routes round it.
 
-So do not add a label-search gate, do not route these to a review file, and do not re-raise it.
-`CLAUDE.md` § *DO NOT PANIC ABOUT ITEMS WE GOT WRONG* — *"These things can be healed by other
-people."*
+So the count of duplicates is not a number to drive down. Do not add a label-search gate, do not
+route these to a review file, do not "improve" the eligibility test to avoid people who probably
+already exist — avoiding them removes the mechanism. Measured on the first real run: of three
+picks two existed unlinked (`Willa of Tuscany` as `Q2054995`, `Q60040644`, `Q4019888`;
+`Sunifred I de Barcelona` as `Q1342360`), which is a good day rather than a bad one.
+
+I asked whether to gate this before it was wired. That was the wrong question and the answer is
+written here so nobody asks it again.
 
 ## ⛔ NO DESCRIPTIONS
 

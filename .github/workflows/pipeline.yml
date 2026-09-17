@@ -369,10 +369,13 @@ jobs:
       # is untouched and the two products stay separable. The script writes the halves itself
       # rather than emitting one file for something else to divide.
       #
-      # ⛔ IT WILL SOMETIMES CREATE SOMEBODY WIKIDATA ALREADY HAS. Eligibility is *our tree
-      # holds no QID*, which cannot see an item carrying no `P2600`; two of the first three
-      # picks existed unlinked. Ruled the same day: *"Create anyway — duplicates get merged."*
-      # Do not add a label-search gate here.
+      # ⛔ CREATING SOMEBODY WIKIDATA ALREADY HAS IS THE POINT. Ruled 2026-09-17: *"the idea is
+      # that duplicates are intended behaviour ... adding all of them may over time lead to
+      # other editors merging in the duplicates and that specifically is likely gonna help with
+      # my brandenburg ancestry"*. The duplicate carries our `P2600` and our parent edge; when
+      # another editor merges it into the existing item, THAT merge does the entity resolution
+      # the zipper is not managing. Do not add a label-search gate here; it removes the
+      # mechanism.
       - name: One ancestor creation a run, up the owner's own line
         continue-on-error: true
         env:
