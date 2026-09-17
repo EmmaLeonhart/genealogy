@@ -44839,3 +44839,35 @@ accumulated over several days rather than in one run. Asked what to do with thos
 day: **leave them standing.** The only thing wrong with them is the date, and 2027-01-01 makes
 them right; removing them would be churn against a correctness that is arriving anyway. No
 removal batch, and nothing further goes to Wikidata over this.
+
+### The identifications GEDCOM is the store, and it did not have them
+
+Same day, and the sharper version of the complaint above: *"they are stored in a GEDCOM. If they
+are stored in some sort of other format, that means that you were storing them in this separate
+location because they only belong in a GEDCOM, which I'm pretty sure is significantly larger than
+68 pairs. And that GEDCOM primarily functions through adding the things into the universe as
+entry points."*
+
+**Checked, and it is exactly right.** `exports/post-merge/wikidata-qid-links.ged` held **65
+records**. `reports/manual-identifications.csv` held **1,653 rows, every one a positive verdict**
+— 1,636 `SAME`, 17 `RIGHT` — and **0 of them were in the GEDCOM**. The file whose job is to carry
+the correspondence into the universe did not carry the correspondence. The CSV was not a ledger
+beside the store; it *was* the store, in the wrong format, in the wrong place, where nothing
+merges it and where the only thing that ever read it was the batch composer — which is how they
+came out as `P2600` instead of entry points.
+
+`queue.md` had reserved this as *"widening this beyond the three is a decision and is one
+constant"*. It is decided. `build-qid-links-gedcom.py` now reads the CSV alongside `PAIRS`:
+
+    69 pairs from the constant
+    1,653 hand identifications from manual-identifications.csv
+    1,716 distinct people joined
+    107 REFUSED -- not in the merged tree, would be minted as new people
+    1,615 NOTE links over 1,609 individuals      (was 65)
+
+The refusals are printed by id, not skipped quietly, because an `INDI` the merge has not seen is
+a new person rather than an annotation.
+
+The CSV stays: `verdict`, `batch`, `date` and `note` are provenance about how each pairing was
+reached and a GEDCOM `NOTE` cannot hold them. It is the ledger of the adjudication. It is no
+longer a source of anything that goes to Wikidata.

@@ -87,6 +87,8 @@ sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
 IN_TREE = ROOT / "reports" / "derived-labels.csv"
+#: The adjudicated hand identifications. Every row is a positive verdict; see `main`.
+HAND = ROOT / "reports" / "manual-identifications.csv"
 OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 
 #: The three, by Geni id. Named explicitly rather than derived: they are the ones whose Wikidata
@@ -298,6 +300,40 @@ def main():
     for geni_id, qid in PAIRS.items():
         pairs[geni_id].add(qid)
     print(f"{len(pairs)} pairs, from the constant in this file")
+
+    # ⛔ **THE HAND IDENTIFICATIONS BELONG HERE, AND THEY WERE LIVING SOMEWHERE ELSE.** Ruled
+    # 2026-09-17: *"they are stored in a GEDCOM. If they are stored in some sort of other
+    # format, that means that you were storing them in this separate location because they only
+    # belong in a GEDCOM, which I'm pretty sure is significantly larger than 68 pairs. And that
+    # GEDCOM primarily functions through adding the things into the universe as entry points."*
+    #
+    # That is the widening `queue.md` reserved as a decision -- *"widening this beyond the three
+    # is a decision and is one constant"* -- and it has now been decided. It is not the 83,988
+    # of the refuted first attempt and not the whole correspondence: it is
+    # `reports/manual-identifications.csv`, the adjudicated file, every row of which is a
+    # positive verdict somebody reached by hand.
+    #
+    # Measured the day it was ruled: **1,653 rows, 1,636 `SAME` and 17 `RIGHT`, and 0 of them
+    # were in this file.** The store that is supposed to hold the correspondence held 65 records
+    # and none of the 1,653. That is the whole complaint and this line is the whole fix.
+    #
+    # The CSV stays where it is, because `verdict`, `batch`, `date` and `note` are provenance
+    # about how each pairing was reached and a GEDCOM `NOTE` cannot carry them. It is the
+    # LEDGER of the adjudication; this is the STORE the tree reads. What it is emphatically not
+    # any more is a source of `P2600` -- `wikidata-edit-run._refuse_hand_identifications` and
+    # `build-garborg-day.manual_p2600_lines` both refuse that outright, and the entry points
+    # arrive on 2027-01-01 through this file instead.
+    hand = 0
+    if HAND.exists():
+        with HAND.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh):
+                q = (row.get("qid") or "").strip()
+                g = (row.get("geni_id") or "").strip()
+                if q.startswith("Q") and g.isdigit():
+                    pairs[g].add(q)
+                    hand += 1
+    print(f"{hand:,} hand identifications from {HAND.name}")
+    print(f"{len(pairs):,} distinct people once both sources are joined")
 
     absent = sorted(g for g in pairs if g not in in_tree)
     if absent:
