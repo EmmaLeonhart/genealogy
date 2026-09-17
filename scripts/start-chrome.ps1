@@ -14,9 +14,10 @@
     collector extension, and a fresh --user-data-dir has neither.
 
         powershell -File scripts/start-chrome.ps1            # kills what is running first
+        powershell -File scripts/start-chrome.ps1 -Url https://www.geni.com/  # a different landing page
         powershell -File scripts/start-chrome.ps1 -NoKill    # leave an existing Chrome alone
 #>
-param([switch]$NoKill)
+param([switch]$NoKill, [string]$Url = 'https://www.geni.com/paths')
 
 $flags = @(
     '--disable-background-timer-throttling'
@@ -41,5 +42,13 @@ if (-not $NoKill) {
     Start-Sleep -Seconds 3
 }
 
-& $exe @flags
-Write-Output "started $exe with $($flags.Count) flags"
+# ⛔ **CHROME DOES NOT OPEN WITHOUT A PAGE.** Ruled 2026-09-17: *"remember if you do not open a
+# page chrome does not open"*. Launching with flags alone returns immediately and leaves no
+# window -- and with no window there is no tab, so the Claude extension never connects and every
+# browser call comes back *"Browser extension is not connected"*. That reads as an extension
+# fault and sends you off restarting Chrome again, which does the same nothing. It cost a
+# restart cycle today with both loops down the whole time.
+#
+# `--restore-last-session` is NOT sufficient on its own; a URL is.
+& $exe @flags $Url
+Write-Output "started $exe with $($flags.Count) flags at $Url"
