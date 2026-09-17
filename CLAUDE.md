@@ -388,6 +388,25 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **A cron only fires while the session is idle.** Never schedule a long job into active work.
 - **A ten-minute ceiling is not a wall — background it.** Never hand a long job back.
 - **Code that is WRITTEN but never CALLED is not done.** Wire it, then measure from the wired path.
+- **⛔ THE REPO IS MINIMALIST. SMALLEST IT CAN POSSIBLY BE.** Ruled 2026-09-17: *"this repo ought
+  to be extremely minimalist. Smallest it can possibly be."* It is a standing property, not a
+  cleanup task: **every change should leave the repo smaller or the same size**, and a fix that
+  adds a file, a flag, a script or a gate is a fix that has to justify its own weight first. The
+  evening it was ruled, every single defect of the session had been answered by adding something.
+  342 scripts, 1,805 reports, 41 docs, 12 workflows is the state it was ruled against.
+  **It is queued, not started** — *"I want to actually see the repo editing in the current state
+  before you torch the current state"* — and § *NOTHING IN THE PIPELINE IS TRIVIAL* governs the
+  whole pass.
+- **⛔ NOTHING IN THE PIPELINE IS TRIVIAL, INCLUDING ORDER.** Ruled 2026-09-17: *"There is
+  absolutely nothing that is trivial in the entire pipeline. And even if I tell you something is
+  trivial, it is probably not trivial ... Almost everything in this repository is very rigorously
+  defined and the entire pipeline breaks if any single thing is changed flippantly."* The worked
+  example is the daily batch's ORDER: the composer writes a person and then every edge that
+  person can take, adjacently, so a prefix cut leaves each person whole. That order was read as
+  cosmetic and replaced with a stride, and **22 people shipped a link automatically while its
+  reciprocal waited for a human**. It looked like an implementation detail and it was the logic.
+  **And anything that makes the pipeline SLOWER is intentional** — *"you should not change it, or
+  if you do change it, only after a very very consistent explanation as to why it is bad."*
 - **LEGACY CODE IS DELETED.** The test is *does the pipeline read this*, not *might this be useful*.
 - **Do not grab the first artifact that vaguely matches.** Find the one that is meant.
 - **Incomplete earlier work is not the thing being described.** Its errors describe where it
@@ -542,6 +561,15 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 
 - **The repo is public; CI runs on a schedule, on dispatch and on PRs.** Only `pipeline.yml` runs
   on push, and a burst of pushes does not queue — the pending run is cancelled.
+- **⛔ AND THE 45-MINUTE PATH TICK PUSHES, SO THE PIPELINE CAN NEVER REACH THE FRONT.** Measured
+  2026-09-17: **0 green pipeline runs in 20 — 16 cancelled, 2 failed, 2 running.** Every stamp
+  commit is a push, a push cancels the PENDING run, and the campaign ticks every 45 minutes. So
+  the composed batch stays frozen for as long as the session works, which is how a day of edits
+  went out against a composition nobody had regenerated. `pipeline.yml` already warns *"do not
+  push again while waiting on one if the point is to watch that run"* — that is not a style note,
+  it is the reason the batch is stale. **If the pipeline has to complete, stop pushing and say
+  so**; the stamps can wait one tick and nothing is lost, because `attempt_ledger.stamp` is
+  idempotent and the drains are on disk.
 - **Pages is built from the sha the pipeline PUSHED**, not the one that triggered it.
 - **A page whose generator no workflow runs is published as a photograph.**
 - **The synoptic tree BUILDS in Actions**, slimmed. ~6.07 GB per million people.
