@@ -186,34 +186,6 @@ LAST	P31	Q101352
 #   Q5983613 Daniel Melanderhielm: P734 family name = the item just created
 Q5983613	P734	LAST	S2600	"6000000018625012640"
 
-# Petersdotter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Petersdotter"
-LAST	Len	"Petersdotter"
-#   set the mul label to "Petersdotter"
-LAST	Lmul	"Petersdotter"
-#   set the ja label to "ペテルスドッテル"
-LAST	Lja	"ペテルスドッテル"
-#   set the zh label to "佩特尔斯多特"
-LAST	Lzh	"佩特尔斯多特"
-#   set the ko label to "페테르스도테르"
-LAST	Lko	"페테르스도테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q15897204 Petter
-LAST	P144	Q15897204
-#   P144 based on = Q15897708 Petrus
-LAST	P144	Q15897708
-#   P144 based on = Q10622039 Peder
-LAST	P144	Q10622039
-#   P144 based on = Q15897788 Pietari
-LAST	P144	Q15897788
-#   Q141352446 Mette Petersdotter Weijer: P5056 patronym or matronym = the item just created
-Q141352446	P5056	LAST	S2600	"6000000003626215705"
-
 # Taraldsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -268,9 +240,26 @@ LAST	Lko	"안드라나프"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
 
-# 1320 more name items are needed and wait for a later
+# Anthelia -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Anthelia"
+LAST	Len	"Anthelia"
+#   set the mul label to "Anthelia"
+LAST	Lmul	"Anthelia"
+#   set the ja label to "アンテリア"
+LAST	Lja	"アンテリア"
+#   set the zh label to "安特利阿"
+LAST	Lzh	"安特利阿"
+#   set the ko label to "안테리아"
+LAST	Lko	"안테리아"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
+# 1317 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Anthelia (family), 1 bearer(s)
 #   Axelsdatter (patronymic), 1 bearer(s)
 #   Bergesdatter (patronymic), 1 bearer(s)
 #   Djupædia (family), 1 bearer(s)
@@ -282,7 +271,8 @@ LAST	P31	Q202444
 #   Nordinamn (given), 1 bearer(s)
 #   Olasdatter (patronymic), 1 bearer(s)
 #   Olavson (patronymic), 1 bearer(s)
-#   ... and 1308 more
+#   P (given), 1 bearer(s)
+#   ... and 1305 more
 
 
 # ======================================================================
@@ -291,12 +281,8 @@ LAST	P31	Q202444
 # where the two items share a P144 source, a stem and a gendered
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
-#   Q141318548: P460 said to be the same as = Q141457235
-Q141318548	P460	Q141457235
 #   Q141457235: P460 said to be the same as = Q141318548
 Q141457235	P460	Q141318548
-#   Q141436537: P460 said to be the same as = Q141457240
-Q141436537	P460	Q141457240
 #   Q141457240: P460 said to be the same as = Q141436537
 Q141457240	P460	Q141436537
 #   Q141448438: P460 said to be the same as = Q141457235

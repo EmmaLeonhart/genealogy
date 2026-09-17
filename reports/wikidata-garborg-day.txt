@@ -2,18 +2,10 @@
 # HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.
 # These lead the file: the Geni id is the FIRST edit on any individual,
 # and a name item is not an exception to that.
-# 1691 in reports/manual-identifications.csv, 1650 already on Wikidata, 30 a run beyond the ones this run touches.
+# 1691 in reports/manual-identifications.csv, 1665 already on Wikidata, 30 a run beyond the ones this run touches.
 # ========================================================================
-#   Q1147250 Xuán Xiāo 玄囂 Shǎo Hào 少昊 2: P2600 from a hand identification
-Q1147250	P2600	"6000000002481254239"
-#   Q198180 Zhuān Xū 顓頊 3世 DO NOT MERGE PARENTS: P2600 from a hand identification
-Q198180	P2600	"6000000001381123265"
-#   Q29201 Yellow Emperor: P2600 from a hand identification
-Q29201	P2600	"6000000001381274001"
 #   Q313336 Shén Nóng 神农 Yán Dì 炎帝 Yú Quān 榆圈 一任帝 2世: P2600 from a hand identification
 Q313336	P2600	"6000000130192002822"
-#   Q4268330 Jī Nǚ Xīu姬女修 4: P2600 from a hand identification
-Q4268330	P2600	"6000000020107122663"
 #   Q4302144 GŌNGSŪN Shǎo Diǎn 少典 1世: P2600 from a hand identification
 Q4302144	P2600	"6000000026522778851"
 #   Q4499078 Gui Xiang 媯象 9: P2600 from a hand identification
@@ -22,14 +14,6 @@ Q4499078	P2600	"6000000001272854603"
 Q6377648	P2600	"6000000001381063554"
 #   Q7878975 Wò Dēng 握登: P2600 from a hand identification
 Q7878975	P2600	"6000000001272026560"
-#   Q112311423 Karl Daniel Lagerlöf: P2600 from a hand identification
-Q112311423	P2600	"6000000011146855374"
-#   Q141147977 Magnus Lagerlöf: P2600 from a hand identification
-Q141147977	P2600	"6000000023826069701"
-#   Q24878983 Carl Roos af Hjelmsäter: P2600 from a hand identification
-Q24878983	P2600	"6000000007167514905"
-#   Q98697636 Karl Johan Wallroth: P2600 from a hand identification
-Q98697636	P2600	"6000000004306824607"
 #   Q10299225 Jing Kang 敬康 5: P2600 from a hand identification
 Q10299225	P2600	"6000000001381114215"
 #   Q10438384 Yu Gu Sou 瞽叟 8: P2600 from a hand identification
@@ -42,22 +26,8 @@ Q10514592	P2600	"6000000007213183226"
 Q10752092	P2600	"6000000001381046535"
 #   Q10933357 Dà Yè 大业 5: P2600 from a hand identification
 Q10933357	P2600	"6000000008004418918"
-#   Q128371 Caliph Marwan II bin Muhammad: P2600 from a hand identification
-Q128371	P2600	"6000000008659107006"
 #   Q1441379 Léi Zǔ 嫘祖: P2600 from a hand identification
 Q1441379	P2600	"6000000002048439278"
-#   Q18028984 Reformatorin Ursula von Münsterberg: P2600 from a hand identification
-Q18028984	P2600	"6000000188494434823"
-#   Q2746812 Umayya bin Abd Shams: P2600 from a hand identification
-Q2746812	P2600	"5152366561060066977"
-#   Q28409803 Tóng Yú Shì Wife 3 彤魚氏: P2600 from a hand identification
-Q28409803	P2600	"6000000002848066261"
-#   Q313342 Emperor Shùn 帝舜 9 1G: P2600 from a hand identification
-Q313342	P2600	"6000000195149451825"
-#   Q314809 Iry Hor Pharaoh of Egypt: P2600 from a hand identification
-Q314809	P2600	"6000000009562419205"
-#   Q318613 Scorpion I: P2600 from a hand identification
-Q318613	P2600	"6000000209058145828"
 #   Q334111 조선 27대 순종 척: P2600 from a hand identification
 Q334111	P2600	"6000000028714712399"
 #   Q4243879 Bó Yì 字 伯益 8: P2600 from a hand identification
@@ -82,6 +52,10 @@ Q819556	P2600	"6000000003485847175"
 Q8262857	P2600	"6000000023167303575"
 #   Q9511624 Huaxu: P2600 from a hand identification
 Q9511624	P2600	"6000000195149174838"
+#   Q9569181 Ju Mang 句芒 6: P2600 from a hand identification
+Q9569181	P2600	"6000000001380828716"
+#   Q9738 Wu Zhao 武曌 Zetian Emperor: P2600 from a hand identification
+Q9738	P2600	"6000000002188099903"
 
 # ========================================================================
 # NAME ITEMS. One file, per the 2026-08-30 rule -- there is no
@@ -276,34 +250,6 @@ LAST	P31	Q101352
 #   Q5983613 Daniel Melanderhielm: P734 family name = the item just created
 Q5983613	P734	LAST	S2600	"6000000018625012640"
 
-# Petersdotter -- patronymic, 2 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Petersdotter"
-LAST	Len	"Petersdotter"
-#   set the mul label to "Petersdotter"
-LAST	Lmul	"Petersdotter"
-#   set the ja label to "ペテルスドッテル"
-LAST	Lja	"ペテルスドッテル"
-#   set the zh label to "佩特尔斯多特"
-LAST	Lzh	"佩特尔斯多特"
-#   set the ko label to "페테르스도테르"
-LAST	Lko	"페테르스도테르"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P144 based on = Q15897204 Petter
-LAST	P144	Q15897204
-#   P144 based on = Q15897708 Petrus
-LAST	P144	Q15897708
-#   P144 based on = Q10622039 Peder
-LAST	P144	Q10622039
-#   P144 based on = Q15897788 Pietari
-LAST	P144	Q15897788
-#   Q141352446 Mette Petersdotter Weijer: P5056 patronym or matronym = the item just created
-Q141352446	P5056	LAST	S2600	"6000000003626215705"
-
 # Taraldsdatter -- patronymic, 2 bearer(s) in the batches
 # create a new item
 CREATE
@@ -358,9 +304,26 @@ LAST	Lko	"안드라나프"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
 
-# 1320 more name items are needed and wait for a later
+# Anthelia -- family, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   set the en label to "Anthelia"
+LAST	Len	"Anthelia"
+#   set the mul label to "Anthelia"
+LAST	Lmul	"Anthelia"
+#   set the ja label to "アンテリア"
+LAST	Lja	"アンテリア"
+#   set the zh label to "安特利阿"
+LAST	Lzh	"安特利阿"
+#   set the ko label to "안테리아"
+LAST	Lko	"안테리아"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+
+# 1317 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Anthelia (family), 1 bearer(s)
 #   Axelsdatter (patronymic), 1 bearer(s)
 #   Bergesdatter (patronymic), 1 bearer(s)
 #   Djupædia (family), 1 bearer(s)
@@ -372,7 +335,8 @@ LAST	P31	Q202444
 #   Nordinamn (given), 1 bearer(s)
 #   Olasdatter (patronymic), 1 bearer(s)
 #   Olavson (patronymic), 1 bearer(s)
-#   ... and 1308 more
+#   P (given), 1 bearer(s)
+#   ... and 1305 more
 
 
 # ======================================================================
@@ -381,12 +345,8 @@ LAST	P31	Q202444
 # where the two items share a P144 source, a stem and a gendered
 # suffix -- a shared source alone matches Jonsdatter to Johansdotter.
 # ======================================================================
-#   Q141318548: P460 said to be the same as = Q141457235
-Q141318548	P460	Q141457235
 #   Q141457235: P460 said to be the same as = Q141318548
 Q141457235	P460	Q141318548
-#   Q141436537: P460 said to be the same as = Q141457240
-Q141436537	P460	Q141457240
 #   Q141457240: P460 said to be the same as = Q141436537
 Q141457240	P460	Q141436537
 #   Q141448438: P460 said to be the same as = Q141457235
@@ -397,6 +357,59 @@ Q141457235	P460	Q141448438
 # ========================================================================
 # THE DAY'S PEOPLE
 # ========================================================================
+
+# ------------------------------------------------------------------------
+# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 90 PEOPLE,
+#   both by instruction: label changes go at the beginning of the batch and
+#   are limited per batch, and everything for one QID goes at once, in
+#   descending QID order. A label set at CREATION time is neither counted nor
+#   capped -- a label added during item creation is good.
+#   Newest items first, deliberately: a recent item with an error in it looks
+#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
+#   languages, then the rest.
+#   5 people, 14 edits; 0 edits held for a later run
+#   across 0 more people. A repeat is a no-op, so nothing is lost.
+# ------------------------------------------------------------------------
+#   add a mul alias "Israel Canuti Carolstadius"
+Q136535370	Amul	"Israel Canuti Carolstadius"
+#   Q136535370: 'Israel Canuti Carolstadius' has no ja/zh/ko label
+#   Q136535370: set the ja label
+Q136535370	Lja	"イスラエル・カヌティ・カロルスタディウス"
+#   Q136535370: set the zh label
+Q136535370	Lzh	"伊斯雷尔·卡努蒂·卡罗尔斯塔迪乌斯"
+#   Q136535370: set the ko label
+Q136535370	Lko	"이스랠 카누티 카롤스타듀스"
+#   Q134883589: set the en label to 'Sofia Hermance Graf'
+Q134883589	Len	"Sofia Hermance Graf"
+#   Q134883589: holds 'Sofia Hermance Cedercreutz'; ours is 'Sofia Hermance Graf'
+#   Q134883589: keep the outgoing label as an alias before it is replaced
+Q134883589	Amul	"Sofia Hermance Cedercreutz"
+#   Q134883589: set the mul label to 'Sofia Hermance Graf'
+Q134883589	Lmul	"Sofia Hermance Graf"
+#   Q109589229: set the en label to 'Eva Eskilina Arbman'
+Q109589229	Len	"Eva Eskilina Arbman"
+
+# ------------------------------------------------------------------------
+# LABEL CORRECTIONS -- existing items whose label is not what our tree now
+#   says. derive-labels.py made the married form primary on 2026-08-29 and
+#   these items predate it. The outgoing label is preserved as an Amul on
+#   the line above the Lmul that replaces it, so nothing hand-written is
+#   lost. This block SHRINKS as it is run -- it is not the clan block.
+# ------------------------------------------------------------------------
+#   Q109589229: holds 'Eva Eskilina Dillner'; ours is 'Eva Eskilina Arbman'
+#   Q109589229: keep the outgoing label as an alias before it is replaced
+Q109589229	Amul	"Eva Eskilina Dillner"
+#   Q109589229: set the mul label to 'Eva Eskilina Arbman'
+Q109589229	Lmul	"Eva Eskilina Arbman"
+#   Q1635203 Ugo I Embriaco, signore di Gibelletto: add a mul alias "Ugo I Embriaco, signore di Gibelletto"
+Q1635203	Amul	"Ugo I Embriaco, signore di Gibelletto"
+#   Q29201: set the en label to 'Xuanyuan 有熊氏'
+Q29201	Len	"Xuanyuan 有熊氏"
+#   Q29201: holds 'Yellow Emperor'; ours is 'Xuanyuan 有熊氏'
+#   Q29201: keep the outgoing label as an alias before it is replaced
+Q29201	Amul	"Yellow Emperor"
+#   Q29201: set the mul label to 'Xuanyuan 有熊氏'
+Q29201	Lmul	"Xuanyuan 有熊氏"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -1199,41 +1212,8 @@ Q141457276	P26	LAST	S2600	"6000000002836522020"
 Q141436600	P25	LAST	S2600	"6000000002836522020"
 #   the item just created: P735 given name = Q1083457 Christina
 LAST	P735	Q1083457
-
-# create a new item
-CREATE
-#   set the en label to "Clara Chaloff"
-LAST	Len	"Clara Chaloff"
-#   set the mul label to "Clara Chaloff"
-LAST	Lmul	"Clara Chaloff"
-#   add a mul alias "Clara Plotnikoff"
-LAST	Amul	"Clara Plotnikoff"
-#   set the ja label to "クララ・チャロフ"
-LAST	Lja	"クララ・チャロフ"
-#   set the zh label to "克拉拉·卡洛夫"
-LAST	Lzh	"克拉拉·卡洛夫"
-#   set the ko label to "크라라 차로프"
-LAST	Lko	"크라라 차로프"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000003021689268 Clara Chaloff, qualified P1810 subject named as Clara Plotnikoff
-LAST	P2600	"6000000003021689268"	P1810	"Clara Plotnikoff"
-#   P569 date of birth = +1869-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P569	+1869-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000003021689268"
-#   P570 date of death = +1957-04-21T00:00:00Z/11
-LAST	P570	+1957-04-21T00:00:00Z/11	S2600	"6000000003021689268"
-#   P26 spouse = Q141457246 Abraham Chaloff
-LAST	P26	Q141457246	S2600	"6000000003021689268"
-#   P40 child = Q141454679 Rhea Ettinger
-LAST	P40	Q141454679	S2600	"6000000003021689268"
-#   Q141457246 Abraham Chaloff: P26 spouse = the item just created
-Q141457246	P26	LAST	S2600	"6000000003021689268"
-#   Q141454679 Rhea Ettinger: P25 mother = the item just created
-Q141454679	P25	LAST	S2600	"6000000003021689268"
-#   the item just created: P735 given name = Q1114146 Clara
-LAST	P735	Q1114146
+#   P5056 patronym or matronym = Q141474271
+LAST	P5056	Q141474271
 
 # create a new item
 CREATE
@@ -3372,12 +3352,8 @@ Q6377648	P2600	"6000000001381063554"	P1810	"昌意 姬"
 Q198180	P40	Q4268330	S2600	"6000000001381123265"
 #   P3448 stepparent = Q1147250 玄囂 少昊
 Q198180	P3448	Q1147250	S2600	"6000000001381123265"
-#   P2600 Geni.com profile ID = 6000000001381123265 顓頊, qualified P1810 subject named as 顓頊
-Q198180	P2600	"6000000001381123265"	P1810	"顓頊"
 #   Q29201 Xuanyuan 有熊氏: P40 child = Q4302144 少典 (Shǎo Diǎn)
 Q29201	P40	Q4302144	S2600	"6000000001381274001"
-#   P2600 Geni.com profile ID = 6000000001381274001 Xuanyuan 有熊氏, qualified P1810 subject named as Xuanyuan 有熊氏
-Q29201	P2600	"6000000001381274001"	P1810	"Xuanyuan 有熊氏"
 #   Q5575580 Gustaf Ture Bielke: P3448 stepparent = Q4945294 Ulrika Eleonora von Düben
 Q5575580	P3448	Q4945294	S2600	"6000000001801796027"
 #   Q5595465 Axel Gustafsson Banér: P40 child = Q136243114 Elsa Ebba Elsa Banér
@@ -3394,8 +3370,6 @@ Q1147250	P40	Q198180	S2600	"6000000002481254239"
 Q1147250	P3448	Q28409803	S2600	"6000000002481254239"
 #   P3448 stepparent = Q8262857 嫫母
 Q1147250	P3448	Q8262857	S2600	"6000000002481254239"
-#   P2600 Geni.com profile ID = 6000000002481254239 玄囂 少昊, qualified P1810 subject named as 玄囂 少昊
-Q1147250	P2600	"6000000002481254239"	P1810	"玄囂 少昊"
 #   Q141216371 Guri Pedersdatter Foss: P3448 stepparent = Q141443024 Susanne Rasmusdatter Fister
 Q141216371	P3448	Q141443024	S2600	"6000000002482084257"
 #   Q141206061 Cecilie Olsdatter Håland: P3448 stepparent = Q141205910 Hallvord Randa
@@ -3486,10 +3460,12 @@ Q141457321	P40	Q141457331	S2600	"6000000008542390878"
 Q141457299	P22	Q141457295	S2600	"6000000008686071332"
 #   Q141457325 Ragnhild Johannesdatter Lende: P26 spouse = Q141457335 Sven Einarsen Lende
 Q141457325	P26	Q141457335	S2600	"6000000008743091211"
-#   Q141457259 Carin Magnusdotter: P26 spouse = Q141457247 Abraham Kula
-Q141457259	P26	Q141457247	S2600	"6000000008978519280"
-#   Q141457247 Abraham Kula: P26 spouse = Q141457259 Carin Magnusdotter
-Q141457247	P26	Q141457259	S2600	"6000000008978536291"
+#   Q141457259 Carin Magnusdotter: P26 spouse = Q141474059 Abraham Kula
+Q141457259	P26	Q141474059	S2600	"6000000008978519280"
+#   Q141474059 Abraham Kula: P26 spouse = Q141457259 Carin Magnusdotter
+Q141474059	P26	Q141457259	S2600	"6000000008978536291"
+#   Q141455107 Pagano Ebriaci, di Pisa: P40 child = Q7877879 Ugone Ebriaci di Pisa
+Q141455107	P40	Q7877879	S2600	"6000000009305030992"
 #   Q141457268 Elsebe Oberberg: P26 spouse = Q141457265 Conrad Braunjohan
 Q141457268	P26	Q141457265	S2600	"6000000011735677553"
 #   Q141457265 Conrad Braunjohan: P26 spouse = Q141457268 Elsebe Oberberg
@@ -3522,8 +3498,6 @@ Q141457284	P26	Q141457254	S2600	"6000000019013834042"
 Q141457254	P26	Q141457284	S2600	"6000000019014005015"
 #   Q4268330 女修 Jī 姬: P22 father = Q198180 顓頊
 Q4268330	P22	Q198180	S2600	"6000000020107122663"
-#   P2600 Geni.com profile ID = 6000000020107122663 女修 Jī 姬, qualified P1810 subject named as 女修 Jī 姬
-Q4268330	P2600	"6000000020107122663"	P1810	"女修 Jī 姬"
 #   Q140521240 Nils Magnus Berlin: P25 mother = Q141448460 Brita Unæa
 Q140521240	P25	Q141448460	S2600	"6000000022324181158"
 #   Q141457309 Mårten Larsson: P40 child = Q141457257 Brita Mårtensdotter
