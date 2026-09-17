@@ -780,12 +780,6 @@ FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
 #: How many manual `P2600` statements go out per run. Specified 2026-09-01: the pipeline
 #: generates a fixed number of QuickStatements adding the Geni id to the individuals at the
 #: start of each generation, taken from the CSV rows found not to be present already.
-#: ⛔ A third of the individual CREATIONS go to the automatic half and two thirds to the
-#: QuickStatements half -- ruled 2026-09-14, restated 2026-09-17. It is a SHARE of whatever is
-#: composed, never a cap; `scripts/split-daily-batch.py` records what a ceiling stacked on top of
-#: it did for a week.
-AUTO_SHARE = 1.0 / 3.0
-
 MANUAL_P2600_PER_RUN = 30
 
 
@@ -6084,11 +6078,6 @@ def main():
     # when the spine is done.
     ap.add_argument("--in-laws", action="store_true",
                     help="also include spouses of roster members")
-    ap.add_argument("--half", choices=("auto", "manual"),
-                    help="generate only one side of the disjoint split: the individual "
-                         "CREATIONS are dealt a third to `auto` and two thirds to `manual`, and "
-                         "everything else is generated identically in both. Writes "
-                         "reports/wikidata-garborg-day-<half>.txt.")
     ap.add_argument("--compose", action="store_true",
                     help="build the batch to docs/batch-rules.md instead of taking the "
                          "whole one-edge ring: spine couple, 4 random parent sets, 4 "
@@ -6450,30 +6439,6 @@ def main():
         print(f"composed batch: {len(to_create)} people to create "
               f"(the unrestricted ring would have been {before})")
 
-        # ⛔ **THE SPLIT HAPPENS HERE, AT THE BEGINNING, NOT AT THE END.** Ruled 2026-09-17:
-        # *"a third of them go into the automatic, two thirds of them go into the quick
-        # statements, and that is what occurs at the very fucking beginning of the pipeline ...
-        # they are basically two parallel generations of all of the same stuff."* And when an
-        # end-of-pipeline splitter was offered as equivalent: *"you need to have a thoroughly
-        # split pipeline. No half measures."*
-        #
-        # Only the creation of an INDIVIDUAL is disjoint -- *"not creations of name items"* --
-        # because a second `CREATE` for a person mints a second item that cannot be undone, while
-        # Wikidata refuses a duplicate name item on its label-plus-description pair and a
-        # duplicate `P22`/`P40` is self-healing. So this is the ONLY thing `--half` changes:
-        # everything else is generated in full on both sides, which is what makes them parallel
-        # generations rather than two cuts of one file.
-        #
-        # Dealt in sorted order so the two runs agree without sharing state or a seed: `auto`
-        # takes the first third, `manual` takes the rest, and neither needs to know what the
-        # other did.
-        if args.half:
-            everyone = sorted(to_create)
-            n_auto = int(round(len(everyone) * AUTO_SHARE))
-            mine = everyone[:n_auto] if args.half == "auto" else everyone[n_auto:]
-            to_create = {g: to_create[g] for g in mine}
-            print(f"--half {args.half}: {len(to_create)} of {len(everyone)} individual "
-                  f"creations; everything else generated in full on both sides")
     else:
         compose_why = {}
 
@@ -8087,7 +8052,7 @@ def main():
         lines, clan_block, hand + trimmed,
         priority=_cjk_priority_qids(our_items))
 
-    out = (ROOT / "reports" / ("wikidata-garborg-day-%s.txt" % args.half)) if args.half         else (ROOT / "reports" / "wikidata-garborg-day.txt")
+    out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first**, ruled 2026-08-30: one file rather than two, names first and
     # then everything else, in place of `wikidata-garborg-day.txt` plus
     # `wikidata-garborg-name-items.txt` and a run order to remember.

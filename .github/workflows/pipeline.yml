@@ -324,42 +324,22 @@ jobs:
       # ⛔ SPLIT BEFORE THE SITE IS BUILT. The page serves the manual half, so the split has
       # to exist by the time `build-pages-site.py` runs. Ruled 2026-09-14: *"Produce disjoint
       # quickstatements on the github page too."*
-      # ⛔ **TWO PARALLEL GENERATIONS, NOT ONE FILE CUT IN TWO.** Ruled 2026-09-17: *"a third of
-      # them go into the automatic, two thirds of them go into the quick statements, and that is
-      # what occurs at the very fucking beginning of the pipeline ... they are basically two
-      # parallel generations of all of the same stuff."* And on being offered the end-of-pipeline
-      # splitter as equivalent: *"you need to have a thoroughly split pipeline. No half
-      # measures."*
+      # ⛔ **ONE COMPOSE, THEN THE SPLIT. TWO COMPOSES ARE IMPOSSIBLE HERE.**
       #
-      # `--half` deals the individual CREATIONS -- a third to auto, two thirds to manual -- and
-      # generates everything else in full on BOTH sides, because only a duplicated person
-      # creation is unrecoverable. `split-daily-batch.py` no longer CUTS anything; it runs below
-      # as `--verify` and checks the two files the generations produced.
-      - name: Generate the automatic half
-        env:
-          PYTHONPATH: src
-        run: python scripts/build-garborg-day.py --compose --half auto
-
-      - name: Generate the QuickStatements half
-        env:
-          PYTHONPATH: src
-        run: python scripts/build-garborg-day.py --compose --half manual
-
-      # ⛔ **THIS STEP WAS DELETED AND THE COMMENT ABOVE CLAIMED IT WAS NOT.** `3767c4ef` replaced
-      # it with the two generations and said in the same breath that it *"is still run afterwards
-      # and now finds nothing to do"*. It was not run at all. Restored within the minute.
+      # `--half auto` / `--half manual` as two invocations was tried on 2026-09-17 and removed
+      # the same hour: **`--compose` ADVANCES THE SEQUENCE.** It consumes and rewrites
+      # `reports/garborg-carry-forward.tsv`, and the composer's own argument parser records the
+      # measurement -- re-running it on the same day produced a batch differing by *"19 people
+      # out and 17 in -- the next hop, not today's"*. So two runs are two different DAYS, and any
+      # disjointness between them is coincidence.
       #
-      # It stays because its ASSERTIONS are the only thing checking the invariants: that no line
-      # is lost, that no individual creation appears in both halves, and that no `LAST` precedes
-      # its `CREATE`. Those are properties of the two files however they were produced, and
-      # deleting the producer of a cut is not a reason to stop checking the cut. Ruled the same
-      # hour: *"if there's anything in the pipeline that makes it slower, that is intentional,
-      # and you should not change it."*
-      - name: Check the two halves
+      # `split-daily-batch.py` gives the same result from one composition: individual creations
+      # dealt a third / two thirds, everything else written to BOTH files, which is the ruling --
+      # *"two parallel generations of all of the same stuff ... connectivity 100% on both"*.
+      - name: Split the daily batch into the automatic and manual halves
         env:
           PYTHONPATH: src
-        run: python scripts/split-daily-batch.py --verify
-
+        run: python scripts/split-daily-batch.py
 
       # ⛔ THE UNIVERSE-GROWTH PASS, APPENDED TO BOTH HALVES AFTER THE SPLIT. Ruled
       # 2026-09-14: adding `P1810` to existing `P2600` statements is a true, harmless, missing
