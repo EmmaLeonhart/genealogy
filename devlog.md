@@ -44840,34 +44840,29 @@ day: **leave them standing.** The only thing wrong with them is the date, and 20
 them right; removing them would be churn against a correctness that is arriving anyway. No
 removal batch, and nothing further goes to Wikidata over this.
 
-### The identifications GEDCOM is the store, and it did not have them
+### Reverted: the CSV and the GEDCOM are two different operations
 
-Same day, and the sharper version of the complaint above: *"they are stored in a GEDCOM. If they
-are stored in some sort of other format, that means that you were storing them in this separate
-location because they only belong in a GEDCOM, which I'm pretty sure is significantly larger than
-68 pairs. And that GEDCOM primarily functions through adding the things into the universe as
-entry points."*
+`781f6ce5` read *"they are stored in a GEDCOM ... significantly larger than 68 pairs"* as meaning
+the hand identifications belonged in `exports/post-merge/wikidata-qid-links.ged`, and poured all
+1,653 CSV rows into it — 65 records to 1,609. **Wrong, and reverted the same hour.**
 
-**Checked, and it is exactly right.** `exports/post-merge/wikidata-qid-links.ged` held **65
-records**. `reports/manual-identifications.csv` held **1,653 rows, every one a positive verdict**
-— 1,636 `SAME`, 17 `RIGHT` — and **0 of them were in the GEDCOM**. The file whose job is to carry
-the correspondence into the universe did not carry the correspondence. The CSV was not a ledger
-beside the store; it *was* the store, in the wrong format, in the wrong place, where nothing
-merges it and where the only thing that ever read it was the batch composer — which is how they
-came out as `P2600` instead of entry points.
+⛔ **THEY ARE TWO SEPARATE, COMPLETELY DIFFERENT OPERATIONS AND NEITHER FEEDS THE OTHER.** Ruled
+2026-09-17:
 
-`queue.md` had reserved this as *"widening this beyond the three is a decision and is one
-constant"*. It is decided. `build-qid-links-gedcom.py` now reads the CSV alongside `PAIRS`:
+    exports/post-merge/wikidata-qid-links.ged   ENTRY POINTS. Triggers 2027-01-01. It puts
+                                                named people into the universe on that date,
+                                                and that is its whole job.
 
-    69 pairs from the constant
-    1,653 hand identifications from manual-identifications.csv
-    1,716 distinct people joined
-    107 REFUSED -- not in the merged tree, would be minted as new people
-    1,615 NOTE links over 1,609 individuals      (was 65)
+    reports/manual-identifications.csv          IDENTIFICATION. Adjudicated QID-to-Geni
+                                                pairings for the tree's own entity resolution.
+                                                A different job, on a different schedule,
+                                                answering a different question.
 
-The refusals are printed by id, not skipped quietly, because an `INDI` the merge has not seen is
-a new person rather than an annotation.
+The count of one says nothing about the other. The GEDCOM being 65 records is not a symptom of
+the CSV having 1,653: they are not the same population and were never meant to converge. Both of
+today's readings of that file were wrong in the same direction — first that its rows were a
+source of `P2600`, then that they were entry points — and both came from treating the CSV as
+something that feeds Wikidata. It does not. It resolves identity locally, and it stops there.
 
-The CSV stays: `verdict`, `batch`, `date` and `note` are provenance about how each pairing was
-reached and a GEDCOM `NOTE` cannot hold them. It is the ledger of the adjudication. It is no
-longer a source of anything that goes to Wikidata.
+What stands from today is `93ba24bc`: no hand identification goes to Wikidata, at the generator
+and at the sender. What does not stand is anything that moved rows between these two files.
