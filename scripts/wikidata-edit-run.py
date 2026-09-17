@@ -94,6 +94,28 @@ REVIEWED_BATCHES = {
 #: the old message was not: a run that logged in and took a CSRF token has good credentials and an
 #: unblocked account, so what is missing is a GRANT -- and grants belong to the bot password, not
 #: to the account, and are fixed at the moment the password is created.
+#: ⛔ THE RUNNER'S IP IS THE PROBLEM, NOT THE CREDENTIAL. Measured 2026-09-17 off the
+#: 2026-09-16 13:25 run: `whoami` reported the session BLOCKED with
+#: *"Open proxy/Webhost ... <!-- Microsoft Azure -->"*, while `edit`, `createpage` and
+#: `item-term` were all held. GitHub-hosted runners are Azure and Wikimedia blocks those ranges
+#: on sight, so a scheduled run cannot write however the bot password is configured.
+BLOCK_HINT = (
+    "",
+    "  THE SESSION IS BLOCKED. This is not the bot password and not the batch.",
+    "",
+    "  Wikimedia blocks open proxies and webhosts, and GitHub-hosted runners are Microsoft",
+    "  Azure, so every scheduled run edits from a blocked address. Three ways out:",
+    "",
+    "    IP block exemption   ask on Wikidata for `ipblock-exempt` on the bot account;",
+    "                         it is the normal remedy for a bot on cloud infrastructure",
+    "    run it off Actions   a self-hosted runner, or send the batch from the machine that",
+    "                         already edits Wikidata by hand",
+    "    do nothing           the batch keeps composing and waits; nothing is lost, and the",
+    "                         Pages site still publishes the half a person pastes",
+    "",
+)
+
+
 PERMISSION_HINT = (
     "",
     "  Every failure is permissiondenied and the login succeeded, so this is the bot",
@@ -822,8 +844,16 @@ def main() -> int:
     for needed in ("edit", "createpage", "item-term", "item-create",
                    "item-merge", "item-redirect", "property-term"):
         print("  right %-14s %s" % (needed, "yes" if needed in rights else "NO"))
-    if info.get("blockid"):
+    blocked = bool(info.get("blockid"))
+    if blocked:
         print("  ACCOUNT IS BLOCKED: %s" % info.get("blockreason", ""))
+    # Carried to the stop message so the diagnosis there is made of what was MEASURED here
+    # rather than inferred from the shape of the failures.
+    globals()["_SESSION_BLOCKED"] = blocked
+    globals()["_SESSION_BLOCK_REASON"] = info.get("blockreason", "")
+    globals()["_SESSION_MISSING"] = [r for r in ("edit", "createpage", "item-term",
+                                                 "item-create", "item-merge", "item-redirect",
+                                                 "property-term") if r not in rights]
     print("  all rights: %s" % " ".join(sorted(rights)))
 
     token = session.csrf()
@@ -867,8 +897,29 @@ def main() -> int:
                 # the account's own rights. Seen 2026-09-16 on the first run that got as far as
                 # trying to edit: five `qs-terms-*` edits, all permissiondenied.
                 if failed and all("permissiondenied" in m for m in failed.values()):
-                    for line in PERMISSION_HINT:
-                        print(line, file=sys.stderr)
+                    # ⛔ **A BLOCK IS NOT A GRANT PROBLEM, AND SAYING SO SENT US TO THE WRONG
+                    # PLACE.** On 2026-09-16 every edit failed `permissiondenied`, this printed
+                    # the bot-password hint, and the real cause was three lines further up in
+                    # the same log: the session was BLOCKED as an open proxy/webhost, commented
+                    # `<!-- Microsoft Azure -->`. GitHub Actions runners are Azure, and Wikimedia
+                    # blocks webhost ranges. No bot password can edit through that.
+                    #
+                    # The block is measured at login by `whoami`, so lead with it and do not
+                    # offer the grants hint underneath, which reads as a second opinion.
+                    if globals().get("_SESSION_BLOCKED"):
+                        for line in BLOCK_HINT:
+                            print(line, file=sys.stderr)
+                        print("  the block reason: %s"
+                              % globals().get("_SESSION_BLOCK_REASON", ""), file=sys.stderr)
+                    else:
+                        for line in PERMISSION_HINT:
+                            print(line, file=sys.stderr)
+                    # Separate from the block and true either way: a right the session does not
+                    # hold fails that KIND of edit even once the IP problem is gone.
+                    missing = globals().get("_SESSION_MISSING") or []
+                    if missing:
+                        print("  and separately, rights this session does NOT hold: %s"
+                              % ", ".join(missing), file=sys.stderr)
                 break
             continue
         consecutive = 0
