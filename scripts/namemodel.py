@@ -2540,7 +2540,24 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # whole field would throw those patronymics away, and they are the most useful thing on a
     # record whose given name is unknown.
     _givn_tokens = [t for t in re.split(r"\s+", plain.strip()) if t]
-    _has_marker = any(name_shape(t)[1] == "unknown" for t in _givn_tokens)
+    # ⛔ **A PATRONYMIC IS NEVER THE UNKNOWN-GIVEN-NAME MARKER, AND AN ABBREVIATED ONE SHAPED
+    # LIKE IT.** This suppression exists for `NN Olsdatter` — a record whose given name is
+    # genuinely unrecorded — and it throws GIVEN names away while keeping the patronymic.
+    #
+    # `name_shape` returns `unknown` for the ABBREVIATED forms and `None` for the written-out
+    # ones: `Nilsdtr.` and `Olsdtr` are unknown, `Nilsdatter` and `Olsdatter` are not. So a
+    # perfectly ordinary `Guri Nilsdtr.` armed the marker rule, `Guri` was suppressed, and the
+    # only token left was the patronymic — which left the caller with no given name at all.
+    #
+    # What that produced downstream is the reason this matters: `build-garborg-day` rebuilds a
+    # married person's label as *given tokens + married surname*, so an empty given list
+    # collapsed the label to the BARE FARM NAME. `Q141488174` was created as a human called
+    # `Askvik` with an alias `Raunes`, when Geni records her as `Guri Nilsdtr. Askvik`.
+    #
+    # `is_patronymic` already accepts every abbreviated form — it is only `name_shape` that
+    # calls them unknown — so excluding them here needs no new list to drift.
+    _has_marker = any(name_shape(t)[1] == "unknown" and not is_patronymic(t)
+                      for t in _givn_tokens)
 
     ordinal = 0
     for token in ([] if is_description(raw_givn)
@@ -2550,7 +2567,15 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         # field: `NN`, `Unknown`, `okänd` and `anonyma` each produced a `P735` proposal.
         # The set existed and the field simply never consulted it.
         token, shape = name_shape(token)
-        if shape:
+        # ⛔ **THE PATRONYMIC TEST COMES FIRST, OR AN ABBREVIATED ONE IS NEVER REACHED.**
+        # `name_shape` calls `Nilsdtr.`, `Olsdtr` and `Govertsdtr.` unknown while passing
+        # `Nilsdatter` and `Olsdatter` through, so this short-circuit emitted the abbreviated
+        # forms as `unknown` and the `is_patronymic` branch below never saw them. The caller
+        # keeps only `given` and `patronymic`, so the patronymic fell out of the label.
+        #
+        # A real marker -- `NN`, `Unknown`, `okänd` -- is not a patronymic, so it still takes
+        # the branch below and nothing this guard was written for is weakened.
+        if shape and not is_patronymic(token):
             out.append((token, shape, 0))
             continue
         if is_patronymic(token):
