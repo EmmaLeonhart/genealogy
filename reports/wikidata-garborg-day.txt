@@ -322,7 +322,7 @@ LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
 
-# 1317 more name items are needed and wait for a later
+# 1318 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
 #   Axelsdatter (patronymic), 1 bearer(s)
 #   Bergesdatter (patronymic), 1 bearer(s)
@@ -336,7 +336,7 @@ LAST	P31	Q101352
 #   Olasdatter (patronymic), 1 bearer(s)
 #   Olavson (patronymic), 1 bearer(s)
 #   P (given), 1 bearer(s)
-#   ... and 1305 more
+#   ... and 1306 more
 
 
 # ======================================================================
@@ -357,59 +357,6 @@ Q141457235	P460	Q141448438
 # ========================================================================
 # THE DAY'S PEOPLE
 # ========================================================================
-
-# ------------------------------------------------------------------------
-# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 90 PEOPLE,
-#   both by instruction: label changes go at the beginning of the batch and
-#   are limited per batch, and everything for one QID goes at once, in
-#   descending QID order. A label set at CREATION time is neither counted nor
-#   capped -- a label added during item creation is good.
-#   Newest items first, deliberately: a recent item with an error in it looks
-#   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
-#   languages, then the rest.
-#   5 people, 14 edits; 0 edits held for a later run
-#   across 0 more people. A repeat is a no-op, so nothing is lost.
-# ------------------------------------------------------------------------
-#   add a mul alias "Israel Canuti Carolstadius"
-Q136535370	Amul	"Israel Canuti Carolstadius"
-#   Q136535370: 'Israel Canuti Carolstadius' has no ja/zh/ko label
-#   Q136535370: set the ja label
-Q136535370	Lja	"イスラエル・カヌティ・カロルスタディウス"
-#   Q136535370: set the zh label
-Q136535370	Lzh	"伊斯雷尔·卡努蒂·卡罗尔斯塔迪乌斯"
-#   Q136535370: set the ko label
-Q136535370	Lko	"이스랠 카누티 카롤스타듀스"
-#   Q134883589: set the en label to 'Sofia Hermance Graf'
-Q134883589	Len	"Sofia Hermance Graf"
-#   Q134883589: holds 'Sofia Hermance Cedercreutz'; ours is 'Sofia Hermance Graf'
-#   Q134883589: keep the outgoing label as an alias before it is replaced
-Q134883589	Amul	"Sofia Hermance Cedercreutz"
-#   Q134883589: set the mul label to 'Sofia Hermance Graf'
-Q134883589	Lmul	"Sofia Hermance Graf"
-#   Q109589229: set the en label to 'Eva Eskilina Arbman'
-Q109589229	Len	"Eva Eskilina Arbman"
-
-# ------------------------------------------------------------------------
-# LABEL CORRECTIONS -- existing items whose label is not what our tree now
-#   says. derive-labels.py made the married form primary on 2026-08-29 and
-#   these items predate it. The outgoing label is preserved as an Amul on
-#   the line above the Lmul that replaces it, so nothing hand-written is
-#   lost. This block SHRINKS as it is run -- it is not the clan block.
-# ------------------------------------------------------------------------
-#   Q109589229: holds 'Eva Eskilina Dillner'; ours is 'Eva Eskilina Arbman'
-#   Q109589229: keep the outgoing label as an alias before it is replaced
-Q109589229	Amul	"Eva Eskilina Dillner"
-#   Q109589229: set the mul label to 'Eva Eskilina Arbman'
-Q109589229	Lmul	"Eva Eskilina Arbman"
-#   Q1635203 Ugo I Embriaco, signore di Gibelletto: add a mul alias "Ugo I Embriaco, signore di Gibelletto"
-Q1635203	Amul	"Ugo I Embriaco, signore di Gibelletto"
-#   Q29201: set the en label to 'Xuanyuan 有熊氏'
-Q29201	Len	"Xuanyuan 有熊氏"
-#   Q29201: holds 'Yellow Emperor'; ours is 'Xuanyuan 有熊氏'
-#   Q29201: keep the outgoing label as an alias before it is replaced
-Q29201	Amul	"Yellow Emperor"
-#   Q29201: set the mul label to 'Xuanyuan 有熊氏'
-Q29201	Lmul	"Xuanyuan 有熊氏"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
