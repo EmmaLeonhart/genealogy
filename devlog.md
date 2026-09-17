@@ -45001,3 +45001,72 @@ churned 1,072 rows on the first attempt before it was reverted.
 person: he will come back after the 30-day cooldown and 404 again, every sweep. `http404/http404`
 is already a distinct recorded state, so the population is countable once enough attempts are
 stamped. Not started — it is a new work item, not part of the collector runs.
+
+## 2026-09-17 — the duplicate check was blinded by one removed claim
+
+Shown `Q69821896` *Björnsson* and asked why the patronymic work had not gone. Two answers, and
+the second is the one that was costing items.
+
+### The ontology was deliberately minimal, and the minimalism was backwards
+
+`build-garborg-name-items.py` created patronymics with labels, a description and `P31` →
+`Q110874` and nothing else. Its own header said why: the hand-made `Q141152710` *Aadnesson* was
+copied as the pattern, and of `P1705`, `P282` and `P407` it said *"they are not added here"* —
+citing the measurement in `docs/rules/names.md` that found them on most existing patronymic
+items. **The measurement was right and the conclusion was inverted**: 513, 579 and 370 of 633 is
+a convention, and it was read as decoration.
+
+Ruled 2026-09-17: *"the ontology of that item is what we are striving towards"*. Now emitted,
+each derived from the token itself:
+
+    P31   Q130444148  masculine patronymic   /  Q130444179 feminine patronymic
+    P31   Q10673705   son name               /  Q10476255 daughter name
+    P1705 mul:"<token>"                         native label
+    P282  Q8229 Latin script                    from the script; Cyrillic Q8209, Han Q8201,
+                                                Hangul Q8222, Greek Q8216, Arabic Q1828555,
+                                                Hebrew Q33513
+
+`P407` *language of work or name* is **not** emitted. Which languages a name belongs to is not a
+fact about the string — `Björnsson` is Icelandic and Swedish — and nothing here knows it. A
+guessed language is a false claim on a shared item.
+
+**The gendered classes fire only on an explicit ending.** `_suffix_sex` answers `M` for anything
+that is not a `-datter`; that is a fallback for choosing a pronoun, not a reading of the form,
+and using it would have put *masculine patronymic* on `Nemanjić` and `Ivanovich`. *son name* is
+narrower again — *"surname containing a given name and the word son"* — so `-sen`, a contraction
+of `søn`, gets *masculine patronymic* and not *son name*. Checked on real tokens:
+
+    Björnsson   masculine patronymic, son name      Latin
+    Olsdotter   feminine patronymic, daughter name  Latin
+    Eriksen     masculine patronymic                Latin
+    Nemanjić    --                                  Latin
+    Ivanovich   --                                  Latin
+    Mariasson   son name (matronymic: not a patronymic)
+    Рюрикович   --                                  Cyrillic
+
+`Q9202` was guessed at while assembling the script list and is the **Statue of Liberty**. Every
+id above was resolved against Wikidata instead — § *Never guess an ID*, earning its place.
+
+### ⛔ And the real defect: one removed claim made an item invisible
+
+The anti-duplicate design rests on Wikidata refusing a second `Björnsson` + `patronymic`, because
+a label and description must be unique together. **`live_name_items.existing_item` was not using
+that key.** It asked only whether a candidate carried a qualifying `P31`.
+
+`StarTrekker` removed `P31` → `Q110874` *patronymic* from `Q69821896` on 15 July 2026, together
+with `P1705` and `P282`. From that edit onward our live check could not see the item: the one
+marker it looked for was the one that had been removed. `Q141493359`, a second Björnsson, was
+merged back into it by hand on 2026-09-17.
+
+Verified offline against the item's own JSON, with and without the stripped claim:
+
+    as it stands today      by P31 = True   by description = True
+    with P31 stripped       by P31 = False  by description = True
+
+So the check now matches **either** key, and `CLASSES["patronymic"]` accepts the finer classes as
+well. **A third party stripping a claim is ordinary Wikidata. A duplicate check that one removed
+claim blinds is the defect** — and it is the same shape as § *A GUARD IN ONE EMITTER IS NOT A
+GUARD*: the design assumed a key that nothing was actually matching on.
+
+Not established: who created `Q141493359`. The API rate-limited while the generator was running
+its own live lookups, and the question does not change the mechanism.

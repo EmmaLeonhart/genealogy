@@ -8,9 +8,32 @@ Ruled 2026-08-24: the names are to be modelled properly, which they were not. `P
 **A patronymic is its own item even when the spelling already exists.**
 `CLAUDE.md` § *One name item per USAGE*: `Eivindsen` has a Wikidata item as a given
 name, and the patronymic `Eivindsen` is a different object. The hand-made `Q141152710`
-*Aadnesson* is the pattern — labels and `P31` → `Q110874` *patronymic*. That minimalism is
-copied deliberately: the measurement in `CLAUDE.md` found `P1705`, `P282` and `P407` on most
-existing patronymic items, and **they are not added here**.
+*Aadnesson* was the pattern — labels and `P31` → `Q110874` *patronymic* and nothing else.
+
+⛔ **THAT MINIMALISM IS OVER, AND `Q69821896` *Björnsson* IS THE SHAPE NOW.** Ruled 2026-09-17,
+shown the item directly: *"the ontology of that item is what we are striving towards"*. It
+carries, beyond the label and the description:
+
+    P31   Q110874      patronymic
+    P31   Q130444148   masculine patronymic      <- Q130444179 feminine patronymic is the pair
+    P31   Q10673705    son name                  <- Q10476255 daughter name is the pair
+    P1705 mul:"Björnsson"                        native label
+    P282  Q8229        Latin script              writing system
+    P407  Q294, Q9027  Icelandic, Swedish        language of work or name
+
+The old text said `P1705`, `P282` and `P407` were measured on most existing patronymic items and
+*"they are not added here"* — the measurement was right and the conclusion was backwards. It read
+a near-universal convention as decoration and copied a hand-made minimum instead.
+`docs/rules/names.md` carries the counts: `P1705` 513, `P282` 579, `P407` 370, of 633.
+
+⛔ **`P407` IS THE ONE NOT EMITTED, AND IT IS NOT AN OVERSIGHT.** Which languages a name belongs
+to is not a fact about the string — `Björnsson` is Icelandic AND Swedish — and nothing here knows
+it. A guessed language is a false claim on a name item, so it is left absent rather than invented;
+§ *no guessing on the representations*. Everything above it is derived from the token itself.
+
+⛔ **AND THE GENDERED CLASSES ARE ASSERTED ONLY WHEN THE ENDING SAYS SO.** `_suffix_sex` answers
+`M` for everything that is not a `-datter`, which is a fallback and not a reading: it would put
+*masculine patronymic* on `Nemanjić`. These classes match an explicit ending or are omitted.
 
 **`P144` *based on* is the one thing that is NOT decoration, and it goes in**, ruled 2026-09-05:
 add the source names to the patronymic items this file makes. It is the derivation — the
@@ -227,6 +250,102 @@ SAME_AS = "P460"
 #: The female patronymic endings, for telling `Eriksdotter` from `Eriksson`. A gendered pair is
 #: `P5278` *surname for other gender* and not this.
 FEMALE_SUFFIXES = ("datter", "dotter", "dottir", "dóttir", "dttr", "dtr")
+
+#: `P1705` *native label* and `P282` *writing system*, the two near-universal properties on an
+#: existing patronymic item that this file used to leave off deliberately. See the header.
+NATIVE_LABEL = "P1705"
+WRITING_SYSTEM = "P282"
+
+#: The finer `P31` classes on `Q69821896` *Björnsson*, the item ruled to be the target shape.
+MASCULINE_PATRONYMIC = "Q130444148"   # masculine patronymic
+FEMININE_PATRONYMIC = "Q130444179"    # feminine patronymic
+SON_NAME = "Q10673705"                # son name
+DAUGHTER_NAME = "Q10476255"           # daughter name
+
+#: ⛔ **THE MASCULINE ENDINGS ARE LISTED RATHER THAN INFERRED FROM `_suffix_sex`.** That
+#: helper answers `M` for anything that is not a `-datter`, which is a fallback for choosing a
+#: pronoun and not a reading of the form -- it would assert *masculine patronymic* on
+#: `Nemanjić`, `Ivanovich` and every Slavic token in the corpus. `CLAUDE.md` § *PARSE
+#: PATRONYMICS BY FORM. Never parse a name positionally* is the same objection.
+MALE_SUFFIXES = ("sson", "son", "ssen", "sen", "søn", "ssøn", "sohn", "zoon")
+
+#: ⛔ **`Q10673705` *son name* IS NARROWER THAN *masculine patronymic* AND THE TWO ARE NOT
+#: INTERCHANGEABLE.** Its definition is *"surname containing a given name and the word son"*, so
+#: it is a claim about the STRING, not about the bearer. `-sen` is a contraction of `søn` and is
+#: not the word, so it is deliberately absent here while remaining in `MALE_SUFFIXES`: a token
+#: gets *masculine patronymic* on the strength of its ending and *son name* only when the word is
+#: actually in it. Under-claiming here costs a statement somebody else can add; over-claiming
+#: writes something false onto a shared item.
+SON_WORD_SUFFIXES = ("sson", "son", "søn", "ssøn", "zoon")
+
+#: Writing systems, by the script the token is actually written in. Every id was resolved against
+#: Wikidata rather than recalled -- `CLAUDE.md` § *Always write the English label next to a
+#: property or item ID. Never guess an ID*, which earned its place here: `Q9202`, guessed at while
+#: assembling this list, is the Statue of Liberty.
+#:
+#: A token whose script is not one of these gets NO `P282` rather than a guessed one, on the same
+#: reasoning as the CJK gate a few lines down: partial is worse than absent.
+SCRIPTS = (
+    ("LATIN", "Q8229"),       # Latin script
+    ("CYRILLIC", "Q8209"),    # Cyrillic script
+    ("GREEK", "Q8216"),       # Greek alphabet
+    ("CJK", "Q8201"),         # Chinese characters
+    ("HANGUL", "Q8222"),      # Hangul
+    ("ARABIC", "Q1828555"),   # Arabic script
+    ("HEBREW", "Q33513"),     # Hebrew alphabet
+)
+
+
+def _writing_system(token):
+    """The `P282` value for the script `token` is written in, or `None` if it is mixed or unknown.
+
+    Read off the Unicode name of each letter, which is what `unicodedata` already gives -- the
+    same approach the CJK gate uses, and it avoids a hand-written codepoint range.
+    ⛔ `CLAUDE.md` § *Write a Han range as ASCII escapes* records what a hand-rolled range
+    cost: the literal form ate the Hangul block and lost 5,338 Korean people.
+
+    A token mixing scripts returns `None`. `CLAUDE.md` § *A MIXED-SCRIPT LABEL IS NOT A CAMPAIGN*
+    says those are not ours to chase, and a name item claiming one writing system for a string
+    that uses two would be false besides.
+    """
+    seen = set()
+    for ch in token:
+        if not ch.isalpha():
+            continue
+        try:
+            name = unicodedata.name(ch)
+        except ValueError:
+            return None
+        for prefix, qid in SCRIPTS:
+            if name.startswith(prefix):
+                seen.add(qid)
+                break
+        else:
+            return None
+    return seen.pop() if len(seen) == 1 else None
+
+
+def _finer_classes(token, kind):
+    """The extra `P31` values for a patronymic or matronymic token, in a fixed order.
+
+    Empty for anything whose ending says nothing, which is the point: see `MALE_SUFFIXES`.
+    """
+    if kind not in ("patronymic", "matronymic"):
+        return []
+    low = token.casefold()
+    out = []
+    #: *masculine/feminine patronymic* is about a PATRONYMIC. A matronymic is not one, so it takes
+    #: the son/daughter class and not this pair.
+    if kind == "patronymic":
+        if any(low.endswith(s) for s in FEMALE_SUFFIXES):
+            out.append(FEMININE_PATRONYMIC)
+        elif any(low.endswith(s) for s in MALE_SUFFIXES):
+            out.append(MASCULINE_PATRONYMIC)
+    if any(low.endswith(s) for s in FEMALE_SUFFIXES):
+        out.append(DAUGHTER_NAME)
+    elif any(low.endswith(s) for s in SON_WORD_SUFFIXES):
+        out.append(SON_NAME)
+    return out
 
 
 def _suffix_sex(token):
@@ -819,6 +938,17 @@ def main():
         if kind in DESCRIPTION_FOR:
             lines.append(f'LAST\tDen\t"{DESCRIPTION_FOR[kind]}"')
         lines.append(f"LAST\t{INSTANCE_OF}\t{CLASS_FOR[kind]}")
+        # ⛔ **THE REST OF THE ONTOLOGY, ruled 2026-09-17 against `Q69821896` Bjornsson.**
+        # The header carries the target shape and why the old minimalism was backwards. Each of
+        # these is derived from the token itself; `P407` is the one that cannot be, and is absent.
+        for _finer in _finer_classes(token, kind):
+            lines.append(f"LAST	{INSTANCE_OF}	{_finer}")
+        # `P1705` native label is the item's own `mul` label as a monolingual value -- the same
+        # string, which is why it is safe on every kind of name item and not only patronymics.
+        lines.append(f'LAST	{NATIVE_LABEL}	mul:"{token}"')
+        _ws = _writing_system(token)
+        if _ws:
+            lines.append(f"LAST	{WRITING_SYSTEM}	{_ws}")
         # **The derivation, on the item itself.** Ruled 2026-09-05: add the source names to the
         # patronymic items this file makes. `P144` *based on* here points at the GIVEN NAME the
         # patronymic comes from -- every one the attesting fathers carry, multi-valued -- and it

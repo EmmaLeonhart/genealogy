@@ -1393,6 +1393,39 @@ on 2026-08-15 over the 633 items that are `instance of` `Q110874`: **`P144` on
 (579) and `P407` language of work or name (370) are the near-universal ones.
 The derivation is also stated in the item's **description text**, not only as a claim.
 
+⛔ **AND THOSE NEAR-UNIVERSAL ONES ARE NOW EMITTED. `Q69821896` *Björnsson* IS THE TARGET SHAPE.**
+Ruled 2026-09-17, shown the item: *"the ontology of that item is what we are striving towards"*.
+`build-garborg-name-items.py` had read this very measurement and concluded the opposite — it
+copied the hand-made `Q141152710` *Aadnesson* minimum and said of `P1705`, `P282` and `P407`
+that *"they are not added here"*. A near-universal convention was read as decoration.
+
+    P31   Q110874     patronymic              already emitted
+    P31   Q130444148  masculine patronymic    Q130444179 feminine patronymic is the pair
+    P31   Q10673705   son name                Q10476255 daughter name is the pair
+    P1705 mul:"<token>"                       native label, the item's own label
+    P282  Q8229       Latin script            from the token's script; Q8209 Cyrillic, Q8201
+                                              Chinese characters, Q8222 Hangul, Q8216 Greek,
+                                              Q1828555 Arabic, Q33513 Hebrew
+
+**`P407` *language of work or name* is NOT emitted and that is deliberate.** Which languages a
+name belongs to is not a fact about the string — `Björnsson` is Icelandic AND Swedish — and
+nothing in the pipeline knows it. A guessed language is a false claim on a shared item.
+
+**The gendered classes are asserted only on an explicit ending.** `_suffix_sex` answers `M` for
+anything that is not a `-datter`, which is a fallback for choosing a pronoun, not a reading of
+the form: it would put *masculine patronymic* on `Nemanjić` and `Ivanovich`. And *son name* is
+narrower still — its definition is *"surname containing a given name and the word son"*, so
+`-sen`, a contraction of `søn`, takes *masculine patronymic* and not *son name*.
+
+⛔ **THE DUPLICATE CHECK MUST MATCH ON THE DESCRIPTION, NOT ONLY ON `P31`.** The anti-duplicate
+design rests on Wikidata refusing a second `Björnsson` + `patronymic`, because a label and
+description must be unique together — but `live_name_items.existing_item` asked only whether a
+qualifying `P31` existed. `StarTrekker` removed `P31` → `Q110874` from `Q69821896` on 15 July
+2026, and from that edit our check could not see the item at all: the one marker it looked for
+was the one that had been removed. `Q141493359`, a second Björnsson, was merged back by hand on
+2026-09-17. **A third party stripping a claim is ordinary Wikidata; a check that one removed
+claim blinds is the defect.**
+
 **That measurement is the one live Wikidata query this project has made since the
 rule, and it was authorised specifically** — a question about Wikidata's own modelling
 conventions is a legitimate reason to query it, where wanting to figure out something about a

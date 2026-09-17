@@ -76,7 +76,33 @@ API = "https://www.wikidata.org/w/api.php"
 CLASSES = {
     "family": {"Q101352"},
     "given": {"Q202444", "Q12308941", "Q11879590", "Q3409032"},
-    "patronymic": {"Q110874"},
+    #: `Q110874` patronymic, plus the finer classes `Q69821896` Björnsson carries:
+    #: `Q130444148` masculine patronymic, `Q130444179` feminine patronymic,
+    #: `Q10673705` son name, `Q10476255` daughter name. An item classified only by one of the
+    #: finer ones is still the item we would otherwise duplicate.
+    "patronymic": {"Q110874", "Q130444148", "Q130444179", "Q10673705", "Q10476255"},
+}
+
+#: ⛔ **THE DESCRIPTION IS THE OTHER KEY, AND IT IS THE ONE WIKIDATA ITSELF DEDUPES ON.**
+#:
+#: `build-garborg-name-items.py` relies on exactly this: a label and description must be unique
+#: together per language, so a second `Björnsson` + `patronymic` is REFUSED at creation. That
+#: constraint is the whole anti-duplicate design -- and this lookup was not using the same key.
+#: It asked only *does a qualifying `P31` exist*, so an item carrying our label and our
+#: description was invisible the moment somebody removed its `P31`.
+#:
+#: **Measured on `Q69821896` Björnsson, 2026-09-17.** Its revision history shows `StarTrekker`
+#: removing `P31` → `Q110874` *patronymic* on 15 July 2026, along with `P1705` and `P282`. From
+#: that edit onward this function could not see it, because the only marker it looked for was the
+#: one that had been removed. `Q141493359`, a second Björnsson, was merged back into it by hand
+#: on 2026-09-17.
+#:
+#: A third party stripping a claim is ordinary Wikidata. A duplicate check that a single removed
+#: claim blinds is the defect, and matching the label-and-description pair is what the design
+#: already assumed was being matched.
+DESCRIPTIONS = {
+    "family": {"family name"},
+    "patronymic": {"patronymic", "matronymic"},
 }
 
 _CACHE: dict[tuple[str, str], str] = {}
@@ -188,7 +214,7 @@ def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing
     time.sleep(0.3)
     try:
         ents = _get({"action": "wbgetentities", "ids": "|".join(ids[:12]),
-                     "props": "claims|labels", "languages": "en|mul",
+                     "props": "claims|labels|descriptions", "languages": "en|mul",
                      "format": "json"}, agent).get("entities", {})
     except Exception as exc:                                        # noqa: BLE001
         del _CACHE[key]
@@ -203,7 +229,10 @@ def existing_item(token, usage, agent="genimerge name reuse (emma@topazcomputing
             v = st.get("mainsnak", {}).get("datavalue", {}).get("value")
             if isinstance(v, dict) and v.get("id"):
                 classes.add(v["id"])
-        if classes & want:
+        # Either key identifies the item: the right `P31`, or the label-and-description pair
+        # Wikidata would refuse a duplicate of. See `DESCRIPTIONS`.
+        described = (e.get("descriptions") or {}).get("en", {}).get("value", "").casefold()
+        if classes & want or described in DESCRIPTIONS.get(usage, set()):
             ok.append(qid)
     # Exactly one, or nothing. Several is an ambiguity and is decided by hand.
     _CACHE[key] = ok[0] if len(ok) == 1 else ""
