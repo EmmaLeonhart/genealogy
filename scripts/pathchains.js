@@ -177,7 +177,19 @@ window.__chains = window.__chains || {};
   };
 
   /* ---------- collect the permalinks off /paths, 30 to a page ---------- */
+  /* ⛔ **A SECOND `collect()` RUNS A SECOND WALK, AND ON 2026-09-17 ONE DID.** The 45-minute
+   * check re-collects whenever the fetcher has caught up, and it read `idling` to decide --
+   * but `idling` is about the FETCH cursor, not about the walk. A collect already 565 pages in
+   * left `idling` true, so the check started another, and two loops walked `/paths` at once
+   * against the same `C.urls`, both stamping `C.collectPage` (it went 565 -> 5 mid-tick, which
+   * is what gave it away). Nothing was lost -- they share the dedupe set -- but it is a doubled
+   * request rate at Geni, which is § *RESTARTING IT TWICE RUNS IT TWICE* on the other loop.
+   *
+   * Same fix as `R.gen`: a generation token, taken at entry and rechecked every page, so only
+   * the newest walk continues. And the honest test for *is a walk running* is `collectDone`,
+   * never `idling`. */
   C.collect = async function (maxPages) {
+    const mine = (C.collectGen = (C.collectGen || 0) + 1);
     /* ⛔ THE CAP HAS TO CLEAR THE LIST, AND ON 2026-09-16 IT STOPPED CLEARING IT. `/paths` is
      * 30 to a page, so 400 pages is 12,000 permalinks -- and the list passed 11,532 that
      * evening, with `collectPage` coming back as exactly 400. The walk is newest-first, so a
@@ -210,6 +222,10 @@ window.__chains = window.__chains || {};
        * unawaited, so without these three fields the fetcher spends its first ten minutes
        * indistinguishable from a fetcher that never started -- the exact ambiguity `health()`
        * exists to remove. `lastAt` is stamped here, and `alive` reads the pair. */
+      if (C.collectGen !== mine) {
+        console.log("[chains] collect gen " + mine + " superseded at page " + p);
+        return added;
+      }
       C.collectPage = p;
       C.lastAt = Date.now();
       if (p % 10 === 0) console.log("[chains] page " + p + ", " + C.urls.length + " permalinks");
