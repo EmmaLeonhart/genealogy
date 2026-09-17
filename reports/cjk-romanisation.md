@@ -2,7 +2,7 @@
 
 Built by `scripts/build-cjk-romanisation.py`. **Nothing is transliterated** — every reading is read off a Wikidata name item that carries both the Han form and the Latin form, so it is a published reading of that character *as a name*.
 
-- people with a CJK name and no Latin label: **45,653**
+- people with a CJK name and no Latin label: **45,674**
 - culture settled: **43,995**
 - romanised: **18,156** — zh **17,924**, ko **0**, ja **232**
 
