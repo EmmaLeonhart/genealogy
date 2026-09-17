@@ -76,6 +76,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -87,6 +88,27 @@ sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
 IN_TREE = ROOT / "reports" / "derived-labels.csv"
+
+#: ⛔ **THE CLAN ROSTERS ARE ENTRY POINTS AND THEY WERE REACHING NOTHING.** Reported
+#: 2026-09-17, when this file was found to hold 69 records: *"this means the entire Izumo clan
+#: Tanba clan shit is 100% lost"*. Not lost — every pair is committed in `reports/` — but
+#: 410 hand-built identifications sat in roster TSVs that no generator read, so none of them
+#: became an entry point on 2027-01-01, which is the one thing they were built for.
+#:
+#: These are NOT `reports/manual-identifications.csv`, which is a different operation and stays
+#: out of this file (ruled the same day, and the attempt to merge it here was reverted in
+#: `49bcfd3e`). A clan roster is a Wikidata chart transcribed onto Geni **so that the two sides
+#: can be joined** — carrying the QID link IS the deliverable, and `reports/izumo.md` says so
+#: in its own first paragraph: *"build the family tree ... onto Geni, carry the Wikidata links"*.
+#:
+#: Named one by one rather than globbed, so a new `*-p2600-pairs.tsv` never joins the corpus by
+#: accident. `geni_ids` is plural on purpose: Geni holds duplicate profiles for these people and
+#: § *The question is whether OUR TREE MATCHES GENI* says we hold both.
+ROSTERS = (
+    ROOT / "reports" / "izumo-p2600-pairs.tsv",
+    ROOT / "reports" / "izumo-sister-p2600-pairs.tsv",
+    ROOT / "reports" / "tanba-p2600-pairs.tsv",
+)
 OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 
 #: The three, by Geni id. Named explicitly rather than derived: they are the ones whose Wikidata
@@ -298,6 +320,25 @@ def main():
     for geni_id, qid in PAIRS.items():
         pairs[geni_id].add(qid)
     print(f"{len(pairs)} pairs, from the constant in this file")
+
+    for roster in ROSTERS:
+        if not roster.exists():
+            print(f"  roster MISSING: {roster.name}")
+            continue
+        n = 0
+        with roster.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="	"):
+                qid = (row.get("qid") or "").strip()
+                if not qid.startswith("Q"):
+                    continue
+                raw = (row.get("geni_ids") or row.get("geni_id") or "")
+                for gid in re.split(r"[,;|\s]+", raw):
+                    gid = gid.strip()
+                    if gid.isdigit():
+                        pairs[gid].add(qid)
+                        n += 1
+        print(f"  {n:>4} pairs from {roster.name}")
+    print(f"{len(pairs):,} distinct people once the rosters are joined")
 
     absent = sorted(g for g in pairs if g not in in_tree)
     if absent:
