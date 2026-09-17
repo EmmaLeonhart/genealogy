@@ -125,6 +125,7 @@ jobs:
             /src
             /reports/wikidata-garborg-day*.txt
             /reports/wikidata-edits-applied.tsv
+            /out/wikidata/unlinked-items.json
 
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.go == 'true'
