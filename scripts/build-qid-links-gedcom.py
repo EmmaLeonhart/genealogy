@@ -76,6 +76,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -87,6 +88,39 @@ sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
 IN_TREE = ROOT / "reports" / "derived-labels.csv"
+
+#: ⛔ **ONE STORE. EVERY ROSTER LANDS HERE AND NOTHING SITS BESIDE IT UNREAD.**
+#:
+#: Ruled 2026-09-17: *"Put the 69 records into this thing and shut the fuck up. Scrub any
+#: reference to this other bullshit. Make this thing extremely clear here. Really, I would say
+#: probably scrub away all these TSV files because they are destroying our workflow."*
+#:
+#: **The reason, found by measurement the same evening.**
+#: `reports/izumo-sister-p2600-pairs.tsv` held **120 pairs that no bloc row read**. Not deleted,
+#: not broken -- simply never wired, and invisible, because the only way to notice was to list
+#: every roster file in `reports/` and diff it against the sources named in
+#: `entry-point-groups.tsv`. Nobody runs that check. `izumo-kokuso-geni.tsv` (100),
+#: `tanba-geni-created.tsv` (190) and `izumo-geni-candidates.tsv` (30) are unread too.
+#:
+#: Seven bloc rows reading six files, beside four lookalike files reading nowhere, means the
+#: question *is this person an entry point* has no single place to look. Here it has one.
+#:
+#: ⛔ **AND THIS IS NOT THE IDENTIFICATIONS CSV.** `reports/manual-identifications.csv` is a
+#: different operation on a different schedule and stays out -- ruled the same day, and the
+#: attempt to fold it in was reverted in `49bcfd3e`. A clan roster is a Wikidata chart
+#: transcribed onto Geni so the two sides can be joined; carrying the QID link IS its
+#: deliverable. `reports/izumo.md` says so in its own first paragraph.
+#:
+#: Named one by one, never globbed, so a new `*-pairs.tsv` cannot join the corpus by accident.
+ROSTERS = (
+    ROOT / "reports" / "izumo-p2600-pairs.tsv",
+    ROOT / "reports" / "izumo-sister-p2600-pairs.tsv",
+    ROOT / "reports" / "tanba-p2600-pairs.tsv",
+    ROOT / "reports" / "japanese-emperors.tsv",
+    ROOT / "reports" / "ethiopian-emperors.tsv",
+    ROOT / "reports" / "samaritan-priest-links.csv",
+    ROOT / "reports" / "samaritan-succession-list.tsv",
+)
 OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 
 #: The three, by Geni id. Named explicitly rather than derived: they are the ones whose Wikidata
@@ -298,6 +332,27 @@ def main():
     for geni_id, qid in PAIRS.items():
         pairs[geni_id].add(qid)
     print(f"{len(pairs)} pairs, from the constant in this file")
+
+    for roster in ROSTERS:
+        if not roster.exists():
+            print(f"  roster MISSING: {roster.name}")
+            continue
+        head = roster.open(encoding="utf-8").readline()
+        delim = "	" if "	" in head else ","
+        n = 0
+        with roster.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter=delim):
+                qid = (row.get("qid") or "").strip()
+                if not qid.startswith("Q"):
+                    continue
+                raw = (row.get("geni_ids") or row.get("geni_id") or row.get("geni") or "")
+                for gid in re.split(r"[,;|\s]+", raw):
+                    gid = gid.strip()
+                    if gid.isdigit():
+                        pairs[gid].add(qid)
+                        n += 1
+        print(f"  {n:>4} pairs from {roster.name}")
+    print(f"{len(pairs):,} distinct people once every roster is joined")
 
     absent = sorted(g for g in pairs if g not in in_tree)
     if absent:
