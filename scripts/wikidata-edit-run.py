@@ -290,7 +290,21 @@ class Session:
             }, delay)
 
     def _attach_call(self, action: str, post: dict, delay: float) -> None:
-        res = self._call(action=action, _post={**post, "bot": "1"})
+        # ⛔ **NO `bot=1`. THE ACCOUNT IS NOT IN THE `bot` GROUP AND THE FLAG IS A RIGHT.**
+        # This sent `"bot": "1"` and every qualifier and reference write came back
+        # `permissiondenied: You do not have the permissions needed to carry out this action` --
+        # 8 of the 10 edits that got as far as writing, on run 35381709519. The run had logged
+        # in perfectly well and said so: `groups: *,user,autoconfirmed`, with no `bot` among
+        # them. `bot=1` only asks that the edit be marked as a bot edit and hidden from recent
+        # changes by default; it changes nothing about the edit itself, so it was buying
+        # nothing and costing every attachment.
+        #
+        # It read as a credentials problem for an hour, because `permissiondenied` names no
+        # parameter. Adding the account to the `bot` group would also fix it and is the wrong
+        # fix: this campaign WANTS its edits visible in recent changes, so other editors can
+        # correct them -- `CLAUDE.md` § *our algorithm is relatively resistant to editors
+        # fixing its mistakes and this is drawing attention*.
+        res = self._call(action=action, _post=post)
         err = res.get("error")
         if err and not is_already_present(err.get("info") or ""):
             raise EditFailed(f"{action}: {err.get('code')}: {err.get('info')}")
