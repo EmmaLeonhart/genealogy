@@ -21,213 +21,95 @@
 # can never resolve anybody. reports/patronymic-items-to-create.tsv resolves
 # them, and leaves out any given name whose label is ambiguous or has no item.
 
-# Berdinesson -- patronymic, 1 bearer(s) in the batches
+# Heerdhielm -- family, 2 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Berdinesson"
-LAST	Len	"Berdinesson"
-#   set the mul label to "Berdinesson"
-LAST	Lmul	"Berdinesson"
-#   set the ja label to "ベルディネソン"
-LAST	Lja	"ベルディネソン"
-#   set the zh label to "贝尔迪内松"
-LAST	Lzh	"贝尔迪内松"
-#   set the ko label to "베르디네손"
-LAST	Lko	"베르디네손"
+#   the item just created: set the en label to "Heerdhielm"
+LAST	Len	"Heerdhielm"
+#   set the mul label to "Heerdhielm"
+LAST	Lmul	"Heerdhielm"
+#   set the ja label to "ヘエルドヒエルム"
+LAST	Lja	"ヘエルドヒエルム"
+#   set the zh label to "赫埃尔德希埃尔姆"
+LAST	Lzh	"赫埃尔德希埃尔姆"
+#   set the ko label to "히르드히엘므"
+LAST	Lko	"히르드히엘므"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   P1705 native label = mul:"Heerdhielm"
+LAST	P1705	mul:"Heerdhielm"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   Q73762452 Henrik Abrahamsson Heerdhielm: P734 family name = the item just created
+Q73762452	P734	LAST	S2600	"6000000006734732178"
+#   Q141271405 Catharina Heerdhielm: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141271405	P734	LAST	P3831	Q28418670	S2600	"6000000008908495417"
+
+# Samuelsen -- patronymic, 2 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Samuelsen"
+LAST	Len	"Samuelsen"
+#   set the mul label to "Samuelsen"
+LAST	Lmul	"Samuelsen"
+#   set the ja label to "サムエルセン"
+LAST	Lja	"サムエルセン"
+#   set the zh label to "萨穆埃尔森"
+LAST	Lzh	"萨穆埃尔森"
+#   set the ko label to "사뭴센"
+LAST	Lko	"사뭴센"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
 #   P31 instance of = Q130444148
 LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P1705 native label = mul:"Berdinesson"
-LAST	P1705	mul:"Berdinesson"
+#   P1705 native label = mul:"Samuelsen"
+LAST	P1705	mul:"Samuelsen"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141283513 Ola Berdinesson Stangeland: P5056 patronym or matronym = the item just created
-Q141283513	P5056	LAST	S2600	"6000000006776171561"
+#   P144 based on = Q629347 Samuel
+LAST	P144	Q629347
+#   Q141168955 Jon Samuelsen Raustad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141178380 Samuel Jonson Raustad
+Q141168955	P5056	LAST	P144	Q141178380	S2600	"6000000003732742137"
 
-# Engelcrona -- family, 1 bearer(s) in the batches
+# Bellest -- given, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Engelcrona"
-LAST	Len	"Engelcrona"
-#   set the mul label to "Engelcrona"
-LAST	Lmul	"Engelcrona"
-#   set the ja label to "エンゲルクロナ"
-LAST	Lja	"エンゲルクロナ"
-#   set the zh label to "恩盖尔克罗纳"
-LAST	Lzh	"恩盖尔克罗纳"
-#   set the ko label to "에엘크로나"
-LAST	Lko	"에엘크로나"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Engelcrona"
-LAST	P1705	mul:"Engelcrona"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141283483 Anna Margareta Engelcrona: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141283483	P734	LAST	P3831	Q28418670	S2600	"6000000010230941366"
-
-# Griege -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Griege"
-LAST	Len	"Griege"
-#   set the mul label to "Griege"
-LAST	Lmul	"Griege"
-#   set the ja label to "グリエゲ"
-LAST	Lja	"グリエゲ"
-#   set the zh label to "格里埃盖"
-LAST	Lzh	"格里埃盖"
-#   set the ko label to "그리에게"
-LAST	Lko	"그리에게"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Griege"
-LAST	P1705	mul:"Griege"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-
-# Hjeld -- family, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   set the en label to "Hjeld"
-LAST	Len	"Hjeld"
-#   set the mul label to "Hjeld"
-LAST	Lmul	"Hjeld"
-#   set the ja label to "イェル"
-LAST	Lja	"イェル"
-#   set the zh label to "耶尔"
-LAST	Lzh	"耶尔"
-#   set the ko label to "헬드"
-LAST	Lko	"헬드"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Hjeld"
-LAST	P1705	mul:"Hjeld"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q141440590 Julia Olette Garborg: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141440590	P734	LAST	P3831	Q2507958	S2600	"6000000092195159994"
-
-# Michelsson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Michelsson"
-LAST	Len	"Michelsson"
-#   set the mul label to "Michelsson"
-LAST	Lmul	"Michelsson"
-#   set the ja label to "ミケルソン"
-LAST	Lja	"ミケルソン"
-#   set the zh label to "米凯尔松"
-LAST	Lzh	"米凯尔松"
-#   set the ko label to "미첼손"
-LAST	Lko	"미첼손"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P31 instance of = Q10673705
-LAST	P31	Q10673705
-#   P1705 native label = mul:"Michelsson"
-LAST	P1705	mul:"Michelsson"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q14626626 Michel
-LAST	P144	Q14626626
-#   P144 based on = Q38687228
-LAST	P144	Q38687228
-#   P144 based on = Q4927524
-LAST	P144	Q4927524
-#   P144 based on = Q15620350 Mikael
-LAST	P144	Q15620350
-#   P144 based on = Q15621024 Michiel
-LAST	P144	Q15621024
-#   Q141440652 Simon Michelsson Polviander: P5056 patronym or matronym = the item just created, qualified P144 based on Q141492613 Michel Marcusson Knuutila
-Q141440652	P5056	LAST	P144	Q141492613	S2600	"6000000007367244237"
-
-# Salmund -- given, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Salmund"
-LAST	Len	"Salmund"
-#   set the mul label to "Salmund"
-LAST	Lmul	"Salmund"
-#   set the ja label to "サルムンド"
-LAST	Lja	"サルムンド"
-#   set the zh label to "萨尔蒙德"
-LAST	Lzh	"萨尔蒙德"
-#   set the ko label to "살문드"
-LAST	Lko	"살문드"
+#   the item just created: set the en label to "Bellest"
+LAST	Len	"Bellest"
+#   set the mul label to "Bellest"
+LAST	Lmul	"Bellest"
+#   set the ja label to "ベレスト"
+LAST	Lja	"ベレスト"
+#   set the zh label to "贝莱斯特"
+LAST	Lzh	"贝莱斯特"
+#   set the ko label to "벨레스트"
+LAST	Lko	"벨레스트"
 #   P31 instance of = Q202444 given name
 LAST	P31	Q202444
-#   P1705 native label = mul:"Salmund"
-LAST	P1705	mul:"Salmund"
+#   P1705 native label = mul:"Bellest"
+LAST	P1705	mul:"Bellest"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q141456430 Salmund Larsen Sømme: P735 given name = the item just created
-Q141456430	P735	LAST	S2600	"6000000003491944748"
+#   Q141224746 Bellest Bellestsen Lauvsnes Sr.: P735 given name = the item just created
+Q141224746	P735	LAST	S2600	"6000000005608905668"
 
-# Thoresen -- patronymic, 1 bearer(s) in the batches
+# Eskilsson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Thoresen"
-LAST	Len	"Thoresen"
-#   set the mul label to "Thoresen"
-LAST	Lmul	"Thoresen"
-#   set the ja label to "トレセン"
-LAST	Lja	"トレセン"
-#   set the zh label to "托雷森"
-LAST	Lzh	"托雷森"
-#   set the ko label to "토레센"
-LAST	Lko	"토레센"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   P31 instance of = Q130444148
-LAST	P31	Q130444148
-#   P1705 native label = mul:"Thoresen"
-LAST	P1705	mul:"Thoresen"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   P144 based on = Q23047611 Thore
-LAST	P144	Q23047611
-#   P144 based on = Q1548096 Tore
-LAST	P144	Q1548096
-#   P144 based on = Q2428812 Thor
-LAST	P144	Q2428812
-#   P144 based on = Q96650879
-LAST	P144	Q96650879
-#   P144 based on = Q12007064 Torjus
-LAST	P144	Q12007064
-#   Q141444674 Jonas Thoresen Sørum: P5056 patronym or matronym = the item just created
-Q141444674	P5056	LAST	S2600	"6000000021081889691"
-
-# Thoreson -- patronymic, 1 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Thoreson"
-LAST	Len	"Thoreson"
-#   set the mul label to "Thoreson"
-LAST	Lmul	"Thoreson"
-#   set the ja label to "トレソン"
-LAST	Lja	"トレソン"
-#   set the zh label to "托雷松"
-LAST	Lzh	"托雷松"
-#   set the ko label to "토레손"
-LAST	Lko	"토레손"
+#   the item just created: set the en label to "Eskilsson"
+LAST	Len	"Eskilsson"
+#   set the mul label to "Eskilsson"
+LAST	Lmul	"Eskilsson"
+#   set the ja label to "エスキルソン"
+LAST	Lja	"エスキルソン"
+#   set the zh label to "埃斯基尔松"
+LAST	Lzh	"埃斯基尔松"
+#   set the ko label to "에스킬손"
+LAST	Lko	"에스킬손"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
@@ -236,145 +118,294 @@ LAST	P31	Q110874
 LAST	P31	Q130444148
 #   P31 instance of = Q10673705
 LAST	P31	Q10673705
-#   P1705 native label = mul:"Thoreson"
-LAST	P1705	mul:"Thoreson"
+#   P1705 native label = mul:"Eskilsson"
+LAST	P1705	mul:"Eskilsson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q23047611 Thore
-LAST	P144	Q23047611
-#   P144 based on = Q1548096 Tore
-LAST	P144	Q1548096
-#   Q141249737 Ole Thoreson Toresen Lende: P5056 patronym or matronym = the item just created
-Q141249737	P5056	LAST	S2600	"6000000010517303222"
+#   P144 based on = Q1809942 Eskil
+LAST	P144	Q1809942
+#   Q141353293 Erik Eskilsson Rhålambius: P5056 patronym or matronym = the item just created
+Q141353293	P5056	LAST	S2600	"6000000006590188190"
 
-# Châlon -- family, 4 bearer(s) in the batches
+# Lagesdatter -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Châlon"
-LAST	Len	"Châlon"
-#   set the mul label to "Châlon"
-LAST	Lmul	"Châlon"
-#   set the ja label to "カロン"
-LAST	Lja	"カロン"
-#   set the zh label to "卡隆"
-LAST	Lzh	"卡隆"
-#   set the ko label to "차론"
-LAST	Lko	"차론"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Châlon"
-LAST	P1705	mul:"Châlon"
-#   P282 writing system = Q8229 Latin script
-LAST	P282	Q8229
-#   Q974912 Hugo Hugo of de Châlon: P734 family name = the item just created
-#   Q2069863 Hugues I de Châlon Comte de Chalon: P734 family name = the item just created
-#   Q3142578 Hugues de Châlon: P734 family name = the item just created
-#   Q77601 Jean de Châlon: P734 family name = the item just created
-
-# Johannis -- patronymic, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Johannis"
-LAST	Len	"Johannis"
-#   set the mul label to "Johannis"
-LAST	Lmul	"Johannis"
-#   set the ja label to "ヨハンニス"
-LAST	Lja	"ヨハンニス"
-#   set the zh label to "约哈尼斯"
-LAST	Lzh	"约哈尼斯"
-#   set the ko label to "조한니스"
-LAST	Lko	"조한니스"
+#   the item just created: set the en label to "Lagesdatter"
+LAST	Len	"Lagesdatter"
+#   set the mul label to "Lagesdatter"
+LAST	Lmul	"Lagesdatter"
+#   set the ja label to "ラゲスダッテル"
+LAST	Lja	"ラゲスダッテル"
+#   set the zh label to "拉盖斯达特"
+LAST	Lzh	"拉盖斯达特"
+#   set the ko label to "라게스다테르"
+LAST	Lko	"라게스다테르"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   P1705 native label = mul:"Johannis"
-LAST	P1705	mul:"Johannis"
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P1705 native label = mul:"Lagesdatter"
+LAST	P1705	mul:"Lagesdatter"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   P144 based on = Q2117521 Johannes
-LAST	P144	Q2117521
-#   P144 based on = Q11122389 Johann
-LAST	P144	Q11122389
-#   Q141494458 Gustavus Johannis Elvius: P5056 patronym or matronym = the item just created
-Q141494458	P5056	LAST	S2600	"4949225313050100441"
-#   Q141314169 Johannes Johannis Fabrin: P5056 patronym or matronym = the item just created, qualified P144 based on Q47008162
-Q141314169	P5056	LAST	P144	Q47008162	S2600	"6000000010302836013"
-#   Q141447185 Magnus Johannis Melander: P5056 patronym or matronym = the item just created
-Q141447185	P5056	LAST	S2600	"6000000018625301404"
-#   Q16158291 Johannes Johannis Anthelius: P5056 patronym or matronym = the item just created, qualified P144 based on Q5557702
+#   P144 based on = Q11982930 Lage
+LAST	P144	Q11982930
+#   P144 based on = Q96939459 Lauge
+LAST	P144	Q96939459
+#   Q141494466 Ingeborg Olimb: P5056 patronym or matronym = the item just created
+Q141494466	P5056	LAST	S2600	"6000000015368066558"
 
-# Komnene -- family, 4 bearer(s) in the batches
+# Ljødeson -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Komnene"
-LAST	Len	"Komnene"
-#   set the mul label to "Komnene"
-LAST	Lmul	"Komnene"
-#   set the ja label to "コムネネ"
-LAST	Lja	"コムネネ"
-#   set the zh label to "科穆宁娜"
-LAST	Lzh	"科穆宁娜"
-#   set the ko label to "콤네네"
-LAST	Lko	"콤네네"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Komnene"
-LAST	P1705	mul:"Komnene"
+#   the item just created: set the en label to "Ljødeson"
+LAST	Len	"Ljødeson"
+#   set the mul label to "Ljødeson"
+LAST	Lmul	"Ljødeson"
+#   set the ja label to "ルヨデソン"
+LAST	Lja	"ルヨデソン"
+#   set the zh label to "尔永德松"
+LAST	Lzh	"尔永德松"
+#   set the ko label to "뢰데손"
+LAST	Lko	"뢰데손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P1705 native label = mul:"Ljødeson"
+LAST	P1705	mul:"Ljødeson"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q6141740 Theodora Megala Komnene: P734 family name = the item just created
-#   Q113373365 Eudokia Komnene: P734 family name = the item just created
-#   Q126281321 N Komnene: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-#   Q61014344 Maria Komnene Branaina Laskarina Doukaina Tornikina Palaiologina: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+#   Q141353749 Mons Ljødeson Gjesdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141440603 Ljøde Monsson Kyllingstad
+Q141353749	P5056	LAST	P144	Q141440603	S2600	"6000000003025866430"
 
-# Numers -- family, 4 bearer(s) in the batches
+# Mikkelsdatter -- patronymic, 1 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Numers"
-LAST	Len	"Numers"
-#   set the mul label to "Numers"
-LAST	Lmul	"Numers"
-#   set the ja label to "ヌメルス"
-LAST	Lja	"ヌメルス"
-#   set the zh label to "努梅尔斯"
-LAST	Lzh	"努梅尔斯"
-#   set the ko label to "누메르스"
-LAST	Lko	"누메르스"
-#   set the en description to "family name"
-LAST	Den	"family name"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   P1705 native label = mul:"Numers"
-LAST	P1705	mul:"Numers"
+#   the item just created: set the en label to "Mikkelsdatter"
+LAST	Len	"Mikkelsdatter"
+#   set the mul label to "Mikkelsdatter"
+LAST	Lmul	"Mikkelsdatter"
+#   set the ja label to "ミッケルスダッテル"
+LAST	Lja	"ミッケルスダッテル"
+#   set the zh label to "米凯尔斯达特"
+LAST	Lzh	"米凯尔斯达特"
+#   set the ko label to "미켈스다테르"
+LAST	Lko	"미켈스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P1705 native label = mul:"Mikkelsdatter"
+LAST	P1705	mul:"Mikkelsdatter"
 #   P282 writing system = Q8229 Latin script
 LAST	P282	Q8229
-#   Q104172926 Carl Johan Oskar von Numers: P734 family name = the item just created
-#   Q137806559 Lorentz von Numers: P734 family name = the item just created
-#   Q137806522 Carl von Numers: P734 family name = the item just created
-Q137806522	P734	LAST	S2600	"6000000008386607464"
-#   Q141217394 Margareta Christina von Numers: P734 family name = the item just created
-Q141217394	P734	LAST	S2600	"6000000008391104730"
+#   P144 based on = Q1459707 Mikkel
+LAST	P144	Q1459707
+#   P144 based on = Q14626626 Michel
+LAST	P144	Q14626626
+#   P144 based on = Q21467686 Mikal
+LAST	P144	Q21467686
+#   P144 based on = Q4927524
+LAST	P144	Q4927524
+#   P144 based on = Q18563993 Michal
+LAST	P144	Q18563993
+#   P144 based on = Q32731373 Mikkjel
+LAST	P144	Q32731373
+#   Q141494463 Ingeborg Mikkelsdatter Tjørn: P5056 patronym or matronym = the item just created
+Q141494463	P5056	LAST	S2600	"6000000013259564008"
 
-# 1276 more name items are needed and wait for a later
+# Paulsen -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Paulsen"
+LAST	Len	"Paulsen"
+#   set the mul label to "Paulsen"
+LAST	Lmul	"Paulsen"
+#   set the ja label to "ポールセン"
+LAST	Lja	"ポールセン"
+#   set the zh label to "帕乌尔森"
+LAST	Lzh	"帕乌尔森"
+#   set the ko label to "파울센"
+LAST	Lko	"파울센"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P1705 native label = mul:"Paulsen"
+LAST	P1705	mul:"Paulsen"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q4925623 Paul
+LAST	P144	Q4925623
+#   P144 based on = Q2106710 Poul
+LAST	P144	Q2106710
+#   P144 based on = Q15732803 Pål
+LAST	P144	Q15732803
+#   P144 based on = Q33104818 Paal
+LAST	P144	Q33104818
+#   Q141242412 Peder Paulsen Borsok: P5056 patronym or matronym = the item just created, qualified P144 based on Q141448529 Pål Jørgenson Vestly
+Q141242412	P5056	LAST	P144	Q141448529	S2600	"6000000035525387457"
+
+# Salomonsdatter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Salomonsdatter"
+LAST	Len	"Salomonsdatter"
+#   set the mul label to "Salomonsdatter"
+LAST	Lmul	"Salomonsdatter"
+#   set the ja label to "サロモンスダッテル"
+LAST	Lja	"サロモンスダッテル"
+#   set the zh label to "萨洛蒙斯达特"
+LAST	Lzh	"萨洛蒙斯达特"
+#   set the ko label to "사로몬스다테르"
+LAST	Lko	"사로몬스다테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P1705 native label = mul:"Salomonsdatter"
+LAST	P1705	mul:"Salomonsdatter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q20001035 Salamon
+LAST	P144	Q20001035
+#   Q141318575 Olina Salomonsdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q141318574 Salomon Kingo
+Q141318575	P5056	LAST	P144	Q141318574	S2600	"6000000178119644821"
+
+# Salomonsen -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Salomonsen"
+LAST	Len	"Salomonsen"
+#   set the mul label to "Salomonsen"
+LAST	Lmul	"Salomonsen"
+#   set the ja label to "サロモンセン"
+LAST	Lja	"サロモンセン"
+#   set the zh label to "萨洛莫恩森"
+LAST	Lzh	"萨洛莫恩森"
+#   set the ko label to "사로몬센"
+LAST	Lko	"사로몬센"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P1705 native label = mul:"Salomonsen"
+LAST	P1705	mul:"Salomonsen"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q20001035 Salamon
+LAST	P144	Q20001035
+#   Q141442981 Lars Salomonsen Øksnevad: P5056 patronym or matronym = the item just created
+Q141442981	P5056	LAST	S2600	"6000000006776171427"
+
+# Tordsson -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Tordsson"
+LAST	Len	"Tordsson"
+#   set the mul label to "Tordsson"
+LAST	Lmul	"Tordsson"
+#   set the ja label to "トルドソン"
+LAST	Lja	"トルドソン"
+#   set the zh label to "托尔德松"
+LAST	Lzh	"托尔德松"
+#   set the ko label to "토르드손"
+LAST	Lko	"토르드손"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444148
+LAST	P31	Q130444148
+#   P31 instance of = Q10673705
+LAST	P31	Q10673705
+#   P1705 native label = mul:"Tordsson"
+LAST	P1705	mul:"Tordsson"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q1750352 Tord
+LAST	P144	Q1750352
+#   P144 based on = Q20730759 Thord
+LAST	P144	Q20730759
+#   Q99301905 Jöns Tordsson Bonde: P5056 patronym or matronym = the item just created, qualified P144 based on Q56299964
+
+# Toresdotter -- patronymic, 1 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Toresdotter"
+LAST	Len	"Toresdotter"
+#   set the mul label to "Toresdotter"
+LAST	Lmul	"Toresdotter"
+#   set the ja label to "トレスドッテル"
+LAST	Lja	"トレスドッテル"
+#   set the zh label to "托雷斯多特"
+LAST	Lzh	"托雷斯多特"
+#   set the ko label to "토레스도테르"
+LAST	Lko	"토레스도테르"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   P31 instance of = Q130444179
+LAST	P31	Q130444179
+#   P31 instance of = Q10476255
+LAST	P31	Q10476255
+#   P1705 native label = mul:"Toresdotter"
+LAST	P1705	mul:"Toresdotter"
+#   P282 writing system = Q8229 Latin script
+LAST	P282	Q8229
+#   P144 based on = Q1548096 Tore
+LAST	P144	Q1548096
+#   P144 based on = Q23047611 Thore
+LAST	P144	Q23047611
+#   Q141492678 Dorthea Toresdotter Talgje: P5056 patronym or matronym = the item just created, qualified P144 based on Q141219336 Tore Sebjørnsson Talgje Jr.
+Q141492678	P5056	LAST	P144	Q141219336	S2600	"6000000002452584645"
+
+# 1353 more name items are needed and wait for a later
 # run -- 12 a day is the cap, not a limit of the data:
-#   Phinehas (family), 4 bearer(s)
+#   Ødemotland (family), 1 bearer(s)
+#   Borsok (family), 4 bearer(s)
+#   Olavsen (patronymic), 4 bearer(s)
+#   Roucy (family), 4 bearer(s)
+#   Toresson (patronymic), 4 bearer(s)
 #   Al-Umawi (family), 3 bearer(s)
-#   Ashinazu-ni-Mikoto (family), 3 bearer(s)
 #   Coucy (family), 3 bearer(s)
-#   Halvorson (patronymic), 3 bearer(s)
-#   Kanpo (given), 3 bearer(s)
+#   Gdańsk (family), 3 bearer(s)
+#   Ivarsdatter (patronymic), 3 bearer(s)
+#   Jacobi (patronymic), 3 bearer(s)
+#   Jakobsson (patronymic), 3 bearer(s)
 #   Margretelund (family), 3 bearer(s)
-#   Mattsson (patronymic), 3 bearer(s)
-#   Matzliach (family), 3 bearer(s)
-#   Nellenburg (family), 3 bearer(s)
-#   Olavsen (patronymic), 3 bearer(s)
-#   Pallars (family), 3 bearer(s)
-#   ... and 1264 more
+#   ... and 1341 more
+
+
+# ======================================================================
+# DESCRIPTIONS on name items that already exist and have none.
+# Label + description must be unique per language, so this is what
+# makes Wikidata refuse a duplicate of a name item already in use.
+# Name items only -- never people.
+# ======================================================================
+#   Q141497327: set the en description to "family name"
 
 # ========================================================================
 # THE DAY'S PEOPLE
@@ -389,265 +420,67 @@ Q141217394	P734	LAST	S2600	"6000000008391104730"
 #   Newest items first, deliberately: a recent item with an error in it looks
 #   worse than an old one. Within a person: en, mul, ja, zh, ko, the supported
 #   languages, then the rest.
-#   80 people, 187 edits; 0 edits held for a later run
+#   18 people, 27 edits; 0 edits held for a later run
 #   across 0 more people. A repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141494567 Rasmus Hansson Risa Jr.: add a mul alias "Rasmus Hansson Risa d.y."
-Q141494567	Amul	"Rasmus Hansson Risa d.y."
-#   Q141494562 Ole Andreas Rasmussen Auestad: add a mul alias "Ole Andreas Rasmussen Rasmussen"
-Q141494562	Amul	"Ole Andreas Rasmussen Rasmussen"
-#   Q141494526 Lars Larsson Voll: add a mul alias "Lars Larsson Hole"
-Q141494526	Amul	"Lars Larsson Hole"
-#   Q141494505 Johannes Ommundson Ropeid: add a mul alias "Johannes Ommundson Indre Bjerga"
-Q141494505	Amul	"Johannes Ommundson Indre Bjerga"
-#   Q2031200 Aharon IV ben Ab-Hisda ben Yaacov ben Aaharon: set the mul label to "Aharon ben Ab-Chisda ben Yaacob"
-#   add a mul alias "Aharon IV ben Ab-Hisda ben Yaacov ben Aaharon"
-#   Q1962794 Nakhtneith: set the mul label to "Nakhtneith"
-#   set the ja label to "ナクトネイト"
-#   set the zh label to "纳克特内伊特"
-#   set the ko label to "나크트네이트"
-#   Q1466794 Yasuyori Tanba: set the mul label to "Tamba no Yasuyori"
-#   add a mul alias "Yasuyori Tanba"
-#   Q1052959 Nefer Pharaoh of Egypt: set the mul label to "Nefer"
-#   add a mul alias "Nefer Pharaoh of Egypt"
-#   set the ja label to "ネフェル"
-#   set the zh label to "内费尔"
-#   set the ko label to "네페르"
-#   Q958662 Konin-tenno (Amemunetakatsugi): set the mul label to "Kōnin"
-#   add a mul alias "天宗高紹 光仁天皇"
-#   Q913749 Woizero Menen Asfaw: set the mul label to "Menen Asfaw"
-#   add a mul alias "Woizero Menen Michael"
-#   set the ko label to "메넨 아스파우"
-#   Q888003 Negus Yakuno Amlak: set the mul label to "Yekuno Amlak"
-#   add a mul alias "Negus Yakuno Amlak"
-#   Q870223 Dawud Chaghri Bey, Lord of Khorasan: set the mul label to "Chaghri Beg"
-#   add a mul alias "Dawud Chaghri Bey, Lord of Khorasan"
-#   Q736112 Negus Newaya Kerstos: set the mul label to "Newaya Krestos"
-#   add a mul alias "Negus Newaya Kerstos"
-#   set the ja label to "ネヴァヤ・クレストス"
-#   set the zh label to "内瓦雅·克雷斯托斯"
-#   set the ko label to "네와야 크레스토스"
-#   Q733163 Negus Baeda Maryam: set the mul label to "Baeda Maryam I"
-#   add a mul alias "Negus Baeda Maryam"
-#   set the zh label to "巴埃达·马里阿姆一世"
-#   set the ko label to "배다 마럄 1세"
-#   Q716024 Negus Dawit I: set the mul label to "Dawit I"
-#   add a mul alias "Negus Dawit I"
-#   set the zh label to "达维特一世"
-#   set the ko label to "다위트 1세"
-#   Q558437 Dawit II Lebna Dengel: set the mul label to "Lebna Dengel"
-#   add a mul alias "Dawit II Lebna Dengel"
-#   set the ko label to "렙나 데엘"
-#   Q548623 Takelot I: set the mul label to "Takelot I"
-#   set the zh label to "塔凯洛特一世"
-#   set the ko label to "타케로트 1세"
-#   Q515574 Osorkon I: set the mul label to "Osorkon I"
-#   set the ko label to "오소르콘 1세"
-#   Q489064 Ankhesenpepi IV: set the mul label to "Ankhesenpepi IV"
-#   set the ko label to "안케센페피 4세"
-#   Q470528 Amha Selassie Haile Selassie: set the mul label to "Amha Selassie"
-#   add a mul alias "Amha Selassie Haile Selassie"
-#   add a mul alias "Ingrid Ylva Sunesdotter"
-#   set the zh label to "英格丽·伊尔瓦"
-#   Q464248 Neferkasokar: set the mul label to "Neferkasokar"
-#   add a mul alias "Neferkasokar . ."
-#   set the ko label to "네페르카소카르"
-#   Q460342 Negus Amda Teseyon: set the mul label to "Amda Seyon I"
-#   add a mul alias "Negus Amda Teseyon"
-#   set the ko label to "암다 세욘 1세"
-#   Q459153 Osorkon II: set the mul label to "Osorkon II"
-#   set the ko label to "오소르콘 2세"
-#   Q453789 Khenthap: set the mul label to "Khenthap"
-#   add a mul alias "Khenthap ."
-#   set the ja label to "クヘンタプ"
-#   set the ko label to "켄타프"
-#   set the mul label to "Betrest"
-#   add a mul alias "Betrest ."
-#   set the ja label to "ベトレスト"
-#   set the zh label to "贝特雷斯特"
-#   set the ko label to "베트레스트"
-#   set the mul label to "Herneith"
-#   add a mul alias "Herneith of Egypt"
-#   set the ja label to "ヘルネイト"
-#   set the zh label to "赫尔内伊特"
-#   set the ko label to "헤르네이트"
-#   Q451926 Hikohito Go-Hanazono-tenno: set the mul label to "Go-Hanazono"
-#   add a mul alias "彦仁 後花園天皇"
-#   Q449540 Yasuhito Ichijo-tenno: set the mul label to "Ichijō"
-#   add a mul alias "懐仁 一条天皇"
-#   Q440538 Yohito Go-Uda-tenno: set the mul label to "Go-Uda"
-#   add a mul alias "世仁 後宇多天皇"
-#   Q440454 Tanehito Go-Fushimi-tenno: set the mul label to "Go-Fushimi"
-#   add a mul alias "胤仁 後伏見天皇"
-#   Q380623 Fusahito Go-Tsuchimikado-tenno: set the mul label to "Go-Tsuchimikado"
-#   add a mul alias "成仁 後土御門天皇"
-#   Q374104 Morihira En'yu-tenno: set the mul label to "En'yū"
-#   add a mul alias "守平 円融天皇"
-#   Q374075 Kuniharu Go-Nijo-tenno: set the mul label to "Go-Nijō"
-#   add a mul alias "邦治 後二条天皇"
-#   Q373949 Hirohito Fushimi-tenno: set the mul label to "Fushimi"
-#   add a mul alias "熈仁 伏見天皇"
-#   Q357269 Tamehito Tsuchimikado-tenno: set the mul label to "Tsuchimikado"
-#   add a mul alias "為仁 土御門天皇"
-#   Q357261 Norihito Takakura-tenno: set the mul label to "Takakura"
-#   add a mul alias "憲仁 高倉天皇"
-#   Q349467 Tomohito Go-Nara-tenno: set the mul label to "Go-Nara"
-#   add a mul alias "知仁 後奈良天皇"
-#   Q349452 Katsuhito Go-Kashiwabara-tenno: set the mul label to "Go-Kashiwabara"
-#   add a mul alias "勝仁 後柏原天皇"
-#   Q349440 Katahito Go-Yozei-tenno: set the mul label to "Go-Yōzei"
-#   add a mul alias "周仁 後陽成天皇 107th Emperor 1586–1611"
-#   Q349296 Atsunaga Go-Suzaku-tenno: set the mul label to "Go-Suzaku"
-#   add a mul alias "敦良 後朱雀天皇"
-#   set the ja label to "オーベール・ド・ドイタリエ"
-Q347480	Lja	"オーベール・ド・ドイタリエ"
-#   set the zh label to "奥贝尔特·伊埃尔·德伊塔利埃"
-Q347480	Lzh	"奥贝尔特·伊埃尔·德伊塔利埃"
-#   set the ko label to "아우베르트 이에르 디타리에"
-Q347480	Lko	"아우베르트 이에르 디타리에"
-#   Q329765 Tsuguhito Go-Komyo-tenno: set the mul label to "Go-Kōmyō"
-#   add a mul alias "紹仁 後光明天皇"
-#   Q329753 Atsuhito Daigo-tenno: set the mul label to "Daigo"
-#   add a mul alias "敦仁 醍醐天皇"
-#   Q328495 Negus Wedem Ared: set the mul label to "Wedem Arad"
-#   add a mul alias "Negus Wedem Ared"
-#   set the ja label to "ヴェデム・アラド"
-#   set the ko label to "웨뎀 아라드"
-#   Q324688 Negus Naod: add a mul alias "Negus Naod"
-#   set the ja label to "ナオド"
-#   set the zh label to "纳奥德"
-#   set the ko label to "나오드"
-#   Q320908 Merenre Nemtyemsaf II Pharaoh of Egypt: set the mul label to "Merenre Nemtyemsaf II"
-#   add a mul alias "Merenre Nemtyemsaf II Pharaoh of Egypt"
-#   Q320229 Kotohito Go-Mizunoo-tenno: set the mul label to "Go-Mizunoo"
-#   add a mul alias "政仁 後水尾天皇 108th Emperor 1611–1629"
-#   Q317984 Masahito Go-Shirakawa-tenno: set the mul label to "Go-Shirakawa"
-#   add a mul alias "雅仁 後白河天皇"
-#   Q316658 Takahira Go-Toba-tenno: set the mul label to "Go-Toba"
-#   add a mul alias "尊成 後鳥羽天皇"
-#   Q314817: set the mul label to "Nakamikado"
-#   Q314063 Hidehito Go-Momozono-tenno, 118th Emperor (1771–1779): set the mul label to "Go-Momozono"
-#   add a mul alias "英仁 後桃園天皇"
-#   Q313942 Takaharu Go-Daigo-tenno: set the mul label to "Go-Daigo"
-#   add a mul alias "Takaharu Go-Daigo-tenno"
-#   Q313870 Teruhito Sakuramachi-tenno, 115th Emperor (1735–1747): set the mul label to "Sakuramachi"
-#   add a mul alias "昭仁 桜町天皇"
-#   Q313864 Tohito Momozono-tenno, 116th Emperor (1747–1762): set the mul label to "Momozono"
-#   add a mul alias "遐仁 桃園天皇"
-#   Q313806 Tomohito Aido: set the mul label to "Kōkaku"
-#   add a mul alias "Tomohito Aido"
-#   Q313801 Asahito Higashiyama-tenno: set the mul label to "Higashiyama"
-#   add a mul alias "朝仁 東山天皇 113th Emperor 1687–1709"
-#   Q312351 Ayahito Aido: set the mul label to "Ninkō"
-#   add a mul alias "Ayahito (Emperor) Aido"
-#   Q311811 Scheschonq I: set the mul label to "Shoshenq I"
-#   add a mul alias "Scheschonq I"
-#   Q310878 Seth-Peribsen Pharaoh of Egypt: set the mul label to "Peribsen"
-#   add a mul alias "Seth-Peribsen Pharaoh of Egypt"
-#   Q299179 Osahito Komei-tennō: set the mul label to "Kōmei"
-#   add a mul alias "Osahito (Komei) 陛下 Aido"
-#   Q255585 Neithhotep: set the mul label to "Neithhotep"
-#   add a mul alias "Neithhotep . ."
-#   set the ko label to "네이트호테프"
-#   Q232803 Jingū-kōgō (Okinagatarashi-hime): set the mul label to "Jingū"
-#   add a mul alias "息長帯比売 神功皇后"
-#   set the mul label to "Merneith"
-#   add a mul alias "Meryt-Neith Pharaoh Regent of Egypt"
-#   Q217096 Naruhito Emperor of Japan: add a mul alias "Naruhito Emperor of Japan"
-#   Q174231 Mutsuhito Meiji-tennō Emperor Meiji of Japan: set the mul label to "Mutsuhito"
-#   add a mul alias "Mutsuhito Meiji-tennō Emperor Meiji of Japan"
-#   Q159888 Makeda Queen of Sheba: set the mul label to "Queen of Sheba"
-#   add a mul alias "Makeda Queen of Sheba"
-#   Q157052 Yoshihito Taishō-tennō Emperor Taisho of Japan: set the mul label to "Yoshihito"
-#   add a mul alias "Yoshihito Taishō-tennō Emperor Taisho of Japan"
-#   add a mul alias "Albrecht I The Bear, Margrave of Brandenburg"
-#   set the ja label to "アルバート・テ・ベアル"
-#   set the zh label to "阿尔伯特·特·贝阿尔"
-#   set the ko label to "알베르트 테 베아르"
-#   Q152751 Nebre: set the mul label to "Nebra"
-#   add a mul alias "Nebre . ."
-#   Q152375 Djer Pharaoh of Egypt: set the mul label to "Djer"
-#   add a mul alias "Djer Pharaoh of Egypt"
-#   set the mul label to "Qa'a"
-#   add a mul alias "Qa'a Pharaoh of Egypt"
-#   Q151805 Semerkhet Pharaoh of Egypt: set the mul label to "Semerkhet"
-#   add a mul alias "Semerkhet Pharaoh of Egypt"
-#   Q150642 Vittorio Emanuele Ferdinando Maria Gennaro di Savoia: set the mul label to "Viktor Emanuel III."
-#   add a mul alias "Vittorio Emanuele Ferdinando Maria Gennaro di Savoia"
-#   Q147677 Negus Zariea yaqob: set the mul label to "Zara Yaqob"
-#   add a mul alias "Negus Zariea yaqob"
-#   Q144565 Rukn al-Dawla Muhammad Tughril Seljuq: set the mul label to "Tughril"
-#   add a mul alias "Rukn al-Dawla Muhammad Tughril Seljuq"
-#   Q120564 Meisho 109th Emperor 1629–1643: add a mul alias "Empress Meishō"
-#   set the mul label to "Meishō"
-#   add a mul alias "“Okiko” Meisho 109th Emperor 1629–1643"
-#   Q41178 Haile Mekonnen Selassie I: add a mul alias "Haile Selassie I"
-#   set the mul label to "Haile Selassie"
-#   add a mul alias "Haile Mekonnen Selassie I"
-#   Q37979 Akihito Emperor Emeritus of Japan: add a mul alias "Akihito Emperor Emeritus of Japan"
-#   Q34479 Hirohito Shōwa-tennō Emperor Showa of Japan: add a mul alias "Hirohito Shōwa-tennō Emperor Showa of Japan"
+#   Q141497531 Anna Asbjørnsdatter Todnem: add a mul alias "Anna Asbjørnsdatter Asbjørnsdatter"
+Q141497531	Amul	"Anna Asbjørnsdatter Asbjørnsdatter"
+#   Q141497528 Anna Asbjørnsdatter Rønneberg: add a mul alias "Anna Asbjørnsdatter Stokka"
+Q141497528	Amul	"Anna Asbjørnsdatter Stokka"
+#   Q141497516 Alv Olson Særheim: add a mul alias "Alv Olson Vestre Barstad"
+Q141497516	Amul	"Alv Olson Vestre Barstad"
+#   Q141497502 Berta Sofie Tørresdatter Sele: add a mul alias "Berta Sofie Tørresdatter Bore"
+Q141497502	Amul	"Berta Sofie Tørresdatter Bore"
+#   Q141497501 Anna Benkestok: add a mul alias "Anna Haard"
+Q141497501	Amul	"Anna Haard"
+#   Q141497499 Anna Maria Dahle: add a mul alias "Anna Maria Hegre"
+Q141497499	Amul	"Anna Maria Hegre"
+#   Q141497426 Ådne Ivarson Rossavik: add a mul alias "Ådne Ivarson Rossavik"
+Q141497426	Amul	"Ådne Ivarson Rossavik"
+#   Q141497424 Berta Tollaksdatter Ølberg: add a mul alias "Berta Tollaksdatter Hødlesli"
+Q141497424	Amul	"Berta Tollaksdatter Hødlesli"
+#   Q141497422 Anna Olsdatter Nord-Varhaug Jr.: add a mul alias "Anna Olsdatter Hobberstad d. y."
+Q141497422	Amul	"Anna Olsdatter Hobberstad d. y."
+#   Q141497419 Berthe Tjærandsdatter Grude: add a mul alias "Berthe Tjærandsdatter Sele"
+Q141497419	Amul	"Berthe Tjærandsdatter Sele"
+#   Q141497328 Agneta Guthrie: add a mul alias "Agneta Griege"
+Q141497328	Amul	"Agneta Griege"
+#   Q141494566 Ragna Kydland: add a mul alias "Ragna Birkland"
+Q141494566	Amul	"Ragna Birkland"
+#   Q141494442 Guri Bergitte Andersdotter Lunde: add a mul alias "Guri Bergitte Andersdotter Lea"
+Q141494442	Amul	"Guri Bergitte Andersdotter Lea"
+#   add a mul alias "Eunice Gibson"
+Q141494435	Amul	"Eunice Gibson"
+#   Q141450322 Olfvir Henningsson Rømer: add a mul alias "Olfvir (Ølver) Henningsson Rømer"
+Q141450322	Amul	"Olfvir (Ølver) Henningsson Rømer"
+#   set the ja label to "オルヴェル・ヘンニングソン・ロメル"
+Q141450322	Lja	"オルヴェル・ヘンニングソン・ロメル"
+#   set the zh label to "奥尔韦尔·赫宁松·罗梅尔"
+Q141450322	Lzh	"奥尔韦尔·赫宁松·罗梅尔"
+#   set the ko label to "욀베르 헨닝손 뢰메르"
+Q141450322	Lko	"욀베르 헨닝손 뢰메르"
+#   Q4301841 Мономахиня: set the mul label to "Monomahinya"
+#   add a mul alias "Monomakhina"
+#   set the zh label to "莫诺马希尼阿"
+#   set the ko label to "모노마히냐"
+#   Q2054995 Willa: add a mul alias "Willa"
+Q2054995	Amul	"Willa"
+#   set the mul label to "Willa de Toscane"
+Q2054995	Lmul	"Willa de Toscane"
+#   Q20498971: 'Margareta von Thüringen' has no ja/zh/ko label
+#   Q20498971: set the ja label
+#   Q20498971: set the zh label
+#   Q20498971: set the ko label
+#   Q2054995: 'Willa' has no ko label
+#   Q2054995: set the ko label
+Q2054995	Lko	"윌라"
+#   set the ko label to "윌라 데 토스카네"
+Q2054995	Lko	"윌라 데 토스카네"
+#   add a mul alias "Dawud Chaghri bin Mikail Seljuq"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
 #    QIDs -- two items minted in one batch cannot point at each other.
-
-# create a new item
-CREATE
-#   the item just created: set the mul label to "NN"
-LAST	Lmul	"NN"
-#   set the ca label to "fill de Eyvind Lindholm"
-LAST	Lca	"fill de Eyvind Lindholm"
-#   set the da label to "søn af Eyvind Lindholm"
-LAST	Lda	"søn af Eyvind Lindholm"
-#   set the de label to "Sohn von Eyvind Lindholm"
-LAST	Lde	"Sohn von Eyvind Lindholm"
-#   set the en label to "son of Eyvind Lindholm"
-LAST	Len	"son of Eyvind Lindholm"
-#   set the es label to "hijo de Eyvind Lindholm"
-LAST	Les	"hijo de Eyvind Lindholm"
-#   set the fr label to "fils de Eyvind Lindholm"
-LAST	Lfr	"fils de Eyvind Lindholm"
-#   set the it label to "figlio di Eyvind Lindholm"
-LAST	Lit	"figlio di Eyvind Lindholm"
-#   set the ja label to "アイヴィン・リンドホルムの息子"
-LAST	Lja	"アイヴィン・リンドホルムの息子"
-#   set the ko label to "에이빈드 린드홀므의 아들"
-LAST	Lko	"에이빈드 린드홀므의 아들"
-#   set the nb label to "sønn av Eyvind Lindholm"
-LAST	Lnb	"sønn av Eyvind Lindholm"
-#   set the nl label to "zoon van Eyvind Lindholm"
-LAST	Lnl	"zoon van Eyvind Lindholm"
-#   set the pt label to "filho de Eyvind Lindholm"
-LAST	Lpt	"filho de Eyvind Lindholm"
-#   set the sv label to "son till Eyvind Lindholm"
-LAST	Lsv	"son till Eyvind Lindholm"
-#   set the zh label to "埃伊文德·林德霍尔姆之子"
-LAST	Lzh	"埃伊文德·林德霍尔姆之子"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 3955133673200020902
-LAST	P2600	"3955133673200020902"
-#   P22 father = Q141492682 Eyvind Lindholm
-LAST	P22	Q141492682	S2600	"3955133673200020902"
-#   Q141492682 Eyvind Lindholm: P40 child = the item just created
-Q141492682	P40	LAST	S2600	"3955133673200020902"
-
-# create a new item
-CREATE
-#   the item just created: set the mul label to "NN"
-LAST	Lmul	"NN"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000180001213824
-LAST	P2600	"6000000180001213824"
-#   P26 spouse = Q141205934
-LAST	P26	Q141205934	S2600	"6000000180001213824"
-#   Q141205934: P26 spouse = the item just created
-Q141205934	P26	LAST	S2600	"6000000180001213824"
 
 # create a new item
 CREATE
@@ -686,235 +519,151 @@ LAST	Amul	"Abraham Helland"
 
 # create a new item
 CREATE
-#   set the en label to "Agneta Guthrie"
-LAST	Len	"Agneta Guthrie"
-#   set the mul label to "Agneta Guthrie"
-LAST	Lmul	"Agneta Guthrie"
-#   add a mul alias "Agneta Griege"
-LAST	Amul	"Agneta Griege"
-#   set the ja label to "アグニェータ・ガスリー"
-LAST	Lja	"アグニェータ・ガスリー"
-#   set the zh label to "阿格内塔·格思里"
-LAST	Lzh	"阿格内塔·格思里"
-#   set the ko label to "악네타 구트리에"
-LAST	Lko	"악네타 구트리에"
+#   set the en label to "Adelus Eriksdatter Benkestok"
+LAST	Len	"Adelus Eriksdatter Benkestok"
+#   set the mul label to "Adelus Eriksdatter Benkestok"
+LAST	Lmul	"Adelus Eriksdatter Benkestok"
+#   add a mul alias "Adelus Eriksdatter Ericksdatter"
+LAST	Amul	"Adelus Eriksdatter Ericksdatter"
+#   set the ja label to "アデルス・エリクスダッテル・ベンケストク"
+LAST	Lja	"アデルス・エリクスダッテル・ベンケストク"
+#   set the zh label to "阿德卢斯·埃里克斯达特·本凯斯托克"
+LAST	Lzh	"阿德卢斯·埃里克斯达特·本凯斯托克"
+#   set the ko label to "아데루스 에리크스다테르 벤케스토크"
+LAST	Lko	"아데루스 에리크스다테르 벤케스토크"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000014548048080 Agneta Guthrie, qualified P1810 subject named as Agneta Griege
-LAST	P2600	"6000000014548048080"	P1810	"Agneta Griege"
-#   P26 spouse = Q141493450 Walter James Guthrie
-LAST	P26	Q141493450	S2600	"6000000014548048080"
-#   P40 child = Q141488164 Jacob Walteri Guthræus
-LAST	P40	Q141488164	S2600	"6000000014548048080"
-#   Q141493450 Walter James Guthrie: P26 spouse = the item just created
-Q141493450	P26	LAST	S2600	"6000000014548048080"
-#   Q141488164 Jacob Walteri Guthræus: P25 mother = the item just created
-Q141488164	P25	LAST	S2600	"6000000014548048080"
-#   the item just created: P735 given name = Q3354746 Agneta
-LAST	P735	Q3354746
+#   P2600 Geni.com profile ID = 6000000002512252466 Adelus Eriksdatter Benkestok Til Talgø/Melø, qualified P1810 subject named as Adelus Eriksdatter Ericksdatter Til Talgø Melø
+LAST	P2600	"6000000002512252466"	P1810	"Adelus Eriksdatter Ericksdatter Til Talgø Melø"
+#   P569 date of birth = +1460-00-00T00:00:00Z/9
+LAST	P569	+1460-00-00T00:00:00Z/9	S2600	"6000000002512252466"
+#   P570 date of death = +1530-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1530-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002512252466"
+#   P26 spouse = Q7825898 Torleiv Trondssøn Benkestok
+LAST	P26	Q7825898	S2600	"6000000002512252466"
+#   P40 child = Q7845461 Trond Thorleivsson Benkestok III
+LAST	P40	Q7845461	S2600	"6000000002512252466"
+#   Q7825898 Torleiv Trondssøn Benkestok: P26 spouse = the item just created
+Q7825898	P26	LAST	S2600	"6000000002512252466"
+#   Q7845461 Trond Thorleivsson Benkestok III: P25 mother = the item just created
+Q7845461	P25	LAST	S2600	"6000000002512252466"
+#   the item just created: P735 given name = Q141494366
+LAST	P735	Q141494366
+#   P5056 patronym or matronym = Q141223487
+LAST	P5056	Q141223487
+#   P734 family name = Q42857954 Benkestok, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q42857954	P3831	Q28418670
+#   add a mul alias "Adelus Benkestok"
+LAST	Amul	"Adelus Benkestok"
 
 # create a new item
 CREATE
-#   set the en label to "Alv Olson Særheim"
-LAST	Len	"Alv Olson Særheim"
-#   set the mul label to "Alv Olson Særheim"
-LAST	Lmul	"Alv Olson Særheim"
-#   add a mul alias "Alv Olson Vestre Barstad"
-LAST	Amul	"Alv Olson Vestre Barstad"
-#   set the ja label to "アルヴ・オルソン・セルヘイム"
-LAST	Lja	"アルヴ・オルソン・セルヘイム"
-#   set the zh label to "阿尔夫·奥尔森·塞尔赫伊姆"
-LAST	Lzh	"阿尔夫·奥尔森·塞尔赫伊姆"
-#   set the ko label to "알브 올손 새르헤임"
-LAST	Lko	"알브 올손 새르헤임"
+#   set the en label to "Anders Andersson"
+LAST	Len	"Anders Andersson"
+#   set the mul label to "Anders Andersson"
+LAST	Lmul	"Anders Andersson"
+#   set the ja label to "アンデルス・アンデション"
+LAST	Lja	"アンデルス・アンデション"
+#   set the zh label to "安德斯·安德松"
+LAST	Lzh	"安德斯·安德松"
+#   set the ko label to "안데르스 안데르손"
+LAST	Lko	"안데르스 안데르손"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000006776171892 Alv Olson Særheim, qualified P1810 subject named as Alv Olson Særheim
-LAST	P2600	"6000000006776171892"	P1810	"Alv Olson Særheim"
-#   P569 date of birth = +1685-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P569	+1685-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000006776171892"
-#   P570 date of death = +1761-00-00T00:00:00Z/9
-LAST	P570	+1761-00-00T00:00:00Z/9	S2600	"6000000006776171892"
-#   P26 spouse = Q141494573 Steinvor Sivertsdatter Gjedrem
-LAST	P26	Q141494573	S2600	"6000000006776171892"
-#   P40 child = Q141436682 Ola Alvson Særheim
-LAST	P40	Q141436682	S2600	"6000000006776171892"
-#   Q141494573 Steinvor Sivertsdatter Gjedrem: P26 spouse = the item just created
-Q141494573	P26	LAST	S2600	"6000000006776171892"
-#   Q141436682 Ola Alvson Særheim: P22 father = the item just created
-Q141436682	P22	LAST	S2600	"6000000006776171892"
-#   the item just created: P735 given name = Q30131738 Alv
-LAST	P735	Q30131738
-#   P5056 patronym or matronym = Q141283709
-LAST	P5056	Q141283709
-#   P734 family name = Q38893530 Vestre, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q38893530	P3831	Q2507958
-#   P734 family name = Q48703065
-LAST	P734	Q48703065
-#   add a mul alias "Alv Særheim"
-LAST	Amul	"Alv Særheim"
+#   P2600 Geni.com profile ID = 6000000220696846910 Anders Andersson, qualified P1810 subject named as Anders Andersson
+LAST	P2600	"6000000220696846910"	P1810	"Anders Andersson"
+#   P569 date of birth = +1725-00-00T00:00:00Z/9
+LAST	P569	+1725-00-00T00:00:00Z/9	S2600	"6000000220696846910"
+#   P22 father = Q141290455 Anders Panna
+LAST	P22	Q141290455	S2600	"6000000220696846910"
+#   P25 mother = Q141290456 Anna Persdotter
+LAST	P25	Q141290456	S2600	"6000000220696846910"
+#   Q141290455 Anders Panna: P40 child = the item just created
+Q141290455	P40	LAST	S2600	"6000000220696846910"
+#   Q141290456 Anna Persdotter: P40 child = the item just created
+Q141290456	P40	LAST	S2600	"6000000220696846910"
+#   the item just created: P735 given name = Q8843357 Anders
+LAST	P735	Q8843357
+#   P5056 patronym or matronym = Q141318548, qualified P144 based on Q141290455 Anders Panna
+LAST	P5056	Q141318548	P144	Q141290455
 
 # create a new item
 CREATE
-#   set the en label to "Ane Kristine Pedersdatter Skadberg"
-LAST	Len	"Ane Kristine Pedersdatter Skadberg"
-#   set the mul label to "Ane Kristine Pedersdatter Skadberg"
-LAST	Lmul	"Ane Kristine Pedersdatter Skadberg"
-#   set the ja label to "アーネ・クリスティン・ペーデシュダッテル・スカドベルグ"
-LAST	Lja	"アーネ・クリスティン・ペーデシュダッテル・スカドベルグ"
-#   set the zh label to "安内·克丽丝汀·佩德斯达特·斯卡德贝尔格"
-LAST	Lzh	"安内·克丽丝汀·佩德斯达特·斯卡德贝尔格"
-#   set the ko label to "아네 크리스티네 페데르스다테르 스카드베륵"
-LAST	Lko	"아네 크리스티네 페데르스다테르 스카드베륵"
+#   set the en label to "Anders Jakob Roland de Laval"
+LAST	Len	"Anders Jakob Roland de Laval"
+#   set the mul label to "Anders Jakob Roland de Laval"
+LAST	Lmul	"Anders Jakob Roland de Laval"
+#   set the ja label to "アンデルス・ヤーコプ・ローランド・デ・ラヴァル"
+LAST	Lja	"アンデルス・ヤーコプ・ローランド・デ・ラヴァル"
+#   set the zh label to "安德斯·雅各布·罗兰·德·赖伐尔"
+LAST	Lzh	"安德斯·雅各布·罗兰·德·赖伐尔"
+#   set the ko label to "안데르스 자콥 로란드 데 라발"
+LAST	Lko	"안데르스 자콥 로란드 데 라발"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000059860373860 Ane Kristine Pedersdatter Skadberg, qualified P1810 subject named as Ane Kristine Pedersdatter Skadberg
-LAST	P2600	"6000000059860373860"	P1810	"Ane Kristine Pedersdatter Skadberg"
-#   P569 date of birth = +1852-05-18T00:00:00Z/11
-LAST	P569	+1852-05-18T00:00:00Z/11	S2600	"6000000059860373860"
-#   P570 date of death = +1929-08-26T00:00:00Z/11
-LAST	P570	+1929-08-26T00:00:00Z/11	S2600	"6000000059860373860"
-#   P26 spouse = Q138473856 Kristian Monsen Stangeland
-LAST	P26	Q138473856	S2600	"6000000059860373860"
-#   P40 child = Q141493387 Karoline Kristiansdatter Grude
-LAST	P40	Q141493387	S2600	"6000000059860373860"
-#   Q138473856 Kristian Monsen Stangeland: P26 spouse = the item just created
-Q138473856	P26	LAST	S2600	"6000000059860373860"
-#   Q141493387 Karoline Kristiansdatter Grude: P25 mother = the item just created
-Q141493387	P25	LAST	S2600	"6000000059860373860"
-#   the item just created: P735 given name = Q11958077 Ane, qualified P1545 series ordinal 1
-LAST	P735	Q11958077	P1545	"1"
-#   P735 given name = Q16859157 Kristine, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q16859157	P1545	"2"	P3831	Q245025
-#   P5056 patronym or matronym = Q141257144
-LAST	P5056	Q141257144
-#   P734 family name = Q37286641
-LAST	P734	Q37286641
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000006429592374 Anders Jakob Roland de Laval, qualified P1810 subject named as Anders Jakob Roland de Laval
+LAST	P2600	"6000000006429592374"	P1810	"Anders Jakob Roland de Laval"
+#   P569 date of birth = +1847-00-00T00:00:00Z/9
+LAST	P569	+1847-00-00T00:00:00Z/9	S2600	"6000000006429592374"
+#   P570 date of death = +1899-00-00T00:00:00Z/9
+LAST	P570	+1899-00-00T00:00:00Z/9	S2600	"6000000006429592374"
+#   P25 mother = Q141290463 Johanna Elisabeth de Laval
+LAST	P25	Q141290463	S2600	"6000000006429592374"
+#   Q141290463 Johanna Elisabeth de Laval: P40 child = the item just created
+Q141290463	P40	LAST	S2600	"6000000006429592374"
+#   the item just created: P735 given name = Q8843357 Anders, qualified P1545 series ordinal 1
+LAST	P735	Q8843357	P1545	"1"
+#   P735 given name = Q16747395, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q16747395	P1545	"2"	P3831	Q245025
+#   P735 given name = Q1068487 Roland, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q1068487	P1545	"3"	P3831	Q245025
+#   P734 family name = Q23072571 Laval
+LAST	P734	Q23072571
 
 # create a new item
 CREATE
-#   set the en label to "Anna Asbjørnsdatter Rønneberg"
-LAST	Len	"Anna Asbjørnsdatter Rønneberg"
-#   set the mul label to "Anna Asbjørnsdatter Rønneberg"
-LAST	Lmul	"Anna Asbjørnsdatter Rønneberg"
-#   add a mul alias "Anna Asbjørnsdatter Stokka"
-LAST	Amul	"Anna Asbjørnsdatter Stokka"
-#   set the ja label to "アンナ・アスビョルンスダッテル・レンネベルグ"
-LAST	Lja	"アンナ・アスビョルンスダッテル・レンネベルグ"
-#   set the zh label to "安娜·阿斯博尔恩斯达特·伦内贝格"
-LAST	Lzh	"安娜·阿斯博尔恩斯达特·伦内贝格"
-#   set the ko label to "안나 아스뵈른스다테르 뢴네베륵"
-LAST	Lko	"안나 아스뵈른스다테르 뢴네베륵"
+#   set the en label to "Anfinn Andersen Skas"
+LAST	Len	"Anfinn Andersen Skas"
+#   set the mul label to "Anfinn Andersen Skas"
+LAST	Lmul	"Anfinn Andersen Skas"
+#   set the ja label to "アンフィン・アンデルセン・スカス"
+LAST	Lja	"アンフィン・アンデルセン・スカス"
+#   set the zh label to "安芬·安德森·斯卡斯"
+LAST	Lzh	"安芬·安德森·斯卡斯"
+#   set the ko label to "안핀 안데르센 스카스"
+LAST	Lko	"안핀 안데르센 스카스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000003491933611 Anna Asbjørnsdatter Rønneberg, qualified P1810 subject named as Anna Asbjørnsdatter Stokka
-LAST	P2600	"6000000003491933611"	P1810	"Anna Asbjørnsdatter Stokka"
-#   P569 date of birth = +1733-00-00T00:00:00Z/9
-LAST	P569	+1733-00-00T00:00:00Z/9	S2600	"6000000003491933611"
-#   P570 date of death = +1799-00-00T00:00:00Z/9
-LAST	P570	+1799-00-00T00:00:00Z/9	S2600	"6000000003491933611"
-#   P22 father = Q141353050 Asbjørn Erikson Røyneberg
-LAST	P22	Q141353050	S2600	"6000000003491933611"
-#   P25 mother = Q141353661 Inger Pedersdatter Stokka
-LAST	P25	Q141353661	S2600	"6000000003491933611"
-#   Q141353050 Asbjørn Erikson Røyneberg: P40 child = the item just created
-Q141353050	P40	LAST	S2600	"6000000003491933611"
-#   Q141353661 Inger Pedersdatter Stokka: P40 child = the item just created
-Q141353661	P40	LAST	S2600	"6000000003491933611"
-#   the item just created: P735 given name = Q666578 Anna
-LAST	P735	Q666578
-#   P5056 patronym or matronym = Q141249690, qualified P144 based on Q141353050 Asbjørn Erikson Røyneberg
-LAST	P5056	Q141249690	P144	Q141353050
-#   P734 family name = Q37033285, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q37033285	P3831	Q2507958
-#   P734 family name = Q7386722 Rønneberg, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q7386722	P3831	Q28418670
-#   add a mul alias "Anna Rønneberg"
-LAST	Amul	"Anna Rønneberg"
-
-# create a new item
-CREATE
-#   set the en label to "Anna Asbjørnsdatter Todnem"
-LAST	Len	"Anna Asbjørnsdatter Todnem"
-#   set the mul label to "Anna Asbjørnsdatter Todnem"
-LAST	Lmul	"Anna Asbjørnsdatter Todnem"
-#   add a mul alias "Anna Asbjørnsdatter Asbjørnsdatter"
-LAST	Amul	"Anna Asbjørnsdatter Asbjørnsdatter"
-#   set the ja label to "アンナ・アスビョルンスダッテル・トドネム"
-LAST	Lja	"アンナ・アスビョルンスダッテル・トドネム"
-#   set the zh label to "安娜·阿斯博尔恩斯达特·托德内姆"
-LAST	Lzh	"安娜·阿斯博尔恩斯达特·托德内姆"
-#   set the ko label to "안나 아스뵈른스다테르 토드넴"
-LAST	Lko	"안나 아스뵈른스다테르 토드넴"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005931666029 Anna Asbjørnsdatter Todnem, qualified P1810 subject named as Anna Asbjørnsdatter Asbjørnsdatter
-LAST	P2600	"6000000005931666029"	P1810	"Anna Asbjørnsdatter Asbjørnsdatter"
-#   P569 date of birth = +1675-00-00T00:00:00Z/9
-LAST	P569	+1675-00-00T00:00:00Z/9	S2600	"6000000005931666029"
-#   P570 date of death = +1768-00-00T00:00:00Z/9
-LAST	P570	+1768-00-00T00:00:00Z/9	S2600	"6000000005931666029"
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000006776171944 Anfinn Andersen Skas, qualified P1810 subject named as Anfinn Andersen Skas
+LAST	P2600	"6000000006776171944"	P1810	"Anfinn Andersen Skas"
+#   P569 date of birth = +1645-00-00T00:00:00Z/9
+LAST	P569	+1645-00-00T00:00:00Z/9	S2600	"6000000006776171944"
+#   P570 date of death = +1745-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1745-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000006776171944"
+#   P26 spouse = Q141497531 Anna Asbjørnsdatter Todnem
+LAST	P26	Q141497531	S2600	"6000000006776171944"
 #   P40 child = Q141454538 Kirsten Anfinsdatter Skas
-LAST	P40	Q141454538	S2600	"6000000005931666029"
-#   Q141454538 Kirsten Anfinsdatter Skas: P25 mother = the item just created
-Q141454538	P25	LAST	S2600	"6000000005931666029"
-#   the item just created: P735 given name = Q666578 Anna
-LAST	P735	Q666578
-#   P5056 patronym or matronym = Q141249690
-LAST	P5056	Q141249690
-#   P734 family name = Q40000038, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q40000038	P3831	Q28418670
-#   add a mul alias "Anna Todnem"
-LAST	Amul	"Anna Todnem"
-
-# create a new item
-CREATE
-#   set the en label to "Anna Benkestok"
-LAST	Len	"Anna Benkestok"
-#   set the mul label to "Anna Benkestok"
-LAST	Lmul	"Anna Benkestok"
-#   set the ja label to "アンナ・ベンケストク"
-LAST	Lja	"アンナ・ベンケストク"
-#   set the zh label to "安娜·本凯斯托克"
-LAST	Lzh	"安娜·本凯斯托克"
-#   set the ko label to "안나 벤케스토크"
-LAST	Lko	"안나 벤케스토크"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000000758079676 Anna Benkestok, qualified P1810 subject named as Anna Haard
-LAST	P2600	"6000000000758079676"	P1810	"Anna Haard"
-#   P569 date of birth = +1510-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P569	+1510-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000000758079676"
-#   P570 date of death = +1569-11-27T00:00:00Z/11
-LAST	P570	+1569-11-27T00:00:00Z/11	S2600	"6000000000758079676"
-#   P26 spouse = Q7845461 Trond Thorleivsson Benkestok, III
-LAST	P26	Q7845461	S2600	"6000000000758079676"
-#   P40 child = Q141493463 Kristine Trondsdatter Benkestok
-LAST	P40	Q141493463	S2600	"6000000000758079676"
-#   P40 child = Q6271694 Jon Trondson Benkestok
-LAST	P40	Q6271694	S2600	"6000000000758079676"
-#   Q7845461 Trond Thorleivsson Benkestok, III: P26 spouse = the item just created
-Q7845461	P26	LAST	S2600	"6000000000758079676"
-#   Q141493463 Kristine Trondsdatter Benkestok: P25 mother = the item just created
-Q141493463	P25	LAST	S2600	"6000000000758079676"
-#   Q6271694 Jon Trondson Benkestok: P25 mother = the item just created
-Q6271694	P25	LAST	S2600	"6000000000758079676"
-#   the item just created: P735 given name = Q666578 Anna
-LAST	P735	Q666578
-#   P734 family name = Q33026877
-LAST	P734	Q33026877
+LAST	P40	Q141454538	S2600	"6000000006776171944"
+#   Q141497531 Anna Asbjørnsdatter Todnem: P26 spouse = the item just created
+Q141497531	P26	LAST	S2600	"6000000006776171944"
+#   Q141454538 Kirsten Anfinsdatter Skas: P22 father = the item just created
+Q141454538	P22	LAST	S2600	"6000000006776171944"
+#   the item just created: P735 given name = Q30132308 Anfinn
+LAST	P735	Q30132308
+#   P5056 patronym or matronym = Q141457235
+LAST	P5056	Q141457235
+#   P734 family name = Q141403309
+LAST	P734	Q141403309
+#   add a mul alias "Anderson"
+LAST	Amul	"Anderson"
 
 # create a new item
 CREATE
@@ -955,647 +704,856 @@ LAST	P5056	Q141383169
 
 # create a new item
 CREATE
-#   set the en label to "Anna Charlotta af Sillén"
-LAST	Len	"Anna Charlotta af Sillén"
-#   set the mul label to "Anna Charlotta af Sillén"
-LAST	Lmul	"Anna Charlotta af Sillén"
-#   set the ja label to "アンナ・カルロッタ・アフ・シレン"
-LAST	Lja	"アンナ・カルロッタ・アフ・シレン"
-#   set the zh label to "安娜·卡尔洛塔·阿夫·西伦"
-LAST	Lzh	"安娜·卡尔洛塔·阿夫·西伦"
-#   set the ko label to "안나 차로타 아프 시렌"
-LAST	Lko	"안나 차로타 아프 시렌"
+#   set the en label to "Anna Helena Olsdatter Auestad"
+LAST	Len	"Anna Helena Olsdatter Auestad"
+#   set the mul label to "Anna Helena Olsdatter Auestad"
+LAST	Lmul	"Anna Helena Olsdatter Auestad"
+#   set the ja label to "アンナ・ヘレナ・オルスダッテル・アウエスタド"
+LAST	Lja	"アンナ・ヘレナ・オルスダッテル・アウエスタド"
+#   set the zh label to "安娜·海伦娜·奥尔斯达特·奥埃斯塔德"
+LAST	Lzh	"安娜·海伦娜·奥尔斯达特·奥埃斯塔德"
+#   set the ko label to "안나 헤레나 올스다테르 아우에스타드"
+LAST	Lko	"안나 헤레나 올스다테르 아우에스타드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000006128024475 Anna Charlotta af Sillén, qualified P1810 subject named as Anna Charlotta af Sillén
-LAST	P2600	"6000000006128024475"	P1810	"Anna Charlotta af Sillén"
-#   P569 date of birth = +1766-03-07T00:00:00Z/11
-LAST	P569	+1766-03-07T00:00:00Z/11	S2600	"6000000006128024475"
-#   P570 date of death = +1831-11-18T00:00:00Z/11
-LAST	P570	+1831-11-18T00:00:00Z/11	S2600	"6000000006128024475"
-#   P26 spouse = Q141436702 Samuel von Troil
-LAST	P26	Q141436702	S2600	"6000000006128024475"
-#   P40 child = Q141493132 Brita Elisabet Johanna von Troil
-LAST	P40	Q141493132	S2600	"6000000006128024475"
-#   Q141436702 Samuel von Troil: P26 spouse = the item just created
-Q141436702	P26	LAST	S2600	"6000000006128024475"
-#   Q141493132 Brita Elisabet Johanna von Troil: P25 mother = the item just created
-Q141493132	P25	LAST	S2600	"6000000006128024475"
-#   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1
-LAST	P735	Q666578	P1545	"1"
-#   P735 given name = Q1067071 Charlotta, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q1067071	P1545	"2"	P3831	Q245025
-
-# create a new item
-CREATE
-#   set the en label to "Anna Maria Dahle"
-LAST	Len	"Anna Maria Dahle"
-#   set the mul label to "Anna Maria Dahle"
-LAST	Lmul	"Anna Maria Dahle"
-#   add a mul alias "Anna Maria Hegre"
-LAST	Amul	"Anna Maria Hegre"
-#   set the ja label to "アンナ・マリア・ダレ"
-LAST	Lja	"アンナ・マリア・ダレ"
-#   set the zh label to "安娜·玛丽亚·达莱"
-LAST	Lzh	"安娜·玛丽亚·达莱"
-#   set the ko label to "안나 마리아 다흐레"
-LAST	Lko	"안나 마리아 다흐레"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000011688878519 Anna Maria Dahle, qualified P1810 subject named as Anna Maria Hegre
-LAST	P2600	"6000000011688878519"	P1810	"Anna Maria Hegre"
-#   P569 date of birth = +1900-08-03T00:00:00Z/11
-LAST	P569	+1900-08-03T00:00:00Z/11	S2600	"6000000011688878519"
-#   P570 date of death = +1974-03-10T00:00:00Z/11
-LAST	P570	+1974-03-10T00:00:00Z/11	S2600	"6000000011688878519"
-#   P22 father = Q141189070 John Jonassen Hegre
-LAST	P22	Q141189070	S2600	"6000000011688878519"
-#   P25 mother = Q141205896 Ane Marie Konstanse Amanda Kristine Hegre
-LAST	P25	Q141205896	S2600	"6000000011688878519"
-#   Q141189070 John Jonassen Hegre: P40 child = the item just created
-Q141189070	P40	LAST	S2600	"6000000011688878519"
-#   Q141205896 Ane Marie Konstanse Amanda Kristine Hegre: P40 child = the item just created
-Q141205896	P40	LAST	S2600	"6000000011688878519"
-#   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1
-LAST	P735	Q666578	P1545	"1"
-#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q325872	P1545	"2"	P3831	Q245025
-#   P734 family name = Q36955626, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q36955626	P3831	Q2507958
-#   P734 family name = Q30079876 Dahle, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q30079876	P3831	Q28418670
-
-# create a new item
-CREATE
-#   set the en label to "Anna Olofsdotter"
-LAST	Len	"Anna Olofsdotter"
-#   set the mul label to "Anna Olofsdotter"
-LAST	Lmul	"Anna Olofsdotter"
-#   set the ja label to "アンナ・オロフスドッテル"
-LAST	Lja	"アンナ・オロフスドッテル"
-#   set the zh label to "安娜·奥洛夫斯多特"
-LAST	Lzh	"安娜·奥洛夫斯多特"
-#   set the ko label to "안나 오로프스도테르"
-LAST	Lko	"안나 오로프스도테르"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000001139060037 Anna Olofsdotter, qualified P1810 subject named as Anna Olofsdotter
-LAST	P2600	"6000000001139060037"	P1810	"Anna Olofsdotter"
-#   P22 father = Q141205931 Olof Olofsson
-LAST	P22	Q141205931	S2600	"6000000001139060037"
-#   P25 mother = Q141200604 Anna Nilsdotter
-LAST	P25	Q141200604	S2600	"6000000001139060037"
-#   Q141205931 Olof Olofsson: P40 child = the item just created
-Q141205931	P40	LAST	S2600	"6000000001139060037"
-#   Q141200604 Anna Nilsdotter: P40 child = the item just created
-Q141200604	P40	LAST	S2600	"6000000001139060037"
-#   the item just created: P735 given name = Q666578 Anna
-LAST	P735	Q666578
-#   P5056 patronym or matronym = Q141250201, qualified P144 based on Q141205931 Olof Olofsson
-LAST	P5056	Q141250201	P144	Q141205931
-
-# create a new item
-CREATE
-#   set the en label to "Anna Olsdatter Nord-Varhaug Jr."
-LAST	Len	"Anna Olsdatter Nord-Varhaug Jr."
-#   set the mul label to "Anna Olsdatter Nord-Varhaug II"
-LAST	Lmul	"Anna Olsdatter Nord-Varhaug II"
-#   add a mul alias "Anna Olsdatter Hobberstad"
-LAST	Amul	"Anna Olsdatter Hobberstad"
-#   set the ja label to "アンナ・オルスダッテル・ノール・ヴァールハウグ2世"
-LAST	Lja	"アンナ・オルスダッテル・ノール・ヴァールハウグ2世"
-#   set the zh label to "安娜·奥尔斯达特·诺尔·瓦尔豪格二世"
-LAST	Lzh	"安娜·奥尔斯达特·诺尔·瓦尔豪格二世"
-#   set the ko label to "안나 올스다테르 노르드바르하욱 2세"
-LAST	Lko	"안나 올스다테르 노르드바르하욱 2세"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000003491978959 Anna Olsdatter Nord-Varhaug Jr., qualified P1810 subject named as Anna Olsdatter Hobberstad d. y.
-LAST	P2600	"6000000003491978959"	P1810	"Anna Olsdatter Hobberstad d. y."
-#   P569 date of birth = +1642-00-00T00:00:00Z/9
-LAST	P569	+1642-00-00T00:00:00Z/9	S2600	"6000000003491978959"
-#   P26 spouse = Q141493377 Johannes Arneson Nor Varhaug
-LAST	P26	Q141493377	S2600	"6000000003491978959"
-#   P40 child = Q141448484 Johannes Johannesson Bratland
-LAST	P40	Q141448484	S2600	"6000000003491978959"
-#   Q141493377 Johannes Arneson Nor Varhaug: P26 spouse = the item just created
-Q141493377	P26	LAST	S2600	"6000000003491978959"
-#   Q141448484 Johannes Johannesson Bratland: P25 mother = the item just created
-Q141448484	P25	LAST	S2600	"6000000003491978959"
-#   the item just created: P735 given name = Q666578 Anna
-LAST	P735	Q666578
-#   P5056 patronym or matronym = Q51885688 Olsdatter
-LAST	P5056	Q51885688
-#   P734 family name = Q40703807, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q40703807	P3831	Q2507958
-#   P734 family name = Q141312468, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q141312468	P3831	Q28418670
-#   add a mul alias "Anna Nord-Varhaug"
-LAST	Amul	"Anna Nord-Varhaug"
-
-# create a new item
-CREATE
-#   set the en label to "Anne Eline Nilsdatter Kleppestrand"
-LAST	Len	"Anne Eline Nilsdatter Kleppestrand"
-#   set the mul label to "Anne Eline Nilsdatter Kleppestrand"
-LAST	Lmul	"Anne Eline Nilsdatter Kleppestrand"
-#   add a mul alias "Anne Eline Nilsdatter Liadal"
-LAST	Amul	"Anne Eline Nilsdatter Liadal"
-#   set the ja label to "アン・エリネ・ニルスダッテル・クレッペストランド"
-LAST	Lja	"アン・エリネ・ニルスダッテル・クレッペストランド"
-#   set the zh label to "安妮·埃利内·尼尔斯达特·克莱佩斯特兰德"
-LAST	Lzh	"安妮·埃利内·尼尔斯达特·克莱佩斯特兰德"
-#   set the ko label to "안네 에리네 닐스다테르 크레페스트란드"
-LAST	Lko	"안네 에리네 닐스다테르 크레페스트란드"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000013124866828 Anne Eline Nilsdatter Kleppestrand, qualified P1810 subject named as Anne Eline Nilsdatter Liadal
-LAST	P2600	"6000000013124866828"	P1810	"Anne Eline Nilsdatter Liadal"
-#   P569 date of birth = +1840-00-00T00:00:00Z/9
-LAST	P569	+1840-00-00T00:00:00Z/9	S2600	"6000000013124866828"
-#   P570 date of death = +1918-00-00T00:00:00Z/9
-LAST	P570	+1918-00-00T00:00:00Z/9	S2600	"6000000013124866828"
-#   P40 child = Q141456353 Hans Nikolai Nilsen
-LAST	P40	Q141456353	S2600	"6000000013124866828"
-#   Q141456353 Hans Nikolai Nilsen: P25 mother = the item just created
-Q141456353	P25	LAST	S2600	"6000000013124866828"
+#   P2600 Geni.com profile ID = 6000000014276685732 Anna Helena Olsdatter Auestad, qualified P1810 subject named as Anne Helena Olsdatter Auestad
+LAST	P2600	"6000000014276685732"	P1810	"Anne Helena Olsdatter Auestad"
+#   P569 date of birth = +1805-00-00T00:00:00Z/9
+LAST	P569	+1805-00-00T00:00:00Z/9	S2600	"6000000014276685732"
+#   P570 date of death = +1878-00-00T00:00:00Z/9
+LAST	P570	+1878-00-00T00:00:00Z/9	S2600	"6000000014276685732"
+#   P26 spouse = Q141337235 Rasmus Jonsson Auestad
+LAST	P26	Q141337235	S2600	"6000000014276685732"
+#   P40 child = Q141494562 Ole Andreas Rasmussen Auestad
+LAST	P40	Q141494562	S2600	"6000000014276685732"
+#   Q141337235 Rasmus Jonsson Auestad: P26 spouse = the item just created
+Q141337235	P26	LAST	S2600	"6000000014276685732"
+#   Q141494562 Ole Andreas Rasmussen Auestad: P25 mother = the item just created
+Q141494562	P25	LAST	S2600	"6000000014276685732"
 #   the item just created: P735 given name = Q564684 Anne, qualified P1545 series ordinal 1
 LAST	P735	Q564684	P1545	"1"
-#   P735 given name = Q1217606 Eline, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q1217606	P1545	"2"	P3831	Q245025
-#   P5056 patronym or matronym = Q122837798 Nilsdatter
-LAST	P5056	Q122837798
-#   add a mul alias "Anne Eline Kleppestrand"
-LAST	Amul	"Anne Eline Kleppestrand"
+#   P735 given name = Q1035239 Helena, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q1035239	P1545	"2"	P3831	Q245025
+#   P5056 patronym or matronym = Q51885688 Olsdatter
+LAST	P5056	Q51885688
+#   P734 family name = Q27887968
+LAST	P734	Q27887968
+#   add a mul alias "Lura"
+LAST	Amul	"Lura"
 
 # create a new item
 CREATE
-#   set the en label to "Ådne Ivarson Rossavik"
-LAST	Len	"Ådne Ivarson Rossavik"
-#   set the mul label to "Ådne Ivarson Rossavik"
-LAST	Lmul	"Ådne Ivarson Rossavik"
-#   set the ja label to "オードネ・イーヴァルソン・ロッサヴィク"
-LAST	Lja	"オードネ・イーヴァルソン・ロッサヴィク"
-#   set the zh label to "奥德内·伊瓦尔松·罗萨维克"
-LAST	Lzh	"奥德内·伊瓦尔松·罗萨维克"
-#   set the ko label to "아드네 이바르손 로사비크"
-LAST	Lko	"아드네 이바르손 로사비크"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000003095080108 Ådne Ivarson Rossavik, qualified P1810 subject named as Ådne Ivarson Rossavik
-LAST	P2600	"6000000003095080108"	P1810	"Ådne Ivarson Rossavik"
-#   P570 date of death = +1640-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
-LAST	P570	+1640-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000003095080108"
-#   P26 spouse = Q141224345 Signy Tormodsdatter Rossavik
-LAST	P26	Q141224345	S2600	"6000000003095080108"
-#   Q141224345 Signy Tormodsdatter Rossavik: P26 spouse = the item just created
-Q141224345	P26	LAST	S2600	"6000000003095080108"
-#   the item just created: P5056 patronym or matronym = Q141444398
-LAST	P5056	Q141444398
-#   P734 family name = Q122838342
-LAST	P734	Q122838342
-
-# create a new item
-CREATE
-#   set the en label to "Beata Magdalena Jonasdotter Cajanus"
-LAST	Len	"Beata Magdalena Jonasdotter Cajanus"
-#   set the mul label to "Beata Magdalena Jonasdotter Cajanus"
-LAST	Lmul	"Beata Magdalena Jonasdotter Cajanus"
-#   set the ja label to "ベアタ・マグダレーナ・ヨナスドッテル・カヤヌス"
-LAST	Lja	"ベアタ・マグダレーナ・ヨナスドッテル・カヤヌス"
-#   set the zh label to "贝阿塔·马格达莱纳·约纳斯多特·卡雅努斯"
-LAST	Lzh	"贝阿塔·马格达莱纳·约纳斯多特·卡雅努斯"
-#   set the ko label to "베아타 막다레나 조나스도테르 카자누스"
-LAST	Lko	"베아타 막다레나 조나스도테르 카자누스"
+#   set the en label to "Anna Margareta Hummelhielm"
+LAST	Len	"Anna Margareta Hummelhielm"
+#   set the mul label to "Anna Margareta Hummelhielm"
+LAST	Lmul	"Anna Margareta Hummelhielm"
+#   set the ja label to "アンナ・マルガレータ・フムメルヒエルム"
+LAST	Lja	"アンナ・マルガレータ・フムメルヒエルム"
+#   set the zh label to "安娜·瑪格麗塔·胡梅尔希埃尔姆"
+LAST	Lzh	"安娜·瑪格麗塔·胡梅尔希埃尔姆"
+#   set the ko label to "안나 마르가레타 훔멜히엘므"
+LAST	Lko	"안나 마르가레타 훔멜히엘므"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000008731452298 Beata Magdalena Jonasdotter Cajanus, qualified P1810 subject named as Beata Magdalena Jonasdotter Cajanus
-LAST	P2600	"6000000008731452298"	P1810	"Beata Magdalena Jonasdotter Cajanus"
-#   P569 date of birth = +1773-12-28T00:00:00Z/11
-LAST	P569	+1773-12-28T00:00:00Z/11	S2600	"6000000008731452298"
-#   P570 date of death = +1840-08-10T00:00:00Z/11
-LAST	P570	+1840-08-10T00:00:00Z/11	S2600	"6000000008731452298"
-#   P25 mother = Q141242511 Hedvig Jakobsdotter Cajanus
-LAST	P25	Q141242511	S2600	"6000000008731452298"
-#   Q141242511 Hedvig Jakobsdotter Cajanus: P40 child = the item just created
-Q141242511	P40	LAST	S2600	"6000000008731452298"
-#   the item just created: P735 given name = Q338015 Beata, qualified P1545 series ordinal 1
-LAST	P735	Q338015	P1545	"1"
-#   P735 given name = Q842544 Magdalena, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q842544	P1545	"2"	P3831	Q245025
+#   P2600 Geni.com profile ID = 6000000044212714872 Anna Margareta Hummelhielm, qualified P1810 subject named as Anna Margareta Hummelhielm
+LAST	P2600	"6000000044212714872"	P1810	"Anna Margareta Hummelhielm"
+#   P569 date of birth = +1765-08-22T00:00:00Z/11
+LAST	P569	+1765-08-22T00:00:00Z/11	S2600	"6000000044212714872"
+#   P570 date of death = +1768-12-22T00:00:00Z/11
+LAST	P570	+1768-12-22T00:00:00Z/11	S2600	"6000000044212714872"
+#   P25 mother = Q141444624 Hedvig Carlsdotter Posse af Säby
+LAST	P25	Q141444624	S2600	"6000000044212714872"
+#   Q141444624 Hedvig Carlsdotter Posse af Säby: P40 child = the item just created
+Q141444624	P40	LAST	S2600	"6000000044212714872"
+#   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1
+LAST	P735	Q666578	P1545	"1"
+#   P735 given name = Q8274988 Margareta, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q8274988	P1545	"2"	P3831	Q245025
 
 # create a new item
 CREATE
-#   set the en label to "Berite Larsdotter Mæle"
-LAST	Len	"Berite Larsdotter Mæle"
-#   set the mul label to "Berite Larsdotter Mæle"
-LAST	Lmul	"Berite Larsdotter Mæle"
-#   set the ja label to "ベリテ・ラーシュドッテル・メレ"
-LAST	Lja	"ベリテ・ラーシュドッテル・メレ"
-#   set the zh label to "贝里特·拉尔斯多特·梅莱"
-LAST	Lzh	"贝里特·拉尔斯多特·梅莱"
-#   set the ko label to "베리테 라르스도테르 매레"
-LAST	Lko	"베리테 라르스도테르 매레"
+#   set the en label to "Anna Maria Persdotter"
+LAST	Len	"Anna Maria Persdotter"
+#   set the mul label to "Anna Maria Persdotter"
+LAST	Lmul	"Anna Maria Persdotter"
+#   set the ja label to "アンナ・マリア・ペルスドッテル"
+LAST	Lja	"アンナ・マリア・ペルスドッテル"
+#   set the zh label to "安娜·玛丽亚·佩尔斯多特"
+LAST	Lzh	"安娜·玛丽亚·佩尔斯多特"
+#   set the ko label to "안나 마리아 페르스도테르"
+LAST	Lko	"안나 마리아 페르스도테르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000024545256417 Berite Larsdotter Mæle, qualified P1810 subject named as Berite Larsdotter Mæle
-LAST	P2600	"6000000024545256417"	P1810	"Berite Larsdotter Mæle"
-#   P569 date of birth = +1755-06-18T00:00:00Z/11
-LAST	P569	+1755-06-18T00:00:00Z/11	S2600	"6000000024545256417"
-#   P22 father = Q141447177 Lars Larsson Mele
-LAST	P22	Q141447177	S2600	"6000000024545256417"
-#   P25 mother = Q141456330 Berta Guttormsdatter Forsand
-LAST	P25	Q141456330	S2600	"6000000024545256417"
-#   Q141447177 Lars Larsson Mele: P40 child = the item just created
-Q141447177	P40	LAST	S2600	"6000000024545256417"
-#   Q141456330 Berta Guttormsdatter Forsand: P40 child = the item just created
-Q141456330	P40	LAST	S2600	"6000000024545256417"
-#   the item just created: P5056 patronym or matronym = Q141436525, qualified P144 based on Q141447177 Lars Larsson Mele
-LAST	P5056	Q141436525	P144	Q141447177
-#   P734 family name = Q34190986
-LAST	P734	Q34190986
-
-# create a new item
-CREATE
-#   set the en label to "Berta Karina Torgersdatter Stokka"
-LAST	Len	"Berta Karina Torgersdatter Stokka"
-#   set the mul label to "Berta Karina Torgersdatter Stokka"
-LAST	Lmul	"Berta Karina Torgersdatter Stokka"
-#   set the ja label to "ベルタ・カリーナ・トルゲルスダッテル・ストッカ"
-LAST	Lja	"ベルタ・カリーナ・トルゲルスダッテル・ストッカ"
-#   set the zh label to "贝尔塔·卡琳娜·托尔盖尔斯达特·斯托卡"
-LAST	Lzh	"贝尔塔·卡琳娜·托尔盖尔斯达特·斯托卡"
-#   set the ko label to "베르타 카리나 토르게르스다테르 스토카"
-LAST	Lko	"베르타 카리나 토르게르스다테르 스토카"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000037794447794 Berta Karina Torgersdatter Stokka, qualified P1810 subject named as Berta Karina Torgersdatter Stokka
-LAST	P2600	"6000000037794447794"	P1810	"Berta Karina Torgersdatter Stokka"
-#   P569 date of birth = +1873-02-22T00:00:00Z/11
-LAST	P569	+1873-02-22T00:00:00Z/11	S2600	"6000000037794447794"
-#   P570 date of death = +1952-09-27T00:00:00Z/11
-LAST	P570	+1952-09-27T00:00:00Z/11	S2600	"6000000037794447794"
-#   P22 father = Q141216510 Torger Torgerson Stokka
-LAST	P22	Q141216510	S2600	"6000000037794447794"
-#   P25 mother = Q141353441 Grete Ådnesdatter Stokka
-LAST	P25	Q141353441	S2600	"6000000037794447794"
-#   Q141216510 Torger Torgerson Stokka: P40 child = the item just created
-Q141216510	P40	LAST	S2600	"6000000037794447794"
-#   Q141353441 Grete Ådnesdatter Stokka: P40 child = the item just created
-Q141353441	P40	LAST	S2600	"6000000037794447794"
-#   the item just created: P735 given name = Q4092653 Berta, qualified P1545 series ordinal 1
-LAST	P735	Q4092653	P1545	"1"
-#   P735 given name = Q16430098 Karina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q16430098	P1545	"2"	P3831	Q245025
-#   P5056 patronym or matronym = Q141429494, qualified P144 based on Q141216510 Torger Torgerson Stokka
-LAST	P5056	Q141429494	P144	Q141216510
-#   P734 family name = Q37033285
-LAST	P734	Q37033285
-
-# create a new item
-CREATE
-#   set the en label to "Berta Sofie Tørresdatter Sele"
-LAST	Len	"Berta Sofie Tørresdatter Sele"
-#   set the mul label to "Berta Sofie Tørresdatter Sele"
-LAST	Lmul	"Berta Sofie Tørresdatter Sele"
-#   add a mul alias "Berta Sofie Tørresdatter Bore"
-LAST	Amul	"Berta Sofie Tørresdatter Bore"
-#   set the ja label to "ベルタ・ソフィー・トレスダッテル・セレ"
-LAST	Lja	"ベルタ・ソフィー・トレスダッテル・セレ"
-#   set the zh label to "贝尔塔·索菲埃·托雷斯达特·塞莱"
-LAST	Lzh	"贝尔塔·索菲埃·托雷斯达特·塞莱"
-#   set the ko label to "베르타 소피에 퇴르레스다테르 세레"
-LAST	Lko	"베르타 소피에 퇴르레스다테르 세레"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000003492031137 Berta Sofie Tørresdatter Sele, qualified P1810 subject named as Berta Sofie Tørresdatter Bore
-LAST	P2600	"6000000003492031137"	P1810	"Berta Sofie Tørresdatter Bore"
-#   P569 date of birth = +1843-06-28T00:00:00Z/11
-LAST	P569	+1843-06-28T00:00:00Z/11	S2600	"6000000003492031137"
-#   P570 date of death = +1888-12-29T00:00:00Z/11
-LAST	P570	+1888-12-29T00:00:00Z/11	S2600	"6000000003492031137"
-#   P22 father = Q141442350 Tørres Rasmusson Bore
-LAST	P22	Q141442350	S2600	"6000000003492031137"
-#   Q141442350 Tørres Rasmusson Bore: P40 child = the item just created
-Q141442350	P40	LAST	S2600	"6000000003492031137"
-#   the item just created: P735 given name = Q4092653 Berta, qualified P1545 series ordinal 1
-LAST	P735	Q4092653	P1545	"1"
-#   P735 given name = Q18201530 Sofie, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q18201530	P1545	"2"	P3831	Q245025
-#   P5056 patronym or matronym = Q141436732, qualified P144 based on Q141442350 Tørres Rasmusson Bore
-LAST	P5056	Q141436732	P144	Q141442350
-#   P734 family name = Q16860245, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q16860245	P3831	Q2507958
-#   P734 family name = Q21448952, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q21448952	P3831	Q28418670
-#   add a mul alias "Berta Sofie Sele"
-LAST	Amul	"Berta Sofie Sele"
-
-# create a new item
-CREATE
-#   set the en label to "Berta Tollaksdatter Ølberg"
-LAST	Len	"Berta Tollaksdatter Ølberg"
-#   set the mul label to "Berta Tollaksdatter Ølberg"
-LAST	Lmul	"Berta Tollaksdatter Ølberg"
-#   add a mul alias "Berta Tollaksdatter Hødlesli"
-LAST	Amul	"Berta Tollaksdatter Hødlesli"
-#   set the ja label to "ベルタ・トラクスダッテル・オルベルグ"
-LAST	Lja	"ベルタ・トラクスダッテル・オルベルグ"
-#   set the zh label to "贝尔塔·托拉克斯达特·奥尔贝尔格"
-LAST	Lzh	"贝尔塔·托拉克斯达特·奥尔贝尔格"
-#   set the ko label to "베르타 톨라크스다테르 욀베륵"
-LAST	Lko	"베르타 톨라크스다테르 욀베륵"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000002973165692 Berta Tollaksdatter Ølberg, qualified P1810 subject named as Berta Tollaksdatter Hødlesli
-LAST	P2600	"6000000002973165692"	P1810	"Berta Tollaksdatter Hødlesli"
-#   P569 date of birth = +1778-00-00T00:00:00Z/9
-LAST	P569	+1778-00-00T00:00:00Z/9	S2600	"6000000002973165692"
-#   P570 date of death = +1844-06-20T00:00:00Z/11
-LAST	P570	+1844-06-20T00:00:00Z/11	S2600	"6000000002973165692"
-#   P40 child = Q141448538 Tollak Tolleivson Ølberg
-LAST	P40	Q141448538	S2600	"6000000002973165692"
-#   Q141448538 Tollak Tolleivson Ølberg: P25 mother = the item just created
-Q141448538	P25	LAST	S2600	"6000000002973165692"
-#   the item just created: P735 given name = Q4092653 Berta
-LAST	P735	Q4092653
-#   P5056 patronym or matronym = Q141403245
-LAST	P5056	Q141403245
-#   P734 family name = Q30085492, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q30085492	P3831	Q28418670
-#   add a mul alias "Berta Ølberg"
-LAST	Amul	"Berta Ølberg"
-
-# create a new item
-CREATE
-#   set the en label to "Berthe Tjærandsdatter Grude"
-LAST	Len	"Berthe Tjærandsdatter Grude"
-#   set the mul label to "Berthe Tjærandsdatter Grude"
-LAST	Lmul	"Berthe Tjærandsdatter Grude"
-#   add a mul alias "Berthe Tjærandsdatter Sele"
-LAST	Amul	"Berthe Tjærandsdatter Sele"
-#   set the ja label to "ベルト・トイェランドスダッテル・グルデ"
-LAST	Lja	"ベルト・トイェランドスダッテル・グルデ"
-#   set the zh label to "贝尔特·特耶兰德斯达特·格鲁德"
-LAST	Lzh	"贝尔特·特耶兰德斯达特·格鲁德"
-#   set the ko label to "베르테 채란드스다테르 그루데"
-LAST	Lko	"베르테 채란드스다테르 그루데"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005607506541 Berthe Tjærandsdatter Grude, qualified P1810 subject named as Berthe Tjærandsdatter Grude
-LAST	P2600	"6000000005607506541"	P1810	"Berthe Tjærandsdatter Grude"
-#   P569 date of birth = +1743-00-00T00:00:00Z/9
-LAST	P569	+1743-00-00T00:00:00Z/9	S2600	"6000000005607506541"
-#   P570 date of death = +1811-11-08T00:00:00Z/11
-LAST	P570	+1811-11-08T00:00:00Z/11	S2600	"6000000005607506541"
-#   P26 spouse = Q141494472 Jan Eilefson Grude
-LAST	P26	Q141494472	S2600	"6000000005607506541"
-#   P40 child = Q141454342 Elisabeth Jansdatter Øksnevad
-LAST	P40	Q141454342	S2600	"6000000005607506541"
-#   Q141494472 Jan Eilefson Grude: P26 spouse = the item just created
-Q141494472	P26	LAST	S2600	"6000000005607506541"
-#   Q141454342 Elisabeth Jansdatter Øksnevad: P25 mother = the item just created
-Q141454342	P25	LAST	S2600	"6000000005607506541"
-#   the item just created: P735 given name = Q18180820 Berthe
-LAST	P735	Q18180820
-#   P734 family name = Q21448952, qualified P3831 object of statement has role Q2507958 birth name
-LAST	P734	Q21448952	P3831	Q2507958
-#   P734 family name = Q30229687 Grude, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q30229687	P3831	Q28418670
-#   add a mul alias "Berthe Grude"
-LAST	Amul	"Berthe Grude"
-
-# create a new item
-CREATE
-#   set the en label to "Brynhilda Toresdatter Underberge"
-LAST	Len	"Brynhilda Toresdatter Underberge"
-#   set the mul label to "Brynhilda Toresdatter Underberge"
-LAST	Lmul	"Brynhilda Toresdatter Underberge"
-#   set the ja label to "ブリンヒルダ・トーレスダッテル・ウンデルベルゲ"
-LAST	Lja	"ブリンヒルダ・トーレスダッテル・ウンデルベルゲ"
-#   set the zh label to "布林希尔达·托雷斯达特·温德尔贝尔盖"
-LAST	Lzh	"布林希尔达·托雷斯达特·温德尔贝尔盖"
-#   set the ko label to "브린힐다 토레스다테르 운데르베르게"
-LAST	Lko	"브린힐다 토레스다테르 운데르베르게"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000076909442440 Brynhilda Toresdatter Underberge, qualified P1810 subject named as Brynhilda Toresdatter Underberge
-LAST	P2600	"6000000076909442440"	P1810	"Brynhilda Toresdatter Underberge"
-#   P569 date of birth = +1457-00-00T00:00:00Z/9
-LAST	P569	+1457-00-00T00:00:00Z/9	S2600	"6000000076909442440"
-#   P22 father = Q141223436 Tore Underberge, III
-LAST	P22	Q141223436	S2600	"6000000076909442440"
-#   P25 mother = Q141493432 Ragnhild Sæbjørnsdatter Underberge
-LAST	P25	Q141493432	S2600	"6000000076909442440"
-#   Q141223436 Tore Underberge, III: P40 child = the item just created
-Q141223436	P40	LAST	S2600	"6000000076909442440"
-#   Q141493432 Ragnhild Sæbjørnsdatter Underberge: P40 child = the item just created
-Q141493432	P40	LAST	S2600	"6000000076909442440"
-#   the item just created: P5056 patronym or matronym = Q141313474, qualified P144 based on Q141223436 Tore Underberge, III
-LAST	P5056	Q141313474	P144	Q141223436
-#   P734 family name = Q141493357
-LAST	P734	Q141493357
-
-# create a new item
-CREATE
-#   set the en label to "Carl Fredrik Martin"
-LAST	Len	"Carl Fredrik Martin"
-#   set the mul label to "Carl Fredrik Martin"
-LAST	Lmul	"Carl Fredrik Martin"
-#   set the ja label to "カール・フレドリク・マーティン"
-LAST	Lja	"カール・フレドリク・マーティン"
-#   set the zh label to "卡尔·弗雷德里克·马丁"
-LAST	Lzh	"卡尔·弗雷德里克·马丁"
-#   set the ko label to "칼 프레드리크 마르틴"
-LAST	Lko	"칼 프레드리크 마르틴"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000026116150163 Carl Fredrik Martin, qualified P1810 subject named as Carl Fredrik Martin
-LAST	P2600	"6000000026116150163"	P1810	"Carl Fredrik Martin"
-#   P569 date of birth = +1727-00-00T00:00:00Z/9
-LAST	P569	+1727-00-00T00:00:00Z/9	S2600	"6000000026116150163"
-#   P570 date of death = +1776-00-00T00:00:00Z/9
-LAST	P570	+1776-00-00T00:00:00Z/9	S2600	"6000000026116150163"
-#   P22 father = Q139033715 Petrus Martin
-LAST	P22	Q139033715	S2600	"6000000026116150163"
-#   P25 mother = Q141430138 Vendela Charlotta Rudbeck
-LAST	P25	Q141430138	S2600	"6000000026116150163"
-#   Q139033715 Petrus Martin: P40 child = the item just created
-Q139033715	P40	LAST	S2600	"6000000026116150163"
-#   Q141430138 Vendela Charlotta Rudbeck: P40 child = the item just created
-Q141430138	P40	LAST	S2600	"6000000026116150163"
-#   the item just created: P735 given name = Q2529610 Carl, qualified P1545 series ordinal 1
-LAST	P735	Q2529610	P1545	"1"
-#   P735 given name = Q4926491 Fredrik, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q4926491	P1545	"2"	P3831	Q245025
-#   P734 family name = Q12035675 Martin
-LAST	P734	Q12035675
-
-# create a new item
-CREATE
-#   set the en label to "Carl Gabriel Spens"
-LAST	Len	"Carl Gabriel Spens"
-#   set the mul label to "Carl Gabriel Spens"
-LAST	Lmul	"Carl Gabriel Spens"
-#   set the ja label to "カール・ガブリエル・スペンス"
-LAST	Lja	"カール・ガブリエル・スペンス"
-#   set the zh label to "卡尔·加布里埃尔·斯彭斯"
-LAST	Lzh	"卡尔·加布里埃尔·斯彭斯"
-#   set the ko label to "칼 가브리엘 스펜스"
-LAST	Lko	"칼 가브리엘 스펜스"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000013431530853 Carl Gabriel Spens, qualified P1810 subject named as Carl Gabriel Spens
-LAST	P2600	"6000000013431530853"	P1810	"Carl Gabriel Spens"
-#   P569 date of birth = +1751-04-25T00:00:00Z/11
-LAST	P569	+1751-04-25T00:00:00Z/11	S2600	"6000000013431530853"
-#   P570 date of death = +1822-05-23T00:00:00Z/11
-LAST	P570	+1822-05-23T00:00:00Z/11	S2600	"6000000013431530853"
-#   P40 child = Q141312990 Ulrika Anna Falkenberg
-LAST	P40	Q141312990	S2600	"6000000013431530853"
-#   Q141312990 Ulrika Anna Falkenberg: P22 father = the item just created
-Q141312990	P22	LAST	S2600	"6000000013431530853"
-#   the item just created: P735 given name = Q2529610 Carl, qualified P1545 series ordinal 1
-LAST	P735	Q2529610	P1545	"1"
-#   P735 given name = Q4925914 Gabriel, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q4925914	P1545	"2"	P3831	Q245025
-
-# create a new item
-CREATE
-#   set the en label to "Carl Vilhelm Ribbing af Koberg"
-LAST	Len	"Carl Vilhelm Ribbing af Koberg"
-#   set the mul label to "Carl Vilhelm Ribbing af Koberg"
-LAST	Lmul	"Carl Vilhelm Ribbing af Koberg"
-#   set the ja label to "カール・ヴィルヘルム・リッビング・アフ・コベルグ"
-LAST	Lja	"カール・ヴィルヘルム・リッビング・アフ・コベルグ"
-#   set the zh label to "卡尔·威廉·里宾·阿夫·科贝尔格"
-LAST	Lzh	"卡尔·威廉·里宾·阿夫·科贝尔格"
-#   set the ko label to "칼 빌헬므 리빙 아프 코베륵"
-LAST	Lko	"칼 빌헬므 리빙 아프 코베륵"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000011183264001 Carl Vilhelm Ribbing af Koberg, qualified P1810 subject named as Carl Vilhelm Ribbing af Koberg
-LAST	P2600	"6000000011183264001"	P1810	"Carl Vilhelm Ribbing af Koberg"
-#   P569 date of birth = +1765-11-17T00:00:00Z/11
-LAST	P569	+1765-11-17T00:00:00Z/11	S2600	"6000000011183264001"
-#   P570 date of death = +1765-11-17T00:00:00Z/11
-LAST	P570	+1765-11-17T00:00:00Z/11	S2600	"6000000011183264001"
-#   P22 father = Q6070068 Fredrik Ribbing
-LAST	P22	Q6070068	S2600	"6000000011183264001"
-#   P25 mother = Q4989142 Eva Helena Löwen
-LAST	P25	Q4989142	S2600	"6000000011183264001"
-#   Q6070068 Fredrik Ribbing: P40 child = the item just created
-Q6070068	P40	LAST	S2600	"6000000011183264001"
-#   Q4989142 Eva Helena Löwen: P40 child = the item just created
-Q4989142	P40	LAST	S2600	"6000000011183264001"
-#   the item just created: P735 given name = Q2529610 Carl, qualified P1545 series ordinal 1
-LAST	P735	Q2529610	P1545	"1"
-#   P735 given name = Q12805716 Vilhelm, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q12805716	P1545	"2"	P3831	Q245025
-#   P734 family name = Q37134374 Ribbing
-LAST	P734	Q37134374
-
-# create a new item
-CREATE
-#   set the en label to "Charlotta Maria Toutin"
-LAST	Len	"Charlotta Maria Toutin"
-#   set the mul label to "Charlotta Maria Toutin"
-LAST	Lmul	"Charlotta Maria Toutin"
-#   set the ja label to "カルロッタ・マリア・トウティン"
-LAST	Lja	"カルロッタ・マリア・トウティン"
-#   set the zh label to "卡尔洛塔·玛丽亚·托乌廷"
-LAST	Lzh	"卡尔洛塔·玛丽亚·托乌廷"
-#   set the ko label to "차로타 마리아 투틴"
-LAST	Lko	"차로타 마리아 투틴"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000006128111274 Charlotta Maria Toutin, qualified P1810 subject named as Charlotta Maria Toutin
-LAST	P2600	"6000000006128111274"	P1810	"Charlotta Maria Toutin"
-#   P569 date of birth = +1772-07-29T00:00:00Z/11
-LAST	P569	+1772-07-29T00:00:00Z/11	S2600	"6000000006128111274"
-#   P570 date of death = +1859-04-14T00:00:00Z/11
-LAST	P570	+1859-04-14T00:00:00Z/11	S2600	"6000000006128111274"
-#   P26 spouse = Q4569362 Mathias Rosenblad
-LAST	P26	Q4569362	S2600	"6000000006128111274"
-#   P40 child = Q141493409 Maria Ulrika Margareta Rosenblad
-LAST	P40	Q141493409	S2600	"6000000006128111274"
-#   Q4569362 Mathias Rosenblad: P26 spouse = the item just created
-Q4569362	P26	LAST	S2600	"6000000006128111274"
-#   Q141493409 Maria Ulrika Margareta Rosenblad: P25 mother = the item just created
-Q141493409	P25	LAST	S2600	"6000000006128111274"
-#   the item just created: P735 given name = Q1067071 Charlotta, qualified P1545 series ordinal 1
-LAST	P735	Q1067071	P1545	"1"
+#   P2600 Geni.com profile ID = 6000000011600962187 Anna Maria Persdotter, qualified P1810 subject named as Anna Maria Persdotter
+LAST	P2600	"6000000011600962187"	P1810	"Anna Maria Persdotter"
+#   P569 date of birth = +1580-00-00T00:00:00Z/9, qualified P1319 earliest date +1580-00-00T00:00:00Z/9, P1326 latest date +1604-00-00T00:00:00Z/9
+LAST	P569	+1580-00-00T00:00:00Z/9	P1319	+1580-00-00T00:00:00Z/9	P1326	+1604-00-00T00:00:00Z/9	S2600	"6000000011600962187"
+#   P40 child = Q141444715 Nils Olofsson Barck
+LAST	P40	Q141444715	S2600	"6000000011600962187"
+#   Q141444715 Nils Olofsson Barck: P25 mother = the item just created
+Q141444715	P25	LAST	S2600	"6000000011600962187"
+#   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1
+LAST	P735	Q666578	P1545	"1"
 #   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 LAST	P735	Q325872	P1545	"2"	P3831	Q245025
+#   P5056 patronym or matronym = Q141429564
+LAST	P5056	Q141429564
 
 # create a new item
 CREATE
-#   set the en label to "Christian Valdemar Rosenblad"
-LAST	Len	"Christian Valdemar Rosenblad"
-#   set the mul label to "Christian Valdemar Rosenblad"
-LAST	Lmul	"Christian Valdemar Rosenblad"
-#   set the ja label to "クリスチャン・ヴァルデマール・ロセンブラド"
-LAST	Lja	"クリスチャン・ヴァルデマール・ロセンブラド"
-#   set the zh label to "克里斯蒂安·瓦尔德马尔·罗森布拉德"
-LAST	Lzh	"克里斯蒂安·瓦尔德马尔·罗森布拉德"
-#   set the ko label to "크리스티안 발데마르 로센브라드"
-LAST	Lko	"크리스티안 발데마르 로센브라드"
+#   set the en label to "Anna Maria Salomonsdatter Bore"
+LAST	Len	"Anna Maria Salomonsdatter Bore"
+#   set the mul label to "Anna Maria Salomonsdatter Bore"
+LAST	Lmul	"Anna Maria Salomonsdatter Bore"
+#   add a mul alias "Anna Maria Salomonsdatter Stangeland"
+LAST	Amul	"Anna Maria Salomonsdatter Stangeland"
+#   set the ja label to "アンナ・マリア・サロモンスダッテル・ボレ"
+LAST	Lja	"アンナ・マリア・サロモンスダッテル・ボレ"
+#   set the zh label to "安娜·玛丽亚·萨洛蒙斯达特·博雷"
+LAST	Lzh	"安娜·玛丽亚·萨洛蒙斯达特·博雷"
+#   set the ko label to "안나 마리아 사로몬스다테르 보레"
+LAST	Lko	"안나 마리아 사로몬스다테르 보레"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000003491976436 Anna Maria Salomonsdatter Bore, qualified P1810 subject named as Anna Maria Salomonsdatter Stangeland
+LAST	P2600	"6000000003491976436"	P1810	"Anna Maria Salomonsdatter Stangeland"
+#   P569 date of birth = +1802-06-16T00:00:00Z/11
+LAST	P569	+1802-06-16T00:00:00Z/11	S2600	"6000000003491976436"
+#   P570 date of death = +1865-06-25T00:00:00Z/11
+LAST	P570	+1865-06-25T00:00:00Z/11	S2600	"6000000003491976436"
+#   P26 spouse = Q141442350 Tørres Rasmusson Bore
+LAST	P26	Q141442350	S2600	"6000000003491976436"
+#   P40 child = Q141497502 Berta Sofie Tørresdatter Sele
+LAST	P40	Q141497502	S2600	"6000000003491976436"
+#   Q141442350 Tørres Rasmusson Bore: P26 spouse = the item just created
+Q141442350	P26	LAST	S2600	"6000000003491976436"
+#   Q141497502 Berta Sofie Tørresdatter Sele: P25 mother = the item just created
+Q141497502	P25	LAST	S2600	"6000000003491976436"
+#   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1
+LAST	P735	Q666578	P1545	"1"
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q325872	P1545	"2"	P3831	Q245025
+#   P734 family name = Q21452049 Stangeland, qualified P3831 object of statement has role Q2507958 birth name
+LAST	P734	Q21452049	P3831	Q2507958
+#   P734 family name = Q16860245, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q16860245	P3831	Q28418670
+#   add a mul alias "Anna Maria Bore"
+LAST	Amul	"Anna Maria Bore"
+
+# create a new item
+CREATE
+#   set the en label to "Anna Maria Wedberg"
+LAST	Len	"Anna Maria Wedberg"
+#   set the mul label to "Anna Maria Wedberg"
+LAST	Lmul	"Anna Maria Wedberg"
+#   add a mul alias "Anna Maria Johansson"
+LAST	Amul	"Anna Maria Johansson"
+#   set the ja label to "アンナ・マリア・ヴェドベルグ"
+LAST	Lja	"アンナ・マリア・ヴェドベルグ"
+#   set the zh label to "安娜·玛丽亚·韦德贝尔格"
+LAST	Lzh	"安娜·玛丽亚·韦德贝尔格"
+#   set the ko label to "안나 마리아 웨드베륵"
+LAST	Lko	"안나 마리아 웨드베륵"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000125613092821 Anna Maria Wedberg, qualified P1810 subject named as Anna Maria Johansson
+LAST	P2600	"6000000125613092821"	P1810	"Anna Maria Johansson"
+#   P569 date of birth = +1879-09-05T00:00:00Z/11
+LAST	P569	+1879-09-05T00:00:00Z/11	S2600	"6000000125613092821"
+#   P26 spouse = Q141442298 Gustaf Albert Wedberg
+LAST	P26	Q141442298	S2600	"6000000125613092821"
+#   Q141442298 Gustaf Albert Wedberg: P26 spouse = the item just created
+Q141442298	P26	LAST	S2600	"6000000125613092821"
+#   the item just created: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1
+LAST	P735	Q666578	P1545	"1"
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q325872	P1545	"2"	P3831	Q245025
+#   P5056 patronym or matronym = Q141336969
+LAST	P5056	Q141336969
+#   P734 family name = Q54444784, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q54444784	P3831	Q28418670
+
+# create a new item
+CREATE
+#   set the en label to "Anna Mikkelsdatter Tunheim"
+LAST	Len	"Anna Mikkelsdatter Tunheim"
+#   set the mul label to "Anna Mikkelsdatter Tunheim"
+LAST	Lmul	"Anna Mikkelsdatter Tunheim"
+#   set the ja label to "アンナ・ミッケルスダッテル・トゥンヘイム"
+LAST	Lja	"アンナ・ミッケルスダッテル・トゥンヘイム"
+#   set the zh label to "安娜·米凯尔斯达特·通海姆"
+LAST	Lzh	"安娜·米凯尔斯达特·通海姆"
+#   set the ko label to "안나 미켈스다테르 툰헤임"
+LAST	Lko	"안나 미켈스다테르 툰헤임"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000005609447635 Anna Mikkelsdatter Tunheim, qualified P1810 subject named as Anna Mikkelsdatter Tunheim
+LAST	P2600	"6000000005609447635"	P1810	"Anna Mikkelsdatter Tunheim"
+#   P569 date of birth = +1650-00-00T00:00:00Z/9
+LAST	P569	+1650-00-00T00:00:00Z/9	S2600	"6000000005609447635"
+#   P570 date of death = +1720-00-00T00:00:00Z/9, qualified P1319 earliest date +1720-00-00T00:00:00Z/9
+LAST	P570	+1720-00-00T00:00:00Z/9	P1319	+1720-00-00T00:00:00Z/9	S2600	"6000000005609447635"
+#   P25 mother = Q141319140 Guri Olsdatter Vestly
+LAST	P25	Q141319140	S2600	"6000000005609447635"
+#   Q141319140 Guri Olsdatter Vestly: P40 child = the item just created
+Q141319140	P40	LAST	S2600	"6000000005609447635"
+#   the item just created: P735 given name = Q666578 Anna
+LAST	P735	Q666578
+#   P734 family name = Q36927172, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q36927172	P3831	Q28418670
+#   add a mul alias "Anna Tunheim"
+LAST	Amul	"Anna Tunheim"
+
+# create a new item
+CREATE
+#   set the en label to "Anna Olofsdotter Albogia"
+LAST	Len	"Anna Olofsdotter Albogia"
+#   set the mul label to "Anna Olofsdotter Albogia"
+LAST	Lmul	"Anna Olofsdotter Albogia"
+#   set the ja label to "アンナ・オロフスドッテル・アルボギア"
+LAST	Lja	"アンナ・オロフスドッテル・アルボギア"
+#   set the zh label to "安娜·奥洛夫斯多特·阿尔博吉阿"
+LAST	Lzh	"安娜·奥洛夫斯多特·阿尔博吉阿"
+#   set the ko label to "안나 오로프스도테르 알보기아"
+LAST	Lko	"안나 오로프스도테르 알보기아"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000034023970142 Anna Olofsdotter Albogia, qualified P1810 subject named as Anna Olofsdotter Albogia
+LAST	P2600	"6000000034023970142"	P1810	"Anna Olofsdotter Albogia"
+#   P569 date of birth = +1648-00-00T00:00:00Z/9
+LAST	P569	+1648-00-00T00:00:00Z/9	S2600	"6000000034023970142"
+#   P570 date of death = +1726-00-00T00:00:00Z/9
+LAST	P570	+1726-00-00T00:00:00Z/9	S2600	"6000000034023970142"
+#   P26 spouse = Q141494485 Johan Larsson Broman
+LAST	P26	Q141494485	S2600	"6000000034023970142"
+#   P40 child = Q2021113 Olof Broman
+LAST	P40	Q2021113	S2600	"6000000034023970142"
+#   Q141494485 Johan Larsson Broman: P26 spouse = the item just created
+Q141494485	P26	LAST	S2600	"6000000034023970142"
+#   Q2021113 Olof Broman: P25 mother = the item just created
+Q2021113	P25	LAST	S2600	"6000000034023970142"
+#   the item just created: P735 given name = Q666578 Anna
+LAST	P735	Q666578
+#   P5056 patronym or matronym = Q141250201
+LAST	P5056	Q141250201
+
+# create a new item
+CREATE
+#   set the en label to "Appolonia Elvia"
+LAST	Len	"Appolonia Elvia"
+#   set the mul label to "Appolonia Elvia"
+LAST	Lmul	"Appolonia Elvia"
+#   set the ja label to "アッポロニア・エルヴィア"
+LAST	Lja	"アッポロニア・エルヴィア"
+#   set the zh label to "阿波洛尼阿·埃尔维阿"
+LAST	Lzh	"阿波洛尼阿·埃尔维阿"
+#   set the ko label to "아포로니아 엘비아"
+LAST	Lko	"아포로니아 엘비아"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000012153323709 Appolonia Elvia, qualified P1810 subject named as Appolonia Elvia
+LAST	P2600	"6000000012153323709"	P1810	"Appolonia Elvia"
+#   P569 date of birth = +1658-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1658-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000012153323709"
+#   P570 date of death = +1699-07-00T00:00:00Z/10
+LAST	P570	+1699-07-00T00:00:00Z/10	S2600	"6000000012153323709"
+#   P22 father = Q141494458 Gustavus Johannis Elvius
+LAST	P22	Q141494458	S2600	"6000000012153323709"
+#   P25 mother = Q141440511 Anna Persdotter Gangia
+LAST	P25	Q141440511	S2600	"6000000012153323709"
+#   Q141494458 Gustavus Johannis Elvius: P40 child = the item just created
+Q141494458	P40	LAST	S2600	"6000000012153323709"
+#   Q141440511 Anna Persdotter Gangia: P40 child = the item just created
+Q141440511	P40	LAST	S2600	"6000000012153323709"
+
+# create a new item
+CREATE
+#   the item just created: set the en label to "Astrid Pedersdatter Sinnes"
+LAST	Len	"Astrid Pedersdatter Sinnes"
+#   set the mul label to "Astrid Pedersdatter Sinnes"
+LAST	Lmul	"Astrid Pedersdatter Sinnes"
+#   add a mul alias "Astrid Pedersdatter Liland"
+LAST	Amul	"Astrid Pedersdatter Liland"
+#   set the ja label to "アストリッド・ペーデシュダッテル・シンネス"
+LAST	Lja	"アストリッド・ペーデシュダッテル・シンネス"
+#   set the zh label to "阿斯特丽德·佩德斯达特·西内斯"
+LAST	Lzh	"阿斯特丽德·佩德斯达特·西内斯"
+#   set the ko label to "아스트리드 페데르스다테르 신네스"
+LAST	Lko	"아스트리드 페데르스다테르 신네스"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000007352562532 Astrid Pedersdatter Sinnes, qualified P1810 subject named as Astrid Pedersdatter Liland
+LAST	P2600	"6000000007352562532"	P1810	"Astrid Pedersdatter Liland"
+#   P569 date of birth = +1776-10-27T00:00:00Z/11
+LAST	P569	+1776-10-27T00:00:00Z/11	S2600	"6000000007352562532"
+#   P570 date of death = +1815-11-09T00:00:00Z/11
+LAST	P570	+1815-11-09T00:00:00Z/11	S2600	"6000000007352562532"
+#   P40 child = Q141488441 Astrid Knutsdatter Sinnes
+LAST	P40	Q141488441	S2600	"6000000007352562532"
+#   Q141488441 Astrid Knutsdatter Sinnes: P25 mother = the item just created
+Q141488441	P25	LAST	S2600	"6000000007352562532"
+#   the item just created: P735 given name = Q167755 Astrid
+LAST	P735	Q167755
+#   P5056 patronym or matronym = Q141257144
+LAST	P5056	Q141257144
+#   P734 family name = Q30087353, qualified P3831 object of statement has role Q2507958 birth name
+LAST	P734	Q30087353	P3831	Q2507958
+#   P734 family name = Q37313329, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q37313329	P3831	Q28418670
+#   add a mul alias "Astrid Sinnes"
+LAST	Amul	"Astrid Sinnes"
+
+# create a new item
+CREATE
+#   set the en label to "Bellest Ingemundsen Espedal"
+LAST	Len	"Bellest Ingemundsen Espedal"
+#   set the mul label to "Bellest Ingemundsen Espedal"
+LAST	Lmul	"Bellest Ingemundsen Espedal"
+#   set the ja label to "ベレスト・インゲムンドセン・エスペダール"
+LAST	Lja	"ベレスト・インゲムンドセン・エスペダール"
+#   set the zh label to "贝莱斯特·因盖蒙德森·埃斯佩达尔"
+LAST	Lzh	"贝莱斯特·因盖蒙德森·埃斯佩达尔"
+#   set the ko label to "벨레스트 이에문드센 에스페달"
+LAST	Lko	"벨레스트 이에문드센 에스페달"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000020087113198 Christian Valdemar Rosenblad, qualified P1810 subject named as Christian Valdemar Rosenblad
-LAST	P2600	"6000000020087113198"	P1810	"Christian Valdemar Rosenblad"
-#   P569 date of birth = +1802-08-06T00:00:00Z/11
-LAST	P569	+1802-08-06T00:00:00Z/11	S2600	"6000000020087113198"
-#   P570 date of death = +1860-05-05T00:00:00Z/11
-LAST	P570	+1860-05-05T00:00:00Z/11	S2600	"6000000020087113198"
-#   P22 father = Q6079648 Nils Eberhardsson Rosenblad
-LAST	P22	Q6079648	S2600	"6000000020087113198"
-#   P25 mother = Q141457271 Eva Elisabet Ehrenborg
-LAST	P25	Q141457271	S2600	"6000000020087113198"
-#   Q6079648 Nils Eberhardsson Rosenblad: P40 child = the item just created
-Q6079648	P40	LAST	S2600	"6000000020087113198"
-#   Q141457271 Eva Elisabet Ehrenborg: P40 child = the item just created
-Q141457271	P40	LAST	S2600	"6000000020087113198"
-#   the item just created: P735 given name = Q18001597 Christian, qualified P1545 series ordinal 1
-LAST	P735	Q18001597	P1545	"1"
-#   P735 given name = Q19966563 Valdemar, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q19966563	P1545	"2"	P3831	Q245025
+#   P2600 Geni.com profile ID = 6000000008646995931 Bellest Ingemundsen Espedal, qualified P1810 subject named as Bellest Ingemundsen Espedal
+LAST	P2600	"6000000008646995931"	P1810	"Bellest Ingemundsen Espedal"
+#   P569 date of birth = +1704-09-29T00:00:00Z/11
+LAST	P569	+1704-09-29T00:00:00Z/11	S2600	"6000000008646995931"
+#   P570 date of death = +1755-00-00T00:00:00Z/9
+LAST	P570	+1755-00-00T00:00:00Z/9	S2600	"6000000008646995931"
+#   P25 mother = Q141198371 Anna Belestdatter Lauvsnes
+LAST	P25	Q141198371	S2600	"6000000008646995931"
+#   Q141198371 Anna Belestdatter Lauvsnes: P40 child = the item just created
+Q141198371	P40	LAST	S2600	"6000000008646995931"
+#   the item just created: P734 family name = Q27892902
+LAST	P734	Q27892902
+#   add a mul alias "Rossevig"
+LAST	Amul	"Rossevig"
+#   add a mul alias "Bellest Espedal"
+LAST	Amul	"Bellest Espedal"
+
+# create a new item
+CREATE
+#   set the en label to "Björn Nilsson"
+LAST	Len	"Björn Nilsson"
+#   set the mul label to "Björn Nilsson"
+LAST	Lmul	"Björn Nilsson"
+#   set the ja label to "ビョルン・ニルソン"
+LAST	Lja	"ビョルン・ニルソン"
+#   set the zh label to "比约恩·尼尔松"
+LAST	Lzh	"比约恩·尼尔松"
+#   set the ko label to "뵈른 닐손"
+LAST	Lko	"뵈른 닐손"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000006590150256 Björn Nilsson, qualified P1810 subject named as Björn Nilsson
+LAST	P2600	"6000000006590150256"	P1810	"Björn Nilsson"
+#   P569 date of birth = +1600-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1600-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000006590150256"
+#   P570 date of death = +1685-00-00T00:00:00Z/9, qualified P1326 latest date +1685-00-00T00:00:00Z/9
+LAST	P570	+1685-00-00T00:00:00Z/9	P1326	+1685-00-00T00:00:00Z/9	S2600	"6000000006590150256"
+#   P40 child = Q141487984 Nils Björnsson
+LAST	P40	Q141487984	S2600	"6000000006590150256"
+#   Q141487984 Nils Björnsson: P22 father = the item just created
+Q141487984	P22	LAST	S2600	"6000000006590150256"
+#   the item just created: P735 given name = Q8851571 Björn
+LAST	P735	Q8851571
+#   P734 family name = Q15829860 Nilsson
+LAST	P734	Q15829860
+
+# create a new item
+CREATE
+#   set the en label to "Brynhild Torleivsdatter"
+LAST	Len	"Brynhild Torleivsdatter"
+#   set the mul label to "Brynhild Torleivsdatter"
+LAST	Lmul	"Brynhild Torleivsdatter"
+#   set the ja label to "ブリュンヒルド・トルレイヴスダッテル"
+LAST	Lja	"ブリュンヒルド・トルレイヴスダッテル"
+#   set the zh label to "布林希尔德·托尔莱伊夫斯达特"
+LAST	Lzh	"布林希尔德·托尔莱伊夫斯达特"
+#   set the ko label to "브린힐드 토레입스다테르"
+LAST	Lko	"브린힐드 토레입스다테르"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000002006386304 Brynhild Torleivsdatter, qualified P1810 subject named as Brynhild Torleivsdatter
+LAST	P2600	"6000000002006386304"	P1810	"Brynhild Torleivsdatter"
+#   P569 date of birth = +1435-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1435-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002006386304"
+#   P570 date of death = +1481-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1481-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002006386304"
+#   P40 child = Q7825898 Torleiv Trondssøn Benkestok
+LAST	P40	Q7825898	S2600	"6000000002006386304"
+#   Q7825898 Torleiv Trondssøn Benkestok: P25 mother = the item just created
+Q7825898	P25	LAST	S2600	"6000000002006386304"
+#   the item just created: P735 given name = Q521264 Brynhild
+LAST	P735	Q521264
+#   add a mul alias "Brynhild Kjellingmule"
+LAST	Amul	"Brynhild Kjellingmule"
+
+# create a new item
+CREATE
+#   set the en label to "Carl Ulrik Meijendorff von Yxkull till Hässelby"
+LAST	Len	"Carl Ulrik Meijendorff von Yxkull till Hässelby"
+#   set the mul label to "Carl Ulrik Meijendorff von Yxkull till Hässelby"
+LAST	Lmul	"Carl Ulrik Meijendorff von Yxkull till Hässelby"
+#   set the ja label to "カール・ウルリク・メイイェンドルッフ・ヴォン・イクスクル"
+LAST	Lja	"カール・ウルリク・メイイェンドルッフ・ヴォン・イクスクル"
+#   set the zh label to "卡尔·乌尔里克·梅伊延多尔夫·翁·伊克斯库尔"
+LAST	Lzh	"卡尔·乌尔里克·梅伊延多尔夫·翁·伊克斯库尔"
+#   set the ko label to "칼 울리크 메이젠도르프 본 이그스쿨"
+LAST	Lko	"칼 울리크 메이젠도르프 본 이그스쿨"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581097 male
+LAST	P21	Q6581097
+#   P2600 Geni.com profile ID = 6000000018585786049 Carl Ulrik Meijendorff von Yxkull till Hässelby, qualified P1810 subject named as Carl Ulrik Meijendorff von Yxkull till Hässelby
+LAST	P2600	"6000000018585786049"	P1810	"Carl Ulrik Meijendorff von Yxkull till Hässelby"
+#   P569 date of birth = +1690-11-09T00:00:00Z/11
+LAST	P569	+1690-11-09T00:00:00Z/11	S2600	"6000000018585786049"
+#   P570 date of death = +1730-05-07T00:00:00Z/11
+LAST	P570	+1730-05-07T00:00:00Z/11	S2600	"6000000018585786049"
+#   P22 father = Q124429892 Lage Meijendorff von Yxkull till Skattmansö
+LAST	P22	Q124429892	S2600	"6000000018585786049"
+#   P25 mother = Q141454304 Beata Christina Leijonhufvud
+LAST	P25	Q141454304	S2600	"6000000018585786049"
+#   Q124429892 Lage Meijendorff von Yxkull till Skattmansö: P40 child = the item just created
+Q124429892	P40	LAST	S2600	"6000000018585786049"
+#   Q141454304 Beata Christina Leijonhufvud: P40 child = the item just created
+Q141454304	P40	LAST	S2600	"6000000018585786049"
+#   the item just created: P735 given name = Q2529610 Carl, qualified P1545 series ordinal 1
+LAST	P735	Q2529610	P1545	"1"
+#   P735 given name = Q5412982 Ulrik, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q5412982	P1545	"2"	P3831	Q245025
+#   add a mul alias "Carl Ulrik Meijendorff von Yxkull"
+LAST	Amul	"Carl Ulrik Meijendorff von Yxkull"
+
+# create a new item
+CREATE
+#   set the en label to "Carolina Delldén"
+LAST	Len	"Carolina Delldén"
+#   set the mul label to "Carolina Delldén"
+LAST	Lmul	"Carolina Delldén"
+#   set the ja label to "カロリーナ・デルデン"
+LAST	Lja	"カロリーナ・デルデン"
+#   set the zh label to "卡罗琳娜·德尔登"
+LAST	Lzh	"卡罗琳娜·德尔登"
+#   set the ko label to "카로리나 델덴"
+LAST	Lko	"카로리나 델덴"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000016754736308 Carolina Delldén, qualified P1810 subject named as Carolina Delldén
+LAST	P2600	"6000000016754736308"	P1810	"Carolina Delldén"
+#   P569 date of birth = +1795-06-29T00:00:00Z/11
+LAST	P569	+1795-06-29T00:00:00Z/11	S2600	"6000000016754736308"
+#   P22 father = Q141440643 Olof Delldén
+LAST	P22	Q141440643	S2600	"6000000016754736308"
+#   P25 mother = Q141440606 Margareta Gertrud Genberg
+LAST	P25	Q141440606	S2600	"6000000016754736308"
+#   Q141440643 Olof Delldén: P40 child = the item just created
+Q141440643	P40	LAST	S2600	"6000000016754736308"
+#   Q141440606 Margareta Gertrud Genberg: P40 child = the item just created
+Q141440606	P40	LAST	S2600	"6000000016754736308"
+#   the item just created: P735 given name = Q5044762 Carolina
+LAST	P735	Q5044762
+
+# create a new item
+CREATE
+#   set the en label to "Caroline Dorthea Wilkens"
+LAST	Len	"Caroline Dorthea Wilkens"
+#   set the mul label to "Caroline Dorthea Wilkens"
+LAST	Lmul	"Caroline Dorthea Wilkens"
+#   set the ja label to "キャロライン・ドルテア・ヴィルケンス"
+LAST	Lja	"キャロライン・ドルテア・ヴィルケンス"
+#   set the zh label to "卡罗琳·多尔特阿·维尔肯斯"
+LAST	Lzh	"卡罗琳·多尔特阿·维尔肯斯"
+#   set the ko label to "카로리네 도르테아 윌켄스"
+LAST	Lko	"카로리네 도르테아 윌켄스"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000036729738255 Caroline Dorthea Wilkens, qualified P1810 subject named as Caroline Lina Dorthea Wilkens
+LAST	P2600	"6000000036729738255"	P1810	"Caroline Lina Dorthea Wilkens"
+#   P569 date of birth = +1844-01-20T00:00:00Z/11
+LAST	P569	+1844-01-20T00:00:00Z/11	S2600	"6000000036729738255"
+#   P570 date of death = +1927-01-07T00:00:00Z/11
+LAST	P570	+1927-01-07T00:00:00Z/11	S2600	"6000000036729738255"
+#   P22 father = Q141442312 Johan Philip Wilkens Wilhelmsen
+LAST	P22	Q141442312	S2600	"6000000036729738255"
+#   P25 mother = Q141442264 Alette Wilkens
+LAST	P25	Q141442264	S2600	"6000000036729738255"
+#   Q141442312 Johan Philip Wilkens Wilhelmsen: P40 child = the item just created
+Q141442312	P40	LAST	S2600	"6000000036729738255"
+#   Q141442264 Alette Wilkens: P40 child = the item just created
+Q141442264	P40	LAST	S2600	"6000000036729738255"
+#   the item just created: P735 given name = Q16275172, qualified P1545 series ordinal 1
+LAST	P735	Q16275172	P1545	"1"
+#   P735 given name = Q30077254 Dorthea, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q30077254	P1545	"2"	P3831	Q245025
+#   add a mul alias "Lina Wilkens"
+LAST	Amul	"Lina Wilkens"
+
+# create a new item
+CREATE
+#   set the en label to "Catharina Brita Rosenstråle"
+LAST	Len	"Catharina Brita Rosenstråle"
+#   set the mul label to "Catharina Brita Rosenstråle"
+LAST	Lmul	"Catharina Brita Rosenstråle"
+#   set the ja label to "カタリーナ・ブリッタ・ロセンストローレ"
+LAST	Lja	"カタリーナ・ブリッタ・ロセンストローレ"
+#   set the zh label to "卡塔里娜·布里塔·罗森斯特罗莱"
+LAST	Lzh	"卡塔里娜·布里塔·罗森斯特罗莱"
+#   set the ko label to "카타리나 브리타 로센스트로레"
+LAST	Lko	"카타리나 브리타 로센스트로레"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000011318550647 Catharina Brita Rosenstråle, qualified P1810 subject named as Catharina Brita Rosenstråle
+LAST	P2600	"6000000011318550647"	P1810	"Catharina Brita Rosenstråle"
+#   P569 date of birth = +1672-00-00T00:00:00Z/9
+LAST	P569	+1672-00-00T00:00:00Z/9	S2600	"6000000011318550647"
+#   P570 date of death = +1722-00-00T00:00:00Z/9
+LAST	P570	+1722-00-00T00:00:00Z/9	S2600	"6000000011318550647"
+#   P25 mother = Q141403520 Beata Rosina Rosina Rosenstråle
+LAST	P25	Q141403520	S2600	"6000000011318550647"
+#   Q141403520 Beata Rosina Rosina Rosenstråle: P40 child = the item just created
+Q141403520	P40	LAST	S2600	"6000000011318550647"
+#   the item just created: P735 given name = Q17317997 Catharina, qualified P1545 series ordinal 1
+LAST	P735	Q17317997	P1545	"1"
+#   P735 given name = Q918013, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q918013	P1545	"2"	P3831	Q245025
+
+# create a new item
+CREATE
+#   set the en label to "Catharina Olofsdotter Bure"
+LAST	Len	"Catharina Olofsdotter Bure"
+#   set the mul label to "Catharina Olofsdotter Bure"
+LAST	Lmul	"Catharina Olofsdotter Bure"
+#   set the ja label to "カタリーナ・オロフスドッテル・ブレ"
+LAST	Lja	"カタリーナ・オロフスドッテル・ブレ"
+#   set the zh label to "卡塔里娜·奥洛夫斯多特·布雷"
+LAST	Lzh	"卡塔里娜·奥洛夫斯多特·布雷"
+#   set the ko label to "카타리나 오로프스도테르 부레"
+LAST	Lko	"카타리나 오로프스도테르 부레"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000021211676864 Catharina Olofsdotter Bure, qualified P1810 subject named as Catharina Olofsdotter Bure
+LAST	P2600	"6000000021211676864"	P1810	"Catharina Olofsdotter Bure"
+#   P570 date of death = +1722-00-00T00:00:00Z/9, qualified P1319 earliest date +1722-00-00T00:00:00Z/9
+LAST	P570	+1722-00-00T00:00:00Z/9	P1319	+1722-00-00T00:00:00Z/9	S2600	"6000000021211676864"
+#   P26 spouse = Q141494473 Johan Bruno befallningsman Sr.
+LAST	P26	Q141494473	S2600	"6000000021211676864"
+#   P40 child = Q141448483 Johan Jean Bruno häradsskrivare Jr.
+LAST	P40	Q141448483	S2600	"6000000021211676864"
+#   Q141494473 Johan Bruno befallningsman Sr.: P26 spouse = the item just created
+Q141494473	P26	LAST	S2600	"6000000021211676864"
+#   Q141448483 Johan Jean Bruno häradsskrivare Jr.: P25 mother = the item just created
+Q141448483	P25	LAST	S2600	"6000000021211676864"
+#   the item just created: P735 given name = Q17317997 Catharina
+LAST	P735	Q17317997
+#   P5056 patronym or matronym = Q141250201
+LAST	P5056	Q141250201
+#   P734 family name = Q11335012 Bure
+LAST	P734	Q11335012
+
+# create a new item
+CREATE
+#   set the en label to "Christina Catharina Cederschiöld"
+LAST	Len	"Christina Catharina Cederschiöld"
+#   set the mul label to "Christina Catharina Cederschiöld"
+LAST	Lmul	"Christina Catharina Cederschiöld"
+#   set the ja label to "クリスティーナ・カタリーナ・セデルシオルド"
+LAST	Lja	"クリスティーナ・カタリーナ・セデルシオルド"
+#   set the zh label to "克里斯蒂娜·卡塔里娜·塞德尔西奥尔德"
+LAST	Lzh	"克里斯蒂娜·卡塔里娜·塞德尔西奥尔德"
+#   set the ko label to "크리스티나 카타리나 케데르시욀드"
+LAST	Lko	"크리스티나 카타리나 케데르시욀드"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000012785402160 Christina Catharina Cederschiöld, qualified P1810 subject named as Christina Catharina Cederschiöld
+LAST	P2600	"6000000012785402160"	P1810	"Christina Catharina Cederschiöld"
+#   P569 date of birth = +1743-10-19T00:00:00Z/11
+LAST	P569	+1743-10-19T00:00:00Z/11	S2600	"6000000012785402160"
+#   P570 date of death = +1806-01-29T00:00:00Z/11
+LAST	P570	+1806-01-29T00:00:00Z/11	S2600	"6000000012785402160"
+#   P22 father = Q141403587 Johan Fredrik Cederschiöld
+LAST	P22	Q141403587	S2600	"6000000012785402160"
+#   P25 mother = Q141419742 Margareta Christina Ridderståhle
+LAST	P25	Q141419742	S2600	"6000000012785402160"
+#   Q141403587 Johan Fredrik Cederschiöld: P40 child = the item just created
+Q141403587	P40	LAST	S2600	"6000000012785402160"
+#   Q141419742 Margareta Christina Ridderståhle: P40 child = the item just created
+Q141419742	P40	LAST	S2600	"6000000012785402160"
+#   the item just created: P735 given name = Q1083457 Christina, qualified P1545 series ordinal 1
+LAST	P735	Q1083457	P1545	"1"
+#   P735 given name = Q17317997 Catharina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q17317997	P1545	"2"	P3831	Q245025
+
+# create a new item
+CREATE
+#   set the en label to "Christina Printz"
+LAST	Len	"Christina Printz"
+#   set the mul label to "Christina Printz"
+LAST	Lmul	"Christina Printz"
+#   set the ja label to "クリスティーナ・プリントズ"
+LAST	Lja	"クリスティーナ・プリントズ"
+#   set the zh label to "克里斯蒂娜·普林特兹"
+LAST	Lzh	"克里斯蒂娜·普林特兹"
+#   set the ko label to "크리스티나 프린츠"
+LAST	Lko	"크리스티나 프린츠"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000032031091303 Christina Printz, qualified P1810 subject named as Christina Printz
+LAST	P2600	"6000000032031091303"	P1810	"Christina Printz"
+#   P569 date of birth = +1701-09-21T00:00:00Z/11
+LAST	P569	+1701-09-21T00:00:00Z/11	S2600	"6000000032031091303"
+#   P570 date of death = +1779-12-24T00:00:00Z/11
+LAST	P570	+1779-12-24T00:00:00Z/11	S2600	"6000000032031091303"
+#   P26 spouse = Q141443429 Peter Norn
+LAST	P26	Q141443429	S2600	"6000000032031091303"
+#   P40 child = Q141494509 Jonas Pettersson Norn
+LAST	P40	Q141494509	S2600	"6000000032031091303"
+#   Q141443429 Peter Norn: P26 spouse = the item just created
+Q141443429	P26	LAST	S2600	"6000000032031091303"
+#   Q141494509 Jonas Pettersson Norn: P25 mother = the item just created
+Q141494509	P25	LAST	S2600	"6000000032031091303"
+#   the item just created: P735 given name = Q1083457 Christina
+LAST	P735	Q1083457
+
+# create a new item
+CREATE
+#   set the en label to "Doris Monica Stanislas Böckman"
+LAST	Len	"Doris Monica Stanislas Böckman"
+#   set the mul label to "Doris Monica Stanislas Böckman"
+LAST	Lmul	"Doris Monica Stanislas Böckman"
+#   add a mul alias "Doris Monica Stanislas von Platen"
+LAST	Amul	"Doris Monica Stanislas von Platen"
+#   set the ja label to "ドリス・モニカ・スタニスラス・ボクマン"
+LAST	Lja	"ドリス・モニカ・スタニスラス・ボクマン"
+#   set the zh label to "多丽丝·莫妮卡·斯坦尼斯拉斯·博克曼"
+LAST	Lzh	"多丽丝·莫妮卡·斯坦尼斯拉斯·博克曼"
+#   set the ko label to "도리스 모니카 스타니스라스 뵈크만"
+LAST	Lko	"도리스 모니카 스타니스라스 뵈크만"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000183236143821 Doris Monica Stanislas Böckman, qualified P1810 subject named as Doris Monica Stanislas von Platen
+LAST	P2600	"6000000183236143821"	P1810	"Doris Monica Stanislas von Platen"
+#   P569 date of birth = +1936-09-13T00:00:00Z/11
+LAST	P569	+1936-09-13T00:00:00Z/11	S2600	"6000000183236143821"
+#   P570 date of death = +2015-04-06T00:00:00Z/11
+LAST	P570	+2015-04-06T00:00:00Z/11	S2600	"6000000183236143821"
+#   P22 father = Q805827 Baltzar Carl von Platen
+LAST	P22	Q805827	S2600	"6000000183236143821"
+#   Q805827 Baltzar Carl von Platen: P40 child = the item just created
+Q805827	P40	LAST	S2600	"6000000183236143821"
+#   the item just created: P735 given name = Q3094766 Doris, qualified P1545 series ordinal 1
+LAST	P735	Q3094766	P1545	"1"
+#   P735 given name = Q14013933 Monica, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q14013933	P1545	"2"	P3831	Q245025
+
+# create a new item
+CREATE
+#   set the en label to "Doris Signe Maria Kofoed-Fernström"
+LAST	Len	"Doris Signe Maria Kofoed-Fernström"
+#   set the mul label to "Doris Signe Maria Kofoed-Fernström"
+LAST	Lmul	"Doris Signe Maria Kofoed-Fernström"
+#   set the ja label to "ドリス・シグネ・マリア・コフォエドフェルンストロム"
+LAST	Lja	"ドリス・シグネ・マリア・コフォエドフェルンストロム"
+#   set the zh label to "多丽丝·西格内·玛丽亚·科福埃德费尔恩斯特罗姆"
+LAST	Lzh	"多丽丝·西格内·玛丽亚·科福埃德费尔恩斯特罗姆"
+#   set the ko label to "도리스 식네 마리아 코푀드페른스트룀"
+LAST	Lko	"도리스 식네 마리아 코푀드페른스트룀"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000036923171233 Doris Signe Maria Kofoed-Fernström, qualified P1810 subject named as Doris Signe Maria Kofoed-Fernström
+LAST	P2600	"6000000036923171233"	P1810	"Doris Signe Maria Kofoed-Fernström"
+#   P569 date of birth = +1906-05-03T00:00:00Z/11
+LAST	P569	+1906-05-03T00:00:00Z/11	S2600	"6000000036923171233"
+#   P570 date of death = +1998-05-17T00:00:00Z/11
+LAST	P570	+1998-05-17T00:00:00Z/11	S2600	"6000000036923171233"
+#   P26 spouse = Q805827 Baltzar Carl von Platen
+LAST	P26	Q805827	S2600	"6000000036923171233"
+#   Q805827 Baltzar Carl von Platen: P26 spouse = the item just created
+Q805827	P26	LAST	S2600	"6000000036923171233"
+#   the item just created: P735 given name = Q3094766 Doris, qualified P1545 series ordinal 1
+LAST	P735	Q3094766	P1545	"1"
+#   P735 given name = Q2096893 Signe, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q2096893	P1545	"2"	P3831	Q245025
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q325872	P1545	"3"	P3831	Q245025
+
+# create a new item
+CREATE
+#   set the en label to "Dorothea Gabrielsdatter Austrått"
+LAST	Len	"Dorothea Gabrielsdatter Austrått"
+#   set the mul label to "Dorothea Gabrielsdatter Austrått"
+LAST	Lmul	"Dorothea Gabrielsdatter Austrått"
+#   add a mul alias "Dorothea Gabrielsdatter Gabrielsdatter"
+LAST	Amul	"Dorothea Gabrielsdatter Gabrielsdatter"
+#   set the ja label to "ドロテア・ガブリエルスダッテル・アウストローット"
+LAST	Lja	"ドロテア・ガブリエルスダッテル・アウストローット"
+#   set the zh label to "多蘿西亞·加布里埃尔斯达特·奥斯特罗特"
+LAST	Lzh	"多蘿西亞·加布里埃尔斯达特·奥斯特罗特"
+#   set the ko label to "도로테아 가브리엘스다테르 아우스트로트"
+LAST	Lko	"도로테아 가브리엘스다테르 아우스트로트"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000003492057612 Dorothea Gabrielsdatter Austrått, qualified P1810 subject named as Dorothea Gabrielsdatter Gabrielsdatter
+LAST	P2600	"6000000003492057612"	P1810	"Dorothea Gabrielsdatter Gabrielsdatter"
+#   P569 date of birth = +1646-00-00T00:00:00Z/9
+LAST	P569	+1646-00-00T00:00:00Z/9	S2600	"6000000003492057612"
+#   P570 date of death = +1715-07-08T00:00:00Z/11
+LAST	P570	+1715-07-08T00:00:00Z/11	S2600	"6000000003492057612"
+#   P25 mother = Q141493185 Dorothea Christensdatter Thrane
+LAST	P25	Q141493185	S2600	"6000000003492057612"
+#   Q141493185 Dorothea Christensdatter Thrane: P40 child = the item just created
+Q141493185	P40	LAST	S2600	"6000000003492057612"
+#   the item just created: P735 given name = Q909253 Dorothea
+LAST	P735	Q909253
+#   P5056 patronym or matronym = Q141455638
+LAST	P5056	Q141455638
+#   P734 family name = Q141318793, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q141318793	P3831	Q28418670
+#   add a mul alias "Dorotea Gabrielsdtr"
+LAST	Amul	"Dorotea Gabrielsdtr"
+#   add a mul alias "Dorothea Austrått"
+LAST	Amul	"Dorothea Austrått"
+
+# create a new item
+CREATE
+#   set the en label to "Dorthe Larsdatter Kvam"
+LAST	Len	"Dorthe Larsdatter Kvam"
+#   set the mul label to "Dorthe Larsdatter Kvam"
+LAST	Lmul	"Dorthe Larsdatter Kvam"
+#   set the ja label to "ドルテ・ラーシュダッテル・クヴァム"
+LAST	Lja	"ドルテ・ラーシュダッテル・クヴァム"
+#   set the zh label to "多尔特·拉尔斯达特·克瓦姆"
+LAST	Lzh	"多尔特·拉尔斯达特·克瓦姆"
+#   set the ko label to "도르테 라르스다테르 크밤"
+LAST	Lko	"도르테 라르스다테르 크밤"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000194934884839 Dorthe Larsdatter Kvam, qualified P1810 subject named as Dorthe Larsdatter Kvam
+LAST	P2600	"6000000194934884839"	P1810	"Dorthe Larsdatter Kvam"
+#   P22 father = Q141198453 Lars Jonsen Kvam
+LAST	P22	Q141198453	S2600	"6000000194934884839"
+#   P25 mother = Q141198382 Berita Larsdatter Rossavik
+LAST	P25	Q141198382	S2600	"6000000194934884839"
+#   Q141198453 Lars Jonsen Kvam: P40 child = the item just created
+Q141198453	P40	LAST	S2600	"6000000194934884839"
+#   Q141198382 Berita Larsdatter Rossavik: P40 child = the item just created
+Q141198382	P40	LAST	S2600	"6000000194934884839"
+#   the item just created: P735 given name = Q1250567 Dorthe
+LAST	P735	Q1250567
+#   P5056 patronym or matronym = Q141314142, qualified P144 based on Q141198453 Lars Jonsen Kvam
+LAST	P5056	Q141314142	P144	Q141198453
+#   P734 family name = Q30086760 Kvam
+LAST	P734	Q30086760
+
+# create a new item
+CREATE
+#   set the en label to "Ebba Lona Berg"
+LAST	Len	"Ebba Lona Berg"
+#   set the mul label to "Ebba Lona Berg"
+LAST	Lmul	"Ebba Lona Berg"
+#   set the ja label to "エッバ・ロナ・ベルク"
+LAST	Lja	"エッバ・ロナ・ベルク"
+#   set the zh label to "埃巴·洛纳·伯格"
+LAST	Lzh	"埃巴·洛纳·伯格"
+#   set the ko label to "에바 로나 베륵"
+LAST	Lko	"에바 로나 베륵"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000010556947494 Ebba Lona Berg, qualified P1810 subject named as Ebba Lona Berg
+LAST	P2600	"6000000010556947494"	P1810	"Ebba Lona Berg"
+#   P569 date of birth = +1716-04-10T00:00:00Z/11
+LAST	P569	+1716-04-10T00:00:00Z/11	S2600	"6000000010556947494"
+#   P570 date of death = +1794-00-00T00:00:00Z/9, qualified P1319 earliest date +1794-00-00T00:00:00Z/9
+LAST	P570	+1794-00-00T00:00:00Z/9	P1319	+1794-00-00T00:00:00Z/9	S2600	"6000000010556947494"
+#   P25 mother = Q141444558 Anna Olofsdotter Hammar
+LAST	P25	Q141444558	S2600	"6000000010556947494"
+#   Q141444558 Anna Olofsdotter Hammar: P40 child = the item just created
+Q141444558	P40	LAST	S2600	"6000000010556947494"
+#   the item just created: P735 given name = Q2242896 Ebba, qualified P1545 series ordinal 1
+LAST	P735	Q2242896	P1545	"1"
+#   P734 family name = Q12785738 Berg
+LAST	P734	Q12785738
+#   add a mul alias "Knape"
+LAST	Amul	"Knape"
+
+# create a new item
+CREATE
+#   set the en label to "Elene Aslaksdotter"
+LAST	Len	"Elene Aslaksdotter"
+#   set the mul label to "Elene Aslaksdotter"
+LAST	Lmul	"Elene Aslaksdotter"
+#   set the ja label to "エレネ・アスラクスドッテル"
+LAST	Lja	"エレネ・アスラクスドッテル"
+#   set the zh label to "埃莱内·阿斯拉克斯多特"
+LAST	Lzh	"埃莱内·阿斯拉克斯多特"
+#   set the ko label to "에레네 아스라크스도테르"
+LAST	Lko	"에레네 아스라크스도테르"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000002017581317 Elene Aslaksdotter, qualified P1810 subject named as Elene Aslaksdotter
+LAST	P2600	"6000000002017581317"	P1810	"Elene Aslaksdotter"
+#   P569 date of birth = +1475-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1475-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002017581317"
+#   P570 date of death = +1534-00-00T00:00:00Z/9
+LAST	P570	+1534-00-00T00:00:00Z/9	S2600	"6000000002017581317"
+#   P40 child = Q141497501 Anna Benkestok
+LAST	P40	Q141497501	S2600	"6000000002017581317"
+#   Q141497501 Anna Benkestok: P25 mother = the item just created
+Q141497501	P25	LAST	S2600	"6000000002017581317"
+#   the item just created: P735 given name = Q80604123 Elene
+LAST	P735	Q80604123
 
 # create a new item
 
@@ -1706,79 +1664,53 @@ LAST	P735	Q19966563	P1545	"2"	P3831	Q245025
 # create a new item
 
 # create a new item
+
+# create a new item
+
+# create a new item
+
+# create a new item
+
+# create a new item
+
+# create a new item
+
+# create a new item
+
+# create a new item
+
+# RELATIONSHIPS between items that already exist -- the links yesterday's
+#    creations made possible, and the properties never emitted. Every subject
+#    and every value already has a QID, so this section depends on nothing above
+#    it. It is emitted LAST, per the specified order: individuals, names, relationships.
+
+#   Q5978038 Roland Martin: P3373 sibling = Q141497518 Carl Fredrik Martin
+Q5978038	P3373	Q141497518	S2600	"1386522"
 #   Q141493461 Sune Sverkersson Sik: P40 child = Q468729 Ingrid Ylva Sunesdotter
 #   P735 given name = Q920329 Sune
-#   Q141493398 Liva Ådnesdatter Nødland: P40 child = Q141493392 Kristi Toresdatter Frafjord
-Q141493398	P40	Q141493392	S2600	"4627346"
-#   Q141493460 Otto der Reiche, Graf von Ballenstedt: P40 child = Q156041 Albrecht I The Bear, Margrave of Brandenburg
+#   Q150642 Vittorio Emanuele Ferdinando Maria Gennaro di Savoia: P735 given name = Q325872 Maria, qualified P1545 series ordinal 4, P3831 object of statement has role Q245025 middle name
+#   P734 family name = Q23041587 Savoia
+#   Q141493460 Otto von Ballenstedt: P40 child = Q156041 Albrecht I von Brandenburg
 #   Q141494435 Eunice Nicks: P26 spouse = Q141494425 Edward Nix
 Q141494435	P26	Q141494425	S2600	"6000000001784497654"
-#   Q141494425 Edward Nix: P26 spouse = Q141494435 Eunice Nicks
-Q141494425	P26	Q141494435	S2600	"6000000001784502814"
 #   Q135579362 Ata-no-mikoto no Mikoto: P22 father = Q135579361 Morosu-no-mikoto
 #   P40 child = Q136908598 Karahisa-no-mikoto
 #   P40 child = Q55533077 Izumo-Furune-no-mikoto
 #   P2600 Geni.com profile ID = 6000000001893413214 Ata-no-mikoto no Mikoto, qualified P1810 subject named as 阿多
 #   P2600 Geni.com profile ID = 6000000001893436003 Karahisa-no-mikoto, qualified P1810 subject named as 韓日狭
-#   Q16649267 Elias Pedersson Gavelius: P3448 stepparent = Q141493411 Mårten Hansson Rödbeck
-Q16649267	P3448	Q141493411	S2600	"6000000002063115439"
-#   Q141494528 Lisebet Pedersdatter Grude: P26 spouse = Q141494468 Ingebrigt Rasmusson Grude
-Q141494528	P26	Q141494468	S2600	"6000000002806742588"
-#   Q141494468 Ingebrigt Rasmusson Grude: P26 spouse = Q141494528 Lisebet Pedersdatter Grude
-Q141494468	P26	Q141494528	S2600	"6000000002806824216"
-#   Q141493446 Torkel Helgeson Indre Lima: P26 spouse = Q141493415 NN Lima
-Q141493446	P26	Q141493415	S2600	"6000000003025832970"
-#   Q141493392 Kristi Toresdatter Frafjord: P25 mother = Q141493398 Liva Ådnesdatter Nødland
-Q141493392	P25	Q141493398	S2600	"6000000003095071958"
-#   Q141493424 Olaug Tollaksdatter Stokka: P26 spouse = Q141493429 Peder Olson Stangaland
-Q141493424	P26	Q141493429	S2600	"6000000003491947049"
-#   Q141493429 Peder Olson Stangaland: P26 spouse = Q141493424 Olaug Tollaksdatter Stokka
-Q141493429	P26	Q141493424	S2600	"6000000003491947054"
-#   Q141493444 Tarald Olsen Bø: P26 spouse = Q141493401 Maren Larsdatter Bø
-Q141493444	P26	Q141493401	S2600	"6000000003492037553"
-#   Q141493401 Maren Larsdatter Bø: P26 spouse = Q141493444 Tarald Olsen Bø
-Q141493401	P26	Q141493444	S2600	"6000000003492037569"
-#   Q141493433 Rasmus Ingebretsen Grude: P26 spouse = Q141493386 Karen Jonsdatter Ødemotland
-Q141493433	P26	Q141493386	S2600	"6000000003492045766"
-#   Q141493407 Maria Larsdatter Rønneberg: P40 child = Q141493435 Rasmus Rasmussen Madla
-Q141493407	P40	Q141493435	S2600	"6000000003492055309"
-#   Q230548 Meryt-Neith Pharaoh Regent of Egypt: P25 mother = Q453243 Herneith of Egypt
-#   P2600 Geni.com profile ID = 6000000004869093676 Meryt-Neith Pharaoh Regent of Egypt, qualified P1810 subject named as Meryt-Neith Pharaoh Regent of Egypt
-#   Q453508 Betrest: P40 child = Q151819 Qa'a Pharaoh of Egypt
+#   Q230548 Meryt-Neith: P25 mother = Q453243 Herneith of Egypt
+#   P2600 Geni.com profile ID = 6000000004869093676 Meryt-Neith, qualified P1810 subject named as Meryt-Neith Pharaoh Regent of Egypt
+#   Q453508 Betrest: P40 child = Q151819 Qa'a
 #   P2600 Geni.com profile ID = 6000000004869093727 Betrest, qualified P1810 subject named as Betrest .
-#   Q151819 Qa'a Pharaoh of Egypt: P25 mother = Q453508 Betrest
-#   P2600 Geni.com profile ID = 6000000004869093733 Qa'a Pharaoh of Egypt, qualified P1810 subject named as Qa'a Pharaoh of Egypt
+#   Q151819 Qa'a: P25 mother = Q453508 Betrest
+#   P2600 Geni.com profile ID = 6000000004869093733 Qa'a, qualified P1810 subject named as Qa'a Pharaoh of Egypt
 #   Q141493386 Karen Jonsdatter Ødemotland: P26 spouse = Q141493433 Rasmus Ingebretsen Grude
 Q141493386	P26	Q141493433	S2600	"6000000005102158996"
-#   Q141493396 Lars Larsson Madland: P26 spouse = Q141493441 Sissel Ellingsdatter Helland
-Q141493396	P26	Q141493441	S2600	"6000000005606860158"
-#   Q141493441 Sissel Ellingsdatter Helland: P26 spouse = Q141493396 Lars Larsson Madland
-Q141493441	P26	Q141493396	S2600	"6000000005606860168"
-#   Q141493440 Siri Rasmusdatter Holen: P26 spouse = Q141493421 Ola Torsen Holen
-Q141493440	P26	Q141493421	S2600	"6000000005606994718"
-#   Q141493421 Ola Torsen Holen: P26 spouse = Q141493440 Siri Rasmusdatter Holen
-Q141493421	P26	Q141493440	S2600	"6000000005607402243"
-#   Q141493437 Rasmus Rasmusson Sør-Kolnes: P40 child = Q141493420 Ola Rasmusson Sør Kolnes Sr.
-Q141493437	P40	Q141493420	S2600	"6000000005609265475"
-#   Q314521 Berengar II of Ivrea, king of Italy: P26 spouse = Q141493458 Willa of Tuscany
-Q314521	P26	Q141493458	S2600	"6000000005936551695"
-#   Q453243 Herneith of Egypt: P40 child = Q230548 Meryt-Neith Pharaoh Regent of Egypt
+#   Q453243 Herneith of Egypt: P40 child = Q230548 Meryt-Neith
 #   P2600 Geni.com profile ID = 6000000006743369482 Herneith of Egypt, qualified P1810 subject named as Herneith of Egypt
 #   Q141493459 Slavibor: P40 child = Q118087 Ludmila
-#   Q141493458 Willa of Tuscany: P40 child = Q466257 Rozala of Italy
-Q141493458	P40	Q466257	S2600	"6000000007141651300"
-#   P40 child = Q2720038 Guido d'Ivrea marchese d'Ivrea
-Q141493458	P40	Q2720038	S2600	"6000000007141651300"
-#   P40 child = Q347480 Adalbert II Re d'Italia, Marchese d'Ivrea
-Q141493458	P40	Q347480	S2600	"6000000007141651300"
-#   P26 spouse = Q314521 Berengar II of Ivrea, king of Italy
-Q141493458	P26	Q314521	S2600	"6000000007141651300"
-#   Q141493384 Jonas Norn: P26 spouse = Q141493404 Margareta Nolting
-Q141493384	P26	Q141493404	S2600	"6000000008496913800"
 #   Q141493404 Margareta Nolting: P26 spouse = Q141493384 Jonas Norn
 Q141493404	P26	Q141493384	S2600	"6000000008496913805"
-#   Q141494489 Johan von Stauden till Lofsdal: P26 spouse = Q141494437 Gertrud von Stauden
-Q141494489	P26	Q141494437	S2600	"6000000009492545980"
 #   Q141494437 Gertrud von Stauden: P26 spouse = Q141494489 Johan von Stauden till Lofsdal
 Q141494437	P26	Q141494489	S2600	"6000000009492650540"
 #   P2600 Geni.com profile ID = 6000000012789160423 Tsusa-no-mikoto, qualified P1810 subject named as Tsusa-no-mikoto
@@ -1787,16 +1719,10 @@ Q141494437	P26	Q141494489	S2600	"6000000009492650540"
 #   P2600 Geni.com profile ID = 6000000012789418407 Izumo-Furune-no-mikoto, qualified P1810 subject named as Izumo-Furune-no-mikoto
 #   Q135579361 Morosu-no-mikoto: P40 child = Q135579362 Ata-no-mikoto no Mikoto
 #   P2600 Geni.com profile ID = 6000000012789539255 Morosu-no-mikoto, qualified P1810 subject named as Morosu-no-mikoto
-#   Q141494463 Ingeborg Mikkelsdatter Tjørn: P26 spouse = Q141494441 Gunnar Torstensen Tjørn
-Q141494463	P26	Q141494441	S2600	"6000000013259564008"
 #   Q141494441 Gunnar Torstensen Tjørn: P26 spouse = Q141494463 Ingeborg Mikkelsdatter Tjørn
 Q141494441	P26	Q141494463	S2600	"6000000013259715849"
-#   Q141494456 Gustavus Georgii Säkylensis: P40 child = Q141494535 Maria Säkylensis
-Q141494456	P40	Q141494535	S2600	"6000000013488200094"
-#   Q141493420 Ola Rasmusson Sør Kolnes Sr.: P22 father = Q141493437 Rasmus Rasmusson Sør-Kolnes
-Q141493420	P22	Q141493437	S2600	"6000000014513433177"
-#   Q141494470 Jakob Bunge: P26 spouse = Q141494550 NN
-Q141494470	P26	Q141494550	S2600	"6000000018604269628"
+#   Q141488164 Jacob Walteri Guthræus: P25 mother = Q141497328 Agneta Guthrie
+Q141488164	P25	Q141497328	S2600	"6000000014547786440"
 #   Q141494550 NN: P26 spouse = Q141494470 Jakob Bunge
 Q141494550	P26	Q141494470	S2600	"6000000018604734443"
 #   Q135579407 Yasutaka 52 Izumo-kokuso: P22 father = Q135579406 Yoshitaka 51 Izumo
@@ -1841,16 +1767,6 @@ Q141494550	P26	Q141494470	S2600	"6000000018604734443"
 #   P2600 Geni.com profile ID = 6000000019460177052 Toyotoshi Senge, qualified P1810 subject named as Toyotoshi Senge
 #   Q141494438 Greta Sophia Maria Widstedt: P26 spouse = Q141494462 Henrik Detloffsson Walcke
 Q141494438	P26	Q141494462	S2600	"6000000020866871803"
-#   Q141494462 Henrik Detloffsson Walcke: P26 spouse = Q141494438 Greta Sophia Maria Widstedt
-Q141494462	P26	Q141494438	S2600	"6000000020867280206"
-#   Q141493447 Torsten Ellingsen Stavnheim: P40 child = Q141493422 Ola Torstensen Stavnheim
-Q141493447	P40	Q141493422	S2600	"6000000025538698525"
-#   Q141493435 Rasmus Rasmussen Madla: P25 mother = Q141493407 Maria Larsdatter Rønneberg
-Q141493435	P25	Q141493407	S2600	"6000000059990083947"
-#   Q141494535 Maria Säkylensis: P22 father = Q141494456 Gustavus Georgii Säkylensis
-Q141494535	P22	Q141494456	S2600	"6000000122596143980"
-#   Q141493415 NN Lima: P26 spouse = Q141493446 Torkel Helgeson Indre Lima
-Q141493415	P26	Q141493446	S2600	"6000000178419016853"
 #   Q108907046 Phinehas X ben Matzliach ben Phinehas: P22 father = Q108907045 Matzliach ben Phinehas ben Yitzhaq ben Shalma
 #   P2600 Geni.com profile ID = 6000000178793727891 Phinehas X ben Matzliach ben Phinehas, qualified P1810 subject named as Phinehas X ben Matzliach ben Phinehas
 #   Q107534535 Abisha III ben Phinehas ben Yitzhaq ben Shalma: P40 child = Q2666440 Levi VI ben Abisha ben Phinehas ben Yitzhaq
@@ -1865,8 +1781,6 @@ Q141493415	P26	Q141493446	S2600	"6000000178419016853"
 #   Q135489731 Tsedaka II ben Tabia ha'Åbtå'i: P40 child = Q137394557 Yitzhaq I ben Tsedaka
 #   Q13485740 Aabed-El V ben Asher ben Matzliach: P22 father = Q108764515 Asher ben Matzliach ben Phinehas
 #   P2600 Geni.com profile ID = 6000000178795554821 Aabed-El V ben Asher ben Matzliach, qualified P1810 subject named as Aabed-El V ben Asher ben Matzliach
-#   Q141493422 Ola Torstensen Stavnheim: P22 father = Q141493447 Torsten Ellingsen Stavnheim
-Q141493422	P22	Q141493447	S2600	"6000000219876990857"
 #   Q137394557 Yitzhaq I ben Tsedaka: P22 father = Q135489731 Tsedaka II ben Tabia ha'Åbtå'i
 #   P40 child = Q135489730 Abram ben Yitzhaq
 #   P2600 Geni.com profile ID = 6000000227245553985 Yitzhaq I ben Tsedaka, qualified P1810 subject named as Yitzhaq I ben Tsedaka
@@ -2275,6 +2189,7 @@ Q141493422	P22	Q141493447	S2600	"6000000219876990857"
 #   P40 child = Q135524905 Yorihiro Tanba
 #   P40 child = Q135524999 Yorikazu Tanba
 #   P2600 Geni.com profile ID = 6000000227350595951 Yorihide Tanba, qualified P1810 subject named as Yorihide Tanba
+#   P2600 Geni.com profile ID = 6000000227350595957 Asukai Masatsuna Tanba, qualified P1810 subject named as Asukai Masatsuna Tanba
 #   Q135524928 Mitsuyo Tanba: P22 father = Q135524917 Yasuyo Tanba
 #   P40 child = Q135524939 Moriyo Tanba
 #   P40 child = Q135524936 Sadayo Tanba
@@ -2639,3 +2554,80 @@ Q141493422	P22	Q141493447	S2600	"6000000219876990857"
 #   Q135524952 Sueyoshi Tanba Sr.: P22 father = Q135524950 Suekata Tanba
 #   P40 child = Q135524954 Sueyoshi Tanba Jr.
 #   P2600 Geni.com profile ID = 6000000227379436850 Sueyoshi Tanba Sr., qualified P1810 subject named as Sueyoshi Tanba Sr.
+# P1810 subject named as, backfilled onto P2600 statements that already exist.
+# Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
+# P2600 holders on Wikidata.
+# The value is Geni's display_name, never our own label. NN and private are skipped,
+# per the 2026-08-30 ruling that neither form of private gets a qualifier.
+# Re-stating property+value attaches the qualifier; it does not add a second P2600.
+
+Q140736358	P2600	"6000000018625267111"	P1810	"Nils Byrelius"
+Q141152512	P2600	"6000000003492005111"	P1810	"Eivind Aadnesson Garborg"
+Q141152523	P2600	"6000000003491986946"	P1810	"Ane Oline Jonsdatter Raugstad"
+Q141152600	P2600	"6000000003492005121"	P1810	"Stine \"Stena\" Eivindsdatter Garborg"
+Q141152614	P2600	"6000000003492005126"	P1810	"Jon Eivindson Garborg"
+Q141162040	P2600	"6000000003492005131"	P1810	"Samuel Eivindsen Garborg"
+Q141162041	P2600	"6000000003492005136"	P1810	"Even Eivindson Garborg"
+Q141162043	P2600	"6000000003492005141"	P1810	"Inger Marie \"Mary\" Eivindsdatter Garborg"
+Q141162044	P2600	"6000000003492005146"	P1810	"Abel Eivindsen Garborg"
+Q141162045	P2600	"6000000003492005151"	P1810	"Ole Eivindsen Garborg"
+Q1036660	P2600	"6000000006713140702"	P1810	"Carl Abraham Mankell"
+Q103773553	P2600	"6000000005656274004"	P1810	"Johan Haraldsson Fegræus till Strömhult"
+Q104009466	P2600	"6000000019053822848"	P1810	"Carl Fredrik von Saltza"
+Q104017740	P2600	"6000000019054022826"	P1810	"Anna Catharina Danckwardt Lillieström"
+Q104022248	P2600	"6000000019054324848"	P1810	"Beata Margareta Fredrika Hamilton af Hageby"
+Q104549945	P2600	"6000000003694839663"	P1810	"Gustav Henriksson Horn af Kanckas"
+Q104778612	P2600	"6000000019853037648"	P1810	"Eva Gustava von Willebrand"
+Q108673715	P2600	"6000000007314257051"	P1810	"Anna Danielsdotter Kröger"
+Q108742457	P2600	"6000000001801564487"	P1810	"Charlotta Christina Kristina Piper"
+Q108760600	P2600	"6000000019234545898"	P1810	"Elin (Elaine) Luella Hallberg"
+# ========================================================================
+# ONE PARENT A RUN, UP THE ACCOUNT OWNER'S OWN ANCESTRY -- the scheduled run, 2 creation(s).
+# 620 eligible: an ancestor of 6000000087535357291 who carries a QID and whose parent the tree
+# knows and Wikidata does not. Chosen at random, seeded on 2026-09-18 so the pick is
+# stable for the day -- the batch is recomposed several times a day and an
+# unseeded choice would create a different person on each recomposition.
+# ========================================================================
+#   6000000196282195908: father of Q3437950 (5620645112580020100), created because the tree knows them and Wikidata does not
+CREATE
+LAST	Len	"Hailaga Halvdansson Halfdansson"
+LAST	Lmul	"Hailaga Halvdansson Halfdansson"
+LAST	P31	Q5	S2600	"6000000196282195908"
+LAST	P2600	"6000000196282195908"
+LAST	P21	Q6581097	S2600	"6000000196282195908"
+#   Q3437950: P22 = the item just created
+#   6000000004839304936: mother of Q12337724 (6000000007086528162), created because the tree knows them and Wikidata does not
+CREATE
+LAST	Len	"Regnild"
+LAST	Lmul	"Regnild"
+LAST	P31	Q5	S2600	"6000000004839304936"
+LAST	P2600	"6000000004839304936"
+LAST	P21	Q6581072	S2600	"6000000004839304936"
+#   Q12337724: P25 = the item just created
+# S2600 sources, backfilled onto relationship statements that already exist without
+# one. Ruled 2026-09-14. Scope is the universe and one step out -- never all 518,975
+# P2600 holders on Wikidata.
+# EVERY LINE IS ATTESTED BY OUR TREE: a source is a claim about the source, so a
+# relationship Geni does not state is left alone rather than cited to Geni.
+# Re-stating property+value attaches the reference; it does not add a second statement.
+
+Q1393227	P3373	Q5618770	S2600	"6000000006718066339"
+Q1393227	P3373	Q5618813	S2600	"6000000006718066339"
+Q140191768	P25	Q140192133	S2600	"6000000006782610675"
+Q140192133	P22	Q139997218	S2600	"6000000004577966933"
+Q140521178	P3373	Q140521240	S2600	"6000000015465733977"
+Q104009466	P40	Q10480021	S2600	"6000000019053822848"
+Q104009466	P3373	Q128158067	S2600	"6000000019053822848"
+Q104017740	P40	Q10480021	S2600	"6000000019054022826"
+Q104022248	P26	Q10480021	S2600	"6000000019054324848"
+Q104549945	P40	Q717179	S2600	"6000000003694839663"
+Q104778612	P40	Q2471654	S2600	"6000000019853037648"
+Q104778612	P40	Q6190771	S2600	"6000000019853037648"
+Q108673715	P26	Q25451348	S2600	"6000000007314257051"
+Q108673715	P40	Q5568857	S2600	"6000000007314257051"
+Q108673715	P40	Q108673638	S2600	"6000000007314257051"
+Q108673715	P40	Q139997218	S2600	"6000000007314257051"
+Q108742457	P40	Q5575607	S2600	"6000000001801564487"
+Q108760600	P26	Q6092385	S2600	"6000000019234545898"
+Q108936800	P40	Q6175942	S2600	"6000000007510084248"
+Q109464117	P40	Q3428167	S2600	"6000000003124574510"
