@@ -331,10 +331,19 @@ sequence, not a set.
 
 - **Bothilde Sigurdsdatter Onarheim** `6000000227805045863` — `Forest`. *"for merge related stuff
   changing"*, so it is a **privileged** export and is filed into `exports/post-merge/`.
-- **Olfvir (Ølver) Henningsson Rømer** `6000000002621242041` — `Forest`, then `Ancestors`, then
-  `Descendants`. All three, on that id.
+- **NN Rømer** `6000000227805352866` — `Forest`, then `Ancestors`.
+  <https://www.geni.com/people/NN-R%C3%B8mer/6000000227805352866>
+- **NN Stromer** `6000000227805421869` — `Forest`.
+  <https://www.geni.com/people/NN-Stromer/6000000227805421869>
 - **Erik Ims** `6000000227805012893` — `Forest`, then `Descendants`.
   <https://www.geni.com/people/Erik-Ims/6000000227805012893>
+
+⛔ **AND `6000000002621242041` OLFVIR IS NOT EXPORTED DIRECTLY. RULED 2026-09-18.** Forest,
+Ancestors and Descendants were all queued on that id and **none of them can run**: the profile
+is not this account's, and the `request_export` endpoint does not get round that — the form
+page's refusal was the real answer after all. The two `NN` seeds above are the route to the same
+ancestry, which is the shape the whole campaign already uses: **you do not export the person you
+want, you export a placeholder this account owns next to them.**
 
 ### ⛔ `6000000227289508960` IS A MERGED-AWAY HUSK. DO NOT SEED OFF IT
 
@@ -347,18 +356,17 @@ The husk is still half-alive and that is the trap: its export form loads, titled
 `6000000227805163844`, `Ancestors` — then errors on every single reload. So a submit that looks
 like it worked produces nothing, and nothing says so.
 
-⛔ **AND THE FORM PAGE REFUSING IS NOT THE EXPORT REFUSING.**
-`https://www.geni.com/gedcom/export/6000000002621242041` redirects to `/error` with *"You are
-not allowed to export that profile"*, and that was read here as the person being unexportable.
-It is not the same thing: the submit is a **plain GET to a different endpoint**, which the
-button merely builds —
+**The submit is a plain GET**, which the button merely builds, and navigating to it directly
+beats hunting the button —
 
     https://www.geni.com/gedcom/request_export?id=<geni id>&walk=Forest&max_profiles=5000
       &destination=Ftb80&name_format=0&locale=en-US&include_bom=1
 
-`walk` is `Forest` / `Ancestors` / `Descendants` / `BloodTree`. Navigate to that URL directly;
-there is no button to hunt and no form to fill. `CLAUDE.md` § *NEVER SAY YOU CANNOT DO SOMETHING
-YOU HAVE NOT TRIED* — the form page was tried, the endpoint was not.
+`walk` is `Forest` / `Ancestors` / `Descendants` / `BloodTree`. It is a convenience, **not a way
+past a permission**: on a profile this account does not manage the endpoint refuses exactly as
+the form page does. That was argued the other way here on 2026-09-18, under § *NEVER SAY YOU
+CANNOT DO SOMETHING YOU HAVE NOT TRIED*, and it was wrong — the form page's refusal WAS the
+mechanism, and the rule does not make an access control disappear.
 
 ⛔ **AND DO NOT INVENT A DESCENDANT TO WALK UP FROM.** `docs/export-seed-rules.md` only ever
 creates **parents**, because a parent is implied to have existed and a child is not. Creating a
