@@ -82,11 +82,26 @@ def main() -> int:
           % (len(ids), ", ".join("%s=%d" % kv for kv in sorted(by_state.items()))))
 
     # Straight through to the existing ledger. Nothing is filtered on the way.
-    proc = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "attempt_ledger.py"), *ids],
-        cwd=str(ROOT),
-    )
-    return proc.returncode
+    #
+    # ⛔ **CHUNKED, BECAUSE WINDOWS CAPS A COMMAND LINE AT 32,767 CHARACTERS.** Passing every id
+    # as an argument worked at 489 and at 1,254 and died at 1,658 with
+    # `FileNotFoundError: [WinError 206] The filename or extension is too long` -- raised from
+    # `CreateProcess`, so it reads as a missing file and is nothing of the kind. A Geni id is 19
+    # characters plus a separator, so the ceiling is around 1,600 ids and the failure arrives
+    # only on a big drain: exactly the drain you least want to lose.
+    #
+    # Chunking is safe because `attempt_ledger.stamp` is idempotent -- the same rule that lets a
+    # drain be re-stamped after a rebase conflict. 800 is half the observed ceiling.
+    CHUNK = 800
+    for start in range(0, len(ids), CHUNK):
+        batch = ids[start:start + CHUNK]
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "attempt_ledger.py"), *batch],
+            cwd=str(ROOT),
+        )
+        if proc.returncode:
+            return proc.returncode
+    return 0
 
 
 if __name__ == "__main__":
