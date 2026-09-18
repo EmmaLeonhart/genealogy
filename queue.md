@@ -324,6 +324,23 @@ that mistake: measuring existing connectivity treats the tree as fixed, and in a
 almost any two noble lines are reachable at some hop count, so a reachability number says nearly
 nothing. The exports are what create the edges.
 
+## ⛔ TOP PRIORITY EXPORT — Olfvir Ølver Rømer, from 00:30 on 2026-09-18
+
+Ahead of the commanded roster below. `6000000227289508960` —
+<https://www.geni.com/people/Olfvir-%C3%98lver-R%C3%B8mer/6000000227289508960>
+
+**`Ancestors` 5000 first, then `Forest` 5000 on the same person.** Both walks are named
+deliberately and both are wanted; this overrides `docs/export-seed-rules.md` § *the export is
+always `Forest`* and `CLAUDE.md` § *`Descendants`, NOT `Forest`*.
+
+**⛔ THE 00:30 TIME IS THE POINT, NOT A CONVENIENCE.** A lot of new ancestors were connected to
+this person shortly before midnight on 2026-09-17, and the wait is what lets those connections
+finish before the export reads them. Running it early reads a half-connected ancestry and the
+whole job is wasted.
+
+A one-shot local cron was set for it, and **a cron dies with the session**, which is why it is
+written down here as well. If the session ended before 00:30, this item is the instruction.
+
 ## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
 
 Forest on each, in the order given. Then Descendants, in reverse of that order.
