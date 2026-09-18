@@ -1017,9 +1017,13 @@ def refuse_non_local(lines, allowed):
     if not allowed:
         raise ValueError("refuse_non_local called with an empty universe -- that is the absence "
                          "of the gate, not permission; recompose the universe first")
+    never = _never_edit()
     kept, dropped = [], []
     for ln in lines:
         m = re.match(r"^(Q\d+)	", ln)
+        if m and m.group(1) in never:
+            dropped.append(m.group(1))
+            continue
         if m and m.group(1) not in allowed:
             dropped.append(m.group(1))
             continue
@@ -2714,6 +2718,16 @@ def kluge_blocked_from_universe():
 
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
+
+
+def _never_edit():
+    """`wikidata_lockout.NEVER_EDIT` -- items an edit of ours already damaged. Never again."""
+    import importlib.util
+    path = Path(__file__).resolve().parent / "wikidata_lockout.py"
+    spec = importlib.util.spec_from_file_location("wikidata_lockout", str(path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return frozenset(module.NEVER_EDIT)
 
 
 def _clan_gate_date():

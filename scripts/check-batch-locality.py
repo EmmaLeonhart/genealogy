@@ -43,6 +43,9 @@ import pathlib
 import re
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import wikidata_lockout  # noqa: E402 -- NEVER_EDIT lives there, one definition, three readers
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 UNIVERSE = ROOT / "out" / "wikidata" / "edit-universe.json"
 LIVE_LABELS = ROOT / "reports" / "garborg-live-labels.tsv"
@@ -81,8 +84,8 @@ def kanji_items():
 
 
 def offenders(path, allowed, kanji):
-    """`(non_local, on_kanji)` — both `{qid: first line number}`."""
-    non_local, on_kanji = {}, {}
+    """`(non_local, on_kanji, never)` -- all three `{qid: first line number}`."""
+    non_local, on_kanji, never = {}, {}, {}
     for n, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
         m = SUBJECT.match(line)
         if m and m.group(1) not in allowed:
@@ -90,7 +93,9 @@ def offenders(path, allowed, kanji):
         k = LABEL_EDIT.match(line)
         if k and k.group(1) in kanji:
             on_kanji.setdefault(k.group(1), n)
-    return non_local, on_kanji
+        if m and m.group(1) in wikidata_lockout.NEVER_EDIT:
+            never.setdefault(m.group(1), n)
+    return non_local, on_kanji, never
 
 
 def main() -> int:
@@ -106,7 +111,7 @@ def main() -> int:
         if not path.exists():
             print("%-44s not built, skipped" % rel)
             continue
-        non_local, on_kanji = offenders(path, allowed, kanji)
+        non_local, on_kanji, never = offenders(path, allowed, kanji)
         if non_local:
             bad = 1
             print("%s: %d item(s) neither in the universe nor one step beyond it, first at line "
@@ -117,7 +122,12 @@ def main() -> int:
             print("%s: label edits on %d item(s) whose ja label is KANJI, which marks a "
                   "Sinosphere name and takes no label edit in any language: %s"
                   % (rel, len(on_kanji), ", ".join(sorted(on_kanji)[:8])))
-        if not non_local and not on_kanji:
+        if never:
+            bad = 1
+            print("%s: %d edit(s) on an item this pipeline may NEVER touch again, first at "
+                  "line %d: %s -- scripts/wikidata_lockout.NEVER_EDIT"
+                  % (rel, len(never), min(never.values()), ", ".join(sorted(never))))
+        if not non_local and not on_kanji and not never:
             print("%-44s clean (universe %d, kanji items %d)" % (rel, len(allowed), len(kanji)))
     if bad:
         print("\nCLAUDE.md: AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. "

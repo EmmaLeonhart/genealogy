@@ -222,3 +222,21 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+#: ⛔ **ITEMS THIS PIPELINE MAY NEVER TOUCH AGAIN, BY NAME.** Not a locality question and not a
+#: heuristic -- a list of specific items where an edit of ours destroyed something a human had
+#: put there, and the only safe rule is *never again*.
+#:
+#: `Q347480` Adalbert II: ruled 2026-09-18, *"please never edit Q347480 again lol you torched
+#: the existing kana that was not added by us"*. Its `ja` label is KATAKANA ending in a regnal
+#: ordinal, `2世`. The CJK emitter read the trailing generation kanji as Han, classified the
+#: person as Sinosphere, and overwrote a kana label this account never wrote. The ordinal strip
+#: in the kanji test now handles that shape -- and this list exists because a heuristic that has
+#: already destroyed one item's label does not get a second chance at that item.
+#:
+#: Read by three ends, because a rule enforced at one is not enforced:
+#:   scripts/build-garborg-day.py      -- never emits a line whose subject is here
+#:   scripts/check-batch-locality.py   -- CI fails if one reaches a batch anyway
+#:   scripts/wikidata-edit-run.py      -- the sender refuses it hours later
+NEVER_EDIT = frozenset({"Q347480"})

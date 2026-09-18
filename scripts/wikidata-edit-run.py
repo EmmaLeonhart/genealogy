@@ -681,8 +681,14 @@ def _refuse_outside_the_universe(edits, path):
               f"present but empty, recompose before sending.")
         return []
     kept, refused = [], []
+    never = set(wikidata_lockout.NEVER_EDIT)
     for e in edits:
         qid = e.get("qid")
+        if qid and qid in never:
+            # ⛔ Named items an edit of ours already damaged. Never again, whatever else says.
+            print(f"  REFUSED {qid}: scripts/wikidata_lockout.NEVER_EDIT")
+            refused.append(qid)
+            continue
         if e.get("kind") != "create" and qid and qid not in allowed:
             refused.append(qid)
         else:
