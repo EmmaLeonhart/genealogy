@@ -6181,9 +6181,6 @@ def main():
             print(f"  entry point LIVE  {qid} {label}")
         for qid, label, when in pending_entry_points():
             print(f"  entry point PENDING {qid} {label} — switches on {when}")
-        for gid, label, when in unresolved_entry_points():
-            print(f"  entry point UNRESOLVED geni:{gid} {label} — dated {when}, but we hold no "
-                  f"QID for them, so they cannot be a root until the correspondence lands")
         if not ring_seeds:
             sys.exit(f"no ledger person is in the group reachable from {ARNE_QID}/{BUREUS_QID} "
                      f"— that is a broken join over relations.tsv/garborg-live-values.tsv, not "

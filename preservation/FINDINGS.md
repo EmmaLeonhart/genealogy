@@ -48,3 +48,54 @@ a graph. What this file establishes is that the material exists and where it liv
 
 ⛔ **THE XREFS HERE ARE NOT GENI IDS.** Nothing in `preservation/` is corpus. It must not be merged
 into the synoptic tree on the assumption that its ids join.
+
+## How the people connect into it
+
+`Hethel Pedigree.ged` is **one tree**: 29,559 of its 31,320 people are in a single component,
+94.4%, over 15,748 families. Every target family is inside it — Pfinzing 14, Reuss 13, Lusignan
+31 of 32, Ibelin 8, Bagration 2, Flemming 1.
+
+### Reuss reaches Bagration in 4 hops, and nothing in the path is invented
+
+    Princess Augusta Reuss-Köstritz
+    Duchess Marie of Mecklenburg-Schwerin
+    Cyril Vladimirovich, Grand Duke of Russia
+    Grand Duke Vladimir Kirillovich of Russia
+    Princess Leonida Bagration of Mukhrani
+
+This is the Russian route stated as the hypothesis — *"connection to like Russian nobility.
+Either way, that would get us to the Georgian royal family"* — and it is documented royalty the
+whole way.
+
+### Pfinzing reaches Lusignan in 25 hops, through the Norwegian farm lines
+
+    Pfinzing von Henfenfeld -> Geuschmidt -> Baron Henning von Rømer -> Ølver and Ingrid Rømer
+      -> Tenga -> Underberge (seven generations of Tore) -> Gjesteland -> Osaland -> Kjosavik
+      -> Foss-Vatne -> Borsheim Lye -> Vestly -> Orre -> Høyland
+      -> Lejon / Bjälbo -> Canute Duke of Estonia -> Valdemar II of Denmark -> Welf
+      -> Plantagenet -> Hugh XI of Lusignan, Count of La Marche
+
+**That middle stretch is the account owner's own ancestry.** `Borsheim`, `Rømer` and `Underberge`
+are the same names the `exports/tiny-paths/` chains run through, and all of them are already in
+the Geni corpus in quantity:
+
+    Borsheim   57,155 name lines      Hoknes      11,094
+    Underberge    489                 Gjesteland     338
+    Rømer         305                 Tenga          130
+    Osaland       121
+
+⛔ **SO THE JOIN IS BY THOSE PEOPLE, NOT BY ID.** The file carries `RIN MH:I3` and `_UID` and **no
+Geni ids at all**, so there is no exact key — `CLAUDE.md` § *Merging is an exact join, never fuzzy
+name matching* means this tree cannot simply be merged. The Norwegian farm people are where the
+two trees touch, and they are the ones to identify by hand.
+
+### ⛔ AND ONE ROUTE MUST NOT BE TRUSTED
+
+Pfinzing reaches Bagration in 35 hops, but the path runs through
+`Hethelo I (Carlos Hethelo Diaz Trones) — 2000th Kroll (arbitrary number until it can actually be
+calculated)` and on through the Safavids. That is an explicit placeholder. The same file carries
+`Audumbla I` with `DATE 1345294336 BC` and a `_MARNM` of `4th Kroll consort`.
+
+**This is a descent-from-antiquity PROJECT tree and it contains speculative and mythological
+connector nodes.** The Reuss route above needs none of them; the Pfinzing-to-Bagration route
+depends on one. Treat presence in this file as a lead, never as attestation.
