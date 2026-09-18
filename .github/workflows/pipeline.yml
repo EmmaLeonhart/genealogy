@@ -500,7 +500,13 @@ jobs:
       - name: The batch may not touch anything outside the universe
         env:
           PYTHONPATH: src
-        run: python -m pytest tests/test_batch_locality.py -q
+        # ⛔ STDLIB ONLY. The first version of this step ran pytest and failed with
+        # `No module named pytest` on run 35329948498 -- this workflow installs nothing.
+        # It failed CLOSED, which is right, but it had checked nothing: a gate that cannot
+        # run is not a gate, and a red tick nobody can read as evidence is worse than none.
+        # tests/test_batch_locality.py calls the same functions, so there is one
+        # implementation and two callers.
+        run: python scripts/check-batch-locality.py
 
       - name: Commit the rebuilt batch
         id: commit
