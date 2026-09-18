@@ -98,7 +98,45 @@ def offenders(path, allowed, kanji):
     return non_local, on_kanji, never
 
 
+def strip(path, allowed, kanji) -> int:
+    """Delete the offending lines from `path` in place. Returns how many went.
+
+    ⛔ **THE COMPOSER'S GATE CANNOT SEE THE GROWTH PASSES, AND THAT IS WHY THIS EXISTS.**
+    `build-garborg-day.refuse_non_local` runs over the assembled file and is correct at the
+    moment it runs -- but `pipeline.yml` then `cat`s three universe-growth passes onto all three
+    day files afterwards, ungated. On run 35398258982 that put 7 items past the gate and the
+    locality CHECK then failed the whole run, so the batch was composed, refused and thrown
+    away, every single day.
+
+    Checking after the last append is not enough: a check can only fail the run, and failing the
+    run is what has kept the composed batch from ever landing. So the same rule is applied as a
+    FILTER at the same point, and the check that follows it then passes on merit.
+
+    `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD* -- one rule, in one file, with the
+    check and the filter reading it together.
+    """
+    lines = path.read_text(encoding="utf-8").split(chr(10))
+    keep, dropped = [], []
+    for line in lines:
+        m = SUBJECT.match(line)
+        k = LABEL_EDIT.match(line)
+        if m and (m.group(1) not in allowed
+                  or m.group(1) in wikidata_lockout.NEVER_EDIT):
+            dropped.append(m.group(1)); continue
+        if k and k.group(1) in kanji:
+            dropped.append(k.group(1)); continue
+        keep.append(line)
+    if dropped:
+        path.write_text(chr(10).join(keep), encoding="utf-8")
+        names = sorted(set(dropped))
+        print("%s: STRIPPED %d line(s) on %d item(s): %s%s"
+              % (path.name, len(dropped), len(names), ", ".join(names[:8]),
+                 " ..." if len(names) > 8 else ""))
+    return len(dropped)
+
+
 def main() -> int:
+    fix = "--fix" in sys.argv
     allowed = universe()
     if allowed is None:
         print("REFUSING TO PASS: out/wikidata/edit-universe.json is missing or empty, so "
@@ -111,6 +149,8 @@ def main() -> int:
         if not path.exists():
             print("%-44s not built, skipped" % rel)
             continue
+        if fix:
+            strip(path, allowed, kanji)
         non_local, on_kanji, never = offenders(path, allowed, kanji)
         if non_local:
             bad = 1
