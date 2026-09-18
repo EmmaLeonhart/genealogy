@@ -141,3 +141,51 @@ Elisabeth Pfinzing von Henfenfeld.
 `A few generations`, `Sophia II — 2000th Kroll` and `Several generations Diaz`. The SHORT way into
 the account owner's own line is filler; the LONG way, through Denmark and Sweden above, is not.
 **Where a short path and a long path disagree, prefer the one with no placeholder in it.**
+
+## Paths from Eric Borsheim
+
+Asked for directly. Computed twice each: the plain shortest path, and the shortest path that
+**excludes every placeholder node**. `2,570 of the 31,320 people in this file match a placeholder
+pattern` — 8% of the tree — so the two answers differ sharply and only the second one means
+anything.
+
+| target | shortest | avoiding placeholders |
+| --- | --- | --- |
+| Cyprus (Lusignan / of Cyprus) | 18 hops, **through Hethelo** | **35 hops** |
+| Reuss (the 4 real ones) | 15 hops, **through Hethelo and "A few generations"** | **44 hops** |
+| Pfinzing von Henfenfeld | 25 hops | **25 hops — identical, needs no placeholder** |
+
+Both junk routes leave by the same door: `Eric Borsheim -> Helen Frisk -> Elly Olivia Andersson ->
+Carl Andersson -> Several generations Diaz -> Hethelo I`. That is why Cyprus and Reuss *looked*
+closer than Pfinzing.
+
+### ⛔ THE UNDERBERGE SPINE CARRIES ALL THREE
+
+Every clean path runs the same first eighteen steps:
+
+    Eric -> Richard -> Randolph -> Reinhert -> Rasmus Paulson -> Paul Pederson Borsheim
+      -> Berta Karlsdottir Myklebost -> Gunhild Rasmusdotter Foss-Vatne
+      -> Berit Endresdotter Kjosavik -> Endre Toreson Osaland -> Tore Endreson Gjesteland
+      -> Endre Toreson Osaland Gjesteland
+      -> Tore Toreson VII, Tore Toresen VI, Tore Toresen V, Tore Gardson IV,
+         Gard Toreson II, Tore Toreson III  [Underberge]
+
+and only then diverges:
+
+* **Pfinzing** — Ragnhild Rømer, Brynhild Tenga, Ingrid Rømer, Ølver Rømer, Henning von Rømer,
+  Margaretha and Heinrich Geuschmidt, Elisabeth Pfinzing von Henfenfeld.
+* **Cyprus** — Tore Gardson Underberge (Gard), Ramborg Knutsdatter Lejon, Knut Algotsson Lejon,
+  Algot Bryniolfsson, Ingegerd Svantepolksdatter Bjälbo, Svantepolk Knutsson, Canute Duke of
+  Estonia, Valdemar II of Denmark, Sophia of Minsk, Helena of Denmark, William of Winchester
+  Welf, Matilda and Henry II and John Lackland Plantagenet, Isabella of Angoulême, Alice of
+  Courtenay, Hugh XI of Lusignan.
+* **Reuss** — as Cyprus to Helena of Denmark, then Otto I of Brunswick-Lüneburg, Adelheid of
+  Brunswick-Lüneburg, Adelheid of Hesse, Elisabeth of Henneberg-Schleusingen, Frederick V Burgrave
+  of Nuremberg, Frederick I and Albrecht III of Brandenburg, Frederick I of Brandenburg-Ansbach,
+  Albert and Albert Frederick of Prussia, Magdalene Sibylle of Prussia, Marie Elisabeth of Saxony,
+  Magdalene Sibylle of Holstein-Gottorp, Christine of Mecklenburg-Güstrow, Ferdinande Henriette of
+  Stolberg-Gedern, Karoline Ernestine of Erbach-Schönberg, Heinrich XXIV of Reuss-Ebersdorf.
+
+**So `Underberge` is the junction, and the seven generations of Tore are what everything real
+depends on.** That is where the exports should be aimed and where the identification work is worth
+doing, because a break there breaks all three routes at once.
