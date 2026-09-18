@@ -153,6 +153,16 @@ PAIRS = {
     # date already past. A future date in that file means the two-bucket model has drifted back.
     "6000000081001962237": "Q181677",   # George R.R. Martin
 
+    # **Kristine Trondsdatter Benkestok, 2026-09-17.** `Q141493463`, b. 1530 d. 1572, father
+    # `Q7845461`, Geni id off her own `P2600`. Norwegian noble family.
+    #
+    # ⛔ **SHE IS IN BOTH BUCKETS ON PURPOSE.** Ruled directly: *"just put her into both"*. She is
+    # also a live row in `reports/entry-points.tsv` dated today, so she is an entry point NOW and
+    # is in this file as well. An earlier version took her out of here on the grounds that a
+    # person belongs to exactly one bucket -- that rule was invented here and is not one.
+    # Membership of both is harmless: entry points are a set and the earlier date wins.
+    "4976573922110117540": "Q141493463",  # Kristine Trondsdatter Benkestok
+
     "6000000001835522164": "Q11596350",   # 稚武彦命 Wakatakehiko
     "6000000001844033355": "Q11078587",   # 播磨稲日大郎姫 Harima no Inabi, his daughter
     "6000000002039751362": "Q24890131",   # 物部伊莒弗 Mononobe no Ikofutsu
