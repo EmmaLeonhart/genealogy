@@ -1781,8 +1781,11 @@ def not_a_name(token: str) -> bool:
         # `de Castilla y León`, and `e` does the same to the Portuguese and Italian forms.
         # The connector is the JOIN, not a part of the name, so it is skipped exactly as the
         # joiner treated it. Every other part is still judged in full.
-        return any(not_a_name(part) for part in parts
-                   if part.strip(".,").casefold() not in SURN_CONNECTORS)
+        judged = [part for part in parts
+                  if part.strip(".,").casefold() not in SURN_CONNECTORS]
+        if not judged:
+            return True                              # `y e` joins nothing to nothing
+        return any(not_a_name(part) for part in judged)
     for i, ch in enumerate(t):
         # A COMBINING MARK IS PART OF THE LETTER IT SITS ON, and NFC does not always fold it in.
         # Latin and Cyrillic compose, so `A`+ring really does become `Å` -- but Arabic harakat
