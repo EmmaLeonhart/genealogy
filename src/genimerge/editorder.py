@@ -87,18 +87,42 @@ def runnable_order(edits: Iterable[dict], *, seed: int | None = None,
     rng = random.Random(seed)
     out: list[dict] = []
     placed = 0
-    while ready:
-        # Random index, swapped with the last element: O(1) removal, and the same
-        # uniform choice a scan-and-pick would have made.
-        i = rng.randrange(len(ready))
-        ready[i], ready[-1] = ready[-1], ready[i]
-        chosen = ready.pop()
+    # ⛔ **WHAT AN EDIT UNBLOCKS RUNS NEXT, NOT WHENEVER THE DICE SAY.** Ruled 2026-09-18:
+    # *"Whenever you create an individual or an item or whatever, it's always supposed to be
+    # linked immediately after its creation."*
+    #
+    # A `CREATE` fuses with its `LAST`-SUBJECT lines already, but a line whose subject is a QID
+    # and whose value is `LAST` -- `Q... P40 LAST`, an existing person pointing at the new one --
+    # is its own edit object carrying `requires`. Dropping it back into the random pool let it
+    # land arbitrarily later, so the run emitted a block of creations and linked them afterwards.
+    # Measured on the 18:57 burst: 11 `wbeditentity-create-item` interleaved with only 11
+    # `wbsetclaim`, creations running two and three deep before a link followed.
+    #
+    # **A new item with nothing pointing at it is what gets an account flagged**, and the gap is
+    # the whole risk: the item is live and orphaned for as long as the ordering leaves it that
+    # way. Randomness was chosen because *"nothing about the batches implies an order beyond
+    # `requires`"* -- but this is an order the batches DO imply, written down in
+    # docs/rules/wikidata-editing.md, and it was simply not being read.
+    #
+    # `urgent` is FIFO so several links behind one create keep the order they were written in,
+    # and the random pool still governs everything genuinely independent.
+    from collections import deque
+    urgent: deque = deque()
+    while ready or urgent:
+        if urgent:
+            chosen = urgent.popleft()
+        else:
+            # Random index, swapped with the last element: O(1) removal, and the same
+            # uniform choice a scan-and-pick would have made.
+            i = rng.randrange(len(ready))
+            ready[i], ready[-1] = ready[-1], ready[i]
+            chosen = ready.pop()
         out.append(chosen)
         placed += 1
         for waiter in waiting.pop(chosen.get("id"), ()):
             outstanding[id(waiter)] -= 1
             if outstanding[id(waiter)] == 0:
-                ready.append(waiter)
+                urgent.append(waiter)
 
     if placed != len(pending):
         stuck = [e for e in pending if outstanding[id(e)] > 0]
