@@ -261,7 +261,7 @@ step link rather than descend.
 that profile"* first.
 
 
-## ⛔ COMMANDED FOREST EXPORTS, 2026-09-17 — EXHAUSTING ONE CLUSTER
+## ⛔ COMMANDED EXPORTS, 2026-09-17 — EXHAUSTING ONE CLUSTER
 
 **This is not a pile of one-off exports and must not be read as one.** Ruled 2026-09-17:
 *"we are trying to dig in on a specific cluster to make sure we have completely exhausted it"*.
@@ -269,49 +269,90 @@ that profile"* first.
 The cluster is the **Pomeranian-Polish one the tree already touches** — von Güntersberg /
 Kaliski, von Flemming, h. Nałęcz, von dem Borne, Kruckow, Barsebek, von Luchow, von Leinegau,
 von Liesgau, von Eickstedt — the same names carried on the blood and in-law chains in
-`exports/tiny-paths/` for the Kreczmar line (Inger Axelsdatter Güntersberg, Margareta von
-Flemming, Małgorzata Szamotulska h. Nałęcz). These exports fill in AROUND a spine the corpus
-already holds.
+`exports/tiny-paths/` for the Kreczmar line. These fill in AROUND a spine the corpus already holds.
 
-⛔ **SO THE STOPPING CONDITION IS EXHAUSTION, NOT THIS LIST RUNNING OUT** — the same shape as
-`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*. When these are all
-down and merged, the question is whether the cluster still yields unexported members, not
-whether the roster below is empty.
+⛔ **EVERY PERSON GETS BOTH WALKS.** Ruled 2026-09-17: *"lets do desendants exports on all of
+the people too"*. `Forest` and `Descendants`, same roster, `job.walk` on the export job.
 
+⛔ **FORESTS FIRST, THEN DESCENDANTS**, and the order is not arbitrary: `Forest` follows spouse
+links and spreads sideways, which is what finds further CLUSTER MEMBERS; `Descendants` goes down.
+Exhausting the cluster is the goal, so the sideways walk earns its slot first. If the campaign is
+cut short, everyone has a Forest rather than half the roster having both.
 
-Given one at a time in conversation. Geni runs **one export at a time** and a submitted export
-**cannot be cancelled**, so these are strictly serial. Corpus grepped before each, per
-`CLAUDE.md` § *GREP THE CORPUS BEFORE RUNNING AN EXPORT*; the count is beside each.
+⛔ **THIS OVERRIDES `CLAUDE.md` § *`Descendants`, NOT `Forest`* FOR THIS CAMPAIGN.** That rule
+governs the Monte Carlo descendants campaign, where a `Descendants` ball is run off a CREATED
+ANCESTOR. This is a different job: a named roster, both walks, run on the people themselves.
 
-Delete a line when its zip is in `~/Downloads`. Filing the zips into `exports/` is hers.
+Geni runs **one export at a time** and a submitted export **cannot be cancelled**, so this is
+strictly serial — 54 exports at the observed 7-17 minutes each. Corpus grepped before each;
+every one below was 0 in the corpus except where noted. Delete a line when its zip is in
+`~/Downloads`. Filing the zips into `exports/` is hers.
 
-- `6000000227803027847` Adrian Falchener — 0 in corpus — SUBMITTED
+### `Forest`
+- `6000000227803027847` Adrian Falchener — SUBMITTED
 - `6000000227297029878` NN — **2 existing Forest exports**, ruled *"run it anyway"*
-- `6000000227803032874` NN van Valckenier — 0 in corpus
-- `6000000227803038858` NN Jude — 0 in corpus
-- `6000000227803060855` NN Hessøen — 0 in corpus
-- `6000000227803023862` NN Bulgerss — 0 in corpus
-- `6000000227802697066` Olof father of Kerstin — 0 in corpus
-- `6000000227803089850` Knud Porse — 0 in corpus
-- `6000000227803024957` NN Knutsdatter — 0 in corpus
-- `6000000227803077823` Jön Liljesparre — 0 in corpus
-- `6000000227803104825` Knut father of Ingegerd — 0 in corpus
-- `6000000227803023904` NN von Eickstedt — 0 in corpus
-- `6000000227803041931` NN von Flemming — 0 in corpus
-- `6000000227803089879` NN von dem Borne — 0 in corpus
-- `6000000227802432937` NN Barsebek — 0 in corpus
-- `6000000227803024982` NN Kruckow — 0 in corpus
-- `6000000227803073849` NN NN — 0 in corpus
-- `6000000227802407043` Sigmund father of Sigrid — 0 in corpus
-- `6000000227803041902` Guttorm Hundorp — 0 in corpus
-- `6000000227803024989` Svales Rein — 0 in corpus
-- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow — 0 in corpus
-- `6000000227803031913` NN h. Nałęcz — 0 in corpus
-- `6000000227803090852` NN ? — 0 in corpus
-- `6000000227803029977` NN von Luchow — 0 in corpus
-- `6000000227803068881` NN von Leinegau — 0 in corpus
-- `6000000227803060959` NN — 0 in corpus
-- `6000000227803089951` NN von Liesgau — 0 in corpus
+- `6000000227803032874` NN van Valckenier
+- `6000000227803038858` NN Jude
+- `6000000227803060855` NN Hessøen
+- `6000000227803023862` NN Bulgerss
+- `6000000227802697066` Olof father of Kerstin
+- `6000000227803089850` Knud Porse
+- `6000000227803024957` NN Knutsdatter
+- `6000000227803077823` Jön Liljesparre
+- `6000000227803104825` Knut father of Ingegerd
+- `6000000227803023904` NN von Eickstedt
+- `6000000227803041931` NN von Flemming
+- `6000000227803089879` NN von dem Borne
+- `6000000227802432937` NN Barsebek
+- `6000000227803024982` NN Kruckow
+- `6000000227803073849` NN NN
+- `6000000227802407043` Sigmund father of Sigrid
+- `6000000227803041902` Guttorm Hundorp
+- `6000000227803024989` Svales Rein
+- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow
+- `6000000227803031913` NN h. Nałęcz
+- `6000000227803090852` NN ?
+- `6000000227803029977` NN von Luchow
+- `6000000227803068881` NN von Leinegau
+- `6000000227803060959` NN
+- `6000000227803089951` NN von Liesgau
+
+### `Descendants`
+
+⛔ **IN REVERSE ORDER OF THE `Forest` LIST ABOVE.** Ruled 2026-09-17: *"after all of the forest
+exports one by one in reverse order of them descendants exports"*. Lars father of Sigrid and
+David Fjose are at the END of this list because their Forests came FIRST — they are part of the
+roster and still owe a `Descendants` ball.
+
+- `6000000227803089951` NN von Liesgau
+- `6000000227803060959` NN
+- `6000000227803068881` NN von Leinegau
+- `6000000227803029977` NN von Luchow
+- `6000000227803090852` NN ?
+- `6000000227803031913` NN h. Nałęcz
+- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow
+- `6000000227803024989` Svales Rein
+- `6000000227803041902` Guttorm Hundorp
+- `6000000227802407043` Sigmund father of Sigrid
+- `6000000227803073849` NN NN
+- `6000000227803024982` NN Kruckow
+- `6000000227802432937` NN Barsebek
+- `6000000227803089879` NN von dem Borne
+- `6000000227803041931` NN von Flemming
+- `6000000227803023904` NN von Eickstedt
+- `6000000227803104825` Knut father of Ingegerd
+- `6000000227803077823` Jön Liljesparre
+- `6000000227803024957` NN Knutsdatter
+- `6000000227803089850` Knud Porse
+- `6000000227802697066` Olof father of Kerstin
+- `6000000227803023862` NN Bulgerss
+- `6000000227803060855` NN Hessøen
+- `6000000227803038858` NN Jude
+- `6000000227803032874` NN van Valckenier
+- `6000000227297029878` NN
+- `6000000227803027847` Adrian Falchener
+- `6000000227803061825` David Fjose
+- `6000000227802431855` Lars father of Sigrid
 
 ## Forest exports
 
