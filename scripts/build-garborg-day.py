@@ -930,6 +930,21 @@ PRIORITY_ANCESTOR_SEEDS = (
     "6000000000757999620",      # Inger Axelsdatter Guntersberg, Q141493478
     "6000000002621242041",      # Olfvir / Olver Romer, Q141450322
     "6000000227289508960",      # the husk the ledger still pairs with Q141450322
+    # ⛔ **PICKED OUT BY HAND OFF THE HETHEL GAPS PAGE, 2026-09-18**: *"these are the most
+    # interesting people"*. Both are already in the synoptic tree, so the ring grows their
+    # ancestry the same way it grows the two above -- nothing had to be created first.
+    #
+    # Their Hethel ancestry is why they are here, and it is clean -- no `Hethelo`, no `Kroll`,
+    # no `Several generations` anywhere in either:
+    #   Gellone    71 ancestors over 9 generations. Carolingian and Merovingian on one side,
+    #              and on the other the Babylonian exilarchs -- Natronai, Nehemiah Bar Hanini,
+    #              Bustanai -- married into Sassanid Persia through Dara-Izdundad. That is the
+    #              descent from antiquity this campaign is for.
+    #   Torgeir    11 ancestors over 9 generations, the Icelandic Haukdaelir: Tume Kolbeinsson,
+    #              Kolbein Arnorsson, Lawspeaker Gizur Hallsson, Bishop Isleiv Gizursson,
+    #              Teit Ketilbjornsson.
+    "6000000006128315972",      # Saint William of Gellone / Sant Guilhem de Gellona, 755-812
+    "6000000015677500609",      # Torgeir Ingemundsson, b. 1200
 )
 
 
