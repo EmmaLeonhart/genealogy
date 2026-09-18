@@ -1058,8 +1058,24 @@ def _missing_cjk_labels(our_items, labels, table, live_labels):
         # Overwriting a CJK value is what `_label_corrections` already does whenever a Latin
         # correction fires; this reaches the same items when the Latin label needs nothing.
         # `CJK_LABELS_NOT_OURS` is the guard for a value set by hand.
+        # ⛔ **ABSENT ONLY. THIS OVERWROTE KANJI WITH KATAKANA AND HAD TO BE UNDONE BY HAND.**
+        # Reported 2026-09-18: *"non-local Japanese label application that overwrote kanji"*.
+        # This line used to fire wherever the live value DIFFERED from ours, which on a Japanese
+        # person means replacing a real kanji name with a katakana transliteration of the LATIN
+        # spelling. Nine went out at 07:31 -- `Q135525010` カンポ・モトカトス, `Q135579354`
+        # トスサヒメ・ノ・ミコト and seven more -- and were reverted one by one at 07:32. **81 more
+        # were sitting in the batch behind them**, 90 in each of the three day files.
+        #
+        # The docstring above this function already says **PURELY ADDITIVE, it never rewrites a
+        # label that exists**, and it was true when written; a later edit changed the test to a
+        # disagreement check and left the docstring standing. `CLAUDE.md` says it twice over:
+        # § *A title inside a label takes the NATIVE form in CJK, never a transliteration*, and
+        # § *Wikidata's label beats ours. An existing `mul` is not ours to overwrite.*
+        #
+        # So: emit a language only where Wikidata holds NOTHING for it. A disagreement with an
+        # existing CJK label is a different question and does not belong in an additive pass.
         todo = [c for c in ("ja", "zh", "ko")
-                if (live_labels.get((qid, c)) or "") != value[c]]
+                if value[c] and not (live_labels.get((qid, c)) or "").strip()]
         if not todo:
             continue
         absent = [c for c in todo if not live_labels.get((qid, c))]
