@@ -9,14 +9,28 @@
  * which is newest-first and carries an `Added on` column reading `Today` / `Yesterday`.
  * Page until a page holds no `Today` and the set is complete rather than sampled.
  *
- * ⛔ A FOREST SUBMIT RETURNS NO TASK ID AND SHOWS NO DASHBOARD ROW WHILE IT BUILDS.
- * Measured 2026-09-18 on NN Onarheim and Turid Gissursdatter: the submit renders
- * "<name>'s GEDCOM File is Being Created", `location.search` carries no `task_id`, the
- * page HTML holds none either, and https://www.geni.com/gedcom never grew a row for
- * either one. The export form itself says a Forest "may take several days to complete"
- * against the 6-15 minutes a Descendants ball takes. So the only confirmation a submit
- * gets is THE PERSON'S OWN NAME in that heading, which is what `building` checks, and
- * collection happens later off the dashboard when rows appear.
+ * ⛔ **REFUTED SAME DAY: "A FOREST SHOWS NO ROW WHILE IT BUILDS" WAS AN INVENTION.**
+ * This file first claimed that a Forest submit legitimately returns no task id and no
+ * row on https://www.geni.com/gedcom until it completes. That was wrong, and the
+ * disproof was already on the page it was written from: NN de Secadura Alvarado
+ * appeared on the dashboard at 2:17 PM WHILE STILL BUILDING. **A row appears when a
+ * request is ACCEPTED. No row means the request was refused.**
+ *
+ * Eleven submits between 15:56 and 16:17 produced no row between them -- NN Onarheim,
+ * Turid Gissursdatter, Alvhild Tumesdatter, Ingemund Grimsson's Forest, Ancestors and
+ * Descendants, NN NN, Ragnvald, Ole Motland, Helga Vestre Bore, Rasmus Kjosavik. Every
+ * one rendered "<their own name>'s GEDCOM File is Being Created" and every one was void.
+ *
+ * ⛔ **SO THE HEADING IS NOT A CONFIRMATION, AND NEITHER IS THE PERSON'S NAME IN IT.**
+ * queue.md said this already: *"Geni refuses a second export while one is generating and
+ * the refusal appears as a banner on a page that ALSO still reads 'Being Created', so it
+ * looks like success."* The banner is the pink
+ * "Your previous request had an error which we are investigating", which was read here
+ * as a stale site notice for an entire afternoon.
+ *
+ * **THE ONLY INSTRUMENT IS A NEW ROW ON /gedcom**, checked after the submit. One export
+ * at a time is Geni's limit and this script cannot pace around it: a queue of submits
+ * against a held slot is a queue of refusals.
  *
  * ⛔ AND THE STAGGER IS THE ONLY THROTTLE. § PACE IT -- 500+ back-to-back reads got the
  * account CAPTCHAd on 2026-09-12. One submit a minute.
