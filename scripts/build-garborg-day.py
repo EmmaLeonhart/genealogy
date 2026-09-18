@@ -8037,7 +8037,14 @@ def main():
             print(f"prepended {sum(1 for l in body.splitlines() if l.strip() and not l.startswith('#'))}"
                   f" name-item lines")
     head = ident_block + name_block
-    out.write_text(NEWLINE.join(head + lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
+    # ⛔ **THE GATE RUNS ON WHAT IS WRITTEN, INCLUDING THE HEAD.** Filtering `lines` alone left 11
+    # non-local `Qperson P734 LAST` bearer links in the name-items block, which is prepended here
+    # as `head` and never passed through the gate -- the same mistake as filtering `derived_labels`
+    # alone and leaving `P22`/`P40`/`P2600` behind. Gate the assembled file, once, at the only
+    # place that can see all of it.
+    _final_lines = refuse_non_local(head + lines,
+                                    set(our_wikidata_subgraph) | set(one_step_qids))
+    out.write_text(NEWLINE.join(_final_lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 
     cf = ROOT / "reports" / "garborg-carry-forward.tsv"
