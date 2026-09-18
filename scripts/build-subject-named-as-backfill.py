@@ -72,6 +72,7 @@ Writes `reports/wikidata-subject-named-as.qs`.
 from __future__ import annotations
 
 import csv
+import json
 import io
 import sys
 from pathlib import Path
@@ -141,6 +142,29 @@ def carries_marker(name: str) -> bool:
     words = {w.strip("().,[]") for w in low.split()}
     return bool(words & {"nn", "private", "unknown", "ukjent", "okänd", "n.n.", "n.n"})
 
+
+
+#: ⛔ **THE UNIVERSE IS `out/wikidata/edit-universe.json`, NOT THIS SCRIPT'S OWN IDEA OF ONE.**
+#: On 2026-09-18 this pass appended 21 lines to the auto half and 17 of them were on items
+#: neither in the universe nor one step beyond it. It had been scoping itself to
+#: `reports/garborg-qids.tsv` -- the account's OWN items, 4,883 of them, of which 1,489 are
+#: outside the universe entirely. Owning an item is not the same as the item being in the
+#: universe, and `CLAUDE.md` settled that on 2026-09-17: *"why the fuck were geni ids added to
+#: so many people who are not 1 hop away from the universe"*, and of the old ledger-wide
+#: sentence, *"claude.md is wrong"*.
+#:
+#: The composer writes that file, the sender reads it and the CI gate enforces it, so a pass
+#: that scopes itself any other way is a fourth emitter disagreeing with the other three.
+#: `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD*.
+EDIT_UNIVERSE = REPO / "out" / "wikidata" / "edit-universe.json"
+
+
+def edit_universe():
+    """`(universe, ring)` as the composer wrote them. Absent file -> empty, which emits nothing."""
+    if not EDIT_UNIVERSE.exists():
+        return set(), set()
+    d = json.loads(EDIT_UNIVERSE.read_text(encoding="utf-8"))
+    return set(d.get("universe") or ()), set(d.get("one_step") or ())
 
 def universe():
     """`{qid: geni_id}` for the account's own items."""

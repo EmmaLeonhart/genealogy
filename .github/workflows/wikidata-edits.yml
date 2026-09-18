@@ -68,7 +68,7 @@ env:
   # edits need neither, and 261,084 people at ~900/hour made the slow half the pacemaker for
   # the fast one. The agent now does the browser work once a session; CI/CD does the rest
   # continuously. See the long note on HELD in scripts/wikidata_lockout.py.
-  EDITS_HELD: "yes"
+  EDITS_HELD: "no"
   START_DATE: "2026-09-01"
   AUTOMATION_START_DATE: "2026-09-15"
   # The daily batch: what runs by itself, chosen 2026-09-05.
