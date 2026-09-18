@@ -324,22 +324,52 @@ that mistake: measuring existing connectivity treats the tree as fixed, and in a
 almost any two noble lines are reachable at some hop count, so a reachability number says nearly
 nothing. The exports are what create the edges.
 
-## ⛔ TOP PRIORITY EXPORT — Olfvir Ølver Rømer, from 00:30 on 2026-09-18
+## ⛔ TOP PRIORITY EXPORTS, from 00:30 on 2026-09-18 — run top to bottom, one at a time
 
-Ahead of the commanded roster below. `6000000227289508960` —
-<https://www.geni.com/people/Olfvir-%C3%98lver-R%C3%B8mer/6000000227289508960>
+Ahead of the commanded roster below. Geni allows one export at a time, so this is a strict
+sequence, not a set.
 
-**`Ancestors` 5000 first, then `Forest` 5000 on the same person.** Both walks are named
-deliberately and both are wanted; this overrides `docs/export-seed-rules.md` § *the export is
-always `Forest`* and `CLAUDE.md` § *`Descendants`, NOT `Forest`*.
+- **Bothilde Sigurdsdatter Onarheim** `6000000227805045863` — `Forest`. *"for merge related stuff
+  changing"*, so it is a **privileged** export and is filed into `exports/post-merge/`.
+- **Olfvir (Ølver) Henningsson Rømer** `6000000002621242041` — `Forest`, then `Ancestors`, then
+  `Descendants`. All three, on that id.
+- **Erik Ims** `6000000227805012893` — `Forest`, then `Descendants`.
+  <https://www.geni.com/people/Erik-Ims/6000000227805012893>
 
-**⛔ THE 00:30 TIME IS THE POINT, NOT A CONVENIENCE.** A lot of new ancestors were connected to
-this person shortly before midnight on 2026-09-17, and the wait is what lets those connections
-finish before the export reads them. Running it early reads a half-connected ancestry and the
-whole job is wasted.
+### ⛔ `6000000227289508960` IS A MERGED-AWAY HUSK. DO NOT SEED OFF IT
 
-A one-shot local cron was set for it, and **a cron dies with the session**, which is why it is
-written down here as well. If the session ended before 00:30, this item is the instruction.
+The link originally given for Olfvir was `6000000227289508960`, and it **redirects** to
+`6000000002621242041`. That merge is what connected the new ancestors — it is the event the
+00:30 wait was for, not a problem to route around.
+
+The husk is still half-alive and that is the trap: its export form loads, titled
+**"GEDCOM Export for (No Name)"**, and it **accepts a submit**. The task it returns —
+`6000000227805163844`, `Ancestors` — then errors on every single reload. So a submit that looks
+like it worked produces nothing, and nothing says so.
+
+⛔ **AND THE FORM PAGE REFUSING IS NOT THE EXPORT REFUSING.**
+`https://www.geni.com/gedcom/export/6000000002621242041` redirects to `/error` with *"You are
+not allowed to export that profile"*, and that was read here as the person being unexportable.
+It is not the same thing: the submit is a **plain GET to a different endpoint**, which the
+button merely builds —
+
+    https://www.geni.com/gedcom/request_export?id=<geni id>&walk=Forest&max_profiles=5000
+      &destination=Ftb80&name_format=0&locale=en-US&include_bom=1
+
+`walk` is `Forest` / `Ancestors` / `Descendants` / `BloodTree`. Navigate to that URL directly;
+there is no button to hunt and no form to fill. `CLAUDE.md` § *NEVER SAY YOU CANNOT DO SOMETHING
+YOU HAVE NOT TRIED* — the form page was tried, the endpoint was not.
+
+⛔ **AND DO NOT INVENT A DESCENDANT TO WALK UP FROM.** `docs/export-seed-rules.md` only ever
+creates **parents**, because a parent is implied to have existed and a child is not. Creating a
+child of a real historical person to seed an `Ancestors` walk asserts something false about the
+tree, and it was offered here and refused.
+
+**A clicked submit is confirmed by `location.href` carrying `request_export` or
+`/gedcom/download?task_id=`, never by the page text** — `get_page_text` returns stale content on
+this site throughout. And coordinate clicks were landing off-target all night because
+`getBoundingClientRect` reports in a 1536-wide viewport while the click frame is 1568 wide; that
+is what looked like "the first click is always swallowed".
 
 ## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
 
