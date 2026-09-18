@@ -387,19 +387,6 @@ The Forest order runs up the generations; the reverse runs back down them.
 One at a time, cannot be cancelled. Delete a line when its zip is in `~/Downloads`.
 
 ### `Forest`
-- `6000000227802432937` NN Barsebek
-- `6000000227803024982` NN Kruckow
-- `6000000227803073849` NN NN
-- `6000000227802407043` Sigmund father of Sigrid
-- `6000000227803041902` Guttorm Hundorp
-- `6000000227803024989` Svales Rein
-- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow
-- `6000000227803031913` NN h. Nałęcz
-- `6000000227803090852` NN ?
-- `6000000227803029977` NN von Luchow
-- `6000000227803068881` NN von Leinegau
-- `6000000227803060959` NN
-- `6000000227803089951` NN von Liesgau
 
 ### `Descendants`
 - `6000000227803089951` NN von Liesgau
