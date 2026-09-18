@@ -189,3 +189,51 @@ and only then diverges:
 **So `Underberge` is the junction, and the seven generations of Tore are what everything real
 depends on.** That is where the exports should be aimed and where the identification work is worth
 doing, because a break there breaks all three routes at once.
+
+## What Hethel adds to Richard Borsheim's ancestry
+
+Asked directly: does Richard have ancestors in this file he does not have in the others,
+excluding the Hethelo line.
+
+**Ancestors only** — walked upward through `FAMC` to parents, not the undirected kinship graph —
+and every branch reached *through* a placeholder is cut at the boundary.
+
+    2,131 ancestor records, 1,834 distinct names, excluding anything through a placeholder
+    9,604 if placeholders are allowed
+
+**So the Hethelo line accounts for roughly 7,500 of his apparent ancestors, over three quarters
+of the depth.** 51 placeholder parents sit on the boundary where the real tree stops.
+
+### Coverage by the other archive files
+
+    1,831 / 1,834   a.ged                  <- a near-copy of Hethel; comparing to it is circular
+    1,025 / 1,834   Mannus.ged.doc
+    1,025 / 1,834   Theogrammaticus.ged
+      574 / 1,834   Perkwunos r.ged
+      222 / 1,834   Gaiad.ged
+       16 / 1,834   DescentFromAntiquity 16-36-40
+        0 / 1,834   ITIS.ged, American Presidents.ged, Family Historian Sample Project.ged
+
+**Excluding `a.ged`: 684 of his ancestors appear nowhere else.** The list is
+`preservation/richard-unique-ancestors.txt`.
+
+### ⛔ BUT ONLY ABOUT 196 OF THE 684 ARE PLAUSIBLE PEOPLE
+
+    196   Nordic farm / patronymic
+    113   biblical / antiquity
+    375   other, overwhelmingly more antiquity
+
+The Nordic 196 are the real gain and they are Rogaland: Peder Monsen Engelsvåg (Klepp), Tore
+Karlson Kalberg (Time), Anders Anderson Auglend, Asbjørn Sigvardson Todneim, Anna Andersdtr.
+Austrått, Anfinn Halvardsson, Omund Nilsson Reime, Rasmus Jonson Nærland, Samuel Pederson Vatne,
+Sven Torson Rott, Tørres Tørresen Grannes, Helga Vestre Bore, Gjermund Hansson Tu, Laurit Torland.
+
+The remainder is descent-from-antiquity scaffolding and it does not hide what it is: Alulim (the
+first king of Sumer), Mattathias Maccabeus, Isaiah the Exilarch, Mar Abba Abra Exilarch — and
+records that are not names at all but **haplogroups**: `Abus A0*`, `Adataneses N`, `Noam L3`,
+`Barakil CT`, `NO Southeast Asia or Southern China [1]`.
+
+**Three names are unique against the entire archive including `a.ged`**, and one of them matters:
+`Rogvolod of Polotsk` (Ragnvald, Рогволод, Рогъволодъ, gamle Ulfsson) — Polotsk is Rurikid, which
+is the Russian half of the hypothesis. The other two are `Frotmund Frimitel Ascyla` and
+`Unknown Genebald`.
