@@ -319,8 +319,7 @@ The Forest order runs up the generations; the reverse runs back down them.
 One at a time, cannot be cancelled. Delete a line when its zip is in `~/Downloads`.
 
 ### `Forest`
-- `6000000227803104825` Knut father of Ingegerd — running
-- `6000000227803023904` NN von Eickstedt
+- `6000000227803023904` NN von Eickstedt — running
 - `6000000227803041931` NN von Flemming
 - `6000000227803089879` NN von dem Borne
 - `6000000227802432937` NN Barsebek
