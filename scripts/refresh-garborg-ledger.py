@@ -266,22 +266,17 @@ def main():
         import importlib
 
         day = importlib.import_module("build-garborg-day")
+        # ⛔ **THE LEDGERS CARRY THE GENI ID THEMSELVES.** Ruled 2026-09-17: three flat TSVs of
+        # `qid`/`geni_id`, so the correspondence needs no lookup and no roster-by-roster walk.
+        # What was here before read `entry-points.tsv`, then walked every active group in
+        # `entry-point-groups.tsv` collecting pairs out of seven roster files. Those files are
+        # gone; `scripts/ledgers.py` is the one reader.
+        import ledgers
+
         geni_of = {}
-        for row in day.entry_points():
-            q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-            if q and g:
-                geni_of[q] = g
-        # **A group roster carries its own Geni id and that is the right source.** These are
-        # curated pair files -- `izumo-p2600-pairs.tsv`, `tanba-p2600-pairs.tsv` -- so the
-        # correspondence is already in them. Going to `derived-labels.csv` instead resolved only
-        # 14 of 321, because that file's `qid` column comes from a different source.
-        today = None
-        for row in day.entry_point_groups():
-            if (row.get("active_from") or "").strip() <= (today or __import__("datetime").date.today().isoformat()):
-                for q, g in day.group_pairs(row):
-                    if g and q not in geni_of:
-                        geni_of[q] = g
-        wanted = ({q for q, _ in day.active_entry_points()} | set(day.active_group_qids()))
+        for q, g in ledgers.identifications():
+            geni_of.setdefault(q, g)
+        wanted = {q for q, _ in day.active_entry_points()}
         need = wanted - set(geni_of)
         if need:
             geni_of.update(_geni_for_qids(need))

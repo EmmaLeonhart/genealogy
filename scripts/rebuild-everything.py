@@ -90,8 +90,17 @@ STEPS = [
     # read goes only once the tree route is shown to carry the same pairs.
     ("the manual correspondences as a GEDCOM",
      [sys.executable, os.path.join("scripts", "build-correspondence-gedcom.py")]),
+    # **The three identification ledgers, rendered.** Ruled 2026-09-17: three flat TSVs of
+    # qid/geni_id pairs -- entry points now, entry points on 2027-01-01, and passive
+    # identifications -- each built into a gitignored GEDCOM that joins the merge. The TSVs are
+    # the source of truth and every consumer reads them directly; this is the tree-side overlay.
+    ("the identification ledgers as GEDCOMs",
+     [sys.executable, os.path.join("scripts", "build-identification-gedcoms.py")]),
     ("merge the corpus", [sys.executable, "-m", "genimerge", "merge",
-                          "--also", os.path.join("out", "manual-parental-correspondences.ged")]),
+                          "--also", os.path.join("out", "manual-parental-correspondences.ged"),
+                          "--also", os.path.join("out", "identifications-now.ged"),
+                          "--also", os.path.join("out", "identifications-jan1.ged"),
+                          "--also", os.path.join("out", "identifications-passive.ged")]),
     # **The four family maps, so the scheduled pipeline can run without the GEDCOM.**
     # `build-garborg-day.read_tree` needs them and `out/merged.ged` is 409 MB and
     # gitignored, so a runner can never have it. Written once here, gzipped by

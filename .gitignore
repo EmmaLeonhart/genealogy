@@ -74,6 +74,17 @@ out/manual-parental-correspondences.ged
 # with the first. Same reasoning as the correspondence overlay on the line above.
 out/wikidata-tree.ged
 
+# The three identification ledgers, rendered. Ruled 2026-09-17: three flat TSVs of qid/geni_id
+# pairs -- entry points now, entry points on 2027-01-01, and passive identifications -- each
+# "built into gitignored GEDCOM files that then get merged together into the synoptic tree".
+# Named one per line, never a *.ged pattern: that pattern would swallow the corpus, and
+# CLAUDE.md's "never gitignore a .ged" is about exports/, where every .ged is committed.
+# Regenerate with scripts/build-identification-gedcoms.py; the TSVs in reports/ are tracked and
+# are the source of truth, so tracking these too would be a second copy that can disagree.
+out/identifications-now.ged
+out/identifications-jan1.ged
+out/identifications-passive.ged
+
 # Coverage measurement leftovers
 .coverage
 .coverage.*

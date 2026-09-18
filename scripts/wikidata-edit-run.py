@@ -578,7 +578,6 @@ def _gate(edits, path):
     kept = _refuse_duplicate_people(kept, path)
     kept = _refuse_unnameable_name_items(kept, path)
     kept = _refuse_outside_the_universe(kept, path)
-    kept = _refuse_pending_entry_points(kept, path)
     return kept
 
 
@@ -640,85 +639,31 @@ def _refuse_outside_the_universe(edits, path):
 
 
 
-#: Committed, so the sender can build this gate itself instead of depending on a file the
-#: composer may not have written yet.
-ENTRY_POINT_GROUPS = REPO / "reports" / "entry-point-groups.tsv"
-QID_LINKS_GEN = REPO / "scripts" / "build-qid-links-gedcom.py"
-
-
-def _pending_entry_point_qids(today=None):
-    """Every QID whose entry point has NOT switched on yet.
-
-    A bloc row in `reports/entry-point-groups.tsv` carries `active_from`; until that date the
-    people in its roster are outside the universe and nothing about them is ours to edit. The
-    `PAIRS` constant in `build-qid-links-gedcom.py` is the same thing for the gedcom's own rows.
-    """
-    import datetime as _dt
-    today = today or _dt.date.today().isoformat()
-    out = set()
-    try:
-        with ENTRY_POINT_GROUPS.open(encoding="utf-8", newline="") as fh:
-            for row in csv.DictReader(fh, delimiter="	"):
-                when = (row.get("active_from") or "").strip()
-                if not when or when <= today:
-                    continue
-                for src in (row.get("source") or "").split(","):
-                    src = src.strip()
-                    if not src or not (REPO / src).exists() or not src.endswith((".tsv", ".csv")):
-                        continue
-                    sp = REPO / src
-                    head = sp.open(encoding="utf-8").readline()
-                    dl = "	" if "	" in head else ","
-                    for r in csv.DictReader(sp.open(encoding="utf-8"), delimiter=dl):
-                        q = (r.get("qid") or "").strip()
-                        if q.startswith("Q"):
-                            out.add(q)
-    except Exception:                                    # noqa: BLE001
-        pass
-    try:
-        body = QID_LINKS_GEN.read_text(encoding="utf-8").partition("PAIRS = {")[2].partition("}")[0]
-        out.update(re.findall(r'"Q\d+"', body)[0:0] or [])
-        out.update(m for _g, m in re.findall(r'"(\d+)"\s*:\s*"(Q\d+)"', body))
-    except Exception:                                    # noqa: BLE001
-        pass
-    return out
-
-
-def _refuse_pending_entry_points(edits, path):
-    """⛔ **AN ENTRY POINT IS NOT EDITABLE BEFORE ITS DATE.**
-
-    Reported 2026-09-17 off the day's own QuickStatements: `Q198180` 顓頊, `Q29201` 黃帝,
-    `Q1147250` 少昊 and the rest of the Chinese legendary lineage were being given `P40`, `P25`
-    and `P3448` **today**, when their bloc carries `active_from 2027-01-01`. Nine edits sat on
-    such items and fifteen claims pointed at one.
-
-    `_refuse_outside_the_universe` should have caught it and could not: it reads
-    `out/wikidata/edit-universe.json`, which the COMPOSER writes, and a run whose composer has
-    not gone green since sees no file and fails open. A gate that depends on an artifact being
-    fresh is the same failure as the stale batch it was written to stop.
-
-    So this one reads only committed inputs -- `reports/entry-point-groups.tsv` and the `PAIRS`
-    constant -- and needs nothing generated. Both the subject and the VALUE are checked: linking
-    an in-universe person TO a pending entry point creates the edge early just as surely.
-    """
-    pending = _pending_entry_point_qids()
-    if not pending:
-        return edits
-    kept, refused = [], []
-    for e in edits:
-        hit = e.get("qid") in pending
-        if not hit:
-            for c in e.get("claims") or ():
-                v = c.get("value")
-                if isinstance(v, dict) and v.get("id") in pending:
-                    hit = True
-                    break
-        (refused if hit else kept).append(e)
-    if refused:
-        names = sorted({e.get("qid") for e in refused if e.get("qid")})
-        print(f"{path.name}: {len(refused)} edits REFUSED - the entry point has not switched on "
-              f"yet: " + ", ".join(names[:5]) + (" ..." if len(names) > 5 else ""))
-    return kept
+# ⛔ **THE ENTRY-POINT DATE NEVER BLOCKS AN EDIT. THAT GATE IS DELETED. Ruled 2026-09-17.**
+#
+# `_refuse_pending_entry_points` and `_pending_entry_point_qids` lived here. They read
+# `reports/entry-point-groups.tsv` and the `PAIRS` constant in `build-qid-links-gedcom.py`, and
+# refused any edit whose subject or value was an entry point whose `active_from` had not arrived.
+# Both those inputs are gone with the three-ledger change, and the rule they implemented is
+# explicitly not the rule:
+#
+#     "something can be in every single one of these buckets. If there's any kind of check that
+#      somehow blocks anything from happening in the January 1st one, it's wrong ... If any one of
+#      the January 1st one is eligible to be edited, it can have the Geni ID added to it before
+#      it's an entry point. This would basically make it so that it doesn't matter that it's an
+#      entry point at all."
+#
+# **The date governs entry-point status alone.** Being scheduled to seed the universe on
+# 2027-01-01 says nothing about whether an item may be edited today; `scripts/ledgers.py`
+# separates the two questions and `identifications()` deliberately ignores the date.
+#
+# ⛔ **SO `_refuse_outside_the_universe` ABOVE IS THE ONLY GATE LEFT, AND IT FAILS OPEN.** That is
+# worth stating plainly rather than leaving to be discovered. It was added on 2026-09-17 after a
+# batch put `P2600` on Yi Un `Q484866`, Emperor Ku `Q721756` and others; the date gate was added
+# the same day as a belt-and-braces second guard precisely because the universe gate reads
+# `out/wikidata/edit-universe.json` and returns every edit untouched when that file is absent.
+# With the date gate gone, a run whose composer has not written that file has no gate at all.
+# Making it fail CLOSED is a separate decision and is not taken here.
 
 #: The ledger of people who already have a Wikidata item.
 LEDGER = REPO / "reports" / "garborg-qids.tsv"
