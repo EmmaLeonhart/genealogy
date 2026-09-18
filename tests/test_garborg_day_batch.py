@@ -305,13 +305,16 @@ def _manual_identification_qids():
     vague title as the thing later agents abuse. It is used here for exactly what it records, a
     Geni id against a QID, and for nothing else.
     """
-    path = REPO / "reports" / "manual-identifications.csv"
+    # Ruled 2026-09-17: the hand identifications are `reports/identifications.tsv`, two columns
+    # and no verdict. The verdict filter the docstring above describes is gone with the column --
+    # a wrong pair is a deleted row now, which is the same guarantee by a simpler route.
+    path = REPO / "reports" / "identifications.tsv"
     if not path.exists():
         return set()
     out = set()
     with open(path, encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            if row.get("verdict") in ("SAME", "RIGHT") and (row.get("qid") or "").startswith("Q"):
+        for row in csv.DictReader(fh, delimiter="	"):
+            if (row.get("qid") or "").startswith("Q"):
                 out.add(row["qid"])
     return out
 

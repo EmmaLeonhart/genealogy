@@ -256,43 +256,23 @@ def ledger():
         # ids, every one an affirmation nothing acted on. `RIGHT` is the older word from before
         # the deck settled on `SAME`; the fold never learned it.
         #
-        # `build-manual-identifications.py` unions both verdicts with the pairs given
-        # directly in conversation, so there is one file to read and one place to append.
-        manual = ROOT / "reports" / "manual-identifications.csv"
-        if manual.exists():
-            with open(manual, encoding="utf-8") as f:
-                for row in csv.DictReader(f):
-                    # ⛔ HONOUR THE VERDICT COLUMN. A HAND IDENTIFICATION MUST BE RETRACTABLE.
-                    #
-                    # This read the file for its ids and ignored `verdict` entirely, so every row
-                    # was emitted whatever it said. `build-manual-identifications.py` only ever
-                    # writes `SAME`/`RIGHT`, so nothing was wrong in practice -- and that is
-                    # exactly why it was load-bearing and invisible: **there was no way to take a
-                    # hand identification back.**
-                    #
-                    # Found 2026-09-11. `Q22678387` (`NN de Courtenay`) had been identified with
-                    # Geni `6000000009305096005` on 2026-09-09 and was wrong; Emma corrected it on
-                    # Wikidata -- *"is a wrong identification I fixed it on wikidata"* -- and the
-                    # next batch would have re-emitted `P2600` and undone the correction, because
-                    # the only retraction mechanism the repo has is a verdict this reader did not
-                    # read. The retraction now lives in `reports/emma-judgments.tsv` as `WRONG`,
-                    # the regenerated CSV drops the row, and this line makes that hold even if a
-                    # non-affirmative row reaches the CSV by some other route.
-                    v = (row.get("verdict") or "").strip().upper()
-                    if v and v not in ("SAME", "RIGHT"):
-                        continue
-                    g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
-                    if g.isdigit() and q.startswith("Q"):
-                        out.setdefault(g, q)
-        judgments = ROOT / "reports" / "emma-judgments.tsv"
-        if judgments.exists() and not manual.exists():
-            with open(judgments, encoding="utf-8") as f:
-                for row in csv.DictReader(f, delimiter="	"):
-                    if row.get("verdict") not in ("SAME", "RIGHT"):
-                        continue
-                    g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
-                    if g.isdigit() and q.startswith("Q"):
-                        out.setdefault(g, q)
+        # ⛔ **ONE READER, TWO COLUMNS, NO VERDICT AND NO NOTE. Ruled 2026-09-17.**
+        #
+        # This walked `reports/manual-identifications.csv` and filtered on a `verdict` column,
+        # and `manual_p2600_lines` below filtered on a free-text `note`. Both columns are gone
+        # with the three-ledger change: *"these IDs are accepted as gospel by you. You do not
+        # question them. You do not question them. I add to them."*
+        #
+        # Retraction did not need a column. A wrong identification is a row deleted from the
+        # TSV, which is simpler than a verdict this reader had to remember to honour -- and
+        # forgetting to honour it is exactly what happened on `Q22678387` NN de Courtenay in
+        # September 2026. Note-gating is refuted outright by `CLAUDE.md` § *AN EDIT GOES ON AN
+        # ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT*, which names it as one of two
+        # over-corrections that must not return.
+        import ledgers
+
+        for q, g in ledgers.identifications():
+            out.setdefault(g, q)
     except Exception as exc:                                        # noqa: BLE001
         print(f"WARNING: emma-judgments.tsv not folded into the ledger ({exc}) -- "
               f"a person already confirmed by hand could be created a second time")
@@ -855,51 +835,31 @@ def manual_p2600_lines(priority_qids=(), subgraph=None, ring=None):
 
     Returns `(lines, checked, already_held, refused)`.
     """
-    path = ROOT / "reports" / "manual-identifications.csv"
-    if not path.exists():
-        return [], 0, 0, 0
-    # ⛔ **THE JAN-1 PAIRS ARE NOT OURS TO EMIT, AND THE FILE ALREADY SAID SO.** Reported
-    # 2026-09-17 from `Q1045160` *Xie of Shang*, which this gave a `P2600` on the morning of
-    # 2026-09-17. Its own row in the CSV reads:
-    #
-    #     Q1045160,6000000003474166572,Qì 契 5,SAME,...,"queue: Chinese gedcom entry points;
-    #     LOCAL ONLY, never emitted to Wikidata"
-    #
-    # This function read `qid` and `geni_id` and **ignored the note column entirely**, so a row
-    # that says in words that it must never be emitted was emitted. 38 rows carry that marking
-    # and every one was a candidate on every run.
-    #
-    # `queue.md` is explicit about where they go: the identifications GEDCOM,
-    # `exports/post-merge/wikidata-qid-links.ged`, whose `identifications-gedcom` row
-    # carries `active_from 2027-01-01` -- *"they are added to the entry ponys and universe and
-    # p2600 can be added there at Jan 1 no blocking lol"*. AT JAN 1. Not today.
-    #
-    # Gated twice on purpose, because one of the two is a free-text note a typo could break:
-    #   1. the note says local-only / never emit / gedcom entry point
-    #   2. the pair is in `build-qid-links-gedcom.PAIRS`, the authoritative Jan-1 list
     # ⛔ **A HAND IDENTIFICATION DOES GO TO WIKIDATA. THE GATE IS WHERE THE ITEM SITS.**
-    # Ruled 2026-09-17, and it settles three wrong readings of this file in one day:
+    # Ruled 2026-09-17:
     #
     #     "the hand identification is supposed to fucking go to Wikidata. It just is supposed to
     #      go to things that actually are allowed to have valid edits put on them ... That means
     #      they must be in the universe or one step beyond the universe. As all edits go."
     #
-    # So this is not a special rule for this file. It is **the** rule, the one every other
-    # emitter here already obeys, finally asked by this one. What went wrong was never that the
-    # rows are unfit to send -- they are hand-adjudicated and they are the best identifications
-    # in the repo -- it was that this function sent them **anywhere**, up to 90 a day, unattended,
-    # onto items nothing else in the run touches. `Yi Un`, `Emperor Ku`, `Huaxu` and
-    # `Imperial Consort Sunheon` are what that looks like from the contributions page.
+    # So this is not a special rule for this source. It is **the** rule, the one every other
+    # emitter here already obeys. What went wrong was never that the pairs are unfit to send --
+    # they are hand-adjudicated and they are the best identifications in the repo -- it was that
+    # this function sent them **anywhere**, up to 90 a day, unattended, onto items nothing else in
+    # the run touches. `Yi Un`, `Emperor Ku`, `Huaxu` and `Imperial Consort Sunheon` are what that
+    # looked like from the contributions page. The subgraph gate below is the fix.
     #
-    # Two over-corrections are also refuted and must not come back: gating on the note text, and
-    # withholding the file wholesale. Neither is about where the item sits, which is the only
-    # thing that decides whether an edit is ours to make.
-    want = []
-    with open(path, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-            if q.startswith("Q") and g.isdigit():
-                want.append((q, g, (row.get("name") or "").strip()))
+    # ⛔ **AND THE TWO OVER-CORRECTIONS STAY REFUTED**: gating on a free-text note, and
+    # withholding the file wholesale. Neither is about where the item sits. Both are now
+    # impossible rather than merely forbidden -- the ledgers carry `qid` and `geni_id` and there
+    # is no note column left to gate on.
+    #
+    # ⛔ **ALL THREE LEDGERS, INCLUDING THE JANUARY ONE.** *"If any one of the January 1st one is
+    # eligible to be edited, it can have the Geni ID added to it before it's an entry point."*
+    # `ledgers.identifications()` ignores the date deliberately; the subgraph gate decides.
+    import ledgers
+
+    want = [(q, g, "") for q, g in ledgers.identifications()]
     if not want:
         return [], 0, 0, 0
 
@@ -7888,7 +7848,7 @@ def main():
                        "# HAND IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
                        "# These lead the file: the Geni id is the FIRST edit on any individual,",
                        "# and a name item is not an exception to that.",
-                       f"# {man_total} in reports/manual-identifications.csv, {man_held} already "
+                       f"# {man_total} in the three identification ledgers, {man_held} already "
                        f"on Wikidata, {MANUAL_P2600_PER_RUN} a run beyond the ones this run "
                        f"touches.",
                        "# " + "=" * 72] + man_lines + [""]

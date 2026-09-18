@@ -85,11 +85,6 @@ STEPS = [
     # gitignored GEDCOM that is part of the synoptic tree merge, with QIDs in bios as a
     # fundamental part of the pipeline.
     #
-    # It is generated IN ADDITION: `build-garborg-day.ledger()` still reads
-    # `reports/manual-identifications.csv` directly, so the pipeline cannot break. The direct
-    # read goes only once the tree route is shown to carry the same pairs.
-    ("the manual correspondences as a GEDCOM",
-     [sys.executable, os.path.join("scripts", "build-correspondence-gedcom.py")]),
     # **The three identification ledgers, rendered.** Ruled 2026-09-17: three flat TSVs of
     # qid/geni_id pairs -- entry points now, entry points on 2027-01-01, and passive
     # identifications -- each built into a gitignored GEDCOM that joins the merge. The TSVs are
@@ -97,7 +92,6 @@ STEPS = [
     ("the identification ledgers as GEDCOMs",
      [sys.executable, os.path.join("scripts", "build-identification-gedcoms.py")]),
     ("merge the corpus", [sys.executable, "-m", "genimerge", "merge",
-                          "--also", os.path.join("out", "manual-parental-correspondences.ged"),
                           "--also", os.path.join("out", "identifications-now.ged"),
                           "--also", os.path.join("out", "identifications-jan1.ged"),
                           "--also", os.path.join("out", "identifications-passive.ged")]),

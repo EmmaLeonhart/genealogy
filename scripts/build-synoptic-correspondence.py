@@ -146,7 +146,10 @@ def main():
         # for the most authoritative source in the repo to be present. `CLAUDE.md` § *The manual
         # approvals are TRAINING DATA* is why: these are the labelled positives, and they should
         # be load-bearing rather than incidentally covered.
-        ("emma-verdicts", rows_from(R / "manual-identifications.csv", "qid", "geni_id")),
+        # Ruled 2026-09-17: the hand identifications are `reports/identifications.tsv` now, two
+        # columns and no verdict. The verdict filter this used to rely on is gone -- a wrong pair
+        # is a deleted row.
+        ("emma-verdicts", rows_from(R / "identifications.tsv", "qid", "geni_id", "	")),
         ("zipper", zipper_rows(R / "zipper-pairs.tsv", 8)),
     ]
     refuted = date_refuted()

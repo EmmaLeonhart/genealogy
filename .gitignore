@@ -67,6 +67,8 @@ out/wikidata/labels.tsv
 #
 # It is NOT under exports/, and that is deliberate: exports/ is the corpus and every .ged
 # there is committed, so a generated one fails tests/test_repo_invariants.py by existing.
+# Retired 2026-09-17: build-correspondence-gedcom.py is deleted and the same pairs are
+# rendered by scripts/build-identification-gedcoms.py into out/identifications-passive.ged.
 out/manual-parental-correspondences.ged
 # Wikidata's genealogy rendered as a mergeable GEDCOM by
 # scripts/build-wikidata-gedcom.py -- 57 MB, regenerated from relations.tsv and
