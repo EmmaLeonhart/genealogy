@@ -261,36 +261,18 @@ step link rather than descend.
 that profile"* first.
 
 
-## ⛔ COMMANDED EXPORTS, 2026-09-17 — EXHAUSTING ONE CLUSTER
+## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
 
-**This is not a pile of one-off exports and must not be read as one.** Ruled 2026-09-17:
-*"we are trying to dig in on a specific cluster to make sure we have completely exhausted it"*.
+Forest on each, in the order given. Then Descendants, in reverse of that order.
+The Forest order runs up the generations; the reverse runs back down them.
 
-The cluster is the **Pomeranian-Polish one the tree already touches** — von Güntersberg /
-Kaliski, von Flemming, h. Nałęcz, von dem Borne, Kruckow, Barsebek, von Luchow, von Leinegau,
-von Liesgau, von Eickstedt — the same names carried on the blood and in-law chains in
-`exports/tiny-paths/` for the Kreczmar line. These fill in AROUND a spine the corpus already holds.
-
-⛔ **EVERY PERSON GETS BOTH WALKS.** Ruled 2026-09-17: *"lets do desendants exports on all of
-the people too"*. `Forest` and `Descendants`, same roster, `job.walk` on the export job.
-
-⛔ **FORESTS FIRST, THEN DESCENDANTS**, and the order is not arbitrary: `Forest` follows spouse
-links and spreads sideways, which is what finds further CLUSTER MEMBERS; `Descendants` goes down.
-Exhausting the cluster is the goal, so the sideways walk earns its slot first. If the campaign is
-cut short, everyone has a Forest rather than half the roster having both.
-
-⛔ **THIS OVERRIDES `CLAUDE.md` § *`Descendants`, NOT `Forest`* FOR THIS CAMPAIGN.** That rule
-governs the Monte Carlo descendants campaign, where a `Descendants` ball is run off a CREATED
-ANCESTOR. This is a different job: a named roster, both walks, run on the people themselves.
-
-Geni runs **one export at a time** and a submitted export **cannot be cancelled**, so this is
-strictly serial — 54 exports at the observed 7-17 minutes each. Corpus grepped before each;
-every one below was 0 in the corpus except where noted. Delete a line when its zip is in
-`~/Downloads`. Filing the zips into `exports/` is hers.
+One at a time, cannot be cancelled. Delete a line when its zip is in `~/Downloads`.
 
 ### `Forest`
-- `6000000227803027847` Adrian Falchener — SUBMITTED
-- `6000000227297029878` NN — **2 existing Forest exports**, ruled *"run it anyway"*
+- `6000000227802431855` Lars father of Sigrid — done
+- `6000000227803061825` David Fjose — done
+- `6000000227803027847` Adrian Falchener — running
+- `6000000227297029878` NN
 - `6000000227803032874` NN van Valckenier
 - `6000000227803038858` NN Jude
 - `6000000227803060855` NN Hessøen
@@ -318,12 +300,6 @@ every one below was 0 in the corpus except where noted. Delete a line when its z
 - `6000000227803089951` NN von Liesgau
 
 ### `Descendants`
-
-⛔ **IN REVERSE ORDER OF THE `Forest` LIST ABOVE.** Ruled 2026-09-17: *"after all of the forest
-exports one by one in reverse order of them descendants exports"*. Lars father of Sigrid and
-David Fjose are at the END of this list because their Forests came FIRST — they are part of the
-roster and still owe a `Descendants` ball.
-
 - `6000000227803089951` NN von Liesgau
 - `6000000227803060959` NN
 - `6000000227803068881` NN von Leinegau
