@@ -157,18 +157,32 @@ def edit_universe():
     return set(d.get("universe") or ()), set(d.get("one_step") or ())
 
 def universe():
-    """`{qid: geni_id}` for the account's own items."""
+    """`{qid: geni_id}` for the account's own items, INSIDE the edit universe.
+
+    ⛔ The intersection is the point. The ledger is the account's own items and 1,489
+    of them sit outside the universe; scoping to the ledger alone is what put 17 of 20
+    subjects on strangers. `adjacent()` then grows the ring from THIS set, so the ring
+    is one step from the universe rather than one step from anywhere we have edited.
+    """
+    uni, ring = edit_universe()
+    allowed = uni | ring
     out = {}
     with LEDGER.open(encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh, delimiter=TAB):
             q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
-            if q.startswith("Q") and g:
+            if q.startswith("Q") and g and (not allowed or q in allowed):
                 out[q] = g
     return out
 
 
 def adjacent(core):
-    """QIDs one relationship step from the universe, from the live-values file."""
+    """QIDs one relationship step from the universe, from the live-values file.
+
+    ⛔ Clipped to the ring `out/wikidata/edit-universe.json` actually names. This pass
+    derives neighbours from the live-values file; the gate and the sender enforce that
+    file. Anything this found and that file does not name would be emitted and then
+    refused, which is a red pipeline rather than a growth step.
+    """
     out = set()
     if not LIVE.exists():
         return out
@@ -181,7 +195,10 @@ def adjacent(core):
                 out.add(val)
             elif val in core and subj.startswith("Q"):
                 out.add(subj)
-    return out - set(core)
+    out = out - set(core)
+    uni, ring = edit_universe()
+    allowed = uni | ring
+    return {q for q in out if q in allowed} if allowed else out
 
 
 def open_family():

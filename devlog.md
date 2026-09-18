@@ -45111,3 +45111,62 @@ George replaced her in it.
 No new file, and no per-person scheduler: `active_from` is a date column compared against today,
 which is the same reasoning that put it there originally — a cron dies with the session, a date
 in the repo does not.
+
+## 2026-09-18 — the locality gate had never once run, and making it real stopped every edit
+
+The day's question was why no edit reached Wikidata. Four separate causes, found in the order
+they blocked each other, and only the first belongs to this session.
+
+**The gate was a no-op from the day it was written.** `_refuse_outside_the_universe` read
+`out/wikidata/edit-universe.json` and opened with `if not allowed: return edits` — pass
+everything. `wikidata-edits.yml` checks out sparsely, because `reports/` alone is 1.1 GB, and the
+list named `/out/wikidata/unlinked-items.json` but never `edit-universe.json`. So the file was
+never on disk in an edit run, `allowed` was always empty, and the gate always fell through. It
+had checked nothing since 2026-09-17, which is also why the ruling of that date —
+*"why the fuck were geni ids added to so many people who are not 1 hop away from the universe"* —
+happened at all. Changing that line to fail CLOSED turned a silent pass-through into a total
+block: run `35378526623` went `--live` on the daily batch and refused all 143 edits. The file was
+committed and correct throughout, 3,396 universe + 362 ring. **A sparse checkout that omits a
+gate's input turns that gate into a total block**, and the refusal said "missing", which reads as
+though the composer never wrote it.
+
+**`maxlag` was budgeted in attempts, not time.** `apply()` retried four times waiting `lag + 5`,
+about 75 seconds. The query servers ran 10-22 seconds behind for longer than that and the whole
+batch failed. An attempt count answers *how many times did we ask*; `maxlag` asks *has the lag
+cleared*, and only elapsed time answers it. `MAXLAG_BUDGET` is 300 seconds per edit now, each
+sleep capped at 60. The fix was watched working: `16.6s -> 12.7s -> 8.9s` across 141 seconds.
+
+**`bot=1` on an account with no bot right.** `_attach_call` sent it on every `wbsetqualifier` and
+`wbsetreference`, and every one came back `permissiondenied`. The run had logged in perfectly and
+printed the answer itself: `groups: *,user,autoconfirmed`. It arrived 2026-09-16 in `6c8240d9`,
+so object writes landed and attachments failed silently for two days — which is why yesterday
+looked fine on a creation-heavy batch and today collapsed on an attachment-heavy one. The flag
+only hides an edit from recent changes; adding the account to the `bot` group would also have
+fixed it and is the wrong fix, since this campaign wants its edits visible to be corrected.
+
+**A creation was not linked until much later.** `runnable_order` picks at random from whatever is
+ready, which honours `requires` and nothing else, so a `Q… P40 LAST` line — an existing person
+pointing at the new item — landed arbitrarily far from the create. Measured on the day's auto
+half: **worst gap 126 edits, mean 32**, one immediate link out of 59 pairs. Newly unblocked edits
+now run next, FIFO: **worst gap 3, mean 1.4, 37 immediate**, stable across seeds. Five items had
+already gone live orphaned and were un-orphaned by hand.
+
+**And the halves were never a share of the composition.** The split runs before the three
+universe-growth passes, which `cat` their output onto the halves only. 1,184 lines in the auto
+half and 2,163 in the manual half were in neither the day batch nor any split of it, and the day
+batch passed a locality gate the halves failed by 21 and 48 items. The passes now append to the
+day batch as well. They were also scoping themselves to `reports/garborg-qids.tsv` — the
+account's own 4,883 items, 1,489 of them outside the universe — so 17 of 20 subjects were
+strangers; both now intersect with the same `edit-universe.json` everything else enforces,
+leaving 3,394 and a ring of 218.
+
+`Q347480` Adalbert II is the first entry on a `NEVER_EDIT` list. Its `ja` label is katakana
+ending in the regnal ordinal `2世`; the CJK emitter read that generation kanji as Han, called him
+Sinosphere, and overwrote kana this account never wrote. The ordinal strip handles the shape now,
+but a heuristic that has destroyed one item's label does not get a second chance at that item.
+The list sits in `wikidata_lockout` and is read by the composer, the CI gate and the sender,
+because the locality gate was written for one end at a time and leaked at every one.
+
+Pages stopped updating for a plain reason: seven pipeline runs were cancelled to keep the edit
+runs clear, and Pages is built by that same workflow. Nothing about the 1/3 automatic, 2/3
+published split changed.

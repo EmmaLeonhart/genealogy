@@ -350,6 +350,14 @@ jobs:
       #
       # It runs AFTER the split so the split's own arithmetic is not disturbed, and appends
       # rather than composing into the batch, so the two products stay separable.
+      # ⛔ **A GROWTH PASS APPENDS TO THE DAY BATCH AS WELL AS TO A HALF, OR THE SPLIT IS
+      # STALE THE MOMENT IT IS MADE.** The split runs above, then these three passes cat
+      # their output onto the halves only -- so the halves grew and the day batch did not.
+      # Measured 2026-09-18: 1,184 lines in the auto half and 2,163 in the manual half were
+      # in NEITHER the day batch nor any split of it, and the day batch read clean through
+      # a locality gate that the halves failed 21 and 48 items.
+      # The day batch is the composition; a half is a share of it. A half holding lines the
+      # composition does not is not a share of anything.
       - name: Subject-named-as backfill, the universe-growth pass
         continue-on-error: true
         env:
@@ -359,10 +367,12 @@ jobs:
           python scripts/build-subject-named-as-backfill.py
           if [ -s reports/wikidata-subject-named-as-auto.qs ]; then
             cat reports/wikidata-subject-named-as-auto.qs >> reports/wikidata-garborg-day-auto.txt
+            cat reports/wikidata-subject-named-as-auto.qs >> reports/wikidata-garborg-day.txt
             echo "appended $(grep -c P1810 reports/wikidata-subject-named-as-auto.qs) to the auto half"
           fi
           if [ -s reports/wikidata-subject-named-as.qs ]; then
             cat reports/wikidata-subject-named-as.qs >> reports/wikidata-garborg-day-manual.txt
+            cat reports/wikidata-subject-named-as.qs >> reports/wikidata-garborg-day.txt
             echo "appended $(grep -c P1810 reports/wikidata-subject-named-as.qs) to the manual half"
           fi
 
@@ -395,10 +405,12 @@ jobs:
           python scripts/build-ancestor-creations.py
           if [ -s reports/wikidata-ancestor-creations-auto.qs ]; then
             cat reports/wikidata-ancestor-creations-auto.qs >> reports/wikidata-garborg-day-auto.txt
+            cat reports/wikidata-ancestor-creations-auto.qs >> reports/wikidata-garborg-day.txt
             echo "appended $(grep -c '^CREATE' reports/wikidata-ancestor-creations-auto.qs) creation(s) to the auto half"
           fi
           if [ -s reports/wikidata-ancestor-creations.qs ]; then
             cat reports/wikidata-ancestor-creations.qs >> reports/wikidata-garborg-day-manual.txt
+            cat reports/wikidata-ancestor-creations.qs >> reports/wikidata-garborg-day.txt
             echo "appended $(grep -c '^CREATE' reports/wikidata-ancestor-creations.qs) creation(s) to the manual half"
           fi
 
@@ -420,10 +432,12 @@ jobs:
           python scripts/build-relationship-sources-backfill.py
           if [ -s reports/wikidata-relationship-sources-auto.qs ]; then
             cat reports/wikidata-relationship-sources-auto.qs >> reports/wikidata-garborg-day-auto.txt
+            cat reports/wikidata-relationship-sources-auto.qs >> reports/wikidata-garborg-day.txt
             echo "appended $(grep -c S2600 reports/wikidata-relationship-sources-auto.qs) to the auto half"
           fi
           if [ -s reports/wikidata-relationship-sources.qs ]; then
             cat reports/wikidata-relationship-sources.qs >> reports/wikidata-garborg-day-manual.txt
+            cat reports/wikidata-relationship-sources.qs >> reports/wikidata-garborg-day.txt
             echo "appended $(grep -c S2600 reports/wikidata-relationship-sources.qs) to the manual half"
           fi
 
