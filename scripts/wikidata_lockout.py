@@ -75,10 +75,10 @@ import sys
 #: **To put the hold back:** `HELD = True` here and `EDITS_HELD: "yes"` in
 #: `.github/workflows/wikidata-edits.yml`. Both, or the halves disagree and
 #: `tests/test_wikidata_start_date.py` fails — which is the whole reason it is written twice.
-HELD = False
+HELD = True
 
 #: Why, in one line, printed by every refusal so a run never just says "locked".
-HELD_REASON = ("held by hand 2026-09-13 -- the Wikidata campaign runs AFTER the queue, and the "
+HELD_REASON = ("HELD 2026-09-18: a non-local Japanese label application OVERWROTE KANJI on existing items. The name-item generator emits Lja for every token as a katakana transliteration, and applying that to an item that already carries a real kanji label destroys it. CLAUDE.md: a title inside a label takes the NATIVE form in CJK, never a transliteration, and Wikidata's label beats ours. Nothing sends until the emitter is fixed and the damage is assessed. Previous reason: held by hand 2026-09-13 -- the Wikidata campaign runs AFTER the queue, and the "
                "isolate path connections come first")
 
 #: The date this repo may begin editing Wikidata: no Wikidata edits until
