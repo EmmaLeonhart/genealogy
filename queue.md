@@ -592,3 +592,34 @@ it, which is exactly why it is queued rather than done.
 trivial, it is probably not trivial"*, and *"if there's anything in the pipeline that makes it
 slower, that is intentional."* A minimalism pass is the most dangerous possible shape for that
 failure, so it does not start until the pipeline has been watched end to end in its current form.
+
+## Ingemund Grimsson is ELEVATED, 2026-09-18
+
+Ruled: *"immediately run an ancestors export desendants export and forest export on this
+person ... they are top priority and their export is gonna be elevated in importance a it
+overrides other things"* -- <https://www.geni.com/people/Ingemund-Grimsson-I-R/6000000227816621867>
+
+All three submitted 2026-09-18, confirmed by his own name in the
+*"... GEDCOM File is Being Created"* heading rather than by the page text, which lies:
+
+    Forest       23:09Z   went out inside the created-today batch
+    Ancestors    23:16Z
+    Descendants  23:17Z
+
+None of the three returns a task id -- see § A FOREST SUBMIT HANDS BACK NO HANDLE in
+`scripts/forest-created-today.js`. They come off <https://www.geni.com/gedcom> when rows appear.
+
+## Descendants campaign on Inal Kut Chor `6000000035218736073` -- QUEUED, starts when the
+## created-today Forests are dispatched
+
+Ruled 2026-09-18, in the same breath as the Ingemund elevation:
+*"once this is finished start a descendants campaign on ... Inal-Kut-Chor"*. So it follows the
+batch rather than interrupting it, and Ingemund overrides both.
+
+`docs/monte-carlo-procedure.md` unchanged: frame, denylist, 40 candidates, every reading at or
+above 4,000 exported off a created ancestor, the root stops on a round that returns none.
+
+⛔ **AND THE FRAME IS BUILT FRESH, NOT READ OFF DISK.** `reports/descent-from-6000000035218690155.csv`
+is a DIFFERENT person. Abul Hamza's roster was six days stale on 2026-09-18 and hid 71
+generations -- round 3 read zero against a top of 618, and the same sweep on the rebuilt frame
+returned a 15,000 cap hit. A stale frame reports a root as finished when it is not.
