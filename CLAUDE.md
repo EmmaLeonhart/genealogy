@@ -430,7 +430,15 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **A small component is IGNORED.** Not reported, not analysed.
 - **The question is whether OUR TREE MATCHES GENI, never whether Geni is right.** If Geni holds
   two profiles, we hold two — even when two is wrong.
-- **GREP THE CORPUS BEFORE RUNNING AN EXPORT**, every time, and put the number in the commit.
+- **⛔ NEVER GREP THE WHOLE CORPUS. IT COSTS TEN MINUTES AND IT IS PRIVILEGED.** Ruled
+  2026-09-18: *"do not grep the corpus it is privileged after all"* and *"grepping the
+  corpus has taken over a minute"* -- a recursive `grep -rl` over `exports/` ran past the
+  two-minute tool ceiling and had to be backgrounded, in the middle of an urgent re-run.
+  The check it was doing is worth seconds, never minutes. **Use the derived CSVs**, which
+  are the indexed form of the same question, or a single named file. A **privileged**
+  export skips the check entirely.
+- **Check before running an export**, and put the number in the commit -- by the cheap
+  instrument above, never by sweeping `exports/`.
 - **The job with an export is to integrate it, not to analyse it.**
 - **"Is X present?" means BOTH stores.** Answer for each, name which, and say when the absence is
   bounded. Join on the Geni ID; never search by name.
