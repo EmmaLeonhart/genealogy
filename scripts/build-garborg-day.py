@@ -995,6 +995,43 @@ def _cjk_priority_qids(our_items):
     return out
 
 
+
+def refuse_non_local(lines, allowed):
+    """Drop every batch line whose SUBJECT is an existing item outside the universe and its ring.
+
+    ⛔ **THE LAST GATE, AND IT IS A FUNCTION SO IT CAN BE TESTED.** It was written inline in
+    `main()` on 2026-09-18 and could not be exercised without a full compose -- which then died
+    three times on an unrelated `resolve-merged-qids.py` failure and an HTTP 429, so the gate was
+    claimed as a fix while never once having executed. A guard nobody has watched run is the
+    failure this whole night is made of.
+
+    **Scope is the batch, not a path through it.** The first attempt filtered `derived_labels`
+    only, and the very next batch still carried `P22`, `P40` and `P2600` lines on the same
+    out-of-universe items: 936, 962 and 985 of them across the three day files, on 300, 321 and
+    348 distinct items. `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP
+    BEYOND IT. ALL EDITS, NO EXCEPTIONS*.
+
+    `CREATE` blocks and their `LAST` lines pass untouched: a creation carries no QID yet, and
+    `compose` already picks creations from inside the universe by construction.
+    """
+    if not allowed:
+        raise ValueError("refuse_non_local called with an empty universe -- that is the absence "
+                         "of the gate, not permission; recompose the universe first")
+    kept, dropped = [], []
+    for ln in lines:
+        m = re.match(r"^(Q\d+)	", ln)
+        if m and m.group(1) not in allowed:
+            dropped.append(m.group(1))
+            continue
+        kept.append(ln)
+    if dropped:
+        names = sorted(set(dropped))
+        print("BATCH GATE: dropped %d line(s) on %d item(s) neither in the universe nor one step "
+              "beyond it: %s%s" % (len(dropped), len(names), ", ".join(names[:8]),
+                                   " ..." if len(names) > 8 else ""))
+    return kept
+
+
 def _missing_cjk_labels(our_items, labels, table, live_labels):
     """`Lja`/`Lzh`/`Lko` for a ledger item whose LATIN label is already right and that has none.
 
@@ -7905,21 +7942,7 @@ def main():
     # line whose SUBJECT is an existing item outside the universe and its ring. `CREATE` blocks
     # and their `LAST` lines are untouched: a creation has no QID yet and `compose` already picks
     # them from inside the universe.
-    _allowed = set(our_wikidata_subgraph) | set(one_step_qids)
-    _dropped = []
-    _final = []
-    for _ln in lines:
-        _m = re.match(r"^(Q\d+)	", _ln)
-        if _m and _m.group(1) not in _allowed:
-            _dropped.append(_m.group(1))
-            continue
-        _final.append(_ln)
-    if _dropped:
-        _d = sorted(set(_dropped))
-        print("BATCH GATE: dropped %d line(s) on %d item(s) neither in the universe nor one "
-              "step beyond it: %s%s" % (len(_dropped), len(_d), ", ".join(_d[:8]),
-                                        " ..." if len(_d) > 8 else ""))
-    lines = _final
+    lines = refuse_non_local(lines, set(our_wikidata_subgraph) | set(one_step_qids))
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first**, ruled 2026-08-30: one file rather than two, names first and
