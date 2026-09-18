@@ -7887,9 +7887,24 @@ def main():
     # ⛔ **THE HAN RANGE IS WRITTEN AS ASCII ESCAPES.** `CLAUDE.md` is explicit and the cost is
     # recorded: the literal form ate the Hangul block and lost 5,338 Korean people. Ranges are
     # CJK Unified Ideographs, Extension A, and Compatibility Ideographs.
+    # ⛔ **A REGNAL NUMERAL IS NOT A SINOSPHERE NAME.** `世` is a kanji, and it is how an
+    # ordinal is written after a digit: `アダルベルト2世` is Adalbert II in katakana, and
+    # `ラスムス・ハンソン・リサ2世` is Rasmus Hansson Risa II. Testing for a Han character
+    # without stripping the ordinal first classifies a European name as Sinosphere and freezes
+    # every label edit on exactly the people this pipeline is for. Caught by
+    # tests/test_batch_locality.py on 2026-09-18, on Q347480 and Q141494567.
+    # `CLAUDE.md` § *A generation suffix goes LAST; a regnal ordinal stays put.*
+    _ORDINAL = re.compile("[0-9]+\u4e16")
+    # ⛔ A REGNAL NUMERAL IS NOT A SINOSPHERE NAME. The generation kanji after a digit is how
+    # an ordinal is written -- Adalbert II and Rasmus Hansson Risa II are katakana names ending
+    # in it. Testing for a Han character without stripping the ordinal first classifies a
+    # European name as Sinosphere and freezes every label edit on exactly the people this
+    # pipeline is for. Caught by tests/test_batch_locality.py on Q347480 and Q141494567.
+    _ORDINAL = re.compile("[0-9]+\u4e16")
     _HAN = re.compile("[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]")
+    _is_kanji = lambda v: bool(_HAN.search(_ORDINAL.sub("", v or "")))
     _kanji_items = {q for (q, lang), v in (live_labels or {}).items()
-                    if lang == "ja" and v and _HAN.search(v)}
+                    if lang == "ja" and _is_kanji(v)}
     if _kanji_items:
         print(f"label edits: {len(_kanji_items)} item(s) hold a KANJI ja label and are excluded "
               f"from every label edit, any language")
