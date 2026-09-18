@@ -483,6 +483,25 @@ jobs:
           git status --short | head -20
 
       # Repack before committing: the plain CSVs are gitignored and the `.gz` are what is tracked.
+      # ⛔ **THE LOCALITY GATE, CHECKED ON THE WRITTEN BATCH, BEFORE ANYTHING PUBLISHES IT.**
+      #
+      # Added 2026-09-18, after nine `ja` labels were written onto Jan-1 entry points outside the
+      # universe -- Q135525010, Q135579354 and seven more -- and were reverted by hand one at a
+      # time. Behind them sat 936, 962 and 985 more non-local lines in the three day batches.
+      #
+      # **This step is here rather than only in `ci.yml` because the batch is published from this
+      # workflow.** The nine reached Wikidata through a QuickStatements PASTE off the published
+      # page, a route that never touches `wikidata-edit-run.py`, so a gate in the sender could not
+      # have stopped them and a test that runs on some other workflow's schedule is too late. If
+      # the batch composed in this run is bad, this run must fail before Pages serves it.
+      #
+      # `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS,
+      # NO EXCEPTIONS*, and § *THE KANJI SIGNAL DECIDES WHICH LABEL UNIVERSE A PERSON IS IN*.
+      - name: The batch may not touch anything outside the universe
+        env:
+          PYTHONPATH: src
+        run: python -m pytest tests/test_batch_locality.py -q
+
       - name: Commit the rebuilt batch
         id: commit
         run: |
