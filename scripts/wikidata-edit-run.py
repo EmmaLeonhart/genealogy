@@ -229,21 +229,30 @@ class Session:
                     self.attach(plan, token, delay=delay)
                 return edit["qid"]
 
-        for attempt in range(4):
+        # ⛔ **THE maxlag BUDGET IS TIME, NOT ATTEMPTS, BECAUSE maxlag MEANS "COME BACK
+        # LATER".** This was `range(4)` waiting `lag + 5` each time: about 75 seconds of
+        # patience. On 2026-09-18 the query servers ran 10-22 seconds behind for longer than
+        # that and EVERY edit of a live 143-edit batch failed -- `qs-create-...: maxlag:
+        # Waiting for wdqs1011: 20.57 seconds lagged` -- so the run applied nothing at all.
+        # An attempt count answers "how many times did we ask"; the question maxlag actually
+        # poses is "has the lag cleared yet", and only elapsed time answers that.
+        deadline = time.monotonic() + MAXLAG_BUDGET
+        while True:
             res = self._call(action="wbeditentity", _post=params)
             err = res.get("error")
             if not err:
                 break
-            # maxlag is the replication lag telling a bot to come back later. It is
-            # the one error worth retrying; everything else is about this edit.
-            if err.get("code") == "maxlag" and attempt < 3:
-                wait = float(err.get("lag") or 5) + 5
-                print(f"    maxlag {err.get('lag')}s -- waiting {wait:.0f}s")
-                time.sleep(wait)
-                continue
-            raise EditFailed(f"{edit['id']}: {err.get('code')}: {err.get('info')}")
-        else:
-            raise EditFailed(f"{edit['id']}: still lagged after 4 attempts")
+            if err.get("code") != "maxlag":
+                raise EditFailed(f"{edit['id']}: {err.get('code')}: {err.get('info')}")
+            if time.monotonic() >= deadline:
+                raise EditFailed(f"{edit['id']}: still lagged after "
+                                 f"{MAXLAG_BUDGET:.0f}s of waiting")
+            # Cap the sleep so one absurd lag reading cannot spend the whole budget at once.
+            wait = min(float(err.get("lag") or 5) + 5, 60.0)
+            wait = min(wait, max(1.0, deadline - time.monotonic()))
+            print(f"    maxlag {err.get('lag')}s -- waiting {wait:.0f}s "
+                  f"({deadline - time.monotonic():.0f}s of budget left)")
+            time.sleep(wait)
 
         qid = res.get("entity", {}).get("id")
         if not qid:
@@ -286,6 +295,17 @@ class Session:
         if err and not is_already_present(err.get("info") or ""):
             raise EditFailed(f"{action}: {err.get('code')}: {err.get('info')}")
         time.sleep(delay)
+
+
+#: ⛔ **HOW LONG A SINGLE EDIT WILL WAIT OUT REPLICATION LAG, IN SECONDS.** `maxlag` is
+#: Wikidata telling a bot to come back later, so the right budget is a stretch of TIME
+#: rather than a number of attempts. Four attempts at `lag + 5` was ~75 seconds and the
+#: lag spike on 2026-09-18 outlasted it, failing all 143 edits of a live batch.
+#:
+#: Five minutes rides out an ordinary spike and still lets a genuinely sick site fail the
+#: run rather than hang it: the batch is capped at 60 edits, so the true worst case is
+#: bounded and the usual case costs nothing, because a healthy site never sleeps here.
+MAXLAG_BUDGET = 300.0
 
 
 class EditFailed(RuntimeError):
@@ -1015,9 +1035,12 @@ def main() -> int:
             # reason. Counting lag toward it turns a thirty-second wobble into an abandoned
             # run.
             #
-            # `apply()` already retries maxlag four times with its own backoff, so reaching
-            # here means the wobble outlasted that -- still a reason to skip this edit and
-            # carry on, never a reason to abandon the ones behind it.
+            # `apply()` already waits lag out for MAXLAG_BUDGET seconds, so reaching here
+            # means the wobble outlasted that -- still a reason to skip this edit and carry
+            # on, never a reason to abandon the ones behind it. On 2026-09-18 the budget was
+            # four attempts of `lag + 5` instead, ~75s, and a 20s lag spike outlasted it on
+            # EVERY edit: this handler correctly refused to stop, so the run ground through
+            # all 143 and applied none of them.
             if "maxlag" not in str(exc):
                 consecutive += 1
             print(f"       {e['id']}  {e['kind']:<9} FAILED: {exc}", file=sys.stderr)
