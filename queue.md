@@ -269,13 +269,33 @@ Given one at a time in conversation. Geni runs **one export at a time** and a su
 
 Delete a line when its zip is in `~/Downloads`. Filing the zips into `exports/` is hers.
 
-- `6000000227802431855` Lars father of Sigrid — 0 in corpus — SUBMITTED, task `6000000227802432856`
-- `6000000227803061825` David Fjose — 0 in corpus
-- `6000000227803027847` Adrian Falchener — 0 in corpus
+- `6000000227803027847` Adrian Falchener — 0 in corpus — SUBMITTED
 - `6000000227297029878` NN — **2 existing Forest exports**, ruled *"run it anyway"*
 - `6000000227803032874` NN van Valckenier — 0 in corpus
 - `6000000227803038858` NN Jude — 0 in corpus
 - `6000000227803060855` NN Hessøen — 0 in corpus
+- `6000000227803023862` NN Bulgerss — 0 in corpus
+- `6000000227802697066` Olof father of Kerstin — 0 in corpus
+- `6000000227803089850` Knud Porse — 0 in corpus
+- `6000000227803024957` NN Knutsdatter — 0 in corpus
+- `6000000227803077823` Jön Liljesparre — 0 in corpus
+- `6000000227803104825` Knut father of Ingegerd — 0 in corpus
+- `6000000227803023904` NN von Eickstedt — 0 in corpus
+- `6000000227803041931` NN von Flemming — 0 in corpus
+- `6000000227803089879` NN von dem Borne — 0 in corpus
+- `6000000227802432937` NN Barsebek — 0 in corpus
+- `6000000227803024982` NN Kruckow — 0 in corpus
+- `6000000227803073849` NN NN — 0 in corpus
+- `6000000227802407043` Sigmund father of Sigrid — 0 in corpus
+- `6000000227803041902` Guttorm Hundorp — 0 in corpus
+- `6000000227803024989` Svales Rein — 0 in corpus
+- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow — 0 in corpus
+- `6000000227803031913` NN h. Nałęcz — 0 in corpus
+- `6000000227803090852` NN ? — 0 in corpus
+- `6000000227803029977` NN von Luchow — 0 in corpus
+- `6000000227803068881` NN von Leinegau — 0 in corpus
+- `6000000227803060959` NN — 0 in corpus
+- `6000000227803089951` NN von Liesgau — 0 in corpus
 
 ## Forest exports
 
