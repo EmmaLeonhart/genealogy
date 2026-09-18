@@ -630,3 +630,24 @@ preservation/genealogy/dropbox/Liber Mythos.docx
 preservation/genealogy/dropbox/Mannus.ged.doc
 preservation/genealogy/dropbox/Perkwunos.docx
 preservation/genealogy/dropbox/Theogrammaticus.ged
+
+# ⛔ AND THE NINE SMALL PRESERVATION ZIPS, 2026-09-18. Not a size problem -- these are 0.1 to
+# 37.7 MB and pushed fine. They are here because a zip in this repo is ALWAYS ignored by its own
+# line, so that an unlisted one showing up in `git status` is how a new download announces
+# itself. `tests/test_repo_invariants.py::test_every_zip_on_disk_is_listed_in_gitignore` had
+# been red on exactly these nine since the archive was copied in wholesale on 2026-09-17, and
+# they were tracked as well, which is the state the invariant exists to prevent.
+#
+# Every one holds a MyHeritage `.ftb` SQLite database and nothing else that is genealogy; each
+# is now extracted to preservation/extracted-databases/ and rendered by scripts/ftb-to-gedcom.py
+# beside the three the 220 MB archives already gave. So the zip is recoverable content, not lost
+# content -- the same treatment queue item 2 gave the oversized ones, applied to the rest.
+preservation/genealogy/MyHeritage-onedrive/Descent from Antiquity/Backup/Descent from Antiquity - 2024-09-15 15-33-33.zip
+preservation/genealogy/MyHeritage-onedrive/Descent from Antiquity/Backup/Descent from Antiquity - 2024-09-15 15-33-48.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos overloaded/Backup/Perkwunos - 2018-07-11 10-05-05.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos overloaded/Backup/Perkwunos - 2018-07-11 10-40-45.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos overloaded/Backup/Perkwunos - 2018-07-11 10-41-49.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos overloaded/Backup/Perkwunos - 2018-07-11 11-28-49.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos overloaded/Backup/Perkwunos - 2018-07-11 11-58-01.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos/Backup/Perkele - 2018-07-14 21-07-47.zip
+preservation/genealogy/ericastridson_MyHeritage/Perkwunos/Backup/Perkele - 2018-07-14 23-16-10.zip
