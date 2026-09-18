@@ -261,7 +261,23 @@ step link rather than descend.
 that profile"* first.
 
 
-## ⛔ COMMANDED FOREST EXPORTS, 2026-09-17 — IN FLIGHT
+## ⛔ COMMANDED FOREST EXPORTS, 2026-09-17 — EXHAUSTING ONE CLUSTER
+
+**This is not a pile of one-off exports and must not be read as one.** Ruled 2026-09-17:
+*"we are trying to dig in on a specific cluster to make sure we have completely exhausted it"*.
+
+The cluster is the **Pomeranian-Polish one the tree already touches** — von Güntersberg /
+Kaliski, von Flemming, h. Nałęcz, von dem Borne, Kruckow, Barsebek, von Luchow, von Leinegau,
+von Liesgau, von Eickstedt — the same names carried on the blood and in-law chains in
+`exports/tiny-paths/` for the Kreczmar line (Inger Axelsdatter Güntersberg, Margareta von
+Flemming, Małgorzata Szamotulska h. Nałęcz). These exports fill in AROUND a spine the corpus
+already holds.
+
+⛔ **SO THE STOPPING CONDITION IS EXHAUSTION, NOT THIS LIST RUNNING OUT** — the same shape as
+`CLAUDE.md` § *THE STOPPING CONDITION IS DIMINISHING RETURNS, NOT A COUNT*. When these are all
+down and merged, the question is whether the cluster still yields unexported members, not
+whether the roster below is empty.
+
 
 Given one at a time in conversation. Geni runs **one export at a time** and a submitted export
 **cannot be cancelled**, so these are strictly serial. Corpus grepped before each, per
