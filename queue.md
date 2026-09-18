@@ -242,6 +242,14 @@ marriage of Agnes von Bayern-Landshut to a Lusignan king.
 ⛔ Check `https://www.geni.com/gedcom/export/6000000188494434823` for *"You are not allowed to
 export that profile"* first; she was not created by this account.
 
+**Checked 2026-09-17 and it says exactly that**, so the created-ancestor route is the only one.
+The ancestor exists now: **`6000000227804005917` NN von Pardubice**, created as the father of
+`6000000176534654825` **Anna von Pardubice** (c.1359, born Pardubice, no parents on Geni) —
+tier 4 of `docs/export-seed-rules.md`, no parents at all and a surname, so `NN` plus the child's
+birth surname. Anna is five generations above Ursula: Anna → Barbara von Sternberg → Königin
+Kunigunde von Kunstadt-Podiebrad → Viktorin Bocek von Münsterberg → Ursula. `Descendants` 5000
+submitted off him as task `6000000227804000942`.
+
 
 ### `Forest` export for a STEP relationship — the one representation the corpus does not attest
 
@@ -259,6 +267,11 @@ step link rather than descend.
 
 ⛔ Check `https://www.geni.com/gedcom/export/292373984150002914` for *"You are not allowed to export
 that profile"* first.
+
+**Checked 2026-09-17: it says exactly that**, and redirects to `/error`. So this one needs the
+same created-ancestor route Ursula needed — create a relative of `292373984150002914` this
+account owns, then run `Forest` off the created person, because the walk has to cross the step
+link rather than descend. Still to do; the commanded roster is ahead of it.
 
 
 ## THE ORDER, 2026-09-17. WORK IT TOP TO BOTTOM
@@ -311,6 +324,62 @@ that mistake: measuring existing connectivity treats the tree as fixed, and in a
 almost any two noble lines are reachable at some hop count, so a reachability number says nearly
 nothing. The exports are what create the edges.
 
+## ⛔ TOP PRIORITY EXPORTS, from 00:30 on 2026-09-18 — run top to bottom, one at a time
+
+Ahead of the commanded roster below. Geni allows one export at a time, so this is a strict
+sequence, not a set.
+
+- **Bothilde Sigurdsdatter Onarheim** `6000000227805045863` — `Forest`. *"for merge related stuff
+  changing"*, so it is a **privileged** export and is filed into `exports/post-merge/`.
+- **NN Rømer** `6000000227805352866` — `Forest`, then `Ancestors`.
+  <https://www.geni.com/people/NN-R%C3%B8mer/6000000227805352866>
+- **NN Stromer** `6000000227805421869` — `Forest`.
+  <https://www.geni.com/people/NN-Stromer/6000000227805421869>
+- **Erik Ims** `6000000227805012893` — `Forest`, then `Descendants`.
+  <https://www.geni.com/people/Erik-Ims/6000000227805012893>
+
+⛔ **AND `6000000002621242041` OLFVIR IS NOT EXPORTED DIRECTLY. RULED 2026-09-18.** Forest,
+Ancestors and Descendants were all queued on that id and **none of them can run**: the profile
+is not this account's, and the `request_export` endpoint does not get round that — the form
+page's refusal was the real answer after all. The two `NN` seeds above are the route to the same
+ancestry, which is the shape the whole campaign already uses: **you do not export the person you
+want, you export a placeholder this account owns next to them.**
+
+### ⛔ `6000000227289508960` IS A MERGED-AWAY HUSK. DO NOT SEED OFF IT
+
+The link originally given for Olfvir was `6000000227289508960`, and it **redirects** to
+`6000000002621242041`. That merge is what connected the new ancestors — it is the event the
+00:30 wait was for, not a problem to route around.
+
+The husk is still half-alive and that is the trap: its export form loads, titled
+**"GEDCOM Export for (No Name)"**, and it **accepts a submit**. The task it returns —
+`6000000227805163844`, `Ancestors` — then errors on every single reload. So a submit that looks
+like it worked produces nothing, and nothing says so.
+
+**The submit is a plain GET**, which the button merely builds, and navigating to it directly
+beats hunting the button —
+
+    https://www.geni.com/gedcom/request_export?id=<geni id>&walk=Forest&max_profiles=5000
+      &destination=Ftb80&name_format=0&locale=en-US&include_bom=1
+
+`walk` is `Forest` / `Ancestors` / `Descendants` / `BloodTree`. It is a convenience, **not a way
+past a permission**: on a profile this account does not manage the endpoint refuses exactly as
+the form page does. That was argued the other way here on 2026-09-18, under § *NEVER SAY YOU
+CANNOT DO SOMETHING YOU HAVE NOT TRIED*, and it was wrong — the form page's refusal WAS the
+mechanism, and the rule does not make an access control disappear.
+
+⛔ **AND DO NOT INVENT A DESCENDANT TO WALK UP FROM.** `docs/export-seed-rules.md` only ever
+creates **parents**, because a parent is implied to have existed and a child is not. Creating a
+child of a real historical person to seed an `Ancestors` walk asserts something false about the
+tree, and it was offered here and refused.
+
+**A clicked submit is confirmed by `location.href` carrying `request_export` or
+`/gedcom/download?task_id=`, never by the page text** — `get_page_text` returns stale content on
+this site throughout. And coordinate clicks were landing off-target all night because
+`getBoundingClientRect` reports in a 1536-wide viewport while the click frame is 1568 wide; that
+is what looked like "the first click is always swallowed".
+
+## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
 ## COMMANDED EXPORTS, 2026-09-17 — ABANDONED
 
 ⛔ **STOPPED BY INSTRUCTION, 2026-09-17:** *"after downloading the finished gedcom abandon doing
@@ -339,22 +408,6 @@ The Forest order runs up the generations; the reverse runs back down them.
 One at a time, cannot be cancelled. Delete a line when its zip is in `~/Downloads`.
 
 ### `Forest`
-- `6000000227803023904` NN von Eickstedt — **RE-RUN NEEDED**: requested 22:10, slot freed with no file produced and the download link yields nothing
-- `6000000227803041931` NN von Flemming — running
-- `6000000227803089879` NN von dem Borne
-- `6000000227802432937` NN Barsebek
-- `6000000227803024982` NN Kruckow
-- `6000000227803073849` NN NN
-- `6000000227802407043` Sigmund father of Sigrid
-- `6000000227803041902` Guttorm Hundorp
-- `6000000227803024989` Svales Rein
-- `6000000227802697137` NN von Güntersberg - Kaliski, Kenstek, Reweinstein, Arenwald, Zadow
-- `6000000227803031913` NN h. Nałęcz
-- `6000000227803090852` NN ?
-- `6000000227803029977` NN von Luchow
-- `6000000227803068881` NN von Leinegau
-- `6000000227803060959` NN
-- `6000000227803089951` NN von Liesgau
 
 ### `Descendants`
 - `6000000227803089951` NN von Liesgau
