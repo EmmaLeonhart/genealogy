@@ -242,6 +242,14 @@ marriage of Agnes von Bayern-Landshut to a Lusignan king.
 ⛔ Check `https://www.geni.com/gedcom/export/6000000188494434823` for *"You are not allowed to
 export that profile"* first; she was not created by this account.
 
+**Checked 2026-09-17 and it says exactly that**, so the created-ancestor route is the only one.
+The ancestor exists now: **`6000000227804005917` NN von Pardubice**, created as the father of
+`6000000176534654825` **Anna von Pardubice** (c.1359, born Pardubice, no parents on Geni) —
+tier 4 of `docs/export-seed-rules.md`, no parents at all and a surname, so `NN` plus the child's
+birth surname. Anna is five generations above Ursula: Anna → Barbara von Sternberg → Königin
+Kunigunde von Kunstadt-Podiebrad → Viktorin Bocek von Münsterberg → Ursula. `Descendants` 5000
+submitted off him as task `6000000227804000942`.
+
 
 ### `Forest` export for a STEP relationship — the one representation the corpus does not attest
 
@@ -319,17 +327,6 @@ The Forest order runs up the generations; the reverse runs back down them.
 One at a time, cannot be cancelled. Delete a line when its zip is in `~/Downloads`.
 
 ### `Forest`
-- `6000000227802431855` Lars father of Sigrid — done
-- `6000000227803061825` David Fjose — done
-- `6000000227803032874` NN van Valckenier — running
-- `6000000227803038858` NN Jude
-- `6000000227803060855` NN Hessøen
-- `6000000227803023862` NN Bulgerss
-- `6000000227802697066` Olof father of Kerstin
-- `6000000227803089850` Knud Porse
-- `6000000227803024957` NN Knutsdatter
-- `6000000227803077823` Jön Liljesparre
-- `6000000227803104825` Knut father of Ingegerd
 - `6000000227803023904` NN von Eickstedt
 - `6000000227803041931` NN von Flemming
 - `6000000227803089879` NN von dem Borne
