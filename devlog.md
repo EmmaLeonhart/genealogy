@@ -45170,3 +45170,37 @@ because the locality gate was written for one end at a time and leaked at every 
 Pages stopped updating for a plain reason: seven pipeline runs were cancelled to keep the edit
 runs clear, and Pages is built by that same workflow. Nothing about the 1/3 automatic, 2/3
 published split changed.
+
+## 2026-09-18 — items 1, 2 and 3 of THE ORDER were finished yesterday and never left the queue
+
+The work was done on 2026-09-17 and committed. The other half of the delete-on-done rule was
+not: all three stayed in `queue.md` as if untouched, and `devlog.md` carries no entry for any of
+them. So today's session opened by reading a queue whose first three items were already history.
+Deleted now, with the verification each one needed before it could be deleted.
+
+**Item 1 — the archive, copied in wholesale** (`15b7c6fb`). Checked today by comparing the two
+trees file by file on relative path: **12,975 files in
+`C:\Users\Emma\Documents\Preservation\genealogy`, 12,975 of them present under
+`preservation/genealogy/`, nothing missing.** The three extra files in the repo are item 2's
+`.gz` conversions. Ten paths are gitignored, named one per line rather than by pattern.
+
+**Item 2 — the oversized files** (`7c073cc3`). The three 220 MB MyHeritage archives are mostly
+photographs around a plain SQLite database each; the databases are extracted to
+`preservation/extracted-databases/` and converted by `scripts/ftb-to-gedcom.py` to 1,550 / 4,033
+/ 4,093 people. The three oversized GEDCOMs gzip under the limit — Theogrammaticus 180.0 MB to
+27.0 MB, Mannus 180.4 MB to 27.0 MB, Gaiad 102.9 MB to 12.3 MB. Four files are still ignored and
+still unconverted — `Gaiad.epub`, `Chronicle of the Progenitor.docx`, `Liber Mythos.docx`,
+`Perkwunos.docx` — because they are narrative works and there is no GEDCOM in them to recover.
+That is the item finished, not a remainder of it: `Gaiad.ged` and `Perkwunos.ged` are tracked
+separately and carry the genealogy those books are about.
+
+**Item 3 — Pfinzing and Reuss** (`e85e5e9e`, `2c744757`, `da44fb0f`). Answered in
+`preservation/FINDINGS.md`: both are in `preservation/genealogy/dropbox/Hethel Pedigree.ged`,
+which is why they could not be found under `exports/` — that tree never came from Geni. The file
+also carries Lusignan, Ibelin and Bagration, and the same page records which routes between them
+run through placeholder nodes like `Hethelo` and are therefore not routes.
+
+⛔ **The lesson is the bookkeeping, not the work.** A finished item left in `queue.md` costs the
+next session the time it takes to establish that it is finished — here, a file-by-file comparison
+of 12,975 paths and four commit messages — and that cost is paid every session until somebody
+deletes the line.
