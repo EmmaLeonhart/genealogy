@@ -99,3 +99,45 @@ calculated)` and on through the Safavids. That is an explicit placeholder. The s
 **This is a descent-from-antiquity PROJECT tree and it contains speculative and mythological
 connector nodes.** The Reuss route above needs none of them; the Pfinzing-to-Bagration route
 depends on one. Treat presence in this file as a lead, never as attestation.
+
+## Corrections, and which routes survive scrutiny
+
+⛔ **`Hethelo` IS NOT A REAL PERSON.** Stated directly, 2026-09-17. Nor are the other filler
+nodes this pedigree uses to span gaps: `A few generations`, `Several generations Diaz`,
+`Sophia II — 2000th Kroll (arbitrary number until it can actually be calculated)`, `Audumbla I`
+at `1345294336 BC`. **Any path through one of them is not a path.**
+
+⛔ **THE "Reuss 13" COUNT ABOVE WAS WRONG. IT IS 4.** Nine of the thirteen are Greek patronymics
+ending `-reusson` that a `Reuss` substring match swallowed: Menelaos *Atreusson*, Evippus
+*Megareusson*, Itys *Tereusson*, Periphetes *Copreusson*, Althaemenes *Catreusson*, Hermoine
+*Atreusson*, Pleisthenes *Atreusson*, Eteocles *Andreusson*, Timalcus *Megareusson*. The House of
+Reuss is:
+
+    Heinrich XXIV, Count of Reuss-Ebersdorf
+    Augusta Reuss-Ebersdorf
+    Princess Augusta Reuss-Köstritz
+    Charlotte, Princess Heinrich XVIII Reuss of Köstritz
+
+### The routes that hold
+
+**Reuss → Cyprus, 17 hops, nothing invented** — and it passes through Bavaria:
+
+    Augusta Reuss-Ebersdorf -> Leopold I of Belgium -> Louise of Orléans
+      -> Maria Amalia of Naples and Sicily -> Ferdinand I of the Two Sicilies
+      -> Charles III of Spain -> Philip V of Spain -> Duchess Maria Anna OF BAVARIA
+      -> Henriette Adelaide of Savoy -> Victor Amadeus I -> Charles Emmanuel I
+      -> Emmanuel Philibert -> Charles III -> Philip II of Savoy
+      -> Anne of Cyprus -> Janus of Cyprus -> James I of Cyprus -> Philip of Lusignan
+
+**Reuss → Pfinzing, 34 hops, also clean**, and it reaches the Norwegian farm lines on the way:
+Erbach-Schönberg, Stolberg-Gedern, Mecklenburg-Güstrow, Holstein-Gottorp, Saxony, Prussia,
+Brandenburg, the Burgraves of Nuremberg, Brunswick-Lüneburg, Denmark, Lejon/Bjälbo, **Tore Gardson
+Underberge, Ragnhild Rømer, Brynhild Tenga, Ingrid Rømer, Henning von Rømer**, Geuschmidt,
+Elisabeth Pfinzing von Henfenfeld.
+
+### The routes that do not
+
+**Reuss → Borsheim, 14 hops** and **Reuss → Underberge, 23 hops** both run through
+`A few generations`, `Sophia II — 2000th Kroll` and `Several generations Diaz`. The SHORT way into
+the account owner's own line is filler; the LONG way, through Denmark and Sweden above, is not.
+**Where a short path and a long path disagree, prefer the one with no placeholder in it.**
