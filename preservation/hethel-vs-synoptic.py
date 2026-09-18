@@ -1,55 +1,40 @@
-"""The Hethel pedigree's ancestry that the synoptic tree does not have, per person.
+"""Richard Borsheim's ancestry: what Hethel has above him that the synoptic tree does not.
 
-⛔ **THE OUTPUT IS AN IDENTIFICATION DECISION, NOT A LIST OF NAMES.** Rebuilt 2026-09-18 on
-instruction: *"Here is the person in the synoptic tree and their geni link, here is the person
-from the hethel pedigree, here is the parent(s) of that person in the hethel pedigree that are
-absent in the synoptic tree ... Your only providing the geni link and saying 'add them here' was
-insufficient since I need to even know if the figure in the hethel pedigree is the same person."*
+⛔ **POSITIONAL ONLY. THERE IS NO STRING MATCHING IN THE JOIN.** Ruled 2026-09-18, after the
+previous version of this file matched on name-token overlap and was told exactly what that was
+worth: *"fuzzy string matching is not a thing ... I do not give a shit about fuzzy string
+matching that is the most retarded shit around, I only want to be able to see the geni name vs
+hethel name so I can make the decision, since I actually understand this shit and you do not and
+you will never be able to understand the names."*
 
-So a row is a JOIN and it carries both sides in full -- name, years, places, spouse and children
-on the Hethel side; label, Geni link and the alternates on the synoptic side; and what the match
-was made on. Nothing here asserts an identification. It hands over what is needed to make one.
+So the join is ONE hand identification and then graph position, nothing else:
 
-⛔ **AND THE POINT IS THE LINE, NOT THE PERSON.** *"entire lines only in the hethel pedigree are
-things I want"*, and *"people whose parents are entirely absent are often more important"*. Each
-gap carries `new_ancestors` -- how many real Hethel people hang above that missing parent and are
-absent from the synoptic tree -- and both-parents-missing sorts first. A missing parent with 400
-ancestors behind them is a branch; one with two is a correction.
+    @I160@ Richard Borsheim   <->   6000000177921459056 Richard Wade Borsheim
 
-⛔ **MATCHED ON STRUCTURE, NOT ON A STRING.** Hethel carries MyHeritage `RIN`/`_UID` and no Geni
-ids, so there is no exact key, and `CLAUDE.md` § *Merging is an exact join, never fuzzy name
-matching* is why this writes a report and merges nothing. Matching on the name alone was shown to
-be useless: it called Richard Borsheim himself missing, and it could not separate `Peder Paulson`
-from `peder paulsen` nor `Anders Rasmusson Bore` from `Anders Rasmusson Horpestad`. In Rogaland
-naming the farm is the discriminator and Hethel records it inconsistently.
+verified four generations deep on structure alone before being used --
 
-A Hethel person counts as PRESENT when some synoptic person shares
+    Hethel    Richard -> Randolph -> Reinhert -> Rasmus Paulson -> Paul Pederson
+    synoptic  6000000177921459056 -> ...459078 -> 6000000032068841409 -> 6000000020344842981
 
-    at least 2 distinctive name tokens          -- the person themselves
-    AND at least 1 token with a parent or child -- the edge around them
+-- and from there the walk is father-to-father and mother-to-mother. No name is consulted, ever,
+to decide that two people are the same. Names appear in the OUTPUT and only in the output, side
+by side, because deciding whether `Peder Paulson (Borr V) Borsheim Lye` is the same man as
+`Peder Paulsson Borsheim` is hers to do and not a thing a program should be guessing at.
 
-which is the zipper's own principle: a matched parent-child pair is far stronger evidence than a
-matched string. **OR** when one token agrees and the BIRTH YEAR agrees within two, which is
-`CLAUDE.md` § *solo, then date, then name* -- *1600-1900 is the band where names lie and years
-decide*.
+⛔ **A GAP IS AN EMPTY PARENT SLOT, NOT AN ABSENT NAME.** The question this answers is: walking
+up both trees in step, where does Hethel record a parent and the synoptic tree record nobody?
+That is a structural fact with no judgement in it. What hangs above the gap is counted the same
+way -- every Hethel person reachable upward from the missing parent.
 
-⛔ **THE YEAR TEST IS NOT AN OPTIMISATION, IT IS WHAT MAKES THE OUTPUT READABLE.** Without it the
-first run of this rebuild opened with `Felipe VI King of Spain`, `Beatrix of the Netherlands` and
-`Edward Earl of Wessex` as ancestry the synoptic tree lacks, each carrying a claimed ~4,990 new
-people. They are all in the tree. Two distinctive tokens is a high bar for a royal, because the
-two trees write the same monarch differently -- `Felipe VI King of Spain` against
-`Felipe VI de Borbon y Grecia` shares exactly one -- so the whole of European royalty came back
-absent and sorted itself to the top by dragging its own ancestry along as `new_ancestors`. A
-report whose first screen is false is the complaint this rebuild is answering.
-
-⛔ **A THIN NAME IS `thin`, NOT ABSENT, AND THE LAST VERSION DROPPED IT.** `len(tokens) < 2` used
-to `continue`, so every one-token person vanished from the output -- which is how somebody whose
-parents are entirely absent became unreachable rather than prominent. They are emitted now,
-because "we cannot tell" and "not there" are different answers and only one of them is work.
+⛔ **THE WALK STOPS WHERE THE PAIRING STOPS.** If the synoptic side has a father and Hethel does
+not, there is nothing to add and the branch simply ends. If neither has one, likewise. The walk
+only continues through slots BOTH trees fill, which is what keeps a single wrong pairing from
+propagating into a whole invented branch -- and `generation` is on every row so a wrong one can
+be seen and cut.
 
 ⛔ **FILLER NODES ARE NOT ANCESTRY.** `Hethelo`, `A few generations`, `Several generations Diaz`,
-`Sophia II -- 2000th Kroll`, `Audumbla I` at `1345294336 BC`. Ruled 2026-09-17: *"Hethelo is not a
-real person."* They are excluded from every count and never proposed as a parent to add.
+`Sophia II -- 2000th Kroll`, `Audumbla I` at `1345294336 BC`. Ruled 2026-09-17: *"Hethelo is not
+a real person."* Never proposed as a parent, never counted in what hangs above one.
 """
 import collections
 import csv
@@ -57,8 +42,6 @@ import html
 import json
 import pathlib
 import re
-import sys
-import unicodedata
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 HETHEL = ROOT / "preservation" / "genealogy" / "dropbox" / "Hethel Pedigree.ged"
@@ -67,32 +50,20 @@ OUT_HTML = ROOT / "preservation" / "hethel-gaps.html"
 OUT_JSON = ROOT / "preservation" / "hethel-absent.json"
 SEP = " | "
 csv.field_size_limit(1 << 30)
-sys.setrecursionlimit(100000)
 
-
-def norm(s):
-    s = unicodedata.normalize("NFD", s or "")
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", s.lower())).strip()
-
-
-STOP = {"the", "von", "van", "king", "queen", "duke", "lord", "earl", "jarl", "saint",
-        "count", "prince", "baron", "graf", "herr", "datter", "dotter", "sson", "unknown"}
-
-
-def toks(s):
-    return {t for t in norm(s).split() if len(t) > 3 and t not in STOP}
-
+#: The one hand identification the whole walk stands on. Verified on structure over four
+#: generations, not on the spelling of the name.
+ANCHOR_HETHEL = "@I160@"                     # Richard Borsheim
+ANCHOR_GENI = "6000000177921459056"          # Richard Wade Borsheim
 
 FILLER = re.compile(r"generations|Kroll|arbitrary|Audumbla|Hethelo", re.I)
 
-# ------------------------------------------------------------------ Hethel
-name, birth, death, bplace, dplace, sex = {}, {}, {}, {}, {}, {}
-child_of = collections.defaultdict(list)
+# ------------------------------------------------------------------ Hethel, parsed
+name, sex, birth, death, bplace, dplace = {}, {}, {}, {}, {}, {}
 fam = collections.defaultdict(lambda: {"P": [], "C": []})
+famc = collections.defaultdict(list)
 
-cur = curfam = mode = None
-event = None
+cur = curfam = mode = event = None
 for raw in HETHEL.open(encoding="utf-8-sig", errors="replace"):
     line = raw.rstrip("\n")
     m = re.match(r"^0 (@[^@]+@) (INDI|FAM)\s*$", line)
@@ -119,7 +90,7 @@ for raw in HETHEL.open(encoding="utf-8-sig", errors="replace"):
             else:
                 mm = re.match(r"^1 FAMC (@[^@]+@)", line)
                 if mm:
-                    child_of[cur].append(mm.group(1))
+                    famc[cur].append(mm.group(1))
         elif event and line.startswith("2 DATE "):
             (birth if event == "B" else death).setdefault(cur, line[7:].strip())
         elif event and line.startswith("2 PLAC "):
@@ -129,126 +100,70 @@ for raw in HETHEL.open(encoding="utf-8-sig", errors="replace"):
         if mm:
             fam[curfam]["P" if mm.group(1) in ("HUSB", "WIFE") else "C"].append(mm.group(2))
 
-kin = collections.defaultdict(set)
 parents_of = collections.defaultdict(list)
-children_of = collections.defaultdict(list)
-partners_of = collections.defaultdict(list)
 for f, d in fam.items():
     for c in d["C"]:
-        for p in d["P"]:
-            kin[c].add(p)
-            kin[p].add(c)
-            parents_of[c].append(p)
-            children_of[p].append(c)
-    if len(d["P"]) > 1:
-        for a in d["P"]:
-            for b in d["P"]:
-                if a != b:
-                    partners_of[a].append(b)
+        parents_of[c].extend(d["P"])
 
 
 def real(x):
-    """A Hethel xref that names somebody rather than spanning a gap."""
-    n = name.get(x, "")
-    return bool(n) and not FILLER.search(n)
+    return bool(name.get(x)) and not FILLER.search(name[x])
 
 
-print("hethel people: %d, of which filler: %d"
-      % (len(name), sum(1 for x in name if not real(x))), flush=True)
+def h_parent(x, want):
+    """Hethel's father (`M`) or mother (`F`) of `x`, by SEX. Position, not name."""
+    for p in parents_of.get(x, ()):
+        if sex.get(p) == want and real(p):
+            return p
+    return None
 
-# ------------------------------------------------------------------ synoptic tree
-lab = {}
+
+print("hethel people: %d" % len(name), flush=True)
+
+# ------------------------------------------------------------------ synoptic, parsed
+gfather, gmother = {}, {}
+with (ROOT / "reports" / "derived-family.csv").open(encoding="utf-8", newline="") as fh:
+    for row in csv.DictReader(fh):
+        g = (row.get("geni_id") or "").strip()
+        if not g:
+            continue
+        f = (row.get("father") or "").split(SEP)[0].strip()
+        m = (row.get("mother") or "").split(SEP)[0].strip()
+        if f:
+            gfather[g] = f
+        if m:
+            gmother[g] = m
+print("synoptic people with a father or mother: %d"
+      % len(set(gfather) | set(gmother)), flush=True)
+
+glabel = {}
 with (ROOT / "reports" / "derived-labels.csv").open(encoding="utf-8", newline="") as fh:
     for row in csv.DictReader(fh):
         g = (row.get("geni_id") or "").strip()
         v = (row.get("label_en") or row.get("label_mul") or "").strip()
         if g and v:
-            lab[g] = v
-print("synoptic labelled people: %d" % len(lab), flush=True)
+            glabel[g] = v
+print("synoptic labelled people: %d" % len(glabel), flush=True)
 
-index = collections.defaultdict(list)
-for g, v in lab.items():
-    for t in toks(v):
-        if len(index[t]) < 4000:
-            index[t].append(g)
-
-gkin = {}
-with (ROOT / "reports" / "derived-family.csv").open(encoding="utf-8", newline="") as fh:
-    for row in csv.DictReader(fh):
-        me = (row.get("geni_id") or "").strip()
-        if me not in lab:
-            continue
-        rel = set()
-        for col in ("father", "mother", "fathers", "mothers", "children"):
-            raw = (row.get(col) or "").strip()
-            if raw:
-                for pid in raw.split(SEP):
-                    pl = lab.get(pid.strip())
-                    if pl:
-                        rel |= toks(pl)
-        if rel:
-            gkin[me] = rel
-print("synoptic people with kin tokens: %d" % len(gkin), flush=True)
-
-gyear = {}
+gborn, gdied, gbplace = {}, {}, {}
 with (ROOT / "reports" / "derived-facts.csv").open(encoding="utf-8", newline="") as fh:
     for row in csv.DictReader(fh):
         g = (row.get("geni_id") or "").strip()
-        y = (row.get("birth_date_year") or "").strip()
-        if g in lab and y.lstrip("-").isdigit():
-            gyear[g] = int(y)
-print("synoptic people with a birth year: %d" % len(gyear), flush=True)
-
-YEAR = re.compile(r"\b(\d{3,4})\b")
-
-
-def hethel_year(x):
-    """The birth year Hethel records, or None. `1345294336 BC` is not a year."""
-    raw = birth.get(x, "")
-    if not raw or "BC" in raw.upper():
-        return None
-    m = YEAR.search(raw)
-    return int(m.group(1)) if m else None
-
-
-# ------------------------------------------------------------------ the match
-verdict = {}
-for x, nm in name.items():
-    if not real(x):
-        continue
-    mt = toks(nm)
-    hy = hethel_year(x)
-    cand = collections.Counter()
-    for t in mt:
-        for g in index.get(t, ()):
-            cand[g] += 1
-    # the year test: ONE token agreeing plus a birth year within two
-    dated = [g for g in cand if hy is not None and g in gyear and abs(gyear[g] - hy) <= 2]
-    if dated:
-        verdict[x] = ("date", dated[:4])
-        continue
-    if len(mt) < 2:
-        verdict[x] = ("thin", [])
-        continue
-    hits = [g for g, k in cand.items() if k >= 2]
-    if not hits:
-        verdict[x] = ("absent", [])
-        continue
-    kt = set()
-    for r in kin.get(x, ()):
-        kt |= toks(name.get(r, ""))
-    strong = [g for g in hits if gkin.get(g, set()) & kt] if kt else []
-    verdict[x] = ("structural", strong[:4]) if strong else ("name", hits[:4])
-
-counts = collections.Counter(v[0] for v in verdict.values())
-print("verdicts: %s" % dict(counts), flush=True)
+        if not g:
+            continue
+        if row.get("birth_date_year"):
+            gborn[g] = row["birth_date_year"].strip()
+        if row.get("death_date_year"):
+            gdied[g] = row["death_date_year"].strip()
+        if row.get("birth_place"):
+            gbplace[g] = row["birth_place"].strip()
+print("synoptic people with a birth year: %d" % len(gborn), flush=True)
 
 # ------------------------------------------------------------------ what hangs above a gap
 _above = {}
 
 
-def ancestors_above(start):
-    """Every real Hethel person at or above `start`, parents only, iteratively."""
+def above(start):
     if start in _above:
         return _above[start]
     seen, stack = set(), [start]
@@ -258,89 +173,76 @@ def ancestors_above(start):
             continue
         seen.add(x)
         stack.extend(parents_of.get(x, ()))
-    out = {x for x in seen if real(x)}
-    _above[start] = out
-    return out
+    _above[start] = {x for x in seen if real(x)}
+    return _above[start]
 
 
-# ------------------------------------------------------------------ whose ancestry it is
-# ⛔ **"MY OWN ANCESTRY" IS A DIFFERENT QUESTION FROM "THE SYNOPTIC TREE", AND BOTH WERE ASKED.**
-# *"I am not sure if there are any lines that are present in hethel pedigree but not in my own
-# ancestry."* So every gap is additionally flagged by whether the person it hangs off is an
-# ancestor of Eric Borsheim as HETHEL records the descent, and that flag sorts first. A gap on
-# somebody else's branch of European royalty is still a gap; it is not the thing being asked
-# about.
-SUBJECT = "eric borsheim"
-subject = max((x for x in name if norm(name[x]) == SUBJECT),
-              key=lambda x: len(parents_of.get(x, ())), default=None)
-your_line = ancestors_above(subject) if subject else set()
-print("subject %s -- %d ancestors in Hethel" % (subject, len(your_line)), flush=True)
-
-# ------------------------------------------------------------------ the gaps
-rows = []
-for x, (conf, hits) in verdict.items():
-    if conf not in ("structural", "name", "date"):
-        continue                                   # an anchor has to be somewhere to anchor to
-    ps = [p for p in parents_of.get(x, ()) if real(p)]
-    if not ps:
+# ------------------------------------------------------------------ the lockstep walk
+rows, paired, seen_pairs = [], [], set()
+queue = collections.deque([(ANCHOR_HETHEL, ANCHOR_GENI, 0, "the anchor")])
+while queue:
+    h, g, depth, via = queue.popleft()
+    if (h, g) in seen_pairs:
         continue
-    gaps = [p for p in ps if verdict.get(p, ("absent", []))[0] in ("absent", "thin")]
-    if not gaps:
-        continue
-    both = len(gaps) == len(ps) and len(ps) > 1
-    for p in gaps:
-        new = {a for a in ancestors_above(p)
-               if verdict.get(a, ("absent", []))[0] in ("absent", "thin")}
-        rows.append({
-            "on_your_line": "yes" if x in your_line else "no",
-            "both_parents_missing": "yes" if both else "no",
-            "new_ancestors": len(new),
-            "confidence": conf,
-            "synoptic_geni_id": hits[0] if hits else "",
-            "synoptic_label": lab.get(hits[0], "") if hits else "",
-            "geni_url": ("https://www.geni.com/people/x/%s" % hits[0]) if hits else "",
-            "synoptic_alternates": SEP.join(
-                "%s %s" % (g, lab.get(g, "")) for g in hits[1:4]),
-            "hethel_xref": x,
-            "hethel_name": name.get(x, ""),
-            "hethel_born": birth.get(x, ""),
-            "hethel_birth_place": bplace.get(x, ""),
-            "hethel_died": death.get(x, ""),
-            "hethel_death_place": dplace.get(x, ""),
-            "hethel_spouse": SEP.join(
-                name.get(s, "") for s in partners_of.get(x, ())[:3] if real(s)),
-            "hethel_children": SEP.join(
-                name.get(c, "") for c in children_of.get(x, ())[:6] if real(c)),
-            "missing_parent_role": {"M": "father", "F": "mother"}.get(sex.get(p), "parent"),
-            "missing_parent_name": name.get(p, ""),
-            "missing_parent_born": birth.get(p, ""),
-            "missing_parent_birth_place": bplace.get(p, ""),
-            "missing_parent_died": death.get(p, ""),
-            "missing_parent_spouse": SEP.join(
-                name.get(s, "") for s in partners_of.get(p, ())[:3] if real(s)),
-            "missing_parent_verdict": verdict.get(p, ("absent", []))[0],
-            "missing_parent_xref": p,
-        })
+    seen_pairs.add((h, g))
+    paired.append({
+        "generation": depth, "via": via,
+        "hethel_xref": h, "hethel_name": name.get(h, ""),
+        "hethel_born": birth.get(h, ""), "hethel_died": death.get(h, ""),
+        "hethel_birth_place": bplace.get(h, ""),
+        "geni_id": g, "geni_name": glabel.get(g, ""),
+        "geni_born": gborn.get(g, ""), "geni_died": gdied.get(g, ""),
+        "geni_birth_place": gbplace.get(g, ""),
+    })
+    for role, want, gmap in (("father", "M", gfather), ("mother", "F", gmother)):
+        hp = h_parent(h, want)
+        gp = gmap.get(g)
+        if hp and gp:
+            queue.append((hp, gp, depth + 1, "%s of %s" % (role, name.get(h, h))))
+        elif hp and not gp:
+            rows.append({
+                "generation": depth + 1,
+                "new_ancestors": len(above(hp)),
+                "missing_role": role,
+                # the attach point, both sides, side by side -- this is the decision
+                "geni_id": g,
+                "geni_name": glabel.get(g, ""),
+                "geni_url": "https://www.geni.com/people/x/%s" % g,
+                "geni_born": gborn.get(g, ""),
+                "geni_died": gdied.get(g, ""),
+                "geni_birth_place": gbplace.get(g, ""),
+                "hethel_name": name.get(h, ""),
+                "hethel_born": birth.get(h, ""),
+                "hethel_died": death.get(h, ""),
+                "hethel_birth_place": bplace.get(h, ""),
+                "hethel_xref": h,
+                # what Hethel wants to attach there
+                "parent_name": name.get(hp, ""),
+                "parent_born": birth.get(hp, ""),
+                "parent_died": death.get(hp, ""),
+                "parent_birth_place": bplace.get(hp, ""),
+                "parent_xref": hp,
+                "path_from_richard": via,
+            })
 
-rows.sort(key=lambda r: (r["on_your_line"] != "yes", r["both_parents_missing"] != "yes",
-                         -r["new_ancestors"], r["hethel_name"]))
+rows.sort(key=lambda r: (-r["new_ancestors"], r["generation"], r["parent_name"]))
+print("paired positionally: %d people; gaps: %d" % (len(paired), len(rows)), flush=True)
 
-fields = list(rows[0].keys()) if rows else ["hethel_name"]
 with OUT_CSV.open("w", encoding="utf-8", newline="") as fh:
-    w = csv.DictWriter(fh, fieldnames=fields)
+    w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()) if rows else ["parent_name"])
     w.writeheader()
     w.writerows(rows)
-print("wrote %s -- %d gap rows" % (OUT_CSV.name, len(rows)), flush=True)
 
-reachable = {r["missing_parent_xref"] for r in rows}
-both_n = sum(1 for r in rows if r["both_parents_missing"] == "yes")
-mine_n = sum(1 for r in rows if r["on_your_line"] == "yes")
+with (ROOT / "preservation" / "hethel-pairs.csv").open("w", encoding="utf-8", newline="") as fh:
+    w = csv.DictWriter(fh, fieldnames=list(paired[0].keys()) if paired else ["hethel_name"])
+    w.writeheader()
+    w.writerows(paired)
+
 OUT_JSON.write_text(json.dumps({
-    "verdicts": dict(counts),
-    "gap_rows": len(rows),
-    "both_parents_missing": both_n,
-    "on_your_line": mine_n,
-    "distinct_missing_parents": len(reachable),
+    "anchor": {"hethel": ANCHOR_HETHEL, "geni": ANCHOR_GENI},
+    "paired_positionally": len(paired),
+    "gaps": len(rows),
+    "people_only_in_hethel": len({x for r in rows for x in above(r["parent_xref"])}),
 }, ensure_ascii=False), encoding="utf-8")
 
 # ------------------------------------------------------------------ the page
@@ -351,91 +253,86 @@ def cell(v):
     return E(str(v)) if v else '<span class="none">&mdash;</span>'
 
 
-def place(v):
-    return (" &middot; " + E(v)) if v else ""
+def years(b, d):
+    if not b and not d:
+        return '<span class="none">&mdash;</span>'
+    return "%s &ndash; %s" % (E(b or "?"), E(d or "?"))
 
 
 cards = []
-for r in rows[:400]:
-    alt = ('<p class="alt">other candidates: %s</p>' % E(r["synoptic_alternates"])
-           if r["synoptic_alternates"] else "")
-    mine = '<span class="mine">your line</span>' if r["on_your_line"] == "yes" else ""
+for r in rows:
     cards.append(
-        '<article class="gap %s">'
-        '<header><span class="n">+%d</span><h3>%s</h3>' + mine +
-        '<span class="conf">%s match</span></header>'
-        '<div class="cols">'
-        '<section><h4>in the synoptic tree</h4><p class="lab">%s</p>'
-        '<p><a href="%s" target="_blank" rel="noopener">%s</a></p>%s</section>'
-        '<section><h4>the same person in Hethel?</h4><p class="lab">%s</p>'
-        '<dl><dt>born</dt><dd>%s%s</dd><dt>died</dt><dd>%s%s</dd>'
-        '<dt>spouse</dt><dd>%s</dd><dt>children</dt><dd>%s</dd></dl></section>'
-        '<section class="miss"><h4>%s Hethel gives, the tree lacks</h4><p class="lab">%s</p>'
-        '<dl><dt>born</dt><dd>%s%s</dd><dt>died</dt><dd>%s</dd>'
-        '<dt>spouse</dt><dd>%s</dd>'
-        '<dt>line above</dt><dd><b>%d</b> people only in Hethel</dd></dl></section>'
-        '</div></article>' % (
-            "both" if r["both_parents_missing"] == "yes" else "one",
-            r["new_ancestors"], E(r["hethel_name"]), E(r["confidence"]),
-            cell(r["synoptic_label"]),
-            E(r["geni_url"]), E(r["synoptic_geni_id"] or "no id"), alt,
-            cell(r["hethel_name"]),
-            cell(r["hethel_born"]), place(r["hethel_birth_place"]),
-            cell(r["hethel_died"]), place(r["hethel_death_place"]),
-            cell(r["hethel_spouse"]), cell(r["hethel_children"]),
-            E(r["missing_parent_role"]), cell(r["missing_parent_name"]),
-            cell(r["missing_parent_born"]), place(r["missing_parent_birth_place"]),
-            cell(r["missing_parent_died"]), cell(r["missing_parent_spouse"]),
+        '<article class="gap">'
+        '<header><span class="gen">gen %d</span>'
+        '<h3>attach a %s</h3>'
+        '<span class="n">+%d above</span></header>'
+        '<div class="body">'
+        '<div class="who"><h4>is this the same man or woman?</h4><table>'
+        '<tr><th>Geni</th><td class="nm">%s</td><td>%s</td><td>%s</td>'
+        '<td><a href="%s" target="_blank" rel="noopener">open</a></td></tr>'
+        '<tr><th>Hethel</th><td class="nm">%s</td><td>%s</td><td>%s</td><td></td></tr>'
+        '</table></div>'
+        '<div class="add"><h4>then Hethel gives this %s, and Geni has no one in that slot</h4>'
+        '<p class="nm big">%s</p><p class="meta">%s &middot; %s</p>'
+        '<p class="meta"><b>%d</b> people hang above &mdash; reachable only through Hethel</p>'
+        '</div></div></article>' % (
+            r["generation"], E(r["missing_role"]), r["new_ancestors"],
+            cell(r["geni_name"]), years(r["geni_born"], r["geni_died"]),
+            cell(r["geni_birth_place"]), E(r["geni_url"]),
+            cell(r["hethel_name"]), years(r["hethel_born"], r["hethel_died"]),
+            cell(r["hethel_birth_place"]),
+            E(r["missing_role"]), cell(r["parent_name"]),
+            years(r["parent_born"], r["parent_died"]), cell(r["parent_birth_place"]),
             r["new_ancestors"]))
 
 STYLE = (
-    ':root{--bg:#fbfaf8;--ink:#1d1b19;--mut:#6d6862;--line:#e2ddd6;--hot:#8c3b12}'
+    ':root{--bg:#fbfaf8;--ink:#1d1b19;--mut:#6d6862;--line:#e2ddd6;--hot:#8c3b12;'
+    '--warm:#f4efe7}'
     '@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){'
-    '--bg:#171512;--ink:#ece7e0;--mut:#9a938b;--line:#332f2a;--hot:#e08a52}}'
-    ':root[data-theme="dark"]{--bg:#171512;--ink:#ece7e0;--mut:#9a938b;'
-    '--line:#332f2a;--hot:#e08a52}'
-    'body{background:var(--bg);color:var(--ink);'
-    'font:15px/1.5 ui-serif,Georgia,serif;margin:0;padding:24px 16px;'
-    'max-width:1100px;margin-inline:auto}'
-    'h1{font-size:25px;margin:0 0 4px;line-height:1.25}'
-    '.sub{color:var(--mut);margin:0 0 26px;font-size:14px}'
-    '.gap{border:1px solid var(--line);border-radius:10px;margin:0 0 14px;overflow:hidden}'
-    '.gap.both{border-color:var(--hot)}'
-    'header{display:flex;gap:12px;align-items:baseline;padding:10px 14px;'
-    'border-bottom:1px solid var(--line)}'
-    'header h3{font-size:17px;margin:0;flex:1}'
+    '--bg:#171512;--ink:#ece7e0;--mut:#9a938b;--line:#332f2a;--hot:#e08a52;--warm:#201d19}}'
+    ':root[data-theme="dark"]{--bg:#171512;--ink:#ece7e0;--mut:#9a938b;--line:#332f2a;'
+    '--hot:#e08a52;--warm:#201d19}'
+    'body{background:var(--bg);color:var(--ink);font:15px/1.55 ui-serif,Georgia,serif;'
+    'margin:0;padding:24px 16px;max-width:900px;margin-inline:auto}'
+    'h1{font-size:25px;margin:0 0 6px;line-height:1.25}'
+    '.sub{color:var(--mut);margin:0 0 8px;font-size:14px}'
+    '.anchor{font-size:13px;color:var(--mut);border-left:3px solid var(--hot);'
+    'padding:6px 0 6px 12px;margin:0 0 26px}'
+    '.gap{border:1px solid var(--line);border-radius:10px;margin:0 0 16px;overflow:hidden}'
+    'header{display:flex;gap:12px;align-items:baseline;padding:9px 14px;'
+    'border-bottom:1px solid var(--line);background:var(--warm)}'
+    'header h3{font-size:15px;margin:0;flex:1;font-weight:600}'
+    '.gen{font:600 11px ui-monospace,SFMono-Regular,monospace;color:var(--mut)}'
     '.n{font:600 13px ui-monospace,SFMono-Regular,monospace;color:var(--hot)}'
-    '.conf{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.07em}'
-    '.mine{font:600 11px ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;'
-    'letter-spacing:.07em;color:var(--bg);background:var(--hot);padding:2px 7px;'
-    'border-radius:99px}'
-    '.cols{display:grid;grid-template-columns:repeat(3,1fr)}'
-    '.cols section{padding:12px 14px;border-right:1px solid var(--line)}'
-    '.cols section:last-child{border-right:0}'
-    '.miss{background:color-mix(in srgb,var(--hot) 8%,transparent)}'
+    '.body{display:grid;grid-template-columns:1.15fr 1fr}'
+    '.who{padding:12px 14px;border-right:1px solid var(--line)}'
+    '.add{padding:12px 14px}'
     'h4{font:600 11px ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;'
-    'letter-spacing:.07em;color:var(--mut);margin:0 0 6px}'
-    '.lab{font-size:16px;margin:0 0 6px}'
-    'dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:0;font-size:13px}'
-    'dt{color:var(--mut)}dd{margin:0}.none{color:var(--mut)}'
-    '.alt{font-size:12px;color:var(--mut);margin:6px 0 0}'
-    'a{color:var(--hot)}'
-    '@media(max-width:760px){.cols{grid-template-columns:1fr}'
-    '.cols section{border-right:0;border-bottom:1px solid var(--line)}}'
+    'letter-spacing:.06em;color:var(--mut);margin:0 0 8px}'
+    'table{border-collapse:collapse;width:100%;font-size:13px}'
+    'th{text-align:left;color:var(--mut);font-weight:600;padding:3px 10px 3px 0;'
+    'white-space:nowrap;vertical-align:top}'
+    'td{padding:3px 10px 3px 0;vertical-align:top}'
+    '.nm{font-size:15px}.big{font-size:18px;margin:0 0 4px}'
+    '.meta{font-size:13px;color:var(--mut);margin:0 0 3px}'
+    '.none{color:var(--mut)}a{color:var(--hot)}'
+    '@media(max-width:720px){.body{grid-template-columns:1fr}'
+    '.who{border-right:0;border-bottom:1px solid var(--line)}}'
 )
 
 OUT_HTML.write_text(
     '<!doctype html><html lang="en"><meta charset="utf-8">'
     '<meta name="viewport" content="width=device-width,initial-scale=1">'
-    '<title>Hethel Gaps</title><style>%s</style>'
-    '<h1>What the Hethel pedigree has above people the synoptic tree already holds</h1>'
-    '<p class="sub"><b>%d gaps on your own line</b> (badged, first) &middot; %d gaps in all '
-    '&middot; %d with BOTH parents missing (outlined) &middot; %d distinct people reachable only '
-    'through Hethel. Sorted by your line, then both-parents-missing, then the size of the line '
-    'hanging above the gap. Showing the first %d; all of them are in '
-    '<code>preservation/hethel-gaps.csv</code>. Nothing here is an identification &mdash; the '
-    'two middle columns are there so the identification can be made.</p>%s</html>' % (
-        STYLE, mine_n, len(rows), both_n, len(reachable), min(400, len(rows)),
-        "".join(cards)),
+    '<title>Borsheim Gaps</title><style>%s</style>'
+    '<h1>Richard Borsheim&rsquo;s ancestry: parents Hethel records and Geni leaves empty</h1>'
+    '<p class="sub"><b>%d gaps</b> &middot; %d people paired by position &middot; '
+    '%d people reachable only through Hethel &middot; sorted by the size of the line above.</p>'
+    '<p class="anchor">One hand identification and then graph position: '
+    '<b>@I160@ Richard Borsheim</b> &harr; <b>6000000177921459056 Richard Wade Borsheim</b>, '
+    'verified four generations on structure. After that the walk is father&rarr;father and '
+    'mother&rarr;mother. <b>No name decides anything.</b> The two names sit side by side below '
+    'so you can throw out a pairing I got wrong.</p>%s</html>' % (
+        STYLE, len(rows), len(paired),
+        len({x for r in rows for x in above(r["parent_xref"])}), "".join(cards)),
     encoding="utf-8")
-print("wrote %s" % OUT_HTML.name, flush=True)
+print("wrote %s and %s" % (OUT_HTML.name, OUT_CSV.name), flush=True)
