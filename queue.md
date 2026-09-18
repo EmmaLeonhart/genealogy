@@ -268,6 +268,11 @@ step link rather than descend.
 ⛔ Check `https://www.geni.com/gedcom/export/292373984150002914` for *"You are not allowed to export
 that profile"* first.
 
+**Checked 2026-09-17: it says exactly that**, and redirects to `/error`. So this one needs the
+same created-ancestor route Ursula needed — create a relative of `292373984150002914` this
+account owns, then run `Forest` off the created person, because the walk has to cross the step
+link rather than descend. Still to do; the commanded roster is ahead of it.
+
 
 ## THE ORDER, 2026-09-17. WORK IT TOP TO BOTTOM
 
