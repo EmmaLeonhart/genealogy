@@ -261,6 +261,56 @@ step link rather than descend.
 that profile"* first.
 
 
+## THE ORDER, 2026-09-17. WORK IT TOP TO BOTTOM
+
+Dictated in one go after a session that jumped between things. **None of these depend on an
+earlier one finishing** -- the order is hers -- except that the archive is best delved into
+before the connection investigations, because it may hold the answer.
+
+The Geni exports below run alongside all of this and are **the least significant part**:
+*"these actual Geni exports are kind of the least significant part of what we're doing here. It
+just happens that I got a lot of them all at once."*
+
+- **1. Copy `C:\Users\Emma\Documents\Preservation\genealogy` in wholesale.** Gitignore any file
+  too large to push, commit, push. 3.0 GB, 12,975 files. Nine files exceed GitHub's 100 MB hard
+  limit, including three 230 MB MyHeritage *Descent from Antiquity archive* backups,
+  `Theogrammaticus.ged` (188 MB) and `Gaiad.ged` (107 MB).
+
+- **2. Deal with the gitignored files**, often by converting them to GEDCOMs. Commit, push.
+
+- **3. Are the Pfinzing von Henfenfeld and Reuss connections in the archive?** Commit, push.
+  This is the *"I could have sworn there was a connection to two Bavarian noble families here
+  that I can't actually find"* lead.
+
+- **4. All the random CI/CD crap.** CI has been failing since before 2026-09-17, and the
+  three-ledger refactor has never run green: every pipeline run since it landed was cancelled by
+  the next push.
+
+- **5. Investigate the Pomeranian-Cypriot connections.**
+
+- **6. The ontology.** `P407` *language of work or name* is the piece left undone: which languages
+  a name belongs to is not a fact about the string and needs a source.
+
+- **7. An aggressive campaign to do the downloading properly.**
+
+- **8. Then a Cypriot / Russian / Bagrationi investigation.**
+
+- **9. Then whatever else.**
+
+### Why the cluster campaign exists
+
+*"we are trying to dig in on a specific cluster to make sure we have completely exhausted it."*
+The bet: the Dutch-Pomeranian cluster has a relatively high likelihood of a descent from
+antiquity -- the kings of Cyprus, or Russian nobility -- either of which reaches the **Georgian
+royal family, which is the goal**. It is strange in that it moves very far geographically and
+then fizzles out unexpectedly; the theory is that many people have investigated it a little and
+nobody pushed far, because it tends to be the less noble ancestry on a lot of paths.
+
+⛔ **THE POINT IS TO *ADD* BLOOD, NOT TO FIND IT IN THE GRAPH.** Ruled 2026-09-17 against exactly
+that mistake: measuring existing connectivity treats the tree as fixed, and in a 1.4M-person tree
+almost any two noble lines are reachable at some hop count, so a reachability number says nearly
+nothing. The exports are what create the edges.
+
 ## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
 
 Forest on each, in the order given. Then Descendants, in reverse of that order.

@@ -602,3 +602,31 @@ out/rebuild-*.err
 # It lived in reports/ and read as a curated correspondence, which it is not -- her 2026-09-06
 # ruling. Regenerate with scripts/extract-bio-qids.py; never track it.
 out/bio-qids.tsv
+
+# ⛔ THE PRESERVATION ARCHIVE'S OVERSIZED FILES, 2026-09-17. Copied in wholesale on instruction:
+# "just copy the entire directory in, and manually gitignore anything that's a too large file in
+# it and then work on it". GitHub REFUSES any file over 100 MB, so these ten cannot be pushed as
+# they are -- the queue's item 2 is dealing with them, "often by converting to gedcoms".
+#
+# Named one per line, never a pattern -- the same convention as the export zips, and it keeps
+# CLAUDE.md's "never write a *.ged or *.zip pattern" intact. Two of these ARE .ged files and are
+# ignored individually for size alone, not because they are corpus.
+
+# THE PRESERVATION ARCHIVE'S OVERSIZED FILES, 2026-09-17. Copied in wholesale on instruction:
+# "just copy the entire directory in, and manually gitignore anything that's a too large file in
+# it and then work on it". GitHub REFUSES any file over 100 MB, so these cannot be pushed as they
+# are -- queue item 2 is dealing with them, "often by converting to gedcoms".
+#
+# Named one per line, never a pattern -- the same convention as the export zips, which keeps
+# CLAUDE.md's "never write a *.ged or *.zip pattern" intact. Two of these ARE .ged files, ignored
+# for SIZE alone and not because they are corpus.
+preservation/genealogy/Family Historian Projects/Gaiad/Gaiad.fh_data/Gaiad.ged
+preservation/genealogy/MyHeritage-onedrive/Descent from Antiquity archive/Backup/Descent from Antiquity archive - 2024-09-15 16-11-51.zip
+preservation/genealogy/MyHeritage-onedrive/Descent from Antiquity archive/Backup/Descent from Antiquity archive - 2024-09-15 16-27-05.zip
+preservation/genealogy/MyHeritage-onedrive/Descent from Antiquity archive/Backup/Descent from Antiquity archive - 2024-09-15 16-36-40.zip
+preservation/genealogy/dropbox/Chronicle of the Progenitor.docx
+preservation/genealogy/dropbox/Gaiad.epub
+preservation/genealogy/dropbox/Liber Mythos.docx
+preservation/genealogy/dropbox/Mannus.ged.doc
+preservation/genealogy/dropbox/Perkwunos.docx
+preservation/genealogy/dropbox/Theogrammaticus.ged

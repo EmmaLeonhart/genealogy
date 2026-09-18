@@ -1,0 +1,738 @@
+
+====================================================================================
+[17 APR 2018 23:25:53 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[17 APR 2018 23:25:53 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat302E.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out302F.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err304F.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[17 APR 2018 23:26:00 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[17 APR 2018 23:26:00 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[17 APR 2018 23:26:00 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[17 APR 2018 23:26:00 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat4BB8.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out4BB9.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err4BBA.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[17 APR 2018 23:26:07 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[17 APR 2018 23:26:07 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[18 APR 2018 00:23:03 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[18 APR 2018 00:23:03 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat55AD.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out55AE.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err55AF.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[18 APR 2018 00:23:04 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[18 APR 2018 00:23:04 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[18 APR 2018 00:23:04 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[18 APR 2018 00:23:04 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat58CD.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out58CE.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err58CF.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[18 APR 2018 00:23:04 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[18 APR 2018 00:23:04 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[21 APR 2018 02:12:58 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 02:12:58 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datA059.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outA069.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errA06A.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[21 APR 2018 02:13:01 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 02:13:01 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[21 APR 2018 02:13:02 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 02:13:02 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datAE75.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outAE76.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errAE77.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[21 APR 2018 02:13:03 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 02:13:03 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[21 APR 2018 13:31:21 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 13:31:21 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datB8CD.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outB8DE.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errB8DF.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[21 APR 2018 13:31:22 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 13:31:22 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[21 APR 2018 13:31:22 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 13:31:22 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datBBCE.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outBBCF.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errBBD0.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[21 APR 2018 13:31:23 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 13:31:23 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[21 APR 2018 14:44:46 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 14:44:46 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datEBA7.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outEBA8.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errEBA9.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[21 APR 2018 14:44:47 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 14:44:47 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[21 APR 2018 14:44:47 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 14:44:47 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datF0FA.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outF0FB.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errF0FC.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[21 APR 2018 14:44:48 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 14:44:48 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[21 APR 2018 14:47:02 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 14:47:02 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datFD5A.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outFD6B.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errFD6C.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[21 APR 2018 14:47:03 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 14:47:03 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[21 APR 2018 14:47:03 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 14:47:03 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat129.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out12A.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err12B.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[21 APR 2018 14:47:04 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 14:47:04 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[21 APR 2018 15:11:01 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 15:11:02 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datF573.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outF574.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errF575.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[21 APR 2018 15:11:02 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 15:11:02 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[21 APR 2018 15:11:02 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[21 APR 2018 15:11:02 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datF874.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outF875.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errF886.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[21 APR 2018 15:11:03 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[21 APR 2018 15:11:03 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 00:41:23 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 00:41:23 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat2478.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out2488.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err2489.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 00:41:25 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 00:41:25 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 00:41:25 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 00:41:25 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat29BA.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out29BB.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err29BC.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 00:41:26 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 00:41:26 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 13:17:04 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 13:17:04 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datFC97.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outFC98.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errFCA8.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 13:17:05 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 13:17:05 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 13:17:05 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 13:17:05 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat91.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out92.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err93.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 13:17:06 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 13:17:06 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 14:38:22 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 14:38:22 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat6C31.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out6C32.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err6C33.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 14:38:23 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 14:38:23 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 14:38:23 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 14:38:23 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat6FED.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out6FEE.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err6FEF.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 14:38:24 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 14:38:24 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 17:54:53 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 17:54:53 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat85F8.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out85F9.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err85FA.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 17:54:54 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 17:54:54 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 17:54:54 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 17:54:54 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat8A6F.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out8A70.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err8A81.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 17:54:57 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 17:54:57 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 18:07:13 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 18:07:13 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datCEF2.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outCF02.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errCF23.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 18:07:16 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 18:07:16 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 18:07:16 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 18:07:16 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datDB1D.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outDB1E.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errDB1F.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 18:07:19 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 18:07:19 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 18:20:36 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 18:20:36 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat1075.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out10A5.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err10C5.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 18:20:41 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 18:20:41 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 18:20:41 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 18:20:41 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat22EC.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out22ED.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err22EE.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 18:20:44 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 18:20:44 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 19:41:10 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 19:41:10 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datD335.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outD346.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errD347.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 19:41:11 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 19:41:11 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 19:41:11 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 19:41:11 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datD5F7.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outD5F8.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errD5F9.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 19:41:11 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 19:41:11 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[22 APR 2018 21:02:21 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 21:02:21 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat2610.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out2611.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err2612.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[22 APR 2018 21:02:22 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 21:02:22 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[22 APR 2018 21:02:22 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[22 APR 2018 21:02:22 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat28E2.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out28E3.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err28E4.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[22 APR 2018 21:02:22 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[22 APR 2018 21:02:22 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[23 APR 2018 12:52:52 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[23 APR 2018 12:52:52 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat60EF.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out60F0.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err60F1.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[23 APR 2018 12:52:53 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[23 APR 2018 12:52:53 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[23 APR 2018 12:52:53 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[23 APR 2018 12:52:53 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat6372.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out6373.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err6374.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[23 APR 2018 12:52:54 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[23 APR 2018 12:52:54 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[23 APR 2018 14:24:29 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[23 APR 2018 14:24:29 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat41E8.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out41E9.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err41EA.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[23 APR 2018 14:24:30 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[23 APR 2018 14:24:30 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[23 APR 2018 14:24:30 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[23 APR 2018 14:24:30 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat44D9.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out44EA.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err44EB.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[23 APR 2018 14:24:30 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[23 APR 2018 14:24:30 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[23 APR 2018 15:28:51 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[23 APR 2018 15:28:51 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat2ECB.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out2ECC.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err2ECD.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[23 APR 2018 15:28:52 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[23 APR 2018 15:28:52 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0"/>
+
+
+====================================================================================
+[23 APR 2018 15:28:52 GMT-8] Downloading Binlog Commands - Preparing for execution...
+
+====================================================================================
+[23 APR 2018 15:28:52 GMT-8] Downloading Binlog Commands Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat30F1.tmp" --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out30F2.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err30F3.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-get-bin-log-transactions&site_admin=theogrammaticus@gmail.com&site_pwd=791164d2dd92abb749c1cc2eb89cfe5e766c4492&site_id=511413591&client_program_version=8.0.0.8397&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&revision=0&offset=0&limit=1
+------------------------------------------------------------------------------------
+[23 APR 2018 15:28:52 GMT-8] Downloading Binlog Commands Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[23 APR 2018 15:28:52 GMT-8] Downloading Binlog Commands Response:
+<?xml version="1.0"?>
+<Get-bin-log-transactions site_id="511413591" project_guid="5AD69DC538F9B1F82E06995A33EE91DD" client_revision="0" is_synced_with_ftb="0" total="0">
+  <transactions/>
+</Get-bin-log-transactions>
+
+
+====================================================================================
+[11 JUL 2018 09:28:45 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[11 JUL 2018 09:28:45 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\datE30A.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\outE31B.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\errE31C.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=1.373f21efaeb14380a3cb574ed6e254dd.832521481.1531325844.43200.33.85dc6c995fe54e39dd251110122cf9d1&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[11 JUL 2018 09:28:46 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[11 JUL 2018 09:28:46 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync error_code="200" error_desc="MyHeritage\Web\Ftb\Model\Api\ApiBase::handleAuthorizeUserResponse: Unauthorized request, error code: '201'" outcome="error"/>
+
+
+====================================================================================
+[11 JUL 2018 13:02:02 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[11 JUL 2018 13:02:03 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat2A40.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out2A41.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err2A42.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=1.373f21efaeb14380a3cb574ed6e254dd.832521481.1531339272.43200.33.e8ae222527385ae69387b5398c6bbb24&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[11 JUL 2018 13:02:03 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[11 JUL 2018 13:02:03 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync error_code="200" error_desc="MyHeritage\Web\Ftb\Model\Api\ApiBase::handleAuthorizeUserResponse: Unauthorized request, error code: '201'" outcome="error"/>
+
+
+====================================================================================
+[13 JUL 2018 07:56:27 GMT-8] Pre-Sync - Preparing for execution...
+
+====================================================================================
+[13 JUL 2018 07:56:27 GMT-8] Pre-Sync Request:
+"C:\PROGRA~2\MYHERI~1\Bin\FAMILY~2.EXE" https://www.myheritage.com/FP/API/FTB/ftb-api.php --data "@C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\dat4756.tmp" --progress-bar --output "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\out4767.tmp" --stderr "C:\Users\Eric\AppData\Roaming\MYHERI~1\Temp\err4787.tmp" --ssl-no-revoke -A "Family Tree Builder 8.0.0.8397"
+---DATA:---
+action=api-sync-pre-sync&site_admin=theogrammaticus@gmail.com&site_pwd=1.373f21efaeb14380a3cb574ed6e254dd.832521481.1531493713.43200.33.5d2ee00fa8594cf2bb8578aea8bdf400&project_guid=5AD69DC538F9B1F82E06995A33EE91DD&publishing_guid=&revision=0&client_program_version=8.0.0.8397&site_id=511413591&computer_name=DESKTOP-G4N757J&bin_log_transaction_offset=0
+------------------------------------------------------------------------------------
+[13 JUL 2018 07:56:27 GMT-8] Pre-Sync Connection result:
+0 (WAIT_OBJECT_0)
+
+------------------------------------------------------------------------------------
+[13 JUL 2018 07:56:27 GMT-8] Pre-Sync Response:
+<?xml version="1.0"?>
+<Pre-sync error_code="200" error_desc="MyHeritage\Web\Ftb\Model\Api\ApiBase::handleAuthorizeUserResponse: Unauthorized request, error code: '201'" outcome="error"/>
+
