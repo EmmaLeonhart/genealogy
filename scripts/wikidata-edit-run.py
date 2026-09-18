@@ -617,13 +617,31 @@ def _refuse_outside_the_universe(edits, path):
     not gated here: they carry no QID yet and `compose` already picks them from inside the
     universe by construction.
 
-    **Fails OPEN when the file is missing**, deliberately: a clean checkout or an older batch
-    should not silently post nothing and look like a quiet day. The composer prints the counts
-    every run, so an absent file is visible there.
+    ⛔ **IT FAILED OPEN AND THAT IS WHAT LET NINE NON-LOCAL EDITS OUT. IT NOW FAILS CLOSED.**
+
+    Reported 2026-09-18: *"the locality restriction is the alarm"*. On 2026-09-18 at 07:31 nine
+    `ja` labels were set on `Q135525010`, `Q135579354` and seven more -- items the composer's own
+    log lists as `entry point PENDING ... switches on 2027-01-01`, which is to say **outside the
+    universe**. They were reverted by hand one at a time a minute later.
+
+    Two things had to go wrong together and both were ours. `_refuse_pending_entry_points` was
+    deleted from this file earlier the same night, on a reading of *"if there's any kind of check
+    that somehow blocks anything from happening in the January 1st one, it's wrong"* that
+    stretched a rule about EDITABILITY WITHIN the universe into a licence to edit OUTSIDE it.
+    That left this gate alone, and this gate returned every edit untouched whenever
+    `out/wikidata/edit-universe.json` was absent.
+
+    **A missing universe file is not permission. It is the absence of the only thing that knows
+    where the universe is**, and a sender that cannot check locality must not send. The old
+    reasoning -- that a quiet day looks like a bug -- traded a visible non-event for an invisible
+    non-local edit, which is the wrong way round: a batch that posts nothing is noticed in
+    minutes, and an edit on somebody else's item is noticed by them.
     """
     allowed = _edit_universe()
     if not allowed:
-        return edits
+        print(f"{path.name}: REFUSING ALL {len(edits)} edits - out/wikidata/edit-universe.json is "
+              f"missing, so locality cannot be checked. Recompose before sending.")
+        return []
     kept, refused = [], []
     for e in edits:
         qid = e.get("qid")

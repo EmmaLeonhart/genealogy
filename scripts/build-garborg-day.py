@@ -7815,6 +7815,38 @@ def main():
                              live_labels)
         + _cjk_follows_mul(table)
         + _missing_cjk_labels(our_items, labels, table, live_labels))
+    # ⛔ **LOCALITY, ON EVERY DERIVED LABEL EDIT. THIS IS THE ALARM.**
+    #
+    # Ruled 2026-09-18, after nine `ja` labels were set on `Q135525010`, `Q135579354` and seven
+    # more -- items this very run's log prints as `entry point PENDING ... switches on
+    # 2027-01-01`, which is to say OUTSIDE THE UNIVERSE. They were reverted by hand, one at a
+    # time. *"The point is the fact that you are just deciding one day to remove the locality
+    # restriction."*
+    #
+    # The label emitters walk `our_items` -- the whole ledger -- and never asked where an item
+    # sits. `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL
+    # EDITS, NO EXCEPTIONS* covers labels exactly as it covers statements; nothing about a label
+    # makes it a smaller act on somebody else's item.
+    #
+    # Applied here, over the whole `derived_labels` list, rather than inside one emitter --
+    # § *A GUARD IN ONE EMITTER IS NOT A GUARD*, which is the mistake that produced this: the
+    # sender had a locality gate, the composer had one for statements, and the label path had
+    # neither.
+    _local = set(our_wikidata_subgraph) | set(one_step_qids)
+    _nonlocal = []
+    _kept = []
+    for _ln in derived_labels:
+        _m = re.match(r"^(Q\d+)	", _ln)
+        if _m and _m.group(1) not in _local:
+            _nonlocal.append(_m.group(1))
+        else:
+            _kept.append(_ln)
+    if _nonlocal:
+        _names = sorted(set(_nonlocal))
+        print(f"label edits REFUSED as non-local: {len(_nonlocal)} on {len(_names)} item(s) "
+              f"neither in the universe nor one step beyond it: "
+              + ", ".join(_names[:6]) + (" ..." if len(_names) > 6 else ""))
+    derived_labels = _kept
     covered = _hand_covered_slots(hand)
     trimmed = _without_hand_covered(derived_labels, covered)
     if covered and len(trimmed) != len(derived_labels):
