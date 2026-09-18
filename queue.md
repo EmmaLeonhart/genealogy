@@ -311,7 +311,27 @@ that mistake: measuring existing connectivity treats the tree as fixed, and in a
 almost any two noble lines are reachable at some hop count, so a reachability number says nearly
 nothing. The exports are what create the edges.
 
-## COMMANDED EXPORTS, 2026-09-17 — one cluster, exhausted
+## COMMANDED EXPORTS, 2026-09-17 — ABANDONED
+
+⛔ **STOPPED BY INSTRUCTION, 2026-09-17:** *"after downloading the finished gedcom abandon doing
+the exports since your job is different stuff"*, and earlier: *"these actual Geni exports are kind
+of the least significant part of what we're doing here."*
+
+**15 Forest exports were taken**, the last being NN von Flemming at 22:54. 215 zips sit in
+`~/Downloads`, unfiled — filing them into `exports/` is hers.
+
+The roster below is left listed rather than deleted, so the cluster is recoverable if it is ever
+picked up again. Nothing here is running and nothing should be dispatched from it.
+
+⛔ **`6000000227803023904` NN von Eickstedt NEEDS A RE-RUN.** It was requested at 22:10, its export
+slot then freed with no file produced, and its download link yields nothing.
+
+⛔ **AND `6000000227803104825` Knut father of Ingegerd WAS EXPORTED TWICE**, 21:27 and 21:34. Geni
+refuses a second export while one is generating and the refusal appears as a banner on a page that
+*also* still reads "Being Created", so it looks like success. The reliable instrument is
+`https://www.geni.com/gedcom`, which lists every request with a timestamp; the submit page is a
+static snapshot and lies about state. Do not batch a download click with the next dispatch.
+
 
 Forest on each, in the order given. Then Descendants, in reverse of that order.
 The Forest order runs up the generations; the reverse runs back down them.
