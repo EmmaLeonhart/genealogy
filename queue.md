@@ -275,6 +275,7 @@ Delete a line when its zip is in `~/Downloads`. Filing the zips into `exports/` 
 - `6000000227297029878` NN — **2 existing Forest exports**, ruled *"run it anyway"*
 - `6000000227803032874` NN van Valckenier — 0 in corpus
 - `6000000227803038858` NN Jude — 0 in corpus
+- `6000000227803060855` NN Hessøen — 0 in corpus
 
 ## Forest exports
 
