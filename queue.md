@@ -321,10 +321,7 @@ One at a time, cannot be cancelled. Delete a line when its zip is in `~/Download
 ### `Forest`
 - `6000000227802431855` Lars father of Sigrid — done
 - `6000000227803061825` David Fjose — done
-- `6000000227803032874` NN van Valckenier — running
-- `6000000227803038858` NN Jude
-- `6000000227803060855` NN Hessøen
-- `6000000227803023862` NN Bulgerss
+- `6000000227803023862` NN Bulgerss — running
 - `6000000227802697066` Olof father of Kerstin
 - `6000000227803089850` Knud Porse
 - `6000000227803024957` NN Knutsdatter
@@ -371,7 +368,6 @@ One at a time, cannot be cancelled. Delete a line when its zip is in `~/Download
 - `6000000227802697066` Olof father of Kerstin
 - `6000000227803023862` NN Bulgerss
 - `6000000227803060855` NN Hessøen
-- `6000000227803038858` NN Jude
 - `6000000227803032874` NN van Valckenier
 - `6000000227297029878` NN
 - `6000000227803027847` Adrian Falchener
