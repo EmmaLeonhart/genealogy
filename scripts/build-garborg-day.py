@@ -915,6 +915,55 @@ def manual_p2600_lines(priority_qids=(), subgraph=None, ring=None):
     return lines, len(want), len(want) - len(missing), refused
 
 
+#: ⛔ **THE TWO PEOPLE WHOSE ANCESTRY GROWS EVERY RUN.** Ruled 2026-09-18, given as two Geni
+#: links and two QIDs: *"for these two people I want you to go crazy with their ancestors. Every
+#: run should add a full ring to their ancestry."*
+#:
+#:     6000000000757999620  Q141493478  Inger Axelsdatter Guntersberg
+#:     6000000002621242041  Q141450322  Olfvir / Olver Romer
+#:
+#: ⛔ **AND THE LEDGER'S GENI ID FOR `Q141450322` IS THE HUSK.** `garborg-qids.tsv` pairs that
+#: QID with `6000000227289508960`, which `queue.md` records as a merged-away profile that
+#: REDIRECTS to `6000000002621242041`. Both ids seed the walk, because the tree may hold either
+#: and a seed that resolves to nobody grows nothing while printing a cheerful zero.
+PRIORITY_ANCESTOR_SEEDS = (
+    "6000000000757999620",      # Inger Axelsdatter Guntersberg, Q141493478
+    "6000000002621242041",      # Olfvir / Olver Romer, Q141450322
+    "6000000227289508960",      # the husk the ledger still pairs with Q141450322
+)
+
+
+def priority_ancestor_ring(our_items, fam_p, famc):
+    """The next FULL generation of ancestors of `PRIORITY_ANCESTOR_SEEDS`, uncapped.
+
+    Walks up from the seeds THROUGH people who already hold a QID and stops at the first person
+    above who does not. Everybody standing on that boundary is returned -- the whole ring, not a
+    sample of it and not a quota slice, because the instruction was *a full ring* every run.
+
+    **It advances itself.** The people this returns are created, enter the ledger, and are
+    therefore walked THROUGH on the next run rather than returned again -- so the boundary moves
+    one generation further out each time with nothing to maintain. That is the whole design: no
+    depth counter, no cursor, no state, and no way for it to quietly stop.
+
+    **It is a frontier and not a depth.** Where one branch is already on Wikidata six
+    generations up and another stops at two, this returns both boundaries at once. A depth
+    counter would hold the deep branch back to the shallow one's pace.
+    """
+    frontier, seen, stack = {}, set(), [g for g in PRIORITY_ANCESTOR_SEEDS]
+    while stack:
+        g = stack.pop()
+        if g in seen:
+            continue
+        seen.add(g)
+        for fam in famc.get(g, []):
+            for parent in fam_p.get(fam, []):
+                if parent in our_items:
+                    stack.append(parent)
+                else:
+                    frontier.setdefault(parent, fam)
+    return frontier
+
+
 def read_tree():
     fam_p = collections.defaultdict(list)
     fam_c = collections.defaultdict(list)
@@ -6261,6 +6310,19 @@ def main():
         compose_why = picked
         print(f"composed batch: {len(to_create)} people to create "
               f"(the unrestricted ring would have been {before})")
+
+        # ⛔ **THE TWO PRIORITY SEEDS ARE ADDED AFTER THE PICK AND ARE NOT SUBJECT TO IT.**
+        # `compose` chooses a batch to a shape, and a full ring is not a shape it can express --
+        # it would take a slice of the ring and the ancestry would advance a fraction of a
+        # generation a day. So the ring is unioned in afterwards, uncapped. Every other guard
+        # below still applies: the duplicate check, `--exclude`, the label-collision hold and
+        # the locality gate all run after this point.
+        _ring = priority_ancestor_ring(our_items, fam_p, famc)
+        _added = {g: f for g, f in _ring.items() if g not in to_create}
+        to_create.update(_added)
+        print(f"priority ancestor ring: {len(_ring)} people directly above the ancestry of "
+              f"{len(PRIORITY_ANCESTOR_SEEDS)} seed(s) already on Wikidata, "
+              f"{len(_added)} of them new to this batch")
 
     else:
         compose_why = {}

@@ -313,6 +313,31 @@ that mistake: measuring existing connectivity treats the tree as fixed, and in a
 almost any two noble lines are reachable at some hop count, so a reachability number says nearly
 nothing. The exports are what create the edges.
 
+## ⛔ A FULL RING OF ANCESTRY ON TWO PEOPLE, EVERY RUN. Ruled 2026-09-18
+
+*"for these two people I want you to go crazy with their ancestors. Every run should add a full
+ring to their ancestry."*
+
+    6000000000757999620  Q141493478  Inger Axelsdatter Güntersberg
+    6000000002621242041  Q141450322  Olfvir / Ølver Rømer
+
+`PRIORITY_ANCESTOR_SEEDS` and `priority_ancestor_ring` in `scripts/build-garborg-day.py`. The
+walk goes up THROUGH people who already hold a QID and returns everybody standing on the first
+boundary above -- the whole ring, unioned in after `compose` picks, uncapped, because a full ring
+is not a shape `compose` can express and a slice of it advances the ancestry a fraction of a
+generation a day.
+
+**It advances itself and there is nothing to maintain**: what it returns gets created, enters the
+ledger, and is walked THROUGH next run instead of returned again. No depth counter, no cursor, no
+state, and no way for it to quietly stop.
+
+⛔ **THE LEDGER'S GENI ID FOR `Q141450322` IS THE HUSK.** `garborg-qids.tsv` pairs it with
+`6000000227289508960`, which redirects to `6000000002621242041` and has no `FAMC` of its own --
+so seeding on the ledger alone would have grown nothing while printing a cheerful zero. Both ids
+seed the walk. Correcting the ledger row is still owed.
+
+**First measurement, 2026-09-18: 8 people on the frontier**, 7 walked through.
+
 ## ⛔ TOP PRIORITY EXPORTS, from 00:30 on 2026-09-18 — run top to bottom, one at a time
 
 Ahead of the commanded roster below. Geni allows one export at a time, so this is a strict

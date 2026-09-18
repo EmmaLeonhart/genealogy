@@ -45204,3 +45204,31 @@ run through placeholder nodes like `Hethelo` and are therefore not routes.
 next session the time it takes to establish that it is finished — here, a file-by-file comparison
 of 12,975 paths and four commit messages — and that cost is paid every session until somebody
 deletes the line.
+
+## 2026-09-18 — a full ring of ancestry on two people, every run
+
+Instructed, with two Geni links and two QIDs: *"for these two people I want you to go crazy with
+their ancestors. Every run should add a full ring to their ancestry."*
+
+`priority_ancestor_ring` in `scripts/build-garborg-day.py` walks up from the seeds **through**
+people who already hold a QID and returns everybody standing on the first boundary above. It is
+unioned into `to_create` after `compose` has picked, and it is uncapped: a full ring is not a
+shape `compose` can express, so leaving it to the picker would advance the ancestry by a fraction
+of a generation a day. Every guard after that point still applies — the duplicate check,
+`--exclude`, the label-collision hold and the locality gate.
+
+**It advances itself.** What it returns is created, enters the ledger, and is therefore walked
+*through* on the next run rather than returned again, so the boundary moves one generation out
+each time. No depth counter, no cursor, no stored state — and so no way for it to stop quietly,
+which is the failure mode every other long-running thing here has had.
+
+It is a frontier rather than a depth. Where one branch is already on Wikidata six generations up
+and another stops at two, both boundaries come back at once; a depth counter would hold the deep
+branch to the shallow one's pace.
+
+⛔ **The ledger pairs `Q141450322` with a husk.** `garborg-qids.tsv` gives that QID the Geni id
+`6000000227289508960`, which redirects to `6000000002621242041` and carries no `FAMC` at all — so
+a walk seeded from the ledger would have found nothing and said so cheerfully. Both ids seed it.
+Fixing the ledger row is still owed.
+
+Measured from the wired path before pushing: 7 people walked through, **8 on the frontier**.
