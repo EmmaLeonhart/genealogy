@@ -22743,7 +22743,7 @@ Sources in merge order (later sources win value conflicts):
 | record | count |
 | --- | ---: |
 | FAM | 847833 |
-| INDI | 1758562 |
+| INDI | 1758563 |
 | SUBM | 57965 |
 
 ## What each source contributed
@@ -45481,8 +45481,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227715260898.ged` | 43 | 179 | 0 | 7634 | 118 |
 | `export-Forest-6000000227739381826.ged` | 111 | 442 | 1 | 7278 | 715 |
 | `export-Forest-6000000227755683825.ged` | 8 | 51 | 0 | 7569 | 62 |
-| `wikidata-qid-links.ged` | 0 | 1 | 0 | 371 | 0 |
-| `manual-parental-correspondences.ged` | 0 | 0 | 0 | 1549 | 0 |
+| `wikidata-qid-links.ged` | 0 | 2 | 0 | 440 | 0 |
+| `manual-parental-correspondences.ged` | 0 | 0 | 0 | 1586 | 0 |
 
 ## Pointers to records we do not have
 
