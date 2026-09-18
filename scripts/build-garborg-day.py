@@ -7832,12 +7832,40 @@ def main():
     # § *A GUARD IN ONE EMITTER IS NOT A GUARD*, which is the mistake that produced this: the
     # sender had a locality gate, the composer had one for statements, and the label path had
     # neither.
+    # ⛔ **AN ITEM WITH A KANJI LABEL TAKES NO LABEL EDIT AT ALL. NONE. ANY LANGUAGE.**
+    #
+    # Ruled 2026-09-18: *"literally anything that has a japanese kanji label should just be
+    # fucking ignored ... no label edits on that thing at all since it uses a totally different
+    # algorithm"*.
+    #
+    # This is wider than the CJK columns and wider than locality. A person whose Japanese label
+    # is written in kanji is modelled by a different set of rules from the Latin-name pipeline --
+    # `name modelling.txt` and § *A title inside a label takes the NATIVE form in CJK, never a
+    # transliteration* -- so our `mul`, `en`, `ja`, `zh`, `ko` and aliases are all derived the
+    # wrong way for them. Emitting any of them is a guess dressed as a correction.
+    #
+    # What this prevents is what happened: nine katakana transliterations of a LATIN reading
+    # written over real kanji on 2026-09-18, reverted by hand one at a time.
+    #
+    # ⛔ **THE HAN RANGE IS WRITTEN AS ASCII ESCAPES.** `CLAUDE.md` is explicit and the cost is
+    # recorded: the literal form ate the Hangul block and lost 5,338 Korean people. Ranges are
+    # CJK Unified Ideographs, Extension A, and Compatibility Ideographs.
+    _HAN = re.compile("[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]")
+    _kanji_items = {q for (q, lang), v in (live_labels or {}).items()
+                    if lang == "ja" and v and _HAN.search(v)}
+    if _kanji_items:
+        print(f"label edits: {len(_kanji_items)} item(s) hold a KANJI ja label and are excluded "
+              f"from every label edit, any language")
+
     _local = set(our_wikidata_subgraph) | set(one_step_qids)
     _nonlocal = []
+    _kanji_skipped = []
     _kept = []
     for _ln in derived_labels:
         _m = re.match(r"^(Q\d+)	", _ln)
-        if _m and _m.group(1) not in _local:
+        if _m and _m.group(1) in _kanji_items:
+            _kanji_skipped.append(_m.group(1))
+        elif _m and _m.group(1) not in _local:
             _nonlocal.append(_m.group(1))
         else:
             _kept.append(_ln)
@@ -7846,6 +7874,10 @@ def main():
         print(f"label edits REFUSED as non-local: {len(_nonlocal)} on {len(_names)} item(s) "
               f"neither in the universe nor one step beyond it: "
               + ", ".join(_names[:6]) + (" ..." if len(_names) > 6 else ""))
+    if _kanji_skipped:
+        _kn = sorted(set(_kanji_skipped))
+        print(f"label edits REFUSED, item holds a kanji label: {len(_kanji_skipped)} on "
+              f"{len(_kn)} item(s): " + ", ".join(_kn[:6]) + (" ..." if len(_kn) > 6 else ""))
     derived_labels = _kept
     covered = _hand_covered_slots(hand)
     trimmed = _without_hand_covered(derived_labels, covered)
@@ -7855,6 +7887,39 @@ def main():
     lines = _cap_label_edits(
         lines, clan_block, hand + trimmed,
         priority=_cjk_priority_qids(our_items))
+
+    # ⛔ **THE LAST GATE: LOCALITY OVER THE WHOLE BATCH, NOT ONE EMITTER.**
+    #
+    # Ruled 2026-09-18. Nine non-local `ja` labels reached Wikidata and were reverted by hand;
+    # the fix put a locality filter on `derived_labels`, and the very next compose still carried
+    # `P22`, `P40` and `P2600` lines on the same out-of-universe items. **Labels were never the
+    # scope.** `CLAUDE.md` § *AN EDIT GOES ON AN ITEM IN THE UNIVERSE, OR ONE STEP BEYOND IT.
+    # ALL EDITS, NO EXCEPTIONS* means the batch, not a path through it.
+    #
+    # The cause was a widened population: `ledger()` was changed to return all three
+    # identification ledgers, which put 442 Jan-1 entry points -- deliberately inactive until
+    # 2027-01-01 and outside the universe -- into `our_items`, the set every emitter walks. One
+    # refactor, and every emitter silently acquired 442 new targets.
+    #
+    # So this sits where the file is written, after every emitter has had its say, and drops any
+    # line whose SUBJECT is an existing item outside the universe and its ring. `CREATE` blocks
+    # and their `LAST` lines are untouched: a creation has no QID yet and `compose` already picks
+    # them from inside the universe.
+    _allowed = set(our_wikidata_subgraph) | set(one_step_qids)
+    _dropped = []
+    _final = []
+    for _ln in lines:
+        _m = re.match(r"^(Q\d+)	", _ln)
+        if _m and _m.group(1) not in _allowed:
+            _dropped.append(_m.group(1))
+            continue
+        _final.append(_ln)
+    if _dropped:
+        _d = sorted(set(_dropped))
+        print("BATCH GATE: dropped %d line(s) on %d item(s) neither in the universe nor one "
+              "step beyond it: %s%s" % (len(_dropped), len(_d), ", ".join(_d[:8]),
+                                        " ..." if len(_d) > 8 else ""))
+    lines = _final
 
     out = ROOT / "reports" / "wikidata-garborg-day.txt"
     # **ONE file, names first**, ruled 2026-08-30: one file rather than two, names first and
