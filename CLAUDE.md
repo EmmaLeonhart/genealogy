@@ -464,6 +464,14 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   becomes a label, and neither person is left unlabelled.
 - **A bare given name is not a label** — the farm name is the surname; else `Given NN`.
 - **Redacted people go in.** `<private> /Surname/` keeps a real surname.
+- **⛔ THE KANJI SIGNAL DECIDES WHICH LABEL UNIVERSE A PERSON IS IN.** A `ja` label in **kanji**
+  means a SINOSPHERE name: a different universe of labels, and **no label edit in any language**.
+  A `ja` label in **katakana or blank** means not Sinosphere, and ours to edit. `ko` and `zh` are
+  not reliable signals on their own. **This is why `ja` is edited so aggressively — the editing IS
+  the safeguard.** Writing katakana over kanji does not damage a label, it FLIPS THE
+  CLASSIFICATION: the person stops reading as Sinosphere, falls into the Latin pipeline, and the
+  corruption compounds. Nine went out 2026-09-18 and were reverted by hand.
+  → [names](docs/rules/names.md)
 - **The gate is `ja` + `zh` + `ko`. CJK INCLUDES KOREAN.** All three readings are produced for
   everyone; culture only picks which is promoted to `mul`.
 - **A title inside a label takes the NATIVE form in CJK**, never a transliteration. An unknown
