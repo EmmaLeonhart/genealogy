@@ -261,6 +261,21 @@ step link rather than descend.
 that profile"* first.
 
 
+## ⛔ COMMANDED FOREST EXPORTS, 2026-09-17 — IN FLIGHT
+
+Given one at a time in conversation. Geni runs **one export at a time** and a submitted export
+**cannot be cancelled**, so these are strictly serial. Corpus grepped before each, per
+`CLAUDE.md` § *GREP THE CORPUS BEFORE RUNNING AN EXPORT*; the count is beside each.
+
+Delete a line when its zip is in `~/Downloads`. Filing the zips into `exports/` is hers.
+
+- `6000000227802431855` Lars father of Sigrid — 0 in corpus — SUBMITTED, task `6000000227802432856`
+- `6000000227803061825` David Fjose — 0 in corpus
+- `6000000227803027847` Adrian Falchener — 0 in corpus
+- `6000000227297029878` NN — **2 existing Forest exports**, ruled *"run it anyway"*
+- `6000000227803032874` NN van Valckenier — 0 in corpus
+- `6000000227803038858` NN Jude — 0 in corpus
+
 ## Forest exports
 
 These are people I want exports on but they are not in the priority in the same way. Often cover possibly underserved people but their significance is unclear
