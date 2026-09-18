@@ -639,8 +639,12 @@ def _refuse_outside_the_universe(edits, path):
     """
     allowed = _edit_universe()
     if not allowed:
-        print(f"{path.name}: REFUSING ALL {len(edits)} edits - out/wikidata/edit-universe.json is "
-              f"missing, so locality cannot be checked. Recompose before sending.")
+        here = "present" if EDIT_UNIVERSE.exists() else "NOT ON DISK"
+        print(f"{path.name}: REFUSING ALL {len(edits)} edits - the edit universe is empty. "
+              f"{EDIT_UNIVERSE} is {here}. If it is not on disk the file was very likely not "
+              f"CHECKED OUT rather than never written: this workflow uses a sparse checkout and "
+              f"a gate whose input is missing from that list blocks every edit. If it is "
+              f"present but empty, recompose before sending.")
         return []
     kept, refused = [], []
     for e in edits:

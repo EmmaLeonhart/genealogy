@@ -115,6 +115,13 @@ jobs:
       # A full checkout is minutes of runner time every morning for nothing, and
       # `sparse-checkout-cone-mode: false` is what lets a single FILE be named
       # rather than its whole directory -- reports/ alone is 1.1 GB.
+      # ⛔ **THE GATE NEEDS ITS OWN EVIDENCE CHECKED OUT, OR IT REFUSES EVERYTHING.**
+      # out/wikidata/edit-universe.json is what _edit_universe() reads. It was not in
+      # this list, so it was never on disk here: the loader returned an empty set, the
+      # locality gate failed CLOSED and run 35378526623 REFUSED ALL 143 edits of a live
+      # daily batch. Failing closed is right, but the refusal prints "missing", which
+      # reads as though the composer never wrote the file -- it had, and it was committed.
+      # A sparse checkout that omits a gate's input turns the gate into a total block.
       - uses: actions/checkout@v4
         if: steps.gate.outputs.go == 'true'
         with:
@@ -126,6 +133,7 @@ jobs:
             /reports/wikidata-garborg-day*.txt
             /reports/wikidata-edits-applied.tsv
             /out/wikidata/unlinked-items.json
+            /out/wikidata/edit-universe.json
 
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.go == 'true'
