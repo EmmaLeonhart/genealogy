@@ -623,3 +623,24 @@ above 4,000 exported off a created ancestor, the root stops on a round that retu
 is a DIFFERENT person. Abul Hamza's roster was six days stale on 2026-09-18 and hid 71
 generations -- round 3 read zero against a top of 618, and the same sweep on the rebuilt frame
 returned a 15,000 cap hit. A stale frame reports a root as finished when it is not.
+
+### ⛔ THE COLLECTOR IS LEFT WITH `mcThreshold` 99999999. RESET IT TO 4000 BEFORE ANY SWEEP
+
+Set 2026-09-18 so the Inal Kut Chor census could run readings-only while Geni refused every
+export. **A sweep dispatched on top of it will read forty pages, fire no climb, and report no
+hits -- which is indistinguishable from a root that is finished.** That is the exact shape of
+failure that closed Abul Hamza twice on a stale frame the same day.
+
+`{type:"montecarlo"}` sets it from `threshold`, so any normal dispatch clears it. Nothing else does.
+
+### Owed on Inal Kut Chor `6000000035218736073`, round 1
+
+- `6000000048540306833` read **5,174** -- owed a climb and a `Descendants` export off a created
+  ancestor. Round 1 is NOT closed; round 2 follows once this is worked.
+
+### Owed from 2026-09-18, blocked on the export refusal
+
+- **Ingemund Grimsson `6000000227816621867`** -- Ancestors, Descendants, Forest. ELEVATED.
+- **14 of the 19 created-today Forests** -- `reports/created-today-2026-09-18.tsv`.
+- Check the year counter on <https://www.geni.com/gedcom> first. A submit that does not move it
+  was refused, whatever the page says.
