@@ -341,8 +341,11 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
   they stopped Wikidata catching OURS.
 
   - **Individuals** get `Den` from `life_description` in `build-garborg-day.py`:
-    `ABT 1518 Bergen, Norway - 1580`. Dates are `birth_date_raw`/`death_date_raw` so the GEDCOM
-    qualifiers survive; places come from `reports/derived-places.csv`. **A missing side is
+    `circa 1518 Bergen, Norway - 1580`. Dates are `birth_date_raw`/`death_date_raw` so the GEDCOM
+    qualifiers survive; places come from `reports/derived-places.csv`. **The qualifier words are
+    written out, not shouted** — `25 Oct 1801`, `Bet 848 and 850`, and `ABT` becomes **`circa`**,
+    lower case, because it is a word in the sentence rather than a label on it (ruled 2026-09-19).
+    `DATE_WORDS` in `build-garborg-day.py` is the authority. **A missing side is
     omitted, never left as a leading dash** — `died 1590`, not `- 1590`, which was 20% of the
     attested genealogical import this form was measured against.
   - **⛔ `PLAC` STAYS OUT OF THE SYNOPTIC TREE.** The 2026-09-10 ruling is intact: `KEEP_TAGS`

@@ -1014,8 +1014,12 @@ DESC_MAX = 240
 DATE_WORDS = {w: w.title() for w in (
     "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
     "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
-    "ABT", "AFT", "BEF", "EST", "CAL", "INT", "BET", "FROM",
+    "AFT", "BEF", "EST", "CAL", "INT", "BET", "FROM",
 )}
+# ABT is the one GEDCOM abbreviation with an ordinary English word behind it, and it is the
+# commonest of them. Ruled 2026-09-19: *"ABT should turn into circa"*. Lower case, because it
+# is a word in the sentence rather than a label on it.
+DATE_WORDS["ABT"] = "circa"
 DATE_WORDS.update({"AND": "and", "TO": "to", "BC": "BC", "AD": "AD"})
 
 
@@ -1026,8 +1030,9 @@ def normalise_date_case(raw):
 def life_description(facts_row, places_row):
     """`12 Mar 1550 Bergen - Aft 1596 Isnäinen, Pernaja` or `""`.
 
-    Dates come from `birth_date_raw`/`death_date_raw`, so `ABT 1518` stays `ABT 1518`. Places
-    come from `reports/derived-places.csv`, which the merge writes beside the tree because
+    Dates come from `birth_date_raw`/`death_date_raw`, so the GEDCOM qualifier survives
+    rather than being parsed away: `ABT 1518` reads out as `circa 1518`. Places come
+    from `reports/derived-places.csv`, which the merge writes beside the tree because
     `CLAUDE.md`'s 2026-09-10 ruling keeps `PLAC` out of `merged.ged`.
 
     A side with neither a date nor a place is omitted entirely rather than left as an empty

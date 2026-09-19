@@ -45283,3 +45283,32 @@ to paste. The fix reads `out/wikidata/priority-ring.json` and forces those creat
 its first run printed `0 creation(s) forced automatic` because a `P2600` claim parses to
 `{'type': 'string', 'value': ...}` and the check tested `isinstance(v, str)`. A guard that
 matches nothing and prints a number reads exactly like a guard that ran.
+
+## 2026-09-19 — `ABT` reads as `circa`, and the pending correction batch was already stale
+
+Ruled today: *"ABT should turn into circa"*. `DATE_WORDS` title-cases every other GEDCOM
+qualifier — `AFT`, `BEF`, `BET`, `FROM` — because they are labels stuck on a date. `ABT` is the
+one with an ordinary English word behind it, and it is the commonest of them, so it is written
+out in lower case as a word in the sentence: `circa 1518 Bergen, Norway - 1580`.
+
+`life_description`'s docstring still said `ABT 1518` stays `ABT 1518`, which had been true for
+about an hour — the case-normalisation commit `f86f0874` landed first and nobody went back to it.
+Corrected, and `CLAUDE.md`'s worked example with it, since that example is what gets copied.
+
+⛔ **`reports/wikidata-description-case-fix.qs` was written before the ruling and would have sent
+`Abt`.** It is the batch that repairs 25 descriptions that went out in capitals; 18 of its
+strings carried `Abt`, so sending it as it stood would have fixed the case and immediately
+re-introduced the thing the ruling had just removed. It now carries both, and `Den` replaces, so
+it is still one edit per item.
+
+⛔ **`reports/wikidata-p2600-malformed-fix.qs` CANNOT BE SENT AND IS NOT COMMITTED.** It removes
+49 `P2600` values that are full profile URLs rather than bare ids and adds the extracted id
+beside each. Gated against `out/wikidata/edit-universe.json`: **all 37 items are outside the
+universe and outside the ring** — 0 in, 0 one step beyond. `CLAUDE.md` § *AN EDIT GOES ON AN ITEM
+IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS, NO EXCEPTIONS* is the whole of the answer, and
+a malformed identifier on a stranger's item is exactly the case that rule was written for. Left
+in the working tree pending a decision; it has no generator, so nothing regenerates it either.
+
+**The path requester is up on a 7,956-person batch**, `alive:true`, `fail:0`, first three
+requests `202`. Chrome had been started by hand without the throttling flags and was relaunched
+through `scripts/start-chrome.ps1` — § *the symptom is indistinguishable from a healthy run*.
