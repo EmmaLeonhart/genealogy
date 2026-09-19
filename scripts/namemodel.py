@@ -1748,7 +1748,16 @@ def not_a_name(token: str) -> bool:
     # all punctuation except a hyphen or apostrophe between letters, so `L.` was already being
     # refused before the single-letter rule existed. One letter followed by a period is an
     # abbreviated name and Wikidata carries items for exactly that shape.
-    if len(t) == 2 and t[1] == "." and t[0].isascii() and t[0].isalpha():
+    #
+    # ⛔ **AND THE LETTER HAS TO BE UPPERCASE.** `L.` is an initial; `h.` is an abbreviated
+    # WORD, and the corpus is full of them -- Polish `h.` for *herbu* (`NN h. Nałęcz`), `kn.`,
+    # `sv.`. The 2026-09-17 rule tested `isalpha` only, so every one of those passed as a name
+    # for the same reason `L.` does, and the junk list in
+    # `test_the_only_punctuation_in_a_name_is_a_hyphen` has named `h.` since 2026-09-14. An
+    # initial is written uppercase and an abbreviated word is not, which is the whole of the
+    # difference and costs nothing that the ruling was about.
+    if (len(t) == 2 and t[1] == "." and t[0].isascii()
+            and t[0].isalpha() and t[0].isupper()):
         return False
     # ⛔ **A TOKEN HERE CAN LEGITIMATELY BE SEVERAL WORDS, AND THIS RULE NEARLY KILLED THEM.**
     # `join_particles` has produced multi-word tokens since it was written -- `ben Phinhas`,
@@ -1764,7 +1773,19 @@ def not_a_name(token: str) -> bool:
     if len(parts) > 1:
         if all(part.casefold() in NOT_NAME_WORDS for part in parts):
             return True                              # `und und` names nobody
-        return any(not_a_name(part) for part in parts)
+        # ⛔ **A CONNECTOR INSIDE A JOINED SURNAME IS NOT JUDGED AS A NAME, AND THE
+        # SINGLE-LETTER RULE ABOVE ATE TWO OF THEM.** `join_compound_surname` makes
+        # `Durán y Chávez` one token because it is one family name; this then split it back up
+        # and asked whether `y` is a name. `y` is one ascii letter, so the 2026-09-17 rule said
+        # no, and the whole surname came back `unknown` -- 43 bearers of `Durán y Chávez`, 29 of
+        # `de Castilla y León`, and `e` does the same to the Portuguese and Italian forms.
+        # The connector is the JOIN, not a part of the name, so it is skipped exactly as the
+        # joiner treated it. Every other part is still judged in full.
+        judged = [part for part in parts
+                  if part.strip(".,").casefold() not in SURN_CONNECTORS]
+        if not judged:
+            return True                              # `y e` joins nothing to nothing
+        return any(not_a_name(part) for part in judged)
     for i, ch in enumerate(t):
         # A COMBINING MARK IS PART OF THE LETTER IT SITS ON, and NFC does not always fold it in.
         # Latin and Cyrillic compose, so `A`+ring really does become `Å` -- but Arabic harakat

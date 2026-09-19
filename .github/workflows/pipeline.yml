@@ -520,7 +520,19 @@ jobs:
         # run is not a gate, and a red tick nobody can read as evidence is worse than none.
         # tests/test_batch_locality.py calls the same functions, so there is one
         # implementation and two callers.
-        run: python scripts/check-batch-locality.py
+        # ⛔ **`--fix` STRIPS BEFORE IT CHECKS, AND THAT IS THE POINT.** The composer already
+        # gates the file it writes -- and then the three universe-growth passes above `cat`
+        # their output onto all three day files, after the gate, ungated. On run 35398258982
+        # that put 7 items past it: `Q141497327` a name item the people-universe can never
+        # hold, and six strangers' items reached through `p2600-all.tsv`. The check then failed
+        # the run, so the batch was composed, refused and thrown away -- every day, which is why
+        # the three-ledger refactor has never once gone green.
+        #
+        # A check can only fail the run. Failing the run is the thing that has been stopping the
+        # batch from ever landing, so the same rule is applied as a filter at the last point
+        # that can see the whole file, and the check that follows passes on merit or fails for
+        # a reason that is not this one.
+        run: python scripts/check-batch-locality.py --fix
 
       - name: Commit the rebuilt batch
         id: commit

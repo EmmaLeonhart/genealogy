@@ -338,13 +338,32 @@ def merge_files(
     """
     paths = [Path(p) for p in paths]
     merger = Merger(single_valued_paths(paths))
+    # ⛔ **THE PLACES COME OUT BESIDE THE TREE, NEVER INTO IT.** Ruled 2026-09-19:
+    # *"file that contains birth and death places keyed to geni id and they at this moment only
+    # play a role in going into the descriptions"*. The 2026-09-10 ruling that took `PLAC` out
+    # of the slim stands untouched -- `KEEP_TAGS` still drops it and `out/merged.ged` still
+    # carries no place. This reads it on the pass the merge is already making, one record before
+    # the prune, which is the only moment it exists.
+    #
+    # **Later sources win**, the same as everywhere else here: a later export's place overwrites
+    # an earlier one for the same Geni id, because `CLAUDE.md` says the newer export holds the
+    # correction.
+    places: dict[str, tuple[str, str]] = {}
+
+    def _place(gid, birth, death):
+        prev = places.get(gid, ("", ""))
+        places[gid] = (birth or prev[0], death or prev[1])
+
     for path in paths:
         records = gedcom.stream_file(path)
         if connectivity:
             records = slim_mod.prune_stream(records, slim_mod.CONNECTIVITY_TAGS)
         elif slim:
-            records = slim_mod.prune_stream(records)
+            records = slim_mod.prune_stream(records, places=_place)
         merger.add_source(path.name, records)
+    # Hung on the report rather than returned, because `merge_files` has two callers that
+    # unpack exactly two values and a third element would break the one that writes nothing.
+    merger.report.places = places
     return merger.result(), merger.report
 
 

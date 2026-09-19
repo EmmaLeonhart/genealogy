@@ -206,6 +206,18 @@ VOCABULARY = {
     "Q110874",      # patronymic
     "Q101352",      # family name
     "Q202444",      # given name
+    # ⛔ **THE NAME-ITEM VOCABULARY, ADDED 2026-09-18, AND EACH ONE IS A DECISION.** These are
+    # the classes `scripts/build-garborg-name-items.py` puts on a name item it creates, and they
+    # had been missing from this set since that builder started emitting them -- so the
+    # assertion read them as items that do not exist yet and called every batch half-runnable.
+    # Labels verified against Wikidata rather than copied out of the builder's comments, because
+    # `CLAUDE.md` § *Always write the English label next to a property or item ID* is only worth
+    # something if the label was looked up.
+    "Q130444148",   # masculine patronymic
+    "Q130444179",   # feminine patronymic
+    "Q10673705",    # son name
+    "Q10476255",    # daughter name
+    "Q8229",        # Latin script -- the P282 writing system every Latin name item carries
 }
 
 

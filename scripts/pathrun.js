@@ -48,6 +48,33 @@
  *
  * Treating 202 as failure once brought an abort guard within one row of stopping a healthy run.
  *
+ * ## ⛔ THERE IS A THIRD RESPONSE SHAPE, AND IT WAS BEING THROWN AWAY
+ *
+ * The two answers above are not the whole set. Measured 2026-09-19, live, by recording the
+ * bodies the loop was already receiving:
+ *
+ *     200  <div class="relationship_card">  20-44 KB   GENI ALREADY HAS THE PATH
+ *
+ * It is not a queued search and not a refusal -- it is the finished chain, rendered, arriving
+ * in the same response. One sample carried **53 profile ids across 106 segments** and the line
+ * *"Arend Rothuizen is your 25th cousin once removed"*. Roughly a QUARTER of this population
+ * answers this way: 312 of the first 1,274 replies on the 2026-09-19 batch.
+ *
+ * The classifier counted it -- `R.found++` -- read `body` once for the not-found regex, and let
+ * it go. So the campaign was asking Geni for paths, being given them, and keeping a tally.
+ *
+ * ⛔ **AND `found` CLIMBING IS NOT VISIBLE ANYWHERE ELSE, WHICH IS HOW IT SURVIVED.** These
+ * produce NO row on `/paths`: that page lists *Recently Requested* relationships, and nothing
+ * was requested -- Geni already knew. So the one external instrument the campaign has says
+ * nothing about the outcome that carries the most data, and `/paths` looking empty while
+ * `found` climbed was read as the requester being broken rather than as a harvest being
+ * dropped. § *`/paths` IS NOT THE INSTRUMENT FOR *IS IT RUNNING** understates it: it is not
+ * the instrument for *is anything being collected* either.
+ *
+ * `R.parseChain` now reads these into `reports/path-chains.tsv` rows and `R.dumpChains()`
+ * writes them out, which is the same loop `scripts/pathchains.js` runs -- except that this half
+ * pays nothing for them, because the fetch has already happened.
+ *
  * ## ⛔ THE STALE `slug` IS NOT A BUG, AND IT WAS ACCUSED OF BEING ONE
  *
  * The derive swaps the page's numeric id and leaves its slug, so every request carries the slug
@@ -92,6 +119,8 @@
  *     step 2   paste the DERIVE block, check it reports derived:true
  *     step 3   paste the RUN block with an id list from scripts/build-pathrun-batch.py
  *     status   window.__pathrun.health()  ->  {alive, queued, notfound, fail, ...}
+ *     chains   window.__pathrun.dumpChains()    -> pathrun-chains-NNN.tsv in Downloads,
+ *              straight into `python scripts/merge-path-chains.py <file>`
  *     drain    window.__pathrun.dumpAttempts()  -> pathrun-attempted-NNN.json in Downloads,
  *              which goes straight into `python scripts/stamp-attempts.py < <file>`
  *     stop     window.__pathrun.stop()
@@ -173,6 +202,80 @@ window.__pathrun = window.__pathrun || {};
   /* One record per id, whatever Geni answered. This is the thing whose absence made the
    * campaign re-ask the same people every session -- see the header. */
   R.done = [];
+  /* Harvested chain rows, in `reports/path-chains.tsv` column order. */
+  R.rows = [];
+  R.chainPart = 0;
+
+  /* ⛔ **THE SAME PARSER AS `scripts/pathchains.js` § `C.one`, DELIBERATELY.** The markup is
+   * Geni's and both halves read it the same way, so a change to the site breaks them together
+   * rather than one of them silently. The parentheses around a relation are NESTED SPANS and
+   * not text -- a regex for the bracketed form matches nothing and reports every page as having
+   * zero relations, which is what it did the first time it was tried. `DOMParser` sidesteps it.
+   *
+   * `span.subtext.clipboard-hide` is the viewer's own blank subtext, so step 0 is the viewer,
+   * with a name and no profile id. That row is KEPT: a chain that does not say where it starts
+   * is not a chain, and `split-path-chains.py` fills the id from `from=`.
+   *
+   * ⛔ **STEP -2 CARRIES THE KINSHIP DEGREE, AND IT IS WHY THIS IS NOT JUST `pathchains.js`.**
+   * The inline answer renders `#relation_description` -- *"Arend Rothuizen is your 25th cousin
+   * once removed"* -- which the six columns have no room for. `merge-path-chains.py` truncates
+   * every row to `HEADER`, so a seventh column would be accepted and silently dropped, and a
+   * companion file would need a second merger for one fact per path. The file already solved
+   * this shape once: `step -1` / `EMPTY` bounds a chain that rendered nothing. So the degree
+   * rides in as `step -2`, unique under the `(to_id, kind, step)` dedupe key and ignored by
+   * anything reading steps from 0. Nothing new is added anywhere to carry it.
+   */
+  R.parseChain = function (html, to_id, which) {
+    const kind = which === "inlaw" ? "in-law" : "blood";
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const out = [];
+
+    const descEl = doc.querySelector("#relation_description");
+    if (descEl) {
+      const desc = (descEl.textContent || "").replace(/\s+/g, " ")
+                     .replace(/Generate Diagram\s*$/, "").trim();
+      if (desc) out.push([to_id, kind, "-2", "", "", desc]);
+    }
+
+    let step = 0;
+    for (const seg of doc.querySelectorAll("span.segment")) {
+      const nameEl = seg.querySelector("span.name");
+      if (!nameEl) continue;
+      const name = (nameEl.textContent || "").replace(/\s+/g, " ").trim();
+      if (!name) continue;
+      const a = seg.querySelector("[data-profile-id]");
+      const sub = seg.querySelector("span.subtext:not(.clipboard-hide)");
+      const rel = sub
+        ? (sub.textContent || "").replace(/\s+/g, " ").trim().replace(/^\(/, "").replace(/\)$/, "").trim()
+        : "";
+      out.push([to_id, kind, String(step), a ? a.getAttribute("data-profile-id") : "", name, rel]);
+      step++;
+    }
+
+    // A 200 that rendered no segments is RECORDED, not dropped -- the same bound pathchains.js
+    // puts on an empty permalink, and merge-path-chains.py keeps those rows.
+    if (!step) out.push([to_id, kind, "-1", "", "", "EMPTY"]);
+    return out;
+  };
+
+  /* Written as `pathrun-chains-NNN.tsv`, NOT `path-chains-NNN.tsv`: the chain fetcher numbers
+   * its own parts, and two loops writing one series into Downloads would overwrite each other.
+   * `merge-path-chains.py` takes explicit paths, so the distinct name costs nothing. */
+  R.dumpChains = function () {
+    if (!R.rows.length) return 0;
+    const n = R.rows.length;
+    const head = ["to_id", "kind", "step", "profile_id", "name", "relation"].join("\t") + "\n";
+    const body = R.rows.map(r => r.join("\t")).join("\n") + "\n";
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([head + body], { type: "text/tab-separated-values" }));
+    R.chainPart++;
+    a.download = "pathrun-chains-" + String(R.chainPart).padStart(3, "0") + ".tsv";
+    document.body.appendChild(a); a.click(); a.remove();
+    R.rows = [];
+    console.log("[pathrun] wrote chains part " + R.chainPart + ", " + n + " rows");
+    return n;
+  };
+
   R.drain = function () {
     const out = JSON.stringify(R.done);
     R.done = [];
@@ -209,6 +312,7 @@ window.__pathrun = window.__pathrun || {};
       secondsSinceLastRequest: age === null ? null : Math.round(age),
       i: R.i, of: R.ids.length,
       queued: R.queued, notfound: R.notfound, found: R.found, fail: R.fail,
+      chainRows: R.rows.length, chainPart: R.chainPart,
       started: R.started, finished: R.finished || null,
     };
   };
@@ -253,7 +357,15 @@ window.__pathrun = window.__pathrun || {};
           // ⛔ 202 and 200 are DIFFERENT ANSWERS AND BOTH ARE SUCCESS. See the header.
           if (res.status === 202) { R.queued++; R.ok++; outcome.push("queued"); }
           else if (res.status === 200 && /not-found/.test(body)) { R.notfound++; R.ok++; outcome.push("notfound"); }
-          else if (res.status >= 200 && res.status < 300) { R.found++; R.ok++; outcome.push("found"); }
+          /* ⛔ **A 200 THAT IS NEITHER OF THOSE IS A WHOLE PATH, AND IT WAS THROWN AWAY.**
+           * See the header § THE THIRD RESPONSE SHAPE. `body` is already in hand, so parsing
+           * it costs no request: this is the one outcome that arrives with the answer in it. */
+          else if (res.status >= 200 && res.status < 300) {
+            R.found++; R.ok++; outcome.push("found");
+            try { R.rows.push.apply(R.rows, R.parseChain(body, id, which)); }
+            catch (e) { R.parseErr = String(e); }
+            if (R.rows.length >= 5000) R.dumpChains();
+          }
           else { R.fail++; outcome.push("http" + res.status); }
           R.lastAt = Date.now();
         } catch (e) {

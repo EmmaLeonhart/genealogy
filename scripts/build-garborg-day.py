@@ -915,6 +915,167 @@ def manual_p2600_lines(priority_qids=(), subgraph=None, ring=None):
     return lines, len(want), len(want) - len(missing), refused
 
 
+#: ⛔ **THE TWO PEOPLE WHOSE ANCESTRY GROWS EVERY RUN.** Ruled 2026-09-18, given as two Geni
+#: links and two QIDs: *"for these two people I want you to go crazy with their ancestors. Every
+#: run should add a full ring to their ancestry."*
+#:
+#:     6000000000757999620  Q141493478  Inger Axelsdatter Guntersberg
+#:     6000000002621242041  Q141450322  Olfvir / Olver Romer
+#:
+#: ⛔ **AND THE LEDGER'S GENI ID FOR `Q141450322` IS THE HUSK.** `garborg-qids.tsv` pairs that
+#: QID with `6000000227289508960`, which `queue.md` records as a merged-away profile that
+#: REDIRECTS to `6000000002621242041`. Both ids seed the walk, because the tree may hold either
+#: and a seed that resolves to nobody grows nothing while printing a cheerful zero.
+PRIORITY_ANCESTOR_SEEDS = (
+    "6000000000757999620",      # Inger Axelsdatter Guntersberg, Q141493478
+    "6000000002621242041",      # Olfvir / Olver Romer, Q141450322
+    "6000000227289508960",      # the husk the ledger still pairs with Q141450322
+    # ⛔ **PICKED OUT BY HAND OFF THE HETHEL GAPS PAGE, 2026-09-18**: *"these are the most
+    # interesting people"*. Both are already in the synoptic tree, so the ring grows their
+    # ancestry the same way it grows the two above -- nothing had to be created first.
+    #
+    # Their Hethel ancestry is why they are here, and it is clean -- no `Hethelo`, no `Kroll`,
+    # no `Several generations` anywhere in either:
+    #   Gellone    71 ancestors over 9 generations. Carolingian and Merovingian on one side,
+    #              and on the other the Babylonian exilarchs -- Natronai, Nehemiah Bar Hanini,
+    #              Bustanai -- married into Sassanid Persia through Dara-Izdundad. That is the
+    #              descent from antiquity this campaign is for.
+    #   Torgeir    11 ancestors over 9 generations, the Icelandic Haukdaelir: Tume Kolbeinsson,
+    #              Kolbein Arnorsson, Lawspeaker Gizur Hallsson, Bishop Isleiv Gizursson,
+    #              Teit Ketilbjornsson.
+    "6000000006128315972",      # Saint William of Gellone / Sant Guilhem de Gellona, 755-812
+    "6000000015677500609",      # Torgeir Ingemundsson, b. 1200
+)
+
+
+def priority_ancestor_ring(our_items, fam_p, famc):
+    """The next FULL generation of ancestors of `PRIORITY_ANCESTOR_SEEDS`, uncapped.
+
+    Walks up from the seeds THROUGH people who already hold a QID and stops at the first person
+    above who does not. Everybody standing on that boundary is returned -- the whole ring, not a
+    sample of it and not a quota slice, because the instruction was *a full ring* every run.
+
+    **It advances itself.** The people this returns are created, enter the ledger, and are
+    therefore walked THROUGH on the next run rather than returned again -- so the boundary moves
+    one generation further out each time with nothing to maintain. That is the whole design: no
+    depth counter, no cursor, no state, and no way for it to quietly stop.
+
+    **It is a frontier and not a depth.** Where one branch is already on Wikidata six
+    generations up and another stops at two, this returns both boundaries at once. A depth
+    counter would hold the deep branch back to the shallow one's pace.
+    """
+    frontier, seen, stack = {}, set(), [g for g in PRIORITY_ANCESTOR_SEEDS]
+    while stack:
+        g = stack.pop()
+        if g in seen:
+            continue
+        seen.add(g)
+        for fam in famc.get(g, []):
+            for parent in fam_p.get(fam, []):
+                if parent in our_items:
+                    stack.append(parent)
+                else:
+                    frontier.setdefault(parent, fam)
+    return frontier
+
+
+#: ⛔ **A CREATED INDIVIDUAL GETS A LIFE DESCRIPTION. Ruled 2026-09-19**, reversing the hard rule
+#: that stood from 2026-08-30: *"($DATE_OF_BIRTH - $DATE_OF_DEATH) should be the descriptions we
+#: make on individuals. Include the gedcom qualifiers ... include them in the descriptions we
+#: generate. These descriptions will be verbose enough that they will hopefully never collide
+#: but stop us from recreating our own items multiple times."*
+#:
+#: **The point is the collision, and it runs the opposite way from the old rule.** Wikibase
+#: refuses a creation only when the label AND a NON-EMPTY description both match. Measured
+#: 2026-09-19: eleven live items are labelled `Margareta` with no description and four are
+#: labelled `Hans Larsson`, all coexisting -- so a blank description means OUR OWN duplicate is
+#: never refused either. A description dense enough to be unique is what makes Wikidata catch us
+#: re-creating somebody we already made.
+#:
+#: **The form is the attested one, cleaned of its failure modes.** Sampled over 158 humans in a
+#: Genealogics/WikiTree import: 61% carry dates, but only 8% cleanly -- 20% open with a bare
+#: dash when the birth is unknown, 15% leak `Est`/`Abt`/`Bef`/`Aft`, and 3% are junk like
+#: `Peerage person ID=131840`. The qualifiers are KEPT here on instruction, because they are
+#: what the GEDCOM actually says; what is not kept is the leading dash, because a description
+#: starting `- 1590` reads as a typo rather than a fact.
+DESC_MAX = 240
+
+
+#: GEDCOM writes its months and its qualifiers in capitals -- `25 OCT 1801`, `ABT 1518`,
+#: `BET 848 AND 850`. Ruled 2026-09-19 off a live item: *"a lot of the dates are in ALL CAPS
+#: abbreviations ... Gunder Larssen Tjorn (Q141499899) is 25 OCT 1801 - 22 AUG 1888 but should
+#: be 25 Oct 1801 - 22 Aug 1888. ALL CAPS is not good."*
+#:
+#: Only the KNOWN keywords are touched. A capitalised word this does not recognise is left
+#: exactly as it is, because a date field can carry a place or a note and lower-casing an
+#: unknown token would corrupt a name -- `NN`, `II`, an initial. The connectors inside a range
+#: go lower-case because `Bet 848 And 850` reads as a title and `Bet 848 and 850` reads as a
+#: date.
+DATE_WORDS = {w: w.title() for w in (
+    "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
+    "AFT", "BEF", "EST", "CAL", "INT", "BET", "FROM",
+)}
+# ABT is the one GEDCOM abbreviation with an ordinary English word behind it, and it is the
+# commonest of them. Ruled 2026-09-19: *"ABT should turn into circa"*. Lower case, because it
+# is a word in the sentence rather than a label on it.
+DATE_WORDS["ABT"] = "circa"
+DATE_WORDS.update({"AND": "and", "TO": "to", "BC": "BC", "AD": "AD"})
+
+
+def normalise_date_case(raw):
+    """`25 OCT 1801` -> `25 Oct 1801`; `BET 848 AND 850` -> `Bet 848 and 850`."""
+    return " ".join(DATE_WORDS.get(tok, tok) for tok in (raw or "").split())
+
+def life_description(facts_row, places_row):
+    """`12 Mar 1550 Bergen - Aft 1596 Isnäinen, Pernaja` or `""`.
+
+    Dates come from `birth_date_raw`/`death_date_raw`, so the GEDCOM qualifier survives
+    rather than being parsed away: `ABT 1518` reads out as `circa 1518`. Places come
+    from `reports/derived-places.csv`, which the merge writes beside the tree because
+    `CLAUDE.md`'s 2026-09-10 ruling keeps `PLAC` out of `merged.ged`.
+
+    A side with neither a date nor a place is omitted entirely rather than left as an empty
+    half, so the output is never `- 1590` and never trails a dash.
+    """
+    f = facts_row or {}
+    p = places_row or {}
+
+    def side(date_key, place_key):
+        d = normalise_date_case(" ".join((f.get(date_key) or "").split()))
+        pl = " ".join((p.get(place_key) or "").split())
+        return " ".join(x for x in (d, pl) if x)
+
+    born, died = side("birth_date_raw", "birth_place"), side("death_date_raw", "death_place")
+    if born and died:
+        out = f"{born} - {died}"
+    elif born:
+        out = f"born {born}"
+    elif died:
+        out = f"died {died}"
+    else:
+        return ""
+    return out[:DESC_MAX].rstrip(" -,")
+
+
+def _places_table():
+    """`{geni_id: {"birth_place", "death_place"}}` from the file the merge writes beside the tree.
+
+    A missing file yields an empty table and dates-only descriptions, which is the safe
+    direction: the batch is no worse than it was and nothing waits on a rebuild.
+    """
+    path = ROOT / "reports" / "derived-places.csv"
+    if not path.exists():
+        return {}
+    out = {}
+    with open(path, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            g = (row.get("geni_id") or "").strip()
+            if g:
+                out[g] = row
+    return out
+
+
 def read_tree():
     fam_p = collections.defaultdict(list)
     fam_c = collections.defaultdict(list)
@@ -2162,20 +2323,6 @@ def consensus_latin_label(labels):
         return current
     english = (labels.get("en") or "").strip()
     return english if english in tied else tied[0]
-
-
-def _label_collisions():
-    """Geni ids whose creation would duplicate an existing label+empty-description pair.
-
-    From `reports/label-collisions.tsv`, written by `scripts/check-label-collisions.py`. A
-    missing file yields an empty set and today's behaviour, which is the safe direction: the
-    batch is no worse than it was, and the check is a pre-flight rather than a dependency.
-    """
-    path = ROOT / "reports" / "label-collisions.tsv"
-    if not path.exists():
-        return set()
-    with open(path, encoding="utf-8") as f:
-        return {row["geni_id"] for row in csv.DictReader(f, delimiter="	") if row["geni_id"]}
 
 
 #: Tokens this run rendered on the fly, flushed to the shared table at the end. See the funnel
@@ -6109,6 +6256,8 @@ def main():
                     n += 1
         print(f"{n} already-existing items read from {path}")
     table = translit()
+    _PLACES = _places_table()
+    print(f"{len(_PLACES):,} people have a birth or death place for their description")
     plan = load_plan()
     fam_p, fam_c, fams, famc = read_tree()
     print(f"{len(our_items)} people already carry a QID; {len(table)} tokens transliterated")
@@ -6261,6 +6410,35 @@ def main():
         compose_why = picked
         print(f"composed batch: {len(to_create)} people to create "
               f"(the unrestricted ring would have been {before})")
+
+        # ⛔ **THE TWO PRIORITY SEEDS ARE ADDED AFTER THE PICK AND ARE NOT SUBJECT TO IT.**
+        # `compose` chooses a batch to a shape, and a full ring is not a shape it can express --
+        # it would take a slice of the ring and the ancestry would advance a fraction of a
+        # generation a day. So the ring is unioned in afterwards, uncapped. Every other guard
+        # below still applies: the duplicate check, `--exclude`, the label-collision hold and
+        # the locality gate all run after this point.
+        _ring = priority_ancestor_ring(our_items, fam_p, famc)
+        _added = {g: f for g, f in _ring.items() if g not in to_create}
+        to_create.update(_added)
+        print(f"priority ancestor ring: {len(_ring)} people directly above the ancestry of "
+              f"{len(PRIORITY_ANCESTOR_SEEDS)} seed(s) already on Wikidata, "
+              f"{len(_added)} of them new to this batch")
+        # ⛔ **THE SPLITTER HAS TO KNOW WHICH PEOPLE THE RING PUT HERE, OR THE RING IS NOT
+        # AUTOMATIC.** `split-daily-batch` deals the first third of person creations IN COMPOSED
+        # ORDER to the automatic half. The ring is unioned in AFTER `compose` has picked, so its
+        # people sort late and land in the manual two-thirds -- which is published for a person
+        # to paste. On 2026-09-19 that is exactly where Olver's parents went, and the scheduled
+        # sender was never going to touch them.
+        #
+        # *"Every run should add a full ring to their ancestry"* is a statement about what runs
+        # BY ITSELF, so the ring's creations go to the automatic half whatever the arithmetic
+        # says. Written as data because the splitter is a separate process at the end of the
+        # pipeline and cannot see this one's variables.
+        _ring_out = ROOT / "out" / "wikidata" / "priority-ring.json"
+        _ring_out.parent.mkdir(parents=True, exist_ok=True)
+        _ring_out.write_text(json.dumps(sorted(_ring)), encoding="utf-8")
+        print(f"wrote {_ring_out.relative_to(ROOT)}: {len(_ring)} geni id(s) the splitter "
+              f"must put in the automatic half")
 
     else:
         compose_why = {}
@@ -7162,14 +7340,16 @@ def main():
             carried.append((g, label, "no derived facts"))
             continue
 
-        # **A creation whose label+empty-description pair is already taken is REFUSED by
-        # Wikidata**, and a refusal lands mid-batch. `CLAUDE.md` § *NO descriptions and NO edit
-        # summaries*: the resolution is to hold the person, never to add a description.
-        # `scripts/check-label-collisions.py` writes the list; it is data, so the hold cannot
-        # drift into a hand-maintained exclusion.
-        if g in _label_collisions():
-            carried.append((g, label, "label+empty-description pair already taken on Wikidata"))
-            continue
+        # ⛔ **THE LABEL-COLLISION HOLD IS DELETED, 2026-09-19.** *"This thing literally should
+        # not exist."* It held anyone whose label already existed undescribed on Wikidata, and
+        # it fired on a NAME MATCH -- `Margareta` against eleven unrelated items, `Hans Larsson`
+        # against four, and `NN` against ten, which is a redaction marker that would have
+        # collided forever. Twelve real people were being refused permanently to avoid one
+        # recoverable refusal.
+        #
+        # A refusal is one edit; a hold is every run from now on. `wikidata-edit-run` skips a
+        # label-collision refusal and carries on, so the cost of finding out from Wikidata is
+        # one skipped create and a line in the log.
 
         # A redacted profile is created and gets NO label. `CLAUDE.md`: *"Private is
         # a redaction marker, not a name, and an item labelled that asserts something
@@ -7522,6 +7702,14 @@ def main():
                 emitted.add(qs(alias))
         for note in unresolved:
             carried.append((g, label, f"name item missing: {note}"))
+
+        # ⛔ **THE LIFE DESCRIPTION.** Ruled 2026-09-19 -- see `life_description`. `Den` only:
+        # the string is English prose (`born`, `died`) around data, and a description is
+        # deduplicated per language, so putting it in `mul` would collide across every language
+        # at once. Emitted last in the block so it never separates a `CREATE` from its labels.
+        _desc = life_description(f, _PLACES.get(g))
+        if _desc:
+            lines.append(f'LAST	Den	"{qs(_desc)}"')
 
         # **A creation with NO relationship is not shipped. It is carried.**
         #

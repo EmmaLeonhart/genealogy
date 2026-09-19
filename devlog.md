@@ -45170,3 +45170,316 @@ because the locality gate was written for one end at a time and leaked at every 
 Pages stopped updating for a plain reason: seven pipeline runs were cancelled to keep the edit
 runs clear, and Pages is built by that same workflow. Nothing about the 1/3 automatic, 2/3
 published split changed.
+
+## 2026-09-18 — items 1, 2 and 3 of THE ORDER were finished yesterday and never left the queue
+
+The work was done on 2026-09-17 and committed. The other half of the delete-on-done rule was
+not: all three stayed in `queue.md` as if untouched, and `devlog.md` carries no entry for any of
+them. So today's session opened by reading a queue whose first three items were already history.
+Deleted now, with the verification each one needed before it could be deleted.
+
+**Item 1 — the archive, copied in wholesale** (`15b7c6fb`). Checked today by comparing the two
+trees file by file on relative path: **12,975 files in
+`C:\Users\Emma\Documents\Preservation\genealogy`, 12,975 of them present under
+`preservation/genealogy/`, nothing missing.** The three extra files in the repo are item 2's
+`.gz` conversions. Ten paths are gitignored, named one per line rather than by pattern.
+
+**Item 2 — the oversized files** (`7c073cc3`). The three 220 MB MyHeritage archives are mostly
+photographs around a plain SQLite database each; the databases are extracted to
+`preservation/extracted-databases/` and converted by `scripts/ftb-to-gedcom.py` to 1,550 / 4,033
+/ 4,093 people. The three oversized GEDCOMs gzip under the limit — Theogrammaticus 180.0 MB to
+27.0 MB, Mannus 180.4 MB to 27.0 MB, Gaiad 102.9 MB to 12.3 MB. Four files are still ignored and
+still unconverted — `Gaiad.epub`, `Chronicle of the Progenitor.docx`, `Liber Mythos.docx`,
+`Perkwunos.docx` — because they are narrative works and there is no GEDCOM in them to recover.
+That is the item finished, not a remainder of it: `Gaiad.ged` and `Perkwunos.ged` are tracked
+separately and carry the genealogy those books are about.
+
+**Item 3 — Pfinzing and Reuss** (`e85e5e9e`, `2c744757`, `da44fb0f`). Answered in
+`preservation/FINDINGS.md`: both are in `preservation/genealogy/dropbox/Hethel Pedigree.ged`,
+which is why they could not be found under `exports/` — that tree never came from Geni. The file
+also carries Lusignan, Ibelin and Bagration, and the same page records which routes between them
+run through placeholder nodes like `Hethelo` and are therefore not routes.
+
+⛔ **The lesson is the bookkeeping, not the work.** A finished item left in `queue.md` costs the
+next session the time it takes to establish that it is finished — here, a file-by-file comparison
+of 12,975 paths and four commit messages — and that cost is paid every session until somebody
+deletes the line.
+
+## 2026-09-18 — a full ring of ancestry on two people, every run
+
+Instructed, with two Geni links and two QIDs: *"for these two people I want you to go crazy with
+their ancestors. Every run should add a full ring to their ancestry."*
+
+`priority_ancestor_ring` in `scripts/build-garborg-day.py` walks up from the seeds **through**
+people who already hold a QID and returns everybody standing on the first boundary above. It is
+unioned into `to_create` after `compose` has picked, and it is uncapped: a full ring is not a
+shape `compose` can express, so leaving it to the picker would advance the ancestry by a fraction
+of a generation a day. Every guard after that point still applies — the duplicate check,
+`--exclude`, the label-collision hold and the locality gate.
+
+**It advances itself.** What it returns is created, enters the ledger, and is therefore walked
+*through* on the next run rather than returned again, so the boundary moves one generation out
+each time. No depth counter, no cursor, no stored state — and so no way for it to stop quietly,
+which is the failure mode every other long-running thing here has had.
+
+It is a frontier rather than a depth. Where one branch is already on Wikidata six generations up
+and another stops at two, both boundaries come back at once; a depth counter would hold the deep
+branch to the shallow one's pace.
+
+⛔ **The ledger pairs `Q141450322` with a husk.** `garborg-qids.tsv` gives that QID the Geni id
+`6000000227289508960`, which redirects to `6000000002621242041` and carries no `FAMC` at all — so
+a walk seeded from the ledger would have found nothing and said so cheerfully. Both ids seed it.
+Fixing the ledger row is still owed.
+
+Measured from the wired path before pushing: 7 people walked through, **8 on the frontier**.
+
+## 2026-09-19 — the ring runs, and three things were quietly eating every batch
+
+`priority_ancestor_ring` composed 8 people on its first run and the batch was thrown away. It
+composed 12 on the second and 19 on the third. The ring itself was never the problem; three
+separate mechanisms downstream were discarding its work, and each of them looked like something
+else.
+
+**The locality gate was failing the run rather than filtering it.** `build-garborg-day` gates the
+file it writes — and `pipeline.yml` then `cat`s three universe-growth passes onto all three day
+files afterwards, ungated. Seven items came through that way: `Q141497327`, a family-name item
+the people-universe can never contain, and six strangers' items reached through `p2600-all.tsv`
+because somebody else's Wikidata item happens to carry a Geni id. The CHECK then failed the whole
+run, so the batch was composed, refused and dropped. Every day. `check-batch-locality.py --fix`
+applies the same rule as a filter at the last point that can see the assembled file; all three
+batches now come back `clean` and the run survives.
+
+**The edits job timed out at 20 minutes mid-send**, sized for a ten-edit hand run. A `limit=1000`
+dispatch was cancelled with ~73 applied. 90 minutes now.
+
+**The CSRF token went stale after 130 edits** and every remaining one came back `badtoken` —
+creates and `wbsetqualifier` alike. Taken once before the loop, which was correct when a run was
+twenty minutes long. It refreshes once per edit on `badtoken` and holds the fresh token on the
+session.
+
+⛔ **AND A HAND DISPATCH SENT NOTHING FOR A MONTH.** The `batch` input defaulted to
+`out/wikidata/unlinked-items.json`, last written 2026-08-13, whose objects carry `type` where
+`apply()` reads `kind`. A dispatch logged in, took a token, announced "executing up to 10 edits"
+and died on `KeyError: 'kind'`. The schedule was never affected — it passes `$DAILY_BATCH`
+explicitly — which is exactly why it survived.
+
+**The account is blocked on Azure IPs.** `ACCOUNT IS BLOCKED: Open proxy/Webhost` on some runners
+and not others, so a send is a lottery; `0 edits executed` and nothing half-done when it loses.
+Re-dispatching draws a new runner. Not worth an `ipblock-exempt` request — ruled.
+
+**787 edits went live**, 702 to 1,489 on the receipt. Both of Ølver Rømer's parents now exist:
+`Q141498442` Henning Rømer and `Q141498492` Gyda Olavsdatter Rømer. Gellone's parents were
+correctly NOT created — the duplicate guard found them already on Wikidata as `Q1045008` and
+`Q2640386` and carried them forward to be linked instead.
+
+**The ring advances itself**, which was the design claim and is now measured: run 1 returned 12
+people, run 2 returned 19, all new, because the ones created in between entered the ledger and
+the walk passed THROUGH them to their parents. No cursor, no depth counter, no stored state.
+
+⛔ **The auto-half forcing reported success while doing nothing.** `split-daily-batch` deals the
+first third of person creations in composed order, and the ring unions its people in after
+`compose` picks, so they sorted late into the manual two-thirds — the half published for a person
+to paste. The fix reads `out/wikidata/priority-ring.json` and forces those creations automatic;
+its first run printed `0 creation(s) forced automatic` because a `P2600` claim parses to
+`{'type': 'string', 'value': ...}` and the check tested `isinstance(v, str)`. A guard that
+matches nothing and prints a number reads exactly like a guard that ran.
+
+## 2026-09-19 — `ABT` reads as `circa`, and the pending correction batch was already stale
+
+Ruled today: *"ABT should turn into circa"*. `DATE_WORDS` title-cases every other GEDCOM
+qualifier — `AFT`, `BEF`, `BET`, `FROM` — because they are labels stuck on a date. `ABT` is the
+one with an ordinary English word behind it, and it is the commonest of them, so it is written
+out in lower case as a word in the sentence: `circa 1518 Bergen, Norway - 1580`.
+
+`life_description`'s docstring still said `ABT 1518` stays `ABT 1518`, which had been true for
+about an hour — the case-normalisation commit `f86f0874` landed first and nobody went back to it.
+Corrected, and `CLAUDE.md`'s worked example with it, since that example is what gets copied.
+
+⛔ **`reports/wikidata-description-case-fix.qs` was written before the ruling and would have sent
+`Abt`.** It is the batch that repairs 25 descriptions that went out in capitals; 18 of its
+strings carried `Abt`, so sending it as it stood would have fixed the case and immediately
+re-introduced the thing the ruling had just removed. It now carries both, and `Den` replaces, so
+it is still one edit per item.
+
+⛔ **`reports/wikidata-p2600-malformed-fix.qs` CANNOT BE SENT AND IS NOT COMMITTED.** It removes
+49 `P2600` values that are full profile URLs rather than bare ids and adds the extracted id
+beside each. Gated against `out/wikidata/edit-universe.json`: **all 37 items are outside the
+universe and outside the ring** — 0 in, 0 one step beyond. `CLAUDE.md` § *AN EDIT GOES ON AN ITEM
+IN THE UNIVERSE, OR ONE STEP BEYOND IT. ALL EDITS, NO EXCEPTIONS* is the whole of the answer, and
+a malformed identifier on a stranger's item is exactly the case that rule was written for. Left
+in the working tree pending a decision; it has no generator, so nothing regenerates it either.
+
+**The path requester is up on a 7,956-person batch**, `alive:true`, `fail:0`, first three
+requests `202`. Chrome had been started by hand without the throttling flags and was relaunched
+through `scripts/start-chrome.ps1` — § *the symptom is indistinguishable from a healthy run*.
+
+## 2026-09-19 — the top-priority exports: three were already done, the fourth was aimed at a husk
+
+Three of the four 2026-09-18 top-priority exports are in the corpus and were deleted from
+`queue.md`:
+
+    exports/post-merge/export-Forest-6000000227805352866.ged      NN Rømer
+    exports/post-merge/export-Ancestors-6000000227805352866.ged   NN Rømer
+    exports/post-merge/export-Forest-6000000227805421869.ged      NN Stromer
+    exports/post-merge/export-Forest-6000000227805012893.ged      Erik Ims
+    exports/post-merge/export-Descendants-6000000227805012893.ged Erik Ims
+
+⛔ **The fourth, Bothilde, was aimed at a husk, and the submit was spent before the redirect was
+checked.** `6000000227805045863` redirects to `6000000177261659865` — the real Bothilde
+Sigurdsdatter Onarheim, c.1275, added by another user in 2021 and only co-managed here.
+`https://www.geni.com/gedcom/export/6000000177261659865` answers *"You are not allowed to export
+that profile"* and lands on `/error`.
+
+The husk's own form loaded and accepted the submit, exactly as § *`6000000227289508960` IS A
+MERGED-AWAY HUSK* says it would, and announced **"(No Name)'s GEDCOM File is Being Created"**.
+`(No Name)` in that sentence is the tell and it was there to read before the submit, not after.
+The `/gedcom` page then carried *"Your previous request had an error which we are investigating"*
+on every subsequent load — the husk task failing, which is the documented outcome.
+
+**The real seed already existed.** Bothilde has both parents on Geni and both are this account's
+placeholders: `6000000227811549827` **Sigurd Onarheim**, the father, directly attested by her
+patronymic and therefore tier 1 of `docs/export-seed-rules.md`, and `6000000227816629854`
+**NN Onarheim**, the mother. So no profile needed creating; the created-ancestor route was
+already run on 2026-09-18 and the queue line simply named the wrong end of the merge.
+
+`Forest` 5000 submitted off Sigurd. The page answered **"Sigurd Onarheim's GEDCOM File is Being
+Created"** — a named profile, which is the difference between this submit and the last one.
+
+**The check is the redirect, not the export form.** `location.pathname` after loading
+`/people/x/<id>` gives the surviving id in one page load; the export form cannot tell a husk from
+a live profile because it accepts both.
+
+## 2026-09-19 — CI: one stale test, and four failures that are the committed batch being old
+
+Run `35435046672` on `f1fb3c9f`, five failures, both Python versions identically.
+
+**One of them is a test enforcing a rule that was reversed.**
+`test_no_descriptions_or_summaries::test_no_batch_carries_a_description` allowed exactly three
+strings — `patronymic`, `family name`, `matronymic` — and cited *ruled 2026-09-01*. `CLAUDE.md`
+§ *DESCRIPTIONS ARE WRITTEN NOW, AND THE REASON IS THE DEDUPLICATION* reversed that on
+2026-09-19, and individuals have carried a `Den` from `life_description` ever since. So the
+guard was failing the batch for doing the thing it had been told to do.
+
+It is widened rather than switched off. A description now passes if it is one of the three name
+strings, or if it is a life description by shape: opens with `born`, `died`, a digit or a GEDCOM
+qualifier word, carries a 3–4 digit year, and is within `DESC_MAX`. Checked against every form
+the emitter produces and against prose:
+
+    PASS      born 1774 · died 1590 · 1721 - 1758 · Bet 848 and 850
+              circa 1518 Bergen, Norway - 1580 · circa 18 Feb 1651 - 13 Jan 1723
+    rejected  Norwegian nobleman · Swedish politician · son of Lars · Margareta · ""
+    rejected  ABT 1345 - AFT 1433
+
+**That last rejection is deliberate and it is why CI is not green yet.** Uppercase qualifiers
+are what `f86f0874` and `beed2b5a` stopped emitting; the copy in `reports/` was composed before
+both. Accepting it would make the guard blind to the regression it now catches.
+
+**The other four failures are all one thing: the committed batch predates today's sends.**
+
+    the ledger and the batch both claim a person   63 people created that already hold QIDs
+    a married surname has no item                  ('6000000011409229426', 'Tjärn')
+    a link emitted one-way only                    P40 Q141101633, P40 Q5918044, P26 Q246091
+    the batch restates what the item already holds 97 statements
+
+`Q141498969` appears twice in the third, and it is one of the items the ring created this
+morning — so the batch is asserting links against a Wikidata that moved under it after the
+compose. `pipeline.yml` recomposes all of this on push and none of it is fixable by hand;
+§ *DO NOT DO CI/CD's WORK BY HAND*. **Not dispatching `ci.yml` until the pipeline has landed a
+recomposed batch**, because a dispatch before then re-reads the same stale file and fails the
+same four ways.
+
+## 2026-09-19 — path tick: 2,601 stamped, and the Sigurd export never reached Geni's list
+
+**The runner is healthy and the pacing is right.** `health()` at 06:47 local: `alive:true`,
+`i` 2,606 of 7,956, `fail` 2 and unmoved since the start, `gen` 1 — one loop, not two.
+199 minutes elapsed, 5,214 requests, **2.29 s per request, 787 people an hour**. Well inside the
+1.1–1.8s stagger, so nothing here is going to draw a CAPTCHA. 5,350 left, about 6.8 hours, so no
+top-up: `i` is nowhere near `of - 300`.
+
+`dumpAttempts()` wrote 2,601 ids and `stamp-attempts.py` took all of them —
+`queued/queued` 2,600 and `http404/http404` 1, which is the whole of `fail: 2`. The worklist now
+carries **54,102 real attempt dates** across 251,820 rows.
+
+⛔ **AND THE EXPORT SUBMIT REPORTED EARLIER DID NOT HAPPEN.** The submit page answered
+*"Sigurd Onarheim's GEDCOM File is Being Created"* and that was taken as confirmation, on the
+grounds that it named a profile instead of `(No Name)`. **That is the instrument this file
+already says lies.** § *The reliable instrument is `https://www.geni.com/gedcom`, which lists
+every request with a timestamp; the submit page is a static snapshot and lies about state.*
+
+Read off that page: 817 requests, all rendered, and **no Sigurd Onarheim entry at the time of
+the submit**. What the Onarheim family actually has is
+
+    NN Onarheim                       today      05:46
+    Sigurd Onarheim                   yesterday  22:59, 22:47, 08:00
+    Bothilde Sigurdsdatter Onarheim   yesterday  15:05, 13:23, 06:45
+
+— so this ground was being worked yesterday, and the newest request on it is `NN Onarheim` at
+05:46 today, which is not mine either. **Nothing has been downloaded since 00:50**, so none of
+those have been collected; `~/Downloads` now holds **255 unfiled zips**, up from the 215 the
+queue records.
+
+**Not re-submitting.** An uncollected request from 05:46 means the one export slot is plausibly
+occupied, and § *Geni refuses a second export while one is generating and the refusal appears as
+a banner on a page that also still reads "Being Created"* is exactly how a second submit would
+look like it worked. The queue line for Bothilde stays as it is.
+
+**The rule to take from this:** a submit is confirmed by a timestamped row appearing in
+`/gedcom`, and by nothing else. `location.href` and the profile name in the banner both survive
+a submit that produced nothing.
+
+## 2026-09-19 — the sender edited as a temporary account, and three stop events, not one
+
+⛔ **THE SENDER LOST ITS LOGIN AND KEPT EDITING, ANONYMOUSLY.** Fifteen statements went onto
+Wikidata at 13:41 UTC under the temporary account `~2026-50571-43` — `P22` and `P40` claims from
+our own batch, correctly composed and wrongly attributed. It was spotted on Wikidata's
+contributions page. Nothing in this repo noticed, and nothing in this repo could have: the run
+reported no error at all.
+
+**The mechanism, off run `35442887963`'s own log.** `logged in as ***` at 12:59:52. At 13:41:52,
+twice, `csrf token went stale -- refreshed, retrying this edit`. MediaWiki hands a logged-out
+caller a CSRF token and then **accepts edits signed with it**, so the refresh did not fail — it
+changed who the edits belonged to.
+
+**The guard that looked like it covered this did not.** `apply()` refreshes once and is gated on
+`retried_token`, and its own comment says a genuinely unauthenticated session *"would otherwise
+spin here forever"*. It does not spin. The first refresh succeeds, `_fresh_token` keeps the
+anonymous token, and every later edit goes out under it without raising `badtoken` again. **A
+guard against looping is not a guard against identity**, and the comment asserting otherwise is
+what made the hole invisible.
+
+`csrf()` now asks `meta=tokens|userinfo` — one request, so knowing who we are costs nothing over
+asking for the token — and raises `SystemExit` when the session is anonymous, by `anon` in
+userinfo or by the token equalling `ANON_CSRF`. It is the one place a token is minted, so the
+take in `main()` and the refresh in `apply()` are both covered. Stopping mid-batch costs nothing:
+§ *the batches are a SEQUENCE*.
+
+### The overnight stop was three separate events
+
+The aggressive Wikidata session ran 09-18 13:19 to 09-19 02:59 local and **did not drift into
+exports**: one Geni submit at 13:22 and one download at 14:26, then from 16:59 nothing but
+`wikidata-edits.yml` dispatches for about ten hours, to its last action at 02:29.
+
+    03:02:25  UNEXPECTED shutdown     event 6008 + Kernel-Power 41 -- crash or power loss.
+                                      This is what killed that session, ~2 min after its last
+                                      entry. Back up 03:10.
+    04:00:40  commanded shutdown      event 1074, shutdown.exe, comment empty. Done BY HAND
+                                      and deliberately -- confirmed, not a fault and not
+                                      something to investigate. No scheduled task invokes
+                                      shutdown and no session issued it, which is why it
+                                      looked unexplained from here; it was not.
+    10:00:55  scheduled shutdown      Kernel-Power 109, Power Action Shutdown, Kernel API.
+
+The export drift belongs to the session AFTER the crash: it started 03:12, and at 03:33–03:38
+went into GEDCOM exports and set a cron to return to them — a lane a separate session owns.
+
+⛔ **AND A REBOOT KILLS THE PATH REQUESTER SILENTLY, WHICH IS WHY IT APPEARED TO STOP.** The
+machine was down 10:00:55 to 13:22:47 — three hours twenty-two. The runner lives in a page, so it
+did not stop: it ceased to exist, and nothing restarts it but a session. Chrome then came back
+from the Google Photos startup shortcut with **none of the throttling flags**, which is the
+launch fault § *the symptom is indistinguishable from a healthy run* describes.
+
+Restarted properly: `scripts/start-chrome.ps1`, derive on `6000000031563406439` (`derived:true`),
+8,000 ids in through the file input rather than a paste, `health()` reporting `alive:true` with
+`fail:0`. A six-hourly `health()` cron is set, so the next reboot is caught by a check.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

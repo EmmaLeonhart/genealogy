@@ -284,17 +284,6 @@ The Geni exports below run alongside all of this and are **the least significant
 *"these actual Geni exports are kind of the least significant part of what we're doing here. It
 just happens that I got a lot of them all at once."*
 
-- **1. Copy `C:\Users\Emma\Documents\Preservation\genealogy` in wholesale.** Gitignore any file
-  too large to push, commit, push. 3.0 GB, 12,975 files. Nine files exceed GitHub's 100 MB hard
-  limit, including three 230 MB MyHeritage *Descent from Antiquity archive* backups,
-  `Theogrammaticus.ged` (188 MB) and `Gaiad.ged` (107 MB).
-
-- **2. Deal with the gitignored files**, often by converting them to GEDCOMs. Commit, push.
-
-- **3. Are the Pfinzing von Henfenfeld and Reuss connections in the archive?** Commit, push.
-  This is the *"I could have sworn there was a connection to two Bavarian noble families here
-  that I can't actually find"* lead.
-
 - **4. All the random CI/CD crap.** CI has been failing since before 2026-09-17, and the
   three-ledger refactor has never run green: every pipeline run since it landed was cancelled by
   the next push.
@@ -324,19 +313,52 @@ that mistake: measuring existing connectivity treats the tree as fixed, and in a
 almost any two noble lines are reachable at some hop count, so a reachability number says nearly
 nothing. The exports are what create the edges.
 
+## ⛔ A FULL RING OF ANCESTRY ON TWO PEOPLE, EVERY RUN. Ruled 2026-09-18
+
+*"for these two people I want you to go crazy with their ancestors. Every run should add a full
+ring to their ancestry."*
+
+    6000000000757999620  Q141493478  Inger Axelsdatter Güntersberg
+    6000000002621242041  Q141450322  Olfvir / Ølver Rømer
+
+`PRIORITY_ANCESTOR_SEEDS` and `priority_ancestor_ring` in `scripts/build-garborg-day.py`. The
+walk goes up THROUGH people who already hold a QID and returns everybody standing on the first
+boundary above -- the whole ring, unioned in after `compose` picks, uncapped, because a full ring
+is not a shape `compose` can express and a slice of it advances the ancestry a fraction of a
+generation a day.
+
+**It advances itself and there is nothing to maintain**: what it returns gets created, enters the
+ledger, and is walked THROUGH next run instead of returned again. No depth counter, no cursor, no
+state, and no way for it to quietly stop.
+
+⛔ **THE LEDGER'S GENI ID FOR `Q141450322` IS THE HUSK.** `garborg-qids.tsv` pairs it with
+`6000000227289508960`, which redirects to `6000000002621242041` and has no `FAMC` of its own --
+so seeding on the ledger alone would have grown nothing while printing a cheerful zero. Both ids
+seed the walk. Correcting the ledger row is still owed.
+
+**First measurement, 2026-09-18: 8 people on the frontier**, 7 walked through.
+
 ## ⛔ TOP PRIORITY EXPORTS, from 00:30 on 2026-09-18 — run top to bottom, one at a time
 
 Ahead of the commanded roster below. Geni allows one export at a time, so this is a strict
 sequence, not a set.
 
-- **Bothilde Sigurdsdatter Onarheim** `6000000227805045863` — `Forest`. *"for merge related stuff
-  changing"*, so it is a **privileged** export and is filed into `exports/post-merge/`.
-- **NN Rømer** `6000000227805352866` — `Forest`, then `Ancestors`.
-  <https://www.geni.com/people/NN-R%C3%B8mer/6000000227805352866>
-- **NN Stromer** `6000000227805421869` — `Forest`.
-  <https://www.geni.com/people/NN-Stromer/6000000227805421869>
-- **Erik Ims** `6000000227805012893` — `Forest`, then `Descendants`.
-  <https://www.geni.com/people/Erik-Ims/6000000227805012893>
+- **Bothilde Sigurdsdatter Onarheim** — `Forest`. *"for merge related stuff changing"*, so it is
+  a **privileged** export and is filed into `exports/post-merge/`.
+
+  ⛔ **`6000000227805045863` IS A HUSK AND THE EXPORT DOES NOT RUN ON IT.** It redirects to
+  `6000000177261659865`, the real Bothilde (c.1275), which this account does not manage —
+  `https://www.geni.com/gedcom/export/6000000177261659865` answers *"You are not allowed to
+  export that profile"* and lands on `/error`. The husk's own export form still loads, titles
+  itself **"(No Name)'s GEDCOM File is Being Created"** and accepts the submit; that is the trap
+  § *`6000000227289508960` IS A MERGED-AWAY HUSK* describes, and one such submit was spent here
+  on 2026-09-19 before the redirect was checked.
+
+  **The seed is `6000000227811549827` Sigurd Onarheim**, her father, created by this account and
+  directly attested by her patronymic — tier 1 of `docs/export-seed-rules.md`. `NN Onarheim`
+  `6000000227816629854` is the mother placeholder and is the fallback. `Forest` 5000 submitted
+  off Sigurd on 2026-09-19; the page confirmed **"Sigurd Onarheim's GEDCOM File is Being
+  Created"**, a named profile rather than `(No Name)`. Delete this when the zip is filed.
 
 ⛔ **AND `6000000002621242041` OLFVIR IS NOT EXPORTED DIRECTLY. RULED 2026-09-18.** Forest,
 Ancestors and Descendants were all queued on that id and **none of them can run**: the profile

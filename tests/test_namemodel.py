@@ -985,13 +985,23 @@ def test_the_two_exceptions_to_the_punctuation_rule():
 def test_the_roman_rule_is_the_ordinal_SEQUENCE_and_not_the_alphabet():
     """`di` is 21,960 occurrences and `Li` is a Chinese surname — both are all-Roman letters.
 
-    A blanket *every character is one of IVXLCDM* refuses them, and refuses the single-letter
-    initials `D`, `M`, `C`, `L` which are 4,736 / 2,562 / 1,647 / 1,344 in the corpus and are
-    never ordinals in a name. The pattern is the ordinal sequence, uppercase, `I`/`V`/`X` only.
+    A blanket *every character is one of IVXLCDM* refuses them. The pattern is the ordinal
+    sequence, uppercase, `I`/`V`/`X` only.
+
+    ⛔ **`D`, `M`, `C` AND `L` MOVED OUT OF THE `name_shape` LIST ON 2026-09-18, AND THEY ARE
+    STILL TESTED.** They were here because a blanket Roman rule refuses them, and they are
+    4,736 / 2,562 / 1,647 / 1,344 in the corpus. They are now refused anyway, by a DIFFERENT
+    rule ruled 2026-09-17 -- *"a single Latin letter is an initial, not a name"*, written after
+    a `given name` item labelled `L` and a human item labelled `n` were created off this
+    corpus. Two rules, two reasons, and asserting the wrong one here made the suite red for a
+    day. So what this test owns is asserted directly against `is_numeral`: the numeral rule
+    must not be the thing that refuses them.
     """
-    for real in ("di", "Li", "Di", "il", "im", "ll", "Liv", "D", "M", "C", "L", "DILL",
+    for real in ("di", "Li", "Di", "il", "im", "ll", "Liv", "DILL",
                  "Bure", "孔", "Ærø", "Ólafsdóttir", "O'Brien"):
         assert namemodel.name_shape(real)[1] != "unknown", f"{real!r} lost its name item"
+    for initial in ("D", "M", "C", "L"):
+        assert not namemodel.is_numeral(initial), f"{initial!r} read as a Roman ordinal"
 
 
 def test_the_gaelic_particles_mac_and_o():

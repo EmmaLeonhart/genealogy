@@ -140005,148 +140005,6 @@
  },
  {
   "kind": "pick",
-  "id": "sibling|6000000014210087188|M|ours",
-  "side": "ours",
-  "slot": "sibling",
-  "ask": "Which of these is the item?",
-  "anchor": {
-   "name": "Ludwig Casimir von Isenburg-Büdingen",
-   "id": "Q12325064",
-   "kind": "qid",
-   "sex": "",
-   "life": [
-    "",
-    ""
-   ],
-   "gone": false,
-   "fields": [
-    [
-     "Parents",
-     [
-      "Ernst Casimir of Isenburg-Büdingen",
-      "Countess Christine Eleanore of Stolberg-Gedern"
-     ]
-    ],
-    [
-     "Siblings",
-     [
-      "Gustav Frederick, Count of Ysenburg and Büdingen in Büdingen",
-      "Ernst Dietrich von Ebenburg-Büdingen-Büdingen"
-     ]
-    ],
-    [
-     "Spouse",
-     [
-      "Auguste Friederike zu Isenburg und Büdingen"
-     ]
-    ],
-    [
-     "Children",
-     []
-    ]
-   ]
-  },
-  "options": [
-   {
-    "name": "Ludwig Casimir zu Ysenburg und Büdingen",
-    "id": "6000000025374322081",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1710",
-     "1775"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Christine Eleonore von Stolberg-Gedern Gräfin"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Magdalene Luise Christine Isenburg-Büdingen-Büdingen",
-       "Gustav Frederik von Ysenburg-Büdingen-Büdingen Graf",
-       "Ernst Dietrich von Isenburg-Büdingen-Büdingen",
-       "Auguste Karoline von Isenburg-Büdingen-Büdingen"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000025374322081",
-    "qid": "Q12325064",
-    "our": "Ludwig Casimir zu Ysenburg und Büdingen",
-    "cand": "Ludwig Casimir von Isenburg-Büdingen"
-   },
-   {
-    "name": "Ernst Dietrich von Isenburg-Büdingen-Büdingen",
-    "id": "6000000024052800682",
-    "kind": "geni",
-    "sex": "M",
-    "life": [
-     "1717",
-     "1758"
-    ],
-    "fields": [
-     [
-      "Parents",
-      [
-       "Christine Eleonore von Stolberg-Gedern Gräfin"
-      ]
-     ],
-     [
-      "Siblings",
-      [
-       "Magdalene Luise Christine Isenburg-Büdingen-Büdingen",
-       "Ludwig Casimir zu Ysenburg und Büdingen",
-       "Gustav Frederik von Ysenburg-Büdingen-Büdingen Graf",
-       "Auguste Karoline von Isenburg-Büdingen-Büdingen"
-      ]
-     ],
-     [
-      "Spouse",
-      []
-     ],
-     [
-      "Children",
-      []
-     ]
-    ],
-    "geni": "6000000024052800682",
-    "qid": "Q12325064",
-    "our": "Ernst Dietrich von Isenburg-Büdingen-Büdingen",
-    "cand": "Ludwig Casimir von Isenburg-Büdingen"
-   }
-  ],
-  "trigger_pre": "held because their sibling ",
-  "trigger_bold": "Gustav Frederik von Ysenburg-Büdingen-Büdingen Graf",
-  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
-  "highlight": [
-   "auguste",
-   "budingen",
-   "casimir",
-   "christine",
-   "dietrich",
-   "ernst",
-   "gustav",
-   "stolberggedern",
-   "und",
-   "von",
-   "ysenburg"
-  ],
-  "our": "Ludwig Casimir zu Ysenburg und Büdingen",
-  "cand": "Ludwig Casimir von Isenburg-Büdingen"
- },
- {
-  "kind": "pick",
   "id": "child|6000000015908939799|F|ours",
   "side": "ours",
   "slot": "child",
@@ -191723,6 +191581,147 @@
   ],
   "our": "Reinhold Friedrich von der Osten-Sacken",
   "cand": "Reinhold Friedrich von der Osten-Sacken"
+ },
+ {
+  "kind": "pick",
+  "id": "sibling|6000000014210087188|M|ours",
+  "side": "ours",
+  "slot": "sibling",
+  "ask": "Which of these is the item?",
+  "anchor": {
+   "name": "Ludwig Casimir von Isenburg-Büdingen",
+   "id": "Q12325064",
+   "kind": "qid",
+   "sex": "",
+   "life": [
+    "",
+    ""
+   ],
+   "gone": false,
+   "fields": [
+    [
+     "Parents",
+     [
+      "Ernst Casimir of Isenburg-Büdingen",
+      "Countess Christine Eleanore of Stolberg-Gedern"
+     ]
+    ],
+    [
+     "Siblings",
+     [
+      "Gustav Frederick, Count of Ysenburg and Büdingen in Büdingen",
+      "Ernst Dietrich von Ebenburg-Büdingen-Büdingen"
+     ]
+    ],
+    [
+     "Spouse",
+     [
+      "Auguste Friederike of Isenburg-Büdingen (née Stolberg-Wernigerode)"
+     ]
+    ],
+    [
+     "Children",
+     []
+    ]
+   ]
+  },
+  "options": [
+   {
+    "name": "Ludwig Casimir zu Ysenburg und Büdingen",
+    "id": "6000000025374322081",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1710",
+     "1775"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Christine Eleonore von Stolberg-Gedern Gräfin"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Magdalene Luise Christine Isenburg-Büdingen-Büdingen",
+       "Gustav Frederik von Ysenburg-Büdingen-Büdingen Graf",
+       "Ernst Dietrich von Isenburg-Büdingen-Büdingen",
+       "Auguste Karoline von Isenburg-Büdingen-Büdingen"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000025374322081",
+    "qid": "Q12325064",
+    "our": "Ludwig Casimir zu Ysenburg und Büdingen",
+    "cand": "Ludwig Casimir von Isenburg-Büdingen"
+   },
+   {
+    "name": "Ernst Dietrich von Isenburg-Büdingen-Büdingen",
+    "id": "6000000024052800682",
+    "kind": "geni",
+    "sex": "M",
+    "life": [
+     "1717",
+     "1758"
+    ],
+    "fields": [
+     [
+      "Parents",
+      [
+       "Christine Eleonore von Stolberg-Gedern Gräfin"
+      ]
+     ],
+     [
+      "Siblings",
+      [
+       "Magdalene Luise Christine Isenburg-Büdingen-Büdingen",
+       "Ludwig Casimir zu Ysenburg und Büdingen",
+       "Gustav Frederik von Ysenburg-Büdingen-Büdingen Graf",
+       "Auguste Karoline von Isenburg-Büdingen-Büdingen"
+      ]
+     ],
+     [
+      "Spouse",
+      []
+     ],
+     [
+      "Children",
+      []
+     ]
+    ],
+    "geni": "6000000024052800682",
+    "qid": "Q12325064",
+    "our": "Ernst Dietrich von Isenburg-Büdingen-Büdingen",
+    "cand": "Ludwig Casimir von Isenburg-Büdingen"
+   }
+  ],
+  "trigger_pre": "held because their sibling ",
+  "trigger_bold": "Gustav Frederik von Ysenburg-Büdingen-Büdingen Graf",
+  "trigger_post": " holds an item naming siblings we cannot place one-to-one",
+  "highlight": [
+   "auguste",
+   "budingen",
+   "casimir",
+   "christine",
+   "dietrich",
+   "ernst",
+   "gustav",
+   "stolberggedern",
+   "von",
+   "ysenburg"
+  ],
+  "our": "Ludwig Casimir zu Ysenburg und Büdingen",
+  "cand": "Ludwig Casimir von Isenburg-Büdingen"
  },
  {
   "kind": "pick",

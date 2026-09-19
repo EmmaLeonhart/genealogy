@@ -39,6 +39,7 @@ import csv
 import json
 import math
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -193,7 +194,40 @@ class Session:
         return res.get("claims") or {}
 
     def csrf(self) -> str:
-        return self._call(action="query", meta="tokens")["query"]["tokens"]["csrftoken"]
+        """The CSRF token, and proof the session about to use it is still logged in.
+
+        ⛔ **A LOGGED-OUT SESSION STILL GETS A TOKEN, AND IT IS A VALID ONE.** MediaWiki hands
+        an anonymous caller the ANON_CSRF token below and then ACCEPTS edits signed with
+        it, so losing the login does not fail anything -- it silently changes who the
+        edits are attributed to. On 2026-09-19 run `35442887963` logged in at 12:59,
+        lost its session about forty minutes later, hit `badtoken`, refreshed here, and
+        wrote **15 statements as the temporary account `~2026-50571-43`** at 13:41 with
+        no error of any kind. It was spotted on Wikidata's own contributions page;
+        nothing in this repo noticed.
+
+        The `retried_token` guard in `apply()` reads like the protection against this -- its
+        own comment says a genuinely unauthenticated session "would otherwise spin here
+        forever". It does not spin. The first refresh succeeds, `_fresh_token` keeps the
+        anonymous token, and every later edit goes out under it without ever raising
+        `badtoken` again. **A guard against looping is not a guard against identity.**
+
+        So the check lives here, in the one place a token is minted, which covers the take in
+        `main()` and the refresh in `apply()` alike. `meta=tokens|userinfo` is one request, so
+        knowing who we are costs nothing over asking for the token.
+        """
+        res = self._call(action="query", meta="tokens|userinfo")
+        info = res["query"]["userinfo"]
+        token = res["query"]["tokens"]["csrftoken"]
+        # `anon` is present-and-empty when logged out; the token value is the second witness
+        # because either one alone is a single point of failure on somebody else's API.
+        if "anon" in info or token == ANON_CSRF:
+            raise SystemExit(
+                "SESSION LOST -- not logged in any more, so Wikidata would attribute these "
+                f"edits to {info.get('name', '<anonymous>')!r} rather than to the bot. "
+                "Stopping with the rest of the batch unsent; it is a SEQUENCE and tomorrow's "
+                "run sends it."
+            )
+        return token
 
     def apply(self, edit: dict, token: str, minted: dict, *, delay: float) -> str:
         """Send one edit object. Returns the QID it created or changed.
@@ -206,10 +240,14 @@ class Session:
         categorical and covers the API path explicitly: *"No `summary=` on an API
         call"*. The absence is deliberate; do not add one.
         """
+        # A token refreshed by an earlier edit is the live one; main() still holds the stale
+        # value it took before the loop, and without this every remaining edit would rediscover
+        # the same staleness with its own wasted round-trip.
+        token = getattr(self, "_fresh_token", None) or token
         data = entity_data(edit, minted)
         plans = []
         if edit["kind"] == "create":
-            params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+            params = {"action": "wbeditentity", "token": token, "maxlag": MAXLAG,
                       "new": "item",
                       "data": json.dumps(data, ensure_ascii=False)}
         else:
@@ -217,7 +255,7 @@ class Session:
             # a duplicate statement. See `plan_attachments`.
             if data.get("claims"):
                 plans = plan_attachments(data, self.claims(edit["qid"]))
-            params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+            params = {"action": "wbeditentity", "token": token, "maxlag": MAXLAG,
                       "id": edit["qid"],
                       "data": json.dumps(data, ensure_ascii=False)}
             # EVERY CLAIM ALREADY HELD MEANS THERE IS NOTHING TO wbeditentity. Sending the
@@ -237,11 +275,30 @@ class Session:
         # An attempt count answers "how many times did we ask"; the question maxlag actually
         # poses is "has the lag cleared yet", and only elapsed time answers that.
         deadline = time.monotonic() + MAXLAG_BUDGET
+        retried_token = False
         while True:
             res = self._call(action="wbeditentity", _post=params)
             err = res.get("error")
             if not err:
                 break
+            # ⛔ **A CSRF TOKEN GOES STALE ON A LONG RUN, AND 130 EDITS IN IT DID.** Taken once
+            # before the loop, which was right when a run was ten edits and twenty minutes. On
+            # 2026-09-19 a limit=1000 run applied 130 and then every remaining edit came back
+            # `badtoken: Invalid CSRF token` -- creates and qualifiers alike. Nothing was
+            # damaged, because a refused edit is a refused edit, but the run died with most of
+            # the batch unsent and a receipt that looked like a partial success.
+            #
+            # A token is cheap and refreshing it is one GET, so this refreshes ONCE per edit and
+            # retries. Once, not in a loop: a genuinely unauthenticated session would otherwise
+            # spin here forever, and `badtoken` twice in a row on a fresh token means the
+            # session is gone rather than the token.
+            if err.get("code") == "badtoken" and not retried_token:
+                retried_token = True
+                token = self.csrf()
+                self._fresh_token = token
+                params["token"] = token
+                print("    csrf token went stale -- refreshed, retrying this edit")
+                continue
             if err.get("code") != "maxlag":
                 raise EditFailed(f"{edit['id']}: {err.get('code')}: {err.get('info')}")
             if time.monotonic() >= deadline:
@@ -319,7 +376,23 @@ class Session:
 #: Five minutes rides out an ordinary spike and still lets a genuinely sick site fail the
 #: run rather than hang it: the batch is capped at 60 edits, so the true worst case is
 #: bounded and the usual case costs nothing, because a healthy site never sleeps here.
-MAXLAG_BUDGET = 300.0
+MAXLAG_BUDGET = 900.0
+
+#: ⛔ **THE `maxlag` THRESHOLD ITSELF, RAISED FROM 5 TO 10 ON 2026-09-19.** Wikidata's own
+#: guidance puts 5 on a BULK bot and says a shorter, interactive task may use a higher value.
+#: This is a capped daily batch, not a bulk load, and on 2026-09-19 the query servers sat at
+#: **6.8s** -- just over the line -- so every edit was refused and the whole 300s budget was
+#: spent sleeping. `0 edits executed`, twice, on a batch with nothing wrong with it.
+#:
+#: 10 clears an ordinary spike and still yields to a genuinely sick site, which is what maxlag
+#: is for. It is a named constant rather than a literal in two call sites because it was a
+#: literal in two call sites, and that is why it had never once been reconsidered.
+MAXLAG = "10"
+
+#: ⛔ **THE TOKEN MEDIAWIKI GIVES AN ANONYMOUS CALLER**, and it is not a refusal -- edits
+#: signed with it are accepted and attributed to an IP or a temporary account. It is a
+#: constant here so `csrf` can say what it is rejecting rather than testing a bare literal.
+ANON_CSRF = "+\\"
 
 
 class EditFailed(RuntimeError):
@@ -441,6 +514,32 @@ def is_already_present(info: str) -> bool:
     """True when Wikidata's refusal means *this is already on the statement*."""
     text = (info or "").lower()
     return any(marker in text for marker in _ALREADY_PRESENT)
+
+
+#: DUP **THE DEDUPLICATION REFUSAL, AND IT IS THE FEATURE WORKING.** Ruled 2026-09-19, when
+#: descriptions started going on created items: *"These descriptions will be verbose enough
+#: that they will hopefully never collide but stop us from recreating our own items multiple
+#: times."*
+#:
+#: Wikibase refuses a `CREATE` whose label+description pair an item already holds, and names
+#: that item. On the first live run with descriptions, 24 of a 364-edit batch came back this
+#: way -- every one a name item, which `split-daily-batch` writes to BOTH halves by design, so
+#: the auto half created it and the manual half's second attempt was correctly refused. Before
+#: descriptions that second `CREATE` would have SUCCEEDED and minted a duplicate.
+#:
+#: **So the QID in the message is the answer, not the error.** Taking it means every `LAST`
+#: that depended on the create resolves to the item that already exists, instead of the chain
+#: being skipped as `depends on ..., which failed` -- which is how a run refusing 24
+#: duplicates also dropped the `P734`/`P735` links pointing at them.
+_ALREADY_EXISTS = re.compile(
+    r"Item \[\[(Q\d+)\|[^\]]*\]\] already has label .*"
+    r"using the same description text", re.I)
+
+
+def already_exists_qid(info: str) -> str:
+    """The QID Wikidata names when it refuses a duplicate `CREATE`, or empty."""
+    m = _ALREADY_EXISTS.search(info or "")
+    return m.group(1) if m else ""
 
 
 def plan_attachments(data: dict, existing: dict) -> list:
@@ -1020,6 +1119,8 @@ def main() -> int:
 
     done = 0
     failed: dict = {}
+    #: {edit id: qid} for creations Wikidata refused because the item already exists.
+    duplicates: dict = {}
     consecutive = 0
     # Seeded from the receipt, so a create skipped as already-applied still answers
     # the LAST that points at it.
@@ -1040,6 +1141,17 @@ def main() -> int:
         try:
             qid = session.apply(e, token, minted, delay=args.delay)
         except EditFailed as exc:
+            # DUP **A DUPLICATE REFUSED IS A DUPLICATE PREVENTED.** See `already_exists_qid`.
+            # Bind this edit to the item that already exists so dependents resolve, and do not
+            # count it a failure: a number that goes red when nothing is wrong is a number
+            # nobody reads.
+            _exists = already_exists_qid(str(exc))
+            if _exists and e.get("kind") == "create":
+                minted[e["id"]] = _exists
+                duplicates[e["id"]] = _exists
+                print("       %s  %-9s ALREADY EXISTS as %s -- dependents point at it"
+                      % (e["id"], e["kind"], _exists))
+                continue
             failed[e["id"]] = str(exc)
             # ⛔ **`maxlag` IS BACK-PRESSURE, NOT A FAILURE, AND COUNTING IT STRANDS
             # HALF-WRITTEN PEOPLE.** Measured 2026-09-17: a run of 100 objects hit five
@@ -1109,6 +1221,11 @@ def main() -> int:
         print(f"  {done:>3}  {e['id']}  {e['kind']:<9} {qid}")
 
     print(f"\n{done} edits executed")
+    if duplicates:
+        print("%d creation(s) refused as ALREADY EXISTING -- the label plus description pair"
+              " is taken, which is the deduplication working:" % len(duplicates))
+        for eid, q in duplicates.items():
+            print("  %s -> %s" % (eid, q))
     if failed:
         print(f"{len(failed)} did not go:", file=sys.stderr)
         for eid, why in failed.items():

@@ -146,9 +146,58 @@ def prune_record(record: Node, keep=KEEP_TAGS) -> Node | None:
     return record
 
 
-def prune_stream(records, keep=KEEP_TAGS):
-    """Wrap a record iterator, dropping what the pipeline never reads."""
+#: The events a place is worth keeping from. Ruled 2026-09-19: places come out of the tree and
+#: into a side file keyed on the Geni id, and *"they at this moment only play a role in going
+#: into the descriptions"*.
+PLACE_EVENTS = ("BIRT", "DEAT")
+
+
+def harvest_places(record):
+    """`(geni_id, birth_place, death_place)` for one `INDI`, before the prune drops them.
+
+    ⛔ **THE PLACES ARE IN THE SOURCE GEDCOMS AND ALWAYS WERE.** The 2026-09-10 ruling --
+    *"keeping the places in the synoptic tree is a horrible idea"* -- took `PLAC` and the whole
+    address block out of `KEEP_TAGS`, so they stop at the merge boundary and never reach
+    `out/merged.ged` or `derived-facts.csv`. Nothing was ever removed from `exports/`; the slim
+    reads the corpus and writes the merged tree, and has never written back.
+
+    So the place is read here, one pass the merge is already making, and handed to a caller that
+    writes it beside the tree rather than into it. The synoptic tree stays exactly as slim as it
+    was ruled to be -- 42 MB of `PLAC` over 1,536,400 lines stays out of it.
+    """
+    if record.tag != "INDI":
+        return None
+    rfn = ""
+    out = {}
+    for child in record.children:
+        if child.tag == "RFN" and not rfn:
+            # `RFN` is written `geni:6000000001830135752`; the primary key everywhere else in
+            # this repo is the bare digits, so the prefix comes off here rather than in every
+            # reader.
+            rfn = (child.value or "").strip()
+            if rfn.lower().startswith("geni:"):
+                rfn = rfn[5:]
+        elif child.tag in PLACE_EVENTS and child.tag not in out:
+            for sub in child.children:
+                if sub.tag == "PLAC" and (sub.value or "").strip():
+                    out[child.tag] = " ".join((sub.value or "").split())
+                    break
+    if not rfn or not out:
+        return None
+    return rfn, out.get("BIRT", ""), out.get("DEAT", "")
+
+
+def prune_stream(records, keep=KEEP_TAGS, places=None):
+    """Wrap a record iterator, dropping what the pipeline never reads.
+
+    `places` is an optional callable taking `(geni_id, birth_place, death_place)`. It is called
+    BEFORE the prune, which is the only moment the place still exists.
+    """
     for record in records:
+        if places is not None:
+            got = harvest_places(record)
+            if got is not None:
+                places(*got)
         pruned = prune_record(record, keep)
         if pruned is not None:
             yield pruned

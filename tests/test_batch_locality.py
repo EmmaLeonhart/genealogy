@@ -32,7 +32,13 @@ def test_batch_touches_nothing_outside_the_universe(rel):
     allowed = check.universe()
     if not allowed:
         pytest.skip("out/wikidata/edit-universe.json absent -- recompose to build it")
-    non_local, on_kanji = check.offenders(path, allowed, check.kanji_items())
+    # ⛔ **THREE VALUES, NOT TWO.** `NEVER_EDIT` was added to `offenders` on 2026-09-18 and the
+    # script's own `main()` was updated with it; this driver was not, so every one of the three
+    # parametrised cases died on `ValueError: too many values to unpack` -- the locality gate
+    # checking NOTHING through pytest while reading as a real red. That is
+    # `CLAUDE.md` § *A GUARD IN ONE EMITTER IS NOT A GUARD* landing in the test layer, on the
+    # same night the docstring above was written about it happening in the emitters.
+    non_local, on_kanji, never = check.offenders(path, allowed, check.kanji_items())
     assert not non_local, (
         f"{rel}: {len(non_local)} item(s) neither in the universe nor one step beyond it, "
         f"first at line {min(non_local.values())}: " + ", ".join(sorted(non_local)[:8])
@@ -41,6 +47,10 @@ def test_batch_touches_nothing_outside_the_universe(rel):
         f"{rel}: label edits on {len(on_kanji)} item(s) whose ja label is KANJI, which marks a "
         f"Sinosphere name and takes no label edit in any language: "
         + ", ".join(sorted(on_kanji)[:8]))
+    assert not never, (
+        f"{rel}: {len(never)} edit(s) on an item this pipeline may NEVER touch again, first at "
+        f"line {min(never.values())}: " + ", ".join(sorted(never))
+        + " -- scripts/wikidata_lockout.NEVER_EDIT")
 
 
 def test_an_absent_universe_is_not_permission():
