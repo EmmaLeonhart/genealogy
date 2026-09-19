@@ -45462,10 +45462,11 @@ exports**: one Geni submit at 13:22 and one download at 14:26, then from 16:59 n
     03:02:25  UNEXPECTED shutdown     event 6008 + Kernel-Power 41 -- crash or power loss.
                                       This is what killed that session, ~2 min after its last
                                       entry. Back up 03:10.
-    04:00:40  commanded shutdown      event 1074, shutdown.exe on behalf of Emma, comment
-                                      empty. NO scheduled task invokes shutdown, and no recent
-                                      session issued it -- the only one that ever ran
-                                      `shutdown /s` was 09-15. Caller unidentified.
+    04:00:40  commanded shutdown      event 1074, shutdown.exe, comment empty. Done BY HAND
+                                      and deliberately -- confirmed, not a fault and not
+                                      something to investigate. No scheduled task invokes
+                                      shutdown and no session issued it, which is why it
+                                      looked unexplained from here; it was not.
     10:00:55  scheduled shutdown      Kernel-Power 109, Power Action Shutdown, Kernel API.
 
 The export drift belongs to the session AFTER the crash: it started 03:12, and at 03:33–03:38
