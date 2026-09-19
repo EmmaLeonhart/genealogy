@@ -644,3 +644,28 @@ failure that closed Abul Hamza twice on a stale frame the same day.
 - **14 of the 19 created-today Forests** -- `reports/created-today-2026-09-18.tsv`.
 - Check the year counter on <https://www.geni.com/gedcom> first. A submit that does not move it
   was refused, whatever the page says.
+
+## ⛔ NEXT CAMPAIGN AFTER THE CURRENT WORK -- `NN NN` `6000000227822546944`
+
+Ruled 2026-09-19: *"future campaign after these is forest + descendant + descendant campaign
+monte carlo on is one ... remember monte carlo on all recorded descendants of them in the
+synoptic tree and building over time the ultimate one"*.
+<https://www.geni.com/people/NN-NN/6000000227822546944>
+
+Three steps, in this order:
+
+- **`Forest`** on `6000000227822546944`
+- **`Descendants`** on `6000000227822546944`
+- **the Monte Carlo**, `docs/monte-carlo-procedure.md` unchanged -- 40 candidates a round,
+  threshold 4,000, every hit climbed and exported off a created ancestor, the root stops on a
+  round that returns none.
+
+⛔ **THE FRAME IS EVERY RECORDED DESCENDANT IN THE SYNOPTIC TREE, NOT THE BALL.** The sample is
+drawn from `scripts/descent-from.py` over the corpus -- all of them, as the tree holds them --
+and the trunk cut applies if it comes back DEEP. It is built FRESH at the time, never read off
+disk: Abul Hamza was sampled for three rounds against a roster six days stale that held 45
+generations where the corpus held 116, and closed twice on it.
+
+⛔ **AND IT ACCUMULATES.** *"building over time the ultimate one"* -- the frame grows as balls
+land, so each round is drawn against a larger descent than the last. The denylist rebuild in
+step 2 of the procedure is what keeps that from re-sampling ground already taken.
