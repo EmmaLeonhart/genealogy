@@ -6338,6 +6338,22 @@ def main():
         print(f"priority ancestor ring: {len(_ring)} people directly above the ancestry of "
               f"{len(PRIORITY_ANCESTOR_SEEDS)} seed(s) already on Wikidata, "
               f"{len(_added)} of them new to this batch")
+        # ⛔ **THE SPLITTER HAS TO KNOW WHICH PEOPLE THE RING PUT HERE, OR THE RING IS NOT
+        # AUTOMATIC.** `split-daily-batch` deals the first third of person creations IN COMPOSED
+        # ORDER to the automatic half. The ring is unioned in AFTER `compose` has picked, so its
+        # people sort late and land in the manual two-thirds -- which is published for a person
+        # to paste. On 2026-09-19 that is exactly where Olver's parents went, and the scheduled
+        # sender was never going to touch them.
+        #
+        # *"Every run should add a full ring to their ancestry"* is a statement about what runs
+        # BY ITSELF, so the ring's creations go to the automatic half whatever the arithmetic
+        # says. Written as data because the splitter is a separate process at the end of the
+        # pipeline and cannot see this one's variables.
+        _ring_out = ROOT / "out" / "wikidata" / "priority-ring.json"
+        _ring_out.parent.mkdir(parents=True, exist_ok=True)
+        _ring_out.write_text(json.dumps(sorted(_ring)), encoding="utf-8")
+        print(f"wrote {_ring_out.relative_to(ROOT)}: {len(_ring)} geni id(s) the splitter "
+              f"must put in the automatic half")
 
     else:
         compose_why = {}

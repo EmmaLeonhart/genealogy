@@ -279,10 +279,39 @@ def main() -> int:
                     return True
         return False
 
+    # ⛔ **THE PRIORITY RING'S PEOPLE GO AUTOMATIC WHATEVER THE ARITHMETIC SAYS.**
+    # `build-garborg-day.priority_ancestor_ring` unions its people into `to_create` AFTER
+    # `compose` has picked, so they sort late and the first-third deal below puts them in the
+    # manual half -- which is published for a person to paste, not sent. On 2026-09-19 that is
+    # where Olver's parents landed and the scheduled sender was never going to touch them.
+    # *"Every run should add a full ring to their ancestry"* is about what runs BY ITSELF.
+    ring_ids = set()
+    ring_file = REPO / "out" / "wikidata" / "priority-ring.json"
+    if ring_file.exists():
+        import json as _json
+        ring_ids = set(_json.loads(ring_file.read_text(encoding="utf-8")))
+
+    def ring_geni_ids(u):
+        """The `P2600` values a unit's creations carry, so a ring person can be recognised."""
+        out = set()
+        for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
+            for c in e.get("claims") or ():
+                if c.get("property") == "P2600":
+                    v = c.get("value")
+                    if isinstance(v, str):
+                        out.add(v.strip('"'))
+        return out
+
     person_units = [i for i, u in enumerate(units) if is_person_create(u)]
     person_units_set = set(person_units)
     n_auto = int(round(len(person_units) * AUTO_SHARE))
     auto_people = set(person_units[:n_auto])
+    if ring_ids:
+        forced = {i for i in person_units if ring_geni_ids(units[i]) & ring_ids}
+        new_forced = forced - auto_people
+        auto_people |= forced
+        print(f"   priority ring: {len(forced)} creation(s) forced automatic, "
+              f"{len(new_forced)} of them the share would have left for the page")
     print(f"   {len(person_units)} individual creation(s): {len(auto_people)} automatic, "
           f"{len(person_units) - len(auto_people)} for the page; everything else in BOTH")
 
