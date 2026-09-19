@@ -3,20 +3,20 @@
 Plan items 3 and 4. Occupation is string work, and so are birthplace,
 birth date, death date, death place, burial date and burial place.
 
-One row per person in `reports/derived-facts.csv` — **1,758,563 people**, 
-of whom 72,069 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **1,812,943 people**, 
+of whom 73,562 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,755,391 | 99.8% |
-| occupation | 199,936 | 11.4% |
-| birth date | 1,150,586 | 65.4% |
+| sex | 1,809,622 | 99.8% |
+| occupation | 204,810 | 11.3% |
+| birth date | 1,182,728 | 65.2% |
 | birth place | 0 | 0.0% |
-| death date | 911,206 | 51.8% |
+| death date | 937,136 | 51.7% |
 | death place | 0 | 0.0% |
-| burial date | 112,707 | 6.4% |
+| burial date | 114,884 | 6.3% |
 | burial place | 0 | 0.0% |
 
 ## Addresses, kept as text
@@ -48,27 +48,27 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**33 date values**, 17 distinct, parsed to no year. They keep their raw
+**36 date values**, 19 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
 | `ABT` | 16 |
-| `AFT` | 2 |
+| `AFT` | 3 |
 | `BET 725 AND` | 1 |
 | `-538000000` | 1 |
 | `-1400000000` | 1 |
 | `ABT -538000000` | 1 |
 | `6092011` | 1 |
 | `13011704` | 1 |
+| `2031721` | 1 |
 | `BET  AND` | 1 |
 | `19981` | 1 |
 | `265 APR 1843` | 1 |
 | `SEP 41666` | 1 |
 | `DEC 161728` | 1 |
 | `105 NOV 1743` | 1 |
-| `JUN 171862` | 1 |
 
 `reports/impossible-years.md` has the full account of these: bare modifiers with
 no operand, and cosmological years in the hundreds of millions belonging to
