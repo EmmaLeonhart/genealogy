@@ -45387,3 +45387,42 @@ compose. `pipeline.yml` recomposes all of this on push and none of it is fixable
 § *DO NOT DO CI/CD's WORK BY HAND*. **Not dispatching `ci.yml` until the pipeline has landed a
 recomposed batch**, because a dispatch before then re-reads the same stale file and fails the
 same four ways.
+
+## 2026-09-19 — path tick: 2,601 stamped, and the Sigurd export never reached Geni's list
+
+**The runner is healthy and the pacing is right.** `health()` at 06:47 local: `alive:true`,
+`i` 2,606 of 7,956, `fail` 2 and unmoved since the start, `gen` 1 — one loop, not two.
+199 minutes elapsed, 5,214 requests, **2.29 s per request, 787 people an hour**. Well inside the
+1.1–1.8s stagger, so nothing here is going to draw a CAPTCHA. 5,350 left, about 6.8 hours, so no
+top-up: `i` is nowhere near `of - 300`.
+
+`dumpAttempts()` wrote 2,601 ids and `stamp-attempts.py` took all of them —
+`queued/queued` 2,600 and `http404/http404` 1, which is the whole of `fail: 2`. The worklist now
+carries **54,102 real attempt dates** across 251,820 rows.
+
+⛔ **AND THE EXPORT SUBMIT REPORTED EARLIER DID NOT HAPPEN.** The submit page answered
+*"Sigurd Onarheim's GEDCOM File is Being Created"* and that was taken as confirmation, on the
+grounds that it named a profile instead of `(No Name)`. **That is the instrument this file
+already says lies.** § *The reliable instrument is `https://www.geni.com/gedcom`, which lists
+every request with a timestamp; the submit page is a static snapshot and lies about state.*
+
+Read off that page: 817 requests, all rendered, and **no Sigurd Onarheim entry at the time of
+the submit**. What the Onarheim family actually has is
+
+    NN Onarheim                       today      05:46
+    Sigurd Onarheim                   yesterday  22:59, 22:47, 08:00
+    Bothilde Sigurdsdatter Onarheim   yesterday  15:05, 13:23, 06:45
+
+— so this ground was being worked yesterday, and the newest request on it is `NN Onarheim` at
+05:46 today, which is not mine either. **Nothing has been downloaded since 00:50**, so none of
+those have been collected; `~/Downloads` now holds **255 unfiled zips**, up from the 215 the
+queue records.
+
+**Not re-submitting.** An uncollected request from 05:46 means the one export slot is plausibly
+occupied, and § *Geni refuses a second export while one is generating and the refusal appears as
+a banner on a page that also still reads "Being Created"* is exactly how a second submit would
+look like it worked. The queue line for Bothilde stays as it is.
+
+**The rule to take from this:** a submit is confirmed by a timestamped row appearing in
+`/gedcom`, and by nothing else. `location.href` and the profile name in the banner both survive
+a submit that produced nothing.
