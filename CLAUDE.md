@@ -327,12 +327,36 @@ noticed by Emma rather than by me: *"hold the fuck on, have you been requesting 
 - **NO REPLY MEANS CONTENT.** Silence is never a block. Show the records and keep going.
 - **TESTS RUN IN CI/CD OR NOT AT ALL.** Never a local `pytest`, not even backgrounded. Test-suite
   health is *which sha CI last went green on* and nothing else. → [ci](docs/rules/ci-and-pipeline.md)
-- **NO descriptions and NO edit summaries, categorically.** The exception is **NAME ITEMS, and it
-  is three strings**: `Den "patronymic"`, `Den "matronymic"`, `Den "family name"` — because that
-  description IS the deduplication, and Wikidata refuses the duplicate on the label-plus-
-  description pair. It holds on an **existing** name item as much as on a `CREATE`: ruled
-  2026-09-09, *"both are intentional lol and matronymic too"*. `DESCRIPTION_FOR` in
-  `scripts/build-garborg-name-items.py` is the authority. Never strip one from a batch.
+- **NO edit summaries, categorically.** Never a `summary=` on an API call, never one in a batch.
+- **⛔ DESCRIPTIONS ARE WRITTEN NOW, AND THE REASON IS THE DEDUPLICATION. Ruled 2026-09-19**,
+  reversing the categorical ban of 2026-08-30: *"($DATE_OF_BIRTH - $DATE_OF_DEATH) should be the
+  descriptions we make on individuals. Include the gedcom qualifiers ... These descriptions will
+  be verbose enough that they will hopefully never collide but stop us from recreating our own
+  items multiple times."*
+
+  **A blank description is not a guard, it is the absence of one, and that is the whole point.**
+  Wikibase refuses a creation only when the label AND a NON-EMPTY description both match.
+  Measured 2026-09-19: **eleven live items labelled `Margareta` with no description, and four
+  labelled `Hans Larsson`**, all coexisting. So blank descriptions never stopped a duplicate —
+  they stopped Wikidata catching OURS.
+
+  - **Individuals** get `Den` from `life_description` in `build-garborg-day.py`:
+    `ABT 1518 Bergen, Norway - 1580`. Dates are `birth_date_raw`/`death_date_raw` so the GEDCOM
+    qualifiers survive; places come from `reports/derived-places.csv`. **A missing side is
+    omitted, never left as a leading dash** — `died 1590`, not `- 1590`, which was 20% of the
+    attested genealogical import this form was measured against.
+  - **⛔ `PLAC` STAYS OUT OF THE SYNOPTIC TREE.** The 2026-09-10 ruling is intact: `KEEP_TAGS`
+    drops it and `merged.ged` carries no place. `slim.harvest_places` reads it one record before
+    the prune — the only moment it exists — and `genimerge merge` writes it BESIDE the tree.
+    Nothing was ever removed from `exports/`; the slim has never written back to the corpus.
+  - **Name items** keep their three strings: `Den "patronymic"`, `Den "matronymic"`,
+    `Den "family name"`. Ruled 2026-09-09, *"both are intentional lol and matronymic too"*, and
+    it holds on an **existing** name item as much as on a `CREATE`. `DESCRIPTION_FOR` in
+    `scripts/build-garborg-name-items.py` is the authority. Never strip one from a batch.
+  - **⛔ AND THERE IS NO PRE-EMPTIVE COLLISION CHECK.** `scripts/check-label-collisions.py` is
+    DELETED. It held 12 real people — `Margareta` against eleven unrelated items, `NN` against
+    ten — on a name match, for a refusal that could not happen. A refusal costs one edit and the
+    sender already carries on past it; a hold costs that person every run forever.
   → [wikidata](docs/rules/wikidata-editing.md)
 - **Wikidata editing starts 2026-09-01; the schedule sends from 2026-09-15.** Two dates, each
   written twice and pinned by a test. A start date is not a blocker.

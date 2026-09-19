@@ -173,6 +173,23 @@ def _cmd_merge(args: argparse.Namespace) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     gedcom.write_file(doc, output)
 
+    # ⛔ **THE PLACES GO BESIDE THE TREE, NOT INTO IT.** Ruled 2026-09-19. `PLAC` is still out
+    # of `KEEP_TAGS` and `merged.ged` still carries no place -- the 2026-09-10 ruling is intact.
+    # The slim reads the place one record before it drops it and hands it here, so this costs
+    # the merge nothing it was not already doing and the tree does not grow by the 42 MB that
+    # ruling was about. Their only consumer is the description on a created Wikidata item.
+    _places = getattr(report, "places", None) or {}
+    if _places:
+        places_out = (output.parent if args.output else ws.reports) / "derived-places.csv"
+        with open(places_out, "w", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, lineterminator=chr(10))
+            w.writerow(["geni_id", "birth_place", "death_place"])
+            # § *SORTING MUST BE DETERMINISTIC* -- a total key, same bytes for the same inputs.
+            for gid in sorted(_places):
+                b, d = _places[gid]
+                w.writerow([gid, b, d])
+        print(f"wrote {places_out}: {len(_places)} people with a birth or death place")
+
     # The reports describe *this* merge, so they follow the file they describe.
     # Sending the GEDCOM elsewhere and leaving the reports in the workspace
     # overwrites the workspace's description of a different merge, which is

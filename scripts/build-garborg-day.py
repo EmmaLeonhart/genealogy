@@ -979,6 +979,76 @@ def priority_ancestor_ring(our_items, fam_p, famc):
     return frontier
 
 
+#: ⛔ **A CREATED INDIVIDUAL GETS A LIFE DESCRIPTION. Ruled 2026-09-19**, reversing the hard rule
+#: that stood from 2026-08-30: *"($DATE_OF_BIRTH - $DATE_OF_DEATH) should be the descriptions we
+#: make on individuals. Include the gedcom qualifiers ... include them in the descriptions we
+#: generate. These descriptions will be verbose enough that they will hopefully never collide
+#: but stop us from recreating our own items multiple times."*
+#:
+#: **The point is the collision, and it runs the opposite way from the old rule.** Wikibase
+#: refuses a creation only when the label AND a NON-EMPTY description both match. Measured
+#: 2026-09-19: eleven live items are labelled `Margareta` with no description and four are
+#: labelled `Hans Larsson`, all coexisting -- so a blank description means OUR OWN duplicate is
+#: never refused either. A description dense enough to be unique is what makes Wikidata catch us
+#: re-creating somebody we already made.
+#:
+#: **The form is the attested one, cleaned of its failure modes.** Sampled over 158 humans in a
+#: Genealogics/WikiTree import: 61% carry dates, but only 8% cleanly -- 20% open with a bare
+#: dash when the birth is unknown, 15% leak `Est`/`Abt`/`Bef`/`Aft`, and 3% are junk like
+#: `Peerage person ID=131840`. The qualifiers are KEPT here on instruction, because they are
+#: what the GEDCOM actually says; what is not kept is the leading dash, because a description
+#: starting `- 1590` reads as a typo rather than a fact.
+DESC_MAX = 240
+
+
+def life_description(facts_row, places_row):
+    """`12 Mar 1550 Bergen - Aft 1596 Isnäinen, Pernaja` or `""`.
+
+    Dates come from `birth_date_raw`/`death_date_raw`, so `ABT 1518` stays `ABT 1518`. Places
+    come from `reports/derived-places.csv`, which the merge writes beside the tree because
+    `CLAUDE.md`'s 2026-09-10 ruling keeps `PLAC` out of `merged.ged`.
+
+    A side with neither a date nor a place is omitted entirely rather than left as an empty
+    half, so the output is never `- 1590` and never trails a dash.
+    """
+    f = facts_row or {}
+    p = places_row or {}
+
+    def side(date_key, place_key):
+        d = " ".join((f.get(date_key) or "").split())
+        pl = " ".join((p.get(place_key) or "").split())
+        return " ".join(x for x in (d, pl) if x)
+
+    born, died = side("birth_date_raw", "birth_place"), side("death_date_raw", "death_place")
+    if born and died:
+        out = f"{born} - {died}"
+    elif born:
+        out = f"born {born}"
+    elif died:
+        out = f"died {died}"
+    else:
+        return ""
+    return out[:DESC_MAX].rstrip(" -,")
+
+
+def _places_table():
+    """`{geni_id: {"birth_place", "death_place"}}` from the file the merge writes beside the tree.
+
+    A missing file yields an empty table and dates-only descriptions, which is the safe
+    direction: the batch is no worse than it was and nothing waits on a rebuild.
+    """
+    path = ROOT / "reports" / "derived-places.csv"
+    if not path.exists():
+        return {}
+    out = {}
+    with open(path, encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            g = (row.get("geni_id") or "").strip()
+            if g:
+                out[g] = row
+    return out
+
+
 def read_tree():
     fam_p = collections.defaultdict(list)
     fam_c = collections.defaultdict(list)
@@ -6159,6 +6229,8 @@ def main():
                     n += 1
         print(f"{n} already-existing items read from {path}")
     table = translit()
+    _PLACES = _places_table()
+    print(f"{len(_PLACES):,} people have a birth or death place for their description")
     plan = load_plan()
     fam_p, fam_c, fams, famc = read_tree()
     print(f"{len(our_items)} people already carry a QID; {len(table)} tokens transliterated")
@@ -7603,6 +7675,14 @@ def main():
                 emitted.add(qs(alias))
         for note in unresolved:
             carried.append((g, label, f"name item missing: {note}"))
+
+        # ⛔ **THE LIFE DESCRIPTION.** Ruled 2026-09-19 -- see `life_description`. `Den` only:
+        # the string is English prose (`born`, `died`) around data, and a description is
+        # deduplicated per language, so putting it in `mul` would collide across every language
+        # at once. Emitted last in the block so it never separates a `CREATE` from its labels.
+        _desc = life_description(f, _PLACES.get(g))
+        if _desc:
+            lines.append(f'LAST	Den	"{qs(_desc)}"')
 
         # **A creation with NO relationship is not shipped. It is carried.**
         #
