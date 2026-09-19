@@ -46,12 +46,23 @@ from __future__ import annotations
 
 import collections
 import csv
+import glob
 import io
 import os
+import re
 import statistics
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CHAINS = os.path.join(ROOT, "reports", "path-chains.tsv")
+
+
+#: ⛔ **THE CHAINS ARE SHARDED ACROSS `reports/path-chains-N.tsv`.** One file reached 65 MB on
+#: 2026-09-19 and GitHub warned on the push. A chain is never split across shards, so reading
+#: them in numeric order is the same stream the single file used to be.
+def chain_shards():
+    found = glob.glob(os.path.join(ROOT, "reports", "path-chains-*.tsv"))
+    return sorted(found, key=lambda p: int(re.search(r"-(\d+)\.tsv$", p).group(1)))
+
+
 OUT = os.path.join(ROOT, "reports", "path-frequency.csv")
 
 
@@ -62,25 +73,26 @@ def main() -> int:
     names: dict = {}
     rel: dict = collections.defaultdict(collections.Counter)
 
-    with io.open(CHAINS, encoding="utf-8") as fh:
-        rd = csv.reader(fh, delimiter="\t")
-        next(rd, None)
-        for row in rd:
-            if len(row) < 6:
-                continue
-            to_id, kind, step, pid, name, relation = row[:6]
-            if not pid or step == "-1":
-                continue
-            try:
-                step_n = int(step)
-            except ValueError:
-                continue
-            chains.setdefault(pid, []).append((to_id, kind, step_n))
-            if name and pid not in names:
-                names[pid] = name
-            if relation:
-                rel[pid][relation] += 1
-
+    for _shard in chain_shards():
+        with io.open(_shard, encoding="utf-8") as fh:
+          rd = csv.reader(fh, delimiter="\t")
+          next(rd, None)
+          for row in rd:
+              if len(row) < 6:
+                  continue
+              to_id, kind, step, pid, name, relation = row[:6]
+              if not pid or step == "-1":
+                  continue
+              try:
+                  step_n = int(step)
+              except ValueError:
+                  continue
+              chains.setdefault(pid, []).append((to_id, kind, step_n))
+              if name and pid not in names:
+                  names[pid] = name
+              if relation:
+                  rel[pid][relation] += 1
+  
     total_chains = len({(t, k) for v in chains.values() for t, k, _ in v})
 
     rows = []

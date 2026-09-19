@@ -24,13 +24,21 @@ which is not in the table and is skipped rather than guessed. That is the existi
 this script does not second-guess it.
 """
 import csv
+import glob
 import io
 import os
 import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CHAINS = os.path.join(ROOT, "reports", "path-chains.tsv")
+#: ⛔ **THE CHAINS ARE SHARDED ACROSS `reports/path-chains-N.tsv`.** One file reached 65 MB
+#: on 2026-09-19 and GitHub warned on the push. A chain is never split across a shard boundary,
+#: so this cannot emit a truncated `paths/*.tsv` however the rows fall.
+def chain_shards():
+    found = glob.glob(os.path.join(ROOT, "reports", "path-chains-*.tsv"))
+    return sorted(found, key=lambda q: int(re.search(r"-(\d+)\.tsv$", q).group(1)))
+
+
 HARVEST = os.path.join(ROOT, "reports", "geni-paths-harvest.tsv")
 #: ⛔ NOT `paths/`. Ruled 2026-09-14: that directory is Emma's, first committed
 #: 2026-08-05, and this session dumped 2,124 machine-written TSVs into it. Its own 731
@@ -78,15 +86,17 @@ def default_viewer(seen):
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    if not os.path.exists(CHAINS):
-        print("no %s" % CHAINS)
+    shards = chain_shards()
+    if not shards:
+        print("no reports/path-chains-*.tsv")
         return 2
     froms = viewer_ids()
     fallback = default_viewer(froms)
     chains = {}
-    with io.open(CHAINS, encoding="utf-8") as fh:
-        for row in csv.DictReader(fh, delimiter="\t"):
-            chains.setdefault((row["to_id"], row["kind"]), []).append(row)
+    for shard in shards:
+        with io.open(shard, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="	"):
+                chains.setdefault((row["to_id"], row["kind"]), []).append(row)
 
     if not os.path.isdir(OUT):
         os.makedirs(OUT)

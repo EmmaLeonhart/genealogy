@@ -45533,3 +45533,29 @@ object, the same kind `pathchains.js` spends 28 minutes walking `/paths` to coll
 ~200 in the last seven days. Not built.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+## 2026-09-19 — the chains are sharded, because one file hit 65 MB
+
+`reports/path-chains.tsv` reached **65 MB** and GitHub warned on the push — past the 50 MB
+advisory, against a 100 MB hard limit — and the requester's own harvest now adds ~5,000 rows a
+dump, so it was going to keep climbing on its own.
+
+The precedent in this repo is the four big derived CSVs: gitignored, committed gzipped, and
+`pack-derived.py --unpack` on a clean clone. That was the wrong precedent to copy here, and the
+ruling was one line: *"There is a simple solution: path-chains-1.tsv lol"*. Sharding keeps the
+rows in plain text, which is what all three readers actually want, and costs a glob instead of
+an unpack step.
+
+    reports/path-chains-1.tsv ... -6.tsv    6 shards, 13 MB and under
+    807,165 rows and 25,257 chains, both preserved exactly
+
+**A chain never straddles a boundary.** The break is only taken between `(to_id, kind)` groups,
+verified: **0 chains appear in more than one shard**. That is what stops `split-path-chains.py`
+emitting a truncated `paths/*.tsv`, and it means a reader can still take one shard at a time.
+
+Three scripts open the file and all three now glob it — `merge-path-chains.py` (which also
+writes the shards back out), `build-path-frequency.py` and `split-path-chains.py`. The other two
+hits were prose mentions. Nothing new was added to carry this: no new script, no new flag, and
+the helper is three lines duplicated in each reader rather than a module for them to import.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
