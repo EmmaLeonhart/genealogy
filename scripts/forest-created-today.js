@@ -39,33 +39,53 @@
  * the tool call does not sit inside the stagger -- a 60s sleep inside `Runtime.evaluate`
  * times out at 45s, which is how the first attempt died.
  *
- *     window.__forest.start([[id, name], ...])
- *     window.__forest.state()      // {left, done:[{id, nm, building, busy, notAllowed}]}
+ *     window.__forest.start([[id, name, walk], ...])
+ *     window.__forest.state()      // {left, waiting, refused, done:[{id, nm, walk, accepted, task}]}
  */
 (function () {
   const GAP_MS = 60000;
-  const URL_FOR = (id) =>
-    "/gedcom/request_export?id=" + id +
-    "&walk=Forest&max_profiles=5000&destination=Ftb80&name_format=0&locale=en-US&include_bom=1";
+  /* ⛔ A HELD SLOT IS WAITED OUT, NOT QUEUED AGAINST. 2026-09-19: a dead task -- one whose
+   * /gedcom/download errors on every reload -- held the single export slot for hours, and
+   * every submit behind it rendered the lying "Being Created" heading and produced no row.
+   * So a refusal re-queues the SAME id and waits SLOT_GAP_MS; it never advances the roster. */
+  const SLOT_GAP_MS = 600000;
+  /* A roster entry is [id, name] or [id, name, walk]; the walk defaults to Forest, which
+   * is what this file was written for. Descendants and Ancestors ride the same submit. */
+  const URL_FOR = (id, walk) =>
+    "/gedcom/request_export?id=" + id + "&walk=" + (walk || "Forest") +
+    "&max_profiles=5000&destination=Ftb80&name_format=0&locale=en-US&include_bom=1";
 
   const R = (window.__forest = window.__forest || { todo: [], done: [], running: false, gen: 0 });
 
-  async function submit(id, nm) {
-    let rec = { id: id, nm: nm, at: new Date().toISOString() };
+  /* ⛔ THE ONLY INSTRUMENT IS A NEW ROW ON /gedcom, and the crispest read of it is the
+   * TOP row's task id: the list is newest-first, so an accepted request changes it and a
+   * refused one does not. Counting rows cannot say this -- the page truncates. */
+  async function topTask() {
     try {
-      const r = await fetch(URL_FOR(id), { credentials: "include" });
+      const t = await fetch("/gedcom", { credentials: "include" }).then((r) => r.text());
+      const m = t.match(/data-doc-id="(\d+)"/);
+      return m ? m[1] : "";
+    } catch (e) { return ""; }
+  }
+
+  async function submit(id, nm, walk) {
+    let rec = { id: id, nm: nm, walk: walk || "Forest", at: new Date().toISOString() };
+    const before = await topTask();
+    try {
+      const r = await fetch(URL_FOR(id, walk), { credentials: "include" });
       const t = (await r.text()).replace(/\s+/g, " ");
       rec.status = r.status;
-      /* The heading names the person, so a stale or misrouted page cannot pass as a
-       * submit for THIS id -- the page text lies on this site throughout. */
-      rec.building = new RegExp(nm.slice(0, 12).replace(/[.*+?^${}()|[\]\]/g, "\$&") +
-                                "[^]{0,40}GEDCOM File is Being Created", "i").test(t) ||
-                     /GEDCOM File is Being Created/i.test(t);
-      rec.busy = /one at a time|already in progress|another export/i.test(t);
+      /* ⛔ THE HEADING IS GONE FROM HERE, AND SO IS ITS BUG. Matching the person's name
+       * against "GEDCOM File is Being Created" read a refusal as a submit, and the regex
+       * that did it was malformed -- an unclosed character class -- so this file threw on
+       * paste and never ran at all. The new row on /gedcom answers the question instead. */
       rec.notAllowed = /not allowed to export/i.test(t);
     } catch (e) {
       rec.err = String((e && e.message) || e);
     }
+    const after = await topTask();
+    rec.accepted = !!after && after !== before;
+    rec.task = rec.accepted ? after : "";
     R.done.push(rec);
     return rec;
   }
@@ -75,8 +95,18 @@
   async function pump(gen) {
     while (R.todo.length && gen === R.gen) {
       const next = R.todo.shift();
-      const rec = await submit(next[0], next[1]);
-      if (rec.busy) { R.stoppedOn = rec; break; }   /* serial limit: stop, do not hammer */
+      const rec = await submit(next[0], next[1], next[2]);
+      /* A refusal that names the permission is final -- waiting cannot earn access to a
+       * profile this account does not manage, so it leaves the roster rather than looping. */
+      if (rec.notAllowed) { R.refused = (R.refused || []).concat([rec]); continue; }
+      if (!rec.accepted) {
+        /* Refused: the slot is held by whatever is ahead of us. Put it back and wait. */
+        R.todo.unshift(next);
+        R.waiting = rec;
+        if (gen === R.gen) await new Promise((z) => setTimeout(z, SLOT_GAP_MS));
+        continue;
+      }
+      R.waiting = null;
       if (R.todo.length && gen === R.gen) await new Promise((z) => setTimeout(z, GAP_MS));
     }
     if (gen === R.gen) { R.running = false; R.finished = new Date().toISOString(); }
@@ -87,12 +117,12 @@
     R.gen += 1;
     R.running = true;
     R.finished = "";
-    R.stoppedOn = null;
+    R.waiting = null;
     pump(R.gen);
     return { queued: R.todo.length, gen: R.gen };
   };
   R.state = function () {
     return { running: R.running, left: R.todo.length, finished: R.finished,
-             stoppedOn: R.stoppedOn, done: R.done };
+             waiting: R.waiting, refused: R.refused || [], done: R.done };
   };
 })();
