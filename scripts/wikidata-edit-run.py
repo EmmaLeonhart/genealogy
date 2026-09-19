@@ -194,7 +194,40 @@ class Session:
         return res.get("claims") or {}
 
     def csrf(self) -> str:
-        return self._call(action="query", meta="tokens")["query"]["tokens"]["csrftoken"]
+        """The CSRF token, and proof the session about to use it is still logged in.
+
+        ⛔ **A LOGGED-OUT SESSION STILL GETS A TOKEN, AND IT IS A VALID ONE.** MediaWiki hands
+        an anonymous caller the ANON_CSRF token below and then ACCEPTS edits signed with
+        it, so losing the login does not fail anything -- it silently changes who the
+        edits are attributed to. On 2026-09-19 run `35442887963` logged in at 12:59,
+        lost its session about forty minutes later, hit `badtoken`, refreshed here, and
+        wrote **15 statements as the temporary account `~2026-50571-43`** at 13:41 with
+        no error of any kind. It was spotted on Wikidata's own contributions page;
+        nothing in this repo noticed.
+
+        The `retried_token` guard in `apply()` reads like the protection against this -- its
+        own comment says a genuinely unauthenticated session "would otherwise spin here
+        forever". It does not spin. The first refresh succeeds, `_fresh_token` keeps the
+        anonymous token, and every later edit goes out under it without ever raising
+        `badtoken` again. **A guard against looping is not a guard against identity.**
+
+        So the check lives here, in the one place a token is minted, which covers the take in
+        `main()` and the refresh in `apply()` alike. `meta=tokens|userinfo` is one request, so
+        knowing who we are costs nothing over asking for the token.
+        """
+        res = self._call(action="query", meta="tokens|userinfo")
+        info = res["query"]["userinfo"]
+        token = res["query"]["tokens"]["csrftoken"]
+        # `anon` is present-and-empty when logged out; the token value is the second witness
+        # because either one alone is a single point of failure on somebody else's API.
+        if "anon" in info or token == ANON_CSRF:
+            raise SystemExit(
+                "SESSION LOST -- not logged in any more, so Wikidata would attribute these "
+                f"edits to {info.get('name', '<anonymous>')!r} rather than to the bot. "
+                "Stopping with the rest of the batch unsent; it is a SEQUENCE and tomorrow's "
+                "run sends it."
+            )
+        return token
 
     def apply(self, edit: dict, token: str, minted: dict, *, delay: float) -> str:
         """Send one edit object. Returns the QID it created or changed.
@@ -355,6 +388,11 @@ MAXLAG_BUDGET = 900.0
 #: is for. It is a named constant rather than a literal in two call sites because it was a
 #: literal in two call sites, and that is why it had never once been reconsidered.
 MAXLAG = "10"
+
+#: ⛔ **THE TOKEN MEDIAWIKI GIVES AN ANONYMOUS CALLER**, and it is not a refusal -- edits
+#: signed with it are accepted and attributed to an IP or a temporary account. It is a
+#: constant here so `csrf` can say what it is rejecting rather than testing a bare literal.
+ANON_CSRF = "+\\"
 
 
 class EditFailed(RuntimeError):
