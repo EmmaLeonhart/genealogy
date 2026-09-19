@@ -45426,3 +45426,59 @@ look like it worked. The queue line for Bothilde stays as it is.
 **The rule to take from this:** a submit is confirmed by a timestamped row appearing in
 `/gedcom`, and by nothing else. `location.href` and the profile name in the banner both survive
 a submit that produced nothing.
+
+## 2026-09-19 — the sender edited as a temporary account, and three stop events, not one
+
+⛔ **THE SENDER LOST ITS LOGIN AND KEPT EDITING, ANONYMOUSLY.** Fifteen statements went onto
+Wikidata at 13:41 UTC under the temporary account `~2026-50571-43` — `P22` and `P40` claims from
+our own batch, correctly composed and wrongly attributed. It was spotted on Wikidata's
+contributions page. Nothing in this repo noticed, and nothing in this repo could have: the run
+reported no error at all.
+
+**The mechanism, off run `35442887963`'s own log.** `logged in as ***` at 12:59:52. At 13:41:52,
+twice, `csrf token went stale -- refreshed, retrying this edit`. MediaWiki hands a logged-out
+caller a CSRF token and then **accepts edits signed with it**, so the refresh did not fail — it
+changed who the edits belonged to.
+
+**The guard that looked like it covered this did not.** `apply()` refreshes once and is gated on
+`retried_token`, and its own comment says a genuinely unauthenticated session *"would otherwise
+spin here forever"*. It does not spin. The first refresh succeeds, `_fresh_token` keeps the
+anonymous token, and every later edit goes out under it without raising `badtoken` again. **A
+guard against looping is not a guard against identity**, and the comment asserting otherwise is
+what made the hole invisible.
+
+`csrf()` now asks `meta=tokens|userinfo` — one request, so knowing who we are costs nothing over
+asking for the token — and raises `SystemExit` when the session is anonymous, by `anon` in
+userinfo or by the token equalling `ANON_CSRF`. It is the one place a token is minted, so the
+take in `main()` and the refresh in `apply()` are both covered. Stopping mid-batch costs nothing:
+§ *the batches are a SEQUENCE*.
+
+### The overnight stop was three separate events
+
+The aggressive Wikidata session ran 09-18 13:19 to 09-19 02:59 local and **did not drift into
+exports**: one Geni submit at 13:22 and one download at 14:26, then from 16:59 nothing but
+`wikidata-edits.yml` dispatches for about ten hours, to its last action at 02:29.
+
+    03:02:25  UNEXPECTED shutdown     event 6008 + Kernel-Power 41 -- crash or power loss.
+                                      This is what killed that session, ~2 min after its last
+                                      entry. Back up 03:10.
+    04:00:40  commanded shutdown      event 1074, shutdown.exe on behalf of Emma, comment
+                                      empty. NO scheduled task invokes shutdown, and no recent
+                                      session issued it -- the only one that ever ran
+                                      `shutdown /s` was 09-15. Caller unidentified.
+    10:00:55  scheduled shutdown      Kernel-Power 109, Power Action Shutdown, Kernel API.
+
+The export drift belongs to the session AFTER the crash: it started 03:12, and at 03:33–03:38
+went into GEDCOM exports and set a cron to return to them — a lane a separate session owns.
+
+⛔ **AND A REBOOT KILLS THE PATH REQUESTER SILENTLY, WHICH IS WHY IT APPEARED TO STOP.** The
+machine was down 10:00:55 to 13:22:47 — three hours twenty-two. The runner lives in a page, so it
+did not stop: it ceased to exist, and nothing restarts it but a session. Chrome then came back
+from the Google Photos startup shortcut with **none of the throttling flags**, which is the
+launch fault § *the symptom is indistinguishable from a healthy run* describes.
+
+Restarted properly: `scripts/start-chrome.ps1`, derive on `6000000031563406439` (`derived:true`),
+8,000 ids in through the file input rather than a paste, `health()` reporting `alive:true` with
+`fail:0`. A six-hourly `health()` cron is set, so the next reboot is caught by a check.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
