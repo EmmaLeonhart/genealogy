@@ -45483,3 +45483,53 @@ Restarted properly: `scripts/start-chrome.ps1`, derive on `6000000031563406439` 
 `fail:0`. A six-hourly `health()` cron is set, so the next reboot is caught by a check.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+## 2026-09-19 — the requester was being handed the chains and counting them
+
+⛔ **A THIRD RESPONSE SHAPE EXISTED AND NOTHING KNEW.** `pathrun.js` documented two answers, 202
+and 200/not-found, and wrote them out at length. There is a third: a **200 carrying
+`<div class="relationship_card">`, 20-44 KB**, which is the finished chain rendered inline
+because Geni ALREADY HAS the path and has no search to queue. The classifier did
+`R.found++`, read `body` once for the not-found regex, and dropped it.
+
+It is not rare. On today's batch it is **about a quarter of every reply** — 444 of the first
+~1,700. One sample carried 53 profile ids across 106 segments and the line *"Arend Rothuizen is
+your 25th cousin once removed"*.
+
+**It survived because the one external instrument is blind to it.** These produce NO `/paths`
+row: that page lists *Recently Requested* relationships, and nothing was requested. So the
+outcome carrying the most data is exactly the outcome `/paths` cannot show, and an empty-looking
+`/paths` beside a climbing `found` reads as a broken requester rather than a dropped harvest.
+§ *`/paths` IS NOT THE INSTRUMENT FOR IS IT RUNNING* understates it — it is not the instrument
+for *is anything being collected* either.
+
+**The fix pays nothing for the chains**, because the fetch has already happened.
+`R.parseChain` is `pathchains.js` § `C.one` deliberately unchanged, so one site change breaks
+both halves together instead of one of them silently. `R.dumpChains` writes
+`pathrun-chains-NNN.tsv` — a distinct series, because two loops numbering one series into
+Downloads overwrite each other.
+
+**⛔ AND THE KINSHIP DEGREE RIDES IN AS `step -2`.** `#relation_description` is a fact the six
+columns had no room for. A seventh column is worse than useless: `merge-path-chains.py`
+truncates every row to `HEADER`, so it would be **accepted and silently dropped**. A companion
+file would need a second merger for one fact per path, against § *THE REPO IS MINIMALIST*. The
+file had already solved this shape once — `step -1` / `EMPTY` bounds a chain that rendered
+nothing — so the degree takes `step -2`, unique under the `(to_id, kind, step)` dedupe key and
+invisible to anything reading steps from 0.
+
+**First dump, unattended**: `pathrun-chains-001.tsv`, 5,002 rows, **138 chains, 138 `step -2`
+rows, zero empties**, written by the 5,000-row auto-dump. Merged: `reports/path-chains.tsv`
+807,165 rows, **25,257 chains (+138), 140,324 distinct people**.
+
+⛔ **AND THE DEGREE LINES SETTLED AN ANCHOR QUESTION THE BROWSER COULD NOT.** Geni had been
+rendering paths anchored on someone else — a `/path/` page anchored on Naruhito, and notification
+emails reading *"is NN NN NN's 37th great granddaughter's..."*. **All 138 harvested degree lines
+read `is your`**, so this runner is anchored on the account owner and its output is sound. That
+is a stronger check than the page was, and it is now produced on every dump for free.
+
+**The emails are an unused harvest source.** Each `no-reply@geni.com` relationship notification
+carries the full degree sentence and a `https://www.geni.com/c/<hash>` permalink — a saved path
+object, the same kind `pathchains.js` spends 28 minutes walking `/paths` to collect 30 at a time.
+~200 in the last seven days. Not built.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
