@@ -1001,6 +1001,28 @@ def priority_ancestor_ring(our_items, fam_p, famc):
 DESC_MAX = 240
 
 
+#: GEDCOM writes its months and its qualifiers in capitals -- `25 OCT 1801`, `ABT 1518`,
+#: `BET 848 AND 850`. Ruled 2026-09-19 off a live item: *"a lot of the dates are in ALL CAPS
+#: abbreviations ... Gunder Larssen Tjorn (Q141499899) is 25 OCT 1801 - 22 AUG 1888 but should
+#: be 25 Oct 1801 - 22 Aug 1888. ALL CAPS is not good."*
+#:
+#: Only the KNOWN keywords are touched. A capitalised word this does not recognise is left
+#: exactly as it is, because a date field can carry a place or a note and lower-casing an
+#: unknown token would corrupt a name -- `NN`, `II`, an initial. The connectors inside a range
+#: go lower-case because `Bet 848 And 850` reads as a title and `Bet 848 and 850` reads as a
+#: date.
+DATE_WORDS = {w: w.title() for w in (
+    "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
+    "ABT", "AFT", "BEF", "EST", "CAL", "INT", "BET", "FROM",
+)}
+DATE_WORDS.update({"AND": "and", "TO": "to", "BC": "BC", "AD": "AD"})
+
+
+def normalise_date_case(raw):
+    """`25 OCT 1801` -> `25 Oct 1801`; `BET 848 AND 850` -> `Bet 848 and 850`."""
+    return " ".join(DATE_WORDS.get(tok, tok) for tok in (raw or "").split())
+
 def life_description(facts_row, places_row):
     """`12 Mar 1550 Bergen - Aft 1596 Isnäinen, Pernaja` or `""`.
 
@@ -1015,7 +1037,7 @@ def life_description(facts_row, places_row):
     p = places_row or {}
 
     def side(date_key, place_key):
-        d = " ".join((f.get(date_key) or "").split())
+        d = normalise_date_case(" ".join((f.get(date_key) or "").split()))
         pl = " ".join((p.get(place_key) or "").split())
         return " ".join(x for x in (d, pl) if x)
 
