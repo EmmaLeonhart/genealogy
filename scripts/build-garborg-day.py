@@ -2228,20 +2228,6 @@ def consensus_latin_label(labels):
     return english if english in tied else tied[0]
 
 
-def _label_collisions():
-    """Geni ids whose creation would duplicate an existing label+empty-description pair.
-
-    From `reports/label-collisions.tsv`, written by `scripts/check-label-collisions.py`. A
-    missing file yields an empty set and today's behaviour, which is the safe direction: the
-    batch is no worse than it was, and the check is a pre-flight rather than a dependency.
-    """
-    path = ROOT / "reports" / "label-collisions.tsv"
-    if not path.exists():
-        return set()
-    with open(path, encoding="utf-8") as f:
-        return {row["geni_id"] for row in csv.DictReader(f, delimiter="	") if row["geni_id"]}
-
-
 #: Tokens this run rendered on the fly, flushed to the shared table at the end. See the funnel
 #: note in `label_in`.
 MINTED_TOKENS = {}
@@ -7255,14 +7241,16 @@ def main():
             carried.append((g, label, "no derived facts"))
             continue
 
-        # **A creation whose label+empty-description pair is already taken is REFUSED by
-        # Wikidata**, and a refusal lands mid-batch. `CLAUDE.md` § *NO descriptions and NO edit
-        # summaries*: the resolution is to hold the person, never to add a description.
-        # `scripts/check-label-collisions.py` writes the list; it is data, so the hold cannot
-        # drift into a hand-maintained exclusion.
-        if g in _label_collisions():
-            carried.append((g, label, "label+empty-description pair already taken on Wikidata"))
-            continue
+        # ⛔ **THE LABEL-COLLISION HOLD IS DELETED, 2026-09-19.** *"This thing literally should
+        # not exist."* It held anyone whose label already existed undescribed on Wikidata, and
+        # it fired on a NAME MATCH -- `Margareta` against eleven unrelated items, `Hans Larsson`
+        # against four, and `NN` against ten, which is a redaction marker that would have
+        # collided forever. Twelve real people were being refused permanently to avoid one
+        # recoverable refusal.
+        #
+        # A refusal is one edit; a hold is every run from now on. `wikidata-edit-run` skips a
+        # label-collision refusal and carries on, so the cost of finding out from Wikidata is
+        # one skipped create and a line in the log.
 
         # A redacted profile is created and gets NO label. `CLAUDE.md`: *"Private is
         # a redaction marker, not a name, and an item labelled that asserts something
