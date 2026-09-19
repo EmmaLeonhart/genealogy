@@ -112,6 +112,7 @@
         continue;
       }
       R.waiting = null;
+      R.landed = (R.landed || []).concat([[rec.nm, rec.walk, rec.count, rec.at]]);
       if (R.todo.length && gen === R.gen) await new Promise((z) => setTimeout(z, GAP_MS));
     }
     if (gen === R.gen) { R.running = false; R.finished = new Date().toISOString(); }
@@ -128,6 +129,7 @@
   };
   R.state = function () {
     return { running: R.running, left: R.todo.length, finished: R.finished,
-             waiting: R.waiting, refused: R.refused || [], done: R.done };
+             tries: R.done.length, waiting: R.waiting ? R.waiting.nm : null,
+             landed: R.landed || [], refused: R.refused || [] };
   };
 })();
