@@ -45232,3 +45232,54 @@ a walk seeded from the ledger would have found nothing and said so cheerfully. B
 Fixing the ledger row is still owed.
 
 Measured from the wired path before pushing: 7 people walked through, **8 on the frontier**.
+
+## 2026-09-19 — the ring runs, and three things were quietly eating every batch
+
+`priority_ancestor_ring` composed 8 people on its first run and the batch was thrown away. It
+composed 12 on the second and 19 on the third. The ring itself was never the problem; three
+separate mechanisms downstream were discarding its work, and each of them looked like something
+else.
+
+**The locality gate was failing the run rather than filtering it.** `build-garborg-day` gates the
+file it writes — and `pipeline.yml` then `cat`s three universe-growth passes onto all three day
+files afterwards, ungated. Seven items came through that way: `Q141497327`, a family-name item
+the people-universe can never contain, and six strangers' items reached through `p2600-all.tsv`
+because somebody else's Wikidata item happens to carry a Geni id. The CHECK then failed the whole
+run, so the batch was composed, refused and dropped. Every day. `check-batch-locality.py --fix`
+applies the same rule as a filter at the last point that can see the assembled file; all three
+batches now come back `clean` and the run survives.
+
+**The edits job timed out at 20 minutes mid-send**, sized for a ten-edit hand run. A `limit=1000`
+dispatch was cancelled with ~73 applied. 90 minutes now.
+
+**The CSRF token went stale after 130 edits** and every remaining one came back `badtoken` —
+creates and `wbsetqualifier` alike. Taken once before the loop, which was correct when a run was
+twenty minutes long. It refreshes once per edit on `badtoken` and holds the fresh token on the
+session.
+
+⛔ **AND A HAND DISPATCH SENT NOTHING FOR A MONTH.** The `batch` input defaulted to
+`out/wikidata/unlinked-items.json`, last written 2026-08-13, whose objects carry `type` where
+`apply()` reads `kind`. A dispatch logged in, took a token, announced "executing up to 10 edits"
+and died on `KeyError: 'kind'`. The schedule was never affected — it passes `$DAILY_BATCH`
+explicitly — which is exactly why it survived.
+
+**The account is blocked on Azure IPs.** `ACCOUNT IS BLOCKED: Open proxy/Webhost` on some runners
+and not others, so a send is a lottery; `0 edits executed` and nothing half-done when it loses.
+Re-dispatching draws a new runner. Not worth an `ipblock-exempt` request — ruled.
+
+**787 edits went live**, 702 to 1,489 on the receipt. Both of Ølver Rømer's parents now exist:
+`Q141498442` Henning Rømer and `Q141498492` Gyda Olavsdatter Rømer. Gellone's parents were
+correctly NOT created — the duplicate guard found them already on Wikidata as `Q1045008` and
+`Q2640386` and carried them forward to be linked instead.
+
+**The ring advances itself**, which was the design claim and is now measured: run 1 returned 12
+people, run 2 returned 19, all new, because the ones created in between entered the ledger and
+the walk passed THROUGH them to their parents. No cursor, no depth counter, no stored state.
+
+⛔ **The auto-half forcing reported success while doing nothing.** `split-daily-batch` deals the
+first third of person creations in composed order, and the ring unions its people in after
+`compose` picks, so they sorted late into the manual two-thirds — the half published for a person
+to paste. The fix reads `out/wikidata/priority-ring.json` and forces those creations automatic;
+its first run printed `0 creation(s) forced automatic` because a `P2600` claim parses to
+`{'type': 'string', 'value': ...}` and the check tested `isinstance(v, str)`. A guard that
+matches nothing and prints a number reads exactly like a guard that ran.
