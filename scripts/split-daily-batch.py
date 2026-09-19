@@ -297,7 +297,14 @@ def main() -> int:
         for e in qs_v1.edit_objects(qs_v1.parse(chr(10).join(u))):
             for c in e.get("claims") or ():
                 if c.get("property") == "P2600":
+                    # ⛔ **`qs_v1` HANDS BACK A DICT, NOT A STRING.** A `P2600` claim parses to
+                    # `{'type': 'string', 'value': '6000000...'}`, and the first version of this
+                    # tested `isinstance(v, str)` -- so it matched nothing and the run reported
+                    # `0 creation(s) forced automatic` while looking like it had worked. Both
+                    # shapes are accepted now rather than the one that happens to be current.
                     v = c.get("value")
+                    if isinstance(v, dict):
+                        v = v.get("value")
                     if isinstance(v, str):
                         out.add(v.strip('"'))
         return out
