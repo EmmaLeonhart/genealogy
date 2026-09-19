@@ -45348,3 +45348,42 @@ Created"** — a named profile, which is the difference between this submit and 
 **The check is the redirect, not the export form.** `location.pathname` after loading
 `/people/x/<id>` gives the surviving id in one page load; the export form cannot tell a husk from
 a live profile because it accepts both.
+
+## 2026-09-19 — CI: one stale test, and four failures that are the committed batch being old
+
+Run `35435046672` on `f1fb3c9f`, five failures, both Python versions identically.
+
+**One of them is a test enforcing a rule that was reversed.**
+`test_no_descriptions_or_summaries::test_no_batch_carries_a_description` allowed exactly three
+strings — `patronymic`, `family name`, `matronymic` — and cited *ruled 2026-09-01*. `CLAUDE.md`
+§ *DESCRIPTIONS ARE WRITTEN NOW, AND THE REASON IS THE DEDUPLICATION* reversed that on
+2026-09-19, and individuals have carried a `Den` from `life_description` ever since. So the
+guard was failing the batch for doing the thing it had been told to do.
+
+It is widened rather than switched off. A description now passes if it is one of the three name
+strings, or if it is a life description by shape: opens with `born`, `died`, a digit or a GEDCOM
+qualifier word, carries a 3–4 digit year, and is within `DESC_MAX`. Checked against every form
+the emitter produces and against prose:
+
+    PASS      born 1774 · died 1590 · 1721 - 1758 · Bet 848 and 850
+              circa 1518 Bergen, Norway - 1580 · circa 18 Feb 1651 - 13 Jan 1723
+    rejected  Norwegian nobleman · Swedish politician · son of Lars · Margareta · ""
+    rejected  ABT 1345 - AFT 1433
+
+**That last rejection is deliberate and it is why CI is not green yet.** Uppercase qualifiers
+are what `f86f0874` and `beed2b5a` stopped emitting; the copy in `reports/` was composed before
+both. Accepting it would make the guard blind to the regression it now catches.
+
+**The other four failures are all one thing: the committed batch predates today's sends.**
+
+    the ledger and the batch both claim a person   63 people created that already hold QIDs
+    a married surname has no item                  ('6000000011409229426', 'Tjärn')
+    a link emitted one-way only                    P40 Q141101633, P40 Q5918044, P26 Q246091
+    the batch restates what the item already holds 97 statements
+
+`Q141498969` appears twice in the third, and it is one of the items the ring created this
+morning — so the batch is asserting links against a Wikidata that moved under it after the
+compose. `pipeline.yml` recomposes all of this on push and none of it is fixable by hand;
+§ *DO NOT DO CI/CD's WORK BY HAND*. **Not dispatching `ci.yml` until the pipeline has landed a
+recomposed batch**, because a dispatch before then re-reads the same stale file and fails the
+same four ways.

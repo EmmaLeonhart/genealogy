@@ -1,10 +1,18 @@
-"""No batch carries a description, and nothing anywhere sets an edit summary.
+"""Every description in a batch is one of the shapes that is allowed, and nothing sets a summary.
 
-**It is a hard rule that items are never created with descriptions**, widened the same day to
-cover edit summaries: those are categorically never used either.
+**The description ban is dead and the summary ban is not.** `CLAUDE.md` § *NO edit summaries,
+categorically* still holds and `test_nothing_sets_an_edit_summary` is still its guard.
 
-`CLAUDE.md` § *NO descriptions and NO edit summaries* is the rule. This is the guard, because
-the rule is categorical and a single slip is the kind that is only noticed by somebody else.
+⛔ **Descriptions were un-banned on 2026-09-19** -- `CLAUDE.md` § *DESCRIPTIONS ARE WRITTEN NOW,
+AND THE REASON IS THE DEDUPLICATION*, reversing 2026-08-30 -- **because a blank description is
+not a guard, it is the absence of one.** Wikibase refuses a creation only when the label AND a
+NON-EMPTY description both match, so blank descriptions never stopped a duplicate; they stopped
+Wikidata catching ours. Measured that day: eleven live items labelled `Margareta` with no
+description, and four labelled `Hans Larsson`, all coexisting.
+
+So this test is not deleted and not loosened to nothing. It still answers *is this description
+one of the shapes we emit* -- the three name strings, or an individual's life description -- and
+a sentence somebody wrote by hand still fails it.
 
 A `#` comment inside a `.qs` file is not an edit summary -- it never reaches Wikidata -- so the
 description check reads statement lines only.
@@ -28,7 +36,7 @@ DESCRIPTION = re.compile(r"^(?:LAST|-?Q[1-9][0-9]*)\t(D[a-z][a-z-]*)\t")
 #: which is how a categorical rule stops being enforced. A line is only an offence when the
 #: summary is being SENT -- a URL parameter, a request payload key, or an assignment whose
 #: value is not a path.
-SUMMARY = re.compile(r"&summary=|[?&]summary|summary\s*=\s*[\"']"
+SUMMARY = re.compile(r"&summary=|[?&]summary|summary\s*=\s*[\"']"
                      r"|[\"']summary[\"']\s*:|EDIT_SUMMARY")
 #: A match is forgiven when the line is plainly about a local file.
 LOCAL_FILE = re.compile(r"\.csv|\.tsv|\.json|\.md|reports/|out/|add_argument")
@@ -58,6 +66,22 @@ DEN = re.compile(r'^(?:LAST|Q[1-9][0-9]*)	Den	"([^"]*)"$')
 #: catches nothing today and would catch the next one.
 BATCHES = ["reports/*.qs", "reports/wikidata-garborg-day.txt"]
 
+#: ⛔ **AND INDIVIDUALS CARRY ONE TOO, SINCE 2026-09-19.** `life_description` in
+#: `build-garborg-day.py` is the authority and `DATE_WORDS` beside it is where these words come
+#: from; `ABT` reads out as `circa`, ruled the same day.
+#:
+#: The shape is what is asserted, because the facts behind it are not in this test's reach: a
+#: life description opens with `born`, `died`, a digit or a GEDCOM qualifier, and carries a year.
+#: That admits `circa 1518 Bergen, Norway - 1580` and `died 1590`, and refuses a hand-written
+#: sentence, which is the failure this guard exists for.
+LIFE_WORD = (r"Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
+             r"|circa|Aft|Bef|Est|Cal|Int|Bet|From|and|to|BC|AD")
+LIFE_DESCRIPTION = re.compile(
+    rf"^(?=.*\b\d{{3,4}}\b)(?:born |died )?(?:\d|(?:{LIFE_WORD})\b)")
+
+#: `DESC_MAX` in `build-garborg-day.py`. A description longer than this did not come from there.
+DESC_MAX = 240
+
 
 def test_no_batch_carries_a_description():
     offenders = []
@@ -69,12 +93,17 @@ def test_no_batch_carries_a_description():
             if not m:
                 continue
             allowed = DEN.match(line)
-            if allowed and allowed.group(1) in ALLOWED_DESCRIPTIONS:
-                continue
+            if allowed:
+                text = allowed.group(1)
+                if text in ALLOWED_DESCRIPTIONS:
+                    continue
+                if len(text) <= DESC_MAX and LIFE_DESCRIPTION.match(text):
+                    continue
             offenders.append(f"{path.name}:{n} sets {m.group(1)}  {line.strip()[:60]}")
     assert not offenders, (
-        "descriptions are emitted ONLY as Den on a name item, and only "
-        f"{sorted(ALLOWED_DESCRIPTIONS)} -- ruled 2026-09-01: {offenders[:8]}")
+        "a description is Den, and is either a name string "
+        f"{sorted(ALLOWED_DESCRIPTIONS)} or a life description from life_description "
+        f"-- ruled 2026-09-19: {offenders[:8]}")
 
 
 def test_nothing_sets_an_edit_summary():
