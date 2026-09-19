@@ -40,7 +40,7 @@
  * times out at 45s, which is how the first attempt died.
  *
  *     window.__forest.start([[id, name, walk], ...])
- *     window.__forest.state()      // {left, waiting, refused, done:[{id, nm, walk, accepted, task}]}
+ *     window.__forest.state()      // {left, waiting, refused, done:[{id, nm, walk, accepted, count}]}
  */
 (function () {
   const GAP_MS = 60000;
@@ -57,20 +57,23 @@
 
   const R = (window.__forest = window.__forest || { todo: [], done: [], running: false, gen: 0 });
 
-  /* ⛔ THE ONLY INSTRUMENT IS A NEW ROW ON /gedcom, and the crispest read of it is the
-   * TOP row's task id: the list is newest-first, so an accepted request changes it and a
-   * refused one does not. Counting rows cannot say this -- the page truncates. */
-  async function topTask() {
+  /* ⛔ THE INSTRUMENT IS THE YEAR COUNTER ON /gedcom -- "You have requested N GEDCOM
+   * exports from Geni in the past year" -- because an accepted request increments it and a
+   * refused one does not. **NOT the task rows**: they carry `data-doc-id` in the DOM but
+   * are rendered after load, so a `fetch` of the same page returns none of them and every
+   * submit reads as refused. That is the same shape as § *a census read costs a real page
+   * load*, and it cost a restart here on 2026-09-19. The counter is in the served HTML. */
+  async function requested() {
     try {
       const t = await fetch("/gedcom", { credentials: "include" }).then((r) => r.text());
-      const m = t.match(/data-doc-id="(\d+)"/);
-      return m ? m[1] : "";
+      const m = t.match(/You have requested ([\d,]+) GEDCOM/);
+      return m ? m[1].replace(/,/g, "") : "";
     } catch (e) { return ""; }
   }
 
   async function submit(id, nm, walk) {
     let rec = { id: id, nm: nm, walk: walk || "Forest", at: new Date().toISOString() };
-    const before = await topTask();
+    const before = await requested();
     try {
       const r = await fetch(URL_FOR(id, walk), { credentials: "include" });
       const t = (await r.text()).replace(/\s+/g, " ");
@@ -78,14 +81,14 @@
       /* ⛔ THE HEADING IS GONE FROM HERE, AND SO IS ITS BUG. Matching the person's name
        * against "GEDCOM File is Being Created" read a refusal as a submit, and the regex
        * that did it was malformed -- an unclosed character class -- so this file threw on
-       * paste and never ran at all. The new row on /gedcom answers the question instead. */
+       * paste and never ran at all. The year counter answers the question instead. */
       rec.notAllowed = /not allowed to export/i.test(t);
     } catch (e) {
       rec.err = String((e && e.message) || e);
     }
-    const after = await topTask();
-    rec.accepted = !!after && after !== before;
-    rec.task = rec.accepted ? after : "";
+    const after = await requested();
+    rec.accepted = !!before && !!after && Number(after) > Number(before);
+    rec.count = after;
     R.done.push(rec);
     return rec;
   }
