@@ -206,6 +206,10 @@ class Session:
         categorical and covers the API path explicitly: *"No `summary=` on an API
         call"*. The absence is deliberate; do not add one.
         """
+        # A token refreshed by an earlier edit is the live one; main() still holds the stale
+        # value it took before the loop, and without this every remaining edit would rediscover
+        # the same staleness with its own wasted round-trip.
+        token = getattr(self, "_fresh_token", None) or token
         data = entity_data(edit, minted)
         plans = []
         if edit["kind"] == "create":
@@ -237,11 +241,30 @@ class Session:
         # An attempt count answers "how many times did we ask"; the question maxlag actually
         # poses is "has the lag cleared yet", and only elapsed time answers that.
         deadline = time.monotonic() + MAXLAG_BUDGET
+        retried_token = False
         while True:
             res = self._call(action="wbeditentity", _post=params)
             err = res.get("error")
             if not err:
                 break
+            # ⛔ **A CSRF TOKEN GOES STALE ON A LONG RUN, AND 130 EDITS IN IT DID.** Taken once
+            # before the loop, which was right when a run was ten edits and twenty minutes. On
+            # 2026-09-19 a limit=1000 run applied 130 and then every remaining edit came back
+            # `badtoken: Invalid CSRF token` -- creates and qualifiers alike. Nothing was
+            # damaged, because a refused edit is a refused edit, but the run died with most of
+            # the batch unsent and a receipt that looked like a partial success.
+            #
+            # A token is cheap and refreshing it is one GET, so this refreshes ONCE per edit and
+            # retries. Once, not in a loop: a genuinely unauthenticated session would otherwise
+            # spin here forever, and `badtoken` twice in a row on a fresh token means the
+            # session is gone rather than the token.
+            if err.get("code") == "badtoken" and not retried_token:
+                retried_token = True
+                token = self.csrf()
+                self._fresh_token = token
+                params["token"] = token
+                print("    csrf token went stale -- refreshed, retrying this edit")
+                continue
             if err.get("code") != "maxlag":
                 raise EditFailed(f"{edit['id']}: {err.get('code')}: {err.get('info')}")
             if time.monotonic() >= deadline:
