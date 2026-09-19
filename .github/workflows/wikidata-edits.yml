@@ -34,7 +34,17 @@ on:
       batch:
         description: "Path to the reviewed batch file"
         type: string
-        default: "out/wikidata/unlinked-items.json"
+        # ⛔ **THE DEFAULT IS THE DAILY BATCH, BECAUSE A DISPATCH TAKES THE DEFAULT.** It was
+        # `out/wikidata/unlinked-items.json` until 2026-09-19 -- a file last written 2026-08-13,
+        # in a schema the sender no longer speaks: its objects carry `type` where `apply()` now
+        # reads `kind`. A hand dispatch therefore did not send the day's batch at all; it loaded
+        # two month-old objects and died on `KeyError: 'kind'` after logging in and taking a
+        # csrf token, with `0 edits executed`.
+        #
+        # The schedule was always right -- it passes `$DAILY_BATCH` explicitly -- so this only
+        # ever bit a dispatch, which is why it survived. A default that is wrong for every
+        # caller who does not override it is not a default, it is a trap.
+        default: "reports/wikidata-garborg-day-auto.txt"
   # 08:07 UTC, and the time is chosen rather than arbitrary: pipeline.yml runs at
   # 01:23/07:23/13:23/19:23, so this lands after the 07:23 rebuild has refreshed
   # the ledger, regenerated the batch and pushed it. An earlier slot would send a
