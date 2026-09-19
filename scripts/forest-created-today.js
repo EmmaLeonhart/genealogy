@@ -47,8 +47,10 @@
   /* ⛔ A HELD SLOT IS WAITED OUT, NOT QUEUED AGAINST. 2026-09-19: a dead task -- one whose
    * /gedcom/download errors on every reload -- held the single export slot for hours, and
    * every submit behind it rendered the lying "Being Created" heading and produced no row.
-   * So a refusal re-queues the SAME id and waits SLOT_GAP_MS; it never advances the roster. */
-  const SLOT_GAP_MS = 600000;
+   * So a refusal re-queues the SAME id and waits SLOT_GAP_MS; it never advances the roster.
+   * Two minutes, not ten: the slot frees the moment the held task clears and the only cost of
+   * arriving late is dead time, which is the one thing this loop exists to remove. */
+  const SLOT_GAP_MS = 120000;
   /* A roster entry is [id, name] or [id, name, walk]; the walk defaults to Forest, which
    * is what this file was written for. Descendants and Ancestors ride the same submit. */
   const URL_FOR = (id, walk) =>
