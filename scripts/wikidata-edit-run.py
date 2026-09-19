@@ -39,6 +39,7 @@ import csv
 import json
 import math
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -475,6 +476,32 @@ def is_already_present(info: str) -> bool:
     """True when Wikidata's refusal means *this is already on the statement*."""
     text = (info or "").lower()
     return any(marker in text for marker in _ALREADY_PRESENT)
+
+
+#: DUP **THE DEDUPLICATION REFUSAL, AND IT IS THE FEATURE WORKING.** Ruled 2026-09-19, when
+#: descriptions started going on created items: *"These descriptions will be verbose enough
+#: that they will hopefully never collide but stop us from recreating our own items multiple
+#: times."*
+#:
+#: Wikibase refuses a `CREATE` whose label+description pair an item already holds, and names
+#: that item. On the first live run with descriptions, 24 of a 364-edit batch came back this
+#: way -- every one a name item, which `split-daily-batch` writes to BOTH halves by design, so
+#: the auto half created it and the manual half's second attempt was correctly refused. Before
+#: descriptions that second `CREATE` would have SUCCEEDED and minted a duplicate.
+#:
+#: **So the QID in the message is the answer, not the error.** Taking it means every `LAST`
+#: that depended on the create resolves to the item that already exists, instead of the chain
+#: being skipped as `depends on ..., which failed` -- which is how a run refusing 24
+#: duplicates also dropped the `P734`/`P735` links pointing at them.
+_ALREADY_EXISTS = re.compile(
+    r"Item \[\[(Q\d+)\|[^\]]*\]\] already has label .*"
+    r"using the same description text", re.I)
+
+
+def already_exists_qid(info: str) -> str:
+    """The QID Wikidata names when it refuses a duplicate `CREATE`, or empty."""
+    m = _ALREADY_EXISTS.search(info or "")
+    return m.group(1) if m else ""
 
 
 def plan_attachments(data: dict, existing: dict) -> list:
@@ -1054,6 +1081,8 @@ def main() -> int:
 
     done = 0
     failed: dict = {}
+    #: {edit id: qid} for creations Wikidata refused because the item already exists.
+    duplicates: dict = {}
     consecutive = 0
     # Seeded from the receipt, so a create skipped as already-applied still answers
     # the LAST that points at it.
@@ -1074,6 +1103,17 @@ def main() -> int:
         try:
             qid = session.apply(e, token, minted, delay=args.delay)
         except EditFailed as exc:
+            # DUP **A DUPLICATE REFUSED IS A DUPLICATE PREVENTED.** See `already_exists_qid`.
+            # Bind this edit to the item that already exists so dependents resolve, and do not
+            # count it a failure: a number that goes red when nothing is wrong is a number
+            # nobody reads.
+            _exists = already_exists_qid(str(exc))
+            if _exists and e.get("kind") == "create":
+                minted[e["id"]] = _exists
+                duplicates[e["id"]] = _exists
+                print("       %s  %-9s ALREADY EXISTS as %s -- dependents point at it"
+                      % (e["id"], e["kind"], _exists))
+                continue
             failed[e["id"]] = str(exc)
             # ⛔ **`maxlag` IS BACK-PRESSURE, NOT A FAILURE, AND COUNTING IT STRANDS
             # HALF-WRITTEN PEOPLE.** Measured 2026-09-17: a run of 100 objects hit five
@@ -1143,6 +1183,11 @@ def main() -> int:
         print(f"  {done:>3}  {e['id']}  {e['kind']:<9} {qid}")
 
     print(f"\n{done} edits executed")
+    if duplicates:
+        print("%d creation(s) refused as ALREADY EXISTING -- the label plus description pair"
+              " is taken, which is the deduplication working:" % len(duplicates))
+        for eid, q in duplicates.items():
+            print("  %s -> %s" % (eid, q))
     if failed:
         print(f"{len(failed)} did not go:", file=sys.stderr)
         for eid, why in failed.items():
