@@ -343,14 +343,22 @@ seed the walk. Correcting the ledger row is still owed.
 Ahead of the commanded roster below. Geni allows one export at a time, so this is a strict
 sequence, not a set.
 
-- **Bothilde Sigurdsdatter Onarheim** `6000000227805045863` — `Forest`. *"for merge related stuff
-  changing"*, so it is a **privileged** export and is filed into `exports/post-merge/`.
-- **NN Rømer** `6000000227805352866` — `Forest`, then `Ancestors`.
-  <https://www.geni.com/people/NN-R%C3%B8mer/6000000227805352866>
-- **NN Stromer** `6000000227805421869` — `Forest`.
-  <https://www.geni.com/people/NN-Stromer/6000000227805421869>
-- **Erik Ims** `6000000227805012893` — `Forest`, then `Descendants`.
-  <https://www.geni.com/people/Erik-Ims/6000000227805012893>
+- **Bothilde Sigurdsdatter Onarheim** — `Forest`. *"for merge related stuff changing"*, so it is
+  a **privileged** export and is filed into `exports/post-merge/`.
+
+  ⛔ **`6000000227805045863` IS A HUSK AND THE EXPORT DOES NOT RUN ON IT.** It redirects to
+  `6000000177261659865`, the real Bothilde (c.1275), which this account does not manage —
+  `https://www.geni.com/gedcom/export/6000000177261659865` answers *"You are not allowed to
+  export that profile"* and lands on `/error`. The husk's own export form still loads, titles
+  itself **"(No Name)'s GEDCOM File is Being Created"** and accepts the submit; that is the trap
+  § *`6000000227289508960` IS A MERGED-AWAY HUSK* describes, and one such submit was spent here
+  on 2026-09-19 before the redirect was checked.
+
+  **The seed is `6000000227811549827` Sigurd Onarheim**, her father, created by this account and
+  directly attested by her patronymic — tier 1 of `docs/export-seed-rules.md`. `NN Onarheim`
+  `6000000227816629854` is the mother placeholder and is the fallback. `Forest` 5000 submitted
+  off Sigurd on 2026-09-19; the page confirmed **"Sigurd Onarheim's GEDCOM File is Being
+  Created"**, a named profile rather than `(No Name)`. Delete this when the zip is filed.
 
 ⛔ **AND `6000000002621242041` OLFVIR IS NOT EXPORTED DIRECTLY. RULED 2026-09-18.** Forest,
 Ancestors and Descendants were all queued on that id and **none of them can run**: the profile

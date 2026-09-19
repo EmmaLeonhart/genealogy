@@ -45312,3 +45312,39 @@ in the working tree pending a decision; it has no generator, so nothing regenera
 **The path requester is up on a 7,956-person batch**, `alive:true`, `fail:0`, first three
 requests `202`. Chrome had been started by hand without the throttling flags and was relaunched
 through `scripts/start-chrome.ps1` — § *the symptom is indistinguishable from a healthy run*.
+
+## 2026-09-19 — the top-priority exports: three were already done, the fourth was aimed at a husk
+
+Three of the four 2026-09-18 top-priority exports are in the corpus and were deleted from
+`queue.md`:
+
+    exports/post-merge/export-Forest-6000000227805352866.ged      NN Rømer
+    exports/post-merge/export-Ancestors-6000000227805352866.ged   NN Rømer
+    exports/post-merge/export-Forest-6000000227805421869.ged      NN Stromer
+    exports/post-merge/export-Forest-6000000227805012893.ged      Erik Ims
+    exports/post-merge/export-Descendants-6000000227805012893.ged Erik Ims
+
+⛔ **The fourth, Bothilde, was aimed at a husk, and the submit was spent before the redirect was
+checked.** `6000000227805045863` redirects to `6000000177261659865` — the real Bothilde
+Sigurdsdatter Onarheim, c.1275, added by another user in 2021 and only co-managed here.
+`https://www.geni.com/gedcom/export/6000000177261659865` answers *"You are not allowed to export
+that profile"* and lands on `/error`.
+
+The husk's own form loaded and accepted the submit, exactly as § *`6000000227289508960` IS A
+MERGED-AWAY HUSK* says it would, and announced **"(No Name)'s GEDCOM File is Being Created"**.
+`(No Name)` in that sentence is the tell and it was there to read before the submit, not after.
+The `/gedcom` page then carried *"Your previous request had an error which we are investigating"*
+on every subsequent load — the husk task failing, which is the documented outcome.
+
+**The real seed already existed.** Bothilde has both parents on Geni and both are this account's
+placeholders: `6000000227811549827` **Sigurd Onarheim**, the father, directly attested by her
+patronymic and therefore tier 1 of `docs/export-seed-rules.md`, and `6000000227816629854`
+**NN Onarheim**, the mother. So no profile needed creating; the created-ancestor route was
+already run on 2026-09-18 and the queue line simply named the wrong end of the merge.
+
+`Forest` 5000 submitted off Sigurd. The page answered **"Sigurd Onarheim's GEDCOM File is Being
+Created"** — a named profile, which is the difference between this submit and the last one.
+
+**The check is the redirect, not the export form.** `location.pathname` after loading
+`/people/x/<id>` gives the surviving id in one page load; the export form cannot tell a husk from
+a live profile because it accepts both.
