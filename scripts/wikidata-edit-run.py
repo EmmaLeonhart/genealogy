@@ -209,7 +209,7 @@ class Session:
         data = entity_data(edit, minted)
         plans = []
         if edit["kind"] == "create":
-            params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+            params = {"action": "wbeditentity", "token": token, "maxlag": MAXLAG,
                       "new": "item",
                       "data": json.dumps(data, ensure_ascii=False)}
         else:
@@ -217,7 +217,7 @@ class Session:
             # a duplicate statement. See `plan_attachments`.
             if data.get("claims"):
                 plans = plan_attachments(data, self.claims(edit["qid"]))
-            params = {"action": "wbeditentity", "token": token, "maxlag": "5",
+            params = {"action": "wbeditentity", "token": token, "maxlag": MAXLAG,
                       "id": edit["qid"],
                       "data": json.dumps(data, ensure_ascii=False)}
             # EVERY CLAIM ALREADY HELD MEANS THERE IS NOTHING TO wbeditentity. Sending the
@@ -319,7 +319,18 @@ class Session:
 #: Five minutes rides out an ordinary spike and still lets a genuinely sick site fail the
 #: run rather than hang it: the batch is capped at 60 edits, so the true worst case is
 #: bounded and the usual case costs nothing, because a healthy site never sleeps here.
-MAXLAG_BUDGET = 300.0
+MAXLAG_BUDGET = 900.0
+
+#: ⛔ **THE `maxlag` THRESHOLD ITSELF, RAISED FROM 5 TO 10 ON 2026-09-19.** Wikidata's own
+#: guidance puts 5 on a BULK bot and says a shorter, interactive task may use a higher value.
+#: This is a capped daily batch, not a bulk load, and on 2026-09-19 the query servers sat at
+#: **6.8s** -- just over the line -- so every edit was refused and the whole 300s budget was
+#: spent sleeping. `0 edits executed`, twice, on a batch with nothing wrong with it.
+#:
+#: 10 clears an ordinary spike and still yields to a genuinely sick site, which is what maxlag
+#: is for. It is a named constant rather than a literal in two call sites because it was a
+#: literal in two call sites, and that is why it had never once been reconsidered.
+MAXLAG = "10"
 
 
 class EditFailed(RuntimeError):
