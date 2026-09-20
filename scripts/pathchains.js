@@ -83,6 +83,13 @@ window.__chains = window.__chains || {};
   const C = window.__chains;
   C.urls = C.urls || [];
   C.rows = C.rows || [];
+  /* ⛔ **A FAILED PERMALINK WAS COUNTED AND THEN LOST.** `C.fail++` and `C.i++` both ran, so a
+   * chain that timed out was stepped over and never fetched again -- and the only trace was a
+   * number going up. Measured 2026-09-20: 72 of the first 8,823 timed out, which is ~1% and
+   * would be ~470 chains quietly missing from a 47,692 run. `health()` reporting `fail` is not
+   * the same as the work being recoverable. These are kept so `reseedFailed()` can put them
+   * back on the end of the list once the latency spike has passed. */
+  C.failed = C.failed || [];
   C.i = C.i || 0;
   C.ok = C.ok || 0;
   C.fail = C.fail || 0;
@@ -171,6 +178,16 @@ window.__chains = window.__chains || {};
     }
     console.log("[chains] seeded +" + added + ", " + C.urls.length + " total, at " + C.i);
     return added;
+  };
+
+  /* Put the timed-out permalinks back on the end of the list. Returns how many went back.
+   * Deliberately manual rather than automatic: a retry inside the loop would re-request during
+   * whatever is causing the timeouts, which is the opposite of what the pace rules want. */
+  C.reseedFailed = function () {
+    const again = C.failed.splice(0, C.failed.length);
+    const n = C.seed(again);
+    console.log("[chains] reseeded " + n + " previously failed permalinks");
+    return n;
   };
 
   C.save = function () {
@@ -361,7 +378,11 @@ window.__chains = window.__chains || {};
       try {
         C.rows.push(...await C.one(C.urls[C.i]));
         C.ok++;
-      } catch (e) { C.fail++; C.lastErr = String(e).slice(0, 80); }
+      } catch (e) {
+        C.fail++;
+        C.lastErr = String(e).slice(0, 80);
+        C.failed.push(C.urls[C.i]);
+      }
       C.lastAt = Date.now();
       C.i++;
       since++;
