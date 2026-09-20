@@ -299,6 +299,11 @@ findings, not work in progress. Nothing here is started.**
   **What is left**: merge the dumps back into the repo as they land, and keep the loop alive --
   a two-hourly cron reads `health()`. It tops nothing up, because the whole list is seeded.
 
+  ⛔ **AND `C.reseedFailed()` IS OWED AT THE END OF THE RUN.** A permalink that times out used to
+  be counted in `fail` and stepped over for good; it is now kept in `C.failed`. 72 of the first
+  8,823 timed out, so expect a few hundred over the whole pass. **The run is not finished when
+  `i >= of` -- it is finished when `i >= of` AND `C.failed` is empty.**
+
 - **The Geni path anchor is not always the account owner, and it is not ours.** A `/path/` page
   rendered anchored on **Naruhito** (`from=6000000001783830969`), and notification emails read
   *"is NN NN NN's 37th great granddaughter's..."* and *"is Private User's..."*. Checked

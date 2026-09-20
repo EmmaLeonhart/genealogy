@@ -45873,3 +45873,41 @@ loop before checking the browser was started this way* — all four present.
 `localStorage.chains_cursor`, which is what a restart resumes from rather than re-walking.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+---
+
+## 2026-09-20 — the chain fetcher's fail count climbed, and what it turned out to be
+
+The two-hourly tick's stop condition fired: `fail` 9 -> 72, +62 in one interval, and the rate
+fell from 1,134 chains an hour to 304. The loop was stopped before fetching anything more, which
+is what the condition is for.
+
+**It is not a block and not a CAPTCHA.** Every completed response during the investigation was
+HTTP 200 with a real path page. A twelve-fetch timing sample: **9 ok, 3 failed, median 1,907 ms,
+slowest success 6.4 s**, and the three failures at 28.6 s, 45.1 s and 45.8 s. A separate
+five-fetch sample: 16.2 s, then 1.5 s, 1.7 s, 1.3 s, 1.7 s, all 200. So Geni is serving
+intermittent latency spikes — most requests are fast, a minority run past the 25 s timeout — and
+the fail count and the rate collapse are two views of that one fact.
+
+**The dump timestamps date it exactly.** Parts 041 and 042 were eleven minutes apart, the steady
+cadence. 043 took 47 minutes and 044 took 56. A sustained five-fold slowdown from about 06:40 to
+08:30 local, not a blip.
+
+**⛔ AND THE INVESTIGATION FOUND A REAL DEFECT UNDERNEATH IT: A TIMED-OUT PERMALINK WAS LOST.**
+`C.fail++` and `C.i++` both ran, so a chain that timed out was stepped over and never fetched
+again, and the only trace was a number going up. **`health()` reporting `fail` is not the same as
+the work being recoverable.** 72 of the first 8,823 timed out — about 1%, so a full 47,692 pass
+would have finished ~470 chains short while every instrument said it had succeeded. `C.failed`
+now collects them and `C.reseedFailed()` puts them back on the end of the list. Manual on
+purpose: retrying inside the loop would re-request during whatever is causing the timeouts.
+
+**Two things I got wrong in the investigating, both worth writing down.** A CAPTCHA check
+returned a false positive on a healthy page, because Geni's own markup carries the tokens it
+looked for — caught only because the same response had 96 segments and a proper title. And the
+first two "healthy" probes re-fetched urls already requested, so they may have been cache hits;
+the honest reading only came from fetching urls nothing had touched. A probe that reuses a warm
+url is not a probe.
+
+Restarted at gen 2 from the cursor, 8,824. `C.reseedFailed()` is owed at the end of the run.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
