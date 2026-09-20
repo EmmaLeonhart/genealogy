@@ -30,6 +30,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import zlib
 import pathlib
 import sys
 from pathlib import Path
@@ -72,11 +73,54 @@ LABELS_OUT = ROOT / "reports" / "garborg-live-labels.tsv"
 #: stable across requests, so without both the file would differ on every run and the diff would
 #: be noise — `CLAUDE.md` § *SORTING MUST BE DETERMINISTIC*, whose worked example is 36,901
 #: changed lines over zero content change.
-ITEMS_OUT = ROOT / "reports" / "garborg-live-items.json"
+#: ⛔ **AND IT IS SHARDED NOW, BECAUSE ONE FILE CROSSED GITHUB'S HARD LIMIT.** The paragraph
+#: above says *not sharded*, and that stood until the file reached **100.32 MB** on 2026-09-19.
+#: GitHub refuses a push containing a file over 100 MB at the pre-receive hook, so `pipeline.yml`
+#: did 68 minutes of work and then had **every push rejected, five attempts, every run** — and
+#: because the job's `timeout-minutes` was killing it mid-retry, the failure had been showing up
+#: as `cancelled` and being read as push contention for days.
+#:
+#: **Nothing here can be trimmed to fix it.** Measured: `claims` are **91.8%** of the content, so
+#: dropping every other field saves 8%. Of the 99 MB on disk only 66.8 MB is values; the rest is
+#: `indent=1`, already the smallest indent that still gives a line-oriented diff. And the ledger
+#: grows daily, so the limit is not a plateau to sit under.
+#:
+#: **Gzip stays refused for the reason above** — a compressed file has no diff, and the diff is
+#: the point. Sharding keeps every property the specified shape was chosen for: plain, sorted,
+#: overwritten, diffable. Ruled 2026-09-19, the same answer given for `path-chains-1.tsv` hours
+#: earlier.
+#:
+#: ⛔ **THE SHARD RULE IS PER-QID AND MUST STAY THAT WAY.** `int(qid[1:]) % SHARDS` depends on
+#: the qid alone, never on how many items exist or what order they arrive in, so **one new item
+#: dirties exactly one shard**. A size-based split — the obvious one, and the one used for
+#: `path-chains-*.tsv`, where rows are append-only and grouped by chain — would reshuffle every
+#: item after the insertion point and produce sixteen garbage diffs on every run, which is the
+#: same failure § *SORTING MUST BE DETERMINISTIC* is written against.
+SHARDS = 16
+
+
+def item_shard(qid):
+    """Which shard `qid` belongs in. A pure function of the qid, by construction."""
+    text = str(qid)
+    try:
+        n = int(text[1:])
+    except (TypeError, ValueError):
+        # Never a real qid. `hash()` is NOT usable -- it is salted per process, so the same key
+        # would land in different shards on different runs and churn the diff forever.
+        n = zlib.crc32(text.encode("utf-8"))
+    return n % SHARDS
+
+
+def shard_path(n):
+    return ROOT / "reports" / ("garborg-live-items-%02d.json" % n)
+
+
+def shard_paths():
+    return [shard_path(n) for n in range(SHARDS)]
 
 
 def read_live_items(qids=None):
-    """`{qid: entity}` from `ITEMS_OUT`, or `{}` when the file is absent.
+    """`{qid: entity}` from every shard, or `{}` when none are on disk.
 
     `qids` limits what is returned. A missing file returns empty rather than raising, so a
     fresh clone that has not run the refresh degrades instead of crashing — but callers must
@@ -85,10 +129,12 @@ def read_live_items(qids=None):
     made `garborg-live-values.tsv` read on 2026-09-04 as though 161 items carried no `P2600`
     when it simply does not cover them.
     """
-    if not ITEMS_OUT.exists():
-        return {}
-    with open(ITEMS_OUT, encoding="utf-8") as fh:
-        items = json.load(fh)
+    items = {}
+    for path in shard_paths():
+        if not path.exists():
+            continue
+        with open(path, encoding="utf-8") as fh:
+            items.update(json.load(fh))
     if qids is None:
         return items
     return {q: items[q] for q in qids if q in items}
@@ -215,17 +261,24 @@ def main():
     # read?"* — every one of which is a question about the ledger, whose answer had been fetched
     # and discarded minutes earlier. With this file present those are a `zcat` and a grep.
     #
-    # **One file, overwritten, sorted, plain — the specified shape.** See `ITEMS_OUT` for it,
-    # and for why gzip, which this wrote first, is the wrong answer to "clear diffs".
-    tmp = ITEMS_OUT.with_suffix(".json.tmp")
-    with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
-        json.dump(dict(sorted(items.items())), fh, ensure_ascii=False,
-                  sort_keys=True, indent=1)
-        fh.write("\n")
-    os.replace(tmp, ITEMS_OUT)
-    size = ITEMS_OUT.stat().st_size
-    print(f"{len(items):,} whole items -> {ITEMS_OUT.resolve().relative_to(ROOT)} "
-          f"({size / 1024 / 1024:.1f} MB)")
+    # **Sixteen files, each overwritten, sorted, plain.** See `SHARDS` for why it is no
+    # and for why gzip, which this wrote first, is the wrong answer to "clear diffs" -- and
+    # `SHARDS` for why it is nonetheless spread over sixteen files.
+    by_shard = {n: {} for n in range(SHARDS)}
+    for qid, entity in items.items():
+        by_shard[item_shard(qid)][qid] = entity
+    size = 0
+    for n in range(SHARDS):
+        out = shard_path(n)
+        tmp = out.with_suffix(".json.tmp")
+        with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(dict(sorted(by_shard[n].items())), fh, ensure_ascii=False,
+                      sort_keys=True, indent=1)
+            fh.write("\n")
+        os.replace(tmp, out)
+        size += out.stat().st_size
+    print(f"{len(items):,} whole items -> reports/garborg-live-items-NN.json "
+          f"({SHARDS} shards, {size / 1024 / 1024:.1f} MB)")
 
 
 if __name__ == "__main__":

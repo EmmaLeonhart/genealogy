@@ -45592,3 +45592,46 @@ timestamps, and it was reached third.
 this. What the timeout costs is the rest of `pipeline.yml` — the split, the inventories and Pages.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+## 2026-09-19 — the pipeline could not push at all, and a timeout was hiding it
+
+⛔ **`reports/garborg-live-items.json` REACHED 100.32 MB AND GITHUB REFUSES THE PUSH.** Not a
+warning — the pre-receive hook declines it, five attempts, every run:
+
+    remote: error: File reports/garborg-live-items.json is 100.32 MB;
+            this exceeds GitHub's file size limit of 100.00 MB
+    ! [remote rejected] HEAD -> main (pre-receive hook declined)
+
+So `pipeline.yml` did **68 minutes of work and then threw all of it away**, every time.
+
+**The 90-minute timeout was concealing exactly this.** The job was being killed mid-retry before
+it could report the rejection, and a `timeout-minutes` kill is reported as `cancelled` — the same
+word as the supersede-on-push cancellation this repo already documents at length. Raising the
+timeout to 150 did not fix the pipeline; it made the pipeline able to **tell us what was wrong**,
+which is what a run failing at 68 minutes instead of being killed at 90 actually bought.
+
+**Nothing could be trimmed.** `claims` are **91.8%** of the content, so dropping every other
+field saves 8%. Of 99 MB on disk only 66.8 MB is values — the rest is `indent=1`, already the
+smallest indent that leaves a line-oriented diff. And the ledger grows daily.
+
+**Gzip stayed refused**, for the reason `refresh-live-values.py` already gave: a compressed file
+has no diff, and the diff is the file's entire purpose. The same comment said *not sharded*, and
+that is the clause the 100 MB limit overruled — sharding keeps plain, sorted, overwritten and
+diffable, which is every property the specified shape was chosen for. Ruled 2026-09-19, the same
+answer given for `path-chains-1.tsv` hours earlier.
+
+⛔ **AND THE SHARD RULE IS PER-QID, WHICH IS THE WHOLE DESIGN.** `int(qid[1:]) % 16` depends on
+the qid alone — never on how many items exist or what order they arrive in — so **one new item
+dirties exactly one shard**. A size-based split, the obvious one and the one `path-chains-*.tsv`
+uses, would reshuffle every item after the insertion point and emit sixteen garbage diffs per
+run: § *SORTING MUST BE DETERMINISTIC*, whose worked example is 36,901 changed lines over zero
+content change. `hash()` is unusable for the fallback for the same reason — it is salted per
+process, so a key would move between shards on different runs.
+
+    16 shards, largest 7.2 MB, 99.6 MB total
+    round trip verified: 6,206 items in -> 6,206 out, identical
+
+**Still to watch:** `out/model-vs-reality-items.json` is 59.06 MB and tracked, and already draws
+the 50 MB warning on every push. It is the next one to cross.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
