@@ -48,9 +48,18 @@
   };
   window.__listsweep = S;
 
-  const STAGGER = 1800;      /* per page. Geni is hostile; 500 back-to-back reads have CAPTCHAd
-                              * this account twice. */
-  const BETWEEN = 4000;      /* between people, on top of the page stagger. */
+  /* ⛔ PACE IT, BUT DO NOT DAWDLE. Ruled 2026-09-19: *"just make sure that stuff is working
+   * quickly."* These are POSTs returning HTML, not the full page loads that CAPTCHAd this
+   * account twice, so the ceiling is higher than a census read -- but the account is the only
+   * one there is, so the tuning is modest rather than clever.
+   *
+   * The gap between PEOPLE dominates, not the gap between pages: roughly half of everyone in
+   * the tail has no descendants at all, so they cost one request and then sit out the pause.
+   * It is therefore adaptive -- a dead end moves on almost at once, a real descent still
+   * pauses. */
+  const STAGGER = 1200;      /* per page */
+  const BETWEEN_EMPTY = 1200;
+  const BETWEEN_FULL = 3000;
   const COLS = ["chk", "photo", "name", "relationship", "managed_by",
                 "immediate_family", "actions"];
 
@@ -165,6 +174,7 @@
     /* A person with no descendants is a real answer, not a failure -- ruled 2026-09-19,
      * *"smaller exports leaking in are self healing and still give info"*. Written anyway,
      * so the sweep never re-asks. */
+    S.lastWasEmpty = !out.length;
     if (!out.length) S.empty++;
     save(focus, out);
     S.done++;
@@ -186,7 +196,7 @@
       S.i = k + 1;
       try { await person(S.queue[k], base); }
       catch (e) { S.fail++; S.lastFail = S.queue[k] + " " + String((e && e.message) || e); }
-      await new Promise(function (r) { setTimeout(r, BETWEEN); });
+      await new Promise(function (r) { setTimeout(r, S.lastWasEmpty ? BETWEEN_EMPTY : BETWEEN_FULL); });
     }
     S.running = false;
     return "sweep finished: " + S.done + " people";
