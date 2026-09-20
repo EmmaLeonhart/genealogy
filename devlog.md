@@ -45559,3 +45559,36 @@ hits were prose mentions. Nothing new was added to carry this: no new script, no
 the helper is three lines duplicated in each reader rather than a module for them to import.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+## 2026-09-19 — the pipeline was timing out, and a timeout reads as a cancellation
+
+⛔ **`timeout-minutes` KILLS ARE REPORTED AS `cancelled`, AND THIS FILE ALREADY BLAMES
+CANCELLATION ON PUSHES.** Run `35472275961`:
+
+    created   22:04:43Z
+    started   23:06:23Z    queued 61 minutes behind the concurrency group
+    killed    00:36:39Z    exactly 90 minutes later, at `Commit the rebuilt batch`
+
+So it did the work and died handing it over. `timeout-minutes` was 90 and the last green run took
+**1h00m**, which left ten minutes of headroom against a corpus that grows daily. Raised to 150 —
+not a guess at the new runtime, but the old margin restored on top of a job measured at an hour
+and trending up.
+
+**The diagnosis cost two wrong answers first, and both were stated confidently.** `gh run list`
+showed seven straight `cancelled` runs, and `CLAUDE.md` § *THE 45-MINUTE PATH TICK PUSHES, SO THE
+PIPELINE CAN NEVER REACH THE FRONT* supplies a ready explanation, so the first conclusion was
+that CI's own receipt pushes were cancelling it. **That was wrong**: this file documents that a
+push made with `GITHUB_TOKEN` creates no run, and the shas confirm it — every push-triggered run
+sat on a human-authored commit. The second conclusion, that a human push had cancelled this one,
+was wrong too: there is **no newer pipeline run** after 22:04:43Z to have superseded it.
+
+**The instrument is the job's start and end time against `timeout-minutes`, never the conclusion
+word.** A supersede-cancellation and a timeout-cancellation are the same word in every listing,
+and only the clock tells them apart. § *CHECK before raising an alarm* — the check here was three
+timestamps, and it was reached third.
+
+**What was NOT wrong**: the batch is being maintained. `8c7371df rebuild the batch` regenerated it
+(3,274 -> 2,794 lines) while all this was happening, so the edit campaign was never starved by
+this. What the timeout costs is the rest of `pipeline.yml` — the split, the inventories and Pages.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>

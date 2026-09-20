@@ -105,7 +105,19 @@ jobs:
     needs: gate
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # ⛔ **90 MINUTES WAS NOT ENOUGH AND THE OVERRUN READS AS A CANCELLATION.** Run
+    # 35472275961 was killed at exactly 90 minutes, inside `Commit the rebuilt batch` -- so it
+    # had done the work and died handing it over. GitHub reports a `timeout-minutes` kill as
+    # **`cancelled`**, which is indistinguishable in `gh run list` from the supersede-on-push
+    # cancellation this file already documents at length. That cost two wrong diagnoses on
+    # 2026-09-19: first that CI's own bot pushes were cancelling it, then that a human push was.
+    # The instrument that settles it is the JOB's start and end time against this number, never
+    # the conclusion word.
+    #
+    # The last green run took 1h00m, so 90 left ten minutes of headroom against a corpus that
+    # grows every day. 150 is not a guess at the new runtime -- it is the old margin restored on
+    # top of a job that has been measured at an hour and is trending up.
+    timeout-minutes: 150
     # The commit this job PUSHES, so the site job can build from it. Empty when nothing
     # changed, and the site then falls back to github.sha.
     outputs:
