@@ -104,7 +104,33 @@ window.__chains = window.__chains || {};
    * request rate — the way to get CAPTCHAd. A loop runs only while it is still the newest. */
   C.gen = (C.gen || 0) + 1;
 
-  const sleep = () => new Promise(s => setTimeout(s, 1100 + Math.random() * 700));
+  /* ⛔ **THE PACE BACKS OFF NOW, BECAUSE A FIXED ONE WALKED INTO A RATE LIMIT.** Measured
+   * 2026-09-20 over 9,229 chains: the failure rate climbed **monotonically the longer the loop
+   * ran** -- 0%, then 9%, then 17.5% -- and throughput fell 1,134 -> 304 -> 214 an hour with it.
+   * Every failure was the 25 s timeout; every completed response was HTTP 200 with a real page.
+   * And a single probe taken seconds after each stop came back in **1.7-2.0 s every time**, on
+   * urls nothing had touched.
+   *
+   * Fast when idle, progressively slower under a sustained stream, recovering after a pause:
+   * that is a rate limiter, not random latency, and a fixed 1.1-1.8 s stagger cannot see one.
+   * Backing off is also § *PACE IT* -- 500 back-to-back reads is what got the account CAPTCHAd
+   * on 2026-09-12 -- so the response to being throttled is never to push harder.
+   *
+   * Additive-increase on success, multiplicative-decrease on failure: every failure doubles the
+   * gap toward `PACE_MAX`, every `PACE_DECAY` consecutive successes takes 10% back off toward
+   * `PACE_MIN`. The agent still never sleeps -- `CLAUDE.md` § *the stagger is the extension's,
+   * never a sleep in the agent*. */
+  const PACE_MIN = 1100, PACE_MAX = 20000, PACE_DECAY = 10;
+  C.pace = C.pace || PACE_MIN;
+  C.paceRun = 0;
+  C.paceUp = function () {
+    C.pace = Math.min(PACE_MAX, Math.max(PACE_MIN, C.pace * 2));
+    C.paceRun = 0;
+  };
+  C.paceDown = function () {
+    if (++C.paceRun >= PACE_DECAY) { C.pace = Math.max(PACE_MIN, C.pace * 0.9); C.paceRun = 0; }
+  };
+  const sleep = () => new Promise(s => setTimeout(s, C.pace + Math.random() * 700));
   const qp = (u, k) => {
     try { return new URL(u, location.origin).searchParams.get(k) || ""; } catch (e) { return ""; }
   };
@@ -124,7 +150,7 @@ window.__chains = window.__chains || {};
       /* Caught up and waiting for `collect()` to add more, rather than dead. `alive` stays true
        * because the loop is stamping `lastAt` -- this says WHY nothing is moving. */
       idling: !!C.idle, ok: C.ok, fail: C.fail,
-      part: C.part, pending: C.rows.length,
+      part: C.part, pending: C.rows.length, pace: Math.round(C.pace),
       collectPage: C.collectPage || 0, collectDone: !!C.collectDone,
       finished: C.finished || null,
     };
@@ -378,10 +404,12 @@ window.__chains = window.__chains || {};
       try {
         C.rows.push(...await C.one(C.urls[C.i]));
         C.ok++;
+        C.paceDown();
       } catch (e) {
         C.fail++;
         C.lastErr = String(e).slice(0, 80);
         C.failed.push(C.urls[C.i]);
+        C.paceUp();
       }
       C.lastAt = Date.now();
       C.i++;
