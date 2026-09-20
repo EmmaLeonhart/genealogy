@@ -45667,9 +45667,12 @@ found **62 orphans**, of which **14 came from this script**. Those 14 plus `Q141
 in `reports/entry-points-now.tsv`, taking it from 11 rows to 26. Ruled 2026-09-20: *"Every single
 person who was accidentally made by it should become an entry point."*
 
-⛔ **THE OTHER 48 ORPHANS ARE NOT TOUCHED.** They carry no relationship either, but they were not
-made by this script and the ruling names this script's output. They are a finding, not a queue
-item taken on unasked; `Q136327568`, `Q109888305` and `Q138700227` are examples and several do
-carry a description, so they are not all the same failure.
+⛔ **AND THEN ALL 48 OF THE OTHERS WENT IN TOO.** Ruled minutes later, 2026-09-20: *"force open
+all 48 orphans and add them into the ledger. Or not add them into the ledger, add them in as
+entry points ... into the contemporary entry points thing."* So every one of the 62 is now in
+`reports/entry-points-now.tsv` -- **11 rows before today, 74 after** -- and the 48 were opened as
+browser tabs for inspection. They were not all made the same way and several do carry a
+description, so they are not one failure; being unreachable is what they have in common, and an
+entry point is what answers that whatever the cause.
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
