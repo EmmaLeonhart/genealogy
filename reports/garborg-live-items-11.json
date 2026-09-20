@@ -15690,6 +15690,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q113006331$E69F7378-C107-4062-BF70-41A41CC6967D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141504353",
+        "numeric-id": 141504353
+       }
+      },
+      "hash": "04da7341b452e3ab46b085b191fb33b3da49e19c",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "46447ffebe9cacd8a96571386625984bfac51aee",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000009486650094"
+          },
+          "hash": "08ceece40127ec584d5b966cc1df601dc32d4d9a",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P569": [
@@ -16112,8 +16153,8 @@
     "value": "约翰·莱伊耶尔"
    }
   },
-  "lastrevid": 2547808447,
-  "modified": "2026-09-19T22:36:31Z",
+  "lastrevid": 2547871661,
+  "modified": "2026-09-20T04:58:47Z",
   "ns": 0,
   "pageid": 107849257,
   "sitelinks": {
@@ -50215,13 +50256,33 @@
   },
   "id": "Q140571851",
   "labels": {
+   "en": {
+    "language": "en",
+    "value": "Bror Nils Hagelin"
+   },
+   "en-us": {
+    "language": "en-us",
+    "value": "Bror Nils Hagelin"
+   },
+   "es": {
+    "language": "es",
+    "value": "Bror Nils Hagelin"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "Bror Nils Hagelin"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Bror Nils Hagelin"
+   },
    "sv": {
     "language": "sv",
     "value": "Bror Nils Hagelin"
    }
   },
-  "lastrevid": 2518149424,
-  "modified": "2026-07-16T12:28:39Z",
+  "lastrevid": 2547913644,
+  "modified": "2026-09-20T10:51:18Z",
   "ns": 0,
   "pageid": 134007967,
   "sitelinks": {},
@@ -163998,6 +164059,2281 @@
    }
   },
   "title": "Q246091",
+  "type": "item"
+ },
+ "Q250731": {
+  "aliases": {
+   "en": [
+    {
+     "language": "en",
+     "value": "Álmos Árpád(házi) Prince of Hungary & Duke of Croatia"
+    }
+   ],
+   "es": [
+    {
+     "language": "es",
+     "value": "Almos el Ciego"
+    }
+   ],
+   "ja": [
+    {
+     "language": "ja",
+     "value": "アルモス王子"
+    }
+   ],
+   "nl": [
+    {
+     "language": "nl",
+     "value": "Almos van Hongarije"
+    }
+   ]
+  },
+  "claims": {
+   "P1050": [
+    {
+     "id": "Q250731$D83B1878-3343-4E5A-AF3D-FE7048764C65",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q10874",
+        "numeric-id": 10874
+       }
+      },
+      "hash": "9ca5f6c8bd0132a69a39609b9ec51bd73a6fb255",
+      "property": "P1050",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P106": [
+    {
+     "id": "Q250731$55212904-6FC5-4536-B04C-E05E21C72DBB",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q116",
+        "numeric-id": 116
+       }
+      },
+      "hash": "b864da19341f12f5e95458570118a5cb4a6bcaa1",
+      "property": "P106",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q10000",
+            "numeric-id": 10000
+           }
+          },
+          "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P11621": [
+    {
+     "id": "Q250731$72c167e1-47ae-7a75-2b1b-0c3abe887fc5",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "662108"
+      },
+      "hash": "7d2931fe22c5a3fcb20f0730463b98127f493352",
+      "property": "P11621",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P1185": [
+    {
+     "id": "Q250731$73248879-4a06-00e2-4eaa-1438cf24a752",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "149258"
+      },
+      "hash": "f21d62afd116a00d5c1a1c0ffa852e5644287dd1",
+      "property": "P1185",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P119": [
+    {
+     "id": "Q250731$4e4c2396-972c-4b2a-9452-6e551f937d4b",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q746675",
+        "numeric-id": 746675
+       }
+      },
+      "hash": "f1021587a9bd5c5213b617b5300b32f8cfbe37e5",
+      "property": "P119",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "dbc378ca38aa06d2ac2a1b790ffe3a5ee9d0bd17",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q53464",
+            "numeric-id": 53464
+           }
+          },
+          "hash": "5230a42ffbab53c12928ede0c985a74a1d5be294",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P1559": [
+    {
+     "id": "Q250731$0496d2ad-4038-7e85-2076-5668291957a5",
+     "mainsnak": {
+      "datatype": "monolingualtext",
+      "datavalue": {
+       "type": "monolingualtext",
+       "value": {
+        "language": "hr",
+        "text": "Álmos"
+       }
+      },
+      "hash": "391f67055aefc111a8e458bbc0ef652f82935f62",
+      "property": "P1559",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "288ab581e7d2d02995a26dfa8b091d96e78457fc",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q206855",
+            "numeric-id": 206855
+           }
+          },
+          "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P18": [
+    {
+     "id": "Q250731$F1880E62-1779-4849-978E-99234AEF2F55",
+     "mainsnak": {
+      "datatype": "commonsMedia",
+      "datavalue": {
+       "type": "string",
+       "value": "Chronicon Pictum P105 Kálmán és Álmos kibékülése Dömösön.JPG"
+      },
+      "hash": "498e0a8c9f12822e06cee6f09f9ff942d1b62a3e",
+      "property": "P18",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P2096": [
+       {
+        "datatype": "monolingualtext",
+        "datavalue": {
+         "type": "monolingualtext",
+         "value": {
+          "language": "fr",
+          "text": "Accord de paix entre Kálmán et Álmos."
+         }
+        },
+        "hash": "b98607565f0a4799e18eb26fa975db4c4e7ca3b1",
+        "property": "P2096",
+        "snaktype": "value"
+       },
+       {
+        "datatype": "monolingualtext",
+        "datavalue": {
+         "type": "monolingualtext",
+         "value": {
+          "language": "hu",
+          "text": "Kálmán és Álmos kibékülése"
+         }
+        },
+        "hash": "861c4e5ca2c8b743f2891a55ab400b0914ac566f",
+        "property": "P2096",
+        "snaktype": "value"
+       },
+       {
+        "datatype": "monolingualtext",
+        "datavalue": {
+         "type": "monolingualtext",
+         "value": {
+          "language": "ru",
+          "text": "Король Кальман и Альмош в монастыре Домоша. Миниатюра из Chronicon Pictum (XIV век)"
+         }
+        },
+        "hash": "b6ddb41db855ce47192a0f76f27759e9c2534a67",
+        "property": "P2096",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P2096"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q328",
+            "numeric-id": 328
+           }
+          },
+          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P1819": [
+    {
+     "id": "Q250731$b4278a44-b2c6-423b-a082-75c666297c02",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "I00020701"
+      },
+      "hash": "e12870fa76c22b3b487926bbaa82ad9d522ee948",
+      "property": "P1819",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P19": [
+    {
+     "id": "Q250731$8F10CEAE-D58E-48DE-B715-C03B2D7F1B57",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q171150",
+        "numeric-id": 171150
+       }
+      },
+      "hash": "9ea6709294377fad4b6b6f504f5ab903c3345df6",
+      "property": "P19",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q328",
+            "numeric-id": 328
+           }
+          },
+          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P20": [
+    {
+     "id": "Q250731$505FED5C-33EF-47DA-93BF-595AD04BB373",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q16869",
+        "numeric-id": 16869
+       }
+      },
+      "hash": "e7a97bdf891e24444058131ce74071d6f5dc5753",
+      "property": "P20",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q328",
+            "numeric-id": 328
+           }
+          },
+          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P21": [
+    {
+     "id": "q250731$D2F5FF00-CB0F-4D11-9A4B-E52508A5C72D",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "41c125c95c7f41903e398a3ab9a1162d606914ed",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000001821187530"
+          },
+          "hash": "5b0010f7d5043b2c4f2955b6ec69267d824deaff",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P22": [
+    {
+     "id": "q250731$D983F897-2DA8-4777-9306-E60E013DBC33",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q82687",
+        "numeric-id": 82687
+       }
+      },
+      "hash": "d67a34a0097934c90e257facf632a0c3902b2bbd",
+      "property": "P22",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P25": [
+    {
+     "id": "Q250731$8C882BF1-74D8-4A5C-829A-C11E2131790C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q546165",
+        "numeric-id": 546165
+       }
+      },
+      "hash": "91f550953030f90f25e3caff6db6fee3f7d7bae6",
+      "property": "P25",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P26": [
+    {
+     "id": "Q250731$1962288A-5148-4543-A774-ED5875D12A8C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q19663453",
+        "numeric-id": 19663453
+       }
+      },
+      "hash": "a273193c69884e28efab0787a986d267407cf240",
+      "property": "P26",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P580": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+          "precision": 9,
+          "time": "+1104-00-00T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "c4103dac574910d39f74b65f4db84cdd72cb0a76",
+        "property": "P580",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P580"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q328",
+            "numeric-id": 328
+           }
+          },
+          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      },
+      {
+       "hash": "fcefda43ce87ac026f892f444e081997b66d3a41",
+       "snaks": {
+        "P4638": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "p11409.htm#i114082"
+          },
+          "hash": "ba0e60772f00fddff908a4904d2fd74fad391964",
+          "property": "P4638",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2020-08-07T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "e2b008912fe31b38fa64992d832ce82b9cf32f6f",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P4638",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q250731$7EB75DBA-F84D-402D-B5BE-EF95FE99C612",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000001821187530"
+      },
+      "hash": "5b0010f7d5043b2c4f2955b6ec69267d824deaff",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P27": [
+    {
+     "id": "Q250731$b87022cc-45c2-be3c-a3fb-32e9447024a9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q28",
+        "numeric-id": 28
+       }
+      },
+      "hash": "0cdb97864aaef112987cbaa5b47c721f2837d009",
+      "property": "P27",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P6885": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q171150",
+          "numeric-id": 171150
+         }
+        },
+        "hash": "4b378abab87d2392af6cc1e9b483fcbe43b2af3a",
+        "property": "P6885",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P6885"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2889": [
+    {
+     "id": "Q250731$35766852-4920-d68f-0580-51b067192fc1",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "933H-W94"
+      },
+      "hash": "0b89c341122aa0dd3f2131f9b1cec86269a1da4b",
+      "property": "P2889",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2949": [
+    {
+     "id": "Q250731$0DEFF50F-8BB6-44F5-9B33-835FD37953E3",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Arpadhazi-7"
+      },
+      "hash": "a77f0b6684130e2cddd020d0c72f46ec46af510c",
+      "property": "P2949",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Álmos Duke of Croatia Hungary (Arpadhazi) (1070 - 1 Sep 1127)"
+        },
+        "hash": "b7233269c250eb54ffb44f653359560de6e78f1c",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q250731$3D257FD3-5475-4B3F-83AC-44206C71037A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "288ab581e7d2d02995a26dfa8b091d96e78457fc",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q206855",
+            "numeric-id": 206855
+           }
+          },
+          "hash": "6a164248fc96bfa583bbb495cb63ae6401ec203c",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      },
+      {
+       "hash": "41c125c95c7f41903e398a3ab9a1162d606914ed",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000001821187530"
+          },
+          "hash": "5b0010f7d5043b2c4f2955b6ec69267d824deaff",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P3373": [
+    {
+     "id": "Q250731$22DA8763-D7D5-4C33-B960-85F461D88A00",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q83066",
+        "numeric-id": 83066
+       }
+      },
+      "hash": "3c3f6969dc70f301e96383a90db8ba018d454b89",
+      "property": "P3373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P373": [
+    {
+     "id": "q250731$F85020F7-912B-4FCD-B8E8-BDC5A05C9473",
+     "mainsnak": {
+      "datatype": "string",
+      "datavalue": {
+       "type": "string",
+       "value": "Álmos of Hungary, Duke of Croatia"
+      },
+      "hash": "4ac74edf8cfe67fb33ff3313c9a2087221c2f9e1",
+      "property": "P373",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P39": [
+    {
+     "id": "Q250731$4BFF2CA8-7F03-4037-A067-D5DDFCA295DB",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q12097",
+        "numeric-id": 12097
+       }
+      },
+      "hash": "01e162d377df2fa3f34a46cde998814f0667f666",
+      "property": "P39",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q10000",
+            "numeric-id": 10000
+           }
+          },
+          "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P3973": [
+    {
+     "id": "Q250731$7b9fb5b4-4dea-2b0d-1940-cdde6b5027e0",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "PIM42212"
+      },
+      "hash": "dca18441aef39683356f52c0e9f401345a3fcc59",
+      "property": "P3973",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "q250731$648733B5-8DBD-4C0F-8958-D9CE63B68A9A",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q82686",
+        "numeric-id": 82686
+       }
+      },
+      "hash": "08df143d00bcb75e37d46bfdaa360795b2fb85e3",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    },
+    {
+     "id": "q250731$1B7FE5CD-9C33-44CB-8687-6D23077642C8",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q2731801",
+        "numeric-id": 2731801
+       }
+      },
+      "hash": "aed2c1f24b611fcab5dde5d03956c7ddaf0fdaa0",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3913844e06e055e8cd81608f22bad0e604d89d2d",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q21401824",
+            "numeric-id": 21401824
+           }
+          },
+          "hash": "2cb827dc711b8ec4594187170c0bce6d67f54fbe",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q250731$e421d855-47b7-3f25-934d-1d82d1da05cd",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q11716009",
+        "numeric-id": 11716009
+       }
+      },
+      "hash": "642048ef852230656bc86eb898f717a7c246a433",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "3913844e06e055e8cd81608f22bad0e604d89d2d",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q21401824",
+            "numeric-id": 21401824
+           }
+          },
+          "hash": "2cb827dc711b8ec4594187170c0bce6d67f54fbe",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P4159": [
+    {
+     "id": "Q250731$22480CD9-0A1A-45AD-B847-7EF853F91031",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "Almos_of_Hungary_(1)"
+      },
+      "hash": "2a1938b49c58d7ff6d4aade273609edb1f144eab",
+      "property": "P4159",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P4638": [
+    {
+     "id": "Q250731$412a16b3-4fc7-92c6-a611-7474456c4b2a",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "p11409.htm#i114082"
+      },
+      "hash": "ba0e60772f00fddff908a4904d2fd74fad391964",
+      "property": "P4638",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Almus Arpád, Duke of Croatia"
+        },
+        "hash": "ee9893bf0fd4b36d0fe82bbb51757abd0e65e429",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "4c53287ffacf9ff03783715d51259928a67cba5a",
+       "snaks": {
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2020-08-07T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "e2b008912fe31b38fa64992d832ce82b9cf32f6f",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P53": [
+    {
+     "id": "Q250731$03CCF180-D2B0-4997-9FCB-A58DAF994D6C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q51153",
+        "numeric-id": 51153
+       }
+      },
+      "hash": "36a60325f3b28f8dffd4151c975df3d971abbc28",
+      "property": "P53",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q328",
+            "numeric-id": 328
+           }
+          },
+          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P569": [
+    {
+     "id": "Q250731$f8330cac-4cc2-0180-7742-a96ca27304d4",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+        "precision": 9,
+        "time": "+1070-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "b0feb4e58b6d1a0254ce659a9e754fbe62554588",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1480": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q5727902",
+          "numeric-id": 5727902
+         }
+        },
+        "hash": "cb40f2027a88b8d23735681aaccba1069a574f54",
+        "property": "P1480",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1480"
+     ],
+     "rank": "deprecated",
+     "references": [
+      {
+       "hash": "eb0542bc444cab0e9768006a00516c2d6a2047c8",
+       "snaks": {
+        "P1810": [
+         {
+          "datatype": "string",
+          "datavalue": {
+           "type": "string",
+           "value": "Álmos Duke of Croatia Hungary (Arpadhazi) (1070 - 1 Sep 1127)"
+          },
+          "hash": "b7233269c250eb54ffb44f653359560de6e78f1c",
+          "property": "P1810",
+          "snaktype": "value"
+         }
+        ],
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q1074931",
+            "numeric-id": 1074931
+           }
+          },
+          "hash": "330b308dbc916d1b5cdfafddbbca54c594f940ec",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P2949": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "Arpadhazi-7"
+          },
+          "hash": "a77f0b6684130e2cddd020d0c72f46ec46af510c",
+          "property": "P2949",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2024-12-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "f844d354232230007db3b88d5c32f0940916cd9a",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P2949",
+        "P1810",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q250731$747e0159-43fd-e1a9-6e9f-b6dbbf011f9b",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+        "precision": 9,
+        "time": "+1074-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "2e0fdf0d79e8066c42b2dc970d3fdd3168720873",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "e1b1b9a07f425e87fca644bae3831fa20728d291",
+       "snaks": {
+        "P1185": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "149258"
+          },
+          "hash": "f21d62afd116a00d5c1a1c0ffa852e5644287dd1",
+          "property": "P1185",
+          "snaktype": "value"
+         }
+        ],
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q649227",
+            "numeric-id": 649227
+           }
+          },
+          "hash": "6f849d9a7c3fd7ab8076c71950e026b6cc57f4b0",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2024-12-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "f844d354232230007db3b88d5c32f0940916cd9a",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P1185",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    },
+    {
+     "id": "Q250731$15ca5e56-4ca5-b6b6-8861-fac629a1c012",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+        "precision": 9,
+        "time": "+1075-00-00T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "92298e6210239a59ff8a282050b45e400e3e15f3",
+      "property": "P569",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "37a4167e3f9e1ebb1cc6e388b9519af271861982",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q7983244",
+            "numeric-id": 7983244
+           }
+          },
+          "hash": "2a3bfae9f9ce4d69c714c068298e198e873b1233",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P4159": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "Almos_of_Hungary_(1)"
+          },
+          "hash": "2a1938b49c58d7ff6d4aade273609edb1f144eab",
+          "property": "P4159",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2024-12-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "f844d354232230007db3b88d5c32f0940916cd9a",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P4159",
+        "P813"
+       ]
+      },
+      {
+       "hash": "7a2b562b3cd21998c8d8b67add3b7f9f6c9b439a",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q93482363",
+            "numeric-id": 93482363
+           }
+          },
+          "hash": "c55598288e81315e1551813f8f8b05fb267a277b",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2024-12-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "f844d354232230007db3b88d5c32f0940916cd9a",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ],
+        "P8172": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "dw.322"
+          },
+          "hash": "48f3c75d4967052a485fca8455f8ac500f93792a",
+          "property": "P8172",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P8172",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P570": [
+    {
+     "id": "q250731$0E0789DB-AA84-4E8F-9845-91B7C631F0F4",
+     "mainsnak": {
+      "datatype": "time",
+      "datavalue": {
+       "type": "time",
+       "value": {
+        "after": 0,
+        "before": 0,
+        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+        "precision": 11,
+        "time": "+1129-09-01T00:00:00Z",
+        "timezone": 0
+       }
+      },
+      "hash": "51a8d6d829b3a2d95578ac88f405aa6bb316c8d2",
+      "property": "P570",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1319": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985786",
+          "precision": 9,
+          "time": "+1127-00-00T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "1da911133f88c7004c16874db31d1bb634ca9a1d",
+        "property": "P1319",
+        "snaktype": "value"
+       }
+      ],
+      "P31": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q26961029",
+          "numeric-id": 26961029
+         }
+        },
+        "hash": "d5ac6d02e7a8948b72184d9e39cf10acbc5e61ed",
+        "property": "P31",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1319",
+      "P31"
+     ],
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fa278ebfc458360e5aed63d5058cca83c46134f1",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q328",
+            "numeric-id": 328
+           }
+          },
+          "hash": "e4f6d9441d0600513c4533c672b5ab472dc73694",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      },
+      {
+       "hash": "d4bd87b862b12d99d26e86472d44f26858dee639",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q8447",
+            "numeric-id": 8447
+           }
+          },
+          "hash": "f30cbd35620c4ea6d0633aaf0210a8916130469b",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      },
+      {
+       "hash": "eb0542bc444cab0e9768006a00516c2d6a2047c8",
+       "snaks": {
+        "P1810": [
+         {
+          "datatype": "string",
+          "datavalue": {
+           "type": "string",
+           "value": "Álmos Duke of Croatia Hungary (Arpadhazi) (1070 - 1 Sep 1127)"
+          },
+          "hash": "b7233269c250eb54ffb44f653359560de6e78f1c",
+          "property": "P1810",
+          "snaktype": "value"
+         }
+        ],
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q1074931",
+            "numeric-id": 1074931
+           }
+          },
+          "hash": "330b308dbc916d1b5cdfafddbbca54c594f940ec",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P2949": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "Arpadhazi-7"
+          },
+          "hash": "a77f0b6684130e2cddd020d0c72f46ec46af510c",
+          "property": "P2949",
+          "snaktype": "value"
+         }
+        ],
+        "P813": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2024-12-23T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "f844d354232230007db3b88d5c32f0940916cd9a",
+          "property": "P813",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P2949",
+        "P1810",
+        "P813"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P646": [
+    {
+     "id": "Q250731$383147BE-DF80-44FD-91E1-6EFB640F8318",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "/m/037_5p"
+      },
+      "hash": "28f4771c3a4a176555fc8aaccc65c56ba7196a52",
+      "property": "P646",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "2b00cb481cddcac7623114367489b5c194901c4a",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q15241312",
+            "numeric-id": 15241312
+           }
+          },
+          "hash": "a94b740202b097dd33355e0e6c00e54b9395e5e0",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ],
+        "P577": [
+         {
+          "datatype": "time",
+          "datavalue": {
+           "type": "time",
+           "value": {
+            "after": 0,
+            "before": 0,
+            "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+            "precision": 11,
+            "time": "+2013-10-28T00:00:00Z",
+            "timezone": 0
+           }
+          },
+          "hash": "fde79ecb015112d2f29229ccc1ec514ed3e71fa2",
+          "property": "P577",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248",
+        "P577"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P6988": [
+    {
+     "id": "Q250731$15b729d3-44be-98e3-d743-1782dde2ac2a",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "277954"
+      },
+      "hash": "e0031c51f63f50cb7440c82e0928a5c829f57cfe",
+      "property": "P6988",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q250731$176BFA77-5A7C-4B23-A5B6-F7B4E8CBE031",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q250661",
+        "numeric-id": 250661
+       }
+      },
+      "hash": "cf3920eb6dbfb2560d1b977355223647caca0d99",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P7929": [
+    {
+     "id": "Q250731$EC73F127-7A14-4618-A61A-8EEFC7149AAE",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "p=almos;n=arpad"
+      },
+      "hash": "d0a15406867f6346b5e08511848d67e9fcd42db3",
+      "property": "P7929",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P8172": [
+    {
+     "id": "Q250731$4919E349-30A5-4902-B26C-3D55B15D95B5",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "dw.322"
+      },
+      "hash": "48f3c75d4967052a485fca8455f8ac500f93792a",
+      "property": "P8172",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "103ba26910a63fd12453e5bc5a6e28b2fcf40dbb",
+       "snaks": {
+        "P248": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q93482363",
+            "numeric-id": 93482363
+           }
+          },
+          "hash": "c55598288e81315e1551813f8f8b05fb267a277b",
+          "property": "P248",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P248"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P8669": [
+    {
+     "id": "Q250731$60d49b4d-4069-22d3-0c91-d467564b7926",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "almos-0"
+      },
+      "hash": "efc484f0dad01c3f5231276ec31758af04353bad",
+      "property": "P8669",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Almoš"
+        },
+        "hash": "bf0e297fbc966cdf2e783756f3f2d88e4c066c7b",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ],
+      "P407": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q9058",
+          "numeric-id": 9058
+         }
+        },
+        "hash": "44da625a3ae10060686d6729c546a67d4d69235f",
+        "property": "P407",
+        "snaktype": "value"
+       }
+      ],
+      "P577": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+          "precision": 10,
+          "time": "+1999-08-00T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "a7f86efef468708db547d56c6e819c7995500a66",
+        "property": "P577",
+        "snaktype": "value"
+       }
+      ],
+      "P813": [
+       {
+        "datatype": "time",
+        "datavalue": {
+         "type": "time",
+         "value": {
+          "after": 0,
+          "before": 0,
+          "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+          "precision": 11,
+          "time": "+2026-09-08T00:00:00Z",
+          "timezone": 0
+         }
+        },
+        "hash": "c19d678ba37f472abd522e2a31436c8430eff1c6",
+        "property": "P813",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810",
+      "P407",
+      "P577",
+      "P813"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P8998": [
+    {
+     "id": "Q250731$C952BCC4-4ED1-4747-9B2F-5CF74BBAECB9",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "ABC00003/00212"
+      },
+      "hash": "5ae7f2d7ef298ceda017cf31106f91acf8535dac",
+      "property": "P8998",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P97": [
+    {
+     "id": "Q250731$546288F9-E69F-400F-8514-E94E49F0852C",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q166886",
+        "numeric-id": 166886
+       }
+      },
+      "hash": "cfa598b9854db2fb0af35b713f62a01fa924c36e",
+      "property": "P97",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "732ec1c90a6f0694c7db9a71bf09fe7f2b674172",
+       "snaks": {
+        "P143": [
+         {
+          "datatype": "wikibase-item",
+          "datavalue": {
+           "type": "wikibase-entityid",
+           "value": {
+            "entity-type": "item",
+            "id": "Q10000",
+            "numeric-id": 10000
+           }
+          },
+          "hash": "9123b0de1cc9c3954366ba797d598e4e1ea4146f",
+          "property": "P143",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P143"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {
+   "be": {
+    "language": "be",
+    "value": "прынц"
+   },
+   "de": {
+    "language": "de",
+    "value": "Herzog und König von Kroatien sowie Fürst/Herzog des Neutraer Fürstentums (heute Slowakei)"
+   },
+   "en": {
+    "language": "en",
+    "value": "Duke of Hungary, Croatia and Nyitra (c.1070–1127)"
+   },
+   "es": {
+    "language": "es",
+    "value": "príncipe real de Hungría"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "prince de Hongrie et duc de Croatie (~1070-~1127)"
+   },
+   "hu": {
+    "language": "hu",
+    "value": "magyar királyi herceg, szlavón és horvát herceg"
+   },
+   "it": {
+    "language": "it",
+    "value": "duca d'Ungheria, Croazia e Nitra"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "príncipe do Reino da Hungria"
+   },
+   "ro": {
+    "language": "ro",
+    "value": "principe de Ungaria, duce al Croației și Nitrei"
+   },
+   "ru": {
+    "language": "ru",
+    "value": "король Хорватии"
+   },
+   "uk": {
+    "language": "uk",
+    "value": "угорський принц"
+   }
+  },
+  "id": "Q250731",
+  "labels": {
+   "be": {
+    "language": "be",
+    "value": "Альмаш"
+   },
+   "ca": {
+    "language": "ca",
+    "value": "Álmos de Nitra"
+   },
+   "cs": {
+    "language": "cs",
+    "value": "Almoš Arpádovec"
+   },
+   "de": {
+    "language": "de",
+    "value": "Álmos"
+   },
+   "el": {
+    "language": "el",
+    "value": "Άλμος πρίγκιπας της Ουγγαρίας"
+   },
+   "en": {
+    "language": "en",
+    "value": "Álmos, Duke of Nitra"
+   },
+   "en-ca": {
+    "language": "en-ca",
+    "value": "Prince Álmos"
+   },
+   "en-gb": {
+    "language": "en-gb",
+    "value": "Prince Álmos"
+   },
+   "eo": {
+    "language": "eo",
+    "value": "Princo Almoŝo"
+   },
+   "es": {
+    "language": "es",
+    "value": "Álmos el Ciego"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "Almos de Hongrie"
+   },
+   "he": {
+    "language": "he",
+    "value": "אלמוש"
+   },
+   "hr": {
+    "language": "hr",
+    "value": "Almoš"
+   },
+   "hu": {
+    "language": "hu",
+    "value": "Álmos herceg"
+   },
+   "it": {
+    "language": "it",
+    "value": "Álmos d'Ungheria"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "アールモシュ (ゲーザ1世の子)"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "Álmos"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "Álmos van Hongarije"
+   },
+   "pl": {
+    "language": "pl",
+    "value": "Almos (książę)"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "Álmos da Croácia"
+   },
+   "pt-br": {
+    "language": "pt-br",
+    "value": "Álmos da Croácia"
+   },
+   "ro": {
+    "language": "ro",
+    "value": "Almos"
+   },
+   "ru": {
+    "language": "ru",
+    "value": "Альмош"
+   },
+   "sh": {
+    "language": "sh",
+    "value": "Almoš od Hrvatske"
+   },
+   "sk": {
+    "language": "sk",
+    "value": "Álmoš (Nitra)"
+   },
+   "sl": {
+    "language": "sl",
+    "value": "Almoš"
+   },
+   "sr": {
+    "language": "sr",
+    "value": "Алмош Хрватски"
+   },
+   "uk": {
+    "language": "uk",
+    "value": "Алмош"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "阿尔莫什"
+   },
+   "zh-cn": {
+    "language": "zh-cn",
+    "value": "阿尔莫什"
+   },
+   "zh-hans": {
+    "language": "zh-hans",
+    "value": "阿尔莫什"
+   },
+   "zh-hant": {
+    "language": "zh-hant",
+    "value": "阿爾莫什"
+   }
+  },
+  "lastrevid": 2547911407,
+  "modified": "2026-09-20T10:34:27Z",
+  "ns": 0,
+  "pageid": 243364,
+  "sitelinks": {
+   "bewiki": {
+    "badges": [],
+    "site": "bewiki",
+    "title": "Альмаш (прынц)"
+   },
+   "commonswiki": {
+    "badges": [],
+    "site": "commonswiki",
+    "title": "Category:Álmos of Hungary, Duke of Croatia"
+   },
+   "cswiki": {
+    "badges": [],
+    "site": "cswiki",
+    "title": "Almoš Arpádovec"
+   },
+   "dewiki": {
+    "badges": [],
+    "site": "dewiki",
+    "title": "Álmos (Kroatien)"
+   },
+   "elwiki": {
+    "badges": [],
+    "site": "elwiki",
+    "title": "Άλμος πρίγκιπας της Ουγγαρίας"
+   },
+   "enwiki": {
+    "badges": [],
+    "site": "enwiki",
+    "title": "Prince Álmos"
+   },
+   "eowiki": {
+    "badges": [],
+    "site": "eowiki",
+    "title": "Princo Almoŝo"
+   },
+   "eswiki": {
+    "badges": [],
+    "site": "eswiki",
+    "title": "Álmos el Ciego"
+   },
+   "frwiki": {
+    "badges": [],
+    "site": "frwiki",
+    "title": "Álmos de Hongrie"
+   },
+   "hrwiki": {
+    "badges": [],
+    "site": "hrwiki",
+    "title": "Almoš"
+   },
+   "huwiki": {
+    "badges": [],
+    "site": "huwiki",
+    "title": "Álmos herceg"
+   },
+   "itwiki": {
+    "badges": [],
+    "site": "itwiki",
+    "title": "Álmos d'Ungheria"
+   },
+   "nlwiki": {
+    "badges": [],
+    "site": "nlwiki",
+    "title": "Álmos van Hongarije"
+   },
+   "plwiki": {
+    "badges": [],
+    "site": "plwiki",
+    "title": "Almos (książę)"
+   },
+   "ptwiki": {
+    "badges": [],
+    "site": "ptwiki",
+    "title": "Almo da Croácia"
+   },
+   "rowiki": {
+    "badges": [],
+    "site": "rowiki",
+    "title": "Almos de Ungaria"
+   },
+   "ruwiki": {
+    "badges": [],
+    "site": "ruwiki",
+    "title": "Альмош (принц)"
+   },
+   "shwiki": {
+    "badges": [],
+    "site": "shwiki",
+    "title": "Almoš od Hrvatske"
+   },
+   "skwiki": {
+    "badges": [],
+    "site": "skwiki",
+    "title": "Álmoš (Nitra)"
+   },
+   "slwiki": {
+    "badges": [],
+    "site": "slwiki",
+    "title": "Álmoš (slavonski in nitranski vladar)"
+   },
+   "srwiki": {
+    "badges": [],
+    "site": "srwiki",
+    "title": "Алмош Угарски"
+   },
+   "ukwiki": {
+    "badges": [],
+    "site": "ukwiki",
+    "title": "Алмош (принц)"
+   },
+   "zhwiki": {
+    "badges": [],
+    "site": "zhwiki",
+    "title": "阿爾莫什王子"
+   }
+  },
+  "title": "Q250731",
   "type": "item"
  },
  "Q2742379": {

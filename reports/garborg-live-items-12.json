@@ -122554,398 +122554,6 @@
   "title": "Q141500844",
   "type": "item"
  },
- "Q141502492": {
-  "aliases": {
-   "mul": [
-    {
-     "language": "mul",
-     "value": "Alice Hazel Thompson"
-    }
-   ]
-  },
-  "claims": {
-   "P21": [
-    {
-     "id": "Q141502492$310E349C-ACB6-49C5-8AB7-0E42001C03C9",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q6581072",
-        "numeric-id": 6581072
-       }
-      },
-      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
-      "property": "P21",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P25": [
-    {
-     "id": "Q141502492$51BAA3B7-2E44-4362-8CF5-B7791AE0B5F1",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141498818",
-        "numeric-id": 141498818
-       }
-      },
-      "hash": "6fa4600705f15e29ca823316491d666c33d47ea5",
-      "property": "P25",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "75143f5f09fa90377907f8ea75e96f8b4614e2aa",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000109054836930"
-          },
-          "hash": "e7bf6dbcd9a7dad72e68a9c2ebe0e8e42c85b9ca",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P2600": [
-    {
-     "id": "Q141502492$52DE8A3F-7495-4ED8-BD9A-A681C406BF10",
-     "mainsnak": {
-      "datatype": "external-id",
-      "datavalue": {
-       "type": "string",
-       "value": "6000000109054836930"
-      },
-      "hash": "e7bf6dbcd9a7dad72e68a9c2ebe0e8e42c85b9ca",
-      "property": "P2600",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P1810": [
-       {
-        "datatype": "string",
-        "datavalue": {
-         "type": "string",
-         "value": "Alice Hazel Thompson"
-        },
-        "hash": "38c4be1466f89f9be512d5676f3973366c5fd509",
-        "property": "P1810",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P1810"
-     ],
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P31": [
-    {
-     "id": "Q141502492$83961435-51B0-498A-805C-5C92BCF4C4F4",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q5",
-        "numeric-id": 5
-       }
-      },
-      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
-      "property": "P31",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P569": [
-    {
-     "id": "Q141502492$EB576F84-02EB-49C9-8A43-C9177387EBFC",
-     "mainsnak": {
-      "datatype": "time",
-      "datavalue": {
-       "type": "time",
-       "value": {
-        "after": 0,
-        "before": 0,
-        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
-        "precision": 11,
-        "time": "+1917-10-14T00:00:00Z",
-        "timezone": 0
-       }
-      },
-      "hash": "34e59a446a70172aeaa09733f11340098cb22e4c",
-      "property": "P569",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "75143f5f09fa90377907f8ea75e96f8b4614e2aa",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000109054836930"
-          },
-          "hash": "e7bf6dbcd9a7dad72e68a9c2ebe0e8e42c85b9ca",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P570": [
-    {
-     "id": "Q141502492$219C542E-3A0D-4164-AA7E-B2900B1FBFB7",
-     "mainsnak": {
-      "datatype": "time",
-      "datavalue": {
-       "type": "time",
-       "value": {
-        "after": 0,
-        "before": 0,
-        "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
-        "precision": 11,
-        "time": "+1946-05-13T00:00:00Z",
-        "timezone": 0
-       }
-      },
-      "hash": "28e760a4ba9110b801c185821023df7d9a948b9e",
-      "property": "P570",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "75143f5f09fa90377907f8ea75e96f8b4614e2aa",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000109054836930"
-          },
-          "hash": "e7bf6dbcd9a7dad72e68a9c2ebe0e8e42c85b9ca",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P734": [
-    {
-     "id": "Q141502492$B2E3DD35-88BD-44C9-A328-87F506BC545E",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q2803433",
-        "numeric-id": 2803433
-       }
-      },
-      "hash": "d746f034de57f84f7438570b8c892c950e3f627e",
-      "property": "P734",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P3831": [
-       {
-        "datatype": "wikibase-item",
-        "datavalue": {
-         "type": "wikibase-entityid",
-         "value": {
-          "entity-type": "item",
-          "id": "Q2507958",
-          "numeric-id": 2507958
-         }
-        },
-        "hash": "72b0eecdeb0564ec238e4869eedaf6fbce92a07e",
-        "property": "P3831",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P3831"
-     ],
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P735": [
-    {
-     "id": "Q141502492$D1ADBB80-C9C9-41B3-AA1D-246D4AEB4FC3",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q650689",
-        "numeric-id": 650689
-       }
-      },
-      "hash": "10225677cad8f7091a04dcc8df31184481e0a597",
-      "property": "P735",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P1545": [
-       {
-        "datatype": "string",
-        "datavalue": {
-         "type": "string",
-         "value": "1"
-        },
-        "hash": "2a1ced1dca90648ea7e306acbadd74fc81a10722",
-        "property": "P1545",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P1545"
-     ],
-     "rank": "normal",
-     "type": "statement"
-    },
-    {
-     "id": "Q141502492$4DC00A88-66A1-4D44-893F-12420CF0A43D",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q3783818",
-        "numeric-id": 3783818
-       }
-      },
-      "hash": "26d67a51ec64ba40ca68fe828ecee136724cc3d9",
-      "property": "P735",
-      "snaktype": "value"
-     },
-     "qualifiers": {
-      "P1545": [
-       {
-        "datatype": "string",
-        "datavalue": {
-         "type": "string",
-         "value": "2"
-        },
-        "hash": "7241753c62a310cf84895620ea82250dcea65835",
-        "property": "P1545",
-        "snaktype": "value"
-       }
-      ],
-      "P3831": [
-       {
-        "datatype": "wikibase-item",
-        "datavalue": {
-         "type": "wikibase-entityid",
-         "value": {
-          "entity-type": "item",
-          "id": "Q245025",
-          "numeric-id": 245025
-         }
-        },
-        "hash": "d2f200256267b5915480636fe6e9142b0bf2236d",
-        "property": "P3831",
-        "snaktype": "value"
-       }
-      ]
-     },
-     "qualifiers-order": [
-      "P1545",
-      "P3831"
-     ],
-     "rank": "normal",
-     "type": "statement"
-    }
-   ]
-  },
-  "descriptions": {
-   "en": {
-    "language": "en",
-    "value": "14 Oct 1917 - 13 May 1946"
-   }
-  },
-  "id": "Q141502492",
-  "labels": {
-   "en": {
-    "language": "en",
-    "value": "Alice Hazel Waugh"
-   },
-   "ja": {
-    "language": "ja",
-    "value": "アリス・ヘイゼル・ヴァウグ"
-   },
-   "ko": {
-    "language": "ko",
-    "value": "아리케 하젤 우아욱"
-   },
-   "mul": {
-    "language": "mul",
-    "value": "Alice Hazel Waugh"
-   },
-   "zh": {
-    "language": "zh",
-    "value": "爱丽丝·哈泽尔·瓦乌格"
-   }
-  },
-  "lastrevid": 2547795494,
-  "modified": "2026-09-19T20:47:55Z",
-  "ns": 0,
-  "pageid": 135062219,
-  "sitelinks": {},
-  "title": "Q141502492",
-  "type": "item"
- },
  "Q141502604": {
   "aliases": {
    "mul": [
@@ -140571,6 +140179,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q20250108$3FCEE641-09C6-4149-9473-ABCC092EDAA7",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141504242",
+        "numeric-id": 141504242
+       }
+      },
+      "hash": "2699a2697dd5621a1573788e1ca644a9adedce36",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "aa119fa22f2a8efefa650ac0759d9732342730bc",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000221228631937"
+          },
+          "hash": "85936def052c93e311aa50dd9fdaf8113b23a12f",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -140927,8 +140576,8 @@
     "value": "Anders Pryss"
    }
   },
-  "lastrevid": 2547795169,
-  "modified": "2026-09-19T20:47:11Z",
+  "lastrevid": 2547868569,
+  "modified": "2026-09-20T04:37:24Z",
   "ns": 0,
   "pageid": 21985956,
   "sitelinks": {

@@ -30119,8 +30119,8 @@
     "value": "Ad-Dahhok ibn Qays al-Fihriy"
    }
   },
-  "lastrevid": 2543553177,
-  "modified": "2026-09-10T22:09:35Z",
+  "lastrevid": 2547874422,
+  "modified": "2026-09-20T05:21:31Z",
   "ns": 0,
   "pageid": 13415436,
   "sitelinks": {
@@ -30173,6 +30173,11 @@
     "badges": [],
     "site": "pnbwiki",
     "title": "ضحاک بن قيس الفہری"
+   },
+   "ptwiki": {
+    "badges": [],
+    "site": "ptwiki",
+    "title": "Adaaque ibne Caice Alfiri"
    },
    "trwiki": {
     "badges": [],
@@ -89653,6 +89658,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141336549$91E832A4-592D-4990-A4B6-57D8AF24383F",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141504244",
+        "numeric-id": 141504244
+       }
+      },
+      "hash": "8a05cfd40611974fad077aeceb153d579f467b0b",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "1dc7f1f40fec2bab9157c3191fe38879cd15b93f",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000026189209443"
+          },
+          "hash": "62860a0d4736843fcc9323fa2bfc1701998ad80d",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ],
    "P5056": [
@@ -89838,8 +89884,8 @@
     "value": "伊斯雷尔·安德松·安德"
    }
   },
-  "lastrevid": 2547814969,
-  "modified": "2026-09-19T23:06:38Z",
+  "lastrevid": 2547868621,
+  "modified": "2026-09-20T04:37:42Z",
   "ns": 0,
   "pageid": 134868553,
   "sitelinks": {},
@@ -132941,6 +132987,133 @@
   "pageid": 135058014,
   "sitelinks": {},
   "title": "Q141498677",
+  "type": "item"
+ },
+ "Q141498725": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141498725$E74061A8-5467-43D6-A49E-7407664206F9",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b8e062269cb78bc89440f489ff7b5c6f4fef9c76",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000000196425114"
+          },
+          "hash": "bc873e11ba842e0805ffe908c8729a0231a4cd98",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141498725$75DF519D-1B78-482B-AFBB-B7DBF285FD17",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000000196425114"
+      },
+      "hash": "bc873e11ba842e0805ffe908c8729a0231a4cd98",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141498725$195E5870-02A0-4101-AFDD-1EE648E819ED",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "b8e062269cb78bc89440f489ff7b5c6f4fef9c76",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000000196425114"
+          },
+          "hash": "bc873e11ba842e0805ffe908c8729a0231a4cd98",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141498725",
+  "labels": {
+   "en": {
+    "language": "en",
+    "value": "Helgi Olavsson"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Helgi Olavsson"
+   }
+  },
+  "lastrevid": 2547638329,
+  "modified": "2026-09-19T02:58:26Z",
+  "ns": 0,
+  "pageid": 135058063,
+  "sitelinks": {},
+  "title": "Q141498725",
   "type": "item"
  },
  "Q141498853": {

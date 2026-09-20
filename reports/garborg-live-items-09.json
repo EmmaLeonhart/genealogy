@@ -44778,6 +44778,44 @@
      "type": "statement"
     }
    ],
+   "P1248": [
+    {
+     "id": "Q140966601$e1e6d386-4782-d910-b65c-d584948baa41",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "b941fde3-c884-41dc-8ab2-223757be2bd6"
+      },
+      "hash": "bf019710b46f1c578fc3983ec887ff351752c6e8",
+      "property": "P1248",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P972": [
+       {
+        "datatype": "wikibase-item",
+        "datavalue": {
+         "type": "wikibase-entityid",
+         "value": {
+          "entity-type": "item",
+          "id": "Q116513722",
+          "numeric-id": 116513722
+         }
+        },
+        "hash": "3aa1132e659bd7dd0fae1d6fd4f591cf231c91bf",
+        "property": "P972",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P972"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
    "P1343": [
     {
      "id": "Q140966601$EFCE79B8-1FD3-4C5C-BB19-40F76ADF78C1",
@@ -45294,6 +45332,23 @@
      "rank": "normal",
      "type": "statement"
     }
+   ],
+   "P7847": [
+    {
+     "id": "Q140966601$b0d850ed-45f4-1add-153e-2efdb90cdfdb",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "021038418354"
+      },
+      "hash": "cd38b4b59b474350918dd8435d16a802d25e2af8",
+      "property": "P7847",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
    ]
   },
   "descriptions": {
@@ -45313,8 +45368,8 @@
     "value": "Otto Theodor Krohg"
    }
   },
-  "lastrevid": 2547657957,
-  "modified": "2026-09-19T04:44:25Z",
+  "lastrevid": 2547889541,
+  "modified": "2026-09-20T07:26:10Z",
   "ns": 0,
   "pageid": 134410909,
   "sitelinks": {},
@@ -96388,6 +96443,47 @@
       }
      ],
      "type": "statement"
+    },
+    {
+     "id": "Q141442281$BCBD4040-6188-467E-B707-75BE9115FFD1",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141504233",
+        "numeric-id": 141504233
+       }
+      },
+      "hash": "15c13eb430101e705d53685df935c6211991abb2",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "78138f3309d276e922b0f8ee4ed31e555c665dd2",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000008742866688"
+          },
+          "hash": "51a7325595689aa64b002dcdc009643532c506e1",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
     }
    ]
   },
@@ -96415,8 +96511,8 @@
     "value": "博里尔德·加尔博格"
    }
   },
-  "lastrevid": 2547803246,
-  "modified": "2026-09-19T21:57:29Z",
+  "lastrevid": 2547868480,
+  "modified": "2026-09-20T04:37:04Z",
   "ns": 0,
   "pageid": 135001706,
   "sitelinks": {},
@@ -135068,236 +135164,6 @@
   "title": "Q141502809",
   "type": "item"
  },
- "Q141502841": {
-  "aliases": {},
-  "claims": {
-   "P21": [
-    {
-     "id": "Q141502841$7877880E-09F9-45B9-95FD-35C72F7FE1FE",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q6581072",
-        "numeric-id": 6581072
-       }
-      },
-      "hash": "5760796ff6ebc63aae12cdcbf509b07ebf0bd201",
-      "property": "P21",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P26": [
-    {
-     "id": "Q141502841$86A2888B-E415-4B78-B580-074543439AB6",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141499898",
-        "numeric-id": 141499898
-       }
-      },
-      "hash": "0b1431fb73d0948dcfbc0187fe781c159cbff2d7",
-      "property": "P26",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "3de985d8c16c340e16bcba6947a06aa10607ad23",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000009458775815"
-          },
-          "hash": "6dc1c8f0bf18818f8f131c9b4735cafcafeb7e46",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P2600": [
-    {
-     "id": "Q141502841$80668C4E-E475-4B2E-8930-457FB4687CAE",
-     "mainsnak": {
-      "datatype": "external-id",
-      "datavalue": {
-       "type": "string",
-       "value": "6000000009458775815"
-      },
-      "hash": "6dc1c8f0bf18818f8f131c9b4735cafcafeb7e46",
-      "property": "P2600",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P31": [
-    {
-     "id": "Q141502841$38089402-3F30-4221-B1D1-0AB835617461",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q5",
-        "numeric-id": 5
-       }
-      },
-      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
-      "property": "P31",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ],
-   "P40": [
-    {
-     "id": "Q141502841$C92E1728-BA98-486A-9C4E-25BDA4E56DC0",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141456382",
-        "numeric-id": 141456382
-       }
-      },
-      "hash": "e48fcdef7fcf967244ae9b321aca69214a1362b5",
-      "property": "P40",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "references": [
-      {
-       "hash": "3de985d8c16c340e16bcba6947a06aa10607ad23",
-       "snaks": {
-        "P2600": [
-         {
-          "datatype": "external-id",
-          "datavalue": {
-           "type": "string",
-           "value": "6000000009458775815"
-          },
-          "hash": "6dc1c8f0bf18818f8f131c9b4735cafcafeb7e46",
-          "property": "P2600",
-          "snaktype": "value"
-         }
-        ]
-       },
-       "snaks-order": [
-        "P2600"
-       ]
-      }
-     ],
-     "type": "statement"
-    }
-   ],
-   "P5056": [
-    {
-     "id": "Q141502841$DB3619C0-6E5F-4AAE-86D2-76DBA96342C6",
-     "mainsnak": {
-      "datatype": "wikibase-item",
-      "datavalue": {
-       "type": "wikibase-entityid",
-       "value": {
-        "entity-type": "item",
-        "id": "Q141448431",
-        "numeric-id": 141448431
-       }
-      },
-      "hash": "117cb884af2686aa9c8ab2864015e4a0c83037ad",
-      "property": "P5056",
-      "snaktype": "value"
-     },
-     "rank": "normal",
-     "type": "statement"
-    }
-   ]
-  },
-  "descriptions": {},
-  "id": "Q141502841",
-  "labels": {
-   "ca": {
-    "language": "ca",
-    "value": "esposa de Torstein NN"
-   },
-   "da": {
-    "language": "da",
-    "value": "hustru til Torstein NN"
-   },
-   "de": {
-    "language": "de",
-    "value": "Ehefrau von Torstein NN"
-   },
-   "en": {
-    "language": "en",
-    "value": "wife of Torstein NN"
-   },
-   "es": {
-    "language": "es",
-    "value": "esposa de Torstein NN"
-   },
-   "fr": {
-    "language": "fr",
-    "value": "épouse de Torstein NN"
-   },
-   "it": {
-    "language": "it",
-    "value": "moglie di Torstein NN"
-   },
-   "mul": {
-    "language": "mul",
-    "value": "NN Torsteinsdatter"
-   },
-   "nb": {
-    "language": "nb",
-    "value": "hustru til Torstein NN"
-   },
-   "nl": {
-    "language": "nl",
-    "value": "echtgenote van Torstein NN"
-   },
-   "pt": {
-    "language": "pt",
-    "value": "esposa de Torstein NN"
-   },
-   "sv": {
-    "language": "sv",
-    "value": "maka till Torstein NN"
-   }
-  },
-  "lastrevid": 2547806361,
-  "modified": "2026-09-19T22:13:01Z",
-  "ns": 0,
-  "pageid": 135062550,
-  "sitelinks": {},
-  "title": "Q141502841",
-  "type": "item"
- },
  "Q141502889": {
   "aliases": {},
   "claims": {
@@ -135544,6 +135410,222 @@
   "pageid": 135062596,
   "sitelinks": {},
   "title": "Q141502889",
+  "type": "item"
+ },
+ "Q141504313": {
+  "aliases": {},
+  "claims": {
+   "P21": [
+    {
+     "id": "Q141504313$9E5749A4-C34E-411A-81C7-42405C1F7194",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q6581097",
+        "numeric-id": 6581097
+       }
+      },
+      "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+      "property": "P21",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P2600": [
+    {
+     "id": "Q141504313$B96ABCF6-0EC2-4D94-9DC1-E12FA6D89908",
+     "mainsnak": {
+      "datatype": "external-id",
+      "datavalue": {
+       "type": "string",
+       "value": "6000000022670871314"
+      },
+      "hash": "7089863ca1a0da56e7f231f3c5d0123df91ce040",
+      "property": "P2600",
+      "snaktype": "value"
+     },
+     "qualifiers": {
+      "P1810": [
+       {
+        "datatype": "string",
+        "datavalue": {
+         "type": "string",
+         "value": "Thomas"
+        },
+        "hash": "947fa83f0781ae5ca1d6339db9702b0338bb5f08",
+        "property": "P1810",
+        "snaktype": "value"
+       }
+      ]
+     },
+     "qualifiers-order": [
+      "P1810"
+     ],
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P31": [
+    {
+     "id": "Q141504313$3165E541-DA05-4641-BB49-75C18B102094",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q5",
+        "numeric-id": 5
+       }
+      },
+      "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+      "property": "P31",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ],
+   "P40": [
+    {
+     "id": "Q141504313$E06ED1F8-005C-4109-9BC2-B2D4E2576035",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q141499022",
+        "numeric-id": 141499022
+       }
+      },
+      "hash": "acc626a3e11f14034f5dc809ca7ea3099fad8b62",
+      "property": "P40",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "references": [
+      {
+       "hash": "fb5a6994db9288801fd3df143f1490bd873ce714",
+       "snaks": {
+        "P2600": [
+         {
+          "datatype": "external-id",
+          "datavalue": {
+           "type": "string",
+           "value": "6000000022670871314"
+          },
+          "hash": "7089863ca1a0da56e7f231f3c5d0123df91ce040",
+          "property": "P2600",
+          "snaktype": "value"
+         }
+        ]
+       },
+       "snaks-order": [
+        "P2600"
+       ]
+      }
+     ],
+     "type": "statement"
+    }
+   ],
+   "P735": [
+    {
+     "id": "Q141504313$6BAE094B-2422-48F1-A6D9-D45297B52C00",
+     "mainsnak": {
+      "datatype": "wikibase-item",
+      "datavalue": {
+       "type": "wikibase-entityid",
+       "value": {
+        "entity-type": "item",
+        "id": "Q16428906",
+        "numeric-id": 16428906
+       }
+      },
+      "hash": "6f91f6a94099cf730bd716b09e3e10045222883a",
+      "property": "P735",
+      "snaktype": "value"
+     },
+     "rank": "normal",
+     "type": "statement"
+    }
+   ]
+  },
+  "descriptions": {},
+  "id": "Q141504313",
+  "labels": {
+   "ca": {
+    "language": "ca",
+    "value": "pare de Gregorius Thomae Arctopolitanus"
+   },
+   "da": {
+    "language": "da",
+    "value": "far til Gregorius Thomae Arctopolitanus"
+   },
+   "de": {
+    "language": "de",
+    "value": "Vater von Gregorius Thomae Arctopolitanus"
+   },
+   "en": {
+    "language": "en",
+    "value": "father of Gregorius Thomae Arctopolitanus"
+   },
+   "es": {
+    "language": "es",
+    "value": "padre de Gregorius Thomae Arctopolitanus"
+   },
+   "fr": {
+    "language": "fr",
+    "value": "père de Gregorius Thomae Arctopolitanus"
+   },
+   "it": {
+    "language": "it",
+    "value": "padre di Gregorius Thomae Arctopolitanus"
+   },
+   "ja": {
+    "language": "ja",
+    "value": "グレゴリウス・トマエ・アルクトポリタヌスの父"
+   },
+   "ko": {
+    "language": "ko",
+    "value": "그레고류스 토매 아르크토포리타누스의 아버지"
+   },
+   "mul": {
+    "language": "mul",
+    "value": "Thomas NN"
+   },
+   "nb": {
+    "language": "nb",
+    "value": "far til Gregorius Thomae Arctopolitanus"
+   },
+   "nl": {
+    "language": "nl",
+    "value": "vader van Gregorius Thomae Arctopolitanus"
+   },
+   "pt": {
+    "language": "pt",
+    "value": "pai de Gregorius Thomae Arctopolitanus"
+   },
+   "sv": {
+    "language": "sv",
+    "value": "far till Gregorius Thomae Arctopolitanus"
+   },
+   "zh": {
+    "language": "zh",
+    "value": "格雷戈里乌斯·托马埃·阿尔克托波利塔努斯之父"
+   }
+  },
+  "lastrevid": 2547870789,
+  "modified": "2026-09-20T04:53:26Z",
+  "ns": 0,
+  "pageid": 135063908,
+  "sitelinks": {},
+  "title": "Q141504313",
   "type": "item"
  },
  "Q14917577": {
@@ -192444,6 +192526,10 @@
     "language": "it",
     "value": "Lidija Alexandrowna Durnowo"
    },
+   "mul": {
+    "language": "mul",
+    "value": "Lydia Durnovo"
+   },
    "nb": {
     "language": "nb",
     "value": "Lidija Durnovo"
@@ -192485,8 +192571,8 @@
     "value": "莉迪婭·杜爾諾沃"
    }
   },
-  "lastrevid": 2547656618,
-  "modified": "2026-09-19T04:36:22Z",
+  "lastrevid": 2547913420,
+  "modified": "2026-09-20T10:50:06Z",
   "ns": 0,
   "pageid": 3979137,
   "sitelinks": {

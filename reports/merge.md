@@ -22796,9 +22796,10 @@ Sources in merge order (later sources win value conflicts):
 22790. `export-Forest-6000000227816685869.ged`
 22791. `export-Forest-6000000227831634917.ged`
 22792. `export-Forest-6000000227831999861.ged`
-22793. `identifications-now.ged`
-22794. `identifications-jan1.ged`
-22795. `identifications-passive.ged`
+22793. `wikidata-qid-links.ged`
+22794. `identifications-now.ged`
+22795. `identifications-jan1.ged`
+22796. `identifications-passive.ged`
 
 ## Merged totals
 
@@ -45604,8 +45605,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227816685869.ged` | 25 | 130 | 1 | 8082 | 131 |
 | `export-Forest-6000000227831634917.ged` | 1 | 1 | 0 | 8404 | 1 |
 | `export-Forest-6000000227831999861.ged` | 297 | 899 | 4 | 6092 | 1268 |
+| `wikidata-qid-links.ged` | 0 | 2 | 0 | 440 | 0 |
 | `identifications-now.ged` | 0 | 0 | 0 | 11 | 0 |
-| `identifications-jan1.ged` | 0 | 2 | 0 | 443 | 0 |
+| `identifications-jan1.ged` | 0 | 0 | 0 | 445 | 0 |
 | `identifications-passive.ged` | 0 | 98 | 0 | 1588 | 0 |
 
 ## Pointers to records we do not have
